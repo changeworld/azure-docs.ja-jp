@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/04/2017
+ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: b4bb049577feb416f498a428bae80ecea418180e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c38a69176f5f9e6a8f8dbcc411b85bef47362880
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>オンプレミスから Azure へのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
@@ -68,8 +68,11 @@ ms.lasthandoff: 10/11/2017
 
  **VMware/物理サーバー** | **Hyper-V (VMM あり/なし)** |
 --- | --- |
-64 ビット Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/>*Windows Server 2016* - VMware VM および物理サーバーでは現在サポートされていません。 <br/><br/> Red Hat Enterprise Linux: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3 <br/><br/>CentOS : 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(レプリケートするマシンの SLES 11 SP3 から SLES 11 SP4 へのアップグレードはサポートされていません。 レプリケートされるマシンが SLES 11SP3 から SLES 11 SP4 にアップグレードされた場合は、アップグレード後にレプリケーションを無効にし、再度マシンを保護する必要があります。) | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS
+64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)\*、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3 <br/><br/>CentOS : 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(レプリケートするマシンの SLES 11 SP3 から SLES 11 SP4 へのアップグレードはサポートされていません。 レプリケートされるマシンが SLES 11SP3 から SLES 11 SP4 にアップグレードされた場合は、アップグレード後にレプリケーションを無効にし、再度マシンを保護する必要があります。) | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS
 
+>[!NOTE]
+>
+> \* Windows Server 2016 の Nano Server はサポートされていません。
 
 >[!IMPORTANT]
 >(Azure にレプリケートする VMware/物理サーバーに適用されます)
@@ -85,8 +88,10 @@ ms.lasthandoff: 10/11/2017
 14.04 LTS | 9.9 | 3.13.0-24-generic ～ 3.13.0-117-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-75-generic |
 14.04 LTS | 9.10 | 3.13.0-24-generic ～ 3.13.0-121-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-generic ～ 3.13.0-128-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-91-generic、 |
+14.04 LTS | 9.12 | 3.13.0-24-generic ～ 3.13.0-132-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-96-generic |
 16.04 LTS | 9.10 | 4.4.0-21-generic ～ 4.4.0-81-generic、<br/>4.8.0-34-generic ～ 4.8.0-56-generic、<br/>4.10.0-14-generic ～ 4.10.0-24-generic |
 16.04 LTS | 9.11 | 4.4.0-21-generic ～ 4.4.0-91-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-32-generic |
+16.04 LTS | 9.12 | 4.4.0-21-generic ～ 4.4.0-96-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-35-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Linux (VMware/物理サーバー) でサポートされるファイル システムおよびゲスト ストレージ構成
 
@@ -168,7 +173,8 @@ NFS | なし | 該当なし
 SMB 3.0 | なし | なし
 RDM | はい<br/><br/> 物理サーバー = 該当なし | 該当なし
 1 TB より大きいディスク | あり<br/><br/>最大 4095 GB | あり<br/><br/>最大 4095 GB
-4K セクター サイズのディスク | あり | あり、Generation 1 VM の場合にサポートされます<br/><br/>Generation 2 VM の場合はサポートされません
+4K 論理および 4K 物理セクター サイズのディスク | あり | Generation 1 VM の場合はサポートされません<br/><br/>Generation 2 VM の場合はサポートされません
+4K 論理および 512 バイトの物理セクター サイズのディスク | あり |  あり
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM 論理ボリュームの管理 | はい | はい
 記憶域 | なし | あり
 ディスクのホット アド/削除 | なし | いいえ
@@ -227,10 +233,10 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 
 **名前** | **説明** | **最新バージョン** | **詳細**
 --- | --- | --- | --- | ---
-**Azure Site Recovery プロバイダー** | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> オンプレミスの Virtual Machine Manager サーバー、または Virtual Machine Manager サーバーが存在しない場合は HYPER-V サーバーにインストールされます | 5.1.19 ([ポータルから使用可能](http://aka.ms/downloaddra)) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
-**Azure Site Recovery の統合セットアップ (VMware から Azure)** | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 9.3.4246.1 (ポータルから使用可能) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
-**モビリティ サービス** | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます  | 該当なし (ポータルから使用可能) | 該当なし
-**Microsoft Azure Recovery Services (MARS) エージェント** | Hyper-V VM と Azure の間のレプリケーションを調整します<br/><br/> オンプレミスの Hyper-V サーバーにインストールされます (Virtual Machine Manager サーバーの有無にかかわらず) | 最新のエージェント ([ポータルから使用可能](http://aka.ms/latestmarsagent)) |
+**Azure Site Recovery プロバイダー** | オンプレミスのサーバーと Azure の間の通信を調整します <br/><br/> オンプレミスの Virtual Machine Manager サーバー、または Virtual Machine Manager サーバーが存在しない場合は HYPER-V サーバーにインストールされます | 5.1.2700.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
+**Azure Site Recovery の統合セットアップ (VMware から Azure)** | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 9.12.4653.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
+**モビリティ サービス** | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます  | 9.12.4653.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
+**Microsoft Azure Recovery Services (MARS) エージェント** | Hyper-V VM と Azure の間のレプリケーションを調整します<br/><br/> オンプレミスの Hyper-V サーバーにインストールされます (Virtual Machine Manager サーバーの有無にかかわらず) | 最新のエージェント (ポータルから入手可能) |
 
 
 

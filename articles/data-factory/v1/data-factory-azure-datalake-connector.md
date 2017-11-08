@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 811a2538f0a138074feea1bd4608a7ba00660fd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f74a953d04e8633e802b33903de603b39ac08e9b
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Data Factory を使用して Data Lake Store との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -84,9 +84,11 @@ Data Lake Store コネクタは、以下の認証の種類に対応していま�
 * アプリケーション キー 
 * テナント ID
 
-> [!IMPORTANT]
-> コピー ウィザードを使ってデータ パイプラインを作成する場合は、サービス プリンシパルに、Data Lake Store アカウントに対するアクセス制御 (ID とアクセス管理) で少なくとも**閲覧者**ロールを付与します。 また、Data Lake Store ルート ("/") とその子に対する少なくとも**読み取り + 実行**アクセス許可をサービス プリンシパルに付与します。 付与しないと、"指定された資格情報が無効です" というメッセージが表示されることがあります。<br/><br/>
-Azure AD でサービス プリンシパルを作成または更新した後、その変更が有効になるまでに数分かかる場合があります。 サービス プリンシパルおよび Data Lake Store のアクセス制御リスト (ACL) の構成を確認してください。 "指定された資格情報が無効です" というメッセージが引き続き表示される場合は、しばらく待ってからやり直してください。
+> [!TIP]
+> Azure Data Lake Store でサービス プリンシパルに適切なアクセス許可を付与してください。
+>- コピー ウィザードを使用してパイプラインを作成する場合は、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 また、Data Lake Store ルート ("/") とその子に対する少なくとも**読み取り + 実行**アクセス許可を付与します。 付与しないと、"指定された資格情報が無効です" というメッセージが表示されることがあります。
+>- Data Lake Store をソースとして使用するには、少なくともデータの**読み取り + 実行**アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または**読み取り**アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御に関する要件はありません。
+>- Data Lake Store をシンクとして使用するには、少なくともデータの**書き込み + 実行**アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーの権限を付与する (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、コピー アクティビティで Data Lake Store の場所を使用して [executionLocation を指定](data-factory-data-movement-activities.md#global)します。
 
 次のプロパティを指定して、サービス プリンシパル認証を使います。
 

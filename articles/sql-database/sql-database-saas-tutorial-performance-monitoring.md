@@ -10,17 +10,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: f05e769a8c5d26c0149dcba05c0973de4bd30313
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 1509a4f05ceb3a54aad790553183616c97b4bee2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
@@ -204,16 +204,19 @@ Wingtip は SaaS アプリです。SaaS アプリに対する実際の負荷は�
 1. **F5** を使用して、スクリプトを実行します。
 
 
-1. [Azure ポータル](https://portal.azure.com)で **Pool1** を開きます。
+1. [Azure Portal](https://portal.azure.com) で、*tenants1* サーバー上のデータベースの一覧を参照します。 
+1. **contosoconcerthall** データベースをクリックします。
+1. **contosoconcerthall** が含まれるプールをクリックします。 **[エラスティック データベース プール]** セクションでプールを検索します。
+
 1. **弾力性プールの監視**グラフを検査し、プールの eDTU 使用の増加を探します。 数分後にさらに高い負荷が発生し、プール使用率がすぐに 100% に達します。
-1. **[弾力性データベースの監視]** を検査します。これは、過去 1 時間で最も使用率が高いデータベースを示しています。 すぐに *contosoconcerthall* データベースが最も使用率が高い 5 つのデータベースの 1 つとして表示されます。
-1. **[弾力性データベースの監視]** **グラフ**をクリックすると、**[データベース リソースの使用率]** ページが開きます。このページでは、データベースを監視できます。 これにより、*contosoconcerthall* データベースの表示を切り離すことができます。
-1. データベースの一覧から **contosoconcerthall** をクリックします。
-1. **[価格レベル (DTU のスケール)]** をクリックして **[パフォーマンスの構成]** ページを開きます。ここでは、データベースのスタンドアロンのパフォーマンス レベルを設定できます。
-1. **[Standard]** タブをクリックして、Standard レベルのスケール オプションを開きます。
-1. **DTU スライダー**を右に移動して、**100** DTU を選択します。 これは、サービス目標 **S3** に対応します。
-1. **[適用]** をクリックして、プールからデータベースを移動し、*Standard S3* データベースに設定します。
-1. スケーリングが完了したら、contosoconcerthall データベースに対する効果と、エラスティック プールとデータベース ブレード上の Pool1 に対する効果を監視します。
+2. **[弾力性データベースの監視]** を検査します。これは、過去 1 時間で最も使用率が高いデータベースを示しています。 すぐに *contosoconcerthall* データベースが最も使用率が高い 5 つのデータベースの 1 つとして表示されます。
+3. **[弾力性データベースの監視]** **グラフ**をクリックすると、**[データベース リソースの使用率]** ページが開きます。このページでは、データベースを監視できます。 これにより、*contosoconcerthall* データベースの表示を切り離すことができます。
+4. データベースの一覧から **contosoconcerthall** をクリックします。
+5. **[価格レベル (DTU のスケール)]** をクリックして **[パフォーマンスの構成]** ページを開きます。ここでは、データベースのスタンドアロンのパフォーマンス レベルを設定できます。
+6. **[Standard]** タブをクリックして、Standard レベルのスケール オプションを開きます。
+7. **DTU スライダー**を右に移動して、**100** DTU を選択します。 これは、サービス目標 **S3** に対応します。
+8. **[適用]** をクリックして、プールからデータベースを移動し、*Standard S3* データベースに設定します。
+9. スケーリングが完了したら、contosoconcerthall データベースに対する効果と、エラスティック プールとデータベース ブレード上の Pool1 に対する効果を監視します。
 
 contosoconcerthall データベースの高い負荷が落ち着いたら、コストを削減するためにすぐにプールに戻す必要があります。 プールに戻すタイミングがはっきりしない場合は、プールで DTU の使用率がデータベースあたりの最大値を下回ったときに、データベースでアラートが発生するように設定できます。 プールへのデータベースの移動については、演習 5 で説明しています。
 

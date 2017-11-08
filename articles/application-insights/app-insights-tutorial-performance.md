@@ -3,18 +3,18 @@ title: "Azure Application Insights を使用してパフォーマンスに関す
 description: "Azure Application Insights を使用して、アプリケーションのパフォーマンスに関する問題を検出して診断するためのチュートリアルです。"
 services: application-insights
 keywords: 
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/18/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 411e10367f02846261f9fcc7717b5abb147b2c09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1176e6ac33db5b9428a323c3a6271818807afc72
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -35,13 +35,13 @@ Azure Application Insights は、アプリケーションの運用とパフォ�
     - ASP.NET および Web の開発
     - Azure の開発
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。
-- アプリケーションに対する[Application Insights プロファイラーの有効化](app-insights-profiler.md#enable-the-profiler)を実行します。 
+- アプリケーションに対する[Application Insights プロファイラーの有効化](app-insights-profiler.md#enable-the-profiler)を実行します。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
 
-## <a name="identify-slow-server-operations"></a>低速のサーバー操作を識別する 
-Application Insights は、アプリケーションのさまざまな操作に対するパフォーマンスの詳細を収集します。  最も実行時間が長い操作を識別することで、潜在的な問題を診断したり、アプリケーションの全体的なパフォーマンスを向上させるための継続的な開発にとって最善のターゲットを診断したりできます。 
+## <a name="identify-slow-server-operations"></a>低速のサーバー操作を識別する
+Application Insights は、アプリケーションのさまざまな操作に対するパフォーマンスの詳細を収集します。  最も実行時間が長い操作を識別することで、潜在的な問題を診断したり、アプリケーションの全体的なパフォーマンスを向上させるための継続的な開発にとって最善のターゲットを診断したりできます。
 
 1. **[Application Insights]** を選択し、サブスクリプションを選択します。  
 1. **[パフォーマンス]** パネルを開くには、**[調査]** メニューの **[パフォーマンス]** を選択するか、**[サーバー応答時間]** グラフをクリックします。
@@ -59,14 +59,14 @@ Application Insights は、アプリケーションのさまざまな操作に�
 4.  パネルの右側にそのパフォーマンスを表示する操作をクリックします。 これにより、さまざまな要求の実行時間の分布が表示されます。  通常、ユーザーは、約 0.5 秒でパフォーマンスが低下したことに気付くため、要求に対する時間枠を 500 ミリ秒に狭めます。  
 
     ![実行時間の分布](media/app-insights-tutorial-performance/duration-distribution.png)
-  
+
 5.  この例では、かなりの数の要求で、その処理時間が 1 秒を超えていることがわかります。 **[操作の詳細]** をクリックすることで、この操作の詳細を確認できます。
 
     ![操作の詳細](media/app-insights-tutorial-performance/operation-details.png)
-    
+
 6.  ここまでに収集した情報は、パフォーマンスの低下があることを確認しているだけであり、根本的原因を突き止めるためにはほとんど役に立っていません。  **プロファイラー**は、操作を実行するために使用された実際のコードと、各ステップを実行するために要求された時間を示すことで、これを支援します。 プロファイラーは定期的に実行されるため、一部の操作はトレースされていない場合があります。  時間の経過と共に、より多くの操作がトレースされます。  操作に対してプロファイラーを起動するには、**[プロファイラーのトレース]** をクリックします。
 5.  トレースは、各操作の個別のイベントを示すため、操作全体の実行時間の長さの根本原因を診断できます。  上の例の最も実行時間が長い操作をクリックします。
-6.  **[ホット パスの表示]** をクリックして、操作の実行時間を長くしているイベントの特定のパスを強調表示します。  この例では、リソースのために 2 秒以上待機している例外がスローされていることがわかります。
+6.  **[ホット パスの表示]** をクリックして、操作の実行時間を長くしているイベントの特定のパスを強調表示します。  この例では、最も遅い呼び出しが *FabrikamFiberAzureStorage.GetStorageTableData* メソッドから行われていることがわかります。 ほとんどの時間を費やしている部分は、*CloudTable.CreateIfNotExist* メソッドです。 関数が呼び出されるたびにこのコード行が実行される場合は、不要なネットワークの呼び出しと CPU リソースが消費されます。 コードを修正する最善の方法は、1 回だけ実行する一部のスタートアップ メソッドにこの行を追加することです。 
 
     ![Profiler の詳細](media/app-insights-tutorial-performance/profiler-details.png)
 
@@ -84,25 +84,25 @@ Application Insights Analytics には、Application Insights によって収集�
     ![[Analytics] ボタン](media/app-insights-tutorial-performance/server-analytics-button.png)
 
 2. Application Insights Analytics が、それぞれのビューのクエリと共にパネルに表示されます。  これらのクエリをそのまま実行するか、要件に合わせて変更できます。  最初のクエリは、この操作の一定期間の実行時間を示します。
-    
+
     ![分析](media/app-insights-tutorial-performance/server-analytics.png)
 
 
-## <a name="identify-slow-client-operations"></a>低速のクライアント操作を識別する 
-Application Insights は、最適化するためのサーバー プロセスを識別するだけでなく、クライアント ブラウザーの観点から分析することもできます。  これは、クライアント コンポーネントの潜在的な改善を識別し、複数の場所にあるさまざまなブラウザーの問題を特定するためにも役立ちます。 
+## <a name="identify-slow-client-operations"></a>低速のクライアント操作を識別する
+Application Insights は、最適化するためのサーバー プロセスを識別するだけでなく、クライアント ブラウザーの観点から分析することもできます。  これは、クライアント コンポーネントの潜在的な改善を識別し、複数の場所にあるさまざまなブラウザーの問題を特定するためにも役立ちます。
 
 1. **[調査]** の下の**[ブラウザー]** を選択して、ブラウザーの概要を開きます。  これにより、アプリケーションのさまざまなテレメトリをブラウザーの観点から見た概要が視覚的に表示されます。
 
     ![ブラウザーの概要](media/app-insights-tutorial-performance/browser-summary.png)
- 
+
 2.  **[最も低速なページは何ですか?]** が表示されるまで、下方向にスクロールします。  クライアントが読み込むまでに時間がかかっているアプリケーションのページが一覧表示されます。  この情報を使用して、ユーザーに最も大きな影響を与えているページに優先順位をつけることができます。
 3.  いずれかのページをクリックして、**[ページ ビュー]** パネルを開きます。  この例では、**/FabrikamProd** ページが、過度の平均実行時間を示しています。  このページについての詳細情報が、異なる実行時間の範囲の内訳を含めて **[ページ ビュー]** パネルに表示されます。
 
     ![ページ ビュー](media/app-insights-tutorial-performance/page-view.png)
- 
+
 4.  最大の実行時間をクリックして、それらの要求の詳細を調べます。  次に、個々の要求をクリックして、ページを要求しているクライアントの詳細を表示します (ブラウザーの種類とその場所が含まれます)。  この情報は、特定の種類のクライアントに関連するパフォーマンスの問題があるかどうかを判断する際に役立ちます。
 
-    ![要求の詳細](media/app-insights-tutorial-performance/request-details.png) 
+    ![要求の詳細](media/app-insights-tutorial-performance/request-details.png)
 
 ## <a name="use-analytics-data-for-client"></a>クライアントの分析データを使用する
 Application Insights では、サーバーのパフォーマンス データの収集と同じように、すべてのクライアント データを Analytics を使用した詳細な分析で使用できるようにします。

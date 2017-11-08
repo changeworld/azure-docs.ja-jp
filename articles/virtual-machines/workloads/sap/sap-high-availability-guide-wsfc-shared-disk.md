@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f4b25cdbf1abc0c832ab9454cf68725bef56f19
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: b7706b6f0adce89775f1cb3cffb102510772a101
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 10/27/2017
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -203,7 +203,7 @@ Windows Server フェールオーバー クラスタリングは、Windows で�
 
 ### <a name="name-resolution-in-azure-and-cluster-virtual-host-name"></a>Azure での名前解決とクラスターの仮想ホスト名
 
-Azure クラウド プラットフォームには、フローティング IP アドレスのような仮想 IP アドレスを構成するオプションは用意されていません。 クラウド内のクラスター リソースに到達するために仮想 IP アドレスを設定する別のソリューションが必要となります。 Azure Load Balancer サービスには**内部ロード バランサー**があります。 内部ロード バランサーでは、クライアントはクラスターの仮想 IP アドレスを使用してクラスターにアクセスします。 クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイする必要があります。 その後、内部ロード バランサーのプローブ ポートで必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使用して接続できます。 DNS サーバーがクラスター IP アドレスを解決し、内部ロード バランサーがクラスターのアクティブ ノードへのポート フォワーディングを処理します。
+Azure クラウド プラットフォームには、フローティング IP アドレスのような仮想 IP アドレスを構成するオプションは用意されていません。 クラウド内のクラスター リソースに到達するために仮想 IP アドレスを設定する別のソリューションが必要となります。 Azure Load Balancer サービスには**内部ロード バランサー**があります。 内部 Load Balancer では、クライアントはクラスターの仮想 IP アドレスを使用してクラスターにアクセスします。 クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイする必要があります。 その後、内部ロード バランサーのプローブ ポートで必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使用して接続できます。 DNS サーバーがクラスター IP アドレスを解決し、内部ロード バランサーがクラスターのアクティブ ノードへのポート フォワーディングを処理します。
 
 ![図 1: 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
 

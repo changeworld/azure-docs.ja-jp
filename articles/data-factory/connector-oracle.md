@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: ad9807fc72e3a6e0a6d3916d2d9e042af1fa83ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5d6cf07c52920a795c42e7f3578b1666a86d3c5
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>Azure Data Factory を使用して Oracle コピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
 Oracle データベースからサポートされる任意のシンク データ ストアにデータをコピーしたり、サポートされる任意のソース データ ストアから Oracle データベースにデータをコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この Oracle コネクタは、次のバージョンの Oracle データベースをサポートします。
+具体的には、この Oracle コネクタは、次のバージョンの Oracle データベースをサポートします。さらに、基本認証または OID 認証もサポートします。
 
     - Oracle 12c R1 (12.1)
     - Oracle 11g R1、R2 (11.1、11.2)

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 31c4fc5b606bf96cec8c508f4a0ff7ecbaeae38a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8767073bb7a6723088bb2727346d23ec8872cd1
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージ サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
@@ -37,12 +37,12 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * 自動スケールの設定を表示する。
 * アラート アクティビティと設定を表示する。
 * Application Insights データにアクセスし、AI Analytics のデータを表示する。
-* ワークスペースの使用状況データなど、Log Analytics (OMS) ワークスペースのデータを検索する。
-* Log Analytics (OMS) 管理グループを表示する。
-* Log Analytics (OMS) 検索スキーマを取得する。
-* Log Analytics (OMS) インテリジェンス パックを一覧表示する。
-* Log Analytics (OMS) に保存された検索を取得および実行する。
-* Log Analytics (OMS) ストレージ構成を取得する。
+* ワークスペースの使用状況データなど、Log Analytics ワークスペースのデータを検索する。
+* Log Analytics 管理グループを表示する。
+* Log Analytics 検索スキーマを取得する。
+* Log Analytics インテリジェンス パックを一覧表示する。
+* Log Analytics に保存された検索を取得および実行する。
+* Log Analytics ストレージ構成を取得する。
 
 > [!NOTE]
 > この役割では、イベント ハブにストリーミングされたログ データ、またはストレージ アカウントに保存されたログ データへの読み取りアクセス権は付与されません。 [以下を参照](#security-considerations-for-monitoring-data) してください。
@@ -57,10 +57,10 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * サブスクリプションの[ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)を設定する。*
 * アラート アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
-* Log Analytics (OMS) ワークスペースの共有キーを一覧表示する。
-* Log Analytics (OMS) インテリジェンス パックを有効または無効にする。
-* Log Analytics (OMS) に保存された検索を作成および削除する。
-* Log Analytics (OMS) ストレージ構成を作成および削除する。
+* Log Analytics ワークスペースの共有キーを一覧表示する。
+* Log Analytics インテリジェンス パックを有効または無効にする。
+* Log Analytics に保存された検索を作成および削除する。
+* Log Analytics ストレージ構成を作成および削除する。
 
 *診断設定またはログ プロファイルを設定するには、ターゲット リソース (ストレージ アカウントまたはイベント ハブ名前空間) で、ListKeys アクセス許可がユーザーに対して個別に付与されている必要があります。
 
