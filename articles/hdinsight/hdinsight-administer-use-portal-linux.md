@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: ashishtha
-ms.openlocfilehash: d08a9a7cc82095b0a90abd98bd4f6d13cdadb671
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 704d76808fbc5f7bde98d2fca291ac7c2796db88
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
 
@@ -163,7 +163,7 @@ NoRegisteredProviderFound エラーまたは MissingSubscriptionRegistration エ
     >balancer
     ```
 
-    HBase シェルの使用の詳細については、「[HDInsight で Apache HBase の例を使用する](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
+    HBase シェルの使用の詳細については、「[HDInsight で Apache HBase の例を使用する](hbase/apache-hbase-tutorial-get-started-linux.md)」を参照してください。
 
 * Storm
 
@@ -209,7 +209,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 * Azure Data Factory を使用する。 オンデマンドの HDInsight がリンクされたサービスを作成する詳細については、「 [Azure Data Factory を使用した HDInsight でのオンデマンドの Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-adf.md) 」を参照してください。
 * Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
 * Azure CLI を使用する。 「 [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)」をご覧ください。
-* HDInsight .NET SDK を使用する。 「 [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」をご覧ください。
+* HDInsight .NET SDK を使用する。 「 [HDInsight での Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)」をご覧ください。
 
 価格情報については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。 ポータルからクラスターを削除する方法については、「[クラスターの削除](#delete-clusters)
 
@@ -233,7 +233,7 @@ Ambari Web UI を使用してクラスターのユーザー パスワードを�
 >
 
 1. HDInsight クラスター ユーザーの資格情報を使用して Ambari Web UI にサインインします。 既定のユーザー名は **admin**です。URL は **https://&lt;HDInsight Cluster Name>azurehdinsight.net** です。
-2. 上部のメニューの **Admin** をクリックしてから Ambari の管理をクリックします。
+2. 上部のメニューの **[Admin]** をクリックしてから [Ambari の管理] をクリックします。
 3. 左側のメニューで **[ユーザー]**をクリックします。
 4. **[Admin]**をクリックします。
 5. **[パスワードの変更]**をクリックします。
@@ -341,7 +341,7 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 
 ## <a name="connect-to-a-cluster"></a>クラスターへの接続
 
-* [HDInsight での Hive の使用](hdinsight-hadoop-use-hive-ambari-view.md)
+* [HDInsight での Hive の使用](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>次のステップ
@@ -353,10 +353,10 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 * [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
 * [Ambari Web UI の使用に関する詳細](hdinsight-hadoop-manage-ambari.md)
 * [Ambari REST API の使用に関する詳細](hdinsight-hadoop-manage-ambari-rest-api.md)
-* [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での Sqoop の使用](hdinsight-use-sqoop.md)
-* [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での Sqoop の使用](hadoop/hdinsight-use-sqoop.md)
+* [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com

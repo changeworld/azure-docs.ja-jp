@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 06/13/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 174ab97ac14f4c05690306691df5ee4b6d33dd93
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a3c9422887592c29c2eae8bd75cf960865808fd
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-storage-delete-errors-in-resource-manager-deployment"></a>Resource Manager デプロイメントでのストレージ削除エラーをトラブルシューティングする
 この記事は、Azure Resource Manager デプロイメントで Azure Storage アカウント、コンテナー、または BLOB を削除しようとしたときに次のいずれかのエラーが発生した場合のトラブルシューティングのガイダンスを提供します。
@@ -101,7 +101,7 @@ VHD がデータ ディスクの場合、リースを削除するには VHD を 
 
      ![ストレージの [BLOB のメタデータ] ウィンドウが開かれている Portal のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/utd-vm-disks-edit.png)
 
-9. [ **保存**] を選択します。 ディスクが VM から切断され、VHD のリースは解除されます。 リースが解除されるまで数分かかる場合があります。 リースが解除されたことを確認するには、BLOB の場所の **[BLOB のプロパティ]** ウィンドウで、**[リース ステータス]** の値が **[ロック解除]** または **[利用可能]** になっていることを確認します。
+9. **[ 保存]** を選択します。 ディスクが VM から切断され、VHD のリースは解除されます。 リースが解除されるまで数分かかる場合があります。 リースが解除されたことを確認するには、BLOB の場所の **[BLOB のプロパティ]** ウィンドウで、**[リース ステータス]** の値が **[ロック解除]** または **[利用可能]** になっていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 前に失敗したストレージ オブジェクトの削除をもう一度試してください。

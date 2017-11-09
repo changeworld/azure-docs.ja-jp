@@ -3,7 +3,7 @@ title: "管理者によるユーザーとデバイスの管理 - Azure MFA | Mic
 description: "ここでは、追加のセキュリティ確認を強制するなど、ユーザー設定を変更する方法について説明します。"
 documentationcenter: 
 services: multi-factor-authentication
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: aac3b922-7cc1-428c-9044-273579aa7b5a
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.openlocfilehash: e9b8504d4a59cf0fae69a4e975d6f834028066d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 167359892cd46a5d2d4f961ed50d3a807eb14f6c
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
 管理者は、ユーザーとデバイスの次の設定を管理できます。

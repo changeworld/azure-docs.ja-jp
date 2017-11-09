@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 10/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3815ce9879379c07204ce1294dc0fe55bd9ede53
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bbae79e59a200897f465e1381fea57a7ecde3f1
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

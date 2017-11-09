@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 3b8038b716266326967e2cf178efe4d36f4badc5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3c83645f61cd42c8c2b46f787c9e7531726d3fbb
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -69,7 +69,7 @@ SQL Database は、暗号化によってデータを保護します。移動中�
 
 認証プロセスでは、TLS/SSL クライアントから TLS/SSL サーバーにメッセージが送信され、サーバーはサーバー自体の認証に必要な情報を使用してそれに応答します。 クライアントとサーバーはさらにセッション キーの交換を行い、認証ダイアログが終了します。 認証が完了すると、認証プロセス中に設定された対称暗号化キーを使用し、サーバーとクライアントの間で SSL により保護された通信を開始することができます。
 
-データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 SQL Azure では、TLS/SSL を使用してサーバーとクライアントを認証し、その後は認証済みの関係者間で送受信されるメッセージを暗号化します。 アプリケーションの接続文字列内に、接続を暗号化し、サーバーの証明書を信頼しないようにするパラメーターを指定する必要があります (Azure クラシック ポータルから接続文字列をコピーすると、この操作は自動的に実行されます)。この操作を実行しないと、接続時にサーバーの ID が検証されず、"man-in-the-middle" 攻撃を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、Encrypt=True および TrustServerCertificate=False です。
+データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 SQL Azure では、TLS/SSL を使用してサーバーとクライアントを認証し、その後は認証済みの関係者間で送受信されるメッセージを暗号化します。 アプリケーションの接続文字列内に、接続を暗号化し、サーバーの証明書を信頼しないようにするパラメーターを指定する必要があります (Azure Portal から接続文字列をコピーすると、この操作は自動的に実行されます)。この操作を実行しないと、接続時にサーバーの ID が検証されず、"man-in-the-middle" 攻撃を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、Encrypt=True および TrustServerCertificate=False です。
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 セキュリティで保護されたシステムの設計、機密資産の暗号化、データベース サーバーに対するファイアウォールの構築などの、データベースを保護するいくつかの対策を講じることができます。 ただし、物理メディア (ドライブやバックアップ テープなど) が盗まれるシナリオでは、悪意のある第三者がデータベースを復元するかアタッチするだけでデータを閲覧することができます。

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 10/27/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 8398af10d4826373e16420be3309c6ae8246ca4b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: a8b9efffd6373ee33026e915b0a14e15d41295b3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 
@@ -46,30 +46,30 @@ ms.lasthandoff: 10/11/2017
 データ サイエンスのハッカーソンや競技または大規模なデータ モデリングと探索では、スケールアウトしたハードウェア容量が通常は短期間に必要になります。 データ サイエンス VM は、高性能コンピューティング リソースを実行する必要がある実験を可能にするスケールアウトされたサーバー上で、必要に応じて迅速にデータ サイエンス環境を複製できます。
 
 ### <a name="short-term-experimentation-and-evaluation"></a>短期的な実験と評価
-データ サイエンス VM は、Microsoft R Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 データ サイエンス VM は迅速にセットアップできるので、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルなど、他の短期的な使用シナリオに適用できます。
+データ サイエンス VM は、Microsoft ML Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 データ サイエンス VM は迅速にセットアップできるので、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルなど、他の短期的な使用シナリオに適用できます。
 
 ### <a name="deep-learning"></a>ディープ ラーニング
 データ サイエンス VM は、GPU (グラフィック処理装置) ベースのハードウェアで、ディープ ラーニング アルゴリズムを使用したトレーニング モデルに使用できます。 DSVM では、Azure クラウドの VM スケーリング機能を利用すると、必要に応じてクラウド上で GPU ベースのハードウェアを使用できます。 同じ OS ディスクを保持しつつ、大規模モデルをトレーニングするときまたは高速計算が必要なときに GPU ベースの VM に切り替えることができます。  Windows Server 2016 エディションの DSVM には、GPU ドライバー、フレームワーク、および GPU バージョンのディープ ラーニング アルゴリズムが事前インストールされています。 Linux では、GPU のディープ ラーニングは [Linux (Ubuntu) エディション用のデータ サイエンス仮想マシン](http://aka.ms/dsvm/ubuntu)でのみ有効です。 データ サイエンス VM の Ubuntu/Windows-2016 エディションは GPU ベースでない Azure 仮想マシンにデプロイできます。その場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックします。 以前、Windows Server 2012 用に[ディープ ラーニング ツールキット](http://aka.ms/dsvm/deeplearning)を公開しましたが、Windows ベースのディープ ラーニング ワークロードには Windows Server 2016 を使うことをお勧めします。 DSVM の CentOS ベースの Linux エディションには、一部のディープ ラーニング ツール (Microsoft Cognitive Toolkit、TensorFlow、MXNet) の CPU ビルドのみが含まれていますが、GPU ドライバーやフレームワークがプレインストールされていません。 
 
 ## <a name="whats-included-in-the-data-science-vm"></a>データ サイエンス VM に含まれるもの
-データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Azure のさまざまなデータおよび分析製品を簡単に使用できるようにするツールも含まれます。 Microsoft R Server または SQL Server 2016 を使って、大規模なデータ セットに対する予測モデルを研究および構築できます。 オープン ソース コミュニティや Microsoft の他のツールのホスト、およびサンプル コードとノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
+データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Azure のさまざまなデータおよび分析製品を簡単に使用できるようにするツールも含まれます。 Microsoft ML Server (R、Python) または SQL Server 2017 を使って、大規模なデータ セットに対する予測モデルを研究および構築できます。 オープン ソース コミュニティや Microsoft の他のツールのホスト、およびサンプル コードとノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
 
 
 | **ツール**                                                           | **Windows エディション** | **Linux エディション** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|
 | 人気のパッケージがプレインストールされた [Microsoft R Open](https://mran.microsoft.com/open/)   |Y                      | Y             |
-| [Microsoft R Server](https://msdn.microsoft.com/microsoft-r/) Developer エディションには次のものが含まれます。 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-getting-started) 並列および分散ハイパフォーマンス R フレームワーク<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://msdn.microsoft.com/microsoft-r/microsoftml-introduction) - Microsoft の新しい最先端 ML アルゴリズム <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R の運用化](https://msdn.microsoft.com/microsoft-r/operationalize/about)                                            |Y                      | Y <br/> (MicrosoftML はまだ使用できません)|
+| [Microsoft ML Server (R、Python)](https://docs.microsoft.com/machine-learning-server/) Developer エディションには次のものが含まれます。 <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [RevoScaleR/revoscalepy](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) の並列および分散型の高機能フレームワーク (R および Python)<br />  &nbsp;&nbsp;&nbsp;&nbsp;* [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package) - Microsoft の新しい最先端 ML アルゴリズム <br />  &nbsp;&nbsp;&nbsp;&nbsp;* [R および Python の運用化](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |Y                      | Y |
 | [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus (共有アクティベーション付き) - Excel、Word および PowerPoint   |Y                      |N              |
 | 人気のパッケージがプレインストールされた [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | Julia 言語用の人気のパッケージがプレインストールされた [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
-| リレーショナル データベース                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) (CentOS のみ) |
+| リレーショナル データベース                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) (CentOS のみ) |
 | データベース ツール                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp、sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC ドライバー| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (クエリ ツール)、 <br /> * bcp、sqlcmd <br /> * ODBC/JDBC ドライバー|
-| SQL Server R サービスによるスケーラブルなデータベース内分析 | Y     |N              |
+| SQL Server ML サービス (R、Python) によるスケーラブルなデータベース内分析 | Y     |N              |
 | 次のカーネルを備えた **[Jupyter Notebook Server](http://jupyter.org/)**                                  | Y     | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python 2.7 および 3.5 | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Y | Y |
-|     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | N | Y |
+|     &nbsp;&nbsp;&nbsp;&nbsp;* PySpark | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) | N | Y (Ubuntu のみ) |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* SparkR     | N | Y |
 | JupyterHub (マルチ ユーザー Notebook サーバー)| N | Y |

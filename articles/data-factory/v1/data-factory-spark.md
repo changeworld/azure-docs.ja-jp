@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 3690b5f62d8384d255d420946f6ac1cfd47b9317
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5220ca664d5c7584f3aada0bb707099f91d5650f
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -34,6 +34,9 @@ ms.lasthandoff: 10/11/2017
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での Spark アクティビティを使用したデータ変換](../transform-data-using-spark.md)についてのページを参照してください。
 
 ## <a name="introduction"></a>はじめに
 Spark アクティビティは、Azure Data Factory でサポートされる[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 1 つです。 このアクティビティでは、指定された Spark プログラムが Azure HDInsight の Apache Spark クラスターで実行されます。    

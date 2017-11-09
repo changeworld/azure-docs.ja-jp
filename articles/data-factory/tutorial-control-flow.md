@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shlo
-ms.openlocfilehash: de131fe912fd61a45af943db876ab0510ef0d57e
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 8a51ba22c6fea7a866815c33d164d72af08db8f0
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -101,7 +101,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     using Microsoft.Azure.Management.DataFactory.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-2. Add these static variables to the **Program class**. Replace place-holders with your own values.
+2. Add these static variables to the **Program class**. Replace place-holders with your own values. Currently, Data Factory V2 allows you to create data factories only in the East US, East US2, and West Europe regions. The data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by data factory can be in other regions.
 
     ```csharp
         // Set variables
@@ -111,8 +111,6 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
         static string subscriptionId = "<Azure subscription ID>";
         static string resourceGroup = "<Azure resource group name>";
 
-        // Note that the data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by data factory can be in other regions.
-        // Currently, only East US and East US 2 regions are supported. 
         static string region = "East US";
         static string dataFactoryName = "<Data factory name>";
 

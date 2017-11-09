@@ -4,6 +4,8 @@
   items:
     - name: Event Grid について
       href: overview.md
+    - name: メッセージング サービスの比較
+      href: compare-messaging-services.md
 - name: クイック スタート
   items:
     - name: Blob Storage イベントのルーティング - Azure CLI

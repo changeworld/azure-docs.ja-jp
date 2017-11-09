@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 990215d9e82b67256363ff195d2af9a91dc0706a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d997c291e487e27b7e12c015e34ad839ac020151
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -103,7 +103,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 1. Azure Portal で、Web アプリに移動します。
 3. **[すべての設定]** > **[診断ログ]** を選択します。
 4. **[失敗した要求トレース]** の **[On] \(オン)** を選択します。
-5. [ **保存**] を選択します。
+5. **[ 保存]** を選択します。
 6. Web アプリ ブレードで **[ツール]** を選択します。
 7. **[Visual Studio Online]** を選択します。
 8. 設定が **[On] \(オン)** でない場合は、**[On] \(オン)** を選択します。

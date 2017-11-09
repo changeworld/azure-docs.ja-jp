@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 730917b6859f8dbd800ef2cb141062f45d7779ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4a53d053a4c792f54e215c19a8f0c4064815839
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装
  
@@ -207,7 +207,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 ASP.NET MVC プレーヤー アプリ用に Azure Active Directory を設定する詳細な手順については、「 [Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT クレームに基づいてコンテンツ キーの配信を制限する](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)」を参照してください。
 
-また、「[JWT token Authentication in Azure Media Services and Dynamic Encryption (Azure Media Services と動的暗号化における JWT トークン認証)](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」および [Azure AD と Azure Media Services キー配信の統合のサンプル](https://github.com/AzureMediaServicesSamples/Key-delivery-with-AAD-integration/)も参照してください。
+また、「[JWT token Authentication in Azure Media Services and Dynamic Encryption (Azure Media Services と動的暗号化における JWT トークン認証)](http://gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」および  
 
 Azure Active Directory については以下を参照してください。
 

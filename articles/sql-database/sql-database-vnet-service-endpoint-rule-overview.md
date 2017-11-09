@@ -13,20 +13,27 @@ ms.custom: VNet Service endpoints
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 10/13/2017
+ms.workload: On Demand
+ms.date: 10/30/2017
 ms.author: genemi
-ms.openlocfilehash: b15727ae6c7b4d0f1595d506cb8d0f66ec3abfe4
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 69059b6169e1fac4d0abea2770b0de502f816113
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
 *仮想ネットワーク規則*は、Azure SQL Database サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database への通信を安全に許可するための最善の選択になる理由を説明します。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
+
+
+> [!NOTE]
+> Azure SQL Database の場合、この機能は次の Azure リージョンのプレビューで利用できます。
+>
+> - WestCentralUS、WestUS2、および EastUS。
+
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>仮想ネットワーク規則の作成方法
 

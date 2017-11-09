@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/11/2017
 ms.author: larryfr
-ms.openlocfilehash: 574ccaa8b2d9448a60ddf8adc7f92fa3683b1d61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53db03029ffca724638871b22a12dfa7f160fc64
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
 
@@ -29,7 +29,7 @@ Hortonworks サンドボックスを使用すると、ローカルの開発環�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 開発環境の仮想マシンで実行されている Hortonworks サンドボックス。 このドキュメントの執筆とテストには、Oracle VirtualBox で実行されたサンドボックスを使用しています。 サンドボックスをセットアップする方法については、[Hortonworks サンドボックスの概要](hdinsight-hadoop-emulator-get-started.md) に関する記事を参照してください。
+* 開発環境の仮想マシンで実行されている Hortonworks サンドボックス。 このドキュメントの執筆とテストには、Oracle VirtualBox で実行されたサンドボックスを使用しています。 サンドボックスをセットアップする方法については、[Hortonworks サンドボックスの概要](hadoop/apache-hadoop-emulator-get-started.md) に関する記事を参照してください。
 
 * Visual Studio 2013、Visual Studio 2015、または Visual Studio 2017 (エディションは任意)。
 
@@ -39,7 +39,7 @@ Hortonworks サンドボックスを使用すると、ローカルの開発環�
 
 ## <a name="configure-passwords-for-the-sandbox"></a>サンドボックスのパスワードを構成する
 
-Hortonworks サンドボックスが実行中であることを確認します。 次に、[Hortonworks サンドボックスの概要](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords)に関する記事の手順に従います。 これにより、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
+Hortonworks サンドボックスが実行中であることを確認します。 次に、[Hortonworks サンドボックスの概要](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords)に関する記事の手順に従います。 これにより、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>サンドボックスにツールを接続する
 

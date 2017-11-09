@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 10/15/2017
 ms.author: maroche
-ms.openlocfilehash: 001d80ce42f0e87276e59d70dffb75eb561d96cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce40c90af65a8872db61ee01f99200d75fc78053
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データ ソースを操作する方法
 ## <a name="introduction"></a>はじめに

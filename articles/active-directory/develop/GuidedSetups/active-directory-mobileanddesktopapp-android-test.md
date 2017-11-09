@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 6df64f4820f8409bd8897d5ac24f81bffeeef102
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b59c44e351c3b3aa74557d0d1625495277b1bc1a
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -45,3 +45,5 @@ ms.lasthandoff: 10/11/2017
 Microsoft Graph API は、ユーザーのプロファイルを読み込むためにスコープ `user.read` を必要とします。 このスコープは既定では、登録ポータルに登録されるすべてのアプリケーションで自動的に追加されます。 バックエンド サーバーのカスタム API に加え、他のいくつかの Microsoft Graph API は、場合によっては、追加のスコープを必要とします。 たとえば、Microsoft Graph の場合、ユーザーの予定表を一覧表示するにはスコープ `Calendars.Read` が必要です。 アプリケーションのコンテキストでユーザーの予定表にアクセスするには、委任されたアクセス許可 `Calendars.Read` をアプリケーション登録の情報に追加し、`acquireTokenSilentAsync` 呼び出しにスコープ `Calendars.Read` を追加する必要があります。 スコープの数を増やすと、ユーザーは追加で同意を求められる可能性があります。
 
 <!--end-collapse-->
+
+[!INCLUDE  [Help and Support Options](../../../../includes/active-directory-develop-help-support-include.md)]

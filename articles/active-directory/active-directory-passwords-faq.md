@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: fda60c9dfde64c526ad4cbf7fc4ccc5b56becafb
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 53075d20aff073ff46dcd6dccaefea5fc8ec3483
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -237,7 +237,7 @@ ms.lasthandoff: 10/25/2017
   >
 * **Q: オンプレミスのアカウントが無効にされている場合、クラウド アカウント/アクセスにどのような影響がありますか。**
 
-  > **A:**オンプレミスの ID が無効にされている場合、AAD Connect 経由の次回の同期間隔 (既定で 30 分間隔) で、クラウド ID/アクセスも無効になります。
+  > **A:** オンプレミスの ID が無効にされている場合、AAD Connect 経由の次回の同期間隔 (既定で 30 分間隔) で、クラウド ID/アクセスも無効になります。
   >
   >
 * **Q: オンプレミスのアカウントがオンプレミスの Active Directory パスワード ポリシーによって制約されている場合に、パスワードを変更すると、SSPR はこのポリシーに従いますか。**
@@ -263,15 +263,14 @@ ms.lasthandoff: 10/25/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
-
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
-* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します
-* [**パスワード ライトバック**](active-directory-passwords-writeback.md) - オンプレミスのディレクトリでのパスワード ライトバックのしくみ
-* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
+* [ライセンスに関する質問。](active-directory-passwords-licensing.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
+* [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)

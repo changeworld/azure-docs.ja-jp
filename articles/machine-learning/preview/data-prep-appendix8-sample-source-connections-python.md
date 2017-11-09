@@ -1,6 +1,6 @@
 ---
 title: "Azure Machine Learning データ準備で可能な追加ソース データベース接続の例 | Microsoft Docs"
-description: "このドキュメントでは、Azure ML データ準備ツールで可能なソース データベース接続ー式の例を示します"
+description: "このドキュメントでは、Azure Machine Learning データ準備ツールで可能なソース データの接続の例を示します"
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -12,31 +12,31 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 550cca100314009f63eec2136e8c65426d8bf07f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9aaf4329b25cb189146949afed89cf15619ba592
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sample-of-custom-source-connections-python"></a>カスタム ソース接続のサンプル (Python) 
-この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事を参照してください
+この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事をご覧ください。
 
-## <a name="loading-data-from-dataworld"></a>data.world からのデータの読み込み
+## <a name="load-data-from-dataworld"></a>data.world からデータを読み込む
 
 ### <a name="prerequisites"></a>前提条件
 
 #### <a name="register-yourself-at-dataworld"></a>data.world に登録します
-API トークンを、data.world Web サイトから取得する必要があります。
+data.world Web サイトからの API トークンが必要です。
 
 #### <a name="install-dataworld-library"></a>data.world ライブラリをインストールする
 
-_[ファイル] -> [Open command-line interface] \(コマンド ライン インターフェイスを開く)_ から、Azure Machine Learning ワークベンチのコマンド ライン インターフェイスを開きます
+**[ファイル]** > **[Open command-line interface]\(コマンド ライン インターフェイスを開く\)** を選択して、Azure Machine Learning ワークベンチのコマンド ライン インターフェイスを開きます。
 
 ```console
 pip install git+git://github.com/datadotworld/data.world-py.git
 ```
 
-コマンド ラインで `dw configure` を実行します。トークンが求められます。 トークンを入力すると、ホーム ディレクトリに .dw/ ディレクトリが作成され、トークンがそこに格納されます。
+次に、コマンド ラインで `dw configure` を実行します。トークンが求められます。 トークンを入力すると、ホーム ディレクトリに .dw/ ディレクトリが作成され、トークンがそこに格納されます。
 
 ```
 API token (obtained at: https://data.world/settings/advanced): <enter API token here>
@@ -45,24 +45,24 @@ API token (obtained at: https://data.world/settings/advanced): <enter API token 
 
 #### <a name="load-data-into-data-preparation"></a>データ準備にデータを読み込む
 
-新しいスクリプト ベースのデータ フローを作成し、次のスクリプトを使用して、data.world からデータを読み込みます
+新しいスクリプト ベースのデータ フローを作成します。 その後、次のスクリプトを使用して data.world からデータを読み込みます。
 
 ```python
 #paths = df['Path'].tolist()
 
 import datadotworld as dw
 
-#load the dataset
+#Load the dataset.
 lds = dw.load_dataset('data-society/the-simpsons-by-the-data')
 
-#Load specific data frame from the dataset
+#Load specific data frame from the dataset.
 df = lds.dataframes['simpsons_episodes']
 
 ```
 
-## <a name="load-cosmosdb-data-into-data-preparation"></a>データ準備に CosmosDB データを読み込む
+## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>データ準備に Azure Cosmos DB データを読み込む
 
-新しいスクリプト ベースのデータ フローを作成し、次のスクリプトを使用して、CosmosDB からデータを読み込みます (最初にライブラリをインストールする必要があります。上記のリンクの参照ドキュメントを参照してください)
+新しいスクリプト ベースのデータ フローを作成し、次のスクリプトを使用して、Azure Cosmos DB からデータを読み込みます  (先にライブラリをインストールする必要があります。 詳しくは、前述のリンク先の参照ドキュメントをご覧ください)。
 
 ```python
 import pydocumentdb
@@ -77,7 +77,7 @@ config = {
     'DOCUMENTDB_COLLECTION': '<collectionname>'
 };
 
-# Initialize the Python DocumentDB client
+# Initialize the Python DocumentDB client.
 client = document_client.DocumentClient(config['ENDPOINT'], {'masterKey': config['MASTERKEY']})
 
 # Read databases and take first since id should not be duplicated.

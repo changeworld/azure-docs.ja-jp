@@ -29,12 +29,15 @@
       href: concepts-service.md
     - name: セキュリティの概念
       href: concepts-security.md
+    - name: セキュリティ
 - name: ハウツー ガイド
   items:
     - name: デバイス登録の管理
       href: how-to-manage-enrollments.md
     - name: SDK での HSM の使用
       href: use-hsm-with-sdk.md
+    - name: Provisioning Service へのアクセスの制御
+      href: how-to-control-access.md
 - name: リファレンス
   items:
     - name: REST ()

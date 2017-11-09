@@ -16,11 +16,11 @@ ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 3254fdd57cfcd170f22374c1e3b058e6081d8e8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b587f299e7b11effd05cbbc4b15976fee3f83ffd
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
 
@@ -43,6 +43,10 @@ ms.lasthandoff: 10/11/2017
 |**アプリのリソースへの接続**||
 | [Web アプリを SQL Database に接続する](./scripts/app-service-powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Web アプリと SQL データベースを作成し、データベース接続文字列をアプリケーション設定に追加します。 |
 | [Web アプリをストレージ アカウントに接続する](./scripts/app-service-powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Azure Web アプリとストレージ アカウントを作成し、ストレージ接続文字列をアプリケーション設定に追加します。 |
+|**アプリのバックアップと復元**||
+| [Web アプリをバックアップする](./scripts/app-service-powershell-backup-onetime.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Azure Web アプリを作成し、その Web アプリの 1 回限りのバックアップを作成します。 |
+| [Web アプリのスケジュールされたバックアップを作成する](./scripts/app-service-powershell-backup-scheduled.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Azure Web アプリを作成し、その Web アプリのスケジュールされたバックアップを作成します。 |
+| [Web アプリのバックアップを削除する](./scripts/app-service-powershell-backup-delete.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Web アプリの既存のバックアップを削除します。 |
 |**アプリの監視**||
 | [Web サーバー ログによる Web アプリの監視](./scripts/app-service-powershell-monitor.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Azure Web アプリを作成し、ログ記録を有効にし、ログをローカル コンピューターにダウンロードします。 |
 | | |

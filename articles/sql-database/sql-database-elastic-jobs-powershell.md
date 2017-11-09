@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 12ace2ff3bcb967ec5e0ae88d3ce79a53836dd5e
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: f9bdc28349c540ee68b421b7643e4bed099c9fdd
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
 
@@ -68,7 +68,6 @@ ms.lasthandoff: 10/31/2017
   <tr>
     <td>DACPAC</td>
     <td>データベース全体に適用される<a href="https://msdn.microsoft.com/library/ee210546.aspx">データ層アプリケーション</a> パッケージ。
-
     </td>
     <td>
     <p>Get-AzureSqlJobContent</p>
@@ -79,7 +78,6 @@ ms.lasthandoff: 10/31/2017
   <tr>
     <td>データベース ターゲット</td>
     <td>Azure SQL Database を示すデータベースとサーバーの名前。
-
     </td>
     <td>
     <p>Get-AzureSqlJobTarget</p>

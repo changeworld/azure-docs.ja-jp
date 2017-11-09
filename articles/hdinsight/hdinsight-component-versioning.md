@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
-ms.openlocfilehash: 412fc8b76d2b5ac45532d3ccb7a2ab7361d53596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1098ea7f7ab7765f9769dd2e398eb3b62c5557b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
 
@@ -174,7 +174,7 @@ Azure HDInsight では、_Standard_ と _Premium_ の 2 つのカテゴリでビ
 
 | HDInsight Premium の機能 | Description |
 | --- | --- |
-| ドメイン参加済み HDInsight クラスター |HDInsight クラスターを Azure Active Directory (Azure AD) のドメインに参加させることで、エンタープライズ レベルのセキュリティを実現します。 HDInsight Premium では、Azure AD を使って 企業からHDInsight クラスターへのログオンを認証できる従業員の一覧を構成できるようになりました。 エンタープライズ管理者は、[Apache Ranger](http://hortonworks.com/apache/ranger/) を使用して Hive のセキュリティを確保するためのロールベースのアクセス制御を構成できるため、データへのアクセスを必要な分だけに制限できます。 また、管理者は、従業員によるデータ アクセスとアクセス制御ポリシーに対して行われた変更を監査できるため、企業リソースの高度なガバナンスを実現できます。 詳しくは、[ドメイン参加済み HDInsight クラスターの構成](hdinsight-domain-joined-configure.md)に関するページをご覧ください。 |
+| ドメイン参加済み HDInsight クラスター |HDInsight クラスターを Azure Active Directory (Azure AD) のドメインに参加させることで、エンタープライズ レベルのセキュリティを実現します。 HDInsight Premium では、Azure AD を使って 企業からHDInsight クラスターへのログオンを認証できる従業員の一覧を構成できるようになりました。 エンタープライズ管理者は、[Apache Ranger](http://hortonworks.com/apache/ranger/) を使用して Hive のセキュリティを確保するためのロールベースのアクセス制御を構成できるため、データへのアクセスを必要な分だけに制限できます。 また、管理者は、従業員によるデータ アクセスとアクセス制御ポリシーに対して行われた変更を監査できるため、企業リソースの高度なガバナンスを実現できます。 詳しくは、[ドメイン参加済み HDInsight クラスターの構成](./domain-joined/apache-domain-joined-configure.md)に関するページをご覧ください。 |
 
 ### <a name="cluster-types-supported-in-hdinsight-premium"></a>HDInsight Premium でサポートされるクラスターの種類
 次の表は、HDInsight Premium でサポートされるクラスターの種類の一覧です。

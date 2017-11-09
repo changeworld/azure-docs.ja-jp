@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 99b9f047525f46f68dc2c1029f6d53fbda87b69e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76c9382cc5210bb5ac8551ebb7b16ecabe0dcd39
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="hdinsight-spark-data-science-walkthroughs-using-pyspark-and-scala-on-azure"></a>Azure 上の PySpark と Scala を使用した HDInsight Spark データ サイエンスのチュートリアル
 
-ここでは、Azure Spark クラスターで PySpark と Scala を使って予測分析を行うチュートリアルを紹介します。 Team Data Science Process で概説された手順を踏襲しています。 Team Data Science Process の概要については、[データ サイエンス プロセス](overview.md)に関するページを参照してください。 HDInsight における Spark の概要については、「[HDInsight での Spark の概要](../../hdinsight/hdinsight-apache-spark-overview.md)」を参照してください。
+ここでは、Azure Spark クラスターで PySpark と Scala を使って予測分析を行うチュートリアルを紹介します。 Team Data Science Process で概説された手順を踏襲しています。 Team Data Science Process の概要については、[データ サイエンス プロセス](overview.md)に関するページを参照してください。 HDInsight における Spark の概要については、「[HDInsight での Spark の概要](../../hdinsight/spark/apache-spark-overview.md)」を参照してください。
 
 Team Data Science Process を実行するデータ サイエンスのチュートリアルは他にも存在し、使用する**プラットフォーム**ごとにグループ化されています。 これらの例の箇条書きについては、[Team Data Science Process を実行するチュートリアル](walkthroughs.md)に関するページをご覧ください。
 

@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/02/2017
+ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e1820033e051b72601291c5206772192e68769
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ef5ec3d8f4b96d4a318e01b449d3baad8a6324a
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
@@ -62,6 +62,10 @@ SAP HANA on Azure (L インスタンス) は、Azure ならではのソリュー
 - **SAP HANA on Azure (L インスタンス):** 異なる Azure リージョンの L インスタンス スタンプにデプロイされる SAP HANA TDI 認定ハードウェアで HANA インスタンスを実行する、Azure におけるサービスの正式名称。 関連用語の **HANA L インスタンス**は、SAP HANA on Azure (L インスタンス) の省略形であり、このテクニカル デプロイ ガイドで広く使用されています。
 - **クロスプレミス:** オンプレミスのデータ センターと Azure の間で、サイト間接続、マルチサイト接続、または ExpressRoute 接続を使用する Azure サブスクリプションに VM をデプロイするシナリオを指します。 この種のデプロイメントは、共通の Azure ドキュメントでもクロスプレミス シナリオとして説明されています。 この接続の目的は、オンプレミスのドメイン、オンプレミスの Active Directory/OpenLDAP、およびオンプレミスの DNS を、Azure 内に拡張することです。 オンプレミスのランドスケープが、Azure サブスクリプションの Azure 資産に拡張されます。 この拡張により。VM はオンプレミス ドメインの一部になることができます。 オンプレミス ドメインのドメイン ユーザーは、サーバーにアクセスし、それらの VM (DBMS サービスなど) 上でサービスを実行できます。 オンプレミスにデプロイした VM と Azure にデプロイした VM の間では、通信と名前解決が可能です。 これが、ほとんどの SAP 資産をデプロイする場合の一般的なシナリオです。 詳細については、「[VPN ゲートウェイの計画と設計](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」および「[Azure Portal を使用してサイト間接続を持つ VNet を作成する](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 - **テナント**: HANA L インスタンス スタンプにデプロイされたお客様は、"テナント" に分離されます。 テナントは、ネットワーク、ストレージ、およびコンピューティング レイヤーで他のテナントから分離されます。 そのため、HANA L インスタンス スタンプ レベルでは、別のテナントに割り当てられているストレージやコンピューティング ユニットが互いを参照して通信することはできません。 同じお客様が別々のテナントにデプロイを置くこともありますが、 その場合でも HANA L インスタンス スタンプ レベルでテナント間が通信することはありません。
+- **SKU カテゴリ:** HANA L インスタンスの場合、次の 2 つの SKU のカテゴリが提供されます。
+    - **Type I クラス:** S72、S72m、S144、S144m、S192、S192m
+    - **Type II クラス:** S384、S384m、S384xm、S576、S768、S960
+
 
 Microsoft Azure パブリック クラウドでの SAP ワークロードのデプロイに関するトピックでは、その他のさまざまなリソースが紹介されています。 Azure での SAP HANA のデプロイを計画して実行する場合は、Azure IaaS のプリンシパルと Azure IaaS での SAP ワークロードのデプロイに詳しい担当者を起用することを強くお勧めします。 次のリソースで詳細を示します。これらのリソースは作業を続行する前に参照してください。
 
@@ -122,7 +126,7 @@ L インスタンス スタンプのマルチテナント インフラストラ�
 
 Azure VM と同様に、SAP HANA on Azure (L インスタンス) は複数の Azure リージョンで提供されます。 障害復旧機能を提供するためにオプトインを選択できます。 1 つの地政学的リージョン内の異なる L インスタンス スタンプが相互に接続されます。 たとえば、米国西部と米国東部の HANA L インスタンス スタンプは、DR レプリケーションのために、専用のネットワーク リンクを介して接続されます。 
 
-Azure Virtual Machines で異なる VM の種類から選択できるのと同様に、ワークロードの種類が異なる SAP HANA に対応した HANA L インスタンスのさまざまな SKU から選択できます。 SAP では、プロセッサのソケットの比率に対してメモリを適用し、Intel プロセッサの世代に基づいてワークロードを変更します。4 種類の SKU が提供されています。
+Azure Virtual Machines で異なる VM の種類から選択できるのと同様に、ワークロードの種類が異なる SAP HANA に対応した HANA L インスタンスのさまざまな SKU から選択できます。 SAP では、プロセッサのソケットの比率に対してメモリを適用し、Intel プロセッサの世代に基づいてワークロードを変更します。 提供される SKU の種類を次の表に示します。
 
 2017 年 7 月時点で、SAP HANA on Azure (L インスタンス) は、米国西部、米国東部、オーストラリア東部、オーストラリア南東部、西ヨーロッパ、北ヨーロッパの各 Azure リージョンで、次のような複数の構成で提供されています。
 
@@ -355,7 +359,7 @@ HANA L インスタンス SKU を分割する場合、考えられる各分割�
 ### <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 HANA L インスタンス用のストレージでは、ディスクに保存されるデータを透過的に暗号化することができます。 HANA L インスタンス ユニットのデプロイ時に、この種の暗号化を有効にするかどうかを選択できます。 また、暗号化の対象ボリュームをデプロイ後に変更することもできます。 非暗号化ボリュームから暗号化ボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
 
-Type I クラスの SKU では、ブート LUN が格納されているボリュームが暗号化されます。 HANA L インスタンスの Type II クラスの SKU の場合、OS 方式でブート LUN を暗号化する必要があります。 
+Type I クラスの SKU では、ブート LUN が格納されているボリュームが暗号化されます。 HANA L インスタンスの Type II クラスの SKU の場合、OS 方式でブート LUN を暗号化する必要があります。 詳細については、Microsoft のサービス管理チームに問い合わせてください。
 
 
 ## <a name="networking"></a>ネットワーク

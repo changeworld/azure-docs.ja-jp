@@ -15,16 +15,17 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: huvalo
-ms.openlocfilehash: 283a296fb39863c2801be1093cc4f56904786abd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01fa162d41e03e29f3b6f0ca128e7cc49aa91abb
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>Windows Server VM での Django Hello World Web アプリ
 
 > [!IMPORTANT] 
 > Azure には、リソースの作成と操作に関して、[Azure Resource Manager デプロイ モデルとクラシックデプロイ モデル](../../../resource-manager-deployment-model.md)の 2 種類があります。 この記事では、クラシック デプロイ モデルについて説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 このチュートリアルでは、Azure Virtual Machines の Windows Server で Django ベースの Web サイトをホストする方法を説明します。 このチュートリアルは Azure の使用経験がなくても読むことができます。 このチュートリアルを最後まで読むと、Django ベースのアプリケーションをクラウドで稼働させることができます。
 

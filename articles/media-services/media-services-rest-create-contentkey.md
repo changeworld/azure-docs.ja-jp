@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: ece09277d26fafb7c0eebf62730031c4dc01bfe0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: afee79e5081cbc6c217569a9d1bffdd7726e2f61
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-content-keys-with-rest"></a>REST でコンテンツ キーを作成する
 > [!div class="op_single_selector"]
@@ -47,23 +47,23 @@ Media Services では、暗号化されたアセットを新しく作成して�
 4. そのキー識別子とコンテンツ キーを使って計算される、(PlayReady AES キー checksum アルゴリズムに基づく) checksum 値を作成します。 詳細については、 [ここ](http://www.microsoft.com/playready/documents/)にある、『PlayReady Header Object』(PlayReady のヘッダー オブジェクト) ドキュメントの「PlayReady AES Key Checksum Algorithm」(PlayReady AES キーの checksum アルゴリズム) セクションを参照してください。
    
    次の .NET の例では、キー識別子の GUID 部とクリアなコンテンツ キーを使用して checksum を計算しています。
-
-         public static string CalculateChecksum(byte[] contentKey, Guid keyId)
+   
+        public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
-
-            byte[] array = null;
-            using (AesCryptoServiceProvider aesCryptoServiceProvider = new AesCryptoServiceProvider())
-            {
-                aesCryptoServiceProvider.Mode = CipherMode.ECB;
-                aesCryptoServiceProvider.Key = contentKey;
-                aesCryptoServiceProvider.Padding = PaddingMode.None;
-                ICryptoTransform cryptoTransform = aesCryptoServiceProvider.CreateEncryptor();
-                array = new byte[16];
-                cryptoTransform.TransformBlock(keyId.ToByteArray(), 0, 16, array, 0);
-            }
-            byte[] array2 = new byte[8];
-            Array.Copy(array, array2, 8);
-            return Convert.ToBase64String(array2);
+ 
+             byte[] array = null;
+             using (AesCryptoServiceProvider aesCryptoServiceProvider = new AesCryptoServiceProvider())
+             {
+                 aesCryptoServiceProvider.Mode = CipherMode.ECB;
+                 aesCryptoServiceProvider.Key = contentKey;
+                 aesCryptoServiceProvider.Padding = PaddingMode.None;
+                 ICryptoTransform cryptoTransform = aesCryptoServiceProvider.CreateEncryptor();
+                 array = new byte[16];
+                 cryptoTransform.TransformBlock(keyId.ToByteArray(), 0, 16, array, 0);
+             }
+             byte[] array2 = new byte[8];
+             Array.Copy(array, array2, 8);
+             return Convert.ToBase64String(array2);
          }
 5. 前の手順で取得した **EncryptedContentKey** 値 (Base 64 エンコード形式の文字列に変換されます)、**ProtectionKeyId** 値、**ProtectionKeyType** 値、**ContentKeyType** 値、**Checksum** 値を使ってコンテンツ キーを作成します。
 6. $links 操作で、**ContentKey** エンティティと **Asset** エンティティを関連付けます。

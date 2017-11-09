@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 5766ef2097b0da295d42e7c5909efc524049f418
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7496b0578301713ebae7381e9a54642e226eb96
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Azure でパーティ クラスターにアプリケーションをデプロイする
 このチュートリアルはシリーズの第 2 部です。Azure でパーティ クラスターに Azure Service Fabric アプリケーションをデプロイする方法について説明します。
@@ -58,24 +58,6 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 > [!NOTE]
 > パーティ クラスターはセキュリティで保護されないため、ご利用のアプリケーションとそれに入力するデータが他のユーザーに表示される可能性があります。 他のユーザーに見せたくないものは一切デプロイしないでください。 使用条件の詳細に必ず目を通してください。
-
-## <a name="configure-the-listening-port"></a>リスニング ポートを構成する
-VotingWeb フロントエンド サービスが作成されると、Visual Studio は、リッスンするサービスのポートをランダムに選択します。  VotingWeb サービスは、このアプリケーションのフロント エンドとして機能して外部のトラフィックを受け入れるため、このサービスを固定のウェルノウン ポートにバインドしましょう。 ソリューション エクスプローラーで、*VotingWeb/PackageRoot/ServiceManifest.xml* を開きます。  **Resources** セクションの **Endpoint** リソースを検索し、**Port** 値を 80 に変更します。
-
-```xml
-<Resources>
-    <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="80" />
-    </Endpoints>
-  </Resources>
-```
-
-また、Voting プロジェクトの Application URL プロパティ値を更新し、F5 キーを押してデバッグするときに正しいポートに対して Web ブラウザーが開くようにします。  ソリューション エクスプローラーで、**Voting** プロジェクトを選択し、**Application URL** プロパティを更新します。
-
-![アプリケーションの URL](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ## <a name="deploy-the-app-to-the-azure"></a>Azure にアプリケーションをデプロイする
 これで、アプリケーションの準備ができたので、Visual Studio から直接パーティ クラスターにデプロイできます。

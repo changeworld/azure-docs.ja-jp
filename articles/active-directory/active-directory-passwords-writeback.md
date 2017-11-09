@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: e460e734973622fb0d5745adfc4c1aa0178dd22e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ce4d6d9024dc4ce3956220eb0678a6295b0b7ab
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="password-writeback-overview"></a>パスワード ライトバックの概要
 
@@ -90,11 +90,41 @@ DirSync と Azure AD Sync は、パスワード ライトバックを有効に�
 6. [オプション機能] 画面で **[パスワード ライトバック]** の横にあるチェック ボックスをオンにし、**[次へ]** をクリックします。
    ![Azure AD Connect でパスワード ライトバックを有効にする][Writeback]
 7. [構成の準備完了] 画面で **[構成]** をクリックし、処理が完了するまで待ちます。
-8. [構成が完了しました] と表示されたら、**[終了]** をクリックします。
+8. [構成が完了しました] と表示されたら、**[終了]** をクリックします
+
+## <a name="active-directory-permissions"></a>Active Directory のアクセス許可
+
+Azure AD Connect ユーティリティで指定されたアカウントには、そのフォレスト内の**各ドメイン**のルート オブジェクト**または** SSPR の対象に含めたいユーザー OU のいずれかに対して、lockoutTime の [パスワードのリセット]、[パスワードの変更]、[書き込みアクセス許可] や pwdLastSet の [書き込みアクセス許可] などの拡張権限が必要です。
+
+上記のどのアカウントが参照されるか明らかでない場合は、Azure Active Directory Connect の構成 UI を開き、[現在の構成を表示する] オプションをクリックします。 アクセス許可を追加する必要があるアカウントが、[同期されたディレクトリ] の下に表示されます。
+
+これらの権限を設定すると、パスワード管理が、フォレストに含まれるユーザー アカウントからではなく、各フォレストのMA サービス アカウントから可能になります。 **これらの権限を割り当てないと、ライトバックが正常に構成されているように思われる場合でも、クラウドからオンプレミスのパスワードを管理しようとするとエラーが発生します。**
+
+> [!NOTE]
+> ディレクトリ内のすべてのオブジェクトにこれらの権限をレプリケートするには、最大 1 時間かそれ以上かかることがあります。
+>
+
+パスワード ライトバックを行うための適切なアクセス許可を設定するには
+
+1. 適切なドメインの管理権限を持つアカウントで [Active Directory ユーザーとコンピューター] を開きます。
+2. [表示] メニューで、[高度な機能] がオンになっていることを確認します。
+3. 左側のパネルで、ドメインのルートを表すオブジェクトを右クリックし、プロパティを選択します。
+    * [セキュリティ] タブをクリックします。
+    * 次に、[詳細設定] をクリックします。
+4. [アクセス許可] タブで [追加] をクリックします。
+5. (Azure AD Connect のセットアップから) アクセス許可を適用するアカウントを選択します。
+6. [適用先] ドロップダウンで、[下位ユーザー オブジェクト] を選択します。
+7. [アクセス許可] で次のチェック ボックスをオンにします。
+    * Unexpire-Password\(無期限パスワード\)
+    * パスワードのリセット
+    * パスワードの変更
+    * Write lockoutTime\(LockoutTime を書き込む\)
+    * Write pwdLastSet\(pwdLastSet を書き込む\)
+8. [適用] または [OK] をクリックして適用し、開いているすべてのダイアログ ボックスを終了します。
 
 ## <a name="licensing-requirements-for-password-writeback"></a>パスワード ライトバックに必要なライセンス
 
-ライセンスについて詳しくは、「[Licenses required for password writeback](active-directory-passwords-licensing.md#licenses-required-for-password-writeback)」(パスワード ライトバックで必要なライセンス) または、次のサイトをご覧ください。
+ライセンスの詳細については、「[パスワード ライトバックで必要なライセンス](active-directory-passwords-licensing.md#licenses-required-for-password-writeback)」または次のサイトをご覧ください
 
 * [Azure Active Directory の料金サイト](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
@@ -159,9 +189,9 @@ DirSync と Azure AD Sync は、パスワード ライトバックを有効に�
 ユーザーがパスワード リセット要求を送信した後、その要求がオンプレミス環境に到着するまでに実行される暗号化の手順を以下に示します。これらの手順によって、最大限のサービスの信頼性とセキュリティが確保されます。
 
 * **手順 1 - 2048 ビット RSA キーによるパスワードの暗号化**: ユーザーがオンプレミスにライトバックするためにパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使用して暗号化されます。
-* **手順 2 - AES-GCM によるパッケージ レベルの暗号化**: 次に、AES-GCM を使用して、パッケージ全体 (パスワード + 必要なメタデータ) が暗号化されます。 これにより、ServiceBus チャネルに直接アクセスできる人物による内容の表示/改ざんを防止します。
-* **手順 3 - すべての通信は TLS / SSL 経由で行われる**: ServiceBus でのすべての通信は、SSL/TLS チャネルで実行されます。 これにより、権限がないサード パーティからの保護が保証されます。
-* **半年ごとの自動キー ロールオーバー**: 半年ごとに自動的に、または Azure AD Connect でパスワード ライトバックが無効/再度有効になるたびに、すべてのキーがロールオーバーされます。これにより、最大限のサービスのセキュリティと安全性が確保されます。
+* **手順 2 - AES-GCM によるパッケージ レベルの暗号化**: 次に、AES-GCM を使用して、パッケージ全体 (パスワード + 必要なメタデータ) が暗号化されます。 この暗号化により、ServiceBus チャネルに直接アクセスできる人物による内容の表示/改ざんを防止します。
+* **手順 3 - すべての通信は TLS / SSL 経由で行われる**: ServiceBus でのすべての通信は、SSL/TLS チャネルで実行されます。 この暗号化により、権限がないサード パーティに対してコンテンツが保護されます。
+* **半年ごとの自動キー ロールオーバー**: 半年ごとに、または Azure AD Connect でパスワード ライトバックが無効/再度有効になるたびに、すべてのキーが自動的にロールオーバーされ、最大限のサービスのセキュリティと安全性が確保されます。
 
 ### <a name="password-writeback-bandwidth-usage"></a>パスワード ライトバックの帯域幅の使用
 
@@ -182,17 +212,16 @@ DirSync と Azure AD Sync は、パスワード ライトバックを有効に�
 
 ## <a name="next-steps"></a>次のステップ
 
-次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
-
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
-* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
-* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
+* [ライセンスに関する質問。](active-directory-passwords-licensing.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
+* [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
+* [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
 [Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "Azure AD Connect でパスワード ライトバックを有効にする"

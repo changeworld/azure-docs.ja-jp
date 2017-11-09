@@ -3,8 +3,8 @@ title: "Azure で PHP Web アプリを作成する | Microsoft Docs"
 description: "Azure App Service の Web Apps で、初めての PHP の Hello World を数分でデプロイします。"
 services: app-service\web
 documentationcenter: 
-author: syntaxc4
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.service: app-service-web
@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/21/2017
-ms.author: cfowler
+ms.date: 10/26/2017
+ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: a91f9b6693476f68ef0e64fb0283ded2cedec29f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 929c8e3bd8e180148897c4a7808a90f5ca614c4e
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
@@ -71,13 +71,17 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)]
 
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)]
+## <a name="create-a-web-app"></a>Web アプリを作成する
+
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-php-no-h.md)]
+
+新しく作成された Web アプリに移動します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
+
+```bash
+http://<app name>.azurewebsites.net
+```
 
 ![空の Web アプリ ページ](media/app-service-web-get-started-php/app-service-web-service-created.png)
-
-これで、Azure に空の新しい Web アプリが作成されました。
-
-[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -128,7 +132,7 @@ PHP のサンプル コードは、Azure App Service の Web アプリで実行�
 echo "Hello Azure!";
 ```
 
-Git で変更をコミットしてから、コード変更を Azure にプッシュします。
+ローカル ターミナル ウィンドウで、変更を Git にコミットし、コード変更を Azure にプッシュします。
 
 ```bash
 git commit -am "updated output"

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: b6fc2098027690eb76b69b1427f0e9541b8a7a69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57b63490037760c9150fd4b8fdb66267739f20ae
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Ambari API を使用した HDInsight の Hadoop クラスターの監視
 Ambari API を使用して HDInsight クラスターを監視する方法について説明します。
@@ -167,7 +167,7 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
 [hdinsight-documentation]: https://docs.microsoft.com/azure/hdinsight/
-[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
+[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png

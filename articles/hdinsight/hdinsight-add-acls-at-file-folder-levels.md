@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 42d617ffeb8c2fee6be6d747b39d80b09774a1c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ca91721e691eca239478c4ac8b85e2652babdfd
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-user-permissions-at-the-file-and-folder-levels"></a>ファイルおよびフォルダー レベルでのユーザー アクセス許可の管理
 
-[ドメイン参加済み HDInsight クラスター](hdinsight-domain-joined-introduction.md)では、Azure Active Directory (Azure AD) ユーザーでの強力な認証が使用されます。また、YARN や Hive といった各種のサービスには、"*ロールベースのアクセス制御*" (RBAC) ポリシーが使用されます。 ご使用のクラスターの既定のデータ ストアが Azure Storage または Windows Azure Storage Blobs (WASB) である場合は、ファイル レベルやフォルダー レベルのアクセス許可を適用することもできます。 同期されている Azure AD のユーザーとグループに関しては、クラスターのファイルに対するアクセスを Apache Ranger を使用して制御できます。
+[ドメイン参加済み HDInsight クラスター](./domain-joined/apache-domain-joined-introduction.md)では、Azure Active Directory (Azure AD) ユーザーでの強力な認証が使用されます。また、YARN や Hive といった各種のサービスには、"*ロールベースのアクセス制御*" (RBAC) ポリシーが使用されます。 ご使用のクラスターの既定のデータ ストアが Azure Storage または Windows Azure Storage Blobs (WASB) である場合は、ファイル レベルやフォルダー レベルのアクセス許可を適用することもできます。 同期されている Azure AD のユーザーとグループに関しては、クラスターのファイルに対するアクセスを Apache Ranger を使用して制御できます。
 <!-- [synchronized Azure AD users and groups](hdinsight-sync-aad-users-to-cluster.md). -->
 
 HDInsight ドメイン参加済みクラスターの Apache Ranger インスタンスには、あらかじめ Ranger-WASB サービスが構成されています。 Ranger-WASB サービスは、Ranger-HDFS に似たポリシー管理エンジンですが、Ranger のアクセス ポリシーの適用に違いがあります。 Ranger-WASB サービスでは、受信リソース要求に一致する Ranger ポリシーがない場合、既定の応答が DENY になります。 Ranger サービスから WASB にアクセス許可のチェックが転嫁されることはありません。
@@ -69,7 +69,7 @@ resource: path=/app-logs/{USER}, user: {USER}, recursive=true, permissions: all,
 
 ## <a name="manage-file-and-folder-level-permissions-with-apache-ranger"></a>ファイル レベルとフォルダー レベルのアクセス許可を Apache Ranger で管理する
 
-新しいドメイン参加済みクラスターをまだプロビジョニングしていない場合は、[こちらの手順](hdinsight-domain-joined-configure.md)に従ってプロビジョニングしてください。
+新しいドメイン参加済みクラスターをまだプロビジョニングしていない場合は、[こちらの手順](./domain-joined/apache-domain-joined-configure.md)に従ってプロビジョニングしてください。
 
 ブラウザーで `https://<YOUR CLUSTER NAME>.azurehdinsight.net/ranger/` にアクセスして Ranger-WASB を開きます。 クラスターの作成時に定義したクラスタ アドミニストレーターのユーザー名とパスワードを入力します。
 
@@ -101,7 +101,7 @@ resource: path=/app-logs/{USER}, user: {USER}, recursive=true, permissions: all,
 
     ![sales を許可](./media/hdinsight-add-acls-at-file-folder-levels/allow-sales.png)
 
-4. [ **保存**] を選択します。
+4. **[ 保存]** を選択します。
 
 ### <a name="example-policy-conditions"></a>ポリシーの条件の例
 
@@ -117,8 +117,8 @@ Apache Ranger の[ポリシー評価フロー](#permission-and-policy-model)で�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ドメイン参加済み HDInsight での Hive ポリシーの構成](hdinsight-domain-joined-run-hive.md)
-* [ドメイン参加済み HDInsight クラスターの管理](hdinsight-domain-joined-manage.md)
+* [ドメイン参加済み HDInsight での Hive ポリシーの構成](./domain-joined/apache-domain-joined-run-hive.md)
+* [ドメイン参加済み HDInsight クラスターの管理](./domain-joined/apache-domain-joined-manage.md)
 * [Ambari の管理 - Ambari に対するユーザーの承認](hdinsight-authorize-users-to-ambari.md)
 
 <!-- * [Synchronize Azure AD users and groups](hdinsight-sync-aad-users-to-cluster.md) -->

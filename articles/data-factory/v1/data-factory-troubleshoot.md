@@ -15,13 +15,16 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: de40d4afce48e94df0f69c5edca46838268a5e29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1b4cab46e0fc86d5074b6d19601cd7ff4afeb0eb
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 
+
 この記事では、Azure Data Factory を使用する場合の問題に対するトラブルシューティングのヒントを提供します。 ここでは、このサービスを使用する場合に発生する可能性があるすべての問題を取り上げているわけではなく、一部の問題と一般的なトラブルシューティングのヒントについて説明しています。   
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント

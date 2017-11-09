@@ -11,16 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7a8c866106f7e2c2538a9cf6c44cb34ddfaa2887
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c32d4ac2c1179a83a82bd5deb41047b82e43b7e
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>互換性のない行をスキップすることによるコピー アクティビティへのフォールト トレランスの追加
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 のコピー アクティビティのフォールト トレランス](../copy-activity-fault-tolerance.md)に関するページを参照してください。
 
 Azure Data Factory の[コピー アクティビティ](data-factory-data-movement-activities.md)には、ソースとシンク データ ストアの間でデータをコピーするときの互換性のない行の取り扱いについて、2 つの方法が用意されています。
 

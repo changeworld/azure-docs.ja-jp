@@ -3,7 +3,7 @@ title: "Azure MFA Server と AD FS 2.0 の併用 | Microsoft Docs"
 description: "Azure MFA および AD FS 2.0 を開始する方法について説明する Azure Multi-Factor Authentication のページです。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 96168849-241a-4499-a224-d829913caa7e
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/14/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: a05219398aefa158321ae63934743dd43841e33f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec0fada3f8e94d8dda63d00f0ead7fa28535474f
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>AD FS 2.0 と連携するように Azure Multi-Factor Authentication Server を構成する
 この記事は、現在 Azure Active Directory を使用しており、オンプレミスやクラウドに置かれたリソースをセキュリティで保護したいと考えている組織を対象としたものです。 Azure Multi-Factor Authentication Server を使用し、AD FS との連携を構成すれば、価値の大きなエンド ポイントに対して 2 段階認証をトリガーできるため、リソースを保護することができます。

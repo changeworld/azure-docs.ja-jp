@@ -12,57 +12,54 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/24/2017
+ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: 69c5d09b6608484210870e1a69c51b112b497810
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0f86e13e21f2af323e0a306b381054b6eb76755
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Azure Site Recovery によるセカンダリ サイトへのレプリケーションのサポート マトリックス
 
-この記事では、Azure Site Recovery を使用してセカンダリのオンプレミス サイトにレプリケートする際のサポートについて説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してセカンダリのオンプレミス サイトにレプリケートする際のサポートについて説明します。
 
-## <a name="deployment-options"></a>デプロイ オプション
+## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-**デプロイ** | **VMware/物理サーバー** | **Hyper-V (SCVMM あり/なし)**
---- | --- | --- | ---
-**Azure ポータル** | オンプレミスの VMware VM をセカンダリ VMware サイトにレプリケートします。<br/><br/> [InMage Scout ユーザー ガイド](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf)をダウンロードします (Azure Portal では入手できません)。 | VMM クラウドのオンプレミスの Hyper-V VM をセカンダリ VMM クラウドにレプリケートします。<br></br> VMM なしではサポートされていません  <br/><br/> 標準の Hyper-V レプリケーションのみ。 SAN はサポートされていません。
-**クラシック ポータル** | メンテナンス モードのみ。 新しい資格情報コンテナーを作成することはできません。 | メンテナンス モードのみ<br></br> SCVMM なしではサポートされていません。
-**PowerShell** | サポートされていません | サポートされています<br></br> SCVMM なしではサポートされていません。
-
-## <a name="on-premises-servers"></a>オンプレミスのサーバー
-
-### <a name="virtualization-servers"></a>仮想化サーバー
-
-**デプロイ** | **サポート**
+**デプロイ** | **詳細** 
 --- | ---
-**VMware VM/物理サーバー** | vSphere 6.0、5.5、または 5.1 (最新の更新プログラムをインストール済み)
-**Hyper-V (VMM あり)** | VMM 2016 と VMM 2012 R2
+**VMware から VMware** | オンプレミスの VMware VM からセカンダリ VMware サイトへのディザスター リカバリー。<br/><br/> [InMage Scout ユーザー ガイド](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) をダウンロードする
+**Hyper-V から Hyper-V** | VMM クラウドのオンプレミスの Hyper-V VM のセカンダリ VMM クラウドへのディザスター リカバリー。<br></br> VMM なしではサポートされていません。
 
-  >[!Note]
-  > Windows Server 2016 ホストと 2012 R2 ホストが混在する VMM 2016 クラウドは、現在サポートされていません。
-  > 既存の SCVMM 2012 R2 から 2016 へのアップグレードを含む構成は、現在サポートされていません。
-### <a name="host-servers"></a>ホスト サーバー
+
+
+  
+
+## <a name="host-servers"></a>ホスト サーバー
 
 **デプロイ** | **サポート**
 --- | ---
 **VMware VM/物理サーバー** | vCenter 5.5 または 6.0 (5.5 の機能のみをサポート) 
-**Hyper-V (VMM なし)** | セカンダリ サイトへのレプリケートの場合は、サポートされる構成ではありません
-**Hyper-V (VMM あり)** | Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2。<br/><br/> Windows Server 2016 ホストは VMM 2016 によって管理する必要があります。
+**Hyper-V (VMM あり)** | Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2。<br/><br/> Windows Server 2016 ホストは VMM 2016 によって管理する必要があります。<br/><br/> Windows Server 2016 ホストと 2012 R2 ホストが混在する VMM 2016 クラウドは、現在サポートされていません。<br/><br/> 既存の VMM 2012 R2 から System Center 2016 へのアップグレードを含むデプロイは、現在サポートされていません。
+
 
 ## <a name="support-for-replicated-machine-os-versions"></a>レプリケートされるマシンの OS バージョンのサポート
-次の表は、Azure Site Recovery 使用時に発生する可能性のある、さまざまなデプロイ シナリオにおけるオペレーティング システムのサポートをまとめたものです。 このサポートは、示された OS で実行される任意のワークロードに適用可能です。
+
+次の表は、Site Recovery 使用時にレプリケートされるマシンのオペレーティング システムのサポートをまとめたものです。 すべてのワークロードは、サポートされるオペレーティング システム上で実行できます。
 
 **VMware/物理サーバー** | **Hyper-V (VMM あり)**
---- | --- | ---
+--- | ---
 64 ビット Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux 6.7、7.1、7.2 <br/><br/> CentOS 6.5、6.6、6.7、7.0、7.1、7.2 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/> SUSE Linux Enterprise Server 11 SP3 | [Hyper-V でサポートされている](https://technet.microsoft.com/library/mt126277.aspx)任意のゲスト オペレーティング システム
 
->[!Note]
->ファイル システム (EXT3、ETX4、ReiserFS、XFS)、マルチパス ソフトウェア デバイス マッパー、ボリューム マネージャー (LVM2) の各ストレージを使用する Linux マシンでのみレプリケート可能です。
->HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。
->ReiserFS ファイル システムは、SUSE Linux Enterprise Server 11 SP3 でのみサポートされています。
+## <a name="linux-machine-storage"></a>Linux マシンのストレージ
+
+次のストレージを使用する Linux マシンのみでリプリケート可能です。
+
+- ファイル システム (EXT3、ETX4、ReiserFS、XFS)。
+- マルチパス ソフトウェア: デバイス マッパー。
+- ボリューム マネージャー (LVM2)。
+- HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。
+- ReiserFS ファイル システムは、SUSE Linux Enterprise Server 11 SP3 でのみサポートされています。
 
 ## <a name="network-configuration"></a>ネットワーク構成
 
@@ -135,5 +132,5 @@ RDM | はい | 該当なし
 
 ## <a name="next-steps"></a>次のステップ
 
-- [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](site-recovery-vmm-to-vmm.md)
-- [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](site-recovery-vmware-to-vmware.md)
+- [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](tutorial-vmm-to-vmm.md)
+- [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](tutorial-vmware-to-vmware.md)

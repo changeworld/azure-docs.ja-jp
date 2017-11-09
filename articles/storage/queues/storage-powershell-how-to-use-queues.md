@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 85678452e84a65bd81472396f8ebbb91091a2095
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 36eb6db83bb902b35efb8c9666ab06e0c618d602
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用し、Azure Queue Storage を操作する
 
@@ -171,7 +171,7 @@ Remove-AzureStorageQueue –Name $queueName –Context $ctx
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-この演習で作成したすべてのアセットを削除するには、リソース グループを削除します。それによって、そのグループに含まれるすべてのリソースが削除されます。 この場合、作成されたストレージ アカウントとリソース グループ自体が削除されます。
+この演習で作成したすべてのアセットを削除するには、リソース グループを削除します。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この場合、作成されたストレージ アカウントとリソース グループ自体が削除されます。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup

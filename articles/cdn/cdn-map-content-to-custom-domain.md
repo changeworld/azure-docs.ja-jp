@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: mazha
-ms.openlocfilehash: 8c5dd3ddd03b3531e4ffb7b622110a2ea997f9ae
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 98d4900e28f1850050dc4fbe1f97435e52afaf08
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="add-a-custom-domain-to-your-cdn-endpoint"></a>カスタム ドメインを CDN エンドポイントに追加する
-プロファイルを作成したら、HTTP または HTTPS を使ってコンテンツを配信するために、通常 1 つ以上の CDN エンドポイント (azureedge.net のサブドメイン) も作成します。 既定では、このエンドポイントはすべての URL (たとえば、`http(s)://contoso.azureedge.net/photo.png`) に含まれます。 便宜上、Azure CDN はカスタム ドメイン (たとえば、`www.contoso.com`) をエンドポイントと関連付けるためのオプションを提供します。 このオプションでは、コンテンツを配信するためにエンドポイントではなくカスタム ドメインを使用します。 このオプションは、たとえば、ブランド化のために独自のドメイン名を顧客に表示する必要がある場合などに便利です。
+プロファイルを作成したら、HTTP または HTTPS を使ってコンテンツを配信するために、通常 1 つ以上の CDN [エンドポイント](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint) (`azureedge.net` のサブドメイン) も作成します。 既定では、このエンドポイントはすべての URL (たとえば、`https://contoso.azureedge.net/photo.png`) に含まれます。 Azure CDN では、カスタム ドメイン (たとえば、`www.contoso.com`) とエンドポイントを簡単に関連付けることができます。 このオプションでは、コンテンツを配信するためにエンドポイントではなくカスタム ドメインを使用します。 このオプションは、たとえば、ブランド化のために独自のドメイン名を顧客に表示する必要がある場合などに便利です。
 
 カスタム ドメインがまだない場合は、最初にカスタム ドメインをドメイン プロバイダーから購入する必要があります。 カスタム ドメインを取得した後は、次の手順に従います。
 1. [ドメイン プロバイダーの DNS レコードにアクセスする](#step-1-access-dns-records-by-using-your-domain-provider)

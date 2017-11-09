@@ -380,6 +380,8 @@
           href: how-to-use-perfInsights.md
         - name: パフォーマンス診断 VM 拡張機能
           href: performance-diagnostics-vm-extension.md
+        - name: 入れ子になった仮想化の使用
+          href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: リファレンス
   items:
     - name: Azure CLI

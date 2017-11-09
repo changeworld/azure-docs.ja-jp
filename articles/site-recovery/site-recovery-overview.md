@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 90f9fe5775f493298dad3b12f2be9d6da6cb480e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b4b39cd23557093edaec97f7ef7a3e354f1ecd03
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
 
@@ -67,8 +67,7 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 **Site Recovery のサポート対象のリージョン** | [サポートされているリージョン](https://azure.microsoft.com/regions/services/) |
 **レプリケート対象のマシンで必要なオペレーティング システム** | [Azure VM の要件](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)</br></br>[VMware VM の要件](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Hyper-V VM の場合、Azure でサポートされている[ゲスト OS](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) と Hyper-V がサポートされています。<br/><br/> [物理サーバーの要件](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
 **必要な VMware サーバー/ホスト** | VMware VM は、[サポートされている vSphere ホスト/vCenter サーバー](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)に配置できます。
-
-**レプリケートできるワークロード** サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
+**レプリケートできるワークロード** | サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
 
 
 

@@ -3,8 +3,8 @@ title: "Azure で Node.js Web アプリを作成する| Microsoft Docs"
 description: "Azure App Service の Web Apps で、初めての Node.js の Hello World を数分でデプロイします。"
 services: app-service\web
 documentationcenter: 
-author: syntaxc4
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/05/2017
-ms.author: cfowler
+ms.date: 10/26/2017
+ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 09d925ab33800ac71e5fb6def916a6748d1d02a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5193460bf46c2b826cad371e4549a9690180f17
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 
@@ -48,8 +48,6 @@ ms.lasthandoff: 10/11/2017
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
-
-このクイック スタートでは、ターミナル ウィンドウを使ってすべてのコマンドを実行します。
 
 サンプル コードが含まれているディレクトリに移動します。
 
@@ -84,10 +82,6 @@ Web ブラウザーを開き、`http://localhost:1337` のサンプル アプリ
 [!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
 
 ![空の Web アプリ ページ](media/app-service-web-get-started-php/app-service-web-service-created.png)
-
-これで、Azure に空の新しい Web アプリが作成されました。
-
-[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -147,7 +141,7 @@ Node.js のサンプル コードは、Azure App Service の Web アプリで実
 response.end("Hello Azure!");
 ```
 
-Git で変更をコミットしてから、コード変更を Azure にプッシュします。
+ローカル ターミナル ウィンドウで、変更を Git にコミットし、コード変更を Azure にプッシュします。
 
 ```bash
 git commit -am "updated output"

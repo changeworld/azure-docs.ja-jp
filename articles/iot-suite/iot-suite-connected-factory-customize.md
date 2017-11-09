@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT Suite コネクテッド ファクトリのカスタマイズ | Microsoft Docs"
+title: "コネクテッド ファクトリ ソリューションをカスタマイズする - Azure | Microsoft Docs"
 description: "コネクテッド ファクトリ事前構成済みソリューションの動作をカスタマイズする方法の説明です。"
 services: 
 suite: iot-suite
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 90a6172dbd887ecda5a9f5d9082a4e136092bc10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4505023c1869c0bb23e99dc7db1ee6e65466c2cc
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>コネクテッド ファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 

@@ -4,7 +4,7 @@ description: "オンプレミスのデータ ゲートウェイをインスト�
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/09/2017
+ms.date: 10/30/2017
 ms.author: owend
-ms.openlocfilehash: 71c4c8929a80a46ba2b9ba204f5666d40607f303
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ba36c4cf932cab2e449b12a307639184feab049
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。 ゲートウェイの詳細については、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)に関する記事を参照してください。
@@ -72,6 +72,9 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
     ![登録](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. ゲートウェイの名前と回復キーを入力します。 既定では、ゲートウェイは、サブスクリプションの既定のリージョンを使用します。 別のリージョンを選択する必要がある場合は、**[リージョンの変更]** を選択します。
+
+    > [!IMPORTANT]
+    > 回復キーを安全な場所に保存します。 ゲートウェイの引き継ぎ、移行、復元には回復キーが必要となります。 
 
    ![登録](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 

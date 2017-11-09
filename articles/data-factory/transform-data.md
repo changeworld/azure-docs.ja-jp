@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.openlocfilehash: b224f5b32c9a46f797e78644c731a9cd9341da2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 832c4f232a3821225c8086b636de713da2b967a0
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 > [!div class="op_single_selector"]
@@ -35,6 +35,9 @@ ms.lasthandoff: 10/11/2017
 この記事では、Azure Data Factory でのデータ変換アクティビティについて説明します。このアクティビティにより、生データを変換および処理することで、予測や把握が容易になります。 変換アクティビティは、Azure HDInsight クラスターや Azure Batch などのコンピューティング環境で実行されます。 各変換アクティビティの詳細情報に関する記事へのリンクが提供されています。
 
 Data Factory は、次のデータ変換アクティビティをサポートしています。これらのアクティビティは、個別または他のアクティビティと連結した状態で[パイプライン](concepts-pipelines-activities.md)に追加できます。
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の変換アクティビティ](v1/data-factory-data-transformation-activities.md)に関するページを参照してください。
  
 
 ## <a name="hdinsight-hive-activity"></a>HDInsight Hive アクティビティ

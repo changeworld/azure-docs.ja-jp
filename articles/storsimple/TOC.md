@@ -19,10 +19,12 @@
 
 ## 方法
 ### [Azure Portal で管理する](storsimple-virtual-array-manager-service-administration.md)
-#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-06.md)
-##### [Update 0.5 のインストール](storsimple-virtual-array-install-update-05.md)
-##### [Update 0.4 をインストールする](storsimple-virtual-array-install-update-04.md)
-##### [Update 0.3 のインストール](storsimple-virtual-array-install-update.md)
+#### [最新の更新プログラムをインストールする](storsimple-virtual-array-install-update-1.md)
+##### [Update 0.6 のインストール](storsimple-virtual-array-install-update-06.md)
+##### Archive
+###### [Update 0.5 のインストール](storsimple-virtual-array-install-update-05.md)
+###### [Update 0.4 をインストールする](storsimple-virtual-array-install-update-04.md)
+###### [Update 0.3 のインストール](storsimple-virtual-array-install-update.md)
 #### [バックアップを作成および管理する](storsimple-virtual-array-backup.md)
 #### [バックアップから複製する](storsimple-virtual-array-clone.md)
 #### [フェールオーバーと DR](storsimple-virtual-array-failover-dr.md)
@@ -43,10 +45,10 @@
 ### [ローカル Web UI で構成する](storsimple-ova-web-ui-admin.md)
 
 ## リリース ノート
-### [Update 0.6 - 最新](storsimple-virtual-array-update-06-release-notes.md)
-### [Update 0.5](storsimple-virtual-array-update-05-release-notes.md)
-
+### [Update 1 - 最新](storsimple-virtual-array-update-1-release-notes.md)
+### [Update 0.6](storsimple-virtual-array-update-06-release-notes.md)
 ### Archive
+#### [Update 0.5](storsimple-virtual-array-update-05-release-notes.md)
 #### [Update 0.4](storsimple-virtual-array-update-04-release-notes.md)
 #### [Update 0.3](storsimple-ova-update-03-release-notes.md)
 #### [Update 0.2 および 0.1](storsimple-ova-update-01-release-notes.md)

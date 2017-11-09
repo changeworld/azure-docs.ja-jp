@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: ecde5dd3211bfbb290e6910d7d55136d079c6cf3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f140ff3841259251ddaf39124db2756084b26a53
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>従来の Linux 仮想マシンをイメージとしてキャプチャする方法
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](../capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法について説明します。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ここでは、Linux を実行する従来の Azure 仮想マシン (VM) をキャプチャして、他の仮想マシンを作成する際にイメージとして使用する方法を示します。 このイメージには、VM に接続された OS ディスクやデータ ディスクが含まれます。 ネットワーク構成は含まれないため、イメージから他の VM を作成するときは、ネットワーク構成を行う必要があります。
 

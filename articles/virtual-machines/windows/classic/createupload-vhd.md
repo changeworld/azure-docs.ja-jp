@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: bc75c8cdd98b0ea0fbff6483c0e3c9d4468d3941
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c2540120bcb1eca9f4ba62c7dbc0675343bf4f99
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="create-and-upload-a-windows-server-vhd-to-azure"></a>Windows Server VHD の作成と Azure へのアップロード
 この記事では、仮想マシンを作成できるように、独自の一般化された VM イメージを仮想ハードディスク (VHD) としてアップロードする方法について説明します。 Microsoft Azure でのディスクと VHD の詳細については、「[Virtual Machines 用のディスクと VHD について](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用して、仮想マシンを[アップロード](../upload-generalized-managed.md)することもできます。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8cef40f4360c6b9c9ab734171a4cca2a21a4c711
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: d1cb92e15109775fd120d82df6cfa94b7023d5b9
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 
@@ -271,16 +271,16 @@ Draft によって、作成される各 Helm チャート (作業対象の各ア
   }
   ```
 5. **Draft** を再インストールする
-  1. `helm delete --purge draft` を入力して、クラスターから **draftd** を削除します。 
-  2. 同じ `draft-init` コマンドを使用して、ただし `--ingress-enabled` オプションで **Draft** を再インストールします。
+
+   1. `helm delete --purge draft` を入力して、クラスターから **draftd** を削除します。 
+   2. 同じ `draft-init` コマンドを使用して、ただし `--ingress-enabled` オプションで **Draft** を再インストールします。
     ```bash
     draft init --ingress-enabled
     ```
-上で初めて行ったのと同じようにプロンプトに応答します。 ただし、Azure DNS で構成した完全なドメイン パスを使用して答えるべき質問がもう 1 つあります。
-```bash
-4. Enter your top-level domain for ingress (e.g. draft.example.com): draft.squillace.io
-```
-5. 今度は `draft up` を呼び出すと、形式 `<appname>.draft.<domain>.<top-level-domain>` の URL でアプリケーション (または `curl`) を表示できるようになります。 この例の場合は、`http://handy-labradoodle.draft.squillace.io` です。 
+   上で初めて行ったのと同じようにプロンプトに応答します。 ただし、Azure DNS で構成した完全なドメイン パスを使用して答えるべき質問がもう 1 つあります。
+
+6. 受信用の最上位ドメインを入力します (例: draft.example.com): draft.squillace.io
+7. 今度は `draft up` を呼び出すと、形式 `<appname>.draft.<domain>.<top-level-domain>` の URL でアプリケーション (または `curl`) を表示できるようになります。 この例の場合は、`http://handy-labradoodle.draft.squillace.io` です。 
 ```bash
 curl -s http://handy-labradoodle.draft.squillace.io
 Hello World, I'm Java!

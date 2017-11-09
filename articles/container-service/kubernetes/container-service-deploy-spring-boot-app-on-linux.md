@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.custom: mvc
-ms.openlocfilehash: daa0ed81a6b9f20e146698947099a991da42cd6d
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: fd071dc8ce568602db3d96d4bcaa5f421bd16513
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-a-spring-boot-application-on-linux-in-the-azure-container-service"></a>Azure Container Service で Spring Boot アプリケーションを Linux にデプロイする
 
@@ -128,11 +128,19 @@ Azure Portal を使用して Azure Container Registry を作成する手順を�
 1. このチュートリアルの前のセクションから、Azure Container Registry のアクセス設定を *settings.xml* ファイルの `<servers>` コレクションに追加します。次に例を示します。
 
    ```xml
+   <settings>
+       <pluginGroups>
+           <pluginGroup>com.spotify</pluginGroup>
+       </pluginGroups>
+   </settings>
    <servers>
       <server>
          <id>wingtiptoysregistry</id>
          <username>wingtiptoysregistry</username>
          <password>AbCdEfGhIjKlMnOpQrStUvWxYz</password>
+         <configuration>
+            <email>foo@foo.bar</email>
+         </configuration>
       </server>
    </servers>
    ```
@@ -157,7 +165,7 @@ Azure Portal を使用して Azure Container Registry を作成する手順を�
       <version>0.4.11</version>
       <configuration>
          <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-         <dockerDirectory>src/main/docker</dockerDirectory>
+         <dockerDirectory>${project.basedir}</dockerDirectory>
          <resources>
             <resource>
                <targetPath>/</targetPath>
@@ -240,7 +248,7 @@ Azure Portal を使用して Azure Container Registry を作成する手順を�
 >
 > 5. **[App settings]\(アプリ設定\)** セクションで、**PORT** という名前の新しい環境変数を追加して、この値にカスタム ポート番号を入力します。 (下の図の項目 #4 を参照。)
 >
-> 6. [ **Save**] をクリックします。 (下の図の項目 #5 を参照。)
+> 6. **[ Save]** をクリックします。 (下の図の項目 #5 を参照。)
 >
 > ![Azure Portal でのカスタム ポート番号の保存][LX03]
 >

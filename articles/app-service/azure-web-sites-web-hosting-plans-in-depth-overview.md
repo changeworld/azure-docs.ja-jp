@@ -1,5 +1,5 @@
 ---
-title: "Azure App Service プランの詳細な概要 | Microsoft Docs"
+title: "Azure App Service Web Apps での App Service プラン | Microsoft Docs"
 description: "Azure App Service の App Service プランのしくみと、それが管理機能にもたらすメリットについて説明します。"
 keywords: "App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
 services: app-service
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
-ms.openlocfilehash: 688f57de662fec6a04227c35d6578097c795c6da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb5b782f09bdd8c8a862eddfbd65b0f86ef8d08c
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2017
 ---
-# <a name="azure-app-service-plans-in-depth-overview"></a>Azure App Service プランの詳細な概要
+# <a name="app-service-plans-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での App Service プラン
 
 App Service プランは、アプリをホストするために使用する物理リソースのコレクションを表しています。
 

@@ -17,11 +17,11 @@ ms.workload: big-data
 ms.date: 10/06/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: fd95d055bedbec89027e1a75bcd4c9addab18ed3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8961576d1a7de268bab2f4adf01d89dde1fc8776
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>SSH を使用して HDInsight (Hadoop) に接続する
 
@@ -135,7 +135,7 @@ SSH ユーザー アカウントのパスワード変更に関する詳細につ
 
 __ドメイン参加済み HDInsight クラスター__を使用している場合、SSH 接続の後で `kinit` コマンドを使用する必要があります。 このコマンドを実行すると、ドメイン ユーザーとパスワードの入力が求められ、クラスターに関連付けられた Azure Active Directory ドメインによってセッションが認証されます。
 
-詳細については、[ドメイン参加済み HDInsight の構成](hdinsight-domain-joined-configure.md)に関する記事を参照してください。
+詳細については、[ドメイン参加済み HDInsight の構成](./domain-joined/apache-domain-joined-configure.md)に関する記事を参照してください。
 
 ## <a name="connect-to-nodes"></a>ノードへの接続
 

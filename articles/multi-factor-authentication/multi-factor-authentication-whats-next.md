@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
-ms.openlocfilehash: 65a149b0d291bc650e0937c7ef3f90600f54c669
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 8ff991ffb05bb92f047cc8dfc40e80b704379898
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Azure Multi-Factor Authentication の設定を構成する - パブリック プレビュー
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/17/2017
    ![不正アクセスのアラート](./media/multi-factor-authentication-whats-next/fraudalert.png)
 
 3. **[ユーザーが不正アクセスを通報できるようにする]** を**オン**にします。
-4. [ **保存**] を選択します。
+4. **[ 保存]** を選択します。
 
 ### <a name="configuration-options"></a>構成オプション
 
@@ -160,7 +160,10 @@ ms.lasthandoff: 10/17/2017
 5. Multi-Factor Authentication の **[サービス設定の管理]** を選択します。
 6. [サービス設定] ページの [信頼できる IP] には、次の 2 つのオプションがあります。
    
-   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。
+   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 AD FS で "c:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);" という規則を作成する必要があります (まだ存在しない場合)。
+
+
+
    * **特定範囲の IP から送信されたリクエストの場合** - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。 例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。 最大で 50 の IP アドレス範囲を入力できます。 これらの IP アドレスからサインインしているユーザーは、2 段階認証をバイパスします。
 7. **[保存]**をクリックします。
 8. 更新が適用されたら、**[閉じる]** をクリックします。

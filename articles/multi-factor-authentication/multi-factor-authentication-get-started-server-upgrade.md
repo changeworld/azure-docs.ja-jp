@@ -3,7 +3,7 @@ title: "PhoneFactor から Azure MFA Server へのアップグレード | Micros
 description: "古い phonefactor エージェントからアップグレードする場合の Azure MFA Server の概要。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: yossib
 ms.assetid: 42838ff7-bdf2-4d06-bacc-b3839a00cd76
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/06/2017
-ms.author: kgremban
-ms.openlocfilehash: 7ab7e693909f807781744ae53eed75d425096590
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: joflore
+ms.openlocfilehash: df7815ff16ac66531005f3a29550bdb419f3d052
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
 PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authentication Server にアップグレードするには、PhoneFactor エージェントと関連コンポーネントを最初にアンインストールします。 その後で、Multi-factor Authentication Server とその関連コンポーネントをインストールすることができます。

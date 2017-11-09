@@ -11,16 +11,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/01/2017
+ms.date: 10/31/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6db4a9308ede1744081f114c61f1ca0c303706e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9122cbb66c6089009dccccea9b985e3521d45179
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="high-availability-setup-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
+# <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
 
 **免責事項:** *このガイドは、正常に動作する Microsoft HANA L インスタンス環境でのセットアップのテストによって得られたものです。HANA L インスタンスの Microsoft サービス管理チームはオペレーティング システムをサポートしていないので、オペレーティング システム レイヤーでの詳細なトラブルシューティングや不明点については、SUSE に問い合わせる必要があります。Microsoft のサービス管理チームは、STONITH デバイスのセットアップを行い、STONITH デバイスに関する問題のトラブルシューティングについて全面的にサポートします。*
@@ -34,9 +34,9 @@ SUSE のクラスタリングを使って高可用性をセットアップする
 - NTP (タイム サーバー) がセットアップされている
 - 最新バージョンの SUSE のドキュメントで HA のセットアップに関する情報を読み、理解している
 
-### <a name="setup-details"></a>セットアップの詳細
-- このガイドでは、次の設定を使いました。
-- オペレーティング システム: SUSE 12 SP1
+### <a name="set-up-details"></a>セットアップの詳細
+- このガイドでは、次のセットアップを使いました。
+- オペレーティング システム: SLES 12 SP1 for SAP
 - HANA L インスタンス: 2xS192 (4 ソケット、2 TB)
 - HANA のバージョン: HANA 2.0 SP1
 - サーバー名: sapprdhdb95 (node1) および sapprdhdb96 (node2)
@@ -48,10 +48,11 @@ HSR で HANA L インスタンスをセットアップするときは、Microsof
 - サーバー名とサーバー IP アドレス (例: myhanaserver1、10.35.0.1)
 - 場所 (例: 米国東部)
 - 顧客名 (例: Microsoft)
+- SID - HANA システム識別子 (例: H11)
 
 STONITH デバイスの構成が済むと、Microsoft のサービス管理チームから iSCSI ストレージの SBD デバイス名と IP アドレスが提供されるので、それを使って STONITH のセットアップを構成できます。 
 
-STONITH を使ってエンド ツー エンドの HA をセットアップするには、次の手順のようにする必要があります。
+STONITH を使ってエンド ツー エンドの HA をセットアップするには、次の手順に従う必要があります。
 
 1.  SBD デバイスを識別する
 2.  SBD デバイスを初期化する
@@ -65,14 +66,18 @@ STONITH を使ってエンド ツー エンドの HA をセットアップする
 ## <a name="1---identify-the-sbd-device"></a>1. SBD デバイスを識別する
 このセクションでは、Microsoft のサービス管理チームが STONITH を構成した後で、セットアップ対象の SBD デバイスを特定する方法について説明します。 **このセクションは、既存のお客様のみが対象となります**。 新しいお客様の場合は、Microsoft のサービス管理チームが SBD のデバイス名を提供するので、お客様はこのセクションをスキップできます。
 
-1.1 */etc/iscsi/initiatorname.isci* を *iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber>* に変更します。  
-Microsoft のサービス管理チームがこの文字列を提供します。 これは**両方**のノードで行う必要がありますが、ノード番号はノードごとに異なります。
+1.1 */etc/iscsi/initiatorname.isci* を次のように変更します 
+``` 
+iqn.1996-04.de.suse:01:<Tenant><Location><SID><NodeNumber> 
+```
+
+Microsoft のサービス管理チームがこの文字列を提供します。 **両方**のノードでファイルを修正します。ただし、ノード番号はノードごとに異なります。
 
 ![initiatorname.png](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1.2 */etc/iscsi/iscsid.conf* を変更します。*node.session.timeo.replacement_timeout=5* および *node.startup = automatic* を設定します。 これは、**両方**のノードで行う必要があります。
+1.2 */etc/iscsi/iscsid.conf* を変更します。*node.session.timeo.replacement_timeout=5* および *node.startup = automatic* を設定します。 **両方**のノードでファイルを修正します。
 
-1.3 discovery コマンドを実行します。4 つのセッションが表示されます。 これは、両方のノードで行う必要があります。
+1.3 discovery コマンドを実行します。4 つのセッションが表示されます。 両方のノードで実行します。
 
 ```
 iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
@@ -80,7 +85,7 @@ iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 
 ![iSCSIadmDiscovery.png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-1.4 コマンドを実行して iSCSI デバイスにログインします。4 つのセッションが表示されます。 これは、**両方**のノードで行う必要があります。
+1.4 コマンドを実行して iSCSI デバイスにログインします。4 つのセッションが表示されます。 **両方**のノードで実行します。
 
 ```
 iscsiadm -m node -l
@@ -94,7 +99,7 @@ rescan-scsi-bus.sh
 ```
 ![rescanscsibus.png](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
-1.6 デバイス名を確認するには、*fdisk –l* コマンドを実行します。 両方のノードで実行します。 サイズが **178 MiB** のデバイスを選びます。
+1.6 デバイス名を確認するには、*fdisk –l* コマンドを実行します。 両方のノードで実行します。 サイズが **178 MiB** のデバイスを選択します。
 
 ```
   fdisk –l
@@ -120,7 +125,7 @@ sbd -d <SBD Device Name> dump
 ## <a name="3---configuring-the-cluster"></a>3. クラスターを構成する
 このセクションでは、SUSE HA クラスターをセットアップする手順について説明します。
 ### <a name="31-package-installation"></a>3.1 パッケージのインストール
-3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合は、それらをインストールします。 これは、**両方**のノードで行う必要があります。
+3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合はインストールします。 **両方**のノードにインストールしてください。
 ```
 zypper in -t pattern ha_sles
 zypper in SAPHanaSR SAPHanaSR-doc
@@ -158,7 +163,7 @@ Csync2 で IP アドレスと事前共有キーを使って認証が実行され
 **[Next]\(次へ\)** をクリックします
 ![yast-cluster-service.png](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
-既定のオプションでは起動はオフになっているので、Pacemaker が起動時に開始されるように "オン" に変更します。 セットアップの要件に基づいて選ぶことができます。
+既定のオプションでは起動はオフになっているので、Pacemaker が起動時に開始されるように "オン" に変更します。 セットアップの要件に基づいて選択することができます。
 **[Next]\(次へ\)** をクリックしてクラスターの構成を完了します。
 
 ## <a name="4---setting-up-the-softdog-watchdog"></a>4. Softdog ウォッチドッグを設定する
@@ -170,7 +175,7 @@ modprobe softdog
 ```
 ![modprobe-softdog.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog.png)
 
-4.2 **両方**のノードの */etc/sysconfig/sbd* ファイルを次のように更新します
+4.2 **両方**のノードの */etc/sysconfig/sbd* ファイルを次のように更新します。
 ```
 SBD_DEVICE="<SBD Device Name>"
 ```
@@ -182,7 +187,7 @@ modprobe softdog
 ```
 ![modprobe-softdog-command.png](media/HowToHLI/HASetupWithStonith/modprobe-softdog-command.png)
 
-4.4 **両方**のノードで次のようにして softdog が実行していることを確認します
+4.4 **両方**のノードで次のようにして、softdog が実行されていることを確認します。
 ```
 lsmod | grep dog
 ```
@@ -212,7 +217,7 @@ sbd  -d <SBD Device Name> list
 ```
 ![sbd-list-message.png](media/HowToHLI/HASetupWithStonith/sbd-list-message.png)
 
-4.9 sbd の構成を適用するには、*/etc/sysconfig/sbd* ファイルを次のように更新します。 これは、**両方**のノードで行う必要があります
+4.9 sbd の構成を適用するには、*/etc/sysconfig/sbd* ファイルを次のように更新します。 **両方**のノードでファイルを更新します
 ```
 SBD_DEVICE=" <SBD Device Name>" 
 SBD_WATCHDOG="yes" 
@@ -238,7 +243,7 @@ ha-cluster-join
 ```
 クラスターを参加させるときに "*エラー*" が発生する場合は、「*シナリオ 6: node2 がクラスターに参加できない*」をご覧ください。
 
-## <a name="6---validating-the-cluster"></a>6. クラスターを検証する
+## <a name="6---validating-the-cluster"></a>6. クラスターの検証
 
 ### <a name="61-start-the-cluster-service"></a>6.1 クラスター サービスを開始する
 確認し、必要に応じて**両方**のノードでクラスターを初めて開始します。
@@ -256,7 +261,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7.クラスターのプロパティとリソースを構成する 
 このセクションでは、クラスター リソースを構成する手順について説明します。
-この例では、次のリソースをセットアップしました。残りは、SUSE HA のガイドを参考にして (必要に応じて) 構成できます。 この構成は、**1 つのノード**だけで実行する必要があります。 プライマリ ノードで行います。
+この例では、次のリソースをセットアップしました。残りは、SUSE HA のガイドを参考にして (必要に応じて) 構成できます。 この構成は、**1 つのノード**だけで実行します。 プライマリ ノードで行います。
 
 - クラスターのブートストラップ
 - STONITH デバイス
@@ -337,7 +342,7 @@ Service pacemaker stop
 
 
 ## <a name="9-troubleshooting"></a>9.トラブルシューティング
-このセクションでは、セットアップ中に発生する可能性のあるいくつかの障害シナリオについて説明します。 これらの問題は必ず発生するとは限りません。
+このセクションでは、セットアップ中に発生する可能性があるいくつかの障害シナリオについて説明します。 これらの問題は必ず発生するとは限りません。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>シナリオ 1: クラスター ノードがオンラインではない
 クラスター マネージャーでいずれかのノードがオンラインと表示されない場合は、以下の方法でオンラインになる可能性があります。
@@ -364,7 +369,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
 ```
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>シナリオ 2: yast2 でグラフィカル ビューが表示されない
-このドキュメントでは、yast2 のグラフィカル画面を使って高可用性クラスターをセットアップしました。 次に示すように yast2 のグラフィカル ウィンドウが開かずに Qt エラーがスローされる場合は、次の手順のようにします。 グラフィカル ウィンドウが開く場合は、この手順を省略できます。
+このドキュメントでは、yast2 のグラフィカル画面を使って高可用性クラスターをセットアップしました。 次のような yast2 のグラフィカル ウィンドウが開かず、Qt エラーがスローされる場合は、次の手順に従います。 グラフィカル ウィンドウが開く場合は、この手順を省略できます。
 
 **エラー**
 
@@ -529,7 +534,7 @@ cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 ![ha-cluster-join-fix.png](media/HowToHLI/HASetupWithStonith/ha-cluster-join-fix.png)
 
 ## <a name="10-general-documentation"></a>10.一般的なドキュメント
-SUSE HA のセットアップについて詳しくは、次の記事をご覧ください。 
+SUSE HA のセットアップの詳細については、次の記事を参照してください。 
 
 - [SAP HANA SR パフォーマンス最適化シナリオ](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
 - [ストレージ ベースのフェンス操作](https://www.suse.com/documentation/sle-ha-2/book_sleha/data/sec_ha_storage_protect_fencing.html)

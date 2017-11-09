@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d3c8c79170e2f369a89c4ab0588e057d0228b573
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93e6c87a9d445ca448509a256247fb5e4749ec1c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>Azure の送信用接続の詳細
 
@@ -42,7 +42,7 @@ VM がパブリック IP アドレス空間で Azure の外部のエンドポイ
 
 SNAT ポートは有限のリソースであり、不足する可能性があります。 使用方法を理解することが大切です。 1 つの SNAT ポートは、1 つの宛先 IP アドレスへの 1 つのフローで消費されます。 同じ宛先 IP アドレスへの複数のフローでは、各フローが 1 つの SNAT ポートを消費します。 これにより、同じパブリック IP アドレスから同じ宛先 IP アドレスに送られる複数のフローが一意であることが保証されます。 別の宛先 IP アドレスへの複数のフローは、宛先ごとに 1 つの SNAT ポートを共有します。 宛先 IP アドレスによってフローが一意になります。
 
-[ロード バランサーの Log Analytics](load-balancer-monitor-log.md) と、[SNAT ポート不足メッセージを監視するためにアラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用できます。 SNAT ポート リソースがなくなると、既存のフローによって SNAT ポートが解放されない限り、送信フローは失敗します。 ロード バランサーは、SNAT ポートを再利用するために 4 分間のアイドル タイムアウトを使用します。
+[ロード バランサーの Log Analytics](load-balancer-monitor-log.md) と、[SNAT ポート不足メッセージを監視するためのアラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用して、送信接続の正常性を監視できます。 SNAT ポート リソースがなくなると、既存のフローによって SNAT ポートが解放されない限り、送信フローは失敗します。 ロード バランサーは、SNAT ポートを再利用するために 4 分間のアイドル タイムアウトを使用します。  以降の「[インスタンス レベル パブリック IP アドレスを含む VM (ロード バランサーあり、またはなし)](#vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer)」セクションと「[SNAT 不足の管理](#snatexhaust)」を参照してください。
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>インスタンス レベルのパブリック IP アドレスなしの負荷分散 VM
 
@@ -52,11 +52,11 @@ SNAT ポートは有限のリソースであり、不足する可能性があり
 
 SNAT ポートは有限のリソースであり、不足する可能性があります。 使用方法を理解することが大切です。 1 つの SNAT ポートは、1 つの宛先 IP アドレスへの 1 つのフローで消費されます。 同じ宛先 IP アドレスへの複数のフローでは、各フローが 1 つの SNAT ポートを消費します。 これにより、同じパブリック IP アドレスから同じ宛先 IP アドレスに送られる複数のフローが一意であることが保証されます。 別の宛先 IP アドレスへの複数のフローは、宛先ごとに 1 つの SNAT ポートを共有します。 宛先 IP アドレスによってフローが一意になります。
 
-[ロード バランサーの Log Analytics](load-balancer-monitor-log.md) と、[SNAT ポート不足メッセージを監視するためにアラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用できます。 SNAT ポート リソースがなくなると、既存のフローによって SNAT ポートが解放されない限り、送信フローは失敗します。 ロード バランサーは、SNAT ポートを再利用するために 4 分間のアイドル タイムアウトを使用します。
+[ロード バランサーの Log Analytics](load-balancer-monitor-log.md) と、[SNAT ポート不足メッセージを監視するためのアラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用して、送信接続の正常性を監視できます。 SNAT ポート リソースがなくなると、既存のフローによって SNAT ポートが解放されない限り、送信フローは失敗します。 ロード バランサーは、SNAT ポートを再利用するために 4 分間のアイドル タイムアウトを使用します。  次のセクションおよび「[SNAT 不足の管理](#snatexhaust)」を参照してください。
 
 ## <a name="vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer"></a>インスタンス レベル パブリック IP アドレスを含む VM (ロード バランサーあり、またはなし)
 
-このシナリオでは、VM にはインスタンス レベルのパブリック IP (ILPIP) が割り当てられています。 VM が負荷分散されているかどうかは関係ありません。 ILPIP が使用されるとき、Source Network Address Translation (SNAT) は使用されません。 VM はすべての送信フローで ILPIP を使用します。 アプリケーションが多数の送信フローを開始したために SNAT 不足が発生した場合は、SNAT の制約を回避するために ILPIP を割り当てることを検討してください。
+このシナリオでは、VM にはインスタンス レベルのパブリック IP (ILPIP) が割り当てられています。 VM が負荷分散されているかどうかは関係ありません。 ILPIP が使用されるとき、Source Network Address Translation (SNAT) は使用されません。 VM はすべての送信フローで ILPIP を使用します。 アプリケーションが多数の送信フローを開始したために SNAT 不足が発生した場合は、SNAT の制約を緩和するために ILPIP を割り当てることを検討してください。
 
 ## <a name="discovering-the-public-ip-used-by-a-given-vm"></a>所定の VM で使用されるパブリック IP の検出
 
@@ -66,14 +66,31 @@ SNAT ポートは有限のリソースであり、不足する可能性があり
 
 ## <a name="preventing-public-connectivity"></a>パブリック接続の防止
 
-VM による送信フローの作成が望ましくない状況や、送信フローで接続できる宛先を管理する要件がある場合があります。 このような場合に、[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) を使用して、VM が接続できる宛先を管理できます。 負荷分散された VM に NSG を適用するときは、[既定のタグ](../virtual-network/virtual-networks-nsg.md#default-tags)と[既定のルール](../virtual-network/virtual-networks-nsg.md#default-rules)に注意する必要があります。
+VM による送信フローの作成が望ましくない状況や、送信フローで接続できる宛先、受信フローを開始できる宛先を管理する要件がある場合があります。 このような場合に、[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) を使用して、VM が接続できる宛先や受信フローを開始できるパブリックの宛先を管理できます。 負荷分散された VM に NSG を適用するときは、[既定のタグ](../virtual-network/virtual-networks-nsg.md#default-tags)と[既定のルール](../virtual-network/virtual-networks-nsg.md#default-rules)に注意する必要があります。
 
 VM が Azure Load Balancer からのヘルス プローブ要求を受け取ることができるようにしておいてください。 NSG が AZURE_LOADBALANCER 既定タグからのヘルス プローブ要求をブロックすると、VM のヘルス プローブが失敗して VM が停止しているとマークされます。 ロード バランサーはその VM への新しいフローの送信を停止します。
+
+## <a name="snatexhaust"></a>SNAT 不足の管理
+
+SNAT に使用されるエフェメラル ポートは、「[インスタンス レベルのパブリック IP アドレスなしのスタンドアロン VM](#standalone-vm-with-no-instance-level-public-ip-address)」および「[インスタンス レベルのパブリック IP アドレスなしの負荷分散 VM](#standalone-vm-with-no-instance-level-public-ip-address)」で説明されているように有限のリソースです。  
+
+一般に、同じ宛先に対して多数の送信接続が開始されることが事前にわかっている場合や、送信接続エラーが観察される場合、または自分のせいで SNAT ポートが不足しているとサポートから指摘された場合、問題の軽減策としていくつかの選択肢があります。  それらをよく吟味して、実際のシナリオに最適な選択肢を判断してください。  それらを 1 つまたは複数組み合わせることが状況改善に役立つ場合もあります。
+
+### <a name="assign-an-instance-level-public-ip-to-each-vm"></a>インスタンスレベル パブリック IP を個々の VM に割り当てる
+これは、[インスタンスレベル パブリック IP を VM に割り当てる](#vm-with-an-instance-level-public-ip-address-with-or-without-load-balancer)シナリオへの移行を伴う方法です。  パブリック IP のエフェメラル ポートが、それぞれのバックエンド プールに関連付けられている全 VM 間で共有されるシナリオとは対照的に、それぞれの VM に使用されるパブリック IP のエフェメラル ポートをその VM が独占できます。
+
+### <a name="modify-application-to-use-connection-pooling"></a>接続プーリングを使用するようにアプリケーションを変更する
+SNAT に使用されるエフェメラル ポートの需要は、アプリケーションに接続プーリングを使用することで減らすことができます。  同じ宛先に対するフローが連続すると、次々にポートが消費されます。  複数の要求に対して同じフローを再利用すれば、複数の要求で消費されるポートが 1 つで済みます。
+
+### <a name="modify-application-to-use-less-aggressive-retry-logic"></a>再試行の頻度を抑えるようにアプリケーションのロジックを変更する
+エフェメラル ポートの需要は、再試行の頻度を抑えたロジックを使用することで減らすことができます。  SNAT に使用されるエフェメラル ポートが不足しているときに、減退やバックオフ ロジックを使わず単純に再試行を繰り返す方法は、ポート不足の慢性化を引き起こします。  エフェメラル ポートには、4 分間のアイドル タイムアウト (調整不可) が設けられており、再試行の頻度が多すぎた場合、ポート不足は自然には解消されません。
 
 ## <a name="limitations"></a>制限事項
 
 [複数の (パブリック) IP アドレスがロード バランサーに関連付けられている](load-balancer-multivip-overview.md)場合、すべてのパブリック IP アドレスが送信フローの候補になります。
 
 Azure に使用されているアルゴリズムは、利用できる SNAT ポートの数をプールのサイズから判断します。  現時点では、これを構成によって変更することはできません。
+
+送信接続には、4 分間のアイドル タイムアウトが設けられています。  この時間は調整できません。
 
 利用できる SNAT ポートの数が、そのまま接続数に変換されるわけではないことに注意してください。 SNAT ポートがどのタイミングでいくつ割り当てられるかについて、またこの有限なリソースを管理する方法については、上記を参照してください。

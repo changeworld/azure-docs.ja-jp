@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: df931d0f76498506cfc946501e4d385d0dfead80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 978606aa5f16842f8198ee67a65b476b4f560ab7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行
 
@@ -33,7 +33,7 @@ Mono バージョン 4.2.1 は HDInsight バージョン 3.5 に付属してい�
 Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) をご覧ください。
 
 > [!IMPORTANT]
-> SCP.NET フレームワークは Mono と互換性があります。 詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
+> SCP.NET フレームワークは Mono と互換性があります。 詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](storm/apache-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 
 ## <a name="automated-portability-analysis"></a>自動の移植性分析
 
@@ -74,8 +74,8 @@ Visual Studio を引き続き使用して、HDInsight 用の .NET ソリュー�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [HDInsight の MapReduce での C# の使用](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [HDInsight の MapReduce での C# の使用](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Hive と Pig での C# ユーザー定義関数の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Hive と Pig での C# ユーザー定義関数の使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight での Storm の C# トポロジの開発](hdinsight-storm-develop-csharp-visual-studio-topology.md)
+* [HDInsight での Storm の C# トポロジの開発](storm/apache-storm-develop-csharp-visual-studio-topology.md)

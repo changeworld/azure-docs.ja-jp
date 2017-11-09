@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 06/22/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 0098d6cf23e17967114771ea318401c95062ebf7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 65dc2c4ed85253b79aa47428c414d4ec8ce7e515
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Azure での Linux 仮想マシンのデプロイに関する問題のトラブルシューティング
 

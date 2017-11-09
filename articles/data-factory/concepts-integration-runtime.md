@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/15/2017
 ms.author: shlo
-ms.openlocfilehash: 82b1dc036b53fbc1f0159d77ce102dcd054ea722
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7851a24e7053e03cc28927ffae3a2b69a3291635
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 統合ランタイム (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -155,8 +155,8 @@ Data Factory は、同じ地理的な場所の、シンクに最も近いリー�
 &nbsp; | オーストラリア南東部 | オーストラリア南東部
 日本 | 東日本 | 東日本
 &nbsp; | 西日本 | 東日本
-韓国 | 韓国中部 | 韓国南部
-&nbsp; | 韓国南部 | 韓国南部
+韓国 | 韓国中部 | 韓国中部
+&nbsp; | 韓国南部 | 韓国中部
 インド | インド中部 | インド中部
 &nbsp; | インド西部 | インド中部
 &nbsp; | インド南部 | インド中部

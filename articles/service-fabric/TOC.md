@@ -136,11 +136,30 @@
 ## [API Management との統合](service-fabric-api-management-overview.md)
 
 ## 監視と診断
-### [概要](service-fabric-diagnostics-overview.md)
-### [正常性モデル](service-fabric-health-introduction.md)
-### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
-### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
-### [Reliable Service Remoting のパフォーマンス カウンター](service-fabric-reliable-serviceremoting-diagnostics.md)
+### [アプリケーションの監視と診断](service-fabric-diagnostics-overview.md)
+### イベントの生成
+#### [プラットフォーム レベルのイベントの生成](service-fabric-diagnostics-event-generation-infra.md)
+##### [操作チャネル](service-fabric-diagnostics-event-generation-operational.md)
+##### [Reliable Services のイベント](service-fabric-reliable-services-diagnostics.md)
+##### [Reliable Actors のイベント](service-fabric-reliable-actors-diagnostics.md)
+##### [パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)
+##### [サービスのリモート処理の監視](service-fabric-reliable-serviceremoting-diagnostics.md)
+#### [アプリケーション レベルのイベントの生成](service-fabric-diagnostics-event-generation-app.md)
+### アプリケーションとクラスターの正常性の確認
+#### [Service Fabric の正常性の監視](service-fabric-health-introduction.md)
+#### [サービス正常性のレポートとチェック](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+#### [カスタム正常性レポートの追加](service-fabric-report-health.md)
+#### [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+#### [正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
+### 集計値
+#### [EventFlow を使ったイベントの集計](service-fabric-diagnostics-event-aggregation-eventflow.md)
+#### Azure 診断を使ったイベントの集計
+##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
+##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
+### イベントの分析
+#### [Application Insight を使ったイベントの分析](service-fabric-diagnostics-event-analysis-appinsights.md)
+#### [OMS を使ったイベントの分析](service-fabric-diagnostics-event-analysis-oms.md)
+### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # ハウツー ガイド
 ## 開発環境を設定する
@@ -317,30 +336,12 @@
 #### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
 
 ## 監視と診断
-### [アプリケーションの監視と診断](service-fabric-diagnostics-overview.md)
-### イベントの生成
-#### [プラットフォーム レベルのイベントの生成](service-fabric-diagnostics-event-generation-infra.md)
-##### [操作チャネル](service-fabric-diagnostics-event-generation-operational.md)
-##### [Reliable Services のイベント](service-fabric-reliable-services-diagnostics.md)
-##### [Reliable Actors のイベント](service-fabric-reliable-actors-diagnostics.md)
-##### [パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)
-#### [アプリケーション レベルのイベントの生成](service-fabric-diagnostics-event-generation-app.md)
-### アプリケーションとクラスターの正常性の確認
-#### [Service Fabric の正常性の監視](service-fabric-health-introduction.md)
-#### [サービス正常性のレポートとチェック](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-#### [カスタム正常性レポートの追加](service-fabric-report-health.md)
-#### [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-#### [正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
-#### [Windows Server コンテナーの監視](service-fabric-diagnostics-containers-windowsserver.md)
-### 集計値
-#### [EventFlow を使ったイベントの集計](service-fabric-diagnostics-event-aggregation-eventflow.md)
-#### Azure 診断を使ったイベントの集計
-##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
-##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
-### イベントの分析
-#### [Application Insight を使ったイベントの分析](service-fabric-diagnostics-event-analysis-appinsights.md)
-#### [OMS を使ったイベントの分析](service-fabric-diagnostics-event-analysis-oms.md)
-### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
+### OMS
+#### [OMS Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)
+#### [OMS エージェントの追加](service-fabric-diagnostics-oms-agent.md)
+#### [コンテナーの監視](service-fabric-diagnostics-oms-containers.md)
+### パフォーマンスの監視
+#### [WAD を使用したパフォーマンスの監視](service-fabric-diagnostics-perf-wad.md)
 
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)

@@ -11,11 +11,11 @@ ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 06/23/2017
-ms.openlocfilehash: 1ad2e586960be1fcb302c5459975f5a11dd8068e
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 0a59e7b2d683d706d69cdc48c759add9da97d805
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL: .NET (C#) を使用した接続とデータの照会
 このクイックスタートでは、C# アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、C# を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
@@ -28,20 +28,7 @@ ms.lasthandoff: 10/23/2017
 さらに、以下を実行する必要があります。
 - [.NET Framework](https://www.microsoft.com/net/download) のインストール。 リンク先の記事の手順に従って、プラットフォーム (Windows、Ubuntu Linux、または macOS) に応じた .NET をインストールしてください。 
 - コードの入力と編集に使用する [Visual Studio](https://www.visualstudio.com/downloads/) または Visual Studio Code のインストール。
-- [Npgsql](http://www.npgsql.org/doc/index.html) ライブラリのインストール (下記参照)。
-
-## <a name="install-npgsql-references-into-your-visual-studio-solution"></a>Visual Studio ソリューションへの Npgsql 参照のインストール
-C# アプリケーションから PostgreSQL に接続するには、Npgsql と呼ばれるオープンソースの ADO.NET ライブラリを使用します。 NuGet を使用すると、参照のダウンロードと管理を簡単に実行できます。
-
-1. 新しい C# ソリューションを作成するか、既存のものを開きます。 
-   - Visual Studio で、**[ファイル]** メニューの **[新規作成]** > **[プロジェクト]** の順にクリックして、ソリューションを作成します。
-   - [新しいプロジェクト] ダイアログ ボックスで、**[テンプレート]** > **[Visual C#]** の順に展開します。 
-   - 適切なテンプレートを選択します (**Console App (.NET Core)** など)。
-
-2. Nuget パッケージ マネージャーを使用して Npgsql をインストールします。
-   - **[ツール]** メニューの **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順にクリックします。
-   - **[パッケージ マネージャー コンソール]** で、「`Install-Package Npgsql`」と入力します。
-   - このインストール コマンドにより、Npgsql.dll および関連するアセンブリがダウンロードされ、依存関係としてソリューションに追加されます。
+- [Npgsql](https://github.com/npgsql/Npgsql/releases) ライブラリをダウンロードし、インストールします。
 
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。

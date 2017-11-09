@@ -1,9 +1,9 @@
 ---
-title: "Kubernertes on Azure チュートリアル - Kubernetes の監視 | Microsoft Docs"
+title: "Kubernertes on Azure チュートリアル - Kubernetes の監視"
 description: "AKS チュートリアル - Microsoft Operations Management Suite (OMS) を使用した Kubernetes の監視"
 services: container-service
 documentationcenter: 
-author: dlepow
+author: neilpeterson
 manager: timlt
 editor: 
 tags: aks, azure-container-service
@@ -15,42 +15,60 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2017
-ms.author: danlep
+ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 199779d47b6b13ac1d426e64364b4b24fe5db3d5
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: a41f699291a65129906680cbb6719c2478c0d830
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="monitor-azure-container-service-aks"></a>Azure Container Service (AKS) の監視
 
-Kubernetes クラスターとコンテナーの監視は重要なことであり、複数のアプリを含む大規模な運用クラスターを管理するときは特に重要です。 
+Kubernetes クラスターとコンテナーの監視は重要なことであり、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
-Microsoft または他のプロバイダーから提供されている複数の Kubernetes 監視ソリューションを利用できます。 このチュートリアルでは、Microsoft のクラウドベースの IT 管理ソリューションである [Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md) のコンテナー ソリューションを使って、Kubernetes クラスターを監視します  (OMS コンテナー ソリューションはプレビューです)。
+このチュートリアルでは、[Log Analytics のコンテナー監視ソリューション](../log-analytics/log-analytics-containers.md)を使用して AKS クラスターの監視を構成します。
 
 この 8 部構成の 7 番目のチュートリアルでは、次のタスクについて説明します。
 
 > [!div class="checklist"]
-> * OMS ワークスペースの設定を取得する
-> * Kubernetes ノード上に OMS エージェントを設定する
-> * OMS ポータルまたは Azure Portal で監視情報にアクセスする
+> * コンテナー監視ソリューションの構成
+> * 監視エージェントの構成
+> * Azure Portal で監視情報にアクセスする
 
 ## <a name="before-you-begin"></a>開始する前に
 
-前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、イメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 
+前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、イメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。
 
-これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./tutorial-kubernetes-prepare-app.md)」に戻ってください。 
+これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./tutorial-kubernetes-prepare-app.md)」に戻ってください。
+
+## <a name="configure-the-monitoring-solution"></a>監視ソリューションの構成
+
+Azure Portal で **[新規]** を選択して `Container Monitoring Solution` を検索します。 見つかったら、**[作成]** を選択します。
+
+![ソリューションの追加](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
+
+新しい OMS ワークスペースを作成するか、既存の OMS ワークスペースを選択します。 OMS ワークスペース フォームでは、このプロセスについて説明しています。
+
+ワークスペースを作成するときに、簡単に取得できるように **[ダッシュボードにピン留めする]** を選択します。
+
+![OMS ワークスペース](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
+
+操作が完了したら、**[OK]** をクリックします。 検証が完了したら、**[作成]** を選択して、コンテナー監視ソリューションを作成します。
+
+ワークスペースが作成されると、Azure ポータルに表示されます。
 
 ## <a name="get-workspace-settings"></a>ワークスペースの設定を取得する
 
-[OMS ポータル](https://mms.microsoft.com)にアクセスできる場合は、**[設定]** > **[接続されたソース]** > **[Linux サーバー]** に移動します。 そこでは、"*ワークスペース ID*" とプライマリまたはセカンダリの "*ワークスペース キー*" がわかります。 クラスターに OMS エージェントを設定するときに必要になるので、これらの値を書き留めます。
+Kubernetes ノードにソリューション エージェントを構成するには、Log analytics ワークスペース ID およびキーが必要です。
 
-## <a name="set-up-oms-agents"></a>OMS エージェントを設定する
+これらの値を取得するには、コンテナー ソリューションの左側のメニューから **[OMS ワークスペース]** を選択します。 **[詳細設定]** を選択し、**ワークスペース ID** と**主キー**を書き留めます。
 
-ここで示すのは、Linux クラスター ノードに OMS エージェントを設定するための YAML ファイルです。 このファイルでは、各クラスター ノードで単一の同じポッドを実行する Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) が作成されます。 DaemonSet リソースは、監視エージェントのデプロイに最適です。 
+## <a name="configure-monitoring-agents"></a>監視エージェントの構成
 
-次のテキストを `oms-daemonset.yaml` という名前のファイルに保存し、*myWorkspaceID* と *myWorkspaceKey* のプレースホルダー値を実際の OMS ワークスペースの ID とキーに置き換えます  (運用環境では、これらの値をシークレットとしてエンコードできます)。
+次の Kubernetes マニフェスト ファイルを使用して、Kubernetes クラスター上にコンテナー監視エージェントを構成できます。 このファイルでは、各クラスター ノードで単一のポッドを実行する Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) が作成されます。
+
+次のテキストを `oms-daemonset.yaml` という名前のファイルに保存し、`WSID` と `KEY` のプレースホルダー値を実際の Log Analytics ワークスペースの ID とキーに置き換えます。
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -62,31 +80,31 @@ spec:
   metadata:
    labels:
     app: omsagent
-    agentVersion: v1.3.4-127
+    agentVersion: 1.4.0-12
     dockerProviderVersion: 10.0.0-25
   spec:
    containers:
-     - name: omsagent 
+     - name: omsagent
        image: "microsoft/oms"
        imagePullPolicy: Always
        env:
        - name: WSID
-         value: myWorkspaceID
-       - name: KEY 
-         value: myWorkspaceKey
-       - name: DOMAIN
-         value: opinsights.azure.com
+         value: <WSID>
+       - name: KEY
+         value: <KEY>
        securityContext:
          privileged: true
        ports:
        - containerPort: 25225
-         protocol: TCP 
+         protocol: TCP
        - containerPort: 25224
          protocol: UDP
        volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-sock
-        - mountPath: /var/log 
+        - mountPath: /var/opt/microsoft/omsagent/state/containerhostname
+          name: container-hostname
+        - mountPath: /var/log
           name: host-log
        livenessProbe:
         exec:
@@ -96,10 +114,21 @@ spec:
          - ps -ef | grep omsagent | grep -v "grep"
         initialDelaySeconds: 60
         periodSeconds: 60
+   nodeSelector:
+    beta.kubernetes.io/os: linux
+   # Tolerate a NoSchedule taint on master that ACS Engine sets.
+   tolerations:
+    - key: "node-role.kubernetes.io/master"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
    volumes:
-    - name: docker-sock 
+    - name: docker-sock
       hostPath:
        path: /var/run/docker.sock
+    - name: container-hostname
+      hostPath:
+       path: /etc/hostname
     - name: host-log
       hostPath:
        path: /var/log
@@ -107,36 +136,30 @@ spec:
 
 次のコマンドを使って DaemonSet を作成します。
 
-```azurecli
+```azurecli-interactive
 kubectl create -f oms-daemonset.yaml
 ```
 
 DaemonSet が作成されたことを確認するには、次のコマンドを実行します。
 
-```azurecli
+```azurecli-interactive
 kubectl get daemonset
 ```
 
 次のような出力になります。
 
-```azurecli
-NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR   AGE
-omsagent   3         3         3         0            3           <none>          5m
+```
+NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR                 AGE
+omsagent   3         3         3         3            3           beta.kubernetes.io/os=linux   8m
 ```
 
 エージェントが実行した後、OMS がデータを取り込んで処理するまでには数分かかります。
 
 ## <a name="access-monitoring-data"></a>監視データにアクセスする
 
-OMS ポータルまたは Azure Portal で[コンテナー ソリューション](../log-analytics/log-analytics-containers.md)を使って OMS コンテナー監視データを表示および分析します。 
+Azure ポータルで、ポータル ダッシュボードにピン留めされた Log Analytics ワークスペースを選択します。 **[コンテナー監視ソリューション]** タイルをクリックします。 ここで、AKS クラスターとクラスターのコンテナーに関する情報を表示できます。
 
-[OMS ポータル](https://mms.microsoft.com)を使ってコンテナー ソリューションをインストールするには、**[ソリューション ギャラリー]** に移動します。 そこで、**コンテナー ソリューション**を追加します。 または、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview) からコンテナー ソリューションを追加します。
-
-OMS ポータルの OMS ダッシュボードで、**[コンテナー]** 概要タイルを探します。 タイルをクリックすると、コンテナー イベント、エラー、状態、イメージ インベントリ、CPU とメモリの使用量などの詳細が表示されます。 さらに詳しい情報を見るには、いずれかのタイルで行をクリックするか、[ログ検索](../log-analytics/log-analytics-log-searches.md)を実行します。
-
-![OMS ポータルのコンテナー ダッシュボード](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
-
-同様に、Azure Portal では、**[Log Analytics]** に移動してワークスペースを選択します。 **[コンテナー]** 概要タイルを表示するには、**[ソリューション]** > **[コンテナー]** の順にクリックします。 詳細を表示するには、タイルをクリックします。
+![ダッシュボード](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
 監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../log-analytics/index.yml)をご覧ください。
 
@@ -145,10 +168,9 @@ OMS ポータルの OMS ダッシュボードで、**[コンテナー]** 概要�
 このチュートリアルでは、OMS で クラスターを監視しました。 次のタスクを行いました。
 
 > [!div class="checklist"]
-> * OMS ワークスペースの設定を取得する
-> * Kubernetes ノード上に OMS エージェントを設定する
-> * OMS ポータルまたは Azure Portal で監視情報にアクセスする
-
+> * コンテナー監視ソリューションの構成
+> * 監視エージェントの構成
+> * Azure Portal で監視情報にアクセスする
 
 次のチュートリアルに進んで、Kubernetes の新しいバージョンへのアップグレードについて学習してください。
 

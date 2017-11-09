@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;deguhath
-ms.openlocfilehash: 8f1d9ab5186684c4aac806ace4ebfd38ca1fb306
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19e963a56e8f905bb89d0162c65e893ae7515a97
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Scala および Azure 上の Spark を使用したデータ サイエンス
 この記事では、Azure HDInsight Spark クラスターで Spark のスケーラブルな MLlib と Spark ML パッケージを用いて、教師あり機械学習タスクに Scala を使用する方法を説明します。 また、 [データ サイエンス プロセス](http://aka.ms/datascienceprocess)(データの取り込みと探索、視覚化、特徴エンジニアリング、モデリング、モデルの使用) を構成するタスクについても説明します。 本記事のモデルでは、2 つの一般的な教師あり機械学習タスクに加えて、ロジスティック回帰および線形回帰、ランダム フォレスト、および勾配ブースティング ツリー (GBT) を扱います。
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 [Spark](http://spark.apache.org/) は、ビッグ データ分析アプリケーションのパフォーマンスを高めるメモリ内処理をサポートする、オープンソースの並列処理フレームワークです。 Spark 処理エンジンは、高速かつ簡単に高度な分析を行うことができるように作成されています。 Spark のメモリ内の分散計算機能により、機械学習とグラフ計算における反復的なアルゴリズムに対して、Spark は適切な選択肢となります。 [spark.ml](http://spark.apache.org/docs/latest/ml-guide.html) パッケージでは、実用的な機械学習パイプラインの作成および調整に役立つデータ フレームを基盤とする、高レベルの API 一式が提供されます。 [MLlib](http://spark.apache.org/mllib/) はスケーラブルな Spark の機械学習ライブラリであり、これにより分散環境でもモデリング機能を使用できます。
 
-[HDInsight Spark](../../hdinsight/hdinsight-apache-spark-overview.md) は、Azure でホストされるオープンソースの Spark サービスです。 Spark クラスターの Jupyter Scala Notebook もサポートされており、Spark SQL の対話型クエリを実行して、Azure BLOB ストレージに保管されているデータを変換、フィルター処理、視覚化することができます。 この記事でソリューションを提供したり、関連するプロットを表示してデータを視覚化したりする Scala コード スニペットは、Spark クラスターにインストールされた Jupyter Notebook で実行されます。 各トピックのモデリング手順には、各種モデルをトレーニング、評価、保存、および使用する方法を示すコードも含まれています。
+[HDInsight Spark](../../hdinsight/spark/apache-spark-overview.md) は、Azure でホストされるオープンソースの Spark サービスです。 Spark クラスターの Jupyter Scala Notebook もサポートされており、Spark SQL の対話型クエリを実行して、Azure BLOB ストレージに保管されているデータを変換、フィルター処理、視覚化することができます。 この記事でソリューションを提供したり、関連するプロットを表示してデータを視覚化したりする Scala コード スニペットは、Spark クラスターにインストールされた Jupyter Notebook で実行されます。 各トピックのモデリング手順には、各種モデルをトレーニング、評価、保存、および使用する方法を示すコードも含まれています。
 
 この記事のセットアップ手順およびコードは、Azure HDInsight 3.4 Spark 1.6 向けのものです。 ただし、この記事および [Scala Jupyter Notebook](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration%20Modeling%20and%20Scoring%20using%20Scala.ipynb) のコードは汎用的であり、あらゆる Spark クラスターで機能します。 HDInsight Spark を使用していない場合、クラスターのセットアップと管理の手順は、この記事に記載されている内容と若干異なります。
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプションが必要です。 Azure サブスクリプションがない場合は、 [Azure 無料試用版の入手](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* 以下の手順を完了するために、Azure HDInsight 3.4 Spark 1.6 クラスターが必要です。 クラスターの作成については、 [Azure HDInsight での Apache Spark クラスターの作成](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)に関するページの手順を参照してください。 クラスターの種類とバージョンは、 **[Select Cluster Type (クラスターの種類の選択)]** メニューから指定します。
+* 以下の手順を完了するために、Azure HDInsight 3.4 Spark 1.6 クラスターが必要です。 クラスターの作成については、 [Azure HDInsight での Apache Spark クラスターの作成](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)に関するページの手順を参照してください。 クラスターの種類とバージョンは、 **[Select Cluster Type (クラスターの種類の選択)]** メニューから指定します。
 
 ![HDInsight クラスターの種類の構成](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -86,7 +86,7 @@ Spark カーネルには定義済みの "マジック" が用意されていま�
 * `%%local`: 後続行のコードをローカルで実行するように指定します。 コードは有効な Scala コードである必要があります。
 * `%%sql -o <variable name>`: `sqlContext` に対して Hive クエリを実行します。 `-o` パラメーターを渡すと、クエリの結果が Spark データ フレームとして `%%local` Scala コンテキストで永続化されます。
 
-Jupyter Notebook のカーネルと、`%%` で呼び出すことができる定義済みの "マジック" (例: `%%local`) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
+Jupyter Notebook のカーネルと、`%%` で呼び出すことができる定義済みの "マジック" (例: `%%local`) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
 
 ### <a name="import-libraries"></a>ライブラリのインポート
 次のコードを使用して、Spark や MLlib などの必要なライブラリをインポートします。

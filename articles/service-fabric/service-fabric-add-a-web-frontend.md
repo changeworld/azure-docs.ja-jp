@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/01/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: b19aaa652f2c15573ded632ca1348e1a6752f080
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a63a15782b85a48552fd913d5d3f8aaaae7db44
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>ASP.NET Core を使用したアプリケーション用の Web サービス フロントエンドの構築
 既定では、Azure Service Fabric サービスには、Web に対するパブリック インターフェイスがありません。 HTTP クライアントにアプリケーションの機能を公開するには、エントリ ポイントとして機能する Web プロジェクトを作成し、そこから個々のサービスと通信する必要があります。
@@ -210,12 +210,6 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     ![ブラウザーに表示されたステートフル カウンター値][browser-aspnet-counter-value]
    
     定期的にブラウザーを更新して、カウンターの値が更新されるのを確認します。
-
-## <a name="kestrel-and-weblistener"></a>Kestrel と WebListener
-
-Kestrel という既定の ASP.NET Core Web サーバーは、[現在、インターネットに直接接続するトラフィックを処理](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel)することはできません。 そのため、Service Fabric 用の ASP.NET Core ステートレス サービス テンプレートでは、既定で [WebListener](https://docs.microsoft.com/aspnet/core/fundamentals/servers/weblistener) が使用されます。 
-
-Service Fabric サービスの Kestrel および WebListener の詳細については、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」を参照してください。
 
 ## <a name="connecting-to-a-reliable-actor-service"></a>Reliable Actor サービスへの接続
 このチュートリアルではステートフル サービスと通信する Web フロントエンドの追加を取り上げました。 ただし、非常によく似たモデルに従ってアクターと対話することもできます。 Reliable Actor プロジェクトを作成すると、Visual Studio によってインターフェイス プロジェクトが自動的に生成されます。 そのインターフェイスを使用して Web プロジェクトでアクター プロキシを生成し、アクターと通信できます。 通信チャネルは自動的に指定されます。 そのため、このチュートリアルでステートフル サービスに関して行ったような `ServiceRemotingListener` の確立に相当することは何も行う必要がありません。

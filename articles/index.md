@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags: clicktale
-ms.openlocfilehash: 1cce8a0c31a7bb7e4c6e228261b27244a762b441
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 810133d91382bffbcd728f9484e075da04da0fd8
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -302,7 +302,7 @@ ms.lasthandoff: 11/01/2017
                                         <li>
                                             <a href="/azure/container-service/">
                                                 <img src="media/index/containerservice.svg" alt="" />
-                                                <p>Azure Container Service</p>
+                                                <p>Azure Container Service (AKS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -314,8 +314,7 @@ ms.lasthandoff: 11/01/2017
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>Batch
-</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                         <li>
@@ -387,7 +386,7 @@ ms.lasthandoff: 11/01/2017
                                         <li>
                                             <a href="/azure/container-service/">
                                                 <img src="media/index/ContainerService.svg" alt="" />
-                                                <p>Azure Container Service</p>
+                                                <p>Azure Container Service (AKS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -417,8 +416,7 @@ ms.lasthandoff: 11/01/2017
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>Batch
-</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1354,8 +1352,8 @@ ms.lasthandoff: 11/01/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Container Service</h3>
-                                                    <p>Kubernetes、DC/OS、または Docker Swarm を使用したコンテナーのスケーリングと調整</p>
+                                                    <h3>Azure Container Service (AKS)</h3>
+                                                    <p>Kubernetes を使用してコンテナー化されたアプリケーションを大規模に実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1392,8 +1390,7 @@ ms.lasthandoff: 11/01/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Batch
-</h3>
+                                                    <h3>Batch</h3>
                                                     <p>クラウド規模のジョブ スケジュール設定とコンピューティング管理</p>
                                                 </div>
                                             </div>
@@ -2022,8 +2019,8 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Container Service</h3>
-                                                    <p>Kubernetes、DC/OS、または Docker Swarm を使用したコンテナーのスケーリングと調整</p>
+                                                    <h3>Azure Container Service (AKS)</h3>
+                                                    <p>Kubernetes を使用してコンテナー化されたアプリケーションを大規模に実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2117,8 +2114,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Batch
-</h3>
+                                                    <h3>Batch</h3>
                                                     <p>クラウド規模のジョブ スケジュール設定とコンピューティング管理</p>
                                                 </div>
                                             </div>

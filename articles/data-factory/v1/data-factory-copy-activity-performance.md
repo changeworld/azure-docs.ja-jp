@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 155e29e467b9752d491f62973ffccc986041fcab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2aeb3820667f264e4a26860913e3f7b0e22e4c4a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 のコピー アクティビティのパフォーマンスとチューニングに関するガイド](../copy-activity-performance.md)に関するページを参照してください。
+
 Azure Data Factory コピー アクティビティは、優れたセキュリティで保護された、信頼性とパフォーマンスに優れたデータ読み込みソリューションを提供します。 これにより、数十テラバイトのデータを、さまざまなクラウドおよびオンプレミスのデータ ストアの間で毎日コピーすることができます。 データ読み込みのパフォーマンスを劇的に高めることが、高度な分析ソリューションを構築してすべてのデータから深い洞察を得るという、"ビッグ データ" の中心的問題に集中するための鍵となります。
 
 Azure によりエンタープライズ クラスのデータ ストレージおよびデータ ウェアハウスのソリューション セットが提供されます。また、コピー アクティビティにより、構成とセットアップが簡単な、大幅に最適化されたデータ読み込み環境がもたらされます。 1 つのコピー アクティビティで次のことを実現できます。

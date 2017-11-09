@@ -13,16 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: a130907fe6cf2ae6498502644949290bc838f239
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d9ec6325e25477bf4ee0475caeca64b75b1f89f
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリを監視する  
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
 
 Azure Monitor では、Microsoft Azure のほとんどのサービス向けにベース レベルのインフラストラクチャのメトリックおよびログを提供します。 詳細については、[監視の概要](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)を参照してください。 Azure 診断ログは、リソースによって出力されるログで、そのリソースの操作に関する豊富なデータを提供します。 データ ファクトリは、Azure Monitor で診断ログを出力します。 
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のパイプラインの監視と管理](v1/data-factory-monitor-manage-pipelines.md)に関する記事をご覧ください。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 

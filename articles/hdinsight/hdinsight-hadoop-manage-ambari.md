@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/11/2017
 ms.author: larryfr
-ms.openlocfilehash: 470ec09d444f93abcd8f0f58fc197474bbb1376e
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: ec6e6d07b0933504ffee17912aac9ee3ef937688
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -151,7 +151,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ### <a name="ambari-users-groups-and-permissions"></a>Ambari ユーザー、グループ、およびアクセス許可
 
-[ドメイン参加済み](hdinsight-domain-joined-introduction.md) HDInsight クラスターを使用する場合は、ユーザー、グループ、アクセス許可の管理がサポートされています。 ドメイン参加済みクラスターでの Ambari 管理 UI の使用の詳細については、[ドメイン参加済み HDInsight クラスターの管理](hdinsight-domain-joined-introduction.md)に関する記事を参照してください。
+[ドメイン参加済み](./domain-joined/apache-domain-joined-introduction.md) HDInsight クラスターを使用する場合は、ユーザー、グループ、アクセス許可の管理がサポートされています。 ドメイン参加済みクラスターでの Ambari 管理 UI の使用の詳細については、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/apache-domain-joined-introduction.md)に関する記事を参照してください。
 
 > [!WARNING]
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 パスワードを変更すると、スクリプト アクションを使用したり、クラスターでスケール操作を実行する能力が損なわれます。
@@ -236,7 +236,7 @@ Ambari ビューを使うと、開発者は [Ambari ビュー フレームワー
 
 * Yarn Queue Manager: このキュー マネージャーでは、シンプルな UI により YARN キューを表示、変更できます。
 
-* Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、 [HDInsight での Hive ビューの使用](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
+* Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、 [HDInsight での Hive ビューの使用](hadoop/apache-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
 * Tez ビュー: Tez ビューによって、ジョブの理解が深まり、最適化を改善できます。 Tez ジョブがどのように実行されて、どのリソースが使用されているかに関する情報を見ることができます。
 

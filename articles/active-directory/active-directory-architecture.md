@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2017
+ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 3030336f5efca5029e0e790372495df11cdc8aeb
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: fa25f0435df79a78d39e8f89d702d3b64db79d65
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="understand-azure-active-directory-architecture"></a>Azure Active Directory のアーキテクチャの概要
-Azure Active Directory (Azure AD) を使用すると、Azure のサービスやリソースへのアクセスをそのユーザーのために安全に管理することができます。 Azure AD には、必要な ID 管理機能がすべて備わっています。 Azure AD の機能については、「[Azure Active Directory とは](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)」を参照してください。
+Azure Active Directory (Azure AD) を使用すると、Azure のサービスやリソースへのアクセスをそのユーザーのために安全に管理することができます。 Azure AD には、必要な ID 管理機能がすべて備わっています。 Azure AD の機能については、「[Azure Active Directory とは](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)」を参照してください。
 
-Azure AD で、ユーザーとグループを作成して管理できるほか、アクセス許可によって企業リソースに対するアクセスを許可したり拒否したりすることができます。 ID 管理については、「[Azure ID 管理の基礎](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)」を参照してください。
+Azure AD で、ユーザーとグループを作成して管理できるほか、アクセス許可によって企業リソースに対するアクセスを許可したり拒否したりすることができます。 ID 管理については、「[Azure ID 管理の基礎](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)」を参照してください。
 
 ## <a name="azure-ad-architecture"></a>Azure AD のアーキテクチャ
 Azure AD の地理的に分散されたアーキテクチャは、充実した監視機能、自動経路変更機能、フェールオーバー、復旧機能を兼ね備えており、エンタープライズレベルの可用性とパフォーマンスをお客様に提供します。
@@ -79,7 +79,7 @@ Azure AD の [RTO (目標復旧時間)](https://en.wikipedia.org/wiki/Recovery_t
 
 ### <a name="data-centers"></a>データ センター
 
-Azure AD のレプリカは、世界中にあるデータセンターに保存されます。 詳細については、「[Azure データセンター](https://azure.microsoft.com/en-us/overview/datacenters)」を参照してください。
+Azure AD のレプリカは、世界中にあるデータセンターに保存されます。 詳細については、「[Azure データセンター](https://azure.microsoft.com/overview/datacenters)」を参照してください。
 
 Azure AD は、次の特性を備えたデータ センターで横断的に動作します。
 
@@ -113,8 +113,8 @@ Azure AD では、すべてのデータが毎日バックアップされるの�
 
 **安全なオペレーション**
 
-Microsoft では、すべてのオペレーションに Multi-Factor Authentication (MFA) などの運用管理と監査証跡を採用しています。 また運用タスクに必要なアクセス権は、Just-In-Time 型の権限昇格システムによって随時オンデマンドで一時的に付与されます。 詳細については、「[信頼されたクラウド](https://azure.microsoft.com/en-us/support/trust-center)」を参照してください。
+Microsoft では、すべてのオペレーションに Multi-Factor Authentication (MFA) などの運用管理と監査証跡を採用しています。 また運用タスクに必要なアクセス権は、Just-In-Time 型の権限昇格システムによって随時オンデマンドで一時的に付与されます。 詳細については、「[信頼されたクラウド](https://azure.microsoft.com/support/trust-center)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide)
+[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 

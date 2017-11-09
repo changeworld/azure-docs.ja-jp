@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: df1ee5089a0af6ffce1431b658843fcb34a66ce5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7dc149f55c2caf4c3ab3a4782fd71affde0694ca
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用
 ## <a name="overview"></a>概要
@@ -469,7 +469,7 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 * [Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [Azure Media Services を使用してオンデマンド コンテンツをエンコードする](media-services-encode-asset.md#media-encoder-premium-workflow)
 * [メディア エンコーダー プレミアム ワークフローの形式とコーデック](media-services-premium-workflow-encoder-formats.md)
-* [サンプルのワークフロー ファイル](https://github.com/AzureMediaServicesSamples/Encoding-Presets/tree/master/VoD/MediaEncoderPremiumWorkfows)
+* [サンプルのワークフロー ファイル](https://github.com/Azure/azure-media-services-samples)
 * [Azure Media Services Explorer ツール](http://aka.ms/amse)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

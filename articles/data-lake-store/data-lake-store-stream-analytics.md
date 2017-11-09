@@ -12,21 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/03/2017
+ms.date: 11/01/2017
 ms.author: nitinme
-ms.openlocfilehash: 92ddf9619a0db398f7866aab60e834f09add3e7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 35b737cf5b53f0ad0dbe4a50772fdcaa2e14ca5e
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage BLOB から Data Lake Store へのデータ ストリーム
 この記事では、Azure Data Lake Store を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Data Lake Store (出力) に書き込む簡単なシナリオを紹介します。
-
-> [!NOTE]
-> 現時点では、Stream Analytics 向けの Data Lake Store 出力の作成と構成は [Azure クラシック ポータル](https://manage.windowsazure.com)でのみサポートされています。 そのため、このチュートリアルの一部は、Azure クラシック ポータルを使用します。
->
->
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。

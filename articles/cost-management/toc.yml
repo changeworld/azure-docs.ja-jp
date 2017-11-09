@@ -21,6 +21,8 @@
       href: tutorial-user-access.md
     - name: 3 - 支出を予測する
       href: tutorial-forecast-spending.md
+    - name: 4 - コストを管理する
+      href: tutorial-manage-costs.md
 - name: リソース
   items:
     - name: コスト管理のビデオ

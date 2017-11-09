@@ -12,16 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 10/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2e1024924b96cf2c86c9dec8d199a0b7ea2422c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4241aedebd388f24834e573fac7a8a61371e728a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 の PowerShell サンプル](../samples-powershell.md)に関するページと [Azure コード サンプル ギャラリーのコード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory)を参照してください。
+
+
 ## <a name="samples-on-github"></a>GitHub のサンプル
 [GitHub の Azure-DataFactory リポジトリ](https://github.com/azure/azure-datafactory) には、Azure Data Factory サービスを迅速に導入sしたり、スクリプトを変更して独自のアプリケーションで使用したりするのに役立ついくつかのサンプルがあります。 Samples\JSON フォルダーには、一般的なシナリオ用の JSON スニペットが含まれています。
 
@@ -91,8 +95,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
    4. プロジェクトの **場所** を選択します。
    5. **[OK]**をクリックします。
 
-      ![[新しいプロジェクト] ダイアログ ボックス
-](./media/data-factory-samples/vs-new-project-adf-templates.png)
+      ![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. **[Data Factory Templates]** (Data Factory テンプレート) ダイアログ ボックスで、**[Use-Case Templates]** (ユースケース テンプレート) セクションからサンプル テンプレートを選択し、**[次へ]** をクリックします。 この後の手順では、 **顧客プロファイリング** テンプレートの使用方法について説明します。 他のサンプルでも手順は同じです。
 
     ![Data Factory Templates dialog box](./media/data-factory-samples/vs-data-factory-templates-dialog.png)

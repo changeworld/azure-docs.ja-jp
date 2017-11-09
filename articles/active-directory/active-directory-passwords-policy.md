@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: f03c01158bf1a95ec03454b092bbe0314c4ea6be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c33f08e54d522e0eea13a3e267f14f407fc59b6
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -132,12 +132,14 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
-* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
+* [ライセンスに関する質問。](active-directory-passwords-licensing.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
+* [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

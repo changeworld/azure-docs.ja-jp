@@ -3,7 +3,7 @@ title: "Azure Multi-Factor Authentication についてよく寄せられる質�
 description: "Azure Multi-Factor Authentication に関してよく寄せられる質問と回答。 Azure Multi-Factor Authentication は、本人確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。 ユーザーのサインインとトランザクションに多層構造のセキュリティを確保することができます。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: yossib
 ms.assetid: 50bb8ac3-5559-4d8b-a96a-799a74978b14
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
-ms.author: kgremban
+ms.author: joflore
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 023dee623ca6ec35ab77578c97e5bf197b4bfe75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b1d48d3ff0d264042f2d282c6b8006e16a251f5
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 この FAQ では、Azure Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、よく寄せられる質問に回答します。 FAQ の内容は、サービス全般、課金モデル、ユーザー エクスペリエンス、トラブルシューティングに分けてまとめられています。

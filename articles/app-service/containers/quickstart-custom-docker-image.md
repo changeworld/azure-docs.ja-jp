@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 09/05/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: eadc0f7eb20b9e8d1cacc79b2907559e2b2535a2
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: c85f79cc14cdcecd2a05fc0ff91c4864b9fba277
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="run-a-custom-docker-hub-image-in-web-app-for-containers"></a>Web App for Containers でカスタム Docker Hub イメージを実行する
 
@@ -42,7 +42,7 @@ App Service は、事前定義済みのアプリケーション スタックを 
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name elnably/dockerimagetest
 ```
 
-前述のコマンド `--deployment-container-image-name` は、パブリック Docker Hub イメージ [https://hub.docker.com/r/elnably/dockerimagetest/](https://hub.docker.com/r/elnably/dockerimagetest/) をポイントしています。 その内容は、[https://github.com/rachelappel/docker-image](https://github.com/rachelappel/docker-image) で調べることができます。
+前述のコマンド `--deployment-container-image-name` は、パブリック Docker Hub イメージ [https://hub.docker.com/r/elnably/dockerimagetest/](https://hub.docker.com/r/elnably/dockerimagetest/) をポイントしています。 その内容は、[https://github.com/ahmedelnably/dockerimagetest](https://github.com/ahmedelnably/dockerimagetest) で調べることができます。
 
 Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
 

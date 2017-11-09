@@ -3,7 +3,7 @@ title: "複数のコンポーネント、マイクロサービス、コンテナ
 description: "複数のコンポーネントまたはロールから成るアプリのパフォーマンスと使用状況を監視。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
-ms.author: bwren
-ms.openlocfilehash: ca1bb8ee886c4b4e69be9dd653d6a52b874e1f5a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 046661bf7903b4e5ea528282ad5170901a45b35c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Application Insights (プレビュー) でマルチコンポーネント アプリケーションを監視する
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="1-install-the-latest-pre-release-package"></a>1.最新のプレリリース パッケージをインストールする
 
-各サーバー コンポーネントのプロジェクトで、Appication Insights パッケージを更新するかインストールします。 Visual Studio を使用している場合:
+各サーバー コンポーネントのプロジェクトで、Application Insights パッケージを更新するかインストールします。 Visual Studio を使用している場合:
 
 1. プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 
 2. **[プレリリースを含める]** を選択します。

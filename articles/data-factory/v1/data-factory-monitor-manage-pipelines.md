@@ -12,20 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: c473d4adf3b87fe6dc9fa89e0bae112bf27d47ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ccc0755385d2f170939e5c19f32b168132b6839b
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
 > * [Azure Portal の使用/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
 > * [監視と管理アプリの使用](data-factory-monitor-manage-app.md)
 
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の Data Factory パイプラインの監視と管理](../monitor-visually.md)に関するページを参照してください。
 
 > [!IMPORTANT]
 > 監視と管理アプリケーションによって、ご使用のデータ パイプラインの管理および管理や、問題のトラブルシューティングがより適切にサポートされます。 このアプリケーションの使用法の詳細については、[新しい監視と管理アプリを使用した Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。 

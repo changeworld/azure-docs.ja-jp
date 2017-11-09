@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3889fa1c3523eb0330cbe3b7640fd8590a5ceadf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32f6a12544c05dbf4ac65dd386cd9dea18ca79b3
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする
 Tez UI は、Windows ベースの HDInsight クラスターで実行エンジンとして Tez を使用するジョブの確認とデバッグに使用できる Web ページです。 Tez UI を使用すると、関連付けられた項目のグラフとしてジョブを可視化し、各項目をドリルダウンして、統計情報やログ情報を取得することができます。
@@ -139,6 +139,6 @@ Tez を使用して実行される Hive クエリを実行するには、次の�
     ![タスクの詳細](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
 ## <a name="next-steps"></a>次のステップ
-ここでは、Tez ビューの使用方法を説明しました。詳細については、[HDInsight での Hive の使用](hdinsight-use-hive.md)に関する記事を参照してください。
+ここでは、Tez ビューの使用方法を説明しました。詳細については、[HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)に関する記事を参照してください。
 
 Tez に関する技術的な情報の詳細については、 [Hortonworks の Tez に関するページ](http://hortonworks.com/hadoop/tez/)を参照してください。

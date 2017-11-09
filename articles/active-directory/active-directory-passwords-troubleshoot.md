@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/21/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: d33e516628c56a7aa038e37b4498461de17f8433
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24b8a9852395c26a40adb406bd706283e1a96d5d
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="how-to-troubleshoot-self-service-password-reset"></a>セルフサービスのパスワード リセットのトラブルシューティング方法
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 10/11/2017
 | パスワード リセット サービスは、Azure AD Connect コンピューターのアプリケーション イベント ログでエラー 6800 が記録されているオンプレミスでは開始されません。 <br> <br> オンボード後に、フェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは自分のパスワードをリセットできません。 | パスワード ライトバックを有効にすると、同期エンジンはライトバック ライブラリを呼び出し、クラウド オンボード サービスと通信して構成 (オンボード) を実行します。 オンボード中またはパスワード ライトバックの WCF エンドポイントの起動中に発生したエラーは、Azure AD Connect コンピューターのイベント ログのエラーになります。 <br> <br> ADSync サービスの再起動時に、ライトバックが構成された場合は、WCF エンドポイントが起動します。 ただし、エンドポイントの起動に失敗した場合は、イベント ログ 6800 を記録し、同期サービスを起動します。 このイベントの存在は、パスワード ライトバックのエンドポイントが起動しなかったことを意味します。 このイベント (6800) のイベント ログ詳細とPasswordResetService コンポーネントで生成されたイベント ログ エントリは、エンドポイントが起動できなかった理由を示します。 パスワード ライトバックが機能していない場合は、これらのイベント ログのエラーを確認し、Azure AD Connect の再起動を試みてください。 問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてください。
 | パスワード ライトバックを有効にした状態でユーザーがアカウントのロック解除またはパスワードのリセットを試みると操作に失敗します。 <br> <br> また、Azure AD Connect のイベント ログを見ると、ロック解除操作の後に "Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long (同期エンジンから hr=800700CE エラーと、ファイル名または拡張子が長すぎるというメッセージが返されました)" というイベントが記録されています。 | Azure AD Connect の Active Directory アカウントを探して、パスワードを 127 文字以内に含めるようにリセットします。 [スタート] メニューから [同期サービス] を開きます。 [コネクタ] に移動し、[Active Directory Connector] を探します。 これを選択し、[プロパティ] をクリックします。 [資格情報] ページに移動して新しいパスワードを入力します。 [OK] を選択してページを閉じます。 |
 | Azure AD Connect インストール プロセスの最後の手順で、パスワード ライトバックを構成できなかったことを示すエラーが表示されます。 <br> <br> Azure AD Connect アプリケーションのイベント ログには、エラー 32009 とテキスト "認証トークンの取得エラー" が含まれています。 | このエラーは、次の 2 つの場合に発生します。<br> <br> a. Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントに不正なパスワードを指定しています。<br> b. Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントにフェデレーション ユーザーを使用しようとしています。<br> <br> このエラーを修正するには、Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者用のフェデレーション アカウントを使用していないことと、指定されたパスワードが正しいことをご確認ください。 |
-| Azure AD Connect コンピューターのイベント ログには、PasswordResetService によってスローされたエラー 32002 が含まれています。 <br> <br> このエラーは、"ServiceBus への接続エラーです。トークン プロバイダーはセキュリティ トークンを提供できませんでした" です。 | オンプレミスの環境では、クラウドで Service Bus エンドポイントに接続することができません。 このエラーは、通常、特定のポートまたは Web のアドレスへの発信接続をブロックするファイアウォール規則が原因で発生します。 詳しくは、「[ネットワークの要件](active-directory-passwords-how-it-works.md#network-requirements)」をご覧ください。 これらのルールを更新した後、Azure AD Connect コンピューターを再起動し、パスワード ライトバックが再び動作を開始する必要があります。 |
+| Azure AD Connect コンピューターのイベント ログには、PasswordResetService によってスローされたエラー 32002 が含まれています。 <br> <br> このエラーは、"ServiceBus への接続エラーです。トークン プロバイダーはセキュリティ トークンを提供できませんでした" です。 | オンプレミスの環境では、クラウドで Service Bus エンドポイントに接続することができません。 このエラーは、通常、特定のポートまたは Web のアドレスへの発信接続をブロックするファイアウォール規則が原因で発生します。 詳細については、[接続の要件](./connect/active-directory-aadconnect-prerequisites.md)に関するページをご覧ください。 これらのルールを更新した後、Azure AD Connect コンピューターを再起動し、パスワード ライトバックが再び動作を開始する必要があります。 |
 | しばらく動作した後、フェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは自分のパスワードをリセットできません。 | Azure AD Connect を再起動したときに、まれにパスワード ライトバック サービスの再起動に失敗することがあります。 このような場合は、まずパスワード ライトバックがオンプレミスで有効になっていることが表示されるかどうかを確認します。 これは、Azure AD Connect ウィザードまたは PowerShell を使用して行うことができます (前のセクションを参照してください)。機能が有効になっていると表示される場合は、UI または PowerShell を使用してもう一度機能を有効または無効にします。 これが機能しない場合は、Azure AD Connect を完全にアンインストールして再インストールしてください。 |
 | 自分のパスワードのリセットを試みるフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは、パスワードを送信した後にサービスに問題があったことを示すエラーが表示されます。 <br ><br> さらに、パスワードのリセット操作中に、管理エージェントがオンプレミスのイベント ログでアクセスが拒否されたというエラーが表示されることがあります。 | イベント ログにこのようなエラーが表示された場合は、AD MA アカウント (構成時にウィザードで指定された) がパスワード ライトバックに対して必要な権限を持っていることを確認します。 <br> <br> **この権限が付与されたら、DC の sdprop バックグラウンド タスクを介して権限が適用されるのに最大 1 時間かかることがあります。** <br> <br> パスワードのリセットが機能するには、パスワードがリセットされるユーザー オブジェクトのセキュリティ記述子に権限を設定する必要があります。 この権限がユーザー オブジェクトに表示されるまで、パスワードのリセットはアクセス拒否によって引き続き失敗します。 |
 | 自分のパスワードのリセットを試みるフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは、パスワードを送信した後にサービスに問題があったことを示すエラーが表示されます。 <br> <br> さらに、パスワードのリセット操作中に、Azure AD Connect サービスのイベント ログに "オブジェクトが見つかりませんでした" というエラーが表示されることがあります。 | このエラーは通常、同期エンジンが、AAD コネクタ スペース オブジェクト、またはリンクされた MV または AD のコネクタ スペース オブジェクト内のいずれかのユーザー オブジェクトを検索できないことを示します。 <br> <br> これをトラブルシューティングするには、Azure AD Connect の現在のインスタンスを介してオンプレミスから AAD にユーザーが実際に同期されていることを確認し、コネクタ スペースと MV 内のオブジェクトの状態を検査します。 AD CS オブジェクトが "Microsoft.InfromADUserAccountEnabled.xxx" ルールによって MV オブジェクトへのコネクタであることを確認します。|
@@ -164,7 +164,7 @@ Azure AD Connect のパスワード ライトバック コンポーネントで�
 
 ### <a name="confirm-network-connectivity"></a>ネットワーク接続を確認する
 
-最も一般的な障害点は、ファイアウォール、プロキシ ポート、アイドル タイムアウトなどが正しく構成されていないことです。 「[Azure AD のセルフ サービスによるパスワードのリセットの詳細](active-directory-passwords-how-it-works.md#network-requirements)」でネットワーク要件を確認してください。
+最も一般的な障害点は、ファイアウォール、プロキシ ポート、アイドル タイムアウトなどが正しく構成されていないことです。 詳細については、「[Azure AD Connect の前提条件](./connect/active-directory-aadconnect-prerequisites.md)」で接続の要件をご確認ください。
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Azure AD Connect 同期サービスを再起動する
 
@@ -269,13 +269,14 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
-* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します。
-* [**パスワード ライトバック**](active-directory-passwords-writeback.md) - オンプレミスのディレクトリでのパスワード ライトバックのしくみ
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します。
-* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
+* [ライセンスに関する質問。](active-directory-passwords-licensing.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
+* [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
+* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

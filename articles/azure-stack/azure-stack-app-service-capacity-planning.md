@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/27/2017
 ms.author: anwestg
-ms.openlocfilehash: 54ba07d0bbe3f509411b0e45ff06f4fdf6db04cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ad91def00ca73f91f0ffd8e57afa442a93176f6
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure Stack での Azure App Service サーバー ロールの容量計画
 
@@ -88,16 +88,14 @@ Azure App Service 管理ロールは、App Service Azure Resource Manager およ
 
 ## <a name="file-server-role"></a>ファイル サーバー ロール
 
-ファイル サーバー ロールでは、開発およびテスト用にスタンドアロン ファイル サーバーを使用できます。 運用環境では、事前構成済みの Windows ファイル サーバーか、事前構成済みの Windows 以外のファイル サーバーを使用する必要があります。
-
-スタンドアロン ファイル サーバーは、既定の Microsoft Azure Pack: Web Sites インストールの一部として含まれています。 スタンドアロン インストールでは、単一のマシンにファイル サーバー ロールがプロビジョニングされ、適切なアカウントの ACL が配置され、必要なネットワーク共有が作成されます。
+ファイル サーバー ロールでは、開発とテスト用にスタンドアロン ファイル サーバーを使用して、たとえば Azure Stack Development Kit で Azure App Service をデプロイするときなどに、https://aka.ms/appsvconmasdkfstemplate のテンプレートを使用できます。 運用環境では、事前構成済みの Windows ファイル サーバーか、事前構成済みの Windows 以外のファイル サーバーを使用する必要があります。
 
 運用環境では、ファイル サーバー ロールが集中的なディスク I/O を行います。 ファイル サーバー ロールがユーザー Web サイトのコンテンツとアプリケーション ファイルすべてを保存するため、このロール用に次のいずれかを事前構成しておく必要があります。
 - Windows ファイル サーバー
 - ファイル サーバー クラスター
 - Windows 以外のファイル サーバー
 - ファイル サーバー クラスター
-- NAS (ネットワーク接続ストレージ) デバイス。詳しくは、[ファイル サーバーのプロビジョニング]()に関する記事をご覧ください。
+- NAS (ネットワーク接続ストレージ) デバイス。詳しくは、[ファイル サーバーのプロビジョニング](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

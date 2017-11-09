@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory の新着情報 | Microsoft Docs"
-description: "Azure Active Directory の **最新のリリース**、**既知の問題**、**バグの修正**、**非推奨になった機能**、**変更の計画** を常に把握するために、これらのリリース ノートをご利用ください。"
+title: "新機能 Azure Active Directory のリリース ノート | Microsoft Docs"
+description: "Azure Active Directory (Azure AD) の 最新のリリース、既知の問題、バグの修正、非推奨になった機能、変更の計画を常に把握するために、これらのリリース ノートをご利用ください。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 10/27/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0361d5b48af876af2ccc522351484d369554bfca
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 1d98233e1bfc2c9a926d7c61737286ec6e4fc422
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -76,6 +76,8 @@ Azure Active Directory は、HTML ユーザー名とパスワード フィール
 
 このパブリック プレビューでは、MFA の管理およびレポート機能がコア Azure AD 構成エクスペリエンスの一部として統合されているため、MFA 管理ポータルの機能を Azure AD エクスペリエンス内で管理できます。
 
+詳しくは、「[Azure Portal の多要素認証レポートの参照情報](active-directory-reporting-activity-sign-ins-mfa.md)」をご覧ください。 
+
 
 ---
 **タイプ:** 新機能  
@@ -112,8 +114,6 @@ Azure AD Terms of Use は、次のシナリオで使用できます。
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** ガバナンス  
 
-
-Azure AD の新着情報
 
 組織でアクセス レビュー (プレビュー) を使うことにより、グループ メンバーシップおよびエンタープライズ アプリケーションへのアクセスを、効率的に管理できます。 
 

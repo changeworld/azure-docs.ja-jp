@@ -15,17 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: fa30c78a5a5d458ba8845c3c10b87538427786c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b76f6f7f53bc649fbc740a79e182f81f3fd983c7
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Azure で Linux 仮想マシンに Tomcat7 をセットアップする
 Apache Tomcat (または単に Tomcat、旧称は Jakarta Tomcat) は、Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。 Tomcat には、Sun Microsystems の Java Servlet と JavaServer Pages (JSP) 仕様が実装されています。 Tomcat は、Java コードを実行する純粋な Java HTTP Web サーバー環境を提供します。 最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。 このプロセスは、Java 仮想マシン (JVM) を実行します。 ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。  
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Azure Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイメント モデルの使用方法について説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Open JDK と Tomcat を使用して Ubuntu VM をデプロイするための Resource Manager テンプレートを使用するには、[こちらの記事](https://azure.microsoft.com/documentation/templates/openjdk-tomcat-ubuntu-vm/)を参照してください。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 この記事では、Linux イメージ上に Tomcat7 をインストールして、Azure にデプロイします。  
 

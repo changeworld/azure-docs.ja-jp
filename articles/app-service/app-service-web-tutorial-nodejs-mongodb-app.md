@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d4ef794106b27b812bfc0c5a7975fad23da1898
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 0c3f9b49c7931371bf3a4eaf1a5a3c6261dad839
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>Azure で Node.js とMongoDB Web アプリを構築する
 
@@ -90,7 +90,7 @@ npm start
 
 アプリが完全に読み込まれると、次のようなメッセージが表示されます。
 
-```
+```console
 --
 MEAN.JS - Development Environment
 
@@ -122,17 +122,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。
-
-[!INCLUDE [Resource group intro](../../includes/resource-group.md)]
-
-次の例は、西ヨーロッパ リージョンにリソース グループを作成します。
-
-```azurecli-interactive
-az group create --name myResourceGroup --location "West Europe"
-```
-
-使用できる場所の一覧を表示するには、[az appservice list-locations](/cli/azure/appservice#list-locations) Azure CLI コマンドを使用します。 
+[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)] 
 
 ### <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する
 
@@ -192,20 +182,16 @@ Azure CLI によって次の例のような情報が表示されます。
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js アプリケーションでの接続文字列の構成
 
-MEAN.js レポジトリの _config/env/production.js_ を開きます。
+ローカルの MEAN.js リポジトリの "_config/env/_" フォルダーに、"_local-production.js_" という名前のファイルを作成します。 "_.gitignore_" は、リポジトリからこのファイルを保持するように構成されます。 
 
-`db` オブジェクトで、`uri` の値を更新します。
-
-* 2 つの *\<cosmosdb_name>* プレースホルダーを Cosmos DB データベース名に置き換えます。
-* *\<primary_master_key>* プレースホルダーを前の手順でコピーしたキーに置き換えます。
-
-`db` オブジェクトのコードを示します。
+ここに次のコードをコピーします。 2 つの "*\<cosmosdb_name>*" プレースホルダーを Cosmos DB データベース名で置換し、"*\<primary_master_key>*" プレースホルダーを前の手順でコピーしたキーで置換します。
 
 ```javascript
-db: {
-  uri: 'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false',
-  ...
-},
+module.exports = {
+  db: {
+    uri: 'mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false'
+  }
+};
 ```
 
 [Cosmos DB では SSL が必須](../cosmos-db/connect-mongodb-account.md#connection-string-requirements)なので、`ssl=true` オプションは必須です。 
@@ -220,7 +206,7 @@ db: {
 gulp prod
 ```
 
-次のコマンドを実行して、_config/env/production.js_ に構成した接続文字列を使用します。
+次のコマンドを実行して、_config/env/local-production.js_ に構成した接続文字列を使用します。
 
 ```bash
 NODE_ENV=production node server.js
@@ -230,7 +216,7 @@ NODE_ENV=production node server.js
 
 アプリが読み込まれたら、運用環境で実行されていることを確認します。
 
-```
+```console
 --
 MEAN.JS
 
@@ -249,70 +235,23 @@ MEAN.JS version: 0.5.0
 
 この手順では、MongoDB に接続している Node.js アプリケーションを Azure App Service にデプロイします。
 
+### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
+
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user-no-h.md)]
+
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan#create) コマンドを使用して App Service プランを作成します。 
-
-[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
-
-次の例では、**Free** 価格レベルを使用して、_myAppServicePlan_ という名前の App Service プランを作成します。
-
-```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
-```
-
-App Service プランが作成されると、Azure CLI によって、次の例のような情報が表示されます。
-
-```json 
-{ 
-  "adminSiteName": null,
-  "appServicePlanName": "myAppServicePlan",
-  "geoRegion": "North Europe",
-  "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myAppServicePlan", 
-  "kind": "app",
-  "location": "North Europe",
-  "maximumNumberOfWorkers": 1,
-  "name": "myAppServicePlan",
-  ...
-  < Output has been truncated for readability >
-} 
-```
+[!INCLUDE [Create app service plan no h](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
-Cloud Shell で [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan` App Service プランに Web アプリを作成します。 
-
-Web アプリにより、コードをデプロイするためのホスト領域が取得され、デプロイされたアプリケーションを表示するための URL が提供されます。 Web アプリを作成するには  を使用します。 
-
-次のコマンドで、*\<app_name>* プレースホルダーを一意のアプリ名に置き換えます。 この名前は、Web アプリの既定の URL の一部として使用されるため、Azure App Service のすべてのアプリで一意である必要があります。 
-
-```azurecli-interactive
-az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
-```
-
-Web アプリが作成されると、Azure CLI によって次の例のような情報が表示されます。 
-
-```json 
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "enabled": true,
-  ...
-  < Output has been truncated for readability >
-}
-```
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-nodejs-no-h.md)] 
 
 ### <a name="configure-an-environment-variable"></a>環境変数の構成
 
-チュートリアルの前半で、_config/env/production.js_ にデータベース接続文字列をハードコードしました。 セキュリティのベスト プラクティスに従って、この機密データを Git リポジトリに保存しないようにする必要があります。 Azure で実行されるアプリでは、環境変数を使用できます。
+既定では、MEAN.js プロジェクトは _config/env/local-production.js_ を Git リポジトリ外で保持します。 したがって、Azure Web アプリでは、アプリ設定を使用して MongoDB 接続文字列を定義します。
 
-Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#set) コマンドを使用し、環境変数を "_アプリ設定_" として設定します。 
+アプリ設定を設定するには、Cloud Shell で [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update) コマンドを使用します。 
 
 次の例では、Azure Web アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app_name>*、*\<cosmosdb_name>*、および *\<primary_master_key>* プレースホルダーを置き換えます。
 
@@ -322,13 +261,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 Node.js コードでは、任意の環境変数にアクセスする場合と同じように、`process.env.MONGODB_URI` を使用して、このアプリ設定にアクセスします。 
 
-ここで、次のコマンドを使用して、_config/env/production.js_ の変更を元に戻します。
-
-```bash
-git checkout -- .
-```
-
-_config/env/production.js_ をもう一度開きます。 既定の MEAN.js アプリは、作成した `MONGODB_URI` 環境変数を使用するように既に構成されています。
+ローカル MEAN.js リポジトリで、運用環境固有の構成を含む _config/env/production.js_ を開きます (_config/env/local-production.js_ ではありません)。 既定の MEAN.js アプリは、作成した `MONGODB_URI` 環境変数を使用するように既に構成されています。
 
 ```javascript
 db: {
@@ -337,49 +270,9 @@ db: {
 },
 ```
 
-### <a name="configure-local-git-deployment"></a>ローカル Git デプロイの構成 
-
-Cloud Shell で [az webapp deployment user set](/cli/azure/webapp/deployment/user#set) コマンドを使用し、デプロイ用の資格情報を作成します。
-
-アプリケーションを Azure App Service にデプロイするには、FTP、ローカル Git、GitHub、Visual Studio Team Services、BitBucket など、さまざまな方法があります。 FTP とローカル Git の場合、デプロイを認証するには、サーバー上で構成されたデプロイ ユーザーが必要です。 このデプロイ ユーザーはアカウント レベルであり、Azure サブスクリプション アカウントとは異なります。 このデプロイ ユーザーは、1 回だけ構成する必要があります。
-
-次のコマンドで、*\<user-name>* と *\<password>* を新しいユーザー名とパスワードで置き換えます。 ユーザー名は一意である必要があります。 パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。 ` 'Conflict'. Details: 409` エラーが発生した場合は、ユーザー名を変更します。 ` 'Bad Request'. Details: 400` エラーが発生した場合は、より強力なパスワードを使用します。
-
-```azurecli-interactive
-az webapp deployment user set --user-name <username> --password <password>
-```
-
-後でアプリをデプロイするときに使用するため、ユーザー名とパスワードを記録しておきます。
-
-[az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#config-local-git) コマンドを使用して、Azure Web アプリへのローカル Git アクセスを構成します。 
-
-```azurecli-interactive
-az webapp deployment source config-local-git --name <app_name> --resource-group myResourceGroup
-```
-
-デプロイ ユーザーが構成されると、Azure CLI によって、次の形式の Azure Web アプリのデプロイ URL が表示されます。
-
-```bash 
-https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git 
-``` 
-
-次の手順で使用するため、ターミナルからの出力をコピーしておきます。 
-
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 
-
-```bash
-git remote add azure <paste_copied_url_here> 
-```
-
-Node.js アプリケーションをデプロイするために、Azure リモートにプッシュします。 デプロイ ユーザーの作成時に指定したパスワードを入力するように求めるメッセージが表示されます。 
-
-```bash
-git push azure master
-```
-
-デプロイ中、Azure App Service は進行状況について Git と通信します。
+[!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 ```bash
 Counting objects: 5, done.

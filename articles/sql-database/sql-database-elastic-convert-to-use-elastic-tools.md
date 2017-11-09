@@ -1,5 +1,5 @@
 ---
-title: "既存のデータベースを移行してスケールアウト | Microsoft Docs"
+title: "既存のデータベースを移行してスケール アウト | Microsoft Docs"
 description: "シャード マップ マネージャーを作成することで、エラスティック データベース ツールを使用するようにシャード化されたデータベースを変換します"
 services: sql-database
 documentationcenter: 
@@ -12,19 +12,19 @@ ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-management
+ms.workload: Inactive
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 099f40d00753b7c86ba726a818f17d440a125221
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 356c4223ff3ae844552b7bee40aa3ffc6aad7ea0
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケールアウト
-Azure SQL Database のデータベース ツール ( [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)など) を使用して、既存のスケールアウトされたシャード化されたデータベースを簡単に管理できます。 最初に、 [シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)を使用するように既存のデータベース セットを変換する必要があります。 
+# <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケール アウト
+Azure SQL Database のデータベース ツール ( [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)など) を使用して、既存のスケールアウトされたシャード化されたデータベースを簡単に管理できます。 最初に、 [シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)を使用するように既存のデータベース セットを変換します。 
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 既存のシャード化されたデータベースを移行するには: 
 
 1. [シャード マップ マネージャー データベース](sql-database-elastic-scale-shard-map-management.md)を準備します。
@@ -37,7 +37,7 @@ Azure SQL Database のデータベース ツール ( [Elastic Database クライ
 ShardMapManager の詳細については、「 [シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)」を参照してください。 エラスティック データベース ツールの概要については、「 [Elastic Database 機能の概要](sql-database-elastic-scale-introduction.md)」を参照してください。
 
 ## <a name="prepare-the-shard-map-manager-database"></a>シャード マップ マネージャー データベースを準備する
-シャード マップ マネージャーは、スケールアウトされたデータベースを管理するためのデータを格納する特殊なデータベースです。 既存のデータベースを使用するか、新しいデータベースを作成できます。 シャード マップ マネージャーとして機能するデータベースは、シャードと同じデータベースにしてはならないことに注意してください。 また、PowerShell スクリプトではデータベースが自動的に作成されないことに注意してください。 
+シャード マップ マネージャーは、スケールアウトされたデータベースを管理するためのデータを格納する特殊なデータベースです。 既存のデータベースを使用するか、新しいデータベースを作成できます。 シャード マップ マネージャーとして機能するデータベースは、シャードと同じデータベースにすることはできません。 PowerShell スクリプトではデータベースが自動的に作成されません。 
 
 ## <a name="step-1-create-a-shard-map-manager"></a>手順 1: シャード マップ マネージャーを作成する
     # Create a shard map manager. 
@@ -60,7 +60,7 @@ ShardMapManager の詳細については、「 [シャード マップの管理]
 
 
 ## <a name="step-2-create-the-shard-map"></a>手順 2: シャード マップを作成する
-作成するシャード マップの種類を選択する必要があります。 何を選択するかはデータベースのアーキテクチャによって異なります。 
+作成するシャード マップの種類を選択します。 何を選択するかはデータベースのアーキテクチャによって異なります。 
 
 1. データベースごとに 1 つのテナント (用語については「 [用語集](sql-database-elastic-scale-glossary.md)」を参照) 
 2. データベースごとに複数のテナント (2 種類):
@@ -71,7 +71,7 @@ ShardMapManager の詳細については、「 [シャード マップの管理]
 
 ![リスト マッピング][1]
 
-マルチテナント モデルでは、1 つのデータベースに複数のテナントが割り当てられます (そして、テナントのグループを複数のデータベースに分散させることができます)。 各テナントで必要なデータが少ない場合は、このモデルを使用します。 このモデルでは、 **範囲マッピング**を使用してデータベースにテナントの範囲を割り当てます。 
+マルチテナント モデルでは、1 つのデータベースに複数のテナントが割り当てられます (そして、テナントのグループを複数のデータベースに分散させることができます)。 各テナントで必要なデータが少ない場合は、このモデルを使用します。 このモデルでは、**範囲マッピング**を使用してデータベースにテナントの範囲を割り当てます。 
 
 ![範囲マッピング][2]
 
@@ -91,7 +91,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 
 
 ### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>オプション 2: 範囲マッピングのシャード マップを作成する
-このマッピング パターンを使用する場合は、テナント ID の値が連続した範囲である必要があることに注意してください。データベースを作成するときに範囲をスキップすることで、範囲にギャップが存在していてもかまいません。
+このマッピング パターンを使用する場合は、テナント ID の値が連続した範囲である必要があります。データベースを作成するときに範囲をスキップすることで、範囲にギャップが存在していてもかまいません。
 
     # $ShardMapManager is the shard map manager object 
     # 'RangeShardMap' is the unique identifier for the range shard map.  
@@ -141,7 +141,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 
 
 ### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>手順 4、オプション 3: 単一データベースの複数テナントのデータをマップする
-各テナントに対し、Add-ListMapping を実行します (上記オプション 1)。 
+各テナントに対し、Add-ListMapping を実行します (オプション 1)。 
 
 ## <a name="checking-the-mappings"></a>マッピングの確認
 既存のシャードおよびそれらに関連付けられているマッピングに関する情報は、次のコマンドを使用してクエリできます。  
@@ -154,7 +154,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 セットアップが完了すると、Elastic Database クライアント ライブラリの使用を開始できます。 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)および[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)を使用することもできます。
 
 ## <a name="next-steps"></a>次のステップ
-「 [Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - エラスティック データベース ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」から PowerShell スクリプトを取得します。
+「[Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - エラスティック データベース ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」から PowerShell スクリプトを取得します。
 
 ツールは GitHub ( [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools)) にもあります。
 
@@ -164,7 +164,7 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
 マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」をご覧ください。
 
 ## <a name="questions-and-feature-requests"></a>質問と機能に関する要望
-質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
+質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)を使用してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

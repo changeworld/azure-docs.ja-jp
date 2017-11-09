@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 427864fc4e494c19fcda4cfd454a9923499f6337
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c8789f08a37466862120dda88a0bce7da3e9a91
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Azure Cosmos DB と HDInsight を使用した Apache Hive、Pig、または Hadoop ジョブの実行
 このチュートリアルでは、Azure Cosmos DB の Hadoop コネクタを使用して、[Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。 Cosmos DB の Hadoop コネクタを使用すると、Cosmos DB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。 このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に Cosmos DB を使用します。
@@ -89,7 +89,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
         <tr><td>サブスクリプション名</td>
             <td>複数の Azure サブスクリプションがある場合は、HDInsight クラスターをホストするサブスクリプションを選択します。 </td></tr>
     </table>
-5. [クラスターの種類の選択] **** をクリックし、以下のプロパティを、指定された値に設定します。
+5. **[クラスターの種類の選択]** をクリックし、以下のプロパティを、指定された値に設定します。
 
     <table border='1'>
         <tr><td>クラスターの種類</td><td><strong>Hadoop</strong></td></tr>
@@ -420,13 +420,13 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [import-data]: import-data.md
 
 [hdinsight-custom-provision]: ../hdinsight/hdinsight-provision-clusters.md
-[hdinsight-develop-deploy-java-mapreduce]: ../hdinsight/hdinsight-develop-deploy-java-mapreduce-linux.md
+[hdinsight-develop-deploy-java-mapreduce]:../hdinsight/hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 [hdinsight-hadoop-customize-cluster]: ../hdinsight/hdinsight-hadoop-customize-cluster.md
 [hdinsight-get-started]: ../hdinsight/hdinsight-hadoop-tutorial-get-started-windows.md
 [hdinsight-storage]: ../hdinsight/hdinsight-hadoop-use-blob-storage.md
-[hdinsight-use-hive]: ../hdinsight/hdinsight-use-hive.md
-[hdinsight-use-mapreduce]: ../hdinsight/hdinsight-use-mapreduce.md
-[hdinsight-use-pig]: ../hdinsight/hdinsight-use-pig.md
+[hdinsight-use-hive]:../hdinsight/hadoop/hdinsight-use-hive.md
+[hdinsight-use-mapreduce]:../hdinsight/hadoop/hdinsight-use-mapreduce.md
+[hdinsight-use-pig]:../hdinsight/hadoop/hdinsight-use-pig.md
 
 [image-customprovision-page1]: ./media/run-hadoop-with-hdinsight/customprovision-page1.png
 [image-hive-query-results]: ./media/run-hadoop-with-hdinsight/hivequeryresults.PNG

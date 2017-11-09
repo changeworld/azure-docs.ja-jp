@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/23/2017
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 39ac9aa678464c497d9f7963bab802141ce9e854
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 413a9df6d224e53ba42313f6dc5e740710d418e3
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でレプリケート テーブルを使用するための設計ガイダンス
 この記事では、SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
@@ -140,7 +140,7 @@ SQL Data Warehouse は、テーブルのマスター バージョンを保持す
 
 再構築が必要になるのは、次の操作の後です。
 - データが読み込まれるまたは変更される
-- データ ウェアハウスが別の DWU 設定にスケーリングされる
+- データ ウェアハウスが別の [サービス レベル](performance-tiers.md#service-levels)にスケーリングされる
 - テーブル定義が更新される
 
 次の操作の後は、再構築は不要です。

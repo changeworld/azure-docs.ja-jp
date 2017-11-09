@@ -11,16 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 10/15/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2ef4385b3307c58d97012c3d0a732da5fbf82ea8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 460785d0d3f8b3d8a0a53d544788cb1a74db8c00
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティからのストアド プロシージャの呼び出し
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でのストアド プロシージャ アクティビティを使用したデータ変換](../transform-data-using-stored-procedure.md)についてのページをご覧ください。
+
+
 データを [SQL Server](data-factory-sqlserver-connector.md) または [Azure SQL Database](data-factory-azure-sql-connector.md) にコピーするときに、ストアド プロシージャを呼び出すように、コピー アクティビティで **SqlSink** を構成することができます。 ストアド プロシージャを使用して、データを対象テーブルに挿入する前に、必要な追加処理 (列の結合、追加の値の検索、複数のテーブルへの挿入など) を実行することもできます。 この機能は、[テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。 
 
 次の例は、Data Factory パイプライン (コピー アクティビティ) から SQL Server データベースのストアド プロシージャを呼び出す方法を示しています。  

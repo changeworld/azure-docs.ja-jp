@@ -3,7 +3,7 @@ title: "RADIUS 認証と Azure MFA Server | Microsoft Docs"
 description: "RADIUS 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: f4ba0fb2-2be9-477e-9bea-04c7340c8bce
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/25/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 4dfa56ba6f80193e643965b97b6439c62f7873e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec570464c654db7ab0a898dbe380222b6847f1cb
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS 認証と Azure Multi-Factor Authentication Server の統合
 

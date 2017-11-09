@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: nitinme
-ms.openlocfilehash: 96b2b4976729da5b7d8b75909dbe099090240c08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8a8b62e2cdf9f4f6c41b041ac20694303203531b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight の Hadoop コンポーネントのリリース ノート
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 
 * **Hive の新機能**。 [Hortonworks のドキュメント](https://hortonworks.com/apache/hive/#section_4)をご覧ください。
 
-* **Hive CLI の廃止**: Hive CLI は廃止される予定です。お客様には代わりに Beeline を使用することをお勧めします。 詳細については、[Apache のドキュメント](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline)を参照してください。 HDInsight で Beeline を使用する方法については、[「HDInsight Hadoop クラスターで Beeline を使用する」](hdinsight-hadoop-use-hive-beeline.md)を参照してください。
+* **Hive CLI の廃止**: Hive CLI は廃止される予定です。お客様には代わりに Beeline を使用することをお勧めします。 詳細については、[Apache のドキュメント](https://cwiki.apache.org/confluence/display/Hive/Replacing+the+Implementation+of+Hive+CLI+Using+Beeline)を参照してください。 HDInsight で Beeline を使用する方法については、[「HDInsight Hadoop クラスターで Beeline を使用する」](hadoop/apache-hadoop-use-hive-beeline.md)を参照してください。
 
 * **Apache Phoenix および HBase の新機能**。
     * ストレージ クォータのサポート: マルチ テナント環境でよく使用され、テーブルごとと名前空間レベルごとに限られたストレージ スペースを許可します。

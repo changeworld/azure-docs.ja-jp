@@ -4,7 +4,7 @@ description: "このドキュメントでは、Azure Multi-factor Authentication
 services: multi-factor-authentication
 keywords: "多要素認証のクライアント, 認証の問題, 関連付け ID"
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.service: multi-factor-authentication
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
-ms.openlocfilehash: 59a24c8dbcf740f9154f1c9e18f318265f58481c
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 6cfda4550628cdde6a796e1b59a2fb914394da60
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="get-help-with-two-step-verification"></a>2 段階認証のサポートを受ける
 この記事では、2 段階認証に関してお客様から寄せられる最も一般的な質問の回答を掲載しています。 

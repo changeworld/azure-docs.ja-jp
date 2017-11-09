@@ -1,25 +1,150 @@
 ---
 title: "Azure Data Factory をプログラムで監視する | Microsoft Docs"
-description: "SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure SQL Data Warehouse でストアド プロシージャを呼び出す方法について説明します。"
+description: "さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法を説明します。"
 services: data-factory
 documentationcenter: 
 author: spelluru
 manager: jhubbard
-editor: monicar
+editor: 
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 10/25/2017
 ms.author: spelluru
-ms.openlocfilehash: b6250cb4e77ecaaeccdffe293710b52bfca5f8c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 376bc64bee85fbc073b6ea4a39ecd013c23e791f
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する 
+# <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
+この記事では、さまざまなソフトウェア開発キット (SDK) を使用して、データ ファクトリのパイプラインを監視する方法について説明します。 
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のパイプラインの監視と管理](v1/data-factory-monitor-manage-pipelines.md)に関する記事をご覧ください。
+
+## <a name="net"></a>.NET
+.NET SDK を使用して、パイプラインを作成し監視する完全なチュートリアルについては、[.NET を使用したデータ ファクトリとパイプラインの作成](quickstart-create-data-factory-dot-net.md)に関する記事をご覧ください。
+
+1. データのコピーが完了するまでパイプラインの実行の状態を継続的にチェックする次のコードを追加します。
+
+    ```csharp
+    // Monitor the pipeline run
+    Console.WriteLine("Checking pipeline run status...");
+    PipelineRun pipelineRun;
+    while (true)
+    {
+        pipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, runResponse.RunId);
+        Console.WriteLine("Status: " + pipelineRun.Status);
+        if (pipelineRun.Status == "InProgress")
+            System.Threading.Thread.Sleep(15000);
+        else
+            break;
+    }
+    ```
+
+2. コピー アクティビティの実行の詳細 (たとえば、読み書きされたデータのサイズ) を取得する次のコードを追加します。
+
+    ```csharp
+    // Check the copy activity run details
+    Console.WriteLine("Checking copy activity run details...");
+   
+    List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
+    resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
+    if (pipelineRun.Status == "Succeeded")
+        Console.WriteLine(activityRuns.First().Output);
+    else
+        Console.WriteLine(activityRuns.First().Error);
+    Console.WriteLine("\nPress any key to exit...");
+    Console.ReadKey();
+    ```
+
+.NET SDK の詳細については、[Data Factory .NET SDK リファレンス](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)に関するページをご覧ください。
+
+## <a name="python"></a>Python
+Python SDK を使用して、パイプラインを作成し監視する完全なチュートリアルについては、「[Python を使用してデータ ファクトリとパイプラインを作成する](quickstart-create-data-factory-python.md)」をご覧ください。
+
+パイプラインの実行を監視するには、次のコードを追加します。
+
+```python
+#Monitor the pipeline run
+time.sleep(30)
+pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
+print("\n\tPipeline run status: {}".format(pipeline_run.status))
+activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
+print_activity_run_details(activity_runs_paged[0])
+```
+
+Python SDK の詳細については、[データ ファクトリの Python SDK リファレンス](/python/api/overview/azure/datafactory?view=azure-python)に関するページをご覧ください。
+
+## <a name="rest-api"></a>REST API
+REST API を使用して、パイプラインを作成し監視する完全なチュートリアルについては、[REST API を使用したデータ ファクトリとパイプラインの作成](quickstart-create-data-factory-rest-api.md)に関するページをご覧ください。
+ 
+1. 次のスクリプトを実行し、データのコピーが完了するまで、パイプラインの実行の状態を継続的にチェックします。
+
+    ```powershell
+    $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelineruns/${runId}?api-version=${apiVersion}"
+    while ($True) {
+        $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
+        Write-Host  "Pipeline run status: " $response.Status -foregroundcolor "Yellow"
+
+        if ($response.Status -eq "InProgress") {
+            Start-Sleep -Seconds 15
+        }
+        else {
+            $response | ConvertTo-Json
+            break
+        }
+    }
+    ```
+2. 次のスクリプトを実行し、コピー アクティビティの実行の詳細 (たとえば、読み書きされたデータのサイズ) を取得します。
+
+    ```PowerShell
+    $request = "https://management.azure.com/subscriptions/${subsId}/resourceGroups/${resourceGroup}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelineruns/${runId}/activityruns?api-version=${apiVersion}&startTime="+(Get-Date).ToString('yyyy-MM-dd')+"&endTime="+(Get-Date).AddDays(1).ToString('yyyy-MM-dd')+"&pipelineName=Adfv2QuickStartPipeline"
+    $response = Invoke-RestMethod -Method GET -Uri $request -Header $authHeader
+    $response | ConvertTo-Json
+    ```
+
+REST API の詳細については、[データ ファクトリの REST API リファレンス](/rest/api/datafactory/)に関するページをご覧ください。
+
+## <a name="powershell"></a>PowerShell
+PowerShell を使用して、パイプラインを作成し監視する完全なチュートリアルについては、「[PowerShell を使用してデータ ファクトリとパイプラインを作成する](quickstart-create-data-factory-powershell.md)」をご覧ください。
+
+1. 次のスクリプトを実行し、データのコピーが完了するまで、パイプラインの実行の状態を継続的にチェックします。
+
+    ```powershell
+    while ($True) {
+        $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+
+        if ($run) {
+            if ($run.Status -ne 'InProgress') {
+                Write-Host "Pipeline run finished. The status is: " $run.Status -foregroundcolor "Yellow"
+                $run
+                break
+            }
+            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
+        }
+
+        Start-Sleep -Seconds 30
+    }
+    ```
+2. 次のスクリプトを実行し、コピー アクティビティの実行の詳細 (たとえば、読み書きされたデータのサイズ) を取得します。
+
+    ```powershell
+    Write-Host "Activity run details:" -foregroundcolor "Yellow"
+    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result
+    
+    Write-Host "Activity 'Output' section:" -foregroundcolor "Yellow"
+    $result.Output -join "`r`n"
+    
+    Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
+    $result.Error -join "`r`n"
+    ```
+
+PowerShell コマンドレットの詳細については、[データ ファクトリの PowerShell コマンドレット リファレンス](/powershell/module/azurerm.datafactoryv2/?view=azurermps-4.4.1)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure Monitor を使って Data Factory のパイプラインを監視する方法については、[Azure Monitor を使ったパイプラインの監視](monitor-using-azure-monitor.md)に関する記事をご覧ください。 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: a8129678b5ee2b0b1f2a59049fc6632b6cbf3383
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 7fe8d5e473e2c8281b1d6c8d7d5423294c428678
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -90,6 +90,10 @@ Azure では、ネイティブの Azure 証明書の認証用の mobileconfig �
 **[追加]** をクリックしてインポートします。
 
   ![証明書の追加](./media/point-to-site-vpn-client-configuration-azure-cert/addcert.png)
+  
+    >[!NOTE]
+    >証明書をダブルクリックしても、**[追加]** ダイアログが表示されない場合がありますが、証明書は正しいストアにインストールされています。 証明書のカテゴリの下にあるログイン キーチェーンで証明書を確認できます。
+  
 2. **[ネットワーク]** ダイアログを開き、**[ネットワーク環境設定]** で **[+]** をクリックして、Azure VNet への P2S 接続用に新しい VPN クライアント接続プロファイルを作成します。
 
   **[インターフェイス]** の値は "VPN"、**[VPN タイプ]** の値は "IKEv2" です。 **[サービス名]** フィールドにプロファイルの名前を指定し、**[作成]** をクリックして VPN クライアント接続プロファイルを作成します。

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 5/9/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 3e61ad19df34c6a57da43e26bd2ab9d7ecdbf98e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7068d6e83d196d95b4625d1b1a496be5a22c88a0
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric のサービスとの接続と通信
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。

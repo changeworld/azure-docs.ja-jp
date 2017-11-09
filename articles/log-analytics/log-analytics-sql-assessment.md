@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics での SQL Server 環境の最適化 | Microsoft Docs"
-description: "Azure Log Analytics では、SQL 評価ソリューションを使用して、SQL Server 環境のリスクと正常性を定期的に評価できます。"
+description: "Azure Log Analytics では、SQL 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価できます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
-ms.author: banders
+ms.date: 10/27/2017
+ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2aed3315fe60ace46dfb4176dc13aa417257b0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec66c322550ac3a7729dc1fddc8c026fb4ec1895
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Log Analytics で SQL 評価ソリューションを使用して SQL Server 環境を最適化する
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Log Analytics で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
-![SQL 評価のシンボル](./media/log-analytics-sql-assessment/sql-assessment-symbol.png)
+![SQL 正常性チェックのシンボル](./media/log-analytics-sql-assessment/sql-assessment-symbol.png)
 
-SQL 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストールするために役立ちます。
+SQL 正常性チェック ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストールするために役立ちます。
 
 このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は 6 つの対象領域に分類されているので、すばやくリスクを把握し、修正措置を実行できます。
 
@@ -33,51 +33,54 @@ SQL 評価ソリューションを使用して、サーバー環境のリスク�
 
 組織にとって最も重要な対象領域を選択し、リスクのない正常な環境の実行に向けた進行状況を追跡できます。
 
-ソリューションを追加し、評価が完了すると、環境のインフラストラクチャの **[SQL 評価]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[SQL 評価]** ダッシュボードの情報を使用する方法について説明します。ここでは、SQL サーバー インフラストラクチャを確認し、推奨された解決方法を実行できます。
+ソリューションを追加し、評価が完了すると、環境のインフラストラクチャの **[SQL 正常性チェック]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[SQL 正常性チェック]** ダッシュボードの情報を使用する方法について説明します。ここでは、SQL Server インフラストラクチャを確認し、推奨された解決方法を実行できます。
 
-![[SQL 評価] タイルの画像](./media/log-analytics-sql-assessment/sql-assess-tile.png)
+![[SQL 正常性チェック] タイルの画像](./media/log-analytics-sql-assessment/sql-healthcheck-summary-tile.png)
 
-![[SQL 評価] ダッシュボードの画像](./media/log-analytics-sql-assessment/sql-assess-dash.png)
+![[SQL 正常性チェック] ダッシュボードの画像](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-01.png)
 
-## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
-SQL 評価は、Standard、Developer、Enterprise の各エディションの、現在サポートされているすべてのバージョンの SQL Server に対応しています。
+## <a name="prerequisites"></a>前提条件
 
-次の情報を使用して、ソリューションをインストールおよび構成します。
-
-* エージェントは、SQL Server がインストールされているサーバーにインストールする必要があります。
-* SQL 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている、サポートされているバージョンの .NET Framework 4 が必要です。
-* ソリューションをインストールするには、Azure Portal で Azure サブスクリプションの管理者か共同作業者になっている必要があります。 さらに、OMS ポータルで OMS ワークスペースの作成者または管理者ロールのメンバーになっている必要もあります。
-* Operations Manager エージェントを SQL の評価に使用する場合は、Operations Manager の実行アカウントを使用する必要があります。 詳細については、「 [OMS で使用される Operations Manager の実行アカウント](#operations-manager-run-as-accounts-for-oms) 」を参照してください。
+* SQL 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4 がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Log Analytics サービスに使用されます。  
+* このソリューションは、SQL Server バージョン 2012、2014、2016 をサポートしています。
+* Azure Portal で Azure Marketplace から SQL 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  ソリューションをインストールするには、Azure サブスクリプションの管理者か共同作業者である必要があります。 
 
   > [!NOTE]
-  > MMA エージェントでは、Operations Manager の実行アカウントはサポートされていません。
+  > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの Log Analytics サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
   >
   >
-* 「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従って SQL 評価ソリューションを OMS ワークスペースに追加します。 さらに手動で構成する必要はありません。
 
-> [!NOTE]
-> ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの OMS サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
+SQL Server サーバーに対して正常性チェックを実行するには、エージェントと、次のサポートされるいずれかの方法を使用して Log Analytics に接続できる必要があります。
 
-## <a name="sql-assessment-data-collection-details"></a>SQL 評価データ収集の詳細
-SQL 評価では、有効になっているエージェントを使用して、WMI データ、レジストリ データ、パフォーマンス データ、SQL Server の動的管理の表示結果を収集します。
+1. サーバーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](log-analytics-windows-agents.md) をインストールします。
+2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、監視グループが Log Analytics サービスと統合されていない場合は、サーバーを Log Analytics とマルチホームしてデータを収集し、サービスに転送して、Operations Manager で引き続き監視することができます。  
+3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](log-analytics-om-agents.md#connecting-operations-manager-to-oms)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
-次の表に、エージェントのデータ収集方法、Operations Manager (SCOM) が必要であるかどうか、およびどのくらいの頻度でデータがエージェントによって収集されるかを示します。
+Operations Manager 管理グループに報告する SQL Server 上のエージェントはデータを収集し、割り当てられている管理サーバーに転送します。このデータは、管理サーバーから Log Analytics サービスに直接送信されます。  データは Operations Manager データベースに書き込まれません。  
 
-| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Windows | &#8226; | &#8226; |  |  | &#8226; |7 日 |
+SQL Server が Operations Manager で監視されている場合は、Operations Manager 実行アカウントを構成する必要があります。 詳細については、「[Log Analytics で使用される Operations Manager の実行アカウント](#operations-manager-run-as-accounts-for-log-analytics)」を参照してください。
 
-## <a name="operations-manager-run-as-accounts-for-oms"></a>OMS で使用される Operations Manager の実行アカウント
-OMS の Log Analytics では、データの収集と OMS サービスへのデータの送信に、Operations Manager エージェントと管理グループを使用します。 OMS は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン アカウントなど)。 Operations Manager の実行アカウントを構成して資格情報を与えることが必要です。
+## <a name="sql-health-check-data-collection-details"></a>SQL 正常性チェックのデータ収集の詳細
+SQL 正常性チェックでは、有効にしたエージェントを使用して、次のソースからデータを収集します。 
 
-次の情報を使用すると、SQL の評価用に Operations Manager の実行アカウントを設定できます。
+* Windows Management Instrumentation (WMI) 
+* レジストリ 
+* パフォーマンス カウンター
+* SQL Server の動的管理ビューの結果 
 
-### <a name="set-the-run-as-account-for-sql-assessment"></a>SQL の評価に使用する実行アカウントの設定
- SQL Server 管理パックを既に使用している場合、SQL Server の実行アカウントを使用する必要があります。
+データは SQL Server で収集され、7 日ごとに Log Analytics に転送されます。
+
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics で使用される Operations Manager の実行アカウント
+Log Analytics では、データの収集と Log Analytics サービスへのデータの送信に、Operations Manager エージェントと管理グループを使用します。 Log Analytics は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン ユーザー アカウントなど)。 Operations Manager の実行アカウントを構成して資格情報を与えることが必要です。
+
+次の情報を使用すると、SQL 正常性チェック用に Operations Manager の実行アカウントを設定できます。
+
+### <a name="set-the-run-as-account-for-sql-health-check"></a>SQL 正常性チェックに使用する実行アカウントの設定
+ SQL Server 管理パックを既に使用している場合、実行アカウントの構成を使用する必要があります。
 
 #### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>オペレーション コンソールで SQL の実行アカウントを構成するには
 > [!NOTE]
-> SCOM エージェントではなく、OMS ダイレクト エージェントを使用している場合、管理パックは、常にローカル システム アカウントのセキュリティ コンテキストで実行されます。 以下の手順 1. ～ 5. をスキップし、ユーザー名として NT AUTHORITY\SYSTEM を指定して、T-SQL または PowerShell のサンプルを実行します。
+> 既定で、管理パックのワークフローは、ローカル システム アカウントのセキュリティ コンテキストで実行されます。 Operations Manager 管理グループに直接報告するのではなく、サービスに直接接続されている Microsoft Monitoring Agent を使用している場合は、以下の手順 1 ～ 5 をスキップし、T-SQL または PowerShell サンプルを実行し、ユーザー名として NT AUTHORITY\SYSTEM を指定します。
 >
 >
 
@@ -90,11 +93,11 @@ OMS の Log Analytics では、データの収集と OMS サービスへのデ�
    > 実行アカウントの種類は Windows であることが必要です。 さらに、SQL Server インスタンスをホストするすべての Windows Server 上のローカルの Administrators グループに、その実行アカウントが属している必要があります。
    >
    >
-5. **[保存]**をクリックします。
-6. 次の T-SQL サンプルに変更を加えて、各 SQL Server インスタンスで実行します。実行アカウントで SQL の評価を行うために必要な最低限の権限が付与されます。 ただし、実行アカウントが既に SQL Server インスタンスの sysadmin サーバー ロールに属している場合、この作業は不要です。
+5. **[ Save]** をクリックします。
+6. 次の T-SQL サンプルに変更を加えて、各 SQL Server インスタンスで実行します。実行アカウントで正常性チェックを行うために必要な最低限の権限が付与されます。 ただし、実行アカウントが既に SQL Server インスタンスの sysadmin サーバー ロールに属している場合、この作業は不要です。
 
 ```
----
+    ---
     -- Replace <UserName> with the actual user name being used as Run As Account.
     USE master
 
@@ -111,11 +114,11 @@ OMS の Log Analytics では、データの収集と OMS サービスへのデ�
     EXEC sp_msforeachdb N'USE [?]; CREATE USER [<UserName>] FOR LOGIN [<UserName>];'
 
 ```
+
 #### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Windows PowerShell を使用して SQL 実行アカウントを構成するには
 PowerShell ウィンドウを開き、次のスクリプトに自分の情報を反映して実行します。
 
 ```
-
     import-module OperationsManager
     New-SCOMManagementGroupConnection "<your management group name>"
 
@@ -154,17 +157,19 @@ PowerShell ウィンドウを開き、次のスクリプトに自分の情報を
 
 すべての推奨事項には、重要である理由についてのガイダンスが含まれます。 ユーザーはこのガイダンスを使用し、IT サービスの性質と組織のビジネス ニーズに基づいて、推奨事項を実装することが会社にとって適切かどうかを評価する必要があります。
 
-## <a name="use-assessment-focus-area-recommendations"></a>評価の関心領域に関する推奨事項の使用
-OMS の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」を参照してください。 インストール後は、OMS の [Overview (概要)] ページの [SQL Assessment (SQL 評価)] タイルを使用して、推奨事項の概要を表示できます。
+## <a name="use-health-check-focus-area-recommendations"></a>正常性チェックの関心領域に関する推奨事項の使用
+Log Analytics の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。  インストール後は、Azure Portal のソリューション ページの [SQL 正常性チェック] タイルを使用して、推奨事項の概要を表示できます。
 
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-1. **[概要]** ページで、**[SQL 評価]** タイルをクリックします。
-2. **[SQL 評価]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
-3. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。  
-    ![SQL 評価に関する推奨事項の画像](./media/log-analytics-sql-assessment/sql-assess-focus.png)
-4. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
+2. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルをクリックします。  
+4. **[概要]** ページで、**[SQL 正常性チェック]** タイルをクリックします。 
+5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
+6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![SQL 正常性チェックの推奨事項の画像](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
+7. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
 無視する推奨事項がある場合は、OMS が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
@@ -172,45 +177,59 @@ OMS の評価ソリューションを使用するには、ソリューション�
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>無視する推奨事項を識別するには
-1. ワークスペースにサインインして、ログ検索を開きます。 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
+1. Azure Portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** タイルをクリックします。
+2. 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
 
-   ```
-   Type=SQLAssessmentRecommendation RecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
-   ```
+    ```
+    Type=SQLAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
+    ```
 
-   ログ検索のクエリを示すスクリーン ショットを次に示します。![失敗した推奨事項](./media/log-analytics-sql-assessment/sql-assess-failed-recommendations.png)
-2. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
+    >[!NOTE]
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    >
+    > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
+
+    ログ検索のクエリを示すスクリーン ショットを次に示します。<br><br> ![失敗した推奨事項](./media/log-analytics-sql-assessment/sql-assess-failed-recommendations.png)<br>
+
+3. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt テキスト ファイルを作成および使用するには
 1. IgnoreRecommendations.txt という名前のファイルを作成します。
-2. OMS に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
-3. OMS に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
+2. Log Analytics に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
+3. Log Analytics に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
    * Microsoft Monitoring Agent がインストールされたコンピューター (直接または Operations Manager 経由で接続されている) - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
    * Operations Manager 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * Operations Manager 2016 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>推奨事項が無視されていることを確認するには
 1. 次回スケジュールされている評価が実行した後は、既定では 7 日おきで、推奨事項が Ignored とマークされ、評価ダッシュボードには表示されません。
 2. 次のログ検索クエリを使用して、無視されるすべての推奨事項の一覧を表示します。
 
-   ```
-   Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
-   ```
+    ```
+    Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select Computer, RecommendationId, Recommendation | sort Computer
+    ```
+
+    >[!NOTE]
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    >
+    > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
+
 3. 無視された推奨事項を表示することを後で決定する場合は、IgnoreRecommendations.txt ファイルを削除します。また、そのファイルから RecommendationID を削除することもできます。
 
-## <a name="sql-assessment-solution-faq"></a>SQL 評価ソリューションに関する FAQ
-*評価はどのくらいの頻度で実行されますか?*
+## <a name="sql-health-check-solution-faq"></a>SQL 正常性チェック ソリューションについてよく寄せられる質問 (FAQ)
+*正常性チェックはどのような頻度で実行されますか?*
 
-* 評価は 7 日おきに実行されます。
+* チェックは 7 日ごとに実行されます。
 
-*評価の実行頻度を構成する方法がありますか?*
+*チェックの実行頻度を構成する方法はありますか?*
 
 * 現時点ではありません。
 
-*SQL 評価ソリューションを追加後、別のサーバーが検出された場合、それは評価されますか?*
+*SQL 正常性チェック ソリューションを追加後、別のサーバーが検出された場合、それはチェックされますか?*
 
-* はい。検出されると、それ以降 7 日おきに評価されます。
+* はい。検出されると、それ以降 7 日おきにチェックされます。
 
-*サーバーを使用停止にした場合、それはいつ評価対象から除外されますか?*
+*サーバーを使用停止にした場合、正常性チェックの対象からはいつ除外されますか?*
 
 * サーバーは、3 週間にわたりデータを送信しない場合、除外されます。
 
@@ -240,11 +259,11 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 *上位 10 個の推奨事項しか表示されないのはなぜですか?*
 
-* タスクの一覧を余すことなく完全に提供するのでなく、まず優先的な推奨事項への対処に重点を置くことをお勧めしています。 優先的な推奨事項に対処すると、追加の推奨事項が表示されます。 詳細な一覧を確認する場合は、OMS のログ検索を使用してすべての推奨事項を表示できます。
+* タスクの一覧を余すことなく完全に提供するのでなく、まず優先的な推奨事項への対処に重点を置くことをお勧めしています。 優先的な推奨事項に対処すると、追加の推奨事項が表示されます。 詳細な一覧を確認する場合は、Log Analytics のログ検索を使用してすべての推奨事項を表示できます。
 
 *推奨事項を無視する方法はありますか?*
 
 * はい。前のセクション「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* [ログ検索](log-analytics-log-searches.md) を実行して、詳細な SQL 評価データと推奨事項を表示します。
+* [ログの検索](log-analytics-log-searches.md)で、詳細な SQL 正常性チェック データと推奨事項を分析する方法を学びます。

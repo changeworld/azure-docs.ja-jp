@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 89743b7c37013e7c3a62fd5958d2ad5575c6d372
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee06a8647147dac488d2fe8bcca911a7149e9b35
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 

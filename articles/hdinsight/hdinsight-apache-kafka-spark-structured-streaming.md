@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: larryfr
-ms.openlocfilehash: 565f840e0ac7ec1a68361ac1613da5d42459c979
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9eb39989bdec330e47e6233be5c1347ff716bed2
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-spark-structured-streaming-with-kafka-preview-on-hdinsight"></a>HDInsight 上で Kafka による Spark 構造化ストリーミング (プレビュー) を使用する
 
@@ -158,4 +158,4 @@ Jupyter Notebook のホーム ページから、__Spark-Structured-Streaming-Fro
 この記事では、Spark 構造化ストリームの使用方法を説明しました。Spark および Kafka の操作に関する詳細については、以下のドキュメントをご覧ください。
 
 * [Kafka で Spark ストリーミングを (DStream) を使用する方法](hdinsight-apache-spark-with-kafka.md)
-* [HDInsight で Jupyter Notebook と Spark を使い始める](hdinsight-apache-spark-jupyter-spark-sql.md)
+* [HDInsight で Jupyter Notebook と Spark を使い始める](spark/apache-spark-jupyter-spark-sql.md)

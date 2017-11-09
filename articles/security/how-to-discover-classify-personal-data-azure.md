@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 6ccb064a9a76e7041d4f365b3997673dc9182e0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d60a5ca6229939e5d368c216688e4964261f85c7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Microsoft Azure で個人データを検出、特定、分類する
 
@@ -150,13 +150,13 @@ Azure HDInsight で Hadoop クラスターに関連付けられている個人�
 
 #### <a name="how-do-i-use-excel-power-query-to-import-hadoop-clusters-in-azure-hdinsight-into-excel"></a>Excel Power Query を使用して Azure HDInsight で Hadoop クラスターを Excel にインポートする方法
 
-HDInsight チュートリアルで、このプロセス全体を説明します。 このチュートリアルは前提条件について説明しており、[Azure HDInsight の概要](../hdinsight/hdinsight-hadoop-linux-tutorial-get-started.md)チュートリアルへのリンクが含まれます。 説明は Excel 2016 だけでなく 2013 と 2010 にも適用されます (以前のバージョンの Excel では手順が少し異なります)。 Excel Power Query アドインをお持ちでない方は、チュートリアルで入手する方法を確認できます。 チュートリアルは Excel で開始します。また、クラスターに関連付けられている Azure Blob Storage アカウントが必要です。
+HDInsight チュートリアルで、このプロセス全体を説明します。 このチュートリアルは前提条件について説明しており、[Azure HDInsight の概要](../hdinsight/hadoop/apache-hadoop-linux-tutorial-get-started.md)チュートリアルへのリンクが含まれます。 説明は Excel 2016 だけでなく 2013 と 2010 にも適用されます (以前のバージョンの Excel では手順が少し異なります)。 Excel Power Query アドインをお持ちでない方は、チュートリアルで入手する方法を確認できます。 チュートリアルは Excel で開始します。また、クラスターに関連付けられている Azure Blob Storage アカウントが必要です。
 
   ![Excel でのクエリ](media/how-to-discover-classify-personal-data-azure/excel.png)
 
-これを行う方法を確認するには、「[Power Query を使用した Excel から Hadoop への接続](../hdinsight/hdinsight-connect-excel-power-query.md)」チュートリアルにアクセスしてください。
+これを行う方法を確認するには、「[Power Query を使用した Excel から Hadoop への接続](../hdinsight/hadoop/apache-hadoop-connect-excel-power-query.md)」チュートリアルにアクセスしてください。
 
-ソース: [Power Query を使用した Excel から Hadoop への接続](../hdinsight/hdinsight-connect-excel-power-query.md)
+ソース: [Power Query を使用した Excel から Hadoop への接続](../hdinsight/hadoop/apache-hadoop-connect-excel-power-query.md)
 
 ## <a name="azure-information-protection-personal-data-classification-for-documents-and-email"></a>Azure Information Protection: ドキュメントおよび電子メール用の個人データの分類
 

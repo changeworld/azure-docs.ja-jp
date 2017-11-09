@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: c0ea91ae6e03429b197eeb3767b709fb03aa0dc8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0df58c24653d60e7594a70b911540662548a236
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする
 
@@ -30,7 +30,7 @@ HDInsight の Ambari Web UI には Tez ビューが含まれています。Tez �
 
 ## <a name="prerequisites"></a>前提条件
 
-* Linux ベースの HDInsight クラスター。 クラスターの作成手順については、「[Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
+* Linux ベースの HDInsight クラスター。 クラスターの作成手順については、「[Hadoop チュートリアル: Linux 上の HDInsight で Hive と Hadoop を使用する](hadoop/apache-hadoop-linux-tutorial-get-started.md)」を参照してください。
 * HTML5 をサポートする最新の Web ブラウザー
 
 ## <a name="understanding-tez"></a>Tez について
@@ -106,7 +106,7 @@ Tez を使用する Hive クエリを実行するには、次の手順に従い�
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、Tez ビューの使用方法を説明しました。詳細については、[HDInsight での Hive の使用](hdinsight-use-hive.md)に関する記事を参照してください。
+ここでは、Tez ビューの使用方法を説明しました。詳細については、[HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)に関する記事を参照してください。
 
 Tez に関する技術的な情報の詳細については、 [Hortonworks の Tez に関するページ](http://hortonworks.com/hadoop/tez/)を参照してください。
 

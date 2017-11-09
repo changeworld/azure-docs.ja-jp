@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: cc17196603a5bdcd7f880c3650512846fa0facef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3bf9e4673ffb756a8d159ed5733d3ddca70010c7
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -69,7 +69,7 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
 2. **[アプリ設定]** で次の設定を追加します。
     * Key = WEBSITE_TIME_ZONE
     * Value = *目的のタイム ゾーン*
-3. [ **保存**] を選択します。
+3. **[ 保存]** を選択します。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 

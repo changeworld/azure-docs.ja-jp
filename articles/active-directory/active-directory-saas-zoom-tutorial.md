@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: aab491f162fd4d24c6ff4d8858f2edd96dda30d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8d902b9170fee47afb038df739bbca6d2d025e0
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>チュートリアル: Azure Active Directory と Zoom の統合
 
@@ -110,7 +110,7 @@ Zoom で Azure AD のシングル サインオンを構成してテストする�
 
     a. **[サインオン URL]** ボックスに、`https://<companyname>.zoom.us` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://<companyname>.zoom.us` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、`<companyname>.zoom.us` の形式で URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 この値を取得するには、[Zoom クライアント サポート チーム](https://support.zoom.us/hc)にお問い合わせください。 
@@ -139,15 +139,15 @@ Zoom で Azure AD のシングル サインオンを構成してテストする�
    
     ![[Single sign-on] \(シングル サインオン\) セクション](./media/active-directory-saas-zoom-tutorial/IC784701.png "シングル サインオン")
    
-    a. **[Sign-in page URL]\(サインイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a. **[サインイン ページの URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
-    b. **[Sign-out page URL]\(サインアウト ページ URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    b. **[サインアウト ページの URL]** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
      
     c. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[ID プロバイダー証明書]** ボックスに貼り付けます。
 
     d. **[発行者]** テキストボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
-    e. [ **Save**] をクリックします。
+    e. **[ Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -252,8 +252,6 @@ Azure AD ユーザーが Zoom にログインできるようにするには、�
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

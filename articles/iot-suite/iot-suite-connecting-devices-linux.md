@@ -1,5 +1,5 @@
 ---
-title: "Linux で C を使用してデバイスを接続する | Microsoft Docs"
+title: "C を使用してリモート監視するために Linux デバイスをプロビジョニングする - Azure | Microsoft Docs"
 description: "C で記述され、Linux で実行されるアプリケーションを使用して、デバイスを Azure IoT Suite 構成済みリモート監視ソリューションに接続する方法について説明します。"
 services: 
 suite: iot-suite
@@ -13,59 +13,67 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 09/16/2017
 ms.author: dobett
-ms.openlocfilehash: 9adbc9cc13f0b4cafa3a3a7703c46f8085b15232
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 542d1e0c4c4d6cfa5d2fe9df90a7a34c72f19fc0
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>デバイスをリモート監視構成済みソリューションに接続する (Linux)
+
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## <a name="build-and-run-a-sample-c-client-linux"></a>Linux で C のサンプル クライアントをビルドして実行する
-次の手順では、リモート監視が事前構成されたソリューションと通信するクライアント アプリケーションを作成する方法を示します。 このアプリケーションは C で記述し、Ubuntu Linux 上でビルドおよび実行します。
+このチュートリアルでは、リモート監視の事前構成済みソリューションに物理デバイスを接続する方法について説明します。
 
-次の手順を完了するには、Ubuntu バージョン 15.04 または 15.10 が実行されているデバイスが必要です。 次に進む前に、次のコマンドを使用して、前提条件となるパッケージを Ubuntu デバイスにインストールします。
+## <a name="create-a-c-client-project-on-linux"></a>Linux 上で C クライアント プロジェクトを作成する
 
-```
+制限付きのデバイス上で実行される多くの組み込みアプリケーションと同様に、デバイス アプリケーションのためのクライアント コードは C で書かれています。このチュートリアルでは、Ubuntu (Linux) を実行しているコンピューターでアプリケーションを構築します。
+
+次の手順を完了するには、Ubuntu バージョン 15.04 以降が実行されているデバイスが必要です。 次に進む前に、次のコマンドを使用して、前提条件となるパッケージを Ubuntu デバイスにインストールします。
+
+```sh
 sudo apt-get install cmake gcc g++
 ```
 
-## <a name="install-the-client-libraries-on-your-device"></a>デバイスにクライアント ライブラリをインストールする
+### <a name="install-the-client-libraries-on-your-device"></a>デバイスにクライアント ライブラリをインストールする
+
 Azure の IoT Hub クライアント ライブラリは、 **apt-get** コマンドを使用してパッケージとして Ubuntu デバイスにインストールし、使用できます。 IoT Hub クライアント ライブラリとヘッダー ファイルが含まれるパッケージを Ubuntu コンピューターにインストールするには、次の手順を実行します。
 
 1. シェルで、コンピューターに Azure IoT リポジトリを追加します。
-   
-    ```
+
+    ```sh
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
     sudo apt-get update
     ```
-2. azure-iot-sdk-c-dev パッケージをインストールします
-   
-    ```
+
+1. azure-iot-sdk-c-dev パッケージをインストールします
+
+    ```sh
     sudo apt-get install -y azure-iot-sdk-c-dev
     ```
 
-## <a name="install-the-parson-json-parser"></a>Parson JSON パーサーをインストールする
+### <a name="install-the-parson-json-parser"></a>Parson JSON パーサーをインストールする
+
 IoT Hub クライアント ライブラリでは、メッセージ ペイロードの解析に Parson JSON のパーサーが使用されます。 次のコマンドを使用して、コンピューター上の適切なフォルダーに Parson GitHub リポジトリを複製します。
 
-```
+```sh
 git clone https://github.com/kgabis/parson.git
 ```
 
-## <a name="prepare-your-project"></a>プロジェクトを準備する
-Ubuntu コンピューターで、**remote\_monitoring** という名前のフォルダーを作成します。 **remote\_monitoring** フォルダーで次の手順を実行します。
+### <a name="prepare-your-project"></a>プロジェクトを準備する
 
-- **main.c**、**remote\_monitoring.c**、**remote\_monitoring.h**、**CMakeLists.txt** の 4 ファイルを作成します。
-- **parson** という名前のフォルダーを作成します。
+Ubuntu コンピューターで、`remote_monitoring` という名前のフォルダーを作成します。 `remote_monitoring` フォルダーで次の手順を実行します。
 
-ファイル **parson.c** と **parson.h** を Parson リポジトリのローカル コピーから **remote\_monitoring/parson** フォルダーにコピーします。
+- `main.c`、`remote_monitoring.c`、`remote_monitoring.h`、および `CMakeLists.txt` の 4 つのファイルを作成します。
+- `parson` という名前のフォルダーを作成します。
 
-テキスト エディターで、**remote\_monitoring.c** ファイルを開きます。 次の `#include` ステートメントを追加します。
-   
-```
+`parson.c` と `parson.h` のファイルを Parson リポジトリのローカル コピーから、`remote_monitoring/parson` フォルダーにコピーします。
+
+テキスト エディターで、`remote_monitoring.c` ファイルを開きます。 次の `#include` ステートメントを追加します。
+
+```c
 #include "iothubtransportmqtt.h"
 #include "schemalib.h"
 #include "iothub_client.h"
@@ -78,34 +86,36 @@ Ubuntu コンピューターで、**remote\_monitoring** という名前のフ�
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="call-the-remotemonitoringrun-function"></a>remote\_monitoring\_run 関数を呼び出す
-テキスト エディターで、**remote_monitoring.h** ファイルを開きます。 次のコードを追加します。
+## <a name="add-code-to-run-the-app"></a>アプリを実行するコードを追加する
 
-```
+テキスト エディターで、`remote_monitoring.h` ファイルを開きます。 次のコードを追加します。
+
+```c
 void remote_monitoring_run(void);
 ```
 
-テキスト エディターで、 **main.c** ファイルを開きます。 次のコードを追加します。
+テキスト エディターで、`main.c` ファイルを開きます。 次のコードを追加します。
 
-```
+```c
 #include "remote_monitoring.h"
 
 int main(void)
 {
-    remote_monitoring_run();
+  remote_monitoring_run();
 
-    return 0;
+  return 0;
 }
 ```
 
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
+
 次の手順では、 *CMake* を使用してクライアント アプリケーションをビルドする方法について説明します。
 
-1. テキスト エディターで、**remote_monitoring** フォルダーの **CMakeLists.txt** ファイルを開きます。
+1. テキスト エディターで、`remote_monitoring` フォルダーの **CMakeLists.txt** ファイルを開きます。
 
 1. 次の手順を追加して、クライアント アプリケーションをビルドする方法を定義します。
-   
-    ```
+
+    ```cmake
     macro(compileAsC99)
       if (CMAKE_VERSION VERSION_LESS "3.1")
         if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
@@ -151,9 +161,10 @@ int main(void)
         m
     )
     ```
-1. **remote_monitoring** フォルダーに、CMake によって生成される *make* ファイルを格納するフォルダーを作成し、次に示すように **cmake** コマンドと **make** コマンドを実行します。
-   
-    ```
+
+1. `remote_monitoring` フォルダーで、CMake が生成する *make* ファイルを格納するフォルダーを作成します。 続いて、 **cmake** と **make** コマンドを次のように実行します。
+
+    ```sh
     mkdir cmake
     cd cmake
     cmake ../
@@ -161,10 +172,9 @@ int main(void)
     ```
 
 1. クライアント アプリケーションを実行し、テレメトリを IoT Hub に送信します。
-   
-    ```
+
+    ```sh
     ./sample_app
     ```
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
-

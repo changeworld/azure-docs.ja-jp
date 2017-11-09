@@ -4,7 +4,7 @@ description: "Apache Spark を使用して、DStreams による Apache Kafka 内
 keywords: kafka example,kafka zookeeper,spark streaming kafka,spark streaming kafka example
 services: hdinsight
 documentationcenter: 
-author: Blackmist
+author: maxluk
 manager: jhubbard
 editor: cgronlun
 ms.assetid: dd8f53c1-bdee-4921-b683-3be4c46c2039
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
-ms.author: larryfr
-ms.openlocfilehash: 788ba828d1380b17913cabf18827c1abcc83c725
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maxluk
+ms.openlocfilehash: 6608363f90b61fe60f26d3f9fafd77b1e2232838
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-preview-on-hdinsight"></a>HDInsight 上の Kafka (プレビュー) を用いた Apache Spark ストリーミング (DStream) の例
 
@@ -97,7 +97,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 この例では、Spark を使用して Kafka に対するデータの読み取りと書き込みを行う方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 
-* [HDInsight での Apache Kafka の使用](hdinsight-apache-kafka-get-started.md)
-* [MirrorMaker を使用した HDInsight での Kafka のレプリカの作成](hdinsight-apache-kafka-mirroring.md)
+* [HDInsight での Apache Kafka の使用](kafka/apache-kafka-get-started.md)
+* [MirrorMaker を使用した HDInsight での Kafka のレプリカの作成](kafka/apache-kafka-mirroring.md)
 * [HDInsight での Kafka に Apache Storm を使用する](hdinsight-apache-storm-with-kafka.md)
 

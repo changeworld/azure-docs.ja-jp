@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 10/15/2017
 ms.author: maroche
-ms.openlocfilehash: 83ca3b2d89a335a5fd6dddeaca7c11f6d0492234
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bcd2ba4f92937cf1e134b2a59d97c7bea7802145
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>管理タグ付け用のビジネス用語集を設定する
 ## <a name="introduction"></a>はじめに
@@ -39,7 +39,7 @@ Azure Data Catalog では、データ ソースの検出が可能なため、分
 ## <a name="glossary-availability-and-privileges"></a>用語集の可用性と特権
 ビジネス用語集は、Azure Data Catalog の Standard Edition でのみ使用できます。 Data Catalog の Free Edition には、用語集は含まれていません。また、管理タグ付け機能も提供していません。
 
-ビジネス用語集には、Data Catalog ポータルのナビゲーション メニューにある [**用語集**] オプションでアクセスできます。  
+ビジネス用語集には、Data Catalog ポータルのナビゲーション メニューにある **[用語集]** オプションでアクセスできます。  
 
 ![ビジネス用語集へのアクセス](./media/data-catalog-how-to-business-glossary/01-portal-menu.png)
 
@@ -48,7 +48,7 @@ Data Catalog 管理者と用語集管理者ロールのメンバーは、ビジ�
 ![新しい用語を追加する](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>用語集の用語を作成する
-Data Catalog 管理者や用語集管理者は、[**新しい用語**] ボタンをクリックして、用語集の用語を作成できます。 用語集の各用語には、次のフィールドが含まれます。
+Data Catalog 管理者や用語集管理者は、**[新しい用語]** ボタンをクリックして、用語集の用語を作成できます。 用語集の各用語には、次のフィールドが含まれます。
 
 * 用語のビジネスの定義
 * 資産または列の使用意図やビジネス ルールを示す説明

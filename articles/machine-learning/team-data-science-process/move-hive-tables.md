@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: e879ab2874cb3298de4b0929b286482d824e8309
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c90c3d3c0effd68a4a5962d4d097fccbdc3fee56
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 このトピックでは Hive テーブルを作成し、Azure Blob Storage からデータを読み込む汎用の Hive クエリを紹介しています。 Hive テーブルをパーティション分割する方法や、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させる方法についてのガイダンスも提供されます。
@@ -120,7 +120,7 @@ Azure ストレージ エクスプローラーを使用して Hadoop クラス�
 *https://&#60;Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。 このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
 
 ### <a name="ps"></a> 3.Azure PowerShell コマンドで Hive クエリを送信する
-PowerShell を使用して Hive クエリを送信することもできます。 手順については、「 [PowerShell を使用して Hive ジョブを送信する](../../hdinsight/hdinsight-hadoop-use-hive-powershell.md)」を参照してください。
+PowerShell を使用して Hive クエリを送信することもできます。 手順については、「 [PowerShell を使用して Hive ジョブを送信する](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)」を参照してください。
 
 ## <a name="create-tables"></a>Hive データベースとテーブルの作成。
 Hive クエリは、[GitHub リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_db_tbls_load_data_generic.hql) 内で共有されており、そこからダウンロードできます。

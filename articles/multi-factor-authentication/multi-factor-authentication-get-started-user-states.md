@@ -3,7 +3,7 @@ title: "Microsoft Azure Multi-Factor Authentication におけるユーザーの�
 description: "Azure MFA におけるユーザーの状態について説明します。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 0b9fde23-2d36-45b3-950d-f88624a68fbd
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.openlocfilehash: 1869b7a4ef42536a3cd909ba2983ae0fe97185a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 97fc645ca85d3405bb065fb0cf0145e828196fe9
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>ユーザーまたはグループに 2 段階認証を要求する方法
 

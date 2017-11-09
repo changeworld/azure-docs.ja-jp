@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 202cd5441401a91736a55ccba095fa08dc95aa26
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3000acf91a66af3ec512af52362f7f1e2ba0019b
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 このリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -35,14 +35,46 @@ ms.lasthandoff: 10/11/2017
 | REST API で一般的な HTTP ヘッダーがいくつか提供されていない。 |REST API を使用して Media Services アプリケーションを開発している場合、いくつかの一般的な HTTP フィールド (CLIENT-REQUEST-ID、REQUEST-ID、および RETURN-CLIENT-REQUEST-ID を含む) がサポートされていないことに気付きます。 ヘッダーは、今後の更新プログラムで追加される予定です。 |
 | パーセントエンコーディングは利用できません。 |Media Services は、ストリーミング コンテンツ (たとえば、http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters) の URL を構築する際に、IAssetFile.Name プロパティの値を使用します。このため、パーセントエンコーディングは利用できません。 **Name** プロパティの値には、[パーセント エンコーディング予約文字](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) (!*'();:@&=+$,/?%#[]") は使用できません。 "." は 1 つのみです。 また、ファイル名拡張子で使用できる "." は 1 つのみです。 |
 | Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドが失敗する。 |Media Services は、 [2012-02-12](https://docs.microsoft.com/rest/api/storageservices/Version-2012-02-12) バージョンに基づいて SAS URL を生成します。 Azure Storage SDK を使用して、BLOB コンテナー内の BLOB を一覧する場合は、Azure Storage SDK Version 2.x に含まれる [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) メソッドを使用してください。 Azure Storage SDK Version 3.x に含まれる ListBlobs メソッドは失敗します。 |
-| Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。 サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。 |詳細については、「 [Azure Media Services エラー コード](media-services-encoding-error-codes.md) 」の 503 HTTP 状態コードの説明を参照してください。 |
+| Media Services 調整メカニズムが、サービスに対して過剰な要求を作成するアプリケーションのリソース使用を制限する。 サービスが「サービスを利用できません」(503) HTTP 状態コードを返すことがある。 |詳細については、[Azure Media Services のエラー コード](media-services-encoding-error-codes.md)に関する記事の 503 HTTP 状態コードの説明をご覧ください。 |
 | パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 |[この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 |
 | 一部のクライアントは、スムーズ ストリーミング マニフェストで繰り返しタグに遭遇することがあります。 |詳細については、 [こちらの](media-services-deliver-content-overview.md#known-issues) セクションを参照してください。 |
 | Azure Media Services .NET SDK オブジェクトをシリアル化できず、その結果、Azure Cache と連携動作しません。 |SDK AssetCollection オブジェクトをシリアル化して、Azure Cache に追加しようとすると、例外がスローされます。 |
-| エンコード ジョブが、メッセージ文字列 "段階: DownloadFile. コード: System.NullReferenceException" で失敗します。 |一般的なエンコード ワークフローでは、入力ビデオ ファイルを入力資産にアップロードし、その入力資産の 1 つまたは複数のエンコード ジョブを送信します。その入力資産がさらに変更されることはありません。 ただし、(たとえば、資産内のファイルの追加/削除/名前変更のために) 入力資産を変更した場合は、これ以降のジョブが DownloadFile エラーで失敗する可能性があります。 これを回避するには、入力資産を削除して、新しい資産に入力ファイルを再度アップロードしてください。 |
+
 
 ## <a id="rest_version_history"></a>REST API バージョン履歴
 Media Services REST API バージョン履歴の詳細については、「 [Azure Media Services REST API リファレンス]」を参照してください。
+
+## <a name="october-2017-release"></a>2017 年 10 月のリリース
+> [!IMPORTANT] 
+> お知らせ: Azure Media Services では、ACS 認証キーのサポートが廃止されます。  2018 年 6 月 1 日時点で、ACS キーを使用したコードによって AMS バックエンドで認証することはできなくなります。 [Azure Active Directory (Azure AD) ベースの認証](media-services-use-aad-auth-to-access-ams-api.md)に関する記事に従って、Azure Active Directory (AAD) を使用するようにコードを更新する必要があります。 Azure Portal にも、この変更に関する警告が表示されます。
+
+### <a name="updates-for-october-2017-include"></a>2017 年 10 月の更新
+#### <a name="sdks"></a>SDK
+* AAD 認証をサポートするために、.NET SDK が更新されました。  AAD への迅速な移行を促すために、Nuget.org の最新の .NET SDK から ACS 認証のサポートが削除されました。 
+* AAD 認証をサポートするために、JAVA SDK が更新されました。  Java SDK に AAD 認証のサポートが追加されました。 AMS で Java SDK を使用する方法の詳細については、「[Azure Media Services 用 Java クライアント SDK の概要](media-services-java-how-to-use.md)」をご覧ください。
+
+#### <a name="file-based-encoding"></a>ファイル ベースのエンコード
+1.  Premium Encoder を使用して、H.265 (HEVC) ビデオ コーデックにコンテンツをエンコードできるようになりました。 H.264 などの他のコーデックではなく、H.265 を選択しても料金への影響はありません。 HEVC 特許ライセンスに関する重要な注意事項については、[オンライン サービス条件](https://azure.microsoft.com/support/legal/)に関するページをご覧ください。
+2.  H.265 (HEVC) ビデオ コーデックでエンコードされたソース ビデオ (iOS11 や GoPro Hero 6 を使用してキャプチャされたビデオなど) がある場合、Premium Encoder または Standard Encoder を使用してそれらのビデオをエンコードできるようになりました。 特許ライセンスに関する重要な注意事項については、[オンライン サービス条件](https://azure.microsoft.com/support/legal/)に関するページをご覧ください。
+3.  複数の言語のオーディオ トラックが含まれたコンテンツがある場合、対応するファイル形式の仕様 (ISO MP4 など) に従って言語の値に正しくラベル付けされていれば、Standard Encoder を使用してそのコンテンツをストリーミング用にエンコードできます。 作成されたストリーミング ロケーターには、使用可能なオーディオ言語の一覧が表示されます。
+4.  Standard Encoder で、"AAC Audio" と "AAC Good Quality Audio" の 2 つの新しいオーディオのみのシステム プリセットがサポートされるようになりました。 それぞれ 128 kbps、192 kbps のビット レートで、どちらもステレオ AAC 出力を生成します。
+5.  ビデオ コーデックが[こちらに記載された Apple ProRes フレーバー](https://docs.microsoft.com/en-us/azure/media-services/media-services-media-encoder-standard-formats)のいずれかであり、オーディオが AAC または PCM であれば、Premium Encoder で入力として QuickTime/MOV ファイル形式がサポートされるようになりました。
+
+> [!NOTE]
+> Premium Encoder では、たとえば、QuickTime/MOV ファイルにラップされた DVC/DVCPro ビデオは入力としてサポートされません。  ただし、Standard Encoder ではこれらのビデオ コーデックをサポートしています。
+>
+>
+
+6.  エンコーダーのバグ修正は次のとおりです。
+    * 入力資産を使用してジョブを送信し、完了後に資産を変更 (資産内でのファイルの追加、削除、名前変更など) して、追加のジョブを送信できるようになりました。 
+    * Standard Encoder によって生成される JPEG サムネイルの品質が向上しました。
+    * 短時間のビデオについて Standard Encoder が改善されました。 非常に短時間のビデオでの入力メタデータの処理とサムネイルの生成が向上しています。
+    * Standard Encoder で使用される H.264 デコーダーが改善され、まれに生成される特定のアーティファクトが排除されます。 
+
+#### <a name="media-analytics"></a>メディア分析
+* Azure Media Redactor の GA - このメディア プロセッサ (MP) では、選択された個人の顔を不鮮明にすることで、個人が特定されないようにします。これは治安の確保やニュース メディアのシナリオでの使用に適しています。 この新しいプロセッサの概要については、[こちら](https://azure.microsoft.com/blog/azure-media-redactor/)のブログ記事をご覧ください。 詳細なドキュメントと設定については、「[Azure Media Analytics で顔を編集する](media-services-face-redaction.md)」をご覧ください。
+
+
 
 ## <a name="june-2017-release"></a>2017 年 6 月のリリース
 
@@ -58,19 +90,19 @@ Azure Media Standard を使って、エンコード タスクを作成すると�
 Azure Media Standard またはメディア エンコーダー Premium ワークフローを使って、[fMP4 チャンクを生成するエンコード タスクを作成](media-services-generate-fmp4-chunks.md)できるようになりました。 
 
 
-## <a name="febuary-2017-release"></a>2017 年 2 月のリリース
+## <a name="february-2017-release"></a>2017 年 2 月のリリース
 
 2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、[ここ](media-services-dotnet-manage-entities.md)で説明されているコードを使用できます。
 
 ## <a name="january-2017-release"></a>2017 年 1 月のリリース
 
-Microsoft Azure Media Services (AMS) では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 Media Services は、シームレスな Azure CDN 統合もサポートしています。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリーム、ビデオ オンデマンド、または Media Services アカウントの資産のプログレッシブ ダウンロードを使用します。 各 Azure Media Services アカウントには、既定の StreamingEndpoint が含まれています。 追加の StreamingEndpoint をアカウントで作成できます。 StreamingEndpoint には、1.0 および 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日から、新しく作成された AMS アカウントには、バージョン 2.0 が**既定**の StreamingEndpoint として含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントに影響しません。既存の Streamingendpoint はバージョン 1.0 になり、バージョン 2.0 にアップグレードすることができます。 この変更により、動作、課金および機能に変更があります (詳しくは、[こちら](media-services-streaming-endpoints-overview.md)のトピックをご覧ください)。
+Microsoft Azure Media Services (AMS) では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 Media Services は、シームレスな Azure CDN 統合もサポートしています。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリーム、ビデオ オンデマンド、または Media Services アカウントの資産のプログレッシブ ダウンロードを使用します。 各 Azure Media Services アカウントには、既定の StreamingEndpoint が含まれています。 追加の StreamingEndpoint をアカウントで作成できます。 StreamingEndpoint には、1.0 および 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日から、新しく作成された AMS アカウントには、バージョン 2.0 が**既定**の StreamingEndpoint として含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントに影響しません。既存の Streamingendpoint はバージョン 1.0 になり、バージョン 2.0 にアップグレードすることができます。 この変更により、動作、課金、および機能が変更されます (詳細については、[こちら](media-services-streaming-endpoints-overview.md)の記事をご覧ください)。
 
 さらに、2.15 バージョン以降の Azure Media Services では、ストリーミング エンドポイントのエンティティに次のプロパティが追加されました。**CdnProvider**、**CdnProfile**、**FreeTrialEndTime**、**StreamingEndpointVersion**。 これらのプロパティについて詳しくは、[こちら](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)をご覧ください。 
 
 ## <a name="december-2016-release"></a>2016 年 12 月のリリース
 
-Azure Media Services を使用して、サービスのテレメトリ/メトリック データにアクセスできるようになりました。 現在のバージョンの AMS では、ライブ チャネル エンティティ、ストリーミング ポイント エンティ、およびライブ アーカイブ エンティティのテレメトリ データを取得できます。 詳細については、 [こちらの](media-services-telemetry-overview.md) トピックを参照してください。
+Azure Media Services を使用して、サービスのテレメトリ/メトリック データにアクセスできるようになりました。 現在のバージョンの AMS では、ライブ チャネル エンティティ、ストリーミング ポイント エンティ、およびライブ アーカイブ エンティティのテレメトリ データを取得できます。 詳細については、[こちらの記事](media-services-telemetry-overview.md)を参照してください。
 
 ## <a id="july_changes16"></a>2016 年 7 月のリリース
 ### <a name="updates-to-manifest-file-ism-generated-by-encoding-tasks"></a>エンコード タスクによって生成されたマニフェスト ファイル (* ISM) への更新
@@ -114,7 +146,7 @@ Azure Media Services では、Apple FairPlay を使用して HTTP ライブ ス�
 ## <a id="jan_changes_16"></a>2016 年 1 月のリリース
 エンコード予約ユニットは、エンコーダー名と混同しないように名前を変更されました。
 
-Basic、Standard、および Premium エンコード予約ユニットは、それぞれ S1、S2、および S3 予約ユニットに名前が変更されました。  Basic エンコード RU をご利用の場合は Azure Portal (と請求書) に S1 というラベルが表示され、Standard と Premium をご利用の場合はそれぞれ S2 と S3 が表示されます。 
+Basic、Standard、および Premium エンコード予約ユニットは、それぞれ S1、S2、および S3 予約ユニットに名前が変更されました。  Basic エンコード RU をご利用の場合は、Azure Portal (および請求書) に S1 というラベルが表示され、Standard および Premium をご利用の場合は、それぞれ S2、S3 というラベルが表示されます。 
 
 ## <a id="dec_changes_15"></a>2015 年 12 月のリリース
 
@@ -136,7 +168,7 @@ Azure SDK チームは [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for
 ## <a id="nov_changes_15"></a>2015 年 11 月のリリース
 Azure Media Services は、クラウドで Google Widevine ライセンス配信サービスを提供するようになりました。 詳しくは、 [こちらの案内ブログ](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)をお読みください。 また、[こちらのチュートリアル](media-services-protect-with-drm.md)および [GitHub リポジトリ](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)もご覧ください。 
 
-Azure Media Services によって提供される Widevine ライセンス配信サービスはプレビュー期間中であることに注意してください。 詳細については、 [この投稿](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)を参照してください。
+Azure Media Services によって提供される Widevine ライセンス配信サービスはプレビュー段階です。 詳細については、 [この投稿](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)を参照してください。
 
 ## <a id="oct_changes_15"></a>2015 年 10 月のリリース
 Azure Media Services (AMS) は、現在、ブラジル南部、インド西部、インド南部およびインド中部のデータ センターで利用可能です。 Azure Portal を使用して [Media Services アカウントを作成](media-services-portal-create-account.md)し、[ここ](https://azure.microsoft.com/documentation/services/media-services/)で示すさまざまなタスクを実行できるようになりました。 ただし、これらのデータ センターでは Live Encoding は有効ではありません。 また、これらのデータ センターで、すべての種類のエンコード予約ユニットを使用できるわけではありません。
@@ -190,7 +222,7 @@ Azure Media Services .NET SDK が 3.3.0.0 にバージョン アップされま�
 * OpenId Connect Discovery 仕様のサポート
 * ID プロバイダー側でのキーのロールオーバー処理のサポート 
 
-OpenID Connect 検出ドキュメントを公開する ID プロバイダー (これを実施しているプロバイダーは Azure Active Directory、Google、Salesforce) を使用している場合は、OpenID Connect Discovery 仕様から JWT トークンを検証するための署名キーを取得するように Azure Media Services に指示できます。 
+OpenID Connect 検出ドキュメントを公開する ID プロバイダー (Azure Active Directory、Google、Salesforce) を使用している場合は、OpenID Connect 検出仕様から JWT トークンを検証するための署名キーを取得するように Azure Media Services に指示できます。 
 
 詳細については、 [Azure Media Services での OpenID Connect Discovery 仕様の Json Web キーを使用した JWT トークン認証の操作に関するページ](http://gtrifonov.com/2015/06/07/using-json-web-keys-from-openid-connect-discovery-spec-to-work-with-jwt-token-authentication-in-azure-media-services/)を参照してください。
 
@@ -292,7 +324,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 * **オリジン** の名前が [ストリーミング エンドポイント]に変更されました。
 * **Azure ポータル**で MP4 ファイルをエンコードし、その後、発行する際の既定の動作が変更されました。
 
-以前は、Azure クラシック ポータルを使用して単一ファイルの MP4 ビデオ資産を発行すると、SAS URL が作成されました (SAS URL を使用してビデオを BLOB ストレージからダウンロードできます)。 現在は、Azure クラシック ポータルを使用して、単一ファイルの MP4 ビデオ資産をエンコードし、その後、発行すると、生成された URL は Azure Media Services ストリーミング エンドポイントを指します。  この変更は、Media Services に直接アップロードされ、Azure Media Services によってエンコードされずに発行された MP4 ビデオには影響しません。
+以前は、Azure クラシック ポータルを使用して単一ファイルの MP4 ビデオ資産を発行すると、SAS URL が作成されました (SAS URL を使用して、Blob Storage からビデオをダウンロードできます)。 現在は、Azure クラシック ポータルを使用して、単一ファイルの MP4 ビデオ資産をエンコードし、発行すると、生成された URL は Azure Media Services ストリーミング エンドポイントを指します。  この変更は、Media Services に直接アップロードされ、Azure Media Services によってエンコードされずに発行された MP4 ビデオには影響しません。
 
 現在、問題を解決するための次の 2 つのオプションがあります。
 
@@ -308,10 +340,10 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
     次の考慮事項が適用されます。
   
   * カスタム ドメイン名の所有権を保持している必要があります。
-  * ドメイン名の所有権は、Azure Media Services によって検証する必要があります。 ドメインを検証するには、<MediaServicesAccountId>.<parent domain> を  verifydns.<mediaservices-dns-zone> にマップする CName を作成します。 
+  * ドメイン名の所有権は、Azure Media Services によって検証する必要があります。 ドメインを検証するには、<MediaServicesAccountId>.<parent domain> を  マップして dns.<mediaservices-dns-zone> を検証する CName を作成します。 
   * カスタム ホスト名 (たとえば、sports.contoso.com) を Media Services StreamingEndpont のホスト名 (たとえば、amstest.streaming.mediaservices.windows.net) にマップする別の CName を作成する必要があります。
 
-    詳細については、「 **StreamingEndpoint** 」の [ストリーミング エンドポイント] プロパティを参照してください。
+    詳細については、**StreamingEndpoint** に関する記事の [ストリーミング エンドポイント] プロパティを参照してください。
 
 ### <a id="sept_14_preview_changes"></a>パブリック プレビュー リリースに含まれる新機能/シナリオ
 * ライブ ストリーミングのプレビュー。 詳細については、「 [Working with Azure Media Services Live Streaming (Azure Media Services ライブ ストリーミングでの動作)]」を参照してください。
@@ -323,7 +355,7 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 * ストリーミング ストレージ暗号化資産。 詳細については、「 [Streaming Storage Encrypted Content (ストリーミング ストレージ暗号化コンテンツ)]」を参照してください。
 
 ## <a id="august_changes_14"></a>2014 年 8 月のリリース
-資産をエンコードすると、エンコード ジョブの完了時に出力資産が生成されます。 このリリースになるまで、Azure Media Services エンコーダーは出力資産に関するメタデータを生成していました。 このリリースから、エンコーダーは入力資産に関するメタデータも生成します。 詳細については、「[Input Metadata (入力のメタデータ)]」および「[Output Metadata (出力のメタデータ)]」を参照してください。
+資産をエンコードすると、エンコード ジョブの完了時に出力資産が生成されます。 このリリースになるまで、Azure Media Services エンコーダーは出力資産に関するメタデータを生成していました。 このリリースから、エンコーダーは入力資産に関するメタデータも生成します。 詳細については、「[入力メタデータ]」および「[出力メタデータ]」をご覧ください。
 
 ## <a id="july_changes_14"></a>2014 年 7 月のリリース
 Azure Media Services パッケージおよび暗号化機能で次のバグが修正されました。
@@ -379,7 +411,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 現在、Media Services SDK の最新バージョンは 3.0.0.0 です。 Nuget から最新パッケージをダウンロードするか、 [GitHub]からビットを取得できます。
 
-Media Services SDK Version 3.0.0.0 から、 [Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。 詳細については、「 [Media Services SDK for .NET を使用した Media Services アカウントへの接続] 」の「Access Control Service トークンの再利用」を参照してください。
+Media Services SDK Version 3.0.0.0 から、 [Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。 詳細については、[Media Services SDK for .NET を使用した Media Services への接続]に関する記事の Access Control Service トークンの再利用に関するセクションをご覧ください。
 
 ### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK Extensions 2.0.0.0
 Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure Media Services による開発を容易にする一連の拡張機能メソッドおよびヘルパー機能です。 [Azure Media Services .NET SDK Extensions]から最新のビットを取得できます。
@@ -527,8 +559,8 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Azure Media Services MSDN フォーラム]: http://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices
 [Azure Media Services REST API リファレンス]: https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services の価格詳細]: http://azure.microsoft.com/pricing/details/media-services/
-[Input Metadata (入力のメタデータ)]: http://msdn.microsoft.com/library/azure/dn783120.aspx
-[Output Metadata (出力のメタデータ)]: http://msdn.microsoft.com/library/azure/dn783217.aspx
+[入力メタデータ]: http://msdn.microsoft.com/library/azure/dn783120.aspx
+[出力メタデータ]: http://msdn.microsoft.com/library/azure/dn783217.aspx
 [コンテンツの配信]: http://msdn.microsoft.com/library/azure/hh973618.aspx
 [Azure Media Indexer によるメディア ファイルのインデックス作成]: http://msdn.microsoft.com/library/azure/dn783455.aspx
 [ストリーミング エンドポイント]: http://msdn.microsoft.com/library/azure/dn783468.aspx
@@ -549,7 +581,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [ビデオのセグメントの結合]: http://msdn.microsoft.com/library/azure/dn640504.aspx
 [Azure Media Services .NET SDK 3.0.0.1 および 3.0.0.2 のリリース]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
 [Azure Active Directory Access Control Service (ACS)]: http://msdn.microsoft.com/library/hh147631.aspx
-[Media Services SDK for .NET を使用した Media Services アカウントへの接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
+[Media Services SDK for .NET を使用した Media Services への接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
 [Azure Media Services .NET SDK Extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [azure-sdk-tools]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/01/2017
+ms.date: 10/31/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3b2126b1ecd1613950bbf311ae08fafd4af0d51f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5127c7fa512bad49817fa4c8edf3a16ca2f7d60
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
@@ -39,7 +39,12 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="resize"></a>ゲートウェイのサイズを変更する (ゲートウェイ SKU を変更する)
 
-同じ SKU ファミリ内のゲートウェイ SKU のサイズを変更することができます。 たとえば、Standard SKU の場合は、HighPerformance SKU にサイズ変更可能です。 古い SKU と新しい SKU ファミリとの間で VPN ゲートウェイのサイズを変更することはできません。 たとえば、Standard SKU を VpnGw2 SKU にすることはできません。 
+同じ SKU ファミリ内のゲートウェイ SKU のサイズを変更することができます。 たとえば、Standard SKU の場合は、HighPerformance SKU にサイズ変更可能です。 古い SKU と新しい SKU ファミリとの間で VPN ゲートウェイのサイズを変更することはできません。 たとえば、Standard SKU を VpnGw2 SKU にすることはできません。
+
+>[!IMPORTANT]
+>ゲートウェイのサイズを変更する場合、サイズの変更中にそのゲートウェイには 20 ～ 30 分のダウンタイムが発生します。
+>
+>
 
 クラシック デプロイメント モデルのゲートウェイ SKU のサイズを変更するには、次のコマンドを使用します。
 

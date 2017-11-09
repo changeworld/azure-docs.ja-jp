@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Active
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: e779aab97a1b96d4a0e327865e957ecd0d97a278
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 25fa8d03a206452c17e5d4ad38211203aeb5dd65
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 
@@ -43,7 +43,7 @@ SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft
 > 
 
 ## <a name="how-much-backup-storage-is-included-at-no-cost"></a>無償のバックアップ ストレージはどのくらい含まれますか。
-SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。 たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージを追加のコストなしで利用できます。 データベースのサイズがプロビジョニングされたバックアップ ストレージを超える場合は、Azure サポートに連絡してリテンション期間を短縮できます。 もう 1 つのオプションとして、標準の読み取りアクセス geo 冗長ストレージ (RA-GRS) の料金で課金される追加のバックアップ ストレージに対して料金を支払うこともできます。 
+SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。 たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージを追加のコストなしで利用できます。 
 
 ## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
 完全データベース バックアップは毎週作成され、差分データベース バックアップは通常、数時間に 1 回作成されます。また、トランザクション ログのバックアップは通常 5 - 10 分間隔で実行されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。 

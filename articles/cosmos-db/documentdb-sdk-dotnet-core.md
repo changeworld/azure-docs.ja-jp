@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 10/26/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7615074ce3f5098d5155dfc28ada567ea6361878
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e5dc642399ae58120f1757ffacff45a4188681d
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -56,6 +56,10 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
+
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+
+* 信頼性のための修正と機能強化がいくつか追加されました。
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1 
 
@@ -140,7 +144,8 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| [1.5.1](#1.5.1) |2017 年 10 月 2 日 |--- |
+| [1.6.0](#1.6.0) |2017 年 10 月 17 日 |--- |
+| [1.5.1](#1.5.1) |2017 年 10 月 02 日 |--- |
 | [1.5.0](#1.5.0) |2017 年 8 月 10 日 |--- | 
 | [1.4.1](#1.4.1) |2017 年 8 月 7 日 |--- |
 | [1.4.0](#1.4.0) |2017 年 8 月 2 日 |--- |

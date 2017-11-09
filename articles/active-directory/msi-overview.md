@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/17/2017
+ms.date: 10/31/2017
 ms.author: skwan
-ms.openlocfilehash: 803d0ad64d331dd331e5bab718484cb2fc8247d5
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 473a9e3aa3b6ad79a5f50a37c8aadc1bba79f5ae
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/01/2017
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure リソースの管理対象サービス ID (MSI)
 
@@ -50,12 +50,14 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 <br><br>
 | アクセス元の MSI 対応リソース | 説明内容 |
 | ------- | -------- |
-| Azure VM (Windows) | [Windows VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](msi-tutorial-windows-vm-access-arm.md) |
+| Azure VM (Windows) | [Windows VM 管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする](msi-tutorial-windows-vm-access-datalake.md) |
+|                    | [Windows VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](msi-tutorial-windows-vm-access-arm.md) |
+|                    | [Windows VM 管理対象サービス ID を使用して Azure SQL にアクセスする](msi-tutorial-windows-vm-access-sql.md) |
 |                    | [Windows VM 管理対象サービス ID を使用してアクセス キーで Azure Storage にアクセスする](msi-tutorial-windows-vm-access-storage.md) |
 |                    | [Windows VM の管理対象サービス ID を使用して SAS で Azure Storage にアクセスする](msi-tutorial-windows-vm-access-storage-sas.md) |
-|                    | [Windows VM 管理対象サービス ID を使用して Azure SQL にアクセスする](msi-tutorial-windows-vm-access-sql.md) |
 |                    | [Windows VM 管理対象サービス ID (MSI) および Azure Key Vault を使用して Azure AD 以外のリソースにアクセスする](msi-tutorial-windows-vm-access-nonaad.md) |
-| Azure VM (Linux)   | [Linux VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](msi-tutorial-linux-vm-access-arm.md) |
+| Azure VM (Linux)   | [Linux VM 管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする](msi-tutorial-linux-vm-access-datalake.md) |
+|                    | [Linux VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](msi-tutorial-linux-vm-access-arm.md) |
 |                    | [Linux VM 管理対象サービス ID を使用してアクセス キーで Azure Storage にアクセスする](msi-tutorial-linux-vm-access-storage.md) |
 |                    | [Linux VM 管理対象サービス ID を使用して SAS で Azure Storage にアクセスする](msi-tutorial-linux-vm-access-storage-sas.md) |
 |                    | [Linux VM 管理対象サービス ID と Azure Key Vault を使用して Azure AD 以外のリソースにアクセスする](msi-tutorial-linux-vm-access-nonaad.md) |
