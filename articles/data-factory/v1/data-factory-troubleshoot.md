@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 1b4cab46e0fc86d5074b6d19601cd7ff4afeb0eb
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 8273647aa1cf8f7d35a9c645d44c64455e554cdb
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]

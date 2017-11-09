@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 06/23/2017
-ms.openlocfilehash: 0a59e7b2d683d706d69cdc48c759add9da97d805
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.date: 11/03/2017
+ms.openlocfilehash: b20e459c2c24bfa16a2f24fed07f2f214c45099a
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL: .NET (C#) を使用した接続とデータの照会
 このクイックスタートでは、C# アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、C# を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。

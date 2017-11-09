@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: eee8ee3af5918ddbe7393ff2574833f798ffcb19
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: b3b34921168661089946b5c5dd9e6d489880733b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。

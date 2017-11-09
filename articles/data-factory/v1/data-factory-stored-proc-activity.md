@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: aa1f4f0a264c58024206304b2bf9a43610cb835d
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f490aeef07b142b6a28319581b01c6cfc00054ba
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="Transformation Activities"]

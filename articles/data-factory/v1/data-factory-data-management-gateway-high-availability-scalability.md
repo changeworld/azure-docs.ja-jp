@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 10/15/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: eb026d44eedf3b393408c8453a8ed1cfed3ce415
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: fda3c7a9a369eec1b9033ee7077a5f3770647c9f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 > [!NOTE]

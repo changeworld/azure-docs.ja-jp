@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3c506ee95281e1250a721a9c150bd839b4c1fcdb
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: c0145a5b5c54f5b9e3b5731d52df99c0a80fc271
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]

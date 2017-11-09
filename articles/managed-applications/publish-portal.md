@@ -8,13 +8,13 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/24/2017
+ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9b938dbb817c0d82c92f358e4547fd95d8bae1b9
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 3d3c6c95763bc8eb67f092bda61bb58c7af9daf2
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Azure ポータル経由でサービス カタログ アプリケーションを発行する
 

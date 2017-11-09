@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: c90c3d3c0effd68a4a5962d4d097fccbdc3fee56
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1eee39135dca98db205677072d79421eadcdd85e
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 このトピックでは Hive テーブルを作成し、Azure Blob Storage からデータを読み込む汎用の Hive クエリを紹介しています。 Hive テーブルをパーティション分割する方法や、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させる方法についてのガイダンスも提供されます。
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/03/2017
 
 * Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」をご覧ください。
 * HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。  手順については、「 [Advanced Analytics Process and Technology 向けに HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md)」をご覧ください。
-* クラスターへのリモート アクセスを有効にし、ログインして Hadoop コマンド ライン コンソールを開いている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md#headnode)」をご覧ください。
+* クラスターへのリモート アクセスを有効にし、ログインして Hadoop コマンド ライン コンソールを開いている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md)」をご覧ください。
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
 [高度な分析のための Azure 仮想マシンのセットアップに関するページ](../data-science-virtual-machine/setup-virtual-machine.md)の指示に従って Azure 仮想マシンを作成した場合、このスクリプト ファイルは仮想マシンの *C:\\Users\\\<ユーザー名\>\\Documents\\Data Science Scripts* ディレクトリにダウンロードされています。 これらの Hive クエリに必要なことは、独自のデータ スキーマと Azure BLOB ストレージの構成を適切なフィールドに接続し、送信できるようにすることだけです。

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 10/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b179444738584e7033f0872d8ef5b721af1d3970
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 7612eda8e40cb0ff2b205c2dfe11c2bba1b05b6a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="Transformation Activities"]

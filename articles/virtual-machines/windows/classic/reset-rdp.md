@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 2a38c792decdc571421c6bed7d2edc5f442591ca
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 200e5667f4bc2ca0b7dc041eef990b7aff0914ff
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 また、[Resource Manager のデプロイ モデルを使用して作成された VM でこれらの手順を実行](../reset-rdp.md)することもできます。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
+
 
 Windows 仮想マシン (VM) に接続できない場合、ローカル管理者パスワードをリセットすることも、リモート デスクトップ サービスの構成をリセットすることもできます。 Azure ポータルまたは Azure PowerShell で VM アクセス拡張機能を使用して、パスワードをリセットできます。
 
