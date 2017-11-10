@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/02/2017
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3be8836ae6b877bc4caa98f0467147b008c42aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdb5fdb094a185db12ee08969a12e556dab96389
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>Azure に .NET Service Fabric アプリケーションを作成する
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -57,12 +57,14 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 スタート メニューで Visual Studio アイコンを右クリックし、**[管理者として実行]** を選択します。 サービスにデバッガーをアタッチするには、Visual Studio を管理者として実行する必要があります。
 
-複製したリポジトリから Visual Studio ソリューション **Voting.sln** を開きます。
+複製したリポジトリから Visual Studio ソリューション **Voting.sln** を開きます。  
+
+既定では、この投票アプリケーションは、ポート 8080 でリッスンするように設定されています。  アプリケーションのポートは、*/VotingWeb/PackageRoot/ServiceManifest.xml* ファイルで設定されます。  アプリケーションのポートは、**Endpoint** 要素の **Port** 属性を更新することで変更できます。  アプリケーションをローカルでデプロイして実行するには、アプリケーションのポートをコンピューター上で開いて、使用できるようにする必要があります。  アプリケーションのポートを変更する場合は、この記事全体で "8080" の代わりにアプリケーションのポートの新しい値を使用してください。
 
 アプリケーションをデプロイするには、**F5** キーを押します。
 
 > [!NOTE]
-> 初めてアプリケーションを実行してデプロイすると、Visual Studio によってデバッグ用にローカル クラスターが作成されます。 この操作には、しばらく時間がかかる場合があります。 Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。
+> 初めてアプリケーションを実行してデプロイすると、Visual Studio によってデバッグ用にローカル クラスターが作成されます。 この操作には、しばらく時間がかかる場合があります。 Visual Studio の出力ウィンドウにクラスターの作成状態が表示されます。  出力では、"アプリケーション URL が設定されていないか、HTTP/HTTPS URL ではないため、アプリケーションに対してブラウザーは開かれません" というメッセージが表示されます。  このメッセージはエラーを示していませんが、ブラウザーは自動的に起動しません。
 
 デプロイが完了したらブラウザーを起動し、`http://localhost:8080` ページ (アプリケーションの Web フロントエンド) を開きます。
 
@@ -114,14 +116,15 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。
 
 ## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションをデプロイする
-Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターを作成する方法と、パーティ クラスターを使用する方法とがあります。
+Azure にアプリケーションをデプロイするには、アプリケーションを実行する Service Fabric クラスターが必要です。 
 
-パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
+### <a name="join-a-party-cluster"></a>パーティ クラスターに参加する
+パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 
 
-独自クラスターの作成については、「[Azure で初めての Service Fabric クラスターを作成する](service-fabric-get-started-azure-cluster.md)」を参照してください。
+サインインし、[Windows クラスターに参加](http://aka.ms/tryservicefabric)します。 **[接続のエンドポイント]** の値を記録しておきます。これは、次の手順で使用します。
 
 > [!Note]
-> Web フロントエンド サービスは、ポート 8080 で受信トラフィックをリッスンする構成になっています。 このポートがクラスターで開放されていることを確認してください。 パーティ クラスターを使用している場合、このポートは開放されています。
+> 既定では、Web フロントエンド サービスは、ポート 8080 で着信トラフィックをリッスンするよう構成されています。 ポート 8080 は、パーティ クラスターで開かれています。  アプリケーションのポートを変更する必要がある場合は、パーティ クラスターで開かれているポートのいずれかに変更してください。
 >
 
 ### <a name="deploy-the-application-using-visual-studio"></a>Visual Studio でアプリケーションをデプロイする
@@ -131,7 +134,9 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
 
     ![[発行] ダイアログ](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-2. **[接続のエンドポイント]** フィールドにクラスターの接続エンドポイントを入力し、**[発行]** をクリックします。 パーティ クラスターにサインアップすると、ブラウザーに接続エンドポイントが提供されます  (例: `winh1x87d1d.westus.cloudapp.azure.com:19000`)。
+2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーし、**[発行]** をクリックします。 たとえば、「 `winh1x87d1d.westus.cloudapp.azure.com:19000`」のように入力します。
+
+    クラスター内の各アプリケーションには、一意の名前が必要です。  パーティ クラスターはパブリックの共有環境ですが、既存のアプリケーションと競合している可能性があります。  名前の競合が発生している場合は、Visual Studio プロジェクトの名前を変更し、もう一度デプロイします。
 
 3. ブラウザーを開き、クラスターの アドレスに続いて「:8080」を入力して、クラスター内のアプリケーションを取得します (例: `http://winh1x87d1d.westus.cloudapp.azure.com:8080`)。 Azure のクラスターでアプリケーションが実行されていることがわかります。
 
