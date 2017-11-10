@@ -118,15 +118,15 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 
 ### <a name="application-gateways"></a>アプリケーション ゲートウェイ
 
-パブリック IP アドレスをゲートウェイの [フロント エンド](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)構成に割り当てることで、Azure **Application Gateway** に関連付けることができます。 このパブリック IP アドレスは、負荷分散された VIP として機能します。 Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。
+パブリック IP アドレスをゲートウェイの **フロント エンド** 構成に割り当てることで、Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関連付けることができます。 このパブリック IP アドレスは、負荷分散された VIP として機能します。 Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。
 
 ### <a name="at-a-glance"></a>早見表
 下の表は、パブリック IP アドレスを最上位リソースに関連付けることができる特定のプロパティと、使用できる割り当て方法 (動的または静的) を示しています。
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |Linux |はい |あり |
-| インターネットに接続するロード バランサー |フロント エンド構成 |あり |はい |
+| 仮想マシン |Linux |はい |はい |
+| インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
 | VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
 | フロント エンド |フロントエンドの構成 |はい |いいえ |
 
@@ -178,9 +178,9 @@ Azure で管理される DNS サーバーで構成されている仮想マシン
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |Linux |はい |はい |
+| 仮想マシン |ネットワーク インターフェイス |はい |はい |
 | Load Balancer |フロントエンドの構成 |はい |はい |
-| フロント エンド |フロントエンドの構成 |はい |はい |
+| Application gateway |フロントエンドの構成 |はい |はい |
 
 ## <a name="limits"></a>制限
 IP アドレス指定に対する制限は、Azure の[ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)の完全なセットに示されています。 この制限は、リージョンとサブスクリプションごとに存在します。 ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、 [サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。

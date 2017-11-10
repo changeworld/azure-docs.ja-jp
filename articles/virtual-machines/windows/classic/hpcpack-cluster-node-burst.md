@@ -15,17 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 10/14/2016
 ms.author: danlep
-ms.openlocfilehash: 9336743b92130e37b1df2992aab806696f8276aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e332504509ae98e280d1c8585b0b294e0e07cb
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Azure での HPC Pack クラスターへのオンデマンドの "バースト" ノードの追加
 [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) クラスターを Azure に設定した場合、事前構成された一連のコンピューティング ノード VM を保持することなく、クラスターの容量を迅速にスケールアップまたはスケールダウンする方法が必要になる可能性があります。 この記事では、オンデマンドの "バースト" ノード (クラウド サービスで実行されている worker ロール インスタンス) をコンピューティング リソースとして Azure のヘッド ノードに追加する方法について説明します。 
 
 > [!IMPORTANT] 
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ![Burst nodes][burst]
 
@@ -42,10 +43,10 @@ ms.lasthandoff: 10/11/2017
 * **コア クォータ** - 場合によっては、コアのクォータを増やす必要があります。特に、マルチコア サイズの Azure ノードをいくつかデプロイする場合に必要となる可能性があります。 クォータを増やすには、 [オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 
 ## <a name="step-1-create-a-cloud-service-and-a-storage-account-for-the-azure-nodes"></a>手順 1: Azure ノード用のクラウド サービスとストレージ アカウントを作成する
-Azure クラシック ポータルまたは同様のツールを利用し、Azure ノードをデプロイするために必要な次のリソースを構成します。
+Azure Portal または同様のツールを利用し、Azure ノードをデプロイするために必要な次のリソースを構成します。
 
-* 新しい Azure クラウド サービス
-* 新しい Azure ストレージ アカウント
+* 新しい Azure クラウド サービス (クラシック)
+* 新しい Azure ストレージ アカウント (クラシック)
 
 > [!NOTE]
 > サブスクリプションでは既存のクラウド サービスを再利用しないでください。 
@@ -60,7 +61,11 @@ Azure クラシック ポータルまたは同様のツールを利用し、Azur
 ## <a name="step-2-configure-an-azure-management-certificate"></a>手順 2: Azure 管理証明書の作成
 Azure ノードをコンピューティング リソースとして追加するには、ヘッド ノードに管理証明書を用意し、デプロイに使用される Azure サブスクリプションに該当証明書をアップロードする必要があります。
 
-このシナリオの場合、HPC Pack によりヘッド ノードに自動的にインストールされ、構成される **既定の HPC Azure 管理証明書** を選択できます。 この証明書はテスト目的と概念実証のデプロイで役立ちます。 この証明書を使用するには、ヘッド ノード VM からサブスクリプションに C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer ファイルをアップロードします。 [Azure クラシック ポータル](https://manage.windowsazure.com)で証明書をアップロードするには、**[設定]**  >  **[Management Certificates (管理証明書)]** をクリックします。
+このシナリオの場合、HPC Pack によりヘッド ノードに自動的にインストールされ、構成される **既定の HPC Azure 管理証明書** を選択できます。 この証明書はテスト目的と概念実証のデプロイで役立ちます。 この証明書を使用するには、ヘッド ノード VM からサブスクリプションに C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer ファイルをアップロードします。 証明書を [Azure Portal](https://portal.azure.com) にアップロードするには:
+
+1. **[サブスクリプション]**  >  *<サブスクリプションの名前>* の順にクリックします。
+
+2. **[管理証明書]**  >  **[アップロード]** の順にクリックします。
 
 管理証明書を構成するための追加オプションについては、「 [Azure バースト デプロイの Azure 管理証明書を構成するためのシナリオ](http://technet.microsoft.com/library/gg481759.aspx)」を参照してください。
 
