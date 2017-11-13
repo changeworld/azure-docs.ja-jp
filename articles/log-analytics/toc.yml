@@ -28,7 +28,13 @@
 - name: 概念
   items:
     - name: ワークスペースのアップグレード
-      href: log-analytics-log-search-upgrade.md
+      items:
+        - name: アップグレードの概要
+          href: log-analytics-log-search-upgrade.md
+        - name: 変更の概要
+          href: log-analytics-log-search-upgrade-changes.md
+        - name: アップグレードに関する FAQ
+          href: log-analytics-log-search-faq.md
     - name: Log Analytics についてよく寄せられる質問
       href: log-analytics-faq.md
     - name: データの使用
@@ -41,8 +47,6 @@
       items:
         - name: ログ検索の概要
           href: log-analytics-log-search-new.md
-        - name: ログ検索についてよく寄せられる質問
-          href: log-analytics-log-search-faq.md
         - name: ログ検索ポータル
           href: log-analytics-log-search-portals.md
 - name: ハウツー ガイド

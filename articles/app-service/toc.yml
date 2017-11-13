@@ -143,6 +143,8 @@
           href: web-sites-enable-diagnostic-log.md
     - name: アプリの管理
       items:
+        - name: ホスティング プランの管理
+          href: app-service-plan-manage.md
         - name: アプリのバックアップ
           href: web-sites-backup.md
         - name: バックアップの復元

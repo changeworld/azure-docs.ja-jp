@@ -51,12 +51,14 @@
       href: /rest/api/aks
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: ロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 製品フィードバックの提供
+      href: 'https://github.com/Azure/AKS/issues'
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
     - name: ビデオ

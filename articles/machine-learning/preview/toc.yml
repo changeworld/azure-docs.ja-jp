@@ -47,7 +47,7 @@
           href: experimentation-service-configuration.md
         - name: DSVM および HDI Spark クラスターの作成
           href: how-to-create-dsvm-hdi.md
-        - name: GPU によるトレーニング
+        - name: GPU を使用したトレーニング
           href: how-to-use-gpu.md
     - name: データの取得と理解
       items:
@@ -112,12 +112,14 @@
           href: scenario-distributed-tuning-of-hyperparameters.md
         - name: 顧客離れ予測
           href: scenario-churn-prediction.md
-        - name: ディープ ラーニングによるセンチメント分析
+        - name: ディープ ラーニングによる感情分析
           href: scenario-sentiment-analysis-deep-learning.md
         - name: 生体エンティティの認識 - TDSP プロジェクト
           href: scenario-tdsp-biomedical-recognition.md
         - name: 米国の収益の分類 - TDSP プロジェクト
           href: scenario-tdsp-classifying-us-incomes.md
+        - name: CNTK を使用した画像の分類
+          href: scenario-image-classification-using-cntk.md
 - name: リファレンス
   items:
     - name: データの準備
@@ -162,6 +164,8 @@
       items:
         - name: スプリント 0 - 2017 年 10 月
           href: release-notes-sprint-0.md
+        - name: スプリント 1 - 2017 年 11 月
+          href: release-notes-sprint-1.md
 - name: リソース
   items:
     - name: よく寄せられる質問

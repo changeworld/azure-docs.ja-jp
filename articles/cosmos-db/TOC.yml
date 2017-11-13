@@ -246,6 +246,8 @@
           items:
             - name: テーブルの開発
               href: table-support.md
+            - name: PowerShell を使用したテーブル API 操作
+              href: table-powershell.md
             - name: Azure テーブル ストレージ
               items:
                 - name: Table Storage の概要
@@ -254,7 +256,7 @@
                   href: table-storage-design-guide.md
                 - name: Table Storage REST API
                   href: /rest/api/storageservices/Table-Service-Concepts
-                - name: 方法
+                - name: 開発
                   items:
                     - name: .NET
                       href: table-storage-how-to-use-dotnet.md
@@ -274,6 +276,8 @@
                       href: table-storage-how-to-use-python.md
                     - name: Ruby
                       href: table-storage-how-to-use-ruby.md
+                    - name: PowerShell
+                      href: table-storage-how-to-use-powershell.md
         - name: Change Feed
           href: change-feed.md
         - name: GeoSpatial

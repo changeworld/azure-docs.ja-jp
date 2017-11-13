@@ -71,9 +71,7 @@
 
 ## リソース ポリシーの設定
 ### [リソース ポリシーとは](resource-manager-policy.md)
-### 例
-#### [タグ](resource-manager-policy-tags.md)
-#### [名前付け規則](resource-manager-policy-naming-convention.md)
+### [名前付け規則](resource-manager-policy-naming-convention.md)
 
 ## Audit
 ### [アクティビティ ログを表示する](resource-group-audit.md)
@@ -89,6 +87,7 @@
 #### [NotFound](resource-manager-not-found-errors.md)
 #### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
 #### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+#### [ReservedResourceName](resource-manager-reserved-resource-name.md)
 #### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
 #### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
 ### 仮想マシンのデプロイのエラー

@@ -309,6 +309,8 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure Automation
           href: sql-database-manage-automation.md
+        - name: OMS Log Analytics による SQL データ同期の監視
+          href: sql-database-sync-monitor-oms.md
         - name: SQL データ同期のベスト プラクティス
           href: sql-database-best-practices-data-sync.md
         - name: SQL データ同期のトラブルシューティング
