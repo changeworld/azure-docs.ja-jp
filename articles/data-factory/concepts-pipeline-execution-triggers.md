@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: c319979cce23da69965d4fbab037919461f67b3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f4c0b11039bbdaf29c90ec2358934dc1c24af90
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -177,7 +177,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
         "interval": <<int>>,             // optional, how often to fire (default to 1)
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
-        "timeZone": <<default UTC>>
+        "timeZone": "UTC"
         "schedule": {                    // optional (advanced scheduling specifics)
           "hours": [<<0-24>>],
           "weekDays": ": [<<Monday-Sunday>>],
@@ -189,6 +189,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
                     "occurrence": <<1-5>>
                }
            ] 
+        }
       }
     },
    "pipelines": [
@@ -202,7 +203,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
                         "type": "Expression",
                         "value": "<parameter 1 Value>"
                     },
-                    "<parameter 2 Name> : "<parameter 2 Value>"
+                    "<parameter 2 Name>" : "<parameter 2 Value>"
                 }
            }
       ]
@@ -210,17 +211,57 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 }
 ```
 
+> [!IMPORTANT]
+>  **parameters** プロパティは、**pipelines** 内の必須プロパティです。 パイプラインがパラメーターを受け取らない場合でも、parameters に空の json を含めます。それは、このプロパティを必ず指定する必要があるためです。
+
+
 ### <a name="overview-scheduler-trigger-schema"></a>概要: スケジューラ トリガーのスキーマ
 次の表に、トリガーでの繰り返しとスケジュール設定に関連する主要な要素の概要を示します。
 
 JSON プロパティ |     Description
 ------------- | -------------
 startTime | startTime は、日付/時刻です。 単純なスケジュールでは、startTime は最初の発生日時です。 複雑なスケジュールでは、トリガーは startTime になるとすぐに起動します。
+endTime | トリガーの終了日付/時刻を指定します。 トリガーはこの時刻より後には実行されません。 過去の日時を endTime に指定するのは無効です。
+timeZone | 現時点では、UTC のみがサポートされています。 
 recurrence | recurrence オブジェクトは、トリガーの繰り返し規則を指定します。 この recurrence オブジェクトは、frequency、interval、endTime、count、schedule という要素をサポートします。 recurrence を定義する場合は、frequency が必要です。recurrence の他の要素は省略可能です。
 frequency | トリガーが繰り返す頻度の単位を表します。 サポートされる値は `minute`、`hour`、`day`、`week`、`month` です。
 interval | interval は正の整数です。 トリガーを実行する頻度を決定する frequency の間隔を示します。 たとえば、interval が 3 で frequency が "week" の場合は、トリガーは 3 週間ごとに繰り返されます。
-endTime | トリガーの終了日付/時刻を指定します。 トリガーはこの時刻より後には実行されません。 過去の日時を endTime に指定するのは無効です。
 schedule | トリガーに頻度を指定すると、繰り返しのスケジュールに基づいて、そのジョブの繰り返しを変更できます。 schedule には、分、時間、曜日、月の日、週番号に基づいた変更を指定します。
+
+
+### <a name="schedule-trigger-example"></a>スケジュール トリガーの例
+
+```json
+{
+    "properties": {
+        "name": "MyTrigger",
+        "type": "ScheduleTrigger",
+        "typeProperties": {
+            "recurrence": {
+                "frequency": "Hour",
+                "interval": 1,
+                "startTime": "2017-11-01T09:00:00-08:00",
+                "endTime": "2017-11-02T22:00:00-08:00"
+            }
+        },
+        "pipelines": [{
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "SQLServerToBlobPipeline"
+                },
+                "parameters": {}
+            },
+            {
+                "pipelineReference": {
+                    "type": "PipelineReference",
+                    "referenceName": "SQLServerToAzureSQLPipeline"
+                },
+                "parameters": {}
+            }
+        ]
+    }
+}
+```
 
 ### <a name="overview-scheduler-trigger-schema-defaults-limits-and-examples"></a>概要: スケジューラ トリガーのスキーマの既定値、制限、例
 
@@ -262,9 +303,9 @@ JSON での名前 | Description | 有効な値
 --------- | ----------- | ------------
 minutes | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
 hours | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul>
-weekDays | トリガーを実行する曜日。 週単位の頻度だけを指定できます。 | <ul><li>Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday</li><li>上記の任意の値の配列 (最大配列サイズは 7)</li></p>大文字/小文字は区別されません</p>
+weekDays | トリガーを実行する曜日。 週単位の頻度だけを指定できます。 | <ul><li>Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday</li><li>任意の値の配列 (最大配列サイズは 7)</li></p>大文字/小文字は区別されません</p>
 monthlyOccurrences | トリガーを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 | monthlyOccurence オブジェクトの配列: `{ "day": day,  "occurrence": occurence }`。 <p> day はトリガーを実行する曜日です。たとえば、`{Sunday}` は、月の毎週日曜日という意味です。 必須。<p>occurrence は、月の第何週に実行するかを表します。たとえば、`{Sunday, -1}` は月の最終日曜日という意味です。 省略可能。
-monthDays | トリガーが実行される月の日にち。 月単位の頻度だけを指定できます。 | <ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li><li>上記の値の配列</li>
+monthDays | トリガーが実行される月の日にち。 月単位の頻度だけを指定できます。 | <ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li><li>値の配列。</li>
 
 
 ## <a name="examples-recurrence-schedules"></a>例: 繰り返しのスケジュール
@@ -281,7 +322,7 @@ monthDays | トリガーが実行される月の日にち。 月単位の頻度�
 `{"minutes":[0,15,30,45]}` | 15 分ごとに実行
 `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | 1 時間ごとに実行。 このトリガーは 1 時間おきに実行されます。 分は、指定されている場合は startTime によって制御されます。指定されていない場合は、作成時刻によって制御されます。 たとえば、開始時刻または作成時刻が午後 12 時 25 分である場合 (どちらが適用される場合でも)、トリガーは 0 時 25 分、1 時 25 分、2 時 25 分...23 時 25 分に実行されます。 このスケジュールは、frequency に "hour"、interval に 1 を指定して、schedule を指定しないトリガーと同等です。 両者の違いは、このスケジュールは、frequency と interval を変えることで、他のトリガーの作成に使用できる点にあります。 たとえば、frequency が "month" の場合には、月 1 回だけ実行されます。frequency が "day" の場合には、スケジュールは毎日実行されます。
 `{"minutes":[0]}` | 毎正時に実行。 このトリガーも 1 時間ごとに実行されますが、正時に実行されます。(例: 午前 0 時、午前 1 時、午前 2 時)。 この設定は、frequency に "hour"、startTime に 0 分を設定し、さらに頻度が "day" であれば、schedule を設定しなかったトリガーと同等です。ただし、頻度が "week" または "month" の場合は、このスケジュールは、それぞれ週に 1 日だけ、または月に 1 日だけ実行します。
-`{"minutes":[15]}` | 毎正時から 15 分経過後に実行。 1 時間ごとに実行。午前 0 時 15 分から開始し、午前 1 時 15 分、午前 2 時 15 分...午後 10 時 15 分と続き、最後に午後 11 時 15 分に実行します。
+`{"minutes":[15]}` | 毎正時から 15 分経過後に実行。 1 時間ごとに実行。午前 0 時 15 分から開始し、午前 1 時 15 分、午前 2 時 15 分午後 10 時 15 分と続き、最後に午後 11 時 15 分に実行します。
 `{"hours":[17], "weekDays":["saturday"]}` | 毎週土曜日の午後 5 時に実行
 `{"hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | 毎週月曜日、水曜日、金曜日の午後 5 時に実行
 `{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | 毎週月曜日、水曜日、金曜日の午後 5 時 15 分と午後 5 時 45 分に実行
