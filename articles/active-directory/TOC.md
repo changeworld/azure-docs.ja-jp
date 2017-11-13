@@ -87,7 +87,6 @@
 #### [Azure AD の製品およびサービス プランに関するリファレンス](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Office 365 グループの有効期限を設定する](active-directory-groups-lifecycle-azure-portal.md)
 ### [グループをすべて表示する](active-directory-groups-view-azure-portal.md)
-### [専用グループの有効化](active-directory-accessmanagement-dedicated-groups.md)
 ### [SaaS アプリへのグループ アクセスの追加](active-directory-accessmanagement-group-saasapps.md)
 ### [削除された Office 365 グループを復元する](active-directory-groups-restore-azure-portal.md)
 ### グループ設定の管理
@@ -254,7 +253,6 @@
 ##### [クラシック ポータル](active-directory-add-manage-domain-names.md)
 ### [ディレクトリを管理する](active-directory-administer.md)
 ### [複数のディレクトリ](active-directory-licensing-directory-independence.md)
-### [O365 ディレクトリ](active-directory-manage-o365-subscription.md)
 ### [セルフサービス サインアップ](active-directory-self-service-signup.md)
 #### [管理されていないディレクトリの引き継ぎ](domains-admin-takeover.md)
 ### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
