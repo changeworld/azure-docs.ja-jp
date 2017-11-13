@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 566daede7e0b32110ceae2afa473e427992bc3a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 300762cd98f66af80dd6fd7079005ef17ece2ade
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="cloud-services-documentation"></a>Cloud Services のドキュメント
 
@@ -126,7 +126,7 @@ Cloud Services を使用して、可用性と拡張性に優れたクラウド �
                 <div class="card">
                     <div class="cardText">
                         <h3>REST ()</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/ee460812">REST API</a></p>
+                        <p><a href="/rest/api/compute/cloudservices">REST API</a></p>
                     </div>
                 </div>
             </div>

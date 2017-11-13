@@ -46,6 +46,15 @@
       href: subscription-creation-schema.md
     - name: イベント スキーマ
       href: event-schema.md
+      items:
+        - name: Azure サブスクリプション
+          href: event-schema-subscriptions.md
+        - name: BLOB ストレージ
+          href: event-schema-blob-storage.md
+        - name: Event Hubs
+          href: event-schema-event-hubs.md
+        - name: リソース グループ
+          href: event-schema-resource-groups.md
 - name: リソース
   items:
     - name: Azure のロードマップ
