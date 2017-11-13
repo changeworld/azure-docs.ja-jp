@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 10/16/2017
-ms.openlocfilehash: 73785cf8c4f1539cb52254ba316ed7d888b683aa
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.date: 11/01/2017
+ms.openlocfilehash: a8cea099103bd6a306e41770e47b1279f5dbcdea
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成
 Azure Database for MySQL は、高可用性 MySQL データベースをクラウドで実行、管理、スケーリングするための管理されたサービスです。 このクイックスタートでは、Azure Portal を使用して 5 分で Azure Database for MySQL サーバーを作成する方法を説明します。  
@@ -70,19 +70,21 @@ Azure Database for MySQL サービスでは、サーバー レベルでファイ
 
 3.  **[ファイアウォール規則]** という見出しの下で、**[規則名]** 列の空白のテキスト ボックスを選択し、ファイアウォール規則の作成を開始します。 
 
-    このクイックスタートでは、各列のボックスに以下の値を入力することで、サーバーへのすべての IP アドレスを許可します。
+   ![[接続のセキュリティ] - [ファイアウォール規則]](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
 
-    規則の名前 | 開始 IP | 終了 IP 
-    ---|---|---
-    AllowAllIps |  0.0.0.0 | 255.255.255.255
-    
-    すべての IP アドレスを許可することは、安全とは言えません。 この例は単純化していますが、実際のシナリオでは、アプリケーションとユーザーのために追加する IP アドレス範囲を厳密に把握しておく必要があります。 
+   このクイックスタートでは、各列のボックスに以下の値を入力することで、サーバーへのすべての IP アドレスを許可します。
+
+   規則の名前 | 開始 IP | 終了 IP 
+   ---|---|---
+   AllowAllIps |  0.0.0.0 | 255.255.255.255
+   
+   すべての IP アドレスを許可することは、安全とは言えません。 この例は単純化していますが、実際のシナリオでは、アプリケーションとユーザーのために追加する IP アドレス範囲を厳密に把握しておく必要があります。 
 
 4. **[接続のセキュリティ]** ページの上部のツール バーで、**[保存]** を選択します。 更新が正常に完了したことを示す通知が表示されるまで待ってから次に進んでください。 
 
-    > [!NOTE]
-    > Azure Database for MySQL との接続では、ポート 3306 が通信に使用されます。 企業ネットワーク内から接続を試みる場合、ポート 3306 での送信トラフィックが許可されていない場合があります。 その場合、会社の IT 部門によってポート 3306 が開放されない限り、サーバーに接続することはできません。
-    > 
+   > [!NOTE]
+   > Azure Database for MySQL との接続では、ポート 3306 が通信に使用されます。 企業ネットワーク内から接続を試みる場合、ポート 3306 での送信トラフィックが許可されていない場合があります。 その場合、会社の IT 部門によってポート 3306 が開放されない限り、サーバーに接続することはできません。
+   > 
 
 ## <a name="get-the-connection-information"></a>接続情報の取得
 データベース サーバーに接続するには、サーバーの完全な名前と管理者サインイン資格情報が必要となります。 これらの値は、クイックスタートの記事の前の方でメモしてあると思われます。 メモしていなかった場合、Azure Portal で、サーバーの **[概要]** ページまたは **[プロパティ]** ページからサーバー名とサインイン情報を簡単に確認できます。

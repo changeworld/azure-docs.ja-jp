@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 502b7678e0c47f594291409a9ede976dea3895e5
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 2d6a09e234ee8ec63454d42a91613ed8da9d1c4b
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="what-is-azure-iot-suite"></a>Azure IoT Suite とは
 
@@ -85,6 +85,9 @@ Azure IoT Suite は一連の "*構成済みソリューション*" で、次の�
 | Cosmos DB            | あり                | あり                    | あり               |
 | Azure テーブル         |                    | あり                    | あり               |
 
+> [!NOTE]
+> リモート監視構成済みソリューションにデプロイされたリソースの詳細については、こちらの GitHub [記事](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments)を参照してください。
+
 * [Azure IoT Hub](../iot-hub/index.md)。 このサービスは、デバイスからクラウドへ、およびクライアントからデバイスへのメッセージング機能を提供し、クラウドや他の主要な IoT Suite サービスに対するゲートウェイとして機能します。 このサービスを使用すると、デバイスから大規模にメッセージを受信し、デバイスにコマンドを送信することができます。 また、サービスを使用すると[デバイスを管理](../iot-hub/iot-hub-device-management-overview.md)することもできます。 たとえば、ハブに接続されている 1 台以上のデバイスで、構成、再起動、または出荷時の設定へのリセットを実行できます。
 * [Azure Event Hubs](../event-hubs/index.md)。 このサービスは、クラウドに大量のイベント インジェストを提供します。 「[Azure IoT Hub と Azure Event Hubs の比較](../iot-hub/iot-hub-compare-event-hubs.md)」を参照してください。
 * [Azure Time Series Insights](../time-series-insights/index.md)。 構成済みソリューションは、このサービスを使用して、デバイスの利用統計情報を分析および表示します。
@@ -124,7 +127,7 @@ Azure IoT Suite は一連の "*構成済みソリューション*" で、次の�
 リモート監視の新しいバージョンをデプロイする場合は、次のデプロイ オプションのいずれかを選択する必要があります。
 
 * **Basic:** デモまたはデプロイ テストのための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
-* **Enterprise:** 運用環境のデプロイを開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
+* **Standard:** 運用環境のデプロイを開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
 
 ### <a name="language-choices-java-and-net"></a>言語の選択肢: Java と .NET
 

@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 11/03/2017
 ms.author: yurid
-ms.openlocfilehash: 6cd6c822eb255893feac2536d7bae034380094b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 95af26a655e72a9cc370f339da5ecedbed441997
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Azure Security Center を活用したインシデント対応
 多くの組織は、攻撃を受けた後にのみセキュリティ インシデントに対応する方法を学習します。 コストを削減し、被害を抑えるためには、攻撃を受ける前にインシデント対応計画を整えておくことが重要です。 Azure Security Center は、インシデント対応のさまざまな段階で利用できます。
@@ -96,7 +96,7 @@ Sam は Judy からこのケースを受け取り、Security Center によって
 ![Incident response lifecycle](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### <a name="additional-resources"></a>その他のリソース
-インシデント対応チームは、[Security Center Power BI](security-center-powerbi.md) の機能を利用して、さまざまなレポートを確認することもできます。 こうしたレポートは、詳細な調査で、推奨事項とセキュリティの警告を視覚化、分析、およびフィルター処理するときに役立ちます。 セキュリティ情報およびイベント管理 (SIEM) ソリューションを調査プロセス中に使用する会社では、[このソリューションと Security Center を統合する](security-center-integrating-alerts-with-log-integration.md)こともできます。 また、Azure 監査ログと仮想マシン (VM) セキュリティ イベントも、[Azure ログ統合ツール](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/)を使用して統合できます。 攻撃を調査するには、この情報を、Security Center によって提供される情報と共に使用します。
+セキュリティ情報およびイベント管理 (SIEM) ソリューションを調査プロセス中に使用する会社では、[このソリューションと Security Center を統合する](security-center-integrating-alerts-with-log-integration.md)こともできます。 また、Azure 監査ログと仮想マシン (VM) セキュリティ イベントも、[Azure ログ統合ツール](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/)を使用して統合できます。 攻撃を調査するには、この情報を、Security Center によって提供される情報と共に使用します。 また、インシデントの根本的な原因を特定するのに役立つ、Security Center の[調査](https://docs.microsoft.com/azure/security-center/security-center-investigation)機能を使用することもできます。
 
 ## <a name="conclusion"></a>まとめ
 インシデントが発生する前にチームを編成することは組織にとって非常に重要であり、インシデントの対処のあり方に確実に影響します。 リソースの監視に適切なツールを用意することで、このチームはセキュリティ インシデントを修正する手順を正確に実行できます。 Security Center の[検出機能](security-center-detection-capabilities.md)を利用すれば、IT はセキュリティ インシデントに迅速に対応してセキュリティの問題を修正できます。

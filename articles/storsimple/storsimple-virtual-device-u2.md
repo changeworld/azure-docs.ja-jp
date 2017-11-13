@@ -12,16 +12,19 @@ ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 29f33d01cc6b640a566dc371f4b9c704978da091
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 98892a0919b1ba49308fd3bc51c735977bbff437
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Azure での StorSimple 仮想デバイスのデプロイと管理
-## <a name="overview"></a>Overview
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、[Azure における StorSimple 仮想デバイスのデプロイと管理](storsimple-8000-cloud-appliance-u2.md)に関するページをご覧ください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
+## <a name="overview"></a>概要
 StorSimple 8000 シリーズ仮想デバイスは、Microsoft Azure StorSimple ソリューションに付属する追加的な機能です。 StorSimple 仮想デバイスは Microsoft Azure の仮想ネットワーク内の仮想マシン上で動作します。この仮想マシンを使用して、ホストからデータをバックアップしたり、複製したりできます。 このチュートリアルは、Azure に仮想デバイスをデプロイして管理する方法について説明したものです。ソフトウェア バージョン Update 2 以前を実行するすべての仮想デバイスが対象となります。
 
 #### <a name="virtual-device-model-comparison"></a>仮想デバイス モデルの比較
@@ -33,7 +36,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ) |Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** |Update 2 より前または Update 2 以降を実行しているバージョン |Update 2 以降を実行しているバージョン |
 | **利用可能なリージョン** |すべての Azure リージョン |Premium Storage と DS3 Azure VM をサポートするすべての Azure リージョン<br></br> [こちらの表](https://azure.microsoft.com/en-us/regions/services)を参照し、該当するリージョンで*「Virtual Machines」の「DS シリーズ」*と*「Storage」の「Disk Storage」*の両方が利用できるかどうかを確認してください。 |
-| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../virtual-machines/windows/premium-storage.md)方法を参照 |
+| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/common/storage-premium-storage.md)方法を参照 |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード  <br></br>障害復旧のためのセカンダリ デバイス |
 
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
@@ -63,7 +66,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 | **サービス データ暗号化キー** |物理デバイスで再生成し、新しいキーで仮想デバイスを更新します。 |仮想デバイスから再生成することはできません。 |
 
 ## <a name="prerequisites-for-the-virtual-device"></a>仮想デバイスの前提条件
-以下の各セクションでは、StorSimple 仮想デバイスの構成の前提条件について説明します。 仮想デバイスをデプロイする前に、 [仮想デバイスを使用する際のセキュリティの考慮事項](storsimple-security.md)を確認してください。
+以下の各セクションでは、StorSimple 仮想デバイスの構成の前提条件について説明します。 仮想デバイスをデプロイする前に、 [仮想デバイスを使用する際のセキュリティの考慮事項](storsimple-8000-security.md#storsimple-cloud-appliance-security)を確認してください。
 
 #### <a name="azure-requirements"></a>Azure の要件
 仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
@@ -82,7 +85,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 仮想デバイスを作成する前に、Azure StorSimple サービスに対して次の更新作業を行います。
 
 * 仮想デバイスのホスト サーバーとなる VM の [アクセス制御レコード](storsimple-manage-acrs.md) を追加します。
-* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/common/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../virtual-machines/windows/premium-storage.md)を参照してください。
+* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/common/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../storage/common/storage-premium-storage.md)を参照してください。
 * 仮想デバイスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。 同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
 作業を開始する前に、次の情報を確認してください。

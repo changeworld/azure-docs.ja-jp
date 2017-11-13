@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2017
 ms.author: kaanan
-ms.openlocfilehash: 0ef91f6f952b901bcda981e5375be0b84e1ca0a3
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: fef70ca56761565d7b2fa329a17929b978d54cb8
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -55,7 +55,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 | **地理的リージョン** | **Azure リージョン** | **ExpressRoute の場所** |
 | --- | --- | --- |
-| **米国政府のクラウド** |米国政府アイオワ、米国政府バージニア、US DoD 中部、US DoD 東部  |シカゴ、ダラス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC |
+| **米国政府のクラウド** |米国政府アリゾナ、米国政府アイオワ、米国政府テキサス、米国政府バージニア、US DoD 中部、US DoD 東部  |シカゴ、ダラス、ニューヨーク、シアトル、シリコン バレー、ワシントン DC |
 | **中国** |中国北部、中国東部 |北京、上海 |
 | **ドイツ** |ドイツ中部、ドイツ東部 |ベルリン、フランクフルト |
 

@@ -3,7 +3,7 @@ title: "Azure ExpressRoute のルーティングの要件 | Microsoft Docs"
 description: "このページでは、ExpressRoute 回線のルーティングを構成および管理するための詳細な要件について説明します。"
 documentationcenter: na
 services: expressroute
-author: osamazia
+author: ganesr
 manager: ganesr
 editor: 
 ms.assetid: 5b382e79-fa3f-495a-a764-c5ff86af66a2
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: osamam
-ms.openlocfilehash: a7d1e177e08d37913afa3cb203f0e4085c171f70
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.date: 11/03/2017
+ms.author: ganesr
+ms.openlocfilehash: 088147060eeeba5c900cdcdc3fb38fc1d4ccfc58
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -174,6 +174,8 @@ ExpressRoute をトランジット ルーターとして構成することはで
 | 西ヨーロッパ | 12076:51002 |
 | 英国南部 | 12076:51024 |
 | 英国西部 | 12076:51025 |
+| フランス中部 | 12076:51030 |
+| フランス南部 | 12076:51031 |
 | **アジア太平洋** | |
 | 東アジア | 12076:51010 |
 | 東南アジア | 12076:51011 |

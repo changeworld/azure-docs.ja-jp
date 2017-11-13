@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: bcf42ebb081517d247690ee57c2be274784ef29d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>オンプレミスの StorSimple デバイス (Update 3 以降) のデプロイ
 
@@ -49,7 +49,7 @@ StorSimple デバイスを構成し、StorSimple デバイス マネージャー
 | [手順 1. 新しいサービスを作成する](#step-1-create-a-new-service) |StorSimple デバイス用にクラウド管理とストレージを設定します。 *既に他の StorSimple デバイス用のサービスがある場合は、この手順をスキップしてください。* |
 | [手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key) |このキーを使用して、StorSimple デバイスを管理サービスに登録し、接続します。 |
 | [手順 3. StorSimple 用 Windows PowerShell を使用してデバイスを構成し登録する](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |管理サービスを使用してセットアップを完了するには、デバイスをネットワークに接続して Azure に登録します。 |
-| [手順 4. デバイスの最小セットアップを完了する](#step-4-complete-minimum-device-setup)</br>[省略可能: StorSimple デバイスを更新する](#scan-for-and-apply-updates) |管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
+| [手順 4. デバイスの最小セットアップを完了する](#step-4-complete-minimum-device-setup)</br>[ベスト プラクティス: StorSimple デバイスを更新する](#scan-for-and-apply-updates) |管理サービスを使用して、デバイスのセットアップを完了し、ストレージを提供できるようにします。 |
 | [手順 5. ボリューム コンテナーを作成する](#step-5-create-a-volume-container) |ボリュームをプロビジョニングするためのコンテナーを作成します。 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 |
 | [手順 6. ボリュームを作成する](#step-6-create-a-volume) |サーバーの StorSimple デバイスでストレージ ボリュームをプロビジョニングします。 |
 | [手順 7. ボリュームをマウント、初期化、フォーマットする](#step-7-mount-initialize-and-format-a-volume)</br>[省略可能: MPIO を構成する](storsimple-8000-configure-mpio-windows-server.md) |デバイスによって提供される iSCSI ストレージにサーバーを接続します。 必要に応じて、サーバーがリンク、ネットワーク、およびインターフェイスの障害を許容できるように MPIO を構成します。 |
@@ -127,6 +127,8 @@ StorSimple デバイスの最小構成を完了するには、次の手順を実
 
 [!INCLUDE [storsimple-8000-complete-minimum-device-setup-u2](../../includes/storsimple-8000-complete-minimum-device-setup-u2.md)]
 
+デバイスの最小セットアップを完了したら、ベスト プラクティスとして、[最新の更新プログラムをスキャンして適用します](#scan-for-and-apply-updates)。
+
 ## <a name="step-5-create-a-volume-container"></a>手順 5. ボリューム コンテナーを作成する
 ボリューム コンテナーでは、そこに含まれるすべてのボリュームのストレージ アカウント、帯域幅、暗号化が設定されています。 StorSimple デバイス上のボリュームのプロビジョニングを開始する前に、ボリューム コンテナーを作成する必要があります。
 
@@ -181,7 +183,7 @@ StorSimple 用 Windows PowerShell に接続するには、PuTTY などのター�
 [!INCLUDE [Use PuTTY to connect to the device serial console](../../includes/storsimple-use-putty.md)]
 
 ## <a name="scan-for-and-apply-updates"></a>更新プログラムをスキャンして適用する
-デバイスの更新には、数時間かかることがあります。 最新の更新プログラムをインストールする詳しい手順については、[Update 4 のインストール](storsimple-8000-install-update-4.md)に関するページを参照してください。
+デバイスの更新には、数時間かかることがあります。 最新の更新プログラムをインストールする詳しい手順については、[Update 5 のインストール](storsimple-8000-install-update-5.md)に関するページを参照してください。
 
 
 ## <a name="get-the-iqn-of-a-windows-server-host"></a>Windows Server ホストの IQN を取得する

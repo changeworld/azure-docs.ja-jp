@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 10/13/2017
 ms.author: nitinme
-ms.openlocfilehash: fb9be26d3affe898bbbb66ead242dbdb59436bb6
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 018cf772f458bb29712ef9516c3af4e969a94564
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Store に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -105,7 +105,7 @@ ms.lasthandoff: 10/12/2017
 * アプリケーションのエンドユーザー認証については、「[End-user authentication with Data Lake Store using .NET SDK (.NET SDK を使用した Data Lake Store に対するエンドユーザー認証)](data-lake-store-end-user-authenticate-net-sdk.md)」を参照してください。
 * アプリケーションのサービス間認証については、「[Service-to-service authentication with Data Lake Store using .NET SDK (.NET SDK を使用した Data Lake Store に対するサービス間認証)](data-lake-store-service-to-service-authenticate-net-sdk.md)」を参照してください。
 
-## <a name="create-client-objects"></a>クライアント オブジェクトを作成する
+## <a name="create-client-object"></a>クライアント オブジェクトを作成する
 次のスニペットを使用して、アカウントの作成やアカウントの削除など、アカウント管理要求をサービスに発行するために使用される Data Lake Store アカウント クライアント オブジェクトを作成します。
 
     // Create client objects and set the subscription ID

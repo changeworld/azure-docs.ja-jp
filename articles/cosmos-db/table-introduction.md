@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: 6a399a3a7979f6165d26eb48505242976d51e64f
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 68c9f37b6e241d39911acff9c12aa4c978b4215d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB の概要: Table API
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 11/02/2017
 * 高可用性の保証。
 * [自動セカンダリ インデックス作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
 
-このようなアプリケーションについては、テーブル API を使って Azure Cosmos DB に移行することで、コードに変更を加えることなく、高度な機能を活用できるようになります。 Table API は、.NET と Python で使用できます。
+Azure Table Storage 用に作成されたアプリケーションについては、Table API を使って Azure Cosmos DB に移行することで、コードに変更を加えることなく、高度な機能を活用できるようになります。 Table API には、.NET 用の 1 つのクライアント SDK があります。
 
-以下のビデオをぜひご覧ください。Azure Cosmos DB のテーブル API の導入方法を Aravind Ramachandran が説明しています。
+以下のビデオをぜひご覧ください。Azure Cosmos DB の Table API の導入方法を Aravind Ramachandran が説明しています。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Table-API-for-Azure-Cosmos-DB/player]
 > 
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/02/2017
 ## <a name="table-offerings"></a>Table のサービス
 現在 Azure Table Storage を使用している場合、Azure Cosmos DB Table API (プレビュー) に移行することにより次のメリットが得られます。
 
-| | Azure Table Storage | Azure Cosmos DB Table API (プレビュー) |
+| | Azure テーブル ストレージ | Azure Cosmos DB Table API (プレビュー) |
 | --- | --- | --- |
 | 待機時間 | 高速だが、待ち時間の上限はなし。 | 読み取りと書き込みの待ち時間は数ミリ秒であり、世界中のどこでもあらゆるスケールで 99 パーセンタイルの 10 ミリ秒未満の読み取り待ち時間と 15 ミリ秒未満の書き込み待ち時間でサポート。 |
 | スループット | 可変スループット モデル。 テーブルには、20,000 操作/秒のスケーラビリティの制限あり。 | SLA によって保証された、[テーブルごとの専用の予約済みスループット](request-units.md)を備えた高いスケーラビリティ。 アカウントにはスループットの上限がなく、テーブルあたり 10,000, 000 操作/秒以上に対応。 |
@@ -64,5 +64,5 @@ ms.lasthandoff: 11/02/2017
 * [Table API を使用してテーブル データのクエリを実行する方法](tutorial-query-table.md)
 * [テーブル API を使用して Azure Cosmos DB グローバル分散を設定する方法](tutorial-global-distribution-table.md)
 * [Azure Cosmos DB Table .NET API](table-sdk-dotnet.md)
-* [Azure Cosmos DB Table SDK for Python](table-sdk-python.md)
+
 
