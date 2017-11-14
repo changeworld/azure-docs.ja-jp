@@ -28,7 +28,7 @@ ms.lasthandoff: 10/25/2017
 
 ## <a name="overview"></a>概要
 
-Azure Cosmos DB と Azure Functions を使用して、次の方法でデータベース サーバーレス アプリケーションを統合できます。
+Azure Cosmos DB と Azure Functions を使用して、次の方法でデータベースとサーバーレス アプリケーションを統合できます。
 
 * Azure Functions でイベント ドリブンの **Azure Cosmos DB トリガー**を作成します。 このトリガーは、[変更フィード](change-feed.md) ストリームを利用して、Azure Cosmos DB コンテナーの変更を監視しています。 コンテナーに変更が加えられると、変更フィード ストリームがトリガーに送信され、それによって Azure Functions が呼び出されます。
 * または、**入力バインディング**を使用して、Azure Functions を Azure Cosmos DB コレクションにバインドします。 関数が実行されると、入力バインディングはコンテナーのデータを読み取ります。
@@ -66,7 +66,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 次の図は、このトリガーで Azure ポータルで書き込まれるコードを示しています。
 
-![Azure ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
+![Azure Portal で Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>財務ユース ケース - タイマー トリガーと入力バインディング
 
@@ -78,7 +78,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 2. ユーザーが設定した残高の下限しきい値を下回った場合、Azure Functions のアクションが実行されます。
 3. 出力バインディングは、サービス アカウントから、低い残高の各口座に指定された電子メール アドレスに対して電子メールが送信される [SendGrid 統合](../azure-functions/functions-bindings-sendgrid.md)です。
 
-次の図は、このシナリオ用の Azure ポータルのコードを示しています。
+次の図は、このシナリオ用の Azure Portal のコードを示しています。
 
 ![財務シナリオのタイマー トリガーの Index.js ファイル](./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png)
 
@@ -97,11 +97,11 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 ### <a name="retail-use-case---multiple-functions"></a>小売のユース ケース - 複数の関数
 
-小売の実装では、ユーザーが商品をバスケットに追加したときに、オプションのビジネス パイプライン コンポーネントの関数を柔軟に作成し、呼び出すことができるようになります。
+小売の実装では、ユーザーがアイテムをバスケットに追加したときに、オプションのビジネス パイプライン コンポーネントの関数を柔軟に作成し、呼び出すことができるようになります。
 
 **実装:** 1 つの接続をリッスンする複数の Azure Cosmos DB トリガー
 
-1. 複数の Azure Functions を作成するには、それぞれに Azure Cosmos DB トリガーを追加します。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。
+1. 複数の Azure 関数を作成するには、それぞれに Azure Cosmos DB トリガーを追加します。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。
 2. 新しい項目がユーザーのショッピング カートに追加されるたびに、各関数はショッピング カート コンテナーの変更フィードから個別に呼び出されます。
     * 1 つの関数で現在のバスケットの内容を使用して、ユーザーが関心を持つ可能性がある他の項目の表示を変更することができます。
     * 別の関数で在庫の合計を更新できます。
@@ -113,7 +113,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 ## <a name="tooling"></a>ツール
 
-Azure ポータルでは、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
+Azure Portal では、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
 * Azure Functions ポータルでは、Azure Cosmos DB トリガーを作成できます。 クイックスタートの手順については、[Azure Portal での Azure Cosmos DB トリガーの作成](https://aka.ms/cosmosdbtriggerportalfunc)に関するページを参照してください。![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
 * Azure Functions ポータルでは、Azure Cosmos DB 入力バインディングと出力バインディングを他の種類のトリガーに追加することもできます。 クイックスタートの手順については、「[Azure Functions と Cosmos DB を使用して非構造化データを格納する](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)」を参照してください。
     ![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/function-portal-input-binding.png)
