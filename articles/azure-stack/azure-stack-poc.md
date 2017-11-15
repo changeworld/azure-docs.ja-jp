@@ -32,7 +32,7 @@ Azure Stack 統合システムは Microsoft と[ハードウェア パートナ�
 Microsoft Azure Stack Development Kit は、Azure Stack の評価と学習に使用できる Azure Stack の単一ノード デプロイです。  Azure Stack Development Kit は開発環境としても使用でき、Azure と一貫性のある API やツールを使用して開発を行うことができます。  Azure Stack Development Kit は、運用環境での使用を想定していません。
 
 Azure Stack Development Kit には次の制限事項があります。
-* Azure Stack 開発キットは、単一の Azure Active Directory または Active Directory フェデレーション サービス (AD FS) ID プロバイダーに関連付けられます。 このディレクトリに複数のユーザーを作成し、各ユーザーにサブスクリプションを割り当てることができます。
+* Azure Stack Development Kit は、単一の Azure Active Directory または Active Directory フェデレーション サービス (AD FS) ID プロバイダーに関連付けられます。 このディレクトリに複数のユーザーを作成し、各ユーザーにサブスクリプションを割り当てることができます。
 * すべてのコンポーネントが単一のマシンにデプロイされるため、テナント用のリソースとして使用できる物理リソースは限られます。 この構成は、拡張性やパフォーマンスの評価のためのものではありません。
 * 単一ホスト/NIC 要件のため、ネットワークのシナリオは制限されています。  
 
