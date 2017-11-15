@@ -21,10 +21,10 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# クライアント資格情報を使用したサービス間の呼び出し (共有シークレットまたは証明書)
+# <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>クライアント資格情報を使用したサービス間の呼び出し (共有シークレットまたは証明書)
 OAuth 2.0 クライアント資格情報付与フローでは、Web サービス ("*Confidential クライアント*") が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Azure AD により、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。
 
-## クライアント資格情報付与フローの図
+## <a name="client-credentials-grant-flow-diagram"></a>クライアント資格情報付与フローの図
 次の図に、Azure Active Directory (Azure AD) でのクライアント資格情報付与フローのしくみを示します。
 
 ![OAuth2.0 Client Credentials Grant Flow](media/active-directory-protocols-oauth-service-to-service/active-directory-protocols-oauth-client-credentials-grant-flow.jpg)
@@ -34,20 +34,20 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 3. アクセス トークンを使用して、セキュリティで保護されたリソースに対する認証処理が行われます。
 4. セキュリティで保護されたリソースから Web アプリケーションにデータが返されます。
 
-## Azure AD にサービスを登録する
+## <a name="register-the-services-in-azure-ad"></a>Azure AD にサービスを登録する
 Azure Active Directory (Azure AD) に呼び出し元のサービスと受信側のサービスの両方を登録します。 詳しい説明については、「[Azure Active Directory とアプリケーションの統合](active-directory-integrating-applications.md)」を参照してください。
 
-## アクセス トークンを要求する
+## <a name="request-an-access-token"></a>アクセス トークンを要求する
 アクセス トークンを要求するには、テナントに固有の Azure AD エンドポイントへの HTTP POST を使用します。
 
 ```
 https://login.microsoftonline.com/<tenant id>/oauth2/token
 ```
 
-## サービス間のアクセス トークン要求
+## <a name="service-to-service-access-token-request"></a>サービス間のアクセス トークン要求
 クライアント アプリケーションのセキュリティ保護に共有シークレットまたは証明書のどちらを使うかに応じて、2 つのケースがあります。
 
-### 最初のケース: 共有シークレットを使ったアクセス トークン要求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>最初のケース: 共有シークレットを使ったアクセス トークン要求
 共有シークレットを使用する場合、サービス間のアクセス トークン要求には、次のパラメーターが含まれてます。
 
 | パラメーター |  | Description |
@@ -57,7 +57,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 | client_secret |必須 |呼び出し元の Web サービスまたは デーモン アプリケーションに対して Azure AD に登録されているキーを入力します。 キーを作成するには、Azure Portal で **[Active Directory]** をクリックし、ディレクトリを切り替えます。次に、アプリケーションをクリックし、**[設定]**、**[キー]** の順にクリックして、キーを追加します。|
 | resource |必須 |受信側の Web サービスのアプリケーション ID URI を入力します。 アプリケーション ID URI を調べるには、Azure Portal で **[Active Directory]** をクリックし、ディレクトリを切り替えます。次に、サービス アプリケーションをクリックし、**[設定]**、**[プロパティ]** の順にクリックします |
 
-#### 例
+#### <a name="example"></a>例
 次の HTTP POST は、https://service.contoso.com/ Web サービスのアクセス トークンを要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
 
 ```
@@ -68,7 +68,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### 2 番目のケース: 証明書を使ったアクセス トークン要求
+### <a name="second-case-access-token-request-with-a-certificate"></a>2 番目のケース: 証明書を使ったアクセス トークン要求
 証明書を含むサービス間のアクセス トークン要求には、次のパラメーターが含まれています。
 
 | パラメーター |  | Description |
@@ -81,7 +81,7 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 
 パラメーターは、共有シークレットによる要求のパラメーターとほぼ同じであることに注意してください。唯一異なるのは、client_secret パラメーターが、client_assertion_type と client_assertion の 2 つのパラメーターに置き換えられている点です。
 
-#### 例
+#### <a name="example"></a>例
 次の HTTP POST は、証明書を使用して https://service.contoso.com/ Web サービスのアクセス トークンを要求します。 `client_id` は、アクセス トークンを要求する Web サービスを識別します。
 
 ```
@@ -92,7 +92,7 @@ Content-Type: application/x-www-form-urlencoded
 resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b3bf&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg&grant_type=client_credentials
 ```
 
-### サービス間のアクセス トークン応答
+### <a name="service-to-service-access-token-response"></a>サービス間のアクセス トークン応答
 
 成功応答には、JSON OAuth 2.0 応答と共に次のパラメーターが含まれています。
 
@@ -105,7 +105,7 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 | not_before |アクセス トークンが使用可能になる日時。 日時は 1970-01-01T0:0:0Z UTC から、トークンの有効期間が切れるまでの秒数として表されます。|
 | resource |受信側の Web サービスのアプリケーション ID URI。 |
 
-#### 応答の例
+#### <a name="example-of-response"></a>応答の例
 次の例に、Web サービスへのアクセス トークン要求に対する成功応答を示します。
 
 ```
@@ -118,6 +118,6 @@ resource=https%3A%2F%contoso.onmicrosoft.com%2Ffc7664b4-cdd6-43e1-9365-c2e1c4e1b
 }
 ```
 
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [Azure AD での OAuth 2.0](active-directory-protocols-oauth-code.md)
 * [共有シークレットによるサービス間呼び出しの C# のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon)と[証明書によるサービス間呼び出しの C# のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
