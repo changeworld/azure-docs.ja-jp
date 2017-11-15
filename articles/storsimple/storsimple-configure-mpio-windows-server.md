@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/03/2017
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 77f06b6ef146bdea8dc2f6cb920979e827626e35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f870df32bed8213f6252c70b2f687f436dbd71b8
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>StorSimple デバイスのマルチパス IO の構成
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、「[StorSimple デバイスのマルチパス IO の構成](storsimple-8000-configure-mpio-windows-server.md)」を参照してください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
 Microsoft では、フォールト トレランスと可用性に優れた SAN を構成するために、Windows Server でマルチパス I/O (MPIO) 機能をサポートしています。 MPIO では、アダプター、ケーブル、スイッチなどの冗長な物理パス コンポーネントを使用して、サーバーとストレージ デバイスの間に論理パスを作成します。 コンポーネントのエラーによって論理パスに障害が発生した場合は、マルチパス ロジックで I/O の代替パスが使用され、アプリケーションから引き続きデータにアクセスできるようにします。 さらに構成によっては、これらのパスの間で負荷を分散することで、パフォーマンスの向上にも貢献します。 詳細については、「 [MPIO の概要](https://technet.microsoft.com/library/cc725907.aspx "MPIO の概要 and features")」を参照してください。  
 
 StorSimple ソリューションの可用性を高めるためには、StorSimple デバイスで MPIO を構成する必要があります。 Windows Server 2012 R2 を実行するホスト サーバーに MPIO をインストールすると、サーバーでリンク、ネットワーク、またはインターフェイスのフォールト トレランスが有効になります。 

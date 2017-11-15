@@ -9,11 +9,11 @@ author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
 ms.date: 10/12/2017
-ms.openlocfilehash: 1d92ffc03b60695c5ff7b6c3d2ac54808c527efd
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: a87877f4b213365442400d113a67964ef942341f
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
 
@@ -134,15 +134,15 @@ $yourKeyVaultServicePrincipalId = (Get-AzureRmADServicePrincipal -ServicePrincip
 
 ### <a name="set-permissions"></a>アクセス許可を設定する
 
-ストレージのアクセス許可が *[すべて]* に設定されていることを確認します。 次のコマンドを使用して、KeyVaultServicePrincipalId を取得し、コンテナーにアクセス許可を設定できます。
+ストレージのアクセス許可が *[すべて]* に設定されていることを確認します。 次のコマンドを使用して、youruserPrincipalId を取得し、コンテナーにアクセス許可を設定できます。
 
 ```powershell
-Get-AzureRmADUser -SearchString "your name"
+$youruserPrincipalId = (Get-AzureRmADUser -SearchString "your user principal name").Id
 ```
 ここで、自分の名前を検索し、関連するオブジェクト ID を取得します。この ID はコンテナーのアクセス許可の設定に使用します。
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourtest1' -ObjectId $yourKeyVaultServicePrincipalId -PermissionsToStorage all
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourtest1' -ObjectId $youruserPrincipalId -PermissionsToStorage all
 ```
 
 ### <a name="allow-access"></a>アクセスを許可

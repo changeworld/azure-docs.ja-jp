@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 11/07/2017
 ms.author: v-donglo
-ms.openlocfilehash: e7663f931594c0626a173562b846f3f9324d8ba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40079da0e04520477771a11a1e4111768cf18280
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>既存の予測 Web サービスを再トレーニングする
 このドキュメントでは、次のシナリオの再トレーニング プロセスについて説明します。
@@ -86,9 +86,10 @@ ms.lasthandoff: 10/11/2017
 ### <a name="update-the-azure-storage-information"></a>Azure Storage 情報を更新する
 BES サンプル コードは、ファイルをローカル ドライブ ("C:\temp\CensusIpnput.csv" など) から Azure Storage にアップロードして処理し、その結果を Azure Storage に書き込みます。  
 
-Azure Storage 情報を更新するには、Azure クラシック ポータルからストレージ アカウント名、キー、およびストレージ アカウント用のコンテナー情報を取得し、実験を実行した後の対応を更新します。実行後のワークフローは次のようになります。
+Azure Storage 情報を更新するには、ストレージ アカウントのストレージ アカウント名、キー、およびコンテナー情報を Azure クラシック ポータルから取得して、コード内の対応する値を更新する必要があります。
+実験を実行すると、結果として得られるワークフローは次のようになります。
 
-![実行後のワークフロー][4]コード内の NG 値。
+![実行後のワークフロー][4]
 
 1. Azure クラシック ポータルにサインインします。
 2. 左側のナビゲーションで **[ストレージ]**をクリックします。
@@ -119,7 +120,9 @@ Azure Storage 情報を更新するには、Azure クラシック ポータル�
             }
         },
 
-再トレーニング出力の例を次に示します: ![再トレーニング出力][6]
+再トレーニング出力の例を次に示します。
+
+![再トレーニング出力][6]
 
 ## <a name="evaluate-the-retraining-results"></a>再トレーニングの結果を評価する
 アプリケーションを実行すると、評価結果へのアクセスに必要な URL と Shared Access Signature トークンが出力に示されます。

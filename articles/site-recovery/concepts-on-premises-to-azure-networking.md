@@ -1,9 +1,9 @@
 ---
-title: "Azure Site Recovery を使用した Azure へのフェールオーバー後の VM 接続用のネットワーク |Microsoft ドキュメント"
+title: "Azure Site Recovery を使用した Azure へのフェールオーバー後の VM 接続 | Microsoft Docs"
 description: "Azure Site Recovery を使用したオンプレミスからのフェールオーバー後の Azure VM への接続用のネットワーク ガイダンス"
 services: site-recovery
 documentationcenter: 
-author: rayne-wiselman
+author: prateek9us
 manager: carmonm
 editor: 
 ms.assetid: f02cdbea-0940-48bf-9fa5-f38d9e584fae
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/12/2017
-ms.author: raynew
-ms.openlocfilehash: 01c8e664465350b9dd382502c65cc3fda350797c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/05/2017
+ms.author: pratshar
+ms.openlocfilehash: 6c0fa27aeed3e500bd69567f90743cc274144978
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="networking-for-vm-connectivity-after-failover"></a>フェールオーバー後の VM 接続用のネットワーク
+# <a name="connecting-to-vms-after-failover-to-azure"></a>Azure へのフェールオーバー後の VM 接続
 
 この記事では、Azure へのレプリケーションとフェールオーバーのために [Azure Site Recovery](site-recovery-overview.md) サービスを使用した後、Azure VM に接続するためのネットワーク要件について説明します。
 

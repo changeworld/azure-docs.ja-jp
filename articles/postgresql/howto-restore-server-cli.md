@@ -9,14 +9,14 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 871887e67d686a965a0648d2c6f0c72b3008db05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.openlocfilehash: 0cfce63b1523f939dc2d706dba771e56ce9ccd6c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL のサーバーをバックアップして復元する方法
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Azure CLI を使用して、Azure Database for PostgreSQL のサーバーをバックアップおよび復元する方法
 
 Azure Database for PostgreSQL を使用して、7 日 ～ 35 日にわたって過去の日付のサーバー データべースを復元します。
 
@@ -31,7 +31,7 @@ Azure Database for PostgreSQL を使用して、7 日 ～ 35 日にわたって�
 > [!IMPORTANT]
 > Azure CLI をローカルにインストールして使用する場合、このハウツー ガイドでは Azure CLI バージョン 2.0 以上を使用する必要があります。 バージョンを確認するには、Azure CLI コマンド プロンプトで「`az --version`」と入力します。 インストールまたはアップグレードする必要には、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」をご覧ください。
 
-## <a name="back-up-happens-automatically"></a>バックアップは自動的に行われる
+## <a name="backup-happens-automatically"></a>自動バックアップ
 Azure Database for PostgreSQL を使用するとき、このデータベース サービスは 5 分ごとに自動でサービスのバックアップを行います。 
 
 Basic レベルでは、バックアップは 7 日間有効です。 Standard レベルでは、バックアップは 35 日間有効です。 詳しくは、[Azure Database for PostgreSQL の価格レベル](concepts-service-tiers.md)に関する記事をご覧ください。

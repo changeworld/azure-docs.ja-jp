@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 6d1845e27c6b0fff66b80a683f59d14238e2ad71
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 4918a820ca07a7d83dfb544ee9f0bbeb66d22722
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>自転車シェアのチュートリアル: Azure Machine Learning Workbench による詳細データの準備
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -493,7 +493,7 @@ __[OK]__ を選択してフィルターを適用します。
 
 ### <a name="remove-columns"></a>列の削除
 
-旅行データの場合、各行は自転車の受け取りイベントを表します。 このチュートリアルでは、**starttime** と **start station** 列のみが必要です。 これら 2 つの列を複数選択して、列見出しを右クリックし、**[Keep Column]\(列を保持する\)** を選択することで、他の列を除去します。 その他の列が削除されます。
+旅行データの場合、各行は自転車の受け取りイベントを表します。 このチュートリアルでは、**starttime** と **start station id** 列のみが必要です。 これら 2 つの列を複数選択して、列見出しを右クリックし、**[Keep Column]\(列を保持する\)** を選択することで、他の列を除去します。 その他の列が削除されます。
 
 ![列の保持オプションの画像](media/tutorial-bikeshare-dataprep/tripdatakeepcolumn.png)
 

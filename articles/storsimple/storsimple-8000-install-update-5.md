@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/06/2017
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: e9b2f8b225c6b9ed0f0622e6a51a48cdfada28bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f5b5cc597da714369d4c452edce42ea7fe205dd
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5 のインストール
 
@@ -30,7 +30,7 @@ Update 5 には、デバイス ソフトウェア、Storport と Spaceport、OS 
 
 > [!IMPORTANT]
 > * インストールの前に、ハードウェアの状態とネットワーク接続の点からデバイスの正常性を判断するための手動と自動の一連の事前チェックが行われます。 これらの事前チェックは、Azure Portal から更新プログラムを適用する場合にのみ実行されます。
-> * Update 3 より前のバージョンを実行しているデバイスを更新する場合は、修正プログラムによる方法を使用して更新プログラムをインストールすることを強くお勧めします。 サポート部門が更新をガイドできるように、[サポート チケットをログに記録](storsimple-8000-contact-microsoft-support.md)してください。
+> * Update 3 より前のバージョンを実行しているデバイスを更新する場合は、修正プログラムによる方法を使用して更新プログラムをインストールすることを強くお勧めします。 何らかの問題が発生した場合、[サポート チケットを記録](storsimple-8000-contact-microsoft-support.md)してください。
 > * ソフトウェアとその他の通常の更新プログラムのインストールには Azure Portal を使用することをお勧めします。 ポータルで更新前のゲートウェイのチェックに失敗した場合のみ、(更新プログラムをインストールする) デバイスの Windows PowerShell インターフェイスに移動してください。 更新するバージョンによっては、更新プログラムのインストールに 4 時間 (またはそれ以上) かかる場合があります。 メンテナンス モードの更新プログラムは、デバイスの Windows PowerShell インターフェイスからインストールする必要があります。 メンテナンス モードの更新プログラムは中断を伴う更新プログラムであるため、デバイスにダウンタイムが発生します。
 > * オプションの StorSimple Snapshot Manager を実行している場合は、デバイスを更新する前に Snapshot Manager のバージョンを Update 5 にアップグレードしたことを確認します。
 

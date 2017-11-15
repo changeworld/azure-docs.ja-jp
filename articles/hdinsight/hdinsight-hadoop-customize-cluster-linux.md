@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/06/2017
 ms.author: larryfr
-ms.openlocfilehash: 0c5d00b6cb9f68a1a0e474f81c969eb1b5654c67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f166158d09cd867718acecc6c97ce16b839f49bd
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="customize-linux-based-hdinsight-clusters-using-script-action"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
+# <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
 HDInsight には、クラスターをカスタマイズするカスタム スクリプトを呼び出す **スクリプト アクション** という構成オプションがあります。 これらのスクリプトは、追加コンポーネントのインストールおよび構成設定の変更に使用されます。 スクリプト アクションは、クラスターの作成中または作成後に使用できます。
 
@@ -40,7 +40,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 * **AMBARI.RUN\_CUSTOM\_COMMAND**: Ambari の管理者ロールは、既定でこのアクセス許可を持っています。
 * **CLUSTER.RUN\_CUSTOM\_COMMAND**: HDInsight クラスターの管理者および Ambari の管理者は、既定でこのアクセス許可を持っています。
 
-ドメイン参加済みの HDInsight でのアクセス許可の設定については、[ドメイン参加済みの HDInsight クラスターの管理](hdinsight-domain-joined-manage.md) に関する記事を参照してください。
+ドメイン参加済みの HDInsight でのアクセス許可の設定については、[ドメイン参加済みの HDInsight クラスターの管理](./domain-joined/apache-domain-joined-manage.md) に関する記事を参照してください。
 
 ## <a name="access-control"></a>Access control
 
@@ -55,7 +55,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 ## <a name="understanding-script-actions"></a>スクリプト アクションについて
 
-スクリプト アクションの実体は、URI とパラメーターを指定された Bash スクリプトです。 スクリプトは、HDInsight クラスター内のノードで実行されます。 スクリプト アクションの特性と機能を次に示します。
+スクリプト アクションは、URI とパラメーターを指定された Bash スクリプトです。 スクリプトは、HDInsight クラスター内のノードで実行されます。 スクリプト アクションの特性と機能を次に示します。
 
 * HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
 
@@ -211,229 +211,29 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 3. クラスターを作成するには、__[クラスターの概要__] セクションで、__[作成]__ を選択します。
 
-### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートからスクリプト アクションを使用する
+### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートからスクリプト アクションを使用する
 
-このセクションの例は、Azure Resource Manager テンプレートでスクリプト アクションを使用する方法を示しています。
+スクリプト アクションを Azure Resource Manager テンプレートで使用できます。 例については、[https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/) をご覧ください。
 
-#### <a name="before-you-begin"></a>開始する前に
+この例では、次のコードを使用してスクリプト アクションが追加されます。
 
-* コンピューターを構成して HDInsight Powershell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」をご覧ください。
-* テンプレートを作成する方法の手順については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」をご覧ください。
-* リソース マネージャーで Azure PowerShell を使用したことがない場合は、「 [Azure リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md)」を参照してください。
-
-#### <a name="create-clusters-using-script-action"></a>スクリプト アクションを使用してクラスターを作成する
-
-1. コンピューター上の場所に次のテンプレートをコピーします。 このテンプレートにより、クラスター内のヘッド ノードと worker ノードに Giraph がインストールされます。 JSON テンプレートが有効かどうかも確認できます。 テンプレートの内容を [JSONLint](http://jsonlint.com/)というオンラインの JSON 検証ツールに貼り付けます。
-
-            {
-            "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-            "contentVersion": "1.0.0.0",
-            "parameters": {
-                "clusterLocation": {
-                    "type": "string",
-                    "defaultValue": "West US",
-                    "allowedValues": [ "West US" ]
-                },
-                "clusterName": {
-                    "type": "string"
-                },
-                "clusterUserName": {
-                    "type": "string",
-                    "defaultValue": "admin"
-                },
-                "clusterUserPassword": {
-                    "type": "securestring"
-                },
-                "sshUserName": {
-                    "type": "string",
-                    "defaultValue": "username"
-                },
-                "sshPassword": {
-                    "type": "securestring"
-                },
-                "clusterStorageAccountName": {
-                    "type": "string"
-                },
-                "clusterStorageAccountResourceGroup": {
-                    "type": "string"
-                },
-                "clusterStorageType": {
-                    "type": "string",
-                    "defaultValue": "Standard_LRS",
-                    "allowedValues": [
-                        "Standard_LRS",
-                        "Standard_GRS",
-                        "Standard_ZRS"
-                    ]
-                },
-                "clusterStorageAccountContainer": {
-                    "type": "string"
-                },
-                "clusterHeadNodeCount": {
-                    "type": "int",
-                    "defaultValue": 1
-                },
-                "clusterWorkerNodeCount": {
-                    "type": "int",
-                    "defaultValue": 2
-                }
-            },
-            "variables": {
-            },
-            "resources": [
-                {
-                    "name": "[parameters('clusterStorageAccountName')]",
-                    "type": "Microsoft.Storage/storageAccounts",
-                    "location": "[parameters('clusterLocation')]",
-                    "apiVersion": "2015-05-01-preview",
-                    "dependsOn": [ ],
-                    "tags": { },
-                    "properties": {
-                        "accountType": "[parameters('clusterStorageType')]"
-                    }
-                },
-                {
-                    "name": "[parameters('clusterName')]",
-                    "type": "Microsoft.HDInsight/clusters",
-                    "location": "[parameters('clusterLocation')]",
-                    "apiVersion": "2015-03-01-preview",
-                    "dependsOn": [
-                        "[concat('Microsoft.Storage/storageAccounts/', parameters('clusterStorageAccountName'))]"
-                    ],
-                    "tags": { },
-                    "properties": {
-                        "clusterVersion": "3.2",
-                        "osType": "Linux",
-                        "clusterDefinition": {
-                            "kind": "hadoop",
-                            "configurations": {
-                                "gateway": {
-                                    "restAuthCredential.isEnabled": true,
-                                    "restAuthCredential.username": "[parameters('clusterUserName')]",
-                                    "restAuthCredential.password": "[parameters('clusterUserPassword')]"
-                                }
-                            }
-                        },
-                        "storageProfile": {
-                            "storageaccounts": [
-                                {
-                                    "name": "[concat(parameters('clusterStorageAccountName'),'.blob.core.windows.net')]",
-                                    "isDefault": true,
-                                    "container": "[parameters('clusterStorageAccountContainer')]",
-                                    "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('clusterStorageAccountName')), '2015-05-01-preview').key1]"
-                                }
-                            ]
-                        },
-                        "computeProfile": {
-                            "roles": [
-                                {
-                                    "name": "headnode",
-                                    "targetInstanceCount": "[parameters('clusterHeadNodeCount')]",
-                                    "hardwareProfile": {
-                                        "vmSize": "Large"
-                                    },
-                                    "osProfile": {
-                                        "linuxOperatingSystemProfile": {
-                                            "username": "[parameters('sshUserName')]",
-                                            "password": "[parameters('sshPassword')]"
-                                        }
-                                    },
-                                    "scriptActions": [
-                                        {
-                                            "name": "installGiraph",
-                                            "uri": "https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh",
-                                            "parameters": ""
-                                        }
-                                    ]
-                                },
-                                {
-                                    "name": "workernode",
-                                    "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
-                                    "hardwareProfile": {
-                                        "vmSize": "Large"
-                                    },
-                                    "osProfile": {
-                                        "linuxOperatingSystemProfile": {
-                                            "username": "[parameters('sshUserName')]",
-                                            "password": "[parameters('sshPassword')]"
-                                        }
-                                    },
-                                    "scriptActions": [
-                                        {
-                                            "name": "installR",
-                                            "uri": "https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh",
-                                            "parameters": ""
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            ],
-            "outputs": {
-                "cluster":{
-                    "type" : "object",
-                    "value" : "[reference(resourceId('Microsoft.HDInsight/clusters',parameters('clusterName')))]"
-                }
-            }
+    "scriptActions": [
+        {
+            "name": "setenvironmentvariable",
+            "uri": "[parameters('scriptActionUri')]",
+            "parameters": "headnode"
         }
-2. Azure PowerShell を起動し、Azure アカウントにログインします。 資格情報を提供すると、コマンドがアカウントの情報を返します。
+    ]
 
-        Add-AzureRmAccount
+テンプレートをデプロイする方法については、次のドキュメントをご覧ください。
 
-        Id                             Type       ...
-        --                             ----
-        someone@example.com            User       ...
-3. 複数のサブスクリプションがある場合、デプロイに使用するサブスクリプション ID を提供します。
+* [テンプレートと Azure PowerShell を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)に関する記事
 
-        Select-AzureRmSubscription -SubscriptionID <YourSubscriptionId>
-
-    > [!NOTE]
-    > `Get-AzureRmSubscription` を使用して、アカウントに関連付けられているすべてのサブスクリプションのリストを取得することができます。これには、各サブスクリプション ID が含まれます。
-
-4. 既存のリソース グループがない場合は、リソース グループを作成します。 ソリューションに必要なリソース グループと場所の名前を指定します。 新しいリソース グループの概要が返されます。
-
-        New-AzureRmResourceGroup -Name myresourcegroup -Location "West US"
-
-        ResourceGroupName : myresourcegroup
-        Location          : westus
-        ProvisioningState : Succeeded
-        Tags              :
-        Permissions       :
-                            Actions  NotActions
-                            =======  ==========
-                            *
-        ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
-
-5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。 パラメーターには、次のデータが含まれます。
-
-    * デプロイの名前
-    * リソース グループの名前
-    * 作成したテンプレートのパスまたは URL
-
-  テンプレートでパラメーターが必要な場合は、それらのパラメーターも渡す必要があります。 この場合は、クラスターに R をインストールするスクリプト アクションでパラメーターは必要ありません。
-
-        New-AzureRmResourceGroupDeployment -Name mydeployment -ResourceGroupName myresourcegroup -TemplateFile <PathOrLinkToTemplate>
-
-    テンプレートで定義されているパラメーターの値を指定するよう要求されます。
-
-1. リソース グループをデプロイすると、デプロイメントの概要が表示されます。
-
-          DeploymentName    : mydeployment
-          ResourceGroupName : myresourcegroup
-          ProvisioningState : Succeeded
-          Timestamp         : 8/14/2017 7:00:27 PM
-          Mode              : Incremental
-          ...
-
-2. デプロイメントに失敗した場合は、次のコマンドレットを使用してエラーに関する情報を取得できます。
-
-        Get-AzureRmResourceGroupDeployment -ResourceGroupName myresourcegroup -ProvisioningState Failed
+* [テンプレートと Azure CLI を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)に関する記事
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>クラスターの作成時に Azure PowerShell からスクリプト アクションを使用する
 
-このセクションでは、 [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) コマンドレットで、スクリプト アクションを使用し、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。
+このセクションでは、[Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) コマンドレットを使用して、クラスターのカスタマイズを行うスクリプトを呼び出します。 次に進む前に、Azure PowerShell をインストールして構成したことを確認します。 ワークステーションを構成して HDInsight PowerShell コマンドレットを実行する方法については、「 [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)」を参照してください。
 
 次のスクリプトは、PowerShell を使用してクラスターを作成するときに、スクリプト アクションを適用する方法を示します。
 
@@ -535,7 +335,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="apply-a-script-action-to-a-running-cluster-using-rest-api"></a>REST API を使用して実行中のクラスターにスクリプト アクションを適用する
 
-「 [Run Script Actions on a running cluster (実行中のクラスターでスクリプト アクションを実行する)](https://msdn.microsoft.com/library/azure/mt668441.aspx)」を参照してください。
+[実行中のクラスターでのスクリプト アクションの実行](https://msdn.microsoft.com/library/azure/mt668441.aspx)に関するページをご覧ください。
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-hdinsight-net-sdk"></a>実行中のクラスターに HDInsight .NET SDK からスクリプト アクションを適用する
 
@@ -647,7 +447,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 ### <a name="access-logs-from-the-default-storage-account"></a>既定のストレージ アカウントからログにアクセスする
 
-スクリプト アクションで発生したエラーが原因でクラスターの作成に失敗した場合、クラスター ストレージ アカウントからスクリプト アクション ログに直接アクセスすることもできます。
+スクリプト エラーが原因でクラスターの作成に失敗した場合、クラスター ストレージ アカウントにログが保持されます。
 
 * ストレージ ログは、 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`にあります。
 
@@ -703,11 +503,11 @@ SSH を使用してクラスターに接続する方法については、[HDInsi
 
 ### <a name="history-doesnt-show-scripts-used-during-cluster-creation"></a>クラスターの作成時に使用されたスクリプトが履歴に表示されません
 
-クラスターが 2016 年 3 月 15 日より前に作成された場合、スクリプト アクション履歴にエントリが表示されない可能性があります。 ただし、2016 年 3 月 15 日より後にそのクラスターのサイズを変更すると、スクリプトはサイズ変更操作の一部としてクラスター内の新しいノードに適用されるため、クラスター作成時のスクリプトの使用は履歴に表示されます。
+クラスターが 2016 年 3 月 15 日より前に作成された場合、スクリプト アクション履歴にエントリが表示されない可能性があります。 クラスターのサイズ変更を行うと、スクリプト アクション履歴にスクリプトが表示されます。
 
 ただし、例外が 2 つあります。
 
-* クラスターが 2015 年 9 月 1 日より前に作成された場合。 スクリプト アクションが導入される前であるため、 この日付より前に作成されたクラスターについては、作成時にスクリプト アクションを使用できませんでした。
+* クラスターが 2015 年 9 月 1 日より前に作成された場合。 この日付は、スクリプト アクションが導入された日付です。 この日付より前に作成されたクラスターに関しては、クラスター作成にスクリプト アクションを使用できませんでした。
 
 * クラスターの作成時に複数のスクリプト アクションを使用した場合、複数のスクリプトに対して同じ名前を使用した場合、または複数のスクリプトに対して同じ名前と URI、異なるパラメーターを使用した場合。 この場合は、次のエラーが発生します。
 
@@ -715,7 +515,7 @@ SSH を使用してクラスターに接続する方法については、[HDInsi
 
 ## <a name="next-steps"></a>次のステップ
 
-* [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions-linux.md)
+* [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions-linux.md)
 * [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 * [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
 * [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 44ec416a814ff6a5fef79ef21e2f54ce4ce4da17
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 76e23d85b392f8120914f6170040c6b3c450aba6
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/03/2017
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>Python を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイックスタートでは、Python を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 
@@ -32,25 +32,7 @@ ms.lasthandoff: 10/17/2017
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-a-storage-account-using-the-azure-portal"></a>Azure Portal を使用してストレージ アカウントを作成する
-
-最初に、このクイックスタートで使う新しい汎用的なストレージ アカウントを作成します。 
-
-1. [Azure Portal](https://portal.azure.com) にアクセスし、Azure アカウントを使ってログインします。 
-2. ハブ メニューで、**[新規]** > **[ストレージ]** > **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選びます。 
-3. ストレージ アカウントの名前を入力します。 名前の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 また、一意である必要があります。
-4. [`Deployment model`] を **[リソース マネージャー]** に設定します。
-5. [`Account kind`] を **[汎用]** に設定します。
-6. [`Performance`] を **[Standard]** に設定します。 
-7. [`Replication`] を **[ローカル冗長ストレージ (LRS)]** に設定します。
-8. [`Storage service encryption`] を **[無効]** に設定します。
-9. [`Secure transfer required`] を **[無効]** に設定します。
-10. サブスクリプションを選択します。 
-11. [`resource group`] では、新しいリソース グループを作成して一意名を指定します。 
-12. [`Location`] でストレージ アカウントに使う場所を選びます。
-13. **[ダッシュボードにピン留めする]** をオンにし、**[作成]** をクリックしてストレージ アカウントを作成します。 
-
-ストレージ アカウントが作成されて、ダッシュボードにピン留めされます。 そのストレージ アカウントをクリックして開きます。 **[設定]** で **[アクセス キー]** をクリックします。 キーを選び、ストレージ アカウント名をクリップボードにコピーして、後で使うためにメモ帳に貼り付けます。
+[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 このクイックスタートで使う[サンプル アプリケーション](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git)は、基本的な Python アプリケーションです。  
@@ -100,8 +82,10 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 
 Cloud Blob コンテナーを作成した後は、関心がある特定の BLOB を指す **CloudBlockBlob** オブジェクトをインスタンス化して、アップロード、ダウンロード、コピーなどの操作を実行できます。
 
-このセクションでは、オブジェクトをインスタンス化し、新しいコンテナーを作成した後、BLOB がパブリックになるようにコンテナーに対するアクセス許可を設定します。 コンテナーの名前は **quickstartblobs** です。 
+> [!IMPORTANT]
+> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
+このセクションでは、オブジェクトをインスタンス化し、新しいコンテナーを作成した後、BLOB がパブリックになるようにコンテナーに対するアクセス許可を設定します。 コンテナーの名前は **quickstartblobs** です。 
 
 ```python 
 # Create the BlockBlockService that is used to call the Blob service for the storage account
@@ -140,7 +124,7 @@ print("\nUploading to Blob storage as blob" + local_file_name)
 block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
 ```
 
-Blob Storage では複数のアップロード方法を使うことができます。 たとえば、メモリ ストリームがある場合、**create\_blob\_from\_path** ではなく **create\_blob\_from\_stream** メソッドを使うことができます。. 
+Blob Storage では複数のアップロード方法を使うことができます。 たとえば、メモリ ストリームがある場合、**create\_blob\_from\_path** ではなく **create\_blob\_from\_stream** メソッドを使うことができます。 
 
 ブロック BLOB の最大サイズは 4.7 TB であり、Excel スプレッドシートから大きなビデオ ファイルまで何にでも使うことができます。 ページ BLOB は、主に、IaaS VM のバックアップ用の VHD ファイルに使われます。 追加 BLOB は、ファイルに書き込んでから情報を追加する場合など、ログ記録に使われます。 BLOB ストレージに格納されているほとんどのオブジェクトはブロック BLOB です。
 

@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 2164562af60442375b96a51f820a65d4d4a6f257
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.openlocfilehash: 36ffa7082ce60093cbd90d0c12187e28f517646d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 この記事では、MySQL Workbench を使用して、Azure Database for MySQL サーバーにデータをインポートおよびエクスポートする 2 つの一般的な方法について説明します。 
@@ -45,7 +45,7 @@ Azure Database for MySQL に移行するとき、インポート ファイルお
 次のシナリオでは、MySQL ツールを使用して、データベースを Azure MySQL Database にインポートおよびエクスポートします。 他のシナリオでは、代わりに[ダンプと復元](concepts-migrate-dump-restore.md)の方法を使用することでメリットが得られます。 
 
 - 既存の MySQL データベースから少数のテーブルを選択して、Azure MySQL Database にインポートする必要がある場合は、インポート/エクスポート手法を使用するのが適しています。  これにより、不要なテーブルを移行から除外して、時間とリソースを節約できます。 たとえば、[mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) では `--include-tables` スイッチまたは `--exclude-tables` スイッチを使用し、[mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) では `--tables` スイッチを使用します。
-- テーブル以外のデータベース オブジェクトを移行する場合は、それらを明示的に作成します。 制約 (主キー、外部キー、インデックス)、ビュー、関数、プロシージャ、トリガーなど、移行するデータベース オブジェクトを含めます。
+- テーブル以外のデータベース オブジェクトを移行する場合は、それらのオブジェクトを明示的に作成します。 制約 (主キー、外部キー、インデックス)、ビュー、関数、プロシージャ、トリガーなど、移行するデータベース オブジェクトを含めます。
 - MySQL データベース以外の外部データ ソースからデータを移行する場合は、フラット ファイルを作成し、[mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html) を使用してそれらのファイルをインポートします。
 
 Azure Database for MySQL にデータを読み込むときは、データベースのすべてのテーブルで InnoDB ストレージ エンジンが使用されていることを確認します。 Azure Database for MySQL でサポートされるのは InnoDB ストレージ エンジンだけであるため、代替のストレージ エンジンはサポートされません。 テーブルで別のストレージ エンジンが必要な場合は、Azure Database for MySQL に移行する前に、それらのテーブルを変換して InnoDB エンジン形式を使用する必要があります。 
