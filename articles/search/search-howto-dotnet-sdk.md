@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/22/2017
 ms.author: brjohnst
-ms.openlocfilehash: 552a7ab193e12d2e72da494166d774e974c85d47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7273ae6a698f2af52e78ea2aae9ca5cd80f6a2b1
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
 この記事では、 [Azure Search .NET SDK](https://aka.ms/search-sdk)を使用する手順について説明します。 .NET SDK を使用すると、Azure Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
@@ -33,7 +33,7 @@ SDK は、クライアント ライブラリ `Microsoft.Azure.Search`で構成�
 
 Azure Search .NET SDK の最新バージョンが一般公開されました。 次のバージョンに組み込むためにフィードバックを提供する場合は、 [フィードバック ページ](https://feedback.azure.com/forums/263029-azure-search/)を使用してください。
 
-.NET SDK は、バージョン `2016-09-01` の [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンでは、カスタム アナライザー、Azure BLOB インデクサー、Azure Table インデクサーがサポートされるようになりました。 JSON ファイルと CSV ファイルのインデックス作成のサポートなど、このバージョンに含まれて*いない*プレビュー機能は[プレビュー](search-api-2015-02-28-preview.md)段階であり、以前の[バージョン 2.0-preview の .NET SDK](https://aka.ms/search-sdk-preview) で提供されます。
+.NET SDK は、バージョン `2016-09-01` の [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) をサポートします。 このバージョンでは、カスタム アナライザー、Azure BLOB インデクサー、Azure Table インデクサーがサポートされるようになりました。 JSON ファイルと CSV ファイルのインデックス作成のサポートなど、このバージョンに含まれて*いない*プレビュー機能は[プレビュー](search-api-2016-09-01-preview.md)段階であり、[4.0.1-preview バージョンの .NET SDK](https://aka.ms/search-sdk-preview) で提供されます。
 
 この SDK では、Search サービスの作成とスケーリングや API キーの管理などの[管理操作](https://docs.microsoft.com/rest/api/searchmanagement/)はサポートされていません。 .NET アプリケーションから Search リソースを管理する必要がある場合は、[Azure Search .NET Management SDK](https://aka.ms/search-mgmt-sdk) を使用できます。
 
