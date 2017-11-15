@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 630d9022da0d51e533534ea43f50f27e8eb09a78
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
 
@@ -61,7 +61,8 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 1. 左側のナビゲーションに表示される関数名をクリックして、開発ページに戻ります。
 1. **[関数の URL の取得]** をクリックし、URL をコピーします。 現在、`/api/hello` ルートが使用されていることを確認してください。
 1. URL をブラウザーの新しいタブまたはお使いの REST クライアントにコピーします。 ブラウザーは既定で GET を使用します。
-1. 関数を実行し、動作を確認します。 クイックスタートのコードを完成させるためにクエリ文字列として "name" パラメーターを入力する必要がある場合もあります。
+1. URL のクエリ文字列にパラメーターを追加します (例: `/api/hello/?name=John`)。
+1. 動作していることを確認するには、Enter キーを押します。 "*Hello John*" という応答が表示されます。
 1. また、別の HTTP メソッドを使用してエンドポイントを呼び出し、関数が実行されていないことを確認することもできます。 このためには、cURL、Postman、Fiddler などの REST クライアントを使用する必要があります。
 
 ## <a name="proxies-overview"></a>Proxies の概要
@@ -85,9 +86,8 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 「[Function App を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した Function App はバックエンドとして機能します。
 
 1. ポータルで新しいフロントエンドの Function App に移動します。
-1. **[設定]**を選択します。 次に、**[Azure Functions プロキシの有効化 (プレビュー)]** をオンにします。
-1. **[プラットフォームの設定]**、**[アプリケーションの設定]** の順に選択します。
-1. 下へスクロールして **[アプリの設定]** を表示し、"HELLO_HOST" キーを使用して新しい設定を作成します。 バックエンドの Function App のホストに `<YourBackendApp>.azurewebsites.net` などの値を設定します。 これは以前 HTTP 関数をテストするときにコピーした URL の一部です。 後で構成の際にこの設定を参照します。
+1. **[プラットフォーム機能]**、**[アプリケーションの設定]** の順に選択します。
+1. 下にスクロールして、キーと値のペアが格納されている **[アプリケーションの設定]** に移動し、キー "HELLO_HOST" を使用して新しい設定を作成します。 バックエンドの Function App のホストに `<YourBackendApp>.azurewebsites.net` などの値を設定します。 これは以前 HTTP 関数をテストするときにコピーした URL の一部です。 後で構成の際にこの設定を参照します。
 
     > [!NOTE] 
     > ハード コーディングよるプロキシの環境依存を防ぐために、ホストの構成に対してアプリ設定を使用することをお勧めします。 アプリ設定を使用すると、プロキシの構成を環境間で移動でき、その環境に合わせたアプリ設定が適用されます。
@@ -120,7 +120,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
 次に、プロキシを使用してソリューションのモック API を作成します。 これにより、バックエンドを完全に実装する必要なく、クライアント開発を進めることができます。 開発の後行程で、このロジックをサポートしプロキシをリダイレクトする新しい Function App を作成できます。
 
-このモック API を作成するには、新しいプロキシを作成します (今回は [App Service Editor](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) を使用します)。 作成を開始するには、Azure Portal で Function App に移動します。 **[プラットフォーム機能]** を選択し、**[App Service Editor]** を見つけます。 これをクリックすると、新しいタブで App Service Editor が開きます。
+このモック API を作成するには、新しいプロキシを作成します (今回は [App Service Editor](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) を使用します)。 作成を開始するには、Azure Portal で Function App に移動します。 **[プラットフォーム機能]** を選択し、**[開発ツール]** で **[App Service Editor]** を見つけます。 これをクリックすると、新しいタブで App Service Editor が開きます。
 
 左側のナビゲーションで、`proxies.json` を選択します。 これは、すべてのプロキシの構成が格納されるファイルです。 [Functions のデプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)で記載されている方法のいずれかを使用する場合、このファイルはソース管理で保持することになります。 このファイルの詳細については、[Proxies の詳細な構成](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration)に関するページをご覧ください。
 
@@ -178,7 +178,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
 backendUri プロパティを変更することなく、"GetUserByName" という新しいプロキシを追加しています。 別のリソースを呼び出す代わりに、応答の上書きによって Proxies からの既定の応答を変更します。 要求と応答の上書きは、バックエンド URL と併用することもできます。 これは、レガシ システムにプロキシする際に特に役立ちます。その際は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合があります。要求と応答の上書きの詳細については、[Proxies での要求と応答の変更](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses)に関する記事をご覧ください。
 
-ブラウザーまたはお使いの REST クライアントを使用して `/api/users/{username}` エンドポイントを呼び出し、モック API をテストします。 _{username}_ をユーザー名を表す文字列値に必ず置き換えてください。
+ブラウザーまたはお使いの REST クライアントを使用して `<YourProxyApp>.azurewebsites.net/api/users/{username}` エンドポイントを呼び出し、モック API をテストします。 _{username}_ をユーザー名を表す文字列値に必ず置き換えてください。
 
 ## <a name="next-steps"></a>次のステップ
 

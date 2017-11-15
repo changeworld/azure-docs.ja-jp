@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 5c33f08e54d522e0eea13a3e267f14f407fc59b6
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9d61f46070e6956c60f1135b98a9ebe71011b922
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -94,7 +94,7 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 
 ## <a name="set-password-expiration-policies-in-azure-active-directory"></a>Azure Active Directory でパスワード有効期限ポリシーを設定する
 
-Microsoft クラウド サービスのグローバル管理者は、Windows PowerShell 用 Microsoft Azure Active Directory モジュールを使用して、ユーザーのパスワードの有効期限が切れないように設定できます。 また、Windows PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。 このガイダンスは、ID およびディレクトリ サービスについては Microsoft Azure Active Directory にも依存する、Microsoft Intune や Office 365 などの他のプロバイダーに適用されます。
+Microsoft クラウド サービスのグローバル管理者は、Windows PowerShell 用 Microsoft Azure Active Directory モジュールを使用して、ユーザーのパスワードの有効期限が切れないように設定できます。 また、Windows PowerShell コマンドレットを使用すると、期限が切れない構成を削除したり、期限が切れないように設定されているユーザー パスワードを確認したりすることもできます。 このガイダンスは、ID およびディレクトリ サービスについては Microsoft Azure Active Directory にも依存する、Microsoft Intune や Office 365 などの他のプロバイダーに適用されます。 これが、ポリシーで変更できる唯一の部分です。
 
 > [!NOTE]
 > 有効期限が切れないように構成できるのは、ディレクトリ同期によって同期されていないユーザー アカウントのパスワードだけです。 ディレクトリ同期の詳細については、「[AD と Azure AD を接続する](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)」を参照してください。
@@ -127,6 +127,9 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 
    * 特定のユーザーのパスワードを無期限に設定するには、ユーザーのユーザー プリンシパル名 (UPN) またはユーザー ID を使用して、次のコマンドレットを実行します。 `Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
    * 組織内のすべてのユーザーのパスワードを無期限に設定するには、次のコマンドレットを実行します。 `Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
+
+   > [!WARNING]
+   > `-PasswordNeverExpires $true` を設定した場合、パスワードは引き続き、`pwdLastSet` 属性に基づいて使用時間が計測されます。 つまり、パスワードを無期限に設定した場合でも、`pwdLastSet` に基づいて 90 日以上が経過し `-PasswordNeverExpires $false` を変更したときは、`pwdLastSet` が 90 日よりも古いすべてのパスワードを次回のログオン時に変更する必要があります。 これは多数のユーザーに影響を与える可能性があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

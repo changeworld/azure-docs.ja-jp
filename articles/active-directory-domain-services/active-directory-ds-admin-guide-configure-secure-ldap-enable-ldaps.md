@@ -4,7 +4,7 @@ description: "Azure AD ドメイン サービスの管理対象ドメインに�
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 11/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 245ad4948cf4b8c2d44a0dafb61923b0b4267856
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2ef65bb4dc8e12a18265ae8264def2bb32e191f
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure Active Directory Domain Services の管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 
@@ -48,8 +48,8 @@ ms.lasthandoff: 10/11/2017
     ![セキュリティで保護された LDAP を有効にする](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
 5. 既定では、セキュリティで保護された LDAP を利用し、インターネット経由で管理対象ドメインにアクセスする機能は無効になっています。 **[インターネット経由での Secure LDAP アクセスを許可]** を **[有効にする]** に切り替えます。 
 
-    > [!TIP]
-    > インターネット経由でのセキュリティで保護された LDAP アクセスを有効にした場合は、必要なソース IP アドレス範囲へのアクセスを停止するように NSG を設定することをお勧めします。 [LDAPS を利用し、インターネット経由で管理対象ドメインにアクセスする機能を停止する](#task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet)手順を参照してください。
+    > [!WARNING]
+    > インターネット経由での Secure LDAP アクセスを有効にすると、インターネットを介してパスワードのブルート フォース攻撃を受けやすくなります。 そのため、必要なソース IP アドレス範囲へのアクセスをロック ダウンするように NSG を設定することをお勧めします。 [LDAPS を利用し、インターネット経由で管理対象ドメインにアクセスする機能を停止する](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet)手順を参照してください。
     >
 
 6. **[Secure LDAP 証明書が入った .PFX ファイル]** に続くフォルダー アイコンをクリックします。 セキュリティで保護された LDAP アクセスで管理対象ドメインにアクセスするために、Secure LDAP 証明書が入った .PFX ファイルのパスを指定します。
@@ -79,7 +79,7 @@ ms.lasthandoff: 10/11/2017
 
 管理対象ドメインに対してインターネット経由でのセキュリティで保護された LDAP アクセスを有効にしたら、クライアント コンピューターがこの管理対象ドメインを見つけられるようにするために、DNS を更新する必要があります。 タスク 3 の最後で、**[プロパティ]** タブの **[LDAPS アクセスのための外部 IP アドレス]** に外部 IP アドレスが表示されます。
 
-管理対象ドメインの DNS 名 (例: ldaps.contoso100.com) がこの外部 IP アドレスをポイントするように、外部 DNS プロバイダーを構成します。 この例では、次の DNS エントリを作成する必要があります。
+管理対象ドメインの DNS 名 (例: ldaps.contoso100.com) がこの外部 IP アドレスをポイントするように、外部 DNS プロバイダーを構成します。 この例では、次の DNS エントリを作成します。
 
     ldaps.contoso100.com  -> 52.165.38.113
 
@@ -91,9 +91,9 @@ ms.lasthandoff: 10/11/2017
 >
 
 
-## <a name="task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet"></a>タスク 5 - LDAPS を利用し、インターネット経由で管理対象ドメインにアクセスする機能を停止する
+## <a name="task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>タスク 5 - インターネット経由での管理対象ドメインへの LDAPS アクセスをロック ダウンする
 > [!NOTE]
-> **オプションのタスク** - インターネット経由で LDAPS を使用して管理対象ドメインにアクセスする機能を有効にしていない場合、この構成タスクは飛ばしてください。
+> インターネット経由での管理対象ドメインへの LDAPS アクセスを有効にしていない場合は、この構成タスクをスキップしてください。
 >
 >
 
@@ -101,13 +101,28 @@ ms.lasthandoff: 10/11/2017
 
 LDAPS アクセスのために管理対象ドメインをインターネットにさらす行為はセキュリティ上の脅威となります。 セキュリティで保護されている LDAP に使用されるポート (ポート 636) でインターネットから管理対象ドメインに到達できます。 そのため、管理対象ドメインへのアクセスを特定の既知の IP アドレスに制限できます。 セキュリティを強化する目的で、ネットワーク セキュリティ グループ (NSG) を作成し、それと Azure AD Domain Services を有効にしたサブネットを関連付けます。
 
-次の表は NSG のサンプルです。このように設定し、セキュリティで保護された LDAP を利用してインターネット経由でアクセスする機能を停止できます。 この NSG には、指定した IP アドレスから TCP ポート 636 経由で入ってくる LDAPS アクセスのみを許可するルール セットが含まれています。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。 指定した IP アドレスからインターネット経由で入ってくる LDAPS アクセスを許可する NSG ルールには、DenyAll NSG ルールより高い優先度が設定されています。
+次の表は NSG のサンプルです。このように設定し、セキュリティで保護された LDAP を利用してインターネット経由でアクセスする機能を停止できます。 この NSG には、IP アドレスの指定したセットから TCP ポート 636 経由で入ってくる Secure LDAP アクセスのみを許可する一連のルール が含まれています。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。 指定した IP アドレスからインターネット経由で入ってくる LDAPS アクセスを許可する NSG ルールには、DenyAll NSG ルールより高い優先度が設定されています。
 
 ![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
 **詳細** - [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
 
 <br>
+
+
+## <a name="troubleshooting"></a>トラブルシューティング
+Secure LDAP を使用した管理対象ドメインへの接続に問題がある場合は、次のトラブルシューティングの手順を実行してください。
+* Secure LDAP 証明書の発行者チェーンがクライアントで信頼されていることを確認します。 信頼を確立するために、信頼されたルート証明書ストアにルート証明機関を追加することもできます。
+* Secure LDAP 証明書が、新しい Windows コンピューターで既定では信頼されていない中間証明機関によって発行されたものではないことを確認します。
+* LDAP クライアント (ldp.exe など) が、IP アドレスではなく、DNS 名を使用して Secure LDAP エンドポイントに接続していることを確認します。
+* 管理対象ドメインで Secure LDAP のパブリック IP アドレスに解決される、LDAP クライアントの接続先の DNS 名を確認します。
+* 管理対象ドメインの Secure LDAP 証明書の "サブジェクト" 属性または "サブジェクトの別名" 属性に、上記の DNS 名が含まれていることを確認します。
+
+Secure LDAP を使用した管理対象ドメインへの接続の問題が解決しない場合は、支援を得るために[製品チームに連絡](active-directory-ds-contact-us.md)してください。 問題を適切に診断できるように、次の情報を含めます。
+* ldp.exe が接続に失敗したことを示しているスクリーンショット。
+* Azure AD テナント ID と、管理対象ドメインの DNS ドメイン名。
+* バインドしようとしている正確なユーザー名。
+
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)

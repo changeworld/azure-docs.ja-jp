@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: e8ac4bef5af7a98857278b82304bb58f1ac6e342
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 091446fd45b09913dee70dbb4c7e5ebbca02819b
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -81,7 +81,7 @@ Try Azure Cosmos DB サブスクリプションは、Azure Portal で、ユー�
 
 Try Azure Cosmos DB サブスクリプションには、次の条件が適用されます。
 
-* SQL (DocumentDB API)、Gremlin (Graph API)、Table アカウントのサブスクリプションあたり 1 つのコンテナー。
+* SQL (DocumentDB API)、Gremlin (Graph API)、および Table API アカウントのサブスクリプションあたり 1 つのコンテナー。
 * MongoDB アカウントのサブスクリプションあたり最大 3 つのコレクション。
 * 10 GB のストレージ容量。
 * グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です。
@@ -181,9 +181,7 @@ MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、
 ## <a name="develop-with-the-table-api-preview"></a>Table API (プレビュー) を使用した開発
 
 ### <a name="terms"></a>用語 
-Azure Cosmos DB: Table API (プレビュー) は、テーブルをサポートするためにビルド 2017 で発表された、Azure Cosmos DB が提供する Premium サービスを指します。 
-
-Standard Table SDK は、従来の Azure Storage Table SDK です。 
+Azure Cosmos DB Table API (プレビュー) は、ビルド 2017 で発表された、Azure Cosmos DB が提供するテーブル データ モデル向け Premium サービスを指します。 
 
 ### <a name="how-can-i-use-the-new-table-api-preview-offering"></a>新しい Table API (プレビュー) を使用するにはどうすればよいですか? 
 Azure Cosmos DB Table API は [Azure Portal][azure-portal] で利用できます。 まず、Azure サブスクリプションにサインアップする必要があります。 サインアップしたら、Azure サブスクリプションに Azure Cosmos DB Table API アカウントを追加し、アカウントにテーブルを追加できます。 
@@ -191,7 +189,7 @@ Azure Cosmos DB Table API は [Azure Portal][azure-portal] で利用できます
 プレビュー期間は、.NET で [SDK](../cosmos-db/table-sdk-dotnet.md) を使用できます。まず、[Table API](../cosmos-db/create-table-dotnet.md) のクイック スタートを完了してください。
 
 ### <a name="do-i-need-a-new-sdk-to-use-the-table-api-preview"></a>Table API (プレビュー) を使用するには新しい SDK が必要ですか? 
-はい。NuGet で [Windows Azure Storage Premium Table (プレビュー) SDK](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable) を入手できます。 追加情報については、[Azure Cosmos DB Table .NET API のダウンロードとリリース ノート](https://github.com/Microsoft/azure-docs-pr/cosmos-db/table-sdk-dotnet.md)のページをご覧ください。 
+はい。[Windows Azure Storage Premium Table (プレビュー) SDK](https://www.nuget.org/packages/WindowsAzure.Storage-PremiumTable) は NuGet で入手でき、Azure Cosmos DB Table API を使用する際に必要です。 追加情報については、[Azure Cosmos DB Table .NET API のダウンロードとリリース ノート](https://github.com/Microsoft/azure-docs-pr/cosmos-db/table-sdk-dotnet.md)のページをご覧ください。 
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>SDK やバグに関するフィードバックを提供するにはどうすればよいですか?
 次のいずれかの方法でフィードバックをお寄せください。
@@ -219,8 +217,8 @@ DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=
     </appSettings>
 
 
-### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-standard-table-sdk"></a>既存の Standard Table SDK を使用する顧客を対象とする変更はありますか?
-なし。 既存の Standard Table SDK を使用する既存または新規のお客様を対象とする変更はありません。 
+### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdk"></a>既存の Azure Table Storage SDK を使用する顧客を対象とする変更はありますか?
+なし。 既存の Azure Table Storage SDK を使用する既存または新規のお客様を対象とする変更はありません。 
 
 ### <a name="how-do-i-view-table-data-that-is-stored-in-azure-cosmos-db-for-use-with-the-table-api-review"></a>Table API (プレビュー) で使用するために、Azure Cosmos DB に格納されているテーブル データを表示するにはどうすればよいですか? 
 Azure Portal を使用してデータを参照できます。 また、Table API (プレビュー) コードまたは次の回答で説明するツールを使用することもできます。 
@@ -239,11 +237,11 @@ Table API (プレビュー) 用の PowerShell と Azure CLI のサポートを�
 ### <a name="is-the-odata-query-model-supported-for-entities"></a>エンティティの OData クエリ モデルはサポートされていますか? 
 はい。Table API (プレビュー) では、OData クエリと LINQ クエリをサポートしています。 
 
-### <a name="can-i-connect-to-the-standard-azure-table-and-the-new-premium-table-api-preview-side-by-side-in-the-same-application"></a>同じアプリケーションで Standard Azure Table と新しい Premium Table API (プレビュー) に同時に接続できますか? 
+### <a name="can-i-connect-to-the-azure-table-storage-and-the-azure-cosmos-db-table-api-preview-side-by-side-in-the-same-application"></a>同じアプリケーションで Azure Table Storage と Azure Cosmos DB Table API (プレビュー) に同時に接続できますか? 
 はい。同時に接続するには、CloudTableClient の 2 つのインスタンスを作成し、各インスタンスで接続文字列を使用して独自の URI を参照します。
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-new-offering"></a>既存の Azure Table Storage アプリケーションをこの新しいサービスに移行するにはどうすればよいですか?
-既存の Table Storage データで新しい Table API を利用する場合は、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) までご連絡ください。 
+既存の Table Storage データで新しい Azure Cosmos DB Table API サービスを利用する場合は、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) までご連絡ください。 
 
 ### <a name="what-is-the-roadmap-for-this-service-and-when-will-you-offer-other-standard-table-api-functionality"></a>このサービスのロードマップを教えてください。Standard Table API の他の機能はいつ提供されますか?
 GA に向けて、SAS トークン、ServiceContext、統計、クライアント側暗号化、分析などの機能のサポートを追加する予定です。 [UserVoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api) でフィードバックをお寄せください。 
@@ -252,7 +250,7 @@ GA に向けて、SAS トークン、ServiceContext、統計、クライアン�
 Azure Cosmos DB は、水平スケーリングを使用して無制限のストレージを提供するように設計されています。 このサービスは、ストレージを監視し、ストレージを効率的に増やすことができます。 
 
 ### <a name="how-do-i-monitor-the-table-api-preview-offering"></a>Table API (プレビュー) を監視するにはどうすればよいですか?
-Table API (プレビュー) の**メトリック** ウィンドウを使用して、要求とストレージ使用量を監視できます。 
+Azure Portal で Table API (プレビュー) の **[メトリック]** ウィンドウを使用して、要求とストレージ使用量を監視できます。 
 
 ### <a name="how-do-i-calculate-the-throughput-i-require"></a>必要なスループットを計算するにはどうすればよいですか?
 容量見積もりツールを使用して、操作に必要な TableThroughput を計算できます。 詳細については、「[Estimate Request Units and Data Storage (要求ユニットとデータ ストレージの見積もり)](https://www.documentdb.com/capacityplanner)」をご覧ください。 一般に、エンティティを JSON として表し、操作数を指定します。 
@@ -264,16 +262,16 @@ Table API (プレビュー) の**メトリック** ウィンドウを使用し�
 DefaultEndpointsProtocol=https;AccountName=localhost;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==;TableEndpoint=https://localhost:8081`. 
 ```
 
-### <a name="can-my-existing-application-work-with-the-table-api-preview"></a>既存のアプリケーションを Table API (プレビュー) で動作させることはできますか? 
-新しい Table API (プレビュー) の表面領域は、.NET API での作成、削除、更新、クエリの各操作で既存の Azure Standard Table SDK と互換性があります。 Table API (プレビュー) ではパーティション キーと行キーの両方が必要となるため、行キーがあることを確認してください。 また、このサービスの GA に向けて、SDK のサポートをさらに追加する予定です。
+### <a name="can-my-existing-azure-table-storage-application-work-with-the-table-api-preview"></a>既存の Azure Table Storage アプリケーションは Table API (プレビュー) で動作できますか? 
+新しい Table API (プレビュー) の外部からアクセスできる領域は、.NET API での作成、削除、更新、クエリの各操作で既存の Azure Table Storage SDK と互換性があります。 Table API (プレビュー) ではパーティション キーと行キーの両方が必要となるため、行キーがあることを確認してください。 また、このサービスの GA に向けて、SDK のサポートをさらに追加する予定です。
 
-### <a name="do-i-need-to-migrate-my-existing-azure-table-based-applications-to-the-new-sdk-if-i-do-not-want-to-use-the-table-api-preview-features"></a>Table API (プレビュー) の機能を使用しない場合、Azure テーブル ベースの既存のアプリケーションを新しい SDK に移行する必要はありますか?
-いいえ。中断することなく、Standard Table 資産を作成したり、既存の資産を使用したりできます。 ただし、新しい Table API (プレビュー) を使用しない場合、自動インデックス、追加の整合性オプション、またはグローバル分散によるメリットは得られません。 
+### <a name="do-i-need-to-migrate-my-existing-azure-table-storage-applications-to-the-new-sdk-if-i-do-not-want-to-use-the-table-api-preview-features"></a>Table API (プレビュー) の機能を使用しない場合、既存の Azure Table Storage アプリケーションを新しい SDK に移行する必要はありますか?
+いいえ。中断することなく、Azure Table Storage 資産を作成したり、既存の Azure Table Storage 資産を使用したりできます。 ただし、新しい Table API (プレビュー) を使用しない場合、自動インデックス、追加の整合性オプション、またはグローバル分散によるメリットは得られません。 
 
-### <a name="how-do-i-add-replication-of-the-data-in-the-premium-table-api-preview-across-multiple-regions-of-azure"></a>Premium Table API (プレビュー) で、Azure の複数のリージョン間でのデータのレプリケーションを追加するにはどうすればよいですか?
+### <a name="how-do-i-add-replication-of-the-data-in-the-table-api-preview-across-multiple-regions-of-azure"></a>Table API (プレビュー) で、Azure の複数のリージョン間でのデータのレプリケーションを追加するにはどうすればよいですか?
 Azure Cosmos DB ポータルの[グローバル レプリケーション設定](tutorial-global-distribution-documentdb.md#portal)を使用して、アプリケーションに適したリージョンを追加できます。 グローバル分散型のアプリケーションを開発するには、低待機時間の読み取りを実現するために、PreferredLocation 情報をローカル リージョンに設定したアプリケーションを追加する必要があります。 
 
-### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-premium-table-api-preview"></a>Premium Table API (プレビュー) でアカウントのプライマリ書き込みリージョンを変更するにはどうすればよいですか?
+### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api-preview"></a>Table API (プレビュー) でアカウントのプライマリ書き込みリージョンを変更するにはどうすればよいですか?
 Azure Cosmos DB のグローバル レプリケーション ポータル ウィンドウを使用してリージョンを追加し、必要なリージョンにフェールオーバーできます。 手順については、[複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事をご覧ください。 
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>データを分散するときに低待機時間を実現するために、優先読み取りリージョンを構成するにはどうすればよいですか? 
@@ -286,26 +284,26 @@ Table API (プレビュー) では、既定でセッションの整合性が適�
 
 既定では、Azure Standard Table はリージョン内では厳密な整合性を提供し、セカンダリの場所では最終的な整合性を提供します。 
 
-### <a name="does-azure-cosmos-db-offer-more-consistency-levels-than-standard-tables"></a>Azure Cosmos DB では、Standard Table よりも多くの整合性レベルが提供されるのですか?
+### <a name="does-the-azure-cosmos-db-table-api-offer-more-consistency-levels-than-azure-table-storage"></a>Azure Cosmos DB Table API では、Azure Table Storage よりも多くの整合性レベルが提供されますか?
 はい。Azure Cosmos DB の分散特性のメリットを得る方法については、「[一貫性レベル](consistency-levels.md)」をご覧ください。 整合性レベルは保証の対象となるため、安心して使用できます。 詳細については、「[Azure Cosmos DB の機能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)」をご覧ください。
 
 ### <a name="when-global-distribution-is-enabled-how-long-does-it-take-to-replicate-the-data"></a>グローバル分散を有効にした場合、データのレプリケーションにどのくらいの時間がかかりますか?
-データはローカル リージョンで永続的にコミットされ、ほんの数ミリ秒ですぐに他のリージョンにプッシュされます。 このレプリケーションは、データ センターのラウンドトリップ時間 (RTT) にのみ依存します。 Azure Cosmos DB のグローバル分散機能の詳細については、[Azure Cosmos DB: Azure のグローバル分散データベース サービス](distribute-data-globally.md)に関する記事をご覧ください。
+Azure Cosmos DB では、データはローカル リージョンで永続的にコミットされ、わずか数ミリ秒ですぐに他のリージョンにプッシュされます。 このレプリケーションは、データ センターのラウンドトリップ時間 (RTT) にのみ依存します。 Azure Cosmos DB のグローバル分散機能の詳細については、[Azure Cosmos DB: Azure のグローバル分散データベース サービス](distribute-data-globally.md)に関する記事をご覧ください。
 
 ### <a name="can-the-read-request-consistency-level-be-changed"></a>読み取り要求の整合性レベルを変更することはできますか?
 Azure Cosmos DB では、コンテナー レベル (テーブル) で整合性レベルを設定できます。 レベルを変更するには、SDK を使用して、app.config ファイルで TableConsistencyLevel キーの値を指定します。 指定できる値は、Strong、Bounded Staleness、Session、Consistent Prefix、Eventual です。 詳細については、「[Azure Cosmos DB の調整可能なデータの一貫性レベル](consistency-levels.md)」をご覧ください。 基本的な考え方として、要求の整合性レベルは、テーブルの設定よりも高いレベルに設定することはできません。 たとえば、テーブルの整合性レベルを Eventual (最終的) に設定し、要求の整合性レベルを Strong (厳密) に設定することはできません。 
 
-### <a name="how-does-the-premium-table-api-preview-account-handle-failover-if-a-region-goes-down"></a>リージョンがダウンした場合、Premium Table API (プレビュー) アカウントではフェールオーバーにどのように対処するのでしょうか? 
-Premium Table API (プレビュー) では、Azure Cosmos DB のグローバル分散型プラットフォームを利用します。 アプリケーションがデータ センターのダウンタイムを許容できるようにするには、Azure Cosmos DB ポータルでアカウントのリージョンを少なくとももう 1 つ有効にします ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事を参照)。 ポータルを使用してリージョンの優先順位を設定できます ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事を参照)。 
+### <a name="how-does-the-table-api-preview-account-handle-failover-if-a-region-goes-down"></a>リージョンがダウンした場合、Table API (プレビュー) アカウントではフェールオーバーにどのように対処するのでしょうか? 
+Azure Cosmos DB Table API (プレビュー) では、Azure Cosmos DB のグローバル分散型プラットフォームを利用します。 アプリケーションがデータ センターのダウンタイムを許容できるようにするには、Azure Cosmos DB ポータルでアカウントのリージョンを少なくとももう 1 つ有効にします ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事を参照)。 ポータルを使用してリージョンの優先順位を設定できます ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事を参照)。 
 
 アカウントのリージョンを必要な数だけ追加し、フェールオーバーの優先順位を指定してフェールオーバー先を制御できます。 データベースを使用するには、そのリージョンでもアプリケーションを提供する必要があります。 そうすれば、ダウンタイムが発生しなくなります。 クライアント SDK は自動回帰します。 つまり、ダウンしているリージョンを検出すると、新しいリージョンに自動的にフェールオーバーできます。
 
-### <a name="is-the-premium-table-api-preview-enabled-for-backups"></a>Premium Table API (プレビュー) ではバックアップは有効になっていますか?
-はい。Premium Table API (プレビュー) では、バックアップに Azure Cosmos DB のプラットフォームを利用します。 バックアップは自動的に作成されます。 詳細については、[Azure Cosmos DB でのオンライン バックアップと復元](online-backup-and-restore.md)に関する記事をご覧ください。
+### <a name="is-the-table-api-preview-enabled-for-backups"></a>Table API (プレビュー) ではバックアップは有効になっていますか?
+はい。Azure Cosmos DB Table API (プレビュー) では、バックアップに Azure Cosmos DB のプラットフォームを利用します。 バックアップは自動的に作成されます。 詳細については、[Azure Cosmos DB でのオンライン バックアップと復元](online-backup-and-restore.md)に関する記事をご覧ください。
 
  
 ### <a name="does-the-table-api-preview-index-all-attributes-of-an-entity-by-default"></a>Table API (プレビュー) では、既定でエンティティのすべての属性のインデックスが作成されるのですか?
-はい。エンティティのすべての属性のインデックスが既定で作成されます。 詳細については、[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)に関する記事をご覧ください。 
+はい。エンティティのすべての属性のインデックスが、Azure Cosmos DB によって既定で作成されます。 詳細については、[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)に関する記事をご覧ください。 
 
 ### <a name="does-this-mean-i-do-not-have-to-create-multiple-indexes-to-satisfy-the-queries"></a>つまり、クエリを満たすために複数のインデックスを作成する必要はないということですか? 
 はい。Azure Cosmos DB はすべての属性の自動インデックス作成機能を備えています。スキーマ定義は不要です。 この自動化により、開発者はインデックスの作成と管理ではなく、アプリケーションに注力できるようになります。 詳細については、[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)に関する記事をご覧ください。
@@ -358,16 +356,16 @@ app.config ファイルに JSON 形式の文字列で指定します。
 ### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>新しくプロビジョニングされたテーブルには、既定の TableThroughput が設定されるのですか?
 はい。app.config で TableThroughput を上書きしておらず、Azure Cosmos DB であらかじめ作成されているコンテナーを使用していない場合、スループットが 400 に設定されたテーブルが作成されます。
  
-### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-standard-table-api"></a>Standard Table API の既存の顧客を対象とする価格の変更はありますか?
-なし。 Standard Table API の既存のお客様を対象とする価格の変更はありません。 
+### <a name="is-there-any-change-of-pricing-for-existing-customers-of-azure-table-storage"></a>Azure Table Storage の既存の顧客を対象とする価格の変更はありますか?
+なし。 Azure Table Storage の既存のお客様を対象とする価格の変更はありません。 
 
 ### <a name="how-is-the-price-calculated-for-the-table-api-preview"></a>Table API (プレビュー) の料金はどのように計算されますか? 
-料金は、割り当てられた TableThroughput によって異なります。 
+Azure Cosmos DB Table API (プレビュー) の料金は、割り当てられた TableThroughput によって異なります。 
 
-### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-preview-offering"></a>Table API (プレビュー) では、テーブルの調整にどのように対処すればよいですか? 
+### <a name="how-do-i-handle-any-throttling-in-table-api-preview-offering"></a>Table API (プレビュー) サービスでは、調整にどのように対処すればよいですか? 
 要求レートが基になるコンテナーのプロビジョニング スループットの容量を超えると、エラーが発生し、SDK は再試行ポリシーを適用して呼び出しを再試行します。
 
-### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-premium-table-api-preview-offering-of-azure-cosmos-db"></a>Azure Cosmos DB の Premium Table API (プレビュー) を利用する際に、PartitionKey と RowKey 以外にスループットを選択する必要があるのはなぜですか?
+### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-azure-cosmos-db-table-api-preview"></a>Azure Cosmos DB Table API (プレビュー) を利用する際に、PartitionKey と RowKey 以外にスループットを選択する必要があるのはなぜですか?
 Azure Cosmos DB では、app.config ファイルにコンテナーのスループットが指定されていない場合、既定のスループットが設定されます。 
 
 Azure Cosmos DB では、操作に上限を設定してパフォーマンスと待機時間を保証します。 この保証は、エンジンがテナントの操作にガバナンスを適用できる場合に可能になります。 TableThroughput を設定すると、プラットフォームでこの容量が予約され、操作が正常に完了することが保証されるので、保証されたスループットと待機時間が確保されます。 
@@ -376,17 +374,17 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 ### <a name="azure-storage-sdk-has-been-very-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-new-azure-cosmos-db-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>データの保存にしか料金を支払っておらず、クエリを実行することはほとんどないため、Azure Storage SDK は非常に安価でした。 新しい Azure Cosmos DB では、トランザクションを 1 つも実行していない場合や何も保存していない場合でも課金されているようです。 説明していただけますか?
 
-Azure Cosmos DB は、可用性、待機時間、スループットが保証された、グローバル分散型の SLA ベースのシステムとして設計されています。 他のシステムのスループットとは異なり、Azure Cosmos DB でスループットを予約すると、そのスループットが保証されます。 Azure Cosmos DB には、セカンダリ インデックスやグローバル分散など、お客様から要望があった追加機能が用意されています。 プレビュー期間中はスループットに最適化されたモデルを提供していますが、最終的には、お客様のニーズを満たすためにストレージに最適化されたモデルを提供する予定です。 
+Azure Cosmos DB は、可用性、待機時間、スループットが保証された、グローバル分散型の SLA ベースのシステムとして設計されています。 他のシステムのスループットとは異なり、Azure Cosmos DB でスループットを予約すると、そのスループットが保証されます。 Azure Cosmos DB には、セカンダリ インデックスやグローバル分散など、お客様から要望があった追加機能が用意されています。  
 
-### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-table-storage-with-the-table-api-preview-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Table Storage にデータを取り込んだときに、(パーティションが満杯であることを示す) "クォータが上限に達した" ことを通知するメッセージが表示されたことは一度もありませんでした。 Table API (プレビュー) では、このメッセージが表示されました。 このサービスには制限があり、既存のアプリケーションを変更しなければならないのでしょうか?
+### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-preview-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Azure Table Storage にデータを取り込んだときに、(パーティションがいっぱいであることを示す) "クォータが上限に達した" ことを通知するメッセージが表示されたことは一度もありませんでした。 Table API (プレビュー) では、このメッセージが表示されました。 このサービスには制限があり、既存のアプリケーションを変更しなければならないのでしょうか?
 
 Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 保証された Premium パフォーマンスを確保するために、データ サイズとインデックスが管理可能であり、スケーラブルであることを確認してください。 パーティション キーごとのエンティティ数または項目数に 10 GB の制限を設けているのは、検索やクエリの優れたパフォーマンスを確実に提供するためです。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。Azure Storage でもアプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-new-table-api-preview"></a>新しい Table API (プレビュー) で PartitionKey と RowKey が必要なのはそのためですか? 
-はい。 Table API (プレビュー) の表面領域は Table Storage SDK の表面領域とほぼ同じであるため、パーティション キーによってデータを効率的に分散させることができます。 行キーはそのパーティション内で一意です。 行キーが存在する必要があり、Standard SDK の場合と同様に、行キーを null にすることはできません。 RowKey の長さは 255 バイト、PartitionKey の長さは 100 バイトです (間もなく 1 KB に増えます)。 
+はい。 Table API (プレビュー) の外部からアクセスできる領域は、Azure Table Storage SDK のその領域とほぼ同じであるため、パーティション キーによってデータを効率的に分散させることができます。 行キーはそのパーティション内で一意です。 行キーが存在する必要があり、Standard SDK の場合と同様に、行キーを null にすることはできません。 RowKey の長さは 255 バイト、PartitionKey の長さは 100 バイトです (間もなく 1 KB に増えます)。 
 
 ### <a name="what-are-the-error-messages-for-the-table-api-preview"></a>Table API (プレビュー) のエラー メッセージはどのようなものですか?
-このプレビューは Standard Table と互換性があるため、ほとんどのエラーが Standard Table のエラーにマップされます。 
+このプレビューは Azure Table Storage と互換性があるため、ほとんどのエラーが標準テーブルのエラーにマップされます。 
 
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api-preview"></a>Table API (プレビュー) で多数のテーブルを次々に作成しようとすると調整が行われるのはなぜですか?
 Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証する SLA ベースのシステムです。 Azure Cosmos DB はプロビジョニングされるシステムであるため、これらの要件を保証するためにリソースが予約されています。 テーブルを次々に作成すると、その作成ペースが検出され、調整が行われます。 テーブルの作成ペースを確認し、1 分あたり 5 つ未満に抑えることをお勧めします。 Table API (プレビュー) はプロビジョニングされるシステムであることに注意してください。 プロビジョニングした時点から料金が発生します。 
@@ -411,7 +409,7 @@ Azure Cosmos DB は、Microsoft 社内の大規模なアプリケーションを
 
 そのときからずっと Microsoft は新しい機能を追加してきており、重要な新機能も導入しています。 その結果誕生したのが Azure Cosmos DB です。 今回 Azure Cosmos DB がリリースされたことを受けて、DocumentDB をご利用のお客様は、そのデータも含め、Azure Cosmos DB に自動的かつシームレスに移行します。 これらの機能は、核となるデータベース エンジンの領域のほか、グローバル分散、弾力性のあるスケーラビリティ、業界最先端の包括的な SLA に及んでいます。 具体的には、一般的なあらゆるデータ モデル、型システム、API を、Azure Cosmos DB の基になるデータ モデルに効率的にマップするために、Azure Cosmos DB データベース エンジンを進化させました。 
 
-この取り組みの成果として、開発者向けに [Gremlin](../cosmos-db/graph-introduction.md) と [Table Storage API](../cosmos-db/table-introduction.md) が新たにサポートされるようになりました。 そして、これはまだ始まりにすぎません。 世界規模でパフォーマンスとストレージをさらに進歩させながら、他の一般的な API や新しいデータ モデルを徐々に追加していく予定です。 
+この取り組みの成果として、開発者向けに [Gremlin](../cosmos-db/graph-introduction.md) と [Table API](../cosmos-db/table-introduction.md) が新たにサポートされるようになりました。 そして、これはまだ始まりにすぎません。 世界規模でパフォーマンスとストレージをさらに進歩させながら、他の一般的な API や新しいデータ モデルを徐々に追加していく予定です。 
 
 重要なことですが、DocumentDB の [SQL Dialect](../documentdb/documentdb-sql-query.md) は、基になる Azure Cosmos DB でサポートされる多数の API の 1 つにすぎません。 Azure Cosmos DB のように、完全に管理されたサービスを使用する開発者にとって、そのサービスとの唯一のインターフェイスは、サービスによって公開されている API です。 DocumentDB を既に利用されているお客様の場合、実際には何も変わりません。 Azure Cosmos DB では、DocumentDB で提供されるものとまったく同じ SQL API を利用できます。 現在 (そして今後も)、以前は利用できなかった他の機能を利用できます。 
 

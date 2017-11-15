@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0ed612a0e2101397fb1074de61db07d2361f8463
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: af184574bdfa7d3a11baf75d8cdfbf80f1544dde
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/01/2017
 
 サンプリングによって破棄されたデータ ポイントは、 [連続エクスポート](app-insights-export-telemetry.md)などの Application Insights の機能では使用できません。
 
-SDK ベースのアダプティブ サンプリングまたは固定レート サンプリングの実行中は、インジェスト サンプリングは動作しません。 SDK のサンプリング レートが 100% 未満であれば、設定したインジェスト サンプリング レートは無視されます。
+SDK ベースのアダプティブ サンプリングまたは固定レート サンプリングの実行中は、インジェスト サンプリングは動作しません。 Visual Studio で ASP.NET SDK が有効になっているとき、または Status Monitor を使用しているときは、アダプティブ サンプリングが既定で有効になっていることに注意してください。インジェスト サンプリングは無効になっています。 SDK のサンプリング レートが 100% 未満であれば、設定したインジェスト サンプリング レートは無視されます。
 
 > [!WARNING]
 > タイルに表示される値は、インジェスト サンプリングに設定した値を示します。 SDK サンプリングの実行中は、この値は実際のサンプリング レートを表しません。

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 11/02/2017
 ms.author: anandy
-ms.openlocfilehash: 6822320c92d106d28607289a90f2f08a51e04070
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc5ef81704423c5a1bc136fb2d51d79a9265e20
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect とフェデレーション
 Azure Active Directory (Azure AD) Connect を使用すると、オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD でフェデレーションを構成できます。 フェデレーション サインインでは、ユーザーはオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインインできます。また、企業ネットワーク上では、パスワードを再度入力する必要はありません。 AD FS によるフェデレーション オプションを使用すると、AD FS の新しいインストールをデプロイすることも、Windows Server 2012 R2 ファームの既存のインストールを指定することもできます。
@@ -40,6 +40,7 @@ Azure Active Directory (Azure AD) Connect を使用すると、オンプレミ�
 | [新しい AD FS WAP サーバーの追加](active-directory-aadconnect-federation-management.md#addwapserver) |初期インストール後に、追加の Web アプリケーション プロキシ (WAP) サーバーで AD FS ファームを拡張します。 |
 | [新しいフェデレーション ドメインの追加](active-directory-aadconnect-federation-management.md#addfeddomain) |Azure AD とフェデレーションする別のドメインを追加します。 |
 | [SSL 証明書の更新](active-directory-aadconnectfed-ssl-update.md)| AD FS ファームの SSL 証明書を更新します。 |
+| [Office 365 および Azure AD 用のフェデレーション証明書の更新](active-directory-aadconnect-o365-certs.md)|Azure AD で O365 証明書を更新します。|
 | **他のフェデレーション構成** | |
 | [Azure AD の複数のインスタンスと AD FS の単一インスタンスのフェデレーションを行う](active-directory-aadconnectfed-single-adfs-multitenant-federation.md) | 複数の Azure AD と単一の AD FS ファームとのフェデレーション| 
 | [カスタムの会社のロゴまたはイラストの追加](active-directory-aadconnect-federation-management.md#customlogo) |AD FS サインイン ページに表示されるカスタム ロゴを指定して、サインイン エクスペリエンスを変更します。 |

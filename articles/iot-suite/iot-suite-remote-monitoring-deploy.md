@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: babcf20b58af1415e0e658e0a622cb056e34642b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 159397ba4fc93628acbf2bb53edf5eb88fd0cac7
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution"></a>リモート監視の事前構成済みソリューションをデプロイする
 
@@ -39,13 +39,17 @@ ms.lasthandoff: 10/31/2017
 
 お使いの Azure サブスクリプションに構成済みのソリューションをデプロイする前に、一部の構成オプションを選択する必要があります。
 
-1. Azure アカウントの資格情報を使用して [azureiotsuite.com](https://www.azureiotsuite.com) にログオンし、**[+]** をクリックしてソリューションを作成します。
+1. Azure アカウントの資格情報を使用して [azureiotsuite.com](https://www.azureiotsuite.com) にログオンし、**[+]** をクリックして新しいソリューションを作成します。
 
-1. **[リモート監視]** タイルで **[選択]** タイルを選択します。
+    ![新しいソリューションの作成](media/iot-suite-remote-monitoring-deploy/createnewsolution.png)
+
+1. **[Remote monitoring preview](リモート監視プレビュー)** タイルで **[選択]** をクリックします。
+
+    ![リモート監視の選択](media/iot-suite-remote-monitoring-deploy/remotemonitoring.png)
 
 1. **[Create Remote Monitoring soultion]\(リモート監視ソリューションの作成\)** ページでリモート監視の事前構成済みソリューションの **[ソリューション名]** を入力します。
 
-1. **[Basic]** または **[Enterprise]** デプロイを選択します。 しくみについて学ぶ、またはデモを実行するためにソリューションをデプロイする場合、**[Basic]** を選択すると費用を最小限に抑えられます。
+1. **[Basic]** または **[Standard]** デプロイを選択します。 しくみについて学ぶ、またはデモを実行するためにソリューションをデプロイする場合、**[Basic]** を選択すると費用を最小限に抑えられます。
 
 1. 言語として、**[Java]** または **[.NET]** のいずれかを選択します。 すべてのマイクロサービスは Java と .NET のいずれの実装としても利用できます。
 
@@ -55,6 +59,8 @@ ms.lasthandoff: 10/31/2017
 
 1. **[ソリューションの作成]** をクリックして、プロビジョニング プロセスを開始します。 通常、このプロセスの実行までに数分かかります。
 
+    ![リモート監視ソリューションの詳細](media/iot-suite-remote-monitoring-deploy/createform.png)
+
 トラブルシューティングの情報については、GitHub リポジトリの「[What to do when a deployment fails (デプロイが失敗した場合の対処方法)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide#what-to-do-when-a-deployment-fails)」をご覧ください。
 
 ## <a name="sign-in-to-the-preconfigured-solution"></a>構成済みソリューションへのサインイン
@@ -63,10 +69,14 @@ ms.lasthandoff: 10/31/2017
 
 1. **[プロビジョニングされたソリューション]** ページで、新しいリモート監視ソリューションを選択します。
 
+    ![新しいソリューションの選択](media/iot-suite-remote-monitoring-deploy/choosenew.png)
+
 1. 表示されるパネルで、リモート監視ソリューションに関する情報を確認できます。 **[ソリューション ダッシュボード]** を選択してリモート監視ソリューションに接続します。
 
     > [!NOTE]
     > 使用が済んだら、このパネルからリモート監視ソリューションを削除できます。
+
+    ![ソリューション パネル](media/iot-suite-remote-monitoring-deploy/solutionpanel.png)
 
 1. お使いのブラウザーで、リモート監視ソリューションのダッシュボードが表示されます。
 

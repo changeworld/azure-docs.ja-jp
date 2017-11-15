@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/10/2017
+ms.date: 10/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 4dc228ce8a7a73dd32bde77d529698bdcb7f490c
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 8cae0577d950e3968bc25083e59d637963e6b442
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 ## <a name="overview"></a>概要
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/12/2017
 | 最小メモリ (RAM) |8 GB <br> ファイル サーバーの場合、処理するファイル数が 200 万個未満の場合は 8 GB、200 ～ 400 万個の場合は 16 GB|
 | ディスク領域<sup>1</sup> |OS ディスク - 80 GB  <br></br>データ ディスク - 500 GB ～ 8 TB |
 | 最小ネットワーク インターフェイス数 |1 |
-| 最小インターネット帯域幅<sup>2</sup> |5 Mbps |
+| インターネット帯域幅 <sup>2</sup> |必要な最小帯域幅: 5 Mbps <br> 推奨する帯域幅: 100 Mbps <br> データ転送速度は、インターネットの帯域幅に対応します。 たとえば、100 GB のデータは、5 Mbps で転送すると 2 日かかります。するとバックアップが 1 日で完了しないため、バックアップ エラーを招く可能性があります。 100 Mbps の帯域幅では、100 GB のデータが 2.5 時間で転送できます。   |
 
 <sup>1</sup> - 仮想プロビジョニング対応
 
@@ -113,7 +113,7 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 > [!NOTE]
 > 
 > * デバイスの (送信元) IP は、常にすべてのクラウド対応ネットワーク インターフェイスに合わせて設定します。 
-> * 宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
+> * 宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
 > 
 > 
 
@@ -128,6 +128,5 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 | `https://*.partners.extranet.microsoft.com/*` |サポート パッケージ |
 | `http://*.data.microsoft.com ` |Windows の Telemetry Service (「[顧客満足度及び診断テレメトリのための更新プログラム](https://support.microsoft.com/en-us/kb/3068708)」を参照) |
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 * [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-virtual-array-deploy1-portal-prep.md)
-

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: billmath
-ms.openlocfilehash: d005042fffcf8f4ff99876961a55d254fd4fb2d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61652d97429336dad23ba14f7349e27bf52d33d7
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>既存の ADSync データベースを使用して Azure AD Connect をインストールする
 Azure AD Connect には、データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 以前は、Azure AD Connect をインストールしたときに、ADSync という新しいデータベースが常に作成されました。 Azure AD Connect バージョン 1.1.613.0 (以降) では、既存の ADSync データベースを指定して、Azure AD Connect をインストールするオプションがあります。
@@ -43,8 +43,8 @@ Azure AD Connect には、データを格納する SQL Server データベース
 
 次に進む前に気を付ける必要がある重要な注意事項があります。
 
-
 - ハードウェアと必須コンポーネントに Azure AD Connect をインストールするための前提条件と、Azure AD Connect のインストールに必要なアカウントとアクセス許可を確認します。 "既存のデータベースを使用する" モードを使用して Azure AD Connect をインストールするために必要なアクセス許可は、"カスタム" インストールと同じです。
+- 既存の ADSync データベースに対する Azure AD Connect のデプロイは、完全バージョンの SQL でのみサポートされています。 SQL Express LocalDB ではサポートされていません。 使用する LocalDB に既存の ADSync データベースがある場合は、まず ADSync データベース (LocalDB) をバックアップし、完全バージョンの SQL に復元する必要があります。 その後、この方法で復元されたデータベースに対して Azure AD Connect をデプロイします。
 - インストールに使用される Azure AD Connect のバージョンは、次の条件を満たす必要があります。
     - 1.1.613.0 以降かつ
     - ADSync データベースで最後に使用されていた Azure AD Connect のバージョン以降。 インストールに使用された Azure AD Connect バージョンが ADSync データベースで最後に使用されていたバージョンよりも新しい場合、完全な同期が必要になる可能性があります。  2 つのバージョン間でスキーマまたは同期規則の変更があった場合、完全な同期が必要です。 

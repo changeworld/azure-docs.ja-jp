@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 79d4084deb6d8c028918690c339c21c720e63594
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2879e72636ffc7603e29fe8f8233a065fe6f897c
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
-この記事では、[Azure App Service](../app-service/app-service-web-overview.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりすることができます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。
+この記事では、[Azure App Service](../app-service/app-service-web-overview.md) でアプリをバックアップから復元する方法を示します (バックアップについては「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください)。 リンクされたデータベースをオンデマンドで使用してアプリを以前の状態に戻したり、元のアプリのいずれかのバックアップに基づいて新しいアプリを作成したりできます。 Azure App Service では、次のデータベースのバックアップと復元がサポートされます。
 - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
 - [Azure Database for MySQL (プレビュー)](https://azure.microsoft.com/en-us/services/mysql)
 - [Azure Database for PostgreSQL (プレビュー)](https://azure.microsoft.com/en-us/services/postgres)
@@ -33,10 +33,10 @@ ms.lasthandoff: 10/11/2017
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>既存のバックアップからのアプリの復元
-1. Azure Portal にあるアプリの **[設定]** ブレードで、**[バックアップ]** をクリックして **[バックアップ]** ブレードを表示します。 続けて **[復元]** をクリックしてください。
+1. Azure Portal にあるアプリの **[設定]** ページで、**[バックアップ]** をクリックして **[バックアップ]** ページを表示します。 続けて **[復元]** をクリックしてください。
    
     ![今すぐ復元の選択][ChooseRestoreNow]
-2. **[復元]** ブレードで、最初にバックアップ ソースを選択します。
+2. **[復元]** ページで、最初にバックアップ ソースを選択します。
    
     ![](./media/web-sites-restore/021ChooseSource1.png)
    
@@ -59,9 +59,9 @@ ms.lasthandoff: 10/11/2017
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>ストレージ アカウントからバックアップをダウンロードまたは削除するには
-1. Azure Portal のメインの **[参照]** ブレードで、**[ストレージ アカウント]** を選択します。 既存のストレージ アカウントの一覧が表示されます。
-2. ダウンロードまたは削除するバックアップが含まれているストレージ アカウントを選択します。ストレージ アカウントのブレードが表示されます。
-3. ストレージ アカウントのブレードで、必要なコンテナーを選択します。
+1. Azure Portal のメインの **[参照]** ページで、**[ストレージ アカウント]** を選択します。 既存のストレージ アカウントの一覧が表示されます。
+2. ダウンロードまたは削除するバックアップが含まれているストレージ アカウントを選択します。 そのストレージ アカウントのページが表示されます。
+3. ストレージ アカウントのページで、必要なコンテナーを選択します。
    
     ![コンテナーの表示][ViewContainers]
 4. ダウンロードまたは削除するバックアップ ファイルを選択します。
@@ -72,12 +72,21 @@ ms.lasthandoff: 10/11/2017
 <a name="OperationLogs"></a>
 
 ## <a name="monitor-a-restore-operation"></a>復元操作の確認
-アプリの復元操作が成功したかどうかについて詳細を確認するには、Azure ポータルの **[アクティビティ ログ]** ブレードに移動します。  
+アプリの復元操作が成功したかどうかについて詳細を確認するには、Azure Portal の **[アクティビティ ログ]** ページに移動します。  
  
 
 下方向へスクロールし、目的の復元操作が見つかったらクリックして選択します。
 
-詳細ブレードに、復元操作に関連する利用可能な情報が表示されます。
+詳細ページに、復元操作に関連する利用可能な情報が表示されます。
+
+## <a name="automate-with-scripts"></a>スクリプトで自動化する
+
+[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、バックアップ管理をスクリプトで自動化できます。
+
+サンプルについては、以下を参照してください。
+
+- [Azure CLI のサンプル](app-service-cli-samples.md)
+- [Azure PowerShell のサンプル](app-service-powershell-samples.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

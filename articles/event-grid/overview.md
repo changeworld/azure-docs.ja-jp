@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/02/2017
 ms.author: babanisa
-ms.openlocfilehash: e798a1e751cb9e789bc479a6f842fb7f8f703bbf
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: a0bcc9650fda10c099887b74b408551b12cde667
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
@@ -50,6 +50,8 @@ Azure Event Grid の主要な特長を次に示します。
 * **高スループット** - 1 秒あたり数百万イベントをサポートして、Event Grid での大量ワークロードを作成できます。
 * **組み込みイベント** - リソース定義の組み込みイベントにより、迅速に開始および実行できます。
 * **カスタム イベント** - Event Grid ルートとフィルター処理を使用して、アプリで信頼性の高いカスタム イベント配信を実現します。
+
+Event Grid、Event Hubs、および Service Bus の比較については、「[Choose between Azure services that deliver messages (メッセージを配信する Azure サービスの選択)](compare-messaging-services.md)」を参照してください。
 
 ## <a name="built-in-publisher-and-handler-integration"></a>組み込みの発行元とハンドラーの統合
 
@@ -100,14 +102,6 @@ Event Grid を使用すると、自動化を迅速にして、ポリシーの適
 ![アプリケーションの統合](./media/overview/app_integration.png)
 
 Event Grid はお客様のアプリを他のサービスにつなげます。 たとえば、お客様のアプリのイベント データを Event Grid に送信するカスタム トピックを作成すると、Event Grid の信頼性の高い配信、高度なルーティング、Azure との直接統合を利用できます。 また、Event Grid を Logic Apps と共に使用して、コードを作成することなく、場所を問わずにデータを処理することもできます。 
-
-## <a name="how-is-event-grid-different-from-other-azure-integration-services"></a>Event Grid と他の Azure 統合サービスの違い
-
-Event Grid は、イベント駆動のリアクティブ プログラミングを可能にするイベント バックプレーンです。 Azure サービスと緊密に統合されており、サード パーティのサービスと統合することもできます。 イベント メッセージには、サービスやアプリケーションの変更に対応するために必要な情報が含まれています。 Event Grid は、データ パイプラインではないため、更新された実際のオブジェクトは配信しません。
-
-Service Bus は、トランザクション、順序付け、重複の検出、および瞬間的な整合性を必要とする従来のエンタープライズ アプリケーションに適しています。 Event Grid は、リアクティブ モデルにおける速度、スケール、幅、および低コストを目的に設計されています。 このため、サーバーレス アーキテクチャに適してします。
-
-Event Grid は、Logic Apps や Event Hubs などの他の Azure サービスを補完します。 また、ワークフローを開始するロジック アプリをトリガーします。 Event Hubs は、Event Hubs Capture からのイベントに対する反応と、データの受信および変換パイプラインの作成を可能にすることで、Event Grid と連携します。
 
 ## <a name="how-much-does-event-grid-cost"></a>Event Grid のコスト
 

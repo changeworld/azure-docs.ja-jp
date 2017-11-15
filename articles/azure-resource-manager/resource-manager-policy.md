@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: cfdbf35b76b6a7f3cddb2deb35dfc475e0fc600f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6faa8b4d259eddb1b26345d8900e829f6ca4dba8
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="resource-policy-overview"></a>リソース ポリシーの概要
 リソース ポリシーを使用すると、組織内のリソースの規則を確立することができます。 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、すべてのリソースに特定のタグが指定されていることを必須にすることができます。 ポリシーは、すべての子リソースが継承します。 したがって、リソース グループに適用されたポリシーは、そのリソース グループのすべてのリソースに適用されます。
@@ -55,8 +55,6 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 * 許可されないリソースの種類
 * SQL Server バージョン 12.0 が必要
 * ストレージ アカウントの暗号化が必要
-
-[ポータル](resource-manager-policy-portal.md)、[PowerShell](resource-manager-policy-create-assign.md#powershell)、または [Azure CLI](resource-manager-policy-create-assign.md#azure-cli) を使用して、これらのポリシーを割り当てることができます。
 
 ## <a name="policy-definition-structure"></a>ポリシー定義の構造
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
@@ -108,7 +106,7 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
  
 以前は、tags と location をサポートするリソース タイプについてのみポリシーが評価されていました。 この動作は、`indexed` モードで引き続き利用できます。 **all** モードを使用した場合は、tags と location をサポートしていないリソース タイプについてもポリシーが評価されます。 新しく追加されたタイプの例として、[仮想ネットワーク サブネット](https://github.com/Azure/azure-policy-samples/tree/master/samples/Network/enforce-nsg-on-subnet)があります。 また、mode が **all** に設定されている場合は、リソース グループも評価されます。 たとえば、[リソース グループに対して tags を適用](https://github.com/Azure/azure-policy-samples/tree/master/samples/ResourceGroup/enforce-resourceGroup-tags)することができます。 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 パラメーターを使用すると、ポリシー定義の数を減らすことで、ポリシーの管理を単純化できます。 リソース プロパティに対してポリシーを定義し (リソースをデプロイできる場所を制限するなど)、定義にパラメーターを含めます。 その後、そのポリシー定義を別のシナリオで再利用する場合は、ポリシーを割り当てるときに別の値を渡します (サブスクリプションに対する 1 組の場所を指定するなど)。
 
 パラメーターは、ポリシーの定義を作成するときに宣言します。
@@ -446,5 +444,5 @@ PUT /subscriptions/<subId>/providers/Microsoft.Authorization/policySetDefinition
 * ポリシー規則を定義した後で、スコープに割り当てます。 ポータルでポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 REST API、PowerShell、Azure CLI でポリシーを割り当てる方法については、「[Assign and manage policies through script](resource-manager-policy-create-assign.md)」(スクリプトによるポリシーの割り当てと管理) を参照してください。
 * ポリシーの例については、[Azure リソース ポリシーの GitHub リポジトリ](https://github.com/Azure/azure-policy-samples)を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-* [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) でポリシー スキーマが公開されています。 
+* [http://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json](http://schema.management.azure.com/schemas/2016-12-01/policyDefinition.json) でポリシー スキーマが公開されています。 
 

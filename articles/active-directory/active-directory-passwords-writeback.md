@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 8ce4d6d9024dc4ce3956220eb0678a6295b0b7ab
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9733774570f3148e0092f42c1321b4fac1c80b54
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-writeback-overview"></a>パスワード ライトバックの概要
 
@@ -91,6 +91,8 @@ DirSync と Azure AD Sync は、パスワード ライトバックを有効に�
    ![Azure AD Connect でパスワード ライトバックを有効にする][Writeback]
 7. [構成の準備完了] 画面で **[構成]** をクリックし、処理が完了するまで待ちます。
 8. [構成が完了しました] と表示されたら、**[終了]** をクリックします
+
+パスワード ライトバックに関連する一般的なトラブルシューティングのタスクについては、トラブルシューティング記事の「[パスワード ライトバックのトラブルシューティング](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback)」のセクションを参照してください。
 
 ## <a name="active-directory-permissions"></a>Active Directory のアクセス許可
 

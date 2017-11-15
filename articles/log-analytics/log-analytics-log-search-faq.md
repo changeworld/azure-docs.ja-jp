@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 11/02/2017
 ms.author: bwren
-ms.openlocfilehash: bf48cbc52a1ed96ed1bb49b1879d5cd7aece945c
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 1ec815a12cea98228dd4b7ac7361fe5e3554b5d3
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics の新しいログ検索についての FAQ と既知の問題
 
@@ -38,13 +38,6 @@ ms.lasthandoff: 10/18/2017
 
 ### <a name="question-im-getting-errors-when-trying-to-use-computer-groups--has-their-syntax-changed"></a>質問: コンピューター グループを使おうとするとエラーが発生します。  構文が変更されたのですか。
 はい。コンピューター グループに使用する構文は、ワークスペースがアップグレードされたときに変更されました。  詳しくは、「[Log Analytics のログ検索におけるコンピューター グループ](log-analytics-computer-groups.md)」のページをご覧ください。
-
-### <a name="known-issue-groups-imported-from-active-directory"></a>既知の問題: Active Directory からインポートされたグループ
-現在、Active Directory からインポートされたコンピューター グループを使用するクエリは作成できません。  この問題が解決されるまでの回避策として、インポートされた Active Directory グループを使用した新しいコンピューター グループを作成して、クエリで使用します。
-
-インポートされた Active Directory グループを含んだ新しいコンピューター グループを作成するクエリの例は、次のとおりです。
-
-    ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "AD Group Name" and TimeGenerated >= ago(24h) | distinct Computer
 
 
 ## <a name="dashboards"></a>ダッシュボード
@@ -76,11 +69,6 @@ ms.lasthandoff: 10/18/2017
     | evaluate autocluster_v2()
 
 
-### <a name="known-issue-search-results-in-a-list-may-include-properties-with-no-data"></a>既知の問題: 一覧の検索結果にデータのないプロパティが表示されることがある
-一覧のログ検索の結果に、データのないプロパティが表示されることがあります。  アップグレードの前に、これらのプロパティが含まれないようにします。  この問題を修正し、空のプロパティが表示されないようにする予定です。
-
-### <a name="known-issue-selecting-a-value-in-a-chart-doesnt-display-detailed-results"></a>既知の問題: グラフの値を選択すると詳細な結果が表示されない
-アップグレードの前にグラフの値を選択すると、選択した値に一致するレコードの詳細な一覧が返されます。  アップグレード後は、集計行が一行だけ返されます。  現在、この問題は調査中です。
 
 ## <a name="log-search-api"></a>Log Search API
 
@@ -109,11 +97,9 @@ ms.lasthandoff: 10/18/2017
 ## <a name="power-bi"></a>Power BI
 
 ### <a name="question-does-anything-change-with-powerbi-integration"></a>質問: PowerBI 統合に変更はありますか。
-はい。  ワークスペースのアップグレードが完了すると、Power BI への Log Analytics データのエクスポート プロセスは動作しなくなります。  また、アップグレード前に作成した既存のスケジュールすべてが無効になります。  アップグレード後、Azure Log Analytics では Application Insights と同じプラットフォームが使用されるため、[Application Insights クエリを Power BI にエクスポートするプロセス](../application-insights/app-insights-export-power-bi.md#export-analytics-queries)と同じプロセスを使用して、Power BI に Log Analytics クエリをエクスポートします。
+はい。  ワークスペースのアップグレードが完了すると、Power BI への Log Analytics データのエクスポート プロセスは動作しなくなります。  また、アップグレード前に作成した既存のスケジュールすべてが無効になります。  
 
-### <a name="known-issue-power-bi-request-size-limit"></a>既知の問題: Power BI の要求サイズの制限
-現在、Power BI にエクスポートできる Log Analytics クエリには、8 MB のサイズ制限が設けられています。  この制限は、まもなく緩和される予定です。
-
+アップグレード後、Azure Log Analytics では Application Insights と同じプラットフォームが使用されるため、[Application Insights クエリを Power BI にエクスポートするプロセス](../application-insights/app-insights-export-power-bi.md#export-analytics-queries)と同じプロセスを使用して、Power BI に Log Analytics クエリをエクスポートします。  Power BI へのエクスポートでは、API エンドポイントを直接呼び出すようになりました。 これにより、最大 500,000 行または 64,000,000 バイトのデータの取得、時間がかかるクエリのエクスポート、およびクエリのタイムアウトのカスタマイズ (既定のタイムアウトは 3 分間でタイムアウトの最大値は 10 分) を実行できます。
 
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット
 
@@ -153,14 +139,11 @@ ms.lasthandoff: 10/18/2017
 ### <a name="question-will-my-solutions-continue-to-work"></a>質問: ソリューションは引き続き機能しますか。
 すべてのソリューションは、アップグレードされたワークスペースでこれまでどおり機能しますが、新しいクエリ言語に変換すると、パフォーマンスが向上します。  既知の問題の中には、このセクションで説明されている解決方法が存在するものがあります。
 
-### <a name="known-issue-capacity-and-performance-solution"></a>既知の問題: Capacity and Performance のソリューション
-[Capacity and Performance](log-analytics-capacity.md) ビューの何か所かは、空になっている場合があります。  この問題の修正は、まもなく利用できるようになります。
-
-### <a name="known-issue-application-insights-connector"></a>既知の問題: Application Insights Connector
-[Application Insights Connector ソリューション](log-analytics-app-insights-connector.md)のパースペクティブは、現在、アップグレード後のワークスペースではサポートされていません。  この問題の修正は、現在分析中です。
+### <a name="known-issue-perspectives-in-application-insights-connector"></a>既知の問題: Application Insights Connector のパースペクティブ
+[Application Insights Connector ソリューション](log-analytics-app-insights-connector.md)のパースペクティブは、Application Insights コネクタ ソリューションではサポートされなくなりました。  ビュー デザイナーを使用して、Application Insights データのカスタム ビューを作成できます。
 
 ### <a name="known-issue-backup-solution"></a>既知の問題: Microsoft Azure Backup ソリューション
-Microsoft Azure Backup ソリューションは、アップグレードされたワークスペースからデータを収集しません。 アップグレードされたワークスペースで動作する新しい Microsoft Azure Backup ソリューションがまもなく発表されます。
+ワークスペースをアップグレードする前にBackup ソリューションをインストールした場合、Backup ソリューションでデータが収集されない可能性があります。 ソリューションをアンインストールした後、最新バージョンをインストールしてください。  新しいバージョンのソリューションは、従来の Backup コンテナーをサポートしないため、引き続きソリューションを使用するには、Recovery Services コンテナーもアップグレードする必要があります。
 
 ## <a name="upgrade-process"></a>アップグレード プロセス
 
@@ -184,9 +167,6 @@ Microsoft Azure Backup ソリューションは、アップグレードされた
 
 ### <a name="question-how-do-i-create-a-new-view-with-view-designer"></a>質問: ビュー デザイナーで新しいビューを作成するにはどうすればいいですか。
 アップグレードの前に、メインのダッシュボードのタイルから、ビュー デザイナーで新しいビューを作成できます。  ワークスペースがアップグレードされると、このタイルは削除されます。  左側のメニュー ボタンで緑色の + ボタンをクリックすると、OMS ポータルのビュー デザイナーで新しいビューを作成できます。
-
-### <a name="known-issue-see-all-option-for-line-charts-in-views-doesnt-result-in-a-line-chart"></a>既知の問題: ビューの折れ線グラフの [すべて表示] オプションを表示すると折れ線グラフにならない
-ビューの折れ線グラフの下部にある *[すべて表示]* オプションをクリックすると、表が表示されます。  アップグレードする前は、折れ線グラフが表示されます。  この問題は、適用可能な変更を行うために分析中です。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,6 +1,6 @@
 ---
 title: "Team Data Science Process ライフサイクル - Azure | Microsoft Docs"
-description: "データ サイエンス プロジェクトを実行するために必要な手順について説明します。"
+description: "データ サイエンス プロジェクトを実行するために必要な手順について説明します"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/02/2017
 ms.author: bradsev;
-ms.openlocfilehash: 264386b527626f3241966bfdb2fb061781121be1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aed74111402a1d5b1d1e2659d78a7997ad9c457e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
-# <a name="team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクル
+# <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクル
 
-Team Data Science Process (TDSP) には、データ サイエンス プロジェクトを体系化するために使用できる推奨ライフサイクルが用意されています。 このライフサイクルは、プロジェクトを実行する際に、その開始から終了までにわたって進められる通常のステップを大まかにまとめたものです。 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)、[KDD](https://wikipedia.org/wiki/Data_mining#Process)、所属する組織独自のカスタム プロセスなど、別のデータ サイエンス ライフサイクルを利用している場合は、それらの開発ライフサイクルにタスクベースの TDSP を組み込んで使用することもできます。 
+Team Data Science Process (TDSP) には、データ サイエンス プロジェクトを体系化するために使用できる推奨ライフサイクルが用意されています。 このライフサイクルは、プロジェクトを実行する際に、その開始から終了までにわたって進められる通常のステップを大まかにまとめたものです。 [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) (Cross Industry Standard Process for Data Mining) や [KDD](https://wikipedia.org/wiki/Data_mining#Process) (Knowledge Discovery in Databases) などのデータ サイエンス ライフサイクルや組織独自のカスタム プロセスを使用する場合でも、このタスク ベースの TDSP を使用できます。 
 
-このライフサイクルは、インテリジェント アプリケーションに付属することを意図したデータ サイエンス プロジェクト向けに設計されています。 このようなアプリケーションでは、機械学習モデルや人工知能モデルをデプロイして予測分析に使用します。 このプロセスは、探索的データ サイエンス プロジェクトや、アドホック分析プロジェクトに利用しても効果的ですが、 そのような場合、ここで説明する一部のステップは不要になります。    
+このライフサイクルは、インテリジェント アプリケーションに付属することを意図したデータ サイエンス プロジェクト向けに設計されています。 このようなアプリケーションでは、機械学習モデルや人工知能モデルをデプロイして予測分析に使用します。 このプロセスは、探索的データ サイエンス プロジェクトや、アドホック分析プロジェクトに利用しても効果的ですが、 それらのプロジェクトでは、ここで説明する手順のいくつかは必要ない場合があります。 
 
-TDSP ライフサイクルは、繰り返し実行される 5 つの主なステージで構成されています。 チェックの内容は次のとおりです
+TDSP ライフサイクルは、繰り返し実行される 5 つの主なステージで構成されています。 次の段階があります。
 
-* [1. ビジネスの把握](lifecycle-business-understanding.md)
-* [2. データの取得と理解](lifecycle-data.md)
-* [3. モデリング](lifecycle-modeling.md)
-* [4. デプロイ](lifecycle-deployment.md)
-* [5. 顧客による受け入れ](lifecycle-acceptance.md)
+   1. [ビジネスの把握](lifecycle-business-understanding.md)
+   2. [データの取得と理解](lifecycle-data.md)
+   3. [モデリング](lifecycle-modeling.md)
+   4. [デプロイ](lifecycle-deployment.md)
+   5. [顧客による受け入れ](lifecycle-acceptance.md)
 
-次の図は、**Team Data Science Process ライフサイクル**を視覚的に表したものです。 
+TDSP ライフサイクルを視覚化すると、次のようになります。 
 
 ![TDSP ライフサイクル](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-Team Data Science Process ライフサイクルは、繰り返し行う一連のステップとしてモデル化されており、予測モデルを使用するために必要なタスクのガイダンスとして役立ちます。 これらのモデルは運用環境にデプロイして、インテリジェントなアプリケーションの構築に活用できます。 このプロセス ライフサイクルの目的は、データ サイエンス プロジェクトを契約上の明確な終着点へと継続的に導くことです。 データ サイエンスとは調査と探索の作業ですが、標準化されたテンプレートで明確に定義した一連のアーティファクトを利用し、そのタスクをチームと顧客に対してはっきり伝えることができれば、誤解が生じる危険を回避し、複雑なデータ サイエンス プロジェクトをより高い確率で成功に導くことができます。
+TDSP ライフサイクルは、繰り返し行う一連のステップとしてモデル化されており、予測モデルを使用するために必要なタスクのガイダンスとして役立ちます。 インテリジェント アプリケーションを構築するために使用する予定の運用環境に予測モデルをデプロイします。 このプロセス ライフサイクルのゴールは、データ サイエンス プロジェクトを契約上の明確な終着点へと継続的に導くことです。 データ サイエンスは、調査と発見の繰り返しです。 標準化されたテンプレートを使用した適切に定義された一連の成果物を使用してチームと顧客にタスクを伝達できることは、誤解を避けるために役立ちます。 これらのテンプレートを使用すると、複雑なデータ サイエンス プロジェクトが正常に完了する可能性も増加します。
 
 各ステージで、以下のような情報を提供します。
 
-* **目標**: 具体的な目標。
-* **方法**: 具体的な課題についての概説と、その達成方法に関するガイダンス。
-* **アーティファクト**: 成果物と、その生成方法に関するサポート。
+   * **目標**: 具体的な目標。
+   * **実行方法**: 特定のタスクの概要とそれらを完了する方法についてのガイダンス。
+   * **アーティファクト**: 成果物と、それらを作成するためのサポート。
 
 ## <a name="next-steps"></a>次のステップ
-また、 **特定のシナリオ** のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。 これらは、[サンプル チュートリアル](walkthroughs.md)のトピックで簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
 
-Azure Machine Learning Studio を使用する Team Data Science Process のステップを実行する例については、[Azure ML の使用](http://aka.ms/datascienceprocess)ラーニング パスをご覧ください。
+特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
+Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](http://aka.ms/datascienceprocess)」を参照してください。

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 7346b4a146a228efdc3824ba989f3de77a4df8ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d26adec8c273d015a671c745f2136fc6251fd291
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="copy-data-from-odata-source-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の OData コネクタ](v1/data-factory-odata-connector.md)に関する記事を参照してください。
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-capabilities"></a>サポートされる機能
 
 OData ソースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -61,11 +61,9 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 ```json
 {
     "name": "ODataLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "OData",
-        "typeProperties":
-        {
+        "typeProperties": {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         },
@@ -82,11 +80,9 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 ```json
 {
     "name": "ODataLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "OData",
-        "typeProperties":
-        {
+        "typeProperties": {
             "url": "<endpoint of OData source>",
             "authenticationType": "Basic",
             "userName": "<username>",
@@ -108,11 +104,9 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 ```json
 {
     "name": "ODataLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "OData",
-        "typeProperties":
-        {
+        "typeProperties": {
             "url": "<endpoint of on-premises OData source>",
             "authenticationType": "Windows",
             "userName": "<domain>\\<user>",

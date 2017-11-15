@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 4bcca3ee5862a0455b6064d0f9c0a91388db9516
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 316157a7a8ed920e9f3b15e24e15035db4cefc6c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
 
@@ -82,11 +82,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 ## <a name="device-platform-condition"></a>デバイス プラットフォームの条件
 
-条件付きアクセス ポリシーでは、デバイス プラットフォームの条件を構成し、ポリシーをクライアント上のオペレーティング システムに関連付けることができます。
-
-![クライアント OS にアクセス ポリシーを関連付ける](./media/active-directory-conditional-access-technical-reference/41.png)
-
-Azure AD 条件付きアクセスは、次のデバイス プラットフォームをサポートします。
+条件付きアクセス ポリシーでは、デバイス プラットフォームの条件を構成し、ポリシーをクライアント上のオペレーティング システムに関連付けることができます。 Azure AD 条件付きアクセスは、次のデバイス プラットフォームをサポートします。
 
 - Android
 
@@ -96,7 +92,12 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 
 - Windows
 
-- macOS (プレビュー)
+- macOS
+
+
+![クライアント OS にアクセス ポリシーを関連付ける](./media/active-directory-conditional-access-technical-reference/41.png)
+
+
 
 
 
@@ -131,8 +132,8 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 | Windows Server 2016    | Chrome                      | 近日対応予定 |
 | Windows Server 2012 R2 | Internet Explorer、Chrome   | ![○][1] |
 | Windows Server 2008 R2 | Internet Explorer、Chrome   | ![○][1] |
-| macOS                  | Safari                      | ![○][1] |
-| macOS                  | Chrome                      | 近日対応予定 |
+| macOS                  | Chrome、Safari              | ![○][1] |
+
 
 > [!NOTE]
 > Chrome サポートの場合、Windows 10 Creators Update (バージョン 1703) 以降を使用する必要があります。<br>
@@ -153,7 +154,7 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 | Dynamics CRM アプリ| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS、Android|
 | メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Office 365 Exchange Online| Windows 10|
 | アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス| Android および iOS|
-| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、および Android|
+| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS|
 | Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)| Office 365 SharePoint Online| Windows 8.1、Windows 7|
 | Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定| Office 365 SharePoint Online| Windows 10|
 | Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定| Office 365 SharePoint Online| Mac OS X|
@@ -165,6 +166,7 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 | PowerBI アプリ。 Android 用の Power BI では現在、デバイス ベースの条件付きアクセスはサポートされていません。| PowerBI サービス| Windows 10、Windows 8.1、Windows 7、iOS|
 | Skype for Business| Office 365 Exchange Online| Android、IOS|
 | Visual Studio Team Services アプリ| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS、Android|
+
 
 
 

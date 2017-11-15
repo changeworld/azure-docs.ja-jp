@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 08/03/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: d8e2f8fc19ff879e6a7b632f033fd0ed9d77392a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca5105ff8ec45e703a3fb8e0cbb8666eb0b2c38e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 [Microsoft AppSource](https://appsource.microsoft.com/) は、ビジネス ユーザーが基幹業務の SaaS アプリケーション (スタンドアロン SaaS と既存の Microsoft SaaS 製品のアドオン) を検索し、試し、管理するためのサービスです。
@@ -108,9 +108,9 @@ AppSource の試用エクスペリエンスの詳細については、[こちら
 
 
 ## <a name="get-support"></a>サポートを受ける
-Azure Active Directory との統合について、Microsoft は [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory) のコミュニティでサポートを提供しています。 
+Azure Active Directory との統合について、Microsoft は [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) のコミュニティでサポートを提供しています。 
 
-ご質問は最初に Stack Overflow で挙げていただき、既知の問題を検索して過去に同じ質問が挙がっていないかどうか確認することを強くお勧めします。 ご質問またはコメントに `[azure-active-directory]` タグが付けられていることを確認してください。
+ご質問は最初に Stack Overflow で挙げていただき、既知の問題を検索して過去に同じ質問が挙がっていないかどうか確認することを強くお勧めします。 ご質問またはコメントに [`[azure-active-directory]` タグと `[appsource]`](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) タグが付けられていることを確認してください。
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
 

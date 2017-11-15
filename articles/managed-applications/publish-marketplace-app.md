@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/20/2017
+ms.date: 11/08/2017
 ms.author: gauravbh
-ms.openlocfilehash: b4fda06f85c7dab52ff38558b0d928193e0694f6
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 41eaff13cf55d58f58b33bc05d39a6665d51ea29
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージ アプリケーション
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/27/2017
 
 この記事を完了するには、マネージ アプリケーション定義の .zip ファイルを既に用意している必要があります。 詳細については、[サービス カタログ アプリケーションの作成](publish-service-catalog-app.md)に関する記事を参照してください。
 
-さらに、いくつかのビジネス上の前提条件があります。 それらを次に示します。
+さらに、いくつかのビジネス上の前提条件があります。 次に例を示します。
 
 * 貴社またはその子会社は、Marketplace によって販売がサポートされる国に所在している必要があります。
 * Marketplace でサポートされている課金モデルに対応した方法で、製品のライセンスを取得する必要があります。
@@ -122,7 +122,7 @@ SKU は、Marketplace では親プランの下に表示されます。 Azure Por
    次のフィールドに入力します。
 
    * **現在のバージョン**: アップロードするパッケージのバージョンを入力します。 `{number}.{number}.{number}{number}` 形式にする必要があります。
-   * **パッケージ ファイルの選択**: このパッケージには、.zip パッケージに圧縮された必須ファイルが含まれています。 詳細については、[サービス カタログ アプリケーションの作成](publish-service-catalog-app.md)に関する記事を参照してください。
+   * **パッケージ ファイルの選択**: このパッケージには、.zip パッケージに圧縮された 2 つの必須ファイルが含まれています。 1 つのファイルは、マネージ アプリケーションでデプロイするリソースを定義する Resource Manager テンプレートです。 もう 1 つのファイルは、コンシューマーがポータルを使用してマネージ アプリケーションをデプロイするための[ユーザー インターフェイス](create-uidefinition-overview.md)を定義します。 ユーザー インターフェイスでは、コンシューマーがパラメーター値を入力できるようにする要素を指定します。
    * **PrincipalId**: このプロパティは、顧客のサブスクリプション内のリソースへのアクセス権が付与されているユーザー、ユーザー グループ、またはアプリケーション の Azure Active Directory (Azure AD) 識別子です。 ロールの定義では、アクセス許可について説明します。
    * **Role Definition**: このプロパティは、Azure AD によって提供されているロールベースのアクセス制御 (RBAC) の組み込みロールの一覧です。 最も適切なロールを選択して使用することで、顧客に代わってリソースを管理できます。
 

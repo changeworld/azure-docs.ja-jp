@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 230a652ceca8b4643d1984d81383c6628b8e1f5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a46b68e63ddd039760d71ca85eeabe8fd07e80bd
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple デバイスのデプロイメントのトラブルシューティング
+> [!NOTE]
+> StorSimple のクラシック ポータルは使用されなくなります。 ご使用の StorSimple デバイス マネージャーは、廃止のスケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、電子メールとポータル通知でお知らせします。 このドキュメントも間もなく削除されます。 新しい Azure Portal 用に改訂された記事については、「[StorSimple デバイスのデプロイのトラブルシューティング](storsimple-8000-troubleshoot-deployment.md)」をご覧ください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) についてのページをご覧ください。
+
 ## <a name="overview"></a>概要
 この記事は、Microsoft Azure StorSimple のデプロイに役立つトラブルシューティングのガイダンスです。 StorSimple の構成時に発生する可能性のある問題の解決に役立つ、一般的な問題、考えられる原因、推奨手順について説明します。 この情報は、StorSimple のオンプレミスの物理デバイスと StorSimple 仮想デバイスの両方に当てはまります。
 

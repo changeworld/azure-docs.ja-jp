@@ -11,13 +11,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2017
+ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: 1046e407bb4e9d07e91014384e9eba7b0c7020a8
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d3f70880e58a21a1ae61577b04e3155c5fec6552
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -216,6 +216,12 @@ PowerShell によるストレージ アカウントの管理方法について�
 * [Azure PowerShell を使用して Azure Blob Storage の操作を実行する](../blobs/storage-how-to-use-blobs-powershell.md)
 * [PowerShell を使用して Azure Files を管理する方法](../files/storage-how-to-use-files-powershell.md)
 * [Azure PowerShell を使用し、Azure Queue Storage を操作する](../queues/storage-powershell-how-to-use-queues.md)
+* [PowerShell を使用した Azure Table Storage 操作の実行](../../cosmos-db/table-storage-how-to-use-powershell.md)
+
+Azure Cosmos DB Table API は、ターンキー グローバル配布、低待ち時間の読み取りと書き込み、自動セカンダリ インデックス付け、専用スループットなど、テーブル ストレージに対する高度な機能を提供します。 
+
+* 詳細については、「[Azure Cosmos DB Table API](../../cosmos-db/table-introduction.md)」を参照してください。 
+* PowerShell を使用して Azure Cosmos DB Table API 操作を実行する方法については、「[PowerShell を使用した Azure Cosmos DB Table API 操作の実行](../../cosmos-db/table-powershell.md)」を参照してください。
 
 ## <a name="azures-independently-deployed-clouds"></a>Azure の独立してデプロイされるクラウド
 

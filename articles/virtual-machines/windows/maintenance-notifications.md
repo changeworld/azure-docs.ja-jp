@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: zivr
-ms.openlocfilehash: fec64b3c499577af6b1d6eddb1c761ee0af73772
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 80c029866f3d28712be823692f3bf4ce6e210405
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Windows 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -72,7 +72,7 @@ MaintenanceRedeployStatus では、次のプロパティが返されます。
 また、VM を指定しないで [Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) を実行すると、リソース グループ内のすべての VM のメンテナンス状態を取得することもできます。
  
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName --Status
+Get-AzureRmVM -ResourceGroupName rgName -Status
 ```
 
 次の PowerShell 関数は、サブスクリプション ID を取り、メンテナンスがスケジュールされている VM の一覧を出力します。
@@ -87,8 +87,7 @@ function MaintenanceIterator
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
-        $rg = $rgList[$rgIdx]
-        $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+        $rg = $rgList[$rgIdx]        $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
@@ -110,6 +109,23 @@ function MaintenanceIterator
 ```powershell
 Restart-AzureRmVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
 ```
+
+## <a name="classic-deployments"></a>クラシック デプロイ
+
+クラシック デプロイ モデルを使用してデプロイされたレガシ VM がまだある場合は、PowerShell を使用して、VM を照会し、メンテナンスを開始できます。
+
+VM のメンテナンスの状態を取得するには、次のように入力します。
+
+```
+Get-AzureVM -ServiceName <Service name> -Name <VM name>
+```
+
+クラシック VM のメンテナンスを開始するには、次のように入力します。
+
+```
+Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
+```
+
 
 ## <a name="faq"></a>FAQ
 
@@ -169,15 +185,15 @@ Azure リージョンの詳細については、「Azure の仮想マシンの�
 **A:** VM のメンテナンス情報が表示されない理由はいくつかあります。
 1.  Microsoft 社内としてマークされたサブスクリプションを使用している。
 2.  VM のメンテナンスがスケジュールされていない。 メンテナンス ウェーブが終了しているか、取り消しまたは変更が行われたため、VM が影響を受けなくなっていると考えられます。
-3.  VM リスト ビューに "メンテナンス" 列が追加されていない。 この列は既定のビューに追加されていますが、既定以外の列を表示するように構成しているお客様は、VM リスト ビューに **[メンテナンス]** 列を手動で追加する必要があります。
+3.  VM リスト ビューに [メンテナンス] 列が追加されていない。 この列は既定のビューに追加されていますが、既定以外の列を表示するように構成しているお客様は、VM リスト ビューに **[メンテナンス]** 列を手動で追加する必要があります。
 
 **Q: VM の 2 回目のメンテナンスがスケジュールされています。なぜですか?**
 
-**A:** メンテナンス-再デプロイが既に完了した後に、VM のメンテナンスがスケジュールされるユース ケースがいくつかあります。
+**A:** メンテナンスの再デプロイが既に完了した後に、VM のメンテナンスがスケジュールされるユース ケースがいくつかあります。
 1.  メンテナンス ウェーブが取り消され、別のペイロードで再開された場合。 エラーが発生したペイロードが検出されたため、Microsoft が追加のペイロードをデプロイする必要があったと考えられます。
-2.  ハードウェア障害により、VM が別のノードに "*サービス復旧*" された場合。
-3.  お客様が VM を停止 (割り当てを解除) し、再起動することを選択した場合。
-4.  お客様が VM の**自動シャットダウン**を有効にした場合。
+2.  ハードウェア障害により、VM が別のノードに "*サービス復旧*" された場合
+3.  お客様が VM を停止 (割り当てを解除) し、再起動することを選択した場合
+4.  お客様が VM の**自動シャットダウン**を有効にした場合
 
 
 ## <a name="next-steps"></a>次のステップ

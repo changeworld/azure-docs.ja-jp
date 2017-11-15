@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 71310534ec62b62bcd408d75060859c79bc470cf
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: fd9515120049dd3837a43c95de8a9b6822719e19
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -88,6 +88,23 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 管理者によって有効になっている場合、ユーザーは他の認証方法を指定することを選択できます。
 
 ユーザーに必要最低限の方法が登録されていない場合は、管理者にパスワードのリセットを依頼するよう指示するエラー ページが表示されます。
+
+#### <a name="changing-authentication-methods"></a>認証方法の変更
+
+リセットまたはロック解除に必要な認証方法が 1 つしか登録されていないポリシーで開始し、それを 2 つに変更した場合、どうなりますか。
+
+| 登録されている方法の数 | 必要な方法の数 | 結果 |
+| :---: | :---: | :---: |
+| 1 つ以上 | 1 | リセットまたはロック解除**できる** |
+| 1 | 2 | リセットまたはロック解除**できない** |
+| 2 以上 | 2 | リセットまたはロック解除**できる** |
+
+ユーザーが使用できる認証方法の種類を変更すると、誤って、使用できるデータが最小量に及ばない場合にユーザーが SSPR を使用できないようにする可能性があります。
+
+例: 
+1. 2 つの認証方法で構成された元のポリシーは、会社電話とセキュリティの質問だけを使用する必要がありました。 
+2. 管理者は、今後セキュリティの質問を使用せず、携帯電話および連絡用メール アドレスを使用できるようにポリシーを変更します。
+3. 携帯電話および連絡用メール アドレス フィールドに入力していないユーザーは、パスワードをリセットできません。
 
 ### <a name="how-secure-are-my-security-questions"></a>セキュリティの質問の安全性
 
@@ -169,6 +186,7 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 > [!NOTE]
 > ユーザーは、[キャンセル] をクリックするかウィンドウを閉じることでパスワード リセット登録ポータルを閉じることができますが、登録を完了するまではログインするたびにメッセージが表示されます。
 >
+> ユーザーがすでにサインインしている場合、これにより、その接続は切断されません。
 
 ### <a name="number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>[ユーザーが認証情報を再確認するように求められるまでの日数]
 
@@ -190,7 +208,7 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 
 ## <a name="on-premises-integration"></a>オンプレミスの統合
 
-Azure AD Connect のインストール、構成、および有効化が完了すると、オンプレミス統合用の次の追加オプションが表示されます。
+Azure AD Connect のインストール、構成、および有効化が完了すると、オンプレミス統合用の次の追加オプションが表示されます。 これらのオプションが淡色表示されている場合、書き戻しが正しく構成されていません。詳細については、「[パスワード ライトバックの構成](active-directory-passwords-writeback.md#configuring-password-writeback)」を参照してください。
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>オンプレミス ディレクトリへのパスワード ライトバック
 
@@ -214,6 +232,9 @@ Azure AD Connect のインストール、構成、および有効化が完了す
 3. **B2B ユーザー**: 新しい [Azure AD B2B 機能](active-directory-b2b-what-is-azure-ad-b2b.md)を使用して作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使用して自分のパスワードをリセットできます。
 
 このシナリオをテストするには、いずれかのパートナー ユーザーとして http://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている限り、パスワードのリセットは予想どおりに機能します。
+
+> [!NOTE]
+> Hotmail.com、Outlook.com、またはその他の個人用メール アドレスからのアカウントなど、Azure AD テナントへのゲスト アクセスが認められている Microsoft アカウントは、Azure AD SSPR を使用できず、[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)に関する記事に記されている情報を使用してパスワードをリセットする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

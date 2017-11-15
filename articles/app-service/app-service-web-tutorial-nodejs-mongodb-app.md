@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 0c3f9b49c7931371bf3a4eaf1a5a3c6261dad839
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 9fc11352a031ac1c1abcc6c6bd173bd9b0e8a222
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>Azure で Node.js とMongoDB Web アプリを構築する
 
@@ -182,7 +182,7 @@ Azure CLI によって次の例のような情報が表示されます。
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Node.js アプリケーションでの接続文字列の構成
 
-ローカルの MEAN.js リポジトリの "_config/env/_" フォルダーに、"_local-production.js_" という名前のファイルを作成します。 "_.gitignore_" は、リポジトリからこのファイルを保持するように構成されます。 
+ローカルの MEAN.js リポジトリの "_config/env/_" フォルダーに、"_local-production.js_" という名前のファイルを作成します。 既定では、"_.gitignore_" は、リポジトリからこのファイルを保持するように構成されます。 
 
 ここに次のコードをコピーします。 2 つの "*\<cosmosdb_name>*" プレースホルダーを Cosmos DB データベース名で置換し、"*\<primary_master_key>*" プレースホルダーを前の手順でコピーしたキーで置換します。
 
@@ -209,7 +209,12 @@ gulp prod
 次のコマンドを実行して、_config/env/local-production.js_ に構成した接続文字列を使用します。
 
 ```bash
+# Bash
 NODE_ENV=production node server.js
+
+# Windows PowerShell
+$env:NODE_ENV = "production" 
+node server.js
 ```
 
 `NODE_ENV=production` により、運用環境で実行するよう Node.js に指示する環境変数を設定します。  `node server.js` により、リポジトリのルートにある `server.js` を使用して Node.js サーバーを起動します。 このようにして、Node.js アプリケーションを Azure に読み込みます。 
@@ -416,12 +421,15 @@ _modules/articles/client/views/admin/form-article.client.view.html_ を開きま
 ローカル ターミナル ウィンドウで、変更を運用モードでもう一度テストします。
 
 ```bash
+# Bash
 gulp prod
 NODE_ENV=production node server.js
-```
 
-> [!NOTE]
-> _config/env/production.js_ が元に戻っていることに注意してください。`MONGODB_URI` 環境変数は、ローカル コンピューターではなく、Azure Web アプリにのみ設定されます。 構成ファイルを確認すると、運用構成が既定でローカルの MongoDB データベースを使用するようになっていることがわかります。 そのため、コードの変更をローカルでテストする際に、運用データを操作することはありません。
+# Windows PowerShell
+gulp prod
+$env:NODE_ENV = "production" 
+node server.js
+```
 
 ブラウザーで `http://localhost:8443` にアクセスし、サインインしていることを確認します。
 

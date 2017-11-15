@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
+ms.date: 11/06/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f8cd4fc37caca7fa6094a4780078d9ed882ba3c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 46f8b2c20d9ce31ef3f782d098de09952701bbcc
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -205,13 +205,13 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 
 ## <a name="install-cuda-drivers-for-nc-vms"></a>NC VM 用の CUDA ドライバーのインストール
 
-NVIDIA CUDA Toolkit 8.0 から NVIDIA ドライバーを Linux NC VM にインストールする手順は次のとおりです。 
+NVIDIA CUDA Toolkit から NVIDIA ドライバーを Linux NC VM にインストールする手順は次のとおりです。 
 
 C および C++ の開発者は、GPU アクセラレータを使用したアプリケーションを構築するために、必要に応じて Toolkit 全体をインストールできます。 詳細については、[CUDA インストール ガイド](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)を参照してください。
 
 
 > [!NOTE]
-> ここで示されている CUDA ドライバーのダウンロード リンクは、公開された時点のものです。 最新の CUDA ドライバーについては、[NVIDIA](http://www.nvidia.com/) の Web サイトを参照してください。
+> ここで示されている CUDA ドライバーのダウンロード リンクは、公開された時点のものです。 最新の CUDA ドライバーについては、[NVIDIA](https://developer.nvidia.com/cuda-zone) の Web サイトを参照してください。
 >
 
 CUDA Toolkit をインストールするには、各 VM への SSH 接続を作成します。 システムに CUDA 対応の GPU が備わっているかどうかを確認するには、次のコマンドを実行します。
@@ -273,20 +273,16 @@ sudo reboot
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
 
-> [!IMPORTANT]
-> CentOS 7.3 または Red Hat Enterprise Linux 7.3 でカーネル バージョンを更新するために `sudo yum update` を実行しないでください。 現時点では、カーネルが更新された場合、ドライバーのインストールと更新プログラムは機能しません。
->
-
 1. Hyper-V の最新の Linux Integration Services をインストールします。
 
   > [!IMPORTANT]
-  > NC24r VM に CentOS ベースの HPC イメージをインストールしている場合は、手順 3 に進みます。 Azure RDMA ドライバーと Linux Integration Services は、イメージにプレインストールされているため、LIS はアップグレードされません。また、既定でカーネルの更新は無効になっています。
+  > NC24r VM に CentOS ベースの HPC イメージをインストールしている場合は、手順 3 に進みます。 Azure RDMA ドライバーと Linux Integration Services は、HPC イメージにプレインストールされているため、LIS はアップグレードされません。また、既定でカーネルの更新は無効になっています。
   >
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-1.tar.gz
  
-  tar xvzf lis-rpms-4.2.3.tar.gz
+  tar xvzf lis-rpms-4.2.3-1.tar.gz
  
   cd LISISO
  
@@ -304,7 +300,7 @@ sudo reboot
 
   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-9-0-local-9.0.176-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-9.0.176-1.x86_64.rpm
 
   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
@@ -354,8 +350,9 @@ RDMA 接続をサポートする Azure Marketplace で、次のイメージの 1
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-* Ubuntu 16.04 LTS で 4.4.0-75 Linux カーネルを実行している、Azure N シリーズ VM の CUDA ドライバーには既知の問題があります。 以前のカーネル バージョンからアップグレードする場合は、カーネル バージョン 4.4.0-77 以上にアップグレードします。 
+* Ubuntu 16.04 LTS で 4.4.0-75 Linux カーネルを実行している、Azure N シリーズ VM の CUDA ドライバーには既知の問題があります。 以前のカーネル バージョンからアップグレードする場合は、カーネル バージョン 4.4.0-77 以上にアップグレードします。
 
+* カードを照会する必要があるときにコマンドがより高速に出力されるように、nvidia-smi を使用して永続化モードを設定できます。 永続化モードを設定するには、`nvidia-smi -pm 1` を実行します。 VM を再起動すると、モード設定は消失することに注意してください。 常にスタートアップ時に実行するように、モード設定をスクリプト処理できます。
 
 
 ## <a name="next-steps"></a>次のステップ

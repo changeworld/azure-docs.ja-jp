@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/27/2017
+ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 4cf30130907151ade9eaf9db28748b8141dac8e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40849e7f0c8a76bdd8a0e03d0780534569d9874a
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
 
@@ -131,18 +131,13 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 
 ### <a name="device-platforms"></a>デバイス プラットフォーム
 
-デバイス プラットフォームは、デバイスで実行されているオペレーティング システムによって分類されます。
+デバイス プラットフォームは、デバイスで実行されているオペレーティング システムによって特徴付けられています。ポリシーを適用するデバイス プラットフォームと、ポリシーから除外するデバイス プラットフォームを定義できます。  
+デバイス プラットフォームをポリシーで使用するには、構成トグル スイッチを **[はい]** に変更してから、ポリシーを適用するデバイス プラットフォームを選択します (すべてを選択するか、個別に選択します)。 デバイス プラットフォームを個別に選択した場合、ポリシーは、選択したプラットフォームにのみ影響します。 この場合、サポートされているその他のプラットフォームへのサインインがポリシーに影響されることはありません。
 
-- Android
-- iOS
-- Windows Phone
-- Windows
-- macOS (プレビュー) 
 
 ![条件](./media/active-directory-conditional-access-azure-portal/02.png)
 
-ポリシーの対象とするデバイス プラットフォームだけでなく、ポリシーから除外するデバイス プラットフォームも定義できます。  
-デバイス プラットフォームをポリシーで使用するには、構成トグル スイッチを **[はい]** に変更してから、ポリシーを適用するデバイス プラットフォームを選択します (すべてを選択するか、個別に選択します)。 デバイス プラットフォームを個別に選択した場合、ポリシーは、選択したプラットフォームにのみ影響します。 この場合、サポートされているその他のプラットフォームへのサインインがポリシーに影響されることはありません。
+サポートされているデバイス プラットフォームの一覧については、「[デバイス プラットフォームの条件](active-directory-conditional-access-technical-reference.md#device-platform-condition)」をご覧ください。
 
 
 ### <a name="locations"></a>場所

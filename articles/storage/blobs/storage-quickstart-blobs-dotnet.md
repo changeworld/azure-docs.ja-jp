@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/01/2017
 ms.author: robinsh
-ms.openlocfilehash: fdba4588fbb2c46efb3fc4de1a9e53414264444a
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9c5628307e76bd30d2dd59f284f2c4b30d434223
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>.NET を使用して Azure Blob Storage との間でオブジェクトを転送する
 
@@ -34,25 +34,7 @@ ms.lasthandoff: 10/31/2017
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-a-storage-account-using-the-azure-portal"></a>Azure Portal を使用してストレージ アカウントを作成する
-
-最初に、このクイックスタートで使う新しい汎用的なストレージ アカウントを作成します。 
-
-1. [Azure Portal](https://portal.azure.com) にアクセスし、Azure アカウントを使ってログインします。 
-2. ハブ メニューで、**[新規]** > **[ストレージ]** > **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選びます。 
-3. ストレージ アカウントの名前を入力します。 名前の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 また、一意である必要があります。
-4. [`Deployment model`] を **[リソース マネージャー]** に設定します。
-5. [`Account kind`] を **[汎用]** に設定します。
-6. [`Performance`] を **[Standard]** に設定します。 
-7. [`Replication`] を **[ローカル冗長ストレージ (LRS)]** に設定します。
-8. [`Storage service encryption`] を **[無効]** に設定します。
-9. [`Secure transfer required`] を **[無効]** に設定します。
-10. サブスクリプションを選択します。 
-11. [`resource group`] では、新しいリソース グループを作成して一意名を指定します。 
-12. [`Location`] でストレージ アカウントに使う場所を選びます。
-13. **[ダッシュボードにピン留めする]** をオンにし、**[作成]** をクリックしてストレージ アカウントを作成します。 
-
-ストレージ アカウントが作成されて、ダッシュボードにピン留めされます。 そのストレージ アカウントをクリックして開きます。 [設定] で **[アクセス キー]** をクリックします。 キーを選び、接続文字列をクリップボードにコピーして、後で使うためにテキスト エディターに貼り付けます。
+[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
@@ -115,6 +97,9 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_cbd5f95c-6ab8-4cbf-b
 * アクセスしているコンテナーを表す **CloudBlobContainer** オブジェクトのインスタンスを作成します。 コンテナーは、コンピューターでフォルダーを使ってファイルを整理するのと同じように、BLOB を整理するために使われます。
 
 **CloudBlobContainer** を作成した後は、関心がある特定の BLOB を指す **CloudBlockBlob** オブジェクトのインスタンスを作成して、アップロード、ダウンロード、コピーなどの操作を実行できます。
+
+> [!IMPORTANT]
+> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
 このセクションでは、オブジェクトのインスタンスを作成し、新しいコンテナーを作成した後、BLOB をパブリックにして URL のみでアクセスできるように、コンテナーに対するアクセス許可を設定します。 コンテナーの名前は **quickstartblobs** です。 
 

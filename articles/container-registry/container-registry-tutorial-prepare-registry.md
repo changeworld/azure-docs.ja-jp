@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 88feffc13690a3a33f757a43972c5ef1fe967b7f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 75408dc88b23b615971a23dc6235c563229d75aa
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>geo レプリケーション Azure Container Registry の準備
 
@@ -247,10 +247,10 @@ v1: digest: sha256:c515bcebf249b591b558318e2d0ec21d1320340dbf335730eb32372ff7d34
 > * アプリケーション ソースから Docker コンテナー イメージを構築しました
 > * コンテナー イメージをレジストリにプッシュしました
 
-次のチュートリアルに進み、geo レプリケーションを使用して、イメージをローカルで使用するために、コンテナーを複数の Azure App Service インスタンスにデプロイする方法を学習します。
+次のチュートリアルに進み、geo レプリケーションを使用して、イメージをローカルで使用するために、コンテナーを複数の Web Apps for Containers インスタンスにデプロイする方法を学習します。
 
 > [!div class="nextstepaction"]
-> [Azure App Service にコンテナーをデプロイする](container-registry-tutorial-deploy-app.md)
+> [Azure Container Registry からの Web アプリのデプロイ](container-registry-tutorial-deploy-app.md)
 
 <!-- IMAGES -->
 [tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png

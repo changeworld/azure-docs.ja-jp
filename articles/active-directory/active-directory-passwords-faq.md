@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 53075d20aff073ff46dcd6dccaefea5fc8ec3483
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 14c565bb67480681e1d398a0a21a11448f405e4e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -176,6 +176,11 @@ ms.lasthandoff: 10/31/2017
   > **A:** パスワード リセットのセッション有効期間は 15 分です。 パスワード リセット操作の開始からパスワードをリセットするまで、ユーザーに 15 分の時間が与えられます。 この期間を経過すると、電子メールと SMS のワンタイム パスコードは無効になります。
   >
   >
+* **Q: ユーザーがパスワードをリセットするのをブロックできますか。**
+
+  > **A:** はい。グループを使用して、セルフサービスのパスワード リセットを有効にしている場合は、この機能を許可しているグループから削除できます。
+  >
+  >
 
 ## <a name="password-change"></a>パスワードの変更
 
@@ -187,6 +192,11 @@ ms.lasthandoff: 10/31/2017
 * **Q: ユーザーのオンプレミスのパスワードの有効期限が切れたときに Office ポータルに通知できますか。**
 
   > **A:** 現時点では ADFS を使用すれば、[ADFS を使用したパスワード ポリシーの要求の送信](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)に関する記事の手順に従って通知できます。 パスワード ハッシュ同期を使用している場合は、現時点では通知できません。 マイクロソフトではパスワードのポリシーをオンプレミスから同期していないため、有効期限切れの通知をクラウドに送信できません。 いずれの場合でも、[PowerShell を使用してパスワードの有効期限が迫っていることをユーザーに通知する](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)ことは可能です。
+  >
+  >
+* **Q: ユーザーがパスワードを変更するのをブロックできますか。**
+
+  > **A:** クラウド専用ユーザーの場合は、これをブロックすることはできません。 オンプレミスのユーザーの場合、`User cannot change password` をオンにすると、これらのユーザーが各自のパスワードを変更できないように設定できます。
   >
   >
 

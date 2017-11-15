@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 238b7d6bb6289b5f2e8d2a20f4335724087dfd48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1be39ab258235740c7e0875a5c0c29ee4a665a71
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の活用: Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行するエンド ツー エンドのシナリオで、[Team Data Science Process (TDSP)](overview.md) を使用します。 データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。
@@ -59,15 +59,15 @@ trip\_data と trip\_fare を結合するための一意のキーは medallion�
 
 1. **二項分類**: 乗車においてチップが支払われたかどうかを予測します。つまり、*tip\_amount* が $0 より大きい場合は肯定的な例で、*tip\_amount* が $0 の場合は否定的な例です。
    
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0
+        Class 0: tip_amount = $0
+        Class 1: tip_amount > $0
 2. **多クラス分類**: 乗車で支払われたチップの範囲を予測します。 *tip\_amount* を次の 5 つの箱つまりクラスに分割します。
    
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0 and tip_amount <= $5
-        Class 2 : tip_amount > $5 and tip_amount <= $10
-        Class 3 : tip_amount > $10 and tip_amount <= $20
-        Class 4 : tip_amount > $20
+        Class 0: tip_amount = $0
+        Class 1: tip_amount > $0 and tip_amount <= $5
+        Class 2: tip_amount > $5 and tip_amount <= $10
+        Class 3: tip_amount > $10 and tip_amount <= $20
+        Class 4: tip_amount > $20
 3. **回帰タスク**: 乗車で支払われたチップの金額を予測します。  
 
 ## <a name="setup"></a>高度な分析用に HDInsight Hadoop クラスターをセットアップする
@@ -132,7 +132,7 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 > 
 > 
 
-探索的データ分析とデータのダウンサンプリングのためにクラスターのヘッド ノードにアクセスするには、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md#headnode)」で説明されている手順に従います。
+探索的データ分析とデータのダウンサンプリングのためにクラスターのヘッド ノードにアクセスするには、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md)」で説明されている手順に従います。
 
 このチュートリアルでは、SQL に似たクエリ言語である [Hive](https://hive.apache.org/)で記述されたクエリを主に使用して、事前のデータ探索を行います。 Hive クエリは .hql ファイルに保存されています。 その後、モデル作成のために、Azure Machine Learning で使用されるこのデータをダウンサンプリングします。
 
@@ -376,7 +376,7 @@ Hive ディレクトリ プロンプトから次のコマンドを使用して�
 
     hive -e "select count(*) from nyctaxidb.fare;"
 
-次の結果が生成されます。
+次が生成されます。
 
     173179759
     Time taken: 186.683 seconds, Fetched: 1 row(s)
