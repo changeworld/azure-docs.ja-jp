@@ -53,7 +53,7 @@
 ### [管理対象のサービス ID の使用](api-management-howto-use-managed-service-identity.md)
 ### Service Fabric と統合する
 #### [概要](../service-fabric/service-fabric-api-management-overview.md)
-#### [クイック スタート](../service-fabric/service-fabric-api-management-quick-start.md)
+#### [チュートリアル](../service-fabric/service-fabric-tutorial-deploy-api-management.md)
 
 # リファレンス
 ## [Azure PowerShell](/powershell/azure/overview)

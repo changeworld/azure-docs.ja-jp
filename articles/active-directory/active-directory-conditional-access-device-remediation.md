@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 7ba8a79df39c135ef1831b46d38babeedfb722ba
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: b013939e9b0dd473c6278a25b65b38ddeb8d4656
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Windows デバイスで目的の場所にアクセスできない
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/18/2017
 
 - お使いのデバイスで、サポートされているバージョンの Windows を実行していますか。
 
-- お使いのデバイスは準拠デバイスですか。
+- お使いのデバイスは準拠しているデバイスですか。
 
 
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/18/2017
 
 ## <a name="compliant-device"></a>準拠デバイス
 
-準拠デバイスからでないと組織のリソースにアクセスできないという条件付きアクセス ポリシーを、管理者が構成している可能性があります。 準拠させるには、デバイスをオンプレミスの Active Directory に参加させるか、Azure Active Directory に参加させる必要があります。
+準拠しているデバイスからでないと組織のリソースにアクセスできないという条件付きアクセス ポリシーを、管理者が構成している可能性があります。 準拠させるには、デバイスをオンプレミスの Active Directory に参加させるか、Azure Active Directory に参加させる必要があります。
 
 リソースにアクセスできない原因が準拠していないデバイスにあるかどうかは、エラー ページの詳細セクションで簡単に識別できます。
  
@@ -158,5 +158,5 @@ ms.lasthandoff: 10/18/2017
 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
+[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 

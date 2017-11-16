@@ -69,10 +69,6 @@
 ### [サブスクリプションにアクセスするための認証 API](resource-manager-api-authentication.md)
 ### [リソースのロック](resource-group-lock-resources.md)
 
-## リソース ポリシーの設定
-### [リソース ポリシーとは](resource-manager-policy.md)
-### [名前付け規則](resource-manager-policy-naming-convention.md)
-
 ## Audit
 ### [アクティビティ ログを表示する](resource-group-audit.md)
 ### [デプロイ操作の表示](resource-manager-deployment-operations.md)
