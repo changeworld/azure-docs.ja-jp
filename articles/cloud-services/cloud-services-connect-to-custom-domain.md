@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 17f6918371678ac849198bff4e3b3eea8678c660
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2aadf6a103e92a4fbb11223a449280a36dea6b4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
 最初に、Azure に Virtual Network (VNet) を設定します。 次に、(Azure 仮想マシンでホストされている) Active Directory ドメイン コントローラーを VNet に追加します。 次に、事前に作成した VNet に既存のクラウド サービス ロールを追加した後、それらをドメイン コントローラーに接続します。
@@ -128,7 +128,7 @@ VM にサインインした後、[カスタム AD ドメイン コントロー�
 </ServiceConfiguration>
 ```
 
-次に、クラウド サービス プロジェクトをビルドして Azure にデプロイします。 クラウド サービス パッケージを Azure にデプロイする方法については、「 [クラウド サービスを作成して展開する方法](cloud-services-how-to-create-deploy.md#how-to-deploy-a-cloud-service)
+次に、クラウド サービス プロジェクトをビルドして Azure にデプロイします。 クラウド サービス パッケージを Azure にデプロイする方法については、「 [クラウド サービスを作成して展開する方法](cloud-services-how-to-create-deploy-portal.md)
 
 ## <a name="connect-your-webworker-roles-to-the-domain"></a>ドメインに Web/worker ロールを接続する
 Azure にクラウド サービス プロジェクトをデプロイした後は、AD ドメイン拡張機能を使用して、ロール インスタンスをカスタム AD ドメインに接続します。 AD ドメイン拡張機能を既存のクラウド サービス デプロイに追加し、カスタム ドメインに参加させるには、PowerShell で次のコマンドを実行します。
