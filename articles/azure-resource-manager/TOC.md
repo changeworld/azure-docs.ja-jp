@@ -9,14 +9,6 @@
 ## [テンプレート用の VS Code 拡張機能](resource-manager-vscode-extension.md)
 ## [Visual Studio と Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
-# サンプル
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## Azure PowerShell
-### [テンプレートのデプロイ](resource-manager-samples-powershell-deploy.md)
-
-## Azure CLI
-### [テンプレートのデプロイ](resource-manager-samples-cli-deploy.md)
-
 # 方法
 ## テンプレートの作成
 ### [テンプレート セクション](resource-group-authoring-templates.md)
