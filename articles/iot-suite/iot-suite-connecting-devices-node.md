@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 6ee9a10273f8829c44ef7ad9311bca6c0bc5b7e0
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 663ed53a52ecf8d93329f83302964571461d7f3f
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>デバイスをリモート監視構成済みソリューションに接続する (Node.js)
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/31/2017
     var Message = require('azure-iot-device').Message;
     ```
 
-1. `require` ステートメントの後に次の変数宣言を追加します。 プレースホルダー値 `{Device Id}` と `{Device Key}` を、リモート監視ソリューションでプロビジョニングしたデバイス用の値に置き換えます。 ソリューションからの IoT Hub ホスト名を使用して、`{IoTHub Name}` を置き換えます。 たとえば、IoT Hub のホスト名が `contoso.azure-devices.net` の場合、`{IoTHub Name}` を `contoso` で置き換えます。
+1. `require` ステートメントの後に次の変数宣言を追加します。 プレースホルダー値 `{Device Id}` と `{Device Key}` を、リモート監視ソリューションでプロビジョニングしたデバイス用の値に置き換えます。 ソリューションからの IoT Hub ホスト名を使用して、`{IoTHub Name}` を置き換えます。 たとえば、IoT Hub のホスト名が `contoso.azure-devices.net` の場合、`{IoTHub Name}` を `contoso` に置き換えます。
 
     ```nodejs
     var connectionString = 'HostName={IoTHub Name}.azure-devices.net;DeviceId={Device Id};SharedAccessKey={Device Key}';
@@ -71,7 +71,7 @@ ms.lasthandoff: 10/31/2017
     var pressureUnit = 'psig';
     ```
 
-1. プロパティ値の一部を定義するには、次の変数を追加します。
+1. プロパティ値を定義するには、次の変数を追加します。
 
     ```nodejs
     var temperatureSchema = 'chiller-temperature;v1';

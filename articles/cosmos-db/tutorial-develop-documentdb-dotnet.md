@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 871731adc849c575d97ed6735b87457811668ed5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 106eaa1eb64dffd6c8362b13b4edb6452d536965
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmosdb-develop-with-the-documentdb-api-in-net"></a>Azure Cosmos DB: .NET での DocumentDB API を使用した開発
 
@@ -55,7 +55,6 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 > [!TIP]
 > * 既に Azure Cosmos DB アカウントをお持ちですか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
-> * 既に Azure DocumentDB アカウントをお持ちでしたか。 この場合、そのアカウントが Azure Cosmos DB アカウントになります。「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。  
 > * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。 
 >
 >

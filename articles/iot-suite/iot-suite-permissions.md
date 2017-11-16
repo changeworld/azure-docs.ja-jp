@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 84d2bcc4ccc102f03d878bfede43672158469190
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 3eb23ccde4522fdf6dee81c6404dfc5fdf0d0acf
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>azureiotsuite.com サイトでのアクセス許可
 
@@ -102,7 +102,7 @@ IoT Suite について引き続き学習するには、[構成済みソリュー
 [lnk-rm-github-repo]: https://github.com/Azure/azure-iot-remote-monitoring
 [lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
 [lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
-[lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
+[lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles-azure-portal.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
 [lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md

@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/06/2017
 ms.author: babanisa
-ms.openlocfilehash: a0bcc9650fda10c099887b74b408551b12cde667
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 5b522b40b136e354c6ca83a56ac7ad690151ad7d
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
@@ -25,6 +25,30 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。
 
 ![Event Grid 機能モデル](./media/overview/event-grid-functional-model.png)
+
+## <a name="event-publishers"></a>イベント発行元
+
+現時点で、次の Azure サービスで、イベント グリッドの組み込み発行元がサポートされています。
+
+* リソース グループ (管理操作)
+* Azure サブスクリプション (管理操作)
+* Event Hubs
+* ストレージ BLOB
+* カスタム トピック
+
+今年は、他の Azure サービスが追加される予定です。
+
+## <a name="event-handlers"></a>イベント ハンドラー
+
+現時点で、次の Azure サービスで、Event Grid の組み込みハンドラーがサポートされています。 
+
+* Azure Functions
+* Logic Apps
+* Azure Automation
+* WebHook
+* Microsoft Flow
+
+今年は、他の Azure サービスが追加される予定です。
 
 ## <a name="concepts"></a>概念
 
@@ -52,34 +76,6 @@ Azure Event Grid の主要な特長を次に示します。
 * **カスタム イベント** - Event Grid ルートとフィルター処理を使用して、アプリで信頼性の高いカスタム イベント配信を実現します。
 
 Event Grid、Event Hubs、および Service Bus の比較については、「[Choose between Azure services that deliver messages (メッセージを配信する Azure サービスの選択)](compare-messaging-services.md)」を参照してください。
-
-## <a name="built-in-publisher-and-handler-integration"></a>組み込みの発行元とハンドラーの統合
-
-Azure では、発行元およびハンドラーの両方を含む、多数のサービスを使用して、組み込みイベントがサポートされています。
-
-### <a name="publishers"></a>発行元
-
-現時点で、次の Azure サービスで、イベント グリッドの組み込み発行元がサポートされています。
-
-* リソース グループ (管理操作)
-* Azure サブスクリプション (管理操作)
-* Event Hubs
-* ストレージ BLOB
-* カスタム トピック
-
-今年は、他の Azure サービスが追加される予定です。
-
-### <a name="handlers"></a>ハンドラー
-
-現時点で、次の Azure サービスで、Event Grid の組み込みハンドラーがサポートされています。 
-
-* Azure Functions
-* Logic Apps
-* Azure Automation
-* WebHook
-* Microsoft Flow
-
-今年は、他の Azure サービスが追加される予定です。
 
 ## <a name="what-can-i-do-with-event-grid"></a>Event Grid でできること
 

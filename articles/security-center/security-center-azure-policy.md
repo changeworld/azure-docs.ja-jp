@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: e29c381643b233d38b10f89aed5469043c699f45
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 977f7c075005efb826e862ee582864b0f6efab38
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>Security Center のセキュリティ ポリシーを Azure Policy に統合する
 この記事では、Azure Policy を利用する Azure Security Center のセキュリティ ポリシーの構成方法について説明します。 
@@ -60,7 +60,7 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
     ![使用できるポリシー定義](./media/security-center-policies/security-center-policies-fig11.png)
 
     * ポリシーの詳細を確認するには、該当するポリシーを選択します。  
-    定義の **[プレビュー]** ウィンドウが開きます。 定義の説明と、[ポリシー定義](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy/#policy-definition-structure)の構造を提供する JSON コードへのリンクが表示されます。
+    定義の **[プレビュー]** ウィンドウが開きます。 定義の説明と、[ポリシー定義](../azure-policy/policy-definition.md)の構造を提供する JSON コードへのリンクが表示されます。
 
     ![定義の [プレビュー] ウィンドウ](./media/security-center-policies/security-center-policies-fig14.png)
 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 63b059cb91956231fd3bafbe9770a04a0b7e347a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: aa8a053e6b3b6fcf6e026f2fd65942a943e12a08
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>IoT スイートに関してよく寄せられる質問
 

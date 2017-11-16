@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2017
+ms.date: 11/04/2017
 ms.author: bradsev;
-ms.openlocfilehash: 6b624f0c1b60742761d7a048d9fe3c918669b286
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e150b3e7c7e98443264dd5b8aaeda1bfe6047b2c
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="customer-acceptance"></a>顧客による受け入れ
 

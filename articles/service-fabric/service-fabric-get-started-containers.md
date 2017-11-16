@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 3d58ba0985d7a5bb302028254be0951859b79dbb
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 1b2daf04e060615569e8416d3ded344483518400
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -325,7 +325,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 ブラウザーを開き、http://containercluster.westus2.cloudapp.azure.com:8081 に移動します。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ## <a name="clean-up"></a>クリーンアップ
-クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-get-started-azure-cluster.md#remove-the-cluster)を検討してください。  [パーティ クラスター](http://tryazureservicefabric.westus.cloudapp.azure.com/)は数時間後に自動的に削除されます。
+クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-get-started-azure-cluster.md#remove-the-cluster)を検討してください。  [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
 
 コンテナー レジストリにイメージをプッシュした後は、開発コンピューターからローカルのイメージを削除できます。
 

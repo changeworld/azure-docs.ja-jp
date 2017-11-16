@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.openlocfilehash: e584a9adb75510c92fc2a25b657f55df88372e6b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9a941ce5c6f0989749c5a6db4348757f898a46f1
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>HDInsight での R Server の概要
 
@@ -784,6 +784,5 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 R Server を含む新しい HDInsight クラスターを作成する方法と、SSH セッションから R コンソールを使う基礎を理解できたはずです。 以下のトピックでは、HDInsight 上の R Server を管理および使用する他の方法について説明します。
 
-* [HDInsight へ RStudio Server を追加する (クラスター作成時にインストールされていない場合)](r-server-install-r-studio.md)
 * [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](r-server-compute-contexts.md)
 * [HDInsight の R Server 向けの Azure Storage オプション](r-server-storage.md)

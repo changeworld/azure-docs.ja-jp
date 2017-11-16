@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 80af328fc046f8d33727930d02b569da37ccf332
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: aafcc818af4c6e5d141d3633b31b913802a21752
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>HDInsight の R Server 向けの Azure Storage ソリューション
 
@@ -197,6 +197,5 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 
 * [概要: HDInsight の R Server](r-server-overview.md)
 * [Hadoop での R Server の使用開始](r-server-get-started.md)
-* [HDInsight へ RStudio Server を追加する (クラスター作成時に追加されていない場合)](r-server-install-r-studio.md)
 * [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](r-server-compute-contexts.md)
 

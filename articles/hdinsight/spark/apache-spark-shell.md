@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/01/2017
-ms.author: maxluk
-ms.openlocfilehash: 6a88a4e8f6e562a23ad1b7f6152f7fc1df4a1992
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: nitinme
+ms.openlocfilehash: e9467523da10333f1bb3c888f6e2768c2fdee4c1
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="run-spark-from-the-spark-shell"></a>Spark Shell から Spark を実行する
 

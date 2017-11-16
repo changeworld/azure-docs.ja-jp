@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 4918a820ca07a7d83dfb544ee9f0bbeb66d22722
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: acd61e9980b143ebbb81d2d144bdac9134e20a11
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>自転車シェアのチュートリアル: Azure Machine Learning Workbench による詳細データの準備
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -347,7 +347,6 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
     > スクリプトでは、このチュートリアルで以前に使用された列名を期待しています。 別の列名を使用している場合は、スクリプト内の名前を変更する必要があります。
 
    ```python
-   maxVal = max(df["HOURLYDRYBULBTEMPF_Mean"])
    maxVal = max(df["HOURLYDRYBULBTEMPF_Mean"])
    minVal = min(df["HOURLYDRYBULBTEMPF_Mean"])
    df["HOURLYDRYBULBTEMPF_Mean"] = (df["HOURLYDRYBULBTEMPF_Mean"]-minVal)/(maxVal-minVal)

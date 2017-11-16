@@ -24,9 +24,6 @@
   items:
     - name: クラスターの管理
       href: apache-domain-joined-manage.md
-    - name: ユーザー アクセス許可の管理
-      href: ../hdinsight-add-acls-at-file-folder-levels.md
-      maintainContext: true
 - name: リファレンス
   items:
     - name: コード サンプル

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 2d6a09e234ee8ec63454d42a91613ed8da9d1c4b
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 5c5fa4927073ff52418a940fce59ca1f6b57daa6
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-iot-suite"></a>Azure IoT Suite とは
 
@@ -90,7 +90,7 @@ Azure IoT Suite は一連の "*構成済みソリューション*" で、次の�
 
 * [Azure IoT Hub](../iot-hub/index.md)。 このサービスは、デバイスからクラウドへ、およびクライアントからデバイスへのメッセージング機能を提供し、クラウドや他の主要な IoT Suite サービスに対するゲートウェイとして機能します。 このサービスを使用すると、デバイスから大規模にメッセージを受信し、デバイスにコマンドを送信することができます。 また、サービスを使用すると[デバイスを管理](../iot-hub/iot-hub-device-management-overview.md)することもできます。 たとえば、ハブに接続されている 1 台以上のデバイスで、構成、再起動、または出荷時の設定へのリセットを実行できます。
 * [Azure Event Hubs](../event-hubs/index.md)。 このサービスは、クラウドに大量のイベント インジェストを提供します。 「[Azure IoT Hub と Azure Event Hubs の比較](../iot-hub/iot-hub-compare-event-hubs.md)」を参照してください。
-* [Azure Time Series Insights](../time-series-insights/index.md)。 構成済みソリューションは、このサービスを使用して、デバイスの利用統計情報を分析および表示します。
+* [Azure Time Series Insights](../time-series-insights/index.yml)。 構成済みソリューションは、このサービスを使用して、デバイスの利用統計情報を分析および表示します。
 * [Azure Container Service](../container-service/index.yml)。 このサービスは、構成済みソリューションにおいてマイクロサービスをホストおよび管理します。
 * データ ストレージ用の [Azure Cosmos DB](../cosmos-db/index.yml) および [Azure Storage](../storage/index.yml)。
 * [Azure Stream Analytics](../stream-analytics/index.md)。 予測メンテナンス構成済みソリューションは、このサービスを利用して、受信テレメトリを処理し、集計を実行してイベントを検出します。 また、この構成済みソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。

@@ -16,6 +16,7 @@
 ### [MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)
 ### [パフォーマンス レベル](performance-tiers.md)
 ### [Data Warehouse ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [容量制限](sql-data-warehouse-service-capacity-limits.md)
 ### [よく寄せられる質問](sql-data-warehouse-overview-faq.md)
 
 ## バックアップと復元
@@ -147,7 +148,7 @@
 
 # リファレンス
 
-## [容量制限](sql-data-warehouse-service-capacity-limits.md)
+
 ## T-SQL
 ### [完全なリファレンス](https://docs.microsoft.com/sql/t-sql/language-reference/)
 ### [SQL DW 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)

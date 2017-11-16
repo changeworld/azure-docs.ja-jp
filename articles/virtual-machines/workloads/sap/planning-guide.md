@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 39b5c70c8740bc06beded42e9066e3be196741a1
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 7eb4f6c8c7ddfe0cb0d8a37e27d4e697e760107a
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -942,7 +942,7 @@ VM を一般化して、対象の Azure デプロイメント シナリオでは
 >
 > 最後の手順は、管理者アカウントを使用して VM にログインすることです。 *管理者*として Windows コマンド ウィンドウを開きます。 %windir%\windows\system32\sysprep に移動し、sysprep.exe を実行します。
 > 小さいウィンドウが表示されます。 **[一般化する]** オプション (既定値はオフ) をオンにし、シャット ダウン オプションを既定の '再起動' から 'シャットダウン' に変更することが重要です。 この手順では、sysprep プロセスが VM のゲスト OS でオンプレミスで実行されることを前提としています。
-> Azure で既に実行されている VM で手順を実行する場合は、[こちらの記事](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource)に記載されている手順に従ってください。
+> Azure で既に実行されている VM で手順を実行する場合は、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)に記載されている手順に従ってください。
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -1595,7 +1595,7 @@ GitHub 上の azure-quickstart-templates リポジトリのサンプル テン�
 #### <a name="resource-group-and-virtual-machine-naming"></a>リソース グループと仮想マシンの名前付け
 すべてのリソース グループ名は一意である必要があります。 リソースの独自の命名規則を設けます (`<rg-name`>-サフィックスなど)。
 
-仮想マシンの名前は、リソース グループ内で一意である必要があります。
+仮想マシン名は、リソース グループ内で一意である必要があります。
 
 #### <a name="set-up-network-for-communication-between-the-different-vms"></a>複数の VM 間の通信用にネットワークをセットアップする
 ![Set of VMs within an Azure Virtual Network (Azure Virtual Network 内の VM セット)][planning-guide-figure-1900]
@@ -1802,7 +1802,7 @@ Azure 仮想マシンでの SAP ポータルのセットアップは、クロス
 
 ![Exposed SAP Portal (公開された SAP ポータル)][planning-guide-figure-2700]
 
-特別なデプロイ シナリオとして、一部のお客様は、サイト間 VPN トンネルまたは ExpressRoute 経由で仮想マシン ホストを企業のネットワークに接続する際に、SAP エンタープライズ ポータルをインターネットに直接公開しています。 このようなシナリオでは、特定のポートが開いていることと、ファイアウォールまたはネットワーク セキュリティ グループによってブロックされていないことを確認する必要があります。 クラウドのみのシナリオでオンプレミスから SAP Java インスタンスに接続する必要がある場合にも、同じメカニズムの適用が必要になる場合があります。
+特別なデプロイ シナリオとして、一部のお客様は、サイト間 VPN トンネルまたは ExpressRoute 経由で仮想マシンのホストを企業のネットワークに接続する際に、SAP エンタープライズ ポータルをインターネットに直接公開しています。 このようなシナリオでは、特定のポートが開いていることと、ファイアウォールまたはネットワーク セキュリティ グループによってブロックされていないことを確認する必要があります。 クラウドのみのシナリオでオンプレミスから SAP Java インスタンスに接続する必要がある場合にも、同じメカニズムの適用が必要になる場合があります。
 
 初期のポータル URI は http(s):`<Portalserver`>:5XX00/irj で、ここでは、ポートの形式は 50000 + (システム番号 × 100) になります。 SAP システム 00 の既定のポータル URI は `<dns name`>.`<azure region`>.Cloudapp.azure.com:PublicPort/irj です。 詳細については、<http://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm> を参照してください。
 

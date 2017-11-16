@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: d380c593ebecd18af7dcca190d8c4134cbdfd63c
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: b2fa3ebb7a22b9d19678d45cc50806627ab80e90
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="scale-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのスケーリング
 
@@ -32,7 +32,7 @@ AKS クラスターをさまざまな数のノードに容易にスケーリン�
 `az aks scale` コマンドを使用してクラスター ノードをスケーリングします。 次の例では、*myK8SCluster* という名前のクラスターを単一のノードにスケーリングします。
 
 ```azurecli-interactive
-az aks scale --name myK8sCluster --resource-group myResourceGroup --agent-count 1
+az aks scale --name myK8sCluster --resource-group myResourceGroup --node-count 1
 ```
 
 出力:
@@ -40,7 +40,7 @@ az aks scale --name myK8sCluster --resource-group myResourceGroup --agent-count 
 ```json
 {
   "id": "/subscriptions/4f48eeae-9347-40c5-897b-46af1b8811ec/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myK8sCluster",
-  "location": "westus2",
+  "location": "eastus",
   "name": "myK8sCluster",
   "properties": {
     "accessProfiles": {
@@ -66,7 +66,7 @@ az aks scale --name myK8sCluster --resource-group myResourceGroup --agent-count 
       }
     ],
     "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.westus2.azmk8s.io",
+    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
     "kubernetesVersion": "1.7.7",
     "linuxProfile": {
       "adminUsername": "azureuser",

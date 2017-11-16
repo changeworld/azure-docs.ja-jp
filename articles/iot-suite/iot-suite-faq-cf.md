@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 11/10/2017
 ms.author: corywink
-ms.openlocfilehash: 1f0d6fb377c21f5ece77a878fd285b5dda2f4fbc
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: d4cb452b34ddefc70dc1adcff0e5fead072aa16a
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Azure IoT Suite コネクテッド ファクトリ事前構成済みソリューションに関してよく寄せられる質問
 

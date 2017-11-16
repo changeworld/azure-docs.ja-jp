@@ -107,7 +107,7 @@
 ## [課金](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
 # リソース
-## [Azure の制限とクォータ](../../azure-subscription-service-limits.md)
+## [Azure の制限とクォータ](../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [Azure リージョン](https://azure.microsoft.com/regions/)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

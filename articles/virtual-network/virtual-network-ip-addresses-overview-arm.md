@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: jdial
-ms.openlocfilehash: 8ddd582ed159e10add896252c40feb19780c42fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d243455be9439a686ecdf6dfa3aadf2802a0714d
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -73,7 +73,7 @@ Standard SKU のパブリック IP アドレスは次のとおりです。
 > [!NOTE]
 > 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、特定のトラフィックを明示的に許可する必要があります。  ネットワーク セキュリティ グループを作成して関連付け、特定のトラフィックを明示的に許可するまでは、リソースと通信できません。
 
-Standard SKU はプレビュー リリースです。 Standard SKU のパブリック IP アドレスを作成する前に、プレビューを登録し、サポートされている場所にアドレスを作成する必要があります。 プレビューを登録するには、[Standard SKU プレビューを登録する](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)を参照してください。 サポートされている場所 (リージョン) の一覧については、[[利用可能なリージョン]](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) を参照し、追加のリージョンのサポートについて [[Azure Virtual Network updates] (Azure Virtual Network の更新)](https://azure.microsoft.com/updates/?product=virtual-network) ページを監視してください。
+Standard SKU はプレビュー リリースです。 Standard SKU のパブリック IP アドレスを作成する前に、プレビューを登録し、サポートされている場所にアドレスを作成する必要があります。 プレビューを登録するには、[Standard SKU プレビューを登録する](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)を参照してください。 サポートされている場所 (リージョン) の一覧については、[[利用可能なリージョン]](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) を参照し、追加のリージョンのサポートについて [[Azure Virtual Network updates] \(Azure Virtual Network の更新)](https://azure.microsoft.com/updates/?product=virtual-network) ページを監視してください。
 
 
 ### <a name="allocation-method"></a>割り当て方法
@@ -110,7 +110,7 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 
 ### <a name="internet-facing-load-balancers"></a>インターネットに接続するロード バランサー
 
-パブリック IP アドレスをロード バランサーの **フロントエンド**構成に割り当てることで、パブリック IP アドレスと [SKU](#SKU) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような [マルチ VIP](../load-balancer/load-balancer-multivip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) シナリオを有効にすることもできます。 Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+パブリック IP アドレスをロード バランサーの **フロントエンド**構成に割り当てることで、パブリック IP アドレスと [SKU](#SKU) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような [マルチ VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) シナリオを有効にすることもできます。 Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 ### <a name="vpn-gateways"></a>VPN ゲートウェイ
 
@@ -118,15 +118,15 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 
 ### <a name="application-gateways"></a>アプリケーション ゲートウェイ
 
-パブリック IP アドレスをゲートウェイの **フロント エンド** 構成に割り当てることで、Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関連付けることができます。 このパブリック IP アドレスは、負荷分散された VIP として機能します。 Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。
+パブリック IP アドレスをゲートウェイの [フロント エンド](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)構成に割り当てることで、Azure **Application Gateway** に関連付けることができます。 このパブリック IP アドレスは、負荷分散された VIP として機能します。 Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。
 
 ### <a name="at-a-glance"></a>早見表
 下の表は、パブリック IP アドレスを最上位リソースに関連付けることができる特定のプロパティと、使用できる割り当て方法 (動的または静的) を示しています。
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |Linux |はい |はい |
-| インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
+| 仮想マシン |Linux |はい |あり |
+| インターネットに接続するロード バランサー |フロント エンド構成 |あり |はい |
 | VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
 | フロント エンド |フロントエンドの構成 |はい |いいえ |
 
@@ -178,9 +178,9 @@ Azure で管理される DNS サーバーで構成されている仮想マシン
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |ネットワーク インターフェイス |はい |はい |
+| 仮想マシン |Linux |はい |はい |
 | Load Balancer |フロントエンドの構成 |はい |はい |
-| Application gateway |フロントエンドの構成 |はい |はい |
+| フロント エンド |フロントエンドの構成 |はい |はい |
 
 ## <a name="limits"></a>制限
 IP アドレス指定に対する制限は、Azure の[ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)の完全なセットに示されています。 この制限は、リージョンとサブスクリプションごとに存在します。 ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、 [サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。

@@ -111,7 +111,7 @@
 ### [概要](service-fabric-deploy-anywhere.md)
 ### 計画と準備
 #### [容量計画](service-fabric-cluster-capacity.md)
-#### [障害復旧](service-fabric-disaster-recovery.md)
+#### [ディザスター リカバリー ](service-fabric-disaster-recovery.md)
 ### [クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)
 ### [クラスターのセキュリティ](service-fabric-cluster-security.md)
 ### [Linux と Windows での機能の違い](service-fabric-linux-windows-differences.md)
@@ -250,8 +250,6 @@
 ### [Eclipse での Java サービスのデバッグ](service-fabric-debugging-your-application-java.md)
 ### [ローカルでの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## [API Management と Service Fabric を Azure にデプロイする](service-fabric-api-management-quick-start.md)
-
 ## Cloud Services から移行する
 ### [Cloud Services と Service Fabric の比較](service-fabric-cloud-services-migration-differences.md)
 ### [Service Fabric への移行](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -265,7 +263,6 @@
 #### [Azure リソース マネージャー](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
-#### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
 ### アプリケーションのアップグレード
@@ -281,11 +278,8 @@
 ##### [ワークロード中](service-fabric-testability-workload-tests.md)
 ##### [テスト シナリオの使用](service-fabric-testability-scenarios.md)
 ##### [Node Transition API の使用](service-fabric-node-transition-apis.md)
-#### [アプリケーションのロード テスト](service-fabric-vso-load-test.md)
 
-### 継続的インテグレーションのセットアップ
-#### [VSTS を使用した継続的インテグレーションのセットアップ](service-fabric-set-up-continuous-integration.md)
-#### [Jenkins を使用した Linux Java アプリケーションのデプロイ](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+### [Jenkins を使用した Linux Java アプリケーションのデプロイ](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 
 ## クラスターを作成および管理する
 ### Azure 上のクラスター
@@ -319,21 +313,6 @@
 ### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 ### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
-
-### クラスター リソースを管理および調整する
-#### [Cluster Resource Manager の概要](service-fabric-cluster-resource-manager-introduction.md)
-#### [Cluster Resource Manager のアーキテクチャ](service-fabric-cluster-resource-manager-architecture.md)
-#### [クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)
-#### [アプリケーション グループの概要](service-fabric-cluster-resource-manager-application-groups.md)
-#### [Cluster Resource Manager 設定の構成](service-fabric-cluster-resource-manager-configure-services.md)
-#### [リソース使用量メトリックス](service-fabric-cluster-resource-manager-metrics.md)
-#### [サービス アフィニティの使用](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-#### [サービス配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-#### [クラスターの管理](service-fabric-cluster-resource-manager-management-integration.md)
-#### [クラスターの最適化](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-#### [クラスターの分散](service-fabric-cluster-resource-manager-balancing.md)
-#### [調整](service-fabric-cluster-resource-manager-advanced-throttling.md)
-#### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
 
 ## 監視と診断
 ### OMS

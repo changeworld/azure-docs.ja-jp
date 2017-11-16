@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81814ef07cfab06855b3bfbf0eb6ef51b8dfce4f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
 Azure Service Fabric アプリケーションとサービスを Visual Studio で管理できます。 [開発環境のセットアップ](service-fabric-get-started.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
@@ -32,7 +32,7 @@ Azure Service Fabric アプリケーションとサービスを Visual Studio �
 4. 実行している任意のアプリケーション インスタンスの削除
 5. アプリケーション インスタンスの作成
 
-Visual Studio で、**[F5]** キーを押すと、アプリケーションがデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。 詳細については、「 [Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)」を参照してください。
+Visual Studio で、**[F5]** キーを押すと、アプリケーションがデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。 
 
 ### <a name="application-debug-mode"></a>アプリケーション デバッグ モード
 Visual Studio には、**アプリケーション デバッグ モード**というプロパティが用意されており、Visual Studio でデバッグ時にアプリケーションのデプロイを処理する方法を制御できます。

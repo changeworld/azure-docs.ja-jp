@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2017
+ms.date: 11/13/2017
 ms.author: larryfr
-ms.openlocfilehash: d474cce902dad1390d55ed7bad556d9b0610605f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a55180b5d65b268d7c9b51307581a5fe777a26fe
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上の Hadoop サービスで使用されるポート
 
@@ -169,8 +169,8 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | サービス | Nodes | ポート | プロトコル | URL パス | Description |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift サーバー |ヘッド ノード |10002 |Thrift | &nbsp; | Spark SQL に接続するためのサービス (Thrift/JDBC) |
-| Livy サーバー | ヘッド ノード | 8998 | HTTP | /batches | ステートメント、ジョブ、およびアプリケーションを実行するためのサービス |
+| Livy サーバー | ヘッド ノード | 8998 | HTTP | &nbsp; | ステートメント、ジョブ、およびアプリケーションを実行するためのサービス |
 
 次に例を示します。
 
-* Livy: `curl "http://10.0.0.11:8998/batches"`. この例の `10.0.0.11` は、Livy サービスをホストするヘッド ノードの IP アドレスです。
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. この例の `10.0.0.11` は、Livy サービスをホストするヘッド ノードの IP アドレスです。

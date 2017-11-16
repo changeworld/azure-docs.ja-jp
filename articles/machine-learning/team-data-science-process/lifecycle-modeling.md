@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2017
+ms.date: 11/04/2017
 ms.author: bradsev;
-ms.openlocfilehash: 27c0a3e5263ca112dd97ccba069e64dd43a26ed9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: a7fc5f2128e9c13182ca5bd7a6bd61ae41ef775c
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="modeling"></a>モデリング
 
@@ -59,7 +59,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 
 モデル トレーニングのプロセスには、以下のステップが含まれます。 
 
-   * モデリング用のトレーニング データ セットとテスト データ セットにランダムに**入力データを分割する**。
+   * モデリング用のトレーニング データセットとテスト データセットにランダムに**入力データを分割する**。
    * トレーニング データ セットを使用して**モデルを構築する**。
    * トレーニング セットとテスト データ セットを**評価**する。 競合する一連の機械学習アルゴリズムを、現状のデータで目的の質問に回答できるよう調整された、各種の関連するチューニング パラメーター (*パラメーター スイープ*と呼ばれる) と共に使用する。
    * 別々の方法での成功のメトリックを比較し、質問に回答するための **"最適" なソリューションを判定する**。
