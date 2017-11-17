@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 3da53852eaad7a37f19d906d2ee27b72d35c513f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2a83e8dcd054576b4a99533cdfbb9f5605cd6f9
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -67,7 +67,7 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 **異常なサインインの検出。**  Azure AD は 1 日に 10 億以上のサインインを処理しながら、機械学習アルゴリズムを使用して疑わしいアクティビティを検出し、可能性のある問題を IT 管理者に通知します。  Azure AD のサインインをサポートすることにより、アプリケーションでこの保護を利用できます。 [Azure Active Directory アクセス レポートの表示](../active-directory-view-access-usage-reports.md)に関する詳細を参照してください。
 
-**条件付きアクセス。**  多要素認証に加えて、管理者はアプリケーションにサインインするユーザーに特定の条件を満たすことを要求できます。  設定可能な条件としては、クライアント デバイスの IP アドレスの範囲、指定したグループにおけるメンバーシップ、アクセスに使用されるデバイスの状態などがあります。  [Azure Active Directory の条件付きアクセス](../active-directory-conditional-access.md)に関する詳細を参照してください。
+**条件付きアクセス。**  多要素認証に加えて、管理者はアプリケーションにサインインするユーザーに特定の条件を満たすことを要求できます。  設定可能な条件としては、クライアント デバイスの IP アドレスの範囲、指定したグループにおけるメンバーシップ、アクセスに使用されるデバイスの状態などがあります。  [Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)に関する詳細を参照してください。
 
 ### <a name="easy-development"></a>簡単な開発
 **業界標準のプロトコル。**  Microsoft は業界標準のサポートに取り組んでいます。  Azure AD は、SAML 2.0、OpenID Connect 1.0、OAuth 2.0、WS-Federation 1.2 の各認証プロトコルをサポートしています。  Graph API は OData 4.0 に準拠しています。  アプリケーションがフェデレーション サインイン用に SAML 2.0 または OpenID Connect 1.0 プロトコルを既にサポートしている場合、Azure AD のサポートを簡単に追加できます。  [Azure AD での認証プロトコルのサポート](active-directory-authentication-protocols.md)に関する詳細を参照してください。

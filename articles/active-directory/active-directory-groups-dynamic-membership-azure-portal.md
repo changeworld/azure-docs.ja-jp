@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 5e101c4b92868181a6b627d060a9c8e72a7837c4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0bf6177bc34b6f7daf9c14a22c3b381025f0f825
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
 Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
@@ -296,7 +296,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>動的メンバーシップを静的に変更する、またはその逆の変更を行う
 グループのメンバーシップの管理方法を変更することができます。 これは、システムで同じグループの名前と ID を保持する場合に便利です。グループへの既存の参照は有効のままであるため、新しいグループを作成する場合にそれらの参照を更新する必要がありません。
 
-この機能をサポートするように Azure Portal の更新を行っているところです。 当面は、[Azure クラシック ポータル](https://manage.windowsazure.com)(手順は[こちら](active-directory-accessmanagement-groups-with-advanced-rules.md)) を使用するか、または次に示すように PowerShell コマンドレットを使用してください。
+この機能をサポートするように Azure Portal の更新を行っているところです。 当面は、[Azure クラシック ポータル](https://manage.windowsazure.com)(手順は[こちら](active-directory-groups-dynamic-membership-azure-portal.md)) を使用するか、または次に示すように PowerShell コマンドレットを使用してください。
 
 > [!WARNING]
 > 既存の静的グループを動的なグループに変更すると、既存のすべてのメンバーはグループから削除されてから、新しいメンバーを追加するためにメンバーシップ ルールが処理されます。 アプリまたはリソースへのアクセスを制御するためにグループが使用されている場合、元のメンバーは、メンバーシップ ルールが完全に処理されるまでアクセスできなくなる可能性があります。

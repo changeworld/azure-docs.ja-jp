@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 0cab39bb3ce5c42fac543171baea498eb894c502
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9ff22c7b4793112da5211162ed9cd58ac86d238
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
 この記事では、Azure Active Directory (Azure AD) Connect を使用して、Active Directory フェデレーション サービス (AD FS) を管理およびカスタマイズする方法について説明します。 また、AD FS ファームの完全な構成のために必要となる可能性のある他の一般的な AD FS タスクについても説明します。
@@ -170,7 +170,7 @@ Azure AD Connect を使用すると、Azure AD とのフェデレーションを
 
    ![Azure AD domain](media/active-directory-aadconnect-federation-management/AdditionalDomain4.PNG)
 
-    ドメインを選択すると、ウィザードによって今後実行されるアクションと構成の影響に関する適切な情報が表示されます。 Azure AD でまだ確認されていないドメインを選択すると、ドメインの確認に役立つ情報が表示される場合もあります。 詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-add-domain.md) 」を参照してください。
+    ドメインを選択すると、ウィザードによって今後実行されるアクションと構成の影響に関する適切な情報が表示されます。 Azure AD でまだ確認されていないドメインを選択すると、ドメインの確認に役立つ情報が表示される場合もあります。 詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md) 」を参照してください。
 
 5. **[次へ]** をクリックします。 **[構成の準備完了]** ページに、Azure AD Connect によって実行されるアクションの一覧が表示されます。 **[インストール]** をクリックして構成を終了します。
 

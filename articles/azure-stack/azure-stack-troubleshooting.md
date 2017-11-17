@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/11/2017
 ms.author: helaw
-ms.openlocfilehash: 3b40a657ee8eb391d14a38cb95acc0729a8dda21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a8e871a3a44cb14503832d2f3a096712f8112a7
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack のトラブルシューティング
 
@@ -38,19 +38,9 @@ Azure Stack Technical Development Kit は評価環境として提供されてい
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>デプロイの最後に、PowerShell セッションがまだ開いており、出力が表示されません
 この動作は、PowerShell コマンド ウィンドウが選択されている場合の既定の動作の結果に過ぎない可能性があります。 開発キットのデプロイは実際に成功しましたが、ウィンドウを選択したときに、スクリプトが一時停止しました。 これがそのケースであることを確認するには、コマンド ウィンドウのタイトル バーで、"select" という単語を探します。  ESC キーを押してその選択を解除すると、その後に完了メッセージが表示されるはずです。
 
-## <a name="templates"></a>テンプレート
-### <a name="azure-template-wont-deploy-to-azure-stack"></a>Azure テンプレートが Azure Stack にデプロイされません
-次のことを確認してください。
-
-* テンプレートで、Azure Stack で既に使用できるか、またはプレビュー中である Microsoft Azure サービスを使用している。
-* 特定のリソースに使用される API が、ローカル Azure Stack インスタンスでサポートされており、さらに有効な場所 (Azure Stack Development Kit では "ローカル" ですが、Azure では "米国東部" または "インド南部") を対象にしている。
-* Azure Resource Manager 構文の小さな違いをキャッチする Test-AzureRmResourceGroupDeployment コマンドレットに関する[この資料](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md)を確認している。
-
-[GitHub リポジトリ](http://aka.ms/AzureStackGitHub/)で既に提供されている Azure Stack テンプレートを使用して、作業の開始に役立てることもできます。
-
 ## <a name="virtual-machines"></a>仮想マシン
-### <a name="default-image-and-gallery-item"></a>既定のイメージとギャラリー項目
-Azure Stack に VM をデプロイする前に、まず Windows Server イメージとギャラリー項目を追加する必要があります。
+### <a name="default-image-and-gallery-item"></a>既定のイメージとギャラリー アイテム
+Azure Stack に VM をデプロイする前に、まず Windows Server イメージとギャラリー アイテムを追加する必要があります。
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Azure Stack ホストの再起動後、一部の VM が自動的に起動しないことがあります。
 ホストの再起動後、Azure Stack サービスがすぐに使用できないことに気付く場合があります。  これは、Azure Stack [インフラストラクチャ VM](azure-stack-architecture.md#virtual-machine-roles) および RP が一貫性をチェックするために少し時間がかかるためですが、最終的に自動的に起動します。
@@ -75,20 +65,6 @@ Azure Stack に VM をデプロイする前に、まず Windows Server イメー
 ## <a name="storage"></a>ストレージ
 ### <a name="storage-reclamation"></a>記憶域の再利用
 ポータルに再利用された容量が表示されるまで、最大で 14 時間かかる場合があります。 領域の再利用は、ブロック BLOB ストア内の内部コンテナー ファイルの使用率をなど、さまざまな要因に依存します。 そのため、削除されるデータの量によって、ガベージ コレクターの実行時に再利用可能になる領域の量に対する保証はありません。
-
-## <a name="powershell"></a>PowerShell
-### <a name="resource-providers-not-registered"></a>リソース プロバイダーが登録されていない
-PowerShell を使用してテナント サブスクリプションに接続したときに、リソース プロバイダーが自動的に登録されていないことに気付きます。 [接続モジュール](https://github.com/Azure/AzureStack-Tools/tree/master/Connect)を使用するか、または PowerShell から次のコマンドを実行します (テナントとして[インストールおよび接続した](azure-stack-connect-powershell.md)後に)。 
-  
-       Get-AzureRMResourceProvider | Register-AzureRmResourceProvider
-
-## <a name="cli"></a>CLI
-
-* CLI 対話モード ( `az interactive`コマンド) はまだ Azure Stack でサポートされていません。
-* Azure Stack で使用できる仮想マシン イメージの一覧を取得するには、`az vm image list` コマンドの代わりに、`az vm images list --all` コマンドを使用します。 `--all` オプションを指定すると、応答に、Azure Stack 環境で使用できるイメージのみが返されます。 
-* Azure で使用できる仮想マシン イメージの別名は、Azure Stack に適用できない場合があります。 仮想マシン イメージを使用する場合は、イメージの別名の代わりに、URN パラメーター全体 (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) を使用する必要がありますします。 さらに、この URN は `az vm images list` コマンドから派生したイメージ仕様と一致している必要があります。
-* 既定で、CLI 2.0 は、既定の仮想マシン イメージのサイズとして "Standard_DS1_v2" を使用します。 ただし、このサイズはまだ Azure Stack で使用できないため、仮想マシンを作成するときに `--size` パラメーターを明示的に指定する必要があります。 Azure Stack で使用できる仮想マシンのサイズの一覧を取得するには、`az vm list-sizes --location <locationName>` コマンドを使用します。
-
 
 ## <a name="windows-azure-pack-connector"></a>Windows Azure Pack コネクタ
 * Azure Stack Development Kit をデプロイした後に azurestackadmin アカウントのパスワードを変更する場合に、マルチクラウド モードを設定できなくなりました。 そのため、対象となる Windows Azure Pack 環境に接続できません。

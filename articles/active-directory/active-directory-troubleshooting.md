@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
-ms.openlocfilehash: be3a797c4a405fd2f6636e67f4c961dd6d143486
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b27363a38c1a5955e062d1e5c036b542341e16bc
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>トラブルシューティング: Active Directory 項目が不足しているか使用できない
 Azure Active Directory の機能とサービスを使用するための手順の多くが、"Microsoft Azure 管理ポータルに移動し、**[Active Directory]** をクリックします。" という指示で始まります。 Active Directory 拡張機能またはメニュー項目が表示されない、または **[使用不可]** とマークされている場合はどうすればよいのでしょうか。 このトピックを役立ててください。 **Active Directory** が表示されない状況と使用できない状況について説明し、どのように対応するかについて説明しています。
@@ -43,7 +43,7 @@ Active Directory 項目は、次のいずれかの条件が満たされている
 
 Access Control 名前空間または Multi-factor Authentication プロバイダーを作成するには、**[+新規]** > **[App Services]** > **[Active Directory]** の順にクリックします。
 
-ディレクトリに対する管理権限を取得するには、使用中のアカウントに管理者ロールを割り当てるように管理者に依頼してください。 詳細については、「 [管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
+ディレクトリに対する管理権限を取得するには、使用中のアカウントに管理者ロールを割り当てるように管理者に依頼してください。 詳細については、「 [管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
 
 ## <a name="active-directory-is-not-available"></a>Active Directory を使用できない
 **[+新規]** > **[App Services]** の順にクリックすると、**[Active Directory]** 項目が表示されます。 具体的に言うと、Active Directory 項目は、現在のユーザーがディレクトリ、Access Control、多要素認証プロバイダーなどの Active Directory の機能のいずれかを利用できる場合に表示されます。

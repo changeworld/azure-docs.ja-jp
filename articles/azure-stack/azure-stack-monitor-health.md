@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/10/2017
 ms.author: twooley
-ms.openlocfilehash: b2ba7ec922341464ea7160d08e475999c941c42a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf454a438f088d8079352ac60ce845185b741327
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack での正常性およびアラートの監視
 
@@ -36,7 +36,7 @@ Azure Stack には、ユーザーが Azure Stack リージョンの正常性と�
  
  Azure Stack オペレーターとして、ユーザーはコンポーネントの正常性の状態を管理者ポータルと REST API および PowerShell から表示できます。
  
-ポータルで正常性の状態を表示するには、**[Region management]** \(リージョン管理) タイルで表示するリージョンをクリックします。 インフラストラクチャ ロールとリソース プロバイダーの正常性の状態を表示できます。 このリリースでは、コンピューティング リソースプロバイダーは正常性の状態をレポートしません。
+ポータルで正常性の状態を表示するには、**[Region management]** \(リージョン管理) タイルで表示するリージョンをクリックします。 インフラストラクチャ ロールとリソース プロバイダーの正常性の状態を表示できます。
 
 ![インフラストラクチャ ロールのリスト](media/azure-stack-monitor-health/image2.png)
 
@@ -48,7 +48,7 @@ Azure Stack には、ユーザーが Azure Stack リージョンの正常性と�
  
 ## <a name="view-alerts"></a>アラートを表示する
 
-各 Azure Stack リージョンのアクティブなアラートのリストは、**[Region management]** \(リージョン管理) ブレードから直接使用できます。 既定の構成の最初のタイルは**[Alerts]** \(アラート) タイルで、リージョンの重大アラートと警告アラートの概要が表示されます。 アラート タイルは、このブレードの他のタイルと同様、ダッシュボードに固定してすばやくアクセスできます。   
+各 Azure Stack リージョンのアクティブなアラートのリストは、**[Region management]** \(リージョン管理) ブレードから直接使用できます。 既定の構成の最初のタイルは**[Alerts]** (アラート) タイルで、リージョンの重大アラートと警告アラートの概要が表示されます。 アラート タイルは、このブレードの他のタイルと同様、ダッシュボードに固定してすばやくアクセスできます。   
 
 ![警告が表示された [Alerts] \(アラート) タイル](media/azure-stack-monitor-health/image3.png)
 

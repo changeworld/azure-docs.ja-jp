@@ -25,7 +25,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|Description|
+|コマンド|説明|
 | --- | --- |
 |    deployed  | Service Fabric ノードにデプロイされているレプリカの詳細を取得します。|
 |    deployed-list| Service Fabric ノードにデプロイされているレプリカの一覧を取得します。|
@@ -45,7 +45,7 @@ Service Fabric ノードにデプロイされているレプリカの詳細を�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --node-name    [必須]| ノード名。|
 | --partition-id [必須]| パーティションの ID。|
@@ -54,7 +54,7 @@ Service Fabric ノードにデプロイされているレプリカの詳細を�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -69,7 +69,7 @@ Service Fabric レプリカの正常性を取得します。 正常性状態に�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --partition-id    [必須]| パーティションの ID。|
 | --replica-id      [必須]| レプリカの識別子。|
@@ -78,7 +78,7 @@ Service Fabric レプリカの正常性を取得します。 正常性状態に�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --debug                  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                | このヘルプ メッセージを表示して終了します。|
@@ -93,7 +93,7 @@ Service Fabric パーティションのレプリカに関する情報を取得�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --partition-id [必須]| パーティションの ID。|
 | --replica-id   [必須]| レプリカの識別子。|
@@ -102,7 +102,7 @@ Service Fabric パーティションのレプリカに関する情報を取得�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -118,7 +118,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --partition-id [必須]| パーティションの ID。|
 | --continuation-token  | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。|
@@ -126,7 +126,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -141,7 +141,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --node-name    [必須]| ノード名。|
 | --partition-id [必須]| パーティションの ID。|
@@ -151,7 +151,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -166,7 +166,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --node-name    [必須]| ノード名。|
 | --partition-id [必須]| パーティションの ID。|
@@ -175,7 +175,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|説明|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|

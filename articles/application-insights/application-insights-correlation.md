@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: ea6e6c4044a0163ae36d6790755b67c5066251a8
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: e821a640d3d75e712c022bd681eb07b83da91911
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -81,7 +81,7 @@ Application Insights は、相関付け HTTP プロトコル用の[拡張機能]
 - `dependency`は、`span.kind = client`を使用して **Span** にマップします
 - `request` と `dependency` の `id` は **Span.Id** にマップします
 - `operation_Id` は **TraceId** にマップします
-- `operation_ParentId` は `ChileOf` 型の **Reference** にマップします
+- `operation_ParentId` は `ChildOf` 型の **Reference** にマップします
 
 Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: bdbdebe069b3150bed4aa26f1f6e677a66f75f32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e4af248a1aafbd34a62c75e792746514456577b
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
@@ -99,10 +99,10 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | Azure AD 管理ポータルに移動します。 | [Azure AD 管理ポータル - 会社のブランド](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| ログイン ページ用の資産 (ヒーロー ロゴ、小さいロゴ、ラベルなど) をアップロードします AD FS がある場合は、必要に応じて ADFS ログイン ページと同じ資産に統一します。 | [サインイン ページとアクセス パネル ページに会社のブランドを追加する: カスタマイズ可能な要素](active-directory-add-company-branding.md) |
+| ログイン ページ用の資産 (ヒーロー ロゴ、小さいロゴ、ラベルなど) をアップロードします AD FS がある場合は、必要に応じて ADFS ログイン ページと同じ資産に統一します。 | [サインイン ページとアクセス パネル ページに会社のブランドを追加する: カスタマイズ可能な要素](customize-branding.md) |
 | 変更が完全に反映されるまで数分待ちます。 |  |
 | POC ユーザーの資格情報で https://myapps.microsoft.com にログインします。 |  |
-| ブラウザーで外観を確認します。 | [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md) |
+| ブラウザーで外観を確認します。 | [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](customize-branding.md) |
 | 必要に応じて、他のデバイスで外観を確認します。 |  |
 
 ### <a name="considerations"></a>考慮事項
@@ -379,7 +379,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 
 | 前提条件 | リソース |
 | --- | --- |
-| テナントでセルフサービスによるパスワード管理を有効にします。 | [IT 管理者のための Azure Active Directory のパスワード リセット](active-directory-passwords.md) |
+| テナントでセルフサービスによるパスワード管理を有効にします。 | [IT 管理者のための Azure Active Directory のパスワード リセット](active-directory-passwords-update-your-own-password.md) |
 | オンプレミスのパスワードを管理するためのパスワード ライトバックを有効にします。 これには、特定のバージョンの Azure AD Connect が必要となることに注意してください。 | [パスワード ライトバックの前提条件](active-directory-passwords-writeback.md) |
 | この機能を使用する PoC ユーザーを把握し、セキュリティ グループのメンバーになっていることを確認します。 この機能を完全に実証するには、ユーザーが非管理者である必要があります。 | [カスタマイズ: Azure AD Password Management: パスワード リセットへのアクセスの制限](active-directory-passwords-writeback.md) |
 

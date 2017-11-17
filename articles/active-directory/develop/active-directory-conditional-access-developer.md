@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 321c87f242f2c24eb2b28be2dc69cde278117b97
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: eddc1988e094a50ba7e41331a576846aa26f77a4
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -28,7 +28,7 @@ Azure Active Directory (AD) では、アプリをセキュリティ保護し、�
 * Intune 登録されているデバイスのみに特定のサービスへのアクセスを許可します。
 * ユーザーの場所と IP 範囲を制限します。
 
-条件付きアクセスのすべての機能の詳細については、「[Azure クラシック ポータルの条件付きアクセス](../active-directory-conditional-access.md)」を参照してください。 
+条件付きアクセスのすべての機能の詳細については、「[Azure クラシック ポータルの条件付きアクセス](../active-directory-conditional-access-azure-portal.md)」を参照してください。 
 
 この記事では、Azure AD のアプリを構築する開発者にとって条件付きアクセス機能が持つ意味について説明します。  この記事は、[シングル](active-directory-integrating-applications.md)および[マルチテナント](active-directory-devhowto-multi-tenant-overview.md) アプリおよび[一般的な認証のパターン](active-directory-authentication-scenarios.md)の知識を持っているユーザーを対象とします。
 
@@ -48,7 +48,7 @@ Azure Active Directory (AD) では、アプリをセキュリティ保護し、�
 * ADAL.js を使用するシングル ページ アプリケーション
 * リソースを呼び出す Web Apps
 
-条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーの構成方法については、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azuread-connected-apps.md)」を参照してください。
+条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーの構成方法については、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal-get-started.md)」を参照してください。
 
 シナリオによっては、企業のお客様は、条件付きアクセス ポリシーをいつでも適用/削除できます。  新しいポリシーが適用されたときにアプリの機能を継続するためには、"チャレンジ" 処理を実装する必要があります。 チャレンジ処理の例は次のとおりです。 
 
@@ -218,7 +218,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 ## <a name="see-also"></a>関連項目
 
-* 機能の詳細については、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access.md)」を参照してください。
+* 機能の詳細については、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azure-portal.md)」を参照してください。
 * Azure AD コード サンプルについては、[Github リポジトリのコード サンプル](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)を参照してください。 
 * ADAL SDK の詳細情報およびリファレンス ドキュメントにアクセスするには、[ライブラリ ガイド](active-directory-authentication-libraries.md)を参照してください。
 * マルチテナント シナリオの詳細については、[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](active-directory-devhowto-multi-tenant-overview.md)を参照してください。

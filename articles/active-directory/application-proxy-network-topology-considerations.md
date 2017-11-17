@@ -15,11 +15,11 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 11244e0044eef8441e3a37ab8aeff0da30dacdb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15c392c6e94abaff7c28bc672cfe61c7551ede4d
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
@@ -102,7 +102,7 @@ Azure と企業ネットワークとの間に、プライベート ピアリン�
 
 ホスト環境にネットワークを移動する組織が増えています。 これにより組織は、企業ネットワークの一部でもあり、ドメイン内のままであるホスト環境にアプリを配置できます。 この場合は、前のセクションで説明したパターンをアプリケーションの新しい場所に適用できます。 このオプションを検討する場合は、[Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-overview.md) に関するページをご覧ください。
 
-さらに、別々の場所やネットワーク内にある対象アプリケーションに接続するコネクタを、[コネクタ グループ](active-directory-application-proxy-connectors.md)を使用して整理することを検討してください。 
+さらに、別々の場所やネットワーク内にある対象アプリケーションに接続するコネクタを、[コネクタ グループ](active-directory-application-proxy-connectors-azure-portal.md)を使用して整理することを検討してください。 
 
 ## <a name="common-use-cases"></a>一般的なユース ケース
 
@@ -174,5 +174,5 @@ ExpressRoute プライベート ピアリング経由で企業ネットワーク
 
 - [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 - [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
-- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+- [条件付きアクセスを有効にする](application-proxy-enable-remote-access-sharepoint.md)
 - [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)

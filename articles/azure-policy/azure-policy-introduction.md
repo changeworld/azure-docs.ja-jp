@@ -10,11 +10,11 @@ ms.topic: overview
 ms.service: azure-policy
 manager: jochan
 ms.custom: mvc
-ms.openlocfilehash: b784c79166eb614988d84b4553bb95e4d1e457af
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ef1114f6b1259e4f0d60260febb39bc70b181fbc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -51,7 +51,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 こうしたポリシーを割り当てるには、Azure Portal、PowerShell、または Azure CLI を使用します。
 
-ポリシー定義の構造について詳しくは、「[ポリシー定義の構造](../azure-resource-manager/resource-manager-policy.md#policy-definition-structure)」をご覧ください。
+ポリシー定義の構造について詳しくは、「[ポリシー定義の構造](policy-definition.md)」をご覧ください。
 
 ## <a name="policy-assignment"></a>ポリシー割り当て
 
@@ -68,7 +68,7 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 <!--
 Next link should point to new Concept page for Parameters
 -->
-ポリシー パラメーターについて詳しくは、「[リソース ポリシーの概要 - パラメーター](../azure-resource-manager/resource-manager-policy.md#parameters)」をご覧ください。
+ポリシー パラメーターについて詳しくは、「[リソース ポリシーの概要 - パラメーター](policy-definition.md#parameters)」をご覧ください。
 
 ## <a name="initiative-definition"></a>イニシアチブ定義
 イニシアチブ定義は、単一の包括的な目標を実現することを目的として調整されたポリシー定義のコレクションです。 イニシアチブ定義により、ポリシー定義の管理と割り当てが簡素化されます。 簡素化するには、一連のポリシーを 1 つのアイテムとしてグループ化します。 たとえば、Azure Security Center で利用可能なすべてのセキュリティ推奨事項を監視することを目的とする、"**Azure Security Center での監視を有効にする**" というタイトルのイニシアチブを作成できます。
@@ -113,7 +113,7 @@ For more information about initiative definitions, see Initiative Definitions.+ 
 
 - 環境でポリシー定義を作成する場合、最初は、拒否効果ではなく監査効果を定義して、環境のリソースでのポリシー定義の影響を追跡することをお勧めします。 アプリケーションを自動スケールアップするスクリプトが既にある場合、拒否効果を設定すると、このような自動化タスクが妨げられる場合があります。
 - 定義と割り当てを作成するときは、組織階層に留意することが重要です。 高いレベルで定義を作成し (たとえば、管理グループやサブスクリプションのレベル)、次の子レベルに割り当てることをお勧めします。 たとえば、管理グループ レベルでポリシー定義を作成した場合、その定義のポリシー割り当てでは、管理グループ内のサブスクリプション レベルを対象にできます。
-- 環境のコンプライアンス状態をよりよく理解するため、Standard 価格レベルを使うことをお勧めします。 Microsoft の価格モデルと各サービスの詳細については、[価格](https://azure.microsoft.com/pricing/details/azure-policy)に関するページをご覧ください。
+- 環境のコンプライアンスの状態をよりよく理解するため、Standard 価格レベルを使うことをお勧めします。 Microsoft の価格モデルと各サービスの詳細については、[価格](https://azure.microsoft.com/pricing/details/azure-policy)に関するページをご覧ください。
 - 考えているポリシーが 1 つだけの場合でも、ポリシー定義ではなくイニシアチブ定義を常に使うことをお勧めします。 たとえば、ポリシー定義 *policyDefA* をイニシアチブ定義 *initiativeDefC* の下に作成すると、*policyDefA* と同じような目標を持つ *policyDefB* の別のポリシー定義を後で作成する場合、それを *initiativeDefC* の下に追加して適切に追跡できます。
 
    イニシアチブ定義からイニシアチブ割り当てを作成した場合、そのイニシアチブ定義に追加される新しいポリシー定義はすべて、そのイニシアチブ定義のイニシアチブ割り当てに自動的にまとめられることに注意してください。 ただし、新しいポリシー定義に新しいパラメーターを追加する場合は、イニシアチブの定義または割り当てを編集して、これを更新する必要があります。
