@@ -91,6 +91,8 @@
       items:
         - name: Azure
           items:
+            - name: 継続的な監視の追加
+              href: app-insights-vsts-continuous-monitoring.md
             - name: プロファイラー
               href: app-insights-profiler.md
             - name: Profiler の有効化

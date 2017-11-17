@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Time Series Insights のドキュメント
+metadata:
+  title: Azure Time Series Insights のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: 完全に管理されたイベント処理によってクラウド内で IoT 分析を実行する方法について説明します。 アプリケーション、センサー、デバイスなどからリアルタイムでデータを分析します。
+  services: time-series-insights
+  author: kfile
+  manager: jhubbard
+  ms.service: time-series-insights
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/13/2017
+  ms.author: kfile
+abstract:
+  description: Time Series Insights 環境を設定し、IoT ソリューションまたは接続されたモノの時系列データを調査および分析する方法について説明します。 ドキュメントには、前提条件、使用方法、API リファレンスのほか、数分で作業を開始するのに役立つ記事が記載されています。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Log Analytics をデプロイし、Azure、他のクラウド プロバイダー、オンプレミス リソースからのデータの収集を構成する方法を説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/time-series-insights/media/index/time-series-insights.svg'
+            text: Azure Time Series Insights の探索
+            href: /azure/time-series-insights/time-series-quickstart
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: <p><a href="/rest/api/time-series-insights/time-series-insights-reference-queryapi">クエリ API</a></p><p><a href="/rest/api/time-series-insights/time-series-insights-reference-query-syntax">クエリ構文</a></p>

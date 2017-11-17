@@ -72,8 +72,7 @@
 
 ## [グループとメンバーの管理](active-directory-manage-groups.md)
 ### グループの管理
-#### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [クラシック ポータル](active-directory-accessmanagement-manage-groups.md)
+#### [Azure ポータル](active-directory-groups-create-azure-portal.md)
 #### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [グループ メンバーを管理する](active-directory-groups-members-azure-portal.md)
 ### [グループ所有者を管理する](active-directory-accessmanagement-managing-group-owners.md)
@@ -93,8 +92,7 @@
 #### [Azure Portal](active-directory-groups-settings-azure-portal.md)
 #### [コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### 高度なルールの作成
-#### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
-#### [クラシック ポータル](active-directory-accessmanagement-groups-with-advanced-rules.md)
+#### [Azure ポータル](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [セルフサービス グループのセットアップ](active-directory-accessmanagement-self-service-group-management.md)
 ### [トラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
@@ -135,6 +133,7 @@
 #### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 ### [SSPR のしくみ](active-directory-passwords-how-it-works.md)
 ### [SSPR デプロイ ガイド](active-directory-passwords-best-practices.md)
+### [SSPR と Windows 10](active-directory-passwords-login.md)
 ### [SSPR のポリシー](active-directory-passwords-policy.md)
 ### [SSPR のカスタマイズ](active-directory-passwords-customize.md)
 ### [SSPR データ要件](active-directory-passwords-data.md)
@@ -209,8 +208,8 @@
 #### クラシック ポータルの使用
 ##### [コネクタをダウンロードする](application-proxy-enable-classic-portal.md)
 ##### [アプリを発行する](active-directory-application-proxy-publish.md)
-##### [コネクタを使用する](active-directory-application-proxy-connectors.md)
-##### [条件付きアクセス](active-directory-application-proxy-conditional-access.md)
+##### [コネクタを使用する](active-directory-application-proxy-connectors-azure-portal.md)
+##### [条件付きアクセス](application-proxy-enable-remote-access-sharepoint.md)
 
 ### エンタープライズ アプリの管理
 #### [ユーザーを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)
@@ -222,6 +221,7 @@
 #### [エンタープライズ アプリのシングル サインオンの管理](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML アプリの詳細な証明書署名](active-directory-enterprise-apps-advance-certificate-options.md)
 #### [ユーザーのエクスペリエンスでサードパーティ アプリを非表示にする](active-directory-coreapps-hide-third-party-app.md)
+### [HRD ポリシーを使用してサインイン自動アクセラレーションを構成する](active-directory-auto-acceleration-using-hrd.md)
 
 ### [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
 #### [セルフ サービス アクセス](active-directory-self-service-application-access.md)
@@ -248,9 +248,8 @@
 ## ディレクトリの管理
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### カスタム ドメイン名
-#### [概要](active-directory-add-domain-concepts.md)
+#### [概要](active-directory-domains-manage-azure-portal.md)
 #### [ドメイン名の管理](active-directory-domains-manage-azure-portal.md)
-##### [クラシック ポータル](active-directory-add-manage-domain-names.md)
 ### [ディレクトリを管理する](active-directory-administer.md)
 ### [複数のディレクトリ](active-directory-licensing-directory-independence.md)
 ### [セルフサービス サインアップ](active-directory-self-service-signup.md)

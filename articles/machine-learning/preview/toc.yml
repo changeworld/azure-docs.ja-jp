@@ -41,6 +41,8 @@
           href: roaming-and-collaboration.md
     - name: Visual Studio Code Tools for AI の使用
       href: quickstart-visual-studio-tools.md
+    - name: Azure IoT Edge AI ツールキットの使用
+      href: use-azure-iot-edge-ai-toolkit.md
     - name: コンピューティング環境の構成
       items:
         - name: 実験の構成
@@ -88,6 +90,8 @@
           href: how-to-scale-clusters.md
         - name: Web サービスのデプロイ
           href: model-management-service-deploy.md
+        - name: IoT Edge デバイスへのデプロイ
+          href: deploy-to-iot-edge-device.md
         - name: Web サービスを使用する
           href: model-management-consumption.md
         - name: モデル データの収集

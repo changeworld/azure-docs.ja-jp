@@ -71,7 +71,7 @@
 ## 解決方法
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
 #### [複数の VM の更新プログラムの管理](manage-update-multi.md)
-#### [SCCMr と OMS Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)
+#### [SCCM と OMS Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)
 ### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
 ### [VM での変更の追跡](automation-vm-change-tracking.md)
 ### [インベントリ コレクションでの VM の管理](automation-vm-inventory.md)

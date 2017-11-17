@@ -63,6 +63,7 @@
 #### [PowerShell](create-public-ip-availability-zone-powershell.md)
 
 ### 仮想マシン
+#### [仮想マシン ネットワーク スループット](virtual-machine-network-throughput.md)
 #### 静的パブリック IP アドレスを持つ VM を作成する
 ##### [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)

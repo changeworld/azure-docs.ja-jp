@@ -20,7 +20,7 @@
 ## [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
 ## [クライアント ライブラリの取得](analysis-services-data-providers.md)
 ## [バックアップと復元](analysis-services-backup.md)
-## [クエリ レプリカのスケールアウトの構成](analysis-services-scale-out.md)
+## [スケールアウトの構成](analysis-services-scale-out.md)
 ## [Excel を使用した接続](analysis-services-connect-excel.md)
 ## [Power BI を使用した接続](analysis-services-connect-pbi.md)
 ## [.odc ファイルの作成](analysis-services-odc.md)

@@ -37,6 +37,8 @@
       href: container-instances-mounting-azure-files-volume.md
     - name: Azure Container Registry からのデプロイ
       href: container-instances-using-azure-container-registry.md
+    - name: コンテナー化されたタスクの実行
+      href: container-instances-restart-policy.md
     - name: デプロイのトラブルシューティング
       href: container-instances-troubleshooting.md
 - name: リファレンス

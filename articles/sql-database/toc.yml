@@ -200,9 +200,9 @@
     - name: マルチテナント SaaS
       items:
         - name: SaaS の設計パターン
-          href: sql-database-design-patterns-multi-tenancy-saas-applications.md
+          href: saas-tenancy-app-design-patterns.md
         - name: SaaS アプリのセキュリティ
-          href: sql-database-elastic-tools-multi-tenant-row-level-security.md
+          href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
     - name: データベースの開発
       items:
         - name: JSON データ
@@ -337,24 +337,45 @@
           href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
     - name: マルチテナント SaaS
       items:
-        - name: チュートリアルの概要
-          href: sql-database-wtp-overview.md
-        - name: サンプル アプリのデプロイ
-          href: sql-database-saas-tutorial.md
-        - name: テナントのプロビジョニング
-          href: sql-database-saas-tutorial-provision-and-catalog.md
-        - name: データベース パフォーマンスの監視
-          href: sql-database-saas-tutorial-performance-monitoring.md
-        - name: Log Analytics による監視
-          href: sql-database-saas-tutorial-log-analytics.md
-        - name: シングル テナントの復元
-          href: sql-database-saas-tutorial-restore-single-tenant.md
-        - name: テナント スキーマの管理
-          href: sql-database-saas-tutorial-schema-management.md
-        - name: アドホック クエリの実行
-          href: sql-database-saas-tutorial-adhoc-analytics.md
-        - name: 分析用の ETL
-          href: sql-database-saas-tutorial-tenant-analytics.md
+        - name: Wingtips へようこそ
+          href: saas-tenancy-welcome-wingtip-tickets-app.md
+        - name: スタンドアロン アプリケーション
+          items:
+            - name: サンプル アプリのデプロイ
+              href: saas-standaloneapp-get-started-deploy.md
+        - name: テナントあたりのデータベース
+          href: saas-dbpertenant-wingtip-app-overview.md
+          items:
+            - name: チュートリアルの概要
+              href: saas-dbpertenant-wingtip-app-overview.md
+            - name: アプリのガイダンス
+              href: saas-dbpertenant-wingtip-app-guidance-tips.md
+            - name: サンプル アプリのデプロイ
+              href: saas-dbpertenant-get-started-deploy.md
+            - name: テナントのプロビジョニング
+              href: saas-dbpertenant-provision-and-catalog.md
+            - name: データベース パフォーマンスの監視
+              href: saas-dbpertenant-performance-monitoring.md
+            - name: Log Analytics による監視
+              href: saas-dbpertenant-log-analytics.md
+            - name: 1 つのテナントの復元
+              href: saas-dbpertenant-restore-single-tenant.md
+            - name: テナント スキーマの管理
+              href: saas-tenancy-schema-management.md
+            - name: アドホック クエリの実行
+              href: saas-tenancy-adhoc-analytics.md
+            - name: 分析用の ETL
+              href: saas-tenancy-tenant-analytics.md
+        - name: マルチテナント データベース
+          items:
+            - name: サンプル アプリのデプロイ
+              href: saas-multitenantdb-get-started-deploy.md
+            - name: データベース パフォーマンスの監視
+              href: saas-multitenantdb-performance-monitoring.md
+            - name: アドホック クエリの実行
+              href: saas-multitenantdb-adhoc-reporting.md
+            - name: テナント スキーマの管理
+              href: saas-multitenantdb-schema-management.md
     - name: アプリケーションの開発
       items:
         - name: C と C++

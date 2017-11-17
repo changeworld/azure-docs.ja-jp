@@ -1,61 +1,61 @@
-- name: Azure IoT Hub Device Provisioning Service のドキュメント
+- name: Azure IoT Edge のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: IoT Device Provisioning について
-      href: about-iot-dps.md
+    - name: Azure IoT Edge について
+      href: how-iot-edge-works.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: 自動プロビジョニングの設定
-      href: quick-setup-auto-provision.md
-    - name: シミュレートされたデバイスの作成
-      items:
-        - name: TPM
-          href: quick-create-simulated-device.md
-        - name: X.509
-          href: quick-create-simulated-device-x509.md
+    - name: エッジへのデプロイ - Windows
+      href: quickstart.md
+    - name: エッジへのデプロイ - Linux
+      href: quickstart-linux.md
 - name: Tutorials (チュートリアル)
   items:
-    - name: 1 - クラウド リソースを設定する
-      href: tutorial-set-up-cloud.md
-    - name: 2 - デバイスを設定する
-      href: tutorial-set-up-device.md
-    - name: 3 - デバイスを IoT ハブにプロビジョニングする
-      href: tutorial-provision-device-to-hub.md
-    - name: 4 - デバイスを複数のハブにプロビジョニングする
-      href: tutorial-provision-multiple-hubs.md
-- name: 概念
-  items:
-    - name: デバイスの概念
-      href: concepts-device.md
-    - name: サービスの概念
-      href: concepts-service.md
-    - name: セキュリティの概念
-      href: concepts-security.md
+    - name: Edge デバイスのシミュレート - Windows
+      href: tutorial-simulate-device-windows.md
+    - name: Edge デバイスのシミュレート - Linux
+      href: tutorial-simulate-device-linux.md
+    - name: 'C# モジュールの開発'
+      href: tutorial-csharp-module.md
+    - name: Azure Stream Analytics のデプロイ
+      href: tutorial-deploy-stream-analytics.md
+    - name: Azure Machine Learning のデプロイ
+      href: tutorial-deploy-machine-learning.md
+    - name: Azure Functions のデプロイ
+      href: tutorial-deploy-function.md
 - name: ハウツー ガイド
   items:
-    - name: デバイス登録の管理
-      href: how-to-manage-enrollments.md
-    - name: SDK での HSM の使用
-      href: use-hsm-with-sdk.md
-    - name: Provisioning Service へのアクセスの制御
-      href: how-to-control-access.md
-- name: リファレンス
+    - name: ゲートウェイ デバイスの作成
+      href: how-to-create-gateway-device.md
+    - name: 大規模なデプロイと監視
+      href: how-to-deploy-monitor.md
+    - name: IoT Core デバイスのプロビジョニング
+      href: how-to-install-iot-core.md
+- name: 概念
   items:
-    - name: REST ()
-      href: /rest/api/iot-dps
+    - name: IoT Edge のモジュール
+      href: iot-edge-modules.md
+      items:
+        - name: 開発
+          href: module-development.md
+        - name: 構成
+          href: module-composition.md
+    - name: IoT Edge ランタイム
+      href: iot-edge-runtime.md
+    - name: デプロイメント
+      href: module-deployment-monitoring.md
+    - name: セキュリティ
+      href: security.md
 - name: リソース
   items:
-    - name: Azure IoT Hub
-      href: 'https://azure.microsoft.com/services/iot-hub/'
     - name: IoT デバイス カタログ向けの Azure 認定
       href: 'https://catalog.azureiotsuite.com/'
     - name: Azure IoT デベロッパー センター
       href: 'https://azure.microsoft.com/develop/iot/'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
-    - name: Device Explorer ツール
+    - name: DeviceExplorer ツール
       href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
     - name: iothub-diagnostics ツール
       href: 'https://github.com/Azure/iothub-diagnostics'

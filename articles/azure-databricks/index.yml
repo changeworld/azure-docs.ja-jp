@@ -1,0 +1,42 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure Databricks プレビューのドキュメント
+metadata:
+  title: Azure Databricks のドキュメント - チュートリアル | Microsoft Docs
+  description: Microsoft Azure で Databricks を使用する方法について説明します。
+  services: azure-databricks
+  author: nitinme
+  manager: cgronlun
+  ms.service: azure-databricks
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/15/2017
+  ms.author: nitinme
+abstract:
+  description: Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。 Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。 ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。
+sections:
+  - title: 5 分間のクイック スタート
+    items:
+      - type: paragraph
+        text: Azure Databricks ワークスペースと Spark クラスターを作成してから、ジョブを実行する方法について説明します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/azure-databricks/media/index/portal.svg
+            text: Azure ポータル
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+  - title: ステップバイステップのチュートリアル
+    items:
+      - type: paragraph
+        text: Azure Databricks を操作する方法について説明します。
+      - type: list
+        style: ordered
+        items:
+          - html: '<a href="https://docs.azuredatabricks.net/user-guide/getting-started.html" target="_blank">Azure Databricks の概要</a>'
+          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-blob-storage" target="_blank">Azure Storage からのデータのインポート</a>'
+          - hmtl: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-data-lake-store" target="_blank">Import data from Azure Data Lake Store</a>'
+          - html: '<a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">Notebook の使用</a>'
+          - html: '<a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">Spark ジョブの実行</a>'
+          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">Spark データ ソースの使用</a>'
