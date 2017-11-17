@@ -250,7 +250,7 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetA
 
 ![Azure Portal での Web アプリへの証明書の追加][2]
 
-最後に、名前が WEBSITE\_LOAD\_CERTIFICATES で値が * の Web アプリに、アプリケーション設定を追加する必要があります。 これにより、すべての証明書が読み込まれます。 アップロードした証明書のみを読み込む場合は、そのサムプリントのコンマ区切りリストを入力できます。
+最後にWeb アプリへアプリケーション設定を、名前 "WEBSITE\_LOAD\_CERTIFICATES" 値 "*" と追加する必要があります。 これにより、すべての証明書が読み込まれます。 アップロードした証明書のみを読み込む場合は、そのサムプリントのコンマ区切りリストを入力できます。
 
 Web アプリに証明書を追加する方法の詳細については、 [Azure Websites アプリケーションでの証明書の使用](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
 
