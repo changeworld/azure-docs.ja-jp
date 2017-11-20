@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2017
+ms.date: 11/10/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8961576d1a7de268bab2f4adf01d89dde1fc8776
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 23621c418663ee5b4ed83ab989663a882e7000bd
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>SSH を使用して HDInsight (Hadoop) に接続する
 
@@ -48,26 +48,24 @@ HDInsight では Linux (Ubuntu) を Hadoop クラスター内のノードのオ�
 > [!TIP]
 > HDInsight に初めて接続すると、ホストの信頼性を確立できないという警告が SSH クライアントに表示されることがあります。 メッセージが表示されたら、"はい" を選択して、SSH クライアントの信頼済みサーバーの一覧にこのホストを追加してください。
 >
-> 以前に同じ名前でサーバーに接続したことがある場合は、保存されているホスト キーとサーバーのホスト キーが一致しないという警告が表示されることがあります。 この場合、SSH クライアントがクラスターへの接続を拒否する可能性があります。 サーバー名の既存のエントリを削除する方法については、SSH クライアントのドキュメントを参照してください。
+> 以前に同じ名前でサーバーに接続したことがある場合は、保存されているホスト キーとサーバーのホスト キーが一致しないという警告が表示されることがあります。 サーバー名の既存のエントリを削除する方法については、SSH クライアントのドキュメントを参照してください。
 
 ## <a name="ssh-clients"></a>SSH クライアント
 
 Linux、Unix、および macOS システムでは、`ssh` コマンドと `scp` コマンドが用意されています。 `ssh` クライアントは、通常、Linux または Unix ベースのシステムとの間にリモートのコマンドライン セッションを作成するために使用します。 `scp` クライアントは、クライアントとリモート システムの間でファイルを安全にコピーするために使用します。
 
-Microsoft Windows には、既定では SSH クライアントが用意されていません。 Windows 用の `ssh` クライアントと `scp` クライアントは、次の各パッケージで入手できます。
+Microsoft Windows には、既定では SSH クライアントがインストールされていません。 Windows 用の `ssh` クライアントと `scp` クライアントは、次の各パッケージで入手できます。
 
-* [Azure Cloud Shell](../cloud-shell/quickstart.md): Cloud Shell は、ブラウザーで Bash 環境を提供し、`ssh`、`scp`、およびその他の一般的な Linux コマンドを提供します。
+* OpenSSH クライアント (ベータ): Fall Creators Update で、__[設定]__ > __[アプリと機能]__ > __[オプション機能の管理]__ > __[機能の追加]__ の順に移動して、__[OpenSSH Client]\(OpenSSH クライアント\)__ を選択します。 
+
+    > [!NOTE]
+    > この機能を有効にした後 PowerShell で `ssh` コマンドと `scp` コマンドが使用できない場合、ログアウトしてからログインし直してください。
 
 * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about): `ssh` コマンドおよび `scp` コマンドは、Bash on Windows のコマンド ラインを介して利用できます。
 
+* [Azure Cloud Shell](../cloud-shell/quickstart.md): Cloud Shell は、ブラウザーで Bash 環境を提供し、`ssh`、`scp`、およびその他の一般的な Linux コマンドを提供します。
+
 * [Git (https://git-scm.com/)](https://git-scm.com/): `ssh` コマンドおよび `scp` コマンドは、GitBash のコマンド ラインを介して利用できます。
-
-* [GitHub Desktop (https://desktop.github.com/)](https://desktop.github.com/): `ssh` コマンドおよび `scp` コマンドは、GitHub Shell のコマンド ラインを介して利用できます。 GitHub Desktop は、Git Shell のコマンド ラインとして Bash、Windows コマンド プロンプト、PowerShell を使用するように構成できます。
-
-* [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH): PowerShell チームが OpenSSH を Windows に移植し、テスト リリースを提供しています。
-
-    > [!WARNING]
-    > OpenSSH パッケージには、SSH サーバー コンポーネントの `sshd` が含まれています。 このコンポーネントは、システム上で SSH サーバーを起動し、他のユーザーによる接続を可能にします。 システム上で SSH サーバーをホストする場合を除き、このコンポーネントの構成またはポート 22 の解放は行わないでください。 これは HDInsight との通信には必要はありません。
 
 さらに、[PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) や [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/) といった、いくつかのグラフィカル SSH クライアントもあります。 これらのクライアントは HDInsight への接続に使用できますが、接続するプロセスは、`ssh` ユーティリティを使用する場合とは異なります。 詳細については、お使いのグラフィカル クライアントに関するドキュメントを参照してください。
 
@@ -176,7 +174,7 @@ worker ノードと Zookeeper ノードには、インターネットから直�
 
         ssh sshuser@wn0-myhdi
 
-    クラスター内にあるノードのドメイン名の一覧を取得する方法については、「[Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)」を参照してください。
+    ノード名の一覧を取得するには、[Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)に関するページを参照してください。
 
 SSH アカウントが__パスワード__を使用してセキュリティで保護されている場合は、接続時にパスワードを入力します。
 

@@ -3,21 +3,21 @@ title: "Azure Cloud Shell で Terraform と Bash を使ってデプロイする 
 description: "Bash で Terraform を使って Azure リソースをデプロイします"
 services: Azure
 documentationcenter: 
-author: jluk
-manager: timlt
+author: tomarcher
+manager: routlaw
 tags: azure-cloud-shell
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
-ms.author: juluk
-ms.openlocfilehash: 5a9f836bfda554e291c6402877c07ab08e77d5ab
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/15/2017
+ms.author: tarcher
+ms.openlocfilehash: c75b5d521dc3eacaf5c5921c35442b1afeb4fa13
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="terraform-and-bash-in-cloud-shell"></a>Cloud Shell での Terraform と Bash
 この記事では、[Terraform AzureRM プロバイダー](https://www.terraform.io/docs/providers/azurerm/index.html)を使ってリソース グループを作成する手順について説明します。 
@@ -91,7 +91,7 @@ commands will detect it and remind you to do so if necessary.
 
 Terraform 構成ファイルを含む作業ディレクトリを初期化するには、[terraform init コマンド](https://www.terraform.io/docs/commands/init.html)を使います。 新しい Terraform 構成を作成した後、またはバージョン管理から既存の Terraform 構成を複製した後は、最初に `terraform init` コマンドを実行する必要があります。 このコマンドは複数回実行しても安全です。
 
-### <a name="terraform-plan"></a>terraform plan
+### <a name="terraform-plan"></a>Terraform プラン
 Terraform テンプレートによって作成されるリソースを、`terraform plan` でプレビューします。
 
 ```
