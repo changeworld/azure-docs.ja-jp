@@ -2,7 +2,7 @@
 title: "Azure Cosmos DB のテーブル API の概要 | Microsoft Docs"
 description: "人気のある OSS MongoDB API と Azure Cosmos DB を使用して、大量のキー値データを低遅延で格納および照会する方法を説明します。"
 services: cosmos-db
-author: bhanupr
+author: mimig
 manager: jhubbard
 editor: monicar
 documentationcenter: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/15/2017
-ms.author: arramac
-ms.openlocfilehash: 87e5555b282ca8efb8d8d3ed7938df94faffb102
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: mimig1
+ms.openlocfilehash: 8e8a5d89080df54da1a951d94fac12592de29c50
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API の概要
 
