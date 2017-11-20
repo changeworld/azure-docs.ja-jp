@@ -65,6 +65,8 @@
       href: functions-triggers-bindings.md
     - name: 言語
       items:
+        - name: サポートされている言語
+          href: supported-languages.md
         - name: 'C# スクリプト'
           href: functions-reference-csharp.md
         - name: .NET クラス ライブラリ

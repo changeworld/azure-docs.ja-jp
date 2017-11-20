@@ -370,6 +370,8 @@
           items:
             - name: サンプル アプリのデプロイ
               href: saas-multitenantdb-get-started-deploy.md
+            - name: テナントのプロビジョニング
+              href: saas-multitenantdb-provision-and-catalog.md
             - name: データベース パフォーマンスの監視
               href: saas-multitenantdb-performance-monitoring.md
             - name: アドホック クエリの実行

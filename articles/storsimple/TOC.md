@@ -2,6 +2,7 @@
 
 ## 概要
 ### [ソリューションとは](storsimple-ova-overview.md)
+### [利用可能なリージョン](storsimple-regions.md)
 
 ## 作業開始
 ### プラン
@@ -59,6 +60,7 @@
 ### [ソリューションとは](storsimple-overview.md)
 ### [StorSimple 学習マップ](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [セキュリティに関する考慮事項](storsimple-8000-security.md)
+### [利用可能なリージョン](storsimple-regions.md)
 ### [FAQ - Azure Portal に移行する](storsimple-8000-move-azure-portal-faq.md)
 
 ## 作業開始

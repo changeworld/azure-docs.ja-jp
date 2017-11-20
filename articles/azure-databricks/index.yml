@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure Databricks プレビューのドキュメント
 metadata:
   title: Azure Databricks のドキュメント - チュートリアル | Microsoft Docs
-  description: Microsoft Azure で Databricks を使用する方法について説明します。
+  description: ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。
   services: azure-databricks
   author: nitinme
   manager: cgronlun
@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/15/2017
   ms.author: nitinme
 abstract:
-  description: Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。 Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。 ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。
+  description: ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。 Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。
 sections:
   - title: 5 分間のクイック スタート
     items:

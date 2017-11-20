@@ -3,7 +3,7 @@
 ## [Azure IoT オプションの比較](iot-suite-options.md)
 ## [構成済みソリューションの概要](iot-suite-what-are-preconfigured-solutions.md)
 
-# 作業の開始
+# 作業開始
 ## リモート監視
 ### [構成済みソリューションのデプロイ](iot-suite-remote-monitoring-deploy.md)
 ### [構成済みソリューションの運用](iot-suite-remote-monitoring-explore.md)
@@ -25,11 +25,8 @@
 ###### [シミュレートされたデータ](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
 ###### [実際のセンサーを使用する](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
 ###### [ファームウェアの更新プログラムを実装する](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
-#### Intel NUC ゲートウェイを接続する
-##### [シミュレートされたデータ](iot-suite-v1-gateway-kit-get-started-simulator.md)
-##### [実際のセンサーを使用する](iot-suite-v1-gateway-kit-get-started-sensortag.md)
 
-### 方法
+### ハウツー ガイド
 #### シミュレートされたデバイスの接続
 ##### [Windows 上の C](iot-suite-v1-connecting-devices.md)
 ##### [Linux 上の C](iot-suite-v1-connecting-devices-linux.md)
@@ -51,7 +48,7 @@
 ### [コネクティッド ファクトリ ソリューションの概要](iot-suite-connected-factory-overview.md)
 ### [コネクティッド ファクトリ ソリューションのチュートリアル](iot-suite-connected-factory-sample-walkthrough.md)
 
-# 方法
+# ハウツー ガイド
 ## リモート監視
 ### [高度な監視の実行](iot-suite-remote-monitoring-monitor.md)
 ### [ルールを使用した問題の検出](iot-suite-remote-monitoring-automate.md)

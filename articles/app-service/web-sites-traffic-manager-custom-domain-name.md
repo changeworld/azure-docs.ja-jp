@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.openlocfilehash: 5f099201d9018a6f8577cb3daf127d09560fb94b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69c7984d0620b4a0fd40252129023093c09d6e56
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 [!INCLUDE [intro](../../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
-この記事では、負荷分散に Traffic Manager を利用する Azure App Service でカスタム ドメイン名を使用する一般的な手順を示します。
+この記事では、負荷分散のために [Traffic Manager](../traffic-manager/traffic-manager-overview.md) と統合されている [App Service](app-service-web-overview.md) アプリでカスタム ドメイン名を使用する一般的な手順を示します。
 
 [!INCLUDE [tmwebsitefooter](../../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
@@ -49,21 +49,18 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-カスタム ドメインを Azure App Service の Web アプリに関連付けるには、ドメイン名を購入したドメイン レジストラーのツールを使用して、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。 次の手順を使用して DNS ツールを見つけて利用します。
+カスタム ドメインを Azure App Service の Web アプリに関連付けるには、新しいエントリをカスタム ドメインの DNS テーブルに追加する必要があります。 これは、ドメイン プロバイダーからの管理ツールを使用して行います。
 
-1. ドメイン レジストラーのアカウントにサインインし、DNS レコードの管理ページを探します。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。 多く場合、このページへのリンクが見つかったら、アカウント情報を表示し、 **[My domains]**などのリンクを探します。
-2. ドメイン名の管理ページが見つかったら、DNS レコードを編集できるリンクを探します。 これは、**[ゾーン ファイル]**、**[DNS レコード]**、**[詳細]** などの構成リンクとして表示されている場合があります。
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
+
+ドメイン プロバイダーによって仕様が異なりますが、カスタム ドメイン名 (**contoso.com** など) "*から*"、Web アプリと統合されている Traffic Manager のドメイン名 (**contoso.trafficmanager.net**) "*に*" マッピングします。
    
-   * このページには多くの場合、いくつかのレコードが既に作成されています。たとえば、'**@**' or '\*' を "ドメイン パーキング" ページに関連付けるエントリが既にあります。 **www** のような一般的なサブドメインのレコードが含まれることもあります。
-   * このページには **CNAME レコード**が表示されるか、レコード タイプを選択するためのドロップダウンが表示されます。 さらに、**A レコード**や **MX レコード**などの他のレコードが表示されることもあります。 場合によっては、CNAME レコードは **Alias Record**などの別の名前で呼ばれています。
-   * このページには、**ホスト名**または**ドメイン名**から別のドメイン名に**マッピング**できるフィールドも表示されます。
-3. レジストラーによって仕様が異なりますが、一般的には、カスタム ドメイン名 (**contoso.com** など) "*から*"、Web アプリに利用される Traffic Manager のドメイン名 (**contoso.trafficmanager.net など**) "*に*" マッピングします。
-   
-   > [!NOTE]
-   > レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。 たとえば、**www.contoso.com** を Web アプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。 その後、"www" CNAME レコードに変更を加えることなく、"www.contoso.com" を Web アプリに追加できます。 詳細については、「[カスタム ドメインにおける Web アプリの DNS レコードの作成][CREATEDNS]」をご覧ください。
-   > 
-   > 
-4. レジストラーで DNS レコードの追加または変更が完了したら、変更を保存します。
+> [!NOTE]
+> レコードが既に使用されており、事前にアプリをバインドする必要がある場合は、追加の CNAME レコードを作成できます。 たとえば、**www.contoso.com** を Web アプリに事前にバインドするには、**awverify.www** から **contoso.trafficmanager.net** への CNAME レコードを作成します。 その後、"www" CNAME レコードに変更を加えることなく、"www.contoso.com" を Web アプリに追加できます。 詳細については、「[カスタム ドメインにおける Web アプリの DNS レコードの作成][CREATEDNS]」をご覧ください。
+> 
+> 
+
+ドメイン プロバイダーで DNS レコードの追加または変更が完了したら、変更を保存します。
 
 <a name="enabledomain"></a>
 
@@ -72,8 +69,6 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>次のステップ
 詳細については、 [Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
-
-[!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
 [!INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 

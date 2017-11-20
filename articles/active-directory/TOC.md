@@ -248,12 +248,12 @@
 ## ディレクトリの管理
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### カスタム ドメイン名
-#### [概要](active-directory-domains-manage-azure-portal.md)
-#### [ドメイン名の管理](active-directory-domains-manage-azure-portal.md)
+#### [クイックスタート](add-custom-domain.md)
+#### [カスタム ドメイン名を追加する](active-directory-domains-manage-azure-portal.md)
 ### [ディレクトリを管理する](active-directory-administer.md)
 ### [複数のディレクトリ](active-directory-licensing-directory-independence.md)
 ### [セルフサービス サインアップ](active-directory-self-service-signup.md)
-#### [管理されていないディレクトリの引き継ぎ](domains-admin-takeover.md)
+### [管理されていないディレクトリの引き継ぎ](domains-admin-takeover.md)
 ### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [有効にする](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [グループ ポリシーの設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
