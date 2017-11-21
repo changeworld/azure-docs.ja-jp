@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: 533add8948544e37dc27623a2f51aad1054b1bef
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: a2810d13d40272269341751b19b3010a8b135139
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>VM などのインフラストラクチャを Azure にプロビジョニングするための Terraform のインストールと構成
  
 Terraform は、[シンプルなテンプレート言語](https://www.terraform.io/docs/configuration/syntax.html)を使ってクラウド インフラストラクチャを簡単に定義、プレビュー、およびデプロイできるツールです。 この記事では、Terraform を使用して Azure にリソースをプロビジョニングするために必要な手順について説明します。 
 
 > [!TIP]
-> [Azure Cloud Shell 環境の Bash](/azure/cloud-shell/quickstart) には、Terraform が既定でインストールされています。 また、資格情報と [Azure Terraform モジュール](https://registry.terraform.io/modules/Azure)を使って事前構成済みです。 Cloud Shell を使用する場合は、このドキュメントのインストール/セットアップの部分は省略してかまいません。
+Azure で Terraform を使用する方法の詳細については、[Terraform ハブ](/azure/terraform)に関する記事を参照してください。 [Cloud Shell](/terraform/terraform-cloud-shell) には、Terraform が既定でインストールされています。 Cloud Shell を使用する場合は、このドキュメントのインストール/セットアップの部分は省略してかまいません。
 
 ## <a name="install-terraform"></a>Terraform のインストール
 

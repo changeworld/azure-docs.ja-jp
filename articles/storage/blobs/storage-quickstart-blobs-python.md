@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 76e23d85b392f8120914f6170040c6b3c450aba6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4a197af41f5450d84e1c18e15198d1febb02bab1
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>Python を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイックスタートでは、Python を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 
@@ -73,7 +73,11 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 
 ファイルを確認した後、任意のキーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、example.py ファイルを開いてコードを確認します。 
 
-## <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
+## <a name="understand-the-sample-code"></a>サンプル コードを理解する
+
+次に、サンプル コードを実行して、そのしくみを理解できるようにします。
+
+### <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
 最初に、Blob Storage にアクセスして管理するために使うオブジェクトへの参照を作成します。 これらのオブジェクトはお互いを基にして作成され、各オブジェクトは、一覧で次にあるオブジェクトによって使われます。
 
 * お使いのストレージ アカウントの Blob service を指す **BlockBlobService** オブジェクトをインスタンス化します。 
@@ -98,7 +102,7 @@ block_blob_service.create_container(container_name)
 # Set the permission so the blobs are public.
 block_blob_service.set_container_acl(container_name, public_access=PublicAccess.Container)
 ```
-## <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
+### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
 Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 最もよく使われるのはブロック BLOB であり、このクイックスタートでもそれを使います。  
 
@@ -128,7 +132,7 @@ Blob Storage では複数のアップロード方法を使うことができま�
 
 ブロック BLOB の最大サイズは 4.7 TB であり、Excel スプレッドシートから大きなビデオ ファイルまで何にでも使うことができます。 ページ BLOB は、主に、IaaS VM のバックアップ用の VHD ファイルに使われます。 追加 BLOB は、ファイルに書き込んでから情報を追加する場合など、ログ記録に使われます。 BLOB ストレージに格納されているほとんどのオブジェクトはブロック BLOB です。
 
-## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
+### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
 **list_blobs** メソッドを使用してコンテナー内のファイルの一覧を取得します。 このメソッドは、ジェネレーターを返します。 次のコードは、BLOB の一覧を取得し、ループ処理して、コンテナー内に見つかった BLOB の名前を表示します。  
 
@@ -140,7 +144,7 @@ print("\nList blobs in the container")
         print("\t Blob name: " + blob.name)
 ```
 
-## <a name="download-the-blobs"></a>BLOB のダウンロード
+### <a name="download-the-blobs"></a>BLOB のダウンロード
 
 **get\_blob\_to\_path** メソッドを使用して、ローカル ディスクに BLOB をダウンロードします。 次のコードは、前のセクションでアップロードされた BLOB をダウンロードします。 "_DOWNLOADED" は、ローカル ディスク上で両方のファイルを確認できるように、BLOB の名前にサフィックスとして追加されます。 
 
@@ -152,7 +156,7 @@ print("\nDownloading blob to " + full_path_to_file2)
 block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースのクリーンアップ
 このクイックスタートでアップロードした BLOB が不要になった場合は、**delete\_container** を使ってコンテナー全体を削除できます。 作成されたファイルが不要になった場合は、**delete\_blob** メソッドを使ってファイルを削除します。
 
 ```python

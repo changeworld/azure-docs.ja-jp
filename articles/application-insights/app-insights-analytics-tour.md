@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 26a5854735bd197fb114fce409a093251dc5c2f0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a33fedd765acde666eef280ba7dfa72536bf1bd2
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/01/2017
 ![テーブルを選択し、列の構成を使用する](./media/app-insights-analytics-tour/040.png)
 
 > [!NOTE]
-> 列の先頭をクリックすると、Web ブラウザーで使用できる結果の順序を変更できます。 ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行の数が制限されることに注意してください。 この並べ替え方法では、実際の最上位項目または最下位項目が表示されない場合があります。 項目を確実に並べ替えるには、`top` または `sort` 演算子を使用します。
+> 列の先頭をクリックすると、Web ブラウザーで使用できる結果の順序を変更できます。 ただし、大きな結果セットの場合、ブラウザーにダウンロードされる行の数が制限されることに注意してください。 この並べ替え方法は、返された結果セットを並べ替えるだけであり、実際の最上位項目または最下位項目が常に表示されるわけではありません。 項目を確実に並べ替えるには、`top` または `sort` 演算子を使用します。
 >
 >
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 11/01/2017
 
 結果は同じですが、実行時間が少し長くなります。 (`sort` のエイリアスである `order` を記述することもできます。)
 
-テーブル ビューの列ヘッダーを使用して、画面上の結果を並べ替えることもできます。 ただし、言うまでもなく、`take` または `top` を使用してテーブルの一部のみを取得した場合、並べ替えるのは取得したレコードのみとなります。
+テーブル ビューの列ヘッダーを使用して、画面上の結果を並べ替えることもできます。 ただし、言うまでもなく、`take` または `top` を使用してテーブルの一部のみを取得した場合、列見出しをクリックすると、取得したレコードのみが並べ替えられます。
 
 ## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): 条件に基づいてフィルター処理する
 
@@ -115,8 +115,9 @@ ms.lasthandoff: 11/01/2017
 
 <!---Read all about [scalar expressions]().--->
 
-### <a name="getting-the-right-type"></a>適切な種類を取得する
-失敗した要求を検索する場合は、次のように指定します。
+### <a name="find-unsuccessful-requests"></a>失敗した要求を検索する
+
+文字列値を整数に変換して、より大比較を使用します。
 
 ```AIQL
 
@@ -240,7 +241,7 @@ ms.lasthandoff: 11/01/2017
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize` は、ストリーム中のデータ ポイントを収集して、`by` 句によって等しく評価されるグループに分けます。 `by` 式の各値 (上記の例では各操作名) は、結果のテーブルに 1 列で表示されます。
+`Summarize` は、ストリーム中のデータ ポイントを収集して、`by` 句によって等しく評価されるグループに分けます。 `by` 式の各値 (上記の例では各操作の一意の名前) が、結果テーブルの列に表示されます。
 
 結果を時間帯でグループ分けすることもできます。
 

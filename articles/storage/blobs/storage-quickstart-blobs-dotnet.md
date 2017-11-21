@@ -3,33 +3,30 @@ title: "Azure クイックスタート - .NET を使用して Azure Blob Storage
 description: ".NET を使って Azure Blob Storage との間で双方向にオブジェクトを転送する方法を説明します"
 services: storage
 documentationcenter: storage
-author: robinsh
-manager: timlt
-editor: tysonn
-ms.assetid: 
+author: tamram
+manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/01/2017
-ms.author: robinsh
-ms.openlocfilehash: 9c5628307e76bd30d2dd59f284f2c4b30d434223
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/10/2017
+ms.author: tamram
+ms.openlocfilehash: 1eac4165c35cb116a359c074bd629c918b58097c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>.NET を使用して Azure Blob Storage との間でオブジェクトを転送する
 
-このクイックスタートでは、C#.NET を使って、Windows 上の Azure Blob Storage 内のブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。
+このクイックスタートでは、Azure Storage 用の .NET クライアント ライブラリを使用して、コンテナー内のブロック BLOB のアップロード、ダウンロード、および一覧取得を行う方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、以下が必要です。
-
-* 次のワークロードを指定して [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) をインストールします。
+個のクイックスタトを完了するには、次のワークロードを指定して [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) をインストールします。
+    
     - **Azure 開発**
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -86,7 +83,11 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_cbd5f95c-6ab8-4cbf-b
 
 ファイルを確認した後、任意のキーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、Program.cs ファイルを開いてコードを確認します。 
 
-## <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
+## <a name="understand-the-sample-code"></a>サンプル コードを理解する
+
+次に、サンプル コードを実行して、そのしくみを理解できるようにします。
+
+### <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
 
 最初に、Blob Storage にアクセスして管理するために使うオブジェクトへの参照を作成します。 これらのオブジェクトは、他のオブジェクトを基にして作成されます。各オブジェクトは、一覧で次にあるオブジェクトによって使われます。
 
@@ -124,7 +125,7 @@ permissions.PublicAccess = BlobContainerPublicAccessType.Blob;
 await cloudBlobContainer.SetPermissionsAsync(permissions);
 ```
 
-## <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
+### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
 Blob Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB がサポートされています。 最もよく使われるのはブロック BLOB であり、このクイックスタートでもそれを使います。 
 
@@ -148,7 +149,7 @@ Blob Storage では複数のアップロード方法を使うことができま�
 
 ブロック BLOB は、あらゆる種類のテキスト ファイルまたはバイナリ ファイルに使うことができます。 ページ BLOB は、主に、IaaS VM のバックアップ用の VHD ファイルに使われます。 追加 BLOB は、ファイルに書き込んでから情報を追加する場合など、ログ記録に使われます。 BLOB ストレージに格納されているほとんどのオブジェクトはブロック BLOB です。
 
-## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
+### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
 コンテナー内のファイルの一覧を取得するには、[CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmentedasync) を使用できます。 次のコードは、BLOB の一覧を取得し、ループ処理して、見つかった BLOB の URI を表示します。 コマンド ウィンドウから URI をコピーしてブラウザーに貼り付けることで、ファイルを表示できます。
 
@@ -168,7 +169,7 @@ do
 } while (blobContinuationToken != null);
 ```
 
-## <a name="download-blobs"></a>BLOB をダウンロードする
+### <a name="download-blobs"></a>BLOB をダウンロードする
 
 ローカル ディスクに BLOB をダウンロードするには、[CloudBlob.DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync) を使います。
 
@@ -184,7 +185,7 @@ Console.WriteLine("Downloading blob to {0}", fileAndPath2);
 await cloudBlockBlob.DownloadToFileAsync(fileAndPath2, FileMode.Create);
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 このクイックスタートでアップロードした BLOB が不要になった場合は、[CloudBlobContainer.DeleteAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteasync) を使ってコンテナー全体を削除できます。 また、不要になった場合は、作成されたファイルも削除します。
 
@@ -200,5 +201,7 @@ File.Delete(fileAndPath2);
 
 > [!div class="nextstepaction"]
 > [Blob Storage の操作方法](storage-dotnet-how-to-use-blobs.md)
+
+ダウンロードして実行できる他の Azure Storage コード サンプルについては、「[.NET を使用した Azure Storage サンプル](../common/storage-samples-dotnet.md)」の一覧を参照してください。
 
 Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。

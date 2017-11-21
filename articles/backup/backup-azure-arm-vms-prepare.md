@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 7ee2e42e05fb4866d32c24b0d4c788b0197970ad
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b8a770323d115390d323352826457eee62be5f6f
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
 > [!div class="op_single_selector"]
@@ -56,6 +56,12 @@ Resource Manager でデプロイされた仮想マシン (VM) の保護または
 
 * 16 台以上のデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
 * データ ディスクのサイズが 1023GB を超える仮想マシンはバックアップできません。
+
+> [!NOTE]
+> 1 TB を超える非管理対象ディスクがある VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください。
+>
+>
+
 * 予約済み IP アドレスはあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
 * BEK だけを使って暗号化された VM のバックアップはサポートされません。 LUKS 暗号化を使って暗号化された Linux VM のバックアップはサポートされません。
 * クラスター構成に含まれるすべての VM がスナップショット作業に含まれる必要があるため、クラスター共有ボリューム (CSV) またはスケールアウト ファイル サーバーの構成を格納している VM のバックアップは推奨されません。 Azure Backup では、マルチ VM 整合性をサポートしていません。 

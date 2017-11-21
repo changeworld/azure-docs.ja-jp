@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: c0f86e13e21f2af323e0a306b381054b6eb76755
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: da120d8e325867eaf9eb8b9be1ae8d9152db54c4
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Azure Site Recovery によるセカンダリ サイトへのレプリケーションのサポート マトリックス
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/01/2017
 
 **デプロイ** | **詳細** 
 --- | ---
-**VMware から VMware** | オンプレミスの VMware VM からセカンダリ VMware サイトへのディザスター リカバリー。<br/><br/> [InMage Scout ユーザー ガイド](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf) をダウンロードする
+**VMware から VMware** | オンプレミスの VMware VM からセカンダリ VMware サイトへのディザスター リカバリー。<br/><br/> [InMage Scout ユーザー ガイド](https://aka.ms/asr-scout-user-guide) をダウンロードする
 **Hyper-V から Hyper-V** | VMM クラウドのオンプレミスの Hyper-V VM のセカンダリ VMM クラウドへのディザスター リカバリー。<br></br> VMM なしではサポートされていません。
 
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/01/2017
 
 **デプロイ** | **サポート**
 --- | ---
-**VMware VM/物理サーバー** | vCenter 5.5 または 6.0 (5.5 の機能のみをサポート) 
+**VMware VM/物理サーバー** | vCenter 5.5、6.0、および 6.5 (5.5 の機能のみサポート)
 **Hyper-V (VMM あり)** | Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2。<br/><br/> Windows Server 2016 ホストは VMM 2016 によって管理する必要があります。<br/><br/> Windows Server 2016 ホストと 2012 R2 ホストが混在する VMM 2016 クラウドは、現在サポートされていません。<br/><br/> 既存の VMM 2012 R2 から System Center 2016 へのアップグレードを含むデプロイは、現在サポートされていません。
 
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/01/2017
 
 **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | ---
-64 ビット Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux 6.7、7.1、7.2 <br/><br/> CentOS 6.5、6.6、6.7、7.0、7.1、7.2 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/> SUSE Linux Enterprise Server 11 SP3 | [Hyper-V でサポートされている](https://technet.microsoft.com/library/mt126277.aspx)任意のゲスト オペレーティング システム
+64 ビット Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2 <br/><br/> Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5、6.8 <br/><br/> SUSE Linux Enterprise Server 11 SP3、11 SP4  | [Hyper-V でサポートされている](https://technet.microsoft.com/library/mt126277.aspx)任意のゲスト オペレーティング システム
 
 ## <a name="linux-machine-storage"></a>Linux マシンのストレージ
 
@@ -67,21 +67,21 @@ ms.lasthandoff: 11/01/2017
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-NIC チーミング | あり | はい
+NIC チーミング | あり | あり
 VLAN | あり | あり
-IPv4 | はい | はい
-IPv6 | なし | いいえ
+IPv4 | あり | あり
+IPv6 | なし | なし
 
 ### <a name="guest-vms"></a>ゲスト VM
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
 NIC チーミング | なし | なし
-IPv4 | はい | はい
+IPv4 | あり | あり
 IPv6 | なし | なし
 静的 IP (Windows) | あり | あり
-静的 IP (Linux) | はい | はい
-マルチ NIC | はい | はい
+静的 IP (Linux) | あり | あり
+マルチ NIC | あり | あり
 
 
 ## <a name="storage"></a>Storage
@@ -90,37 +90,37 @@ IPv6 | なし | なし
 
 **ストレージ (ホスト)** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-NFS | はい | 該当なし
-SMB 3.0 | 該当なし | はい
+NFS | あり | 該当なし
+SMB 3.0 | 該当なし | あり
 SAN (ISCSI) | あり | はい
-マルチパス (MPIO) | あり | はい
+マルチパス (MPIO) | あり | あり
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-VMDK | はい | 該当なし
-VHD/VHDX | 該当なし | はい (最大 16 個のディスク)
-第 2 世代 VM | 該当なし | はい
-共有クラスター ディスク | はい  | なし
-暗号化されたディスク | いいえ | いいえ
-UEFI| なし | 該当なし
-NFS | なし | いいえ
+VMDK | あり | 該当なし
+VHD/VHDX | 該当なし | あり (最大 16 個のディスク)
+第 2 世代 VM | 該当なし | あり
+共有クラスター ディスク | あり  | なし
+暗号化されたディスク | なし | なし
+UEFI| あり | 該当なし
+NFS | なし | なし
 SMB 3.0 | なし | なし
-RDM | はい | 該当なし
-1 TB より大きいディスク | なし | はい
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | はい | はい
+RDM | あり | 該当なし
+1 TB より大きいディスク | あり | あり
+ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | あり | あり
 記憶域 | なし | あり
-ディスクのホット アド/削除 | なし | いいえ
-ディスクの除外 | いいえ | はい
-マルチパス (MPIO) | 該当なし | はい
+ディスクのホット アド/削除 | あり | なし
+ディスクの除外 | あり | あり
+マルチパス (MPIO) | 該当なし | あり
 
 ## <a name="vaults"></a>資格情報コンテナー
 
 **アクション** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | いいえ | いいえ
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | なし | いいえ
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | なし | なし
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | なし | なし
 
 ## <a name="provider-and-agent"></a>プロバイダーとエージェント
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: a65b50a90a67b718f2a0cdd8657194d9740b3bd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 251ce238b745734bdfb508b30097304a9a650a8c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
 この記事では、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)を使用するためのベスト プラクティスを概説します。 
@@ -40,7 +40,26 @@ Web アプリ、データベース、コンテンツやデータを保持する�
 "ステートフル" アプリケーション対 "ステートレス" アプリケーションの詳細については、ビデオ「 [Planning a Scalable End-to-End Multi-Tier Application on Microsoft Azure Web App (Microsoft Azure Web App でスケーラブルなエンド ツー エンドの多層アプリケーションを計画する)](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)」を参照してください。 App Service のスケール オプションおよび自動スケール オプションの詳細については、「 [Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」を参照してください。  
 
 ## <a name="socketresources"></a>ソケット リソースを使い果たした場合
-送信 TCP 接続を使い果たしてしまう理由としては、一般的には、使用しているライブラリが TCP 接続を再利用するように実装されていないことや、HTTP - Keep-Alive などの上位レベルのプロトコルが活用されていないことなどが挙げられます。 App Service プランでアプリによって参照される各ライブラリのドキュメントを再確認し、送信接続が効率的に再利用されるようにコード内でライブラリが構成またはアクセスされるようにしてください。 また、ライブラリのドキュメントのガイダンスに従って適切に作成しリリースするか、接続のリークを防ぐためにクリーンアップを行ってください。 このようなクライアント ライブラリの調査中は、複数のインスタンスにスケール アウトすることで影響を軽減することができます。  
+送信 TCP 接続を使い果たしてしまう理由としては、一般的には、使用しているライブラリが TCP 接続を再利用するように実装されていないことや、HTTP - Keep-Alive などの上位レベルのプロトコルが活用されていないことなどが挙げられます。 App Service プランでアプリによって参照される各ライブラリのドキュメントを再確認し、送信接続が効率的に再利用されるようにコード内でライブラリが構成またはアクセスされるようにしてください。 また、ライブラリのドキュメントのガイダンスに従って適切に作成しリリースするか、接続のリークを防ぐためにクリーンアップを行ってください。 このようなクライアント ライブラリの調査中は、複数のインスタンスにスケール アウトすることで影響を軽減することができます。
+
+### <a name="nodejs-and-outgoing-http-requests"></a>Node.js と送信 http 要求
+Node.js と多数の送信 http 要求を処理する場合は、HTTP - Keep-Alive の処理が非常に重要です。 これは、[agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` パッケージを使用して、コード内で簡単に処理することができます。
+
+ハンドラーで何もしない場合でも、`http` 応答を常に処理する必要があります。 応答を適切に処理しなかった場合、使用できるソケットがなくなるため、アプリケーションは最終的にスタックします。
+
+`http` または `https` パッケージの処理例を次に示します。
+
+```
+var request = https.request(options, function(response) {
+    response.on('data', function() { /* do nothing */ });
+});
+```
+
+複数のコアを備えた Linux コンピューターで App Service で実行している場合の別のベスト プラクティスは、PM2 を使用して複数の Node.js プロセスを開始して、アプリケーションを実行することです。 これは、コンテナーにスタートアップ コマンドを指定することによって実行できます。
+
+4 つのインスタンスを開始する例を次に示します。
+
+`pm2 start /home/site/wwwroot/app.js --no-daemon -i 4`
 
 ## <a name="appbackup"></a>アプリのバックアップが失敗するようになった場合
 アプリのバックアップが失敗する場合は、最も一般的な理由として、無効なストレージ設定と無効なデータベース構成の 2 つが考えられます。 通常、このようなエラーはストレージまたはデータベースのリソースに変更が加えられた場合か、これらのリソースへのアクセス方法が変更された場合 (バックアップ設定で選択したデータベースに関して資格情報が更新された場合など) に発生します。 バックアップは、通常はスケジュールに応じて実行され、ストレージへのアクセス (バックアップしたファイルの出力用) とデータベースへのアクセス (バックアップに含まれる内容のコピーと読み取り用) が必要になります。 これらのリソースのいずれかにアクセスできないと、バックアップは常に失敗します。 

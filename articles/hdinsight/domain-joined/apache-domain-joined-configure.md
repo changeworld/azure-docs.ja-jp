@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-ms.openlocfilehash: af75d63caca24f389345c964e2dc506a255bec19
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2c844ce8aec04c74a9c2dbecdd1b3effb286df97
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスターの構成 (プレビュー)
 
@@ -31,13 +31,7 @@ Azure HDInsight クラスターと Azure Active Directory (Azure AD) および [
 この記事は、以下のシリーズの最初のチュートリアルです。
 
 * Azure Directory Domain Services 機能を通じて Azure AD に接続される HDInsight クラスターを、Apache Ranger を有効にして作成する。
-* Apache Ranger を通じて Hive ポリシーを作成および適用して、ユーザー (たとえばデータ サイエンティスト) が ODBC ベースのツール (Excel、Tableau など) を使用して Hive に接続できるようにする。マイクロソフトでは、HBase、Spark、Storm などの他のワークロードもできるだけ早くドメイン参加済み HDInsight に追加できるように作業を進めています。
-
-最終的なトポロジの例は、次のようになります。
-
-![ドメイン参加済み HDInsight のトポロジ](./media/apache-domain-joined-configure/hdinsight-domain-joined-topology.png)
-
-現在、Azure AD では従来の仮想ネットワーク (VNet) のみがサポートされていて、Linux ベースの HDInsight クラスターでは Azure Resource Manager ベースの VNet のみがサポートされているため、HDInsight Azure AD 統合には 2 つの VNet とそれらの間のピアリングが必要です。 2 つのデプロイメント モデルの比較情報については、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](../../azure-resource-manager/resource-manager-deployment-model.md)」を参照してください。 2 つの VNet は、Azure AD DS と同じリージョンにある必要があります。
+* Apache Ranger を通じて Hive ポリシーを作成および適用して、ユーザー (たとえばデータ サイエンティスト) が ODBC ベースのツール (Excel、Tableau など) を使用して Hive に接続できるようにする。マイクロソフトでは、HBase や Storm などの他のワークロードもできるだけ早くドメイン参加済み HDInsight に追加できるように作業を進めています。
 
 Azure サービス名は、グローバルに一意である必要があります。 このチュートリアルでは、次の名前を使用しています。 Contoso は架空の名前です。 チュートリアルを進めるときには、*contoso* を別の名前に置き換える必要があります。 
 
@@ -45,8 +39,6 @@ Azure サービス名は、グローバルに一意である必要がありま�
 
 | プロパティ | 値 |
 | --- | --- |
-| Azure AD VNet |contosoaadvnet |
-| Azure AD VNet のリソース グループ |contosoaadrg |
 | Azure AD ディレクトリ |contosoaaddirectory |
 | Azure AD ドメイン名 |contoso (contoso.onmicrosoft.com) |
 | HDInsight VNet |contosohdivnet |
@@ -58,45 +50,50 @@ Azure サービス名は、グローバルに一意である必要がありま�
 ## <a name="prerequisite"></a>前提条件:
 * [Azure AD ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)とその[料金](https://azure.microsoft.com/pricing/details/active-directory-ds/)体系を理解している。
 * サブスクリプションが、このパブリック プレビューのホワイトリストに登録されている。 登録するには、サブスクリプション ID を明記して、hdipreview@microsoft.com に電子メールを送信します。
-* ドメインの署名機関によって署名された SSL 証明書がある。 セキュリティで保護された LDAP を構成するために、証明書が必要です。 自己署名証明書を使用することはできません。
+* ドメインの署名機関によって署名された SSL 証明書または自己署名証明書。 セキュリティで保護された LDAP を構成するために、証明書が必要です。
 
 ## <a name="procedures"></a>プロシージャ
-1. Azure AD 用に Azure クラシック VNet を作成します。  
+1. Azure リソース管理モードで HDInsight VNet を作成します。
 2. Azure AD と Azure AD DS を作成および構成します。
-3. Azure リソース管理モードで HDInsight VNet を作成します。
-4. 2 つの VNet をピアリングします。
-5. HDInsight クラスターを作成します。
+3. HDInsight クラスターを作成します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD がないことを前提としています。 ある場合は、手順 2. を省略できます。
+> このチュートリアルでは、Azure AD がないことを前提としています。 ある場合は、その部分を省略できます。
 > 
 > 
 
-## <a name="create-an-azure-virtual-network-classic"></a>Azure 仮想ネットワーク (クラシック) の作成
-このセクションでは、Azure Portal を使用して仮想ネットワーク (クラシック) を作成します。 次のセクションでは、仮想ネットワークの Azure AD 用に Azure AD DS を有効にします。 次の手順とその他の仮想ネットワーク作成方法の詳細については、「[Azure Portal を使用した仮想ネットワーク (従来型) の作成](../../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。
+## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>HDInsight クラスターの Resource Manager VNet の作成
+このセクションでは、HDInsight クラスターに使用される Azure Resource Manager VNet を作成します。 他の方法による Azure VNet の作成の詳細については、[仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)に関するページを参照してください。
 
-**クラシック VNet を作成するには**
+VNet を作成した後、その VNet を使用する Azure AD DS を構成します。
 
-1. [Azure Portal](https://portal.azure.com) にサインオンします。 
-2. **[新規]** > **[ネットワーキング]** > **[仮想ネットワーク]** の順にクリックします。
-3. **[デプロイ モデルの選択]** で **[クラシック]** を選択し、**[作成]** をクリックします。
+**Resource Manager VNet を作成するには**
+
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
+2. **[新規]**、**[ネットワーキング]**、**[仮想ネットワーク]** の順にクリックします。 
+3. **[デプロイ モデルの選択]** で **[リソース マネージャー]** を選択し、**[作成]** をクリックします。
 4. 次の値を入力または選択します。
    
-   * **名前**: contosoaadvnet
-   * **アドレス空間**: 10.1.0.0/16
+   * **名前**: contosohdivnet
+   * **アドレス空間**: 10.0.0.0/16
    * **サブネット名**: Subnet1
-   * **サブネットのアドレス範囲**: 10.1.0.0/24
-   * **サブスクリプション**: (この VNet の作成に使用するサブスクリプションを選択します。)
-   * **ResourceGroup**: contosoaadrg
-   * **場所**: (HDInsight クラスターのリージョンを選択します。)
+   * **サブネットのアドレス範囲**: 10.0.0.0/24
+   * **サブスクリプション**: (Azure サブスクリプションを選択します。)
+   * **リソース グループ**: contosohdirg
+   * **場所**: (Azure AD VNet と同じ場所を選択します。 例: contosoaadvnet)
+5. **[作成]** をクリックします。
+
+**Resource Manager VNet の DNS を構成するには**
+
+1. [Azure Portal](https://portal.azure.com) で、**[その他のサービス]** > **[仮想ネットワーク]** の順にクリックします。 **[仮想ネットワーク (クラシック)]** をクリックしないようにしてください。
+2. **[contosohdivnet]** をクリックします。
+3. 新しいブレードの左側で、**[DNS サーバー]** をクリックします。
+4. **[カスタム]** をクリックし、次の値を入力します。
+   
+   * 10.0.0.4
+   * 10.0.0.5     
      
-     > [!IMPORTANT]
-     > Azure AD DS がサポートされている場所を選択する必要があります。 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/regions/services/)」を参照してください。 
-     > 
-     > クラシック VNet とリソース グループ VNet の両方が、Azure AD DS と同じリージョンにある必要があります。
-     > 
-     > 
-5. **[作成]** をクリックして VNet を作成します。
+5. **[ Save]** をクリックします。
 
 ## <a name="create-and-configure-azure-ad-ds-for-your-azure-ad"></a>Azure AD 用の Azure AD DS の作成と構成
 このセクションでは、次の作業を行います。
@@ -121,44 +118,42 @@ Azure サービス名は、グローバルに一意である必要がありま�
 
 **Azure AD ユーザーの作成**
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** -> **[contosoaaddirectory]** の順にクリックします。 
-2. 上部のメニューで **[ユーザー]** をクリックします。
-3. **[ユーザーの追加]**をクリックします。
-4. **ユーザー名**を入力し、**[次へ]** をクリックします。 
+1. [Azure ポータル](https://portal.azure.com)で、**[Azure Active Directory]** > **[contosoaaddirectory]** > **[ユーザーとグループ]** をクリックします。 
+2. メニューから **[すべてのユーザー]** をクリックします。
+3. **[新しいユーザー]**をクリックします。
+4. **[名前]** と **[ユーザー名]** を入力し、**[次へ]** をクリックします。 
 5. ユーザー プロファイルを構成します。**[ロール]** で **[全体管理者]** を選択し、**[次へ]** をクリックします。  組織単位を作成するには、全体管理者ロールが必要です。
-6. **[作成]** をクリックして、一時パスワードを取得します。
-7. パスワードのコピーを作成し、**[完了]** をクリックします。 このチュートリアルの後半で、この全体管理者ユーザーを使用して HDInsight クラスターを作成します。
+6. 一時パスワードのコピーを作成します。
+7. **Create** をクリックしてください。 このチュートリアルの後半で、この全体管理者ユーザーを使用して HDInsight クラスターを作成します。
 
 同じ手順で、**ユーザー** ロールのユーザーをさらに 2 つ作成します (hiveuser1 と hiveuser2)。 これらのユーザーは、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](apache-domain-joined-run-hive.md)で使用されます。
 
 **AAD DC 管理者グループを作成し、Azure AD ユーザーを追加するには**
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** > **[contosoaaddirectory]** の順にクリックします。 
-2. 上部のメニューで **[グループ]** をクリックします。
-3. クリックして**グループを追加する**または**グループを追加する**です。
+1. [Azure ポータル](https://portal.azure.com)で、**[Azure Active Directory]** > **[contosoaaddirectory]** > **[ユーザーとグループ]** をクリックします。 
+2. 上部のメニューで **[すべてのグループ]** をクリックします。
+3. **[新しいグループ]** をクリックします。
 4. 次の値を入力または選択します。
    
    * **名前**: AAD DC Administrators。  グループ名は変更しないでください。
-   * **グループの種類**: セキュリティ。
-5. **[完了]** をクリックします。
-6. **[AAD DC Administrators]** をクリックして、グループを開きます。
-7. **[メンバーの追加]** をクリックします。
-8. 前の手順で作成した最初のユーザーを選択し、**[完了]** をクリックします。
-9. 同じ手順を繰り返して、**HiveUsers** という名前のもう 1 つのグループを作成し、そのグループに 2 つの Hive ユーザーを追加します。
+   * **メンバーシップの種類**: 割り当てられています。
+5. **[選択]**をクリックします。
+6. **[メンバー]** をクリックします。
+7. 前の手順で作成した最初のユーザーを選択し、**[選択]** をクリックします。
+8. 同じ手順を繰り返して、**HiveUsers** という名前のもう 1 つのグループを作成し、そのグループに 2 つの Hive ユーザーを追加します。
 
 詳細については、[Azure AD ドメイン サービス (プレビュー) に関するページにある、"AAD DC 管理者" グループの作成](../../active-directory-domain-services/active-directory-ds-getting-started.md)についてのセクションを参照してください。
 
 **Azure AD 用の Azure AD DS を有効化するには**
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** > **[contosoaaddirectory]** の順にクリックします。 
-2. 上部のメニューで **[構成]** をクリックします。
-3. **[ドメイン サービス]** まで下へスクロールし、以下の値を設定します。
-   
-   * **[このディレクトリのドメイン サービスを有効にします]**: はい。
-   * **[ドメイン サービスの DNS ドメイン名]**: ここには、Azure ディレクトリの既定の DNS 名が表示されます。 たとえば、contoso.onmicrosoft.com です。
-   * **[ドメイン サービスをこの仮想ネットワークに接続します]**: 前に作成したクラシック仮想ネットワーク (つまり **contosoaadvnet**) を選択します。
-4. ページの下部にある **[保存]** をクリックします。 **[このディレクトリのドメイン サービスを有効にします]** の横に、**"保留中 ..."** と表示されます。  
-5. **"保留中 ..."** が消えるまで待つと、**[IP アドレス]** に値が設定されます。 2 つの IP アドレスに、値が設定されます。 これらは、ドメイン サービスによってプロビジョニングされるドメイン コントローラーの IP アドレスです。 該当するドメイン コントローラーがプロビジョニングされ、準備が完了した後で、各 IP アドレスが表示されます。 2 つの IP アドレスを書き留めておきます。 この情報は後で必要になります。
+1. [Azure ポータル](https://portal.azure.com)で、**[リソースの作成]** > **[セキュリティ + ID]** > **[Azure AD Domain Services]** > **[追加]** をクリックします。 
+2. 次の値を入力または選択します。
+   * **ディレクトリ名**: contosoaaddirectory
+   * **[DNS ドメイン名]**: ここには、Azure ディレクトリの既定の DNS 名が表示されます。 たとえば、contoso.onmicrosoft.com です。
+   * **場所**: リージョンを選択します。
+   * **ネットワーク**: 先ほど作成した仮想ネットワークとサブネットを選択します。 例: **contosohdivnet**
+3. [概要] ページで **[OK]** をクリックします。 通知の下に **[デプロイを実行しています...]** が表示されます。
+4. **[デプロイを実行しています...]** が消えるまで待つと、**[IP アドレス]** に値が設定されます。 2 つの IP アドレスに、値が設定されます。 これらは、ドメイン サービスによってプロビジョニングされるドメイン コントローラーの IP アドレスです。 該当するドメイン コントローラーがプロビジョニングされ、準備が完了した後で、各 IP アドレスが表示されます。 2 つの IP アドレスを書き留めておきます。 この情報は後で必要になります。
 
 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started.md)」を参照してください。
 
@@ -168,13 +163,11 @@ Azure サービス名は、グローバルに一意である必要がありま�
 
 **Azure AD の LDAPS を構成するには**
 
-1. ドメインの署名機関によって署名された SSL 証明書を取得します。 自己署名証明書を使用する場合は、hdipreview@microsoft.com に連絡して、例外的な取り扱いを依頼してください。
-2. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** > **[contosoaaddirectory]** の順にクリックします。 
-3. 上部のメニューで **[構成]** をクリックします。
-4. **[ドメイン サービス]** までスクロールします。
-5. **[証明書の構成]** をクリックします。
-6. 指示に従って、証明書ファイルとパスワードを指定します。 **[このディレクトリのドメイン サービスを有効にします]** の横に、**"保留中 ..."** と表示されます。  
-7. **"保留中 ..."** が消えるまで待つと、**[セキュリティで保護された LDAP 証明書]** に値が設定されます。  10 分以上かかる場合があります。
+1. ドメインの署名機関によって署名された SSL 証明書を取得します。
+2. [Azure ポータル](https://portal.azure.com)で、**[Azure AD Domain Services]** > **[contoso.onmicrosoft.com]** をクリックします。 
+3. **[セキュリティで保護された LDAP]** を有効にします。
+6. 指示に従って、証明書ファイルとパスワードを指定します。  
+7. **[Secure LDAP 証明書]** に値が設定されるまで待ちます。 10 分以上かかる場合があります。
 
 > [!NOTE]
 > Azure AD DS でいくつかのバックグラウンド タスクが実行中の場合、証明書のアップロード中に、<i>"There is an operation being performed for this tenant.Please try again later (このテナントに対して実行中の操作があります。後でやり直してください)"</i> というエラーが表示されることがあります。  このエラーが発生した場合は、しばらくしてからやり直してください。 2 番目のドメイン コントローラーの IP は、プロビジョニングされるまでに最大で 3 時間かかる場合があります。
@@ -182,59 +175,6 @@ Azure サービス名は、グローバルに一意である必要がありま�
 > 
 
 詳細については、「[Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)」を参照してください。
-
-## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>HDInsight クラスターの Resource Manager VNet の作成
-このセクションでは、HDInsight クラスターに使用される Azure Resource Manager VNet を作成します。 他の方法による Azure VNET の作成の詳細については、[仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)に関するページを参照してください。
-
-VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバーを使用するように Resource Manager VNet を構成します。 このチュートリアルの手順に従ってクラシック VNet と Azure AD を作成した場合、DNS サーバーは 10.1.0.4 と 10.1.0.5 です。
-
-**Resource Manager VNet を作成するには**
-
-1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. **[新規]**、**[ネットワーキング]**、**[仮想ネットワーク]** の順にクリックします。 
-3. **[デプロイ モデルの選択]** で **[リソース マネージャー]** を選択し、**[作成]** をクリックします。
-4. 次の値を入力または選択します。
-   
-   * **名前**: contosohdivnet
-   * **アドレス空間**: 10.2.0.0/16。 アドレス範囲をクラシック VNet の IP アドレス範囲と重複させることはできない点に注意してください。
-   * **サブネット名**: Subnet1
-   * **サブネットのアドレス範囲**: 10.2.0.0/24
-   * **サブスクリプション**: (Azure サブスクリプションを選択します。)
-   * **リソース グループ**: contosohdirg
-   * **場所**: (Azure AD VNet (つまり contosoaadvnet) と同じ場所を選択します。)
-5. **Create** をクリックしてください。
-
-**Resource Manager VNet の DNS を構成するには**
-
-1. [Azure Portal](https://portal.azure.com) で、**[その他のサービス]** -> **[仮想ネットワーク]** の順にクリックします。 **[仮想ネットワーク (クラシック)]** をクリックしないようにしてください。
-2. **[contosohdivnet]** をクリックします。
-3. 新しいブレードの左側で、**[DNS サーバー]** をクリックします。
-4. **[カスタム]** をクリックし、次の値を入力します。
-   
-   * 10.1.0.4
-   * 10.1.0.5
-     
-     これらの DNS サーバー IP アドレスは、Azure AD VNet (クラシック VNet) の DNS サーバーと一致する必要があります。
-5. **[ Save]** をクリックします。
-
-## <a name="peer-the-azure-ad-vnet-and-the-hdinsight-vnet"></a>Azure AD VNet と HDInsight VNet のピアリング
-**2 つの VNet をピアリングするには**
-
-1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. 左側のメニューで、**[その他のサービス]** をクリックします。
-3. **[仮想ネットワーク]** をクリックします。 **[仮想ネットワーク (クラシック)]** をクリックしないようにしてください。
-4. **[contosohdivnet]** をクリックします。  これは、HDInsight VNet です。
-5. ブレードの左側のメニューで、**[ピアリング]** をクリックします。
-6. 上部のメニューで **[追加]** をクリックします。 **[ピアリングの追加]** ブレードが開かれます。
-7. **[ピアリングの追加]** ブレードで、以下の値を設定または選択します。
-   
-   * **名前**: ContosoAADHDIVNetPeering
-   * **仮想ネットワークのデプロイ モデル**: クラシック
-   * **サブスクリプション**: クラシック (Azure AD) vnet 用に使用されるサブスクリプション名を選択します。
-   * **仮想ネットワーク**: contosoaadvnet。
-   * **仮想ネットワーク アクセスを許可する**: (オン)
-   * **転送されたトラフィックを許可する**: (オン)。 他の 2 つのチェック ボックスはオフのままにします。
-8. **[OK]**をクリックします。
 
 ## <a name="create-hdinsight-cluster"></a>HDInsight クラスターの作成
 このセクションでは、Azure Portal または [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-template-deploy.md)を利用して、HDInsight で Linux ベースの Hadoop クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 Resource Manager テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、[Resource Manager テンプレートを使用した HDInsight での Hadoop クラスターの作成](../hdinsight-hadoop-create-windows-clusters-arm-templates.md)に関するページを参照してください。
@@ -249,7 +189,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
    * **サブスクリプション**: このクラスターの作成に使用する Azure サブスクリプションを選択します。
    * **クラスター構成**:
      
-     * **クラスターの種類**: Hadoop。 ドメイン参加済み HDInsight は現在、Hadoop クラスターのみでサポートされています。
+     * **クラスターの種類**: Hadoop。 ドメイン参加済み HDInsight は、現在 Hadoop, Spark、および Interactive Query クラスターのみでサポートされています。
      * **オペレーティング システム**: Linux。  ドメイン参加済み HDInsight は、Linux ベースの HDInsight クラスターのみでサポートされています。
      * **バージョン**: HDI 3.6。 ドメイン参加済み HDInsight は、HDInsight クラスター バージョン 3.6 のみでサポートされています。
      * **クラスターの種類**: PREMIUM

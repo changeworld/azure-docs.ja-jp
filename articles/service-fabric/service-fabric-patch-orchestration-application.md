@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
-ms.openlocfilehash: aaceb556d926dbb09aeb2843a7941eadaaeb588b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 13c11902e275d1023e474d717800b3a36a6b31f2
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -51,14 +51,6 @@ ms.lasthandoff: 10/18/2017
 > パッチ オーケストレーション アプリケーションでは、Service Fabric の修復マネージャー システム サービスを使用して、ノードを無効または有効にし、正常性チェックを実行します。 パッチ オーケストレーション アプリケーションによって作成される修復タスクによって、各ノードの Windows Update の進行状況が追跡されます。
 
 ## <a name="prerequisites"></a>前提条件
-
-### <a name="minimum-supported-service-fabric-runtime-version"></a>サポートされている Service Fabric ランタイムの最小バージョン
-
-#### <a name="azure-clusters"></a>Azure クラスター
-パッチ オーケストレーション アプリケーションは、Service Fabric ランタイム バージョン v5.5 以降がインストールされている Azure クラスターで実行する必要があります。
-
-#### <a name="standalone-on-premises-clusters"></a>スタンドアロン オンプレミス クラスター
-パッチ オーケストレーション アプリケーションは、Service Fabric ランタイム バージョン v5.6 以降がインストールされているスタンドアロン クラスターで実行する必要があります。
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>修復マネージャー サービスを有効にする (まだ実行されていない場合)
 
@@ -135,59 +127,6 @@ Azure クラスターの持続性層がシルバーの場合、修復マネー�
 ### <a name="disable-automatic-windows-update-on-all-nodes"></a>すべてのノードで Windows Update の自動更新を無効にする
 
 Windows Update の自動更新を有効にすると、複数のクラスター ノードが同時に再起動される可能性があるため、可用性が失われる場合があります。 既定では、パッチ オーケストレーション アプリケーションは、クラスター ノードごとに Windows Update の自動更新を無効にします。 ただし、管理者またはグループ ポリシーによって設定が管理されている場合は、"ダウンロードする前に通知する" ように Windows Update ポリシーを明示的に設定することをお勧めします。
-
-### <a name="optional-enable-azure-diagnostics"></a>省略可能: Azure 診断を有効にする
-
-Service Fabric ランタイム バージョン `5.6.220.9494` 以降を実行しているクラスターでは、Service Fabric ログの一部としてパッチ オーケストレーション アプリ ログが収集されます。
-Service Fabric ランタイム バージョン `5.6.220.9494` 以降でクラスターが実行されている場合、この手順をスキップすることができます。
-
-バージョン `5.6.220.9494` よりも前の Service Fabric ランタイムを実行しているクラスターの場合、パッチ オーケストレーション アプリのログは、各クラスター ノードのローカルに収集されます。
-すべてのノードから中央の場所にログをアップロードするように Azure 診断を構成することをお勧めします。
-
-Azure 診断を有効にする方法については、「[Azure 診断でログを収集する方法](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-how-to-setup-wad)」をご覧ください。
-
-パッチ オーケストレーション アプリケーションのログは、次の固定されたプロバイダー ID で生成されます。
-
-- e39b723c-590c-4090-abb0-11e3e6616346
-- fc0028ff-bfdc-499f-80dc-ed922c52c5e9
-- 24afa313-0d3b-4c7c-b485-1047fd964b60
-- 05dc046c-60e9-4ef7-965e-91660adffa68
-
-Resource Manager テンプレートで、`WadCfg` の下の `EtwEventSourceProviderConfiguration` セクションに移動して、以下のエントリを追加します。
-
-```json
-  {
-    "provider": "e39b723c-590c-4090-abb0-11e3e6616346",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-      "eventDestination": "PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "fc0028ff-bfdc-499f-80dc-ed922c52c5e9",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "24afa313-0d3b-4c7c-b485-1047fd964b60",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "05dc046c-60e9-4ef7-965e-91660adffa68",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  }
-```
-
-> [!NOTE]
-> Service Fabric クラスターが複数のノード タイプで構成されている場合は、すべての `WadCfg` セクションに上記のセクションを追加する必要があります。
 
 ## <a name="download-the-app-package"></a>アプリ パッケージのダウンロード
 
@@ -303,20 +242,16 @@ Windows Update の結果を照会するには、クラスターにログイン�
 
 ## <a name="diagnosticshealth-events"></a>診断/正常性イベント
 
-### <a name="collect-patch-orchestration-app-logs"></a>パッチ オーケストレーション アプリケーションのログを収集する
+### <a name="diagnostic-logs"></a>診断ログ
 
-ランタイム バージョン `5.6.220.9494` 以降から、パッチ オーケストレーション アプリケーションのログが Service Fabric のログの一部として収集されます。
-`5.6.220.9494` より前の Service Fabric ランタイム バージョンを実行しているクラスターでは、次のいずれかの方法を使用してログを収集できます。
+パッチ オーケストレーション アプリケーションのログが Service Fabric のランタイム ログの一部として収集されます。
 
-#### <a name="locally-on-each-node"></a>個々のノードのローカル
+任意の診断ツール/パイプラインを経由してログを取り込む必要がある場合は、 パッチ オーケストレーション アプリケーションは以下の固定されたプロバイダー ID を使用して [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1) 経由でイベントを記録します。
 
-Service Fabric ランタイム バージョンが `5.6.220.9494` よりも前の場合、各 Service Fabric クラスター ノードのローカルでログが収集されます。 ログの場所は、\[Service Fabric\_Installation\_Drive\]:\\PatchOrchestrationApplication\\logs です。
-
-たとえば、Service Fabric が D ドライブにインストールされている場合、このパスは D:\\PatchOrchestrationApplication\\logs になります。
-
-#### <a name="central-location"></a>中央の場所
-
-前提条件となる手順の一環として Azure 診断を構成した場合は、パッチ オーケストレーション アプリケーションのログが Azure Storage で提供されます。
+- e39b723c-590c-4090-abb0-11e3e6616346
+- fc0028ff-bfdc-499f-80dc-ed922c52c5e9
+- 24afa313-0d3b-4c7c-b485-1047fd964b60
+- 05dc046c-60e9-4ef7-965e-91660adffa68
 
 ### <a name="health-reports"></a>正常性レポート
 
