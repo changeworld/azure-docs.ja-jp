@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Stack とは | Microsoft Docs"
 description: "Azure Stack を使用すると、お使いのデータセンターで Azure を実行できます。"
 services: azure-stack
