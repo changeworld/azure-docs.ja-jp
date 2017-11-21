@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fdc597c9e88e932eace5962c79af4dc3805685a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1288fe2eeb9b31b912cd918be624e7a4703f0709
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理の概要
 
@@ -79,7 +79,7 @@ Azure AD 参加済みデバイスを実装すると、次のメリットを得�
 
 - Azure が管理している SaaS アプリやサービスへの**シングル サインオン (SSO)**。 ユーザーが職場のリソースにアクセスするときに、追加の認証プロンプトが表示されることはありません。 SSO 機能は、ドメイン ネットワークに接続されていない場合も有効です。
 
-- 参加デバイス間でのユーザー設定の**企業準拠のローミング**。 ユーザーは、デバイスの設定を確認するときに Microsoft アカウント (Hotmail など) に接続する必要はありません。
+- 参加デバイス間でのユーザー設定の**企業に準拠しているローミング**。 ユーザーは、デバイスの設定を確認するときに Microsoft アカウント (Hotmail など) に接続する必要はありません。
 
 - AD アカウントを使用した**ビジネス向け Windows ストアへのアクセス**。 ユーザーは、組織によって事前選択されているアプリケーションのインベントリから選択できます。
 
@@ -135,12 +135,31 @@ Azure AD のデバイス管理を使用して、次の操作を実行できま�
 
 おおざっぱにまとめると、次のようになります。
 
-- 個人所有のデバイスでは、Azure AD 登録済みデバイスを使用する
+- Azure AD 登録済みデバイス:
 
-- オンプレミスの AD に参加していないデバイスでは、Azure AD 参加済みデバイスを使用する 
+    - 個人用デバイスの場合 
+
+    - Azure AD にデバイスを手動で登録する
+
+- Azure AD 参加済みデバイス: 
+
+    - 組織が所有するデバイスの場合
+
+    - オンプレミスの AD に参加して**いない**デバイスの場合
+
+    - Azure AD にデバイスを手動で登録する
+
+    - デバイスのローカル状態を変更する
 
 - オンプレミスの AD に参加しているデバイスでは、ハイブリッド Azure AD 参加済みデバイスを使用する     
 
+    - 組織が所有するデバイスの場合
+
+    - オンプレミスの AD に参加してるデバイスの場合
+
+    - Azure AD にデバイスを自動で登録する
+
+    - デバイスのローカル状態を変更する
 
 
 

@@ -14,20 +14,32 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: a8ac18464d0efcc0db96e1667f18f2f853208573
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9fba9fdda3503ec80fede845466858825e3677a5
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="introduction-to-azure-container-service-aks"></a>Azure Container Service (AKS) の概要
 
 Azure Container Service (AKS) を使用すると、コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。 これにより、既存のスキルを使用して、または増え続けている大規模な専門家コミュニティの知恵に頼って、Microsoft Azure にコンテナーベースのアプリケーションをデプロイおよび管理できます。
 
 AKS を使用することで、Kubernetes と Docker イメージ形式を介してアプリケーションの移植性を維持しながら、エンタープライズ レベルの Azure の機能を活用することができます。
+
+## <a name="managed-kubernetes-in-azure"></a>Azure でのManaged Kubernetes
+
+AKS は、責任の多くを Azure にオフロードすることで、Kubernetes クラスターの管理の複雑さと運用上のオーバーヘッドを軽減します。 ホストされた Kubernetes サービスとして、Azure は正常性監視やメンテナンスなどの重要なタスクを自動的に処理します。 さらに、料金は、マスターではなく、クラスター内のエージェント ノードに対してだけ発生します。 Managed Kubernetes サービスとして、AKS は次の機能を提供します。
+
+> [!div class="checklist"]
+> * 自動的な Kubernetes のバージョンのアップグレードと修正プログラムの適用
+> * 簡単なクラスター スケーリング
+> * ホストされているコントロール プレーン (マスター) の自己修復
+> * コストの削減 - 実行しているエージェント プール ノードのみの課金
+
+AKS クラスター内のノードの管理は Azure が処理するので、管理者は、クラスターのアップグレードなどの多くのタスクを手動で実行する必要がありません。 Azure がこれらの重要なメンテナンス タスクを自動的に処理するため、AKS ではクラスターへの直接的なアクセス (SSH など) は提供されていません。
 
 ## <a name="using-azure-container-service-aks"></a>Azure Container Service (AKS) の使用
 AKS は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。 この目的のために、標準の Kubernetes API エンドポイントを公開します。 これらの標準のエンドポイントを使用することにより、Kubernetes クラスターと通信できる任意のソフトウェアを活用できます。 たとえば、[kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)、[helm](https://helm.sh/)、[draft](https://github.com/Azure/draft) を選択できます。

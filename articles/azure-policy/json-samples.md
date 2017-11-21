@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: 
-ms.date: 10/30/2017
+ms.date: 11/13/2017
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: bb0d996b950a31e3eaaaa9d90a6b96617b58192f
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4042c3606155d1d37947afccafd64652c9659894
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="templates-for-azure-policy"></a>Azure Policy のテンプレート
 
-次の表に、Azure Policy の json テンプレートへのリンクを示します。
+次の表に、Azure Policy の json テンプレートへのリンクを示します。 これらのサンプルは、[Azure Policy のサンプル リポジトリ](https://github.com/Azure/azure-policy)にあります。
 
 | | |
 |---|---|
 |**Compute**||
 | [承認された VM イメージ](scripts/allowed-custom-images.md) | 承認されたカスタム イメージのみを環境にデプロイする必要があります。 承認されたイメージ ID の配列を指定します。 |
-| [管理ディスクを使用した VM の作成](scripts/create-vm-managed-disk.md) | 管理ディスクを使用していない仮想マシンが作成されたときに監査が行われます。|
+| [VM が管理ディスクを使っていない場合の監査](scripts/create-vm-managed-disk.md) | 管理ディスクを使用していない仮想マシンが作成されたときに監査が行われます。|
 | [拡張機能が存在しない場合の監査](scripts/audit-ext-not-exist.md) | 仮想マシンに拡張機能がデプロイされていない場合に監査が行われます。 デプロイされたかどうかを確認する拡張機能の公開元と種類を指定します。 |
 | [リソース グループのカスタム VM イメージの許可](scripts/allow-custom-vm-image.md) |  カスタム イメージが承認されたリソース グループに含まれている必要があります。 承認されたリソース グループの名前を指定します。 |
 | [Azure Hybrid Use Benefit の拒否](scripts/deny-hybrid-use.md) | Azure Hybrid Use Benefit (AHUB) の使用を禁止します。 オンプレミス ライセンスの使用を許可したくない場合に利用します。 |
@@ -39,6 +39,11 @@ ms.lasthandoff: 11/04/2017
 | [管理ディスクを使用した VM の作成](scripts/use-managed-disk-vm.md) | 仮想マシンで管理ディスクを使用する必要があります。|
 |**監視**||
 | [診断設定の監査](scripts/audit-diag-setting.md) | 指定されたリソースの種類で診断設定が有効になっていない場合に監査を行います。 リソースの種類の配列を指定して、診断設定が有効になっているかどうかを確認します。 |
+|**名前およびテキストの表記規則**||
+| [複数の名前パターンを許可する](scripts/allow-multiple-name-patterns.md) | 多数の名前パターンのいずれかをリソースに使うことを許可します。 |
+| [類似パターンを要求する](scripts/enforce-like-pattern.md) | リソース名がパターンの like 条件を満たすことを保証します。 |
+| [一致パターンを要求する](scripts/enforce-match-pattern.md) | リソース名が名前付けパターンと一致することを保証します。 |
+| [タグ一致パターンを要求する](scripts/enforce-tag-match-pattern.md) | タグの値がテキストのパターンと一致することを保証します。 |
 |**ネットワーク**||
 | [許可されたアプリケーション ゲートウェイ SKU](scripts/allowed-app-gate-sku.md) | アプリケーション ゲートウェイで適切な SKU を使用する必要があります。 承認された SKU の配列を指定します。 |
 | [リージョンで Network Watcher が有効になっていない場合の監査](scripts/net-watch-not-enabled.md) | 特定のリージョンで Network Watcher が有効になっていない場合に監査を行います。 リージョンの名前を指定して、Network Watcher が有効になっているかどうかを確認します。 |
@@ -62,6 +67,7 @@ ms.lasthandoff: 11/04/2017
 | [DB レベルの脅威検出設定の監査](scripts/audit-db-threat-det-setting.md) | SQL データベース セキュリティ アラート ポリシーが特定の状態に設定されていない場合、このポリシーの監査を行います。 脅威検出を有効または無効のどちらにするかを指示する値を指定します。  |
 | [SQL Server レベルの監査設定の監査](scripts/audit-sql-ser-leve-audit-setting.md) | SQL Server の監査設定が指定された設定と一致しない場合に、この設定の監査を行います。 監査設定を有効または無効のどちらにするべきかを指示する値を指定します。 |
 | [サーバー レベルの脅威検出設定の監査](scripts/audit-sql-ser-threat-det-setting.md) | SQL データベース セキュリティ アラート ポリシーが特定の状態に設定されていない場合、このポリシーの監査を行います。 脅威検出を有効または無効のどちらにするかを指示する値を指定します。  |
+| [Azure Active Directory 管理者不在の監査](scripts/audit-no-aad-admin.md) | Azure Active Directory 管理者が SQL Server に割り当てられていない場合に監査を行います。 |
 | [許可された SQL DB の SKU](scripts/allowed-sql-db-skus.md) | 承認された SKU が SQL データベースで使用される必要があります。 許可された SKU ID の配列または許可された SKU 名の配列を指定します。 |
 |**Storage**||
 | [ストレージ アカウントおよび仮想マシンに対して許可された SKU](scripts/allowed-skus-storage.md) | 承認された SKU がストレージ アカウントと仮想マシンで使用される必要があります。 組み込みのポリシーを使用して、承認された SKU を確認します。 承認された仮想マシンの SKU の配列と、承認されたストレージ アカウントの SKU の配列を指定します。 |

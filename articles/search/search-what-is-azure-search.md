@@ -3,7 +3,7 @@ title: "Azure Search とは何か | Microsoft Docs"
 description: "Azure Search は完全に管理されたホスト型クラウド検索サービスです。 この機能の概要で詳しく説明します。"
 services: search
 manager: jhubbard
-author: ashmaka
+author: HeidiSteen
 documentationcenter: 
 ms.assetid: 50bed849-b716-4cc9-bbbc-b5b34e2c6153
 ms.service: search
@@ -11,18 +11,18 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 06/26/2017
-ms.author: ashmaka
-ms.openlocfilehash: 9893be47ec0c2f58ca206ec7c1bce13734513390
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/10/2017
+ms.author: heidist
+ms.openlocfilehash: 63c7bcc1bf4e650f913d31e5687c31257a85bfee
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="what-is-azure-search"></a>Azure Search とは
-Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションに豊かなデータ検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。
+Azure Search は、Web、モバイル、およびエンタープライズ アプリケーションに豊かなコンテンツ検索機能を追加するための API とツールを開発者に提供する、サービスとしての検索クラウド ソリューションです。
 
-機能は、検索テクノロジ固有の複雑さを感じさせない単純な [REST API](/rest/api/searchservice/) または [.NET SDK](search-howto-dotnet-sdk.md) を通して公開されます。 API に加え、Azure ポータルは、管理とプロトタイピングのサポートも提供します。 インフラストラクチャと可用性は Microsoft が管理します。
+機能は、情報の検索に固有の複雑さを感じさせないシンプルな [REST API](/rest/api/searchservice/) または [.NET SDK](search-howto-dotnet-sdk.md) を使って公開されます。 API だけでなく、Azure Portal では、管理とコンテンツ管理のサポートおよびプロトタイプの作成とインデックスのクエリのためのツールも提供されます。 サービスはクラウドで実行されるため、インフラストラクチャと可用性は Microsoft によって管理されます。
 
 <a name="feature-drilldown"></a>
 
@@ -70,7 +70,7 @@ Azure Search は、Web、モバイル、およびエンタープライズ アプ
 
 | 比較対象 | 主な相違点 |
 |--|--|
-|Bing | [Bing Web Search API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/) は Bing.com のインデックスで送信された語句と一致するものを検索します。 インデックスは、公開サイトの HTML、XML、および他の Web コンテンツから構築されます。 [Bing Custom Search](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/) は、個々 の Web サイトに範囲指定して、各 Web コンテンツ タイプに対して同じクローラー テクノロジを提供します。<br/><br/>Azure Search では、所有するデータおよびドキュメントを入力して定義したインデックスを多くの場合さまざまなソースから検索します。 Azure Search は[インデクサー](search-indexer-overview.md)を通じていくつかのデータ ソース対してクローラー機能を持っていますが、1 つの統合済みの検索可能なリソースに、インデックス スキーマに準拠している任意の JSON ドキュメントをプッシュできます。 |
+|Bing | [Bing Web Search API](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/) は Bing.com のインデックスで送信された語句と一致するものを検索します。 インデックスは、公開サイトの HTML、XML、および他の Web コンテンツから構築されます。 [Bing Custom Search](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/) は、個々 の Web サイトに範囲指定して、各 Web コンテンツ タイプに対して同じクローラー テクノロジを提供します。<br/><br/>Azure Search では、所有するデータおよびドキュメントを入力して定義したインデックスを多くの場合さまざまなソースから検索します。 Azure Search は[インデクサー](search-indexer-overview.md)により複数のデータ ソースに対するクローラー機能を備えていますが、インデックス スキーマに準拠している任意の JSON ドキュメントを 1 つの統合された検索可能なリソースにプッシュできます。 |
 |データベース検索 | [SQL Server フルテキスト検索](https://docs.microsoft.com/sql/relational-databases/search/full-text-search)は、SQL テーブル内の、DBMS の内部コンテンツ用です。 <br/><br/>Azure Search では、異種ソースからコンテンツを格納し、言語およびカスタムの分析などの特殊なテキスト処理機能を提供します。 Azure Search の[フル テキスト検索エンジン](search-lucene-query-architecture.md)は情報取得の業界標準である Apache Lucene に基づいて構築されています。 <br/><br/>リソース使用率も、別途考慮する必要があります。 自然言語検索は、多くの場合、コンピューターに高い負荷をかけます。 専用ソリューションに検索をオフロードすることにより、トランザクション処理用のリソースを保持します。 検索を外部化することで、クエリのボリュームに合わせてスケールを簡単に調整できます。|
 |専用の検索ソリューション | オンプレミスまたはクラウド サービス ソリューションは万全の機能を持つ専用の検索ソリューションです。 検索テクノロジには通常、インデックスの作成とクエリ パイプラインの管理、豊富なクエリとフィルター構文へのアクセス、ランクと関連性の管理、自主的な高度な検索の機能が用意されています。 <br/><br/>オンプレミスまたは仮想マシンでホストされているクラウド サービスまたはスタンドアロン サーバーとして提供される専用の検索ソリューションを見つけることができます。 クラウド サービスは、[オーバーヘッドと保守が最小限で済み、スケールが調整可能なターンキー ソリューション](#cloud-service-advantage)を望むお客様に最適の選択肢です。 <br/><br/>クラウドの枠組みでは、複数のプロバイダーがフルテキスト検索、地理空間検索、検索入力の程度のあいまいさを処理する機能など、同等の基本機能を備えるソリューションを提供しています。 使用環境に最も合うものを判断する場合、通常は、[特化した機能](#feature-drilldown)か、API、ツール、管理の容易さと全体的な単純さが決め手になります。 |
 

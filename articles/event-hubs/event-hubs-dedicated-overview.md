@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: sethm;babanisa
-ms.openlocfilehash: db8b119178de0e565b2064e9a52d5e9989d60d38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613ea691e38b6f0bcd8873fc2ec6bcafb3cc6c78
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 | パブリッシャー ポリシー | あり | はい |   
 | コンシューマー グループ | 20 | 20 |
 | メッセージ リプレイ | はい | はい |
-| 最大スループット ユニット | 20 (～ 100)   | 1 CU≈200 |
+| 最大スループット ユニット | 20 (～ 100)   | 1 CU は約 50 |
 | 仲介型接続 | 1,000 (付属) | 100,000 (付属) |
 | 追加の仲介型接続 | あり | はい |
 | メッセージのリテンション期間 | 1 日分が含まれます | 最大 7 日分が含まれます |
@@ -48,18 +48,25 @@ Event Hubs Dedicated を使用することで実現する利点を次に示し�
 * メッセージ サイズを 1 MB に拡大 (Standard では 256 KB)。
 * パフォーマンスを常に再現可能。
 * ニーズの急増に対応するための容量を保証。
-* 1 ～8 容量ユニット (CU) の範囲でスケーラブル - 1 秒あたり最大 200 万件のイングレス イベントを提供。
-  * CU によって Event Hubs Dedicated のスケールを管理。CU ごとに約 200 スループット単位 (TU) を提供可能。
+* マイクロバッチおよび長期リテンション期間と統合できるように、Azure Event Hubs の[キャプチャ](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)機能が含まれます。
 * メンテナンス不要: 負荷分散、OS の更新、セキュリティ パッチ、パーティション分割は Microsoft が管理。
-* 月額固定価格。
+* 固定の時間単位料金。
+* 追加料金なしで最大 7 日間のメッセージ リテンション期間。
 
 Event Hubs Dedicated では、Standard プランのスループットの制限もいくつか削除されます。 Standard レベルのスループット単位では、1 秒あたり 1000 件のイベント、または TU あたり 1 Mbps の受信とその倍量の送信が提供されます。 Dedicated スケール プランには、イングレス イベントとエグレス イベントの数に制限はありません。 これらの制限は、購入したイベント ハブの処理容量によってのみ決定されます。
+
+この予約された専用の環境では、次のようなこのレベル固有の他の機能が提供されます。
+
+* クラスター内の名前空間の数の制御
+* 各名前空間に対するスループット制限の指定
+* 各名前空間に含まれる Event Hubs の数の構成
+* パーティションの数に対する制限の決定
 
 このサービスは最大規模のテレメトリ ユーザーを対象としており、エンタープライズ契約で提供されます。
 
 ## <a name="how-to-onboard"></a>利用を開始する方法
 
-Event Hubs Dedicated プラットフォームは、さまざまなサイズの CU でエンタープライズ契約を通じて提供されます。 CU ごとに約 200 スループット ユニットが提供されます。 CU を追加または削除することによって、1 か月の間にニーズに合わせて容量をスケールアップまたはスケールダウンできます。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 
+CU を追加または削除することによって、1 か月の間にニーズに合わせて容量をスケールアップまたはスケールダウンできます。 Dedicated プランは、お客様に適した柔軟なデプロイを実現するために、Event Hubs 製品チームからより実践的な利用方法が提供されるという点でほかにはないサービスとなっています。 この SKU の利用を始めるには、(課金サポート)[https://ms.portal.azure.com/#create/Microsoft.Support]または Microsoft の担当者にお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs Dedicated 容量の詳細については、Microsoft の営業担当者または Microsoft サポートにお問い合わせください。 次のリンク先で、Event Hubs の詳細を確認することもできます。

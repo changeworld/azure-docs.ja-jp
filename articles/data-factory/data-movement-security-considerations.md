@@ -13,13 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2017
 ms.author: abnarain
-ms.openlocfilehash: 9caea4191a2ca99e6e98cc8ce7ca9ca0c7b8dc87
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: bba2781d43aff9e462246cfe21961695e48196d8
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [バージョン 1 - 一般公開](v1/data-factory-data-movement-security-considerations.md)
+> * [バージョン 2 - プレビュー](data-movement-security-considerations.md)
+
 この記事では、Azure Data Factory のデータ移動サービスがデータを保護するために使用する基本的なセキュリティ インフラストラクチャについて説明します。 Azure Data Factory 管理リソースは、Azure のセキュリティ インフラストラクチャ上に構築されており、Azure が提供する利用可能なすべてのセキュリティ対策を使用します。
 
 > [!NOTE]
@@ -27,7 +31,7 @@ ms.lasthandoff: 10/26/2017
 
 Data Factory ソリューションでは、1 つ以上のデータ [パイプライン](concepts-pipelines-activities.md)を作成します。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 これらのパイプラインは、データ ファクトリが作成されたリージョンに存在します。 
 
-Data Factory を利用できるリージョンが**米国東部**と**米国東部 2** (バージョン 2 プレビュー) のみであっても、データ移動サービスは[いくつかのリージョンでグローバル](concepts-integration-runtime.md#azure-ir)に利用できます。 Data Factory サービスでは、データ移動サービスがまだデプロイされていないリージョンを代替リージョンとして使用するようにサービスに明示的に指示しない限り、データが地域/リージョンを離れないことが保証されます。 
+データ ファクトリを利用できるリージョンは**米国東部**、**米国東部 2**、**西ヨーロッパ**だけですが (バージョン 2 プレビュー)、データ移動サービスは[複数のリージョンでグローバル](concepts-integration-runtime.md#azure-ir)に利用できます。 Data Factory サービスでは、データ移動サービスがまだデプロイされていないリージョンを代替リージョンとして使用するようにサービスに明示的に指示しない限り、データが地域/リージョンを離れないことが保証されます。 
 
 Azure Data Factory 自体は、クラウド データ ストアのリンクされたサービス資格情報以外のデータを格納しません。その資格情報は証明書を使用して暗号化されます。 Azure Data Factory を使用すると、データ主導型のワークフローを作成し、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミス環境にある[コンピューティング サービス](compute-linked-services.md)を使用したデータ処理を調整できます。 また、SDK と Azure Monitor を使用して、ワークフローを監視および管理することもできます。
 
@@ -144,7 +148,7 @@ PowerShell は既定で、セキュリティで保護された通信にセルフ
 
 次の表には、**企業ファイアウォール**の**送信ポート**とドメインの要件を示しています。
 
-| ドメイン名                  | 送信ポート | 説明                              |
+| ドメイン名                  | 送信ポート | Description                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443、80        | セルフホステッド統合ランタイムが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net`          | 443            | [ステージング コピー](copy-activity-performance.md#staged-copy)機能を使用する場合に、セルフホステッド統合ランタイムが Azure Storage アカウントに接続するために使用します。 |

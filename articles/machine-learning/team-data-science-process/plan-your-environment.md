@@ -4,7 +4,7 @@ description: "一連の重要な確認事項を考慮することにより、高
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/13/2017
 ms.author: bradsev
-ms.openlocfilehash: 42d1de8a27f8979db5662094e8bd74a6f5ccac55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f4cf702b899b285b18c09d7a5951589d2ae71b7d
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 データセットに対する高度な分析プロセスを実行する環境をセットアップしている場合、どのようなリソースを含めるように計画するべきでしょうか? この記事では、シナリオに関連するタスクおよびリソースの特定に役立つ一連の確認事項について説明しています。 予測分析の大まかな手順は、「 [Team Data Science Process (TDSP) について](overview.md)」に記載されています。 それらの各手順で、特定のシナリオに関連するタスクのための固有のリソースが必要になります。 シナリオを特定するための主要な確認事項は、データ ロジスティック、特性、データセットの品質、分析で使用するツールや言語などに関連しています。
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
    * HDInsight (Azure 上の Hadoop) または Hive テーブル
    * Azure Machine Learning
    * マウント可能な Azure 仮想ハード ディスク
-3. **データをどのように移動しますか。** データをさまざまなストレージや処理環境に取り込んだり読み込んだりするために使用できる手順とリソースが、以下の各トピックで説明されています。
+3. **データをどのように移動しますか。** データをさまざまなストレージや処理環境に取り込んだり読み込んだりするために使用できる手順とリソースが、以下の各記事で説明されています。
    
    * [分析用のストレージ環境にデータを読み込む](ingest-data.md)
    * [さまざまなデータ ソースから Azure Machine Learning Studio にトレーニング データをインポートする](../studio/import-data.md)
@@ -68,7 +68,7 @@ ms.lasthandoff: 10/11/2017
 3. **データのサイズはどの程度か?**
    
    * 小さい: 2 GB 未満
-   * 中程度: 2 GB 超、10 GB 未満
+   * 中程度: 2 GB から 10 GB
    * 大きい: 10 GB 超
 
 Azure Machine Learning 環境を例とします。
@@ -79,7 +79,7 @@ Azure Machine Learning 環境を例とします。
 分析プロセスで使用されるその他の Azure サービスの制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)」を参照してください。
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>データ品質の確認事項: 探索と前処理
-1. **データについて、何を知っていますか。** データの基本的な特性を理解する必要がある場合は、データを探索します。 どのようなパターンや傾向を示し、どのようなはずれ値を持ち、どれくらいの値が欠落しているかを調べます。 この手順は、必要な前処理の範囲を判断したり、分析の最も適切な機能や種類を提示するような仮説を立てたり、追加のデータ収集の計画を立てたりするうえで重要です。 説明的な統計の計算や、視覚化のためのプロットは、データを検査するための便利な技法です。 さまざまな Azure 環境でデータセットを探索する方法の詳細については、「 [Team Data Science Process のデータを探索する](explore-data.md)」を参照してください。
+1. **データについて、何を知っていますか。** データの基本的な特性を理解するには、データを探索します。 どのようなパターンや傾向を示し、どのようなはずれ値を持ち、どれくらいの値が欠落しているかを調べます。 この手順は、必要な前処理の範囲を判断したり、分析の最も適切な機能や種類を提示するような仮説を立てたり、追加のデータ収集の計画を立てたりするうえで重要です。 説明的な統計の計算や、視覚化のためのプロットは、データを検査するための便利な技法です。 さまざまな Azure 環境でデータセットを探索する方法の詳細については、「 [Team Data Science Process のデータを探索する](explore-data.md)」を参照してください。
 2. **データに前処理やクリーニングは必要ですか。**
    データの前処理とクリーニングは、通常は、機械学習でデータセットを効果的に使用する前に行う必要がある重要なタスクです。 未加工のデータは、多くの場合、ノイズが多く、信頼性が低く、値が欠落している可能性もあります。 このようなデータを使用してモデリングを行うと、誤解を招く結果が生成されることがあります。 詳細については、「 [機械学習を強化するためのデータを準備するタスク](prepare-data.md)」を参照してください。
 

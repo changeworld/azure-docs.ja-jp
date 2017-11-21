@@ -13,16 +13,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/01/2017
+ms.date: 11/13/2017
 ms.author: maroche
-ms.openlocfilehash: 2eab8ce96399c7d6da9b4afbccdfd8b836f0c9f3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2839c265596d98834fb4071dea1684d5a6669907
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能
 **Azure Data Catalog** の更新プログラムは定期的にリリースされます。 一部のリリースではバックエンド サービス機能に重点を置いているため、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
+
+## <a name="whats-new-for-november-2017"></a>2017 年 11 月の新機能 
+2017 年 11 月の時点で、Azure Data Catalog には次の機能が追加されています。
+
+* Data Catalog ポータル内のビジネス用語集の特定の用語に対する直接リンクのサポート。 ユーザーは、ビジネス用語集からリンクをコピーし、ドキュメント、メール、レポート、または他の場所に埋め込んで、用語集の用語の定義に直接リンクできます。
+* Azure Active Directory サービス プリンシパルのサポート。 Data Catalog 管理者は、クライアント アプリケーションがサービス プリンシパルを使ってカタログにアクセスするのを承認することができ、ユーザーやセキュリティ グループにアクセス許可を付与するのと同様に、それらのアプリケーションに固有のアクセス許可を付与できます。 詳しくは、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/active-directory-application-objects.md)」をご覧ください。
+* Data Catalog データ ソース登録ツールを使って Azure SQL Database および Azure SQL Data Warehouse のデータ ソースに接続するときの、Azure Active Directory 認証のサポート。 詳しくは、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](../sql-database/sql-database-aad-authentication.md)」をご覧ください。
+
 
 ## <a name="whats-new-for-september-2017"></a>2017 年 9 月の新機能 
 2017 年 9 月の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -86,19 +94,19 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 
 ## <a name="whats-new-for-january-2017"></a>2017 年 1 月の新機能 
 2017 年 1 月の時点で、Azure Data Catalog には次の機能が追加されています。
-*   Azure Data Catalog は [CSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification) 準拠になりました。
+*   Azure Data Catalog は [CSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification) に準拠しています。
 *   [Excel 2016 と Power Query for Excel での取得と変換](https://support.office.com/article/Introduction-to-Microsoft-Power-Query-for-Excel-6E92E2F4-2079-4E1F-BAD5-89F6269CD605)との統合。 Excel ユーザーは、Excel 内から Azure Data Catalog を使用してクエリの共有とクエリの検出ができます。 この機能は、Power BI Pro ライセンスを持つユーザーが利用できます。
 
 ## <a name="whats-new-for-december-2016"></a>2016 年 12 月の新機能
 2016 年 12 月の時点で、Azure Data Catalog には次の機能が追加されています。
-*   Azure Data Catalog は [HIPAA](https://www.microsoft.com/trustcenter/Compliance/HIPAA) および [EU Model Clauses](https://www.microsoft.com/TrustCenter/Compliance/EU-Model-Clauses) 準拠になりました。
+*   Azure Data Catalog は [HIPAA](https://www.microsoft.com/trustcenter/Compliance/HIPAA) および [EU Model Clauses](https://www.microsoft.com/TrustCenter/Compliance/EU-Model-Clauses) に準拠しています。
 *   データ ソース接続情報の編集をサポート。 データ資産の所有者と Data Catalog の管理者は、登録済みのデータ ソースの接続情報を編集することができます。データ ソースを再登録する必要はありません。
 *   Salesforce.com のデータ ソースのサポート。 ユーザーは Salesforce オブジェクトの登録と検出ができるようになりました。
 
 
 ## <a name="whats-new-for-november-2016"></a>2016 年 11 月の新機能
 2016 年 11 月の時点で、Azure Data Catalog には次の機能が追加されています。
-*   Azure Data Catalog は [ISO/IEC 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001) および [ISO/IEC 27018](https://www.microsoft.com/TrustCenter/Compliance/iso-iec-27018) 準拠になりました。
+*   Azure Data Catalog は [ISO/IEC 27001](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001) および [ISO/IEC 27018](https://www.microsoft.com/TrustCenter/Compliance/iso-iec-27018) に準拠しています。
 *   Data Catalog ポータルおよび REST API を使用した ODBC データ ソースの手動登録のサポート。
 
 ## <a name="whats-new-for-september-2016"></a>2016 年 9 月の新機能
@@ -151,7 +159,7 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 
 * Azure Data Catalog データ ソース登録ツールでのデータ ソース選択の操作性が再設計されました。 データ ソース登録ツールが更新され、Azure Data Catalog がサポートするデータ ソースからの特定と選択が簡単になりました。
 * Azure Data Catalog ポータルとデータ ソース登録ツールが追加の 10 言語に対応するようになりました。 英語に加え、Azure Data Catalog 環境はドイツ語、スペイン語、フランス語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、簡体字中国語、繁体字中国語で利用できます。 Azure Data Catalog ユーザー エクスペリエンスは、Windows またはユーザーの Web ブラウザーに指定された言語設定に基づいてローカライズされます。
-* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「 [ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
+* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
 * Azure Data Catalog によって使用される Azure サブスクリプションの変更のサポート。 Azure Data Catalog の管理者は、Azure Data Catalog ポータルの [設定] ページを使用して、課金用に別の Azure サブスクリプションを選択できます。
 
 ## <a name="whats-new-for-january-2016"></a>2016 年 1 月の新機能
