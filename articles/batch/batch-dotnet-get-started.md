@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf2b506c6d12e6337161aba889b23ad5eca83d96
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 83f751c6b5e44705509804e6872bb16d7c2e1d18
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>.NET 向け Batch クライアント ライブラリを使用してソリューション作成を開始する
 
@@ -323,7 +323,7 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
         pool = batchClient.PoolOperations.CreatePool(
             poolId: poolId,
             targetDedicatedComputeNodes: 3,                                             // 3 compute nodes
-            virtualMachineSize: "small",                                                // single-core, 1.75 GB memory, 225 GB disk
+            virtualMachineSize: "small",                                                // single-vCPU, 1.75 GB memory, 225 GB disk
             cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));   // Windows Server 2012 R2
 
         // Create and assign the StartTask that will be executed when compute nodes join the pool.

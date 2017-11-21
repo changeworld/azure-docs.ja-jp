@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: e28324fe0d7e52f1721af6cd835369f024d4c58f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 0be1616f5df915e566dc73c15dbea2e53177aa1c
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="how-to-successfully-rollout-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
 
@@ -38,8 +38,8 @@ ms.lasthandoff: 10/31/2017
 10. 一定の期間、[Azure AD によって提供されるレポート](active-directory-passwords-reporting.md)を確認して、ユーザーの登録と使用状況をチェックします。
 11. 準備ができたら、すべてのユーザーのパスワード リセットを有効にして、**[セルフ サービスによるパスワードのリセットが有効]** トグルを **[すべて]** に設定します。 
 
-    > [!IMPORTANT]
-    > Microsoft では Azure 管理者タイプのアカウントに対して強力な認証要件を適用しているため、管理者ではなく、ユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[詳細な記事](active-directory-passwords-how-it-works.md)を参照してください。
+   > [!IMPORTANT]
+   > Microsoft では Azure 管理者タイプのアカウントに対して強力な認証要件を適用しているため、管理者ではなく、ユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[パスワード ポリシーに関する記事](active-directory-passwords-policy.md#administrator-password-policy-differences)を参照してください。
 
 ## <a name="email-based-rollout"></a>電子メール ベースの展開
 

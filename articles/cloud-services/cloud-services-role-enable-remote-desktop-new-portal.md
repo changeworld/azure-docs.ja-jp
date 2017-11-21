@@ -14,20 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: mmccrory
-ms.openlocfilehash: 0ff7fde5f3753aa6a24fb0af54d68d0dc0bd96a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9ae4442f57170746eb0de94849b09625be51264
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
 > [!div class="op_single_selector"]
 > * [Azure ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [Azure クラシック ポータル](cloud-services-role-enable-remote-desktop.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
->
->
 
 リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。 リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
 
@@ -47,7 +44,7 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
     ![クラウド サービスのリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Details.png)
 
    > [!WARNING]
-   > 初めてリモート デスクトップを有効にして [OK] \(チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。 再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。 再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate) して、このダイアログに戻ります。
+   > 初めてリモート デスクトップを有効にして [OK] \(チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。 再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。 再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) して、このダイアログに戻ります。
    >
    >
 3. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
@@ -70,5 +67,5 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-[Cloud Services の構成方法](cloud-services-how-to-configure.md)
+[Cloud Services の構成方法](cloud-services-how-to-configure-portal.md)
 [Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md)

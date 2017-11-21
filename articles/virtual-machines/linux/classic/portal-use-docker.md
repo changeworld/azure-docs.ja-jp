@@ -15,33 +15,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
-ms.openlocfilehash: 932744208d9d53c87e31dcdf9e34539750be4bdb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5c1822b7304c0360da866ddb504483f5a53432f
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-classic-portal"></a>Azure クラシック ポータルで Docker VM 拡張機能を使用する方法
 > [!IMPORTANT] 
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 [Docker](https://www.docker.com/) は、最もよく利用されている仮想化アプローチの 1 つで、データの分離と共有リソースでのコンピューティングの手段として仮想マシンではなく [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)を使用します。 [Azure Linux エージェント] で管理する Docker VM 拡張機能を使用すれば、Azure 上に Docker VM を作成し、アプリケーション用に任意の数のコンテナーをホストさせることができます。
 
 > [!NOTE]
-> このトピックでは、Azure クラシック ポータルで Docker VM を作成する方法について説明します。 コマンド ラインで Docker VM を作成する方法については、「 [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用]」を参照してください。 コンテナーとその利点に関する概要については、「 [Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
+> このトピックでは、Azure Portal で Docker VM を作成する方法について説明します。 コマンド ラインで Docker VM を作成する方法については、「 [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用]」を参照してください。 コンテナーとその利点に関する概要については、「 [Docker High Level Whiteboard (Docker の概要ホワイトボード)](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)」を参照してください。
 > 
 > 
 
 ## <a name="create-a-new-vm-from-the-image-gallery"></a>イメージ ギャラリーからの新しい VM の作成
-最初のステップとして、Docker VM 拡張機能をサポートする Linux イメージから Azure VM を作成する必要があります。イメージ ギャラリーから取得した Ubuntu 14.04 LTS イメージをサンプルのサーバー イメージとして、Ubuntu 14.04 デスクトップをクライアントとして使用します。 ポータルで、左下の **[+ 新規]** をクリックし、新しい VM インスタンスを作成します。下図に示すように、使用可能な選択項目か、すべて表示されるイメージ ギャラリーから、Ubuntu 14.04 LTS イメージを選択します。
+最初のステップとして、Docker VM 拡張機能をサポートする Linux イメージから Azure VM を作成する必要があります。イメージ ギャラリーから取得した Ubuntu 14.04 LTS イメージをサンプルのサーバー イメージとして、Ubuntu 14.04 デスクトップをクライアントとして使用します。 ポータルで **[+ 新規]** をクリックし、新しい VM インスタンスを作成します。下図に示すように、使用可能な選択項目か、すべて表示されるイメージ ギャラリーから、Ubuntu 14.04 LTS イメージを選択します。
 
 > [!NOTE]
 > 現時点では、2014 年 7 月以降の Ubuntu 14.04 LTS イメージのみが Docker VM 拡張機能をサポートしています。
 > 
 > 
 
-![新しい Ubuntu イメージの作成
-](./media/portal-use-docker/ChooseUbuntu.png)
+![新しい Ubuntu イメージの作成](./media/portal-use-docker/ChooseUbuntu.png)
 
 ## <a name="create-docker-certificates"></a>Docker 証明書の作成
 VM の作成が完了したら、クライアント コンピューターに Docker がインストールされていることを確認します (詳細については、[Docker のインストール手順](https://docs.docker.com/installation/#installation)を参照してください)。
@@ -68,11 +68,6 @@ VM の作成が完了したら、クライアント コンピューターに Doc
 
 ## <a name="add-the-docker-vm-extension"></a>Docker VM 拡張機能の追加
 Docker VM 拡張機能を追加するには、作成した VM インスタンスを見つけ、下図に示す **[拡張機能]** まで下へスクロールし、クリックして VM 拡張機能を表示します。
-
-> [!NOTE]
-> この機能はプレビュー ポータル (https://portal.azure.com/) でのみサポートされます。
-> 
-> 
 
 ![](media/portal-use-docker/ClickExtensions.png)
 

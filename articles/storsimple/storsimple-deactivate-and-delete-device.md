@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2017
+ms.date: 11/03/2017
 ms.author: anbacker
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5778d54060c9be1b0c90c34bcf7c8e9bacb414d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>StorSimple Manager サービスを介した StorSimple 8000 シリーズ デバイスの非アクティブ化と削除
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、[StorSimple Manager サービスを使用した StorSimple 8000 シリーズの非アクティブ化と削除](storsimple-8000-deactivate-and-delete-device.md)に関するページをご覧ください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
 ## <a name="overview"></a>概要
 StorSimple デバイスをサービスから切り離したいことがあります (デバイスを交換またはアップグレードする場合や、StorSimple が不要になった場合など)。 その場合は、削除する前に、デバイスを非アクティブ化する必要があります。 非アクティブ化すると、デバイスとこれに対応する StorSimple Manager サービスの接続が切断されます。 このチュートリアルでは、StorSimple デバイスを非アクティブ化した後に削除することによってサービスから削除する方法について説明します。 
 

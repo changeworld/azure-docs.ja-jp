@@ -12,14 +12,14 @@ ms.custom: business continuity
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: NA
+ms.workload: Active
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: 0b424e2b260ec527f33cdbfe49d1d981b14edfda
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: ef9463e464928b8fa8e64019037a41711cb77830
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>概要: フェールオーバー グループとアクティブ geo レプリケーション
 アクティブ geo レプリケーションにより、同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。 セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合のクエリとフェールオーバーに使用できます。 フェールオーバーはユーザーのアプリケーションによって手動で開始する必要があります。 フェールオーバー後、新しいプライマリには別の接続エンドポイントが設定されます。 
@@ -116,6 +116,8 @@ Azure SQL データベースを使った高可用性サービスを構築する�
 DR リージョン内のアプリケーションで使う接続文字列を変更する必要はありません。  
 - **データの損失に備える**: 機能停止が検出された場合、経験的にデータの損失がゼロであれば、読み取り/書き込みのフェールオーバーが SQL によって自動的にトリガーされます。 それ以外の場合、**GracePeriodWithDataLossHours** に指定された期間、待機状態となります。 **GracePeriodWithDataLossHours** を指定した場合は、データの損失に備えてください。 一般に、機能の停止中、Azure では可用性が重視されます。 データの損失が許容できない場合は、**GracePeriodWithDataLossHours** に設定する値を十分大きく確保してください (24 時間など)。 
 
+> [!IMPORTANT]
+> 800 以下の DTU と 250 を超えるデータベースを持ち、geo レプリケーションを使用するエラスティック プールでは、計画されたフェールオーバーに時間がかかったりパフォーマンスが低下したりする問題が発生することがあります。  こうした問題は、geo レプリケーション エンドポイントが地理的に広く分散している場合や、各データベースで複数のセカンダリ エンドポイントが使用されている場合に、書き込みの負荷が高いワークロードで発生しやすくなります。  このような症状は、geo レプリケーションのラグが時間の経過と共に増加するときに見られます。  このラグは、[sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) を使用して監視できます。  この問題が発生する場合は、プール DTU の数を増やしたり、同じプール内で geo レプリケーションされるデータベースの数を減らしたりするなどの緩和策があります。
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>プライマリ データベースのアップグレードまたはダウングレード
 セカンダリ データベースの接続を解除することなく、プライマリ データベースを (同じサービス レベル内の) 異なるパフォーマンス レベルにアップグレードまたはダウングレードできます。 アップグレードの場合は、最初にセカンダリ データベースをアップグレードしてからプライマリをアップグレードすることをお勧めします。 ダウングレードは逆の順序で行います。つまり、最初にプライマリをダウングレードしてからセカンダリをダウングレードします。 データベースを異なるサービス レベルにアップグレードまたはダウングレードすると、この推奨事項が強制されます。 
@@ -138,7 +140,7 @@ DR リージョン内のアプリケーションで使う接続文字列を変�
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>Transact-SQL を使用して SQL データベース フェールオーバーを管理する
 
-| コマンド | 説明 |
+| コマンド | Description |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |FAILOVER または FORCE_FAILOVER_ALLOW_DATA_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
@@ -170,7 +172,7 @@ DR リージョン内のアプリケーションで使う接続文字列を変�
 >
 
 ## <a name="manage-sql-database-failover-using-the-rest-api"></a>REST API を使用して SQL データベース フェールオーバーを管理する
-| API | 説明 |
+| API | Description |
 | --- | --- |
 | [Create または Update Database (createMode=Restore)](/rest/api/sql/Databases/CreateOrUpdate) |プライマリまたはセカンダリ データベースを作成、更新、または復元します。 |
 | [Get Create or Update Database Status](/rest/api/sql/Databases/CreateOrUpdate) |復元操作中にステータスを返します。 |

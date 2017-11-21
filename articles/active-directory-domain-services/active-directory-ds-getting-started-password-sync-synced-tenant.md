@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/18/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: fb5e1e6f03c47afc8eba5f469a985a38c0e542d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b658bc91723c8384b91eb62e8506c82aa5112509
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード同期を有効にする
 前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要な資格情報ハッシュを Azure AD Domain Services との間で同期できるようにします。 資格情報の同期が設定されると、ユーザーは自社の資格情報を使用して、管理対象ドメインにサインインできます。
@@ -62,7 +62,7 @@ Azure AD Connect のインストール手順については、[Azure AD Connect 
 ### <a name="enable-synchronization-of-ntlm-and-kerberos-credential-hashes-to-azure-ad"></a>NTLM と Kerberos の資格情報ハッシュの Azure AD との同期を有効にする
 以下の PowerShell スクリプトをすべての AD フォレストで実行してください。 このスクリプトを使用すると、オンプレミスのすべてのユーザーの NTLM と Kerberos パスワード ハッシュを Azure AD テナントとの間で同期させることができます。 また、Azure AD Connect の完全同期が開始されます。
 
-```
+```powershell
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"  
 $azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"  
 Import-Module adsync  

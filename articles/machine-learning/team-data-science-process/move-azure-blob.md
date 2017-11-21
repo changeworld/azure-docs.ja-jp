@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/04/2017
 ms.author: bradsev;sachouks
-ms.openlocfilehash: 3a9e71afa067c925295735704c5b1fadb7244bcf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f282705b6d5d1f6867ea87737f19b5550054789a
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Azure Blob Storage との間のデータの移動
 [!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]

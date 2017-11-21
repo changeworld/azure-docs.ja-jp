@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 0ff8a178d883e3b51294485e556e65da52dbf327
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 7e03d5e2bbdb1b3b206fa7fa455f7dce7951f02b
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 この記事では、スケール セット内のインスタンス用にカスタム VM イメージを構築する、または既存の VM インスタンスにインストール スクリプトを自動的に実行する方法について説明します。 また、スケール セットのアプリケーションまたは OS 更新プログラムを管理する方法についても説明します。
@@ -88,7 +88,7 @@ Update-AzureRmVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
-スケール セットのアップグレード ポリシーが*手動*の場合は、[Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) を使用して VM インスタンスを更新します。 このコマンドレットは、VM インスタンスに更新されたスケール セットの構成を適用し、アプリケーションをインストールします。
+スケール セットのアップグレード ポリシーが*手動*の場合は、[Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) を使用して VM インスタンスを更新します。 このコマンドレットは、更新されたスケール セットの構成をVM インスタンスに適用し、アプリケーションをインストールします。
 
 
 ### <a name="use-azure-cli-20"></a>Azure CLI 2.0 の使用

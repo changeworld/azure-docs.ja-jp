@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/23/2017
+ms.date: 11/11/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 7f9574bc3d811d413b68d97ebe710858af8eb919
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 0bb79929a431a81c1618e09ee76fcb8415480655
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/24/2017
 
 Microsoft から、次のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。
 
-- [Azure Information Protection](https://docs.microsoft.com/information-protection/get-started/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- Azure Information Protection - [詳細](https://docs.microsoft.com/information-protection/get-started/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 - Azure RemoteApp
 
 - Microsoft Dynamics 365
@@ -82,11 +82,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 ## <a name="device-platform-condition"></a>デバイス プラットフォームの条件
 
-条件付きアクセス ポリシーでは、デバイス プラットフォームの条件を構成し、ポリシーをクライアント上のオペレーティング システムに関連付けることができます。
-
-![クライアント OS にアクセス ポリシーを関連付ける](./media/active-directory-conditional-access-technical-reference/41.png)
-
-Azure AD 条件付きアクセスは、次のデバイス プラットフォームをサポートします。
+条件付きアクセス ポリシーでは、デバイス プラットフォームの条件を構成し、ポリシーをクライアント上のオペレーティング システムに関連付けることができます。 Azure AD 条件付きアクセスは、次のデバイス プラットフォームをサポートします。
 
 - Android
 
@@ -96,7 +92,12 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 
 - Windows
 
-- macOS (プレビュー)
+- macOS
+
+
+![クライアント OS にアクセス ポリシーを関連付ける](./media/active-directory-conditional-access-technical-reference/41.png)
+
+
 
 
 
@@ -118,21 +119,20 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 条件付きアクセス ポリシーでは、次のブラウザーがサポートされています。 
 
 
-| OS                     | ブラウザー                    | サポート     |
-| :--                    | :--                         | :-:         |
-| Windows 10             | Internet Explorer、Edge     | ![○][1] |
-| Windows 10             | Chrome                      | ![○][1] |
-| Windows 8 / 8.1        | Internet Explorer、Chrome   | ![○][1] |
-| Windows 7              | Internet Explorer、Chrome   | ![○][1] |
-| iOS                    | Safari、Intune Managed Browser                      | ![○][1] |
-| Android                | Chrome、Intune Managed Browser                      | ![○][1] |
-| Windows Phone          | Internet Explorer、Edge     | ![○][1] |
-| Windows Server 2016    | Internet Explorer、Edge     | ![○][1] |
-| Windows Server 2016    | Chrome                      | 近日対応予定 |
-| Windows Server 2012 R2 | Internet Explorer、Chrome   | ![○][1] |
-| Windows Server 2008 R2 | Internet Explorer、Chrome   | ![○][1] |
-| macOS                  | Safari                      | ![○][1] |
-| macOS                  | Chrome                      | 近日対応予定 |
+| OS                     | ブラウザー                            | サポート     |
+| :--                    | :--                                 | :-:         |
+| Windows 10             | Internet Explorer、Edge、Chrome     | ![○][1] |
+| Windows 8 / 8.1        | Internet Explorer、Chrome           | ![○][1] |
+| Windows 7              | Internet Explorer、Chrome           | ![○][1] |
+| iOS                    | Safari、Intune Managed Browser      | ![○][1] |
+| Android                | Chrome、Intune Managed Browser      | ![○][1] |
+| Windows Phone          | Internet Explorer、Edge             | ![○][1] |
+| Windows Server 2016    | Internet Explorer、Edge             | ![○][1] |
+| Windows Server 2016    | Chrome                              | 近日対応予定 |
+| Windows Server 2012 R2 | Internet Explorer、Chrome           | ![○][1] |
+| Windows Server 2008 R2 | Internet Explorer、Chrome           | ![○][1] |
+| macOS                  | Chrome、Safari                      | ![○][1] |
+
 
 > [!NOTE]
 > Chrome サポートの場合、Windows 10 Creators Update (バージョン 1703) 以降を使用する必要があります。<br>
@@ -147,23 +147,25 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 以下のモバイル アプリとデスクトップ クライアントは、Office 365 をはじめとする Azure AD 接続サービス アプリケーションに対する条件付きアクセスをサポートします。
 
 
-| クライアント アプリケーション| 対象サービス| プラットフォーム |
+| クライアント アプリ| 対象サービス| プラットフォーム |
 | --- | --- | --- |
-| Azure Multi-Factor Authentication とアプリの場所ポリシー (デバイスベースのポリシーはサポートされていません)| 任意のマイ アプリ アプリ サービス| Android、iOS|
-| Azure RemoteApp| Azure RemoteApp サービス| Windows 10、Windows 8.1、Windows 7、iOS、Android、macOS|
-| Dynamics 365 アプリ| Dynamics 365| Windows 10、Windows 8.1、Windows 7、iOS、Android|
-| Microsoft Office 365 Teams (Microsoft Teams とそのすべてのクライアント アプリ (Windows Desktop、iOS、Android, Windows Phone、Web クライアント) をサポートするすべてのサービスを制御します)| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android|
-| メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)| Office 365 Exchange Online| Windows 10|
+| Azure リモート アプリ| Azure Remote App サービス| Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X|
+| Dynamics CRM アプリ| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS、Android|
+| メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Office 365 Exchange Online| Windows 10|
+| アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス| Android および iOS|
+| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS|
+| Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)| Office 365 SharePoint Online| Windows 8.1、Windows 7|
+| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定| Office 365 SharePoint Online| Windows 10|
+| Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定| Office 365 SharePoint Online| Mac OS X|
+| Office モバイル アプリ| Office 365 SharePoint Online| iOS、Android|
+| Office Yammer アプリ| Office 365 Yammer| Windows 10、iOS、Android|
+| Outlook 2016 (Office for macOS)| Office 365 Exchange Online| Mac OS X|
 | Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)| Office 365 Exchange Online| Windows 8.1、Windows 7|
 | Outlook Mobile アプリ| Office 365 Exchange Online| iOS|
-| Outlook 2016 (Office for macOS)| Office 365 Exchange Online| macOS|
-| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、[OneDrive](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e) 同期クライアント、Office Groups と SharePoint アプリについては今後サポート予定| Office 365 SharePoint Online| Windows 10|
-| Office 2016 アプリ、Office 2013 (最新の認証を使用)、[OneDrive](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e) 同期クライアント| Office 365 SharePoint Online| Windows 8.1、Windows 7|
-| Office モバイル アプリ| Office 365 SharePoint Online| iOS、Android|
-| Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみサポート)、OneDrive for Business については今後サポート予定| Office 365 SharePoint Online| macOS|
-| Office Yammer アプリ| Office 365 Yammer| Windows 10、iOS、Android|
-| PowerBI アプリ (現在のところ、Android ではサポートされていません)| PowerBI サービス| Windows 10、Windows 8.1、Windows 7、iOS|
+| PowerBI アプリ。 Android 用の Power BI では現在、デバイス ベースの条件付きアクセスはサポートされていません。| PowerBI サービス| Windows 10、Windows 8.1、Windows 7、iOS|
+| Skype for Business| Office 365 Exchange Online| Android、IOS|
 | Visual Studio Team Services アプリ| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS、Android|
+
 
 
 

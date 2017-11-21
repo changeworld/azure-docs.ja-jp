@@ -85,7 +85,7 @@ Azure の VM は、オペレーティング システムの仮想ディスクと
 
 1 秒あたりの I/O 操作の量 (IOPS) がディスクの I/O の上限を超えているために、I/O 要求のスロットルが連続的に行われていると、VM が一時的にシャットダウンされることがあります  (たとえば Standard ディスク ストレージは 500 IOPS に制限されています)。この問題を軽減するには、ワークロードに応じて、ディスク ストライピングを使用するか、ゲスト VM 内に記憶域スペースを構成します。 詳細については、「[Configuring Azure VMs for Optimal Storage Performance](http://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)」(最適なストレージ パフォーマンスのための Azure Virtual Machines の構成) を参照してください。
 
-Azure Premium Storage で、最大 80,000 IOPS という高い IOPS 制限を利用することができます。 詳細については、[高パフォーマンスの Premium Storage](../articles/storage/common/storage-premium-storage.md) に関するページを参照してください。
+Azure Premium Storage で、最大 80,000 IOPS という高い IOPS 制限を利用することができます。 詳細については、[高パフォーマンスの Premium Storage](../articles/virtual-machines/windows/premium-storage.md) に関するページを参照してください。
 
 ### <a name="other-incidents"></a>その他のインシデント
 まれな状況ですが、拡散する問題によって、Azure データセンターの複数のサーバーが影響を受けることがあります。 このような問題が発生した場合、Azure チームは、影響を受けるサブスクリプションに電子メール通知を送信します。 [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)と Azure Portal で、継続中の停止と過去のインシデントをチェックすることができます。

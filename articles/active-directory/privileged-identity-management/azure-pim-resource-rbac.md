@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barclayn
-ms.openlocfilehash: abaf78428cb12235a659bad5c13d64e8e51f4ba6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 114ef434e6167ef2b25b040e35ab3ce1b85151a9
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="pim-for-azure-resources-preview"></a>Azure リソースの PIM (プレビュー)
 
@@ -36,18 +36,19 @@ ms.lasthandoff: 10/11/2017
 
 Azure AD PIM は、組み込みの Azure リソース ロールと、以下を含むカスタム (RBAC) ロール (ただしこれらに限定されません) を管理できます。
 
-- 所有者
-- ユーザーアクセスの管理者
-- 共同作成者
+- Owner
+- User Access Administrator
+- Contributor
 - セキュリティ管理者
 - セキュリティ マネージャーなど
 
 >[!NOTE]
-Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者ロールに割り当てられたグループのユーザーまたはメンバー、および全体管理者がリソース管理者です。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソースの PIM を使用したアクセス レビューができます。 [Azure リソースの組み込みのロール](../role-based-access-built-in-roles.md)の一覧をご確認ください
+Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者ロールに割り当てられたグループのユーザーまたはメンバー、および全体管理者がリソース管理者です。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソースの PIM を使用したアクセス レビューができます。 [Azure リソースの組み込みロール](../role-based-access-built-in-roles.md)の一覧をご確認ください。
 
 ## <a name="tasks"></a>タスク
 
 PIM はロールのアクティブ化、保留中のアクティブ化/要求の表示、保留中の承認 ([Azure AD ディレクトリ ロール](azure-ad-pim-approval-workflow.md)の場合) の表示のためのアクセスを簡単にし、左側のナビゲーション メニューの [タスク] セクションの応答に対する保留をレビューします。
+
 概要のエントリ ポイントから [タスク] メニュー項目のいずれかにアクセスして表示されるビューには、Azure AD ディレクトリ ロールと Azure リソース ロール (プレビュー) の両方の結果が含まれています。 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
@@ -56,7 +57,7 @@ PIM はロールのアクティブ化、保留中のアクティブ化/要求の
 
 ## <a name="activate-roles"></a>ロールをアクティブ化する
 
-Azure リソース (プレビュー) のロールをアクティブ化すると、適格なロール メンバーが将来の日付/時刻でアクティブ化をスケジュールしたり、特定のアクティブ化最大期間 (管理者により構成) を選択できるようになります。 Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください
+Azure リソース (プレビュー) のロールをアクティブ化すると、適格なロール メンバーが将来の日付/時刻でアクティブ化をスケジュールしたり、特定のアクティブ化最大期間 (管理者により構成) を選択できるようになります。 Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください。
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 

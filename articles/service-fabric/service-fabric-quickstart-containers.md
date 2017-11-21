@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: ryanwi
-ms.openlocfilehash: bc7bee3caed2eba0a3f49d79241cd8685333ba13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 725a7224872cfb820bfdfa26c35c26569cff5a10
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Service Fabric の Windows コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -193,7 +193,7 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
-* GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)を確認します。
+* GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-containers)を確認します。
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png

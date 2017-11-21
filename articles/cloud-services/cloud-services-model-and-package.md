@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 21fbdbc4c24440c6fbbd7487cfbb2e0a3140aa96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7210c944e2f99aacdc2f554409552007286c5da
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>クラウド サービス モデルとそのパッケージ化について
 クラウド サービスは、サービス定義 *(.csdef)*、サービスの構成 *(.cscfg)*、サービス パッケージ *(.cspkg)* の 3 つのコンポーネントから作成されます。 **ServiceDefinition.csdef** ファイルと **ServiceConfig.cscfg** ファイルはどちらも XML をベースとし、クラウド サービスの構造と構成方法について記述したファイルであり、まとめてモデルと呼ばれています。 **ServicePackage.cspkg** は、**ServiceDefinition.csdef** とその他のものから生成される zip ファイルで、必要なすべてのバイナリベースの依存関係が含まれます。 Azure では、**ServicePackage.cspkg** と **ServiceConfig.cscfg** の両方からクラウド サービスが作成されます。
@@ -290,7 +290,7 @@ Visual Studio を使用しているのですが...
 * [クラウド サービスのインスタンスのリモート デスクトップをセットアップする][vs_remote]
 
 [deploy]: cloud-services-how-to-create-deploy-portal.md
-[remotedesktop]: cloud-services-role-enable-remote-desktop.md
+[remotedesktop]: cloud-services-role-enable-remote-desktop-new-portal.md
 [vs_remote]: ../vs-azure-tools-remote-desktop-roles.md
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md

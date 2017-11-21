@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/24/2017
+ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 45a6f63bd920c9a70c25b8dfae084ea030256cf4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd9ac1fa9aa44947448d5b422faf08f8d66aeb5f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート
 

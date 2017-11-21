@@ -37,3 +37,4 @@ sections:
           - html: <a href="tutorial-review-usage">利用状況とコストを確認して異常や効率を検出する</a>
           - html: <a href="tutorial-user-access">コスト管理データへのアクセスを割り当てる</a>
           - html: <a href="tutorial-forecast-spending">将来の支出を予測する</a>
+          - html: <a href="tutorial-manage-costs">コストの配分とショーバックおよびチャージバックのレポートを使用してコストを管理する</a>

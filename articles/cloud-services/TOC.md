@@ -34,32 +34,21 @@
 #### [タスクを使用してクラウド サービス ロールで .NET をインストールする](cloud-services-dotnet-install-dotnet.md)
 
 ### リモート デスクトップの構成
-#### [Azure ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
-#### [クラシック ポータル](cloud-services-role-enable-remote-desktop.md)
-#### [Azure PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## デプロイ
-### ポータルでのクラウド サービスの作成とデプロイ
-#### [Azure ポータル](cloud-services-how-to-create-deploy-portal.md)
-#### [クラシック ポータル](cloud-services-how-to-create-deploy.md)
+### [ポータルでのクラウド サービスの作成とデプロイ](cloud-services-how-to-create-deploy-portal.md)
 ### [PowerShell での空のクラウド サービス コンテナーの作成](cloud-services-powershell-create-cloud-container.md)
-### カスタム ドメイン名の構成
-#### [ポータル](cloud-services-custom-domain-name-portal.md)
-#### [クラシック ポータル](cloud-services-custom-domain-name.md)
+### [カスタム ドメイン名の構成](cloud-services-custom-domain-name-portal.md)
 ### [クラウド サービス デプロイのステージング (Node.js)](cloud-services-nodejs-stage-application.md)
 ### [カスタム ドメイン コントローラーに接続する](cloud-services-connect-to-custom-domain.md)
 
 ## サービスの管理
-### 一般的な管理タスク
-#### [Azure ポータル](cloud-services-how-to-manage-portal.md)
-#### [クラシック ポータル](cloud-services-how-to-manage.md)
-### クラウド サービスの構成
-#### [Azure ポータル](cloud-services-how-to-configure-portal.md)
-#### [クラシック ポータル](cloud-services-how-to-configure.md)
+### [一般的な管理タスク](cloud-services-how-to-manage-portal.md)
+### [クラウド サービスの構成](cloud-services-how-to-configure-portal.md)
 ### [Azure Automation を使用したクラウド サービスの管理](automation-manage-cloud-services.md)
-### 自動スケールの構成
-#### [Azure ポータル](cloud-services-how-to-scale-portal.md)
-#### [クラシック ポータル](cloud-services-how-to-scale.md)
+### [自動スケーリングの構成](cloud-services-how-to-scale-portal.md)
 ### [Python を使用した Azure リソースの管理](cloud-services-python-how-to-use-service-management.md)
 
 ### [ゲスト OS の修正プログラム](cloud-services-guestos-msrc-releases.md)
@@ -71,9 +60,7 @@
 
 ## 証明書の管理
 ### [Cloud Services と管理証明書](cloud-services-certs-create.md)
-### SSL の構成 
-#### [ポータル](cloud-services-configure-ssl-certificate-portal.md)
-#### [クラシック ポータル](cloud-services-configure-ssl-certificate.md)
+### [SSL の構成](cloud-services-configure-ssl-certificate-portal.md)
 
 ## 監視
 ### [クラウド サービスを監視する](cloud-services-how-to-monitor.md)

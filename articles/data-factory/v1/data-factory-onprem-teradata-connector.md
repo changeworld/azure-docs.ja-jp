@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 10/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d371604997d036aea6b4d4112bd124d127a2f3f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 860d32f26616c1e1a92254ef288df2e3367fdf1c
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

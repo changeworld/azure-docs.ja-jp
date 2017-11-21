@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a90d9c620221bffbb225fb060b997af2f5e90390
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22cc516c15353e39c73e762d2b8fa0d787a05ef4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Log Analytics での使用するカスタム ダッシュボードの作成
 
->[!NOTE]
-> ワークスペースが[新しい Log Analytics のクエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、新しいダッシュボードを作成および既存のダッシュボードを編集できません。 
-
 このガイドでは、環境をわかりやすく表示できるように、Log Analytics ダッシュボードが保存済みのすべてのログ検索を視覚化するしくみについて説明します。
+
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics のクエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、既存の **[マイ ダッシュボード]** を編集することはできません。 ワークスペースに **[マイ ダッシュボード]** タイルが追加されていなかった場合、アップグレードされたワークスペースに **[マイ ダッシュボード]** は表示されません。 
 
 ![サンプルのダッシュ ボード](./media/log-analytics-dashboards/oms-dashboards-example-dash.png)
 

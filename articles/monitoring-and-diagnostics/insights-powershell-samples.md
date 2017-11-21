@@ -1,8 +1,8 @@
 ---
 title: "Azure Monitor の PowerShell クイック スタート サンプル | Microsoft Docs"
 description: "PowerShell を使って、自動スケール、アラート、webhook、アクティビティ ログの検索などの Azure Monitor の機能にアクセスします。"
-author: kamathashwin
-manager: orenr
+author: rboucher
+manager: carmonm
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
-ms.author: ashwink
-ms.openlocfilehash: 48f064884c2a6d0a55cc58a44169ed03c62de46d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: robb
+ms.openlocfilehash: 21123299fbab59b388aacc4a802f3a9ec1d80632
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor の PowerShell クイック スタート サンプル
-この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
+この記事では、Azure Monitor の機能にアクセスするために役立つ PowerShell のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。 また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
 
 > [!NOTE]
-> Azure Monitor は、2016 年 9 月 25 日まで "Azure Insights" と呼ばれていたサービスの新しい名前です。 ただし、名前空間と、それに伴って次のコマンドには、引き続き "insights" が含まれています。
+> Azure Monitor は、2016 年 9 月 25 日まで "Azure Insights" と呼ばれていたサービスの新しい名前です。 ただし、名前空間と、それに伴って次のコマンドには、引き続き "insights" という語が含まれています。
 > 
 > 
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 Login-AzureRmAccount
 ```
 
-そのためには、サインインする必要があります。 サインインすると、アカウント、テナント ID、既定のサブスクリプション ID が表示されます。 すべての Azure コマンドレットは、既定のサブスクリプションのコンテキストで動作します。 アクセスできるサブスクリプションのリストを表示するには、次のコマンドを使用します。
+サインイン画面が表示されます。 アカウントにサインインすると、アカウント、テナント ID、既定のサブスクリプション ID が表示されます。 すべての Azure コマンドレットは、既定のサブスクリプションのコンテキストで動作します。 アクセスできるサブスクリプションのリストを表示するには、次のコマンドを使用します。
 
 ```PowerShell
 Get-AzureRmSubscription
@@ -141,7 +141,7 @@ Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/
 ## <a name="create-metric-alerts"></a>メトリック アラートの作成
 `Add-AlertRule` コマンドレットを使用して、アラート ルールを作成、更新、または無効化できます。
 
-電子メール プロパティと webhook プロパティは、それぞれ `New-AzureRmAlertRuleEmail` と `New-AzureRmAlertRuleWebhook` を使用して作成できます。 アラート ルール コマンドレットでは、これらをアラート ルールの **Actions** プロパティにアクションとして割り当てます。
+電子メール プロパティと webhook プロパティは、それぞれ `New-AzureRmAlertRuleEmail` と `New-AzureRmAlertRuleWebhook` を使用して作成できます。 アラート ルール コマンドレットでは、これらのプロパティをアラート ルールの **Actions** プロパティにアクションとして割り当てます。
 
 メトリックを使用するアラートを作成する際に使用されるパラメーターと値を次の表に示します。
 
@@ -201,10 +201,10 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 `Get-AzureRmMetricDefinition` で使用できるオプションの詳細な一覧については、「 [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)」を参照してください。
 
 ## <a name="create-and-manage-autoscale-settings"></a>自動スケール設定の作成と管理
-Web Apps、VM、Cloud Services、仮想マシン スケール セットなどのリソースは、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。
-ただし、各自動スケール設定では複数のプロファイルを使用できます。 たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。 各プロファイルには、複数のルールを構成できます。 自動スケールの詳細については、 [アプリケーションの自動スケールの方法](../cloud-services/cloud-services-how-to-scale.md)に関する記事を参照してください。
+リソース (Web アプリ、VM、Cloud Services、または仮想マシン スケール セット) は、そのリソース用に構成された自動スケール設定を 1 つだけ使用できます。
+ただし、各自動スケール設定では複数のプロファイルを使用できます。 たとえば、パフォーマンス ベースのスケール プロファイルを使用し、2 つ目のプロファイルとしてスケジュール ベースのプロファイルを使用できます。 各プロファイルには、複数のルールを構成できます。 自動スケールの詳細については、 [アプリケーションの自動スケールの方法](../cloud-services/cloud-services-how-to-scale-portal.md)に関する記事を参照してください。
 
-ここでは、次の手順を使用します。
+使用する手順は次のとおりです。
 
 1. ルールを作成します。
 2. 前の手順で作成したルールをプロファイルにマッピングしてプロファイルを作成します。
@@ -243,7 +243,7 @@ $webhook_scale = New-AzureRmAutoscaleWebhook -ServiceUri "https://example.com?my
 $notification1= New-AzureRmAutoscaleNotification -CustomEmails ashwink@microsoft.com -SendEmailToSubscriptionAdministrators SendEmailToSubscriptionCoAdministrators -Webhooks $webhook_scale
 ```
 
-最後に、自動スケール設定を作成して、上記で作成したプロファイルを追加します。
+最後に、自動スケール設定を作成して、前に作成したプロファイルを追加します。 
 
 ```PowerShell
 Add-AzureRmAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
@@ -319,7 +319,12 @@ Add-AzureRmLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s
 ```
 
 ## <a name="configure-diagnostics-logs"></a>診断ログの構成
-多数の Azure サービスで追加のログとテレメトリが提供されます。Azure ストレージ アカウントへのデータの保存、Event Hubs への送信、OMS Log Analytics ワークスペースへの送信を行うようにこれらのサービスを構成できます。 この操作はリソース レベルでのみ実行できます。ストレージ アカウントまたはイベント ハブは、診断設定が構成されているターゲット リソースと同じリージョンに存在する必要があります。
+多くの Azure サービスで、次の 1 つ以上の操作を実行できるように追加のログとテレメトリが提供されます。 
+ - Azure Storage アカウントにデータを保存するための構成
+ - Event Hubs への送信
+ - OMS Log Analytics ワークスペースへの送信 
+
+操作は、リソース レベルでのみ実行できます。 ストレージ アカウントまたはイベント ハブは、診断設定が構成されているターゲット リソースと同じリージョンに存在する必要があります。
 
 ### <a name="get-diagnostic-setting"></a>診断設定の取得
 ```PowerShell

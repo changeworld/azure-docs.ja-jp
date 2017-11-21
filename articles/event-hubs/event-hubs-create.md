@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 11/07/2017
 ms.author: sethm
-ms.openlocfilehash: 816bf1426704d3391550e80c0700f1b011683a94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e444c4505d4744c95e08c4ef0d33566356785c81
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
-1. [Azure Portal][Azure portal] にログインし、画面の左上にある **[新規]** をクリックします。
+1. [Azure Portal][Azure portal] にログインし、画面の左上にある **[リソースの作成]** をクリックします。
 1. **[モノのインターネット]**、**[Event Hubs]** の順にクリックします。
    
     ![](./media/event-hubs-create/create-event-hub9.png)
-1. **[名前空間の作成]** ブレードで、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
+1. **[名前空間の作成]** で、名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
    
     ![](./media/event-hubs-create/create-event-hub1.png)
 1. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic または Standard) を選択します。 Azure サブスクリプション、リソース グループ、リソースが作成される場所を選択します。 

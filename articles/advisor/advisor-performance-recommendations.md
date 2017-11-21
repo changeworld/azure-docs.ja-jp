@@ -14,17 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 995a1f37a3fd68b39c14a95d46109c0f7814018d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e32723cd3ef13829890a630f4bff308164e17674
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor のパフォーマンスに関する推奨事項
 
 Azure Advisor のパフォーマンスに関する推奨事項は、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させるために役立ちます。 Advisor のパフォーマンスに関する推奨事項は、Advisor ダッシュボードの **[パフォーマンス]** タブで取得できます。
-
-![Advisor の [パフォーマンス] タブ](./media/advisor-performance-recommendations/advisor-performance-tab.png)
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>SQL DB Advisor によるデータベースのパフォーマンス向上
 
@@ -34,8 +32,6 @@ Advisor は、すべての Azure リソースに関する推奨事項を、一�
 > 推奨事項を取得するには、データベースを約 1 週間使用し、その週の間に、何らかの一貫性のあるアクティビティが行われている必要があります。 SQL Database Advisor は、ランダムでむらのあるアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。
 
 SQL Database Advisor の詳細については「[SQL Database Advisor](https://azure.microsoft.com/en-us/documentation/articles/sql-database-advisor/)」を参照してください。
-
-![SQL Database に関する推奨事項](./media/advisor-performance-recommendations/advisor-performance-sql.png)
 
 ## <a name="improve-redis-cache-performance-and-reliability"></a>Redis Cache のパフォーマンスと信頼性の向上
 
@@ -49,23 +45,12 @@ Azure Advisor は、App Services のエクスペリエンスを向上させ、�
 * Web アプリやデータベースなどのリソースの配置によってパフォーマンスの向上とコストの削減を実現できるインスタンスの検出。 
 
 App Services に関する推奨事項の詳細については、「[Azure App Service のベスト プラクティス](https://azure.microsoft.com/en-us/documentation/articles/app-service-best-practices/)を参照してください。
-![App Services に関する推奨事項](./media/advisor-performance-recommendations/advisor-performance-app-service.png)
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-2. 左側のウィンドウで、**[その他のサービス]** をクリックします。
-
-3. サービス メニュー ウィンドウの **[Monitoring and Management (監視と管理)]** で、**[Azure Advisor]** をクリックします。  
- Advisor ダッシュボードが表示されます。
-
-4. Advisor ダッシュボードで、**[パフォーマンス]** タブをクリックします。
-
-5. 推奨事項を受け入れるサブスクリプションを選択し、**[推奨事項の取得]** をクリックします。
-
-> [!NOTE]
-> Advisor の推奨事項にアクセスするには、最初に Advisor に*サブスクリプションを登録する*必要があります。 *サブスクリプションの所有者*が Advisor ダッシュボードを起動して **[推奨事項の取得]** ボタンをクリックすると、サブスクリプションが登録されます。 これは *1 回限りの操作*です。 サブスクリプションが登録されると、サブスクリプション、リソース グループ、または特定のリソースの*所有者*、*共同作成者*、または*閲覧者*として Advisor の推奨事項にアクセスできます。
+2.  Advisor ダッシュボードで、**[パフォーマンス]** タブをクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

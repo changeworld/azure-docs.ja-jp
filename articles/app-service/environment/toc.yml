@@ -38,6 +38,8 @@
       href: integrate-with-application-gateway.md
     - name: テンプレートからの ASE の作成
       href: create-from-template.md
+    - name: 強制トンネル構成
+      href: forced-tunnel-support.md
 - name: リファレンス
   items:
     - name: 管理アドレス

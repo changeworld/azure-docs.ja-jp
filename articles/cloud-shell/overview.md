@@ -12,18 +12,24 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/02/2017
 ms.author: juluk
-ms.openlocfilehash: 44d2ac2fd35621ab8cd8d7584744139ee3bab5c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3acea56ea414f0c43333a02274e91226db29d454
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
 Azure Cloud Shell には、業務に最適のシェル操作を選択できる柔軟性があります。
 Linux ユーザーは Bash を、Windows ユーザーは PowerShell を選ぶことができます。
+
+Azure Portal を使用して Cloud Shell アイコンから起動します。
+
+![ポータルの起動](media/overview/portal-launch-icon.png)
+
+シェル セレクターのドロップダウンから Bash または PowerShell を利用します。
 
 ![Cloud Shell の Bash](media/overview/overview-bash-pic.png)
 
@@ -44,16 +50,16 @@ Cloud Shell は、作業のスピードを高めるために、広く使われ�
 すべてのツールの一覧については、[Bash エクスペリエンス](features.md#tools)および [PowerShell エクスペリエンス](features-powershell.md#tools)をご覧ください。
 
 ### <a name="automatic-authentication"></a>自動認証
-Azure CLI 2.0 ですばやくリソースにアクセスできるよう、Cloud Shell では各セッションで安全に自動認証が行われます。
+Azure CLI 2.0 または Azure PowerShell コマンドレットですばやくリソースにアクセスできるよう、Cloud Shell では各セッションで安全に自動認証が行われます。
 
 ### <a name="connect-your-azure-file-storage"></a>Azure File Storage の接続
-Cloud Shell マシンは一時的なものであるため、お使いの $Home ディレクトリを永続化するためには、Azure ファイル共有を `clouddrive` としてマウントする必要があります。
+Cloud Shell マシンは一時的なものであるため、お使いの $Home ディレクトリを永続化するためには、Azure Files 共有を `clouddrive` としてマウントする必要があります。
 Cloud Shell の初回起動時に、リソース グループとストレージ アカウント、ファイル共有を自動的に作成するよう促されます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 1 つのファイル共有をマップすると、Cloud Shell の Bash と PowerShell の両方で使われます。
 
 #### <a name="create-new-storage"></a>新しいストレージの作成
 ![](media/overview/basic-storage.png)
 
-ローカル冗長ストレージ (LRS) アカウントと Azure ファイル共有が自動的に作成されます。 Bash 環境と PowerShell 環境の両方を選ぶと、Azure ファイル共有は両方の環境で使われます。 ストレージのコストは通常どおりに適用されます。
+ローカル冗長ストレージ (LRS) アカウントと Azure Files 共有が自動的に作成されます。 Bash 環境と PowerShell 環境の両方を選ぶと、Azure Files 共有は両方の環境で使われます。 ストレージのコストは通常どおりに適用されます。
 
 以下の 3 つのリソースが自動的に作成されます。
 1. `cloud-shell-storage-<region>` という名前のリソース グループ
@@ -90,7 +96,7 @@ Cloud Shell の初回起動時に、リソース グループとストレージ 
 [Cloud Shell の Bash](quickstart.md) および [Cloud Shell の PowerShell](quickstart-powershell.md) のクイックスタートで、これらの例を試してください。
 
 ## <a name="pricing"></a>価格
-Cloud Shell のホストとなるマシンは無料です。ただし、前提条件として Azure ファイル共有をマウントする必要があります。 ストレージのコストは通常どおりに適用されます。
+Cloud Shell のホストとなるマシンは無料です。ただし、前提条件として Azure Files 共有をマウントする必要があります。 ストレージのコストは通常どおりに適用されます。
 
 ## <a name="supported-browsers"></a>サポートされているブラウザー
 Cloud Shell は、Chrome、Edge、Safari での使用をお勧めします。

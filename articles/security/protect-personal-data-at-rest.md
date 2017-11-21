@@ -16,10 +16,10 @@ ms.date: 10/31/2017
 ms.author: barclayn
 ms.custom: 
 ms.openlocfilehash: 2bb8370d23d9450fb8154f21c27817666fd7852c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Azure の暗号化テクノロジ: 個人の保存データを暗号化で保護する
 

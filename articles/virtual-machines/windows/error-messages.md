@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 5/26/2017
+ms.date: 11/03/2017
 ms.author: xujing;genli
-ms.openlocfilehash: e6d52e762285b9238154a22cda45b4ea6b2c70dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a99b6ac7a3008a5c6bd7380a62565ff6567201e9
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="understand-common-error-messages-when-you-manage-windows-virtual-machines-in-azure"></a>Azure で Windows 仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
 

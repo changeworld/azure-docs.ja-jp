@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e89be04a0d6fe90a89e293e67d42f0204eb7000a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 640e051a909b1b9457b20cbd507b418342297c6e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors の概要
 Reliable Actors は、[Virtual Actor](http://research.microsoft.com/en-us/projects/orleans/) パターンに基づく Service Fabric アプリケーション フレームワークです。 Reliable Actors API は、Service Fabric による拡張性と信頼性の保証の上に構築された、シングル スレッドのプログラミング モデルを提供します。
@@ -143,7 +143,7 @@ Reliable Actors ランタイムは、アクター メソッドにアクセスす
 アクター ランタイムは、これらのメソッドの呼び出しを制御する状況でこのような同時実行を保証します。 たとえば、クライアント要求の受信に対する応答として行われるメソッド呼び出しおよびタイマーとアラームのコールバックに対して、このような保証を提供します。 ただし、アクター コードがアクター ランタイムによって提供されるメカニズム以外でこれらのメソッドを直接呼び出す場合、ランタイムは同時実行を保証できません。 たとえば、メソッドが、アクター メソッドによって返されるタスクに関連付けられていない一部のタスクのコンテキストで呼び出される場合、ランタイムは同時実行を保証することはできません。 アクターが独自に作成するスレッドからメソッドが呼び出される場合、ランタイムは同時実行を保証できません。 そのため、バックグラウンド操作を実行するには、アクターは、ターンごとの同時実行を優先する [アクターのタイマーおよびアクターのアラーム](service-fabric-reliable-actors-timers-reminders.md) を使用する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
-* 最初の Reliable Actors サービスの開発を始めます。
+最初の Reliable Actors サービスの開発を始めます。
    * [.NET での Reliable Actors の使用](service-fabric-reliable-actors-get-started.md)
    * [Java での Reliable Actors の使用](service-fabric-reliable-actors-get-started-java.md)
 

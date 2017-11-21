@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 06/26/2017
+ms.date: 11/03/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42cf9c3f0198b1fb8bcc84532c004c576b30d935
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a3a2f53c7abc1f2dfba90a30f4830df1abe63f5d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Azure で新しい Windows VM を作成するときのデプロイに関する問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]

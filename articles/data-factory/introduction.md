@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/29/2017
 ms.author: shlo
-ms.openlocfilehash: 58e141498ed5cbaa110622d949a9627c98827ac3
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: b797ee3ef270ff3420ff9e7f4aa8032641714d7a
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -109,7 +109,7 @@ SSIS ワークロードを移動する場合は、データ ファクトリ バ�
 プログラマティック インターフェイスを必要とする詳しい知識のあるユーザー向けに、バージョン 2 では、使い慣れた IDE を使用してパイプラインを作成、管理、監視するために使用できる豊富な SDK のセットが用意されています。
 
 - *.NET SDK*: バージョン 2 で .NET SDK は更新されています。 
-- *PowerShell*: バージョン 2 で PowerShell コマンドレットは更新されています。 バージョン 2 のコマンドレットには、名前に **DataFactoryV2** が含まれています。 たとえば、Get AzureRmDataFactoryV2 となります。 
+- *PowerShell*: PowerShell コマンドレットはバージョン 2 で更新されています。 バージョン 2 のコマンドレットには、名前に **DataFactoryV2** が含まれています。 たとえば、Get AzureRmDataFactoryV2 となります。 
 - *Python SDK*: この SDK は、バージョン 2 で新しく導入されました。
 - *REST API*: REST API はバージョン 2 で更新されています。  
 
@@ -172,11 +172,11 @@ Data Factory の概念について詳しくは、次の記事をご覧くださ�
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-現時点では、米国東部と米国東部 2 のリージョンでデータ ファクトリを作成できます。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
+現時点では、米国東部、米国東部 2、西ヨーロッパの各リージョンでデータ ファクトリを作成できます。 ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
 
 Azure Data Factory 自体は、データを保存しません。 Azure Data Factory を使用すると、データ主導型のワークフローを作成し、サポートされているデータ ストア間でのデータ移動と、他のリージョンまたはオンプレミスの環境にあるコンピューティング サービスを使用したデータ処理を調整できます。 また、プログラムと UI の両方のメカニズムを使用して、ワークフローを監視および管理することもできます。
 
-Data Factory を利用できるリージョンが米国東部と米国東部 2 のリージョンのみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンでグローバルに利用できます。 データ ストアがファイアウォールの内側にある場合は、オンプレミスの環境にインストールされているデータ管理ゲートウェイがデータを移動します。
+Data Factory を利用できるリージョンが米国東部、米国東部 2、西ヨーロッパのみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンでグローバルに利用できます。 データ ストアがファイアウォールの内側にある場合は、オンプレミスの環境にインストールされているデータ管理ゲートウェイがデータを移動します。
 
 たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。 北ヨーロッパに Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。 Data Factory がコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
 

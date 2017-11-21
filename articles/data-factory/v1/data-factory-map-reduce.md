@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4af93d03fc4d3ffa0956d72cc0fc90bc98d15020
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5fd49c6b269b5f247440c2bc91680fc77fc296c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,6 +33,10 @@ ms.lasthandoff: 10/11/2017
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での MapReduce アクティビティを使用したデータ変換](../transform-data-using-hadoop-map-reduce.md)についてのページを参照してください。
+
 
 Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight MapReduce アクティビティは、[独自の](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)、または[オンデマンドの](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux ベースの HDInsight クラスターで MapReduce プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 

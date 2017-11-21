@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.openlocfilehash: 96490c0d060fe5486a7235a5aa76380c8d9b5d4f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19f52181a2847ab52029adac4d58e402a76d5f30
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
@@ -97,7 +97,7 @@ Azure Active Directory アプリケーション プロキシを使用してア�
 ## <a name="next-steps"></a>次のステップ
 * [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
 * [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
-* [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
+* [条件付きアクセスを有効にする](application-proxy-enable-remote-access-sharepoint.md)
 * [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
 
 最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)

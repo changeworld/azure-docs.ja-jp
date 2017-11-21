@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 10/15/2017
 ms.author: maroche
-ms.openlocfilehash: d6867c73bc6ea3c238cceef8a68466d451f3365c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f637acffdbf31f6c69124282f50dc5830ad9f5b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 

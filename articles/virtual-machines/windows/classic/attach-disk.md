@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: cynthn
-ms.openlocfilehash: 7847a2485cd57d895c022afb12ef08f37fe5775d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 0440cd2fadffd945c75d1b94df67e0c8b8bf7c1e
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="attach-a-data-disk-to-a-windows-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された Windows 仮想マシンにデータ ディスクをアタッチする
-<!--
-Refernce article:
-    If you want to use the new portal, see [How to attach a data disk to a Windows VM in the Azure portal](../../virtual-machines-windows-attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
--->
 
 この記事では、Azure Portal を使用して、Azure クラシック デプロイメント モデルによって作成した新しいディスクと既存のディスクを Windows 仮想マシンに接続する方法を説明します。
+
+
 
 [Azure Portal で Linux VM にデータ ディスクを接続する](../../linux/attach-disk-portal.md)こともできます。
 
@@ -43,6 +41,7 @@ Refernce article:
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ## <a name="find-the-virtual-machine"></a>仮想マシンの検索
 1. [Azure Portal](https://portal.azure.com/) にサインインします。

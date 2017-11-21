@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/13/2017
 ms.author: ryanwi
-ms.openlocfilehash: d98d2823c19f24a2d9040f7959bd5189bd6bcc16
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 8ff8c425189efdd7ea21984528bf7ea765e17955
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>Service Fabric を使用して API Management をデプロイする
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、Service Fabric を使用して [Azure API Management](../api-management/api-management-key-concepts.md) をセットアップし、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について示します。  完了すると、トラフィックをバックエンド ステートレス サービスに送信するよう API 操作が構成された状態で、API Management が VNET にデプロイされます。 Service Fabric を使用する Azure API Management のその他のシナリオについては、[概要](service-fabric-api-management-overview.md)を参照してください。
@@ -290,7 +290,7 @@ Visual Studio を管理者として起動し、ASP.NET Core サービスを作�
     - **[URL]**: **[取得]** を選択し、API の URL パスを指定します。 このチュートリアルでは、"/api/values" を使用します。  既定では、ここで指定した URL パスが、バックエンドの Service Fabric サービスに送信される URL パスになります。 サービスで使用するのと同じ URL パス (この例では "/api/values") を指定する場合は、何も変更しなくても API 操作は正常に機能します。 バックエンドの Service Fabric サービスで使用するのとは異なる URL パスを指定することもできますが、その場合は後ほど操作ポリシー内でパスの再生成を指定する必要があります。
     - **[表示名]**: API の名前を指定します。 このチュートリアルでは、"Values" を使用します。
 
-5. [ **Save**] をクリックします。
+5. **[ Save]** をクリックします。
 
 ## <a name="configure-a-backend-policy"></a>バックエンド ポリシーの構成
 
@@ -384,7 +384,7 @@ ResourceGroupName="tutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="conclusion"></a>まとめ
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -393,7 +393,6 @@ az group delete --name $ResourceGroupName
 > * API 操作の作成
 > * バックエンド ポリシーの構成
 > * API を製品に追加する
-
 
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 

@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 07/20/2017
-ms.openlocfilehash: 3f1ffa20b58c52558e880ed6a0ef4ca674173973
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 11/03/2017
+ms.openlocfilehash: 903fd2ff446e1963ab5cfcec745766188b74efcf
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
 
@@ -35,7 +35,7 @@ Azure Database for PostgreSQL では、過去の特定の時点までサーバ�
 
    ![Azure Portal - サーバーを検索して見つける](media/postgresql-howto-restore-server-portal/1-locate.png)
 
-3. サーバーの概要ブレードのツール バーの **[復元]** をクリックします。 [復元] ブレードが開きます。
+3. サーバーの概要ページのツール バーで **[復元]** をクリックします。 [復元] ページが表示されます。
 
    ![Azure Database for PostgreSQL - 概要 - 復元ボタン](./media/postgresql-howto-restore-server-portal/2_server.png)
 

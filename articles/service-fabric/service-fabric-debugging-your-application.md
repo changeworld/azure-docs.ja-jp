@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 11/02/2017
 ms.author: vturecek;mikhegn
-ms.openlocfilehash: 2459025899a7f5ffebf44fa104ed112c0eb99dfa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8c29b54415a42ec435f2b4c3ce6b407b2155f70c
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのデバッグ
 > [!div class="op_single_selector"]

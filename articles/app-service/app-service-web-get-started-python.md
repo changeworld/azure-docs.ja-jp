@@ -3,7 +3,7 @@ title: "Azure に Python Web アプリを作成する| Microsoft Docs"
 description: "Azure App Service の Web Apps で、初めての Python の Hello World を数分でデプロイします。"
 services: app-service\web
 documentationcenter: 
-author: syntaxc4
+author: cephalin
 manager: cfowler
 editor: 
 ms.assetid: 928ee2e5-6143-4c0c-8546-366f5a3d80ce
@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/17/2017
-ms.author: cfowler
+ms.date: 10/26/2017
+ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b3908aa6534d08c5f3bd41d439556f48067dc466
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: ae410c7fabac6d23a69922804a0a87fde63594a2
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-python-web-app-in-azure"></a>Azure に Python Web アプリを作成する
 
@@ -45,8 +45,6 @@ ms.lasthandoff: 10/17/2017
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-このクイック スタートでは、ターミナル ウィンドウを使ってすべてのコマンドを実行します。
 
 サンプル コードが含まれているディレクトリに移動します。
 
@@ -84,23 +82,17 @@ Web ブラウザーを開き、`http://localhost:5000` のサンプル アプリ
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)]
 
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)]
+## <a name="create-a-web-app"></a>Web アプリを作成する
 
-![空の Web アプリ ページ](media/app-service-web-get-started-python/app-service-web-service-created.png)
+[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-python-no-h.md)]
 
-これで、Azure に空の新しい Web アプリが作成されました。
+新しく作成された Web アプリに移動します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
 
-## <a name="configure-to-use-python"></a>Python を使用するための構成
-
-Python バージョン `3.4` を使用するように Web アプリを構成するには、[az webapp config set](/cli/azure/webapp/config#set) コマンドを使用します。
-
-```azurecli-interactive
-az webapp config set --python-version 3.4 --name <app_name> --resource-group myResourceGroup
+```bash
+http://<app name>.azurewebsites.net
 ```
 
-上記のように Python バージョンを設定すると、プラットフォームから提供されている既定のコンテナーが使用されます。 独自のコンテナーを使用するには、[az webapp config container set](/cli/azure/webapp/config/container#set) コマンドの CLI リファレンスをご覧ください。
-
-[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)]
+![空の Web アプリ ページ](media/app-service-web-get-started-python/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)]
 
@@ -168,7 +160,7 @@ Python のサンプル コードは、Azure App Service の Web アプリで実�
 return 'Hello, Azure!'
 ```
 
-Git で変更をコミットしてから、コード変更を Azure にプッシュします。
+ローカル ターミナル ウィンドウで、変更を Git にコミットし、コード変更を Azure にプッシュします。
 
 ```bash
 git commit -am "updated output"

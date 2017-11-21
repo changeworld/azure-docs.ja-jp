@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 6d00c776da3be0f799b82160c45f4c47a965b4bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 65b5389837dc1d1693b1c4326b98264c8d75fd06
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -27,6 +27,9 @@ ms.lasthandoff: 10/11/2017
 > * [監視と管理アプリの使用](data-factory-monitor-manage-app.md)
 >
 >
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の Data Factory パイプラインの監視と管理](../monitor-visually.md)に関するページを参照してください。
 
 この記事では、監視と管理アプリを使用して、Azure Data Factory パイプラインを監視、管理、デバッグする方法について説明します。 また、警告を作成して障害時に通知を受け取る方法についての情報も提供します。 次のビデオを見ると、アプリケーションの使用方法の概要を理解できます。
 

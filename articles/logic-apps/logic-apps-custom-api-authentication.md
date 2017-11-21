@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 6ccd8728697040b4c783d8a1e51bc68c09ef7001
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2528f4318d92bbfdc1008795876f0240a5e3e4f6
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>ロジック アプリからのカスタム API の呼び出しのセキュリティ保護
 
@@ -49,7 +49,7 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 #### <a name="part-1-create-an-azure-ad-application-identity-for-your-logic-app"></a>パート 1: ロジック アプリの Azure AD アプリケーション ID を作成する
 
-ロジック アプリはこのアプリケーション ID を利用し、Azure AD に対して認証します。 この ID は、ディレクトリに対して一度だけ設定します。 たとえば、ロジック アプリごとに一意の ID を作成できますが、すべてのロジック アプリに同じ ID を使用することを選択できます。 これらの ID は Azure ポータルと [Azure クラシック ポータル](#app-identity-logic-classic)で設定できます。あるいは、[PowerShell](#powershell) を利用できます。
+ロジック アプリはこのアプリケーション ID を利用し、Azure AD に対して認証します。 この ID は、ディレクトリに対して一度だけ設定します。 たとえば、ロジック アプリごとに一意の ID を作成できますが、すべてのロジック アプリに同じ ID を使用することを選択できます。 これらの ID は Azure ポータルまたは [PowerShell](#powershell) を使用して設定できます。
 
 **Azure ポータルでロジック アプリのアプリケーション ID を作成する**
 
@@ -94,34 +94,6 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
    ![後のためにキーをコピーして保存する](./media/logic-apps-custom-api-authentication/logic-app-copy-key-secret-password.png)
 
-<a name="app-identity-logic-classic"></a>
-
-**Azure クラシック ポータルでロジック アプリのアプリケーション ID を作成する**
-
-1. Azure クラシック ポータルで [**[Active Directory]**](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) を選択します。
-
-2. Web アプリまたは API アプリに使用するものと同じディレクトリを選択します。
-
-3. **[アプリケーション]** タブで、ページの下にある **[追加]** を選択します。
-
-4. アプリケーション ID に名前を付け、**[次へ]** を選択します (右方向矢印)。
-
-5. **[アプリケーションのプロパティ]** で、**[サインオン URL]** と **[アプリ ID/URI]** にドメインとして書式設定された一意の文字列を指定し、**[完了]** を選択します (チェックマーク)。
-
-6. **[構成]** タブで、パート 3 で使用するロジック アプリの **[クライアント ID]** をコピーして保存します。
-
-7. **[キー]** で、**[時間の選択]** 一覧を開きます。 キーの有効期間を選択します。
-
-   ここで作成するキーは、アプリケーション ID の "シークレット" またはロジック アプリのパスワードとして機能します。
-
-8. ページの下部にある **[保存]** を選択します。 場合によっては数秒待つ必要があります。
-
-9. **[キー]** で、表示されたキーをコピーして保存します。 
-
-   パート 3 でロジック アプリを構成するとき、このキーを "シークレット" またはパスワードとして指定します。
-
-詳細については、「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)」を参照してください。
-
 <a name="powershell"></a>
 
 **PowerShell でロジック アプリのアプリケーション ID を作成する**
@@ -156,7 +128,7 @@ Web アプリまたは API アプリが既にデプロイされている場合�
 
 4. **[認証/承認]** ページで、**[保存]** をクリックします。
 
-次に、Web アプリまたは API アプリに関連付けられているアプリケーション ID のクライアント ID とテナント ID を見つける必要があります。 ID はパート 3 で使用します。 そこで、Azure ポータルまたは [Azure クラシック ポータル](#find-id-classic)の場合、次の手順を続行します。
+次に、Web アプリまたは API アプリに関連付けられているアプリケーション ID のクライアント ID とテナント ID を見つける必要があります。 ID はパート 3 で使用します。 Azure ポータルで次の手順を続行します。
 
 **Azure ポータルで、Web アプリまたは API アプリのアプリケーション ID のクライアント ID とテナント ID を見つける**
 
@@ -177,32 +149,6 @@ Web アプリまたは API アプリが既にデプロイされている場合�
 
 5. 変更を保存せず、**[Azure Active Directory の設定]** ページを閉じます。
 
-<a name="find-id-classic"></a>
-
-**Azure クラシック ポータルで、Web アプリまたは API アプリのアプリケーション ID のクライアント ID とテナント ID を見つける**
-
-1. Azure クラシック ポータルで [**[Active Directory]**](https://manage.windowsazure.com/#Workspaces/ActiveDirectoryExtension/directory) を選択します。
-
-2.  Web アプリまたは API アプリに使用したディレクトリを選択します。
-
-3. **[検索]** ボックスで、Web アプリまたは API アプリのアプリケーション ID を見つけ、選択します。
-
-4. **[構成]** タブで **[クライアント ID]** をコピーし、パート 3 で使用するためにこの GUID を保存します。
-
-5. クライアント ID を取得したら、**[構成]** タブの下で **[エンドポイントの表示]** を選択します。
-
-6. **[フェデレーション メタデータ ドキュメント]** の URL をコピーし、その URL に移動します。
-
-7. メタデータ ドキュメントが開いたら、ルートの **EntityDescriptor ID** 要素を見つけます。これには `https://sts.windows.net/{GUID}` 形式で **entityID** 属性が含まれています。 
-
-   この属性の GUID は、特定のテナントの GUID (テナント ID) です。
-
-8. テナント ID をコピーし、パート 3 で使用するために保存します。必要であれば、Web アプリまたは API アプリのデプロイ テンプレートで使用することもできます。
-
-詳細については、以下のトピックを参照してください。
-
-* [Azure App Service での認証および承認](../app-service/app-service-authentication-overview.md)
-
 <a name="authen-deploy"></a>
 
 **Resource Manager テンプレートでデプロイするときに認証をオンにする**
@@ -212,7 +158,7 @@ Web アプリまたは API アプリが既にデプロイされている場合�
 パート 1 の手順も利用できますが、**[サインオン URL]** と **[アプリ ID/URI]** には Web アプリまたは API アプリの実際の `https://{URL}` を使用してください。 これらの手順では、アプリのデプロイ テンプレートとパート 3 で使用するために、クライアント ID とテナント ID の両方を保存する必要があります。
 
 > [!NOTE]
-> Web アプリまたは API アプリの Azure AD アプリケーション ID を作成するときは、PowerShell ではなく、Azure ポータルか Azure クラシック ポータルを使用する必要があります。 PowerShell コマンドレットでは、ユーザーが Web サイトにサインインするために必要なアクセス許可が設定されません。
+> Web アプリまたは API アプリの Azure AD アプリケーション ID を作成するときは、PowerShell ではなく、Azure ポータルを使用する必要があります。 PowerShell コマンドレットでは、ユーザーが Web サイトにサインインするために必要なアクセス許可が設定されません。
 
 クライアント ID とテナント ID を取得したら、ID を Web アプリまたは API アプリのサブ リソースとしてデプロイ テンプレートに追加します。
 
@@ -244,7 +190,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 `{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
 
-| 要素 | 必須 | Description | 
+| 要素 | 必須 | 説明 | 
 | ------- | -------- | ----------- | 
 | テナント | あり | Azure AD テナントの GUID | 
 | 対象となる読者 | あり | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 

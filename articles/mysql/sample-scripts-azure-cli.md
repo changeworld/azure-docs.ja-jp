@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 05/10/2017
-ms.openlocfilehash: cb4f907b102aa62eab14f7e164544c67a0293618
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.openlocfilehash: 0aa18ffbfe9fd67b2d27e05278abed30ac45a36c
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mysql"></a>Azure Database for MySQL 用 Azure CLI サンプル 
 次の表には、Azure Database for MySQL の Azure CLI スクリプトのサンプルへのリンクが含まれています。

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 11/08/2017
 ms.author: billmath
-ms.openlocfilehash: bce5867017647764546d872d97943d5d4f01f2d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed1e9276425b2c8577275e7ec6b57f54e5f7ae92
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Azure AD のフェデレーション互換性リスト
 Azure Active Directory は、Microsoft 以外のソリューションを必要とすることなくハイブリッド実装とクラウド専用の実装を実現するために、Office 365 などの Microsoft オンライン サービスに対してシングル サインオンとアプリケーション アクセスのセキュリティ強化を提供します。 Office 365 は、Microsoft のオンライン サービスのほとんどと同様に、ディレクトリ サービス、認証、承認のために Azure Active Directory と統合されます。 また、Azure Active Directory では、多数の SaaS アプリケーションやオンプレミスの Web アプリケーションにもシングル サインオンを提供しています。 サポートされている SaaS アプリケーションについては、Azure Active Directory アプリケーション ギャラリーを参照してください。
@@ -46,6 +46,7 @@ Microsoft 以外のフェデレーション ソリューションに投資して
 * [Centrify](#centrify) 
 * [Dell One Identity Cloud Access Manager v7.1](#dell-one-identity-cloud-access-manager-v71) 
 * [DigitalPersona Composite Authentication](#digitalpersona-composite-authentication)
+* [ForgeRock Identity Platform Access Management V5.x](#forgerock-identity-platform-access-management-v5x)
 * [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622) 
 * [IceWall Federation Version 3.0](#icewall-federation-version-30) 
 * [Memority](#memority)
@@ -186,6 +187,17 @@ Dell One Identity Cloud Access Manager の詳細については、「[Dell One I
 
 詳細については、[DigitalPersona Composite Authentication](http://www.crossmatch.com/uploadedFiles/Support/Reference_Material/DigitalPersona-Office-365-Deployment-Guide.pdf) に関する説明を参照してください。
 
+## <a name="forgerock-identity-platform-access-management-v5x"></a>ForgeRock Identity Platform Access Management V5.x
+
+このシングル サインオン エクスペリエンスのシナリオにおけるサポート状況を次に示します。
+
+| クライアント | サポート | 例外 |
+| --- | --- | --- |
+| Exchange Web Access や SharePoint Online などの Web ベースのクライアント |サポートされています |なし|
+| Lync、Office サブスクリプション、CRM などのリッチ クライアント アプリケーション |サポートされています |なし|
+| Outlook や ActiveSync などの電子メール リッチ クライアント |サポートされています |なし |
+
+詳細については、[ForgeRock Identity Platform Access Management V5.x](https://backstage.forgerock.com/knowledge/kb/article/a98278517) に関する記事を参照してください。
 
 ## <a name="ibm-tivoli-federated-identity-manager-622"></a>IBM Tivoli Federated Identity Manager 6.2.2
 

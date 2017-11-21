@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/26/2017
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 2b627250df62bbe3299869ef3812947afbb8f29f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 381cd1de089d5281351e289869ebc0e6fdabea06
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-clone-a-volume-update-2"></a>StorSimple Manager サービスを使用してボリュームを複製する (Update 2)
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、[StorSimple Manager サービスを使用してボリュームを複製する方法 (Update 2)](storsimple-8000-clone-volume-u2.md) に関するページを参照してください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
 [!INCLUDE [storsimple-version-selector-clone-volume](../../includes/storsimple-version-selector-clone-volume.md)]
 
 ## <a name="overview"></a>概要

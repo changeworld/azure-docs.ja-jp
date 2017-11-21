@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
-ms.date: 05/10/2017
-ms.openlocfilehash: 9f1c8241d0d7e68abd175c7c1c3b023d18b24a68
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/03/2017
+ms.openlocfilehash: 1a210f813319a4f21c7c246002c968b8093f8a4e
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用して最初の Azure Database for PostgreSQL を設計する
 
@@ -71,13 +71,13 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
 ## <a name="configure-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則の構成
 
-Azure Database for PostgreSQL サービスは、サーバーレベルでファイアウォールを作成します。 既定では、このファイアウォールにより、外部のすべてのアプリケーションやツールから、サーバーまたはサーバー上のすべてのデータベースへの接続が禁止されます。接続を許可するためには、特定の IP アドレス範囲に対して、ファイアウォールを開放するファイアウォール規則を作成する必要があります。 
+Azure Database for PostgreSQL サービスは、サーバーレベルでファイアウォールを使用します。 既定では、このファイアウォールにより、外部のすべてのアプリケーションやツールから、サーバーまたはサーバー上のすべてのデータベースへの接続が禁止されます。接続を許可するためには、特定の IP アドレス範囲に対して、ファイアウォールを開放するファイアウォール規則を作成する必要があります。 
 
 1.  デプロイが完了したら、左側のメニューの **[すべてのリソース]** をクリックし、サーバー名「**mypgserver 20170401**」を入力して、新しく作成したサーバーを検索します。 検索結果に示されたサーバー名をクリックします。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
  
  ![Azure Database for PostgreSQL - サーバーの検索 ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
-2.  サーバーのブレードで、**[接続のセキュリティ]** を選択します。 
+2.  サーバーのページで、**[接続のセキュリティ]** を選択します。 
 3.  **[規則名]** の下のテキスト ボックス内をクリックし、接続を許可する IP の範囲をホワイトリストに追加する新しいファイアウォール規則を追加します。 このチュートリアルではすべての IP を許可するため、「**規則名 = AllowAllIps**」、「**開始 IP = 0.0.0.0**」、「**終了 IP = 255.255.255.255**」と入力し、**[保存]** をクリックします。 ネットワークからの接続が可能な IP 範囲をより小さく指定する明示的なファイアウォール規則を設定することができます。
  
  ![Azure Database for PostgreSQL - ファイアウォール規則の作成](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
@@ -98,6 +98,7 @@ Azure Database for PostgreSQL サーバーを作成したときに、既定の *
   ![Azure Database for PostgreSQL - サーバーの検索 ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 3. サーバー名 **[mypgserver-20170401]** をクリックします。
+
 4. サーバーの **[概要]** ページを選択します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
 
  ![Azure Database for PostgreSQL - サーバー管理者ログイン](./media/tutorial-design-database-using-azure-portal/6-server-name.png)
@@ -136,9 +137,9 @@ CREATE DATABASE mypgsqldb;
 \c mypgsqldb
 ```
 ## <a name="create-tables-in-the-database"></a>データベースのテーブルを作成する
-Azure Database for PostgreSQL に接続する方法を説明したので、次は基本的なタスクを行う方法をいくつか説明します。
+Azure Database for PostgreSQL に接続する方法を説明したので、次はいくつかの基本的なタスクを実行します。
 
-最初に、テーブルを作成してデータを読み込みます。 インベントリ情報を追跡するテーブルを作成しましょう。
+最初に、テーブルを作成してデータを読み込みます。 次の SQL コードを使用して、インベントリ情報を追跡するテーブルを作成しましょう。
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 

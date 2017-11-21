@@ -3,8 +3,8 @@ title: "Azure Stack 開発キットのデプロイの前提条件 | Microsoft Do
 description: "Azure Stack 開発キットの環境とハードウェアの要件を確認できます (クラウド オペレーター)。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: jeffgilb
+manager: femila
 editor: 
 ms.assetid: 32a21d9b-ee42-417d-8e54-98a7f90f7311
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/11/2017
-ms.author: erikje
-ms.openlocfilehash: 73e7efb7d789fe12846d68066c0927bb123831a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/14/2017
+ms.author: jeffgilb
+ms.openlocfilehash: 8a0d23e14ef50034d5f9595cf154c3513a09c464
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack のデプロイの前提条件
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
 \* Azure から [Marketplace アイテム](azure-stack-download-azure-marketplace-item.md)の多くを追加する計画の場合は、この推奨容量より多くが必要です。
 
-**データ ディスク ドライブの構成:** すべてのデータ ドライブは同じ種類 (すべて SAS またはすべて SATA)、同じ容量である必要があります。 SAS ディスク ドライブを使う場合、ディスク ドライブは 1 つのパス経由で接続する必要があります (MPIO 、マルチパスはサポートされません)。
+**データ ディスク ドライブの構成:** すべてのデータ ドライブは同じ種類 (すべて SAS、すべて SATA、またはすべて NVMe)、同じ容量である必要があります。 SAS ディスク ドライブを使う場合、ディスク ドライブは 1 つのパス経由で接続する必要があります (MPIO 、マルチパスはサポートされません)。
 
 **HBA 構成オプション**
 
@@ -56,6 +56,7 @@ ms.lasthandoff: 10/11/2017
 * RAID SSD (メディアの種類が指定されていない場合、または不明な場合\*)
 * SATA SSD + SATA HDD
 * SAS SSD + SAS HDD
+* NVMe
 
 \* パススルー機能のない RAID コントローラーは、メディアの種類を認識できません。 このようなコントローラーでは、SSD と HDD の両方が "Unspecified" (指定なし) としてマークされます。 その場合、SSD がキャッシュ デバイスではなく、永続的なストレージとして使用されます。 したがって、それらの SSD には開発キットをデプロイできます。
 
@@ -77,7 +78,7 @@ ms.lasthandoff: 10/11/2017
 環境がインターネットに接続されていない場合、または Azure AD を使いたくない場合は、Active Directory フェデレーション サービス (AD FS) を使って Azure Stack をデプロイできます。 開発キットには、専用の AD FS および Active Directory Domain Services のインスタンスが含まれています。 このオプションを使ってデプロイする場合は、事前にアカウントを設定する必要はありません。
 
 >[!NOTE]
-AD FS を使用する構成でデプロイした後、Azure AD を使用する構成へ切り替えるには、Azure Stack を再デプロイする必要があります。
+AD FS のオプションを使ってデプロイする場合は、Azure Stack を再デプロイして Azure AD に切り替える必要があります。
 
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory アカウント
 Azure AD アカウントを使って Azure Stack をデプロイするには、デプロイ用の PowerShell スクリプトを実行する前に、Azure AD アカウントを準備する必要があります。 このアカウントは、Azure AD テナントの全体管理者になります。 このアカウントは、Azure Active Directory および Graph API と対話するすべての Azure Stack サービス用のアプリケーションおよびサービス プリンシパルのプロビジョニングと委任に使われます。 また、既定のプロバイダー サブスクリプションの所有者としても使われます (これは後で変更できます)。 このアカウントを使って、Azure Stack システムの管理ポータルにログインできます。
@@ -126,7 +127,7 @@ Azure Stack は、直接または透過プロキシ経由で、インターネ�
 テレメトリは、Azure Stack の将来のバージョンの構想に役立ちます。 フィードバックに迅速に対応し、新しい機能を提供し、品質を向上させることができます。 Microsoft Azure Stack には、Windows Server 2016 と SQL Server 2014 が含まれています。 これらの製品はどちらも既定の設定から変更されておらず、Microsoft Enterprise のプライバシーに関する声明で説明されていません。 また、Azure Stack には、Microsoft にテレメトリを送信するように変更されていないオープン ソース ソフトウェアが含まれます。 Azure Stack のテレメトリ データの例を次に示します。
 
 - デプロイ登録情報
-- アラートがいつオープン/クローズしたか
+- アラートが開かれた日時と閉じられた日時
 - ネットワーク リソースの数
 
 テレメトリ データ フローをサポートするには、ネットワークでポート 443 (HTTPS) を開く必要があります。 クライアント エンドポイントは https://vortex-win.data.microsoft.com です。
@@ -173,9 +174,9 @@ SQL Server のテレメトリの構成については、「[フィードバッ�
 
 ### <a name="usage-reporting"></a>使用状況レポート
 
-登録の過程で、Azure Stack は Azure に使用状況を転送するように構成されます。 使用状況レポートはテレメトリとは別に制御されます。 [登録](azure-stack-register.md)時に Github のスクリプトを使って使用状況レポートを無効にできます。 **$reportUsage** パラメーターを **$false** に設定するだけです。
+登録により、Azure Stack は Azure に使用状況情報を転送するようにも構成されます。 使用状況レポートはテレメトリとは別に制御されます。 [登録](azure-stack-register.md)時に Github のスクリプトを使って使用状況レポートを無効にできます。 **$reportUsage** パラメーターを **$false** に設定するだけです。
 
-使用状況データは、「[Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)」(Azure に Azure Stack 使用状況データを報告する) で詳しく説明されているように書式設定されます。 Azure Stack 開発キットのユーザーは実際に料金が発生することはありません。 この機能は、使用状況レポートの動作をテストして理解できるように、開発キットに含まれています。 
+使用状況データは、「[Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)」(Azure に Azure Stack 使用状況データを報告する) で詳しく説明されているように書式設定されます。 Azure Stack 開発キットのユーザーに実際に料金がかかることはありません。 この機能は、使用状況レポートの動作をテストして理解できるように、開発キットに含まれています。 
 
 
 ## <a name="next-steps"></a>次のステップ

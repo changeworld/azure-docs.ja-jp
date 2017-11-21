@@ -21,7 +21,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# v2.0 プロトコル: 暗黙的なフローを使用する SPA
+# <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 プロトコル: 暗黙的なフローを使用する SPA
 v2.0 エンドポイントを使ったシングル ページ アプリでは、ユーザーは、Microsoft の個人アカウントと職場/学校アカウントのどちらでもサインインできます。  シングル ページ アプリなどの主にブラウザーで実行される JavaScript アプリには、認証に関して重要な課題があります。
 
 * これらのアプリのセキュリティ特性は、従来のサーバー ベースの Web アプリケーションとは大きく異なります。
@@ -39,12 +39,12 @@ v2.0 エンドポイントを使ったシングル ページ アプリでは、�
 > 
 > 
 
-## プロトコルのダイアグラム
+## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 暗黙的なサインイン フローの全体像は次のようになります。各手順についてはこの後詳しく説明します。
 
 ![OpenId Connect Swimlanes](../../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
-## サインイン要求を送信する
+## <a name="send-the-sign-in-request"></a>サインイン要求を送信する
 最初にユーザーをアプリにサインインするために、v2.0 エンドポイントから [OpenID Connect](active-directory-v2-protocols-oidc.md) 承認要求を送信し、`id_token` を取得します。
 
 ```
@@ -84,7 +84,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ユーザーが本人であることを証明し、同意の許可を与えると、v2.0 エンドポイントは、`response_mode` パラメーターに指定されたメソッドを使い、指定された `redirect_uri` でアプリに応答を返します。
 
-#### 成功応答
+#### <a name="successful-response"></a>成功応答
 `response_mode=fragment` と `response_type=id_token+token` を使用した成功応答は、次のようになります (読みやすいように改行してあります)。
 
 ```
@@ -106,7 +106,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | id_token |アプリが要求した id_token。 この id_token を使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。  id_token とその内容の詳細については、[v2.0 エンドポイント トークン リファレンス](active-directory-v2-tokens.md)を参照してください。 |
 | state |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
-#### エラー応答
+#### <a name="error-response"></a>エラー応答
 アプリ側でエラーを適切に処理できるよう、 `redirect_uri` にはエラー応答も送信されます。
 
 ```
@@ -120,7 +120,7 @@ error=access_denied
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
-## id_token を検証する
+## <a name="validate-the-idtoken"></a>id_token を検証する
 単に id_token を受け取るだけでは、ユーザーを認証するには不十分です。id_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。  v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
 クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。  id_token の署名を検証した後に、確認の必要な要求がいくつか存在します。  [トークンの検証](active-directory-v2-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-v2-tokens.md#validating-tokens)などの詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」を参照してください。  トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
@@ -136,7 +136,7 @@ id_token に含まれる要求の詳細については、[v2.0 エンドポイ�
 
 id_token を十分検証したら、ユーザーとのセッションを開始し、id_token に含まれる要求を使ってそのユーザーに関する情報をアプリの中で取得することができます。  取得した情報は、表示、記録、承認などに利用することができます。
 
-## アクセス トークンを取得する
+## <a name="get-access-tokens"></a>アクセス トークンを取得する
 ユーザーをシングル ページ アプリにサインインしたら、 [Microsoft Graph](https://graph.microsoft.io)など、Azure AD によってセキュリティ保護された Web API を呼び出すためのアクセス トークンを取得できます。  このメソッドを使用すると、`token` response_type を使用してトークンを既に取得している場合でも、再度サインインするためにユーザーをリダイレクトする必要なく、その他のリソースのトークンを取得できます。
 
 通常の OpenID Connect/OAuth フローでは、この操作として、v2.0 `/token` エンドポイントへの要求を作成します。  ただし、v2.0 エンドポイントでは CORS 要求をサポートしていないため、AJAX 呼び出しでトークンの取得や更新を実行することはできません。  代わりに、非表示の iframe で暗黙的フローを使用して、他の Web API 用の新しいトークンを取得できます。 
@@ -180,7 +180,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 
 `prompt=none` パラメーターに応じて、要求はすぐに成功または失敗し、アプリケーションに戻ります。  成功すると、`response_mode` パラメーターで指定された方法を使用して、指定された `redirect_uri` でアプリに応答が送信されます。
 
-#### 成功応答
+#### <a name="successful-response"></a>成功応答
 `response_mode=fragment` を使用した場合の正常な応答は次のようになります。
 
 ```
@@ -200,7 +200,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | scope |アクセス トークンが有効である範囲。 |
 
-#### エラー応答
+#### <a name="error-response"></a>エラー応答
 アプリ側で適切に処理できるように、 `redirect_uri` にエラーの応答が送信される場合もあります。  `prompt=none`の場合、予期されるエラーは次のようになります。
 
 ```
@@ -216,10 +216,10 @@ error=user_authentication_required
 
 Iframe 要求でこのエラーを受信した場合、ユーザーは対話形式でもう一度サインインして新しいトークンを取得する必要があります。  この場合は、アプリケーションに適した任意の方法で処理できます。
 
-## トークンを更新する
+## <a name="refreshing-tokens"></a>トークンを更新する
 `id_token` と `access_token` はどちらも短時間で期限切れになるため、トークンを定期的に更新するようにアプリを準備しておく必要があります。  どちらの種類のトークンを更新する場合も、Azure AD の動作を制御する `prompt=none` パラメーターを使用して、上記と同じ非表示の iframe 要求を実行できます。  新しい `id_token` を取得する場合は、`nonce` に加えて、必ず `response_type=id_token` と `scope=openid` を使用してください。
 
-## サインアウト要求を送信する
+## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
 OpenIdConnect の `end_session_endpoint` により、ユーザーのセッションを終了し、v2.0 エンドポイントによって設定された Cookie をクリアする要求を、アプリから v2.0 エンドポイントに送信することができます。  ユーザーが Web アプリケーションから完全にサインアウトするには、アプリがユーザーとのセッションを終了し (通常、トークン キャッシュをクリアするか Cookie を切断する)、ブラウザーを以下にリダイレクトする必要があります。
 
 ```

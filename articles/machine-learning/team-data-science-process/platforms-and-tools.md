@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.openlocfilehash: 6e6e7a199547135bd9695ff0867e8d5a98341b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>データ サイエンス チーム プロジェクトのためのプラットフォームとツール
 
@@ -61,7 +61,7 @@ Apache Spark は、ビッグ データ分析アプリケーションのパフォ
 
 HDInsight で Spark クラスターを作成するときは、Spark をインストールおよび構成して Azure コンピューティング リソースを作成します。 HDInsight の Spark クラスターの作成には約 10 分かかります。 処理対象のデータは Azure Blob Storage に格納します。 クラスターで Azure Blob Storage を使用する方法については、[HDInsight の Hadoop での HDFS と互換性のある Azure Blob Storage の使用](../../hdinsight/hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。
 
-Microsoft の TDSP チームは、Azure HDInsight Spark クラスターを使用してデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは Python を使用し、もう 1 つは Scala を使用します。 Azure HDInsight **Spark クラスター**の詳細については、[HDInsight Linux の Apache Spark の概要](../../hdinsight/hdinsight-apache-spark-overview.md)に関する記事をご覧ください。 Azure HDInsight Spark クラスターで **Python** を使用してデータ サイエンス ソリューションを構築する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 Azure HDInsight Spark クラスターで **Scala** を使用してデータ サイエンス ソリューションを構築する方法については、「[Scala および Azure 上の Spark を使用したデータ サイエンス](scala-walkthrough.md)」をご覧ください。 
+Microsoft の TDSP チームは、Azure HDInsight Spark クラスターを使用してデータ サイエンス ソリューションを構築する方法を示す 2 つのエンド ツー エンド チュートリアルを公開しています。1 つは Python を使用し、もう 1 つは Scala を使用します。 Azure HDInsight **Spark クラスター**の詳細については、[HDInsight Linux の Apache Spark の概要](../../hdinsight/spark/apache-spark-overview.md)に関する記事をご覧ください。 Azure HDInsight Spark クラスターで **Python** を使用してデータ サイエンス ソリューションを構築する方法については、「[Azure HDInsight 上の Spark を使用したデータ サイエンスの概要](spark-overview.md)」をご覧ください。 Azure HDInsight Spark クラスターで **Scala** を使用してデータ サイエンス ソリューションを構築する方法については、「[Scala および Azure 上の Spark を使用したデータ サイエンス](scala-walkthrough.md)」をご覧ください。 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
@@ -86,7 +86,7 @@ Hive では、大規模な非構造化データに構造を投影することが
 
 データ サイエンティスト向けに、Hive では Hive クエリで Python ユーザー定義関数 (UDF) を実行してレコードを処理できます。 この機能により、データ分析における Hive クエリの機能が大幅に拡張されます。 具体的には、データ サイエンティストは使い慣れた言語 (SQL に似た HiveQL と Python) でスケーラブルな特徴エンジニアリングを行うことができます。 
 
-Azure HDInsight Hive クラスターの詳細については、[HDInsight の Hadoop での Hive と HiveQL の使用](../../hdinsight/hdinsight-use-hive.md)に関する記事をご覧ください。 Azure HDInsight Hive クラスターを使用して、スケーラブルなエンド ツー エンドのデータ サイエンス ソリューションを構築する方法については、「[Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](hive-walkthrough.md)」をご覧ください。
+Azure HDInsight Hive クラスターの詳細については、[HDInsight の Hadoop での Hive と HiveQL の使用](../../hdinsight/hadoop/hdinsight-use-hive.md)に関する記事をご覧ください。 Azure HDInsight Hive クラスターを使用して、スケーラブルなエンド ツー エンドのデータ サイエンス ソリューションを構築する方法については、「[Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](hive-walkthrough.md)」をご覧ください。
 
 
 ## <a name="azure-file-storage"></a>Azure File Storage 

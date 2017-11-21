@@ -16,6 +16,7 @@
 ### [MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)
 ### [パフォーマンス レベル](performance-tiers.md)
 ### [Data Warehouse ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [容量制限](sql-data-warehouse-service-capacity-limits.md)
 ### [よく寄せられる質問](sql-data-warehouse-overview-faq.md)
 
 ## バックアップと復元
@@ -120,6 +121,8 @@
 ### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
+### [コンピューティング レベルの自動化](manage-compute-with-azure-functions.md)
+
 ### リソース クラス
 #### [ガイドライン](resource-classes-for-workload-management.md)
 #### [ワークロードの分析](analyze-your-workload.md)
@@ -145,7 +148,7 @@
 
 # リファレンス
 
-## [容量制限](sql-data-warehouse-service-capacity-limits.md)
+
 ## T-SQL
 ### [完全なリファレンス](https://docs.microsoft.com/sql/t-sql/language-reference/)
 ### [SQL DW 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)

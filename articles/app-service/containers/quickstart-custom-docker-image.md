@@ -1,10 +1,10 @@
 ---
-title: "Web App for Containers でカスタム Docker Hub イメージを実行する | Microsoft Docs"
-description: "Web App for Containers でカスタム Docker イメージを使用する方法"
+title: "Azure Web App for Containers でカスタム Docker Hub イメージを実行する | Microsoft Docs"
+description: "Azure Web App for Containers のカスタム Docker イメージを使用する方法。"
 keywords: "Azure App Service, Web アプリ, Linux, Docker, コンテナー"
 services: app-service
 documentationcenter: 
-author: naziml
+author: cephalin
 manager: cfowler
 editor: 
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
@@ -13,18 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/05/2017
-ms.author: wesmc
+ms.date: 11/02/2017
+ms.author: cephalin;wesmc
 ms.custom: mvc
-ms.openlocfilehash: eadc0f7eb20b9e8d1cacc79b2907559e2b2535a2
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 8e7afd89def170ce756aae9e76daf91d78cc20e0
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/03/2017
 ---
-# <a name="run-a-custom-docker-hub-image-in-web-app-for-containers"></a>Web App for Containers でカスタム Docker Hub イメージを実行する
+# <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>Azure Web App for Containers でカスタム Docker Hub イメージを実行する
 
-App Service は、事前定義済みのアプリケーション スタックを Linux 上で提供し、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートします。 まだ Azure で定義されていないアプリケーション スタックに Web アプリをデプロイする場合にも、カスタム Docker イメージを使用できます。 このクイックスタートでは、Web アプリを作成し、そのアプリに Python ベースの Docker イメージをデプロイする方法を示します。 Web アプリは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して作成します。
+App Service は、事前定義済みのアプリケーション スタックを Linux 上で提供し、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートします。 まだ Azure で定義されていないアプリケーション スタックで Web アプリを実行する場合にも、カスタム Docker イメージを使用できます。 このクイックスタートでは、Web アプリを作成し、そのアプリに[公式の Nginx Docker イメージ](https://hub.docker.com/r/_/nginx/)をデプロイする方法を示します。 Web アプリは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して作成します。
+
+![Azure で実行されるサンプル アプリ](media/quickstart-custom-docker-image/hello-world-in-browser.png)
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -39,10 +41,10 @@ App Service は、事前定義済みのアプリケーション スタックを 
 [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
 
 ```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name elnably/dockerimagetest
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name nginx
 ```
 
-前述のコマンド `--deployment-container-image-name` は、パブリック Docker Hub イメージ [https://hub.docker.com/r/elnably/dockerimagetest/](https://hub.docker.com/r/elnably/dockerimagetest/) をポイントしています。 その内容は、[https://github.com/rachelappel/docker-image](https://github.com/rachelappel/docker-image) で調べることができます。
+前述のコマンド `--deployment-container-image-name` は、パブリック Docker Hub イメージ [https://hub.docker.com/r/_/nginx/](https://hub.docker.com/r/_/nginx/) をポイントしています。
 
 Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
 
@@ -76,4 +78,4 @@ http://<app_name>.azurewebsites.net
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure で Docker Python と PostgreSQL Web アプリを作成する](tutorial-docker-python-postgresql-app.md)
+> [カスタム Docker イメージを使用する](tutorial-custom-docker-image.md)

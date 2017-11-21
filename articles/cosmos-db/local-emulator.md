@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2017
 ms.author: arramac
-ms.openlocfilehash: a6124a8fa630424558c0812edbf12d5ad25d6bf6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 5ea254110a24ea3315d614ebca2d43bda0e1a674
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 
@@ -86,7 +86,7 @@ Azure Cosmos DB Emulator のハードウェア要件とソフトウェア要件�
   * 10 GB のハードディスク空き容量
 
 ## <a name="installation"></a>インストール
-[Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)で Azure Cosmos DB Emulator をダウンロードしてインストールできます。または、Docker for Windows でこのエミュレーターを実行できます。 Docker for Windows でエミュレーターを使用する方法については、「[Docker で実行する](#running-on-docer)」を参照してください。 
+[Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)で Azure Cosmos DB Emulator をダウンロードしてインストールできます。または、Docker for Windows でこのエミュレーターを実行できます。 Docker for Windows でエミュレーターを使用する方法については、「[Docker で実行する](#running-on-docker)」を参照してください。 
 
 > [!NOTE]
 > Azure Cosmos DB Emulator をインストール、構成、実行するには、コンピューターの管理特権が必要です。

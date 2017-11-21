@@ -3,7 +3,7 @@ title: "IIS 認証と Azure MFA Server | Microsoft Docs"
 description: "IIS 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: d1bf1c8a-2c10-4ae6-9f4b-75f0c3df43eb
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/16/2017
-ms.author: kgremban
-ms.reviewer: yossib
+ms.author: joflore
+ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017,it-pro
-ms.openlocfilehash: ab6f9110dccd3cfc15092f535650e8d8cb1af13c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aeb4ddb868676f268a25ccb60f7894cb8cf54579
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS Web アプリの Azure Multi-Factor Authentication Server の構成
 

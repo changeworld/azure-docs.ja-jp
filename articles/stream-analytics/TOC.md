@@ -2,6 +2,7 @@
 ## [Stream Analytics とは](stream-analytics-introduction.md)
 ## [Storm と Stream Analytics を比較する](stream-analytics-comparison-storm.md)
 
+
 # 作業開始
 ## [IoT ストリーミング データを処理する](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)
 ## [リアルタイムでの不正検出](stream-analytics-real-time-fraud-detection.md)
@@ -13,7 +14,9 @@
 ### [ソーシャル メディア](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [Machine Learning を使用したリアルタイムのスコアリング](stream-analytics-machine-learning-integration-tutorial.md)
 ### [リアルタイム イベント処理](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [IoT Edge での Stream Analytics (プレビュー)](stream-analytics-edge.md)
 ### [Azure 使用ガイドでの異常検出 (プレビュー)](stream-analytics-machine-learning-anomaly-detection.md)
+### [Stream Analytics による高頻度取引のシミュレーション](stream-analytics-high-frequency-trading.md)
 
 ## ジョブの作成
 ### [入力を作成する](stream-analytics-define-inputs.md)
@@ -32,7 +35,7 @@
 
 ## Visual Studio ツールの使用
 ### [インストール](stream-analytics-tools-for-visual-studio-install.md)
-### [作業開始](stream-analytics-tools-for-visual-studio.md)
+### [概要](stream-analytics-tools-for-visual-studio.md)
 ### [CI/CD パイプラインの設定](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## 監視と最適化

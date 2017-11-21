@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: cf7b0dd3a81c35be4907dbba85b72ce4f87e3a9f
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 7464611e669165d9ec1f0de7422b20b3f3b8c2b5
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="using-volume-plugins-and-logging-drivers-in-your-container"></a>コンテナーでのボリューム プラグインとログ ドライバーの使用
 
@@ -29,7 +29,7 @@ Service Fabric では、コンテナー サービスへの [Docker ボリュー�
 Docker ボリューム/ログ ドライバーがコンピューターにインストールされていない場合は、RDP/SSH または VMSS スタートアップ スクリプトによって手動でインストールします。 たとえば、Docker ボリューム ドライバーをインストールするには、コンピューターに SSH でアクセスして次のように実行します。
 
 ```bash
-docker plugin install --alias azure --grant-all-permissions docker4x/17.09.0-ce-azure1  \
+docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
     CLOUD_PLATFORM=AZURE \
     AZURE_STORAGE_ACCOUNT="[MY-STORAGE-ACCOUNT-NAME]" \
     AZURE_STORAGE_ACCOUNT_KEY="[MY-STORAGE-ACCOUNT-KEY]" \
@@ -77,7 +77,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/17.09.0-ce-
 ボリュームのプラグインを指定すると、Service Fabric は指定されたパラメーターを使用して自動的にボリュームを作成します。 `Source` タグはボリュームの名前を示し、`Driver` タグはボリュームのドライバー プラグインを指定します。 次のスニペットに示すように、`DriverOption` タグを使用してオプションを指定することができます。
 
 ```xml
-<Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azurefile" IsReadOnly="true">
+<Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">
            <DriverOption Name="share" Value="models"/>
 </Volume>
 ```

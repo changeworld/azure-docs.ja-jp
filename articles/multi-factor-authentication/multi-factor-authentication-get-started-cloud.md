@@ -3,9 +3,9 @@ title: "クラウドでの Azure MFA の概要 | Microsoft Docs"
 description: "クラウドで Azure MFA を開始する方法について説明する Microsoft Azure Multi-Factor Authentication のページです。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
-editor: yossib
+ms.reviewer: richagi
 ms.assetid: 6b2e6549-1a26-4666-9c4a-cbe5d64c4e66
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/24/2017
-ms.author: kgremban
-ms.openlocfilehash: 19f3228b874fc4e37bf83388dae4341428226482
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: joflore
+ms.openlocfilehash: c67ca4b17808c17b40f78a47fe0cc55efd9915bc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-Factor Authentication Server の概要
 この記事では、クラウドで Azure Multi-Factor Authentication の使用を開始する方法について説明します。

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jingwang
-ms.openlocfilehash: cb4545dcd41fe9a2c73bc86096843b717d61a785
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 193d7c77f01384106b3e0d932d02ba6cdff9e750
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
-[Azure Key Vault](../key-vault/key-vault-whatis.md) 内のデータ ストアに資格情報を格納することができます。 Azure Data Factory は、データ ストアを使用するアクティビティの実行時に、資格情報を取得します。
+[Azure Key Vault](../key-vault/key-vault-whatis.md) 内のデータ ストアに資格情報を格納することができます。 Azure Data Factory は、データ ストアを使用するアクティビティの実行時に、資格情報を取得します。 現時点では、[Dynamics コネクタ](connector-dynamics-crm-office-365.md)でのみこの機能がサポートされます。
 
 > [!NOTE]
-> 現時点では、[Dynamics コネクタ](connector-dynamics-crm-office-365.md)でのみこの機能がサポートされます。
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)をご覧ください。
 
 ## <a name="steps"></a>手順
 

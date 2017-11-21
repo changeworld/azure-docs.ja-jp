@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: jingwang
-ms.openlocfilehash: 07f6d0ddac0daf5810d5433c1089114966e80719
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 54afc7d993058ac2b3d2990ba131d334e9332555
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Azure Data Factory を使用した HTTP エンドポイントからのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/13/2017
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の HTTPコネクタ](v1/data-factory-http-connector.md)を参照してください。
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-capabilities"></a>サポートされる機能
 
 HTTP ソースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -72,11 +72,9 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 ```json
 {
     "name": "HttpLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "HttpServer",
-        "typeProperties":
-        {
+        "typeProperties": {
             "authenticationType": "Basic",
             "url" : "<HTTP endpoint>",
             "userName": "<username>",
@@ -115,11 +113,9 @@ ClientCertificate 認証を使用するには、"authenticationType" プロパ�
 ```json
 {
     "name": "HttpLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "HttpServer",
-        "typeProperties":
-        {
+        "typeProperties": {
             "authenticationType": "ClientCertificate",
             "url": "<HTTP endpoint>",
             "certThumbprint": "<thumbprint of certificate>"
@@ -137,11 +133,9 @@ ClientCertificate 認証を使用するには、"authenticationType" プロパ�
 ```json
 {
     "name": "HttpLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "HttpServer",
-        "typeProperties":
-        {
+        "typeProperties": {
             "authenticationType": "ClientCertificate",
             "url": "<HTTP endpoint>",
             "embeddedCertData": "<base64 encoded cert data>",
@@ -260,4 +254,4 @@ HTTP からデータをコピーするは、コピー アクティビティで�
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

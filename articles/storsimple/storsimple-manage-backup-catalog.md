@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/28/2016
+ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 5ee9855e1428c7a2d871d9c215d302c5c3b7101a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 732ae04a8ae5f85ed154370c680d87af2ba5ee39
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-your-backup-catalog"></a>StorSimple Manager サービスを使用してバックアップ カタログを管理する
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、[StorSimple Manager サービスを使用してバックアップ カタログを管理する方法](storsimple-8000-manage-backup-catalog.md)に関するページをご覧ください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) に関するページを参照してください。
+
 ## <a name="overview"></a>概要
 StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたはスケジュールされたバックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。 このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
@@ -84,7 +87,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
    4. チェック マーク アイコン  ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
       
       選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
-3. バックアップ セットを選択して展開します。 ページの下に **[復元]** および **[削除]** オプションが表示されます。 [ **削除**] をクリックします。
+3. バックアップ セットを選択して展開します。 ページの下に **[復元]** および **[削除]** オプションが表示されます。 **[ 削除]** をクリックします。
 4. 削除する場合、実行時と正常に終了した後に通知されます。 削除が完了したら、このページでクエリを更新します。 削除したバックアップ セットは、バックアップ セットの一覧には表示されません。
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,10 +1,10 @@
 ---
-title: "NPS 拡張機能を使用した Azure MFA と VPN の統合 | Microsoft Docs"
-description: "この記事では、Microsoft Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使用して、VPN インフラストラクチャを Azure MFA と統合する方法について説明します。"
+title: "ネットワーク ポリシー サーバー拡張機能を使用して VPN を Azure MFA と統合する | Microsoft Docs"
+description: "この記事では、Microsoft Azure のネットワーク ポリシー サーバー拡張機能を使用して、VPN インフラストラクチャを Azure MFA と統合する方法について説明します。"
 services: active-directory
 keywords: "Azure MFA, VPN の統合, Azure Active Directory, ネットワーク ポリシー サーバー拡張機能"
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 
 ms.service: active-directory
@@ -13,460 +13,538 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
-ms.author: kgremban
-ms.reviewer: jsnow
+ms.author: joflore
+ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: b47e9b321b2fd0d0db9762003531b0fe9f045f07
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf83952b29759ff601685513ace31828404c7b1a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="integrate-your-vpn-infrastructure-with-azure-multi-factor-authentication-mfa-using-the-network-policy-server-nps-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使用して、VPN インフラストラクチャを Azure Multi-Factor Authentication (MFA) と統合します。
+# <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
 ## <a name="overview"></a>概要
 
 Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使用すると、組織はクラウド ベースの [Azure Multi-Factor Authentication (MFA)](multi-factor-authentication-get-started-server-rdg.md) を使用して 2 段階認証を提供することで、リモート認証ダイヤルイン ユーザー サービス (RADIUS) クライアント認証を保護することができます。
 
-この記事では、VPN を使用してネットワークへの接続を試みるユーザーに対して安全な 2 段階認証を有効にするために、Azure の NPS 拡張機能を使用して NPS インフラストラクチャを Azure MFA と統合する手順について説明します。 
+この記事では、Azure の NPS 拡張機能を使用して、NPS インフラストラクチャを MFA と統合する手順を説明します。 このプロセスを実行すると、VPN を使用してネットワークに接続しようとするユーザーに対して安全な 2 段階認証が使用されるようになります。 
 
-ネットワーク ポリシーとアクセス サービス (NPS) により、組織は次のことができるようになります。
+ネットワーク ポリシーとアクセス サービスにより、組織は次のことができるようになります。
 
-* ネットワーク要求を管理および制御するための中央の場所を指定して、接続できるユーザー、接続が許可される時刻、接続の期間、クライアントが接続に使用する必要があるセキュリティのレベルなどを指定できます。 これらのポリシーは、VPN サーバーまたはリモート デスクトップ (RD) ゲートウェイ サーバーごとに指定するのではなく、中央の場所で一度に指定できます。 一元化された認証、承認、アカウンティング (AAA) を提供するために、RADIUS プロトコルが使用されます。 
-* デバイスにネットワーク リソースへの無制限のアクセスを許可するか制限付きアクセスを許可するかを決定する、ネットワーク アクセス保護 (NAP) クライアント正常性ポリシーを確立し、適用できます。
-* 802.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を適用する手段を提供できます。    
+* ネットワーク要求を管理および制御するための一元化された場所を割り当てて、以下を指定します。
 
-詳細については、「[Network Policy Server (NPS) (ネットワーク ポリシー サーバー (NPS))](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」をご覧ください。 
+    * 接続できるユーザー 
+    
+    * 接続を許可する時刻 
+    
+    * 接続の期間
+    
+    * クライアントが接続に使用する必要があるセキュリティのレベル
 
-セキュリティを強化し、高水準のコンプライアンスを提供するために、組織は NPS を Azure MFA と統合して、ユーザーが 2 段階認証を使用して VPN サーバーの仮想ポートに接続できるようにすることが可能です。 ユーザーはアクセスの許可を得るために、ユーザー名/パスワードの組み合わせと、ユーザーが管理している情報を提供する必要があります。 この情報は、信頼性があり、簡単に複製できないもの (携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなど) である必要があります。
+    各 VPN やリモート デスクトップ ゲートウェイ サーバーにポリシーを指定するのではなく、一元化された場所で処理される場合のポリシーを指定します。 一元化された認証、承認、アカウンティング (AAA) を提供するために、RADIUS プロトコルが使用されます。 
 
-Azure の NPS 拡張機能を利用できるようになる前は、NPS と Azure MFA の統合環境の 2 段階認証の実装を希望するお客様は、「RADIUS を使用したリモート デスクトップ ゲートウェイと Azure Multi-Factor Authentication Server」に記載されているように、オンプレミス環境に別の MFA サーバーを構成し、管理する必要がありました。
+* デバイスにネットワーク リソースへの無制限のアクセスを許可するか制限付きアクセスを許可するかを決定する、ネットワーク アクセス保護 (NAP) クライアント正常性ポリシーを制定し、強制できます。
 
-Azure の NPS 拡張機能の提供により、組織は RADIUS クライアント認証を保護するために、オンプレミス ベースの MFA ソリューションとクラウド ベースの MFA ソリューションのどちらをデプロイするかを選択できるようになりました。
+* 802.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を強制する方法を提供できます。   
+詳細については、「[Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」(ネットワーク ポリシー サーバー) を参照してください。 
+
+組織がセキュリティを強化し、高水準のコンプライアンスを実現するには、NPS を Azure Multi-Factor Authentication と統合して、ユーザーが 2 段階認証を使用して VPN サーバーの仮想ポートに接続する方法があります。 ユーザーはアクセスの許可を得るために、ユーザー名とパスワードの組み合わせを、ユーザーが管理している他の情報と共に提供する必要があります。 これは、信頼できる、簡単に複製できない情報にする必要があります。 たとえば、携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなどです。
+
+Azure の NPS 拡張機能を利用できるようになる前は、NPS と MFA の統合環境の 2 段階認証の実装を希望するお客様は、オンプレミス環境に別の MFA サーバーを構成し、管理する必要がありました。 このような種類の認証は、RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server のセットアップと構成で提供されていました。
+
+組織は Azure の NPS 拡張機能を使用して、オンプレミス ベースの MFA ソリューションとクラウド ベースの MFA ソリューションのどちらを RADIUS クライアント認証の保護用にデプロイするかを選択できるようになりました。
  
-## <a name="authentication-flow"></a>認証フロー
-ユーザーは、VPN サーバーの仮想ポートに接続するときに、まず、さまざまなプロトコルを使用して認証する必要があります。これらのプロトコルにより、ユーザー名/パスワードの組み合わせと証明書ベースの認証方法を使用できるようになります。 
+## <a name="authentication-flow"></a>Authentication flow
+ユーザーが VPN サーバー上の仮想ポートに接続する場合、最初に多様なプロトコルを使用して認証を受ける必要があります。 これらのプロトコルでは、ユーザー名とパスワードの組み合わせと、証明書ベースの認証方法を使用できます。 
 
 認証と ID の確認に加え、ユーザーには適切なダイヤルインのアクセス許可が必要です。 単純な実装では、アクセスを許可するこれらのダイヤルインのアクセス許可は、Active Directory ユーザー オブジェクトで直接設定します。 
 
- ![ユーザー プロパティ](./media/nps-extension-vpn/image1.png)
+![ユーザー プロパティ](./media/nps-extension-vpn/image1.png)
 
 単純な実装では、各 VPN サーバーは、各ローカル VPN サーバーで定義されているポリシーに基づいてアクセスを許可または拒否します。
 
-大規模でスケーラブルな実装では、VPN アクセスを許可または拒否するポリシーは、RADIUS サーバーで一元化されます。 この場合、VPN サーバーは、接続要求とアカウント メッセージを RADIUS サーバーに転送するアクセス サーバー (RADIUS クライアント) として機能します。 VPN サーバーの仮想ポートに接続するには、ユーザーは認証を受け、RADIUS サーバーで一元的に定義された条件を満たす必要があります。 
+大規模でスケーラブルな実装では、VPN アクセスを許可または拒否するポリシーは、RADIUS サーバーで一元化されます。 このような場合、VPN サーバーは、接続要求とアカウント メッセージを RADIUS サーバーに転送するアクセス サーバー (RADIUS クライアント) として機能します。 VPN サーバーの仮想ポートに接続するには、ユーザーは認証を受け、RADIUS サーバーで一元的に定義された条件を満たす必要があります。 
 
 Azure の NPS 拡張機能を NPS と統合した場合、正常な認証フローは次のようになります。
 
 1. VPN サーバーが、リソース (リモート デスクトップ セッションなど) に接続するためのユーザー名とパスワードが含まれた認証要求を VPN ユーザーから受信します。 
-2. RADIUS クライアントとして機能する VPN サーバーは、要求を RADIUS Access-Request メッセージに変換し、NPS 拡張機能がインストールされている RADIUS (NPS) サーバーに、(パスワードが暗号化された) メッセージを送信します。 
-3. Active Directory でユーザー名とパスワードの組み合わせが検証されます。 ユーザー名/パスワードが正しくない場合、RADIUS サーバーは Access-Reject メッセージを送信します。 
-4. NPS 接続要求とネットワーク ポリシーで指定されているすべての条件が満たされていれば (時刻やグループ メンバーシップの制約など)、NPS 拡張機能によって、Azure MFA を使用したセカンダリ認証の要求がトリガーされます。 
-5. Azure MFA は Azure Active Directory と通信してユーザーの詳細を取得し、ユーザーが構成した方法 (テキスト メッセージ、モバイル アプリなど) を使用してセカンダリ認証を実行します。 
-6. MFA チャレンジが成功すると、Azure MFA は NPS 拡張機能に結果を伝えます。
-7. 接続試行が認証され、承認されたら、拡張機能がインストールされている NPS サーバーは、RADIUS Access-Accept メッセージを VPN サーバー (RADIUS クライアント) に送信します。
+
+2. RADIUS クライアントとして機能する VPN サーバーは、要求を RADIUS *Access-Request* メッセージに変換し、NPS 拡張機能がインストールされている RADIUS サーバーに、(パスワードが暗号化された) メッセージを送信します。 
+
+3. Active Directory でユーザー名とパスワードの組み合わせが検証されます。 ユーザー名またはパスワードが正しくない場合、RADIUS サーバーは *Access-Reject* メッセージを送信します。 
+
+4. NPS 接続要求とネットワーク ポリシーで指定されているすべての条件が満たされていれば (時刻やグループ メンバーシップの制約など)、NPS 拡張機能によって、Azure Multi-Factor Authentication を使用したセカンダリ認証の要求がトリガーされます。 
+
+5. Azure Multi-Factor Authentication は Azure Active Directory と通信してユーザーの詳細を取得し、ユーザーが構成した方法 (携帯電話の呼び出し、テキスト メッセージ、モバイル アプリ) を使用してセカンダリ認証を実行します。 
+
+6. MFA チャレンジが成功すると、Azure Multi-Factor Authentication は結果を NPS 拡張機能に送信します。
+
+7. 接続試行が認証され、承認されたら、拡張機能がインストールされている NPS は、RADIUS *Access-Accept* メッセージを VPN サーバー (RADIUS クライアント) に送信します。
+
 8. ユーザーは、VPN サーバーの仮想ポートへのアクセスが許可され、暗号化された VPN トンネルを確立します。
 
 ## <a name="prerequisites"></a>前提条件
-このセクションでは、Azure MFA をリモート デスクトップ ゲートウェイと統合する前に必要な前提条件について詳しく説明します。 作業を開始する前に、次の前提条件を満たしておく必要があります。
+このセクションでは、Azure MFA をリモート デスクトップ ゲートウェイと統合する前に満たす必要がある前提条件について詳しく説明します。 作業を開始する前に、次の前提条件を満たしておく必要があります。
 
 * VPN インフラストラクチャ
-* ネットワーク ポリシーとアクセス サービス (NPS) の役割
-* Azure MFA のライセンス
+* ネットワーク ポリシーとアクセス サービス ロール
+* Azure Multi-Factor Authentication のライセンス
 * Windows Server ソフトウェア
 * ライブラリ
-* オンプレミスの AD と同期された Azure AD 
+* オンプレミスの Active Directory と同期された Azure Active Directory (Azure AD) 
 * Azure Active Directory の GUID ID
 
 ### <a name="vpn-infrastructure"></a>VPN インフラストラクチャ
-この記事では、Microsoft Windows Server 2016 を使用する適切な作業用 VPN インフラストラクチャがあり、現時点では VPN サーバーが接続要求を RADIUS サーバーに転送するように構成されていないことを前提としています。 このガイドで、中央の RADIUS サーバーを使用するように VPN インフラストラクチャを構成します。
+この記事では、Microsoft Windows Server 2016 を使用する適切な作業用 VPN インフラストラクチャがあり、現時点では VPN サーバーが接続要求を RADIUS サーバーに転送するように構成されていないことを前提としています。 この記事では、中央の RADIUS サーバーを使用するように VPN インフラストラクチャを構成します。
 
-適切な作業用インフラストラクチャがない場合は、Microsoft やサード パーティのサイトにある多数の VPN セットアップ チュートリアルで提供されるガイダンスに従って、このインフラストラクチャを簡単に作成できます。 
+適切な作業用 VPN インフラストラクチャがない場合は、Microsoft やサード パーティのサイトにある多数の VPN セットアップ チュートリアルで提供されるガイダンスに従って簡単に作成できます。 
+            
+### <a name="the-network-policy-and-access-services-role"></a>ネットワーク ポリシーとアクセス サービス ロール
 
-### <a name="network-policy-and-access-services-nps-role"></a>ネットワーク ポリシーとアクセス サービス (NPS) の役割
+ネットワーク ポリシーとアクセス サービスは、RADIUS サーバーと RADIUS クライアントの機能を提供します。 この記事では、環境内のメンバー サーバーまたはドメイン コントローラーにネットワーク ポリシーとアクセス サービス ロールがインストールされていることを前提としています。 このガイドで、VPN 構成の RADIUS を構成します。 ネットワーク ポリシーとアクセス サービス ロールは、VPN サーバー*以外の*サーバーにインストールします。
 
-NPS 役割サービスは、RADIUS サーバーと RADIUS クライアントの機能を提供します。 この記事では、環境内のメンバー サーバーまたはドメイン コントローラーに NPS の役割がインストールされていることを前提としています。 このガイドで、VPN 構成の RADIUS を構成します。 NPS の役割は、VPN サーバー_以外_のサーバーにインストールします。
+Windows Server 2012 以降にネットワーク ポリシーとアクセス サービス ロール サービスをインストールする方法については、「[Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx)」(NAP 正常性ポリシー サーバーのインストール) を参照してください。 Windows Server 2016 では、NAP は使用されていません。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS](https://technet.microsoft.com/library/cc771746)」(NPS のベスト プラクティス) を参照してください。
 
-Windows Server 2012 以降に NPS 役割サービスをインストールする方法については、「[Install a NAP Health Policy Server (NAP 正常性ポリシー サーバーのインストール)](https://technet.microsoft.com/library/dd296890.aspx)」をご覧ください。 Windows Server 2016 では、ネットワーク アクセス保護 (NAP) は使用されていません。 NPS をドメイン コントローラーにインストールする際の推奨事項など、NPS のベスト プラクティスについては、「[Best Practices for NPS (NPS のベスト プラクティス)](https://technet.microsoft.com/library/cc771746)」をご覧ください。
+### <a name="azure-mfa-license"></a>Azure MFA のライセンス
 
-### <a name="licenses"></a>ライセンス
+Azure Multi-Factor Authentication にはライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security、または Multi-Factor Authentication サブスクリプションで入手できます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 詳細については、「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。
 
-Azure MFA のライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security (EMS)、または MFA サブスクリプションを通じて入手できます。 詳細については、「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。
+### <a name="windows-server-software"></a>Windows Server ソフトウェア
 
-### <a name="software"></a>ソフトウェア
-
-NPS 拡張機能を使用するには、NPS 役割サービスがインストールされた Windows Server 2008 R2 SP1 以上が必要です。 このガイドの手順はすべて Windows Server 2016 を使用して実行されました。
+NPS 拡張機能を使用するには、ネットワーク ポリシーとアクセス サービス ロールがインストールされた Windows Server 2008 R2 SP1 以降が必要です。 このガイドの手順はすべて Windows Server 2016 を使用して実行されました。
 
 ### <a name="libraries"></a>ライブラリ
 
-これらのライブラリは拡張機能を含めて自動的にインストールされます。
+NPS 拡張機能を含め、次のライブラリが自動的にインストールされます。
 
 -   [Visual Studio 2013 (X64) の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
 -   [Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
-Windows PowerShell 用 Microsoft Azure Active Directory モジュールは、セットアップ プロセスの一環として実行する構成スクリプトによってインストールされます (モジュールがまだ存在しない場合)。 このモジュールをまだインストールしていない場合、事前にインストールする必要はありません。
+Microsoft Azure Active Directory PowerShell モジュールがまだインストールされていない場合は、セットアップ プロセスの一環で実行した構成スクリプトを使用してインストールされます。 このモジュールをまだインストールしていない場合、事前にインストールする必要はありません。
 
-### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>オンプレミスの Active Directory と同期された Azure Active Directory 
+### <a name="azure-active-directory-synced-with-on-premises-active-directory"></a>オンプレミスの Active Directory と同期された Azure Active Directory 
 
-NPS 拡張機能を使用するには、オンプレミスのユーザーを Azure Active Directory と同期し、ユーザーの Multi-Factor Authentication を有効する必要があります。 このガイドでは、AD Connect を使用してオンプレミスのユーザーが Azure Active Directory と同期されていることを前提としています。 ユーザーの MFA を有効にする手順については後述します。
-Azure AD Connect については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../active-directory/connect/active-directory-aadconnect.md)」をご覧ください。 
+NPS 拡張機能を使用するには、オンプレミスのユーザーを Azure Active Directory と同期し、ユーザーの MFA を有効する必要があります。 このガイドでは、Azure AD Connect を使用してオンプレミスのユーザーが Azure Active Directory と同期されていることを前提としています。 ユーザーの MFA を有効にする手順については後述します。
+
+Azure AD Connect については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../active-directory/connect/active-directory-aadconnect.md)」を参照してください。 
 
 ### <a name="azure-active-directory-guid-id"></a>Azure Active Directory の GUID ID 
-NPS をインストールするには、Azure Active Directory の GUID が必要です。 Azure Active Directory の GUID を確認する手順については、次のセクションで説明します。
+
+NPS 拡張機能をインストールするには、Azure Active Directory の GUID が必要です。 Azure Active Directory の GUID を確認する手順については、次のセクションで説明します。
 
 ## <a name="configure-radius-for-vpn-connections"></a>VPN 接続用の RADIUS の構成
 
-NPS サーバーの役割がメンバー サーバーにインストールされている場合、VPN 接続を要求する VPN クライアントを認証および承認するように構成する必要があります。 
+NPS ロールがメンバー サーバーにインストールされている場合、VPN 接続を要求する VPN クライアントを認証および承認するように構成する必要があります。 
 
-このセクションでは、ネットワーク ポリシー サーバーの役割はインストールされているが、インフラストラクチャで使用できるように構成されていないことを前提としています。
+このセクションでは、ネットワーク ポリシーとアクセス サービス ロールはインストールされているが、インフラストラクチャで使用できるように構成されていないことを前提としています。
 
->[!NOTE]
->一元化された RADIUS サーバーを認証に使用する作業用 VPN サーバーが既にある場合は、このセクションを省略して構いません。
+> [!NOTE]
+> 一元化された RADIUS サーバーを認証に使用する作業用 VPN サーバーが既にある場合は、このセクションを省略して構いません。
 >
 
 ### <a name="register-server-in-active-directory"></a>Active Directory にサーバーを登録する
 このシナリオで正常に機能させるには、NPS サーバーを Active Directory に登録する必要があります。
 
 1. サーバー マネージャーを開きます。
-2. サーバー マネージャーで **[ツール]** をクリックし、**[ネットワーク ポリシー サーバー]** をクリックします。 
-3. [ネットワーク ポリシー サーバー] コンソールで、**[NPS (ローカル)]** を右クリックし、**[Active Directory にサーバーを登録]** をクリックします。 **[OK]** を 2 回クリックします。
 
- ![ネットワーク ポリシー サーバー](./media/nps-extension-vpn/image2.png)
+2. サーバー マネージャーで、**[ツール]**、**[ネットワーク ポリシー サーバー]** の順に選択します。 
+
+3. [ネットワーク ポリシー サーバー] コンソールで、**[NPS (ローカル)]** を右クリックし、**[Active Directory にサーバーを登録]** を選択します。 **[OK]** を 2 回選択します。
+
+    ![ネットワーク ポリシー サーバー](./media/nps-extension-vpn/image2.png)
 
 4. 次の手順で使用するため、コンソールは開いたままにしておきます。
 
-### <a name="use-wizard-to-configure-radius-server"></a>ウィザードを使用して RADIUS サーバーを構成する
-(ウィザード ベースの) 標準構成オプションまたは詳細構成オプションを使用して、RADIUS サーバーを構成できます。 このセクションでは、ウィザード ベースの標準構成オプションを使用することを想定しています。
+### <a name="use-wizard-to-configure-the-radius-server"></a>ウィザードを使用して RADIUS サーバーを構成する
+(ウィザード ベースの) 標準構成オプションまたは詳細構成オプションを使用して、RADIUS サーバーを構成できます。 このセクションでは、ウィザード ベースの標準構成オプションを使用していることを想定しています。
 
-1. [ネットワーク ポリシー サーバー] コンソールで、**[NPS (ローカル)]** をクリックします。
-2. [標準構成] で **[ダイヤルアップ接続または VPN 接続用の RADIUS サーバー]** を選択し、**[VPN またはダイヤルアップを構成する]** をクリックします。
+1. [ネットワーク ポリシー サーバー] コンソールで、**[NPS (ローカル)]** を選択します。
 
- ![VPN の構成](./media/nps-extension-vpn/image3.png)
+2. **[標準構成]** で **[ダイヤルアップ接続または VPN 接続用の RADIUS サーバー]** を選択し、**[VPN またはダイヤルアップを構成する]** を選択します。
 
-3. [ダイヤルアップまたは仮想プライベート ネットワークの接続の種類の選択] ページで、**[仮想プライベート ネットワーク (VPN) 接続]** を選択し、**[次へ]** をクリックします。
+    ![VPN の構成](./media/nps-extension-vpn/image3.png)
 
- ![仮想プライベート ネットワーク](./media/nps-extension-vpn/image4.png)
+3. **[ダイヤルアップまたは仮想プライベート ネットワークの接続の種類の選択]** ウィンドウで、**[仮想プライベート ネットワーク (VPN) 接続]** を選択し、**[次へ]** を選択します。
 
-4. [ダイヤルアップまたは VPN サーバーの指定] ページで、**[追加]** をクリックします。
-5. **[新しい RADIUS クライアント]** ダイアログ ボックスで、フレンドリ名を指定し、VPN サーバーの解決可能な名前または IP アドレスを入力します。共有シークレットのパスワードも入力します。 この共有シークレットのパスワードは、長い複雑なものにします。 このパスワードは次のセクションの手順で必要になるため、記録しておいてください。
+    ![仮想プライベート ネットワーク](./media/nps-extension-vpn/image4.png)
 
- ![新しい RADIUS クライアント](./media/nps-extension-vpn/image5.png)
+4. **[ダイヤルアップまたは VPN サーバーの指定]** ウィンドウで、**[追加]** を選択します。
 
-6. **[OK]** をクリックし、**[次へ]** をクリックします。
-7. **[認証方法の構成]** ページで、既定の選択 ([Microsoft 暗号化認証バージョン 2 (MS-CHAP v2)]) をそのまま使用するか、別のオプションを選択し、**[次へ]** をクリックします。
+5. **[新しい RADIUS クライアント]** ウィンドウで、フレンドリ名を指定し、VPN サーバーの解決可能な名前または IP アドレスを入力してから、共有シークレットのパスワードも入力します。  
+    この共有シークレットのパスワードは、長い複雑なものにします。 このパスワードは次のセクションで必要になるので、メモしておきます。
 
-  >[!NOTE]
-  >拡張認証プロトコル (EAP) を構成する場合は、MS CHAP v2 または PEAP を使用する必要があります。 他の EAP はサポートされていません。
+    ![新しい RADIUS クライアント](./media/nps-extension-vpn/image5.png)
+
+6. **[OK]** を選択し、**[次へ]** を選択します。
+
+7. **[認証方法の構成]** ウィンドウで、既定の選択 (**[Microsoft 暗号化認証バージョン 2 [MS-CHAPv2]]**) をそのまま使用するか、別のオプションを選択し、**[次へ]** を選択します。
+
+    > [!NOTE]
+    > 拡張認証プロトコル (EAP) を構成する場合は、Microsoft チャレンジ ハンドシェイク認証プロトコル (CHAPv2) または Protected Extensible Authentication Protocol (PEAP) を使用する必要があります。 他の EAP はサポートされていません。
  
-8. [ユーザー グループの指定] ページで **[追加]** をクリックし、適切なグループを選択します (グループが存在する場合)。 それ以外の場合は、すべてのユーザーにアクセスを許可するために、選択フィールドを空白のままにしておきます。
+8. **[ユーザー グループの指定]** ウィンドウで **[追加]** を選択し、適切なグループを選択します。  
+    グループが存在しない場合は、すべてのユーザーにアクセスを許可するために、選択フィールドを空白のままにしておきます。
 
- ![ユーザー グループの指定](./media/nps-extension-vpn/image7.png)
+    ![[ユーザー グループの指定] ウィンドウ](./media/nps-extension-vpn/image7.png)
 
-9. **[次へ]** をクリックします。
-10. [IP フィルターの指定] ページで、**[次へ]** をクリックします。
-11. [暗号化設定の指定] ページで既定の設定をそのまま使用し、**[次へ]** をクリックします。
+9. **[次へ]**を選択します。
 
- ![暗号化の指定](./media/nps-extension-vpn/image8.png)
+10. **[IP フィルターの指定]** ウィンドウで **[次へ]** を選択します。
 
-12. [領域名の指定] では、名前を空白のままにし、既定の設定をそのまま使用して、**[次へ]** をクリックします。
+11. **[暗号化設定の指定]** ウィンドウで既定の設定をそのまま使用し、**[次へ]** を選択します。
 
- ![領域名の指定](./media/nps-extension-vpn/image9.png)
+    ![[暗号化設定の指定] ウィンドウ](./media/nps-extension-vpn/image8.png)
 
-13. [新しいダイヤルアップ接続または仮想プライベート ネットワーク接続および RADIUS クライアントの完了] ページで、**[完了]** をクリックします。
+12. **[領域名の指定]** ウィンドウでは、領域名を空白のままにし、既定の設定をそのまま使用して、**[次へ]** を選択します。
 
- ![接続の完了](./media/nps-extension-vpn/image10.png)
+    ![[領域名の指定] ウィンドウ](./media/nps-extension-vpn/image9.png)
 
-### <a name="verify-radius-configuration"></a>RADIUS 構成を確認する
+13. **[新しいダイヤルアップ接続または仮想プライベート ネットワーク接続および RADIUS クライアントの完了]** ウィンドウで、**[完了]** を選択します。
+
+    ![[新しいダイヤルアップ接続または仮想プライベート ネットワーク接続および RADIUS クライアントの完了] ウィンドウ](./media/nps-extension-vpn/image10.png)
+
+### <a name="verify-the-radius-configuration"></a>RADIUS 構成を確認する
 このセクションでは、ウィザードを使用して作成した構成について詳しく説明します。
 
-1. NPS サーバーで、[NPS (ローカル)] コンソールの [RADIUS クライアント] を展開し、**[RADIUS クライアント]** を選択します。
-2. 詳細ウィンドウで、ウィザードを使用して作成した RADIUS クライアントを右クリックし、**[プロパティ]** をクリックします。 RADIUS クライアント (VPN サーバー) のプロパティが次のように表示されます。
+1. ネットワーク ポリシー サーバーで、[NPS (ローカル)] コンソールの **[RADIUS クライアント]** を展開し、**[RADIUS クライアント]** を選択します。
 
- ![VPN のプロパティ](./media/nps-extension-vpn/image11.png)
+2. 詳細ウィンドウで、作成した RADIUS クライアントを右クリックし、**[プロパティ]** を選択します。  
+    RADIUS クライアント (VPN サーバー) のプロパティが次のように表示されます。
 
-3. **[キャンセル]** をクリックします。
-4. NPS サーバーで、[NPS (ローカル)] コンソールの **[ポリシー]** を展開し、**[接続要求ポリシー]** を選択します。 次の画像のような VPN 接続ポリシーが表示されます。
+    ![VPN のプロパティ](./media/nps-extension-vpn/image11.png)
 
- ![接続要求](./media/nps-extension-vpn/image12.png)
+3. **[キャンセル]** を選択します。
 
-5. [ポリシー] の **[ネットワーク ポリシー]** を選択します。 次の画像のような仮想プライベート ネットワーク (VPN) 接続ポリシーが表示されます。
+4. ネットワーク ポリシー サーバーで、[NPS (ローカル)] コンソールの **[ポリシー]** を展開し、**[接続要求ポリシー]** を選択します。  
+    次の図のように VPN 接続ポリシーが表示されます。
 
- ![ネットワークのプロパティ](./media/nps-extension-vpn/image13.png)
+    ![接続要求](./media/nps-extension-vpn/image12.png)
 
-## <a name="configure-vpn-server-to-use-radius-authentication"></a>RADIUS 認証を使用するための VPN サーバーの構成
-このセクションでは、RADIUS 認証を使用するように VPN サーバーを構成します。 このセクションでは、VPN サーバーの動作中の構成はあるが、RADIUS 認証を使用するように VPN サーバーが構成されていないことを前提としています。 VPN サーバーの構成後、構成が予想どおりに動作していることを確認します。
+5. **[ポリシー]** の **[ネットワーク ポリシー]** を選択します。  
+    次の画像のような仮想プライベート ネットワーク (VPN) 接続ポリシーが表示されます。
 
->[!NOTE]
->RADIUS 認証を使用する動作中の VPN サーバー構成が既にある場合は、このセクションを省略して構いません。
+    ![ネットワーク ポリシー](./media/nps-extension-vpn/image13.png)
+
+## <a name="configure-your-vpn-server-to-use-radius-authentication"></a>RADIUS 認証を使用するための VPN サーバーの構成
+このセクションでは、RADIUS 認証を使用するように VPN サーバーを構成します。 このセクションでは、VPN サーバーの動作中の構成はあるが、RADIUS 認証を使用するように構成されていないことを前提としています。 VPN サーバーの構成後、構成が予想どおりに動作していることを確認します。
+
+> [!NOTE]
+> RADIUS 認証を使用する動作中の VPN サーバー構成が既にある場合は、このセクションを省略して構いません。
 >
 
 ### <a name="configure-authentication-provider"></a>認証プロバイダーを構成する
 1. VPN サーバーで、サーバー マネージャーを開きます。
-2. サーバー マネージャーで **[ツール]** をクリックし、**[ルーティングとリモート アクセス]** をクリックします。
-3. [ルーティングとリモート アクセス] コンソールで、**\[サーバー名\] (ローカル)** を右クリックし、**[プロパティ]** をクリックします。
 
- ![ルーティングとリモート アクセス](./media/nps-extension-vpn/image14.png)
- 
-4. **[{サーバー名} (ローカル) のプロパティ]** ダイアログ ボックスで、**[セキュリティ]** タブをクリックします。 
-5. **[セキュリティ]** タブで、[認証プロバイダー] の **[RADIUS 認証]** をクリックし、**[構成]** をクリックします。
+2. サーバー マネージャーで **[ツール]** を選択し、**[ルーティングとリモート アクセス]** を選択します。
 
- ![RADIUS 認証](./media/nps-extension-vpn/image15.png)
+3. **[ルーティングとリモート アクセス]** ウィンドウで、**[\<サーバー名> (ローカル)]** を右クリックし、**[プロパティ]** を選択します。
+
+    ![[ルーティングとリモート アクセス] ウィンドウ](./media/nps-extension-vpn/image14.png)
  
-6. [RADIUS 認証] ダイアログ ボックスで、**[追加]** をクリックします。
-7. [RADIUS サーバーの追加] で、[サーバー名] に、前のセクションで構成した RADIUS サーバーの名前または IP アドレスを追加します。
-8. [共有シークレット] で **[変更]** をクリックし、先ほど作成して記録しておいた共有シークレットのパスワードを追加します。
-9. [タイムアウト (秒)] で、値を **30** ～ **60** に変更します。 これは、2 つ目の認証要素を完了するための十分な時間を確保するために必要となります。
+4. **[\<サーバー名> (ローカル) のプロパティ]** ウィンドウで、**[セキュリティ]** タブを選択します。 
+
+5. **[セキュリティ]** タブで、**[認証プロバイダー]** の **[RADIUS 認証]** を選択し、**[構成]** を選択します。
+
+    ![RADIUS 認証](./media/nps-extension-vpn/image15.png)
  
- ![RADIUS サーバーの追加](./media/nps-extension-vpn/image16.png)
+6. **[RADIUS 認証]** ウィンドウで **[追加]** を選択します。
+
+7. **[RADIUS サーバーの追加]** ウィンドウで、次の手順を実行します。
+
+    a. **[サーバー名]** ボックスに、前のセクションで構成した RADIUS サーバーの名前または IP アドレスを入力します。
+
+    b. **[共有シークレット]** で **[変更]** を選択し、先ほど作成してメモしておいた共有シークレットのパスワードを入力します。
+
+    c. **[タイムアウト (秒)]** ボックスで **30** から **60** の値を選択します。  
+    タイムアウト値は、2 つ目の認証要素を完了するための十分な時間を確保するために必要です。
  
-10. すべてのダイアログ ボックスを閉じるまで **[OK]** をクリックします。
+    ![[RADIUS サーバーの追加] ウィンドウ](./media/nps-extension-vpn/image16.png)
+ 
+8. **[OK]**を選択します。
 
 ### <a name="test-vpn-connectivity"></a>VPN 接続をテストする
-このセクションでは、VPN 仮想ポートに接続しようとしたときに、VPN クライアントが RADIUS サーバーによって認証され、承認されることを確認します。 このセクションは、VPN クライアントとして Windows 10 を使用していることを前提としています。 
+このセクションでは、VPN 仮想ポートに接続しようとしたときに、VPN クライアントが RADIUS サーバーによって認証され、承認されることを確認します。 この手順では、VPN クライアントに Windows 10 を使用していることを前提としています。 
 
->[!NOTE]
->VPN サーバーに接続するように VPN クライアントを既に構成しており、設定を保存済みの場合は、VPN 接続オブジェクトの構成と保存に関連する手順は省略して構いません。
+> [!NOTE]
+> VPN サーバーに接続するように VPN クライアントを既に構成しており、設定を保存済みの場合は、VPN 接続オブジェクトの構成と保存に関連する手順は省略して構いません。
 >
 
-1. VPN クライアント コンピューターで、**[スタート]** ボタンをクリックし、**[設定]** (歯車アイコン) をクリックします。
-2. [Windows の設定] で、**[ネットワークとインターネット]** をクリックします。
-3. **[VPN]** をクリックします。
-4. **[VPN 接続を追加する]** をクリックします。
-5. [VPN 接続を追加する] で、[VPN プロバイダー] として [Windows (ビルトイン)] を指定し、必要に応じて残りのフィールドを設定して、**[保存]** をクリックします。 
+1. VPN クライアント コンピューターで **[スタート]** ボタンを選択し、**[設定]** ボタンを選択します。
 
- ![VPN 接続の追加](./media/nps-extension-vpn/image17.png)
+2. **[Windows 設定]** ウィンドウで **[ネットワークとインターネット]** を選択します。
+
+3. **[VPN]** を選択します。
+
+4. **[VPN 接続を追加する]** を選択します。
+
+5. **[VPN 接続を追加する]** ウィンドウの **[VPN プロバイダー]** ボックスで **[Windows (ビルトイン)]** を選択し、必要に応じて残りのフィールドを設定して、**[保存]** を選択します。 
+
+    ![[VPN 接続を追加する] ウィンドウ](./media/nps-extension-vpn/image17.png)
  
-6. コントロール パネルの **[ネットワークと共有センター]** を開きます。
-7. **[アダプターの設定の変更]** をクリックします。
+6. **[コントロール パネル]** に移動し、**[ネットワークと共有センター]** を選択します。
 
- ![アダプターの設定の変更](./media/nps-extension-vpn/image18.png)
+7. **[アダプターの設定の変更]** を選択します。
 
-8. VPN ネットワーク接続を右クリックし、[プロパティ] をクリックします。 
+    ![[アダプターの設定の変更]](./media/nps-extension-vpn/image18.png)
 
- ![VPN ネットワークのプロパティ](./media/nps-extension-vpn/image19.png)
+8. VPN ネットワーク接続を右クリックし、**[プロパティ]** を選択します。 
 
-9. VPN のプロパティ ダイアログ ボックスで、**[セキュリティ]** タブをクリックします。 
-10. [セキュリティ] タブで、**[Microsoft CHAP Version 2 (MS-CHAP v2)]** だけがオンになっていることを確認し、[OK] をクリックします。
+    ![VPN ネットワークのプロパティ](./media/nps-extension-vpn/image19.png)
 
- ![プロトコルの許可](./media/nps-extension-vpn/image20.png)
+9. [VPN のプロパティ] ウィンドウで、**[セキュリティ]** タブを選択します。 
 
-11. VPN 接続を右クリックし、**[接続]** をクリックします。
-12. [設定] ページで **[接続]** をクリックします。
+10. **[セキュリティ]** タブで、**[Microsoft CHAP Version 2 (MS-CHAP v2)]** だけがオンになっていることを確認し、**[OK]** を選択します。
 
-成功した接続は、次に示すように、RADIUS サーバーのセキュリティ ログにイベント ID 6272 として表示されます。
+    ![[次のプロトコルを許可する] オプション](./media/nps-extension-vpn/image20.png)
 
- ![イベントのプロパティ](./media/nps-extension-vpn/image21.png)
+11. VPN 接続を右クリックし、**[接続]** を選択します。
 
-## <a name="troubleshoot-guide"></a>トラブルシューティング ガイド
-認証と承認に一元化された RADIUS サーバーを使用するように VPN サーバーを構成するまでは VPN 構成が動作していたとします。 この場合、RADIUS サーバーの構成に誤りがあるか、無効なユーザー名またはパスワードを使用したことが原因で問題が発生している可能性があります。 たとえば、ユーザー名に代替 UPN サフィックスを使用すると、ログイン試行が失敗することがあります (最良の結果を得るには、同じアカウント名を使用する必要があります)。 
+12. **[設定]** ウィンドウで、**[接続]** を選択します。  
+    成功した接続は、次に示すように、RADIUS サーバーのセキュリティ ログにイベント ID 6272 として表示されます。
 
-これらの問題のトラブルシューティングを行うときは、まず、RADIUS サーバーのセキュリティ イベント ログを調べることをお勧めします。 イベントの検索時間を節約するには、次に示すように、イベント ビューアーのロールベースの [ネットワーク ポリシーとアクセス サービス] カスタム ビューを使用します。 イベント ID 6273 は、ネットワーク ポリシー サーバーがユーザーに対してアクセスを拒否したイベントを示しています。 
+    ![[イベントのプロパティ] ウィンドウ](./media/nps-extension-vpn/image21.png)
 
- ![イベント ビューアー](./media/nps-extension-vpn/image22.png)
+## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+認証と承認に一元化された RADIUS サーバーを使用するように VPN サーバーを構成するまでは VPN 構成が動作していたとします。 構成が動作していた場合、RADIUS サーバーの構成に誤りがあるか、無効なユーザー名またはパスワードを使用したことが原因で問題が発生している可能性があります。 たとえば、ユーザー名に代替 UPN サフィックスを使用している場合、サインイン試行が失敗する可能性があります。 同じアカウント名を使用することをお勧めします。 
+
+これらの問題のトラブルシューティングを行うときは、まず、RADIUS サーバーのセキュリティ イベント ログを調べることをお勧めします。 イベントの検索時間を節約するには、次に示すように、イベント ビューアーのロールベースの [ネットワーク ポリシーとアクセス サービス] カスタム ビューを使用します。 "イベント ID 6273" は、NPS がユーザーに対してアクセスを拒否したイベントを示しています。 
+
+![イベント ビューアー](./media/nps-extension-vpn/image22.png)
  
 ## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication の構成
 このセクションでは、ユーザーの MFA を有効にし、アカウントに 2 段階認証を設定する手順について説明します。 
 
 ### <a name="enable-multi-factor-authentication"></a>Multi-Factor Authentication を有効にする
-ここでは、Azure AD アカウントの MFA を有効にします。 **クラシック ポータル**を使用して、ユーザーの MFA を有効にします。 
+ここでは、Azure AD アカウントの MFA を有効にします。 Azure クラシック ポータルを使用して、ユーザーの MFA を有効にします。 
 
-1. ブラウザーを開き、[https://manage.windowsazure.com](https://manage.windowsazure.com) に移動します。 
-2. 管理者としてログオンします。
-3. ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. [Microsoft Azure](https://manage.windowsazure.com) Web サイトにアクセスします。 
 
- ![既定のディレクトリ](./media/nps-extension-vpn/image23.png)
+2. 管理者としてサインインします。
 
-4. [名前] 列で、**[既定のディレクトリ]** (または、該当する場合は別のディレクトリ) をクリックします。
-5. [クイック スタート] ページで、**[構成]** をクリックします。
+3. 左ウィンドウで、**[Active Directory]** を選択します。
 
- ![既定のディレクトリの構成](./media/nps-extension-vpn/image24.png)
+    ![既定のディレクトリ](./media/nps-extension-vpn/image23.png)
 
-6. [構成] ページで [多要素認証] セクションまで下へスクロールし、**[サービス設定の管理]** をクリックします。
+4. **[名前]** 列で、**[既定のディレクトリ]** (または、該当する場合は別のディレクトリ) を選択します。
 
- ![MFA 設定の管理](./media/nps-extension-vpn/image25.png)
+5. **[既定のディレクトリ]** ウィンドウで **[構成]** を選択します。
+
+    ![既定のディレクトリの構成](./media/nps-extension-vpn/image24.png)
+
+6. **[構成]** ウィンドウの **[多要素認証]** で **[サービス設定の管理]** を選択します。
+
+    ![多要素認証設定の管理](./media/nps-extension-vpn/image25.png)
  
-7. [多要素認証] ページで既定のサービス設定を確認し、**[ユーザー]** をクリックします。 
+7. **[多要素認証]** ウィンドウで既定のサービス設定を確認し、**[ユーザー]** タブを選択します。 
 
- ![MFA ユーザー](./media/nps-extension-vpn/image26.png)
+    ![多要素認証の [ユーザー] タブ](./media/nps-extension-vpn/image26.png)
  
-8. [ユーザー] ページで、MFA を有効するユーザーを選択し、**[有効化]** をクリックします。
+8. **[ユーザー]** タブで、MFA を有効するユーザーを選択し、**[有効化]** を選択します。
 
- ![プロパティ](./media/nps-extension-vpn/image27.png)
+    ![プロパティ](./media/nps-extension-vpn/image27.png)
  
-9. メッセージが表示されたら、**[Multi-Factor Auth を有効にする]** をクリックします。
+9. メッセージが表示されたら、**[多要素認証を有効にする]** を選択します。
 
- ![MFA の有効化](./media/nps-extension-vpn/image28.png)
+    ![Multi-Factor Authentication を有効にする](./media/nps-extension-vpn/image28.png)
  
-10. **[閉じる]**をクリックします。 
-11. ページを更新します。 MFA の状態が [有効] に変更されます。
+10. **[閉じる]**を選択します。 
 
-ユーザーの Multi-Factor Authentication を有効にする方法については、[クラウドでの Azure Multi-Factor Authentication の概要](multi-factor-authentication-get-started-cloud.md)に関する記事をご覧ください。 
+11. ページを更新します。  
+    多要素認証の状態が *[有効]* に変わります。
+
+ユーザーの MFA を有効にする方法については、[クラウドでの Azure Multi-Factor Authentication の概要](multi-factor-authentication-get-started-cloud.md)に関する記事を参照してください。 
 
 ### <a name="configure-accounts-for-two-step-verification"></a>2 段階認証用にアカウントを構成する
-アカウントの MFA を有効にすると、ユーザーは 2 段階認証を使用する 2 つ目の認証要素に使用する信頼済みデバイスの構成を正常に完了するまで、MFA ポリシーによって管理されたリソースにはサインインできません。
+アカウントの MFA を有効にすると、ユーザーは 2 つ目の認証要素に使用する信頼済みデバイスの構成を正常に完了するまで、MFA ポリシーによって管理されたリソースにはサインインできません。
 
-このセクションでは、2 段階認証で使用する信頼済みデバイスを構成します。 構成で使用できるオプションは次のとおりです。
+このセクションでは、2 段階認証で使用する信頼済みデバイスを構成します。 次のように、デバイスの選択肢がいくつかあります。
 
-* **モバイル アプリ**:  Windows Phone、Android、または iOS デバイスに Microsoft Authenticator アプリをインストールします。 組織のポリシーに応じて、2 つのモードのいずれかでこのアプリを使用する必要があります。[確認のため通知を受け取る] では、デバイスに通知がプッシュされます。[確認コードを使用する] では、30 秒ごとに更新される確認コードを入力する必要があります。 
-* **携帯電話呼び出しまたはテキスト**:  自動音声通話を使用するか、テキスト メッセージを受信できます。 通話オプションでは、呼び出しに応答し、# 記号を押して認証を行います。 テキスト オプションでは、テキスト メッセージに返信するか、サインイン インターフェイスに確認コードを入力します。
-* **会社電話呼び出し**:  このプロセスは、上記の自動音声通話の場合と同じです。
+* **モバイル アプリ**: Windows Phone、Android、または iOS デバイスに Microsoft Authenticator アプリをインストールします。 組織のポリシーによっては、次のいずれかのモードを使用する必要があります。 
+    * 確認の通知を受信する (通知はデバイスにプッシュされます)。
+    * 確認コードを使用する (30 秒ごとに更新される確認コードを入力する必要があります) 
 
-モバイル アプリを使用して確認のためのプッシュ通知を受け取るようにデバイスを設定するには、次の手順に従います。
+* **携帯電話の呼び出しまたはテキスト**: 電話の自動呼び出しに応答するか、テキスト メッセージを受信することができます。 電話の呼び出し方法では、呼び出しに応答し、# 記号を選択して認証を行います。 テキストの方法では、テキスト メッセージに返信するか、サインイン インターフェイスに確認コードを入力します。
 
-1. [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にログオンするか、MFA 対応の資格情報を使用して認証する必要がある任意のサイト ([https://portal.azure.com](https://portal.azure.com) など) にログオンします。 
-2. ユーザー名とパスワードを使用してサインインすると、アカウントに追加のセキュリティ確認を設定するよう求める画面が表示されます。
+* **会社電話の呼び出し**: このプロセスは、前項の電話の自動呼び出しで説明したプロセスと同じです。
 
- ![追加のセキュリティ](./media/nps-extension-vpn/image29.png)
+モバイル アプリを使用して確認のためのプッシュ通知を受け取るようにデバイスを設定するには、次の手順を実行します。
 
-3. **[今すぐセットアップ]** をクリックします。
-4. [追加のセキュリティ確認] ページで、連絡先の種類 (認証用電話、会社電話、またはモバイル アプリ) を選択します。 次に、国または地域を選択し、方法を選択します。 方法は選択した連絡先の種類によって異なります。 たとえば、モバイル アプリを選択した場合は、確認のための通知を受け取るか、確認コードを使用するかを選択できます。 以下の手順では、連絡先の種類として **[モバイル アプリ]** を選択するものとします。
+1. [Microsoft Azure](https://aka.ms/mfasetup) または、MFA 対応の資格情報を使用して認証を受ける必要がある任意のサイト ([Azure Portal](https://portal.azure.com) など) にサインインします。  
+    次のように、追加のセキュリティ確認のためにアカウントを設定するように求められます。
 
- ![電話認証](./media/nps-extension-vpn/image30.png)
+    ![追加のセキュリティ](./media/nps-extension-vpn/image29.png)
 
-5. [モバイル アプリ] を選択し、**[確認のため通知を受け取る]** をクリックして、**[セットアップ]** をクリックします。 
+2. **[今すぐセットアップ]** を選択します。
 
- ![モバイル アプリによる確認](./media/nps-extension-vpn/image31.png)
+3. **[追加のセキュリティ確認]** ウィンドウで、連絡先の種類 (**認証用電話**、**会社電話**、または**モバイル アプリ**) を選択し、国または地域を選択し、方法を選択します。 まだ **[連絡してください]** は選択しないでください。  
+    方法は、連絡先の種類によって変わります。 たとえば、**モバイル アプリ**を選択した場合は、確認のための通知を受け取るか、確認コードを使用するかを選択できます。 
+
+    ![[追加のセキュリティ確認] ウィンドウ](./media/nps-extension-vpn/image30.png)
+
+    以下の手順では、連絡先の種類として **[モバイル アプリ]** を選択したものとします。
+
+4. **[モバイル アプリ]** を選択し、**[確認のため通知を受け取る]** を選択し、**[セットアップ]** を選択します。 
+
+    ![[追加のセキュリティ確認] ウィンドウ](./media/nps-extension-vpn/image31.png)
  
-6. Authenticator モバイル アプリをデバイスにインストールします (まだインストールしていない場合)。 
-7. モバイル アプリの指示に従って、表示されたバー コードをスキャンするか、情報を手動で入力し、**[完了]** をクリックします。
+5. Microsoft Authenticator モバイル アプリをデバイスにインストールします (まだインストールしていない場合)。 
 
- ![モバイル アプリの構成](./media/nps-extension-vpn/image32.png)
+6. モバイル アプリで、表示されたバー コードをスキャンするか、手動で情報を入力し、**[完了]** をクリックします。
 
-8. [追加のセキュリティ確認] ページで、**[連絡してください]** をクリックし、デバイスに送信された通知に返信します。
-9. [追加のセキュリティ確認] ページで、モバイル アプリにアクセスできなくなった場合の連絡先の電話番号を入力し、**[次へ]** をクリックします。
+    ![Microsoft Authenticator モバイル アプリの構成](./media/nps-extension-vpn/image32.png)
 
- ![携帯電話番号](./media/nps-extension-vpn/image33.png)
+7. **[追加のセキュリティ確認]** ウィンドウで、**[連絡してください]** を選択し、デバイスに送信された通知に返信します。
+
+8. **[追加のセキュリティ確認]** ウィンドウの **[手順 3: モバイル アプリにアクセスできなくなった場合]** に、モバイル アプリにアクセスできなくなった場合に発信する連絡先番号を入力し、**[次へ]** を選択します。
+
+    ![[追加のセキュリティ確認] ウィンドウ](./media/nps-extension-vpn/image33.png)
  
-10. [追加のセキュリティ確認] で、**[完了]** をクリックします。
+9. **[追加のセキュリティ確認]** ウィンドウで **[完了]** を選択します。
 
-これで、2 つ目の確認方法を提供するようにデバイスが構成されました。 アカウントに 2 段階認証を設定する方法については、「[アカウントへの 2 段階認証の設定](./end-user/multi-factor-authentication-end-user-first-time.md)」をご覧ください。
+これで、2 つ目の確認方法を提供するようにデバイスが構成されました。 アカウントに 2 段階認証を設定する方法については、「[アカウントへの 2 段階認証の設定](./end-user/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
-## <a name="install-and-configure-nps-extension"></a>NPS 拡張機能のインストールと構成
+## <a name="install-and-configure-the-nps-extension"></a>NPS 拡張機能のインストールと構成
 
-このセクションでは、VPN サーバーでのクライアント認証に Azure MFA を使用するように VPN を構成する手順について説明します。
+このセクションでは、VPN サーバーでのクライアント認証に MFA を使用するように VPN を構成する手順について説明します。
 
-NPS 拡張機能をインストールして構成したら、このサーバーによって処理される RADIUS ベースのすべてのクライアント認証に Azure MFA を使用する必要があります。 すべての VPN ユーザーが Azure MFA に登録されているわけではない場合は、MFA を使用するように構成されていないユーザーを認証するために、別の RADIUS サーバーを設定できます。 また、チャレンジされたユーザーが 2 つ目の認証要素を提供できるようにするレジストリ エントリを作成することもできます (ユーザーが MFA に登録されている場合のみ)。 
+NPS 拡張機能をインストールして構成したら、このサーバーによって処理される RADIUS ベースのすべてのクライアント認証に MFA を使用する必要があります。 すべての VPN ユーザーを Azure Multi-Factor Authentication に登録していない場合、次のいずれかを実行できます。
 
-_HKLM\SOFTWARE\Microsoft\AzureMfa に REQUIRE_USER_MATCH_ という名前の新しい文字列値を作成し、値を TRUE または FALSE に設定します。 
+* 別の RADIUS サーバーを設定して、MFA を使用するように構成されていないユーザーを認証します。 
 
- ![ユーザー照合が必要](./media/nps-extension-vpn/image34.png)
+* ユーザーが Azure Multi-Factor Authentication に登録されている場合、チャレンジされたユーザーが 2 つ目の認証要素を提供できるようにするレジストリ エントリを作成します。 
+
+_HKLM\SOFTWARE\Microsoft\AzureMfa に REQUIRE_USER_MATCH_ という名前の新しい文字列値を作成し、値を *True* または *False* に設定します。 
+
+![[ユーザー照合が必要] 設定](./media/nps-extension-vpn/image34.png)
  
-値が TRUE に設定されているか、値が設定されていない場合は、すべての認証要求が MFA チャレンジの対象となります。 値が FALSE に設定されている場合は、MFA に登録されているユーザーにのみ、MFA チャレンジが発行されます。 FALSE の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
+値が *True* に設定されているか空の場合は、すべての認証要求が MFA チャレンジの対象となります。 値が *False* に設定されている場合は、Azure Multi-Factor Authentication に登録されているユーザーにのみ、MFA チャレンジが発行されます。 *False* の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Azure Active Directory の GUID ID を取得する
+### <a name="obtain-the-azure-active-directory-guid-id"></a>Azure Active Directory GUID ID の取得
 
-NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの Azure Active Directory ID を入力する必要があります。 次の手順は、テナント ID を取得する方法を示しています。
+NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD テナントの ID を入力する必要があります。 次の手順で ID を取得します。
 
-1. Azure テナントのグローバル管理者として Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
-2. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
-3. **[プロパティ]**をクリックします。
-4. **[コピー]** アイコンをクリックして、ディレクトリ ID をクリップボードにコピーします。
+1. Azure テナントの全体管理者として [Azure Portal](https://portal.azure.com) にサインインします。
+
+2. 左側のウィンドウで、**[Azure Active Directory]** ボタンを選択します。
+
+3. **[プロパティ]**を選択します。
+
+4. Azure AD ID をコピーするには、**[コピー]** ボタンを選択します。
  
- ![ディレクトリ ID](./media/nps-extension-vpn/image35.png)
+    ![Azure AD ID](./media/nps-extension-vpn/image35.png)
 
 ### <a name="install-the-nps-extension"></a>NPS 拡張機能のインストール
-ネットワーク ポリシーとアクセス サービス (NPS) の役割がインストールされ、設計で RADIUS サーバーとして機能するサーバーに、NPS 拡張機能をインストールする必要があります。 リモート デスクトップ サーバーには NPS 拡張機能をインストールしないでください。
+ネットワーク ポリシーとアクセス サービスの役割がインストールされ、設計で RADIUS サーバーとして機能するサーバーに、NPS 拡張機能をインストールする必要があります。 リモート デスクトップ サーバーには NPS 拡張機能を*インストールしないでください*。
 
-1. [https://aka.ms/npsmfa](https://aka.ms/npsmfa) から NPS 拡張機能をダウンロードします。 
-2. セットアップ実行可能ファイル (NpsExtnForAzureMfaInstaller.exe) を NPS サーバーにコピーします。
-3. NPS サーバーで **NpsExtnForAzureMfaInstaller.exe** をダブルクリックします。 メッセージが表示されたら、**[実行]** をクリックします。
-4. [NPS Extension for Azure MFA]\(Azure MFA の NPS 拡張機能\) ダイアログ ボックスで、ソフトウェア ライセンス条項を確認し、**[同意する]** チェック ボックスをオンにして、**[インストール]** をクリックします。
+1. [Microsoft ダウンロード センター](https://aka.ms/npsmfa)から NPS 拡張機能をダウンロードします。 
 
- ![NPS 拡張機能](./media/nps-extension-vpn/image36.png)
+2. セットアップ実行可能ファイル (*NpsExtnForAzureMfaInstaller.exe*) を NPS サーバーにコピーします。
+
+3. NPS サーバーで **NpsExtnForAzureMfaInstaller.exe** をダブルクリックし、メッセージに従って **[実行]** を選択します。
+
+4. **[NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\)** ウィンドウで、**[ライセンス条項と条件に同意します]** チェック ボックスをオンにして、**[インストール]** を選択します。
+
+    ![[NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\) ウィンドウ](./media/nps-extension-vpn/image36.png)
  
-5. [NPS Extension for Azure MFA]\(Azure MFA の NPS 拡張機能\) ダイアログ ボックスで、**[閉じる]** をクリックします。  
+5. **[NPS Extension For Azure MFA Setup]\(Azure MFA セットアップの NPS 拡張機能\)** ウィンドウで、**[閉じる]** を選択します。  
 
- ![セットアップ完了](./media/nps-extension-vpn/image37.png) 
+    ![[セットアップ完了] 確認ウィンドウ](./media/nps-extension-vpn/image37.png) 
  
-### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>PowerShell スクリプトを使用して NPS 拡張機能で使用する証明書を構成する
-セキュリティで保護された通信と保証を確保するには、NPS 拡張機能で使用する証明書を構成する必要があります。 NPS コンポーネントには、NPS で使用する自己署名証明書を構成する Windows PowerShell スクリプトが含まれています。 
+### <a name="configure-certificates-for-use-with-the-nps-extension-by-using-a-powershell-script"></a>PowerShell スクリプトを使用して NPS 拡張機能で使用する証明書を構成する
+セキュリティで保護された通信と保証を確保するには、NPS 拡張機能で使用する証明書を構成します。 NPS コンポーネントには、NPS で使用する自己署名証明書を構成する Windows PowerShell スクリプトが含まれています。 
 
 このスクリプトは、次のアクションを実行します。
 
-* 自己署名証明書を作成する
-* Azure AD のサービス プリンシパルに証明書の公開キーを関連付ける
-* ローカル コンピューターのストアに証明書を格納する
-* ネットワーク ユーザーに証明書の秘密キーへのアクセスを許可する
-* ネットワーク ポリシー サーバー サービスを再起動する
+* 自己署名証明書を作成する。
+* Azure AD のサービス プリンシパルに証明書の公開キーを関連付ける。
+* ローカル コンピューターのストアに証明書を格納する。
+* ネットワーク ユーザーに証明書の秘密キーへのアクセスを許可する。
+* NPS サービスを再起動する。
 
 独自の証明書を使用する場合は、Azure AD のサービス プリンシパルへの証明書の公開キーの関連付けなどを行う必要があります。
+
 スクリプトを使用するには、Azure Active Directory の管理者資格情報と、先ほどコピーした Azure Active Directory のテナント ID を拡張機能に提供します。 NPS 拡張機能がインストールされている各 NPS サーバーでスクリプトを実行します。
 
-1. 管理用の Windows PowerShell プロンプトを開きます。
-2. PowerShell プロンプトで、「_cd ‘c:\Program Files\Microsoft\AzureMfa\Config’_」と入力し、**Enter** キーを押します。
-3. 「_.\AzureMfsNpsExtnConfigSetup.ps1_」と入力し、**Enter** キーを押します。 
- * Azure Active Directory PowerShell モジュールがインストールされているかどうかがチェックされます。 インストールされていない場合は、スクリプトによってモジュールがインストールされます。
- 
- ![PowerShell](./media/nps-extension-vpn/image38.png)
- 
-4. PowerShell モジュールのインストールの確認後、Azure Active Directory PowerShell モジュールのダイアログ ボックスが表示されます。 ダイアログ ボックスで、Azure AD の管理者資格情報とパスワードを入力し、**[サインイン]** をクリックします。 
- 
- ![PowerShell のサインイン](./media/nps-extension-vpn/image39.png)
- 
-5. メッセージが表示されたら、先ほどクリップボードにコピーしたテナント ID を貼り付け、**Enter** キーを押します。 
+1. Windows PowerShell を管理者として実行します。
 
- ![テナント ID](./media/nps-extension-vpn/image40.png)
+2. PowerShell コマンド プロンプトで、「**cd c:\Program Files\Microsoft\AzureMfa\Config**」と入力し、Enter キーを押します。
 
-6. スクリプトによって自己署名証明書が作成され、他の構成変更が実行されます。 出力は次の画像のようになります。
+3. 次のコマンド プロンプトで「**.\AzureMfsNpsExtnConfigSetup.ps1**」と入力し、Enter キーを押します。  
+    このスクリプトで、Azure AD PowerShell モジュールがインストールされているかどうかがチェックされます。 インストールされていない場合は、スクリプトによってモジュールがインストールされます。
+ 
+    ![PowerShell](./media/nps-extension-vpn/image38.png)
+ 
+    PowerShell モジュールのインストールの確認後、Azure Active Directory PowerShell モジュールのサインイン ウィンドウが表示されます。 
 
- ![自己署名証明書](./media/nps-extension-vpn/image41.png)
+4. Azure AD の管理者の資格情報とパスワードを入力し、**[次へ]** を選択します。 
+ 
+    ![PowerShell のサインイン ウィンドウ](./media/nps-extension-vpn/image39.png)
+ 
+5. コマンド プロンプトに先ほどコピーしたテナント ID を貼り付け、Enter キーを押します。 
 
-7. サーバーを再起動します。
- 
-### <a name="verify-configuration"></a>構成の確認
+    ![テナント ID](./media/nps-extension-vpn/image40.png)
+
+    スクリプトによって自己署名証明書が作成され、他の構成変更が実行されます。 出力は次の図のようになります。
+
+    ![自己署名証明書](./media/nps-extension-vpn/image41.png)
+
+6. サーバーを再起動します。
+
+### <a name="verify-the-configuration"></a>構成を確認する
 構成を確認するには、VPN サーバーとの新しい VPN 接続を確立する必要があります。 プライマリ認証用の資格情報の入力が正常に完了すると、次に示すように、セカンダリ認証が成功するまで待ってから VPN 接続が確立されます。 
 
- ![構成の確認](./media/nps-extension-vpn/image42.png)
+![Windows 設定の [VPN] ウィンドウ](./media/nps-extension-vpn/image42.png)
 
 Azure MFA で以前に構成したセカンダリ検証方法で認証に成功すると、リソースに接続されます。 ただし、セカンダリ認証に失敗した場合、リソースへのアクセスは拒否されます。 
 
-次の例では、Windows Phone の Authenticator アプリを使用してセカンダリ認証を提供しています。
+次の例では、Windows Phone の Microsoft Authenticator アプリでセカンダリ認証を提供しています。
 
- ![アカウントの確認](./media/nps-extension-vpn/image43.png)
+![アカウントの確認](./media/nps-extension-vpn/image43.png)
 
-第 2 の方法を使用して正常に認証されると、VPN サーバーの仮想ポートへのアクセスが許可されます。 ただし、信頼済みデバイスでモバイル アプリを使用したセカンダリ認証方法を使用する必要があったため、ユーザー名とパスワードの組み合わせだけを使用する場合よりもログイン プロセスの安全性が高まります。
+第 2 の方法を使用して正常に認証されると、VPN サーバーの仮想ポートへのアクセスが許可されます。 信頼済みデバイスでモバイル アプリを使用したセカンダリ認証方法を使用する必要があったため、ユーザー名とパスワードの組み合わせだけを使用する場合よりもサインイン プロセスの安全性が高まります。
 
-### <a name="view-event-viewer-logs-for-successful-logon-events"></a>成功したログオン イベントのイベント ビューアーのログを表示する
-Windows イベント ビューアーのログで成功したログオン イベントを表示するには、次の Windows PowerShell コマンドを発行して、NPS サーバーの Windows セキュリティ ログを照会します。
+### <a name="view-event-viewer-logs-for-successful-sign-in-events"></a>成功したサインイン イベントのイベント ビューアーのログを表示する
+Windows イベント ビューアーのログで成功したサインイン イベントを表示するには、次の PowerShell コマンドを入力して、NPS サーバーの Windows セキュリティ ログを照会します。
 
-イベント ビューアーのセキュリティ ログの成功したログオン イベントを照会するには、次のコマンドを使用します。
-* _Get-WinEvent -Logname Security_ | where {$_.ID -eq '6272'} | FL 
+    _Get-WinEvent -Logname Security_ | where {$_.ID -eq '6272'} | FL 
 
- ![セキュリティ イベント ビューアー](./media/nps-extension-vpn/image44.png)
+![PowerShell セキュリティ イベント ビューアー](./media/nps-extension-vpn/image44.png)
  
 次に示すように、セキュリティ ログや [ネットワーク ポリシーとアクセス サービス] カスタム ビューを表示することもできます。
 
- ![ネットワーク ポリシーへのアクセス](./media/nps-extension-vpn/image45.png)
+![ネットワーク ポリシー サーバー ログ](./media/nps-extension-vpn/image45.png)
 
-Azure MFA の NPS 拡張機能がインストールされているサーバーで、拡張機能に固有のイベント ビューアーのアプリケーション ログ (**アプリケーションとサービス ログ\Microsoft\AzureMfa**) を確認できます。 
+Azure Multi-Factor Authentication の NPS 拡張機能がインストールされているサーバーで、拡張機能に固有のイベント ビューアーのアプリケーション ログ (*アプリケーションとサービス ログ\Microsoft\AzureMfa*) を確認できます。 
 
-* _Get-WinEvent -Logname Security_ | where {$_.ID -eq '6272'} | FL
+    _Get-WinEvent -Logname Security_ | where {$_.ID -eq '6272'} | FL
 
- ![イベント数](./media/nps-extension-vpn/image46.png)
+![イベント ビューアーの [イベント数] ウィンドウ](./media/nps-extension-vpn/image46.png)
 
-## <a name="troubleshoot-guide"></a>トラブルシューティング ガイド
-構成が予想どおりに動作していない場合、トラブルシューティングでは、まず、Azure MFA を使用するようにユーザーが構成されていることを確認します。 ユーザーに、[https://portal.azure.com](https://portal.azure.com) に接続してもらいます。ユーザーがセカンダリ認証を求められ、正常に認証できれば、Azure MFA の構成には問題がないことがわかります。
+## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+構成が予想どおりに動作していない場合、トラブルシューティングでは、まず MFA を使用するようにユーザーが構成されていることを確認します。 ユーザーに、[Azure Portal](https://portal.azure.com) に接続してもらいます。 ユーザーがセカンダリ認証を求められ、正常に認証できれば、MFA の構成には問題がないことがわかります。
 
-ユーザーの Azure MFA が機能している場合、関連するイベント ログを確認する必要があります。 関連するイベント ログとして、前のセクションで説明したセキュリティ イベント ログ、ゲートウェイの操作ログ、Azure MFA ログがあります。 
+ユーザーの MFA が機能している場合、関連するイベント ビューアー ログを確認する必要があります。 関連するイベント ログとして、前のセクションで説明したセキュリティ イベント ログ、ゲートウェイの操作ログ、Azure Multi-Factor Authentication ログがあります。 
 
-失敗したログオン イベント (イベント ID 6273) を示すセキュリティ ログの出力例を次に示します。
+失敗したサインイン イベント (イベント ID 6273) が表示されたセキュリティ ログの例を次に示します。
 
- ![セキュリティ ログ](./media/nps-extension-vpn/image47.png)
+![失敗したサインイン イベントが表示されたセキュリティ ログ](./media/nps-extension-vpn/image47.png)
 
-Azure MFA ログの関連イベントを次に示します。
+Azure Multi-Factor Authentication ログの関連するイベントを次に示します。
 
- ![Azure MFA ログ](./media/nps-extension-vpn/image48.png)
+![Azure Multi-Factor Authentication のログ](./media/nps-extension-vpn/image48.png)
 
-高度なトラブルシューティング オプションを実行するには、NPS サービスがインストールされているサーバーで NPS データベース形式のログ ファイルを参照します。 これらのログ ファイルは、コンマ区切りのテキスト ファイルとして _%SystemRoot%\System32\Logs_ フォルダーに作成されています。 これらのログ ファイルについては、「[Interpret NPS Database Format Log Files (NPS データベース形式のログ ファイルの解釈)](https://technet.microsoft.com/library/cc771748.aspx)」をご覧ください。 
+高度なトラブルシューティングを実行するには、NPS サービスがインストールされているサーバーで NPS データベース形式のログ ファイルを参照します。 ログ ファイルは、コンマ区切りのテキスト ファイルとして _%SystemRoot%\System32\Logs_ フォルダーに作成されています。 ログ ファイルの詳細については、「[Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx)」(NPS データベース形式のログ ファイルの解釈) を参照してください。 
 
-これらのログ ファイルのエントリは、スプレッドシートやデータベースにインポートしないと解釈が困難です。 ログ ファイルの解釈に役立つ多数の IAS パーサーがオンラインで見つかります。 このようなダウンロード可能な[シェアウェア アプリケーション](http://www.deepsoftware.com/iasviewer)の出力を次に示します。 
+これらのログ ファイルのエントリは、スプレッドシートやデータベースにインポートしないと解釈が困難です。 ログ ファイルを解釈する場合に役立つ Internet Authentication Service (IAS) 解析ツールは、オンラインで多数見つかります。 このようなダウンロード可能な[シェアウェア アプリケーション](http://www.deepsoftware.com/iasviewer)の出力を次に示します。 
 
- ![シェアウェア アプリケーション](./media/nps-extension-vpn/image49.png)
+![シェアウェア アプリケーション](./media/nps-extension-vpn/image49.png)
 
-最後に、その他のトラブルシューティング オプションとして、Wireshark や [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) などのプロトコル アナライザーを使用できます。 Wireshark の次の画像は、VPN サーバーと NPS サーバー間の RADIUS メッセージを示しています。
+その他のトラブルシューティングには、Wireshark や [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) などのプロトコル アナライザーを使用できます。 Wireshark の次の画像は、VPN サーバーと NPS 間の RADIUS メッセージを示しています。
 
- ![Microsoft Message Analyzer](./media/nps-extension-vpn/image50.png)
+![Microsoft Message Analyzer](./media/nps-extension-vpn/image50.png)
 
-詳細については、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](multi-factor-authentication-nps-extension.md)」をご覧ください。  
+詳細については、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](multi-factor-authentication-nps-extension.md)」をご覧ください。 
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)

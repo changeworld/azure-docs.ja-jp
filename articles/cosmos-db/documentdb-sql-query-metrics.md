@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: c6c929c568cf7246c2c2e414723a38429727df36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f057ee80e8a26595c17e6610a2aaaad08d0346b5
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
 Azure Cosmos DB は、スキーマやセカンダリ インデックスを使用せず[データを照会するための SQL API](documentdb-sql-query.md) を提供します。 この記事は、開発者を対象とした次の情報を提供します。
@@ -253,7 +253,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `documentLoadTimeInMs` | ミリ秒 | ドキュメントの読み込みにかかった時間  | 
 | `systemFunctionExecuteTimeInMs` | ミリ秒 | システム (組み込み) 関数の実行にかかった合計時間 (ミリ秒)  | 
 | `userFunctionExecuteTimeInMs` | ミリ秒 | ユーザー定義関数の実行にかかった合計時間 (ミリ秒) | 
-| `retrievedDocumentCount` | ミリ秒 | 取得されたドキュメントの合計数  | 
+| `retrievedDocumentCount` | count | 取得されたドキュメントの合計数  | 
 | `retrievedDocumentSize` | バイト | バイト単位で取得されたドキュメントの合計サイズ (バイト)  | 
 | `outputDocumentCount` | count | 出力ドキュメントの数 | 
 | `writeOutputTimeInMs` | ミリ秒 | クエリ実行時間 (ミリ秒) | 

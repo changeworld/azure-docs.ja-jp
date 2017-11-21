@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3e4eef12c1d19be6e0f1051caaa5cf2e98626aef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f9882ebc86b8119e6e683c7442ee3448a8d111b
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure Portal から関数アプリを作成する
 
@@ -40,7 +40,7 @@ Azure Function App では、Azure App Service のインフラストラクチャ�
 
 Azure Functions には、従量課金プランと App Service プランの 2 つの異なるサービス プランがあります。 従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールインします。 App Service プランでは、関数アプリが App Service のすべての機能にアクセスできます。 サービス プランは関数アプリの作成時に選択する必要があり、現時点では変更できません。 詳細については、[Azure Functions のホスティング プランの選択](functions-scale.md)に関するページをご覧ください。
 
-App Service プランで JavaScript 関数を実行する場合、コアの少ないプランを選択してください。 詳細については、[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-core-app-service-plans) ページを参照してください。
+App Service プランで JavaScript 関数を実行する場合、コアの少ないプランを選択してください。 詳細については、[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-vcpu-app-service-plans) ページを参照してください。
 
 <a name="storage-account-requirements"></a>
 

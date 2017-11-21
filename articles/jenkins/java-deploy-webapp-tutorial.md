@@ -11,11 +11,11 @@ ms.workload: web
 ms.date: 08/02/2017
 ms.author: routlaw
 ms.custom: Jenkins, devcenter
-ms.openlocfilehash: 3a2635ac968d843226f05dc51cf4a5f078235c11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40d7e822b586e6f6b4addcd7d4e107eda9f4ab11
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Jenkins による Azure App Service への継続的インテグレーションとデプロイの設定
 
@@ -75,9 +75,9 @@ ms.lasthandoff: 10/11/2017
     ![Jenkins の新しいフリースタイル プロジェクト](media/jenkins-java-quickstart/jenkins_freestyle.png)
 2. **[General]\(一般\)** セクションから **GitHub** プロジェクトを選択し､フォークしたリポジトリの URL (例: https://github.com/raisa/gs-spring-boot-docker) を入力します｡
 3. **[Source code management]\(ソース コード管理\)** セクションから **Git** を選択し､フォークした `.git` リポジトリの URL (例: https://github.com/raisa/gs-spring-boot-docker.git) を入力します｡
-4. [**Build Triggers**] セクションから **GitHub hook trigger for GITscm polling** を選択します｡
+4. **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します｡
 5. **[Build]\(ビルド\)** セクションから **[Add build step]\(ビルド手順の追加\)** を選択し、**[Invoke top-level Maven targets]\(Maven の最上位レベルのターゲットを呼び出す\)** を選びます。 **[Goals]\(目標\)** フィールドに `package` を入力します。
-6. [ **保存**] を選択します。 ジョブをテストするには、プロジェクト ページから **[Build Now]\(今すぐ作成\)** を選択します。
+6. **[ 保存]** を選択します。 ジョブをテストするには、プロジェクト ページから **[Build Now]\(今すぐ作成\)** を選択します。
 
 ## <a name="configure-azure-app-service"></a>Azure App Service の構成 
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 10/11/2017
     ```azurecli-interactive
     az group create --name myResourceGroupJenkins --location westus
     az appservice plan create --is-linux --name myLinuxAppServicePlan --resource-group myResourceGroupJenkins 
-    az webapp create --name myJavaApp --resource-group myResourceGroupJenkins --plan myLinuxAppServicePlan
+    az webapp create --name myJavaApp --resource-group myResourceGroupJenkins --plan myLinuxAppServicePlan --runtime "java|1.8|Tomcat|8.5"
     ```
 
 2. Jenkins によってビルドされた Docker イメージを格納するために、[Azure Container Registry](/azure/container-registry/container-registry-intro) を作成します。 このチュートリアルではコンテナー レジストリの名前に `jenkinsregistry` を使用していますが、独自のコンテナー レジストリでは一意の名前を使用する必要があります。 

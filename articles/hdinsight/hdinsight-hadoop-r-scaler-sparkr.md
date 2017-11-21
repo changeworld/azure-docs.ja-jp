@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 29733f6f6b725dd4735219ed221431805558a5e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b84c365defbaadbc83c86e6e387c15a63e0f17ce
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>HDInsight で ScaleR と SparkR を組み合わせる
 
@@ -552,7 +552,7 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 - R Server の一般情報については、[R の基礎](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node)に関する記事をご覧ください。
 
-- HDInsight における R Server については、[Azure HDInsight での R Server の概要](hdinsight-hadoop-r-server-overview.md)と [Azure HDInsight での R Server](hdinsight-hadoop-r-server-get-started.md) に関する各ページをご覧ください。
+- HDInsight における R Server については、[Azure HDInsight での R Server の概要](r-server/r-server-overview.md)と [Azure HDInsight での R Server](r-server/r-server-get-started.md) に関する各ページをご覧ください。
 
 SparkR の使い方について詳しくは、次のドキュメントをご覧ください。
 

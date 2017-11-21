@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/07/2017
-ms.author: darosa;sethm
-ms.openlocfilehash: a0c169e0580468e83a07c077f8c60e83d3fb52f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/10/2017
+ms.author: sethm
+ms.openlocfilehash: 613bb074063e436cdbd54fe5aee9c49109a2d8f2
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -60,12 +60,11 @@ Standard メッセージングで実行しているコードがあり、それ�
 
 ## <a name="get-started-with-premium-messaging"></a>Premium メッセージングを使ってみる
 
-Premium メッセージングは簡単に使い始めることができ、そのプロセスは Standard メッセージングと似ています。 まず、[名前空間を作成します](service-bus-create-namespace-portal.md)。 **[価格レベル]** で **[Premium]** を選択します。
+Premium メッセージングは簡単に使い始めることができ、そのプロセスは Standard メッセージングと似ています。 まず、[Azure Portal](https://portal.azure.com) で[名前空間を作成](service-bus-create-namespace-portal.md)します。 **[価格レベルの選択]** で **[Premium]** を選択してください。
 
 ![create-premium-namespace][create-premium-namespace]
 
 [Azure Resource Manager テンプレートを使用して Premium 名前空間](https://azure.microsoft.com/en-us/resources/templates/101-servicebus-pn-ar/)を作成することもできます。
-
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -74,7 +73,7 @@ Service Bus メッセージングの詳細については、次のトピック�
 * [Azure Service Bus Premium メッセージングの概要 (ブログの投稿)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Azure Service Bus Premium メッセージングの概要 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
+* [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 
 <!--Image references-->
 

@@ -12,16 +12,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/18/2016
+ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: c059fd74854813615754e67547497b7ededbe4dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87a0a59d0c980baa87aa5d7f5f0e8098884b5ec9
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-8000-series-update-03-release-notes---february-2015"></a>StorSimple 8000 シリーズ Update 0.3 リリース ノート - 2015 年 2 月
-## <a name="overview"></a>Overview
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) に関するページを参照してください。
+
+## <a name="overview"></a>概要
 次のリリース ノートでは、2015 年 2 月にリリースされた StorSimple 8000 シリーズ Update 0.3 の未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェアおよびファームウェアの更新プログラムの一覧も含まれています。 これは、StorSimple 8000 シリーズのリリース バージョンが 2014 年 7 月に一般提供された後の、3 番目のリリースです。
 
 この更新プログラムでは、1 月の更新プログラムから、デバイスのソフトウェアのバージョンは変更されません。 バージョンは引き続き 6.3.9600.17312 です。 **最終更新日** の日付を確認することで、更新プログラムがインストールされていることを確認できます。 日付が 2015 年 2 月 10 日以降の場合、更新プログラムは正常にインストールされています。  

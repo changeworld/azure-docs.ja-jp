@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 1b0d0fa1afc94d5261443f6b08cb6f0c3518f3eb
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: a1214d8327075ee081124d42aeb78846e09ff588
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Log Analytics の Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -38,10 +38,10 @@ Azure SQL Analytics ソリューションでは、Log Analytics サービスに�
 
 | 接続されているソース | サポート | 説明 |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agents.md) | なし | このソリューションでは、直接の Windows エージェントは使用されません。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | なし | このソリューションでは、直接の Linux エージェントは使用されません。 |
-| [SCOM 管理グループ](log-analytics-om-agents.md) | なし | このソリューションでは、SCOM エージェントから Log Analytics への直接接続は使用しません。 |
-| [Azure Storage アカウント](log-analytics-azure-storage.md) | なし | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
+| [Windows エージェント](log-analytics-windows-agents.md) | いいえ | このソリューションでは、直接の Windows エージェントは使用されません。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | いいえ | このソリューションでは、直接の Linux エージェントは使用されません。 |
+| [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ | このソリューションでは、SCOM エージェントから Log Analytics への直接接続は使用しません。 |
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
 | [Azure 診断](log-analytics-azure-storage.md) | あり | Azure のメトリックおよびログ データは、Azure によって直接 Log Analytics に送信されます。 |
 
 ## <a name="prerequisites"></a>前提条件
@@ -102,7 +102,16 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 各パースペクティブは、サブスクリプション、サーバー、エラスティック プール、およびデータベース レベルの概要を提供します。 さらに、各パースペクティブは、右側にパースペクティブ特定のレポートを示します。 一覧からサブスクリプション、サーバー、プール、またはデータベースを選択するとドリル ダウンが続行されます。
 
-| パースペクティブ | 説明 | | 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブ。 ドリルダウンは、DTU および GB のメトリックの概要を示します。 | | Insights | Intelligent Insights に階層型のドリルダウンを提供します。 Intelligent Insights の詳細を参照してください。 | | Errors | データベースで発生した SQL エラーの階層型のドリルダウンを提供します。 | | タイムアウト | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します。 | | Blockings | データベースで発生した SQL ブロッキングの階層型のドリルダウンを提供します。 | | データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します。 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 | | クエリ実行時間 | クエリの実行時間、CPU 使用率、データ IO 使用率、ログ IO 使用率などのクエリ実行の統計の階層型のドリルダウンを提供します。 | | クエリ待機 | 待機カテゴリ別に、クエリ待機統計の階層型のドリルダウンを提供します、 |
+| パースペクティブ | Description |
+| --- | --- |
+| 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブです。 ドリルダウンは、DTU および GB のメトリックの概要を示します。 |
+| 洞察 | インテリジェントな洞察の階層型のドリルダウンを提供します。 インテリジェントな洞察の詳細を参照してください。 |
+| Errors | データベースで発生した SQL エラーの階層型のドリルダウンを提供します |
+| タイムアウト | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します |
+| ブロッキング | データベースで発生した SQL ブロッキングの階層型のドリルダウンを提供します |
+| データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 |
+| クエリ実行時間 | クエリの実行時間、CPU 使用率、データ IO 使用率、ログ IO 使用率などのクエリ実行の統計の階層型のドリルダウンを提供します。 |
+| クエリ待機 | 待機カテゴリ別に、クエリ待機統計の階層型のドリルダウンを提供します |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights レポート
 

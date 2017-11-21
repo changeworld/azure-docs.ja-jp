@@ -4,7 +4,7 @@ description: "StorSimple Virtual Array をデプロイする最初のチュー�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d0801053721f98ce7a2b0fcbe3c65da8dbdd8d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6685c5ab7768176a0c8e7084c8512d5345732d9a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -42,7 +42,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 | **#** | **手順** | **説明** | **参照ドキュメント** |
 | --- | --- | --- | --- |
 | 1. |**Azure Portal のセットアップ** |StorSimple Virtual Array をプロビジョニングする前に、StorSimple デバイス マネージャー サービスを作成して構成します。 |[ポータルを準備する](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Virtual Array のプロビジョニング** |Hyper-V の場合、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。 <br></br> <br></br> VMware の場合、VMware ESXi 5.5 以降を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。<br></br> |[Hyper-V で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 2. |**Virtual Array のプロビジョニング** |Hyper-V の場合、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。 <br></br> <br></br> VMware の場合、VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。<br></br> |[Hyper-V で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md) |
 | 3. |**Virtual Array のセットアップ** |ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。 これで、SMB 共有をプロビジョニングできます。 <br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。 これで、iSCSI ボリュームをプロビジョニングできます。 |[ファイル サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 これで、Azure Portal をセットアップする準備が整いました。
@@ -70,7 +70,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 
 仮想アレイをデプロイする前に次の点を確認します。
 
-* Windows Server 2008 R2 以降の Hyper-V または VMware (ESXi 5.5 以降) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
+* Windows Server 2008 R2 以降の Hyper-V または VMware (ESXi 5.0、5.5、6.0) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
 * ホスト システムで、次のリソースを仮想アレイのプロビジョニング専用に使用できること。
   
   * 最小で 4 コア。
@@ -136,7 +136,7 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
    
    * Windows Server 2012 以降の Hyper-V 用 VHDX
    * Windows Server 2008 R2 以降の Hyper-V 用 VHD
-   * VMWare ESXi 5.5 以降用 VMDK
+   * VMWare ESXi 5.0、5.5、6.0 用 VMDK
 5. ファイルをローカル ドライブにダウンロードして解凍し、解凍したファイルの場所をメモしておきます。
 
 ## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>省略可能な手順: サービスの新しいストレージ アカウントを構成する

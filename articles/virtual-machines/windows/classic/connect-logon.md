@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 43d54de7e875de9212c23c49ad0539bf2272a312
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 510b394256bbe86a5eb5bfbc3af4681670b89de3
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Azure ポータルを使用して Windows 仮想マシンにログオンする
 Azure ポータルの **[接続]** ボタンを使用して、リモート デスクトップ セッションを開始し、Windows VM にログオンします。
@@ -33,6 +33,7 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager モデルを使用した VM へのログオン方法については、[こちら](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照してください。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 1. Azure ポータルにサインインします。

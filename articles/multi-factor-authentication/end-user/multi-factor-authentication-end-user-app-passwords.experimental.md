@@ -3,9 +3,9 @@ title: "Azure MFA でアプリ パスワードを使用する方法 | Microsoft 
 description: "このページは、アプリ パスワードの詳細と、Azure MFA に関連した用途を理解するのに役立ちます。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
-editor: yossib
+ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: kgremban
+ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 1ecc2bdef5ff7ef8ed8dded7dc12428ce9657821
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1c5a83fc54744dca1da0c7049f34fcf0bd5dfb4
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のアプリ パスワードとは
 現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。 多要素認証はユーザーごとに有効にします。  これは、次の場合にユーザーが多要素認証を使用できないことを意味します。

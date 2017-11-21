@@ -9,14 +9,6 @@
 ## [テンプレート用の VS Code 拡張機能](resource-manager-vscode-extension.md)
 ## [Visual Studio と Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
-# サンプル
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## Azure PowerShell
-### [テンプレートのデプロイ](resource-manager-samples-powershell-deploy.md)
-
-## Azure CLI
-### [テンプレートのデプロイ](resource-manager-samples-cli-deploy.md)
-
 # 方法
 ## テンプレートの作成
 ### [テンプレート セクション](resource-group-authoring-templates.md)
@@ -69,12 +61,6 @@
 ### [サブスクリプションにアクセスするための認証 API](resource-manager-api-authentication.md)
 ### [リソースのロック](resource-group-lock-resources.md)
 
-## リソース ポリシーの設定
-### [リソース ポリシーとは](resource-manager-policy.md)
-### 例
-#### [タグ](resource-manager-policy-tags.md)
-#### [名前付け規則](resource-manager-policy-naming-convention.md)
-
 ## Audit
 ### [アクティビティ ログを表示する](resource-group-audit.md)
 ### [デプロイ操作の表示](resource-manager-deployment-operations.md)
@@ -89,6 +75,7 @@
 #### [NotFound](resource-manager-not-found-errors.md)
 #### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
 #### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+#### [ReservedResourceName](resource-manager-reserved-resource-name.md)
 #### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
 #### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
 ### 仮想マシンのデプロイのエラー

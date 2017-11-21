@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: terrylan
-ms.openlocfilehash: 8d00882caf5411240c5f0a3533c78c3dbe361ef2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e816f151ea1f71770f00d6d77b65395fe080da3
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、他要素認証や条件付きアクセスポリシーなどの追加レベルの検証を可能にします。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。 [Azure Active Directory Premium](../active-directory/active-directory-editions.md) は、何千ものクラウドへのシングル サインオン (SaaS) アプリケーション、およびオンプレミスで実行する Web アプリケーションへのアクセスを提供します。
@@ -57,7 +57,7 @@ Azure AD はオンプレミスの Active Directory 環境をクラウドに拡�
 
 * [シングル サインオンの概要](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../active-directory/active-directory-appssoaccess-whatis.md)
-* [SaaS アプリと Azure Active Directory シングル サインオンを統合する](../active-directory/active-directory-sso-integrate-saas-apps.md)
+* [SaaS アプリと Azure Active Directory シングル サインオンを統合する](../active-directory/active-directory-enterprise-apps-manage-sso.md)
 
 ## <a name="reverse-proxy"></a>リバース プロキシ
 Azure AD アプリケーション プロキシを使用すると、[SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) サイト、[Outlook Web アプリ](https://technet.microsoft.com/library/jj657718.aspx)、[IIS](http://www.iis.net/) ベースのアプリなどのオンプレミス アプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。 アプリケーション プロキシ では、多くの種類のオンプレミス Web アプリケーションに対応するリモート アクセスとシングル サインオン (SSO) を、Azure AD がサポートする数千もの SaaS アプリケーションとともに利用できます。 従業員は、自宅から自分のデバイスでアプリケーションにログインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
@@ -67,7 +67,7 @@ Azure AD アプリケーション プロキシを使用すると、[SharePoint](
 * [Azure AD アプリケーション プロキシの有効化](../active-directory/active-directory-application-proxy-enable.md)
 * [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../active-directory/active-directory-application-proxy-publish.md)
 * [アプリケーション プロキシを使用したシングル サインオン](../active-directory/active-directory-application-proxy-sso-using-kcd.md)
-* [条件付きアクセスの使用](../active-directory/active-directory-application-proxy-conditional-access.md)
+* [条件付きアクセスの使用](../active-directory/application-proxy-enable-remote-access-sharepoint.md)
 
 ## <a name="multi-factor-authentication"></a>多要素認証
 Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。 MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。

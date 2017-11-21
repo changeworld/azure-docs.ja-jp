@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jgao
-ms.openlocfilehash: b44321619f2aa94a6d98624ab1ee35a598fb6fc8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b2ca9dd60187904d9d22e8308e31ed46b1213e6
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Zeppelin を使用して Azure HDInsight で Hive クエリを実行する 
 
@@ -29,7 +29,7 @@ HDInsight 対話型クエリ クラスターには、Zeppelin ノートブック
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
-* **HDInsight 対話型クエリ クラスター**。 HDInsight クラスターの作成については、「[クラスターの作成](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。  クエリの種類では対話型クエリを必ず選択してください。 
+* **HDInsight 対話型クエリ クラスター**。 HDInsight クラスターの作成については、「[クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。  クエリの種類では対話型クエリを必ず選択してください。 
 
 ## <a name="create-a-zeppelin-note"></a>Zeppelin Note を作成する
 
@@ -76,9 +76,9 @@ HDInsight 対話型クエリ クラスターには、Zeppelin ノートブック
 ## <a name="next-steps"></a>次のステップ
 この記事では、Power BI を使用して HDInsight からデータを視覚化する方法について学習しました。  詳細については、次の記事を参照してください。
 
-* [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](./hdinsight-connect-hive-power-bi.md)。
-* [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](./hdinsight-connect-excel-hive-odbc-driver.md)。
-* [Power Query を使用して Excel を Hadoop に接続する](./hdinsight-connect-excel-power-query.md)。
-* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](./hdinsight-hadoop-visual-studio-tools-get-started.md)。
+* [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)。
+* [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。
+* [Power Query を使用して Excel を Hadoop に接続する](hadoop/apache-hadoop-connect-excel-power-query.md)。
+* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 * [Azure HDInsight Tool for Visual Studio Code の使用](hdinsight-for-vscode.md)。
 * [HDInsight にデータをアップロードする](./hdinsight-upload-data.md)。

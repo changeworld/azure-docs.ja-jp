@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 10/15/2017
 ms.author: maroche
-ms.openlocfilehash: 11e4bc7e71b4a94c3a0eda4275745b1beb44974d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7aa0f9b292a98c6137ecf4ae957b3cb86062f250
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
@@ -64,7 +64,7 @@ Standard Edition の Data Catalog は、最大 100,000 の登録済みのデー�
 
 ## <a name="how-do-i-register-my-data"></a>データの登録方法を教えてください
 Data Catalog でデータを登録するには、次の手順を実行します。
-1. Azure Data Catalog ポータルの [**発行**] 領域で、Azure Data Catalog 登録ツールを起動します。 
+1. Azure Data Catalog ポータルの **[発行]** 領域で、Azure Data Catalog 登録ツールを起動します。 
 2. Data Catalog 発行アプリケーションで、Data Catalog ポータルへのアクセスに使用するのと同じ資格情報でサインインします。
 3. データ ソースと登録する特定の資産を選択します。
 
@@ -94,10 +94,10 @@ Data Catalog に資産を登録した後に、それらが Data Catalog ポー�
 ## <a name="how-do-i-annotate-and-enrich-the-metadata-for-my-registered-data-assets"></a>登録したデータ資産のメタデータに注釈を付け、強化するには、どうするのですか?
 登録した資産にメタデータを指定する最も簡単な方法は、Data Catalog ポータルで資産を選択し、選択したオブジェクトのプロパティ ウィンドウまたはスキーマ ウィンドウで、値を入力することです。
 
-エキスパートやタグなどのいくつかのメタデータは、登録プロセス中に指定することもできます。 Data Catalog 発行サービスで指定した値は、その時点で登録されているすべての資産に適用されます。 ポータルに最近登録されたオブジェクトの追加の注釈を表示するには、Data Catalog 発行アプリケーションの最終画面の [**ポータルの表示**] ボタンをクリックします。
+エキスパートやタグなどのいくつかのメタデータは、登録プロセス中に指定することもできます。 Data Catalog 発行サービスで指定した値は、その時点で登録されているすべての資産に適用されます。 ポータルに最近登録されたオブジェクトの追加の注釈を表示するには、Data Catalog 発行アプリケーションの最終画面の **[ポータルの表示]** ボタンをクリックします。
 
 ## <a name="how-do-i-delete-my-registered-data-objects"></a>登録済みのデータ オブジェクトを削除するにはどうすればよいですか?
-Data Catalog からオブジェクトを削除するには、ポータルでオブジェクトを選択し、[**削除**] ボタンをクリックします。 オブジェクトを削除すると、そのメタデータが Data Catalog から削除されますが、基になるデータ ソースには影響しません。
+Data Catalog からオブジェクトを削除するには、ポータルでオブジェクトを選択し、**[削除]** ボタンをクリックします。 オブジェクトを削除すると、そのメタデータが Data Catalog から削除されますが、基になるデータ ソースには影響しません。
 
 ## <a name="what-is-an-expert"></a>エキスパートとは何ですか?
 エキスパートは、データ オブジェクトに関して、情報に基づいた、ある観点を持つ個人です。 オブジェクトには、複数のエキスパートを指定できます。 エキスパートは、オブジェクトの "所有者" である必要はありませんが、単純に、データをどのように使用でき、使用すべきかを知っている者です。
@@ -121,7 +121,7 @@ Data Catalog は、クラウドとオンプレミスの両方のデータ ソー
 Data Catalog の機能の拡張に積極的に取り組んでいるところです。 登録時にデータ ソースからさらにメタデータを抽出する場合は、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)で、それを提案して (または既に提案されている場合は、賛成票を投じて) ください。 将来、サード パーティが、拡張 API によって、新しいデータ ソースの種類を追加できるようにします。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>特定のユーザーだけが検出できるように、登録されているデータ資産の可視性を制限するにはどうすればいいですか?
-Data Catalog で、データ資産を選択し、[**所有権の取得**] ボタンをクリックします。 Data Catalog のデータ資産の所有者は、可視性設定を変更して、すべてのユーザーが、所有している資産を検出できるようにするか、または特定のユーザーに可視性を制限することができます。
+Data Catalog で、データ資産を選択し、**[所有権の取得]** ボタンをクリックします。 Data Catalog のデータ資産の所有者は、可視性設定を変更して、すべてのユーザーが、所有している資産を検出できるようにするか、または特定のユーザーに可視性を制限することができます。
 
 ## <a name="how-do-i-update-the-registration-for-a-data-asset-so-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>データ ソースの変更がカタログに反映されるように、データ資産の登録を更新するにはどうすればいいですか?
 カタログに既に登録されているデータ資産のメタデータを更新するには、その資産を含むデータ ソースを再登録するだけです。 テーブルまたはビューの列の追加や削除などのデータ ソースのすべての変更は、カタログで更新されますが、ユーザーによって提供されたすべての注釈は維持されます。

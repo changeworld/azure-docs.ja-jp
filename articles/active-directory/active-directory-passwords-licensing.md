@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 5445a479fd6893048eb8ff356fa829a3dcd5f7d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db849cd1e9da634064f79fbc041098542580ad02
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 
@@ -40,7 +40,7 @@ Azure AD のパスワード リセットが機能するには、**組織で少�
 * Microsoft 365 E3
 * Microsoft 365 E5
 
-> [!NOTE]
+> [!WARNING]
 > スタンドアロンの Office 365 ライセンス プランは、**パスワード ライトバックをサポートしていません**。この機能を動作させるには、上記プランのいずれかが必要になります。
 
 追加のライセンス情報 (コストを含む) については、以下のページをご覧ください。
@@ -58,13 +58,14 @@ Azure AD のパスワード リセットが機能するには、**組織で少�
 
 ## <a name="next-steps"></a>次のステップ
 
-次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
-
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフ サービスによるパスワードのリセットの管理を始めることができます。 
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
-* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
+* [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

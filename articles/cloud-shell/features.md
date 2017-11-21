@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Shell (プレビュー) での Bash の機能 | Microsoft Docs"
+title: "Azure Cloud Shell での Bash の機能 | Microsoft Docs"
 description: "Azure Cloud Shell での Bash の機能の概要"
 services: Azure
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: juluk
-ms.openlocfilehash: 23faadc38fde75d4c83361465fdacc76d42d7523
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: f473d45e396c646c8911f4d026aff0f7b97c167e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell での Bash の機能とツール
 

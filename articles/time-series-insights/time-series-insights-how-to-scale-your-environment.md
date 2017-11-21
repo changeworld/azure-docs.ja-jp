@@ -1,32 +1,31 @@
 ---
 title: "Azure Time Series Insights 環境をスケーリングする方法 | Microsoft Docs"
-description: "このチュートリアルでは、Azure Time Series Insights 環境をスケーリングする方法について説明します。"
-keywords: 
+description: "この記事では、Azure Time Series Insights 環境をスケーリングする方法について説明します。 Azure Portal を使用して、価格 SKU 内の容量を追加または減算します。"
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: sandshadow
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 04/19/2017
 ms.author: edett
-ms.openlocfilehash: ba6bd1ab05bb7e24dd1bc307218e7a772fbde601
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: a6f10e14e3f9e5761734738caddc247d9e4a90cd
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
 
-このチュートリアルでは、Time Series Insights 環境をスケーリングする方法について説明します。
+この記事では、Azure Portal を使用して Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。 
 
-> [!NOTE]
-> SKU の種類をまたいでスケールアップすることはできません。 S1 の SKU のある環境を S2 環境に変換することはできません。
+Azure Portal を使用して、容量を特定の価格 SKU 内で増減できます。 
+
+ただし、価格レベル SKU の変更は許可されません。 たとえば、S1 価格の SKU の環境を S2 に変換したり、その逆方向に変換したりすることはできません。 
+
 
 ## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 SKU の受信レートと容量
 
@@ -44,12 +43,20 @@ ms.lasthandoff: 10/11/2017
 
 容量は直線的にスケーリングされるので、容量が 2 の S1 SKU であれば、サポートされるイベント受信レートは 1 日あたり 2 GB (200 万)、1 か月あたり 60 GB (6,000 万イベント) となります。
 
-## <a name="changing-the-capacity-of-your-environment"></a>環境の容量を変更する
+## <a name="change-the-capacity-of-your-environment"></a>環境の容量を変更する
+1. Azure Portal で Time Series Insights 環境を見つけて選択します。 
 
-1. Azure Portal で、容量を変更する環境を選択します。
-1. [設定] で [構成] をクリックします。
-1. 容量のスライダーを使用して、受信レートとストレージ容量の要件を満たす容量を選択します。
+2. **[設定]** という見出しの **[構成]** を選択します。
+
+   ![configure.png](media/scale-your-environment/configure.png)
+
+3. **容量**のスライダーを調整して、受信レートとストレージ容量の要件を満たす容量を選択します。 受信レート、ストレージの容量、およびコストの見積もりが動的に更新されて変化の影響が示されることに注目してください。 
+
+   ![スライダー](media/scale-your-environment/slider.png)
+
+   または、スライダーの右側にあるテキスト ボックスに、容量の乗数の数を入力することもできます。 
+
+4. **[保存]** を選択して環境をスケーリングします。 変更がコミットされるまで、一時的に進行状況のインジケーターが表示されます。 
 
 ## <a name="next-steps"></a>次のステップ
-
-* 新しい容量が、スロットルを防止するのに十分であることを確認します。 詳細については、[こちら](time-series-insights-diagnose-and-solve-problems.md)の「*Your environment might be getting throttled (環境がスロットルされている可能性がある)*」セクションを参照してください。
+新しい容量が、スロットルを防止するのに十分であることを確認します。 詳細については、[環境がスロットルされているかどうか](time-series-insights-diagnose-and-solve-problems.md)に関する記事を参照してください。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 278aa67013eb2cabcf5efa7e0de21e9cff0519ba
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 00fc998666574f0b85b968cba174d328a300e861
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Azure AD での特権アクセスのセキュリティ保護
 現代の組織にとって特権アクセスのセキュリティ保護は、ビジネス資産を保護するうえで重要な最初のステップです。 特権アカウントとは、IT システムを管理するアカウントです。 サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。 特権アクセスを保護するには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
@@ -66,7 +66,7 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 * [Azure Multi-Factor Authentication](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md) の有効化
 * [Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) の有効化
 * [Azure AD Identity Protection](../active-directory-identityprotection.md) の有効化
-* [条件付きアクセス制御](../active-directory-conditional-access.md)の有効化
+* [条件付きアクセス制御](../active-directory-conditional-access-azure-portal.md)の有効化
 
 包括的なセキュリティ ロードマップの構築に関する詳細については、ドキュメント「 [Microsoft Cloud Security for Enterprise Architects (エンタープライズ アーキテクト向けの Microsoft クラウド セキュリティ)](http://aka.ms/securecustomer) 」の「Customer responsibilities and roadmap (お客様の責任範囲とロードマップ)」のセクションを参照してください。 Microsoft サービスと連携して、これらのトピックについて支援を受ける方法の詳細については、Microsoft の担当者に問い合わせていただくか、 [サイバーセキュリティ ソリューションに関するページ](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)を参照してください。
 

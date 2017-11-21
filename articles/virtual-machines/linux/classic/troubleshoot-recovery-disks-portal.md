@@ -11,15 +11,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/21/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 15f55995177f743b58c1ab8fd5c628b9001da7fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b4ffe51a570c7cdf58a427b6c7e4271d8c6b283
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="troubleshoot-a-linux-classic-vm-by-attaching-the-os-disk-to-a-recovery-vm"></a>OS ディスクを復旧 VM に接続して Linux クラシック VM のトラブルシューティングを行う
+
+> [!IMPORTANT] 
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 [!INCLUDE [virtual-machines-classic-recovery-disks-portal](../../../../includes/virtual-machines-classic-recovery-disks-portal.md)]
 

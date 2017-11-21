@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags: clicktale
-ms.openlocfilehash: 1cce8a0c31a7bb7e4c6e228261b27244a762b441
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 33fa9122eff29b15943c47b0c690cd3fe8244550
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -300,9 +300,9 @@ ms.lasthandoff: 11/01/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/container-service/">
+                                            <a href="/azure/aks/">
                                                 <img src="media/index/containerservice.svg" alt="" />
-                                                <p>Azure Container Service</p>
+                                                <p>Azure Container Service (AKS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -314,8 +314,7 @@ ms.lasthandoff: 11/01/2017
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>Batch
-</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                         <li>
@@ -385,9 +384,9 @@ ms.lasthandoff: 11/01/2017
                                     <h3>コンテナー</h3>
                                     <ul>
                                         <li>
-                                            <a href="/azure/container-service/">
+                                            <a href="/azure/aks/">
                                                 <img src="media/index/ContainerService.svg" alt="" />
-                                                <p>Azure Container Service</p>
+                                                <p>Azure Container Service (AKS)</p>
                                             </a>
                                         </li>
                                         <li>
@@ -417,8 +416,7 @@ ms.lasthandoff: 11/01/2017
                                         <li>
                                             <a href="/azure/batch/">
                                                 <img src="media/index/Batch.svg" alt="" />
-                                                <p>Batch
-</p>
+                                                <p>Batch</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -649,7 +647,7 @@ ms.lasthandoff: 11/01/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/luis/home">
+                                            <a href="/azure/cognitive-services/luis/">
                                                 <img src="media/index/API_Luis.svg" alt="" />
                                                 <p>Language Understanding Intelligent Services (LUIS)</p>
                                             </a>
@@ -691,7 +689,7 @@ ms.lasthandoff: 11/01/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/Bing-Video-Search/search-the-web">
+                                            <a href="/azure/cognitive-services/Bing-Video-Search/">
                                                 <img src="media/index/API_Bing_Video_Search.svg" alt="" />
                                                 <p>Bing Video Search</p>
                                             </a>
@@ -848,6 +846,12 @@ ms.lasthandoff: 11/01/2017
                                             <a href="/azure/hdinsight/">
                                                 <img src="media/index/HDInsight.svg" alt="" />
                                                 <p>HDInsight</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/azure-databricks/">
+                                                <img src="media/index/logo_databricks.svg" alt="" />
+                                                <p>Azure Databricks</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1093,7 +1097,7 @@ ms.lasthandoff: 11/01/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://azure.microsoft.com/en-us/develop/identity">
+                                            <a href="/azure/active-directory/develop">
                                                 <img src="media/index/ActiveDirectory.svg" alt="" />
                                                 <p>開発者のための Azure Active Directory</p>
                                             </a>
@@ -1344,7 +1348,7 @@ ms.lasthandoff: 11/01/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/container-service/">
+                                <a href="/azure/aks/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -1354,8 +1358,8 @@ ms.lasthandoff: 11/01/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Container Service</h3>
-                                                    <p>Kubernetes、DC/OS、または Docker Swarm を使用したコンテナーのスケーリングと調整</p>
+                                                    <h3>Azure Container Service (AKS)</h3>
+                                                    <p>Kubernetes を使用してコンテナー化されたアプリケーションを大規模に実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1392,8 +1396,7 @@ ms.lasthandoff: 11/01/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Batch
-</h3>
+                                                    <h3>Batch</h3>
                                                     <p>クラウド規模のジョブ スケジュール設定とコンピューティング管理</p>
                                                 </div>
                                             </div>
@@ -1698,7 +1701,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/virtual-machines/windows/managed-disks-overview">
+                                <a href="/azure/virtual-machines/windows/about-disks-and-vhds">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2012,7 +2015,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                         <a href="#containers">コンテナー</a>
                         <ul id="containers" class="cardsA">
                             <li>
-                                <a href="/azure/container-service/">
+                                <a href="/azure/aks/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2022,8 +2025,8 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Container Service</h3>
-                                                    <p>Kubernetes、DC/OS、または Docker Swarm を使用したコンテナーのスケーリングと調整</p>
+                                                    <h3>Azure Container Service (AKS)</h3>
+                                                    <p>Kubernetes を使用してコンテナー化されたアプリケーションを大規模に実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2117,8 +2120,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Batch
-</h3>
+                                                    <h3>Batch</h3>
                                                     <p>クラウド規模のジョブ スケジュール設定とコンピューティング管理</p>
                                                 </div>
                                             </div>
@@ -2307,6 +2309,25 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/azure-databricks/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_databricks.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Databricks</h3>
+                                                    <p>Spark クラスターで Azure Databricks ワークスペースを作成</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>   
                             <li>
                                 <a href="/azure/stream-analytics/">
                                     <div class="cardSize">
@@ -2632,7 +2653,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="media/index/API_Bing_Spell_Check.svg" alt="" />Bing Spell Check</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/luis/home"><img src="media/index/API_Luis.svg" alt="" /><span>Language Understanding Intelligent Services (LUIS)&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/luis/"><img src="media/index/API_Luis.svg" alt="" /><span>Language Understanding Intelligent Services (LUIS)&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/linguisticanalysisapi/home"><img src="media/index/API_LinguisticAnalysis.svg" alt="" /><span>Linguistic Analysis&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
@@ -2694,7 +2715,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-news-search/search-the-web"><img src="media/index/API_Bing_News_Search.svg" alt="" />Bing News</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/search-the-web"><img src="media/index/API_Bing_Video_Search.svg" alt="" />Bing Video Search</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/"><img src="media/index/API_Bing_Video_Search.svg" alt="" />Bing Video Search</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="media/index/API_Bing_Web_Search.svg" alt="" />Bing Web Search</a>
@@ -3164,7 +3185,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>開発者のための Azure Active Directory</h3>
-                                                    <p>モバイル アプリや Web サイトで使用できるスケーラブルなクロス プラットフォーム認証</p>
+                                                    <p>Web、モバイル、バックエンドの API 用のセキュリティで保護されたクロスプラットフォーム認証</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,5 +1,5 @@
 ---
-title: "Azure Relay を使用した Service Bus REST チュートリアル | Microsoft Docs"
+title: "Azure Relay を使用した REST のチュートリアル | Microsoft Docs"
 description: "REST ベースのインターフェイスを表示する簡易な Azure Service Bus Relay ホスト アプリケーションを構築します。"
 services: service-bus-relay
 documentationcenter: na
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2017
+ms.date: 11/06/2017
 ms.author: sethm
-ms.openlocfilehash: 0db9dbd2d2743907e3f0b259228201d4f5d0c3c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a5a2916514a125d0b7443ced42e5ec600c68857
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF Relay REST のチュートリアル
 
 このチュートリアルでは、REST ベースのインターフェイスを表示する簡易な Azure Relay ホスト アプリケーションを構築する方法について説明します。 REST を使用すると、Web ブラウザーなどの Web クライアントから HTTP 要求を介して Service Bus API にアクセスできるようになります。
 
-本チュートリアルでは、Windows Communication Foundation (WCF) REST プログラミング モデルを使用して、Service Bus に REST サービスを構築します。 詳細については、WCF ドキュメントの[「WCF Web HTTP プログラミング モデル」](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model)と [「サービスの設計と実装」](/dotnet/framework/wcf/designing-and-implementing-services) を参照してください。
+本チュートリアルでは、Windows Communication Foundation (WCF) REST プログラミング モデルを使用して、Azure Relay に REST サービスを構築します。 詳細については、WCF ドキュメントの[「WCF Web HTTP プログラミング モデル」](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model)と [「サービスの設計と実装」](/dotnet/framework/wcf/designing-and-implementing-services) を参照してください。
 
 ## <a name="step-1-create-a-namespace"></a>手順 1: 名前空間を作成する
 
@@ -32,9 +32,9 @@ Azure で Relay 機能を使用するには、最初にサービス名前空間�
 
 ## <a name="step-2-define-a-rest-based-wcf-service-contract-to-use-with-azure-relay"></a>手順 2: Azure Relay で使用する REST ベースの WCF サービス コントラクトを定義する
 
-WCF REST スタイルのサービスを作成するには、コントラクトを定義する必要があります。 コントラクトには、ホストがサポートする操作を指定します。 サービス操作は、Web サービス メソッドと考えることができます。 コントラクトを作成するには、C++、C#、または Visual Basic インターフェイスを定義します。 インターフェイスの各メソッドは、特定のサービス操作に対応しています。 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) 属性を各インターフェイスに適用する必要があります。また、[OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) 属性を各操作に適用する必要があります。 [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) があるインターフェイスのメソッドに [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) がない場合、そのメソッドは公開されません。 これらのタスクに使用されるコードの例を手順に従って説明します。
+WCF REST スタイルのサービスを作成するには、コントラクトを定義する必要があります。 コントラクトには、ホストがサポートする操作を指定します。 サービス操作は、Web サービス メソッドと考えることができます。 コントラクトを作成するには、C++、C#、または Visual Basic インターフェイスを定義します。 インターフェイスの各メソッドは、特定のサービス操作に対応しています。 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) 属性を各インターフェイスに適用する必要があります。また、[OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) 属性を各操作に適用する必要があります。 [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) があるインターフェイスのメソッドに [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) がない場合、そのメソッドは公開されません。 これらのタスクに使用されるコードの例を手順に従って説明します。
 
-WCF コントラクトと REST スタイルのコントラクトの主な違いは、REST スタイルの [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) にはプロパティ [WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) がある点です。 このプロパティを使用すると、インターフェイス内のメソッドを相手側のインターフェイスのメソッドにマップすることができます。 ここでは、[WebGetAttribute](https://msdn.microsoft.com/library/system.servicemodel.web.webgetattribute.aspx) を使用してメソッドを HTTP GET にリンクします。 その結果、Service Bus は、インターフェイスに送信されたコマンドをより正確に取得および解釈できるようになります。
+WCF コントラクトと REST スタイルのコントラクトの主な違いは、REST スタイルの [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) にはプロパティ [WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) がある点です。 このプロパティを使用すると、インターフェイス内のメソッドを相手側のインターフェイスのメソッドにマップすることができます。 この例では、[WebGetAttribute](/dotnet/api/system.servicemodel.web.webgetattribute) 属性を使用してメソッドを HTTP GET にリンクします。 その結果、Service Bus は、インターフェイスに送信されたコマンドをより正確に取得および解釈できるようになります。
 
 ### <a name="to-create-a-contract-with-an-interface"></a>インターフェイスを使用してコントラクトを作成するには
 
@@ -56,7 +56,7 @@ WCF コントラクトと REST スタイルのコントラクトの主な違い�
     using System.IO;
     ```
    
-    [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできる名前空間です。 WCF Relay は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。 ほとんどの場合、Relay アプリケーションにはこの名前空間を使用することになります。 同様に、[System.ServiceModel.Channels](https://msdn.microsoft.com/library/system.servicemodel.channels.aspx) はチャネルの定義に役立ちます。チャネルは、Azure Relay とクライアント Web ブラウザーとの通信を経由するオブジェクトです。 最後に、[System.ServiceModel.Web](https://msdn.microsoft.com/library/system.servicemodel.web.aspx) には、Web ベースのアプリケーションを作成できる型が含まれています。
+    [System.ServiceModel](/dotnet/api/system.servicemodel) は、WCF の基本機能にプログラムでアクセスできる名前空間です。 WCF Relay は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。 ほとんどの Relay アプリケーションで、この名前空間を使用します。 同様に、[System.ServiceModel.Channels](/dotnet/api/system.servicemodel.channels) はチャネルの定義に役立ちます。チャネルは、Azure Relay とクライアント Web ブラウザーとの通信を経由するオブジェクトです。 最後に、[System.ServiceModel.Web](/dotnet/api/system.servicemodel.web) には、Web ベースのアプリケーションを作成できる型が含まれています。
 7. `ImageListener`名前空間の名前を **Microsoft.ServiceBus.Samples** に変更します。
    
     ```csharp
@@ -98,7 +98,7 @@ WCF コントラクトと REST スタイルのコントラクトの主な違い�
     public interface IImageChannel : IImageContract, IClientChannel { }
     ```
     
-    チャネルは、サービスとクライアントが相互に情報を渡すときに経由する WCF オブジェクトです。 後述の手順でホスト アプリケーションでチャネルを作成します。 Azure Relay は、ブラウザーからの HTTP GET 要求を **GetImage** 実装に渡すために、このチャネルを使用します。 また、**GetImage** の戻り値を取得して、クライアント ブラウザーの HTTP GETRESPONSE に変換するためにも、このチャネルを使用します。
+    チャネルは、サービスとクライアントが相互に情報を渡すときに経由する WCF オブジェクトです。 後で、ホスト アプリケーションでチャネルを作成します。 Azure Relay は、ブラウザーからの HTTP GET 要求を **GetImage** 実装に渡すために、このチャネルを使用します。 また、**GetImage** の戻り値を取得して、クライアント ブラウザーの HTTP GETRESPONSE に変換するためにも、このチャネルを使用します。
 12. **[ビルド]** メニューの **[ソリューションのビルド]** をクリックして、ここまでの作業に問題がないことを確認します。
 
 ### <a name="example"></a>例
@@ -149,7 +149,7 @@ REST スタイルの WCF Relay サービスを作成するには、まずコン�
     }
     ```
     他のインターフェイス実装と同様に、別のファイルに指定した定義を実装することができます。 ただし、このチュートリアルでは、インターフェイス定義や `Main()` メソッドと同じファイルで実装します。
-2. [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) 属性を **IImageService** クラスに適用して、クラスが WCF コントラクトの実装であることを示します。
+2. [ServiceBehaviorAttribute](/dotnet/api/system.servicemodel.servicebehaviorattribute) 属性を **IImageService** クラスに適用して、クラスが WCF コントラクトの実装であることを示します。
    
     ```csharp
     [ServiceBehavior(Name = "ImageService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -158,12 +158,12 @@ REST スタイルの WCF Relay サービスを作成するには、まずコン�
     }
     ```
    
-    既に説明したように、この名前空間は従来の名前空間ではありません。 この名前空間は、コントラクトを特定する WCF アーキテクチャの一部です。 詳細については、WCF ドキュメントの [「データ コントラクト名」](https://msdn.microsoft.com/library/ms731045.aspx) をご覧ください。
+    既に説明したように、この名前空間は従来の名前空間ではありません。 この名前空間は、コントラクトを特定する WCF アーキテクチャの一部です。 詳細については、WCF ドキュメントの記事「[データ コントラクト名](https://msdn.microsoft.com/library/ms731045.aspx)」を参照してください。
 3. .jpg 画像をプロジェクトに追加します。  
    
     これは、サービスが受信側ブラウザーに表示する画像です。 プロジェクトを右クリックし、**[追加]** をクリックします。 **[既存の項目]** をクリックします。 **[既存項目の追加]** ダイアログ ボックスで、使用する .jpg を参照して選択し、**[追加]** をクリックします。
    
-    ファイルを追加するときに、**[ファイル名:]** フィールドの横にあるドロップダウン リストで **[すべてのファイル]** が選択されていることを確認します。 以降、このチュートリアルでは、画像名が "image.jpg" という前提で説明します。 別のファイルを使用する場合は、画像のファイル名を変更するか、ファイル名に合わせてコードを変更します。
+    ファイルを追加するときに、**[ファイル名:]** フィールドの横にあるドロップダウン リストで **[すべてのファイル]** が選択されていることを確認します。 以降、このチュートリアルでは、画像名が "image.jpg" という前提で説明します。 別のファイルを使用する場合は、画像のファイル名を変更するか、ファイル名に合わせてコードを変更する必要があります。
 4. 実行中のサービスから画像ファイルを検出できるようにするには、**ソリューション エクスプローラー**で画像ファイルを右クリックし、**[プロパティ]** をクリックします。 **[プロパティ]** ウィンドウの **[出力ディレクトリにコピー]** を **[新しい場合はコピーする]** に設定します。
 5. **System.Drawing.dll** アセンブリへの参照をプロジェクトに追加し、次の関連する `using` ステートメントも追加します。  
    
@@ -558,7 +558,7 @@ namespace Microsoft.ServiceBus.Samples
 3. 完了したら、コマンド プロンプト ウィンドウで **Enter** キーを押して、アプリを閉じます。
 
 ## <a name="next-steps"></a>次のステップ
-ここでは、Service Bus Relay サービスを使用するアプリケーションを構築しました。Azure Relay の詳細については、次の記事を参照してください。
+ここでは、Azure Relay サービスを使用するアプリケーションを構築しました。詳細については、次の記事を参照してください。
 
 * [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * [Azure Relay の概要](relay-what-is-it.md)

@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
-ms.openlocfilehash: 8118570071aa5af6ec74c971a711b2eab07fb1b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0f89f98c26b80e8b71c58fc89ea7ecebe734f71
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする
 
@@ -76,13 +76,13 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 | クラスターの種類 | 機能 |
 | --- | --- |
-| [Hadoop](hdinsight-hadoop-introduction.md) |格納されたデータのバッチ クエリとバッチ分析 |
-| [HBase](hdinsight-hbase-overview.md) |大量のスキーマレス NoSQL データの処理 |
-| [Storm](hdinsight-storm-overview.md) |リアルタイム イベント処理 |
-| [Spark](hdinsight-apache-spark-overview.md) |メモリ内処理、対話型クエリ、マイクロバッチ ストリーム処理 |
-| [Kafka (プレビュー)](hdinsight-apache-kafka-introduction.md) | リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できる分散ストリーム プラットフォーム |
-| [R Server](hdinsight-hadoop-r-server-overview.md) |さまざまなビッグ データ統計、予測モデリング、機械学習の機能 |
-| [Interactive Query](hdinsight-hadoop-use-interactive-hive.md) |対話型で高速な Hive クエリのメモリ内キャッシュ |
+| [Hadoop](hadoop/apache-hadoop-introduction.md) |格納されたデータのバッチ クエリとバッチ分析 |
+| [HBase](hbase/apache-hbase-overview.md) |大量のスキーマレス NoSQL データの処理 |
+| [Storm](storm/apache-storm-overview.md) |リアルタイム イベント処理 |
+| [Spark](spark/apache-spark-overview.md) |メモリ内処理、対話型クエリ、マイクロバッチ ストリーム処理 |
+| [Kafka (プレビュー)](kafka/apache-kafka-introduction.md) | リアルタイムのストリーミング データ パイプラインとアプリケーションの構築に使用できる分散ストリーム プラットフォーム |
+| [R Server](r-server/r-server-overview.md) |さまざまなビッグ データ統計、予測モデリング、機械学習の機能 |
+| [Interactive Query](./interactive-query/apache-interactive-query-get-started.md) |対話型で高速な Hive クエリのメモリ内キャッシュ |
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>各クラスターの種類のノード数
 クラスターのノード数、ノードを表す用語、既定の VM サイズは、クラスターの種類によって異なります。 次の表では、各ノードの種類のノード数がかっこ内に示されています。
@@ -208,7 +208,7 @@ HDInsight のアプリケーションのほとんどは、空のエッジ ノー
 
 追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。 このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
-Mahout や Cascading などの一部のネイティブ Java コンポーネントは、Java アーカイブ (JAR) ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure Storage に分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳細については、 [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。
+Mahout や Cascading などの一部のネイティブ Java コンポーネントは、Java アーカイブ (JAR) ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure Storage に分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳細については、 [プログラムによる Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページを参照してください。
 
 > [!NOTE]
 > HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
@@ -242,7 +242,7 @@ Mahout や Cascading などの一部のネイティブ Java コンポーネン�
 
 Azure の仮想ネットワークの HDInsight との併用の詳細については、[Azure の仮想ネットワークを使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するページをご覧ください。
 
-Azure の仮想ネットワーク内で 2 つのクラスターの種類を使用した例の詳細については、[Storm と HBase を使用したセンサー データの分析](hdinsight-storm-sensor-data-analysis.md)に関するページをご覧ください。 仮想ネットワークの具体的な構成要件など、仮想ネットワークで HDInsight を使用する方法の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
+Azure の仮想ネットワーク内で 2 つのクラスターの種類を使用した例の詳細については、[Storm と HBase を使用したセンサー データの分析](storm/apache-storm-sensor-data-analysis.md)に関するページをご覧ください。 仮想ネットワークの具体的な構成要件など、仮想ネットワークで HDInsight を使用する方法の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
 ## <a name="troubleshoot-access-control-issues"></a>アクセス制御に関する問題のトラブルシューティング
 
@@ -250,6 +250,6 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 ## <a name="next-steps"></a>次のステップ
 
-- [HDInsight、Hadoop エコシステム、Hadoop クラスターの概要](hdinsight-hadoop-introduction.md)
-- [HDInsight での Hadoop の使用](hdinsight-hadoop-linux-tutorial-get-started.md)
+- [HDInsight、Hadoop エコシステム、Hadoop クラスターの概要](hadoop/apache-hadoop-introduction.md)
+- [HDInsight での Hadoop の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 - [Windows PC から HDInsight の Hadoop で作業する](hdinsight-hadoop-windows-tools.md)

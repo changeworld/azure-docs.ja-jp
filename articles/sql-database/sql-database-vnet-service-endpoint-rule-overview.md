@@ -13,20 +13,27 @@ ms.custom: VNet Service endpoints
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 10/13/2017
+ms.workload: On Demand
+ms.date: 11/13/2017
 ms.author: genemi
-ms.openlocfilehash: b15727ae6c7b4d0f1595d506cb8d0f66ec3abfe4
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: e1bb3e9f09ca7f5463228da4079b06ad2e771def
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
 *仮想ネットワーク規則*は、Azure SQL Database サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database への通信を安全に許可するための最善の選択になる理由を説明します。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
+
+
+> [!NOTE]
+> Azure SQL Database の場合、この機能は次の Azure リージョンのプレビューで利用できます。
+>
+> - WestCentralUS、WestUS2、および EastUS。
+
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>仮想ネットワーク規則の作成方法
 
@@ -134,6 +141,9 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 - 各 Azure SQL Database サーバーは、指定された仮想ネットワークに対して最大 128 個までの ACL エントリを保持できます。
 
 - 仮想ネットワーク規則は[従来のデプロイメント モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
+
+- Azure SQL Database に対する仮想ネットワーク サービス エンドポイントをオンにすると、MySQL および PostGres Azure サービスに対してもエンドポイントが有効になります。 ただし、エンドポイントをオンにすると、エンドポイントから MySQL または Postgres のインスタンスへの接続の試行は失敗します。
+    - 根本的な理由は、MySQL と Postgres が現在は ACL 処理をサポートしていないためです。
 
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
     - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]

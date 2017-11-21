@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2017
+ms.date: 11/02/2017
 ms.author: ryanwi
-ms.openlocfilehash: b3bab57f5ca6627b4532284376a9809d5ab543f2
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 31e35432ecc10b06c7a6400a1e0904e7bc2cd8c9
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Service Fabric Windows クラスターをデプロイする
 このチュートリアルは、シリーズの第 1 部です。 PowerShell を使用して Windows Service Fabric クラスターを既存の Azure 仮想ネットワーク (VNET) とサブネットにデプロイする方法を学習します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。  Azure CLI を使用して Linux クラスターを作成する場合は、[Azure でのセキュリティで保護された Linux クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページを参照してください。
@@ -78,44 +78,51 @@ New-AzureRmResourceGroup -Name $groupname -Location $clusterloc
 次の PowerShell コマンドを使用して、ネットワーク設定用の Resource Manager テンプレートとパラメーター ファイルをデプロイします。
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile .\network.json -TemplateParameterFile .\network.parameters.json -Verbose
+New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile C:\winclustertutorial\network.json -TemplateParameterFile C:\winclustertutorial\network.parameters.json -Verbose
 ```
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
 ## <a name="deploy-the-service-fabric-cluster"></a>Service Fabric クラスターをデプロイする
-ネットワーク リソースのデプロイが完了したら、次は Service Fabric クラスターを VNET の所定のサブネットと NSG にデプロイします。 既存の VNET とサブネットにクラスターをデプロイするには (この記事では既にデプロイ済み)、Resource Manager テンプレートが必要です。  詳細については、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)」を参照してください。 このチュートリアル シリーズで使用するテンプレートは、前の手順で設定した VNET、サブネット、NSG の名前を使用するようあらかじめ構成されています。  次の Resource Manager テンプレートとパラメーター ファイルをダウンロードします。
+ネットワーク リソースのデプロイが完了したら、次は Service Fabric クラスターを VNET の所定のサブネットと NSG にデプロイします。 既存の VNET とサブネットにクラスターをデプロイするには (この記事では既にデプロイ済み)、Resource Manager テンプレートが必要です。  このチュートリアル シリーズで使用するテンプレートは、前の手順で設定した VNET、サブネット、NSG の名前を使用するようあらかじめ構成されています。  
+
+次の Resource Manager テンプレートとパラメーター ファイルをダウンロードします。
 - [cluster.json][cluster-arm]
 - [cluster.parameters.json][cluster-parameters-arm]
 
-証明書は、クラスターのノード間通信を保護し、Service Fabric クラスターへのユーザー アクセスを管理するために使用されます。 また、API Management がサービスを検出するために Service Fabric Naming Service にアクセスする場合にも、この証明書が使用されます。 
+セキュリティで保護されたクラスターを作成するには、このテンプレートを使用します。  クラスター証明書は、ノード間通信のセキュリティ保護と、クラスター管理エンドポイントの管理クライアントへの認証に使用される X.509 証明書です。  このクラスター証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対しても SSL を提供します。 Azure Key Vault を使用して、Azure で Service Fabric クラスター用の証明書を管理します。  Azure にクラスターがデプロイされると、Service Fabric クラスターの作成担当 Azure リソース プロバイダーにより Key Vault から証明書が取得されてクラスター VM にインストールされます。 
 
-次のスクリプトでは、[New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) コマンドレットを使用して Azure に新しいクラスターをデプロイします。 また、Azure にキー コンテナーを作成し、自己署名証明書とキー コンテナーを作成し、その証明書ファイルをローカルにダウンロードします。   
+証明書機関 (CA) からの証明書をクラスター証明書として使用したり、テストを目的として自己署名証明書を作成したりできます。 クラスター証明書には、次の要件があります。
+
+- 秘密キーが含まれている。
+- キー交換のために作成されており、Personal Information Exchange (.pfx) ファイルにエクスポートできる。
+- 保持しているサブジェクト名が、Service Fabric クラスターへのアクセスに使用されるドメインと一致している。 この整合性は、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 証明機関 (CA) から .cloudapp.azure.com ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
+
+次のように、デプロイ用の *cluster.parameters.json* ファイルにある空のパラメーターに値を入力します。
+
+|パラメーター|値|
+|---|---|
+|adminPassword|Password#1234|
+|adminUserName|vmadmin|
+|clusterName|mysfcluster|
+|location|southcentralus|
+
+自己署名証明書を作成するには、*certificateThumbprint*、*certificateUrlValue*、および *sourceVaultValue* パラメーターは空白のままにします。  以前に Key Vault にアップロードした既存の証明書を使用する場合、これらのパラメーター値を入力します。
+
+次のスクリプトでは、[New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) コマンドレットとテンプレートを使用して Azure に新しいクラスターをデプロイします。 また、コマンドレットでは、Azure に新しい Key Vault を作成し、新しい自己署名証明書をその Key Vault に追加し、証明書ファイルをローカルにダウンロードします。 [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) コマンドレットの他のパラメーターを使用して、既存の証明書と Key Vault の両方またはいずれかを指定できます。
 
 ```powershell
-# Certificate variables.
+# Variables.
 $certpwd="q6D7nN%6ck@6" | ConvertTo-SecureString -AsPlainText -Force
 $certfolder="c:\mycertificates\"
-
-# Variables for VM admin.
-$adminuser="vmadmin"
-$adminpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
-
-# Variables for common values
 $clustername = "mysfcluster"
-$vmsku = "Standard_D2_v2"
-$vaultname = "clusterkeyvault"
-$vaultgroupname="clusterkeyvaultgroup"
+$vaultname = "clusterkeyvault111"
+$vaultgroupname="clusterkeyvaultgroup111"
 $subname="$clustername.$clusterloc.cloudapp.azure.com"
 
-# Set the number of cluster nodes. Possible values: 1, 3-99
-$clustersize=5 
-
 # Create the Service Fabric cluster.
-New-AzureRmServiceFabricCluster -Name $clustername -ResourceGroupName $groupname -Location $clusterloc `
--ClusterSize $clustersize -VmUserName $adminuser -VmPassword $adminpwd -CertificateSubjectName $subname `
--CertificatePassword $certpwd -CertificateOutputFolder $certfolder `
--OS WindowsServer2016DatacenterwithContainers -VmSku $vmsku -KeyVaultName $vaultname -KeyVaultResouceGroupName $vaultgroupname `
--TemplateFile .\cluster.json -ParameterFile .\cluster.parameters.json
+New-AzureRmServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile 'C:\winclustertutorial\cluster.json' `
+-ParameterFile 'C:\winclustertutorial\cluster.parameters.json' -CertificatePassword $certpwd `
+-CertificateOutputFolder $certfolder -KeyVaultName $vaultname -KeyVaultResouceGroupName $vaultgroupname -CertificateSubjectName $subname
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>セキュリティで保護されたクラスターに接続する
@@ -167,9 +174,9 @@ Remove-AzureRmResourceGroup -Name $vaultgroupname -Force
 > * PowerShell を使用してクラスターに接続する
 > * クラスターの削除
 
-次のチュートリアルでは、Service Fabric を使用して API Management をデプロイする方法について説明します。
+次のチュートリアルでは、お使いのクラスターを拡大/縮小する方法について説明します。
 > [!div class="nextstepaction"]
-> [API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
+> [クラスターを拡大/縮小する](service-fabric-tutorial-scale-cluster.md)
 
 
 [network-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/network.json

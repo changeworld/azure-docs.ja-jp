@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
-ms.openlocfilehash: 65a149b0d291bc650e0937c7ef3f90600f54c669
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 723bd7135a59bcc0bce648460f871a841a684d3c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Azure Multi-Factor Authentication の設定を構成する - パブリック プレビュー
 
@@ -29,6 +29,7 @@ ms.lasthandoff: 10/17/2017
 
 | 機能 | Description | 
 |:--- |:--- |
+| [ユーザーのブロック/ブロック解除](#block/unblock-users) |ユーザーのブロック/ブロック解除では、ユーザーが認証要求を受信できないように設定できます。 |
 | [不正アクセスのアラート](#fraud-alert) |ユーザーが各自のリソースに対する不正アクセスを通報できるように、不正アクセスのアラートを構成して設定できます。 |
 | [ワンタイム バイパス](#one-time-bypass) |ワンタイム バイパスは、多要素認証を "バイパス" することによって、ユーザーを 1 回だけ認証できます。 |
 | [カスタム音声メッセージ](#custom-voice-messages) |カスタム音声メッセージは、独自の録音やあいさつを多要素認証で使用できるようにします。 |
@@ -37,6 +38,23 @@ ms.lasthandoff: 10/17/2017
 | [アプリ パスワード](#app-passwords) |アプリ パスワードは、MFA を認識しないアプリケーションが多要素認証をバイパスして動作を続行できるようにします。 |
 | [記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の記憶](#remember-multi-factor-authentication-for-devices-that-users-trust) |ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、デバイスを記憶させることができます。 |
 | [選択可能な検証方法](#selectable-verification-methods) |ユーザーが使用できる認証方法を選択できます。 |
+
+## <a name="blockunblock-users"></a>ユーザーのブロック/ブロック解除
+ユーザーのブロック/ブロック解除は、ユーザーが認証要求を受信できないようにする場合に使用できます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ブロックされているユーザーは、ブロックされた時間から 90 日間ブロックされ続けます。
+
+### <a name="block-a-user"></a>ユーザーのブロック
+1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
+2. **[Azure Active Directory]** > **[MFA Server]** > **[ユーザーのブロック/ブロック解除]** に移動します。
+3. **[追加]** をクリックしてユーザーをブロックします。
+4. **[レプリケーション グループ]** を選択し、ブロックされたユーザー名を **username@domain.com** として入力し、**[理由]** フィールドにコメントを入力します。
+5. **[追加]** をクリックしてユーザーのブロックを終了します。
+
+### <a name="unblock-a-user"></a>ユーザーのブロック解除
+1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
+2. **[Azure Active Directory]** > **[MFA Server]** > **[ユーザーのブロック/ブロック解除]** に移動します。
+3. **[アクション]** 列で、ブロック解除するユーザーの横にある **[ブロック解除]** をクリックします。
+4. **[Reason for unblocking](ブロック解除の理由)** フィールドにコメントを入力します。
+5. **[ブロック解除]** をクリックして、ユーザーのブロック解除を終了します。
 
 ## <a name="fraud-alert"></a>不正アクセスのアラート
 ユーザーが各自のリソースに対する不正アクセスを通報できるように、不正アクセスのアラートを構成して設定できます。  ユーザーは、不正アクセスを、モバイル アプリまたは電話で通報できます。
@@ -48,7 +66,7 @@ ms.lasthandoff: 10/17/2017
    ![不正アクセスのアラート](./media/multi-factor-authentication-whats-next/fraudalert.png)
 
 3. **[ユーザーが不正アクセスを通報できるようにする]** を**オン**にします。
-4. [ **保存**] を選択します。
+4. **[ 保存]** を選択します。
 
 ### <a name="configuration-options"></a>構成オプション
 
@@ -160,7 +178,10 @@ ms.lasthandoff: 10/17/2017
 5. Multi-Factor Authentication の **[サービス設定の管理]** を選択します。
 6. [サービス設定] ページの [信頼できる IP] には、次の 2 つのオプションがあります。
    
-   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。
+   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 AD FS で "c:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);" という規則を作成する必要があります (まだ存在しない場合)。
+
+
+
    * **特定範囲の IP から送信されたリクエストの場合** - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。 例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。 最大で 50 の IP アドレス範囲を入力できます。 これらの IP アドレスからサインインしているユーザーは、2 段階認証をバイパスします。
 7. **[保存]**をクリックします。
 8. 更新が適用されたら、**[閉じる]** をクリックします。

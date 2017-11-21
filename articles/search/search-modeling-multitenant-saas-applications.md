@@ -13,11 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2016
 ms.author: ashmaka
-ms.openlocfilehash: fd1b0c7cc8210d27fdc500bf4e5641bedfe93cff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33897e7966de5d467602f6cb36fe16caf0786ffd
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>マルチテナント SaaS アプリケーションと Azure Search の設計パターン
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。
@@ -44,7 +44,7 @@ Azure Search には数種類の[価格レベル](https://azure.microsoft.com/pri
 |  | 基本 | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | サービスあたりの最大レプリカ数 |3 |12 |12 |12 |12 |
-| サービスあたりの最大パーティション数 |1 |12 |12 |12 |1 |
+| サービスあたりの最大パーティション数 |1 |12 |12 |12 |3 |
 | サービスあたりの最大検索ユニット数 (レプリカ * パーティション) |3 |36 |36 |36 |36 (最大 3 個のパーティション) |
 | サービスあたりの最大ドキュメント数 |100 万 |1 億 8,000 万 |7 億 2,000 万 |14 億 |6 億 |
 | サービスあたりの最大ストレージ容量 |2 GB |300 GB |1.2 TB |2.4 TB |600 GB |

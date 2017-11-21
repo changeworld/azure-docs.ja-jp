@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 445117371fde91d0a0fcb96f06e42e2033692789
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 3f3075fc5c6f3a47bde13d98d0b705c29b98112b
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクから管理ディスクに変換します
 
@@ -31,6 +31,7 @@ ms.lasthandoff: 10/23/2017
 
 
 * [Managed Disks への移行の計画](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)を確認します。
+* [Managed Disks への移行に関する FAQ](faq-for-disks.md#migrate-to-managed-disks) を確認します。
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -92,7 +93,6 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
      $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
-     Start-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name
   }
   ```
 
@@ -100,6 +100,7 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 変換中にエラーが発生する場合、または以前の変換の問題のために VM がエラー状態になっている場合は、`ConvertTo-AzureRmVMManagedDisk` コマンドレットをもう一度実行します。 通常再試行するだけで状況が好転します。
+変換前に、すべての VM の拡張機能が "プロビジョニング成功" 状態にあることを確認してください。そのようになっていないとエラー コード 409 で変換に失敗します。
 
 
 ## <a name="next-steps"></a>次のステップ

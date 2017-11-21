@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 4041cacd72b1db74012497287030faf5d05ee6bf
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 53a0f766de9db7e6ee48b6659aad378620c0d727
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
 このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 ここでは特定の領域について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
@@ -31,7 +31,7 @@ sourceAnchor 属性は、 *オブジェクトの有効期間中に変更でき�
 
 この属性は、次のシナリオで使用されます。
 
-* 新しい同期エンジン サーバーを構築する場合、または障害復旧シナリオの後に再構築する場合、この属性によって、Azure AD 内の既存のオブジェクトがオンプレミスのオブジェクトとリンクされます。
+* 新しい同期エンジン サーバーを構築する場合、またはディザスター リカバリー シナリオの後に再構築する場合、この属性によって、Azure AD 内の既存のオブジェクトがオンプレミスのオブジェクトとリンクされます。
 * クラウド専用の ID から同期 ID モデルに移行する場合、この属性によって、Azure AD 内の既存のオブジェクトとオンプレミスのオブジェクトを "完全一致" させることができます。
 * フェデレーションを使用する場合は、ユーザーを一意に識別するために、要求でこの属性と共に **userPrincipalName** を使用します。
 
@@ -130,19 +130,19 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ソース アンカー属性を ObjectGuid から ConsistencyGuid に切り替えるには:
 
-1. Azure AD Connect ウィザードを起動し、[**構成**] をクリックしてタスク画面に移動します。
+1. Azure AD Connect ウィザードを起動し、**[構成]** をクリックしてタスク画面に移動します。
 
-2. [**Configure Source Anchor\(ソース アンカーを構成\)**] タスク オプションを選択して、[**次へ**] をクリックします。
+2. **[Configure Source Anchor\(ソース アンカーを構成\)]** タスク オプションを選択して、**[次へ]** をクリックします。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 2](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment01.png)
 
-3. Azure AD の管理者資格情報を入力し、[**次へ**] をクリックします。
+3. Azure AD の管理者資格情報を入力し、**[次へ]** をクリックします。
 
-4. オンプレミスの Active Directory で msDS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 [**次へ**] をクリックして続行します。
+4. オンプレミスの Active Directory で msDS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによって解析されます。 属性がディレクトリ内のどのオブジェクトにも構成されていない場合、Azure AD Connect はその属性を使用しているアプリケーションは現在なく、ソース アンカー属性として使用しても問題がないと判断します。 **[次へ]** をクリックして続行します。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 4](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. [**構成の準備完了**] 画面で、[**構成**] をクリックし構成を変更します。
+5. **[構成の準備完了]** 画面で、**[構成]** をクリックし構成を変更します。
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 5](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment03.png)
 
@@ -191,7 +191,7 @@ John は、contoso.com に属するユーザーです。Azure AD ディレクト
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>ルーティング不可能なオンプレミス ドメインと Azure AD の UPN
 組織によっては、contoso.local のようにルーティング不可能なドメインや、contoso のような単純な単一ラベルのドメインなどが存在します。 ルーティング不可能なドメインは Azure AD では確認できません。 Azure AD Connect は、Azure AD で確認済みのドメインのみに対して同期できます。 Azure AD ディレクトリを作成すると、ルーティング可能なドメインが作成され、そのドメインが Azure AD の既定のドメインになります (例: contoso.onmicrosoft.com)。そのため、既定の onmicrosoft.com ドメインに同期しないシナリオでは、他のルーティング可能なドメインを確認することが必要になります。
 
-ドメインの追加と確認の詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-add-domain.md) 」を参照してください。
+ドメインの追加と確認の詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md) 」を参照してください。
 
 ルーティング不可能なドメイン環境で実行している場合、その環境が Azure AD Connect で検出され、簡単設定を続行するかどうかについて適切な警告が表示されます。 ルーティング不可能なドメインで運用している場合は、ユーザーの UPN でもルーティング不可能なサフィックスが使用されている可能性があります。 たとえば、contoso.local で運用している場合、Azure AD Connect では簡単設定を使用するのではなく、カスタム設定を使用するように推奨されます。 カスタム設定を使用すると、ユーザーの Azure AD への同期後に Azure へのサインインで UPN として使用する属性を指定できます。
 

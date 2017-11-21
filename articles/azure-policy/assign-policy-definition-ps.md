@@ -5,19 +5,22 @@ services: azure-policy
 keywords: 
 author: Jim-Parker
 ms.author: jimpark
-ms.date: 10/06/2017
+ms.date: 11/02/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 3f9ef7886af20845eddc4c1e71d60911e4b22eca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02afe946e5e1ad9730ab07df19676e90485ecf98
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-using-powershell"></a>PowerShell を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 
-Azure のコンプライアンスを理解する第一歩は、現在のリソースの状態を把握することです。 このクイックスタートでは、ポリシー割り当てを作成して、ポリシー定義の *[Require SQL Server version 12.0]\(SQL Server バージョン 12.0 が必要\)* に準拠していないリソースを特定するプロセスについて順を追って説明します。 このプロセスを終了すると、異なるバージョンや準拠していないサーバーを適切に特定できるようになります。
+Azure のコンプライアンスを理解する第一歩は、自分の現在のリソースの状態を把握することです。 このクイックスタートでは、ポリシー割り当てを作成して、管理ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
+
+このプロセスを終了すると、管理ディスクを使用していない、つまり "*非準拠*" の仮想マシンを適切に特定できるようになります。
+
 
 PowerShell は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、PowerShell を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する方法について詳しく説明します。
 
@@ -29,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="opt-in-to-azure-policy"></a>Azure Policy を選択する
 
-Azure Policy は現在、制限付きのプレビュー段階です。そのため、登録してアクセスを依頼する必要があります。
+Azure Policy は現在、パブリック プレビュー段階であるため、登録してアクセスを要求する必要があります。
 
 1. Azure Policy (https://aka.ms/getpolicy) にアクセスし、左側のウィンドウにある **[サインアップ]** を選択します。
 
@@ -39,11 +42,11 @@ Azure Policy は現在、制限付きのプレビュー段階です。そのた�
 
    ![Azure Policy の使用を選択する](media/assign-policy-definition/preview-opt-in.png)
 
-   提出された登録依頼が承認されるまでに数日かかる場合があります。 依頼が承認されると、サービスの利用を開始できることが電子メールで通知されます。
+   要求のプレビューは自動的に承認されます。 登録が処理されるまでに最大で 30 分ほどかかる場合があります。
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
-このクイックスタートでは、ポリシー割り当てを作成し、*[Require SQL Server version 12.0]\(SQL Server バージョン 12.0 が必要\)* 定義を割り当てます。 このポリシー定義で、ポリシー定義に設定されている条件に準拠していないリソースを特定します。
+このクイックスタートでは、ポリシー割り当てを作成し、"*管理ディスクのない仮想マシンを監査*" 定義を割り当てます。 このポリシー定義で、ポリシー定義に設定されている条件に準拠していないリソースを特定します。
 
 次の手順で新しいポリシー割り当てを作成します。
 
@@ -56,24 +59,24 @@ $definition = Get-AzureRmPolicyDefinition
 Azure Policy には、使用できる組み込みのポリシー定義があらかじめ含まれています。 次のような組み込みのポリシー定義が表示されます。
 
 - Enforce tag and its value (タグとその値を強制する)
-- Apply tag and its value (タグとその値を適用する)
+- タグとその値を適用
 - Require SQL Server Version 12.0 (SQL Server バージョン 12.0 が必要)
 
 次に、`New-AzureRmPolicyAssignment` コマンドレットを使用してポリシー定義を目的のスコープに割り当てます。
 
 このチュートリアルでは、このコマンドについて次の情報を提供しています。
-- ポリシー割り当ての表示用の**名前**。 この例では、「SQL Server バージョン 12.0 が必要の割り当て」と入力してみましょう。
-- **ポリシー** - 割り当ての作成に使用している基のポリシー定義です。 この例では、*[Require SQL Server Version 12.0]\(SQL Server バージョン 12.0 が必要\)* ポリシー定義です。
+- ポリシー割り当ての表示用の**名前**。 ここでは、"管理ディスクのない仮想マシンを監査" を使用しましょう。
+- **ポリシー** - 割り当ての作成に使用している基のポリシー定義です。 ここでは、"*管理ディスクのない仮想マシンを監査*" というポリシー定義です
 - **スコープ** - スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループの範囲が含まれる可能性があります。 この例では、ポリシー定義を **FabrikamOMS** リソース グループに割り当てています。
-- **$definition** - ポリシー定義のリソース ID を指定する必要があります。この例では、ポリシー定義 *[Require SQL Server Version 12.0]\(SQL Server バージョン 12.0 が必要\)* の ID を使用しています。
+- **$definition** - ポリシー定義のリソース ID を指定する必要があります。この例では、ポリシー定義 "*管理ディスクのない仮想マシンを監査*" の ID を使用しています。
 
 ```powershell
 $rg = Get-AzureRmResourceGroup -Name "FabrikamOMS"
 $definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization/policyDefinitions/e5662a6-4747-49cd-b67b-bf8b01975c4c
-New-AzureRMPolicyAssignment -Name Require SQL Server version 12.0 Assignment -Scope $rg.ResourceId -PolicyDefinition $definition
+New-AzureRMPolicyAssignment -Name Audit Virtual Machines without Managed Disks Assignment -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
-以上の手順で、準拠していないリソースを特定し、環境のコンプライアンス状態を理解できるようになりました。
+これで、非対応リソースを特定し、環境のコンプライアンスの状態を確認する準備ができました。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
 
@@ -89,7 +92,7 @@ New-AzureRMPolicyAssignment -Name Require SQL Server version 12.0 Assignment -Sc
 このコレクションの他のガイドは、このクイックスタートに基づいています。 引き続きチュートリアルの作業を行う場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 続行する予定がない場合は、次のコマンドを実行して、作成した割り当てを削除してください。
 
 ```powershell
-Remove-AzureRmPolicyAssignment -Name “Require SQL Server version 12.0 Assignment” -Scope /subscriptions/ bc75htn-a0fhsi-349b-56gh-4fghti-f84852/resourceGroups/FabrikamOMS
+Remove-AzureRmPolicyAssignment -Name “Audit Virtual Machines without Managed Disks Assignment” -Scope /subscriptions/ bc75htn-a0fhsi-349b-56gh-4fghti-f84852/resourceGroups/FabrikamOMS
 ```
 
 ## <a name="next-steps"></a>次のステップ

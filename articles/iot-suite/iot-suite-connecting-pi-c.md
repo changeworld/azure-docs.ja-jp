@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 2f5915093a0d7984f0350af21aa438cdd588bbf2
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 45f4de7e9ec880775f9ccf77b7d945766d465aa7
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>Raspberry Pi デバイスをリモート監視構成済みソリューションに接続する (C)
 
@@ -84,7 +84,7 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 
 Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します。
 
-1. `remote_monitoring` という名前のフォルダーを Raspberry Pi のホーム フォルダーに作成します。 コマンド ラインでこのフォルダーに移動します。
+1. `remote_monitoring` という名前のフォルダーを Raspberry Pi のホーム フォルダーで作成します。 コマンド ラインでこのフォルダーに移動します。
 
     ```sh
     cd ~
@@ -113,7 +113,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="add-code-to-run-the-app"></a>アプリを実行するコードを追加します。
+## <a name="add-code-to-run-the-app"></a>アプリを実行するコードを追加する
 
 テキスト エディターで、`remote_monitoring.h` ファイルを開きます。 次のコードを追加します。
 
@@ -189,7 +189,7 @@ int main(void)
     )
     ```
 
-1. `remote_monitoring` フォルダーに、CMake で生成される *make* ファイルを格納するフォルダーを作成します。 続いて、**cmake** と **make** コマンドを次のように実行します。
+1. `remote_monitoring` フォルダーで、CMake が生成する *make* ファイルを格納するフォルダーを作成します。 続いて、**cmake** と **make** コマンドを次のように実行します。
 
     ```sh
     mkdir cmake

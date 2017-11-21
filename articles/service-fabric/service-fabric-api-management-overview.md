@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: a3eedacac5efb53f82e46a56285713dece56ffe8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea3b1f50bada3c1301f8661f8f0b4866cb1c732c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Azure Service Fabric と API Management の概要
 
@@ -97,7 +97,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
  
  - `fabric:/app/users/<username>`
 
- 各サービスには一意の名前が付けられますが、サービスはユーザーや管理者の入力に対する応答として作成されるので、事前にその名前を知ることはできません。そのため、APIM ポリシーやルーティング規則にハードコードすることはできません。 代わりに、要求を送信するサービスの名前は、URL 要求パスで指定された値 `name` から、バックエンド ポリシー定義内で生成されます。 For example:
+ 各サービスには一意の名前が付けられますが、サービスはユーザーや管理者の入力に対する応答として作成されるので、事前にその名前を知ることはできません。そのため、APIM ポリシーやルーティング規則にハードコードすることはできません。 代わりに、要求を送信するサービスの名前は、URL 要求パスで指定された値 `name` から、バックエンド ポリシー定義内で生成されます。 次に例を示します。
 
   - `/api/users/foo` への要求はサービス インスタンス `fabric:/app/users/foo` にルーティングされる
   - `/api/users/bar` への要求はサービス インスタンス `fabric:/app/users/bar` にルーティングされる
@@ -108,7 +108,7 @@ Azure API Management は、ステートレス サービス、ステートフル 
 
 ## <a name="next-steps"></a>次のステップ
 
-[クイック スタート ガイド](service-fabric-api-management-quick-start.md)に従って最初の Service Fabric クラスターと API Management を設定し、要求が API Management を通じてサービスに流れるようにします。
+[チュートリアル](service-fabric-tutorial-deploy-api-management.md)に従って最初の Service Fabric クラスターと API Management を設定し、要求が API Management を通じてサービスに流れるようにします。
 
 <!-- links -->
 

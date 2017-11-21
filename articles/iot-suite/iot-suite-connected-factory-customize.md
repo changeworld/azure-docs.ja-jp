@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT Suite コネクテッド ファクトリのカスタマイズ | Microsoft Docs"
+title: "コネクテッド ファクトリ ソリューションをカスタマイズする - Azure | Microsoft Docs"
 description: "コネクテッド ファクトリ事前構成済みソリューションの動作をカスタマイズする方法の説明です。"
 services: 
 suite: iot-suite
@@ -13,17 +13,15 @@ ms.devlang: c#
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 90a6172dbd887ecda5a9f5d9082a4e136092bc10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 09b146740413e74e3030bf3a6cb660a3cfabd239
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>コネクテッド ファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
-
-## <a name="introduction"></a>はじめに
 
 コネクテッド ファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) に関するページをご覧ください。
 
@@ -189,5 +187,5 @@ JSON ファイルの内容は、ファクトリ ノード、生産ライン ノ�
 
 [lnk-rm-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [lnk-connect-cf]: iot-suite-connected-factory-gateway-deployment.md
-[lnk-permissions]: iot-suite-permissions.md
-[lnk-faq]: iot-suite-faq.md
+[lnk-permissions]: iot-suite-v1-permissions.md
+[lnk-faq]: iot-suite-v1-faq.md

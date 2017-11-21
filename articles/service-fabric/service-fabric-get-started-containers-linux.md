@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/04/2017
 ms.author: ryanwi
-ms.openlocfilehash: 3c5a6ec70e1041d43b549c8e5a5416a9a65728bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3649cc2800e774f8dca1b88a1704744b4663a68d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -385,7 +385,7 @@ yeoman を使用して作成したアプリケーションに別のコンテナ�
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
-* GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)を確認します。
+* GitHub で [Service Fabric コンテナーのコード サンプル](https://github.com/Azure-Samples/service-fabric-containers)を確認します。
 
 [hello-world]: ./media/service-fabric-get-started-containers-linux/HelloWorld.png
 [sf-yeoman]: ./media/service-fabric-get-started-containers-linux/YoSF.png

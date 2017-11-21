@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/03/2017
+ms.date: 10/15/2017
 ms.author: spelluru
-ms.openlocfilehash: f48eb610b47820e6d7438520a00a5e6dfe879e01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3c26c2358c15d18c71b82fe1f389c039ecbd97b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
 Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、完全に管理されたクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。

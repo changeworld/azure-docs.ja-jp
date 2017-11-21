@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/10/2016
 ms.author: juliako
-ms.openlocfilehash: 357e58665f5cdf6ea9a3fcaee4a390f2b0d2045f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a422b02623a18ac6a1eef460bbada681672e69f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-sdk-for-net-251-release-notes"></a>Azure SDK for .NET 2.5.1 リリース ノート
 このドキュメントには、Azure SDK for .NET 2.5.1 リリースのリリース ノートが含まれます。 
@@ -44,7 +44,7 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
   * (パブリック プレビュー) Hive 用にキーワードのオート コンプリートと IntelliSense のサポート。 Hive スクリプトの作成を容易にするため、HDInsight Tools for Visual Studio では Hive 用にキーワードのオート コンプリートと IntelliSense のサポートが追加されました。
   * Storm のサポート。 HDInsight Tools for Visual Studio を使用して、C# で Storm トポロジ/スパウト/ボルトを開発できるようになりました。 その後、開発したトポロジを Storm クラスターに送信し、トポロジ/ボルト/スパウトの状態を確認することができます。 システム ログと顧客のログを使用して、Storm トポロジ/ボルト/スパウトのトラブルシューティングを行うことができます。 また、Storm の既存の JAVA 資産を HDInsight で使用することもできます。
     
-    詳細については、「 [HDInsight Hadoop Tools for Visual Studio の使用開始](../hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
+    詳細については、「 [HDInsight Hadoop Tools for Visual Studio の使用開始](../hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
 ## <a id="known_issues_2_5_1"></a>Azure SDK for .NET 2.5.1 の既知の問題と制限事項
 * Azure の API アプリは、モバイル アプリのデプロイメント ターゲットとして表示されます。 今後のリリースまで、Web アプリがモバイル アプリの唯一のデプロイ先である必要があります。 

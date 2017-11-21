@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 09/12/2017
 ms.author: rickbyh
-ms.openlocfilehash: 2726f5a78920f0ce47ed9d034e6a597c11b92e98
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: b6a7a1d6e7c9f8a921dc73bb3bf629de71f85acf
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-or-sql-data-warehouse"></a>Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する
 Azure Active Directory 認証は、Azure Active Directory (Azure AD) の ID を使用して Microsoft Azure SQL Database および [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するメカニズムです。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。 次のような利点があります。
@@ -73,7 +73,7 @@ Azure SQL Database または SQL Data Warehouse に包含データベース ユ�
 ## <a name="azure-ad-features-and-limitations"></a>Azure AD の機能と制限事項
 Azure AD の次のメンバーを、Azure SQL Server または SQL Data Warehouse にプロビジョニングできます。
 
-* ネイティブ メンバー: 管理対象ドメインまたは顧客のドメインの Azure AD で作成したメンバー。 詳細については、 [Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)に関する記事をご覧ください。
+* ネイティブ メンバー: 管理対象ドメインまたは顧客のドメインの Azure AD で作成したメンバー。 詳細については、 [Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)に関する記事をご覧ください。
 * フェデレーション ドメインのメンバー: フェデレーション ドメインを使用して Azure AD で作成されたメンバー。 詳細については、「 [Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure による Windows Server Active Directory とのフェデレーションのサポートの実現)](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」をご覧ください。
 * ネイティブ メンバーまたはフェデレーション ドメインのメンバーである別の Azure AD からインポートされたメンバー。
 * セキュリティ グループとして作成された Active Directory グループ。

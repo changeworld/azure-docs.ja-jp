@@ -4,7 +4,7 @@ description: "Hive クエリを使用して Hive テーブルのデータを探�
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 0d46cea5-2b4c-4384-9bfa-fa20f6f75148
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/09/2017
 ms.author: bradsev
-ms.openlocfilehash: dc5cbbf8db46607179e8b0e8657462afac21f7da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9cf205abcf9782ceac4d9ac5a920e136b69c57b6
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Hive クエリを使用して Hive テーブルのデータを探索する
 このドキュメントでは、HDInsight Hadoop クラスター内の Hive テーブルのデータを探索する Hive スクリプトの例を紹介します。
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 * Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
 * HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。 手順については、「 [Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md)」をご覧ください。
 * データが Azure HDInsight Hadoop クラスターの Hive テーブルにアップロードされている。 アップロードされていない場合は、まず「 [データを作成して Hive テーブルに読み込む](move-hive-tables.md) 」の指示に従って Hive テーブルにデータをアップロードします。
-* クラスターへのリモート アクセスが有効になっている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md#headnode)」をご覧ください。
+* クラスターへのリモート アクセスが有効になっている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md)」をご覧ください。
 * Hive クエリの送信手順については、「 [データを作成して Azure BLOB ストレージから Hive テーブルに読み込む](move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>データ探索のための Hive クエリ スクリプトの例

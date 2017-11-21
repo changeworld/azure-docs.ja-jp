@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/14/2017
 ms.author: nitinme
-ms.openlocfilehash: 9dd56efb89e07ea61ae431d1ea2accd721cd6502
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6be2b9e21d134461dc00d93c3f188c96c6e7af6e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -176,7 +176,7 @@ Data Lake Store をストレージとして使用するクラスターのセッ�
 
 ### <a name="run-a-hive-query-against-data-in-a-data-lake-store-as-primary-storage"></a>(プライマリ ストレージとしての) Data Lake Store に格納されているデータに対して Hive クエリを実行する
 
-Hive クエリを実行する場合は、Ambari ポータルで提供されている Hive ビュー インターフェイスを使用します。 Ambari Hive ビューの使用方法については、「[HDInsight での Hive View と Hadoop の使用](../hdinsight/hdinsight-hadoop-use-hive-ambari-view.md)」をご覧ください。
+Hive クエリを実行する場合は、Ambari ポータルで提供されている Hive ビュー インターフェイスを使用します。 Ambari Hive ビューの使用方法については、「[HDInsight での Hive View と Hadoop の使用](../hdinsight/hadoop/apache-hadoop-use-hive-ambari-view.md)」をご覧ください。
 
 Data Lake Store 内のデータを操作するときは、いくつかの文字列を変更する必要があります。
 
@@ -199,13 +199,14 @@ Blob Storage から Data Lake Store にデータをコピーする方法につ�
 * [AdlCopy を使用して Azure Storage BLOB のデータを Data Lake Store にコピーする](data-lake-store-copy-data-azure-storage-blob.md)
 
 ### <a name="use-data-lake-store-with-a-spark-cluster"></a>Spark クラスターで Data Lake Store を使用する
-Spark クラスターを使用すると、Data Lake Store に格納されているデータで Spark ジョブを実行できます。 詳細については、「[HDInsight Spark クラスターを使用して Data Lake Store のデータを分析する](../hdinsight/hdinsight-apache-spark-use-with-data-lake-store.md)」をご覧ください。
+Spark クラスターを使用すると、Data Lake Store に格納されているデータで Spark ジョブを実行できます。 詳細については、「[HDInsight Spark クラスターを使用して Data Lake Store のデータを分析する](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)」をご覧ください。
 
 
 ### <a name="use-data-lake-store-in-a-storm-topology"></a>Storm トポロジで Data Lake Store を使用する
-Data Lake Store を使用して、Storm トポロジからデータを書き込むことができます。 このシナリオを実現する方法については、「 [HDInsight で Apache Storm によって Azure Data Lake Store を使用する](../hdinsight/hdinsight-storm-write-data-lake-store.md)」をご覧ください。
+Data Lake Store を使用して、Storm トポロジからデータを書き込むことができます。 このシナリオを実現する方法については、「 [HDInsight で Apache Storm によって Azure Data Lake Store を使用する](../hdinsight/storm/apache-storm-write-data-lake-store.md)」をご覧ください。
 
 ## <a name="see-also"></a>関連項目
+* [Azure HDInsight クラスターで Data Lake Store を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
 * [Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

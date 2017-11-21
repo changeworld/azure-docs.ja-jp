@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: bb5897a392e500de685421769c414441ddfeb6a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0cdafdb88604b8874a245751246d219e8df3813
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -61,8 +61,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 ## <a name="application-architecture"></a>アプリケーションのアーキテクチャ
 このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。 それぞれの広告に対し、フルサイズ画像用とサムネイル用の 2 つの URL がデータベースに格納されます。
 
-![広告表
-](./media/cloud-services-dotnet-get-started/adtable.png)
+![広告表](./media/cloud-services-dotnet-get-started/adtable.png)
 
 ユーザーが画像をアップロードすると、Web ロールで実行されているフロントエンドによってその画像が [Azure BLOB](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)に格納され、広告情報がその BLOB を示す URL と共にデータベースに格納されます。 同時に、メッセージが Azure キューに書き込まれます。 worker ロールで実行されているバックエンド プロセスは、定期的にキューをポーリングして新しいメッセージの有無を確認します。 新しいメッセージが出現すると、worker ロールはその画像の縮小表示を作成し、その広告の縮小表示 URL データベース フィールドを更新します。 次の図に、アプリケーションの各パーツのやり取りを示します。
 
@@ -286,12 +285,10 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
    ![[発行] メニュー](./media/cloud-services-dotnet-get-started/pubmenu.png)
 2. **Azure アプリケーションの発行**ウィザードの **[サインイン]** 手順で、**[次へ]** をクリックします。
 
-    ![[サインイン] 手順
-](./media/cloud-services-dotnet-get-started/pubsignin.png)
+    ![[サインイン] 手順](./media/cloud-services-dotnet-get-started/pubsignin.png)
 3. ウィザードの **[設定]** 手順で、**[次へ]** をクリックします。
 
-    ![[設定] 手順
-](./media/cloud-services-dotnet-get-started/pubsettings.png)
+    ![[設定] 手順](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
     **[詳細設定]** タブの既定の設定はこのチュートリアルではそのまま使用します。 [詳細設定] タブの詳細については、「 [Microsoft Azure アプリケーションの発行ウィザード](http://msdn.microsoft.com/library/hh535756.aspx)」を参照してください。
 4. **[概要]** 手順で、**[発行]** をクリックします。
@@ -779,6 +776,6 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 詳細については、次のリソースを参照してください。
 
 * [Azure Cloud Services パート 1: 概要](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [Cloud Services の管理方法](cloud-services-how-to-manage.md)
+* [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](/documentation/services/storage/)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

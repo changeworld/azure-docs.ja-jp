@@ -1,5 +1,5 @@
 ---
-title: "Site Recovery の Hyper-V Capacity Planner ツールを実行する | Microsoft Docs"
+title: "Azure Site Recovery の Hyper-V Capacity Planner ツール | Microsoft Docs"
 description: "この記事では、Azure Site Recovery の Hyper-V Capacity Planner ツールの実行方法について説明します。"
 services: site-recovery
 documentationcenter: na
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 10/30/2017
 ms.author: nisoneji
-ms.openlocfilehash: 272b5abb5e6451164ca7900dda399b6aac65f986
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db790f9dc56605b5b752e7ab797903e32b2fc675
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="run-the-hyper-v-capacity-planner-tool-for-site-recovery"></a>Site Recovery の Hyper-V Capacity Planner ツールを実行する
+# <a name="hyper-v-capacity-planner-tool-for-site-recovery"></a>Site Recovery の Hyper-V Capacity Planner ツール
 
 Azure Site Recovery デプロイメントの一環として、お客様のレプリケーションと帯域幅の要件を確認する必要があります。 Hyper-V 仮想マシンのレプリケーションの場合には、この確認は Site Recovery の Hyper-V Capacity Planner を使用して行うことができます。
 

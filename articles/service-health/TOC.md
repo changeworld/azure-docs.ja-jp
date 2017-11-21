@@ -3,6 +3,10 @@
 ## [Azure Resource Health とは](resource-health-overview.md)
 # 方法
 ## [Service Health のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=%2fazure%2fservice-health%2ftoc.json)
+## [webhook を使用した通知の構成](service-health-alert-webhook-guide.md)
+### [ServiceNow での構成](service-health-alert-webhook-servicenow.md)
+### [PagerDuty での構成](service-health-alert-webhook-pagerduty.md)
+### [OpsGenie での構成](service-health-alert-webhook-opsgenie.md)
 # リソース
 ## [よく寄せられる質問](resource-health-faq.md)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

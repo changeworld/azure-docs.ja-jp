@@ -4,7 +4,7 @@ description: "さまざまな Azure 環境に格納されているデータを�
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 80a9dfae-e3a6-4cfb-aecc-5701cfc7e39d
 ms.service: machine-learning
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/13/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: 1b99ce11709376294f6a2385b9f4ff3388b99ab7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 97d344fd31d711454f3e4aa251361b86351cc283
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="heading"></a>Azure BLOB コンテナー、SQL Server、Hive テーブルのデータのサンプリング
-このドキュメントは、Azure に保存されているデータを収集する方法について取り上げたトピックに関連しています。次の 3 つの保存先が対象となります。
+このドキュメントは、Azure に保存されているデータを収集する方法について取り上げた記事に関連しています。次の 3 つの保存先が対象となります。
 
 * **データ** をサンプリングするには、プログラムでダウンロードし、サンプル Python コードを使用します。
 * **SQL Server データ** をサンプリングするには、SQL と Python プログラミング言語の両方を使用します。 

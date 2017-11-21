@@ -1,27 +1,35 @@
 ---
-title: "Azure Active Directory の新着情報 | Microsoft Docs"
-description: "Azure Active Directory の **最新のリリース**、**既知の問題**、**バグの修正**、**非推奨になった機能**、**変更の計画** を常に把握するために、これらのリリース ノートをご利用ください。"
+title: "新機能 Azure Active Directory のリリース ノート | Microsoft Docs"
+description: "最新のリリース ノート、既知の問題、バグの修正、非推奨になった機能、予定されている変更点を含む、Azure Active Directory (Azure AD) の新着情報について説明します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
 manager: femila
 editor: 
+featureFlags: clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 11/06/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0361d5b48af876af2ccc522351484d369554bfca
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 766ab10c853eb56a1203686d21d0e131c44a41b5
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
+
+
+
+
+> お気に入りの RSS フィード リーダーでこの[フィード](https://docs.microsoft.com/api/search/rss?search=%22what%27s%20new%20in%20azure%20active%20directory%3F%22&locale=en-us)をサブスクライブして、Azure Active Directory の新着情報を常に把握するようにしてください。
+
+
 
 マイクロソフトは、Azure Active Directory の改善を継続的に行っています。 お客様に常に最新の開発情報を入手していただけるよう、このトピックでは以下に関する情報を提供します。
 
@@ -32,6 +40,18 @@ ms.lasthandoff: 10/25/2017
 -   変更の計画 
 
 このページは月単位で更新されるため、定期的にご確認ください。
+
+## <a name="november-2017"></a>2017 年 11 月
+
+**タイプ:** 非推奨になった機能  
+**サービス カテゴリ:** ACS  
+**製品の機能:** Access Control Service 
+
+<a name="acs-retirement"></a>
+
+Microsoft Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) は 2018 年後半に廃止されます。  詳しいスケジュールや高度な移行ガイダンスなどの詳細については、数週間後にお知らせします。 その間は、ACS に関する質問については、このページにコメントを記してください。Microsoft のチームのメンバーが回答します。
+
+---
 
 
 ## <a name="october-2017"></a>2017 年 10 月
@@ -76,6 +96,8 @@ Azure Active Directory は、HTML ユーザー名とパスワード フィール
 
 このパブリック プレビューでは、MFA の管理およびレポート機能がコア Azure AD 構成エクスペリエンスの一部として統合されているため、MFA 管理ポータルの機能を Azure AD エクスペリエンス内で管理できます。
 
+詳しくは、「[Azure Portal の多要素認証レポートの参照情報](active-directory-reporting-activity-sign-ins-mfa.md)」をご覧ください。 
+
 
 ---
 **タイプ:** 新機能  
@@ -112,8 +134,6 @@ Azure AD Terms of Use は、次のシナリオで使用できます。
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** ガバナンス  
 
-
-Azure AD の新着情報
 
 組織でアクセス レビュー (プレビュー) を使うことにより、グループ メンバーシップおよびエンタープライズ アプリケーションへのアクセスを、効率的に管理できます。 
 

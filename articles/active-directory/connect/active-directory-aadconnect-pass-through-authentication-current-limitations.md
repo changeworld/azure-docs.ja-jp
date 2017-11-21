@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 42a6d7156a28aaeadea96f9134b0becc004816ba
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 4a33df43ca218545d6c684103a64f2cd1460913b
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/24/2017
 
 次のシナリオはサポートされて_いません_。
 
-- 従来の Office クライアント アプリケーションへのユーザー サインイン - Office 2010、および Office 2013 (最新の認証_なし_)。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 最新の認証により、パススルー認証のサポートが可能になるだけでなく、Multi-Factor Authentication (MFA) などの[条件付きアクセス](../active-directory-conditional-access.md)機能を使用してユーザー アカウントをセキュリティで保護することもできます。
+- 従来の Office クライアント アプリケーションへのユーザー サインイン - Office 2010、および Office 2013 (最新の認証_なし_)。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 最新の認証により、パススルー認証のサポートが可能になるだけでなく、Multi-Factor Authentication (MFA) などの[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)機能を使用してユーザー アカウントをセキュリティで保護することもできます。
 - Skype for Business クライアント アプリケーション (Skype for Business 2016 を含む) へのユーザー サインイン。
 - PowerShell v1.0 へのユーザー サインイン。 代わりに、PowerShell v2.0 を使用することをお勧めします。
 - Azure AD Domain Services。

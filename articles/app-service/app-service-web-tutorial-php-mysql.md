@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 07/21/2017
+ms.date: 10/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 64baee04c43442a73dbb9ef657c091f307204ce4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08e9f58cc81122ae36db67d916cf2550490ec4ef
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>Azure で PHP と MySQL Web アプリを構築する
 
@@ -324,23 +324,18 @@ git commit -m "database.php updates"
 
 この手順では、MySQL に接続される PHP アプリケーションを Azure App Service にデプロイします。
 
+### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
+
+[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user-no-h.md)]
+
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 [!INCLUDE [Create app service plan no h](../../includes/app-service-web-create-app-service-plan-no-h.md)]
 
+<a name="create"></a>
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
-[!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-no-h.md)]
-
-### <a name="set-the-php-version"></a>PHP のバージョンを設定する
-
-Cloud Shell で [az webapp config set](/cli/azure/webapp/config#set) コマンドを使用し、アプリケーションで必要な PHP のバージョンを設定します。
-
-次のコマンドは、PHP のバージョンを _7.0_ に設定します。
-
-```azurecli-interactive
-az webapp config set --name <app_name> --resource-group myResourceGroup --php-version 7.0
-```
+[!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
@@ -397,17 +392,9 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ (_sites\wwwroot_) に対して仮想アプリケーションのルート パス (_/_) をポイントします。
 
-### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
-
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user-no-h.md)]
-
-### <a name="configure-local-git-deployment"></a>ローカル Git デプロイの構成
-
-[!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git-no-h.md)]
-
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 
-ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。
+ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;paste\_copied\_url\_here>_ を、「[Web アプリを作成する](#create)」で保存した Git リモートの URL に置き換えます。
 
 ```bash
 git remote add azure <paste_copied_url_here>

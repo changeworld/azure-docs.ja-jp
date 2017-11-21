@@ -20,14 +20,14 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# Azure AD B2C: 認証プロトコル
+# <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: 認証プロトコル
 Azure Active Directory B2C (Azure AD B2C) では、業界標準のプロトコルである OpenID Connect と OAuth 2.0 をサポートすることによって Identity-as-a-Service (サービスとしての ID) 機能がアプリに提供されます。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 
 
 ここでは、オープン ソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理する場合に役立つ情報を紹介します。 特定のプロトコルの詳細を学習する前に、このページを読むことをお勧めします。 ただし、Azure AD B2C について既に詳しい場合は、[プロトコル リファレンス ガイド](#protocols)にすぐに進んでもかまいません。
 
 <!-- TODO: Need link to libraries above -->
 
-## 基本
+## <a name="the-basics"></a>基本
 Azure AD B2C を使用するすべてのアプリは、 [Azure Portal](https://portal.azure.com) で B2C ディレクトリに登録する必要があります。 アプリの登録プロセスでは、いくつかの値が収集され、対象のアプリに割り当てられます。
 
 * アプリを一意に識別する **アプリケーション ID** 。
@@ -53,14 +53,14 @@ OAuth と OpenID Connect におけるフローはほぼすべて、情報のや�
 
 * **リソース サーバー** は、リソースまたはデータが存在する場所です。 承認サーバーを信頼し、OAuth クライアントを安全に認証、承認します。 また、ベアラー アクセス トークンを使用して、リソースへのアクセス許可を確実に付与します。
 
-## ポリシー
+## <a name="policies"></a>ポリシー
 おそらく、Azure AD B2C のポリシーは、サービスの最も重要な機能です。 Azure AD B2C は、ポリシーを導入することによって、標準の OAuth 2.0 や OpenID Connect プロトコルを拡張します。 ポリシーにより、Azure AD B2C は単なる認証および承認以外の多くの機能を実行できます。 
 
 ポリシーには、サインアップ、サインイン、プロファイル編集など、コンシューマーの ID エクスペリエンスが完全に記述されています。 ポリシーは、管理 UI で定義できます。 ポリシーは、HTTP 認証要求の特別なクエリ パラメーターを使用して実行できます。 
 
 ポリシーは、OAuth 2.0 および OpenID Connect の標準機能ではないので、理解するために時間をかける必要があります。 詳細については、 [Azure AD B2C ポリシー リファレンス ガイド](active-directory-b2c-reference-policies.md)を参照してください。
 
-## トークン
+## <a name="tokens"></a>トークン
 Azure AD B2C での OAuth 2.0 および OpenID Connect の実装では、ベアラー トークンが広範囲に使われています (JSON Web トークン (JWT) として表現されたベアラー トークンなど)。 ベアラー トークンは、保護されたリソースへの "ベアラー" アクセスを許可する簡易セキュリティ トークンです。
 
 ベアラーは、トークンを提示できる任意の利用者を表します。 Azure AD は、ベアラー トークンを受信するには、最初に利用者を認証する必要があります。 ただし、転送中や保存時にトークンを保護するために必要な対策を講じていない場合、意図しない利用者によって傍受され、使用されるおそれがあります。
@@ -73,7 +73,7 @@ Azure AD B2C での OAuth 2.0 および OpenID Connect の実装では、ベア�
 
 Azure AD B2C で使われている各種トークンの詳細については、[Azure AD のトークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。
 
-## プロトコル
+## <a name="protocols"></a>プロトコル
 要求の例を確認できる状態になったら、次のいずれかのチュートリアルを開始できます。 いずれも、特定の認証シナリオに対応しています。 どのフローを見ればよいかわからない場合は、[Azure AD B2C で作成できるアプリの種類](active-directory-b2c-apps.md)を確認してください。
 
 * [OAuth 2.0 でモバイル アプリケーションおよびネイティブ アプリケーションを作成する](active-directory-b2c-reference-oauth-code.md)

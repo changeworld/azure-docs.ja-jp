@@ -13,17 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/07/2016
 ms.author: nateko
-ms.openlocfilehash: 739a0ad77c68ea74ec25bc80c7539ac8b3f18201
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 447abc48cca3dee398e641f8458e52a5b2cb8e42
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="synonyms-in-azure-search-preview"></a>Azure Search のシノニム (プレビュー)
 
 検索エンジンのシノニムは、ユーザーが実際に用語を提供する必要がなく、クエリのスコープを暗黙的に拡張する同等の用語を関連付けます。 たとえば、用語 "dog" と、"canine" と "puppy" のシノニムの関連付けを指定すると、"dog"、"canine"、または "puppy" を含むすべてのドキュメントがクエリのスコープ内に収まります。
 
-Azure Search では、シノニムの拡張は、クエリ時に行われます。 既存の処理を停止させることなく、シノニム マップをサービスに追加できます。 インデックスを再構築する必要なく、**synonymMaps** プロパティをフィールド定義に追加できます。 詳細については、[インデックスの更新](https://docs.microsoft.com/rest/api/searchservice/update-index)に関するページをご覧ください。
+Azure Search では、シノニムの拡張は、クエリ時に行われます。 既存の処理を停止させることなく、シノニム マップをサービスに追加できます。 インデックスを再構築する必要なく、**synonymMaps** プロパティをフィールド定義に追加できます。
 
 ## <a name="feature-availability"></a>使用可能な機能
 
@@ -78,14 +78,14 @@ Azure Search のシノニムのサポートは、シノニム マップに基づ
 
 Solr 形式は同等の明示的なシノニム マッピングをサポートします。 マッピング規則は、このドキュメントで説明している Apache Solr のオープン ソース シノニム フィルター仕様 [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter) に準拠しています。 同等のシノニムのサンプル規則を以下に示します。
 ```
-              USA, United States, United States of America
+USA, United States, United States of America
 ```
 
 上の規則では、検索クエリ "USA" が "USA" または "United States" または "United States of America" に拡張されます。
 
 明示的なマッピングは、"=>" 矢印で示します。 指定した場合、"=>" の左側に一致する検索クエリの用語のシーケンスが、右側の代替で置き換えられます。 次の規則を指定した場合、検索クエリ "Washington"、"Wash."、 または "WA" はすべて "WA" に書き換えられます。 明示的なマッピングは指定した方向でのみ適用され、この例では、クエリ "WA" が "Washington" に書き換えられることはありません。
 ```
-              Washington, Wash., WA => WA
+Washington, Wash., WA => WA
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>サービスのシノニム マップを一覧表示します。

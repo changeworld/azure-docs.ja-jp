@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: aa99d3ebd181a76d582670c5219f29858c462d30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5eea5e4499b9de40002ce2fc6aac39239c41b19
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -141,9 +141,8 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 
 | リソース | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
-| VM ( *スタンドアロン* クラウド サービス内) |はい |あり |はい |
-| PaaS ロール インスタンス ( *スタンドアロン* クラウド サービス内) |はい |なし |はい |
-| VM または PaaS ロール インスタンス (VNet 内) |はい |あり |はい |
+| VM (*スタンドアロン* クラウド サービスまたは VNet 内) |あり |あり |あり |
+| PaaS ロール インスタンス (*スタンドアロン* クラウド サービスまたは VNet 内) |あり |なし |いいえ |
 | 内部ロード バランサーのフロント エンド |はい |あり |あり |
 | Application Gateway のフロント エンド |あり |あり |はい |
 

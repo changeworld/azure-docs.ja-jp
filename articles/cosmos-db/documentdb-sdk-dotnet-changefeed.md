@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 10/31/2017
 ms.author: maquaran
-ms.openlocfilehash: 239b590a1e3a83fe0205dd8169697db745d7f75e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8c5a081105d37b8f1c78e90d9ccb8d945099b621
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="documentdb-net-change-feed-processor-sdk-download-and-release-notes"></a>DocumentDB .NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -31,21 +31,20 @@ ms.lasthandoff: 10/11/2017
 > * [REST ()](https://docs.microsoft.com/rest/api/documentdb/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/documentdbresourceprovider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Change Feed Processor ライブラリ API リファレンス ドキュメント](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)</td></tr>
-
-<tr><td>**概要**</td><td>[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)</td></tr>
-
-<tr><td>**現在サポートされているフレームワーク**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
-</table></br>
+|   |   |
+|---|---|
+|**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
+|**API ドキュメント**|[Change Feed Processor ライブラリ API リファレンス ドキュメント](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
+|**概要**|[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)|
+|**現在サポートされているフレームワーク**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+* .NET Standard 2.0 のサポートを追加します。 このパッケージで `netstandard2.0`と`net451` フレームワーク モニカーがサポートされるようになりました。
+* [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) バージョン 1.17.0 以降と互換性があります。
+* [DocumentDB .NET SDK](documentdb-sdk-dotnet-core.md) バージョン 1.5.1 以降と互換性があります。
 
 ### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
 * 変更フィードが空であるか保留中の作業がない場合の、残っている作業の推定量の計算に関する問題を修正しました。
@@ -70,6 +69,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.2.0](#1.2.0) |2017 年 10 月 31 日 |--- |
 | [1.1.1](#1.1.1) |2017 年 8 月 29 日 |--- |
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |

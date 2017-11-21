@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 11/03/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: fa8f63c8da5019ed42ea8ec067d3d3d174976dd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5eb681e5f5c3b5944ff2d101056ae7c7cd60fac2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -49,9 +49,6 @@ RDS デプロイでは、RD Web ロールと RD ゲートウェイ ロールは�
 - [RDS をデプロイ](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure)し、[アプリケーション プロキシを有効にしている](active-directory-application-proxy-enable.md)必要があります。
 
 - このシナリオでは、エンド ユーザーが、RD Web ページを通じて接続する Windows 7 または Windows 10 上の Internet Explorer にアクセスすることを前提としています。 その他のオペレーティング システムに対応する必要がある場合は、「[その他のクライアント構成のサポート](#support-for-other-client-configurations)」をご覧ください。
-
-  >[!NOTE]
-  >Windows 10 Creators Update は現在サポートされていません。
 
 - Internet Explorer で RDS ActiveX アドオンを有効にしてください。
 

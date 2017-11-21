@@ -1,6 +1,6 @@
 ---
-title: "Azure Import/Export を使用した Blob Storage との間でのデータの転送 | Microsoft Docs"
-description: "Azure Portal でインポート/エクスポート ジョブを作成して、Blob Storage との間でデータを転送する方法について説明します。"
+title: "Azure Import/Export を使用した Azure Storage との間でのデータの転送 | Microsoft Docs"
+description: "Azure Portal でインポートおよびエクスポート ジョブを作成して、Azure Storage との間でデータを転送する方法について説明します。"
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: fb5b059ad8dc87f445bd84a5fe3bb90822d13f94
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 221bd7662eb4974395c7f970961d5bfb556417f4
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
-この記事では、Azure Import/Export サービスを使用して、ディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage または File Storage に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Blob Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure File Storage にインポートできます。 
+この記事では、Azure Import/Export サービスを使用してディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage と Azure Files に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure Files にインポートできます。 
 
 > [!IMPORTANT] 
 > このサービスでは、内蔵 SATA HDD または SSD のみを使用できます。 他のデバイスはサポートされていません。 外付け HDD や NAS デバイスなどは送付しないでください。可能な場合は返却されますが、そうでない場合は廃棄されます。
 >
 >
 
-ディスク上のデータを Azure Blob Storage にインポートする場合は、以下の手順に従います。
+ディスク上のデータを Azure Storage にインポートする場合は、次の手順に従います。
 ### <a name="step-1-prepare-the-drives-using-waimportexport-tool-and-generate-journal-files"></a>手順 1: WAImportExport ツールを使用して、1 台または複数のドライブを準備し、1 つまたは複数のジャーナル ファイルを生成する
 
-1.  Azure Blob Storage にインポートするデータを識別します。 これは、ローカル サーバーまたはネットワーク共有上のディレクトリやスタンドアロン ファイルなどです。
+1.  Azure Storage にインポートするデータを特定します。 これは、ローカル サーバーまたはネットワーク共有上のディレクトリやスタンドアロン ファイルなどです。
 2.  データの合計サイズに応じて、2.5 インチ SSD か、2.5 (または 3.5) インチ SATA II または III ハード ディスク ドライブを必要な数だけ調達します。
 3.  SATA または外部 USB アダプターを使用して、ハード ドライブを Windows コンピューターに直接接続します。
 4.  各ハード ドライブ上に 1 つの NTFS ボリュームを作成し、このボリュームにドライブ文字を割り当てます。 マウントポイントは不要です。
@@ -80,7 +80,7 @@ Azure DC にパッケージを発送するには、FedEx、UPS、または DHL �
 
 * クラウドへのデータの移行: Azure に大量のデータを迅速にコスト効率よく移動します。
 * コンテンツ配信: 顧客サイトにデータを迅速に送信します。
-* バックアップ: Azure BLOB ストレージに格納するオンプレミスのデータのバックアップを作成します。
+* バックアップ: Azure Storage に格納するオンプレミスのデータのバックアップを作成します。
 * データの回復: ストレージに格納された大量のデータを回復し、オンプレミスの場所に配信します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -90,13 +90,13 @@ Azure DC にパッケージを発送するには、FedEx、UPS、または DHL �
 既存の Azure サブスクリプション、または、Import/Export サービスを使用するための 1 つ以上のストレージ アカウントを持っている必要があります。 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
 ### <a name="data-types"></a>データの種類
-Azure Import/Export サービスを使用して、データを**ブロック** BLOB または**ページ** BLOB あるいは **Files** にコピーすることができます。 逆に言うと、このサービスを使用して Azure Storage からエクスポートできるのは、**ブロック** BLOB、**ページ** BLOB、**追加** BLOB に限られます。 このサービスでは Azure Files のエクスポートはサポートされていません。Azure Storage へのファイルのインポートのみが可能です。
+Azure Import/Export サービスを使用して、データを**ブロック** BLOB、**ページ** BLOB、あるいは **Files** にコピーできます。 逆に言うと、このサービスを使用して Azure Storage からエクスポートできるのは、**ブロック** BLOB、**ページ** BLOB、**追加** BLOB に限られます。 このサービスは、Azure Files の Azure Storage へのインポートのみをサポートします。 Azure Files のエクスポートは、現在サポートされていません。
 
 ### <a name="job"></a>ジョブ
 ストレージとの間でインポートまたはエクスポートの処理を開始するには、まず、ジョブを作成します。 ジョブは、"インポート ジョブ" または "エクスポート ジョブ" です。
 
-* オンプレミスのデータを、Azure ストレージ アカウントの BLOB に転送する場合は、インポート ジョブを作成します。
-* ストレージ アカウントに現在、BLOB として格納されているデータを、返送されるハード ドライブに移す場合は、エクスポート ジョブを作成します。 ジョブを作成するときは、1 台以上のハード ドライブを Azure データ センターに発送することを Import/Export サービスに通知します。
+* オンプレミスのデータを Azure Storage アカウントに転送する場合は、インポート ジョブを作成します。
+* ストレージ アカウントに現在格納されているデータを、送付するハード ドライブに移す場合は、エクスポート ジョブを作成します。 ジョブを作成するときは、1 台以上のハード ドライブを Azure データ センターに発送することを Import/Export サービスに通知します。
 
 * インポート ジョブの場合、データが保存されたハード ドライブを送付します。
 * エクスポート ジョブの場合、空のハード ドライブを送付します。
@@ -294,7 +294,7 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 
 **トランザクション料金**
 
-BLOB ストレージにデータをインポートするときは、トランザクション料金は発生しません。 BLOB ストレージからデータをエクスポートするときは、標準の送信料金が適用されます。 トランザクション料金の詳細については、「 [Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)
+Azure Storage にデータをインポートするときは、トランザクション料金は発生しません。 Blob Storage からデータをエクスポートするときは、標準の送信料金が適用されます。 トランザクション料金の詳細については、「 [Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 
 
@@ -304,7 +304,6 @@ Azure Import/Export サービスを使用してデータをインポートする
 
 1. Azure File Storage にインポートするデータを識別します。 これは、ローカル サーバーまたはネットワーク共有上のディレクトリやスタンドアロン ファイルです。  
 2. データの合計サイズに応じて、必要なドライブの数を決定します。 2.5 インチ SSD か、2.5 (または 3.5) SATA II または III のハード ディスク ドライブを必要な数だけ調達します。
-3. ターゲット ストレージ アカウント、コンテナー、仮想ディレクター、および BLOB を特定します。
 4. 各ハード ディスク ドライブにコピーするディレクトリやスタンドアロン ファイルを決定します。
 5. データセットとドライブセットの CSV ファイルを作成します。
     
@@ -500,9 +499,9 @@ Azure ストレージ アカウント内のデータには、Azure Portal から
 
 インポート ジョブのハード ドライブを準備するときに、データセット CSV の DstBlobPathOrPrefix フィールドでコピー先が指定されます。 これは、ハード ドライブのデータのコピー先となるストレージ アカウント内のコピー先コンテナーです。 このコピー先コンテナー内に、ハード ドライブのフォルダーの仮想ディレクトリが作成され、ファイルの BLOB が作成されます。 
 
-**ストレージ アカウント内に既に存在するファイルがドライブに含まれている場合、ストレージ アカウント内の既存の BLOB が上書きされるのでしょうか。**
+**ストレージ アカウント内に既に存在するファイルがドライブに含まれている場合、ストレージ アカウント内の既存の BLOB またはファイルは上書きされますか。**
 
-ドライブを準備するときに、データセット CSV の /Disposition:<rename|no-overwrite|overwrite> というフィールドを使用して、コピー先のファイルを上書きするか無視するかを指定できます。 既定では、既存の BLOB は上書きされず、新しいファイルの名前が変更されます。
+ドライブを準備するときに、データセット CSV の /Disposition:<rename|no-overwrite|overwrite> というフィールドを使用して、コピー先のファイルを上書きするか無視するかを指定できます。 既定では、既存の BLOB またはファイルは上書きされず、新しいファイルの名前が変更されます。
 
 **WAImportExport ツールは、32 ビット オペレーティング システムと互換性がありますか。**
 いいえ。 WAImportExport ツールは、64 ビット Windows オペレーティング システムとのみ互換性があります。 サポートされる OS バージョンの一覧については、「 [前提条件](#pre-requisites) 」の「オペレーティング システム」セクションをご覧ください。

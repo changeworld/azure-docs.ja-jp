@@ -1,30 +1,35 @@
 ---
 title: "Azure Marketplace 販売者ガイド | Microsoft Docs"
-description: "このガイドは、IT プロフェッショナルと開発者を対象とした Azure Certified 取得済み仮想マシン イメージの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。"
+description: "このガイドは、IT プロフェッショナルと開発者を対象とした Azure Certified 取得済み仮想マシン イメージおよびマネージ アプリケーションの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。"
 documentationcenter: 
-author: rupeshazure
-manager: hamidm
+author: divacc
+manager: prkumar
 ms.service: marketplace
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
-ms.author: rupesk@microsoft.com
-ms.robots: NOINDEX, NOFOLLOW
-ms.openlocfilehash: c78708687fbb5716e3e8d62967013310d6ccc735
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.author: divacc@microsoft.com
+ms.openlocfilehash: 0985c7da429202cc6003df73c6ca17714b5a1287
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure Marketplace 販売者ガイド
 
-Microsoft Azure Marketplace 販売者ガイドをご覧くださりありがとうございます。 このガイドは、IT プロフェッショナルと開発者を対象とした Azure Certified 取得済み仮想マシン イメージの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。 Azure のお客様は世界中に存在します。[Marketplace](https://azuremarketplace.microsoft.com/) を利用すれば、自社製品をきわめて多くのお客様にリーチさせることができます。
-
+Microsoft Azure Marketplace 販売者ガイドをご覧くださりありがとうございます。 このガイドは、IT プロフェッショナルと開発者を対象とした Azure Certified 取得済み仮想マシン イメージおよびマネージ アプリケーションの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。 Azure のお客様は世界中に存在します。[Azure Marketplace](https://azuremarketplace.microsoft.com/) を利用すれば、自社製品をきわめて多くのお客様にリーチさせることができます。
 
 > [!NOTE]
-> 完成したサービスとしてのソフトウェア (SaaS) をビジネス ユーザーに販売したい場合は、それらを [AppSource](https://appsource.microsoft.com) で一覧表示するための各種オプションをご確認ください。
+> [マネージ アプリケーション](https://docs.microsoft.com/en-us/azure/managed-applications/overview)を販売したい場合は、そのアプリケーションを[こちら](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app)の手順に従って Azure Marketplace のリストに掲載する必要があります。
+
+> [!NOTE]
+> 完成したサービスとしてのソフトウェア (SaaS) 製品を _IT プロフェッショナルと開発者_に販売したい場合は、各種オプションの詳細について saas-on-amp@microsoft.com までお問い合わせください。
+
+> [!NOTE]
+> 完成したサービスとしてのソフトウェア (SaaS) 製品を[ビジネス ユーザーに](https://appsource.microsoft.com)販売したい場合は、その製品を _AppSource_ のリストに掲載するための各種オプションをご確認ください。
+
 
 このガイドの目的は、次のトピックに関する詳細をどこで確認できるか説明することです。
 
@@ -43,9 +48,9 @@ Microsoft Azure Marketplace 販売者ガイドをご覧くださりありがと�
 
 ## <a name="whats-the-azure-marketplace"></a>Azure Marketplace とは何ですか?
 
-Azure Marketplace は、アプリケーションとサービスのオンライン マーケットプレースです。ここで、スタートアップから大企業に至るまで、さまざまな ISV が自社のソリューションを世界中の Azure のお客様に提供します。 Marketplace を利用すると、Azure 公開元が自社の仮想マシン イメージを、クラウド ベースのアプリケーションやモバイル ソリューションを Azure で短期間で開発しようとしている他のプロフェッショナルに、配布および販売することができます。 Marketplace では、データ処理、データ ストレージ、分析レイヤーを備えたエンド ツー エンドの分析アプリケーションから、階層型の eコマース アプリ (データ、サービス、インターネット) まで、幅広いサービスをサポートしています。
+Azure Marketplace は、アプリケーションとサービスのオンライン マーケットプレースです。ここで、スタートアップから大企業に至るまで、さまざまな ISV が自社のソリューションを世界中の Azure のお客様に提供します。 Marketplace を利用すると、Azure 公開元が自社の仮想マシン イメージ、マネージ アプリケーション、および SaaS アプリケーションを、クラウドベースのアプリケーションやモバイル ソリューションを Azure で短期間で開発しようとしている他のプロフェッショナルに配布および販売することができます。 Azure Marketplace は、データ処理、データ ストレージ、分析レイヤーを備えたエンド ツー エンドの分析アプリケーションから階層型の eコマース アプリ (データ、サービス、インターネット) まで、幅広いサービスをサポートしています。
 
-クラウドのお客様は、独自のニーズを満たすソリューションを検索する際に、いくつかの課題に直面します。 Marketplace では、お客様がこれらの課題を解決し、革新的な ISV のソリューションを見つけ出せるよういな手段を提供しています。詳細は次の表のとおりです。
+クラウドのお客様は、独自のニーズを満たすソリューションを検索する際に、いくつかの課題に直面します。 Marketplace では、お客様がこれらの課題を解決し、革新的な ISV のソリューションを見つけ出すための手段を提供しています。詳細は次の表のとおりです。
 
 | 顧客ニーズ | Azure Marketplace のソリューション |
 | --- | --- |
@@ -54,14 +59,14 @@ Azure Marketplace は、アプリケーションとサービスのオンライ�
 | サードパーティ製のアプリケーションとサービスをデプロイするためのスケーラブルなしくみが必要 | サードパーティ製のアプリケーションとサービス向けにスケーラブルなデプロイの作成と構成ができるようにする |
 | 新しいアプリケーションとサービスを既存のソリューションと統合して使用する必要がある | Azure でサードパーティ製のアプリケーションとサービスを既存のソリューションと簡単に統合できる |
 
-Marketplace は、高品質な Azure パートナー エコシステムの幅広い選択肢と強みを世界中のお客様に提供します。 主な利点:
+Azure Marketplace は、高品質な Azure パートナー エコシステムの幅広い選択肢と強みを世界中のお客様に提供します。 主な利点:
 
 - Microsoft とパートナーから提供される Azure ベースのサービスの場所が統合済み。
 - 5,000 以上の販売提案。
 - 統合されたプラットフォーム エクスペリエンス。
 - 合理的な構成、デプロイ、管理。
 
-## <a name="is-the-marketplace-right-for-my-business"></a>Marketplace は自分の会社のビジネスにマッチしているでしょうか?
+## <a name="is-azure-marketplace-right-for-my-business"></a>Azure Marketplace は自分の会社のビジネスにマッチしているでしょうか?
 
 ここまでで、Azure Marketplace が自社のビジネスに適しているかどうか、気になり始めた方もいるかもしれません。 では、適しているとすれば、何が得られるのでしょうか。 Marketplace は、新たな販売の機会を提供します。
 
@@ -74,23 +79,32 @@ Marketplace は、高品質な Azure パートナー エコシステムの幅広
 
 Marketplace のお客様は多岐にわたります。 さらに、Azure は、すべてのクラウド プロバイダーの急速に成長する顧客ベースの 1 つを保持しています。 このため、公共セクターと民間セクター、新興企業や大企業、さらには業界の枠も越えた、IT プロフェッショナルおよび開発者にアクセスできます。
 
-## <a name="how-does-the-marketplace-work"></a>Marketplace のしくみはどのようなものですか?
+## <a name="how-does-marketplace-work"></a>Marketplace のしくみはどのようなものですか?
 
-非常に簡単です。 承認後、Azure Certified 取得済み仮想マシン イメージを作成し、Marketplace に公開すれば、 Azure のお客様がその製品を数分で検索、購入、およびデプロイできるようになります。 これに加えて、お客様は安心してソリューションをデプロイできます。 Azure での使用条件を満たす環境が構成済みで、インフラストラクチャを数分以内に使用可能であることがわかっているためです。
+非常に簡単です。 承認を得た後、Azure Certified 取得済み仮想マシン イメージまたはマネージ アプリケーションを作成し、Marketplace に公開すれば、 Azure のお客様がその製品を数分で検索、購入、およびデプロイできるようになります。 これに加えて、お客様は安心してソリューションをデプロイできます。 Azure での使用条件を満たす環境が構成済みで、インフラストラクチャを数分以内に使用可能であることがわかっているためです。
 
-クラウド パートナー ポータルは、Marketplace での販売提案を作成するためのハブです。 仮想マシン イメージには、完全にインストールされたオペレーティング システムと 1 つ以上のアプリケーションが事前に構成されています。 公開の準備を整えるためにイメージの認定を受けるには、特定の前提条件を満たす必要があります。 これについては、次のセクションで説明します。
+クラウド パートナー ポータルは、Marketplace での販売提案を作成するためのハブです。 公開の準備を整えるためにプランの認定を受けるには、特定の前提条件を満たす必要があります。 これについては、次のセクションで説明します。
 
 
 ## <a name="whats-next"></a>次の手順
 
-Azure Marketplace はまさに自社の製品にぴったりだ、と考えていることでしょう。 では、どのように始めればよいのでしょうか。 このセクションでは、次の手順による Marketplace の開始と利用について説明します (図 1)。 
+Azure Marketplace はまさに自社の製品にぴったりだ、と考えていることでしょう。 では、どのように始めればよいのでしょうか。 このセクションでは、仮想マシン イメージの場合の Marketplace の開始手順について重点的に説明します (図 1)。 
 * Azure Certified を取得する。
 * 製品を販売するための承認を得る。
-* クラウド パートナー ポータルで販売提案を作成する。 
+* Microsoft Cloud パートナー ポータルでプランを作成して公開する。 
 
 ![Azure Marketplace での販売のためのプロセス](./media/cloud-partner-portal-seller-guide/processforselling.png)
 
 図 1: Azure Marketplace での販売のためのプロセス
+
+公開しようとしているワークロード (仮想マシンまたはマネージ アプリケーション) に応じて、プランを公開するための異なるプロセスに従います。 以下の内容では、"_仮想マシン プラン_" を公開する場合について重点的に説明します。
+
+> [!NOTE]
+> [マネージ アプリケーション](https://docs.microsoft.com/en-us/azure/managed-applications/overview)を販売したい場合は、そのアプリケーションを[こちら](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app)の手順に従って Azure Marketplace のリストに掲載する必要があります。
+
+> [!NOTE]
+> 完成したサービスとしてのソフトウェア (SaaS) 製品を _IT プロフェッショナルと開発者_に販売したい場合は、各種オプションの詳細について saas-on-amp@microsoft.com までお問い合わせください。
+
 
 最初に技術面および技術面以外の一連の前提条件を満たし、仮想マシン イメージを準備します。 次に、製品をノミネートし、販売者として登録します。 最後に、マーケティングのコンテンツを追加して、公開用に送信します。 販売提案は、Marketplace で提供開始する前に、プレビューまたはステージング環境で確認することができます。
 
@@ -103,6 +117,7 @@ Azure Marketplace の販売提案を作成するための最初の手順は、Az
 ![Azure Certified を取得するための要件](./media/cloud-partner-portal-seller-guide/azurecertified.png)
 
 図 2: Azure Certified を取得するための要件
+
 
 ### <a name="technical-prerequisites"></a>技術的な前提条件
 
@@ -147,13 +162,15 @@ Marketplace に参加するには、技術面以外の前提条件をいくつ�
 
 ## <a name="how-do-i-nominate-my-product-and-get-approved"></a>製品をノミネートし、承認を得るためにはどうすればよいですか?
 
-ここでは、Marketplace で製品を販売するための承認を得ます (図 3)。 Microsoft では、自社製品のノミネート、公開プロセスの完了、販売者としての登録をスムーズに進められるようにしています。
+ここでは、Marketplace で製品を販売するための承認を得ます (図 3)。 
+
+Microsoft では、自社製品のノミネート、公開プロセスの完了、販売者としての登録をスムーズに進められるようにしています。 公開しようとしているワークロード (仮想マシンまたはマネージ アプリケーション) に応じて、異なるノミネート プロセスに従います。
 
 ![Azure Marketplace で販売するための承認を得る](./media/cloud-partner-portal-seller-guide/gettingapprovedsteps.png)
 
 図 3: Azure Marketplace で販売するための承認を得る手順
 
-承認を得るための最初の手順として、登録や公開を行う前に製品を[ノミネート](https://createopportunity.azurewebsites.net/)します。 承認には "_最大 3 営業日_" かかります。
+"_仮想マシン オファー_" を公開したい場合は、[こちら](https://createopportunity.azurewebsites.net/)で製品をノミネートします。 承認には "_最大 3 営業日_" かかります。
 
 承認されると、次のものが届きます。
 
@@ -172,17 +189,19 @@ Marketplace に参加するには、技術面以外の前提条件をいくつ�
 
 ## <a name="what-about-best-practices"></a>ベスト プラクティスについて
 
-Marketplace で販売者となるメリットを最大限に活用するためのツールとベスト プラクティスをいくつか用意しました。
+Marketplace で販売者となるメリットを最大限に活用するためのベスト プラクティスをいくつか用意しました。
 
 ### <a name="azure-test-drives"></a>Azure の体験版
 
 [Azure の体験版](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/test-drives?page=1)は、潜在顧客に製品を発表し、購入前の試用という選択肢を提供するための優れた手段です。 これにより、コンバージョンが向上し、有望な潜在顧客を獲得することができます。
 
-連絡先を入力した顧客が、構築済みの体験版を使用できるようになります。 試用版では、製品の主な機能とメリットを、実際のシナリオを通じて試用することができます。
+連絡先を入力した顧客が、構築済みの体験版を使用できるようになります。 試用版では、製品の主な機能とメリットを、実際のシナリオを通じて試用することができます。 それに加えて、 プランに関連した体験版を公開することにより、最大 36% の潜在顧客をさらに獲得できます。
 
-現時点では、製品の体験版の公開は、従来の公開ポータルでのみ実施できます。 詳細については、[新しい体験版を公開する方法](https://github.com/Azure/AzureTestDrive/wiki)に関するページをご覧ください。
+体験版を公開するために必要なすべてのガイダンスは、オンボード プロセス中に Microsoft Cloud パートナー ポータルで提供されます。 Azure の体験版の詳細については、[こちら](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)を参照してください。
 
-Azure の体験版の詳細については、[こちら](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)を参照してください。
+###<a name="lead-generation"></a>潜在顧客の生成
+
+製品を Azure Marketplace に掲載することの重要な価値の 1 つは、御社の製品に関心があるか、御社の製品をデプロイしたことがある適格な潜在顧客が送信されるという点にあります。 さらに良いことに、それらの潜在顧客は御社の CRM に直接送信されるため、迅速なアクションの実行やフォローアップが可能になり、より多くのチャンスの創出や取引の成立につながります。 潜在顧客の生成の統合には数分かかります。この処理は、Microsoft Cloud パートナー ポータルでの公開プロセス中に行われます。
 
 ### <a name="go-to-market-checklist"></a>Go-to-Market チェックリスト
 
@@ -198,21 +217,20 @@ Azure の体験版の詳細については、[こちら](https://azuremarketplac
 
 ## <a name="what-about-reports"></a>レポートについて
 
-Marketplace では、注文、使用状況、顧客に関するレポートが提供されます。このレポートには、Marketplace の[公開元レポート ポータル](https://reports.azure.com)経由でアクセスできます。 有用な洞察や分析のほか、生データが誘導可能なテーブルとして提供され、CSV または XLS ファイルとしてダウンロードすることができます。
+Marketplace では、注文、使用状況、顧客に関するレポートが提供されます。このレポートには、Microsoft Cloud パートナー ポータルからアクセスできます。 有用な洞察や分析のほか、生データが誘導可能なテーブルとして提供され、CSV または XLS ファイルとしてダウンロードすることができます。
 
-この[ビデオ](https://player.vimeo.com/video/200859918)では、レポートの機能と利点について、少しだけ紹介しています。たとえば以下の内容です。
+Insights の機能とメリットには、たとえば次のようなものがあります。
 
-- レポートの種類: ホーム ページ上での注文、使用状況、顧客の傾向に関する簡易スナップショット。
+- レポートの種類: Insights ホーム ページ上での注文、使用状況、デプロイ、顧客の傾向に関する簡易スナップショット。
 - 注文、使用状況、顧客に関する詳細なデータ。
 - 月次の概要または 6 か月ごとの傾向ビューとして表示される注文と使用状況。
-- 標準として示されるいくつかの洞察。
 - 次のカテゴリ別の使用状況/注文:
   - 市場
   - チャネル
   - 注目のプラン
   - Marketplace ライセンス タイプ
 
-詳細なレポートでは、会社名、郵便番号をはじめとする地理的な所在地などの顧客情報が表示されます。これにより、顧客を比較することができます。 次の一覧は、Microsoft が提供している、顧客に関する具体的な属性です。
+詳細なレポートでは、会社名、郵便番号レベルに至るまでの地理的な所在地などの顧客情報が表示されます。これにより、顧客を比較したり販売者に報酬を支払ったりできます。 次の一覧は、Microsoft が提供している、顧客に関する具体的な属性です。
 
 - Reseller
 - FirstName
@@ -221,7 +239,7 @@ Marketplace では、注文、使用状況、顧客に関するレポートが�
 - CompanyName
 - TransactionDate
 - SubscriptionName
-- AzureSubscriptionId
+- AzureSubscriptionId (PAYG のお客様のみ)
 - CloudInstanceName
 - OrderCount
 - CustomerCountryRegion
@@ -229,7 +247,7 @@ Marketplace では、注文、使用状況、顧客に関するレポートが�
 - CustomerCommunicationCulture
 - CustomerZipCode
 
-ヘルプ ドキュメント、用語集、録画したデモなどのトレーニング資料もご用意しています。 レポートに関するヘルプまたはサポートが必要な場合は、[サポート チケット](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=15635&ccsid=636233723471685249)を開くことができます。
+ヘルプ ドキュメント、用語集、録画したデモなどのトレーニング資料もご用意しています。 レポートに関するヘルプまたはサポートが必要な場合は、Microsoft Cloud パートナー ポータルからサポート チケットを開くことができます。
 
 ISV 販売者コミュニティへの皆様のご参加をお待ちしております。
 

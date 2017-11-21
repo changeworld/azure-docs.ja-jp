@@ -11,16 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 10/15/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1e8c2248c064a7ec934dd8ef3e926f3325a05395
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: fda3c7a9a369eec1b9033ee7077a5f3770647c9f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の自己ホスト型統合ランタイム](../create-self-hosted-integration-runtime.md)に関するページを参照してください。 
+
+
 この記事を参照し、Data Management Gateway/Integration を使用して可用性と拡張性の高いソリューションを構成できます。    
 
 > [!NOTE]

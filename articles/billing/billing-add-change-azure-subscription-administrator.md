@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2017
 ms.author: genli
-ms.openlocfilehash: 178d7fbc17464f7c9a4bc891453d0999e4ba62c3
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 091fe208783a2fe5d5c91abe4ec498bf760a3eb3
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する
 
@@ -110,7 +110,7 @@ Azure Active Directory のロールベースのアクセス制御 (RBAC) では�
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>リソースのアクセス制御と Active Directory の詳細
 
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](../active-directory/active-directory-understanding-resource-access.md)」を参照してください。
-* Azure Active Directory について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)」および「[Azure Active Directory での管理者ロールの割り当て](../active-directory/active-directory-assign-admin-roles.md)」をご覧ください。
+* Azure Active Directory について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)」および「[Azure Active Directory での管理者ロールの割り当て](../active-directory/active-directory-assign-admin-roles-azure-portal.md)」をご覧ください。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

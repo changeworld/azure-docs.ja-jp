@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 07927f1660681af35428747b51a8c14ba6153a7a
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: 96a40753d87d49e9493e808da0294d682b2a19e5
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Linux ベースの HDInsight 上の Hive を使用したフライト遅延データの分析
 
@@ -31,7 +31,7 @@ Linux ベースの HDInsight で Hive を使用してフライト遅延データ
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight クラスター**。 Linux ベースの新しい HDInsight クラスターを作成する手順については、[HDInsight での Hadoop の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
+* **HDInsight クラスター**。 Linux ベースの新しい HDInsight クラスターを作成する手順については、[HDInsight での Hadoop の使用](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
 * **Azure SQL データベース**。 保存先データ ストアとして Azure SQL Database を使用します。 SQL データベースがない場合は、「[Azure Portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started.md)」を参照してください。
 
@@ -306,15 +306,15 @@ HDInsight でのデータ操作の詳細については、次の記事を参照�
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-[hdinsight-use-hive]: hdinsight-use-hive.md
+[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-[hdinsight-use-sqoop]: hdinsight-use-sqoop-mac-linux.md
-[hdinsight-use-pig]: hdinsight-use-pig.md
-[hdinsight-develop-streaming]: hdinsight-hadoop-streaming-python.md
-[hdinsight-develop-mapreduce]: hdinsight-develop-deploy-java-mapreduce-linux.md
+[hdinsight-get-started]: hadoop/apache-hadoop-linux-tutorial-get-started.md
+[hdinsight-use-sqoop]:hadoop/apache-hadoop-use-sqoop-mac-linux.md
+[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
+[hdinsight-develop-streaming]:hadoop/apache-hadoop-streaming-python.md
+[hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
 

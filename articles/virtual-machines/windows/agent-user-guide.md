@@ -3,7 +3,7 @@ title: "Azure 仮想マシン エージェントの概要 | Microsoft Docs"
 description: "Azure 仮想マシン エージェントの概要"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: danielsollondon
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
-ms.author: nepeters
-ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danis
+ms.openlocfilehash: f3e4ab075f7cd75bac2d66f0391227c0de6e11a0
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 

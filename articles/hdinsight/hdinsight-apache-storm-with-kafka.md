@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/12/2017
 ms.author: larryfr
-ms.openlocfilehash: 7b41afdbb019f8533a49db3ebd37ff144186f956
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 97b89b9c6ef88c1611ccad7963a0aa8e7eb82318
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>HDInsight での Strom に Apache Kafka (プレビュー) を使用する
 
@@ -341,6 +341,6 @@ Storm クラスターへの SSH セッションで、次のコマンドを使用
 
 ## <a name="next-steps"></a>次のステップ
 
-HDInsight 上の Storm で使用できるトポロジの例については、[Storm のトポロジおよびコンポーネントのサンプル](hdinsight-storm-example-topology.md)に関するページを参照してください。
+HDInsight 上の Storm で使用できるトポロジの例については、[Storm のトポロジおよびコンポーネントのサンプル](storm/apache-storm-example-topology.md)に関するページを参照してください。
 
-Linux ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md)」を参照してください。
+Linux ベースの HDInsight でトポロジをデプロイおよび監視する方法については、「[Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md)」を参照してください。

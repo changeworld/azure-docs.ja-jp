@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 11/02/2017
 ms.author: kumud
-ms.openlocfilehash: 7256548b988812c64ca9a9f8a84fec377646635d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4cd65c01d75af8539f5fa13dbbd2aaec548aea0b
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>内部 Load Balancer 用の高可用性ポートを構成する方法
 
-この記事では、内部 Load Balancer に高可用性 (HA) ポートをデプロイする例について説明します。 ネットワーク仮想アプライアンス固有の構成については、対応するプロバイダーの Web サイトを参照してください。
+この記事では、内部 Load Balancer に高可用性 (HA) ポートをデプロイする例について説明します。 ネットワーク仮想アプライアンス (NVA) 固有の構成については、対応するプロバイダーの Web サイトを参照してください。
 
 >[!NOTE]
 > 高可用性ポート機能は現在プレビュー中です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 図 1 は、この記事で説明するデプロイ例の次の構成を示したものです。
 - NVA は、HA ポート構成の背後にある内部 Load Balancer のバックエンド プールにデプロイされます。 
-- DMZ サブネットに適用された UDR は、次のホップを内部 Load Balancer の仮想 IP にすることで、すべてのトラフィックを <?> にルートします。 
+- DMZ サブネットに適用された UDR は、次のホップを内部 Load Balancer の仮想 IP にすることで、すべてのトラフィックを NVA にルートします。 
 - 内部 Load Balancer は、LB アルゴリズムに従ってアクティブな NVA LB のいずれかにトラフィックを分散します。
 - NVA はトラフィックを処理し、バックエンド サブネット内の元の送信先に転送します。
 - また、対応する UDR がバックエンド サブネットで構成されている場合、リターン パスが同じルートをたどる可能性があります。 
@@ -41,19 +41,13 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="preview-sign-up"></a>プレビューのサインアップ
 
-Load Balancer Standard SKU の HA ポート機能のプレビューに参加するには、PowerShell または Azure CLI 2.0 を使用してサブスクリプションを登録します。
+Load Balancer Standard の HA ポート機能のプレビューに参加するには、Azure CLI 2.0 または PowerShell を使用してサブスクリプションを登録し、アクセスできるようにします。  次のサブスクリプションを登録してください。
 
-- PowerShell を使用したサインアップ
+1. [Load Balancer Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up) および 
+2. [HA ポート プレビュー](https://aka.ms/haports#preview-sign-up)
 
-   ```powershell
-   Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-
-- Azure CLI 2.0 を使用したサインアップ
-
-    ```cli
-  az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network  
-    ```
+>[!NOTE]
+>この機能を使用するには、HA ポートに加えて、Load Balancer [Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up)にもサインアップする必要があります。 HA ポートまたは Load Balancer Standard プレビューの登録には、最大で 1 時間ほどかかる場合があります。
 
 ## <a name="configuring-ha-ports"></a>HA ポートを構成する
 
@@ -68,6 +62,39 @@ Azure Portal には、この構成のチェックボックスを使用する **[
 ![Azure Portal を使用した HA ポートの構成](./media/load-balancer-configure-ha-ports/haports-portal.png)
 
 図 2 - Azure Portal を使用した HA ポータルの構成
+
+### <a name="configure-ha-ports-lb-rule-via-resource-manager-template"></a>Resource Manager テンプレートを使用してロード バランサー ルールを構成する
+
+Load Balancer リソース内の 2017-08-01 API バージョンの Microsoft.Network/loadBalancers を使用して、HA ポートを構成できます。 次の JSON スニペットは、REST API を使用した HA ポート用の Load Balancer 構成の変更を示しています。
+
+```json
+    {
+        "apiVersion": "2017-08-01",
+        "type": "Microsoft.Network/loadBalancers",
+        ...
+        "sku":
+        {
+            "name": "Standard"
+        },
+        ...
+        "properties": {
+            "frontendIpConfigurations": [...],
+            "backendAddressPools": [...],
+            "probes": [...],
+            "loadBalancingRules": [
+             {
+                "properties": {
+                    ...
+                    "protocol": "All",
+                    "frontendPort": 0,
+                    "backendPort": 0
+                }
+             }
+            ],
+       ...
+       }
+    }
+```
 
 ### <a name="configure-ha-ports-load-balancer-rule-with-powershell"></a>PowerShell を使用して HA ポートのロード バランサー ルールを構成する
 

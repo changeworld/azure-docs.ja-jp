@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: 77315171754304c965f296670fbba3a4751a3656
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88a5fe33d048814d956a1221802f059cfbcccb0a
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理
 > [!div class="op_single_selector"]
@@ -150,7 +150,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
 カスタム ロールを作成するには、次のコマンドを使用します。
 
-    azure role definition create --role-definition <file path>
+    azure role create --inputfile <file path>
 
 次の例では、 *仮想マシン オペレーター*というカスタム ロールが作成されます。 このカスタム ロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 このカスタム ロールは、2 つのサブスクリプションで使うことができます。 この例では、入力として JSON ファイルを使用します。
 
@@ -159,9 +159,9 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![RBAC Azure コマンド ライン - azure ロールの作成 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-2.png)
 
 ## <a name="modify-a-custom-role"></a>カスタム ロールの修正
-カスタム ロールを修正するには、まず `azure role definition list` コマンドを使用してロール定義を取得します。 次に、必要に応じてロール定義ファイルを変更します。 最後に、 `azure role definition update` を使用して、変更したロール定義を保存します。
+カスタム ロールを修正するには、まず `azure role list` コマンドを使用してロール定義を取得します。 次に、必要に応じてロール定義ファイルを変更します。 最後に、 `azure role set` を使用して、変更したロール定義を保存します。
 
-    azure role definition update --role-definition <file path>
+    azure role set --inputfile <file path>
 
 次の例では、*Microsoft.Insights/diagnosticSettings/* 操作が **Actions** に追加され、Azure サブスクリプションが仮想マシン オペレーター カスタム ロールの **AssignableScopes** に追加されます。
 
@@ -170,7 +170,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![RBAC Azure コマンド ライン - azure ロールの設定 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set2.png)
 
 ## <a name="delete-a-custom-role"></a>カスタム ロールの削除
-カスタム ロールを削除するには、まず、 `azure role definition list` コマンドを使用してロールの **ID** を特定します。 次に、 `azure role definition delete` コマンドで **ID**を指定してロールを削除します。
+カスタム ロールを削除するには、まず、 `azure role list` コマンドを使用してロールの **ID** を特定します。 次に、 `azure role delete` コマンドで **ID**を指定してロールを削除します。
 
 次の例では、 *仮想マシン オペレーター* カスタム ロールが削除されます。
 
@@ -182,7 +182,7 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 次のコマンドでは、選んだサブスクリプションで割り当て可能なすべてのロールが一覧表示されます。
 
 ```
-azure role definition list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
+azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
 ```
 
 ![RBAC Azure コマンド ライン - azure ロール一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
@@ -190,7 +190,7 @@ azure role definition list --json | jq '.[] | {"name":.properties.roleName, type
 次の例では、"*仮想マシン オペレーター*" カスタム ロールは *Production4* サブスクリプションでは利用できません。そのサブスクリプションはロールの **AssignableScopes** にないためです。
 
 ```
-azure role definition list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
+azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'
 ```
 
 ![RBAC Azure コマンド ライン - カスタム ロールの azure ロール一覧 - スクリーンショット](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list2.png)

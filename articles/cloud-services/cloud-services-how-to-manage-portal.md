@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 4650cebe18153e3b10bbec685a66a590348c99e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9af1fdeb5cfe69631cabe13bd341b43319175aae
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>Cloud Services の管理方法
-> [!div class="op_single_selector"]
-> * [Azure ポータル](cloud-services-how-to-manage-portal.md)
-> * [Azure クラシック ポータル](cloud-services-how-to-manage.md)
->
->
-
 Azure Portal の **[Cloud Services (クラシック)]** 領域では、サービス ロールまたはデプロイメントの更新、ステージングされたデプロイメントの運用環境への昇格、クラウド サービスに対するリソースのリンク (リソースの依存関係を把握してリソースの規模をまとめて設定するため)、およびクラウド サービスまたはデプロイメントの削除ができます。
 
 クラウド サービスのスケールの方法については、 [こちら](cloud-services-how-to-scale-portal.md)をご覧ください。

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/16/2017
 ms.author: stevelas
-ms.openlocfilehash: 630bc088fcb6d3c7e5bb3a9713107c3fb6653ec6
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: dae97084bdaab77efd38169cdf7e70c827b0b5ab
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry SKU
 
@@ -43,21 +43,7 @@ Premium レジストリは、ストレージや同時実行操作などの制約
 
 次の表に、Basic、Standard、および Premium サービス階層の機能と制限について説明します。
 
-| 機能 | 基本 | Standard | プレミアム |
-|---|---|---|---|---|
-| ストレージ | 10 GiB | 100 GiB| 500 GiB |
-| 1 分あたりの ReadOps<sup>1、2</sup> | 1k | 300k | 10,000k |
-| 1 分あたりの WriteOps<sup>1、3</sup> | 100 | 500 | 2k |
-| ダウンロード帯域幅 MBps<sup>1</sup> | 30 | 60 | 100 |
-| アップロード帯域幅 MBps<sup>1</sup> | 10 | 20 | 50 |
-| Webhook | 2 | 10 | 100 |
-| geo レプリケーション | 該当なし | 該当なし | [サポート *(プレビュー)*](container-registry-geo-replication.md) |
-
-<sup>1</sup> *ReadOps*、*WriteOps*、および*帯域幅*は最小推定値です。 ACR は、使用状況で必要とするパフォーマンスの向上に努めます。
-
-<sup>2</sup> [Docker プル](https://docs.docker.com/registry/spec/api/#pulling-an-image)は、イメージ内のレイヤー数とマニフェストの取得に基づいて、複数の読み取り操作に変換します。
-
-<sup>3</sup> [Docker プッシュ](https://docs.docker.com/registry/spec/api/#pushing-an-image)は、プッシュする必要があるレイヤーの数に基づいて、複数の書き込み操作に変換します。 `docker push` には、*ReadOps* が含まれ、既存のイメージのマニフェストを取得します。
+[!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
 ## <a name="manage-registry-size"></a>レジストリ サイズの管理
 各 SKU のストレージ制約は、一般的なシナリオに一致するように意図されています。開始用の Basic、大半の運用アプリケーションに対応する Standard、ハイパースケール パフォーマンスと[geo レプリケーション](container-registry-geo-replication.md)に対応する Premium があります。 レジストリの有効期間を通して、使用されていないコンテンツを定期的に削除することによって、そのサイズを管理する必要があります。

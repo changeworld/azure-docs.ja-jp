@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2017
+ms.date: 11/07/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d7bc694b05ed1eb3915ba913afdb3cc39e048ca7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1002ce29ff0d9ee2a6eac44c6e4402fc7e9ade31
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 この記事では、Azure Active Directory (AD) 開発で重要となるいくつかの概念について定義しています。Azure AD のアプリケーション開発を習得する際の参考としてください。
@@ -153,13 +153,13 @@ Azure AD の Graph API によって公開されているアプリケーション
 エンド ユーザーの認証を取り消し、[サインイン](#sign-in)の過程で[クライアント アプリケーション](#client-application)のセッションに関連付けられたユーザーの状態を解除するプロセス。
 
 ## <a name="tenant"></a>テナント
-Azure AD ディレクトリのインスタンスを "Azure AD テナント" といいます。 テナントには、次のようなさまざまな機能が備わっています。
+Azure AD ディレクトリのインスタンスを "Azure AD テナント" といいます。 次のような機能が用意されています。
 
 * 統合アプリケーションのレジストリ サービス
 * ユーザー アカウントや登録済みアプリケーションの認証
 * OAuth2、SAML などの各種プロトコルをサポートするうえで必要な REST エンドポイント ([承認エンドポイント](#authorization-endpoint)、[トークン エンドポイント](#token-endpoint)のほか、[マルチテナント アプリケーション](#multi-tenant-application)によって使用される "共通" エンドポイントなど)
 
-また、テナントはサブスクリプションのプロビジョニング中に Azure AD または Office 365 のサブスクリプションに関連付けられるため、サブスクリプションの ID 管理機能とアクセス管理機能が利用できるようになります。 テナントを利用するための各種方法について詳しくは、「[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]」をご覧ください。 サブスクリプションと Azure AD テナントの関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法][AAD-How-Subscriptions-Assoc]」をご覧ください。
+Azure AD テナントはサインアップ時に作成され、Azure サブスクリプションおよび Office 365 サブスクリプションに関連付けられます。これにより、そのサブスクリプションの ID およびアクセス管理機能が提供されます。 Azure サブスクリプション管理者は、Azure Portal を使用して追加の Azure AD テナントを作成することもできます。 テナントを利用するための各種方法について詳しくは、「[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]」をご覧ください。 サブスクリプションと Azure AD テナントの関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法][AAD-How-Subscriptions-Assoc]」をご覧ください。
 
 ## <a name="token-endpoint"></a>トークン エンドポイント
 [承認サーバー](#authorization-server)によって実装されるエンドポイントの 1 つ。OAuth2 [承認付与](#authorization-grant)をサポートするために使用されます。 付与された承認によっては、[クライアント](#client-application)への[アクセス トークン](#access-token) (と関連する "更新" トークン) を取得したり、[OpenID Connect][OpenIDConnect] プロトコルと共に使用する場合に [ID トークン](#ID-token)を取得したりできます。

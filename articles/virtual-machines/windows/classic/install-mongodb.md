@@ -15,15 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
 ms.author: iainfou
-ms.openlocfilehash: 6b5af18d02fd508a21cdc21b38b1c16e79f07ecb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d70194f30b7866cab38cfbbe1ea06664b0ddc1f5
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="install-mongodb-on-a-windows-vm-in-azure"></a>Azure の Windows VM に MongoDB をインストールします。
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 リソース マネージャーのデプロイ モデルを使用して MongoDB をインストールおよび構成する方法については、[この記事](../install-mongodb.md)をご覧ください。
+> [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 [MongoDB][MongoDB] は、高いパフォーマンスを特徴とし、広く普及しているオープンソースの NoSQL データベースです。 この記事では、[Azure Portal][AzurePortal] を使用して Windows Server 仮想マシン (VM) を作成する手順について説明します。 その後で、MongoDB をインストールして構成する前に、データ ディスクを作成して VM に接続します。 使用する VM が Azure に既に存在する場合は、 [MongoDB のインストールと構成](#install-and-run-mongodb-on-the-virtual-machine)を直接開始できます。
 

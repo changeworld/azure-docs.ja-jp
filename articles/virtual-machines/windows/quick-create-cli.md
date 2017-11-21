@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5939af4cf071664415d57ccbaee3413d61aa69e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc92640f1ff46bac25c11fe246deed514030d9b
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-cli"></a>Azure CLI で Windows 仮想マシンを作成する
 
-Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、Windows Server 2016 を実行する仮想マシンをデプロイする方法について詳しく説明します。 デプロイが完了したら、サーバーに接続し、IIS をインストールします。
+Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイックスタートでは、Azure CLI を使用して、Windows Server 2016 を実行する仮想マシンをデプロイする方法について詳しく説明します。 デプロイが完了したら、サーバーに接続し、IIS をインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

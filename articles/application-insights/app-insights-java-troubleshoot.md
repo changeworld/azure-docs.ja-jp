@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5a729139e122693b4199607919c876bda45fd4b5
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 6b1cfa2b52e8e9e2b6a8ab87be6d4269cbe3f1cf
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
@@ -124,6 +124,13 @@ Tomcat サーバーの場合、ファイルは `%temp%\javasdklogs` または `j
 **ポータルでのデータ保持期間はどのくらいですか?セキュリティで保護されていますか?**
 
 [データの保持とプライバシー][data]に関するページを参照してください。
+
+## <a name="debug-logging"></a>デバッグ ログ
+Application Insights では `org.apache.http` が使用されます。 これは、名前空間 `com.microsoft.applicationinsights.core.dependencies.http` の下の Application Insights のコアの jar ファイル内に再配置されます。 これにより、Application Insights では、同じ `org.apache.http` のさまざまなバージョンが 1 つのコード ベースに存在するシナリオに対処できます。 
+
+>[!NOTE]
+>アプリですべての名前空間についてデバッグ レベルのログ記録を有効にすると、名前が `com.microsoft.applicationinsights.core.dependencies.http` に変更された `org.apache.http` を含むすべての実行中のモジュールによってこれが適用されます。 ログ呼び出しは Apache のライブラリによって行われるため、Application Insights では、これらの呼び出しにフィルタリングを適用できません。 デバッグ レベルのログ記録では多量のログ データが生成されるため、実稼働インスタンスにはお勧めしません。
+
 
 ## <a name="next-steps"></a>次のステップ
 **Java サーバー アプリ用に Application Insights を設定しました。他には何ができるか教えてください。**

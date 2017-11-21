@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: cf69d30f36178db9cad18e18f370645cd84de558
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: f7683bc203c93993c0eb5aaed6ca788458546019
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 
@@ -99,7 +99,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. **Set-AzureRmDataFactoryV2** コマンドレットを実行してデータ ファクトリを作成します。 各プレースホルダーを実際の値に置き換えてからコマンドを実行してください。
+2. **Set-AzureRmDataFactoryV2** コマンドレットを実行してデータ ファクトリを作成します。 各プレースホルダーを実際の値に置き換えてからコマンドを実行してください。 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -116,7 +116,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
         ```
 
     * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
-    * 現在、データ ファクトリを作成できるリージョンは米国東部だけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+    * 現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 

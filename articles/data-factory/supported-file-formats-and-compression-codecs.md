@@ -7,17 +7,17 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 11/02/2017
 ms.author: jingwang
-ms.openlocfilehash: 758c8e73cf54cd21f4d87f19a64d8d71eee159c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2675a0af82640925b837ae80e751fcab5972321
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
-*このトピックが適用されるコネクタは、[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Store](connector-azure-data-lake-store.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) です。*
+*このトピックが適用されるコネクタは、[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Store](connector-azure-data-lake-store.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) です。*
 
 ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 **特定の形式でファイルを解析または生成する**場合、Azure Data Factory では次の種類のファイル形式がサポートされています。
 
@@ -26,6 +26,9 @@ ms.lasthandoff: 10/11/2017
 * [Avro 形式](#avro-format)
 * [ORC 形式](#orc-format)
 * [Parquet 形式](#parquet-format)
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 でサポートされているファイルと圧縮の形式](v1//data-factory-supported-file-and-compression-formats.md)に関する記事をご覧ください。
 
 ## <a name="text-format"></a>テキスト形式
 

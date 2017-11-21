@@ -4,7 +4,7 @@ description: "Azure の Analysis Services サーバーがオンプレミスの�
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: cd596155-b608-4a34-935e-e45c95d884a9
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/11/2017
+ms.date: 10/30/2017
 ms.author: owend
-ms.openlocfilehash: 47f05a22811307617f475e79145f70a0233f5895
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 0b11c005ddcf4a3416104e7cef39a7ce97957ba3
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Azure のオンプレミスのデータゲートウェイを使用してオンプレミスのデータ ソースに接続する
 オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Microsoft Flow でも機能します。 同じリージョン内の複数のサービスを1 つのゲートウェイに関連付けることができます。 
@@ -75,10 +75,10 @@ ms.lasthandoff: 10/12/2017
 | *.login.windows.net |443 |HTTPS |
 | *.servicebus.windows.net |5671 ～ 5672 |Advanced Message Queuing Protocol (AMQP) |
 | *.servicebus.windows.net |443、9350 ～ 9354 |TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) |
-| *. frontend.clouddatahub.net |443 |HTTPS |
+| *. frontend.clouddatahub.net |使用します |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *. msftncsi.com |443 |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
+| *. msftncsi.com |使用します |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
 | *.microsoftonline-p.com |443 |構成によっては認証に使用されます。 |
 
 ### <a name="force-https"></a>Azure Service Bus との HTTPS 通信の強制
@@ -129,6 +129,9 @@ ms.lasthandoff: 10/12/2017
 
 **Q**: ゲートウェイ Windows サービスは、Azure Active Directory アカウントを使用して実行できますか? <br/>
 **A**: いいえ。 Windows サービスには有効な Windows アカウントが必要です。 既定では、Windows サービスはサービス SID の NT SERVICE\PBIEgwService を使用して実行されます。
+
+**Q**: ゲートウェイを引き継ぐにはどうすればよいですか? <br/>
+**A**: ゲートウェイを ([コントロール パネル] の [プログラム] で必要な設定/変更を行うことによって) 引き継ぐには、Azure のゲートウェイ リソースの所有者であること、また回復キーを有していることが必要です。 ゲートウェイ リソースの所有者は、[アクセスの制御] で構成することができます。
 
 ### <a name="high-availability"></a>高可用性とディザスター リカバリー
 

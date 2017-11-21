@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: 46e001b440802e0d5d16b7cf75344c7b9ce6fad3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6170b78f888679ab358198d940c82a00fa5e43a1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 継続的なアクセスの管理、使用状況の評価、レポート作成は、アプリが組織の ID システムに統合された後でも簡単な作業ではありません。 多くの場合、アプリへのアクセスの管理では、IT 管理者またはヘルプデスクが大きな役割を担う必要があります。 場合によっては、割り当ては一般的なまたは部門の IT チームによって実行されます。 割り当ての決定はビジネスの意思決定者に委ねられ、IT が割り当てを行う前に彼らの承認が求められることが一般的です。  他の組織は、既存の自動 ID との統合に投資し、ロール ベースの Access Control (RBAC)、属性ベースの Access Control (ABAC) などの管理システムにアクセスします。 統合とルールの開発はいずれも専門知識や高いコストが求められる傾向にあります。 いずれの管理方法での監視またはレポートも、個々にコストがかかる複雑な投資になります。
@@ -26,12 +26,12 @@ ms.lasthandoff: 10/11/2017
 ## <a name="how-does-azure-active-directory-help"></a>Azure Active Directory の機能
  Azure AD では、構成済みのアプリケーション用に広範なアクセスの管理がサポートされているため、組織は、属性に基づく自動的な割り当て (ABAC または RBAC シナリオ) から、委任、また管理者の管理までにわたり、適切なアクセス ポリシーを簡単に達成できます。 Azure AD を使用すると、1 つのアプリケーションに対して複数の管理モデルを組み合わせて複雑なポリシーを簡単に達成できるだけでなく、対象ユーザーが同じアプリケーション全体で管理ルールを再利用することもできます。
 
-* [新しいまたは既存のアプリケーションの追加](active-directory-sso-integrate-saas-apps.md)
+* [新しいまたは既存のアプリケーションの追加](active-directory-enterprise-apps-manage-sso.md)
 
  Azure AD のアプリケーション割り当ては、次の 2 つの主要な割り当てモードが中心となります。
 
 * **個別の割り当て** ディレクトリへのグローバル管理者のアクセス許可を持つ IT 管理者は個々のユーザー アカウントを選択してアプリケーションへのアクセス権を付与できます。
-* **グループ ベースの割り当て (有償の Azure AD のみ)** ディレクトリへのグローバル管理者のアクセス許可を持つ IT 管理者はアプリケーションにグループを割り当てることができます。 ユーザーのアクセス権は、そのユーザーがアプリケーションにアクセスしようとしたときに、ユーザーがグループのメンバーであるかどうかによって決まります。 言い換えると、管理者は "割り当てられたグループの現在のメンバーがアプリケーションへのアクセス権を持つ" ことを示す割り当てルールを効率的に作成できます。 この割り当てオプションを使用することで、管理者は Azure AD グループ管理オプションのメリットが得られます。グループには、[属性ベースの動的なグループ](active-directory-accessmanagement-manage-groups.md)、外部システム グループ (オンプレミスの Active Directory や Workday など)、管理者によって管理されたグループ、セルフサービスで管理されたグループなどがあります。 1 つのグループを複数のアプリに簡単に割り当てて、割り当てアフィニティを持つアプリケーションで割り当てルールを共有し、全体的な管理の複雑さを軽減できます。 現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていないことに注意してください。
+* **グループ ベースの割り当て (有償の Azure AD のみ)** ディレクトリへのグローバル管理者のアクセス許可を持つ IT 管理者はアプリケーションにグループを割り当てることができます。 ユーザーのアクセス権は、そのユーザーがアプリケーションにアクセスしようとしたときに、ユーザーがグループのメンバーであるかどうかによって決まります。 言い換えると、管理者は "割り当てられたグループの現在のメンバーがアプリケーションへのアクセス権を持つ" ことを示す割り当てルールを効率的に作成できます。 この割り当てオプションを使用することで、管理者は Azure AD グループ管理オプションのメリットが得られます。グループには、[属性ベースの動的なグループ](active-directory-groups-create-azure-portal.md)、外部システム グループ (オンプレミスの Active Directory や Workday など)、管理者によって管理されたグループ、セルフサービスで管理されたグループなどがあります。 1 つのグループを複数のアプリに簡単に割り当てて、割り当てアフィニティを持つアプリケーションで割り当てルールを共有し、全体的な管理の複雑さを軽減できます。 現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていないことに注意してください。
 
 これら 2 つの割り当てモードを使用して、管理者は理想的な割り当て管理アプローチを実現できます。
 
@@ -42,7 +42,7 @@ Salesforce のようなアプリケーションについて考えます。 多�
 
 Azure AD では、Salesforce のようなアプリケーションをシングル サインオン (SSO) やプロビジョニングの自動化向けに事前構成できます。 アプリケーションが構成されたら、管理者は 1 回限りの操作を実行して、適切なグループを作成、割り当てることができます。 この例では、管理者は次のような割り当てを実行できます。
 
-* [動的なグループ](active-directory-accessmanagement-manage-groups.md) を定義できます。
+* [動的なグループ](active-directory-groups-create-azure-portal.md) を定義できます。
   
   * マーケティング グループのすべてのメンバーは、Salesforce で "marketing" ロールに割り当てられます。
   * 販売チームのすべてのメンバーは、Salesforce で "sales" ロールに割り当てられます。 さらに調整するために、さまざまな Salesforce ロールに割り当てられた地域の販売チームを表す複数のグループを使用することもできます。
@@ -50,7 +50,7 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 
 この場合、割り当てられたすべてのユーザーは、各グループに追加されるときに Salesforce に自動的にプロビジョニングされ、そのロール割り当ては Salesforce で更新されます。 ユーザーは、Microsoft アプリケーション アクセス パネル、Office Web クライアントを通じて、また組織の Salesforce ログイン ページに移動して、Salesforce を探してアクセスできます。 管理者は Azure AD レポート機能を使用して、使用量や割り当ての状態を簡単に確認できます。
 
-管理者は、 [Azure AD 条件付きアクセス](active-directory-conditional-access.md) を使用して、特定のロールのアクセス ポリシーを設定できます。 これらのポリシーには、アクセスを企業環境の外で許可するかどうかや、Multi-Factor Authentication、またはデバイスの要件を含めて、さまざまな状況でのアクセスを実現できます。
+管理者は、 [Azure AD 条件付きアクセス](active-directory-conditional-access-azure-portal.md) を使用して、特定のロールのアクセス ポリシーを設定できます。 これらのポリシーには、アクセスを企業環境の外で許可するかどうかや、Multi-Factor Authentication、またはデバイスの要件を含めて、さまざまな状況でのアクセスを実現できます。
 
 ## <a name="how-can-i-get-started"></a>利用を始めるには?
 あなたは IT 管理者で、Azure AD をまだ使用したことがない場合:
@@ -67,6 +67,6 @@ Azure AD では、Salesforce のようなアプリケーションをシングル
 
 ## <a name="where-can-i-learn-more"></a>詳細情報を得るには?
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-* [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access.md)
+* [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access-azure-portal.md)
 * [セルフサービス グループの管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 

@@ -13,11 +13,11 @@ caps.latest.revision: "60"
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: b18b6f02f14db352289e3ab7e8b07a220868ce76
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2873f61dcab9a14089949f27f40ca5bedaf14ee
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Azure Cloud Services の定義: WebRole スキーマ
 Azure Web ロールは、Web アプリケーションのプログラミング用として IIS 7 でサポートされるようにカスタマイズされたロールであり、ASP.NET、PHP、Windows Communication Foundation、FastCGI などがあります。
@@ -297,7 +297,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 |permissionLevel|string|省略可能。 ロール プロセスに付与するアクセス許可を指定します。 管理者特権プロセスのみが秘密キーへアクセスできるようにするには、`elevated` 権限を指定します。 `limitedOrElevated` 権限では、すべてのロール プロセスが秘密キーにアクセスできます。 指定できる値は `limitedOrElevated` または `elevated` です。 既定値は `limitedOrElevated` です。|  
 
 ##  <a name="Imports"></a> Imports  
-`Imports` 要素では、ゲスト オペレーティング システムにコンポーネントを追加する Web ロールのインポート モジュールのコレクションを指定します。 この要素は、`Import` 要素の親です。 この要素は省略可能であり、ロールに設定できる Runtime ブロックは 1 つのみです。
+`Imports` 要素では、ゲスト オペレーティング システムにコンポーネントを追加する Web ロールのインポート モジュールのコレクションを指定します。 この要素は、`Import` 要素の親です。 この要素は省略可能であり、ロールに設定できる Imports ブロックは 1 つのみです。 
 
 `Imports` 要素は、Azure SDK バージョン 1.3 以上を使用している場合のみ利用可能です。
 

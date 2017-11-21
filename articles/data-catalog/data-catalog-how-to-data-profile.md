@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/03/2017
+ms.date: 11/01/2017
 ms.author: spelluru
-ms.openlocfilehash: 8f4174f0ed74706b8275c8b1f0a62753f2834fa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 848d244a2a6c3420d1a11005e1b02f5671d7912a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="data-profile-data-sources"></a>データ ソースのプロファイリング
 ## <a name="introduction"></a>はじめに

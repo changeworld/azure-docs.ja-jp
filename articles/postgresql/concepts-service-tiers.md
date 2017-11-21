@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/31/2017
-ms.openlocfilehash: 0ebdced6ac748245faed90949fd0e76c0eacb2d3
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/03/2017
+ms.openlocfilehash: 2c0ed6b58fe3e354da3cf58cd0c504d72bb0f421
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL のオプションとパフォーマンス: 各価格レベルで使用できる内容
 Azure Database for PostgreSQL を作成するときは、そのサーバーに割り当てられたリソースを構成する 3 つの主な選択肢を決定します。 これらの選択肢は、サーバーのパフォーマンスとスケールに影響します。
@@ -53,7 +53,7 @@ Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベ
 プレビュー期間中は、サーバーを作成した後に価格レベルを変更することはできません。 将来的には、価格レベル間でのサーバーのアップグレードまたはダウングレードが可能になる予定です。
 
 ## <a name="understand-the-price"></a>価格について
-新しい Azure Database for PostgreSQL を [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) 内で作成して、**[価格レベル]** ブレードをクリックすると、選択したオプションに基づいて毎月のコストが表示されます。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認してください。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトにアクセスし、**[項目の追加]** をクリックして、**[データベース]** カテゴリを展開し、**[Azure Database for PostgreSQL]** を選択してオプションをカスタマイズします。
+新しい Azure Database for PostgreSQL を [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) 内で作成して、**[価格レベル]** ページをクリックすると、選択したオプションに基づいて毎月のコストが表示されます。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認してください。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトにアクセスし、**[項目の追加]** をクリックして、**[データベース]** カテゴリを展開し、**[Azure Database for PostgreSQL]** を選択してオプションをカスタマイズします。
 
 ## <a name="choose-a-performance-level-compute-units"></a>パフォーマンス レベル (コンピューティング ユニット数) の選択
 Azure Database for PostgreSQL サーバーの価格レベルが決定したら、必要なコンピューティング ユニット数を選択して、パフォーマンス レベルを決定します。 Web ワークロードや分析ワークロードで、より多くのユーザーの同時実行性が求められるアプリケーションの場合、200 または 400 コンピューティング ユニットから始め、必要に応じて徐々に調整するとよいでしょう。 
@@ -93,11 +93,11 @@ Azure Database for PostgreSQL サーバーの価格レベルが決定したら�
 > プレビュー段階では、サーバー作成時にストレージ容量を選択します。 既存のサーバー上のストレージ サイズの変更は、現時点ではサポートされていません。 
 
 ## <a name="scaling-a-server-up-or-down"></a>サーバーのスケールアップまたはスケールダウン
-Azure Database for PostgreSQL を作成するときは、まず価格レベルとパフォーマンス レベルを選択します。 後で、同じ価格レベルの範囲内で、コンピューティング ユニット数を動的にスケールアップしたりスケールダウンしたりできます。 Azure Portal で、サーバーの [価格レベル] ブレードからコンピューティング ユニット数を変更するか、「[Azure CLI での単一の PostgreSQL サーバーの監視とスケーリング](scripts/sample-scale-server-up-or-down.md)」の例に従ってスクリプトを実行します。
+Azure Database for PostgreSQL を作成するときは、まず価格レベルとパフォーマンス レベルを選択します。 後で、同一価格レベル内で、コンピューティング ユニット数を動的に増やしたり減らしたりできます。 Azure Portal で、サーバーの [価格レベル] ページからコンピューティング ユニット数を変更するか、「[Azure CLI での単一の PostgreSQL サーバーの監視とスケーリング](scripts/sample-scale-server-up-or-down.md)」の例に従ってスクリプトを実行します。
 
-コンピューティング ユニットのスケーリングは、選択した最大ストレージ サイズとは無関係に行われます。
+コンピューティング ユニットのスケールは、選択した最大ストレージ サイズとは無関係に行われます。
 
-データベースのパフォーマンス レベルを変更すると、バックグラウンドで、元のデータベースのレプリカが新しいパフォーマンス レベルで作成され、接続先がそのレプリカに切り替えられます。 このプロセスでデータが失われることはありません。 レプリカに切り替えるほんの少しの間データベースに接続できなくなるため、実行中の一部トランザクションがロールバックされる場合があります。 この時間はさまざまですが、平均 4 秒以内であり、99% 以上が 30 秒未満です。 接続が無効になった時点で多数のトランザクションが実行中の場合、この時間が長引くことがあります。
+データベースのパフォーマンス レベルを変更すると、バックグラウンドで、元のサーバーのコピーが新しいパフォーマンス レベルで作成され、接続先がそのコピーに切り替えられます。 このプロセスでデータが失われることはありません。 新しいサーバーのコピーに切り替えるほんの少しの間データベースに接続できなくなるため、実行中の一部トランザクションがロールバックされる場合があります。 この時間はさまざまですが、平均 4 秒以内であり、99% 以上が 30 秒未満です。 接続が無効になった時点で多数のトランザクションが実行中の場合、この時間が長引くことがあります。
 
 スケール プロセス全体にかかる時間は、変更前後のサーバーのサイズと価格レベルによって異なります。 たとえば、コンピューティング ユニット数を Standard 価格レベル内で変更しているサーバーの場合は、数分以内に完了します。 サーバーの新しいプロパティは、変更が完了するまで適用されません。
 

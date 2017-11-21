@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/31/2017
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: c20aca4202319154b01d6398570f745636120f49
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3f67b978ff66cbb71709f2f8d66986a33149ae6
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Azure Active Directory PIM での別の管理者ロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -29,7 +29,7 @@ Azure AD の別の管理者ロールに組織内のユーザーを割り当て�
 > [!IMPORTANT]
 > Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。
 
-グローバル管理者は、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用して、または [Azure Active Directory の管理者ロールの割り当て](active-directory-assign-admin-roles.md)で説明されているとおりにクラシックポータルから、どのユーザーが**永続的に** Azure AD のロールに割り当てられているかを更新できます。
+グローバル管理者は、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用して、または [Azure Active Directory の管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)で説明されているとおりにクラシックポータルから、どのユーザーが**永続的に** Azure AD のロールに割り当てられているかを更新できます。
 
 Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザーの特権アクセス用のポリシーを管理します。 PIM は、Azure AD で 1 つ以上のロールにユーザーを割り当てます。あるユーザーをロールに永続的に割り当てることも、ロールの候補にすることもできます。 ユーザーが永続的にロールに割り当てられるか、ロールの候補としての割り当てを有効にすると、ユーザーは Azure Active Directory、Office 365、およびユーザーのロールにアクセス許可が割り当てられているその他のアプリケーションを管理できます。
 
@@ -53,7 +53,7 @@ Privileged Identity Management を使用して、以下を含む共通の管理�
 * **SharePoint 管理者** は、SharePoint Online 管理センターを通じた SharePoint Online への管理アクセスが可能で、SharePoint Online でのほぼすべてのタスクを実行できます。
 * **Skype for Business 管理者** は、Skype for Business 管理センターを通じた Skype for Business への管理アクセスが可能で、Skype for Business Online でのほぼすべてのタスクを実行できます。
 
-[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)および [Office 365 での管理者ロールの割り当て](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)の詳細については、これらの記事を参照してください。
+[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)および [Office 365 での管理者ロールの割り当て](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)の詳細については、これらの記事を参照してください。
 
 <!--**PLACEHOLDER: The above article may not be the one we want since PIM gets roles from places other that Office 365**-->
 

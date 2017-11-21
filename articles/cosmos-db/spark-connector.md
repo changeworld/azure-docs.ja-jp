@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: denlee
-ms.openlocfilehash: 8ecbb478c81cde25bbd0d1c9ee07ae02b07f8cc7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7500ed798519671ba864cc185efffa0f93a8be70
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>Spark-Azure Cosmos DB コネクタによるリアルタイムのビッグ データ分析の高速化
 
@@ -44,7 +44,7 @@ Spark GraphX および Azure Cosmos DB の Gremlin グラフ API を使用する
 
 * [Apache Spark](http://spark.apache.org/): 速度、使いやすさ、高度な分析に重点を置いて構築された強力なオープン ソース処理エンジンです。
 
-* [Azure HDInsight のApache Spark](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md): [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) を使用して Apache Spark をクラウドにデプロイし、ミッション クリティカルなデプロイを実現できます。
+* [Azure HDInsight のApache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md): [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/) を使用して Apache Spark をクラウドにデプロイし、ミッション クリティカルなデプロイを実現できます。
 
 正式にサポートされているバージョンは次のとおりです。
 
@@ -351,4 +351,4 @@ Spark-Azure Cosmos DB コネクタをまだダウンロードしていない場�
 * [分散集計の例](https://github.com/Azure/azure-cosmosdb-spark/wiki/Aggregations-Examples)
 * [サンプル スクリプトと Notebook](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples)
 
-また、[Apache Spark SQL、DataFrames、データセット ガイド](http://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure HDInsight 上の Apache Spark](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md) に関する記事を確認することもできます。
+また、[Apache Spark SQL、DataFrames、データセット ガイド](http://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure HDInsight 上の Apache Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) に関する記事を確認することもできます。

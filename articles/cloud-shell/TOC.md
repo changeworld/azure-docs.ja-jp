@@ -14,6 +14,9 @@
 ## [PowerShell でのストレージの永続化](persisting-shell-storage-powershell.md)
 ## [ウィンドウの使用](using-the-shell-window.md)
 
+# 例
+## [Bash で Terraform を使用して Azure リソースをデプロイする](example-terraform-bash.md)
+
 # [料金](pricing.md)
 
 # [トラブルシューティング](troubleshooting.md)

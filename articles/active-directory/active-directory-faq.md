@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/16/2017
+ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: e70ac475f8ffce93e89fa09f18f8943eb2371d13
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 241ad78abfa964c9f64e97cc8201933913f88e1e
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -56,7 +56,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 他のユーザーが同じサブスクリプションを使用してサインインし、サービスにアクセスする必要がある場合は、共同管理者として追加できます。 このロールには、サービス管理者と同じアクセス特権がありますが、サブスクリプションと Azure ディレクトリの関連付けを変更することはできません。  サブスクリプション管理者の詳細については、「[How to add or change Azure administrator roles (Azure 管理者ロールを追加または変更する方法)](../billing-add-change-azure-subscription-administrator.md)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 
-Azure AD には、ディレクトリと ID に関連した機能を管理するために別の管理ロールのセットがあります。  これらの管理者は、Azure Portal または Azure クラシック ポータルのさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
+Azure AD には、ディレクトリと ID に関連した機能を管理するために別の管理ロールのセットがあります。  これらの管理者は、Azure Portal または Azure クラシック ポータルのさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
 
 さらに、Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Office 365 や Microsoft Azure などの他の Web サービスを補完します。
 
@@ -132,7 +132,6 @@ Office 365 ユーザーの場合は、「[ユーザー パスワードの再設�
 Azure AD アカウントの場合、管理者は、次のいずれかの方法を使用してパスワードをリセットできます。
 
 - [Azure Portal でアカウントをリセットする](active-directory-users-reset-password-azure-portal.md)
-- [クラシック ポータルでアカウントをリセットする](active-directory-create-users-reset-password.md)
 - [PowerShell の使用](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
@@ -199,7 +198,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 **A:** Azure AD 条件付きアクセスを使用して、各アプリケーションに一意のアクセス ポリシーを割り当てることができます。 ポリシーでは、多要素認証を常に要求することも、ユーザーがローカル ネットワークに接続されていない場合に要求することもできます。  
 
-詳細については、[Azure Active Directory に接続されている Office 365 やその他のアプリへのアクセスのセキュリティ保護](active-directory-conditional-access.md)に関する記事を参照してください。
+詳細については、[Azure Active Directory に接続されている Office 365 やその他のアプリへのアクセスのセキュリティ保護](active-directory-conditional-access-azure-portal.md)に関する記事を参照してください。
 
 - - -
 **Q: SaaS アプリの自動化されたユーザー プロビジョニングについて教えてください。**

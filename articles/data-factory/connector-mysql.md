@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: 3d702f4e0746f07c5420853a7b93bdc793e4f288
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: d91ff1738f423928699f056a4d529d764889a6e9
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/01/2017
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の MySQL コネクタ](v1/data-factory-onprem-mysql-connector.md)に関する記事を参照してください。
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-capabilities"></a>サポートされる機能
 
 MySQL データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -209,4 +209,4 @@ MySQL からデータをコピーするとき、次の MySQL のデータ型か�
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

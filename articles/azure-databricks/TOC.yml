@@ -1,0 +1,27 @@
+- name: Azure Databricks のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Databricks とは
+      href: what-is-azure-databricks.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Databricks ワークスペースの作成
+      href: quickstart-create-databricks-workspace-portal.md
+- name: リソース
+  items:
+    - name: 一般的な質問
+      href: frequently-asked-questions-databricks.md
+    - name: Databricks のドキュメント
+      href: 'https://docs.azuredatabricks.net/user-guide/index.html'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=analytics'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-databricks'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: サポート オプション
+      href: 'https://azure.microsoft.com/support/options/'

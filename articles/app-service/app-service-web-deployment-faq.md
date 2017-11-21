@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: daecef7962ddee2f5e4b6a36c418619285f3ba5a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 318a236652229c4e093ca33886ac1831686aed73
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure の Web Apps のデプロイに関するよくあるご質問
 

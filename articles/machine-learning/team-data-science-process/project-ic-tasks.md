@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 11/13/2017
 ms.author: bradsev;
-ms.openlocfilehash: bbe691174409202a8fd9602a69e764f0a8e2816b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 526260c3f61a203fe2770a0c6d0d23d95916a2b7
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="individual-contributor-tasks"></a>個々の共同作成者のタスク
 

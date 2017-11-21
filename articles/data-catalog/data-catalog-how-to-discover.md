@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 11/01/2017
 ms.author: maroche
-ms.openlocfilehash: 9ff67dcb5ecb00440f73f979fd8d2b79a570c674
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c2a1d61bc13ba1cde404e2b732933d2d314e3e3
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースを検出する方法
 ## <a name="introduction"></a>はじめに
@@ -51,13 +51,13 @@ Data Catalog の検索の詳細については、[Azure Data Catalog](https://ms
 検索結果を表示すると、指定した検索語句 (データ資産名、説明、タグなど) と一致して表示されるプロパティは強調表示されます。これにより、特定の検索によって特定のデータ資産が返された理由を容易に識別できます。
 
 > [!NOTE]
-> 検索結果の強調表示をオフにするには、Data Catalog ポータルで [**強調表示**] を切り替えます。
+> 検索結果の強調表示をオフにするには、Data Catalog ポータルで **[強調表示]** を切り替えます。
 >
 >
 
 検索結果を表示する場合は、検索語句の強調表示が有効であっても、データ資産が検索結果に含まれている理由が常に明らかであるとは限りません。 既定ではすべてのプロパティが検索されるため、列レベルのプロパティでの一致により、データ資産が返される可能性があります。 また、複数のユーザーが独自のタグおよび説明を使用して登録済みのデータ資産に注釈を付けることができるので、検索結果の一覧にすべてのメタデータが表示されるとは限りません。
 
-既定のタイル ビューでは、検索結果に表示される各タイルに [**検索語句の一致を表示**] アイコンが含まれます。このアイコンを使用することで、一致した数および一致場所を迅速に表示し、必要に応じてジャンプすることができます。
+既定のタイル ビューでは、検索結果に表示される各タイルに **[検索語句の一致を表示]** アイコンが含まれます。このアイコンを使用することで、一致した数および一致場所を迅速に表示し、必要に応じてジャンプすることができます。
 
  ![Azure Data Catalog ポータルでの検索語句の強調表示と検索結果](./media/data-catalog-how-to-discover/search-matches.png)
 

@@ -55,6 +55,9 @@
 ### [仮想ネットワークの構成](devtest-lab-configure-vnet.md)
 ### [IP 構成オプションの選択](devtest-lab-shared-ip.md)
 
+## データ ディスクの管理
+### [データ ディスクのアタッチとデタッチ](devtest-lab-attach-detach-data-disk.md)
+
 ## [ラボのスケーリング](devtest-lab-scale-lab.md)
 
 # リファレンス

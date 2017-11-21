@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2017
+ms.date: 11/02/2017
 ms.author: alkohli;anbacker
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d25fb4902d37faca5358e5a9010e9e146e344e1
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="contact-microsoft-support-for-your-storsimple"></a>StorSimple の Microsoft サポートに問い合わせる
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、「[Microsoft サポートに問い合わせる](storsimple-8000-contact-microsoft-support.md)」を参照してください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
 Microsoft Azure StorSimple ソリューションで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 サポート エンジニアとのオンライン セッションで、StorSimple デバイスのサポート セッションを開始することが必要になる場合もあります。 この記事で説明する内容は次のとおりです。
 
 * サポート要求を作成する方法

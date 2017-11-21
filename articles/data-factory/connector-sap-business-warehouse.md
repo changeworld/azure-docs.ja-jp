@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 03841e08d071eb5f846b6a3a9e5a08edaa895611
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20d6f463d135028bf272c23de9f34be66e73325a
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の SAP BW コネクタ](v1/data-factory-sap-business-warehouse-connector.md)に関する記事を参照してください。
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-capabilities"></a>サポートされる機能
 
 SAP Business Warehouse のデータを、サポートされる任意のシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -73,11 +73,9 @@ SAP Business Warehouse (BW) のリンクされたサービスでは、次のプ�
 ```json
 {
     "name": "SapBwLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "SapBw",
-        "typeProperties":
-        {
+        "typeProperties": {
             "server": "<server name>",
             "systemNumber": "<system number>",
             "clientId": "<client id>",
@@ -106,8 +104,7 @@ SAP BW からデータをコピーするには、データセットの type プ�
 ```json
 {
     "name": "SAPBWDataset",
-    "properties":
-    {
+    "properties": {
         "type": "RelationalTable",
         "linkedServiceName": {
             "referenceName": "<SAP BW linked service name>",
@@ -194,4 +191,4 @@ SAP BW からデータをコピーするとき、SAP BW のデータ型から Az
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

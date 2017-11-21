@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 0c8c2ab8c7daceb13fd39d2a109148a40430d59a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a967a8fccfe0dc051a7cf3a4a2fcefad2a2f187f
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-features-for-data-in-an-hadoop-cluster-using-hive-queries"></a>Hive クエリを使用して Hadoop クラスターのデータの特徴を作成する
 このドキュメントでは、Hive クエリを使用して、Azure HDInsight Hadoop クラスターに格納されているデータの特徴を作成する方法について説明します。 これらの Hive クエリでは、埋め込みの Hive のユーザー定義関数 (UDF) を使用します。また、そのスクリプトも用意されています。
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 * Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
 * HDInsight サービスでカスタマイズされた Hadoop クラスターがプロビジョニングされている。  手順については、「 [Advanced Analytics Process and Technology 向けに Azure HDInsight Hadoop クラスターをカスタマイズする](customize-hadoop-cluster.md)」をご覧ください。
 * データが Azure HDInsight Hadoop クラスターの Hive テーブルにアップロードされている。 アップロードされていない場合は、まず「 [データを作成して Hive テーブルに読み込む](move-hive-tables.md) 」に従って Hive テーブルにデータをアップロードします。
-* クラスターへのリモート アクセスが有効になっている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md#headnode)」をご覧ください。
+* クラスターへのリモート アクセスが有効になっている。 手順については、「 [Hadoop クラスターのヘッド ノードへのアクセス](customize-hadoop-cluster.md)」をご覧ください。
 
 ## <a name="hive-featureengineering"></a>特徴の生成
 このセクションでは、Hive クエリを使用して特徴を生成する方法について、いくつかの例を挙げて説明します。 追加の特徴を生成すると、既存のテーブルに列として追加するか、追加の特徴と主キーを持つ新しいテーブルを作成して元のテーブルと結合することができます。 次の例について説明します。
@@ -153,7 +153,7 @@ Hive クラスターの既定のパラメーター設定は、Hive クエリお�
 1. **DFS ブロック サイズ**: このパラメーターでは、ファイル システムに保存されるデータの最小単位を設定します。 たとえば、DFS ブロック サイズが 128 MB の場合、サイズが 128 MB 未満のデータは 1 つのブロックに保存されますが、128 MB を超えるデータでは追加のブロックが割り当てられます。 非常に小さいブロック サイズを選ぶと、 Hadoop に大きいオーバーヘッドが生じます。これは、NameNode がファイルに付随する関連ブロックを検索するためにさらに多くの要求を処理する必要があるためです。 ギガバイト (またはそれ以上) のデータを処理する場合に推奨される設定は、次のとおりです。
    
         set dfs.block.size=128m;
-2. **Hive で結合操作を最適化する** : マップ/縮小フレームワークでの結合操作は通常縮小フェーズで発生しますが、マップ フェーズ ("mapjoins" と呼ばれることもあります) で結合をスケジュールすることで大幅な向上を実現できる場合があります。 これをいつでも実行できる場合にハイブを設定するには、次のように設定できます。
+2. **Hive で結合操作を最適化する**: マップ/縮小フレームワークでの結合操作は通常縮小フェーズで発生しますが、マップ フェーズ ("mapjoins" と呼ばれることもあります) で結合をスケジュールすることで大幅な向上を実現できる場合があります。 これをいつでも実行できる場合に Hive を設定するには、次のように設定します。
    
         set hive.auto.convert.join=true;
 3. **Hive にマッパーの数を指定する**: Hadoop ではユーザーがレジューサの数を設定できますが、マッパーの数をユーザーが設定することは、通常はできません。 Hadoop 変数 (*mapred.min.split.size* と *mapred.max.split.size*) を選択すると、この数をある程度制御できます。これは、各マップ タスクのサイズが次の式によって決定されるためです。

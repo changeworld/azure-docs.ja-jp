@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 07/10/2017
 ms.author: rickbyh
-ms.openlocfilehash: d1a73da7ba3e92f5229faf73cb932dd50b50dfe1
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f0c9578217beff22b4a322b363c7499943311d88
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/31/2017
 ## <a name="create-and-populate-an-azure-ad"></a>Azure AD を作成して設定する
 Azure AD を作成し、ユーザーとグループを設定します。 Azure AD は初期の Azure AD の管理対象ドメインにすることができます。 また、Azure AD とフェデレーションされるオンプレミスの Active Directory Domain Services にすることもできます。
 
-詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-add-domain.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」(Microsoft Azure が Windows Server Active Directory とのフェデレーションに対応)、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、[Windows PowerShell を使用した Azure AD の管理](/powershell/azure/overview?view=azureadps-2.0)に関するページ、および「[Hybrid Identity Required Ports and Protocols](../active-directory/active-directory-aadconnect-ports.md)」(ハイブリッド ID の必須ポートとプロトコル) を参照してください。
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」(Microsoft Azure が Windows Server Active Directory とのフェデレーションに対応)、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、[Windows PowerShell を使用した Azure AD の管理](/powershell/azure/overview?view=azureadps-2.0)に関するページ、および「[Hybrid Identity Required Ports and Protocols](../active-directory/active-directory-aadconnect-ports.md)」(ハイブリッド ID の必須ポートとプロトコル) を参照してください。
 
 ## <a name="optional-associate-or-change-the-active-directory-that-is-currently-associated-with-your-azure-subscription"></a>省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
 データベースを組織の Azure AD ディレクトリに関連付けるには、そのディレクトリを、データベースをホストする Azure サブスクリプションの信頼できるディレクトリにします。 詳細については、 [Azure サブスクリプションを Azure AD に関連付ける方法](https://msdn.microsoft.com/library/azure/dn629581.aspx)を参照してください。

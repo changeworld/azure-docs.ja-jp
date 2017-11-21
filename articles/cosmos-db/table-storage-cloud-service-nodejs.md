@@ -1,5 +1,5 @@
 ---
-title: "テーブル ストレージを使用した Web アプリケーション (Node.js) | Microsoft Docs"
+title: "Azure Table Storage: Node.js Web アプリを作成する | Microsoft Docs"
 description: "Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。"
 services: cosmos-db
 documentationcenter: nodejs
@@ -12,15 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e931f0457511963b87c1b14fe873593bcb000c7
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="nodejs-web-application-using-storage"></a>ストレージを使用する Node.js Web アプリケーション
+# <a name="azure-table-storage-nodejs-web-application"></a>Azure Table Storage: Node.js Web アプリ
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+
 ## <a name="overview"></a>概要
 このチュートリアルでは、Node.js 用の Microsoft Azure クライアント ライブラリを使用して、[Express を使用した Node.js Web アプリケーション]のチュートリアルで作成したアプリケーションを拡張し、データ管理サービスと連携します。 Azure にデプロイできる Web ベースのタスク一覧アプリケーションを作成して、アプリケーションを拡張します。 このタスク一覧では、ユーザーがタスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。
 

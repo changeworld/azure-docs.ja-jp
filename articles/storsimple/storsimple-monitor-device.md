@@ -12,16 +12,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d45bb37c8417785db0ea38be4375a998b6d9f109
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e1387bfb3487c148c8befcf3f8bf23bba35661f
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-your-storsimple-device"></a>StorSimple Manager サービスを使用した StorSimple デバイスの監視
-## <a name="overview"></a>Overview
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、「[StorSimple Manager サービスを使用した StorSimple デバイスの監視](storsimple-8000-monitor-device.md)」を参照してください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
+## <a name="overview"></a>概要
 StorSimple Manager サービスを使用して、StorSimple ソリューション内にある特定の StorSimple デバイスを監視できます。 I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンス メトリックに基づいて、カスタム グラフを作成できます。 
 
 特定のデバイスの監視情報を表示するには、Azure クラシック ポータルで、StorSimple Manager サービスを選択します。 **[監視]** タブをクリックして、デバイスの一覧から選択します。 **[監視]** ページには、次の情報が表示されます。

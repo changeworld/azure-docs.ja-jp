@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 08/23/2017
+ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: 9099e90c402185b371495379db943d64fb82cdb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b324a97d4d45e8a11c8fb437aa783edff6a71a7
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-table-storage-overview"></a>Azure Table Storage の概要
 

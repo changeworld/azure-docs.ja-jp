@@ -12,16 +12,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/06/2017
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 55e1cd90df0e4413ce027361c636257d823a50d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 673da6a9202fedba4ce3fb8fe54ee89a3502bb02
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-software-high-availability-and-networking-requirements"></a>StorSimple ソフトウェア、高可用性、ネットワークの要件
-## <a name="overview"></a>Overview
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、[StorSimple のソフトウェア、高可用性、ネットワークの要件](storsimple-8000-system-requirements.md)に関するページをご覧ください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) に関するページを参照してください。
+
+## <a name="overview"></a>概要
 Microsoft Azure StorSimple へようこそ。 この記事では、StorSimple デバイスおよび StorSimple デバイスにアクセスするストレージ クライアントにおける重要なシステム要件とベスト プラクティスについて説明します。 StorSimple システムをデプロイする前に以下の情報を慎重に確認します。さらにデプロイと後続の操作中にも必要に応じて以下の情報を参照することをお勧めします。
 
 システム要件は次のとおりです。

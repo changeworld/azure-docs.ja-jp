@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: bfedbbf8b26e1b129584a6a644e64a15635f5723
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e3ae7f176f41b4b0984dbef0748451c7ebff9e7
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関
 いいえ。 Azure AD B2B コラボレーション機能は [Azure ポータル](https://portal.azure.com)と[アクセス パネル](https://myapps.microsoft.com/)でのみ使用できます。 
 
 ### <a name="can-we-customize-our-sign-in-page-so-it-is-more-intuitive-for-our-b2b-collaboration-guest-users"></a>B2B コラボレーションのゲスト ユーザー向けに、より直感的にするため、サインイン ページをカスタマイズすることはできますか。
-もちろんあります。 [この機能に関するブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)をご覧ください。 組織のサインイン ページをカスタマイズする方法の詳細については、「[サインイン ページとアクセス パネル ページに会社のブランドを追加する](active-directory-add-company-branding.md)」をご覧ください。
+もちろんあります。 [この機能に関するブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)をご覧ください。 組織のサインイン ページをカスタマイズする方法の詳細については、「[サインイン ページとアクセス パネル ページに会社のブランドを追加する](customize-branding.md)」をご覧ください。
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>B2B コラボレーションのユーザーは、SharePoint Online と OneDrive にアクセスできますか。
 はい。 ただし、SharePoint Online で、ユーザー選択ウィンドウを使用して既存のゲスト ユーザーを検索する機能は、既定で**オフ**になっています。 既存のゲスト ユーザーを検索するオプションを有効にするには、**ShowPeoplePickerSuggestionsForGuestUsers** を **On** に設定します。 この設定は、テナント レベルで、またはサイト コレクション レベルで有効にできます。 この設定を変更するには、Set-SPOTenant および Set-SPOSite コマンドレットを使用します。 これらのコマンドレットにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索できます。 テナントのスコープの変更は、既にプロビジョニングされている SharePoint Online サイトには影響しません。

@@ -1,5 +1,5 @@
 ---
-title: "詳細: Azure AD SSPR | Microsoft Docs"
+title: "動作のしくみ Azure AD SSPR | Microsoft Docs"
 description: "Azure AD のセルフ サービスによるパスワードのリセットの詳細"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: b363616792b35420644154cc0f8b878f2c83f1c7
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: fd9515120049dd3837a43c95de8a9b6822719e19
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -39,10 +39,10 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 
 パスワード リセット ページの背後にあるロジックの詳細については、次の手順をお読みください。
 
-1. ユーザーは、"あなたのアカウントにアクセスできません" のリンクをクリックするか、直接 [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com) に移動します。
+1. ユーザーは、"あなたのアカウントにアクセスできません" のリンクをクリックするか、直接 [https://aka.ms/sspr](https://passwordreset.microsoftonline.com) に移動します。
 2. ブラウザーのロケールに基づいて、エクスペリエンスが適切な言語で表示されます。 パスワード リセットのエクスペリエンスは、Office 365 でサポートされている言語と同じ言語にローカライズされています。
 3. ユーザーは、ユーザー ID を入力し、CAPTCHA を渡します。
-4. Azure AD は、次の手順を行うことで、ユーザーがこの機能を使用できるかどうかを確認します。
+4. Azure AD は、次のチェックを行うことで、ユーザーがこの機能を使用できるかどうかを確認します。
    * ユーザーがこの機能を有効にしていて、Azure AD ライセンスが割り当てられていることを確認します。
      * ユーザーがこの機能を有効にしていない、またはライセンスが割り当てられていない場合、そのユーザーは管理者に連絡してパスワードをリセットするように求められます。
    * ユーザーは、管理者ポリシーに従って、自分のアカウントに正しいチャレンジ データが定義されていることを確認します。
@@ -57,12 +57,14 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 
 ## <a name="authentication-methods"></a>認証方法
 
-セルフ サービスによるパスワードのリセット (SSPR) が有効になっている場合は、認証方法として以下のオプションの少なくとも 1 つを選択する必要があります。 ユーザーがより柔軟に対応できるように、少なくとも 2 つの認証方式を選択することを強くお勧めします。
+セルフ サービスによるパスワードのリセット (SSPR) が有効になっている場合は、認証方法として以下のオプションの少なくとも 1 つを選択する必要があります。 これらのオプションは、ゲートとして呼ばれることもあります。 ユーザーがより柔軟に対応できるように、少なくとも 2 つの認証方式を選択することを強くお勧めします。
 
 * 電子メール
 * 携帯電話
 * 会社電話
 * セキュリティの質問
+
+![認証][Authentication]
 
 ### <a name="what-fields-are-used-in-the-directory-for-authentication-data"></a>認証データ用にディレクトリで使用されるフィールド
 
@@ -81,18 +83,35 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 
 ### <a name="number-of-authentication-methods-required"></a>必要な認証方法の数
 
-このオプションは、ユーザーがパスワードをリセットするために通過する必要がある認証方法の最小数を決定し、1 または 2 のいずれかを設定できます。
+このオプションは、ユーザーがパスワードをリセットするために通過する必要がある認証方法またはゲートの最小数を決定し、1 または 2 のいずれかを設定できます。
 
 管理者によって有効になっている場合、ユーザーは他の認証方法を指定することを選択できます。
 
 ユーザーに必要最低限の方法が登録されていない場合は、管理者にパスワードのリセットを依頼するよう指示するエラー ページが表示されます。
+
+#### <a name="changing-authentication-methods"></a>認証方法の変更
+
+リセットまたはロック解除に必要な認証方法が 1 つしか登録されていないポリシーで開始し、それを 2 つに変更した場合、どうなりますか。
+
+| 登録されている方法の数 | 必要な方法の数 | 結果 |
+| :---: | :---: | :---: |
+| 1 つ以上 | 1 | リセットまたはロック解除**できる** |
+| 1 | 2 | リセットまたはロック解除**できない** |
+| 2 以上 | 2 | リセットまたはロック解除**できる** |
+
+ユーザーが使用できる認証方法の種類を変更すると、誤って、使用できるデータが最小量に及ばない場合にユーザーが SSPR を使用できないようにする可能性があります。
+
+例: 
+1. 2 つの認証方法で構成された元のポリシーは、会社電話とセキュリティの質問だけを使用する必要がありました。 
+2. 管理者は、今後セキュリティの質問を使用せず、携帯電話および連絡用メール アドレスを使用できるようにポリシーを変更します。
+3. 携帯電話および連絡用メール アドレス フィールドに入力していないユーザーは、パスワードをリセットできません。
 
 ### <a name="how-secure-are-my-security-questions"></a>セキュリティの質問の安全性
 
 セキュリティの質問を使用する場合、一部の人が別のユーザーの質問に対する回答を知っている可能性があるために他の方法に比べて安全性が低い可能性がある場合は、別の方法と併用することをお勧めします。
 
 > [!NOTE] 
-> セキュリティの質問は、ディレクトリ内のユーザー オブジェクトに非公開かつ安全に保存され、登録時にユーザーだけが回答できます。 管理者がユーザーの質問または回答を読み取ったり変更したりする方法はありません。
+> セキュリティの質問は、ディレクトリ内のユーザー オブジェクトに非公開かつ安全に保存され、登録時にユーザーだけが回答できます。 管理者がユーザーの質問や回答を読み取ったり変更したりすることはありません。
 >
 
 ### <a name="security-question-localization"></a>セキュリティの質問のローカライズ
@@ -162,11 +181,12 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 * フェデレーション アプリケーション
 * Azure AD を使用するカスタム アプリケーション
 
-この機能を無効にしても、ユーザーは、[http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) にアクセスするか、アクセス パネルの [プロファイル] タブの下にある **[パスワード リセットの登録]** リンクをクリックすることで、連絡先情報を手動で登録することができます。
+これを無効にしても、ユーザーは、[http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) にアクセスするか、アクセス パネルの [プロファイル] タブの下にある **[パスワード リセットの登録]** リンクをクリックすることで、連絡先情報を手動で登録することができます。
 
 > [!NOTE]
 > ユーザーは、[キャンセル] をクリックするかウィンドウを閉じることでパスワード リセット登録ポータルを閉じることができますが、登録を完了するまではログインするたびにメッセージが表示されます。
 >
+> ユーザーがすでにサインインしている場合、これにより、その接続は切断されません。
 
 ### <a name="number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>[ユーザーが認証情報を再確認するように求められるまでの日数]
 
@@ -188,7 +208,7 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 
 ## <a name="on-premises-integration"></a>オンプレミスの統合
 
-Azure AD Connect のインストール、構成、および有効化が完了すると、オンプレミスの統合用の追加のオプションが表示されます。
+Azure AD Connect のインストール、構成、および有効化が完了すると、オンプレミス統合用の次の追加オプションが表示されます。 これらのオプションが淡色表示されている場合、書き戻しが正しく構成されていません。詳細については、「[パスワード ライトバックの構成](active-directory-passwords-writeback.md#configuring-password-writeback)」を参照してください。
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>オンプレミス ディレクトリへのパスワード ライトバック
 
@@ -199,78 +219,38 @@ Azure AD Connect のインストール、構成、および有効化が完了す
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>パスワードをリセットせずにアカウントのロックを解除することをユーザーに許可する
 
-パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、パスワード リセットを実行するときに、Azure AD によりアカウントのロックが常に解除されます。この設定により、次の 2 つの操作を分離することができます。 
+パスワード リセット ポータルにアクセスするユーザーに、パスワードをリセットせずにオンプレミスの Active Directory アカウントのロックを解除するオプションを表示するかどうかを指定します。 既定では、パスワード リセットを実行するときに、Azure AD によりアカウントのロックが解除されます。この設定により、次の 2 つの操作を分離することができます。 
 
 * [はい] に設定すると、ユーザーはパスワードをリセットし、アカウントのロックを解除するか、パスワードをリセットせずにロックを解除するかを選択できます。
-* [いいえ] に設定すると、ユーザーはパスワードのリセットとアカウントのロック解除を組み合わせた操作しか実行できなくなります。
-
-## <a name="network-requirements"></a>ネットワークの要件
-
-### <a name="firewall-rules"></a>ファイアウォール規則
-
-[Microsoft Office の URL および IP アドレスの一覧](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
-
-Azure AD Connect バージョン 1.1.443.0 以上の場合は、次の URL への送信 HTTPS アクセスが必要です。
-* passwordreset.microsoftonline.com
-* servicebus.windows.net
-
-アクセスをより細かく設定するために、Microsoft Azure データ センターの IP 範囲の更新された一覧を参照することができます。この一覧は、毎週水曜日に更新され、次の月曜日に[ここ](https://www.microsoft.com/download/details.aspx?id=41653)で参照できるようになります。
-
-### <a name="idle-connection-timeouts"></a>アイドル接続のタイムアウト
-
-Azure AD Connect ツールでは、接続が現在も有効であることを確認するために、ping または keepalive が ServiceBus エンドポイントに送信されます。 接続の強制終了がツールであまりにも多く検出される場合は、エンドポイントへの ping の送信頻度が自動的に上がります。 最短の "ping の送信間隔" は 60 秒あたり 1 ping ですが、プロキシやファイアウォールではアイドル接続を 2 ～ 3 分以上維持できるようにすることを強くお勧めします。 *これより前のバージョンでは、4 分以上が推奨されます。
-
-## <a name="active-directory-permissions"></a>Active Directory のアクセス許可
-
-Azure AD Connect ユーティリティで指定されたアカウントには、そのフォレスト内の**各ドメイン**のルート オブジェクト**または** SSPR の対象に含めたいユーザー OU のいずれかに対して、lockoutTime の [パスワードのリセット]、[パスワードの変更]、[書き込みアクセス許可] や pwdLastSet の [書き込みアクセス許可] などの拡張権限が必要です。
-
-上記のどのアカウントが参照されるか明らかでない場合は、Azure Active Directory Connect の構成 UI を開き、[現在の構成を表示する] オプションをクリックします。 アクセス許可を追加する必要があるアカウントが、[同期されたディレクトリ] の下に表示されます。
-
-これらの権限を設定すると、パスワード管理が、フォレストに含まれるユーザー アカウントからではなく、各フォレストのMA サービス アカウントから可能になります。 **これらの権限を割り当てないと、ライトバックが正常に構成されているように思われる場合でも、クラウドからオンプレミスのパスワードを管理しようとするとエラーが発生します。**
-
-> [!NOTE]
-> ディレクトリ内のすべてのオブジェクトにこれらの権限をレプリケートするには、最大 1 時間かそれ以上かかることがあります。
->
-
-パスワード ライトバックを行うための適切なアクセス許可を設定するには
-
-1. 適切なドメインの管理権限を持つアカウントで [Active Directory ユーザーとコンピューター] を開きます。
-2. [表示] メニューで、[高度な機能] がオンになっていることを確認します。
-3. 左側のパネルで、ドメインのルートを表すオブジェクトを右クリックし、プロパティを選択します。
-    * [セキュリティ] タブをクリックします。
-    * 次に、[詳細設定] をクリックします。
-4. [アクセス許可] タブで [追加] をクリックします。
-5. (Azure AD Connect のセットアップから) アクセス許可を適用するアカウントを選択します。
-6. [適用先] ドロップダウンで、[下位ユーザー オブジェクト] を選択します。
-7. [アクセス許可] で次のチェック ボックスをオンにします。
-    * Unexpire-Password\(無期限パスワード\)
-    * パスワードのリセット
-    * パスワードの変更
-    * Write lockoutTime\(LockoutTime を書き込む\)
-    * Write pwdLastSet\(pwdLastSet を書き込む\)
-8. [適用] または [OK] をクリックして適用し、開いているすべてのダイアログ ボックスを終了します。
+* [いいえ] に設定すると、ユーザーはパスワードのリセットとアカウントのロック解除を組み合わせた操作しか実行できません。
 
 ## <a name="how-does-password-reset-work-for-b2b-users"></a>B2B ユーザーに対するパスワード リセットの動作
-パスワードのリセットと変更は、B2B のすべての構成で完全にサポートされています。  パスワードのリセットでサポートされる 3 つの明示的な B2B の事例を次に示します。
+パスワードのリセットと変更は、B2B のすべての構成で完全にサポートされています。 B2B ユーザーのパスワード リセットでサポートされる 3 つの事例を次に示します。
 
 1. **既存の Azure AD テナントがあるパートナー組織のユーザー**: パートナーを組んでいる組織に既存の Azure AD テナントがある場合は、**そのテナントで有効になっているパスワード リセット ポリシーが常に尊重されます**。 パスワード リセットを機能させるためにパートナー組織が実行する必要があるのは、Azure AD SSPR が有効であることを確認するだけです。有効にしても O365 顧客に追加料金は発生しません。「[パスワード管理の概要](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords)」ガイドの手順に従って有効にすることができます。
 2. **[セルフ サービス サインアップ](active-directory-self-service-signup.md)を使用してサインアップしたユーザー**: パートナーを組んでいる組織が[セルフ サービス サインアップ](active-directory-self-service-signup.md)機能を使用してテナントに参加している場合は、登録された電子メールを使用してパスワードをリセットできます。
 3. **B2B ユーザー**: 新しい [Azure AD B2B 機能](active-directory-b2b-what-is-azure-ad-b2b.md)を使用して作成された B2B ユーザーも、招待プロセス中に登録した電子メールを使用して自分のパスワードをリセットできます。
 
-これをテストするには、いずれかのパートナー ユーザーとして http://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている限り、パスワードのリセットは予想どおりに機能します。
+このシナリオをテストするには、いずれかのパートナー ユーザーとして http://passwordreset.microsoftonline.com に移動します。 連絡用電子メールまたは認証用電子メールが定義されている限り、パスワードのリセットは予想どおりに機能します。
+
+> [!NOTE]
+> Hotmail.com、Outlook.com、またはその他の個人用メール アドレスからのアカウントなど、Azure AD テナントへのゲスト アクセスが認められている Microsoft アカウントは、Azure AD SSPR を使用できず、[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)に関する記事に記されている情報を使用してパスワードをリセットする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
-* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します
-* [**パスワード ライトバック**](active-directory-passwords-writeback.md) - オンプレミスのディレクトリでのパスワード ライトバックのしくみ
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - 方法は? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
+* [ライセンスに関する質問。](active-directory-passwords-licensing.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
+* [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
+[Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "Azure AD の使用できる認証方法と必要な数量"

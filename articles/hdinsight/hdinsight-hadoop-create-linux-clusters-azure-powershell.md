@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 079a3d1c7f91477d641dbc65fe0f04e86a0dcd30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dab42d736745d268ae0bc15957c49a5e147f7c28
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Azure PowerShell を使用した HDInsight の Linux ベースのクラスターの作成
 
@@ -98,26 +98,26 @@ HDInsight クラスターが正常に作成されました。次に、クラス�
 
 ### <a name="hadoop-clusters"></a>Hadoop クラスター
 
-* [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight の Hadoop での Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="hbase-clusters"></a>HBase クラスター
 
-* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux.md)
+* [HDInsight での HBase の使用](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [HDInsight での HBase の Java アプリケーションの開発](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="storm-clusters"></a>Storm クラスター
 
-* [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
-* [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
+* [HDInsight での Storm の Java トポロジの開発](storm/apache-storm-develop-java-topology.md)
+* [HDInsight の Storm での Python コンポーネントの使用](storm/apache-storm-develop-python-topology.md)
+* [HDInsight の Storm を使用したトポロジのデプロイと監視](storm/apache-storm-deploy-monitor-topology-linux.md)
 
 ### <a name="spark-clusters"></a>Spark クラスター
 
-* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
-* [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
+* [Scala を使用してスタンドアロン アプリケーションを作成する](spark/apache-spark-create-standalone-application.md)
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](spark/apache-spark-livy-rest-interface.md)
+* [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](spark/apache-spark-use-bi-tools.md)
+* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](spark/apache-spark-eventhub-streaming.md)
 

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 11/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7615074ce3f5098d5155dfc28ada567ea6361878
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 56a2aff21a728d5ac0355516fc6988512c062b4c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -56,6 +56,16 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
+
+### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
+ 
+ * API リファレンス ドキュメント、アセンブリ内のメタデータ情報、および NuGet パッケージでの Azure DocumentDB から Azure Cosmos DB へのブランド名の変更。 
+ * 直接接続モードで送信された要求の応答からの診断情報と待機時間の公開。 プロパティ名は ResourceResponse クラスの RequestDiagnosticsString と RequestLatency です。
+ * この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+ 
+### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+
+* 信頼性のための修正と機能強化がいくつか追加されました。
 
 ### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1 
 
@@ -140,7 +150,9 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| [1.5.1](#1.5.1) |2017 年 10 月 2 日 |--- |
+| [1.7.0](#1.7.0) |2017 年 11 月10 日 |--- |
+| [1.6.0](#1.6.0) |2017 年 10 月 17 日 |--- |
+| [1.5.1](#1.5.1) |2017 年 10 月 02 日 |--- |
 | [1.5.0](#1.5.0) |2017 年 8 月 10 日 |--- | 
 | [1.4.1](#1.4.1) |2017 年 8 月 7 日 |--- |
 | [1.4.0](#1.4.0) |2017 年 8 月 2 日 |--- |

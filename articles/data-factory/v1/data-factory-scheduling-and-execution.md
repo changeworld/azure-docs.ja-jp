@@ -12,16 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: f8c126475ae36aa646dafb18b9b55d7b3b6b3ce7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1cd846418b0e65b978971526af7b918bd03a7a1
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[パイプラインの実行とトリガー](../concepts-pipeline-execution-triggers.md)に関する記事を参照してください。
+
 この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 この記事は、Data Factory アプリケーション モデルの概念の基本事項 (アクティビティ、パイプライン、リンクされたサービス、データセットなど) を理解していることを前提としています。 Azure Data Factory の基本的な概念については、次の記事を参照してください。
 
 * [Data Factory の概要](data-factory-introduction.md)

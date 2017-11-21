@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 11/01/2017
 ms.author: maroche
-ms.openlocfilehash: 30166823b33669dda88b41a4aee2dfc34f01466f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42d7fddd592b9cea8fbfa38bf39ca5def3542d66
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でのデータ ソースの登録
 ## <a name="introduction"></a>はじめに

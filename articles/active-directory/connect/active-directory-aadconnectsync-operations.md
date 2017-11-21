@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: b7583a1556bb1113f349a78890768451e39c6878
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af32c3f2d96ca51f59e29f8d9635caa290d580aa
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: 操作タスクおよび考慮事項
 このトピックでは、Azure AD Connect Sync の操作タスクについて説明します。
@@ -68,18 +68,25 @@ ms.lasthandoff: 10/11/2017
 #### <a name="verify"></a>確認
 1. コマンド プロンプトを起動し、`%ProgramFiles%\Microsoft Azure AD Sync\bin` に移動します。
 2. `csexport "Name of Connector" %temp%\export.xml /f:x` を実行します。同期サービスにコネクタの名前があることを確認できます。 Azure AD の場合は、"contoso.com - AAD" のような名前が表示されます。
-3. セクション [CSAnalyzer](#appendix-csanalyzer) から `csanalyzer.ps1` という名前のファイルに PowerShell スクリプトをコピーします。
-4. PowerShell ウィンドウを開き、PowerShell スクリプトを作成したフォルダーを参照します。
-5. `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml` を実行します。
-6. **processedusers1.csv** という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 Azure AD にエクスポートするためにステージングされたすべての変更は、このファイル内にあります。
-7. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(「インポートおよび同期」と「確認」の) 手順を実行します。
+3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` を実行します。%temp% に export.csv という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、エクスポートの対象となるすべての変更が含まれています。
+4. データまたは構成に必要な変更を加え、エクスポートの対象となる変更が希望どおりになるまで、(「インポートおよび同期」と「確認」の) 手順を実行します。
+
+**export.csv ファイルについて**: このファイルのほとんどの部分は一目瞭然です。 内容の理解に役立つ省略形のいくつかを次に示します。
+* OMODT - オブジェクトの変更の種類。 オブジェクト レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
+* AMODT - 属性の変更の種類。 属性レベルでの操作が追加、更新、または削除のいずれかであるかを示します。
+
+**共通識別子を取得する**: export.csv ファイルには、エクスポートの対象となるすべての変更が含まれています。 各行はコネクタ スペースのオブジェクトの変更に対応しており、オブジェクトは DN 属性で識別されます。 DN 属性は、コネクタ スペースのオブジェクトに割り当てられている一意識別子です。 export.csv に分析対象となる行/変更が多数含まれていると、DN 属性だけに基づいて、変更が行われたオブジェクトを特定するのは難しい場合があります。 変更の分析プロセスを簡素化するには、csanalyzer.ps1 PowerShell スクリプトを使用します。 このスクリプトは、オブジェクトの共通識別子 (displayName、userPrincipalName など) を取得します。 このスクリプトを使用するには、次の手順に従います。
+1. セクション [CSAnalyzer](#appendix-csanalyzer) から `csanalyzer.ps1` という名前のファイルに PowerShell スクリプトをコピーします。
+2. PowerShell ウィンドウを開き、PowerShell スクリプトを作成したフォルダーを参照します。
+3. `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml` を実行します。
+4. **processedusers1.csv** という名前のファイルが生成されます。このファイルは、Microsoft Excel で開くことができます。 このファイルには、DN 属性から共通識別子 (displayName、userPrincipalName など) へのマッピングが示されています。 現時点では、エクスポートの対象となる実際の属性変更は含まれていません。
 
 #### <a name="switch-active-server"></a>アクティブなサーバーの切り替え
 1. 現在アクティブなサーバーで、サーバー (DirSync、FIM、または Azure AD Sync) をオフにして Azure AD にエクスポートしないように設定するか、ステージング モード (Azure AD Connect) に設定します。
 2. **ステージング モード**のサーバーでインストール ウィザードを実行して、**ステージング モード**を無効にします。
    ![ReadyToConfigure](./media/active-directory-aadconnectsync-operations/additionaltasks.png)
 
-## <a name="disaster-recovery"></a>障害復旧
+## <a name="disaster-recovery"></a>ディザスター リカバリー
 実装の設計には、同期サーバーを喪失する障害の発生時の対処方法を計画することが含まれます。 モデルにはさまざまなものがあり、どのモデルを使用するかは、次の要素を含むいくつかの要素に依存します。
 
 * ダウンタイム中に Azure AD のオブジェクトを変更できないことに関してどれだけ許容できますか?

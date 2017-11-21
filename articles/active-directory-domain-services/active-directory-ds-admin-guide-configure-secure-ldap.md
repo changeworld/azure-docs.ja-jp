@@ -4,7 +4,7 @@ description: "Azure AD ドメイン サービスの管理対象ドメインに�
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 93afa49166c5b31d23237c308b9d34f6d6f3507d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05af1ccc9702891980e60a1c1db4c527ffbed0fa
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 この記事では、Azure AD ドメイン サービスの管理対象ドメインに対して、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を有効にする方法について説明します。 セキュリティで保護された LDAP は、「Secure Sockets Layer (SSL)/トランスポート層セキュリティ (TLS) 経由のライトウェイト ディレクトリ アクセス プロトコル (LDAP)」としても知られています。
@@ -55,31 +55,36 @@ ms.lasthandoff: 10/11/2017
 ## <a name="task-1---obtain-a-certificate-for-secure-ldap"></a>タスク 1 - セキュリティで保護された LDAP 用の証明書の取得
 最初のタスクでは、セキュリティで保護された LDAP からの管理対象ドメインへのアクセスに使用する証明書を取得します。 2 つのオプションがあります。
 
-* 証明機関から証明書を取得する。 公開証明機関を使用できます。
+* 公開証明機関から証明書を取得する。
 * 自己署名証明書を作成します。
-
-### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>オプション A (推奨) - セキュリティで保護された LDAP 証明書を証明機関から取得する
-組織が公開証明機関から証明書を取得する場合は、その公開証明機関からセキュリティで保護された LDAP の証明書を取得する必要があります。
-
-証明書を請求する場合は、「[セキュリティで保護された LDAP 証明書の要件](#requirements-for-the-secure-ldap-certificate)」で説明されている要件を満たしていることを確認してください。
 
 > [!NOTE]
 > セキュリティで保護された LDAP を使用して管理対象ドメインに接続する必要があるクライアント コンピューターでは、セキュリティで保護された LDAP 証明書の発行者を信頼する必要があります。
 >
+
+### <a name="option-a-recommended---obtain-a-secure-ldap-certificate-from-a-certification-authority"></a>オプション A (推奨) - セキュリティで保護された LDAP 証明書を証明機関から取得する
+組織が公開証明機関から証明書を取得する場合は、その公開証明機関から Secure LDAP 証明書を取得します。
+
+> [!TIP]
+> **ドメイン サフィックスが ".onmicrosoft.com" である管理対象ドメインには、自己署名証明書を使用します。**
+> 管理対象ドメインの DNS ドメイン名の末尾が ".onmicrosoft.com" の場合、公開証明機関から Secure LDAP 証明書を取得することはできません。 "onmicrosoft.com" ドメインは Microsoft が所有しているため、公開証明機関はこのサフィックスのドメインの Secure LDAP 証明書を発行することを拒否します。 このシナリオでは、自己署名証明書を作成し、その証明書を使用して Secure LDAP を構成します。
 >
 
+公開証明機関から取得した証明書が、「[セキュリティで保護された LDAP 証明書の要件](#requirements-for-the-secure-ldap-certificate)」に記載されているすべての要件を満たしていることを確認します。
+
+
 ### <a name="option-b---create-a-self-signed-certificate-for-secure-ldap"></a>オプション B - セキュリティで保護された LDAP 用の自己署名証明書を作成する
-公開証明機関からの証明書の使用を見込めない場合は、セキュリティで保護された LDAP 用の自己署名証明書を作成することができます。
+公開証明機関からの証明書の使用を見込めない場合は、セキュリティで保護された LDAP 用の自己署名証明書を作成することができます。 このオプションは、管理対象ドメインの DNS ドメイン名の末尾が ".onmicrosoft.com" の場合に選択します。
 
 **PowerShell を使用した自己署名証明書の作成**
 
 Windows コンピューターで **管理者** として新しい PowerShell ウィンドウを開き、次のコマンドを入力して新しい自己署名証明書を作成します。
+```
+$lifetime=Get-Date
+New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
+```
 
-    $lifetime=Get-Date
-
-    New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
-
-上記のサンプルの '*contoso100.com' は、管理対象ドメインの DNS ドメイン名に置き換えます。たとえば、'contoso100.onmicrosoft.com' と呼ばれる管理対象ドメインを作成した場合は、上記のスクリプトの '*.contoso100.com' を ' *.contoso100.onmicrosoft.com') に置き換えます。
+上記のサンプルの '*contoso100.com' は、管理対象ドメインの DNS ドメイン名に置き換えます。たとえば、"contoso100.onmicrosoft.com" という管理対象ドメインを作成した場合は、上記のスクリプトの "*.contoso100.com" を " *.contoso100.onmicrosoft.com" で置き換えます。
 
 ![Azure AD ディレクトリの選択](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 

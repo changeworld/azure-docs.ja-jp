@@ -14,45 +14,34 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 51320d93689da3e37c0946d8877b27a11793d9c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b9c7037271fabd67c1ada80420ad72c340e46bb
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="advisor-cost-recommendations"></a>Advisor のコストに関する推奨事項
 
 Advisor は、アイドル状態にあるリソースや活用されていないリソースを識別することによって Azure を最適化し、総合的な Azure の支出を削減します。 コストに関する推奨事項は、Advisor ダッシュボードの **[コスト]** タブで取得できます。
 
-![Advisor の [コスト] タブ](./media/advisor-cost-recommendations/advisor-cost-tab2.png)
-
-## <a name="optimize-virtual-machine-spend-by-resizing-underutilized-instances"></a>使用率が低いインスタンスのサイズ変更による仮想マシン費用の最適化 
+## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>使用率が低いインスタンスをサイズ変更またはシャットダウンして仮想マシンの支出を最適化する 
 特定のアプリケーション シナリオでは、設計によっては使用率が低くなる場合がありますが、多くの場合、仮想マシンのサイズと数を管理することによってコストを削減できます。 Advisor は、仮想マシンの使用状況を 14 日間にわたって監視して、使用率が低い仮想マシンを識別します。 CPU 使用率が 5% 以下で、ネットワークの使用率が 7 MB 以下である日が 4 日以上ある仮想マシンは、使用率が低い仮想マシンと見なされます。
 
-Advisor には、そのような仮想マシンの使用を継続した場合の推定コストが示され、シャット ダウンまたはサイズ変更を選択できます。  
+Advisor には、そのような仮想マシンの使用を継続した場合の推定コストが示され、シャット ダウンまたはサイズ変更を選択できます。
 
-![仮想マシンのサイズ変更を推奨している Advisor のコストに関する推奨事項](./media/advisor-cost-recommendations/advisor-cost-resizevms.png)
+使用率が低い仮想マシンを積極的に特定する場合は、サブスクリプションごとに平均 CPU 使用率ルールを調整できます。
 
 ## <a name="use-a-cost-effective-solution-to-manage-performance-goals-of-multiple-sql-databases"></a>コスト効率に優れたソリューションを使用して、複数の SQL データベースのパフォーマンス目標を管理してください。
 Advisor は、エラスティック データベース プールの作成によってメリットを得る可能性がある SQL Server インスタンスを識別します。 エラスティック データベース プールは、多様な使用パターンを持つ複数のデータベースのパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。 Azure エラスティック プールの詳細については、「[Azure エラスティック プールの概要](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/)」を参照してください。
 
-![エラスティック データベース プールに対する Advisor のコストに関する推奨事項](./media/advisor-cost-recommendations/advisor-cost-elasticdbpools.png)
+## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>プロビジョニングが解除された ExpressRoute 回線を排除してコストを削減する
+Advisor は、プロバイダーの状態が 1 か月以上 "*未プロビジョニング*" である ExpressRoute 回線を特定し、接続プロバイダーを使用してその回線をプロビジョニングする予定がない場合は回線を削除するよう勧めます。
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Advisor のコストに関する推奨事項にアクセスする方法
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-2. 左側のウィンドウで、**[その他のサービス]** をクリックします。
-
-3. サービス メニュー ウィンドウの **[Monitoring and Management (監視と管理)]** で、**[Azure Advisor]** をクリックします。  
- Advisor ダッシュボードが表示されます。
-
-4. Advisor ダッシュボードで、**[コスト]** タブをクリックします。
-
-5. 推奨事項を受け入れるサブスクリプションを選択し、**[推奨事項の取得]** をクリックします。
-
-> [!NOTE]
-> Advisor の推奨事項にアクセスするには、最初に Advisor に*サブスクリプションを登録する*必要があります。 *サブスクリプションの所有者*が Advisor ダッシュボードを起動して **[推奨事項の取得]** ボタンをクリックすると、サブスクリプションが登録されます。 これは *1 回限りの操作*です。 サブスクリプションが登録されると、サブスクリプション、リソース グループ、または特定のリソースの*所有者*、*共同作成者*、または*閲覧者*として Advisor の推奨事項にアクセスできます。
+2.  Advisor ダッシュボードで、**[コスト]** タブをクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

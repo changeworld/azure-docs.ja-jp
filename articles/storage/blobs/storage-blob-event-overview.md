@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 08/25/2017
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: f7a43d0a7255b326cd550fbcbb92bba93905d293
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: a56e6026ed0c2c873030625fa7a9b35b92faf930
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="reacting-to-blob-storage-events-preview"></a>Blob Storage のイベントへの対応
 
@@ -80,7 +80,7 @@ BlobCreated イベントの例を次に示します。
 
 ```
 
-詳しくは、[Blob Storage のイベント スキーマに関する記事](../../event-grid/event-schema.md#azure-blob-storage)をご覧ください。
+詳しくは、[Blob Storage のイベント スキーマに関する記事](../../event-grid/event-schema-blob-storage.md)をご覧ください。
 
 ## <a name="filtering-events"></a>イベントのフィルター処理
 BLOB イベントのサブスクリプションは、イベントの種類に基づき、作成または削除されたオブジェクトのコンテナー名と BLOB 名で、フィルター処理することができます。  Event Grid のサブジェクト フィルターは "で始まる" および "で終わる" の一致に基づいて動作し、サブジェクトが一致するイベントはサブスクライバーに配信されます。

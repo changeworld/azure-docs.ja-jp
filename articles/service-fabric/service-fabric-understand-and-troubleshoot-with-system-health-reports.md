@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: b02b1260cedcade9bf69a99453ab0f5aa2c3c7b1
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 42dca05c4d7d104ed0e7e21f1e53411e5983cd38
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -55,6 +55,18 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 * **SourceId**: System.Federation
 * **プロパティ**: **Neighborhood** で始まり、ノードの情報が含まれます。
 * **次のステップ**: ネットワーク コンピューターが消失した原因を調査します (たとえば、クラスター ノード間の通信をチェックします)。
+
+### <a name="rebuild"></a>再構築
+
+クラスター ノードに関する情報は、**Failover Manager** サービス (**FM**) によって管理されます。 FM がそのデータを失う (データの損失状態になる) と、クラスター ノードに関する情報が最新であることを FM は保証できなくなります。 その場合、システムが**再構築**処理へと移行し、**System.FM** は、その状態を再構築するために、クラスター内のすべてのノードからデータを収集します。 再構築処理は、ネットワークの問題やノードの問題によって途中で停止してしまうこともあります。 同じことは、**Failover Manager Master** サービス (**FMM**) でも起こる可能性があります。 **FMM** は、クラスターに含まれるすべての **FM** の所在を追跡するステートレスなシステム サービスです。 **FMM** のプライマリは常に、ID が最も 0 に近いノードです。 このノードがドロップした場合に**再構築**がトリガーされます。
+前述したいずれかの症状が起こると、**System.FM** または **System.FMM** から、エラー レポートを通じてその旨が警告されます。 再構築が停止するタイミングとしては、次の 2 つのフェーズが考えられます。
+
+* ブロードキャストを待機しているとき: **FM/FMM** は、ブロードキャスト メッセージに対して他のノードから返される応答を待機します。 ノード間にネットワーク接続の問題が生じているかどうかを調査することが**次のステップ**となります。   
+* ノードを待機しているとき: **FM/FMM** は既に、他のノードからブロードキャストへの応答を受信しており、特定のノードからの応答を待機しています。 正常性レポートには、**FM/FMM** がどのノードの応答を待機しているが一覧表示されます。 **FM/FMM** と一覧に表示されているノードとの間のネットワーク接続を調査することが**次のステップ**となります。 一覧表示されている各ノードについて、他の問題の可能性も調べてください。
+
+* **SourceID**: System.FM または System.FMM
+* **プロパティ**: 再構築。
+* **次のステップ**: ノード間のネットワーク接続を調査すると共に、正常性レポートの説明に記載されているノードがあれば、その特定のノードの状態を調査します。
 
 ## <a name="node-system-health-reports"></a>ノード システム正常性レポート
 **System.FM**は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます。 詳細については、[RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync) に関する記事をご覧ください。

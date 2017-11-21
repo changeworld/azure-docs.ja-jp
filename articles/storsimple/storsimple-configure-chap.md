@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 36b4e73d0336deb9560d44163fc5330d1c9d775c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 83ad256522ca19a19b3fe46fcc48e9cb37cbe246
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>StorSimple デバイスの CHAP の構成
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、「[StorSimple デバイスの CHAP の構成](storsimple-8000-configure-chap.md)」を参照してください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
 このチュートリアルでは、StorSimple デバイスの CHAP を構成する方法について説明します。 この記事の詳細な手順は、StorSimple 8000 シリーズと StorSimple 1200 デバイスに適用されます。
 
 CHAP は、チャレンジ ハンドシェイク認証プロトコルを意味します。 これは、サーバーがリモート クライアントの ID を検証する際に使用する認証スキームです。 この検証は、共有パスワードまたはシークレットに基づいて行われます。 CHAP には、単一方向 (一方向 CHAP) と双方向 (相互 CHAP) とがあります。 一方向 CHAP は、ターゲットがイニシエーターを認証する際に使用されます。 一方、相互 CHAP やリバース CHAP では、ターゲットがイニシエーターを認証した後、イニシエーターがターゲットを認証します。 イニシエーターの認証は、ターゲットの認証なしに実装できますが、 ターゲットの認証は、イニシエーターも実装されている場合にのみ実装できます。 
@@ -55,7 +58,7 @@ StorSimple デバイスの CHAP 設定は、次の方法で構成できます。
     > CHAP のユーザー名は 233 文字未満にする必要があります。 CHAP のパスワードは 12 ～ 16 文字にする必要があります。 ユーザー名やパスワードをそれより長くすると、Windows ホストで認証エラーとなります。
    
    3. パスワードを確認入力します。
-3. [ **Save**] をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
+3. **[ Save]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで一方向認証を構成するには
 1. Windows ホスト サーバーで、iSCSI イニシエーターを開始します。
@@ -107,7 +110,7 @@ Windows ホスト サーバーで CHAP を構成する方法の詳細につい�
    1. デバイスの **[ユーザー名]** を指定します。
    2. デバイスの **[パスワード]** を指定します。
    3. パスワードを確認入力します。
-4. [ **Save**] をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
+4. **[ Save]** をクリックします。 確認メッセージが表示されます。 **[OK]** をクリックして変更を保存します。
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>Windows ホスト サーバーで双方向認証を構成するには
 1. Windows ホスト サーバーで、iSCSI イニシエーターを開始します。

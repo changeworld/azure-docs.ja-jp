@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: 70a3d762431d90acdd6ed2a432a569f34d0ce447
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 399ed17e997baf5dcf484f7798d3c4679522c633
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Storm のトラブルシューティング
 
@@ -86,7 +86,7 @@ lib フォルダーには、エクスポート/インポート操作の実装を
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter delete /eventhubspout
     ```
 
-## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>クラスター上の Storm バイナリを見つける方法
+## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>クラスターで Storm バイナリを見つける方法
 現在の HDP スタックの Storm バイナリは、/usr/hdp/current/storm-client にあります。 ヘッド ノードとワーカー ノードでこの場所は同じです。
  
 /usr/hdp には、特定の HDP バージョンの複数のバイナリが存在する場合があります (例: /usr/hdp/2.5.0.1233/storm)。 /usr/hdp/current/storm-client フォルダーは、クラスターで実行されている最新バージョンにシンボリック リンクされます。
@@ -138,7 +138,7 @@ HDInsight 3.5 以降の Linux Storm クラスターで動作する最新の Stor
 ### <a name="source-code-examples"></a>ソース コードの例
 Azure HDInsight クラスターで (Java で記述された) Apache Storm トポロジを使用して、Azure Event Hubs との間で読み取り/書き込みを実行する方法の[例](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)を参照してください。
  
-## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a>クラスター上の Storm Log4J 構成ファイルを見つける方法
+## <a name="how-do-i-locate-storm-log4j-configuration-files-on-clusters"></a>クラスターで Storm Log4J 構成ファイルを見つける方法
  
 Storm サービスの Apache Log4J 構成ファイルを特定します。
  
@@ -152,3 +152,5 @@ Nimbus の Log4J 構成は、/usr/hdp/\<HDP バージョン\>/storm/log4j2/clust
  
 例: /usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml /usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml
 
+### <a name="see-also"></a>関連項目
+[Azure HDInsight を使用したトラブルシューティング](../../hdinsight/hdinsight-troubleshoot-guide.md)

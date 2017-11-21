@@ -1,40 +1,40 @@
-## <a name="view-device-telemetry-in-the-dashboard"></a>デバイスのテレメトリをダッシュボードに表示する
-リモート監視ソリューションのダッシュボードでは、デバイスが IoT Hub に送信するテレメトリを表示できます。
+## <a name="view-device-telemetry"></a>デバイス テレメトリを表示する
 
-1. ブラウザーでリモート監視ソリューションのダッシュボードに戻り、左側のパネルの **[デバイス]** をクリックし、**[デバイスの一覧]** に移動します。
-2. **[デバイスの一覧]** で、デバイスの状態が **[実行中]** であることを確認してください。 実行中でない場合は、**[デバイスの詳細]** パネルで **[デバイスの有効化]** をクリックします。
-   
-    ![デバイスの状態を表示する][18]
-3. **[ダッシュボード]** をクリックしてダッシュボードに戻り、**[表示するデバイス]** ボックスの一覧からテレメトリを表示するデバイスを選択します。 サンプル アプリケーションから送信されるテレメトリは、内部温度では 50 単位、外部温度では 55 単位、湿度では 50 単位です。
-   
-    ![デバイス テレメトリを表示する][img-telemetry]
+デバイスから送信されたテレメトリは、ソリューションの **[デバイス]** ページで表示できます。
 
-## <a name="invoke-a-method-on-your-device"></a>デバイスでメソッドを呼び出す
-リモート監視ソリューションのダッシュボードでは、IoT Hub を介してデバイスでメソッドを呼び出すことができます。 たとえば、リモート監視ソリューションで、デバイスの再起動をシミュレートするメソッドを呼び出すことができます。
+1. プロビジョニングしたデバイスを、**[デバイス]** ページのデバイスの一覧から選択します。 パネルには、デバイス テレメトリのプロットなど、デバイスに関する情報が表示されます。
 
-1. リモート監視ソリューションのダッシュボードで、左側のパネルの **[デバイス]** をクリックし、**[デバイスの一覧]** に移動します。
-2. **[デバイスの一覧]** で、デバイスの **[デバイス ID]** をクリックします。
-3. **[デバイスの詳細]** パネルで、**[メソッド]** をクリックします。
-   
-    ![デバイスのメソッド][13]
-4. **[メソッド]** ドロップダウンで **[InitiateFirmwareUpdate]** を選択し、**[FWPACKAGEURI]** にダミーの URL を入力します。 **[メソッドの呼び出し]** をクリックして、デバイスでメソッドを呼び出します。
-   
-    ![デバイスのメソッドを呼び出す][14]
-   
+    ![デバイスの詳細を確認する](media/iot-suite-visualize-connecting/devicesdetail.png)
 
-5. デバイスがメソッドを処理しているとき、デバイス コードを実行しているコンソールにメッセージが表示されます。 メソッドの結果は、ソリューション ポータルの履歴に追加されます。
+1. **[気圧]** を選択して、テレメトリの表示を変更します。
 
-    ![メソッドの履歴を表示する][img-method-history]
+    ![気圧テレメトリを表示する](media/iot-suite-visualize-connecting/devicespressure.png)
+
+1. デバイスに関する診断情報を表示するには、下へスクロールして、**[診断]** に移動します。
+
+    ![デバイスの診断を表示する](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
+
+## <a name="act-on-your-device"></a>デバイスを操作する
+
+デバイスでメソッドを呼び出すには、リモート監視ソリューションの **[デバイス]** ページを使用します。 たとえば、リモート監視ソリューションで、**Chiller** デバイスが **Reboot** メソッドを実装しています。
+
+1. **[デバイス]** を選択して、ソリューションの **[デバイス]** ページに移動します。
+
+1. プロビジョニングしたデバイスを、**[デバイス]** ページのデバイスの一覧から選択します。
+
+    ![物理デバイスを選択する](media/iot-suite-visualize-connecting/devicesselect.png)
+
+1. デバイスで呼び出すことができるメソッドの一覧を表示するには、**[スケジュール]** を選択します。 複数のデバイスで実行するメソッドのスケジュールを設定するために、一覧から複数のデバイスを選択することができます。 **[スケジュール]** パネルには、選択したすべてのデバイスに共通のメソッドの型が表示されます。
+
+1. **[再起動]** を選択し、ジョブ名を **RebootPhysicalChiller** に変更して、**[適用]** を選択します。
+
+    ![再起動のスケジュールを設定する](media/iot-suite-visualize-connecting/deviceschedule.png)
+
+1. デバイスがメソッドを処理しているとき、デバイス コードを実行しているコンソールにメッセージが表示されます。
+
+> [!NOTE]
+> ソリューションでジョブの状態を追跡するには、**[表示]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
-「[構成済みソリューションのカスタマイズ][lnk-customize]」では、このサンプルを拡張する方法をいくつか確認できます。 可能な拡張には、実際のセンサーの使用やその他のコマンドの実装などがあります。
 
-[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]の詳細について確認できます。
-
-[13]: ./media/iot-suite-visualize-connecting/suite4.png
-[14]: ./media/iot-suite-visualize-connecting/suite7-1.png
-[18]: ./media/iot-suite-visualize-connecting/suite10.png
-[img-telemetry]: ./media/iot-suite-visualize-connecting/telemetry.png
-[img-method-history]: ./media/iot-suite-visualize-connecting/history.png
-[lnk-customize]: ../articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md
+[「Customize the remote monitoring preconfigured solution (リモート監視構成済みソリューションをカスタマイズする)](../articles/iot-suite/iot-suite-remote-monitoring-customize.md)」では、構成済みソリューションをカスタマイズする方法をいくつか説明します。

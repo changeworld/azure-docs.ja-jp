@@ -1,5 +1,5 @@
 ---
-title: "データの同期 (プレビュー) | Microsoft Docs"
+title: "Azure SQL データ同期 (プレビュー) | Microsoft Docs"
 description: "この概要では、Azure SQL データ同期 (プレビュー) について説明します。"
 services: sql-database
 documentationcenter: 
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 34bc9588745eb24d8b8c2e81389a9e5144497b34
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 5c4509bc1d05bc422f6bc5599d4635020ded63e9
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/08/2017
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-azure-sql-data-sync-preview"></a>Azure SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する
 
 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータを複数の SQL データベースや SQL Server インスタンスの間で双方向に同期させることができます。
 
@@ -44,7 +44,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 -   **同期データベース**には、データ同期のメタデータとログが含まれています。同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
 
 > [!NOTE]
-> オンプレミスのデータベースを使用している場合は、[ローカル エージェントを構成する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-sql-data-sync)必要があります。
+> オンプレミスのデータベースを使用している場合は、[ローカル エージェントを構成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-sql-data-sync)必要があります。
 
 ![データベース間でのデータの同期](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -58,9 +58,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 -   **グローバル分散アプリケーション:** 多くの企業は、複数のリージョン、さらには複数の国にわたって展開しています。 ネットワーク待ち時間を最小限にするには、データは最寄りのリージョンに配置するのが一番です。 データ同期では、世界中のリージョンのデータベースを簡単に同期させることができます。
 
-以下のシナリオでは、データ同期をお勧めしません。
+データ同期は次のシナリオには適していません。
 
--   障害復旧
+-   ディザスター リカバリー
 
 -   読み取りスケール
 
@@ -77,48 +77,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 -   **競合の解決:** データ同期には、競合を解決するために、*[ハブ側に合わせる]* と *[Member wins]\(メンバー側に合わせる\)* という 2 つのオプションが用意されています。
     -   *[ハブ側に合わせる]* を選択すると、ハブでの変更が常にメンバーでの変更を上書きします。
     -   *[Member wins]\(メンバー側に合わせる\)* を選択すると、メンバーでの変更がハブでの変更を上書きします。 複数のメンバーがある場合、最終的な値は、どのメンバーが最初に同期されるかによって異なります。
-
-## <a name="limitations-and-considerations"></a>制限と考慮事項
-
-### <a name="performance-impact"></a>パフォーマンスへの影響
-データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 これにより、ユーザー データベース内に変更追跡のためのサイド テーブルが作成されます。 これらの変更追跡アクティビティは、データベースのワークロードに影響します。 サービス層を評価し、必要な場合はアップグレードします。
-
-### <a name="eventual-consistency"></a>最終的な一貫性
-データ同期はトリガー ベースであるため、トランザクションの一貫性は保証されません。 Microsoft では、最終的にはすべての変更が行われることと、データ同期でデータ損失が発生しないことを保証しています。
-
-### <a name="unsupported-data-types"></a>サポートされていないデータ型
-
--   FileStream
-
--   SQL/CLR UDT
-
--   XMLSchemaCollection (XML サポート)
-
--   Cursor、Timestamp、Hierarchyid
-
-### <a name="requirements"></a>必要条件
-
--   各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
-
--   テーブルに、主キー以外の ID 列を設けることはできません。
-
--   オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
-
--   スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
-
-### <a name="limitations-on-service-and-database-dimensions"></a>サービスとデータベースの数量に関する制限
-
-|                                                                 |                        |                             |
-|-----------------------------------------------------------------|------------------------|-----------------------------|
-| **数量**                                                      | **制限**              | **対処法**              |
-| データベースが属することができる同期グループの最大数。       | 5                      |                             |
-| 1 つの同期グループ内のエンドポイントの最大数              | 30                     | 複数の同期グループを作成する |
-| 1 つの同期グループ内のオンプレミス エンドポイントの最大数。 | 5                      | 複数の同期グループを作成する |
-| データベース、テーブル、スキーマ、および列名の文字数                       | 名前 1 件あたり 50 文字 |                             |
-| 同期グループ内のテーブル数                                          | 500                    | 複数の同期グループを作成する |
-| 同期グループ内のテーブルの列数                              | 1,000                   |                             |
-| テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
-| 最小同期間隔                                           | 5 分              |                             |
 
 ## <a name="common-questions"></a>一般的な質問
 
@@ -143,15 +101,63 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 データ同期は循環参照を処理しません。 必ず回避してください。 
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>データ同期でデータベースをエクスポートおよびインポートするにはどうすればよいですか?
-データベースを .bacpac ファイルとしてエクスポートし、それをインポートして新しいデータベースを作成した後、新しいデータベースでデータ同期を使うには、次の 2 つのことを行う必要があります。
+データベースを `.bacpac` ファイルとしてエクスポートし、そのファイルをインポートして新しいデータベースを作成した後、新しいデータベースでデータ同期を使うには、次の 2 つのことを行う必要があります。
 1.  [このスクリプト](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql)を使って、**新しいデータベース**でデータ同期オブジェクトとサイド テーブルをクリーンアップします。 このスクリプトは、データベースからすべての必要なデータ同期オブジェクトを削除します。
 2.  新しいデータベースで同期グループを再作成します。 古い同期グループが必要ない場合は削除します。
+
+## <a name="sync-req-lim"></a> 要件と制限
+
+### <a name="general-requirements"></a>一般的な要件
+
+-   各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
+
+-   テーブルに、主キー以外の ID 列を設けることはできません。
+
+-   オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
+
+-   スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
+
+### <a name="general-considerations"></a>一般的な考慮事項
+
+#### <a name="eventual-consistency"></a>最終的な一貫性
+データ同期はトリガー ベースであるため、トランザクションの一貫性は保証されません。 Microsoft では、最終的にはすべての変更が行われることと、データ同期でデータ損失が発生しないことを保証しています。
+
+#### <a name="performance-impact"></a>パフォーマンスへの影響
+データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 これにより、ユーザー データベース内に変更追跡のためのサイド テーブルが作成されます。 これらの変更追跡アクティビティは、データベースのワークロードに影響します。 サービス層を評価し、必要な場合はアップグレードします。
+
+### <a name="general-limitations"></a>一般的な制限事項
+
+#### <a name="unsupported-data-types"></a>サポートされていないデータ型
+
+-   FileStream
+
+-   SQL/CLR UDT
+
+-   XMLSchemaCollection (XML サポート)
+
+-   Cursor、Timestamp、Hierarchyid
+
+#### <a name="limitations-on-service-and-database-dimensions"></a>サービスとデータベースの数量に関する制限
+
+| **数量**                                                      | **制限**              | **対処法**              |
+|-----------------------------------------------------------------|------------------------|-----------------------------|
+| データベースが属することができる同期グループの最大数。       | 5                      |                             |
+| 1 つの同期グループ内のエンドポイントの最大数              | 30                     | 複数の同期グループを作成する |
+| 1 つの同期グループ内のオンプレミス エンドポイントの最大数。 | 5                      | 複数の同期グループを作成する |
+| データベース、テーブル、スキーマ、および列名の文字数                       | 名前 1 件あたり 50 文字 |                             |
+| 同期グループ内のテーブル数                                          | 500                    | 複数の同期グループを作成する |
+| 同期グループ内のテーブルの列数                              | 1,000                   |                             |
+| テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
+| 最小同期間隔                                           | 5 分              |                             |
+|||
 
 ## <a name="next-steps"></a>次のステップ
 
 SQL データ同期の詳細については、以下を参照してください。
 
--   [SQL データ同期の概要](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL データ同期の概要](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
+-   [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
 
 -   SQL データ同期を構成する方法を示す完全な PowerShell の例
     -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
@@ -162,5 +168,4 @@ SQL データ同期の詳細については、以下を参照してください�
 SQL Database の詳細については、以下を参照してください。
 
 -   [SQL Database の概要](sql-database-technical-overview.md)
-
 -   [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)

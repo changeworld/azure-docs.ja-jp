@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
-ms.author: willzhan;juliako
-ms.openlocfilehash: 1c62857699fb29b3583363e1c6f2dc7874635f40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/02/2017
+ms.author: willzhan;juliako;johndeu
+ms.openlocfilehash: e5d7a5ec1c28a552420aba5e2cd6c8c7bbf4213d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>REST で Azure AD 認証を使用して Azure Media Services API にアクセスする
 
@@ -86,21 +86,14 @@ JWT の属性と、前の表に示した 4 つのアプリケーションまた�
 |アプリケーションの種類 |アプリケーション |JWT 属性 |
 |---|---|---|
 |クライアント |ユーザーのアプリまたはソリューション |appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6". 次のセクションで Azure AD に登録するアプリケーションのクライアント ID。 |
-|ID プロバイダー (IDP) | IDP としての Azure AD |idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/".  GUID は、Microsoft テナント の ID です (microsoft.onmicrosoft.com)。 各テナントには、独自の一意の ID があります。 |
+|ID プロバイダー (IDP) | IDP としての Azure AD |idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/"  GUID は Microsoft テナント (microsoft.onmicrosoft.com) の ID です。 各テナントには、独自の一意の ID があります。 |
 |Secure Token Service (STS)/OAuth サーバー |STS としての Azure AD | iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/". GUID は、Microsoft テナント の ID です (microsoft.onmicrosoft.com)。 |
 |リソース | Media Services REST API |aud: "https://rest.media.azure.net". アクセス トークンの受信者また対象者。 |
 
 ## <a name="steps-for-setup"></a>セットアップ手順
 
-Azure AD 認証用に Azure AD アプリケーションを登録して設定し、Azure Media Services REST API エンドポイントを呼び出すためのアクセス トークンを取得するには、次の手順を完了します。
+Azure Active Directory (AAD) アプリケーションの登録と設定、および Azure Media Services REST API エンドポイントを呼び出すためのキーの取得については、「[Azure ポータルで Azure AD 認証を開始する](media-services-portal-get-started-with-aad.md)」の記事をご覧ください。
 
-1.  [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で、Azure AD アプリケーション (例: wzmediaservice) を Azure AD テナント (例: microsoft.onmicrosoft.com) に登録します。 Web アプリとして登録してもネイティブ アプリとして登録してもかまいません。 任意のサインオン URL と応答 URL も選択できます (たとえば、両方で http://wzmediaservice.com を選択できます)。
-2. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で、アプリケーションの **[構成]** タブに移動します。 **クライアント ID** を書き留めます。 次に、**[キー]** で、**クライアント キー** (クライアント シークレット) を生成します。 
-
-    > [!NOTE] 
-    > クライアント シークレットを必ず書き留めてください。 二度と表示されることはありません。
-    
-3.  [Azure ポータル](http://ms.portal.azure.com) で、Media Services アカウントに移動します。 **[アクセス制御 (IAM)]** ウィンドウを選択します。 所有者または共同作成者ロールが割り当てられている新しいメンバーを追加します。 プリンシパルで、手順 1 で登録したアプリケーション名 (この例では wzmediaservice) を検索します。
 
 ## <a name="info-to-collect"></a>収集する情報
 
@@ -138,9 +131,9 @@ REST でのコーディングを準備するために、コードに含める次
 
 一部の読者は、更新トークンはどこに行ったのかと疑問に思うかもしれません。 ここで更新トークンが使用されないのなぜでしょうか。
 
-更新トークンの目的は、アクセス トークンを更新することではありません。 その目的は、トークンの有効期限が切れるときに、エンドユーザー認証またはユーザーの介入をバイパスして、引き続き有効なアクセス トークンを取得することです。 更新トークンの名前は、「ユーザーの再度のサインインをバイパスするトークン」のほうが意味として適しています。
+更新トークンの目的は、アクセス トークンを更新することではありません。 以前のトークンの有効期限が切れた場合に、エンドユーザー認証をバイパスして、引き続き有効なアクセス トークンを取得するように設計されています。 更新トークンの名前は、「ユーザーの再度のサインインをバイパスするトークン」のほうが意味として適しています。
 
-OAuth 2.0 承認付与フローを使用する場合 (ユーザー名とパスワードがユーザーの代理として機能します)、更新トークンによって、ユーザーの介入を要求せずに、更新されたアクセス トークンを取得できます。 ただし、この記事で説明した OAuth 2.0 クライアント資格情報付与フローでは、クライアント自身が代理として機能します。 ユーザーの介入はまったく必要がなく、承認サーバーは更新トークンを提供する必要がないため、提供は行われません。 **GetUrlEncodedJWT** メソッドをデバッグすれば、トークン エンドポイントからの応答にアクセス トークンはあるが、更新トークンはないことがわかります。
+OAuth 2.0 承認付与フローを使用する場合 (ユーザー名とパスワードがユーザーの代理として機能します)、更新トークンによって、ユーザーの介入を要求せずに、更新されたアクセス トークンを取得できます。 ただし、この記事で説明されている OAuth 2.0 クライアント資格情報付与フローでは、クライアント自身が代理として機能します。 ユーザーの介入はまったく必要がなく、承認サーバーは更新トークンを提供する必要はありません。 **GetUrlEncodedJWT** メソッドをデバッグすれば、トークン エンドポイントからの応答にアクセス トークンはあるが、更新トークンはないことがわかります。
 
 ## <a name="next-steps"></a>次のステップ
 

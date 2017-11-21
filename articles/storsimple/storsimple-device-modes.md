@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/17/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 33c65bf2eecff3914f3227c76f7d638a4507e1f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 815d4bd539db8aebf2ee1eb62aef13b554b9cc47
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>StorSimple デバイスのデバイス モードの変更
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、「[StorSimple デバイスのデバイス モードの変更](storsimple-8000-device-modes.md)」をご覧ください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) に関するページを参照してください。
+
 この記事では、StorSimple デバイスのさまざまな動作モードについて簡単に説明します。 StorSimple デバイスの動作モードには、通常モード、メンテナンス モード、回復モードの 3 つがあります。 
 
 この記事を読むと、次のことについて理解できます。

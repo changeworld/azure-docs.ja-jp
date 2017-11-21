@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 07/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5c5f9f813a3bf1f041b4cd6979b9615e46be5cfb
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 11e8708987f4e085fc8bf1db10144283a9a17d2e
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>Azure で PHP と MySQL Web アプリを構築する
 
@@ -330,7 +330,7 @@ git commit -m "database.php updates"
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-php-no-h.md)] 
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 

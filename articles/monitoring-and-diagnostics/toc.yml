@@ -152,10 +152,10 @@
           href: azure-diagnostics-streaming-event-hubs.md
         - name: トラブルシューティング
           href: azure-diagnostics-troubleshooting.md
-    - name: Azure Monitor メトリックス エクスプローラーを使用する
-      items:
-        - name: メトリック グラフの作成
-          href: monitoring-metric-charts.md
+    - name: メトリックス エクスプローラーでのメトリック グラフの作成
+      href: monitoring-metric-charts.md
+    - name: Grafana へのメトリックの送信
+      href: monitor-send-to-grafana.md
 - name: リファレンス
   items:
     - name: Azure CLI

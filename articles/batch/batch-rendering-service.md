@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: hero-article
 ms.date: 09/14/2017
 ms.author: danlep
-ms.openlocfilehash: 08658bbebfc9f457a3f057178f6b002a88338f1e
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: aab68b4275edc48e1726b26a7400bbfdd8d40d6f
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Batch Rendering サービスの概要
 
@@ -91,7 +91,7 @@ Azure Portal と Batch Labs では、アプリケーションがプレインス�
 
 ### <a name="custom-images"></a>カスタム イメージ
 
-Azure Batch では、独自のカスタム イメージを指定することができます。 このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳細については、[カスタム イメージを使用して仮想マシンのプールを作成する](https://docs.microsoft.com/en-us/azure/batch/batch-custom-images)方法に関するページを参照してください。 Autodesk と Chaos Group では Microsoft 独自のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認する必要があります。そうでないと、従量課金ライセンスが動作しません。 現在の公開済みバージョンはヘッドレス (バッチ/コマンドライン モード) で実行するときにライセンス サーバーを必要としないため、このライセンス検証は Maya または 3ds Max では必要ありません。 このオプションの使用方法がわからない場合は、Azure サポートにお問い合わせください。
+Azure Batch では、独自のカスタム イメージを指定することができます。 このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳細については、[カスタム イメージを使用して仮想マシンのプールを作成する](https://docs.microsoft.com/azure/batch/batch-custom-images)方法に関するページを参照してください。 Autodesk と Chaos Group では Microsoft 独自のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認する必要があります。そうでないと、従量課金ライセンスが動作しません。 現在の公開済みバージョンはヘッドレス (バッチ/コマンドライン モード) で実行するときにライセンス サーバーを必要としないため、このライセンス検証は Maya または 3ds Max では必要ありません。 このオプションの使用方法がわからない場合は、Azure サポートにお問い合わせください。
 
 ## <a name="options-for-submitting-a-render-job"></a>レンダリング ジョブを送信するためのオプション
 
@@ -101,7 +101,7 @@ Azure Batch では、独自のカスタム イメージを指定することが�
 
 Maya では、以下を使用できます。
 
-- [Maya 用の Batch プラグイン](https://docs.microsoft.com/en-us/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
+- [Maya 用の Batch プラグイン](https://docs.microsoft.com/azure/batch/batch-rendering-service#use-the-batch-plug-in-for-maya-to-submit-a-render-job)
 - [BatchLabs](https://azure.github.io/BatchLabs) デスクトップ アプリケーション
 - [Batch テンプレート CLI](batch-cli-templates.md)
 
@@ -114,7 +114,7 @@ Maya では、以下を使用できます。
 
 3ds Max Batch Labs テンプレートを使用すると、Azure Batch Rendering サービスを使用して V-Ray および Arnold のシーンをレンダリングできます。 V-Ray と Arnold のテンプレートは 2 種類あります。1 つは、標準のシーン用で、もう 1 つはアセットおよびテクスチャへの 3ds Max パス ファイル (.mxp ファイル) を必要とする複雑なシーン用です。 3ds Max Batch Labs テンプレートの詳細については、GitHub の [Batch Labs データ](https://github.com/Azure/BatchLabs-data/tree/master/ncj/3dsmax) リポジトリを参照してください。
 
-さらに、[Batch Python SDK](https://docs.microsoft.com/en-us/azure/batch/batch-python-tutorial) を使用して、レンダリング サービスを既存のパイプラインと統合することができます。
+さらに、[Batch Python SDK](https://docs.microsoft.com/azure/batch/batch-python-tutorial) を使用して、レンダリング サービスを既存のパイプラインと統合することができます。
 
 
 ## <a name="use-the-batch-plug-in-for-maya-to-submit-a-render-job"></a>Maya 用の Batch プラグインを使用したレンダリング ジョブの送信

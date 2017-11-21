@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: bdf078a0cebf3c36d5916035fb5fd7e47d231abe
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 36eee42b7b10dfb62e569d665f62a94fc94365be
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語スキーマ
 
@@ -90,8 +90,7 @@ ms.lasthandoff: 10/26/2017
 
 トリガーとアクションでは、ワークフローの実行に含めることができる呼び出しを指定します。 このセクションについて詳しくは、「[ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md)」をご覧ください。
   
-## <a name="outputs"></a>出力
-  
+## <a name="outputs"></a>出力  
 
 outputs では、ワークフローの実行から返すことができる情報を指定します。 たとえば、各実行で追跡する特定の状態または値がある場合、そのデータを実行の出力に含めることができます。 データは、その実行の管理 REST API と、その実行に対する Azure Portal の管理 UI に表示されます。 また、PowerBI などの他の外部システムにこれらの出力を送って、ダッシュボードを作成することもできます。 サービス REST API で受信した要求に応答するために出力が使われることは "*ありません*"。 `response` アクション タイプを使って受信要求に応答する例を次に示します。
   
@@ -265,7 +264,6 @@ outputs では、ワークフローの実行から返すことができる情報
 |json|パラメーターを JSON 型の値に変換します。`string()` の逆です。 たとえば、この関数は `[1,2,3]` を文字列ではなく配列として返します。 <p>`json('[1,2,3]')` <p>同様に、文字列をオブジェクトに変換することもできます。 たとえば、次の関数は `{ "abc" : "xyz" }` を返します。 <p>`json('{"abc" : "xyz"}')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 ネイティブな型の値に変換する文字列です。 <p>`json()` 関数は、XML の入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。 <p>`<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>` <p>これは、次の JSON に変換されます。 <p>`{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |float|パラメーター引数を浮動小数点数に変換します。 たとえば、次の関数は `10.333` を返します。 <p>`float('10.333')` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 浮動小数点数に変換する値です。|  
 |bool|パラメーターをブール値に変換します。 たとえば、次の関数は `false` を返します。 <p>`bool(0)` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 ブール値に変換する値です。|  
-|coalesce|渡された引数で最初の null 以外のオブジェクトを返します。 **注**: 空の文字列は null ではありません。 たとえば、パラメーター 1 と 2 が定義されていない場合、この関数は `fallback` を返します。  <p>`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')` <p> **パラメーター番号**: 1 ... *n* <p> **名前**: Object*n* <p> **説明**: 必須。 null かどうか調べるオブジェクトです。|  
 |base64|入力文字列の base64 表現を返します。 たとえば、次の関数は `c29tZSBzdHJpbmc=` を返します。 <p>`base64('some string')` <p> **パラメーター番号**: 1 <p> **名前**: String 1 <p> **説明**: 必須。 base 64 表現にエンコードする文字列です。|  
 |base64ToBinary|base64 でエンコードされた文字列のバイナリ表現を返します。 たとえば、次の関数は `some string` のバイナリ表現を返します。 <p>`base64ToBinary('c29tZSBzdHJpbmc=')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 base64 でエンコードされた文字列です。|  
 |base64ToString|base64 でエンコードされた文字列の文字列表現を返します。 たとえば、次の関数は `some string` を返します。 <p>`base64ToString('c29tZSBzdHJpbmc=')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 base64 でエンコードされた文字列です。|  
@@ -281,7 +279,6 @@ outputs では、ワークフローの実行から返すことができる情報
 |uriComponentToBinary|URI でエンコードされた文字列のバイナリ表現を返します。 たとえば、次の関数は `You Are:Cool/Awesome` のバイナリ表現を返します。 <p>`uriComponentToBinary('You+Are%3ACool%2FAwesome')` <p> **パラメーター番号**: 1 <p> **名前**: String<p> **説明**: 必須。 URI でエンコードされた文字列です。|  
 |uriComponentToString|URI でエンコードされた文字列の文字列表現を返します。 たとえば、次の関数は `You Are:Cool/Awesome` を返します。 <p>`uriComponentToBinary('You+Are%3ACool%2FAwesome')` <p> **パラメーター番号**: 1<p> **名前**: String<p> **説明**: 必須。 URI でエンコードされた文字列です。|  
 |xml|値の XML 表現を返します。 たとえば、次の関数は `'\<name>Alan\</name>'` によって表される XML コンテンツを返します。 <p>`xml('\<name>Alan\</name>')` <p>`xml()` 関数は、JSON オブジェクトの入力もサポートします。 たとえば、パラメーター `{ "abc": "xyz" }` は、XML コンテンツ `\<abc>xyz\</abc>` に変換されます。 <p> **パラメーター番号**: 1<p> **名前**: Value<p> **説明**: 必須。 XML に変換する値です。|  
-|xpath|xpath 式が評価された値の xpath 式と一致する XML ノードの配列を返します。 <p> **例 1** <p>パラメーター `p1` の値が、次の XML の文字列表現であるものとします。 <p>`<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>` <p>コード `xpath(xml(parameters('p1'), '/lab/robot/name')` <p>は、次の値は返します。 <p>`[ <name>R1</name>, <name>R2</name> ]` <p>一方、コード <p>`xpath(xml(parameters('p1'), ' sum(/lab/robot/parts)')` <p>は、次の値は返します。 <p>`13` <p> <p> **例 2** <p>次のような XML コンテンツがあるものとします。 <p>`<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>` <p>コード `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')` <p>またはコード <p>`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')` <p>は、次の値は返します。 <p>`<Location xmlns="http://abc.com">xyz</Location>` <p>また、コード `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')` <p>は、次の値は返します。 <p>``xyz`` <p> **パラメーター番号**: 1 <p> **名前**: Xml <p> **説明**: 必須。 XPath 式を評価する XML です。 <p> **パラメーター番号**: 2 <p> **名前**: XPath <p> **説明**: 必須。 評価する XPath 式です。|  
 |array|パラメーターを配列に変換します。 たとえば、次の関数は `["abc"]` を返します。 <p>`array('abc')` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 配列に変換する値です。|
 |createArray|パラメーターから配列を作成します。 たとえば、次の関数は `["a", "c"]` を返します。 <p>`createArray('a', 'c')` <p> **パラメーター番号**: 1 ... *n* <p> **名前**: Any *n* <p> **説明**: 必須。 配列に結合する値です。|
 |triggerFormDataValue|form-data または form-encoded トリガー出力のキーと一致する単一の値を返します。  一致が複数ある場合は、エラーになります。  たとえば、次の式は `bar` を返します。`triggerFormDataValue('foo')`<br /><br />**パラメーター番号**: 1<br /><br />**名前**: Key Name<br /><br />**説明**: 必須。 取得するフォーム データ値のキー名です。|
@@ -290,6 +287,18 @@ outputs では、ワークフローの実行から返すことができる情報
 |formDataValue|form-data または form-encoded アクション出力のキーと一致する単一の値を返します。  一致が複数ある場合は、エラーになります。  たとえば、次の式は `bar` を返します。`formDataValue('someAction', 'foo')`<br /><br />**パラメーター番号**: 1<br /><br />**名前**: Action Name<br /><br />**説明**: 必須。 form-data または form-encoded 応答を含むアクションの名前です。<br /><br />**パラメーター番号**: 2<br /><br />**名前**: Key Name<br /><br />**説明**: 必須。 取得するフォーム データ値のキー名です。|
 |formDataMultiValues|form-data または form-encoded アクション出力のキーと一致する値の配列を返します。  たとえば、次の式は `["bar"]` を返します。`formDataMultiValues('someAction', 'foo')`<br /><br />**パラメーター番号**: 1<br /><br />**名前**: Action Name<br /><br />**説明**: 必須。 form-data または form-encoded 応答を含むアクションの名前です。<br /><br />**パラメーター番号**: 2<br /><br />**名前**: Key Name<br /><br />**説明**: 必須。 取得するフォーム データ値のキー名です。|
 |multipartBody|アクションのマルチパート出力のパートの本文を返します。<br /><br />**パラメーター番号**: 1<br /><br />**名前**: Action Name<br /><br />**説明**: 必須。 マルチパート応答を含むアクションの名前です。<br /><br />**パラメーター番号**: 2<br /><br />**名前**: Index<br /><br />**説明**: 必須。 取得するパートのインデックスです。|
+
+### <a name="manipulation-functions"></a>操作関数
+ 
+これらの関数は、XML およびオブジェクトに適用されます。
+ 
+|関数名|Description|  
+|-------------------|-----------------| 
+|coalesce|渡された引数で最初の null 以外のオブジェクトを返します。 **注**: 空の文字列は null ではありません。 たとえば、パラメーター 1 と 2 が定義されていない場合、この関数は `fallback` を返します。  <p>`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')` <p> **パラメーター番号**: 1 ... *n* <p> **名前**: Object*n* <p> **説明**: 必須。 null かどうか調べるオブジェクトです。|
+|addProperty|追加のプロパティを持つオブジェクトを返します。 実行時にプロパティが既に存在する場合は、エラーがスローされます。 たとえば、次の関数はオブジェクト `{ "abc" : "xyz", "def": "uvw" }` を返します。 <p>`addProperty(json('{"abc" : "xyz"}'), 'def', 'uvw')` <p> **パラメーター番号**: 1 <p> **名前**: Object <p> **説明**: 必須。 新しいプロパティを追加するオブジェクト。 <p> **パラメーター番号**: 2 <p> **名前**: Property Name <p> **説明**: 必須。 新しいプロパティの名前。 <p> **パラメーター番号**: 3 <p> **名前**: Value <p> **説明**: 必須。 新しいプロパティに割り当てる値。|
+|setProperty|追加のプロパティまたは既存のプロパティが指定値に設定されているオブジェクトを返します。 たとえば、次の関数はオブジェクト `{ "abc" : "uvw" }` を返します。 <p>`setProperty(json('{"abc" : "xyz"}'), 'abc', 'uvw')` <p> **パラメーター番号**: 1 <p> **名前**: Object <p> **説明**: 必須。 プロパティを設定する対象のオブジェクト。<p> **パラメーター番号**: 2 <p> **名前**: Property Name<p> **説明**: 必須。 新しいプロパティまたは既存のプロパティの名前。 <p> **パラメーター番号**: 3 <p> **名前**: Value <p> **説明**: 必須。 プロパティに割り当てる値。|
+|removeProperty|プロパティが削除されたオブジェクトを返します。 削除するプロパティが存在しない場合は、元のオブジェクトが返されます。 たとえば、次の関数はオブジェクト `{ "abc" : "xyz" }` を返します。 <p>`removeProperty(json('{"abc" : "xyz", "def": "uvw"}'), 'def')` <p> **パラメーター番号**: 1 <p> **名前**: Object <p> **説明**: 必須。 プロパティを削除するオブジェクト。<p> **パラメーター番号**: 2 <p> **名前**: Property Name <p> **説明**: 必須。 削除するプロパティの名前。 <p>|
+|xpath|xpath 式が評価された値の xpath 式と一致する XML ノードの配列を返します。 <p> **例 1** <p>パラメーター `p1` の値が、次の XML の文字列表現であるものとします。 <p>`<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>` <p>コード `xpath(xml(parameters('p1')), '/lab/robot/name')` <p>は、次の値は返します。 <p>`[ <name>R1</name>, <name>R2</name> ]` <p>一方、コード <p>`xpath(xml(parameters('p1')), ' sum(/lab/robot/parts)')` <p>は、次の値は返します。 <p>`13` <p> <p> **例 2** <p>次のような XML コンテンツがあるものとします。 <p>`<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>` <p>コード `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')` <p>またはコード <p>`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')` <p>は、次の値は返します。 <p>`<Location xmlns="http://abc.com">xyz</Location>` <p>また、コード `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')` <p>は、次の値は返します。 <p>``xyz`` <p> **パラメーター番号**: 1 <p> **名前**: Xml <p> **説明**: 必須。 XPath 式を評価する XML です。 <p> **パラメーター番号**: 2 <p> **名前**: XPath <p> **説明**: 必須。 評価する XPath 式です。|
 
 ### <a name="math-functions"></a>算術関数  
 
@@ -306,16 +315,16 @@ outputs では、ワークフローの実行から返すことができる情報
 |max|この関数を呼び出すには 2 つの異なるパターンがあります。 <p>次の `max` は配列を受け取り、関数は `2` を返します。 <p>`max([0,1,2])` <p>または、次の関数はコンマ区切りリストを受け取り、やはり `2` を返します。 <p>`max(0,1,2)` <p> **注**: すべての値は数値でなければならないので、パラメーターが配列の場合、配列は数値だけを含む必要があります。 <p> **パラメーター番号**: 1 <p> **名前**: Collection または Value <p> **説明**: 必須。 最大値を検索する値の配列、またはセットの最初の値です。 <p> **パラメーター番号**: 2 ... *n* <p> **名前**: Value *n* <p> **説明**: 省略可能。 パラメーター 1 が Value の場合、追加の値を渡すことができ、渡したすべての値の最大値が返されます。|  
 |range|特定の値から始まる整数の配列を生成します。 返される配列の長さを定義します。 <p>たとえば、次の関数は `[3,4,5,6]` を返します。 <p>`range(3,4)` <p> **パラメーター番号**: 1 <p> **名前**: Start index <p> **説明**: 必須。 配列の最初の整数です。 <p> **パラメーター番号**: 2 <p> **名前**: Count <p> **説明**: 必須。 この値は、配列内にある整数の個数です。|  
 |rand|指定された範囲 (開始値のみを含む) 内で整数の乱数を生成します。 たとえば、この関数は `0` または '1' を返す可能性があります。 <p>`rand(0,2)` <p> **パラメーター番号**: 1 <p> **名前**: Minimum <p> **説明**: 必須。 返される可能性のある最小の整数です。 <p> **パラメーター番号**: 2 <p> **名前**: Maximum <p> **説明**: 必須。 この値は、返される可能性のある最大の整数の次の整数です。|  
-  
+ 
 ### <a name="date-functions"></a>データ関数  
-  
+
 |関数名|Description|  
 |-------------------|-----------------|  
 |utcnow|現在のタイムスタンプを文字列として返します (例: `2017-03-15T13:27:36Z`)。 <p>`utcnow()` <p> **パラメーター番号**: 1 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |addseconds|渡されたタイムスタンプ文字列に秒数を表す整数を追加します。 秒数は正でも負でもかまいません。 書式指定子を指定しない場合の既定値は、ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T13:27:00Z` <p>`addseconds('2015-03-15T13:27:36Z', -36)` <p> **パラメーター番号**: 1 <p> **名前**: Timestamp <p> **説明**: 必須。 時刻を表す文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: Seconds <p> **説明**: 必須。 追加する秒の値です。 負の値にして秒数を減算できます。 <p> **パラメーター番号**: 3 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |addminutes|渡されたタイムスタンプ文字列に分の値を表す整数を追加します。 分の値は正でも負でもかまいません。 書式指定子を指定しない場合の既定値は、ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T14:00:36Z` <p>`addminutes('2015-03-15T13:27:36Z', 33)` <p> **パラメーター番号**: 1 <p> **名前**: Timestamp <p> **説明**: 必須。 時刻を表す文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: Minutes <p> **説明**: 必須。 追加する分の値です。 負の値にして分の値を減算できます。 <p> **パラメーター番号**: 3 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |addhours|渡されたタイムスタンプ文字列に時間数を表す整数を追加します。 時間の値は正でも負でもかまいません。 書式指定子を指定しない場合の既定値は、ISO 8601 形式 ("o") の文字列です。 例: `2015-03-16T01:27:36Z` <p>`addhours('2015-03-15T13:27:36Z', 12)` <p> **パラメーター番号**: 1 <p> **名前**: Timestamp <p> **説明**: 必須。 時刻を表す文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: Hours <p> **説明**: 必須。 追加する時間数です。 負の値にして時間数を減算できます。 <p> **パラメーター番号**: 3 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
-|adddays|渡されたタイムスタンプ文字列に日数を表す整数を追加します。 日の値は正でも負でもかまいません。 書式指定子を指定しない場合の既定値は、ISO 8601 形式 ("o") の文字列です。 例: `2015-02-23T13:27:36Z` <p>`addseconds('2015-03-15T13:27:36Z', -20)` <p> **パラメーター番号**: 1 <p> **名前**: Timestamp <p> **説明**: 必須。 時刻を表す文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: Days <p> **説明**: 必須。 追加する日数です。 負の値にして日数を減算できます。 <p> **パラメーター番号**: 3 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
+|adddays|渡されたタイムスタンプ文字列に日数を表す整数を追加します。 日の値は正でも負でもかまいません。 書式指定子を指定しない場合の既定値は、ISO 8601 形式 ("o") の文字列です。 例: `2015-02-23T13:27:36Z` <p>`adddays('2015-03-15T13:27:36Z', -2)` <p> **パラメーター番号**: 1 <p> **名前**: Timestamp <p> **説明**: 必須。 時刻を表す文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: Days <p> **説明**: 必須。 追加する日数です。 負の値にして日数を減算できます。 <p> **パラメーター番号**: 3 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |formatDateTime|日付形式の文字列を返します。 書式指定子を指定しない場合の既定値は、ISO 8601 形式 ("o") の文字列です。 例: `2015-02-23T13:27:36Z` <p>`formatDateTime('2015-03-15T13:27:36Z', 'o')` <p> **パラメーター番号**: 1 <p> **名前**: Date <p> **説明**: 必須。 日付を表す文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |startOfHour|渡された文字列タイムスタンプに時刻の開始を返します。 例: `2017-03-15T13:00:00Z`<br /><br /> `startOfHour('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br />**パラメーター番号**: 2<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |startOfDay|渡された文字列タイムスタンプに 1 日の開始を返します。 例: `2017-03-15T00:00:00Z`<br /><br /> `startOfDay('2017-03-15T13:27:36Z')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br />**パラメーター番号**: 2<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。| 

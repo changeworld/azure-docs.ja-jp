@@ -55,10 +55,12 @@
       href: concepts-integration-runtime.md
 - name: ハウツー ガイド
   items:
-    - name: データの移動
+    - name: データをコピーする
       items:
-        - name: コピー アクティビティの概要
+        - name: サポート対象ソースから宛先へのデータのコピー
           href: copy-activity-overview.md
+        - name: パーティション分割されたデータの読み取りまたは書き込み
+          href: how-to-read-write-partitioned-data.md
         - name: コネクタ
           items:
             - name: Amazon Redshift
@@ -71,6 +73,8 @@
               href: connector-azure-cosmos-db.md
             - name: Azure Data Lake Store
               href: connector-azure-data-lake-store.md
+            - name: Azure Database for MySQL
+              href: connector-azure-database-for-mysql.md
             - name: Azure File Storage
               href: connector-azure-file-storage.md
             - name: Azure Search
@@ -168,6 +172,8 @@
       items:
         - name: If 条件アクティビティ
           href: control-flow-if-condition-activity.md
+        - name: Until アクティビティ
+          href: control-flow-until-activity.md
         - name: Web アクティビティ
           href: control-flow-web-activity.md
         - name: ルックアップ アクティビティ
@@ -178,6 +184,8 @@
           href: control-flow-execute-pipeline-activity.md
         - name: For Each アクティビティ
           href: control-flow-for-each-activity.md
+        - name: Wait アクティビティ
+          href: control-flow-wait-activity.md
         - name: 式言語
           href: control-flow-expression-language-functions.md
         - name: システム変数
@@ -190,6 +198,8 @@
           href: store-credentials-in-key-vault.md
         - name: 自己ホスト型統合ランタイムの資格情報の暗号化
           href: encrypt-credentials-self-hosted-integration-runtime.md
+        - name: データ ファクトリのサービス ID
+          href: data-factory-service-identity.md
     - name: 監視と管理
       items:
         - name: SDK の使用

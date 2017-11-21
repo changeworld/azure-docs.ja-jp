@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2017
+ms.date: 10/30/2017
 ms.author: elkuzmen
-ms.openlocfilehash: 4fcce3b557b7105abcd704f740823c0cb4441b43
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: cd07cf69616fd33b6efcbcc3b2c97c025de67fe6
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Linux VM 管理対象サービス ID (MSI) を使用した Azure Key Vault へのアクセス 
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Windows 仮想マシンの管理対象サービス ID (MSI) を有効にし、その ID を使用して Azure Key Vault にアクセスする方法について説明します。 ブートストラップとして機能する Key Vault により、クライアント アプリケーションは、Azure Active Directory (AD) で保護されていないリソースにシークレットを使用してアクセスできます。 管理対象サービス ID は Azure によって自動的に管理され、コードに資格情報を挿入しなくても、Azure AD の認証をサポートするサービスを認証できます。 
+このチュートリアルでは、Linux 仮想マシンの管理対象サービス ID (MSI) を有効にし、その ID を使用して Azure Key Vault にアクセスする方法について説明します。 ブートストラップとして機能する Key Vault により、クライアント アプリケーションは、Azure Active Directory (AD) で保護されていないリソースにシークレットを使用してアクセスできます。 管理対象サービス ID は Azure によって自動的に管理され、コードに資格情報を挿入しなくても、Azure AD の認証をサポートするサービスを認証できます。 
 
 学習内容は次のとおりです。
 
@@ -96,9 +96,9 @@ MSI を使用すると、Azure Active Directory 認証をサポートするリ�
 5. アクティブ化した日付と有効期限の日付をクリアのままにし、**[有効]** を **[はい]** のままにします。 
 6. **[作成]** をクリックしてシークレットを作成します。 
  
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>VM ID を使用してアクセス トークンを取得して、Key Vault からシークレットを取得する  
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>VM の ID を使用してアクセス トークンを取得して、Key Vault からシークレットを取得する  
 
-これらの手順を完了するには、SSH クライアントが必要です。  Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) で SSH クライアントを使用することができます。   
+これらの手順を完了するには、SSH クライアントが必要です。  Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成方法については、「[Azure 上の Windows で SSH キーを使用する方法](../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../virtual-machines/linux/mac-create-ssh-keys.md)」を参照してください。
  
 1. ポータルで Linux VM に移動し、**[概要]** の **[接続]** をクリックします。 
 2. 任意の SSH クライアントを使用して、VM に**接続**します。 

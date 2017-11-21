@@ -9,17 +9,17 @@ editor:
 ms.assetid: 72e0edaf-795e-4856-84a5-6594f735fb7e
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 46908be2846062a0520d21e06db3091a4d711b0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be041a2c1095452efa722a29f0b7a25aee1bc464
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Elastic Database クライアント ライブラリへのアクセスに使用する資格情報
 [Elastic Database クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)では、3 種類の資格情報を使用して[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)にアクセスします。 必要に応じて、最低レベルのアクセスが可能な資格情報を使用します。
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 「 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」も参照してください。 
 
 ## <a name="about-management-credentials"></a>管理資格情報について
-管理の資格情報は、シャード マップを操作するアプリケーションの [**ShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) オブジェクトを作成するときに使用されます  (例については、「[Elastic Database ツール](sql-database-elastic-scale-add-a-shard.md)を使用してシャードを追加する」および「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください)。エラスティック スケール クライアント ライブラリのユーザーは、SQL ユーザーと SQL ログインを作成し、グローバル シャード マップ データベースとすべてのシャード データベースに対する読み取り/書き込みアクセス許可が各ユーザーに付与されていることを確認する必要があります。 これらの資格情報は、シャード マップに変更を加えるときにグローバル シャード マップとローカル シャード マップを維持するために使用されます。 たとえば、管理の資格情報を使用してシャード マップ マネージャー オブジェクトを作成します ([**GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx) を使用)。 
+管理の資格情報は、シャード マップを操作するアプリケーションの [**ShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) オブジェクトを作成するときに使用されます  (例については、「[Elastic Database ツールを使用してシャードを追加する](sql-database-elastic-scale-add-a-shard.md)」および「[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)」をご覧ください)。 エラスティック スケール クライアント ライブラリのユーザーは、SQL ユーザーと SQL ログインを作成し、グローバル シャード マップ データベースとすべてのシャード データベースに対する読み取り/書き込みアクセス許可が各ユーザーに付与されていることを確認する必要があります。 これらの資格情報は、シャード マップに変更を加えるときにグローバル シャード マップとローカル シャード マップを維持するために使用されます。 たとえば、管理の資格情報を使用してシャード マップ マネージャー オブジェクトを作成します ([**GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx) を使用)。 
 
     // Obtain a shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 値の形式としては、"username@server" ではなく、単に "username" という値を使ってください。  これは、シャード マップ マネージャー データベースと個々のシャードの両方で資格情報を有効にする必要があり、それらが別々のサーバー上に存在する場合があるためです。
 
 ## <a name="access-credentials"></a>資格情報にアクセスする
-シャード マップの管理用ではないアプリケーションでシャード マップ マネージャーを作成するときは、グローバル シャード マップに対する読み取り専用アクセス許可が与えられる資格情報を使用します。 これらの資格情報の下でグローバル シャード マップから取得される情報は、 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md) の目的と、クライアント上のシャード マップ キャッシュを設定するために使用されます。 資格情報は、上に示すように、 **GetSqlShardMapManager** と同じ呼び出しパターンを通じて提供されます。 
+シャード マップの管理用ではないアプリケーションでシャード マップ マネージャーを作成するときは、グローバル シャード マップに対する読み取り専用アクセス許可が与えられる資格情報を使用します。 これらの資格情報の下でグローバル シャード マップから取得される情報は、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)の目的と、クライアント上のシャード マップ キャッシュを設定するために使用されます。 資格情報は、**GetSqlShardMapManager** と同じ呼び出しパターンを通じて提供されます。 
 
     // Obtain shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/11/2017
 
     "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 
-管理者の資格情報と同じように、"username@server" という形式の値は使わないでください。 代わりに "username" のみを使用します。  接続文字列にはサーバー名とデータベース名が含まれていないことにも注意してください。 これは、 **OpenConnectionForKey** の呼び出しによって接続がキーに基づいた正しいシャードに自動的に転送されるためです。 そのため、データベース名とサーバー名を指定しないでください。 
+管理者の資格情報と同じように、"username@server" という形式の値は使わないでください。 代わりに "username" のみを使用します。  接続文字列にはサーバー名とデータベース名が含まれていないことにも注意してください。 これは、**OpenConnectionForKey** の呼び出しによって接続がキーに基づいた正しいシャードに自動的に転送されるためです。 そのため、データベース名とサーバー名を指定しないでください。 
 
 ## <a name="see-also"></a>「
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)

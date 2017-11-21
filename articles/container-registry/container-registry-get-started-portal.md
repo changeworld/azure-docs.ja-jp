@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 10/31/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: e38a92fc48636476f00fe18c735901d906799fde
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 514fa3490e480647f0923c99bd9606a3726d4d30
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Azure Portal を使用したコンテナー レジストリの作成
 
@@ -65,11 +65,11 @@ Docker CLI を使用してレジストリを使用する場合は、次の手順
 
 コンテナー イメージをプッシュしたりプルしたりするには、あらかじめ ACR インスタンスにログインしておく必要があります。 ログインするには、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用します。 *username*、*password*、*login server* の値を前述の手順でメモした値で置き換えます。
 
-```
+```bash
 docker login --username <username> --password <password> <login server>
 ```
 
-このコマンドが完了すると "ログインに成功しました" というメッセージを返されます。
+このコマンドは、完了すると `Login Succeeded` を返します。 `--password-stdin` パラメーターの使用を推奨するセキュリティ警告が表示されることもあります。 このパラメーターの使用について、ここでは説明していませんが、このベスト プラクティスに従うことをお勧めします。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
 
 ## <a name="push-image-to-acr"></a>ACR にイメージをプッシュする
 

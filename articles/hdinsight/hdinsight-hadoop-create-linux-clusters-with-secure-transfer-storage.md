@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/21/2017
+ms.date: 11/06/2017
 ms.author: jgao
-ms.openlocfilehash: 370b2f081930fe88527436a1a127309aed6681f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b537595fd8224536f67989d7529f6030347bfab
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントで Hadoop クラスターを作成する
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
     - ストレージ アカウントの短い名前を使用します。
     - ストレージ アカウントと BLOB コンテナーのどちらも、事前に作成しておく必要があります。 
 
-    手順については、「[クラスターの作成](./hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。 
+    手順については、「[クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。 
 
 独自の構成ファイルを指定するためにスクリプト アクションを使用する場合は、以下の設定で wasbs を使用する必要があります。
 
@@ -74,7 +74,7 @@ HDInsight でデータを分析する方法の詳細については、次の記�
 * Visual Studio から Hive クエリを実行する方法など、HDInsight で Hive を使用する方法の詳細については、[HDInsight での Hive の使用][hdinsight-use-hive]に関する記事を参照してください。
 * データの変換に使用される言語 Pig の詳細については、[HDInsight での Pig の使用][hdinsight-use-pig]に関する記事を参照してください。
 * Hadoop 上のデータを処理するプログラムを作成する方法の 1 つである MapReduce の詳細については、[HDInsight での MapReduce の使用][hdinsight-use-mapreduce]に関する記事を参照してください。
-* HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](hdinsight-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
+* HDInsight Tools for Visual Studio を使用して HDInsight 上のデータを分析する方法については、 [HDInsight Hadoop Tools for Visual Studio の使用開始](hadoop/apache-hadoop-visual-studio-tools-get-started.md)に関するページを参照してください。
 
 HDInsight のデータの格納方法や HDInsight にデータを取り込む方法の詳細については、以下の記事を参照してください。
 
@@ -91,12 +91,12 @@ HDInsight クラスターの作成または管理の詳細については、以�
   * Hadoop ファイルの場所とローカル ファイル システムの例
   * 既定のデータ ストアとして、HDFS ではなく Azure Storage (WASB) を使用する
 
-[1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
+[1]: ../HDInsight/hadoop/apache-hadoop-visual-studio-tools-get-started.md
 
 [hdinsight-provision]: hdinsight-provision-linux-clusters.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
-[hdinsight-use-hive]: hdinsight-use-hive.md
-[hdinsight-use-pig]: hdinsight-use-pig.md
+[hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
+[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
+[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
 
 

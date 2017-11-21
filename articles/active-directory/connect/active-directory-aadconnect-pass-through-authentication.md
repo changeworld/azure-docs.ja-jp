@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 96a33547329931903d264d5ec4ea8da76e36a0a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6987ad8f36de55ac49785b41bb193721aa78321b
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
@@ -55,7 +55,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 - ユーザーが[先進認証](https://aka.ms/modernauthga)を使用する、すべての Web ブラウザー ベースのアプリケーションおよび Microsoft Office クライアント アプリケーションにサインインすることがサポートされています。
 - サインイン ユーザー名には、オンプレミスの既定のユーザー名 (`userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID` と呼ばれます) を指定できます。
-- この機能は、多要素認証 (MFA) など、ユーザーを保護する[条件付きアクセス](../active-directory-conditional-access.md)とシームレスに連携します。
+- この機能は、多要素認証 (MFA) など、ユーザーを保護する[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)とシームレスに連携します。
 - クラウド ベースの[セルフサービスのパスワード管理](../active-directory-passwords-overview.md) (オンプレミスの Active Directory へのパスワード ライトバックや、よく使用されているパスワードの禁止によるパスワードの保護を含む) と統合されています。
 - ご使用の AD フォレスト間にフォレストの信頼があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境がサポートされます。
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: zivr
-ms.openlocfilehash: be062ce9cfbe7486ef500dd9d27418cbf245d6e0
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: b31955e19883f9fe2e7ed6cf7f5076eaf52577c0
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Linux 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -65,6 +65,8 @@ MaintenanceRedeployStatus では、次の値が返されます。
 | LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 ||
 
 
+
+
 ## <a name="start-maintenance-on-your-vm-using-cli"></a>CLI を使用して VM に対するメンテナンスを開始する
 
 `IsCustomerInitiatedMaintenanceAllowed` が true に設定されている場合、次の呼び出しによって VM に対するメンテナンスが開始されます。
@@ -74,6 +76,28 @@ az vm perform-maintenance rgName vmName
 ```
 
 [!INCLUDE [virtual-machines-common-maintenance-notifications](../../../includes/virtual-machines-common-maintenance-notifications.md)]
+
+## <a name="classic-deployments"></a>クラシック デプロイ
+
+クラシック デプロイ モデルを使用してデプロイされたレガシ VM がまだある場合は、CLI 1.0 を使用して、VM を照会し、メンテナンスを開始できます。
+
+次のように入力して、クラッシック VM を操作する正しいモードになっていることを確認します。
+
+```
+azure config mode asm
+```
+
+*myVM* という名前の VM のメンテナンスの状態を取得するには、次のように入力します。
+
+```
+azure vm show myVM 
+``` 
+
+*myService* サービスおよび *myDeployment* デプロイの *myVM* という名前のクラシック VM でメンテナンスを開始するには、次のように入力します。
+
+```
+azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
+```
 
 
 ## <a name="faq"></a>FAQ

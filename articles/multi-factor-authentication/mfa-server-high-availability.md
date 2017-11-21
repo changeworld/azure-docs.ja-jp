@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: joflore
-ms.reviewer: alexwe
+ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 9f03e61e05383c309fb66b67e0641b17df5ab00f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f22e0df75830a048e535384de8a3eec51bf91fd8
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性のための Azure Multi-Factor Authentication Server の構成
 

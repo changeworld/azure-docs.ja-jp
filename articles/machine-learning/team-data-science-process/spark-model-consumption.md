@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 85424a00b34b4bccf7dc38b2bae1cfe31b2507d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ff633b4543fbc537ffdb721756706e8de5e8e88
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -118,7 +118,7 @@ PySpark カーネルには、"マジック"、つまり、%% で呼び出すこ�
 * **%%sql -o <variable name>** 
 * sqlContext に対して Hive クエリを実行します。 -o パラメーターが渡される場合、クエリの結果は、Pandas データフレームとして %%local Python コンテキストで永続化されます。
 
-Jupyter Notebook のカーネルと、それによって提供される定義済みの "マジック" (例: %%local) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
+Jupyter Notebook のカーネルと、それによって提供される定義済みの "マジック" (例: %%local) の詳細については、「[HDInsight の HDInsight Spark Linux クラスターと Jupyter Notebook で使用可能なカーネル](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)」をご覧ください。
 
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>データの取り込みとクリーンなデータ フレームの作成
 このセクションでは、スコア付けするデータの取り込みに必要な一連のタスクを実行するコードを紹介します。 タクシーの乗車データと料金ファイル (.tsv ファイルとして保存されています) を結合した 0.1% サンプルを読み取り、データの形式を設定して、クリーンなデータ フレームを作成します。
@@ -527,7 +527,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Web インターフェイス経由での Spark モデルの利用
-Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。 HDInsight Spark クラスターでは Livy が既定で有効になっています。 Livy の詳細については、[Livy を使用した Spark ジョブのリモート送信](../../hdinsight/hdinsight-apache-spark-livy-rest-interface.md)に関する記事をご覧ください。 
+Spark には、Livy と呼ばれるコンポーネントを使用して、REST インターフェイス経由でバッチ ジョブや対話型クエリをリモートから送信できるメカニズムが備えられています。 HDInsight Spark クラスターでは Livy が既定で有効になっています。 Livy の詳細については、[Livy を使用した Spark ジョブのリモート送信](../../hdinsight/spark/apache-spark-livy-rest-interface.md)に関する記事をご覧ください。 
 
 Livy を使用して、Azure BLOB に格納されているファイルをバッチ処理でスコア付けし、結果を別の BLOB に書き込むジョブをリモートから送信できます。 それには、  
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) の Python スクリプトを Spark クラスターの BLOB にアップロードします。 **Microsoft Azure Storage Explorer** や **AzCopy** などのツールを使って、スクリプトをクラスターの BLOB にコピーできます。 この例では、スクリプトを ***wasb:///example/python/ConsumeGBNYCReg.py*** にアップロードしています。   

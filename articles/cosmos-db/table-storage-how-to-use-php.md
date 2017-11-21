@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: 7a48446a11c5c6db0c9f4fdd8872b1e3c12e85c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5cfdfc814d1dfc15149d7b100ba1f6b68e90bb36
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="how-to-use-table-storage-from-php"></a>PHP から Table ストレージを使用する方法
+# <a name="how-to-use-azure-table-storage-from-php"></a>PHP から Azure Table Storage を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Azure Table service を使用して一般的なシナリオを実行する方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。 紹介するシナリオは、 **テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]

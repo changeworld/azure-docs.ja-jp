@@ -14,13 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: Active
-ms.date: 02/08/2017
+ms.date: 11/07/2017
 ms.author: carlrab
-ms.openlocfilehash: f27d2fbeb8ec514419bd0d208429e3d3de2d07ea
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 4e22a512f7ee11dde14f8eac818506b59791e17f
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>SQL Server データベースのクラウド内の SQL Database への移行
 この記事では、SQL Server 2005 以降のデータベースを Azure SQL Database に移行するための 2 つの主な方法について説明します。 1 つ目の方法の方が簡単ですが、移行中にダウンタイムが必要です。これは長時間にわたる可能性があります。 2 つ目の方法はより複雑ですが、移行中のダウンタイムは大幅に解消されます。
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/31/2017
 どちらの場合も、[Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用してソース データベースに Azure SQL Database との互換性があることを確認する必要があります。 SQL Database V12 は、SQL Server との[機能の同等性](sql-database-features.md)を目指していますが、サーバーレベルの操作とデータベース間の操作に関連した問題は残っています。 データベースやアプリケーションで、[部分的にしかサポートされていない機能またはサポートされていない機能](sql-database-transact-sql-information.md)を使用している場合には、SQL Server データベースの移行前に[リエンジニアリングを実施してこれらの非互換性を修正する](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues)必要があります。
 
 > [!NOTE]
-> Microsoft Access、Sybase、MySQL Oracle、DB2 などの SQL Server 以外のデータベースを Azure SQL Database に移行する場合は、 [SQL Server Migration Assistant](https://blogs.msdn.microsoft.com/datamigration/2016/12/22/released-sql-server-migration-assistant-ssma-v7-2/)チームのブログ記事を参照してください。
+> Microsoft Access、Sybase、MySQL Oracle、DB2 などの SQL Server 以外のデータベースを Azure SQL Database に移行する場合は、 [SQL Server Migration Assistant](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/)チームのブログ記事を参照してください。
 > 
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1: 移行中にダウンタイムを伴う移行
@@ -39,12 +39,11 @@ ms.lasthandoff: 10/31/2017
 
   ![VSSSDT の移行ダイアグラム](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) の最新バージョンを使用して、データベースの互換性を評価します。
+1. [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) の最新バージョンを使用して、データベースの互換性を[評価](https://docs.microsoft.com/en-us/sql/dma/dma-assesssqlonprem)します。
 2. 必要な修正を Transact-SQL スクリプトとして準備します。
-3. トランザクション上の一貫性が維持された、移行されるソース データベースのコピーを作成し、ソース データベースにそれ以上変更が行われないようにします (または、移行が完了した後に、このような変更を手動で適用することもできます)。 クライアント接続を無効にしたり、 [データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成したりするなど、データベースはさまざまな方法で停止できます。
+3. トランザクション上の一貫性が維持された、移行元のソース データベースのコピーを作成し、ソース データベースにそれ以上変更が行われないようにします (移行が完了した後に、このような変更を手動で適用できます)。 クライアント接続を無効にしたり、 [データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成したりするなど、データベースはさまざまな方法で停止できます。
 4. Transact-SQL スクリプトをデプロイして、データベースのコピーに修正を適用します。
-5. データベースのコピーをローカル ドライブの BACPAC ファイルに[エクスポート](sql-database-export.md)します。
-6. 任意の BACPAC インポート ツールを使用して、BACPAC ファイルを新しい Azure SQL データベースとして[インポート](sql-database-import.md)します。最適なパフォーマンスを得るには、SQLPackage.exe の使用をお勧めします。
+5. Data Migration Assistant を使用して、データベースのコピーを新しい Azure SQL Database に[移行](https://docs.microsoft.com/en-us/sql/dma/dma-migrateonpremsql)します。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>移行中のデータ転送パフォーマンスの最適化 
 

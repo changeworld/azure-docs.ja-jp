@@ -15,7 +15,7 @@
   items:
     - name: Terraform モジュールを使用した VM クラスターの作成
       href: terraform-create-vm-cluster-module.md
-    - name: Cloud Shell を使用した VM クラスターの作成
+    - name: Terraform と HCL を使用した VM クラスターの作成
       href: terraform-create-vm-cluster-with-infrastructure.md
     - name: インフラストラクチャを使用した VM スケール セットのプロビジョニング
       href: terraform-create-vm-scaleset-network-disks-hcl.md

@@ -106,7 +106,8 @@
 
 ## [ライブ ストリーミング](media-services-manage-channels-overview.md)
 ### [オンプレミス エンコーダー](media-services-live-streaming-with-onprem-encoders.md)
-#### [ポータル](media-services-portal-live-passthrough-get-started.md)
+#### [推奨のオンプレミス エンコーダー](media-services-recommended-encoders.md)
+#### [Azure ポータル](media-services-portal-live-passthrough-get-started.md)
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 ### [クラウド エンコーダーを使用したライブ ストリーミング](media-services-manage-live-encoder-enabled-channels.md)
 #### [Azure ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -118,6 +119,13 @@
 #### [Wirecast エンコーダー](media-services-configure-wirecast-live-encoder.md)
 ### [長時間にわたって実行される操作の処理](media-services-dotnet-long-operations.md)
 ### [フラグメント化 MP4 ライブ取り込みの仕様](media-services-fmp4-live-ingest-overview.md)
+
+## [クリップ コンテンツ](media-services-azure-media-clipper-overview.md)
+### [Azure Media Clipper の使用](media-services-azure-media-clipper-getting-started.md)
+### [Azure Media Clipper への資産の読み込み](media-services-azure-media-clipper-load-assets.md)
+### [カスタム キーボード ショートカットの構成](media-services-azure-media-clipper-keyboard-shortcuts.md)
+### [クリッピング ジョブの送信](media-services-azure-media-clipper-submit-job.md)
+### [Azure ポータル](media-services-azure-media-clipper-portal.md)
 
 ## [保護](media-services-content-protection-overview.md)
 ### [Azure Portal でコンテンツ保護を構成する](media-services-portal-protect-content.md)

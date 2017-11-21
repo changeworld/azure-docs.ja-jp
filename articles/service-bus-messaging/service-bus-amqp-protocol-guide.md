@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/08/2017
 ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 2ef07d78a9d81fac933f2c3359e9ee48f86e6790
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
-# Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
+# <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
 Advanced Message Queueing Protocol 1.0 は、2 つの当事者間でメッセージを非同期で、安全かつ確実に転送することを目的に標準化されたフレーミングと転送のためのプロトコルです。 Azure Service Bus メッセージングと Azure Event Hubs の主要なプロトコルとなっています。 どちらのサービスも HTTPS をサポートしています。 同じくサポートされている独自開発の SBMP プロトコルは今後、徐々に AMQP に置き換わっていく予定です。
 
 AMQP 1.0 は、ミドルウェア ベンダー (Microsoft、Red Hat など) と各種メッセージング ミドルウェア ユーザー (金融サービス業界を代表する JP モルガン・チェースなど) とを結び付ける、あまねく業界の協業の成果として生まれました。 AMQP プロトコルと拡張仕様の技術的な標準化は OASIS が担っており、今や国際標準の ISO/IEC 19494 として正式に認定されるに至っています。
 
-## 目標
+## <a name="goals"></a>目標
 
 この記事は、AMQP 1.0 メッセージング仕様の核となる概念を、現在 OASIS AMQP 技術委員会で最終承認に向けて調整されている一部の拡張仕様の草案と併せて簡単に紹介したものです。また、それらの仕様が Azure Service Bus でどのように実装され、構築されているかについても説明します。
 
 この記事の目的は、あらゆるプラットフォームで既存の AMQP 1.0 クライアント スタックを使用している開発者が、AMQP 1.0 を介して Azure Service Bus と連携できるよう支援することです。
 
-広く普及している汎用 AMQP 1.0 スタック (Apache Proton、AMQP.NET Lite など) には既に、AMQP 1.0 の主要なジェスチャがすべて実装されています。 こうした基礎となるジェスチャはしばしば、上位の API にラップされます。たとえば Apache Proton には実に 2 つの API が用意されています (命令型の Messenger API とリアクション型の Reactor API)。
+広く普及している汎用 AMQP 1.0 スタック (Apache Proton、AMQP.NET Lite など) には既に、AMQP 1.0 の主要なプロトコルがすべて実装されています。 こうした基礎となるジェスチャはしばしば、上位の API にラップされます。たとえば Apache Proton には実に 2 つの API が用意されています (命令型の Messenger API とリアクション型の Reactor API)。
 
 以降の解説は、AMQP の接続とセッションとリンクの管理、さらにはフレーム転送の処理とフロー制御が、それぞれのスタック (Apache Proton-C など) で処理され、アプリケーションの開発者が気にかけるべき点は、たとえあってもごくわずかであることを想定しています。 たとえば接続するための機能や、何らかの形態の抽象オブジェクトとして*送信側*と*受信側*を作成する機能があって、そこに何らかの形でそれぞれ `send()` 操作と `receive()` 操作が存在するなど、概念上いくつかの基本的な API が存在するものとして話を進めます。
 
 メッセージの読み取りやセッションの管理など、Azure Service Bus の高度な機能に触れる際は、AMQP の観点で説明しますが、これらの機能も、前提となる抽象化された API の上に階層化された擬似的な実装として解説します。
 
-## AMQP とは何か
+## <a name="what-is-amqp"></a>AMQP とは何か
 
 AMQP は、フレーミングと転送のプロトコルです。 フレーミングとは、ネットワーク接続のいずれかの方向に流れるバイナリ データ ストリームに構造を与えることです。 接続された当事者間で交換される、*フレーム*と呼ばれる個々のデータ ブロックには、この構造によって輪郭が与えられます。 フレームをいつ転送するかや何をもって転送の完了と見なすかについて、通信を行う両方の当事者が共有の認識を持てるようにするのが、転送機能の役割となります。
 
@@ -48,13 +48,13 @@ AMQP は、フレーミングと転送のプロトコルです。 フレーミ�
 
 AMQP 1.0 プロトコルでは拡張性を意図した設計が採用され、さらなる仕様によって、その機能を拡張できるようになっています。 この点に関して、このドキュメントでは 3 つの拡張仕様を紹介しています。 既存の HTTPS/WebSocket インフラストラクチャでは、ネイティブの AMQP TCP ポートを構成することが難しい場合があります。このようなインフラストラクチャを介した通信については、WebSocket 上に AMQP を階層化する方法が、バインディング仕様によって定義されています。 管理上の用途や高度な機能を実現することを目的とし、要求/応答の形式でメッセージング インフラストラクチャとやり取りするために必要な基本的な対話の要素は、AMQP Management 仕様に規定されています。 フェデレーション承認モデルの統合に関して、承認トークンをリンクに関連付けたり、リンクに関連付けられている承認トークンを更新したりする方法については、AMQP の CBS (Claims Based Security) 仕様で規定されています。
 
-## 基本的な AMQP のシナリオ
+## <a name="basic-amqp-scenarios"></a>基本的な AMQP のシナリオ
 
 このセクションでは、Azure Service Bus での AMQP 1.0 の基本的な処理について説明します。接続やセッション、リンクを作成したり、Service Bus の各種エンティティ (キュー、トピック、サブスクリプションなど) との間でメッセージをやり取りしたりする方法を見ていきましょう。
 
 AMQP の動作について最も権威のある情報源は AMQP 1.0 仕様です。しかし仕様の目的は、実装上の指針を厳密に記述することであり、プロトコルについてわかりやすく解説することではありません。 このセクションでは、Service Bus での AMQP 1.0 の使われ方を理解するうえで最低限必要な用語のみを紹介することに重点を置いています。 AMQP について大局的に扱った入門情報が必要な場合や、AMQP 1.0 についての広範な解説が必要である場合は、[こちら][this video course]のビデオ コースをご覧ください。
 
-### 接続とセッション
+### <a name="connections-and-sessions"></a>接続とセッション
 
 AMQP は、"*コンテナー*" という通信プログラムを呼び出します。コンテナーには、その内部の通信エンティティである "*ノード*" が存在します。 キューは、そうしたノードの 1 つです。 AMQP は、多重化に対応しているため、1 本の接続をノード間の複数の通信経路で使用することが可能です。たとえばアプリケーション クライアントは、2 つのキューのうち、一方からは受信しながら、同時に同じネットワーク接続上でもう一方のキューに対して送信を行うことができます。
 
@@ -81,7 +81,7 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 接続、チャネル、セッションは一時的にしか存在しません。 根底の接続がダウンした場合、接続、TLS トンネル、SASL 承認コンテキスト、セッションを再度確立する必要があります。
 
-### リンク
+### <a name="links"></a>リンク
 
 AMQP では、メッセージがリンクを介して転送されます。 リンクは、メッセージを一方向に転送することを目的としてセッション上に形成される通信経路です。転送ステータスのネゴシエーションは、接続された当事者どうしがリンクを介し、双方向に実行します。
 
@@ -97,7 +97,7 @@ Service Bus におけるノードは、キューやトピック、サブスク�
 
 ローカル ノード名は、接続する側のクライアントがリンクを作成するときにも必要となります。つまり Service Bus は、こうしたノード名について関与せず、そもそもノード名を解釈しません。 AMQP 1.0 クライアント スタックが、そのクライアントのスコープにおいてこれらの短期ノード名に重複がないことを特定のスキームを使って保証するのが一般的です。
 
-### 転送
+### <a name="transfers"></a>転送
 
 リンクが確立されると、そのリンク上でメッセージを転送できる状態となります。 AMQP では、送信側からリンクを介して受信側にメッセージを移動する明示的なプロトコル ジェスチャ (*transfer* パフォーマティブ) によって転送が実行されます。 転送は、その結果についての共通認識が両者の間に確立されたことを意味する "settled (解決済み)" の状態になったときに完了します。
 
@@ -117,7 +117,7 @@ Service Bus は、リンクの復旧をサポートしていません。クラ�
 
 送信の重複のリスクを回避する手段として、Service Bus は、キューやトピックに対するオプション機能として重複検出をサポートしています。 重複検出では、ユーザー定義の時間内に受信したすべてのメッセージの ID が記録され、その時間内に同じ ID で送信されたメッセージはすべて警告なしで削除されます。
 
-### フロー制御
+### <a name="flow-control"></a>フロー制御
 
 これまで説明してきたセッション レベルのフロー制御モデルに加え、各リンクには独自のフロー制御モデルが存在します。 セッション レベルのフロー制御は、一度に処理すべきフレーム数が多くなりすぎないようコンテナーを保護するものです。これに対し、リンク レベルのフロー制御では、そのリンクから受け取るメッセージの数とそのタイミングが、アプリケーションの管理下に置かれます。
 
@@ -141,49 +141,49 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 次の表の矢印は、パフォーマティブのフロー方向を示しています。
 
-#### メッセージの受信側の作成
+#### <a name="create-message-receiver"></a>メッセージの受信側の作成
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link id}<br/>) |クライアントがエンティティに受信側として接続 |
 | Service Bus がそのリンクの終端を接続して応答 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link id}<br/>) |
 
-#### メッセージの送信側の作成
+#### <a name="create-message-sender"></a>メッセージの送信側の作成
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link id},<br/>target={entity name}<br/>) |
 
-#### メッセージの送信側の作成 (エラー)
+#### <a name="create-message-sender-error"></a>メッセージの送信側の作成 (エラー)
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
-#### メッセージ受信側/送信側のクローズ
+#### <a name="close-message-receiversender"></a>メッセージ受信側/送信側のクローズ
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |アクションなし |
 | アクションなし |<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |
 
-#### 送信 (成功)
+#### <a name="send-success"></a>送信 (成功)
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
-#### 送信 (エラー)
+#### <a name="send-error"></a>送信 (エラー)
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
 | アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
 
-#### 受信
+#### <a name="receive"></a>受信
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
@@ -191,7 +191,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | アクションなし |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | --> disposition(<br/>role=**receiver**,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |アクションなし |
 
-#### 複数メッセージの受信
+#### <a name="multi-message-receive"></a>複数メッセージの受信
 
 | クライアント | [SERVICE BUS] |
 | --- | --- |
@@ -201,11 +201,11 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | アクションなし |< transfer(<br/>delivery-id={numeric handle+2},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | --> disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id+2},<br/>settled=**true**,<br/>state=**accepted**<br/>) |アクションなし |
 
-### メッセージ
+### <a name="messages"></a>メッセージ
 
 以降のセクションでは、標準 AMQP メッセージ セクションから、Service Bus でどのプロパティが使用され、Service Bus API セットに対してどのように対応付けられるかを説明します。
 
-#### ヘッダー
+#### <a name="header"></a>ヘッダー
 
 | フィールド名 | 使用法 | API 名 |
 | --- | --- | --- |
@@ -215,7 +215,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### プロパティ
+#### <a name="properties"></a>プロパティ
 
 | フィールド名 | 使用法 | API 名 |
 | --- | --- | --- |
@@ -233,18 +233,18 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | group-sequence |セッション内のメッセージの相対シーケンス番号を識別するカウンター。 Service Bus では無視されます。 |Service Bus API を介してアクセスすることはできません。 |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
-## Advanced Service Bus の機能
+## <a name="advanced-service-bus-capabilities"></a>Advanced Service Bus の機能
 
 このセクションでは、現在 AMQP の OASIS 技術委員会で策定が進められている AMQP の拡張機能の草案に基づく Azure Service Bus の高度な機能について取り上げます。 Service Bus には、最新バージョンの草案が実装されています。変更は、草案が標準ステータスになった時点で採用される見込みです。
 
 > [!NOTE]
-> Service Bus Messaging の高度な操作は、要求/応答パターンを介してサポートされます。 これらの操作の詳細は、「[AMQP 1.0 in Service Bus: request/response-based operations (Service Bus の AMQP 1.0: 要求応答ベースの操作)](service-bus-amqp-request-response.md)」に説明されています。
+> Service Bus Messaging の高度な操作は、要求/応答パターンを介してサポートされます。 これらの操作の詳細は、「[AMQP 1.0 in Service Bus: request/response-based operations (Service Bus の AMQP 1.0: 要求応答ベースの操作)](service-bus-amqp-request-response.md)」の記事に説明されています。
 > 
 > 
 
-### AMQP Management
+### <a name="amqp-management"></a>AMQP Management
 
-草案段階の拡張機能として、ここではまず AMQP Management 仕様について説明します。 この仕様には、メッセージング インフラストラクチャに対して AMQP を介して管理操作を行うための、AMQP プロトコル上に階層化された一連のプロトコル ジェスチャが定義されています。 仕様で定義されているのは、*create*、*read*、*update*、*delete* など、メッセージング インフラストラクチャ内のエンティティを管理するための一般的な操作と一連のクエリ操作です。
+草案段階の拡張機能として、この記事ではまず AMQP Management 仕様について説明します。 この仕様には、メッセージング インフラストラクチャに対して AMQP を介して管理操作を行うための、AMQP プロトコル上に階層化された一連のプロトコルが定義されています。 仕様で定義されているのは、*create*、*read*、*update*、*delete* など、メッセージング インフラストラクチャ内のエンティティを管理するための一般的な操作と一連のクエリ操作です。
 
 これらのジェスチャにはいずれも、クライアントとメッセージング インフラストラクチャとの間で要求/応答の対話を伴います。そのため、この仕様には、その対話パターンを AMQP 上にモデル化する方法 (つまりクライアントがメッセージング インフラストラクチャに接続し、セッションを開始した後、リンクのペアを作成する) が定義されています。 クライアントは、一方のリンクでは送信側として機能し、もう一方のリンクでは受信側として機能します。こうして形成された一対のリンクが双方向チャネルとしての役割を果たします。
 
@@ -263,7 +263,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 Service Bus には現在、管理仕様の核となる機能が実装されていませんが、管理仕様によって定義されている要求/応答パターンは、CBS (Claims Based Security) 機能の基礎となるものです。以降のセクションで取り上げる高度な機能でも、ほぼ例外なくこのパターンが使用されています。
 
-### Claims-Based Authorization
+### <a name="claims-based-authorization"></a>Claims-Based Authorization
 
 AMQP Claims-Based-Authorization (CBS) 仕様草案は、管理仕様の要求/応答パターンをベースとし、フェデレーション方式のセキュリティ トークンを AMQP で使用するための一般的なモデルを規定しています。
 
@@ -316,7 +316,7 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 
 以後トークンの期限を追跡する役割は、クライアントが果たすこととなります。 トークンの有効期限が切れるとすぐ、個々のエンティティとの間でその接続上に形成されていたリンクはすべて Service Bus によって破棄されます。 それを防ぐためにクライアントは随時、仮想 *$cbs* 管理ノードを介し、同じ *put-token* ジェスチャを使用して、ノードのトークンを新しいトークンに差し替えることができます。このとき、他のリンク上を流れるペイロード トラフィックに悪影響が生じることはありません。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 AMQP の詳細については、次のリンクを参照してください。
 

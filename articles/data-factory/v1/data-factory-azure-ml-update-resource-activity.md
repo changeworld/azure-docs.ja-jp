@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a236df1f13666bc8aa1a957e1718b686cdbd240e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 009c7349e82194f9b7f0c8a0c49c427fc78bba85
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 
@@ -33,6 +33,10 @@ ms.lasthandoff: 10/11/2017
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
+
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での機械学習モデルの更新](../update-machine-learning-models.md)に関する記事を参照してください。
 
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](data-factory-azure-ml-batch-execution-activity.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
 
@@ -56,7 +60,7 @@ ms.lasthandoff: 10/11/2017
 **scoring web service** を使用して、2 つ目の **Azure ML 更新リソース アクティビティ** を使用して、新しくトレーニングを行ったモデルで Web サービスを更新します。 次の例では、リンクされているサービスの定義を示します。 
 
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>スコア付け Web サービスが従来の Web サービスである
-スコア付け Web サービスが**従来の Web サービス**の場合は、[Azure Portal](https://manage.windowsazure.com) を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成します。 手順については、「[エンドポイントを作成する](../../machine-learning/machine-learning-create-endpoint.md)」を参照してください。 更新可能な既定以外のエンドポイントを作成したら、次の手順を行います。
+スコア付け Web サービスが**従来の Web サービス**の場合は、Azure Portal を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成します。 手順については、「[エンドポイントを作成する](../../machine-learning/machine-learning-create-endpoint.md)」を参照してください。 更新可能な既定以外のエンドポイントを作成したら、次の手順を行います。
 
 * **[バッチ実行]** をクリックして、**mlEndpoint** JSON プロパティの URI の値を取得します。
 * **[リソースの更新]** リンクをクリックして、**updateResourceEndpoint** JSON プロパティの URI の値を取得します。 API キーは、エンドポイントのページにあります (右下隅)。

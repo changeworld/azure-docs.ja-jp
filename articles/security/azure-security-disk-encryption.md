@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2017
+ms.date: 11/01/2017
 ms.author: kakhan
-ms.openlocfilehash: eb1f3f01f896cc03fde13f11457be4740fa2720a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: b35595d3dd91932888a26edc92dae81dd71682d8
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows および Linux IaaS VM の Azure ディスク暗号化
 Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。 そのため、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 このドキュメントでは、"Windows および Linux IaaS VM の Azure Disk Encryption" という新しいテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。 ここでは、サポートされているシナリオやユーザー エクスペリエンスを含む、Azure Disk Encryption 機能の使用方法に関する詳細なガイダンスを提供します。
@@ -247,8 +247,8 @@ Azure で実行中の VM に対して暗号化を有効にする必要がある�
 > [!NOTE]
 > $azureAdApplication.ApplicationId は Azure AD ClientID、$aadClientSecret はクライアント シークレットです。これらは、Azure Disk Encryption を有効にするために後で使用します。 Azure AD のクライアント シークレットは適切に保護してください。
 
-##### <a name="setting-up-the-azure-ad-client-id-and-secret-from-the-azure-classic-portal"></a>Azure クラシック ポータルから Azure AD のクライアント ID とシークレットをセットアップする
-Azure AD のクライアント ID とシークレットは、[Azure クラシック ポータル]( https://manage.windowsazure.com)を使用してセットアップすることもできます。 このタスクを実行するには、次の操作を行います。
+##### <a name="setting-up-the-azure-ad-client-id-and-secret-from-the-azure-portal"></a>Azure Portal から Azure AD のクライアント ID とシークレットをセットアップする
+Azure AD のクライアント ID とシークレットは、Azure Portal を使用してセットアップすることもできます。 このタスクを実行するには、次の操作を行います。
 
 1. **[Active Directory]** タブをクリックします。
 
@@ -270,8 +270,6 @@ Azure AD のクライアント ID とシークレットは、[Azure クラシッ
 
  ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig7.png)
 
- > [!NOTE]
- > 上記のフローは Azure クラシック ポータルではサポートされていません。
 
 ##### <a name="use-an-existing-application"></a>既存のアプリケーションを使用する
 次のコマンドを実行するには、[Azure AD PowerShell モジュール](https://technet.microsoft.com/library/jj151815.aspx)を取得して使用します。
@@ -634,12 +632,12 @@ Azure 内にある既存または実行中の IaaS Linux VM でのディスク�
  ```
 
 ### <a name="get-the-encryption-status-of-an-encrypted-iaas-vm"></a>暗号化された IaaS VM の暗号化状態を取得する
-暗号化状態は、Azure Resource Manager、[PowerShell コマンドレット](/powershell/azure/overview)、または CLI コマンドを使用して取得できます。 以下のセクションでは、Azure クラシック ポータルと CLI コマンドを使用して暗号化状態を取得する方法について説明します。
+暗号化状態は、Azure Resource Manager、[PowerShell コマンドレット](/powershell/azure/overview)、または CLI コマンドを使用して取得できます。 以下のセクションでは、Azure Portal と CLI コマンドを使用して暗号化状態を取得する方法について説明します。
 
 #### <a name="get-the-encryption-status-of-an-encrypted-windows-vm-by-using-azure-resource-manager"></a>暗号化された Windows VM の暗号化状態を、Azure Resource Manager を使用して取得する
 Azure Resource Manager から IaaS VM の暗号化状態を取得するには、次の操作を行います。
 
-1. [Azure クラシック ポータル](https://portal.azure.com/)にサインインし、左側のウィンドウで **[仮想マシン]** をクリックして、サブスクリプション内の仮想マシンの概要ビューを表示します。 仮想マシン ビューは、**[サブスクリプション]** ドロップダウン リストでサブスクリプション名を選択することでフィルター処理できます。
+1. [Azure Portal](https://portal.azure.com/) にサインインし、左側のウィンドウで **[仮想マシン]** をクリックして、サブスクリプション内の仮想マシンの概要ビューを表示します。 仮想マシン ビューは、**[サブスクリプション]** ドロップダウン リストでサブスクリプション名を選択することでフィルター処理できます。
 
 2. **[仮想マシン]** ページの上部にある **[列]** をクリックします。
 

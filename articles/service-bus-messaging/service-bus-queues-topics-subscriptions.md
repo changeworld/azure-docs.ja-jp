@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2017
+ms.date: 11/07/2017
 ms.author: sethm
-ms.openlocfilehash: 00f9f38fbae028486270053dedb4df580a3f1a44
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bea3b56cea81362b25e696a672bf2a00e26d3ef
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
 
-Microsoft Azure Service Bus は、信頼性の高いメッセージ キュー機能や永続的なパブリッシュ/サブスクライブ メッセージング機能など、クラウドベースのメッセージ指向ミドルウェアの一連のテクノロジをサポートしています。 このような "仲介型" メッセージング機能は、分離されたメッセージング機能と考えることができます。これは、Service Bus メッセージング ファブリックを使用するパブリッシュ/サブスクライブ、一時的な切り離し、負荷分散のシナリオをサポートします。 分離型通信には、クライアントとサーバーを必要に応じて接続し、非同期に操作を実行できるなど多数の利点があります。
+Microsoft Azure Service Bus は、信頼性の高いメッセージ キュー機能や永続的なパブリッシュ/サブスクライブ メッセージング機能など、クラウドベースのメッセージ指向ミドルウェアの一連のテクノロジをサポートしています。 このような "仲介型" メッセージング機能は、分離されたメッセージング機能と考えることができます。これは、Service Bus メッセージング ワークロードを使用するパブリッシュ/サブスクライブ、一時的な切り離し、負荷分散のシナリオをサポートします。 分離型通信には、クライアントとサーバーを必要に応じて接続し、非同期に操作を実行できるなど多数の利点があります。
 
 Service Bus のメッセージング機能の中核を形成するメッセージング エンティティは、キュー、トピックおよびサブスクリプション、ルール/アクション、ルール/アクションです。
 
@@ -52,7 +52,7 @@ MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateS
 QueueClient myQueueClient = factory.CreateQueueClient("TestQueue");
 ```
 
-その後は、キューにメッセージを送信できます。 たとえば、`MessageList` という名前の仲介型メッセージの一覧がある場合、コードは次のようになります。
+その後は、キューにメッセージを送信できます。 たとえば、`MessageList` という名前のブローカー メッセージの一覧がある場合、コードは次の例のようになります。
 
 ```csharp
 for (int count = 0; count < 6; count++)
@@ -155,7 +155,7 @@ namespaceManager.CreateSubscription("IssueTrackingTopic", "Dashboard", new SqlFi
 
 このサブスクリプション フィルターを適用すると、`StoreName` プロパティが `Store1` に設定されているメッセージだけが、`Dashboard` サブスクリプションの仮想キューにコピーされます。
 
-使用可能なフィルター値の詳細については、[SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) クラスと [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) クラスのドキュメントを参照してください。 また、[「ブローカー メッセージング: 高度なフィルター」](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)と [トピック フィルター](https://github.com/Azure-Samples/azure-servicebus-messaging-samples/tree/master/TopicFilters) に関するページのサンプルも参照してください。
+使用可能なフィルター値の詳細については、[SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) クラスと [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) クラスのドキュメントを参照してください。 また、[「ブローカー メッセージング: 高度なフィルター」](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)と [トピック フィルター](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters) に関するページのサンプルも参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Service Bus のメッセージングの使用の詳細と例については、次の高度なトピックをご覧ください。
@@ -163,6 +163,5 @@ Service Bus のメッセージングの使用の詳細と例については、�
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
 * [Service Bus ブローカー メッセージングに関する .NET チュートリアル](service-bus-brokered-tutorial-dotnet.md)
 * [Service Bus ブローカー メッセージングの REST チュートリアル](service-bus-brokered-tutorial-rest.md)
-* [トピック フィルターのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/TopicFilters)
 * [ブローカー メッセージング: 高度なフィルターのサンプル](http://code.msdn.microsoft.com/Brokered-Messaging-6b0d2749)
 

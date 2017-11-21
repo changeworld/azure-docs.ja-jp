@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 10/31/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee5be707b443cbe42bf4a492d79390e534d4b91f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5583f3d1949614dbba4d2f91d72e4ac6b4d03d1c
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="how-to-troubleshoot-and-monitor-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視の方法
 
@@ -41,6 +41,16 @@ Azure Virtual Machines と同様に、上に挙げたリソース クラスが�
 **ネットワーク帯域幅:** Azure VNet ゲートウェイは Azure VNet に移動するデータの帯域幅による制限を受けるので、VNet 内のすべての Azure VM が受信するデータを監視することは、選択した Azure ゲートウェイ SKU の上限にどのくらい近づいているかを判断するうえで役に立ちます。 HANA L インスタンス ユニットでは、着信および発信ネットワーク トラフィックを監視することと、処理量の推移を追跡することにも意味があります。
 
 **ディスク領域:** ディスク領域の使用量は、通常、時間の経過と共に増加します。 これには多くの原因が考えられますが、多くの場合は、データ量の増加、トランザクション ログ バックアップの実行、トレース ファイルの保存、およびストレージ スナップショットの実行が原因です。 そのため、ディスク領域の使用量を監視し、HANA L インスタンス ユニットに関連付けられているディスク領域を管理することが重要です。
+
+HANA L インスタンスの **Type II SKU** の場合、サーバーには事前に読み込まれたシステム診断ツールが付属しています。 システムの正常性チェックを実行するために、これらの診断ツールを利用できます。 正常性チェックのログ ファイルを /var/log/health_check に生成するには、次のコマンドを実行します。
+```
+/opt/sgi/health_check/microsoft_tdi.sh
+```
+Microsoft サポート チームと協力して問題のトラブルシューティングを行う場合は、これらの診断ツールを使用してログ ファイルを提供するように求められることもあります。 次のコマンドを使用して、ファイルを圧縮することができます。
+```
+tar  -czvf health_check_logs.tar.gz /var/log/health_check
+```
+
 
 ## <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 側からの監視とトラブルシューティング
 
@@ -115,10 +125,10 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 [SAP Note #2081065 – SAP HANA ネットワークのトラブルシューティング](https://launchpad.support.sap.com/#/notes/2081065)のページを参照して、この SAP Note に記載されているネットワークに関するトラブルシューティングの手順を実行してください。
 
 1. サーバーとクライアント間のラウンド トリップ時間を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Clients_](https://launchpad.support.sap.com/#/notes/1969700) を実行します_。_
   
 2. ノード間通信を分析します。
-  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700)__ を実行します。
+  A. SQL スクリプト [_HANA\_Network\_Services_](https://launchpad.support.sap.com/#/notes/1969700) を実行します_。_
 
 3. Linux コマンド **ifconfig** を実行します (出力は、パケット損失が発生しているかどうかを示します)。
 4. Linux コマンド **tcpdump** を実行します。

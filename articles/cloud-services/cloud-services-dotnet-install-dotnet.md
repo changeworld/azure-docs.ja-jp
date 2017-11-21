@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/24/2017
+ms.date: 10/31/2017
 ms.author: adegeo
-ms.openlocfilehash: a9cffa275ae6b9315b821d3160b17a997a1523f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc4b62bc554757e6e394b78334f52f45aa08efe8
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services のロールに .NET をインストールする
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。
@@ -33,7 +33,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 ## <a name="add-the-net-installer-to-your-project"></a>プロジェクトに .NET インストーラーを追加する
 .NET Framework の Web インストーラーをダウンロードするには、次のうち、インストールするバージョンを選択します。
 
-* [.NET 4.7 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=825298)
+* [.NET 4.7.1 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=852095)
 * [.NET 4.6.1 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=671729)
 
 *Web* ロールのインストールを追加するには、次の操作を実行します。
@@ -85,7 +85,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 2. **install.cmd** という名前のファイルを作成し、このファイルに次のインストール スクリプトを追加します。
 
     このスクリプトにより、指定されたバージョンの .NET Framework が既にマシンにインストールされているかどうかがレジストリに照会することで確認されます。 対象の .NET バージョンがインストールされていない場合、.NET Web インストーラーが起動します。 問題のトラブルシューティングを実行するために、スクリプトがすべてのアクティビティを **InstallLogs** ローカル ストレージに保存された startuptasklog-(その時点の日時).txt ファイルに記録します。
-
+  
     > [!IMPORTANT]
     > install.cmd ファイルは、Windows のメモ帳などの基本的なテキスト エディターを使用して作成してください。 Visual Studio を使用してテキスト ファイルを作成し、拡張子を .cmd に変更すると、ファイルに UTF-8 バイト オーダー マークが含まれる可能性があります。 このマークが含まれていると、スクリプトの最初の行を実行するときにエラーが発生します。 このエラーを避けるために、スクリプトの最初の行を REM ステートメントにしてください。このステートメントにより、バイト オーダーの処理をスキップできます。 
     > 
@@ -98,21 +98,23 @@ Web ロールと worker ロールに .NET をインストールするには、.N
     REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" *****
     REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" *****
     REM ***** To install .NET 4.7 set the variable netfx to "NDP47" *****
-    set netfx="NDP47"
-
+    REM ***** To install .NET 4.7.1 set the variable netfx to "NDP47" *****
+    set netfx="NDP471"
+    
     REM ***** Set script start timestamp *****
     set timehour=%time:~0,2%
     set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%
     set "log=install.cmd started %timestamp%."
-
+    
     REM ***** Exit script if running in Emulator *****
     if %ComputeEmulatorRunning%=="true" goto exit
-
+    
     REM ***** Needed to correctly install .NET 4.6.1, otherwise you may see an out of disk space error *****
     set TMP=%PathToNETFXInstall%
     set TEMP=%PathToNETFXInstall%
-
+    
     REM ***** Setup .NET filenames and registry keys *****
+    if %netfx%=="NDP471" goto NDP471
     if %netfx%=="NDP47" goto NDP47
     if %netfx%=="NDP462" goto NDP462
     if %netfx%=="NDP461" goto NDP461
@@ -120,25 +122,32 @@ Web ロールと worker ロールに .NET をインストールするには、.N
         set "netfxinstallfile=NDP452-KB2901954-Web.exe"
         set netfxregkey="0x5cbf5"
         goto logtimestamp
-
+    
     :NDP46
     set "netfxinstallfile=NDP46-KB3045560-Web.exe"
     set netfxregkey="0x6004f"
     goto logtimestamp
-
+    
     :NDP461
     set "netfxinstallfile=NDP461-KB3102438-Web.exe"
     set netfxregkey="0x6040e"
     goto logtimestamp
-
+    
     :NDP462
     set "netfxinstallfile=NDP462-KB3151802-Web.exe"
     set netfxregkey="0x60632"
-
-    :NDP47
+    goto logtimestamp
+    
+    :NPD47
     set "netfxinstallfile=NDP47-KB3186500-Web.exe"
     set netfxregkey="0x707FE"
-
+    goto logtimestamp
+    
+    :NDP471
+    set "netfxinstallfile=NDP471-KB4033344-Web.exe"
+    set netfxregkey="0x709fc"
+    goto logtimestamp
+    
     :logtimestamp
     REM ***** Setup LogFile with timestamp *****
     md "%PathToNETFXInstall%\log"
@@ -148,7 +157,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
     echo Logfile generated at: %startuptasklog% >> %startuptasklog%
     echo TMP set to: %TMP% >> %startuptasklog%
     echo TEMP set to: %TEMP% >> %startuptasklog%
-
+    
     REM ***** Check if .NET is installed *****
     echo Checking if .NET (%netfx%) is installed >> %startuptasklog%
     set /A netfxregkeydecimal=%netfxregkey%
@@ -156,7 +165,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
     FOR /F "usebackq skip=2 tokens=1,2*" %%A in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Release 2^>nul`) do @set /A foundkey=%%C
     echo Minimum required key: %netfxregkeydecimal% -- found key: %foundkey% >> %startuptasklog%
     if %foundkey% GEQ %netfxregkeydecimal% goto installed
-
+    
     REM ***** Installing .NET *****
     echo Installing .NET with commandline: start /wait %~dp0%netfxinstallfile% /q /serialdownload /log %netfxinstallerlog%  /chainingpackage "CloudService Startup Task" >> %startuptasklog%
     start /wait %~dp0%netfxinstallfile% /q /serialdownload /log %netfxinstallerlog% /chainingpackage "CloudService Startup Task" >> %startuptasklog% 2>>&1
@@ -165,25 +174,20 @@ Web ロールと worker ロールに .NET をインストールするには、.N
         if %ERRORLEVEL%== 3010 goto restart
         if %ERRORLEVEL%== 1641 goto restart
         echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
-
+    
     :restart
     echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
     EXIT /B %ERRORLEVEL%
-
+    
     :installed
     echo .NET (%netfx%) is installed >> %startuptasklog%
-
+    
     :end
     echo install.cmd completed: %date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2% >> %startuptasklog%
-
+    
     :exit
     EXIT /B 0
     ```
-   
-   > [!NOTE]
-   > このスクリプトには、.NET 4.5.2 が既に Azure ゲスト OS で使用できる場合でも、旧バージョンの情報を引き続き提供するために、.NET 4.5.2 またはバージョン 4.6 をインストールする方法が含まれています。 [サポート技術情報の記事 3118750](https://support.microsoft.com/kb/3118750) に記載されているとおり、バージョン 4.6 ではなく、直接 .NET 4.6.1 をインストールしてください。
-   > 
-   > 
 
 3. このトピックで前述したように、**ソリューション エクスプローラー**で **[追加]** > **[既存の項目]** の順に選択して、各ロールに install.cmd ファイルを追加します。 
 
@@ -214,9 +218,9 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 * [インストールされている .NET Framework バージョンを確認する][How to: Determine Which .NET Framework Versions Are Installed]
 * [.NET Framework のインストールのトラブルシューティング][Troubleshooting .NET Framework Installations]
 
-[How to: Determine Which .NET Framework Versions Are Installed]: https://msdn.microsoft.com/library/hh925568.aspx
-[Installing the .NET Framework]: https://msdn.microsoft.com/library/5a4x27ek.aspx
-[Troubleshooting .NET Framework Installations]: https://msdn.microsoft.com/library/hh925569.aspx
+[How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
+[Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers
+[Troubleshooting .NET Framework Installations]: /dotnet/framework/install/troubleshoot-blocked-installations-and-uninstallations
 
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png

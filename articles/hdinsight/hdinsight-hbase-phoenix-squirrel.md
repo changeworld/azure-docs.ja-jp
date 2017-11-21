@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 04392b535965edd785bbb66a52eb6b41b768553e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64a4c5b158ebe0119f2f0133587a743fd2dbf0ff
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>HDInsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用
 [Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。 Phoenix の詳細については、 [Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。 Phoenix の文法については、 [Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 >
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight での Phoenix の使用については、「[HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight での Phoenix の使用については、「[HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hbase/apache-hbase-phoenix-squirrel-linux.md)」を参照してください。
 >
 
 
@@ -269,7 +269,7 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 
 * [HDInsight HBase の概要][hdinsight-hbase-overview]: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
 * 「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
+* 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hbase/apache-hbase-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
 
 
 [azure-portal]: https://portal.azure.com
@@ -278,8 +278,8 @@ Phoenix ドライバーの jar ファイルは、HBase クラスターにあり�
 [hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
-[hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
-[hdinsight-hbase-overview]: hdinsight-hbase-overview.md
+[hdinsight-hbase-provision-vnet]:hbase/apache-hbase-provision-vnet.md
+[hdinsight-hbase-overview]:hbase/apache-hbase-overview.md
 
 [hdinsight-hbase-phoenix-sqlline]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-phoenix-sqlline.png
 [img-certificate]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-vpn-certificate.png

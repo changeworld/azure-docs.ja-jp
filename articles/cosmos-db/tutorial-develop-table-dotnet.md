@@ -12,14 +12,14 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 10/12/2017
+ms.date: 11/03/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 2189dc7900f03a45c360fceffbcd7c1ff36f7e48
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a4145f70af429274c3c908d3dedef63c5f973bf6
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 
@@ -41,29 +41,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
  
 ## <a name="tables-in-azure-cosmos-db"></a>Azure Cosmos DB のテーブル 
 
-Azure Cosmos DB では、スキーマレス設計のキー/値ストアを必要とするアプリケーションのために [Table API](table-introduction.md) (プレビュー) が提供されます。 Azure Cosmos DB で [Azure Table Storage](../storage/common/storage-introduction.md) SDK および REST API を使用できます。 Azure Cosmos DB を使用して、高スループット要件のテーブルを作成できます。 Azure Cosmos DB ではスループットが最適化されたテーブル (通称 "Premium テーブル") がサポートされ、現在パブリック プレビューが行われています。 
+Azure Cosmos DB では、スキーマレス設計のキー/値ストアを必要とし、高いスループット要件を持つアプリケーション向けに [Table API](table-introduction.md) (プレビュー) が提供されます。 Azure Cosmos DB のテーブルで [Azure Table Storage](../storage/common/storage-introduction.md) SDK および REST API を使用できます。   
 
-Azure Table Storage は、ストレージ要件が高くスループット要件が低いテーブルに対して、引き続き使用できます。
+このチュートリアルは、Azure Table Storage SDK の知識があり、Azure Cosmos DB を使用して提供される Premium 機能を使用する予定がある開発者が対象です。 「[.NET を使用して Azure Table Storage を使用する](table-storage-how-to-use-dotnet.md)」に基づいて、セカンダリ インデックス、プロビジョニング済みスループット、マルチホームなどの追加機能を活用する方法を説明します。 このチュートリアルでは、Azure Portal を使用して Azure Cosmos DB アカウントを作成し、Table API アプリケーションを構築およびデプロイする方法を説明します。 テーブルの作成と削除や、テーブル データの挿入、更新、削除、クエリを実行する .NET の例についても説明します。 
 
-現在 Azure Table Storage を使用している場合、"Premium テーブル" のプレビューには次のメリットがあります。
-
-- マルチホーム機能と[自動または手動のフェールオーバー](regional-failover.md)を備えた、ターンキー [グローバル分散](distribute-data-globally.md)
-- すべてのプロパティ ("セカンダリ インデックス") に対するスキーマ非依存自動インデックス作成と高速クエリのサポート 
-- 任意の数のリージョンにわたる[ストレージとスループットの独立した拡張](partition-data.md)のサポート
-- [テーブルごとの専用スループット](request-units.md)のサポート (1 秒あたりの要求数を数百件から数百万件まで拡張できる)
-- [調整可能な 5 つの一貫性レベル](consistency-levels.md)のサポート。アプリケーションのニーズに基づいて、可用性、待機時間、一貫性のトレードオフを行います。
-- 1 リージョンで 99.99% の可用性 (可用性を上げるためにリージョンを追加することもでき、一般的な可用性に関して[業界をリードする包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) が提供される)
-- 既存の Azure Storage .NET SDK の利用、アプリケーションのコード変更不要
-
-プレビュー中、Azure Cosmos DB は Table API をサポートするために .NET SDK を使用します。 [Azure Storage Preview SDK](https://aka.ms/premiumtablenuget) は NuGet からダウンロードできます。これには、[Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage) と同じクラスおよびメソッド シグネチャが含まれます。ただし、Table API を使用して Azure Cosmos DB アカウントに接続することもできます。
-
-Azure Table Storage の複雑なタスクについては、次を参照してください。
-
-* [Azure Cosmos DB の概要: Table API](table-introduction.md)
-* [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)の Table service リファレンス ドキュメント (利用可能な API の詳細について)
-
-### <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルは、Azure Table Storage SDK の知識があり、Azure Cosmos DB を使用して提供される Premium 機能を使用する予定がある開発者が対象です。 「[.NET を使用して Azure Table Storage を使用する](table-storage-how-to-use-dotnet.md)」に基づいて、セカンダリ インデックス、プロビジョニング済みスループット、マルチホームなどの追加機能を活用する方法を説明します。 Azure Portal を使用して Azure Cosmos DB アカウントを作成し、Table アプリケーションを構築およびデプロイする方法も説明します。 テーブルの作成と削除や、テーブル データの挿入、更新、削除、クエリを実行する .NET の例についても説明します。 
+## <a name="prerequisites"></a>前提条件
 
 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
@@ -72,14 +54,6 @@ Azure Table Storage の複雑なタスクについては、次を参照してく
 ## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
 
 まず最初に、Azure Portal で Azure Cosmos DB アカウントを作成します。  
-
-> [!TIP]
-> * もう Azure Cosmos DB アカウント作成しましたか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
-> * 既に Azure DocumentDB アカウントを持っていましたか。 この場合、そのアカウントが Azure Cosmos DB アカウントになります。「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。  
-> * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。
-<!---Loc Comment: Please, check link [Set up your Visual Studio solution] since it's not redirecting to any location.---> 
->
->
 
 [!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
 
@@ -112,7 +86,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 ```
 
 > [!NOTE]
-> このアプリを標準の Azure Table Storage で仕様するには、`app.config file` の接続文字列を変更する必要があります。 アカウント名には Table アカウント名、キーには Azure Storage プライマリ キーを使用します。 <br>
+> このアプリを Azure Table Storage で使用するには、`app.config file` の接続文字列を変更する必要があります。 アカウント名には Table アカウント名、キーには Azure Storage プライマリ キーを使用します。 <br>
 >`<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
 > 
 >
@@ -135,7 +109,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 >
 
 ## <a name="azure-cosmos-db-capabilities"></a>Azure Cosmos DB の機能
-Azure Cosmos DB では、Azure Table Storage API に含まれないいくつもの機能がサポートされます。 新しい機能は、次の `appSettings` 構成値で有効にすることができます。 プレビューの Azure Storage SDK には、新しいシグネチャまたはオーバーロードを含めていません。 このため、Standard テーブルと Premium テーブルの両方に接続でき、他の Azure Storage サービス (BLOB やキューなど) と連携できます。 
+Azure Cosmos DB Table API では、Azure Table Storage に含まれないいくつもの機能がサポートされます。 新しい機能は、次の `appSettings` 構成値で有効にすることができます。 Azure Storage SDK になかった新しい署名やオーバーロードは、Table API に追加されていません。 そのため、Azure Table Storage と Azure Cosmos DB の両方のテーブルに接続して、他の Azure Storage サービス (BLOB やキューなど) と連携することができます。 
 
 
 | キー | Description |

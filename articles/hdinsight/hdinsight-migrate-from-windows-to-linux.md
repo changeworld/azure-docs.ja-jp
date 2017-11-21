@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/04/2017
 ms.author: larryfr
-ms.openlocfilehash: f2695d4f15fe984cd02cba9ff66033b90d0a4dc3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3bba2cfd765505a167fe4776f81d06445a8c39c
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
@@ -188,8 +188,8 @@ Linux ベースのクラスターでは、Pig と MapReduce のワークロー�
 Linux ベースの HDInsight では、リモート デスクトップ機能は提供されません。 代わりに、SSH を使用して、クラスターのヘッド ノードにリモート接続できます。 詳細については、以下のドキュメントをご覧ください。
 
 * [SSH での Hive の使用](hdinsight-hadoop-use-hive-ssh.md)
-* [SSH での Pig の使用](hdinsight-hadoop-use-pig-ssh.md)
-* [SSH での MapReduce の使用](hdinsight-hadoop-use-mapreduce-ssh.md)
+* [SSH での Pig の使用](hadoop/apache-hadoop-use-pig-ssh.md)
+* [SSH での MapReduce の使用](hadoop/apache-hadoop-use-mapreduce-ssh.md)
 
 ### <a name="hive"></a>Hive
 
@@ -200,11 +200,11 @@ Linux ベースの HDInsight では、リモート デスクトップ機能は�
 
 | Windows ベースの場合 | Linux ベースの場合 |
 | --- | --- |
-| **Hive エディター** |[Ambari の Hive ビュー](hdinsight-hadoop-use-hive-ambari-view.md) |
+| **Hive エディター** |[Ambari の Hive ビュー](hadoop/apache-hadoop-use-hive-ambari-view.md) |
 | `set hive.execution.engine=tez;` を使用して Tez を有効にします。 |Tez は Linux ベースのクラスターの既定の実行エンジンであるため、set ステートメントは不要になります。 |
 | C# ユーザー定義関数 | Linux ベースの HDInsight での C# コンポーネントの検証の詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
 | サーバーで、Hive ジョブの一部として呼び出される CMD ファイルまたはスクリプトを使用します。 |Bash スクリプトを使用します。 |
-| `hive` コマンドを使用します。 |[Beeline](hdinsight-hadoop-use-hive-beeline.md) または [SSH セッションから Hive](hdinsight-hadoop-use-hive-ssh.md) を使用します。 |
+| `hive` コマンドを使用します。 |[Beeline](hadoop/apache-hadoop-use-hive-beeline.md) または [SSH セッションから Hive](hdinsight-hadoop-use-hive-ssh.md) を使用します。 |
 
 ### <a name="pig"></a>Pig
 
@@ -233,7 +233,7 @@ C# アプリケーションを使用するワークフローを使用してい�
 
 | Windows ベースの場合 | Linux ベースの場合 |
 | --- | --- |
-| Storm ダッシュボード |Storm ダッシュ ボードは使用できません。 トポロジの送信方法については、「 [Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md) 」を参照してください。 |
+| Storm ダッシュボード |Storm ダッシュ ボードは使用できません。 トポロジの送信方法については、「 [Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md) 」を参照してください。 |
 | Storm UI |Storm UI は https://CLUSTERNAME.azurehdinsight.net/stormui で利用できます。 |
 | Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |HDInsight 上の Linux ベースの Storm で、C# (SCP.NET) またはハイブリッド トポロジの作成、デプロイおよび管理に Visual Studio を使用できます。 2016年 10 月 28 日より後に作成されたクラスターでのみ使用できます。 |
 

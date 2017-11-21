@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 016179372d69dc63f5e5226723d87ac6e74b31fd
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: aeac4feaeea376ae5231d9c24d44d94f8132af42
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
 
@@ -35,12 +35,10 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 このチュートリアルを完了するには、以下をインストールしてください。
 
-* [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/preview/)以降のバージョン (**Azure 開発**ワークロードを含む)。
+* [Visual Studio 2017 バージョン 15.4](https://www.visualstudio.com/vs/) 以降のバージョン (**Azure 開発**ワークロードを含む)。
 
     ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
     
-[!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-install-note.md)] 
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 ## <a name="create-an-azure-functions-project-in-visual-studio"></a>Visual Studio で Azure Functions プロジェクトを作成する
@@ -51,9 +49,9 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ## <a name="create-the-function"></a>関数を作成する
 
-1. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[追加]** > **[新しい項目]** の順に選択します。 **[Azure 関数]** を選択し、**[追加]** をクリックします。
+1. **ソリューション エクスプローラー**で、プロジェクト ノードを右クリックし、**[追加]** > **[新しいアイテム]** の順に選択します。 **[Azure 関数]** を選択し、**[名前]** には「`HttpTriggerCSharp.cs`」と入力して **[追加]** をクリックします。
 
-2. **[HttpTrigger]** を選択して、**関数名**を入力し、**[AccessRights]** では **[匿名]** を選択して、**[作成]** をクリックします。 作成された関数は、任意のクライアントからの HTTP 要求によってアクセスされます。 
+2. **[HttpTrigger]** を選択し、**[アクセス権]** として **[匿名]** を選択して **[OK]** をクリックします。 作成された関数は、任意のクライアントからの HTTP 要求によってアクセスされます。 
 
     ![新しい Azure 関数の作成](./media/functions-create-your-first-function-visual-studio/functions-vstools-add-new-function-2.png)
 

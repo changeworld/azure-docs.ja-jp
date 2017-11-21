@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 06/26/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: b8eecb9d546d5922844ede3744d80b951334b5d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77d6bf3bb8b0e03419f93e97746bc1a0a091045e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM のネットワーク インターフェイスをリセットする方法 
 

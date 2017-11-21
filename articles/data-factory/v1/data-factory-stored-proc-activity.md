@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: c53725806845095c55add65fb65a247d8873dc74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f490aeef07b142b6a28319581b01c6cfc00054ba
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,6 +33,9 @@ ms.lasthandoff: 10/11/2017
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でのストアド プロシージャ アクティビティを使用したデータ変換](../transform-data-using-stored-procedure.md)についてのページをご覧ください。
 
 ## <a name="overview"></a>概要
 Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの 1 つです。 この記事は、データ変換と Data Factory でサポートされる変換アクティビティの概要を説明する、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事に基づいています。

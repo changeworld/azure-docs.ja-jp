@@ -12,17 +12,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 3793df974175a5c41b83800f73748c52c8223572
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 06c14bdd24dd24a98b3838a2ba73b657ce56785a
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 シリーズ Update 2.2 リリース ノート
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
 ## <a name="overview"></a>概要
-次のリリース ノートでは、StorSimple 8000 シリーズの Update 2.2 の新機能について説明し、未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェアの更新プログラムの一覧も含まれています。 
+次のリリース ノートでは、StorSimple 8000 シリーズの Update 2.2 の新機能について説明し、未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェアの更新プログラムの一覧も含まれています。
 
 Update 2.2 は、Release (GA) または Update 0.1 から Update 2.1 までを実行しているすべての StorSimple デバイスに適用できます。 Update 2.2 に関連付けられているデバイスのバージョンは、6.3.9600.17708 です。
 

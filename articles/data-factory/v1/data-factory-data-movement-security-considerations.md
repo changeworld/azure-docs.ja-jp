@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 10/15/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9deedb771cbf90ffc4dd61676e1364ae8db18dc0
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 02bb0dd2927c552809e2903092939a479d69bb9e
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -149,7 +149,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 次の表には、**企業ファイアウォール**の**送信ポート**とドメインの要件を示しています。
 
-| ドメイン名 | 送信ポート | 説明 |
+| ドメイン名 | 送信ポート | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443、80 | ゲートウェイが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net` | 443 | [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy)機能を使用する場合に、ゲートウェイが Azure ストレージ アカウントに接続するために使用します。 | 

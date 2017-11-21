@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: hero-article
-ms.date: 06/13/2017
+ms.date: 11/02/2017
 ms.custom: mvc
-ms.openlocfilehash: 0da8e52ae568e1e471cb5556cfde063bdd94911c
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 80e995d19fa7d2def95a78d8e89fbac78643c013
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL サーバーの作成
 このクイック スタートでは、Azure CLI を使用して、約 5 分で Azure Database for MySQL サーバーを Azure リソース グループに作成する方法を説明します。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。
@@ -24,7 +24,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。 [az account set](/cli/azure/account#set) コマンドを使用して、アカウントの特定のサブスクリプション ID を選択します。
 ```azurecli-interactive
@@ -58,7 +58,7 @@ az mysql server create --resource-group myresourcegroup --name myserver4demo --l
 az mysql server firewall-rule create --resource-group myresourcegroup --server myserver4demo --name AllowYourIP --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 ## <a name="configure-ssl-settings"></a>SSL 設定の構成
-既定では、サーバーとクライアント アプリケーション間で SSL 接続が適用されます。  これにより、インターネットでのデータ ストリームを暗号化することによって、「インモーション」データのセキュリティが確保されます。  このクイック スタートを簡略化するため、サーバーの SSL 接続を無効にします。  これは実稼働サーバーではお勧めしません。  詳細については、「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。
+既定では、サーバーとクライアント アプリケーション間で SSL 接続が適用されます。 この既定値では、インターネットでのデータ ストリームを暗号化することによって、"インモーション" データのセキュリティが確保されます。 このクイック スタートを簡略化するため、サーバーの SSL 接続を無効にします。 実稼働サーバーで SSL を無効にすることはお勧めしません。 詳細については、「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。
 
 次の例は、MySQL サーバー上で SSL の適用を無効にします。
  

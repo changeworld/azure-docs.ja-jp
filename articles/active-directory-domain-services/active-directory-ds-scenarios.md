@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: maheshu
-ms.openlocfilehash: b73bfc7703d79681f0de345f4ec994da540aa2a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc1aa4d778a6232258470fc9a58a98906c86ec7b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>デプロイ シナリオおよびユース ケース
 このセクションでは、Azure Active Directory (AD) ドメイン サービスから恩恵を受けられるいくつかのシナリオとユース ケースについて説明します。
@@ -85,4 +85,4 @@ Azure AD Domain Services を使用して、Azure にデプロイされている�
 ## <a name="domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスター (プレビュー)
 Azure AD Domain Services の管理対象ドメインに Apache Ranger が有効な状態で参加する Azure HDInsight クラスターを設定できます。 Apache Ranger を通じて Hive ポリシーを作成および適用して、ユーザー (たとえばデータ サイエンティスト) が ODBC ベースのツール (Excel、Tableau など) を使用して Hive に接続できるようにする。マイクロソフトでは、HBase、Spark、Storm などの他のワークロードもできるだけ早くドメイン参加済み HDInsight に追加できるように作業を進めています。
 
-このデプロイ シナリオの詳細については、[ドメイン参加済み HDInsight クラスターを構成する](../hdinsight/hdinsight-domain-joined-configure.md)方法を参照してください。
+このデプロイ シナリオの詳細については、[ドメイン参加済み HDInsight クラスターを構成する](../hdinsight/domain-joined/apache-domain-joined-configure.md)方法を参照してください。

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/30/2017
 ms.author: arramac
-ms.openlocfilehash: 0971959fb168d92096531d1c081666cf301608cf
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 8ca4c7fb1ccfe1eb026de80e519894c0ff23028a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
 
@@ -72,7 +72,7 @@ Change Feed は、ドキュメント コレクション内の各パーティシ�
 * [Apache Hadoop](run-hadoop-with-hdinsight.md) を使用してデータの一括分析を実装する。
 * パーティション スキームが異なる別の Azure Cosmos DB アカウントへの移行をダウンタイムなしに実行する。
 * Azure Cosmos DB を使用して [Azure でラムダ パイプライン](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/)を実装する。 Azure Cosmos DB は、取り込みとクエリの両方を処理し、低 TCO でラムダ アーキテクチャを実装できる、スケーラブルなデータベース ソリューションを提供します。 
-* デバイス、センサー、インフラストラクチャ、アプリケーションからイベント データを受信し、格納したり、こうしたイベントを [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md)、[Apache Storm](../hdinsight/hdinsight-storm-overview.md)、[Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) でリアルタイムに処理できます。 
+* デバイス、センサー、インフラストラクチャ、アプリケーションからイベント データを受信し、格納したり、こうしたイベントを [Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md)、[Apache Storm](../hdinsight/storm/apache-storm-overview.md)、[Apache Spark](../hdinsight/spark/apache-spark-overview.md) でリアルタイムに処理できます。 
 
 次の図は、Azure Cosmos DB を使用して取り込みとクエリの両方を実行するラムダ パイプラインが、変更フィードのサポートを使用する方法を示しています。 
 
@@ -157,7 +157,7 @@ Azure Cosmos DB 用の [DocumentDB SDK](documentdb-sdk-dotnet.md) は、変更�
 
 複数の閲覧者がいる場合、**ChangeFeedOptions** を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。
 
-以上の数行のコードだけで、変更フィードの読み取りを開始できます。 この記事に使用されているコードの完成版は、[azure-cosmos-db-DocumentFeed GitHub リポジトリ](https://github.com/rsarosh/azure-cosmos-db-DocumentFeed)から入手できます。
+以上の数行のコードだけで、変更フィードの読み取りを開始できます。 この記事に使用されているコードの完成版は、[GitHub リポジトリ](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)から入手できます。
 
 前述の手順 4 のコードで、最終行の **ResponseContinuation** には、ドキュメントの最終論理シーケンス番号 (LSN) が含まれています。このシーケンス番号は、次にその番号の後の新しいドキュメントを読み取るときに使用されます。 **ChangeFeedOption** の **StartTime** を使用することで、より広い範囲のドキュメントを取得できます。 そのため、**ResponseContinuation** を null にして、**StartTime** を過去に変更すると、**StartTime** 以降に変更されたすべてのドキュメントが取得されます。 ただし、**ResponseContinuation** に値が指定されている場合、その LSN 以降のすべてのドキュメントが取得されます。
 
@@ -278,7 +278,7 @@ Change Feed Processor ライブラリの使用方法については、次のリ�
 
 * [情報ページ](documentdb-sdk-dotnet-changefeed.md) 
 * [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
-* [前述の手順 1 ～ 6 を示すサンプル コード](https://github.com/rsarosh/Cosmos-ChangeFeedProcessor)
+* [前述の手順 1 ～ 6 を示すサンプル コード](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
 * [GitHub のその他のサンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
 
 SDK で変更フィードを使用する方法については、次のリソースを参照してください。

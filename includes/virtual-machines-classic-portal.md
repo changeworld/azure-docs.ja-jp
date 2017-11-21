@@ -1,0 +1,1 @@
+2017 年 11 月 15 日から、Virtual Machines は [Azure Portal](https://portal.azure.com) でのみ使用できます。 クラシック ポータルからのアクセスはサポートされなくなります。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.openlocfilehash: a8579c66cbfb0968a3659316aa5f03b798f4e332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c851e1f756957d58d5f7372098620e4b7129b089
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="deploy-a-guest-executable-to-service-fabric"></a>Service Fabric へのゲスト実行可能ファイルのデプロイ
 Node.js、Java、C++ など、あらゆる種類のコードをサービスとして Azure Service Fabric 内で実行できます。 このようなサービスを Service Fabric ではゲスト実行可能ファイルと呼びます。
@@ -349,6 +349,6 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイする方法について説明しました。 関連する情報やタスクは、次の記事を参照してください。
 
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。
-* [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-containers)
 * [複数のゲスト実行可能ファイルのデプロイ](service-fabric-deploy-multiple-apps.md)
 * [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)

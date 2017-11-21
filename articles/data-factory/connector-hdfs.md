@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 6d28b82f892ac88c32ab3e04df19143d69a5a05b
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: a81d3264964b2433a2c93034ab815493548f0753
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/16/2017
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の HDFS コネクタ](v1/data-factory-hdfs-connector.md)に関する記事を参照してください。
 
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-capabilities"></a>サポートされる機能
 
 HDFS から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
 
@@ -67,11 +67,9 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 ```json
 {
     "name": "HDFSLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "Hdfs",
-        "typeProperties":
-        {
+        "typeProperties": {
             "url" : "http://<machine>:50070/webhdfs/v1/",
             "authenticationType": "Anonymous",
             "userName": "hadoop"
@@ -89,11 +87,9 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 ```json
 {
     "name": "HDFSLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "Hdfs",
-        "typeProperties":
-        {
+        "typeProperties": {
             "url" : "http://<machine>:50070/webhdfs/v1/",
             "authenticationType": "Windows",
             "userName": "<username>@<domain>.com (for Kerberos auth)",
@@ -388,4 +384,4 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

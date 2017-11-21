@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 66ee6ce15e51b14366eac0512c899d1c425c6092
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be4a8facc2f5951b6ebc027088d43ef47504acd1
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>StorSimple デバイスの Web プロキシを構成する
-## <a name="overview"></a>Overview
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、「[StorSimple デバイスの Web プロキシを構成する](storsimple-8000-configure-web-proxy.md)」を参照してください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
+## <a name="overview"></a>概要
 このチュートリアルでは、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの Web プロキシ設定を構成および表示する方法について説明します。 Web プロキシ設定は、クラウドと通信するときに StorSimple デバイスで使用されます。 Web プロキシ サーバーは、別のセキュリティ レイヤーの追加、コンテンツのフィルター処理、キャッシュによる帯域幅要件の緩和、分析の補助に使用されます。
 
 Web プロキシは StorSimple デバイスのオプションの構成です。 Web プロキシの構成には StorSimple 用 Windows PowerShell のみ使用できます。 構成には、次の 2 つの手順を実行します。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/21/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 58e7acc91fc048c8204608aa857134323abdab14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96202a4d7e91a221aa655f58f29f2c8e24b86e4e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>トラブルシューティング: サイト間 VPN 接続が断続的に切断される
 

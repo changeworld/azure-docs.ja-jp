@@ -1,5 +1,5 @@
 ---
-title: "Node.js を使用してデバイスを接続する | Microsoft Docs"
+title: "Node.js でリモート監視対象デバイスをプロビジョニングする - Azure | Microsoft Docs"
 description: "Node.js で記述されたアプリケーションを使用して、デバイスを Azure IoT Suite 構成済みリモート監視ソリューションに接続する方法について説明します。"
 services: 
 suite: iot-suite
@@ -13,31 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 6459b6196eb7f4a083b67e5a421bcc0d51d39e5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 663ed53a52ecf8d93329f83302964571461d7f3f
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>デバイスをリモート監視構成済みソリューションに接続する (Node.js)
+
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## <a name="create-a-nodejs-sample-solution"></a>node.js のサンプル ソリューションを作成する
+このチュートリアルでは、リモート監視の事前構成済みソリューションに物理デバイスを接続する方法について説明します。 このチュートリアルでは、リソースの制約が少ない環境に適したオプションである Node.js を使用します。
 
-開発コンピューターに Node.js のバージョン 0.11.5x 以降がインストールされていることを確認します。 バージョンを確認するには、コマンド ラインで `node --version` を実行します。
+## <a name="create-a-nodejs-solution"></a>Node.js ソリューションを作成する
 
-1. 開発用コンピューターに **RemoteMonitoring** という名前のフォルダーを作成します。 コマンドライン環境内でこのフォルダーに移動します。
+開発コンピューターに [Node.js](https://nodejs.org/) のバージョン 4.0.0 以降がインストールされていることを確認します。 バージョンを確認するには、コマンド ラインで `node --version` を実行します。
+
+1. 開発用コンピューターに `RemoteMonitoring` という名前のフォルダーを作成します。 コマンドライン環境内でこのフォルダーに移動します。
 
 1. 次のコマンドを実行して、サンプル アプリケーションを完成させるために必要なパッケージをダウンロードしてインストールします。
 
-    ```
+    ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. **RemoteMonitoring** フォルダーで、**remote_monitoring.js** という名前のファイルを作成します。 このファイルをテキスト エディターで開きます。
+1. `RemoteMonitoring` フォルダーで、**remote_monitoring.js** という名前のファイルを作成します。 このファイルをテキスト エディターで開きます。
 
 1. **remote_monitoring.js** ファイルに次の `require` ステートメントを追加します。
 
@@ -50,22 +53,93 @@ ms.lasthandoff: 10/11/2017
     var Message = require('azure-iot-device').Message;
     ```
 
-1. `require` ステートメントの後に次の変数宣言を追加します。 リモート監視ソリューション ダッシュボードで、プレースホルダー [Device Id] と [Device Key] の値を、書き留めておいたデバイス用の値に置き換えます。 ソリューション ダッシュボードの IoT Hub ホスト名を使用して、[IoTHub Name] を置き換えます。 たとえば、IoT Hub ホスト名が **contoso.azure-devices.net** である場合は、[IoTHub Name] を **contoso** に置き換えます。
+1. `require` ステートメントの後に次の変数宣言を追加します。 プレースホルダー値 `{Device Id}` と `{Device Key}` を、リモート監視ソリューションでプロビジョニングしたデバイス用の値に置き換えます。 ソリューションからの IoT Hub ホスト名を使用して、`{IoTHub Name}` を置き換えます。 たとえば、IoT Hub のホスト名が `contoso.azure-devices.net` の場合、`{IoTHub Name}` を `contoso` に置き換えます。
 
     ```nodejs
-    var connectionString = 'HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]';
+    var connectionString = 'HostName={IoTHub Name}.azure-devices.net;DeviceId={Device Id};SharedAccessKey={Device Key}';
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. 基本のテレメトリ データをいくつか定義するために、次の変数を追加します。
+1. 基本のテレメトリをいくつか定義するために、次の変数を追加します。
 
     ```nodejs
     var temperature = 50;
+    var temperatureUnit = 'F';
     var humidity = 50;
-    var externalTemperature = 55;
+    var humidityUnit = '%';
+    var pressure = 55;
+    var pressureUnit = 'psig';
     ```
 
-1. 操作結果を出力するために、次のヘルパー関数を追加します。
+1. プロパティ値を定義するには、次の変数を追加します。
+
+    ```nodejs
+    var temperatureSchema = 'chiller-temperature;v1';
+    var humiditySchema = 'chiller-humidity;v1';
+    var pressureSchema = 'chiller-pressure;v1';
+    var interval = "00:00:05";
+    var deviceType = "Chiller";
+    var deviceFirmware = "1.0.0";
+    var deviceFirmwareUpdateStatus = "";
+    var deviceLocation = "Building 44";
+    var deviceLatitude = 47.638928;
+    var deviceLongitude = -122.13476;
+    ```
+
+1. ソリューションに送信する、報告対象プロパティを定義するには、次の変数を追加します。 これらのプロパティには、デバイスが使用するメソッドとテレメトリを記述するメタデータが含まれます。
+
+    ```nodejs
+    var reportedProperties = {
+      "Protocol": "MQTT",
+      "SupportedMethods": "Reboot,FirmwareUpdate,EmergencyValveRelease,IncreasePressure",
+      "Telemetry": {
+        "TemperatureSchema": {
+          "Interval": interval,
+          "MessageTemplate": "{\"temperature\":${temperature},\"temperature_unit\":\"${temperature_unit}\"}",
+          "MessageSchema": {
+            "Name": temperatureSchema,
+            "Format": "JSON",
+            "Fields": {
+              "temperature": "Double",
+              "temperature_unit": "Text"
+            }
+          }
+        },
+        "HumiditySchema": {
+          "Interval": interval,
+          "MessageTemplate": "{\"humidity\":${humidity},\"humidity_unit\":\"${humidity_unit}\"}",
+          "MessageSchema": {
+            "Name": humiditySchema,
+            "Format": "JSON",
+            "Fields": {
+              "humidity": "Double",
+              "humidity_unit": "Text"
+            }
+          }
+        },
+        "PressureSchema": {
+          "Interval": interval,
+          "MessageTemplate": "{\"pressure\":${pressure},\"pressure_unit\":\"${pressure_unit}\"}",
+          "MessageSchema": {
+            "Name": pressureSchema,
+            "Format": "JSON",
+            "Fields": {
+              "pressure": "Double",
+              "pressure_unit": "Text"
+            }
+          }
+        }
+      },
+      "Type": deviceType,
+      "Firmware": deviceFirmware,
+      "FirmwareUpdateStatus": deviceFirmwareUpdateStatus,
+      "Location": deviceLocation,
+      "Latitude": deviceLatitude,
+      "Longitude": deviceLongitude
+    }
+    ```
+
+1. 操作結果を出力するには、次のヘルパー関数を追加します。
 
     ```nodejs
     function printErrorFor(op) {
@@ -83,89 +157,39 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-1. 起動時にデバイスから送信する **DeviceInfo** オブジェクトについて、次の定義を追加します。
+1. ソリューションからのダイレクト メソッドの呼び出しを処理するため、次の関数を追加します。 ソリューションは、次のようにデバイスで動作するダイレクト メソッドを使用します。
 
     ```nodejs
-    var deviceMetaData = {
-        'ObjectType': 'DeviceInfo',
-        'IsSimulatedDevice': 0,
-        'Version': '1.0',
-        'DeviceProperties': {
-            'DeviceID': deviceId,
-            'HubEnabledState': 1
+    function onDirectMethod(request, response) {
+      // Implement logic asynchronously here.
+      console.log('Simulated ' + request.methodName);
+
+      // Complete the response
+      response.send(200, request.methodName + ' was called on the device', function (err) {
+        if (!!err) {
+          console.error('An error ocurred when sending a method response:\n' +
+            err.toString());
+        } else {
+          console.log('Response to method \'' + request.methodName +
+            '\' sent successfully.');
         }
-    };
-    ```
-
-1. デバイス ツインの報告される値について、次の定義を追加します。 この定義には、デバイスでサポートされるダイレクト メソッドの説明が含まれます。
-
-    ```nodejs
-    var reportedProperties = {
-        "Device": {
-            "DeviceState": "normal",
-            "Location": {
-                "Latitude": 47.642877,
-                "Longitude": -122.125497
-            }
-        },
-        "Config": {
-            "TemperatureMeanValue": 56.7,
-            "TelemetryInterval": 45
-        },
-        "System": {
-            "Manufacturer": "Contoso Inc.",
-            "FirmwareVersion": "2.22",
-            "InstalledRAM": "8 MB",
-            "ModelNumber": "DB-14",
-            "Platform": "Plat 9.75",
-            "Processor": "i3-9",
-            "SerialNumber": "SER99"
-        },
-        "Location": {
-            "Latitude": 47.642877,
-            "Longitude": -122.125497
-        },
-        "SupportedMethods": {
-            "Reboot": "Reboot the device",
-            "InitiateFirmwareUpdate--FwPackageURI-string": "Updates device Firmware. Use parameter FwPackageURI to specifiy the URI of the firmware file"
-        },
+      });
     }
     ```
 
-1. **Reboot** ダイレクト メソッドの呼び出しを処理する次の関数を追加します。
+1. ソリューションにテレメトリを送信する次のコードを追加します。 クライアント アプリでは、次のようにメッセージ スキーマを識別するためのプロパティをメッセージに追加します。
 
-    ```nodejs
-    function onReboot(request, response) {
-        // Implement actual logic here.
-        console.log('Simulated reboot...');
+    ```node.js
+    function sendTelemetry(data, schema) {
+      var d = new Date();
+      var payload = JSON.stringify(data);
+      var message = new Message(payload);
+      message.properties.add('$$CreationTimeUtc', d.toISOString());
+      message.properties.add('$$MessageSchema', schema);
+      message.properties.add('$$ContentType', 'JSON');
 
-        // Complete the response
-        response.send(200, "Rebooting device", function(err) {
-            if(!!err) {
-                console.error('An error occurred when sending a method response:\n' + err.toString());
-            } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
-            }
-        });
-    }
-    ```
-
-1. **InitiateFirmwareUpdate** ダイレクト メソッドの呼び出しを処理する次の関数を追加します。 このダイレクト メソッドは、パラメーターを使用して、ダウンロードするファームウェア イメージの場所を指定し、デバイスでファームウェアの更新を非同期に開始します。
-
-    ```nodejs
-    function onInitiateFirmwareUpdate(request, response) {
-        console.log('Simulated firmware update initiated, using: ' + request.payload.FwPackageURI);
-
-        // Complete the response
-        response.send(200, "Firmware update initiated", function(err) {
-            if(!!err) {
-                console.error('An error occurred when sending a method response:\n' + err.toString());
-            } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
-            }
-        });
-
-        // Add logic here to perform the firmware update asynchronously
+      console.log('Sending device message data:\n' + payload);
+      client.sendEvent(message, printErrorFor('send event'));
     }
     ```
 
@@ -178,7 +202,6 @@ ms.lasthandoff: 10/11/2017
 1. 次の処理を行うために、以下のコードを追加します。
 
     * 接続を開きます。
-    * **DeviceInfo** オブジェクトを送信します。
     * 必要なプロパティのハンドラーを設定します。
     * 報告されたプロパティを送信します。
     * ダイレクト メソッドのハンドラーを登録します。
@@ -186,71 +209,82 @@ ms.lasthandoff: 10/11/2017
 
     ```nodejs
     client.open(function (err) {
-        if (err) {
-            printErrorFor('open')(err);
-        } else {
-            console.log('Sending device metadata:\n' + JSON.stringify(deviceMetaData));
-            client.sendEvent(new Message(JSON.stringify(deviceMetaData)), printErrorFor('send metadata'));
+      if (err) {
+        printErrorFor('open')(err);
+      } else {
+        // Create device Twin
+        client.getTwin(function (err, twin) {
+          if (err) {
+            console.error('Could not get device twin');
+          } else {
+            console.log('Device twin created');
 
-            // Create device twin
-            client.getTwin(function(err, twin) {
-                if (err) {
-                    console.error('Could not get device twin');
-                } else {
-                    console.log('Device twin created');
-
-                    twin.on('properties.desired', function(delta) {
-                        console.log('Received new desired properties:');
-                        console.log(JSON.stringify(delta));
-                    });
-
-                    // Send reported properties
-                    twin.properties.reported.update(reportedProperties, function(err) {
-                        if (err) throw err;
-                        console.log('twin state reported');
-                    });
-
-                    // Register handlers for direct methods
-                    client.onDeviceMethod('Reboot', onReboot);
-                    client.onDeviceMethod('InitiateFirmwareUpdate', onInitiateFirmwareUpdate);
-                }
+            twin.on('properties.desired', function (delta) {
+              // Handle desired properties set by solution
+              console.log('Received new desired properties:');
+              console.log(JSON.stringify(delta));
             });
 
-            // Start sending telemetry
-            var sendInterval = setInterval(function () {
-                temperature += generateRandomIncrement();
-                externalTemperature += generateRandomIncrement();
-                humidity += generateRandomIncrement();
-
-                var data = JSON.stringify({
-                    'DeviceID': deviceId,
-                    'Temperature': temperature,
-                    'Humidity': humidity,
-                    'ExternalTemperature': externalTemperature
-                });
-
-                console.log('Sending device event data:\n' + data);
-                client.sendEvent(new Message(data), printErrorFor('send event'));
-            }, 5000);
-
-            client.on('error', function (err) {
-                printErrorFor('client')(err);
-                if (sendInterval) clearInterval(sendInterval);
-                client.close(printErrorFor('client.close'));
+            // Send reported properties
+            twin.properties.reported.update(reportedProperties, function (err) {
+              if (err) throw err;
+              console.log('twin state reported');
             });
-        }
+
+            // Register handlers for all the method names we are interested in.
+            // Consider separate handlers for each method.
+            client.onDeviceMethod('Reboot', onDirectMethod);
+            client.onDeviceMethod('FirmwareUpdate', onDirectMethod);
+            client.onDeviceMethod('EmergencyValveRelease', onDirectMethod);
+            client.onDeviceMethod('IncreasePressure', onDirectMethod);
+          }
+        });
+
+        // Start sending telemetry
+        var sendTemperatureInterval = setInterval(function () {
+          temperature += generateRandomIncrement();
+          var data = {
+            'temperature': temperature,
+            'temperature_unit': temperatureUnit
+          };
+          sendTelemetry(data, temperatureSchema)
+        }, 5000);
+
+        var sendHumidityInterval = setInterval(function () {
+          humidity += generateRandomIncrement();
+          var data = {
+            'humidity': humidity,
+            'humidity_unit': humidityUnit
+          };
+          sendTelemetry(data, humiditySchema)
+        }, 5000);
+
+        var sendPressureInterval = setInterval(function () {
+          pressure += generateRandomIncrement();
+          var data = {
+            'pressure': pressure,
+            'pressure_unit': pressureUnit
+          };
+          sendTelemetry(data, pressureSchema)
+        }, 5000);
+
+        client.on('error', function (err) {
+          printErrorFor('client')(err);
+          if (sendTemperatureInterval) clearInterval(sendTemperatureInterval);
+          if (sendHumidityInterval) clearInterval(sendHumidityInterval);
+          if (sendPressureInterval) clearInterval(sendPressureInterval);
+          client.close(printErrorFor('client.close'));
+        });
+      }
     });
     ```
 
 1. 変更を **remote_monitoring.js** ファイルに保存します。
 
 1. コマンド プロンプトで次のコマンドを実行して、サンプル アプリケーションを起動します。
-   
-    ```
+
+    ```cmd/sh
     node remote_monitoring.js
     ```
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
-
-[lnk-github-repo]: https://github.com/azure/azure-iot-sdk-node
-[lnk-github-prepare]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md

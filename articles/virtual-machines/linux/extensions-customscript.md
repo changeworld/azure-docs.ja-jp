@@ -3,7 +3,7 @@ title: "Azure で Linux VM のカスタム スクリプトを実行する | Micr
 description: "カスタム スクリプト拡張機能を使用して Linux VM 構成タスクを自動化する"
 services: virtual-machines-linux
 documentationcenter: 
-author: neilpeterson
+author: danielsollondon
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: nepeters
-ms.openlocfilehash: 1dde64aac72c11ccfccf4fdb676279692befaadd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danis
+ms.openlocfilehash: 3f8eeb71027d9bdd5c72570bd07d673136646e6c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用
 カスタム スクリプト拡張機能は、Azure 仮想マシンでスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージやその他のアクセス可能なインターネットの場所からダウンロードできます。また、実行時に拡張機能に提供することもできます。 カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合されており、Azure CLI、PowerShell、Azure Portal、または Azure 仮想マシン REST API を使用して実行することもできます。

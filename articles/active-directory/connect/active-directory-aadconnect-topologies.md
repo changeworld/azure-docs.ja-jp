@@ -14,11 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: d7af3a531bc1bcced1a3c48403a6f60afea0f82f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8e71541562d397c3f2cc195bfb74cfd60cafdc0
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -111,7 +111,7 @@ Office 365 の一部のワークロードでは、サポートされるトポロ
 
 | ワークロード | 制限 |
 --------- | ---------
-| Exchange Online | 複数のオンプレミス Exchange 組織がある場合 (つまり、Exchange が複数のフォレストにデプロイされている場合) は、Exchange 2013 SP1 以降を使用する必要があります。 詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。 |
+| Exchange Online | Exchange Online でサポートされているハイブリッド トポロジの詳細については、「[Hybrid deployments with multiple Active Directory forests (複数の Active Directory フォレストを伴うハイブリッド展開)](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。 |
 | Skype for Business | 複数のオンプレミス フォレストを使用している場合は、アカウント リソース フォレスト トポロジのみがサポートされます。 詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/library/dn933910.aspx)」を参照してください。 |
 
 

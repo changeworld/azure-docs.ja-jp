@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: a87924faaf5c6c43716b06b6d70ab5100c61f097
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 694d75807d978ece6296b945bf348f08688d3b5d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Reliable Services プログラミング モデルの詳細な使用方法
 Azure Service Fabric により、信頼性の高いステートレス サービスとステートフル サービスの作成と管理が簡素化されます。 このガイドでは、サービスを細かく制御し、柔軟性を高めるために、Reliable Services の高度な使用方法について説明します。 このガイドをお読みになる前に、 [Reliable Services プログラミング モデル](service-fabric-reliable-services-introduction.md)について理解しておいてください。

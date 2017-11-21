@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: dharmeshkakadia
-ms.openlocfilehash: 53e9685458190efe6a586504721b8e7baadaed60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 398cc7cd0fa815f12ba5b503a1328688e1159eee
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Hive のトラブルシューティング
 
@@ -177,6 +177,8 @@ Tez DAG データは次の 2 つの方法で収集できます。
 [SSH を使用して HDInsight クラスターに接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
+### <a name="see-also"></a>関連項目
+[Azure HDInsight を使用したトラブルシューティング](hdinsight-troubleshoot-guide.md)
 
 
 

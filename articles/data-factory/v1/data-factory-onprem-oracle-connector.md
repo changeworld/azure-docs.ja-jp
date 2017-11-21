@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2017
+ms.date: 10/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a06f328eba83fda6cf12a7b81f2ab4dfcd95ec3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 09850217018321f67e2e20270aadd054258c90a2
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

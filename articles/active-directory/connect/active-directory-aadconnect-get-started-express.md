@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 8a08f6e441a856a06bf7870747ca20af45a0364e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3b634bc36e01f8586b6645515942c049701c30e
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>簡単設定を使用した Azure AD Connect の開始
 Azure AD Connect の**簡単設定**は、トポロジのフォレストが 1 つであり、認証に[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md)を使用する場合に使います。 **簡単設定** は既定のオプションであり、ごく一般的なデプロイ シナリオで使用されます。 数回クリックするだけで、オンプレミスのディレクトリをクラウドに拡張できます。
@@ -39,7 +39,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
    ![Azure AD への接続](./media/active-directory-aadconnect-get-started-express/connectaad.png) 接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)に関するページに記載されている前提条件の手順を完了してください。
 6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\administrator または fabrikam.com\administrator)。 **[次へ]** をクリックします。  
    ![AD DS に接続](./media/active-directory-aadconnect-get-started-express/connectad.png)
-7. [**[Azure AD サインインの構成]**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration) ページは、[前提条件](active-directory-aadconnect-prerequisites.md)の[ドメインの検証](../active-directory-add-domain.md)が済んでいない場合にのみ表示されます。
+7. [**[Azure AD サインインの構成]**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration) ページは、[前提条件](active-directory-aadconnect-prerequisites.md)の[ドメインの検証](../active-directory-domains-add-azure-portal.md)が済んでいない場合にのみ表示されます。
    ![Unverified domains](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
    このページが表示されたら、**[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。 使用するドメインを Azure AD で検証済みにしてください。 対象のドメインを検証済みにしたら、更新シンボルをクリックします。
 8. [構成の準備完了] 画面で、 **[インストール]**をクリックします。

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 11/07/2017
 ms.author: owend
-ms.openlocfilehash: c6be396f22ee364e7746038b2243162e775c8c54
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 350f95b2f9ec8dc4a3e2dc8f7d390f841b248fa1
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -46,9 +46,18 @@ Azure Portal から数分で[サーバーを作成する](analysis-services-crea
 サーバーが作成されたら、Azure Portal ですぐに表形式モデルを作成できます。 新しい (プレビュー) [Web デザイナー機能](analysis-services-create-model-portal.md)を使用して、Azure SQL Database や Azure SQL Data Warehouse データ ソースに接続したり、Power BI Desktop の .pbix ファイルをインポートしたりできます。 テーブル間のリレーションシップは自動的に作成され、ご利用のブラウザーから直接、メジャーを作成したり、JSON 形式の model.bim ファイルを編集したりできます。
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
+
+### <a name="the-right-tier-when-you-need-it"></a>必要に応じたレベルを選ぶ
+
 Azure Analysis Services は、Developer レベル、Basic レベル、Standard レベルでご利用いただけます。 各レベルのプランのコストは、処理能力、QPU、メモリ サイズによって異なります。 サーバーの作成時に、レベル内のプランを選択します。 プランは、同一レベル内で変更することも、上位レベルにアップグレードすることもできますが、上位レベルから下位レベルにダウングレードすることはできません。
 
 サーバーをスケールアップ、スケールダウン、または一時停止します。 Azure Portal を使用するか、PowerShell を使用して即座に全体を制御します。 料金は使用した分だけになります。 各種プランとレベルの詳細については、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」を参照してください。価格計算ツールを使用して、ご自身に合ったプランを判断することができます。
+
+### <a name="scale-out-resources-for-fast-query-responses"></a>リソースをスケールアウトしてクエリの応答速度を高める
+
+Azure Analysis Services のスケールアウトにより、クライアント クエリは、クエリ プール内の複数の "*クエリ レプリカ*" に対して分散されます。 クエリ レプリカには、表形式モデルの同期コピーが格納されます。 クエリのワークロードを分散することによって、高クエリ ワークロード下における応答時間を短縮することができます。 モデルの処理操作をクエリ プールから切り離すことができるので、クライアントのクエリに処理操作による悪影響が及ぶことはありません。 クエリ プールは、追加分として最大 7 つのクエリ レプリカ (ご使用のサーバーを含めて合計 8 つ) で作成することができます。 
+
+クエリ レプリカは、レベルの変更と同様、必要に応じてスケールアウトすることができます。 スケールアウトの構成は、ポータルまたは REST API を使用して行います。 詳しくは、「[Azure Analysis Services scale-out (Azure Analysis Services のスケールアウト)](analysis-services-scale-out.md)」をご覧ください。
 
 ## <a name="keep-your-data-close"></a>データを近くに維持
 Azure Analysis Services サーバーは、次の [Azure リージョン](https://azure.microsoft.com/regions/)で作成できます。
@@ -92,11 +101,17 @@ Azure Analysis Services のユーザー認証は、[Azure Active Directory (AAD)
 #### <a name="data-security"></a>データのセキュリティ
 Azure Analysis Services は、Azure Blob Storage を利用して、Analysis Services データベースのストレージとメタデータを保持します。 BLOB 内のデータ ファイルは、Azure Blob Server Side Encryption (SSE) を使って暗号化されます。 直接クエリ モードを使用している場合は、メタデータのみが格納されます。 実際のデータは、クエリ時にデータ ソースからアクセスされます。
 
+#### <a name="firewall"></a>ファイアウォール
+
+Azure Analysis Services ファイアウォールは、ルールに規定されているクライアント接続を除く、すべてのクライアント接続をブロックします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロック許可することもできます。 
+
 #### <a name="on-premises-data-sources"></a>オンプレミス データ ソース
 組織のオンプレミス データへの安全なアクセスは、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)をインストールして構成することにより実現します。 ゲートウェイは、直接クエリ モードとメモリ内モード両方のデータへのアクセスを提供します。 Azure Analysis Services モデルがオンプレミス データ ソースに接続すると、オンプレミス データ ソースに対する暗号化された資格情報を含むクエリが作成されます。 ゲートウェイ クラウド サービスはクエリを分析して、Azure Service Bus に要求をプッシュします。 オンプレミス ゲートウェイは、保留中の要求がないか Azure Service Bus をポーリングします。 その後、ゲートウェイはクエリを取得して、資格情報を復号化し、データ ソースに接続して実行します。 結果は、データ ソースからゲートウェイ経由で Azure Analysis Services データベースに返送されます。
 
 Azure Analysis Services は、[Microsoft オンライン サービス使用条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)および[Microsoft オンライン サービス プライバシー表明](https://www.microsoft.com/privacystatement/OnlineServices/Default.aspx)によって管理されます。
 Azure のセキュリティについて詳しくは、[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter/Security/AzureSecurity)をご覧ください。
+
+
 
 ## <a name="supports-the-latest-client-tools"></a>最新のクライアント ツールをサポート
 ![データ可視化](./media/analysis-services-overview/aas-overview-clients.png)

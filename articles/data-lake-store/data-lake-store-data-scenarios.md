@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 5c3e4a4d98922533bcf901108d58329cb951b01c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c48c0931ede6d17078c64cbb1e1dacd21098f792
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="using-azure-data-lake-store-for-big-data-requirements"></a>ビッグ データの要件に対する Azure Data Lake Store の使用
 ビッグ データの処理には主に 4 つの段階があります。
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 使用できるツールは次のとおりです。
 
 * [Azure Stream Analytics](../stream-analytics/stream-analytics-data-lake-output.md)。イベント ハブに取り込まれたイベントは、Azure Data Lake Store 出力を使用して Azure Data Lake に書き込むことができます。
-* [Azure HDInsight Storm](../hdinsight/hdinsight-storm-write-data-lake-store.md)。Storm クラスターから Data Lake Store に直接データを書き込むことができます。
+* [Azure HDInsight Storm](../hdinsight/storm/apache-storm-write-data-lake-store.md)。Storm クラスターから Data Lake Store に直接データを書き込むことができます。
 * [EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。イベント ハブからイベントを受け取り、[Data Lake Store .NET SDK](data-lake-store-get-started-net-sdk.md) を使用して Data Lake Store に書き込むことができます。
 
 ### <a name="relational-data"></a>リレーショナル データ

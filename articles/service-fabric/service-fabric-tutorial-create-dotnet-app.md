@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2017
+ms.date: 11/08/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5a095663b7e716fd63322c9f89f67a1f3187638b
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 341d275fbf9f80ac9e3363757d880b9546bdee13
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 このチュートリアルは、シリーズの第 1 部です。  ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。 投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)し、「[投票のサンプル アプリケーションの概要](#walkthrough_anchor)」に進むことができます。
@@ -228,7 +228,11 @@ ASP.NET アプリの既定のレイアウトである *Views/Shared/_Layout.csht
 ```
 
 ### <a name="update-the-votingwebcs-file"></a>VotingWeb.cs ファイルを更新する
-*VotingWeb.cs* ファイルを開きます。このファイルで、WebListener Web サーバーを使用してステートレス サービス内に ASP.NET Core WebHost が作成されます。  ファイルの先頭に `using System.Net.Http;` ディレクティブを追加します。  `CreateServiceInstanceListeners()` 関数を次の内容に置き換え、変更を保存します。
+*VotingWeb.cs* ファイルを開きます。このファイルで、WebListener Web サーバーを使用してステートレス サービス内に ASP.NET Core WebHost が作成されます。  
+
+ファイルの先頭に `using System.Net.Http;` ディレクティブを追加します。  
+
+`CreateServiceInstanceListeners()` 関数を次の内容に置き換え、変更を保存します。
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -257,7 +261,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 ```
 
 ### <a name="add-the-votescontrollercs-file"></a>VotesController.cs ファイルを追加する
-投票アクションを定義するコントローラーを追加します。 **Controllers** フォルダーを右クリックし、**[追加]、[新しい項目]、[クラス]** の順に選択します。  ファイルに "VotesController.cs" と名前を付け、**[追加]** をクリックします。  ファイルの内容を次のように置き換え、変更を保存します。  後述する「[VotesController.cs ファイルを更新する](#updatevotecontroller_anchor)」では、バックエンド サービスから投票データを読み込み、書き込むようにこのファイルを変更します。  ここでは、コントローラーから静的文字列データをビューに返します。
+投票アクションを定義するコントローラーを追加します。 **Controllers** フォルダーを右クリックし、**[追加]、[新しい項目]、[クラス]** の順に選択します。  ファイルに "VotesController.cs" と名前を付け、**[追加]** をクリックします。  
+
+ファイルの内容を次のように置き換え、変更を保存します。  後述する「[VotesController.cs ファイルを更新する](#updatevotecontroller_anchor)」では、バックエンド サービスから投票データを読み込み、書き込むようにこのファイルを変更します。  ここでは、コントローラーから静的文字列データをビューに返します。
 
 ```csharp
 using System;
@@ -296,7 +302,23 @@ namespace VotingWeb.Controllers
 }
 ```
 
+### <a name="configure-the-listening-port"></a>リスニング ポートを構成する
+VotingWeb フロントエンド サービスが作成されると、Visual Studio は、リッスンするサービスのポートをランダムに選択します。  VotingWeb サービスは、このアプリケーションのフロント エンドとして機能して外部のトラフィックを受け入れるため、このサービスを固定のウェルノウン ポートにバインドしましょう。 ソリューション エクスプローラーで、*VotingWeb/PackageRoot/ServiceManifest.xml* を開きます。  **Resources** セクションの **Endpoint** リソースを検索し、**Port** 値を 80、または別のポートに変更します。 アプリケーションをローカルでデプロイして実行するには、アプリケーションのリスニング ポートをコンピューター上で開いて、使用できるようにする必要があります。
 
+```xml
+<Resources>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+           listen. Please note that if your service is partitioned, this port is shared with 
+           replicas of different partitions that are placed in your code. -->
+      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="80" />
+    </Endpoints>
+  </Resources>
+```
+
+また、Voting プロジェクトの Application URL プロパティ値を更新し、F5 キーを押してデバッグするときに正しいポートに対して Web ブラウザーが開くようにします。  ソリューション エクスプローラーで、**Voting** プロジェクトを選択し、**Application URL** プロパティを更新します。
+
+![アプリケーションの URL](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ### <a name="deploy-and-run-the-application-locally"></a>ローカルでのアプリケーションのデプロイとデバッグ
 アプリケーションを実行できる状態になりました。 Visual Studio で `F5` キーを押して、デバッグ用にアプリケーションをデプロイします。 Visual Studio を**管理者**として開いていない場合、`F5` キーを押すとエラーが生じます。
@@ -333,8 +355,7 @@ Service Fabric では、Reliable Collection によってデータがサービス
 
     Visual Studio によってサービス プロジェクトが作成され、ソリューション エクスプローラーに表示されます。
 
-    ![ソリューション エクスプローラー
-](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
+    ![ソリューション エクスプローラー](./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-webapi-service.png)
 
 ### <a name="add-the-votedatacontrollercs-file"></a>VoteDataController.cs ファイルを追加する
 

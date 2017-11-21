@@ -1,5 +1,5 @@
 ---
-title: "Table Storage を使用する方法 (C++) | Microsoft Docs"
+title: "C++ で Azure Table Storage を使用する方法 | Microsoft Docs"
 description: "NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
 services: cosmos-db
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2017
+ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: 8314292cdb9b7a3f464c60119ed10f6b06ed4d10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb6adfda2ef17e04cedd026964cfcad7443e0bd9
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="how-to-use-table-storage-from-c"></a>C++ から Table ストレージを使用する方法
+# <a name="how-to-use-azure-table-storage-with-c"></a>C++ で Azure Table Storage を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは C++ で記述され、 [C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。 紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
 
 > [!NOTE]

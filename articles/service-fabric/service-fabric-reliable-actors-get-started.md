@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 3f447e049ccd33c77f422e8aa703ad6646f9ffa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e24cb902cb3f863931fc0be5e0f178707e806b6
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]

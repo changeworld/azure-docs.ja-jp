@@ -15,17 +15,13 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 1b08a0b376cbcae8522364c9b6ef22e9c0176438
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 477f20bd552460176be92f1db70bb0f76de8bac1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する
-> [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-application-proxy-connectors-azure-portal.md)
-> * [Azure クラシック ポータル](active-directory-application-proxy-connectors.md)
->
 
 Azure AD のアプリケーション プロキシは、ますます多くのシナリオやアプリケーションで利用されるようになっています。 そのため、Microsoft では、より多くのトポロジを有効にすることでアプリ プロキシの柔軟性をさらに高めました。 アプリケーション プロキシのコネクタ グループを作成して、特定のアプリケーションに対応する特定のコネクタを割り当てることができます。 この機能により、アプリケーション プロキシのデプロイをより詳細に制御し、多数の方法で最適化することができます。 
 
@@ -49,7 +45,7 @@ Azure AD のアプリケーション プロキシは、ますます多くのシ�
    ![新しいコネクタ グループの選択](./media/active-directory-application-proxy-connectors-azure-portal/new-group.png)
 
 3. 新しいコネクタ グループに名前を付け、ドロップダウン メニューを使用して、このグループに含めるコネクタを選択します。
-4. [**保存**] を選択します。
+4. **[保存]** を選択します。
 
 ## <a name="assign-applications-to-your-connector-groups"></a>コネクタ グループにアプリケーションを割り当てる
 アプリケーション プロキシを使って発行するアプリケーションごとに、次の手順を実行します。 アプリケーションを最初に発行するときにコネクタ グループに割り当てることができます。また、同じ手順を使って、必要に応じていつでも割り当てを変更することができます。   
@@ -90,9 +86,9 @@ Azure AD アプリケーション プロキシ コネクタ グループを使�
 
 この場合、特定のコネクタをフォレスト単位でデプロイし、その特定のフォレストのユーザーに対応範囲が限定される、発行済みのアプリケーションに対応するように設定できます。 それぞれのコネクタ グループは異なるフォレストを表します。 エクスペリエンスのほとんどとテナントはすべてのフォレストで統一されますが、Azure AD グループを使用してユーザーをフォレストのアプリケーションに割り当てることができます。
  
-### <a name="disaster-recovery-sites"></a>障害復旧サイト
+### <a name="disaster-recovery-sites"></a>ディザスター リカバリーサイト
 
-障害復旧 (DR) サイトに対しては、サイトの実装方法に応じて 2 つの異なるアプローチを使用できます。
+ディザスター リカバリー (DR) サイトに対しては、サイトの実装方法に応じて 2 つの異なるアプローチを使用できます。
 
 * DR サイトが (メイン サイトとまったく同じで、同じネットワークおよび AD 設定が使用される) アクティブ/アクティブ モードで構築されている場合、メイン サイトと同じコネクタ グループの DR サイトにコネクタを作成できます。 これにより、Azure AD はフェールオーバーを検出できます。
 * DR サイトがメイン サイトから切り離されている場合は、DR サイトに異なるコネクタ グループを作成し、1) バックアップ アプリケーションを用意するか、2) 必要に応じて既存のアプリケーションを DR コネクタ グループに手動で切り替えることができます。

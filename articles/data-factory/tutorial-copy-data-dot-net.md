@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: 6982b8075b30768814d92610733e68c24fcb113c
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 63a59dbfa9c9adab1354c89f35fe649213edf3bc
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 
@@ -125,7 +125,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     using Microsoft.Azure.Management.DataFactory.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-2. Add the following code to the **Main** method that sets variables. Replace place-holders with your own values.
+2. Add the following code to the **Main** method that sets variables. Replace place-holders with your own values. Currently, Data Factory V2 allows you to create data factories only in the East US, East US2, and West Europe regions. The data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by data factory can be in other regions.
 
     ```csharp
     // Set variables
@@ -135,7 +135,6 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     string subscriptionId = "<your subscription ID to create the factory>";
     string resourceGroup = "<your resource group to create the factory>";
 
-    // Note that the data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by a data factory can be in other regions.
     string region = "East US";
     string dataFactoryName = "<specify the name of a data factory to create. It must be globally unique.>";
 

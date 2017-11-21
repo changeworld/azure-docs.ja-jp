@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/16/2017
+ms.date: 10/30/2017
 ms.author: mimig
-ms.openlocfilehash: 7f59394fdb51c59be65e51fa1a4594b947635ace
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 5a793abdc24387ae2b758d29b9dfb25f134097d3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: ドキュメント データベースを Java と Azure Portal で作成する
 
@@ -198,6 +198,8 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
                 new ConnectionPolicy(),
                 ConsistencyLevel.Session);
     ```
+
+5. Program.java ファイルを保存します。
 
 ## <a name="run-the-app"></a>アプリの実行
 

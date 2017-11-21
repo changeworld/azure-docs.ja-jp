@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/04/2017
+ms.date: 11/03/2017
 ms.author: delhan
-ms.openlocfilehash: 421d114632e1794a3cd5bd23fdecb0fadd476c6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fae8ba81f925f53458133c8802b0766dd0f42684
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Azure VPN Gateway 向けにコミュニティで推奨されるサード パーティの VPN デバイスまたはファイアウォール デバイスの設定
 

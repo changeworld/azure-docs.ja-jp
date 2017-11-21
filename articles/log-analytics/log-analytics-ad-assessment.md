@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics での Active Directory 環境の最適化 | Microsoft Docs"
-description: "Active Directory 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。"
+description: "Active Directory 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価します。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
-ms.author: banders
+ms.date: 10/27/2017
+ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97368f0b9e89ffd0cd982b6e8670d5a1f62ad42c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e78ca1da8cafe93e76d640c0e6d5ad5309655c1b
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Log Analytics で Active Directory 評価ソリューションを使用して Active Directory 環境を最適化する
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Log Analytics で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
-![AD 評価のシンボル](./media/log-analytics-ad-assessment/ad-assessment-symbol.png)
+![AD 正常性チェックのシンボル](./media/log-analytics-ad-assessment/ad-assessment-symbol.png)
 
-Active Directory 評価ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事では、潜在的な問題の修正措置を実行できるように、ソリューションをインストールして使用します。
+Active Directory 正常性チェック ソリューションを使用して、サーバー環境のリスクと正常性を定期的に評価します。 この記事では、潜在的な問題の修正措置を実行できるように、ソリューションをインストールして使用します。
 
 このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は 4 つの対象領域に分類されているので、すばやくリスクを把握し、アクションを実行できます。
 
@@ -33,46 +33,48 @@ Active Directory 評価ソリューションを使用して、サーバー環境
 
 組織にとって最も重要な対象領域を選択し、リスクのない正常な環境の実行に向けた進行状況を追跡できます。
 
-ソリューションを追加し、評価が完了すると、環境のインフラストラクチャの **[AD Assessment (AD 評価)]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[AD Assessment (AD 評価)]** ダッシュボードの情報を使用する方法について説明します。ここでは、Active Directory サーバー インフラストラクチャを確認し、推奨された解決方法を実行できます。
+ソリューションを追加し、チェックが完了すると、環境のインフラストラクチャの **[Active Directory 正常性チェック]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[Active Directory 正常性チェック]** ダッシュボードの情報を使用する方法について説明します。ここでは、Active Directory サーバー インフラストラクチャを確認し、推奨された解決方法を実行できます。  
 
-![[SQL 評価] タイルの画像](./media/log-analytics-ad-assessment/ad-tile.png)
+![[Active Directory 正常性チェック] タイルの画像](./media/log-analytics-ad-assessment/ad-healthcheck-summary-tile.png)
 
-![[SQL 評価] ダッシュボードの画像](./media/log-analytics-ad-assessment/ad-assessment.png)
+![[Active Directory 正常性チェック] ダッシュボードの画像](./media/log-analytics-ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
-次の情報を使用して、ソリューションをインストールおよび構成します。
+## <a name="prerequisites"></a>前提条件
 
-* エージェントは、評価されるドメインのメンバーであるドメイン コントローラーにインストールする必要があります。
-* Active Directory 評価ソリューションには、OMS エージェントがある各コンピューターにインストールされている、サポートされているバージョンの .NET Framework 4 (4.5.2 以降) が必要です。
-* Active Directory 評価ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ADAssessmentOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。  さらに手動で構成する必要はありません。
+* Active Directory 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4.5.2 以降がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Log Analytics サービスに使用されます。 
+* このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、および Windows Server 2016 を実行するドメイン コントローラーをサポートしています。
+* Azure Portal で Azure Marketplace から Active Directory 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  さらに手動で構成する必要はありません。
 
   > [!NOTE]
-  > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの OMS サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
+  > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの Log Analytics サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
   >
   >
 
-## <a name="active-directory-assessment-data-collection-details"></a>Active Directory 評価データ収集の詳細
+評価対象のドメインのメンバーであるドメイン コントローラーに対して正常性チェックを実行するには、エージェントと、次のサポートされるいずれかの方法を使用して Log Analytics に接続できる必要があります。
 
-Active Directory Assessment では、有効にしたエージェントを使用して、次のソースからデータを収集します。
+1. ドメイン コントローラーが System Center 2016 (Operations Manager または Operations Manager 2012 R2) でまだ監視されていない場合は、[Microsoft Monitoring Agent (MMA)](log-analytics-windows-agents.md) をインストールします。
+2. System Center 2016 (Operations Manager または Operations Manager 2012 R2) で監視され、監視グループが Log Analytics サービスと統合されていない場合は、ドメイン コントローラーを Log Analytics とマルチホームしてデータを収集し、サービスに転送して、Operations Manager で引き続き監視することができます。  
+3. それ以外の場合、Operations Manager 管理グループがサービスと統合されている場合は、ワークスペースでソリューションを有効にした後に、[エージェントが管理するコンピューターの追加](log-analytics-om-agents.md#connecting-operations-manager-to-oms)に関するセクションの手順に従って、サービスによるデータ収集用にドメイン コントローラーを追加する必要があります。  
 
-- レジストリ コレクター
-- LDAP コレクター
+Operations Manager 管理グループに報告するドメイン コントローラー上のエージェントはデータを収集し、割り当てられている管理サーバーに転送します。このデータは、管理サーバーから Log Analytics サービスに直接送信されます。  データは Operations Manager データベースに書き込まれません。  
+
+## <a name="active-directory-health-check-data-collection-details"></a>Active Directory 正常性チェックのデータ収集の詳細
+
+Active Directory 正常性チェックでは、有効にしたエージェントを使用して、次のソースからデータを収集します。
+
+- レジストリ 
+- LDAP 
 - .NET Framework
-- イベント ログ コレクター
+- イベント ログ 
 - Active Directory サービス インターフェイス (ADSI)
 - Windows PowerShell
-- ファイル データ コレクター
+- ファイル データ 
 - Windows Management Instrumentation (WMI)
 - DCDIAG ツール API
 - ファイル レプリケーション サービス (NTFRS) API
 - カスタム C# コード
 
-
-次の表に、エージェントのデータ収集方法、Operations Manager (SCOM) が必要であるかどうか、およびどのくらいの頻度でデータがエージェントによって収集されるかを示します。
-
-| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Windows |&#8226; |&#8226; |  |  |&#8226; |7 日 |
+データはドメイン コントローラーで収集され、7 日ごとに Log Analytics に転送されます。  
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>推奨事項の優先順位設定方法について
 提供されるすべての推奨事項には、推奨事項の相対的な重要度を示す重み付け値が与えられます。 最も重要な 10 個の推奨事項のみが表示されます。
@@ -100,71 +102,76 @@ Active Directory Assessment では、有効にしたエージェントを使用�
 
 すべての推奨事項には、重要である理由についてのガイダンスが含まれます。 ユーザーはこのガイダンスを使用し、IT サービスの性質と組織のビジネス ニーズに基づいて、推奨事項を実装することが会社にとって適切かどうかを評価する必要があります。
 
-## <a name="use-assessment-focus-area-recommendations"></a>評価の関心領域に関する推奨事項の使用
-OMS の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」を参照してください。 インストール後は、OMS の [概要] ページの [評価] タイルを使用して、推奨事項の概要を表示できます。
+## <a name="use-health-check-focus-area-recommendations"></a>正常性チェックの関心領域に関する推奨事項の使用
+インストール後は、Azure Portal のソリューション ページの [正常性チェック] タイルを使用して、推奨事項の概要を表示できます。
 
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-1. **[概要]** ページで、サーバー インフラストラクチャの **[評価]** タイルをクリックします。
-2. **[評価]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
-3. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。  
-    ![評価に関する推奨事項の画像](./media/log-analytics-ad-assessment/ad-focus.png)
-4. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
+2. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルをクリックします。  
+4. **[概要]** ページで、**[Active Directory 正常性チェック]** タイルをクリックします。 
+5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
+6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![正常性チェックの推奨事項の画像](./media/log-analytics-ad-assessment/ad-healthcheck-dashboard-02.png)
+7. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
-無視する推奨事項がある場合は、OMS が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
+無視する推奨事項がある場合は、Log Analytics が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>無視する推奨事項を識別するには
-1. ワークスペースにサインインして、ログ検索を開きます。 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
+1. Azure Portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** タイルをクリックします。
+2. 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
 
-   ```
-   Type=ADAssessmentRecommendation RecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
-   ```
->[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
->
-> `ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
+    ```
+    Type=ADAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
+    ```
+    >[!NOTE]
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    >
+    > `ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-   ログ検索のクエリを示すスクリーン ショットを次に示します。![失敗した推奨事項](./media/log-analytics-ad-assessment/ad-failed-recommendations.png)
-2. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
+    ログ検索のクエリを示すスクリーン ショットを次に示します。<br><br> ![失敗した推奨事項](./media/log-analytics-ad-assessment/ad-failed-recommendations.png)
+
+3. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt テキスト ファイルを作成および使用するには
 1. IgnoreRecommendations.txt という名前のファイルを作成します。
 2. Log Analytics に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
-3. OMS に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
+3. Log Analytics に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
    * Microsoft Monitoring Agent がインストールされたコンピューター (直接または Operations Manager 経由で接続されている) - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
-   * Operations Manager 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * Operations Manager 2012 R2 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server 
+   * Operations Manager 2016 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>推奨事項が無視されていることを確認するには
-次回スケジュールされている評価 (既定では 7 日おき) の実行後、推奨事項は *Ignored* とマークされ、評価ダッシュボードには表示されません。
+次回スケジュールされている正常性チェックが実行した後は、既定では 7 日おきで、推奨事項が *Ignored* とマークされ、ダッシュボードには表示されません。
 
 1. 次のログ検索クエリを使用して、無視されるすべての推奨事項の一覧を表示します。
 
     ```
     Type=ADAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
->[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
->
-> `ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
+    >[!NOTE]
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    >
+    > `ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
 2. 無視された推奨事項を表示することを後で決定する場合は、IgnoreRecommendations.txt ファイルを削除します。また、そのファイルから RecommendationID を削除することもできます。
 
-## <a name="ad-assessment-solutions-faq"></a>AD 評価ソリューションに関する FAQ
-*評価はどのくらいの頻度で実行されますか?*
+## <a name="ad-health-check-solutions-faq"></a>Active Directory 正常性チェック ソリューションについてよく寄せられる質問 (FAQ)
+*正常性チェックはどのような頻度で実行されますか?*
 
-* 評価は 7 日おきに実行されます。
+* チェックは 7 日ごとに実行されます。
 
-*評価の実行頻度を構成する方法がありますか?*
+*正常性チェックの実行頻度を構成する方法はありますか?*
 
 * 現時点ではありません。
 
-*評価ソリューションを追加後、別のサーバーが検出された場合、それは評価されますか?*
+*正常性チェック ソリューションを追加後、別のサーバーが検出された場合、それはチェックされますか?*
 
-* はい。検出されると、それ以降 7 日おきに評価されます。
+* はい。検出されると、それ以降 7 日おきにチェックされます。
 
-*サーバーを使用停止にした場合、それはいつ評価対象から除外されますか?*
+*サーバーを使用停止にした場合、正常性チェックの対象からはいつ除外されますか?*
 
 * サーバーは、3 週間にわたりデータを送信しない場合、除外されます。
 
@@ -189,4 +196,4 @@ OMS の評価ソリューションを使用するには、ソリューション�
 * はい。前のセクション「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-* 「 [Log Analytics におけるログの検索](log-analytics-log-searches.md) 」を参照し、詳細な AD 評価データと推奨事項を確認してください。
+* [Log Analytics のログ検索](log-analytics-log-searches.md)を使用して、詳細な Active Directory 正常性チェック データと推奨事項を分析する方法を学びます。

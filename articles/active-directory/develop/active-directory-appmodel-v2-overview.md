@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 1e286044fb1a1b367fcac2dc14c47f68d5ed120d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6a7c6bdf3deaee3a3949fe409a7fab6b7664695
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="sign-in-microsoft-account--azure-ad-users-in-a-single-app"></a>Microsoft アカウント ユーザーおよび Azure AD ユーザーによる単一アプリでのサインイン
 アプリの開発者はこれまで、個人用の Microsoft アカウントと Azure Active Directory の職場アカウントの両方をサポートするには、2 つの異なるシステムを 1 つに統合する必要がありました。  **Azure AD v2.0 エンドポイント**では、1 つのシンプルな統合環境を使用して両方の種類のアカウントにサインインできる、新しい認証 API のバージョンが導入されています。  v2.0 エンドポイントを使うアプリは、どちらの種類のアカウントを使用していても、[Microsoft Graph](https://graph.microsoft.io) の REST API を使用できます。
@@ -49,13 +49,8 @@ ms.lasthandoff: 10/11/2017
 * [v2.0 エンドポイントのスコープと同意](active-directory-v2-scopes.md)
 * [Microsoft Graph](https://graph.microsoft.io)
 
-## <a name="help--support"></a>ヘルプとサポート
-これらは、Azure Active Directory での開発に関するサポートを求めるのに最適な場所です。
-
-* [Stack Overflow の `azure-active-directory` タグと `adal` タグ](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)
-* [Azure Active Directory に関するフィードバック](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)
-
-
 > [!NOTE]
 > Azure Active Directory から職場および学校アカウントにサインインするだけでよい場合は、最初に [Azure AD 開発者向けガイド](active-directory-developers-guide.md)を参照してください。  v2.0 エンドポイントは、Microsoft の個人用アカウントにサインインすることが明らかに必要な開発者が使用するためのものです。
 
+
+[!INCLUDE  [Help and Support Options](../../../includes/active-directory-develop-help-support-include.md)]

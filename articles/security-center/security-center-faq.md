@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 35aa45ce09b756dd7413a1df3d3c7b0c428b7a97
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71d407050f210c770bcac30259b9c2f2fb27aa3
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -127,6 +127,15 @@ Azure Security Center では、Azure 拡張機能によりインストールさ�
 
 ### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>VM で "スキャン データがありません" というメッセージが表示されるのはなぜですか。
 このメッセージが表示されるのは、VM のスキャン データがない場合です。 Azure Security Center でデータ収集が有効になると、スキャン データが取り込まれるまでにある程度の時間 (1 時間未満) がかかる場合があります。 スキャン データの初回作成以降でも、スキャン データが存在しなかったり、最近のスキャン データがなかったりする場合にはこのメッセージが表示される可能性があります。 停止状態の VM のスキャン データは取り込まれません。 スキャン データが最近取り込まれていない場合 (Windows エージェントの保持ポリシーに従い、既定値は 30 日間) にも、このメッセージが表示されることがあります。
+
+### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Security Center は、オペレーティング システムの脆弱性、システムの更新、およびエンドポイントの保護の問題をどのくらいの頻度でスキャンしますか。
+脆弱性、更新プログラム、その他の問題を Security Center がスキャンするときの待ち時間は次の通りです。
+
+- (Microsoft の) オペレーティング システムの脆弱性 - 48 時間以内にデータを更新
+- システムの更新プログラム - 24 時間以内にデータを更新
+- Endpoint Protection の問題 - 8 時間以内にデータを更新
+
+Security Center は通常 1 時間ごとに最新のデータをスキャンします。 上記の待ち時間の値は、最新のスキャンがないか、スキャンに失敗したような最悪の場合のシナリオです。
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>"VM Agent is Missing? (VM エージェントが見つかりません)" というメッセージが表示されるのはなぜですか。
 データ収集を有効にするには、VM エージェントが VM にインストールされている必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 他の VM への VM エージェントのインストール方法については、 [VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。

@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: iainfou
-ms.openlocfilehash: 94f8e3330fb2d6547811315fcfdb8ced338e0247
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9156998e36ddb8c4893cc0df98a7ddf3ff5d4f2
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux 仮想マシンを非管理対象ディスクから管理ディスクに変換する
 
@@ -28,6 +28,7 @@ ms.lasthandoff: 10/11/2017
 この記事では、Azure CLI を使用して VM を変換する方法を説明します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="before-you-begin"></a>開始する前に
+* [Managed Disks への移行に関する FAQ](faq-for-disks.md#migrate-to-managed-disks) を確認します。
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 

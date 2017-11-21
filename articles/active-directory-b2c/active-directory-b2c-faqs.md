@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: e8b28bc9ccc12b280b1746272519bd4c9ea9e4a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 45ae4ab4c832e7537e6ee78c32603734fa64ad86
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -57,7 +57,7 @@ Azure AD B2C でも[カスタム ポリシー](https://docs.microsoft.com/en-us/
 Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前に、管理するディレクトリに切り替える必要があります。  Azure ポータルの右上にある自分の ID をクリックしてディレクトリを切り替えた後、表示されるドロップダウンからディレクトリを選択します。  図を使用した詳細な手順については、「[Azure AD B2C の設定に移動する](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)」を参照してください。
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
-検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/active-directory-add-company-branding.md) を使用します。 具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
+検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/customize-branding.md) を使用します。 具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
 
 * **バナー ロゴ**: 右下に表示されます。
 * **背景色**: 上部に表示されます。
@@ -66,11 +66,11 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 
 電子メールの署名には、最初に B2C テナントを作成したときに指定した B2C テナントの名前が含まれます。 名前は次の手順を使用して変更できます。
 
-1. サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/) にサインインします。
-1. B2C テナントに移動します。
-1. [ **構成** ] タブをクリックします。
-1. **[ディレクトリのプロパティ]** セクションの **[名前]** フィールドを変更します。
-1. ページの下部にある **[保存]** をクリックします。
+1. サブスクリプション管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
+1. **[Azure Active Directory]** ブレードを開きます。
+1. **[プロパティ]** タブをクリックします。
+1. **[名前]** フィールドを変更します。
+1. ページの上部にある **[保存]** をクリックします。
 
 現在、電子メールの送信元フィールドを変更する方法はありません。 [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) で、検証電子メールの本文のカスタマイズについてのご要望を投稿してください。
 
@@ -98,9 +98,9 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Azure AD B2C ではどのようなレポート機能と監査機能が提供されますか。 それは Azure AD Premium の機能と同じですか。
 いいえ。Azure AD B2C では Azure AD Premium と同じレポート セットはサポートされていません。 ただし、多くの共通点があります。
 
-* サインイン レポートは、各サインインの記録を、詳細は除外して提供します。
-* 監査レポートは、Azure Portal で利用できます。[Azure Active Directory]、[アクティビティ]、[監査ログ]、[B2C] の順に選択し、必要に応じてフィルターを適用します。 管理アクティビティとアプリケーション アクティビティの両方が対象となります。 
-* ユーザー数、ログイン数、および MFA の数を対象とする使用状況レポートは、[Usage Reporting API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-usage-reporting-api) で利用できます。
+* **サインイン レポート**は、Azure Portal でのみ利用でき ([Azure Active Directory] > [アクティビティ] > [サインイン])、Graph API では利用できません。 サインイン レポートは、各サインインの記録を、詳細は除外して提供します。
+* **監査レポート**は、Azure Portal でのみ利用でき ([Azure Active Directory] > [アクティビティ] > [監査ログ])、Graph API では利用できません。 監査レポートには、管理アクティビティとアプリケーション アクティビティの両方が含まれます。 
+* **使用状況レポート**は、[Usage Reporting API](active-directory-b2c-reference-usage-reporting-api.md) によってのみ利用でき、Azure Portal では利用できません。 使用状況レポートには、ユーザーの数、ログインの回数、MFA のボリュームが含まれます。 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Azure AD B2C で提供されているページの UI をローカライズできますか。 どの言語がサポートされていますか。
 はい。  [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md) (パブリック プレビュー中) に関する記事を確認してください。  Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列を上書きすることができます。

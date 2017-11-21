@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 11/02/2017
 ms.author: twooley
-ms.openlocfilehash: d91a23ae4eb5aee14d3d2fef74467e7f33c458cc
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a66c7dddab1a2246dd0a9fa3c7533063140d2f01
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack 1710 更新プログラム (ビルド 20171020.1)
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/27/2017
 
 | 症状  | 原因  | 解決策 |
 |---------|---------|---------|
-|更新プログラムを実行するときに、更新プログラム アクション プランの「Storage Hosts Restart Storage Node (ストレージ ホストでの記憶域ノードの再起動)」の手順の実行中に次のようなエラーが発生することがあります。<br><br>**{"name":"Restart Storage Hosts","description":"Restart Storage Hosts.","errorMessage":"Type 'Restart' of Role 'BareMetal' raised an exception:\n\nThe computer HostName-05 is skipped.Fail to retrieve its LastBootUpTime via the WMI service with the following error message: The RPC server is unavailable.(Exception from HRESULT: 0x800706BA).\nat Restart-Host** | この問題は、一部の構成に潜在的な障害が存在するドライバーによって引き起こされます。 | 1.ベースボード管理コントローラー (BMC) Web インターフェイスにサインインし、エラー メッセージで特定されたホストを再起動します。<br><br>手順 2.特権エンドポイントを使用して、更新プログラムを再開します。 |
+|更新プログラムを実行するときに、更新プログラム アクション プランの「Storage Hosts Restart Storage Node (ストレージ ホストでの記憶域ノードの再起動)」の手順の実行中に次のようなエラーが発生することがあります。<br><br>**{"name":"Restart Storage Hosts","description":"Restart Storage Hosts.","errorMessage":"Type 'Restart' of Role 'BareMetal' raised an exception:\n\nThe computer HostName-05 is skipped.Fail to retrieve its LastBootUpTime via the WMI service with the following error message: The RPC server is unavailable.(Exception from HRESULT: 0x800706BA).\nat Restart-Host** | この問題は、一部の構成に潜在的な障害が存在するドライバーによって引き起こされます。 | 1.ベースボード管理コントローラー (BMC) Web インターフェイスにサインインし、エラー メッセージで特定されたホストを再起動します。<br><br>2.特権エンドポイントを使用して、更新プログラムを再開します。 |
 | 更新プログラムを実行するとき、更新プログラム アクション プランの手順「Step: Running step 2.4 - Install update (手順: 手順 2.4 を実行する - 更新プログラムのインストール)」の後に更新プロセスが停止して先に進まないように見えます。<br><br>このステップの後は、.nupkg ファイルの内部インフラストラクチャのファイル共有への一連のコピー プロセスが続きます。 For example:<br><br>**Copying 1 files from content\PerfCollector\VirtualMachines to \VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\PerfCounterConfiguration**  | この問題は、ログ ファイルによりインフラストラクチャの仮想マシンのディスクがいっぱいになることと、Windows Server スケールアウト ファイル サーバー (SOFS) の問題が原因で発生し、次回の更新プログラムで修正されます。 | マイクロソフト カスタマー サービスおよびサポート (CSS) に問い合わせてサポートを依頼してください。 | 
 | 更新プログラムを実行するときに、更新プログラム アクション プランの「Step: Running step 2.13.2 - Update *VM_Name* (手順: 手順 2.13.2 を実行する - VM_Name の更新)」の手順の実行中に次のようなエラーが発生することがあります。 (仮想マシンの名前は変わることがあります。)<br><br>**ActionPlanInstanceWarning ece/MachineName: WarningMessage:Task: Invocation of interface 'LiveUpdate' of role 'Cloud\Fabric\WAS' failed:<br>Type 'LiveUpdate' of Role 'WAS' raised an exception:<br>ERROR during storage initialization: An error occurred while trying to make an API call to Microsoft Storage service: {"Message":"A timeout occurred while communicating with Service Fabric.Exception Type: TimeoutException.Exception message: Operation timed out."}**  | この問題は、Windows Server の I/O のタイムアウトが原因で発生し、次回の更新プログラムで修正されます。 | マイクロソフトの CSS に問い合わせてサポートを依頼してください。
 | 更新プログラムを実行するときに、手順「Step 21 Restart SQL server VMs (手順 21 SQL サーバーの仮想マシンを再起動する)」の実行中に次のようなエラーが発生する場合があります。<br><br>**Type 'LiveUpdateRestart' of Role 'VirtualMachines' raised an exception:<br>VerboseMessage:[VirtualMachines:LiveUpdateRestart] Querying for VM MachineName-Sql01. - 10/13/2017 5:11:50 PM VerboseMessage:[VirtualMachines:LiveUpdateRestart] VM is marked as HighlyAvailable. - 10/13/2017 5:11:50 PM VerboseMessage:[VirtualMachines:LiveUpdateRestart] at MS.Internal.ServerClusters.ExceptionHelp.Build at MS.Internal.ServerClusters.ClusterResource.BeginTakeOffline(Boolean force) at Microsoft.FailoverClusters.PowerShell.StopClusterResourceCommand.BeginTimedOperation() at Microsoft.FailoverClusters.PowerShell.TimedCmdlet.WrappedProcessRecord() at Microsoft.FailoverClusters.PowerShell.FCCmdlet.ProcessRecord() - 10/13/2017 5:11:50 PM WarningMessage:Task: Invocation of interface 'LiveUpdateRestart' of role 'Cloud\Fabric\VirtualMachines' failed:** | この問題は、仮想マシンを再起動できなかった場合に発生することがあります。 | マイクロソフトの CSS に問い合わせてサポートを依頼してください。
@@ -113,6 +113,7 @@ ms.lasthandoff: 10/27/2017
 **ネットワーク**
 - ポータルを使用して、パブリック IP アドレスを持つロード バランサーを作成することはできません。 この問題を回避するには、PowerShell を使用してロード バランサーを作成します。
 - ネットワーク ロード バランサーの作成時に、ネットワーク アドレス変換 (NAT) 規則を作成する必要があります。 作成しない場合、ロード バランサーを作成した後に NAT 規則を追加しようとするときにエラーが表示されます。
+- VM を作成して IP アドレスに関連付けた後で、仮想マシン (VM) からパブリック IP アドレスの関連付けを解除することはできません。 関連付けの解除は機能したように見えますが、以前に割り当てられたパブリック IP アドレスは、元の VM に関連付けられたままになります。 この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも発生します。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。 現時点では、新しい VM の作成には新しいパブリック IP アドレスのみを使用する必要があります。
  
 ### <a name="field-replaceable-unit-fru-procedures"></a>現場交換可能ユニット (FRU) のプロシージャ
 

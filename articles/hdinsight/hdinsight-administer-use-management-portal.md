@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f1c7bb1795828899148a8ba8a0461a06947d40d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecaad702843a63bb82b781339d25fde10df0a0a4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
 
@@ -61,7 +61,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
 
 * Script Action を使用してカスタム スクリプトを実行します。これによってクラスターをカスタマイズして、クラスター構成を変更することや、Giraph や Solr などのカスタム コンポーネントをインストールすることができます。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。
 * クラスターの作成中に、HDInsight .NET SDK または Azure PowerShell でクラスター カスタマイズ パラメーターを使用します。 そうすることで、クラスターの有効期間中はこれらの構成変更が保持され、Azure プラットフォームが保守のために定期的に実行するクラスター ノードの再イメージ化の影響も受けません。 クラスター カスタマイズ パラメーターの使用方法の詳細については、「[HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
-* Mahout や Cascading などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳細については、 [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)に関するページを参照してください。
+* Mahout や Cascading などの一部のネイティブ Java コンポーネントは、JAR ファイルとしてクラスター上で実行できます。 これらの JAR ファイルは、Azure BLOB ストレージに分配し、Hadoop ジョブ送信メカニズムによって HDInsight クラスターに送信できます。 詳細については、 [プログラムによる Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページを参照してください。
 
   > [!NOTE]
   > HDInsight クラスターへの JAR ファイルのデプロイ、または HDInsight クラスターでの JAR ファイルの呼び出しに関する問題がある場合は、 [Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
@@ -213,7 +213,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 * Azure Data Factory を使用する。 オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory/compute-linked-services.md)」および「[Azure Data Factory を使用した変換と分析](../data-factory/transform-data.md)」をご覧ください。
 * Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
 * Azure CLI を使用する。 「 [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)」をご覧ください。
-* HDInsight .NET SDK を使用する。 「 [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」をご覧ください。
+* HDInsight .NET SDK を使用する。 「 [HDInsight での Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)」をご覧ください。
 
 価格情報については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。 ポータルからクラスターを削除する方法については、「[クラスターの削除](#delete-clusters)
 
@@ -271,7 +271,7 @@ Azure Resource Manager モードでは、各 HDInsight クラスターは Azure 
 ## <a name="open-hdinsight-query-console"></a>HDInsight クエリ コンソールを開く
 HDInsight クエリ コンソールには、次の機能が用意されています。
 
-* **[Hive エディター]**: Hive ジョブを送信するための GUI Web インターフェイス。  「[クエリ コンソールを使用して Hive クエリを実行](hdinsight-hadoop-use-hive-query-console.md)」を参照してください。
+* **[Hive エディター]**: Hive ジョブを送信するための GUI Web インターフェイス。  「[クエリ コンソールを使用して Hive クエリを実行](hadoop/apache-hadoop-use-hive-query-console.md)」を参照してください。
 
     ![HDInsight ポータル Hive エディター](./media/hdinsight-administer-use-management-portal/hdinsight-hive-editor.png)
 * **[ジョブ履歴]**: Hadoop ジョブを監視します。  
@@ -371,8 +371,8 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)
 * [Azure CLI を使用した HDInsight の管理](hdinsight-administer-use-command-line.md)
 * [HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
-* [プログラムによる Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-* [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [プログラムによる Hadoop ジョブの送信](hadoop/submit-apache-hadoop-jobs-programmatically.md)
+* [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Azure HDInsight でサポートされている Hadoop のバージョン](hdinsight-component-versioning.md)
 
 [azure-portal]: https://portal.azure.com

@@ -32,6 +32,7 @@
 ### [Runbook の入力パラメーターを構成する](automation-runbook-input-parameters.md)
 ### [グラフィック Runbook でのエラー処理](automation-runbook-graphical-error-handling.md)
 ### [Runbook ジョブの追跡](automation-runbook-execution.md)
+### [ウォッチャー タスクを作成する](automation-watchers-tutorial.md)
 ### [Runbook の設定を変更する](automation-runbook-settings.md)
 ### [Azure Automation データの管理](automation-managing-data.md)
 ### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
@@ -71,7 +72,7 @@
 ## 解決方法
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
 #### [複数の VM の更新プログラムの管理](manage-update-multi.md)
-#### [SCCMr と OMS Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)
+#### [SCCM と OMS Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)
 ### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
 ### [VM での変更の追跡](automation-vm-change-tracking.md)
 ### [インベントリ コレクションでの VM の管理](automation-vm-inventory.md)

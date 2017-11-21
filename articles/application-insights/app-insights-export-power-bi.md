@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: fe708b14fac971d18d95fd1619907023ec35af89
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ae204b79be228d55b30bb543dd25efdd9c3f0436
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](http://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス分析ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/01/2017
 Application Insights のデータを Power BI にエクスポートする場合、3 つの推奨される方法があります。 これらの方法は個別に使用することも、組み合わせて使用することもできます。
 
 * [**Power BI アダプター**](#power-pi-adapter) - アプリのテレメトリの完全なダッシュボードを設定します。 グラフ セットが事前定義されていますが、他のソースの独自のクエリを追加できます。
-* [**Analytics クエリのエクスポート**](#export-analytics-queries) - Analytics を使用して必要なクエリを作成し、Power BI にエクスポートします。 このクエリを他のデータと共にダッシュボードに配置できます。
+* [**Analytics クエリのエクスポート**](#export-analytics-queries) - Analytics を使って、または使用状況フィルターから、必要なクエリを作成し、Power BI にエクスポートします。 このクエリを他のデータと共にダッシュボードに配置できます。
 * [**連続エクスポートと Stream Analytics**](app-insights-export-stream-analytics.md) - この方法では、多くの設定作業が必要になります。 この方法は、データを長期間保持する必要がある場合に便利です。 それ以外の場合は、他の方法をお勧めします。
 
 ## <a name="power-bi-adapter"></a>Power BI アダプター
@@ -48,7 +48,7 @@ Application Insights のグラフを他のソースのグラフや Analytics ク
 最初のインポート後は、ダッシュボードとレポートが毎日更新されます。 データセットの更新スケジュールを管理できます。
 
 ## <a name="export-analytics-queries"></a>Analytics クエリのエクスポート
-この方法では、必要な Analytics クエリを作成し、Power BI ダッシュボードにエクスポートできます  (アダプターによって作成されたダッシュボードに追加できます)。
+この方法では、必要な Analytics クエリを作成するか、使用状況フィルターからエクスポートした後、それを Power BI ダッシュボードにエクスポートできます  (アダプターによって作成されたダッシュボードに追加できます)。
 
 ### <a name="one-time-install-power-bi-desktop"></a>1 回限り: Power BI Desktop のインストール
 Application Insights のクエリをインポートするには、Power BI のデスクトップ バージョンを使用します。 ただし、その後、Web または Power BI クラウド ワークスペースにクエリを発行できます。 
@@ -81,6 +81,28 @@ Application Insights のクエリをインポートするには、Power BI の�
    
     ![視覚エフェクトを選択する](./media/app-insights-export-power-bi/publish-power-bi.png)
 4. レポートを周期的に手動で更新するか、オプション ページで更新のスケジュールを設定します。
+
+### <a name="export-a-funnel"></a>フィルターをエクスポートする
+1. [フィルターを作成します](usage-funnels.md)
+2. [Power BI] ボタンをクリックします 
+
+   ![[PowerBI] ボタン](./media/app-insights-export-power-bi/button.png)
+   
+3. Power BI Desktop で **[データを取得]、[空のクエリ]** の順に選び、クエリ エディターで **[表示]** の **[詳細クエリ エディター]** を選びます。
+
+   ![空のクエリ](./media/app-insights-export-power-bi/blankquery.png)
+
+   エクスポートした M 言語スクリプトを詳細クエリ エディターに貼り付けます。 
+
+   ![詳細クエリ エディター](./media/app-insights-export-power-bi/advancedquery.png)
+
+4. クエリから項目を選び、[フィルター] 視覚化を選びます
+
+   ![シーケンスとフィルターを選ぶ](./media/app-insights-export-power-bi/selectsequence.png)
+
+5. わかりやすいタイトルに変更し、レポートを Power BI クラウド ワークスペースに発行します。 
+
+   ![タイトルを変更する](./media/app-insights-export-power-bi/changetitle.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

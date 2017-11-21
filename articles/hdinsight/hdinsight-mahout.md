@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/03/2017
 ms.author: larryfr
-ms.openlocfilehash: 934de9ca2df48b29ef7a56d5729d59d77875ea7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a0dd7388b3fa7517b97f4dd66eb121ebfd98d4a4
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>HDInsight で Apache Mahout と Hadoop を使用して映画のリコメンデーションを生成する (PowerShell)
 
@@ -32,8 +32,8 @@ ms.lasthandoff: 10/11/2017
 
 * Linux ベースの HDInsight クラスター。 作成の詳細については、「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する][getstarted]」を参照してください。
 
-> [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+    > [!IMPORTANT]
+    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * [Azure PowerShell](/powershell/azure/overview)
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 > [!WARNING]
 > このセクションのジョブは Azure PowerShell を使用することによって機能します。 Mahout で提供されるクラスの多くは Azure PowerShell では現在動作しません。 Azure PowerShell で動作しないクラスの一覧については、「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
 >
-> SSH を使用した HDInsight への接続とクラスターでの Mahout サンプルの直接的な実行の例については、[Mahout と HDInsight を使用した映画のリコメンデーションの生成 (SSH)](hdinsight-hadoop-mahout-linux-mac.md)に関するページを参照してください。
+> SSH を使用した HDInsight への接続とクラスターでの Mahout サンプルの直接的な実行の例については、[Mahout と HDInsight を使用した映画のリコメンデーションの生成 (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md)に関するページを参照してください。
 
 Mahout で提供される機能の 1 つが、リコメンデーション エンジンです。 データは、`userID`、`itemId`、`prefValue` (項目に対するユーザーの嗜好) の形式で受け付けられます。 Mahout はデータを使用して、項目の嗜好が似ているユーザーを特定します。これはリコメンデーションの作成に使用できます。
 
@@ -56,16 +56,16 @@ Mahout で提供される機能の 1 つが、リコメンデーション エン
 
 ### <a name="understanding-the-data"></a>データの説明
 
-[GroupLens Research][movielens] では、Mahout と互換性のある形式で映画の評価データを提供します。 このデータは、クラスターの既定の記憶域 ( `/HdiSamples//HdiSamples/MahoutMovieData`) にあります。
+[GroupLens Research][movielens] では、Mahout と互換性のある形式で映画の評価データを提供します。 このデータは、クラスターの既定の記憶域 ( `/HdiSamples/HdiSamples/MahoutMovieData`) にあります。
 
 2 つのファイル `moviedb.txt` (映画に関する情報) と `user-ratings.txt` があります。 `user-ratings.txt` ファイルは分析時に使用されます。 `moviedb.txt` ファイルは、分析の結果を表示するときにわかりやすいテキストを提供するために使用されます。
 
-user-ratings.txt に含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーによって映画に対してどれだけ高い評価が付けられているか示しています。 次にデータの例を示します。
+user-ratings.txt に含まれているデータの構造は `userID`、`movieID`、`userRating`、および `timestamp` です。これは、各ユーザーが映画にどれだけ高い評価を付けているか示しています。 次にデータの例を示します。
 
     196    242    3    881250949
     186    302    3    891717742
-    22    377    1    878887116
-    244    51    2    880606923
+    22     377    1    878887116
+    244    51     2    880606923
     166    346    1    886397596
 
 ### <a name="run-the-job"></a>ジョブを実行する
@@ -208,21 +208,21 @@ foreach($blob in $blobs)
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-これらのクラスを使用するジョブを実行するには、SSH を使用して HDInsight クラスターに接続し、コマンド ラインからジョブを実行します。 SSH を使用した Mahout ジョブの実行例については、[Mahout と HDInsight を使用した映画のリコメンデーションの作成 (SSH)](hdinsight-hadoop-mahout-linux-mac.md)に関するページを参照してください。
+これらのクラスを使用するジョブを実行するには、SSH を使用して HDInsight クラスターに接続し、コマンド ラインからジョブを実行します。 SSH を使用した Mahout ジョブの実行例については、[Mahout と HDInsight を使用した映画のリコメンデーションの作成 (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 ここまで、Mahout の使用方法を学習し、HDInsight でデータを操作するその他の方法を確認してきました。
 
-* [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+* [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)
+* [HDInsight での Pig の使用](hadoop/hdinsight-use-pig.md)
+* [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [aps]: /powershell/azureps-cmdlets-docs
 [movielens]: http://grouplens.org/datasets/movielens/
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
-[getstarted]: hdinsight-hadoop-linux-tutorial-get-started.md
+[getstarted]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
 [ml]: http://en.wikipedia.org/wiki/Machine_learning
 [forest]: http://en.wikipedia.org/wiki/Random_forest

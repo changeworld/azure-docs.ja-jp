@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
+ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: fecc0656264f1c1d44aa8ad3aea321aa8cc4a0c8
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 31a1ac1f58f52abd2d62e95a2de1a42ce678c43c
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
-# <a name="high-performance-compute-linux-vm-sizes"></a>ハイ パフォーマンス コンピューティング Linux VM のサイズ
+# <a name="high-performance-compute-virtual-machine-sizes"></a>ハイ パフォーマンス コンピューティング仮想マシンのサイズ
 
 [!INCLUDE [virtual-machines-common-sizes-hpc](../../../includes/virtual-machines-common-sizes-hpc.md)]
 

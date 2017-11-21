@@ -3,7 +3,7 @@
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)
 
-# [作業の開始](iot-hub-get-started.md)
+# [概要](iot-hub-get-started.md)
 
 ## デバイスのセットアップ
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
@@ -28,12 +28,6 @@
 #### [Arduino IDE での Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [Arduino IDE での Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
-#### IoT Gateway Starter Kit の使用
-##### [ゲートウェイとしての Intel NUC のセットアップ](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-##### [IoT Hub へのゲートウェイの接続](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-##### [ゲートウェイを使用したデータ変換](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
-##### [トラブルシューティング](iot-hub-gateway-kit-c-troubleshooting.md)
-
 ## IoT の拡張シナリオ
 ### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
 ### [Azure データ ストレージへの IoT Hub メッセージの保存](iot-hub-store-data-in-azure-table-storage.md)
@@ -43,7 +37,7 @@
 ### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
 ### [Logic Apps を使用したリモートの監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
-# 方法
+# ハウツー ガイド
 ## プラン
 ### [IoT Hub と Event Hubs の比較](iot-hub-compare-event-hubs.md)
 ### [ソリューションをスケール調整する](iot-hub-scaling.md)
@@ -147,30 +141,6 @@
 ##### [X.509 CA 証明書セキュリティの概念](iot-hub-x509ca-concept.md)
 #### [X.509 CA 証明書セキュリティの作業開始](iot-hub-security-x509-get-started.md)
 ##### [証明書の作成 - PowerShell](iot-hub-security-x509-create-certificates.md)
-
-## Azure IoT Edge
-### [概要](iot-hub-iot-edge-overview.md)
-### 作業開始
-#### [Linux](iot-hub-linux-iot-edge-get-started.md)
-#### [Windows](iot-hub-windows-iot-edge-get-started.md)
-### デバイスのシミュレーション
-#### [Linux](iot-hub-linux-iot-edge-simulated-device.md)
-#### [Windows](iot-hub-windows-iot-edge-simulated-device.md)
-### [実在のデバイスの使用](iot-hub-iot-edge-physical-device.md)
-### モジュールを作成する
-#### [Java](iot-hub-iot-edge-create-module-java.md)
-#### [.NET Framework](https://github.com/Azure-Samples/iot-edge-samples#how-to-run-the-net-module-sample-windows-10)
-#### [.NET Standard](iot-hub-iot-edge-create-module-dotnet-core.md)
-#### [Node.JS](iot-hub-iot-edge-create-module-js.md)
-### 構築
-#### [.NET Framework](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_binding_sample)
-#### [.NET Core モジュール](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_module_sample)
-#### [.NET Core マネージ ゲートウェイ](https://github.com/Azure/iot-edge/tree/master/samples/dotnet_core_managed_gateway)
-#### [Java](https://github.com/Azure/iot-edge/tree/master/samples/java_sample)
-#### [Node.JS](https://github.com/Azure/iot-edge/tree/master/samples/nodejs_simple_sample)
-#### [モジュールを動的に追加する](https://github.com/Azure/iot-edge/tree/master/samples/dynamically_add_module_sample)
-#### [プロセス外プロキシ モジュール](https://github.com/Azure/iot-edge/tree/master/samples/proxy_sample)
-#### [ネイティブ モジュール ホスト](https://github.com/Azure/iot-edge/tree/master/samples/native_module_host_sample)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)

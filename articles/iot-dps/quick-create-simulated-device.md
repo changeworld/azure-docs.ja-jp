@@ -12,13 +12,16 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e8e97f0a0d18bafac581ce0fa31a69e385669bcf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 645f037f40893112e01117e7541322a3a547140a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="create-and-provision-a-simulated-device-using-iot-hub-device-provisioning-service-preview"></a>シミュレートされたデバイスを作成して IoT Hub Device Provisioning Service (プレビュー) でプロビジョニングする
+> [!div class="op_single_selector"]
+> * [TPM](quick-create-simulated-device.md)
+> * [X.509](quick-create-simulated-device-x509.md)
 
 以下の手順では、Windows OS を実行する開発マシンにシミュレートされたデバイスを作成し、そのデバイスの[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として Windows TPM シミュレーターを実行します。その後、コード サンプルを使って、そのシミュレートされたデバイスを Device Provisioning Service および IoT ハブに接続します。 
 

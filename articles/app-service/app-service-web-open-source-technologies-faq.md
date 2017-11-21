@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: cefec9c703d3d1544eb7216c97b0a065a39ee2eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0872619a4897b0ac40629df00053f3e49768f64
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -57,11 +57,11 @@ PHP ログを有効にするには、次の手順を実行します。
 2. 上部のメニューから、**[デバッグ コンソール]** > **[CMD]** の順に選択します。
 3. **Site** フォルダーを選択します。
 4. **wwwroot** フォルダーを選択します。
-5.  **+** アイコンをクリックして、**[新しいファイル]**を選択します。
+5. **+** アイコンをクリックして、**[新しいファイル]**を選択します。
 6. **.user.ini** というファイル名を設定します。
 7. **. user.ini** の横にある鉛筆のアイコンを選択します。
 8. ファイルで、コード `log_errors=on` を追加します。
-9. [ **保存**] を選択します。
+9. **[ 保存]** を選択します。
 10. **wp-config.php** の横にある鉛筆のアイコンを選択します。
 11. テキストを次のコードに変更します。
    ```

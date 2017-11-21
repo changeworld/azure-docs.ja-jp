@@ -15,6 +15,12 @@
       href: container-registry-get-started-powershell.md
 - name: Tutorials (チュートリアル)
   items:
+    - name: Azure Container Instances
+      href: ../container-instances/container-instances-tutorial-prepare-app.md
+    - name: Azure Container Service (AKS)
+      href: ../aks/tutorial-kubernetes-prepare-app.md
+    - name: Service Fabric
+      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
     - name: geo レプリケーション (プレビュー)
       items:
         - name: 1 - コンテナー レジストリを準備する
@@ -23,12 +29,6 @@
           href: container-registry-tutorial-deploy-app.md
         - name: 3 - Web アプリを更新する
           href: container-registry-tutorial-deploy-update.md
-    - name: Azure Container Instances
-      href: ../container-instances/container-instances-tutorial-prepare-app.md
-    - name: Azure Container Service (AKS)
-      href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Service Fabric
-      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
 - name: 概念
   items:
     - name: Container Registry の SKU
@@ -57,13 +57,19 @@
       href: /rest/api/containerregistry
     - name: PowerShell
       href: /powershell/module/azurerm.containerregistry
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.containerregistry/registries
 - name: リソース
   items:
-    - name: ロードマップ
-      href: 'https://aka.ms/acr/roadmap'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
+    - name: ロードマップ
+      href: 'https://aka.ms/acr/roadmap'
+    - name: 製品フィードバックの提供
+      href: 'https://feedback.azure.com/forums/903958-azure-container-registry'
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-container-registry'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'

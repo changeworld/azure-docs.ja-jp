@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/03/2017
+ms.date: 10/15/2017
 ms.author: spelluru
-ms.openlocfilehash: 5a3445aee7722579405b67830ca49ef8c0b29d0e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a1d16cac19571c5802be081d6972e1f74f6dffe1
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure Data Catalog の概要
 Azure Data Catalog は、完全に管理されたクラウド サービスで、エンタープライズ データ資産の登録システムと検出システムとして機能します。 詳細については、「 [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)」を参照してください。
@@ -145,10 +145,10 @@ Adventure Works サンプル データベースのインストール方法を次
    7. このデータの **エキスパート** の名前を指定します (オプション)。
       
       ![Azure Data Catalog tutorial--objects to be registered](media/data-catalog-get-started/data-catalog-objects-register.png)
-   8. [ **登録**] をクリックします。 Azure Data Catalog は、選択したオブジェクトを登録します。 この演習では、Adventure Works から選択したオブジェクトが登録されます。 登録ツールは、データ資産からメタデータを抽出し、そのデータを Azure Data Catalog サービスにコピーします。 データは現在存在する場所に残り、現在のシステムの管理者とポリシーの制御下に留まります。
+   8. **[ 登録]** をクリックします。 Azure Data Catalog は、選択したオブジェクトを登録します。 この演習では、Adventure Works から選択したオブジェクトが登録されます。 登録ツールは、データ資産からメタデータを抽出し、そのデータを Azure Data Catalog サービスにコピーします。 データは現在存在する場所に残り、現在のシステムの管理者とポリシーの制御下に留まります。
       
       ![Azure Data Catalog--registered objects](media/data-catalog-get-started/data-catalog-registered-objects.png)
-   9. 登録されているデータ ソース オブジェクトを表示するには、[ **ポータルの表示**] をクリックします。 Azure Data Catalog ポータルで、4 つのテーブルとデータベースすべてがグリッド ビューに表示されていることを確認します。
+   9. 登録されているデータ ソース オブジェクトを表示するには、**[ ポータルの表示]** をクリックします。 Azure Data Catalog ポータルで、4 つのテーブルとデータベースすべてがグリッド ビューに表示されていることを確認します。
       
       ![Objects in the Azure Data Catalog portal ](media/data-catalog-get-started/data-catalog-view-portal.png)
 

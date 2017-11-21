@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 6f11d4184b5edbcb80411f146ae01ecfe62b6e91
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c1505f93b28008d51ad4a8cd3516ee5c4271071
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の MongoDB コネクタ](v1/data-factory-on-premises-mongodb-connector.md)に関する記事を参照してください。
 
 
-## <a name="supported-scenarios"></a>サポートされるシナリオ
+## <a name="supported-capabilities"></a>サポートされる機能
 
 MongoDB データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -61,7 +61,8 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 | authenticationType | MongoDB データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Anonymous** です。 |あり |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
 | パスワード |ユーザーのパスワード。 このフィールドを SecureString とマークします。 |はい (基本認証が使用される場合)。 |
-| authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |いいえ。 基本認証の場合、既定では管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
+| authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |
+いいえ。 基本認証の場合、既定では管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**

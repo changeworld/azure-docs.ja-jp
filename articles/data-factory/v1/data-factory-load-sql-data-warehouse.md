@@ -12,16 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 10/15/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 092b7651543bd67e6536088952303045cfaf8717
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8398a261ca33060b7709d818cb64bb1e8e2058b1
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする方法](../connector-azure-sql-data-warehouse.md)に関するページを参照してください。
+
+
 [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。  超並列処理 (MPP) アーキテクチャを基盤とする SQL Data Warehouse は、企業のウェアハウスのワークロード向けに最適化されています。  ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
 
 Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、さらに使いやすくなっています。  Azure Data Factory は、完全に管理されたクラウド ベースのデータ統合サービスであり、このサービスを使用して既存のシステムのデータを SQL Data Warehouse に入力することで、貴重な時間を節約しながら、SQL Data Warehouse の評価と分析ソリューションの構築を行うことができます。 Azure Data Factory を使用して Azure SQL Data Warehouse にデータを読み込む主な利点を次に示します。

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 66db18d2d6cb03548631a275a0a5ecf7b9d4a364
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3a2d4b126d43017ec004bde82deb190584455c4
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル: Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
@@ -31,6 +31,9 @@ ms.lasthandoff: 10/11/2017
 > * [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 でのコピー アクティビティに関するチュートリアル](../quickstart-create-data-factory-dot-net.md)を参照してください。 
 
 このチュートリアルでは、BLOB ストレージから SQL Database にデータをコピーするパイプラインを備えたデータ ファクトリを作成します。
 
@@ -107,7 +110,7 @@ Data Factory サービスから Azure SQL サーバーにアクセスできる�
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **SQL Server 2012/2014 がコンピューターにインストールされている場合**は、「[SQL Server Management Studio を使用した Azure SQL Database の管理](../../sql-database/sql-database-manage-azure-ssms.md)」の手順に従い、Azure SQL のサーバーに接続して SQL スクリプトを実行します。 この記事では、[新しい Azure Portal](https://portal.azure.com) ではなく、[Azure クラシック ポータル](http://manage.windowsazure.com)を使用して、Azure SQL サーバーのファイアウォールを構成します。
+    **SQL Server 2012/2014 がコンピューターにインストールされている場合**は、「[SQL Server Management Studio を使用した Azure SQL Database の管理](../../sql-database/sql-database-manage-azure-ssms.md)」の手順に従い、Azure SQL のサーバーに接続して SQL スクリプトを実行します。 
 
     クライアントから Azure SQL サーバーへのアクセスが許可されていない場合は、コンピューター (IP アドレス) からのアクセスを許可するように、Azure SQL サーバーのファイアウォールを構成する必要があります。 Azure SQL サーバーのファイアウォールを構成する手順については、 [こちらの記事](../../sql-database/sql-database-configure-firewall-settings.md) を参照してください。
 
