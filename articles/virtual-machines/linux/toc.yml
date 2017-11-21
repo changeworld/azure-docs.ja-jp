@@ -88,15 +88,21 @@
       href: endorsed-distros.md
     - name: メンテナンスと更新
       href: maintenance-and-updates.md
-    - name: ストレージ
-      href: azure-vm-storage-overview.md
+    - name: ディスク ストレージ
+      href: about-disks-and-vhds.md
       items:
+        - name: Managed Disks
+          href: managed-disks-overview.md
         - name: Premium Storage
           href: premium-storage.md
         - name: Premium Storage のパフォーマンス
           href: premium-storage-performance.md
         - name: Standard Storage
           href: standard-storage.md
+        - name: ディスクのスケーラビリティ ターゲット
+          href: disk-scalability-targets.md
+        - name: ディスクのバックアップとディザスター リカバリー
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
     - name: ネットワーク
       href: network-overview.md
     - name: 自動スケール アプリケーション
@@ -156,6 +162,8 @@
           href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: VM の管理
       items:
+        - name: VM の前払い - 予約済みインスタンス
+          href: prepay-reserved-vm-instances.md
         - name: 一般的な CLI タスク
           href: cli-manage.md
         - name: VM の移動
@@ -312,8 +320,6 @@
               href: n-series-driver-setup.md
     - name: ストレージの管理
       items:
-        - name: Managed Disks について
-          href: managed-disks-overview.md
         - name: ディスクに関する FAQ
           href: faq-for-disks.md
         - name: ディスクを追加する
@@ -328,8 +334,6 @@
           href: expand-disks.md
         - name: ディスクのスナップショットの作成
           href: snapshot-copy-managed-disk.md
-        - name: ディスクのバックアップとディザスター リカバリー
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
         - name: 管理ディスクに変換する

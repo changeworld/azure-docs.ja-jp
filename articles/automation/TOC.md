@@ -32,6 +32,7 @@
 ### [Runbook の入力パラメーターを構成する](automation-runbook-input-parameters.md)
 ### [グラフィック Runbook でのエラー処理](automation-runbook-graphical-error-handling.md)
 ### [Runbook ジョブの追跡](automation-runbook-execution.md)
+### [ウォッチャー タスクを作成する](automation-watchers-tutorial.md)
 ### [Runbook の設定を変更する](automation-runbook-settings.md)
 ### [Azure Automation データの管理](automation-managing-data.md)
 ### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
