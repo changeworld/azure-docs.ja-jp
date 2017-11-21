@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 96925f251cf4984a11516a962740e19a7b9589dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 906450f75557820bb27762707c3328b08b23cccb
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
-Azure Advisor の主な機能と、よく寄せられる質問について説明します。
+Azure Advisor の主な機能について説明し、よく寄せられる質問の回答を示します。
 
 ## <a name="what-is-advisor"></a>Advisor とは
 Azure Advisor は、個人用に設定されたクラウド コンサルタントで、ベスト プラクティスに従って Azure デプロイメントを最適化します。 Azure のリソースの構成と利用統計情報を分析し、Azure リソースの費用対効果、パフォーマンス、高可用性、およびセキュリティを向上させるために役立つソリューションを推奨します。
@@ -32,43 +32,38 @@ Advisor では、以下の項目を実行できます。
 * リソースのパフォーマンス、セキュリティ、および高可用性を向上させながら、総合的な Azure の支出を削減する機会を捉える。
 * アクション提案をインラインで含めた推奨事項を取得する。
 
-Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインして、**[参照]** を選択し、**[Azure Advisor]** までスクロールします。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 
+Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[その他のサービス]** メニューで Advisor を検索します。
 
-推奨事項は、4 つのカテゴリに分割されています。 
+Advisor ダッシュボードに、すべてのサブスクリプションの個人用に設定された推奨事項が表示されます。  フィルターを適用して、特定のサブスクリプションやリソースの種類の推奨事項を表示できます。  推奨事項は、4 つのカテゴリに分割されています。 
 
 * **高可用性** – ビジネスに不可欠なアプリケーションの継続稼働を保証し、さらに向上させることができます。 詳細については、「[Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)」を参照してください。
-
 * **セキュリティ** – セキュリティ侵害に至る可能性がある脅威と脆弱性を検出します。 詳細については、「[Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)」を参照してください。
-
 * **パフォーマンス** – アプリケーションの速度を向上させます。 詳細については、「[Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)」を参照してください。
+* **コスト**: Azure の全体的な支出を最適化し、削減します。 詳細については、「[Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)」を参照してください。
 
-* **コスト** – 総合的な Azure の支出を最適化し、削減します。 詳細については、「[Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)」を参照してください。
-
-  ![Advisor の推奨事項の種類](./media/advisor-overview/advisor-all-tab-examples.png)
+  ![Advisor の推奨事項の種類](./media/advisor-overview/advisor-dashboard.png)
 
 > [!NOTE]
-> Advisor の推奨事項にアクセスするには、最初に Advisor に*サブスクリプションを登録する*必要があります。 *サブスクリプションの所有者*が Advisor ダッシュボードを起動して **[推奨事項の取得]** ボタンをクリックすると、サブスクリプションが登録されます。 これは *1 回限りの操作*です。 サブスクリプションが登録されると、サブスクリプション、リソース グループ、または特定のリソースの*所有者*、*共同作成者*、または*閲覧者*として Advisor の推奨事項にアクセスできます。
+> サブスクリプションで Azure Advisor を使用するには、サブスクリプションの "*所有者*" が Advisor ダッシュボードを起動する必要があります。  この操作によって、サブスクリプションが Advisor に登録されます。  その時点から、サブスクリプションの "*所有者*"、"*共同作成者*"、または "*閲覧者*" がサブスクリプションの Advisor の推奨事項にアクセスできるようになります。 
 
-推奨事項をクリックすると、追加情報を確認できます。 また、実行できるアクションを確認して、機会を活用したり、問題を解決したりできます。 
+カテゴリをクリックして、そのカテゴリ内の推奨事項の一覧を表示し、推奨事項を選択して詳細を確認できます。  また、実行できるアクションを確認して、機会を活用したり、問題を解決したりできます。
 
-Advisor は、推奨事項をインライン アクションまたはドキュメント リンク付きで提示します。 インライン アクションをクリックすると、“ガイド付きの手順” に従ってアクションを実装できます。 ドキュメント リンクをクリックすると、アクションを手動で実装する方法を説明するドキュメントが表示されます。 
+![Advisor の推奨事項のカテゴリ](./media/advisor-overview/advisor-ha-category-example.png) 
 
-Advisor では、1 時間ごとに推奨事項が更新されます。 推奨事項に関するアクションをただちに実行する予定がない場合は、推奨事項を一定期間後に再通知させるか、無視することができます。 
+推奨事項を実装するには、その推奨事項の推奨されるアクションを選択します。  推奨事項を実装したり、実装に役立つドキュメントを参照したりできる、シンプルなインターフェイスが開きます。  推奨事項の実装後、Advisor が認識するまで最大 1 日かかることがあります。
+
+推奨事項のアクションをすぐに実行しない場合は、推奨事項を一定期間後に再通知することも、無視することもできます。  特定のサブスクリプションまたはリソース グループの推奨事項を受け取らない場合は、指定したサブスクリプションとリソース グループの推奨事項だけを生成するように Advisor を構成できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="how-do-i-access-advisor"></a>Advisor にアクセスする方法は?
-Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインして、**[参照]** を選択し、**[Azure Advisor]** までスクロールします。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 
+Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[その他のサービス]** メニューで Advisor を検索します。
 
-仮想マシンの [リソース] ブレードから Advisor の推奨事項を表示することもできます。 仮想マシンを選択し、メニューで [Advisor の推奨事項] までスクロールします。 
+仮想マシンのリソース インターフェイスを使用して、Advisor の推奨事項を表示することもできます。 仮想マシンを選択し、メニューで [Advisor の推奨事項] までスクロールします。 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Advisor にアクセスするために必要なアクセス許可は?
 
-Advisor の推奨事項にアクセスするには、最初に Advisor に*サブスクリプションを登録する*必要があります。 *サブスクリプションの所有者*が Advisor ダッシュボードを起動して **[推奨事項の取得]** ボタンをクリックすると、サブスクリプションが登録されます。 これは *1 回限りの操作*です。 サブスクリプションが登録されると、サブスクリプション、リソース グループ、または特定のリソースの*所有者*、*共同作成者*、または*閲覧者*として Advisor の推奨事項にアクセスできます。
-
-### <a name="how-often-are-advisor-recommendations-updated"></a>Advisor の推奨事項が更新される頻度は?
-
-Advisor の推奨事項は、1 時間ごとに更新されます。
+サブスクリプションの Advisor の推奨事項を取得するには、まず、サブスクリプションを Advisor に登録する必要があります。 サブスクリプションの "*所有者*" が Advisor ダッシュボードを起動すると、サブスクリプションが登録されます。 これは 1 回限りの操作です。 サブスクリプションが登録されたら、サブスクリプションの "*所有者*"、"*共同作成者*"、または "*閲覧者*" として Advisor の推奨事項にアクセスできます。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Advisor が推奨事項を提供するリソースは?
 
@@ -76,7 +71,7 @@ Advisor は、仮想マシン、可用性セット、アプリケーション �
 
 ### <a name="can-i-snooze-or-dismiss-a-recommendation"></a>推奨事項は再通知したり無視したりできるか?
 
-推奨事項を再通知するか無視するには、**[再通知]** ボタンまたはリンクをクリックします。 再通知期間を指定するか、**[Never]** を選択して推奨事項を無視できます。
+推奨事項を再通知するか無視するには、**[再通知]** リンクをクリックします。 再通知期間を指定するか、**[Never]** を選択して推奨事項を無視できます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -16,14 +16,14 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 3a4764ddf2dea68bf25bd46b9691429ad3341678
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f43b722b0c9a31c8c7da4361e415673f3721b31
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Azure Active Directory のグループによるリソースへのアクセス管理
-Azure Active Directory (Azure AD) は、包括的な ID およびアクセス管理ソリューションであり、信頼性の高い機能セットを備えています。この機能セットにより、Office 365 のような Microsoft オンライン サービスや Microsoft 以外の数多くの SaaS アプリケーションを含む、クラウドおよびオンプレミスのアプリケーションやリソースに対するアクセスが管理できます。 この記事では概要を説明しています。Azure AD グループをすぐに使い始めたい場合は、「[Azure AD のセキュリティ グループの管理](active-directory-accessmanagement-manage-groups.md)」の手順に従ってください。 Azure Active ディレクトリ内のグループを PowerShell で管理する方法の詳細については、「[グループ管理用の Azure Active Directory のコマンドレット](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)」をご覧ください。
+Azure Active Directory (Azure AD) は、包括的な ID およびアクセス管理ソリューションであり、信頼性の高い機能セットを備えています。この機能セットにより、Office 365 のような Microsoft オンライン サービスや Microsoft 以外の数多くの SaaS アプリケーションを含む、クラウドおよびオンプレミスのアプリケーションやリソースに対するアクセスが管理できます。 この記事では概要を説明しています。Azure AD グループをすぐに使い始めたい場合は、「[Azure AD のセキュリティ グループの管理](active-directory-groups-create-azure-portal.md)」の手順に従ってください。 Azure Active ディレクトリ内のグループを PowerShell で管理する方法の詳細については、「[グループ管理用の Azure Active Directory のコマンドレット](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)」をご覧ください。
 
 > [!NOTE]
 > Azure Active Directory を使用するには、Azure のアカウントが必要です。 アカウントを持っていない場合は、 [無料の Azure アカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)できます。
@@ -66,7 +66,7 @@ Azure AD のアクセス管理ソリューションの核となる機能は、�
 ## <a name="getting-started-with-access-management"></a>アクセス管理の開始
 使い始める準備はできていますか。 Azure AD グループを使用して実行できる基本的な作業を試してみる必要があります。 これらの機能を使用して、組織内のさまざまなユーザーのグループに、さまざまなリソースへの特別なアクセスを提供します。 最初の基本的な手順の一覧を以下に示します。
 
-* [単純なルールを作成してグループの動的メンバーシップを構成する](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
+* [単純なルールを作成してグループの動的メンバーシップを構成する](active-directory-groups-create-azure-portal.md)
 * [SaaS アプリケーションへのアクセスをグループで管理する](active-directory-accessmanagement-group-saasapps.md)
 * [グループをエンド ユーザーのセルフ サービスに使用できるようにする](active-directory-accessmanagement-self-service-group-management.md)
 * [Azure AD Connect を使用した Azure へのオンプレミス グループの同期](active-directory-aadconnect.md)
@@ -75,8 +75,8 @@ Azure AD のアクセス管理ソリューションの核となる機能は、�
 ## <a name="next-steps"></a>次のステップ
 アクセス管理の基本については理解したので、ここでは Azure Active Directory でアプリケーションとリソースへのアクセス管理に使用できる、その他の高度な機能をいくつか紹介します。
 
-* [属性を使用した高度なルールの作成](active-directory-accessmanagement-groups-with-advanced-rules.md)
-* [Azure AD のセキュリティ グループの管理](active-directory-accessmanagement-manage-groups.md)
+* [属性を使用した高度なルールの作成](active-directory-groups-dynamic-membership-azure-portal.md)
+* [Azure AD のセキュリティ グループの管理](active-directory-groups-create-azure-portal.md)
 * [Azure AD の専用グループのセットアップ](active-directory-accessmanagement-dedicated-groups.md)
 * [グループ用の Graph API リファレンス](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 * [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)

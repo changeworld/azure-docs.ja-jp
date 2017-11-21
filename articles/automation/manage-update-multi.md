@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/31/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: 80a6caff51631637825d560d270198be0336e806
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f97b28d1588e959728163f7ab16d2550a79f610e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>複数の Azure 仮想マシンの更新を管理する
+# <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
-更新管理では、Azure 仮想マシンの更新プログラムと修正プログラムを管理できます。
-[Azure Automation](automation-offering-get-started.md) アカウントから、仮想マシンをすばやく更新の対象に追加し、利用可能な更新プログラムの状態を評価し、必要な更新プログラムのインストール スケジュールを設定し、デプロイの結果から更新管理が有効になっているすべての仮想マシンに更新プログラムが正常に適用されたことを確認できます。
+更新管理では、Windows マシンおよび Linux マシンの更新プログラムとパッチを管理できます。
+[Azure Automation](automation-offering-get-started.md) アカウントから、マシンをすばやく更新の対象に追加し、利用可能な更新プログラムの状態を評価し、必要な更新プログラムのインストール スケジュールを設定し、デプロイの結果から更新管理が有効になっているすべての仮想マシンに更新プログラムが正常に適用されたことを確認できます。
 
 ## <a name="prerequisites"></a>前提条件
 

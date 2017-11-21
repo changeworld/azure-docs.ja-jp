@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/24/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: a2c5fbb574f0388af62186047afedfb45f0881a0
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: 6678f429d5d1242f1193933ec147fc910d53f925
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要 
 
@@ -82,7 +82,7 @@ Azure Media Services のすべての主要コンポーネントを紹介する�
 
 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」参照してください。
 
-データ センターの可用性については、[可用性](scenarios-and-availability.md#availability)に関するセクションを参照してください。
+データ センターにおける可用性については、[可用性](scenarios-and-availability.md#availability)に関するセクションを参照してください。
 
 ## <a name="support"></a>サポート
 

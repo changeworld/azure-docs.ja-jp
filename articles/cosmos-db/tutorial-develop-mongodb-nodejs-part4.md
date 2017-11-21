@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 09/05/2017
 ms.author: mimig
-ms.openlocfilehash: 6fd88c58c0067deab08d502be4bd624c297b5fde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20c2ae547d794836474aa34096a20de25dad96c8
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 4: Azure CLI を使って Azure Cosmos DB アカウントを作成する
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 本チュートリアルのこのパートに取り組む前に、[パート 3](tutorial-develop-mongodb-nodejs-part3.md) の手順を済ませておいてください。 
 
-このチュートリアル セクションでは、インターネット ブラウザーから Azure Cloud Shell を使用するか、ローカルにインストールされた [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) を使用できます。 Azure CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降が実行されていることを確認してください。 コマンド プロンプトから `az --version` を実行して、ご使用のバージョンを確認します。 
+このチュートリアル セクションでは、インターネット ブラウザーから Azure Cloud Shell を使用するか、ローカルにインストールされた [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用できます。 Azure CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降が実行されていることを確認してください。 コマンド プロンプトから `az --version` を実行して、ご使用のバージョンを確認します。 
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

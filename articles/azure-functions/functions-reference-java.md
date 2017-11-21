@@ -11,13 +11,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: dc9a1b6061c41cd623e1ddb3bb9dbb87530a13d5
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: e8a4b0cc620c887aac3cc442154429b43336d8f1
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 > [!div class="op_single_selector"]
@@ -164,10 +164,11 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
 package com.example;
 
 import com.microsoft.azure.serverless.functions.annotation.BindingName;
+import java.util.Optional;
 
 public class MyClass {
-    public static String echo(String in, @BindingName("item") MyObject obj) {
-        return "Hello, " + in + " and " + obj.getKey() + ".";
+    public static String echo(Optional<String> in, @BindingName("item") MyObject obj) {
+        return "Hello, " + in.orElse("Azure") + " and " + obj.getKey() + ".";
     }
 
     private static class MyObject {
@@ -210,10 +211,9 @@ public class MyClass {
 }
 ```
 
-したがって、この関数が呼び出されると、HTTP 要求のペイロードは、引数 `in` に `String` を渡し、引数 `obj` に Azure Table Storage の `MyObject` 型を渡します。
+したがって、この関数が呼び出されると、HTTP 要求のペイロードは、引数 `in` に省略可能な `String` を渡し、引数 `obj` に Azure Table Storage の `MyObject` 型を渡します。 `Optional<T>` 型を使用して、null にできる関数に入力値を渡して処理します。
 
 ## <a name="outputs"></a>出力
-
 
 出力は、戻り値または出力パラメーターの両方で表現できます。 出力が 1 つのみの場合は、戻り値を使用することをお勧めします。 複数の出力では、出力パラメーターを使用する必要があります。
 
@@ -272,11 +272,34 @@ public class MyClass {
 
 | 特殊な型      |       [ターゲット]        | 一般的な用途                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage`  |    HTTP トリガー     | メソッド、ヘッダー、またはクエリを取得する |
-| `HttpResponseMessage` | HTTP 出力のバインド | 200 以外の状態を返す   |
+| `HttpRequestMessage<T>`  |    HTTP トリガー     | メソッド、ヘッダー、またはクエリを取得する |
+| `HttpResponseMessage<T>` | HTTP 出力のバインド | 200 以外の状態を返す   |
 
 > [!NOTE] 
 > `@BindingName` 注釈を使用して、HTTP ヘッダーとクエリを取得することもできます。 たとえば、`@Bind("name") String query` は、HTTP 要求ヘッダーとクエリを反復処理し、その値をメソッドに渡します。 たとえば、要求 URL が `http://example.org/api/echo?name=test` の場合、`query` は `"test"` になります。
+
+### <a name="metadata"></a>Metadata
+
+メタデータは、HTTP ヘッダー、HTTP クエリ、[トリガー メタデータ](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties) などのさまざまなソースから取得されます。 `@BindingName` 注釈をメタデータ名と一緒に使用して値を取得します。
+
+たとえば、次のコード スニペットの `queryValue` は、要求された URL が `http://{example.host}/api/metadata?name=test` である場合 `"test"` になります。
+
+```Java
+package com.example;
+
+import java.util.Optional;
+import com.microsoft.azure.serverless.functions.annotation.*;
+
+public class MyClass {
+    @FunctionName("metadata")
+    public static String metadata(
+        @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
+        @BindingName("name") String queryValue
+    ) {
+        return body.orElse(queryValue);
+    }
+}
+```
 
 ## <a name="functions-execution-context"></a>Functions の実行コンテキスト
 
@@ -295,7 +318,7 @@ import com.microsoft.azure.serverless.functions.ExecutionContext;
 public class Function {
     public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
         if (req.isEmpty()) {
-            context.getLogger().warning("Empty request body received in " + context.getInvocationId());
+            context.getLogger().warning("Empty request body received by function " + context.getFunctionName() + " with invocation " + context.getInvocationId());
         }
         return String.format(req);
     }

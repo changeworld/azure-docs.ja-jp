@@ -14,25 +14,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: c1a3370d29b47da752e4ab1ea67ccc1a4cdd94df
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: cf077fef6df2fd21cf51f6b4fd4e26a4b5081247
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート
 
-この記事には、Azure Storage Explorer 0.9.0 (プレビュー) のリリース ノート、および以前のバージョンのリリース ノートが含まれています。
+この記事には、Azure Storage Explorer 0.9.2 (プレビュー) のリリース ノート、および以前のバージョンのリリース ノートが含まれています。
 
 [Microsoft Azure ストレージ エクスプローラー (プレビュー)](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
+## <a name="version-092"></a>バージョン 0.9.2
+11/01/2017
+
+### <a name="download-azure-storage-explorer-092-preview"></a>Azure Storage Explorer 0.9.2 (プレビュー) をダウンロードする
+- [Windows 用 Azure Storage Explorer 0.9.2 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 0.9.2 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 0.9.2 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>修正プログラム
+* ローカル タイム ゾーンによっては、テーブル エンティティの Edm.DateTime 値を編集する時に、予期しないデータの変更が発生する可能性がありました。 エディターは現在プレーンテキスト ボックスを使用しており、Edm.DateTime 値の制御は正確で一貫性があります。
+* 名前とキーを付けると BLOB のグループのアップロード/ダウンロードが起動しませんでした。 この問題は修正されています。
+* これまで Storage Explorer では、1 つまたは複数のアカウントのサブスクリプションが選択された場合に、古いアカウントの再認証のダイアログを表示するだけでした。 現在では Storage Explorer は、アカウントが完全に除外された場合でもダイアログを表示します。
+* Azure US Government のエンドポイントのドメインに誤りがありました。 この問題は修正されています。
+* アカウントの管理パネルの適用ボタンをクリックしにくい場合がありました。 この問題はもう発生しません。
+
+### <a name="new"></a>新規
+* Azure Cosmos DB のプレビューのサポート:
+    * [オンライン ドキュメント](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * データベースとコレクションの作成
+    * データの操作
+    * ドキュメントの照会、作成、または削除
+    * ストアド プロシージャ、ユーザー定義関数、またはトリガーの更新
+    * 接続文字列を使用したデータベース接続と管理
+* 多数の小さな BLOB をアップロード/ダウンロードするときのパフォーマンスが向上しました。
+* "すべて再試行" アクションが追加されました (BLOB アップロード グループまたは BLOB ダウンロード グループでのエラー発生時)。
+* Storage Explorer で BLOB をアップロード/ダウンロード中、ネットワーク接続が失われたことが検出されると、イテレーションが一時停止します。 ネットワーク接続が再確立された時点で、イテレーションを再開できます。
+* コンテキスト メニューから、タブに対して "すべて閉じる"、"その他を閉じる"、"閉じる" 操作を行うことができるようになりました。
+* Storage Explorer で、ネイティブ ダイアログとネイティブ コンテキスト メニューを利用できます。
+* Storage Explorer が、さらにアクセスしやすくなりました。 機能強化は次のとおりです。
+    * スクリーン リーダー (Windows の NVDA、Mac の VoiceOver) のサポートの強化
+    * ハイ コントラスト テーマの向上
+    * キーボードの Tab キーを使った移動とキーボード フォーカスの修正
+
+### <a name="fixes"></a>修正
+* 無効な Windows ファイル名の BLOB を開こうとしたとき、またはダウンロードしようとしたときに、操作が失敗しました。 Storage Explorer によって BLOB 名が無効かどうかが検出され、エンコードするか、BLOB をスキップするかが尋ねられます。 また、Storage Explorer によって、ファイル名がエンコードされている可能性があるかどうかも検出され、アップロードの前にデコードするかどうかを尋ねられます。
+* BLOB アップロード中、ターゲット BLOB コンテナーのエディターが正しく更新されないことがありました。 この問題は修正されています。
+* 接続文字列と SAS URI の形式のいくつかについて、サポートが後退していました。 既知の問題はすべて解決されていますが、さらに問題が発生した場合は、フィードバックをお送りください。
+* 更新の通知が、0.9.0 の一部のユーザーに送信されませんでした。 この問題は修正されました。バグの影響を受けた方は、Storage Explorer の最新バージョンを[こちら](https://azure.microsoft.com/en-us/features/storage-explorer/)からダウンロードしてください。
+
+### <a name="known-issues"></a>既知の問題
+* Storage Explorer では ADFS アカウントがサポートされません。
+* "Explorer の表示" と "アカウント管理の表示" のショートカット キーはそれぞれ、Ctrl/Cmd + Shift + E キーと Ctrl/Cmd + Shift + A キーです。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、ここで説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* サブスクリプションをフィルターするために資格情報の再入力が必要であると、アカウント設定パネルに表示されることがあります。
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+```
+./StorageExplorer.exe --disable-gpu
+```
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+
+
 ## <a name="version-091--090-preview"></a>バージョン 0.9.1/0.9.0 (プレビュー)
 10/20/2017
-
 ### <a name="download-azure-storage-explorer-091-preview"></a>Azure Storage Explorer 0.9.1 (プレビュー) をダウンロードする
-- [Windows 用 Azure Storage Explorer 0.9.1 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure Storage Explorer 0.9.1 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure Storage Explorer 0.9.1 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [Windows 用 Azure Storage Explorer 0.9.1 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [Mac 用 Azure Storage Explorer 0.9.1 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [Linux 用 Azure Storage Explorer 0.9.1 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809308)
 
 ### <a name="new"></a>新規
 * Azure Cosmos DB のプレビューのサポート:
@@ -86,13 +154,30 @@ ms.lasthandoff: 10/23/2017
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-0816-preview"></a>バージョン 0.8.16 (プレビュー)
-8/21/2017
 
-### <a name="download-azure-storage-explorer-0816-preview"></a>Azure ストレージ エクスプローラー 0.8.16 (プレビュー) をダウンロードする
-* [Windows 用 Azure Storage Explorer 0.8.16 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Mac 用 Azure Storage Explorer 0.8.16 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Linux 用 Azure Storage Explorer 0.8.16 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809308)
+
+## <a name="previous-releases"></a>以前のリリース
+
+* [バージョン 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [バージョン 0.8.13](#version-0813)
+* [バージョン 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
+* [バージョン 0.8.9 / 0.8.8](#version-089--088)
+* [バージョン 0.8.7](#version-087)
+* [バージョン 0.8.6](#version-086)
+* [バージョン 0.8.5](#version-085)
+* [バージョン 0.8.4](#version-084)
+* [バージョン 0.8.3](#version-083)
+* [バージョン 0.8.2](#version-082)
+* [バージョン 0.8.0](#version-080)
+* [バージョン 0.7.20160509.0](#version-07201605090)
+* [バージョン 0.7.20160325.0](#version-07201603250)
+* [バージョン 0.7.20160129.1](#version-07201601291)
+* [バージョン 0.7.20160105.0](#version-07201601050)
+* [バージョン 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-0816"></a>バージョン 0.8.16
+8/21/2017
 
 ### <a name="new"></a>新規
 * 変更が検出された場合は、BLOB を開いたときに、ダウンロードしたファイルをアップロードするようストレージ エクスプ ローラーから求められます。
@@ -130,26 +215,6 @@ ms.lasthandoff: 10/23/2017
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>以前のリリース
-
-* [Version 0.8.14](#version-0814)
-* [バージョン 0.8.13](#version-0813)
-* [バージョン 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
-* [バージョン 0.8.9 / 0.8.8](#version-089--088)
-* [バージョン 0.8.7](#version-087)
-* [バージョン 0.8.6](#version-086)
-* [バージョン 0.8.5](#version-085)
-* [バージョン 0.8.4](#version-084)
-* [バージョン 0.8.3](#version-083)
-* [バージョン 0.8.2](#version-082)
-* [バージョン 0.8.0](#version-080)
-* [バージョン 0.7.20160509.0](#version-07201605090)
-* [バージョン 0.7.20160325.0](#version-07201603250)
-* [バージョン 0.7.20160129.1](#version-07201601291)
-* [バージョン 0.7.20160105.0](#version-07201601050)
-* [バージョン 0.7.20151116.0](#version-07201511160)
-
 
 ### <a name="version-0814"></a>Version 0.8.14
 06/22/2017

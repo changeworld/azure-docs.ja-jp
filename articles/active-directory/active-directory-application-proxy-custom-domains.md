@@ -15,11 +15,11 @@ ms.date: 10/11/2017
 ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c15808a97d4efa5f9453f33d9ac70ebde5288201
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: f254f4959c66aeb3eec522f31e0d8a6780358188
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
@@ -82,7 +82,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 ## <a name="next-steps"></a>次のステップ
 * Azure AD 認証を使用して発行されたアプリに対する[シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)。
-* 発行されたアプリに対する[条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)。
+* 発行されたアプリに対する[条件付きアクセスを有効にする](application-proxy-enable-remote-access-sharepoint.md)。
 * [Azure AD にカスタム ドメイン名を追加する](active-directory-domains-add-azure-portal.md)
 
 

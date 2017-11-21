@@ -13,14 +13,14 @@ ms.devlang:
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 009bc990439b95967f0647d1745cbb220b8ca70e
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 02bb792ddc017efd3be6e14d951eca1d5671f719
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>geo レプリケーション Azure Container Registry の準備
 
@@ -38,13 +38,17 @@ Azure Container Registry は、デプロイの近くにネットワークを確�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルでは、Azure CLI バージョン 2.0.19 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+このチュートリアルでは、Azure CLI バージョン 2.0.20 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 このチュートリアルの前提として、コンテナー、コンテナー イメージ、基本 Docker コマンドなど、Docker のコア概念を基本的に理解している必要があります。 必要な場合は、[Docker の入門]( https://docs.docker.com/get-started/)に関するドキュメントでコンテナーの基礎を参照してください。
 
 このチュートリアルを完了するには、Docker 開発環境が必要です。 Docker では、[Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、または [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システムで Docker を簡単に構成できるパッケージが提供されています。
 
 Azure Cloud Shell には、このチュートリアルの各ステップを完了するのに必要な Docker コンポーネントがすべて含まれているわけではありません。 そのため、Azure CLI および Docker 開発環境のローカル インストールをお勧めします。
+
+> [!IMPORTANT]
+> Azure Container Registry の geo レプリケーション機能は現在**プレビュー**段階です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+>
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
@@ -204,8 +208,8 @@ docker images
 出力:
 
 ```bash
-REPOSITORY                                     TAG                 IMAGE ID            CREATED              SIZE
-uniqueregistryname.azurecr.io/acr-helloworld   v1                  c9ca1763cfb1        About a minute ago   285MB
+REPOSITORY                                      TAG    IMAGE ID        CREATED               SIZE
+uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a minute ago    284MB
 ...
 ```
 
@@ -223,14 +227,14 @@ geo レプリケーション用にレジストリを構成したため、この�
 
 ```bash
 The push refers to a repository [uniqueregistryname.azurecr.io/acr-helloworld]
-9716cfe18412: Pushed
-074867a942d5: Pushed
-a77666945b96: Pushed
-953ff32f2036: Pushed
-aa2e77726d3c: Pushed
-98b800c91d50: Pushed
+cd54739c444b: Pushed
+d6803756744a: Pushed
+b7b1f3a15779: Pushed
+a89567dff12d: Pushed
+59c7b561ff56: Pushed
+9a2f9413d9e4: Pushed
 a75caa09eb1f: Pushed
-v1: digest: sha256:c515bcebf249b591b558318e2d0ec21d1320340dbf335730eb32372ff7d34255 size: 1792
+v1: digest: sha256:0799014f91384bda5b87591170b1242bcd719f07a03d1f9a1ddbae72b3543970 size: 1792
 ```
 
 ## <a name="next-steps"></a>次のステップ
@@ -243,10 +247,10 @@ v1: digest: sha256:c515bcebf249b591b558318e2d0ec21d1320340dbf335730eb32372ff7d34
 > * アプリケーション ソースから Docker コンテナー イメージを構築しました
 > * コンテナー イメージをレジストリにプッシュしました
 
-次のチュートリアルに進み、geo レプリケーションを使用して、イメージをローカルで使用するために、コンテナーを複数の Azure App Service インスタンスにデプロイする方法を学習します。
+次のチュートリアルに進み、geo レプリケーションを使用して、イメージをローカルで使用するために、コンテナーを複数の Web Apps for Containers インスタンスにデプロイする方法を学習します。
 
 > [!div class="nextstepaction"]
-> [Azure App Service にコンテナーをデプロイする](container-registry-tutorial-deploy-app.md)
+> [Azure Container Registry からの Web アプリのデプロイ](container-registry-tutorial-deploy-app.md)
 
 <!-- IMAGES -->
 [tut-portal-01]: ./media/container-registry-tutorial-prepare-registry/tut-portal-01.png

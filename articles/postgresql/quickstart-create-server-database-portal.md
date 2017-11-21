@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 08/10/2017
-ms.openlocfilehash: 3a76e816f9b1fa484789f548899d7e8e7043febb
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 11/03/2017
+ms.openlocfilehash: b78009a4b2683bb7ee881808ddbbc792d66dea6c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Azure Portal で Azure Database for PostgreSQL サーバーを作成する
 
@@ -151,7 +151,7 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
     > [!TIP]
     > Cloud Shell の IP アドレスを許可するようにファイアウォールが構成されていない場合、次のエラーが発生します。
     > 
-    > "psql: FATAL:  no pg_hba.conf entry for host "138.91.195.82", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required.Specify SSL options and retry. ("psql: 致命的:  ホスト "138.91.195.82"、ユーザー "mylogin"、データベース "postgres" のエントリが pg_hba.conf にありません。SSL オン 致命的:  SSL 接続が必要です。SSL オプションを指定して再試行してください。)
+    > "psql: FATAL:  no pg_hba.conf entry for host "138.91.195.82", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required. ("psql: 致命的:  ホスト "138.91.195.82"、ユーザー "mylogin"、データベース "postgres" のエントリが pg_hba.conf にありません。SSL オン 致命的: SSL 接続が必要です。) Specify SSL options and retry. (SSL のオプションを指定して再試行してください。)
     > 
     > エラーを解決するには、サーバーの構成がこの記事の「サーバーレベルのファイアウォール規則の構成」セクションの手順と一致していることを確認してください。
 
@@ -199,7 +199,7 @@ GUI ツール pgAdmin を使用して Azure PostgreSQL サーバーに接続す�
 
 6. 左側の **[ブラウザー]** ウィンドウで **[サーバー]** ノードを展開します。 **Azure PostgreSQL Server** など、ご利用のサーバーを選択します。 クリックして接続します。
 
-7. サーバー ノードを展開し、その下の **[Databases]\(データベース\)** を展開します。 既存の *postgres* データベースと、新しく作成されたユーザー データベース (前のセクションで作成した **mypgsqldb** など) が一覧表示されます。 Azure Database for PostgreSQL では、サーバーごとに複数のデータベースを作成できることに注意してください。
+7. サーバー ノードを展開し、その下の **[Databases]\(データベース\)** を展開します。 既存の *postgres* データベースと、新しく作成されたユーザー データベース (前のセクションで作成された **mypgsqldb** など) が一覧表示されます。 Azure Database for PostgreSQL では、サーバーごとに複数のデータベースを作成できることに注意してください。
 
 8. **[データベース]** を右クリックし、**[作成]** メニューを選択して **[データベース]** を選択します。
 

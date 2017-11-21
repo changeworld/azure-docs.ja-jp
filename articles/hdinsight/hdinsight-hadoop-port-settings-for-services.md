@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2017
+ms.date: 11/13/2017
 ms.author: larryfr
-ms.openlocfilehash: 1ad536a53d64b0144f6396393830bc0c5cbe4fb1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a55180b5d65b268d7c9b51307581a5fe777a26fe
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上の Hadoop サービスで使用されるポート
 
@@ -48,17 +48,17 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | sshd |23 |SSH |セカンダリ ヘッドノードの sshd にクライアントを接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。 |
 | Ambari |443 |HTTPS |Ambari Web UI。 [Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md) |
 | Ambari |443 |HTTPS |Ambari REST API。 [Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API。 [Curl での Hive の使用](hdinsight-hadoop-use-pig-curl.md)、[Curl での Pig の使用](hdinsight-hadoop-use-pig-curl.md)、[Curl での MapReduce の使用](hdinsight-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください。 |
-| HiveServer2 |443 |ODBC |ODBC を使用して Hive に接続します。 [Microsoft ODBC ドライバーを使用した Excel から HDInsight への接続](hdinsight-connect-excel-hive-odbc-driver.md)に関する記事をご覧ください。 |
-| HiveServer2 |443 |JDBC |JDBC を使用して Hive に接続します。 [Hive JDBC ドライバーを使用した HDInsight の Hive への接続](hdinsight-connect-hive-jdbc-driver.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API。 [Curl での Hive の使用](hadoop/apache-hadoop-use-pig-curl.md)、[Curl での Pig の使用](hadoop/apache-hadoop-use-pig-curl.md)、[Curl での MapReduce の使用](hadoop/apache-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください。 |
+| HiveServer2 |443 |ODBC |ODBC を使用して Hive に接続します。 [Microsoft ODBC ドライバーを使用した Excel から HDInsight への接続](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)に関する記事をご覧ください。 |
+| HiveServer2 |443 |JDBC |JDBC を使用して Hive に接続します。 [Hive JDBC ドライバーを使用した HDInsight の Hive への接続](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
 
 次のポートは、特定のクラスターの種類で使用できます。
 
 | サービス | ポート | プロトコル | クラスターの種類 | Description |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API。 [HBase の使用開始](hdinsight-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark REST API。 [Livy を使用した Spark ジョブのリモートでの送信](hdinsight-apache-spark-livy-rest-interface.md) |
-| Storm |443 |HTTPS |Storm |Storm Web UI。 [HDInsight での Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md) |
+| Stargate |443 |HTTPS |HBase |HBase REST API。 [HBase の使用開始](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Spark REST API。 [Livy を使用した Spark ジョブのリモートでの送信](spark/apache-spark-livy-rest-interface.md) |
+| Storm |443 |HTTPS |Storm |Storm Web UI。 [HDInsight での Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md) |
 
 ### <a name="authentication"></a>認証
 
@@ -169,8 +169,8 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | サービス | Nodes | ポート | プロトコル | URL パス | Description |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift サーバー |ヘッド ノード |10002 |Thrift | &nbsp; | Spark SQL に接続するためのサービス (Thrift/JDBC) |
-| Livy サーバー | ヘッド ノード | 8998 | HTTP | /batches | ステートメント、ジョブ、およびアプリケーションを実行するためのサービス |
+| Livy サーバー | ヘッド ノード | 8998 | HTTP | &nbsp; | ステートメント、ジョブ、およびアプリケーションを実行するためのサービス |
 
 次に例を示します。
 
-* Livy: `curl "http://10.0.0.11:8998/batches"`. この例の `10.0.0.11` は、Livy サービスをホストするヘッド ノードの IP アドレスです。
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. この例の `10.0.0.11` は、Livy サービスをホストするヘッド ノードの IP アドレスです。

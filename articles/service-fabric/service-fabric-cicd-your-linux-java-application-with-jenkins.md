@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.openlocfilehash: 8ba108ed107e2e023867bcc3b3b1b8cc159377ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9870fafab3df3ab0ec72305e76a4d3547cc5b2c
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>Jenkins を使用した Linux Java アプリケーションのビルドとデプロイ
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
@@ -37,60 +37,65 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
   ```sh
   sudo apt-get install wget
   wget -qO- https://get.docker.io/ | sh
-  ```
-2. 次の手順を使用して、Service Fabric コンテナー アプリケーションをクラスターにデプロイします。
+  ``` 
+
+   > [!NOTE]
+   > クラスターで 8081 ポートがカスタム エンドポイントとして指定されていることを確認します。
+   >
+2. 次の手順を使用して、アプリケーションを複製します。
 
   ```sh
 git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
 cd service-fabric-java-getting-started/Services/JenkinsDocker/
 ```
 
-3. Jenkins コンテナー インスタンスの状態を保持する Azure Storage ファイル共有の接続オプションの詳細が必要です。 同様に Microsoft Azure Portal を使用している場合は、Azure Storage アカウント (例: ``sfjenkinsstorage1``) の作成の手順に従ってください。 そのストレージ アカウントの下に、**ファイル共有** (例: ``sfjenkins``) を作成します。 そのファイル共有の **[接続]** をクリックして、**[Linux からの接続]** の下に表示される値をメモします。たとえば、次のように表示されています。
+3. ファイル共有内の Jenkins コンテナーの状態を維持します。
+  * クラスターと**同じリージョン**に Azure Storage アカウント (例: ``sfjenkinsstorage1``) を作成します。
+  * そのストレージ アカウントの下に、**ファイル共有** (例: ``sfjenkins``) を作成します。
+  * そのファイル共有の **[接続]** をクリックして、**[Linux からの接続]** の下に表示される、以下のような値をメモします。
 ```sh
 sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
 ```
 
 > [!NOTE]
-> cifs 共有をマウントするには、クラスター ノードに cifs ユーティリティ パッケージがインストールされている必要があります。 
+> cifs 共有をマウントするには、クラスター ノードに cifs ユーティリティ パッケージがインストールされている必要があります。         
 >
 
-4. ```setupentrypoint.sh``` スクリプトのプレースホルダーの値を、対応する Azure Storage の内容に更新します。
+4. ```setupentrypoint.sh``` スクリプトのプレースホルダーの値を、手順 3 の Azure Storage の内容に更新します。
 ```sh
 vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
 ```
-``[REMOTE_FILE_SHARE_LOCATION]`` を、上記 3 の接続の出力にある値 ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` に置き換えます。
-``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` を上記 3 の値 ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` に置き換えます。
+  * ``[REMOTE_FILE_SHARE_LOCATION]`` を、上記の手順 3 の接続の出力にある値 ``//sfjenkinsstorage1.file.core.windows.net/sfjenkins`` に置き換えます。
+  * ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` を上記の手順 3 の値 ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` に置き換えます。
 
 5. クラスターに接続し、コンテナー アプリケーションをインストールします。
-```azurecli
+```sh
 sfctl cluster select --endpoint http://PublicIPorFQDN:19080   # cluster connect command
 bash Scripts/install.sh
 ```
 これでクラスターに Jenkins コンテナーがインストールされます。このコンテナーは Service Fabric Explorer を使用して監視できます。
 
-### <a name="steps"></a>手順
-1. ブラウザーで ``http://PublicIPorFQDN:8081`` に移動します。 サインインに必要な最初の管理者パスワードのパスが提供されます。 引き続き、管理者ユーザーとして Jenkins を使用できます。 また、最初の管理者アカウントを使用してサインインした後、ユーザーを作成して変更することもできます。
-
    > [!NOTE]
-   > アプリケーションの作成時にアプリケーションのエンドポイント ポートとしてポート 8081 が指定されていること (および、クラスターでそのポートが開いていること) を確認してください。
+   > Jenkins イメージがクラスターにダウンロードされるまでに数分かかる場合があります。
    >
 
-2. ``docker ps -a`` を使用してコンテナーのインスタンス ID を取得します。
-3. Secure Shell (SSH) でコンテナーにサインインして、Jenkins ポータルに表示されたパスを貼り付けます。 たとえば、ポータルに表示されたパスが `PATH_TO_INITIAL_ADMIN_PASSWORD` の場合、次のコマンドを実行します。
+### <a name="steps"></a>手順
+1. ブラウザーで ``http://PublicIPorFQDN:8081`` に移動します。 サインインに必要な最初の管理者パスワードのパスが提供されます。 
+2. Jenkins コンテナーで実行されているノードは、Service Fabric Explorer で確認します。 このノードに Secure Shell (SSH) でサインインします。
+```sh
+ssh user@PublicIPorFQDN -p [port]
+``` 
+3. ``docker ps -a`` を使用してコンテナーのインスタンス ID を取得します。
+4. Secure Shell (SSH) でコンテナーにサインインして、Jenkins ポータルに表示されたパスを貼り付けます。 たとえば、ポータルに表示されたパスが `PATH_TO_INITIAL_ADMIN_PASSWORD` の場合、次のコマンドを実行します。
 
   ```sh
   docker exec -t -i [first-four-digits-of-container-ID] /bin/bash   # This takes you inside Docker shell
-  cat PATH_TO_INITIAL_ADMIN_PASSWORD
   ```
-
-4. 「[Generating a new SSH key and adding it to the SSH agent (新しい SSH キーの生成と SSH エージェントへの追加)](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)」で説明されている手順を使用して、Jenkins を利用できるように GitHub をセットアップします。
-    * GitHub によって提供されている手順を使用して、SSH キーを生成し、リポジトリをホストする GitHub アカウントにその SSH キーを追加します。
-    * (ホストではなく) Jenkins Docker シェルで、前のリンク先に記載されているコマンドを実行します。
-    * ホストから Jenkins シェルにサインインするには、次のコマンドを使用します。
-
   ```sh
-  docker exec -t -i [first-four-digits-of-container-ID] /bin/bash
+  cat PATH_TO_INITIAL_ADMIN_PASSWORD # This displays the pasword value
   ```
+5. Jenkins の最初のページで、[Select plugins to install]\(インストールするプラグインの選択\) オプションを選択し、**[None]\(なし\)** チェックボックスを選択して、[Install]\(インストール\) をクリックします。
+6. ユーザーを作成するか、管理者として続行します。
 
 ## <a name="set-up-jenkins-outside-a-service-fabric-cluster"></a>Service Fabric クラスター外での Jenkins のセットアップ
 
@@ -133,7 +138,7 @@ Jenkins コンテナー イメージがホストされているクラスター�
 
 1. ``http://PublicIPorFQDN:8081`` に移動します
 2. Jenkins ダッシュボードで、**[Manage Jenkins (Jenkins の管理)]** > **[Manage Plugins (プラグインの管理)]** > **[Advanced (詳細設定)]** の順に選択します。
-ここでは、プラグインをアップロードできます。 **[Choose file (ファイルの選択)]** を選択し、前提条件に従ってダウンロードした **serviceFabric.hpi** ファイルを選択します。 **[Upload (アップロード)]** を選択すると、Jenkins によってプラグインが自動的にインストールされます。 要求された場合は再起動を許可します。
+ここでは、プラグインをアップロードできます。 **[Choose file]\(ファイルの選択\)** を選択し、前提条件に従ってダウンロードした **serviceFabric.hpi** ファイルを選択します。[こちら](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)からもダウンロードできます。 **[Upload (アップロード)]** を選択すると、Jenkins によってプラグインが自動的にインストールされます。 要求された場合は再起動を許可します。
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Jenkins ジョブの作成と構成
 
@@ -141,7 +146,7 @@ Jenkins コンテナー イメージがホストされているクラスター�
 2. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、**[OK]** をクリックします。
 3. ジョブ ページに移動し、**[Configure (構成)]** をクリックします。
 
-   a. 全般セクションの **[GitHub project (GitHub プロジェクト)]** で、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/sayantancs/SFJenkins``)。
+   a. 全般セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/sayantancs/SFJenkins``)。
 
    b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: ``https://github.com/sayantancs/SFJenkins.git``)。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
 4. Jenkins と対話できるように (リポジトリをホストする) *GitHub* を構成します。 次の手順に従います。
@@ -156,7 +161,7 @@ Jenkins コンテナー イメージがホストされているクラスター�
 
    e. **[Build Triggers (ビルド トリガー)]** セクションで、目的のビルド オプションを選択します。 この例では、リポジトリにプッシュが行われるたびにビルドがトリガーされるようにします。 そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します  (以前、このオプションの名前は **[Build when a change is pushed to GitHub (変更が GitHub にプッシュされたときにビルド)]** でした)。
 
-   f. **[Build (ビルド)]** セクションで、**[Add build step (ビルド手順の追加)]** ボックスの一覧の **[Invoke Gradle Script (Gradle スクリプトの呼び出し)]** オプションを選択します。 表示されたウィジェットで、**[Root build script (ルート ビルド スクリプト)]** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。 (Eclipse プラグインまたは Yeoman ジェネレーターを使用して) ``MyActor`` という名前のプロジェクトを作成した場合は、ルート ビルド スクリプトに ``${WORKSPACE}/MyActor`` を含める必要があります。 次のスクリーンショットで、この手順の例を確認してください。
+   f. **[Build (ビルド)]** セクションで、**[Add build step (ビルド手順の追加)]** ボックスの一覧の **[Invoke Gradle Script (Gradle スクリプトの呼び出し)]** オプションを選択します。 表示されたウィジェットで詳細メニューを開き、**[Root build script]\(ルート ビルド スクリプト\)** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。 (Eclipse プラグインまたは Yeoman ジェネレーターを使用して) ``MyActor`` という名前のプロジェクトを作成した場合は、ルート ビルド スクリプトに ``${WORKSPACE}/MyActor`` を含める必要があります。 次のスクリーンショットで、この手順の例を確認してください。
 
     ![Service Fabric Jenkins のビルド アクション][build-step]
 

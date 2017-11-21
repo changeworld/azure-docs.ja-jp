@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 11/13/2017
 ms.author: bradsev;
-ms.openlocfilehash: 116eaa59eb60833036ad4d3c975c0b86e525f625
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58e8bfeb547fbcd7f472fbed50073b1ca3176b72
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="team-lead-tasks"></a>チーム リーダーのタスク
 
@@ -136,7 +136,7 @@ ms.lasthandoff: 10/11/2017
     ![11](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
 
 
-## <a name="2-seed-your-team-projecttemplate-and-teamutilities-repositories"></a>2.チーム の ProjectTemplate リポジトリと TeamUtilities リポジトリのシード処理
+## <a name="2-seed-your-team-projecttemplate-and-teamutilities-repositories"></a>手順 2.チーム の ProjectTemplate リポジトリと TeamUtilities リポジトリのシード処理
 
 このシード処理の手順では、ローカル DSVM 上のディレクトリを中間ステージング サイトとして使用します。 チームの特定のニーズに合わせて **ProjectTemplate** リポジトリと **TeamUtilities** リポジトリをカスタマイズする必要がある場合は、以下の手順の最後から 2 番目の手順でカスタマイズします。 データ サイエンス チームの **MyTeamProjectTemplate** リポジトリと **MyTeamUtilities** リポジトリの内容をシード処理する手順の概要を次に示します。 個々の手順は、シード処理の手順のサブセクションに対応しています。
 

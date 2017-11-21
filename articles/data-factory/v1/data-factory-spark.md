@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 3690b5f62d8384d255d420946f6ac1cfd47b9317
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eff48ec65a01a2fc3fa9f7652dd8e1a0fc8dd2a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -34,6 +34,9 @@ ms.lasthandoff: 10/11/2017
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Azure Data Factory のバージョン 1 に適用されます。 プレビュー段階の Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 での Spark アクティビティを使用したデータ変換](../transform-data-using-spark.md)についてのページを参照してください。
 
 ## <a name="introduction"></a>はじめに
 Spark アクティビティは、Azure Data Factory でサポートされる[データ変換アクティビティ](data-factory-data-transformation-activities.md)の 1 つです。 このアクティビティでは、指定された Spark プログラムが Azure HDInsight の Apache Spark クラスターで実行されます。    
@@ -53,7 +56,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
 ### <a name="prerequisites"></a>前提条件
 1. [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)チュートリアルの手順に従って、**汎用の Azure ストレージ アカウント**を作成します。  
-2. **Azure HDInsight での Apache Spark クラスターの作成**チュートリアルの説明に従って、[Azure HDInsight で Apache Spark クラスター](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)を作成します。 手順 1. で作成した Azure ストレージ アカウントをこのクラスターに関連付けます。  
+2. **Azure HDInsight での Apache Spark クラスターの作成**チュートリアルの説明に従って、[Azure HDInsight で Apache Spark クラスター](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)を作成します。 手順 1. で作成した Azure ストレージ アカウントをこのクラスターに関連付けます。  
 3. [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) にある python スクリプト ファイル **test.py** をダウンロードして確認します。  
 3.  Azure Blob Storage の **adfspark** コンテナーにある**pyFiles** フォルダーに **test.py** をアップロードします。 コンテナーとフォルダーが存在しない場合は作成します。
 
@@ -231,7 +234,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
     ![Jupyter クエリの結果](media/data-factory-spark/jupyter-notebook-results.png)
 
 <!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-詳細な手順については、「[Spark SQL クエリの実行](../../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)」を参照してください。 
+詳細な手順については、「[Spark SQL クエリの実行](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)」を参照してください。 
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 **getDebugInfo** を **Always** に設定しているので、Azure BLOB コンテナー内の **pyFiles** フォルダーに **log** サブフォルダーが表示されます。 ログ フォルダーのログ ファイルで、追加の詳細情報を取得できます。 このログ ファイルは、エラーが発生している場合に特に便利です。 運用環境では、これを **Failure** に設定してみてください。

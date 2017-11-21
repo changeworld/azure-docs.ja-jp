@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: jdial
-ms.openlocfilehash: 8ddd582ed159e10add896252c40feb19780c42fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 95f2b57b2012df816c76a1b6ec55ca9f92e134a3
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -73,7 +73,7 @@ Standard SKU のパブリック IP アドレスは次のとおりです。
 > [!NOTE]
 > 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、特定のトラフィックを明示的に許可する必要があります。  ネットワーク セキュリティ グループを作成して関連付け、特定のトラフィックを明示的に許可するまでは、リソースと通信できません。
 
-Standard SKU はプレビュー リリースです。 Standard SKU のパブリック IP アドレスを作成する前に、プレビューを登録し、サポートされている場所にアドレスを作成する必要があります。 プレビューを登録するには、[Standard SKU プレビューを登録する](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)を参照してください。 サポートされている場所 (リージョン) の一覧については、[[利用可能なリージョン]](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) を参照し、追加のリージョンのサポートについて [[Azure Virtual Network updates] (Azure Virtual Network の更新)](https://azure.microsoft.com/updates/?product=virtual-network) ページを監視してください。
+Standard SKU はプレビュー リリースです。 Standard SKU のパブリック IP アドレスを作成する前に、プレビューを登録し、サポートされている場所にアドレスを作成する必要があります。 プレビューを登録するには、[Standard SKU プレビューを登録する](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)を参照してください。 サポートされている場所 (リージョン) の一覧については、[[利用可能なリージョン]](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) を参照し、追加のリージョンのサポートについて [[Azure Virtual Network updates] \(Azure Virtual Network の更新)](https://azure.microsoft.com/updates/?product=virtual-network) ページを監視してください。
 
 
 ### <a name="allocation-method"></a>割り当て方法
@@ -110,7 +110,7 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 
 ### <a name="internet-facing-load-balancers"></a>インターネットに接続するロード バランサー
 
-パブリック IP アドレスをロード バランサーの **フロントエンド**構成に割り当てることで、パブリック IP アドレスと [SKU](#SKU) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような [マルチ VIP](../load-balancer/load-balancer-multivip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) シナリオを有効にすることもできます。 Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+パブリック IP アドレスをロード バランサーの **フロントエンド**構成に割り当てることで、パブリック IP アドレスと [SKU](#SKU) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような [マルチ VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) シナリオを有効にすることもできます。 Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 ### <a name="vpn-gateways"></a>VPN ゲートウェイ
 
@@ -145,29 +145,22 @@ Azure Resource Manager デプロイメント モデルでは、プライベー�
 
 ### <a name="allocation-method"></a>割り当て方法
 
-プライベート IP アドレスは、リソースが関連付けられているサブネットのアドレス範囲から割り当てられます。 サブネット自体のアドレス範囲は、仮想ネットワークのアドレス範囲に含まれます。
+プライベート IP アドレスは、リソースのデプロイ先となる仮想ネットワーク サブネットのアドレス範囲から割り当てられます。 プライベート IP アドレスを割り当てる方法は 2 種類あります。
 
-プライベート IP アドレスを割り当てる方法には、*動的*と*静的*の 2 種類があります。 既定の割り当て方法は*動的*です。IP アドレスは (DHCP を使用して) リソースのサブネットから自動的に割り当てられます。 リソースを停止して起動すると、この IP アドレスが変更される場合があります。
-
-IP アドレスが変わらないようにするため、割り当て方法を *静的* に設定することができます。 *静的*に設定した場合、リソースのサブネットの一部として有効な IP アドレスも指定する必要があります。
-
-静的プライベート IP アドレスは、通常は次のものに使用されます。
-
-* ドメイン コントローラーまたは DNS サーバーとして機能する仮想マシン。
-* IP アドレスを使用するファイアウォール規則を必要とするリソース。
-* IP アドレスを使用して他のアプリ/リソースからアクセスされるリソース。
+- **動的**: 各サブネット アドレス範囲の先頭から 4 つのアドレスは Azure によって予約されており、それらのアドレスが割り当てられることはありません。 その次に利用可能なアドレスがサブネット アドレス範囲から取得されてリソースに割り当てられます。 たとえば、サブネットのアドレス範囲が 10.0.0.0/16 で、10.0.0.0.4 ～ 10.0.0.14 のアドレスが既に割り当て済みである場合 (.0 ～ .3 は予約済み)、リソースには 10.0.0.15 が Azure によって割り当てられます。 動的割り当てが既定の割り当て方法となります。 いったん割り当てられた動的 IP アドレスが解放されるのは、ネットワーク インターフェイスが削除されるか、同じ仮想ネットワーク内の別のサブネットに割り当てられた場合、または割り当て方法が "静的" に変更された場合、または異なる IP アドレスが指定された場合に限られます。 既定では、割り当て方法を "動的" から"静的" に変更すると、それまで動的に割り当てられていたアドレスが静的アドレスとして割り当てられます。
+- **静的**: サブネットのアドレス範囲から自分でアドレスを選択して割り当てます。 割り当てるアドレスは、サブネット アドレス範囲内で、かつそのサブネット内の他のどのリソースにも割り当てられていなければ、そのサブネット範囲の先頭 4 つのアドレスを除き、どれでもかまいません。 静的アドレスが解放されるのは、ネットワーク インターフェイスが削除された場合だけです。 割り当て方法を "静的" に変更した場合、サブネット アドレス範囲の先頭から空いている順に割り当てるのではなく、それまで割り当てられていた静的 IP アドレスが動的アドレスとして割り当てられます。 同じ仮想ネットワーク内の異なるサブネットにネットワーク インターフェイスを割り当てた場合にも、アドレスは変化します。ただし、ネットワーク インターフェイスを別のサブネットに割り当てるためには、最初に割り当て方法を "静的" から "動的" に変更しておく必要があります。 ネットワーク インターフェイスを別のサブネットに割り当てた後、割り当て方法を "静的" に変更し、新しいサブネットのアドレス範囲から IP アドレスを割り当てることができます。
 
 ### <a name="virtual-machines"></a>仮想マシン
 
-プライベート IP アドレスは、[Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンの**ネットワーク インターフェイス**に割り当てます。 仮想マシンに複数のネットワーク インターフェイスがある場合は、各ネットワーク インターフェイスに、プライベート IP アドレスが割り当てられます。 ネットワーク インターフェイスに対して動的または静的のどちらかの割り当て方法を指定できます。
+[Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンまたは [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 仮想マシンには**ネットワーク インターフェイス**が複数存在する場合があり、プライベート IP アドレスも複数割り当てられることがあります。 それぞれのプライベート IP アドレスについて、動的または静的のどちらかの割り当て方法を指定できます。
 
 #### <a name="internal-dns-hostname-resolution-for-virtual-machines"></a>内部 DNS ホスト名の解決 (仮想マシンの場合)
 
 カスタムの DNS サーバーを明示的に構成しない限り、既定ではすべての Azure 仮想マシンが [Azure で管理される DNS サーバー](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) で構成されます。 これらの DNS サーバーは、同じ仮想ネットワーク内に存在する仮想マシンの内部名前解決を可能にします。
 
-仮想マシンを作成すると、そのプライベート IP アドレスへのホスト名のマッピングが、Azure で管理される DNS サーバーに追加されます。 複数のネットワーク インターフェイスを備える仮想マシンの場合、ホスト名はプライマリ ネットワーク インターフェイスのプライベート IP アドレスにマップされます。
+仮想マシンを作成すると、そのプライベート IP アドレスへのホスト名のマッピングが、Azure で管理される DNS サーバーに追加されます。 1 つの仮想マシンに複数のネットワーク インターフェイスが備わっている場合、または 1 つのネットワーク インターフェイスに対して複数の IP が構成されている場合、ホスト名は、プライマリ ネットワーク インターフェイスのプライマリ IP 構成のプライベート IP アドレスにマップされます。
 
-Azure で管理される DNS サーバーで構成されている仮想マシンは、同じ仮想ネットワーク内のすべての仮想マシンのホスト名をプライベート IP アドレスに解決することができます。
+Azure で管理される DNS サーバーで構成されている仮想マシンは、同じ仮想ネットワーク内のすべての仮想マシンのホスト名をプライベート IP アドレスに解決することができます。 接続されている仮想ネットワーク内の仮想マシンのホスト名を解決するには、カスタム DNS サーバーを使用する必要があります。
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>内部ロード バランサー (ILB) と Application Gateway
 

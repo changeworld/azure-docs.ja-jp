@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: d401dde25bf4ab430ac045fb6cfd90050a7ec2e7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 5242d6d7abba1dc06f8e01b26a2d3bfdecb1d630
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Raspberry Pi デバイスをリモート監視構成済みソリューションに接続する (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-このチュートリアルでは、リモート監視構成済みソリューションに物理デバイスを接続する方法について説明します。 このチュートリアルでは、リソース制約が少ない環境に適したオプションである Node.js を使用します。
+このチュートリアルでは、リモート監視構成済みソリューションに物理デバイスを接続する方法について説明します。 このチュートリアルでは、リソースの制約が少ない環境に適したオプションである Node.js を使用します。
 
 ### <a name="required-hardware"></a>必要なハードウェア
 
@@ -114,7 +114,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. 基本のテレメトリ データを定義するには、次の変数を追加します。
+1. 基本のテレメトリをいくつか定義するために、次の変数を追加します。
 
     ```nodejs
     var temperature = 50;
@@ -140,7 +140,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
     var deviceLongitude = -122.13476;
     ```
 
-1. ソリューションに送信する、報告されたプロパティを定義するには、次の変数を追加します。 これらのプロパティには、デバイスが使用するメソッドとテレメトリを記述するメタデータが含まれます。
+1. ソリューションに送信する、報告対象プロパティを定義するには、次の変数を追加します。 これらのプロパティには、デバイスが使用するメソッドとテレメトリを記述するメタデータが含まれます。
 
     ```nodejs
     var reportedProperties = {
@@ -211,7 +211,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
     }
     ```
 
-1. ソリューションからのダイレクト メソッドの呼び出しを処理するため、次の関数を追加します。 ソリューションは、デバイス上で動作するダイレクト メソッドを使用します。
+1. ソリューションからのダイレクト メソッドの呼び出しを処理するため、次の関数を追加します。 ソリューションは、次のようにデバイスで動作するダイレクト メソッドを使用します。
 
     ```nodejs
     function onDirectMethod(request, response) {
@@ -231,7 +231,7 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
     }
     ```
 
-1. ソリューションにテレメトリ データを送信するには、次のコードを追加します。 クライアント アプリは、メッセージ スキーマを識別するために、メッセージにプロパティを追加します。
+1. ソリューションにテレメトリを送信する次のコードを追加します。 クライアント アプリでは、次のようにメッセージ スキーマを識別するためのプロパティをメッセージに追加します。
 
     ```node.js
     function sendTelemetry(data, schema) {

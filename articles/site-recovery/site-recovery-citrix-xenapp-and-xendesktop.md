@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: ponatara
-ms.openlocfilehash: dc064352b1841ff346b705dc63186b12d79350b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52b123b598226e7b03ea9a31c40dd192fd76b191
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 XenApp および Citrix XenDesktop デプロイをレプリケートします
 
@@ -74,7 +74,7 @@ Azure では XenApp 7.7 以降がサポートされています。したがっ�
 
 1. XenApp 発行アプリと XenApp 発行デスクトップを提供するための、サーバー OS マシンを使用したオンプレミス デプロイの保護と復旧がサポートされています。
 
-2. Windows 10 などのクライアント仮想デスクトップに Desktop VDI を提供するための、デスクトップ OS マシンを使用したオンプレミス デプロイの保護と復旧はサポートされていません。 これは、ASR が、デスクトップ OS のマシン復旧をサポートしていないためです。  また、クライアント仮想デスクトップによっては ( Windows 7 など)、Azure のライセンスがまだサポートされていません。 Azure におけるクライアント/サーバー デスクトップのライセンスについては、[こちら](https://azure.microsoft.com/pricing/licensing-faq/)を参照してください。
+2. Windows 10 などのクライアント仮想デスクトップに Desktop VDI を提供するための、デスクトップ OS マシンを使用したオンプレミス デプロイの保護と復旧はサポートされていません。 これは、ASR が、デスクトップ OS のマシン復旧をサポートしていないためです。  また、一部のクライアント仮想デスクトップ オペレーティング システムでは ( Windows 7 など)、Azure のライセンスがまだサポートされていません。 Azure におけるクライアント/サーバー デスクトップのライセンスについては、[こちら](https://azure.microsoft.com/pricing/licensing-faq/)を参照してください。
 
 3.  Azure Site Recovery では、既存の オンプレミス MCS または PVS クローンをレプリケートして保護することができません。
 こうしたクローンについては、配信コントローラーから Azure RM プロビジョニングを使用して、作成し直す必要があります。

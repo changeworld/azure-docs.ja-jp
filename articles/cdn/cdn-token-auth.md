@@ -1,6 +1,6 @@
 ---
 title: "トークン認証による Azure CDN 資産の保護 | Microsoft Docs"
-description: "トークン認証を使用して、Azure CDN 資産へのアクセスをセキュリティで保護します。"
+description: "トークン認証を使用して、Azure CDN 資産へのアクセスをセキュリティで保護する方法について説明します。"
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -12,135 +12,143 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 11/11/2016
+ms.date: 11/03/2017
 ms.author: mezha
-ms.openlocfilehash: 42b182c314795b1ebf69639ec7ac5583208dc7c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 700f4c49bbcda1eccbcc7eafc703e625697fa2b4
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="securing-azure-cdn-assets-with-token-authentication"></a>トークン認証による Azure CDN 資産の保護
+# <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>トークン認証による Azure Content Delivery Network 資産の保護
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-##<a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
-トークン認証メカニズムを使用すると、承認されていないクライアントに Azure CDN が資産を提供できないように指定できます。  これを行うには、通常、許可なく資産を使用する他の Web サイト (多くの場合、掲示板) でのコンテンツの "hotlinking" を防止します。  これはコンテンツの配信コストに影響を与えることがあります。 CDN でこの機能を有効にすると、コンテンツを配信する前に、CDN エッジ POP で要求が認証されます。 
+トークン認証メカニズムを使用すると、承認されていないクライアントに Azure Content Delivery Network (CDN) が資産を提供できないように指定できます。 トークン認証を行うには、通常、コンテンツの "ホットリンク" を防止します。このホットリンクでは、他の Web サイト (多くの場合、掲示板) が許可なく自分の資産を使用します。 ホットリンクは、コンテンツの配信コストに影響を与えることがあります。 CDN でトークン認証を有効にすると、CDN がコンテンツを配信する前に、CDN エッジ POP で要求が認証されます。 
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-トークン認証では、信頼済みサイトによって要求が生成されていることを確認するために、要求元に関するエンコードされた情報を含むトークン値がその要求に必要です。 コンテンツが要求元に提供されるのは、そのエンコードされた情報が要件を満たす場合だけです。それ以外の場合、要求は拒否されます。 要件を設定するには、以下に示す 1 つ以上のパラメーターを使用します。
+トークン認証では、要求元に関するエンコードされた情報を含むトークン値を要求に求めることで、その要求が、信頼済みサイトによって生成されていることを確認します。 コンテンツが要求元に提供されるのは、そのエンコードされた情報が要件を満たす場合だけです。それ以外の場合、要求は拒否されます。 要件を設定するには、以下のパラメーターを 1 つ以上使用します。
 
-- 国: 指定された国からの要求を許可または拒否します。  [有効な国コードの一覧。](https://msdn.microsoft.com/library/mt761717.aspx) 
-- URL: 指定された資産またはパスによる要求のみを許可します。  
-- ホスト: 要求ヘッダーで指定されたホストを使用する要求を許可または拒否します。
-- 参照元: 指定された参照元による要求を許可または拒否します。
+- 国: [国番号](https://msdn.microsoft.com/library/mt761717.aspx)で指定した国からの要求を許可または拒否します。
+- URL: 指定した資産またはパスと一致する要求のみを許可します。
+- ホスト: 要求ヘッダーで、指定したホストを使用する要求を許可または拒否します。
+- 参照元: 指定した参照元からの要求を許可または拒否します。
 - IP アドレス: 特定の IP アドレスまたは IP サブネットからの要求のみを許可します。
-- プロトコル: コンテンツの要求に使用されたプロトコルに基づいて要求を許可またはブロックします。
+- プロトコル: コンテンツの要求に使用されたプロトコルに基づいて要求を許可または拒否します。
 - 有効期限: 限られた期間だけリンクが有効になるように日付と期間を割り当てます。
 
-各パラメーターの構成例の詳細を参照してください。
+詳細については、「[トークン認証の設定](#setting-up-token-authentication)」で各パラメーターの詳しい構成例を参照してください。
+
+暗号化されたトークンを生成したら、そのトークンを、クエリ文字列として、ファイルの URL パスの末尾に追加します。 たとえば、「 `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`」のように入力します。
 
 ## <a name="reference-architecture"></a>参照アーキテクチャ
 
-Web アプリを操作するための CDN におけるトークン認証の設定を示す、以下の参照アーキテクチャをご覧ください。
+次のワークフロー図は、CDN がトークン認証を使用して Web アプリと連携するようすを示しています。
 
-![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
+![CDN トークン認証のワークフロー](./media/cdn-token-auth/cdn-token-auth-workflow2.png)
 
 ## <a name="token-validation-logic-on-cdn-endpoint"></a>CDN エンドポイントのトークン検証のロジック
     
-この図は、CDN エンドポイントでトークン認証が構成されているときに、Azure CDN がクライアント要求を検証する方法について説明します。
+次のフローチャートは、CDN エンドポイントでトークン認証が構成されている場合に、Azure CDN がクライアント要求を検証する方法を示しています。
 
-![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
+![CDN トークン検証のロジック](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
 
 ## <a name="setting-up-token-authentication"></a>トークン認証の設定
 
-1. [Azure Portal](https://portal.azure.com) で CDN プロファイルを参照し、**[管理]** ボタンをクリックして、補助ポータルを起動します。
+1. [Azure Portal](https://portal.azure.com) で CDN プロファイルを参照し、**[管理]** をクリックして、補助ポータルを起動します。
 
-    ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![[CDN プロファイル] の [管理] ボタン](./media/cdn-rules-engine/cdn-manage-btn.png)
 
-2. **[HTTP Large (HTTP ラージ)]** にポインターを置いて、フライアウトで **[Token Auth (トークン認証)]** をクリックします。 このタブで暗号化キーと暗号化パラメーターを設定します。
+2. **[HTTP Large (HTTP ラージ)]** にポインターを置いて、フライアウトで **[Token Auth (トークン認証)]** をクリックします。 その後、次のように、暗号化キーと暗号化パラメーターを設定できます。
 
-    1. **主キー**の一意の暗号化キーを入力します。  **バックアップ キー**の他のキーを入力します
+    1. **[主キー]** ボックスに一意の暗号化キーを入力し、必要に応じて、**[Backup Key]\(バックアップ キー\)** ボックスにバックアップ キーを入力します。
 
         ![CDN トークン認証のセットアップ キー](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-    2. 暗号化ツールを使用して暗号化パラメーターを設定します (有効期限、国、参照元、プロトコル、クライアント IP に基づいて、要求を許可または拒否します。 任意の組み合わせを使用できます)。
+    2. 暗号化ツールを使用して暗号化パラメーターを設定します。 暗号化ツールでは、有効期限、国、参照元、プロトコル、およびクライアント IP (組み合わせは任意) に基づいて、要求を許可または拒否できます。 
 
-        ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+        ![CDN 暗号化ツール](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
-        - ec-expire: 指定した期間の後にトークンの有効期限を割り当てます。 有効期限の後に送信された要求は拒否されます。 このパラメーターでは、Unix タイムスタンプが使用されます (この時間は、1/1/1970 00:00:00 GMT の標準エポックからの秒数に基づいています。 標準時間と Unix 時間は、オンライン ツールを使用して変換できます)。たとえば、トークンが 12/31/2016 12:00:00 GMT に有効期限が切れるように設定する場合は、以下のように Unix 時間: 1483185600 を使用します。
+       **[暗号化ツール]** 領域で、次の 1 つ以上の暗号化パラメーターに対して値を入力します。  
+
+       - **ec-expire**: トークンが期限切れになるまでの有効期限を割り当てます。 有効期限の後に送信された要求は拒否されます。 このパラメーターでは、Unix timestamp が使用されます。これは、`1/1/1970 00:00:00 GMT` の標準エポックからの秒数に基づいています  (標準時間と Unix 時間は、オンライン ツールを使用して変換できます)。たとえば、トークンが `12/31/2016 12:00:00 GMT` に期限切れになるよう設定する場合は、以下のように Unix timestamp の値 `1483185600` を使用します。 
     
-        ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-expire2.png)
+         ![CDN ec_expire の例](./media/cdn-token-auth/cdn-token-auth-expire2.png)
     
-        - ec-url-allow: 特定の資産またはパスに合わせてトークンを調整できます。 特定の相対パスで始まる URL を持つ要求へのアクセスを制限します。 複数のパスを入力するには、各パスをコンマで区切ります。 URL は大文字と小文字が区別されます。 要件に応じてさまざまな値を設定して、さまざまなレベルのアクセスを提供できます。 シナリオをいくつか次に示します。
+       - **ec-url-allow**: 特定の資産またはパスに合わせてトークンを調整できます。 特定の相対パスで始まる URL を持つ要求へのアクセスを制限します。 URL は大文字と小文字が区別されます。 複数のパスを入力するには、各パスをコンマで区切ります。 要件に応じてさまざまな値を設定して、さまざまなレベルのアクセスを提供できます。 
         
-            URL が http://www.mydomain.com/pictures/city/strasbourg.png の場合:  入力値 "" とそのアクセス レベルを参照してください
+         たとえば、URL `http://www.mydomain.com/pictures/city/strasbourg.png` について、入力値と、許可される要求を次に示します。
 
-            1. 入力値 "/": すべての要求が許可されます
-            2. 入力値 "/pictures": 次のすべての要求が許可されます
-            
-                - http://www.mydomain.com/pictures.png
-                - http://www.mydomain.com/pictures/city/strasbourg.png
-                - http://www.mydomain.com/picturesnew/city/strasbourgh.png
-            3. 入力値 "/pictures/": /pictures/ の要求のみが許可されます
-            4. 入力値 "/pictures/city/strasbourg.png": この資産の要求のみが許可されます
+         - 入力値 `/`: すべての要求が許可されます。
+         - 入力値 `/pictures`: 以下の要求が許可されます。
+            - `http://www.mydomain.com/pictures.png`
+            - `http://www.mydomain.com/pictures/city/strasbourg.png`
+            - `http://www.mydomain.com/picturesnew/city/strasbourgh.png`
+         - 入力値 `/pictures/`: `/pictures/` パスを含む要求のみが許可されます。 たとえば、「 `http://www.mydomain.com/pictures/city/strasbourg.png`」のように入力します。
+         - 入力値 `/pictures/city/strasbourg.png`: この特定のパスと資産に対する要求のみが許可されます。
     
-        ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-url-allow4.png)
-    
-        - ec-country-allow: 指定した 1 つ以上の国からの要求のみが許可されます。 その他の国からの要求はすべて拒否されます。 国コードを使用してパラメーターを設定し、各国コードをコンマで区切ります。 たとえば、米国とフランスからのアクセスを許可する場合は、以下のように「US, FR」と列に入力します。  
+       - **ec-country-allow**: 指定した 1 つ以上の国からの要求のみを許可します。 それ以外の国からの要求はすべて拒否されます。 国番号を使用し、各番号をコンマで区切ります。 たとえば、米国とフランスからのアクセスのみを許可する場合は、次のように、ボックスに「US, FR」と入力します。  
         
-        ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-country-allow.png)
+           ![CDN の ec_country_allow の例](./media/cdn-token-auth/cdn-token-auth-country-allow.png)
 
-        - ec-country-deny: 指定した 1 つ以上の国からの要求を拒否します。 その他の国からの要求はすべて許可されます。 国コードを使用してパラメーターを設定し、各国コードをコンマで区切ります。 たとえば、米国とフランスからのアクセスを拒否する場合は、「US, FR」と列に入力します。
+       - **ec-country-deny**: 指定した 1 つ以上の国からの要求を拒否します。 それ以外国からの要求はすべて許可されます。 国番号を使用し、各番号をコンマで区切ります。 たとえば、米国とフランスからのアクセスを拒否する場合は、ボックスに「US, FR」と入力します。
     
-        - ec-ref-allow: 指定された参照元からの要求のみを許可します。 参照元により、要求されているリソースにリンクされた Web ページの URL を特定します。 参照元パラメーターの値には、プロトコルを含めないでください。 入力できるのは、ホスト名やそのホスト名の特定のパスです。 また、1 つのパラメーター内の複数の参照元をコンマで区切って追加することもできます。 参照元の値を指定したにもかかわらず、参照元の情報が、一部のブラウザー構成のために要求で送信されない場合、既定では、こうした要求は拒否されます。 このような参照元の情報がない要求を許可するには、パラメーターで "Missing" つまり空の値を割り当てます。 "*.consoto.com" を使用して、consoto.com のすべてのサブドメインを許可することもできます。たとえば、www.consoto.com からの要求、consoto2.com のすべてのサブドメインからの要求、および参照元情報がない要求のアクセスを許可するには、以下の値を入力します。
+       - **ec-ref-allow**: 指定した参照元からの要求のみを許可します。 要求されているリソースにリンクされた Web ページの URL が、参照元により特定されます。 参照元のパラメーター値には、プロトコルを含めないでください。 パラメーター値として許可されている入力の種類は次のとおりです。
+           - ホスト名、またはホスト名とパス。
+           - 複数の参照元。 複数の参照元を追加するには、各参照元をコンマで区切ります。 参照元の値を指定したにもかかわらず、ブラウザー構成のせいで参照元の情報が要求で送信されない場合、こうした要求は既定で拒否されます。 
+           - 参照元情報がない要求。 この要求の種類を許可するには、「missing」というテキスト、または空の値を入力します。 
+           - サブドメイン。 サブドメインを許可するには、アスタリスク (\*) を入力します。 たとえば、`consoto.com` のすべてのサブドメインを許可するには、「`*.consoto.com`」と入力します。 
+           
+          次の例は、`www.consoto.com` からの要求、`consoto2.com` のすべてのサブドメインからの要求、および空の要求、つまり参照元情報がない要求に対してアクセスを許可する入力を示しています。
         
-        ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-referrer-allow2.png)
+          ![CDN の ec_ref_allow の例](./media/cdn-token-auth/cdn-token-auth-referrer-allow2.png)
     
-        - ec-ref-deny: 指定された参照元からの要求を拒否します。 "ec-ref-allow" パラメーターの詳細と例を参照してください。
+       - **ec-ref-deny**: 指定した参照元からの要求を拒否します。 実装は、ec_ref_allow パラメーターと同じです。
          
-        - ec-proto-allow: 指定されたプロトコルからの要求のみを許可します。 たとえば、http、https を指定します。
-        
-        ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-url-allow4.png)
+       - **ec-proto-allow**: 指定したプロトコルからの要求のみを許可します。 たとえば、HTTP、HTTPS を指定します。
             
-        - ec-proto-deny: 指定されたプロトコルからの要求を拒否します。 たとえば、http、https を指定します。
+       - **ec-proto-deny**: 指定したプロトコルからの要求を拒否します。 たとえば、HTTP、HTTPS を指定します。
     
-        - ec-clientip: 指定した要求者の IP アドレスへのアクセスを制限します。 IPV4 と IPV6 の両方がサポートされています。 1 つの要求 IP アドレスまたは IP サブネットを指定できます。
+       - **ec-clientip**: 指定した要求元の IP アドレスへのアクセスを制限します。 IPV4 と IPV6 の両方がサポートされています。 1 つの要求 IP アドレスまたは IP サブネットを指定できます。
             
-        ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-token-auth-clientip.png)
+         ![CDN の ec_clientip の例](./media/cdn-token-auth/cdn-token-auth-clientip.png)
+
+    3. 暗号化パラメーター値の入力が完了したら、**[Key To Encrypt]\(暗号化キー\)** の一覧からは暗号化キーの種類を (主キーとバックアップ キーの両方を作成した場合)、**[Encryption Version]\(暗号化バージョン\)** の一覧からは暗号化バージョンを選択し、**[暗号化]** をクリックします。
         
-    3. トークンをテストするには、暗号化解除ツールを使用ます。
+    4. 必要に応じて、暗号化解除ツールでトークンをテストします。 **[Token to Decrypt]\(暗号化を解除するトークン\)** ボックスに、トークンの値を貼り付けます。 **[Key To Decrypt]\(暗号化を解除するキー\)** ドロップダウン リストで、暗号化を解除する暗号化キーの種類を選択し、**[暗号化解除]** をクリックします。
 
-    4. また、要求が拒否されたときに、ユーザーに返される応答の種類をカスタマイズすることもできます。 既定では、403 を使用します。
+    5. 必要に応じて、要求が拒否されたときに返される応答コードの種類をカスタマイズします。 **[応答コード]** ドロップダウン リストからコードを選択し、**[保存]** をクリックします。 既定では、**403** 応答コード (許可されていません) が選択されています。 特定の応答コードについては、**[ヘッダー値]** ボックスにエラー ページの URL を入力することもできます。 
 
-3. **[HTTP Large (HTTP ラージ)]** で **[ルール エンジン]** をクリックします。 このタブを使用して、機能を適用するパスを定義したり、トークン認証機能や、機能に関連する追加トークン認証を有効にしたりします。
+    6. 暗号化されたトークンを生成したら、そのトークンを、クエリ文字列として、URL パスのファイルの末尾に追加します。 たとえば、「 `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`」のように入力します。
 
-    - "IF" 列を使用して、トークン認証を適用する資産またはパスを定義します。 
-    - 機能のドロップダウンから "トークン認証" をクリックして追加し、トークン認証を有効にします。
+3. **[HTTP Large]\(HTTP ラージ\)** で **[ルール エンジン]** をクリックします。 ルール エンジンを使用して、機能を適用するパスを定義したり、トークン認証機能や、追加のトークン認証関連機能を有効にしたりします。 詳細については、[ルール エンジンのリファレンス](cdn-rules-engine-reference.md)を参照してください。
+
+    1. 既存のルールを選択するか、新しいルールを作成して、トークン認証を適用する資産またはパスを定義します。 
+    2. ルールでトークン認証を有効にするには、**[機能]** ドロップダウン リストから **[[Token Auth]\(トークン認証\)](cdn-rules-engine-reference-features.md#token-auth)** を選択し、**[有効]** を選択します。 ルールを更新する場合は **[更新]** を、ルールを作成する場合は **[追加]** をクリックします。
         
-    ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
+    ![CDN ルール エンジンのトークン認証を有効にする例](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. **[ルール エンジン]** には、有効にできる追加機能がいくつかあります。
+4. ルール エンジンで、追加のトークン認証関連機能を有効にすることもできます。 次の機能のいずれかを有効にするには、**[機能]** ドロップダウン リストからその機能を選択し、**[有効]** を選択します。
     
-    - トークン認証拒否コード: 要求が拒否されたときにユーザーに返される応答の種類を決定します。 [トークン認証] タブの拒否コード設定は、ここで設定されたルールで上書きされます。
-    - トークン認証無視: トークンの検証に使用される URL で大文字と小文字が区別されるかどうかを決定します。
-    - トークン認証パラメーター: 要求された URL のトークン認証クエリ文字列パラメーターの名前を変更します。 
+    - **[トークン認証拒否コード](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: 要求が拒否されたときにユーザーに返される応答の種類を決定します。 トークン ベースの認証ページの **[Custom Denial Handling]\(カスタム拒否の処理\)** セクションで設定された応答コードは、ここで設定されたルールで上書きされます。
+    - **[トークン認証の URL 大文字と小文字の無視](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: トークンの検証に使用される URL で大文字と小文字が区別されるかどうかを決定します。
+    - **[トークン認証パラメーター](cdn-rules-engine-reference-features.md#token-auth-parameter)**: 要求された URL に表示されるトークン認証クエリ文字列パラメーターの名前を変更します。 
         
-    ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-token-auth/cdn-rules-engine2.png)
+    ![CDN ルール エンジンのトークン認証設定の例](./media/cdn-token-auth/cdn-rules-engine2.png)
 
-5. トークン ベースの認証機能のトークンを生成するアプリケーションであるトークンはカスタマイズできます。 ソース コードには、[GitHub](https://github.com/VerizonDigital/ectoken) からアクセスできます。
+5. トークンをカスタマイズするには、[GitHub](https://github.com/VerizonDigital/ectoken) でソース コードにアクセスします。
 使用可能な言語は次のとおりです。
     
-    - C
-    - C#
-    - PHP
-    - Perl
-    - Java
-    - Python    
-
+- C
+- C#
+- PHP
+- Perl
+- Java
+- Python    
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Azure CDN の機能とプロバイダーの価格
 
-[CDN の概要](cdn-overview.md)に関するトピックをご覧ください。
+詳細については、[CDN の概要](cdn-overview.md)に関するページをご覧ください。

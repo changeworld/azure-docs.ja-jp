@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT Suite コネクテッド ファクトリについての FAQ | Microsoft Docs"
+title: "コネクテッド ファクトリ ソリューションの FAQ - Azure | Microsoft Docs"
 description: "IoT Suite コネクテッド ファクトリに関してよく寄せられる質問"
 services: 
 suite: iot-suite
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 11/10/2017
 ms.author: corywink
-ms.openlocfilehash: babd39d5e2f290d9e3f7fc3a232937c6ccfc85c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d4cb452b34ddefc70dc1adcff0e5fead072aa16a
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Azure IoT Suite コネクテッド ファクトリ事前構成済みソリューションに関してよく寄せられる質問
 

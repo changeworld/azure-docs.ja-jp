@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory に新しいユーザーを追加する | Microsoft Docs"
-description: "Azure Active Directory に新しいユーザーを追加する方法について説明します。"
+title: "Azure Active Directory でのユーザーの追加または削除 | Microsoft Docs"
+description: "Azure Active Directory で新しいユーザーを追加する方法または既存のユーザーを削除する方法について説明します。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2017
+ms.date: 11/07/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 9b6a48220132bb8ea18ae5efca46ea2faf825806
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e46ff82c4177de6b33e5df8714318bff83fbb34
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>クイック スタート: Azure Active Directory に新しいユーザーを追加する
 この記事では、Azure ポータルを使用して組織の新しいユーザーを Azure Active Directory (Azure AD) に 1 度に追加するか、オンプレミスの Windows Server AD ユーザー アカウントのデータを同期することによって追加する方法を説明します。 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
    ![[追加] コマンドの選択](./media/add-users-azure-active-directory/add-user.png)
 4. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 "[ドメイン名].onmicrosoft.com"、または検証済みの非フェデレーション [カスタム ドメイン名](add-custom-domain.md) ("contoso.com" など) のいずれかである必要があります。
 5. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
-6. 必要に応じて、ユーザーの **[プロファイル]**、**[グループ]**、または **[ディレクトリ ロール]** を開き、情報を入力します。 ユーザーおよび管理者のロールの詳細については、「 [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
+6. 必要に応じて、ユーザーの **[プロファイル]**、**[グループ]**、または **[ディレクトリ ロール]** を開き、情報を入力します。 ユーザーおよび管理者のロールの詳細については、「 [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
 7. **[ユーザー]** で、**[作成]** を選択します。
 8. ユーザーがサインインできるように、新しいユーザーに生成されたパスワードを安全に配布します。
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ### <a name="learn-more"></a>詳細情報 
-* [外部ユーザーの追加](active-directory-users-create-external-azure-portal.md)
+* [別のディレクトリからのゲスト ユーザーの追加](active-directory-b2b-what-is-azure-ad-b2b.md) 
 
 * [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
 

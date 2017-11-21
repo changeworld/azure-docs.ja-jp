@@ -5,7 +5,7 @@ services: container-instances
 documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
+editor: mmacy
 tags: acs, azure-container-service
 keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure"
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 11/07/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 8cb00210ee260383d546be4faf141c133661156b
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 848f6cbde49efdcfe96fc58ebc4160e0ea39f3f2
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
 
@@ -54,13 +54,19 @@ Azure Container Registry をデプロイする場合、まず、リソース グ
 az group create --name myResourceGroup --location eastus
 ```
 
-[az acr create](/cli/azure/acr#create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。 次の例では、*mycontainerregistry082* という名前を使用します。
+[az acr create](/cli/azure/acr#create) コマンドを使用して Azure Container Registry を作成します。 コンテナー レジストリ名は、Azure 内で**一意にする必要があります**。また、5 ～ 50 文字の英数字を含める必要があります。 `<acrName>` を、レジストリの一意の名前に置き換えます。
+
+```azurecli
+az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
+```
+
+たとえば、*mycontainerregistry082* という名前の Azure Container Registry を作成するには、次のコマンドを実行します。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic --admin-enabled true
 ```
 
-このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして `<acrname>` を使用します。
+このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして `<acrName>` を使用します。
 
 ## <a name="container-registry-login"></a>Container Registry のログイン
 
@@ -70,7 +76,7 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 az acr login --name <acrName>
 ```
 
-このコマンドは、完了すると 'Login Succeeded’(ログインに成功しました) というメッセージを返します。
+このコマンドが完了すると、`Login Succeeded` というメッセージが返されます。
 
 ## <a name="tag-container-image"></a>コンテナー イメージのタグ付け
 
@@ -89,13 +95,21 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
 ```
 
-loginServer 名を取得するには、次のコマンドを実行します。
+loginServer 名を取得するには、次のコマンドを実行します。 `<acrName>` を、コンテナー レジストリの名前に置き換えます。
 
 ```azurecli
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-コンテナー レジストリの loginServer で *aci-tutorial-app* イメージにタグを付けます。 また、イメージ名の末尾に `:v1` を付加します。 このタグは、イメージのバージョン番号を示します。
+出力例:
+
+```
+Result
+------------------------
+mycontainerregistry082.azurecr.io
+```
+
+コンテナー レジストリの loginServer で *aci-tutorial-app* イメージにタグを付けます。 また、イメージ名の末尾に `:v1` を付加します。 このタグは、イメージのバージョン番号を示します。 `<acrLoginServer>` を、先ほど実行した `az acr show` コマンドの結果に置き換えます。
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -117,12 +131,23 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app        v1                  a9
 
 ## <a name="push-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
-*aci-tutorial-app* イメージをレジストリにプッシュします。
-
-次の例を使用して、コンテナー レジストリ loginServer 名を環境の loginServer に置き換えます。
+`docker push` コマンドを使用して、*aci-tutorial-app* イメージをレジストリにプッシュします。 `<acrLoginServer>` を、以前の手順で取得した完全なログイン サーバー名に置き換えます。
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
+```
+
+インターネット接続に応じて、`push` 操作には数秒から数分かかります。出力は次のようになります。
+
+```bash
+The push refers to a repository [mycontainerregistry082.azurecr.io/aci-tutorial-app]
+3db9cac20d49: Pushed
+13f653351004: Pushed
+4cd158165f4d: Pushed
+d8fbd47558a8: Pushed
+44ab46125c35: Pushed
+5bef08742407: Pushed
+v1: digest: sha256:ed67fff971da47175856505585dcd92d1270c3b37543e8afd46014d328f05715 size: 1576
 ```
 
 ## <a name="list-images-in-azure-container-registry"></a>Azure Container Registry のイメージの一覧表示

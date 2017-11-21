@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 10/30/2017
 ms.author: nisoneji
-ms.openlocfilehash: 134e17ebda3105be2b53d072fdef7aeda4a98bde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 840a559a82f3227a865d3c606b2fa321cb6144ab
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="plan-capacity-for-protecting-virtual-machines-and-physical-servers-in-azure-site-recovery"></a>Azure Site Recovery で仮想マシンおよび物理サーバーを保護するための容量計画
+# <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Site Recovery を使用して Hyper-V VM を保護するための容量計画
 
-Azure Site Recovery Capacity Planner ツールを使用すると、Azure Site Recovery で Hyper-V VM、VMware VM、Windows および Linux 物理サーバーをレプリケートするために必要な容量を算出できます。
+Azure Site Recovery Capacity Planner ツールを使用すると、Azure Site Recovery で Hyper-V VM をレプリケートするために必要な容量を算出できます。
 
 Site Recovery Capacity Planner では、ソース環境やワークロードを分析できるほか、必要な帯域幅、ソースの場所に必要なサーバー リソース、およびターゲットの場所に必要な (仮想マシンやストレージなどの) リソースを評価することができます。
 
@@ -35,11 +35,8 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
 
 
 1. VM、VM あたりのディスク数、ディスクあたりのストレージなど、環境の情報を収集します。
-2. レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 これを行うには、次の手順を実行します。
-
-   * Hyper-V の VM をレプリケートする場合、[Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057) をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは 1 週間に渡って実行して平均をキャプチャすることをお勧めします。
-   * VMware 仮想マシンをレプリケートする場合、[Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用してチャーン率を算出します。
-   * 物理サーバーをレプリケートする場合は、手動で評価を行う必要があります。
+2. レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 それを行うには、[Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは 1 週間に渡って実行して平均をキャプチャすることをお勧めします。
+   
 
 ## <a name="run-the-quick-planner"></a>クイック プランナーの実行
 1. [Azure Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel) ツールをダウンロードして起動します。 マクロを実行する必要があるので、求められたら編集の有効化とコンテンツの有効化を選択します。
@@ -50,8 +47,8 @@ Site Recovery Capacity Planner では、ソース環境やワークロードを�
 
    * **[シナリオの選択]** で **[Hyper-V から Azure]** または **[VMware/物理から Azure]** を選択します。
    * **[Average daily data change rate (%) (1 日の平均データ変更率 (%))]** に [Hyper-V 容量計画ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [Azure Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。  
-   * **[圧縮]** は、Azure に VMware の VM または物理サーバーをレプリケートする場合の圧縮のみに該当します。 30% 以上を見積もりますが、必要に応じて設定を変更することができます。 Hyper-V の VM を Azure の圧縮にレプリケートする場合は、Riverbed などのサードパーティのアプライアンスを使用できます。
-   * **[Retention Inputs (保持の入力)]** には、レプリカを保持する期間を指定します。 VMware または物理サーバーをレプリケートする場合は、日数で値を入力します。 Hyper-V をレプリケートする場合は、時間単位で時間を入力します。
+   * **圧縮**設定は、Hyper-V VM を Azure にレプリケートする場合には使用されません。 圧縮する場合は、Riverbed などのサードパーティのアプライアンスを使用します。
+   * **[保持の入力]** には、レプリカを保持する期間を時間単位で指定します。
    * **[Number of hours in which initial replication for the batch of virtual machines should complete (仮想マシンのバッチの初期レプリケーションを完了させる時間)]** と **[Number of virtual machines per initial replication batch (初期レプリケーションのバッチあたりの仮想マシンの数)]** には、初期レプリケーションの要件の計算に使用した設定を入力します。  Site Recovery をデプロイする際には、初期データ セット全体をアップロードする必要があります。
 
    ![入力](./media/site-recovery-capacity-planner/inputs.png)
@@ -126,3 +123,7 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 2. 変更する必要がある場合、**Workload Qualification** ワークシートを変更して、**[Submit data to the planner tool (データをプランナー ツールに送信)]** をもう一度クリックします。  
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
+
+## <a name="next-steps"></a>次のステップ
+
+Capacity Planner ツールを[実行する方法について説明します](site-recovery-capacity-planning-for-hyper-v-replication.md)。

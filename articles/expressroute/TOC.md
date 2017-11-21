@@ -36,12 +36,19 @@
 ### [Azure ポータル](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
 ### [Azure CLI](how-to-routefilter-cli.md)
+## [パブリック ピアリングから Microsoft ピアリングへの移行](how-to-move-peering.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 ## [仮想ネットワークをクラシックから Resource Manager に移行する](expressroute-migration-classic-resource-manager.md)
 ## ExpressRoute のルーターの構成
 ### [ルーターの構成](expressroute-config-samples-routing.md)
 ### [NAT のルーター構成サンプル](expressroute-config-samples-nat.md)
 ## [ExpressRoute に使用する Network Performance Monitor の構成](how-to-npm.md)
+## クラシック デプロイメント モデルに関する記事
+### [回線の変更](expressroute-howto-circuit-classic.md)
+### [ピアリング構成の作成と変更](expressroute-howto-routing-classic.md)
+### [ExpressRoute 回線への仮想ネットワークのリンク](expressroute-howto-linkvnet-classic.md)
+### [ExpressRoute 接続と S2S 接続の共存の構成](expressroute-howto-coexist-classic.md)
+### [ゲートウェイの VNet への追加](expressroute-howto-add-gateway-classic.md)
 
 ## ベスト プラクティス
 ### [ネットワーク セキュリティとクラウド サービスのベスト プラクティス](../best-practices-network-security.md)

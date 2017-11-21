@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5d09021627ca60a94cb1984b29b8dc7913d093d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b641f005796fd003a0f9b86c22505782ac4284d8
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する 
 
@@ -180,7 +180,7 @@ AD FS レベルでトラフィックを有効にしたり、ブロックした�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)に関するページを参照してください。
+詳細については、[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)に関するページを参照してください。
 
 
 

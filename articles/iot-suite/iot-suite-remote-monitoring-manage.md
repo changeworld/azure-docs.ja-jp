@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 09/06/2017
+ms.date: 11/10/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e0b16a30bfd3b7ed711bcb1cc955d4eccf09fac2
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 84c2eaaab2dfc09c93fbfeac3fe2bfcc7066a411
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="manage-and-configure-your-devices"></a>デバイスの管理と構成
 
@@ -36,7 +36,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを実行するには、Azure サブスクリプションのリモート監視ソリューションのデプロイ済みインスタンスが必要です。
+このチュートリアルを実行するには、お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューションのインスタンスが必要です。
 
 リモート監視ソリューションをまだデプロイしていない場合は、「[Deploy the remote monitoring preconfigured solution](iot-suite-remote-monitoring-deploy.md)」(リモート監視構成済みソリューションのデプロイ) チュートリアルを完了しておく必要があります。
 

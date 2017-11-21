@@ -2,7 +2,7 @@
 title: "Azure Cosmos DB のテーブル API の概要 | Microsoft Docs"
 description: "人気のある OSS MongoDB API と Azure Cosmos DB を使用して、大量のキー値データを低遅延で格納および照会する方法を説明します。"
 services: cosmos-db
-author: bhanupr
+author: mimig
 manager: jhubbard
 editor: monicar
 documentationcenter: 
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
-ms.author: arramac
-ms.openlocfilehash: 6a399a3a7979f6165d26eb48505242976d51e64f
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.date: 11/15/2017
+ms.author: mimig1
+ms.openlocfilehash: 8e8a5d89080df54da1a951d94fac12592de29c50
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB の概要: Table API
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API の概要
 
-[Azure Cosmos DB](introduction.md) には、Azure Table Storage 向けに作成されたアプリケーションの中でも、以下に挙げたような特に高度な機能を必要とするアプリケーションのためのテーブル API (プレビュー) が用意されています。
+[Azure Cosmos DB](introduction.md) には、Azure Table Storage 向けに作成されたアプリケーションの中でも、以下に挙げたような特に高度な機能を必要とするアプリケーションのための Table API が用意されています。
 
 * [ターンキー グローバル分散](distribute-data-globally.md)。
 * 世界規模での[専用スループット](partition-data.md)。
@@ -30,18 +30,18 @@ ms.lasthandoff: 11/02/2017
 * 高可用性の保証。
 * [自動セカンダリ インデックス作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)。
 
-このようなアプリケーションについては、テーブル API を使って Azure Cosmos DB に移行することで、コードに変更を加えることなく、高度な機能を活用できるようになります。 Table API は、.NET と Python で使用できます。
+Azure Table Storage 用に作成されたアプリケーションについては、Table API を使って Azure Cosmos DB に移行することで、コードに変更を加えることなく、高度な機能を活用できるようになります。 Table API には、.NET 用の 1 つのクライアント SDK があります。
 
-以下のビデオをぜひご覧ください。Azure Cosmos DB のテーブル API の導入方法を Aravind Ramachandran が説明しています。
+以下のビデオをぜひご覧ください。Azure Cosmos DB の Table API の導入方法を Aravind Ramachandran が説明しています。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Table-API-for-Azure-Cosmos-DB/player]
 > 
 > 
 
 ## <a name="table-offerings"></a>Table のサービス
-現在 Azure Table Storage を使用している場合、Azure Cosmos DB Table API (プレビュー) に移行することにより次のメリットが得られます。
+現在 Azure Table Storage を使用している場合、Azure Cosmos DB Table API に移行することにより次のメリットが得られます。
 
-| | Azure Table Storage | Azure Cosmos DB Table API (プレビュー) |
+| | Azure テーブル ストレージ | Azure Cosmos DB Table API |
 | --- | --- | --- |
 | 待機時間 | 高速だが、待ち時間の上限はなし。 | 読み取りと書き込みの待ち時間は数ミリ秒であり、世界中のどこでもあらゆるスケールで 99 パーセンタイルの 10 ミリ秒未満の読み取り待ち時間と 15 ミリ秒未満の書き込み待ち時間でサポート。 |
 | スループット | 可変スループット モデル。 テーブルには、20,000 操作/秒のスケーラビリティの制限あり。 | SLA によって保証された、[テーブルごとの専用の予約済みスループット](request-units.md)を備えた高いスケーラビリティ。 アカウントにはスループットの上限がなく、テーブルあたり 10,000, 000 操作/秒以上に対応。 |
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/02/2017
 | クエリ | クエリの実行では、プライマリ キーにインデックスを使用し、それ以外の場合はスキャンする。 | クエリは、クエリ時間の短縮のためにプロパティの自動インデックス作成を利用できる。 Azure Cosmos DB のデータベース エンジンは、集計、地理空間、および並べ替えをサポート可能。 |
 | 整合性 | プライマリ リージョン内では厳密な整合性。 セカンダリ リージョン内では最終的な整合性。 | アプリケーションのニーズに基づいて、可用性、待ち時間、スループット、および整合性のトレードオフを行う[明確に定義された 5 つの整合性レベル](consistency-levels.md)。 |
 | 価格 | ストレージ最適化。 | スループット最適化。 |
-| SLA | 99.99% の可用性。 | 単一のリージョン内では 99.99% の可用性、さらにリージョンを追加して可用性を高めることが可能。 一般公開に対する[業界トップレベルの包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)。 |
+| SLA | 99.99% の可用性。 | すべての単一リージョンのアカウントとすべてのマルチリージョンのアカウントに対して緩やかな整合性で 99.99% の可用性 SLA、すべてのマルチリージョンのデータベース アカウントに 99.999% の読み取り可用性、一般公開に対する[業界トップレベルの包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)。 |
 
 ## <a name="get-started"></a>作業開始
 
@@ -64,5 +64,7 @@ ms.lasthandoff: 11/02/2017
 * [Table API を使用してテーブル データのクエリを実行する方法](tutorial-query-table.md)
 * [テーブル API を使用して Azure Cosmos DB グローバル分散を設定する方法](tutorial-global-distribution-table.md)
 * [Azure Cosmos DB Table .NET API](table-sdk-dotnet.md)
+* [Azure Cosmos DB Table Java API](table-sdk-java.md)
+* [Azure Cosmos DB Table Node.js API](table-sdk-nodejs.md)
 * [Azure Cosmos DB Table SDK for Python](table-sdk-python.md)
 

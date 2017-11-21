@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 8f0186900caf6bff19e15ef6b99c1f49fbf90a81
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: bbf969927e96053df055ac6e347bb8fb746054c8
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する
 このトピックでは、Azure Data Factory (ADF) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage を経由して SQL Azure データベースにデータを移動する方法を説明します。
@@ -80,32 +80,14 @@ Data Management Gateway では、データのシリアル化と逆シリアル�
 Data Management Gateway のセットアップ手順と詳細については、「 [Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)
 
 ## <a name="adflinkedservices"></a>データ リソースに接続するためにリンクされたサービスを作成する
-リンクされたサービスは、Azure Data Factory がデータ リソースに接続するために必要な情報を定義します。 リンクされたサービスを作成するための手順は、「[リンクされたサービスを作成する](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services)」を参照してください。
+リンクされたサービスは、Azure Data Factory がデータ リソースに接続するために必要な情報を定義します。 このシナリオには、リンクされたサービスを必要とする 3 つのリソースがあります。
 
-このシナリオには、リンクされたサービスを必要とする 3 つのリソースがあります。
+1. オンプレミスの SQL Server
+2. Azure Blob Storage
+3. Azure SQL データベース
 
-1. [オンプレミスの SQL Server 用のリンクされたサービス](#adf-linked-service-onprem-sql)
-2. [Azure BLOB ストレージ用のリンクされたサービス](#adf-linked-service-blob-store)
-3. [Azure SQL データベース用のリンクされたサービス](#adf-linked-service-azure-sql)
+リンクされたサービスを作成するための手順は、「[リンクされたサービスを作成する](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services)」を参照してください。
 
-### <a name="adf-linked-service-onprem-sql"></a>オンプレミスの SQL Server データベース用のリンクされたサービス
-オンプレミス SQL Server 用にリンクされたサービスを作成するには、次の手順を実行します。
-
-* Azure クラシック ポータルで、ADF ランディング ページの **[データ ストア]** をクリックします。
-* **[SQL]** を選択し、オンプレミス SQL Server の "*ユーザー名*" と "*パスワード*" の各資格情報を入力します。 サーバー名は**完全修飾サーバー名、バックスラッシュ、インスタンス名 (servername\instancename)** で入力する必要があります。 リンクされたサービスに *adfonpremsql*という名前を付けます。
-
-### <a name="adf-linked-service-blob-store"></a>BLOB 用のリンクされたサービス
-Azure BLOB ストレージ アカウント用にリンクされたサービスを作成するには、次の手順を実行します。
-
-* Azure クラシック ポータルで、ADF ランディング ページの **[データ ストア]** をクリックします。
-* **Azure Storage Account**
-* Azure BLOB ストレージのアカウント キーとコンテナー名を入力します。 リンクされたサービスに *adfds*という名前を付けます。
-
-### <a name="adf-linked-service-azure-sql"></a>Azure SQL データベース用のリンクされたサービス
-Azure SQL Database 用にリンクされたサービスを作成するには、次の手順を実行します。
-
-* Azure クラシック ポータルで、ADF ランディング ページの **[データ ストア]** をクリックします。
-* **[Azure SQL]** を選択し、Azure SQL Database の "*ユーザー名*" と "*パスワード*" の各資格情報を入力します。 "*ユーザー名*" は *user@servername* で指定する必要があります。   
 
 ## <a name="adf-tables"></a>データセットへのアクセス方法を指定するためのテーブルを定義して作成する
 以下のスクリプトベースの手順に従って、データセットの構造、場所、可用性を指定するテーブルを作成します。 テーブルを定義するには、JSON ファイルを使用します。 これらのファイルの構造の詳細については、「 [データセット](../../data-factory/v1/data-factory-create-datasets.md)」を参照してください。
@@ -311,9 +293,6 @@ Azure SQL Database 用にリンクされたサービスを作成するには、�
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
-Azure クラシック ポータルで (ダイアグラムをクリックすると) ADF 上にパイプラインが次のように表示されることを確認します。
-
-![ADF パイプライン](./media/move-sql-azure-adf/DJP1kji.png)
 
 ## <a name="adf-pipeline-start"></a>パイプラインを開始する
 これで、次のコマンドを使用してパイプラインを実行できます。

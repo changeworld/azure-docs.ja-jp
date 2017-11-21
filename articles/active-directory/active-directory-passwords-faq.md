@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: fda60c9dfde64c526ad4cbf7fc4ccc5b56becafb
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 14c565bb67480681e1d398a0a21a11448f405e4e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -176,6 +176,11 @@ ms.lasthandoff: 10/25/2017
   > **A:** パスワード リセットのセッション有効期間は 15 分です。 パスワード リセット操作の開始からパスワードをリセットするまで、ユーザーに 15 分の時間が与えられます。 この期間を経過すると、電子メールと SMS のワンタイム パスコードは無効になります。
   >
   >
+* **Q: ユーザーがパスワードをリセットするのをブロックできますか。**
+
+  > **A:** はい。グループを使用して、セルフサービスのパスワード リセットを有効にしている場合は、この機能を許可しているグループから削除できます。
+  >
+  >
 
 ## <a name="password-change"></a>パスワードの変更
 
@@ -187,6 +192,11 @@ ms.lasthandoff: 10/25/2017
 * **Q: ユーザーのオンプレミスのパスワードの有効期限が切れたときに Office ポータルに通知できますか。**
 
   > **A:** 現時点では ADFS を使用すれば、[ADFS を使用したパスワード ポリシーの要求の送信](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)に関する記事の手順に従って通知できます。 パスワード ハッシュ同期を使用している場合は、現時点では通知できません。 マイクロソフトではパスワードのポリシーをオンプレミスから同期していないため、有効期限切れの通知をクラウドに送信できません。 いずれの場合でも、[PowerShell を使用してパスワードの有効期限が迫っていることをユーザーに通知する](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)ことは可能です。
+  >
+  >
+* **Q: ユーザーがパスワードを変更するのをブロックできますか。**
+
+  > **A:** クラウド専用ユーザーの場合は、これをブロックすることはできません。 オンプレミスのユーザーの場合、`User cannot change password` をオンにすると、これらのユーザーが各自のパスワードを変更できないように設定できます。
   >
   >
 
@@ -237,7 +247,7 @@ ms.lasthandoff: 10/25/2017
   >
 * **Q: オンプレミスのアカウントが無効にされている場合、クラウド アカウント/アクセスにどのような影響がありますか。**
 
-  > **A:**オンプレミスの ID が無効にされている場合、AAD Connect 経由の次回の同期間隔 (既定で 30 分間隔) で、クラウド ID/アクセスも無効になります。
+  > **A:** オンプレミスの ID が無効にされている場合、AAD Connect 経由の次回の同期間隔 (既定で 30 分間隔) で、クラウド ID/アクセスも無効になります。
   >
   >
 * **Q: オンプレミスのアカウントがオンプレミスの Active Directory パスワード ポリシーによって制約されている場合に、パスワードを変更すると、SSPR はこのポリシーに従いますか。**
@@ -263,15 +273,14 @@ ms.lasthandoff: 10/25/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
-
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**展開**](active-directory-passwords-best-practices.md) - ここで見つかるガイダンスを使用してユーザーに対する SSPR を計画してデプロイできます
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします。
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します
-* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します
-* [**パスワード ライトバック**](active-directory-passwords-writeback.md) - オンプレミスのディレクトリでのパスワード ライトバックのしくみ
-* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
+* [ライセンスに関する質問。](active-directory-passwords-licensing.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
+* [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
+* [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)

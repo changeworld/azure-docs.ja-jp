@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 11/13/2017
 ms.author: bradsev;
-ms.openlocfilehash: cd73aed14f672351b72e09d682909a47c63b9026
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58cea8b0288469a76dd8c4eb967caa8e87cd3dd7
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="group-manager-tasks"></a>グループ マネージャーのタスク
 
@@ -101,7 +101,7 @@ Microsoft アカウントがない場合は、**[Sign up now]\(今すぐサイ�
 
 **[続行]**をクリックします。 
 
-## <a name="2-groupcommon-team-project"></a>2.GroupCommon チーム プロジェクト
+## <a name="2-groupcommon-team-project"></a>手順 2.GroupCommon チーム プロジェクト
 
 VSTS サーバーが作成されると、**GroupCommon** ページ (*https://\<servername\>.visualstudio.com/GroupCommon*) が開きます。
                             

@@ -1,55 +1,63 @@
 ---
-title: "Azure Time Series Insights 環境へのイベントの送信 | Microsoft Docs"
-description: "このチュートリアルでは、Time Series Insights 環境にイベントをプッシュする手順について説明します"
-keywords: 
-services: tsi
-documentationcenter: 
+title: "Azure Time Series Insights 環境にイベントを送信する方法 | Microsoft Docs"
+description: "このチュートリアルでは、イベント ハブを作成および構成し、サンプル アプリケーションを実行して Azure Time Series Insights に表示されるイベントをプッシュする方法について説明します。"
+services: time-series-insights
+ms.service: time-series-insights
 author: venkatgct
-manager: jhubbard
-editor: 
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 07/21/2017
 ms.author: venkatja
-ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MarkMcGeeAtAquent
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 543fafac63423ab874c6c8e40d91a1ce0f161987
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
-
-このチュートリアルでは、イベント ハブを作成および構成し、サンプル アプリケーションを実行してイベントをプッシュする方法について説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Time Series Insights](https://insights.timeseries.azure.com) で環境を表示してください。
+この記事では、イベント ハブを作成および構成し、サンプル アプリケーションを実行してイベントをプッシュする方法について説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Time Series Insights](https://insights.timeseries.azure.com) で環境を表示してください。
 
 ## <a name="configure-an-event-hub"></a>イベント ハブを構成する
-1. イベント ハブを作成するには、イベント ハブに関する[ドキュメント](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)の手順に従います。
+1. イベント ハブを作成するには、イベント ハブに関する[ドキュメント](../event-hubs/event-hubs-create.md)の手順に従います。
 
-2. Time Series Insights のイベント ソースで排他的に使用されるコンシューマー グループを作成していることを確認します。
+2. 検索バーで「**イベント ハブ**」を検索します。 返された一覧の **[イベント ハブ]** をクリックします。
 
-  > [!IMPORTANT]
-  > このコンシューマー グループがその他のサービス (Stream Analytics ジョブや別の Time Series Insights 環境など) で使用されていないことを確認してください。 コンシューマー グループが他のサービスで使用されている場合、この環境および他のサービスの読み取り操作は悪影響を受けます。 "$Default" をコンシューマー グループとして使用している場合、他の閲覧者によって再利用される可能性があります。
+3. イベント ハブを選択するには、その名前をクリックします。
+
+4. 構成ウィンドウ中央の [エンティティ] で、再び **[イベント ハブ]** をクリックします。
+
+5. イベント ハブの名前を選択して構成します。
 
   ![イベント ハブ コンシューマー グループの選択](media/send-events/consumer-group.png)
 
-3. イベント ハブに、CSharp サンプルでイベントの送信に使用される "MySendPolicy" を作成します。
+6. **[エンティティ]** で **[コンシューマー グループ]** を選択します。
+ 
+7. Time Series Insights のイベント ソースで排他的に使用されるコンシューマー グループを作成していることを確認します。
+
+   > [!IMPORTANT]
+   > このコンシューマー グループがその他のサービス (Stream Analytics ジョブや別の Time Series Insights 環境など) で使用されていないことを確認してください。 コンシューマー グループが他のサービスで使用されている場合、この環境および他のサービスの読み取り操作は悪影響を受けます。 "$Default" をコンシューマー グループとして使用している場合、他の閲覧者によって再利用される可能性があります。
+
+8. **[設定]** の見出しにある **[共有アクセス ポリシー]** を選択します。
+
+9. イベント ハブに、CSharp サンプルでイベントの送信に使用される **MySendPolicy** を作成します。
 
   ![[共有アクセス ポリシー] を選択して [追加] ボタンをクリックする](media/send-events/shared-access-policy.png)  
 
   ![[新しい共有アクセス ポリシーの追加]](media/send-events/shared-access-policy-2.png)  
 
 ## <a name="create-time-series-insights-event-source"></a>Time Series Insights のイベント ソースを作成する
-1. イベント ソースを作成していない場合は、[こちらの手順](time-series-insights-add-event-source.md)に従って、イベント ソースを作成します。
+1. イベント ソースを作成していない場合は、[こちらの手順](time-series-insights-how-to-add-an-event-source-eventhub.md)に従って、イベント ソースを作成します。
 
-2. タイムスタンプ プロパティ名として "deviceTimestamp" を指定します。このプロパティは、CSharp サンプルで実際のタイムスタンプとして使用されます。 タイムスタンプ プロパティ名は大文字と小文字が区別されます。また、JSON としてイベント ハブに送信される際、値は __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ 形式にする必要があります。 このプロパティがイベントに存在しない場合は、イベント ハブにエンキューされた時刻が使用されます。
+2. タイムスタンプ プロパティ名として **deviceTimestamp** を指定します。このプロパティは、C# のサンプルで実際のタイムスタンプとして使用されます。 タイムスタンプ プロパティ名は大文字と小文字が区別されます。また、JSON としてイベント ハブに送信される際、値は __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ 形式にする必要があります。 このプロパティがイベントに存在しない場合は、イベント ハブにエンキューされた時刻が使用されます。
 
   ![イベント ソースの作成](media/send-events/event-source-1.png)
 
 ## <a name="sample-code-to-push-events"></a>イベントをプッシュするサンプル コード
-1. イベント ハブ ポリシー "MySendPolicy" に移動し、ポリシー キーを含む接続文字列をコピーします。
+1. **MySendPolicy** という名前のイベント ハブ ポリシーに移動します。 ポリシー キーを含む**接続文字列**をコピーします。
 
   ![MySendPolicy の接続文字列のコピー](media/send-events/sample-code-connection-string.png)
 
@@ -163,6 +171,7 @@ namespace Microsoft.Rdx.DataGenerator
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
+
 ### <a name="sample-3"></a>サンプル 3
 
 #### <a name="input"></a>入力
@@ -235,5 +244,4 @@ namespace Microsoft.Rdx.DataGenerator
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>次のステップ
-
-* [Time Series Insights ポータル](https://insights.timeseries.azure.com)で環境を表示する
+[Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示します。

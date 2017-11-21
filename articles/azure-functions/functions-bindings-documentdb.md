@@ -1,4 +1,4 @@
----
+﻿---
 title: "Functions の Azure Cosmos DB バインド | Microsoft Docs"
 description: "Azure Functions で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。"
 services: functions

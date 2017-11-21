@@ -17,6 +17,7 @@
 #### [Batch サービスでの Azure AD](batch-aad-auth.md)
 #### [Batch Management での Azure AD](batch-aad-auth-management.md)
 ### [コンピューティング集中型 VM](batch-pool-compute-intensive-sizes.md)
+### [コンテナー ワークロード](batch-docker-container-workloads.md)
 ### [同時実行ノード タスク](batch-parallel-node-tasks.md)
 ### [状態別にタスクをカウントする](batch-get-task-counts.md)
 ### [カスタム イメージを使用してプールを作成する](batch-custom-images.md)

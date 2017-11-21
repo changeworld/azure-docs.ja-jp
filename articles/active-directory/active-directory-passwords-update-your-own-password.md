@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/27/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 1a5e97e2a6aca440c9643569014ffce41a614324
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f175f5711b9798153d209f6645aa8bae9f2a00b
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="help-i-forgot-my-azure-ad-password"></a>Azure AD パスワードを忘れた場合
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
    > アカウントのロックを解除する必要がある場合は、この時点で、[パスワードは覚えていますが、サインインできません] オプションを選択します。
    >
 
-3. IT スタッフによる SSPR の構成内容に応じて、以下の項目のうち 1 つ以上が表示されます。 「[セルフサービスによるパスワードのリセットを登録する](active-directory-passwords-reset-register.md)」の記事で使用する前に、自分または IT スタッフがこれらの情報の一部を設定しています。
+3. IT スタッフによる SSPR の構成内容に応じて、以下の認証方法のうち 1 つ以上が表示されます。 「[セルフサービスによるパスワードのリセットを登録する](active-directory-passwords-reset-register.md)」の記事で使用する前に、自分または IT スタッフがこれらの情報の一部を設定しています。
 
    * **連絡用電子メール アドレスにメールを送信**
    * **携帯電話に SMS 送信**

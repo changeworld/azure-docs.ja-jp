@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: v-dotren
-ms.openlocfilehash: 3c62bff7ba37f7e45d73fa2cf67a4aee3b4a7a38
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: f34647afc600b72704859952d0a40edad4a3b40f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -62,7 +62,12 @@ VNet を作成し、それにサブネットを割り当てたら、その VNet 
 * Batch サービスは、タスクをスケジュールする目的でプールの計算ノードと通信する必要があります。 この通信を有効にするには、Batch アカウントが存在するリージョンで Batch サービスによって利用される IP アドレスごとにユーザー定義ルートを追加します。 Batch サービスの IP アドレスの一覧を取得するには、Azure サポートにお問い合わせください。
 
 * オンプレミス ネットワーク アプライアンス経由の Azure Storage への送信トラフィック (具体的には、フォーム `<account>.table.core.windows.net`、`<account>.queue.core.windows.net`、`<account>.blob.core.windows.net` の URL) がブロックされないようにしてください。
-    
+
+ユーザー定義ルートを追加するとき、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、**[次ホップの種類]** を **[インターネット]** に設定します。 次の例を参照してください。
+
+![ユーザー定義のルート](./media/batch-virtual-network/user-defined-route.png)
+
 ## <a name="next-steps"></a>次のステップ
 
 - Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
+- ユーザー定義ルートの作成の詳細については、「[Azure Portal を使用してユーザー定義ルートを作成する](../virtual-network/create-user-defined-route-portal.md)」を参照してください。

@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 10/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e233547ce2add2d3eab1e9c46c4d7e701df72495
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 58ebf74e166cdcae2c54b134cb99552333fafa24
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Azure AD Reporting API にアクセスするための前提条件
 
@@ -111,6 +111,11 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites-azure-portal/15.png)
 
+7. **[アクセス許可の付与]** をクリックし、**[はい]** をクリックします。
+
+    ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites-azure-portal/17.png)
+
+
 ## <a name="gather-configuration-settings"></a>構成設定を収集する 
 このセクションでは、ディレクトリから次の設定を取得する方法を示しています。
 
@@ -180,7 +185,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
     b. **[有効期限]** として、**[2 年]** を選択します。
 
-    c. [ **Save**] をクリックします。
+    c. **[ Save]** をクリックします。
 
     d. キー値をコピーします。
 

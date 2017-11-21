@@ -3,10 +3,42 @@
 ## [Azure IoT オプションの比較](iot-suite-options.md)
 ## [構成済みソリューションの概要](iot-suite-what-are-preconfigured-solutions.md)
 
-# 作業の開始
+# 作業開始
 ## リモート監視
 ### [構成済みソリューションのデプロイ](iot-suite-remote-monitoring-deploy.md)
 ### [構成済みソリューションの運用](iot-suite-remote-monitoring-explore.md)
+
+## リモート監視 (以前のバージョン)
+### [事前に構成されたソリューションとは](iot-suite-v1-what-are-preconfigured-solutions.md)
+### [FAQ](iot-suite-v1-faq.md)
+
+### 作業の開始
+#### [事前に構成されたソリューションを使ってみる](iot-suite-v1-getstarted-preconfigured-solutions.md)
+#### [azureiotsuite.com のアクセス許可](iot-suite-v1-permissions.md)
+#### [リモート監視ソリューションのチュートリアル](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
+#### [Raspberry Pi を接続する](iot-suite-v1-raspberry-pi-kit-get-started.md)
+##### C の使用
+###### [シミュレートされたデータ](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
+###### [実際のセンサーを使用する](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
+###### [ファームウェアの更新プログラムを実装する](iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md)
+##### Node.js の使用
+###### [シミュレートされたデータ](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
+###### [実際のセンサーを使用する](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
+###### [ファームウェアの更新プログラムを実装する](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
+
+### ハウツー ガイド
+#### シミュレートされたデバイスの接続
+##### [Windows 上の C](iot-suite-v1-connecting-devices.md)
+##### [Linux 上の C](iot-suite-v1-connecting-devices-linux.md)
+##### [Node.JS](iot-suite-v1-connecting-devices-node.md)
+#### [ロジック アプリをリモート監視ソリューションへに接続する](iot-suite-v1-logic-apps-tutorial.md)
+#### [構成済みソリューションのカスタマイズ](iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)
+#### [リモート監視ソリューションでの動的テレメトリを使用する](iot-suite-v1-dynamic-telemetry.md)
+#### [リモート監視ソリューションでカスタム規則を作成する](iot-suite-v1-custom-rule.md)
+#### [リモート監視ソリューションでのデバイス情報](iot-suite-v1-remote-monitoring-device-info.md)
+
+
+
 
 ## 予測的なメンテナンス
 ### [予測的なメンテナンス ソリューションの概要](iot-suite-predictive-overview.md)
@@ -16,7 +48,7 @@
 ### [コネクティッド ファクトリ ソリューションの概要](iot-suite-connected-factory-overview.md)
 ### [コネクティッド ファクトリ ソリューションのチュートリアル](iot-suite-connected-factory-sample-walkthrough.md)
 
-# 方法
+# ハウツー ガイド
 ## リモート監視
 ### [高度な監視の実行](iot-suite-remote-monitoring-monitor.md)
 ### [ルールを使用した問題の検出](iot-suite-remote-monitoring-automate.md)
@@ -53,7 +85,7 @@
 ## [Stream Analytics](/azure/stream-analytics/)
 ## [Event Hubs](/azure/event-hubs/)
 ## [IoT Hub](/azure/iot-hub/)
-## [IoT Central](/azure/index#pivot=services&panel=iot)
+## [Microsoft IoT Central](/azure/index#pivot=services&panel=iot)
 ## [Machine Learning](/azure/machine-learning/)
 
 # リソース

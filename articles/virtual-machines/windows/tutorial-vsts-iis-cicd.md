@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a587f58fad2ec74c7633823c4d34f900e7c01f7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 006cac5606c411c9d86b36d0069021094fcdb1db
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Visual Studio Team Services と IIS を使用して継続的インテグレーション パイプラインを作成する
 ビルド、テスト、デプロイというアプリケーション開発の各フェーズを自動化するには、継続的インテグレーション/継続的配置 (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Visual Studio Team Services と、IIS を実行する Azure の Windows 仮想マシン (VM) を使用して CI/CD パイプラインを作成します。 学習内容は次のとおりです。
@@ -230,7 +230,7 @@ IIS で Web アプリケーションが実行されている状態で、今度�
 > * 新しい Web デプロイ パッケージを IIS に発行するためのリリース定義を作成する
 > * CI/CD パイプラインのテスト
 
-次のチュートリアルに進み、SSL を使用して Web サーバーをセキュリティで保護する方法を学習してください。
+次のチュートリアルに進み、Windows VM のペア上に SQL&#92;IIS&#92;.NET スタックをインストールする方法について確認してください。
 
 > [!div class="nextstepaction"]
-> [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
+> [SQL&#92;IIS&#92;.NET スタック](tutorial-iis-sql.md)

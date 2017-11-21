@@ -3,7 +3,6 @@
 
 # 作業の開始
 
-## [SKU を選択する](search-sku-tier.md)
 ## [サービスを作成する](search-create-service-portal.md)
 ## [インデックスを作成する](search-what-is-an-index.md)
 ### [Azure Portal](search-create-index-portal.md)
@@ -20,21 +19,24 @@
 
 # Tutorials (チュートリアル)
 
-## [.NET](search-howto-dotnet-sdk.md)
+## [.NET での開発](search-howto-dotnet-sdk.md)
 ## [.NET のシノニムのプレビュー](search-synonyms-tutorial-sdk.md)
-## [ポータル](search-get-started-portal.md)
+## [.NET の SQL データ インデクサー](search-indexer-tutorial.md)
+## [ポータルのチュートリアル](search-get-started-portal.md)
 ## [半構造化データの検索](search-semi-structured-data.md)
-## [Node.JS](search-get-started-nodejs.md)
-## [Java](search-get-started-java.md)
+## [REST API の確認](search-fiddler.md)
 
 # 方法
 
 ## 計画と設計
+### [SKU を選択する](search-sku-tier.md)
 ### [サービスの制限](search-limits-quotas-capacity.md)
 ### [サービスの拡張性](search-capacity-planning.md)
 ### [マルチテナント方式の設計パターン](search-modeling-multitenant-saas-applications.md)
 ## 開発
 ### [API のバージョン](search-api-versions.md)
+### [Node.js での開発](search-get-started-nodejs.md)
+### [Java での開発](search-get-started-java.md)
 ### [SDK をアップグレードする](search-dotnet-sdk-migration.md)
 ### [REST API をアップグレードする](search-api-migration.md)
 ### [複合データ型をモデル化する](search-howto-complex-data-types.md)

@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics で System Center Operations Manager 環境を最適化する | Microsoft Docs"
-description: "System Center Operations Manager Assessment ソリューションを使用すると、サーバー環境のリスクと正常性を定期的に評価できます。"
+description: "System Center Operations Manager Health Check ソリューションを使用すると、環境のリスクと正常性を定期的に評価できます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2017
-ms.author: banders
+ms.date: 10/27/2017
+ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4992d98397da409f7c1cfbdeb40fdb0cdd0d2f19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a66cc13d05c81de571e2710519ad9474304d656
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>System Center Operations Manager Assessment (プレビュー) ソリューションを使用して環境を最適化する
+# <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
-![System Center Operations Manager Assessment のシンボル](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
+![System Center Operations Manager Health Check のシンボル](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
 
-System Center Operations Manager Assessment ソリューションを使用すると、System Center Operations Manager サーバー環境のリスクと正常性を定期的に評価できます。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストール、構成、および使用するために役立ちます。
+System Center Operations Manager Health Check ソリューションを使用すると、System Center Operations Manager 管理グループのリスクと正常性を定期的に評価できます。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストール、構成、および使用するために役立ちます。
 
 このソリューションでは、デプロイされているサーバー インフラストラクチャに固有の優先順位付けされた推奨事項の一覧を提供します。 推奨事項は 4 つの対象領域に分類されているので、すばやくリスクを把握し、修正措置を実行できます。
 
@@ -33,69 +33,77 @@ System Center Operations Manager Assessment ソリューションを使用する
 
 組織にとって最も重要な対象領域を選択し、リスクのない正常な環境の実行に向けた進行状況を追跡できます。
 
-ソリューションを追加し、評価が完了すると、インフラストラクチャの **[System Center Operations Manager Assessment]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[System Center Operations Manager Assessment]** ダッシュボードの情報を使用する方法について説明します。ここでは、SCOM インフラストラクチャを確認し、推奨された解決方法を実行できます。
+ソリューションを追加し、評価が実行されると、インフラストラクチャの **[System Center Operations Manager Health Check]** ダッシュボードに対象領域の概要情報が表示されます。 次のセクションでは、**[System Center Operations Manager Health Check]** ダッシュボードの情報を使用する方法について説明します。ここでは、Operations Manager 環境を確認し、推奨された解決方法を実行できます。
 
-![System Center Operations Manager ソリューションのタイル](./media/log-analytics-scom-assessment/scom-tile.png)
+![System Center Operations Manager ソリューションのタイル](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-tile.png)
 
-![[System Center Operations Manager Assessment] ダッシュボード](./media/log-analytics-scom-assessment/scom-dashboard01.png)
+![System Center Operations Manager Health Check ダッシュボード](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 
-このソリューションは、Microsoft System Operations Manager 2012 R2 および 2012 SP1 で動作します。
+このソリューションは、Microsoft System Operations Manager 2012 Service Pack (SP) 1 および 2012 R2 で動作します。
 
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
- - OMS の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) からソリューションをインストールするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページに説明されている手順に従ってソリューションをインストールしてください。
+ - Log Analytics の正常性チェック ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview) からソリューションをインストールします。
 
- - ソリューションをワークスペースに追加すると、ダッシュ ボードの System Center Operations Manager Assessment タイルには、追加の構成が必要だというメッセージが表示されます。 タイルをクリックし、ページに表示される構成の手順に従います。
+ - ソリューションをワークスペースに追加すると、ダッシュ ボードの **[System Center Operations Manager Health Check]** タイルには、追加の構成が必要だというメッセージが表示されます。 タイルをクリックし、ページに表示される構成の手順に従います。
 
  ![System Center Operations Manager ダッシュボード タイル](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
 
- System Center Operations Manager の構成は、OMS のソリューションの構成ページに表示される手順に従って、スクリプトにより実行できます。
+> [!NOTE]
+> System Center Operations Manager の構成は、Log Analytics のソリューションの構成ページに表示される手順に従って、スクリプトを使用して実行できます。
 
- あるいは、SCOM コンソールを使用して評価を構成するには、以下の手順を順番通りに実行します。
-1. [System Center Operations Manager Assessment で使用する実行アカウントを設定します。](#operations-manager-run-as-accounts-for-oms)  
-2. [System Center Operations Manager 評価ルールを構成します。](#configure-the-assessment-rule)
+ Operations Manager オペレーション コンソールで評価を構成するには、以下の手順を順番に実行します。
+1. [System Center Operations Manager Health Check で使用する実行アカウントを設定します](#operations-manager-run-as-accounts-for-log-analytics)  
+2. [System Center Operations Manager Health Check ルールを構成します](#configure-the-assessment-rule)
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager Assessment によるデータ収集の詳細
 
-System Center Operations Manager Assessment は、有効化されたサーバーを使用して、Windows PowerShell、SQL クエリ、ファイル情報コレクターを通じて WMI データ、レジストリ データ、EventLog データ、Operations Manager データを収集します。
+System Center Operations Manager Assessment は、次のソースからデータを収集します。 
 
-次の表に、System Center Operations Manager Assessment のデータ収集方法と、データがエージェントによって収集される頻度を示します。
+* レジストリ
+* Windows Management Instrumentation (WMI)
+* イベント ログ
+* ファイル データ
+* 指定した管理サーバーから、PowerShell と SQL クエリを使用して Operations Manager のデータを直接収集します。  
 
-| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Windows | | | | &#8226; | | 7 日 |
+データは管理サーバーで収集され、7 日ごとに Log Analytics に転送されます。  
 
-## <a name="operations-manager-run-as-accounts-for-oms"></a>OMS で使用される Operations Manager の実行アカウント
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics で使用される Operations Manager の実行アカウント
 
-OMS は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン アカウントなど)。 Operations Manager の実行アカウントを構成して資格情報を入力します。
+Log Analytics は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン ユーザー アカウントなど)。 特権を持つ資格情報を使用して Operations Manager の実行アカウントを構成します。 詳細については、Operations Manager ドキュメントの「[How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx)」(実行アカウントを作成する方法) を参照してください。 
 
-次の情報を使用すると、System Center Operations Manager Assessment 用に Operations Manager の実行アカウントを設定できます。
+次の情報を使用すると、System Center Operations Manager Health Check 用に Operations Manager の実行アカウントを設定できます。
 
 ### <a name="set-the-run-as-account"></a>実行アカウントの設定
 
-1. Operations Manager コンソールで、**[管理]** タブを開きます。
-2. **[Run As Configuration (実行アカウントの構成)]** で、**[アカウント]** をクリックします。
-3. ウィザードに従って、実行アカウントとして Windows アカウントを作成します。 使用するアカウントは、識別された、以下の前提条件をすべて満たすアカウントである必要があります。
+次の手順に進む前に、実行アカウントは以下の要件を満たす必要があります。
 
-    >[!NOTE]
-    実行アカウントは、次の要件を満たす必要があります。
-    - 環境内のすべてのサーバー上における、ローカル管理者グループのドメイン アカウント メンバー (すべての Operations Manager ロール - 管理サーバー、OpsMgr データベース、データ ウェアハウス、レポート、Web コンソール、ゲートウェイ)
-    - 評価する管理グループの Operation Manager 管理者ロール
-    - [スクリプト](#sql-script-to-grant-granular-permissions-to-the-run-as-account) を実行して、Operations Manager で使用する SQL インスタンスのアカウントに、詳細なアクセス許可を付与します。
-      注: このアカウントに既に sysadmin 権限がある場合は、スクリプトの実行をスキップします。
+* 任意の Operations Manager ロールをサポートするすべてのサーバー (管理サーバー、運用、データ ウェアハウス、および ACS データベースをホストする SQL Server、レポート、Web コンソール、およびゲートウェイ サーバー) で、ローカルの Administrator グループのメンバーであるドメイン ユーザー アカウント。
+* 評価する管理グループの Operation Manager 管理者ロール
+* アカウントに SQL sysadmin 権限がない場合は、[スクリプト](#sql-script-to-grant-granular-permissions-to-the-run-as-account)を実行して、Operations Manager データベースの 1 つまたはすべてをホストする各 SQL Server インスタンスにアカウントに細かいアクセス許可を付与します。 
 
-4. **[配布セキュリティ]** で、**[高いセキュリティ]** を選択します。
-5. アカウントを配布する管理サーバーを指定します。
-3. [Run As Configuration (実行アカウントの構成)] に戻り、**[プロファイル]** をクリックします。
+1. Operations Manager コンソールで、**[管理]** ナビゲーション ボタンを選択します。
+2. **[実行アカウントの構成]** で、**[アカウント]** をクリックします。
+3. **[実行アカウントの作成]** ウィザードの **[はじめに]** ページで **[次へ]** をクリックします。
+4. **[全般プロパティ]** ページの **[実行アカウントの種類]** リストで **[Windows]** を選択します。
+5. **[表示名]** テキスト ボックスに表示名を入力し、**[説明]** ボックス (省略可能) に説明を入力し、**[次へ]** をクリックします。 
+6. **[配布セキュリティ]** ページで、**[高いセキュリティ]** を選択します。
+7. **Create** をクリックしてください。  
+
+以上の手順で実行アカウントが作成されます。次は管理グループで管理サーバーをターゲットにして、定義済みの実行プロファイルと関連付け、ワークフローが資格情報を使用して実行されるようにします。  
+
+1. 結果ウィンドウの **[実行アカウントの構成]** の **[アカウント]** で、前述の手順で作成したアカウントをダブルクリックします。
+2. **[配布]** タブで、**[選択したコンピューター]** ボックスの **[追加]** をクリックし、管理サーバーを追加してアカウントを配布します。  **[OK]** をクリックして変更を保存します。
+3. **[実行アカウントの構成]** で、**[プロファイル]** をクリックします。 
 4. "*SCOM Assessment プロファイル*" を検索します。
 5. プロファイル名は、"*Microsoft System Center Advisor SCOM Assessment 実行プロファイル*" です。
-6. 右クリックしてそのプロパティを更新し、手順 3. で作成した実行アカウントを追加します。
+6. 右クリックしてそのプロパティを更新し、前述の手順で作成した実行アカウントを追加します。
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>実行アカウントに詳細なアクセス許可を付与する SQL スクリプト
 
-次の SQL スクリプトを実行して、Operations Manager で使用する SQL インスタンスの実行アカウントに必要なアクセス許可を付与します。
+次の SQL スクリプトを実行して、運用、データ ウェアハウス、および ACS データベースをホストする Operations Manager で使用する SQL Server インスタンスの実行アカウントに必要なアクセス許可を付与します。
 
 ```
 -- Replace <UserName> with the actual user name being used as Run As Account.
@@ -143,33 +151,31 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ```
 
+### <a name="configure-the-health-check-rule"></a>正常性チェック ルールの構成
 
-### <a name="configure-the-assessment-rule"></a>評価ルールの構成
+System Center Operations Manager Health Check ソリューションの管理パックには、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" という名前のルールが含まれています。 このルールは、正常性チェックの実行に関するルールです。 ルールを有効にし、頻度を構成するには、次の手順に従います。
 
-System Center Operations Manager Assessment ソリューションの管理パックには、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" という名前のルールが含まれています。 このルールは、評価の実行に関するルールです。 ルールを有効にし、頻度を構成するには、次の手順に従います。
-
-既定では、Microsoft System Center Advisor SCOM Assessment 実行評価ルールは無効になっています。 評価を実行するには、管理サーバーでルールを有効にする必要があります。 次の手順に従います。
+既定では、Microsoft System Center Advisor SCOM Assessment 実行評価ルールは無効になっています。 正常性チェックを実行するには、管理サーバーでルールを有効にする必要があります。 次の手順に従います。
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>特定の管理サーバーのルールを有効にする
 
-1. Operations Manager コンソールの **[作成]** ワークスペースの **[ルール]** ウィンドウで、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" を検索します。
+1. Operations Manager Operations コンソールの **[作成]** ワークスペースの **[ルール]** ウィンドウで、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" を検索します。
 2. 検索結果で、"*タイプ: 管理サーバー*" というテキストが含まれているルールを選択します。
 3. ルールを右クリックし、**[上書き]** > **[クラス "管理サーバー" の特定のオブジェクト]** の順にクリックします。
-4.  利用できる管理サーバーの一覧で、ルールを実行する管理サーバーを選択します。
-5.  **[Enabled (有効)]** パラメーター値の [上書き値] を **[True]** に変更します。  
-    ![パラメーターの上書き](./media/log-analytics-scom-assessment/rule.png)
+4.  利用できる管理サーバーの一覧で、ルールを実行する管理サーバーを選択します。  前述の手順で実行アカウントを関連付けるために構成したものと同じ管理サーバーを選択する必要があります。
+5.  **[Enabled (有効)]** パラメーター値の [上書き値] を **[True]** に変更します。<br><br> ![パラメーターの上書き](./media/log-analytics-scom-assessment/rule.png)
 
-引き続きこのウィンドウで次の手順を使用して、実行の頻度を構成します。
+    引き続きこのウィンドウで次の手順を使用して、実行の頻度を構成します。
 
 #### <a name="configure-the-run-frequency"></a>実行頻度を構成する
 
-評価は、既定で 10,080 分 (7 日間) ごとに実行されるように構成されます。 この値は、最小値の 1,440 分 (1 日) までの値に上書きすることができます。 この値は、評価を連続して実行する際に必要な最小の時間間隔を表します。 間隔を上書きするには、次の手順を使用します。
+評価は、既定の間隔で 10,080 分 (7 日間) ごとに実行されるように構成されます。 この値は、最小値の 1,440 分 (1 日) までの値に上書きすることができます。 この値は、評価を連続して実行する際に必要な最小の時間間隔を表します。 間隔を上書きするには、次の手順を使用します。
 
-1. Operations Manager コンソールの **[作成]** ワークスペースの **[ルール]** ウィンドウで、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" を検索します。
+1. Operations Manager コンソールの **[作成]** ワークスペースの **[ルール]** セクションで、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" を検索します。
 2. 検索結果で、"*タイプ: 管理サーバー*" というテキストが含まれているルールを選択します。
 3. ルールを右クリックし、**[Override the Rule (ルールを上書きする)]** > **[クラス "管理サーバー" のすべてのオブジェクト]** の順にクリックします。
-4. **[間隔]** パラメーター値を目的の間隔値に変更します。 次の例では、値を 1,440 分 (1 日) に設定しています。  
-    ![間隔パラメーター](./media/log-analytics-scom-assessment/interval.png)  
+4. **[間隔]** パラメーター値を目的の間隔値に変更します。 次の例では、値を 1,440 分 (1 日) に設定しています。<br><br> ![間隔パラメーター](./media/log-analytics-scom-assessment/interval.png)<br>  
+
     1,440 分未満の値を設定した場合、ルールは 1 日間隔で実行されます。 この例では、ルールは、間隔値を無視して 1 日の頻度で実行されます。
 
 
@@ -203,84 +209,94 @@ System Center Operations Manager Assessment ソリューションの管理パッ
 
 すべての推奨事項には、重要である理由についてのガイダンスが含まれます。 このガイダンスを使用し、IT サービスの性質と組織のビジネス ニーズに基づいて、推奨事項を実装することが会社にとって適切かどうかを評価する必要があります。
 
-## <a name="use-assessment-focus-area-recommendations"></a>評価の関心領域に関する推奨事項の使用
+## <a name="use-health-check-focus-area-recommendations"></a>正常性チェックの関心領域に関する推奨事項の使用
 
-OMS の評価ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」を参照してください。 インストール後は、OMS の [概要] ページの [System Center Operations Manager Assessment] タイルを使用して、推奨事項の概要を表示できます。
+Log Analytics の正常性チェック ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」を参照してください。 インストール後は、OMS ポータルの [概要] ページの [System Center Operations Manager Health Check] タイルを使用して、推奨事項の概要を表示できます。
 
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-
-1. **[概要]** ページの **[System Center Operations Manager Assessment]** タイルをクリックします。
-2. **[System Center Operations Manager Assessment]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
-3. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。  
-    ![対象領域](./media/log-analytics-scom-assessment/focus-area.png)
-4. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
+2. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルをクリックします。  
+4. **[概要]** ページの **[System Center Operations Manager Health Check]** タイルをクリックします。
+5. **[System Center Operations Manager Health Check]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
+6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![対象領域](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
+7. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
 
-無視する推奨事項がある場合は、OMS が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにできます。
+無視する推奨事項がある場合は、Log Analytics が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>無視する推奨事項を識別するには
-
-1. ワークスペースにサインインして、ログ検索を開きます。 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
+1. Azure Portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** タイルをクリックします。
+2. 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
 
     ```
-    Type=SCOMAssessmentRecommendationRecommendationResult=Failed | select  Computer, RecommendationId, Recommendation | sort  Computer
+    Type=SCOMAssessmentRecommendationRecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
     ```
 
-    ログ検索のクエリを示すスクリーン ショットを次に示します。  
-    ![ログ検索](./media/log-analytics-scom-assessment/scom-log-search.png)
+    >[!NOTE]
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    >
+    > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-2. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
+    ログ検索のクエリを示すスクリーン ショットを次に示します。<br><br> ![ログ検索](./media/log-analytics-scom-assessment/scom-log-search.png)<br>
+
+3. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>IgnoreRecommendations.txt テキスト ファイルを作成および使用するには
 
 1. IgnoreRecommendations.txt という名前のファイルを作成します。
-2. OMS に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
-3. OMS に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
+2. Log Analytics に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
+3. Log Analytics に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
 4. Operations Manager 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server。
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>推奨事項が無視されていることを確認するには
 
-1. 次回スケジュールされている評価が実行した後は、既定では 7 日おきで、推奨事項が Ignored とマークされ、評価ダッシュボードには表示されません。
+1. 次回スケジュールされている評価が実行した後は、既定では 7 日おきで、推奨事項が Ignored とマークされ、正常性チェック ダッシュボードには表示されません。
 2. 次のログ検索クエリを使用して、無視されるすべての推奨事項の一覧を表示します。
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
 
+    >[!NOTE]
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    >
+    > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
+
 3. 無視された推奨事項を表示することを後で決定する場合は、IgnoreRecommendations.txt ファイルを削除します。また、そのファイルから RecommendationID を削除することもできます。
 
-## <a name="system-center-operations-manager-assessment-solution-faq"></a>System Center Operations Manager Assessment ソリューションに関する FAQ
+## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager Health Check ソリューションについてよく寄せられる質問 (FAQ)
 
-"*評価ソリューションを OMS ワークスペースに追加したのですが、推奨事項が表示されません。なぜ表示されないのですか?*" ソリューションを追加したら、次の手順に従って OMS のダッシュ ボードに推奨事項を表示します。  
+*Log Analytics ワークスペースに Health Check ソリューションを追加しました。推奨事項が表示されません。なぜ表示されないのですか?*" ソリューションを追加したら、次の手順に従って Log Analytics のダッシュ ボードに推奨事項を表示します。  
 
-- [System Center Operations Manager Assessment で使用する実行アカウントを設定します。](#operations-manager-run-as-accounts-for-oms)  
-- [System Center Operations Manager 評価ルールを構成します。](#configure-the-assessment-rule)
+- [System Center Operations Manager Health Check で使用する実行アカウントを設定します](#operations-manager-run-as-accounts-for-log-analytics)  
+- [System Center Operations Manager Health Check ルールを構成します](#configure-the-health-check-rule)
 
 
-*評価の実行頻度を構成する方法がありますか?* はい。 「[実行頻度を構成する](#configure-the-run-frequency)」を参照してください。
+*チェックの実行頻度を構成する方法はありますか?* はい。 「[実行頻度を構成する](#configure-the-run-frequency)」を参照してください。
 
-"*System Center Operations Manager Assessment ソリューションを追加した後に別のサーバーが検出された場合、それは評価されますか。*" はい。検出された時点から評価されます (既定では 7 日ごと)。
+*System Center Operations Manager Assessment ソリューションを追加した後に別のサーバーが検出された場合、それはチェックされますか?* はい。検出された時点からチェックされます (既定では 7 日ごと)。
 
 *データ収集を行うプロセスの名前は何ですか?* AdvisorAssessment.exe です。
 
-"*AdvisorAssessment.exe プロセスはどこで実行されますか。*" AdvisorAssessment.exe は、評価ルールが有効になっている管理サーバーの HealthService で実行されます。 そのプロセスを使用して、リモート データ コレクションを通じて環境全体の検出が実現します。
+"*AdvisorAssessment.exe プロセスはどこで実行されますか。*" AdvisorAssessment.exe は、正常性チェック ルールが有効になっている管理サーバーの HealthService プロセスで実行されます。 そのプロセスを使用して、リモート データ コレクションを通じて環境全体の検出が実現します。
 
 "*データの収集にはどれくらいの時間がかかりますか。*" サーバー上でのデータ収集には約 1 時間かかります。 多数の Operations Manager インスタンスまたはデータベースが存在する環境では、それよりも長く時間がかかる場合があります。
 
 "*評価の間隔を 1,440 分未満に設定するとどうなりますか。*" 評価は、最大で 1 日に 1 回実行するように事前構成されています。 間隔値を 1,440 分未満の値に上書きすると、1,440 分が評価の間隔値として使用されます。
 
-"*前提条件に障害が発生しているかどうかを調べる方法はありますか。*" 評価を実行したのに結果が表示されない場合は、評価の前提条件のいくつかが失敗している可能性があります。 ログ検索で `Type=Operation Solution=SCOMAssessment` と `Type=SCOMAssessmentRecommendation FocusArea=Prerequisites` のクエリを実行すると、失敗した前提条件を確認できます。
+*前提条件に障害が発生しているかどうかを調べる方法はありますか?* 正常性チェックを実行したのに結果が表示されない場合は、チェックの前提条件のいくつかが失敗している可能性があります。 ログ検索で `Operation Solution=SCOMAssessment` と `SCOMAssessmentRecommendation FocusArea=Prerequisites` のクエリを実行すると、失敗した前提条件を確認できます。
 
-"*前提条件のエラーにメッセージ `Failed to connect to the SQL Instance (….).` が含まれています。どのような問題が発生していますか。*" データを収集するプロセスである AdvisorAssessment.exe は、管理サーバーの HealthService で実行されます。 このプロセスは、評価の一環として Operations Manager データベースが存在する SQL Server への接続を試みます。 このエラーは、ファイアウォール規則によって SQL Server インスタンスへの接続がブロックされた場合に発生することがあります。
+*前提条件のエラーにメッセージ `Failed to connect to the SQL Instance (….).` が含まれています。どのような問題が発生していますか。*" データを収集するプロセスである AdvisorAssessment.exe は、管理サーバーの HealthService プロセスで実行されます。 このプロセスは、正常性チェックの一環として Operations Manager データベースが存在する SQL Server への接続を試みます。 このエラーは、ファイアウォール規則によって SQL Server インスタンスへの接続がブロックされた場合に発生することがあります。
 
 *どのような種類のデータが収集されますか?* 次の種類のデータが収集されます。- WMI データ - レジストリ データ - EventLog データ - Operations Manager データ (Windows PowerShell、SQL クエリ、およびファイル情報コレクターを通じて)。
 
-*実行アカウントを構成しなければならないのはなぜですか?* Operations Manager サーバーでは、さまざまな SQL クエリが実行されます。 SQL クエリを実行するためには、必要なアクセス許可を持つ実行アカウントを使用する必要があります。 さらに、WMI を照会するには、ローカル管理者の資格情報が必要です。
+*実行アカウントを構成しなければならないのはなぜですか?* Operations Manager では、さまざまな SQL クエリが実行されます。 SQL クエリを実行するためには、必要なアクセス許可を持つ実行アカウントを使用する必要があります。 さらに、WMI を照会するには、ローカル管理者の資格情報が必要です。
 
 *上位 10 個の推奨事項しか表示されないのはなぜですか?* タスクの一覧を余すことなく完全に提供するのでなく、まず優先的な推奨事項への対処に重点を置くことをお勧めしています。 優先的な推奨事項に対処すると、追加の推奨事項が表示されます。 詳細な一覧を確認する場合は、ログ検索を使用してすべての推奨事項を表示することができます。
 
@@ -289,4 +305,4 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログ検索](log-analytics-log-searches.md)を実行して、詳細な System Center Operations Manager Assessment データと推奨事項を表示します。
+- [ログの検索](log-analytics-log-searches.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。

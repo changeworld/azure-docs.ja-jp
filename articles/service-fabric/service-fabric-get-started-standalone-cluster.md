@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/06/2017
+ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5c8f4c784eed7b64810a3dd1c36c043d22a66936
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5438d8d366ef989d5ae29581477513f8c884c4b3
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>初めての Service Fabric スタンドアロン クラスターの作成
 Service Fabric スタンドアロン クラスターは、Windows Server 2012 R2 または Windows Server 2016 が実行されていれば、どの仮想マシンまたはコンピューターにでも作成できます。場所は、オンプレミスでもクラウドでもかまいません。 このクイック スタートを読むと、開発用のスタンドアロン クラスターを数分で作成することができます。  最後まで読み進めていけば、1 台のコンピューター上で動作する 3 ノード クラスターが完成します。開発したアプリをそこにデプロイすることができます。

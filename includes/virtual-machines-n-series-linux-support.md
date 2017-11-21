@@ -6,7 +6,11 @@
 
 | ディストリビューション | ドライバー |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>CentOS-based 7.3 | NVIDIA GRID 4.3、ドライバー ブランチ R367|
+| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>CentOS-based 7.3 | NVIDIA GRID 5.0、ドライバー ブランチ R384|
+
+> [!NOTE]
+> Microsoft では、NV VM 用の NVIDIA GRID ドライバー インストーラーを再配布しています。 Azure NV VM にはこれらの GRID ドライバーのみをインストールしてください。 これらのドライバーには、Azure での GRID 仮想 GPU ソフトウェアのライセンスが含まれています。
+>
 
 ### <a name="nc-instances---nvidia-tesla-drivers"></a>NC インスタンス - NVIDIA Tesla ドライバー
 | ディストリビューション | ドライバー |

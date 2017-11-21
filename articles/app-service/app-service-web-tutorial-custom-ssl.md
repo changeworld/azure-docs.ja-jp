@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 52d03c535d63aa1985a0991f309f2db1e189717e
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: c18ca8e81fefdee723714c6535160e75ef4d698d
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>既存のカスタム SSL 証明書の Azure Web Apps へのバインド
 
@@ -151,13 +151,13 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 
 SSL 証明書をアップロードするには、Web アプリの左側のナビゲーションで **[SSL 証明書]** をクリックします。
 
-**[証明書のアップロード]** をクリックします。
+**[証明書のアップロード]** をクリックします。 
 
 **[PFX 証明書ファイル]** で、PFX ファイルを選択します。 **[証明書のパスワード]** で、PFX ファイルのエクスポート時に作成したパスワードを入力します。
 
 **[アップロード]**をクリックします。
 
-![証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate.png)
+![証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-private1.png)
 
 App Service による証明書のアップロードが完了すると、**[SSL 証明書]** ページにアップロードした証明書が表示されます。
 
@@ -311,6 +311,10 @@ New-AzureRmWebAppSSLBinding `
     -CertificatePassword <PFX_password> `
     -SslState SniEnabled
 ```
+## <a name="public-certificates-optional"></a>パブリック証明書 (省略可能)
+[パブリック証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)は Web アプリにアップロードできます。 App Service または App Service Environment (ASE) の Web アプリでパブリック証明書をご利用いただけます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Enviroment で Web アプリを使用する必要があります。 詳細については、[Web アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページを参照してください。
+
+![パブリック証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
 ## <a name="next-steps"></a>次のステップ
 

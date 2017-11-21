@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.openlocfilehash: c1061811d205494969047fa3f91cbf449a25d8ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9b73f6691af957e42236ef9a223411a0296f96f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -564,7 +564,7 @@ Azure Data Factory では、出力データセットの可用性によってパ�
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Data Factory を使用して Hive ジョブを処理するオンデマンドの HDInsight クラスターを作成する方法について説明しました。 詳細については、以下のリンク先を参照してください。
 
-* [Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight のドキュメント](https://azure.microsoft.com/documentation/services/hdinsight/)
 * [データ ファクトリのドキュメント](https://azure.microsoft.com/documentation/services/data-factory/)

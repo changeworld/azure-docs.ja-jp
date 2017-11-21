@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: shlo
-ms.openlocfilehash: 2cc128e8f7792a6a363aacf50f8724d689892c83
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事は、Azure Data Factory サービスのバージョン 2 に適用されます。 Data Factory についてよく寄せられる質問とその回答を紹介します。  
@@ -152,7 +152,7 @@ Data Factory の概念について詳しくは、次の記事をご覧くださ�
 Azure Data Factory の価格の詳細については、[Data Factory の価格の詳細](https://azure.microsoft.com/pricing/details/data-factory/)に関するページを参照してください。
 
 ## <a name="what-regions-support-azure-data-factory-version-2"></a>Azure Data Factory バージョン 2 をサポートするリージョン
-現時点では、バージョン 2 のデータ ファクトリは、米国東部と米国東部 2 のリージョンで作成できます。 ただし、データ ファクトリで別リージョンの統合ランタイムを使用して、データ ストア間のデータの移動、コンピューティング サービスに対するアクティビティのディスパッチ、または SSIS パッケージのディスパッチを行うことができます。 詳細については、[Data Factory の場所](concepts-integration-runtime.md#integration-runtime-location)に関するセクションを参照してください。
+現時点でバージョン 2 のデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、西ヨーロッパです。 ただし、データ ファクトリで別リージョンの統合ランタイムを使用して、データ ストア間のデータの移動、コンピューティング サービスに対するアクティビティのディスパッチ、または SSIS パッケージのディスパッチを行うことができます。 詳細については、[Data Factory の場所](concepts-integration-runtime.md#integration-runtime-location)に関するセクションを参照してください。
 
 ## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Data Factory の最新情報を入手する方法
 Azure Data Factory の最新情報を入手するには、次のサイトを参照してください。

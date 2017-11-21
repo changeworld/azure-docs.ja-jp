@@ -19,7 +19,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-## AD テナントへのアプリケーションの登録
+## <a name="register-your-application-with-your-ad-tenant"></a>AD テナントへのアプリケーションの登録
 まず、Azure Active Directory (Azure AD) テナントにアプリケーションを登録する必要があります。 これにより、アプリケーションのアプリケーション ID を取得でき、トークンを受信できるようになります。
 
 * [Azure Portal](https://portal.azure.com) にサインインします。

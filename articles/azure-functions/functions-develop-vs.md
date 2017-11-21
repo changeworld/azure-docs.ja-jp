@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: a3d4e5367dd41ce2ade7033cefcc774dcec9c82c
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 1f0d50331aa3986e80542902fd528f98e1c91bc2
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools for Visual Studio  
 
@@ -35,11 +35,9 @@ Azure Functions Tools には、次のような利点があります。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Functions Tools は、[Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/) 以降の Azure 開発ワークロードに含まれています。 Visual Studio 2017 バージョン 15.3 のインストールに、必ず **Azure 開発**ワークロードを含めてください。
+Azure Functions Tools は、[Visual Studio 2017 バージョン 15.4](https://www.visualstudio.com/vs/) 以降の Azure 開発ワークロードに含まれています。 Visual Studio 2017 のインストールには、必ず **Azure 開発**ワークロードを含めてください。
 
 ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
-
-[!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-install-note.md)] 
 
 関数を作成してデプロイするには、以下も必要になります。
 
@@ -105,7 +103,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
     } 
     ````
  
-    バインド固有の属性は、エントリ ポイント メソッドに指定された各バインド パラメーターに適用されます。 属性ではパラメーターとしてバインド情報を取ります。 前の例では、最初のパラメーターに **QueueTrigger** 属性が適用されています。これは、キューによってトリガーされる関数を示します。 キュー名および接続文字列の設定名は、パラメーターとして渡されます。  
+    バインド固有の属性は、エントリ ポイント メソッドに指定された各バインド パラメーターに適用されます。 属性ではパラメーターとしてバインド情報を取ります。 前の例では、最初のパラメーターに **QueueTrigger** 属性が適用されています。これは、キューによってトリガーされる関数を意味します。 キュー名および接続文字列の設定名は、パラメーターとして渡されます。  
 
 ## <a name="testing-functions"></a>関数のテスト
 

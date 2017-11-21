@@ -1,6 +1,6 @@
 - name: Azure HDInsight のドキュメント
   href: /azure/hdinsight
-- name: HDInsight でのマルチユーザー クラスター
+- name: HDInsight でのエンタープライズ セキュリティ
   items:
     - name: 概要
       href: apache-domain-joined-introduction.md
@@ -13,6 +13,8 @@
   items:
     - name: ドメイン参加済み HDInsight の構成
       href: apache-domain-joined-configure.md
+    - name: Azure AD DS によるドメイン参加済み HDInsight の構成
+      href: apache-domain-joined-configure-using-azure-adds.md
     - name: Hive ポリシーを構成する
       href: apache-domain-joined-run-hive.md
     - name: 容量計画
@@ -22,9 +24,6 @@
   items:
     - name: クラスターの管理
       href: apache-domain-joined-manage.md
-    - name: ユーザー アクセス許可の管理
-      href: ../hdinsight-add-acls-at-file-folder-levels.md
-      maintainContext: true
 - name: リファレンス
   items:
     - name: コード サンプル

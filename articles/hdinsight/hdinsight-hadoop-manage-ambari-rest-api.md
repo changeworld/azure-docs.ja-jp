@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/07/2017
+ms.date: 11/02/2017
 ms.author: larryfr
-ms.openlocfilehash: 7960d83bce22d4f671d61e9aaf55561bc24308f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5687e53d0d0e0429ec9eb84afd8465556cb4f818
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -32,16 +32,16 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 ## <a id="whatis"></a>Ambari とは
 
-[Apache Ambari](http://ambari.apache.org) では、Hadoop クラスターのプロビジョニング、管理、監視に使用できる Web UI が提供されています。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
+[Apache Ambari](http://ambari.apache.org) では、Hadoop クラスターの管理と監視に使用できる Web UI が提供されています。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
 Ambari は既定で Linux ベースの HDInsight クラスターに付属しています。
 
 ## <a name="how-to-use-the-ambari-rest-api"></a>Ambari REST API を使用する方法
 
 > [!IMPORTANT]
-> このドキュメントの情報と例は、Linux オペレーティング システムを使用する HDInsight クラスターが前提となっています。 詳細については、[HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)に関する記事を参照してください。
+> このドキュメントの情報と例は、Linux オペレーティング システムを使用する HDInsight クラスターが前提となっています。 詳細については、[HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関する記事を参照してください。
 
-このドキュメントでは、Bourne シェル (bash) と PowerShell の両方の例を提供しています。 bash の例は GNU bash 4.3.11 でテストしましたが、他の Unix シェルでも動作するはずです。 PowerShell の例は PowerShell 5.0 でテストしましたが、PowerShell 3.0 以降で動作するはずです。
+このドキュメントでは、Bourne シェル (bash) と PowerShell の両方の例を提供しています。 bash の例は GNU Bash バージョン 4.3.11 でテストしましたが、他の Unix シェルでも動作するはずです。 PowerShell の例は PowerShell 5.0 でテストしましたが、PowerShell 3.0 以降で動作するはずです。
 
 __Bourne シェル__ (Bash) を使用する場合は、以下のものをインストールする必要があります。
 
@@ -75,15 +75,15 @@ HDInsight の Ambari に接続するには、HTTPS が必要です。 クラス�
 次の例は、ベース Ambari REST API に対して GET 要求を行う方法を示しています。
 
 ```bash
-curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
+curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
 ```
 
 > [!IMPORTANT]
 > このドキュメントの Bash の例では、次のことが前提条件となっています。
 >
 > * クラスターのログイン名は、既定値の `admin` です。
-> * `$PASSWORD` には、HDInsight ログイン コマンドのパスワードが含まれています。 この値を設定するには、`PASSWORD='mypassword'` を使用します。
 > * `$CLUSTERNAME` には、クラスターの名前が含まれています。 この値を設定するには、`set CLUSTERNAME='clustername'` を使用します。
+> * プロンプトが表示されたら、クラスター ログイン (管理者) のパスワードを入力してください。
 
 ```powershell
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
@@ -124,7 +124,7 @@ $resp.Content
 次の例は、`jq` を使用して JSON 応答ドキュメントを解析し、結果の `health_report` 情報だけを表示します。
 
 ```bash
-curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME" \
+curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME" \
 | jq '.Clusters.health_report'
 ```
 
@@ -149,7 +149,7 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
 * **すべてのノード**
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" \
     | jq '.items[].Hosts.host_name'
     ```
 
@@ -163,7 +163,7 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
 * **ヘッド ノード**
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/NAMENODE" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/NAMENODE" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -177,7 +177,7 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
 * **ワーカー ノード**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/DATANODE" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -191,7 +191,7 @@ HDInsight を使用する際は、クラスター ノードの完全修飾ドメ
 * **Zookeeper ノード**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -219,6 +219,9 @@ do
 done
 ```
 
+> [!TIP]
+> 前の例では、パスワードを求めるプロンプトが表示されます。 この例では、`curl` コマンドを複数回実行するため、プロンプトが何回も表示されないように、パスワードは `$PASSWORD` と指定します。
+
 ```powershell
 $uri = "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts"
 $resp = Invoke-WebRequest -Uri $uri -Credential $creds
@@ -240,7 +243,7 @@ HDInsight クラスターを作成する場合は、クラスターの既定の�
 以下の例では、クラスターの既定のストレージ構成を取得します。
 
 ```bash
-curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
 | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
 ```
 
@@ -263,7 +266,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     Data Lake Store のアカウント名を検索するには、以下の例を使用します。
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
     | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
     ```
 
@@ -279,7 +282,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     クラスターのストレージが含まれている Data Lake Store 内のディレクトリを検索するには、以下の例を使用します。
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
     | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
     ```
 
@@ -301,7 +304,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 1. クラスターに使用できる構成を取得します。
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
     ```
 
     ```powershell
@@ -333,7 +336,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 2. 興味のあるコンポーネントの構成を取得します。 次の例では、`INITIAL` を、前の要求から返されるタグ値で置き換えます。
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
     ```
 
     ```powershell
@@ -349,7 +352,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 1. Ambari で "desired configuration (望ましい構成)" として格納される現在の構成を取得します。
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
     ```
 
     ```powershell
@@ -382,7 +385,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 2. 次のコマンドを使用して、コンポーネントとタグの構成を取得します。
    
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
     | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
     ```
 
@@ -438,7 +441,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 4. 次のコマンドを利用し、更新した構成を Ambari に送信します。
    
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" -X PUT -d @newconfig.json "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
+    curl -u admin -sS -H "X-Requested-By: ambari" -X PUT -d @newconfig.json "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
     ```
 
     ```powershell
@@ -460,7 +463,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 1. 次を利用し、Spark サービスのメンテナンス モードを有効にします。
 
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo": {"context": "turning on maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}' \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
     ```
@@ -477,7 +480,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     これらのコマンドは、メンテナンス モードを有効にするサーバーに JSON ドキュメントを送信します。 次の要求を利用すれば、サービスがメンテナンス モードに入っていることを確認できます。
    
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK" \
     | jq .ServiceInfo.maintenance_state
     ```
@@ -494,7 +497,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 2. 次に、次のコードを利用し、サービスを無効にします。
 
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}' \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
     ```
@@ -526,7 +529,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
     以下のコマンドは、要求の状態を取得します。
 
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/requests/29" \
     | jq .Requests.request_status
     ```
@@ -543,7 +546,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 3. 前の要求が完了したら、次を利用し、サービスを開始します。
    
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}' \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
     ```
@@ -560,7 +563,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 4. 最後に、次を利用し、メンテナンス モードをオフにします。
    
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo": {"context": "turning off maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}' \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
     ```

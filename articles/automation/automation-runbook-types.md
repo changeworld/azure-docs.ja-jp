@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 4bf4a3d755afeee9930204a2dbae9ff9fada3517
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2acf45187894aa3bfcaa4df639becf18605d50a5
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 Azure Automation がサポートする数種類の Runbook について次の表で簡単に説明します。  その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
@@ -85,8 +85,19 @@ PowerShell ワークフロー Runbook は、 [Windows PowerShell ワークフロ
 * PowerShell Runbook を子 Runbook として組み込むには、新しいジョブを作成する Start-AzureAutomationRunbook コマンドレットを使用する必要があります。
 
 ## <a name="python-runbooks"></a>Python Runbook
+Python Runbook は Python 2 でコンパイルします。  Azure Portal でテキスト エディターを使用して Runbook のコードを直接編集したり、任意のオフライン テキスト エディターを使用して Azure Automation に [Runbook をインポート](http://msdn.microsoft.com/library/azure/dn643637.aspx)したりできます。
 
-## <a name="bash-runbooks"></a>Bash Runbook
+### <a name="advantages"></a>長所
+* Python の堅牢な標準ライブラリを利用します。
+
+### <a name="limitations"></a>制限事項
+* 作成者は、Python スクリプトを使い慣れている必要があります。
+* 現時点では Python 2 のみがサポートされているため、Python 3 の特定の機能は失敗します。
+
+### <a name="known-issues"></a>既知の問題
+Python Runbook に関する現在の既知の問題は次のとおりです。
+
+* サード パーティ製のライブラリを利用するには、Runbook を開始する前にマシンにそのライブラリをインストールした状態で、Runbook を [Windows Hybrid Runbook Worker](https://docs.microsoft.com/en-us/azure/automation/automation-windows-hrw-install) または [Linux Hybrid Runbook Worker](https://docs.microsoft.com/en-us/azure/automation/automation-linux-hrw-install) で実行する必要があります。
 
 ## <a name="considerations"></a>考慮事項
 特定の Runbook に使用する種類を決定するときは、さらに次のことを考慮する必要があります。

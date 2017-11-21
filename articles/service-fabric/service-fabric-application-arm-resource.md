@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 609183545ffcde20da7001ef4cf35183c750e181
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ffa1f33c41ceb9f8cdd4c8c9e46f06efa4f89a7
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -97,7 +97,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
       "appPackageUrl": {
         "type": "string",
         "metadata": {
-          "description": "The URL to the application package zip file"
+          "description": "The URL to the application package sfpkg file"
         }
       },
       "applicationName": {
@@ -142,10 +142,35 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
     "resources": [
       {
         "apiVersion": "2017-07-01-preview",
+        "type": "Microsoft.ServiceFabric/clusters/applicationTypes",
+        "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'))]",
+        "location": "[variables('clusterLocation')]",
+        "dependsOn": [],
+        "properties": {
+          "provisioningState": "Default"
+        }
+      },
+      {
+        "apiVersion": "2017-07-01-preview",
+        "type": "Microsoft.ServiceFabric/clusters/applicationTypes/versions",
+        "name": "[concat(parameters('clusterName'), '/', parameters('applicationTypeName'), '/', parameters('applicationTypeVersion'))]",
+        "location": "[variables('clusterLocation')]",
+        "dependsOn": [
+          "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'))]"
+        ],
+        "properties": {
+          "provisioningState": "Default",
+          "appPackageUrl": "[parameters('appPackageUrl')]"
+        }
+      },
+      {
+        "apiVersion": "2017-07-01-preview",
         "type": "Microsoft.ServiceFabric/clusters/applications",
         "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
         "location": "[variables('clusterLocation')]",
-        "dependsOn": [],
+        "dependsOn": [
+          "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]"
+        ],
         "properties": {
           "provisioningState": "Default",
           "typeName": "[parameters('applicationTypeName')]",
@@ -215,7 +240,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
             "partitionScheme": "UniformInt64Range",
             "count": "5",
             "lowKey": "1",
-            "highKey": "26"
+            "highKey": "5"
           },
           "hasPersistedState": "true",
           "correlationScheme": [],

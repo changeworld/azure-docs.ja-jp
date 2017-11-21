@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: chackdan
-ms.openlocfilehash: 04964175f06675a486fcf252f194f0d790acea4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7c4a00d2c9be2d6b4d3d0b4dfb152deb2d0e217
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -92,6 +92,11 @@ ms.lasthandoff: 10/11/2017
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>どのような場合に Silver または Gold 耐久性レベルを使用するか
 
 Silver または Gold 耐久性は、頻繁なスケールイン (VM インスタンス数の削減) が予測されるステートフル サービスをホストするすべてのノード タイプに適しており、またこれらのスケールイン操作を簡略化するためにデプロイ操作が遅れることを厭わない場合に適しています。 スケールアウト シナリオ (VM インスタンスの追加) は、耐久性レベルの選択では問題になりません。問題になるのは、スケールインのみです。
+
+### <a name="changing-durability-levels"></a>持続性レベルの変更
+- シルバーまたはゴールドの持続性レベルのノード型は、ブロンズにダウングレードできません。
+- ブロンズからシルバーまたはゴールドにアップグレードすると、数時間がかかる場合があります。
+- 持続性レベルを変更する場合は、お使いの VMSS リソースの Service Fabric 拡張機能の構成と、お使いの Service Fabric クラスター リソースのノード型定義の、両方の持続性レベルを必ず更新してください。 これらの値は一致している必要があります。
 
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Silver または Gold 耐久性レベルに設定したノード タイプの操作上の推奨事項
 

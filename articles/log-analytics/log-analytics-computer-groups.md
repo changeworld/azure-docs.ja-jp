@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 11/02/2017
 ms.author: bwren
-ms.openlocfilehash: f27f038e0507270c0bfe200cb8c86622ebac5372
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 17a59a38b6a445a7f42df171a711669f95fc84c2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -27,7 +27,7 @@ Log Analytics では、コンピューター グループを使用して、[ロ�
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Log Analytics のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
 
-| メソッド | Description |
+| 方法 | 説明 |
 |:--- |:--- |
 | ログ検索 |コンピューターの一覧を返すログ検索を作成します。 |
 | Log Search API |ログ検索の結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
@@ -44,7 +44,7 @@ Log Analytics のコンピューター グループは、以下の表に示し�
 
 次の表では、コンピューター グループを定義するプロパティについて説明しています。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 |:---|:---|
 | 表示名   | ポータルに表示する検索の名前。 |
 | カテゴリ       | ポータル内で検索を整理するためのカテゴリ。 |
@@ -109,13 +109,29 @@ Configuration Manager のコレクションをインポートするには、[Log
 
 
 ## <a name="using-a-computer-group-in-a-log-search"></a>ログ検索におけるコンピューター グループの使用
-クエリでコンピューター グループを使用するには、エイリアスを関数として使用します。通常、次の構文となります。
+ログ検索から作成されたコンピューター グループをクエリで使用するには、エイリアスを関数として使用します。通常、次の構文となります。
 
   `Table | where Computer in (ComputerGroup)`
 
 たとえば、以下を使用して、mycomputergroup という名前のコンピューター グループ内のコンピューターのみを対象とした UpdateSummary レコードを返すことができます。
  
   `UpdateSummary | where Computer in (mycomputergroup)`
+
+
+インポートされたコンピュータ グループとそれらに含まれるコンピューターは、**ComputerGroup** テーブルに格納されます。  たとえば、次のクエリは、Active Directory の Domain Computers グループにコンピューターの一覧を返します。 
+
+  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+
+次のクエリは、Domain Computers 内のコンピューターの UpdateSummary レコードのみを返します。
+
+  ```
+  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+  UpdateSummary | where Computer in (ADComputers)
+  ```
+
+
+
+  
 
 >[!NOTE]
 > ワークスペースで[従来の Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)をまだ使用している場合は、次の構文を使用して、ログ検索内のコンピューター グループを参照します。  **Category** の指定は省略可能で、同じ名前でカテゴリが異なるコンピューター グループが存在する場合にのみ必要となります。 
@@ -135,8 +151,8 @@ Active Directory または WSUS から作成されたコンピューター グ�
 |:--- |:--- |
 | 型 |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
-| コンピューター |メンバー コンピューターの名前。 |
-| グループ |グループの名前。 |
+| Computer |メンバー コンピューターの名前。 |
+| Group |グループの名前。 |
 | GroupFullName |ソースとソース名を含んだグループの完全パス。 |
 | GroupSource |グループの収集元となったソース。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | GroupSourceName |グループの収集元となったソースの名前。  Active Directory の場合はドメイン名になります。 |

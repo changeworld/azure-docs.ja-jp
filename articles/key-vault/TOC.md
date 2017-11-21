@@ -14,6 +14,9 @@
 ### [サービスの制限](key-vault-service-limits.md)
 ### [HSM で保護されたキー](key-vault-hsm-protected-keys.md)
 ### [.NET 2.0 への移行](key-vault-dotnet2api-release-notes.md)
+### [Web アプリ シークレットの保存](vs-secure-secret-appsettings.md)
+### [.NET を使用したサービス認証](service-to-service-authentication.md)
+
 ### 概要
 #### [セキュリティ ワールド](key-vault-ovw-security-worlds.md)
 #### [論理的な削除](key-vault-ovw-soft-delete.md)

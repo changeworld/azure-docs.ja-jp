@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: ee334186dffaa1f88cf05717b6a5ba1e819a8cdc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9b7490fd51a2a39e6438856041fb25110ddde69
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -79,7 +79,7 @@ OS の更新に伴う課題は、それを行うには通常はコンピュー�
 
 通常はできません。 Service Fabric は、一時的なローカル ディスクに状態を格納します。これは、仮想マシンが別のホストに移動されても、データは一緒に移動されないことを意味します。 通常の運用では、新しいノードは他のノードによって最新の状態になるため、これは問題にはなりません。 ただし、すべてのノードを停止し、後で再起動した場合は、ほとんどのノードが新しいホスト上で開始され、システムが回復できない状態になる可能性が非常に高くなります。
 
-アプリケーションをデプロイする前にテスト用のクラスターを作成する場合は、[継続的インテグレーション/継続的配置パイプライン](service-fabric-set-up-continuous-integration.md)の一部としてこれらのクラスターを作成することをお勧めします。
+アプリケーションをデプロイする前にテスト用のクラスターを作成する場合は、[継続的インテグレーション/継続的配置パイプライン](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)の一部としてこれらのクラスターを作成することをお勧めします。
 
 
 ### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>オペレーティング システムはどのようにアップグレードすればいいですか? (Windows Server 2012 を 2016 にする場合など)

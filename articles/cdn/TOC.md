@@ -11,7 +11,7 @@
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [クロス オリジン リソース共有](cdn-cors.md)
 ### [カスタム ドメインを CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
-### [カスタム ドメインで HTTPS を有効にする](cdn-custom-ssl.md)
+### [カスタム ドメインで HTTPS を構成する](cdn-custom-ssl.md)
 ## コンテンツの最適化
 ### [最適化の概要](cdn-optimization-overview.md)
 ####[大きなファイルの最適化](cdn-large-file-optimization.md)

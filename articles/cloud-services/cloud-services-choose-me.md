@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: e8053b74e0e4d721523f49bcbb9e33b08bb7a1dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d27a4be968dc12818f7031b59ed40fbc9f9d88d3
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Cloud Services と他のサービスのどちらを選択すればよいか
 Azure Cloud Services が最適な選択ですか? Azure にはアプリケーションを実行するための複数のホスティング モデルがあります。 それぞれの実行モデルには異なるサービスが用意されているため、実行する内容に正確に基づいて実行モデルを選択してください。
@@ -43,14 +43,14 @@ IIS を使用せず、アプリをスタンドアロンで実行します。
 
 たとえば、単純なアプリケーションでは、web ロールを 1 つだけ使用して web サイトにサービスを提供している場合があります。 もっと複雑なアプリケーションでは、Web ロールを使用してユーザーからの受信要求を処理し、次にそれらの要求を worker ロールに渡して処理を行っている場合があります  (この通信は、[Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) または [Azure キュー](../storage/common/storage-introduction.md)を使用する可能性があります)。
 
-上記の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。 ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。 プラットフォームは、ハードウェアの単一障害点を回避するように、Cloud Services アプリケーションで VM を[スケールおよびデプロイ](cloud-services-how-to-scale.md)します。
+上記の図に示すように、1 つのアプリケーションのすべての VM は同じクラウド サービスで実行されます。 ユーザーは 1 つのパブリック IP アドレスを通してアプリケーションにアクセスし、要求はアプリケーションの VM 間で自動的に負荷分散されます。 プラットフォームは、ハードウェアの単一障害点を回避するように、Cloud Services アプリケーションで VM を[スケールおよびデプロイ](cloud-services-how-to-scale-portal.md)します。
 
 アプリケーションは仮想マシンで実行しますが、Cloud Services は IaaS ではなく PaaS を提供することを理解することが重要です。 次の例を考えてみましょう。Azure Virtual Machines のような IaaS では、アプリケーションが動作する環境を最初に作成して構成してから、この環境にアプリケーションをデプロイします。 この方法では、パッチが適用された新しいオペレーティング システムのバージョンを各 VM にデプロイするなど、ほとんどの管理をユーザーが担当します。 それに対し、PaaS では環境が既に存在するかのように管理できます。 ユーザーはアプリケーションをデプロイするだけで済みます。 オペレーティング システムの新バージョンのデプロイをはじめ、実行するプラットフォームの管理がユーザーに代わって処理されます。
 
 ## <a name="scaling-and-management"></a>スケーリングと管理
 Cloud Services では、ユーザーは仮想マシンを作成しません。 代わりに、**Web ロール インスタンスを 3 個**、**Worker ロール インスタンスを 2 個**のように、それぞれがいくつ必要かを Azure に指示する設定ファイルを提供するだけで、プラットフォームがそれらを自動的に作成します。  その場合も、バッキング VM の [サイズ](cloud-services-sizes-specs.md) を選択する必要がありますが、自身で明示的に作成する必要はありません。 アプリケーションが高い負荷を処理する場合は、追加の VM を要求すると、Azure がそれらのインスタンスを作成します。 負荷が減少した場合は、それらのインスタンスをシャットダウンして支払いを停止できます。
 
-Cloud Services アプリケーションは通常、2 つの手順から成るプロセスで利用可能になります。 最初に、開発者はプラットフォームのステージング領域に [アプリケーションをアップロード](cloud-services-how-to-create-deploy.md) します。 アプリケーションを稼働する準備が整ったら、Azure Portal を使用して運用とステージングを切り替えます。 [ステージングと運用の切り替え](cloud-services-nodejs-stage-application.md) にはダウンタイムが生じないため、ユーザーに支障を与えることなく、実行中のアプリケーションを新バージョンにアップグレードできます。
+Cloud Services アプリケーションは通常、2 つの手順から成るプロセスで利用可能になります。 最初に、開発者はプラットフォームのステージング領域に [アプリケーションをアップロード](cloud-services-how-to-create-deploy-portal.md) します。 アプリケーションを稼働する準備が整ったら、Azure Portal を使用して運用とステージングを切り替えます。 [ステージングと運用の切り替え](cloud-services-nodejs-stage-application.md) にはダウンタイムが生じないため、ユーザーに支障を与えることなく、実行中のアプリケーションを新バージョンにアップグレードできます。
 
 ## <a name="monitoring"></a>監視
 Cloud Services は監視も提供します。 Azure Virtual Machines と同様に、故障した物理サーバーを検出し、そのサーバーで実行していた VM を別のマシンで再開します。 さらに、Cloud Services はハードウェアの故障だけではなく、エラーが発生した VM やアプリケーションも検出します。 Virtual Machines と異なり、各 Web ロール内と Worker ロール内にエージェントが含まれているので、エラーが発生したときに、新しい VM とアプリケーションのインスタンスを開始できます。

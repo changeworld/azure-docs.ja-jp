@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: bfbfc5b46985d3413510ba69cbdfc688f46f0f1b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c6289df50d17de1ef542abbf617eb1cdb2f32311
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
@@ -596,7 +596,7 @@ PropertyGroup|X509NameMap、既定値は None|動的| |
 | PeriodicApiSlowTraceInterval | 時間 (秒単位)、既定値は 5 分 |動的| timespan を秒単位で指定します。 PeriodicApiSlowTraceInterval は、時間がかかる API 呼び出しを API モニターで再トレースする間隔を定義します。 |
 | NodeDeactivationMaxReplicaCloseDuration | 時間 (秒単位)、既定値は 900 |動的|timespan を秒単位で指定します。 ノードの非アクティブ化中、レプリカが終了途中で停止しているサービス ホストを終了するまでのシステムの待機期間。 |
 | FabricUpgradeMaxReplicaCloseDuration | 時間 (秒単位)、既定値は 900 |動的| timespan を秒単位で指定します。 ファブリックのアップグレード中、レプリカが終了途中で停止しているサービス ホストを終了するまでのシステムの待機期間。 |
-|GracefulReplicaShutdownMaxDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的|timespan を秒単位で指定します。 レプリカが終了途中で停止しているサービス ホストを終了するまでのシステムの待機期間。|
+|GracefulReplicaShutdownMaxDuration|TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的|timespan を秒単位で指定します。 レプリカが終了途中で停止しているサービス ホストを終了するまでのシステムの待機期間。 この値が 0 に設定されている場合は、レプリカは閉じる指示を受けません。|
 |ReplicaChangeRoleFailureRestartThreshold|int、既定値は 10|動的| 整数。 プライマリ昇格中、自動軽減アクション (レプリカの再起動) が適用されるまでの API エラーの数を指定します。 |
 |ReplicaChangeRoleFailureWarningReportThreshold|int、既定値は 2147483647|動的| 整数。 プライマリ昇格中、警告の正常性レポートが開始されるまでの API エラーの数を指定します。|
 

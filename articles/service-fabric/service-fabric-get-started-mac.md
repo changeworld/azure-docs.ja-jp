@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: saysa
-ms.openlocfilehash: 0fae5fe35c25f97a9eb2c0d648cfb0f66b7f0725
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f55279436af39d9bc0d4b1d7ef2253e2fc3074c0
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -96,7 +96,7 @@ Service Fabric は、OS X ではネイティブに実行されません。Micros
 
     ![Service Fabric Explorer viewed from the host Mac][sfx-mac]
 
-## <a name="install-the-necessary-java-artifacts-on-vagrant-to-use-service-fabric-java-programming-model"></a>必要な Java アーティファクトを Vagrant にインストールして Service Fabric Java プログラミング モデルを使用する
+## <a name="install-the-necessary-java-artifacts-on-vagrant-optional-if-you-want-to-use-the-java-programming-models"></a>必要な Java アーティファクトを Vagrant にインストールする (省略可能。Java プログラミング モデルを使用したい場合)
 
 Service Fabric サービスを Java で構築するには、ビルド タスクを実行するための Gradle と共に、JDK 1.8 がインストールされている必要があります。 次のスニペットで Open JDK 1.8 と Gradle をインストールしてください。 Service Fabric Java ライブラリが Maven から取り込まれます。
 
@@ -106,13 +106,15 @@ Service Fabric サービスを Java で構築するには、ビルド タスク�
   sudo apt-get install gradle
 ```
 
-## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac に Service Fabric CLI (sfctl) をセットアップする
+## <a name="set-up-the-service-fabric-cli"></a>Service Fabric CLI のセットアップ
 
-[Service Fabric CLI](service-fabric-cli.md#cli-mac) に関するページの手順に従って、Mac に Service Fabric CLI (`sfctl`) をインストールしてください。
-この CLI には、クラスター、アプリケーション、サービスなどの Service Fabric エンティティを操作するコマンドが含まれています。
+[Service Fabric CLI](service-fabric-cli.md) には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 Python がベースになっているため、あらかじめ Python と pip がインストールされていることを確認してから、次のコマンドを実行してください。
 
-## <a name="create-application-on-you-mac-using-yeoman"></a>Mac 上で Yeoman を使ってアプリケーションを作成する
+```bash
+pip install sfctl
+```
 
+## <a name="create-application-on-mac-using-yeoman"></a>Mac 上で Yeoman を使ってアプリケーションを作成する
 Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric アプリケーションを作成できるスキャフォールディング ツールが用意されています。 以下の手順に従って、ご利用のマシンに Service Fabric Yeoman テンプレート ジェネレーターをセットアップしてください。
 
 1. ご使用の Mac に Node.js と NPM がインストールされている必要があります。 インストールされていない場合は、次のコマンドで Homebrew を使って Node.js と NPM をインストールしてください。 Mac にインストールされている Node.js と NPM のバージョンは、``-v`` オプションを使ってチェックできます。

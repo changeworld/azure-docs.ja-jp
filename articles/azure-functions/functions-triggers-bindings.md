@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: glenga
-ms.openlocfilehash: 74933d9c3535ab71f47c792e20bfbc35e589ec08
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 7d22a6749216486de6132a6d39e2dcf683d0e678
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 Azure Functions では、*トリガー*と*バインド*を使用して、Azure やその他のサービスで発生したイベントに応答するコードを記述できます。 この記事では、サポートされているすべてのプログラミング言語でのトリガーとバインドの概念的な概要を説明します。 ここでは、すべてのバインドに共通する機能について説明します。
@@ -243,7 +243,7 @@ JavaScript など、動的に型指定された言語については、バイン
 
 各トリガーのメタデータ プロパティの詳細については、対応するリファレンス トピックを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  
 
-たとえば、BLOB トリガーには一定の遅延があるため、キュー トリガーを使用して関数を実行できます ([BLOB ストレージ トリガー](functions-bindings-storage-blob.md#storage-blob-trigger)に関するページを参照)。 キュー メッセージにはトリガーする対象の Blob ファイル名が含まれます。 `queueTrigger` メタデータ プロパティを使用する場合は、この動作をすべて、コードではなく構成に指定できます。
+たとえば、BLOB トリガーには一定の遅延があるため、キュー トリガーを使用して関数を実行できます ([BLOB ストレージ トリガー](functions-bindings-storage-blob.md#blob-storage-trigger)に関するページを参照)。 キュー メッセージにはトリガーする対象の Blob ファイル名が含まれます。 `queueTrigger` メタデータ プロパティを使用する場合は、この動作をすべて、コードではなく構成に指定できます。
 
 ```json
   "bindings": [

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/31/2017
+ms.date: 11/15/2017
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: fdb33ea0d08353b491f2934fcf885fcb6910b9a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa4b82fdf50eca382c4c84610a5f4857106c6d6d
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="upgrade-a-site-recovery-vault-to-an-azure-resource-manager-based-recovery-services-vault"></a>Site Recovery コンテナーから Azure Resource Manager ベースの Recovery Services コンテナーへのアップグレード
 
@@ -79,6 +79,7 @@ Site Recovery コンテナーを Azure Resource Manager ベースの Recovery Se
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **このアップグレードは進行中のレプリケーションに影響しますか?**
+
 
 いいえ。 進行中のレプリケーションは、アップグレード中およびアップグレード後も中断されずに続行されます。
 

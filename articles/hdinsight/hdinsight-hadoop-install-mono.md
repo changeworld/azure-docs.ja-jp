@@ -15,11 +15,11 @@ ms.workload: big-data
 ms.date: 10/23/2017
 ms.author: larryfr
 ms.custom: hdinsightactive
-ms.openlocfilehash: a6e5712026dc2da3627c07e9b411c81fb9a7e1fb
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: e9e55f05c97fe335a315683294805b1027b53784
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>HDInsight での Mono のインストールまたは更新
 
@@ -64,9 +64,9 @@ __要件__:
 
 ここでは、HDInsight で特定のバージョンの Mono をインストールまたはアップグレードする方法について説明しました。 HDInsight で Mono を利用して .NET アプリケーションを使用する方法の詳細については、次のドキュメントを参照してください。
 
-* [HDInsight で MapReduce をストリーミングするための .NET の使用](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [HDInsight における .NET と Hive および Pig の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
-* [Storm を使用した HDInsight での C# ソリューションの開発](hdinsight-storm-develop-csharp-visual-studio-topology.md)
+* [HDInsight で MapReduce をストリーミングするための .NET の使用](hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [HDInsight における .NET と Hive および Pig の使用](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Storm を使用した HDInsight での C# ソリューションの開発](storm/apache-storm-develop-csharp-visual-studio-topology.md)
 * [Linux ベースの HDInsight への .NET ソリューションの 移行](hdinsight-hadoop-migrate-dotnet-to-linux.md)
 
 スクリプト アクションの使用方法の詳細については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。

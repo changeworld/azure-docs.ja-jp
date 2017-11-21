@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2017
+ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 035eb44432081ef52c758a5d311b4d2ba2c6108d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9aea299738eb5cac6fe6d3b633707862d978fff0
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>ネットワークおよびアプリケーション セキュリティ グループ (プレビュー) によるネットワーク トラフィックのフィルター処理
 
@@ -44,6 +44,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
     
     ```azurecli-interactive
     az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
+    az provider register --namespace Microsoft.Network
     ``` 
 
 5. 次のコマンドを入力して、プレビューに登録されていることを確認します。
@@ -52,7 +53,9 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
     az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     ```
 
-    前のコマンドから返された出力に**状態**を表す "*登録済み*" が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
+    > [!WARNING]
+    > 登録が完了するまでに最大 1 時間かかります。 前のコマンドから返された出力に**状態**を表す "*登録済み*" が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
+
 6. 次の bash スクリプトを実行して、リソース グループを作成します。
 
     ```azurecli-interactive
@@ -160,7 +163,6 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --name myNic1 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "WebServers" "AppServers"
 
@@ -169,7 +171,6 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --name myNic2 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "AppServers"
 
@@ -178,12 +179,11 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --name myNic3 \
       --vnet-name myVnet \
       --subnet mySubnet \
-      --network-security-group myNsg \
       --location westcentralus \
       --application-security-groups "DatabaseServers"
     ```
 
-    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 9. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *WebServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *WebServers* アプリケーション セキュリティ グループを指定しているため、*myWebNic* には *WebRule* だけが有効です。 ネットワーク インターフェイスが *AppServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*AppRule* および *DatabaseRule* 規則は *myWebNic* に適用されません。
+    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 9. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *WebServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *WebServers* アプリケーション セキュリティ グループを指定しているため、*myNic1* には *WebRule* だけが有効です。 ネットワーク インターフェイスが *AppServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*AppRule* および *DatabaseRule* 規則は *myNic1* に適用されません。
 
 13. サーバーの種類ごとに 1 つの仮想マシンを作成し、対応するネットワーク インターフェイスを各仮想マシンに接続します。 この例では Windows 仮想マシンを作成しますが、代わりに Linux 仮想マシンを作成するには、*win2016datacenter* を *UbuntuLTS* に変更できます。
 
@@ -239,7 +239,8 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
     Get-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
     ```
 
-    前のコマンドから返された出力の **[RegistrationState]** 列に *[Registered] \(登録済み)* が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
+    > [!WARNING]
+    > 登録が完了するまでに最大 1 時間かかります。 前のコマンドから返された出力の **RegistrationState**に "*Registered (登録済み)*" が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
         
 6. リソース グループを作成します。
 
@@ -343,7 +344,6 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $webAsg,$appAsg
 
     $nic2 = New-AzureRmNetworkInterface `
@@ -351,7 +351,6 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $appAsg
 
     $nic3 = New-AzureRmNetworkInterface `
@@ -359,11 +358,10 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       -ResourceGroupName myResourceGroup `
       -Location westcentralus `
       -Subnet $vNet.Subnets[0] `
-      -NetworkSecurityGroup $nsg `
       -ApplicationSecurityGroup $databaseAsg
     ```
 
-    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 8. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *WebServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *WebServers* アプリケーション セキュリティ グループを指定しているため、*myWebNic* には *WebRule* だけが有効です。 ネットワーク インターフェイスが *AppServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*AppRule* および *DatabaseRule* 規則は *myWebNic* に適用されません。
+    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 8. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *WebServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *WebServers* アプリケーション セキュリティ グループを指定しているため、*myNic1* には *WebRule* だけが有効です。 ネットワーク インターフェイスが *AppServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*AppRule* および *DatabaseRule* 規則は *myNic1* に適用されません。
 
 13. サーバーの種類ごとに 1 つの仮想マシンを作成し、対応するネットワーク インターフェイスを各仮想マシンに接続します。 この例では Windows 仮想マシンを作成しますが、代わりに Linux 仮想マシンを作成するには、スクリプトを実行する前に *-Windows* を *-Linux* に、*MicrosoftWindowsServer* を *Canonical* に、*WindowsServer* を *UbuntuServer* に、さらに *2016-Datacenter* を *14.04.2-LTS* に変更できます。
 

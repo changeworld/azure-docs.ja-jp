@@ -1,9 +1,9 @@
 ---
-title: "VMVware VM または物理サーバーを別のサイトにレプリケートする (Azure クラシック ポータル) | Microsoft Docs"
-description: "VMware VM または Windows/Linux 物理サーバーを Azure Site Recovery を使用してセカンダリ サイトにレプリケートする場合は、この記事を参照してください。"
+title: "VMware VM または物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする | Microsoft Docs"
+description: "この記事では、オンプレミスの VMware VM または Windows/Linux 物理サーバーを Azure Site Recovery サービスを使用してセカンダリ サイトにレプリケートする方法について説明します。"
 services: site-recovery
 documentationcenter: 
-author: nsoneji
+author: rayne-wiselman
 manager: jwhit
 editor: 
 ms.assetid: b2cba944-d3b4-473c-8d97-9945c7eabf63
@@ -12,33 +12,33 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
-ms.author: nisoneji
-ms.openlocfilehash: 01a6f35fe61290f8c7275c34273d66956a53d3f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/05/2017
+ms.author: raynew
+ms.openlocfilehash: 8cfaa56735c1f4e2e01b58fdde2ad0e77b388762
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>Azure クラシック ポータルでオンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
+# <a name="set-up-disaster-recovery-of-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
-## <a name="overview"></a>概要
-Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイト間のリアルタイムのレプリケーションを実現します。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。 
 
-## <a name="prerequisites"></a>前提条件
-**Azure アカウント**: [Microsoft Azure](https://azure.microsoft.com/) アカウントが必要です。 アカウントがなくても、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。 [こちら](https://azure.microsoft.com/pricing/details/site-recovery/) をご覧ください。
+Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイト間のリアルタイムのレプリケーションを実現します。 InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。
 
-## <a name="step-1-create-a-vault"></a>ステップ 1: コンテナーの作成
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/pricing/free-trial/)してください。
+
+
+## <a name="create-a-vault"></a>コンテナーの作成
+1. [Azure Portal](https://portal.azure.com/) > **Recovery Services** にサインインします。
 2. [新規]、[管理]、[Backup and Site Recovery (OMS) (バックアップと Site Recovery (OMS))] の順にクリックします。 または、[参照]、[Recovery Services コンテナー]、[追加] の順にクリックします。
 3. **[名前]** に、コンテナーを識別するフレンドリ名を入力します。 複数のサブスクリプションがある場合は、いずれかを選択します。
 4. **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを選択します。 Azure リージョンを指定して、すべての必須フィールドに必要事項を入力します。
 5. **[場所]** で、コンテナーのリージョンを選択します。 サポートされているリージョンについては、「 [Azure Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」をご覧ください。
-6. ダッシュボードからコンテナーにすばやくアクセスするには、ダッシュボードにピン留めするをクリックし、作成をクリックします。
-7. 新しいコンテナーは、[ダッシュボード] の [すべてのリソース] と、メインの [Recovery Services コンテナー] ブレードに表示されます。
+6. ダッシュボードからコンテナーにすばやくアクセスするには、[ダッシュボードにピン留めする] をクリックし、[作成] をクリックします。
+7. 新しいコンテナーは、[ダッシュボード] の [すべてのリソース] と、メインの [Recovery Services コンテナー] ページに表示されます。
 
-## <a name="step-2-configure-the-vault-and-download-inmage-scout-components"></a>手順 2: コンテナーの構成および InMage Scout コンポーネントのダウンロード
-1. [Recovery Services コンテナー] ブレードでコンテナーを選択し、[設定] をクリックします。
+## <a name="configure-the-vault-and-download-inmage-scout-components"></a>コンテナーの構成および InMage Scout コンポーネントのダウンロード
+1. [Recovery Services コンテナー] ページでコンテナーを選択し、**[設定]** をクリックします。
 2. **[設定]**  >  **[作業の開始]** で、**[Site Recovery]**、**[手順 1: インフラストラクチャを準備する]**  >  **[保護の目標]** をクリックします。
 3. **[保護の目標]** で、[復旧サイトへ] を選択し、[Yes, with VMware vSphere Hypervisor (はい、VMware vSphere ハイパーバイザーを使用する)] を選択します。 次に、[OK] をクリックします。
 4. **[Scout のセットアップ]** で、[ダウンロード] をクリックして InMage Scout 8.0.1 GA ソフトウェアと登録キーをダウンロードします。 必要なすべてのコンポーネントのセットアップ ファイルは、ダウンロードした .zip ファイルに含まれています。
@@ -46,7 +46,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 ## <a name="step-3-install-component-updates"></a>手順 3: コンポーネント更新プログラムのインストール
 最新の [更新プログラム](#updates)について確認します。 更新プログラムのファイルを、次の順序でサーバーにインストールします。
 
-1. RX サーバー (存在する場合)
+1. RX サーバー (該当する場合)
 2. 構成サーバー
 3. プロセス サーバー
 4. マスター ターゲット サーバー
@@ -69,7 +69,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 5. **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** をマスター ターゲット サーバーにコピーします。 ファイルをダブルクリックして実行します。 ソースが更新プログラム 4 まで更新されていない場合、統合エージェントはソース サーバーにも適用できます。 後で説明する手順に従って、ソース サーバーにも統合エージェントをインストールしてください。<br>
 6. **vContinuum サーバー**: **vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe** を vContinuum サーバーにコピーします。  vContinuum ウィザードを閉じたことを確認してください。 ファイルをダブルクリックして実行します。<br>
 7. **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** をマスター ターゲット サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。<br>
-8. **Windows ソースサーバー**: ソースが既に更新プログラム 4 になっている場合は、ソースで更新プログラム 5 エージェントをインストールする必要はありません。 更新プログラム 4 よりも以前の場合、更新プログラム 5 エージェントを適用します。
+8. **Windows ソース サーバー**: 更新プログラム 4 を既に実行している場合、ソース サーバーで更新プログラム 5 のエージェントをインストールする必要はありません。 更新プログラム 4 よりも前のバージョンを実行している場合、更新プログラム 5 のエージェントを適用します。
 統一されたエージェントを更新するには、ソース サーバーに **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe**をコピーします。 ファイルをダブルクリックして実行します。 <br>
 9. **Linux ソース サーバー**: 統合エージェントを更新するには、UA ファイルの対応するバージョンを Linux サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。  例: RHEL 6.7 64 ビット サーバーの場合は、**UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** をサーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。
 
@@ -86,7 +86,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 ## <a name="updates"></a>更新プログラム
 ### <a name="azure-site-recovery-scout-801-update-5"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 5
 Scout 更新プログラム 5 は累積的な更新プログラムです。 更新プログラム 1 から 4 までのすべての修正に加え、以下の新しいバグ修正と機能強化が含まれています。
-ASR Scout 更新プログラム 4 から更新プログラム 5 に追加されている修正プログラムは、マスター ターゲット、および vContinuum のコンポーネントに固有です。 すべてのソース サーバー、マスター ターゲット、構成サーバー、プロセス サーバー、および RX が ASR Scout 更新プログラム 4 である場合は、マスター ターゲット サーバー上でのみ更新プログラム 5 を適用する必要があります。 
+Site Recovery Scout 更新プログラム 4 から更新プログラム 5 に追加されている修正プログラムは、マスター ターゲット、および vContinuum のコンポーネント向けです。 すべてのソース サーバー、マスター ターゲット、構成サーバー、プロセス サーバー、および RX が Site Recovery Scout に更新プログラム 4 が適用されている場合は、更新プログラム 5 を適用する必要があるのはマスター ターゲット サーバーだけです。 
 
 **新しいプラットフォームのサポート**
 * SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
@@ -109,11 +109,11 @@ ASR Scout 更新プログラム 4 から更新プログラム 5 に追加され�
 
 > [!NOTE]
 > 
-> * 上記の P2V クラスター修正は、ASR Scout 更新プログラム 5 で新しく保護された物理 MSCS クラスターのみに適用されます。 以前の更新プログラムで既に保護されている P2V MSCS クラスターでクラスター修正を利用するには、[ASR Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12「保護された P2V MSCS クラスターをScout 更新プログラム5 にアップグレードする」に記載されているアップグレード手順を実行する必要があります。
+> * 上記の P2V クラスター修正は、Site Recovery Scout 更新プログラム 5 で新しく保護された物理 MSCS クラスターのみに適用されます。 以前の更新プログラムで既に保護されている P2V MSCS クラスターでクラスター修正を利用するには、[リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 「保護された P2V MSCS クラスターを Scout 更新プログラム 5 にアップグレードする」に記載されているアップグレード手順を実行する必要があります。
 > 
-> * 物理 MSCS クラスターの再保護では、再保護の際に、同じ一連のディスクが各クラスター ノードで、最初に保護されたときのようにアクティブである場合のみ、既存のターゲット ディスクが再利用できます。 そうでない場合、[ASR Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 に説明された主導の手順に従って、ターゲット側のディスクを再保護中に再利用するため、適切なデータストア パスに移動します。 アップグレードの手順に従わずに P2V モードで MSCS クラスターを再保護すると、ターゲット ESXi サーバーに新しいディスクが作成されます。 データストアから古いディスクを手動で削除する必要があります。
+> * 物理 MSCS クラスターの再保護では、再保護の際に、同じ一連のディスクが各クラスター ノードで、最初に保護されたときのようにアクティブである場合のみ、既存のターゲット ディスクが再利用できます。 そうでない場合、[リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 に説明されている手動の手順に従って適切なデータストア パスに移動し、ターゲット側のディスクを再保護中に再利用するようにします。 アップグレードの手順に従わずに P2V モードで MSCS クラスターを再保護すると、ターゲット ESXi サーバーに新しいディスクが作成されます。 データストアから古いディスクを手動で削除する必要があります。
 > 
-> * ソース SLES11 またはいずれかのサービス パックの付いた SLES11 が正常に再起動するたびに、再同期の**ルート** ディスクのレプリケーション ペアを手動でマークする必要があります。これは CX UI に通知されないためです。 再同期のルート ディスクをマークしない場合、データの整合性 (DI) 問題が発生する可能性があります。
+> * ソース SLES11 またはいずれかのサービス パックの付いた SLES11 が正常に再起動するたびに、再同期の**ルート** ディスクのレプリケーション ペアを手動でマークする必要があります。これは CX UI に通知されないためです。 ルート ディスクに再同期のマークをつけない場合、データの整合性 (DI) の問題が発生する可能性があります。
 > 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 4
@@ -144,7 +144,7 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
 * VMware vCLI 6.0 のダウンロード リンクが Windows マスター ターゲット基本インストーラーに追加されています。
 * フェールオーバーおよび障害復旧訓練中のネットワーク構成の変更に関するチェックとログがさらに追加されました。
 * リテンション情報が CX に報告されないことがあります。  
-* 物理クラスターで、ソース ボリュームの圧縮が発生した場合に vContinuum ウィザードでのボリューム サイズ変更操作が失敗します。
+* 物理クラスターで、ソース ボリュームの縮小が発生した場合に vContinuum ウィザードでのボリューム サイズ変更操作が失敗します。
 * クラスター ディスクが PRDM ディスクの場合、"Failed to find the disk signature" (ディスク署名が見つかりませんでした) というエラーが発生してクラスターによる保護が失敗していました。
 * cxps トランスポート サーバーが範囲外の例外のためクラッシュします。
 * vContinuum ウィザードのプッシュ インストール ページで、サーバー名と IP 列のサイズを変更できるようになりました。

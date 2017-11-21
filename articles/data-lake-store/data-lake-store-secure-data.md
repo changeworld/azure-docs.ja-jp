@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 70483cc7edf0aa9eaac03bbd0dc9b7e8b946a7ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7cadb45202c7221876d377546e7c17199ec15809
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store に格納されているデータのセキュリティ保護
 Azure Data Lake Store のデータをセキュリティで保護するには 3 つの手順が必要です。
@@ -37,7 +37,7 @@ Azure Data Lake Store のデータをセキュリティで保護するには 3 �
 * **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Azure Active Directory でセキュリティ グループを作成する
-AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「 [Azure Active Directory のセキュリティ グループの管理](../active-directory/active-directory-accessmanagement-manage-groups.md)」を参照してください。
+AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「 [Azure Active Directory のセキュリティ グループの管理](../active-directory/active-directory-groups-create-azure-portal.md)」を参照してください。
 
 > [!NOTE] 
 > Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、サービス プリンシパルをグループに追加するには、[Azure AD の PowerShell モジュール](../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)を使用します。

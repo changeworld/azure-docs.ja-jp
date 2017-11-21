@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/06/2017
 ms.author: fimguy
-ms.openlocfilehash: 98eb9b3a58737da2436eed591d69a900166c6af9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6df124a38c748294e92183df272dc266a0afc51
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="connector-version-release-history"></a>コネクタ バージョンのリリース履歴
 Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタは頻繁に更新されます。
 
 > [!NOTE]
 > このトピックでは、FIM と MIM のみを取り上げています。 これらのコネクタは、Azure AD Connect にはインストールできません。 リリースされたコネクタは、指定されたビルドにアップグレードするときに AADConnect にプレインストールされます。
+
 
 このトピックでは、リリース済みのすべてのバージョンのコネクタを一覧にまとめています。
 
@@ -37,6 +38,29 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 * [PowerShell コネクタ](active-directory-aadconnectsync-connector-powershell.md) リファレンス ドキュメント
 * [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md) リファレンス ドキュメント
 
+## <a name="116490-aadconnect-116490"></a>1.1.649.0 (AADConnect 1.1.649.0)
+
+### <a name="fixed-issues"></a>修正された問題:
+
+* Lotus Notes:
+  * カスタム証明者のフィルター処理オプション
+  * ImportOperations クラスのインポートで、"Views" モードで実行できる操作と "Search" モードで実行できる操作の定義が修正されました。
+* Generic LDAP:
+  * OpenLDAP ディレクトリでは、entryUUI ではなく DN をアンカーとして使用します。 GLDAP コネクタに、アンカーを変更できるオプションが追加されました。
+* Generic SQL:
+  * varbinary(max) 型のフィールドへのエクスポートが修正されました。
+  * データ ソースのバイナリ データを CSEntry オブジェクトに追加するときに、DataTypeConversion 関数が 0 バイトで失敗していました。 CSEntryOperationBase クラスの DataTypeConversion 関数が修正されました。
+
+
+
+
+### <a name="enhancements"></a>強化された機能:
+
+* Generic SQL:
+  * [Global Parameters]\(グローバル パラメーター\) ページの Generic SQL 管理エージェントの構成ウィンドウに、名前付きパラメーターを使用するかどうかを指定してストアド プロシージャの実行モードを構成する機能が追加されました。 [Global Parameters]\(グローバル パラメーター\) ページに、[Use named parameters to execute a stored procedure]\(名前付きパラメーターを使用してストアド プロシージャを実行する\) というラベルのチェック ボックスが用意されています。このチェック ボックスを使用して、ストアド プロシージャを実行する際に名前付きパラメーターを使用するかどうかを指定できます。
+    * 現時点では、名前付きパラメーターを使用してストアド プロシージャを実行する機能は、IBM DB2 データベースと MSSQL データベースにのみ対応しています。 Oracle データベースと MySQL データベースでは、この方法は機能しません。 
+      * MySQL の SQL 構文では、ストアド プロシージャでの名前付きパラメーターをサポートしていません。
+      * Oracle の ODBC ドライバーでは、ストアド プロシージャの名前付きパラメーターをサポートしていません。
 
 ## <a name="116040-aadconnect-116140"></a>1.1.604.0 (AADConnect 1.1.614.0)
 
@@ -203,6 +227,22 @@ Lotus:
 * [KB2932635](https://support.microsoft.com/kb/2932635) - 5.3.1003、2014 年 2 月  
 * [KB2899874](https://support.microsoft.com/kb/2899874) - 5.3.0721、2013 年 10 月
 * [KB2875551](https://support.microsoft.com/kb/2875551) - 5.3.0534、2013 年 8 月
+
+## <a name="troubleshooting"></a>トラブルシューティング 
+
+> [!NOTE]
+> ECMA2 コネクタを使用して、Microsoft Identity Manager または AADConnect を更新する場合に適用されます。 
+
+アップグレード時にコネクタ定義を更新する必要があります。そうしないと、アプリケーション イベント ログに、"Assembly version in AAD Connector configuration ("X.X.XXX.X") is earlier than the actual version ("X.X.XXX.X") of "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll""\(AAD コネクタ構成 ("X.X.XXX.X") のアセンブリ バージョンが、"C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" の実際のバージョン ("X.X.XXX.X") より前のバージョンです\) という、警告 ID 6947 で始まるエラーが表示されます。
+
+定義を更新するには、次の手順を実行します。
+* コネクタ インスタンスのプロパティを開きます。
+* [接続] をクリックし、[接続] タブに移動します。
+  * コネクタ アカウントのパスワードを入力します。
+* 各プロパティ タブを順番にクリックします。
+  * このコネクタの種類に、[最新の情報に更新] ボタンが含まれた [パーティション] タブがある場合、そのタブで [最新の情報に更新] をクリックします。
+* すべてのプロパティ タブにアクセスしたら、[OK] をクリックして変更を保存します。
+
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。

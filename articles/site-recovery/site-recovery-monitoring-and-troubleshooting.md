@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad1e0bcb2e2c073c8fb186f5a9d8bcb0bac588a0
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング
 この監視とトラブルシューティング ガイドでは、Azure Site Recovery のレプリケーション正常性を追跡する方法とトラブルシューティング手法について説明します。
 
 ## <a name="understand-the-components"></a>コンポーネントの理解
 ### <a name="vmware-virtual-machine-or-physical-server-site-deployment-for-replication-between-on-premises-and-azure"></a>オンプレミスと Azure の間のレプリケーションのための VMware 仮想マシンまたは物理サーバーのサイトのデプロイ
-オンプレミスの VMware 仮想マシンまたは物理サーバーと Azure の間のデータベース回復を設定するには、構成サーバー、マスター ターゲット サーバー、およびプロセス サーバーの各コンポーネントを、仮想マシン上またはサーバー上に設定する必要があります。 ソース サーバーの保護を有効にすると、Azure Site Recovery は Microsoft Azure App Service の Mobile Apps 機能をインストールします。 オンプレミスで障害が発生してソース サーバーが Azure にフェールオーバーされた後、ユーザーは、Azure のプロセス サーバーとオンプレミスのマスター ターゲット サーバーをセットアップして、オンプレミスのソース サーバーを再構築する必要があります。
+オンプレミスの VMware 仮想マシンまたは物理サーバーと Azure の間のデータベース回復を設定するには、構成サーバー、マスター ターゲット サーバー、およびプロセス サーバーの各コンポーネントを、仮想マシン上またはサーバー上に設定する必要があります。 ソース サーバーの保護を有効にすると、Azure Site Recovery は、最新バージョンがまだデプロイされていない場合、選択されたプロセス サーバーからモビリティ サービスをインストールします。 オンプレミスで障害が発生してソース サーバーが Azure にフェールオーバーされた後、ユーザーは、Azure のプロセス サーバーとオンプレミスのマスター ターゲット サーバーをセットアップして、オンプレミスのソース サーバーを再構築する必要があります。
 
 ![オンプレミスと Azure の間のレプリケーションのための VMware/物理サイトのデプロイ](media/site-recovery-monitoring-and-troubleshooting/image18.png)
 

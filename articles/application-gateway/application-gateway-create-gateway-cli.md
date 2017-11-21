@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 3f43feaa8866725c5e6d8aa8cb03cd1a945de453
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d3732d538f3ed9ecb87247f378a3736692025ca
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用してアプリケーション ゲートウェイを作成する
 
@@ -130,7 +130,7 @@ az network application-gateway create \
 --resource-group "myresourcegroup" \
 --vnet-name "AdatumAppGatewayVNET" \
 --vnet-address-prefix "10.0.0.0/16" \
---subnet "Appgatewaysubnet \
+--subnet "Appgatewaysubnet" \
 --subnet-address-prefix "10.0.0.0/28" \
 --servers "10.0.0.5"  \
 --public-ip-address pip

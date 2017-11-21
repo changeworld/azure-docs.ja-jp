@@ -4,7 +4,7 @@ description: "既存の Azure AD Domain Services 管理対象ドメインでの�
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 10/30/2017
 ms.author: maheshu
-ms.openlocfilehash: 118773be1f03701246051b8832695c591d76b1e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c9a47e9b3050eb7f41202d6a4b9202ba0f379df
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services 管理対象ドメインでのディレクトリの不一致エラーを解決する
 Azure クラシック ポータルを使用して有効化された、既存の管理対象ドメインがあるとします。 新しい Azure Portal にアクセスしてこの管理対象ドメインを表示すると、次のエラー メッセージが表示されます。
@@ -43,7 +43,7 @@ Azure クラシック ポータルを使用して有効化された、既存の�
 
 ![テナントが一致しない構成](./media/getting-started/mismatched-tenant-config.png)
 
-このため、管理対象ドメインとこのドメインが有効になっている仮想ネットワークが 2 つの異なる Azure AD テナントに属しているシナリオでは、上記のエラーが表示されます。
+このため、管理対象ドメインとこのドメインが有効になっている仮想ネットワークが、2 つの異なる Azure AD テナントに属していると、このエラーが表示されます。
 
 Resource Manager 環境では次のルールが適用されます。
 - 1 つの Azure AD ディレクトリで複数の Azure サブスクリプションを所有することができる。
@@ -55,9 +55,9 @@ Resource Manager 環境では次のルールが適用されます。
 ## <a name="resolution"></a>解決策
 ディレクトリの不一致エラーの解決策は 2 つあります。 次のいずれかの手順を実施します。
 
-- **[削除]** ボタンをクリックして、既存の管理対象ドメインを削除します。 [Azure Portal](https://portal.azure.com) を使用して管理対象ドメインを再作成し、管理対象ドメインと、このドメインを利用可能な仮想ネットワークが同じ Azure AD ディレクトリに属するようにします。 削除したドメインに以前参加していたマシンすべてを、新しく作成した管理対象ドメインにもう一度参加させる必要があります。
+- **[削除]** ボタンをクリックして、既存の管理対象ドメインを削除します。 [Azure Portal](https://portal.azure.com) を使用して管理対象ドメインを再作成し、管理対象ドメインと、このドメインを利用可能な仮想ネットワークが同じ Azure AD ディレクトリに属するようにします。 削除したドメインに以前参加していたマシンすべてを、新しく作成した管理対象ドメインに参加させます。
 
-- 仮想ネットワークが含まれる Azure サブスクリプションを、管理対象ドメインが属する Azure AD ディレクトリへ移動するように Azure サポートに依頼します。 **[新しいサポート要求]** をクリックし、サポート要求の **[詳細]** セクションに「**mismatched directory (一致しないディレクトリ)**」と記入します。 エラー メッセージで表示された情報を、サポート要求の一部に含めます。
+- 仮想ネットワークが含まれる Azure サブスクリプションを、管理対象ドメインが属する Azure AD ディレクトリに移動します。 「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)」の手順に従ってください。
 
 
 ## <a name="related-content"></a>関連コンテンツ

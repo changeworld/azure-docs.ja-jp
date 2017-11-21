@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3810c6fc3e6d6abf6e41047a303f8d0ecfe1c7ec
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>多層を利用した Azure AD パスワード セキュリティ
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 * パスワードの複雑さの要件
 * パスワードの有効期限 (定期的に変更を強制)
 
-Azure Active Directory のパスワード リセットに関する詳細については、「[IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット](active-directory-passwords.md)」というトピックを参照してください。
+Azure Active Directory のパスワード リセットに関する詳細については、「[IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット](active-directory-passwords-update-your-own-password.md)」というトピックを参照してください。
 
 ## <a name="azure-ad-password-protections"></a>Azure AD のパスワード保護
 
@@ -74,7 +74,7 @@ Microsoft は[データの侵害](https://www.privacyrights.org/data-breaches)�
 
   ![Microsoft アカウントからロックアウト](./media/active-directory-secure-passwords/locked-out-ms-accounts.png)
 
-Azure Active Directory のパスワード リセットに関する詳細については、「[IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット](active-directory-passwords.md)」というトピックを参照してください。
+Azure Active Directory のパスワード リセットに関する詳細については、「[IT プロフェッショナルにとっての Azure AD のセルフサービスによるパスワードのリセット](active-directory-passwords-update-your-own-password.md)」というトピックを参照してください。
 
   >[!NOTE]
   >Azure AD の管理者の方は、従来のパスワードをユーザーが一切作成できないように、[Windows Hello](https://www.microsoft.com/windows/windows-hello) を導入することもご検討ください。

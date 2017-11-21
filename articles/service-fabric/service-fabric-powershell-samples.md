@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 08/16/2017
+ms.date: 11/15/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d4bc835399aef667cfb893e6473d84f57fc84a05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e255382b1263c162bfc80cf41f9e8d362be55a8e
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル
 

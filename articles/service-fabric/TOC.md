@@ -111,7 +111,7 @@
 ### [概要](service-fabric-deploy-anywhere.md)
 ### 計画と準備
 #### [容量計画](service-fabric-cluster-capacity.md)
-#### [障害復旧](service-fabric-disaster-recovery.md)
+#### [ディザスター リカバリー ](service-fabric-disaster-recovery.md)
 ### [クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)
 ### [クラスターのセキュリティ](service-fabric-cluster-security.md)
 ### [Linux と Windows での機能の違い](service-fabric-linux-windows-differences.md)
@@ -136,11 +136,30 @@
 ## [API Management との統合](service-fabric-api-management-overview.md)
 
 ## 監視と診断
-### [概要](service-fabric-diagnostics-overview.md)
-### [正常性モデル](service-fabric-health-introduction.md)
-### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
-### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
-### [Reliable Service Remoting のパフォーマンス カウンター](service-fabric-reliable-serviceremoting-diagnostics.md)
+### [アプリケーションの監視と診断](service-fabric-diagnostics-overview.md)
+### イベントの生成
+#### [プラットフォーム レベルのイベントの生成](service-fabric-diagnostics-event-generation-infra.md)
+##### [操作チャネル](service-fabric-diagnostics-event-generation-operational.md)
+##### [Reliable Services のイベント](service-fabric-reliable-services-diagnostics.md)
+##### [Reliable Actors のイベント](service-fabric-reliable-actors-diagnostics.md)
+##### [パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)
+##### [サービスのリモート処理の監視](service-fabric-reliable-serviceremoting-diagnostics.md)
+#### [アプリケーション レベルのイベントの生成](service-fabric-diagnostics-event-generation-app.md)
+### アプリケーションとクラスターの正常性の確認
+#### [Service Fabric の正常性の監視](service-fabric-health-introduction.md)
+#### [サービス正常性のレポートとチェック](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+#### [カスタム正常性レポートの追加](service-fabric-report-health.md)
+#### [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+#### [正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
+### 集計値
+#### [EventFlow を使ったイベントの集計](service-fabric-diagnostics-event-aggregation-eventflow.md)
+#### Azure 診断を使ったイベントの集計
+##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
+##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
+### イベントの分析
+#### [Application Insight を使ったイベントの分析](service-fabric-diagnostics-event-analysis-appinsights.md)
+#### [OMS を使ったイベントの分析](service-fabric-diagnostics-event-analysis-oms.md)
+### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
 
 # ハウツー ガイド
 ## 開発環境を設定する
@@ -231,8 +250,6 @@
 ### [Eclipse での Java サービスのデバッグ](service-fabric-debugging-your-application-java.md)
 ### [ローカルでの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## [API Management と Service Fabric を Azure にデプロイする](service-fabric-api-management-quick-start.md)
-
 ## Cloud Services から移行する
 ### [Cloud Services と Service Fabric の比較](service-fabric-cloud-services-migration-differences.md)
 ### [Service Fabric への移行](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -246,7 +263,6 @@
 #### [Azure リソース マネージャー](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
-#### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
 ### アプリケーションのアップグレード
@@ -262,11 +278,8 @@
 ##### [ワークロード中](service-fabric-testability-workload-tests.md)
 ##### [テスト シナリオの使用](service-fabric-testability-scenarios.md)
 ##### [Node Transition API の使用](service-fabric-node-transition-apis.md)
-#### [アプリケーションのロード テスト](service-fabric-vso-load-test.md)
 
-### 継続的インテグレーションのセットアップ
-#### [VSTS を使用した継続的インテグレーションのセットアップ](service-fabric-set-up-continuous-integration.md)
-#### [Jenkins を使用した Linux Java アプリケーションのデプロイ](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+### [Jenkins を使用した Linux Java アプリケーションのデプロイ](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 
 ## クラスターを作成および管理する
 ### Azure 上のクラスター
@@ -301,46 +314,13 @@
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 ### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
 
-### クラスター リソースを管理および調整する
-#### [Cluster Resource Manager の概要](service-fabric-cluster-resource-manager-introduction.md)
-#### [Cluster Resource Manager のアーキテクチャ](service-fabric-cluster-resource-manager-architecture.md)
-#### [クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)
-#### [アプリケーション グループの概要](service-fabric-cluster-resource-manager-application-groups.md)
-#### [Cluster Resource Manager 設定の構成](service-fabric-cluster-resource-manager-configure-services.md)
-#### [リソース使用量メトリックス](service-fabric-cluster-resource-manager-metrics.md)
-#### [サービス アフィニティの使用](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-#### [サービス配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-#### [クラスターの管理](service-fabric-cluster-resource-manager-management-integration.md)
-#### [クラスターの最適化](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-#### [クラスターの分散](service-fabric-cluster-resource-manager-balancing.md)
-#### [調整](service-fabric-cluster-resource-manager-advanced-throttling.md)
-#### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
-
 ## 監視と診断
-### [アプリケーションの監視と診断](service-fabric-diagnostics-overview.md)
-### イベントの生成
-#### [プラットフォーム レベルのイベントの生成](service-fabric-diagnostics-event-generation-infra.md)
-##### [操作チャネル](service-fabric-diagnostics-event-generation-operational.md)
-##### [Reliable Services のイベント](service-fabric-reliable-services-diagnostics.md)
-##### [Reliable Actors のイベント](service-fabric-reliable-actors-diagnostics.md)
-##### [パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)
-#### [アプリケーション レベルのイベントの生成](service-fabric-diagnostics-event-generation-app.md)
-### アプリケーションとクラスターの正常性の確認
-#### [Service Fabric の正常性の監視](service-fabric-health-introduction.md)
-#### [サービス正常性のレポートとチェック](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
-#### [カスタム正常性レポートの追加](service-fabric-report-health.md)
-#### [システム正常性レポートを使用したトラブルシューティング](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-#### [正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
-#### [Windows Server コンテナーの監視](service-fabric-diagnostics-containers-windowsserver.md)
-### 集計値
-#### [EventFlow を使ったイベントの集計](service-fabric-diagnostics-event-aggregation-eventflow.md)
-#### Azure 診断を使ったイベントの集計
-##### [Windows](service-fabric-diagnostics-event-aggregation-wad.md)
-##### [Linux](service-fabric-diagnostics-event-aggregation-lad.md)
-### イベントの分析
-#### [Application Insight を使ったイベントの分析](service-fabric-diagnostics-event-analysis-appinsights.md)
-#### [OMS を使ったイベントの分析](service-fabric-diagnostics-event-analysis-oms.md)
-### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
+### OMS
+#### [OMS Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)
+#### [OMS エージェントの追加](service-fabric-diagnostics-oms-agent.md)
+#### [コンテナーの監視](service-fabric-diagnostics-oms-containers.md)
+### パフォーマンスの監視
+#### [WAD を使用したパフォーマンスの監視](service-fabric-diagnostics-perf-wad.md)
 
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)

@@ -1,0 +1,76 @@
+- name: Azure Time Series Insights
+  href: index.yml
+- name: 概要
+  items:
+    - name: Time Series Insights について
+      href: time-series-insights-overview.md
+- name: クイック スタート
+  items:
+    - name: Time Series Insights の探索
+      href: time-series-quickstart.md
+- name: 概念
+  items:
+    - name: 環境を計画する
+      href: time-series-insights-environment-planning.md
+    - name: エクスプローラーでのデータの視覚化
+      href: time-series-insights-explorer.md
+    - name: 調整の緩和
+      href: time-series-insights-environment-mitigate-latency.md
+    - name: 診断とトラブルシューティング
+      href: time-series-insights-diagnose-and-solve-problems.md
+    - name: 開発
+      items:
+        - name: 認証と承認
+          href: time-series-insights-authentication-and-authorization.md
+        - name: 'C# によるデータのクエリ'
+          href: time-series-insights-query-data-csharp.md
+        - name: 'C# での参照データの管理'
+          href: time-series-insights-manage-reference-data-csharp.md
+        - name: カスタム ビューの共有
+          href: time-series-insights-parameterized-urls.md
+- name: ハウツー ガイド
+  items:
+    - name: 環境の作成
+      href: time-series-insights-get-started.md
+    - name: データ アクセスの許可
+      href: time-series-insights-data-access.md
+    - name: イベント ハブへの接続
+      href: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - name: IoT Hub への接続
+      href: time-series-insights-how-to-add-an-event-source-iothub.md
+    - name: 参照データ セットの作成
+      href: time-series-insights-add-reference-data-set.md
+    - name: 送信イベント
+      href: time-series-insights-send-events.md
+    - name: 環境のスケーリング
+      href: time-series-insights-how-to-scale-your-environment.md
+- name: リファレンス
+  items:
+    - name: クエリ API
+      href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
+    - name: クエリ構文
+      href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+- name: リソース
+  items:
+    - name: 関連サービス
+      items:
+        - name: Azure IoT Suite
+          href: /azure/iot-suite/
+        - name: Azure Event Hubs
+          href: /azure/event-hubs/
+        - name: Azure Stream Analytics
+          href: /azure/stream-analytics/
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/time-series-insights/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureTimeSeriesInsights'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
+    - name: サポート オプション
+      href: 'https://azure.microsoft.com/support/options/'

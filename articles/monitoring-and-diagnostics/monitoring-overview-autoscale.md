@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2016
 ms.author: robb
-ms.openlocfilehash: 413828d79d79c181c662bc7cfb4114345de57f90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a30f0c3b799f76858424d97218c5a6e4386e78e
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -110,7 +110,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 | サービス | スキーマとドキュメント |
 | --- | --- |
 | Web Apps |[Web アプリのスケーリング](insights-how-to-scale.md) |
-| Cloud Services |[クラウド サービスの自動スケール](../cloud-services/cloud-services-how-to-scale.md) |
+| Cloud Services |[クラウド サービスの自動スケール](../cloud-services/cloud-services-how-to-scale-portal.md) |
 | Virtual Machines: クラシック |[従来の仮想マシン可用性セットのスケーリング](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtual Machines: Windows スケール セット |[Windows での仮想マシン スケール セットのスケーリング](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
 | Virtual Machines: Linux スケール セット |[Linux での仮想マシン スケール セットのスケーリング](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |

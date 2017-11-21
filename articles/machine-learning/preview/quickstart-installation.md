@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 10/13/2017
-ms.openlocfilehash: 07d06e4de95fcc562bcc76ac5cc4f5cd3483ba6d
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 7c74a9ebaae0b027277fe282b958a653ab498fc5
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Azure Machine Learning プレビュー アカウントの作成と Azure Machine Learning Workbench のインストール
 Azure Machine Learning は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -93,33 +93,20 @@ Azure Machine Learning Workbench を、Windows 10、Windows Server 2016 以降�
    `C:\Users\<user>\AppData\Local\AmlWorkbench`
 
 ## <a name="install-azure-machine-learning-workbench-on-macos"></a>Azure Machine Learning Workbench を macOS にインストールする
-Azure Machine Learning Workbench を、macOS Sierra が実行されているコンピューターにインストールします。
+Azure Machine Learning Workbench を、macOS Sierra 以降が実行されているコンピューターにインストールします。
 
-1. [Homebrew](http://brew.sh) を使用して openssl ライブラリをインストールします。 詳細については、「[Mac における .NET Core の前提条件](https://docs.microsoft.com/dotnet/core/macos-prerequisites)」を参照してください。
-   ```
-   # install Homebrew first if you don't have it already
-   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-   # install latest openssl needed for .NET Core 1.x
-   brew update
-   brew install openssl
-   mkdir -p /usr/local/lib
-   ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-   ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-   ```
-
-2. 最新の Azure Machine Learning Workbench インストーラー [AmlWorkbench.dmg](https://aka.ms/azureml-wb-dmg) をダウンロードします。
+1. 最新の Azure Machine Learning Workbench インストーラー [AmlWorkbench.dmg](https://aka.ms/azureml-wb-dmg) をダウンロードします。
 
    >[!IMPORTANT]
    >インストーラーは、ディスク上に完全にダウンロードした後、そこから実行します。 ブラウザーのダウンロード ウィジェットで直接実行しないようにしてください。
 
-3. Finder で、ダウンロードしたインストーラー **AmlWorkbench.dmg** をダブルクリックします。
+2. Finder で、ダウンロードしたインストーラー **AmlWorkbench.dmg** をダブルクリックします。
 
-4. 画面に表示される指示に従って、インストールを完了します。
+3. 画面に表示される指示に従って、インストールを完了します。
 
    インストーラーによって、必要な依存コンポーネントがすべてダウンロードされます (Python、Miniconda、その他の関連ライブラリなど)。 すべてのコンポーネントのインストールが完了するには、約 30 分かかる場合があります。 
 
-5. Azure Machine Learning Workbench は次のディレクトリにインストールされます。 
+4. Azure Machine Learning Workbench は次のディレクトリにインストールされます。 
 
    `/Applications/AmlWorkbench.app`
 

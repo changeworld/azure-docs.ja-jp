@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a92b2875df3ceaeb4de21f24aa484196a82d825d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: a9b321fcf8a8d1234989a9433da227142d954cb4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Node.js および MongoDB の Web アプリを構築する
 
@@ -207,7 +207,7 @@ module.exports = {
 gulp prod
 ```
 
-ローカル ターミナル ウィンドウで次のコマンドを実行して、"_config/env/production.js_" に構成した接続文字列を使用します。 証明書エラーと config.domain の警告は無視します。
+ローカル ターミナル ウィンドウで次のコマンドを実行して、_config/env/local-production.js_ で構成した接続文字列を使用します。 証明書エラーと config.domain の警告は無視します。
 
 ```bash
 NODE_ENV=production node server.js
@@ -246,11 +246,11 @@ MEAN.JS version: 0.5.0
 
 ### <a name="create-a-linux-based-web-app"></a>Linux ベースの Web アプリを作成する
 
-[!INCLUDE [Create a linux based web app](../../../includes/app-service-web-create-web-app-linux-nodejs-no-h.md)]
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)] 
 
 ### <a name="configure-an-environment-variable"></a>環境変数の構成
 
-"_config/env/local-production.js_" は Git リポジトリに含まれません。 したがって、Azure Web アプリでは、アプリ設定を使用して MongoDB 接続文字列を定義します。
+既定では、MEAN.js プロジェクトは _config/env/local-production.js_ を Git リポジトリ外で保持します。 したがって、Azure Web アプリでは、アプリ設定を使用して MongoDB 接続文字列を定義します。
 
 アプリ設定を設定するには、Cloud Shell で [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update) コマンドを使用します。
 
@@ -262,7 +262,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 Node.js コードでは、任意の環境変数にアクセスする場合と同じように、`process.env.MONGODB_URI` を使用して、このアプリ設定にアクセスします。 
 
-ローカル MEAN.js リポジトリで、運用環境固有の構成を含む "_config/env/production.js_" をもう一度開きます。 既定の MEAN.js アプリは、作成した `MONGODB_URI` 環境変数を使用するように既に構成されています。
+ローカル MEAN.js リポジトリで、運用環境固有の構成を含む _config/env/production.js_ を開きます (_config/env/local-production.js_ ではなく)。 既定の MEAN.js アプリは、作成した `MONGODB_URI` 環境変数を使用するように既に構成されています。
 
 ```javascript
 db: {

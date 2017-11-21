@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/08/2017
 ms.author: jingwang
-ms.openlocfilehash: 3f2b95e57e34905bf1128e9aee2862110a598f75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0351e4c4dcf19f9e4b6ec11c59c4dd00f0013a2
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +53,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 ![パフォーマンス マトリックス](./media/copy-activity-performance/CopyPerfRef.png)
 
 >[!IMPORTANT]
->Azure Data Factory バージョン 2 では、コピー アクティビティが Azure 統合ランタイムで実行される場合、最小のクラウドデータ移動単位は 2 です。
+>Azure Data Factory バージョン 2 では、コピー アクティビティが Azure Integration Runtime で実行される場合、クラウド データ移動単位で許可される最小値は 2 です。 指定しない場合、[クラウド データ移動単位](#cloud-data-movement-units)で使用されている既定のデータ移動単位を参照してください。
 
 注意する点:
 
@@ -84,13 +84,12 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 **クラウド データ移動単位 (DMU)** は、Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 **DMU は [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)**にのみ適用され、[セルフホステッド統合ランタイム](concepts-integration-runtime.md#self-hosted-integration-runtime)には適用されません。
 
-**コピー アクティビティの実行を強化する最小クラウドデータ移動単位は 2 です。** 次の表に、さまざまなコピー シナリオで使用される既定の DMU を示します。
+**コピー アクティビティの実行を強化する最小クラウドデータ移動単位は 2 です。** 指定しない場合、次の表に、さまざまなコピー シナリオで使用される既定の DMU を示します。
 
 | コピー シナリオ | サービスによって決定される既定の DMU |
 |:--- |:--- |
-| ファイル ベースのストア間でのデータのコピー | ファイルの数とサイズに応じて 2 〜 16。 |
-| Salesforce/Dynamics からのデータのコピー | 4 |
-| 他のすべてのコピー シナリオ | 2 |
+| ファイル ベースのストア間でのデータのコピー | ファイルの数とサイズに応じて 4 〜 16。 |
+| 他のすべてのコピー シナリオ | 4 |
 
 この既定の動作を無視するには、 **cloudDataMovementUnits** プロパティに次のように値を指定します。 **cloudDataMovementUnits** プロパティに**使用できる値**は、2、4、8、16、32 です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。 特定のコピー ソースおよびシンクに、より多くの単位を構成した場合に得られるパフォーマンス向上レベルの情報については、「 [パフォーマンス リファレンス](#performance-reference)」を参照してください。
 

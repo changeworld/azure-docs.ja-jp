@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.openlocfilehash: 7af8fadca15e07e178f12db27fec2467f43c5d36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac5c39eac34221992803f3b27db241263f828b36
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 * AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利用者の信頼) へのデバイスに基づく条件付きアクセスを有効にします。
 
-これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。 条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
+これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。 条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
 
 > [!IMPORTANT]
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
@@ -141,7 +141,7 @@ Active Directory の構成を確認します。
 ![トラブルシューティング、デバイス登録構成に対するアクセス許可の確認](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot6.png)
 
 ## <a name="additional-information"></a>追加情報
-* [条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access.md)
+* [条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)
 * [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>次のステップ

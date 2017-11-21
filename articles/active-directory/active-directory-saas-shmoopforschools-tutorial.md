@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 667c8fc840a918635dcd5e6838afbadb50cc1b97
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f30e0967384fb881bab045f6544989b8baaccfa0
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>チュートリアル: Azure Active Directory と Shmoop For Schools の統合
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 Shmoop For Schools と Azure AD の統合には、次の利点があります。
 
 - Shmoop For Schools にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Shmoop For Schools にサインオン (シングル サインオン) できるように、設定が可能です。
+- ユーザーが自分の Azure AD アカウントで自動的に Shmoop For Schools にサインインできるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
@@ -40,12 +40,12 @@ Azure AD と Shmoop For Schools の統合を構成するには、次のものが
 - Shmoop For Schools でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> このチュートリアルの手順をテストする場合、運用環境を使わないことをお勧めします。
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
+このチュートリアルで手順をテストするときの推奨事項は次のとおりです。
 
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+- 必要な場合にのみ、運用環境を使用します。
+- Azure AD の評価環境がない場合は、[1 か月の無料試用版](https://azure.microsoft.com/pricing/free-trial/)を入手します。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -53,12 +53,12 @@ Azure AD と Shmoop For Schools の統合を構成するには、次のものが
 1. ギャラリーからの Shmoop For Schools の追加
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-shmoop-for-schools-from-the-gallery"></a>ギャラリーからの Shmoop For Schools の追加
+## <a name="add-shmoop-for-schools-from-the-gallery"></a>ギャラリーからの Shmoop For Schools の追加
 Azure AD への Shmoop For Schools の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Shmoop For Schools を追加する必要があります。
 
 **ギャラリーから Shmoop For Schools を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**Azure Active Directory** アイコンを選択します。 
 
     ![Azure Active Directory のボタン][1]
 
@@ -66,11 +66,11 @@ Azure AD への Shmoop For Schools の統合を構成するには、ギャラリ
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選択します。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Shmoop For Schools**」と入力して、結果パネルで **[Shmoop For Schools]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに、「**Shmoop For Schools**」と入力します。 結果から **[Shmoop For Schools]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果リストの Shmoop For Schools](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_addfromgallery.png)
 
@@ -78,17 +78,17 @@ Azure AD への Shmoop For Schools の統合を構成するには、ギャラリ
 
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Shmoop For Schools で Azure AD のシングル サインオンを構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Shmoop For Schools ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Shmoop For Schools の関連ユーザーの間で、リンク関係が確立されている必要があります。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Shmoop For Schools ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Shmoop For Schools の関連ユーザーの間で、リンクが確立されている必要があります。
 
-Shmoop For Schools で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当てて、リンク関係を確立します。
+Shmoop For Schools で、**ユーザー名**の値に、Azure AD の**ユーザー名**と同じ値を指定します。 リンク関係が確立されます。
 
-Shmoop For Schools で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Shmoop For Schools で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を設定します。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Shmoop For Schools テスト ユーザーの作成](#create-a-shmoop-for-schools-test-user)** - Shmoop For Schools で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. [Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on) - ユーザーがこの機能を使用できるようにします。
+2. [Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user) - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. [Shmoop For Schools テスト ユーザーの作成](#create-a-shmoop-for-schools-test-user) - Shmoop For Schools で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. [シングル サインオンのテスト](#test-single-sign-on)。構成が機能することを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -96,80 +96,80 @@ Shmoop For Schools で Azure AD のシングル サインオンを構成して�
 
 **Shmoop For Schools で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **Shmoop For Schools** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **Shmoop For Schools** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン]** ダイアログ ボックスの **[シングル サインオン モード]** のドロップダウン メニューで、**[SAML ベースのサインオン]** を選択します。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_samlbase.png)
 
 3. **[Shmoop For Schools のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
+    ![Configure single sign-on](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://schools.shmoop.com/public-api/saml2/start/<uniqueid>` というパターンで URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://schools.shmoop.com/<uniqueid>` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、`https://schools.shmoop.com/<uniqueid>` というパターンで URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Shmoop For Schools クライアント サポート チーム](mailto:support@shmoop.com)に問い合わせてください。 
  
-4. Shmoop For Schools アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
+4. Shmoop For Schools アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットは、これらのアサーションの構成方法を示しています。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_attribute.png)
 
     > [!NOTE]
-    > Shmoop For Schools では、**[教師]** と **[学生]** の 2 つのユーザー ロールがサポートされます。 これらのロールは、ユーザーを適切なロールを割り当てることができるように、Azure AD でセットアップされている必要があります。 Azure AD でロールを構成する方法については、こちらの[リンク](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/)を参照してください。
+    > Shmoop For Schools では、**[教師]** と **[学生]** の 2 つのユーザー ロールがサポートされます。 ユーザーに適切なロールを割り当てられるように、Azure AD でそのロールを設定します。 Azure AD でロールを構成する方法については、[Azure AD を使用したクラウド アプリケーションでのロールベースのアクセス制御](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/)に関するページをご覧ください。
     
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+5. **[シングル サインオン]** ダイアログ ボックスの **[ユーザー属性]** セクションで、前の画像で示されているように、SAML トークン属性を構成します。  その後、次の手順を実行します。
 
-    | 属性名 | 属性値 |
+    | 属性名 | 属性名 |
     | -------------- | --------------- |
     | role           | user.assignedroles |
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** ダイアログ ボックスを開くには、**[属性の追加]** を選択します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on ](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_attribute_04.png)
     
-    ![Configure Single Sign-On](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_attribute_05.png)
     
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
-    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    c. **[値]** 一覧から、その行に対して表示される属性値を選択します。
 
     d. **[名前空間]** ボックスは空白のままにします。
     
-    e. **[OK]**をクリックします。
+    e. **[OK]** を選びます。
 
-6. **[保存]** ボタンをクリックします。
+6. **[保存]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_general_400.png)
 
 7. **メタデータ** URL を生成するには、次の手順を実行します。
 
-    a. **[アプリの登録]** をクリックします。
+    a. **[アプリの登録]** を選択します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appregistrations.png)
+    ![Configure single sign-on](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appregistrations.png)
    
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
+    b. **[エンドポイント]** ダイアログ ボックスを開くには、**[エンドポイント]** を選択します。  
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpointicon.png)
+    ![Configure single sign-on](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpointicon.png)
 
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
+    c. コピー ボタンを選択して、**フェデレーション メタデータ ドキュメント**の URL をコピーして、メモ帳に貼り付けます。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpoint.png)
+    ![Configure single sign-on](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpoint.png)
      
-    d. 次に、**Shmoop For Schools** のプロパティ ページに移動し、**[コピー]** ボタンで**アプリケーション ID** をコピーして、ノートパッドに貼り付けます。
+    d. **Shmoop For Schools** のプロパティ ページに移動します。 次に、**コピー** ボタンを使用して、**アプリケーション ID** をコピーします。 メモ帳に貼り付けます。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appid.png)
+    ![Configure single sign-on](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appid.png)
 
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
+    e. `<FEDERATION METADATA DOCUMENT url>?appid=<application id>` というパターンを使用して、**メタデータ URL** を生成します。   
 
 8. **Shmoop For Schools** 側でシングル サインオンを構成するには、**メタデータ URL** を [Shmoop For Schools サポート チーム](mailto:support@shmoop.com)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。 **[Active Directory]**  >  **[エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブを選択し、一番下の **[構成]** セクションから組み込みドキュメントにアクセスします。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -180,15 +180,15 @@ Shmoop For Schools で Azure AD のシングル サインオンを構成して�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンを選択します。
 
     ![Azure Active Directory のボタン](./media/active-directory-saas-shmoopforschools-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動します。 次に、**[すべてのユーザー]** を選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-shmoopforschools-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** を選択します。
 
     ![[追加] ボタン](./media/active-directory-saas-shmoopforschools-tutorial/create_aaduser_03.png)
 
@@ -202,13 +202,13 @@ Shmoop For Schools で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d. **[作成]**を選択します。
  
 ### <a name="create-a-shmoop-for-schools-test-user"></a>Shmoop For Schools テスト ユーザーの作成
 
-このセクションの目的は、Shmoop For Schools で Britta Simon というユーザーを作成することです。 Shmoop For Schools では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Shmoop For Schools ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
+このセクションの目的は、Shmoop For Schools で Britta Simon というユーザーを作成することです。 Shmoop For Schools では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 新しいユーザーがまだ存在しない場合、そのユーザーは、Shmoop For Schools にアクセスしようしたときに自動的に作成されます。
 
->[!Note]
+>[!NOTE]
 >ユーザーを手動で作成する必要がある場合は、[Shmoop For Schools サポート チーム](mailto:support@shmoop.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -219,38 +219,39 @@ Shmoop For Schools で Azure AD のシングル サインオンを構成して�
 
 **Shmoop For Schools に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure ポータルで、アプリケーション ビューを開きます。 次に、ディレクトリ ビューで **[エンタープライズ アプリケーション]** に移動します。  次に、**[すべてのアプリケーション]** を選びます。
 
     ![ユーザーの割り当て][201] 
 
 2. アプリケーションの一覧で、**[Shmoop For Schools]** を選択します。
 
-    ![アプリケーションの一覧の [Shmoop For Schools] リンク](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_app.png)  
+    ![アプリケーションの一覧の Shmoop For Schools のリンク](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンを選びます。 次に、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. **[ユーザーとグループ]** ダイアログ ボックスで、**[選択]** ボタンをクリックします。 
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログ ボックスで、**[割り当て]** ボタンを選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Shmoop For Schools] タイルをクリックすると、自動的に Shmoop For Schools アプリケーションにサインオンします。
+アクセス パネルで **[Shmoop For Schools]** タイルを選択すると、自動的に Shmoop For Schools アプリケーションにサインインします。
+
 アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [SaaS アプリと Azure Active Directory を統合する方法のチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

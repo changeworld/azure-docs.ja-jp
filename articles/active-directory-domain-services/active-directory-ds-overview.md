@@ -4,7 +4,7 @@ description: "Azure Active Directory Domain Services の概要"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory-ds
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: c4a22b230cd630c413118ab798ff241527465554
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be18ee0266a97057499baccc5bb39a35224336d7
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="azure-ad-domain-services"></a>Azure AD Domain Services
-## <a name="overview"></a>Overview
+# <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services
+## <a name="overview"></a>概要
 Azure インフラストラクチャ サービスを使用すると、さまざまなコンピューティング ソリューションを機敏にデプロイすることができます。 Azure Virtual Machines では、ほぼ瞬時にデプロイでき、分単位で支払えます。 Windows、Linux、SQL Server、Oracle、IBM、SAP、BizTalk のサポートを使用すると、ほぼすべてのオペレーティング システムですべてのワークロード、すべての言語をデプロイできます。 このようなメリットを生かして、オンプレミスでデプロイされているレガシ アプリケーションを Azure に移行し、運用経費を節減することができます。
 
 オンプレミスのアプリケーションを Azure に移行することの主な特徴は、これらのアプリケーションの ID ニーズに対処することにあります。 ディレクトリ対応アプリケーションは、企業ディレクトリへの読み取りまたは書き込みアクセスのために LDAP に依存することもあれば、エンドユーザーを認証するために Windows 統合認証 (Kerberos または NTLM 認証) に依存することもあります。 Windows Server で実行される基幹業務 (LOB) アプリケーションは、通常、ドメインに参加しているコンピューターにデプロイされるので、グループ ポリシーを使用して安全に管理することができます。 'リフト アンド シフト' 方式でオンプレミスのアプリケーションをクラウドに移行するには、企業 ID インフラストラクチャにおけるこれらの依存関係を解決する必要があります。
@@ -35,6 +35,10 @@ Azure にデプロイされたアプリケーションの ID ニーズを満た�
 これらの方法はいずれも、コストが高く、管理オーバーヘッドが大きいという問題があります。 管理者は、Azure 内で仮想マシンを使用してドメイン コントローラーをデプロイする必要があります。 管理者はこれらの仮想マシンについて管理、セキュリティ保護、修正プログラムの適用、監視、バックアップ、およびトラブルシューティングを行う必要があります。 オンプレミスのディレクトリへの VPN 接続に依存すると、Azure にデプロイされたワークロードはネットワークの一時的な障害または停止の影響を受けやすくなります。 ネットワークの停止により、アップタイムが減少し、アプリケーションの信頼性が低下します。
 
 Azure AD ドメイン サービスは、より簡単に目的を達成できる代替え手段として設計されています。
+
+### <a name="watch-an-introductory-video"></a>紹介ビデオを見る
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T1Nd9APNceQ" frameborder="0" allowfullscreen></iframe>
+
 
 ## <a name="introducing-azure-ad-domain-services"></a>Azure AD ドメイン サービスの概要
 Azure AD Domain Services では、Windows Server Active Directory と完全に互換性のある管理対象ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証) を提供します。 クラウドでドメイン コントローラーのデプロイ、管理、および修正プログラムの適用を行わなくても、これらのドメイン サービスを使用することができます。 Azure AD ドメイン サービスは既存の Azure AD テナントと統合されるので、ユーザーは企業の資格情報を使用してログインできるようになります。 さらに、既存のグループおよびユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。このため、'リフト アンド シフト' 方式でオンプレミスのリソースを Azure インフラストラクチャ サービスに滑らかに移行することができます。

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 11/11/2017
 ms.author: sngun
-ms.openlocfilehash: 5ef64e727615d17ae550efbc7ea427936d7d4c3b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 60b06cf41ea632219d2f16b29607899bd2e8d789
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Azure Stack で使用する CLI をインストールして構成する
 
@@ -204,6 +204,15 @@ az group create \
 リソース グループが正常に作成されると、上記のコマンドによって、新たに作成されたリソースの次のプロパティが出力されます。
 
 ![リソース グループ作成の出力](media/azure-stack-connect-cli/image1.png)
+
+## <a name="known-issues"></a>既知の問題
+Azure Stack で CLI を使うときに注意する必要がある既知の問題がいくつかあります。
+
+* CLI 対話モード ( `az interactive`コマンド) はまだ Azure Stack でサポートされていません。
+* Azure Stack で使用できる仮想マシン イメージの一覧を取得するには、`az vm image list` コマンドの代わりに、`az vm images list --all` コマンドを使用します。 `--all` オプションを指定すると、応答に、Azure Stack 環境で使用できるイメージのみが返されます。 
+* Azure で使用できる仮想マシン イメージの別名は、Azure Stack に適用できない場合があります。 仮想マシン イメージを使用する場合は、イメージの別名の代わりに、URN パラメーター全体 (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) を使用する必要がありますします。 この URN は、`az vm images list` コマンドから派生したイメージ仕様と一致している必要があります。
+* 既定で、CLI 2.0 は、既定の仮想マシン イメージのサイズとして "Standard_DS1_v2" を使用します。 ただし、このサイズはまだ Azure Stack で使用できないため、仮想マシンを作成するときに `--size` パラメーターを明示的に指定する必要があります。 Azure Stack で使用できる仮想マシンのサイズの一覧を取得するには、`az vm list-sizes --location <locationName>` コマンドを使用します。
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: db49780e359258898a62f3b95e87f54b78055c86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bba8fff7997340e563c604f571604ee8d06eb719
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -29,98 +29,95 @@ U-SQL は、ビッグ データに該当するワークロードの処理を目�
 
 ## <a name="get-started-with-u-sql"></a>U-SQL を使ってみる  
 
-それでは、以下の U-SQL スクリプトを見てみましょう。
+次の U-SQL スクリプトを見てみましょう。
 
 ```
 @a  = 
-    SELECT * FROM 
-        (VALUES
-            ("Contoso",   1500.0, "2017-03-39"),
-            ("Woodgrove", 2700.0, "2017-04-10")
-        ) AS 
-              D( customer, amount );
+  SELECT * FROM 
+    (VALUES
+       ("Contoso",   1500.0, "2017-03-39"),
+       ("Woodgrove", 2700.0, "2017-04-10")
+    ) AS D( customer, amount );
+
 @results =
-    SELECT
-        customer,
+  SELECT
+    customer,
     amount,
     date
-    FROM @a;    
+  FROM @a;    
 ```
 
-このスクリプトでは、@a という行セットを定義し、@a から @results という行セットを作成します。
+このスクリプトは、`@a` と `@results` の 2 つの行セットを定義します。 行セット `@results` は `@a` から定義されます。
 
 ## <a name="c-types-and-expressions-in-u-sql-script"></a>U-SQL スクリプトで C# の型と式を使用する
 
-U-SQL 式は、`AND`、`OR`、`NOT` などの U-SQL 論理操作と組み合わされた C# の式です。 U-SQL 式は、SELECT、EXTRACT、WHERE、HAVING、GROUP BY、DECLARE と共に使用できます。
-
-たとえば、次のスクリプトでは、SELECT 句内の DateTime 値の文字列を解析します。
+U-SQL 式は、`AND`、`OR`、`NOT` などの U-SQL 論理操作と組み合わされた C# の式です。 U-SQL 式は、SELECT、EXTRACT、WHERE、HAVING、GROUP BY、DECLARE と共に使用できます。 たとえば、次のスクリプトでは、文字列を DateTime 値として解析します。
 
 ```
 @results =
-    SELECT
-        customer,
+  SELECT
+    customer,
     amount,
     DateTime.Parse(date) AS date
-    FROM @a;    
+  FROM @a;    
 ```
 
-次のスクリプトでは、DECLARE ステートメント内の DateTime 値の文字列を解析します。
+次のスニペットでは、DECLARE ステートメントで文字列を DateTime 値として解析します。
 
 ```
-DECLARE @d DateTime = ToDateTime.Date("2016/01/01");
+DECLARE @d = DateTime.Parse("2016/01/01");
 ```
 
 ### <a name="use-c-expressions-for-data-type-conversions"></a>C# の式を使ってデータ型を変換する
+
 以下の例は、C# の式を使って日時のデータを変換する方法を示しています。 このシナリオでは、文字列の日時データを、時間の表記が真夜中の 00:00:00 となっている標準的な日時データに変換しています。
 
 ```
-DECLARE @dt String = "2016-07-06 10:23:15";
+DECLARE @dt = "2016-07-06 10:23:15";
 
 @rs1 =
-    SELECT 
-        Convert.ToDateTime(Convert.ToDateTime(@dt).ToString("yyyy-MM-dd")) AS dt,
-        dt AS olddt
-    FROM @rs0;
-OUTPUT @rs1 TO @output_file USING Outputters.Text();
+  SELECT 
+    Convert.ToDateTime(Convert.ToDateTime(@dt).ToString("yyyy-MM-dd")) AS dt,
+    dt AS olddt
+  FROM @rs0;
+
+OUTPUT @rs1 
+  TO @output_file 
+  USING Outputters.Text();
 ```
 
 ### <a name="use-c-expressions-for-todays-date"></a>C# の式を使って今日の日付を取得する
-今日の日付を取得するには、以下の C# の式を使います。
 
-```
-DateTime.Now.ToString("M/d/yyyy")
-```
+今日の日付を取得するには、C# の式 `DateTime.Now.ToString("M/d/yyyy")` を使用します。
 
 この式をスクリプトで使う方法の例を以下に示します。
 
 ```
 @rs1 =
-    SELECT
-        MAX(guid) AS start_id,
-        MIN(dt) AS start_time,
-        MIN(Convert.ToDateTime(Convert.ToDateTime(dt<@default_dt?@default_dt:dt).ToString("yyyy-MM-dd"))) AS start_zero_time,
-        MIN(USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)) AS start_fiscalperiod,
-        DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
-        user,
-        des
-    FROM @rs0
-    GROUP BY user, des;
+  SELECT
+    MAX(guid) AS start_id,
+    MIN(dt) AS start_time,
+    MIN(Convert.ToDateTime(Convert.ToDateTime(dt<@default_dt?@default_dt:dt).ToString("yyyy-MM-dd"))) AS start_zero_time,
+    MIN(USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)) AS start_fiscalperiod,
+    DateTime.Now.ToString("M/d/yyyy") AS Nowdate,
+    user,
+    des
+  FROM @rs0
+  GROUP BY user, des;
 ```
-
-
-
 ## <a name="using-net-assemblies"></a>.NET アセンブリの使用
-U-SQL の拡張モデルは、カスタム コードをどの程度追加できるかに大きく左右されます。 現時点の U-SQL では、独自の Microsoft .NET ベース コード (特に C#) を簡単に追加できる機能が備わっています。 ただし、VB.NET や F# など、他の .NET 言語で書かれたカスタム コードを追加することもできます。 
+
+U-SQL の拡張モデルは、.NET アセンブリからカスタム コードをどの程度追加できるかに大きく左右されます。 
 
 ### <a name="register-a-net-assembly"></a>.NET アセンブリの登録
 
-U-SQL データベースに .NET アセンブリを配置するには、CREATE ASSEMBLY ステートメントを使用します。 アセンブリがデータベースに配置されると、U-SQL スクリプトは、REFERENCE ASSEMBLY ステートメントを用いることで、それらのアセンブリを使用できます。 
+U-SQL データベースに .NET アセンブリを配置するには、`CREATE ASSEMBLY` ステートメントを使用します。 後ほど、U-SQL スクリプトは `REFERENCE ASSEMBLY` ステートメントを使用してそれらのアセンブリを使用できます。 
 
 次のコードは、アセンブリの登録方法を示しています。
 
 ```
 CREATE ASSEMBLY MyDB.[MyAssembly]
-    FROM "/myassembly.dll";
+   FROM "/myassembly.dll";
 ```
 
 次のコードは、アセンブリの参照方法を示しています。
@@ -140,7 +137,6 @@ U-SQL では現在、.NET Framework 4.5 を使っています。 このため、
 アセンブリ DLL とリソース ファイル (別のランタイム、ネイティブ アセンブリ、構成ファイルなど) は、それぞれ最大 400 MB までアップロードできます。 また、DEPLOY RESOURCE またはアセンブリとその追加ファイルの参照によりデプロイしたリソースのサイズは、合計 3 GB を超えることはできません。
 
 最後に、各 U-SQL データベースに格納できるアセンブリのバージョンは 1 つだけであるという点にご注意ください。 たとえば、NewtonSoft Json.Net ライブラリのバージョン 7 とバージョン 8 の両方が必要な場合には、それぞれを異なる 2 つのデータベースに登録する必要があります。 さらに、各スクリプトで参照できるアセンブリ DLL のバージョンも 1 つのみです。 U-SQL はこの点で、C# のアセンブリ管理とバージョン管理の規則に従っています。
-
 
 ## <a name="use-user-defined-functions-udf"></a>ユーザー定義関数 (UDF) を使用する
 U-SQL のユーザー定義関数 (UDF) は、パラメーターを受け取り、複雑な計算などのアクションを実行し、そのアクションの結果を値として返すプログラミング ルーチンです。 UDF の戻り値とすることができるのは、単一のスカラー値のみです。 U-SQL の UDF は、C# の他のスカラー関数と同じく、U-SQL のベース スクリプトから呼び出すことができます。
@@ -245,9 +241,7 @@ namespace USQL_Programmability
 
             return "Q" + FiscalQuarter.ToString() + ":" + FiscalMonth.ToString();
         }
-
     }
-
 }
 ```
 
@@ -552,7 +546,7 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 U-SQL の UDT の定義には、C# の通常の型として +、==、!= などの演算子のオーバーライドを含めることができます。 また、静的メソッドを含めることもできます。 たとえば、この UDT を U-SQL の MIN 集計関数のパラメーターとして使う場合には、< 演算子のオーバーライドを定義する必要があります。
 
-このガイドでは先ほど、特定の日付から会計期間を特定し、Qn:Pn (Q1:P10) という形式で返す例をお見せしました。 次の例では、会計期間の値のカスタム型を定義する方法を紹介します。
+このガイドではこれまでに、特定の日付から会計期間を特定し、`Qn:Pn (Q1:P10)` という形式で返す例をお見せしました。 次の例では、会計期間の値のカスタム型を定義する方法を紹介します。
 
 カスタム UDT と IFormatter インターフェイスを備えたコードビハインド セクションの例は、以下のとおりです。
 
@@ -655,9 +649,9 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-新たに定義された型には、四半期と月の 2 つの数字が含まれています。 演算子 ==、!=、>、< と静的メソッド ToString() も、ここで定義しています。
+新たに定義された型には、四半期と月の 2 つの数字が含まれています。 演算子 `==/!=/>/<` と静的メソッド `ToString()` も、ここで定義しています。
 
-既に説明したとおり、SELECT 式なら特別な処理をしなくても UDT を使用できるのに対して、アウトプッターとエクストラクターで UDT を使う場合には、カスタム シリアル化が必要になります。 このため、UDT は ToString() を使って文字列としてシリアル化するか、カスタマイズしたアウトプッターまたはエクストラクターで使う必要があります。
+既に説明したとおり、SELECT 式なら特別な処理をしなくても UDT を使用できるのに対して、アウトプッターとエクストラクターで UDT を使う場合には、カスタム シリアル化が必要になります。 このため、UDT は `ToString()` を使って文字列としてシリアル化するか、カスタマイズしたアウトプッターまたはエクストラクターで使う必要があります。
 
 それでは、UDT の使用方法を見ていきましょう。 コードビハインド セクションで、GetFiscalPeriod 関数を次のように変更しました。
 

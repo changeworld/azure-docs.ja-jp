@@ -4,23 +4,26 @@ description: "Log Analytics のログ検索 API を使用して、任意の REST
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/28/2017
+ms.date: 11/03/2017
 ms.author: bwren
-ms.openlocfilehash: 56d7c6dc648a01e7b0efc167cb65c94bac5468ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8a4ec7a6ddf2daeca6ead11460fa076a7eb5c94
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>Python スクリプトを使用して Log Analytics からデータを取得する
 [Log Analytics のログ検索 API](log-analytics-log-search-api.md) を使用して、任意の REST API クライアントで Log Analytics ワークスペースからデータを取得することができます。  この記事では、Log Analytics のログ検索 API を使用する Python スクリプトの例を示します。  
+
+>[!NOTE]
+> この記事では、Log Analytics で従来のクエリ言語用の Log Search API を使用しています。  [新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされたワークスペースを対象とするこの記事の更新版が提供される予定です。
 
 ## <a name="authentication"></a>認証
 このスクリプトでは、Azure Active Directory のサービス プリンシパルを使用してワークスペースを認証します。  サービス プリンシパルは、クライアント アプリケーションがアカウント名を持っていない場合でも、サービスがアカウントを認証することを要求できるようにします。 このスクリプトを実行する前に、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)」の手順に従ってサービス プリンシパルを作成する必要があります。  アプリケーション ID、テナント ID、および認証キーをスクリプトに指定する必要があります。 

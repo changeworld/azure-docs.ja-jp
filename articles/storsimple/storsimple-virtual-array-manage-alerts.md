@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3062c7c060c3730c5edef3ada16f3a5077cf5558
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a96e52bad725acb70a429c8eaafd6942b13d9b8
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
@@ -146,6 +146,11 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 |:--- |:--- |:--- |
 | <<*デバイス名*>> のバックアップを完了できませんでした。 |バックアップ ジョブの失敗。 |バックアップを作成できませんでした。 次のいずれかを考慮します。<ul><li>バックアップ操作を正常に完了できない原因として、接続の問題が考えられます。 接続の問題がないことを確認します。 接続の問題のトラブルシューティングの詳細については、仮想デバイスの[ローカル Web UI](storsimple-ova-web-ui-admin.md) に関するページを参照してください。</li><li>使用可能なストレージの上限に達しました。 領域を解放するために、不要になったバックアップの削除を検討してください。</li></ul> 問題を解決し、アラートをクリアし、バックアップ操作をもう一度試してください。 |
 | <<*デバイス名*>> の複製を完了できませんでした。 |複製ジョブの失敗。 |複製を作成できませんでした。 次のいずれかを考慮します。<ul><li>バックアップ リストが有効でない可能性があります。 リストを更新して、引き続き有効であることを確認します。</li><li>複製操作を正常に完了できない原因として、接続の問題が考えられます。 接続の問題がないことを確認します。</li><li>使用可能なストレージの上限に達しました。 領域を解放するために、不要になったバックアップの削除を検討してください。</li></ul>問題を解決し、アラートをクリアし、バックアップ操作をもう一度試してください。 |
+
+### <a name="networking-alerts"></a>ネットワークのアラート
+| アラートのテキスト | イベント | 追加情報 / 推奨される対処法 |
+|:--- |:--- |:--- |
+| 認証サービスに接続できませんでした。 |データパス エラー |認証に使用されている URL はアクセスできません。 StorSimple デバイスに指定された URL パターンがファイアウォール規則に含まれていることを確認してください。 Azure Portal の URL パターンの詳細については、[StorSimple Virtual Array のネットワーク要件](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules)に関するセクションをご覧ください。|
 
 ### <a name="performance-alerts"></a>パフォーマンスのアラート
 

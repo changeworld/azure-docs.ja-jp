@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: nitinme
-ms.openlocfilehash: c1c74c797449c2fa6d76438f9ec33eaf0fe51af4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbd3d0ed4337d4fe86465c5c59bf20c0a50a87b4
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters-preview"></a>Log Analytics を使用して Azure HDInsight クラスターを監視する (プレビュー)
 
@@ -39,7 +39,7 @@ Log Analytics は、[Operations Management Suite (OMS)](../operations-management
     * Kafka
     * Interactive Hive
 
-    HDInsight クラスターの作成手順については、[Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+    HDInsight クラスターの作成手順については、[Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 
 * **Log Analytics ワークスペース**。 ワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Log Analytics 環境として考えることができます。 Azure HDInsight クラスターと関連付けることができる、このようなクラスターを少なくとも 1 つ作成しておく必要があります。 手順については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)に関するページを参照してください。
@@ -52,7 +52,7 @@ Log Analytics は、[Operations Management Suite (OMS)](../operations-management
 
 2. クラスターのブレードで、左側のウィンドウにある **[監視]** をクリックします。
 
-3. 右側のウィンドウで **[有効化]** をクリックし、既存の Log Analytics ワークスペースを選択します。 [ **Save**] をクリックします。
+3. 右側のウィンドウで **[有効化]** をクリックし、既存の Log Analytics ワークスペースを選択します。 **[ Save]** をクリックします。
 
     ![HDInsight クラスターの監視の有効化](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "HDInsight クラスターの監視の有効化")
 

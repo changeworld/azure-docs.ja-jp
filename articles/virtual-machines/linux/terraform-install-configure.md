@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: d8c357474e040f2e35c51dec0c7785cf98381a37
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: a2810d13d40272269341751b19b3010a8b135139
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>VM などのインフラストラクチャを Azure にプロビジョニングするための Terraform のインストールと構成
  
 Terraform は、[シンプルなテンプレート言語](https://www.terraform.io/docs/configuration/syntax.html)を使ってクラウド インフラストラクチャを簡単に定義、プレビュー、およびデプロイできるツールです。 この記事では、Terraform を使用して Azure にリソースをプロビジョニングするために必要な手順について説明します。 
 
 > [!TIP]
-> Terraform は、[Azure Cloud Shell Bash エクスペリエンス](/azure/cloud-shell/quickstart)の一部であり、資格情報と [Azure Terraform モジュール](https://registry.terraform.io/modules/Azure)を使用して事前に構成されています。
+Azure で Terraform を使用する方法の詳細については、[Terraform ハブ](/azure/terraform)に関する記事を参照してください。 [Cloud Shell](/terraform/terraform-cloud-shell) には、Terraform が既定でインストールされています。 Cloud Shell を使用する場合は、このドキュメントのインストール/セットアップの部分は省略してかまいません。
 
 ## <a name="install-terraform"></a>Terraform のインストール
 
@@ -47,9 +47,7 @@ Azure AD アプリケーションと Azure AD サービス プリンシパルは
 
 次のコマンドを実行してサインインし、Azure サブスクリプションの管理を行います。
 
-```azurecli-interactive
-az login
-```
+   `az login`
 
 複数の Azure サブスクリプションを使用している場合は、`az login` コマンドを実行するとそれぞれの詳細が返されます。 使用するサブスクリプションから返された `id` フィールドの値を `SUBSCRIPTION_ID` 環境変数に設定します。 
 

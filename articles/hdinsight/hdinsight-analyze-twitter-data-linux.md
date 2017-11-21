@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 11/02/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b8656123fa9c5158f366872ab050f370080ec18a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5be05fabf03e7e3ccaa3bf66ffefdd6406a06b3e
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>HDInsight での Hive と Hadoop を使用した Twitter データの分析
 
@@ -158,6 +158,9 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
     > * `consumer_key`
     > * `access_token`
     > * `access_token_secret`
+
+    > [!TIP]
+    > よく使われているキーワードを追跡するには、最後の行のトピック フィルターを調整してください。 スクリプトの実行時によく使用されているキーワードを使用すると、高速にデータをキャプチャできます。
 
 6. **Ctrl + X** キーを押した後、**Y** キーを押してファイルを保存します。
 
@@ -312,19 +315,22 @@ HDInsight のストレージにデータをアップロードするには、次�
 
    ```hiveql
    SELECT name, screen_name, count(1) as cc
-       FROM tweets
-       WHERE text like "%Azure%"
-       GROUP BY name,screen_name
-       ORDER BY cc DESC LIMIT 10;
+   FROM tweets
+   WHERE text like "%Azure%"
+   GROUP BY name,screen_name
+   ORDER BY cc DESC LIMIT 10;
    ```
 
     このクエリでは、メッセージ テキストに **Azure** という単語が含まれた最大 10 個のツイートが返されます。
+
+    > [!NOTE]
+    > `gettweets.py` スクリプトのフィルターを変更した場合は、**Azure** を、使用したフィルターのいずれかで置き換えてください。
 
 ## <a name="next-steps"></a>次のステップ
 
 ここでは、構造化されていない JSON データ セットを構造化された Hive テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
 
-* [HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)
+* [HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)
 
 [curl]: http://curl.haxx.se

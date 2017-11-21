@@ -1,114 +1,229 @@
 ---
 title: "チュートリアル: Azure Active Directory と Qualtrics の統合 | Microsoft Docs"
-description: "Azure Active Directory で Qualtrics を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
+description: "Azure Active Directory と Qualtrics の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
+documentationCenter: na
 author: jeevansd
-documentationcenter: na
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 4df889ab-2685-4d15-a163-1ba26567eeda
 ms.service: active-directory
+ms.workload: identity
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
-ms.date: 03/23/2017
+ms.date: 10/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 2fcde595a40dafda7549f5bccb582b57585b314e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66924ed0754bade90b83a3b001849f0dff3ab216
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>チュートリアル: Azure Active Directory と Qualtrics の統合
-このチュートリアルでは、Azure と Qualtrics の統合について説明します。  
 
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+このチュートリアルでは、Qualtrics と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-* 有効な Azure サブスクリプション
-* Qualtrics でのシングル サインオン (SSO) が有効なサブスクリプション
+Qualtrics と Azure AD の統合には、次の利点があります。
 
-このチュートリアルを完了すると、Qualtrics に割り当てた Azure AD ユーザーは、Qualtrics 企業サイト (サービス プロバイダーが開始したサインオン) で、または「 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+- Qualtrics にアクセスするユーザーを Azure AD で制御できます。
+- ユーザーが Azure AD アカウントで自動的に Qualtrics にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
-1. Qualtrics のアプリケーション統合の有効化
-2. シングル サインオン (SSO) の構成
-3. ユーザー プロビジョニングの構成
-4. ユーザーの割り当て
+## <a name="prerequisites"></a>前提条件
 
-![シナリオ](./media/active-directory-saas-qualtrics-tutorial/IC789542.png "Scenario")
+Qualtrics と Azure AD の統合を構成するには、次のものが必要です。
 
-## <a name="enabling-the-application-integration-for-qualtrics"></a>Qualtrics のアプリケーション統合の有効化
-このセクションでは、Qualtrics のアプリケーション統合を有効にする方法を説明します。
+- Azure AD サブスクリプション
+- Qualtrics でのシングル サインオンが有効なサブスクリプション
 
-**Qualtrics のアプリケーション統合を有効にするには、次の手順を実行します。**
+> [!NOTE]
+> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、 **[Active Directory]**をクリックします。
-   
-   ![Active Directory](./media/active-directory-saas-qualtrics-tutorial/IC700993.png "Active Directory")
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-   
-   ![アプリケーション](./media/active-directory-saas-qualtrics-tutorial/IC700994.png "Applications")
-4. ページの下部にある **[追加]** をクリックします。
-   
-   ![アプリケーションの追加](./media/active-directory-saas-qualtrics-tutorial/IC749321.png "Add application")
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-   
-   ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-qualtrics-tutorial/IC749322.png "Add an application from gallerry")
-6. **検索ボックス**に、「**Qualtrics**」と入力します。
-   
-   ![アプリケーション ギャラリー](./media/active-directory-saas-qualtrics-tutorial/IC789543.png "Application Gallery")
-7. 結果ウィンドウで **[Qualtrics]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-   
-   ![Qualtrics](./media/active-directory-saas-qualtrics-tutorial/IC789544.png "Qualtrics")
-   
-## <a name="configure-single-sign-on"></a>Configure single sign-on
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Qualtrics に対する認証を行えるようにする方法を説明します。
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
-**シングル サインオンを構成するには、次の手順に従います。**
+## <a name="scenario-description"></a>シナリオの説明
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. Azure クラシック ポータルの **Qualtrics** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-qualtrics-tutorial/IC789545.png "Configure Single Sign-On")
-2. **[ユーザーの Qualtrics へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-qualtrics-tutorial/IC789546.png "Configure Single Sign-On")
-3. **[アプリケーション URL の構成]** ページで、**[Qualtrics サインオン URL]** ボックスに URL (例: "*https://ssotest2ut1.qualtrics.com*") を入力し、**[次へ]** をクリックします。
-   
-   ![アプリケーション URL の構成](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "Configure App URL")
-4. **[Qualtrics でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-qualtrics-tutorial/IC789548.png "Configure Single Sign-On")
-5. Qualtrics サポート チームに、メタデータ ファイルを送信します。
-   
-   >[!NOTE]
-   >SSO の構成は、Qualtrics サポート チームが実行する必要があります。 構成が完了すると、サポート チームから通知が届きます。
-   > 
-   > 
-6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
-   
-   ![シングル サインオンの構成](./media/active-directory-saas-qualtrics-tutorial/IC789549.png "Configure Single Sign-On")
-   
-## <a name="configure-user-provisioning"></a>[ユーザー プロビジョニングの構成]
+1. ギャラリーからの Qualtrics の追加
+2. Azure AD シングル サインオンの構成とテスト
+
+## <a name="adding-qualtrics-from-the-gallery"></a>ギャラリーからの Qualtrics の追加
+Azure AD への Qualtrics の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Qualtrics を追加する必要があります。
+
+**ギャラリーから Qualtrics を追加するには、次の手順に従います。**
+
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+
+    ![Azure Active Directory のボタン][1]
+
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+
+    ![[エンタープライズ アプリケーション] ブレード][2]
+    
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
+    ![[新しいアプリケーション] ボタン][3]
+
+4. 検索ボックスに「**Qualtrics**」と入力し、結果ウィンドウで **[Qualtrics]** を選択します。次に、**[追加]** をクリックしてアプリケーションを追加します。
+
+    ![結果リストの Qualtrics](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_addfromgallery.png)
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Qualtrics で Azure AD シングル サインオンを構成し、テストします。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Qualtrics ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Qualtrics の関連ユーザーの間でリンク関係が確立されている必要があります。
+
+Qualtrics で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+
+Qualtrics で Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Qualtrics テスト ユーザーの作成](#create-a-qualtrics-test-user)** - Qualtrics で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+
+このセクションでは、Azure Portal で Azure AD シングル サインオンを有効にし、Qualtrics アプリケーションでシングル サインオンを構成します。
+
+**Qualtrics で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure Portal の **Qualtrics** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+
+    ![シングル サインオン構成のリンク][4]
+
+2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+ 
+    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_samlbase.png)
+
+3. **[Qualtrics のドメインと URL]** セクションで、次の手順に従います。
+
+    ![[Qualtrics のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_url.png)
+
+    a. **[サインオン URL]** ボックスに、`https://<companyname>.qualtrics.com` のパターンを使用して URL を入力します。
+
+    b. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    | |
+    |--|
+    | `https://<companyname>.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
+    | `https://<companyname>.co1.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
+
+    > [!NOTE] 
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Qualtrics クライアント サポート チーム](https://www.qualtrics.com/support/)に連絡してください。
+
+4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_certificate.png) 
+
+5. **[保存]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-qualtrics-tutorial/tutorial_general_400.png)
+
+6. **Qualtrics** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Qualtrics サポート チーム](https://www.qualtrics.com/support/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
+> [!TIP]
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> 
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
+このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+
+   ![Azure AD のテスト ユーザーの作成][100]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+
+    ![Azure Active Directory のボタン](./media/active-directory-saas-qualtrics-tutorial/create_aaduser_01.png)
+
+2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-qualtrics-tutorial/create_aaduser_02.png)
+
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+
+    ![[追加] ボタン](./media/active-directory-saas-qualtrics-tutorial/create_aaduser_03.png)
+
+4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+
+    ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-qualtrics-tutorial/create_aaduser_04.png)
+
+    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+
+    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
+
+    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
+
+    d. **Create** をクリックしてください。
+ 
+### <a name="create-a-qualtrics-test-user"></a>Qualtrics テスト ユーザーの作成
 
 Qualtrics へのユーザー プロビジョニングの構成にあたって必要な操作はありません。 割り当てられたユーザーがアクセス パネルを使用して Qualtrics にログインしようとすると、そのユーザーが存在するかどうかが Qualtrics によって確認されます。  
 
 使用可能なユーザー アカウントがない場合、ユーザー アカウントは Qualtrics により自動的に作成されます。
 
-## <a name="assign-users"></a>[ユーザーの割り当て]
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-**ユーザーを Qualtrics に割り当てるには、次の手順を実行します。**
+このセクションでは、Britta Simon に Qualtrics へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. **Qualtrics** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
-   
-   ![ユーザーの割り当て](./media/active-directory-saas-qualtrics-tutorial/IC789550.png "Assign Users")
-3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。
-   
-   ![はい](./media/active-directory-saas-qualtrics-tutorial/IC767830.png "Yes")
+![ユーザー ロールを割り当てる][200] 
 
-SSO の設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、 [アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+**Qualtrics に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+
+    ![ユーザーの割り当て][201] 
+
+2. アプリケーションの一覧で **[Qualtrics]** を選択します。
+
+    ![アプリケーション一覧の [Qualtrics] リンク](./media/active-directory-saas-qualtrics-tutorial/tutorial_qualtrics_app.png)  
+
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+
+    ![[ユーザーとグループ] リンク][202]
+
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+
+    ![[割り当ての追加] ウィンドウ][203]
+
+5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+
+6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+
+7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+    
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
+
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+
+アクセス パネルで Qualtrics のタイルをクリックすると、自動的に Qualtrics アプリケーションにサインオンします。
+アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+
+## <a name="additional-resources"></a>その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+<!--Image references-->
+
+[1]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_04.png
+
+[100]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-qualtrics-tutorial/tutorial_general_203.png
 

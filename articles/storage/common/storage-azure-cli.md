@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: tamram
-ms.openlocfilehash: 69c1d41a4c2dbddd20c0e603ef335f3030a484d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f4070c5a02e559bd299033865aa5258532498aa
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 の使用
 
@@ -393,7 +393,7 @@ az storage share snapshot -n <share name>
 }
 ```
 
-### <a name="list-share-napshots"></a>共有スナップショットの一覧表示
+### <a name="list-share-snapshots"></a>共有スナップショットの一覧表示
 
 `az storage share list --include-snapshots` を使用して、特定の共有の共有スナップショットを一覧表示することができます
 

@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: f39faea6b7e0886d63085b752f9532a7010ea941
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: e1ce5d337e8dea6e1dc48f04238ecb31c31909b1
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -43,7 +43,7 @@ MSDN フォーラムに質問を投稿できます。 製品チームは、こ�
 これらのディレクトリの内容を zip で圧縮し、Microsoft に診断を送信してください。
 
 ### <a name="workbench-desktop-app"></a>Workbench デスクトップ アプリ
-Workbench デスクトップ アプリがクラッシュした場合、ログ ファイルは次の場所にあります。
+ログインで問題が発生した場合、または Workbench デスクトップ アプリがクラッシュした場合、ログ ファイルは次の場所にあります。
 ```
 # Windows
 %APPDATA%\AmlWorkbench
@@ -83,6 +83,23 @@ Azure ML Workbench での作業中に、アプリケーション シェルの左
 - Mac では、テキストのクラスタリング変換はサポートされていません。
 
 - RevoScalePy ライブラリは、Windows または Linux (Docker コンテナー) でのみサポートされています。 macOS ではサポートされていません。
+
+## <a name="delete-experimentation-account"></a>実験アカウントの削除
+CLI を使用して実験アカウントを削除できますが、最初に、子ワークスペースとその子ワークスペース内の子プロジェクトを削除する必要があります。
+
+```azure-cli
+# delete a project
+$ az ml project delete -g <resource group name> -a <experimentation account name> -w <worksapce name> -n <project name>
+
+# delete a workspace 
+$ az ml workspace delete -g <resource group name> -a <experimentation account name> -n <worksapce name>
+
+# delete an experimentation account
+$ az ml account experimentation delete -g <resource group name> -n <experimentation account name>
+```
+
+Workbench アプリからプロジェクトとワークスペースを削除することもできます。
+
 
 ## <a name="file-name-too-long-on-windows"></a>Windows では長すぎるファイル名
 Windows で Workbench を使用している場合、既定で最大 260 文字のファイル名の長さ制限に遭遇することがあります。これにより、"指定されたパスが見つかりません" という誤解を招くエラーが表示される可能性があります。 さらに長いファイル パス名が許可されるようにレジストリ キーの設定を変更できます。 _MAX_PATH_ レジストリ キーを設定する方法の詳細については、[この記事](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)を参照してください。

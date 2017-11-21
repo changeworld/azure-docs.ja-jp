@@ -1,4 +1,4 @@
----
+﻿---
 title: "サーバーレス データベース コンピューティング - Azure Functions と Azure Cosmos DB | Microsoft Docs"
 description: "Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。"
 services: cosmos-db

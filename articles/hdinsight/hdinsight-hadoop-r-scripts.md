@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5b9b793d49217acd9f0c6c518596a7afb5600d69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 666b51970bf04634708cbf65b8bca0c05412934b
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに R をインストールして使用する
 
-Script Action を使用して Windows ベースの HDInsight クラスターを R でカスタマイズする方法と、HDInsight クラスターで R を使用する方法について説明します。 [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) サービスには、HDInsight クラスターの一部として R Server が含まれています。 これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。 詳細については、「 [Get started using R Server on HDInsight (HDInsight で R Server を使ってみる)](hdinsight-hadoop-r-server-get-started.md)」をご覧ください。 Linux ベースのクラスターでの R の操作については、「 [HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)」を参照してください。
+Script Action を使用して Windows ベースの HDInsight クラスターを R でカスタマイズする方法と、HDInsight クラスターで R を使用する方法について説明します。 [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/) サービスには、HDInsight クラスターの一部として R Server が含まれています。 これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。 詳細については、「 [Get started using R Server on HDInsight (HDInsight で R Server を使ってみる)](r-server/r-server-get-started.md)」をご覧ください。 Linux ベースのクラスターでの R の操作については、「 [HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)」を参照してください。
 
 *Script Action*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に R をインストールできます。 HDInsight クラスターに R をインストールするサンプル スクリプトは、 [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1)の読み取り専用の Azure ストレージ BLOB から入手できます。
 
@@ -112,4 +112,4 @@ Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をイ
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-[hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
+[hdinsight-install-spark]:spark/apache-spark-jupyter-spark-sql.md

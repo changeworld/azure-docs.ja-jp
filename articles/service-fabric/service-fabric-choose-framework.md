@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/02/2017
+ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 98e75e11b54aea677b8ca1b6f303a48190c6fce8
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 237b8396b56fdec86cc005c121646556825d8e98
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric プログラミング モデルの概要
 Service Fabric には、サービスの記述と管理に使用できる複数の方法が用意されています。 サービスでは、Service Fabric API を使用するように選択して、プラットフォームの機能とアプリケーション フレームワークを最大限に活用できます。 サービスはまた、Service Fabric クラスターでホストされているだけのコンテナーで実行される任意の言語またはコードで記述されたコンパイル済み実行可能プログラムにすることもできます。
@@ -42,6 +42,11 @@ Reliable Services は Service Fabric と排他的でステートフルの場合�
 
 [Reliable Services の詳細](service-fabric-reliable-services-introduction.md)、または[最初の Reliable Services を作成する](service-fabric-reliable-services-quick-start.md)場合の概要を参照してください。
 
+## <a name="aspnet-core"></a>ASP.NET Core
+ASP.NET Core は新しいオープンソースのクロスプラットフォーム フレームワークであり、Web アプリ、IoT アプリ、モバイル バックエンドなど、最新のクラウドベースのインターネット接続アプリケーションを構築するために使用されます。 Service Fabric は ASP.NET Core と統合しているので、リライアブル コレクションおよび Service Fabric の高度なオーケストレーション機能を活用するステートレスおよびステートフル両方の ASP.NET Core アプリケーションを記述できます。
+
+[Service Fabric の ASP.NET Core の詳細](service-fabric-reliable-services-communication-aspnetcore.md)または[初めての ASP.NET Core の Service Fabric アプリケーションの記述](service-fabric-add-a-web-frontend.md)に関する記事をご覧ください。
+
 ## <a name="reliable-actors"></a>Reliable Actor
 Reliable Actors フレームワークは Reliable Services 上に構築され、アクター設計パターンに基づいて、Virtual Actor パターンを実装するアプリケーション フレームワークです。 Reliable Actors フレームワークは、独立したコンピューティングのユニットと、アクターという単一スレッドの実行を含む状態を使用します。 Reliable Actors フレームワークには、アクターとプリセットされた状態の永続性とスケールアウト構成に対応する組み込みの通信が用意されています。
 
@@ -49,8 +54,6 @@ Reliable Actors 自体が Reliable Services 上に構築されたアプリケー
 
 [Reliable Actors の詳細](service-fabric-reliable-actors-introduction.md)と[最初の Reliable Actors サービスを作成する](service-fabric-reliable-actors-get-started.md)場合の概要を参照してください。
 
-## <a name="aspnet-core"></a>ASP.NET Core
-Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) と統合して Web サービスや API サービスを構築し、それらのサービスをアプリケーションの一部に組み込むことができます。 
 
 [ASP.NET Core を使用してフロント エンド サービスを構築する](service-fabric-add-a-web-frontend.md)
 

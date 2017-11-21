@@ -8,20 +8,20 @@ author: torsteng
 ms.assetid: 463d2676-3b19-47c2-83df-f8c50492c9d2
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.openlocfilehash: f0efd37a39c1a60eee7b47304483c27727ca8833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c258b1859e14d9783a3dfa75431b69bef4d640fd
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Dapper でのエラスティック データベース クライアント ライブラリの使用
-このドキュメントは、Dapper を使用してアプリケーションを構築する開発者が、 [エラスティック データベース ツール](sql-database-elastic-scale-introduction.md) を導入し、シャーディングを実装してデータ層をスケールアウトするアプリケーションを作成する場合に使用します。  このドキュメントでは、エラスティック データベース ツールと統合するために Dapper ベースのアプリケーションに加える必要がある変更点を示します。 ここでは、Dapper を使用してエラスティック データベース シャード管理とデータ依存ルーティングを構成する方法を重点的に説明します。 
+このドキュメントは、Dapper を使用してアプリケーションを構築する開発者が、 [エラスティック データベース ツール](sql-database-elastic-scale-introduction.md) を導入し、シャーディングを実装してデータ層をスケール アウトするアプリケーションを作成する場合に使用します。  このドキュメントでは、エラスティック データベース ツールと統合するために Dapper ベースのアプリケーションに加える必要がある変更点を示します。 ここでは、Dapper を使用してエラスティック データベース シャード管理とデータ依存ルーティングを構成する方法を重点的に説明します。 
 
 **サンプル コード**: [エラスティック データベースツール for Azure SQL Database - Dapper integration (Azure SQL Database のエラスティック データベース ツール - Dapper の統合)](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
 
@@ -39,18 +39,18 @@ Dapper と DapperExtensions のもう 1 つの利点は、データベース接�
 Dapper アセンブリを入手するには、「 [Dapper dot net](http://www.nuget.org/packages/Dapper/)」をご覧ください。 Dapper の拡張機能については、「 [DapperExtensions](http://www.nuget.org/packages/DapperExtensions)」をご覧ください。
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>エラスティック データベース クライアント ライブラリの概要
-Elastic Database ライブラリでは、*シャードレット*と呼ばれる、アプリケーション データのパーティションを定義して、データベースにマップし、*シャーディング キー*によって識別します。 任意の数のデータベースを使用して、シャードレットをそれらのデータベースに分散できます。 シャーディング キー値とデータベースとの間のマッピングは、ライブラリの API によって提供されるシャード マップによって格納されます。 この機能は、 **シャード マップの管理**と呼ばれます。 シャード マップは、シャーディング キーを格納する要求のデータベース接続用のためのブローカーとしても機能します。 この機能は、 **データ依存ルーティング**と呼ばれます。
+Elastic Database ライブラリでは、*シャードレット*と呼ばれる、アプリケーション データのパーティションを定義して、データベースにマップし、*シャーディング キー*によって識別します。 任意の数のデータベースを使用して、シャードレットをそれらのデータベースに分散できます。 シャーディング キー値とデータベースとの間のマッピングは、ライブラリの API によって提供されるシャード マップによって格納されます。 この機能は、 **シャード マップの管理**と呼ばれます。 シャード マップは、シャーディング キーを格納する要求のデータベース接続用のためのブローカーとしても機能します。 この機能は、**データ依存ルーティング**と呼ばれます。
 
 ![シャード マップとデータ依存ルーティング][1]
 
 シャード マップ マネージャーは、データベースでの同時シャードレット管理操作の実行中に発生する可能性があるシャードレット データの一貫性のないビューからユーザーを保護します。 これを実現するために、シャード マップは、ライブラリを使用して構築されたアプリケーションのデータベース接続を仲介します。 これにより、シャード管理操作がシャードレットに影響を与える可能性のあるときに、シャード マップ機能によってデータベース接続を自動的に強制終了できます。 
 
-従来の方法で Dapper 用の接続を作成するのではなく、 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn824099.aspx)メソッドを使用する必要があります。 これにより、シャード間でのデータの移動時に、すべての検証が行われ、接続が適切に管理されます。
+従来の方法で Dapper 用の接続を作成するのではなく、[OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn824099.aspx)メソッドを使用する必要があります。 これにより、シャード間でのデータの移動時に、すべての検証が行われ、接続が適切に管理されます。
 
 ### <a name="requirements-for-dapper-integration"></a>Dapper の統合の要件
 エラスティック データベース クライアント ライブラリと Dapper API の両方を使用する場合は、次のプロパティを維持することを想定します。
 
-* **スケールアウト**: アプリケーションの容量要求に合わせて必要に応じてシャード化されたアプリケーションのデータ層のデータベースを追加または削除します。 
+* **スケール アウト**: アプリケーションの容量要求に合わせて必要に応じてシャード化されたアプリケーションのデータ層のデータベースを追加または削除します。 
 * **一貫性**: アプリケーションはシャーディングを使用してスケールアウトされるため、データ依存ルーティングを実行する必要があります。 そのためには、ライブラリのデータ依存ルーティング機能を使用します。 具体的には、破損や誤ったクエリ結果を回避するために、シャード マップ マネージャーを通じて仲介された接続を提供して、検証と一貫性を維持します。 これにより、たとえば、Split/Merge API を使用して特定のシャードレットを別のシャードに移動中の場合は、そのシャードレットに対する接続が拒否または停止されます。
 * **オブジェクト マッピング**: Dapper が提供するマッピングの利便性を保ち、アプリケーションと基になるデータベース構造でクラス間の変換を行います。 
 
@@ -110,7 +110,7 @@ DDR 接続を含む **using** ブロックのスコープは、tenantId1 が保�
 ## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Dapper と DapperExtensions を使用したデータ依存ルーティング
 Dapper には、データベース アプリケーションの開発時にデータベースからさらなる利便性と抽象化を実現する追加の拡張機能のエコシステムが用意されています。 DapperExtensions はその一例です。 
 
-アプリケーションで DapperExtensions を使用しても、データベース接続の作成と管理の方法は変わりません。 接続を開く操作は引き続きアプリケーションが担当し、通常の SQL クライアント接続オブジェクトが拡張メソッドによって使用されます。 既に説明したように、 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) を利用できます。 次のコード サンプルに示すとおり、変更されたのは、T-SQL ステートメントを記述する必要がなくなった点のみです。
+アプリケーションで DapperExtensions を使用しても、データベース接続の作成と管理の方法は変わりません。 接続を開く操作は引き続きアプリケーションが担当し、通常の SQL クライアント接続オブジェクトが拡張メソッドによって使用されます。 既に説明したように、 [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) を利用できます。 次のコード サンプルに示すとおり、変更されたのは、ユーザーが T-SQL ステートメントを記述する必要がなくなった点のみです。
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2, 

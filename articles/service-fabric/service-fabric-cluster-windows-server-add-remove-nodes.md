@@ -12,19 +12,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/02/2017
+ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 9c6035e97de38ff63ef074109afd9f3c7484f828
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 252dcdf0ff9e1fecd6665808bfe7978a4417018b
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Windows Server を実行するスタンドアロン Service Fabric クラスターでノードを追加または削除する
-[Windows Server コンピューターでスタンドアロン Service Fabric クラスターを作成](service-fabric-cluster-creation-for-windows-server.md)した後に、ビジネス ニーズが変更されて、クラスターへのノードの追加または削除が必要になるかもしれません。 この記事では、これを実行する詳細の手順について説明します。 ノード機能の追加/削除は、ローカル デプロイ クラスターではサポートされていない点に注意してください。
+[Windows Server マシンでスタンドアロン Service Fabric クラスターを作成](service-fabric-cluster-creation-for-windows-server.md)した後に、ビジネス ニーズが変更されて、クラスターへのノードの追加や削除が必要になることがあります。 この記事では、これを実行する詳細の手順について説明します。 ノード機能の追加/削除は、ローカル デプロイ クラスターではサポートされていない点に注意してください。
 
 ## <a name="add-nodes-to-your-cluster"></a>クラスターへのノードの追加
-1. [クラスターのデプロイのためにコンピューターの前提条件を満たす準備をする方法](service-fabric-cluster-creation-for-windows-server.md)に関するセクションの手順に従って、クラスターに追加する VM/コンピューターを準備します。
+
+1. [Service Fabric クラスターのデプロイの計画と準備](service-fabric-cluster-creation-for-windows-server.md)に関するページで説明されている手順に従って、クラスターに追加する VM/マシンを準備します。
 2. この VM/コンピューターを追加する障害ドメインとアップグレード ドメインを特定します。
 3. クラスターに追加する VM/コンピューターにリモート デスクトップ (RDP) 接続します。
 4. この VM/コンピューターに [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)するかコピーし、パッケージを展開します。

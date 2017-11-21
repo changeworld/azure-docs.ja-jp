@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/26/2017
 ms.author: billmath
-ms.openlocfilehash: e8321c3d16253226a5931cacbce6fa5d50b697bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abf234caa4c26cf3554911aabb839c696b1ba8cb
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: インスタンスに関する特別な考慮事項
 Azure AD Connect は、世界中の Azure AD と Office 365 のインスタンスで最もよく使われています。 ただし、それ以外のインスタンスも存在し、URL の要件が異なるだけでなく、その他の特別な考慮事項があります。
@@ -50,15 +50,12 @@ Microsoft Cloud Germany に現在ない機能:
 | --- |
 | \*.microsoftonline.com |
 | \*.microsoftonline.us |
+| \*.windows.net (Azure AD 政府機関向けテナントの自動検出で必須) |
 | \*.gov.us.microsoftonline.com |
 | +証明書の失効リスト |
 
-Azure AD Connect は、Azure AD テナントが Government クラウドにあることを自動的に検出できません。 そのため、Azure AD Connect のインストール時に次の操作を実行する必要があります。
-
-1. Azure AD Connect のインストールを開始します。
-2. 使用許諾契約書への同意が求められる最初のページが表示されたら、先に進まずに、インストール ウィザードを実行中のままにしておきます。
-3. regedit を起動し、レジストリ キー `HKLM\SOFTWARE\Microsoft\Azure AD Connect\AzureInstance` の値を `2` に変更します。
-4. Azure AD Connect のインストール ウィザードに戻り、使用許諾契約書に同意して続行します。 インストール中は、 **カスタム構成** インストール パス (簡単インストールではなく) を使用してください。 以降は通常どおりにインストールを続行します。
+> [!NOTE]
+> AAD Connect バージョン 1.1.647.0 の時点で、プロキシ サーバーで *. windows.net が開いている場合、レジストリでの AzureInstance 値の設定は不要になりました。
 
 Microsoft Azure Government クラウドに現在ない機能:
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: 5751cd111d2b1c8a4db2fc3b39f2108e73e9508f
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: eac9c3c2b7fde4ac225e17cc3b98ca5ee926c3b3
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -216,7 +216,7 @@ Traffic View は、ユーザーが表示した日の前日から遡って 7 日�
 
 ### <a name="how-does-traffic-view-handle-external-endpoints"></a>Traffic View は外部エンドポイントをどのように処理しますか。
 
-Traffic Manager プロファイルで Azure リージョン外でホストされる外部エンドポイントを使用する場合は、その待機時間特性に対するプロキシである Azure リージョンにマップされるよう指定できます (実際、これはパフォーマンスによるルーティング方法を使用する場合に必要)。 これに Azure リージョン マッピングが含まれていると、Traffic View 出力の作成時に、Azure リージョンの待機時間メトリックが使用されます。 Azure リージョンが指定されていない場合、待機時間情報は、こうした外部エンドポイントのデータでは空になります。
+Traffic Manager プロファイルで Azure リージョン外でホストされる外部エンドポイントを使用する場合は、その待機時間特性に対するプロキシである Azure リージョンにマップされるよう指定できます (実際、これはパフォーマンスによるルーティング方法を使用する場合に必要)。 これに Azure リージョン マッピングが含まれていると、トラフィック ビュー出力の作成時に、Azure リージョンの待機時間メトリックが使用されます。 Azure リージョンが指定されていない場合、待機時間情報は、こうした外部エンドポイントのデータでは空になります。
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>サブスクリプションのプロファイルごとに Traffic View を有効にする必要がありますか。
 プレビュー期間中、Traffic View は、サブスクリプション レベルで有効化され、そのサブスクリプションのすべての Traffic Manager プロファイルでご利用いただけます。

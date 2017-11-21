@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 8660bd09ea09e2c4c81da9c3ef66a1a448d3db43
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 4ba53dd1239290c64907ed431d404b2d1be66c36
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
@@ -279,7 +279,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     > [!NOTE]
     > この構成では、コンテナーへの外部接続は許可されません。 SSH は Kudu/SCM サイトを通してのみ利用できます。 Kudu/SCM サイトは、資格情報を発行することで認証されます。
 
-* Docker エンジンに [sshd_config](http://man.openbsd.org/sshd_config) ファイルを "*/etc/ssh/*" ディレクトリにコピーするよう指示する [COPY](https://docs.docker.com/engine/reference/builder/#copy) 命令。 構成ファイルは[この sshd_config ファイル](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config)に基づく必要があります。
+* Docker エンジンに [sshd_config](http://man.openbsd.org/sshd_config) ファイルを "*/etc/ssh/*" ディレクトリにコピーするよう指示する [COPY](https://docs.docker.com/engine/reference/builder/#copy) 命令。 構成ファイルは[この sshd_config ファイル](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config)に基づく必要があります。
 
     ```docker
     COPY sshd_config /etc/ssh/
@@ -493,7 +493,7 @@ az acr credential show --name <azure-container-registry-name>
 }
 ```
 
-Cloud Shell で [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) コマンドを実行し、カスタム Docker イメージを Web アプリに割り当てます。 *\<app_name>*、*\<docker-registry-server-url>*、_<registry-username>_、_<password>_ を置き換えます。 Azure Container Registry では、*\<docker-registry-server-url>* は `https://<azure-container-registry-name>.azurecr.io` の形式になります。 
+Cloud Shell で [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) コマンドを実行し、カスタム Docker イメージを Web アプリに割り当てます。 *\<app_name>*、*\<docker-registry-server-url>*、_\<registry-username>_、_\<password>_ を置き換えます。 Azure Container Registry では、*\<docker-registry-server-url>* は `https://<azure-container-registry-name>.azurecr.io` の形式になります。 
 
 ```azurecli-interactive
 az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-custom-image-name mydockerimage --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -534,4 +534,5 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure App Service on Linux の FAQ](app-service-linux-faq.md)
+> [!div class="nextstepaction"]
+> [Azure で Docker Python と PostgreSQL Web アプリを作成する](tutorial-docker-python-postgresql-app.md)

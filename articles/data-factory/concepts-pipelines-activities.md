@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.openlocfilehash: 6dcc5c55fae5e2494526c492a1453747b4d6e179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b5552bbb3a56a95e616a79bf9adeabe68d01216
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -75,11 +75,12 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [WebActivity](control-flow-web-activity.md) | Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。 
 [ルックアップ アクティビティ](control-flow-lookup-activity.md) | ルックアップ アクティビティを使用して、任意の外部ソースからレコード/テーブル名/値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。 
 [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md) | GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 
-Do Until アクティビティ | プログラミング言語の Do-Until ループ構造に似た Do-Until ループを実装します。
-If 条件アクティビティ | If 条件は、true または false として評価される条件に基づき分岐を行うために使用できます。 
+[Until アクティビティ](control-flow-until-activity.md) | プログラミング言語の Do-Until ループ構造に似た Do-Until ループを実装します。 Until アクティビティでは、そこに関連付けられている条件が true に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。
+[If Condition アクティビティ](control-flow-if-condition-activity.md) | If Condition は、true または false として評価される条件に基づき分岐を行うために使用できます。 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。
+[Wait アクティビティ](control-flow-wait-activity.md) | パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。 
 
 ## <a name="pipeline-json"></a>パイプライン JSON
-パイプラインを JSON 形式で定義する方法について詳しく説明します。 パイプラインの一般的な構造は次のようになります。
+パイプラインを JSON 形式で定義する方法を示します。 
 
 ```json
 {
@@ -170,9 +171,12 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 ```
 JSON での名前 | Description | 使用できる値 | 必須
 --------- | ----------- | -------------- | --------
-timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | いいえ。 既定のタイムアウトは 7 日間です。
-retry | 最大再試行回数 | 整数 | いいえ。 既定値は 0 です
-retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | いいえ。 既定値は 20 秒です
+timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | 
+いいえ。 既定のタイムアウトは 7 日間です。
+retry | 最大再試行回数 | 整数 | 
+いいえ。 既定値は 0 です
+retryIntervalInSeconds | 再試行の間の遅延 (秒単位) | 整数 | 
+いいえ。 既定値は 20 秒です
 
 ### <a name="control-activity"></a>制御アクティビティ
 制御アクティビティには、次のような最上位構造があります。

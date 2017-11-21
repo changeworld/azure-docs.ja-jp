@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: f0cefab15a115719ea9c378546a7e6004bd06187
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 09542c0e7f628ca4fea00a6562c0b9525432c213
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="event-analysis-and-visualization-with-oms"></a>OMS を使用したイベントの分析と視覚化
 
@@ -37,52 +37,13 @@ OMS ワークスペースに Service Fabric ソリューションを含めるこ
 
 ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
-OMS ワークスペースをプロビジョニングして構成する方法は 2 つあります。Resource Manager テンプレートを使用する方法と、Azure Marketplace から直接行う方法です。 クラスターを展開するときは前者を使用し、診断を有効にした状態でクラスターを既に展開している場合は後者を使用します。
-
-### <a name="deploying-oms-using-a-resource-management-template"></a>Resource Management テンプレートを使用した OMS の展開
-
-Resource Manager テンプレートを使用してクラスターを展開するとき、テンプレートは新しい OMS ワークスペースを作成し、Service Fabric ソリューションをそれに追加し、適切なストレージ テーブルからデータを読み取るように構成することもできます。
-
->[!NOTE]
->この方法が機能するには、Azure ストレージ テーブルが存在し、OMS / Log Analytics がそこから情報を読み取るために、診断が有効になっている必要があります。
-
-[これ](https://azure.microsoft.com/resources/templates/service-fabric-oms/)は、上記のアクションを実行する、使用可能なサンプル テンプレートです。必要に応じて変更できます。 より多くの選択性が必要な場合、プロセスのどこで OMS ワークスペースを設定するかに応じて異なるオプションを提供するテンプレートがいくつかあります。[Service Fabric および OMS テンプレート](https://azure.microsoft.com/resources/templates/?term=service+fabric+OMS)で見つかります。
-
-### <a name="deploying-oms-using-through-azure-marketplace"></a>Azure Marketplace を使用した OMS の展開
-
-クラスターを展開した後に OMS ワークスペースを追加する場合は、Azure Marketplace に進んで *"Service Fabric Analytics"* を探します。
-
-![Marketplace 内の OMS SF Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
-
-* **[作成]** をクリックします。
-* Service Fabric Analytics 作成ウィンドウで *[OMS ワークスペース]* フィールドの **[ワークスペースを選択します]** をクリックし、**[新しいワークスペースの作成]** をクリックします。 必要なエントリを入力します。ここでの要件は、Service Fabric クラスターと OMS ワークスペースのサブスクリプションが同じであることだけです。 入力が検証されると、OMS ワークスペースは展開を開始します。 わずか数分で完了します。
-* 完了したら、Service Fabric Analytics 作成ウィンドウの下部にある **[作成]** をもう一度クリックします。 新しいワークスペースが *[OMS ワークスペース]* に表示されていることを確認します。 作成したワークスペースにソリューションが追加されます。
-
-
-これでソリューションがワークスペースに追加されますが、クラスターから入ってくる診断データに引き続きワークスペースを接続する必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 *ServiceFabric(\<nameOfOMSWorkspace\>)* が表示されます。
-
-* ソリューションをクリックし、その概要ページに移動します。概要ページでソリューション設定やワークスペース設定を変更し、OMS ポータルに移動できます。
-* 左側のナビゲーション メニューの *[ワークスペースのデータ ソース]* の下にある **[ストレージ アカウント ログ]** をクリックします。
-
-    ![ポータルの Service Fabric Analytics ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-portal.png)
-
-* *[ストレージ アカウント ログ]* ページの上部にある **[追加]** をクリックし、クラスターのログをワークスペースに追加します。
-* **[ストレージ アカウント]** をクリックし、クラスターで作成された適切なアカウントを追加します。 既定の名前を使用した場合、ストレージ アカウントの名前は *sfdg\<resourceGroupName\>* になります。 これはクラスターの展開に使用した Azure Resource Manager テンプレートを確認する方法でも確認できます。`applicationDiagnosticsStorageAccountName` に使用された値を確認します。 アカウント名が表示されない場合、下にスクロールし、**[さらに読み込む]** をクリックしてください。 正しいストレージ アカウント名が表示されたらクリックして選択します。
-* 次に、*[データ型]* を指定する必要があります。これは **[Service Fabric イベント]** になります。
-* *[ソース]* は自動的に *[WADServiceFabric\*EventTable]* に設定されます。
-* **[OK]** をクリックし、ワークスペースをクラスターのログに接続します。
-
-    ![OMS にストレージ アカウント ログを追加する](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
-
-* 現在、アカウントがワークスペースのデータ ソースの *[ストレージ アカウント ログ]* に表示されているはずです。
-
-この表示で、クラスターのプラットフォームとアプリケーション ログ テーブルに正しく接続されている OMS Log Analytics ワークスペースに Service Fabric Analytics ソリューションが追加されていることになります。 同じ方法でソースをワークスペースに追加できます。
+お使いのクラスターでこの作業を始める場合は、[OMS Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)に関する記事をご覧ください。
 
 ## <a name="using-the-oms-agent"></a>OMS エージェントの使用
 
-EventFlow と WAD を集計ソリューションとして使用することをお勧めします。診断と監視をモジュール方式で使用できます。 たとえば、EventFlow からの出力を変更する場合は、実際のインストルメンテーションを変更する必要はなく、構成ファイルを変更するだけで済みます。 ただし、OMS を使用することを決定していて、イベント分析のために OMS を引き続き使用することを希望する場合は (使用する唯一のプラットフォームである必要はなく、少なくともプラットフォームの 1 つであればいい)、 [OMS エージェント](../log-analytics/log-analytics-windows-agents.md)を設定してみることをお勧めします。 クラスターにコンテナーをデプロイするときは、次の説明のように OMS エージェントも使用する必要があります。
+EventFlow と WAD を集計ソリューションとして使用することをお勧めします。診断と監視をモジュール方式で使用できます。 たとえば、EventFlow からの出力を変更する場合は、実際のインストルメンテーションを変更する必要はなく、構成ファイルを変更するだけで済みます。 ただし、OMS Log Analytics を使用することに投資すると決めた場合は、[OMS エージェント](../log-analytics/log-analytics-windows-agents.md)を設定する必要があります。 クラスターにコンテナーをデプロイするときは、次の説明のように OMS エージェントも使用する必要があります。 
 
-設定処理は比較的簡単です。エージェントを仮想マシン スケール セット拡張機能として Resource Manager テンプレートに追加するだけです。これで各ノードに確実にインストールされます。 Service Fabric ソリューション (前述の説明を参照) を使用して OMS ワークスペースをデプロイし、エージェントをノードに追加するサンプル Resource Manager テンプレートが、[Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) または [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) を実行するクラスター用に用意されています。
+この手順については、「[Add the OMS Agent to a cluster (OMS エージェントのクラスターへの追加)](service-fabric-diagnostics-oms-agent.md)」をご覧ください。
 
 これの利点は次のとおりです。
 
@@ -107,16 +68,7 @@ EventFlow と WAD を集計ソリューションとして使用することを�
 * ContainerServiceLog: 実行されている Docker デーモン コマンド
 * Perf: コンテナーの CPU、メモリ、ネットワーク トラフィック、ディスク I/O、およびホスト コンピューターからのカスタム メトリックなどのパフォーマンス カウンター
 
-この記事では、クラスターを監視するようにコンテナーを設定するために必要な手順について説明します。 OMS のコンテナー ソリューションの詳細については、ソリューションの[ドキュメント](../log-analytics/log-analytics-containers.md)を参照してください。
-
-ワークスペース内でコンテナー ソリューションを設定するときは、上記の手順に従って、 OMS エージェントをクラスターのノードに展開していることを確認してください。 クラスターが準備できたら、コンテナーを展開します。 コンテナー イメージがクラスターに初めてデプロイされる場合には、イメージのサイズによっては、ダウンロードに数分かかることに注意してください。
-
-Azure Marketplace で、*コンテナー監視ソリューション*を検索し、表示される**コンテナー監視ソリューション**結果を、[監視 + 管理] カテゴリの下に作成します。
-
-![コンテナー ソリューションの追加](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
-
-作成手順では、OMS ワークスペースが要求されます。 上記のデプロイで作成したワークスペースを選択します。 この手順は、OMS ワークスペース内にコンテナー ソリューションを追加し、テンプレートでデプロイされた OMS エージェントによって自動的に検出されます。 エージェントはクラスター内のコンテナー プロセスでデータの収集を開始し、 15 分以内で、上記のダッシュボードのイメージのように、ソリューションがデータとともに表示されるはずです。
-
+「[Monitor containers with OMS Log Analytics (OMS Log Analytics でのコンテナーの監視)](service-fabric-diagnostics-oms-containers.md)」では、クラスターを監視するようにコンテナーを設定するために必要な手順について説明しています。 OMS のコンテナー ソリューションの詳細については、ソリューションの[ドキュメント](../log-analytics/log-analytics-containers.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

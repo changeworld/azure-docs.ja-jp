@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: quickstart
-ms.date: 01/26/2017
-ms.author: elbutter;barbkess
-ms.openlocfilehash: 39efa954fa1eb3d7d93dbeceac48b96d865349ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/06/2017
+ms.author: elbutter
+ms.openlocfilehash: 791990b6c544a416fc73bea69dc884e0b49d088e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="get-started-with-sql-data-warehouse"></a>SQL Data Warehouse を使ってみる
 
@@ -198,7 +198,7 @@ Azure Active Directory 管理者アカウントを利用することもできま
     WITH
     (
         TYPE = Hadoop,
-        LOCATION = 'wasbs://2013@nytpublic.blob.core.windows.net/'
+        LOCATION = 'wasbs://2013@nytaxiblob.blob.core.windows.net/'
     );
     ```
 
@@ -239,7 +239,7 @@ Azure Active Directory 管理者アカウントを利用することもできま
     ```
 5. 外部テーブルを作成する これらのテーブルは、Azure Blob Storage に格納されたデータを参照します。 次の T-SQL コマンドを実行して、複数の外部テーブルを作成します。これらのテーブルは、そのすべてが以前に外部データ ソースで定義した Azure BLOB を指します。
 
-```sql
+  ```sql
     CREATE EXTERNAL TABLE [ext].[Date] 
     (
         [DateID] int NOT NULL,
@@ -405,14 +405,14 @@ Azure Active Directory 管理者アカウントを利用することもできま
     )
     WITH
     (
-        LOCATION = 'Weather2013',
+        LOCATION = 'Weather',
         DATA_SOURCE = NYTPublic,
         FILE_FORMAT = uncompressedcsv,
         REJECT_TYPE = value,
         REJECT_VALUE = 0
     )
     ;
-```
+  ```
 
 ### <a name="import-the-data-from-azure-blob-storage"></a>Azure Blob Storage からデータをインポートします。
 
@@ -430,7 +430,7 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
     AS SELECT * FROM [ext].[Date]
     OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
     ;
-    
+
     CREATE TABLE [dbo].[Geography]
     WITH
     ( 
@@ -441,7 +441,7 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
     SELECT * FROM [ext].[Geography]
     OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
     ;
-    
+
     CREATE TABLE [dbo].[HackneyLicense]
     WITH
     ( 
@@ -451,7 +451,7 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
     AS SELECT * FROM [ext].[HackneyLicense]
     OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
     ;
-    
+
     CREATE TABLE [dbo].[Medallion]
     WITH
     (
@@ -461,7 +461,7 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
     AS SELECT * FROM [ext].[Medallion]
     OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
     ;
-    
+
     CREATE TABLE [dbo].[Time]
     WITH
     (
@@ -471,7 +471,7 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
     AS SELECT * FROM [ext].[Time]
     OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
     ;
-    
+
     CREATE TABLE [dbo].[Weather]
     WITH
     ( 
@@ -481,7 +481,7 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
     AS SELECT * FROM [ext].[Weather]
     OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
     ;
-    
+
     CREATE TABLE [dbo].[Trip]
     WITH
     (
@@ -495,9 +495,9 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
 
 2. 読み込んだデータを表示します。
 
-   数 GB のデータを読み込み、高パフォーマンスのクラスター化列ストア インデックスに圧縮しています。 動的管理ビュー (DMV) を使用する次のクエリを実行して、読み込みの状態を表示します。 SQL Data Warehouse での処理にはある程度の時間がかかります。クエリを開始したら、完了するまでお待ちください。
-    
-    ```sql
+  数 GB のデータを読み込み、高パフォーマンスのクラスター化列ストア インデックスに圧縮しています。 動的管理ビュー (DMV) を使用する次のクエリを実行して、読み込みの状態を表示します。 SQL Data Warehouse での処理にはある程度の時間がかかります。クエリを開始したら、完了するまでお待ちください。
+
+  ```sql
     SELECT
         r.command,
         s.request_id,
@@ -523,7 +523,8 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
     ORDER BY
         nbr_files desc, 
         gb_processed desc;
-    ```
+  ```
+
 
 3. すべてのシステム クエリを表示します。
 
@@ -563,7 +564,7 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
     > [!NOTE]
     > スケールの変更中は、クエリを実行できません。 スケーリングにより、現在実行中のクエリは**中止**されます。 操作が完了したら、再開できます。
     >
-    
+
 5. すべての列の上位 100 万エントリを選択して、乗車データに対するスキャン操作を実行します。 早く先へ進みたい場合は、選択する行を少なくしてもかまいません。 この操作の実行にかかった時間を書き留めておきます。
 
     ```sql
@@ -626,11 +627,11 @@ SQL Data Warehouse は、CREATE TABLE AS SELECT (CTAS) と呼ばれる重要な�
 
     > [!NOTE]
     > SQL DW では、統計は自動的には管理されません。 統計はクエリのパフォーマンスにとって重要なため、統計を作成および更新することを強くお勧めします。
-    > 
+    >
     > **結合に含まれる列、WHERE 句で使用されている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。**
     >
 
-3. 前提条件のクエリを再実行し、パフォーマンスの違いを観察します。 クエリのパフォーマンスの違いは、スケールアップした場合ほど劇的ではありませんが、高速化したことがわかります。 
+4. 前提条件のクエリを再実行し、パフォーマンスの違いを観察します。 クエリのパフォーマンスの違いは、スケールアップした場合ほど劇的ではありませんが、高速化したことがわかります。 
 
 ## <a name="next-steps"></a>次のステップ
 

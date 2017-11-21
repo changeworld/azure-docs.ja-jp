@@ -29,8 +29,14 @@
       href: project-ic-tasks.md
 - name: プロジェクト構造
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
-- name: プロジェクトの実行
-  href: project-execution.md
+- name: プロジェクトの計画と実行
+  items:
+    - name: プロジェクトの計画
+      href: team-data-science-process-project-templates.md
+    - name: プロジェクトの実行
+      items:
+        - name: データ サイエンス プロジェクト
+          href: project-execution.md
 - name: 例
   href: walkthroughs.md
   items:
@@ -79,8 +85,23 @@
           maintainContext: true
         - name: プラットフォームとツール
           href: platforms-and-tools.md
-        - name: Hadoop をカスタマイズする
-          href: customize-hadoop-cluster.md
+        - name: HDInsight クラスターの R と Python
+          items:
+            - name: HDInsight での Spark の概要
+              href: ../../hdinsight/spark/apache-spark-overview.md
+              maintainContext: true
+            - name: Azure HDInsight での Apache Spark クラスターの作成
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md
+              maintainContext: true
+            - name: Jupyter Notebook の PySpark カーネル
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md
+              maintainContext: true
+            - name: HDInsight での R Server
+              href: ../../hdinsight/r-server/r-server-overview.md
+              maintainContext: true
+            - name: HDInsight での R Server の概要
+              href: ../../hdinsight/r-server/r-server-get-started.md
+              maintainContext: true
         - name: Azure Machine Learning ワークスペース
           href: ../studio/create-workspace.md
           maintainContext: true

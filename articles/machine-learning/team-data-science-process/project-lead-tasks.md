@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 11/13/2017
 ms.author: bradsev;
-ms.openlocfilehash: ed3dc8d441989239f02e12231f06d22fbef9d3dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe7cf1e6167de7d0dfaa5ed75c0b7f5ec23b18cf
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="project-lead-tasks"></a>プロジェクト リーダーのタスク
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 - ***DSProject1*** プロジェクトの Git リポジトリを作成するには、**[作成]** をクリックします。
 
 
-## <a name="2-seed-the-dsproject1-project-repository"></a>2.DSProject1 プロジェクト リポジトリをシードします。
+## <a name="2-seed-the-dsproject1-project-repository"></a>手順 2.DSProject1 プロジェクト リポジトリをシードします。
 
 ここで、タスクは、チーム プロジェクト テンプレート リポジトリ (R3) から **DSProject1** プロジェクト リポジトリ (R5) をシード処理することです。 このシード処理の手順では、ローカル DSVM 上のディレクトリ D3 および D5 を中間ステージング サイトとして使用します。 要約すると、シード処理のパスは R3 -> D3 -> D5 -> R5 です。
 

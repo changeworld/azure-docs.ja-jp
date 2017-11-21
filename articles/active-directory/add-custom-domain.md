@@ -14,11 +14,11 @@ ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.openlocfilehash: 2ea119b56f467f57b5929dec05bfd645028578ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2f0287202e1b39f395354b1124078b7b0dc95a7
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>クイック スタート: カスタム ドメイン名を Azure Active Directory に追加する
 
@@ -78,7 +78,7 @@ DNS エントリを追加すると、Azure AD でドメイン名を検証する�
 複数のカスタム ドメイン名 (たとえば "contoso.com" と "contosobank.com" など) を使用する場合、ドメイン名は最大 900 個まで使用することができます。 この記事の手順に従って、各ドメイン名を追加できます。
 
 ### <a name="learn-more"></a>詳細情報
-[Azure AD でのカスタム ドメイン名の概念の概要](active-directory-add-domain-concepts.md)
+[Azure AD でのカスタム ドメイン名の概念の概要](active-directory-domains-manage-azure-portal.md)
 
 [カスタム ドメイン名を管理する](active-directory-domains-manage-azure-portal.md)
 

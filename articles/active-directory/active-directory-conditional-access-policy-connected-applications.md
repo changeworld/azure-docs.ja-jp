@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2017
+ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a57edd30975ec0e943fd84b2c66137d328a89b8b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 949cf120b9b0ae0815b492166ffc19cb0412efbd
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Azure Active Directory のデバイス ベースの条件付きアクセスポリシーを構成する
 
@@ -49,18 +49,18 @@ ms.lasthandoff: 10/11/2017
 
 
 
-デバイス ベースの条件付きアクセス ポリシーで、信頼済みデバイスが準拠としてマーク済みであることを要求できます。
+デバイス ベースの条件付きアクセス ポリシーで、信頼済みデバイスが準拠しているとしてマーク済みであることを要求できます。
 
 ![クラウド アプリ](./media/active-directory-conditional-access-policy-connected-applications/24.png)
 
-デバイスは、以下によってディレクトリ内で準拠としてマークできます。
+デバイスは、以下によってディレクトリ内で準拠しているとしてマークできます。
 
 - Intune 
 - Azure AD 統合によって Windows 10 デバイスを管理するサードパーティ製のモバイル デバイス管理システム 
  
   
 
-Azure AD に接続されているデバイスのみを準拠としてマークできます。 Azure Active Directory にデバイスを接続するには、次のオプションがあります。 
+Azure AD に接続されているデバイスのみを準拠しているとしてマークできます。 Azure Active Directory にデバイスを接続するには、次のオプションがあります。 
 
 - Azure AD 登録済み
 - Azure AD 参加済み

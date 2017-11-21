@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: Jiaj-Li
-ms.openlocfilehash: 2cd3656156b77c71be85a1a18567232f4466fc68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e695cdd7c51e18a386764ab8444d3336366ae265
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Azure Cosmos DB を Azure Storage Explorer で管理する (プレビュー)
 
@@ -32,8 +32,11 @@ Azure Cosmos DB を Azure Storage Explorer で使用することで、ストレ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- SQL (DocumentDB) または MongoDB データベース用の Azure Cosmos DB アカウント。 アカウントを持っていない場合は、Azure ポータルで作成できます。「[Azure Cosmos DB: .NET と Azure Portal による DocumentDB API Web アプリの構築](create-documentdb-dotnet.md)」を参照してください。
-- 最新の Azure Storage Explorer をインストールします。 次のリンクからインストールできます。[Linux](https://go.microsoft.com/fwlink/?linkid=858559)[Mac](https://go.microsoft.com/fwlink/?linkid=858561)[Windows](https://go.microsoft.com/fwlink/?linkid=858562)。
+SQL (DocumentDB) または MongoDB データベース用の Azure Cosmos DB アカウント。 アカウントを持っていない場合は、Azure ポータルで作成できます。「[Azure Cosmos DB: .NET と Azure Portal による DocumentDB API Web アプリの構築](create-documentdb-dotnet.md)」を参照してください。
+
+## <a name="installation"></a>インストール
+
+最新の Azure Storage Explorer を「[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)」ページからインストールします。Windows、Linux、および MAC バージョンがサポートされています。
 
 ## <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
 
@@ -146,10 +149,8 @@ Azure Cosmos DB アカウントを右クリックし、**[データベースの�
 
 * **トリガー**と **UDF** に対する操作は、**ストアド プロシージャ**に対する操作に似ています。
 
-## <a name="demo"></a>デモ
-* Azure Cosmos DB を Azure Storage Explorer で使用する方法については、次のビデオをご覧ください。[Use Azure Cosmos DB in Azure Storage Explorer](https://go.microsoft.com/fwlink/?linkid=858710) (Azure Cosmos DB を Azure Storage Explorer で使用する)
-
 ## <a name="next-steps"></a>次のステップ
 
-これで、Azure Storage Explorer が Azure Cosmos DB アカウントに接続されました。Storage Explorer と他のサービスへの接続の詳細については、「[ストレージ エクスプローラー (プレビュー) の概要](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)」を参照してください。
+* Azure Cosmos DB を Azure Storage Explorer で使用する方法については、次のビデオをご覧ください。[Use Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) (Azure Cosmos DB を Azure Storage Explorer で使用する)
+* Storage Explorer と他のサービスへの接続の詳細については、「[ストレージ エクスプローラー (プレビュー) の概要](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)」をご覧ください。
 

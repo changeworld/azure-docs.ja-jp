@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/27/2017
 ms.author: erikje
-ms.openlocfilehash: 3282b9d4cdf67035d966cf934a7d8574eae6ae34
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 24cde66a132ae2e1ba0eb9b1564915746e5ca448
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Azure サブスクリプションを使用した Azure Stack の登録
 
@@ -72,7 +72,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 4. RegisterWithAzure.psm1 スクリプトから Add-AzsRegistration モジュールを実行します。 次のプレースホルダーを置き換えます。 
     - *YourCloudAdminCredential*は domain\cloudadmin (Development Kitでは azurestack\cloudadmin) のローカル ドメインの資格情報を含む PowerShell オブジェクトです。
     - *YourAzureSubscriptionID* は、Azure Stack の登録に使用する Azure サブスクリプション ID です。
-    - *YourAzureDirectoryTenantName* は、登録リソースを作成する Azure テナントのディレクトリの名前です。
+    - *YourAzureDirectoryTenantName* は、自分の Azure サブスクリプションに関連付けられている Azure テナント ディレクトリの名前です。 登録リソースは、このディレクトリ テナントに作成されます。 
     - *YourPrivilegedEndpoint* は[特権エンドポイント](azure-stack-privileged-endpoint.md)の名前です。
 
     ```powershell

@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 10/31/2016
+ms.date: 11/10/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: 52026a58a5b6e26a660f9e1374e67036c67ac525
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d10d06edfc75594854d8f4da5cf29d6c2fd5ed24
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 以下の表に、Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
@@ -27,12 +27,12 @@ ms.lasthandoff: 10/11/2017
 ## <a name="workload-management"></a>ワークロード管理
 | カテゴリ | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |1 つの SQL Data Warehouse に対する 最大 DWU |6000 |
-| [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |1 つの SQL サーバーに対する最大 DWU |6000 (既定)<br/><br/> 既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 45,000 に設定されており、最大 6000 DWU が許可されます。 このクォータは単に安全上の制限です。 [サポート チケットを作成][creating a support ticket]し、要求の種類として *[クォータ]* を選択すれば、クォータを引き上げることができます。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けます。 現在の DTU 消費量は、ポータルの [SQL Server] ブレードから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
-| データベース接続 |同時に開かれるセッション数 |1024<br/><br/>最大 1024 個のアクティブな接続をサポートします。各接続が SQL Data Warehouse データベースに対して同時に要求を送信できます。 実際に同時実行できるクエリ数には制限があるので注意してください。 同時実行の制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
+| [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |1 つの SQL Data Warehouse に対する 最大 DWU | 弾力性[パフォーマンス レベル](performance-tiers.md)のための最適化: DW6000<br></br>コンピューティング [パフォーマンス レベル](performance-tiers.md)のための最適化: DW30000c |
+| [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 [サポート チケットを作成][creating a support ticket]し、要求の種類として *[クォータ]* を選択すれば、クォータを引き上げることができます。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.0 を掛けます。 For example:<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW600c x 9.0 = 54,000 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
+| データベース接続 |同時に開かれるセッション数 |1024<br/><br/>1024 個のアクティブな各セッションが同時に、SQL Data Warehouse データベースに要求を送信できます。 同時に実行できるクエリ数については、制限があるので注意してください。 同時実行の制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |
-| [ワークロード管理][Workload management] |同時クエリの最大数 |32<br/><br/> 既定では、SQL Data Warehouse は、最大 32 個の同時実行クエリと、キューに残っているクエリを実行します。<br/><br/>ユーザーが上位リソース クラスに割り当てられている場合、または SQL Data Warehouse の DWU の数を少なく構成している場合は、同時実行レベルが低くなる可能性があります。 DMV クエリなど、クエリの中には必ず実行が許可されるものがあります。 |
-| [Tempdb][Tempdb] |Tempdb の最大サイズ |DW100 あたり 399 GB です。 そのため、DWU1000 では、Tempdb のサイズは 3.99 TB になります。 |
+| [ワークロード管理][Workload management] |同時クエリの最大数 |32<br/><br/> 既定では、SQL Data Warehouse は、最大 32 個の同時実行クエリと、キューに残っているクエリを実行します。<br/><br/>ユーザーが割り当てられているリソース クラスが高いほど、または SQL Data Warehouse の[サービス レベル](performance-tiers.md#service-levels)が低いほど、同時実行クエリの数が減る可能性があります。 DMV クエリなど、クエリの中には必ず実行が許可されるものがあります。 |
+| [tempdb][Tempdb] |最大 GB |DW100 あたり 399 GB です。 そのため、DWU1000 では、tempdb のサイズは 3.99 TB になります。 |
 
 ## <a name="database-objects"></a>データベース オブジェクト
 | カテゴリ | 説明 | 最大値 |
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 | テーブル |データベースあたりのテーブル数 |20 億 |
 | テーブル |テーブルあたりの列数 |1,024 列 |
 | テーブル |列あたりのバイト数 |列の[データ型][data type]によって決まります。  上限は、char データ型では 8000 GB、nvarchar データ型では 4000 GB、MAX データ型では 2 GB です。 |
-| テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Data Warehouse では SQL Server と同様に行オーバーフロー ストレージがサポートされており、 **可変長列** を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳細については、MSDNの「[8 KB を超える場合の行オーバーフロー データ][Row-Overflow Data Exceeding 8 KB]」を参照してください。 |
+| テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Data Warehouse では SQL Server と同様に行オーバーフロー ストレージがサポートされており、**可変長列**を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳しくは、「[8 KB を超える場合の行オーバーフロー データ][Row-Overflow Data Exceeding 8 KB]」をご覧ください。 |
 | テーブル |テーブルあたりのパーティション数 |15,000<br/><br/>高パフォーマンスを実現するには、ビジネス要件を満たしながら、必要なパーティション数を最小限に抑えることをお勧めします。 パーティションの数が増えるに従い、データ定義言語 (DDL) およびデータ操作言語 (DML) の操作のオーバーヘッドが拡大し、パフォーマンスの低下を引き起こします。 |
 | テーブル |パーティション境界値あたりの文字数 |4000 |
 | Index |テーブルあたりの非クラスター化インデックス数 |999<br/><br/>行ストア テーブルのみに適用されます。 |
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="loads"></a>読み込み
 | カテゴリ | 説明 | 最大値 |
 |:--- |:--- |:--- |
-| Polybase 読み込み |行あたりの MB 数 |1<br/><br/>Polybase 読み込みは両方が 1 MB 未満の行の読み込みに制限され、VARCHR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。<br/><br/> |
+| Polybase 読み込み |行あたりの MB 数 |1<br/><br/>Polybase は、1 MB 未満の行に対してのみ読み込みを行い、VARCHAR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。<br/><br/> |
 
 ## <a name="queries"></a>クエリ
 | カテゴリ | 説明 | 最大値 |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: d586df0ede6ff9b3a4837a4a9c551ab3ee6d763a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16ce7da9321a4a36e892bad75819d1c30ab5197a
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure AD のスキーマを拡張できます。 この機能により、独自に構築した LOB アプリで利用する属性を引き続きオンプレミスで管理することが可能です。 これらの属性は、[Azure AD Graph ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://graph.microsoft.io/) を通じて利用できます。 それぞれ [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) を使用して、利用可能な属性を表示できます。
@@ -32,6 +32,10 @@ ms.lasthandoff: 10/11/2017
 * ユーザーおよびグループ オブジェクト型
 * 単一値の属性: 文字列、ブール値、整数、バイナリ
 * 複数値の属性: 文字列、バイナリ
+
+
+>[!NOTE]
+> Azure AD Connect では、複数値の AD 属性から Azure AD への同期が、複数値のディレクトリ拡張としてサポートされますが、Azure AD には、現在、複数値のディレクトリ拡張の使用をサポートする機能がありません。
 
 属性の一覧は、Azure AD Connect のインストール中に作成されたスキーマ キャッシュから読み取られます。 その他の属性で Active Directory スキーマを拡張した場合は、これらの新しい属性が表示されるように[スキーマを更新する必要があります](active-directory-aadconnectsync-installation-wizard.md#refresh-directory-schema)。
 

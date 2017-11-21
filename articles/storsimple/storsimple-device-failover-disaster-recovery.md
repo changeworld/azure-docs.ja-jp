@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02373633f2a30c6cd50e30b77a9faac2922926e6
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>StorSimple デバイスのフェールオーバーとディザスター リカバリー
+> [!NOTE]
+> StorSimple のクラシック ポータルは廃止される予定です。 ご使用の StorSimple デバイス マネージャーは、廃止スケジュールに従い、自動的に新しい Azure Portal に移行されます。 この移行に関しては、メールとポータル通知でお知らせします。 このドキュメントも間もなく廃止されます。 新しい Azure Portal 向けに改訂された記事については、「[StorSimple デバイスのフェールオーバーとディザスター リカバリー](storsimple-8000-device-failover-disaster-recovery.md)」を参照してください。 この移行についてご質問があれば、[Azure Portal への移行に関する FAQ](storsimple-8000-move-azure-portal-faq.md) のページを参照してください。
+
 ## <a name="overview"></a>概要
 このチュートリアルでは、災害が発生した場合の StorSimple デバイスのフェールオーバーに必要な手順について説明します。 フェールオーバーにより、データをデータ センターのソース デバイスから、同じ場所または別の場所にある物理デバイスや仮想デバイスに移行できます。 
 
@@ -46,7 +49,6 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="considerations-for-device-failover"></a>デバイスのフェールオーバーに関する考慮事項
 災害が発生した場合、StorSimple デバイスを次のデバイスに対してフェールオーバーできます。
-
 
 * 物理デバイス 
 * StorSimple デバイス自体

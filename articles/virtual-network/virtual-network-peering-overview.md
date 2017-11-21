@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: f055f1e87e73733b3f2ecfa87e4d372ade8a7868
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 7d3e6a34b5851a5a35a530b18efc3db3e2249274
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/24/2017
 
 ## <a name="requirements-constraints"></a>要件と制約
 
-* 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン間での仮想ネットワーク ピアリングは現在プレビュー段階にあり、米国中西部、カナダ中部、および米国西部 2 で提供されています。 プレビュー版を利用するには[サブスクリプションを登録](virtual-network-create-peering.md)してください。
+* 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン間での仮想ネットワーク ピアリングは現在プレビュー段階にあり、米国中西部、カナダ中部、および米国西部 2 で提供されています。 別のリージョンにある仮想ネットワークをピアリングする前に、最初にプレビュー版用に[サブスクリプションを登録する](virtual-network-create-peering.md#register)必要があります。 プレビュー版用の登録を完了していないと、異なるリージョンの仮想ネットワーク間でピアリングを作成する試みは失敗します。
     > [!WARNING]
     > リージョン間で作成された仮想ネットワーク ピアリングでは、一般公開リリースにおけるピアリングと同じレベルの可用性と信頼性が得られない可能性があります。 また、一部の機能が制限されている場合があります。一部の Azure リージョンではご利用いただけない場合もあります。 この機能の可用性とステータスに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)に関するページをご覧ください。
 

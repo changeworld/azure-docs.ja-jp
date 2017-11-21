@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 06/29/2017
+ms.date: 10/30/2017
 ms.author: anoopkv
-ms.openlocfilehash: e3b26c7f34a8fd3d027464cb7a3704c7960b67c6
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: aa7bb25387efbc603dac9aaa0a56b3e30d0bfb4d
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>モビリティ サービスのインストール (VMware または物理から Azure へ)
 Azure Site Recovery モビリティ サービスは、コンピューター上のデータの書き込みをキャプチャし、プロセス サーバーに転送します。 モビリティ サービスは、Azure にレプリケートするすべてのコンピューター (VMware VM または物理サーバー) にデプロイします。 次のメソッドを使用して保護するサーバーにモビリティ サービスをデプロイできます。
@@ -50,13 +50,16 @@ Azure Site Recovery モビリティ サービスは、コンピューター上�
 
 | インストーラー ファイルのテンプレート名| オペレーティング システム |
 |---|--|
-|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 ビット) </br> Windows Server 2012 (64 ビット) </br> Windows Server 2012 R2 (64 ビット) |
-|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4、6.5、6.6、6.7、6.8 (64 ビットのみ) </br> CentOS 6.4、6.5、6.6、6.7、6.8 (64 ビットのみ) |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1、7.2 (64 ビットのみ) </br> CentOS 7.0、7.1、7.2 (64 ビットのみ)</br> CentOS 7.3 (移行のみ) |
+|Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 ビット) </br> Windows Server 2012 (64 ビット) </br> Windows Server 2012 R2 (64 ビット) </br> Windows Server 2016 (64 ビット) |
+|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4、6.5、6.6、6.7、6.8、6.9 (64 ビットのみ) </br> CentOS 6.4、6.5、6.6、6.7、6.8、6.9 (64 ビットのみ) |
+|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1、7.2、7.3 (64 ビットのみ) </br> CentOS 7.0、7.1、7.2、7.3 (64 ビットのみ) |
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ)|
 |Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 (64 ビットのみ)|
 |Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ)|
 |icrosoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04 (64 ビットのみ)|
+|Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS サーバー (64 ビットのみ)|
+|Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 (64 ビットのみ)|
+|Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8 (64 ビットのみ)|
 
 
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>GUI を使用して、モビリティ サービスを手動でインストールする
@@ -93,7 +96,7 @@ Site Recovery を使用して、モビリティ サービスのプッシュ イ�
 
 1. Azure Portal で、<Your Vault> から移動して、レプリケートされたアイテムの表示を参照してください。
 2. **構成サーバー**が既に最新バージョンに更新されている場合、"*Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。クリックしてインストールしてください*" という通知が表示されます。
-   
+
      ![ReplicatedItems](.\media\site-recovery-vmware-to-azure-install-mob-svc\replicated-item-notif.png)
 3. この通知をクリックして、仮想マシンの選択ページを開きます。
 4. モビリティ サービスをアップグレードする仮想マシンを選択し、[OK] ボタンをクリックします。
@@ -102,7 +105,7 @@ Site Recovery を使用して、モビリティ サービスのプッシュ イ�
 5. これによって、選択した各仮想マシンで、モビリティ サービスの更新ジョブが開始されます。
 
 > [!NOTE]
-> モビリティ サービスのインストールに使用するアカウントのパスワードを更新する方法については、[詳細をお読みください](site-recovery-vmware-to-azure-manage-configuration-server.md)。 
+> モビリティ サービスのインストールに使用するアカウントのパスワードを更新する方法については、[詳細をお読みください](site-recovery-vmware-to-azure-manage-configuration-server.md)。
 
 ## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>Windows Server コンピューターのモビリティ サービスをアンインストールする
 Windows Server コンピューターのモビリティ サービスをアンインストールするには、次のメソッドのいずれかを使用します。

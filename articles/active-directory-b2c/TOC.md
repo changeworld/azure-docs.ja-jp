@@ -90,6 +90,7 @@
 ## リファレンス
 ### [リリース ノート](active-directory-b2c-developer-notes-custom.md)
 ### [SSO セッション プロバイダー](active-directory-b2c-reference-sso-custom.md)
+### [言語のカスタマイズ](active-directory-b2c-language-customization-custom.md)
 ### [信頼フレームワークの定義](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 
 # リファレンス

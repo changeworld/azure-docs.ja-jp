@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/06/2017
 ms.author: juluk
-ms.openlocfilehash: 92c8e4c205043f6c5c2925d9197270fb720969a3
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 66f07481d6e62b4375dd2752c5e7d6f8e02d4a3c
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -75,6 +75,9 @@ Azure Cloud Shell の PowerShell は、プレビュー期間中は、初期化�
 ### <a name="no-home-directory-persistence"></a>$Home ディレクトリが永続化されない
 
 アプリケーション (たとえば、git、vim など) によって `$Home` に書き込まれたデータは、PowerShell セッション間で保持されません。 回避策については、[こちらをご覧ください](troubleshooting.md#powershell-resolutions)。
+
+### <a name="default-file-location-when-created-from-azure-drive"></a>Azure ドライブから作成された場合の既定のファイルの場所
+ユーザーは、PowerShell コマンドレットを使用して Azure ドライブにファイルを作成することができません。 Vim や Nano などの他のツールを使用して新しいファイルを作成すると、ファイルは既定で C:\Users フォルダーに保存されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

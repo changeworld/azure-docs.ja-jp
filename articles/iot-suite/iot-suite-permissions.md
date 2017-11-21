@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/15/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: f67c7bfa3f0ea7b720c8684cc0c501be3e464373
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3eb23ccde4522fdf6dee81c6404dfc5fdf0d0acf
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>azureiotsuite.com サイトでのアクセス許可
 
@@ -46,18 +46,14 @@ ADD の管理者ロールの詳細については、「[Azure AD での管理者
 AAD テナントごとに多数のグローバル管理者がいてもかまいません。
 
 * AAD テナントを作成したユーザーは、既定でそのテナントのグローバル管理者になります。
-* グローバル管理者は、構成済みソリューションをプロビジョニングでき、AAD テナントの内部にあるアプリケーションに対する **Admin** ロールを割り当てられます。
-* 同じ AAD テナントの別のユーザーがアプリケーションを作成した場合は、グローバル管理者に付与される既定のロールは **ReadOnly** です。
-* グローバル管理者は、[Azure Portal][lnk-portal] を使用して、アプリケーションに対するロールをユーザーに割り当てることができます。
+* グローバル管理者は、基本的かつ標準の構成済みソリューションをプロビジョニングできます。
 
 ### <a name="domain-user"></a>ドメイン ユーザー
 
 AAD テナントごとに多数のドメイン ユーザーがいてもかまいません。
 
-* ドメイン ユーザーは [azureiotsuite.com][lnk-azureiotsuite] サイトを使用して構成済みソリューションをプロビジョニングできます。 プロビジョニングされたアプリケーションでドメイン ユーザーに対して付与される既定のロールは **Admin** です。
-* ドメイン ユーザーは、[azure-iot-remote-monitoring][lnk-rm-github-repo]、[azure-iot-predictive-maintenance][lnk-pm-github-repo]、または [azure-iot-connected-factory][lnk-cf-github-repo] リポジトリの build.cmd スクリプトを使用してアプリケーションを作成できますが、 ロールを割り当てるアクセス許可はドメイン ユーザーにはないので、ドメイン ユーザーに対して既定で付与されるロールは **ReadOnly** となります。
-* AAD テナントの別のユーザーが作成したアプリケーションに関して、ドメイン ユーザーに既定で割り当てられるロールは **ReadOnly** です。
-* ドメイン ユーザーがアプリケーションのロールを割り当てることはできません。そのため、自分でプロビジョニングしたアプリケーションであっても、ドメイン ユーザーは、ユーザーまたはユーザーのロールを追加することはできません。
+* ドメイン ユーザーは [azureiotsuite.com][lnk-azureiotsuite] サイトを使用して基本的な構成済みソリューションをプロビジョニングできます。
+* ドメイン ユーザーは CLI を使用して基本的な構成済みソリューションを作成できます。
 
 ### <a name="guest-user"></a>ゲスト ユーザー
 
@@ -74,55 +70,11 @@ Azure 管理者ロールは、Azure サブスクリプションを AD テナン�
 
 Azure 管理者ロールの詳細については、[Azure 共同管理者、サービス管理者、アカウント管理者を追加または変更する方法][lnk-admin-roles]に関する記事を参照してください。
 
-## <a name="application-roles"></a>アプリケーション ロール
-
-アプリケーション ロールは、構成済みソリューション内のデバイスへのアクセスを制御します。
-
-プロビジョニングしたアプリケーションには、2 つの定義済みロールと 1 つの暗黙ロールが定義されます。
-
-* **Admin:** デバイスの追加、管理、削除、および設定の変更をすべて実行できます。
-* **ReadOnly:** デバイス、ルール、アクション、ジョブ、およびテレメトリを表示できます。
-
-[RolePermissions.cs][lnk-resource-cs] ソース ファイルで、各ロールに割り当てられるアクセス許可を確認できます。
-
-### <a name="changing-application-roles-for-a-user"></a>ユーザーのアプリケーション ロールの変更
-
-次の手順を使用して、Active Directory のユーザーを構成済みソリューションの管理者にできます。
-
-ユーザーのロールを変更できるのは、AAD グローバル管理者だけです。
-
-1. [Azure Portal][lnk-portal] にアクセスします。
-2. **[Azure Active Directory]**を選択します。
-3. ソリューションをプロビジョニングしたときに azureiotsuite.com で選択したディレクトリを必ず使用します。 サブスクリプションに複数のディレクトリが関連付けられている場合は、ポータルの右上にあるアカウント名をクリックすることで、ディレクトリを切り替えることができます。
-4. **[エンタープライズ アプリケーション]**、**[すべてのアプリケーション]** の順にクリックします。
-4. **任意の**状態の**すべてのアプリケーション**を表示します。 構成済みのソリューションの名前でアプリケーションを検索します。
-5. 構成済みソリューション名と一致するアプリケーションの名前をクリックします。
-6. **[ユーザーとグループ]** をクリックします。
-7. ロールを切り替えるユーザーを選択します。
-8. **[割り当て]** をクリックし、ユーザーに割り当てるロール (**[管理者]** など) を選択して、チェック マークをクリックします。
-
 ## <a name="faq"></a>FAQ
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>サービス管理者が自分のサブスクリプションと特定の AAD テナントの間のディレクトリ マッピングを変更する必要がある場合は、 どうすればよいですか
 
-1. [Azure クラシック ポータル][lnk-classic-portal]に移動し、左側のサービスの一覧で **[設定]** をクリックします。
-2. ディレクトリ マッピングを変更するサブスクリプションを選択します。
-3. **[ディレクトリの編集]**をクリックします。
-4. ドロップダウン リストで使用する **ディレクトリ** を選択します。 右向きの矢印をクリックします。
-5. ディレクトリのマッピングと影響を受ける共同管理者を確認します。 別のディレクトリから移動する場合、元のディレクトリのすべての共同管理者が削除されます。
-
-### <a name="im-a-domain-usermember-on-the-aad-tenant-and-ive-created-a-preconfigured-solution-how-do-i-get-assigned-a-role-for-my-application"></a>AAD テナントのドメイン ユーザー/メンバーが構成済みソリューションを作成した場合、 アプリケーションに対するロールを割り当ててもらうにはどうすればよいですか
-
-グローバル管理者に依頼して AAD テナントでのグローバル管理者を割り当ててもらい、自分でユーザーにロールを割り当てるか、 またはグローバル管理者に直接ロールの割り当てを依頼します。 構成済みソリューションをデプロイした AAD テナントを変更したい場合は、次の質問を参照してください。
-
-### <a name="how-do-i-switch-the-aad-tenant-my-remote-monitoring-preconfigured-solution-and-application-are-assigned-to"></a>リモート監視構成済みソリューションおよびアプリケーションが割り当てられている AAD テナントを切り替えるにはどうすればよいですか
-
-<https://github.com/Azure/azure-iot-remote-monitoring> からクラウドのデプロイを実行し、新しく作成された AAD テナントで再デプロイできます。 新しい AAD テナントを作成したユーザーは既定でグローバル管理者になるので、ユーザーを追加し、ユーザーにロールを割り当てることができます。
-
-1. [Azure ポータル][lnk-portal]で AAD ディレクトリを作成します。
-2. <https://github.com/Azure/azure-iot-remote-monitoring> に移動します。
-3. `build.cmd cloud [debug | release] {name of previously deployed remote monitoring solution}` を実行します (例: `build.cmd cloud debug myRMSolution`)
-4. プロンプトが表示されたら、古いテナントの代わりに新しく作成したテナントの **tenantid** を設定します。
+「[既存のサブスクリプションを Azure AD ディレクトリに追加する方法](../active-directory/active-directory-how-subscriptions-associated-directory.md#to-add-an-existing-subscription-to-your-azure-ad-directory)」をご覧ください
 
 ### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organisational-account"></a>組織アカウントでログインするときにサービス管理者または共同管理者を変更するにはどうすればよいですか
 
@@ -150,8 +102,7 @@ IoT Suite について引き続き学習するには、[構成済みソリュー
 [lnk-rm-github-repo]: https://github.com/Azure/azure-iot-remote-monitoring
 [lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
 [lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
-[lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
-[lnk-classic-portal]: https://manage.windowsazure.com/
+[lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles-azure-portal.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
 [lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md

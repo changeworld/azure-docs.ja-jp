@@ -3,7 +3,7 @@ title: "Windows の Azure カスタム スクリプト拡張機能 | Microsoft D
 description: "カスタム スクリプト拡張機能を使用して Windows VM の構成タスクを自動化します。"
 services: virtual-machines-windows
 documentationcenter: 
-author: neilpeterson
+author: danielsollondon
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/16/2017
-ms.author: nepeters
-ms.openlocfilehash: 4117b6020d2d75a953fd5f032b378e49d2c752ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danis
+ms.openlocfilehash: b250f7aee18ddf06c4f33b36247127141eeac528
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 

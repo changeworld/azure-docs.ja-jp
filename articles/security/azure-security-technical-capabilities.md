@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: a32693a274c2615a515838306d72dbe64a5d1763
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7288466cf31e180a16db18f8ddfe02ace3588a8d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -113,7 +113,7 @@ Azure ID 管理のコア機能は次のとおりです。
 
 セキュリティの監視とアラートや、整合性のないアクセス パターンを識別する機械学習ベースのレポートを使用して、ビジネスを保護できます。 Azure Active Directory のアクセスおよび使用状況レポートを使用すると、組織のディレクトリの整合性とセキュリティを表示できます。 ディレクトリ管理者は、この情報を使用して、リスクを軽減するために適切に計画できるように、セキュリティ上のリスクがある箇所をより適切に確認できます。
 
-[レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)は、Azure クラシック ポータルまたは [Azure Active Directory ポータル](http://aad.portal.azure.com/)で、次の方法で分類されます。
+[レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)は、Azure Portal または [Azure Active Directory ポータル](http://aad.portal.azure.com/)で、次の方法で分類されます。
 
 - 異常レポート: 異常と考えられるサインイン イベントが含まれます。 この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
 
@@ -161,7 +161,7 @@ Azure AD Privileged Identity Management では、次のことが可能です。
 
 ## <a name="secured-resource-access-in-azure"></a>Azure でのセキュリティが保護されたリソース アクセス
 
-Azure のアクセス制御では、最初に課金に注目します。 [Azure アカウント センター](https://account.windowsazure.com/subscriptions)がアクセスする Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。 各サブスクリプションはサービス管理者 (SA) を有し、SA は[Azure クラシック ポータル](https://manage.windowsazure.com/)を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure アカウント センターで SA を変更できます。
+Azure のアクセス制御では、最初に課金に注目します。 [Azure アカウント センター](https://account.windowsazure.com/subscriptions)がアクセスする Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。各サブスクリプションはサービス管理者 (SA) を有し、SA は Azure Portal を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure アカウント センターで SA を変更できます。
 
 ![Azure でのセキュリティが保護されたリソース アクセス](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig3.png)
 

@@ -1,7 +1,7 @@
 # 概要
 ## [開発者ガイド](azure-developer-guide.md) 
-## [Azure サービスの概要](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
-## [Portal の概要](https://docs.microsoft.com/azure/azure-portal-overview?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
+## [Azure サービスの概要](../../fundamentals-introduction-to-azure.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
+## [Portal の概要](../../azure-portal-overview.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [SDK とツール](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # クイック スタート
@@ -107,6 +107,7 @@
 ## [課金](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
 # リソース
+## [Azure の制限とクォータ](../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [Azure リージョン](https://azure.microsoft.com/regions/)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

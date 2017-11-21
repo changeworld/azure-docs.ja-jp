@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 11/01/2017
 ms.author: nitinme
-ms.openlocfilehash: 1309b44ea99af6d20a4d0f730dd68969f3c3082b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 744759968706e0a2c9fe8c1c153f44cc958e31b8
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Azure Import/Export サービスを使用した Data Lake Store へのデータのオフライン コピー
 この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Store にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
@@ -58,7 +58,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
     さらに複雑なスニペットについては、[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関するページを参照してください。
-4. 上記のコマンドを実行すると、指定した場所にジャーナル ファイルが作成されます。 このジャーナル ファイルを使用して、[Azure クラシック ポータル](https://manage.windowsazure.com)でインポート ジョブを作成します。
+4. 上記のコマンドを実行すると、指定した場所にジャーナル ファイルが作成されます。 このジャーナル ファイルを使用して、[Azure Portal](https://portal.azure.com) でインポート ジョブを作成します。
 
 ## <a name="create-an-import-job"></a>インポート ジョブの作成
 これで、[Azure Import/Export サービスの使用](../storage/common/storage-import-export-service.md)に関する記事 (「**インポート ジョブの作成**」セクションの下) にある手順を使って、インポート ジョブを作成できるようになりました。 このインポート ジョブでは、他の詳細とともに、ディスク ドライブの準備中に作成されたジャーナル ファイルを提供します。

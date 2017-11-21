@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.openlocfilehash: f81f23862e783de07b5ec5aebad7f0a781168bd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7caf1dd3fa5ef295c2472cc11deb2895fc2a7111
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 
@@ -120,19 +120,15 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
 
 5. **[次へ]** をクリックします。
 
-6. **[バックアップ スケジュールの選択]** ページで、ファイルやフォルダーに対してバックアップを開始する時間や曜日を指定します。 システム状態のバックアップ スケジュールは自動的に構成されます。 
+6. **[Specify Backup Schedule (System State)](バックアップ スケジュールの選択 (システム状態))** ページで、システム状態に対してバックアップを開始する時間や曜日を指定し、**[次へ]** をクリックします。 
 
-    ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
- 
-
-
-7.  **[保持ポリシーの選択]** ページで、ファイルやフォルダーを対象に、バックアップ コピーのリテンション期間ポリシーを選択します。 システム状態のバックアップのリテンション期間は 60 日に自動的に設定されます。
+7.  **[Select Retention Policy (System State)](保持ポリシーの選択 (システム状態))** ページで、システム状態を対象に、バックアップ コピーのリテンション期間ポリシーを選択し、**[次へ]** をクリックします。
+8. 同様に、選択したファイルとフォルダーに対して、バックアップ スケジュールと保持ポリシーを選択します。 
 8.  **[Choose Initial Back up Type]\(初回バックアップの種類\)** ページで、**[自動でネットワーク経由]** オプションが選択されている状態のまま、**[次へ]** をクリックします。
 9.  **[確認]** ページで情報を確認し、**[完了]** をクリックします。
 10. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]**をクリックします。
 
 ## <a name="perform-an-ad-hoc-back-up"></a>臨時バックアップを実行する
-
 
 バックアップ ジョブ実行のスケジュールを作成しました。 しかしながら、サーバーはバックアップされていません。 ディザスター リカバリーのベスト プラクティスとして、必要なときにバックアップを実行し、サーバーのデータ回復力を確認することが挙げられます。
 
@@ -140,8 +136,9 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
 
     ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
 
-2.  **[確認]** ページで、**[今すぐバックアップ]** ウィザードのサーバー バックアップ設定を確認します。 次に、 **[バックアップ]**をクリックします。
-3.  **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
+2.  **[今すぐバックアップ]** ウィザードで、**[ファイルとフォルダー]** または **[システム状態]** からバックアップ対象を選択し、**[次へ]** をクリックします。 
+3. **[確認]** ページで、**[今すぐバックアップ]** ウィザードのサーバー バックアップ設定を確認します。 次に、 **[バックアップ]**をクリックします。
+4.  **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
 4.  初回バックアップが完了すると、**[ジョブは完了しました]** 状態が MARS エージェント コンソールの **[ジョブ]** ウィンドウに表示されます。
 
 

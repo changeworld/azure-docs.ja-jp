@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/31/2017
+ms.date: 11/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bab7a0646d34de3b6d71370a0fa4216845ee6a2
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -36,11 +36,9 @@ ms.lasthandoff: 10/11/2017
 
     ![診断を有効にして、監査ログと要求ログを収集する](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. __[診断設定]__ で、状態を __[オン]__ にして、ログをとるオプションを選択します。
+3. __[診断設定]__ で、このログ構成の__名前__を入力し、ログ オプションを選択します。
 
     ![診断を有効にして、監査ログと要求ログを収集する](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "診断ログを有効にする")
-
-   * **[状態]** を **[オン]** に設定して診断ログを有効にします。
 
    * 3 種類の方法でデータを格納および処理することができます。
 
@@ -58,34 +56,14 @@ ms.lasthandoff: 10/11/2017
         > [!NOTE]
         > __[保存]__ ボタンをクリックする前に、__[Archive to a storage account]__(ストレージ アカウントへのアーカイブ)、__[Stream to an Event Hub]__(イベント ハブへのストリーム)、または __[Send to Log Analytics]__(Log Analytics に送信) のいずれかを選択する必要があります。
 
-診断設定を有効にしたら、__[診断ログ]__ ブレードに戻ってログを表示できます。
-
-## <a name="view-logs"></a>ログを表示する。
-
-### <a name="use-the-data-lake-analytics-view"></a>Data Lake Analytics ビューを使用する
-
-1. Data Lake Analytics アカウントのブレードで **[監視]** の下の **[診断ログ]** を選択し、ログを表示するエントリを選択します。
-
-    ![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "診断ログの表示")
-
-2. ログは、**[監査ログ]** および **[要求ログ]** によって分類されます。
-
-    ![ログ エントリ](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
-
-   * 要求ログは、Data Lake Analytics アカウントで行われるすべての API 要求をキャプチャします。
-   * 監査ログは、要求ログと同様ですが、操作についてより詳しい内訳を提供します。 たとえば、要求ログでは単一のアップロードの API 呼び出しが、監査ログでは複数の "追加" 操作になる可能性があります。
-
-3. 各ログ エントリの **[ダウンロード]** リンクをクリックして、ログをダウンロードします。
-
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure ストレージ アカウントを使用する
 
-1. ログ記録用の Data Lake Analytics が関連付けられている [Azure ストレージ アカウント] ブレードを開き、__[BLOB]__ をクリックします。 **[Blob service]** ブレードに 2 つのコンテナーが一覧表示されます。
-
-    ![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
+1. ログ データを保持する BLOB コンテナーを表示するには、ログ記録用の Data Lake Analytics に使用する Azure Storage アカウントを開き、__[BLOB]__ をクリックします。
 
    * コンテナー **insights-logs-audit** には、監査ログが含まれます。
    * コンテナー **insights-logs-requests** には、要求ログが含まれます。
-2. これらのコンテナー内で、ログは次の構造の下に格納されます。
+
+2. これらのコンテナー内で、ログは次のファイル構造の下に格納されます。
 
         resourceId=/
           SUBSCRIPTIONS/

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: sethm
-ms.openlocfilehash: 43064ddbdfec3e2ddae8de8c69f6c03dc7f8f45e
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 79573909e02a9743c732f8c1dd48c53966df3f0c
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -100,10 +100,10 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
     var client = TopicClient.CreateFromConnectionString(connectionString, topicName);
     var message = new BrokeredMessage("This is a test message!");
 
+    client.Send(message);
+
     Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
     Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
-
-    client.Send(message);
 
     Console.WriteLine("Message successfully sent! Press ENTER to exit program");
     Console.ReadLine();
@@ -131,10 +131,10 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
                 var client = TopicClient.CreateFromConnectionString(connectionString, topicName);
                 var message = new BrokeredMessage("This is a test message!");
 
+                client.Send(message);
+                
                 Console.WriteLine(String.Format("Message body: {0}", message.GetBody<String>()));
                 Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
-
-                client.Send(message);
 
                 Console.WriteLine("Message successfully sent! Press ENTER to exit program");
                 Console.ReadLine();
