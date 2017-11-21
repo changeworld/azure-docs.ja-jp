@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
-ms.date: 11/2/2017
-ms.openlocfilehash: b6cdd135d2d264c8b4ede1592c686cdeea3d0a59
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.date: 11/14/2017
+ms.openlocfilehash: 7fa7eb53876746f1934af8ca3428cfdacb56382d
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -119,8 +119,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 これで、モデルを運用するための環境を準備する用意が整いました。
 
->[!NOTE]
->モデルをデプロイするには、Azure サブスクリプションに対する所有者アクセス権が必要です。
+
 
 ## <a name="prepare-to-operationalize-locally"></a>ローカルで運用できるように準備する
 ローカル コンピューター上の Docker コンテナーで実行するには、"_ローカル モード_" デプロイを使います。
@@ -163,6 +162,8 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    出力の 3 行目に **"registrationState": "Registering"** と表示されます。 出力に **"registrationState": "Registered"** と表示されるまで、しばらく待ってから **show** コマンドを繰り返します。
 
 3. 環境を作成します。 この手順は、環境ごとに 1 回実行する必要があります。 たとえば開発環境で 1 回、運用環境で 1 回実行します。 この最初の環境には "_ローカル モード_" を使います  後から "_クラスター モード_" で環境を設定してみる場合は、次のコマンドで `-c` スイッチまたは `--cluster` スイッチを指定してください。
+
+次の setup コマンドを実行するには、サブスクリプションの共同作成者のアクセス権が必要です。 このアクセス権がない場合、最低でも、デプロイ先のリソース グループに対する共同作成者のアクセス権が必要となります。 後者の場合、setup コマンドで `-g` フラグを使用し、リソース グループの名前を指定する必要があります。 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>

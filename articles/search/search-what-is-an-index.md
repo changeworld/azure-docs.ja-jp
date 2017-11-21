@@ -1,6 +1,6 @@
 ---
-title: "Azure Search インデックスの作成 | Microsoft Azure | ホステッド クラウド検索サービス"
-description: "Azure Search のインデックスとその使用方法について説明します。"
+title: "Azure Search のインデックス | Microsoft Docs"
+description: "Azure Search におけるインデックスの概念とその使用方法について説明します。"
 services: search
 documentationcenter: 
 author: ashmaka
@@ -10,15 +10,15 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 11/08/2017
 ms.author: ashmaka
-ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87f1121594d8577b5dacac4026aa7d86b2921d10
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
-# <a name="create-an-azure-search-index"></a>Azure Search インデックスの作成
+# <a name="indexes-in-azure-search"></a>Azure Search のインデックス
 > [!div class="op_single_selector"]
 > * [概要](search-what-is-an-index.md)
 > * [ポータル](search-create-index-portal.md)
@@ -27,8 +27,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="what-is-an-index"></a>インデックスとは
-*インデックス*とは、Azure Search サービスで使用される*ドキュメント*などの構成要素の永続的なストアです。 ドキュメントは、インデックス内の 1 単位の検索可能なデータです。 たとえば、e コマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
+Azure Search における "*インデックス*" とは、Azure Search サービスで使用される "*ドキュメント*" などの構成要素の永続的なストアです。 ドキュメントは、インデックス内の 1 単位の検索可能なデータです。 たとえば、eコマースの小売業者であれば販売品目ごとにドキュメントがあり、報道機関であれば記事ごとにドキュメントがあります。 これらの概念をなじみのあるデータベースの同等のものに対応させるなら、*インデックス*は概念的には*テーブル*に似ており、*ドキュメント*はテーブルにおける*行*とほぼ同じです。
 
 ドキュメントを追加/アップロードして検索クエリを Azure Search に送信する場合、検索サービス内の特定のインデックスへの要求を送信していることになります。
 

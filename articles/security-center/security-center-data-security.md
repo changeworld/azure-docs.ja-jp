@@ -12,23 +12,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 11/14/2017
 ms.author: yurid
-ms.openlocfilehash: 6f95cf7631664f4630edbbcdadfd1d98105fdb98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72a3e1eafb6f4150d8410fdd5a7a6095909c052d
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
 
 この記事では、Azure Security Center でデータがどのように管理および保護されているかについて説明します。
-
->[!NOTE] 
->2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
->
-
 
 ## <a name="data-sources"></a>データ ソース
 Azure Security Center は、セキュリティ状態の可視化、脆弱性の識別、軽減策の提案、アクティブな脅威の検出のために、次のソースからのデータを分析します。
@@ -70,7 +65,7 @@ Azure Security Center は、クラッシュ ダンプ ファイルの一時的�
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>仮想マシンからのデータ収集の管理
 
-Azure で Security Center を有効にすると、各 Azure サブスクリプションのデータ収集が有効になります。 Azure Security Center の [セキュリティ ポリシー] セクションで、サブスクリプションのデータ収集を有効にすることもできます。 データ収集が有効になっている場合、Azure Security Center は、サポートされている既存の全 Azure 仮想マシンと新規に作成される仮想マシンに、Microsoft Monitoring Agent をプロビジョニングします。 Microsoft Monitoring Agent は、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Microsoft Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 またワークスペースには、Microsoft Monitoring Agent によってクラッシュ ダンプ ファイルがコピーされます。
+Azure で Security Center を有効にすると、各 Azure サブスクリプションのデータ収集が有効になります。 Azure Security Center の [セキュリティ ポリシー] セクションで、サブスクリプションのデータ収集を有効にすることもできます。 データ収集が有効になっている場合、Azure Security Center は、サポートされている既存の全 Azure 仮想マシンと新規に作成される仮想マシンに、Microsoft Monitoring Agent をプロビジョニングします。 Microsoft Monitoring Agent は、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースにイベント化します。 さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。 Microsoft Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをワークスペースにコピーします。 また Microsoft Monitoring Agent によって、ワークスペースにクラッシュ ダンプ ファイルがコピーされるほか、プロセス作成イベントとコマンド ラインの監査が有効となります。
 
 Azure Security Center Free を使用している場合は、セキュリティ ポリシーで仮想マシンからのデータ収集を無効にすることができます。 データ収集は、Standard レベルのサブスクリプションでは必須の機能です。 データ収集が無効になっていても、VM ディスクのスナップショットとアーティファクトの収集は引き続き有効になります。
 

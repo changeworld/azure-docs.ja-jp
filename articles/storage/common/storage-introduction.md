@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/09/2017
+ms.date: 11/10/2017
 ms.author: tamram
-ms.openlocfilehash: e7b32aa2de5d6501e8d7894a936e9ab8b2f4f42f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdd457dbe6802f58f0167efb97d60628c17a97af
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
 
@@ -80,7 +80,7 @@ Azure Queue サービスは、メッセージの保管と取得に使用しま�
 
 ## <a name="table-storage"></a>テーブル ストレージ
 
-Cosmos DB に、新たに Standard Azure Table Storage が加わりました。 ドキュメントについては、[Azure Table Storage の概要](../../cosmos-db/table-storage-overview.md)を参照してください。 Azure Table Storage の Premium テーブルにも対応しているので、スループットに最適化されたテーブル、グローバルな分散、自動セカンダリ インデックスを利用することができます。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
+Azure Cosmos DB に、新たに Azure Table Storage が加わりました。 Azure Table Storage のドキュメントについては、「[Azure Table Storage の概要](../../cosmos-db/table-storage-overview.md)」を参照してください。 既存の Azure Table Storage サービスに加えて、スループットに最適化されたテーブル、グローバルな分散、自動セカンダリ インデックスを利用できる新しい Azure Cosmos DB Table API プランが追加されています。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
 
 ## <a name="disk-storage"></a>ディスク ストレージ
 

@@ -11,87 +11,164 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: powershell
 ms.topic: hero-article
-ms.date: 09/26/2017
+ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 04b8e0b30bf85c8bafd193c942a6a86f2166c1e7
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 63e4c654409651f6655da1bed6ab2f544cf024dd
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="create-a-data-factory-and-pipeline-using-powershell"></a>PowerShell を使用してデータ ファクトリとパイプラインを作成する
+# <a name="create-an-azure-data-factory-and-pipeline-using-powershell"></a>PowerShell を使用して Azure Data Factory とパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [バージョン 2 - プレビュー](quickstart-create-data-factory-powershell.md)
 
-Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。 
+このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリのパイプラインは、Azure Blob Storage 内のある場所から別の場所にデータをコピーするものです。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。 
 
-このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。
+この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**の両方のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 
-* Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
-* **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。
+### <a name="azure-subscription"></a>Azure サブスクリプション
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+### <a name="azure-storage-account"></a>Azure Storage アカウント
+このクイックスタートでは、**ソース** データ ストアと**シンク/コピー先**データ ストアの両方に汎用の Azure Storage アカウント (具体的には Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 
 
-1. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+#### <a name="get-storage-account-name-and-account-key"></a>ストレージ アカウント名とアカウント キーの取得
+このクイックスタートでは、Azure Storage アカウントの名前とキーを使用します。 以下の手順に従って、ご利用のストレージ アカウントの名前とキーを取得してください。 
 
-    次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
-        
+1. Web ブラウザーを起動して [Azure Portal](https://portal.azure.com) にアクセスします。 Azure のユーザー名とパスワードを使用してログインします。 
+2. 左側のメニューの **[その他のサービス >]** をクリックし、"**ストレージ**" というキーワードでフィルター処理して、**[ストレージ アカウント]** を選択します。
+
+    ![ストレージ アカウントを検索](media/quickstart-create-data-factory-powershell/search-storage-account.png)
+3. ストレージ アカウントの一覧で、ご利用のストレージ アカウントを (必要に応じて) フィルターで抽出し、**該当するストレージ アカウント**を選択します。 
+4. **[ストレージ アカウント]** ページのメニューから **[アクセス キー]** を選択します。
+
+    ![ストレージ アカウントの名前とキーを取得](media/quickstart-create-data-factory-powershell/storage-account-name-key.png)
+5. **[ストレージ アカウント名]** フィールドと **[Key1]** フィールドの値をクリップボードにコピーします。 それらをメモ帳または他のエディターに貼り付けて保存します。  
+
+#### <a name="create-input-folder-and-files"></a>入力フォルダーとファイルの作成
+このセクションでは、adftutorial という名前の BLOB コンテナーを Azure Blob Storage に作成します。 次に、そのコンテナーに input という名前のフォルダーを作成し、input フォルダーにサンプル ファイルをアップロードします。 
+
+1. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) がまだマシンにインストールされていない場合はインストールします。 
+2. ご利用のマシンで **Microsoft Azure Storage Explorer** を起動します。   
+3. **[Azure Storage へ接続]** ウィンドウで **[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択し、**[次へ]** をクリックします。 **[Azure Storage へ接続]** ウィンドウが表示されない場合は、ツリー ビューで **[ストレージ アカウント]** を右クリックし、**[Azure Storage へ接続]** をクリックします。 
+
+    ![Azure Storage へ接続](media/quickstart-create-data-factory-powershell/storage-explorer-connect-azure-storage.png)
+4. **[Attach using Name and Key]\(名前とキーを使用してアタッチ\)** ウィンドウに、前の手順で保存した**アカウント名**と**アカウント キー**を貼り付けます。 次に、 **[次へ]**をクリックします。 
+5. **[接続の概要]** ウィンドウで **[接続]** をクリックします。
+6. **[(Local and Attached)]\((ローカルおよびアタッチ)\)** -> **[ストレージ アカウント]** のツリー ビューにストレージ アカウントが表示されていることを確認します。 
+7. **[BLOB コンテナー]** を展開し、**adftutorial** BLOB コンテナーが存在しないことを確認します。 既に存在する場合は、次のコンテナー作成手順は省略してください。 
+8. **[BLOB コンテナー]** を右クリックし、**[BLOB コンテナーの作成]** を選択します。
+
+    ![BLOB コンテナーを作成する](media/quickstart-create-data-factory-powershell/stroage-explorer-create-blob-container-menu.png)
+9. 名前に「**adftutorial**」と入力し、**Enter** キーを押します。 
+10. ツリー ビューで **adftutorial** コンテナーが選択されていることを確認します。 
+11. ツール バーの **[新しいフォルダー]** をクリックします。 
+
+    ![フォルダーの作成ボタン](media/quickstart-create-data-factory-powershell/stroage-explorer-new-folder-button.png)
+12. **[新しい仮想ディレクトリの作成]** ウィンドウで、**[名前]** に「**input**」と入力し、**[OK]** をクリックします。 
+
+    ![[ディレクトリの作成] ダイアログ](media/quickstart-create-data-factory-powershell/storage-explorer-create-new-directory-dialog.png)
+13. **メモ帳**を起動し、**emp.txt** という名前のファイルを作成して次の内容を入力します。 
+    
+    ```
+    John, Doe
+    Jane, Doe
+    ```    
+    これを **c:\ADFv2QuickStartPSH** フォルダーに保存します。**ADFv2QuickStartPSH** フォルダーがまだ存在しない場合は作成してください。 
+14. ツール バーの **[アップロード]** ボタンをクリックし、**[ファイルのアップロード]** を選択します。 
+
+    ![[アップロード] ボタン](media/quickstart-create-data-factory-powershell/storage-explorer-upload-button.png)
+15. **[ファイルのアップロード]** ウィンドウで、**[ファイル]** の [`...`] を選択します。 
+16. **[Select folder to upload]\(アップロードするフォルダーの選択\)** ウィンドウで、**emp.txt** が格納されているフォルダーに移動し、ファイルを選択します。 
+
+    ![ファイルのアップロード ダイアログ](media/quickstart-create-data-factory-powershell/storage-explorer-upload-files-dialog.png)
+17. **[ファイルのアップロード]** ウィンドウで **[アップロード]** をクリックします。 
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+#### <a name="install-azure-powershell"></a>Azure PowerShell をインストールする
+ご利用のマシンに最新の Azure PowerShell がまだインストールされていない場合はインストールします。 
+
+1. Web ブラウザーで [Azure SDK のダウンロードと SDK](https://azure.microsoft.com/downloads/) に関するページに移動します。 
+2. **[コマンドライン ツール]** -> **[PowerShell]** セクションの **[Windows のインストール]** をクリックします。 
+3. Azure PowerShell をインストールするには、**MSI** ファイルを実行します。 
+
+詳しい手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/install-azurerm-ps)」をご覧ください。 
+
+#### <a name="log-in-to-azure-powershell"></a>Azure PowerShell へのログイン
+お使いのマシンで **PowerShell** を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+
+1. 次のコマンドを実行して、Azure Portal へのサインインに使用する Azure ユーザー名とパスワードを入力します。
+       
     ```powershell
     Login-AzureRmAccount
     ```        
-    次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
+2. 複数の Azure サブスクリプションがある場合は、次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```powershell
     Get-AzureRmSubscription
     ```
-    次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
+3. 次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
     ```
-2. **Set-AzureRmDataFactoryV2** コマンドレットを実行してデータ ファクトリを作成します。 各プレースホルダーを実際の値に置き換えてからコマンドを実行してください。 独自の値に置き換えられた**プレースホルダー**。 
 
-    後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 
-    ```powershell
-    $resourceGroupName = "<your resource group to create the factory>";
+## <a name="create-a-data-factory"></a>Data Factory を作成する。
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 
+   
+     ```powershell
+    $resourceGroupName = "<Specify a name for the Azure resource group>";
     ```
-
-    後で PowerShell コマンドで使用できるように、データ ファクトリ名の変数を定義します。 
+2. 後で PowerShell コマンドで使用できるように、データ ファクトリ名の変数を定義します。 
 
     ```powershell
-    $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>";
+    $dataFactoryName = "<Specify a name for the data factory. It must be globally unique.>";
     ```
+1. データ ファクトリの場所の変数を定義します。 
 
-    次のコマンドを実行して、データ ファクトリを作成します。 
+    ```powershell
+    $location = "East US"
+    ```
+4. Azure リソース グループを作成するには、次のコマンドを実行します。 
+
+    ```powershell
+    New-AzureRmResourceGroup $resourceGroupName $location
+    ``` 
+    リソース グループが既に存在する場合、上書きしないようお勧めします。 異なる値を `$resourceGroupName` 変数に割り当てて、もう一度実行してください。 リソース グループを他のユーザーと共有する場合は、次の手順に進みます。 
+5. データ ファクトリを作成するには、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
+    
     ```powershell       
     Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
     ```
 
-    以下の点に注意してください。
+以下の点に注意してください。
 
-    * Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
 
-        ```
-        The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
-        ```
+    ```
+    The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
+    ```
 
-    * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
-    * 現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* Data Factory インスタンスを作成するには、Azure サブスクリプションの**共同作成者**または**管理者**である必要があります。
+* 現在、Data Factory バージョン 2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
 
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このクイックスタートでは、ソース ストアとシンク ストアの両方として、Azure Storage のリンクされたサービスを 1 つ作成するだけで済みます。このサービスは、このサンプルでは "AzureStorageLinkedService" という名前です。
 
-1. 以下の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADFv2QuickStartPSH** フォルダー内に作成します (C:\ADFv2QuickStartPSH フォルダーがない場合は作成します)。 &lt;accountName&gt; と &lt;accountKey&gt; を実際の Azure ストレージ アカウントの名前とキーに置き換えてからファイルを保存してください。
+1. 以下の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADFv2QuickStartPSH** フォルダー内に作成します (C:\ADFv2QuickStartPSH フォルダーがない場合は作成します)。 
+
+    > [!IMPORTANT]
+    > &lt;accountName&gt; と &lt;accountKey&gt; を実際の Azure ストレージ アカウントの名前とキーに置き換えてからファイルを保存してください。
 
     ```json
     {
@@ -127,7 +204,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-dataset"></a>データセットを作成する
 
-ソースからシンクにコピーするデータを表すデータセットを定義します。 この例のこの BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照します。 データセットは、データセットを使用するアクティビティで設定された値を持つパラメーターを受け取ります。 パラメーターは、データの存在/格納場所を指す "folderPath" を構築するために使用されます。
+ソースからシンクにコピーするデータを表すデータセットを定義します。 この例のこの BLOB データセットは、前の手順で作成した Azure Storage のリンクされたサービスを参照します。 データセットは、データセットを使用するアクティビティで設定された値を持つパラメーターを受け取ります。 パラメーターは、データの存在/格納場所を指す **folderPath** を構築するために使用されます。
 
 1. 以下の内容を記述した **BlobDataset.json** という名前の JSON ファイルを **C:\ADFv2QuickStartPSH** フォルダー内に作成します。
 
@@ -173,7 +250,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する。
   
-この例では、このパイプラインには 1 つのアクティビティが含まれており、2 つのパラメーター (入力 BLOB パスと出力 BLOB パス) を受け取ります。 これらのパラメーターの値は、パイプラインがトリガー/実行されたときに設定されます。 コピー アクティビティは、入力と出力として、前の手順で作成された同じ BLOB データセットを参照します。 データセットが入力データセットとして使用される場合は、入力パスが指定されます。 また、データセットが出力データセットとして使用される場合は、出力パスが指定されます。 
+この例では、このパイプラインには 1 つのアクティビティが含まれており、2 つのパラメーター (入力 BLOB パスと出力 BLOB パス) を受け取ります。 これらのパラメーターの値は、パイプラインがトリガー/実行されたときに設定されます。 コピー アクティビティは、入力と出力として、前の手順で作成された同じ BLOB データセットを使用します。 データセットが入力データセットとして使用される場合は、入力パスが指定されます。 また、データセットが出力データセットとして使用される場合は、出力パスが指定されます。 
 
 1. 以下の内容を記述した **Adfv2QuickStartPipeline.json** という名前の JSON ファイルを **C:\ADFv2QuickStartPSH** フォルダー内に作成します。
 
@@ -247,12 +324,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 以下の内容を記述した **PipelineParameters.json** という名前の JSON ファイルを **C:\ADFv2QuickStartPSH** フォルダー内に作成します。
 
-    "inputPath" と "outputPath" の値を、ソースおよびシンクの BLOB パスに置き換え、ファイルを保存する前にデータをコピーします。
+    異なるコンテナーとフォルダーを使用している場合は、**inputPath** と **outputPath** の値を、ソースおよびシンクの BLOB パスに置き換えます。
 
     ```json
     {
-        "inputPath": "<the path to existing blob(s) to copy data from, e.g. containername/foldername>",
-        "outputPath": "<the blob path to copy data to, e.g. containername/foldername>"
+        "inputPath": "adftutorial/input",
+        "outputPath": "adftutorial/output"
     }
     ```
 
@@ -344,7 +421,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
 ## <a name="verify-the-output"></a>出力を検証する
-[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のようなツールを使用して、inputBlobPath の BLOB が outputBlobPath にコピーされることを確認します。
+このパイプラインは、adftutorial BLOB コンテナーに対して output フォルダーを自動的に作成します。 そのうえで、input フォルダーから output フォルダーに emp.txt ファイルをコピーします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、inputBlobPath の BLOB が outputBlobPath にコピーされることを確認します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 このクイックスタートで作成したリソースは、2 とおりの方法でクリーンアップすることができます。 [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を削除した場合、そのリソース グループに含まれたすべてのリソースが対象となります。 他のリソースをそのまま維持する場合は、このチュートリアルで作成したデータ ファクトリだけを削除してください。
@@ -357,7 +434,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 次のコマンドを実行して、データ ファクトリだけを削除します。 
 
 ```powershell
-Remove-AzureRmDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<NameOfResourceGroup>"
+Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
 ```
 
 ## <a name="next-steps"></a>次のステップ

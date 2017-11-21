@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/27/2017
+ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 675a3b0fb59e449f0f76f8201d62768c03144818
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 237ca28c699984e89127a95b2141fe9131ad868c
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>コネクテッド ファクトリ事前構成済みソリューションのチュートリアル
 
@@ -101,7 +101,7 @@ IoT Hub は、Azure TSI にイベント ソースを提供します。 TSI は�
 
 現在、TSI では、顧客がデータの保有期間をカスタマイズすることは許可されていません。
 
-TSI は、SearchSpan (Time.From, Time.To) を使用してノード データに対してクエリを実行し、OPC UA ApplicationUri、OPC UA NodeId、または OPC UA DisplayName 別に集計します。
+TSI は、**SearchSpan** (**Time.From**, **Time.To**) を使用してノード データに対してクエリを実行し、**OPC UA ApplicationUri**、**OPC UA NodeId**、または **OPC UA DisplayName** 別に集計します。
 
 OEE および KPI ゲージのデータと時系列のグラフを取得するために、データは、イベントの数、Sum、Avg、Min、Max 別に集計されます。
 
@@ -238,9 +238,9 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
-[lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
+[lnk-customize]: iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
 [lnk-IoT Hub]: https://azure.microsoft.com/documentation/services/iot-hub/
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
-[lnk-permissions]: iot-suite-permissions.md
+[lnk-permissions]: iot-suite-v1-permissions.md

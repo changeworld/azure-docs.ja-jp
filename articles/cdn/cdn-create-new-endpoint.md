@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b211c2076840b6eff7c21cb481da569ca6bc49a4
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 80e8e85f058a5cec2e3ae6a6cff5cb8a363370e1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="getting-started-with-azure-cdn"></a>Azure CDN の概要
 この記事では、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure CDN を有効にする方法を紹介しています。
@@ -82,7 +82,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
    > HTTPS を使用して CDN コンテンツにアクセスする場合、次の制約があります。
    > 
    > * CDN によって提供される SSL 証明書を使用する必要があります。 サードパーティの証明書はサポートされません。
-   > * Azure CDN カスタム ドメインの HTTPS 機能を利用できるのは、**Azure CDN from Verizon** 製品 (Standard と Premium) のみです。 **Azure CDN from Akamai** 製品ではサポートされていません。 詳細については、[Azure CDN カスタム ドメインの HTTPS の有効化と無効化](cdn-custom-ssl.md)に関するページを参照してください。
+   > * Azure CDN カスタム ドメインの HTTPS 機能を利用できるのは、**Azure CDN from Verizon** 製品 (Standard と Premium) のみです。 **Azure CDN from Akamai** 製品ではサポートされていません。 詳細については、[Azure CDN カスタム ドメインの HTTPS を構成する方法](cdn-custom-ssl.md)に関するページを参照してください。
   
 9. **[追加]** ボタンをクリックして、新しいエンドポイントを作成します。
    

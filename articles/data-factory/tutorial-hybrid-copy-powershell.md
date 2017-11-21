@@ -11,90 +11,179 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/06/2017
+ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 12ead91f6729aa3eb631cc453180ddea9bafe3df
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 24a4255a23f0b9b9da5d8c3cefeefb8fe250f2f1
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="copy-data-between-on-premises-and-cloud"></a>オンプレミスとクラウドの間でのデータ コピー
+# <a name="tutorial-copy-data-between-on-premises-and-cloud"></a>チュートリアル: オンプレミスとクラウドの間でのデータ コピー
+このチュートリアルでは、オンプレミスの SQL Server データベースから Azure BLOB ストレージにデータをコピーする Data Factory パイプラインを Azure PowerShell を使って作成します。 Azure Data Factory のセルフホステッド統合ランタイム (IR) を作成し、使用することで、オンプレミス データ ストアとクラウド データ ストアの統合が可能となります。  その他のツールまたは SDK を使ってデータ ファクトリを作成する方法については、[クイックスタート](quickstart-create-data-factory-dot-net.md)を参照してください。
 
-[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
-
-#### <a name="this-tutorial"></a>このチュートリアルの内容
+この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。 
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
-
-このチュートリアルでは、オンプレミスの SQL Server データベースから Azure BLOB ストレージにデータをコピーする Data Factory パイプラインを Azure PowerShell を使って作成します。 Azure Data Factory のセルフホステッド統合ランタイム (IR) を作成し、使用することで、オンプレミス データ ストアとクラウド データ ストアの統合が可能となります。  その他のツールまたは SDK を使ってデータ ファクトリを作成する方法については、[クイックスタート](quickstart-create-data-factory-dot-net.md)を参照してください。
 
 このチュートリアルでは、以下の手順を実行します。
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。
 > * セルフホステッド統合ランタイムを作成します。
-> * オンプレミス SQL Server のリンクされたサービスをセルフホステッド統合ランタイムに作成して暗号化します。
-> * Azure Storage のリンクされたサービスを作成します。
-> * SQL Server と Azure Storage のデータセットを作成します。
+> * SQL Server と Azure Storage のリンクされたサービスを作成します。 
+> * SQL Server と Azure BLOB のデータセットを作成します。
 > * コピー アクティビティでデータを移動するパイプラインを作成します。
 > * パイプラインの実行を開始します。
-> * パイプラインとアクティビティの実行を監視します。
+> * パイプラインの実行を監視します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。
-* **Azure Storage アカウント**。 このチュートリアルでは、Azure BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
-* **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。
+### <a name="sql-server-2014-or-2016"></a>SQL Server 2014 または 2016。 
+このチュートリアルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+1. **SQL Server Management Studio**を起動します。 SQL Server 2016 を使用している場合は、[ダウンロード センター](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms)から別途 SQL Server Management Studio をインストールしなければならない場合があります。 
+2. 自分の資格情報で SQL Server に接続します。 
+3. サンプル データベースを作成します。 ツリー ビューで **[データベース]** を右クリックし、**[新しいデータベース]** をクリックします。 **[新しいデータベース]** ダイアログ ボックスで、データベースの**名前**を入力し、**[OK]** をクリックします。 
+4. データベースに対して次のクエリ スクリプトを実行し、**emp** テーブルを作成します。 ツリー ビューで、作成した**データベース**を右クリックし、**[新しいクエリ]** をクリックします。 
 
-1. **PowerShell**を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+    ```sql   
+    CREATE TABLE dbo.emp
+    (
+        ID int IDENTITY(1,1) NOT NULL,
+        FirstName varchar(50),
+        LastName varchar(50),
+        CONSTRAINT PK_emp PRIMARY KEY (ID)
+    )
+    GO
+    ```
+2. データベースに対して次のコマンドを実行し、いくつかのサンプル データをテーブルに挿入します。
 
-    次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
+    ```sql
+    INSERT INTO emp VALUES ('John', 'Doe')
+    INSERT INTO emp VALUES ('Jane', 'Doe')
+    ```
+
+### <a name="azure-storage-account"></a>Azure ストレージ アカウント
+このチュートリアルでは、**コピー先/シンク** データ ストアに汎用の Azure Storage アカウント (具体的には Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
+
+#### <a name="get-storage-account-name-and-account-key"></a>ストレージ アカウント名とアカウント キーの取得
+このクイックスタートでは、Azure Storage アカウントの名前とキーを使用します。 以下の手順に従って、ご利用のストレージ アカウントの名前とキーを取得してください。 
+
+1. Web ブラウザーを起動して [Azure Portal](https://portal.azure.com) にアクセスします。 Azure のユーザー名とパスワードを使用してログインします。 
+2. 左側のメニューの **[その他のサービス >]** をクリックし、"**ストレージ**" というキーワードでフィルター処理して、**[ストレージ アカウント]** を選択します。
+
+    ![ストレージ アカウントを検索](media/tutorial-hybrid-copy-powershell/search-storage-account.png)
+3. ストレージ アカウントの一覧で、ご利用のストレージ アカウントを (必要に応じて) フィルターで抽出し、**該当するストレージ アカウント**を選択します。 
+4. **[ストレージ アカウント]** ページのメニューから **[アクセス キー]** を選択します。
+
+    ![ストレージ アカウントの名前とキーを取得](media/tutorial-hybrid-copy-powershell/storage-account-name-key.png)
+5. **[ストレージ アカウント名]** フィールドと **[Key1]** フィールドの値をクリップボードにコピーします。 それらをメモ帳または他のエディターに貼り付けて保存します。 このチュートリアルでは、ストレージ アカウントの名前とキーを使用します。 
+
+#### <a name="create-the-adftutorial-container"></a>adftutorial コンテナーの作成 
+このセクションでは、adftutorial という名前の BLOB コンテナーを Azure Blob Storage に作成します。 
+
+1. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) がまだマシンにインストールされていない場合はインストールします。 
+2. ご利用のマシンで **Microsoft Azure Storage Explorer** を起動します。   
+3. **[Azure Storage へ接続]** ウィンドウで **[Use a storage account name and key]\(ストレージ アカウント名とキーを使用\)** を選択し、**[次へ]** をクリックします。 **[Azure Storage へ接続]** ウィンドウが表示されない場合は、ツリー ビューで **[ストレージ アカウント]** を右クリックし、**[Azure Storage へ接続]** をクリックします。 
+
+    ![Azure Storage へ接続](media/tutorial-hybrid-copy-powershell/storage-explorer-connect-azure-storage.png)
+4. **[Attach using Name and Key]\(名前とキーを使用してアタッチ\)** ウィンドウに、前の手順で保存した**アカウント名**と**アカウント キー**を貼り付けます。 次に、 **[次へ]**をクリックします。 
+5. **[接続の概要]** ウィンドウで **[接続]** をクリックします。
+6. **[(Local and Attached)]\((ローカルおよびアタッチ)\)** -> **[ストレージ アカウント]** のツリー ビューにストレージ アカウントが表示されていることを確認します。 
+7. **[BLOB コンテナー]** を展開し、**adftutorial** という名前の BLOB コンテナーが存在しないことを確認します。 既に存在する場合は、次のコンテナー作成手順は省略してください。 
+8. **[BLOB コンテナー]** を右クリックし、**[BLOB コンテナーの作成]** を選択します。
+
+    ![BLOB コンテナーを作成する](media/tutorial-hybrid-copy-powershell/stroage-explorer-create-blob-container-menu.png)
+9. 名前に「**adftutorial**」と入力し、**Enter** キーを押します。 
+10. ツリー ビューで **adftutorial** コンテナーが選択されていることを確認します。 このコンテナーには output フォルダーが Data Factory によって自動的に作成されます。手動で作成する必要はありません。 
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+#### <a name="install-azure-powershell"></a>Azure PowerShell をインストールする
+ご利用のマシンに最新の Azure PowerShell がまだインストールされていない場合はインストールします。 
+
+1. Web ブラウザーで [Azure SDK のダウンロードと SDK](https://azure.microsoft.com/downloads/) に関するページに移動します。 
+2. **[コマンドライン ツール]** -> **[PowerShell]** セクションの **[Windows のインストール]** をクリックします。 
+3. Azure PowerShell をインストールするには、**MSI** ファイルを実行します。 
+
+詳しい手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/install-azurerm-ps)」をご覧ください。 
+
+#### <a name="log-in-to-azure-powershell"></a>Azure PowerShell へのログイン
+お使いのマシンで **PowerShell** を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+
+1. 次のコマンドを実行して、Azure Portal へのサインインに使用する Azure ユーザー名とパスワードを入力します。
+       
     ```powershell
     Login-AzureRmAccount
-    ```
-    次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
+    ```        
+2. 複数の Azure サブスクリプションがある場合は、次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```powershell
     Get-AzureRmSubscription
     ```
-    次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
+3. 次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
     ```
-2. **Set-AzureRmDataFactoryV2** コマンドレットを実行してデータ ファクトリを作成します。 各プレースホルダーを実際の値に置き換えてからコマンドを実行してください。
+
+## <a name="create-a-data-factory"></a>Data Factory を作成する。
+
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 
+   
+     ```powershell
+    $resourceGroupName = "<Specify a name for the Azure resource group>";
+    ```
+2. 後で PowerShell コマンドで使用できるように、データ ファクトリ名の変数を定義します。 
 
     ```powershell
-    $resourceGroupName = "<your resource group to create the factory>"
-    $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>"
-    $df = Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
+    $dataFactoryName = "<Specify a name for the data factory. It must be globally unique.>";
+    ```
+1. データ ファクトリの場所の変数を定義します。 
+
+    ```powershell
+    $location = "East US"
+    ```
+4. Azure リソース グループを作成するには、次のコマンドを実行します。 
+
+    ```powershell
+    New-AzureRmResourceGroup $resourceGroupName $location
+    ``` 
+
+    リソース グループが既に存在する場合、上書きしないようお勧めします。 異なる値を `$resourceGroupName` 変数に割り当てて、もう一度実行してください。 リソース グループを他のユーザーと共有する場合は、次の手順に進みます。  
+5. データ ファクトリを作成するには、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
+    
+    ```powershell       
+    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
     ```
 
-    以下の点に注意してください。
+以下の点に注意してください。
 
-    * Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
 
-        ```
-        Data factory name "<data factory name>" is not available.
-        ```
+    ```
+    The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
+    ```
 
-    * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
-    * 現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* Data Factory インスタンスを作成するには、Azure サブスクリプションの**共同作成者**または**管理者**である必要があります。
+* 現在、Data Factory バージョン 2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ## <a name="create-a-self-hosted-ir"></a>セルフホステッド IR を作成する
 
 このセクションでは、セルフホステッド統合ランタイムを作成し、オンプレミス ノード (マシン) に関連付けます。
 
+1. 統合ランタイムの名前に使用する変数を作成します。 
+
+    ```powershell
+   $integrationRuntimeName = "<your integration runtime name>"
+    ```
 1. セルフホステッド統合ランタイムを作成します。 他の統合ランタイムと競合しない一意の名前を使用してください。
 
    ```powershell
-   $integrationRuntimeName = "<your integration runtime name>"
    Set-AzureRmDataFactoryV2IntegrationRuntime -Name $integrationRuntimeName -Type SelfHosted -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName
    ```
 
@@ -145,20 +234,34 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ```json
    {
-       "AuthKey1":  "IR@8437c862-d6a9-4fb3-87dd-7d4865a9e845@ab1@eu@VDnzgySwUfaj3pfSUxpvfsXXXXXXx4GHiyF4wboad0Y=",
-       "AuthKey2":  "IR@8437c862-d6a9-4fb3-85dd-7d4865a9e845@ab1@eu@sh+k/QNJGBltXL46vXXXXXXXXOf/M1Gne5aVqPtbweI="
+       "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@ab1@eu@VDnzgySwUfaj3pfSUxpvfsXXXXXXx4GHiyF4wboad0Y=",
+       "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@ab1@eu@sh+k/QNJGBltXL46vXXXXXXXXOf/M1Gne5aVqPtbweI="
    }
    ```
 
-4. セルフホステッド統合ランタイムをローカルの Windows マシンに[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39717)し、前の手順で取得した認証キーを使って、セルフホステッド統合ランタイムを手動で登録します。
+## <a name="install-integration-runtime"></a>統合ランタイムのインストール
+1. セルフホステッド統合ランタイムをローカルの Windows マシンに[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39717)し、インストールを実行します。 
+2. **[Welcome to Microsoft Integration Runtime Setup Wizard]\(Microsoft Integration Runtime セットアップ ウィザードへようこそ\)** で **[次へ]** をクリックします。  
+3. **[使用許諾契約書]** ページで使用条件とライセンス契約に同意し、**[次へ]** をクリックします。 
+4. **[インストール先フォルダー]** ページで **[次へ]** をクリックします。 
+5. **[Ready to install Microsoft Integration Runtime]\(Microsoft Integration Runtime のインストール準備完了\)** で **[インストール]** をクリックします。 
+6. 構成中のコンピューターが、使用されていないときはスリープ状態または休止状態に移行する旨の警告メッセージが表示された場合は、**[OK]** をクリックしてください。 
+7. **[Completed the Microsoft Integration Runtime Setup Wizard]\(Microsoft Integration Runtime セットアップ ウィザードの完了\)** ページで **[完了]** をクリックします。
+8. **[統合ランタイム (セルフホスト) の登録]** ページで、前のセクションで保存したキーを貼り付け、**[登録]** をクリックします。 
 
    ![統合ランタイムの登録](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
-
-   セルフホステッド統合ランタイムが正常に登録されると、次のメッセージが表示されます。
+2. セルフホステッド統合ランタイムが正常に登録されると、次のメッセージが表示されます。
 
    ![正常に登録](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
 
-   ノードがクラウド サービスに接続されると、次のページが表示されます。
+3. **[新しい統合ランタイム (セルフホスト) ノード]** ページで **[次へ]** をクリックします。 
+
+    ![[新しい統合ランタイム ノード] ページ](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
+4. **[イントラネット通信チャネル]** で **[スキップ]** をクリックします。 複数ノードの統合ランタイム環境では、イントラノード通信に使用する TLS/SSL 証明書を選択することができます。 
+
+    ![[イントラネット通信チャネル] ページ](media/tutorial-hybrid-copy-powershell/intranet-communication-channel-page.png)
+5. **[統合ランタイム (セルフホスト) の登録]** ページで **[構成マネージャーの起動]** をクリックします。 
+6. ノードがクラウド サービスに接続されると、次のページが表示されます。
 
    ![ノード接続済み](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
 
@@ -166,7 +269,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-an-azure-storage-linked-service-destinationsink"></a>Azure Storage のリンクされたサービスを作成する (コピー先/シンク)
 
-1. 次の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADFv2Tutorial** フォルダーに作成します。 ADFv2Tutorial フォルダーがまだ存在しない場合は作成してください。  &lt;accountname&gt; と &lt;accountkey&gt; を Azure ストレージ アカウントの名前とキーに置き換えます。
+1. 以下の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADFv2Tutorial** フォルダー内に作成します (ADFv2Tutorial フォルダーがない場合は作成します)。  
+
+    > [!IMPORTANT]
+    > &lt;accountName&gt; と &lt;accountKey&gt; を実際の Azure ストレージ アカウントの名前とキーに置き換えてからファイルを保存してください。
 
    ```json
     {
@@ -182,7 +288,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         "name": "AzureStorageLinkedService"
     }
    ```
-
 2. **Azure PowerShell** で **ADFv2Tutorial** フォルダーに切り替えます。
 
    **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureStorageLinkedService** を作成します。 このチュートリアルで使用しているコマンドレットは、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を受け取ります。 または、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力することなく、Set-AzureRmDataFactoryV2 コマンドレットから返された **DataFactory** オブジェクトを渡すことができます。
@@ -202,7 +307,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>SQL Server のリンクされたサービスを作成して暗号化する (ソース)
 
-1. **C:\ADFv2Tutorial** フォルダーに、**SqlServerLinkedService.json** という名前で以下の内容の JSON ファイルを作成します。**&lt;servername>**、**&lt;databasename>**、**&lt;username>**、**&lt;servername>**、**&lt;password>** を実際の SQL Server の値に置き換えてからファイルを保存してください。 **&lt;integration** **runtime** **name>** は、実際の統合ランタイムの名前に置き換えます。
+1. **C:\ADFv2Tutorial** フォルダーに、**SqlServerLinkedService.json** という名前で以下の内容の JSON ファイルを作成します。**&lt;servername>**、**&lt;databasename>**、**&lt;username>**、**&lt;servername>**、**&lt;password>** を実際の SQL Server の値に置き換えてからファイルを保存してください。 
+
+    > [!IMPORTANT]
+    > **&lt;integration** **runtime** **name>** は、実際の統合ランタイムの名前に置き換えます。
 
     ```json
     {
@@ -222,12 +330,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         "name": "SqlServerLinkedService"
     }
    ```
-2. JSON ペイロードからの機微なデータを暗号化して、オンプレミスのセルフホステッド統合ランタイムに格納するには、**New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** を実行して、上記の JSON ペイロードを渡します。 この暗号化によって、資格情報がデータ保護 API (DPAPI) を使って暗号化され、ローカルのセルフホステッド統合ランタイム ノードに格納されます。 暗号化された資格情報が含まれる出力ペイロードは別の JSON ファイル (この場合は "encryptedLinkedService.json") にリダイレクトできます。
-
-    **&lt;integration runtime name&gt;** を実際の統合ランタイムの名前に置き換えてからコマンドを実行してください。
-
+2. JSON ペイロードからの機微なデータを暗号化して、オンプレミスのセルフホステッド統合ランタイムに格納するには、**New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** を実行して、上記の JSON ペイロードを渡します。 この暗号化によって、資格情報が Data Protection Application Programming Interface (DPAPI) を使って暗号化されます。 暗号化された資格情報は、セルフホステッド統合ランタイム ノードのローカル (ローカル マシン) に格納されます。 暗号化された資格情報が含まれる出力ペイロードは別の JSON ファイル (この場合は "encryptedLinkedService.json") にリダイレクトできます。
+    
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 3. 前の手順で作成した JSON を使って次のコマンドを実行し、**SqlServerLinkedService** を作成します。
@@ -238,36 +344,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 ## <a name="create-datasets"></a>データセットを作成する
-
-### <a name="prepare-an-on-premises-sql-server-for-the-tutorial"></a>チュートリアル用にオンプレミスの SQL Server を用意する
-
-このステップでは、コピー操作 (オンプレミスの SQL Server Database => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。 データセットを作成する前に、以下の手順を実行します (詳細な手順はリストの後にあります)。
-
-- リンクされたサービスとしてデータ ファクトリに追加した SQL Server Database 内に "**emp**" という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
-- Data Factory にリンクされたサービスとして追加した Azure BLOB ストレージ アカウントに **adftutorial** という名前の BLOB コンテナーを作成します。
-
-
-1. オンプレミスの SQL Server リンク サービス (**SqlServerLinkedService**) 用に指定したデータベースで、次の SQL スクリプトを使用して、データベースに **emp** テーブルを作成します。
-
-   ```sql   
-     CREATE TABLE dbo.emp
-     (
-         ID int IDENTITY(1,1) NOT NULL,
-         FirstName varchar(50),
-         LastName varchar(50),
-         CONSTRAINT PK_emp PRIMARY KEY (ID)
-     )
-     GO
-   ```
-
-2. テーブルにサンプルをいくつか挿入します。
-
-   ```sql
-     INSERT INTO emp VALUES ('John', 'Doe')
-     INSERT INTO emp VALUES ('Jane', 'Doe')
-   ```
-
-
+このステップでは、コピー操作 (オンプレミスの SQL Server Database => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>ソース SQL Database のデータセットを作成する
 
@@ -477,12 +554,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       "dataRead": 36,
       "dataWritten": 24,
       "rowsCopied": 2,
-      "copyDuration": 4,
-      "throughput": 0.01,
-      "errors": []
+      "copyDuration": 3,
+      "throughput": 0.01171875,
+      "errors": [],
+      "effectiveIntegrationRuntime": "MyIntegrationRuntime",
+      "billedDuration": 3
     }
     ```
-4. シンク Azure BLOB ストレージに接続し、Azure SQL Database から正しくデータがコピーされていることを確認します。
+## <a name="verify-the-output"></a>出力を検証する
+このパイプラインは、`adftutorial` BLOB コンテナーに対して `fromonprem` という名前の出力フォルダーを自動的に作成します。 出力フォルダーに **dbo.emp.txt** ファイルがあることを確認してください。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、出力が作成されていることを確認します。 
 
 ## <a name="next-steps"></a>次のステップ
 このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 以下の方法について学習しました。
@@ -490,14 +570,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!div class="checklist"]
 > * データ ファクトリを作成します。
 > * セルフホステッド統合ランタイムを作成します。
-> * オンプレミス SQL Server のリンクされたサービスをセルフホステッド統合ランタイムに作成して暗号化します。
-> * Azure Storage のリンクされたサービスを作成します。
-> * SQL Server と Azure Storage のデータセットを作成します。
+> * SQL Server と Azure Storage のリンクされたサービスを作成します。 
+> * SQL Server と Azure BLOB のデータセットを作成します。
 > * コピー アクティビティでデータを移動するパイプラインを作成します。
 > * パイプラインの実行を開始します。
-> * パイプラインとアクティビティの実行を監視します。
+> * パイプラインの実行を監視します。
 
-Azure Data Factory でサポートされるソース データ ストアおよびシンク データ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事を参照してください。
+Azure Data Factory でサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。
 
 次のチュートリアルに進んで、ソースからコピー先にデータを一括コピーする方法について学習しましょう。
 
