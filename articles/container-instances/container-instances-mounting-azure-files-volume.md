@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 11/09/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41c3a449b39d6ef77e1dd0cf10699f8debcad475
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 0f824dad7ba5b661941e952383025e5171f32e55
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="mounting-an-azure-file-share-with-azure-container-instances"></a>Azure Container Instances での Azure ファイル共有のマウント
+# <a name="mount-an-azure-file-share-with-azure-container-instances"></a>Azure Container Instances での Azure ファイル共有のマウント
 
 既定では、Azure Container Instances はステートレスです。 コンテナーがクラッシュまたは停止すると、すべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事では、Azure Container Instances で使用できるように Azure ファイル共有をマウントする方法について説明します。
 
@@ -185,16 +185,16 @@ az keyvault show --name $KEYVAULT_NAME --query [id] -o tsv
 テンプレートが定義されている場合は、Azure CLI を使用して、コンテナーを作成し、そのボリュームをマウントできます。 テンプレート ファイルの名前が *azuredeploy.json*、パラメーター ファイルの名前が *azuredeploy.parameters.json* の場合、コマンド ラインは次のようになります。
 
 ```azurecli-interactive
-az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group myResourceGroup
+az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group $ACI_PERS_RESOURCE_GROUP
 ```
 
-コンテナーが起動したら、**seanmckenna/aci-hellofiles** イメージ経由でデプロイされる単純な Web アプリを使用して、指定したマウント パスにある Azure ファイル共有のファイルを管理できます。 この Web アプリの IP アドレスは以下を使用して取得します。
+コンテナーが起動したら、**seanmckenna/aci-hellofiles** イメージ経由でデプロイされる単純な Web アプリを使用して、指定したマウント パスにある Azure ファイル共有のファイルを管理できます。 [az container show](/cli/azure/container#az_container_show) コマンドを使用して、Web アプリの IP アドレスを取得します。
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name hellofiles -o table
+az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles -o table
 ```
 
-[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)などのツールを使用して、ファイル共有に書き込まれるファイルを取得して検査できます。
+[Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)などのツールを使用して、ファイル共有に書き込まれるファイルを取得して検査できます。
 
 >[!NOTE]
 > Azure Resource Manager テンプレートやパラメーター ファイルの使用、および Azure CLI でのデプロイの詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md)」を参照してください。

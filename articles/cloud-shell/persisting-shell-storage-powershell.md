@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Shell (プレビュー) でファイルを永続化する | Microsoft Docs"
+title: "Azure Cloud Shell (プレビュー) の PowerShell でファイルを永続化する | Microsoft Docs"
 description: "Azure Cloud Shell でファイルを永続化する方法についてのチュートリアルです。"
 services: azure
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: damaerte
-ms.openlocfilehash: 933af3860bfe087a0b4db7eff53d4b978a1475da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66d0e20d670e49cdfe64614d1fc6f5739fde6155
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
-## <a name="how-cloud-shell-works"></a>Cloud Shell のしくみ
-Cloud Shell は、次の方法を使ってファイルを永続化します。 
+## <a name="how-powershell-in-azure-cloud-shell-preview-works"></a>Azure Cloud Shell (プレビュー) の PowerShell の仕組み
+Cloud Shell (プレビュー) の PowerShell は、次の方法を使ってファイルを永続化します。 
 * ファイル共有を直接操作できるように、指定されたファイル共有を `$Home` ディレクトリに `clouddrive` としてマウントします。
 
 ## <a name="list-cloud-drive-file-shares"></a>クラウド ドライブ ファイル共有の一覧の取得

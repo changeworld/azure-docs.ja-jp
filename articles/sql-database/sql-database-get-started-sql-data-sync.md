@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL データ同期の概要 (プレビュー) | Microsoft Docs"
-description: "このチュートリアルでは、Azure SQL データ同期 (プレビュー) の概要について説明します。"
+title: "Azure SQL データ同期 (プレビュー) をセットアップする | Microsoft Docs"
+description: "このチュートリアルでは、Azure SQL データ同期 (プレビュー) をセットアップする方法を示します"
 services: sql-database
 documentationcenter: 
 author: douglaslms
@@ -13,21 +13,21 @@ ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: ddcf6868a0fca88a52774e20623d25de31c063bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b356bc9db9e883c2514953b516d6dd51c1807610
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="get-started-with-azure-sql-data-sync-preview"></a>Azure SQL データ同期の概要 (プレビュー)
+# <a name="set-up-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) をセットアップする
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。
 
 このチュートリアルは、少なくとも SQL Database および SQL Server をいくらか使用したことがある読者を対象にしています。 
 
-SQL データ同期の概要については、「[Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Preview) (Azure SQL データ同期による複数のクラウドおよびオンプレミス データベースにまたがるデータの同期 (プレビュー))](sql-database-sync-data.md)」を参照してください。
+SQL データ同期の概要については、[Azure SQL データ同期 (プレビュー) を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](sql-database-sync-data.md)に関する記事をご覧ください。
 
 SQL データ同期を構成する方法を示す完全な PowerShell の例については、次の記事を参照してください。
 -   [PowerShell を使用して複数の Azure SQL Database 間で同期を行う](scripts/sql-database-sync-data-between-sql-databases.md)
@@ -110,7 +110,7 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
     ![新しい SQL Database 同期メンバーが追加された](media/sql-database-get-started-sql-data-sync/datasync-preview-memberadded.png)
 
-### <a name="add-an-on-premises-sql-server-database"></a>オンプレミス SQL Server データベースの追加
+### <a name="add-on-prem"></a> オンプレミス SQL Server データベースの追加
 
 **[メンバー データベース]** セクションで、必要に応じて **[オンプレミス データベースを追加]** を選択して、オンプレミスの SQL Server を同期グループに追加します。 **[オンプレミスの構成]** ページが開きます。
 
@@ -193,14 +193,92 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
 4.  最後に、**[保存]** を選択します。
 
+## <a name="faq-about-setup-and-configuration"></a>セットアップと構成についてよくあるご質問
+
+### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>データ同期はどのくらいの頻度でデータを同期しますか? 
+最小の頻度は 5 分ごとです。
+
+### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>SQL データ同期はテーブルを完全に作成してプロビジョニングしますか?
+
+同期スキーマ テーブルが同期先のデータベースにまだ作成されていない場合、SQL データ同期 (プレビュー) はユーザーが選んだ列でテーブルを作成します。 ただし、以下の理由から、この動作によって完全に忠実なスキーマにはなりません。
+
+-   同期先テーブルにはユーザーが選んだ列だけが作成されます。 同期元テーブルの一部の列が同期グループに含まれていない場合、それらの列は同期先テーブルにプロビジョニングされません。
+
+-   選択した列のインデックスだけが作成されます。 同期元テーブルのインデックスに同期グループに含まれていない列がある場合、それらのインデックスは同期先テーブルにプロビジョニングされません。
+
+-   XML 型の列のインデックスはプロビジョニングされません。
+
+-   CHECK 制約はプロビジョニングされません。
+
+-   同期元テーブルの既存のトリガーはプロビジョニングされません。
+
+-   ビューとストアド プロシージャは同期先データベースに作成されません。
+
+これらの制限のため、次のことをお勧めします。
+-   運用環境では、完全に忠実なスキーマを手動でプロビジョニングします。
+-   サービスを試す目的であれば、SQL データ同期 (プレビュー) の自動プロビジョニング機能が問題なく動作します。
+
+### <a name="why-do-i-see-tables-that-i-did-not-create"></a>作成していないテーブルが表示されるのはなぜですか?  
+データの同期により、データベース内に変更追跡のためのサイド テーブルが作成されます。 これらを削除しないでください。削除するとデータ同期が動作を停止します。
+
+### <a name="is-my-data-convergent-after-a-sync"></a>同期後にデータは収束しますか?
+
+必ずしもその必要はありません。 ハブと 3 つのスポーク (A、B、C) を持つ同期グループでは、同期は ハブから A、ハブから B、ハブから C に対して行われます。ハブから A への同期の "*後*" でデータベース A が変更された場合、次の同期タスクまで、その変更はデータベース B またはデータベース C に書き込まれません。
+
+### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>スキーマの変更を同期グループに反映するにはどうすればよいですか?
+
+スキーマの変更を手動で実行する必要があります。
+
+### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>データ同期でデータベースをエクスポートおよびインポートするにはどうすればよいですか?
+データベースを `.bacpac` ファイルとしてエクスポートし、そのファイルをインポートして新しいデータベースを作成した後、新しいデータベースでデータ同期を使うには、次の 2 つのことを行う必要があります。
+1.  [このスクリプト](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql)を使って、**新しいデータベース**でデータ同期オブジェクトとサイド テーブルをクリーンアップします。 このスクリプトは、データベースからすべての必要なデータ同期オブジェクトを削除します。
+2.  新しいデータベースで同期グループを再作成します。 古い同期グループが必要ない場合は削除します。
+
+## <a name="faq-about-the-client-agent"></a>クライアント エージェントについてよくあるご質問
+
+### <a name="why-do-i-need-a-client-agent"></a>なぜクライアント エージェントが必要ですか?
+
+SQL データ同期 (プレビュー) サービスは、クライアント エージェントを使って SQL Server データベースと通信します。 このセキュリティ機能では、ファイアウォールの背後にあるデータベースと直接通信できません。 SQL データ同期 (プレビュー) サービスは、エージェントと通信するとき、暗号化された接続と、一意のトークンつまり "*エージェント キー*" を使います。 SQL Server データベースは、接続文字列とエージェント キーを使ってエージェントを認証します。 この設計では、高レベルのセキュリティがデータに提供されます。
+
+### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>何個のローカル エージェント UI インスタンスを実行できますか?
+
+実行できる UI のインスタンスは 1 つだけです。
+
+### <a name="how-can-i-change-my-service-account"></a>サービス アカウントを変更するにはどうすればよいですか?
+
+クライアント エージェントをインストールした後でサービス アカウントを変更する唯一の方法は、クライアント エージェントをアンインストールし、新しいサービス アカウントで新しいクライアント エージェントをインストールすることです。
+
+### <a name="how-do-i-change-my-agent-key"></a>エージェント キーを変更するにはどうすればよいですか?
+
+エージェント キーは、エージェントによって一度だけ使われます。 エージェントを削除して新しいエージェントを再インストールするときに再利用したり、複数のエージェントで共用したりすることはできません。 既存のエージェントに対して新しいキーを作成する必要がある場合は、クライアント エージェントと SQL データ同期 (プレビュー) サービスで同じキーが記録されるようにする必要があります。
+
+### <a name="how-do-i-retire-a-client-agent"></a>クライアント エージェントの使用を終了するにはどうすればよいですか?
+
+すぐにエージェントを無効にしたり、使用を終了したりするには、ポータルでエージェント キーの再生成だけを行い、エージェント UI でのキーの送信は行わないでおきます。 キーを再生成すると、対応するエージェントがオンラインかオフラインかにかかわらず、前のキーは無効になります。
+
+### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>別のコンピューターにクライアント エージェントを移動するにはどうすればよいですか?
+
+現在とは異なるコンピューターからローカル エージェントを実行する場合は、次のようにします。
+
+1. 目的のコンピューターにエージェントをインストールします。
+
+2. SQL データ同期 (プレビュー) ポータルにログインし、新しいエージェントのエージェント キーを再生成します。
+
+3. 新しいエージェントの UI を使って、新しいエージェント キーを送信します。
+
+4. 以前に登録されたオンプレミスのデータベースのリストをクライアント エージェントがダウンロードするまで待ちます。
+
+5. 到達不能と表示されるすべてのデータベースに対し、データベースの資格情報を指定します。 これらのデータベースには、エージェントをインストールした新しいコンピューターから到達可能でなければなりません。
+
 ## <a name="next-steps"></a>次のステップ
 おめでとうございます。 SQL Database インスタンスと SQL Server データベースの両方を含む同期グループを作成しました。
 
 SQL データ同期の詳細については、以下を参照してください。
 
--   [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
+-   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期)](sql-database-sync-data.md)
 -   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
--   [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
+-   [OMS Log Analytics を使用した Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)
 
 -   SQL データ同期を構成する方法を示す完全な PowerShell の例
     -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)

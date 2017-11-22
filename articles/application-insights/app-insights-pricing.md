@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5b3d1b9e0d176f29fbcc90410f1fe80085ec5fa8
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ecb6dd0343c36a0f1571b416817aad5e7a52fccb
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Application Insights での価格とデータ ボリュームの管理
 
@@ -39,7 +39,7 @@ Application Insights の課金の仕組みについてご質問があれば、[�
 Basic プランは新しい Application Insights リソースを作成する場合の既定のプランであり、ほとんどのお客様は Basic プランで十分です。
 
 * Basic プランでは、データ量、つまり Application Insights で受信したテレメトリのバイト数に応じて課金されます。 データ量は、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。
-[Analytics にインポートされた表形式データ](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import)では、データ ボリュームは、Application Insights に送信されたファイルの非圧縮サイズとして測定されます。  
+[Analytics にインポートされた表形式データ](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)では、データ ボリュームは、Application Insights に送信されたファイルの非圧縮サイズとして測定されます。  
 * いずれのアプリについても、最初の 1 GB 無料です。そのため、試験や開発の段階で換金されることはあまりありません。
 * [ライブ メトリック ストリーム](app-insights-live-stream.md) データは、課金対象としてカウントされません。
 * Basic プランでは、[連続エクスポート](app-insights-export-telemetry.md)を 1 GB ごとの追加料金で利用できます。
@@ -110,7 +110,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 送信するデータ ボリュームを制限するには、3 つの方法があります。
 
 * **サンプリング:** このメカニズムを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 これは、データの量を調整するための主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](app-insights-sampling.md)。 
-* **1 日あたりの上限:** Azure Portal から Application Insights リソースを作成する場合は、500 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。これはテストを行うことだけを想定したものです。 このケースでは、アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 高トラフィック アプリケーション用に最大値の引き上げを要求した場合を除き、最大の上限は 500 GB/日です。 日次上限を設定するときには、**決して日次上限に到達することがないように**注意してください。到達すると、その日のそれ以降のデータが失われてしまい、アプリケーションを監視できなくなるためです。 値を変更するには、[データ管理] ブレードからリンクされている [日次ボリューム上限] ブレードを使用します (下記参照)。 サブスクリプション タイプによっては、Application Insights でクレジットを使用できません。 サブスクリプションに使用制限がある場合は、[日次上限] ブレードに、使用制限を解除して 32.3 MB/日から引き上げる方法が表示されます。  
+* **1 日あたりの上限:** Azure Portal から Application Insights リソースを作成する場合は、100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。これはテストを行うことだけを想定したものです。 このケースでは、アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 高トラフィック アプリケーション用に最大値の引き上げを要求した場合を除き、最大の上限は 1000 GB/日です。 日次上限を設定するときには、**決して日次上限に到達することがないように**注意してください。到達すると、その日のそれ以降のデータが失われてしまい、アプリケーションを監視できなくなるためです。 値を変更するには、[データ管理] ブレードからリンクされている [日次ボリューム上限] ブレードを使用します (下記参照)。 サブスクリプション タイプによっては、Application Insights でクレジットを使用できません。 サブスクリプションに使用制限がある場合は、[日次上限] ブレードに、使用制限を解除して 32.3 MB/日から引き上げる方法が表示されます。  
 * **スロットル:** これにより、データ速度は 1 分間で平均して 1 秒あたり 32000 イベントに制限されます。 
 
 

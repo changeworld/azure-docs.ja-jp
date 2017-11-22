@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Shell (プレビュー) の Bash でファイルを永続化する | Microsoft Docs"
+title: "Azure Cloud Shell の Bash でファイルを永続化する | Microsoft Docs"
 description: "Azure Cloud Shell の Bash でファイルを永続化する方法についてのチュートリアルです。"
 services: azure
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 8b8a82e1c1328d952a85ea5afd975a95f5a6e740
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a04342f77126afe1e0a2707f1d213e0a8eb5825d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
-## <a name="how-cloud-shell-storage-works"></a>Cloud Shell のストレージのしくみ 
-Cloud Shell は、次の両方の方法を使用してファイルを永続化します。 
+## <a name="how-bash-in-cloud-shell-storage-works"></a>Cloud Shell ストレージの Bash の仕組み 
+Cloud Shell の Bash は、次の両方の方法を使用してファイルを永続化します。 
 * `$Home` ディレクトリのディスク イメージを作成してディレクトリ内のすべてのコンテンツを永続化します。 このディスク イメージは、指定されたファイル共有の `fileshare.storage.windows.net/fileshare/.cloudconsole/acc_<User>.img` に `acc_<User>.img` として保存され、変更が自動的に反映されます。 
 * ファイル共有を直接操作できるように、指定されたファイル共有を `$Home` ディレクトリに `clouddrive` としてマウントします。 `/Home/<User>/clouddrive` は `fileshare.storage.windows.net/fileshare` にマッピングされます。
  
@@ -91,6 +91,6 @@ justin@Azure:~$
 [!include [features-introblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
 ## <a name="next-steps"></a>次のステップ
-[Cloud Shell のクイック スタート](quickstart.md) <br>
-[Azure File Storage について](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
+[Microsoft Azure Files ストレージについて](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
 [ストレージのタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

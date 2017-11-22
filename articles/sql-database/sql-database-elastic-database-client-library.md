@@ -13,18 +13,18 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 11/12/2017
 ms.author: ddove
-ms.openlocfilehash: a8bfbf2e30f8568212ab49ba1772588cc9e45b38
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 6a73f8d0b85198f0d4e10fbc31cbd21f93bdb8a8
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="building-scalable-cloud-databases"></a>スケーラブルなクラウド データベースの構築
 Azure SQL Database 用のスケーラブルなツールと機能を使用して、データベースのスケール アウトを簡単に実現できます。 具体的には、 **Elastic Database クライアント ライブラリ** を使用して、スケールアウトされたデータベースを作成および管理できます。 この機能により、数百から数千もの Azure SQL データベースを使用して、シャード化されたアプリケーションを簡単に開発できます。 [エラスティック ジョブ](sql-database-elastic-jobs-powershell.md) を使用すると、こうしたデータベースを容易に操作できます。
 
-ライブラリをインストールするには、 [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)に移動します。 
+ライブラリをインストールするには、NuGet の [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動します。 
 
 ## <a name="documentation"></a>ドキュメント
 1. [Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)
@@ -54,22 +54,32 @@ Azure SQL Database 用のスケーラブルなツールと機能を使用して�
 
 一般に、独自のセマンティクスを持つシャード間操作とは異なり、Elastic Database ツールを使用するお客様は、シャードにローカルな操作を送信するときに完全な T-SQL 機能を取得することを期待できます。
 
+
+
 ## <a name="next-steps"></a>次のステップ
-[サンプル アプリ](sql-database-elastic-scale-get-started.md) でクライアントの機能をお試しください。 
 
-ライブラリをインストールする場合は、 [エラスティック データベース クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)のページをご利用ください。
+- [Elastic Database クライアント ライブラリ](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) - NuGet を使ってライブラリを**インストール**します。
 
-分割/マージ ツールの使用法の詳細については、 [分割/マージ ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)に関するページをご覧ください。
+- [Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md) - クライアントの機能がわかる**サンプル アプリ**を試します。
 
-[エラスティック データベース クライアント ライブラリはオープン ソース化されました](https://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/)
+- [Github、Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools) - ライブラリはオープン ソース ソフトウェアです。
+    - ADO.NET の開発者は、Elastic Database ツール クライアント ライブラリを使うことで、Azure SQL Database のデータベース シャーディングと呼ばれるパターンを実装して使うアプリケーションを作成できます。
 
-[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用します。
+- [エラスティック データベース クライアント ライブラリはオープン ソース化されました](https://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/) - Elastic Database クライアント ライブラリについての**ブログ投稿** (2015/09/09)。
 
-ライブラリは、 [GitHub](https://github.com/Azure/elastic-db-tools)でオープン ソース ソフトウェアとして入手できます。 
+- [Azure SQL Database のエラスティック クエリの概要](sql-database-elastic-query-overview.md) - エラスティック クエリを使います。
+
+- [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md) - **Split-Merge ツール**の使い方です。
+
+
+
+<!-- Additional resources H2 -->
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
+
 <!--Anchors-->
 <!--Image references-->
-[1]:./media/sql-database-elastic-database-client-library/glossary.png
+
+[1]: ./media/sql-database-elastic-database-client-library/glossary.png
 

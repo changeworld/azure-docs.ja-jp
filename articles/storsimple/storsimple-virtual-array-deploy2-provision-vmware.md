@@ -4,7 +4,7 @@ description: "StorSimple Virtual Array のデプロイ シリーズの 2 番目�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
@@ -12,25 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 495ef6a93ee06423495269306ad06e76dda13e10
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、VMware ESXi 5.5 以降を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングして接続する方法について説明します。 この記事は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
+このチュートリアルでは、VMware ESXi 5.0、5.5、または 6.0 を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングして接続する方法について説明します。 この記事は、Azure Portal および Microsoft Azure Government Cloud での StorSimple Virtual Array のデプロイに適用されます。
 
 仮想デバイスをプロビジョニングして、そのデバイスに接続するには、管理者特権が必要です。 プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
 ## <a name="provisioning-prerequisites"></a>プロビジョニングの前提条件
-VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
+VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
 
 ### <a name="for-the-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスの場合
 開始する前に次の点を確認します。
@@ -64,7 +64,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 ## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する
 仮想デバイスを作成するには、次の要件が必要です。
 
-* VMware ESXi サーバー 5.5 以降を実行しているホスト システムへのアクセス権があること。
+* VMware ESXi サーバー 5.0、5.5、または 6.0 を実行しているホスト システムへのアクセス権があること。
 * システムに、ESXi ホストを管理するための VMware vSphere client があること。
 
   * 最小で 4 コア。
@@ -183,6 +183,9 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
 これで仮想マシンがプロビジョニングされました。 次はこのマシンを起動して IP アドレスを取得します。
+
+> [!NOTE]
+> (上でプロビジョニングしたように) 仮想アレイには VMware ツールをインストールしないことをお勧めします。 VMware ツールをインストールすると、サポートされていない構成になります。
 
 ## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>手順 3: 仮想デバイスを起動し、IP アドレスを取得する
 仮想デバイスを起動して接続するには、次の手順を実行します。

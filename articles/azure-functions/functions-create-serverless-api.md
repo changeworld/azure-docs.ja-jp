@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 630d9022da0d51e533534ea43f50f27e8eb09a78
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7c3933210c01c81077b594abb8c3183d6e3c58a0
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
 
@@ -67,7 +67,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
 ## <a name="proxies-overview"></a>Proxies の概要
 
-次のセクションでは、プロキシを経由して API サーフェスを使用します。 Azure Functions Proxies は、その他のリソースに要求を転送できるプレビュー機能です。 HTTP トリガーの場合と同様に HTTP エンドポイントを定義しますが、エンドポイントの呼び出しの際に実行するコードを記述する代わりに、リモートでの実装のために URL を提供します。 これにより、クライアントが簡単に使用できる単一の API サーフェスに複数の API ソースをまとめることができます。 これは、API をマイクロサービスとして構築する場合に特に役立ちます。
+次のセクションでは、プロキシを経由して API サーフェスを使用します。 Azure Functions プロキシを使うと、他のリソースに要求を転送できます。 HTTP トリガーの場合と同様に HTTP エンドポイントを定義しますが、エンドポイントの呼び出しの際に実行するコードを記述する代わりに、リモートでの実装のために URL を提供します。 これにより、クライアントが簡単に使用できる単一の API サーフェスに複数の API ソースをまとめることができます。 これは、API をマイクロサービスとして構築する場合に特に役立ちます。
 
 プロキシは、以下のような任意の HTTP リソースを指定できます。
 - Azure Functions 
@@ -75,7 +75,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 - [App Service on Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro) 内の Docker コンテナー
 - その他のホストされている API
 
-プロキシの詳細については、[Azure Functions Proxies (プレビュー) の操作]に関するページをご覧ください。
+プロキシについて詳しくは、「[Azure Functions プロキシの操作]」をご覧ください。
 
 ## <a name="create-your-first-proxy"></a>最初のプロキシの作成
 
@@ -97,7 +97,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 ### <a name="creating-a-proxy-on-the-frontend"></a>フロントエンドのプロキシの作成
 
 1. ポータルでフロントエンドの Function App に移動します。
-1. 左側のナビゲーションで、[プロキシ (プレビュー)] の横にあるプラス記号 [+] をクリックします。
+1. 左側のナビゲーションで、[プロキシ] の横にあるプラス記号 [+] をクリックします。
     ![プロキシの作成](./media/functions-create-serverless-api/creating-proxy.png)
 1. 次の表で指定されているプロキシの設定を使用します。 
 
@@ -187,9 +187,9 @@ backendUri プロパティを変更することなく、"GetUserByName" とい�
 次のリファレンスは、API の開発をさらに進める際に役立ちます。
 
 - [Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
-- [Azure Functions Proxies (プレビュー) の操作]
+- [Azure Functions プロキシの操作]
 - [Azure Functions API (プレビュー) のドキュメント](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
 
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[Azure Functions Proxies (プレビュー) の操作]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[Azure Functions プロキシの操作]: https://docs.microsoft.com/azure/azure-functions/functions-proxies

@@ -14,26 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 1ecded3af6396f50e67dc5d2a9ef8337699046ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 855e315f66858210875039f91f7f05055ff7d9b9
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
-コンテナー サービスの Service Fabric クラスターで提供されている既定のネットワーク モードは、`nat` ネットワーク モードです。 `nat` ネットワーク モードでは、同じポートをリッスンしているコンテナー サービスが複数あると、デプロイ エラーが発生します。 同じポートをリッスンしているサービスをいくつか実行している場合、Service Fabric は `open` ネットワーク モード (バージョン 5.7 以降) をサポートしています。 `open` ネットワーク モードでは、各コンテナー サービスに動的に IP アドレスが割り当てられるので、内部的には複数のサービスが同じポートをリッスンできます。   
+コンテナー サービスの Service Fabric クラスターで提供されている既定のネットワーク モードは、`nat` ネットワーク モードです。 `nat` ネットワーク モードでは、同じポートをリッスンしているコンテナー サービスが複数あると、デプロイ エラーが発生します。 同じポートをリッスンしているサービスをいくつか実行している場合、Service Fabric は `Open` ネットワーク モード (バージョン 5.7 以降) をサポートしています。 `Open` ネットワーク モードでは、各コンテナー サービスに動的に IP アドレスが割り当てられるので、内部的には複数のサービスが同じポートをリッスンできます。   
 
-したがって、サービス マニフェストに定義されている静的エンドポイントがある単一のサービスの種類の場合、デプロイ エラーが発生することなく、`open` ネットワーク モードを使用して新しいサービスを作成および削除することができます。 同様に、ポート マッピングが静的な同じ `docker-compose.yml` ファイルを使用して、複数のサービスを作成することができます。
+したがって、サービス マニフェストに定義されている静的エンドポイントがある単一のサービスの種類の場合、デプロイ エラーが発生することなく、`Open` ネットワーク モードを使用して新しいサービスを作成および削除することができます。 同様に、ポート マッピングが静的な同じ `docker-compose.yml` ファイルを使用して、複数のサービスを作成することができます。
 
 サービスの再起動時や別のノードへの移行時に IP アドレスは変化するため、動的に割り当てられた IP を使用してサービスを検出することは推奨されません。 サービスの検出には、**Service Fabric ネーム サービス**または **DNS サービス**のみを使用してください。 
 
 
 > [!WARNING]
-> Azure では 1 つの vNET で使用できる IP の数は合計 4096 個までです。 したがって、ノード数とコンテナー サービス インスタンス数 (`open` ネットワークの場合) の合計は、vNET 内の 4096 個を超えることはできません。 このような高密度シナリオの場合は、`nat` ネットワーク モードが推奨されます。
+> Azure では 1 つの vNET で使用できる IP の数は合計 4096 個までです。 したがって、ノード数とコンテナー サービス インスタンス数 (`Open` ネットワークの場合) の合計は、vNET 内の 4096 個を超えることはできません。 このような高密度シナリオの場合は、`nat` ネットワーク モードが推奨されます。
 >
 
-## <a name="setting-up-open-networking-mode"></a>open ネットワーク モードの設定
+## <a name="setting-up-open-networking-mode"></a>Open ネットワーク モードの設定
 
 1. `fabricSettings` で DNS サービスと IP プロバイダーを有効にして、Azure Resource Manager テンプレートを設定します。 
 
@@ -183,7 +183,7 @@ ms.lasthandoff: 10/11/2017
    |     2000 | Custom_Dns | VirtualNetwork | VirtualNetwork | DNS (UDP/53) | ALLOW  |
 
 
-4. 各サービスの `<NetworkConfig NetworkType="open">` について、アプリ マニフェストでネットワーク モードを指定します。  モード `open` にすると、結果としてサービスに専用 IP アドレスが割り当てられます。 モードが指定されていない場合、既定で基本の `nat` モードです。 したがって、次のマニフェスト例では、`NodeContainerServicePackage1` と `NodeContainerServicePackage2` がそれぞれ同じポートをリッスンできます (いずれのサービスも `Endpoint1` をリッスンしています)。
+4. 各サービスの `<NetworkConfig NetworkType="Open">` について、アプリ マニフェストでネットワーク モードを指定します。  モード `Open` にすると、結果としてサービスに専用 IP アドレスが割り当てられます。 モードが指定されていない場合、既定で基本の `nat` モードです。 したがって、次のマニフェスト例では、`NodeContainerServicePackage1` と `NodeContainerServicePackage2` がそれぞれ同じポートをリッスンできます (いずれのサービスも `Endpoint1` をリッスンしています)。 `Open` ネットワーク モードを指定するときに `PortBinding` 構成を指定することはできません。
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -197,8 +197,7 @@ ms.lasthandoff: 10/11/2017
         <ServiceManifestRef ServiceManifestName="NodeContainerServicePackage1" ServiceManifestVersion="1.0"/>
         <Policies>
           <ContainerHostPolicies CodePackageRef="NodeContainerService1.Code" Isolation="hyperv">
-           <NetworkConfig NetworkType="open"/>
-           <PortBinding ContainerPort="8905" EndpointRef="Endpoint1"/>
+           <NetworkConfig NetworkType="Open"/>
           </ContainerHostPolicies>
         </Policies>
       </ServiceManifestImport>
@@ -206,14 +205,13 @@ ms.lasthandoff: 10/11/2017
         <ServiceManifestRef ServiceManifestName="NodeContainerServicePackage2" ServiceManifestVersion="1.0"/>
         <Policies>
           <ContainerHostPolicies CodePackageRef="NodeContainerService2.Code" Isolation="default">
-            <NetworkConfig NetworkType="open"/>
-            <PortBinding ContainerPort="8910" EndpointRef="Endpoint1"/>
+            <NetworkConfig NetworkType="Open"/>
           </ContainerHostPolicies>
         </Policies>
       </ServiceManifestImport>
     </ApplicationManifest>
     ```
-Windows クラスターの場合、アプリケーション内のサービス全体で複数のネットワーク モードを混在させ、対応付けることができます。 そのため、一部のサービスは `open` モードに、一部のサービスは `nat` ネットワーク モードにすることができます。 `nat` を使用してサービスを構成する場合、リッスンするポートを一意にする必要があります。 Linux クラスターの場合、複数のサービスについてネットワーク モードを混在させることはサポートされていません。 
+Windows クラスターの場合、アプリケーション内のサービス全体で複数のネットワーク モードを混在させ、対応付けることができます。 そのため、一部のサービスは `Open` モードに、一部のサービスは `nat` ネットワーク モードにすることができます。 `nat` を使用してサービスを構成する場合、リッスンするポートを一意にする必要があります。 Linux クラスターの場合、複数のサービスについてネットワーク モードを混在させることはサポートされていません。 
 
 
 ## <a name="next-steps"></a>次のステップ

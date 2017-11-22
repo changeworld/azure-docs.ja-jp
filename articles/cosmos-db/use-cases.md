@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 68800ab14cbca367fd97827a923a2edc377e9aee
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: cd10147047a7d5d8b0a15be08fbba24a07adffad
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -39,7 +39,7 @@ Azure Cosmos DB は、さまざまなアプリケーションやユース ケー
 
 Azure Cosmos DB を、グローバルな展開を視野に入れた高性能アプリケーションに最適なものにしている属性のいくつかを次に示します。
 
-* Azure Cosmos DB は、高可用性とスケーラビリティのためにデータをネイティブにパーティション分割します。 Azure Cosmos DB は、可用性、スループット、短い待機時間、および整合性に対する 99.99% の保証を提供します。
+* Azure Cosmos DB は、高可用性とスケーラビリティのためにデータをネイティブにパーティション分割します。 Azure Cosmos DB は、すべての単一リージョン アカウントと緩やかな一貫性のすべてのマルチリージョン アカウントにおける可用性、スループット、低待機時間、一貫性に対して 99.99% の保証を提供し、すべての複数リージョン データベース アカウントに対して 99.999% の 読み取り可用性を提供します。
 * Azure Cosmos DB には、待機時間の短いミリ秒レベルの応答時間を備えた、SSD でバックアップされたストレージが含まれています。
 * Azure Cosmos DB の結果、一貫性のあるプレフィックス、セッション、有界整合性制約などの整合性レベルのサポートにより、完全な柔軟性と優れた費用性能比が可能になります。 整合性のレベルで Azure Cosmos DB ほど高い柔軟性を提供するデータベース サービスは存在しません。 
 * Azure Cosmos DB には、ストレージとスループットを個別に測定する、データを考慮した柔軟な価格モデルが用意されています。

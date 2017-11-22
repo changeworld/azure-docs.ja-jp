@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect 同期: ユーザーと連絡先について | Microsoft Docs"
-description: "Azure AD Connect Sync のユーザーと連絡先について説明します。"
+title: "Azure AD Connect 同期: ユーザー、グループ、および連絡先について | Microsoft Docs"
+description: "Azure AD Connect Sync のユーザー、グループ、および連絡先について説明します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -13,24 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi;andkjell
-ms.openlocfilehash: 0ad3194a0827c4ef68267ce5e3e3fcbe225e8a3d
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: c298a2f99750ead099b8761699c914a3a6e41ce1
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="azure-ad-connect-sync-understanding-users-and-contacts"></a>Azure AD Connect Sync: ユーザーと連絡先について
+# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect Sync: ユーザー、グループ、および連絡先について
 複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。 一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。 ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。 Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
 
 このトピックでは、既定の構成が特定のトポロジでどのように動作するかを説明します。 構成の概要についてと、構成を確認するために使用できる同期ルール エディターについて取り上げます。
 
 構成の前提となるいくつかの一般的なルールがあります。
-
 * ソースの Active Directory からインポートする順序に関係なく、最終的な結果は常に同じになる必要があります。
 * アクティブなアカウントは、**userPrincipalName** や **sourceAnchor** など、サインイン情報を常に提供します。
 * アクティブなアカウントが見つからない場合、無効なアカウントは、リンクされたメールボックスでない限り、userPrincipalName と sourceAnchor を提供します。
 * リンクされたメールボックスを使用するアカウントは、userPrincipalName と sourceAnchor に使用されることはありません。 アクティブなアカウントは後で見つかることが前提です。
 * 連絡先オブジェクトは、Azure AD に対して連絡先またはユーザーとしてプロビジョニングされます。 すべてのソースの Active Directory フォレストが処理されるまでは、実際にはわかりません。
+
+## <a name="groups"></a>グループ
+Active Directory から Azure AD へグループを同期する場合に留意する重要なポイントを以下に示します。
+
+* Azure AD Connect は、組み込みのセキュリティ グループをディレクトリ同期から除外します。
+
+* Azure AD Connect では、[プライマリ グループ メンバーシップ](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx)の Azure AD への同期をサポートしていません。
+
+* Azure AD Connect では、[動的配布グループ メンバーシップ](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx)の Azure AD への同期をサポートしていません。
+
+* Active Directory グループをメール対応のグループとして Azure AD に同期するには、次の条件に従います。
+
+    * グループの *proxyAddress* 属性が空である場合、そのグループの *mail* 属性には値が必要です。 
+
+    * グループの *proxyAddress* 属性が空でない場合、プライマリ SMTP プロキシ アドレス値 (大文字の **SMTP** プレフィックスで示される) も含んでいる必要があります。 次に例をいくつか示します。
+    
+      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* の Active Directory グループは、Azure AD ではメール対応しません。 プライマリ SMTP アドレスを含みません。
+      
+      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* の Active Directory グループは、Azure AD ではメール対応しません。 SMTP アドレスを含みますが、プライマリではありません。
+      
+      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe@contoso.com"}* の Active Directory グループは、Azure AD ではメール対応します。
 
 ## <a name="contacts"></a>連絡先
 合併や買収の後、連絡先は異なるフォレストのユーザーを表しているのが一般的です。そこでは、GALSync ソリューションが 2 つ以上の Exchange フォレストをつないでいます。 連絡先オブジェクトは、メール属性を使用してコネクタ スペースからメタバースを常に結合しています。 同じメール アドレスの連絡先オブジェクトまたはユーザー オブジェクトが既にある場合、これらのオブジェクトは一緒に結合されます。 これは、**In from AD – Contact Join** というルールで構成されます。 また、定数が **Contact** であるメタバース属性 **sourceObjectType** への属性フローを使用する **In from AD – Contact Common** というルールもあります。 このルールの優先順位は低いので、ユーザー オブジェクトが同じメタバース オブジェクトに結合された場合は、**In from AD – User Common** というルールによって User という値がこの属性に提供されます。 このルールでは、この属性は、ユーザーが 1 人も結合されていない場合に Contact という値を使用し、ユーザーが 1 人でも見つかった場合に User という値を使用します。

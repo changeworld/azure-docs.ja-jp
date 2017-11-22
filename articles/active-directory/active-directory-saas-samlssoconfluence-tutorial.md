@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 9a36d686ba39b5168860a20e8c4db357888df6a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17bd8294c957c0666ffe75d1ff06b863f1176048
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Confluence by resolution GmbH の統合
 
@@ -169,26 +169,53 @@ SAML SSO for Confluence by resolution GmbH で Azure AD のシングル サイ�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon3.png)
     
-16. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで **[Add additional Identity Provider]\(その他の ID プロバイダーの追加\)** ボタンをクリックし、ID プロバイダーの設定を構成します。
+16. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで **[Add new IdP]\(新しい IDP の追加\)** ボタンをクリックし、ID プロバイダーの設定を構成します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon4.png)
 
-17. このページで、次の手順を実行します。
+17. **[Choose your SAML Identity Provider]\(SAML ID プロバイダーの選択\)** ページで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon5.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon5a.png)
  
-    a. ID プロバイダーの**名前** (たとえば Azure AD) を追加します。
+    a. IDP の種類として **[Azure AD]** を設定します。
     
-    b. ID プロバイダーの**説明** (たとえば Azure AD) を追加します。
+    b. ID プロバイダーの**名前** (たとえば Azure AD) を追加します。
+    
+    c. ID プロバイダーの**説明** (たとえば Azure AD) を追加します。
+    
+    d. **[次へ]** をクリックします。
+    
+18. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[次へ]** ボタンをクリックします。
 
-    c. **[XML]** をクリックし、Azure Portal からダウンロードした**メタデータ** ファイルを選択します。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon5b.png)
 
-    d. **[Load]\(読み込み\)** ボタンをクリックします。
+19. **[Import SAML IdP Metadata]\(SAML IDP メタデータのインポート\)** ページで、次の手順を実行します。
 
-    e. IdP メタデータが読み取られ、スクリーン ショットで強調表示されているフィールドが設定されます。 
-18. **[Save settings]\(設定の保存\)** ボタンをクリックして、設定を保存します。
+    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon5c.png)
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon6.png)
+    a. **[Load File]\(ファイルの読み込み\)** ボタンをクリックし、手順 5 でダウンロードしたメタデータ XML ファイルを選びます。
+
+    b. **[インポート]** ボタンをクリックします。
+    
+    c. インポートが成功するまでしばらく待ちます。
+    
+    d. **[次へ]** ボタンをクリックします。
+    
+20. **[User ID attribute and transformation]\(ユーザーの ID 属性と変換\)** ページで、**[次へ]** ボタンをクリックします。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon5d.png)
+    
+21. **[User creation and update]\(ユーザーの作成と更新\)** ページで、**[Save & Next]\(保存して次へ\)** をクリックして設定を保存します。   
+    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon6a.png)
+    
+22. **[Test your settings]\(設定のテスト\)** ページで、**[Skip test & configure manually]\(テストをスキップして手動で構成\)** をクリックしてここではユーザー テストをスキップします。 テストは次のセクションで実行し、Azure Portal でいくつか設定する必要があります。 
+    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon6b.png)
+    
+23. 表示される **[Skipping the test means...]\(テストをスキップすると...\)** ダイアログ ボックスで、**[OK]** をクリックします。
+    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-samlssoconfluence-tutorial/addon6c.png)
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。

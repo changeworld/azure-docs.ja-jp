@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: a4b28e8a1269374a24e169f9363401109bacc471
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: e19ba9c88e4fbe4f065c45ce7029247436f7155c
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="remote-monitoring-preconfigured-solution-architecture"></a>構成済みリモート監視ソリューションのアーキテクチャ
 
@@ -141,5 +141,6 @@ Cosmos DB データベースでは、構成済みソリューションにデー�
 
 * [Azure IoT (.NET) を使用してリモート監視するための構成済みソリューション](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
 * [Azure IoT (Java) で使用してリモート監視するための構成済みソリューション](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
+* [リモート監視アーキテクチャの構成済みソリューション](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)。
 
 リモート監視の構成済みソリューションの概念の詳細については、[構成済みソリューションのカスタマイズ](iot-suite-remote-monitoring-customize.md)に関するページを参照してください。

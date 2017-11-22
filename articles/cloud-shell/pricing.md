@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Shell の価格 (プレビュー) | Microsoft Docs"
+title: "Azure Cloud Shell の価格 | Microsoft Docs"
 description: "Azure Cloud Shell の価格の概要"
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: eddbc6e977b52e3a068a1b55792512b966a58c18
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8c418a3681fa9d8ac70974ac2c0bcf1c826209aa
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="pricing"></a>価格
+Cloud Shell の Bash および Cloud Shell の PowerShell(プレビュー) には、以下の情報が適用されます。
 
 ## <a name="compute-cost"></a>コンピューティング コスト
 Azure Cloud Shell は、Azure によって無償提供されるマシン上で動作しますが、Azure ファイル共有を使う必要があります。 

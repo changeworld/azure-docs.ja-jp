@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 639e40ca7e406a1726033e9f5c5363c289087589
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7471a6999ac4dcd15f5162e69cb0100cc1e3b14f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>チュートリアル: Azure Active Directory と Salesforce の統合
 
@@ -121,9 +121,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
-
-    ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-tutorial/tutorial_general_400.png)
+5. **[保存]** ボタンをクリックします。![シングル サインオンの構成](./media/active-directory-saas-salesforce-tutorial/tutorial_general_400.png)
 
 6. **[Salesforce 構成]** セクションで、**[Salesforce を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。 
 
@@ -154,7 +152,7 @@ Salesforce で Azure AD のシングル サインオンを構成してテスト�
 
     a. **[名前]** フィールドに、この構成の表示名を入力します。 **[名前]** の値を指定すると、**[API 名]** ボックスに値が自動的に入力されます。
 
-    b. Salesforce の **[発行者]** フィールドに **[SMAL エンティティ ID]** 値を貼り付けます。
+    b. Salesforce の **[発行者]** フィールドに **[SAML エンティティ ID]** の値を貼り付けます。
 
     c. **[エンティティ ID]**ボックスに、次のパターンを使用して Salesforce のドメイン名を入力します。
       

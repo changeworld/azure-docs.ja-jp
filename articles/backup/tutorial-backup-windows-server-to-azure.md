@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.openlocfilehash: 7caf1dd3fa5ef295c2472cc11deb2895fc2a7111
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 67a5c1494f2944e91fed2b077cf04e8906788c1e
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 
@@ -42,9 +42,9 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 Windows Server をバックアップするには、まず、保存するバックアップの場所 (復元ポイント) を作成する必要があります。 [Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)は Azure にあるコンテナーで、そこに Windows Server からのバックアップを保存します。 以下の手順で Azure Portal に Recovery Services コンテナーを作成します。 
 
-1. 左側のメニューで **[その他のサービス]** を選択し、サービスの一覧に「**Recovery Services**」と入力します。 **[Recovery Services コンテナー]**をクリックします。
+1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に**「Recovery Services」**と入力します。 **[Recovery Services コンテナー]**をクリックします。
 
-   ![Recovery Services コンテナーを開く](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault.png)
+   ![Recovery Services コンテナーを開く](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
 2.  **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
 
@@ -134,7 +134,7 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
 
 1.  Microsoft Azure Recovery Services エージェント コンソールで **[今すぐバックアップ]** をクリックします。
 
-    ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
+    ![[Download Agent for Windows Server or Windows Client]](./media/tutorial-backup-windows-server-to-azure/backup-now.png)
 
 2.  **[今すぐバックアップ]** ウィザードで、**[ファイルとフォルダー]** または **[システム状態]** からバックアップ対象を選択し、**[次へ]** をクリックします。 
 3. **[確認]** ページで、**[今すぐバックアップ]** ウィザードのサーバー バックアップ設定を確認します。 次に、 **[バックアップ]**をクリックします。

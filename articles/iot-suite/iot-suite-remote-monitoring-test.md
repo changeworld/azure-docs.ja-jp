@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 09/16/2017
+ms.date: 11/10/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 732ec45003481b0e2f2eca03b6ae13772d325ef1
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 0e6cc412fdb3ea7b9d8291b9f963e6412ae994a9
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>シミュレートされたデバイスを使用したソリューションのテスト
 
@@ -39,6 +39,10 @@ ms.lasthandoff: 10/31/2017
 | 名前   | 値      |
 | ------ | ----------- |
 | 状態 | "オン"、"オフ" |
+| オンライン | true、false |
+
+> [!NOTE]
+> **オンライン** テレメトリ値は、シミュレートされるすべての種類で必須です。
 
 *メソッド*
 
@@ -173,7 +177,7 @@ ms.lasthandoff: 10/31/2017
       "SwitchOff": {
         "Type": "javascript",
         "Path": "SwitchOff-method.js"
-      },
+      }
     }
     ```
 
@@ -267,7 +271,11 @@ ms.lasthandoff: 10/31/2017
 
 変更をローカルでテストおよびデバッグする方法については、「[Device simulation overview (デバイス シミュレーションの概要)](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)」をご覧ください。
 
-新しい **Lightbulb** デバイス ファイルを出力ディレクトリにコピーするよう、プロジェクトを構成します。
+新しい **Lightbulb** デバイス ファイルを出力ディレクトリにコピーするよう、次のようにプロジェクトを構成します。
+
+* Visual Studio を使用している場合は、前のセクションで作成した 3 つの新しい Lightbulb ファイルをソリューション内の **Services** プロジェクトに必ず追加します。 次に、**ソリューション エクスプローラー**を使用して、出力ディレクトリにコピーされるようにマークします。
+
+* Visual Studio Code を使用している場合は、**Services.csproj** ファイルを開き、前のセクションで作成した 3 つの新しい Lightbulb ファイルを追加します。 例として、**Services.csproj** ファイルの既存のデバイス モデル ファイル エントリを参照してください。
 
 デプロイされたソリューション内で新しいデバイスをテストする方法については、次の記事のいずれかをご覧ください。
 
@@ -299,12 +307,12 @@ Azure にデプロイするために新しいデバイスの種類を使用し�
 1. **デバイス シミュレーション** GitHub リポジトリをローカル コンピューターに複製していない場合は、次のコマンドを実行して複製してください。
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
+    git clone https://github.com/Azure/device-simulation-dotnet.git
     ```
 
-1. 各デバイスの種類は、`data/devicemodels` フォルダー内に JSON モデル ファイルと関連スクリプトをもっています。 シミュレートされた **Chiller** デバイスの種類を定義するファイルは次のとおりです。
-    * `data/devicemodels/chiller-01.json`
-    * `data/devicemodels/scripts/chiller-01-state.js`
+1. 各デバイスの種類は、`Services/data/devicemodels` フォルダー内に JSON モデル ファイルと関連スクリプトをもっています。 シミュレートされた **Chiller** デバイスの種類を定義するファイルは次のとおりです。
+    * `Services/data/devicemodels/chiller-01.json`
+    * `Services/data/devicemodels/scripts/chiller-01-state.js`
 
 ### <a name="specify-the-new-telemetry-type"></a>新しいテレメトリ タイプの指定
 

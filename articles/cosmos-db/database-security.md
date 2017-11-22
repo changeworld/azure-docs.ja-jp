@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
+ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 73d5c33cec1ebec76ea738e03cd29e88d482b905
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f0f6578b14b2fdd3807303eb94df077df92ba77
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB データベースのセキュリティ
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 10/11/2017
 |Active Directory の統合 (RBAC)| この表の後のスクリーンショットに示すように、データベース アカウントへのアクセスは、Azure Portal でアクセス制御 (IAM) を使用して提供することもできます。 IAM は ロールベースのアクセス制御を提供し、Active Directory と統合されています。 次の図に示すように、個人やグループの組み込みのロールまたはカスタム ロールを使用できます。|
 |グローバル レプリケーション|Azure Cosmos DB は設定不要のグローバル分散を実行し、ボタンをクリックするだけで Azure の世界中のデータセンターにデータをレプリケートすることができます。 グローバル レプリケーションでは、グローバルなスケールを行い、全世界のデータに低待機時間でアクセスすることができます。<br><br>セキュリティの点では、グローバル レプリケーションは、局地的な障害からデータが保護されることを保証します。<br><br>詳細については、[データのグローバル分散](distribute-data-globally.md)に関するページを参照してください。|
 |リージョン間フェールオーバー|複数のデータセンターにデータをレプリケートしているときに、リージョンのデータセンターがオフラインになった場合、Azure Cosmos DB は、操作を自動的にロールオーバーします。 データをレプリケートするリージョンを使用して、フェールオーバーするリージョンの優先度リストを作成することができます。 <br><br>詳細については、[Azure Cosmos DB のリージョン内フェールオーバー](regional-failover.md)に関するページを参照してください。|
-|ローカル レプリケーション|Azure Cosmos DB は、1 つのデータセンター内でも、高可用性を維持するためにデータを自動的にレプリケートします。[一貫性レベル](consistency-levels.md)は顧客自身が選択できます。 これにより、 [アップタイム 99.99% の可用性 (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db) が保証され、金銭的な保証も受けられます。これは他のデータベース サービスが提供できないものです。|
+|ローカル レプリケーション|Azure Cosmos DB は、1 つのデータセンター内でも、高可用性を維持するためにデータを自動的にレプリケートします。[一貫性レベル](consistency-levels.md)は顧客自身が選択できます。 これにより、すべての単一リージョンのアカウントとすべてのマルチリージョンのアカウントに対する緩やかな整合性の 99.99% の [SLA 可用性](https://azure.microsoft.com/support/legal/sla/cosmos-db)と、すべてのマルチリージョンのデータベース アカウントに対する 99.999% の読み取り可用性が保証されます。|
 |オンライン バックアップの自動化|Azure Cosmos DB データベースは定期的にバックアップされ、ジオリダンダント ストアに格納されます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
 |削除されたデータの復元|自動化されたオンライン バックアップを使用して、誤って削除したデータを最大 30 日以内に回復することができます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
 |機密データの保護と分離|「[新機能](#whats-new)」に示されているリージョンのすべてのデータが保存時に暗号化されます。<br><br>PII と他の機密データを特定のコレクションと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|

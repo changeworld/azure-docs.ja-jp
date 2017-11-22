@@ -14,16 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 480f574640d4a9ccd4da97a98adc8b284d373855
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d737e354f5e7ee57c2e2c3d9b5599d4ba2b09af
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
+> * [リソース マネージャー](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
-> * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+> * [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 > 
 > 
@@ -42,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 1. 実行中のアプリケーションのインスタンスを削除する
 2. アプリケーションの種類が不要になったら、その登録を解除する
 
-[Visual Studio を使用してローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う](service-fabric-publish-app-remote-cluster.md)場合、前述のすべての手順は、PowerShell スクリプトによって自動的に処理されます。  このスクリプトは、アプリケーション プロジェクトの *Scripts* フォルダーにあります。 この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。 
+Visual Studio を使ってローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う場合、前述のすべての手順は、PowerShell スクリプトによって自動的に処理されます。  このスクリプトは、アプリケーション プロジェクトの *Scripts* フォルダーにあります。 この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。 
  
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 この記事のいずれかのコード例を実行する前に、[FabricClient](/dotnet/api/system.fabric.fabricclient) インスタンスを作成してクラスターに接続します。 ローカル開発クラスターやリモート クラスター、または Azure Active Directory、X509 証明書、Windows Active Directory で保護されたクラスターに接続する例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis)」をご覧ください。 ローカル開発クラスターに接続するには、次の手順を実行します。

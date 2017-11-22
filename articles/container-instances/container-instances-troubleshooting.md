@@ -5,7 +5,7 @@ services: container-instances
 documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
+editor: mmacy
 tags: 
 keywords: 
 ms.assetid: 
@@ -14,20 +14,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 11/18/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: ff6da0ce95d0405714602c3872da34a2bff344d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 78bd45f7f71fd25e351d4e9b922a6a3f171437fd
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Azure Container Instances でのデプロイに関する問題をトラブルシューティングする
 
 この記事では、Azure Container Instances にコンテナーをデプロイする際の問題をトラブルシューティングする方法を示します。 また、発生する可能性があるいくつかの一般的な問題についても説明します。
 
-## <a name="getting-diagnostic-events"></a>診断イベントの取得
+## <a name="get-diagnostic-events"></a>診断イベントの取得
 
 アプリケーション コードからコンテナー内のログを表示するには、[az container logs](/cli/azure/container#logs) コマンドを使用できます。 ただし、コンテナーが正常にデプロイされていない場合は、Azure Container Instances のリソース プロバイダーによって提供される診断情報を見直す必要があります。 コンテナーのイベントを表示するには、次のコマンドを実行します。
 
@@ -91,7 +91,7 @@ az container show -n mycontainername -g myresourcegroup
 
 デプロイで発生するほとんどのエラーの主な原因となる少数の一般的な問題があります。
 
-### <a name="unable-to-pull-image"></a>イメージをプルできない
+## <a name="unable-to-pull-image"></a>イメージをプルできない
 
 Azure Container Instances は、最初にイメージをプルすることができなかった場合、最終的に失敗するまで一定期間再試行します。 イメージをプルできない場合は、次のようなイベントが表示されます。
 
@@ -123,75 +123,54 @@ Azure Container Instances は、最初にイメージをプルすることがで
 
 この問題を解決するには、コンテナーを削除し、デプロイをやり直します。このとき、細心の注意を払って、イメージ名を正しく入力します。
 
-### <a name="container-continually-exits-and-restarts"></a>コンテナーが絶えず終了して再起動する
+## <a name="container-continually-exits-and-restarts"></a>コンテナーが絶えず終了して再起動する
 
-現時点では、Azure Container Instances は、実行時間の長いサービスのみをサポートします。 コンテナーの実行が完了して終了した場合、コンテナーは自動的に再起動してもう一度実行されます。 これが発生した場合は、次のようなイベントが表示されます。 コンテナーが正常に起動した後、すぐに再起動していることに注意してください。 Container Instances API には、特定のコンテナーが何回再起動されているかを示す `retryCount` プロパティが含まれています。
+お使いのコンテナーが最後まで実行され、自動的に再起動される場合、[再起動ポリシー](container-instances-restart-policy.md)を **OnFailure** または **Never** に設定する必要が生じることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
 
-```bash
-"events": [
-  {
-    "count": 5,
-    "firstTimestamp": "2017-08-03T22:21:55+00:00",
-    "lastTimestamp": "2017-08-03T22:23:22+00:00",
-    "message": "Pulling: pulling image \"alpine\"",
-    "type": "Normal"
-  },
-  {
-    "count": 5,
-    "firstTimestamp": "2017-08-03T22:21:57+00:00",
-    "lastTimestamp": "2017-08-03T22:23:23+00:00",
-    "message": "Pulled: Successfully pulled image \"alpine\"",
-    "type": "Normal"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:21:57+00:00",
-    "lastTimestamp": "2017-08-03T22:21:57+00:00",
-    "message": "Created: Created container with id ad2bf9bc51761c5f935260b4bab53b164d52d9cbc045b16afcb26fb4d14d0a70",
-    "type": "Normal"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:21:57+00:00",
-    "lastTimestamp": "2017-08-03T22:21:57+00:00",
-    "message": "Started: Started container with id ad2bf9bc51761c5f935260b4bab53b164d52d9cbc045b16afcb26fb4d14d0a70",
-    "type": "Normal"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:21:58+00:00",
-    "lastTimestamp": "2017-08-03T22:21:58+00:00",
-    "message": "Created: Created container with id 7687b9bd15dc01731fa66fc45f6f0241495600602dd03841e559453245e7f70b",
-    "type": "Normal"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:21:58+00:00",
-    "lastTimestamp": "2017-08-03T22:21:58+00:00",
-    "message": "Started: Started container with id 7687b9bd15dc01731fa66fc45f6f0241495600602dd03841e559453245e7f70b",
-    "type": "Normal"
-  },
-  {
-    "count": 13,
-    "firstTimestamp": "2017-08-03T22:21:59+00:00",
-    "lastTimestamp": "2017-08-03T22:24:36+00:00",
-    "message": "BackOff: Back-off restarting failed container",
-    "type": "Warning"
-  },
-  {
-    "count": 1,
-    "firstTimestamp": "2017-08-03T22:22:13+00:00",
-    "lastTimestamp": "2017-08-03T22:22:13+00:00",
-    "message": "Created: Created container with id 72e347e891290e238135e4a6b3078748ca25a1275dbbff30d8d214f026d89220",
-    "type": "Normal"
-  },
-  ...
+Container Instances API には `restartCount` プロパティが含まれています。 コンテナーの再起動の回数を確認するには、Azure CLI 2.0 の [az container show](/cli/azure/container#az_container_show) コマンドを使用できます。 次の出力例 (簡略化のため一部のみ) では、出力の末尾に `restartCount` プロパティを確認できます。
+
+```json
+...
+ "events": [
+   {
+     "count": 1,
+     "firstTimestamp": "2017-11-13T21:20:06+00:00",
+     "lastTimestamp": "2017-11-13T21:20:06+00:00",
+     "message": "Pulling: pulling image \"myregistry.azurecr.io/aci-tutorial-app:v1\"",
+     "type": "Normal"
+   },
+   {
+     "count": 1,
+     "firstTimestamp": "2017-11-13T21:20:14+00:00",
+     "lastTimestamp": "2017-11-13T21:20:14+00:00",
+     "message": "Pulled: Successfully pulled image \"myregistry.azurecr.io/aci-tutorial-app:v1\"",
+     "type": "Normal"
+   },
+   {
+     "count": 1,
+     "firstTimestamp": "2017-11-13T21:20:14+00:00",
+     "lastTimestamp": "2017-11-13T21:20:14+00:00",
+     "message": "Created: Created container with id bf25a6ac73a925687cafcec792c9e3723b0776f683d8d1402b20cc9fb5f66a10",
+     "type": "Normal"
+   },
+   {
+     "count": 1,
+     "firstTimestamp": "2017-11-13T21:20:14+00:00",
+     "lastTimestamp": "2017-11-13T21:20:14+00:00",
+     "message": "Started: Started container with id bf25a6ac73a925687cafcec792c9e3723b0776f683d8d1402b20cc9fb5f66a10",
+     "type": "Normal"
+   }
+ ],
+ "previousState": null,
+ "restartCount": 0
+...
+}
 ```
 
 > [!NOTE]
-> Linux ディストリビューションのほとんどのコンテナー イメージは、既定のコマンドとして、bash などのシェルを設定します。 独自のシェルは実行時間の長いサービスではないため、これらのコンテナーはすぐに終了し、再起動ループ状態になります。
+> Linux ディストリビューションのほとんどのコンテナー イメージは、既定のコマンドとして、bash などのシェルを設定します。 独自のシェルは実行時間の長いサービスではないため、既定の **[常時]** 再起動ポリシーを利用して構成された場合、これらのコンテナーはすぐに終了し、再起動ループ状態に陥ります。
 
-### <a name="container-takes-a-long-time-to-start"></a>コンテナーの起動に時間がかかる
+## <a name="container-takes-a-long-time-to-start"></a>コンテナーの起動に時間がかかる
 
 コンテナーが起動するまで時間がかかるが、最終的に起動する場合は、コンテナー イメージのサイズを調べることから始めてください。 Azure Container Instances は、要求に応じてコンテナー イメージをプルするため、起動時間はそのサイズと直接的に関係しています。
 
@@ -212,7 +191,7 @@ microsoft/aci-helloworld               latest              7f78509b568e        1
 
 コンテナーの起動時に発生するイメージ プルの影響を軽減する他の方法は、Azure Container Instances を使用する予定のリージョンと同じリージョン内の Azure Container Registry を使用してコンテナー イメージをホストすることです。 これにより、コンテナー イメージを伝送する必要があるネットワーク パスが短縮され、ダウンロード時間が大幅に短くなります。
 
-### <a name="resource-not-available-error"></a>リソース使用不可エラー
+## <a name="resource-not-available-error"></a>リソース使用不可エラー
 
 Azure ではリージョンによってリソースの読み込みに変化があるため、コンテナー インスタンスをデプロイしようとすると、以下のエラーが表示される場合があります。
 

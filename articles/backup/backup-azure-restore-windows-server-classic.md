@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 11/10/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 300b2b17b44e21ed446fd63d572a2461e2fc1343
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb08d5c80954e1c231bf6e8b781b09700ef0959d
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-the-classic-deployment-model"></a>クラシック デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 この記事では、バックアップ コンテナーからデータを復旧し、サーバーまたはコンピューターに復元する方法について説明します。 2017 年 3 月以降、クラシック ポータルでバックアップ コンテナーを作成することはできなくなりました。
 
 > [!IMPORTANT]
-> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 10 月 15 日**以降、PowerShell を使用してバックアップ コンテナーを作成することはできなくなります。 <br/> **2017 年 11 月 1 日以降**:
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 11 月 30 日**以降、PowerShell を使用して Backup コンテナーを作成することはできなくなります。 <br/> **2017 年 11 月 30 日以降**:
 >- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
 >- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 >
@@ -101,7 +101,7 @@ ms.lasthandoff: 10/11/2017
 ファイルを誤って削除してしまったため、バックアップを実行したのと同じコンピューターにそのファイルを復元するには、次の手順でデータを回復できます。
 
 1. **Microsoft Azure Backup** スナップインを開きます。
-2. [ **データの回復** ] をクリックして、ワークフローを開始します。
+2. **[ データの回復 ]** をクリックして、ワークフローを開始します。
 
     ![データの回復](./media/backup-azure-restore-windows-server-classic/recover.png)
 3. バックアップ ファイルを同じコンピューターに復元する場合は、**[このサーバー (*コンピューター名*)]** オプションを選択します。
@@ -127,7 +127,7 @@ ms.lasthandoff: 10/11/2017
    * 元の場所に復元することも (ファイルまたはフォルダーが上書きされます)、同じコンピューターの別の場所に復元することもできます。
    * 復元するファイルまたはフォルダーが復元先の場所に存在する場合、コピーを作成するか (同じファイルの 2 つのバージョンが作成されます)、復元先の場所にあるファイルを上書きするか、復元先に存在するファイルの回復をスキップすることができます。
    * 復元されるファイルの ACL を復元するという既定のオプションは、そのままにしておくことを強くお勧めします。
-8. これらのうちいずれか 1 つを指定して、[ **次へ**] をクリックします。 このコンピューターにファイルを復元する回復ワークフローが開始します。
+8. これらのうちいずれか 1 つを指定して、**[ 次へ]** をクリックします。 このコンピューターにファイルを復元する回復ワークフローが開始します。
 
 ## <a name="recover-to-an-alternate-machine"></a>別のコンピューターへの回復
 サーバー全体が失われた場合でも、 Azure Backup から別のコンピューターにデータを回復できます。 次の手順はそのワークフローを示しています。  
@@ -145,7 +145,7 @@ ms.lasthandoff: 10/11/2017
 
 1. **ターゲット コンピューター** の *Microsoft Azure Backup*スナップインを開きます。
 2. "*ターゲット コンピューター*" および "*ソース コンピューター*" が同じバックアップ資格情報コンテナーに登録されていることを確認します。
-3. [ **データの回復** ] をクリックして、ワークフローを開始します。
+3. **[ データの回復 ]** をクリックして、ワークフローを開始します。
 
     ![データの回復](./media/backup-azure-restore-windows-server-classic/recover.png)
 4. **[別のサーバー]**
@@ -167,7 +167,7 @@ ms.lasthandoff: 10/11/2017
 10. "*ソース コンピューター*" を "*サンプルの資格情報コンテナー*" に登録する際に指定した暗号化パスフレーズを入力します。
 
     ![暗号化](./media/backup-azure-restore-windows-server-classic/encryption.png)
-11. 入力して [ **回復**] ボタンをクリックすると、指定した復元先でバックアップ ファイルの復元が開始します。
+11. 入力して **[ 回復]** ボタンをクリックすると、指定した復元先でバックアップ ファイルの復元が開始します。
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>インスタント リストアを使用してデータを別のコンピューターに復元する
 サーバー全体が失われた場合でも、Azure Backup から別のコンピューターにデータを回復できます。 次の手順はそのワークフローを示しています。

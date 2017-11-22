@@ -9,11 +9,11 @@ ms.reviewer: mawah, marhamil, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: eefede6196bedf208d9b14cee63632922223a6d6
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 2f8b2d9d2396c1f9c9e509257f3cd031a816729f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用した画像分類
 
@@ -52,9 +52,11 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 4. 専用 GPU は、パート 1 で SVM トレーニングを実行するためには必要ありませんが、パート 2 で説明されている DNN の調整に必要です。 強力な GPU がないか、複数の GPU でトレーニングする必要があるか、または Windows マシンがない場合は、Windows オペレーティング システムで Azure のディープ ラーニング仮想マシンを使用することを検討してください。 ワンクリック デプロイ ガイドについては、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)を参照してください。 デプロイ後、リモート デスクトップ接続経由で VM に接続し、そこで Workbench をインストールして、VM からローカルでコードを実行します。
 5. OpenCV などのさまざまな Python ライブラリをインストールする必要があります。 Workbench の *[ファイル]* メニューから *[コマンド プロンプトを開く]* をクリックし、次のコマンドを実行してこれらの依存関係をインストールします。  
     - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-win_amd64.whl`  
-    - http://www.lfd.uci.edu/~gohlke/pythonlibs/ から OpenCV ホイールをダウンロードした後の `pip install opencv_python-3.3.0-cp35-cp35m-win_amd64.whl` (正確なファイル名とバージョンは変更されていることがあります)
-    - `conda install matplotlib numpy pillow`
-    - `conda install -c conda-forge bqplot`
+    - http://www.lfd.uci.edu/~gohlke/pythonlibs/ から OpenCV ホイールをダウンロードした後の `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` (正確なファイル名とバージョンは変更されていることがあります)
+    - `conda install pillow`
+    - `pip install -U numpy`
+    - `pip install bqplot`
+    - `jupyter nbextension enable --py --sys-prefix bqplot`
 
 ### <a name="troubleshooting--known-bugs"></a>トラブルシューティング/既知のバグ
 - パート 2 では GPU が必要ですが、それが存在しない場合に、DNN を調整しようとすると、エラー "Batch normalization training on CPU is not yet implemented (CPU のバッチ正規化トレーニングはまだ実装されていません)" がスローされます。
@@ -91,12 +93,10 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 
 スクリプト `0_downloadData.py` はすべての画像を *DATA_DIR/images/fashionTexture/* ディレクトリにダウンロードします。 428 個の URL の一部は、切断されている可能性があります。 これは問題ではなく、単にトレーニングとテストに使用する画像がやや少ないことを意味しています。
 
-次の図は、ドット (左側 2 列)、ストライプ (中間 2 列)、およびヒョウ柄 (右側 2 列) の属性の例を示しています。 注釈は上衣に従って付けられました。
+次の図は、ドット (左側)、ストライプ (中間 2 )、およびヒョウ柄 (右側) の属性の例を示しています。 注釈は上衣に従って付けられました。
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/examples_dotted.jpg"  alt="alt text" height="200">
-<img src="media/scenario-image-classification-using-cntk/examples_striped.jpg" alt="alt text" height="200">
-<img src="media/scenario-image-classification-using-cntk/examples_leopard.jpg" alt="alt text" height="200">
+<img src="media/scenario-image-classification-using-cntk/examples_all.jpg"  alt="alt text" width="700">
 </p>
 
 

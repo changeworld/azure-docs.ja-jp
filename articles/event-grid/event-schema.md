@@ -6,171 +6,40 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/07/2017
 ms.author: babanisa
-ms.openlocfilehash: e251cbfe7c4d8dfbd492817a8fa7af48e6b379df
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: caa709fdc2a59472ee812bde91f7300396aa5755
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
-この記事では、イベントのプロパティとスキーマについて説明します。 イベントは、5 つの必須文字列プロパティと 1 つの必須データ オブジェクトで構成されます。 プロパティは、すべてのイベントに共通であり、発行元を問いません。 データ オブジェクトには、各発行元に固有のプロパティが含まれます。 システム トピックの場合、これらのプロパティは、リソース プロバイダー (Azure Storage や Azure Event Hubs など) に固有です。
+この記事では、すべてのイベントに存在するプロパティとスキーマについて説明します。 イベントは、5 つの必須文字列プロパティと 1 つの必須データ オブジェクトで構成されます。 プロパティは、すべてのイベントに共通であり、発行元を問いません。 データ オブジェクトには、各発行元に固有のプロパティが含まれます。 システム トピックの場合、これらのプロパティは、リソース プロバイダー (Azure Storage や Azure Event Hubs など) に固有です。
 
 イベントは、Azure Event Grid に配列で送信され、配列には複数のイベント オブジェクトを含めることができます。 1 つのイベントのみがある場合、配列の長さは 1 になります。 配列のサイズは合計で最大 1 MB です。 配列内の各イベントは 64 KB に制限されます。
- 
-## <a name="event-properties"></a>イベントのプロパティ
 
-すべてのイベントには、次に示す最上位レベルのデータが格納されます。
+## <a name="event-schema"></a>イベント スキーマ
 
-| プロパティ | 型 | 説明 |
-| -------- | ---- | ----------- |
-| トピック | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 |
-| subject | string | 発行元が定義したイベントの対象のパス。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
-| data | オブジェクト | リソース プロバイダーに固有のイベント データ。 |
-
-## <a name="available-event-sources"></a>使用可能なイベント ソース
-
-次のイベント ソースが、Event Grid 経由で使用するためのイベントを発行します。
-
-* リソース グループ (管理操作)
-* Azure サブスクリプション (管理操作)
-* Event Hubs
-* カスタム トピック
-
-## <a name="azure-subscriptions"></a>Azure サブスクリプション
-
-Azure サブスクリプションは、VM が作成されたりストレージ アカウントが削除されたりしたときに、Azure Resource Manager から管理イベントを出力できるようになりました。
-
-### <a name="available-event-types"></a>使用可能なイベントの種類
-
-- **Microsoft.Resources.ResourceWriteSuccess**: リソースの作成または更新操作が成功したときに発生します。  
-- **Microsoft.Resources.ResourceWriteFailure**: リソースの作成または更新操作が失敗したときに発生します。  
-- **Microsoft.Resources.ResourceWriteCancel**: リソースの作成または更新操作が取り消されたときに発生します。  
-- **Microsoft.Resources.ResourceDeleteSuccess**: リソースの削除操作が成功したときに発生します。  
-- **Microsoft.Resources.ResourceDeleteFailure**: リソースの削除操作が失敗したときに発生します。  
-- **Microsoft.Resources.ResourceDeleteCancel**: リソースの削除操作が取り消されたときに発生します。 これは、テンプレートのデプロイが取り消された場合に発生します。
-
-### <a name="example-event-schema"></a>イベント スキーマの例
+すべてのイベント発行元に使用されているプロパティの例を次に示します。
 
 ```json
 [
-    {
-    "topic":"/subscriptions/{subscription-id}",
-    "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "eventType":"Microsoft.Resources.ResourceWriteSuccess",
-    "eventTime":"2017-08-16T03:54:38.2696833Z",
-    "id":"25b3b0d0-d79b-44d5-9963-440d4e6a9bba",
-    "data": {
-        "authorization":"{azure_resource_manager_authorizations}",
-        "claims":"{azure_resource_manager_claims}",
-        "correlationId":"54ef1e39-6a82-44b3-abc1-bdeb6ce4d3c6",
-        "httpRequest":"",
-        "resourceProvider":"Microsoft.EventGrid",
-        "resourceUri":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-        "operationName":"Microsoft.EventGrid/eventSubscriptions/write",
-        "status":"Succeeded",
-        "subscriptionId":"{subscription-id}",
-        "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-        },
+  {
+    "topic": string,
+    "subject": string,    
+    "id": string,
+    "eventType": string,
+    "eventTime": string,
+    "data":{
+      object-unique-to-each-publisher
     }
+  }
 ]
 ```
 
-
-
-## <a name="resource-groups"></a>リソース グループ
-
-リソース グループは、VM が作成されたりストレージ アカウントが削除されたりしたときに、Azure Resource Manager から管理イベントを出力できるようになりました。
-
-### <a name="available-event-types"></a>使用可能なイベントの種類
-
-- **Microsoft.Resources.ResourceWriteSuccess**: リソースの作成または更新操作が成功したときに発生します。  
-- **Microsoft.Resources.ResourceWriteFailure**: リソースの作成または更新操作が失敗したときに発生します。  
-- **Microsoft.Resources.ResourceWriteCancel**: リソースの作成または更新操作が取り消されたときに発生します。  
-- **Microsoft.Resources.ResourceDeleteSuccess**: リソースの削除操作が成功したときに発生します。  
-- **Microsoft.Resources.ResourceDeleteFailure**: リソースの削除操作が失敗したときに発生します。  
-- **Microsoft.Resources.ResourceDeleteCancel**: リソースの削除操作が取り消されたときに発生します。 これは、テンプレートのデプロイが取り消された場合に発生します。
-
-### <a name="example-event"></a>イベントの例
-
-```json
-[
-    {
-    "topic":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}",
-    "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-    "eventType":"Microsoft.Resources.ResourceWriteSuccess",
-    "eventTime":"2017-08-16T03:54:38.2696833Z",
-    "id":"25b3b0d0-d79b-44d5-9963-440d4e6a9bba",
-    "data": {
-        "authorization":"{azure_resource_manager_authorizations}",
-        "claims":"{azure_resource_manager_claims}",
-        "correlationId":"54ef1e39-6a82-44b3-abc1-bdeb6ce4d3c6",
-        "httpRequest":"",
-        "resourceProvider":"Microsoft.EventGrid",
-        "resourceUri":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
-        "operationName":"Microsoft.EventGrid/eventSubscriptions/write",
-        "status":"Succeeded",
-        "subscriptionId":"{subscription-id}",
-        "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
-        },
-    }
-]
-```
-
-
-
-## <a name="event-hubs"></a>Event Hubs
-
-Event Hubs のイベントは、現時点では、ファイルがキャプチャ機能を使用してストレージに自動的に送信されたときにのみ出力されます。
-
-### <a name="available-event-types"></a>使用可能なイベントの種類
-
-- **Microsoft.EventHub.CaptureFileCreated**: キャプチャ ファイルが作成されたときに発生します。
-
-### <a name="example-event"></a>イベントの例
-
-このサンプル イベントは、ファイルがキャプチャ機能によって保存されるときに発生する Event Hubs イベントのスキーマを示しています。 
-
-```json
-[
-    {
-        "topic": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{event-hubs-ns}",
-        "subject": "eventhubs/eh1",
-        "eventType": "Microsoft.EventHub.CaptureFileCreated",
-        "eventTime": "2017-07-11T00:55:55.0120485Z",
-        "id": "bd440490-a65e-4c97-8298-ef1eb325673c",
-        "data": {
-            "fileUrl": "https://gridtest1.blob.core.windows.net/acontainer/eventgridtest1/eh1/1/2017/07/11/00/54/54.avro",
-            "fileType": "AzureBlockBlob",
-            "partitionId": "1",
-            "sizeInBytes": 0,
-            "eventCount": 0,
-            "firstSequenceNumber": -1,
-            "lastSequenceNumber": -1,
-            "firstEnqueueTime": "0001-01-01T00:00:00",
-            "lastEnqueueTime": "0001-01-01T00:00:00"
-        },
-    }
-]
-
-```
-
-
-## <a name="azure-blob-storage"></a>Azure BLOB ストレージ
-
-### <a name="available-event-types"></a>使用可能なイベントの種類
-
-- **Microsoft.Storage.BlobCreated**: BLOB が作成されたときに発生します。
-- **Microsoft.Storage.BlobDeleted**: BLOB が削除されたときに発生します。
-
-### <a name="example-event"></a>イベントの例
-
-このサンプル イベントは、BLOB が作成されたときに発生するストレージ イベントのスキーマを示しています。 
+たとえば、Azure BLOB ストレージ イベントに対して次のようなスキーマが発行されます。
 
 ```json
 [
@@ -197,33 +66,28 @@ Event Hubs のイベントは、現時点では、ファイルがキャプチャ
   }
 ]
 ```
+ 
+## <a name="event-properties"></a>イベントのプロパティ
 
+すべてのイベントには、次に示す最上位レベルのデータが格納されます。
 
+| プロパティ | 型 | 説明 |
+| -------- | ---- | ----------- |
+| トピック | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
+| data | オブジェクト | リソース プロバイダーに固有のイベント データ。 |
 
+データ オブジェクトのプロパティの詳細については、イベント ソースを参照してください。
 
-## <a name="custom-topics"></a>カスタム トピック
+* [Azure サブスクリプション (管理操作)](event-schema-subscriptions.md)
+* [Blob Storage](event-schema-blob-storage.md)
+* [Event Hubs](event-schema-event-hubs.md)
+* [リソース グループ (管理操作)](event-schema-resource-groups.md)
 
-カスタム イベントのデータ ペイロードを、正しい形式の JSON オブジェクトによって定義できます。 最上位レベルのデータには、リソースによって定義される標準的なイベントと同じフィールドを含める必要があります。 カスタム トピックに対してイベントを発行する場合は、ルーティングとフィルタ処理を支援するために、イベントの対象をモデル化することを検討してください。
-
-### <a name="example-event"></a>イベントの例
-
-次の例は、カスタム トピック用のイベントを示しています。
-````json
-[
-  {
-    "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.EventGrid/topics/myeventgridtopic",
-    "subject": "/myapp/vehicles/motorcycles",    
-    "id": "b68529f3-68cd-4744-baa4-3c0498ec19e2",
-    "eventType": "recordInserted",
-    "eventTime": "2017-06-26T18:41:00.9584103Z",
-    "data":{
-      "make": "Ducati",
-      "model": "Monster"
-    }
-  }
-]
-
-````
+カスタム トピックの場合、イベントの発行元がデータ オブジェクトを決定します。 最上位レベルのデータには、リソースによって定義される標準的なイベントと同じフィールドを含める必要があります。 カスタム トピックに対してイベントを発行する場合は、ルーティングとフィルタ処理を支援するために、イベントの対象をモデル化することを検討してください。
 
 ## <a name="next-steps"></a>次のステップ
 

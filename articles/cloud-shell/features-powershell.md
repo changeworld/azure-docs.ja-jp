@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: damaerte
-ms.openlocfilehash: ffe5298678de6cc16af0ea29c7d887330f77589d
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 13289d9b18b4c53a2569b9a8772715b38ed22cf7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="features--tools-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell での PowerShell の機能とツール
+# <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) での PowerShell の機能とツール
 
 [!include [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
 > [!TIP]
 > [Bash](features.md) の機能とツールも利用できます。
 
-Cloud Shell での PowerShell は `Windows Server 2016` で実行します。
+Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` で実行します。
 
 ## <a name="features"></a>Features (機能)
 
 ### <a name="secure-automatic-authentication"></a>自動認証をセキュリティで保護する
 
-Cloud Shell での PowerShell は、Azure PowerShell のアカウント アクセスを安全かつ自動的に認証します。
+Cloud Shell (プレビュー) での PowerShell は、Azure PowerShell のアカウント アクセスを安全かつ自動的に認証します。
 
 ### <a name="files-persistence-across-sessions"></a>セッション間でのファイルの永続化
 
@@ -45,7 +45,7 @@ Cloud Shell に対する各要求は一時的なマシンを割り当てるの�
 
 ### <a name="azure-drive-azure"></a>Azure ドライブ (Azure:)
 
-Cloud Shell の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
+Cloud Shell (プレビュー) の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
 Azure ドライブを使うと、ファイル システムのナビゲーションと同じように、Compute、Network、Storage などの Azure リソースを簡単に検出およびナビゲーションできるようになります。
 引き続き、使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/en-us/powershell/azure)を使ってこれらのリソースを管理できます。
 Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレットを使って行われたものも、Azure ドライブにすぐに反映されます。
@@ -109,6 +109,6 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 
 ## <a name="next-steps"></a>次のステップ
 
-[Cloud Shell での PowerShell のクイックスタート](quickstart-powershell.md)
+[Cloud Shell (プレビュー) での PowerShell のクイックスタート](quickstart-powershell.md)
 
 [Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/)

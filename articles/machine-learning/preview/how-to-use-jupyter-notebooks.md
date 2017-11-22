@@ -2,19 +2,19 @@
 title: "Azure Machine Learning Workbench で Jupyter Notebook を使用する方法 | Microsoft Docs"
 description: "Azure Machine Learning Workbench の Jupyter Notebook 機能を使用するためのガイド"
 services: machine-learning
-author: jopela
-ms.author: jopela
+author: rastala
+ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 93850a7c9e3d9d69b0da22ebd0656ae40cee2e63
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.date: 11/09/2017
+ms.openlocfilehash: 80cdd07bff865776a68897a7b8c1b3fe66b76b18
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で Jupyter Notebook を使用する方法
 
@@ -36,7 +36,7 @@ Azure Machine Learning Workbench は、Jupyter Notebook との統合を通じて
 ![Notebook のアーキテクチャ](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-architecture.png)
 
 ## <a name="kernels-in-azure-ml-workbench-notebook"></a>Azure ML Workbench Notebook のカーネル
-Azure ML Workbench では、プロジェクトの `aml_config` フォルダーに実行構成および計算ターゲットを構成するだけで、さまざまなカーネルにアクセスできます。 `az ml computetarget attach` コマンドを発行して新しい計算ターゲットを追加することは、新しいカーネルを追加することと同じです。
+Azure ML Workbench では、プロジェクトの `aml_config` フォルダーに実行構成および計算ターゲットを構成して、さまざまなカーネルにアクセスできます。 `az ml computetarget attach` コマンドを発行して新しい計算ターゲットを追加することは、新しいカーネルを追加することと同じです。
 
 >[!NOTE]
 >実行構成および計算ターゲットの詳細については、[実行構成](experimentation-service-configuration.md)に関する記事をご覧ください。
@@ -48,6 +48,9 @@ Azure ML Workbench では、プロジェクトの `aml_config` フォルダー�
 
 ### <a name="local-python-kernel"></a>ローカルの Python カーネル
 この Python カーネルは、ローカル コンピューターでの実行をサポートします。 これは Azure Machine Learning の実行履歴と統合されています。 通常、このカーネルの名前は "my_project_name local" です。
+
+>[!NOTE]
+>"Python 3" カーネルは使用しないでください。 これは Jupyter に既定で提供されているスタンドアロン カーネルです。 Azure Machine Learning 機能と統合されていません。
 
 ### <a name="python-kernel-in-docker-local-or-remote"></a>Docker (ローカルまたはリモート) 内の Python カーネル
 この Python カーネルは、ローカル コンピューターまたはリモート Linux VM 上の Docker コンテナーで実行されます。 通常、このカーネルの名前は "my_project docker" です。 関連付けられている `docker.runconfig` ファイルの `Framework` フィールドは `Python` に設定されます。
@@ -104,6 +107,33 @@ $ az ml notebook start
 これで `.ipynb` ノートブック ファイルをクリックして開き、カーネルを設定して (まだ設定されていない場合)、対話型セッションを開始できます。
 
 ![プロジェクト ダッシュボード](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-08.png)
+
+## <a name="use-magic-commands-to-manage-experiments"></a>magic コマンドを使用して実験を管理する
+
+ノートブック セル内で [magic コマンド](http://ipython.readthedocs.io/en/stable/interactive/magics.html)を使用して実行履歴を追跡し、モデルやデータセットなどの出力を保存できます。
+
+個々のノートブック セルの実行を追跡するには、"%azureml history on" magic コマンドを使用します。 履歴を有効にすると、各セルの実行は実行履歴のエントリとして表示されます。
+
+```
+%azureml history on
+from azureml.logging import get_azureml_logger
+logger = get_azureml_logger()
+logger.log("Cell","Load Data")
+```
+
+セルの実行の追跡を無効にするには、"%azureml history off" magic コマンドを使用します。
+
+"%azureml upload" magic コマンドを使用して、実行のモデルとデータ ファイルを保存できます。 保存されたオブジェクトは、実行履歴ビューに特定の実行の出力として表示されます。
+
+```
+modelpath = os.path.join("outputs","model.pkl")
+with open(modelpath,"wb") as f:
+    pickle.dump(model,f)
+%azureml upload outputs/model.pkl
+```
+
+>[!NOTE]
+>出力は、"outputs" というフォルダーに保存する必要があります
 
 ## <a name="next-steps"></a>次のステップ
 - Jupyter Notebook の使用方法について学習するには、[Jupyter の公式ドキュメント](http://jupyter-notebook.readthedocs.io/en/latest/)を参照します。    

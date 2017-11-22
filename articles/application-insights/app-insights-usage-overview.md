@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/10/2017
-ms.author: bwren
-ms.openlocfilehash: 6985467658ae8a52d3c963dd1965c0711cac4ca7
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mbullwin
+ms.openlocfilehash: 4a6647e30657a6d2d076cd254069d96f99a0aa60
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -34,7 +34,7 @@ Application Insights をアプリのサーバー コードと Web ページの�
 
     ![マスター Web ページの先頭にスクリプトをコピーします。](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
-3. **モバイル アプリ コード:** [このガイド](app-insights-mobile-center-quickstart.md)に従って、Mobile Center SDK を使用してアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
+3. **モバイル アプリ コード:** [このガイド](app-insights-mobile-center-quickstart.md)に従い、App Center SDK を使ってアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
 
 4. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ブレードで結果を確認します。
 

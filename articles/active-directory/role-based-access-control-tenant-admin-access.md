@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2017
 ms.author: andredm
-ms.openlocfilehash: cb6e5a398a1d7e20efbcc4a8900f9e8dea43ad2c
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: c1f49e2c7836a56f37aafcaad0cb74278213a720
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>ロール ベースのアクセス制御を使用してテナント管理者としてアクセス権を昇格させる
 
@@ -43,6 +43,30 @@ ms.lasthandoff: 11/07/2017
 > これは、Azure Active Directory のグローバル プロパティと似ているように思われるかもしれませんが、現在ログオンしているユーザーを対象にして、ユーザーごとに機能します。 Azure Active Directory のグローバル管理者権限がある場合は、Azure Active Directory 管理センターに現在ログインしているユーザーに対してこの elevateAccess 機能を呼び出すことができます。
 
 ![Azure AD 管理センター - プロパティ - 全体管理者は Azure サブスクリプションを管理できます - スクリーンショット](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+
+## <a name="view-role-assignments-at-the--scope-using-powershell"></a>PowerShell を使用して、"/" スコープでロールの割り当てを表示する
+**/** スコープで **[ユーザー アクセス管理者]** を表示するには、`Get-AzureRmRoleAssignment` PowerShell コマンドレットを使用します。
+    
+```
+Get-AzureRmRoleAssignment* | where {$_.RoleDefinitionName -eq "User Access Administrator" -and $_SignInName -eq "<username@somedomain.com>" -and $_.Scope -eq "/"}
+```
+
+**出力例**:
+
+RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0    
+Scope              : /    
+DisplayName        : username    
+SignInName         : username@somedomain.com    
+RoleDefinitionName : User Access Administrator    
+RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9    
+ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc    
+ObjectType         : User    
+
+## <a name="delete-the-role-assignment-at--scope-using-powershell"></a>PowerShell を使用して、"/" スコープでロールの割り当てを削除する
+次の PowerShell コマンドレットを使用して割り当てを削除することができます。
+```
+Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefinitionName "User Access Administrator" -Scope "/" 
+```
 
 ## <a name="use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>REST API で elevateAccess を使用してテナントへのアクセス権を付与する
 
