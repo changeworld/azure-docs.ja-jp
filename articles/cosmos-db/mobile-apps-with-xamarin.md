@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: 4dfe9c755f3e7d5414ae04dd4027defd6cef2e4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ab36a16ca87ae7a3e7b26571fc6aadd108841c9
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
 ほとんどのモバイル アプリでは、クラウドにデータを格納する必要があります。Azure Cosmos DB は、モバイル アプリ向けのクラウド データベースです。 モバイル開発者が必要なすべてのものを備えています。 必要に応じて拡大縮小できる、完全に管理されたサービスとしてのデータベースです。 ユーザーが世界中どこにいても、アプリケーションにデータを透過的に提供できます。 [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md) を使用すると、中間層なしで、Xamarin モバイル アプリが Azure Cosmos DB と直接やり取りすることができます。
@@ -31,7 +31,7 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 ![モバイル アプリ向けの Azure Cosmos DB の機能](media/mobile-apps-with-xamarin/documentdb-for-mobile.png)
 
 * スキーマなしのデータに対するリッチ クエリ。 Azure Cosmos DB では、データをスキーマなしの JSON ドキュメントとして異種コレクションに格納します。 スキーマやインデックスについて心配する必要なく、[高速なリッチ クエリ](documentdb-sql-query.md)を提供します。
-* 高速スループット。 Azure Cosmos DB では、ドキュメントを読み書きするのにわずか数ミリ秒しかかかりません。 開発者は必要なスループットを指定でき、Azure Cosmos DB ではその 99.99% を SLA で保証します。
+* 高速スループット。 Azure Cosmos DB では、ドキュメントを読み書きするのにわずか数ミリ秒しかかかりません。 開発者は必要なスループットを指定でき、Azure Cosmos DB はすべての単一リージョンのアカウントに緩やかな整合性で 99.999% の可用性 SLA を提供し、全ての複数リージョンのデータベース アカウントに 99.99% の 読み取り可用性を提供します。
 * 無限のスケール。 Azure Cosmos DB のコレクションは、[アプリの規模の拡大に合わせて増加](partition-data.md)します。 小さいデータ サイズと 1 秒あたり数百件の要求のスループットから開始できます。 コレクションは、ペタバイトのデータと 1 秒あたり数億件の要求という任意の大きさのスループットに拡張できます。
 * グローバルに分散。 モバイル アプリ ユーザーは外に出かけ、世界中を飛び回ることもよくあります。 Azure Cosmos DB は、[グローバル分散データベース](distribute-data-globally.md)です。 ユーザーがデータにアクセスするには、地図をクリックします。
 * 組み込みの豊富な承認機能。 Azure Cosmos DB では、複雑なカスタムの承認コードを作成せずに、[ユーザーごとのデータ](https://aka.ms/documentdb-xamarin-todouser)やマルチ ユーザー共有データのような一般的なパターンを簡単に実装できます。

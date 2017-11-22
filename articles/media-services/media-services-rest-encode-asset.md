@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 796f3b5a4dd56a0160986600cbbcf38faf8add56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1622149009a37b864e84caa158da960ccc03ca65
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 > [!div class="op_single_selector"]
@@ -265,6 +265,12 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     . . .
 
 
+## <a name="advanced-encoding-features-to-explore"></a>高度なエンコーディング機能の詳細
+* [サムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [エンコード中のサムネイルの生成](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [エンコード中にビデオをトリミングする](media-services-crop-video.md)
+* [エンコード プリセットをカスタマイズする](media-services-custom-mes-presets-with-dotnet.md)
+* [ビデオと画像を重ね合わせる、または透かしを入れる](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

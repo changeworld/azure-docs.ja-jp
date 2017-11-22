@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 11/13/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 7c66a95d5a056f59e0f28dba4e0880e72e74dc3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory と Multi-Factor Authentication: ID とアクセスの制御による個人のデータの保護
 
@@ -121,23 +121,23 @@ Azure クラウドで MFA をデプロイするには、最初にそれを有効
 
 #### <a name="how-do-i-enable-azure-to-use-mfa"></a>Azure で MFA の使用を有効にする方法
 
-ユーザーが Azure Multi-Factor Authentication を利用できるライセンスをお持ちであれば、Azure MFA を有効にするうえで必要な作業は特にありません。 そうでない場合は、ディレクトリに多要素認証プロバイダーを作成する必要があります。 そのためには、次の手順に従います。
+ユーザーが Azure Multi-Factor Authentication を利用できるライセンスを持っていれば、ユーザーごとまたはグループごとに Azure MFA を構成するだけです。 
 
-1. Azure クラシック ポータル (管理者としてログオン) で **[Active Directory]** を選択します。
+![MFA が有効になっているユーザー](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-2. **Multi-Factor Authentication プロバイダー**を選択します。
+現在ライセンスを持っていない場合は、ご自分のシナリオに合った最適な展開の種類を決定するプロセスを経る必要があります。 最初に「[ニーズに応じた Azure Multi-Factor Autehntication ソリューションを選択する](../multi-factor-authentication/multi-factor-authentication-get-started.md)」というタイトルの記事をご覧ください。 決定したら、Multi-Factor Authentication サーバーを作成する必要があります。 次の手順に従って開始できます。
 
-3. **[新規]** を選択し、**[App Services]** の下の **[多要素認証プロバイダー]** を選択します。
+1. Azure Portal (管理者としてログオン) で **[Active Directory]** を選択します。
 
-4. **[簡易作成]** を選択します。
+2. **[MFA サーバー]** を選択します。
 
-5. [名前] フィールドに入力し、(認証ごとまたは有効なユーザーごとに) 使用モデルを選びます。
+3. タイム アウト値を指定します。 
 
-6. MFA プロバイダーが関連付けられているディレクトリを指定します。
+    ![](media/protect-personal-data-identity-access-controls/mfa-server-settings.png)
 
-7. **[作成]** ボタンをクリックします。
+4. **[保存]**
 
-![](media/protect-personal-data-identity-access-controls/quick-create.png)
+このウィンドウには、MFA Server をダウンロードするためのオプションもあります。 「[Azure Multi-Factor Authentication Server の概要](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)」の記事を確認すると、展開のサイズを決めて計画する方法について、さらに詳細な情報を入手できます。
 
 多要素認証プロバイダーを管理する手順については、「[Azure Multi-Factor Auth プロバイダーの概要](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider)」をご覧ください。
 
@@ -158,7 +158,7 @@ Azure クラウドで MFA をデプロイするには、最初にそれを有効
 5. ユーザーの名前の横にあるチェック ボックスをオンにします。
 6. 右側にある [クイック操作] の下の **[有効にする]** を選択します。
 
-   ![](media/protect-personal-data-identity-access-controls/quick-create.png)
+   ![](media/protect-personal-data-identity-access-controls/mfa-bulk.png)
 
 7. 開いたポップアップ ウィンドウで選択内容を確認します。  MFA が有効になっているユーザーは、次回のサインイン時に登録するよう求められます。
 

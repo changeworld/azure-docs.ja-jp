@@ -8,7 +8,7 @@ DNS ゾーンのルート ("*頂点*") にある DNS レコードを *apex* (頂
 
 各 DNS レコードには名前と種類があります。 レコードは、含まれるデータによってさまざまな種類に分けられます。 最も一般的な種類は "A" レコードで、名前が IPv4 アドレスにマップされます。 また、"MX" レコードもよく使用される種類で、名前がメール サーバーにマップされます。
 
-Azure DNS では、一般的な DNS レコードの種類である A、AAAA、CNAME、MX、NS、PTR、SOA、SRV、TXT をすべてサポートしています。 [SPF レコードは TXT レコードを使用して表される](../articles/dns/dns-zones-records.md#spf-records)ことに注意してください。
+Azure DNS では、一般的な DNS レコードの種類である A、AAAA、CAA、CNAME、MX、NS、PTR、SOA、SRV、TXT をすべてサポートしています。 [SPF レコードは TXT レコードを使用して表される](../articles/dns/dns-zones-records.md#spf-records)ことに注意してください。
 
 ### <a name="record-sets"></a>レコード セット
 

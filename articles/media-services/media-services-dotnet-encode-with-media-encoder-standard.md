@@ -1,6 +1,6 @@
 ---
 title: ".NET を使用した Media Encoder Standard での資産のエンコード | Microsoft Docs"
-description: "このトピックでは、.NET を使用して、Media Encoder Standard で資産をエンコードする方法について説明します。"
+description: "この記事では、.NET を使用して、Media Encoder Standard で資産をエンコードする方法について説明します。"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 929592368501c54277748bf46b2160c9058db3fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cce668007030672aff7af60c70339c1e079c75b1
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET を使用した Media Encoder Standard での資産のエンコード
 エンコード ジョブは Media Services で最も一般的な処理の 1 つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードには、Media Services の組み込み Media Encoder を使用できます。 Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。 
 
-このトピックでは、.NET を使用して、Media Encoder Standard (MES) で資産をエンコードする方法について説明します。 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
+この記事では、.NET を使用して、Media Encoder Standard (MES) で資産をエンコードする方法について説明します。 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
 ソース ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。 
 
-出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。 詳細については、「 [方法: アセットの配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)」を参照してください。
+出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。 詳細については、「[方法: アセットの配信ポリシーを構成する](media-services-dotnet-configure-asset-delivery-policy.md)」を参照してください。
 
 > [!NOTE]
 > MES は、入力ファイル名の最初の 32 文字を含む名前で出力ファイルを生成します。 この名前は、プリセット ファイルに指定されているものに基づきます。 たとえば、"FileName": "{Basename}_{Index}{Extension}" の場合、 {Basename} が入力ファイル名の最初の 32 文字で置換されます。
@@ -47,7 +47,7 @@ MES を使用して 1 つ (または複数) の入力資産をエンコードし
 
 出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ XML ファイルの名前は、<source_file_name>_manifest.xml という形式になっています (たとえば、BigBuckBunny_manifest.xml)。 この出力メタデータ XML のスキーマについては、 [こちら](media-services-output-metadata-schema.md)で説明されています。
 
-2 つのメタデータ ファイルのいずれかを確認したい場合は、SAS ロケータ―を作成してファイルをローカル コンピューターにダウンロードできます。 Media Services .NET SDK Extensions を使って SAS ロケータ―を作成し、ファイルをダウンロードする方法の例をご覧ください。
+2 つのメタデータ ファイルのいずれかを確認したい場合は、SAS ロケーターを作成してファイルをローカル コンピューターにダウンロードできます。 Media Services .NET SDK Extensions を使って SAS ロケーターを作成し、ファイルをダウンロードする方法の例をご覧ください。
 
 ## <a name="download-sample"></a>サンプルのダウンロード
 MES を使用したエンコード方法を示すサンプルを[こちら](https://azure.microsoft.com/documentation/samples/media-services-dotnet-on-demand-encoding-with-media-encoder-standard/)から取得して実行できます。
@@ -181,6 +181,14 @@ MES を使用したエンコード方法を示すサンプルを[こちら](http
                 }
             }
         }
+
+
+## <a name="advanced-encoding-features-to-explore"></a>高度なエンコーディング機能の詳細
+* [サムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [エンコード中のサムネイルの生成](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [エンコード中にビデオをトリミングする](media-services-crop-video.md)
+* [エンコード プリセットをカスタマイズする](media-services-custom-mes-presets-with-dotnet.md)
+* [ビデオと画像を重ね合わせる、または透かしを入れる](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: denlee
 ms.custom: mvc
-ms.openlocfilehash: b1419e5aad9446b9d96450cfad79b200cda9a518
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613956416d35687c5f2fe0123a9a59182390b440
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: .NET での Graph API を使用した開発
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
@@ -53,7 +53,6 @@ Gremlin は、書き込み操作 (DML)、クエリ操作、およびトラバー
 
 > [!TIP]
 > * 既に Azure Cosmos DB アカウントをお持ちですか。 その場合は、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進みます。
-> * 既に Azure DocumentDB アカウントをお持ちでしたか。 この場合、そのアカウントが Azure Cosmos DB アカウントになります。「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。  
 > * Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従って、エミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。 
 >
 > 
@@ -86,7 +85,7 @@ Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** を�
 
 ポータルの URI をコピーして、上の endpoint プロパティの `Endpoint` に貼り付けます。 次に、ポータルのプライマリ キーをコピーし、上の `AuthKey` プロパティに貼り付けます。 
 
-![C# アプリケーションを作成するためにチュートリアルで使用される Azure ポータルのスクリーン ショット。 Azure Cosmos DB ナビゲーションで [キー] ボタンが強調表示された Azure Cosmos DB アカウントと、[キー] ブレードで強調表示された URI と PRIMARY KEY の値を示します[キー] 
+![C# アプリケーションを作成するためにチュートリアルで使用される Azure Portal のスクリーン ショット。 Azure Cosmos DB ナビゲーションで [キー] ボタンが強調表示された Azure Cosmos DB アカウントと、[キー] ブレードで強調表示された URI と PRIMARY KEY の値を示します](./media/tutorial-develop-graph-dotnet/keys.png) 
  
 ## <a id="instantiate"></a>DocumentClient をインスタンス化する 
 次は、**DocumentClient** の新しいインスタンスを作成します。  
