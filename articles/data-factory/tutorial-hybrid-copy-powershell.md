@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Factory を使ってオンプレミスのデータをクラウドにコピーする | Microsoft Docs"
+title: "Azure Data Factory を使用して SQL Server から Blob Storage にデータをコピーする | Microsoft Docs"
 description: "Azure Data Factory 内のセルフホステッド統合ランタイムを使って、オンプレミスのデータ ストアから Azure クラウドにデータをコピーする方法について説明します。"
 services: data-factory
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 24a4255a23f0b9b9da5d8c3cefeefb8fe250f2f1
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: afd7735712d03110a67509a7e94d336219a65b34
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="tutorial-copy-data-between-on-premises-and-cloud"></a>チュートリアル: オンプレミスとクラウドの間でのデータ コピー
+# <a name="tutorial-copy-data-from-on-premises-sql-server-to-azure-blob-storage"></a>チュートリアル: オンプレミスの SQL Server から Azure Blob Storage にデータをコピーする
 このチュートリアルでは、オンプレミスの SQL Server データベースから Azure BLOB ストレージにデータをコピーする Data Factory パイプラインを Azure PowerShell を使って作成します。 Azure Data Factory のセルフホステッド統合ランタイム (IR) を作成し、使用することで、オンプレミス データ ストアとクラウド データ ストアの統合が可能となります。  その他のツールまたは SDK を使ってデータ ファクトリを作成する方法については、[クイックスタート](quickstart-create-data-factory-dot-net.md)を参照してください。
 
 この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。 

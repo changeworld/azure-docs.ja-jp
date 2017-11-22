@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用して Azure データ ファクトリを作成する | Microsoft Docs"
-description: "Azure データ ファクトリを作成して、データを Azure BLOB ストレージ内のある場所から同じ BLOB ストレージ内の別の場所にコピーします。"
+title: "Azure Data Factory を使用して Blob Storage でデータをコピーする | Microsoft Docs"
+description: "Azure データ ファクトリを作成して、Azure BLOB ストレージ内のあるフォルダーから別のフォルダーにデータをコピーし、同じ BLOB ストレージ内の別の場所にコピーします。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,18 +13,18 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 63e4c654409651f6655da1bed6ab2f544cf024dd
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 8ee2f48db009da4660a03f91194c4e99f6ecac4a
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="create-an-azure-data-factory-and-pipeline-using-powershell"></a>PowerShell を使用して Azure Data Factory とパイプラインを作成する
+# <a name="create-an-azure-data-factory-using-powershell"></a>PowerShell を使用した Azure データ ファクトリの作成 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [バージョン 2 - プレビュー](quickstart-create-data-factory-powershell.md)
 
-このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリのパイプラインは、Azure Blob Storage 内のある場所から別の場所にデータをコピーするものです。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。 
+このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーにコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。 
 
 この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。
 

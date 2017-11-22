@@ -1,5 +1,6 @@
+ストレージ最適化済み VM サイズは高いディスク スループットと IO を実現し、ビッグ データ、SQL、NoSQL データベースに最適です。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク パフォーマンスに加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
-Ls シリーズは、NoSQL データベース (Cassandra、MongoDB、Cloudera、Redis など) のように、待ち時間の短い一時ストレージを必要とするワークロードに最適化されています。 Ls シリーズでは、[Intel® Xeon® プロセッサ E5 v3 ファミリ](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)を使用し、最大 32 個の vCPU を提供します。 Ls シリーズは、G/GS シリーズと同じ CPU パフォーマンスであり、vCPU あたり 8 GiB のメモリを搭載しています。  
+Ls シリーズでは、[Intel® Xeon® プロセッサ E5 v3 ファミリ](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)を使用し、最大 32 個の vCPU を提供します。 Ls シリーズは、G/GS シリーズと同じ CPU パフォーマンスであり、vCPU あたり 8 GiB のメモリを搭載しています。  
 
 ## <a name="ls-series"></a>Ls シリーズ
 
@@ -13,7 +14,7 @@ ACU: 180 ～ 240
 | Standard_L32s* | 32 | 256  | 5,630 | 64             | 該当なし/該当なし (0)          | 40,000/1,000                            | 8/20,000 | 
  
 
-Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されているディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/common/storage-premium-storage.md)」を参照してください。 
+Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されているディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)」を参照してください。 
 
 *インスタンスは、単一の顧客専用のハードウェアに分離されます。
 

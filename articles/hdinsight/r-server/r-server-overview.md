@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 47896493fdaf651b8cf74a1ddf4fcffdd51d2972
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 57e28215124bc0330517c541e4cb74a66d939ff5
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での R Server とオープン ソース R の機能の概要
 
@@ -44,7 +44,9 @@ HDInsight クラスターの HDFS ファイル システムの既定のストレ
 エッジ ノードで使用するストレージ オプションとして、 [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。 Azure Files では、Azure Storage で作成されたファイル共有を Linux ファイル システムにマウントできます。 HDInsight クラスターの R Server を対象としたこれらのデータ ストレージ オプションについて詳しくは、「[HDInsight の R Server 向けの Azure Storage オプション](r-server-storage.md)」をご覧ください。
 
 ## <a name="access-r-server-on-the-cluster"></a>クラスターでの R Server へのアクセス
-プロビジョニング プロセスで RStudio Server を含めることを選択した場合、ブラウザーを使用してエッジ ノードの R Server に接続できます。 クラスターのプロビジョニング時に RStudio Server をインストールしなかった場合は、後から追加することができます。 クラスターの作成後に RStudio Server をインストールする方法については、[HDInsight クラスターへの RStudio Server のインストール](r-server-install-r-studio.md)に関する記事をご覧ください。 R Server には、SSH/PuTTY で R コンソールにアクセスすることによって接続することもできます。 
+ブラウザーを使用して、エッジ ノードの Microsoft R Server に接続することができます。 これは、クラスターの作成時に既定でインストールされます。 詳しくは、「[HDInsight での R Server の概要](r-server-get-started.md)」をご覧ください。
+
+Microsoft R Server には、コマンドラインから SSH/PuTTY を使用して R コンソールにアクセスすることによって接続することもできます。 
 
 ## <a name="develop-and-run-r-scripts"></a>R スクリプトの開発と実行
 ユーザーが作成して実行する R スクリプトでは、ScaleR ライブラリの並列化された分散ルーチンに加え、8,000 以上のオープン ソース R パッケージを使用できます。 一般に、エッジ ノードの R Server で実行されるスクリプトは、そのノードの R インタープリター内で実行されます。 コンピューティング コンテキストが Hadoop Map Reduce (RxHadoopMR) または Spark (RxSpark) に設定された ScaleR 関数を呼び出す必要のあるステップは例外です。 この場合、関数は参照先データに関連付けられたクラスターのデータ (タスク) ノード間に分散した形で実行されます。 各種コンピューティング コンテキスト オプションの詳細については、「[HDInsight の R Server の計算コンテキストのオプション](r-server-compute-contexts.md)」を参照してください。
@@ -87,7 +89,7 @@ OS 修正プログラムや他の更新プログラムを適用するために�
 ヘッド ノードが冗長化されており、すべてのデータ ノードが影響を受けるわけではないため、この期間に実行中のジョブは速度が低下する場合がありますが、 完了するまで引き続き実行されます。 クラスターの再構築を必要とする致命的な障害が発生しない限り、カスタム ソフトウェアやローカル データはメンテナンス イベントで保持されます。
 
 ## <a name="learn-about-ide-options-for-r-server-on-an-hdinsight-cluster"></a>HDInsight クラスターの R Server の IDE オプションについて
-HDInsight クラスターの Linux エッジ ノードは、R ベースの分析のランディング ゾーンです。 HDInsight の最新バージョンには、ブラウザー ベースの IDE としてエッジ ノードに [RStudio Server](https://www.rstudio.com/products/rstudio-server/) の Community バージョンをインストールするための既定のオプションが備わっています。 R スクリプトの開発と実行に IDE として RStudio Server を使用すると、単に R コンソールを使用した場合よりも生産性を大幅に高めることができます。 クラスターの作成時に RStudio Server を追加せずに、後で追加することを選択した場合は、[HDInsight クラスターへの RStudio Server のインストール](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-install-r-studio)に関する記事をご覧ください。
+HDInsight クラスターの Linux エッジ ノードは、R ベースの分析のランディング ゾーンです。 HDInsight の最新バージョンには、ブラウザー ベースの IDE としてエッジ ノードへの RStudio Server の既定のインストールが備わっています。 R スクリプトの開発と実行に IDE として RStudio Server を使用すると、単に R コンソールを使用した場合よりも生産性を大幅に高めることができます。
 
 別の完全な IDE オプションとして、デスクトップ IDE をインストールして、リモートの Map Reduce または Spark コンピューティング コンテキストを使用してクラスターにアクセスする方法があります。 そのようなオプションとしては、Microsoft の [R Tools for Visual Studio](https://www.visualstudio.com/features/rtvs-vs.aspx) (RTVS)、RStudio、Walware の Eclipse ベースの [StatET](http://www.walware.de/goto/statet) が挙げられます。
 
@@ -100,6 +102,5 @@ R Server を含む HDInsight クラスターに関する料金は、Standard HDI
 HDInsight クラスターで R Server を使用する方法の詳細については、次のトピックを参照してください。
 
 * [HDInsight での R Server の使用](r-server-get-started.md)
-* [HDInsight へ RStudio Server を追加する (クラスター作成時にインストールされていない場合)](r-server-install-r-studio.md)
 * [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](r-server-compute-contexts.md)
 * [HDInsight の R Server 向けの Azure Storage オプション](r-server-storage.md)
