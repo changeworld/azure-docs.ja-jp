@@ -1,6 +1,6 @@
 ---
-title: "Azure Data Factory を使用して Salesforce からデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、Salesforce からサポートされているシンク データ ストアにデータをコピーする方法について説明します。"
+title: "Azure Data Factory を使用して Salesforce との間でデータをコピーする | Microsoft Docs"
+description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、Salesforce からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Salesforce にデータをコピーする方法について説明します。"
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -11,29 +11,32 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: 7978e955bf5516a853443555ab10a69dcf22d63f
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 017d03b76bd19a0b3a1e19c22233c61be9067d0d
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="copy-data-from-salesforce-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータをコピーする
+# <a name="copy-data-fromto-salesforce-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-salesforce-connector.md)
 > * [バージョン 2 - プレビュー](connector-salesforce.md)
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce から、または Salesforce にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の Salesforce コネクタ](v1/data-factory-salesforce-connector.md)に関する記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Salesforce データベースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+Salesforce のデータを、サポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを Salesforce にコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、この Salesforce コネクタは、Salesforce の **Developer Edition、Professional Edition、Enterprise Edition、Unlimited Edition** の各エディションをサポートします。 また、Salesforce **運用環境、サンドボックス、およびカスタム ドメイン**からのデータのコピーをサポートします。
+具体的には、この Salesforce コネクタは以下をサポートします。
+
+- Salesforce の **Developer Edition、Professional Edition、Enterprise Edition、Unlimited Edition** のいずれかのエディション。
+- Salesforce **運用環境、サンドボックス、およびカスタム ドメイン**との間でのデータのコピー。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,15 +63,20 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type |type プロパティを **Salesforce**に設定する必要があります。 |はい |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
-| パスワード |ユーザー アカウントのパスワードを指定します。 |はい |
-| securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |あり |
+| パスワード |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 |あり |
+| securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。<br/><br/>このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にセキュリティ トークンを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 |あり |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 
-**例:**
+>[!IMPORTANT]
+>Salesforce にデータをコピーするには、次の例に示すように、Salesforce の近くの場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、リンクされたサービスで関連付けます。
+
+**例: ADF への資格情報の格納**
 
 ```json
 {
+    "name": "SalesforceLinkedService",
     "properties": {
         "type": "Salesforce",
         "typeProperties": {
@@ -81,22 +89,59 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
                 "type": "SecureString",
                 "value": "<security token>"
             }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
         }
-    },
-    "name": "SalesforceLinkedService"
+    }
+}
+```
+
+**例: Azure Key Vault への資格情報の格納**
+
+```json
+{
+    "name": "SalesforceLinkedService",
+    "properties": {
+        "type": "Salesforce",
+        "typeProperties": {
+            "username": "<username>",
+            "password": {
+                "type": "AzureKeyVaultSecret",
+                "secretName": "<secret name of password in AKV>",
+                "store":{
+                    "referenceName": "<Azure Key Vault linked service>",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            "securityToken": {
+                "type": "AzureKeyVaultSecret",
+                "secretName": "<secret name of security token in AKV>",
+                "store":{
+                    "referenceName": "<Azure Key Vault linked service>",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
 }
 ```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、Salesforce データセット でサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Salesforce データセット でサポートされるプロパティの一覧を示します。
 
-Salesforce からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
+Salesforce との間でデータをコピーするには、データセットの type プロパティを **SalesforceObject** に設定します。 次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
-| tableName | Salesforce データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
+| type | type プロパティは **SalesforceObject** に設定する必要があります  | あり |
+| objectApiName | データの取得先の Salesforce オブジェクト名。 | ソースの場合はいいえ、シンクの場合ははい |
 
 > [!IMPORTANT]
 > カスタム オブジェクトには、API 名の "__c" の部分が必要となります。
@@ -108,31 +153,38 @@ Salesforce からデータをコピーするには、データセットの type 
 ```json
 {
     "name": "SalesforceDataset",
-    "properties":
-    {
-        "type": "RelationalTable",
+    "properties": {
+        "type": "SalesforceObject",
         "linkedServiceName": {
             "referenceName": "<Salesforce linked service name>",
             "type": "LinkedServiceReference"
         },
         "typeProperties": {
-            "tableName": "MyTable__c"
+            "objectApiName": "MyTable__c"
         }
     }
 }
 ```
 
-## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Salesforce ソースでサポートされるプロパティの一覧を示します。
-
-### <a name="salesforce-as-source"></a>ソースとしての Salesforce
-
-Salesforce からデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+>[!NOTE]
+>旧バージョンとの互換性のために、Salesforce からデータをコピーする際に、以前の "RelationalTable" 型のデータセットを引き続き使用できますが、新しい "SalesforceObject" 型に切り替えることをお勧めします。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
+| tableName | Salesforce のテーブル名。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
+
+## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
+
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Salesforce ソースとシンクでサポートされるプロパティの一覧を示します。
+
+### <a name="salesforce-as-source"></a>ソースとしての Salesforce
+
+Salesforce からデータをコピーするには、コピー アクティビティのソースの種類を **SalesforceSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | コピー アクティビティのソースの type プロパティは **SalesforceSource** に設定する必要があります | あり |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 SQL-92 クエリまたは [Salesforce オブジェクト クエリ言語 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) クエリを使用できます。 (例: `select * from MyTable__c`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 > [!IMPORTANT]
@@ -161,7 +213,7 @@ Salesforce からデータをコピーするには、コピー アクティビ�
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SalesforceSource",
                 "query": "SELECT Col_Currency__c, Col_Date__c, Col_Email__c FROM AllDataType__c"
             },
             "sink": {
@@ -172,11 +224,61 @@ Salesforce からデータをコピーするには、コピー アクティビ�
 ]
 ```
 
+>[!NOTE]
+>旧バージョンとの互換性のために、Salesforce からデータをコピーする際に、以前の "RelationalSource" 型のコピー ソースを引き続き使用できますが、新しい "SalesforceSource" 型に切り替えることをお勧めします。
+
+### <a name="salesforce-as-sink"></a>シンクとしての Salesforce
+
+Salesforce にデータをコピーするには、コピー アクティビティのシンクの種類を **SalesforceSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | コピー アクティビティのシンクの type プロパティは **SalesforceSink** に設定する必要があります | あり |
+| writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **Insert** および **Upsert**。 | いいえ (既定値は Insert) |
+| externalIdFieldName | Upsert 操作の外部 ID フィールドの名前。 指定されたフィールドは Salesforce オブジェクトの "外部 ID フィールド" として定義する必要があり、対応する入力データに NULL 値があってはなりません。 | "Upsert" の場合ははい |
+| writeBatchSize | 各バッチで Salesforce に書き込まれたデータの行数。 | いいえ (既定値は 5000) |
+| ignoreNullValues | 書き込み操作時に入力データからの null 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **true**: アップサート/更新操作の実行時には対象オブジェクト内のデータを変更せず、挿入操作の実行時には定義済みの既定値を挿入します。<br/>- **false**: アップサート/更新操作の実行時には対象オブジェクト内のデータを NULL に更新し、挿入操作の実行時には NULL 値を挿入します。 | いいえ (既定値は false) |
+
+### <a name="example-salesforce-sink-in-copy-activity"></a>例: コピー アクティビティでの Salesforce シンク
+
+```json
+"activities":[
+    {
+        "name": "CopyToSalesforce",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<Salesforce input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>"
+            },
+            "sink": {
+                "type": "SalesforceSink",
+                "writeBehavior": "Upsert",
+                "externalIdFieldName": "CustomerId__c",
+                "writeBatchSize": 10000,
+                "ignoreNullValues": true
+            }
+        }
+    }
+]
+```
+
 ## <a name="query-tips"></a>クエリのヒント
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Salesforce レポートからのデータの取得
 
-`{call "<report name>"}. Example: `"query": "{call \"TestReport\"}"` というクエリを指定することで、Salesforce レポートからデータを取得できます。
+`{call "<report name>"}` というクエリを指定すると、Salesforce レポートからデータを取得できます。 例: `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>削除済みレコードを Salesforce のごみ箱から取得する
 
@@ -189,8 +291,8 @@ Salesforce からデータをコピーするには、コピー アクティビ�
 
 SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式の相違点に注意してください。 次に例を示します。
 
-* **SOQL サンプル**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', <datetime parameter>, <datetime parameter>)`
-* **SQL の例**: `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', <datetime parameter>, <datetime parameter>)`
+* **SOQL サンプル**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **SQL の例**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}"`
 
 ## <a name="data-type-mapping-for-salesforce"></a>Salesforce のデータ型マッピング
 
@@ -218,6 +320,5 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 | テキスト (暗号化) |String |
 | URL |String |
 
-
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。
+Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

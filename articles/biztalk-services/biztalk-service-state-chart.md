@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05470e75fc7b46603c8fce3a98c66ac6a24758a8
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>BizTalk サービスの状態を使用して実行できる操作と実行できない操作
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 BizTalk サービスの現在の状態によっては、BizTalk サービスで実行できる操作と実行できない操作があります。
 
-たとえば、Azure クラシック ポータルで新しい BizTalk サービスをプロビジョニングするとします。 正常に完了すると、BizTalk サービスが `active` 状態になります。 アクティブ状態では、BizTalk サービスを停止、中断、および削除できます。 BizTalk サービスを停止し、停止に失敗すると、BizTalk サービスは `StopFailed` 状態になります。 `StopFailed` 状態では、BizTalk サービスを再起動できます。 許可されていない操作 (再開など) を実行しようとすると、次のエラーが発生します。
+たとえば、新しい BizTalk サービスをプロビジョニングするとします。 正常に完了すると、BizTalk サービスが `active` 状態になります。 アクティブ状態では、BizTalk サービスを停止、中断、および削除できます。 BizTalk サービスを停止し、停止に失敗すると、BizTalk サービスは `StopFailed` 状態になります。 `StopFailed` 状態では、BizTalk サービスを再起動できます。 許可されていない操作 (再開など) を実行しようとすると、次のエラーが発生します。
 
 `Operation not allowed`
 
@@ -52,7 +52,6 @@ BizTalk サービスの現在の状態によっては、BizTalk サービスで�
 
 
 ## <a name="see-also"></a>関連項目
-* [Azure クラシック ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [BizTalk Services の [ダッシュボード]、[監視]、[スケール] の各タブの操作](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk Services の Developer、Basic、Standard、および Premium Edition のチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
 * [BizTalk サービスをバックアップおよび復元する方法](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

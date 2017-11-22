@@ -1,6 +1,6 @@
-Cloud Shell で [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan` App Service プランに [Web アプリ](../articles/app-service/containers/app-service-linux-intro.md)を作成します。 `<app_name>` を固有のアプリ名に置き換えることを忘れないでください。
+Cloud Shell で [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan` App Service プランに [Web アプリ](../articles/app-service/containers/app-service-linux-intro.md)を作成します。 
 
-次のコマンドのランタイムは、`dotnetcore|1.1` に設定されます。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp#list-runtimes) を実行してください。 
+次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `dotnetcore|1.1` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp#list-runtimes) を実行します。 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "dotnetcore|1.1" --deployment-local-git
@@ -24,7 +24,7 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
 }
 ```
 
-Git デプロイを有効にして、空の新しい Web アプリを Linux コンテナーに作成しました。
+Git デプロイを有効にして、空の Web アプリを Linux コンテナーに作成しました。
 
 > [!NOTE]
 > Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。

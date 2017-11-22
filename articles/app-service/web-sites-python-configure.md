@@ -1,6 +1,6 @@
 ---
 title: "Azure App Service Web Apps による Python の構成"
-description: "このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを Azure App Service Web Apps に作成して構成する方法について説明します。"
+description: "このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠している基本的な Python アプリケーションを Azure App Service Web Apps に作成して構成する方法について説明します。"
 services: app-service
 documentationcenter: python
 tags: python
@@ -15,14 +15,14 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 08b07053dd1507bcf0564f3071642f66f06b3559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86e19d5bb942937779665eb60d9dc0654c16747d
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Azure App Service Web Apps による Python の構成
-このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠した基本的な Python アプリケーションを [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)に作成して構成する方法について説明します。
+このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠している基本的な Python アプリケーションを [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)に作成して構成する方法について説明します。
 
 仮想環境や、requirements.txt を使用したパッケージ インストールなどの Git デプロイメントの追加の機能を説明します。
 
@@ -41,7 +41,7 @@ Azure Marketplace には、Bottle、Django、Flask フレームワーク用の�
 ## <a name="git-publishing"></a>Git 発行
 「 [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。 このチュートリアルでは、Python Web アプリの作成と管理、Azure App Service への発行を Git を使用して行います。
 
-Git 発行の設定が完了すると、Git リポジトリが作成されて Web アプリに関連付けられます。 このリポジトリの URL が表示され、以後、ローカル開発環境からクラウドにデータをプッシュする目的で使用できます。 Git を介してアプリケーションを発行するには、Git クライアントを併せてインストールする必要があります。提供されるインストラクションに従って Web アプリのコンテンツを Azure App Service にプッシュしてください。
+Git 発行の設定が完了すると、Git リポジトリが作成されて Web アプリに関連付けられます。 このリポジトリの URL が表示され、ローカル開発環境からクラウドにデータをプッシュする目的で使用できます。 Git を介してアプリケーションを発行するには、Git クライアントを併せてインストールする必要があります。提供されるインストラクションに従って Web アプリのコンテンツを Azure App Service にプッシュしてください。
 
 ## <a name="application-overview"></a>アプリケーションの概要
 次のセクションでは、次のファイルが作成されます。 これらは、Git リポジトリのルートに配置する必要があります。
@@ -80,10 +80,10 @@ WSGI は、[PEP 3333](http://www.python.org/dev/peps/pep-3333/) で規定され�
 
 Azure がリポジトリのルート ディレクトリに requirements.txt を検出すると、 `env`という名前の仮想環境が自動的に作成されます。 これは、最初のデプロイメント、または選択した Python ランタイムを変更した後のデプロイメント時に発生します。
 
-仮想開発環境をローカルで作成する場合、Git リポジトリには含めないでください。
+開発用の仮想環境をローカルで作成する場合、Git リポジトリには含めないでください。
 
 ## <a name="package-management"></a>パッケージの管理
-requirements.txt 内のリストにあるパッケージが、pip を使用して仮想環境に自動的にインストールされます。 これはデプロイメントごとに発生しますが、パッケージが既にインストールされている場合は、インストールがスキップされます。
+requirements.txt 内のリストにあるパッケージが、pip を使用して仮想環境に自動的にインストールされます。 これはデプロイごとに発生しますが、パッケージが既にインストールされている場合は、インストールがスキップされます。
 
 例 `requirements.txt`
 
@@ -356,7 +356,3 @@ Python 3.4 用の `web.config` の例:
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
-
-## <a name="whats-changed"></a>変更内容
-* Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
-

@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> ポータルは推奨されません。 MABS インスタンスを管理するには、「[REST API for Managing BizTalk Services on Azure (Azure で BizTalk Services を管理するための REST API)](https://msdn.microsoft.com/library/azure/dn232347.aspx)」をご覧ください。

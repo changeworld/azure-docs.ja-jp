@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/13/2017
+ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e817e327b8890c91bd7db640b083fd6c5c11aa14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40433df5ebe90aec3a9294f2c5a6083c4567b161
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 この記事では、Recovery Services コンテナーを使用する Azure Backup のレポートを構成し、Power BI を使用してそのレポートにアクセスする手順を説明します。 この手順を実行すると、Power BI に直接アクセスしてすべてのレポートを表示し、レポートのカスタマイズおよび作成を行えるようになります。 
@@ -29,6 +29,7 @@ ms.lasthandoff: 10/11/2017
 2. 現時点では、Azure SQL、DPM、および Azure Backup Server に対するレポートはサポートされていません。
 3. 各コンテナーに対して同じストレージ アカウントが構成されている場合は、複数のコンテナーおよび複数のサブスクリプションにわたるレポートを表示できます。 選択するストレージ アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。
 4. Power BI での、レポートのスケジュールされた更新の頻度は 24 時間ごとです。 Power BI ではレポートのアドホック更新も実行できます。その場合、顧客のストレージ アカウント内の最新データを使用してレポートがレンダリングされます。 
+5. Azure Backup のレポートは、国内のクラウドでは現在サポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 1. レポート用に構成する [Azure ストレージ アカウントを作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)します。 このストレージ アカウントは、レポート関連のデータを格納するために使用されます。
@@ -50,19 +51,26 @@ Azure Portal で次の手順を使用して、Recovery Services コンテナー�
 2. コンテナーの下に表示される項目の一覧で、[監視およびレポート] セクションの下の **[バックアップ レポート]** をクリックして、レポート用のストレージ アカウントを構成します。
 
       ![[バックアップ レポート] メニュー項目を選択する (手順 2)](./media/backup-azure-configure-reports/backup-reports-settings.PNG)
-3. [バックアップ レポート] ブレードで、**[構成]** ボタンをクリックします。 これにより、[Azure Application Insights] ブレードが開きます。このブレードは、顧客のストレージ アカウントにデータを発行するために使用されます。
+3. [バックアップ レポート] ブレードで、**[診断設定]** リンクをクリックします。 これにより、診断設定 UI が開きます。この UI は、顧客のストレージ アカウントにデータをプッシュするために使用されます。
 
-      ![ストレージ アカウントを構成する (手順 3)](./media/backup-azure-configure-reports/configure-storage-account.PNG)
-4. [状態] トグル ボタンを **[オン]** に設定し、**[ストレージ アカウントへのアーカイブ]** チェック ボックスをオンにして、ストレージ アカウントへのレポート データのフローを開始できるようにします。
+      ![診断を有効化する (手順 3)](./media/backup-azure-configure-reports/backup-azure-configure-reports.png)
+4. **[診断を有効にする]** リンクをクリックします。 これにより、ストレージ アカウントを構成するための UI が開きます。 
 
-      ![診断を有効化する (手順 4)](./media/backup-azure-configure-reports/set-status-on.png)
-5. [ストレージ アカウント] ピッカーをクリックし、一覧からレポート データを格納するストレージ アカウントを選択して、**[OK]** をクリックします。
+      ![診断を有効にする (手順 4)](./media/backup-azure-configure-reports/enable-diagnostics.png)
+5. **[名前]** フィールドに設定名を入力し、**[ストレージ アカウントへのアーカイブ]** チェック ボックスをオンにして、ストレージ アカウントへのレポート データのフローを開始できるようにします。
 
-      ![ストレージ アカウントを選択する (手順 5)](./media/backup-azure-configure-reports/select-storage-account.png)
-6. **[AzureBackupReport]** チェック ボックスをオンにし、スライダーを動かして、このレポート データのリテンション期間を選択します。 ストレージ アカウント内のレポート データは、このスライダーで選択した期間のあいだ保持されます。
+      ![診断を有効化する (手順 5)](./media/backup-azure-configure-reports/select-setting-name.png)
+6. [ストレージ アカウント] ピッカーをクリックし、関連サブスクリプションとレポート データを格納するストレージ アカウントを一覧から選択して、**[OK]** をクリックします。
 
-      ![ストレージ アカウントを選択する (手順 6)](./media/backup-azure-configure-reports/save-configuration.png)
-7. すべての変更を確認し、図に示した一番上の **[保存]** ボタンをクリックします。 このアクションにより、すべての変更が保存され、ストレージ アカウントがレポート データを格納するように構成されます。
+      ![ストレージ アカウントを選択する (手順 6)](./media/backup-azure-configure-reports/select-subscription-sa.png)
+7. [ログ] セクションで **[AzureBackupReport]** チェック ボックスをオンにし、スライダーを動かして、このレポート データのリテンション期間を選択します。 ストレージ アカウント内のレポート データは、このスライダーで選択した期間のあいだ保持されます。
+
+      ![ストレージ アカウントを保存する (手順 7)](./media/backup-azure-configure-reports/save-diagnostic-settings.png)
+8. すべての変更を確認し、図に示した一番上の **[保存]** ボタンをクリックします。 このアクションにより、すべての変更が保存され、ストレージ アカウントがレポート データを格納するように構成されます。
+
+9. [診断設定] の表に、コンテナーに対して有効になっている新しい設定が表示されます。 表示されない場合は、表を最新の情報に更新して、更新された設定を表示します。
+
+      ![診断設定を表示する (手順 9)](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
 > ストレージ アカウントを保存してレポートを構成した後は、初期データのプッシュが完了するまで**24 時間待つ**必要があります。 その時間が経過した後でのみ、Power BI に Azure Backup コンテンツ パックをインポートする必要があります。 詳しくは、「[よく寄せられる質問](#frequently-asked-questions)」をご覧ください。 

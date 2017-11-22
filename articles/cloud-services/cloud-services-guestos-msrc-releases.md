@@ -12,16 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/6/2017
+ms.date: 11/8/2017
 ms.author: raiye
-ms.openlocfilehash: b728e794132ab8eb91d5d77b3ed452f0c84b8823
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f753a30fa833aaf19069b01607c8beaadcc667f5
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="october-guest-os"></a>10 月のゲスト OS
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 17-10 | [4041691] |Windows 10 の更新プログラム |5.12 |2017 年 10 月 10 日 |
+| Rel 17-10 | [4041678], [4041679], [4041687] |Windows セキュリティのみ |2.67, 3.54, 4.47 |2017 年 10 月 10 日 |
+| Rel 17-10 | [4040685], |Internet Explorer |2.67, 3.54, 4.47 |2017 年 10 月 10 日 |
+| Rel 17-10 | [4041681], [4041690], [4041693] |Windows 月間ロールアップ |2.67, 3.54, 4.47 |2017 年 10 月 10 日 |
+| 該当なし | [4038777] |9 月のセキュリティ以外のロールアップ |2.67 |2017 年 9 月 12 日 |
+| 該当なし | [4038799] |9 月のセキュリティ以外のロールアップ |3.54 |2017 年 9 月 12 日 |
+| 該当なし | [4038792] |9 月のセキュリティ以外のロールアップ |4.47 |2017 年 9 月 12 日 |
+| 該当なし | [4040980] |.NET の 9 月のセキュリティ以外のロールアップ |2.67 |2017 年 9 月 12 日 |
+| 該当なし | [4040979] |.NET の 9 月のセキュリティ以外のロールアップ |3.54 |2017 年 9 月 12 日 |
+| 該当なし | [4040981] |.NET の 9 月のセキュリティ以外のロールアップ |4.47 |2017 年 9 月 12 日 |
 
 ## <a name="september-guest-os"></a>9 月のゲスト OS
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -535,6 +549,20 @@ ms.lasthandoff: 10/11/2017
 | 該当なし |[2999802] |点線ではなく実線が Windows で印刷される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2896881] |Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 
+[4041691]: http://support.microsoft.com/kb/4041691 
+[4041678]: http://support.microsoft.com/kb/4041678 
+[4041679]: http://support.microsoft.com/kb/4041679
+[4041687]: http://support.microsoft.com/kb/4041687
+[4040685]: http://support.microsoft.com/kb/4040685
+[4041681]: http://support.microsoft.com/kb/4041681
+[4041690]: http://support.microsoft.com/kb/4041690
+[4041693]: http://support.microsoft.com/kb/4041693
+[4038777]: http://support.microsoft.com/kb/4038777
+[4038799]: http://support.microsoft.com/kb/4038799
+[4038792]: http://support.microsoft.com/kb/4038792
+[4040980]: http://support.microsoft.com/kb/4040980
+[4040979]: http://support.microsoft.com/kb/4040979
+[4040981]: http://support.microsoft.com/kb/4040981
 
 [4038782]: http://support.microsoft.com/kb/4038782
 [4038779]: http://support.microsoft.com/kb/4038779

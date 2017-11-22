@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
-ms.openlocfilehash: 25d3776920d683fffedcd8ac6ed0e84dfe875974
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 283428c603cc73d23f0afa94670a23dbb45068d5
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Azure App Service でアプリを監視する方法
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure Portal](https://portal.azure.com) に用意されています。
@@ -37,28 +37,28 @@ App Service でホストされているアプリケーションは、使用で�
 **Free** アプリまたは **Shared** アプリの**クォータ**は、次のようになります。
 
 * **CPU (ショート)**
-  * このアプリケーションが 5 分ごとに使用できる CPU の量。 このクォータは、5 分ごとに再設定されます。
+  * このアプリケーションが 5 分ごとに使用できる CPU の量。 このクォータは、5 分ごとにリセットされます。
 * **CPU (1 日)**
-  * このアプリケーションが 1 日に使用できる CPU の総量。 このクォータは、24 時間ごとに (UTC の午前 0 時に) 再設定されます。
+  * このアプリケーションが 1 日に使用できる CPU の総量。 このクォータは、24 時間ごとに (UTC の午前 0 時に) リセットされます。
 * **メモリ**
   * このアプリケーションが使用できるメモリの総量。
 * **帯域幅**
   * このアプリケーションが 1 日に使用できる送信帯域幅の総量。
-    このクォータは、24 時間ごとに (UTC の午前 0 時に) 再設定されます。
+    このクォータは、24 時間ごとに (UTC の午前 0 時に) リセットされます。
 * **ファイルシステム**
   * 使用可能なストレージの総量。
 
 **Basic** プラン、**Standard** プラン、**Premium** プランでホストされているアプリに適用できるクォータは、**ファイルシステム**のみです。
 
-異なる App Service SKU で利用できる特定のクォータ、制限、機能の詳細については、こちらの [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md#app-service-limits)
+異なる App Service SKU で利用できる特定のクォータ、制限、機能について詳しくは、こちらの [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md#app-service-limits)に関するページをご覧ください
 
 #### <a name="quota-enforcement"></a>クォータの適用
-アプリケーションの使用量が **CPU (ショート)**、**CPU (1 日)**、**帯域幅**のクォータを超過すると、クォータが再設定されるまでアプリケーションは停止されます。 この停止期間中は、すべての受信要求の結果が **HTTP 403**になります。
+アプリケーションの使用量が **CPU (ショート)**、**CPU (1 日)**、**帯域幅**のクォータを超過すると、クォータがリセットされるまでアプリケーションは停止されます。 この停止期間中は、すべての受信要求の結果が **HTTP 403**になります。
 ![][http403]
 
-アプリケーションで使用される **メモリ** がクォータを超過した場合、アプリケーションは再起動されます。
+アプリケーションで使用される**メモリ**がクォータを超過した場合、アプリケーションは再起動されます。
 
-**ファイルシステム** がクォータを超過した場合、ログへの書き込みを含め、すべての書き込み操作が失敗するようになります。
+**ファイルシステム**がクォータを超過した場合、ログへの書き込みを含め、すべての書き込み操作が失敗します。
 
 クォータを引き上げたりアプリから削除したりするには、App Service プランをアップグレードしてください。
 
@@ -72,7 +72,7 @@ App Service でホストされているアプリケーションは、使用で�
 * **平均メモリ ワーキング セット**
   * アプリで使用された平均メモリ量 (MiB)。
 * **CPU 時間**
-  * アプリで消費された CPU の量 (秒)。 このメトリックの詳細については、「[CPU 時間と CPU の割合](#cpu-time-vs-cpu-percentage)」をご覧ください。
+  * アプリで消費された CPU の量 (秒)。 このメトリックについて詳しくは、「[CPU 時間と CPU の割合](#cpu-time-vs-cpu-percentage)」をご覧ください
 * **受信データ**
   * アプリで消費された受信帯域幅の量 (MiB)。
 * **送信データ**
@@ -101,7 +101,7 @@ App Service でホストされているアプリケーションは、使用で�
 **App Service プラン**について利用できるメトリックには、次のものがあります。
 
 > [!NOTE]
-> App Service プランのメトリックは、**Basic**、**Standard** および **Premium SKU** のプランでのみ利用できます。
+> App Service プランのメトリックは、**Basic**、**Standard** および **Premium** レベルのプランでのみ利用できます。
 > 
 > 
 
@@ -125,7 +125,7 @@ CPU の使用状況を反映するメトリックには、 **CPU 時間**と **C
 
 **CPU 時間**は、**Free** プランまたは **Shared** プランでホストされているアプリで役に立ちます。これは、これらのプランのクォータの 1 つが、アプリによって使用される CPU 時間 (分数) で定義されているためです。
 
-一方、**CPU の割合**は、**Basic**、**Standard**、**Premium** のプランでホストされているアプリで役に立ちます。これらのアプリではスケールアウトが可能であり、このメトリックが全インスタンスの全体的な使用状況を示す優れた指標となるためです。
+**CPU の割合**は、**Basic**、**Standard**、**Premium** のプランでホストされているアプリで役に立ちます。これらのアプリではスケールアウトが可能であり、このメトリックが全インスタンスの全体的な使用状況を示す優れた指標となるためです。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>メトリックの粒度と保持ポリシー
 アプリケーションと App Service プランのメトリックがサービスによってログに記録され、集計される際には、次の粒度と保持ポリシーが適用されます。
@@ -134,30 +134,27 @@ CPU の使用状況を反映するメトリックには、 **CPU 時間**と **C
 * 粒度が**時間**のメトリックは **30 日間**保持されます。
 * 粒度が**日**のメトリックは **90 日間**保持されます。
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure Portal でのクォータとメトリックの監視
+## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure Portal でのクォータとメトリックの監視。
 アプリケーションに影響するさまざまな**クォータ**と**メトリック**の状態を、[Azure Portal](https://portal.azure.com) で確認できます。
 
 ![][quotas]
 **クォータ**は、[設定] ブレードの **[クォータ]** にあります。 UX では、(1) クォータの名前、(2) リセットの間隔、(3) 現在の制限、(4) 現在の値を確認できます。
 
 ![][metrics]
-**メトリック**は、リソースのブレードから直接アクセスできます。 (1) グラフを**クリック**し、(2) **[グラフの編集]** を選択することで、そのグラフをカスタマイズすることもできます。
+**メトリック**は、リソース ページから直接アクセスできます。 (1) グラフを**クリック**し、(2) **[グラフの編集]** を選択することで、そのグラフをカスタマイズすることもできます。
 ここから、表示する (3) **時間範囲**、(4) **グラフの種類**、(5) **メトリック**を変更できます。  
 
 メトリックの詳細については、「[サービス メトリックの監視](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)」をご覧ください。
 
 ## <a name="alerts-and-autoscale"></a>アラートと自動スケール
-アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。詳細については、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」をご覧ください。
+アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳しくは、[アラート通知の受信](../monitoring-and-diagnostics/insights-alerts-portal.md)に関するページをご覧ください。
 
-Basic、Standard、Premium の App Service プランでホストされている App Service アプリでは、 **自動スケール**がサポートされています。 これにより、App Service プランのメトリックを監視する規則を構成できるほか、インスタンス数を増減させ、必要に応じてリソースを追加したり、アプリケーションのプロビジョニングが過剰なときにコストを節約したりできます。 自動スケールの詳細については、[スケールの方法](../monitoring-and-diagnostics/insights-how-to-scale.md)に関するページと「[Azure Insights の自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)」をご覧ください。
+Basic、Standard、Premium の App Service プランでホストされている App Service アプリでは、**自動スケール**がサポートされています。 これにより、App Service プランのメトリックを監視する規則を構成できるほか、インスタンス数を増減させ、必要に応じてリソースを追加したり、アプリケーションのプロビジョニングが過剰なときにコストを節約したりできます。 自動スケールの詳細については、[スケールの方法](../monitoring-and-diagnostics/insights-how-to-scale.md)に関するページと「[Azure Insights の自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)」をご覧ください。
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
-
-## <a name="whats-changed"></a>変更内容
-* Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169
