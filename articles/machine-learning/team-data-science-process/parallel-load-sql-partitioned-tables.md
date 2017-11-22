@@ -4,7 +4,7 @@ description: "SQL パーティション テーブルを使用した並列の一�
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ff90fdb0-5bc7-49e8-aee7-678b54f901c8
 ms.service: machine-learning
@@ -12,24 +12,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/09/2017
 ms.author: bradsev
-ms.openlocfilehash: 899f20b3642612386f2513c9c8649cd845be826e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77638ff52edbc2b782b21a4ca1c727a2b46f22f3
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>SQL パーティション テーブルを使用した並列の一括データ インポート
 このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL Database へのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>新しいデータベースとファイル グループのセットの作成
 * [新しいデータベースを作成します](https://technet.microsoft.com/library/ms176061.aspx) (まだ存在しない場合)。
-* パーティション分割された物理ファイルを格納するデータベースにデータベース ファイルグループを追加します。新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx)、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用して行います。
+* パーティション分割された物理ファイルを格納するデータベースにデータベース ファイル グループを追加します。 
+* これは、新規の場合は [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) を、データベースが既に存在する場合は [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) を使用して実行できます。
 * 1 つまたは複数のファイル (必要に応じて) を各データベース ファイルグループに追加します。
   
   > [!NOTE]
-  > このパーティションのデータを保持するターゲット ファイル グループと、ファイル グループのデータが格納される物理データベース ファイル名を指定します。
+  > このパーティションのデータと、ファイル グループのデータが格納される物理データベースのファイル名を保持する、ターゲット ファイル グループを指定します。
   > 
   > 
 
@@ -55,18 +56,19 @@ ms.lasthandoff: 10/11/2017
     ')
 
 ## <a name="create-a-partitioned-table"></a>パーティション テーブルを作成する
-データ スキーマに従って、前の手順で作成されたデータベースのファイル グループにマップされる、パーティション分割されたテーブルを作成します。 パーティション分割されたテーブルにデータが一括インポートされると、以下に説明されているように、パーティション構成に従ってレコードがファイル グループ間で配布されます。
+データ スキーマに従って、前の手順で作成されたデータベースのファイル グループにマッピングされる、パーティション分割されたテーブルを作成するには、まずパーティション関数とパーティション構成を作成する必要があります。 パーティション分割されたテーブルにデータが一括インポートされると、以下に説明されるように、パーティション構成に従ってレコードがファイル グループ間で配布されます。
 
-**パーティション テーブルを作成するには、以下の操作を行う必要があります。**
-
-* 個別のパーティション テーブルに含める値/境界の範囲を定義する[パーティション関数を作成します](https://msdn.microsoft.com/library/ms187802.aspx)。たとえば、2013 年の月別 (some\_datetime\_field) にパーティションを制限するには以下のようにします。
+### <a name="1-create-a-partition-function"></a>1.パーティション関数の作成
+[パーティション関数を作成します](https://msdn.microsoft.com/library/ms187802.aspx)。この関数は、個別のパーティション テーブルに含める値/境界の範囲を定義します。たとえば、2013 年の月別 (some\_datetime\_field) にパーティションを制限するには以下のようにします。
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
             '20130201', '20130301', '20130401',
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
-* パーティション関数の各パーティションの範囲を物理ファイル グループにマップする[パーティション スキームを作成します](https://msdn.microsoft.com/library/ms179854.aspx)。たとえば、以下のようにします。
+
+### <a name="2-create-a-partition-scheme"></a>手順 2.パーティション構成の作成
+[パーティション構成を作成します](https://msdn.microsoft.com/library/ms179854.aspx)。 この構成はパーティション関数の各パーティションの範囲を物理ファイル グループにマッピングします。たとえば、以下のようにします。
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -83,7 +85,9 @@ ms.lasthandoff: 10/11/2017
         INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
-* データ スキーマに従って[パーティション テーブルを作成](https://msdn.microsoft.com/library/ms174979.aspx)し、テーブルのパーティション分割に使用されるパーティション スキーマと制約フィールドを指定します。たとえば、以下のようにします。
+
+### <a name="3-create-a-partition-table"></a>手順 3.パーティション テーブルの作成
+データ スキーマに従って[パーティション テーブルを作成](https://msdn.microsoft.com/library/ms174979.aspx)し、テーブルのパーティション分割に使用されるパーティション構成と制約フィールドを指定します。たとえば、以下のようにします。
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
@@ -91,6 +95,7 @@ ms.lasthandoff: 10/11/2017
 詳細については、「 [パーティション テーブルとパーティション インデックスの作成](https://msdn.microsoft.com/library/ms188730.aspx)」を参照してください。
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>個別のパーティション テーブルごとにデータを一括インポートする
+
 * BCP、BULK INSERT、 [SQL Server 移行ウィザード](http://sqlazuremw.codeplex.com/)などの他の方法を使用することができます。 ここで示されている例では BCP による方法を使用します。
 * [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
   
@@ -178,5 +183,5 @@ ms.lasthandoff: 10/11/2017
   > 
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>実行中の Advanced Analytics Process and Technology の例
-パブリック データセットを使用した Cortana Analytics Process のエンドツーエンドのチュートリアル例については、「 [Cortana Analytics Process の活用: SQL Server を使用する](sql-walkthrough.md)」を参照してください。
+パブリック データセットと共に Team Data Science Process を使用したエンド ツー エンドのチュートリアル例については、「[Team Data Science Process の活用: SQL Server の使用](sql-walkthrough.md)」を参照してください。
 

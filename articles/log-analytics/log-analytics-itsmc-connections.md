@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.openlocfilehash: bbec5773987b29eb62d10d17b88efcda29889612
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e801d484ffb40a0d4aed517a741c45dc76b62b37
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>ITSM 製品/サービスを IT Service Management Connector に追加する (プレビュー)
-この記事では、お使いの ITSM 製品/サービスを OMS の IT Service Management Connector に接続して、作業項目を一元的に管理する方法について説明します。 IT Service Management Connector の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
+この記事では、お使いの ITSM 製品/サービスを OMS の IT Service Management Connector (ITSMC) に接続し、作業項目を一元管理する方法について説明します。 ITSMC の詳細については、「[ITSMC Overview (ITSMC の概要)](log-analytics-itsmc-overview.md)」を参照してください。
 
 次の製品/サービスがサポートされています。
 
@@ -31,14 +31,13 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-oms"></a>System Center Service Manager を OMS の IT Service Management Connector に接続する
 
-次のセクションでは、System Center Service Manager 製品を OMS の IT Service Management Connector に接続する方法について詳しく説明します。
+以降のセクションでは、System Center Service Manager 製品を OMS の ITSMC に接続する方法について詳細に説明します。
 
 ### <a name="prerequisites"></a>前提条件
 
-以下の前提条件を満たしていることを確認してください。
+次の前提条件が満たされていることを確認してください。
 
-- IT Service Management Connector がインストールされている。
-詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
+- ITSMC がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
 - Service Manager Web アプリケーション (Web アプリ) がデプロイされ構成されている。 Web アプリに関する情報については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
 - ハイブリッド接続が作成および構成されている。 詳細については、「[ハイブリッド接続の構成](#configure-the-hybrid-connection)」をご覧ください。
 - サポートされている Service Manager のバージョン (2012 R2 または 2016) を使用している。
@@ -46,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="connection-procedure"></a>接続手順
 
-System Center Service Manager インスタンスを IT Service Management Connector に接続するには、次の手順に従います。
+System Center Service Manager インスタンスを ITSMC に接続するには、次の手順を使用します。
 
 1. **[OMS]** >**[設定]** > **[接続されたソース]** に移動します。
 2. **[ITSM Connector]** を選択し **[新しい接続の追加]** をクリックします。
@@ -59,26 +58,26 @@ System Center Service Manager インスタンスを IT Service Management Connec
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **名前**   | IT Service Management Connector に接続する System Center Service Manager インスタンスの名前を入力します。  この名前は、インスタンスの作業項目を構成したり、詳細な Log Analytics を確認したりするときに使用します。 |
+| **名前**   | ITSMC に接続する System Center Service Manager インスタンスの名前を入力します。  この名前は、インスタンスの作業項目を構成したり、詳細な Log Analytics を確認したりするときに使用します。 |
 | **接続の種類を選択**   | **[System Center Service Manager]** を選択します。 |
 | **サーバー URL**   | Service Manager Web アプリの URL を入力します。 Service Manager Web アプリの詳細については、[こちら](#create-and-deploy-service-manager-web-app-service)をご覧ください。
 | **クライアント ID**   | Web アプリを認証するために (自動スクリプトを使用して) 生成したクライアント ID を入力します。 自動スクリプトの詳細については、[こちら](log-analytics-itsmc-service-manager-script.md)をご覧ください。|
 | **クライアント シークレット**   | この ID 用に生成したクライアント シークレットを入力します。   |
-| **データ同期スコープ**   | IT Service Management Connector を介して同期する Service Manager 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。 **オプション:** インシデント、変更要求。|
+| **データ同期スコープ**   | ITSMC 経由で同期する Service Manager 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。 **オプション:** インシデント、変更要求。|
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、OMS は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 
-正常に接続すると、同期します。
+**正常に接続され、同期された場合**:
 
 - Service Manager で選択した作業項目は、OMS の **Log Analytics** にインポートされます。 IT Service Management Connector タイルで、これらの作業項目の概要を確認できます。
 
-- OMS からこの Service Manager インスタンスに、OMS アラートまたはログ検索からのインシデントを作成できます。
+- この Service Manager インスタンスでは、OMS から、OMS アラート、ログ検索、または Azure アラートからのインシデントを作成できます。
 
-詳細については、「[Create ITSM work items for OMS alerts (OMS アラートの ITSM 作業項目の作成)](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)」と「[Create ITSM work items from OMS logs (OMS ログからの ITSM 作業項目の作成)](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)」をご覧ください。
+詳細情報: 「[OMS アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)」、「[OMS ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)」、および「[Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)」。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Service Manager Web アプリ サービスを作成しデプロイする
 
-オンプレミスの Service Manager を OMS の IT Service Management Connector に接続するために、Microsoft は GitHub 上に Service Manager Web アプリを作成しました。
+オンプレミスの Service Manager を OMS の ITSMC に接続するために、Microsoft は GitHub 上に Service Manager Web アプリを作成しました。
 
 お使いの Service Manager 用に ITSM Web アプリを設定するには、次の手順に従います。
 
@@ -99,7 +98,7 @@ System Center Service Manager インスタンスを IT Service Management Connec
 
 スクリプトによって、指定した名前で (一意の名前にするために文字列をいくつか追加して) Web アプリが作成されます。 また、スクリプトによって、**Web アプリの URL**、**クライアント ID**、**クライアント シークレット**が生成されます。
 
-これらの値を保存してください。IT Service Management Connector への接続を作成するときに必要になります。
+これらの値を保存します。これらは、ITSMC との接続を作成するときに使用します。
 
 **Web アプリのインストールを確認する**
 
@@ -109,7 +108,7 @@ System Center Service Manager インスタンスを IT Service Management Connec
 
 ### <a name="configure-the-hybrid-connection"></a>ハイブリッド接続の構成
 
-Service Manager インスタンスを OMS の IT Service Management Connector に接続するハイブリッド接続を構成するには、次の手順に従います。
+Service Manager インスタンスを OMS の ITSMC に接続するハイブリッド接続を構成するには、次の手順を使用します。
 
 1. **[Azure リソース]** の下にある Service Manager Web アプリを見つけます。
 2. **[設定]** > **[ネットワーク]** の順にクリックします。
@@ -154,14 +153,14 @@ Service Manager インスタンスを OMS の IT Service Management Connector �
 
 3. Azure の資格情報でログインし、ハイブリッド接続を作成したサブスクリプションを選択します。
 
-4. [ **Save**] をクリックします。
+4. **[ Save]** をクリックします。
 
 ハイブリッド接続が正常に接続されています。
 
 ![正常なハイブリッド接続](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
-> ハイブリッド接続を作成したら、デプロイした Service Manager Web アプリにアクセスして接続を確認し、テストします。 OMS の IT Service Management Connector に接続する前に、ハイブリッド接続が正常であることを確認してください。
+> ハイブリッド接続を作成したら、デプロイした Service Manager Web アプリにアクセスして接続を確認し、テストします。 OMS の ITSMC に接続しようとする前に、その接続が正常であることを確認してください。
 
 次の図は、正常な接続の詳細を示しています。
 
@@ -169,13 +168,13 @@ Service Manager インスタンスを OMS の IT Service Management Connector �
 
 ## <a name="connect-servicenow-to-it-service-management-connector-in-oms"></a>ServiceNow を OMS の IT Service Management Connector に接続する
 
-次のセクションでは、ServiceNow 製品を OMS の IT Service Management Connector に接続する方法について詳しく説明します。
+以降のセクションでは、ServiceNow 製品を OMS の ITSMC に接続する方法について詳細に説明します。
 
 ### <a name="prerequisites"></a>前提条件
 
-以下の前提条件を満たしていることを確認してください。
+次の前提条件が満たされていることを確認してください。
 
-- IT Service Management Connector がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
+- ITSMC がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
 - ServiceNow のバージョンがサポートされている ( Fuji、Geneva、Helsinki)。
 
 ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。
@@ -185,7 +184,6 @@ ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う�
 
 
 ### <a name="connection-procedure"></a>**接続手順**
-
 ServiceNow 接続を作成するには、次の手順に従います。
 
 1. **[OMS]** > **[設定]** > **[接続されたソース]** に移動します。
@@ -200,25 +198,25 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **名前**   | IT Service Management Connector に接続する ServiceNow インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、あとで OMS 上で使用します。 |
+| **名前**   | ITSMC に接続する ServiceNow インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、あとで OMS 上で使用します。 |
 | **接続の種類を選択**   | **[ServiceNow]** を選択します。 |
-| **ユーザー名**   | IT Service Management Connector への接続をサポートする ServiceNow アプリ内で作成した統合ユーザー名を入力します。 詳細については、「[ServiceNow アプリのユーザー ロールの作成](#create-integration-user-role-in-servicenow-app)」をご覧ください。|
+| **ユーザー名**   | ITSMC への接続をサポートするために ServiceNow アプリで作成した統合ユーザー名を入力します。 詳細については、「[ServiceNow アプリのユーザー ロールの作成](#create-integration-user-role-in-servicenow-app)」をご覧ください。|
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注**: ユーザー名とパスワードは、認証トークンを生成するためにのみ使用されます。OMS サービス内には格納されません。  |
-| **サーバー URL**   | IT Service Management Connector に接続する ServiceNow インスタンスの URL を入力します。 |
+| **サーバー URL**   | ITSMC に接続する ServiceNow インスタンスの URL を入力します。 |
 | **クライアント ID**   | 先ほど生成した、OAuth2 認証に使用するクライアント ID を入力します。  クライアント ID とシークレットを生成する方法の詳細については、「[OAuth Setup (OAuth のセットアップ)](http://wiki.servicenow.com/index.php?title=OAuth_Setup)」をご覧ください。 |
 | **クライアント シークレット**   | この ID 用に生成したクライアント シークレットを入力します。   |
-| **データ同期スコープ**   | IT Service Management Connector を介して OMS に同期する ServiceNow 作業項目を選択します。  選択した値は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。|
+| **データ同期スコープ**   | ITSMC 経由で OMS に同期する ServiceNow 作業項目を選択します。  選択した値は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。|
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、OMS は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 
 
-正常に接続すると、同期します。
+**正常に接続され、同期された場合**:
 
 - ServiceNow 接続で選択した作業項目は、OMS の Log Analytics にインポートされます。  IT Service Management Connector タイルで、これらの作業項目の概要を確認できます。
-- この ServiceNow インスタンスに、OMS アラートまたはログ検索からのインシデント、アラート、イベントを作成できます。  
+- この ServiceNow インスタンスでは、OMS アラート、ログ検索、または Azure アラートからのインシデント、アラート、およびイベントを作成できます。  
 
 
-詳細については、「[Create ITSM work items for OMS alerts (OMS アラートの ITSM 作業項目の作成)](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)」と「[Create ITSM work items from OMS logs (OMS ログからの ITSM 作業項目の作成)](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)」をご覧ください。
+詳細情報: 「[OMS アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)」、「[OMS ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)」、および「[Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)」。
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>ServiceNow アプリで統合ユーザー ロールを作成する
 
@@ -230,7 +228,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
     ユーザー ロールがまだ作成されていない場合は、**[完了していません]** と表示されます。
 
-4.  **[Create integration user]\(統合ユーザーの作成\)** の横にあるテキスト ボックスに、OMS の IT Service Management Connector に接続できるユーザーのユーザー名を入力します。
+4.  **[Create integration user] (統合ユーザーの作成)** の横にあるテキスト ボックスに、OMS の ITSMC に接続できるユーザーのユーザー名を入力します。
 5.  このユーザーのパスワードを入力し、**[OK]** をクリックします。  
 
 >[!NOTE]
@@ -239,7 +237,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 新規に作成したユーザーには既定のロールが割り当てられ、表示されます。
 
-既定のロール:
+**既定のロール**:
 - personalize_choices
 - import_transformer
 -   x_mioms_microsoft.user
@@ -262,14 +260,15 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 ## <a name="connect-provance-to-it-service-management-connector-in-oms"></a>Provance を OMS の IT Service Management Connector に接続する
 
-次のセクションでは、Provance 製品を OMS の IT Service Management Connector に接続する方法について詳しく説明します。
+以降のセクションでは、Provance 製品を OMS の ITSMC に接続する方法について詳細に説明します。
+
 
 ### <a name="prerequisites"></a>前提条件
 
-以下の前提条件を満たしていることを確認してください。
+次の前提条件が満たされていることを確認してください。
 
 
-- IT Service Management Connector がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
+- ITSMC がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
 - Provance アプリが Azure AD で登録されており、クライアント ID が使用可能である。 詳細については、[Active Directory 認証の構成方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)に関する記事をご覧ください。
 
 - ユーザー ロールが管理者である。
@@ -289,32 +288,32 @@ Provance 接続を作成するには、次の手順に従います。
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **名前**   | IT Service Management Connector に接続する Provance インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、あとで OMS 上で使用します。 |
+| **名前**   | ITSMC に接続する Provance インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、あとで OMS 上で使用します。 |
 | **接続の種類を選択**   | **[Provance]** を選択します。 |
-| **ユーザー名**   | IT Service Management Connector に接続できるユーザー名を入力します。    |
+| **ユーザー名**   | ITSMC に接続できるユーザー名を入力します。    |
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注**: ユーザー名とパスワードは、認証トークンを生成するためにのみ使用されます。OMS サービス内には格納されません。|
-| **サーバー URL**   | IT Service Management Connector に接続する Provance インスタンスの URL を入力します。 |
+| **サーバー URL**   | ITSMC に接続する Provance インスタンスの URL を入力します。 |
 | **クライアント ID**   | Provance インスタンスで生成した、この接続を認証するためのクライアント ID を入力します。  クライアント ID の詳細については、[Active Directory 認証の構成方法](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)に関する記事をご覧ください。 |
-| **データ同期スコープ**   | IT Service Management Connector を介して OMS に同期する Provance 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。|
+| **データ同期スコープ**   | ITSMC 経由で OMS に同期する Provance 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。|
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、OMS は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。|
 
-正常に接続すると、同期します。
+**正常に接続され、同期された場合**:
 
 - Provance 接続で選択した作業項目は、OMS の **Log Analytics** にインポートされます。  IT Service Management Connector タイルで、これらの作業項目の概要を確認できます。
-- この Provance インスタンスに、OMS アラートまたはログ検索からのインシデントとイベントを作成できます。
+- この Provance インスタンスでは、OMS アラート、ログ検索、または Azure アラートからのインシデントおよびイベントを作成できます。
 
-詳細については、「[Create ITSM work items for OMS alerts (OMS アラートの ITSM 作業項目の作成)](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)」と「[Create ITSM work items from OMS logs (OMS ログからの ITSM 作業項目の作成)](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)」をご覧ください。
+詳細情報: 「[OMS アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)」、「[OMS ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)」、および「[Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)」。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-oms"></a>Cherwell を OMS の IT Service Management Connector に接続する
 
-次のセクションでは、Cherwell 製品を OMS の IT Service Management Connector に接続する方法について詳しく説明します。
+以降のセクションでは、Cherwell 製品を OMS の ITSMC に接続する方法について詳細に説明します。
 
 ### <a name="prerequisites"></a>前提条件
 
-以下の前提条件を満たしていることを確認してください。
+次の前提条件が満たされていることを確認してください。
 
-- IT Service Management Connector がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
+- ITSMC がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
 - クライアント ID が生成されている。 詳細については、「[Cherwell のクライアント ID を生成する](#generate-client-id-for-cherwell)」をご覧ください。
 - ユーザー ロールが管理者である。
 
@@ -334,22 +333,22 @@ Cherwell 接続を作成するには、次の手順に従います。
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **名前**   | IT Service Management Connector に接続する Cherwell インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、あとで OMS 上で使用します。 |
+| **名前**   | ITSMC に接続する Cherwell インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、あとで OMS 上で使用します。 |
 | **接続の種類を選択**   | **[Cherwell]** を選択します。 |
-| **ユーザー名**   | IT Service Management Connector に接続できる Cherwell ユーザー名を入力します。 |
+| **ユーザー名**   | ITSMC に接続できる Cherwell ユーザー名を入力します。 |
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注**: ユーザー名とパスワードは、認証トークンを生成するためにのみ使用されます。OMS サービス内には格納されません。|
-| **サーバー URL**   | IT Service Management Connector に接続する Cherwell インスタンスの URL を入力します。 |
+| **サーバー URL**   | ITSMC に接続する Cherwell インスタンスの URL を入力します。 |
 | **クライアント ID**   | Cherwell インスタンスで生成した、この接続を認証するためのクライアント ID を入力します。   |
-| **データ同期スコープ**   | IT Service Management Connector を介して同期する Cherwell 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。 |
+| **データ同期スコープ**   | ITSMC 経由で同期する Cherwell 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。   **オプション:** インシデント、変更要求。 |
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、OMS は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 
-正常に接続すると、同期します。
+**正常に接続され、同期された場合**:
 
 - Cherwell 接続で選択した作業項目は、OMS の Log Analytics にインポートされます。 IT Service Management Connector タイルで、これらの作業項目の概要を確認できます。
-- OMS からこの Cherwell インスタンス内のインシデントとイベントを作成できます。 詳細については、「Create ITSM work items for OMS alerts (OMS アラートの ITSM 作業項目の作成)」と「Create ITSM work items from OMS logs (OMS ログからの ITSM 作業項目の作成)」をご覧ください。
+- この Cherwell インスタンスでは、OMS アラート、ログ検索、または Azure アラートからのインシデントおよびイベントを作成できます。
 
-詳細については、「[Create ITSM work items for OMS alerts (OMS アラートの ITSM 作業項目の作成)](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)」と「[Create ITSM work items from OMS logs (OMS ログからの ITSM 作業項目の作成)](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)」をご覧ください。
+詳細情報: 「[OMS アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)」、「[OMS ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)」、および「[Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)」。
 
 ### <a name="generate-client-id-for-cherwell"></a>Cherwell のクライアント ID を生成する
 
@@ -364,7 +363,6 @@ Cherwell のクライアント ID とキーを生成するには、次の手順�
 
 ## <a name="next-steps"></a>次のステップ
  - [OMS アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)
-
  - [OMS ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)
-
-- [接続に関する Log Analytics を表示する](log-analytics-itsmc-overview.md#using-the-solution)
+ - [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+ - [接続に関する Log Analytics を表示する](log-analytics-itsmc-overview.md#using-the-solution)

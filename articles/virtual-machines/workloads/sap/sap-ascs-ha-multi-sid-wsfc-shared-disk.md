@@ -1,6 +1,6 @@
 ---
-title: "Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP (A)SCS インスタンス マルチ SID の高可用性 | Microsoft Docs"
-description: "Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP (A)SCS インスタンスのマルチ SID の高可用性"
+title: "Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンス マルチ SID 高可用性 | Microsoft Docs"
+description: "Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 31892e334d649c66e86b6c9812ffb18b069f718b
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: c82cc943f983b3dedfc0f64f2eec5b4425a4bf81
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/15/2017
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -203,53 +203,52 @@ ms.lasthandoff: 10/16/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-# <a name="sap-ascs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP (A)SCS インスタンス マルチ SID の高可用性
+# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
 > ![Windows][Logo_Windows] Windows
 >
 
-[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能が 2016 年 9 月にリリースされました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。
+[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能が 2016 年 9 月にリリースされました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。 
 
-SAP をデプロイしている場合は、SAP ASCS/SCS の Windows クラスター構成を作成する内部ロード バランサーを使用する必要があります。
+SAP がデプロイされている場合は、内部ロード バランサーを使用して SAP Central Services (ASCS/SCS) インスタンスの Windows クラスター構成を作成できます。
 
-この記事では、追加の SAP ASCS/SCS クラスター化されたインスタンスを、**共有ディスク**を持つ既存の Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることによって、単一の ASCS/SCS インストールから SAP マルチ SID 構成に移行する方法に焦点を当てます。 このプロセスが完了したら、SAP マルチ SID クラスターの構成は完了です。
+この記事では、追加の SAP ASCS/SCS クラスター化インスタンスを、共有ディスクを持つ既存の Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることによって、単一の ASCS/SCS インストールから SAP マルチ SID 構成に移行する方法に焦点を当てます。 このプロセスが完了したら、SAP マルチ SID クラスターの構成は完了です。
 
 > [!NOTE]
+> この機能は、Azure Resource Manager デプロイメント モデルでのみ使用できます。
 >
-> この機能は、**Azure Resource Manager** デプロイ モデルでのみ使用できます。
->
->1 つの Azure 内部ロード バランサーごとにプライベート フロントエンド IP の数に制限があります。
+>Azure 内部ロード バランサーごとにプライベート フロントエンド IP の数に制限があります。
 >
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[Azure Resource Manager のネットワークの制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロント エンド IP」をご覧ください。
+ロード バランサー制限の詳細については、[Azure Resource Manager のネットワーク制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロント エンド IP」セクションを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-次の図のように、**ファイル共有**を使用して、**1 つの** SAP ASCS/SCS インスタンスで使用される WSFC クラスターが構成されていること。
+次の図に示すように、**ファイル共有**を使用して 1 つの SAP ASCS/SCS インスタンスに使用する WSFC クラスターを構成済みであることが必要です。
 
 ![高可用性の SAP ASCS/SCS インスタンス][sap-ha-guide-figure-6001]
 
 > [!IMPORTANT]
 > セットアップは次の条件を満たしている必要があります。
 > * SAP ASCS/SCS インスタンスは同じ WSFC クラスターを共有している必要があります。
-> * 各 DBMS SID は、独自の専用 WSFC クラスターを持っている必要があります。
+> * 各データベース管理システム (DBMS) SID には、独自の専用 WSFC クラスターが必要です。
 > * 1 つの SAP システム SID に属する SAP アプリケーション サーバーは、独自の専用 VM を持っている必要があります。
 
-## <a name="sap-ascs-multi-sid-architecture-with-shared-disk"></a>共有ディスクを使用した SAP (A)SCS マルチ SID のアーキテクチャ
+## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>共有ディスクを使用した SAP ASCS/SCS マルチ SID アーキテクチャ
 
 次の例のように、複数の SAP ABAP ASCS または SAP Java SCS クラスター化インスタンスを同じ WSFC クラスター内にインストールすることが目標です。
 
 ![Azure の複数の SAP ASCS/SCS クラスター化されたインスタンス][sap-ha-guide-figure-6002]
 
-ロード バランサーの制限の詳細については、[Azure Resource Manager のネットワークの制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロント エンド IP」をご覧ください。
+ロード バランサー制限の詳細については、[Azure Resource Manager のネットワーク制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロント エンド IP」セクションを参照してください。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
 ![2 つの SAP システム SID を使用した SAP 高可用性マルチ SID 設定][sap-ha-guide-figure-6003]
 
-## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> SAP マルチ SID シナリオ用のインフラストラクチャの準備
+## <a name="25e358f8-92e5-4e8d-a1e5-df7580a39cb0"></a> SAP マルチ SID シナリオのインフラストラクチャを準備する
 
 インフラストラクチャの準備ために、次のパラメーターを持つ追加の SAP ASCS/SCS インスタンスをインストールできます。
 
@@ -282,22 +281,20 @@ SAP をデプロイしている場合は、SAP ASCS/SCS の Windows クラスタ
 | --- | --- | --- |
 |pr5-sap-cl |10.0.0.50 |
 
-次のスクリーンショットのとおり、新しいホスト名と IP アドレスが DNS Manager に表示されます。
+次のスクリーンショットに示すように、新しいホスト名と IP アドレスが DNS Manager に表示されます。
 
 ![新しい SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの定義された DNS エントリを強調表示する DNS Manager リスト][sap-ha-guide-figure-6004]
-
-DNS エントリを作成する手順は、メインの [Windows VM 上の SAP NetWeaver の高可用性ガイド][sap-ha-guide-9.1.1] にも記載されています。
 
 > [!NOTE]
 > 追加の ASCS/SCS インスタンスの仮想ホスト名に割り当てる新しい IP アドレスは SAP Azure Load Balancer に割り当てた新しい IP アドレスと同じである必要があります。
 >
 >このシナリオでは、IP アドレスは 10.0.0.50 です。
 
-### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>PowerShell を使用した既存の Azure 内部ロード バランサーへの IP アドレスの追加
+### <a name="add-an-ip-address-to-an-existing-azure-internal-load-balancer-by-using-powershell"></a>PowerShell を使用して既存の Azure 内部ロード バランサーに IP アドレスを追加する
 
 同じ WSFC クラスターに複数の SAP ASCS/SCS インスタンスを作成するには、PowerShell を使用して既存の Azure 内部ロード バランサーに IP アドレスを追加します。 各 IP アドレスには、独自の負荷分散規則、プローブ ポート、フロントエンド IP プール、バックエンド プールが必要です。
 
-次のスクリプトは、既存のロード バランサーに新しい IP アドレスを追加します。 環境に合わせて PowerShell 変数を更新してください。 スクリプトでは、すべての SAP ASCS/SCS ポートに必要なすべての負荷分散規則が作成されます。
+次のスクリプトは、既存のロード バランサーに新しい IP アドレスを追加します。 環境に合わせて PowerShell 変数を更新してください。 このスクリプトによって、すべての SAP ASCS/SCS ポートに必要なすべての負荷分散規則が作成されます。
 
 ```powershell
 
@@ -318,30 +315,31 @@ $count = $ILB.FrontendIpConfigurations.Count + 1
 $FrontEndConfigurationName ="lbFrontendASCS$count"
 $LBProbeName = "lbProbeASCS$count"
 
-# Get the Azure VNet and subnet
+# Get the Azure virtual network and subnet
 $VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName
 $Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
 
-# Add second front-end and probe configuration
+# Add a second front-end and probe configuration
 Write-Host "Adding new front end IP Pool '$FrontEndConfigurationName' ..." -ForegroundColor Green
 $ILB | Add-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id
 $ILB | Add-AzureRmLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 10  | Set-AzureRmLoadBalancer
 
-# Get new updated configuration
+# Get a new updated configuration
 $ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
-# Get new updated LP FrontendIP COnfig
+
+# Get an updated LP FrontendIpConfig
 $FEConfig = Get-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
 $HealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
-# Add new back-end configuration into existing ILB
+# Add a back-end configuration into an existing ILB
 $BackEndConfigurationName  = "backendPoolASCS$count"
 Write-Host "Adding new backend Pool '$BackEndConfigurationName' ..." -ForegroundColor Green
 $BEConfig = Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB | Set-AzureRmLoadBalancer
 
-# Get new updated config
+# Get an updated config
 $ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
-# Assign VM NICs to backend pool
+# Assign VM NICs to the back-end pool
 $BEPool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB
 foreach($VMName in $VMNames){
         $VM = Get-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VMName
@@ -373,7 +371,7 @@ foreach ($Port in $Ports) {
 
 $ILB | Set-AzureRmLoadBalancer
 
-Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
+Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$ILBName'!" -ForegroundColor Green
 
 ```
 スクリプトが実行された後は、次のスクリーンショットのように、Azure Portal で結果を確認できます。
@@ -382,7 +380,7 @@ Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$IL
 
 ### <a name="add-disks-to-cluster-machines-and-configure-the-sios-cluster-share-disk"></a>クラスター マシンへのディスク追加と SIOS クラスター共有ディスクの構成
 
-追加する各 SAP ASCS/SCS インスタンスには新しいクラスター共有ディスクを追加する必要があります。 Windows Server 2012 R2 WSFC で現在使用されているクラスター共有ディスクは、SIOS DataKeeper ソフトウェア ソリューションです。
+追加の SAP ASCS/SCS インスタンスごとに、新しいクラスター共有ディスクを追加する必要があります。 Windows Server 2012 R2 WSFC で現在使用されているクラスター共有ディスクは、SIOS DataKeeper ソフトウェア ソリューションです。
 
 以下の手順を実行します。
 1. 各クラスター ノードに追加のディスク、または同じサイズのディスク (ストライピングが必要なもの) を追加してフォーマットします。
@@ -392,21 +390,21 @@ Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$IL
 
 ![新しい SAP ASCS/SCS 共有ディスクの DataKeeper 同期ミラーリング][sap-ha-guide-figure-6006]
 
-### <a name="deploy-vms-for-sap-application-servers-and-dbms-cluster"></a>SAP アプリケーション サーバーと DBMS クラスターの仮想マシンのデプロイ
+### <a name="deploy-vms-for-sap-application-servers-and-the-dbms-cluster"></a>SAP アプリケーション サーバーと DBMS クラスター用に VM をデプロイする
 
 2 番目の SAP システムのインフラストラクチャの準備を完了するには、次の操作をします。
 
-1. SAP アプリケーション サーバーに専用の VM をデプロイし、独自の専用高可用性グループに配置する。
-2. DBMS クラスターに専用の VM をデプロイし、独自の専用高可用性グループに配置する。
+1. SAP アプリケーション サーバー用に専用の VM をデプロイし、それぞれを独自の専用可用性グループに配置します。
+2. DBMS クラスター用に専用の VM をデプロイし、それぞれを独自の専用可用性グループに配置します。
 
-## <a name="sap-netweaver-multi-sid-installation"></a>SAP NetWeaver マルチ SID のインストール
+## <a name="install-an-sap-netweaver-multi-sid-system"></a>SAP NetWeaver マルチ SID システムのインストール
 
-第 2 の SAP SID2 システムをインストールするプロセスはすべて、「[SAP NetWeaver HA Installation on Windows Failover Cluster and Shared Disk for SAP (A)SCS Instance (SAP (A)SCS インスタンスの Windows フェールオーバー クラスターと共有ディスクへの SAP NetWeaver HA インストール)][sap-high-availability-installation-wsfc-shared-disk]」のガイドに記載されています。
+第 2 の SAP SID2 システムをインストールする完全なプロセスの説明については、[Windows フェールオーバー クラスターおよび SAP ASCS/SCS インスタンスの共有ディスクへの SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-shared-disk]に関するページをご覧ください。
 
 おおまかな手順は次のとおりです。
 
 1. [高可用性 ASCS/SCS インスタンスで SAP をインストールします][sap-high-availability-installation-wsfc-shared-disk-install-ascs]。  
- このステップでは、**EXISTING WSFC クラスター ノード 1** に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。
+ このステップでは、既存の WSFC クラスター ノード 1 に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。
 
 2. [ASCS/SCS インスタンスの SAP プロファイルの変更][sap-high-availability-installation-wsfc-shared-disk-modify-ascs-profile]
 
@@ -419,23 +417,18 @@ Write-Host "Succesfully added new IP '$ILBIP' to the internal load balancer '$IL
 5. 第 2 のクラスター ノードをインストールします。  
  このステップでは、既存の WSFC クラスター ノード 2 に、高可用性 ASCS/SCS インスタンスを使用した SAP をインストールします。 第 2 のクラスター ノードをインストールするには、SAP インストール ガイドの手順に従います。
 
-6. SAP ASCS/SCS インスタンスと ProbePort の Windows ファイアウォール ポートを開きます。  
+6. SAP ASCS/SCS インスタンスとプローブ ポート用に Windows Firewall ポートを開きます。  
+    SAP ASCS/SCS インスタンスで使用する両方のクラスター ノードで、SAP ASCS/SCS ポートが使用するすべての Windows ファイアウォール ポートを開きます。 これらの SAP ASCS/SCS インスタンスのポートは、「[SAP ASCS/SCS ポート][sap-net-weaver-ports-ascs-scs-ports]」に一覧があります。
 
- SAP ASCS/SCS インスタンスで使用する両方のクラスター ノードで、SAP ASCS/SCS ポートが使用するすべての Windows ファイアウォール ポートを開きます。 これらの SAP ASCS/SCS インスタンスのポートは、「[SAP ASCS/SCS ポート][sap-net-weaver-ports-ascs-scs-ports]」にリストされています。
+    その他すべての SAP ポートの一覧については、「[TCP/IP Ports of All SAP Products (SAP の全製品の TCP/IP ポート)][sap-net-weaver-ports]」を参照してください。  
 
- その他のすべての SAP ポートの一覧は、[すべての SAP 製品の TCP/IP ポート][sap-net-weaver-ports]のページにあります。  
+    また、Azure 内部ロード バランサー プローブ ポート (このシナリオでは 62350) を開きます。 これについては、[こちらの記事][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]に説明があります。
 
- また、[ここ][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]に説明されているように、Azure 内部ロード バランサー プローブ ポート (このシナリオでは 62350) を開きます。
+7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類を変更します][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
 
-7. [SAP ERS Windows サービスのインスタンスのスタートアップの種類の変更][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]
+8. SAP インストール ガイドで記載されているように、新しい専用 VM に SAP プライマリ アプリケーション サーバーをインストールします。  
 
-8. SAP プライマリ アプリケーション サーバーのインストール
-
-   SAP インストール ガイドで記載されているように、新しい専用 VM に SAP プライマリ アプリケーション サーバーをインストールします。  
-
-9. SAP 追加アプリケーション サーバーのインストール
-
-   SAP インストール ガイドで記載されているように、新しい専用 VM に追加の SAP アプリケーション サーバーをインストールします。
+9. SAP インストール ガイドで記載されているように、新しい専用 VM に追加の SAP アプリケーション サーバーをインストールします。
 
 10. [SAP ASCS/SCS インスタンスのフェールオーバーと SIOS レプリケーションのテスト][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl]
 

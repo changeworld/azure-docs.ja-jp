@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: adegeo
-ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 409b3bb26648ef1b811dfaaf37690c8220046729
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services の構成方法
-> [!div class="op_single_selector"]
-> * [Azure ポータル](cloud-services-how-to-configure-portal.md)
-> * [Azure クラシック ポータル](cloud-services-how-to-configure.md)
->
->
-
 クラウド サービスで最もよく使用される設定は Azure ポータルで構成できます。 また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。 どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
 また、クラウド サービス ロールまたはリモート デスクトップのインスタンスを管理することもできます。
@@ -77,9 +71,9 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
 ここからは、タイルで使用するグラフをカスタマイズしたり、アラート ルールを追加したりできます。
 
 ## <a name="reboot-reimage-or-remote-desktop"></a>再起動、再イメージ化、またはリモート デスクトップ
-現時点では、 **Azure ポータル**を使用してリモート デスクトップを構成することはできません。 ただし、[Azure クラシック ポータル](cloud-services-role-enable-remote-desktop.md)、[PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)、または [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) を使用すれば設定できます。
+[Azure Portal (リモート デスクトップの設定)](cloud-services-role-enable-remote-desktop-new-portal.md)、[PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)、または [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) を使用してリモート デスクトップを設定できます。
 
-最初に、クラウド サービス インスタンスをクリックします。
+クラウド サービスの再起動、再イメージ化、またはリモート接続を行うには、クラウド サービス インスタンスをクリックします。
 
 ![クラウド サービス インスタンス](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 

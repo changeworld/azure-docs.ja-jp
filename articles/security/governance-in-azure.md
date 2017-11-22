@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: c63eb15e8d575da91fd8198ca9d486f7fdb2b38d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 10a92f301584d4e676da9a1eb229667925a6c72c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="governance-in-azure"></a>Azure でのガバナンス
 
@@ -225,14 +225,14 @@ Resource Manager では、セットアップ時に含まれていなかったソ
 リソース ポリシーを使用して、組織の標準的なルールを作成することができます。 リソースが適切な値でタグ付けされることを保証するポリシーを作成することができます。
 
 > [!Note]
-> 詳細については、「[タグに関するリソース ポリシーを適用する](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags)」を参照してください。
+> 詳細については、「[課金タグ ポリシーのイニシアティブ](../azure-policy/scripts/billing-tags-policy-init.md)」を参照してください。
 
 Azure Portal からタグ付きのリソースを表示することもできます。
 
 サブスクリプションの[使用状況レポート](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)にはタグ名と値が含まれます。これにより、タグを使ってコストの計算を分けることができます。
 
 > [!Note]
-> タグの詳細については、 [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)を参照してください。
+> タグの詳細については、「[課金タグ ポリシーのイニシアティブ](../azure-policy/scripts/billing-tags-policy-init.md)」を参照してください。
 
 タグには次の制限事項が適用されます。
 

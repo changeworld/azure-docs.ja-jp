@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
-ms.reviewer: alexwe
-ms.openlocfilehash: 723bd7135a59bcc0bce648460f871a841a684d3c
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.reviewer: richagi
+ms.openlocfilehash: 4900707baa875ae4527d82e8189d5bc4d319ae0c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Azure Multi-Factor Authentication の設定を構成する - パブリック プレビュー
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/08/2017
 
 | 機能 | Description | 
 |:--- |:--- |
-| [ユーザーのブロック/ブロック解除](#block/unblock-users) |ユーザーのブロック/ブロック解除では、ユーザーが認証要求を受信できないように設定できます。 |
+| [ユーザーのブロックおよびブロック解除](#block-and-unblock) |ユーザーのブロック/ブロック解除では、ユーザーが認証要求を受信できないように設定できます。 |
 | [不正アクセスのアラート](#fraud-alert) |ユーザーが各自のリソースに対する不正アクセスを通報できるように、不正アクセスのアラートを構成して設定できます。 |
 | [ワンタイム バイパス](#one-time-bypass) |ワンタイム バイパスは、多要素認証を "バイパス" することによって、ユーザーを 1 回だけ認証できます。 |
 | [カスタム音声メッセージ](#custom-voice-messages) |カスタム音声メッセージは、独自の録音やあいさつを多要素認証で使用できるようにします。 |
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/08/2017
 | [記憶されたデバイスとブラウザーに対する Multi-Factor Authentication の記憶](#remember-multi-factor-authentication-for-devices-that-users-trust) |ユーザーが MFA を使用して正常にサインインした後、一定の日数の間、デバイスを記憶させることができます。 |
 | [選択可能な検証方法](#selectable-verification-methods) |ユーザーが使用できる認証方法を選択できます。 |
 
-## <a name="blockunblock-users"></a>ユーザーのブロック/ブロック解除
+## <a name="block-and-unblock"></a>ブロックおよびブロック解除
 ユーザーのブロック/ブロック解除は、ユーザーが認証要求を受信できないようにする場合に使用できます。 ブロックされているユーザーを認証しようとすると、自動的に拒否されます。 ブロックされているユーザーは、ブロックされた時間から 90 日間ブロックされ続けます。
 
 ### <a name="block-a-user"></a>ユーザーのブロック
@@ -70,7 +70,7 @@ ms.lasthandoff: 11/08/2017
 
 ### <a name="configuration-options"></a>構成オプション
 
-- **不正アクセスを通報したユーザーをブロックする** - ユーザーが不正アクセスを通報すると、ユーザーのアカウントはブロックされます。
+- **不正アクセスが報告されたときのユーザーのブロック** - ユーザーが不正アクセスを報告した場合、そのユーザーのアカウントは 90 日間、または管理者がそのアカウントのブロックを解除するまでブロックされます。 管理者はサインイン レポートを使用してサインインを確認し、将来の不正アクセスを防止するための適切なアクションを実行できます。 その後、管理者はそのユーザーのアカウントの[ブロックを解除](#unblock-a-user)できます。
 - **案内メッセージ後に入力する不正アクセス通報コード** - ユーザーが 2 段階認証を実行する電話を受信すると、通常、# を押してサインインを確認します。 不正アクセスを通報する場合は、# を押す前にコードを入力します。 このコードは、既定では **0** ですが、カスタマイズすることができます。
 
 > [!NOTE]

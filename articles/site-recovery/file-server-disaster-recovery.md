@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: a746ace47c4f1190b7a695014543670a1a9cf879
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 78ce74450ce933e2aced4b6e62504373de7954f8
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>Azure Site Recovery を使用してファイル サーバーを保護する 
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、さまざまなワークロードのレプリケーション、フェールオーバー、復旧など、オンプレミス マシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
 
-この記事では、Azure Site Recovery およびさまざまな環境に合わせたその他の推奨事項を使用してファイル サーバーを保護する方法について説明します。 
+この記事では、Azure Site Recovery およびさまざまな環境に合わせたその他の推奨事項を使用してファイル サーバーを保護する方法について説明します。     
 
 - [Azure IaaS ファイル サーバー マシンの保護](#disaster-recovery-recommendation-for-azure-iaas-virtual-machines)
 - [オンプレミスのファイル サーバーの保護](#replicate-an-onpremises-file-server-using-azure-site-recovery)
@@ -51,7 +51,7 @@ ms.lasthandoff: 11/01/2017
 
 ファイル サーバー環境で使用する戦略の決定を簡略化することを目的とした図を以下に示します。
 
-![デシジョン ツリー](media/site-recovery-file-server/decisiontree.png)
+![decisiontree](media/site-recovery-file-server/decisiontree.png)
 
 
 ### <a name="factors-to-consider-while-making-disaster-recovery-decision"></a>ディザスター リカバリーに関する意思決定の際に考慮すべき要素

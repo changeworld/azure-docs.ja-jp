@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: f7109a3b21feac396d8c20c7e72a8987f72a909a
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: c07290a5003189b0b773bd9b9c995400b424c7f4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Operations Management Suite の Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -231,16 +231,16 @@ Service Map と Change Tracking の統合は、両方のソリューションが
 パフォーマンス データを表示するには、[適切な Log Analytics パフォーマンス カウンターを有効](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)にする必要があります。  有効にするカウンターは次のとおりです。
 
 Windows:
-- Processor(*)\% Processor Time
-- Memory\% Committed Bytes In Use
-- Network Adapter(*)\Bytes Sent/sec
-- Network Adapter(*)\Bytes Received/sec
+- Processor(*)\\% Processor Time
+- Memory\\% Committed Bytes In Use
+- Network Adapter(*)\\Bytes Sent/sec
+- Network Adapter(*)\\Bytes Received/sec
 
 Linux:
-- Processor(*)\% Processor Time
-- Memory(*)\% Used Memory
-- Network Adapter(*)\Bytes Sent/sec
-- Network Adapter(*)\Bytes Received/sec
+- Processor(*)\\% Processor Time
+- Memory(*)\\% Used Memory
+- Network Adapter(*)\\Bytes Sent/sec
+- Network Adapter(*)\\Bytes Received/sec
 
 ネットワークのパフォーマンス データを取得するには、Operations Management Suite で Wire Data 2.0 ソリューションを有効にしておく必要もあります。
  

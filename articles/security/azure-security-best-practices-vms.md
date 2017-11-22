@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: yurid
-ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7122e2f5f7ebc8ef0c6b2083257f26d8d2e5e345
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM のセキュリティのベスト プラクティス
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="vm-authentication-and-access-control"></a>VM の認証とアクセスの制御
 
-VM 保護の第一歩は、承認されたユーザーのみが新しい VM をセットアップできるようにすることです。 [Azure Resource Manager ポリシー](../azure-resource-manager/resource-manager-policy.md)を使って組織内のリソースに対する規則を確立し、カスタマイズしたポリシーを作成して、[リソース グループ](../azure-resource-manager/resource-group-overview.md)などのリソースにポリシーを適用できます。
+VM 保護の第一歩は、承認されたユーザーのみが新しい VM をセットアップできるようにすることです。 [Azure ポリシー](../azure-policy/azure-policy-introduction.md)を使用して、組織内のリソースに関する規則を制定し、カスタマイズしたポリシーを作成して、[リソース グループ](../azure-resource-manager/resource-group-overview.md)などのリソースにこれらのポリシーを適用できます。
 
 リソース グループに属する VM は、そのポリシーを自然に継承します。 この方法で VM を管理することをお勧めしますが、[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) を使って、個々の VM に対するアクセス ポリシーを制御することもできます。
 

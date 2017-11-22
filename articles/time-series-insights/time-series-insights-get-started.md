@@ -1,56 +1,67 @@
 ---
 title: "Azure Time Series Insights 環境の作成 | Microsoft Docs"
-description: "このチュートリアルでは、Time Series Insights 環境を作成してイベント ソースに接続し、数分でイベント データを分析できるように準備する方法について学習します。"
-keywords: 
+description: "この記事では、Azure Portal を使用して新しい Time Series Insights 環境を作成する方法について説明します。"
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: op-ravi
-manager: santoshb
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 10/18/2017
 ms.author: omravi
-ms.openlocfilehash: d8a3f79630868c83cd9fde6ea0c414e334a58e22
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 6dba703851161a1eebce0101be8076682f09c76f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal で新しい Time Series Insights 環境を作成する
+この記事では、Azure Portal を使用して新しい Time Series Insights 環境を作成する方法について説明します。
 
-Time Series Insights 環境は、受信とストレージの容量を備えた Azure リソースです。 導入ユーザーは、Azure Portal を使用して、必要な容量を備えた環境をプロビジョニングします。
+Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデータの視覚化と照会を数分で開始することができ、大量の時系列データを数秒で照会できます。  モノのインターネット (IoT) 規模に対応するように設計されており、数テラバイトのデータを処理できます。
 
 ## <a name="steps-to-create-the-environment"></a>環境の作成手順
-
 次の手順に従って、環境を作成します。
 
-1.  [Azure Portal](https://portal.azure.com) にサインインします。
-2.  左上隅のプラス記号 ("+") をクリックします。
-3.  検索ボックスで「Time Series Insights」を検索します。
+1.  [Azure ポータル](https://portal.azure.com)にサインインします。
 
-  ![Time Series Insights 環境の作成](media/get-started/getstarted-create-environment1.png)
+2.  **[+ 新規]** をクリックします。
 
-4.  [Time Series Insights] を選択し、[作成] をクリックします。
+3.  **[モノのインターネット]** カテゴリを選択し、**[Time Series Insights]** を選択します。
 
-  ![Time Series Insights リソース グループの作成](media/get-started/getstarted-create-environment2.png)
+   ![Time Series Insights 環境の作成](media/time-series-insights-get-started/1-new-tsi.png)
 
-5.  環境名を指定します。 この名前は、[Time Series エクスプローラー](https://insights.timeseries.azure.com)でその環境を表します。
-6.  サブスクリプションを選択します。 イベント ソースが含まれているものを選択します。 Time Series Insights では、同じサブスクリプションに存在する Azure IoT Hub とイベント ハブのリソースを自動検出できます。
-7.  リソース グループを選択または作成します。 リソース グループとは、一緒に使用される Azure リソースのコレクションです。
-8.  ホストする場所を選択します。 データ センター間でのデータの移動を回避するために、イベント ソースが含まれている場所を選択してください。
-9.  価格レベルを選択します。
-10. 容量を選択します。 環境の容量は、作成後に変更できます。
-11. 環境を作成します。 サインインするときに常にアクセスしやすいように、作成した環境をダッシュボードにピン留めすることもできます。
+4.  **[Time Series Insights]** ページで、**[作成]** を選択します。
 
-  ![Time Series Insights の作成の [ダッシュボードにピン留めする]](media/get-started/getstarted-create-environment3.png)
+5. 必要なパラメーターを入力します。 次の表に各パラメーターを示します。
+   
+   ![Time Series Insights リソース グループの作成](media/time-series-insights-get-started/2-create-tsi.png)
+   
+   設定|推奨値|Description
+   ---|---|---
+   環境名 | 一意の名前 | この名前は、[Time Series エクスプローラー](https://insights.timeseries.azure.com)でその環境を表します。
+   [サブスクリプション] | 該当するサブスクリプション | 複数のサブスクリプションがある場合、可能であれば、イベント ソースが含まれているサブスクリプションを選択します。 Time Series Insights では、同じサブスクリプションに存在する Azure IoT Hub とイベント ハブのリソースを自動検出できます。
+   リソース グループ | 新しいグループを作成するか、既存のグループを使用 | リソース グループとは、一緒に使用される Azure リソースのコレクションです。 既存のリソース グループ (イベント ハブまたは IoT ハブが含まれているグループなど) を選択できます。 このリソースが他のリソースに関連していない場合は、新しいリソース グループを作成することもできます。
+   場所 | イベント ソースに最も近い場所 | リージョン間およびゾーン間での帯域幅利用料の追加や、データをリージョンの外部に移動するときの待機時間の増加を回避するために、可能であれば、イベント ソース データがあるデータ センターの場所を選択します。
+   [価格レベル]  | S1 | 必要なスループットを選択します。 コストと初期容量を最小限に抑えるために、S1 を選択します。
+   Capacity | 1 | 容量は、イングレス レート、ストレージ容量、選択した SKU に関連するコストに適用される乗数です。  環境の容量は、作成後に変更できます。 コストを最小限に抑えるために、容量として 1 を選択します。 
+  
+6. 今後、Time Series 環境にアクセスしやすいように、**[ダッシュボードにピン留めする]** をオンにします。
+
+   ![Time Series Insights の作成の [ダッシュボードにピン留めする]](media/time-series-insights-get-started/3-pin-create.png)
+
+7. **[作成]** をクリックして、プロビジョニング プロセスを開始します。 このプロセスには数分かかることがあります。
+
+8. デプロイ プロセスを監視するために、**[通知]** シンボル (ベルのアイコン) をクリックします。
+
+   ![通知の確認](media/time-series-insights-get-started/4-notifications.png)
+
+デプロイが成功したら、**[リソースに移動]** を選択して、他のプロパティの構成、データ アクセス ポリシーによるセキュリティの設定、イベント ソースの追加などの操作を行うことができます。
 
 ## <a name="next-steps"></a>次のステップ
-
-* [Time Series Insights ポータル](https://insights.timeseries.azure.com)で環境にアクセスするために[データ アクセス ポリシーを定義する](time-series-insights-data-access.md)
-* [イベント ソースを作成する](time-series-insights-add-event-source.md)
-* イベント ソースに[イベントを送信する](time-series-insights-send-events.md)
+* 環境をセキュリティで保護するために、[データ アクセス ポリシーを定義](time-series-insights-data-access.md)する。
+* Azure Time Series Insights 環境に[イベント ハブ イベント ソースを追加](time-series-insights-how-to-add-an-event-source-eventhub.md)する。 
+* イベント ソースに[イベントを送信する](time-series-insights-send-events.md)。
+* [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示する。

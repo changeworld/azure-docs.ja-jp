@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
-ms.openlocfilehash: 9696a74ac02688f9004156f6f16b39b37756751d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 70ddec1c7ba76ef7f42048896079e5c5fa2bf60c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-a-user-defined-route---powershell"></a>PowerShell を使用してユーザー定義ルートを作成する
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 10/31/2017
 
 ![既定のルート](./media/create-user-defined-route/default-routes.png)
 
-このチュートリアルでは、次の図に示すように、パブリック サブネット、プライベート サブネット、および DMZ サブネットを使用して仮想ネットワークを作成します。 一般的には、パブリック サブネットには Web サーバーが、プライベート サブネットにはアプリケーションまたはデータベース サーバーがデプロイされます。 DMZ サブネットには、ネットワーク仮想アプライアンスとして機能する仮想マシンを作成し、必要に応じて、ネットワーク仮想アプライアンス経由で通信する仮想マシンを各サブネットに作成します。 次の図に示すように、パブリック サブネットとプライベート サブネットの間のトラフィックすべてが、アプライアンス経由でルーティングされます。
+このチュートリアルでは、次の図に示すように、パブリック サブネット、プライベート サブネット、および DMZ サブネットを使用して仮想ネットワークを作成します。 一般的には、パブリック サブネットには Web サーバーが、プライベート サブネットにはアプリケーションまたはデータベース サーバーがデプロイされます。 DMZ サブネットには、ネットワーク仮想アプライアンスとして機能する仮想マシンを作成し、必要に応じて、ネットワーク仮想アプライアンス経由で通信する仮想マシンを各サブネットに作成します。 次の図に示すように、パブリック サブネットとプライベート サブネットの間のトラフィックがすべてアプライアンス経由でルーティングされます。
 
 ![ユーザー定義のルート](./media/create-user-defined-route/user-defined-routes.png)
 
-この記事では、Resource Manager デプロイメント モデルを使用して、ユーザー定義ルートを作成する手順について説明します。ユーザー定義ルートを作成するときは、このデプロイメント モデルを使用することをお勧めします。 ユーザー定義ルート (クラシック) を作成する必要がある場合は、[ユーザー定義ルート (クラシック) の作成](virtual-network-create-udr-classic-ps.md)に関するページをご覧ください。 Azure 展開モデルの知識がない場合は、[Azure 展開モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 ユーザー定義ルートの詳細については、[ユーザー定義ルートの概要](virtual-networks-udr-overview.md#user-defined)に関する記事をご覧ください。
+この記事では、Resource Manager デプロイメント モデルを使用してユーザー定義ルートを作成する手順について説明します。ユーザー定義ルートを作成するときは、このデプロイメント モデルを使用することをお勧めします。 ユーザー定義ルート (クラシック) を作成する必要がある場合は、[ユーザー定義ルート (クラシック) の作成](virtual-network-create-udr-classic-ps.md)に関するページをご覧ください。 Azure 展開モデルの知識がない場合は、[Azure 展開モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 ユーザー定義ルートの詳細については、[ユーザー定義ルートの概要](virtual-networks-udr-overview.md#user-defined)に関する記事をご覧ください。
 
 ## <a name="create-routes-and-network-virtual-appliance"></a>ルートとネットワーク仮想アプライアンスの作成
 
@@ -214,7 +214,7 @@ PC で最新バージョンの PowerShell [AzureRM](https://www.powershellgaller
 
 ## <a name="validate-routing"></a>ルーティングの検証
 
-1. 「[ルートとネットワーク仮想アプライアンスの作成](#create-routes-and-network-virtual-appliance)」の手順を実行します (まだ実行していない場合)。
+1. 「[ルートとネットワーク仮想アプライアンスの作成](#create-routes-and-network-virtual-appliance)」の手順をまだ実行していない場合は、これを完了します。
 2. 次のボックスの **[お試しください]** ボタンをクリックすると、Azure Cloud Shell が開きます。 メッセージが表示されたら、[Azure アカウント](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#account)を使用して Azure にログインします。 Azure アカウントを持っていない場合、 [無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p)でサインアップできます。 Azure Cloud Shell は、Azure コマンド ライン インターフェイスがプレインストールされた無料の Bash シェルです。 
 
     次のスクリプトにより、"*パブリック*" サブネットと "*プライベート*" サブネットに 1 つずつ、2 つの仮想マシンが作成されます。 また、このスクリプトによって、NVA のオペレーティング システム内のネットワーク インターフェイスで IP 転送が有効になり、オペレーティング システムが、ネットワーク インターフェイス経由でトラフィックをルーティングできるようになります。 運用 NVA は、通常、ルーティング前にトラフィックを検査しますが、このチュートリアルのシンプルな NVA は、検査せずにトラフィックをルーティングします。 
@@ -340,6 +340,12 @@ PC で最新バージョンの PowerShell [AzureRM](https://www.powershellgaller
         - **Ubuntu**: `tracepath myvm-private` コマンドを実行します。
       トラフィックは、10.0.2.4 (NVA) を経由してから、10.0.1.4 (プライベート サブネットの仮想マシン) に到達します。 
     - 前の手順を完了するには、*myVm-Private* 仮想マシンに接続し、*myVm-Public* 仮想マシンに ping を実行します。 traceroute には、10.0.2.4 経由で 10.0.0.4 (パブリック サブネットの仮想マシン) に到達する通信が示されます。
+    
+      > [!NOTE]
+      > 前述の手順で、Azure のプライベート IP アドレス間のルーティングを確認できます。 パブリック IP アドレスへのトラフィックをネットワーク仮想アプライアンス経由で転送またはプロキシ処理する場合:
+      > - アプライアンスが、ネットワーク アドレス変換またはプロキシ機能を備えている必要があります。 ネットワーク アドレス変換を行う場合、アプライアンスは、ソース IP アドレスを独自に変換し、その要求をパブリック IP アドレスに転送する必要があります。 アプライアンスがネットワーク アドレスをソース アドレスに変換している場合でもプロキシ処理している場合でも、Azure は、ネットワーク仮想アプライアンスのプライベート IP アドレスをパブリック IP アドレスに変換します。 Azure がパブリック IP アドレスをプライベート IP アドレスに変換するために使用するさまざまな方法の詳細については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
+      > - ルート テーブル内の追加ルート。プレフィックス 0.0.0.0/0、次のホップの種類 VirtualAppliance、(前のスクリプト例で使用されている) 次のホップの IP アドレス 10.0.2.4 など。
+      >
     - **省略可能**: Azure Network Watcher の次ホップ機能を使用して、Azure 内で 2 つの仮想マシン間の次ホップを検証します。 Network Watcher を使用するには、使用するリージョンに対して [Azure Network Watcher インスタンスを作成](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)しておく必要があります。 このチュートリアルでは、米国東部リージョンが使用されます。 リージョンに対して Network Watcher インスタンスを有効にすると、次のコマンドを入力して、パブリック サブネットとプライベート サブネットの仮想マシン間の次ホップ情報を確認できます。
      
         ```azurecli-interactive
@@ -349,7 +355,7 @@ PC で最新バージョンの PowerShell [AzureRM](https://www.powershellgaller
        出力により *10.0.2.4* が **nextHopIpAddress** として、*VirtualAppliance* が **nextHopType** として返されます。
 
 > [!NOTE]
-> このチュートリアルでは、概念を説明するために、パブリック IP アドレスがパブリック サブネットとプライベート サブネットの仮想マシンに割り当てられ、Azure 内ですべてのネットワーク ポート アクセスが、両方の仮想マシンに対して有効になっています。 運用環境で使用する仮想マシンを作成するときは、ネットワーク仮想アプライアンスをプライベート サブネットの前にデプロイするか、ネットワーク セキュリティ グループをサブネットまたはネットワーク インターフェイス、あるいはその両方に割り当てることで、パブリック IP アドレスが仮想マシンに割り当てられないようにして、プライベート サブネットへのネットワーク トラフィックをフィルターします。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関するページをご覧ください。
+> このチュートリアルでは、概念を説明するために、パブリック IP アドレスがパブリック サブネットとプライベート サブネットの仮想マシンに割り当てられ、Azure 内ですべてのネットワーク ポート アクセスが、両方の仮想マシンに対して有効になっています。 運用環境で使用する仮想マシンを作成するときは、ネットワーク仮想アプライアンスをプライベート サブネットの前にデプロイするか、ネットワーク セキュリティ グループをサブネットまたはネットワーク インターフェイス、あるいはその両方に割り当てて、パブリック IP アドレスが仮想マシンに割り当てられないようにして、プライベート サブネットへのネットワーク トラフィックをフィルターします。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関するページをご覧ください。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -383,7 +389,7 @@ az network vnet subnet create \
   --resource-group $rgName
 ```
 
-ポータル、PowerShell、または Azure Resource Manager テンプレートを使用して仮想マシンを作成する方法の詳細については、[仮想マシンの作成](virtual-networks-create-vnet-arm-pportal.md)に関するページをご覧ください。
+ポータル、PowerShell、または Azure Resource Manager テンプレートを使用して仮想ネットワークを作成する方法の詳細については、[仮想マシンの作成](virtual-networks-create-vnet-arm-pportal.md)に関するページをご覧ください。
 
 ## <a name="delete-resources"></a>リソースを削除する
 

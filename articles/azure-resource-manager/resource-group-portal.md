@@ -12,26 +12,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 7a94fd5065de93384460e851627a9813d439956b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-azure-resources-through-portal"></a>ポータルを使用した Azure リソースの管理
-> [!div class="op_single_selector"]
-> * [Azure PowerShell](powershell-azure-resource-manager.md)
-> * [Azure CLI](xplat-cli-azure-resource-manager.md)
-> * [ポータル](resource-group-portal.md) 
-> * [REST API](resource-manager-rest-api.md)
-> 
-> 
 
-このトピックでは、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。 ポータルを使用したリソースのデプロイについては、「 [Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](resource-group-template-deploy-portal.md)」を参照してください。
-
-現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。 これらのサービスの場合、 [クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。 各サービスの状態については、「 [Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
+この記事では、[Azure Portal](https://portal.azure.com) と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースを管理する方法について説明します。 ポータルを使用したリソースのデプロイについては、「 [Deploy resources with Resource Manager templates and Azure portal (Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ)](resource-group-template-deploy-portal.md)」を参照してください。
 
 ## <a name="manage-resource-groups"></a>リソース グループの管理
 
@@ -58,7 +49,7 @@ ms.lasthandoff: 10/11/2017
    
     ![add columns](./media/resource-group-portal/add-columns.png)
 7. 新しいリソース グループへのリソースのデプロイについては、「 [Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ](resource-group-template-deploy-portal.md)」を参照してください。
-8. リソース グループにすばやくアクセスするために、ブレードをダッシュボードにピン留めできます。
+8. リソース グループにすばやくアクセスするために、そのリソース グループをダッシュボードにピン留めできます。
    
     ![リソース グループの固定](./media/resource-group-portal/pin-group.png)
 9. ダッシュボードには、リソース グループとそのリソースが表示されます。 リソース グループまたはそのリソースのいずれかを選択して、各項目に移動できます。
@@ -71,12 +62,12 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
 ## <a name="monitor-resources"></a>リソースの監視
-リソースを選択すると、そのリソースの種類を監視するための既定のグラフと表が、リソースのブレードに表示されます。
+リソースを選択すると、そのリソースの種類を監視するための既定のグラフと表がポータルに表示されます。
 
 1. リソースを選択し、 **[監視]** セクションに注目してください。 リソースの種類に関連するグラフが含まれます。 次の図は、ストレージ アカウントの既定の監視データを示しています。
    
     ![監視の表示](./media/resource-group-portal/show-monitoring.png)
-2. ブレードのセクションは、そのセクションの上にある省略記号 (...) を選択すると、ダッシュボードにピン留めできます。 さらに、ブレードのセクションのサイズをカスタマイズしたり、完全に削除したりできます。 次の図は、[CPU とメモリ] セクションをピン留め、カスタマイズ、または削除する方法を示しています。
+2. セクションは、そのセクションの上にある省略記号 (...) を選択することで、ダッシュボードにピン留めできます。 さらに、セクションのサイズをカスタマイズしたり、完全に削除したりできます。 次の図は、[CPU とメモリ] セクションをピン留め、カスタマイズ、または削除する方法を示しています。
    
     ![セクションの固定](./media/resource-group-portal/pin-cpu-section.png)
 3. セクションをダッシュボードにピン留めすると、ダッシュボード上に概要が表示されます。 さらに、それを選択すると、データの詳細情報が即時に表示されます。
@@ -92,7 +83,7 @@ ms.lasthandoff: 10/11/2017
      ダッシュボードの操作の詳細については、「 [Azure Portal でのダッシュボードの作成と共有](../azure-portal/azure-portal-dashboards.md)」を参照してください。
 
 ## <a name="manage-resources"></a>リソースの管理
-リソースのブレードで、リソースを管理するためのオプションが表示されます。 ポータルでは、その特定のリソースの種類の管理オプションが表示されます。 リソース ブレードの上部全体および左側に管理コマンドが表示されます。
+ポータルでリソースを表示すると、その特定のリソースを管理するためのオプションが表示されます。
 
 ![リソースの管理](./media/resource-group-portal/manage-resources.png)
 
@@ -111,7 +102,7 @@ ms.lasthandoff: 10/11/2017
 
 ![サブスクリプション](./media/resource-group-portal/select-subscription.png)
 
-サブスクリプション ブレードには、バーン レートが表示されます。
+バーン レートが表示されます。
 
 ![バーン レート](./media/resource-group-portal/burn-rate.png)
 
@@ -128,7 +119,7 @@ ms.lasthandoff: 10/11/2017
 手順については、「 [既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 
 ## <a name="delete-resource-group-or-resources"></a>リソース グループまたはリソースを削除する
-リソース グループを削除すると、そこに含まれているすべてのリソースが削除されます。 また、リソース グループ内にある個々のリソースを削除することもできます。 他のリソース グループのリソースがリンクされている可能性があるため、リソース グループを削除する場合はご注意ください。 リンク先のリソースは Resource Manager によって削除されませんが、予想されるリソースがない場合に正しく機能しない可能性があります。
+リソース グループを削除すると、そこに含まれているすべてのリソースが削除されます。 また、リソース グループ内にある個々のリソースを削除することもできます。 リソース グループを削除する際には注意してください。 そのリソース グループには、他のリソース グループで使用されているリソースが含まれている可能性があります。
 
 ![グループの削除](./media/resource-group-portal/delete-group.png)
 

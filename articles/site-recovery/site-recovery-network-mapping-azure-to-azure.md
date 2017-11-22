@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: pratshar
-ms.openlocfilehash: 9d6a806ec533259797080fbfee2c38f918ebd8a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1df7e04fc9cec5722747bafce7e2e5519b76315d
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>2 つの Azure リージョン間でのネットワーク マッピング
 
@@ -37,7 +37,7 @@ Azure リージョンの Azure 仮想ネットワークを、別のリージョ�
 
 次の例では、東アジア リージョンで実行されている仮想マシンが、東南アジアにレプリケートされます。
 
-ソースとターゲットのネットワークを選択し、OKをクリックして、東アジアから東南アジアへのネットワーク マッピングを作成します。
+ソースとターゲットのネットワークを選択し、[OK] をクリックして、東アジアから東南アジアへのネットワーク マッピングを作成します。
 
 ![ネットワーク マッピング](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 
@@ -80,10 +80,10 @@ Azure リージョン間で仮想マシンを初めてレプリケートする�
 ターゲット仮想マシンの各ネットワーク インターフェイスの IP アドレスは、次のように選択されます。
 
 ### <a name="dhcp"></a>DHCP
-ソース仮想マシンのネットワーク インターフェイスが DHCP を使用している場合、ターゲット仮想マシンのネットワーク インターフェイスも DHCP として設定されます。
+ソース仮想マシンのネットワーク インターフェイスが DHCP を使用している場合は、ターゲット仮想マシンのネットワーク インターフェイスも DHCP として設定されます。
 
 ### <a name="static-ip"></a>静的 IP
-ソース仮想マシンのネットワーク インターフェイスが静的 IP を使用している場合、ターゲット仮想マシンのネットワーク インターフェイスも静的 IP を使用するように設定されます。 静的 IP は、次のように選択されます。
+ソース仮想マシンのネットワーク インターフェイスが静的 IP を使用している場合は、ターゲット仮想マシンのネットワーク インターフェイスも静的 IP を使用するように設定されます。 静的 IP は、次のように選択されます。
 
 #### <a name="same-address-space"></a>同じアドレス空間
 
@@ -91,7 +91,7 @@ Azure リージョン間で仮想マシンを初めてレプリケートする�
 
 #### <a name="different-address-space"></a>異なるアドレス空間
 
-ソース サブネットとターゲット サブネットのアドレス空間が異なる場合、ターゲット IP は、ターゲット サブネットの使用可能な任意の IP として設定されます。
+ソース サブネットとターゲット サブネットのアドレス空間が異なる場合、ターゲット IP は、ターゲット サブネット内の使用可能な任意の IP として設定されます。
 
 各ネットワーク インターフェイスのターゲット IP を変更するには、仮想マシンの [コンピューティングとネットワーク] 設定に移動します。
 

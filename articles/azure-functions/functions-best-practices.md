@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d3df59afe595265fba88f7274154a36d42139859
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d59ef16de433ac9691f6996eab2bf56f056feb88
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
@@ -66,8 +66,7 @@ ms.lasthandoff: 10/18/2017
 
 キュー アイテムが既に処理されている場合は、関数による操作をなしにします。
 
-Azure Functions プラットフォームで使用するコンポーネントに対して既に提供されている防御策を活用してください。 一例として、「[Azure Storage キュー トリガー](functions-bindings-storage-queue.md#trigger)」の「**有害キュー メッセージの処理**」を参照してください。
- 
+Azure Functions プラットフォームで使用するコンポーネントに対して既に提供されている防御策を活用してください。 一例として、[Azure Storage キューのトリガーとバインド](functions-bindings-storage-queue.md#trigger---poison-messages)に関するドキュメントの「**有害キュー メッセージの処理**」を参照してください。 
 
 ## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>同じ関数アプリにテスト コードと運用環境のコードを混在させない
 
@@ -97,4 +96,3 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 
 Azure Functions は Azure App Service を使用するため、App Service のガイドラインも認識しておく必要があります。
 * [パターンとプラクティスによる HTTP パフォーマンスの最適化](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)
-

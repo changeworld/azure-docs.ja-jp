@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 3eb604321c244c6ceeb76d08ae39b21d1e777ece
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 373abb8f40a8acf557b7cd4a0d0b3fb55f4a545c
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="model-management-command-line-interface-reference"></a>モデル管理のコマンドライン インターフェイスのリファレンス
 
@@ -69,6 +69,8 @@ ms.lasthandoff: 11/09/2017
                      the active MLC env.
 
 **展開環境の設定**
+
+setup コマンドには、サブスクリプションの共同作成者のアクセス権が必要です。 このアクセス権がない場合、最低でも、デプロイ先のリソース グループに対する共同作成者のアクセス権が必要となります。 後者の場合、setup コマンドで `-g` フラグを使用し、リソース グループの名前を指定する必要があります。 
 
 展開には、*ローカル*と*クラスター* の 2 つのオプションがあります。 `--cluster` (または`-c`) フラグを設定することにより、ACS クラスターをプロビジョニングするクラスター展開が可能になります。 基本的な設定の構文は次のとおりです。
 

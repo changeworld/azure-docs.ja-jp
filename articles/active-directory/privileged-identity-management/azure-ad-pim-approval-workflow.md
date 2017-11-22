@@ -14,23 +14,20 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: cf6a9213fa0a1cba8725aabb42abe51b805ece7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90aec90edcbbfb7833efd85752afc8f1937f5b5a
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="approvals-preview"></a>承認 (プレビュー)
+# <a name="approvals"></a>承認
 
 ## <a name="overview"></a>概要
 
 Privileged Identity Management の承認を使用して、ロールがアクティブ化の承認を必要とするように構成できます。また、代理承認者として 1 名以上のユーザーあるいはグループを選択できます。 ロールの構成と承認者の選択を行う方法については後ほど説明します。
 
->[!NOTE]
-この機能はまだ開発段階であることに注意してください。バグが含まれている可能性があります。 テキストや名前付け規則を含めて、機能は変更される場合があります。最終的な状態ではありません。
 
-
-## <a name="key-terminology"></a>主要な用語
+## <a name="new-terminology"></a>新しい用語
 
 *対象ロール ユーザー* – 対象ロール ユーザーとは、組織内で対象の Azure AD ロール (アクティブ化を必要とするロール) に割り当てられているユーザーです。
 
