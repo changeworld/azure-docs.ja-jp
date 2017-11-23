@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2017
+ms.date: 11/17/2017
 ms.author: bwren
-ms.openlocfilehash: e3a4c631cd69921fec60b3ae33a23c4c7c369194
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: addb1c8f4c71bb1979229c597665fd301dfb9fdf
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics のカスタム ログ
 Log Analytics のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。  収集後、Log Analytics の [カスタム フィールド](log-analytics-custom-fields.md) 機能を利用し、ログの各レコードを個別のフィールドに解析できます。
@@ -56,10 +56,6 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 区切り記号としてタイムスタンプが使用されるとき、OMS に保存される各レコードの TimeGenerated プロパティに、ログ ファイルでそのエントリに指定された日付/時刻が入力されます。  区切り記号として改行が使用される場合、Log Analytics がエントリを収集した日付と時刻が TimeGenerated に入力されます。
 
-> [!NOTE]
-> Log Analytics では現在のところ、UTC を区切り記号のタイムスタンプとして利用し、ログから収集した日付/時刻を処理します。  間もなく、エージェントの時間帯を使用するように変更される予定です。
->
->
 
 1. **[閲覧]** をクリックし、サンプル ファイルを表示します。  一部のブラウザーでは、このボタンのラベルは **[ファイルの選択]** になっていることがあります。
 2. **[次へ]** をクリックします。
@@ -90,7 +86,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 1. ログの名前を入力します。  **\_CL** が接尾辞として自動的に追加されます。
 2. 任意で **[説明]**を追加します。
-3. [ **次へ** ] をクリックし、カスタム ログ定義を保存します。
+3. **[ 次へ ]** をクリックし、カスタム ログ定義を保存します。
 
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>手順 5. カスタム ログが収集されていることを確認する
 新しいカスタム ログの最初のデータが Log Analytics に表示されるまで最大 1 時間かかることがあります。  指定されたパスにあるログからエントリの収集が始まります。カスタム ログに定義されているポイントから開始されます。  カスタム ログ作成中にアップロードしたエントリは保持されませんが、ログ ファイルに既に存在するエントリが収集されます。

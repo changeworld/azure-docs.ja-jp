@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2017
+ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: 97edbe67c25036dc1156f0f0ca5431a617d7a004
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9db7e276fbbc064abe16cab2d2df668d2b1c8f7d
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>CSP を使用して VMware 仮想マシンを Azure にレプリケートするための Azure Site Recovery でのマルチテナントのサポート
 
@@ -50,7 +50,7 @@ Azure Site Recovery では、テナント サブスクリプションのマル�
 データ分離要件では、機密性の高いすべてのインフラストラクチャ情報 (アクセス資格情報など) がテナントに非公開のままであることが必要です。 そのため、管理サーバーのすべてのコンポーネントをパートナーの排他的制御下に置くことをお勧めします。 管理サーバーのコンポーネントは、次のとおりです。
 * 構成サーバー (CS)
 * プロセス サーバー (PS)
-* マスター ターゲット サーバー (MT) 
+* マスター ターゲット サーバー (MT)
 
 スケールアウト PS もパートナーの制御下にあります。
 
@@ -82,7 +82,7 @@ vCenter アカウントのアクセス手順は次のとおりです。
 
     * **タスク**: タスクの作成、タスクの更新
 
-    * **仮想マシン**:  
+    * **仮想マシン**: 
         * 構成 > すべて
         * 相互作用 > 質問への回答、デバイス接続、CD メディアの構成、フロッピー メディアの構成、電源オフ、電源オン、VMware ツールのインストール
         * インベントリ > 既存のものから作成、新規作成、登録、登録解除
@@ -138,8 +138,8 @@ VM の前提条件は、[Azure Site Recovery のドキュメント](site-recover
 
 ### <a name="step-1-create-a-tenant-account"></a>手順 1: テナント アカウントを作成する
 
-1. [Microsoft パートナー センター](https://partnercenter.microsoft.com/)から CSP アカウントにサインインします。 
- 
+1. [Microsoft パートナー センター](https://partnercenter.microsoft.com/)から CSP アカウントにサインインします。
+
 2. **[ダッシュボード]** メニューで **[顧客]** を選択します。
 
     ![Microsoft パートナー センターの [顧客] のリンク](./media/site-recovery-multi-tenant-support-vmware-using-csp/csp-dashboard-display.png)
@@ -160,22 +160,22 @@ VM の前提条件は、[Azure Site Recovery のドキュメント](site-recover
 
     ![[レビュー] ページ](./media/site-recovery-multi-tenant-support-vmware-using-csp/customer-summary-page.png)  
 
-    テナント アカウントを作成すると確認ページが開き、そのサブスクリプションの既定のアカウントとパスワードの詳細が表示されます。 
+    テナント アカウントを作成すると確認ページが開き、そのサブスクリプションの既定のアカウントとパスワードの詳細が表示されます。
 
 7. 情報を保存し、必要に応じて、後で Azure Portal のサインイン ページでパスワードを変更します。  
- 
+
     この情報はテナントと現状のまま共有できます。また、必要に応じて個別のアカウントを作成し、共有することもできます。
 
 ### <a name="step-2-access-the-tenant-account"></a>手順 2: テナント アカウントにアクセスする
 
-テナントのサブスクリプションには、"手順 1: テナント アカウントを作成する" で説明した、Microsoft パートナー センターのダッシュボードからアクセスできます。 
+テナントのサブスクリプションには、"手順 1: テナント アカウントを作成する" で説明した、Microsoft パートナー センターのダッシュボードからアクセスできます。
 
 1. **[顧客]** ページに移動し、テナント アカウントの名前をクリックします。
 
 2. テナント アカウントの **[サブスクリプション]** ページで、既存のアカウント サブスクリプションを監視したり、必要に応じてサブスクリプションをさらに追加したりできます。 テナントのディザスター リカバリー操作を管理するには、**[すべてのリソース (Azure Portal)]** を選択します。
 
     ![[すべてのリソース] のリンク](./media/site-recovery-multi-tenant-support-vmware-using-csp/all-resources-select.png)  
-    
+
     **[すべてのリソース]** をクリックすると、テナントの Azure サブスクリプションへのアクセスが許可されます。 Azure Portal の右上にある Azure Active Directory のリンクをクリックすると、アクセスを確認できます。
 
     ![Azure Active Directory のリンク](./media/site-recovery-multi-tenant-support-vmware-using-csp/aad-admin-display.png)
@@ -183,8 +183,8 @@ VM の前提条件は、[Azure Site Recovery のドキュメント](site-recover
 これで、Azure Portal からテナントに対してサイトの回復のすべての操作を実行し、ディザスター リカバリー操作を管理できるようになりました。 管理されたディザスター リカバリーを行うために CSP を使用してテナント サブスクリプションにアクセスするには、上記のプロセスに従います。
 
 ### <a name="step-3-deploy-resources-to-the-tenant-subscription"></a>手順 3: テナント サブスクリプションにリソースをデプロイする
-1. Azure Portal でリソース グループを作成してから、通常のプロセスごとに Recovery Services コンテナーをデプロイします。 
- 
+1. Azure Portal でリソース グループを作成してから、通常のプロセスごとに Recovery Services コンテナーをデプロイします。
+
 2. コンテナー登録キーをダウンロードします。
 
 3. コンテナー登録キーを使用して、テナントの CS を登録します。

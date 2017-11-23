@@ -3,17 +3,17 @@ title: "PowerShell を使用してポリシーの割り当てを作成し、Azur
 description: "PowerShell を使用して Azure Policy の割り当てを作成し、準拠していないリソースを特定します。"
 services: azure-policy
 keywords: 
-author: Jim-Parker
-ms.author: jimpark
+author: bandersmsft
+ms.author: banders
 ms.date: 11/02/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 02afe946e5e1ad9730ab07df19676e90485ecf98
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 5c00d50817e40de0a43d05eb85662b494247d8fa
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-using-powershell"></a>PowerShell を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 
@@ -76,7 +76,7 @@ $definition = Get-AzureRmPolicyDefinition -Id /providers/Microsoft.Authorization
 New-AzureRMPolicyAssignment -Name Audit Virtual Machines without Managed Disks Assignment -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
-これで、非対応リソースを特定し、環境のコンプライアンスの状態を確認する準備ができました。
+以上の手順で、準拠していないリソースを特定し、環境のコンプライアンスの状態を理解できるようになりました。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
 

@@ -3,7 +3,7 @@ title: "SQL Server から Azure SQL Data Warehouse へのデータの読み込�
 description: "bcp を使用して SQL Server からフラット ファイルにデータをエクスポートし、AZCopy を使用してデータを Azure Blob Storage にインポートし、PolyBase を使用してデータを Azure SQL Data Warehouse に取り込みます。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: ckarst
+author: barbkess
 manager: jhubbard
 editor: 
 ms.assetid: 860c86e0-90f7-492c-9a84-1bdd3d1735cd
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
-ms.author: cakarst;barbkess
-ms.openlocfilehash: 966100094f98bae41bf90df500d005fa78b31ec3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: barbkess
+ms.openlocfilehash: f8c251fb9b8275eeea2940f8856669d2ef9f3549
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase によってデータを読み込む
 > [!div class="op_single_selector"]

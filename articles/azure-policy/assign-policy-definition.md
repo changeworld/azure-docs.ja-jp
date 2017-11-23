@@ -1,21 +1,21 @@
 ---
-title: "ポリシーの割り当てを作成し、Azure 環境内の非対応リソースを特定する | Microsoft Docs"
-description: "この記事では、ポリシー定義を作成して、非対応リソースを特定する手順について説明します。"
+title: "ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する | Microsoft Docs"
+description: "この記事では、ポリシー定義を作成して、準拠していないリソースを特定する手順について説明します。"
 services: azure-policy
 keywords: 
-author: Jim-Parker
-ms.author: jimpark
+author: bandersmsft
+ms.author: banders
 ms.date: 11/02/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: db5112c858d2a2c54813d9c9a3670a45fcbdb993
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: a1b2f72cf33c740a52cf817766e9950a04886141
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/18/2017
 ---
-# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>ポリシーの割り当てを作成し、Azure 環境内の非対応リソースを特定する
+# <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>ポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 Azure のコンプライアンスを理解する第一歩は、自分の現在のリソースの状態を把握することです。 このクイックスタートでは、ポリシー割り当てを作成して、管理ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
 このプロセスを終了すると、管理ディスクを使用していない、つまり "*非準拠*" の仮想マシンを適切に特定できるようになります。
@@ -71,26 +71,26 @@ Azure Policy は現在、パブリック プレビュー段階であるため、
 
 9. **[割り当て]** を選択します。
 
-これで、非対応リソースを特定し、環境のコンプライアンスの状態を確認する準備ができました。
+以上の手順で、準拠していないリソースを特定し、環境のコンプライアンスの状態を理解できるようになりました。
 
-## <a name="identify-non-compliant-resources"></a>非対応リソースを特定する
+## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
 
 左側のウィンドウで **[コンプライアンス]** を選択し、作成したポリシー割り当てを検索します。
 
 ![ポリシーのコンプライアンス](media/assign-policy-definition/policy-compliance.png)
 
-この新しい割り当てに対応していない既存のリソースがある場合、**[Non-compliant resources]\(非対応リソース\)** タブに表示されます。
+この新しい割り当てに準拠していない既存のリソースがある場合、**[Non-compliant resources]\(準拠していないリソース\)** タブに表示されます。
 
-既存のリソースにわたって条件が評価され、一部が該当した場合、そのリソースは、ポリシー非対応としてマークされます。 次の表は、条件の評価結果に対して現時点で実行できるアクションと、リソースのコンプライアンスの状態を示しています。
+既存のリソースにわたって条件が評価され、一部が該当した場合、そのリソースは、ポリシーに準拠していないとしてマークされます。 次の表は、条件の評価結果に対して現時点で実行できるアクションと、リソースのコンプライアンスの状態を示しています。
 
 |リソース  |ポリシーの条件の評価結果  |ポリシーでのアクション   |コンプライアンスの状態  |
 |-----------|---------|---------|---------|
-|Exists     |True     |DENY     |非対応 |
+|Exists     |True     |DENY     |準拠していない |
 |Exists     |False    |DENY     |対応     |
-|Exists     |True     |追加   |非対応 |
+|Exists     |True     |追加   |準拠していない |
 |Exists     |False    |追加   |対応     |
-|Exists     |True     |Audit    |非対応 |
-|Exists     |False    |Audit    |非対応 |
+|Exists     |True     |Audit    |準拠していない |
+|Exists     |False    |Audit    |準拠していない |
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

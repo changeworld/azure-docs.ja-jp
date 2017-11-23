@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 7122e2f5f7ebc8ef0c6b2083257f26d8d2e5e345
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bfd7208af3252ab69808d09fa7434a2cea7f93a8
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM のセキュリティのベスト プラクティス
 

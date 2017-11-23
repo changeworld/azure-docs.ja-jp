@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 11/22/2017
 ms.author: jingwang
-ms.openlocfilehash: 36443ec86c15edce27bdc4f50cabcaf2e14936bc
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: a2f370998ea219f9d36a6cda26405b6023666f92
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -148,7 +148,7 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 コピー アクティビティの実行の詳細とパフォーマンス特性は、コピー アクティビティの実行結果の [出力] セクションで返されます。 すべての一覧を次に示します。 アクティビティの実行を監視する方法は、[クイック スタートの監視セクション](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)で学習してください。 お客様のシナリオのパフォーマンスと構成を、社内テストから得られたコピー アクティビティの[パフォーマンス リファレンス](copy-activity-performance.md#performance-reference)と比較できます。
 
-| プロパティ名  | Description | 単位 |
+| プロパティ名  | 説明 | 単位 |
 |:--- |:--- |:--- |
 | dataRead | ソースから読み取られたデータ サイズ | Int64 値 (バイト数) |
 | dataWritten | シンクに書き込まれたデータ サイズ | Int64 値 (バイト数) |

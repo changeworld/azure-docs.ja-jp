@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2017
+ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: d77440fe62bbd0e720e5ae60b15574dacc4180c0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2f7a65d32f662d7e265e58c5fe7d9dea81a4e63c
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化
 
@@ -33,7 +33,7 @@ Windows VM が[高速ネットワーク](virtual-network-create-vm-accelerated-n
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled              : False
+    Enabled                 : False
     ```
 2. 次のコマンドを入力して、RSS を有効にします。
 
@@ -44,7 +44,7 @@ Windows VM が[高速ネットワーク](virtual-network-create-vm-accelerated-n
 3. 再度 `Get-NetAdapterRss` コマンドを入力して、VM で RSS が有効になっていることを確認します。 成功した場合は、次のような出力が返されます。
 
     ```powershell
-    Name                    :Ethernet
+    Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled              : True
     ```
@@ -55,26 +55,35 @@ Azure Linux VM では、RSS は既定で常に有効になっています。 201
 
 ### <a name="ubuntu-for-new-deployments"></a>新規デプロイ用の Ubuntu
 
-最適化を行うには、まず以下のように、サポートされている最新バージョンの 16.04-LTS をインストールします。
+Ubuntu Azure カーネルは、Azure 上で最適なネットワーク パフォーマンスを提供し、2017 年 9 月 21 日以降、既定のカーネルになっています。 このカーネルを入手するには、まず以下のように、サポートされている最新バージョンの 16.04-LTS をインストールします。
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
 "Sku": "16.04-LTS",
 "Version": "latest"
 ```
-更新が完了したら、次のコマンドを入力して、最新のカーネルを入手します。
+作成が完了したら、次のコマンドを入力して、最新の更新プログラムを入手します。 次の手順は、Ubuntu Azure カーネルを現在実行している VM にも使用できます。
 
 ```bash
+#run as root or preface with sudo
+apt-get -y update
+apt-get -y upgrade
+apt-get -y dist-upgrade
+```
+
+次の省略可能なコマンド セットは、既に Azure カーネルがあるが、エラーで更新に失敗している既存の Ubuntu 展開に役立つ場合があります。
+
+```bash
+#optional steps may be helpful in existing deployments with the Azure kernel
+#run as root or preface with sudo
 apt-get -f install
 apt-get --fix-missing install
 apt-get clean
 apt-get -y update
 apt-get -y upgrade
+apt-get -y dist-upgrade
 ```
 
-省略可能なコマンド:
-
-`apt-get -y dist-upgrade`
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>既存の VM 用の Ubuntu Azure カーネル アップグレード
 
 Azure Linux カーネルにアップグレードすることで、スループットのパフォーマンスが大幅に向上する可能性があります。 このカーネルがあるかどうかを確認するには、カーネルのバージョンを調べてください。
@@ -87,7 +96,7 @@ uname -r
 #4.11.0-1014-azure
 ```
 
-ルート権限で次のコマンドを実行します。
+VM に Azure カーネルがない場合は、通常、バージョン番号は「4.4」で始まります。 この場合、次のコマンドを root として実行します。
 ```bash
 #run as root or preface with sudo
 apt-get update
@@ -99,14 +108,14 @@ reboot
 
 ### <a name="centos"></a>CentOS
 
-最新の最適化を入手するには、まず以下のように、サポートされている最新バージョンに更新します。
+最新の最適化を得るには、次のパラメーターを指定して、サポートされている最新バージョンを使用して VM を作成することをお勧めします。
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
 "Sku": "7.4",
 "Version": "latest"
 ```
-更新が完了したら、最新の Linux Integration Services (LIS) をインストールします。
+新規および既存の VM は、最新の Linux Integration Services (LIS) のインストールによりメリットを得られます。
 スループットの最適化は LIS の 4.2.2-2 以降に含まれていますが、新しいバージョンほどさらなる向上が含まれています。 次のコマンドを入力して、最新の LIS をインストールします。
 
 ```bash
@@ -117,14 +126,14 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-最適化を行うには、まず以下のように、サポートされている最新バージョンに更新します。
+最適化を得るには、次のパラメーターを指定して、サポートされている最新バージョンを使用して VM を作成することをお勧めします。
 ```json
 "Publisher": "RedHat"
 "Offer": "RHEL"
 "Sku": "7-RAW"
 "Version": "latest"
 ```
-更新が完了したら、最新の Linux Integration Services (LIS) をインストールします。
+新規および既存の VM は、最新の Linux Integration Services (LIS) のインストールによりメリットを得られます。
 スループットの最適化は、LIS の 4.2 以降に含まれています。 次のコマンドを実行して、LIS をダウンロードしてインストールします。
 
 ```bash

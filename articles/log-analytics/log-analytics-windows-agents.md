@@ -3,7 +3,7 @@ title: "Windows コンピューターを Azure Log Analytics に接続する | M
 description: "この記事では、Microsoft Monitoring Agent (MMA) のカスタマイズされたバージョンを使用して、オンプレミスのインフラストラクチャ内の Windows コンピューターを Log Analytics サービスに接続する手順について説明します。"
 services: log-analytics
 documentationcenter: 
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: 
 ms.assetid: 932f7b8c-485c-40c1-98e3-7d4c560876d2
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5f04f3b9135167c0f339c58323ebd931b260109
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf3e596f8c287c60531a6911c5797b3de26e570
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 エージェントのインストールには、セットアップ コマンド ラインを使用するか、Azure Automation の Desired State Configuration (DSC) を使用します。  
 
 >[!NOTE]
-Azure で実行される仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用してインストールを簡略化できます。
+Azure で実行される仮想マシンの場合、[仮想マシン拡張機能](../virtual-machines/windows/extensions-oms.md)を使用してインストールを簡略化できます。
 
 コンピューターがインターネットに接続されている場合、エージェントはインターネットへの接続を介して OMS にデータを送信します。 インターネットに接続されていないコンピューターの場合は、プロキシまたは [OMS ゲートウェイ](log-analytics-oms-gateway.md)を使用できます。
 

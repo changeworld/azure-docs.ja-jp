@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: spelluru
-ms.openlocfilehash: 30173f8eea2ccbbcd44018596cf34b3769a64b50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d498705ef7f714b4f15b8d2722053bf3081b5045
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 ルックアップ アクティビティを使用して、任意の外部ソースからレコード/テーブル名/値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。 
@@ -53,6 +53,9 @@ ms.lasthandoff: 10/11/2017
                 "name": "LookupActivity",
                 "type": "Lookup",
                 "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
+                    },
                     "dataset": { 
                         "referenceName": "LookupDataset", 
                         "type": "DatasetReference" 
@@ -230,7 +233,7 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="type-properties"></a>型のプロパティ
-名前 | Description | 型 | 必須
+名前 | 説明 | 型 | 必須
 ---- | ----------- | ---- | --------
 データセット | データセット属性は、ルックアップ用のデータセット参照を提供するためのものです。 現在サポートされているデータセットの種類は次のとおりです。<ul><li>FileShareDataset</li><li>AzureBlobDataset</li><li>AzureSqlTableDataset</li><li>AzureTableDataset</li> | キーと値のペア | あり
 source セクション | データセット固有のソース プロパティ (コピー アクティビティ ソースと同じ) | キーと値のペア | いいえ

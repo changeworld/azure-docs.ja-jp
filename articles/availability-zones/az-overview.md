@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 09/28/2017
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
+ms.openlocfilehash: 53c5c340dc4e91db29fbbb45893fabe6eec2bc5d
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: c6225d368044ee2b2ab24136c854f81ae473c9e1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="overview-of-availability-zones-in-azure-preview"></a>Azure の可用性ゾーン (プレビュー) の概要
 
 可用性ゾーンは、データセンターレベルの障害からの保護に役立ちます。 1 つの Azure リージョンに配置され、それぞれが独自の電源、ネットワーク、冷却装置を備えています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 可用性ゾーンは 1 リージョン内で物理的にも論理的にも分離されているため、ゾーンレベルで障害が発生した場合でもアプリケーションとデータを保護できます。 
@@ -67,4 +65,3 @@ ms.lasthandoff: 09/23/2017
 
 ## <a name="next-steps"></a>次のステップ
 - [クイック スタート テンプレート](http://aka.ms/azqs)
-

@@ -3,18 +3,18 @@ title: "Azure Policy の概要 | Microsoft Docs"
 description: "Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。"
 services: azure-policy
 keywords: 
-author: Jim-Parker
-ms.author: jimpark; nini
+author: bandersmsft
+ms.author: banders; nini
 ms.date: 11/06/2017
 ms.topic: overview
 ms.service: azure-policy
-manager: jochan
+manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ef1114f6b1259e4f0d60260febb39bc70b181fbc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 82c3f4629da635d1006db91e236d38b1aa16695c
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 

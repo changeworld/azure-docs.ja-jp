@@ -1,7 +1,7 @@
 
 ## <a name="about-vhds"></a>VHD について
 
-Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)」をご覧ください。 Premium Storage の詳細については、[高パフォーマンスの Premium Storage と Azure VM](../articles/storage/common/storage-premium-storage.md) に関する記事を参照してください。
+Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)」をご覧ください。 Premium Storage の詳細については、[高パフォーマンスの Premium Storage と Azure VM](../articles/virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
 
 Azure は VHD フォーマットの固定ディスクをサポートしています。 固定フォーマットの場合、ファイル内で論理ディスクがリニアにレイアウトされるため、ディスク オフセット X は BLOB オフセット X に格納されます。BLOB 末尾の小さなフッターに、VHD のプロパティが記述されます。 固定フォーマットの場合、ほとんどのディスクに大きな未使用の範囲が含まれるため、容量が無駄になることがよくあります。 しかし、Azure では .vhd ファイルをスパース フォーマットで格納するため、固定ディスクのメリットと動的ディスクのメリットを同時に享受できます。 詳細については、「 [仮想ハード ディスクの概要](https://technet.microsoft.com/library/dd979539.aspx)」をご覧ください。
 
@@ -26,11 +26,11 @@ Azure ディスクは、99.999% の可用性で設計されています。 エ�
 
 Standard Storage では、HDD が使用されており、高パフォーマンスでありながらコスト効率にも優れたストレージを提供します。 Standard Storage は、1 つのデータセンターでローカルにレプリケートするか、プライマリ データセンターとセカンダリ データセンターで geo 冗長レプリケートすることができます。 ストレージ レプリケーションの詳細については、「[Azure Storage のレプリケーション](../articles/storage/common/storage-redundancy.md)」を参照してください。 
 
-VM ディスクを利用した Standard Storage の使用の詳細については、[Standard Storage とディスク](../articles/storage/common/storage-standard-storage.md)に関する記事を参照してください。
+VM ディスクを利用した Standard Storage の使用の詳細については、[Standard Storage とディスク](../articles/virtual-machines/windows/standard-storage.md)に関する記事を参照してください。
 
 ### <a name="premium-storage"></a>Premium Storage 
 
-Premium Storage では、SSD が使用されており、I/O 集中型のワークロードを実行している VM 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、または FS シリーズの Azure VM で使用できます。 詳細については、[Premium Storage](../articles/storage/common/storage-premium-storage.md) に関する記事を参照してください。
+Premium Storage では、SSD が使用されており、I/O 集中型のワークロードを実行している VM 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、または FS シリーズの Azure VM で使用できます。 詳細については、[Premium Storage](../articles/virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
 
 ### <a name="unmanaged-disks"></a>非管理対象ディスク
 

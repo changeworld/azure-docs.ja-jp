@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2016
+ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 1303815755584e912891d501018b257b96e5f063
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a2ece3fc908963a6c8ea68f9746788278407fdc
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-security-overview"></a>Azure セキュリティの概要
 Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。 Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、 [Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/TrustCenter/default.aspx)にアクセスしてください。

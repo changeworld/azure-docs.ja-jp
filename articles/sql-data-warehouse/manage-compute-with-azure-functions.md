@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 11/06/2017
 ms.author: elbutter
-ms.openlocfilehash: 56543946c2a2cfe63feb249fcd4ac63517700115
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: e2138f26a78338406b466bdd2aa6e756e602726d
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-azure-functions-to-automate-sql-dw-compute-levels"></a>Azure Functions を使用して SQL DW のコンピューティング レベルを自動化する
 
@@ -184,7 +184,7 @@ SQL Data Warehouse の[サンプル リポジトリ](https://github.com/Microsof
 
 
 
-[schedule examples]: ../azure-functions/functions-bindings-timer.md#schedule-examples
+[schedule examples]: ../azure-functions/functions-bindings-timer.md#example
 
 [Application Settings]: ../azure-functions/functions-how-to-use-azure-function-app-settings.md
 [Add a new trigger function]: manage-compute-with-azure-functions.md#add-a-new-trigger-function

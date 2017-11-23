@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: b55eed31ddb5be23dc28a23b2f0588b8c8ff8833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbc4b8cdb0ff9255d0be02b998e67686921921ea
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -87,10 +87,10 @@ Azure サブスクリプションに適用される価格、クレジット、�
 [Azure のプランの詳細に関するページ](https://azure.microsoft.com/support/legal/offer-details/)
 
 ## <a name="portal"></a>ポータル
-Azure サービスのデプロイと管理に使用される、セキュリティで保護された Web ポータル。  [Azure Portal](http://portal.azure.com/) と[クラシック ポータル](http://manage.windowsazure.com/)の 2 つのポータルがあります。 両方のポータルで使用できるサービスもあれば、どちらか一方のポータルでしか使用できないサービスもあります。 「 [Azure Portalの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」に、どのポータルでどのサービスを利用可能かがまとめてあります。
+Azure サービスのデプロイと管理に使用される、セキュリティで保護された Web ポータル。
 
 ## <a name="region"></a>region
-国境とは一致せず、1 つ以上のデータセンターが含まれる geo 内の領域。 リージョン レベルでは、価格、リージョンごとのサービス、プランの種類が公開されます。 リージョンは通常、別のリージョンとペアになっています。その距離は数百マイル離れていることもあります。 リージョン ペアは、障害復旧と高可用性が求められる場面に対応するためのメカニズムとして利用できます。 リージョンは "*場所*" とも呼ばれます。  
+国境とは一致せず、1 つ以上のデータセンターが含まれる geo 内の領域。 リージョン レベルでは、価格、リージョンごとのサービス、プランの種類が公開されます。 リージョンは通常、別のリージョンとペアになっています。その距離は数百マイル離れていることもあります。 リージョン ペアは、ディザスター リカバリーと高可用性が求められる場面に対応するためのメカニズムとして利用できます。 リージョンは "*場所*" とも呼ばれます。  
 「[Azure リージョン](best-practices-availability-paired-regions.md)」をご覧ください。
 
 ## <a name="resource"></a>resource

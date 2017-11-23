@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 11/16/2017
 ms.author: glenga
-ms.openlocfilehash: 81331142aa6110d4e29e6fb30a90ce6e3a853439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d38482ebca736e4d7d0fe0b1b4b5dd0220de5b4
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="add-authentication-to-your-android-app"></a>Android アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 
 4. **[OK]**をクリックします。
 
-5. [ **Save**] をクリックします。
+5. **[ Save]** をクリックします。
 
 ## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 
      この例外は、認証されないユーザーとしてアプリがバックエンドにアクセスしようとしても、*TodoItem* テーブルでは認証が要求されるために発生します。
 
-次に、Mobile Apps バックエンドのリソースを要求する前にユーザーを認証するようにアプリを更新します。 
+次に、Mobile Apps バックエンドのリソースを要求する前にユーザーを認証するようにアプリを更新します。
 
 ## <a name="add-authentication-to-the-app"></a>アプリケーションに認証を追加する
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
@@ -79,3 +79,4 @@ ms.lasthandoff: 10/11/2017
 
 <!-- URLs. -->
 [Mobile Apps の使用]: app-service-mobile-android-get-started.md
+[Azure Portal]: https://portal.azure.com/
