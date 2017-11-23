@@ -15,11 +15,11 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 1ce764a3395b0ddb9e78f1247fd55fabbeecb04e
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 76850d6403fc4e87e95f5842b87b258d652c2c35
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>クイックスタート: Node.js と Azure Cosmos DB で Cassandra アプリを構築する
 
@@ -193,6 +193,8 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 2. `node uprofile.js` を実行して、node アプリケーションを起動します。
 
 3. コマンド ラインから予想される結果を確認します。
+
+    ![出力を表示して検証する](./media/create-cassandra-nodejs/output.png)
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
 

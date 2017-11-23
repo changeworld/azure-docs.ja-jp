@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 0048dde11b2ddb4f09e94e20b5b252998205cf18
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 95d58c600bc43059025e739a8cdb062287f4ffb5
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>クイックスタート: Python と Azure Cosmos DB で Cassandra アプリを構築する
 
@@ -188,6 +188,8 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 3. コマンド ラインから予想される結果を確認します。
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
+
+    ![出力を表示して検証する](./media/create-cassandra-python/output.png)
     
     これで、Azure Portal でデータ エクスプローラーを開いて、この新しいデータの表示、クエリ、変更、操作を行うことができます。 
 

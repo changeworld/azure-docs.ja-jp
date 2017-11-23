@@ -1,5 +1,5 @@
 ---
-title: "Kubernertes on Azure のチュートリアル - ACR の準備 | Microsoft Docs"
+title: "Kubernetes on Azure のチュートリアル - ACR の準備 | Microsoft Docs"
 description: "AKS チュートリアル - ACR の準備"
 services: container-service
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 22aa6c82aec7b8f6a16131878943fadd7762c1c0
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 1848e15a2be8d89315657a6eabdb94617bd1b5bf
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
 
@@ -32,22 +32,22 @@ Azure Container Registry (ACR) は、Docker コンテナー イメージ用の A
 > * ACR のコンテナー イメージのタグ付け
 > * ACR へのイメージのアップロード
 
-この後のチュートリアルでは、この ACR インスタンスが AKS の Kubernetes クラスターと統合されます。 
+この後のチュートリアルでは、この ACR インスタンスが AKS の Kubernetes クラスターと統合されます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 [前のチュートリアル](./tutorial-kubernetes-prepare-app.md)では、単純な Azure Voting アプリケーション用のコンテナー イメージを作成しました。 Azure Voting アプリのイメージを作成していない場合、[チュートリアル 1 - コンテナー イメージの作成](./tutorial-kubernetes-prepare-app.md)に関するページに戻ってください。
 
-このチュートリアルでは、Azure CLI バージョン 2.0.20 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+このチュートリアルでは、Azure CLI バージョン 2.0.21 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westus2` リージョンに作成されます。
+[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `eastus` リージョンに作成されます。
 
 ```azurecli
-az group create --name myResourceGroup --location westus2
+az group create --name myResourceGroup --location eastus
 ```
 
 [az acr create](/cli/azure/acr#create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
@@ -56,7 +56,7 @@ az group create --name myResourceGroup --location westus2
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-このチュートリアルの残りの部分では、コンテナー レジストリ名のプレースホルダーとして `<acrname>` を使用します。
+このチュートリアルの残りの部分では、コンテナー レジストリ名のプレースホルダーとして `<acrName>` を使用します。
 
 ## <a name="container-registry-login"></a>Container Registry のログイン
 
@@ -117,7 +117,7 @@ tiangolo/uwsgi-nginx-flask                           flask               788ca94
 
 ## <a name="push-images-to-registry"></a>イメージをレジストリにプッシュ
 
-レジストリに `azure-vote-front` イメージをプッシュします。 
+レジストリに `azure-vote-front` イメージをプッシュします。
 
 次の例を使用して、ACR loginServer 名を環境の loginServer に置き換えます。
 

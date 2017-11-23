@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: b8df9623bf3826807ba066d4e625c3138c80c5b7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 50190642f59aa8fa7d5cce8bfde5cec9fcfbe7e4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: データ移行ツール
 
@@ -210,7 +210,7 @@ CSV インポート用のコマンド ライン サンプルを以下に示し�
 ## <a id="AzureTableSource"></a>Azure テーブル ストレージからのインポート
 Azure Table Storage ソース インポーター オプションを使用して、個々の Azure Table Storage テーブルからインポートできます。 必要に応じて、インポートするテーブル エンティティをフィルター処理できます。 
 
-Azure Table Storage からインポートしたデータは、Table API で使用するために Azure Cosmos DB テーブルとエンティティに出力するか、または DocumentDB API で使用するためにコレクションとドキュメントに出力できます。  
+Azure Table Storage からインポートしたデータは、Table API で使用するために Azure Cosmos DB テーブルとエンティティに出力するか、または DocumentDB API で使用するためにコレクションとドキュメントに出力できます。 ただし、コマンドライン ユーティリティでは、Table API をターゲットとしてのみ指定できるので、データ移行ツールのユーザー インターフェイスを使用して Table API にエクスポートすることはできません。 詳細については、「[Azure Cosmos DB Table API で使用するデータのインポート](table-import.md)」を参照してください。 
 
 ![Azure テーブル ストレージ ソース オプションのスクリーンショット](./media/import-data/azuretablesource.png)
 
@@ -522,20 +522,6 @@ Azure Cosmos DB JSON エクスポーターを使用して、使用可能な任�
       }
     ]
     }]
-
-## <a id="tableapibulkexport"></a>Table API へのエクスポート (一括インポート)
-
-Azure Cosmos DB Table API エクスポーターを使用して、Azure Table Storage ソースから Azure Cosmos DB Table API データベースに情報をエクスポートできます。 
-
-エクスポート先となる Azure Cosmos DB Table API アカウントの接続文字列は、Azure Portal で [接続文字列] ページから取得できます。 [コピー] ボタンの使用 ![Azure Portal での接続文字列のスクリーンショット](./media/import-data/copy-button.png) 画面の右側で文字列全体をコピー。
-
-![Azure Portal での接続文字列のスクリーンショット](./media/import-data/connection-string.png)
-
-## <a id="tableapiseqtarget"></a>Table API へのエクスポート (シーケンシャル レコード インポート)
-
-Azure Cosmos DB Table API エクスポーターを使用して、Azure Table Storage ソースから Azure Cosmos DB Table API データベースに情報をエクスポートできます。
-
-エクスポート先となる Azure Cosmos DB Table API アカウントの接続文字列は、上記の「[Table API へのエクスポート (一括インポート)](#tableapibulkexport)」内の画像に示されているように、Azure Portal で [接続文字列] ページから取得できます。
 
 ## <a name="advanced-configuration"></a>詳細な構成
 詳細な構成画面では、発生したエラーが書き込まれるログ ファイルの場所を指定します。 このページには、次の規則が適用されます。
