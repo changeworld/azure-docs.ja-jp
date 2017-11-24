@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions における Storage テーブルのバインド | Microsoft Docs"
-description: "Azure Functions で Azure Storage のバインドを使用する方法について説明します。"
+title: "Azure Functions における Table Storage バインド"
+description: "Azure Functions で Azure Table のバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -8,85 +8,105 @@ manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
-ms.assetid: 65b3437e-2571-4d3f-a996-61a74b50a1c2
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/28/2016
+ms.date: 11/08/2017
 ms.author: chrande
-ms.openlocfilehash: 486b7c31c914ba7bb2d75e3f83ccf346a09104e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2f54df931d03318a50e9397211e3c50d0898556d
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="azure-functions-storage-table-bindings"></a>Azure Functions における Storage テーブルのバインド
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+# <a name="azure-functions-table-storage-bindings"></a>Azure Functions における Table Storage バインド
 
-この記事では、Azure Functions で Azure Storage のテーブル バインドを構成したりコーディングしたりする方法について説明します。 Azure Functions は、Azure Storage テーブルの入力および出力のバインドをサポートしています。
-
-Storage テーブルのバインドは、次のシナリオをサポートしています。
-
-* **C# または Node.js 関数での単一行の読み取り** - `partitionKey` と `rowKey` を設定します。 `filter` および `take` プロパティは、このシナリオでは使用しません。
-* **C# 関数での複数行の読み取り** - Functions ランタイムは、テーブルにバインドされた `IQueryable<T>` オブジェクトを指定します。 型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装する必要があります。 `partitionKey`、`rowKey`、`filter`、および `take` の各プロパティは、このシナリオでは使用しません。必要なフィルター処理は、`IQueryable` オブジェクトを使用して実行できます。 
-* **ノード関数での複数行の読み取り** - `filter` プロパティと `take` プロパティを設定します。 `partitionKey` と `rowKey` は設定しません。
-* **C# 関数での単一行または複数行の書き込み** - Functions ランタイムは、テーブルにバインドされた `ICollector<T>` または `IAsyncCollector<T>` を指定します。ここで、`T` は追加するエンティティのスキーマを指定します。 型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装するのが一般的ですが、必須ではありません。 `partitionKey`、`rowKey`、`filter`、`take` の各プロパティは、このシナリオでは使用しません。
+この記事では、Azure Functions で Azure Table Storage のバインドを使用する方法について説明します。 Azure Functions は、Azure Table ストレージの入力および出力のバインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-<a name="input"></a>
+## <a name="table-storage-input-binding"></a>Table Storage の入力バインド
 
-## <a name="storage-table-input-binding"></a>Storage テーブルの入力バインド
-Azure Storage テーブルの入力バインドにより、関数で Storage テーブルを使用できます。 
+Azure Table Storage の入力バインドを使用して、Azure Storage アカウントのテーブルを読み取ります。
 
-関数への Storage テーブルの入力では、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+## <a name="input---example"></a>入力 - 例
 
-```json
+言語固有の例をご覧ください。
+
+* [プリコンパイル済み C# による単一エンティティの読み取り](#input---c-example-1)
+* [プリコンパイル済み C# による複数エンティティの読み取り](#input---c-example-2)
+* [C# スクリプト - 単一エンティティの読み取り](#input---c-script-example-1)
+* [C# スクリプト - 複数エンティティの読み取り](#input---c-script-example-2)
+* [F#](#input---f-example-2)
+* [JavaScript](#input---javascript-example)
+
+### <a name="input---c-example-1"></a>入力 - C# の例 1
+
+次の例は、単一のテーブル行を読み取る[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示します。 
+
+行キー値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
+
+```csharp
+public class TableStorage
 {
-    "name": "<Name of input parameter in function signature>",
-    "type": "table",
-    "direction": "in",
-    "tableName": "<Name of Storage table>",
-    "partitionKey": "<PartitionKey of table entity to read - see below>",
-    "rowKey": "<RowKey of table entity to read - see below>",
-    "take": "<Maximum number of entities to read in Node.js - optional>",
-    "filter": "<OData filter expression for table input in Node.js - optional>",
-    "connection": "<Name of app setting - see below>",
+    public class MyPoco
+    {
+        public string PartitionKey { get; set; }
+        public string RowKey { get; set; }
+        public string Text { get; set; }
+    }
+
+    [FunctionName("TableInput")]
+    public static void TableInput(
+        [QueueTrigger("table-items")] string input, 
+        [Table("MyTable", "MyPartition", "{queueTrigger}")] MyPoco poco, 
+        TraceWriter log)
+    {
+        log.Info($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}";
+    }
 }
 ```
 
-以下の点に注意してください。 
+### <a name="input---c-example-2"></a>入力 - C# の例 2
 
-* 単一のエンティティを読み取るには、`partitionKey` と `rowKey` を一緒に使用します。 これらのプロパティは省略可能です。 
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 [このアプリケーション設定を手動で構成](functions-how-to-use-azure-function-app-settings.md#settings)することもできます。  
+次の例は、複数のテーブル行を読み取る[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示します。 `MyPoco` クラスは、`TableEntity` から派生しています。
 
-<a name="inputusage"></a>
+```csharp
+public class TableStorage
+{
+    public class MyPoco : TableEntity
+    {
+        public string Text { get; set; }
+    }
 
-## <a name="input-usage"></a>入力の使用方法
-C# 関数の場合、入力テーブルの単一のエンティティ (または複数のエンティティ) にバインドするには、関数のシグネチャで `<T> <name>` などの名前付きパラメーターを使用します。
-`T` はデータの逆シリアル化先のデータ型です。`paramName` は[入力バインド](#input)で指定した名前です。 Node.js 関数の場合、`context.bindings.<name>` を使用して入力テーブルの単一のエンティティ (または複数のエンティティ) にアクセスします。
+    [FunctionName("TableInput")]
+    public static void TableInput(
+        [QueueTrigger("table-items")] string input, 
+        [Table("MyTable", "MyPartition")] IQueryable<MyPoco> pocos, 
+        TraceWriter log)
+    {
+        foreach (MyPoco poco in pocos)
+        {
+            log.Info($"PK={poco.PartitionKey}, RK={poco.RowKey}, Text={poco.Text}";
+        }
+    }
+}
+```
 
-入力データは Node.js または C# 関数で逆シリアル化できます。 逆シリアル化されたオブジェクトには `RowKey` プロパティと `PartitionKey` プロパティがあります。
+### <a name="input---c-script-example-1"></a>入力 - C# スクリプトの例 1
 
-また、C# 関数では、次の型のどれにでもバインドすることができ、Functions ランタイムはその型を使用してテーブル データを逆シリアル化しようとします。
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
 
-* `ITableEntity` を実装するすべての型
-* `IQueryable<T>`
-
-<a name="inputsample"></a>
-
-## <a name="input-sample"></a>入力サンプル
-キュー トリガーを使用して単一のテーブル行を読み取る、次の function.json があるとします。 この JSON は、`PartitionKey` 
-`RowKey` を指定します。 `"rowKey": "{queueTrigger}"` は、行キーがキュー メッセージ文字列から取得されることを示します。
+*function.json* ファイルには `partitionKey` と `rowKey` が指定されています。 `rowKey` 値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
 
 ```json
 {
   "bindings": [
     {
       "queueName": "myqueue-items",
-      "connection": "MyStorageConnection",
+      "connection": "MyStorageConnectionAppSetting",
       "name": "myQueueItem",
       "type": "queueTrigger",
       "direction": "in"
@@ -97,7 +117,7 @@ C# 関数の場合、入力テーブルの単一のエンティティ (または
       "tableName": "Person",
       "partitionKey": "Test",
       "rowKey": "{queueTrigger}",
-      "connection": "MyStorageConnection",
+      "connection": "MyStorageConnectionAppSetting",
       "direction": "in"
     }
   ],
@@ -105,15 +125,10 @@ C# 関数の場合、入力テーブルの単一のエンティティ (または
 }
 ```
 
-単一のテーブル エンティティを読み込む言語固有のサンプルを参照してください。
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
 
-* [C#](#inputcsharp)
-* [F#](#inputfsharp)
-* [Node.JS](#inputnodejs)
+C# スクリプト コードを次に示します。
 
-<a name="inputcsharp"></a>
-
-### <a name="input-sample-in-c"></a>C# での入力サンプル #
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
 {
@@ -129,9 +144,91 @@ public class Person
 }
 ```
 
-<a name="inputfsharp"></a>
+### <a name="input---c-script-example-2"></a>入力 - C# スクリプトの例 2
 
-### <a name="input-sample-in-f"></a>F# での入力サンプル #
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー メッセージに指定されているパーティション キーのエンティティを読み取ります。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "tableBinding",
+      "type": "table",
+      "connection": "MyStorageConnectionAppSetting",
+      "tableName": "Person",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
+
+この C# スクリプト コードは、エンティティ型が `TableEntity`から派生できるように、Azure Storage SDK に参照を追加します。
+
+```csharp
+#r "Microsoft.WindowsAzure.Storage"
+using Microsoft.WindowsAzure.Storage.Table;
+
+public static void Run(string myQueueItem, IQueryable<Person> tableBinding, TraceWriter log)
+{
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    foreach (Person person in tableBinding.Where(p => p.PartitionKey == myQueueItem).ToList())
+    {
+        log.Info($"Name: {person.Name}");
+    }
+}
+
+public class Person : TableEntity
+{
+    public string Name { get; set; }
+}
+```
+
+### <a name="input---f-example"></a>入力 - F# の例
+
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [F# スクリプト](functions-reference-fsharp.md) コードを示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
+
+*function.json* ファイルには `partitionKey` と `rowKey` が指定されています。 `rowKey` 値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "personEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
+
+F# コードを次に示します。
+
 ```fsharp
 [<CLIMutable>]
 type Person = {
@@ -145,9 +242,40 @@ let Run(myQueueItem: string, personEntity: Person) =
     log.Info(sprintf "Name in Person entity: %s" personEntity.Name)
 ```
 
-<a name="inputnodejs"></a>
+### <a name="input---javascript-example"></a>入力 - JavaScript の例
 
-### <a name="input-sample-in-nodejs"></a>Node.js での入力サンプル
+次の例は、*function.json* ファイルのテーブル入力バインドと、バインドを使用する [JavaScript コード] (functions-reference-node.md) を示しています。 この関数は、キュー トリガーを使用して単一のテーブル行を読み取ります。 
+
+*function.json* ファイルには `partitionKey` と `rowKey` が指定されています。 `rowKey` 値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "personEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
 ```javascript
 module.exports = function (context, myQueueItem) {
     context.log('Node.js queue trigger function processed work item', myQueueItem);
@@ -156,46 +284,132 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-<a name="output"></a>
+## <a name="input---attributes-for-precompiled-c"></a>入力 - プリコンパイル済み C# の属性
+ 
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、次の属性を使用してテーブル入力バインドを構成します。
 
-## <a name="storage-table-output-binding"></a>Storage テーブルの出力バインド
-Azure Storage テーブルの出力バインドにより、関数で Storage テーブルにエンティティを書き込むことができます。 
+* [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)。NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されています。
 
-関数への Storage テーブルの出力では、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+  この属性のコンストラクターは、テーブル名、パーティション キー、および行キーを受け取ります。 次の例のように、out パラメーターまたは関数の戻り値で使用できます。
 
-```json
+  ```csharp
+  [FunctionName("TableInput")]
+  public static void Run(
+      [QueueTrigger("table-items")] string input, 
+      [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, 
+      TraceWriter log)
+  ```
+
+  次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
+
+  ```csharp
+  [FunctionName("TableInput")]
+  public static void Run(
+      [QueueTrigger("table-items")] string input, 
+      [Table("MyTable", "Http", "{queueTrigger}", Connection = "StorageConnectionAppSetting")] MyPoco poco, 
+      TraceWriter log)
+  ```
+
+* NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義された [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
+
+  使用するストレージ アカウントを指定する別の方法を提供します。 コンストラクターは、ストレージ接続文字列を含むアプリ設定の名前を受け取ります。 属性は、パラメーター、メソッド、またはクラス レベルで適用できます。 次の例では、クラス レベルとメソッド レベルを示します。
+
+  ```csharp
+  [StorageAccount("ClassLevelStorageAppSetting")]
+  public static class AzureFunctions
+  {
+      [FunctionName("TableInput")]
+      [StorageAccount("FunctionLevelStorageAppSetting")]
+      public static void Run( //...
+  ```
+
+使用するストレージ アカウントは、次の順序で決定されます。
+
+* `Table` 属性の `Connection` プロパティ。
+* `Table` 属性と同じパラメーターに適用された `StorageAccount` 属性。
+* 関数に適用される `StorageAccount` 属性。
+* クラスに適用される `StorageAccount` 属性。
+* 関数アプリの既定のストレージ アカウント ("AzureWebJobsStorage" アプリ設定)。
+
+## <a name="input---configuration"></a>入力 - 構成
+
+次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |Description|
+|---------|---------|----------------------|
+|**type** | 該当なし | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
+|**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
+|**name** | 該当なし | 関数コード内のテーブルまたはエンティティを表す変数の名前。 | 
+|**tableName** | **TableName** | テーブルの名前。| 
+|**partitionKey** | **PartitionKey** |省略可能。 読み取るテーブル エンティティのパーティション キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
+|**rowKey** |**RowKey** | 省略可能。 読み取るテーブル エンティティの行キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
+|**take** |**Take** | 省略可能。 JavaScript で読み取るエンティティの最大数。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
+|**filter** |**Filter** | 省略可能。 JavaScript のテーブル入力の OData フィルター式。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
+|**connection** |**Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br/>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+
+## <a name="input---usage"></a>入力 - 使用方法
+
+Table Storage の入力バインドは、次のシナリオをサポートしています。
+
+* **C# または C# スクリプトで 1 行を読み取る**
+
+  `partitionKey` と `rowKey` を設定します。 メソッド パラメーター `T <paramName>` を使用して、テーブル データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 通常、`T` は、`ITableEntity` を実装する型か、`TableEntity` から派生する型です。 `filter` および `take` プロパティは、このシナリオでは使用しません。 
+
+* **C# または C# スクリプトで 1 行または複数行を読み取る**
+
+  メソッド パラメーター `IQueryable<T> <paramName>` を使用して、テーブル データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 `T` は、`ITableEntity` を実装する型か、`TableEntity` から派生する型にする必要があります。 必要なフィルター処理があれば、`IQueryable` メソッドを使用して実行します。 `partitionKey`、`rowKey`、`filter`、`take` の各プロパティは、このシナリオでは使用しません。  
+
+> [!NOTE]
+> `IQueryable` は .NET Core では動作しません。そのため、[Functions v2 ランタイム](functions-versions.md)では動作しません。
+
+  代わりに、Azure Storage SDK で `CloudTable paramName` メソッド パラメーターを使用してテーブルを読み取ります。
+
+* **JavaScript で 1 行または複数行を読み取る**
+
+  `filter` と `take` プロパティを設定します。 `partitionKey` と `rowKey` は設定しません。 `context.bindings.<name>` を使用して入力テーブルの単一のエンティティ (または複数のエンティティ) にアクセスします。 逆シリアル化されたオブジェクトには `RowKey` プロパティと `PartitionKey` プロパティがあります。
+
+## <a name="table-storage-output-binding"></a>Table Storage の出力バインド
+
+Azure Table Storage の出力バインドを使用して、Azure Storage アカウントのテーブルにエンティティを書き込みます。
+
+## <a name="output---example"></a>出力 - 例
+
+言語固有の例をご覧ください。
+
+* [プリコンパイル済み C#](#output---c-example)
+* [C# スクリプト](#output---c-script-example)
+* [F#](#output---f-example)
+* [JavaScript](#output---javascript-example)
+
+### <a name="output---c-example"></a>出力 - C# の例
+
+次の例は、HTTP トリガーを使用して単一のテーブル行を書き込む[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示します。 
+
+```csharp
+public class TableStorage
 {
-    "name": "<Name of input parameter in function signature>",
-    "type": "table",
-    "direction": "out",
-    "tableName": "<Name of Storage table>",
-    "partitionKey": "<PartitionKey of table entity to write - see below>",
-    "rowKey": "<RowKey of table entity to write - see below>",
-    "connection": "<Name of app setting - see below>",
+    public class MyPoco
+    {
+        public string PartitionKey { get; set; }
+        public string RowKey { get; set; }
+        public string Text { get; set; }
+    }
+
+    [FunctionName("TableOutput")]
+    [return: Table("MyTable")]
+    public static MyPoco TableOutput([HttpTrigger] dynamic input, TraceWriter log)
+    {
+        log.Info($"C# http trigger function processed: {input.Text}");
+        return new MyPoco { PartitionKey = "Http", RowKey = Guid.NewGuid().ToString(), Text = input.Text };
+    }
 }
 ```
 
-以下の点に注意してください。 
+### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
 
-* 単一のエンティティを書き込むには、`partitionKey` と `rowKey` を一緒に使用します。 これらのプロパティは省略可能です。 関数コードでエンティティ オブジェクトを作成する際に `PartitionKey` と `RowKey` を指定することもできます。
-* `connection` にはストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントの作成や既存のストレージ アカウントの選択を行う際、**[統合]** タブの標準エディターによってこのアプリ設定が構成されます。 [このアプリケーション設定を手動で構成](functions-how-to-use-azure-function-app-settings.md#settings)することもできます。 
+次の例は、*function.json* ファイルのテーブル出力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は複数のテーブル エンティティを書き込みます。
 
-<a name="outputusage"></a>
-
-## <a name="output-usage"></a>出力の使用方法
-C# 関数の場合、テーブルの出力にバインドするには、関数のシグネチャで `out <T> <name>` などの名前付き `out` パラメーターを使用します。`T` はデータのシリアル化先のデータ型です。`paramName` は[出力バインド](#output)で指定した名前です。 Node.js 関数の場合、`context.bindings.<name>` を使用してテーブルの出力にアクセスします。
-
-Node.js または C# 関数でオブジェクトをシリアル化できます。 C# 関数の場合は、次の型にもバインドできます。
-
-* `ITableEntity` を実装するすべての型
-* `ICollector<T>` (複数のエンティティを出力する場合。 [サンプル](#outcsharp)を参照してください)
-* `IAsyncCollector<T>` (`ICollector<T>` の非同期バージョン)
-* `CloudTable` (Azure Storage SDK を使用する場合。 [サンプル](#readmulti)を参照してください)
-
-<a name="outputsample"></a>
-
-## <a name="output-sample"></a>出力サンプル
-次の *function.json* と *run.csx* の例は、複数のテーブル エンティティを書き込む方法をしています。
+*function.json* ファイルを次に示します。
 
 ```json
 {
@@ -207,7 +421,7 @@ Node.js または C# 関数でオブジェクトをシリアル化できます�
     },
     {
       "tableName": "Person",
-      "connection": "MyStorageConnection",
+      "connection": "MyStorageConnectionAppSetting",
       "name": "tableBinding",
       "type": "table",
       "direction": "out"
@@ -217,15 +431,10 @@ Node.js または C# 関数でオブジェクトをシリアル化できます�
 }
 ```
 
-複数のテーブル エンティティを作成する言語固有のサンプルを参照してください。
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
 
-* [C#](#outcsharp)
-* [F#](#outfsharp)
-* [Node.JS](#outnodejs)
+C# スクリプト コードを次に示します。
 
-<a name="outcsharp"></a>
-
-### <a name="output-sample-in-c"></a>C# での出力サンプル #
 ```csharp
 public static void Run(string input, ICollector<Person> tableBinding, TraceWriter log)
 {
@@ -250,9 +459,37 @@ public class Person
 }
 
 ```
-<a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F# での出力サンプル #
+### <a name="output---f-example"></a>出力 - F# の例
+
+次の例は、*function.json* ファイルのテーブル出力バインドと、バインドを使用する [F# スクリプト](functions-reference-fsharp.md) コードを示しています。 この関数は複数のテーブル エンティティを書き込みます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
+
+F# コードを次に示します。
+
 ```fsharp
 [<CLIMutable>]
 type Person = {
@@ -270,9 +507,36 @@ let Run(input: string, tableBinding: ICollector<Person>, log: TraceWriter) =
               Name = "Name" + i.ToString() })
 ```
 
-<a name="outnodejs"></a>
+### <a name="output---javascript-example"></a>出力 - JavaScript の例
 
-### <a name="output-sample-in-nodejs"></a>Node.js での出力サンプル
+次の例は、*function.json* ファイルのテーブル出力バインドと、バインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は複数のテーブル エンティティを書き込みます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
 ```javascript
 module.exports = function (context) {
 
@@ -290,54 +554,65 @@ module.exports = function (context) {
 };
 ```
 
-<a name="readmulti"></a>
+## <a name="output---attributes-for-precompiled-c"></a>出力 - プリコンパイル済み C# の属性
 
-## <a name="sample-read-multiple-table-entities-in-c"></a>サンプル: C# での複数のテーブル エンティティの読み取り  #
-次の *function.json* および C# コード例では、キュー メッセージに指定されたパーティション キーのエンティティを読み取ります。
+ [プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されている [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs) を使用します。
 
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnection",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "tableBinding",
-      "type": "table",
-      "connection": "MyStorageConnection",
-      "tableName": "Person",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-C# コードは、エンティティ型が `TableEntity`から派生できるように、Azure Storage SDK に参照を追加します。
+この属性のコンストラクターは、テーブル名を受け取ります。 次の例のように、`out` パラメーターまたは関数の戻り値で使用できます。
 
 ```csharp
-#r "Microsoft.WindowsAzure.Storage"
-using Microsoft.WindowsAzure.Storage.Table;
-
-public static void Run(string myQueueItem, IQueryable<Person> tableBinding, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-    foreach (Person person in tableBinding.Where(p => p.PartitionKey == myQueueItem).ToList())
-    {
-        log.Info($"Name: {person.Name}");
-    }
-}
-
-public class Person : TableEntity
-{
-    public string Name { get; set; }
-}
+[FunctionName("TableOutput")]
+[return: Table("MyTable")]
+public static MyPoco TableOutput(
+    [HttpTrigger] dynamic input, 
+    TraceWriter log)
 ```
 
-## <a name="next-steps"></a>次のステップ
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
 
+```csharp
+[FunctionName("TableOutput")]
+[return: Table("MyTable", Connection = "StorageConnectionAppSetting")]
+public static MyPoco TableOutput(
+    [HttpTrigger] dynamic input, 
+    TraceWriter log)
+```
+
+`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[入力 - プリコンパイル済み C# の属性](#input---attributes-for-precompiled-c)に関するページを参照してください。
+
+## <a name="output---configuration"></a>出力 - 構成
+
+次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |Description|
+|---------|---------|----------------------|
+|**type** | 該当なし | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
+|**direction** | 該当なし | `out` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
+|**name** | 該当なし | テーブルまたはエンティティを表す関数コードに使用される変数の名前。 `$return` に設定して、関数の戻り値を参照します。| 
+|**tableName** |**TableName** | テーブルの名前。| 
+|**partitionKey** |**PartitionKey** | 書き込むテーブル エンティティのパーティション キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#output---usage)」セクションを参照してください。| 
+|**rowKey** |**RowKey** | 書き込むテーブル エンティティの行キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#output---usage)」セクションを参照してください。| 
+|**connection** |**Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br/>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+
+## <a name="output---usage"></a>出力 - 使用方法
+
+Table Storage の出力バインドは、次のシナリオをサポートしています。
+
+* **任意の言語で 1 行を書き込む**
+
+  C# または C# スクリプトでは、`out T paramName` などのメソッド パラメーター、または関数の戻り値を使用して、出力テーブル エンティティにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 *function.json* ファイルまたは `Table` 属性にパーティション キーと行キーが指定されている場合、`T` には任意のシリアル化可能な型を使用できます。 指定されていない場合、`T` には `PartitionKey` および `RowKey` プロパティを含む型を使用する必要があります。 このシナリオで、`T` は `ITableEntity` を実装するか `TableEntity` から派生するのが一般的ですが、必ずしもそうとは限りません。
+
+* **C# または C# スクリプトで 1 行または複数行を書き込む**
+
+  C# または C# スクリプトでは、メソッド パラメーター `ICollector<T> paramName` または `ICollectorAsync<T> paramName` を使用して、出力テーブル エンティティにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 `T` は、追加するエンティティのスキーマを指定します。 `T` は `TableEntity` から派生するか、`ITableEntity` を実装するのが一般的ですが、必ずしもそうとは限りません。 *function.json* と `Table` 属性コンストラクターのパーティション キーと行キー値は、このシナリオでは使用しません。
+
+  代わりに、Azure Storage SDK で `CloudTable paramName` メソッド パラメーターを使用してテーブルに書き込みます。
+
+* **JavaScript で 1 行または複数行を書き込む**
+
+  JavaScript 関数の場合、`context.bindings.<name>` を使用してテーブルの出力にアクセスします。
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

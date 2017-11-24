@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/26/2016
+ms.date: 11/09/2017
 ms.author: ashmaka
-ms.openlocfilehash: 33897e7966de5d467602f6cb36fe16caf0786ffd
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 622ae64e118dd2498aff0bf2e9f6c1dbfb0ab045
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>マルチテナント SaaS アプリケーションと Azure Search の設計パターン
 マルチテナント アプリケーションとは、他のテナントのデータを表示したり共有したりできない多数のテナントに同じサービスと機能を提供するアプリケーションです。 このドキュメントでは、Azure Search を使用して構築されたマルチテナント アプリケーションのテナント分離戦略について説明します。
 
 ## <a name="azure-search-concepts"></a>Azure Search の概念
-Search-as-a-service (サービスとしての検索) ソリューションである Azure Search を使用すると、開発者はインフラストラクチャを管理したり、検索のエキスパートになったりしなくても、豊富な検索エクスペリエンスをアプリケーションに追加できます。 データはこのサービスにアップロードされた後、クラウドに保存されます。 Azure Search API への簡単な要求を使用して、データの変更や検索を行うことができます。 このサービスの概要については、 [こちらの記事](http://aka.ms/whatisazsearch)をご覧ください。 設計パターンについて説明する前に、Azure Search のいくつかの概念を理解しておく必要があります。
+Search-as-a-service (サービスとしての検索) ソリューションである Azure Search を使用すると、開発者はインフラストラクチャを管理したり、情報取得のエキスパートになったりしなくても、豊富な検索機能をアプリケーションに追加できます。 データはこのサービスにアップロードされた後、クラウドに保存されます。 Azure Search API への簡単な要求を使用して、データの変更や検索を行うことができます。 このサービスの概要については、 [こちらの記事](http://aka.ms/whatisazsearch)をご覧ください。 設計パターンについて説明する前に、Azure Search のいくつかの概念を理解しておく必要があります。
 
 ### <a name="search-services-indexes-fields-and-documents"></a>検索サービス、インデックス、フィールド、ドキュメント
 Azure Search を使用する場合、" *検索サービス*" にサブスクライブします。 データは、Azure Search にアップロードされると、検索サービス内の " *インデックス* " に格納されます。 1 つのサービス内に多数のインデックスを作成できます。 データベースのなじみのある概念に照らし合わせた場合、検索サービスはデータベースに例えることができ、サービス内のインデックスはデータベース内のテーブルに例えることができます。

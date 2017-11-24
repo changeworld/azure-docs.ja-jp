@@ -13,16 +13,16 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5c4509bc1d05bc422f6bc5599d4635020ded63e9
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8bcecdff2bb9ac037e2cd71a431619883dfb5084
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-azure-sql-data-sync-preview"></a>Azure SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する
 
 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータを複数の SQL データベースや SQL Server インスタンスの間で双方向に同期させることができます。
 
@@ -44,7 +44,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 -   **同期データベース**には、データ同期のメタデータとログが含まれています。同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
 
 > [!NOTE]
-> オンプレミスのデータベースを使用している場合は、[ローカル エージェントを構成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-sql-data-sync)必要があります。
+> オンプレミスのデータベースを使っている場合は、[ローカル エージェントを構成する](sql-database-get-started-sql-data-sync.md#add-on-prem)必要があります。
 
 ![データベース間でのデータの同期](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -78,38 +78,11 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
     -   *[ハブ側に合わせる]* を選択すると、ハブでの変更が常にメンバーでの変更を上書きします。
     -   *[Member wins]\(メンバー側に合わせる\)* を選択すると、メンバーでの変更がハブでの変更を上書きします。 複数のメンバーがある場合、最終的な値は、どのメンバーが最初に同期されるかによって異なります。
 
-## <a name="common-questions"></a>一般的な質問
-
-### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>データ同期はどのくらいの頻度でデータを同期しますか? 
-最小の頻度は 5 分ごとです。
-
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>データ同期を使用してオンプレミスの SQL Server データのみの間で同期できますか? 
-直接無効にすることはできません。 しかし、Azure でハブ データベースを作成し、オンプレミスデータベースを同期グループに追加することで、オンプレミスの SQL Server データベース間で間接的に同期できます。
-   
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>データ同期を使用して、実稼働データベースからデータを空のデータベースにデータを挿入し、それらの同期を維持することはできますか? 
-はい。 元のデータベースからスクリプトを作成することで、新しいデータベース内にスキーマを手動で作成します。 スキーマを作成した後で、同期グループにテーブルを追加し、データをコピーして同期を維持します。
-
-### <a name="why-do-i-see-tables-that-i-did-not-create"></a>作成していないテーブルが表示されるのはなぜですか?  
-データの同期により、データベース内に変更追跡のためのサイド テーブルが作成されます。 これらを削除しないでください。削除するとデータ同期が動作を停止します。
-   
-### <a name="i-got-an-error-message-that-said-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-the-error"></a>"列 \<column\> に値 NULL を挿入できません。 この列では NULL 値が許可されていません" というエラー メッセージが表示されました。 これはどういう意味ですか、エラーを修正する方法を教えてください。 
-このエラー メッセージは、次の 2 つの問題のいずれかを示します。
-1.  主キーのないテーブルである可能性があります。 この問題を解決するには、同期しているすべてのテーブルに主キーを追加します。
-2.  CREATE INDEX ステートメントに WHERE 句がある可能性があります。 同期では、この条件は処理されません。 この問題を解決するには、WHERE 句を削除するか、手動ですべてのデータベースに変更を加えます。 
- 
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>データ同期では循環参照はどのように処理されますか? つまり、同じデータが複数の同期グループで同期されるとき、その変更を結果として保持しますか?
-データ同期は循環参照を処理しません。 必ず回避してください。 
-
-### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>データ同期でデータベースをエクスポートおよびインポートするにはどうすればよいですか?
-データベースを `.bacpac` ファイルとしてエクスポートし、そのファイルをインポートして新しいデータベースを作成した後、新しいデータベースでデータ同期を使うには、次の 2 つのことを行う必要があります。
-1.  [このスクリプト](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql)を使って、**新しいデータベース**でデータ同期オブジェクトとサイド テーブルをクリーンアップします。 このスクリプトは、データベースからすべての必要なデータ同期オブジェクトを削除します。
-2.  新しいデータベースで同期グループを再作成します。 古い同期グループが必要ない場合は削除します。
-
 ## <a name="sync-req-lim"></a> 要件と制限
 
 ### <a name="general-requirements"></a>一般的な要件
 
--   各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
+-   各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 主キーの値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
 
 -   テーブルに、主キー以外の ID 列を設けることはできません。
 
@@ -151,13 +124,52 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | 最小同期間隔                                           | 5 分              |                             |
 |||
 
+## <a name="faq-about-sql-data-sync"></a>SQL データ同期に関する FAQ
+
+### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>SQL データ同期 (プレビュー) サービスのコストはどれくらいですか?
+
+プレビュー中は、SQL データ同期 (プレビュー) サービス自体に料金はかかりません。  ただし、SQL Database インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+
+### <a name="what-regions-support-data-sync"></a>データ同期はどのリージョンでサポートされていますか?
+
+SQL データ同期 (プレビュー) は、すべてのパブリック クラウド リージョンで利用できます。
+
+### <a name="is-a-sql-database-account-required"></a>SQL Database アカウントは必要ですか? 
+
+はい。 ハブ データベースをホストするには、SQL Database アカウントが必要です。
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>データ同期を使用してオンプレミスの SQL Server データのみの間で同期できますか? 
+直接無効にすることはできません。 しかし、Azure でハブ データベースを作成し、オンプレミスデータベースを同期グループに追加することで、オンプレミスの SQL Server データベース間で間接的に同期できます。
+   
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>データ同期を使用して、実稼働データベースからデータを空のデータベースにデータを挿入し、それらの同期を維持することはできますか? 
+はい。 元のデータベースからスクリプトを作成することで、新しいデータベース内にスキーマを手動で作成します。 スキーマを作成した後で、同期グループにテーブルを追加し、データをコピーして同期を維持します。
+
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>データベースをバックアップおよび復元するには、SQL データ同期を使う必要がありますか?
+
+SQL データ同期 (プレビュー) を使ってデータのバックアップを作成することはお勧めできません。 SQL データ同期 (プレビュー) の同期はバージョン管理されていないため、バックアップして特定の時点に復元することはできません。 さらに、SQL データ同期 (プレビュー) では、ストアド プロシージャなどの他の SQL オブジェクトはバックアップされず、復元操作に相当する処理は迅速に行われません。
+
+お勧めするバックアップ方法の 1 つについては、「[Azure SQL Database のコピー](sql-database-copy.md)」をご覧ください。
+
+### <a name="is-collation-supported-in-sql-data-sync"></a>SQL データ同期では照合順序はサポートされていますか?
+
+はい。 SQL データ同期は、次のシナリオで照合順序をサポートします。
+
+-   選んだ同期スキーマ テーブルがハブまたはメンバー データベースにまだない場合、同期グループを展開すると、サービスは空の展開先データベースで選ばれている照合順序の設定を使って、対応するテーブルと列を自動的に作成します。
+
+-   同期対象のテーブルがハブとメンバー データベースの両方に既に存在する場合は、SQL データ同期で同期グループを正常に展開するには、ハブとメンバー データベースで主キー列の照合順序が同じである必要があります。 主キー列以外の列に対して照合順序の制限はありません。
+
+### <a name="is-federation-supported-in-sql-data-sync"></a>SQL データ同期ではフェデレーションはサポートされていますか?
+
+フェデレーション ルート データベースは、SQL データ同期 (プレビュー) サービスで制限なしに使うことができます。 現在のバージョンの SQL データ同期 (プレビュー) には、フェデレーション データベースのエンドポイントを追加できません。
+
 ## <a name="next-steps"></a>次のステップ
 
 SQL データ同期の詳細については、以下を参照してください。
 
--   [Azure SQL データ同期の概要](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL データ同期の設定](sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
--   [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
+-   [OMS Log Analytics を使用した Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)
 
 -   SQL データ同期を構成する方法を示す完全な PowerShell の例
     -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)

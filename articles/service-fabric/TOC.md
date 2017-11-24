@@ -16,9 +16,8 @@
 ### [4 - 監視と診断](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## 既存の .NET アプリのコンテナー格納
-### [1 - Azure でのセキュリティで保護されたクラスターの作成](service-fabric-tutorial-create-cluster-azure-ps.md)
-### [2 - Docker Compose を使用した .NET アプリのデプロイ](service-fabric-host-app-in-a-container.md)
-### [3 - コンテナーの監視](service-fabric-tutorial-monitoring-wincontainers.md)
+### [1 - Docker Compose を使用した .NET アプリのデプロイ](service-fabric-host-app-in-a-container.md)
+### [2 - コンテナーの監視](service-fabric-tutorial-monitoring-wincontainers.md)
 
 ## Linux コンテナー アプリの作成
 ### [1 - コンテナー イメージの作成](service-fabric-tutorial-create-container-images.md)
@@ -284,8 +283,7 @@
 ## クラスターを作成および管理する
 ### Azure 上のクラスター
 #### 作成
-##### [Azure で初めてのクラスターを作成する](service-fabric-get-started-azure-cluster.md)
-##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+##### [Azure ポータル](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure リソース マネージャー](service-fabric-cluster-creation-via-arm.md)
 #### スケール
 ##### [手動で](service-fabric-cluster-scale-up-down.md)

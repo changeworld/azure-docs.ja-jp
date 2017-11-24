@@ -1,29 +1,26 @@
 ---
-title: "Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。"
-keywords: 
+title: "Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法 | Microsoft Docs"
+description: "この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。"
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: dmdenmsft
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/24/2017
 ms.author: dmden
-ms.openlocfilehash: abc3b5400e6961a798e1e6bf9e4986304046e845
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 7772f6be0c60c1c2e59499d46e3c56975053e551
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
-この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの構成方法を説明します。
+この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションで使用される認証と承認を構成する方法を説明します。
 
 ## <a name="service-principal"></a>サービス プリンシパル
 
@@ -102,11 +99,9 @@ Time Series Insights へのアクセスが必要なアプリケーションが�
     string accessToken = token.AccessToken;
     ```
 
+お使いのアプリケーションのアプリケーション ID とキーを使用し、Azure Time Series Insight で認証します。 
+
 ## <a name="next-steps"></a>次のステップ
-
-お使いのアプリケーションで、アプリケーション ID とキーを使用します。 Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
-
-## <a name="see-also"></a>関連項目
-
-* [クエリ API](/rest/api/time-series-insights/time-series-insights-reference-queryapi) (詳細なクエリ API のリファレンス)
-* [Azure Portal でサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+- Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
+- API リファレンスについては、「[クエリ API リファレンス](/rest/api/time-series-insights/time-series-insights-reference-queryapi)」をご覧ください。
+- [Azure Portal でサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)

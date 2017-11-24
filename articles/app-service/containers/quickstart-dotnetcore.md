@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2a8000cadd6f6d7204e1790df62443a7ac7598c9
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: c01b55e9548f9b2e2c7aca161afda42c2c248379
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core Web アプリの作成
 
@@ -34,8 +34,8 @@ ms.lasthandoff: 10/27/2017
 
 このクイック スタートを完了するには、以下が必要です。
 
-* [Git をインストールする](https://git-scm.com/)
-* [.NET Core SDK をインストールする](https://www.microsoft.com/net/download/core)
+* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
+* <a href="https://www.microsoft.com/net/download/core" target="_blank">.NET Core SDK をインストールする</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -85,11 +85,11 @@ git commit -m "first commit"
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app-with-built-in-image"></a>組み込みイメージを使用する Web アプリの作成
+## <a name="create-a-web-app"></a>Web アプリを作成する
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-no-h.md)]
 
-新たに作成された Web アプリに移動します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
+新しく作成された Web アプリに移動します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
 
 ```bash
 http://<app name>.azurewebsites.net

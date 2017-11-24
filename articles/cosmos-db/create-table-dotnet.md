@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: 02317d1b74d10d0fb3a2a08d8f4292a6be0438c2
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 5d22b23d687dba2382e009e73f20014a5d528d78
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>クイックスタート: .NET と Azure Cosmos DB での Table API アプリの構築 
 
@@ -67,7 +67,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 2. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
 
     ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-table-dotnet-getting-started.git
+    git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
     ```
 
 3. 次に、Visual Studio で TableStorage ソリューション ファイルを開きます。 
@@ -78,22 +78,25 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 1. [Azure Portal](http://portal.azure.com/) で **[接続文字列]** をクリックします。 
 
-    画面の右側にある [コピー] ボタンを使用して接続文字列をコピーします。
+    画面の右側にある [コピー] ボタンを使ってプライマリ接続文字列をコピーします。
 
-    ![[接続文字列] ウィンドウで接続文字列を確認してコピーする](./media/create-table-dotnet/connection-string.png)
+    ![[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする](./media/create-table-dotnet/connection-string.png)
 
 2. Visual Studio で App.config ファイルを開きます。 
 
-3. 接続文字列の値を App.config ファイルに AzureCosmosDBTableAPIConnectionString の値として貼り付けます。 
+3. このチュートリアルでは Storage Emulator を使用しないため、8 行目の StorageConnectionString のコメントを解除し、7 行目の StorageConnectionString をコメント アウトします。 
 
-    `<add key="CosmosDBStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.net" />`    
+3. 8 行目の StorageConnectionString の値にプライマリ接続文字列の値を貼り付けます。 
 
-    > [!NOTE]
-    > このアプリを Azure Table Storage で使用するには、`App.config file` の接続文字列を変更する必要があります。 Table アカウント名にはアカウント名を、Azure Storage プライマリ キーにはアカウント キーを使用します。 <br>
-    >`<add key="StandardStorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
-    > 
-    >
+    ```
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />`
+    ```
+
+    8 行目は次のようになります。
+
+    ```
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
+    ```
 
 4. App.config ファイルを保存します。
 

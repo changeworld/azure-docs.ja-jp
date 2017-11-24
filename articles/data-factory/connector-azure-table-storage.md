@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jingwang
-ms.openlocfilehash: d7da4c3c4aa902cf9ccb97ebd13b7d16940f2c32
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: ca5f8e43b6667aa1c2e3ac38e7ea00b5bd86b72f
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,8 +48,8 @@ Azure Storage へのグローバル アクセスが可能なデータ ファク�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureStorage** |はい |
-| connectionString | connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 このフィールドを SecureString とマークします。 |あり |
+| type | type プロパティは **AzureStorage** を設定する必要があります。 |はい |
+| connectionString | connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 このフィールドを SecureString とマークします。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
@@ -87,8 +87,8 @@ Shared Access Signature (SAS) を使用すると、ストレージ アカウン�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureStorage** |あり |
-| sasUri | BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 このフィールドを SecureString とマークします。 |あり |
+| type | type プロパティは **AzureStorage** を設定する必要があります。 |はい |
+| sasUri | BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 このフィールドを SecureString とマークします。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
@@ -126,8 +126,8 @@ Azure Table をコピー先またはコピー元としてデータをコピー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |あり |
-| tableName |リンクされたサービスが参照する Azure テーブル データベース インスタンスのテーブルの名前です。 |あり |
+| type | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |はい |
+| tableName |リンクされたサービスが参照する Azure テーブル データベース インスタンスのテーブルの名前です。 |はい |
 
 **例:**
 
@@ -167,7 +167,7 @@ Azure Table からデータをコピーする場合は、コピー アクティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |あり |
+| type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |はい |
 | AzureTableSourceQuery |カスタム AzureTable 　クエリを使用してデータを読み取ります。 次のセクションの例を参照してください。 |いいえ |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。<br/>使用可能な値: **True**、および **False** (既定値)。 |いいえ |
 
@@ -187,11 +187,11 @@ Azure テーブルの列が datetime 型の場合:
 
 ### <a name="azure-table-as-sink"></a>シンクとしての Azure Table
 
-Azure Table からデータをコピーする場合は、コピー アクティビティのソースの種類を **AzureTableSink** を設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
+Azure Table にデータをコピーする場合は、コピー アクティビティのシンクの種類を **AzureTableSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **AzureTableSink** に設定する必要があります。 |あり |
+| type | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |はい |
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |いいえ |
 | azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |いいえ |
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |いいえ |

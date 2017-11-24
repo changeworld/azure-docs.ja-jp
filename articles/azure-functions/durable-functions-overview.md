@@ -1,5 +1,5 @@
 ---
-title: "Durable Functions の概要 - Azure"
+title: "Durable Functions の概要 - Azure (プレビュー)"
 description: "Azure Functions の Durable Functions 拡張機能の概要です。"
 services: functions
 author: cgillum
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 04d660d5fdd878788c09e46b078b2e2b043b7dbb
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: fa0d5cf7469a1a36fe0ab9a712cd4f8c963ceb48
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="durable-functions-overview-azure-functions"></a>Durable Functions の概要 (Azure Functions)
+# <a name="durable-functions-overview-preview"></a>Durable Functions の概要 (プレビュー)
 
 *Durable Functions* は、サーバーレス環境でステートフル関数を記述できる、[Azure Functions](functions-overview.md) と [Azure WebJobs](../app-service/web-sites-create-web-jobs.md) の拡張機能です。 この拡張機能は状態、チェックポイント、再起動を管理します。
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/13/2017
 * 関数が待機するたびに、自動で進行状況にチェックポイントを設定します。 プロセスがリサイクルされるか VM が再起動される場合に、ローカルの状態が失われません。
 
 > [!NOTE]
-> Durable Functions は Azure Functions の高度な拡張機能であり、すべてのアプリケーションに適しているわけではありません。 この記事は、開発者が [Azure Functions](functions-overview.md) のコンセプトを十分に理解しており、サーバーレス アプリケーションの開発に取り組んでいることを前提としています。
+> Durable Functions はプレビュー段階の Azure Functions の高度な拡張機能であり、すべてのアプリケーションに適しているわけではありません。 この記事は、開発者が [Azure Functions](functions-overview.md) のコンセプトを十分に理解しており、サーバーレス アプリケーションの開発に取り組んでいることを前提としています。
 
 Durable Functions の主な用途は、サーバーレス アプリケーションにおける複雑でステートフルな調整の問題をシンプルにすることです。 次のセクションでは、Durable Functions を使用することでメリットがある、いくつかの典型的なアプリケーションのパターンを示します。
 

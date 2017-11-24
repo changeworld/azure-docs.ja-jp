@@ -1,50 +1,50 @@
 ---
-title: "Azure Time Series Insights 環境への参照データ セットの追加 | Microsoft Docs"
-description: "このチュートリアルでは、Time Series Insights 環境に参照データ セットを追加します。"
-keywords: 
+title: "Azure Time Series Insights 環境に参照データ セットを追加する方法 | Microsoft Docs"
+description: "この記事では、Azure Time Series Insights 環境に参照データ セットを追加する方法について説明します。 参照データは、ソース データに結合することにより値を増幅するのに役立ちます。"
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: venkatgct
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: b94ca172dba71b407ee5e9a40c283a97602efd17
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 7cdcefbd0daec3b7bab59680afa1470624583c74
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Ibiza ポータルを使用して Time Series Insights 環境の参照データ セットを作成する
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
+
+この記事では、Azure Time Series Insights 環境に参照データ セットを追加する方法について説明します。 参照データは、ソース データに結合することにより値を増幅するのに役立ちます。
 
 参照データ セットは、イベント ソースからのイベントによって増幅される項目の集まりです。 イベント ソースから受信したイベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の項目と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されているキーに基づいて行われます。
 
-## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>参照データ セットを環境に追加する手順
+## <a name="add-a-reference-data-set"></a>参照データ セットを追加する
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. Azure Portal の左側のメニューで [すべてのリソース] をクリックします。
-3. Time Series Insights 環境を選択します。
+
+2. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックします。 Time Series Insights 環境を選択します。
+
+3. **[Environment Topology] (環境トポロジ)** 見出しで、**[Reference Data Sets] (参照データ セット)** を選択します。
 
     ![Time Series Insights の参照データ セットの作成](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
 
-4. [参照データ セット] を選択し、[+ 追加] をクリックします。
+4. **[+ 追加]** を選択して、新しい参照データ セットを追加します。
+
+5. 一意の**参照データ セットの名前**を指定します。
 
     ![Time Series Insights の参照データ セットの作成 - 詳細](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
 
-5. 参照データ セットの名前を指定します。
-6. キーの名前とその型を指定します。 この名前と型は、指定されたイベント ソースのイベントから適切なプロパティを選ぶ目的で使用されます。 たとえばキー名に "DeviceId" を、型に "String" を指定した場合、Time Series Insights のイングレス エンジンは、受信したイベントの中から "String" 型の "DeviceId" という名前のプロパティを探します。 複数のキーを指定して、イベントと結合させることができます。 キー名を突き合わせる際は、大文字と小文字が区別されます。
+6. 空のフィールドに**キー名**を指定し、その**型**を選択します。 この名前と型は、参照データに結合するため、イベント ソース内のイベントから正しいプロパティを選択するために使用されます。 
 
-     ![Time Series Insights の参照データ セットの作成 - 詳細](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
+   たとえば、キー名を **DeviceId**、型を**文字列**として指定した場合、検索して結合する各受信イベントで、Time Series Insights のイングレス エンジンは**文字列**型の **DeviceId** という名前のプロパティを探します。 複数のキーを指定して、イベントと結合させることができます。 キー名を突き合わせる際は、大文字と小文字が区別されます。
 
-7. [作成] をクリックします。
+7. **[作成]**を選択します。
 
 ## <a name="next-steps"></a>次のステップ
-
 * プログラムで[参照データを管理](time-series-insights-manage-reference-data-csharp.md)する。
 * 詳細な API リファレンスについては、[参照データ API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) に関するドキュメントを参照してください。

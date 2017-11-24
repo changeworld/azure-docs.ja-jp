@@ -1,51 +1,68 @@
 ---
-title: "Azure Time Series Insights の概要 | Microsoft Docs"
-description: "時系列のデータ分析と IoT ソリューション向けの新しいサービスである Azure Time Series Insight の概要"
-keywords: 
-services: tsi
-documentationcenter: 
+title: "Azure Time Series Insights とは | Microsoft Docs"
+description: "時系列データ分析と IoT ソリューション向けの新しいサービスである Azure Time Series Insights の概要を説明します。"
+services: time-series-insights
+ms.service: time-series-insights
 author: op-ravi
-manager: jhubbard
-editor: 
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 07/20/2017
 ms.author: omravi
-ms.openlocfilehash: 1814459e47280af62450a4093140ab6ab9b765fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MarkMcGeeAtAquent
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 95cb26ada6f8ea39bc1a437a755f80ee7ddb7698
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
-Azure Time Series Insights は、ストレージ、分析、および視覚化コンポーネントを備えた管理型のクラウド サービスです。これらのコンポーネントにより、簡単に、数十億ものイベントを並行して取り込み、保存、調査、分析することができます。 Time Series Insights では、データの全体像を確認でき、隠れた傾向や異常の検出、ほぼリアルタイムでの根本原因分析の実施が可能になるため、IoT ソリューションの検証をすばやく行い、デバイスの大きなダウンタイムを防ぐことができます。 Time Series Insights は、イベント ブローカー (例: IoT Hub や Event Hubs) から時系列のデータを取り込み、そのデータにインデックスを作成して、構成可能な保持ポリシーに基づいてデータを削除します。 ユーザーは、直観的な UX または REST クエリ API を介してそのデータを使用します。
+Time Series Insights は、IoT デバイスによって生成されるデータなど、大量の時系列データの保存、視覚化、照会を目的としています。  クラウドの時系列データを保存、管理、照会、または視覚化する場合は、Time Series Insights が適しています。  
 
-![Time Series Insights の概要](media/overview/time-series-insights-overview-flow.png)
+社内向けまたは外部顧客向けのアプリケーションを作成する場合、時系列データのインデックス作成、保存、集計用のバックエンドとして Time Series Insights を使用できます。  Time Series Insights 上で、カスタムの視覚化機能やユーザー エクスペリエンスを構築できます。  Time Series Insights では、このシナリオを実現するために、REST Query API を公開しています。  
+
+データが時系列かどうかわからない場合は、知っておくべきことがあります。  時系列データは、資産やプロセスの経時的な変化を表します。  時系列データには、タイムスタンプを含み、軸として時間が最も重要であるという、他のデータにはない特徴があります。  一般に、時系列データは時間順に到着し、通常はデータベースに対する更新ではなく挿入として扱われます。  Time Series Insights では、すべての新しいイベントをキャプチャし、行として保存するため、変化が経時的に測定されます。これにより、過去に遡ったり、将来の変化を予測したりできます。  大量の時系列データの保存、インデックス作成、照会、分析、視覚化は困難な場合があります。  
 
 ## <a name="primary-scenarios"></a>主なシナリオ
 
-* 短時間での IoT ソリューションの監視と検証。
-* 大規模な IoT データの視覚化と分析。
-* 根本原因分析と異常検出の迅速化。
-* 複数のデバイス、プラント、データの全体像の作成。
+- スケーラブルな方法での時系列データの保存  
+  - Time Series Insights の中核となるのは、時系列データを念頭に設計されたデータベースです。  このデータベースはスケーラブルであり、完全に管理されているため、Time Series Insight はイベントの保存と管理を処理します。
 
-## <a name="capabilities-and-benefits"></a>機能と利点
+- ほぼリアルタイムのデータ探索  
+  - Time Series Insights には、環境にストリーミングされるすべてのデータを視覚化するエクスプローラーが用意されています。  イベント ソースの接続後すぐに、Time Series Insight 内でイベント データを表示、探索、照会できます。  このデータは、デバイスが予想どおりにデータを出力しているかどうかを検証し、IoT 資産の正常性、生産性、全体的な有効性を監視する際に役立ちます。  
 
-* **簡単に開始できる**: Azure Time Series Insights は、事前のデータ準備が必要なく、非常に高速です。 Azure IoT Hub またはイベント ハブに含まれる数十億ものイベントに数分で接続することができます。 関連付けた後、数秒でセンサー データを視覚化および処理して、IoT ソリューションの検証を迅速に行うことができます。 Time Series Insights は手軽に使用でき、コードを 1 行も記述することなく、データを操作できます。  新しい言語を習得する必要もありません。Time Series Insights には、詳しい知識のあるユーザー向けの自由書式の詳細なクエリ画面のほか、だれでもポイントしてクリックするだけで使用できる調査機能が備わっています。
+- 根本原因分析と異常検出
+  - Time Series Insights は、多段階の根本原因分析を実行して保存するために、パターンやパースペクティブ ビューなどのツールを備えています。  さらに、Time Series Insights は Azure Stream Analytics などのアラート サービスと連携しているので、Time Series Insights エクスプローラーにアラートや検出された異常をほぼリアルタイムで表示できます。  
 
-* **ほぼリアルタイムでの迅速な洞察**: Time Series Insights では、1 日あたり数億件のセンサー イベントを取り込むことができます (待ち時間は 1 分)。そのため、変化に迅速に対応できます。 Time Series Insights により、傾向や異常にすばやく焦点を当てることでセンサー データに対する理解が深まるため、複雑な根本原因分析を実施し、コストのかかるダウンタイムを回避することができます。 リアルタイム データと履歴データ間の相互相関が実現するため、Time Series Insights を使用すると、ユーザーはデータに隠れていた傾向を発見することができます。
+- 複数の異なる場所からストリーミングされた時系列データのグローバル ビューによる複数の資産/サイトの比較
+  - Time Series Insights 環境に複数のイベント ソースを接続できます。  つまり、複数の異なる場所からストリーミングされたデータをほぼリアルタイムで一緒に表示できます。  ユーザーは、この可視性を利用してビジネス リーダーとデータを共有できます。また、専門知識を応用して問題の解決やベスト プラクティスの適用を支援し、知識を共有できる各分野の専門家とのコラボレーションを向上させることもできます。
 
-* **カスタム ソリューションの構築**: Azure Time Series Insights のデータを既存のアプリケーションに埋め込んだり、Time Series Insights REST API を使用して新しいカスタム ソリューションを作成したりすることができます。 カスタマイズされたビューの作成と共有によって、検出したデータを他のユーザーが簡単に探索できるようになります。
+- Time Series Insights 上での顧客アプリケーションの作成 
+  - Time Series Insights は REST Query API を公開しているので、時系列データを使用するアプリケーションを作成できます。
 
-* **スケーラビリティ**: Time Series Insights は、大規模に IoT をサポートするように設計されています。 プレビューでは、1 日あたり 100 万～ 1 億件のイベントを受信できます (既定の保有期間は 31 日間)。 ユーザーは大量の履歴データと共に、ほぼリアルタイムでライブ データ ストリームを視覚化して分析できます。 今後は、絶え間なく進化するエンタープライズ規模に合わせて受信レートと保有率が大きくなります。
+## <a name="capabilities"></a>機能
 
-## <a name="time-series-insights-glossary"></a>Time Series Insights 用語集
+- **すぐに開始できる**: Azure Time Series Insights では、事前のデータ準備は不要です。 Azure IoT Hub またはイベント ハブに含まれる数百万のイベントに数分で接続できます。 接続後、センサー データを視覚化および操作して、IoT ソリューションを迅速に検証できます。 コードを記述しなくてもデータを操作できます。
+新しい言語を習得する必要はありません。Time Series Insights は、詳しい知識のあるユーザー向けの自由書式の詳細なクエリ画面と、ポイント アンド クリックで操作できる探索機能を備えています。
+- **ほぼリアルタイムの洞察**: Time Series Insights では、1 日あたり数百万件のセンサー イベントを取り込むことができます (待ち時間は 1 分)。 Time Series Insights では、傾向や異常を特定してセンサー データに関する洞察が得られるため、根本原因分析を実行し、コストのかかるダウンタイムを回避できます。 リアルタイム データと履歴データ間の相互相関が実現するため、Time Series Insights を使用すると、ユーザーはデータに隠れていた傾向を発見することができます。
+- **カスタム ソリューションの構築**: Azure Time Series Insights のデータを既存のアプリケーションに埋め込んだり、Time Series Insights REST API を使用して新しいカスタム ソリューションを作成したりできます。 洞察を他のユーザーが探索できるように、カスタマイズされたビューを作成して共有できます。
+- **スケーラビリティ**: Time Series Insights は、大規模に IoT をサポートするように設計されています。 1 日あたり 100 万～ 1 億件のイベントをイングレスできます (既定のリテンション期間は 31 日間)。 履歴データと共に、ライブ データ ストリームをほぼリアルタイムで視覚化して分析できます。 今後は、エンタープライズ規模に合わせてイングレス レートと保有率が増加します。
 
-* **環境**: 環境は、受信とストレージの容量を備えた Azure リソースです。  導入ユーザーは、Azure Portal を使用して、必要な容量を備えた環境をプロビジョニングします。
-* **イベント ソース**: イベント ソースは、Azure Event Hubs のようなイベント ブローカーから派生しています。  Time Series Insights は直接イベント ソースに接続してデータ ストリームを取り込みます。コードを記述する必要は一切ありません。 現在 Time Series Insights では、Azure Event Hubs と Azure IoT Hub がサポートされています。
-* **参照データ**: Time Series Insights により、ユーザーは、時系列のデータを参照データと結合することができます。  参照データには、デバイスに関するメタデータや、比較的変更頻度の低いその他の静的データを含めることができます。 Time Series Insights では参照データがデータ ストリームと結合されるため、ユーザーはこのデータをほぼリアルタイムで視覚化して分析できます。
+## <a name="getting-started"></a>使用の開始
+5 分足らずで使用を開始できます。 
+
+1.  使用を開始するには、Azure Portal で Time Series Insights 環境をプロビジョニングします。 
+2.  Azure IoT Hub やイベントハブなどのイベント ソースを接続します。  
+3.  参照データをアップロードします (これは追加のサービスではありません)。
+4.  Time Series Insights エクスプローラーを使用して、数分でデータを表示できます。
+
+## <a name="time-series-insights-explorer"></a>Time Series Insights エクスプローラー
+次の図は、エクスプローラーを使用して表示された Time Series Insights のデータの例を示しています。![Time Series Insights エクスプローラー] (media/time-series-insights-explorer/explorer4.png)
+
+
+## <a name="next-steps"></a>次のステップ
+ - [デモ環境で Time Series Insights エクスプローラーを使用して探索する](./time-series-quickstart.md)
+ - [独自の Time Series Insights 環境を計画する](time-series-insights-environment-planning.md)
+

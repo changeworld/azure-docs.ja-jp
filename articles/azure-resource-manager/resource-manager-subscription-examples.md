@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6e8335b9c2f3609bf0c48c563205ffaee8575b20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ab816d0392816c2293f9d70eb249bbcfa09bfba
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Azure エンタープライズ スキャフォールディングの実装例
 このトピックでは、企業が [Azure エンタープライズ スキャフォールディング](resource-manager-subscription-governance.md)の推奨事項を実装する方法の例を紹介します。 Contoso という架空の会社を使って一般的なシナリオのベスト プラクティスを示します。
@@ -57,8 +57,8 @@ Dave はサブスクリプションの次のロールを割り当てました。
 | 役割 | 割り当て先 | 説明 |
 | --- | --- | --- |
 | [所有者](../active-directory/role-based-access-built-in-roles.md#owner) |Contoso 社の AD のマネージ ID |この ID は、Contoso 社の ID 管理ツールを使用して Just In Time (JIT) アクセスで管理されます。この ID により、サブスクリプションの所有者のアクセスを完全に監査できます |
-| [セキュリティ管理者](../active-directory/role-based-access-built-in-roles.md#security-manager) |セキュリティおよびリスク管理部門 |このロールでは、ユーザーは Azure Security Center とリソースの状態を確認できます |
-| [ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md#network-contributor) |ネットワーク チーム |このロールでは、Contoso 社のネットワーク チームがサイト間 VPN と仮想ネットワークを管理できます |
+| [Security Manager](../active-directory/role-based-access-built-in-roles.md#security-manager) |セキュリティおよびリスク管理部門 |このロールでは、ユーザーは Azure Security Center とリソースの状態を確認できます |
+| [Network Contributor](../active-directory/role-based-access-built-in-roles.md#network-contributor) |ネットワーク チーム |このロールでは、Contoso 社のネットワーク チームがサイト間 VPN と仮想ネットワークを管理できます |
 | *カスタム ロール* |アプリケーションの所有者 |Dave は、リソース グループ内のリソースを変更できるロールを作成しました。 詳細については、「[Azure RBAC のカスタム ロール](../active-directory/role-based-access-control-custom-roles.md)」をご覧ください。 |
 
 ### <a name="policies"></a>ポリシー
@@ -68,7 +68,7 @@ Dave には、サブスクリプション内のリソースの管理に関する
 * Dave はコストを懸念しています。 そのため、アプリケーションの所有者がコストのかかる仮想マシンを不必要に作成するのを防ぐ必要があります。  
 * このアプリケーションは多数の部署の開発者にサービスを提供するので、Dave は各リソースに部署とアプリケーションの所有者でタグ付けしたいと考えています。 これらのタグを使用することで、ETS は適切なチームに請求できます。
 
-Dave は、次の [Resource Manager ポリシー](resource-manager-policy.md)を作成しました。
+Dave は次の [Azure ポリシー](../azure-policy/azure-policy-introduction.md)を作成します。
 
 | フィールド | 効果 | 説明 |
 | --- | --- | --- |

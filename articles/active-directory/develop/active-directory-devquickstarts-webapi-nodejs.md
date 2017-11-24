@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/17/2017
 ms.author: cshoe
 ms.custom: aaddev
-ms.openlocfilehash: a0b8ff6894a1f30fd8d18beef234737573691af9
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 6f67a2cf2baabfa10c6a8e81b085ca6991b981dd
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="secure-nodejs-web-api-with-azure-active-directory"></a>Azure Active Directory による Node.JS Web API のセキュリティ保護
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/19/2017
 
 ### <a name="configure-the-project-to-use-active-directory"></a>Active Directory を使用するようにプロジェクトを構成する
 
-アプリケーションの構成を開始するために、Azure CLI で取得できるアカウント固有の値がいくつかあります。 CLI で作業を開始するには Azure Cloud Shell を使用するのが最も簡単です。
+アプリケーションの構成を開始するために、Azure CLI から取得できるアカウント固有の値がいくつかあります。 CLI で作業を開始するには Azure Cloud Shell を使用するのが最も簡単です。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -65,7 +65,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 `create` コマンドの[引数](/cli/azure/ad/app?view=azure-cli-latest#az_ad_app_create)には、次が含まれます。
 
-| 引数  | Description |
+| 引数  | 説明 |
 |---------|---------|
 |`display-name` | 登録のフレンドリ名 |
 |`homepage` | ユーザーがサインインしてアプリケーションを使用する URL |
@@ -73,7 +73,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 Azure Active Directory に接続する前に、次の情報が必要です。
 
-| 名前  | Description | 構成ファイルの変数名 |
+| 名前  | 説明 | 構成ファイルの変数名 |
 | ------------- | ------------- | ------------- |
 | テナント名  | 認証に使用する[テナント名](active-directory-howto-tenant.md) | `tenantName`  |
 | クライアント ID  | クライアント ID は、AAD の_アプリケーション ID_ に使用される OAuth の用語です。 |  `clientID`  |

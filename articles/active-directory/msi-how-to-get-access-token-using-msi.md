@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/17/2017
 ms.author: bryanla
-ms.openlocfilehash: 905e7b0d8a0c45c98a86882a8c8f387be0950f9f
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 168b2ab3676d3f3e2830966f850e14adbe579f85
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in-and-token-acquisition"></a>サインインとトークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)] Azure VM で MSI を有効にした後、サインインに MSI を使用して、アクセス トークンを要求することができます。 この記事では、次に示すさまざまな方法で、MSI [サービス プリンシパル](develop/active-directory-dev-glossary.md#service-principal-object)を使用してサインインし、[アプリ専用のアクセス トークン](develop/active-directory-dev-glossary.md#access-token)を取得します。
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/17/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [msi-qs-configure-prereqs](../../includes/msi-qs-configure-prereqs.md)]
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 この記事の PowerShell の例を使用する場合は、[Azure PowerShell バージョン 4.3.1](https://www.powershellgallery.com/packages/AzureRM) 以上をインストールする必要があります。 この記事で使用する Azure CLI の例には、次の 3 つのオプションがあります。
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
@@ -150,7 +150,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 要素 | Description |
+| 要素 | 説明 |
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://localhost:50342/oauth2/token` | 構成可能な MSI エンドポイント。既定のポートは 50342 です。 |
@@ -173,7 +173,7 @@ Content-Type: application/json
 }
 ```
 
-| 要素 | Description |
+| 要素 | 説明 |
 | ------- | ----------- |
 | `access_token` | 要求されたアクセス トークン。 REST API を呼び出すとき、トークンは `Authorization` 要求ヘッダー フィールドに "ベアラー" トークンとして埋め込まれ、API が呼び出し元を認証できるようにします。 | 
 | `refresh_token` | MSI では使用されません。 |

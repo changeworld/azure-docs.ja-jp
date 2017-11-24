@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 597d8e12377ca19b0c58eb2fc8bdb7597c1c6c07
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップの管理
 > [!div class="op_single_selector"]
@@ -32,10 +32,10 @@ ms.lasthandoff: 10/11/2017
 ## <a name="manage-vaults-and-protected-virtual-machines"></a>コンテナーと保護された仮想マシンの管理
 Azure ポータルから Recovery Services コンテナーのダッシュボードにアクセスすると、コンテナーに関して次のような情報を確認できます。
 
-* 最新のバックアップ スナップショット (つまり最新の復元ポイント) <br\>
-* バックアップ ポリシー <br\>
-* すべてのバックアップ スナップショットの合計サイズ <br\>
-* コンテナーで保護されている仮想マシンの数 <br\>
+* 最新のバックアップ スナップショット (最新の復元ポイントでもあります)
+* バックアップ ポリシー
+* すべてのバックアップ スナップショットの合計サイズ
+* コンテナーで保護されている仮想マシンの数
 
 仮想マシンのバックアップに伴う管理タスクは多くの場合、ダッシュボードでコンテナーを開くことから始まります。 ただし Recovery Services コンテナーを使った保護は、複数の項目 (または複数の VM) が対象となる場合があるため、特定の VM の詳細を表示するには、そのコンテナー項目のダッシュボードを開きます。 以降の手順では、*コンテナーのダッシュボード*と*コンテナー項目のダッシュボード*の開き方について順に説明しています。 2 つの手順では、コンテナーとコンテナー項目を Azure ダッシュボードに追加する方法について、[ダッシュボードにピン留めする] コマンドを使用した "ヒント" を紹介しています。 "ダッシュボードにピン留めする" は、コンテナーまたはコンテナー項目へのショートカットの作成手段となります。 このショートカットから使用頻度の高いコマンドを実行することもできます。
 
@@ -50,11 +50,11 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**をクリックします。
 
-    ![Create Recovery Services Vault step 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png) <br/>
+    ![Create Recovery Services Vault step 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
     Recovery Services コンテナーの一覧が表示されます。
 
-    ![List of Recovery Services vaults ](./media/backup-azure-manage-vms/list-o-vaults.png) <br/>
+    ![List of Recovery Services vaults ](./media/backup-azure-manage-vms/list-o-vaults.png)
 
    > [!TIP]
    > Azure ダッシュボードにコンテナーをピン留めすると、Azure ポータルを開いてすぐにコンテナーにアクセスすることができます。 ダッシュボードにコンテナーをピン留めするには、コンテナーの一覧で目的のコンテナーを右クリックし、 **[ダッシュボードにピン留めする]**を選択します。
@@ -89,13 +89,13 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
 
     コンテナー項目のダッシュボードから、多くの重要な管理作業を実行できます。その例を次に示します。
 
-   * ポリシーの変更または新しいバックアップ ポリシーの作成<br\>
-   * 復元ポイントとその整合状態の確認 <br\>
-   * オンデマンドでの仮想マシンのバックアップ <br\>
-   * 仮想マシンの保護の停止 <br\>
-   * 仮想マシンの保護の再開 <br\>
-   * バックアップ データ (または復旧ポイント) の削除 <br\>
-   * [バックアップ ディスクの復元](backup-azure-arm-restore-vms.md#restore-backed-up-disks)  <br\>
+   * ポリシーの変更または新しいバックアップ ポリシーの作成
+   * 復元ポイントとその整合状態の確認
+   * オンデマンドでの仮想マシンのバックアップ
+   * 仮想マシンの保護を停止する
+   * 仮想マシンの保護の再開
+   * バックアップ データ (または復旧ポイント) の削除
+   * [バックアップ ディスクの復元](backup-azure-arm-restore-vms.md#restore-backed-up-disks)
 
 次の手順は、コンテナー項目のダッシュボードを表示したところから始めます。
 
@@ -110,7 +110,7 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
     ![Backup policy blade](./media/backup-azure-manage-vms/backup-policy-blade.png)
 3. **[バックアップ ポリシーの選択]** メニューから次の手順を実行します。
 
-   * ポリシーを変更するには、別のポリシーを選択し、 **[保存]**をクリックします。 すぐに、新しいポリシーがコンテナーに適用されます。 <br\>
+   * ポリシーを変更するには、別のポリシーを選択し、 **[保存]**をクリックします。 すぐに、新しいポリシーがコンテナーに適用されます。
    * ポリシーを作成するには、 **[新規作成]**を選択します。
 
      ![仮想マシンのバックアップ](./media/backup-azure-manage-vms/backup-policy-create-new.png)
@@ -148,7 +148,7 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
 仮想マシンの保護を中止するように選択した場合、復旧ポイントを保持するかどうかを確認するメッセージが表示されます。 仮想マシンの保護を中止する方法は 2 つあります。
 
 * 将来のバックアップ ジョブをすべて停止したうえで、すべての復旧ポイントを削除する方法と、
-* 将来のバックアップ ジョブをすべて停止して、復旧ポイントを保持する方法です。 <br/>
+* 将来のバックアップ ジョブをすべて停止して、復旧ポイントを保持する方法です。
 
 復旧ポイントを記憶域に保持するためにはコストが発生します。 一方、復旧ポイントを保持する利点は、仮想マシンを必要に応じて後から復元できることです。 復旧ポイントを保持するためのコストについては、「[価格の詳細](https://azure.microsoft.com/pricing/details/backup/)」を参照してください。 すべての復旧ポイントを削除するように選択した場合、仮想マシンを復元することはできません。
 

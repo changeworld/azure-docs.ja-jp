@@ -5,7 +5,7 @@
 
 # 作業の開始
 
-## [初心者向けチュートリアル](sql-data-warehouse-get-started-tutorial.md)
+## [データ読み込みのチュートリアル](load-data-from-azure-blob-storage-using-polybase.md)
 ## [エラスティック クエリのチュートリアル](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 54bbd7dd1d0ecad79f86e0ab16be3a48854093ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b22ad29e593a9293a98acebca065f19ab2d9d5be
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="introduction-to-azure-security"></a>Azure Security の概要
 ## <a name="overview"></a>概要
@@ -320,7 +320,7 @@ Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky な�
 [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) は、設備投資なしで、また最小限の運用コストでアプリケーション データを保護できるソリューションです。 アプリケーション エラーが発生するとデータが破損するおそれがあり、ヒューマン エラーが生じればアプリケーションにバグが生まれてセキュリティ上の問題につながる危険があります。 Azure Backup により、Windows と Linux で実行されている仮想マシンが保護されます。
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
-組織の[ビジネス継続性/障害復旧 (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧の調整に役立ちます。これにより、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
+組織の[ビジネス継続性/ディザスター リカバリー (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧の調整に役立ちます。これにより、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
 
 ### <a name="sql-vm-tde"></a>SQL VM TDE
 [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault)、および列レベルの暗号化 (CLE)が SQL Server の暗号化機能です。 これらの形態の暗号化では、暗号化に利用する暗号鍵を管理し、保存する必要があります。

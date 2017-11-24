@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 11/15/2017
 ms.author: denlee
-ms.openlocfilehash: b6cc51ad2bab294035f3ed8f300423d1d320df1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71d9d03b45d8c4fcf8acb41871dcf3f1304955aa
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB の概要: Graph API
 
@@ -44,7 +44,7 @@ Azure Cosmos DB Graph API には次のものが含まれています。
 - 10 ミリ秒未満の読み取り待ち時間と 99 パーセンタイルで 15 ミリ秒未満を実現したストレージとスループットのエラスティック スケーリング。
 - インスタント クエリの可用性による自動インデックス設定。
 - 調整可能な整合性レベル。
-- 可用性 99.99% を含む包括的な SLA。
+- 包括的な SLA。すべての単一リージョン アカウントと厳密でない一貫性のすべての複数リージョン アカウントで 99.99% の可用性 SLA、すべての複数リージョン データベース アカウントで 99.999% の読み取り可用性。
 
 Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) か、または [Apache Spark GraphX](spark-connector-graph.md) などの、TinkerPop と互換性のあるその他のグラフ システムを使用できます。
 

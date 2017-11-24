@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: c6289df50d17de1ef542abbf617eb1cdb2f32311
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19caa05f0de7b4ff4ed7f4eafe50839d04f4ab50
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
@@ -340,8 +340,8 @@ ms.lasthandoff: 11/03/2017
 ### <a name="section-name-faultanalysisservice"></a>セクション名: FaultAnalysisService
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |int、既定値は 0 |禁止|NOT_PLATFORM_UNIX_START FaultAnalysisService の TargetReplicaSetSize。 |
-| MinReplicaSetSize |int、既定値は 0 |禁止|FaultAnalysisService の MinReplicaSetSize。 |
+| TargetReplicaSetSize |int、既定値は 0 |静的|NOT_PLATFORM_UNIX_START FaultAnalysisService の TargetReplicaSetSize。 |
+| MinReplicaSetSize |int、既定値は 0 |静的|FaultAnalysisService の MinReplicaSetSize。 |
 | ReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60 分|静的|timespan を秒単位で指定します。 FaultAnalysisService の ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的|timespan を秒単位で指定します。 FaultAnalysisService の QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration| 時間 (秒単位)、既定値は (60*24*7) 分 |静的|timespan を秒単位で指定します。 FaultAnalysisService の StandByReplicaKeepDuration。 |
@@ -390,8 +390,8 @@ ms.lasthandoff: 11/03/2017
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 | 有効 |ブール値、既定値は false |静的|ImageStoreService の Enabled フラグ。 既定値: false |
-| TargetReplicaSetSize | int、既定値は 7 |禁止|ImageStoreService の TargetReplicaSetSize。 |
-| MinReplicaSetSize | int、既定値は 3 |禁止|ImageStoreService の MinReplicaSetSize。 |
+| TargetReplicaSetSize | int、既定値は 7 |静的|ImageStoreService の TargetReplicaSetSize。 |
+| MinReplicaSetSize | int、既定値は 3 |静的|ImageStoreService の MinReplicaSetSize。 |
 | ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60.0 * 30 |静的|timespan を秒単位で指定します。 ImageStoreService の ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的| timespan を秒単位で指定します。 ImageStoreService の QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 3600.0 * 2 |静的| timespan を秒単位で指定します。 ImageStoreService の StandByReplicaKeepDuration。 |
@@ -414,8 +414,8 @@ ms.lasthandoff: 11/03/2017
 ### <a name="section-name-upgradeorchestrationservice"></a>セクション名: UpgradeOrchestrationService
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |int、既定値は 0 |禁止|UpgradeOrchestrationService の TargetReplicaSetSize。 |
-| MinReplicaSetSize |int、既定値は 0 |禁止|UpgradeOrchestrationService の MinReplicaSetSize。
+| TargetReplicaSetSize |int、既定値は 0 |静的 |UpgradeOrchestrationService の TargetReplicaSetSize。 |
+| MinReplicaSetSize |int、既定値は 0 |静的 |UpgradeOrchestrationService の MinReplicaSetSize。
 | ReplicaRestartWaitDuration | 時間 (秒単位)、既定値は 60 分|静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の ReplicaRestartWaitDuration。 |
 | QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の QuorumLossWaitDuration。 |
 | StandByReplicaKeepDuration | 時間 (秒単位)、既定値は 60*24*7 分 |静的| timespan を秒単位で指定します。 UpgradeOrchestrationService の StandByReplicaKeepDuration。 |

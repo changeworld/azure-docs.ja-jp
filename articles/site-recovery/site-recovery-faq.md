@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/19/2017
 ms.author: raynew
-ms.openlocfilehash: 0b2a36c293e899ebed9d1220dff043a85321cacf
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: ad6f70cf9c2f420e887031c8b240d2f831e6c359
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事には、Azure Site Recovery に関してよく寄せられる質問が含まれます。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
@@ -71,26 +71,11 @@ Windows および Linux を実行している物理サーバーを、Azure ま�
 VMware VM を保護するには、vSphere ハイパーバイザーに加え、VMware ツールが実行されている仮想マシンが必要です。 また、VMware vCenter サーバーでハイパーバイザーを管理することをお勧めします。 Azure またはセカンダリ サイトへの VMware サーバーと VM のレプリケートに関する要件については、[こちら](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)をご覧ください。
 
 
-### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Site Recovery を使用してブランチ オフィスの障害復旧を管理できますか。
-はい。 ブランチ オフィスでのレプリケーションとフェールオーバーを調整するために Site Recovery を使用すると、1 か所ですべてのブランチ オフィスのワークロードの統一されたオーケストレーションとビューが得られます。 ブランチ オフィスに出向くことなく、フェールオーバーを容易に実行し、本社からすべてのブランチの障害復旧を管理できます。
+### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Site Recovery を使用してブランチ オフィスのディザスター リカバリーを管理できますか。
+はい。 ブランチ オフィスでのレプリケーションとフェールオーバーを調整するために Site Recovery を使用すると、1 か所ですべてのブランチ オフィスのワークロードの統一されたオーケストレーションとビューが得られます。 ブランチ オフィスに出向くことなく、フェールオーバーを容易に実行し、本社からすべてのブランチのディザスター リカバリーを管理できます。
 
 ## <a name="pricing"></a>価格
-
-### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>Azure Site Recovery を使うと、どのような料金が発生しますか?
-Site Recovery を使うと、Site Recovery ライセンス、Azure Storage、ストレージ トランザクション、および送信データ転送の料金が発生します。 [詳細情報](https://azure.microsoft.com/pricing/details/site-recovery)。
-
-Site Recovery のライセンスは保護対象のインスタンス単位であり、インスタンスは仮想マシンまたは物理サーバーです。
-
-- VM ディスクが標準ストレージ アカウントにレプリケートされる場合、Azure Storage の料金はストレージ消費量に対するものです。 たとえば、ソース ディスク サイズが 1 TB で、400 GB が使われている場合、Site Recovery は Azure に 1 TB の VHD を作成しますが、課金されるストレージは 400 GB です (これに、レプリケーション ログに使われる記憶領域の量が加わります)。
-- VM ディスクが Premium Storage アカウントにレプリケートされる場合の Azure Storage の料金は、プロビジョニングされたストレージ サイズを最も近い Premium Storage ディスク オプションに切り上げた値に対するものです。 たとえば、ソース ディスク サイズが 50 GB で、Site Recovery が Azure で 50 GB のディスクを作成した場合、Azure はこれを最も近い Premium Storage ディスク (P10) にマップします。  コストは、50 GB のディスク サイズではなく、P10 に対して計算されます。  [詳細情報](https://aka.ms/premium-storage-pricing)。  Premium Storage を使っている場合は、レプリケーション ログ用の Standard ストレージ アカウントも必要であり、ログに使われる Standard 記憶領域の量にも課金されます。
-- テスト フェールオーバーまたはフェールオーバーまでは、ディスクは作成されません。 レプリケーション状態では、"ページ BLOB とディスク" のカテゴリに基いて [Storage 料金計算ツール](https://azure.microsoft.com/en-in/pricing/calculator/)で算出されるストレージ料金が発生します。 この料金は、Premium/Standard のストレージの種類およびデータの冗長性の種類 (LRS、GRS、RA-GRS など) に基づいています。
-- フェールオーバーで管理ディスクを使用するオプションが選択された場合、[管理ディスクの費用](https://azure.microsoft.com/en-in/pricing/details/managed-disks/)は、フェールオーバー/テスト フェールオーバー後に適用します。 管理ディスクの料金は、レプリケーション中には適用されません。
-- フェールオーバーで管理ディスクを使用するオプションが選択されていない場合、フェールオーバー後に、"ページ BLOB とディスク" のカテゴリに基いて [Storage 料金計算ツール](https://azure.microsoft.com/en-in/pricing/calculator/)で算出されるストレージ料金が発生します。 この料金は、Premium/Standard のストレージの種類およびデータの冗長性の種類 (LRS、GRS、RA-GRS など) に基づいています。
-- ストレージ トランザクションは、安定状態のレプリケーション中およびフェールオーバー/テスト フェールオーバー後の通常の VM 操作に課金されます。 この料金はごくわずかです。
-
-コストはテスト フェールオーバー中にも発生し、VM、ストレージ、送信、およびストレージ トランザクションのコストが適用されます。
-
-
+価格に関する質問については、「[Site Recovery の価格](https://azure.microsoft.com/en-in/pricing/details/site-recovery/)」のよくあるご質問をご覧ください。
 
 ## <a name="security"></a>セキュリティ
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。

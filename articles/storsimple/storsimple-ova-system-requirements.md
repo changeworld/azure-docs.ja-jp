@@ -4,7 +4,7 @@ description: "StorSimple Virtual Array のソフトウェア要件とネット�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/16/2017
+ms.date: 11/14/2017
 ms.author: alkohli
-ms.openlocfilehash: 8cae0577d950e3968bc25083e59d637963e6b442
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 5d01523f326bd7e2518bff06e62ae62db8f318d3
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 ## <a name="overview"></a>概要
@@ -41,7 +41,10 @@ ms.lasthandoff: 11/06/2017
 | **ハイパーバイザー** | **バージョン** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 以降 |
-| VMware ESXi |5.5 および 6.0 |
+| VMware ESXi |5.0、5.5、および 6.0 <br> (6.5 はサポートされていません。) |
+
+> [!IMPORTANT]
+> VMware ツールを StorSimple Virtual Array にインストールしないでください。インストールすると、サポートされない構成になります。
 
 ### <a name="virtual-device-requirements"></a>仮想デバイスの要件
 | **コンポーネント** | **要件** |
@@ -79,8 +82,8 @@ ms.lasthandoff: 11/06/2017
 | SMB 3.02 |
 
 > [!IMPORTANT]
-> StorSimple Virtual Array のファイル サーバーに Windows 暗号化ファイル システム (EFS) で保護されているファイルを保存またはコピーしないでください。サポートされていない構成の原因になります。 
-> 
+> StorSimple Virtual Array のファイル サーバーに Windows 暗号化ファイル システム (EFS) で保護されているファイルを保存またはコピーしないでください。サポートされていない構成の原因になります。
+
 
 ### <a name="supported-storage-format"></a>サポートされているストレージ形式
 Azure ブロック BLOB ストレージのみがサポートされています。 ページ BLOB はサポートされていません。 [ブロック BLOB とページ BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関する詳細情報。

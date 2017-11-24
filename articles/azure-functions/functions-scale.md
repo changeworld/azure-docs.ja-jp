@@ -17,17 +17,18 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb6ade65879b245bf44800da3352354ba274ee5a
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 09bb662e30a97e2741303e2e4630582625954909
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions のホスティング プラン
 
-## <a name="introduction"></a>はじめに
-
 Azure Functions は、従量課金プランと Azure App Service プランという 2 つの異なるモードで実行できます。 従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールダウンします。 そのため、アイドル状態の VM に対して課金されることがなく、事前に容量を予約する必要もありません。 この記事では、従量課金プランである[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/) アプリ モデルを中心に説明します。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
+
+>[!NOTE]  
+> Linux ホスティングは現在、App Service プランでのみ利用可能です。
 
 Azure Functions に慣れていない場合は、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 
@@ -55,7 +56,7 @@ App Service プランの階層間で拡大縮小して、さまざまな量の�
 
 ## <a name="app-service-plan"></a>App Service プラン
 
-App Service プランでは、Function App は Web Apps、API Apps、Mobile Apps と同様に、Basic、Standard、Premium、および Isolated SKU の専用 VM 上で実行されます。 専用 VM が App Service アプリに割り当てられるので、Functions ホストは継続的に実行されます。
+App Service プランでは、Function App は Web Apps、API Apps、Mobile Apps と同様に、Basic、Standard、Premium、および Isolated SKU の専用 VM 上で実行されます。 専用 VM が App Service アプリに割り当てられるので、Functions ホストは継続的に実行されます。 App Service プランでは、Linux をサポートしています。
 
 次のような場合に App Service プランを検討してください。
 - 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。
@@ -63,12 +64,13 @@ App Service プランでは、Function App は Web Apps、API Apps、Mobile Apps
 - 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。
 - 従量課金プランで許可されている最大実行時間 (10 分) よりも長く実行する必要がある。
 - App Service 環境、VNET/VPN 接続、大規模な VM のサポートなど、App Service プランでのみ使用できる機能が必要である。 
+- Linux 上で Function App を実行するか、または関数を実行するために Linux 上にカスタム イメージを提供したい。
 
 VM を使用すると、コストが実行数、実行時間、メモリの使用量から切り離されます。 このため、割り当てた VM インスタンスのコストを超えて課金されることはありません。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
 
 App Service プランでは、VM インスタンスを追加して手動でスケールアウトするか、自動スケールを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/web-sites-scale.md) に関するページを参照してください。 
 
-App Service プランで JavaScript 関数を実行する予定がある場合は、コアの少ないプランを選択してください。 詳細については、「[JavaScript 関数リファレンス](functions-reference-node.md#choose-single-core-app-service-plans)」を参照してください。  
+App Service プランで JavaScript 関数を実行する予定がある場合は、CPUの少ないプランを選択してください。 詳細については、[シングルコア App Service プランの選択](functions-reference-node.md#considerations-for-javascript-functions)に関するページをご覧ください。  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 <a name="always-on"></a>
@@ -93,7 +95,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 > [!NOTE]
 > 従量課金プランで BLOB トリガーを使用しているときに関数アプリがアイドル状態になると、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 この初期段階の遅延を避けるために、次のオプションのいずれかを検討してください。
 > - 常時接続が有効な App Service プランで関数アプリをホストする。
-> - BLOB 名を含むキュー メッセージなど、別のメカニズムを使用して BLOB 処理をトリガーする。 例については、[BLOB 入力バインドでのキュー トリガー](functions-bindings-storage-blob.md#input-sample)に関する記事をご覧ください。
+> - BLOB 名を含むキュー メッセージなど、別のメカニズムを使用して BLOB 処理をトリガーする。 たとえば、[BLOB 入力および出力バインディングの C# スクリプトと JavaScript の例](functions-bindings-storage-blob.md#input--output---example)をご覧ください。
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 

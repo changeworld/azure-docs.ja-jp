@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/30/2017
 ms.author: gwallace
-ms.openlocfilehash: 9ea7f77d3bbe45de49c798fe3d51151e1a5a6658
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: dd4d3abf082767c40760d020c0997b365452e769
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Node.js を使用して Azure Blob Storage との間でオブジェクトを転送する
 
@@ -103,7 +103,11 @@ Sample finished running. When you hit <ENTER> key, the temporary files will be d
 
 ファイルを確認した後、任意のキーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、index.js ファイルを開いてコードを確認します。 
 
-## <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
+## <a name="understand-the-sample-code"></a>サンプル コードを理解する
+
+次に、サンプル コードを実行して、そのしくみを理解できるようにします。
+
+### <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
 
 最初に、Blob Storage にアクセスして管理するために使う `BlobService` への参照を作成します。 これらのオブジェクトは、他のオブジェクトを基にして作成されます。各オブジェクトは、一覧で次にあるオブジェクトによって使われます。
 
@@ -120,7 +124,7 @@ blobService.createContainerIfNotExists(blockBlobContainerName, { 'publicAccessLe
     if (error) return callback(error);
 ```
 
-## <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
+### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
 Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 ブロック BLOB は最もよく使用されます。 ブロック BLOB は、テキストまたはバイナリ ファイルを格納するのに最適であるため、クイックスタートで使用されます。
 
@@ -141,7 +145,7 @@ console.log('   Uploaded Blob URL:', blobService.getUrl(CONTAINER_NAME, BLOCK_BL
 
 Blob Storage では複数のアップロード方法を使うことができます。 たとえば、メモリ ストリームがある場合、[createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromLocalFile) ではなく [createBlockBlobFromStream](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_createBlockBlobFromStream) メソッドを使用できます。
 
-## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
+### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
 次に、[listBlobsSegmented](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_listBlobsSegmented) を使用して、アプリケーションがコンテナー内のファイルの一覧を取得します。 次のコードは、BLOB の一覧を取得し、ループ処理して、見つかった BLOB の URI を表示します。 コマンド ウィンドウから URI をコピーしてブラウザーに貼り付けることで、ファイルを表示できます。
 
@@ -158,7 +162,7 @@ blobService.listBlobsSegmented(CONTAINER_NAME, null, function (error, data) {
     console.log('\n');
 ```
 
-## <a name="download-blobs"></a>BLOB をダウンロードする
+### <a name="download-blobs"></a>BLOB をダウンロードする
 
 [getBlobToLocalFile](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService_getBlobToLocalFile)を使用して、ローカル ディスクに BLOB をダウンロードします。
 
@@ -171,7 +175,7 @@ handleError(error);
 console.log('   Downloaded File:', DOWNLOADED_FILE_PATH, '\n');
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+### <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 このクイックスタートでアップロードした BLOB が不要になった場合は、[deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists) と [deleteContainerIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteContainerIfExists) を使ってコンテナー全体を削除できます。 また、不要になった場合は、作成されたファイルも削除します。 これは、ユーザーが [Enter] キーを押してアプリケーションを終了するときに、アプリケーション内で処理されます。
 

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/03/2017
+ms.date: 11/09/2017
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 7347301cd34979df9b3acc59f623ab346dbe41f6
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 4867a43aab1357cb8e01c2ddcef74cdebb41a84a
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
 
@@ -120,7 +120,7 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 いいえ。 進行中のバックアップは、アップグレード中もアップグレード後も、中断なく続行されます。
 
 **近日中にアップグレードする予定がない場合、コンテナーはどうなりますか?**</br>
-すべての新機能は Recovery Services コンテナーにのみ適用されるので、コンテナーをアップグレードすることをお勧めします。 Microsoft は、最終的にクラシック ポータルを廃止する予定です。 2017 年 9 月 1 日から、Microsoft は Recovery Services コンテナーへのバックアップ コンテナーの自動アップグレードを開始します。 アップグレード プロセスは、2017 年 11 月 30 日までに完了する予定です。 コンテナーは、その間いつでも自動的にアップグレードできます。 できるだけ早急にコンテナーをアップグレードすることをお勧めします。
+すべての新機能は Recovery Services コンテナーにのみ適用されるので、コンテナーをアップグレードすることをお勧めします。 Microsoft は、最終的にクラシック ポータルを廃止する予定です。 2017 年 9 月 1 日から、Microsoft は Recovery Services コンテナーへのバックアップ コンテナーの自動アップグレードを開始します。 2017 年 11 月 30 日以降、PowerShell を使用してバックアップ コンテナーを作成できなくなります。 コンテナーは、その間いつでも自動的にアップグレードできます。 できるだけ早急にコンテナーをアップグレードすることをお勧めします。
 
 **このアップグレードは、既存のツールにとってどのような意味がありますか?**</br>
 ツールを Resource Manager デプロイメント モデルに更新します。 Recovery Services コンテナーは、Resource Manager デプロイメント モデルで使用するように作成されています。 Resource Manager デプロイメント モデルの計画を立て、コンテナーの違いを考慮することが重要です。 

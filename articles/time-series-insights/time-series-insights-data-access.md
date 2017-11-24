@@ -1,25 +1,21 @@
 ---
-title: "Azure Time Series Insights のデータ アクセス ポリシー | Microsoft Docs"
-description: "このチュートリアルでは、Time Series Insights のデータ アクセス ポリシーを管理する方法について学習します"
-keywords: 
+title: "Azure Time Series Insights にアクセスして管理するためのセキュリティの構成 | Microsoft Docs"
+description: "この記事では、管理アクセス ポリシーとデータ アクセス ポリシーとしてセキュリティとアクセス許可を構成し、Azure Time Series Insights を保護する方法を説明します。"
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: op-ravi
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/01/2017
 ms.author: omravi
-ms.openlocfilehash: 6a0f04d79ac5487a347e28445c1a6677d5b8b16a
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 22c8e4481f2ba4163a55cc1bbb6b33c10379a605
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境にデータ アクセスを許可する
 
@@ -28,7 +24,7 @@ Time Series Insights 環境には、2 種類の独立したアクセス ポリ�
 * 管理アクセス ポリシー
 * データ アクセス ポリシー
 
-どちらのポリシーでも、特定の環境に対するさまざまなアクセス許可が Azure Active Directory プリンシパル (ユーザーおよびアプリ) に付与されます。 このプリンシパル (ユーザーおよびアプリ) は、その環境が含まれているサブスクリプションに関連付けられたアクティブなディレクトリ (つまり "Azure テナント") に属している必要があります。
+どちらのポリシーでも、特定の環境に対するさまざまなアクセス許可が Azure Active Directory プリンシパル (ユーザーおよびアプリ) に付与されます。 このプリンシパル (ユーザーおよびアプリ) は、その環境が含まれているサブスクリプションに関連付けられたアクティブなディレクトリ ("Azure テナント" として知られる) に属している必要があります。
 
 管理アクセス ポリシーは、次のような、環境の構成に関連したアクセス許可を付与します。
 *   環境、イベント ソース、参照データ セットの作成と削除。
@@ -39,38 +35,38 @@ Time Series Insights 環境には、2 種類の独立したアクセス ポリ�
 この 2 種類のポリシーにより、環境の管理へのアクセスと環境内のデータへのアクセスを明確に分離できます。 たとえば、環境の所有者または作成者がデータ アクセスから除外されるように環境を設定することが可能です。 また、環境からのデータの読み取りを許可されているユーザーとサービスに環境の構成へのアクセスを許可しないことも可能です。
 
 ## <a name="grant-data-access"></a>データ アクセスの許可
-次の手順では、ユーザー プリンシパルにデータ アクセスを許可する方法を示します。
+次の手順に従って、ユーザー プリンシパルにデータ アクセスを許可します。
 
-1.  [Azure ポータル](https://portal.azure.com)にサインインします。
-2.  検索ウィンドウに「Time Series」と入力します。
-3.  [Time Series Environment]\(Time Series 環境\) をクリックします。
-4.  リストから Time Series Insights 環境を選択します。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
+2. Time Series Insights 環境を検索します。 **[検索]** ボックスに「**Time Series**」と入力します。 検索結果の **[Time Series Environment]\(Time Series 環境\)** を選択します。 
+
+3. リストから Time Series Insights 環境を選択します。
+   
+4. **[データ アクセス ポリシー]** を選択し、**[+ 追加]** をクリックします。
   ![Time Series Insights ソースの管理 - 環境](media/data-access/getstarted-grant-data-access1.png)
 
-4.  [データ アクセス ポリシー] を選択し、[追加] をクリックします。
+5. **[ユーザーの選択]** を選択します。  ユーザー名または電子メール アドレスを検索して追加するユーザーを探します。 **[選択]** をクリックして選択内容を確定します。 
 
-  ![Time Series Insights ソースの管理 - 追加](media/data-access/getstarted-grant-data-access2.png)
+   ![Time Series Insights ソースの管理 - 追加](media/data-access/getstarted-grant-data-access2.png)
 
-5.  [ユーザーの選択] をクリックします。
-6.  電子メール アドレスでユーザーを検索して選択します。
-7.  [ユーザーの選択] ブレードの [選択] をクリックします。
+6. **[ロールの選択]** を選択します。 ユーザーに割り当てる適切なアクセス ロールを選択します。
+   - ユーザーに対して、参照データの変更に加え、保存クエリとパースペクティブを環境の他のユーザーと共有することを許可する場合は **[共同作成者]** を選択します。 
+   - それ以外の場合は **[閲覧者]** を選択し、環境内のデータへのクエリ実行と環境内の個人用 (共有されない) クエリの保存をユーザーに許可します。
 
-  ![Time Series Insights ソースの管理 - ユーザーの選択](media/data-access/getstarted-grant-data-access3.png)
+   **[OK]** を選び、ロールの選択を確定します。
 
-8.  [Select role (ロールの選択)] をクリックします。
-9.  ユーザーに対して、参照データの変更に加え、保存クエリとパースペクティブを環境の他のユーザーと共有することを許可する場合は [共同作成者] を選択します。 それ以外の場合は [閲覧者] を選択し、環境内のデータへのクエリ実行と環境内の個人用 (共有されない) クエリの保存をユーザーに許可します。
-10. [Select role (ロールの選択)] ブレードで [OK] をクリックします。
+   ![Time Series Insights ソースの管理 - ユーザーの選択](media/data-access/getstarted-grant-data-access3.png)
 
-  ![Time Series Insights ソースの管理 - ロールの選択](media/data-access/getstarted-grant-data-access4.png)
+8. **[ユーザー ロールの選択]** ページで **[OK]** を選択します。
 
-11. [Select role (ユーザー ロールの選択)] ブレードで [OK] をクリックします。
-12. 次のような結果が表示されます。
+   ![Time Series Insights ソースの管理 - ロールの選択](media/data-access/getstarted-grant-data-access4.png)
 
-  ![Time Series Insights ソースの管理 - 結果](media/data-access/getstarted-grant-data-access5.png)
+9. **[データ アクセス ポリシー]** ページには、各ユーザーのユーザーとロールが一覧表示されます。
+
+   ![Time Series Insights ソースの管理 - 結果](media/data-access/getstarted-grant-data-access5.png)
 
 ## <a name="next-steps"></a>次のステップ
-
-* [イベント ソースを作成する](time-series-insights-add-event-source.md)
-* イベント ソースに[イベントを送信する](time-series-insights-send-events.md)
-* [Time Series Insights ポータル](https://insights.timeseries.azure.com)で環境を表示する
+* [Azure Time Series Insights 環境にイベント ハブ イベント ソースを追加する方法](time-series-insights-how-to-add-an-event-source-eventhub.md)について説明します。
+* イベント ソースに[イベントを送信](time-series-insights-send-events.md)します。
+* [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示します。

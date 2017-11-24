@@ -15,22 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: 1a40c4cc064b32aced7e976f40f6ed6a57e62204
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 1860ede19202566947b68b715e6bd354f64c1085
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="deploy-openshift-origin-in-azure"></a>Azure に OpenShift Origin をデプロイする
 
-OpenShift Origin を Azure にデプロイするには複数の方法があります。 必要なすべての Azure インフラストラクチャ コンポーネントを手動でデプロイしてから、OpenShift Container Origin の[ドキュメント](https://docs.openshift.org/3.6/welcome/index.html)に従ってください。
-また、既存の Resource Manager テンプレートを使用して、OpenShift Origin クラスターのデプロイを簡略化することもできます。 このようなテンプレートの 1 つが[ここ](https://github.com/Microsoft/openshift-origin)にあります。
+OpenShift Origin を Azure にデプロイするには、2 つの方法のいずれかを使用できます。
 
-## <a name="deploy-using-the-openshift-origin-template"></a>OpenShift Origin テンプレートを使用したデプロイ
+- 必要なすべての Azure インフラストラクチャ コンポーネントを手動でデプロイしてから、OpenShift Container Origin の[ドキュメント](https://docs.openshift.org/3.6/welcome/index.html)に従ってください。
+- また、既存の [Resource Manager テンプレート](https://github.com/Microsoft/openshift-origin)を使用して、OpenShift Origin クラスターのデプロイを簡略化することもできます。
+
+## <a name="deploy-by-using-the-openshift-origin-template"></a>OpenShift Origin テンプレートを使用したデプロイ
 
 以前に作成したサービス プリンシパルの値 `appId` を `aadClientId` パラメーターに使用します。
 
-次の例では、必要なすべての入力を含む **azuredeploy.parameters.json** という名前のパラメーター ファイルを作成します。
+次の例では、必要なすべての入力を含む azuredeploy.parameters.json という名前のパラメーター ファイルを作成します。
 
 ```json
 {
@@ -92,13 +94,13 @@ OpenShift Origin を Azure にデプロイするには複数の方法があり�
 }
 ```
 
-### <a name="deploy-using-azure-cli"></a>Azure CLI を使用したデプロイ
+### <a name="deploy-by-using-azure-cli"></a>Azure CLI を使用したデプロイ
 
 
 > [!NOTE] 
-> 次のコマンドには、Azure CLI 2.0.8 以降が必要です。 az CLI のバージョンは、`az --version` コマンドを使用して確認できます。 CLI のバージョンを更新するには、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+> 次のコマンドには、Azure CLI 2.0.8 以降が必要です。 CLI のバージョンは、`az --version` コマンドを使用して確認できます。 CLI のバージョンを更新するには、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。
 
-次の例では、OpenShift クラスターとすべての関連リソースを myResourceGroup という名前のリソース グループに myOpenShiftCluster のデプロイ名でデプロイします。 このテンプレートは Github リポジトリから直接参照され、**azuredeploy.parameters.json** ファイルという名前のローカル パラメーター ファイルが使用されます。
+次の例では、OpenShift クラスターとすべての関連リソースを myResourceGroup という名前のリソース グループに myOpenShiftCluster のデプロイ名でデプロイします。 このテンプレートは、azuredeploy.parameters.json ファイルという名前のローカル パラメーター ファイルを使用して GitHub リポジトリから直接参照されます。
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \
@@ -117,7 +119,7 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
 
 ## <a name="connect-to-the-openshift-cluster"></a>OpenShift クラスターへの接続
 
-デプロイが完了したら、ブラウザーで `OpenShift Console Uri` を使用して、OpenShift コンソールに接続します。 あるいは、次のコマンドを使用して OpenShift マスターに接続できます。
+デプロイが完了したら、ブラウザーで `OpenShift Console Uri` を使用して、OpenShift コンソールに接続します。 または、次のコマンドを使用して OpenShift マスターに接続できます。
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -125,7 +127,7 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、OpenShift クラスター、およびすべての関連リソースを削除できます。
+リソース グループ、OpenShift クラスター、およびすべての関連リソースが不要になったら、[az group delete](/cli/azure/group#delete) コマンドを使用して削除できます。
 
 ```azurecli 
 az group delete --name myResourceGroup
@@ -133,6 +135,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-- [デプロイ後のタスク](./openshift-post-deployment.md)
+- [デプロイ後タスク](./openshift-post-deployment.md)
 - [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)
 - [OpenShift Origin の概要](https://docs.openshift.org/latest/getting_started/index.html)

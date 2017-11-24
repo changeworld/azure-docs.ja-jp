@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/13/2017
 ms.author: jingwang
-ms.openlocfilehash: b0351e4c4dcf19f9e4b6ec11c59c4dd00f0013a2
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 841e053418dedb6b41262d1277ab4bdc9d4800c6
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -88,7 +88,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 | コピー シナリオ | サービスによって決定される既定の DMU |
 |:--- |:--- |
-| ファイル ベースのストア間でのデータのコピー | ファイルの数とサイズに応じて 4 〜 16。 |
+| ファイル ベースのストア間でのデータのコピー | ファイルの数とサイズに応じて 4 〜 32。 |
 | 他のすべてのコピー シナリオ | 4 |
 
 この既定の動作を無視するには、 **cloudDataMovementUnits** プロパティに次のように値を指定します。 **cloudDataMovementUnits** プロパティに**使用できる値**は、2、4、8、16、32 です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。 特定のコピー ソースおよびシンクに、より多くの単位を構成した場合に得られるパフォーマンス向上レベルの情報については、「 [パフォーマンス リファレンス](#performance-reference)」を参照してください。
@@ -133,7 +133,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 | コピー シナリオ | サービスによって決定される並列コピーの既定数 |
 | --- | --- |
-| ファイル ベースのストア間でのデータのコピー |1 ～ 32 の範囲。 ファイルのサイズと、2 つのクラウド データ ストア間でのデータのコピーで使用されるクラウド データ移動単位の数 (DMU) またはセルフホステッド統合ランタイム マシンの物理構成によって異なります。 |
+| ファイル ベースのストア間でのデータのコピー |1 ～ 64 の範囲。 ファイルのサイズと、2 つのクラウド データ ストア間でのデータのコピーで使用されるクラウド データ移動単位の数 (DMU) またはセルフホステッド統合ランタイム マシンの物理構成によって異なります。 |
 | 任意のソース データ ストアから Azure Table Storage へのデータのコピー |4 |
 | 他のすべてのコピー シナリオ |1 |
 

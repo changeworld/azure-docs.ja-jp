@@ -1,6 +1,6 @@
 ---
-title: "クイックスタート: Azure Portal を使って Azure Databricks ワークスペースを作成する | Microsoft Docs"
-description: "このクイックスタートでは、Azure Portal を使って Azure Databricks ワークスペースと Apache Spark クラスターを作成する方法を示します。"
+title: "クイックスタート: Azure Portal を使用して Azure Databricks で最初の Spark ジョブを実行する | Microsoft Docs"
+description: "このクイックスタートでは、Azure Portal を使用して Azure Databricks ワークスペースと Apache Spark クラスターを作成し、Spark ジョブを実行する方法を示します。"
 services: azure-databricks
 documentationcenter: 
 author: nitinme
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: 9d4ee88cf3788071ba6b1eca909c1fe5e6044d03
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: d384a1aef89941c2c9b547e5e0d05bb562578393
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="quickstart-get-started-with-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal で Azure Databricks の使用を開始する
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 
 このクイックスタートでは、Azure Databricks ワークスペースと、そのワークスペース内の Apache Spark クラスターを作成する方法を示します。 最後に、Databricks クラスターで Spark ジョブを実行する方法を説明します。 Azure Databricks について詳しくは、「[Azure Databricks とは](what-is-azure-databricks.md)」をご覧ください。
 
@@ -31,7 +31,11 @@ ms.lasthandoff: 11/15/2017
 
 このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。 
 
-1. Azure Portal で、**[+]**、**[データ + 分析]**、**[Azure Databricks (Preview)]\(Azure Databricks (プレビュー)\)** の順にクリックします。 **[Azure Databricks]** で **[作成]** をクリックします。
+1. Azure Portal で、**[+]**、**[データ + 分析]**、**[Azure Databricks (Preview)]\(Azure Databricks (プレビュー)\)** の順にクリックします。 
+
+    ![Azure Portal の Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure Portal の Databricks")
+
+2. **[Azure Databricks (Preview)]\(Azure Databricks (プレビュー)\)** で **[作成]** をクリックします。
 
     > [!NOTE]
     > Azure Databricks は現在、制限付きのプレビュー段階です。 お使いの Azure サブスクリプションをプレビューのホワイトリストに登録するには、[サインアップ フォーム](https://databricks.azurewebsites.net/)に入力する必要があります。

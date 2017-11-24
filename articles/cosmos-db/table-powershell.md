@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/02/2017
+ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: 35d05b7003d731610df816c8470acc9133a4a6de
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: d0f835db8a9fbe3833a9c7931ad1d8b4a778f016
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cosmos DB Table API 操作の実行 
 
@@ -47,7 +47,7 @@ Azure PowerShell をインストールまたは更新した後は、エンティ
 Install-Module AzureRmStorageTable
 ```
 
-Azure Cosmos DB Table API はプレビュー段階にありますが、これらの PowerShell コマンドレットを使用するには、そのアセンブリをローカルにインストールする必要もあります。 その方法については、[Cosmos DB テーブルの Azure RM Storage テーブル PowerShell モジュール](https://blogs.technet.microsoft.com/paulomarques/2017/05/23/azure-rm-storage-tables-powershell-module-now-includes-support-for-cosmos-db-tables/)に関するページを参照してください。
+これらの PowerShell コマンドレットを使用するためには、さらに Azure Cosmos DB のアセンブリをローカルにインストールします。 その方法については、[Cosmos DB テーブルの Azure RM Storage テーブル PowerShell モジュール](https://blogs.technet.microsoft.com/paulomarques/2017/05/23/azure-rm-storage-tables-powershell-module-now-includes-support-for-cosmos-db-tables/)に関するページを参照してください。
 
 次の演習を試すには、Azure Cosmos DB データベース アカウントが必要です。 まだ持っていない場合は、[Azure Portal](https://portal.azure.com) を使用して新しい Azure Cosmos DB アカウントを作成します。 新しいデータベース アカウントの作成方法については、[Azure Cosmos DB のデータベース アカウントの作成](create-table-dotnet.md#create-a-database-account)に関するセクションを参照してください。
 

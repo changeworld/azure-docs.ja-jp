@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
-ms.openlocfilehash: 2b2f35b3241bd1700bb1fb3319d38fdfda2545f9
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="sprint-1---november-2017"></a>スプリント 1 - 2017 年 11 月 
 
@@ -122,7 +122,7 @@ Azure Machine Learning Workbench の 2 番目の更新へようこそ。 当社�
 
 ### <a name="operationalization"></a>運用化
 - 名前に "score" が含まれる Web サービスが失敗しなくなりました。
-- ユーザーは、Azure リソース グループに対する [所有者] アクセス権のみを含むデプロイメント環境を作成できるようになりました。 サブスクリプション全体に対する [所有者] アクセス権は必要なくなりました。
+- ユーザーは、Azure リソース グループまたはサブスクリプションに対する [共同作成者] アクセス権のみを含むデプロイメント環境を作成できるようになりました。 サブスクリプション全体に対する [所有者] アクセス権は必要なくなりました。
 - 運用化 CLI が Linux でタブのオートコンプリートを利用するようになりました。
 - イメージ構築サービスが Azure IoT サービス/デバイスのためのイメージの構築をサポートするようになりました。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 28/9/2017
 ms.author: seguler
-ms.openlocfilehash: d77ac39b7fcf6a23ebc58a2bbf9dc7de664edbb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e73a2424d3eb633f6bec63189786a67161750d4f
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
 AzCopy on Linux は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure の Blob Storage および File Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。
@@ -559,7 +559,7 @@ azcopy \
     --recursive
 ```
 
-現在 AzCopy でサポートされるのは[アカウント SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1) だけであることに注意してください。
+現在 AzCopy でサポートされるのは[アカウント SAS](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) だけであることに注意してください。
 
 ### <a name="journal-file-folder"></a>ジャーナル ファイル フォルダー
 AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォルダーまたはこのオプションで指定されたフォルダーにジャーナル ファイルが存在するかどうかを確認します。 どちらの場所にもジャーナル ファイルがない場合は、AzCopy は新しい操作であると認識し、新しいジャーナル ファイルを作成します。
@@ -673,7 +673,7 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 ### <a name="azure-storage-documentation"></a>Azure Storage のドキュメント:
 * [Azure ストレージの概要](../storage-introduction.md)
 * [ストレージ アカウントの作成](../storage-create-storage-account.md)
-* [ストレージ エクスプローラーを使用した BLOB の管理](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs)
+* [ストレージ エクスプローラーを使用した BLOB の管理](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [Azure Storage での Azure CLI 2.0 の使用](../storage-azure-cli.md)
 * [C++ から BLOB ストレージを使用する方法](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Java から BLOB ストレージを使用する方法](../blobs/storage-java-how-to-use-blob-storage.md)

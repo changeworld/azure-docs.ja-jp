@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: glenga
-ms.openlocfilehash: a3bc07623505371b4f3c230ebadeb577a70fdb5e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a856c3b04dc458c0f1e0017066c35edd743565fd
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Azure Functions での .NET クラス ライブラリの使用
 
@@ -37,7 +37,7 @@ Azure Functions は、スクリプト ファイルに加えて、1 つまたは�
 
 Visual Studio で新しい Azure Functions プロジェクトを作成します。 新しいプロジェクト テンプレートによって、*host.json* ファイルと *local.settings.json* ファイルが作成されます。 [host.json で Azure Functions のランタイム設定をカスタマイズする](functions-host-json.md)ことができます。 
 
-*local.settings.json* ファイルには、アプリの設定、接続文字列、および Azure Functions Core Tools の設定が格納されます。 構造の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md#local-settings)」を参照してください。
+*local.settings.json* ファイルには、アプリの設定、接続文字列、および Azure Functions Core Tools の設定が格納されます。 構造の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md#local-settings-file)」を参照してください。
 
 ### <a name="functionname-attribute"></a>FunctionName 属性
 

@@ -8,13 +8,13 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: e1099d2cd7eeccbe76d762028a0c5d5f95f53026
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: ace0eb671556dc980836464a365731d6100eab25
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="monitor-azure-sql-data-sync-preview-with-oms-log-analytics"></a>OMS Log Analytics を使用した Azure SQL データ同期 (プレビュー) の監視 
+# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>OMS Log Analytics を使用した SQL データ同期 (プレビュー) の監視 
 
 SQL データ同期アクティビティ ログをチェックし、エラーおよび警告を検出するには、以前に Azure Portal で SQL データ同期を手動でチェックするか、PowerShell または REST API を使用している必要があります。 データ同期の監視エクスペリエンスを向上させるカスタム ソリューションを構成するには、この記事の手順に従ってください。 このソリューションは、シナリオに合わせてカスタマイズできます。
 
@@ -24,19 +24,19 @@ SQL データ同期の概要については、「[Sync data across multiple clou
 
 問題を見つけるために各同期グループのログを個別に調べる必要はなくなりました。 カスタム OMS (Operations Management Suite) ビューを使用して、いずれかのサブスクリプションからすべての同期グループを 1 つの場所で監視できます。 このビューには、SQL データ同期の顧客にとって重要な情報が表示されます。
 
-![データ同期の監視ダッシュボード](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.jpg)
+![データ同期の監視ダッシュボード](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>自動化された電子メール通知
 
-Azure Portal で、または PowerShell や REST API を使用してログを手動でチェックする必要はなくなりました。 [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) を利用することにより、エラーが発生した場合に参照する必要のあるユーザーの電子メール アドレスに直接送信されるアラートを作成できます。
+Azure Portal で、または PowerShell や REST API を使用してログを手動でチェックする必要はなくなりました。 [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) を使用すると、エラーが発生した場合に確認する必要のあるユーザーの電子メール アドレスに直接送信されるアラートを作成できます。
 
-![データ同期の電子メール通知](media/sql-database-sync-monitor-oms/sync-email-notifications.jpg)
+![データ同期の電子メール通知](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
-## <a name="how-do-you-set-this-up"></a>これを設定する方法 
+## <a name="how-do-you-set-up-these-monitoring-features"></a>これらの監視機能を設定する方法 
 
-次のことを実行することによって、SQL データ同期のためのカスタム OMS 監視ソリューションを 1 時間以内に実装します。
+次のことを実行することで、SQL データ同期のためのカスタム OMS 監視ソリューションを 1 時間以内に実装できます。
 
-次の 3 つのコンポーネントを構成する必要があります。
+3 つのコンポーネントを構成する必要があります。
 
 -   SQL データ同期のログ データを OMS に提供するための PowerShell Runbook。
 
@@ -70,7 +70,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
 1.  Azure Automation アカウントで、[プロセスの自動化] の下にある **[Runbook]** タブを選択します。
 
-2.  [Runbook] ページの左上隅にある **[Add a Runbooks] (Runbook の追加)** を選択します。
+2.  [Runbook] ページの左上にある **[Runbook の追加]** を選択します。
 
 3.  **[既存の Runbook のインポート]** を選択します。
 
@@ -80,23 +80,23 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
 6.  Azure Automation アカウントで、[共有リソース] の下にある **[変数]** タブを選択します。
 
-7.  [変数] ページで **[変数の追加]** を選択します。 Runbook の最後の実行時間を格納するための変数を作成する必要があります。 複数の Runbook がある場合は、Runbook ごとに 1 つの変数が必要です。
+7.  [変数] ページで **[変数の追加]** を選択します。 Runbook の最後の実行時間を格納するための変数を作成します。 複数の Runbook がある場合は、Runbook ごとに 1 つの変数が必要です。
 
 8.  変数名を `DataSyncLogLastUpdatedTime` として設定し、その型を [DateTime] として設定します。
 
 9.  Runbook を選択し、ページの上部にある [編集] ボタンをクリックします。
 
-10. アカウントや SQL データ同期の構成に必要な変更を行います。 (詳細については、サンプル スクリプトを参照してください。)
+10. アカウントや SQL データ同期の構成に必要な変更を行います (詳細については、サンプル スクリプトを参照してください)。
 
     1.  Azure の情報。
 
     2.  同期グループの情報。
 
-    3.  OMS の情報。 これらの情報は、[OMS ポータル] | [設定] | [Connected Sources] (接続されたソース) で見つけます。 Log Analytics へのデータ送信の詳細については、「[Send data to Log Analytics with the HTTP Data Collector API (HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー))](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)」を参照してください。
+    3.  OMS の情報。 これらの情報は、[OMS ポータル] | [設定] | [Connected Sources] (接続されたソース) で見つけます。 Log Analytics へのデータ送信の詳細については、「[Send data to Log Analytics with the HTTP Data Collector API (HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー))](../log-analytics/log-analytics-data-collector-api.md)」を参照してください。
 
 11. [テスト] ペインで Runbook を実行します。 それが成功したことを確認します。
 
-    エラーが発生した場合は、最新の PowerShell モジュールがインストールされていることを確認してください。 これは、Automation アカウントを使用して **[Modules Gallery] (モジュール ギャラリー)** で実行できます。
+    エラーが発生した場合は、最新の PowerShell モジュールがインストールされていることを確認してください。 最新の PowerShell モジュールは、Automation アカウントの**モジュール ギャラリー**でインストールできます。
 
 12. **[発行]** をクリックします。
 
@@ -136,7 +136,7 @@ OMS Log Analytics を使用するアラートを作成するには、次のこ�
 
     1.  [Aggregate Value] (集計値) を **[より大きい]** に設定します。
 
-    2.  **[より大きい]** の後に、通知を受信するまでに経過するしきい値を入力します。 データ同期では一時的なエラーが予測されます。ノイズを減らすために、しきい値を 5 に設定することをお勧めします。
+    2.  **[より大きい]** の後に、通知を受信するまでに経過するしきい値を入力します。 データ同期では一時的なエラーが予測されます。ノイズを減らすために、しきい値を 5 に設定します。
 
 5.  **[アクション]** で、**[電子メール通知]** を [はい] に設定します。 目的の電子メール受信者を入力します。
 
@@ -192,7 +192,8 @@ OMS ビューを構成するには、次のことを実行します。
 SQL データ同期の詳細については、以下を参照してください。
 
 -   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期)](sql-database-sync-data.md)
--   [Get Started with Azure SQL Data Sync (Azure SQL データ同期の概要)](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL データ同期の設定](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
 -   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)
 
 -   SQL データ同期を構成する方法を示す完全な PowerShell の例

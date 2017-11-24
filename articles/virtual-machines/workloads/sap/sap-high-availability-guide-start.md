@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06d6b38537fbf413185e8d536865f7bc7a61369a
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: cf60a053c832c6f201705301454ab7cdbe106087
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -178,69 +178,54 @@ ms.lasthandoff: 10/16/2017
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
 
-Azure Virtual Machines は、最短時間で、時間のかかる調達サイクルなしに、コンピューティング リソース、ストレージ リソース、およびネットワーク リソースを入手する必要のある組織向けのソリューションです。 Azure Virtual Machines を使用すると、**SAP NetWeaver ベースの ABAP**、**Java**、**ABAP+Java スタック**などの従来のアプリケーションをデプロイできます。 オンプレミスのリソースを追加することなく、信頼性と可用性を高めます。 Azure Virtual Machines はクロスプレミス接続をサポートしているので、Azure Virtual Machines を組織のオンプレミスのドメイン、プライベート クラウド、SAP システム ランドスケープに統合できます。
+Azure Virtual Machines は、最短時間で、時間のかかる調達サイクルなしに、コンピューティング リソース、ストレージ リソース、およびネットワーク リソースを入手する必要のある組織向けのソリューションです。 Azure Virtual Machines を使用すると、SAP NetWeaver ベースの ABAP、Java、ABAP+Java スタックなどの従来のアプリケーションを展開できます。 オンプレミスのリソースを追加することなく、信頼性と可用性を高めます。 Azure Virtual Machines はクロスプレミス接続をサポートしているので、Azure Virtual Machines を組織のオンプレミスのドメイン、プライベート クラウド、SAP システム ランドスケープに統合できます。
 
-この記事では、以下の内容について説明します。
+この一連の記事の内容:
 
 * アーキテクチャとシナリオ
-
 * インフラストラクチャの準備
+* Azure Resource Manager デプロイメント モデルを使用して Azure に高可用性 SAP システムをデプロイするための SAP のインストール手順
 
-* SAP のインストール手順
+    > [!IMPORTANT]
+    > SAP のインストールには、Azure Resource Manager デプロイメント モデルを使用することを強くお勧めします。 クラシック デプロイメント モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
+    >
+* 次の環境での SAP の高可用性
+  * **Windows Server フェールオーバー クラスター (WSFC)** を使用する ![Windows][Logo_Windows] **Windows**
+  * **Linux クラスター フレームワーク**を使用する ![Linux][Logo_Linux] **Linux**
 
-この記事を参照して、**Azure Resource Manager** デプロイ モデルを使用して Azure に高可用性 SAP システムをデプロイしてください。
+これらの記事では、SAP Central Services (ASCS/SCS) やデータベース管理システム (DBMS) などの単一障害点 (SPOF) コンポーネントを保護する方法を学習します。 SAP アプリケーション サーバーなどの Azure での 冗長コンポーネントについても学びます。
 
-> [!IMPORTANT]
-> SAP のインストールには、Azure Resource Manager デプロイメント モデルを使用することを強くお勧めします。 クラシック デプロイメント モデルにはない多くの利点があります。 Azure の[デプロイメント モデル][virtual-machines-azure-resource-manager-architecture-benefits-arm]の詳細を参照してください。   
->
->
+## <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
-
-次の SAP HA について説明します。
-* ![Windows][Logo_Windows] **Windows フェールオーバー クラスター (WSFC)** を使用する **Windows**
-
-* ![Linux][Logo_Linux] **Linux クラスター フレームワーク**を使用する **Linux**
-
-**SAP Central Services (ASCS)** / **SAP Central Services (SCS)** や**データベース管理システム (DBMS)** のような**単一障害点 (SPOF)** コンポーネント、および **SAP アプリケーション サーバー**のような**冗長コンポーネント**を Azure で保護する方法について説明します。
-
-
-## <a name="high-availability-ha-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性 (HA) アーキテクチャとシナリオ
-
-**概要:** このドキュメントでは、Azure の SAP システムの HA アーキテクチャについて説明します。 SAP 単一障害点 (SPOF) と冗長コンポーネントの HA を解決する方法、HA 固有の Azure インフラストラクチャ、および SAP システム コンポーネントに反映する方法について説明します。 また、Windows と Linux の詳細について説明します。 最後には、さまざまな SAP HA シナリオについても触れます。
+**概要:** この記事では、Azure の SAP システムの高可用性アーキテクチャについて説明します。 SAP 単一障害点 (SPOF) および冗長コンポーネントの高可用性を解決する方法と Azure インフラストラクチャの高可用性の詳細について説明します。 また、これらのパーツと SAP システムのコンポーネントの関連についても説明します。 さらに、Windows および Linux の詳細も取り上げます。 同様に、さまざまな SAP の高可用性シナリオについても説明します。
 
 **更新日:** 2017 年 10 月
-
-このガイドについては、以下を参照してください。
 
 * [SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ][sap-high-availability-architecture-scenarios]
 
-![Windows][Logo_Windows] **Windows** と ![Linux][Logo_Linux] **Linux** の両方を対象にしています
+この記事は、![Windows][Logo_Windows] **Windows** と ![Linux][Logo_Linux] **Linux** の両方を対象にしています。
 
 
-## <a name="azure-infrastructure-preparation-for-sap-netweaver-ha-deployment"></a>SAP NetWeaver HA デプロイのための Azure インフラストラクチャの準備
+## <a name="azure-infrastructure-preparation-for-sap-netweaver-high-availability-deployment"></a>SAP NetWeaver 高可用性デプロイのための Azure インフラストラクチャの準備
 
-**概要:** これらのドキュメントでは、SAP インストールの準備として Azure インフラストラクチャをデプロイするときの手順について説明します。 Azure インフラストラクチャのデプロイを簡単にするために、プロセス全体を自動化する SAP Azure Resource Manager テンプレートを使用します。
-
-**更新日:** 2017 年 10 月
-
-これらのガイドについては、以下を参照してください。
-
-* ![Windows][Logo_Windows] [**Windows フェールオーバー クラスター**および **SAP (A)SCS** インスタンスの**共有ディスク**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-shared-disk]
-
-* ![Windows][Logo_Windows] [**Windows フェールオーバー クラスター**と **SAP ASCS/SCS** インスタンスの**ファイル共有**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-file-share]
-
-* ![Linux][Logo_Linux] [**SAP (A)SCS** インスタンスの **SUSE Linux Enterprise Server Cluster Framework** を使用した AP HA 向けの Azure インフラストラクチャの準備][sap-suse-ascs-ha-setting-ha-nfs]
-
-## <a name="installation-of-an-sap-netweaver-ha-system-in-azure"></a>Azure への SAP NetWeaver HA システムのインストール
-
-**概要:** これらのドキュメントでは、Windows Server フェールオーバー クラスタリング クラスターと Linux Cluster Framework における高可用性 SAP システムのインストールと構成の手順例について説明します。
+**概要:** ここに挙げる記事では、SAP インストールの準備として Azure インフラストラクチャをデプロイするときの手順について説明します。 Azure インフラストラクチャのデプロイを簡単にするために、プロセス全体を自動化する SAP Azure Resource Manager テンプレートを使用します。
 
 **更新日:** 2017 年 10 月
 
-これらのガイドについては、以下を参照してください。
+* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP (A)SCS インスタンスの**共有ディスク**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* ![Windows][Logo_Windows] [**Windows フェールオーバー クラスター**および SAP (A)SCS インスタンスの**共有ディスク**を使用した SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP (A)SCS インスタンスの**ファイル共有**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-file-share]
 
-* ![Windows][Logo_Windows] [**Windows フェールオーバー クラスター**と SAP (A)SCS インスタンスの**ファイル共有**を使用した SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-file-share]
+* ![Linux][Logo_Linux] [SAP (A)SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-suse-ascs-ha-setting-ha-nfs]
 
-* ![Linux][Logo_Linux] [**SAP (A)SCS** インスタンスの **SUSE Linux Enterprise Server Cluster Framework** を使用した SAP NetWeaver HA のインストール][sap-suse-ascs-ha-sap-installation]
+## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Azure への SAP NetWeaver 高可用性システムのインストール
+
+**概要:** ここに挙げる記事では、Azure の Windows Server フェールオーバー クラスタリング クラスターと Linux Cluster Framework における高可用性 SAP システムのインストールと構成の手順例について説明します。
+
+**更新日:** 2017 年 10 月
+
+* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターおよび SAP (A)SCS インスタンスの**共有ディスク**を使用した SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-shared-disk]
+
+* ![Windows][Logo_Windows] [Windows フェールオーバー クラスターと SAP (A)SCS インスタンスの**ファイル共有**を使用した SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-file-share]
+
+* ![Linux][Logo_Linux] [SAP (A)SCS インスタンスの SUSE Linux Enterprise Server Cluster Framework を使用した SAP NetWeaver HA のインストール][sap-suse-ascs-ha-sap-installation]

@@ -11,17 +11,17 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/01/2017
+ms.date: 11/07/2017
 ms.author: heidist
-ms.openlocfilehash: 58f4eab190e40e16ed261c165ffdfc8155eeb434
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eaf317b42026298cc42edcc907bc48169f869460
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
-この記事では、ポータルで Azure Search サービスを作成またはプロビジョニングする方法について説明します。 PowerShell での手順については、[PowerShell での Azure Search の管理](search-manage-powershell.md)に関するページをご覧ください。
+ポータルで Azure Search サービスを作成またはプロビジョニングする方法について説明します。 PowerShell での手順については、[PowerShell での Azure Search の管理](search-manage-powershell.md)に関するページをご覧ください。
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
@@ -34,20 +34,21 @@ ms.lasthandoff: 10/11/2017
 2. 左上隅のプラス記号 ("+") をクリックします。
 3. **[Web + Mobile]** > **[Azure Search]** を選択します。
 
-![](./media/search-create-service-portal/find-search2.png)
+![](./media/search-create-service-portal/find-search3.png)
 
 ## <a name="name-the-service-and-url-endpoint"></a>サービスと URL エンドポイントに名前を付ける
 
-サービス名は、API 呼び出しを発行する対象となる URL エンドポイントの一部です。 **[URL]** フィールドにサービス名を入力します。 
+サービス名は、API 呼び出しを発行する対象となる URL エンドポイントの一部です。`https://your-service-name.search.windows.net` **[URL]** フィールドにサービス名を入力します。 
 
 サービス名の要件:
+   * search.windows.net 名前空間内で一意である
    * 2 ～ 60 文字である
-   * 小文字、数字、ダッシュ ("-") のみが使われている
+   * 小文字、数字、ダッシュ ("-") のみを使用する
    * 最初の 2 文字または最後の 1 文字にダッシュ ("-") を使用していない
-   * 連続するダッシュ ("-") を使用していない
+   * 連続するダッシュ ("-") をどこにも使用していない
 
 ## <a name="select-a-subscription"></a>サブスクリプションの選択
-サブスクリプションが複数ある場合には、データまたはファイル ストレージ サービスがあるものを 1 つ選択します。 Azure Search では、"*インデクサー*" 経由でインデックスが作成されている場合に、Azure テーブルおよび Blob Storage、SQL Database、Azure Cosmos DB の自動検出が可能ですが、これは同じサブスクリプション内のサービスのみで有効です。
+サブスクリプションが複数ある場合には、データまたはファイル ストレージ サービスがあるものを 1 つ選択します。 Azure Search では、[*インデクサー*](search-indexer-overview.md) 経由でインデックスが作成されている場合に、Azure テーブルおよび Blob Storage、SQL Database、Azure Cosmos DB の自動検出が可能ですが、これは同じサブスクリプション内のサービスのみで有効です。
 
 ## <a name="select-a-resource-group"></a>リソース グループの選択
 リソース グループとは、一緒に使用される Azure サービスとリソースのコレクションです。 たとえば、Azure Search を使用して SQL Database のインデックスを作成する場合、これら両方のサービスを同じリソース グループに含める必要があります。
@@ -63,11 +64,13 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 
 このチュートリアルでは、サービスに Standard レベルを選択しました。
 
+サービスの作成後に価格レベルを変更することはできません。 後で高いレベルまたは低いレベルが必要になった場合は、サービスを作成し直す必要があります。
+
 ## <a name="create-your-service"></a>サービスの作成
 
 サインインするたびにアクセスしやすくするために、サービスをダッシュボードにピン留めすることを忘れないでください。
 
-![](./media/search-create-service-portal/new-service2.png)
+![](./media/search-create-service-portal/new-service3.png)
 
 ## <a name="scale-your-service"></a>サービスを拡張する
 サービスを作成するのに数分かかる場合があります (レベルによっては 15 分以上)。 サービスのプロビジョニングが完了したら、ニーズに合わせてサービスを拡張できます。 Azure Search サービスの Standard レベルを選択しているため、レプリカとパーティションの 2 つのディメンションでサービスを拡張できます。 Basic レベルを選択した場合は、レプリカのみ追加できます。 無料サービスをプロビジョニングした場合、拡張は利用できません。
@@ -79,7 +82,7 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 > [!Important]
 > サービスでは、[読み取り専用の SLA の場合は 2 つのレプリカ、読み取り/書き込み SLA の場合は 3 つのレプリカ](https://azure.microsoft.com/support/legal/sla/search/v1_0/)が必要です。
 
-1. Azure Portal で検索サービスのブレードを開きます。
+1. Azure Portal で検索サービス ページを開きます。
 2. 左のナビゲーション ウィンドウで、**[設定]** > **[スケール]** を選択します。
 3. スライダーを使用して、[レプリカ] または [パーティション] を追加します。
 
@@ -105,9 +108,7 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 高可用性のために 2 番目のサービスを作成する必要はありません。 クエリの高可用性は、同じサービスで 2 つ以上のレプリカを使用することにより実現されます。 レプリカの更新はシーケンシャルです。つまり、サービスの更新が展開されているとき、少なくとも 1 つのレプリカが動作しています。アップタイムについて詳しくは、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Search サービスをプロビジョニングしたら、データをアップロードし、検索できるように、 [インデックスを定義する](search-what-is-an-index.md)ことができます。
+Azure Search サービスをプロビジョニングしたら、データをアップロードし、検索できるように、 [インデックスを定義する](search-what-is-an-index.md)ことができます。 
 
-コードまたはスクリプトからサービスにアクセスするには、URL (*サービス名*.search.windows.net) を指定します。 管理者キーはフル アクセスを付与し、クエリ キーは読み取り専用アクセスを付与します。 [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)に関する記事を参照して、作業を開始してください。
-
-ポータル ベースのクイック チュートリアルについては、[最初のインデックスの作成とクエリ](search-get-started-portal.md)に関する記事をご覧ください。
-
+> [!div class="nextstepaction"]
+> [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 11/13/2017
 ms.author: maroche
-ms.openlocfilehash: 7aa0f9b292a98c6137ecf4ae957b3cb86062f250
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d1fd6b0bd47188570553e0e3ad1de527a35e98f6
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
@@ -53,11 +53,13 @@ Free エディションの Data Catalog は、5,000 の登録済みデータ資�
 
 Standard Edition の Data Catalog は、最大 100,000 の登録済みのデータ資産をサポートします。
 
+テーブル、ビュー、ファイル、レポートなど、Data Catalog に登録されるすべてのオブジェクトが、データ資産として数えられます。
+
 ## <a name="what-are-its-supported-data-source-and-asset-types"></a>サポートされているデータ ソースと資産の種類は何ですか?
 現在サポートされているデータ ソースの一覧については、「[Azure Data Catalog でサポートされるデータ ソース](data-catalog-dsr.md)」をご覧ください。
 
 ## <a name="how-do-i-request-support-for-another-data-source"></a>別のデータ ソースのサポートを要求するにはどうすればよいですか?
-機能要求やその他のフィードバックを送信するには、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスします。
+機能要求やその他のフィードバックを送信するには、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources) を利用してください。
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>Data Catalog の使用を開始するにはどうすればよいですか?
 使用を開始する最適な方法は、「[Data Catalog の概要](data-catalog-get-started.md)」の手順に従うことです。 この記事は、サービスの機能を網羅した概要です。
@@ -65,7 +67,7 @@ Standard Edition の Data Catalog は、最大 100,000 の登録済みのデー�
 ## <a name="how-do-i-register-my-data"></a>データの登録方法を教えてください
 Data Catalog でデータを登録するには、次の手順を実行します。
 1. Azure Data Catalog ポータルの **[発行]** 領域で、Azure Data Catalog 登録ツールを起動します。 
-2. Data Catalog 発行アプリケーションで、Data Catalog ポータルへのアクセスに使用するのと同じ資格情報でサインインします。
+2. Data Catalog データ ソース登録ツールで、Data Catalog ポータルへのアクセスに使うのと同じ資格情報でサインインします。
 3. データ ソースと登録する特定の資産を選択します。
 
 ## <a name="what-properties-does-it-extract-for-data-assets-that-are-registered"></a>登録されているデータ資産に対し、どのようなプロパティが抽出されますか?
@@ -84,7 +86,7 @@ Data Catalog でデータを登録するには、次の手順を実行します�
 >
 
 > [!NOTE]
-> ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、Data Catalog 発行アプリケーションはそのプロパティ値を抽出します。 ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、Data Catalog 発行アプリケーションはオブジェクトと列の **ms_description** 拡張プロパティから値を抽出します。 詳細については、「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
+> ファーストクラス **Description** プロパティを持つ SQL Server Analysis Services などのデータ ソースに対し、Data Catalog データ ソース登録ツールはそのプロパティ値を抽出します。 ファーストクラス **Description** プロパティがない SQL Server リレーショナル データベースに対しては、Data Catalog データ ソース登録ツールはオブジェクトと列の **ms_description** 拡張プロパティから値を抽出します。 詳細については、「[データベース オブジェクトでの拡張プロパティの使用](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)」を参照してください。
 >
 >
 
@@ -94,7 +96,7 @@ Data Catalog に資産を登録した後に、それらが Data Catalog ポー�
 ## <a name="how-do-i-annotate-and-enrich-the-metadata-for-my-registered-data-assets"></a>登録したデータ資産のメタデータに注釈を付け、強化するには、どうするのですか?
 登録した資産にメタデータを指定する最も簡単な方法は、Data Catalog ポータルで資産を選択し、選択したオブジェクトのプロパティ ウィンドウまたはスキーマ ウィンドウで、値を入力することです。
 
-エキスパートやタグなどのいくつかのメタデータは、登録プロセス中に指定することもできます。 Data Catalog 発行サービスで指定した値は、その時点で登録されているすべての資産に適用されます。 ポータルに最近登録されたオブジェクトの追加の注釈を表示するには、Data Catalog 発行アプリケーションの最終画面の **[ポータルの表示]** ボタンをクリックします。
+エキスパートやタグなどのいくつかのメタデータは、登録プロセス中に指定することもできます。 Data Catalog 発行サービスで指定した値は、その時点で登録されているすべての資産に適用されます。 ポータルに最近登録されたオブジェクトの追加の注釈を表示するには、Data Catalog データ ソース登録ツールの最終画面の **[ポータルの表示]** ボタンをクリックします。
 
 ## <a name="how-do-i-delete-my-registered-data-objects"></a>登録済みのデータ オブジェクトを削除するにはどうすればよいですか?
 Data Catalog からオブジェクトを削除するには、ポータルでオブジェクトを選択し、**[削除]** ボタンをクリックします。 オブジェクトを削除すると、そのメタデータが Data Catalog から削除されますが、基になるデータ ソースには影響しません。
@@ -106,7 +108,7 @@ Data Catalog からオブジェクトを削除するには、ポータルでオ�
 問題の報告、情報の共有、質問の投稿を行うには、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)にアクセスします。
 
 ## <a name="does-the-catalog-work-with-another-data-source-that-im-interested-in"></a>カタログは興味がある別のデータ ソースを処理しますか?
-Data Catalog へのデータ ソースの追加には積極的に取り組んでいるところです。 サポートされている具体的なデータ ソースを確認する場合は、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)に移動して、それを提案 (またはそれが既に提案されている場合は、その指示を表明) してください。
+Data Catalog へのデータ ソースの追加には積極的に取り組んでいるところです。 サポートされている具体的なデータ ソースを確認する場合は、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) に移動して、それを提案 (または、それが既に提案されている場合は、その支持を表明) してください。
 
 ## <a name="how-is-azure-data-catalog-related-to-the-data-catalog-in-power-bi-for-office-365"></a>Azure Data Catalog は Power BI for Office 365 のデータ カタログとどのように関連しますか?
 Azure Data Catalog は、Power BI での Data Catalog の進化と考えることができます。 2017 年春以降、Excel 2016 および Power Query for Excel でのクエリの共有と検出を有効にするために Azure Data Catalog が使用されています。 Excel での Data Catalog の機能は、Power BI Pro ライセンスを持つユーザーが使用できます。
@@ -114,14 +116,18 @@ Azure Data Catalog は、Power BI での Data Catalog の進化と考えるこ�
 ## <a name="what-permissions-do-i-need-to-register-assets-with-data-catalog"></a>Data Catalog に資産を登録するには、どのようなアクセス許可が必要ですか?
 Data Catalog 登録ツールを実行するには、データ ソースに対し、そのソースからメタデータを読み取ることができるアクセス許可が必要です。 プレビューも含めるには、登録されるオブジェクトからのデータの読み取りができるアクセス許可が必要です。
 
+Data Catalog を使うことで、カタログ管理者は、カタログにメタデータを追加できるユーザーとグループを制限することもできます。 詳しくは、「[データ カタログとデータ資産へのアクセスをセキュリティで保護する方法](data-catalog-how-to-secure-catalog.md)」をご覧ください。
+
 ## <a name="will-data-catalog-be-made-available-for-on-premises-deployment-as-well"></a>Data Catalog は、オンプレミスのデプロイメントにも使用できますか?
 Data Catalog は、クラウドとオンプレミスの両方のデータ ソースを操作できるクラウド サービスであり、ハイブリッド データ ソース検出ソリューションを提供します。 現在オンプレミスで実行する Data Catalog のバージョンの計画はありません。
 
 ## <a name="can-i-extract-more-or-richer-metadata-from-the-data-sources-i-register"></a>登録するデータ ソースから抽出するメタデータを追加したり、強化したりできますか?
-Data Catalog の機能の拡張に積極的に取り組んでいるところです。 登録時にデータ ソースからさらにメタデータを抽出する場合は、[Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)で、それを提案して (または既に提案されている場合は、賛成票を投じて) ください。 将来、サード パーティが、拡張 API によって、新しいデータ ソースの種類を追加できるようにします。
+Data Catalog の機能の拡張に積極的に取り組んでいるところです。 登録時にデータ ソースからさらにメタデータを抽出する場合は、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) で、それを提案して (または既に提案されている場合は、賛成票を投じて) ください。 
+
+データ ソース登録ツールによってこのメタデータが抽出されないデータ ソースの列/スキーマ メタデータ、プレビュー、またはデータ プロファイルを含めたい場合は、Data Catalog API を使ってこのメタデータを追加できます。 詳しくは、[Azure Data Catalog の REST API](https://docs.microsoft.com/rest/api/datacatalog/) に関するページをご覧ください。
 
 ## <a name="how-do-i-restrict-the-visibility-of-registered-data-assets-so-that-only-certain-people-can-discover-them"></a>特定のユーザーだけが検出できるように、登録されているデータ資産の可視性を制限するにはどうすればいいですか?
-Data Catalog で、データ資産を選択し、**[所有権の取得]** ボタンをクリックします。 Data Catalog のデータ資産の所有者は、可視性設定を変更して、すべてのユーザーが、所有している資産を検出できるようにするか、または特定のユーザーに可視性を制限することができます。
+Data Catalog で、データ資産を選択し、**[所有権の取得]** ボタンをクリックします。 Data Catalog のデータ資産の所有者は、可視性設定を変更して、すべてのユーザーが、所有している資産を検出できるようにするか、または特定のユーザーに可視性を制限することができます。 詳細については、「[Azure Data Catalog でデータ資産を管理する](data-catalog-how-to-manage.md)」をご覧ください。
 
 ## <a name="how-do-i-update-the-registration-for-a-data-asset-so-that-changes-in-the-data-source-are-reflected-in-the-catalog"></a>データ ソースの変更がカタログに反映されるように、データ資産の登録を更新するにはどうすればいいですか?
 カタログに既に登録されているデータ資産のメタデータを更新するには、その資産を含むデータ ソースを再登録するだけです。 テーブルまたはビューの列の追加や削除などのデータ ソースのすべての変更は、カタログで更新されますが、ユーザーによって提供されたすべての注釈は維持されます。

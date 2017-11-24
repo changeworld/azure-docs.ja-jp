@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 322cf2ebbe83d00fcebcec618e07141d26f4f255
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a619943abaf8835e591872cba0ed046d4c6c4a9
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="introduction-to-app-service-environments"></a>App Service Environment の概要 #
  
@@ -48,13 +48,13 @@ ASE は、フロントエンドとワーカーで構成されます。 フロン
 
 ワーカーは、お客様のアプリをホストする役割です。 ワーカーは、3 つの固定サイズで使用できます。
 
-* 1 コア/3.5 GB RAM
-* 2 コア/7 GB RAM
-* 4 コア/14 GB RAM
+* 1 vCPU/3.5 GB RAM
+* 2 vCPU/7 GB RAM
+* 4 vCPU/14 GB RAM
 
 フロントエンドとワーカーをお客様が管理する必要はありません。 すべてのインフラストラクチャは、お客様が App Service プランをスケール アウトしたときに自動的に追加されます。 App Service プランが ASE で作成、スケーリングされるときに、必要なインフラストラクチャが適宜追加または削除されます。
 
-インフラストラクチャの支払いを行うための ASE の一定の月額料金があり、ASE のサイズが変化しても料金は変わりません。 それに加えて、App Service プランのコアあたりのコストがあります。 ASE でホストされているすべてのアプリは、分離された価格 SKU に含まれます。 ASE の価格については、「[App Service の価格][Pricing]」で、ASE に関して提供されている選択肢を参照してください。
+インフラストラクチャの支払いを行うための ASE の一定の月額料金があり、ASE のサイズが変化しても料金は変わりません。 それに加えて、App Service プランの vCPU あたりのコストがあります。 ASE でホストされているすべてのアプリは、分離された価格 SKU に含まれます。 ASE の価格については、「[App Service の価格][Pricing]」で、ASE に関して提供されている選択肢を参照してください。
 
 ## <a name="virtual-network-support"></a>Virtual Network のサポート ##
 
@@ -68,13 +68,15 @@ ASE は、パブリック IP アドレスでインターネットに接続する
 
 ASE と仮想ネットワークおよびオンプレミス ネットワークとの連携方法の詳細については、[App Service Environment のネットワークの考慮事項][ASENetwork]に関するページを参照してください。
 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
+
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
 
 App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。 
 
 ASEv1 では、すべてのリソースを手動で管理する必要があります。 これには、フロントエンド、ワーカー、IP ベースの SSL に使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストするワーカー プールを先にスケールアウトしておく必要があります。
 
-ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 では、割り当てられたコアごとに料金を支払います。 これには、フロントエンドまたはどのワークロードもホストしていないワーカーに使用されるコアが含まれます。 ASEv1 では、ASE の既定の最大スケール サイズは合計で 55 ホストです。 これにはワーカーとフロントエンドが含まれます。 ASEv1 の利点の 1 つは、従来の仮想ネットワークと Resource Manager 仮想ネットワークにデプロイできることです。 ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページを参照してください。
+ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 では、割り当てられた vCPU ごとに料金を支払います。 これには、フロントエンドまたはどのワークロードもホストしていないワーカーに使用される vCPU が含まれます。 ASEv1 では、ASE の既定の最大スケール サイズは合計で 55 ホストです。 これにはワーカーとフロントエンドが含まれます。 ASEv1 の利点の 1 つは、従来の仮想ネットワークと Resource Manager 仮想ネットワークにデプロイできることです。 ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページを参照してください。
 
 <!--Links-->
 [Intro]: ./intro.md

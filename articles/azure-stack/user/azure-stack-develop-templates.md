@@ -12,19 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/13/2017
 ms.author: helaw
-ms.openlocfilehash: ffad7bfd4ffcd9159dea23b70640f0ee761fbae0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9109c58b29d5f09f1a86068a87c5e7f839228af
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure Resource Manager テンプレートに関する考慮事項
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 アプリケーションを開発するときは、Azure および Azure Stack 間のテンプレートの移植性を確保する必要があります。  このトピックでは、Azure Resource Manager [テンプレート](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)を開発するための考慮事項を説明して、アプリケーションのプロトタイプ作成とデプロイのテストを、Azure Stack 環境にアクセスせずに Azure で実行できるようにします。
+
+## <a name="resource-provider-availability"></a>リソース プロバイダーの可用性
+デプロイする予定のテンプレートは、既に利用できるか、Azure Stack でプレビュー中の Microsoft Azure サービスを使用している必要があります。
 
 ## <a name="public-namespaces"></a>パブリック名前空間
 Azure Stack はデータセンターでホストされるため、そのサービス エンドポイントの名前空間は、Azure パブリック クラウドとは異なります。 その結果、Resource Manager テンプレートにハードコーディングされたパブリック エンドポイントでは、Azure Stack へのデプロイは失敗します。 代わりに、"*参照*" 関数と "*連結*" 関数を使用して、デプロイ時にリソース プロバイダーから取得した値に基づいて、サービス エンドポイントを動的に作成できます。 たとえば、テンプレートに *blob.core.windows.net*と指定する代わりに、[primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) を取得して *osDisk.URI* エンドポイントを動的に設定します。
@@ -73,7 +76,6 @@ Resource Manager テンプレートは、デプロイ時にリソースを配置
       }
     }
     ]
-
 
 ## <a name="next-steps"></a>次のステップ
 * [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)

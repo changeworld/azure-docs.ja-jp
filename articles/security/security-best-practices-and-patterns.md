@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2017
+ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 1cc0d2d1e9a62ff8531f963413ff573713d508ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 593cb6da3527a32906e8e9faa11dc13a3ef5440f
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure セキュリティのベスト プラクティスとパターン
 現在、以下の Azure セキュリティのベスト プラクティスとパターンの記事があります。 Azure セキュリティのベスト プラクティスとパターンの増加する一覧の更新を確認するには、このサイトを定期的にアクセスしてください。  

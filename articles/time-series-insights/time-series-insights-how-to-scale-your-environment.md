@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: a6f10e14e3f9e5761734738caddc247d9e4a90cd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d3c8b2b1ba220bf07a2bcdbd7fb26b94f897981f
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
 
@@ -50,7 +50,7 @@ Azure Portal を使用して、容量を特定の価格 SKU 内で増減でき�
 
    ![configure.png](media/scale-your-environment/configure.png)
 
-3. **容量**のスライダーを調整して、受信レートとストレージ容量の要件を満たす容量を選択します。 受信レート、ストレージの容量、およびコストの見積もりが動的に更新されて変化の影響が示されることに注目してください。 
+3. **容量**のスライダーを調整して、受信レートとストレージ容量の要件を満たす容量を選択します。 **受信レート**、**ストレージの容量**、および**コストの見積もり**が動的に更新されて変化の影響が示されることに注目してください。 
 
    ![スライダー](media/scale-your-environment/slider.png)
 
@@ -59,4 +59,5 @@ Azure Portal を使用して、容量を特定の価格 SKU 内で増減でき�
 4. **[保存]** を選択して環境をスケーリングします。 変更がコミットされるまで、一時的に進行状況のインジケーターが表示されます。 
 
 ## <a name="next-steps"></a>次のステップ
-新しい容量が、スロットルを防止するのに十分であることを確認します。 詳細については、[環境がスロットルされているかどうか](time-series-insights-diagnose-and-solve-problems.md)に関する記事を参照してください。
+> [!div class="nextstepaction"]
+> [新しい容量が、スロットルを防止するのに十分であることを確認します](time-series-insights-diagnose-and-solve-problems.md)。

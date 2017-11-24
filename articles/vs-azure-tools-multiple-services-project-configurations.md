@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: deb69101e855bcad56b9212736c52ace72631f0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59492ccc64a70680d71ad1de0700ed30f9e45306
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>複数のサービス構成を使用した Azure プロジェクトの構成
 Azure クラウド サービス プロジェクトには、ServiceDefinition.csdef と ServiceConfiguration.cscfg の 2 つの構成ファイルが含まれています。 これらのファイルは、Azure クラウド サービス アプリケーションと共にパッケージ化され、Azure にデプロイされます。
@@ -30,7 +30,7 @@ Azure Tools for Microsoft Visual Studio は、これらのファイルに格納�
 
 ![VS_Solution_Explorer_Roles_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
 
-サービス定義ファイルとサービス構成ファイルの基になるスキーマについては、 [スキーマ リファレンス](https://msdn.microsoft.com/library/azure/dd179398.aspx)のページを参照してください。 サービス構成の詳細については、「[クラウド サービスの構成方法](cloud-services/cloud-services-how-to-configure.md)」を参照してください。
+サービス定義ファイルとサービス構成ファイルの基になるスキーマの詳細については、[.csdef XML スキーマ](cloud-services/schema-csdef-file.md)と [.cscfg XML スキーマ](cloud-services/schema-cscfg-file.md)に関する記事を参照してください。 サービス構成の詳細については、「[クラウド サービスの構成方法](cloud-services/cloud-services-how-to-configure-portal.md)」を参照してください。
 
 ## <a name="configuring-role-properties"></a>ロール プロパティの構成
 Web ロールと worker ロールのプロパティ ページは似ていますが、以降のセクションで説明するように、いくつかの違いがあります。
@@ -88,7 +88,7 @@ worker ロールは、任意の数の HTTP、HTTPS、TCP エンドポイント�
 ## <a name="certificates-page"></a>[証明書] ページ
 **[証明書]** ページでは、証明書とロールを関連付けることができます。 追加する証明書は、 **[エンドポイント]** プロパティ ページでの HTTPS エンドポイントの構成に使用できます。
 
-**[証明書]** プロパティ ページでは、証明書についての情報をサービス構成に追加します。 証明書はサービスと共にパッケージ化されないことに注意してください。[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して、Azure に証明書を個別にアップロードする必要があります。
+**[証明書]** プロパティ ページでは、証明書についての情報をサービス構成に追加します。 証明書はサービスと共にパッケージ化されないことに注意してください。[Azure Portal](http://portal.azure.com) を使用して、Azure に証明書を個別にアップロードする必要があります。
 
 証明書をロールに関連付けるには、証明書の名前を指定します。 **[エンドポイント]** プロパティ ページで HTTPS エンドポイントを構成する際に、この名前を使用して証明書を参照します。 次に、証明書ストアが **[ローカル コンピューター]** と **[現在のユーザー]** のどちらであるかと、ストアの名前を指定します。 最後に、証明書のサムプリントを入力します。 証明書が Current User\Personal (My) ストアに存在する場合、表示されたリストから証明書を選択することで、証明書のサムプリントを入力できます。 他の場所に存在する場合は、サムプリントの値を手動で入力します。
 

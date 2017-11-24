@@ -13,15 +13,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
+ms.date: 11/08/2017
 ms.author: nitinme
-ms.openlocfilehash: 21b474e37ef0a6037e05ee1fe8e5088cb3e3601d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc959f763e9a84199130bae845cb62c493676977
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="add-hdinsight-cluster-management-solutions-to-log-analytics-preview"></a>Log Analytics に HDInsight クラスター管理ソリューションを追加する (プレビュー)
+# <a name="add-hdinsight-cluster-management-solutions-to-log-analytics"></a>Log Analytics に HDInsight クラスター管理ソリューションを追加する
 
 HDInsight では、Azure Log Analytics に追加できるクラスター固有の管理ソリューションが提供されます。 [管理ソリューション](../log-analytics/log-analytics-add-solutions.md)を使用すると、OMS に機能を追加して、Log Analytics に追加のデータおよび分析ツールを提供できます。 これらのソリューションは、HDInsight クラスターから重要なパフォーマンス メトリックを収集し、メトリックを検索するツールを提供します。 また、これらのソリューションは、HDInsight でサポートされるほとんどのクラスターの種類に対する視覚化とダッシュボードも提供します。 このソリューションで収集したメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 
 
@@ -33,21 +33,25 @@ HDInsight では、Azure Log Analytics に追加できるクラスター固有�
 
 ## <a name="add-cluster-specific-management-solutions"></a>クラスター固有の管理ソリューションを追加する
 
-このセクションでは、既存の OMS ワークスペースに HBase クラスター管理ソリューションを追加します。 他の種類の HDInsight クラスター用の同様のソリューションは間もなく使用できるようになります。
+このセクションでは、既存の OMS ワークスペースに HBase クラスター管理ソリューションを追加します。
 
-1. OMS ダッシュボードを開きます。 Azure Portal で、Azure Log Analytics と関連付けた HDInsight クラスターのブレードを開き、[監視] タブをクリックして **[OMS ダッシュボードを開く]** をクリックします。
+1. Azure Portal で HDInsight クラスターを開き、**[監視]**、**[OMS ダッシュボードを開く]** を順にクリックします。
 
     ![OMS ダッシュボードを開く](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-log-analytics-open-oms-dashboard.png "OMS ダッシュボードを開く")
 
-1. OMS ダッシュボードで、**[ソリューション ギャラリー]** または左側のウィンドウのビュー デザイナー アイコンをクリックします。
+1. OMS ダッシュボードで、**[ソリューション ギャラリー]** または左側のウィンドウの**ビュー デザイナー** アイコンをクリックします。
 
     ![OMS で管理ソリューションを追加する](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "OMS で管理ソリューションを追加する")
 
-2. ソリューション ギャラリーで **HDInsight HBase Monitoring** を探し、タイルをクリックします。
+2. ソリューション ギャラリーで、次のタイルのいずれかをクリックします。
 
-    ![HBase 管理ソリューションを見つける](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/find-hbase-management-solution.png "HBase 管理ソリューションを見つける")
+    - HDInsight Hadoop Monitoring
+    - HDInsight HBase Monitoring (プレビュー)
+    - HDInsight Kafka Monitoring
+    - HDInsight Storm Monitoring
+    - HDInsight Spark Monitoring
 
-3. 次の画面で、**[追加]** をクリックします。
+3. 次の画面で、**[追加]** をクリックします。  次のスクリーンショットは、HBase の監視の [追加] ボタンを示しています。
 
      ![HBase 管理ソリューションを追加する](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/add-hbase-management-solution.png "HBase 管理ソリューションを追加する")
 

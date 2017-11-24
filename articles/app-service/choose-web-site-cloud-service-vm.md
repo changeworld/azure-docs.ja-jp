@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: edd5099d2804fdb5867b4be5b11a361004db1665
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 ## <a name="overview"></a>概要
@@ -48,7 +48,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | Service Bus、Storage、SQL Database のようなサービスへのアクセス |○ |○ |○ |○ | |
 | 多層アーキテクチャの Web 層または Web サービス層のホスト |○ |○ |○ |○ | |
 | 多層アーキテクチャの中間層のホスト |○ |○ |○ |○ |REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。 Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。 |
-| 統合されたサービスとしての MySQL のサポート |○ |○ |○ | |Cloud Services は、ClearDB のサービスを介してサービスとしての MySQL を統合できますが、Azure Portal ワークフローの一部として統合することはできません。 |
+| 統合されたサービスとしての MySQL のサポート |○ |○ | | | |
 | ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート |○ |○ |○ |○ |Service Fabric では、[ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md) を使用した Web フロントエンドの作成がサポートされています。または、あらゆる種類のアプリケーション (Node.js、Java など) を[ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md)としてデプロイできます。 |
 | 再デプロイなしでの複数インスタンスへのスケールアウト |○ |○ |○ |○ |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。 |
 | SSL のサポート |○ |○ |○ |○ |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 |
@@ -83,7 +83,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 * 自己復旧機能と自動修正機能を備えたクラウド プラットフォーム上でアプリケーションを実行し、高い信頼性を確保する。
 * グローバルなデータセンターのネットワークを活かしてスケールを自動的に調整する。
 * バックアップと復元によって障害復旧に対応する。
-* ISO、SOC2、PCI に準拠する。
+* ISO、SOC2、PCI に準拠している。
 * Active Directory と連係する。
 
 ### <a id="corp"></a> 拡張性が高く、世界展開も視野に入れた信頼性の高い方法で会社の Web サイトをホスティングする必要があります。
@@ -93,11 +93,11 @@ Azure App Service は、企業 Web サイトをホスティングするための
 * グローバルなデータセンターのネットワークを活かしてスケールを自動的に調整する。
 * バックアップと復元によって障害復旧に対応する。
 * 統合されたツールを使用してログとトラフィックを管理する。
-* ISO、SOC2、PCI に準拠する。
+* ISO、SOC2、PCI に準拠している。
 * Active Directory と連係する。
 
 ### <a id="iis6"></a> Windows Server 2003 上で動作する IIS6 アプリケーションがあるのですが。
-Azure App Service は、過去の IIS6 アプリケーションの移行に伴うインフラストラクチャ コストを効果的に抑制します。 互換性をチェックして必要な変更点を洗い出すことのできる [使いやすい移行ツールと詳細な移行ガイド](https://www.movemetowebsites.net/) がマイクロソフトから提供されています。 Visual Studio や TFS、さらに、広く普及している CMS ツールとの高い親和性により、IIS6 アプリケーションを手間なく直接クラウドにデプロイすることができます。 デプロイ後は、Azure Portal の堅牢な管理ツールを使ってスケールを調整 (スケールダウンまたはスケールアップ) することにより、必要に応じてコストを抑制したり需要の増大に対応したりすることができます。 移行ツールを使用すると、次のことができます。
+Azure App Service は、過去の IIS6 アプリケーションの移行に伴うインフラストラクチャ コストを効果的に抑制します。 互換性をチェックして必要な変更点を洗い出すことのできる [使いやすい移行ツールと詳細な移行ガイド](https://www.migratetoazure.net/) がマイクロソフトから提供されています。 Visual Studio や TFS、さらに、広く普及している CMS ツールとの高い親和性により、IIS6 アプリケーションを手間なく直接クラウドにデプロイすることができます。 デプロイ後は、Azure Portal の堅牢な管理ツールを使ってスケールを調整 (スケールダウンまたはスケールアップ) することにより、必要に応じてコストを抑制したり需要の増大に対応したりすることができます。 移行ツールを使用すると、次のことができます。
 
 * 既存の Windows Server 2003 Web アプリケーションをすばやく簡単にクラウドへと移行する。
 * 必要であれば、接続先の SQL Database をオンプレミスに維持し、ハイブリッド型のアプリケーションを作成する。
@@ -174,7 +174,6 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 [Cloud Services]: /azure/cloud-services/
 [Virtual Machines]: /azure/virtual-machines/
 [Service Fabric]: /azure/service-fabric/
-[ClearDB]: http://www.cleardb.com/
 [WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
 [Configuring an SSL certificate for an Azure Website]: app-service-web-tutorial-custom-ssl.md
 [azurestore]: https://azuremarketplace.microsoft.com/en-us/marketplace/apps

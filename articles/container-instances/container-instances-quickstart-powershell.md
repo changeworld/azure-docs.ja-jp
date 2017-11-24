@@ -14,40 +14,34 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/15/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: fbd1bee04c5180beda23c04607b313eec9edcab4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca10274fc6a23d7f5e7436dbaf72a6e7a918f275
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Azure Container Instances での最初のコンテナーの作成
 
 Azure Container Instances を使用すると、仮想マシンをプロビジョニングしたり、より高度なレベルのサービスを採用したりしなくても、Azure の Docker コンテナーを簡単に作成、管理できます。
 
-このクイック スタートでは、Azure で Windows コンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 すぐに、お使いのブラウザーに次のように表示されます。
+このクイック スタートでは、Azure で Windows コンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 少し時間が経てば、以下のように、実行中のアプリケーションをブラウザーで確認できるようになります。
 
 ![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][qs-powershell-01]
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このクイック スタートには、Azure PowerShell モジュール バージョン 4.4 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
-
-`Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
-
-```powershell
-Login-AzureRmAccount
-```
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-resource-group"></a>Create resource group
 
 [New-AzureRmResourceGroup][New-AzureRmResourceGroup] を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-```powershell
+ ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
@@ -55,13 +49,13 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 コンテナーを作成するには、名前、Docker イメージ、および Azure リソース グループを [New-AzureRmContainerGroup][New-AzureRmContainerGroup] コマンドレットに指定します。 コンテナーは、必要に応じて、パブリック IP アドレスを使用してインターネットに公開できます。 この場合は、インターネット インフォメーション サービス (IIS) を実行している Windows Nano サーバー コンテナーを使用します。
 
-```powershell
+ ```azurepowershell-interactive
 New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -IpAddressType Public
 ```
 
-数秒以内に、あなたのリクエストに対する応答を得るでしょう。 最初に、コンテナーは**作成中**の状態になりますが、1 ～ 2 分のうちに起動されます。 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] コマンドレットを使用して状態を確認することができます。
+数秒以内に、あなたのリクエストに対する応答を得るでしょう。 最初に、コンテナーは**作成中**の状態ですが、1 ～ 2 分以内に起動されます。 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] コマンドレットを使用して状態を確認することができます。
 
-```powershell
+ ```azurepowershell-interactive
 Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
@@ -92,7 +86,7 @@ Volumes                  :
 
 コンテナーを使い終えたら、[Remove-AzureRmContainerGroup][Remove-AzureRmContainerGroup] コマンドレットを使用してそのコンテナーを削除することができます。
 
-```powershell
+ ```azurepowershell-interactive
 Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
