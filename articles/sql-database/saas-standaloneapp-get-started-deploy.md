@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: sstein
-ms.openlocfilehash: ce0268f800dcf1900730d6ad9c476fb06320a79e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2ca290dfcb23215ffd727500e76076ae8b14fa6f
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するスタンドアロン シングルテナント アプリケーションをデプロイおよび操作する
 
