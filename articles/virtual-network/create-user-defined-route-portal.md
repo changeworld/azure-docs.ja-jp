@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
-ms.openlocfilehash: 736e48f9651d89a1f4e8e0ae72cdffebb8e9c6e0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0319029277091611673f15c94604604850cbfcbe
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-a-user-defined-route---azure-portal"></a>Azure Portal を使用してユーザー定義ルートを作成する
 
@@ -267,7 +267,13 @@ ms.lasthandoff: 10/31/2017
         - **Windows**: コマンド プロンプトで、`tracert myvm-private` コマンドを実行します。
         - **Ubuntu**: `tracepath myvm-private` コマンドを実行します。
       トラフィックは、10.0.2.4 (NVA) を経由してから、10.0.1.4 (プライベート サブネットの仮想マシン) に到達します。 
-    - 前の手順を完了するには、*myVm-Private* 仮想マシンに接続し、*myVm-Public* 仮想マシンに ping を実行します。 traceroute には、10.0.2.4 経由で 10.0.0.4 (パブリック サブネットで仮想マシン) に到達する通信が示されます。
+    - 前の手順を完了するには、*myVm-Private* 仮想マシンに接続し、*myVm-Public* 仮想マシンに ping を実行します。 traceroute には、10.0.2.4 経由で 10.0.0.4 (パブリック サブネットの仮想マシン) に到達する通信が示されます。
+
+      > [!NOTE]
+      > 前述の手順で、Azure のプライベート IP アドレス間のルーティングを確認できます。 パブリック IP アドレスへのトラフィックをネットワーク仮想アプライアンス経由で転送またはプロキシ処理する場合:
+      > - アプライアンスが、ネットワーク アドレス変換またはプロキシ機能を備えている必要があります。 ネットワーク アドレス変換を行う場合、アプライアンスは、ソース IP アドレスを独自に変換し、その要求をパブリック IP アドレスを転送する必要があります。 アプライアンスがネットワーク アドレスをソース アドレスに変換している場合でもプロキシ処理している場合でも、Azure は、ネットワーク仮想アプライアンスのプライベート IP アドレスをパブリック IP アドレスに変換します。 Azure がパブリック IP アドレスをプライベート IP アドレスに変換するために使用するさまざまな方法の詳細については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
+      > - ルート テーブル内の追加ルート。プレフィックス 0.0.0.0/0、次のホップの VirtualAppliance の種類、(前のスクリプト例で使用されている) 次のホップの IP アドレス 10.0.2.4 など。
+      >
     - **省略可能**: Azure 内で 2 つの仮想マシン間の次ホップを検証するには、Azure Network Watcher の次ホップ機能を使用します。 Network Watcher を使用するには、使用するリージョンに対して [Azure Network Watcher インスタンスを作成](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)しておく必要があります。 このチュートリアルでは、米国東部リージョンが使用されます。 リージョンに対して Network Watcher インスタンスを有効にすると、次のコマンドを入力して、パブリック サブネットとプライベート サブネットの仮想マシン間の次ホップ情報を確認できます。
      
         ```azurecli-interactive

@@ -3,20 +3,20 @@ title: "パラメーター化 URL を使用して Azure Time Series Insights の
 description: "この記事では、パラメーター化した URL を Azure Time Series Insights で構築し、カスタマー ビューを簡単に共有できるようにする方法について説明します。"
 services: time-series-insights
 ms.service: time-series-insights
-author: kfile
-ms.author: kfile
+author: MarkMcGeeAtAquent
+ms.author: MarkMcGeeAtAquent
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: rest-api
 ms.topic: get-started-article
 ms.workload: big-data
-ms.date: 11/15/2017
-ms.openlocfilehash: d7a4401ff87a94265c588aa5ef070bdc8544fe12
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: ac48969a9166080384dccf606f0401a82016a60a
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -77,7 +77,7 @@ JavaScript における日付のミリ秒表現については、「[Epoch & Uni
 
 たとえば URL パラメーターとして時系列の定義を追加するには、以下を使用します。
 
-```
+```https
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
 {"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
@@ -90,7 +90,9 @@ JavaScript における日付のミリ秒表現については、「[Epoch & Uni
  
 この場合、ビューのパラメーター化 URL は、次のように構築することができます。
 
-`https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]`
+```https
+https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
+```
 
 前述の URL によって表されるビューを Time Series Insights エクスプローラーで構築した場合は、次のように表示されます。
 

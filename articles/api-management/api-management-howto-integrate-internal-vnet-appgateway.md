@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
-ms.openlocfilehash: 834a81c36557feffaa01c256dad0338617486773
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: e138241139329b8bb956157ab55b7d22dc2a9b67
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合 
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 10/26/2017
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>リソース マネージャーのリソース グループの作成
 
-Azure PowerShell の最新バージョンを使用していることを確認します。 詳細については、 [Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
+Azure PowerShell の最新バージョンを使用していることを確認します。 詳細については、 [Resource Manager での Windows PowerShell の使用](https://docs.microsoft.com/en-us/azure/azure-resource-manager/powershell-azure-resource-manager)に関するページを参照してください。
 
 ### <a name="step-1"></a>手順 1
 

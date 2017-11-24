@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: a925241d10b068e377fa9a11fc854db34c808343
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: bec2b2dc8a29e5c94e3d3c7f2f0333e07bfe3a4f
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 
 > [!NOTE]
-> Visual Studio Mobile Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [Mobile Center と Application Insights でアプリを設定する方法を確認してください](app-insights-mobile-center-quickstart.md)。
+> Visual Studio App Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [App Center と Application Insights でアプリを設定する方法を確認してください](app-insights-mobile-center-quickstart.md)。
 > 
 > 
 

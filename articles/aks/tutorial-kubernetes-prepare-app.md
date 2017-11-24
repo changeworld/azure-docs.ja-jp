@@ -1,5 +1,5 @@
 ---
-title: "Kubernertes on Azure のチュートリアル - アプリの準備 | Microsoft Docs"
+title: "Kubernetes on Azure のチュートリアル - アプリの準備 | Microsoft Docs"
 description: "AKS チュートリアル - アプリの準備"
 services: container-service
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: db8169b1c3c30efa1b684e49e1f113bee6a7fd45
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 0048f9ab21c09860397989c41920562ebab2f561
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="prepare-application-for-azure-container-service-aks"></a>Azure Container Service (AKS) 用のアプリケーションの準備
 

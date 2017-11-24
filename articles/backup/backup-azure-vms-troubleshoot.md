@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: 096c97f4cb41ff8df2e646f59dbc0bf845721ac7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c4ea3e3714f6a3989a260937c2c67815a6dd6f7
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -32,6 +32,11 @@ ms.lasthandoff: 10/11/2017
 ## <a name="backup"></a>Backup
 
 ### <a name="error-the-specified-disk-configuration-is-not-supported"></a>エラー: 指定されたディスク構成がサポートされていません
+
+> [!NOTE]
+> 1 TB を超える非管理対象ディスクがある VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください
+>
+>
 
 現在 Azure Backup は [1023 GB を超える](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)ディスク サイズをサポートしていません。 
 - 1 TB を超えるディスクがある場合は、1 TB より小さい[新規ディスクを接続](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)してください。 <br>

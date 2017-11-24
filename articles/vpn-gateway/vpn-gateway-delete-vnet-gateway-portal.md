@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: cherylmc
 ms.openlocfilehash: 1d289c09465cb8d5e4bfa569441dffcbf562b3bf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>ポータルを使用して仮想ネットワーク ゲートウェイを削除する
 
@@ -63,5 +63,5 @@ VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削
 リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、Resource Manager デプロイ モデルに該当します。
 
 1. **[すべてのリソース]** でリソース グループを見つけ、クリックしてブレードを開きます。
-2. [ **削除**] をクリックします。 [削除] ブレードに関連するリソースを表示します。 これらのリソースをすべて削除することを確認します。 削除しない場合は、この記事の上部にある、「[VPN ゲートウェイの削除](#deletegw)」のステップに従ってください。
+2. **[ 削除]** をクリックします。 [削除] ブレードに関連するリソースを表示します。 これらのリソースをすべて削除することを確認します。 削除しない場合は、この記事の上部にある、「[VPN ゲートウェイの削除](#deletegw)」のステップに従ってください。
 3. 続行するには、削除するリソース グループの名前を入力し、**[削除]** をクリックします。

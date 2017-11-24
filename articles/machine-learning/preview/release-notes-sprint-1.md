@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
-ms.openlocfilehash: a294a3f92163f78bace56654c284c4e83623b829
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="sprint-1---november-2017"></a>スプリント 1 - 2017 年 11 月 
 
@@ -122,18 +122,18 @@ Azure Machine Learning Workbench の 2 番目の更新へようこそ。 当社�
 
 ### <a name="operationalization"></a>運用化
 - 名前に "score" が含まれる Web サービスが失敗しなくなりました。
-- ユーザーは、Azure リソース グループに対する [所有者] アクセス権のみを含むデプロイメント環境を作成できるようになりました。 サブスクリプション全体に対する [所有者] アクセス権は必要なくなりました。
+- ユーザーは、Azure リソース グループまたはサブスクリプションに対する [共同作成者] アクセス権のみを含むデプロイメント環境を作成できるようになりました。 サブスクリプション全体に対する [所有者] アクセス権は必要なくなりました。
 - 運用化 CLI が Linux でタブのオートコンプリートを利用するようになりました。
 - イメージ構築サービスが Azure IoT サービス/デバイスのためのイメージの構築をサポートするようになりました。
 
 ### <a name="sample-projects"></a>サンプル プロジェクト
-- _[あやめの分類]_ サンプル プロジェクト:
+- ["_[あやめの分類]_"](./tutorial-classifying-iris-part-1.md) サンプル プロジェクト:
     - `iris_pyspark.py` は `iris_spark.py` に変更されました。
-    - `iris_score.py` は `iris-score.py` に変更されました。
+    - `iris_score.py` は `score_iris.py` に変更されました。
     - `iris.dprep` と `iris.dsource` がデータ準備エンジンの最新の更新を反映するように更新されました。
     - `iris.ipynb` Notebook が HDInsight クラスターで機能するように修正されました。
     - `iris.ipynb` Notebook セルで実行履歴が有効になりました。
-- _[Advanced Data Prep using Bike Share Data] (自転車共有データを使用した高度なデータ準備)_ サンプル プロジェクトの [Handle Error Value] (エラー値の処理) 手順が修正されました。
-- _[MMLSpark on Adult Census Data] (成人の国勢調査データでの MMLSpark)_ サンプル プロジェクトの `docker.runconfig` 形式が JSON から YAML に更新されました。
-- [Distributed Hyperparameter Tuning] (ハイパーパラメーターの分散チューニング) サンプル プロジェクトの `docker.runconfig` 形式が JSON から YAML に更新されました。
-- 新しいサンプル プロジェクト _[CNTK を使用した画像の分類]_。
+- ["_自転車シェア データを使用した詳細データの準備_"](./tutorial-bikeshare-dataprep.md) のサンプル プロジェクトのエラー値の処理の手順が修正されました。
+- ["_成人の国勢調査データでの MMLSpark_"](https://github.com/Azure/MachineLearningSamples-mmlspark) のサンプル プロジェクトの `docker.runconfig` 形式が JSON から YAML に更新されました。
+- ["_ハイパーパラメーターの分散チューニング_"](./scenario-distributed-tuning-of-hyperparameters.md) のサンプル プロジェクトの `docker.runconfig` 形式が JSON から YAML に更新されました。
+- 新しいサンプル プロジェクト ["_CNTK を使用した画像分類_"](./scenario-image-classification-using-cntk.md)。

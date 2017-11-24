@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 3ff1b0bdd2397387910c31e25ddbc50ffc0bd1c4
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: a40888af94415f77dfc00e6b254a5fc82aa488c4
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>App Service on Linux での PHP Web アプリの作成
 
@@ -33,8 +33,8 @@ ms.lasthandoff: 10/25/2017
 
 このクイック スタートを完了するには、以下が必要です。
 
-* [Git をインストールする](https://git-scm.com/)
-* [PHP をインストールする](https://php.net)
+* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
+* <a href="https://php.net" target="_blank">PHP をインストールする</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,21 +71,19 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app-with-built-in-image"></a>組み込みイメージを使用する Web アプリの作成
+## <a name="create-a-web-app"></a>Web アプリを作成する
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-php-no-h.md)] 
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-no-h.md)] 
 
-サイトを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
+サイトを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
 
 ```bash
-http://<app name>.azurewebsites.net
+http://<app_name>.azurewebsites.net
 ```
 
 ![空の Web アプリ ページ](media/quickstart-php/app-service-web-service-created.png)
 
-Git デプロイが有効な、組み込みイメージを使用する新しい空の Web アプリが作成されました。
-
-[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)]
+[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 2, done.
@@ -128,7 +126,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="update-locally-and-redeploy-the-code"></a>コードをローカルで更新して再デプロイする
 
-ローカルのテキスト エディターを使用して、PHP アプリ内の `index.php` ファイルを開き、`echo` に続く文字列の中のテキストを少し変更します。
+ローカル ディレクトリで、PHP アプリ内の `index.php` ファイルを開き、`echo` に続く文字列の中のテキストを少し変更します。
 
 ```php
 echo "Hello Azure!";

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fb6027769377b3527b11f7831dab3bb8d7061c84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f09819a1bfd380cd826a478471e673b6d5ff9ee7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>XML 変換での Enterprise Integration
 ## <a name="overview"></a>概要
@@ -50,6 +50,11 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. **[XML の変換]** アクションを選択します。   
 6. 変換する XML **コンテンツ** を追加します。 HTTP 要求で受信する XML データは、すべて **コンテンツ**として使用することができます。 この例では、ロジック アプリをトリガーした HTTP 要求の本文を選択します。
+
+   > [!NOTE]
+   > **[XML の変換]** のコンテンツが XML で記述されていることを確認してください。 コンテンツが XML で記述されていない、または base64 でエンコードされている場合は、コンテンツを処理する式を指定する必要があります。 たとえば、デコードされたコンテンツには ```@base64ToBinary```、XML として処理するコンテンツには ```@xml``` などの[関数](logic-apps-workflow-definition-language.md#functions)を使用できます。
+ 
+
 7. 変換を実行するのに使用する **マップ** の名前を選択します。 マップが既に統合アカウント内に存在している必要があります。 前の手順で、既にロジック アプリには、マップが含まれる統合アカウントへのアクセス権が付与されています。      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. 作業内容を保存します。  

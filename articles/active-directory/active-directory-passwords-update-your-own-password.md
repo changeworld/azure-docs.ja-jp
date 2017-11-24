@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 11/13/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 8f175f5711b9798153d209f6645aa8bae9f2a00b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9595b318b8bd974f778dc12b38cccd949a4e7a1a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="help-i-forgot-my-azure-ad-password"></a>Azure AD パスワードを忘れた場合
+# <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
 
-パスワードを忘れた場合や、IT スタッフからパスワードを受け取っていない場合、アカウントからロックアウトされた場合、パスワードを変更する場合は、Microsoft がお手伝いします。 パスワードがわかっていて、単にパスワードの変更が必要な場合は、下の「[パスワードを変更する](#change-my-password)」セクションに進んでください。
+パスワードを忘れた場合や、会社のサポート部門からパスワードを受け取っていない場合、アカウントからロックアウトされた場合、パスワードを変更する場合は、Microsoft がお手伝いします。 パスワードがわかっていて、単にパスワードの変更が必要な場合は、下の「[パスワードを変更する](#change-my-password)」セクションに進んでください。
 
    > [!NOTE]
    > Xbox、hotmail.com、outlook.com などの個人アカウントを回復しようとしている場合は、[この記事の提案事項](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)を試してください。
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/31/2017
    ![認証データを確認する][Verification]
 
 4. IT スタッフが追加の確認を求めている場合もあります。その場合は、別のオプションを選択して手順 3. を繰り返す必要があります。
-5. **[新しいパスワードの選択]** ページで、新しいパスワードを入力し、パスワードを確認して、**[完了]** をクリックします。 大文字、小文字、数字、および特殊文字を組み合わせた 8 ～ 16 文字のパスワードをお勧めします。
+5. **[新しいパスワードの選択]** ページで、新しいパスワードを入力し、パスワードを確認して、**[完了]** をクリックします。 職場または学校のパスワードには、特定の要件を設定できます。大文字、小文字、数字、および特殊文字を組み合わせた 8 から 16 文字のパスワードをお勧めします。
 6. **[パスワードがリセットされました]** と表示されたら、新しいパスワードでサインインできます。
 
     ![パスワードがリセットされました][Complete]
@@ -95,6 +95,27 @@ ms.lasthandoff: 10/31/2017
 3. **[パスワードの変更]** をクリックします。
 4. 古いパスワードを入力し、新しいパスワードを設定して、それを確認します。その後、**[送信]** をクリックします。
 
+## <a name="reset-password-at-login"></a>ログイン時にパスワードをリセットする
+
+管理者が機能を有効にしている場合、Windows 10 Fall Creators Update のログイン画面に **[パスワードのリセット]** のリンクが表示される場合があります。
+
+![ログイン画面][LoginScreen]
+
+**[パスワードのリセット]** リンクをクリックすると、ログイン画面に SSPR エクスペリエンスが開き、ログインして通常の Web ベースのエクスペリエンスにアクセスしなくても、パスワードをリセットできます。
+
+1. ユーザー ID を確認して **[次へ]** をクリックします
+2. 確認用の連絡方法を選んで確定します。 IT スタッフが追加の確認を求めている場合もあります。その場合は、別のオプションを選んでこのステップを繰り返すことが必要な場合があります。
+
+   ![ContactMethod][ContactMethod]
+
+3. **[新しいパスワードの作成]** ページで、新しいパスワードを入力し、パスワードを確認して、**[次へ]** をクリックします。 大文字、小文字、数字、および特殊文字を組み合わせた 8 ～ 16 文字のパスワードをお勧めします。
+
+   ![ResetPassword][ResetPassword]
+
+4. **[パスワードがリセットされました]** と表示されたら、**[完了]** をクリックします
+
+これで、アカウントにアクセスできるようになります。アクセスできない場合は、組織の IT スタッフに連絡してサポートを依頼してください。
+
 ## <a name="common-problems-and-their-solutions"></a>一般的な問題とその解決方法
 
  次に、一般にエラーになる場合とその解決方法を示します。
@@ -116,3 +137,6 @@ ms.lasthandoff: 10/31/2017
 [Verification]: ./media/active-directory-passwords-update-your-own-password/reset-2-verification.png "認証データを確認する"
 [Change]: ./media/active-directory-passwords-update-your-own-password/reset-3-change.png "パスワードを変更する"
 [Complete]: ./media/active-directory-passwords-update-your-own-password/reset-4-complete.png "パスワードがリセットされました"
+[LoginScreen]: ./media/active-directory-passwords-update-your-own-password/login-screen.png "Windows 10 Fall Creators Update のログイン画面の [パスワードのリセット] リンク"
+[ContactMethod]: ./media/active-directory-passwords-update-your-own-password/reset-contact-method-screen.png "認証データを確認する"
+[ResetPassword]: ./media/active-directory-passwords-update-your-own-password/reset-password-screen.png "パスワードを変更する"

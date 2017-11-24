@@ -1,26 +1,6 @@
----
-title: "Azure CLI のサンプル - Azure Functions | Microsoft Docs"
-description: "Azure CLI のサンプル - Azure Functions"
-services: functions
-documentationcenter: functions
-author: syntaxc4
-manager: cfowler
-editor: ggailey777
-tags: azure-service-management
-ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
-ms.service: functions
-ms.devlang: na
-ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: functions
-ms.date: 04/11/2017
-ms.author: glenga
-ms.custom: mvc
-ms.openlocfilehash: f3c9fc67c082a759432f1db0b44b42513f2fb733
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+-- title: Azure CLI のサンプル - Azure Functions | Microsoft Docs description: Azure CLI のサンプル - Azure Functions services: functions documentationcenter: functions author: syntaxc4 manager: cfowler editor: ggailey777 tags: azure-service-management
+
+ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0 ms.service: functions ms.devlang: na ms.topic: sample ms.tgt_pltfrm: na ms.workload: functions ms.date: 04/11/2017 ms.author: glenga ms.custom: mvc
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 
@@ -29,8 +9,8 @@ ms.lasthandoff: 10/11/2017
 | | |
 |-|-|
 |**アプリの作成**||
-| [サーバーレス実行用の Function App の作成](scripts/functions-cli-create-serverless.md) | 従量課金プランで Function App を作成します。  |
-| [App Service プランでの Function App の作成](scripts/functions-cli-create-app-service-plan.md) | 専用の App Service プランで Function App を作成します。 |
+| [サーバーレス実行用の Function App の作成](scripts/functions-cli-create-serverless.md) | 従量課金プランで関数アプリを作成します。  |
+| [App Service プランでの Function App の作成](scripts/functions-cli-create-app-service-plan.md) | 専用の App Service プランで関数アプリを作成します。 |
 | | |
 |**統合**||
 | [Function App の作成とストレージ アカウントへの接続](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Function App を作成し、ストレージ アカウントに接続します。 |

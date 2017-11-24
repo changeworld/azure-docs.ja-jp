@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: tamram
-ms.openlocfilehash: cbc8654bf1755826afa2cf83e5476e88903e0854
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfca37e3a369fdfb41b4064b72ccd027bd8cbd3
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>BLOB ストレージ エンドポイントのカスタム ドメイン名の構成
 
@@ -55,7 +55,7 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 中間マッピングの方法については、[*asverify* サブドメインを使用したカスタム ドメインの登録](#register-a-custom-domain-using-the-asverify-subdomain)を参照してください。
 
 ## <a name="register-a-custom-domain"></a>カスタム ドメインの登録
-ユーザーが短時間、ドメインを使用できなくても問題ではない場合、またはカスタム ドメインが現在、アプリケーションのホストでない場合は、この手順でカスタム ドメインを登録します。
+ユーザーが短時間、ドメインを使用できなくても問題ではない場合、またはカスタム ドメインが現在、アプリケーションのホストでない場合は、この手順でカスタム ドメインを登録します。 Azure DNS を使用して、Azure BLOB のカスタム DNS 名を構成できます。 詳細については、「[Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage)」をご覧ください。
 
 カスタム ドメインが現在、ダウンタイムの発生が許容されないアプリケーションをサポートしている場合は、[*asverify* サブドメインを使用したカスタム ドメインの登録](#register-a-custom-domain-using-the-asverify-subdomain)で説明している手順に従ってください。
 

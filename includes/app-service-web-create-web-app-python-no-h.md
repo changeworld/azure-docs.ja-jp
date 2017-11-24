@@ -1,6 +1,6 @@
-Cloud Shell で [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan` App Service プランに Web アプリを作成します。 `<app_name>` を固有のアプリ名に置き換えることを忘れないでください。
+Cloud Shell で [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan` App Service プランに Web アプリを作成します。 
 
-次のコマンドのランタイムは、`python|3.4` に設定されます。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp#list-runtimes) を実行してください。 
+次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `python|3.4` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp#list-runtimes) を実行します。 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "python|3.4" --deployment-local-git

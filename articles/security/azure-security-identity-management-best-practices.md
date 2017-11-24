@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d80fdd5a2e4339823c05368d76de333f3314d4ec
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 ID はセキュリティの新しい境界レイヤーであり、従来のネットワーク中心の観点からその役割を引き継ぐものであると一般に考えられています。 セキュリティに関する注目と投資の主軸のこのような変化は、ネットワーク境界の侵入がますます容易になり、[BYOD](http://aka.ms/byodcg) デバイスとクラウド アプリケーションが爆発的に増加する前と比べて境界防御の有効性が低下しているという事実によるものです。
@@ -82,7 +82,7 @@ Azure AD の SSO の詳細については、「[Azure AD Connect を使用した
 パスワード リセットの詳細については、「[Password Management のデプロイとユーザー トレーニング](../active-directory/active-directory-passwords-best-practices.md)」をご覧ください。
 
 ## <a name="enforce-multi-factor-authentication-mfa-for-users"></a>多要素認証 (MFA) をユーザーに適用する
-[PCI DSS バージョン 3.2](http://blog.pcisecuritystandards.org/preparing-for-pci-dss-32) などの業界標準に準拠する必要がある組織では、多要素認証がユーザー認証のために必須の機能です。 MFA を使用してユーザーを認証すると、業界標準に準拠するだけでなく、[Pass-the-Hash (PtH)](http://aka.ms/PtHPaper) などの資格情報盗難型の攻撃の緩和にも役立ちます。
+[PCI DSS バージョン 3.2](http://blog.pcisecuritystandards.org/preparing-for-pci-dss-32) などの業界標準に準拠している必要がある組織では、多要素認証がユーザー認証のために必須の機能です。 MFA を使用してユーザーを認証すると、業界標準に準拠しているだけでなく、[Pass-the-Hash (PtH)](http://aka.ms/PtHPaper) などの資格情報盗難型の攻撃の緩和にも役立ちます。
 
 ユーザーに対する Azure MFA を有効にすると、ユーザーのサインインとトランザクションに新しいセキュリティ層が追加されます。 この場合、ファイル サーバーまたは SharePoint Online 上にあるドキュメントにアクセスするトランザクションが発生する可能性があります。 また、Azure MFA は不正に取得された資格情報によって組織データにアクセスされる危険を減らすためにも役立ちます。
 
@@ -115,7 +115,7 @@ Azure RBAC の詳細については、「[Azure のロールベースのアク�
 
 リソースの作成方法を制御しないと、ユーザーは必要量より多くのリソースを作成することによってサービスを不正使用する可能性が高くなります。 リソースの作成プロセスを強化することは、マルチ テナントのシナリオをセキュリティ保護するための重要な手順です。
 
-Azure Resource Manager でのポリシー作成の詳細については、「[ポリシーを使用したリソース管理とアクセス制御](../azure-resource-manager/resource-manager-policy.md)」をご覧ください。
+Azure Resource Manager でのポリシー作成の詳細については、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」をご覧ください。
 
 ## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>SaaS アプリの ID 機能を利用するよう開発者に指示する
 ユーザー ID は、オンプレミスのディレクトリまたはクラウド ディレクトリと統合できる [SaaS アプリ](https://azure.microsoft.com/marketplace/active-directory/all/)にユーザーがアクセスする多くのシナリオで利用されます。 何よりもまず、開発者には、[Microsoft セキュリティ開発ライフサイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) などの安全な方法を使用してアプリを開発することをお勧めします。 Azure AD は、[OAuth 2.0](http://oauth.net/2/) や [OpenID Connect](http://openid.net/connect/) などの業界標準プロトコルをサポートする Identity as a Service と、さまざまなプラットフォーム向けのオープン ソース ライブラリを提供することで、開発者のために認証を簡素化します。

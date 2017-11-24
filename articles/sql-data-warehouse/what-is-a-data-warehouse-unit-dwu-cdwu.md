@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 10/23/2017
+ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: 93f0d21c7214487ffa0c2c5e27bd6e468920418c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 02998c48dcab5d3ed191b168665c9e47bbfbd232
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 ここでは、Azure SQL Data Warehouse の Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU) について説明します。 また、最適な Data Warehouse ユニットの数の選択についての推奨事項と、Data Warehouse ユニットの数を変更する方法も示します。 
@@ -52,16 +52,8 @@ DWU と cDWU はいずれも、コンピューティングのスケール アッ
 Data Warehouse ユニットを増やすと、コンピューティング リソースが直線的に増加します。 [計算用に最適化] パフォーマンス レベルは最適なクエリ パフォーマンスと最大のスケールを提供しますが、エントリ価格が高くなります。 これは常にパフォーマンスを必要とする企業向けに設計されています。 これらのシステムは、キャッシュを最大限に活用します。 
 
 ### <a name="capacity-limits"></a>容量制限
-既定では、各サーバー (たとえば myserver.database.windows.net) に対して、そのインスタンスのデータベースのサイズとスケールを制限するクォータが設定されています。 サーバーは SQL DW データベースと SQL DB データベースをホストできますが、それらすべてがクォータ内に収まる必要があります。 このクォータは Database Transaction ユニット (DTU) で測定され、既定では 54,000 に設定されていますが、6000 cDWU まで引き上げることができます。 このクォータは単に安全上の制限です。 クォータを引き上げるには、サポート チケットを作成し、要求の種類として [クォータ] を選択します。 
+各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../sql-database/sql-database-what-is-a-dtu.md) クォータがあります。 詳細については、[ワークロード管理の容量制限](sql-data-warehouse-service-capacity-limits.md#workload-management)に関する記事を参照してください。
 
-DTU の要件を計算するには、DTU の計算に次の乗数を適用します。
-
-| パフォーマンス レベル | 計算単位 | DTU 乗数 | 例                   |
-|:----------------:|----------------:|---------------:|--------------------------:|
-| 弾力性       |  DWU            | 7.5            | DW6000 x 7.5 = 45,000 DTU |
-| コンピューティング          | cDWU            | 9              | DW6000 x 7.5 = 54,000 DTU |
-
-現在の DTU 消費量は、ポータルの SQL Server プロパティから確認できます。
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>必要な Data Warehouse ユニットの数
 理想的な Data Warehouse ユニットの数は、ワークロードと、システムに読み込まれているデータの量に大きく依存します。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5950bad397e4b0f08f998ea6756e3c258e84b63e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure エンタープライズ スキャフォールディング - 規範的なサブスクリプション ガバナンス
 俊敏性と柔軟性を求めてパブリック クラウドを採用する企業がますます増えています。 これらの企業は、クラウドの強みを活かして収益を生み出したり、ビジネスのリソースを最適化したりしています。 Microsoft Azure は、企業がさまざまなワークロードやアプリケーションに対応するためにブロックのように組み立てることができる多数のサービスを提供しています。 
@@ -89,7 +89,7 @@ Azure の加入契約には、次の 3 つの一般的なパターンがあり�
 > 以上のヒントを活用すれば、一貫性のある命名規則を実装できます。
 
 ## <a name="policies-and-auditing"></a>ポリシーと監査
-スキャフォールディングの 2 つ目の柱には、[Azure Resource Manager ポリシー](resource-manager-policy.md)の作成と[アクティビティ ログの監査](resource-group-audit.md)が含まれます。 Resource Manager ポリシーにより、Azure でのリスクを管理できます。 特定のアクションを制限、強制、または監査してデータの主権を確保するポリシーを定義できます。 
+スキャフォールディングの 2 つ目の柱には、[Azure ポリシー](../azure-policy/azure-policy-introduction.md)の作成と[アクティビティ ログの監査](resource-group-audit.md)が含まれます。 Resource Manager ポリシーにより、Azure でのリスクを管理できます。 特定のアクションを制限、強制、または監査してデータの主権を確保するポリシーを定義できます。 
 
 * ポリシーは既定の**許可**システムです。 リソースに対するアクションを拒否または監査するポリシーを定義してリソースに割り当てることで、アクションを制御します。
 * ポリシーは、ポリシー定義言語 (if-then 条件) でのポリシー定義で示されます。

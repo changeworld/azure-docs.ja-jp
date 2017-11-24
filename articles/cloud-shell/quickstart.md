@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Shell (プレビュー) の Bash のクイックスタート | Microsoft Docs"
+title: "Azure Cloud Shell の Bash のクイックスタート | Microsoft Docs"
 description: "Cloud Shell の Bash のクイックスタート"
 services: 
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: bbad2735acf06ebefda020410731fb307c4ec614
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ed83b28fe5f0f1e9626115390f8697dfb2c8ead
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="start-cloud-shell"></a>Cloud Shell の起動
 1. Azure Portal 上部のナビゲーションから **Cloud Shell** を起動します。 <br>
 ![](media/quickstart/shell-icon.png)
-2. ストレージ アカウントと Azure ファイル共有の作成に使用するサブスクリプションを選択します。
+2. ストレージ アカウントと Microsoft Azure ファイル共有を作成するためのサブスクリプションを選択します。
 3. [Create storage]\(ストレージの作成\) を選択します。
 
 > [!TIP]
@@ -79,4 +79,4 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>
 [Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
-[Azure File Storage について](../storage/files/storage-files-introduction.md) <br>
+[Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>

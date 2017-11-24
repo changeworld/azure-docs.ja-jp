@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a13a5777161ab18840501d7d7e1d52192c22315
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -60,6 +60,14 @@ ms.lasthandoff: 10/11/2017
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="1.14.0"/>1.14.0</a>
+* セッションの整合性のサポートが追加されます。
+* この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+
+### <a name="1.13.0"/>1.13.0</a>
+* クロス パーティション クエリを分割検証しました。
+* 先頭および末尾のスラッシュを含むリソース リンクのサポート (および対応するテスト) を追加します。
 
 ### <a name="1.12.2"/>1.12.2</a>
 *   npm のドキュメントを修正しました。
@@ -177,6 +185,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.14.0](#1.14.0) |2017 年 11 月 9 日 |--- |
+| [1.13.0](#1.13.0) |2017 年 10 月 11 日 |--- |
 | [1.12.2](#1.12.2) |2017 年 8 月 10 日 |--- |
 | [1.12.1](#1.12.1) |2017 年 8 月 10 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 5 月 10 日 |--- |

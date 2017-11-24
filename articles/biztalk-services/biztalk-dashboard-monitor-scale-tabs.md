@@ -1,6 +1,6 @@
 ---
 title: "BizTalk Services での [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] | Microsoft Docs"
-description: "BizTalk Services のクラシック ポータルのタブのコントロールについて説明し、パフォーマンスを監視します: [ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続]。 MABS、WABS"
+description: "コントロールについて確認し、BizTalk Services のパフォーマンスを監視する"
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 62bef0ee0141f6a7a92146ef230f0766a85aee5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 351809cd5f165a863dc02bfadf78fa59cbaabfd7
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>[ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブの確認
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 BizTalk サービスを作成してアプリケーションを配置した後は、BizTalk サービスの設定の一部を変更し、アプリケーションのパフォーマンスを監視できます。 
 
-Azure クラシック ポータルを開くと、自動的に  **すべてのアイテム**  タブが表示されます。BizTalk サービスを表示するには、**すべてのアイテム** タブで BizTalk サービスを選択するか、**BizTalk サービス** タブを選択してから BizTalk サービス名を選択します。
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 新しいウィンドウが開き、次のタブが表示されます。 このトピックでは、これらのタブについて説明します。
 
@@ -84,9 +84,9 @@ Access Control ポータルを開くこともできます。 Access Control ポ�
 <br/><br/>
 <ol>
 <li>BizTalk サービスを選択し、<strong>[キーの同期]</strong> を選択します。 セカンダリ キーを選択します。 これを行うと、BizTalk サービスはセカンダリ キーの使用を開始します。</li>
-<li>Azure クラシック ポータルで、ストレージ アカウントを選択してプライマリ キーを再生成します。 BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
+<li>ストレージ アカウントを選択してプライマリ キーを再生成します。 BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
 <li>BizTalk サービスを選択し、<strong>[キーの同期]</strong> を選択します。 プライマリ キーを選択します。 これは、再生成した新しいプライマリ キーです。</li>
-<li>Azure クラシック ポータルで、ストレージ アカウントを選択してセカンダリ キーを再生成します。</li>
+<li>ストレージ アカウントを選択してセカンダリ キーを再生成します。</li>
 </ol>
 <br/>
 このプロセスを "キーのロールオーバー" といいます。 その目的は、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キーの間で切り替えを行うことです。</td>
@@ -169,7 +169,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 </tr>
 <tr>
 <td><strong>サブスクリプション名</strong></td>
-<td>BizTalk サービスをホストしているサブスクリプションの名前が表示されます。 サブスクリプションにより、Azure クラシック ポータルへのアクセスが管理されます。</td>
+<td>BizTalk サービスをホストしているサブスクリプションの名前が表示されます。 サブスクリプションはアクセスを制御します。</td>
 </tr>
 <tr>
 <td><strong>サブスクリプション ID</strong></td>
@@ -177,7 +177,7 @@ BizTalk サービス名を選択すると、[ダッシュボード] タブが表
 </tr>
 </table>
 
-[BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280) 」に、BizTalk サービスを作成する手順が記載されています。
+[BizTalk Services: プロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)に関するページに、BizTalk サービスを作成する手順が記載されています。
 
 ##### <a name="manage-connection-information-sync-keys-and-delete-in-the-task-bar"></a>タスク バーの [管理]、[接続情報]、[キーの同期]、[削除]:
 <table border="1">
@@ -206,9 +206,9 @@ Access Control ポータルを開くこともできます。 Access Control ポ�
 <br/><br/>
 <ol>
 <li>BizTalk サービスを選択し、<strong>[キーの同期]</strong> を選択します。 セカンダリ キーを選択します。 これを行うと、BizTalk サービスはセカンダリ キーの使用を開始します。</li>
-<li>Azure クラシック ポータルで、ストレージ アカウントを選択してプライマリ キーを再生成します。 BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
+<li>ストレージ アカウントを選択してプライマリ キーを再生成します。 BizTalk サービスはセカンダリ キーを使用していることに注意してください。</li>
 <li>BizTalk サービスを選択し、<strong>[キーの同期]</strong> を選択します。 プライマリ キーを選択します。 これは、再生成した新しいプライマリ キーです。</li>
-<li>Azure クラシック ポータルで、ストレージ アカウントを選択してセカンダリ キーを再生成します。</li>
+<li>ストレージ アカウントを選択してセカンダリ キーを再生成します。</li>
 </ol>
 <br/>
 このプロセスを "キーのロールオーバー" といいます。 その目的は、BizTalk サービスを中断せずにプライマリ キーとセカンダリ キーの間で切り替えを行うことです。</td>
@@ -329,7 +329,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 [BizTalk サービス: バックアップと復元](biztalk-backup-restore.md) 」に、詳しい説明があります。 
 
 ## <a name="HybridConnections"></a>ハイブリッド接続
-"ハイブリッド接続" を使用すると、Azure のアプリケーション (Azure App Service の Web アプリやモバイル アプリなど) を、静的 TCP ポートを使用するオンプレミスのリソース (たとえば、SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス) に接続できます。 ハイブリッド接続の管理は、BizTalk Services で、Azure クラシック ポータルを使用して行います。
+"ハイブリッド接続" を使用すると、Azure のアプリケーション (Azure App Service の Web アプリやモバイル アプリなど) を、静的 TCP ポートを使用するオンプレミスのリソース (たとえば、SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス) に接続できます。 ハイブリッド接続は BizTalk Services で管理されます。
 
 Azure BizTalk サービスでハイブリッド接続を作成または管理するには、「 [ハイブリッド接続](integration-hybrid-connection-overview.md)」を参照してください。
 
@@ -343,7 +343,7 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 ## <a name="see-also"></a>関連項目
 * [ハイブリッド接続](integration-hybrid-connection-overview.md)  
 * [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)  
-* [BizTalk サービス: Azure クラシック ポータルを使用したプロビジョニング](biztalk-provision-services.md)  
+* [BizTalk Services: プロビジョニング](biztalk-provision-services.md)  
 * [BizTalk サービス: BizTalk サービスの状態のグラフに関するページ](biztalk-service-state-chart.md)  
 * [Visual Studio でのプロジェクトの作成](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 

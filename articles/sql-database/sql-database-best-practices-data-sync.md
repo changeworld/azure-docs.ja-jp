@@ -2,19 +2,19 @@
 title: "Azure SQL データ同期のベスト プラクティス | Microsoft Docs"
 description: "Azure SQL データ同期の構成と実行に関するベスト プラクティスについて説明します。"
 services: sql-database
-ms.date: 11/2/2017
+ms.date: 11/13/2017
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7492fffd1c18a149ef12174c79d64b47afbaa3e4
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7d9529fc8acd9347b0505b1c578febc1c2219b37
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="best-practices-for-azure-sql-data-sync-preview"></a>Azure SQL データ同期 (プレビュー) のベスト プラクティス 
+# <a name="best-practices-for-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) のベスト プラクティス 
 
 この記事では、SQL データ同期 (プレビュー) のベスト プラクティスについて説明します。
 
@@ -44,54 +44,40 @@ SQL データ同期の概要については、[Azure SQL データ同期 (プレ
 
 **同期グループのデータベースの資格情報が 1 つしかない場合に、この情報を使用する方法**
 
--   フェーズごとに資格情報を変更します (たとえば、セットアップには credential1 を使用し、継続的な同期には credential2 を使用します)。
+-   フェーズごとに資格情報を変更します (たとえば、セットアップには *credential1* を使用し、継続的な同期には *credential2* を使用します)。
 
 -   資格情報のアクセス許可を変更します (つまり、同期の設定後にアクセス許可を変更します)。
 
-## <a name="locate-hub"></a>ハブ データベースを配置する場所
+## <a name="setup"></a>[Setup]
 
-### <a name="enterprise-to-cloud-scenario"></a>企業とクラウド間のシナリオ
+### <a name="database-considerations-and-constraints"></a>データベースの考慮事項と制約
 
-待機時間を最小限に抑えるために、同期グループのデータベース トラフィックが最も集中する場所の近くにハブ データベースを保持します。
-
-### <a name="cloud-to-cloud-scenario"></a>クラウド間のシナリオ
-
--   同期グループのすべてのデータベースが 1 つのデータ センターにある場合は、同じデータ センターにハブを配置します。 この構成により、待機時間とデータ センター間でのデータ転送のコストが削減されます。
-
--   同期グループのデータベースが複数のデータ センターにある場合は、大多数のデータベースおよびデータベース トラフィックと同じデータ センターにハブを配置します。
-
-### <a name="mixed-scenarios"></a>混合シナリオ
-
-より複雑な同期グループ構成には、上記のガイドラインを適用します。
-
-## <a name="database-considerations-and-constraints"></a>データベースの考慮事項と制約
-
-### <a name="sql-database-instance-size"></a>SQL Database インスタンスのサイズ
+#### <a name="sql-database-instance-size"></a>SQL Database インスタンスのサイズ
 
 新しい SQL Database インスタンスを作成するときは、デプロイするデータベースよりも常に大きいサイズになるように最大サイズを設定します。 デプロイするデータベースより大きい最大サイズを設定していない場合、同期は失敗します。 自動拡張機能はありませんが、ALTER DATABASE を実行することで、データベースの作成後にサイズを増やすことができます。 SQL Database インスタンスのサイズの制限を超えないようにしてください。
 
 > [!IMPORTANT]
 > SQL データ同期では、各データベースで追加のメタデータを格納します。 必要な領域を計算するときに、このメタデータを必ず考慮してください。 追加されるオーバーヘッドの量は、テーブルの幅 (たとえば、幅が狭いテーブルでは必要なオーバーヘッドが増えます) とトラフィックの量で決まります。
 
-## <a name="table-considerations-and-constraints"></a>テーブルの考慮事項と制約
+### <a name="table-considerations-and-constraints"></a>テーブルの考慮事項と制約
 
-### <a name="selecting-tables"></a>テーブルの選択
+#### <a name="selecting-tables"></a>テーブルの選択
 
-データベースのすべてのテーブルを[同期グループ](#sync-group)に含める必要があるわけではありません。 同期グループに含めるテーブルと除外するテーブル (または、別の同期グループに含めるテーブル) の選択が、効率とコストに影響する場合があります。 ビジネスで必要とされるテーブルと、それらのテーブルが依存するテーブルだけを同期グループに含めます。
+データベースのすべてのテーブルを同期グループに含める必要はありません。 同期グループに含めるテーブルと除外するテーブル (または、別の同期グループに含めるテーブル) の選択が、効率とコストに影響する場合があります。 ビジネスで必要とされるテーブルと、それらのテーブルが依存するテーブルだけを同期グループに含めます。
 
-### <a name="primary-keys"></a>主キー
+#### <a name="primary-keys"></a>主キー
 
 同期グループ内の各テーブルには主キーが必要です。 SQL データ同期 (プレビュー) サービスでは、主キーのないテーブルを同期することはできません。
 
 運用環境に展開する前に、初期同期と継続的な同期のパフォーマンスをテストします。
 
-## <a name="provisioning-destination-databases"></a>同期先データベースをプロビジョニングする
+### <a name="provisioning-destination-databases"></a>同期先データベースをプロビジョニングする
 
 SQL データ同期 (プレビュー) は、データベースの基本的な自動プロビジョニングを提供します。
 
 このセクションでは、SQL データ同期 (プレビュー) のプロビジョニングの制限事項について説明します。
 
-### <a name="auto-provisioning-limitations"></a>自動プロビジョニングの制限事項
+#### <a name="auto-provisioning-limitations"></a>自動プロビジョニングの制限事項
 
 SQL データ同期 (プレビュー) の自動プロビジョニングの制限事項は次のとおりです。
 
@@ -109,39 +95,87 @@ SQL データ同期 (プレビュー) の自動プロビジョニングの制限
 
 -   ビューとストアド プロシージャは同期先データベースに作成されません。
 
-### <a name="recommendations"></a>Recommendations
+#### <a name="recommendations"></a>Recommendations
 
 -   サービスを試行する場合にのみ、自動プロビジョニング機能を使用します。
 
 -   運用環境では、データベース スキーマをプロビジョニングする必要があります。
 
-## <a name="avoid-a-slow-and-costly-initial-synchronization"></a>時間とコストがかかる初期同期を回避する
+### <a name="locate-hub"></a>ハブ データベースを配置する場所
+
+#### <a name="enterprise-to-cloud-scenario"></a>企業とクラウド間のシナリオ
+
+待機時間を最小限に抑えるために、同期グループのデータベース トラフィックが最も集中する場所の近くにハブ データベースを保持します。
+
+#### <a name="cloud-to-cloud-scenario"></a>クラウド間のシナリオ
+
+-   同期グループのすべてのデータベースが 1 つのデータ センターにある場合は、同じデータ センターにハブを配置します。 この構成により、待機時間とデータ センター間でのデータ転送のコストが削減されます。
+
+-   同期グループのデータベースが複数のデータ センターにある場合は、大多数のデータベースおよびデータベース トラフィックと同じデータ センターにハブを配置します。
+
+#### <a name="mixed-scenarios"></a>混合シナリオ
+
+より複雑な同期グループ構成には、上記のガイドラインを適用します。
+
+## <a name="sync"></a>同期
+
+### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>時間とコストがかかる初期同期を回避する
 
 このセクションでは、同期グループの初期同期の概要と、初期同期で必要以上に時間とコストがかからないようにするために実行できることについて説明します。
 
-### <a name="how-initial-synchronization-works"></a>初期同期のしくみ
+#### <a name="how-initial-synchronization-works"></a>初期同期のしくみ
 
 同期グループを作成する場合、最初は 1 つのデータベースのデータだけを使用します。 複数のデータベースのデータがあると、SQL データ同期 (プレビュー) は、解決が必要な競合として各行を扱います。 この競合の解決が原因で初期同期に時間がかかり、データベースのサイズによっては数日から数か月かかります。
 
 さらに、データベースが複数の異なるデータ センターにある場合、それらのデータ センター間で各行を移動する必要があるため、初期同期のコストが必要以上にかかります。
 
-### <a name="recommendation"></a>推奨
+#### <a name="recommendation"></a>推奨
 
 可能であれば、最初は同期グループのいずれかのデータベースのデータだけを使用します。
 
-## <a name="design-to-avoid-synchronization-loops"></a>同期ループを回避するように設計する
+### <a name="design-to-avoid-synchronization-loops"></a>同期ループを回避するように設計する
 
 同期グループ内に循環参照があると、1 つのデータベース内での各変更が同期グループのデータベース全体に循環的かつ無限にレプリケートされ、同期ループが発生します。 この場合、パフォーマンスが低下し、コストが大幅に増加する可能性があるため、同期ループを回避する必要があります。
 
-## <a name="avoid-out-of-date-databases-and-sync-groups"></a>データベースと同期グループが古くならないようにする
+### <a name="handling-changes-that-fail-to-propagate"></a>反映されない変更に対処する
+
+#### <a name="reasons-that-changes-fail-to-propagate"></a>変更が反映されない理由
+
+さまざまな理由から、変更が反映されない場合があります。 次のような原因が考えられます。
+
+-   スキーマ/データ型に互換性がない。
+
+-   null 非許容列に null 値を挿入しようとしている。
+
+-   外部キー制約に違反している。
+
+#### <a name="what-happens-when-changes-fail-to-propagate"></a>変更が反映されないとどうなるか
+
+-   同期グループが警告状態で表示されます。
+
+-   ポータル UI のログ ビューアーに詳細が表示されます。
+
+-   45 日経っても問題が解決しない場合、データベースは最新ではなくなります。
+
+> [!NOTE]
+> これらの変更が反映されることはありません。 回復する唯一の方法は、同期グループを再作成することです。
+
+#### <a name="recommendation"></a>推奨
+
+ポータルおよびログ インターフェイスを使用して、同期グループとデータベースの正常性を定期的に監視します。
+
+
+## <a name="maintenance"></a>メンテナンス 
+
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a>データベースと同期グループが古くならないようにする
 
 同期グループまたは同期グループ内のデータベースが最新でなくなる場合があります。 同期グループの状態が "out-of-date"\(最新ではありません\) の場合、同期グループは機能しなくなります。 データベースの状態が "out-of-date"\(最新ではありません\) の場合、データが失われる可能性があります。 最も望ましいのは、このような状況から回復することではなく、このような状況を回避することです。
 
-### <a name="avoid-out-of-date-databases"></a>データベースが古くならないようにする
+#### <a name="avoid-out-of-date-databases"></a>データベースが古くならないようにする
 
 データベースが 45 日以上オフラインになっている場合、データベースの状態が "out-of-date"\(最新ではありません\) に設定されます。 45 日以上オフラインであるデータベースがないことを確認して、データベースの "out-of-date"\(最新ではありません\) の状態を回避します。
 
-### <a name="avoid-out-of-date-sync-groups"></a>同期グループが古くならないようにする
+#### <a name="avoid-out-of-date-sync-groups"></a>同期グループが古くならないようにする
 
 同期グループ内での変更が、45 日以上経っても同期グループの残りのデータベースに反映されていない場合、同期グループの状態が "out-of-date"\(最新ではありません\) に設定されます。 同期グループの履歴ログを定期的に確認して、同期グループの "out-of-date"\(最新ではありません\) の状態を回避します。 すべての競合が解決され、同期グループのデータベース全体に変更が正常に反映されていることを確認します。
 
@@ -163,11 +197,11 @@ SQL データ同期 (プレビュー) の自動プロビジョニングの制限
 
 -   失敗した行のデータ値を更新して、ターゲット データベースのスキーマまたは外部キーと互換性を持たせます。
 
-## <a name="avoid-deprovisioning-issues"></a>プロビジョニング解除の問題を回避する
+### <a name="avoid-deprovisioning-issues"></a>プロビジョニング解除の問題を回避する
 
 特定の状況で、クライアント エージェントへのデータベースの登録を解除すると、同期が失敗する可能性があります。
 
-### <a name="scenario"></a>シナリオ
+#### <a name="scenario"></a>シナリオ
 
 1. SQL Database インスタンスと、ローカル エージェント 1 に関連付けられているオンプレミスの SQL Server データベースで同期グループ A が作成されました。
 
@@ -177,7 +211,7 @@ SQL データ同期 (プレビュー) の自動プロビジョニングの制限
 
 4. この場合、同期グループ A の操作は、"The current operation could not be completed because the database is not provisioned for sync or you do not have permissions to the sync configuration tables"\(データベースが同期用にプロビジョニングされていないか、同期構成テーブルへのアクセス許可がないため、現在の操作を完了できませんでした\) というエラーで失敗します。
 
-### <a name="solution"></a>解決策
+#### <a name="solution"></a>解決策
 
 データベースを複数のエージェントに登録しないようにすることで、この状況を完全に回避します。
 
@@ -189,34 +223,7 @@ SQL データ同期 (プレビュー) の自動プロビジョニングの制限
 
 3. (データベースをプロビジョニングする) 影響を受けた各同期グループをデプロイします。
 
-## <a name="handling-changes-that-fail-to-propagate"></a>反映されない変更に対処する
-
-### <a name="reasons-that-changes-fail-to-propagate"></a>変更が反映されない理由
-
-さまざまな理由から、変更が反映されない場合があります。 次のような原因が考えられます。
-
--   スキーマ/データ型に互換性がない。
-
--   null 非許容列に null 値を挿入しようとしている。
-
--   外部キー制約に違反している。
-
-### <a name="what-happens-when-changes-fail-to-propagate"></a>変更が反映されないとどうなるか
-
--   同期グループが警告状態で表示されます。
-
--   ポータル UI のログ ビューアーに詳細が表示されます。
-
--   45 日経っても問題が解決しない場合、データベースは最新ではなくなります。
-
-> [!NOTE]
-> これらの変更が反映されることはありません。 回復する唯一の方法は、同期グループを再作成することです。
-
-### <a name="recommendation"></a>推奨
-
-ポータルおよびログ インターフェイスを使用して、同期グループとデータベースの正常性を定期的に監視します。
-
-## <a name="modifying-your-sync-group"></a>同期グループを変更する
+### <a name="modifying-your-sync-group"></a>同期グループを変更する
 
 同期グループからデータベースを削除した後、変更のいずれかをデプロイするまで同期グループを編集しないでください。
 
@@ -227,9 +234,10 @@ SQL データ同期 (プレビュー) の自動プロビジョニングの制限
 ## <a name="next-steps"></a>次のステップ
 SQL データ同期の詳細については、以下を参照してください。
 
--   [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)
--   [Azure SQL データ同期の概要](sql-database-get-started-sql-data-sync.md)
--   [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
+-   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期)](sql-database-sync-data.md)
+-   [Azure SQL データ同期のセットアップ](sql-database-get-started-sql-data-sync.md)
+-   [OMS Log Analytics を使用した Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)
 
 -   SQL データ同期を構成する方法を示す完全な PowerShell の例
     -   [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)

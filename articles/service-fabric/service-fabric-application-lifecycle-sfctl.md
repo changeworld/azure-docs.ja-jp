@@ -8,11 +8,11 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: edwardsa
-ms.openlocfilehash: 6eb58b31f20f239d310415d44f61e7455918dae9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c8501e8c863e1240a277bf8064118a2b113a81b
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli"></a>Azure Service Fabric CLI を使用した Azure Service Fabric アプリケーションの管理
 
@@ -67,7 +67,7 @@ sfctl application provision --application-type-build-path app_package_dir
 
 ### <a name="delete-the-application-package"></a>アプリケーション パッケージを削除する
 
-アプリケーションが正常に登録されたら、アプリケーション パッケージを削除することをお勧めします。  イメージ ストアからアプリケーション パッケージを削除すると、システム リソースが解放されます。  使用されていないアプリケーション パッケージを保持すると、ディスク記憶域が消費され、アプリケーションのパフォーマンスの問題につながります。 
+アプリケーションが正常に登録されたら、アプリケーション パッケージを削除することをお勧めします。  イメージ ストアからアプリケーション パッケージを削除すると、システム リソースが解放されます。  使用されていないアプリケーション パッケージを保持すると、ディスク ストレージが消費され、アプリケーションのパフォーマンスの問題につながります。 
 
 アプリケーション パッケージをイメージ ストアから削除するには、次のコマンドを使用します。
 
@@ -133,7 +133,7 @@ sfctl application delete --application-id TestEdApp
 アプリケーションを削除したら、不要になったアプリケーションの種類のプロビジョニングを解除できます。 アプリケーションの種類のプロビジョニングを解除するには、次のコマンドを実行します。
 
 ```azurecli
-sfctl application unprovision --application-type-name TestAppTye --application-type-version 1.0
+sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
 指定するアプリケーションの種類の名前とバージョンは、以前にプロビジョニングしたアプリケーション マニフェストにある名前およびバージョンと一致している必要があります。

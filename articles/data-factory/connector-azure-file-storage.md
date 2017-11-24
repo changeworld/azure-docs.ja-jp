@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: edbab30d949daa8d564ec60e9f1650f38b01d942
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: c0a6a19cffafb940b13135fb3df4d7bdf57aa7ce
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする
 
@@ -48,11 +48,11 @@ Azure File Storage のリンクされたサービスでは、次のプロパテ�
 | host | Azure File Storage のエンドポイントを `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"` として指定します。 | あり |
 | userid | Azure File Storage にアクセスするユーザーを `"userid": "AZURE\\<storage name>"` として指定します。 | あり |
 | パスワード | ストレージ アクセス キーを指定します。 このフィールドを SecureString とマークします。<br/> | あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |ソースの場合はいいえ、シンクの場合ははい |
 
->[!TIP]
-> - Azure Integration Runtime を使用して Azure File Storage にコピーするには、次の例に示すように、File Storage の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、リンクされたサービスで関連付けます。
-> - Azure の外部のセルフホステッド Integration Runtime を使用して Azure File Storage へのコピーまたは Azure File Storage からのコピーを行うには、必ずローカル ネットワークの送信 TCP ポート 445 を開いてください。
+>[!IMPORTANT]
+> - Azure Integration Runtime を使用して Azure File Storage にデータをコピーするには、次の例に示すように、File Storage の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、リンクされたサービスで関連付けます。
+> - Azure の外部のセルフホステッド Integration Runtime を使用して Azure File Storage へのデータのコピーまたは Azure File Storage からのデータのコピーを行うには、必ずローカル ネットワークの送信 TCP ポート 445 を開いてください。
 
 **例:**
 

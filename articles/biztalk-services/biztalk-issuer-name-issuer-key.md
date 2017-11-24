@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: b9fd985c23558596408e78eadae00dd0f95c4214
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18eac72d75680ab12c4a0bea9dfc5ac8a5fce566
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk サービス: 発行者名および発行者キーに関するページ
 
@@ -76,13 +76,9 @@ ACS で認証して、発行者名と発行者キーの値を取得するため�
 サービス バス発行者名および発行者キーは BizTalk Adapter サービスで使用されます。 Visual Studio の BizTalk サービス プロジェクトでは、BizTalk Adapter サービスを使用して内部設置型の基幹業務 (LOB) システムに接続します。 接続するには、LOB リレーを作成し、LOB システムの詳細を入力します。 このとき、サービス バス発行者名と発行者キーも入力します。
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>Service Bus 発行者名および発行者キーを取得するには
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左のナビゲーション ウィンドウで、[ **Service Bus**] を選択します。
-3. 名前空間を選択します。 タスク バーで [ **接続情報**] をクリックします。 これにより、**既定の発行者** (発行者名) と**既定のキー** (発行者キー) が表示されます。 これらの値はコピーできます。  
-
-まとめると次のようになります。  
-発行者名 = 既定の発行者名  
-発行者キー = 既定のキー
+1. [Azure ポータル](http://portal.azure.com)にサインインします。
+2. **Service Bus** を検索し、名前空間を選択します。 
+3. **[共有アクセス ポリシー]** プロパティを開き、ポリシーを選択し、名前とキーの値の **[接続文字列]** を表示します。  
 
 ## <a name="next"></a>次へ
 Azure BizTalk Services に関するその他のトピック:
@@ -95,7 +91,7 @@ Azure BizTalk Services に関するその他のトピック:
 ## <a name="see-also"></a>関連項目
 * [方法: ACS 管理サービスを使用してサービス ID を構成する](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
 * [BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk Services: Azure クラシック ポータルを使用したプロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [BizTalk Services: プロビジョニング](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [BizTalk Services: サービスの状態のチャート](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 * [BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk サービス: バックアップと復元に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

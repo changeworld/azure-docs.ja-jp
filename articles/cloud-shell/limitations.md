@@ -1,5 +1,5 @@
 ---
-title: "Azure Cloud Shell (プレビュー) の制限 | Microsoft Docs"
+title: "Azure Cloud Shell の制限 | Microsoft Docs"
 description: "Azure Cloud Shell の制限の概要"
 services: azure
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: juluk
-ms.openlocfilehash: 66f07481d6e62b4375dd2752c5e7d6f8e02d4a3c
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: bd947af4cca0ed240ba5811d6a5cd06ff7fffc82
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -70,7 +70,7 @@ bash コマンドの履歴は、Cloud Shell セッションの中断または同
 
 ### <a name="slow-startup-time"></a>起動時間が遅い
 
-Azure Cloud Shell の PowerShell は、プレビュー期間中は、初期化に最大で 60 秒かかる場合があります。
+Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間中は、初期化に最大で 60 秒かかる場合があります。
 
 ### <a name="no-home-directory-persistence"></a>$Home ディレクトリが永続化されない
 

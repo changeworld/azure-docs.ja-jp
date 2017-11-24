@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/8/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 2f7696e207b077f8ae31751f0b6e15459aa1ed52
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: bcbf536390786b61544d3e09638d89e6b3b5c004
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -329,11 +329,11 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 ## <a name="compliance-and-security"></a>コンプライアンスとセキュリティ
 
-### <a name="are-virtual-machine-scale-sets-pci-compliant"></a>仮想マシン スケール セットは PCI 準拠ですか。
+### <a name="are-virtual-machine-scale-sets-pci-compliant"></a>仮想マシン スケール セットは PCI に準拠していますか。
 
 仮想マシン スケール セットは、CRP の上のシン API レイヤーです。 どちらのコンポーネントも、Azure サービス ツリー内のコンピューティング プラットフォームの一部です。
 
-コンプライアンスの観点から言うと、仮想マシン スケール セットは Azure コンピューティング プラットフォームの基礎となる部分です。 仮想マシン スケール セットは、チーム、ツール、プロセス、デプロイ方法、セキュリティ制御、Just-In-Time (JIT) コンパイル、監視、アラートなどを CRP 自体と共有します。 CRP は現行の PCI Data Security Standard (DSS) 構成証明の一部であるため、仮想マシン スケール セットは PCI (Payment Card Industry) 準拠です。
+コンプライアンスの観点から言うと、仮想マシン スケール セットは Azure コンピューティング プラットフォームの基礎となる部分です。 仮想マシン スケール セットは、チーム、ツール、プロセス、デプロイ方法、セキュリティ制御、Just-In-Time (JIT) コンパイル、監視、アラートなどを CRP 自体と共有します。 CRP は現行の PCI Data Security Standard (DSS) 構成証明の一部であるため、仮想マシン スケール セットは PCI (Payment Card Industry) に準拠しています。
 
 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/Compliance/PCI)を参照してください。
 
@@ -577,7 +577,7 @@ VM 数が 2 台未満の仮想マシン スケール セットを作成する理
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの VM の数を変更するにはどうすればよいですか。
 
-仮想マシン スケール セットの VM 数を変更する方法については、[仮想マシン スケール セットのインスタンス数の変更](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/)に関するページを参照してください。
+Azure Portal で仮想マシン スケール セットの VM 数を変更するには、VM スケール セットのプロパティ セクションで、[スケーリング] ブレードをクリックし、スライダー バーを使用します。 インスタンス数を変更する他の方法については、「[Change the instance count of a virtual machine scale set (仮想マシン スケール セットのインスタンス数を変更する)](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/)」をご覧ください。
 
 ### <a name="how-do-i-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>特定のしきい値に達したときのカスタム アラートを定義するにはどうすればよいですか。
 

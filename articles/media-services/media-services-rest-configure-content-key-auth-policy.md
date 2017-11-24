@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 11/14/2017
 ms.author: juliako
-ms.openlocfilehash: ed20fca35070c190bb63925d0a57cf919bcdd96c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33507d76839567c830c9e8152eeac70d5c0f2b7b
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -184,6 +184,10 @@ Media Services では、Secure Token Services は提供されません。 トー
 このセクションでは、コンテンツ キー承認ポリシーを作成し、それをコンテンツ キーに関連付ける方法について説明します。 承認ポリシーには、ユーザーがキーを受け取ることを承認されているかどうかを判断するために、承認要求が満たす必要がある内容について記載されています (トークンの署名に使用されたキーが「検証キー」リストに含まれているなど)。
 
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、次の XML スキーマに準拠する必要があります。
+
+> [!NOTE]
+> コンテンツ キー承認ポリシーに対するトークン制限は、このサービスではまだ利用できません。
+
 
 #### <a id="schema"></a>トークン制限スキーマ
     <?xml version="1.0" encoding="utf-8"?>
@@ -424,7 +428,7 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
     public enum ContentKeyRestrictionType
     {
         Open = 0,
-        TokenRestricted = 1,
+        TokenRestricted = 1, // Not supported, reserved for future
         IPRestricted = 2,
     }
 

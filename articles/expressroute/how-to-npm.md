@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/01/2017
+ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: aff54b86da6a8a062a3f1c76aa69e32c60008274
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3ab8029d035c3ba88ddb8a112e27f9054f7c203c
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>ExpressRoute に使用する Network Performance Monitor の構成 (プレビュー)
 
@@ -39,13 +39,19 @@ Network Performance Monitor (NPM) は、Azure クラウド デプロイとオン
 
 * 過去の時点の ExpressRoute システム状態を確認する
 
-**それはどのように機能しますか?**
+## <a name="regions"></a>サポートされているリージョン
+
+ExpressRoute 回線は、世界中どこにあっても、次のいずれかのリージョンにホストされているワークスペースで監視することができます。
+
+* 西ヨーロッパ 
+* 米国東部 
+* 東南アジア 
+
+## <a name="workflow"></a>ワークフロー
 
 監視エージェントは、複数のサーバー (オンプレミスと Azure の両方) にインストールされます。 これらのエージェントは互いに通信を行いますが、データは送信せず、TCP ハンドシェイク パケットを送信します。 エージェント間の通信によって、Azure は、トラフィックが通過する可能性のある経路とネットワーク トポロジとをマッピングすることができます。
 
-**Workflow**
-
-1. 米国中西部リージョンに NPM ワークスペースを作成します。 このプレビューがサポートされるのは、現時点でこのリージョンのみとなります。
+1. [サポートされているいずれかのリージョン](#regions)に NPM ワークスペースを作成します。
 2. ソフトウェア エージェントをインストールして構成します。 
     * オンプレミス サーバーと Azure VM に監視エージェントをインストールします。
     * 監視エージェントが通信を行うことができるように、監視エージェント サーバー上の設定を構成します  (ファイアウォール ポートを開放するなど)。
@@ -53,7 +59,7 @@ Network Performance Monitor (NPM) は、Azure クラウド デプロイとオン
 4. NPM ワークスペースをホワイトリストに登録するよう依頼します。
 5. 監視の設定を行います。NPM で表示可能なネットワークを自動検出して管理します。
 
-既に Network Performance Monitor を使用して他のオブジェクトやサービスを監視しており、かつワークスペースが既に米国中西部に存在する場合は、手順 1. と手順 2. を省略し、手順 3. から構成を始めてください。
+既に Network Performance Monitor を使用して他のオブジェクトやサービスを監視しており、かつワークスペースが既に、サポートされているいずれかのリージョンに存在する場合は、手順 1. と手順 2. を省略し、手順 3. で構成を始めてください。
 
 ## <a name="configure"></a>手順 1. ワークスペースを作成する
 
@@ -66,8 +72,13 @@ Network Performance Monitor (NPM) は、Azure クラウド デプロイとオン
   * [OMS ワークスペース] - ワークスペースの名前を入力します。
   * [サブスクリプション] - 複数のサブスクリプションがある場合は、新しいワークスペースに関連付けるサブスクリプションを 1 つ選択します。
   * [リソース グループ] - リソース グループを作成するか、既存のリソース グループを使用します。
-  * [場所] - このプレビューでは [米国中西部] を選択する必要があります。
+  * [場所] - [サポートされているリージョン](#regions)を選択する必要があります。
   * [価格レベル] - [無料] を選択します。
+  
+  >[!NOTE]
+  >ExpressRoute 回線は、世界中のどこにあってもかまいません。ワークスペースと同じリージョンにある必要はありません。
+  >
+
 
   ![ワークスペース](.\media\how-to-npm\4.png)<br><br>
 4. 設定テンプレートを保存してデプロイするには、**[OK]** をクリックします。 テンプレートの検証後、**[作成]** をクリックしてワークスペースをデプロイします。
@@ -88,7 +99,7 @@ Network Performance Monitor (NPM) は、Azure クラウド デプロイとオン
   >ExpressRoute を監視するための Linux エージェントは現時点ではサポートされていません。
   >
   >
-2. 次に、**[ワークスペース ID]** と **[主キー]** をコピーしてメモ帳に貼り付けます。
+2. 次に、**[ワークスペース ID]** と **[主キー]** をメモ帳にコピーします。
 3. **[エージェントを構成する]** セクションで PowerShell スクリプトをダウンロードします。 この PowerShell スクリプトは、TCP トランザクションに必要なファイアウォール ポートを開くのに役立ちます。
 
   ![PowerShell スクリプト](.\media\how-to-npm\7.png)
@@ -116,7 +127,7 @@ Network Performance Monitor (NPM) は、Azure クラウド デプロイとオン
 
 ### <a name="proxy"></a>2.3. プロキシ設定の構成 (省略可能)
 
-Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行する必要があります。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)」を参照してください。
+Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行してください。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)」を参照してください。
 
 コントロール パネルを使って Microsoft Monitoring Agent のプロキシ設定を構成するには:
 
@@ -168,8 +179,7 @@ NSG の詳細については、[ネットワーク セキュリティ グルー�
 >
 >
 
-NPM の ExpressRoute 監視機能を使用するには、ワークスペースをホワイトリストに登録するようあらかじめ依頼しておく必要があります。 [こちらをクリックして表示されるページで、依頼フォームに入力してください](https://go.microsoft.com/fwlink/?linkid=862263)。 (ヒント: このリンクは、新しいウィンドウまたは新しいタブで開けます)。 ホワイトリストへの登録プロセスには、1 営業日以上かかることがあります。 ホワイトリストへの登録が完了し次第、こちらからメールにてご連絡いたします。
-
+NPM の ExpressRoute 監視機能を使用するには、ワークスペースをホワイトリストに登録するようあらかじめ依頼しておく必要があります。 [こちらをクリックして表示されるページで、依頼フォームに入力してください](https://aka.ms/npmcohort)。 (ヒント: このリンクは、新しいウィンドウまたは新しいタブで開けます)。 ホワイトリストへの登録プロセスには、1 営業日以上かかることがあります。 ホワイトリストへの登録が完了したら、こちらからメールにてご連絡いたします。
 
 ## <a name="setupmonitor"></a>手順 5. ExpressRoute 監視用に NPM を構成する
 
@@ -189,7 +199,7 @@ NPM の ExpressRoute 監視機能を使用するには、ワークスペース�
 3. 構成ページの左側のパネルにある [ExpressRoute ピアリング] タブに移動します。 **[今すぐ検出する]** をクリックします。
 
   ![検出](.\media\how-to-npm\13.png)
-4. 検出が完了すると、回線名と VNet 名ごとの規則が表示されます。 初期状態では、これらの規則は無効になっています。 各規則を手動で有効にしてから、監視エージェントとしきい値を選択する必要があります。
+4. 検出が完了すると、回線名と VNet 名ごとの規則が表示されます。 初期状態では、これらの規則は無効になっています。 各規則を有効にしてから、監視エージェントとしきい値を選択します。
 
   ![規則](.\media\how-to-npm\14.png)
 5. 規則を有効にして監視対象の値とエージェントを選択した後、30 ～ 60 分ほど待つと、値が反映され始め、**[ExpressRoute の監視]** タイルが利用できる状態になります。 監視中のタイルが表示されていれば、ExpressRoute 回線と接続リソースが NPM によって監視されています。
@@ -229,6 +239,7 @@ NPM ページには、ExpressRoute に関して、その回線とピアリング
 
 ![filters](.\media\how-to-npm\topology.png)
 
-#### <a name="detailed-topology-view-of-a-particular-expressroute-circuit---with-vnet-connections"></a>特定の ExpressRoute 回線の詳細なトポロジ ビュー (VNet 接続使用)
+#### <a name="detailed-topology-view-of-a-circuit"></a>回線の詳細なトポロジ ビュー
 
+このビューは、VNet 接続を示しています。
 ![詳細なトポロジ](.\media\how-to-npm\17.png)

@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/02/2017
+ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f5b5cc597da714369d4c452edce42ea7fe205dd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: eefeedfb87bd30630439d13a434b246508defa96
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5 のインストール
 
@@ -29,6 +29,7 @@ ms.lasthandoff: 11/04/2017
 Update 5 には、デバイス ソフトウェア、Storport と Spaceport、OS セキュリティ更新プログラム、OS 更新プログラム、ディスク ファームウェア更新プログラムが含まれています。  デバイス ソフトウェア、Spaceport、Storport、セキュリティ、その他の OS 更新プログラムは、中断を伴わない更新プログラムです。 Azure Portal または修正プログラムによる方法を使用して、中断なしまたは通常の更新プログラムを適用できます。 ディスク ファームウェアの更新プログラムは中断を伴うため、デバイスの Windows PowerShell インターフェイスを使用して、デバイスが修正プログラムによるメンテナンス モードである場合に適用できます。
 
 > [!IMPORTANT]
+> * Update 5 は必須の更新プログラムであり、すぐにインストールする必要があります。 詳細については、[Update 5 リリース ノート](storsimple-update5-release-notes.md)に関する記事を参照してください。
 > * インストールの前に、ハードウェアの状態とネットワーク接続の点からデバイスの正常性を判断するための手動と自動の一連の事前チェックが行われます。 これらの事前チェックは、Azure Portal から更新プログラムを適用する場合にのみ実行されます。
 > * Update 3 より前のバージョンを実行しているデバイスを更新する場合は、修正プログラムによる方法を使用して更新プログラムをインストールすることを強くお勧めします。 何らかの問題が発生した場合、[サポート チケットを記録](storsimple-8000-contact-microsoft-support.md)してください。
 > * ソフトウェアとその他の通常の更新プログラムのインストールには Azure Portal を使用することをお勧めします。 ポータルで更新前のゲートウェイのチェックに失敗した場合のみ、(更新プログラムをインストールする) デバイスの Windows PowerShell インターフェイスに移動してください。 更新するバージョンによっては、更新プログラムのインストールに 4 時間 (またはそれ以上) かかる場合があります。 メンテナンス モードの更新プログラムは、デバイスの Windows PowerShell インターフェイスからインストールする必要があります。 メンテナンス モードの更新プログラムは中断を伴う更新プログラムであるため、デバイスにダウンタイムが発生します。
@@ -97,7 +98,7 @@ Update 3 以前のバージョンを実行するデバイスからインスト�
 
 | 順序 | KB | 説明 | 更新の種類 | インストール時間 | インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
-| 3. |KB4037263 |ディスク ファームウェア |メンテナンス  <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
+| 手順 3. |KB4037263 |ディスク ファームウェア |メンテナンス  <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
 
 <br></br>
 

@@ -49,7 +49,7 @@ sections:
         style: unordered
         items:
           - html: <a href="service-fabric-tutorial-create-dotnet-app">.NET アプリケーションのデプロイ</a>
-          - html: <a href="service-fabric-tutorial-create-cluster-azure-ps">既存の .NET アプリケーションのコンテナー格納</a>
+          - html: <a href="service-fabric-host-app-in-a-container">既存の .NET アプリケーションのコンテナー格納</a>
           - html: <a href="service-fabric-tutorial-create-container-images">Linux コンテナー アプリケーションの作成</a>
           - html: <a href="service-fabric-tutorial-create-vnet-and-windows-cluster">Windows</a> または <a href="service-fabric-tutorial-create-vnet-and-linux-cluster">Linux</a> クラスターの作成と管理
   - title: 無料の Pluralsight ビデオ トレーニング

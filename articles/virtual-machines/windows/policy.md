@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 246f5958478fd6d9afc9ba990413ab08429bd25d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4bb9a5087ead309ab24128594c53ae313cd4b63c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用して Windows VM にポリシーを適用する
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。 この記事では、Azure Resource Manager ポリシーを使用して、組織の Virtual Machines の望ましい行動を定義する方法について説明します。
 
-ポリシーの概要については、「[ポリシーを使用したリソース管理とアクセス制御](../../azure-resource-manager/resource-manager-policy.md)」を参照してください。
+ポリシーの概要については、「[Azure Policy とは](../../azure-policy/azure-policy-introduction.md)」をご覧ください。
 
 ## <a name="permitted-virtual-machines"></a>許可されている仮想マシン
 組織の仮想マシンがアプリケーションと互換性があることを保証するために、許可されるオペレーティング システムを制限することができます。 次のポリシーの例は、Windows Server 2012 R2 Datacenter Virtual Machines の作成のみを許可します。
@@ -105,7 +105,7 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-ポリシーのフィールドについては、[ポリシーのエイリアス](../../azure-resource-manager/resource-manager-policy.md#aliases)に関するページをを参照してください。
+ポリシーのフィールドについては、[ポリシーのエイリアス](../../azure-policy/policy-definition.md#aliases)に関するページをを参照してください。
 
 ## <a name="managed-disks"></a>管理ディスク
 
@@ -250,6 +250,6 @@ ms.lasthandoff: 10/11/2017
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポータルでポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](../../azure-resource-manager/resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 REST API、PowerShell、Azure CLI でポリシーを割り当てる方法については、「[Assign and manage policies through script](../../azure-resource-manager/resource-manager-policy-create-assign.md)」(スクリプトによるポリシーの割り当てと管理) を参照してください。
-* リソース ポリシーの概要については、[リソース ポリシーの概要](../../azure-resource-manager/resource-manager-policy.md)に関するページを参照してください。
+* (上記の例で示すように) ポリシー規則を定義した後、ポリシー定義を作成してスコープに割り当てる必要があります。 スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。 ポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](../../azure-policy/assign-policy-definition.md)」(Azure Portal によるリソース ポリシーの割り当てと管理)、[Use PowerShell to assign policies](../../azure-policy/assign-policy-definition-ps.md)」(PowerShell を使用したポリシーの割り当て)、または「[Use Azure CLI to assign policies](../../azure-policy/assign-policy-definition-cli.md)」(Azure CLI を使用したポリシーの割り当て) をご覧ください。
+* リソース ポリシーの概要については、「[Azure Policy とは](../../azure-policy/azure-policy-introduction.md)」をご覧ください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](../../azure-resource-manager/resource-manager-subscription-governance.md)」を参照してください。

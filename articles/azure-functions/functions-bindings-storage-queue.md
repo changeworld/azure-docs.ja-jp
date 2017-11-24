@@ -1,6 +1,6 @@
 ---
-title: "Azure Functions におけるキュー ストレージ バインド | Microsoft Docs"
-description: "Azure Functions で Azure Storage のトリガーとバインドを使用する方法について説明します。"
+title: "Azure Functions における Queue Storage バインド"
+description: "Azure Functions で Azure Queue Storage トリガーと出力バインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -8,80 +8,59 @@ manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
-ms.assetid: 4e6a837d-e64f-45a0-87b7-aa02688a75f3
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: b68ce106ceb25d19ee0bbde287891d553a448560
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 9cf506d571c8d67a1e48ce34860db3dbc3445509
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-functions-queue-storage-bindings"></a>Azure Functions における Queue Storage バインド
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions で Azure Queue ストレージ バインドを構成したり、コーディングしたりする方法について説明します。 Azure Functions は、Azure キューのトリガーおよび出力のバインドをサポートしています。 すべてのバインドで使用できる機能については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+この記事では、Azure Functions で Azure Queue Storage のバインドを使用する方法について説明します。 Azure Functions は、キューのトリガーと出力バインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-<a name="trigger"></a>
-
 ## <a name="queue-storage-trigger"></a>Queue ストレージ トリガー
-Azure Queue ストレージ トリガーを使用すると、新しいメッセージのキュー ストレージを監視し、それに対応できます。 
 
-Functions ポータルの [**統合**] タブを使用して、キュー トリガーを定義します。 ポータルは、*function.json* の**バインド** セクションに次の定義を作成します。
+キュー トリガーを使用して、キューで新しい項目を受け取ったときに関数を開始します。 キュー メッセージは、関数への入力として提供されます。
 
-```json
+## <a name="trigger---example"></a>トリガー - 例
+
+言語固有の例をご覧ください。
+
+* [プリコンパイル済み C#](#trigger---c-example)
+* [C# スクリプト](#trigger---c-script-example)
+* [JavaScript](#trigger---javascript-example)
+
+### <a name="trigger---c-example"></a>トリガー - C# の例
+
+次の例は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込む[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示しています。
+
+```csharp
+public static class QueueFunctions
 {
-    "type": "queueTrigger",
-    "direction": "in",
-    "name": "<The name used to identify the trigger data in your code>",
-    "queueName": "<Name of queue to poll>",
-    "connection":"<Name of app setting - see below>"
+    [FunctionName("QueueTrigger")]
+    public static void QueueTrigger(
+        [QueueTrigger("myqueue-items")] string myQueueItem, 
+        TraceWriter log)
+    {
+        log.Info($"C# function processed: {myQueueItem}");
+    }
 }
 ```
 
-* `connection` プロパティには、ストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントを選択すると、[**統合**] タブの標準エディターによってこのアプリ設定が構成されます。
+### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
-その他の設定は [host.json ファイル](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)で指定でき、ストレージ キュー トリガーをさらに微調整することができます。 たとえば、host.json でキューのポーリング間隔を変更できます。
+次の例は、*function.json* ファイルの BLOB トリガー バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
 
-<a name="triggerusage"></a>
-
-## <a name="using-a-queue-trigger"></a>キュー トリガーの使用
-Node.js 関数では、`context.bindings.<name>` を使用してキュー データにアクセスします。
-
-
-.NET 関数では、`CloudQueueMessage paramName` のようなメソッド パラメーターを使用してキュー ペイロードにアクセスします。 ここでは、`paramName` は[トリガー構成](#trigger)で指定した値です。 キュー メッセージを、次のいずれかの型に逆シリアル化できます。
-
-* POCO オブジェクト。 キュー ペイロードが JSON オブジェクトである場合に使用します。 Functions ランタイムは、ペイロードを POCO オブジェクトに逆シリアル化します。 
-* `string`
-* `byte[]`
-* [`CloudQueueMessage`]
-
-<a name="meta"></a>
-
-### <a name="queue-trigger-metadata"></a>キュー トリガー メタデータ
-キュー トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 値は、[`CloudQueueMessage`] と同じセマンティクスを持ちます。
-
-* **QueueTrigger** - キュー ペイロード (有効な文字列の場合)
-* **DequeueCount** - `int` 型。 このメッセージがデキューされた回数。
-* **ExpirationTime** - `DateTimeOffset?` 型。 メッセージが期限切れになる時刻。
-* **Id** - `string` 型。 キュー メッセージ ID。
-* **InsertionTime** - `DateTimeOffset?` 型。 メッセージがキューに追加された時刻。
-* **NextVisibleTime** - `DateTimeOffset?` 型。 メッセージが次に表示される時刻。
-* **PopReceipt** - `string` 型。 メッセージのポップ受信。
-
-キュー メタデータの使用方法については、「[トリガー サンプル](#triggersample)」を参照してください。
-
-<a name="triggersample"></a>
-
-## <a name="trigger-sample"></a>トリガー サンプル
-キュー トリガーを定義する、次の function.json があるとします。
+*function.json* ファイルを次に示します。
 
 ```json
 {
@@ -92,20 +71,16 @@ Node.js 関数では、`context.bindings.<name>` を使用してキュー デー
             "direction": "in",
             "name": "myQueueItem",
             "queueName": "myqueue-items",
-            "connection":"MyStorageConnectionString"
+            "connection":"MyStorageConnectionAppSetting"
         }
     ]
 }
 ```
 
-キュー メタデータを取得し、記録する言語固有のサンプルを参照してください。
+これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
 
-* [C#](#triggercsharp)
-* [Node.JS](#triggernodejs)
+C# スクリプト コードを次に示します。
 
-<a name="triggercsharp"></a>
-
-### <a name="trigger-sample-in-c"></a>C# でのトリガー サンプル #
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
 
@@ -133,17 +108,32 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-<!--
-<a name="triggerfsharp"></a>
-### Trigger sample in F# ## 
-```fsharp
+function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#trigger---usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#trigger---message-metadata)」セクションを参照してください。
 
+### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
+
+次の例は、*function.json* ファイルの BLOB トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+    "disabled": false,
+    "bindings": [
+        {
+            "type": "queueTrigger",
+            "direction": "in",
+            "name": "myQueueItem",
+            "queueName": "myqueue-items",
+            "connection":"MyStorageConnectionAppSetting"
+        }
+    ]
+}
 ```
--->
 
-<a name="triggernodejs"></a>
+これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
 
-### <a name="trigger-sample-in-nodejs"></a>Node.js でのトリガー サンプル
+JavaScript コードを次に示します。
 
 ```javascript
 module.exports = function (context) {
@@ -152,58 +142,144 @@ module.exports = function (context) {
     context.log('expirationTime =', context.bindingData.expirationTime);
     context.log('insertionTime =', context.bindingData.insertionTime);
     context.log('nextVisibleTime =', context.bindingData.nextVisibleTime);
-    context.log('id=', context.bindingData.id);
+    context.log('id =', context.bindingData.id);
     context.log('popReceipt =', context.bindingData.popReceipt);
     context.log('dequeueCount =', context.bindingData.dequeueCount);
     context.done();
 };
 ```
 
-### <a name="handling-poison-queue-messages"></a>有害キュー メッセージの処理
-キュー トリガー関数が失敗すると、Azure Functions は、その関数を特定のキュー メッセージに対して (最初の試行を含め) 最大 5 回再試行します。 試行が 5 回とも失敗した場合、Functions ランタイム は、*&lt;originalqueuename>-poison* という名前のキュー ストレージにメッセージを追加します。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。 
+function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#trigger---usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#trigger---message-metadata)」セクションを参照してください。
 
-有害メッセージを手動で処理するには、キュー メッセージの `dequeueCount` を確認します (「[キュー トリガー メタデータ](#meta)」を参照)。
+## <a name="trigger---attributes-for-precompiled-c"></a>トリガー - プリコンパイル済み C# の属性
+ 
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、次の属性を使用してキュー トリガーを構成します。
 
-<a name="output"></a>
+* NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義された [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
+
+  次の例のように、属性のコンストラクターは監視するキューの名前を受け取ります。
+
+  ```csharp
+  [FunctionName("QueueTrigger")]
+  public static void Run(
+      [QueueTrigger("myqueue-items")] string myQueueItem, 
+      TraceWriter log)
+  ```
+
+  次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
+
+  ```csharp
+  [FunctionName("QueueTrigger")]
+  public static void Run(
+      [QueueTrigger("myqueue-items", Connection = "StorageConnectionAppSetting")] string myQueueItem, 
+      TraceWriter log)
+  ```
+ 
+* NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義された [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
+
+  使用するストレージ アカウントを指定する別の方法を提供します。 コンストラクターは、ストレージ接続文字列を含むアプリ設定の名前を受け取ります。 属性は、パラメーター、メソッド、またはクラス レベルで適用できます。 次の例では、クラス レベルとメソッド レベルを示します。
+
+  ```csharp
+  [StorageAccount("ClassLevelStorageAppSetting")]
+  public static class AzureFunctions
+  {
+      [FunctionName("QueueTrigger")]
+      [StorageAccount("FunctionLevelStorageAppSetting")]
+      public static void Run( //...
+  ```
+
+使用するストレージ アカウントは、次の順序で決定されます。
+
+* `QueueTrigger` 属性の `Connection` プロパティ。
+* `QueueTrigger` 属性と同じパラメーターに適用された `StorageAccount` 属性。
+* 関数に適用される `StorageAccount` 属性。
+* クラスに適用される `StorageAccount` 属性。
+* "AzureWebJobsStorage" アプリ設定。
+
+## <a name="trigger---configuration"></a>トリガー - 構成
+
+次の表は、*function.json* ファイルと `QueueTrigger` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |Description|
+|---------|---------|----------------------|
+|**type** | 該当なし| `queueTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
+|**direction**| 該当なし | *function.json* ファイルの場合のみ。 `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
+|**name** | 該当なし |関数コード内のキューを表す変数の名前。  | 
+|**queueName** | **QueueName**| ポーリングするキューの名前。 | 
+|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br/>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+
+## <a name="trigger---usage"></a>トリガー - 使用方法
+ 
+C# および C# スクリプトでは、`Stream paramName` のようなメソッド パラメーターを使用して BLOB データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+
+* POCO オブジェクト - Functions ランタイムは、JSON ペイロードを POCO オブジェクトに逆シリアル化します。 
+* `string`
+* `byte[]`
+* [CloudQueueMessage]
+
+JavaScript の場合、`context.bindings.<name>` を使用してキュー項目ペイロードにアクセスします。 ペイロードが JSON の場合は、オブジェクトに逆シリアル化されます。
+
+## <a name="trigger---message-metadata"></a>トリガー - メッセージのメタデータ
+
+キュー トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 値は、[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) と同じセマンティクスを持ちます。
+
+|プロパティ|型|Description|
+|--------|----|-----------|
+|`QueueTrigger`|`string`|キュー ペイロード (有効な文字列の場合)。 キュー メッセージ ペイロードが文字列の場合、`QueueTrigger` は、*function.json* の `name` プロパティで指定された変数と同じ値になります。|
+|`DequeueCount`|`int`|このメッセージがデキューされた回数。|
+|`ExpirationTime`|`DateTimeOffset?`|メッセージが期限切れになる時刻。|
+|`Id`|`string`|キュー メッセージ ID。|
+|`InsertionTime`|`DateTimeOffset?`|メッセージがキューに追加された時刻。|
+|`NextVisibleTime`|`DateTimeOffset?`|メッセージが次に表示される時刻。|
+|`PopReceipt`|`string`|メッセージのポップ受信。|
+
+## <a name="trigger---poison-messages"></a>トリガー - 有害メッセージ
+
+キュー トリガー関数が失敗すると、Azure Functions は、その関数を特定のキュー メッセージに対して (最初の試行を含め) 最大 5 回再試行します。 試行が 5 回とも失敗した場合、Functions ランタイム は、*&lt;originalqueuename>-poison* という名前のキューにメッセージを追加します。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
+
+有害メッセージを手動で処理するには、キュー メッセージの [dequeueCount](#trigger---message-metadata) を確認します。
+
+## <a name="trigger---hostjson-properties"></a>トリガー - host.json のプロパティ
+
+[host.json](functions-host-json.md#queues) ファイルには、キュー トリガーの動作を制御する設定が含まれています。
+
+[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
 ## <a name="queue-storage-output-binding"></a>キュー ストレージの出力バインド
-Azure キュー ストレージの出力バインドにより、キューにメッセージを書き込むことができます。 
 
-Functions ポータルの [**統合**] タブを使用して、キュー 出力バインドを定義します。 ポータルは、*function.json* の**バインド** セクションに次の定義を作成します。
+Azure Queue Storage の出力バインドを使用して、キューにメッセージを書き込みます。
 
-```json
+## <a name="output---example"></a>出力 - 例
+
+言語固有の例をご覧ください。
+
+* [プリコンパイル済み C#](#output---c-example)
+* [C# スクリプト](#output---c-script-example)
+* [JavaScript](#output---javascript-example)
+
+### <a name="output---c-example"></a>出力 - C# の例
+
+次の例は、受け取った HTTP 要求ごとにキュー メッセージを作成する[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示します。
+
+```csharp
+[StorageAccount("AzureWebJobsStorage")]
+public static class QueueFunctions
 {
-   "type": "queue",
-   "direction": "out",
-   "name": "<The name used to identify the trigger data in your code>",
-   "queueName": "<Name of queue to write to>",
-   "connection":"<Name of app setting - see below>"
+    [FunctionName("QueueOutput")]
+    [return: Queue("myqueue-items")]
+    public static string QueueOutput([HttpTrigger] dynamic input,  TraceWriter log)
+    {
+        log.Info($"C# function processed: {input.Text}");
+        return input.Text;
+    }
 }
 ```
 
-* `connection` プロパティには、ストレージ接続文字列を含むアプリ設定の名前を含める必要があります。 Azure Portal では、ストレージ アカウントを選択すると、[**統合**] タブの標準エディターによってこのアプリ設定が構成されます。
+### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
 
-<a name="outputusage"></a>
+次の例は、*function.json* ファイルの BLOB トリガー バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 この関数では、受け取った HTTP 要求ごとに POCO ペイロードを使用してキュー項目を作成します。
 
-## <a name="using-a-queue-output-binding"></a>キュー出力バインドの使用
-Node.js 関数の場合、`context.bindings.<name>` を使用して出力キューにアクセスします。
-
-.NET 関数の場合は、次のいずれかの型に出力できます。 `T` 型パラメーターがあるときは、`T` は `string` または POCO などのサポートされている出力タイプである必要があります。
-
-* `out T` (JSON としてシリアル化されています)
-* `out string`
-* `out byte[]`
-* `out` [`CloudQueueMessage`] 
-* `ICollector<T>`
-* `IAsyncCollector<T>`
-* [`CloudQueue`](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
-
-メソッドの戻り値の型を出力バインドとして使用することもできます。
-
-<a name="outputsample"></a>
-
-## <a name="queue-output-sample"></a>キュー出力サンプル
-次の *function.json* は、キュー出力バインドを持つ HTTP トリガーを定義します。
+*function.json* ファイルを次に示します。
 
 ```json
 {
@@ -224,23 +300,17 @@ Node.js 関数の場合、`context.bindings.<name>` を使用して出力キュ�
       "direction": "out",
       "name": "$return",
       "queueName": "outqueue",
-      "connection": "MyStorageConnectionString",
+      "connection": "MyStorageConnectionAppSetting",
     }
   ]
 }
 ``` 
 
-受信 HTTP ペイロードを含むキュー メッセージを出力する言語固有のサンプルを参照してください。
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
 
-* [C#](#outcsharp)
-* [Node.JS](#outnodejs)
-
-<a name="outcsharp"></a>
-
-### <a name="queue-output-sample-in-c"></a>C# でのキュー出力サンプル #
+単一のキュー メッセージを作成する C# スクリプト コードを次に示します。
 
 ```cs
-// C# example of HTTP trigger binding to a custom POCO, with a queue output binding
 public class CustomQueueMessage
 {
     public string PersonName { get; set; }
@@ -253,19 +323,53 @@ public static CustomQueueMessage Run(CustomQueueMessage input, TraceWriter log)
 }
 ```
 
-複数のメッセージを送信する場合は、`ICollector` を使用します。
+一度で複数のメッセージを送信するには、`ICollector` または `IAsyncCollector` パラメーターを使用します。 HTTP 要求データを含む 1 つのメッセージと、ハードコーディングされた値を含む 1 つのメッセージという、複数のメッセージを送信する C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(CustomQueueMessage input, ICollector<CustomQueueMessage> myQueueItem, TraceWriter log)
+public static void Run(
+    CustomQueueMessage input, 
+    ICollector<CustomQueueMessage> myQueueItem, 
+    TraceWriter log)
 {
     myQueueItem.Add(input);
     myQueueItem.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
 }
 ```
 
-<a name="outnodejs"></a>
+### <a name="output---javascript-example"></a>出力 - JavaScript の例
 
-### <a name="queue-output-sample-in-nodejs"></a>Node.js でのキュー出力サンプル
+次の例は、*function.json* ファイルの BLOB トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、受け取った HTTP 要求ごとにキュー項目を作成します。
+
+*function.json* ファイルを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "direction": "in",
+      "authLevel": "function",
+      "name": "input"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "return"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "$return",
+      "queueName": "outqueue",
+      "connection": "MyStorageConnectionAppSetting",
+    }
+  ]
+}
+``` 
+
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
 
 ```javascript
 module.exports = function (context, input) {
@@ -273,22 +377,76 @@ module.exports = function (context, input) {
 };
 ```
 
-複数のメッセージを送信する場合は、次のようになります。
+一度で複数のメッセージを送信するには、`myQueueItem` 出力バインドのメッセージ配列を定義します。 次の JavaScript コードは、受け取った HTTP 要求ごとにハードコーディングされた値を含む 2 つのキュー メッセージを送信します。
 
 ```javascript
 module.exports = function(context) {
-    // Define a message array for the myQueueItem output binding. 
     context.bindings.myQueueItem = ["message 1","message 2"];
     context.done();
 };
 ```
 
+## <a name="output---attributes-for-precompiled-c"></a>出力 - プリコンパイル済み C# の属性
+ 
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されている [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs) を使用します。
+
+この属性は、`out` パラメーターまたは関数の戻り値に適用されます。 次の例のように、属性のコンストラクターはキューの名前を受け取ります。
+
+```csharp
+[FunctionName("QueueOutput")]
+[return: Queue("myqueue-items")]
+public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
+```
+
+次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
+
+```csharp
+[FunctionName("QueueOutput")]
+[return: Queue("myqueue-items, Connection = "StorageConnectionAppSetting")]
+public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
+```
+
+`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、「[トリガー - プリコンパイル済み C# の属性](#trigger---attributes-for-precompiled-c)」を参照してください。
+
+## <a name="output---configuration"></a>出力 - 構成
+
+次の表は、*function.json* ファイルと `Queue` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |Description|
+|---------|---------|----------------------|
+|**type** | 該当なし | `queue` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
+|**direction** | 該当なし | `out` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
+|**name** | 該当なし | 関数コード内のキューを表す変数の名前。 `$return` に設定して、関数の戻り値を参照します。| 
+|**queueName** |**QueueName** | キューの名前。 | 
+|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+
+## <a name="output---usage"></a>出力 - 使用方法
+ 
+C# と C# スクリプトで単一のキュー メッセージを書き込むには、`out T paramName` などのメソッドのパラメーターを使用します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 `out` パラメーターではなくメソッドの戻り値の型を使用することができます。`T` は次に示すいずれかの型の場合があります。
+
+* JSON としてシリアル化可能な POCO
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+C# と C# スクリプトで複数のキュー メッセージを書き込むには、次のいずれかの型を使用します。 
+
+* `ICollector<T>` または `IAsyncCollector<T>`
+* [CloudQueue](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue)
+
+JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力キュー メッセージにアクセスします。 キュー項目ペイロードには、文字列または JSON のシリアル化可能なオブジェクトを使用できます。
+
 ## <a name="next-steps"></a>次のステップ
 
-キュー ストレージのトリガーとバインドを使用する関数の例については、「[Azure Queue Storage によってトリガーされる関数の作成](functions-create-storage-queue-triggered-function.md)」をご覧ください。
+> [!div class="nextstepaction"]
+> [Queue Storage のトリガーを使用するクイック スタートに進む](functions-create-storage-queue-triggered-function.md)
 
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+> [!div class="nextstepaction"]
+> [Queue Storage 出力バインドを使用するチュートリアルに進む](functions-integrate-storage-queue-output-binding.md)
+
+> [!div class="nextstepaction"]
+> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
 
 <!-- LINKS -->
 
-[`CloudQueueMessage`]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+[CloudQueueMessage]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage

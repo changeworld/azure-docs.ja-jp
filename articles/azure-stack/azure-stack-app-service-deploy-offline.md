@@ -1,6 +1,6 @@
 ---
-title: "オフライン環境に App Service をデプロイする: Azure Stack | Microsoft Docs"
-description: "AD FS によって保護されている切断された Azure Stack 環境に App Service をデプロイする方法についての詳細なガイダンスです。"
+title: "オフライン環境に App Service を展開する: Azure Stack | Microsoft Docs"
+description: "AD FS によって保護されているオフラインの Azure Stack 環境に App Service を展開する方法についての詳細なガイダンスです。"
 services: azure-stack
 documentationcenter: 
 author: apwestgarth
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 8ee171708364c3e29476302bef04a715df650b9b
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: cd727b2902dafdb8086ac4ce74db96ca8acf8fe8
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されている切断された Azure Stack 環境に追加する
+# <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されているオフラインの Azure Stack 環境に追加する
 
 この記事の手順に従うと、次のような Azure Stack 環境に [App Service リソースプロバイダー](azure-stack-app-service-overview.md)をインストールできます。
 - インターネットに接続されていない
@@ -49,7 +49,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
 4. インストーラー (AppService.exe) とオフライン インストール パッケージを Azure Stack ホスト マシンにコピーします。
 
-## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>App Service on Azure Stack のオフライン インストールを実行する
+## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>App Service on Azure Stack のオフライン インストールを完了させる
 
 1. オフラインの Azure Stack ホスト コンピューターで、azurestack\clouadmin として appservice.exe を実行します。
 
@@ -110,7 +110,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image07.png)    
 
-12. ロール インスタンスと SKU のオプションを確認します。 既定値には、ASDK デプロイの各ロールに対するインスタンスの最小数および SKU の最小値が入力されています。 お客様のデプロイの計画に役立つように、コア要件とメモリ要件の概要を説明します。 必要な項目を選んだら、**[次へ]** をクリックします。
+12. ロール インスタンスと SKU のオプションを確認します。 既定値には、ASDK デプロイの各ロールに対するインスタンスの最小数および SKU の最小値が入力されています。 お客様の展開の計画に役立つように、vCPU 要件とメモリ要件の概要を説明します。 必要な項目を選んだら、**[次へ]** をクリックします。
 
      > [!NOTE]
      > 運用環境デプロイの場合は、「[Azure Stack での Azure App Service サーバー ロールの容量計画](azure-stack-app-service-capacity-planning.md)」のガイダンスに従ってください。
@@ -119,11 +119,11 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
     | 役割 | インスタンスの最小値 | SKU の最小値 | メモ |
     | --- | --- | --- | --- |
-    | コントローラー | 1 | Standard_A1 - (1 コア、1792 MB) | App Service クラウドの正常性を管理および維持します。 |
-    | 管理 | 1 | Standard_A2 - (2 コア、3584 MB) | App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを管理します。 フェールオーバーをサポートする場合は、お勧めのインスタンス数は 2 つに増えます。 |
-    | 発行元 | 1 | Standard_A1 - (1 コア、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
-    | FrontEnd | 1 | Standard_A1 - (1 コア、1792 MB) | App Service アプリケーションに要求をルーティングします。 |
-    | 共有 Worker | 1 | Standard_A1 - (1 コア、1792 MB) | Web または API アプリケーション、および Azure Functions アプリをホストします。 より多くのインスタンスの追加が必要になる場合があります。 オペレーターは、サービスを定義することや任意の SKU レベルを選ぶことができます。 レベルには、少なくとも 1 つのコアが必要です。 |
+    | コントローラー | 1 | Standard_A1 - (1 vCPU、1792 MB) | App Service クラウドの正常性を管理および維持します。 |
+    | 管理 | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを管理します。 フェールオーバーをサポートする場合は、お勧めのインスタンス数は 2 つに増えます。 |
+    | 発行元 | 1 | Standard_A1 - (1 vCPU、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
+    | FrontEnd | 1 | Standard_A1 - (1 vCPU、1792 MB) | App Service アプリケーションに要求をルーティングします。 |
+    | 共有 Worker | 1 | Standard_A1 - (1 vCPU、1792 MB) | Web または API アプリケーション、および Azure Functions アプリをホストします。 より多くのインスタンスの追加が必要になる場合があります。 オペレーターは、サービスを定義することや任意の SKU レベルを選ぶことができます。 レベルには、少なくとも 1 つの vCPU が必要です。 |
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image08.png)    
 
@@ -142,7 +142,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 15. 概要ページで、次のことを行います。
     1. 選択した内容を確認します。 変更を加えるには、**[前へ]** を使って前のページに戻ります。
     2. 構成が正しい場合は、チェック ボックスをオンにします。
-    3. デプロイを始めるには、**[次へ]** をクリックします。
+    3. 展開を始めるには、**[次へ]** をクリックします。
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image10.png)    
 
@@ -169,7 +169,7 @@ App Service リソースプロバイダーをデプロイして登録したら�
 > [!NOTE]
 > プラン内に Microsoft.Web 名前空間があるサービスを作る必要があります。 その後、このオファーをサブスクライブするテナント サブスクリプションが必要となります。 詳しくは、「[Azure Stack でのオファーの作成](azure-stack-create-offer.md)」および「[Azure Stack でのプランの作成](azure-stack-create-plan.md)」をご覧ください。
 >
-App Service on Azure Stack を使うアプリケーションを作るには、テナント サブスクリプションが*必要です*。 管理ポータル内でサービス管理者が実行できる機能は、App Service のリソースプロバイダー管理に関連するものだけです。 これらの機能には、容量の追加、デプロイ ソースの構成、Worker 層と SKU の追加などがあります。
+App Service on Azure Stack を使うアプリケーションを作るには、テナント サブスクリプションが*必要です*。 管理ポータル内でサービス管理者が実行できる機能は、App Service のリソースプロバイダー管理に関連するものだけです。 これらの機能には、容量の追加、展開ソースの構成、Worker 層と SKU の追加などがあります。
 >
 3 番目のテクニカル プレビューの時点では、Web アプリ、API アプリ、Azure Functions アプリを作るには、テナント ポータルを使う必要があり、テナント サブスクリプションがある必要があります。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: johnkem
-ms.openlocfilehash: 2e99b7afa4e458e9ef62314e65d9e386657a747b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f571a723d91db060a1aff5e14bc452d56794db6c
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -56,20 +56,36 @@ ms.lasthandoff: 10/11/2017
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 |リソースの種類|カテゴリ|カテゴリの表示名|
 |---|---|---|
+|Microsoft.AnalysisServices/servers|エンジン|エンジン|
+|Microsoft.AnalysisServices/servers|サービス|サービス|
 |Microsoft.ApiManagement/service|GatewayLogs|ApiManagement Gateway に関連するログ|
 |Microsoft.Automation/automationAccounts|JobLogs|ジョブ ログ|
 |Microsoft.Automation/automationAccounts|JobStreams|ジョブ ストリーム|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|DSC ノードの状態|
 |Microsoft.Batch/batchAccounts|ServiceLog|サービス ログ|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|エンドポイントのメトリック (帯域幅、エグレスなど) を取得します。|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
+|Microsoft.DataFactory/factories|ActivityRuns|パイプライン アクティビティ実行ログ|
+|Microsoft.DataFactory/factories|PipelineRuns|パイプライン実行ログ|
+|Microsoft.DataFactory/factories|TriggerRuns|トリガー実行ログ|
 |Microsoft.DataLakeAnalytics/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|要求数|要求ログ|
+|Microsoft.Devices/IotHubs|接続|接続|
+|Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|
+|Microsoft.Devices/IotHubs|C2DCommands|C2D コマンド|
+|Microsoft.Devices/IotHubs|DeviceIdentityOperations|デバイス ID の操作|
+|Microsoft.Devices/IotHubs|FileUploadOperations|ファイルのアップロード操作|
+|Microsoft.Devices/IotHubs|ルート|ルート|
+|Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
+|Microsoft.Devices/IotHubs|C2DTwinOperations|C2D ツイン操作|
+|Microsoft.Devices/IotHubs|TwinQueries|ツイン クエリ|
+|Microsoft.Devices/IotHubs|JobsOperations|ジョブ操作|
+|Microsoft.Devices/IotHubs|DirectMethods|ダイレクト メソッド|
 |Microsoft.Devices/provisioningServices|DeviceOperations|デバイス操作|
 |Microsoft.Devices/provisioningServices|ServiceOperations|サービス操作|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
+|Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
 |Microsoft.EventHub/namespaces|ArchiveLogs|アーカイブ ログ|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作ログ|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自動スケール ログ|
@@ -78,6 +94,7 @@ ms.lasthandoff: 10/11/2017
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS 保護通知|
@@ -85,6 +102,11 @@ ms.lasthandoff: 10/11/2017
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
+|Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|ゲートウェイ診断ログ|
+|Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|トンネル診断ログ|
+|Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|ルート診断ログ|
+|Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
+|Microsoft.Network/expressRouteCircuits|GWMCountersTable|GWM カウンターのテーブル|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup レポート データ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery イベント|
@@ -93,7 +115,6 @@ ms.lasthandoff: 10/11/2017
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery 回復ポイント|
 |Microsoft.Search/searchServices|OperationLogs|操作ログ|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|操作ログ|
-|Microsoft.Sql/servers/databases|QueryStore|クエリ ストア|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
 |Microsoft.Sql/servers/databases|Errors|Errors|

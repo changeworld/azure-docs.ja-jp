@@ -3,8 +3,6 @@
 > * [.NET でのシミュレートされたデバイス](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
 > * [Java でのシミュレートされたデバイス](../articles/iot-hub/iot-hub-java-java-getstarted.md)
 > * [Node.js でのシミュレートされたデバイス](../articles/iot-hub/iot-hub-node-node-getstarted.md)
-> * [Linux でのシミュレートされた IoT Edge ゲートウェイ](../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md)
-> * [Windows でのシミュレートされた IoT Edge ゲートウェイ](../articles/iot-hub/iot-hub-windows-iot-edge-get-started.md)
 > * [VS Code での IoT DevKit AZ3166](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Node.js での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [Python での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-python-get-started.md)
@@ -14,4 +12,3 @@
 > * [Arduino IDE での Adafruit Feather HUZZAH ESP8266](../articles/iot-hub/iot-hub-arduino-huzzah-esp8266-get-started.md)
 > * [Arduino IDE での Sparkfun ESP8266 Thing Dev](../articles/iot-hub/iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 > * [Arduino IDE での Adafruit Feather M0](../articles/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
-> * [IoT Edge ゲートウェイとしての Intel NUC のセットアップ](../articles/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)

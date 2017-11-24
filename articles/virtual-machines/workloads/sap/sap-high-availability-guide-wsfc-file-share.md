@@ -1,6 +1,6 @@
 ---
-title: "Azure 上のファイル共有を使用した Windows フェールオーバー クラスターでの SAP (A)SCS インスタンスのクラスタリング | Microsoft Docs"
-description: "ファイル共有を使用した Windows フェールオーバー クラスターでの SAP (A)SCS インスタンスのクラスター化"
+title: "Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する | Microsoft Docs"
+description: "Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する方法を説明します。"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 94d725cfb072091e57c96d3b2aca7b2e73657eef
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 8cb339c9ecffbbc711aa6ea55d6f357fe0f4cfd0
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/14/2017
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -201,8 +201,9 @@ ms.lasthandoff: 10/27/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
+[1869038]:https://launchpad.support.sap.com/#/notes/1869038 
 
-# <a name="clustering-sap-ascs-instance-on-windows-failover-cluster-using-file-share-on-azure"></a>Azure 上のファイル共有を使用した Windows フェールオーバー クラスターでの SAP (A)SCS インスタンスのクラスター化
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-file-share-in-azure"></a>Azure のファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
 > ![Windows][Logo_Windows] Windows
 >
@@ -211,13 +212,13 @@ Windows Server フェールオーバー クラスタリングは、Windows で�
 
 フェールオーバー クラスターとは、アプリケーションとサービスの可用性を高めるために連携する、1 + n 台の独立したサーバー (ノード) のグループです。 ノード障害が発生した場合、Windows Server フェールオーバー クラスタリングは、アプリケーションとサービスを提供するクラスターを正常な状態で維持するうえで許容できるエラーの数を計算します。 フェールオーバー クラスタリングを実現するために、さまざまなクォーラム モードを選択できます。
 
-## <a name="prerequisite"></a>前提条件
-このドキュメントで開始する前に、以下のドキュメントを確認してください。
+## <a name="prerequisites"></a>前提条件
+この記事に記載されているタスクを開始する前に、次の記事を確認してください。
 
 * [SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ][sap-high-availability-architecture-scenarios]
 
 > [!IMPORTANT]
->ファイル共有がある SAP (A)SCS インスタンスのクラスタリングは、**SAP Kernel 7.49 以降**を含む、**SAP NetWeaver 7.40 以降** の製品でサポートされています。
+> ファイル共有を使う SAP ASCS/SCS インスタンスのクラスター化は、SAP Kernel 7.49 (およびそれ以降) を含む SAP NetWeaver 7.40 (およびそれ以降) についてサポートされています。
 >
 
 
@@ -225,155 +226,137 @@ Windows Server フェールオーバー クラスタリングは、Windows で�
 
 ベア メタル デプロイやプライベート クラウド デプロイと比較すると、Azure Virtual Machines では Windows Server フェールオーバー クラスタリングを構成するための追加手順が必要となります。 クラスターを構築するときは、SAP ASCS/SCS インスタンスに複数の IP アドレスと仮想ホスト名を設定する必要があります。
 
-### <a name="name-resolution-in-azure-and-cluster-virtual-host-name"></a>Azure での名前解決とクラスターの仮想ホスト名
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure での名前解決とクラスターの仮想ホスト名
 
-Azure クラウド プラットフォームには、フローティング IP アドレスのような仮想 IP アドレスを構成するオプションは用意されていません。 クラウド内のクラスター リソースに到達するために仮想 IP アドレスを設定する別のソリューションが必要となります。 Azure Load Balancer サービスには**内部ロード バランサー**があります。 内部ロード バランサーでは、クライアントはクラスターの仮想 IP アドレスを使用してクラスターにアクセスします。 クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイする必要があります。 その後、内部ロード バランサーのプローブ ポートで必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使用して接続できます。 DNS サーバーがクラスター IP アドレスを解決し、内部ロード バランサーがクラスターのアクティブ ノードへのポート フォワーディングを処理します。
+Azure クラウド プラットフォームには、フローティング IP アドレスのような仮想 IP アドレスを構成するオプションは用意されていません。 クラウド内のクラスター リソースに到達するために仮想 IP アドレスを設定する別のソリューションが必要となります。 
+
+Azure Load Balancer サービスは、Azure に "*内部ロード バランサー*" を提供します。 内部ロード バランサーでは、クライアントはクラスターの仮想 IP アドレスを使用してクラスターにアクセスします。 
+
+クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイします。 その後、内部ロード バランサーのプローブ ポートを使って、必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使用して接続できます。 DNS サーバーは、クラスターの IP アドレスを解決します。 内部ロード バランサーは、クラスターのアクティブ ノードへのポート フォワーディングを処理します。
 
 ![図 1: 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
 
 _**図 1:** 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成_
 
-## <a name="sap-ascs-ha-with-file-share"></a>ファイル共有を使用する SAP (A)SCS HA
+## <a name="sap-ascsscs-ha-with-file-share"></a>ファイル共有を使用する SAP ASCS/SCS HA
 
-SAP によって、共有ディスクをクラスターする方法に代わり、Windows フェールオーバー クラスター上で SAP (A)SCS インスタンスをクラスターするという新しい方法が開発されました。
-
-ここでは、**SAP GLOBAL HOST ファイル**をデプロイするオプションである **SMB ファイル共有**が使用されます。
+SAP によって、共有ディスクをクラスター化する方法に代わり、Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する新しい方法が開発されました。 クラスター共有ディスクを使う代わりに、SMB ファイル共有を使って SAP グローバル ホスト ファイルをデプロイできます。
 
 > [!NOTE]
->SMB ファイル共有は、SAP (A)SCS インスタンスのクラスタリング用に共有ディスクをクラスターする追加オプションです。  
+> SMB ファイル共有は、SAP ASCS/SCS インスタンスのクラスタリングにクラスター共有ディスクを使う方法に代わるものです。  
 >
 
-このアーキテクチャに固有の新機能は次のとおりです。
+このアーキテクチャには次のような固有機能があります。
 
-* **SAP セントラル サービス (独自のファイル構造、およびメッセージとエンキュー プロセスを含む) は、SAP GLOBAL HOST ファイルから分離される**
-* **SAP セントラル サービスが SAP (A)SCS インスタンスで実行される**
-* SAP (A)SCS インスタンスがクラスターされ、仮想ホスト名 **<(A)SCSVirtualHostName>** を使用してアクセスできる
-* SAP GLOBAL ファイルは SMB ファイル共有に配置され、<SAPGLOBALHost>ホスト名 \\\\&lt;SAPGLOBALHost&gt;\sapmnt\\&lt;SID&gt;\SYS\... を使用してアクセスされる
-* SAP (A)SCS インスタンスは両方のクラスター ノード上のローカル ディスクにインストールされる
-* **<(A)SCSVirtualHostName>** ネットワーク名は **&lt;SAPGLOBALHost&gt;** とは異なる
+* SAP セントラル サービス (独自のファイル構造、およびメッセージとエンキュー プロセスを含む) が、SAP グローバル ホスト ファイルから分離されます。
+* SAP セントラル サービスが、SAP ASCS/SCS インスタンスで実行されます。
+* SAP ASCS/SCS インスタンスがクラスター化され、\<ASCS/SCS 仮想ホスト名\> 仮想ホスト名を使ってアクセスできます。
+* SAP グローバル ファイルは SMB ファイル共有に配置され、\<SAP グローバル ホスト\> ホスト名: \\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使ってアクセスされます。
+* SAP ASCS/SCS インスタンスは、両方のクラスター ノード上のローカル ディスクにインストールされます。
+* \<ASCS/SCS 仮想ホスト名\> ネットワーク名は、&lt;SAP グローバル ホスト&gt; とは異なります。
 
-![図 2: SMB ファイル共有を使用した新しい SAP (A)SCS HA のアーキテクチャ][sap-ha-guide-figure-8004]
+![図 2: SMB ファイル共有を使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8004]
 
-_**図 2:** SMB ファイル共有を使用した新しい SAP (A)SCS HA のアーキテクチャ_
+_**図 2:** SMB ファイル共有を使う新しい SAP ASCS/SCS HA のアーキテクチャ_
 
 SMB ファイル共有の前提条件:
 
-* SMB 3.0 (またはそれ以降) のプロトコル
-* **AD ユーザー グループ**と**コンピューター オブジェクト コンピューターcomputer$** に Active Directory (AD) のアクセス制御リスト (ACL) を設定する機能
-* ファイル共有では、HA が有効になっている必要があります。
-    * ファイルを格納するために使用するディスクを単一障害点に指定することはできません
-    * サーバー/VM のダウンタイムによって、ファイル共有のダウンタイムが発生していないことを確認する必要があります
+* SMB 3.0 (またはそれ以降) プロトコル。
+* Active Directory ユーザー グループと `computer$` コンピューター オブジェクトに Active Directory アクセス制御リスト (ACL) を設定する機能。
+* ファイル共有で HA が有効になっている必要があります。
+    * ファイルの格納に使われるディスクが単一障害点にならないこと。
+    * サーバーまたは VM のダウンタイムによってファイル共有にダウンタイムが発生しないこと。
 
-これで、 **SAP &lt;SID&gt;** クラスターの役割には、クラスター共有ディスクまたは汎用ファイル共有クラスター リソースが含まれません。
-
-
-![図 3: ファイル共有を使用した SAP <SID> クラスター ロール リソース][sap-ha-guide-figure-8005]
-
-_**図 3:** ファイル共有を使用した **SAP &lt;SID&gt;** クラスター ロール リソース_
+SAP \<SID\> のクラスター ロールには、クラスター共有ディスクまたは汎用ファイル共有クラスター リソースは含まれません。
 
 
-## <a name="scale-out-file-share-sofs-with-storage-spaces-direct-s2d-on-azure-as-sapmnt-file-share"></a>Azure での SAPMNT ファイル共有としての記憶域スペース ダイレクト (S2D) を使用したスケールアウト ファイル共有 (SOFS)
+![図 3: ファイル共有を使うための SAP \<SID\> クラスター ロール リソース][sap-ha-guide-figure-8005]
 
-SOFS を使用して、SAP GLOBAL Host ファイルをホストおよび保護し、高可用性の SAPMNT ファイル共有サービスを提供することができます。
+_**図 3:** ファイル共有を使うための SAP &lt;SID&gt; クラスター ロール リソース_
 
-![図 4: SAP GLOBAL Host ファイルを保護するために使用される SOFS ファイル共有][sap-ha-guide-figure-8006]
 
-_**図 4:** SAP GLOBAL Host ファイルを保護するために使用される SOFS ファイル共有_
+## <a name="scale-out-file-shares-with-storage-spaces-direct-in-azure-as-an-sapmnt-file-share"></a>SAPMNT ファイル共有として Azure の記憶域スペース ダイレクトを使うスケールアウト ファイル共有
 
-> [!IMPORTANT]
->SOFS ファイル共有は、オンプレミス環境と同様に、Microsoft Azure クラウドでも完全にサポートされています。
->
+スケールアウト ファイル共有を使って、SAP グローバル ホスト ファイルのホストと保護を行うことができます。 また、スケールアウト ファイル共有は、高可用性の SAPMNT ファイル共有サービスも提供します。
 
-**SOFS** は、高可用性および水平方向にスケーラブルな SAPMNT ファイル共有を提供します。
+![図 4: SAP グローバル ホスト ファイルの保護に使われるスケールアウト ファイル共有][sap-ha-guide-figure-8006]
 
-**記憶域スペース ダイレクト (S2D)** は、SOFS では**共有ディスク**として使用され、ローカル記憶域を含むサーバーを使用して、高可用性とスケーラブルな記憶域を構築できます。 したがって、SAP GLOBALHOST ファイルなど、SOFS で使用される共有記憶域は、単一障害点 (SPOF) にはなりません。
+_**図 4:** SAP グローバル ホスト ファイルの保護に使われるスケールアウト ファイル共有_
 
 > [!IMPORTANT]
->ディザスター リカバリーをセットアップする場合は、Azure での高可用性ファイル共有のソリューションとして SOFS をお勧めします。
+> スケールアウト ファイル共有は、Microsoft Azure クラウドおよびオンプレミス環境で完全にサポートされています。
 >
 
-### <a name="sap-prerequisites-for-sofs-in-azure"></a>Azure での SOFS の SAP の前提条件
+スケールアウト ファイル共有は、高可用性および水平方向にスケーラブルな SAPMNT ファイル共有を提供します。
 
-SOFS では次のものが必要です。
+記憶域スペース ダイレクトは、スケールアウト ファイル共有のための共有ディスクとして使われます。 記憶域スペース ダイレクトを使うと、ローカル記憶域を含むサーバーを使って高可用性でスケーラブルな記憶域を構築できます。 SAP グローバル ホスト ファイルのようなスケールアウト ファイル共有に使われる共有記憶域は、単一障害点ではありません。
 
-* SOFS 用の少なくとも 2 つのクラスター ノード
+> [!IMPORTANT]
+>ディザスター リカバリーのセットアップを計画して "*いない*" 場合は、Azure での高可用性ファイル共有のソリューションとしてスケールアウト ファイル共有を使うことをお勧めします。
+>
 
-* 各ノードには、少なくとも 2 つのローカル ディスクが必要です
+### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure でのスケールアウト ファイル共有に対する SAP の前提条件
 
-* パフォーマンス上の理由で、**ミラーリング回復性**を使用する必要があります。
-    * 2 個のクラスター ノードを含む SOFS 用の **2 方向**のミラーリング
-    * 3 個 (またはそれ以上) のクラスター ノードを含む SOFS 用の **3 方向**のミラーリング
+スケールアウト ファイル共有を使うには、システムが次の要件を満たしている必要があります。
 
-
-* **SOFS には 3 個 (またはそれ以上) のクラスター ノードで 3 方向ミラーリングを構成することをお勧めします**。
-このセットアップにより、2 つのクラスター ノードと 2 方向のミラーリングを使用した SOFS のセットアップよりも、拡張性や回復性が向上します。
-
-* **Azure Premium ディスク**を使用する必要があります
-
-* **Azure Managed Disks** を使用することを**お勧めします**
-
-* 新しい **Resilient File System (ReFS)** でボリュームをフォーマットすることを**お勧めします**
-    * [SAP ノート 1869038 - ReFs ファイルシステムの SAP サポート][1869038]
-    * 記憶域スペース ダイレクトでのボリュームの計画の「[ファイル システムの選択する][planning-volumes-s2d-choosing-filesystem]」の章を参照してください。
-    * この [MS **KB4025334** 累積的な更新プログラム][kb4025334]をインストールしてください。
-
-
-* **DS シリーズ**または **DSv2-Series** Azure VM のサイズを使用できます
-
-* 記憶域スペース ダイレクトのディスク同期に必要な内部 VM ネットワーク パフォーマンスを得るには、少なくとも **「高」ネットワーク帯域幅**を含む VM タイプを使用する必要があります。
-詳細については、[DSv2 シリーズ][dv2-series]と [DS シリーズ][ds-series]の仕様を参照してください。
-
-* **記憶域プールの一部の容量を未割り振りのままにして予約する**ことを**お勧めします**。 これにより、ドライブが失敗した場合に「インプレース」を修復するためのスペースのボリュームが提供され、データの安全性とパフォーマンスが向上します。
-
- 詳細については、「[ボリュームのサイズの選択][choosing-the-size-of-volumes-s2d]」を参照してください
-
-
-* SOFS Azure VM は**独自の Azure 可用性セット** にデプロイする必要があります
-
-* これは、SAP (A)SCS インスタンスの <(A)SCSVirtualHostname> または DBMS に対して実行されるため、Azure Internal Load Balancer を SOFS のファイル共有ネットワーク名 (たとえば、<SAPGlobalHostName>) に構成する必要はありません。 SOFS はすべてのクラスター ノードで負荷をスケールアウトするため、<SAPGlobalHostName> はすべてのクラスター ノードのローカル IP を使用します。
+* 1 つのスケールアウト ファイル共有に対して少なくとも 2 つのクラスター ノード。
+* 各ノードには、少なくとも 2 つのローカル ディスクが必要です。
+* パフォーマンス上の理由から、"*ミラーリング回復性*" を使う必要があります。
+    * 2 つのクラスター ノードによるスケールアウト ファイル共有の双方向ミラーリング。
+    * 3 つ以上のクラスター ノードによるスケールアウト ファイル共有の 3 方向ミラーリング。
+* スケールアウト ファイル共有には 3 方向ミラーリングを行う 3 つ以上のクラスター ノードをお勧めします。
+    このセットアップにより、2 つのクラスター ノードと 2 方向ミラーリングを使うスケールアウト ファイル共有のセットアップより、拡張性や回復性が向上します。
+* Azure Premium ディスクを使う必要があります。
+* Azure Managed Disks を使うことをお勧めします。
+* Resilient File System (ReFS) を使ってボリュームをフォーマットすることをお勧めします。
+    * 詳しくは、「[SAP Note 1869038 - SAP support for ReFs filesystem][1869038]」(SAP Note 1869038 - SAP による ReFs ファイル システムのサポート) および「記憶域スペース ダイレクトのボリュームの計画」記事の「[ファイル システムの選択][planning-volumes-s2d-choosing-filesystem]」をご覧ください。
+    * [Microsoft KB4025334 の累積的な更新プログラム][kb4025334]を必ずインストールします。
+* DS シリーズまたは DSv2 シリーズの Azure VM サイズを使うことができます。
+* 記憶域スペース ダイレクトのディスク同期に必要な VM 間の高いネットワーク パフォーマンスを得るには、少なくとも "高" ネットワーク帯域幅の VM タイプを使う必要があります。
+    詳しくは、[DSv2 シリーズ][dv2-series]および [DS シリーズ][ds-series]の仕様をご覧ください。
+* 記憶域プールに未割り当ての容量を若干確保しておくことをお勧めします。 記憶域プールに未割り当て容量を残しておくと、ドライブで障害が発生した場合に "その場で" 修復するためのボリューム領域が用意されます。 これにより、データの安全性とパフォーマンスが向上します。  詳しくは、「[ボリュームのサイズの選択][choosing-the-size-of-volumes-s2d]」をご覧ください。
+* スケールアウト ファイル共有の Azure VM は、専用の Azure 可用性セットにデプロイする必要があります。
+* スケールアウト ファイル共有のネットワーク名 (\<SAP グローバル ホスト\> など) に対して、Azure 内部ロード バランサーを構成する必要はありません。 これは、SAP ASCS/SCS インスタンスの \<ASCS/SCS 仮想ホスト名\> または DBMS に対して行われます。 スケールアウト ファイル共有は、すべてのクラスター ノード間に負荷をスケールアウトします。 \<SAP グローバル ホスト\> は、すべてのクラスター ノードのローカル IP アドレスを使います。
 
 
 > [!IMPORTANT]
->SAPGLOBALHOST を指す SAPMNT ファイル共有は変更できません。 SAP は sapmnt 以外の共有名をサポートしていません。
->[SAP Note 2492395 - 共有名 sapmnt は変更できますか][2492395]
+> \<SAP グローバル ホスト\> を指し示している SAPMNT ファイル共有の名前を変更することはできません。 SAP は、共有名 "sapmnt" のみをサポートします。
 
-### <a name="configuring-sap-ascs-instances-and-sofs-in-two-clusters"></a>2 つのクラスターで SAP (A)SCS インスタンスと SOFS を構成する
+> 詳しくは、「[SAP Note 2492395 - Can the share name sapmnt be changed?][2492395]」(SAP Note 2492395 - 共有名 sapmnt を変更できますか) をご覧ください。
 
-SAP (A)SCS インスタンスを、そのインスタンスの SAP <SID>クラスターの 役割とともに 1 つのクラスターにデプロイすることができます。 SOFS ファイル共有は、別のクラスター の役割とともに別のクラスターで構成されます。
+### <a name="configure-sap-ascsscs-instances-and-a-scale-out-file-share-in-two-clusters"></a>2 つのクラスターで SAP ASCS/SCS インスタンスとスケールアウト ファイル共有を構成する
 
-> [!IMPORTANT]
->このシナリオでは、SAP (A)SCS インスタンスは、UNC パス \\\\&lt;SAPGLOBALHost&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使用して SAP GLOBALHost にアクセスするように構成されています。
->
-
-![図 5: 2 つのクラスターにデプロイされた SAP (A)SCS インスタンスと SOFS][sap-ha-guide-figure-8007]
-
-_**図 5:** 2 つのクラスターにデプロイされた SAP (A)SCS インスタンスと SOFS_
+1 つのクラスターに SAP ASCS/SCS インスタンスをデプロイし、専用の SAP \<SID\> クラスター ロールを設定できます。 この場合は、別のクラスターに別のクラスター ロールでスケールアウト ファイル共有を構成します。
 
 > [!IMPORTANT]
->Azure クラウドでは、SAP と SOFS ファイル共有で使用される各クラスターは、それらのクラスター VM が基本的な Azure インフラストラクチャ全体に分散して配置されるようにするため、自身の Azure 可用性セットにデプロイされる必要があります。
+>このシナリオの SAP ASCS/SCS インスタンスは、UNC パス \\\\&lt;SAP グローバル ホスト&gt;\sapmnt\\&lt;SID&gt;\SYS\. を使って SAP グローバル ホストにアクセスするように構成されます。
 >
 
-## <a name="generic-file-share-with-sios-as-cluster-shared-disks"></a>SIOS を共有クラスター ディスクとして使用する汎用のファイル共有
+![図 5: 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスとスケールアウト ファイル共有][sap-ha-guide-figure-8007]
+
+_**図 5:** 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスとスケールアウト ファイル共有_
+
+> [!IMPORTANT]
+> Azure クラウドでは、SAP およびスケールアウト ファイル共有に使われる各クラスターを、専用の Azure 可用性セットにデプロイする必要があります。 このようにすると、クラスターの VM が基になっている Azure インフラストラクチャ全体に分散して配置されます。
+>
+
+## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>クラスター共有ディスクとして SIOS DataKeeper を使う汎用ファイル共有
 
 
 > [!IMPORTANT]
->高可用性のファイル共有のソリューションには、SOFS を使用することをお勧めします。
+> 高可用性のファイル共有にはスケールアウト ファイル共有ソリューションをお勧めします。
 >
->しかし、高可用性のファイル共有に**ディザスター リカバリー**も設定する場合は、クラスター共有 ディスクのテクノロジとして汎用のファイル共有と SISO を使用する必要があります。
+> 高可用性のファイル共有にディザスター リカバリーも設定する場合は、クラスター共有ディスク用に汎用ファイル共有と SISO DataKeeper を使う必要があります。
 >
 
-汎用のファイル共有は、高可用性ファイル共有を実現するためのもう 1 つのオプションです。
+汎用ファイル共有は、高可用性ファイル共有を実現するためのもう 1 つのオプションです。
 
-ここでは、クラスター共有ディスクとして、サード パーティの SIOS ソリューションを使用できます。
+この場合は、クラスター共有ディスクとして、サード パーティの SIOS ソリューションを使うことができます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-file-share]
-
-* [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有上への SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-shared-disk]
-
+* [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターとファイル共有を使用して SAP HA 向けに Azure インフラストラクチャを準備する][sap-high-availability-infrastructure-wsfc-file-share]
+* [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターとファイル共有に SAP NetWeaver HA をインストールする][sap-high-availability-installation-wsfc-shared-disk]
 * [Azure での UPD 記憶域の 2 ノードの記憶域スペース ダイレクト スケール アウト ファイル サーバーのデプロイ][deploy-sofs-s2d-in-azure]
-
 * [Windows Server 2016 での記憶域スペース ダイレクト][s2d-in-win-2016]
-
 * [詳細: 記憶域スペース ダイレクトのボリューム][deep-dive-volumes-in-s2d]

@@ -3,8 +3,8 @@ title: "PowerShell で Azure DNS プライベート ゾーンの使用を開始�
 description: "Azure DNS で、プライベート DNS ゾーンとレコードを作成する方法について説明します。 PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。"
 services: dns
 documentationcenter: na
-author: garbrad
-manager: 
+author: KumudD
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/04/2017
-ms.author: garbrad
-ms.openlocfilehash: c5d4b33682f9b5d33e74d45973d5fbd76cf16465
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/20/2017
+ms.author: kumud
+ms.openlocfilehash: d71e2391b6415b2403447479dea4fd0a3b818ed0
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="get-started-with-azure-dns-private-zones-using-powershell"></a>PowerShell で Azure DNS プライベート ゾーンの使用を開始する
 

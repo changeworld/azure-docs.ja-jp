@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: e59cfa85c6bf584e44bdc6e88cc19d67df390041
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbb752692fbd618d9e7e14c8a80b582aad657b38
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api-preview"></a>Azure Cosmos DB: Table API (プレビュー) を使用してテーブル データのクエリを実行する方法
+# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB: Table API を使用してテーブル データのクエリを実行する方法
 
-Azure Cosmos DB [Table API](table-introduction.md) (プレビュー) では、キー/値 (テーブル) データに対する OData クエリと [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) クエリがサポートされます。  
+Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テーブル) データに対する OData クエリと [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) クエリがサポートされます。  
 
 この記事に含まれるタスクは次のとおりです。 
 
@@ -38,13 +38,13 @@ Azure Cosmos DB [Table API](table-introduction.md) (プレビュー) では、�
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
 
-Azure Cosmos DB は Azure Table Storage API との互換性があるため、Table API を使用してクエリを実行する方法の詳細については、「Querying Tables and Entities (テーブルとエンティティのクエリ)」(https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) をご覧ください。 
+Table API を使用してクエリを実行する方法の詳細については、「Querying Tables and Entities (テーブルとエンティティのクエリ)」(https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) をご覧ください。 
 
 Azure Cosmos DB が提供する Premium 機能の詳細については、[Azure Cosmos DB: Table API](table-introduction.md) に関するページや [Table API を使用した .NET での開発](tutorial-develop-table-dotnet.md)に関するページをご覧ください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-クエリを実行するには、Azure Cosmos DB アカウントがあり、コンテナーにエンティティ データがあることが必要です。 どちらもない場合には、 [5 分でできるクイックスタート](https://aka.ms/acdbtnetqs)か[開発者向けチュートリアル](https://aka.ms/acdbtabletut)を実行して、アカウントを作成し、データベースにデータを設定します。
+クエリを実行するには、Azure Cosmos DB アカウントがあり、コンテナーにエンティティ データがあることが必要です。 どちらもない場合には、 [5 分でできるクイックスタート](create-table-dotnet.md)か[開発者向けチュートリアル](tutorial-develop-table-dotnet.md)を実行して、アカウントを作成し、データベースにデータを設定します。
 
 ## <a name="query-on-partitionkey-and-rowkey"></a>PartitionKey と RowKey のクエリ
 PartitionKey プロパティと RowKey プロパティによってエンティティの主キーが構成されるため、次のような特別な構文を使用すると、エンティティを特定できます。 
@@ -109,9 +109,9 @@ await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 このチュートリアルでは、次の手順を行いました。
 
 > [!div class="checklist"]
-> * Table API (プレビュー) を使用してクエリを実行する方法を学習しました 
+> * Table API を使用してクエリを実行する方法を学習しました。
 
 次のチュートリアルに進んで、データをグローバルに分散する方法について学習できます。
 
 > [!div class="nextstepaction"]
-> [データをグローバルに分散する](tutorial-global-distribution-documentdb.md)
+> [データをグローバルに分散する](tutorial-global-distribution-table.md)

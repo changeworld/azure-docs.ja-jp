@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 543fafac63423ab874c6c8e40d91a1ce0f161987
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2c1b91fb87857eee8ca938be193b61e01bbdb886
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 この記事では、イベント ハブを作成および構成し、サンプル アプリケーションを実行してイベントをプッシュする方法について説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Time Series Insights](https://insights.timeseries.azure.com) で環境を表示してください。
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/15/2017
 
 3. イベント ハブを選択するには、その名前をクリックします。
 
-4. 構成ウィンドウ中央の [エンティティ] で、再び **[イベント ハブ]** をクリックします。
+4. 構成ウィンドウ中央の **[エンティティ]** で、再び **[イベント ハブ]** をクリックします。
 
 5. イベント ハブの名前を選択して構成します。
 
@@ -244,4 +244,5 @@ namespace Microsoft.Rdx.DataGenerator
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>次のステップ
-[Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示します。
+> [!div class="nextstepaction"]
+> [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示します。

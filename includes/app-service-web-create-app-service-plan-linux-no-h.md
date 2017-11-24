@@ -1,8 +1,8 @@
-Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan#create) コマンドを使用して App Service プランを作成します。
+Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan#create) コマンドを使用して、リソース グループに App Service プランを作成します。
 
-[!INCLUDE [app-service-plan](app-service-plan-linux.md)]
+<!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-次の例では、**Standard** 価格レベルを使用して、Linux コンテナーに `myAppServicePlan` という名前の App Service プランを作成します。
+次の例では、**Standard** 価格レベル (`--sku S1`) を使用して、Linux コンテナー (`--is-linux`) に `myAppServicePlan` という名前の App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux

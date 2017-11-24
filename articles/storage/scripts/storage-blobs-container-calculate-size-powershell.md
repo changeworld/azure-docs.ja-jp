@@ -3,8 +3,8 @@ title: "Azure PowerShell のサンプル スクリプト - BLOB コンテナー�
 description: "コンテナー内の BLOB のサイズを合計して、Azure Blob ストレージ内のコンテナーのサイズを計算します。"
 services: storage
 documentationcenter: na
-author: fhryo-msft
-manager: cbrooks
+author: tamram
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 
 ms.custom: mvc
@@ -13,15 +13,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 10/23/2017
-ms.author: fryu
-ms.openlocfilehash: cb053ba730a7dac5c23d98e1046fd63d27831e16
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.date: 11/07/2017
+ms.author: tamram
+ms.openlocfilehash: f6f421e780bfbb7922a4b11f758330f2a9a0b84b
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="calculate-the-size-of-a-blob-container"></a>BLOB コンテナーのサイズを計算する
+# <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob ストレージ コンテナーのサイズを計算する
 
 このスクリプトでは、コンテナー内のブロブのサイズを合計して、Azure Blob ストレージ内のコンテナーのサイズを計算します。
 
@@ -29,97 +29,34 @@ ms.lasthandoff: 11/06/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="determine-the-size-of-the-blob-container"></a>BLOB コンテナーのサイズを決定する
-
-BLOB コンテナーの合計サイズには、コンテナー自体のサイズとコンテナーの下のすべての BLOB のサイズが含まれます。
-
-次のセクションでは、BLOB コンテナーと BLOB のストレージ容量を計算する方法について説明します。 次のセクションでは Len(X) は文字列の文字数を表します。
-
-### <a name="blob-containers"></a>BLOB コンテナー
-
-次の計算では BLOB コンテナーごとに使用されるストレージの量を推定します。
-
-`
-48 bytes + Len(ContainerName) * 2 bytes +
-For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
-For-Each Signed Identifier[512 bytes]
-`
-
-内訳は次のようになります。
-* コンテナーごとの 48 バイトのオーバーヘッドには、最終更新時刻、アクセス許可、パブリック設定、およびシステムのメタデータが含まれています。
-
-* コンテナー名は Unicode で格納されているため、文字数を取得して 2 を掛けます。
-
-* 格納されている BLOB コンテナーのメタデータのブロックごとに、メタデータの名前 (ASCII) の長さと文字列値の長さを合計します。
-
-* Signed Identifier ごとの 512 バイトには、Signed Identifier の名前、開始時刻、有効期限、アクセス許可が含まれています。
-
-### <a name="blobs"></a>BLOB
-
-次の計算では BLOB ごとに使用されるストレージの量を推定します。
-
-* ブロック BLOB (ベース BLOB またはスナップショット):
-
-   `
-   124 bytes + Len(BlobName) * 2 bytes +
-   For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
-   8 bytes + number of committed and uncommitted blocks * Block ID Size in bytes +
-   SizeInBytes(data in unique committed data blocks stored) +
-   SizeInBytes(data in uncommitted data blocks)
-   `
-
-* ページ BLOB (ベース BLOB またはスナップショット):
-
-   `
-   124 bytes + Len(BlobName) * 2 bytes +
-   For-Each Metadata[3 bytes + Len(MetadataName) + Len(Value)] +
-   number of nonconsecutive page ranges with data * 12 bytes +
-   SizeInBytes(data in unique pages stored)
-   `
-
-内訳は次のようになります。
-
-* BLOB 毎に 124 のバイトのオーバーヘッドがありますが、これには次のものが含まれます。
-    - 最終変更時刻
-    - サイズ
-    - Cache-Control
-    - Content-Type
-    - Content-Language
-    - Content-Encoding
-    - Content-MD5
-    - アクセス許可
-    - スナップショットの情報
-    - 占有
-    - 一部のシステム メタデータ
-
-* BLOB 名は Unicode で格納されるため、文字数を取得して 2 を掛けます。
-
-* 格納されているメタデータのブロックごとに、名前 (ASCII 形式) の長さを加え、文字列値の長さを足します。
-
-* ブロック BLOB の場合:
-    * ブロック一覧の 8 バイト。
-    * ブロックの数にブロック ID のサイズ (バイト単位) を掛けたもの。
-    * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。 
-    
-    >[!NOTE]
-    >スナップショットが使用されている場合、このサイズは、ベース BLOB またはスナップショット BLOB の一意のデータだけを含みます。 コミットされていないブロックが 1 週間後に使用されていなければ、ガベージ コレクションされます。 その後は、課金対象ではありません。
-
-* ページ BLOB の場合:
-    * 連続しないデータのあるページ範囲の数に 12 バイトを掛けます。 これは **GetPageRanges** API を呼び出すときに表示される一意のページ範囲の数です。
-
-    * 保存されているすべてのページのデータのサイズ (バイト単位)。 
-    
-    >[!NOTE]
-    >スナップショットを使用すると、計算中のベース BLOB またはスナップショット BLOB の一意のページだけがこのサイズに含まれます。
+> [!IMPORTANT]
+> この PowerShell スクリプトは、コンテナーの推定サイズを算出しますが、課金の計算には使用できません。 課金目的のコンテナー サイズを計算するスクリプトについては、「[Calculate the size of a Blob storage container for billing purposes](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)」 (課金を目的に Blob ストレージ コンテナーのサイズを計算する) を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size-ex.ps1 "Calculate container size")]
+[!code-powershell[main](../../../powershell_scripts/storage/calculate-container-size/calculate-container-size.ps1 "Calculate container size")]
+
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+
+次のコマンドを実行して、リソース グループ、コンテナー、すべての関連リソースを削除します。
+
+```powershell
+Remove-AzureRmResourceGroup -Name bloblisttestrg
+```
+
+## <a name="script-explanation"></a>スクリプトの説明
+
+このスクリプトでは次のコマンドを使用して、Blob ストレージ コンテナーのサイズを計算します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
+
+| コマンド | メモ |
+|---|---|
+| [Get-AzureRmStorageAccount](/powershell/module/azurerm.storage/get-azurermstorageaccount) | リソース グループまたはサブスクリプション内の指定された Storage アカウントまたはすべての Storage アカウントを取得します。 |
+| [Get-AzureStorageBlob](/powershell/module/azure.storage/get-azurestorageblob) | コンテナー内の BLOB を一覧表示します。 ||
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure ストレージの課金の詳細については、「[Understanding Windows Azure Storage Billing (Windows Azure Storage の課金について)](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)」をご覧ください。
+課金目的のコンテナー サイズを計算するスクリプトについては、「[Calculate the size of a Blob storage container for billing purposes](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)」 (課金を目的に Blob ストレージ コンテナーのサイズを計算する) を参照してください。
 
-- Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.4.1)をご覧ください。
+Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
-- その他のストレージ PowerShell サンプル スクリプトは、[Azure Storage 用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)に関するページにあります。
+その他のストレージ PowerShell サンプル スクリプトは、[Azure Storage 用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)のページにあります。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 11/21/2017
 ms.author: barclayn
-ms.openlocfilehash: 3b57c92bd744644ea81878712b4272ed3ece4e2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 97e8d23d90821489575b3ac6e8f1e810b7ce25a9
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="manage-personal-data-in-microsoft-azure"></a>Microsoft Azure での個人データの管理
 

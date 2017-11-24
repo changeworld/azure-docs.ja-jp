@@ -378,6 +378,8 @@
               href: saas-multitenantdb-adhoc-reporting.md
             - name: テナント スキーマの管理
               href: saas-multitenantdb-schema-management.md
+            - name: 分析用の ETL
+              href: saas-multitenantdb-tenant-analytics.md
     - name: アプリケーションの開発
       items:
         - name: C と C++

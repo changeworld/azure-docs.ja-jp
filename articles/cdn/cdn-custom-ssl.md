@@ -1,5 +1,5 @@
 ---
-title: "Azure Content Delivery Network のカスタム ドメインで HTTPS を有効または無効にする | Microsoft Docs"
+title: "Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する | Microsoft Docs"
 description: "カスタム ドメインを使って Azure CDN エンドポイントの HTTPS を有効または無効にする方法について説明します。"
 services: cdn
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: casoper
-ms.openlocfilehash: 68a171ee6da58e6d84b466daf573577c909c7f5c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 82de79cde208cdce1ed7cbd600f1e804ff1d45ff
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="enable-or-disable-https-on-an-azure-content-delivery-network-custom-domain"></a>Azure Content Delivery Network のカスタム ドメインで HTTPS を有効または無効にする
+# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Microsoft Azure Content Delivery Network (CDN) カスタム ドメイン向けの HTTPS のサポートでは、転送中のデータのセキュリティを向上させるために、セキュリティで保護されたコンテンツを、独自のドメイン名を使って SSL 経由で配信することができます。 カスタム ドメインの HTTPS を有効にするエンド ツー エンドのワークフローは、ワンクリックでの有効化と完全な証明書の管理によって簡略化され、すべて追加コストなしで使用できます。
+Microsoft は、Azure Content Delivery Network (CDN) 上のカスタム ドメインについて HTTPS プロトコルをサポートします。 HTTPS カスタム ドメインがサポートされていると、転送中のデータのセキュリティを向上させるために、セキュリティで保護されたコンテンツを、独自のドメイン名を使って SSL 経由で配信することができます。 カスタム ドメインの HTTPS を有効にするワークフローは、ワンクリックでの有効化と完全な証明書の管理によって簡略化され、すべて追加コストなしで使うことができます。
 
-転送中のすべての Web アプリケーションの機密データのプライバシーおよびデータの整合性を確保することは不可欠です。 HTTPS プロトコルを使用すると、インターネット経由で送信される機密データを確実に暗号化できます。 HTTPS は信頼と認証を提供し、Web アプリケーションを攻撃から保護します。 既定では、Azure CDN は、CDN エンドポイントで HTTPS をサポートしています。 たとえば、Azure CDN (例: `https://contoso.azureedge.net`) から CDN エンドポイントを作成すると、既定で HTTPS が有効になります。 さらに、カスタム ドメインの HTTPS サポートを使用して、カスタム ドメイン (例: `https://www.contoso.com`) でもセキュリティで保護された配信が可能です。 
+転送中の Web アプリケーションの機密データのプライバシーおよびデータの整合性を確保することは不可欠です。 HTTPS プロトコルを使うことで、インターネット経由で送信される機密データを確実に暗号化できます。 HTTPS は信頼と認証を提供し、Web アプリケーションを攻撃から保護します。 既定では、Azure CDN は、CDN エンドポイントで HTTPS をサポートしています。 たとえば、Azure CDN (例: `https://contoso.azureedge.net`) から CDN エンドポイントを作成すると、既定で HTTPS が有効になります。 さらに、カスタム ドメインの HTTPS サポートを使って、カスタム ドメイン (例: `https://www.contoso.com`) でもセキュリティで保護された配信が可能です。 
 
 HTTPS の機能の主な特性は次のとおりです。
 
@@ -41,7 +41,7 @@ HTTPS の機能の主な特性は次のとおりです。
 
 ## <a name="enabling-https"></a>HTTPS を有効にする
 
-HTTPS を有効にするには、次の手順のようにします。
+カスタム ドメインで HTTPS を有効にするには、次の手順のようにします。
 
 ### <a name="step-1-enable-the-feature"></a>ステップ 1: 機能を有効にする 
 
@@ -66,7 +66,7 @@ HTTPS を有効にするには、次の手順のようにします。
 カスタム ドメインの HTTPS を有効にした後、DigiCert 証明機関 (CA) は、ドメインの [WHOIS](http://whois.domaintools.com/) 登録者情報に従って、ドメインの登録者に連絡し、ドメインの所有権を検証します。 連絡は、WHOIS に登録されているメール アドレス (既定) または電話番号で行われます。 
 
 >[!NOTE]
->Certificate Authority Authorization (CAA) レコードに DNS プロバイダーが登録されている場合、そこには有効な CA として DigiCert が含まれている必要があります。 ドメイン所有者は CAA レコードで、その DNS プロバイダーとともに、ドメインの証明書を発行する権限のある CA を指定できます。 CA は、ドメインの証明書の依頼を受け取っても、そのドメインに CAA レコードがあり、そこに認証された発行者としてその CA がリストされていない場合は、そのドメインまたはサブドメインへの証明書の発行が禁じられます。
+>Certificate Authority Authorization (CAA) レコードに DNS プロバイダーが登録されている場合、そこには有効な CA として DigiCert が含まれている必要があります。 ドメイン所有者は CAA レコードで、その DNS プロバイダーとともに、ドメインの証明書を発行する権限のある CA を指定できます。 CA は、ドメインの証明書の依頼を受け取っても、そのドメインに CAA レコードがあり、そこに認証された発行者としてその CA がリストされていない場合は、そのドメインまたはサブドメインへの証明書の発行が禁じられます。 CAA レコードの管理については、「[Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/)」(CAA レコードを管理する) をご覧ください。 CAA レコード ツールについては、「[CAA Record Helper](https://sslmate.com/caa/)」(CAA レコード ヘルパー) をご覧ください。
 
 ![WHOIS レコード](./media/cdn-custom-ssl/whois-record.png)
 
@@ -128,7 +128,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="disabling-https"></a>HTTPS を無効にする
 
-有効にした HTTPS を後で無効にすることができます。 HTTPS を無効にするには、次の手順のようにします。
+カスタムドメインで有効にした HTTPS を、後で無効にすることができます。 HTTPS を無効にするには、次の手順のようにします。
 
 ### <a name="step-1-disable-the-feature"></a>ステップ 1: 機能を無効にする 
 

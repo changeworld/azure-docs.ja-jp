@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c863dbdcb242bdea208f7e72f6c1f61b5ba04844
 ms.openlocfilehash: 4d48aff7d29def9fa54438a11885b4ff4fba54cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/22/2017
-
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Azure Portal を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 
 この記事では、Azure Portal を使用して Azure 可用性ゾーン内に仮想マシンを作成する手順を説明します。 [可用性ゾーン](../../availability-zones/az-overview.md)とは、1 つの Azure リージョン内で物理的に分離されたゾーンのことです。 可用性ゾーンは、データセンター全体に及ぶ珍しい障害や損失からアプリとデータを保護するために使用します。
@@ -53,7 +51,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 
     ![可用性ゾーンを選択する](./media/create-portal-availability-zone/create-linux-vm-portal-availability-zone.png)
 
-6. 概要ページで **[購入]** をクリックして、仮想マシンのデプロイを開始します。
+6. 概要ページで **[購入]** をクリックして、仮想マシンの展開を開始します。
 
 7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
 
@@ -127,4 +125,3 @@ Tags               : {}
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、可用性ゾーン内に VM を作成する方法を説明しました。 Azure VM の[リージョンと可用性](regions-and-availability.md)の詳細を確認してください。
-

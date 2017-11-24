@@ -15,14 +15,12 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 1180001c9fe74aab6b51c5b5969b80a8c7e1302f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>クラウド コンピューティングと Microsoft Azure の概要
 
 このガイドでは、Microsoft Azure インフラストラクチャのデプロイと管理に関する、中核となる概念をご紹介します。 クラウド コンピューティング、あるいは Azure 自体を使用するのが初めての場合は、このガイドを利用すれば、概念、デプロイ、管理詳細を短時間で学習できます。 このガイドのさまざまなセクションで、仮想マシンのデプロイなどの操作について説明し、さらに詳細な技術情報へのリンクを掲載しています。
@@ -323,7 +321,7 @@ Azure に組み込まれているロールの例:
 
 -   **SQL セキュリティ管理者**: このロールが与えられたユーザーは、SQL のサーバーとデータベースのセキュリティ関連ポリシーを管理できます。
 
--   **ストレージ アカウント共同作成者**: このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
+-   **ストレージ アカウント共同作成者** : このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
 
 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../active-directory/role-based-access-control-configure.md)」を参照してください。
 
@@ -517,4 +515,3 @@ PowerShell モジュールの場合と同様に、Azure コマンド ライン �
 
 - [Windows VM の作成](/virtual-machines/windows/quick-create-portal.md)
 - [Linux VM の作成](../../virtual-machines/linux/quick-create-portal.md)
-

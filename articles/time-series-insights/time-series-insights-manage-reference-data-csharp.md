@@ -1,36 +1,35 @@
 ---
 title: "C# を使用して Azure Time Series Insights 環境の参照データを管理する | Microsoft Docs"
-description: "このチュートリアルでは、C# を使用して Azure Time Series Insights 環境の参照データを管理する方法について説明します"
-keywords: 
+description: "この記事では、C# .NET 言語で記述されたカスタム アプリケーションを作成して、Azure Time Series Insights 環境の参照データを管理する方法について説明します。"
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: venkatgct
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 528a33cf01b2a0a07880dad62ba6bbaf4a605153
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: cd4d37ae2a68be3c061706f80055efb7e5387d98
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の参照データを管理する
 
-この C# サンプルでは、Azure Time Series Insights 環境の参照データを管理する方法を示します。
-サンプルを実行する前に、以下の手順を完了していることを確認してください。
+この記事では、コンパイルして Azure Time Series Insights 環境の参照データを管理できる C# サンプル コードについて説明します。
+
+サンプル コードをコンパイルして実行する前に、次の手順を完了していることを確認してください。
 1. [この記事](time-series-insights-add-reference-data-set.md)に従って参照データ セットを作成する。
-2. アプリケーションの実行時に使用されるアクセス トークンを、Azure Active Directory API を通じて取得する。 このトークンをすべてのクエリ API 要求の `Authorization` ヘッダーで渡す必要があります。 非対話型アプリケーションのセットアップについては、[認証と承認](time-series-insights-authentication-and-authorization.md)に関する記事を参照してください。
-3. サンプルの先頭で定義されているすべての定数を正しく設定する。
 
-## <a name="c-sample"></a>C# のサンプル
+2. アプリケーションが承認に使用するアクセス トークンを構成する。 必ず、Azure Active Directory API を使用してトークンを取得します。 このトークンをすべてのクエリ API 要求の `Authorization` ヘッダーで渡す必要があります。 非対話型アプリケーションのセットアップについては、[認証と承認](time-series-insights-authentication-and-authorization.md)に関する記事を参照してください。
 
+3. サンプル コードを編集して、**#DUMMY#** で指定されたサンプル定数をコードの先頭付近に配置する。 
+
+## <a name="c-sample-code"></a>C# サンプル コード 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 
@@ -233,5 +232,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>次のステップ
-
-詳細な API リファレンスについては、[参照データ API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) に関するドキュメントを参照してください。
+詳細な REST API リファレンスについては、[参照データ API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) に関する記事をご覧ください。

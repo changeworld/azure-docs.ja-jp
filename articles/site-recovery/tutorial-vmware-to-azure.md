@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1c9bfe567b1e0872abc7aba054127735d5f61754
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 461feb952f7e2eddba9c7218b3463868e8cb7965
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -85,20 +85,14 @@ ms.lasthandoff: 11/01/2017
 構成サーバーの VM で、システム クロックがタイム サーバーと同期されていることを確認します。
 時刻の同期は 15 分以内に行う必要があります。 時刻の差が 15 分よりも大きい場合、セットアップが失敗します。
 
-構成サーバーの VM が次の URL にアクセスできることを確認します。
+構成サーバーが次の URL にアクセスできることを確認します。
 
-- *.accesscontrol.windows.net アクセス制御と ID 管理に使用。
-- *.backup.windowsazure.comレプリケーション データの転送と調整に使用。
-- *.blob.core.windows.net レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用。
-- *.hypervrecoverymanager.windowsazure.comレプリケーション管理操作と調整に使用。
-- time.nist.gov and time.windows.comシステム時刻とグローバル時刻間の時刻同期の確認に使用。
+   [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+    
+    - IP アドレスベースのファイアウォール規則がある場合、その規則で Azure への通信を許可します。
 
-Azure Government クラウドの URL:
-
-- *.ugv.hypervrecoverymanager.windowsazure.us
-- *.ugv.backup.windowsazure.us
-- *.ugi.hypervrecoverymanager.windowsazure.us
-- *.ugi.backup.windowsazure.us
+- [Azure データセンターの IP の範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)と HTTPS (443) ポートを許可します。
+    - ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
 
 IP アドレス ベースのファイアウォール規則で、[Azure データ センターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)との通信と、ポート 443 (HTTPS) および 9443 (データ レプリケーション) との通信が許可されている必要があります。 ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲が許可されるようにしてください (アクセス制御と ID 管理に使用されます)。
 

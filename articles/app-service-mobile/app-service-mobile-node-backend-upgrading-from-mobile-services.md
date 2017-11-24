@@ -14,16 +14,16 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 5fc61fed674f0d2fc64bc29c064e7e872b4f2e68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 888717afe14f29fd50da6478c2bba077616a5379
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>App Service への既存の Node.js Azure Mobile Service のアップグレード
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。 詳細については、「 [Mobile Apps とは]」を参照してください。
 
-このトピックでは、既存の Node.js バックエンド アプリケーションを Azure Mobile Services から新しい App Service Mobile Apps にアップグレードする方法について説明します。 このアップグレードの実行中も、既存の Mobile Services アプリケーションの動作を続行できます。  Node.js バックエンド アプリケーションにアップグレードする必要がある場合は、[既存の .NET Mobile Services のアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md)に関するページを参照してください。
+この記事では、既存の Node.js バックエンド アプリケーションを Azure Mobile Services から新しい App Service Mobile Apps にアップグレードする方法について説明します。 このアップグレードの実行中も、既存の Mobile Services アプリケーションの動作を続行できます。  Node.js バックエンド アプリケーションにアップグレードする必要がある場合は、[既存の .NET Mobile Services のアップグレード](app-service-mobile-net-upgrading-from-mobile-services.md)に関するページを参照してください。
 
 Azure App Service にアップグレードされたモバイル バックエンドは、App Service のすべての機能にアクセスでき、Mobile Services の価格ではなく [App Service の価格]に従って課金されます。
 
@@ -56,7 +56,7 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 2. 互換性パッケージを使用してプロジェクトを Azure Mobile App に変換します。
 3. 相違点 (認証設定など) があれば修正します。
 4. 変換済みの Azure Mobile App プロジェクトを新しい App Service にデプロイします。
-5. 新しいモバイル アプリを使用するクライアント アプリケーションの新しいバージョンをリリースする。
+5. 新しい Mobile App を使用するクライアント アプリケーションの新しいバージョンをリリースします。
 6. (省略可能) 元の移行されたモバイル サービス アプリを削除する。
 
 削除は、元の移行されたモバイル サービスのトラフィックがないときに実行されます。
@@ -98,12 +98,12 @@ scripts ディレクトリが格納されているディレクトリから次の
 3. **[リソース グループ]**で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
 
     別の App Service プランを選択するか、または新しいプランを作成することもできます。 App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「 [Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
-4. **[App Service プラン]**には既定のプラン ( [Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。 別のプランを選択することも、[新しいプランを作成](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)することもできます。 App Service プランの設定により、アプリに関連付けられる [場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/) が決まります。
+4. **[App Service プラン]**には既定のプラン ( [Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。 別のプランを選択することも、[新しいプランを作成](../app-service/app-service-plan-manage.md#create-an-app-service-plan)することもできます。 App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。
 
     プランを決定したら、 **[作成]**をクリックします。 モバイル アプリ バックエンドが作成されます。
 
 ### <a name="run-createviewssql"></a>CreateViews.SQL の実行
-スキャフォールディング済みのアプリには、 `createViews.sql`というファイルが存在します。  ターゲット データベースに対してこのスクリプトを実行する必要があります。  ターゲット データベースの接続文字列は、移行済みのモバイル サービスから取得できます (**[設定]** ブレードの **[接続文字列]**)。  名前は `MS_TableConnectionString`です。
+スキャフォールディング済みのアプリには、 `createViews.sql`というファイルが存在します。  ターゲット データベースに対してこのスクリプトを実行する必要があります。  ターゲット データベースの接続文字列は、移行済みのモバイル サービスから取得できます (**[設定]** ページの **[接続文字列]**)。  名前は `MS_TableConnectionString`です。
 
 このスクリプトは、SQL Server Management Studio または Visual Studio 内から実行できます。
 
@@ -116,7 +116,7 @@ App Service に既存のデータベースを関連付けるには、次の作�
 * ボックスの一覧から **[SQL Database]**
 * **[SQL Database]** で既存のデータベースを選択し、**[選択]** をクリックします。
 * **[接続文字列]** にデータベースのユーザー名とパスワードを入力し、**[OK]** をクリックします。
-* **[Add data connections (データ接続の追加)]** ブレードで **[OK]** をクリックします。
+* **[Add data connections]\(データ接続の追加)\** ページで **[OK]** をクリックします。
 
 ユーザー名とパスワードは、移行するモバイル サービスのターゲット データベースの [接続文字列] を見て確認できます。
 

@@ -15,11 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 00f6309114039db23a1d22f1eb70076b842dadca
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
@@ -54,6 +54,16 @@ Azure DNS では、TTL は各レコードではなくレコード セットに�
 Azure DNS は、[ワイルドカード レコード](https://en.wikipedia.org/wiki/Wildcard_DNS_record)をサポートしています。 ワイルドカード レコードは、一致する名前を含むクエリへの応答として返されます (非ワイルドカード レコード セットに、より近い一致がない場合)。 Azure DNS では、NS と SOA を除くすべてのレコードの種類でワイルドカード レコード セットをサポートします。
 
 ワイルドカード レコード セットを作成するには、レコード セット名 "\*" を使用します。 または、左端のラベルを "\*" とした名前も使用できます (例: "\*.foo")。
+
+### <a name="caa-records"></a>CAA レコード
+
+ドメイン所有者は CAA レコードで、ドメインの証明書を発行する権限のある証明機関 (CA) を指定できます。 これにより、CA が状況によって証明書を誤発行することを防ぐことができます。 CAA レコードには、3 つのプロパティがあります。
+* **フラグ**: 0 ～ 255 の整数。[RFC](https://tools.ietf.org/html/rfc6844#section-3) ごとに特別な意味を持つ重要なフラグを表すために使われます。
+* **タグ**: 次のいずれかの ASCII 文字列。
+    * **issue**: 証明書 (すべての種類) の発行を許可されている CA を指定するときに使用します。
+    * **issuewild**: 証明書 (ワイルドカード証明書のみ) の発行を許可されている CA を指定するときに使用します。
+    * **iodef**: 承認されていない証明書発行要求について CA が通知できるメール アドレスまたはホスト名を指定します。
+* **値**: 選択した特定のタグの値。
 
 ### <a name="cname-records"></a>CNAME レコード
 

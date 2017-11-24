@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 09/16/2017
+ms.date: 11/10/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 732ec45003481b0e2f2eca03b6ae13772d325ef1
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 8b84b90e72f8cac1fc1f8a90391b7a5a4f6be1f4
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>シミュレートされたデバイスを使用したソリューションのテスト
 
@@ -39,6 +39,10 @@ ms.lasthandoff: 10/31/2017
 | 名前   | 値      |
 | ------ | ----------- |
 | 状態 | "オン"、"オフ" |
+| オンライン | true、false |
+
+> [!NOTE]
+> **オンライン** テレメトリ値は、シミュレートされるすべての種類で必須です。
 
 *メソッド*
 
@@ -267,7 +271,11 @@ ms.lasthandoff: 10/31/2017
 
 変更をローカルでテストおよびデバッグする方法については、「[Device simulation overview (デバイス シミュレーションの概要)](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)」をご覧ください。
 
-新しい **Lightbulb** デバイス ファイルを出力ディレクトリにコピーするよう、プロジェクトを構成します。
+新しい **Lightbulb** デバイス ファイルを出力ディレクトリにコピーするよう、次のようにプロジェクトを構成します。
+
+* Visual Studio を使用している場合は、前のセクションで作成した 3 つの新しい Lightbulb ファイルをソリューション内の **Services** プロジェクトに必ず追加します。 次に、**ソリューション エクスプローラー**を使用して、出力ディレクトリにコピーされるようにマークします。
+
+* Visual Studio Code を使用している場合は、**Services.csproj** ファイルを開き、前のセクションで作成した 3 つの新しい Lightbulb ファイルを追加します。 例として、**Services.csproj** ファイルの既存のデバイス モデル ファイル エントリを参照してください。
 
 デプロイされたソリューション内で新しいデバイスをテストする方法については、次の記事のいずれかをご覧ください。
 

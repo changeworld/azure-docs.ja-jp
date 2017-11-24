@@ -11,26 +11,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2017
+ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 6d1bd5959c540033cc913062cf64cc01ab54c3f9
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 5c738fd8399fb555bcc72aacd278b5966a624cc7
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Linux VM 管理対象サービス ID (MSI) を使用した Azure Data Lake Store へのアクセス
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Linux 仮想マシン (VM) の管理対象サービス ID (MSI) を使用して、Azure Data Lake Store にアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。 学習内容は次のとおりです。
+このチュートリアルでは、Linux 仮想マシン (VM) の管理対象サービス ID (MSI) を使用して、Azure Data Lake Store にアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、コードに資格情報を挿入しなくても、Azure AD の認証をサポートするサービスを認証できます。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Linux VM で MSI を有効にする 
 > * VM に Azure Data Lake Store へのアクセスを許可する
 > * VM ID を使用してアクセス トークンを取得し、それを使用して Azure Data Lake Store にアクセスする
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../includes/active-directory-msi-tut-prereqs.md)]
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

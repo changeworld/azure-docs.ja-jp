@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/29/2017
 ms.author: denlee
-ms.openlocfilehash: 228d739ac4505d9f16c43bb484dd8050631f084e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 361f63141a8bf3f901eee6c93742f1a7fdc4348f
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
 
@@ -75,9 +75,23 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
         });
     ```
 
-  構成はすべて、次のセクションで編集する `config.js` に含まれています。
+  構成はすべて、[次のセクション](#update-your-connection-string)で編集する `config.js` に含まれています。
 
-* Gremlin の一連の手順は、`client.execute` メソッドを使用して実行されます。
+* さまざまな Gremlin 操作を実行する一連の関数が定義されています。 その一例を次に示します。
+
+    ```nodejs
+    function addVertex1(callback)
+    {
+        console.log('Running Add Vertex1'); 
+        client.execute("g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('userid', 1)", { }, (err, results) => {
+          if (err) callback(console.error(err));
+          console.log("Result: %s\n", JSON.stringify(results));
+          callback(null)
+        });
+    }
+    ```
+
+* 各関数は、Gremlin クエリ文字列パラメーターが指定された `client.execute` メソッドを実行します。 `g.V().count()` の実行方法の例を次に示します。
 
     ```nodejs
     console.log('Running Count'); 
@@ -88,11 +102,28 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
     });
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列を更新する
+* このファイルの最後で、`async.waterfall()` メソッドを使用してすべてのメソッドが呼び出されます。 すべてのメソッドは順に実行されます。
+
+    ```nodejs
+    try{
+        async.waterfall([
+            dropGraph,
+            addVertex1,
+            addVertex2,
+            addEdge,
+            countVertices
+            ], finish);
+    } catch(err) {
+        console.log(err)
+    }
+    ```
+
+
+## <a name="update-your-connection-string"></a>接続文字列の更新
 
 1. config.js ファイルを開きます。 
 
-2. config.js の config.endpoint キーに、Azure Portal の **[概要]** ページに表示される **[Gremlin URI]** の値を設定します。 
+2. config.js の `config.endpoint` キーに、Azure Portal の **[概要]** ページに表示される **[Gremlin URI]** の値を設定します。 
 
     `config.endpoint = "GRAPHENDPOINT";`
 

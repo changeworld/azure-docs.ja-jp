@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/23/2017
+ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: 7e45fafaa4fc0d9d146197aa62e495475cc32251
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: ac1620cc6a3bf55e14087676ecc796207b458838
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/09/2017
 ---
-# <a name="compute-optimized-linux-vm-sizes"></a>コンピューティング最適化された Linux VM のサイズ
+# <a name="compute-optimized-virtual-machine-sizes"></a>コンピューティング最適化済み仮想マシンのサイズ
 
 [!INCLUDE [virtual-machines-common-sizes-compute](../../../includes/virtual-machines-common-sizes-compute.md)]
 

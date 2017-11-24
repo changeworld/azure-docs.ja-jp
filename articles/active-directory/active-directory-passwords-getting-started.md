@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2017
+ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: c5ba922175a25776c6e27ee03fae9b2941235881
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0320cb33dcab63ea394cf8e13e9aef5cc75951fa
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Azure AD のセルフ サービスによるパスワード リセットの迅速なデプロイ
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/15/2017
 
 セルフ サービスによるパスワードのリセット (SSPR) は、ユーザーが自分のパスワードやアカウントのリセットまたはロック解除を行うことができるようにする簡単な方法を IT 管理者に提供します。 このシステムには、ユーザーがいつシステムにアクセスしたかを追跡する詳細なレポートと、誤用または悪用について警告する通知が用意されています。
 
-このガイドでは、試用版またはライセンス版の Azure Active Directory (Azure AD) テナントが既に稼働していることを前提としています。 Azure AD の設定に関するヘルプが必要な場合は、[Azure AD の概要](https://azure.microsoft.com/trial/get-started-active-directory/)に関する記事を参照してください。
+このガイドでは、試用版またはライセンス版の Azure Active Directory (Azure AD) テナントが既に稼働していることを前提としています。 Azure AD の設定に関するヘルプが必要な場合は、[Azure AD の概要](get-started-azure-ad.md)に関する記事を参照してください。
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Azure AD テナントの SSPR の有効化
 
@@ -73,7 +73,7 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 
 * [DirSync または Azure AD Sync から Azure AD Connect へのアップグレード](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [簡単設定を使用した Azure AD Connect の開始](./connect/active-directory-aadconnect-get-started-express.md)
-* [パスワード ライトバックを構成](active-directory-passwords-writeback.md#configuring-password-writeback)し、パスワードを Azure AD からオンプレミス ディレクトリに書き戻します。
+* [パスワード ライトバックを構成](active-directory-passwords-writeback.md#configure-password-writeback)し、パスワードを Azure AD からオンプレミス ディレクトリに書き戻します。
 
 ### <a name="on-premises-policy-change"></a>オンプレミスのポリシーの変更
 
@@ -97,7 +97,7 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 * [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
-* [ライセンスに関する質問。](active-directory-passwords-licensing.md)
+* [ライセンスに関する質問](active-directory-passwords-licensing.md)
 * [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)

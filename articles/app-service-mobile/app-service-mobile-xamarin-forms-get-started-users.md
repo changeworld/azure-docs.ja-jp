@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: panarasi
-ms.openlocfilehash: 9e14e95793bcc81ad46783fd50ba223eec4ea360
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81c731f560ed9cdc56416076cd44cba504fa614d
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Xamarin Forms アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 認証をセキュリティで保護するには、アプリ用の新しい URL スキームの定義が必要になります。 これによって、認証プロセスが完了すると認証システムからアプリにリダイレクトできます。 このチュートリアル全体を通して、URL スキーム _appname_ を使用します。 ただし、選択したあらゆる URL スキームを使用できます。 URL スキームは、モバイル アプリに対して一意である必要があります。 サーバー側でリダイレクトを有効にするには、以下の手順に従います。
 
-1. [Azure Portal] で、App Service を選択します。
+1. [[Azure Portal]][8] で、App Service を選択します。
 
 2. **[認証/承認]** メニュー オプションをクリックします。
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 4. **[OK]**をクリックします。
 
-5. [ **Save**] をクリックします。
+5. **[ Save]** をクリックします。
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -166,9 +166,9 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 
     Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider][7] には別の値を選択してください。
 
-6. AndroidManifest.xml の <application> ノード内に以下のコードを追加します。
+6. `<application>` 要素に次の XML を追加して、**AndroidManifest.xml** ファイルを更新します。
 
-```xml
+    ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
@@ -177,15 +177,15 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
         <data android:scheme="{url_scheme_of_your_app}" android:host="easyauth.callback" />
       </intent-filter>
     </activity>
-```
-
-1. `LoadApplication()` の呼び出しの前にある **MainActivity** クラスの **OnCreate** メソッドに次のコードを追加します。
+    ```
+    `{url_scheme_of_your_app}` を自分の URL スキームで置換します。
+7. `LoadApplication()` の呼び出しの前にある **MainActivity** クラスの **OnCreate** メソッドに次のコードを追加します。
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
 
     このコードにより、アプリの読み込み前に Authenticator が初期化されるようになります。
-2. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
+8. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
 
 ## <a name="add-authentication-to-the-ios-app"></a>iOS アプリに認証を追加する
 このセクションでは、iOS アプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。 iOS デバイスをサポートしない場合、このセクションはスキップしてください。
@@ -236,23 +236,23 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
         }
 
     Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider] には別の値を選択してください。
-
-6. OpenUrl(UIApplication app, NSUrl url, NSDictionary options) メソッド オーバーロードを追加して、AppDelegate クラスを更新します。
+    
+6. 次のように **OpenUrl** メソッド オーバーロードを追加して、**AppDelegate** クラスを更新します。
 
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
         {
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
-
-6. `LoadApplication()` の呼び出しの前の **FinishedLaunching** メソッドに、次のコード行を追加します。
+   
+7. `LoadApplication()` の呼び出しの前の **FinishedLaunching** メソッドに、次のコード行を追加します。
 
         App.Init(this);
 
     このコードにより、アプリの読み込み前に Authenticator が初期化されるようになります。
 
-6. **{url_scheme_of_your_app}** を Info.plist の URL スキームに追加します。
+8. Info.plist を開き、**[URL Type]** を追加します。 **[Identifier]** を任意の名前に、**[URL Schemes]** をアプリの URL スキームに、**[Role]** を [None] に設定します。
 
-7. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
+9. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
 
 ## <a name="add-authentication-to-windows-10-including-phone-app-projects"></a>Windows 10 (Phone を含む) アプリ プロジェクトに認証を追加する
 このセクションでは、Windows 10 アプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。 同じ手順をユニバーサル Windows プラットフォーム (UWP) プロジェクトにも適用できますが、**UWP** プロジェクトを使用します (相違点が注記されています)。 Windows デバイスをサポートしない場合、このセクションはスキップしてください。
@@ -306,7 +306,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
             return success;
         }
 
-    Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider] には別の値を選択してください。
+    Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider][7] には別の値を選択してください。
 
 1. `LoadApplication()` の呼び出しの前にある **MainPage** クラスのコンストラクター内に次のコード行を追加します。
 
@@ -326,12 +326,9 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
                 ProtocolActivatedEventArgs protocolArgs = args as ProtocolActivatedEventArgs;
                 TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(protocolArgs.Uri);
             }
-
        }
 
-   メソッドのオーバーライドが既に存在する場合は、前のスニペットから条件付きコードを追加してください。  このコードは、ユニバーサル Windows プロジェクトでは必要ありません。
-
-3. **{url_scheme_of_your_app}** を Package.appxmanifest に追加します。 
+3. Package.appxmanifest を開き、**[プロトコル]** 宣言を追加します。 **[表示名]** を任意の名前に設定し、**[名前]** をアプリの URL スキームに設定します。
 
 4. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
 
@@ -355,3 +352,4 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 [5]: app-service-mobile-dotnet-how-to-use-client-library.md#serverflow
 [6]: app-service-mobile-dotnet-how-to-use-client-library.md#clientflow
 [7]: https://msdn.microsoft.com/library/azure/jj730936(v=azure.10).aspx
+[8]: https://portal.azure.com

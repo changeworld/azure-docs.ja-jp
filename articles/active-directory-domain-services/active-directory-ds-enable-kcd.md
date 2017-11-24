@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: f36f16a7bb00ace9fd5164eb38ba77f015f22f5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0235944ef89cab7af152664651711edd5e80e632
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>管理対象ドメインで Kerberos の制約付き委任 (KCD) を構成する
 多くのアプリケーションは、ユーザーのコンテキストでリソースにアクセスする必要があります。 Active Directory では、このユース ケースを可能にする、Kerberos の委任というメカニズムをサポートしています。 さらに、特定のリソースのみにユーザーのコンテキストでアクセスできるように、委任を制限できます。 Azure AD Domain Services の管理対象ドメインは、従来の Active Directory ドメインとは異なっており、より安全にロックダウンされています。
@@ -30,7 +30,7 @@ Kerberos の委任は、あるアカウントが別のセキュリティ プリ�
 
 Kerberos の制約付き委任 (KCD) は、指定したサーバーがユーザーの代理で操作できるサービス/リソースを制限します。 従来の KCD では、サービスのドメイン アカウントを構成するのにドメイン管理者の特権が必要です。また、そのアカウントは 1 つのドメインに対して制限されます。
 
-従来の KCD に関しては、問題もいくつかあります。 以前のオペレーティング システムではドメイン管理者がサービスを構成していて、サービス管理者には、所有しているリソース サービスに委任されるフロントエンド サービスを把握する便利な方法はありませんでした。 また、リソース サービスに委任されるフロントエンド サービスは攻撃ポイントになる可能性がありました。 フロントエンド サービスをホストするサーバーが侵害され、そのフロントエンド サービスがリソース サービスに委任されるように構成されている場合、リソース サービスも侵害される可能性がありました。
+従来の KCD に関しては、問題もいくつかあります。 以前のオペレーティング システムでは、ドメイン管理者がサービスにアカウント ベースの KCD を構成した場合、サービス管理者には、所有しているリソース サービスに委任されるフロントエンド サービスを把握する便利な方法はありませんでした。 また、リソース サービスに委任されるフロントエンド サービスは攻撃ポイントになる可能性がありました。 フロントエンド サービスをホストするサーバーが侵害され、そのフロントエンド サービスがリソース サービスに委任されるように構成されている場合、リソース サービスも侵害される可能性がありました。
 
 > [!NOTE]
 > Azure AD Domain Services の管理対象ドメインでは、ドメイン管理者特権がありません。 したがって、**管理対象ドメインで従来の KCD を構成することはできません**。 この記事で説明されているように、リソースベースの KCD を使用してください。 このメカニズムの方が安全性も高くなります。
@@ -38,14 +38,14 @@ Kerberos の制約付き委任 (KCD) は、指定したサーバーがユーザ�
 >
 
 ## <a name="resource-based-kerberos-constrained-delegation"></a>リソースベースの Kerberos の制約付き委任
-Windows Server 2012 R2 と Windows Server 2012 では、サービスの制約付き委任を構成する権限は、ドメイン管理者からサービス管理者に移行されています。 これにより、バックエンド サービス管理者はフロントエンド サービスを許可または拒否できます。 このモデルは、**リソースベースの Kerberos の制約付き委任**と呼ばれます。
+Windows Server 2012 以降では、サービス管理者はサービスに制約付き委任を構成できるようになりました。 このモデルでは、バックエンド サービス管理者は特定のフロントエンド サービスによる KCD の使用を許可または拒否できます。 このモデルは、**リソースベースの Kerberos の制約付き委任**と呼ばれます。
 
 リソースベースの KCD は PowerShell を使用して構成します。 偽装する側のアカウントがコンピューター アカウントであるか、ユーザー アカウント/サービス アカウントであるかによって、Set-ADComputer コマンドレットまたは Set-ADUser コマンドレットを使用します。
 
 ### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>管理対象ドメインでコンピューター アカウントにリソースベースの KCD を構成する
 コンピューター "contoso100-webapp.contoso100.com" で実行されている Web アプリがあるとします。 この Web アプリは、ドメイン ユーザーのコンテキストでリソース ("contoso100-api.contoso100.com" で実行されている Web API) にアクセスする必要があります。 このシナリオでリソースベースの KCD を設定する方法を次に示します。
 
-```
+```powershell
 $ImpersonatingAccount = Get-ADComputer -Identity contoso100-webapp.contoso100.com
 Set-ADComputer contoso100-api.contoso100.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
@@ -53,7 +53,7 @@ Set-ADComputer contoso100-api.contoso100.com -PrincipalsAllowedToDelegateToAccou
 ### <a name="configure-resource-based-kcd-for-a-user-account-on-a-managed-domain"></a>管理対象ドメインでユーザー アカウントにリソースベースの KCD を構成する
 サービス アカウント "appsvc" として実行されている Web アプリがあり、この Web アプリがドメイン ユーザーのコンテキストでリソース (サービス アカウント "backendsvc" として実行されている Web API) にアクセスする必要があるとします。 このシナリオでリソースベースの KCD を設定する方法を次に示します。
 
-```
+```powershell
 $ImpersonatingAccount = Get-ADUser -Identity appsvc
 Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```

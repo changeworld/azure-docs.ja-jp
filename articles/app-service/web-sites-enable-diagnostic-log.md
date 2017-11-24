@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1366cd79248b2e0008234a5da0d87552e6530d80
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a9c5743c92ac48202c19c2f6f024238c147d8444
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Azure App Service の Web アプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -48,12 +48,12 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 App Service Web Apps は、Web アプリにコンテンツをパブリッシュしたときのデプロイ情報もログに記録します。 これは自動的に行われ、展開ログの構成設定はありません。 デプロイ ログでは、デプロイが失敗した理由を特定できます。 たとえば、カスタムのデプロイ スクリプトを使用している場合は、デプロイ ログを使用して、スクリプトでエラーが発生する理由を特定できることがあります。
 
 ## <a name="enablediag"></a>診断を有効にする方法
-[Azure Portal](https://portal.azure.com) で診断を有効にするには、Web アプリのブレードに移動し、**[設定]、[診断ログ]** の順にクリックします。
+[Azure Portal](https://portal.azure.com) で診断を有効にするには、Web アプリのページに移動し、**[設定]、[診断ログ]** の順にクリックします。
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![ログ パーツ](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-**アプリケーション診断**を有効にするときに、**レベル**も選択できます。 この設定を使用して、取得された情報を、**情報**、**警告**、または**エラー情報**にフィルター処理できます。 これを **詳細** に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。
+**アプリケーション診断**を有効にするときに、**レベル**も選択できます。 この設定を使用して、取得された情報を、**情報**、**警告**、または**エラー情報**にフィルター処理できます。 これを**詳細**に設定すると、アプリケーションにより生成されるすべての情報がログに記録されます。
 
 > [!NOTE]
 > web.config ファイルの変更とは異なり、アプリケーション診断の有効化や診断ログ レベルの変更によって、アプリケーションが実行されているアプリケーション ドメインがリサイクルされることはありません。
@@ -113,7 +113,7 @@ FTP を使用して診断情報にアクセスするには、 **クラシック 
 
     Save-AzureWebSiteLog -Name webappname
 
-これにより、**-Name** パラメーターにより指定された Web アプリのログが、現在のディレクトリにある **logs.zip** というファイルに保存されます。
+このコマンドで、**-Name** パラメーターにより指定された Web アプリのログが、現在のディレクトリにある **logs.zip** というファイルに保存されます。
 
 > [!NOTE]
 > Azure PowerShell をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure PowerShell の使用方法](/develop/nodejs/how-to-guides/powershell-cmdlets/)に関するページを参照してください。
@@ -125,7 +125,7 @@ Azure コマンド ライン インターフェイスを使用してログ フ�
 
     azure site log download webappname
 
-これにより、"webappname" という名前の Web アプリのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
+このコマンドで、"webappname" という名前の Web アプリのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 
 > [!NOTE]
 > Azure コマンド ライン インターフェイス (Azure CLI) をインストールしていない場合や、Azure サブスクリプションを使用するように構成していない場合は、 [Azure CLI の使用方法](../cli-install-nodejs.md)に関するページを参照してください。
@@ -160,7 +160,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
     Get-AzureWebSiteLog -Name webappname -Tail
 
-**-Name** パラメーターにより指定された Web アプリに接続され、ログ イベントが Web アプリで発生したら、PowerShell ウィンドウへの情報のストリーミングが開始されます。 /LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
+このコマンドで、**-Name** パラメーターに指定された Web アプリに接続され、ログ イベントが Web アプリで発生したら、PowerShell ウィンドウへの情報のストリーミングが開始されます。 /LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
 特定のイベント (エラーなど) をフィルター処理するには、 **-Message** パラメーターを使用します。 For example:
 
@@ -182,7 +182,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
     az webapp log tail --name webappname --resource-group myResourceGroup
 
-"webappname" という名前の Web アプリに接続され、ログ イベントが Web アプリで発生したら、ウィンドウへの情報のストリーミングが開始されます。 /LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
+このコマンドで、"webappname" という名前の Web アプリに接続され、ログ イベントが Web アプリで発生したら、ウィンドウへの情報のストリーミングが開始されます。 /LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
 特定のイベント (エラーなど) をフィルター処理するには、 **-Filter** パラメーターを使用します。 For example:
 
@@ -205,7 +205,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 ファイル システムにログが記録される行またはストリーミングによって受信する行は、それぞれ以下の形式になります。
 
-    {Date}  PID[{process id}] {event type/level} {message}
+    {Date}  PID[{process ID}] {event type/level} {message}
 
 たとえば、エラー イベントは次のようになります。
 
@@ -258,7 +258,7 @@ BLOB に格納されるデータは次のようになります。
 >
 
 ### <a name="failed-request-traces"></a>失敗した要求トレース
-失敗した要求トレースは **fr######.xml** という名前の XML ファイルに保存されます。 ログに記録された情報を見やすくするには、**freb.xsl** という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。 Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。 たとえば、次のように表示されます。
+失敗した要求トレースは **fr######.xml** という名前の XML ファイルに保存されます。 ログに記録された情報を見やすくするには、**freb.xsl** という名前の XSL スタイルシートを XML ファイルと同じディレクトリに配置します。 Internet Explorer でいずれかの XML ファイルを開くと、トレース情報が XSL スタイルシートを使用して書式設定されて表示されます。 次の例のようになります。
 
 ![失敗した要求をブラウザーで表示したところ](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
@@ -282,7 +282,3 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 >
 >
-
-## <a name="whats-changed"></a>変更内容
-* Web サイトから App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 以前のポータルから新しいポータルへの変更ガイドについては、「 [Azure ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)

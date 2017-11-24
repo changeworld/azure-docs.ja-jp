@@ -14,20 +14,22 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: 323d574cbdeea1a2141d3c10d402e44e8af8ee19
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: f47e5dfb174a0c7b99111485cee74eb01df665c7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-use-azure-table-storage-from-java"></a>Java から Azure Table Storage を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>概要
 このガイドでは、Azure Table ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。 テーブルの詳細については、「 [次のステップ](#Next-Steps) 」のセクションを参照してください。
 
-注: SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、「[Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]｣をご覧ください。
+> [!NOTE]
+> SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、「[Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]｣をご覧ください。
+>
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -70,7 +72,11 @@ String storageConnectionString =
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。
 
 ## <a name="how-to-create-a-table"></a>方法: テーブルを作成する
-**CloudTableClient** オブジェクトを使うと、テーブルとエンティティの参照オブジェクトを取得できます。 次のコードは、**CloudTableClient** オブジェクトを作成し、これを使って新しい **CloudTable** オブジェクトを作成します。この CloudTable オブジェクトは、"people" という名前のテーブルを表します (注: **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳しくは、[Azure ストレージ クライアント SDK リファレンス]の **CloudStorageAccount** をご覧ください)。
+**CloudTableClient** オブジェクトを使うと、テーブルとエンティティの参照オブジェクトを取得できます。 次のコードは、**CloudTableClient** オブジェクトを作成し、これを使って新しい **CloudTable** オブジェクトを作成します。この CloudTable オブジェクトは、"people" という名前のテーブルを表します 
+
+> [!NOTE]
+> **CloudStorageAccount** オブジェクトを作成する方法は他にもあります。詳しくは、「[Azure ストレージ クライアント SDK リファレンス]」の **CloudStorageAccount** をご覧ください。)
+>
 
 ```java
 try

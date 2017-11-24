@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: raynew
-ms.openlocfilehash: 17bd7f424117842fd0687ba8a5fcf4d83c96a0bb
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 503d7060437d08ed35681fca7f1b9306746b7f44
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/12/2017
 2. **[復旧サイトへ]** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere Hypervisor を使う\)** の順に選択します。 次に、 **[OK]**をクリックします
 3. **[Scout のセットアップ]** で、InMage Scout 8.0.1 GA ソフトウェアと登録キーをダウンロードします。 すべてのコンポーネントのセットアップ ファイルは、ダウンロードした .zip ファイルに含まれています。
 
-## <a name="install-component-updates"></a>コンポーネント更新プログラムのインストール
+## <a name="download-and-install-component-updates"></a>コンポーネント更新プログラムのダウンロードとインストール
 
  最新の[更新プログラム](#updates)をレビューしてインストールします。 更新プログラムは、次の順序でサーバーにインストールする必要があります。
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/12/2017
 ## <a name="enable-replication"></a>Enable replication
 
 1. ソースとターゲットの VMware サイト間にレプリケーションを設定します。
-2. 手順については、製品と共にダウンロードされる InMage Scout の資料をご覧ください。 または、次の資料をご覧ください。
+2. インストール、保護、復旧について詳しくは、次のドキュメントをご覧ください。
 
    * [リリース ノート](https://aka.ms/asr-scout-release-notes)
    * [互換性対応表](https://aka.ms/asr-scout-cm)
@@ -95,6 +95,8 @@ ms.lasthandoff: 10/12/2017
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 更新プログラム 6 
 更新日: 2017 年 10 月 12 日
+
+[Scout 更新プログラム 6](https://aka.ms/asr-scout-update6) をダウンロードします。
 
 Scout 更新プログラム 6 は累積的な更新プログラムです。 更新プログラム 1 から更新プログラム 5 までのすべての修正と、下記の新しい修正および拡張機能が含まれています。 
 

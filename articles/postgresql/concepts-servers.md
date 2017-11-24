@@ -1,6 +1,6 @@
 ---
 title: "Azure Database for PostgreSQL のサーバーの概念 | Microsoft Docs"
-description: "このトピックでは、Azure Database for PostgreSQL サーバーを操作するための考慮事項とガイドラインを示します。"
+description: "このトピックでは、Azure Database for PostgreSQL サーバーを構成および管理するための考慮事項とガイドラインを示します。"
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 67cf6b133e8e869ee3a157d79d68602760d9137c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/08/2017
+ms.openlocfilehash: 46e109c25f8cbdba9b3769db7563259f7c6705d4
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL サーバー
 この記事では、Azure Database for PostgreSQL サーバーを操作するための考慮事項とガイドラインを示します。
@@ -30,7 +30,7 @@ Azure Database for PostgreSQL サーバーの特徴を次に示します。
 - リージョンにリソースを併置します。
 - サーバーおよびデータベース アクセスの接続エンドポイントを提供します (.postgresql.database.azure.com)。
 - データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成など) を提供します。
-- 複数のバージョンで使用できます。 詳細については、[サポートされる PostgreSQL データベース バージョン](concepts-supported-versions.md)に関するページをご覧ください。
+- 複数のバージョンで使用できます。 詳しくは、「[サポートされている PostgreSQL Database バージョン](concepts-supported-versions.md)」をご覧ください。
 - ユーザーが拡張できます。 詳細については、[PostgreSQL の拡張機能](concepts-extensions.md)に関するページをご覧ください。
 
 Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを利用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、価格レベル、コンピューティング ユニット、ストレージ (GB) の構成に基づき、サーバーごとに構造化されています。 詳細については、「[価格レベル](./concepts-service-tiers.md)」をご覧ください。
@@ -47,9 +47,16 @@ Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベ
 |||
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
-Azure Database for PostgreSQL サーバーを管理するには、Azure Portal または [Azure CLI](/cli/azure/postgres) を使用します。
+Azure Database for PostgreSQL サーバーを管理するには、[Azure Portal](https://portal.azure.com) または [Azure CLI](/cli/azure/postgres) を使用します。
+
+## <a name="server-parameters"></a>サーバー パラメーター
+PostgreSQL サーバー パラメーターは、サーバーの構成を決定します。 Azure Database for PostgreSQL では、Azure Portal または Azure CLI を介してパラメーターの一覧を表示および編集できます。 
+
+Postgres の管理対象サービスとして、Azure Database for PostgreSQL 内の構成可能なパラメーターはローカル Postgres インスタンス内のパラメーターのサブセットです (Postgres パラメーターについて詳しくは、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.6/static/runtime-config.html)をご覧ください)。 Azure Database for PostgreSQL サーバーは、作成時に各パラメーターに対して既定値で有効化されます。 変更を反映するためにサーバーの再起動やスーパー ユーザーのアクセス権が必要なパラメーターは、ユーザーが構成することはできません。
+
 
 ## <a name="next-steps"></a>次のステップ
 - サービスの概要については、[Azure Database for PostgreSQL の概要](overview.md)に関するページをご覧ください。
 - **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](concepts-service-tiers.md)に関するページをご覧ください。
 - サービスへの接続については、「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」を参照してください。
+- [Azure Portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) でサーバー パラメーターを表示および編集します。

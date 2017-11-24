@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: e1ce5d337e8dea6e1dc48f04238ecb31c31909b1
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 050758240c9670a6f120f069d736cf6d6475b534
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -84,8 +84,25 @@ Azure ML Workbench での作業中に、アプリケーション シェルの左
 
 - RevoScalePy ライブラリは、Windows または Linux (Docker コンテナー) でのみサポートされています。 macOS ではサポートされていません。
 
-## <a name="delete-experimentation-account"></a>実験アカウントの削除
-CLI を使用して実験アカウントを削除できますが、最初に、子ワークスペースとその子ワークスペース内の子プロジェクトを削除する必要があります。
+## <a name="cant-update-workbench"></a>Workbench を更新できない
+新しい更新が使用できる場合、Workbench アプリのホームページには、その新しい更新に関する情報を通知するメッセージが表示されます。 アプリの左下隅にあるベル アイコンに更新バッジが表示されます。 そのバッジをクリックし、インストーラー ウィザードに従って更新をインストールします。 
+
+![更新イメージ](./media/known-issues-and-troubleshooting-guide/update.png)
+
+通知が表示されない場合は、アプリの再起動を試みてください。 再起動してもまだ更新通知が表示されない場合は、いくつかの原因が考えられます。
+
+### <a name="you-are-launching-workbench-from-a-pinned-shortcut-on-the-task-bar"></a>タスク バーのピン留めされたショートカットから Workbench を起動している
+既に更新をインストールしている可能性があります。 しかし、ピン留めされたショートカットが、まだディスク上の古いビットを指しています。 これは、`%localappdata%/AmlWorkbench` フォルダーを参照して、そこに最新バージョンがインストールされているかどうかを確認し、ピン留めされたショートカットのプロパティを調べてそれがどこを指しているかを確認することによって検証できます。 検証された場合は、単純に古いショートカットを削除し、[スタート] メニューから Workbench を起動します。さらに、必要に応じて、タスク バーに新しいピン留めされたショートカットを作成します。
+
+### <a name="you-installed-workbench-using-the-install-azure-ml-workbench-link-on-a-windows-dsvm"></a>Windows DSVM の [install Azure ML Workbench] (Azure ML Workbench のインストール) リンクを使用して Workbench をインストールした
+残念ながら、この問題の簡単な解決策はありません。 インストールされているビットを削除し、最新のインストーラーをダウンロードして Workbench を新規インストールするために、次の手順を実行する必要があります。 
+   - フォルダー `C:\Users\<Username>\AppData\Local\amlworkbench` を削除する
+   - スクリプト `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1` を削除する
+   - 上のスクリプトを起動するデスクトップ ショートカットを削除する
+   - インストーラー https://aka.ms/azureml-wb-msi をダウンロードし、再インストールする。
+
+## <a name="cant-delete-experimentation-account"></a>実験アカウントを削除できない
+CLI を使用して実験アカウントを削除できますが、最初に、子ワークスペースとその子ワークスペース内の子プロジェクトを削除する必要があります。 そうしないと、エラーが表示されます。
 
 ```azure-cli
 # delete a project
@@ -100,9 +117,11 @@ $ az ml account experimentation delete -g <resource group name> -n <experimentat
 
 Workbench アプリからプロジェクトとワークスペースを削除することもできます。
 
+## <a name="cant-open-file-if-project-is-in-onedrive"></a>プロジェクトが OneDrive に存在する場合はファイルを開けない
+Windows 10 Fall Creators Update を使用しており、プロジェクトが OneDrive にマッピングされたローカル フォルダー内に作成されている場合は、Workbench でどのファイルも開けないことに気付く可能性があります。 これは、OneDrive フォルダー内で node.js コードを失敗させる、Fall Creators Update によって導入されたバグのためです。 このバグは Windows Update によってすぐに修正されますが、それまでは OneDrive フォルダー内にプロジェクトを作成しないでください。
 
 ## <a name="file-name-too-long-on-windows"></a>Windows では長すぎるファイル名
-Windows で Workbench を使用している場合、既定で最大 260 文字のファイル名の長さ制限に遭遇することがあります。これにより、"指定されたパスが見つかりません" という誤解を招くエラーが表示される可能性があります。 さらに長いファイル パス名が許可されるようにレジストリ キーの設定を変更できます。 _MAX_PATH_ レジストリ キーを設定する方法の詳細については、[この記事](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)を参照してください。
+Windows で Workbench を使用している場合、既定の最大 260 文字のファイル名の長さ制限に達することがあります。これにより、"指定されたパスが見つかりません" というエラーが表示される可能性があります。 さらに長いファイル パス名が許可されるようにレジストリ キーの設定を変更できます。 _MAX_PATH_ レジストリ キーを設定する方法の詳細については、[この記事](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)を参照してください。
 
 ## <a name="docker-error-read-connection-refused"></a>Docker エラー "read: connection refused"
 ローカル Docker コンテナーに対して実行しているときに、次のエラーが表示される場合があります。 

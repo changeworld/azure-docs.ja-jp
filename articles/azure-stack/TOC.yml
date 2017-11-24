@@ -63,6 +63,8 @@
           href: azure-stack-integrate-identity.md
         - name: エンドポイントの発行
           href: azure-stack-integrate-endpoints.md
+        - name: 外部の監視
+          href: azure-stack-integrate-monitor.md
         - name: セキュリティ
           href: azure-stack-integrate-security.md
     - name: 管理
@@ -155,10 +157,10 @@
               href: azure-stack-mysql-resource-provider-deploy.md
             - name: SQL リソース プロバイダーのデプロイ
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: SQL データベースの作成
-              href: azure-stack-sql-resource-provider-databases.md
             - name: ホスティング サーバーの追加
               href: azure-stack-sql-resource-provider-hosting-servers.md
+            - name: SQL データベースの作成
+              href: azure-stack-sql-resource-provider-databases.md
         - name: App Service を PaaS として提供する
           items:
             - name: Azure Stack 上の App Service の概要

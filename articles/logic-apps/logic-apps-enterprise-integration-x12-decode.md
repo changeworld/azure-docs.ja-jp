@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 18719a8f49c74973947517161f7306c233a9323f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9605fc3a1096d053bfeffb2544499935601b2c0f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の X12 メッセージをデコードする
 
@@ -65,6 +65,16 @@ Decode X12 メッセージ コネクタを使用すると、取引先契約に�
     次に例を示します。
 
     ![デコードする X12 フラット ファイル メッセージの選択](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+
+   > [!NOTE]
+   > メッセージ配列の実際のメッセージ内容またはペイロードは、良い悪いにかかわらず、base64 でエンコードされます。 そのため、このコンテンツを処理する式を指定する必要があります。
+   > コードビューで入力できる XML として、またはデザイナーで式ビルダーを使用して、コンテンツを処理する例を示します。
+   > ``` json
+   > "content": "@xml(base64ToBinary(item()?['Payload']))"
+   > ```
+   > ![コンテンツの例](media/logic-apps-enterprise-integration-x12-decode/content-example.png)
+   >
+
 
 ## <a name="x12-decode-details"></a>X12 Decode の詳細
 

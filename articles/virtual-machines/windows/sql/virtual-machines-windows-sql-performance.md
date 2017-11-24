@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: jroth
-ms.openlocfilehash: e502be189a29590ebe0d848b3ec43611db8d035d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6386678bdac3630f3e003187ff3d12c0ce053b90
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
 
@@ -61,7 +61,7 @@ Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現
 > [!WARNING]
 > Standard Storage には、さまざまな待機時間や帯域幅があり、開発/テスト ワークロードにのみ推奨されます。 運用環境のワークロードでは、Premium Storage を使用する必要があります。
 
-さらに、転送遅延を低減するために、SQL Server 仮想マシンと同じデータ センターで Azure ストレージ アカウントを作成することをお勧めします。 ストレージ アカウントの作成時に、geo レプリケーションを無効にします。複数のディスクでの一貫性のある書き込み順序が保証されないためです。 代わりに、2 つの Azure データ センター間で SQL Server 障害復旧テクノロジを構成することを検討します。 詳細については、「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」をご覧ください。
+さらに、転送遅延を低減するために、SQL Server 仮想マシンと同じデータ センターで Azure ストレージ アカウントを作成することをお勧めします。 ストレージ アカウントの作成時に、geo レプリケーションを無効にします。複数のディスクでの一貫性のある書き込み順序が保証されないためです。 代わりに、2 つの Azure データ センター間で SQL Server ディザスター リカバリー テクノロジを構成することを検討します。 詳細については、「[Azure 仮想マシンにおける SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」をご覧ください。
 
 ## <a name="disks-guidance"></a>ディスクのガイダンス
 
@@ -113,7 +113,7 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
 
   * Premium Storage (開発/テスト シナリオ) を使用しない場合は、ご使用の [VM サイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でサポートされる最大数のデータ ディスクを追加し、ディスク ストライピングを使用することをお勧めします。
 
-* **キャッシュ ポリシー**: Premium Storage データ ディスクの場合は、データ ファイルと TempDB のみをホストするデータ ディスクで読み取りキャッシュを有効にします。 Premium Storage を使用していない場合は、どのデータ ディスクでもキャッシュを有効にしないでください。 ディスクのキャッシュを構成する手順については、「[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847)」および「[Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)」をご覧ください。
+* **キャッシュ ポリシー**: Premium Storage データ ディスクの場合は、データ ファイルと TempDB のみをホストするデータ ディスクで読み取りキャッシュを有効にします。 Premium Storage を使用していない場合は、どのデータ ディスクでもキャッシュを有効にしないでください。 ディスク キャッシュの構成手順については、以下のトピックをご覧ください。 クラシック (ASM) デプロイ モデルについては、「[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847)」および「[Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)」を参照してください。 Azure Resource Manager デプロイ モデルについては「[Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1)」および「[Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1)」を参照してください。
 
   > [!WARNING]
   > データベースの破損の可能性を回避するために、Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。

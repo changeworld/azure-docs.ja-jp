@@ -1,25 +1,25 @@
 ---
-title: "Azure Resource Manager のコア クォータを増やす要求 | Microsoft Docs"
-description: "Azure Resource Manager のコア クォータを増やす要求"
+title: "Azure Resource Manager の vCPU クォータを増やす要求 | Microsoft Docs"
+description: "Azure Resource Manager の vCPU クォータを増やす要求"
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/18/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c22a6dde0067385a1bf8d889cc76178bb44dd0ac
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="resource-manager-core-quota-increase-requests"></a>Resource Manager のコア クォータを増やす要求
+# <a name="resource-manager-vcpu-quota-increase-requests"></a>Resource Manager の vCPU クォータを増やす要求
 
-Resource Manager のコア クォータは、リージョン レベルおよび SKU のファミリ レベルで適用されます。
+Resource Manager の vCPU クォータは、リージョン レベルおよび SKU のファミリ レベルで適用されます。
 クォータを適用する方法について詳しくは、[Azure のサブスクリプションとサービスの制限](http://aka.ms/quotalimits)に関するページをご覧ください。
 SKU のファミリについては、[Virtual Machines の料金](http://aka.ms/pricingcompute)ページでコストとパフォーマンスを比較できます。
 
-コア数の増加を要求するには、Azure Portal ([https://portal.azure.com](https://portal.azure.com)) でコアについてクォータのサポート ケースを作成します。
+vCPU 数の増加を要求するには、Azure Portal ([https://portal.azure.com](https://portal.azure.com)) でコアについてクォータのサポート ケースを作成します。
 
 > [!NOTE]
 > Azure Portal で[サポート要求を作成](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)する方法

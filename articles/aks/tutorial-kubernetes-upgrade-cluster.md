@@ -1,6 +1,6 @@
 ---
-title: "Kubernertes on Azure のチュートリアル - クラスターの更新 | Microsoft Docs"
-description: "Kubernertes on Azure のチュートリアル - クラスターの更新"
+title: "Kubernetes on Azure のチュートリアル - クラスターの更新 | Microsoft Docs"
+description: "Kubernetes on Azure のチュートリアル - クラスターの更新"
 services: container-service
 documentationcenter: 
 author: neilpeterson
@@ -14,14 +14,14 @@ ms.devlang: aurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
+ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2cb81b5cd8b70df8077d9574e0232bc6b3d37c52
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: d0193e891c6c41687f1aaa3a8033bc71e85b10c3
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>Azure Container Service (AKS) での Kubernetes のアップグレード
 
@@ -36,7 +36,7 @@ Azure Container Service (AKS) クラスターは、Azure CLI を使用してア�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。 
+前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。
 
 これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./tutorial-kubernetes-prepare-app.md)」に戻ってください。
 
@@ -52,7 +52,7 @@ az aks get-versions --name myK8sCluster --resource-group myResourceGroup --outpu
 ここでは、現在のノード バージョンが `1.7.7` であり、バージョン `1.7.9`、`1.8.1`、および `1.8.2` が使用可能なことがわかります。
 
 ```
-Name     ResourceGroup    MasterVersion    MasterUpgrades       AgentPoolVersion    AgentPoolUpgrades
+Name     ResourceGroup    MasterVersion    MasterUpgrades       NodePoolVersion     NodePoolUpgrades
 -------  ---------------  ---------------  -------------------  ------------------  -------------------
 default  myAKSCluster     1.7.7            1.8.2, 1.7.9, 1.8.1  1.7.7               1.8.2, 1.7.9, 1.8.1
 ```
@@ -70,7 +70,7 @@ az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes
 ```json
 {
   "id": "/subscriptions/4f48eeae-9347-40c5-897b-46af1b8811ec/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myK8sCluster",
-  "location": "westus2",
+  "location": "eastus",
   "name": "myK8sCluster",
   "properties": {
     "accessProfiles": {
@@ -96,7 +96,7 @@ az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes
       }
     ],
     "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.westus2.azmk8s.io",
+    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
     "kubernetesVersion": "1.8.2",
     "linuxProfile": {
       "adminUsername": "azureuser",
@@ -134,7 +134,7 @@ az aks show --name myK8sCluster --resource-group myResourceGroup --output table
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myK8sCluster  westus2     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.westus2.azmk8s.io
+myK8sCluster  eastus     myResourceGroup  1.8.2                Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>次のステップ

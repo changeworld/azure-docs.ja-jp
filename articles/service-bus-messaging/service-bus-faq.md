@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/14/2017
 ms.author: sethm
-ms.openlocfilehash: 1403184d96388cb03b2c767c4da342ec1c6fe236
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e64e7d9f203debe19dfa222f501c7902cfe2ae98
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
-この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)」も参照してください。
+この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)」も参照してください。
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus に関する一般的な質問
 ### <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 [Azure Service Bus](service-bus-messaging-overview.md) は、分離されたシステム間でデータを送信できるようにする非同期メッセージング クラウド プラットフォームです。 Microsoft では、この機能をサービスとして提供しています。つまり、この機能を使用するために独自にハードウェアをホストする必要はありません。
 
 ### <a name="what-is-a-service-bus-namespace"></a>Service Bus 名前空間とは何ですか。
-[名前空間](service-bus-create-namespace-portal.md)は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。 Service Bus を使用するには、Service Bus 名前空間を作成する必要があります。これは、最初に実行する手順の 1 つです。
+[名前空間](service-bus-create-namespace-portal.md)は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。 Service Bus を使用するには名前空間を作成する必要があります。これは最初に実行する手順の 1 つです。
 
 ### <a name="what-is-an-azure-service-bus-queue"></a>Azure Service Bus キューとは何ですか。
-[Service Bus キュー](service-bus-queues-topics-subscriptions.md)は、メッセージが格納されるエンティティです。 キューは、複数のアプリケーションがある場合や、互いにやり取りする必要がある分散アプリケーションの複数の部分がある場合に特に有用です。 キューは、複数の製品 (メッセージ) の受け取り (受信) と発送 (送信) が行われる点で、集配送センターに似ています。
+[Service Bus キュー](service-bus-queues-topics-subscriptions.md)は、メッセージが格納されるエンティティです。 キューは、複数のアプリケーションがある場合や、互いにやり取りする必要がある分散アプリケーションの複数の部分がある場合に便利です。 キューは、複数の製品 (メッセージ) の受け取り (受信) と発送 (送信) が行われる点で、集配送センターに似ています。
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Service Bus トピックおよびサブスクリプションとは何ですか。
 トピックは、キューとして視覚化できます。複数のサブスクリプションを使用している場合、トピックはより多機能なメッセージング モデルになります (基本的には一対多通信ツール)。 この発行/サブスクライブ モデル (または *pub/sub*) により、複数のサブスクリプションを持つトピックにメッセージを送信するアプリケーションで、そのメッセージが複数のアプリケーションによって受信されるように設定できます。
@@ -43,10 +43,10 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="best-practices"></a>ベスト プラクティス
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus のベスト プラクティスを教えてください。
-* 「[Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス][Best practices for performance improvements using Service Bus]」 - この記事では、メッセージを交換するときのパフォーマンスを最適化する方法について説明します。
+「[Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス][Best practices for performance improvements using Service Bus]」を参照してください。この記事では、メッセージを交換するときのパフォーマンスを最適化する方法について説明します。
 
 ### <a name="what-should-i-know-before-creating-entities"></a>エンティティを作成する前に知っておく必要があることは何ですか。
-キューとトピックの次のプロパティは変更できません。 エンティティをプロビジョニングするときはこの点に注意してください。代替の新しいエンティティを作成しない限り、これらのプロパティは変更できません。
+キューとトピックの次のプロパティは変更できません。 エンティティをプロビジョニングするときはこの制限を考慮してください。代替の新しいエンティティを作成しない限り、これらのプロパティは変更できません。
 
 * サイズ
 * パーティション分割
@@ -57,12 +57,12 @@ ms.lasthandoff: 10/11/2017
 ## <a name="pricing"></a>価格
 このセクションでは、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 
-「[Service Bus の料金と課金](service-bus-pricing-billing.md)」の記事で、Service Bus の課金の計算方法について説明しています。Service Bus の価格オプションの詳細については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページを参照してください。
+「[Service Bus の料金と課金](service-bus-pricing-billing.md)」の記事では、Service Bus の課金メーターについて説明しています。 Service Bus の価格オプションの特定の情報については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページをご覧ください。
 
 Azure の全般的な価格情報については、[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) も参照してください。 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Service Bus の課金方法を教えてください
-Service Bus の価格について詳しくは、[Service Bus の価格の詳細][Pricing overview]に関するページをご覧ください。 既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。
+Service Bus の価格の詳細については、 [Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。 既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。
 
 ### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください
 特定の Azure リージョン内でのデータ転送および受信データ転送はすべて無料です。 リージョン外でのデータ転送は、送信料金の対象になります。[こちら](https://azure.microsoft.com/pricing/details/bandwidth/)をご覧ください。
@@ -77,7 +77,7 @@ Service Bus の制限とクォータの一覧については、[Service Bus の�
 ### <a name="does-service-bus-have-any-usage-quotas"></a>Service Bus に使用量クォータはありますか
 マイクロソフトは、既定で、任意のクラウド サービスに関して、お客様の全サブスクリプション全体で算出される月単位の総使用量クォータを設定しています。 実際のニーズがこれらの制限を上回る可能性があることは認識しておりますので、お客様のニーズを把握し、適宜制限を調整できるようにするためにも、お気軽にカスタマー サービスまでお問い合わせください。 Service Bus の場合、総使用量クォータは、1 か月あたり 50 億メッセージです。
 
-マイクロソフトは、ある月に使用量クォータを超えた場合に、お客様のアカウントを無効にする権利を保有しています。ただし、その場合は電子メールでお客様にその旨をお知らせし、何度かお客様に連絡を試みたうえで、措置を講じることといたします。 このようなクォータを超えたお客様についても、その超過分が課金の対象となります。
+マイクロソフトは、ある月に使用量クォータを超えた場合に、お客様のアカウントを無効にする権利を保有しています。ただし、その場合は電子メールでお客様にその旨をお知らせし、何度かお客様に連絡を試みたうえで、措置を講じることといたします。 そのクォータを超えたお客様についても、その超過分は課金の対象となります。
 
 Azure の他のサービスと同様、Service Bus では、リソースが公平に使用されるように一連のクォータを適用します。 これらのクォータの詳細については、「[Service Bus のクォータ][Quotas overview]」を参照してください。
 
@@ -113,7 +113,7 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Service Bus の詳細については、次のトピックをご覧ください。
+Service Bus の詳細については、次の記事をご覧ください。
 
 * [Azure Service Bus Premium の概要 (ブログの投稿)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Azure Service Bus Premium の概要 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)

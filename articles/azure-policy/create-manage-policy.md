@@ -9,15 +9,15 @@ ms.date: 11/01/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: adbf6e13efaad196c39e4fce0900fa40d7511122
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 63e8e4d3dbbc2e50b55f7e293d324ceed0484bb7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
-Azure でポリシーを作成および管理する方法を理解することは、企業の標準とサービス レベル アグリーメントの準拠を維持するために重要です。 このチュートリアルでは、Azure Policy を使用して、次のように、組織全体のポリシーの作成、割り当て、および管理に関連する一般的なタスクをいくつか実行します。
+Azure でポリシーを作成および管理する方法を理解することは、企業の標準とサービス レベル アグリーメントへの準拠を維持するために重要です。 このチュートリアルでは、Azure Policy を使用して、次のように、組織全体のポリシーの作成、割り当て、および管理に関連する一般的なタスクをいくつか実行します。
 
 > [!div class="checklist"]
 > * 今後作成するリソースに条件を強制するポリシーを割り当てる
@@ -120,7 +120,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
 <!-- Update the following link to the top level samples page
 -->
-   JSON コードのサンプルを確認するには、「[リソース ポリシーの概要](../azure-resource-manager/resource-manager-policy.md)」を参照してください。
+   JSON コードのサンプルを確認するには、「[Azure Policy のテンプレート](json-samples.md)」を参照してください。
 
 4. **[ 保存]** を選択します。
 
@@ -340,7 +340,7 @@ az policy definition list
 
 ## <a name="create-and-assign-an-initiative-definition"></a>イニシアチブ定義の作成と割り当て
 
-イニシアチブ定義では、複数のポリシー定義をグループ化して、1 つの包括的な目標を実現することができます。 イニシアチブ定義を作成して、定義のスコープ内にあるリソースが、イニシアチブ定義を構成するポリシー定義に準拠した状態を保ちます。  イニシアチブ定義の詳細については、[Azure Policy の概要](./azure-policy-introduction.md)に関するページを参照してください。
+イニシアチブ定義では、複数のポリシー定義をグループ化して、1 つの包括的な目標を実現することができます。 イニシアチブ定義を作成して、定義のスコープ内にあるリソースが、イニシアチブ定義を構成するポリシー定義に準拠している状態を保ちます。  イニシアチブ定義の詳細については、[Azure Policy の概要](./azure-policy-introduction.md)に関するページを参照してください。
 
 ### <a name="create-an-initiative-definition"></a>イニシアチブ定義を作成する
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: delhan
-ms.openlocfilehash: f16f51ced4a54f9d083ac31ff176934a82219670
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 60854fedaa8028d62cdcc80927b05e1039d531fb
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Azure VM 上でローカルの Linux パスワードをリセットする方法
 
@@ -91,7 +91,7 @@ VM にログインすることができず、使用したパスワードが正�
     cp /etc/shadow /tempmount/etc/shadow
     cp /etc/passwd_orig /etc/passwd
     cp /etc/shadow_orig /etc/shadow
-    
+
 10. Go back to the root and unmount the disk.
 
     ~~~~

@@ -17,13 +17,13 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: f0729286afdf01ea0ce0e0060f4d7415fa122014
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8d021538b34c96c1d486c9508df9d4ee91404337
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="use-powershell-to-sync-between-an-azure-sql-database-and-a-sql-server-on-premises-database"></a>PowerShell を使用して Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行う
+# <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>PowerShell を使用して SQL Database と SQL Server オンプレミス データベースの間で同期を行う
 
 この PowerShell サンプルは、Azure SQL Database とオンプレミスの SQL Server データベースのデータ同期を構成します。 
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/08/2017
  
 `Login-AzureRmAccount` を実行して、Azure との接続を作成します。
 
-SQL データ同期の概要については、「[Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Preview) (Azure SQL データ同期による複数のクラウドおよびオンプレミス データベースにまたがるデータの同期 (プレビュー))](../sql-database-sync-data.md)」を参照してください。
+SQL データ同期の概要については、[Azure SQL データ同期 (プレビュー) を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](../sql-database-sync-data.md)に関する記事をご覧ください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -392,10 +392,11 @@ Azure PowerShell の詳細については、[Azure PowerShell のドキュメン
 
 SQL データ同期の詳細については、以下を参照してください。
 
--   [Azure SQL データ同期を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](../sql-database-sync-data.md)
--   [Azure SQL データ同期の概要](../sql-database-get-started-sql-data-sync.md)
+-   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期)](../sql-database-sync-data.md)
+-   [Azure SQL データ同期の設定](../sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL データ同期のベスト プラクティス](../sql-database-best-practices-data-sync.md)
--   [Azure SQL データ同期に関する問題のトラブルシューティング](../sql-database-troubleshoot-data-sync.md)
+-   [OMS Log Analytics を使用した Azure SQL データ同期の監視](../sql-database-sync-monitor-oms.md)
+-   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](../sql-database-troubleshoot-data-sync.md)
 
 -   SQL データ同期を構成する方法を示す完全な PowerShell の例
     -   [PowerShell を使用した複数の Azure SQL データベース間の同期](sql-database-sync-data-between-sql-databases.md)
