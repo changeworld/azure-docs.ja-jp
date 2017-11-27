@@ -1,6 +1,6 @@
 ---
-title: "SAP 用の Microsoft Azure の認定資格 | Microsoft Docs"
-description: "現在の構成と、Azure プラットフォーム上の SAP の認定資格の最新の一覧です。"
+title: "SAP 用の Microsoft Azure の認定 | Microsoft Docs"
+description: "現在の構成と、Azure プラットフォーム上の SAP の認定の最新の一覧です。"
 services: virtual-machines-linux
 documentationcenter: 
 author: RicksterCDN
@@ -23,9 +23,9 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/14/2017
 ---
-# <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定資格と構成
+# <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定と構成
 
-SAP およびマイクロソフトは、お客様に対して相互にメリットを持つ強力なパートナーシップの中で互いに連携している長い歴史があります。 マイクロソフトでは、定期的にプラットフォームを更新し、Microsoft Azureが SAP のワークロードを実行する最適なプラットフォームであることを保証するための新しい認定資格の詳細を SAP に提出しています。 次の表に、サポート対象の構成と増加する認定資格の一覧を示します。 
+SAP およびマイクロソフトは、お客様に対して相互にメリットを持つ強力なパートナーシップの中で互いに連携している長い歴史があります。 マイクロソフトでは、定期的にプラットフォームを更新し、Microsoft Azureが SAP のワークロードを実行する最適なプラットフォームであることを保証するための新しい認定の詳細を SAP に提出しています。 次の表に、サポート対象の構成と増加する認定の一覧を示します。 
 
 ## <a name="sap-hana-certifications"></a>SAP HANA 認定
 参照:
@@ -42,7 +42,7 @@ SAP およびマイクロソフトは、お客様に対して相互にメリッ�
 | HANA Enterprise for BW、OLAP | Red Hat Enterprise Linux、SUSE Linux Enterprise | 単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス) |
 | SAP BW/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | 単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス) |
 
-## <a name="sap-netweaver-certifications"></a>SAP NetWeaver 認定資格
+## <a name="sap-netweaver-certifications"></a>SAP NetWeaver 認定
 以下の SAP 製品に関して Microsoft Azure は認定を受けており、マイクロソフトと SAP から完全サポートを受けることができます。
 参照:
 
