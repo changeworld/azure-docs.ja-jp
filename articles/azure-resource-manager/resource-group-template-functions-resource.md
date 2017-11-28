@@ -534,10 +534,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceGroupName |なし |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
-| resourceType |あり |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
+| resourceGroupName |いいえ |string |既定値は、現在のリソース グループです。 別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。 |
+| resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
 | resourceName1 |はい |string |リソースの名前。 |
-| resourceName2 |なし |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
+| resourceName2 |いいえ |string |リソースが入れ子になっている場合、次のリソース名セグメント。 |
 
 ### <a name="return-value"></a>戻り値
 
