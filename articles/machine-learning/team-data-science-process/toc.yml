@@ -68,9 +68,9 @@
       href: walkthroughs-sql-data-warehouse.md
 - name: トレーニング
   items:
-    - name: データ サイエンティスト向け TDSP
+    - name: データ サイエンティスト向け
       href: team-data-science-process-for-data-scientists.md
-    - name: DevOps 向け TDSP
+    - name: DevOps 向け
       href: team-data-science-process-for-devops.md
 - name: 方法
   items:

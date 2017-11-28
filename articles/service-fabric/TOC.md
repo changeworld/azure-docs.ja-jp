@@ -243,6 +243,7 @@
 ### [VS での .NET サービスのデバッグ](service-fabric-debugging-your-application.md)
 ### [一般的なエラーと例外](service-fabric-errors-and-exceptions.md)
 ### [ローカルでの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+### [Windows での Linux クラスターの設定](service-fabric-local-linux-cluster-windows.md)
 
 ## Linux 開発環境での作業
 ### [Java 開発用の Eclipse プラグインの使用](service-fabric-get-started-eclipse.md)
@@ -278,7 +279,9 @@
 ##### [テスト シナリオの使用](service-fabric-testability-scenarios.md)
 ##### [Node Transition API の使用](service-fabric-node-transition-apis.md)
 
-### [Jenkins を使用した Linux Java アプリケーションのデプロイ](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+### 継続的インテグレーションのセットアップ
+#### [VSTS を使用した継続的インテグレーションのセットアップ](service-fabric-set-up-continuous-integration.md)
+#### [Jenkins を使用した Linux アプリケーションのデプロイ](service-fabric-cicd-your-linux-applications-with-jenkins.md)
 
 ## クラスターを作成および管理する
 ### Azure 上のクラスター
