@@ -35,4 +35,5 @@
 | &nbsp; |[汎用 OData](../articles/data-factory/connector-odata.md) |✓ | |✓  |✓  |
 | &nbsp; |[汎用 ODBC](../articles/data-factory/connector-odbc.md) |✓ |✓  | |✓  |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |✓ |✓  |✓  |✓  |
+| &nbsp; |[Salesforce Service Cloud](../articles/data-factory/connector-salesforce.md) |✓ |✓  |✓  |✓  |
 | &nbsp; |[Web テーブル (HTML テーブル)](../articles/data-factory/connector-web-table.md) |✓ | |✓  |✓   |

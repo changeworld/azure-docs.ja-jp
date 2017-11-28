@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure における IP アドレスの種類 | Microsoft Docs"
 description: "Azure でのパブリックおよびプライベート IP アドレスについて説明します。"
 services: virtual-network
@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2017
+ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: 95f2b57b2012df816c76a1b6ec55ca9f92e134a3
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 3840ed000d5a9fe5d3c8fd01c061bf13674c0ce5
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/16/2017
@@ -36,7 +36,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 
 ## <a name="public-ip-addresses"></a>パブリック IP アドレス
 
-パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs)、[SQL Database](../sql-database/sql-database-technical-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[Azure Storage](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) など、Azure の公開されたサービスと通信できます。
+インターネット リソースから Azure リソースに入ってくる通信には、パブリック IP アドレスが使用されます。 また、Azure リソースからインターネットに出て行く通信や、Azure リソースから公開 Azure サービス (リソースに IP アドレスが割り当てられている Azure サービス) に出て行く通信にも、パブリック IP アドレスが使用されます。 このアドレスは、特定のリソース専用に確保され、明示的に割り当てが解除されない限り維持されます。 パブリック IP アドレスが割り当てられていなくても、リソースはインターネットに向けて通信することはできます。ただしその場合、そのリソース専用ではない空いている IP アドレスが Azure によって動的に割り当てられます。 Azure での送信接続の詳細については、[送信用接続の詳細](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。
 
 Azure リソース マネージャーで、 [パブリック IP](virtual-network-public-ip-address.md) アドレスは、独自のプロパティを持つリソースです。 パブリック IP アドレスのリソースは、次のリソースのいずれかと関連付けることができます。
 
@@ -98,7 +98,7 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS ホスト名の解決
-パブリック IP リソースに DNS ドメイン名ラベルを指定して、Azure で管理される DNS サーバーのパブリック IP アドレスに対する *domainnamelabel*.*location*.cloudapp.azure.com のマッピングを作成できます。 たとえば、Azure の *location* が **West US** で、*domainnamelabel* が **contoso** のパブリック IP リソースを作成した場合、完全修飾ドメイン名 (FQDN) **contoso.westus.cloudapp.azure.com** がリソースのパブリック IP アドレスに解決されます。 この FQDN を使用して、Azure 内のパブリック IP アドレスをポイントするカスタム ドメイン CNAME レコードを作成できます。
+パブリック IP リソースに DNS ドメイン名ラベルを指定して、Azure で管理される DNS サーバーのパブリック IP アドレスに対する *domainnamelabel*.*location*.cloudapp.azure.com のマッピングを作成できます。 たとえば、Azure の *location* が **West US** で、*domainnamelabel* が **contoso** のパブリック IP リソースを作成した場合、完全修飾ドメイン名 (FQDN) **contoso.westus.cloudapp.azure.com** がリソースのパブリック IP アドレスに解決されます。 この FQDN を使用して、Azure 内のパブリック IP アドレスをポイントするカスタム ドメイン CNAME レコードを作成できます。 代わりに、既定のサフィックスを持つ DNS 名ラベルを使用することで、Azure DNS サービスを使用して、パブリック IP アドレスに解決されるカスタム サフィックスを持つ DNS 名を構成することもできます。 詳細については、[Azure パブリック IP アドレスを使用した Azure DNS の使用](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)に関するページを参照してください。
 
 > [!IMPORTANT]
 > 作成された各ドメイン名ラベルは、Azure の location 内で一意である必要があります。  
@@ -118,17 +118,17 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 
 ### <a name="application-gateways"></a>アプリケーション ゲートウェイ
 
-パブリック IP アドレスをゲートウェイの **フロントエンド** 構成に割り当てることで、Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関連付けることができます。 このパブリック IP アドレスは、負荷分散された VIP として機能します。 Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。
+パブリック IP アドレスをゲートウェイの [フロント エンド](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)構成に割り当てることで、Azure **Application Gateway** に関連付けることができます。 このパブリック IP アドレスは、負荷分散された VIP として機能します。 Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。
 
 ### <a name="at-a-glance"></a>早見表
 下の表は、パブリック IP アドレスを最上位リソースに関連付けることができる特定のプロパティと、使用できる割り当て方法 (動的または静的) を示しています。
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |ネットワーク インターフェイス |はい |はい |
-| インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
+| 仮想マシン |Linux |はい |あり |
+| インターネットに接続するロード バランサー |フロント エンド構成 |あり |はい |
 | VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
-| Application Gateway |フロントエンドの構成 |はい |いいえ |
+| フロント エンド |フロント エンド構成 |あり |いいえ |
 
 ## <a name="private-ip-addresses"></a>プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、 [仮想ネットワーク](virtual-networks-overview.md) の他のリソース、あるいはオンプレミスのネットワーク (VPN ゲートウェイまたは ExpressRoute 回線経由) と通信することができます。
@@ -145,10 +145,12 @@ Azure Resource Manager デプロイメント モデルでは、プライベー�
 
 ### <a name="allocation-method"></a>割り当て方法
 
-プライベート IP アドレスは、リソースのデプロイ先となる仮想ネットワーク サブネットのアドレス範囲から割り当てられます。 プライベート IP アドレスを割り当てる方法は 2 種類あります。
+プライベート IP アドレスは、リソースのデプロイ先となる仮想ネットワーク サブネットのアドレス範囲から割り当てられます。 各サブネット アドレス範囲の先頭から 4 つのアドレスは Azure によって予約されており、それらのアドレスがリソースに割り当てられることはありません。 たとえばサブネットのアドレス範囲が 10.0.0.0/16 である場合、10.0.0.0 ～ 10.0.0.3 のアドレスをリソースに割り当てることはできません。 サブネットのアドレス範囲内の IP アドレスを割り当てることのできるリソースは一度に 1 つだけです。 
 
-- **動的**: 各サブネット アドレス範囲の先頭から 4 つのアドレスは Azure によって予約されており、それらのアドレスが割り当てられることはありません。 その次に利用可能なアドレスがサブネット アドレス範囲から取得されてリソースに割り当てられます。 たとえば、サブネットのアドレス範囲が 10.0.0.0/16 で、10.0.0.0.4 ～ 10.0.0.14 のアドレスが既に割り当て済みである場合 (.0 ～ .3 は予約済み)、リソースには 10.0.0.15 が Azure によって割り当てられます。 動的割り当てが既定の割り当て方法となります。 いったん割り当てられた動的 IP アドレスが解放されるのは、ネットワーク インターフェイスが削除されるか、同じ仮想ネットワーク内の別のサブネットに割り当てられた場合、または割り当て方法が "静的" に変更された場合、または異なる IP アドレスが指定された場合に限られます。 既定では、割り当て方法を "動的" から"静的" に変更すると、それまで動的に割り当てられていたアドレスが静的アドレスとして割り当てられます。
-- **静的**: サブネットのアドレス範囲から自分でアドレスを選択して割り当てます。 割り当てるアドレスは、サブネット アドレス範囲内で、かつそのサブネット内の他のどのリソースにも割り当てられていなければ、そのサブネット範囲の先頭 4 つのアドレスを除き、どれでもかまいません。 静的アドレスが解放されるのは、ネットワーク インターフェイスが削除された場合だけです。 割り当て方法を "静的" に変更した場合、サブネット アドレス範囲の先頭から空いている順に割り当てるのではなく、それまで割り当てられていた静的 IP アドレスが動的アドレスとして割り当てられます。 同じ仮想ネットワーク内の異なるサブネットにネットワーク インターフェイスを割り当てた場合にも、アドレスは変化します。ただし、ネットワーク インターフェイスを別のサブネットに割り当てるためには、最初に割り当て方法を "静的" から "動的" に変更しておく必要があります。 ネットワーク インターフェイスを別のサブネットに割り当てた後、割り当て方法を "静的" に変更し、新しいサブネットのアドレス範囲から IP アドレスを割り当てることができます。
+プライベート IP アドレスを割り当てる方法は 2 種類あります。
+
+- **動的**: サブネットのアドレス範囲内で、次に利用可能な (まだ割り当ても予約もされていない) アドレスが Azure により割り当てられます。 たとえばアドレス 10.0.0.4 ～ 10.0.0.9 が既に他のリソースに割り当てられている場合、10.0.0.10 が新しいリソースに割り当てられます。 動的割り当てが既定の割り当て方法となります。 いったん割り当てられた動的 IP アドレスが解放されるのは、ネットワーク インターフェイスが削除されるか、同じ仮想ネットワーク内の別のサブネットに割り当てられた場合、または割り当て方法が "静的" に変更された場合、または異なる IP アドレスが指定された場合に限られます。 既定では、割り当て方法を "動的" から"静的" に変更すると、動的に割り当てられていた以前のアドレスが Azure によって静的アドレスとして割り当てられます。
+- **静的**: サブネットのアドレス範囲内で、まだ割り当ても予約もされていない IP アドレスを自分で選んで割り当てます。 たとえば、サブネットのアドレス範囲が 10.0.0.0/16 で、アドレス 10.0.0.4 ～ 10.0.0.9 が既に他のリソースに割り当てられている場合、10.0.0.10 ～ 10.0.255.254 の任意のアドレスを割り当てることができます。 静的アドレスが解放されるのは、ネットワーク インターフェイスが削除された場合だけです。 割り当て方法を "静的" に変更した場合、サブネット アドレス範囲の先頭から空いている順に割り当てられるのではなく、それまで割り当てられていた静的 IP アドレスが動的アドレスとして Azure によって割り当てられます。 同じ仮想ネットワーク内の異なるサブネットにネットワーク インターフェイスを割り当てた場合にも、アドレスは変化します。ただし、ネットワーク インターフェイスを別のサブネットに割り当てるためには、最初に割り当て方法を "静的" から "動的" に変更しておく必要があります。 ネットワーク インターフェイスを別のサブネットに割り当てた後、割り当て方法を "静的" に変更し、新しいサブネットのアドレス範囲から IP アドレスを割り当てることができます。
 
 ### <a name="virtual-machines"></a>仮想マシン
 
@@ -164,7 +166,7 @@ Azure で管理される DNS サーバーで構成されている仮想マシン
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>内部ロード バランサー (ILB) と Application Gateway
 
-[Azure 内部ロード バランサー](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB) または [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の**フロント エンド**構成にプライベート IP アドレスを割り当てることができます。 このプライベート IP アドレスは内部エンドポイントとして機能し、同じ仮想ネットワーク内のリソースおよび仮想ネットワークに接続されたリモート ネットワークからのみアクセスできます。 フロント エンド構成には、動的または静的のどちらかのプライベート IP アドレスを割り当てることができます。
+[Azure 内部ロード バランサー](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB) または [Azure Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の**フロントエンド**構成にプライベート IP アドレスを割り当てることができます。 このプライベート IP アドレスは内部エンドポイントとして機能し、同じ仮想ネットワーク内のリソースおよび仮想ネットワークに接続されたリモート ネットワークからのみアクセスできます。 フロント エンド構成には、動的または静的のどちらかのプライベート IP アドレスを割り当てることができます。
 
 ### <a name="at-a-glance"></a>早見表
 下の表は、プライベート IP アドレスを最上位リソースに関連付けることができる特定のプロパティと、使用できる割り当て方法 (動的または静的) を示しています。
@@ -172,8 +174,8 @@ Azure で管理される DNS サーバーで構成されている仮想マシン
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
 | 仮想マシン |Linux |はい |はい |
-| Load Balancer |フロントエンドの構成 |はい |はい |
-| フロント エンド |フロントエンドの構成 |はい |はい |
+| Load Balancer |フロント エンド構成 |あり |はい |
+| フロント エンド |フロント エンド構成 |あり |はい |
 
 ## <a name="limits"></a>制限
 IP アドレス指定に対する制限は、Azure の[ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)の完全なセットに示されています。 この制限は、リージョンとサブスクリプションごとに存在します。 ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、 [サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 46037efe0e2c30337d76790c46c16e300bfffd5f
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9bcad8ed57980b08e0290e0272a5ff9de46f11a0
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -59,13 +59,17 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 
 ## <a name="which-set-of-steps-should-i-use"></a>どの手順を利用するべきでしょうか。
 
-この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順で、もう 1 つは [VNet が異なるサブスクリプション内に存在する](#difsub)場合の手順です。 すべての仮想ネットワーク リソースとゲートウェイ リソースを同じ PowerShell セッションで作成して構成できるかどうかが、両者の大きな違いとなります。
-
-この記事の手順では、各セクションの冒頭で宣言される変数を使用します。 既に既存の VNet を使用している場合は、実際の環境の設定に応じて変数を変更してください。 仮想ネットワークの名前解決が必要な場合は、[名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事を参照してください。
-
-## <a name="samesub"></a>同じサブスクリプション内にある VNet を接続する方法
+この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順です。 この構成の手順では、TestVNet1 と TestVNet4 を使用します。
 
 ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+
+それとは別に、[VNet が異なるサブスクリプションに存在する](#difsub)場合についての記事が存在します。 この構成の手順では、TestVNet1 と TestVNet5 を使用します。
+
+![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
+
+すべての仮想ネットワーク リソースとゲートウェイ リソースを同じ PowerShell セッションで作成して構成できるかどうかが、両者の大きな違いとなります。 異なるサブスクリプションに存在する VNet の接続を構成するときは、別々の PowerShell セッションを使用する必要があります。 必要に応じて構成を組み合わせるか、希望する方のみを選んでもかまいません。
+
+## <a name="samesub"></a>同じサブスクリプション内にある VNet を接続する方法
 
 ### <a name="before-you-begin"></a>開始する前に
 
@@ -90,7 +94,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 * パブリック IP: VNet1GWIP
 * VPN の種類: RouteBased
 * 接続 (1 ～ 4): VNet1toVNet4
-* 接続 (1 ～ 5): VNet1toVNet5
+* 接続 (1 ～ 5): VNet1toVNet5 (VNet が異なるサブスクリプションに存在する場合)
 * 接続の種類: VNet2VNet
 
 **TestVNet4 の値:**
@@ -279,8 +283,6 @@ TestVNet1 を構成したら、TestVNet4 を作成します。 下の手順を�
 4. 接続を確認します。 「 [接続を確認する方法](#verify)」を参照してください。
 
 ## <a name="difsub"></a>異なるサブスクリプション内にある VNet を接続する方法
-
-![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 このシナリオでは、TestVNet1 と TestVNet5 を接続します。 TestVNet1 と TestVNet5 は、異なるサブスクリプションに存在します。 サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 以下の手順とこれまでの手順の違いは、2 つ目のサブスクリプションとの関連で、構成手順を一部別個の PowerShell セッションで実行する必要があることです  (特に 2 つのサブスクリプションが異なる組織に属する場合)。
 

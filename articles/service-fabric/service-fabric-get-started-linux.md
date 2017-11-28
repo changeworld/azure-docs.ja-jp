@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/19/2017
 ms.author: subramar
-ms.openlocfilehash: da9aff17c16e179be200677bfbfd1287fff269e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c77e357d56fc246de4e0e9af697e770c876d1d78
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Service Fabric ランタイムと共通 SDK を **sfctl** CLI と共にインス
 sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-templates/master/scripts/SetupServiceFabric/SetupServiceFabric.sh | sudo bash
 ```
 
-### <a name="2-manual-installation"></a>2.手動インストール
+### <a name="2-manual-installation"></a>手順 2.手動インストール
 Service Fabric ランタイムと共通 SDK の手動インストールの場合、このガイドの残りの説明に従います。
 
 ## <a name="update-your-apt-sources"></a>APT ソースを更新する
@@ -221,6 +221,7 @@ sudo apt-get install -f
 * [Eclipse 用の Service Fabric プラグインを使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-get-started-eclipse.md)
 * [Linux で最初の CSharp アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
+* [Windows で Linux 開発環境を準備する](service-fabric-local-linux-cluster-windows.md)
 * [Service Fabric CLI を使用してアプリケーションを管理する](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric における Windows と Linux の違い](service-fabric-linux-windows-differences.md)
 * [Service Fabric CLI の概要](service-fabric-cli.md)

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 18169b86d10b589a5c8b707596d5f62813e9efe2
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 8a80220879db9f0030b9f1a8494b1cc24105ef17
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -118,7 +118,7 @@ Azure でカスタム (ユーザー定義) ルートを作成して、Azure の�
 
 オンプレミス ネットワーク ゲートウェイは、ボーダー ゲートウェイ プロトコル (BGP) を使用して Azure 仮想ネットワーク ゲートウェイとルートを交換できます。 Azure 仮想ネットワーク ゲートウェイでの BGP の使用方法は、ゲートウェイの作成時に選択した種類によって異なります。 選択した種類と BGP の使用方法は次のとおりです。
 
-- **ExpressRoute**: BGP を使用して、Microsoft エッジ ルーターにルートをアドバタイズする必要があります。 種類が ExpressRoute の仮想ネットワーク ゲートウェイをデプロイした場合、ユーザー定義ルートは作成できません。
+- **ExpressRoute**: BGP を使用して、Microsoft エッジ ルーターにオンプレミスのルートをアドバタイズする必要があります。 種類が ExpressRoute の仮想ネットワーク ゲートウェイをデプロイした場合、ExpressRoute の仮想ネットワーク ゲートウェイにトラフィックを強制的に誘導するユーザー定義ルートは作成できません。 Express Route からのトラフィックを (ネットワーク仮想アプライアンスなどに) 強制的に誘導するユーザー定義ルートを作成することはできます。 
 - **VPN**: 必要に応じて BGP をご利用いただけます。 詳細については、[サイト間 VPN 接続での BGP](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事をご覧ください。
 
 BGP を使用して Azure とルートを交換すると、仮想ネットワークのすべてのサブネットのルート テーブルに、アドバタイズされた各プレフィックスの個別のルートが追加されます。 追加されるルートは、ソースと次ホップの種類が "*仮想ネットワーク ゲートウェイ*" になります。 

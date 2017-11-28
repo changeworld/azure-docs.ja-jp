@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 11/06/2017
-ms.openlocfilehash: 5bbfe63d159ba2d09a495908f69f707ed04a02f8
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b723cc23ccbda6c5d39627682116cc314dcf2c0e
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>あやめの分類 (パート 2): モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -291,7 +291,7 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    `run.py` が完了すると、Workbench の実行履歴リスト ビューにグラフが表示されます。
 
 ## <a name="execute-in-a-docker-container-on-a-remote-machine"></a>リモート マシンで Docker コンテナーを実行する
-リモート Linux マシンの Docker コンテナーでスクリプトを実行するには、そのリモート マシンへの SSH アクセス (ユーザー名とパスワード) が必要です。 また、このリモート マシンには、Docker エンジンがインストールされ実行されている必要があります。 このような Linux マシンを入手する方法としては、Azure 上に [Ubuntu ベースのデータ サイエンス仮想マシン (DSVM)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) を作成するのが最も簡単です。 
+リモート Linux マシンの Docker コンテナーでスクリプトを実行するには、そのリモート マシンへの SSH アクセス (ユーザー名とパスワード) が必要です。 また、このリモート マシンには、Docker エンジンがインストールされ実行されている必要があります。 このような Linux マシンを入手する方法としては、Azure 上に Ubuntu ベースのデータ サイエンス仮想マシン (DSVM) を作成するのが最も簡単です。 [Azure ML Workbench で使用する Ubuntu DSVM を作成する方法](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal)に関するページを参照してください。
 
 >[!NOTE] 
 >CentOS ベースの DSVM はサポート "*されません*"。
@@ -343,7 +343,9 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    ```
 
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>HDInsight クラスターでスクリプトを実行する
-このスクリプトは、実際の Spark クラスターで実行することもできます。 
+このスクリプトは、HDInsight Spark クラスターで実行することもできます。 [Azure ML Workbench で使用する HDInsight Spark クラスターを作成する方法](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)に関するページを参照してください。
+
+>![NOTE] HDInsight クラスターは、プライマリ ストレージとして Azure BLOB を使用する必要があります。 Azure Data Lake Storage はまだサポートされていません。
 
 1. Spark for Azure HDInsight クラスターにアクセスできる場合は、次に示した HDInsight 実行構成コマンドを生成します。 パラメーターとして HDInsight クラスター名、HDInsight のユーザー名とパスワードを指定してください。 次のコマンドを使用します。
 

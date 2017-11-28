@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 18d5cd8f3904a0c6ea89df440d917785510409cb
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0b05cc76f8d8b2d14ac87fa3c55479bf0cf2377b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>ニーズに応じた Azure Multi-Factor Authentication ソリューションを選択する
 Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるため、使用に適したバージョンを特定するには、いくつかの項目を検討する必要があります。  その項目とは、以下の 3 つです。
@@ -60,7 +60,7 @@ Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるた�
 | 2 番目の要素としてのモバイル アプリ確認コード | ● | ● |
 | 第 2 要素としての音声通話 | ● | ● |
 | 第 2 要素としての単方向 SMS | ● | ● |
-| 第 2 要素としての双方向 SMS | | ● |
+| 第 2 要素としての双方向 SMS | | ●  (非推奨)| 
 | 第 2 要素としてのハードウェア トークン | | ● |
 | MFA をサポートしていない Office 365 クライアントのアプリ パスワード | ● | |
 | 認証方法の管理制御 | ● | ● |
