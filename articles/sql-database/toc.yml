@@ -337,13 +337,15 @@
           href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
     - name: マルチテナント SaaS
       items:
-        - name: Wingtips へようこそ
+        - name: Wingtip Tickets のサンプル
           href: saas-tenancy-welcome-wingtip-tickets-app.md
+        - name: 一般的なガイダンス
+          href: saas-tenancy-wingtip-app-guidance-tips.md
         - name: スタンドアロン アプリケーション
           items:
             - name: サンプル アプリのデプロイ
               href: saas-standaloneapp-get-started-deploy.md
-        - name: テナントあたりのデータベース
+        - name: テナントごとのデータベース
           href: saas-dbpertenant-wingtip-app-overview.md
           items:
             - name: チュートリアルの概要
