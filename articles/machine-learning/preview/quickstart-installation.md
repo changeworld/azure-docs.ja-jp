@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 10/13/2017
-ms.openlocfilehash: 7c74a9ebaae0b027277fe282b958a653ab498fc5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: fd99fec7ead28c02ffe0d8b8165e8a0ab89d525e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Azure Machine Learning プレビュー アカウントの作成と Azure Machine Learning Workbench のインストール
-Azure Machine Learning は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
+Azure Machine Learning サービス (プレビュー) は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
 
 このクイック スタートでは、Azure Machine Learning プレビューで実験アカウントとモデル管理アカウントを作成する方法について説明します。 また、Azure Machine Learning Workbench デスクトップ アプリケーションと CLI ツールをインストールする方法についても説明します。 次に、Azure Machine Learning プレビュー機能のクイック ツアーを開始します。[あやめのデータセット](https://en.wikipedia.org/wiki/iris_flower_data_set)を使用して、いくつかの物理的な特徴に基づいてあやめの種類を予測するモデルを構築します。  
 
@@ -49,7 +49,7 @@ Azure Portal を使用して Azure Machine Learning アカウントをプロビ�
 
 4. Machine Learning 実験のフォームに次の情報を入力します。
 
-   設定|推奨値|Description
+   設定|推奨値|説明
    ---|---|---
    [Experimentation account name]\(実験アカウント名\) | "_一意の名前_" |アカウントを識別する一意の名前を選択します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
    [サブスクリプション] | _該当するサブスクリプション_ |実験に使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となっている適切なサブスクリプションを選択してください。
@@ -108,7 +108,7 @@ Azure Machine Learning Workbench を、macOS Sierra 以降が実行されてい�
 
 4. Azure Machine Learning Workbench は次のディレクトリにインストールされます。 
 
-   `/Applications/AmlWorkbench.app`
+   `/Applications/Azure ML Workbench.app`
 
 ## <a name="run-azure-machine-learning-workbench-to-sign-in-for-the-first-time"></a>Azure Machine Learning Workbench を実行して初めてサインインする
 1. インストール プロセスが完了したら、インストーラーの最後の画面にある **[Launch Workbench]\(Workbench の起動\)** ボタンを選択します。 インストーラーを閉じた場合は、デスクトップ上の Machine Learning Workbench へのショートカットと **Azure Machine Learning Workbench** という名前の**スタート** メニューを探して、アプリを起動します。

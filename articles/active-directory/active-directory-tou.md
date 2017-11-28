@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 11/17/2017
 ms.author: billmath
-ms.openlocfilehash: b6318b419a0ea87fd1fb56656b1161909876f338
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf7b64bd956c236f5c70bb7dcd209ecdcd7176dd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory Terms of Use 機能 (プレビュー)
 Azure AD Terms of Use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。  これにより、ユーザーは法律またはコンプライアンスの要件に関する免責事項を確認できます。
@@ -43,7 +43,8 @@ Azure AD Terms of Use を構成する手順は次のとおりです。
 2. ディレクトリに、Azure AD Premium P1、P2、EMS E3、EMS E5 のいずれかのサブスクリプションがあることを確認します。  ない場合は、[Azure AD Premium](active-directory-get-started-premium.md) を入手するか、[試用版の利用を開始](https://azure.microsoft.com/trial/get-started-active-directory/)します。
 3. [https://aka.ms/catou](https://aka.ms/catou) で Azure AD Terms of User ダッシュボードを表示します。
 
-
+>[!IMPORTANT]
+>条件付きアクセス ポリシー規制 (使用条件を含む) は、サービス アカウントに対する強制をサポートしていません。  サービス アカウントはすべて、条件付きアクセス ポリシーから除外することをお勧めします。
 
 ## <a name="add-company-terms-of-use"></a>会社の使用条件を追加する
 使用条件が完成した後は、次の手順を使って追加します。
@@ -68,7 +69,7 @@ Azure AD Terms of Use を構成する手順は次のとおりです。
 ### <a name="to-delete-terms-of-use"></a>使用条件を削除するには
 1. ダッシュボード ([https://aka.ms/catou](https://aka.ms/catou)) に移動します
 2. 削除する使用条件を選びます。
-3. [ **削除**] をクリックします。
+3. **[削除]** をクリックします。
 4. 使用条件が表示されなくなります。
 
 
@@ -92,7 +93,6 @@ Azure AD Terms of Use には使いやすい監査機能があり、誰がいつ�
 
 ## <a name="additional-information"></a>追加情報
 使用条件を使うときに知っておくべき情報と役に立つ情報を次に示します。
-
 
 次の場合、新しいポリシーを満たすには、対象ユーザーはいったんサインアウトしてからサインインし直す必要があります。
  - 使用条件で条件付きアクセス ポリシーが有効になった場合

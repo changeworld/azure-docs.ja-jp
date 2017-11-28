@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: cherylmc
-ms.openlocfilehash: fbb3bb5f538d1d26b6fe8d653724d80faf96e277
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 35c9da37a3e21a0b98928f6c1a7c6df1630e69c1
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成: Azure Portal
 
-この記事では、PowerShell を使用して、ポイント対サイト接続を備えた VNet を Resource Manager デプロイメント モデルで作成する手順を説明します。 この構成では、認証に証明書を使用します。 この構成では、RADIUS サーバーではなく Azure VPN ゲートウェイが証明書の検証を担当します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
+この記事では、Azure Portal を使用して、ポイント対サイト接続を備えた VNet を Resource Manager デプロイメント モデルで作成する手順を説明します。 この構成では、認証に証明書を使用します。 この構成では、RADIUS サーバーではなく Azure VPN ゲートウェイが証明書の検証を担当します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
@@ -209,7 +209,7 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 1. 信頼されたルート証明書を削除するには、仮想ネットワーク ゲートウェイの **[ポイント対サイトの構成]** ページに移動します。
 2. ページの **[ルート証明書]** セクションで、削除する証明書を見つけます。
-3. 証明書の横にある省略記号をクリックし、削除をクリックします。
+3. 証明書の横にある省略記号をクリックし、[削除] をクリックします。
 
 ## <a name="revokeclient"></a>クライアント証明書を失効させるには
 

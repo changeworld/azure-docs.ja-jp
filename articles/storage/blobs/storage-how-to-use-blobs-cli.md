@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/15/2017
 ms.author: marsma
-ms.openlocfilehash: c37fc0b701b668ab6bb9213a487ec8baa33fe663
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4e99793d45b90411a068dd44a981cf24aa67d43
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="perform-blob-storage-operations-with-azure-cli"></a>Azure CLI を使用して Blob Storage の操作を実行する
 
@@ -161,6 +161,18 @@ az storage blob copy start \
 az storage blob delete \
     --container-name mystoragecontainer \
     --name blobName
+```
+
+## <a name="set-the-content-type"></a>コンテンツの種類の設定
+
+BLOB 内のデータの形式は、コンテンツの種類 (MIME の種類) によって識別されます。 ブラウザーをはじめとするソフトウェアは、コンテンツの種類に基づいてデータの処理方法を判断します。 次の例では、コンテンツの種類を `image/png` に設定しています。
+
+```azurecli-interactive
+# Set the content type
+az storage blob update
+    --container-name mystoragecontainer 
+    --name blobName 
+    --content-type image/png
 ```
 
 ## <a name="display-and-modify-blob-properties-and-metadata"></a>BLOB のプロパティとメタデータを表示および変更する

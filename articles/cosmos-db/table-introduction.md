@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: mimig1
-ms.openlocfilehash: 8e8a5d89080df54da1a951d94fac12592de29c50
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: da3576c7c2e4609c9d3fac64a3b10794164551e0
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API の概要
 
@@ -55,6 +55,10 @@ Azure Table Storage 用に作成されたアプリケーションについては
 ## <a name="get-started"></a>作業開始
 
 [Azure Portal](https://portal.azure.com) で Azure Cosmos DB アカウントを作成しましょう。 その後、[.NET を使用したテーブル API のクイックスタート](create-table-dotnet.md)をお読みください。 
+
+> [!IMPORTANT]
+> プレビュー中にテーブル API アカウントを作成した場合は、一般公開のテーブル API SDK を操作できるように、[新しいテーブル API アカウント](create-table-dotnet.md#create-a-database-account)を作成してください。
+>
 
 ## <a name="next-steps"></a>次のステップ
 

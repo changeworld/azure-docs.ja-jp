@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Resource Manager テンプレートの関数 - リソース | Microsoft Docs"
 description: "Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。"
 services: azure-resource-manager

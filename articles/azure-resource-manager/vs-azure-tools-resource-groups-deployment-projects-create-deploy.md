@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: tomfitz
-ms.openlocfilehash: f82f59f363507b69a729580302c2d11202e93a87
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d647206b882059e0651223dc84f2ad2a314f8a87
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 Visual Studio および [Azure SDK](https://azure.microsoft.com/downloads/)では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。 たとえば、アプリ用に Web ホスト、Web サイト、およびデータベースを定義し、そのインフラストラクチャをコードと共にデプロイできます。 または、仮想マシン、仮想ネットワーク、およびストレージ アカウントを定義し、そのインフラストラクチャを、仮想マシンで実行するスクリプトと共にデプロイすることができます。 **Azure リソース グループ** デプロイ プロジェクトでは、必要なすべてのリソースを反復可能な単一の操作でデプロイできます。 リソースのデプロイと管理の詳細については、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
@@ -32,7 +32,7 @@ Azure リソース グループ プロジェクトには、Azure にデプロイ
 ## <a name="create-azure-resource-group-project"></a>Azure リソース グループ プロジェクトを作成する
 この手順では、 **[Web アプリ + SQL]** テンプレートを使用して Azure リソース グループ プロジェクトを作成します。
 
-1. Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順に選択し、**[C#]** または **[Visual Basic]** を選択します。 次に **[クラウド]** を選択し、**[Azure リソース グループ]** プロジェクトを選択します。
+1. Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順に選択し、**[C#]** または **[Visual Basic]** を選択します (これらのプロジェクトに含まれるのは JSON と PowerShell のコンテンツだけです。どちらの言語を選んでも、この後の段階に影響しません)。 次に **[クラウド]** を選択し、**[Azure リソース グループ]** プロジェクトを選択します。
    
     ![Cloud Deployment プロジェクト](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 2. Azure リソース マネージャーにデプロイするテンプレートを選択します。 デプロイするプロジェクトの種類に応じて、さまざまなオプションがあります。 この記事では、**[Web アプリ + SQL]** テンプレートを選択します。

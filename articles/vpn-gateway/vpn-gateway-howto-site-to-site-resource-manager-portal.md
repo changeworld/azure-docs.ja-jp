@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 41279502c16d0b23c91739dcb62e8f94f3b8bd67
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 4f5e249238020429b6c6e0d39c580c83bc43969e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure Portal でサイト間接続を作成する
 
@@ -50,15 +50,13 @@ ms.lasthandoff: 10/27/2017
 この記事の例では、次の値を使用します。 この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 VPN ゲートウェイの一般的な設定の詳細については、[VPN Gateway の設定](vpn-gateway-about-vpn-gateway-settings.md)に関するページを参照してください。
 
 * **VNet の名前:** TestVNet1
-* **アドレス空間:** 
-  * 10.11.0.0/16
-  * 10.12.0.0/16 (この演習では省略可能)
-* **サブネット:**
-  * FrontEnd: 10.11.0.0/24
-  * BackEnd: 10.12.0.0/24 (この演習では省略可能)
-* **GatewaySubnet:** 10.11.255.0/27
+* **アドレス空間:** 10.11.0.0/16 と 10.12.0.0/16 (この演習では省略可能)
+* **サブスクリプション:** 使用するサブスクリプション
 * **リソース グループ:** TestRG1
 * **場所:** 米国東部
+* **サブネット:** FrontEnd: 10.11.0.0/24、BackEnd: 10.12.0.0/24 (この演習では省略可能)
+* **ゲートウェイ サブネット名:** GatewaySubnet (ポータルではこの名前が自動入力されます)
+* **ゲートウェイ サブネットのアドレス範囲:** 10.11.255.0/27
 * **DNS サーバー:** 省略可能。 DNS サーバーの IP アドレス。
 * **仮想ネットワーク ゲートウェイ名:** VNet1GW
 * **パブリック IP:** VNet1GWIP
@@ -67,6 +65,7 @@ ms.lasthandoff: 10/27/2017
 * **ゲートウェイの種類:** VPN
 * **ローカル ネットワーク ゲートウェイ名:** Site2
 * **接続名:** VNet1toSite2
+* **共有キー:** この例では、abc123 を使用します。 ただし、お使いの VPN ハードウェアと互換性があれば何を使用してもかまいません。 重要なことは、接続の両側で値が一致していることです。
 
 ## <a name="CreatVNet"></a>1.仮想ネットワークの作成
 
@@ -125,10 +124,21 @@ ms.lasthandoff: 10/27/2017
 
 ゲートウェイ SKU を変更する手順については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
 
+## <a name="addconnect"></a>VPN ゲートウェイに新しい接続を追加する方法
+
+他の接続とアドレス空間が重複しなければ、新たに接続を追加することができます。
+
+1. 新たに接続を追加するには、VPN ゲートウェイに移動し、**[接続]** をクリックして [接続] ページを開きます。
+2. **[+追加]** をクリックして接続を追加します。 "VNet 間" (別の VNet ゲートウェイに接続する場合) または "サイト対サイト" を考慮して接続の種類を調整します。
+3. "サイト対サイト" を使用して接続している場合で、かつまだ接続先となるサイトのローカル ネットワーク ゲートウェイを作成していない場合は、新たに作成することができます。
+4. 使用する共有キーを指定し、**[OK]** をクリックして接続を作成します。
+
 ## <a name="next-steps"></a>次のステップ
 
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 * 強制トンネリングについては、[強制トンネリング](vpn-gateway-forced-tunneling-rm.md)に関する記事を参照してください。
 * 高可用性のアクティブ/アクティブ接続については、「[高可用性のクロスプレミス接続および VNet 間接続](vpn-gateway-highlyavailable.md)」を参照してください。
+* 仮想ネットワーク内のリソースへのネットワーク トラフィックを制限する方法については、「[ネットワークのセキュリティ](../virtual-network/security-overview.md)」を参照してください。
+* Azure がトラフィックを Azure、オンプレミス、インターネット リソースの間でどのようにルーティングするかについては、「[仮想ネットワーク トラフィックのルーティング](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
 * Azure Resource Manager テンプレートを使用してサイト間 VPN 接続を作成する方法については、「[Create a Site-to-Site VPN Connection (サイト間 VPN 接続の作成)](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/)」を参照してください。
 * Azure Resource Manager テンプレートを使用して VNet 間 VPN 接続を作成する方法については、「[Deploy HBase geo replication (HBase geo レプリケーションのデプロイ)](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)」を参照してください。

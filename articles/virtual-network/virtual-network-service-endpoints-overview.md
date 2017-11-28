@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: be0c715e12f7df6208112eea40d6017d86f50cae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 767dc34471db7dc1d095929e67e85197711b52ce
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="virtual-network-service-endpoints-preview"></a>仮想ネットワークのサービス エンドポイント (プレビュー)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/03/2017
 この機能はプレビュー段階で、次の Azure サービスとリージョンで提供されています。
 
 - **Azure Storage**: Azure パブリック クラウド内のすべてのリージョン。
-- **Azure SQL Database**: WestCentralUS、WestUS2、EastUS。
+- **Azure SQL**: Azure パブリック クラウド内のすべてのリージョン。
 
 このプレビュー機能に関する最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
@@ -122,4 +122,5 @@ Azure サービス リソース (Azure Storage アカウントなど) の場合�
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [Azure SQL Database を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)について学習する
+-  クイック スタート: VNet のサブネットにサービス エンドポイントを設定し、そのサブネットの Azure Storage アカウントにセキュリティを確保する [Azure Resource Manager テンプレート](https://azure.microsoft.com/en-us/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

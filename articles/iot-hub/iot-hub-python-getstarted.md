@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: dkshir
 ms.custom: na
-ms.openlocfilehash: eec9eb9d5b5ecc0b33ce03f33b9f1600600f6c4e
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 86fb3bdbae83b543eee7a5d96c0739aaea0aba5e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>Python を使用してシミュレートされたデバイスを IoT ハブに接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
@@ -291,7 +291,7 @@ Python SDK for Azure IoT Hub の使用の詳細については、[こちらの G
 
 * [デバイスを接続する][lnk-connect-device]
 * [デバイス管理の概要][lnk-device-management]
-* [Azure IoT Edge の概要][lnk-iot-edge]
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iot-edge]
 
 既存の IoT ソリューションを拡張し、デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
@@ -325,5 +325,5 @@ Python SDK for Azure IoT Hub の使用の詳細については、[こちらの G
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
+[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
