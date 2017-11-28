@@ -12,24 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/19/2017
+ms.date: 11/22/2017
 ms.author: renash
-ms.openlocfilehash: 51180530790fc0077cea4d8aea7088f1f871681b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 66a68a1ca048b50b8e2ba4ac1bb86d367b8a5bb9
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/23/2017
 ---
-# <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する 
-> [!NOTE]
-> この記事では、.NET コードで Azure Files を管理する方法を説明します。 Azure Files の詳細については、「[Introduction to Azure Files (Azure Files の概要)](storage-files-introduction.md)」を参照してください。
->
+# <a name="develop-for-azure-files-with-net-and-windowsazurestorage"></a>.NET と WindowsAzure.Storage での Azure Files 用の開発
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
-
-このチュートリアルでは、ファイル データの格納に Azure Files を使うアプリケーションまたはサービスを開発するための.NET の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、.NET と Azure Files で基本的な操作を実行する方法を示します。
+このチュートリアルでは、ファイル データの格納に [Azure Files](storage-files-introduction.md) を使うアプリケーションを開発するための .NET および `WindowsAzure.Storage` API の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、.NET と Azure Files で次のような基本的な操作を実行します。
 
 * ファイルの内容を取得する
 * ファイル共有のクォータ (最大サイズ) を設定する
@@ -38,9 +33,21 @@ ms.lasthandoff: 10/19/2017
 * ファイルを、同じストレージ アカウント内の BLOB にコピーする
 * トラブルシューティングに Azure Storage メトリックを使用します。
 
-> [!Note]  
-> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 System.IO クラスを使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage .NET SDK を使用するアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [File REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用します。 
+Azure Files の詳細については、「[Azure Files の概要](storage-files-introduction.md)」を参照してください。
 
+[!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
+
+## <a name="understanding-the-net-apis"></a>.NET API について
+
+Azure Files は、クライアント アプリケーションに対して、サーバー メッセージ ブロック (SMB) と REST という 2 つの幅広いアプローチを提供します。 .NET 内では、これらのアプローチは `System.IO` API と `WindowsAzure.Storage` API によって抽象化されています。
+
+API | 使用時の注意 | メモ
+----|-------------|------
+[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB 経由でファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O のコーディングは、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O のコーディングと同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、[このチュートリアル](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)を参照してください。
+[WindowsAzure.Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet#client-library) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 の SMB 経由で Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST とファイル共有の管理を使用するファイル I/O に `WindowsAzure.Storage` を使用する方法について説明します。
+
+> [!TIP]
+> アプリケーションの要件によっては、ストレージとして Azure BLOB を選択する方が適切である場合があります。 Azure Files と Azure BLOB の選択の詳細については、「[Azure BLOB、Azure Files、Azure ディスクの使い分け](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)」を参照してください。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>コンソール アプリケーションの作成とアセンブリの取得
 Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2017 でコンソール アプリケーションを作成する方法を説明しますが、この手順は Visual Studio の他のバージョンでも同様です。

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: ff859bd9dbbf30c461cdba8409c77b04ff97b1f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c7653250f51429321b4da0384496aae37ad06da
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -59,11 +59,17 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 
 ### <a name="which-set-of-steps-should-i-use"></a>どの手順を利用するべきでしょうか。
 
-この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順で、もう 1 つは [VNet が異なるサブスクリプション内に存在する](#difsub)場合の手順です。
-
-## <a name="samesub"></a>同じサブスクリプション内にある VNet の接続
+この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順です。 この構成の手順では、TestVNet1 と TestVNet4 を使用します。
 
 ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+
+それとは別に、[VNet が異なるサブスクリプションに存在する](#difsub)場合についての記事が存在します。 この構成の手順では、TestVNet1 と TestVNet5 を使用します。
+
+![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
+
+必要に応じて構成を組み合わせるか、希望する方のみを選んでもかまいません。
+
+## <a name="samesub"></a>同じサブスクリプション内にある VNet の接続
 
 ### <a name="before-you-begin"></a>開始する前に
 
@@ -88,7 +94,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 * パブリック IP: VNet1GWIP
 * VPN の種類: RouteBased
 * 接続 (1 ～ 4): VNet1toVNet4
-* 接続 (1 ～ 5): VNet1toVNet5
+* 接続 (1 ～ 5): VNet1toVNet5 (VNet が異なるサブスクリプションに存在する場合)
 * 接続の種類: VNet2VNet
 
 **TestVNet4 の値:**
@@ -255,8 +261,6 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 
 ## <a name="difsub"></a>異なるサブスクリプション内にある VNet の接続
 
-![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
-
 このシナリオでは、TestVNet1 と TestVNet5 を接続します。 VNet は異なるサブスクリプション内に存在します。 サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 この構成の手順では、TestVNet1 を TestVNet5 に接続するために VNet 間接続を追加します。
 
 ### <a name="TestVNet1diff"></a>手順 5 - TestVNet1 を作成し、構成する
@@ -362,7 +366,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 ## <a name="verify"></a>接続の確認
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-[!INCLUDE [verify connections v2v cli](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
+[!INCLUDE [verify connections](../../includes/vpn-gateway-verify-connection-cli-rm-include.md)]
 
 ## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]

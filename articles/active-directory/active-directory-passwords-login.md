@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2017
+ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 9f7fdb97fd121eecf9e7b2f4edc1b568c8114869
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0a3fca0c7d36122a09c825a3ed8edf11cc362b8b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>ログイン画面からの Azure AD パスワード リセット
 
 Azure AD のセルフ サービス パスワード リセット (SSPR) をデプロイしたにもかかわらず、パスワードを忘れたユーザーからヘルプデスクに問い合わせの電話がかかってきます。 ヘルプデスクに電話がかかってくる理由は、ユーザーが Web ブラウザーで SSPR にアクセスできないためです。
 
-新しい Windows 10 Fall Creators Update では、Azure AD に参加済みのデバイスを所有しているユーザーのログイン画面に "パスワードのリセット" リンクが表示されます。 このリンクをユーザーがクリックすると、馴染みのあるセルフ サービス パスワード リセット (SSPR) 機能が利用できます。 
+新しい Windows 10 Fall Creators Update では、Azure AD に参加済みのデバイスを所有しているユーザーのログイン画面に "パスワードのリセット" リンクが表示されます。 このリンクをユーザーがクリックすると、使い慣れたセルフ サービス パスワード リセット (SSPR) 機能が利用できます。
 
 ユーザーが Windows 10 のログイン画面から自分の Azure AD パスワードをリセットできるようにするには、次の要件を満たしておく必要があります。
 
-* Azure AD ドメインに参加している Windows 10 (バージョン 1709 以降) のクライアント。
+* [Azure AD に参加](device-management-azure-portal.md)している Windows 10 (バージョン 1709 以降) のクライアント。
 * Azure AD のセルフ サービス パスワード リセットを有効にする必要があります。
 * "パスワードのリセット" リンクを有効にするための設定を、次のいずれかの方法で構成し、デプロイしてください。
    * [Intune デバイス構成プロファイル](active-directory-passwords-login.md#configure-reset-password-link-using-intune)
@@ -90,7 +90,7 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
 
 次の方法は、設定の変更をテストする目的でのみ使用することをお勧めします。
 
-1. 管理者資格情報を使用して Azure AD ドメイン参加済みデバイスにログインします。
+1. 管理者資格情報を使用して Azure AD 参加済みデバイスにログインします。
 2. **regedit** を管理者として実行します。
 3. 次のレジストリ キーを設定します。
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -104,7 +104,7 @@ Azure AD のセルフ サービス パスワード リセット (SSPR) をデプ
 
 ユーザーがログインを試みると、ログオン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワード リセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
 
-[職場または学校アカウントのパスワードをリセットする方法](active-directory-passwords-update-your-own-password.md#reset-password-at-login)に関するページで、この機能の使い方がユーザー向けに説明されています。
+[職場または学校アカウントのパスワードをリセットする方法](active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)に関するページで、この機能の使い方がユーザー向けに説明されています。
 
 ## <a name="common-issues"></a>一般的な問題
 

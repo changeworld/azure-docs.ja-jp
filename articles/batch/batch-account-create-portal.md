@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2017
+ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7629e496f2d73798b94acdc611014a8b3afead7
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: ebda2f11f93b04a5592d18f8e15c8fc3b560aac3
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -37,7 +37,8 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ## <a name="create-a-batch-account"></a>Batch アカウントを作成する
 
-
+> [!NOTE]
+> Batch アカウントを作成する際には、通常、既定の **Batch サービス** モードを選択することをお勧めします。このモードでは、Azure で管理されたサブスクリプションにバックグラウンドでプールが割り当てられます。 別の**ユーザー サブスクリプション** モード (現在は、ほとんどのシナリオで非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 また、ユーザー サブスクリプション モードで Batch アカウントを作成するには、ご利用のサブスクリプションを Azure Batch に登録し、アカウントを Azure Key Vault に関連付ける必要があります。
 
 1. [Azure Portal][azure_portal] にサインインします。
 2. **[新規]** をクリックして、Marketplace で **[Batch サービス]** を検索します。
@@ -66,7 +67,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 ## <a name="view-batch-account-properties"></a>Batch アカウントのプロパティを表示する
 アカウントが作成されたら、そのアカウントをクリックして設定とプロパティにアクセスします。 左側のメニューを使用すると、アカウントの設定およびプロパティすべてにアクセスできます。
 
-![Batch account blade in Azure portal][account_blade]
+![Azure Portal の [Batch アカウント] ブレード][account_blade]
 
 * **Batch アカウント URL**: [Batch API](batch-apis-tools.md#azure-accounts-for-batch-development) を使用してアプリケーションを開発する場合は、Batch リソースにアクセスするためにアカウント URL が必要になります。 Batch アカウント URL の形式を次に示します。
 
@@ -91,11 +92,45 @@ Batch アカウント専用として使用する新しいストレージ アカ�
 ![汎用ストレージ アカウントの作成][storage_account]
 
 > [!NOTE]
-> リンクされた Storage アカウントのアクセス キーを再生成する際は次の点に注意してください。 Storage アカウントのキーは 1 つだけ再生成し、リンクされた Storage アカウントのブレードにある **[キーの同期]** をクリックします。 キーがプール内のコンピューティング ノードに反映されるまで 5 分待ってから、必要に応じて他のキーの再生成と同期を行います。 両方のキーを同時に再生成すると、コンピューティング ノードはどちらのキーも同期できず、Storage アカウントにアクセスできなくなります。
+> リンクされた Storage アカウントのアクセス キーを再生成する際は次の点に注意してください。 Storage アカウントのキーは 1 つだけ再生成し、リンクされた Storage アカウントのページにある **[キーの同期]** をクリックします。 キーがプール内のコンピューティング ノードに反映されるまで 5 分待ってから、必要に応じて他のキーの再生成と同期を行います。 両方のキーを同時に再生成すると、コンピューティング ノードはどちらのキーも同期できず、Storage アカウントにアクセスできなくなります。
 >
 >
 
 ![ストレージ アカウント キーの再生成][4]
+
+## <a name="additional-configuration-for-user-subscription-mode"></a>ユーザー サブスクリプション モードのための追加構成
+
+ユーザー サブスクリプション モードで Batch アカウントを作成することを選択した場合は、アカウントを作成する前に別途、次の手順を実行してください。
+
+### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Azure Batch によるサブスクリプションへのアクセスを許可する (1 回限りの操作)
+ユーザー サブスクリプション モードで Batch アカウントを初めて作成する場合は、Batch にサブスクリプションを登録する必要があります  (既に実行済みの場合は、次のセクションに移ってください)。
+
+1. [Azure Portal][azure_portal] にサインインします。
+
+2. **[その他のサービス]** > **[サブスクリプション]** の順にクリックし、Batch アカウントに使用するサブスクリプションをクリックします。
+
+3. **[サブスクリプション]** ページで、**[アクセス制御 (IAM)]** > **[追加]** の順にクリックします。
+
+    ![サブスクリプションのアクセスの制御][subscription_access]
+
+4. **[アクセス許可の追加]** ページで、**[共同作成者]** ロールを選択し、Batch API を探します。 API が見つかるまで、次の各文字列を検索します。
+    1. **MicrosoftAzureBatch**。
+    2. **Microsoft Azure Batch**。 新しい Azure AD テナントでは、この名前が使用される場合があります。
+    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。 
+
+5. Batch API を見つけたら選択して、**[保存]** をクリックします。
+
+    ![Batch のアクセス許可を追加する][add_permission]
+
+### <a name="create-a-key-vault"></a>Key Vault を作成します
+ユーザー サブスクリプション モードでは、作成する Batch アカウントと同じリソース グループに属する Azure キー コンテナーが必要です。 Batch を[利用でき](https://azure.microsoft.com/regions/services/)、お使いのサブスクリプションでサポートされているリージョンにそのリソース グループが属していることを確認してください。
+
+1. [Azure Portal][azure_portal] で、**[新規]** > **[セキュリティ + ID]** > **[Key Vault]** の順にクリックします。
+
+2. **[Key Vault の作成]** ページで、キー コンテナーの名前を入力し、Batch アカウント用のリージョンでリソース グループを作成します。 残りの設定については既定値のままにして、**[作成]** をクリックします。
+
+
+
 
 ## <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 Azure サブスクリプションやその他の Azure サービスと同様に、Batch アカウントにも特定の[クォータと制限](batch-quota-limit.md)が適用されます。 Batch アカウントの現在のクォータは、**[クォータ]** に表示されます。
@@ -133,4 +168,4 @@ Azure Portal を利用する方法に加えて、次の方法で Batch アカウ
 [quotas]: ./media/batch-account-create-portal/quotas.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
-[account_portal_byos]: ./media/batch-account-create-portal/batch_acct_portal_byos.png
+

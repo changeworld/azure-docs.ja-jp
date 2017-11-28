@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 10/12/2017
+ms.date: 11/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e9f098bedf2c4dfb27a27d028b7bd87782516c7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 3028e913937db304ac0a1df8e6a095072630505d
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -75,7 +75,7 @@ Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) 
 1 つの Batch アカウントで複数の Batch ワークロードを実行することも、同じサブスクリプションで異なる Azure リージョンの複数の Batch アカウントにワークロードを分散することもできます。
 
 > [!NOTE]
-> Batch アカウントを作成する際には、通常、既定の **Batch サービス** モードを選択することをお勧めします。このモードでは、Azure で管理されたサブスクリプションにバックグラウンドでプールが割り当てられます。 別の**ユーザー サブスクリプション** モード (現在は非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 ユーザー サブスクリプション モードで Batch アカウントを作成するには、アカウントを Azure Key Vault に関連付ける必要があります。
+> Batch アカウントを作成する際には、通常、既定の **Batch サービス** モードを選択することをお勧めします。このモードでは、Azure で管理されたサブスクリプションにバックグラウンドでプールが割り当てられます。 別の**ユーザー サブスクリプション** モード (現在は、ほとんどのシナリオで非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 また、ユーザー サブスクリプション モードで Batch アカウントを作成するには、ご利用のサブスクリプションを Azure Batch に登録し、アカウントを Azure Key Vault に関連付ける必要があります。
 >
 
 
@@ -150,7 +150,9 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
 
 #### <a name="container-support-in-virtual-machine-pools"></a>仮想マシンのプールでのコンテナーのサポート
 
-Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現時点では、Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用してプールを作成するか、Docker Community Edition と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add#definitions_containerconfiguration)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
+Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現在は、Docker コンテナーをサポートするイメージを使ってプールを作成する必要があります。 Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用するか、Docker Community Edition (または Enterprise Edition) と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add#definitions_containerconfiguration)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
+
+詳細については、「[Azure Batch で Docker コンテナー アプリケーションを実行する](batch-docker-container-workloads.md)」を参照してください。
 
 ## <a name="compute-node-type-and-target-number-of-nodes"></a>コンピューティング ノードの種類とターゲット ノード数
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 1b2daf04e060615569e8416d3ded344483518400
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 23e8b1023aebd5381fc89535ce265883d6a8fceb
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -294,8 +294,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
    > [!NOTE]
-   > hyperv 分離モードは、入れ子の仮想化がサポートされた Azure SKU (Ev3 と Dv3) で利用できます。 
-   >
+   > hyperv 分離モードは、入れ子の仮想化がサポートされた Azure SKU (Ev3 と Dv3) で利用できます。 ホストには hyperv ロールがインストールされている必要があります。 ホストに接続して確認してください。
    >
 
 ## <a name="configure-resource-governance"></a>リソース管理を構成する
@@ -325,7 +324,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 ブラウザーを開き、http://containercluster.westus2.cloudapp.azure.com:8081 に移動します。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ## <a name="clean-up"></a>クリーンアップ
-クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-get-started-azure-cluster.md#remove-the-cluster)を検討してください。  [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
+クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-tutorial-create-vnet-and-windows-cluster.md#clean-up-resources)を検討してください。  [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
 
 コンテナー レジストリにイメージをプッシュした後は、開発コンピューターからローカルのイメージを削除できます。
 

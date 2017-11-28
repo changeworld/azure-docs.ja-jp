@@ -13,33 +13,101 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/06/2017
 ms.author: jingwang
-ms.openlocfilehash: e27c1a8e130d20eb0ba0e5c001fc9a435e07c1cd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 5345c0fa6212127e9821adccc8cb4c339ce7ae28
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [バージョン 2 - プレビュー](quickstart-create-data-factory-dot-net.md)
 
-Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。 
-
-このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリのパイプラインは、データを Azure BLOB ストレージ内の 1 つのフォルダーから別のフォルダーにコピーします。
+このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリに作成されたパイプラインは、データを Azure BLOB ストレージ内のあるフォルダーから別のフォルダーに**コピー**します。 Azure Data Factory を使用してデータを**変換**する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](transform-data-using-spark.md)を参照してください。 
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
+>
+> この記事では、Data Factory サービスの概要については詳しく取り上げません。 Azure Data Factory サービスの概要については、「[Azure Data Factory の概要](introduction.md)」をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**の両方のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 
-* Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
-* **Visual Studio** 2013、2015、または 2017。 この記事のチュートリアルでは、Visual Studio 2017 を使用します。
-* **[Azure .NET SDK](http://azure.microsoft.com/downloads/) をダウンロードしてインストールします**。
-* **[これらの手順](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)に従って、Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後で使用します。 同じ記事の手順に従って、アプリケーションを "**共同作成者**" ロールに割り当てます。 
-*  
+
+### <a name="azure-subscription"></a>Azure サブスクリプション
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+
+### <a name="azure-roles"></a>Azure ロール
+Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**または**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にある**ユーザー名**をクリックし、**[アクセス許可]** を選択します。 複数のサブスクリプションへのアクセス権がある場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加するサンプル手順については、[ロールの追加](../billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
+
+### <a name="azure-storage-account"></a>Azure Storage アカウント
+このクイックスタートでは、**ソース** データ ストアと**コピー先**データ ストアの両方に汎用の Azure Storage アカウント (具体的には Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 
+
+#### <a name="get-storage-account-name-and-account-key"></a>ストレージ アカウント名とアカウント キーの取得
+このクイックスタートでは、Azure Storage アカウントの名前とキーを使用します。 以下の手順に従って、ご利用のストレージ アカウントの名前とキーを取得してください。 
+
+1. Web ブラウザーを起動して [Azure Portal](https://portal.azure.com) にアクセスします。 Azure のユーザー名とパスワードを使用してログインします。 
+2. 左側のメニューの **[その他のサービス >]** をクリックし、"**ストレージ**" というキーワードでフィルター処理して、**[ストレージ アカウント]** を選択します。
+
+    ![ストレージ アカウントを検索](media/quickstart-create-data-factory-dot-net/search-storage-account.png)
+3. ストレージ アカウントの一覧で、ご利用のストレージ アカウントを (必要に応じて) フィルターで抽出し、**該当するストレージ アカウント**を選択します。 
+4. **[ストレージ アカウント]** ページのメニューから **[アクセス キー]** を選択します。
+
+    ![ストレージ アカウントの名前とキーを取得](media/quickstart-create-data-factory-dot-net/storage-account-name-key.png)
+5. **[ストレージ アカウント名]** フィールドと **[Key1]** フィールドの値をクリップボードにコピーします。 それらをメモ帳または他のエディターに貼り付けて保存します。  
+
+#### <a name="create-input-folder-and-files"></a>入力フォルダーとファイルの作成
+このセクションでは、**adftutorial** という名前の BLOB コンテナーを Azure BLOB ストレージに作成します。 次に、そのコンテナーに **input** という名前のフォルダーを作成し、input フォルダーにサンプル ファイルをアップロードします。 
+
+1. **[ストレージ アカウント]** ページで **[概要]** に切り替え、**[BLOB]** をクリックします。 
+
+    ![BLOB オプションを選択する](media/quickstart-create-data-factory-dot-net/select-blobs.png)
+2. **[Blob service]** ページのツール バーで、**[+ コンテナー]** をクリックします。 
+
+    ![コンテナーの追加ボタン](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
+3. **[新しいコンテナー]** ダイアログ ボックスで、名前に「**adftutorial**」と入力し、**[OK]** をクリックします。 
+
+    ![コンテナー名を入力する](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
+4. コンテナーの一覧で、**[adftutorial]** をクリックします。 
+
+    ![コンテナーを選択する](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
+1. **[コンテナー]** ページのツール バーで、**[アップロード]** をクリックします。  
+
+    ![[アップロード] ボタン](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
+6. **[BLOB のアップロード]** ページで、**[詳細設定]** をクリックします。
+
+    ![詳細設定リンクをクリックする](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
+7. **メモ帳**を開き、以下の内容を含む **emp.txt** という名前のファイルを作成します。それを **c:\ADFv2QuickStartPSH** フォルダーに保存します。**ADFv2QuickStartPSH** フォルダーがない場合は作成します。
+    
+    ```
+    John, Doe
+    Jane, Doe
+    ```    
+8. Azure Portal の **[BLOB のアップロード]** ページの **[ファイル]** フィールドで、**emp.txt** ファイルを探して選択します。 
+9. **[アップロード先のフォルダー]** フィールドの値として、「**input**」と入力します。 
+
+    ![BLOB のアップロードの設定](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
+10. フォルダーが **input** で、ファイルが **emp.txt** であることを確認し、**[アップロード]** をクリックします。
+11. 一覧に **emp.txt** ファイルとアップロードの状態が表示されます。 
+12. 隅の **[X]** をクリックして、**[BLOB のアップロード]** ページを閉じます。 
+
+    ![BLOB のアップロード ページを閉じる](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
+1. **[コンテナー]** ページを開いたままにしておきます。 このクイックスタートの最後で、このページを使用して出力を確認します。
+
+### <a name="visual-studio"></a>Visual Studio
+この記事のチュートリアルでは、Visual Studio 2017 を使用します。 Visual Studio 2013 または 2015 を使用することもできます。
+
+### <a name="azure-net-sdk"></a>Azure .NET SDK
+[Azure .NET SDK](http://azure.microsoft.com/downloads/) をマシンにダウンロードしてインストールします。
+
+### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
+[こちらの記事](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)の手順に従って、以下のタスクを行ってください。 
+
+1. **Azure Active Directory アプリケーションを作成します**。 このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを Azure Active Directory に作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
+2. 記事の「**アプリケーション ID と認証キーを取得する**」セクションの手順を使用して、**アプリケーション ID** と**認証キー****を取得します。 これらの値は、このチュートリアルの後半で使用するため、書き留めておきます。 
+3. 記事の「**テナント ID を取得する**」セクションの手順を使用して、**テナント ID** を取得します。 この値を書き留めておきます。 
+4. アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。 記事の「**アプリケーションをロールに割り当てる**」セクションの手順に従います。 
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -253,7 +321,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>パイプラインの実行を監視する
 
-1. データのコピーが完了するまでパイプラインの実行の状態を継続的にチェックする次のコードを **Main** メソッドに追加します。
+1. データのコピーが完了するまで状態を継続的にチェックするために、次のコードを **Main** メソッドに追加します。
 
     ```csharp
     // Monitor the pipeline run
@@ -397,8 +465,18 @@ Checking copy activity run details...
 }
 
 Press any key to exit...
-
 ```
+
+## <a name="verify-the-output"></a>出力を検証する
+このパイプラインは、adftutorial BLOB コンテナーに対して output フォルダーを自動的に作成します。 そのうえで、input フォルダーから output フォルダーに emp.txt ファイルをコピーします。 
+
+1. Azure Portal の **adftutorial** コンテナー ページで **[最新の情報に更新]** をクリックして output フォルダーを表示します。 
+    
+    ![更新](media/quickstart-create-data-factory-dot-net/output-refresh.png)
+2. フォルダー一覧の **[output]** をクリックします。 
+2. **emp.txt** が output フォルダーにコピーされていることを確認します。 
+
+    ![更新](media/quickstart-create-data-factory-dot-net/output-file.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 プログラムによって実行するには、データ ファクトリを削除し、次のコード行をプログラムに追加します。 
