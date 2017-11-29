@@ -1,4 +1,4 @@
----
+﻿---
 title: "サーバーレス データベース コンピューティング - Azure Functions と Azure Cosmos DB | Microsoft Docs"
 description: "Azure Cosmos DB と Azure Functions の両方を使用して、イベント ドリブンのサーバーレス コンピューティング アプリケーションを作成する方法について説明します。"
 services: cosmos-db
@@ -22,7 +22,7 @@ ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング
 
-サーバーレス コンピューティングとは、繰り返し可能でステートレスな個々のロジックに集中できる機能です。 個々のロジックにインフラストラクチャの管理は必要ありません。秒単位またはミリ秒単位の実行時間のみリソースを使用します。 サーバーレス コンピューティングのムーブメントの中心には、関数があります。関数は、Azure エコシステムの[Azure Functions](https://azure.microsoft.com/services/functions) で使用できます。
+サーバーレス コンピューティングとは、繰り返し可能でステートレスな個々のロジックに集中できる機能です。 個々のロジックにインフラストラクチャの管理は必要ありません。秒単位またはミリ秒単位の実行時間のみリソースを使用します。 サーバーレス コンピューティングのムーブメントの中心には、関数があります。関数は、Azure エコシステムの [Azure Functions](https://azure.microsoft.com/services/functions) で使用できます。
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) と Azure Functions 間のネイティブ統合を使用すると、Azure Cosmos DB アカウントからデータベースのトリガー、入力バインディング、出力バインディングを直接作成できます。 Azure Functions と Azure Cosmos DB を使用すると、グローバル ユーザー ベース向けの、リッチ データに低待機時間でアクセスできる、イベント ドリブンのサーバーレス アプリケーションを作成およびデプロイすることができます。
 
@@ -64,7 +64,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 6. 温度が特定の値を超えた場合も、警告が所有者に送信されます。
 7. 関数に対する**出力バインディング**によって、別の Azure Cosmos DB コレクションの車の記録が更新され、エンジンのチェック イベントに関する情報が保存されます。
 
-次の図は、このトリガーで Azure Portal で書き込まれるコードを示しています。
+次の図は、このトリガーで Azure ポータルで書き込まれるコードを示しています。
 
 ![Azure Portal で Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/cosmos-db-trigger-portal.png)
 

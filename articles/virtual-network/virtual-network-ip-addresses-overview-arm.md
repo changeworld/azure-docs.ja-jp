@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure における IP アドレスの種類 | Microsoft Docs"
 description: "Azure でのパブリックおよびプライベート IP アドレスについて説明します。"
 services: virtual-network

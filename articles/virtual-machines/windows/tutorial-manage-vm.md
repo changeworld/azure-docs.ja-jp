@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure PowerShell モジュールを使用して Windows VM を作成および管理する | Microsoft Docs"
 description: "チュートリアル - Azure PowerShell モジュールを使用して Windows VM を作成および管理する"
 services: virtual-machines-windows

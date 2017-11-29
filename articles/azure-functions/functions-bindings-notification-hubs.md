@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions ã«ãŠã‘ã‚‹é€šçŸ¥ãƒãƒ–ã®ãƒã‚¤ãƒ³ãƒ‰ | Microsoft Docs"
-description: "Azure Functions ã§ Azure Notification Hub ã®ãƒã‚¤ãƒ³ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹æ–¹æ³•ã«ã¤ã„ã¦èª¬æ˜ã—ã¾ã™ã€‚"
+title: "Azure Functions ÇRÆğÆ÷Çr³qª¾ÇËÇÒÇUÇÌÇ~ÇïÇÅ | Microsoft Docs"
+description: "Azure Functions ÇN Azure Notification Hub ÇUÇÌÇ~ÇïÇÅÇy¨Ï¥ÎÇ@Çr¤èªkÇRÇKÆêÇM?©úÆıÇeÇ@¡C"
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
 editor: 
 tags: 
-keywords: "Azure Functions, é–¢æ•°, ã‚¤ãƒ™ãƒ³ãƒˆå‡¦ç†, å‹•çš„ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ãƒ†ã‚£ãƒ³ã‚°, ã‚µãƒ¼ãƒãƒ¼ãªã—ã®ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£"
+keywords: "Azure Functions, ??, Ç~ÇÕÇïÇÄ?²z, °ÊªºÇ¯ÇïÇĞÇáÆãÇÂÇ}ÇïÇ¬, Ç±ÆãÇÌÆãÇQÆıÇUÇ|ÆãÇ©ÇÂÇ«Ç½Çß"
 ms.assetid: 0ff0c949-20bf-430b-8dd5-d72b7b6ee6f7
 ms.service: functions
 ms.devlang: multiple
@@ -22,32 +22,32 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-functions-notification-hub-output-binding"></a>Azure Functions ã«ãŠã‘ã‚‹é€šçŸ¥ãƒãƒ–ã®å‡ºåŠ›ãƒã‚¤ãƒ³ãƒ‰
+# <a name="azure-functions-notification-hub-output-binding"></a>Azure Functions ÇRÆğÆ÷Çr³qª¾ÇËÇÒÇU¥X¤OÇÌÇ~ÇïÇÅ
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-ã“ã®è¨˜äº‹ã§ã¯ã€Azure Functions ã§ Azure Notification Hub ã®ãƒã‚¤ãƒ³ãƒ‰ã‚’æ§‹æˆã—ãŸã‚Šã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã—ãŸã‚Šã™ã‚‹æ–¹æ³•ã«ã¤ã„ã¦èª¬æ˜ã—ã¾ã™ã€‚ 
+ÆùÇU°O¨ÆÇNÇV¡BAzure Functions ÇN Azure Notification Hub ÇUÇÌÇ~ÇïÇÅÇyºc¦¨ÆıÇFÇqÇ¯ÆãÇÃÇ}ÇïÇ¬ÆıÇFÇqÇ@Çr¤èªkÇRÇKÆêÇM?©úÆıÇeÇ@¡C 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-é–¢æ•°ã‚’ä½¿ç”¨ã—ã¦ã€æ§‹æˆã•ã‚ŒãŸ Azure Notification Hub ã§æ•°è¡Œã®ã‚³ãƒ¼ãƒ‰ã‚’ä½¿ã£ã¦ãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã‚’é€ä¿¡ã§ãã¾ã™ã€‚ ãŸã ã—ã€Azure Notification Hub ã¯ã€ä½¿ç”¨ã™ã‚‹ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ é€šçŸ¥ã‚µãƒ¼ãƒ“ã‚¹ (PNS) ç”¨ã«æ§‹æˆã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ Azure Notification Hub ã®æ§‹æˆæ–¹æ³•ã‚„ã€é€šçŸ¥ã‚’å—ã‘å–ã‚‹ãŸã‚ã«ç™»éŒ²ã™ã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®é–‹ç™ºæ–¹æ³•ã®è©³ç´°ã«ã¤ã„ã¦ã¯ã€ [Notification Hubs ã®ä½¿ç”¨](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) ã«é–¢ã™ã‚‹ãƒšãƒ¼ã‚¸ã‚’å‚ç…§ã—ã¦ã€ä¸Šéƒ¨ã®ç›®çš„ã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚
+??Çy¨Ï¥ÎÆıÇM¡Bºc¦¨ÆûÇsÇF Azure Notification Hub ÇN?¦æÇUÇ¯ÆãÇÅÇy¨ÏÇJÇMÇÓÇ¿Ç³Çá³qª¾Çy°e«HÇNÆóÇeÇ@¡C ÇFÇGÆı¡BAzure Notification Hub ÇV¡B¨Ï¥ÎÇ@ÇrÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜ³qª¾Ç±ÆãÇÏÇµ (PNS) ¥ÎÇRºc¦¨Ç@Çr¥²­nÆòÆèÇqÇeÇ@¡C Azure Notification Hub ÇUºc¦¨¤èªkÇk¡B³qª¾Çy¨üÆ÷¨úÇrÇFÇhÇRµn?Ç@ÇrÇ«ÇåÇ~Ç|ÇïÇÄ Ç|ÇÓÇæÇ­ÆãÇ³ÇãÇïÇU¶}?¤èªkÇU¸Ô²ÓÇRÇKÆêÇMÇV¡B [Notification Hubs ÇU¨Ï¥Î](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) ÇR?Ç@ÇrÇÖÆãÇ´Çy?·ÓÆıÇM¡B¤W³¡ÇU¥ØªºÇUÇ«ÇåÇ~Ç|ÇïÇÄ ÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÇyÇ«ÇæÇ¿Ç«ÆıÇMÆõÇGÆûÆê¡C
 
-é€ä¿¡ã§ãã‚‹é€šçŸ¥ã¯ã€ãƒã‚¤ãƒ†ã‚£ãƒ–é€šçŸ¥ã¾ãŸã¯ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé€šçŸ¥ã§ã™ã€‚ ãƒã‚¤ãƒ†ã‚£ãƒ–é€šçŸ¥ã¯ã€å‡ºåŠ›ãƒã‚¤ãƒ³ãƒ‰ã® `platform` ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã§æ§‹æˆã•ã‚ŒãŸç‰¹å®šã®é€šçŸ¥ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚’å¯¾è±¡ã¨ã—ã¦ã„ã¾ã™ã€‚ ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé€šçŸ¥ã¯ã€è¤‡æ•°ã®ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚’å¯¾è±¡ã¨ã—ã¦ä½¿ç”¨ã§ãã¾ã™ã€‚   
+°e«HÇNÆóÇr³qª¾ÇV¡BÇÉÇ~ÇÂÇ}ÇÒ³qª¾ÇeÇFÇVÇÂÇïÇÓÇèÆãÇÄ³qª¾ÇNÇ@¡C ÇÉÇ~ÇÂÇ}ÇÒ³qª¾ÇV¡B¥X¤OÇÌÇ~ÇïÇÅÇU `platform` ÇÓÇéÇÍÇÂÇ}ÇNºc¦¨ÆûÇsÇF¯S©wÇU³qª¾ÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÇy?¶HÇOÆıÇMÆêÇeÇ@¡C ÇÂÇïÇÓÇèÆãÇÄ³qª¾ÇV¡B½Æ?ÇUÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÇy?¶HÇOÆıÇM¨Ï¥ÎÇNÆóÇeÇ@¡C   
 
-## <a name="notification-hub-output-binding-properties"></a>Notification Hub å‡ºåŠ›ãƒã‚¤ãƒ³ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
-function.json ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€æ¬¡ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’æä¾›ã—ã¾ã™ã€‚
+## <a name="notification-hub-output-binding-properties"></a>Notification Hub ¥X¤OÇÌÇ~ÇïÇÅÇUÇÓÇéÇÍÇÂÇ}
+function.json ÇÑÇ{Ç~ÇçÇV¡B¦¸ÇUÇÓÇéÇÍÇÂÇ}Çy´£¨ÑÆıÇeÇ@¡C
 
 
-|ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£  |Description  |
+|ÇÓÇéÇÍÇÂÇ}  |Description  |
 |---------|---------|
-|**name** | é€šçŸ¥ãƒãƒ– ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®é–¢æ•°ã‚³ãƒ¼ãƒ‰ã§ä½¿ç”¨ã•ã‚Œã‚‹å¤‰æ•°åã€‚ |
-|**type** | `notificationHub` ã«è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ |
-|**tagExpression** | ã‚¿ã‚°å¼ã€‚ã“ã‚Œã«ã‚ˆã‚Šã€ã‚¿ã‚°å¼ã«ä¸€è‡´ã™ã‚‹é€šçŸ¥ã‚’å—ä¿¡ã™ã‚‹ã‚ˆã†ã«ç™»éŒ²ã—ãŸä¸€é€£ã®ãƒ‡ãƒã‚¤ã‚¹ã«é€šçŸ¥ã‚’é…ä¿¡ã™ã‚‹ã‚ˆã†ã«æŒ‡å®šã§ãã¾ã™ã€‚  è©³ç´°ã«ã¤ã„ã¦ã¯ã€ã€Œ[ãƒ«ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã¨ã‚¿ã‚°å¼](../notification-hubs/notification-hubs-tags-segment-push-message.md)ã€ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚ |
-|**hubName** | Azure Portal å†…ã®é€šçŸ¥ãƒãƒ– ãƒªã‚½ãƒ¼ã‚¹ã®åå‰ã€‚ |
-|**connection** | ã“ã®æ¥ç¶šæ–‡å­—åˆ—ã¯ã€ä½¿ç”¨ã—ã¦ã„ã‚‹é€šçŸ¥ãƒãƒ–ã® *DefaultFullSharedAccessSignature* å€¤ã«è¨­å®šã•ã‚ŒãŸ**ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®š**ã®æ¥ç¶šæ–‡å­—åˆ—ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ |
-|**direction** | `out` ã«è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ | 
-|**platform** | platform ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã¯ã€é€šçŸ¥ã®å¯¾è±¡ã¨ãªã‚‹é€šçŸ¥ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚’ç¤ºã—ã¾ã™ã€‚ æ—¢å®šã§ã¯ã€ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãŒå‡ºåŠ›ãƒã‚¤ãƒ³ãƒ‰ã‹ã‚‰çœç•¥ã•ã‚Œã¦ã„ã‚‹å ´åˆã€ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé€šçŸ¥ã¯ã€Azure é€šçŸ¥ãƒãƒ–ã§æ§‹æˆã•ã‚Œã¦ã„ã‚‹ä»»æ„ã®ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚’å¯¾è±¡ã¨ã—ã¦ä½¿ç”¨ã§ãã¾ã™ã€‚ Azure Notification Hub ã§ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’ä½¿ç”¨ã—ã¦ã‚¯ãƒ­ã‚¹ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã®é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹ä¸€èˆ¬çš„ãªæ–¹æ³•ã®è©³ç´°ã«ã¤ã„ã¦ã¯ã€ã€Œ[Templates (ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ã€ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚ è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã€_platform_ ã«ã¯ã€æ¬¡ã®ã„ãšã‚Œã‹ã®å€¤ã‚’æŒ‡å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ <ul><li><code>apns</code>&mdash;Apple Push Notification Serviceã€‚ APNS å‘ã‘ã« Notification Hub ã‚’æ§‹æˆã™ã‚‹æ–¹æ³•ã¨ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ ã‚¢ãƒ—ãƒªã§é€šçŸ¥ã‚’å—ä¿¡ã™ã‚‹æ–¹æ³•ã®è©³ç´°ã«ã¤ã„ã¦ã¯ã€ã€Œ[Azure Notification Hubs ã‹ã‚‰ iOS ã¸ã®ãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã®é€ä¿¡](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)ã€ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)ã€‚ ADM å‘ã‘ã« Notification Hub ã‚’æ§‹æˆã™ã‚‹æ–¹æ³•ã¨ã€Kindle ã‚¢ãƒ—ãƒªã§é€šçŸ¥ã‚’å—ä¿¡ã™ã‚‹æ–¹æ³•ã®è©³ç´°ã«ã¤ã„ã¦ã¯ã€ã€Œ[Notification Hubs ã®ä½¿ç”¨ (Kindle ã‚¢ãƒ—ãƒª)](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)ã€ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/)ã€‚ GCM ã®æ–°ã—ã„ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã‚ã‚‹ Firebase Cloud Messaging ã‚‚ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¾ã™ã€‚ è©³ç´°ã«ã¤ã„ã¦ã¯ã€ã€Œ[Azure Notification Hubs ã‹ã‚‰ Android ã¸ã®ãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã®é€ä¿¡](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)ã€ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</li><li><code>wns</code>&mdash;Windows ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ å‘ã‘ã® [Windows Push Notification Services](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview)ã€‚ WNS ã§ã¯ Windows Phone 8.1 ä»¥é™ã‚‚ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¾ã™ã€‚ è©³ç´°ã«ã¤ã„ã¦ã¯ã€ã€Œ[Notification Hubs ã®ä½¿ç”¨ (Windows ãƒ¦ãƒ‹ãƒãƒ¼ã‚µãƒ« ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ  ã‚¢ãƒ—ãƒª)](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)ã€ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</li><li><code>mpns</code>&mdash;[Microsoft Push Notification Service](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx)ã€‚ ã“ã®ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã§ã¯ã€Windows Phone 8 ãŠã‚ˆã³ãã‚Œä»¥å‰ã® Windows Phone ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ãŒã‚µãƒãƒ¼ãƒˆã•ã‚Œã¾ã™ã€‚ è©³ç´°ã«ã¤ã„ã¦ã¯ã€ã€Œ[Windows Phone ã§ã® Azure Notification Hubs ã‚’ä½¿ç”¨ã—ãŸãƒ—ãƒƒã‚·ãƒ¥é€šçŸ¥ã®é€ä¿¡](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)ã€ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚</li></ul> |
+|**name** | ³qª¾ÇËÇÒ ÇİÇ¿Ç·ÆãÇ´ÇU??Ç¯ÆãÇÅÇN¨Ï¥ÎÆûÇsÇr??¦W¡C |
+|**type** | `notificationHub` ÇR³]©wÇ@Çr¥²­nÆòÆèÇqÇeÇ@¡C |
+|**tagExpression** | Ç»Ç¬¦¡¡CÆùÇsÇRÇoÇq¡BÇ»Ç¬¦¡ÇR¤@­PÇ@Çr³qª¾Çy¨ü«HÇ@ÇrÇoÆìÇRµn?ÆıÇF¤@³sÇUÇÃÇÌÇ~ÇµÇR³qª¾Çy°t«HÇ@ÇrÇoÆìÇR«ü©wÇNÆóÇeÇ@¡C  ¸Ô²ÓÇRÇKÆêÇMÇV¡B¡u[ÇçÆãÇÂÇ}ÇïÇ¬ÇOÇ»Ç¬¦¡](../notification-hubs/notification-hubs-tags-segment-push-message.md)¡vÇy?·ÓÆıÇMÆõÇGÆûÆê¡C |
+|**hubName** | Azure Portal ?ÇU³qª¾ÇËÇÒ ÇæÇ¹ÆãÇµÇU¦W«e¡C |
+|**connection** | ÆùÇU±µ?¤å¦r¦CÇV¡B¨Ï¥ÎÆıÇMÆêÇr³qª¾ÇËÇÒÇU *DefaultFullSharedAccessSignature* ?ÇR³]©wÆûÇsÇF**Ç|ÇÓÇæÇ­ÆãÇ³ÇãÇï³]©w**ÇU±µ?¤å¦r¦CÇNÆèÇr¥²­nÆòÆèÇqÇeÇ@¡C |
+|**direction** | `out` ÇR³]©wÇ@Çr¥²­nÆòÆèÇqÇeÇ@¡C | 
+|**platform** | platform ÇÓÇéÇÍÇÂÇ}ÇV¡B³qª¾ÇU?¶HÇOÇQÇr³qª¾ÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÇy¥ÜÆıÇeÇ@¡C ¬J©wÇNÇV¡BÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÇUÇÓÇéÇÍÇÂÇ}Æò¥X¤OÇÌÇ~ÇïÇÅÆñÇp¬Ù²¤ÆûÇsÇMÆêÇr³õ¦X¡BÇÂÇïÇÓÇèÆãÇÄ³qª¾ÇV¡BAzure ³qª¾ÇËÇÒÇNºc¦¨ÆûÇsÇMÆêÇr¥ô·NÇUÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÇy?¶HÇOÆıÇM¨Ï¥ÎÇNÆóÇeÇ@¡C Azure Notification Hub ÇNÇÂÇïÇÓÇèÆãÇÄÇy¨Ï¥ÎÆıÇMÇ«ÇéÇµÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÇU³qª¾Çy°e«HÇ@Çr¤@¯ëªºÇQ¤èªkÇU¸Ô²ÓÇRÇKÆêÇMÇV¡B¡u[Templates (ÇÂÇïÇÓÇèÆãÇÄ)](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)¡vÇy?·ÓÆıÇMÆõÇGÆûÆê¡C ³]©wÆûÇsÇMÆêÇr³õ¦X¡B_platform_ ÇRÇV¡B¦¸ÇUÆêÇAÇsÆñÇU?Çy«ü©wÇ@Çr¥²­nÆòÆèÇqÇeÇ@¡C <ul><li><code>apns</code>&mdash;Apple Push Notification Service¡C APNS ¦VÆ÷ÇR Notification Hub Çyºc¦¨Ç@Çr¤èªkÇO¡BÇ«ÇåÇ~Ç|ÇïÇÄ Ç|ÇÓÇæÇN³qª¾Çy¨ü«HÇ@Çr¤èªkÇU¸Ô²ÓÇRÇKÆêÇMÇV¡B¡u[Azure Notification Hubs ÆñÇp iOS Ç_ÇUÇÓÇ¿Ç³Çá³qª¾ÇU°e«H](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)¡vÇy?·ÓÆıÇMÆõÇGÆûÆê¡C</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)¡C ADM ¦VÆ÷ÇR Notification Hub Çyºc¦¨Ç@Çr¤èªkÇO¡BKindle Ç|ÇÓÇæÇN³qª¾Çy¨ü«HÇ@Çr¤èªkÇU¸Ô²ÓÇRÇKÆêÇMÇV¡B¡u[Notification Hubs ÇU¨Ï¥Î (Kindle Ç|ÇÓÇæ)](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)¡vÇy?·ÓÆıÇMÆõÇGÆûÆê¡C</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/)¡C GCM ÇU·sÆıÆêÇÌÆãÇ´ÇãÇïÇNÆèÇr Firebase Cloud Messaging ÇiÇ±ÇÙÆãÇÄÆûÇsÇeÇ@¡C ¸Ô²ÓÇRÇKÆêÇMÇV¡B¡u[Azure Notification Hubs ÆñÇp Android Ç_ÇUÇÓÇ¿Ç³Çá³qª¾ÇU°e«H](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)¡vÇy?·ÓÆıÇMÆõÇGÆûÆê¡C</li><li><code>wns</code>&mdash;Windows ÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜ¦VÆ÷ÇU [Windows Push Notification Services](https://msdn.microsoft.com/en-us/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview)¡C WNS ÇNÇV Windows Phone 8.1 ¥H­°ÇiÇ±ÇÙÆãÇÄÆûÇsÇeÇ@¡C ¸Ô²ÓÇRÇKÆêÇMÇV¡B¡u[Notification Hubs ÇU¨Ï¥Î (Windows ÇâÇÇÇÌÆãÇ±Çç ÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜ Ç|ÇÓÇæ)](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)¡vÇy?·ÓÆıÇMÆõÇGÆûÆê¡C</li><li><code>mpns</code>&mdash;[Microsoft Push Notification Service](https://msdn.microsoft.com/en-us/library/windows/apps/ff402558.aspx)¡C ÆùÇUÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÇNÇV¡BWindows Phone 8 ÆğÇoÇZÇDÇs¥H«eÇU Windows Phone ÇÓÇåÇ¿ÇÄÇÑÇ¥ÆãÇÜÆòÇ±ÇÙÆãÇÄÆûÇsÇeÇ@¡C ¸Ô²ÓÇRÇKÆêÇMÇV¡B¡u[Windows Phone ÇNÇU Azure Notification Hubs Çy¨Ï¥ÎÆıÇFÇÓÇ¿Ç³Çá³qª¾ÇU°e«H](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)¡vÇy?·ÓÆıÇMÆõÇGÆûÆê¡C</li></ul> |
 
-function.json ã®ä¾‹:
+function.json ÇU¨Ò:
 
 ```json
 {
@@ -66,19 +66,19 @@ function.json ã®ä¾‹:
 }
 ```
 
-## <a name="notification-hub-connection-string-setup"></a>Notification Hub ã®æ¥ç¶šæ–‡å­—åˆ—ã®è¨­å®š
-Notification Hub å‡ºåŠ›ãƒã‚¤ãƒ³ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹ã«ã¯ã€ãƒãƒ–ã®æ¥ç¶šæ–‡å­—åˆ—ã‚’è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ æ—¢å­˜ã®é€šçŸ¥ãƒãƒ–ã‚’é¸æŠã™ã‚‹ã‹ã€é–¢æ•°ã® "*çµ±åˆ*" ã‚¿ãƒ–ã‹ã‚‰æ–°ã—ã„ãƒãƒ–ã‚’ä½œæˆã§ãã¾ã™ã€‚ æ¥ç¶šæ–‡å­—åˆ—ã‚’æ‰‹å‹•ã§æ§‹æˆã™ã‚‹ã“ã¨ã‚‚ã§ãã¾ã™ã€‚ 
+## <a name="notification-hub-connection-string-setup"></a>Notification Hub ÇU±µ?¤å¦r¦CÇU³]©w
+Notification Hub ¥X¤OÇÌÇ~ÇïÇÅÇy¨Ï¥ÎÇ@ÇrÇRÇV¡BÇËÇÒÇU±µ?¤å¦r¦CÇy³]©wÇ@Çr¥²­nÆòÆèÇqÇeÇ@¡C ¬J¦sÇU³qª¾ÇËÇÒÇy¿ï?Ç@ÇrÆñ¡B??ÇU "*²Î¦X*" Ç»ÇÒÆñÇp·sÆıÆêÇËÇÒÇy§@¦¨ÇNÆóÇeÇ@¡C ±µ?¤å¦r¦CÇy¤â°ÊÇNºc¦¨Ç@ÇrÆùÇOÇiÇNÆóÇeÇ@¡C 
 
-æ—¢å­˜ã®é€šçŸ¥ãƒãƒ–ã«å¯¾ã™ã‚‹æ¥ç¶šæ–‡å­—åˆ—ã‚’æ§‹æˆã™ã‚‹ã«ã¯:
+¬J¦sÇU³qª¾ÇËÇÒÇR?Ç@Çr±µ?¤å¦r¦CÇyºc¦¨Ç@ÇrÇRÇV:
 
-1. [Azure Portal](https://portal.azure.com) ã§é€šçŸ¥ãƒãƒ–ã«ç§»å‹•ã—ã€**[ã‚¢ã‚¯ã‚»ã‚¹ãƒãƒªã‚·ãƒ¼]** ã‚’é¸æŠã—ã¦ã€**[DefaultFullSharedAccessSignature]** ãƒãƒªã‚·ãƒ¼ã®æ¨ªã«ã‚ã‚‹ã‚³ãƒ”ãƒ¼ ãƒœã‚¿ãƒ³ã‚’é¸æŠã—ã¾ã™ã€‚ ã“ã‚Œã«ã‚ˆã‚Šã€*DefaultFullSharedAccessSignature* ãƒãƒªã‚·ãƒ¼ã®æ¥ç¶šæ–‡å­—åˆ—ãŒé€šçŸ¥ãƒãƒ–ã«ã‚³ãƒ”ãƒ¼ã•ã‚Œã¾ã™ã€‚ ã“ã®æ¥ç¶šæ–‡å­—åˆ—ã«ã‚ˆã‚Šã€é€šçŸ¥ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹ãŸã‚ã®é–¢æ•°ã‚¢ã‚¯ã‚»ã‚¹æ¨©é™ãŒä»˜ä¸ã•ã‚Œã¾ã™ã€‚ 
-    ![é€šçŸ¥ãƒãƒ–ã®æ¥ç¶šæ–‡å­—åˆ—ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
-1. Azure Portal ã®é–¢æ•°ã‚¢ãƒ—ãƒªã«ç§»å‹•ã—ã€**[ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®š]** ã‚’é¸æŠã—ã€`MyHubConnectionString` ãªã©ã®ã‚­ãƒ¼ã‚’è¿½åŠ ã—ã¾ã™ã€‚æ¬¡ã«ã€é€šçŸ¥ãƒãƒ–ç”¨ã«ã‚³ãƒ”ãƒ¼ã•ã‚ŒãŸ *DefaultFullSharedAccessSignature* ã‚’å€¤ã¨ã—ã¦è²¼ã‚Šä»˜ã‘ã¦ã€**[ä¿å­˜]** ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚
+1. [Azure Portal](https://portal.azure.com) ÇN³qª¾ÇËÇÒÇR²¾°ÊÆı¡B**[Ç|Ç«Ç·ÇµÇÙÇæÇ³Æã]** Çy¿ï?ÆıÇM¡B**[DefaultFullSharedAccessSignature]** ÇÙÇæÇ³ÆãÇU?ÇRÆèÇrÇ¯ÇĞÆã ÇØÇ»ÇïÇy¿ï?ÆıÇeÇ@¡C ÆùÇsÇRÇoÇq¡B*DefaultFullSharedAccessSignature* ÇÙÇæÇ³ÆãÇU±µ?¤å¦r¦CÆò³qª¾ÇËÇÒÇRÇ¯ÇĞÆãÆûÇsÇeÇ@¡C ÆùÇU±µ?¤å¦r¦CÇRÇoÇq¡B³qª¾ÇİÇ¿Ç·ÆãÇ´Çy°e«HÇ@ÇrÇFÇhÇU??Ç|Ç«Ç·Çµ?­­Æò¥IÉOÆûÇsÇeÇ@¡C 
+    ![³qª¾ÇËÇÒÇU±µ?¤å¦r¦CÇyÇ¯ÇĞÆãÇ@Çr](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
+1. Azure Portal ÇU??Ç|ÇÓÇæÇR²¾°ÊÆı¡B**[Ç|ÇÓÇæÇ­ÆãÇ³ÇãÇï³]©w]** Çy¿ï?Æı¡B`MyHubConnectionString` ÇQÇPÇUÇ©ÆãÇy°l¥[ÆıÇeÇ@¡C¦¸ÇR¡B³qª¾ÇËÇÒ¥ÎÇRÇ¯ÇĞÆãÆûÇsÇF *DefaultFullSharedAccessSignature* Çy?ÇOÆıÇM¶KÇq¥IÆ÷ÇM¡B**[«O¦s]** ÇyÇ«ÇæÇ¿Ç«ÆıÇeÇ@¡C
 
-ã“ã‚Œã§ã€å‡ºåŠ›ãƒã‚¤ãƒ³ãƒ‰ã®é€šçŸ¥ãƒãƒ–æ¥ç¶šã‚’å®šç¾©ã™ã‚‹ã€ã“ã®åå‰ä»˜ãã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³è¨­å®šã‚’ä½¿ç”¨ã§ãã¾ã™ã€‚
+ÆùÇsÇN¡B¥X¤OÇÌÇ~ÇïÇÅÇU³qª¾ÇËÇÒ±µ?Çy©w¸qÇ@Çr¡BÆùÇU¦W«e¥IÆóÇ|ÇÓÇæÇ­ÆãÇ³ÇãÇï³]©wÇy¨Ï¥ÎÇNÆóÇeÇ@¡C
 
-## <a name="apns-native-notifications-with-c-queue-triggers"></a>C# ã‚­ãƒ¥ãƒ¼ ãƒˆãƒªã‚¬ãƒ¼ã‚’ä½¿ç”¨ã—ãŸ APNS ãƒã‚¤ãƒ†ã‚£ãƒ–é€šçŸ¥
-æ¬¡ã®ä¾‹ã§ã¯ã€[Microsoft Azure Notification Hubs ãƒ©ã‚¤ãƒ–ãƒ©ãƒª](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)ã«å®šç¾©ã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã‚’ä½¿ç”¨ã—ã¦ãƒã‚¤ãƒ†ã‚£ãƒ–ã® APNS é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹æ–¹æ³•ã‚’ç¤ºã—ã¾ã™ã€‚ 
+## <a name="apns-native-notifications-with-c-queue-triggers"></a>C# Ç©ÇáÆã ÇÄÇæÇ¨ÆãÇy¨Ï¥ÎÆıÇF APNS ÇÉÇ~ÇÂÇ}ÇÒ³qª¾
+¦¸ÇU¨ÒÇNÇV¡B[Microsoft Azure Notification Hubs ÇåÇ~ÇÒÇåÇæ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)ÇR©w¸qÆûÇsÇFÇ»Ç~ÇÓÇy¨Ï¥ÎÆıÇMÇÉÇ~ÇÂÇ}ÇÒÇU APNS ³qª¾Çy°e«HÇ@Çr¤èªkÇy¥ÜÆıÇeÇ@¡C 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -107,8 +107,8 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="gcm-native-notifications-with-c-queue-triggers"></a>C# ã‚­ãƒ¥ãƒ¼ ãƒˆãƒªã‚¬ãƒ¼ã‚’ä½¿ç”¨ã—ãŸ GCM ãƒã‚¤ãƒ†ã‚£ãƒ–é€šçŸ¥
-æ¬¡ã®ä¾‹ã§ã¯ã€[Microsoft Azure Notification Hubs ãƒ©ã‚¤ãƒ–ãƒ©ãƒª](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)ã«å®šç¾©ã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã‚’ä½¿ç”¨ã—ã¦ãƒã‚¤ãƒ†ã‚£ãƒ–ã® GCM é€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹æ–¹æ³•ã‚’ç¤ºã—ã¾ã™ã€‚ 
+## <a name="gcm-native-notifications-with-c-queue-triggers"></a>C# Ç©ÇáÆã ÇÄÇæÇ¨ÆãÇy¨Ï¥ÎÆıÇF GCM ÇÉÇ~ÇÂÇ}ÇÒ³qª¾
+¦¸ÇU¨ÒÇNÇV¡B[Microsoft Azure Notification Hubs ÇåÇ~ÇÒÇåÇæ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)ÇR©w¸qÆûÇsÇFÇ»Ç~ÇÓÇy¨Ï¥ÎÆıÇMÇÉÇ~ÇÂÇ}ÇÒÇU GCM ³qª¾Çy°e«HÇ@Çr¤èªkÇy¥ÜÆıÇeÇ@¡C 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -137,8 +137,8 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="wns-native-notifications-with-c-queue-triggers"></a>C# ã‚­ãƒ¥ãƒ¼ ãƒˆãƒªã‚¬ãƒ¼ã‚’ä½¿ç”¨ã—ãŸ WNS ãƒã‚¤ãƒ†ã‚£ãƒ–é€šçŸ¥
-æ¬¡ã®ä¾‹ã§ã¯ã€[Microsoft Azure Notification Hubs ãƒ©ã‚¤ãƒ–ãƒ©ãƒª](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)ã«å®šç¾©ã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã‚’ä½¿ç”¨ã—ã¦ãƒã‚¤ãƒ†ã‚£ãƒ–ã® WNS ãƒˆãƒ¼ã‚¹ãƒˆé€šçŸ¥ã‚’é€ä¿¡ã™ã‚‹æ–¹æ³•ã‚’ç¤ºã—ã¾ã™ã€‚ 
+## <a name="wns-native-notifications-with-c-queue-triggers"></a>C# Ç©ÇáÆã ÇÄÇæÇ¨ÆãÇy¨Ï¥ÎÆıÇF WNS ÇÉÇ~ÇÂÇ}ÇÒ³qª¾
+¦¸ÇU¨ÒÇNÇV¡B[Microsoft Azure Notification Hubs ÇåÇ~ÇÒÇåÇæ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)ÇR©w¸qÆûÇsÇFÇ»Ç~ÇÓÇy¨Ï¥ÎÆıÇMÇÉÇ~ÇÂÇ}ÇÒÇU WNS ÇÄÆãÇµÇÄ³qª¾Çy°e«HÇ@Çr¤èªkÇy¥ÜÆıÇeÇ@¡C 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -179,8 +179,8 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 }
 ```
 
-## <a name="template-example-for-nodejs-timer-triggers"></a>Node.js ã‚¿ã‚¤ãƒãƒ¼ ãƒˆãƒªã‚¬ãƒ¼ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ä¾‹
-æ¬¡ã®ä¾‹ã§ã¯ã€`location` ã¨ `message` ã‚’å«ã‚€[ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç™»éŒ²](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ã®é€šçŸ¥ã‚’é€ä¿¡ã—ã¾ã™ã€‚
+## <a name="template-example-for-nodejs-timer-triggers"></a>Node.js Ç»Ç~ÇÚÆã ÇÄÇæÇ¨ÆãÇUÇÂÇïÇÓÇèÆãÇÄÇU¨Ò
+¦¸ÇU¨ÒÇNÇV¡B`location` ÇO `message` Çy§tÇg[ÇÂÇïÇÓÇèÆãÇÄµn?](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ÇU³qª¾Çy°e«HÆıÇeÇ@¡C
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -199,16 +199,16 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## <a name="template-example-for-f-timer-triggers"></a>F# ã‚¿ã‚¤ãƒãƒ¼ ãƒˆãƒªã‚¬ãƒ¼ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ä¾‹
-æ¬¡ã®ä¾‹ã§ã¯ã€`location` ã¨ `message` ã‚’å«ã‚€[ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç™»éŒ²](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ã®é€šçŸ¥ã‚’é€ä¿¡ã—ã¾ã™ã€‚
+## <a name="template-example-for-f-timer-triggers"></a>F# Ç»Ç~ÇÚÆã ÇÄÇæÇ¨ÆãÇUÇÂÇïÇÓÇèÆãÇÄÇU¨Ò
+¦¸ÇU¨ÒÇNÇV¡B`location` ÇO `message` Çy§tÇg[ÇÂÇïÇÓÇèÆãÇÄµn?](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ÇU³qª¾Çy°e«HÆıÇeÇ@¡C
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
     notification = dict [("location", "Redmond"); ("message", "Hello from F#!")]
 ```
 
-## <a name="template-example-using-an-out-parameter"></a>out ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’ä½¿ç”¨ã—ãŸãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ä¾‹
-æ¬¡ã®ä¾‹ã§ã¯ã€ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã« `message` ãƒ—ãƒ¬ãƒ¼ã‚¹ ãƒ›ãƒ«ãƒ€ãƒ¼ã‚’å«ã‚€[ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç™»éŒ²](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ã®é€šçŸ¥ã‚’é€ä¿¡ã—ã¾ã™ã€‚
+## <a name="template-example-using-an-out-parameter"></a>out ÇÍÇåÇİÆãÇ»ÆãÇy¨Ï¥ÎÆıÇFÇÂÇïÇÓÇèÆãÇÄÇU¨Ò
+¦¸ÇU¨ÒÇNÇV¡BÇÂÇïÇÓÇèÆãÇÄÇR `message` ÇÓÇèÆãÇµ Ç×ÇçÇ¼ÆãÇy§tÇg[ÇÂÇïÇÓÇèÆãÇÄµn?](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ÇU³qª¾Çy°e«HÆıÇeÇ@¡C
 
 ```cs
 using System;
@@ -229,8 +229,8 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-## <a name="template-example-with-asynchronous-function"></a>éåŒæœŸé–¢æ•°ã‚’ä½¿ç”¨ã™ã‚‹ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ä¾‹
-éåŒæœŸã‚³ãƒ¼ãƒ‰ã‚’ä½¿ç”¨ã—ã¦ã„ã‚‹å ´åˆã¯ã€out ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚ ãã®å ´åˆã¯ã€`IAsyncCollector` ã‚’ä½¿ç”¨ã—ã¦ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆé€šçŸ¥ã‚’è¿”ã—ã¾ã™ã€‚ æ¬¡ã®ã‚³ãƒ¼ãƒ‰ã§ã¯ã€ä¸Šè¨˜ã®ã‚³ãƒ¼ãƒ‰ã®éåŒæœŸã®ä¾‹ã‚’ç¤ºã—ã¾ã™ã€‚ 
+## <a name="template-example-with-asynchronous-function"></a>«D¦P´Á??Çy¨Ï¥ÎÇ@ÇrÇÂÇïÇÓÇèÆãÇÄÇU¨Ò
+«D¦P´ÁÇ¯ÆãÇÅÇy¨Ï¥ÎÆıÇMÆêÇr³õ¦XÇV¡Bout ÇÍÇåÇİÆãÇ»ÆãÇy¨Ï¥ÎÇNÆóÇeÇBÇz¡C ÇDÇU³õ¦XÇV¡B`IAsyncCollector` Çy¨Ï¥ÎÆıÇMÇÂÇïÇÓÇèÆãÇÄ³qª¾ÇyªğÆıÇeÇ@¡C ¦¸ÇUÇ¯ÆãÇÅÇNÇV¡B¤W°OÇUÇ¯ÆãÇÅÇU«D¦P´ÁÇU¨ÒÇy¥ÜÆıÇeÇ@¡C 
 
 ```cs
 using System;
@@ -253,8 +253,8 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 }
 ```
 
-## <a name="template-example-using-json"></a>JSON ã‚’ä½¿ç”¨ã—ãŸãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ä¾‹
-æ¬¡ã®ä¾‹ã§ã¯ã€æœ‰åŠ¹ãª JSON æ–‡å­—åˆ—ã‚’ä½¿ç”¨ã—ã¦ã€ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã« `message` ãƒ—ãƒ¬ãƒ¼ã‚¹ ãƒ›ãƒ«ãƒ€ãƒ¼ã‚’å«ã‚€[ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç™»éŒ²](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ã®é€šçŸ¥ã‚’é€ä¿¡ã—ã¾ã™ã€‚
+## <a name="template-example-using-json"></a>JSON Çy¨Ï¥ÎÆıÇFÇÂÇïÇÓÇèÆãÇÄÇU¨Ò
+¦¸ÇU¨ÒÇNÇV¡B¦³?ÇQ JSON ¤å¦r¦CÇy¨Ï¥ÎÆıÇM¡BÇÂÇïÇÓÇèÆãÇÄÇR `message` ÇÓÇèÆãÇµ Ç×ÇçÇ¼ÆãÇy§tÇg[ÇÂÇïÇÓÇèÆãÇÄµn?](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)ÇU³qª¾Çy°e«HÆıÇeÇ@¡C
 
 ```cs
 using System;
@@ -266,8 +266,8 @@ public static void Run(string myQueueItem,  out string notification, TraceWriter
 }
 ```
 
-## <a name="template-example-using-notification-hubs-library-types"></a>Notification Hubs ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ã‚¿ã‚¤ãƒ—ã‚’ä½¿ç”¨ã—ãŸãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®ä¾‹
-æ¬¡ã®ä¾‹ã§ã¯ã€[Microsoft Azure Notification Hubs ãƒ©ã‚¤ãƒ–ãƒ©ãƒª](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)ã«å®šç¾©ã•ã‚ŒãŸã‚¿ã‚¤ãƒ—ã®ä½¿ç”¨æ–¹æ³•ã‚’ç¤ºã—ã¾ã™ã€‚ 
+## <a name="template-example-using-notification-hubs-library-types"></a>Notification Hubs ÇåÇ~ÇÒÇåÇæÇUÇ»Ç~ÇÓÇy¨Ï¥ÎÆıÇFÇÂÇïÇÓÇèÆãÇÄÇU¨Ò
+¦¸ÇU¨ÒÇNÇV¡B[Microsoft Azure Notification Hubs ÇåÇ~ÇÒÇåÇæ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)ÇR©w¸qÆûÇsÇFÇ»Ç~ÇÓÇU¨Ï¥Î¤èªkÇy¥ÜÆıÇeÇ@¡C 
 
 ```cs
 #r "Microsoft.Azure.NotificationHubs"
@@ -290,6 +290,6 @@ private static TemplateNotification GetTemplateNotification(string message)
 }
 ```
 
-## <a name="next-steps"></a>æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—
+## <a name="next-steps"></a>¦¸ÇUÇµÇÂÇ¿ÇÓ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
 
