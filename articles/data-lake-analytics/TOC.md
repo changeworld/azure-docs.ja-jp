@@ -4,6 +4,7 @@
 # 作業開始
 ## [Azure ポータル](data-lake-analytics-get-started-portal.md)
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+## [Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 ## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [Azure CLI](data-lake-analytics-get-started-cli2.md)
 
@@ -29,7 +30,7 @@
 ### [U-SQL R 拡張機能](data-lake-analytics-u-sql-r-extensions.md)
 ### [U-SQL Cognitive 拡張機能](data-lake-analytics-u-sql-cognitive.md)
 ### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
-### [Visual Studio Code での U-SQL](data-lake-analytics-data-lake-tools-for-vscode.md)
+### [Visual Studio Code 用の U-SQL カスタム コード](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 
 ## U-SQL プログラムのデバッグ
 ### [ジョブの監視およびトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

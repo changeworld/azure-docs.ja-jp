@@ -6,16 +6,16 @@
       href: how-iot-edge-works.md
 - name: クイック スタート
   items:
-    - name: エッジへのデプロイ - Windows
-      href: quickstart.md
     - name: エッジへのデプロイ - Linux
       href: quickstart-linux.md
+    - name: エッジへのデプロイ - Windows
+      href: quickstart.md
 - name: Tutorials (チュートリアル)
   items:
-    - name: Edge デバイスのシミュレート - Windows
-      href: tutorial-simulate-device-windows.md
     - name: Edge デバイスのシミュレート - Linux
       href: tutorial-simulate-device-linux.md
+    - name: Edge デバイスのシミュレート - Windows
+      href: tutorial-simulate-device-windows.md
     - name: 'C# モジュールの開発'
       href: tutorial-csharp-module.md
     - name: Azure Stream Analytics のデプロイ
@@ -26,8 +26,8 @@
       href: tutorial-deploy-function.md
 - name: ハウツー ガイド
   items:
-    - name: ゲートウェイ デバイスの作成
-      href: how-to-create-gateway-device.md
+    - name: 透過的なゲートウェイの作成
+      href: how-to-create-transparent-gateway.md
     - name: 大規模なデプロイと監視
       href: how-to-deploy-monitor.md
     - name: IoT Core デバイスのプロビジョニング
@@ -45,6 +45,8 @@
       href: iot-edge-runtime.md
     - name: デプロイメント
       href: module-deployment-monitoring.md
+    - name: ゲートウェイとしての IoT Edge デバイス
+      href: iot-edge-as-gateway.md
     - name: セキュリティ
       href: security.md
 - name: リソース

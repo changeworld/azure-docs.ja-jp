@@ -1,0 +1,51 @@
+- name: Azure Location Based Services のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Location Based Services について
+      href: about-location-based-services.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Location Based Services を使用した地図アプリ
+      href: quick-demo-map-app.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: 1 - 観光名所の検索
+      href: tutorial-search-location.md
+    - name: 2 - 観光名所までのルート
+      href: tutorial-route-location.md
+    - name: 3 - 移動モード別の複数のルート
+      href: tutorial-prioritized-routes.md
+- name: 概念
+  items:
+    - name: ジオコーディングの対象範囲
+      href: geocoding-coverage.md
+    - name: トラフィックの対象範囲
+      href: traffic-coverage.md
+- name: ハウツー ガイド
+  items:
+    - name: アカウントとキーの管理
+      href: how-to-manage-account-keys.md
+    - name: マップ コントロールの使用方法
+      href: how-to-use-map-control.md
+- name: リファレンス
+  items:
+    - name: Azure IoT デベロッパー センター
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
+    - name: 技術的なケース スタディ
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'
