@@ -185,19 +185,10 @@
 #### [コンテナー ネットワーク モード](service-fabric-networking-modes.md)
 
 ### Reliable Services サービスの構築
-#### [概要](service-fabric-reliable-services-introduction.md)
-#### 概念
-##### [Reliable Services のライフサイクル - C#](service-fabric-reliable-services-lifecycle.md)
-##### [Reliable Services のライフサイクル - Java](service-fabric-reliable-services-lifecycle-java.md)
-
 #### Reliable Collection
-##### [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
-##### [Reliable Collection のガイドラインと推奨事項](service-fabric-reliable-services-reliable-collections-guidelines.md)
 ##### [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
-##### [トランザクションとロック](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 ##### [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md)
 ##### [Reliable Collection のシリアル化](service-fabric-reliable-services-reliable-collections-serialization.md)
-##### [Reliable State Manager と Reliable Collection の内部](service-fabric-reliable-services-reliable-collections-internals.md)
 
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-services-quick-start.md)

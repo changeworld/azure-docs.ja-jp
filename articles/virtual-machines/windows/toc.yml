@@ -77,7 +77,7 @@
         - name: ハイ パフォーマンス コンピューティング
           href: sizes-hpc.md
         - name: Azure コンピューティング ユニット (ACU)
-          href: sizes-general.md
+          href: acu.md
     - name: メンテナンスと更新
       href: maintenance-and-updates.md
     - name: ディスク ストレージ
