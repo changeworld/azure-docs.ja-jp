@@ -23,6 +23,10 @@
       href: tutorial-forecast-spending.md
     - name: 4 - コストを管理する
       href: tutorial-manage-costs.md
+- name: 概念
+  items:
+    - name: コスト レポートについて
+      href: understading-cost-reports.md
 - name: リソース
   items:
     - name: コスト管理のビデオ

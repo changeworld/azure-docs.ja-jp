@@ -20,7 +20,7 @@
 
 ## ジョブの作成
 ### [入力を作成する](stream-analytics-define-inputs.md)
-### [サンプル入力データ](stream-analytics-sample-data-input.md)
+### [クエリとサンプル入力データのテスト](stream-analytics-sample-data-input.md)
 ### [一般的なクエリのパターン](stream-analytics-stream-analytics-query-patterns.md)
 ### [ウィンドウ関数](stream-analytics-window-functions.md)
 

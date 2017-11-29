@@ -133,6 +133,8 @@
       href: distribute-data-globally.md
     - name: パーティション分割
       href: partition-data.md
+    - name: 一意のキー
+      href: unique-keys.md
     - name: 整合性
       href: consistency-levels.md
     - name: スループット

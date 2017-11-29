@@ -1,52 +1,56 @@
 # 概要
 
-## [SQL Data Warehouse の概要](sql-data-warehouse-overview-what-is.md)
-## [データ ウェアハウスのワークロード](sql-data-warehouse-overview-workload.md)
+## [SQL Data Warehouse について](sql-data-warehouse-overview-what-is.md)
 
-# 作業の開始
+# クイック スタート
 
-## [データ読み込みのチュートリアル](load-data-from-azure-blob-storage-using-polybase.md)
-## [エラスティック クエリのチュートリアル](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
-## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
-## [管理](sql-data-warehouse-overview-manage.md)
+## [作成と接続 - ポータル](create-data-warehouse-portal.md)
 
-# 方法
+# Tutorials (チュートリアル)
+## [1 - BLOB からデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
 
+# 概念
 ## サービスの機能
 ### [MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)
 ### [パフォーマンス レベル](performance-tiers.md)
 ### [Data Warehouse ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [データ ウェアハウスのバックアップ](sql-data-warehouse-backups.md)
+### [監査](sql-data-warehouse-auditing-overview.md)
 ### [容量制限](sql-data-warehouse-service-capacity-limits.md)
-### [よく寄せられる質問](sql-data-warehouse-overview-faq.md)
+### [FAQ](sql-data-warehouse-overview-faq.md)
 
-## バックアップと復元
+## セキュリティ
+### [概要](sql-data-warehouse-overview-manage-security.md)
+### [認証](sql-data-warehouse-authentication.md)
 
-### [Backup の概要](sql-data-warehouse-backups.md)
-### [復元の概要](sql-data-warehouse-restore-database-overview.md)
-#### [Azure ポータル](sql-data-warehouse-restore-database-portal.md)
-#### [Azure PowerShell](sql-data-warehouse-restore-database-powershell.md)
-#### [REST ()](sql-data-warehouse-restore-database-rest-api.md)
 
-## 接続
+## SQL Data Warehouse への移行
+### [概要](sql-data-warehouse-overview-migrate.md)
+### [移行ユーティリティ](sql-data-warehouse-migrate-migration-utility.md)
+### [スキーマの移行](sql-data-warehouse-migrate-schema.md)
+### [コードの移行](sql-data-warehouse-migrate-code.md)
+### [データの移行](sql-data-warehouse-migrate-data.md)
 
-### [概要](sql-data-warehouse-connect-overview.md)
-### [SSMS](sql-data-warehouse-query-ssms.md)
-### [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-### [Visual Studio のインストール](sql-data-warehouse-install-visual-studio.md)
-### [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
-### [接続文字列](sql-data-warehouse-connection-strings.md)
+## データの読み込みと移動
+### [概要](sql-data-warehouse-overview-load.md)
+### [PolyBase](sql-data-warehouse-load-polybase-guide.md)
 
-## 作成
-### [Azure ポータル](sql-data-warehouse-get-started-provision.md)
-### [Azure PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
-### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
-## 開発
+## 統合
+### [概要](sql-data-warehouse-overview-integrate.md)
 
+
+## 監視とチューニング
+### [ガイドライン](resource-classes-for-workload-management.md)
+### [列ストア圧縮](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
+### [監視](sql-data-warehouse-manage-monitor.md)
+### [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
+
+## データ ウェアハウスの開発
 ### [概要](sql-data-warehouse-overview-develop.md)
+### [データ ウェアハウスのコンポーネント](sql-data-warehouse-overview-workload.md)
 
 ### テーブル
-
 #### [概要](sql-data-warehouse-tables-overview.md)
 #### [CTAS](sql-data-warehouse-develop-ctas.md)
 #### [データ型](sql-data-warehouse-tables-data-types.md)
@@ -59,13 +63,11 @@
 #### [一時](sql-data-warehouse-tables-temporary.md)
 
 ### クエリ
-
 #### [動的 SQL](sql-data-warehouse-develop-dynamic-sql.md)
 #### [オプションでグループ化する](sql-data-warehouse-develop-group-by-options.md)
 #### [ラベル](sql-data-warehouse-develop-label.md)
 
 ### T-SQL 言語要素
-
 #### [ループ](sql-data-warehouse-develop-loops.md)
 #### [ストアド プロシージャ](sql-data-warehouse-develop-stored-procedures.md)
 #### [トランザクション](sql-data-warehouse-develop-transactions.md)
@@ -74,77 +76,45 @@
 #### [変数の代入](sql-data-warehouse-develop-variable-assignment.md)
 #### [ビュー](sql-data-warehouse-develop-views.md)
 
-## 統合
-
-### [概要](sql-data-warehouse-overview-integrate.md)
-### [Data Factory](sql-data-warehouse-integrate-azure-data-factory.md)
-### [Machine Learning](sql-data-warehouse-integrate-azure-machine-learning.md)
-### [Machine Learning のチュートリアル](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-### [Power BI](sql-data-warehouse-integrate-power-bi.md)
-### [Power BI の視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-### [Stream Analytics](sql-data-warehouse-integrate-azure-stream-analytics.md)
-
-### [SQL Database と SQL Data Warehouse で使用するエラスティック クエリ](how-to-use-elastic-query-with-sql-data-warehouse.md)
-
-## Load
-
-### 概念
-#### [概要](sql-data-warehouse-overview-load.md)
-#### [PolyBase ガイダンス](sql-data-warehouse-load-polybase-guide.md)
-
-### チュートリアル
-#### [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)
-
-### ハウツー ガイド
-#### [サンプル データ](sql-data-warehouse-load-sample-databases.md)
-#### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
-#### [BCP](sql-data-warehouse-load-with-bcp.md)
-#### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
-#### [Blob Storage からの PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-#### [SQL Server からの PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
-#### [RedGate](sql-data-warehouse-load-with-redgate.md)
-#### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
-
-## 移行
-
-### [概要](sql-data-warehouse-overview-migrate.md)
-### [移行ユーティリティ](sql-data-warehouse-migrate-migration-utility.md)
-### [スキーマの移行](sql-data-warehouse-migrate-schema.md)
-### [コードの移行](sql-data-warehouse-migrate-code.md)
-### [データの移行](sql-data-warehouse-migrate-data.md)
-### [Premium Storage への移行](sql-data-warehouse-migrate-to-premium-storage.md)
-
-## コンピューティングの管理
-
-### [概要](sql-data-warehouse-manage-compute-overview.md)
-### [Azure ポータル](sql-data-warehouse-manage-compute-portal.md)
-### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
-### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
-### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
-### [コンピューティング レベルの自動化](manage-compute-with-azure-functions.md)
-
-### リソース クラス
-#### [ガイドライン](resource-classes-for-workload-management.md)
-#### [ワークロードの分析](analyze-your-workload.md)
-
-## パフォーマンス
-
-### [概要](sql-data-warehouse-overview-manage-user-queries.md)
-### [列ストア圧縮](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
-### [監視](sql-data-warehouse-manage-monitor.md)
+# ハウツー ガイド
+## サービスの機能
+### [データ ウェアハウスの復元 - ポータル](sql-data-warehouse-restore-database-portal.md)
+### [データ ウェアハウスの復元 - PowerShell](sql-data-warehouse-restore-database-powershell.md)
+### [データ ウェアハウスの復元 - REST API](sql-data-warehouse-restore-database-rest-api.md)
 
 ## セキュリティ
-
-### [概要](sql-data-warehouse-overview-manage-security.md)
-### [監査](sql-data-warehouse-auditing-overview.md)
-### [ダウンレベル クライアントの監査](sql-data-warehouse-auditing-downlevel-clients.md)
-### [認証](sql-data-warehouse-authentication.md)
-### [暗号化](sql-data-warehouse-encryption-tde.md)
-### [T-SQL を使用した暗号化](sql-data-warehouse-encryption-tde-tsql.md)
+### [暗号化の有効化 - ポータル](sql-data-warehouse-encryption-tde.md)
+### [暗号化の有効化 - T-SQL](sql-data-warehouse-encryption-tde-tsql.md)
 ### [脅威の検出](sql-data-warehouse-security-threat-detection.md)
 
-## トラブルシューティング
-### [トラブルシューティング](sql-data-warehouse-troubleshoot.md)
+
+## データの読み込みと移動
+### [AdventureWorks](sql-data-warehouse-load-sample-databases.md)
+### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
+### [BCP](sql-data-warehouse-load-with-bcp.md)
+### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
+### [Blob Storage からの PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
+### [SQL Server からの PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+### [RedGate](sql-data-warehouse-load-with-redgate.md)
+### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
+
+
+## 統合
+###  [SQL Database からのエラスティック クエリの構成](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
+### [Azure Stream Analytics ジョブの追加](sql-data-warehouse-integrate-azure-stream-analytics.md)
+### [エラスティック クエリの構成](how-to-use-elastic-query-with-sql-data-warehouse.md)
+### [機械学習の使用](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+### [Power BI による視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+
+## 監視とチューニング
+### [ワークロードの分析](analyze-your-workload.md)
+
+## スケールアウト
+### [コンピューティングの管理 - ポータル](sql-data-warehouse-manage-compute-portal.md)
+### [コンピューティングの管理 - PowerShell](sql-data-warehouse-manage-compute-powershell.md)
+### [コンピューティングの管理 - REST API](sql-data-warehouse-manage-compute-rest-api.md)
+### [コンピューティング レベルの自動化](manage-compute-with-azure-functions.md)
+
 
 # リファレンス
 

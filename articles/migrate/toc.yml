@@ -1,0 +1,40 @@
+- name: Azure Migrate のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Migrate について
+      href: migrate-overview.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: VMware VM の検出と評価
+      href: tutorial-assessment-vmware.md
+- name: 概念
+  items:
+    - name: 評価の計算
+      href: concepts-assessment-calculation.md
+    - name: 依存関係の視覚化
+      href: concepts-dependency-visualization.md
+- name: ハウツー ガイド
+  items:
+    - name: 大規模な環境の検出と評価
+      href: how-to-scale-assessment.md
+    - name: マシンのグループ化
+      href: how-to-create-a-group.md
+    - name: マシンの依存関係を使用したマシンのグループ化
+      href: how-to-create-group-machine-dependencies.md
+    - name: VMware のタグ付けを使用したマシンのグループ化
+      href: how-to-tag-v-center.md
+    - name: グループの依存関係を使用したグループの絞り込み
+      href: how-to-create-group-dependencies.md
+    - name: 評価のカスタマイズ
+      href: how-to-modify-assessment.md
+    - name: 評価後のマシンの移行
+      href: how-to-get-migration-tool.md
+    - name: Azure Migrate のトラブルシューティング
+      href: troubleshooting-general.md
+- name: リソース
+  items:
+    - name: Azure Migrate
+      href: 'https://azure.microsoft.com/migrate'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
