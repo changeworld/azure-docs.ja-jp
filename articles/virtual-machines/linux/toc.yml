@@ -83,7 +83,7 @@
         - name: ハイ パフォーマンス コンピューティング
           href: sizes-hpc.md
         - name: Azure コンピューティング ユニット (ACU)
-          href: sizes-general.md
+          href: acu.md
     - name: 動作保証済みディストリビューション
       href: endorsed-distros.md
     - name: メンテナンスと更新

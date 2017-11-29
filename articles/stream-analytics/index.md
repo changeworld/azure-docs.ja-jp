@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/23/2017
 ms.author: carolz
-ms.openlocfilehash: dc8aa21d89ce575d29d3a9c08909eb5617d7b8a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bc0f813ac9ba8fa0960f2802d5482e31d772daf
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="stream-analytics-documentation"></a>Stream Analytics のドキュメント
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/stream-analytics.svg" alt="" />
+                            <img src="media/index/stream-analytics.svg" alt="Learn about Azure Stream Analytics" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="Azure Stream Analytics Video Library" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/11/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="Get started with Stream Analytics" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -84,7 +84,7 @@ ms.lasthandoff: 10/11/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="Get Started with an IoT solution using Stream Analytics" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -102,7 +102,7 @@ ms.lasthandoff: 10/11/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="Get Started with a Twitter sentiment analysis solution using Stream Analytics" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -120,7 +120,7 @@ ms.lasthandoff: 10/11/2017
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="Get Started with a real-time scoring solution leveraging Azure Machine Learning" />
                         </div>
                     </div>
                     <div class="cardText">

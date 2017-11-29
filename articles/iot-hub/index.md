@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: afe5dcab2beca2c6bf3d116adf249fc9717eeb09
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: deb5b8bb6f98ea30af80f450f7e3c07648dc43cb
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="iot-hub-documentation"></a>IoT Hub のドキュメント 
 
@@ -30,7 +30,7 @@ IoT Hub を使用して、何十億台ものモノのインターネット資産
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/iot-hub.svg" alt="" />
+                            <img src="media/index/iot-hub.svg" alt="Learn about Azure IoT Hub" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -48,7 +48,7 @@ IoT Hub を使用して、何十億台ものモノのインターネット資産
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/common/i_video.svg" alt="" />
+                            <img src="media/common/i_video.svg" alt="Azure IoT Hub Video Library" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -66,7 +66,7 @@ IoT Hub を使用して、何十億台ものモノのインターネット資産
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/common/i_get-started.svg" alt="" />
+                            <img src="media/common/i_get-started.svg" alt="Get started with a simulated device" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -84,7 +84,7 @@ IoT Hub を使用して、何十億台ものモノのインターネット資産
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/common/i_get-started.svg" alt="" />
+                            <img src="media/common/i_get-started.svg" alt="Get started with a physical device" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -102,7 +102,7 @@ IoT Hub を使用して、何十億台ものモノのインターネット資産
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/common/i_road-map.svg" alt="" />
+                            <img src="media/common/i_road-map.svg" alt="Read the developer guide" />
                         </div>
                     </div>
                     <div class="cardText">

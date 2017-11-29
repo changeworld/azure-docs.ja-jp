@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: d24139de04b36044bbb88d0e9b9a1feb6d8edfa8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34fd5bdf1e4a51733b527168b05d079fde1ae246
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="event-hubs-documentation"></a>Event Hubs のドキュメント
 
@@ -30,7 +30,7 @@ Event Hubs を使用して、接続された IoT デバイスやアプリケー�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/event-hubs.svg" alt="" />
+                            <img src="media/index/event-hubs.svg" alt="Learn about Azure Event Hubs" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -48,7 +48,7 @@ Event Hubs を使用して、接続された IoT デバイスやアプリケー�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/video-library.svg" alt="" />
+                            <img src="media/index/video-library.svg" alt="Azure Event Hubs Video Library" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -66,7 +66,7 @@ Event Hubs を使用して、接続された IoT デバイスやアプリケー�
                <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
+                            <img src="media/index/get-started.svg" alt="Get started with Event Hubs programming guide" />
                         </div>
                     </div>
                     <div class="cardText">
@@ -84,7 +84,7 @@ Event Hubs を使用して、接続された IoT デバイスやアプリケー�
                 <div class="card">
                     <div class="cardImageOuter">
                         <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
+                            <img src="media/index/tutorial.svg" alt="Get started with Event Hubs using the Azure portal" />
                         </div>
                     </div>
                     <div class="cardText">
