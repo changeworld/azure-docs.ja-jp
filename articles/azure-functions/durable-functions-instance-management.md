@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 734853dbee7a6f216763cd82d424c9e639b1f8c9
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 399bad6f00b61d582fdb077f33000b6c55cf8904
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Durable Functions でのインスタンスの管理 (Azure Functions)
 
@@ -91,7 +91,7 @@ public static async Task Run(
     [OrchestrationClient] DurableOrchestrationClient client,
     [ManualTrigger] string instanceId)
 {
-    var status = await checker.GetStatusAsync(instanceId);
+    var status = await client.GetStatusAsync(instanceId);
     // do something based on the current status.
 }
 ```

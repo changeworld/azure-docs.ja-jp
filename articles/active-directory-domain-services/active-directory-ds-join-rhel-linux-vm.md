@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: 03f0b07e9f4994c616a39692f7a5ba52a154aa0f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20cecf0b3e38e8f2241f3589b9548c93730c7783
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 仮想マシンの管理対象ドメインへの参加
 この記事では、Red Hat Enterprise Linux (RHEL) 7 仮想マシンを Azure AD ドメイン サービスの管理対象ドメインに参加させる方法について説明します。
@@ -28,8 +28,8 @@ ms.lasthandoff: 10/11/2017
 1. 有効な **Azure サブスクリプション**。
 2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
 3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
-4. 管理対象ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳細については、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください
-5. [Azure AD Domain Services 管理対象ドメインとのパスワードのに同期](active-directory-ds-getting-started-password-sync.md)に必要な手順を完了します。
+4. 管理対象ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください。
+5. [Azure AD Domain Services の管理対象ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
 
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Red Hat Enterprise Linux 仮想マシンのプロビジョニング
@@ -39,19 +39,19 @@ ms.lasthandoff: 10/11/2017
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 > [!IMPORTANT]
-> * 仮想マシンは、**Azure AD Domain Services を有効にした仮想ネットワーク**にデプロイします。
+> * **Azure AD Domain Services を有効にしたのと同じ仮想ネットワーク**に、仮想マシンをデプロイします。
 > * Azure AD Domain Services を有効にしたサブネットとは**異なるサブネット**を選択します。
 >
 
 
 ## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>新しくプロビジョニングされた Linux 仮想マシンへのリモート接続
-RHEL 7.2 仮想マシンの Azure でのプロビジョニングが完了しました。 次は、VM のプロビジョニング中に作成されたローカル管理者アカウントを使用して、仮想マシンにリモートで接続します。
+RHEL 7.2 仮想マシンの Azure でのプロビジョニングが完了しました。 次は、VM のプロビジョニング中に作成したローカル管理者アカウントを使用して、仮想マシンにリモートで接続します。
 
 [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事の手順に従ってください。
 
 
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Linux 仮想マシン上の hosts ファイルの構成
-SSH ターミナルで /etc/hosts ファイルを編集し、マシンの IP アドレスとホスト名を更新します。
+## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Linux 仮想マシン上の hosts ファイルを構成する
+SSH ターミナルで /etc/hosts ファイルを編集し、ご自分のマシンの IP アドレスとホスト名を更新します。
 
 ```
 sudo vi /etc/hosts
@@ -66,7 +66,7 @@ hosts ファイルに、次の値を入力します。
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Linux 仮想マシンに必要なパッケージのインストール
-次に、仮想マシンでのドメイン参加に必要なパッケージをインストールします。 SSH ターミナルで、次のコマンドを入力して、必要なパッケージをインストールします。
+次は、仮想マシンでのドメイン参加に必要なパッケージをインストールします。 SSH ターミナルで、次のコマンドを入力して、必要なパッケージをインストールします。
 
     ```
     sudo yum install realmd sssd krb5-workstation krb5-libs
@@ -82,12 +82,12 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     sudo realm discover CONTOSO100.COM
     ```
 
-      > [!NOTE] 
-      > **トラブルシューティング:** *realm discover* で管理対象ドメインが見つからない場合:
-        * Ensure that the domain is reachable from the virtual machine (try ping).
-        * Check that the virtual machine has indeed been deployed to the same virtual network in which the managed domain is available.
-        * Check to see if you have updated the DNS server settings for the virtual network to point to the domain controllers of the managed domain.
-      >
+     > [!NOTE] 
+     > **トラブルシューティング:** *realm discover* で管理対象ドメインが見つからない場合:
+     * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。
+     * 仮想マシンが、管理対象ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
+     * 管理対象ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。
+     >
 
 2. Kerberos を初期化します。 SSH ターミナルで、次のコマンドを入力します。 
 
@@ -121,12 +121,12 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     ssh -l bob@CONTOSO100.COM contoso-rhel.contoso100.com
     ```
 
-2. SSH ターミナルで次のコマンドを入力し、ユーザーのホーム ディレクトリが正しく初期化されているかを確認します。
+2. SSH ターミナルで次のコマンドを入力し、ホーム ディレクトリが正しく初期化されているかどうかを確認します。
     ```
     pwd
     ```
 
-3. SSH ターミナルで次のコマンドを入力し、グループ メンバーシップが正しく解決済みかを確認します。
+3. SSH ターミナルで次のコマンドを入力し、グループ メンバーシップが正しく解決されているかどうかを確認します。
     ```
     id
     ```

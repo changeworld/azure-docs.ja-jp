@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 06/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 469bd74c0f144ff641fafe8c8f830b1fdbfa7690
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: eda6e19d27afbf07df853dd4cef5ece1a745034d
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL Database 接続アーキテクチャ 
 
-この記事では Azure SQL Database の接続アーキテクチャについて説明し、さまざまなコンポーネントがどのように機能し、トラフィックが Azure SQL Database インスタンスに送信されるか説明します。 これらの Azure SQL Database 接続コンポーネントが機能し、Azure 内外からクライアントが接続する Azure データベースにネットワーク トラフィックが送信されます。 この記事では、接続方法を変更するためのスクリプト サンプルと、既定の接続設定の変更に関連する考慮事項も提供します。 この記事の読了後、ご質問がございましたら、Dhruv までお問い合わせください。メール アドレスは dmalik@microsoft.com です。 
+この記事では Azure SQL Database の接続アーキテクチャについて説明し、さまざまなコンポーネントがどのように機能し、トラフィックが Azure SQL Database インスタンスに送信されるか説明します。 これらの Azure SQL Database 接続コンポーネントが機能し、Azure 内外からクライアントが接続する Azure データベースにネットワーク トラフィックが送信されます。 この記事では、接続方法を変更するためのスクリプト サンプルと、既定の接続設定の変更に関連する考慮事項も提供します。 
 
 ## <a name="connectivity-architecture"></a>接続のアーキテクチャ
 
-次の図は、Azure SQL Database の接続アーキテクチャの概要です。 
+次の図は、Azure SQL Database の接続アーキテクチャの概要です。
 
 ![アーキテクチャの概要](./media/sql-database-connectivity-architecture/architecture-overview.png)
 
@@ -65,14 +65,14 @@ Azure 外から接続する場合、接続には既定で**プロキシ**の接�
 | --- | --- |--- |
 | オーストラリア東部 | 191.238.66.109 | 13.75.149.87 |
 | オーストラリア東南部 | 191.239.192.109 | 13.73.109.251 |
-| ブラジル南部 | 104.41.11.5 | |    
-| カナダ中部 | 40.85.224.249 | |    
+| ブラジル南部 | 104.41.11.5 | |
+| カナダ中部 | 40.85.224.249 | |
 | カナダ東部 | 40.86.226.166 | |
 | 米国中央部 | 23.99.160.139 | 13.67.215.62 |
 | 東アジア | 191.234.2.139 | 52.175.33.150 |
 | 米国東部 1 | 191.238.6.43 | 40.121.158.30 |
 | 米国東部 2 | 191.239.224.107 | 40.79.84.180 |
-| インド中部 | 104.211.96.159  | |   
+| インド中部 | 104.211.96.159  | |
 | インド南部 | 104.211.224.146  | |
 | インド西部 | 104.211.160.80 | |
 | 東日本 | 191.237.240.43 | 13.78.61.196 |
@@ -84,7 +84,7 @@ Azure 外から接続する場合、接続には既定で**プロキシ**の接�
 | 米国中南部 | 23.98.162.75 | 13.66.62.124 |
 | 東南アジア | 23.100.117.95 | 104.43.15.0 |
 | 英国北部 | 13.87.97.210 | |
-| 英国南部 1 | 51.140.184.11 | |    
+| 英国南部 1 | 51.140.184.11 | |
 | 英国南部 2 | 13.87.34.7 | |
 | 英国西部 | 51.141.8.11  | |
 | 米国中西部 | 13.78.145.25 | |
@@ -95,12 +95,12 @@ Azure 外から接続する場合、接続には既定で**プロキシ**の接�
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database 接続ポリシーを変更する
 
-Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変更するには、[REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx) を使用します。 
+Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変更するには、[REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx) を使用します。
 
-- 接続ポリシーを**プロキシ**に設定すると、すべてのネットワーク パケットが Azure SQL Database ゲートウェイ経由で送信されます。 この設定の場合、Azure SQL Database ゲートウェイ IP のみに送信を許可する必要があります。 **プロキシ**の設定を利用すると、**リダイレクト**の設定より待ち時間が長くなります。 
-- 接続ポリシーで**リダイレクト**を設定すると、すべてのネットワーク パケットがミドルウェア プロキシに直接送信されます。 この設定の場合、複数の IP への送信を許可する必要があります。 
+- 接続ポリシーを**プロキシ**に設定すると、すべてのネットワーク パケットが Azure SQL Database ゲートウェイ経由で送信されます。 この設定の場合、Azure SQL Database ゲートウェイ IP のみに送信を許可する必要があります。 **プロキシ**の設定を利用すると、**リダイレクト**の設定より待ち時間が長くなります。
+- 接続ポリシーで**リダイレクト**を設定すると、すべてのネットワーク パケットがミドルウェア プロキシに直接送信されます。 この設定の場合、複数の IP への送信を許可する必要があります。
 
-## <a name="script-to-change-connection-settings-via-powershell"></a>接続の設定を変更する PowerShell のスクリプト 
+## <a name="script-to-change-connection-settings-via-powershell"></a>接続の設定を変更する PowerShell のスクリプト
 
 > [!IMPORTANT]
 > このスクリプトは [Azure PowerShell モジュール](/powershell/azure/install-azurerm-ps)を必要とします。
@@ -140,7 +140,7 @@ $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationCo
 $result = $AuthContext.AcquireToken(
 "https://management.core.windows.net/",
 $clientId,
-[Uri]$uri, 
+[Uri]$uri,
 [Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Auto
 )
 
@@ -160,7 +160,7 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>接続の設定を変更する Azure CLI 2.0 のスクリプト 
+## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>接続の設定を変更する Azure CLI 2.0 のスクリプト
 
 > [!IMPORTANT]
 > このスクリプトは [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) を必要とします。
@@ -169,20 +169,17 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 次の CLI スクリプトは、接続ポリシーの変更方法を示しています。
 
 <pre>
- # Get SQL Server ID
- sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+# Get SQL Server ID
+sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
 
 # Set URI
-uri="https://management.azure.com/$sqlserverid/connectionPolicies/Default?api-version=2014-04-01-preview"
-
-# Get Access Token 
-accessToken=$(az account get-access-token --query 'accessToken' -o tsv)
+id="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy 
-curl -H "authorization: Bearer $accessToken" -X GET $uri
+az resource show --ids $id
 
-#Update connection policy 
-curl -H "authorization: Bearer $accessToken" -H "Content-Type: application/json" -d '{"properties":{"connectionType":"Proxy"}}' -X PUT $uri
+# Update connection policy 
+az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
 

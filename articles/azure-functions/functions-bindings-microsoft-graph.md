@@ -11,14 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mahender
-ms.openlocfilehash: 8cf2e4e9e9007549dbdc931b4485c4230c536479
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd7bcd57260b9763eabb9b4c915d9ff46e79e931
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-microsoft-graph-bindings"></a>Azure Functions における Microsoft Graph のバインド
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
 この記事では、Azure Functions で Microsoft Graph のトリガーとバインドを構成および操作する方法について説明します。
 これらと Azure Functions を使用して、[Microsoft Graph](https://graph.microsoft.io) からのデータ、分析情報、およびイベントを処理できます。
@@ -285,7 +284,7 @@ module.exports = function (context, req) {
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - 認証トークンの関数コードで使用される変数名。 「[コードから Excel テーブルの出力バインドを使用する](#excel-output-code)」をご覧ください。|
 |**type**|必須 - `excel` に設定する必要があります。|
@@ -1062,3 +1061,8 @@ public class UserSubscription {
 
 [HTTP トリガー]: functions-bindings-http-webhook.md
 [Microsoft Graph の Webhooks での作業]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

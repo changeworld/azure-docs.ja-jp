@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 2466e823c448ada4dc7bc5769b1b7f10bbb5dc7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8a8a84153a950f2d1bc002b34c83dc5ed8a5eb8
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>Data Warehouse 移行ユーティリティ (プレビュー)
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Data Warehouse 移行ユーティリティは、SQL Server と Azure SQL Databas
 さらに、移行ユーティリティを実行するには、移行するデータベースに対して、データベースの作成、任意のデータベースの変更、任意の定義の表示のいずれかのアクセス許可が必要です。
 
 ### <a name="launching-the-tool-and-connecting"></a>ツールの起動と接続
-ツールを起動するには、インストール後に表示されるデスクトップ アイコンをクリックします。 このツールを開くと、接続ページが表示され、移行ツールに対して移行元と移行先を選択するよう求められます。 現時点では、移行元として SQL Server と Azure SQL Database、移行先として SQL Data Warehouse がサポートされています。 これを選択すると、移行元サーバーに接続するよう求められます。これには、サーバー名を入力して認証し、Connectをクリックします。
+ツールを起動するには、インストール後に表示されるデスクトップ アイコンをクリックします。 このツールを開くと、接続ページが表示され、移行ツールに対して移行元と移行先を選択するよう求められます。 現時点では、移行元として SQL Server と Azure SQL Database、移行先として SQL Data Warehouse がサポートされています。 これを選択すると、移行元サーバーに接続するよう求められます。これには、サーバー名を入力して認証し、[Connect] をクリックします。
 
 認証後、接続先サーバーに存在するデータベースの一覧が表示されます。 移行を開始するには、移行するデータベースを選択し、[Migrate selected] \(選択した項目を移行) をクリックします。
 
@@ -66,4 +66,4 @@ Data Warehouse 移行ユーティリティは、SQL Server と Azure SQL Databas
 [develop]: sql-data-warehouse-overview-develop.md
 
 <!--Other Web references--> 
-[Download Migration Utility]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
+[Download Migration Utility]: https://www.microsoft.com/en-us/download/details.aspx?id=49100

@@ -1,9 +1,9 @@
-﻿---
+---
 title: "Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs"
 description: "JavaScript を使用して関数を開発する方法について説明します。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -15,12 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
-ms.author: glenga
-ms.openlocfilehash: 8050e116a48c69b2fccd6bdc1cf029dfdd6e6f28
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.author: tdykstra
+ms.openlocfilehash: f613e480f6699b323c18402f01873e565768f10f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -226,7 +226,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
 | _isRaw_   | 応答の書式設定をスキップすることを示します。    |
-| _status_  | 応答の HTTP 状態コード。                     |
+| _状態_  | 応答の HTTP 状態コード。                     |
 
 ### <a name="accessing-the-request-and-response"></a>要求と応答へのアクセス 
 

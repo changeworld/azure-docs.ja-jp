@@ -3,7 +3,7 @@ title: "Azure Blob Storage の Azure PowerShell サンプル | Microsoft Docs"
 description: "Azure Blob Storage を使用する場合の Azure PowerShell サンプル"
 services: storage
 documentationcenter: na
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: sample
 ms.date: 11/07/2017
-ms.author: robinsh
-ms.openlocfilehash: bbf818a023219e1673a8864e8bf9a8ecd6110b85
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: tamram
+ms.openlocfilehash: 28ea11458fdd8a62dd6faa7c3c4f95513d874625
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure PowerShell サンプル
 
