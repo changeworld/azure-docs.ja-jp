@@ -15,11 +15,11 @@ ms.date: 08/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 5903c8ac7a16a87b93ea6e105d82bbfdfa26bf8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ebd6109fdae00da9e6dc1fc456573327d521e7e9
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -52,7 +52,7 @@ NPS 拡張機能は、既存のインフラストラクチャで使用します�
 
 ### <a name="licenses"></a>ライセンス
 
-Azure MFA の NPS 拡張機能は、[Azure Multi-Factor Authentication のライセンス](multi-factor-authentication.md) (Azure AD Premium、EMS、および MFA サブスクリプションに含まれています) をお持ちのお客様にご利用いただけます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 
+Azure MFA の NPS 拡張機能は、[Azure Multi-Factor Authentication のライセンス](multi-factor-authentication.md) (Azure AD Premium、EMS、または MFA スタンドアロン ライセンスに含まれています) をお持ちのお客様にご利用いただけます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 
 
 ### <a name="software"></a>ソフトウェア
 
@@ -81,7 +81,7 @@ NPS 拡張機能をインストールする前に、認証トラフィックを�
 
 ### <a name="enable-the-nps-role-on-a-domain-joined-server"></a>ドメインに参加しているサーバーで NPS 役割を有効にする
 
-NPS サーバーは、Azure Active Directory に接続し、MFA 要求を認証します。 この役割に対して 1 台のサーバーを選択します。 NPS 拡張機能は RADIUS でないすべての要求に対してエラーをスローするため、他のサービスからの要求を処理しないサーバーを選択することをお勧めします。
+NPS サーバーは、Azure Active Directory に接続し、MFA 要求を認証します。 この役割に対して 1 台のサーバーを選択します。 NPS 拡張機能は RADIUS でないすべての要求に対してエラーをスローするため、他のサービスからの要求を処理しないサーバーを選択することをお勧めします。 NPS サーバーを、環境のプライマリおよびセカンダリ認証サーバーとしてセットアップする必要があります。別のサーバーに RADIUS 要求をプロキシすることはできません。
 
 1. サーバーで、サーバー マネージャーの [クイック スタート] メニューから、**[役割と機能の追加ウィザード]**を開きます。
 2. インストールの種類として、**[役割ベースまたは機能ベースのインストール]**を選択します。
@@ -193,7 +193,7 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE または FALSE | 未設定 (TRUE に相当) |
 
-この設定により、MFA に登録されていないユーザーの扱いが決まります。 キーが存在しないか、設定されていないか、または TRUE に設定されていて、ユーザーが登録されていない場合は、拡張機能による MFA チャレンジが失敗します。 キーが FALSE に設定されていて、ユーザーが登録されていない場合は、MFA を実行することがなく認証が行われます。
+この設定により、MFA に登録されていないユーザーの扱いが決まります。 キーが存在しないか、設定されていないか、または TRUE に設定されていて、ユーザーが登録されていない場合は、拡張機能による MFA チャレンジが失敗します。 キーが FALSE に設定されていて、ユーザーが登録されていない場合は、MFA を実行することがなく認証が行われます。 ユーザーが MFA に登録されている場合、REQUIRE_USER_MATCH が FALSE に設定されている場合でも、ユーザーは MFA で認証する必要があります。
 
 ユーザーのオンボーディング中、Azure MFA への登録の一部がまだ完了しないうちに、このキーを作成して FALSE に設定できます。 ただし、MFA に登録されていないユーザーのサインインが許可されることになるため、このキーは運用環境に移行する前に削除してください。
 

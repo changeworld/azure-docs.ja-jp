@@ -4,7 +4,7 @@ description: "Azure Active Directory コマンドレットを使用して、グ�
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: michael.tillman
 editor: 
 ms.assetid: 9f2090e6-3af4-4f07-bbb2-1d18dae89b73
 ms.service: active-directory
@@ -12,20 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 11/16/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
-ms.openlocfilehash: 06384d1a1fb7fcc36e9ab97e38c6524a7e260140
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec22a9898350b07662266707b2fd086a7a5daa93
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
+この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して、グループを作成し、更新する手順を説明します。 このコンテンツは、Office 365 グループにのみ適用されます。 
 
 > [!IMPORTANT]
-> このコンテンツは、Office 365 グループにのみ適用されます。 ユーザーにセキュリティ グループの作成を許可するには、「[Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」に記載されているように `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` を設定します。 
+> 一部の設定には、Azure Active Directory Premium P1 ライセンスが必要です。 詳細については、「[テンプレート設定](#template-settings)」の表を参照してください。
+
+ユーザーにセキュリティ グループの作成を許可するには、「[Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」に記載されているように `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` を設定します。 
 
 Office365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成します。 最初は、ディレクトリには Settings オブジェクトが表示されません。これは、ディレクトリが既定の設定で構成されているためです。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリの Office 365 グループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループの Office 365 グループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、Office 365 グループへのゲストのアクセスを管理するために使用します。 
 
@@ -85,11 +88,12 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
   --                                   ----------- ----------                           ------
   c391b57d-5783-4c53-9236-cefb5c6ef323             62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...
   ```
-Group.Unified SettingsTemplate で定義される設定は次のとおりです。
+## <a name="template-settings"></a>テンプレート設定
+Group.Unified SettingsTemplate で定義される設定は次のとおりです。 特に記載のない限り、これらの機能には、Azure Active Directory Premium P1 ライセンスが必要です。 
 
 | **設定** | **説明** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>型: ブール<li>既定: True |ディレクトリで管理者以外のユーザーによる統合グループの作成を許可するかどうかを示すフラグ。 |
+|  <ul><li>EnableGroupCreation<li>型: ブール<li>既定: True |ディレクトリで管理者以外のユーザーによる統合グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GroupCreationAllowedGroupId<li>型: 文字列<li>既定値: “” |EnableGroupCreation == false の場合でも統合グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
 |  <ul><li>UsageGuidelinesUrl<li>型: 文字列<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
 |  <ul><li>ClassificationDescriptions<li>型: 文字列<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 |
@@ -98,7 +102,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 | <ul><li>CustomBlockedWordsList<li>型: 文字列<li>既定値: “” | 使用しないでください。 実装されていません。 |
 | <ul><li>EnableMSStandardBlockedWords<li>型: ブール<li>既定値: “False” | 使用しないでください
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: ブール<li>既定: False | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
-|  <ul><li>AllowGuestsToAccessGroups<li>型: ブール<li>既定: True | ゲスト ユーザーが統合グループのコンテンツにアクセスできるかどうかを示すブール値。 |
+|  <ul><li>AllowGuestsToAccessGroups<li>型: ブール<li>既定: True | ゲスト ユーザーが統合グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: 文字列<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
 |  <ul><li>AllowToAddGuests<li>型: ブール<li>既定: True | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
 |  <ul><li>ClassificationList<li>型: 文字列<li>既定値: “” |統合グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
