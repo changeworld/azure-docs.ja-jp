@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/07/2017
+ms.date: 11/28/2017
 ms.author: larryfr
-ms.openlocfilehash: 338ffaabbc3b47bf31cd90c16ea0f710e7713db6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a972344e2b6205fbcf69d2969c42211ec5b24869
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>HDInsight での Apache Storm トポロジのデプロイと管理
 

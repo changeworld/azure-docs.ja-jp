@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/29/2017
 ms.author: rickbyh
-ms.openlocfilehash: bd5a7a117ec6c4a4b75fcced3f2b5987004c83d0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cdf78a3c64933f5f01642d5ef8fe1fca64cb1fbb
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)
 Azure SQL Database と Azure SQL Data Warehouse では、*Active Directory ユニバーサル認証*を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。 
@@ -63,4 +63,4 @@ Multi-Factor Authentication の説明については、 [Multi-Factor Authentica
 - [BACPAC ファイルを新しい Azure SQL Database にインポートする](../sql-database/sql-database-import.md)  
 - [Azure SQL データベースを BACPAC ファイルにエクスポートする](../sql-database/sql-database-export.md)  
 - C# インターフェイス [IUniversalAuthProvider インターフェイス](https://msdn.microsoft.com/library/microsoft.sqlserver.dac.iuniversalauthprovider.aspx)  
-- **Active Directory - MFA で汎用**認証を使うとき、ADAL トレースは [SSMS 17.3](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) 以降で利用できます。 ADAL トレースは既定ではオフであり、オンにするには、**[ツール]** の **[オプション]** メニューで、**[Azure サービス]**、**[Azure クラウド]**、**[ADAL 出力ウィンドウのトレース レベル]** の順に選んで、**[表示]** メニューの **[出力]** を有効にします。 出力ウィンドウで **[Azure Active Directory option]\(Azure Active Directory オプション\)** を選ぶと、トレースが使用可能になります。  
+- **Active Directory - MFA で汎用**認証を使うとき、ADAL トレースは [SSMS 17.3](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 以降で利用できます。 ADAL トレースは既定ではオフであり、オンにするには、**[ツール]** の **[オプション]** メニューで、**[Azure サービス]**、**[Azure クラウド]**、**[ADAL 出力ウィンドウのトレース レベル]** の順に選んで、**[表示]** メニューの **[出力]** を有効にします。 出力ウィンドウで **[Azure Active Directory option]\(Azure Active Directory オプション\)** を選ぶと、トレースが使用可能になります。  

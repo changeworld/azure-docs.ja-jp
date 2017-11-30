@@ -3,7 +3,7 @@ title: "Azure Site Recovery の 2 つの Azure リージョン間でのネット
 description: "Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、回復を調整します。 Azure またはセカンダリ データセンターへのフェールオーバーについて説明します。"
 services: site-recovery
 documentationcenter: 
-author: prateek9us
+author: mayanknayar
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
-ms.author: pratshar
-ms.openlocfilehash: d73acd17d69564134026672b81c5dc32e15d8cd7
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 11/22/2017
+ms.author: manayar
+ms.openlocfilehash: 85baa829020529b628dfaa5578e5d76724834b33
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>2 つの Azure リージョン間でのネットワーク マッピング
 

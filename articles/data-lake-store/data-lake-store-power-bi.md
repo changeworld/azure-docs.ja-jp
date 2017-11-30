@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 32ae9949806e0cb762b87cb739f94ddf3704c2ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c77ccd29e3e22005c3339ed4e89dccfed725fa0
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>Power BI を使用して Data Lake Store のデータを分析する
 この記事では、Power BI Desktop を使用して Azure Data Lake ストアに格納されているデータを分析し、視覚化する方法を説明します。
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop でレポートを作成する
 1. コンピューターで Power BI Desktop を起動します。
-2. **ホーム** リボンの **データの取得** をクリックしてから 詳細をクリックします。 **[データの取得]** ダイアログ ボックスで、**[Azure]**、**[Azure Data Lake Store]**、**[接続]** の順にクリックします。
+2. **[ホーム]** リボンの **[データの取得]** をクリックしてから [詳細] をクリックします。 **[データの取得]** ダイアログ ボックスで、**[Azure]**、**[Azure Data Lake Store]**、**[接続]** の順にクリックします。
    
     ![Data Lake Store に接続する](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Data Lake Store に接続する")
 3. 開発段階にあるコネクタに関するダイアログ ボックスが表示された場合は、続行することを選択します。

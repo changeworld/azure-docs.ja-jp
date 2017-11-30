@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/24/2017
+ms.date: 11/22/2017
 ms.author: asgang
-ms.openlocfilehash: c235102a60b6d11c8b77203121352bd1400f4325
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa8a79cd152a532ef8989e61c2ec9609b826634b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする
 
@@ -74,10 +74,10 @@ Dynamics AX アプリケーションが機能するには、ディザスター �
 
  詳細については、[ディザスター リカバリー サイトでドメイン コントローラーを使用できるようにする](site-recovery-active-directory.md)ための記事を参照してください。 これ以降のドキュメントでは、ドメイン コントローラーがディザスター リカバリー サイトで使用可能になっていることを前提とします。
 
-### <a name="2-set-up-sql-server-replication"></a>2.SQL Server レプリケーションをセットアップする
+### <a name="2-set-up-sql-server-replication"></a>手順 2.SQL Server レプリケーションをセットアップする
 SQL 層を保護するための推奨されるオプションの技術的なガイダンスについては、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3.Dynamics AX クライアントと Application Object Server VM の保護を有効にする
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>手順 3.Dynamics AX クライアントと Application Object Server VM の保護を有効にする
 VM が[HYPER-V](site-recovery-hyper-v-site-to-azure.md) または [VMware](site-recovery-vmware-to-azure.md) のどちらにデプロイされるかに基づいて、関連する Site Recovery 構成を実行します。
 
 > [!TIP]

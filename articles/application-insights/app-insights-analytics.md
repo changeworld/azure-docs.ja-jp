@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: 80a9e248ca50c11ef61a5c50c4986c4f8f4ead9d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: adda6335b702470cd491f07d750236c368325a9e
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights の Analytics
 Analytics は、[Application Insights](app-insights-overview.md) の強力な検索およびクエリのツールです。 Analytics は Web ツールであるため、セットアップは不要です。 Application Insights をお使いのアプリの一つで構成済みの場合、アプリの [[概要]](app-insights-dashboards.md) ブレードで Analytics を開いてアプリのデータを分析できます。
@@ -49,7 +49,7 @@ requests
 
 * [フィルター](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)。カスタム プロパティとメトリックを含む、すべてのフィールドで未加工のアプリ テレメトリをフィルター処理します。
 * [結合](https://docs.loganalytics.io/queryLanguage/query_language_joinoperator.html)。複数のテーブルを結合します。要求をページ ビュー、依存関係の呼び出し、例外およびログ トレースに関連付けます。
-* 強力な統計 [集計](https://docs.loganalytics.io/learn/tutorials/aggregations.html)。
+* 強力な統計 [集計](https://docs.loganalytics.io/docs/Learn/Tutorials/Aggregation-functions)。
 * 迅速かつ強力な視覚化。
 * PowerShell などのプログラムによるクエリの実行に使用できる [REST API](https://dev.applicationinsights.io/)。
 

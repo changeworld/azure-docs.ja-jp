@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 06/07/2017
 ms.author: rickbyh
 ms.workload: Inactive
-ms.openlocfilehash: c45f0ae655c544f51c8983c234591eef3da9dc6b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 16bd403fecbd24d7cea774bba8535f102501861f
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)  
 
@@ -25,7 +25,7 @@ SQL Database と SQL Data Warehouse の両方で Microsoft の条件付きアク
 - 多要素認証が有効になっている場合は、最新の SSMS などのサポートされているツールに接続する必要があります。 詳細については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」を参照してください。  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Azure SQL DB/DW 用に CA を構成する  
-1.  Portal にサインインし、**[Azure Active Directory]** を選択してから **[条件付きアクセス]** を選択します。 詳細については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference)」を参照してください。  
+1.  Portal にサインインし、**[Azure Active Directory]** を選択してから **[条件付きアクセス]** を選択します。 詳細については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference)」を参照してください。  
   ![[条件付きアクセス] ブレード](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
 2.  **[Conditional Access-Policies]\(条件付きアクセス ポリシー\)** ブレードで、**[新しいポリシー]** をクリックし、名前を指定してから **[Configure rules]\(規則の構成\)** をクリックします。  

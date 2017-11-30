@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 06/29/2017
+ms.date: 11/23/2017
 ms.author: anoopkv
-ms.openlocfilehash: 091f0884417535427c52beee7bcdc5ed1dd83315
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1b7a2d99cfa9f7d54d5303c21202fc34cf6d15ab
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="manage-vmware-vcenter-server-in-azure-site-recovery"></a>Azure Site Recovery での VMware vCenter サーバーの管理
 この記事では、VMware vCenter で実行できるさまざまな Site Recovery 操作について説明します。

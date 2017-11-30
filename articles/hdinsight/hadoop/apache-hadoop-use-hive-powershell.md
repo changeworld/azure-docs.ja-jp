@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: 3b8988ea14deae812924f034a902fbdc016aa307
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 95bfab18a6a8a9ad9eb547179a3205ae4b186213
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-hive-queries-using-powershell"></a>PowerShell を使用して Hive クエリを実行
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

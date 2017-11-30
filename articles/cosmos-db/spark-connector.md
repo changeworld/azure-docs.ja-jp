@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: denlee
-ms.openlocfilehash: ba824ed1bad49c71f8de9f2da8249945d9430222
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 1efdda867703613e4f85e6994004df32e70ccb3d
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>Spark-Azure Cosmos DB コネクタによるリアルタイムのビッグ データ分析の高速化
 
@@ -79,7 +79,7 @@ Spark と Azure Cosmos DB 間の通信が Spark マスター ノードと Azure 
 ### <a name="install-pydocumentdb"></a>pyDocumentDB のインストール
 次のように、**pip** を使用して、pyDocumentDB をドライバー ノードにインストールできます。
 
-```
+```bash
 pip install pyDocumentDB
 ```
 
@@ -89,7 +89,7 @@ pip install pyDocumentDB
 
 次のコード スニペットは、Spark コンテキストで pyDocumentDB を使用する方法を示しています。
 
-```
+```python
 # Import Necessary Libraries
 import pydocumentdb
 from pydocumentdb import document_client
@@ -117,7 +117,7 @@ client = document_client.DocumentClient(host, {'masterKey': masterKey}, connecti
 ### <a name="execute-spark-queries-via-pydocumentdb"></a>pyDocumentDB を介した Spark クエリの実行
 以下の例では、指定した読み取り専用キーを使って、前のスニペットで作成された Azure Cosmos DB インスタンスを使用します。 次のコード スニペットは、以前に指定した DoctorWho アカウント内の **airports.codes** コレクションに接続して、ワシントン州の空港都市を抽出するクエリを実行します。
 
-```
+```python
 # Configure Database and Collections
 databaseId = 'airports'
 collectionId = 'codes'
@@ -141,7 +141,7 @@ elements = list(query)
 
 **query** によってクエリが実行されると、結果は、Python リストに変換される **query_iterable.QueryIterable** になります。 Python リストは、次のコードを使用して、Spark DataFrame に簡単に変換できます。
 
-```
+```python
 # Create `df` Spark DataFrame from `elements` Python list
 df = spark.createDataFrame(elements)
 ```
@@ -183,7 +183,7 @@ spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3-jar-wi
 
 依存関係なしで JAR を実行する場合は、次のコードを使用します。
 
-```
+```bash
 spark-shell --master $master --jars /$location/azure-cosmosdb-spark-0.0.3.jar,/$location/azure-documentdb-1.10.0.jar
 ```
 
