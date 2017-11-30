@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: jarrettr
-ms.openlocfilehash: ba390a5973ad33405f1d4217d60d7989f04db3b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db0f09433750a3af2d70039d780a25ad64bb4df1
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Azure Storage との間でのデータの移動
 オンプレミスのデータを Azure Storage に (またはその逆に) 移動する場合は、さまざまな方法があります。 最適な方法は、シナリオによって異なります。 この記事では、さまざまなシナリオとそれぞれに適した手段の概要を説明します。
@@ -76,4 +76,4 @@ Azure Storage にデータをバックアップするだけの場合は、Azure 
 詳細については、 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) に関する記事を参照してください。
 ### <a name="moving-data-faq"></a>データの移動に関してよく寄せられる質問:
 ## <a name="can-i-migrate-vhds-from-one-region-to-another-without-copying"></a>VHD をコピーせずにリージョン間で移行できますか?
-リージョン間で VHD をコピーするには、各リージョンのストレージ アカウント間でデータをコピーする方法しかありません。 これには AZCopy を使用します。 詳細については、「AzCopy コマンド ライン ユーティリティを使用してデータを転送する」を参照してください。 データ容量が非常に大きい場合には、Azure Import/Export を使用することもできます。 詳細については、 [Azure Import/Export](https://docs.microsoft.com/en-us/azure/storage/storage-import-export-service) に関する記事を参照してください。
+リージョン間で VHD をコピーするには、各リージョンのストレージ アカウント間でデータをコピーする方法しかありません。 これには AZCopy を使用します。 詳細については、「AzCopy コマンド ライン ユーティリティを使用してデータを転送する」を参照してください。 データ容量が非常に大きい場合には、Azure Import/Export を使用することもできます。 詳細については、 [Azure Import/Export](https://docs.microsoft.com/azure/storage/storage-import-export-service) に関する記事を参照してください。

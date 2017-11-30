@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: af42d4b59b428e96bdd1280a5ee5073842ede4c2
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: dbb88e033d5be73b7b069d69c095d8df2c1faf1b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の制限事項
 Azure Database for PostgreSQL サービスはパブリック プレビューの段階です。 次のセクションでは、データベース サービス容量と機能の制限について説明します。
@@ -24,7 +24,7 @@ Azure Database for PostgreSQL では、サーバーを作成するときに複�
 
 サービス プレビュー中の各サービス レベルの接続数、コンピューティング ユニット数、およびストレージ数の最大値は次のとおりです。 
 
-|                            |                   |
+| | |
 | :------------------------- | :---------------- |
 | **最大接続数**        |                   |
 | Basic: 50 コンピューティング ユニット     | 50 接続    |

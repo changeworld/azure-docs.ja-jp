@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/29/2017
+ms.date: 11/23/2017
 ms.author: anoopkv
-ms.openlocfilehash: 2b9b31abd5d11d02935a74e47d26be9803cdc920
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 035336efa6be0d00c41baba168eaffd80939cc82
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="manage-a-process-server-running-in-azure-resource-manager"></a>Azure で実行されるプロセス サーバーの管理 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 
 3.  **[プロセス サーバーの追加]** ページで、次の値を選択します。
 
-  ![プロセス サーバー ギャラリー項目の追加](./media/site-recovery-vmware-setup-azure-ps-arm/add-ps-page-1.png)
+  ![プロセス サーバー ギャラリー アイテムの追加](./media/site-recovery-vmware-setup-azure-ps-arm/add-ps-page-1.png)
 |**フィールド名**|**値**|
 |-|-|
 |プロセス サーバーのデプロイ先を選択してください|値 **[Deploy a failback process server in Azure (フェールバック プロセス サーバーを Azure にデプロイする)]** を選択します。 |

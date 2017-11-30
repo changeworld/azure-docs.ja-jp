@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 11/27/2017
 ms.author: jgao
-ms.openlocfilehash: 6da89b7b63231fe5886c82e84e06abc2ee7b3e38
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f53234ddd8362e74c421c18c8d500308f5a232a7
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight での対話型クエリの使用
 対話型クエリ (別名 Hive LLAP または [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの種類](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Hive クエリの速度と対話性が向上します。 
@@ -49,7 +49,7 @@ Hive クエリを実行するには、次のオプションがあります。
 
 * Visual Studio を使用する
 
-    「[Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Hive クエリの実行](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-a-hive-query)」をご覧ください。
+    「[Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Hive クエリの実行](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries)」をご覧ください。
 
 * Visual Studio Code を使用する
 
@@ -79,7 +79,7 @@ Java Database Connectivity (JDBC) 接続文字列は次の方法で調べるこ�
 * [HDInsight で対話型クエリ クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)方法を学ぶ。
 * [Azure HDInsight の Power BI でビッグ データを視覚化する](../hadoop/apache-hadoop-connect-hive-power-bi.md)方法を学ぶ。
 * [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](../hdinsight-connect-hive-zeppelin.md)方法を学ぶ。
-* [Data Lake Tools for Visual Studio を使用して Hive クエリを実行する](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-a-hive-query)方法を学ぶ。
+* [Data Lake Tools for Visual Studio を使用して Hive クエリを実行する](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries)方法を学ぶ。
 * [HDInsight Tools for Visual Studio Code を使用する](../hdinsight-for-vscode.md)方法を学ぶ。
 * [HDInsight で Hive View と Hadoop を使用する](../hadoop/apache-hadoop-use-hive-ambari-view.md)方法を学ぶ。
 * [Beeline を使用して HDInsight で Hive クエリを実行する](../hadoop/apache-hadoop-use-hive-beeline.md)方法を学ぶ。

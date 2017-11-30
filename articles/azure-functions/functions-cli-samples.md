@@ -1,6 +1,26 @@
--- title: Azure CLI のサンプル - Azure Functions | Microsoft Docs description: Azure CLI のサンプル - Azure Functions services: functions documentationcenter: functions author: syntaxc4 manager: cfowler editor: ggailey777 tags: azure-service-management
-
-ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0 ms.service: functions ms.devlang: na ms.topic: sample ms.tgt_pltfrm: na ms.workload: functions ms.date: 04/11/2017 ms.author: glenga ms.custom: mvc
+---
+title: "Azure CLI のサンプル - Azure Functions | Microsoft Docs"
+description: "Azure CLI のサンプル - Azure Functions"
+services: functions
+documentationcenter: functions
+author: syntaxc4
+manager: cfowler
+editor: ggailey777
+tags: azure-service-management
+ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
+ms.service: functions
+ms.devlang: na
+ms.topic: sample
+ms.tgt_pltfrm: na
+ms.workload: functions
+ms.date: 04/11/2017
+ms.author: glenga
+ms.custom: mvc
+ms.openlocfilehash: 6a86c931134ddfeb17ca540a299a369482d47370
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 

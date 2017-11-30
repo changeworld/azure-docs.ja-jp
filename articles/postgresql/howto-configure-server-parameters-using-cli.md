@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 10/05/2017
-ms.openlocfilehash: 96c5ab5caa4fea178a3108947fa858d395650e08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/27/2017
+ms.openlocfilehash: a2a3395fad35599591e093385305f28bbb161014
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="customize-server-configuration-parameters-using-azure-cli"></a>Azure CLI を使用したサーバー構成パラメーターのカスタマイズ
 コマンド ライン インターフェイス (Azure CLI) を使用して、Azure PostgreSQL サーバーの構成パラメーターを一覧表示、表示、更新できます。 エンジン構成のサブセットは、サーバーレベルで公開され、変更が可能です。 
@@ -25,21 +25,21 @@ ms.lasthandoff: 10/11/2017
 - マシンに [Azure CLI 2.0](/cli/azure/install-azure-cli) コマンド ライン インターフェイスをインストールするか、ブラウザーを使用して Azure Portal の [Azure Cloud Shell](../cloud-shell/overview.md) を使用します。
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーのサーバー構成パラメーターを一覧表示する
-サーバー内の変更可能なすべてのパラメーターとその値を一覧表示するには、[az postgres server configuration list](/cli/azure/postgres/server/configuration#list) コマンドを実行します。
+サーバー内の変更可能なすべてのパラメーターとその値を一覧表示するには、[az postgres server configuration list](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) コマンドを実行します。
 
 サーバー **mypgserver-20170401.postgres.database.azure.com** のリソース グループ **myresourcegroup** のサーバー構成パラメーターを一覧表示できます。
 ```azurecli-interactive
 az postgres server configuration list --resource-group myresourcegroup --server mypgserver-20170401
 ```
 ## <a name="show-server-configuration-parameter-details"></a>サーバー構成パラメーター詳細を表示する
-サーバーの特定の構成パラメーターに関する詳細を表示するには、[az postgres server configuration show](/cli/azure/postgres/server/configuration#show) コマンドを実行します。
+サーバーの特定の構成パラメーターに関する詳細を表示するには、[az postgres server configuration show](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_show) コマンドを実行します。
 
 この例では、サーバー **mypgserver-20170401.postgres.database.azure.com** のリソース グループ **myresourcegroup** の **log\_min\_messages** サーバー構成パラメーターの詳細を表示します。
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mypgserver-20170401
 ```
 ## <a name="modify-server-configuration-parameter-value"></a>サーバー構成パラメーターの値を変更する
-特定のサーバー構成パラメーターの値を変更することもできます。これによって PostgreSQL サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az postgres server configuration set](/cli/azure/postgres/server/configuration#set) コマンドを使用します。 
+特定のサーバー構成パラメーターの値を変更することもできます。これによって PostgreSQL サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) コマンドを使用します。 
 
 この例では、サーバー **mypgserver-20170401.postgres.database.azure.com** のリソース グループ **myresourcegroup** の **log\_min\_messages** サーバー構成パラメーターを更新します。
 ```azurecli-interactive

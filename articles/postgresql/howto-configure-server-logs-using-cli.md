@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 5e10ddd8c850d457b4ad77cd5ea4d92edc07017e
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/27/2017
+ms.openlocfilehash: d18ec44ecede44829b488ac9864bbfae2c62883a
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-and-access-server-logs-using-azure-cli"></a>Azure CLI を使用した PostgreSQL のサーバー ログの構成とアクセス
 PostgreSQL サーバーのエラー ログは、コマンド ライン インターフェイス (Azure CLI) を使用してダウンロードできます。 ただし、トランザクション ログへのアクセスはサポートされていません。 
@@ -33,14 +33,14 @@ PostgreSQL サーバーのエラー ログは、コマンド ライン インタ
 詳細については、[サーバー構成パラメーターのカスタマイズ](howto-configure-server-parameters-using-cli.md)に関するページをご覧ください。
 
 ## <a name="list-logs-for-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーのログの一覧表示
-サーバーの利用可能なログ ファイルを一覧表示するには、[az postgres server-logs list](/cli/azure/postgres/server-logs#list) コマンドを実行します。
+サーバーの利用可能なログ ファイルを一覧表示するには、[az postgres server-logs list](/cli/azure/postgres/server-logs#az_postgres_server_logs_list) コマンドを実行します。
 
 リソース グループ **myresourcegroup** のサーバー **mypgserver-20170401.postgres.database.azure.com** のログ ファイルを一覧表示し、それを **log\_files\_list.txt** と呼ばれるテキスト ファイルに出力できます。
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mypgserver-20170401 > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>サーバーからローカルにログをダウンロードする
-[az postgres server-logs download](/cli/azure/postgres/server-logs#download) コマンドを使用すると、サーバーの個別のログ ファイルをダウンロードすることができます。 
+[az postgres server-logs download](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) コマンドを使用すると、サーバーの個別のログ ファイルをダウンロードすることができます。 
 
 この例では、リソース グループ **myresourcegroup** のサーバー **mypgserver-20170401.postgres.database.azure.com** の特定のログ ファイルをローカル環境にダウンロードします。
 ```azurecli-interactive

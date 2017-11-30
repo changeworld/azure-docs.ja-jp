@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 10/14/2016
 ms.author: Joe.Sack
-ms.suite: SQL
+ms.suite: sql
 ms.prod_service: sql-database
-ms.component: management
-ms.openlocfilehash: 663ab4aaf229f8a88d1116b34ccb74450aa66c9d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.component: migration
+ms.openlocfilehash: e562c33cabc7d39d1f6a911c21343f85da205c0b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-should-i-manage-my-azure-sql-database-after-migration"></a>移行後はどのように Azure SQL Database を管理すればよいですか?
 
@@ -146,8 +146,8 @@ SQL Database には、データベースのセキュリティ イベントやそ
  - 電子メール、webhook、Azure Automation Runbook アラートをトリガーする観察対象イベント (パスワードの変更、勤務時間後、特定の SQL コマンドなど) に対する高度なアラート固有ルール
 - [Azure Security Center](../security-center/security-center-intro.md): Azure、オンプレミス、他のクラウドで実行されているワークロード全体でのセキュリティ管理を一元化します。 監査や Transparent Data Encryption などの SQL Database の主要な保護機能がすべてのリソースに対して構成されているかどうかを確認し、独自の要件に応じてポリシーを作成できます。 
 
-### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database はすべての規制要件に適合していますか? また、SQL Database は組織のコンプライアンスにどのように役立ちますか? 
-Azure SQL Database は、さまざまな規制に準拠しています。 適合している法規制の最新の一覧については、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings) にアクセスして組織に重要なコンプライアンスをドリルダウンし、Azure SQL Database がコンプライアンスに準拠している Azure サービスに含まれているかどうかを確認してください。 Azure SQL Database はコンプライアンスに準拠しているサービスとして認証を受けていますが、これは組織のサービスのコンプライアンスを支援するものであり、自動的にコンプライアンスを保証するものではないことに注意してください。 
+### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database はすべての規制要件に準拠していますか? また、SQL Database は組織のコンプライアンスにどのように役立ちますか? 
+Azure SQL Database は、さまざまな規制に準拠しています。 適合しているコンプライアンスの最新の一覧については、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings) にアクセスして組織に重要なコンプライアンスをドリルダウンし、Azure SQL Database がコンプライアンスに準拠している Azure サービスに含まれているかどうかを確認してください。 Azure SQL Database はコンプライアンスに準拠しているサービスとして認証を受けていますが、これは組織のサービスのコンプライアンスを支援するものであり、自動的にコンプライアンスを保証するものではないことに注意してください。 
 
 ## <a name="database-maintenance-and-monitoring-after-migration"></a>移行後のデータベースのメンテナンスおよび監視
 

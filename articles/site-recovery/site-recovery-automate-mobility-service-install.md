@@ -12,16 +12,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 11/22/2017
 ms.author: krnese
-ms.openlocfilehash: bcc5f11afbecac8fe63935f3401dd3e2d767e8aa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 118a2e775ae3d036f58989d9778104e372e8c701
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>VM レプリケーションのために Azure Automation DSC を使用してモビリティ サービスをデプロイする
-Operations Management Suite では、ビジネス継続性計画の一部として利用できる包括的なバックアップおよび障害復旧ソリューションが提供されています。
+Operations Management Suite では、ビジネス継続性計画の一部として利用できる包括的なバックアップおよびディザスター リカバリー ソリューションが提供されています。
 
 当初は HYPER-V レプリカを使用した HYPER-V に対応していました。 しかし、お客様が複数のハイパーバイザーとプラットフォームをクラウドでデプロイしていることを認識したため、多様なセットアップをサポートするように拡張しました。
 

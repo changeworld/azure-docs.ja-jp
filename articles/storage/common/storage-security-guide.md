@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: 592a8716dd15b25b14fed145c11e5f5714cdd41c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c3973c7e529cd1d0ecd98ae17d4d979d0d458ef3
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 ## <a name="overview"></a>概要
@@ -354,7 +354,7 @@ Azure Disk Encryption は、新しい機能です。 この機能を使用する
 この機能を使用すると、仮想マシン ディスクのすべてのデータは Azure Storage に保存中に暗号化されます。
 
 #### <a name="resources"></a>リソース
-* [Windows および Linux IaaS VM の Azure ディスク暗号化](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)
+* [Windows および Linux IaaS VM の Azure ディスク暗号化](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Azure Disk Encryption、SSE、クライアント側の暗号化の比較
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS VM とその VHD ファイル
@@ -511,7 +511,7 @@ CORS と CORS を有効にする方法については、次のリソースを参
    詳細については、 [Azure BLOB MD5 の概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)に関するブログ記事をご覧ください。
 2. **米国政府の FIPS 準拠はどうなっていますか**
 
-   米国連邦情報処理規格 (FIPS) には、機密データの保護のために、米国連邦政府のコンピューター システムで使用することが承認されている暗号化アルゴリズムが定義されています。 Windows Server またはデスクトップで FIPS モードを有効にすると、FIPS が検証された暗号化アルゴリズムのみを使用するように OS に指示されます。 アプリケーションが準拠していないアルゴリズムを使用している場合、アプリケーションは停止します。 .NET Framework バージョン 4.5.2 以降の場合、コンピューターを FIPS モードにすると、FIPS 準拠のアルゴリズムを使用するようにアプリケーションの暗号化アルゴリズムが自動的に切り替わります。
+   米国連邦情報処理規格 (FIPS) には、機密データの保護のために、米国連邦政府のコンピューター システムで使用することが承認されている暗号化アルゴリズムが定義されています。 Windows Server またはデスクトップで FIPS モードを有効にすると、FIPS が検証された暗号化アルゴリズムのみを使用するように OS に指示されます。 アプリケーションが準拠していないアルゴリズムを使用している場合、アプリケーションは停止します。 .NET Framework バージョン 4.5.2 以降の場合、コンピューターを FIPS モードにすると、FIPS に準拠しているアルゴリズムを使用するようにアプリケーションの暗号化アルゴリズムが自動的に切り替わります。
 
    FIPS モードを有効にするかどうかは、ユーザーの判断に委ねられます。 政府の規制対象ではないユーザーには、既定で FIPS モードを有効にしなければならない理由はないと Microsoft は考えます。
 

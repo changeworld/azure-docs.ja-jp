@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 10/06/2017
+ms.date: 11/23/2017
 ms.author: anoopkv
-ms.openlocfilehash: e4740c96383468713976e5a98881bec13b0c1921
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f23750ff1ba261ea3cf782f7c85858e46632cfa
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="manage-a-configuration-server"></a>構成サーバーの管理
 

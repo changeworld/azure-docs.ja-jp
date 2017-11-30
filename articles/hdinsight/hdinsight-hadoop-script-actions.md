@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1b10887bcfa7f7c25375bd990ec5e97d0fefbacf
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d0e95014f6ebfc4e0286d3a12999c918f831b489
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>HDInsight の Windows ベースのクラスター用 Script Action スクリプトを開発する
 HDInsight 用の Script Action スクリプトを記述する方法について説明します。 Script Action スクリプトの使用方法については、「 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。 Linux ベースの HDInsight クラスターに関する同様の記事については、「 [HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
@@ -245,7 +245,8 @@ HDInsight クラスター向けのカスタム スクリプトを開発する際
 
 ## <a name="debug-custom-scripts"></a>カスタム スクリプトをデバッグする
 スクリプト エラー ログは、他の出力と共に、クラスターの作成時に指定した既定のストレージ アカウント内に格納されます。 ログは、*u<\cluster-name-fragment><\time-stamp>setuplog* という名前のテーブルに格納されます。 これらはクラスター内でスクリプトが実行されるすべてのノード (ヘッドノードと worker ノード) から取得されたレコードを持つ集計ログです。
-ログを確認する簡単な方法は、HDInsight Tools for Visual Studio を使用することです。 ツールのインストールについては、 [HDInsight Hadoop Tools for Visual Studio の使用開始](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-data-lake-tools-for-visual-studio)
+
+ログを確認する簡単な方法は、HDInsight Tools for Visual Studio を使用することです。 ツールのインストールについては、 [HDInsight Hadoop Tools for Visual Studio の使用開始](hadoop/apache-hadoop-visual-studio-tools-get-started.md#install-and-upgrade-data-lake-tools-for-visual-studio)
 
 **Visual Studio を使用してログを確認するには**
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: sngun;AlfredoPizzirani
-ms.openlocfilehash: 5abc325a6e7c019dc3cb84f7f6ff63c3eb2ff76c
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: a4ca742e232a19cd890552bec08f4d11cca52020
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack 使用状況データの Azure への報告 
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/13/2017
 
 ## <a name="view-usage---csp-subscriptions"></a>使用状況の表示 - CSP サブスクリプション
 
-Azure Stack を CSP サブスクリプションを使用して登録した場合は、Azure の消費量を表示するのと同じ方法で、使用状況と請求金額を表示できます。 Azure Stack の使用状況は請求書と調整ファイルに含まれます。これらは[パートナー センター](https://partnercenter.microsoft.com/en-us/partner/home)を通して入手できます。 調整ファイルは月単位で更新されます。 Azure Stack の最近の使用状況情報にアクセスする必要がある場合は、パートナー センター API を使用できます。
+Azure Stack を CSP サブスクリプションを使用して登録した場合は、Azure の消費量を表示するのと同じ方法で、使用状況と請求金額を表示できます。 Azure Stack の使用状況は請求書と調整ファイルに含まれます。これらは[パートナー センター](https://partnercenter.microsoft.com/partner/home)を通して入手できます。 調整ファイルは月単位で更新されます。 Azure Stack の最近の使用状況情報にアクセスする必要がある場合は、パートナー センター API を使用できます。
 
    ![パートナー センター](media/azure-stack-usage-reporting/partner-center.png)
 
@@ -76,13 +76,14 @@ Azure Stack Development Kit の場合、Azure Stack リソースは課金され�
 
 ## <a name="are-users-charged-for-the-infrastructure-vms"></a>ユーザーはインフラストラクチャ VM に対して課金されますか?
 
+
 いいえ。 一部の Azure Stack リソース プロバイダー VM の使用状況データは Azure に報告されますが、これらの VM に対する課金はなく、Azure Stack インフラストラクチャを有効にするためにデプロイ中に作成された VM も課金の対象になりません。  
 
 課金は、テナント サブスクリプションの下で実行されている VM に対してのみ行われます。 すべてのワークロードは、Azure Stack のライセンス条項に従って、テナント サブスクリプションでデプロイする必要があります。
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Windows Server ライセンスを持っています。Azure Stack で使用したいのですが、どうすればよいですか。
 
-既存のライセンスを使用すると、使用状況メーターの生成を回避できます。 既存の Windows Server ライセンスを Azure Stack で使用できます。「[Azure Stack Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)(Azure Stack ライセンス ガイド) の「Using existing software with Azure Stack」(Azure Stack で既存のソフトウェアを使用する) を参照してください。 既存のライセンスを使用するには、「[Windows Server 向け Azure Hybrid Use Benefit](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/hybrid-use-benefit-licensing)」トピックに記載されているように、Windows Server 仮想マシンをデプロイする必要があります。
+既存のライセンスを使用すると、使用状況メーターの生成を回避できます。 既存の Windows Server ライセンスを Azure Stack で使用できます。「[Azure Stack Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)(Azure Stack ライセンス ガイド) の「Using existing software with Azure Stack」(Azure Stack で既存のソフトウェアを使用する) を参照してください。 既存のライセンスを使用するには、「[Windows Server 向け Azure Hybrid Use Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)」トピックに記載されているように、Windows Server 仮想マシンをデプロイする必要があります。
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>使用されたリソースに対してどのサブスクリプションが課金されますか?
 [Azure Stack を Azure に登録する](azure-stack-register.md)ときに指定されたサブスクリプションが課金されます。
@@ -97,7 +98,7 @@ Azure Stack Development Kit では、使用状況データ レポートにはグ
 
 ## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>ユーザーが Azure 課金ポータルで Azure Stack 使用状況データを識別するにはどうすればよいですか?
 
-ユーザーは、使用状況の詳細ファイルで Azure Stack 使用状況データを確認できます。 使用状況の詳細ファイルを取得する方法については、「[download usage file from the Azure Account Center (Azure アカウント センターからの使用状況ファイルのダウンロード)](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)」を参照してください。 使用状況の詳細ファイルには、Azure Stack ストレージおよび VM を識別する Azure Stack メーターが含まれています。 Azure Stack で使用されるリソースはすべて、"Azure Stack" という名前のリージョンのもとに報告されます。
+ユーザーは、使用状況の詳細ファイルで Azure Stack 使用状況データを確認できます。 使用状況の詳細ファイルを取得する方法については、「[download usage file from the Azure Account Center (Azure アカウント センターからの使用状況ファイルのダウンロード)](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)」を参照してください。 使用状況の詳細ファイルには、Azure Stack ストレージおよび VM を識別する Azure Stack メーターが含まれています。 Azure Stack で使用されるリソースはすべて、"Azure Stack" という名前のリージョンのもとに報告されます。
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Azure Stack で報告された使用状況が Azure アカウント センターから生成されたレポートと一致しないのはなぜですか?
 
