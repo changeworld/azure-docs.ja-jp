@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Resource Manager テンプレートの関数 - リソース | Microsoft Docs"
 description: "Azure Resource Manager テンプレートで、リソースに関する値を取得するために使用する関数について説明します。"
 services: azure-resource-manager
@@ -47,7 +47,7 @@ list 操作をサポートする任意の種類のリソースの値を返しま
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |あり |string |リソースの一意識別子です。 |
+| resourceName または resourceIdentifier |はい |string |リソースの一意識別子です。 |
 | apiVersion |はい |string |リソースのランタイム状態の API バージョン。 通常、**yyyy-mm-dd** の形式。 |
 
 ### <a name="return-value"></a>戻り値
@@ -154,7 +154,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |はい |string |プロバイダーの名前空間 |
-| resourceType |なし |string |指定した名前空間内にあるリソースの種類。 |
+| resourceType |いいえ |string |指定した名前空間内にあるリソースの種類。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -241,7 +241,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
 |:--- |:--- |:--- |:--- |
-| resourceName または resourceIdentifier |あり |string |名前またはリソースの一意の識別子。 |
+| resourceName または resourceIdentifier |はい |string |名前またはリソースの一意の識別子。 |
 | apiVersion |いいえ |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
 | 'Full' |いいえ |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
 
