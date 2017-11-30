@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/18/2017
+ms.date: 11/14/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 58ebf74e166cdcae2c54b134cb99552333fafa24
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 9fbcac4bd6240aed607c3da6c6535d207a782448
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Azure AD Reporting API にアクセスするための前提条件
 
@@ -133,7 +133,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
    
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. **[Azure Active Directory]** ブレードで、**[ドメイン名]** をクリックします。
+2. **[Azure Active Directory]** ブレードで、**[カスタム ドメイン名]** をクリックします。
 
     ![アプリケーションを登録する](./media/active-directory-reporting-api-prerequisites-azure-portal/09.png) 
 
@@ -185,7 +185,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
     b. **[有効期限]** として、**[2 年]** を選択します。
 
-    c. **[ Save]** をクリックします。
+    c. **[Save]** をクリックします。
 
     d. キー値をコピーします。
 
