@@ -15,16 +15,16 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 06/02/2017
 ms.author: shigu;barbkess
-ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53867eb7ba13cdfc47e3e47a9212b3c6839281da
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのデータ型の定義に関するガイダンス
 SQL Data Warehouse と互換性のあるテーブルのデータ型を定義する場合は、以下の推奨事項を使用します。 互換性に加え、データ型のサイズを最小化することで、クエリのパフォーマンスが向上します。
 
-SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの[データ型](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes)を参照してください。 
+SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。 サポートされるデータ型の一覧については、CREATE TABLE ステートメントの[データ型](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)を参照してください。 
 
 
 ## <a name="minimize-row-length"></a>行の長さを最小化する

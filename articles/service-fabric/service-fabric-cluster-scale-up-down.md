@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: d26a97ee0e5416fb1fe38ef0fb18fa4eb0e2963d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 249fb4903c7b2de3ce290850a7759a4793f10aa7
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>自動スケール ルールを使用した Service Fabric クラスターのスケールインとスケールアウト
 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。 Service Fabric クラスターで定義されているすべてのノード タイプは、個別の仮想マシン スケール セットとしてセットアップされます。 各ノードの種類は、個別にスケールインまたはスケールアウトでき、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 詳細については、 [Service Fabric のノードの種類](service-fabric-cluster-nodetypes.md) に関するドキュメントを参照してください。 クラスター内の Service Fabric のノードの種類はバックエンドの仮想マシン スケール セットで構成されるため、ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定する必要があります。
@@ -72,8 +72,8 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine sca
 
 一度に 1 つの VM インスタンスに対して、次の手順を実行します。 これにより、削除する VM インスタンス上でシステム サービス (およびステートフル サービス) を正規の手順でシャットダウンし、新しいレプリカを別のノードに作成できます。
 
-1. [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) を、インテント "RemoveNode" を指定して実行し、削除するノードを無効にします (そのノードの種類の最上位インスタンス)。
-2. [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) を実行して、ノードが無効になったことを確認します。 無効になっていない場合は、無効になるまで待ちます。 この手順を高速化することはできません。
+1. [Disable-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) を、インテント "RemoveNode" を指定して実行し、削除するノードを無効にします (そのノードの種類の最上位インスタンス)。
+2. [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) を実行して、ノードが無効になったことを確認します。 無効になっていない場合は、無効になるまで待ちます。 この手順を高速化することはできません。
 3. [クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) のサンプル/手順に従って、その Nodetype の VM 数を 1 だけ変更します。 削除されたインスタンスは、最上位の VM インスタンスです。 
 4. 必要に応じて手順 1. ～ 3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証するよりも少ない数にスケールダウンしないでください。 [こちらの信頼性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください。 
 
@@ -85,8 +85,8 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine sca
 
 一度に 1 つの VM インスタンスに対して、次の手順を実行します。 これにより、削除する VM インスタンス上でシステム サービス (およびステートフル サービス) を正規の手順でシャットダウンし、新しいレプリカを他の場所に作成できます。
 
-1. [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) を、インテント "RemoveNode" を指定して実行し、削除するノードを無効にします (そのノードの種類の最上位インスタンス)。
-2. [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) を実行して、ノードが無効になったことを確認します。 無効になっていない場合は、無効になるまで待ちます。 この手順を高速化することはできません。
+1. [Disable-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) を、インテント "RemoveNode" を指定して実行し、削除するノードを無効にします (そのノードの種類の最上位インスタンス)。
+2. [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) を実行して、ノードが無効になったことを確認します。 無効になっていない場合は、無効になるまで待ちます。 この手順を高速化することはできません。
 3. [クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) のサンプル/手順に従って、その Nodetype の VM 数を 1 だけ変更します。 これにより、最上位の VM インスタンスが削除されます。 
 4. 必要に応じて手順 1. ～ 3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証するよりも少ない数にスケールダウンしないでください。 [こちらの信頼性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください。
 

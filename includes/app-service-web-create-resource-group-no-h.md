@@ -1,4 +1,4 @@
-Cloud Shell で [az group create](/cli/azure/group#create) コマンドを使用してリソース グループを作成します。
+Cloud Shell で [az group create](/cli/azure/group#az_group_create) コマンドを使用してリソース グループを作成します。
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 11/29/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0567df53dff15d7fbacf4850f6eae07c8985598
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 62767163213383c577e74e0aa8fbd07f891cb694
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
 
@@ -93,7 +93,7 @@ S3 コレクションを使用している場合、2,500 RU/秒の単一パー�
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>10 GB を超えるストレージが必要な場合はどうすればよいですか?
 
-S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 10 GB のストレージを使用)、Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](documentdb-partition-data.md)に関するページをご覧ください。 S1、S2、S3 または単一パーティション コレクションをパーティション分割コレクションに移行する方法の詳細については、「[単一パーティション コレクションからパーティション分割コレクションへの移行](documentdb-partition-data.md#migrating-from-single-partition)」を参照してください。 
+S1、S2、S3 パフォーマンス レベルのコレクションを使用している場合も、単一パーティション コレクションを使用している場合も (いずれも 10 GB のストレージを使用)、Cosmos DB データ移行ツールを使用して、実質的に無制限のストレージがあるパーティション分割コレクションにデータを移行できます。 パーティション分割コレクションのメリットの詳細については、[Azure Cosmos DB でのパーティション分割とスケーリング](documentdb-partition-data.md)に関するページをご覧ください。 
 
 <a name="change-before"></a>
 

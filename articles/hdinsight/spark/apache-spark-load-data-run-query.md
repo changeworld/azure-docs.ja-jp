@@ -4,8 +4,8 @@ description: "HDInsight で Apache Spark クラスターを作成する方法に
 keywords: "spark クイック スタート,対話型 spark,対話型クエリ,hdinsight spark,azure spark"
 services: hdinsight
 documentationcenter: 
-author: nitinme
-manager: jhubbard
+author: mumian
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: nitinme
-ms.openlocfilehash: 0d93e261121f11d2a1082b9672e6d979955d3bee
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.author: jgao
+ms.openlocfilehash: db8f0056fa3813e95c2c5bea583d7b66ac64260f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="run-interactive-queries-on-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスターに対して対話型クエリを実行する
 

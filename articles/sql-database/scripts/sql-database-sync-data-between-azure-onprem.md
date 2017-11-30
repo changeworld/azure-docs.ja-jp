@@ -17,17 +17,17 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: 8d021538b34c96c1d486c9508df9d4ee91404337
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 524193835bd5d350d6ac312fcc997f6c135abea1
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>PowerShell を使用して SQL Database と SQL Server オンプレミス データベースの間で同期を行う
 
 この PowerShell サンプルは、Azure SQL Database とオンプレミスの SQL Server データベースのデータ同期を構成します。 
 
-このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。
  
 `Login-AzureRmAccount` を実行して、Azure との接続を作成します。
 
@@ -393,7 +393,7 @@ Azure PowerShell の詳細については、[Azure PowerShell のドキュメン
 SQL データ同期の詳細については、以下を参照してください。
 
 -   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期)](../sql-database-sync-data.md)
--   [Azure SQL データ同期の設定](../sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL データ同期のセットアップ](../sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL データ同期のベスト プラクティス](../sql-database-best-practices-data-sync.md)
 -   [OMS Log Analytics を使用した Azure SQL データ同期の監視](../sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](../sql-database-troubleshoot-data-sync.md)

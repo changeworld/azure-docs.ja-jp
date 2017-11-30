@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 10/12/2017
-ms.openlocfilehash: 3b811376e4c5445ee74124553c6bce247e4f8faf
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.date: 11/28/2017
+ms.openlocfilehash: 6a0d218a9b9cb41a87264cfd5f653bb631b0bce9
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Azure CLI を使用したサーバー構成パラメーターのカスタマイズ
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。 
@@ -25,7 +25,7 @@ Azure コマンド ライン ユーティリティ である Azure CLI を使用
 - [Azure CLI 2.0](/cli/azure/install-azure-cli) コマンド ライン ユーティリティ。または、ブラウザーで Azure Cloud Shell を使用する
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのサーバー構成パラメーターを一覧表示する
-サーバー内の変更可能なすべてのパラメーターとその値を一覧表示するには、[az mysql server configuration list](/cli/azure/mysql/server/configuration#list) コマンドを実行します。
+サーバー内の変更可能なすべてのパラメーターとその値を一覧表示するには、[az mysql server configuration list](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_list) コマンドを実行します。
 
 リソース グループ **myresourcegroup** にあるサーバー **myserver4demo.mysql.database.azure.com** のサーバー構成パラメーターを一覧表示できます。
 ```azurecli-interactive
@@ -41,7 +41,7 @@ az mysql server configuration list --resource-group myresourcegroup --server mys
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server myserver4demo
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>サーバー構成パラメーターの値を変更する
-特定のサーバー構成パラメーターの値を変更することもでき、MySQL サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az mysql server configuration set](/cli/azure/mysql/server/configuration#set) コマンドを使用します。 
+特定のサーバー構成パラメーターの値を変更することもでき、MySQL サーバー エンジンの基盤となる構成値が更新されます。 構成を更新するには、[az mysql server configuration set](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_set) コマンドを使用します。 
 
 リソース グループ **myresourcegroup** にあるサーバー **myserver4demo.mysql.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターを更新するには、次のコマンドを実行します。
 ```azurecli-interactive

@@ -3,7 +3,7 @@ title: "Azure クイック スタート - PowerShell を使用した Azure Blob 
 description: "PowerShell を使用して Azure Blob Storage との間でオブジェクトを転送する方法をすばやく学習する"
 services: storage
 documentationcenter: storage
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
-ms.author: robinsh
-ms.openlocfilehash: 1a9941b21b92c70dd0a46ce2e4c75142e1786650
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: tamram
+ms.openlocfilehash: 7892200610d2b78c81dc16ff03abb9f0ed386fdc
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-azure-powershell"></a>Azure PowerShell を使用して Azure Blob Storage との間でオブジェクトを転送する
 

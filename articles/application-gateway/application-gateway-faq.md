@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: 2ae53d5aceab21b08ccdae5bf5192529cd7f09da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f92af44df9863bbf48abb4afcf9b1505c843fadc
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -288,7 +288,7 @@ WAF は診断ログを通じて監視されます。診断ログについて詳�
 
 * ボット、クローラー、スキャナーの防止
 
-* 一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
+ * 一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
 
 **Q.WAF は DDoS 防止もサポートしますか?**
 

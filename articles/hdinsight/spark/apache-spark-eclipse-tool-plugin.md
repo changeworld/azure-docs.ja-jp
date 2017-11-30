@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: c609f3af1b97b16fca3aabc5d7ce568ff8c660f2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: ede1a974b32227edf44464ed56ae85a1ea7ee97b
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -86,10 +86,7 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
    * **[Spark Library]\(Spark ライブラリ\)** 領域では、**[Use Maven to configure Spark SDK]\(Maven を使用して Spark SDK を構成する\)** オプションを選択できます。  ツールにより Spark SDK と Scala SDK の適切なバージョンが統合されます。 **[Add Spark SDK manually]\(Spark SDK を手動で追加する\)** オプションを選択して、Spark SDK を手動でダウンロードして追加することもできます。
 
    ![[New HDInsight Scala Project]\(新しい HDInsight Scala プロジェクト\) ダイアログ ボックス](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
-5. 既知の問題により、**[次へ]** をクリックした後でもう一度 Scala のバージョンを確認する必要があります。 Scala のバージョンが手順 4. で選択した内容に近いことを確認してください。
-
-   ![comfirm-scala-library](./media/apache-spark-eclipse-tool-plugin/comfirm-scala-library-container.png)
-6. 次のダイアログ ボックスで、**[完了]** を選択します。 
+5. 次のダイアログ ボックスで、**[完了]** を選択します。 
    
   
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスター向けの Scala アプリケーションを作成する
