@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3ab8029d035c3ba88ddb8a112e27f9054f7c203c
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 9e459a42a9fd7caedfa255a7baf51273eef2265a
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>ExpressRoute に使用する Network Performance Monitor の構成 (プレビュー)
 
@@ -96,7 +96,7 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
 1. 該当するリソースの **[ネットワーク パフォーマンス モニターの構成 - TCP のセットアップ] ページ**の **[OMS エージェントをインストールする]** セクションで、サーバーのプロセッサに対応するエージェントをクリックし、セットアップ ファイルをダウンロードします。
 
   >[!NOTE]
-  >ExpressRoute を監視するための Linux エージェントは現時点ではサポートされていません。
+  >エージェントは Windows Server (2008 SP1 以降) にインストールする必要があります。 Windows デスクトップ OS や Linux OS を使用した ExpressRoute 回線の監視はサポートされていません。 
   >
   >
 2. 次に、**[ワークスペース ID]** と **[主キー]** をメモ帳にコピーします。
@@ -105,6 +105,8 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
   ![PowerShell スクリプト](.\media\how-to-npm\7.png)
 
 ### <a name="installagent"></a>2.2. 各監視サーバーに監視エージェントをインストールする
+
+冗長性のため、ExpressRoute 接続 (つまり、オンプレミス、Azure Vnet) の両側に、少なくとも 2 つのエージェントをインストールすることをお勧めします。 次の手順を使用してエージェントをインストールします。
 
 1. ExpressRoute の監視に使用する各サーバーに対し、**セットアップ**を実行してエージェントをインストールします。 監視に使用するサーバーとしては、VM とオンプレミスとがあり、どちらもインターネット アクセスが必須です。 エージェントは、オンプレミスに少なくとも 1 つインストールすると共に、Azure で監視する各ネットワーク セグメントにつき 1 つインストールする必要があります。
 2. **[ようこそ]** ページで **[次へ]** をクリックします。

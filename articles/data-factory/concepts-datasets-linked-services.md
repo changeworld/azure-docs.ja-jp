@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: 
 ms.date: 09/05/2017
 ms.author: shlo
+ms.openlocfilehash: a13e19c7e1a22581b14d1a96e20b8a649c303fc3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f03c91b7b27a4fb39b996599efd11242a785b2b2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure Data Factory のデータセットとリンクされたサービス 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-create-datasets.md)
@@ -185,9 +183,9 @@ BlobSink の format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合
 データ ファクトリが[スキーマと型マッピング]( copy-activity-schema-and-type-mapping.md)からシンクにソース データをマップする方法および構造体の情報を指定する場合の詳細を確認してください。
 
 ## <a name="create-datasets"></a>データセットを作成する
-ツール [.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell]((quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager テンプレート、Azure ポータルのいずれかまたは SDK を使用してデータセットを作成することができます。
+データセットの作成には、[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager テンプレート、Azure Portal のいずれかのツール、またはいずれかの SDK を使用できます
 
-## <a name="v1-vs-v2-datasets"></a>V1 と V2 データセット
+## <a name="v1-vs-v2-datasets"></a>V1 と V2 のデータセット
 
 Data Factory v1 と v2 のデータセット間の相違点を次に示します。 
 
@@ -202,4 +200,3 @@ Data Factory v1 と v2 のデータセット間の相違点を次に示します
 - [クイック スタート: PowerShell を使用してデータ ファクトリを作成する](quickstart-create-data-factory-powershell.md)
 - [クイック スタート: REST API を使用してデータ ファクトリを作成する](quickstart-create-data-factory-rest-api.md)
 - クイック スタート: Azure Portal を使用してデータ ファクトリを作成する
-

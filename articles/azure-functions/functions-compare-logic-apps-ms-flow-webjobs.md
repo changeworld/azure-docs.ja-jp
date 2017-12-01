@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/11/2017
+ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ab0aa377f9803d74d8a7a94bdb4c7b780e3ae41d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 03246846484878f7155449ad11b009aeffe8a576
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 この記事では、Microsoft Cloud で提供されている以下のサービスを比較対照しながら説明します。いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。
@@ -81,12 +81,12 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 | スケーリング |構成不要のスケーリング |App Service プランによるスケーリング |
 | 価格 |従量課金または App Service プランの一部 |App Service プランの一部 |
 | 実行の種類 |トリガー、(タイマー トリガーによる) スケジュール |トリガー、継続的、スケジュール |
-| トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure Event Hub](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Notification Hubs](functions-bindings-notification-hubs.md)、[Azure Service Bus](functions-bindings-service-bus.md)、[Azure Storage](functions-bindings-storage-blob.md) |[Azure Storage](functions-bindings-storage-blob.md)、[Azure Service Bus](functions-bindings-service-bus.md) |
+| トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure Event Hubs](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Event Hubs](functions-bindings-event-hubs.md)、[Azure Storage キューおよび BLOB](functions-bindings-storage-blob.md)、[Azure Service Bus キューおよびトピック](functions-bindings-service-bus.md) |[Azure Storage キューおよび BLOB](functions-bindings-storage-blob.md)、[Azure Service Bus キューおよびトピック](functions-bindings-service-bus.md) |
 | ブラウザーでの開発 |サポートされています |サポートされていません |
 | C# |サポートされています |サポートされています |
 | F# |サポートされています |サポートされていません |
 | JavaScript |サポートされています |サポートされています |
-| Java |サポートされています | サポートされていません |
+| Java |Preview | サポートされていません |
 | Bash |試験段階 |サポートされています |
 | Windows スクリプト (.cmd、.bat) |試験段階 |サポートされています |
 | PowerShell |試験段階 |サポートされています |

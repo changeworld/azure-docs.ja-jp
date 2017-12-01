@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 3d508877928e033f24dae62c1042745ea7250033
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0748e0ffa405fc02f6da7e2c412beec12510fde5
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンで Always On 可用性グループを作成するための前提条件を満たす
 
@@ -261,7 +261,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 
 3. **[カスタム]** をクリックして、プライマリ ドメイン コント ローラーのプライベート IP アドレスを入力します。
 
-4. [ **Save**] をクリックします。
+4. **[Save]** をクリックします。
 
 ### <a name="configure-the-second-domain-controller"></a>2 番目のドメイン コントローラーの構成
 プライマリ ドメイン コントローラーの再起動後、2 つ目のドメイン コントローラーの構成を行うことができます。 これは高可用性を確保するための任意の手順です。 次の手順に従って 2 つ目のドメイン コントローラーを構成します。
@@ -361,14 +361,14 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
    このチュートリアルでは、仮想マシンにパブリック IP アドレスを使用します。 これにより、インターネット経由で仮想マシンに直接リモート接続できるため、構成手順が簡素化されます。 運用環境では、SQL Server インスタンス VM リソースの脆弱性の範囲を縮小するため、プライベート IP アドレスのみを使用することをお勧めします。
 
 ### <a name="create-and-configure-the-sql-server-vms"></a>SQL Server VM の作成と構成
-次に、2 つの SQL Server VM と追加のクラスター ノード用 VM の 1 つで合計 3 つの VM を作成します。 それぞれの VM を作成するには、**SQL-HA-RG** リソース グループに戻って **[追加]** をクリックし、適切なギャラリー項目 (**仮想マシン**) を検索して、**[ギャラリーから]** をクリックします。 次の表の情報を使用すると、VM の作成に役立ちます。
+次に、2 つの SQL Server VM と追加のクラスター ノード用 VM の 1 つで合計 3 つの VM を作成します。 それぞれの VM を作成するには、**SQL-HA-RG** リソース グループに戻って **[追加]** をクリックし、適切なギャラリー アイテム (**仮想マシン**) を検索して、**[ギャラリーから]** をクリックします。 次の表の情報を使用すると、VM の作成に役立ちます。
 
 
 | ページ | VM1 | VM2 | VM3 |
 | --- | --- | --- | --- |
-| 適切なギャラリー項目の選択 |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |
+| 適切なギャラリー アイテムの選択 |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |**SQL Server 2016 SP1 Enterprise on Windows Server 2016** |
 | [Virtual machine configuration (仮想マシンの構成)] の **[基本]** |**[名前]** = cluster-fsw<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |**[名前]** = sqlserver-0<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |**[名前]** = sqlserver-1<br/>**[ユーザー名]** = DomainAdmin<br/>**パスワード** = Contoso!0000<br/>**[サブスクリプション]** = 自分のサブスクリプション<br/>**[リソース グループ]** = SQL-HA-RG<br/>**[場所]** = 該当する Azure の場所 |
-| [Virtual machine configuration (仮想マシンの構成)] の **[サイズ]** |**[サイズ]** = DS1\_V2 (1 コア、3.5 GB) |**[サイズ]** = DS2\_V2 (2 コア、7 GB)</br>SSD ストレージをサポートするサイズが必要 (Premium ディスクのサポート )) |**[サイズ]** = DS2\_V2 (2 コア、7 GB) |
+| [Virtual machine configuration (仮想マシンの構成)] の **[サイズ]** |**[サイズ]** = DS1\_V2 (1 vCPU、3.5 GB) |**[サイズ]** = DS2\_V2 (2 vCPU、7 GB)</br>SSD ストレージをサポートするサイズが必要 (Premium ディスクのサポート )) |**[サイズ]** = DS2\_V2 (2 vCPU、7 GB) |
 | [Virtual machine configuration (仮想マシンの構成)] の **[設定]** |**[ストレージ]**: 管理ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**[ストレージ]**: 管理ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |**[ストレージ]**: 管理ディスクを使用。<br/>**[仮想ネットワーク]** = autoHAVNET<br/>**[サブネット]** = sqlsubnet(10.1.1.0/24)<br/>**[パブリック IP アドレス]** 自動的に生成。<br/>**[ネットワーク セキュリティ グループ]** = なし<br/>**[監視診断]** = 有効<br/>**[診断ストレージ アカウント]** = 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = sqlAvailabilitySet<br/> |
 | [Virtual machine configuration (仮想マシンの構成)] の **[SQL Server の設定]** |適用不可 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]**= 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |**[SQL 接続]** = プライベート (仮想ネットワーク内)<br/>**[ポート]** = 1433<br/>**[SQL 認証]** = 無効<br/>**[ストレージの構成]** = 全般<br/>**[自動修正]**= 日曜日 2:00<br/>**[自動バックアップ]** = 無効</br>**[Azure Key Vault の統合]** = 無効 |
 

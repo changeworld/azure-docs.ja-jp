@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/18/2017
+ms.date: 11/16/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 06368cb5084dd49e24c1c25aa8100a7680aacefb
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ae2466bdd3b21984b141c9178ea46bd25bb6357b
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="run-a-containerized-task-in-azure-container-instances"></a>Azure Container Instances でコンテナー化タスクを実行する
 
@@ -35,7 +35,7 @@ Azure Container Instances ではコンテナー デプロイを簡単にすば�
 
 Azure Container Instances でコンテナーを作成する場合、3 つの再起動ポリシー設定のいずれかを指定できます。
 
-| 再起動ポリシー   | Description |
+| 再起動ポリシー   | 説明 |
 | ---------------- | :---------- |
 | `Always` | コンテナー グループ内のコンテナーを常に再起動する。 これは**既定**の設定で、コンテナー作成時に再起動ポリシーが指定されていない場合に適用されます。 |
 | `Never` | コンテナー グループ内のコンテナーを再起動しない。 コンテナーは最大で 1 回実行されます。 |
@@ -147,7 +147,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 
 たとえば、別のコマンドラインを指定することで、このコンテナー例で*ハムレット*以外のテキストを解析できます。 コンテナーで実行される Python スクリプト *wordcount.py* は、引数として URL を受け取り、既定のページではなくそのページのコンテンツを処理します。
 
-たとえば、*ロミオとジュリエット*に含まれる 5 文字の単語の上位 3 つを決定するには、以下のようにします。
+たとえば、"*ロミオとジュリエット*" に含まれる 5 文字の単語の上位 3 つを決定するには、以下のようにします。
 
 ```azurecli-interactive
 az container create \
@@ -172,6 +172,8 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
+### <a name="persist-task-output"></a>タスク出力を保持する
 
 完了まで実行するコンテナーの出力を保存する方法の詳細については、「[Azure Container Instances での Azure ファイル共有のマウント](container-instances-mounting-azure-files-volume.md)」をご覧ください。
 

@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 11/16/2017
 ms.author: juluk
-ms.openlocfilehash: ebf6f1256a280fdff18c0c9060614acf0d4a642b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 08ab3b38e4c1fbeb1fac67c5d1b6f6749f7a0a3e
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
@@ -82,12 +82,12 @@ Cloud Shell の初回起動時に、リソース グループとストレージ 
 [Cloud Shell ストレージ、ファイル共有の更新、ファイルのアップロード/ダウンロードについてはこちらを参照してください。](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>概念
-* Cloud Shell は、ユーザーごとにセッション単位で一時的に提供されるマシン上で実行されます。
+* Cloud Shell は、ユーザーごとにセッション単位で一時的に提供されるホスト上で実行されます。
 * Cloud Shell は、無操作状態で 20 分経過するとタイムアウトとなります。
-* Cloud Shell は、ファイル共有を接続した状態でのみアクセスできます。
+* Cloud Shell では、ファイル共有をマウントする必要があります。
 * Cloud Shell は、Bash と PowerShell の両方に同じファイル共有を使います。
 * Cloud Shell には、ユーザー アカウントごとに 1 台のマシンが割り当てられます。
-* アクセス許可は、標準の Linux ユーザーとして設定されます (Bash)。
+* Bash では、標準の Linux ユーザーとしてアクセス許可が設定されます。
 
 [Cloud Shell の Bash](features.md) と [Cloud Shell (プレビュー) の PowerShell](features-powershell.md) の機能に関する詳細をご覧ください。
 
@@ -102,5 +102,5 @@ Cloud Shell の初回起動時に、リソース グループとストレージ 
 Cloud Shell のホストとなるマシンは無料です。ただし、前提条件として Azure Files 共有をマウントする必要があります。 ストレージのコストは通常どおりに適用されます。
 
 ## <a name="next-steps"></a>次のステップ
-[Cloud Shell (プレビュー) の Bash のクイックスタート](quickstart.md)
-[Cloud Shell (プレビュー) の PowerShell のクイックスタート](quickstart-powershell.md)
+[Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
+[Cloud Shell (プレビュー) での PowerShell のクイックスタート](quickstart-powershell.md)

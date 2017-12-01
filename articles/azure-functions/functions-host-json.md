@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: b3e5976a84e0ec91a41d683a426b58635fd5abd6
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 63e63f69cb6463adcca480eccf1cc485574d9eff
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions の host.json のリファレンス
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 10/18/2017
 }
 ```
 
-|プロパティ  |既定値 | Description |
+|プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
 |batchSize|1,000|集計する要求の最大数。| 
 |flushTimeout|00:00:30|集計する最長期間。| 
@@ -130,7 +130,7 @@ ms.lasthandoff: 10/18/2017
 }
 ```
 
-|プロパティ  |既定値 | Description |
+|プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
 |isEnabled|false|サンプリングを有効または無効にします。| 
 |maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
@@ -139,21 +139,7 @@ ms.lasthandoff: 10/18/2017
 
 [Event Hub トリガーとバインディング](functions-bindings-event-hubs.md)の構成設定。
 
-```json
-{
-    "eventHub": {
-      "maxBatchSize": 64,
-      "prefetchCount": 256,
-      "batchCheckpointFrequency": 1
-    }
-}
-```
-
-|プロパティ  |既定値 | Description |
-|---------|---------|---------| 
-|maxBatchSize|64|受信ループあたりで受信される最大イベント数。|
-|prefetchCount|該当なし|基になる EventProcessorHost に使用される既定の PrefetchCount。| 
-|batchCheckpointFrequency|1|EventHub カーソル チェックポイントを作成する前に処理するイベント バッチ数。| 
+[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
 ## <a name="functions"></a>functions
 
@@ -184,13 +170,13 @@ ms.lasthandoff: 10/18/2017
     "http": {
         "routePrefix": "api",
         "maxOutstandingRequests": 20,
-        "maxConcurrentRequests": 10,
+        "maxConcurrentRequests": 
         "dynamicThrottlesEnabled": false
     }
 }
 ```
 
-|プロパティ  |既定値 | Description |
+|プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
 |routePrefix|api|すべてのルートに適用されるルート プレフィックス。 既定のプレフィックスを削除するには、空の文字列を使用します。 |
 |maxOutstandingRequests|-1|特定の時点で同時に保持される未処理の要求の最大数 (-1 は無制限を示します)。 この制限には、キューに格納され、まだ実行が開始されていない要求と、処理中の実行が含まれます。 この制限を超える受信要求は、429 "Too Busy" 応答で拒否されます。 呼び出し元は、その応答を使用して、時間ベースの再試行戦略を採用できます。 この設定は、ジョブ ホストの実行パス内で発生するキューのみを制御します。 ASP.NET 要求キューなど、他のキューはこの設定の影響を受けません。 |
@@ -226,7 +212,7 @@ ms.lasthandoff: 10/18/2017
 }
 ```
 
-|プロパティ  |既定値 | Description |
+|プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
 |categoryFilter|該当なし|カテゴリ別のフィルターを指定します| 
 |defaultLevel|情報|`categoryLevels` 配列に指定されていないカテゴリの場合、このレベル以上のログを Application Insights に送信します。| 
@@ -248,7 +234,7 @@ ms.lasthandoff: 10/18/2017
 }
 ```
 
-|プロパティ  |既定値 | Description |
+|プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
 |maxPollingInterval|60000|キューのポーリングの最大間隔 (ミリ秒)。| 
 |visibilityTimeout|0|メッセージの処理が失敗したときの再試行間隔。| 
@@ -260,21 +246,7 @@ ms.lasthandoff: 10/18/2017
 
 [Service Bus トリガーとバインディング](functions-bindings-service-bus.md)の構成設定。
 
-```json
-{
-    "serviceBus": {
-      "maxConcurrentCalls": 16,
-      "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
-    }
-}
-```
-
-|プロパティ  |既定値 | Description |
-|---------|---------|---------| 
-|maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 | 
-|prefetchCount|該当なし|基になる MessageReceiver に使用される既定の PrefetchCount。| 
-|autoRenewTimeout|00:05:00|メッセージ ロックが自動的に更新される最大間隔。| 
+[!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
 
 ## <a name="singleton"></a>singleton
 
@@ -291,7 +263,7 @@ ms.lasthandoff: 10/18/2017
 }
 ```
 
-|プロパティ  |既定値 | Description |
+|プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
@@ -312,7 +284,7 @@ ms.lasthandoff: 10/18/2017
 }
 ```
 
-|プロパティ  |既定値 | Description |
+|プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
 |consoleLevel|info|コンソール ログのトレース レベル。 オプションは、`off`、`error`、`warning`、`info`、および `verbose` です。|
 |fileLoggingMode|debugOnly|ファイルのログ記録のトレース レベル。 オプションは、`never`、`always`、`debugOnly` です。| 

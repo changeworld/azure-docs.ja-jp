@@ -1,6 +1,8 @@
 ---
 title: "Azure Time Series Insights の問題を診断して解決する | Microsoft Docs"
 description: "この記事では、Azure Time Series Insights 環境内で発生する可能性がある一般的な問題を診断、トラブルシューティング、および解決する方法について説明します。"
+services: time-series-insights
+ms.service: time-series-insights
 author: venkatgct
 ms.author: venkatja
 manager: jhubbard
@@ -9,11 +11,11 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/15/2017
-ms.openlocfilehash: 4216b245fd480003cfa4a34452f87efade964f8d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 757d37183ad334aca462af59bad261cfa686299e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
@@ -24,7 +26,7 @@ ms.lasthandoff: 11/15/2017
 Azure Time Series Insights は JSON データのみをサポートしています。 JSON のサンプルについては、「[サポートされている JSON 構造](time-series-insights-send-events.md#supported-json-shapes)」を参照してください。
 
 ### <a name="possible-cause-b-event-source-key-is-missing-a-required-permission"></a>考えられる原因 B: イベント ソース キーに必要なアクセス許可がありません。
-* IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
+* IoT Hub の場合は、**サービス接続**アクセス許可を備えたキーを指定する必要があります。
 
    ![IoT Hub のサービス接続アクセス許可](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
