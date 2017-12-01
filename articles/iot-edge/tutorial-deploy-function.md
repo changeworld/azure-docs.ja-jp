@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 34ed5083b952c42d4ed119b6986db965eb9eb67a
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: bfb37ae51400210ef80a0f267b294d1e2e465b76
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure 関数を IoT Edge モジュールとして展開する - プレビュー
 Azure Functions を使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、[Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成した、シミュレートされた IoT Edge デバイスで、センサー データをフィルター処理する Azure 関数を作成および展開します。 このチュートリアルで学習する内容は次のとおりです。     
@@ -41,7 +41,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 
 このチュートリアルでは、Docker と互換性のある任意のレジストリをご利用いただけます。 クラウドで使用できる 2 つの一般的な Docker レジストリ サービスは、**Azure Container Registry** と **Docker Hub** です。
 
-- [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/) は、[有料サブスクリプション](https://azure.microsoft.com/en-us/pricing/details/container-registry/)で使用できます。 このチュートリアルでは、**基本**サブスクリプションで十分です。 
+- [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/) は、[有料サブスクリプション](https://azure.microsoft.com/en-us/pricing/details/container-registry/)で使用できます。 このチュートリアルには**基本**サブスクリプションで十分です。 
 
 - [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags) では、(無料) Docker ID にサインアップしたときに、無料のプライベート リポジトリが提供されます。 
     1. Docker ID にサインアップするには、Docker サイトで「[Register for a Docker ID (Docker ID の登録)](https://docs.docker.com/docker-id/#register-for-a-docker-id)」の手順に従います。 
@@ -129,7 +129,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
             filteredMessage.Properties.Add("MessageType", "Alert");
             // Send the message        
             await output.AddAsync(filteredMessage);
-            log.Info("Received and transfered a message with temperature above the threshold");
+            log.Info("Received and transferred a message with temperature above the threshold");
         }
     }
     ```
@@ -139,9 +139,9 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 ## <a name="publish-a-docker-image"></a>Docker イメージを発行する
 
 1. Docker イメージをビルドします。
-    1. VS Code エクスプローラーで、**Docker** フォルダークリックして開きます。 コンテナー プラットフォームのフォルダー、**linux-x64** または **windows-nano** を選択します。 
-    2. **Dockerfile** ファイルを右クリックし、**[Build IoT Edge module Docker image]\(IoT Edge モジュール Docker イメージをビルド\)** をクリックします。 
-    3. **[フォルダーの選択]** ボックスで、**Docker/linux-x64** フォルダーに移動し、**[Select Folder as EXE_DIR]\(EXE_DIR としてフォルダーを選択\)** をクリックします。 
+    1. VS Code エクスプローラーで **[Docker]** フォルダーをクリックして開きます。 コンテナー プラットフォームのフォルダーとして、**linux-x64** または **windows-nano** を選択します。 
+    2. **[Dockerfile]** ファイルを右クリックし、**[Build IoT Edge module Docker image] (IoT Edge モジュール Docker イメージのビルド)** をクリックします。 
+    3. **[フォルダーの選択]** ボックスでプロジェクト フォルダー **FilterFunction** に移動し、**[Select Folder as EXE_DIR]\(EXE_DIR としてフォルダーを選択\)** をクリックします。 
     4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 たとえば、`<docker registry address>/filterfunction:latest` を入力します。ここで、*docker registry address* は Docker ID (Docker Hub を使用している場合) または `<your registry name>.azurecr.io` のような名前 (Azure Container Registry を使用している場合) です。
  
 4. Docker にサインインします。 統合ターミナルで、次のコマンドを入力します。 
@@ -160,10 +160,10 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
         
         このコマンドで使用するユーザー名、パスワード、ログイン サーバーを見つけるには、Azure Portal (https://portal.azure.com) に移動します。 **[すべてのリソース]** から、Azure Container Registry のタイルをクリックして、プロパティを開き、**[アクセス キー]** をクリックします。 **ユーザー名**、**パスワード**、**ログイン サーバー**の各フィールドの値をコピーします。 ログイン サーバーの形式は `<your registry name>.azurecr.io` です。
 
-3. イメージを Docker リポジトリにプッシュします。 **[表示]、[コマンド パレット]、[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** メニュー コマンドを使用して、VS Code ウィンドウの上部にあるポップアップ テキスト ボックスに、イメージの名前を入力します。 手順 1.c. で使用したイメージ名と同じものを使用してください。
+3. イメージを Docker リポジトリにプッシュします。 **[表示]、[コマンド パレット]、[Edge: Push IoT Edge module Docker image] (Edge: IoT Edge モジュール Docker イメージをプッシュ)** メニュー コマンドを使用して、VS Code ウィンドウの上部にあるポップアップ テキスト ボックスにイメージ名を入力します。 手順 1.c. で使用したイメージ名と同じものを使用してください。
 
 ## <a name="add-registry-credentials-to-your-edge-device"></a>レジストリ資格情報を Edge デバイスに追加する
-Edge デバイスを実行しているコンピューターの Edge ランタイムに、レジストリの資格情報を追加します。 これにより、コンテナーを取得するためのランタイム アクセスが提供されます。 
+Edge デバイスを実行しているコンピューターの Edge ランタイムに、レジストリの資格情報を追加します。 これにより、コンテナーを取得するためのランタイム アクセスが得られます。 
 
 - Windows の場合は、次のコマンドを実行します。
     
@@ -181,9 +181,9 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
 
 1. **Azure Portal** で、IoT ハブに移動します。
 2. **IoT Edge (プレビュー)** に移動し、IoT Edge デバイスを選択します。
-1. **[Set Modules]\(モジュールを設定\)** を選択します。 
+1. **[Set Modules] (モジュールの設定)** を選択します。 
 2. **tempSensor** モジュールを追加します。 この手順は、**tempSensor** モジュールが IoT Edge デバイスに展開されていない場合にのみ必要です。
-    1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選択します。
+    1. **[Add IoT Edge Module] (IoT Edge モジュールの追加)** を選択します。
     2. **[名前]** フィールドに「`tempSensor`」と入力します。
     3. **[イメージの URI]** フィールドに「`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`」と入力します。
     4. 他の設定はそのままにして、**[保存]** をクリックします。
@@ -191,9 +191,9 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
     1. もう一度 **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選択します。
     2. **[名前]** フィールドに「`filterfunction`」と入力します。
     3. **[イメージ]** フィールドに、イメージ アドレスを入力します (`<docker registry address>/filterfunction:latest` など)。
-    74. **[ Save]** をクリックします。
+    74. **[Save]** をクリックします。
 2. **[次へ]** をクリックします。
-3. **ルートの指定**手順で、以下の JSON をテキスト ボックスにコピーします。 モジュールによって、すべてのメッセージが Edge ランタイムに発行されます。 こうしたメッセージがフローする場所は、ランタイムの宣言型ルールによって定義されます。 このチュートリアルでは、2 つのルートが必要です。 1 つ目のルートは、**FilterMessages** ハンドラーで構成された "input1" エンドポイント経由で、温度センサーからフィルター モジュールにメッセージを転送します。 2 つ目のルートは、フィルター モジュールから IoT ハブにメッセージを転送します。 このルートでは、`upstream` は特別な転送先で、Edge Hub に対して、メッセージを IoT ハブに送信するように指示します。 
+3. **[Specify Routes] (ルートの指定)** の手順で、下記の JSON をテキスト ボックスにコピーします。 モジュールによって、すべてのメッセージが Edge ランタイムに発行されます。 こうしたメッセージがフローする場所は、ランタイムの宣言型ルールによって定義されます。 このチュートリアルでは、2 つのルートが必要です。 1 つ目のルートは、**FilterMessages** ハンドラーで構成された "input1" エンドポイント経由で、温度センサーからフィルター モジュールにメッセージを転送します。 2 つ目のルートは、フィルター モジュールから IoT ハブにメッセージを転送します。 このルートでは、`upstream` は特別な転送先で、Edge Hub に対して、メッセージを IoT ハブに送信するように指示します。 
 
     ```json
     {
@@ -205,7 +205,7 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
     ```
 
 4. **[次へ]** をクリックします。
-5. **テンプレートのレビュー**手順で、**[送信]** をクリックします。 
+5. **[Review Template] (テンプレートのレビュー)** の手順で、**[送信]** をクリックします。 
 6. IoT Edge デバイスの詳細ページに戻り、**[更新]** をクリックします。 新しい **filterfunction** モジュールが、**tempSensor** モジュールおよび **IoT Edge ランタイム**と一緒に実行されています。 
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
@@ -218,7 +218,7 @@ IoT Edge デバイスから IoT ハブに送信されたデバイスからクラ
         接続文字列を見つけるには、Azure Portal で IoT ハブのタイルをクリックし、**[共有アクセス ポリシー]** をクリックします。 **[共有アクセス ポリシー]** で、**[iothubowner]** ポリシーをクリックし、**[iothubowner]** ウィンドウで IoT ハブ接続文字列をコピーします。   
 
 1. IoT ハブに届くデータを監視するには、**[表示]、[コマンド パレット]、[IoT: Start monitoring D2C message]\(IoT: D2C メッセージの監視を開始\)** メニュー コマンドを使用します。 
-2. データの監視を停止するには、**[表示]、[コマンド パレット]、[IoT: Stop monitoring D2C message]\(IoT: D2C メッセージの監視を停止\)** メニュー コマンドを使用します。 
+2. データの監視を停止するには、**[表示]、[コマンド パレット]、[IoT: Stop monitoring D2C message] (IoT: D2C メッセージの監視を停止)** メニュー コマンドを使用します。 
 
 ## <a name="next-steps"></a>次のステップ
 

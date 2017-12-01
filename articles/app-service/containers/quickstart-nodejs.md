@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a40dc540884454fed9c374ba1365fdf7b85e4531
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 312ff3d4013c7406a9acd86185ab43a6602c539c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js Web アプリの作成
 
@@ -33,8 +33,8 @@ ms.lasthandoff: 10/27/2017
 
 このクイック スタートを完了するには、以下が必要です。
 
-* [Git をインストールする](https://git-scm.com/)
-* [Node.js および NPM をインストールする](https://nodejs.org/)
+* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
+* <a href="https://nodejs.org/" target="_blank">Node.js および NPM をインストールする</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -78,11 +78,11 @@ Web ブラウザーを開き、`http://localhost:1337` のサンプル アプリ
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app-with-built-in-image"></a>組み込みイメージを使用する Web アプリの作成
+## <a name="create-a-web-app"></a>Web アプリを作成する
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-no-h.md)]
 
-新たに作成された Web アプリに移動します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
+新しく作成された Web アプリに移動します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -142,7 +142,7 @@ Node.js のサンプル コードが、組み込みイメージを使用する W
 
 ## <a name="update-and-redeploy-the-code"></a>コードを更新して再デプロイする
 
-テキスト エディターを使用して、Node.js アプリ内の `index.js` ファイルを開き、`response.end` の呼び出し内のテキストを少し変更します。
+ローカル ディレクトリで、Node.js アプリ内の `index.js` ファイルを開き、`response.end` の呼び出し内のテキストを少し変更します。
 
 ```nodejs
 response.end("Hello Azure!");

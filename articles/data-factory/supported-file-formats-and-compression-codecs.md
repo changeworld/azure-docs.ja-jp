@@ -7,13 +7,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/21/2017
 ms.author: jingwang
-ms.openlocfilehash: f2675a0af82640925b837ae80e751fcab5972321
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e583c6952e02c4a93f56594f6392f1d9a260dce0
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
@@ -29,6 +29,9 @@ ms.lasthandoff: 11/04/2017
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 でサポートされているファイルと圧縮の形式](v1//data-factory-supported-file-and-compression-formats.md)に関する記事をご覧ください。
+
+> [!TIP]
+> コピー アクティビティがソース データをシンクにマッピングする方法を「[コピー アクティビティでのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)」で説明します。ここには、メタデータがファイル形式の設定に基づいて決定される仕組みと、[データセット `structure`](concepts-datasets-linked-services.md#dataset-structure) セクションを指定するときのヒントも含まれています。
 
 ## <a name="text-format"></a>テキスト形式
 

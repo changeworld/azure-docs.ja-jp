@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: c38a69176f5f9e6a8f8dbcc411b85bef47362880
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0302b4f8f4171d288a7e7c62de036c6f1cec8212
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>オンプレミスから Azure へのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
@@ -144,7 +144,8 @@ Traffic Manager | はい | はい
 マルチ NIC | はい | はい
 予約済み IP | あり | あり
 IPv4 | はい | はい
-発信元アドレスを保持 | あり | はい
+発信元アドレスを保持 | あり | あり
+Virtual Networks のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク) | いいえ | いいえ
 
 
 ## <a name="support-for-storage"></a>ストレージのサポート
@@ -187,10 +188,12 @@ LRS | はい | はい
 GRS | はい | はい
 RA-GRS | はい | はい
 クール ストレージ | なし | なし
-ホット ストレージ| なし | なし
+ホット ストレージ| なし | いいえ
+ブロック BLOB | いいえ | なし
 保存時の暗号化 (SSE)| はい | はい
 Premium Storage | はい | はい
 インポート/エクスポート サービス | なし | いいえ
+レプリケーション データの格納に使用するターゲット ストレージ アカウントまたはキャッシュ ストレージ アカウントで構成された Virtual Network のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク) | いいえ | いいえ
 
 
 ## <a name="support-for-azure-compute-configuration"></a>Azure コンピューティング構成のサポート

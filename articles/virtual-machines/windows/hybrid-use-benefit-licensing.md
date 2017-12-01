@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
+ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: 11b491b52fe359427c5e395d5d8c3be3cddcdc89
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c2b406530aec60299ea2db38ad9e34895fe36dcd
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure Hybrid Benefit を使用して、Azure でサポートされるプラットフォームの Windows Server イメージまたはカスタムの Windows イメージから新しい仮想マシンをデプロイできます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/15/2017
 >
 
 > [!NOTE]
-> SQL Server やサードパーティー製マーケットプレース イメージなどの追加ソフトウェアに料金が発生する VM では、Windows Server 向け Azure ハイブリッド特典は現在使用できません。「プロパティ 'LicenseType' の変更は許可されていません」のような 409 エラーが発生した場合は、追加のソフトウェア料金がかかる新しい Windows Server VM に変換しようとしているか、それをデプロイしようとしています。これはそのリージョンではサポートされていない可能性があります。
+> SQL Server やサードパーティー製マーケットプレース イメージなどの追加ソフトウェアに料金が発生する VM では、Windows Server 向け Azure ハイブリッド特典は現在使用できません。「プロパティ 'LicenseType' の変更は許可されていません」のような 409 エラーが発生した場合は、追加のソフトウェア料金がかかる新しい Windows Server VM に変換しようとしているか、それをデプロイしようとしています。これはそのリージョンではサポートされていない可能性があります。 変換を行うポータル構成オプションを検索しようとして、その VM で見つからない場合も同じです。
 >
 
 
@@ -82,6 +82,10 @@ Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
 
 ### <a name="portal"></a>ポータル
 ポータル VM ブレードから、"構成" オプションを選択して Azure ハイブリッド特典を使用するように VM を更新し、"Azure ハイブリッド特典" オプションに切り替えることができます。
+
+> [!NOTE]
+> [構成] に [Azure ハイブリッド特典] を切り替えるオプションが表示されない場合、それは、選択した VM の種類 (たとえば、カスタム イメージから構築された VM や、SQL Sever、Azure Marketplace サード パーティ ソフトウェアなど、追加有料ソフトウェアを含むイメージから構築された VM) では変換がまだサポートされていないためです。
+>
 
 ## <a name="upload-a-windows-server-vhd"></a>Windows Server VHD をアップロードする
 Windows Server VM を Azure にデプロイするには、先に Windows の基本ビルドを含む VHD を作成する必要があります。 この VHD は、Sysprep を使用して適切に準備した後、Azure にアップロードする必要があります。 [VHD 要件と Sysprep プロセスの詳細](upload-generalized-managed.md)や「[Sysprep Support for Server Role (サーバー ロールに対する Sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。 Sysprep を実行する前に、VM をバックアップします。 
@@ -180,12 +184,14 @@ foreach ($vm in $vms) {"VM Name: " + $vm.Name, "   Azure Hybrid Benefit for Wind
 [仮想マシン スケール セットを作成して展開](#https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create)し、LicenseType プロパティを設定することもできます
 
 ## <a name="next-steps"></a>次のステップ
-[Azure ハイブリッド特典でお金を節約する方法](https://azure.microsoft.com/pricing/hybrid-use-benefit/)について確認します。
+[Azure ハイブリッド特典でコストを削減する方法](https://azure.microsoft.com/pricing/hybrid-use-benefit/)について詳しく読みます
 
-[Windows Server 向け Azure ハイブリッド特典のライセンスの詳しいガイダンス](http://go.microsoft.com/fwlink/?LinkId=859786)を確認します。
+[Windows Server 向け Azure ハイブリッド特典のライセンスの詳しいガイダンス](https://docs.microsoft.com/en-us/windows-server/get-started/azure-hybrid-benefit)を確認します。
 
-[Resource Manager テンプレートの使用方法](../../azure-resource-manager/resource-group-overview.md)の詳細を参照します。
+[Resource Manager テンプレートの使用方法](../../azure-resource-manager/resource-group-overview.md)の詳細を確認します
 
-[Windows Server 向け Azure Hybrid Benefit と Azure Site Recovery によって、Azure へのアプリケーションの移行のコスト効率を高める方法](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)の詳細を参照します。
+[Windows Server 向け Azure ハイブリッド特典と Azure Site Recovery によって、Azure へのアプリケーションの移行のコスト効率を高める方法](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)の詳細を確認します
+
+[マルチテナント ホスティング権限を使用した Azure 上の Windows 10](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) について確認します
 
 [よく寄せられる質問](#https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/faq/)を参照します

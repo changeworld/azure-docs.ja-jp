@@ -12,13 +12,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.author: mimig
-ms.openlocfilehash: 0900ec1931cc622339133393b72b558076a42710
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1c64401a7d0ccfa12232b04cfd57e6beaa1dbca8
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>クイックスタート: Python と Azure Cosmos DB で Table API アプリを構築する
 
@@ -38,6 +38,10 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 * Python 2.7 ([python.org](https://www.python.org/downloads/release/python-2712/) から入手できます)
 
 ## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+
+> [!IMPORTANT] 
+> 新しいテーブル API アカウントを作成して一般公開のテーブル API SDK を操作する必要があります。 プレビュー期間中に作成されたテーブル API アカウントは、一般公開の SDK ではサポートされません。
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -82,9 +86,15 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 1. [Azure Portal](http://portal.azure.com/) で **[接続文字列]** をクリックします。 
 
-    ![[接続文字列] ウィンドウで [接続文字列] を確認してコピーする](./media/create-table-python/connection-string.png)
+    ![[接続文字列] ウィンドウで接続文字列を確認してコピーする](./media/create-table-python/connection-string.png)
 
-2. config.py ファイルを開き、必要な接続文字列プロパティを構成ファイルにコピーします。
+2. 右側のボタンを使って、アカウント名をコピーします。
+
+3. config.py ファイルを開き、ポータルのアカウント名を 19 行目の STORAGE_ACCOUNT_NAME 値に貼り付けます。
+
+4. ポータルに戻り、主キーをコピーします。
+
+5. ポータルの主キーを 20 行目の STORAGE_ACCOUNT_KEY 値に貼り付けます。
 
 3. config.py ファイルを保存します。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.openlocfilehash: fa7c1e4435106d0fc25cb7f77f195eb48705772d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 155debf5fea4439c8273d2518856952fbf0f871a
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>特定のラボ ポリシーに対するアクセス許可をユーザーに付与する
 ## <a name="overview"></a>Overview
@@ -87,9 +87,9 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
 ## <a name="next-steps"></a>次のステップ
 特定のラボ ポリシーに対するアクセス許可をユーザーに付与した後で実行する手順として、以下のようなものがあります。
 
-* [ラボへのアクセスをセキュリティで保護します](devtest-lab-add-devtest-user.md)。
-* [ラボのポリシーを設定します](devtest-lab-set-lab-policy.md)。
-* [ラボ テンプレートを作成します](devtest-lab-create-template.md)。
-* [VM のカスタム アーティファクトを作成します](devtest-lab-artifact-author.md)。
-* [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
+* [ラボへのアクセスをセキュリティで保護する](devtest-lab-add-devtest-user.md)
+* [ラボのポリシーを設定する](devtest-lab-set-lab-policy.md)
+* [ラボ テンプレートを作成する](devtest-lab-create-template.md)
+* [VM のカスタム アーティファクトを作成する](devtest-lab-artifact-author.md)
+* [VM をラボに追加する](devtest-lab-add-vm.md)
 

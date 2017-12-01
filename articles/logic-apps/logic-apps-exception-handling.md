@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 9af2f71b3d288cc6f4e271d0915545d43a1249bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4eb6f743479886374692eadcf218b77b4bfcc933
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -26,38 +26,74 @@ Azure Logic Apps には、安定した統合を実現すると共に障害から
 
 ## <a name="retry-policies"></a>再試行ポリシー
 
-例外とエラーを処理するうえで最も基本的な方法が再試行ポリシーです。 最初の要求がタイムアウトになるか失敗した場合 (要求への応答として 429 または 5xx が返された場合) にアクションを再試行するかどうかは、このポリシーによって定義されます。 すべてのアクションは、既定により 20 秒間隔で 4 回再試行されます。 つまり最初の要求で `500 Internal Server Error` 応答が返された場合は、ワークフロー エンジンによって 20 秒間の一時停止後に要求が再試行されます。 すべての再試行を終えても例外またはエラーが返される場合、ワークフローは続行され、そのアクションの状態は `Failed` としてマークされます。
+例外とエラーを処理するうえで最も基本的な方法が再試行ポリシーです。 最初の要求がタイムアウトになるか失敗した場合 (要求への応答として 429 または 5xx が返された場合)、このポリシーで、アクションを再試行するかどうかとその方法を定義します。 再試行ポリシーには、`exponential`、`fixed`、`none` の 3 つの種類があります。 再試行ポリシーがワークフロー定義で提供されていない場合、既定のポリシーが使用されます。 再試行ポリシーを特定のアクションの **inputs** で構成するか、再試行可能な場合にトリガーできます。 同様に、ロジック アプリ デザイナーで、所定のブロックの **[設定]** で再試行ポリシーを構成できます (該当する場合)。
 
-再試行ポリシーは、特定のアクションの **inputs** で構成できます。 たとえば、1 時間間隔で 4 回試行するように再試行ポリシーを構成できます。 inputs プロパティの詳細については、「[Workflow Actions and Triggers (ワークフローのアクションとトリガー)][retryPolicyMSDN]」を参照してください。
+再試行ポリシーの制限事項については「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)」をご覧になり、サポートされている構文の詳細については、「[Workflow Actions and Triggers (ワークフローのアクションとトリガー)][retryPolicyMSDN]」の再試行ポリシーに関するセクションを参照してください。
+
+### <a name="exponential-interval"></a>指数関数的な間隔
+`exponential` ポリシーの種類は、指数関数的に増える範囲におけるランダムな時間間隔後に、失敗した要求を再試行します。 各々の再試行は、**minimumInterval** より大きく **maximumInterval** より小さいランダムな間隔で送信されることが保証されています。 各々の再試行について、下記の範囲で決まったランダム変数が、**count** の数まで生成されます。
+<table>
+<tr><th> ランダム変数範囲 </th></tr>
+<tr><td>
+
+| 再試行回数 | 最小間隔 | 最大間隔 |
+| ------------ |  ------------ |  ------------ |
+| 1 | Max(0, **minimumInterval**) | Min(interval, **maximumInterval**) |
+| 2 | Max(interval, **minimumInterval**) | Min(2 * interval, **maximumInterval**) |
+| 3 | Max(2*interval, **minimumInterval**) | Min(4 * interval, **maximumInterval**) |
+| 4 | Max(4 * interval, **minimumInterval**) | Min(8 * interval, **maximumInterval**) |
+| ... |
+
+</td></tr></table>
+
+`exponential` 種類のポリシーには、**count** および **interval** が必要ですが、**minimumInterval** および **maximumInterval** は必要に応じてそれぞれ PT5S および PT1D の既定値を上書きするために指定できます。
+
+| 要素名 | 必須 | 型 | 説明 |
+| ------------ | -------- | ---- | ----------- |
+| type | あり | String | `exponential` |
+| count | あり | 整数 | 再試行の回数で、1 - 90 でなければいけない  |
+| interval | あり | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) の再試行の間隔で、PT5S と PT1D の間でなければいけない |
+| minimumInterval | いいえ| String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) の再試行の最小間隔で、PT5S と **interval** の間でなければいけない |
+| maximumInterval | いいえ| String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) の再試行の最小間隔で、**interval** と PT1D の間でなければいけない |
+
+### <a name="fixed-interval"></a>固定間隔
+
+`fixed` ポリシーの種類は、次の要求を送信する前に指定された時間間隔を待機することで、失敗した要求を再試行します。
+
+| 要素名 | 必須 | 型 | 説明 |
+| ------------ | -------- | ---- | ----------- |
+| type | あり | String | `fixed`|
+| count | あり | 整数 | 再試行の回数で、1 - 90 でなければいけない |
+| interval | あり | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) の再試行の間隔で、PT5S と PT1D の間でなければいけない |
+
+### <a name="none"></a>なし
+`none` ポリシーの種類は失敗した要求を再試行しません。
+
+| 要素名 | 必須 | 型 | 説明 |
+| ------------ | -------- | ---- | ----------- |
+| type | あり | String | `none`|
+
+### <a name="default"></a>既定値
+再試行ポリシーが定義されていない場合は、既定のポリシーが使われます。 既定のポリシーは指数関数的な間隔ポリシーで、7.5 秒で測定され 5 - 45 秒に制限される指数関数的に増加する間隔で、最大 4 回まで再試行を送信します。 この既定のポリシー (**retryPolicy** が定義されていない場合に使用される) は、この HTTP ワークフロー定義例のポリシーに相当します。
 
 ```json
-"retryPolicy" : {
-      "type": "<type-of-retry-policy>",
-      "interval": <retry-interval>,
-      "count": <number-of-retry-attempts>
-    }
-```
-
-HTTP アクションの再試行回数を 4 回とし、試行までの待ち時間を 10 分とする場合は、次の定義を使用します。
-
-```json
-"HTTP": 
+"HTTP":
 {
     "inputs": {
         "method": "GET",
         "uri": "http://myAPIendpoint/api/action",
         "retryPolicy" : {
-            "type": "fixed",
-            "interval": "PT10M",
-            "count": 4
+            "type": "exponential",
+            "count": 4,
+            "interval": "PT7.5S",
+            "minimumInterval": "PT5S",
+            "maximumInterval": "PT45S"
         }
     },
     "runAfter": {},
     "type": "Http"
 }
 ```
-
-サポートされている構文の詳細については、「[Workflow Actions and Triggers (ワークフローのアクションとトリガー)][retryPolicyMSDN]」の再試行ポリシーに関するセクションを参照してください。
 
 ## <a name="catch-failures-with-the-runafter-property"></a>RunAfter プロパティによるエラーのキャッチ
 

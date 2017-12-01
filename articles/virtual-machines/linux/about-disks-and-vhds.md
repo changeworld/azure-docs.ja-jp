@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure Linux VM 用のディスクと VHD について | Microsoft Docs"
-description: "Azure での Linux 仮想マシン用のディスクと VHD の基本について説明します。"
+title: "Microsoft Azure Linux VM 用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージについて | Microsoft Docs"
+description: "Azure での Linux 仮想マシン用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージの基本について説明します。"
 services: storage
 documentationcenter: 
 author: robinsh
@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: be5f09af275142590ec6ade02562e914d5726e08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fee78c87c1d73f2a0816d6e52ad48a93eef8dfc3
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
-# <a name="about-disks-and-vhds-for-azure-linux-vms"></a>Azure Linux VM 用のディスクと VHD について
+# <a name="about-disks-storage-for-azure-linux-vms"></a>Azure Linux VM 用のディスク ストレージについて
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Linux オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は実際に仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
 
 この記事では、ディスクのさまざまな使用方法について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Windows 仮想マシン](../windows/about-disks-and-vhds.md)にも利用できます。
@@ -59,6 +59,6 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 ## <a name="next-steps"></a>次のステップ
 * [ディスクのアタッチ](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) による VM 用のストレージの追加。
-* 冗長性を持たせるための[ソフトウェア RAID の構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 追加の VM を短時間でデプロイできるようにするための [Linux 仮想マシンのキャプチャ](./classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)。
+* [スナップショットの作成](snapshot-copy-managed-disk.md)。
+* [管理ディスクへの変換](convert-unmanaged-to-managed-disks.md)。
 

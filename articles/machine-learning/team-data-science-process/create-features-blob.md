@@ -4,7 +4,7 @@ description: "Pandas Python パッケージを使用して Azure BLOB コンテ�
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 676b5fb0-4c89-4516-b3a8-e78ae3ca078d
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/21/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: ea6712fcedcc61c9f88e9daa8d576ac3d202da51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2e64927f4afca87642fb4829166c5ec60dbc09
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Pandas を使用して Azure BLOB ストレージ データの特徴を作成する
 このドキュメントでは、 [Pandas](http://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータの特徴を作成する方法について説明します。 まず Panda データ フレームにデータを読み込む方法を概説し、その後、Python スクリプトからインジケーター値を使用してカテゴリ特徴を生成し、特徴をビン分割する方法について説明します。
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 この記事は、Azure Blob Storage アカウントが作成済みで、そこにデータが格納されていることを前提とします。 アカウントの設定方法については、「[Azure Storage アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Pandas データ フレームにデータを読み込む
-データセットを探索および操作するには、データを BLOB ソースからローカル ファイルにダウンロードする必要があります。このローカル ファイルは、Pandas データ フレームに読み込むことができます。 この手順に必要な操作は次のとおりです。
+データセットを探索および操作するには、BLOB ソースからローカル ファイルにダウンロードします。 次に、それを Pandas データ フレームに読み込みます。 この手順に必要な操作は次のとおりです。
 
 1. BLOB サービスを使用する次の Python のサンプル コードによって、Azure BLOB からデータをダウンロードします。 次のコードの変数を、実際の値に置き換えます。
    
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="blob-featuregen"></a>特徴の生成
 次の 2 つのセクションでは、Python スクリプトを使用して、インジケーター値を持つカテゴリ特徴を生成し、特徴をビン分割する方法について説明します。
 
-### <a name="blob-countfeature"></a>
+### <a name="blob-countfeature"></a>インジケーター値ベースの特徴の生成
 カテゴリの特徴は、次のように作成できます。
 
 1. カテゴリの列の分布を検査します。
@@ -94,7 +94,7 @@ ms.lasthandoff: 10/11/2017
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
 ## <a name="sql-featuregen"></a>Azure BLOB にデータを書き戻して Azure Machine Learning で使用する
-データを探索して必要な特徴を作成したら、次の手順を使用して、Azure BLOB に (サンプリングまたは特徴を生成した) データをアップロードして Azure Machine Learning で使用します。Azure Machine Learning Studio でも、追加の特徴を作成できます。
+探索、サンプリング、および特徴化したデータを Azure Machine Learning でデータを使用するには、そのデータを Azure BLOB にアップロードします。 Azure Machine Learning Studio で追加の特徴を作成することもできます。 次の手順は、データをアップロードする方法を示しています。
 
 1. ローカル ファイルへのデータ フレームの書き込み
    
@@ -120,7 +120,7 @@ ms.lasthandoff: 10/11/2017
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. これで、次の画面に示すように、Azure Machine Learning の [データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) モジュールを使用して BLOB からデータを読み取ることができます。
+3. これで、次のスクリーンショットに示すように、Azure Machine Learning の[データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) モジュールを使用して BLOB からデータを読み取ることができます。
 
 ![リーダー BLOB](./media/data-blob/reader_blob.png)
 

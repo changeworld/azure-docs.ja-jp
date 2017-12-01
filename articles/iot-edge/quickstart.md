@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e10b5dba6f91c97a5c6b71aee76eef062a8be82c
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 17675f870a015e86f98bf286a9b1c2bbc05c16cd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Windows デバイスに展開する - プレビュー
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="create-an-iot-hub-with-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
-IoT ハブを Azure サブスクリプションで作成します。 このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブが既に作成済みの場合は、このセクションをスキップして「[IoT Edge デバイスを登録する][anchor-register]」に進むことができます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。 
+IoT ハブを Azure サブスクリプションで作成します。 このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、このセクションをスキップして「[IoT Edge デバイスを登録する][anchor-register]」に進むことができます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。 
 
 1. [Azure Portal][lnk-portal] にサインインします。 
 1. **[Cloud Shell]** ボタンを選択します。 
@@ -94,6 +94,8 @@ Docker を調べて、IoT Edge エージェントがモジュールとして実�
 docker ps
 ```
 
+![Docker で edgeAgent を確認する](./media/tutorial-simulate-device-windows/docker-ps.png)
+
 ## <a name="deploy-a-module"></a>モジュールを展開する
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
@@ -102,11 +104,21 @@ docker ps
 
 このクイック スタートでは、新しい IoT Edge デバイスを作成し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure Portal を使用して、IoT Edge モジュールをプッシュし、デバイス自体を変更せずにモジュールをデバイスで実行しました。 この場合は、プッシュしたモジュールによって、チュートリアルで使用できる環境データが作成されます。 
 
-tempSensor モジュールから送信されているメッセージを確認します。
+シミュレーション対象デバイスを実行するコンピューターで、コマンド プロンプトを再度開きます。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。 
 
-```cmd/sh
+```cmd
+docker ps
+```
+
+![ご利用のデバイスで 3 つのモジュールを表示する](./media/tutorial-simulate-device-windows/docker-ps2.png)
+
+tempSensor モジュールからクラウドに送信されているメッセージを確認します。 
+
+```cmd
 docker logs -f tempSensor
 ```
+
+![ご利用のデバイスのデータを表示する](./media/tutorial-simulate-device-windows/docker-logs.png)
 
 また、[IoT Hub エクスプローラー ツール][lnk-iothub-explorer]を使用して、デバイスが送信しているテレメトリを表示することもできます。 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
@@ -138,6 +150,7 @@ IoT Edge モジュールを IoT Edge デバイスに展開する方法につい�
 [lnk-portal]: https://portal.azure.com
 [lnk-nested]: https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization
 [lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az_iot_hub_delete
+[lnk-install-iotcore]: how-to-install-iot-core.md
 
 <!-- Anchor links -->
 [anchor-register]: #register-an-iot-edge-device

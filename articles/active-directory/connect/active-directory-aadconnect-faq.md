@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: billmath
-ms.openlocfilehash: f1314b05d7471b6251de2173dc590bdebdafb476
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d11795aa8b768a8574c3f8bc375b74402825ba3
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect についてよく寄せられる質問
 
@@ -43,8 +43,14 @@ ms.lasthandoff: 10/11/2017
 **Q: SLD (シングル ラベル ドメイン) はサポートされていますか。**  
 いいえ、Azure AD Connect は、SLD を使用するオンプレミスのフォレスト/ドメインはサポートしていません。
 
+**Q: 切り離された AD ドメインを持つフォレストはサポートされますか。**  
+いいえ、Azure AD Connect は、切り離された名前空間を持つオンプレミスのフォレストはサポートしていません。
+
 **Q: 「ドット形式」の NetBios 名はサポートされていますか。**  
 いいえ、Azure AD Connect では、NetBios 名にピリオド (.) が含まれているオンプレミスのフォレスト/ドメインはサポートしていません。
+
+**Q: 純粋な IPv6 環境はサポートされますか。**  
+いいえ、Azure AD Connect は、純粋な IPv6 環境はサポートしていません。
 
 ## <a name="federation"></a>フェデレーション
 **Q: Office 365 の証明書を更新するように求める電子メールを受け取った場合はどうすればいいですか。**  

@@ -13,24 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 6e65af68dcd2306aabda65efdf8fe056c0d9b4a4
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 31ffd31b5d540617c4a7a1224e6cf0ee656c9678
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 SQL Server リソースプロバイダー アダプターを使用して、SQL データベースを [Azure Stack](azure-stack-poc.md) のサービスとして公開します。 リソースプロバイダーをインストールして 1 つまたは複数の SQL Server インスタンスに接続すると、御社および御社のユーザーは次のものを作成できます。
-- クラウド ネイティブ アプリ向けデータベース
+- クラウドネイティブ アプリ向けデータベース
 - SQL に基づいた Web サイト
 - SQL に基づいたワークロード。SQL Server をホストする仮想マシン (VM) を毎回プロビジョニングする必要はありません。
 
 リソース プロバイダーでは、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) のすべてのデータベース管理機能がサポートされるわけではありません。 たとえば、エラスティック データベース プールと、データベースのパフォーマンスを自動的に増減する機能は使用できません。 ただし、リソース プロバイダーでは、同様の作成、読み取り、更新、および削除 (CRUD) 操作がサポートされます。 API は、SQL DB と互換性がありません。
 
-## <a name="sql-server-resource-provider-adapter-architecture"></a>SQL Server リソース プロバイダー アダプターのアーキテクチャ
+## <a name="sql-resource-provider-adapter-architecture"></a>SQL リソースプロバイダー アダプターのアーキテクチャ
 リソース プロバイダーは、次の 3 つのコンポーネントで構成されています。
 
 - **SQL リソース プロバイダー アダプター VM**。これはプロバイダー サービスを実行する Windows 仮想マシンです。
@@ -50,6 +50,9 @@ SQL Server リソースプロバイダー アダプターを使用して、SQL �
     b. マルチノードのシステムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。
 
 3. [SQL リソースプロバイダー バイナリ ファイルをダウンロード](https://aka.ms/azurestacksqlrp)し、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。
+
+    > [!NOTE]
+    > Azure Stack ビルド 20170928.3 以前で実行している場合、[このバージョンをダウンロード](https://aka.ms/azurestacksqlrp1709)します。
 
 4. Azure Stack のルート証明書は、特権エンドポイントから取得されます。 ASDK には、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 
@@ -85,8 +88,12 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
 $domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
 # Point to the directory where the RP installation files were extracted
 $tempDir = 'C:\TEMP\SQLRP'
 
@@ -108,13 +115,18 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 # Change directory to the folder where you extracted the installation files
 # and adjust the endpoints
-.$tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -CloudAdminCredential $cloudAdminCreds -PrivilegedEndpoint '10.10.10.10' -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert
+. $tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert
  ```
 
 ### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 パラメーター
 これらのパラメーターはコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
 
-| パラメーター名 | Description | コメントまたは既定値 |
+| パラメーター名 | 説明 | コメントまたは既定値 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報です。 | _必須_ |
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報を指定します。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
@@ -141,27 +153,25 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
       ![SQL RP のデプロイの確認](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
 
 
-
-
-
-## <a name="removing-the-sql-adapter-resource-provider"></a>SQL アダプター リソース プロバイダーの削除
+## <a name="remove-the-sql-resource-provider-adapter"></a>SQL リソースプロバイダー アダプターを削除する
 
 リソース プロバイダーを削除するには、最初に依存関係を削除することが重要です。
 
-1. このバージョンのリソース プロバイダーに対してダウンロードした元のデプロイ パッケージがあることを確認します。
+1. このバージョンの SQL リソースプロバイダー アダプターに対してダウンロードした元のデプロイ パッケージがあることを確認します。
 
 2. すべてのユーザー データベースをリソースプロバイダーから削除する必要があります (データは削除されません)。 これは、ユーザー自身で実行する必要があります。
 
-3. 管理者は、SQL アダプターからホスティング サーバーを削除する必要があります
+3. 管理者は、SQL リソースプロバイダー アダプターからホスティング サーバーを削除する必要があります
 
-4. 管理者は、SQL アダプターを参照するプランをすべて削除する必要があります。
+4. 管理者は、SQL リソースプロバイダー アダプターを参照するプランをすべて削除する必要があります。
 
-5. 管理者は、SQL アダプターに関連付けられている SKU とクォータをすべて削除する必要があります。
+5. 管理者は、SQL リソースプロバイダー アダプターに関連付けられている SKU とクォータをすべて削除する必要があります。
 
 6. -Uninstall パラメーター、Azure Resource Manager エンドポイント、DirectoryTenantID、サービス管理者アカウントの資格情報を指定してデプロイ スクリプトを再実行します。
 
 
 ## <a name="next-steps"></a>次のステップ
 
+[ホスティング サーバーを追加](azure-stack-sql-resource-provider-hosting-servers.md)し、[データベースを作成](azure-stack-sql-resource-provider-databases.md)します。
 
 [MySQL Server リソース プロバイダー](azure-stack-mysql-resource-provider-deploy.md)や [App Services リソース プロバイダー](azure-stack-app-service-overview.md)のような他の [PaaS サービス](azure-stack-tools-paas-services.md)を試します。

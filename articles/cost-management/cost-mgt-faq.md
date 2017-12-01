@@ -5,19 +5,18 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/23/2017
+ms.date: 11/21/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: a01d8d1ed0f5234f4950d448b54087767353c8ef
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 043aea81258d96fc6598903f9b523f29a5bf2c15
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
-
 
 この記事では、Azure Cost Management についてよく寄せられる質問にお応えします (Cloudyn とも呼ばれます)。 Cost Management について質問がある場合は、「[FAQs for Azure Cost Management by Cloudyn (Azure Cost Management by Cloudyn に関する FAQ)](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn)」で質問してください。
 
@@ -125,3 +124,16 @@ Azure から Cloudyn へのデータの送信が遅延した場合、データ�
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>直接 CSP が間接 CSP のお客様やパートナーの Cloudyn のアクセスを構成するにはどうすればよいですか
 
 手順については、「[Cloudyn で間接 CSP アクセスを構成する](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn)」をご覧ください。
+
+## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>オプティマイザーのメニュー項目はどのようにしたら表示されますか
+
+Azure Resource Manager アクセスを追加し、データが収集されると、**オプティマイザー** オプションが表示されます。 Azure Resource Manager アクセスをアクティブにするには、「[Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください](#how-do-i-activate-unactivated-accounts-with-azure-credentials)」を参照してください
+
+## <a name="is-cost-managementcloudyn-agent-based"></a>Cost Management/Cloudyn エージェントがベースになっていますか
+
+
+いいえ。 エージェントは使用されていません。 VM の Azure 仮想マシンのメトリック データは、Microsoft Insights API から収集されます。 Azure VM からメトリック データを収集する場合は、診断設定を有効にする必要があります。
+
+## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn レポートでは、レポートあたり複数の AD テナントが表示されますか
+
+はい。 自身の AD テナントごとに[対応するクラウド アカウント エンティティを作成](tutorial-user-access.md#create-entities)できます。 その後、すべての Azure AD テナント データと、アマゾン ウェブ サービス、Google Cloud Platform など、他のクラウド プラットフォーム プロバイダーを表示できます。

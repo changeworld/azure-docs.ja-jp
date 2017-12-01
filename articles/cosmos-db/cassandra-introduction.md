@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 23909c65499697be66fc2d2f43c6d0bd8a02b614
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: fe911b69278021262f1d90f2157bb78ca48db0db
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Azure Cosmos DB の Apache Cassandra API の概要
 
@@ -36,11 +36,14 @@ Azure Cosmos DB を [Apache Cassandra](https://cassandra.apache.org/) 向けに�
 
 ![Azure Cosmos DB の Cassandra API](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-Cassandra API を使用すると、使い慣れた Cassandra クエリ言語ベースのツール (CQLSH など) と Cassandra クライアント ドライバーで、Azure Cosmos DB に格納されたデータを操作できます。
+Cassandra API を使用すると、使い慣れた Cassandra クエリ言語ベースのツール (CQLSH など) と Cassandra クライアント ドライバーで、Azure Cosmos DB に格納されたデータを操作できます。 プリンシパル エンジニアリング マネージャー Kirill Gavrylyuk による次の Microsoft Mechanics のビデオで詳細をご覧ください。
+
+> [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
+>
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Apache Cassandra API を使用するメリット
 
-**操作の管理が不要**: Cassandra API 管理者は、真の完全管理型サービスである Azure Cosmos DB により、OS、JVM、および yaml ファイルの他種多様な設定やその相互作用の管理または監視について心配する必要がありません。 Azure Cosmos DB には、スループット、待機時間、ストレージと可用性、および構成可能なアラートの監視機能が用意されています。 
+**操作の管理が不要**: Cassandra API 管理者は、真の完全管理型サービスである Azure Cosmos DB により、OS、JVM、および yaml ファイルの多種多様な設定やその相互作用の管理または監視について心配する必要がありません。 Azure Cosmos DB には、スループット、待機時間、ストレージと可用性、および構成可能なアラートの監視機能が用意されています。 
 
 **パフォーマンス管理**: Azure Cosmos DB では、SLA により、99 パーセンタイルで低待機時間の読み取りと書き込みが提供されます。 ユーザーは大きな運用上のオーバーヘッドについて心配せずに、適切な読み取りと書き込み SLA を提供できます。 これには、通常、圧縮のスケジュール設定、廃棄標識の管理、ブルーム フィルター設定、およびレプリカ ラグが含まれます。 Azure Cosmos DB により、こうした問題の管理について心配しなくてもよくなり、アプリケーションの成果物に集中できます。
 
@@ -56,17 +59,34 @@ Cassandra API を使用すると、使い慣れた Cassandra クエリ言語ベ�
 
 **エンタープライズ グレード**: セキュリティによる保護とコンプライアンスへの準拠が既定で確保されています。Azure Cosmos DB の[コンプライアンス認定](https://www.microsoft.com/trustcenter)によって、ユーザーはコンプライアンスの問題について気にせずにプラットフォームを使用できます。 また、Azure Cosmos DB には、保存時および移動時の暗号化、IP ファイアウォール、およびコントロール プレーン アクティビティの監査ログも用意されています。  
 
+<a id="sign-up-now"></a>
+## <a name="sign-up-now"></a>今すぐサインアップ 
+
+Azure サブスクリプションを既にお持ちの場合は、[Azure Portal](https://aka.ms/cosmosdb-cassandra-signup) で Cassandra API (プレビュー) プログラムにサインアップして参加できます。  Azure を利用するのが初めての場合は、[無料試用版](https://azure.microsoft.com/free)に新規登録してください。Azure Cosmos DB に 12 か月間無料でアクセスできます。 次の手順を実行して、Cassandra API (プレビュー) プログラムへのアクセスを要求します。
+
+1. [Azure portal](https://portal.azure.com) で、**[新規]** > **[データベース]** > **[Azure Cosmos DB]** の順にクリックします。 
+
+2. [新しいアカウント] ページの API ボックスで、**[Cassandra]** を選択します。 
+
+3. **[サブスクリプション]** ボックスで、このアカウントに使用する Azure サブスクリプションを選択します。
+
+4. **[今すぐプレビューにサインアップ]** をクリックします。
+
+    ![Azure Cosmos DB の Cassandra API](./media/cassandra-introduction/cassandra-sign-up.png)
+
+3. [今すぐプレビューにサインアップ] ウィンドウで、**[OK]** をクリックします。 
+
+    要求を送信すると、[新しいアカウント] ウィンドウの状態が **[承認待ち]** に変わります。 
+
+要求を送信した後、要求が承認されたことを知らせる電子メール通知を待ちます。 大量の要求があるため、通知の受信には 1 週間ほどかかることがあります。 要求を行うためにサポート チケットを作成する必要はありません。 要求は受信された順序で確認されます。 
+
 ## <a name="how-to-get-started"></a>ファースト ステップ
-Cassandra API のクイック スタートに従って、Azure Cosmos DB の Cassandra API アカウントを作成し、Cassandra アプリを作成します。
+プレビュー プログラムに参加できたら、次の 各 Cassandra API クイック スタートに従って、Cassandra API を使用してアプリを作成します。
 
 * [クイック スタート: Node.js と Azure Cosmos DB で Cassandra Web アプリを構築する](create-cassandra-nodejs.md)
 * [クイック スタート: Java と Azure Cosmos DB で Cassandra Web アプリを構築する](create-cassandra-java.md)
 * [クイック スタート: .NET と Azure Cosmos DB で Cassandra Web アプリを構築する](create-cassandra-dotnet.md)
 * [クイック スタート: Python と Azure Cosmos DB で Cassandra Web アプリを構築する](create-cassandra-python.md)
-
-## <a name="sign-up-now"></a>今すぐサインアップ 
-
-Azure サブスクリプションを既にお持ちの場合は、[Azure Portal](https://aka.ms/cosmosdb-cassandra-signup) で Cassandra API (プレビュー) にサインアップできます。 Azure を利用するのが初めての場合は、[無料試用版](https://azure.microsoft.com/free)に新規登録してください。Azure Cosmos DB に 12 か月間無料でアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 

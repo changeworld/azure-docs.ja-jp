@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: cd13ecf50cf03c362f8da2da83ab698c4e8ba0cc
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 83a1ba0b97c0617884b1645ad54e259f04052f49
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Azure Portal によるデバイスの管理
 
@@ -32,7 +32,30 @@ Azure Active Directory (Azure AD) のデバイス管理を使用して、ユー�
 
 - Azure Portal を使用してデバイスを管理する方法について説明します
 
+## <a name="manage-devices"></a>デバイスを管理する 
 
+Azure Portal は、お客様のデバイスを一元的に管理する場所を提供します。 この場所に移動するには、[直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用するか、または次の手動の手順に従います。
+
+1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
+
+2. 左側のナビゲーション バーで、**[Active Directory]** をクリックします。
+
+    ![デバイス設定の構成](./media/device-management-azure-portal/01.png)
+
+3. **[管理]** セクションで、**[デバイス]** をクリックします。
+
+    ![デバイス設定の構成](./media/device-management-azure-portal/11.png)
+ 
+**[デバイス]** ページでは、次の操作が可能です。
+
+- デバイス管理設定の構成
+
+- デバイスの検索
+
+- デバイス管理タスクの実行
+
+- デバイス管理に関連する監査ログの確認  
+  
 
 ## <a name="configure-device-settings"></a>デバイス設定の構成
 

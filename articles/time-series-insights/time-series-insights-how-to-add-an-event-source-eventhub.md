@@ -1,5 +1,5 @@
 ---
-title: "Azure Time Series Insights 環境にイベント ハブ イベント ソースを追加する方法 | Microsoft Docs"
+title: "Azure Time Series Insights に Event Hub イベント ソースを追加する方法 | Microsoft Docs"
 description: "この記事では、イベント ハブに接続されたイベント ソースを Time Series Insights 環境に追加する方法を説明します。"
 services: time-series-insights
 ms.service: time-series-insights
@@ -10,19 +10,19 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: f3a9a1c7e57383925877f674a2e02f931e5c1e3c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: c07c847784eb13c62e350e9c655e027e7df696a3
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する方法
 
 この記事では、Azure Portal を使用して、イベント ハブからデータを読み取るイベント ソースを Time Series Insights 環境に追加する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
-- Time Series Insights 環境の作成。 詳しくは、[Azure Time Series Insights 環境の作成](time-series-insights-get-started.md)に関するページをご覧ください。 
+- Time Series Insights 環境を作成します。 詳しくは、[Azure Time Series Insights 環境の作成](time-series-insights-get-started.md)に関するページをご覧ください。 
 - イベント ハブの作成。 Event Hubs について詳しくは、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」を参照してください。
 - イベント ハブには、アクティブなメッセージ イベントが送信される必要があります。 詳しくは、「[.NET Framework を使用して Azure Event Hubs にイベントを送信する](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)」をご覧ください。
 - イベント ハブに Time Series Insight 環境で使用する専用コンシューマー グループを作成します。 各 Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 Event Hub ごとに 20 個のコンシューマー グループという制限もある点に注意してください。 詳細については、「[Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」をご覧ください。
@@ -52,7 +52,7 @@ ms.lasthandoff: 11/15/2017
 
    ![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)
 
-   | プロパティ | Description |
+   | プロパティ | 説明 |
    | --- | --- |
    | サブスクリプション ID | このイベント ハブが作成されたサブスクリプションを選択します。
    | Service Bus 名前空間 | イベント ハブが含まれている Service Bus 名前空間を選択します。
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/15/2017
 
 9. **[イベント ハブ設定を手動で行う]** オプションを選択した場合、必要な各プロパティについて次の表に説明します。
 
-   | プロパティ | Description |
+   | プロパティ | 説明 |
    | --- | --- |
    | サブスクリプション ID | このイベント ハブが作成されたサブスクリプション。
    | リソース グループ | このイベント ハブが作成されたリソース グループ。
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/15/2017
    | イベント ハブ ポリシー キー | Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。
    | イベント ハブ コンシューマー グループ | イベント ハブからデータを読み取るためのコンシューマー グループ。 お使いのイベント ソース専用のコンシューマー グループを使用することを強くお勧めします。
    | イベントのシリアル化の形式 | JSON は、現時点で唯一使用可能なシリアル化です。 イベント メッセージは、この形式である必要があります。そうでないとデータを読み取ることができません。 |
-   | タイムスタンプ プロパティ名 | この値を決定するには、イベント ハブに送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、ベント ソース内の**イベント エンキュー時間**が、イベント タイムスタンプとして使用されます。 |
+   | タイムスタンプ プロパティ名 | この値を決定するには、イベント ハブに送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**が、イベント タイムスタンプとして使用されます。 |
 
 
 10. **[作成]** を選択して、新しいイベント ソースを追加します。

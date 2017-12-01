@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/17/2017
 ms.author: nitinme
-ms.openlocfilehash: e4ee80826a710bde9483d130a4d1c986a72645ca
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: da7b83846418bfe5f95b126d4f5f7b34d3a7b35d
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics でクエリを実行して HDInsight クラスターを監視する
 
@@ -31,9 +31,9 @@ Azure Log Analytics を使用して Azure HDInsight クラスターを監視す�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Log Analytics を使用するように HDInsight クラスターを構成しておく必要があります。 手順については、「[Use Azure Log Analytics with HDInsight clusters](hdinsight-hadoop-oms-log-analytics-tutorial.md)」(HDInsight クラスターでの Azure Log Analytics の使用) を参照してください。
+* Azure Log Analytics を使用するように HDInsight クラスターを構成しておく必要があります。 手順については、「[Log Analytics を使用して Azure HDInsight クラスターを監視する](hdinsight-hadoop-oms-log-analytics-tutorial.md)」をご覧ください。
 
-* 「[Log Analytics に HDInsight クラスター管理ソリューションを追加する](hdinsight-hadoop-oms-log-analytics-management-solutions.md)」の手順に従って、HDInsight クラスター固有の管理ソリューションを OMS ワークスペースに追加しておく必要があります。
+* 「[Log Analytics に HDInsight クラスター管理ソリューションを追加する](hdinsight-hadoop-oms-log-analytics-management-solutions.md)」の手順に従って、HDInsight クラスター固有の管理ソリューションを [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) ワークスペースに追加しておく必要があります。
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>HDInsight クラスターのメトリックを分析する
 
@@ -152,5 +152,5 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 ## <a name="see-also"></a>関連項目
 
-* [OMS Log Analytics の使用](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Working with Operations Management Suite Log Analytics](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/) (Operations Management Suite Log Analytics の操作)
 * [Log Analytics でのアラート ルールの作成](../log-analytics/log-analytics-alerts-creating.md)

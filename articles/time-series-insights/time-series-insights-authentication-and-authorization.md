@@ -1,5 +1,5 @@
 ---
-title: "Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法 | Microsoft Docs"
+title: "Azure Time Series Insights での API の認証と承認の構成方法"
 description: "この記事では、Azure Time Series Insights API を呼び出すカスタム アプリケーションの認証と承認を構成する方法を説明します。"
 services: time-series-insights
 ms.service: time-series-insights
@@ -11,12 +11,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 7772f6be0c60c1c2e59499d46e3c56975053e551
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: cab37f65541ecf8bfa58edcd40df0aed39b37680
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -24,15 +24,15 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="service-principal"></a>サービス プリンシパル
 
-このセクションでは、アプリケーションを構成して、そのアプリケーションのために Time Series Insights API にアクセスする方法について説明します。 アプリケーションでは、ユーザー資格情報ではなくアプリケーションの資格情報を使って、Time Series Insights 環境にあるデータを照会したり参照データを発行したりできます。
+このセクションでは、アプリケーションを構成して、そのアプリケーションのために Time Series Insights API にアクセスする方法について説明します。 このアプリケーションでは、ユーザー資格情報ではなくアプリケーションの資格情報を使って、Time Series Insights 環境にあるデータにクエリを実行したり参照データを公開したりできます。
 
-Time Series Insights へのアクセスが必要なアプリケーションがある場合、Azure Active Directory アプリケーションを設定して、Time Series Insights 環境でのデータ アクセス ポリシーを割り当てる必要があります。 この方法は、お客様自身の資格情報でアプリを実行するよりも推奨されます。
+Time Series Insights へのアクセスが必要なアプリケーションがある場合、Azure Active Directory アプリケーションを設定し、Time Series Insights 環境でデータ アクセス ポリシーを割り当てる必要があります。 この方法は、お客様自身の資格情報でアプリを実行するよりも推奨されます。
 
-* お客様自身のアクセス許可とは異なるアクセス許可を、アプリ ID に割り当てることができます。 通常、こうしたアクセス許可は、アプリが行う必要があることに制限されます。 たとえば、アプリが特定の Time Series Insights 環境でデータの読み取りだけを行うようにすることが可能です。
+* お客様自身のアクセス許可とは異なるアクセス許可を、アプリ ID に割り当てることができます。 通常、こうしたアクセス許可はアプリで必要な操作のみに制限されます。 たとえば、アプリが特定の Time Series Insights 環境でデータの読み取りだけを行うようにすることが可能です。
 * お客様の責任が変わっても、アプリの資格情報を変更する必要はありません。
 * 無人インストール用スクリプトを実行するときに、証明書またはアプリケーション キーを使用して認証を自動化できます。
 
-この記事では、Azure Portal 経由でそれらの手順を実行する方法を示しています。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
+このトピックでは、それらの手順を Azure Portal で行う方法について説明します。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
 
 セットアップ フローは、次の 3 つの主要な手順で構成されます。
 
@@ -103,5 +103,7 @@ Time Series Insights へのアクセスが必要なアプリケーションが�
 
 ## <a name="next-steps"></a>次のステップ
 - Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
-- API リファレンスについては、「[クエリ API リファレンス](/rest/api/time-series-insights/time-series-insights-reference-queryapi)」をご覧ください。
-- [Azure Portal でサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+- API リファレンスについては、[API リファレンスのクエリ](/rest/api/time-series-insights/time-series-insights-reference-queryapi)に関するページをご覧ください。
+
+> [!div class="nextstepaction"]
+> [サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)

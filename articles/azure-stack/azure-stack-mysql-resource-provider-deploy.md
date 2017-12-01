@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 28ceb7345c0d74e2a7d7911d5b4bf24a0ceb214a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: fdb4180ce11b29577299e329869144e99ead0f05
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
 
@@ -38,11 +38,12 @@ Azure Stack に MySQL リソース プロバイダーをデプロイできます
 
 このリリースでは、MySQL インスタンスは作成されなくなりました。 それらを作成するか、外部 SQL インスタンスへのアクセスを提供する必要があります。 [Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows) では、以下のことができるテンプレートの例をご覧いただけます。
 - 自分の MySQL サーバーを作成する
-- Marketplace から MySQL Server をダウンロードし、デプロイする
+- Marketplace から MySQL Server をダウンロードし、デプロイします。
 
-注意: マルチノードの Azure Stack にインストールされるホスティング サーバーは、テナント サブスクリプションから作成する必要があります。 既定のプロバイダー サブスクリプションからは作成できません。 つまり、テナント ポータルから、または適切なログインによる PowerShell セッションから作成する必要があります。 すべてのホスティング サーバーは課金対象の仮想マシンであり、適切なライセンスを必要とします。 サービス管理者は、そのサブスクリプションの所有者になることができます。
+> [!NOTE]
+> マルチノードの Azure Stack にインストールされるホスティング サーバーは、テナント サブスクリプションから作成する必要があります。 既定のプロバイダー サブスクリプションからは作成できません。 つまり、テナント ポータルから、または適切なログインによる PowerShell セッションから作成する必要があります。 すべてのホスティング サーバーは課金対象の仮想マシンであり、適切なライセンスを必要とします。 サービス管理者は、そのサブスクリプションの所有者になることができます。
 
-### <a name="required-privileges"></a>必要な権限
+### <a name="required-privileges"></a>必要な特権
 システム アカウントには、次の特権が必要です。
 
 1.  データベース: 作成、ドロップ
@@ -60,6 +61,9 @@ Azure Stack に MySQL リソース プロバイダーをデプロイできます
     b. マルチノードのシステムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。
 
 3. [MySQL リソースプロバイダー バイナリ ファイルをダウンロード](https://aka.ms/azurestackmysqlrp)し、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。
+
+    > [!NOTE]
+    > Azure Stack ビルド 20170928.3 以前で実行している場合、[このバージョンをダウンロード](https://aka.ms/azurestackmysqlrp1709)します。
 
 4.  Azure Stack のルート証明書は、特権エンドポイントから取得されます。 ASDK には、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 
@@ -86,7 +90,7 @@ Azure Stack に MySQL リソース プロバイダーをデプロイできます
 
 
 次のようにすることができます。
-- コマンドラインで、少なくとも、必須のパラメーターを指定します。
+- コマンドラインで、少なくとも、必須のパラメーターを指定する
 - または、パラメーターなしで実行する場合は、入力を求められたら入力します。
 
 PowerShell プロンプトから実行できる例を次に示します (ただし、必要に応じてアカウント情報とパスワードを変更してください)。
@@ -98,8 +102,12 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
-$domain = 'AzureStack'
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
+$domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
 # Point to the directory where the RP installation files were extracted
 $tempDir = 'C:\TEMP\MYSQLRP'
 
@@ -122,20 +130,21 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 # Run the installation script from the folder where you extracted the installation files
 # Find the ERCS01 IP address first and make sure the certificate
 # file is in the specified directory
-.$tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
+. $tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint '10.10.10.10' `
-  -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert `
   -AcceptLicense
 
  ```
 
-### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 パラメーター
 
-これらのパラメーターをコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
+### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 パラメーター
+これらのパラメーターはコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
 
-| パラメーター名 | Description | コメントまたは既定値 |
+| パラメーター名 | 説明 | コメントまたは既定値 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報です。 | _必須_ |
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報を指定します。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
@@ -153,7 +162,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 システムのパフォーマンスとダウンロード速度によっては、インストールに 20分しかかからない場合も、数時間にも及ぶことがあります。 MySQLAdapter ブレードを使用できない場合は、管理ポータルを最新の情報に更新してください。
 
 > [!NOTE]
-> インストールに要する時間が 90 分を超える場合は、インストールが失敗している可能性があり、画面とログ ファイルにエラー メッセージが表示されることがあります。 失敗した手順からデプロイが再試行されます。 推奨されるメモリと vCPU 仕様を満たしていないシステムは、MySQL RP をデプロイできないことがあります。
+> インストールに要する時間が 90 分を超える場合は、インストールが失敗している可能性があり、画面とログ ファイルにエラー メッセージが表示されることがあります。 失敗した手順からデプロイが再試行されます。 推奨されるメモリとコア仕様を満たしていないシステムは、MySQL RP をデプロイできないことがあります。
 
 
 
@@ -189,14 +198,15 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
     - データベース容量
     - 自動バックアップ
     - 各部門のための高性能なサーバーの予約
-    - その他にもあります。
-    SKU 名は、テナントが各自のデータベースを適切に配置できるように、プロパティを表している必要があります。 SKU 内のすべてのホスティング サーバーの機能が同じである必要があります。
+ 
 
-    ![MySQL SKU を作成する](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
+SKU 名は、テナントが各自のデータベースを適切に配置できるように、プロパティを表している必要があります。 SKU 内のすべてのホスティング サーバーの機能が同じである必要があります。
+
+![MySQL SKU を作成する](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
 
 >[!NOTE]
-SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU が作成されるまで、データベースを作成できません。
+> SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU が作成されるまで、データベースを作成できません。
 
 
 ## <a name="to-test-your-deployment-create-your-first-mysql-database"></a>デプロイをテストするために最初の MySQL データベースを作成する
@@ -231,17 +241,17 @@ SKU はポータルに表示されるまで最大 1 時間かかることがあ�
 容量を追加するには、Azure Stack ポータルに追加の MySQL サーバを追加します。 追加サーバーは、新規または既存の SKU に追加できます。 サーバー特性が同じであることを確認してください。
 
 
-## <a name="making-mysql-databases-available-to-tenants"></a>MySQL データベースをテナントで使用できるようにする
+## <a name="make-mysql-databases-available-to-tenants"></a>MySQL データベースをテナントで使用できるようにする
 プランとサービスを作成して、MySQL データベースをテナントで使用できるようにします。 Microsoft.MySqlAdapter サービスを追加したり、クォータを追加したりします。
 
 ![データベースに含めるプランとサービスの作成](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
 
-## <a name="updating-the-administrative-password"></a>管理パスワードの更新
+## <a name="update-the-administrative-password"></a>管理パスワードの更新
 パスワードの変更は、最初に MySQL サーバー インスタンス上で変更することで可能です。 **[管理リソース]** &gt; **[MySQL Hosting Servers]\(MySQL ホスティング サーバー\)** &gt; を参照し、ホスティング サーバーをクリックします。 設定パネルで、[パスワード] をクリックします。
 
 ![管理パスワードの更新](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
-## <a name="removing-the-mysql-adapter-resource-provider"></a>MySQL アダプター リソース プロバイダーの削除
+## <a name="remove-the-mysql-resource-provider-adapter"></a>MySQL リソースプロバイダーのアダプターの削除
 
 リソース プロバイダーを削除するには、最初にすべての依存関係を削除する必要があります。
 
@@ -263,6 +273,5 @@ SKU はポータルに表示されるまで最大 1 時間かかることがあ�
 
 
 ## <a name="next-steps"></a>次のステップ
-
 
 [SQL Server リソース プロバイダー](azure-stack-sql-resource-provider-deploy.md)や [App Services リソース プロバイダー](azure-stack-app-service-overview.md)のような他の [PaaS サービス](azure-stack-tools-paas-services.md)を試します。

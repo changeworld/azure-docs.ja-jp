@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 33bcc51466fa0918bf4484c58fac813d07ae14da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96455dcdcf2eb90c836675c73c83c0320524fdac
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 ポリシー式の構文は C# 6.0 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。  
@@ -174,7 +174,7 @@ ms.lasthandoff: 10/11/2017
 |----------------------|-------------------------------------------------------|  
 |context|Api: IApi<br /><br /> デプロイ<br /><br /> LastError<br /><br /> 操作<br /><br /> 製品<br /><br /> 要求<br /><br /> RequestId: Guid<br /><br /> 応答<br /><br /> [サブスクリプション]<br /><br /> トレース: bool<br /><br /> ユーザー<br /><br /> 変数: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
 |context.Api|Id: 文字列<br /><br /> Name: 文字列<br /><br /> Path: 文字列<br /><br /> ServiceUrl: IUrl|  
-|context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列|  
+|context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|  
 |context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|  
 |context.Operation|Id: 文字列<br /><br /> Method: 文字列<br /><br /> Name: 文字列<br /><br /> UrlTemplate: 文字列|  
 |context.Product|Apis: IEnumerable<IApi\><br /><br /> ApprovalRequired: ブール値<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: 文字列<br /><br /> Name: 文字列<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: ブール値|  
@@ -199,6 +199,12 @@ ms.lasthandoff: 10/11/2017
 |bool TryParseJwt(input: this string, result: out Jwt)|input: 文字列<br /><br /> result: out Jwt<br /><br /> 入力パラメーターに有効な JWT トークン値が含まれている場合、メソッドは `true` を返し、結果パラメーターには `Jwt` 型の値が含まれます。それ以外の場合、メソッドは `false` を返します。|  
 |Jwt|Algorithm: 文字列<br /><br /> Audience: IEnumerable<string\><br /><br /> Claims: IReadOnlyDictionary<文字列, 文字列[]><br /><br /> ExpirationTime: DateTime?<br /><br /> Id: 文字列<br /><br /> Issuer: 文字列<br /><br /> NotBefore: DateTime?<br /><br /> Subject: 文字列<br /><br /> Type: 文字列|  
 |string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: 文字列<br /><br /> defaultValue: 文字列<br /><br /> コンマ区切りの要求値、またはヘッダーが見つからない場合は `defaultValue` を返します。|
+|byte[] Encrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - 暗号化対象のプレーンテキスト<br /><br />alg - 対称暗号化アルゴリズムの名前<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />暗号化されたプレーンテキストを返します。|
+|byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - 暗号化対象のプレーンテキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />暗号化されたプレーンテキストを返します。|
+|byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 暗号化対象のプレーンテキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />暗号化されたプレーンテキストを返します。|
+|byte[] Decrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 対称暗号化アルゴリズムの名前<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />プレーンテキストを返します。|
+|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />プレーンテキストを返します。|
+|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />プレーンテキストを返します。|
 
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 57af000e47188786a77cdb84ebb6ffb5c50eafaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 528b569ff9ffb3659e9210ea70e3aa06921cfe0d
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
 2. **[設定]** ページで **[データ]** をクリックし、**[Linux ファイルの追跡]** をクリックします。
 3. [Linux ファイルの変更追跡] の下に、追跡するファイルのファイル名を含むパス全体を入力し、**[追加]** シンボルをクリックします。 例: "/etc/*.conf"
-4. **[保存]** をクリックします。  
+4. **[Save]** をクリックします。  
 
 > [!NOTE]
 > Linux ファイルの追跡には、ディレクトリの追跡、ディレクトリの再帰、およびワイルドカード追跡などの追加機能があります。
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
 2. **[設定]** ページで **[データ]** をクリックし、**[Windows ファイルの追跡]** をクリックします。
 3. [Windows ファイルの変更追跡] の下に、追跡するファイルのファイル名を含むパス全体を入力して、**[追加]** の記号をクリックします。 例えば、C:\Program Files (x86)\Internet Explorer\iexplore.exe または C:\Windows\System32\drivers\etc\hosts のように入力します。
-4. [ **Save**] をクリックします。  
+4. **[Save]** をクリックします。  
    ![Windows ファイルの変更追跡](./media/log-analytics-change-tracking/windows-file-change-tracking.png)
 
 ### <a name="configure-windows-registry-keys-to-track"></a>追跡する Windows レジストリ キーを構成する
@@ -96,6 +96,10 @@ ms.lasthandoff: 10/11/2017
 * ネットワーク トラフィックが高いとき、変更レコードが表示されるまでに最長で 6 時間かかることがあります。
 * コンピューターのシャットダウン中に構成を変更した場合、そのコンピューターからは前の構成に対応するファイル変更が送信される可能性があります。
 
+### <a name="known-issues"></a>既知の問題
+現在、Change Tracking ソリューションでは、以下の問題が発生しています。
+* Windows 10 Creators Update および Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されていません。
+
 ## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
 変更の追跡では、有効になっているエージェントを使用して、ソフトウェア インベントリと Windows サービス メタデータを収集します。
 
@@ -103,7 +107,7 @@ ms.lasthandoff: 10/11/2017
 
 | プラットフォーム | 直接エージェント | Operations Manager エージェント | Linux エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows および Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 5 ～ 50 分 (変更の種類に応じて) 詳細については後の表を参照してください。 |
+| Windows および Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | 5 ～ 50 分 (変更の種類に応じて) 詳細については、次の表をご覧ください。 |
 
 
 次の表は、変更の種類ごとにデータ収集の頻度を示したものです。

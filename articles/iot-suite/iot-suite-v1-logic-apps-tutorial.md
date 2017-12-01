@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: f4457b44c97fadc58406430fc0f31b3e0bac6682
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4a1db86f4b715533dfea545365eaf66de0574c5e
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>チュートリアル: ロジック アプリを Azure IoT Suite リモート監視構成済みソリューションに接続する
 [Microsoft Azure IoT Suite][lnk-internetofthings] リモート監視構成済みソリューションは、IoT ソリューションを例示するエンド ツー エンド機能をすぐに使い始められる優れた方法です。 このチュートリアルでは、Logic App を Microsoft Azure IoT Suite リモート監視構成済みソリューションに追加する方法を説明します。 これらの手順は、IoT ソリューションをビジネス プロセスに接続してさらに活用できる方法を示すものです。
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/06/2017
 
 このチュートリアルでは、構成済みソリューションのバックエンドのアクションを編集するために Visual Studio 2015 または Visual Studio 2017 が必要となります。
 
-リモート監視構成済みソリューションを既にプロビジョニングしていることを前提とし、[Azure Portal][lnk-azureportal] でそのソリューションのリソース グループに移動します。 リソース グループの名前は、リモート監視ソリューションのプロビジョニング時に選択したソリューション名と同じです。 リソース グループには、Azure クラシック ポータルにある Azure Active Directory アプリケーション以外の、ソリューション用にプロビジョニングされている Azure リソースがすべて表示されます。 次のスクリーンショットには、リモート監視構成済みソリューションの **[リソース グループ]** ブレードの例が示されています。
+リモート監視構成済みソリューションを既にプロビジョニングしていることを前提とし、[Azure Portal][lnk-azureportal] でそのソリューションのリソース グループに移動します。 リソース グループの名前は、リモート監視ソリューションのプロビジョニング時に選択したソリューション名と同じです。 リソース グループでは、ソリューションに関連するプロビジョニングされた Azure リソースがすべて確認できます。 次のスクリーンショットには、リモート監視構成済みソリューションの **[リソース グループ]** ブレードの例が示されています。
 
 ![](media/iot-suite-v1-logic-apps-tutorial/resourcegroup.png)
 

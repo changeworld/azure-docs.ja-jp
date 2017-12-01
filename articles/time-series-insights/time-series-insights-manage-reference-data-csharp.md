@@ -11,21 +11,23 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: cd4d37ae2a68be3c061706f80055efb7e5387d98
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: fa4a115cc1199a99c7acf64281082dca5dfb8579
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の参照データを管理する
 
-この記事では、コンパイルして Azure Time Series Insights 環境の参照データを管理できる C# サンプル コードについて説明します。
+このトピックでは、コンパイルして Azure Time Series Insights 環境の参照データを管理できる C# サンプル コードについて説明します。
 
-サンプル コードをコンパイルして実行する前に、次の手順を完了していることを確認してください。
-1. [この記事](time-series-insights-add-reference-data-set.md)に従って参照データ セットを作成する。
+サンプル コードをコンパイルして実行する前に、次の手順を実行します。
+1. [参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。
 
-2. アプリケーションが承認に使用するアクセス トークンを構成する。 必ず、Azure Active Directory API を使用してトークンを取得します。 このトークンをすべてのクエリ API 要求の `Authorization` ヘッダーで渡す必要があります。 非対話型アプリケーションのセットアップについては、[認証と承認](time-series-insights-authentication-and-authorization.md)に関する記事を参照してください。
+2. アプリケーションの承認アクセス トークンを構成します。 必ず、Azure Active Directory API を使用してトークンを取得します。 すべてのクエリ API 要求の `Authorization` ヘッダーでこのトークンを渡す必要があります。 
+ 
+   非対話型アプリケーションのセットアップ方法については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関するページをご覧ください。
 
 3. サンプル コードを編集して、**#DUMMY#** で指定されたサンプル定数をコードの先頭付近に配置する。 
 
@@ -232,4 +234,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>次のステップ
-詳細な REST API リファレンスについては、[参照データ API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) に関する記事をご覧ください。
+[参照データ API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)

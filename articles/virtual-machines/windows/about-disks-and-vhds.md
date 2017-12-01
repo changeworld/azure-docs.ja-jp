@@ -1,6 +1,6 @@
-﻿---
-title: "Microsoft Azure Windows VM 用のディスクと VHD について | Microsoft Docs"
-description: "Azure での Windows 仮想マシン用のディスクと VHD の基本について説明します。"
+---
+title: "Microsoft Azure Windows VM 用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージについて | Microsoft Docs"
+description: "Azure での Windows 仮想マシン用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージの基本について説明します。"
 services: storage
 documentationcenter: 
 author: robinsh
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: b1beecf2e4268e358285c1101edcb13f6d592948
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1a8dc028e2e872820a209bcdde5cca57853dd419
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
-# <a name="about-disks-and-vhds-for-azure-windows-vms"></a>Azure Windows VM 用のディスクと VHD について
+# <a name="about-disks-storage-for-azure-windows-vms"></a>Azure Windows VM 用のディスク ストレージについて
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
 
-この記事では、ディスクのさまざまな用途について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](../linux/about-disks-and-vhds.md)にも利用できます。
+この記事では、ディスクのさまざまな仕様法王について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](../linux/about-disks-and-vhds.md)にも利用できます。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -79,6 +79,8 @@ fsutil behavior set DisableDeleteNotify 0
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>次のステップ
-* [ディスクのアタッチ](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) による VM 用のストレージの追加。
-* [Windows 一時ディスクのドライブ文字を変更する方法](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) します。
+* [ディスクのアタッチ](attach-disk-portal.md) による VM 用のストレージの追加。
+* [スナップショットの作成](snapshot-copy-managed-disk.md)。
+* [管理ディスクへの変換](convert-unmanaged-to-managed-disks.md)。
+
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af1f683f08ff6b70b23ff265f39b9a76f92f4be2
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
   > [!NOTE]
@@ -30,7 +30,7 @@ Operations Management Suite のサービス マップでは、Windows および 
 このサービス マップと System Center Operations Manager との統合を利用すると、サービス マップの動的な依存関係に基づいて、Operation Manager で分散アプリケーション ダイアグラムを自動作成できます。
 
 ## <a name="prerequisites"></a>前提条件
-* サーバー セットを管理する Operations Manager 管理グループ。
+* サーバー セットを管理する Operations Manager 管理グループ (2012 R2 以降)。
 * サービス マップ ソリューションが有効化された Operations Management Suite ワークスペース。
 * Operations Manager で管理され、サービス マップにデータを送信する (1 つ以上の) サーバー セット。 Windows および Linux サーバーがサポートされています。
 * Operations Management Suite ワークスペースに関連付けられている Azure サブスクリプションにアクセスできるサービス プリンシパル。 詳細については、「[サービス プリンシパルの作成](#creating-a-service-principal)」を参照してください。

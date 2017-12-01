@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 99f3ddb165fa548ca1d65676bb1f945632c72dd3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 8cf8820ceea19fe8c4926c65d107d4f770f40926
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>クイックスタート: Node.js と Azure Cosmos DB での Table API アプリの構築
 
@@ -38,6 +38,10 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 * [Git](http://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+
+> [!IMPORTANT] 
+> 新しいテーブル API アカウントを作成して一般公開のテーブル API SDK を操作する必要があります。 プレビュー期間中に作成されたテーブル API アカウントは、一般公開の SDK ではサポートされません。
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -74,9 +78,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
 
-3. Visual Studio でソリューション ファイルを開きます。 
-
-## <a name="update-your-connection-string"></a>接続文字列を更新する
+## <a name="update-your-connection-string"></a>接続文字列の更新
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
@@ -84,7 +86,13 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
     ![[接続文字列] ウィンドウに表示されている必要な接続文字列情報をコピーします。](./media/create-table-nodejs/connection-string.png)
 
-2. app.config ファイルを開き、必要な接続文字列プロパティを構成ファイルにコピーします。
+2. 右側にある [コピー] ボタンを使って、プライマリ接続文字列をコピーします。
+
+3. app.config ファイルを開き、3 行目の connectionString に値を貼り付けます。 
+
+    > [!IMPORTANT]
+    > エンドポイントで documents.azure.com を使用している場合は、プレビュー アカウントを持っていることになるため、[新しいテーブル API](#create-a-database-account) アカウントを作成して、一般公開のテーブル API SDK を操作する必要があります。
+    >
 
 3. app.config ファイルを保存します。
 
@@ -94,14 +102,19 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 1. git ターミナル ウィンドウで、storage-table-java-getting-started フォルダーに `cd` で移動します。
 
-    ```git
-    cd "C:\git-samples\
-storage-table-node-getting-started"
+    ```
+    cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. git ターミナル ウィンドウで、次のコマンドを実行して Java アプリケーションを起動します。
+2. 次のコマンドを実行して、[azure]、[node-uuid]、[nconf]、および [async] モジュールをローカルにインストールし、これらのモジュールのエントリを package.json ファイルに保存します。
 
-    ```git
+   ```
+   npm install azure-storage node-uuid async nconf --save
+   ```
+
+2. git ターミナル ウィンドウで、次のコマンドを実行して Node アプリケーションを起動します。
+
+    ```
     node ./tableSample.js 
     ```
 

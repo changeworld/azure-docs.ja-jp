@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 7d3c655a754f83284c386d2007c604a731367814
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6c5d01a831a76c497f42fe4af3d90f8c5dc5903
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
-# <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a>チュートリアル: Salesforce Sandbox を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configuring-salesforce-sandbox-for-automatic-user-provisioning"></a>チュートリアル: Salesforce Sandbox に自動ユーザー プロビジョニングを構成する
 
 このチュートリアルでは、Azure AD から Salesforce Sandbox にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Salesforce Sandbox と Azure AD で実行する必要がある手順について説明します。
 
@@ -28,16 +28,14 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 *   Azure Active Directory テナント。
-*   Salesforce Sandbox for Work または Salesforce Sandbox for Education の有効なテナントが必要です。 どちらのサービスにも無料試用版のアカウントを使用できます。
+*   Salesforce Sandbox for Work または Salesforce Sandbox for Education の有効なテナント。 どちらのサービスにも無料試用版のアカウントを使用できます。
 *   Team Admin アクセス許可がある Salesforce Sandbox のユーザー アカウント
 
 ## <a name="assigning-users-to-salesforce-sandbox"></a>Salesforce Sandbox へのユーザーの割り当て
 
 Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "割り当て" という概念が使用されます。 自動ユーザー アカウント プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに "割り当て済み" のユーザーとグループのみが同期されます。
 
-プロビジョニング サービスを構成して有効にする前に、Salesforce Sandbox アプリへのアクセスが必要なユーザーを表す Azure AD 内のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順でこれらのユーザーを Salesforce Sandbox アプリに割り当てることができます。
-
-[エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+プロビジョニング サービスを構成して有効にする前に、Salesforce Sandbox アプリへのアクセスが必要な Azure AD 内のユーザーやグループを決定しておく必要があります。 これを決定したら、[エンタープライズ アプリへのユーザーまたはグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)に関する手順に従って、これらのユーザーを Salesforce Sandbox アプリに割り当てることができます。
 
 ### <a name="important-tips-for-assigning-users-to-salesforce-sandbox"></a>ユーザーを Salesforce Sandbox に割り当てる際の重要なヒント
 
@@ -55,7 +53,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 >[!Tip]
 >Salesforce Sandbox では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>自動ユーザー アカウント プロビジョニングを構成するには:
+### <a name="configure-automatic-user-account-provisioning"></a>自動ユーザー アカウント プロビジョニングを構成する
 
 このセクションでは、Active Directory のユーザー アカウントのユーザー プロビジョニングを Salesforce Sandbox に対して有効にする方法について説明します。
 
@@ -65,7 +63,8 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 3. Salesforce Sandbox のインスタンスを選択してから、**[プロビジョニング]** タブを選択します。
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。 
+4. **[プロビジョニング モード]** を **[自動]** に設定します。
+
     ![プロビジョニング](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/provisioning.png)
 
 5. **[管理者資格情報]** セクションに次の構成設定を指定します。
@@ -74,17 +73,21 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    
     b. **[管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
 
-6. Salesforce Sandbox のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce Sandbox の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし **[個人の設定]** をクリックします。
+6. Salesforce Sandbox のセキュリティ トークンを取得するには、新しいタブを開き、同じ Salesforce Sandbox の管理者アカウントにサインインします。 ページの右上にある自分の名前をクリックし **[Settings]\(設定\)** をクリックします。
 
      ![Enable automatic user provisioning](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Enable automatic user provisioning")
-7. 左側のナビゲーション ウィンドウで **[個人用]** をクリックして関連するセクションを展開し、**[個人のセキュリティ トークンのリセット]** をクリックします。
+
+7. 左側のナビゲーション ウィンドウで **[私の個人情報]** をクリックして関連するセクションを展開し、**[私のセキュリティ トークンのリセット]** をクリックします。
   
     ![Enable automatic user provisioning](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Enable automatic user provisioning")
-8. **[個人のセキュリティ トークンのリセット]** ページで、**[セキュリティ トークンのリセット]** ボタンをクリックします。
+
+8. **[セキュリティ トークンのリセット]** ページで、**[セキュリティ トークンのリセット]** ボタンをクリックします。
 
     ![Enable automatic user provisioning](./media/active-directory-saas-salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Enable automatic user provisioning")
+
 9. この管理アカウントに関連付けられている電子メールの受信トレイを確認します。 新しいセキュリティ トークンが記載された Salesforce Sandbox.com からの電子メールを探します。
-10. トークンをコピーして Azure AD のウィンドウに移動し、**[ソケット トークン]** フィールドに貼り付けます。
+
+10. トークンをコピーして Azure AD のウィンドウに移動し、**[シークレット トークン]** フィールドに貼り付けます。
 
 11. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Salesforce Sandbox アプリに接続できることを確認します。
 
@@ -100,7 +103,6 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 17. **[保存]** をクリックします。
 
-
 これで、[ユーザーとグループ] セクションで Salesforce Sandbox に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 20 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、プロビジョニング サービスによって Salesforce Sandbox アプリに対して実行されたすべてのアクションが記載されています。
 
 これでテスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが Salesforce に同期されたことを確認します。
@@ -109,4 +111,4 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-* [シングル サインオンの構成](active-directory-saas-salesforcesandbox-tutorial.md)
+* [シングル サインオンの構成](https://docs.microsoft.com/azure/active-directory/active-directory-saas-salesforce-sandbox-tutorial)
