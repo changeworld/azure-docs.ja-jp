@@ -10,21 +10,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2017
-ms.openlocfilehash: b43ed29bda4412fb57bcb772da00f6405c3f1c26
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/16/2017
+ms.openlocfilehash: 8eafb16abeb939a16b1ddb024853300c453bcd9a
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>サービスのデプロイと環境のセットアップのトラブルシューティング
 次の情報は、モデル管理環境のセットアップ中に発生したエラーの原因の特定に役立ちます。
 
 ## <a name="model-management-environment"></a>モデル管理環境
-### <a name="owner-permission-required"></a>所有者アクセス許可が必要
-Machine Learning のコンピューティングを登録するには、Compute に登録するには、Azure サブスクリプションに対する所有者アクセス許可を持っている必要があります。
-
-Web サービスをデプロイするためのクラスターをセットアップする場合も、所有者アクセス許可が必要です。
+### <a name="contributor-permission-required"></a>共同作成者のアクセス許可が必要
+Web サービスのデプロイ用クラスターをセットアップするには、サブスクリプションまたはリソース グループに対する共同作成者のアクセス権が必要です。
 
 ### <a name="resource-availability"></a>リソースの可用性
 サブスクリプションで、環境リソースをプロビジョニングできるだけのリソースを使用できる必要があります。
@@ -89,6 +87,7 @@ Python の例:
 ```
 
 ## <a name="other-common-problems"></a>その他の一般的な問題
+- Windows マシン上で azure-cli-ml の pip インストールが "`cannot find the path specified`" というエラーで失敗した場合、長いパスのサポートを有効にする必要があります。 https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/ を参照してください。 
 - `env setup` コマンドが `LocationNotAvailableForResourceType` で失敗する場合は、使用している機械学習リソースの場所 (リージョン) が間違っている可能性があります。 `-l` パラメーターに指定されている場所が `eastus2`、`westcentralus`、または `australiaeast` であることを確認してください。
 - `env setup` コマンドが `Resource quota limit exceeded` で失敗する場合は、サブスクリプションで使用できるコアが十分にあること、およびリソースが他のプロセスによって使い尽くされていないことを確認してください。
 - `env setup` コマンドが `Invalid environment name. Name must only contain lowercase alphanumeric characters` で失敗する場合は、サービス名に大文字、記号、または アンダースコア (_) (例: *my_environment*)が 含まれていないことを確認してください。

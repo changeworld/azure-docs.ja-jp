@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: e0c608fe3a80c9d704774e592a1eba383bbdffe8
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 31a2fa3d3c87c16109514b130c95e731f401f8bd
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions における Blob Storage のバインディング
 
@@ -127,7 +127,7 @@ public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
 }
 ```
 
-[構成](#trigger---configuration)のセクションで、これらのプロパティについて説明します。
+これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
 
 JavaScript コードを次に示します。
 
@@ -185,15 +185,15 @@ module.exports = function(context) {
 
 ## <a name="trigger---configuration"></a>トリガー - 構成
 
-次の表は、*function.json* ファイルと `BlobTrigger` 属性で設定したバインディング構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `BlobTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |Description|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `blobTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 例外は、[使用方法](#trigger---usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。 | 
 |**path** | **BlobPath** |監視するコンテナー。  [BLOB 名パターン](#trigger-blob-name-patterns)の場合があります。 | 
-|**connection** | **Connection** | このバインディングに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。<br>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+|**connection** | **Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。<br>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
@@ -258,7 +258,7 @@ BLOB の名前が *original-Blob1.txt* の場合、関数コード内の `blobna
 BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
 
 
-|プロパティ  |型  |Description  |
+|プロパティ  |型  |説明  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|トリガーする BLOB のパス。|
 |`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|
@@ -309,7 +309,7 @@ Blob Storage の入力および出力バインディングを使用して、BLOB
 
 ### <a name="input--output---c-example"></a>入力と出力 - C# の例
 
-次の例は、1 つの入力と 2 つの出力の BLOB バインディングを使用する[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数です。 関数は、*sample-images* コンテナーのイメージ BLOB の作成によってトリガーされます。 イメージ BLOB の小規模および中規模サイズのコピーを作成します。 
+次の例は、1 つの BLOB トリガーと 2 つの出力の BLOB バインディングを使用する[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数です。 関数は、*sample-images* コンテナーのイメージ BLOB の作成によってトリガーされます。 イメージ BLOB の小規模および中規模サイズのコピーを作成します。 
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -342,7 +342,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 ### <a name="input--output---c-script-example"></a>入力と出力 - C# のスクリプトの例
 
-次の例は、*function.json* ファイルの BLOB トリガー バインディングと、バインディングを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
+次の例は、*function.json* ファイルの BLOB 入出力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 関数は、テキスト BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
 
 *function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
 
@@ -380,7 +380,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(string myQueueItem, Stream myInputBlob, out string myOutputBlob, TraceWriter log)
+public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
     myOutputBlob = myInputBlob;
@@ -389,7 +389,7 @@ public static void Run(string myQueueItem, Stream myInputBlob, out string myOutp
 
 ### <a name="input--output---javascript-example"></a>入力と出力 - JavaScript の例
 
-次の例は、*function.json* ファイルの BLOB トリガー バインディングと、バインディングを使用する [JavaScript コード] (functions-reference-node.md) を示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
+次の例は、*function.json* ファイルの BLOB 入出力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
 
 *function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
 
@@ -462,13 +462,13 @@ public static void Run(
 
 次の表は、*function.json* ファイルと `Blob` 属性で設定したバインディング構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |Description|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `blob` に設定する必要があります。 |
 |**direction** | 該当なし | 入力バインディングの場合は `in` に、出力バインディングの場合は out に設定する必要があります。 例外は、[使用方法](#input--output---usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。  `$return` に設定して、関数の戻り値を参照します。|
 |**path** |**BlobPath** | BLOB へのパス。 | 
-|**connection** |**Connection**| このバインディングに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。<br>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+|**connection** |**Connection**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。<br>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 ## <a name="input--output---usage"></a>入力と出力 - 使用方法

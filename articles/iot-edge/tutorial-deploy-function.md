@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bfb37ae51400210ef80a0f267b294d1e2e465b76
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: cba901e8929d3626dc06e4600437b6d364e9bc44
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure 関数を IoT Edge モジュールとして展開する - プレビュー
 Azure Functions を使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、[Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成した、シミュレートされた IoT Edge デバイスで、センサー データをフィルター処理する Azure 関数を作成および展開します。 このチュートリアルで学習する内容は次のとおりです。     
@@ -225,7 +225,7 @@ IoT Edge デバイスから IoT ハブに送信されたデバイスからクラ
 このチュートリアルでは、IoT Edge デバイスで生成された生データをフィルター処理するコードを含む、Azure 関数を作成しました。 Azure IoT Edge を探索し続けるには、Azure IoT Edge デバイスをゲートウェイとして使用する方法を確認します。 
 
 > [!div class="nextstepaction"]
-> [IoT Edge ゲートウェイ デバイスを作成する](how-to-create-gateway-device.md)
+> [IoT Edge ゲートウェイ デバイスを作成する](how-to-create-transparent-gateway.md)
 
 <!--Links-->
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md

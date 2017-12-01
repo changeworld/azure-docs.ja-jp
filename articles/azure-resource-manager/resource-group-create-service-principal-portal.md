@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/08/2017
+ms.date: 11/16/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3b9c49d4c7d49cc6795fb093f9abc748d55b5b6f
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: fc5bfebbcbac7096dea874684bdefe099b572adc
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 10/14/2017
 * お客様の責任が変わっても、アプリの資格情報を変更する必要はありません。 
 * 無人インストール用スクリプトを実行するときに、証明書を使用して認証を自動化できます。
 
-このトピックでは、それらの手順をポータルで行う方法について説明します。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
+この記事では、ポータル経由でそれらの手順を実行する方法を示しています。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
-このトピックの手順を実行するには、アプリケーションを Azure AD テナントに登録し、Azure サブスクリプションでアプリケーションをロールに割り当てるための十分なアクセス許可が必要です。 これらの手順を実行するための適切なアクセス許可があることを確認しましょう。
+この記事の手順を実行するには、アプリケーションを Azure AD テナントに登録し、Azure サブスクリプションでアプリケーションをロールに割り当てるための十分なアクセス許可が必要です。 これらの手順を実行するための適切なアクセス許可があることを確認しましょう。
 
 ### <a name="check-azure-active-directory-permissions"></a>Azure Active Directory のアクセス許可を確認する
 
@@ -104,7 +104,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
    ![アプリを追加する](./media/resource-group-create-service-principal-portal/select-add-app.png)
 
-1. アプリケーションの名前と URL を指定します。 作成するアプリケーションの種類として、**[Web アプリ/API]** または **[ネイティブ]** を選択します。 値を設定したら、**[作成]** をクリックします。
+1. アプリケーションの名前と URL を指定します。 作成するアプリケーションの種類として、**[Web アプリ/API]** を選択します。 **[ネイティブ]** アプリケーションの資格情報を作成することはできません。したがってこのタイプは、自動化されたアプリケーションでは正しく機能しません。 値を設定したら、**[作成]** をクリックします。
 
    ![アプリケーションの名前指定](./media/resource-group-create-service-principal-portal/create-app.png)
 

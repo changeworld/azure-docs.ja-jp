@@ -1,10 +1,10 @@
 ---
-title: "Azure CLI 2.0 を使用して複数の IP アドレスを持つ VM を作成する | Microsoft Docs"
-description: "Azure CLI 2.0 を使用して仮想マシンに複数の IP アドレスを割り当てる方法 | Resource Manager"
+title: "Azure CLI を使用して複数の IP アドレスを持つ VM を作成する | Microsoft Docs"
+description: "Azure コマンド ライン インターフェイス (CLI) を使用して仮想マシンに複数の IP アドレスを割り当てる方法を説明します。"
 services: virtual-network
 documentationcenter: na
-author: anavinahar
-manager: narayan
+author: jimdial
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -14,24 +14,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
-ms.author: annahar
-ms.openlocfilehash: 0e9b2ef89ca39a7988a7b2573496a605dfc604b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jimdial
+ms.openlocfilehash: aa0f84299dcb4800cd332d8276785f6b08152060
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシンに複数の IP アドレスを割り当てる
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンに複数の IP アドレスを割り当てる
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-この記事では、Azure CLI 2.0 を使用して、Azure Resource Manager デプロイメント モデルで仮想マシン (VM) を作成する方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
+この記事では、Azure CLI を使用して Azure Resource Manager デプロイメント モデルで仮想マシン (VM) を作成する方法について説明します。 クラシック デプロイ モデルで作成されたリソースには、複数の IP アドレスを割り当てることはできません。 Azure のデプロイ モデルの詳細については、[デプロイ モデルの概要](../resource-manager-deployment-model.md)に関する記事をご覧ください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
-このタスクは、Azure CLI 2.0 (この記事) または [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md) を使用して行うことができます。 これらの値は、お使いの環境に合わせて変更してください。 以下の手順は、シナリオの説明に従って複数の IP アドレスを持つ VM を作成する方法を示しています。 "" で囲まれた変数値と IP アドレスの種類は、実際の実装に合わせて変更してください。 
+以下の手順は、シナリオの説明に従って複数の IP アドレスを持つ仮想マシンを作成する方法の例を示しています。 "" で囲まれた変数値と IP アドレスの種類は、実際の実装に合わせて変更してください。 
 
 1. まだインストールしていない場合は、[Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールします。
 2. 「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」の手順を実行して、Linux VM 用の SSH 公開キーと秘密キーのペアを作成します。

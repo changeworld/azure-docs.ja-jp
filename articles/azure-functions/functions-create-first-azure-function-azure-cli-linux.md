@@ -5,17 +5,17 @@ services: functions
 keywords: 
 author: ggailey777
 ms.author: glenga
-ms.date: 11/07/2017
+ms.date: 11/15/2017
 ms.topic: quickstart
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 4adc25dbca06271382dc76690c75d3198d59d4be
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d04e2000f2043e8bb11e15f6b9d7fd06ef5b9da3
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Azure CLI を使用して Linux で実行する関数を初めて作成する (プレビュー)
 
@@ -29,14 +29,13 @@ Azure Functions を使うと、既定の Azure App Service コンテナー内の
 
 このクイック スタートを完了するには、次のものが必要です。
 
-+ アクティブな [GitHub](https://github.com) アカウント。 
 + 有効な Azure サブスクリプション
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0.21 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 

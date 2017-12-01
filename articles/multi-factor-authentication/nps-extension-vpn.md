@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: bf83952b29759ff601685513ace31828404c7b1a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c058f1e747849cde0f15a039779665c8718da947
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -108,7 +108,7 @@ Windows Server 2012 以降にネットワーク ポリシーとアクセス サ�
 
 ### <a name="azure-mfa-license"></a>Azure MFA のライセンス
 
-Azure Multi-Factor Authentication にはライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security、または Multi-Factor Authentication サブスクリプションで入手できます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 詳細については、「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。
+Azure Multi-Factor Authentication にはライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security、または Multi-Factor Authentication スタンドアロン ライセンスで入手できます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 詳細については、「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。
 
 ### <a name="windows-server-software"></a>Windows Server ソフトウェア
 

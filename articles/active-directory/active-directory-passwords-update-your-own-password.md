@@ -6,7 +6,7 @@ keywords:
 documentationcenter: 
 author: barlanmsft
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 6230256d16af0ef2b924d345ae86d5d44ecb6738
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: b91902b13e7633a0724a57ff7fceb68e50abd13a
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
 

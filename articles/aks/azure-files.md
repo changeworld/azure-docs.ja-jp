@@ -13,67 +13,64 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2017
+ms.date: 11/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 11457e6556e6400d8f58f71c71ab1e790bcef8f1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: bae60e7f78934deacac173767ca3013ce93cf9ad
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="using-azure-files-with-kubernetes"></a>Kubernetes での Azure Files の使用
 
-コンテナー ベースのアプリケーションは、データへのアクセスとデータの永続化の手段として、外部データ ボリュームが必要になることが少なくありません。 この外部データ ストアとして Azure Files を使用することができます。 この記事では、Azure Container Service の Kubernetes ボリュームとして Azure Files を使用する方法について詳しく説明します。
+コンテナーベースのアプリケーションは、データへのアクセスとデータの永続化の手段として、外部データ ボリュームが必要になることが少なくありません。 この外部データ ストアとして Azure Files を使用することができます。 この記事では、Azure Container Service の Kubernetes ボリュームとして Azure Files を使用する方法について詳しく説明します。
 
 Kubernetes ボリュームの詳細については、[Kubernetes ボリューム][kubernetes-volumes]に関するページを参照してください。
 
-## <a name="creating-a-file-share"></a>ファイル共有の作成
+## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 
-Azure Container Service には、既存の Azure ファイル共有を使用することができます。 新たに作成する必要がある場合は、以下に示した一連のコマンドを使用してください。
-
-[az group create][az-group-create] コマンドを使用して、Azure ファイル共有のリソース グループを作成します。 ストレージ アカウントのリソース グループと Kubernetes クラスターは、同じリージョンに存在する必要があります。
+Azure ファイル共有を Kubernetes ボリュームとして使用するには、あらかじめ Azure Storage アカウントとファイル共有を作成しておく必要があります。 この作業は以下のスクリプトを使って実行できます。 パラメーターの値は書き留めておくか、更新してください。いくつかの値は、Kubernetes ボリュームを作成する際に必要となります。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
+# Change these four parameters
+AKS_PERS_STORAGE_ACCOUNT_NAME=mystorageaccount$RANDOM
+AKS_PERS_RESOURCE_GROUP=myAKSShare
+AKS_PERS_LOCATION=eastus
+AKS_PERS_SHARE_NAME=aksshare
 
-[az storage account create][az-storage-create] コマンドを使用して Azure Storage アカウントを作成します。 ストレージ アカウントには、一意の名前を使用します。 `--name` 引数の値を一意の値に置き換えてください。
+# Create the Resource Group
+az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 
-```azurecli-interactive
-az storage account create --name mystorageaccount --resource-group myResourceGroup --sku Standard_LRS
-```
+# Create the storage account
+az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
 
-[az storage account keys list ][az-storage-key-list] コマンドを使用して、ストレージ キーを取得します。 `--account-name` 引数の値は、一意のストレージ アカウント名に置き換えてください。
+# Export the connection string as an environment variable, this is used when creating the Azure file share
+export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv`
 
-いずれかのキーの値を書き留めておいてください。この後の手順で使用します。
+# Create the file share
+az storage share create -n $AKS_PERS_SHARE_NAME
 
-```azurecli-interactive
-az storage account keys list --account-name mystorageaccount --resource-group myResourceGroup --output table
-```
-
-[az storage share create][az-storage-share-create] コマンドを使用して Azure ファイル共有を作成します。 `--account-key` の値は、直前の手順で収集した値に置き換えてください。
-
-```azurecli-interactive
-az storage share create --name myfileshare --account-name mystorageaccount --account-key <key>
+# Get storage account key
+STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_GROUP --account-name $AKS_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
 ```
 
 ## <a name="create-kubernetes-secret"></a>Kubernetes シークレットの作成
 
-Kubernetes には、ファイル共有にアクセスするための資格情報が必要です。 Azure Storage アカウントの名前とキーは、ポッドごとに保存されるのではなく、[Kubernetes シークレット][kubernetes-secret]に一度だけ保存されて、各 Azure Files ボリュームにより参照されます。 
+Kubernetes には、ファイル共有にアクセスするための資格情報が必要です。 これらの資格情報は [Kubernetes シークレット][kubernetes-secret]に格納され、Kubernetes ポッドを作成するときにそのシークレットが参照されます。
 
-Kubernetes シークレット マニフェスト内の値は、base64 でエンコードされている必要があります。 以下のコマンドを使用して、エンコードした値を取得してください。
+Kubernetes シークレットを作成するとき、シークレットの値は base64 でエンコードされている必要があります。
 
-まず、ストレージ アカウントの名前をエンコードします。 `storage-account` は、実際の Azure Storage アカウントの名前に置き換えてください。
+まず、ストレージ アカウントの名前をエンコードします。 `$AKS_PERS_STORAGE_ACCOUNT_NAME` は、必要に応じて実際の Azure ストレージ アカウントの名前に置き換えてください。
 
 ```azurecli-interactive
-echo -n <storage-account> | base64
+echo -n $AKS_PERS_STORAGE_ACCOUNT_NAME | base64
 ```
 
-次に、ストレージ アカウントのアクセス キーが必要です。 次のコマンドを実行して、エンコード済みのキーを取得します。 `storage-key` は、前の手順で収集したキーに置き換えてください。
+次に、ストレージ アカウント キーをエンコードします。 `$STORAGE_KEY` は、必要に応じて実際の Azure ストレージ アカウント キーの名前に置き換えてください。
 
 ```azurecli-interactive
-echo -n <storage-key> | base64
+echo -n $STORAGE_KEY | base64
 ```
 
 `azure-secret.yml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 `azurestorageaccountname` と `azurestorageaccountkey` の値は、直前の手順で取得した、base64 でエンコードされた値に置き換えてください。
@@ -89,15 +86,15 @@ data:
   azurestorageaccountkey: <base64_encoded_storage_account_key>
 ```
 
-[kubectl apply][kubectl-apply] コマンドを使用してシークレットを作成します。
+[kubectl create][kubectl-create] コマンドを使用してシークレットを作成します。
 
 ```azurecli-interactive
-kubectl apply -f azure-secret.yml
+kubectl create -f azure-secret.yml
 ```
 
 ## <a name="mount-file-share-as-volume"></a>ファイル共有をボリュームとしてマウントする
 
-ポッドには、その仕様の中で必要なボリュームを構成することで、Azure Files 共有をマウントすることができます。次の内容で、`azure-files-pod.yml` という名前の新しいファイルを作成します。 `share-name` は、Azure Files 共有に割り当てられた名前に置き換えてください。
+ポッドには、その仕様の中で必要なボリュームを構成することで、Azure Files 共有をマウントすることができます。次の内容で、`azure-files-pod.yml` という名前の新しいファイルを作成します。 `aksshare` は、Azure Files 共有に割り当てられた名前に置き換えてください。
 
 ```yaml
 apiVersion: v1
@@ -115,7 +112,7 @@ spec:
   - name: azure
     azureFile:
       secretName: azure-secret
-      shareName: <share-name>
+      shareName: aksshare
       readOnly: false
 ```
 
@@ -139,6 +136,6 @@ Azure Files を使用した Kubernetes ボリュームについて、さらに�
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
 [az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
-[kubectl-apply]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#apply
+[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
 [az-group-create]: /cli/azure/group#az_group_create

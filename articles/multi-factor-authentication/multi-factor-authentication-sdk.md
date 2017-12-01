@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
-ms.openlocfilehash: 653166235a2fec79945a8e54aafdb8e697e8b634
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c9be948a7328b0f535d8683e6cdc695a01654a94
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>カスタム アプリに Multi-Factor Authentication を構築する (SDK)
+
+> [!IMPORTANT]
+> Azure Multi-Factor Authentication ソフトウェア開発キット (SDK) の廃止が発表されました。 新規のお客様については、この機能はサポートされなくなります。 現在のお客様は、2018 年 11 月 14 日まで、SDK の使用を継続できます。 その後は、SDK への呼び出しは失敗します。 
 
 Azure Multi-factor Authentication ソフトウェア開発キット (SDK) を使用して、Azure AD テナントのアプリケーションで行われるサインインまたはトランザクション プロセスに 2 段階認証を直接組み込むことができます。
 
@@ -35,30 +38,7 @@ API は Azure Active Directory に登録されたユーザーにアクセスで�
 
 
 ## <a name="download-the-sdk"></a>SDK のダウンロード
-Azure Multi-Factor SDK のダウンロードには、 [Azure Multi-Factor Auth プロバイダー](multi-factor-authentication-get-started-auth-provider.md)が必要です。  これには、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを所有している場合でも、完全な Azure サブスクリプションが必要です。  SDK をダウンロードするには、多要素認証管理ポータルに移動します。 このポータルには、多要素認証プロバイダーを直接管理するか、[MFA サービスの設定] ページの **[ポータルに移動する]** リンクをクリックすることでアクセスできます。
-
-### <a name="download-from-the-azure-classic-portal"></a>Azure クラシック ポータルからダウンロードする
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)に管理者としてサインインします。
-2. 左側で、 **[Active Directory]**を選択します。
-3. [Active Directory] ページで、上部にある **[多要素認証プロバイダー]** を選択します。
-4. 下部にある **[管理]** を選択します。 新しいページが開きます。
-5. 左側の下部にある **[SDK]** を選択します。
-   <center>![ダウンロード](./media/multi-factor-authentication-sdk/download.png)</center>
-6. 言語を選択し、関連付けられているダウンロード リンクをクリックします。
-7. ダウンロードしたファイルを保存します。
-
-### <a name="download-from-the-service-settings"></a>サービス設定からダウンロードする
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)に管理者としてサインインします。
-2. 左側で、 **[Active Directory]**を選択します。
-3. Azure AD のインスタンスをダブルクリックします。
-4. 上部にある **[構成]** をクリックします。
-5. [多要素認証] で、**[サービス設定の管理]**を選択します。
-   ![ダウンロード](./media/multi-factor-authentication-sdk/download2.png)
-6. サービス設定ページで、画面の下部にある **[ポータルに移動する]**をクリックします。 新しいページが開きます。
-   ![ダウンロード](./media/multi-factor-authentication-sdk/download3a.png)
-7. 左側の下部にある **[SDK]** を選択します。
-8. 言語を選択し、関連付けられているダウンロード リンクをクリックします。
-9. ダウンロードしたファイルを保存します。
+Azure Multi-Factor SDK のダウンロードには、 [Azure Multi-Factor Auth プロバイダー](multi-factor-authentication-get-started-auth-provider.md)が必要です。  これには、Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを所有している場合でも、完全な Azure サブスクリプションが必要です。 SDK は廃止されたため、公開されていた SDK のダウンロード方法は使用できなくなりました。 SDK をダウンロードする必要がある場合は、Microsoft のサポート ケースを開く必要があります。
 
 ## <a name="whats-in-the-sdk"></a>SDK の内容
 SDK には、以下のアイテムが含まれています。

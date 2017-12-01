@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions におけるタイマー トリガー | Microsoft Docs"
+title: "Azure Functions におけるタイマー トリガー"
 description: "Azure Functions でタイマー トリガーを使用する方法について説明します。"
 services: functions
 documentationcenter: na
@@ -17,42 +17,159 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: 12beb090a95a31c7e83ae03a920016bdfbf474e3
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 2a62d70b22081e45bc318dd9fb624b37cf7069e3
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure Functions におけるタイマー トリガー
 
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
-
-この記事では、Azure Functions でタイマー トリガーを構成およびコーディングする方法について説明します。 Azure Functions には、定義したスケジュールに基づいて関数コードを実行することができるタイマー トリガー バインディングがあります。 
-
-タイマー トリガーでは、複数インスタンスのスケールアウトがサポートされます。特定のタイマー関数の 1 つのインスタンスが、すべてのインスタンスにわたって実行されます。
+この記事では、Azure Functions でタイマー トリガーを使用する方法について説明します。 タイマー トリガーを使用すると、スケジュールに基づいて関数を実行できます。 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-<a id="trigger"></a>
+## <a name="example"></a>例
 
-## <a name="timer-trigger"></a>タイマー トリガー
-関数へのタイマー トリガーでは、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+言語固有の例をご覧ください。
+
+* [プリコンパイル済み C#](#trigger---c-example)
+* [C# スクリプト](#trigger---c-script-example)
+* [F#](#trigger---f-example)
+* [JavaScript](#trigger---javascript-example)
+
+### <a name="c-example"></a>C# の例
+
+次の例は、5 分ごとに実行される[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示します。
+
+```cs
+[FunctionName("TimerTriggerCSharp")]
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+{
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+}
+```
+
+### <a name="c-script-example"></a>C# スクリプトの例
+
+次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。
+
+*function.json* ファイルのバインディング データを次に示します。
 
 ```json
 {
-    "schedule": "<CRON expression - see below>",
-    "name": "<Name of trigger parameter in function signature>",
+    "schedule": "0 */5 * * * *",
+    "name": "myTimer",
     "type": "timerTrigger",
     "direction": "in"
 }
 ```
 
-`schedule` の値は、次の 6 個のフィールドが含まれる [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)です。 
+C# スクリプト コードを次に示します。
 
-    {second} {minute} {hour} {day} {month} {day-of-week}
-&nbsp;
+```csharp
+public static void Run(TimerInfo myTimer, TraceWriter log)
+{
+    if(myTimer.IsPastDue)
+    {
+        log.Info("Timer is running late!");
+    }
+    log.Info($"C# Timer trigger function executed at: {DateTime.Now}" );  
+}
+```
+
+### <a name="f-example"></a>F# の例
+
+次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [F# スクリプト関数](functions-reference-fsharp.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+    "schedule": "0 */5 * * * *",
+    "name": "myTimer",
+    "type": "timerTrigger",
+    "direction": "in"
+}
+```
+
+F# スクリプト コードを次に示します。
+
+```fsharp
+let Run(myTimer: TimerInfo, log: TraceWriter ) =
+    if (myTimer.IsPastDue) then
+        log.Info("F# function is running late.")
+    let now = DateTime.Now.ToLongTimeString()
+    log.Info(sprintf "F# function executed at %s!" now)
+```
+
+### <a name="javascript-example"></a>JavaScript の例
+
+次の例は、*function.json* ファイルのタイマー トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、この関数呼び出しがスケジュールのミスの発生によるものかどうかを示すログが書き込まれます。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+    "schedule": "0 */5 * * * *",
+    "name": "myTimer",
+    "type": "timerTrigger",
+    "direction": "in"
+}
+```
+
+F# スクリプト コードを次に示します。
+
+```JavaScript
+module.exports = function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+
+    if(myTimer.isPastDue)
+    {
+        context.log('Node.js is running late!');
+    }
+    context.log('Node.js timer trigger function ran!', timeStamp);   
+
+    context.done();
+};
+```
+
+## <a name="attributes-for-precompiled-c"></a>プリコンパイル済み C# の属性
+
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) で定義されている [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs) を使用します。
+
+次の例に示すように、属性のコンストラクターは CRON 式を受け取ります。
+
+```csharp
+[FunctionName("TimerTriggerCSharp")]
+public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+ ```
+
+関数アプリが (従量課金プランではなく) App Service プランで実行されている場合、CRON 式の代わりに `TimeSpan` を指定できます。
+
+## <a name="configuration"></a>構成
+
+次の表は、*function.json* ファイルと `TimerTrigger` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |説明|
+|---------|---------|----------------------|
+|**type** | 該当なし | "timerTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
+|**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
+|**name** | 該当なし | 関数コード内のタイマー オブジェクトを表す変数の名前。 | 
+|**schedule**|**ScheduleExpression**|従量課金プランでは、CRON 式を使用してスケジュールを定義することができます。 App Service プランを使用している場合は、`TimeSpan` 文字列も使用できます。 以降のセクションでは、CRON 式について説明します。 スケジュール式をアプリ設定に含めて、たとえば "%NameOfAppSettingWithCRONExpression%" のように、**%** 記号で囲まれた値にこのプロパティを設定できます。 ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+
+### <a name="cron-format"></a>CRON の形式 
+
+Azure Functions のタイマー トリガーの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)には、次の 6 つのフィールドが含まれます。 
+
+```
+{second} {minute} {hour} {day} {month} {day-of-week}
+```
+
 >[!NOTE]   
->オンラインで見つかる CRON 式の多くでは、`{second}` フィールドが省略されています。 それらをコピーした場合は、追加の `{second}` フィールドを調整する必要があります。 具体的な例については、以下の「[スケジュールの例](#examples)」を参照してください。
+>オンラインで見つかる CRON 式の多くでは、`{second}` フィールドが省略されています。 それらのいずれかをコピーして、欠けている `{second}` フィールドを追加します。
+
+### <a name="cron-time-zones"></a>CRON のタイム ゾーン
 
 CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) です。 別のタイム ゾーンに基づく CRON 式を使用するには、Function App 用に `WEBSITE_TIME_ZONE` という名前の新しいアプリ設定を作成します。 この値を、[Microsoft のタイム ゾーン インデックス](https://technet.microsoft.com/library/cc749073(v=ws.10).aspx)に関するページに示されている目的のタイム ゾーンの名前に設定します。 
 
@@ -67,12 +184,9 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 ```json
 "schedule": "0 0 10 * * *",
 ``` 
+### <a name="cron-examples"></a>CRON の例
 
-
-<a name="examples"></a>
-
-## <a name="schedule-examples"></a>スケジュールの例
-`schedule` プロパティに使用できる CRON 式の例をいくつか示します。 
+Azure Functions のタイマー トリガーに使用できる CRON 式の例をいくつか示します。 
 
 5 分に 1 回トリガーするには、次のように指定します。
 
@@ -110,9 +224,8 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 "schedule": "0 30 9 * * 1-5",
 ```
 
-<a name="usage"></a>
+## <a name="usage"></a>使用法
 
-## <a name="trigger-usage"></a>トリガーの使用方法
 タイマー トリガー関数が呼び出されると、[タイマー オブジェクト](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)が関数に渡されます。 次の JSON は、タイマー オブジェクトの 1 つの表現例です。 
 
 ```json
@@ -127,68 +240,14 @@ CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) �
 }
 ```
 
-<a name="sample"></a>
+## <a name="scale-out"></a>スケールアウト
 
-## <a name="trigger-sample"></a>トリガー サンプル
-function.json の `bindings` 配列に次のタイマー トリガーがあるとします。
-
-```json
-{
-    "schedule": "0 */5 * * * *",
-    "name": "myTimer",
-    "type": "timerTrigger",
-    "direction": "in"
-}
-```
-
-タイマー オブジェクトを読み取って遅延実行されているかどうかを調べる、言語固有のサンプルを参照してください。
-
-* [C#](#triggercsharp)
-* [F#](#triggerfsharp)
-* [Node.JS](#triggernodejs)
-
-<a name="triggercsharp"></a>
-
-### <a name="trigger-sample-in-c"></a>C# でのトリガー サンプル #
-```csharp
-public static void Run(TimerInfo myTimer, TraceWriter log)
-{
-    if(myTimer.IsPastDue)
-    {
-        log.Info("Timer is running late!");
-    }
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}" );  
-}
-```
-
-<a name="triggerfsharp"></a>
-
-### <a name="trigger-sample-in-f"></a>F# でのトリガー サンプル #
-```fsharp
-let Run(myTimer: TimerInfo, log: TraceWriter ) =
-    if (myTimer.IsPastDue) then
-        log.Info("F# function is running late.")
-    let now = DateTime.Now.ToLongTimeString()
-    log.Info(sprintf "F# function executed at %s!" now)
-```
-
-<a name="triggernodejs"></a>
-
-### <a name="trigger-sample-in-nodejs"></a>Node.js でのトリガー サンプル
-```JavaScript
-module.exports = function (context, myTimer) {
-    var timeStamp = new Date().toISOString();
-
-    if(myTimer.isPastDue)
-    {
-        context.log('Node.js is running late!');
-    }
-    context.log('Node.js timer trigger function ran!', timeStamp);   
-
-    context.done();
-};
-```
+タイマー トリガーでは、複数インスタンスのスケールアウトがサポートされます。特定のタイマー関数の 1 つのインスタンスが、すべてのインスタンスにわたって実行されます。
 
 ## <a name="next-steps"></a>次のステップ
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
 
+> [!div class="nextstepaction"]
+> [タイマー トリガーを使用するクイックスタートに進む](functions-create-scheduled-function.md)
+
+> [!div class="nextstepaction"]
+> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

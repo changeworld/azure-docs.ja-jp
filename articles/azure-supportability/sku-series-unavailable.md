@@ -3,41 +3,76 @@ title: "利用できない SKU シリーズ | Microsoft Docs"
 description: "一部の SKU シリーズは、このリージョンでは、選択されたサブスクリプションでご利用いただけません。"
 services: Azure Supportability
 documentationcenter: 
-author: ganganarayanan
-manager: scotthit
+author: stevendotwang
+manager: rajatk
 editor: 
-ms.assetid: 5496728b-8da4-4c99-8557-a196be14c42d
 ms.service: azure-supportability
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2016
-ms.author: gangan
-ms.openlocfilehash: 3dc32bfb88e43e82cc4b3f43e31ce20d4302b688
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/09/2017
+ms.author: xingwan
+ms.openlocfilehash: 62964d0c5d75168226a35b25e5c256a1b57f3f81
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="sku-series-unavailable"></a>利用できない SKU シリーズ
-一部のリージョンでは、特定の SKU は新しいサブスクリプションで自動的に使用することができません。  これは、 [リージョンに、より強力な SKU が導入され](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/) 、従来の SKU の需要が低下したときに起こることがあります。
-メッセージ "*一部の SKU シリーズは、このリージョンの選択されたサブスクリプションでご利用いただけません*" が、コンピューティング コアのクォータを増やすサポート要求を作成するときに表示されます。
+# <a name="region-or-sku-unavailable"></a>リージョンまたは SKU が利用できない
+この記事では、Azure サブスクリプションからリージョンまたは VM SKU を利用できない問題の解決方法について説明します。
 
-SKU の可用性は、 [Azure のリージョン別サービス](https://azure.microsoft.com/regions/#services) に関するページで確認することができます。 
+## <a name="symptoms"></a>現象
 
-制限されている SKU へのアクセスをサブスクリプションから要求するには、"サブスクリプションの管理" サポート要求を作成します。
+### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>仮想マシンをデプロイするときに、次のいずれかのエラー メッセージが表示されます。
+```
+Code: SkuNotAvailable
+Message: The requested size for resource '<resource>' is currently not available in location 
+'<location>' zones '<zone>' for subscription '<subscriptionID>'. Please try another size or 
+deploy to a different location or zones. See https://aka.ms/azureskunotavailable for details.
+```
 
-* [基本] ページで、[問題の種類] を [サブスクリプションの管理] として選択し、[次へ] をクリックします。
+```
+Message: Your subscription doesn’t support virtual machine creation in <location>. Choose a 
+different location. Supported locations are <list of locations>
+```
+
+```
+Code: NotAvailableForSubscription
+Message: This size is currently unavailable in this location for this subscription
+```
+
+### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>予約仮想マシン インスタンスを購入するときに、次のいずれかのエラー メッセージが表示されます。
+
+```
+Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
+different location. Supported locations are: <list of locations>  
+```
+
+```
+Message: This size is currently unavailable in this location for this subscription
+```
+
+### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>コンピューティング コア クォータを増やす Support request を作成しているのですが、リージョンまたは SKU ファミリーが選択肢として表示されません。
+
+## <a name="solution"></a>解決策
+まず、実際のビジネス ニーズを満たす代替のリージョンまたは SKU を検討するようお勧めします。 適切なリージョンまたは SKU が見つからない場合は、次の手順に従って "サブスクリプション管理" の [Support request](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) を作成してください。
+
+
+- [基本] ページで、[問題の種類] を [サブスクリプションの管理] として選択し、サブスクリプションを選択して [次へ] をクリックします。
 
 ![[基本] ブレード](./media/SKU-series-unavailable/BasicsSubMgmt.png)
 
-* [問題] ページで、[問題の種類] を [一般的な質問] として選択し、正確なリージョンと確認できない SKU を入力します。
-  これにより、サポートの処理時間を短縮できます。
+
+-   [問題] ページで、[問題の種類] を [一般的な質問] として選択します。
+- [詳細] セクションに次の情報を入力します。
+  - 仮想マシンをデプロイしようとしているのか、予約仮想マシン インスタンスを購入しようとしているのかを記述します。
+  - デプロイまたは購入しようとしている仮想マシン インスタンスのリージョン、SKU、数を明記します。
+
 
 ![問題点](./media/SKU-series-unavailable/ProblemSubMgmt.png)
 
-* [連絡先情報] ページに連絡先の詳細情報を入力し、[作成] をクリックします。
+-   連絡先の詳細情報を入力し、[作成] をクリックします。
 
 ![連絡先情報](./media/SKU-series-unavailable/ContactInformation.png)
 

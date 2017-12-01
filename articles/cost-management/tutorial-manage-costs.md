@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2017
+ms.date: 11/21/2017
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 83ddc0cb4227235069b0027a24a52f4d8e818126
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: bfbcded98814500a03b2b79b0248c84f8f043dc0
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="manage-costs-by-using-azure-cost-management"></a>Azure Cost Management を使用したコスト管理
 
@@ -80,6 +80,23 @@ Cloudyn ポータルで、右上にある歯車アイコンをクリックして
 
 ![カテゴリの例](./media/tutorial-manage-costs/category01.png)
 
+### <a name="tag-sources-and-reports"></a>タグのソースとレポート
+
+Cloudyn レポートに表示されるタグ データの起点は、次の 3 つの場所です。
+
+- クラウド プロバイダーのリソース API
+- クラウド プロバイダーの Billing API
+- 次のソースから手動で作成されたタグ:
+    - Cloudyn エンティティ タグ - Cloudyn エンティティに適用されたユーザー定義のメタデータ
+    - Category Manager - 既存のタグに適用されるルールに基づいて新しいタグを作成する、データ クレンジング ツール
+
+Cloudyn コスト レポートのクラウド プロバイダーのタグを表示するには、コスト配賦 360 度を使用してカスタムのコスト配賦モデルを作成する必要があります。 その場合は、**[Cost]\(コスト\)** > **[Cost Management]\(コスト管理\)** > **[Cost Allocation 360]\(コスト配賦 360 度\)** の順に選択し、目的のタグを選択してから、タグなしのコストを扱う規則を定義します。 次に、新しいコスト モデルを作成します。 その後、コスト配賦分析のレポートを表示して、Azure リソース タグを表示、フィルター処理、および並べ替えできます。
+
+Azure リソース タグは、**コスト配賦分析**レポートにのみ表示されます。
+
+クラウド プロバイダーの課金タグは、すべてのコスト レポートに表示されます。
+
+Cloudyn エンティティ タグと手動で作成したタグは、すべてのコスト レポートに表示されます。
 
 
 ## <a name="create-showback-and-chargeback-reports"></a>ショーバック レポートとチャージバック レポートを作成する

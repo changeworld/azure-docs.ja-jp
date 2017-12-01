@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2017
+ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 457857f44ad3081087b5843f156860c901562468
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ee100fa86d78840a3b6a6bbf9453954c054931c2
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure のセルフサービス サインアップについて]()」をご覧ください。
@@ -67,7 +67,7 @@ DNS TXT レコードがドメイン名のレジストラーで確認済みの場
   
 6. Azure AD テナントのグローバル管理者であるアカウントを使って、[Azure AD 管理センター](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
   
-7. **[ドメイン名]** を選択して、ドメイン名を追加します。 DNS TXT レコードを入力して、ドメイン名の所有権を確認する必要があります。 
+7. **[カスタム ドメイン名]** を選択してドメイン名を追加します。 DNS TXT レコードを入力して、ドメイン名の所有権を確認する必要があります。 
   
   ![Azure AD に追加されたドメイン](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
