@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 95d58c600bc43059025e739a8cdb062287f4ffb5
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4a2347fe9578b35c95d240c5c4dd2bf062077ece
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>クイックスタート: Python と Azure Cosmos DB で Cassandra アプリを構築する
 
@@ -29,13 +29,14 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="prerequisites"></a>前提条件
 
-* このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
-    * [Python](https://www.python.org/downloads/) バージョン v2.7.14
-    * [Git](http://git-scm.com/)
-    * [Apache Cassandra 用 Python ドライバー](https://github.com/datastax/python-driver)
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
+Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスする必要があります。 まだアクセスを申し込んでいない場合は、[今すぐサインアップ](cassandra-introduction.md#sign-up-now)してください。
+
+加えて次の作業を行います。
+* [Python](https://www.python.org/downloads/) バージョン v2.7.14
+* [Git](http://git-scm.com/)
+* [Apache Cassandra 用 Python ドライバー](https://github.com/datastax/python-driver)
 
 ## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
 

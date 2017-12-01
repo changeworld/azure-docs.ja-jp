@@ -1,4 +1,4 @@
-| SKU | Description |
+| SKU | 説明 |
 |---|---|
 | 基本 | Azure Container Registry について学習する開発者向けのコスト最適化エントリ ポイント。 Basic レジストリには Standard および Premium と同じプログラム機能があります (Azure Active Directory 認証の統合、イメージ削除、および Web フック) が、サイズと使用の制約があります。 |
 | 標準 | Standard レジストリは、Basic と同じ機能を提供しますが、ストレージ制限とイメージ スループットが拡大されています。 Standard レジストリは、ほとんどの運用シナリオのニーズを満たすはずです。 |

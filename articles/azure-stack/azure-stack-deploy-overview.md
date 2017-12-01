@@ -29,9 +29,9 @@ ms.lasthandoff: 10/11/2017
 
 1. [**ハードウェア、ソフトウェア、ネットワークを計画します**](azure-stack-deploy.md)。 開発キットをホストするコンピューター (開発キット ホスト) は、ハードウェア、ソフトウェア、ネットワークの要件を満たす必要があります。 Azure Active Directory か Active Directory フェデレーション サービス (AD FS) のどちらを使用するか選択します。 インストール プロセスが滞りなく進行するように、デプロイの開始前に以上の前提条件を必ず満たしてください。 
 
-2. [**デプロイ パッケージをダウンロードし、展開します**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit)。 開発キット ホストや別のコンピューターにデプロイ パッケージをダウンロードできます。 展開されたデプロイ ファイルは 60 GB の空きディスク容量を占めます。そのため、別のコンピューターを利用することで、開発キット ホストのハードウェア要件を緩和できます。
+2. [**デプロイ パッケージをダウンロードし、展開します**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit)。 開発キット ホストや別のコンピューターにデプロイ パッケージをダウンロードできます。 抽出されたデプロイ ファイルは 60 GB の空きディスク容量を占めます。そのため、別のコンピューターを利用することで、開発キット ホストのハードウェア要件を緩和できます。
 
-3. インストーラーを利用して[**開発キット ホスト**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host)を用意します。 この手順の後、開発キット ホストは Cloudbuilder.vhdx (起動可能なオペレーティング システムと Azure Stack インストール ファイルを含む仮想ハード ドライブ) から起動します。
+3. インストーラーを利用して[**開発キット ホスト**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host)を用意します。 この手順の後、開発キット ホストは Cloudbuilder.vhdx (起動可能オペレーティング システムと Azure Stack インストール ファイルを含む仮想ハード ドライブ) を起動します。
 
 4. 開発キット ホストで[**開発キットをデプロイします**](azure-stack-run-powershell-script.md#deploy-the-development-kit)。
 

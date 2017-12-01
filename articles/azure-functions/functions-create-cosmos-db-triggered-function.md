@@ -107,7 +107,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
  
     ![taskCollection の定義](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
  
-    | 設定|推奨値|Description |
+    | 設定|推奨値|説明 |
     | ---|---|--- |
     | **[データベース ID]** | タスク |新しいデータベースの名前。 これは、関数バインドで定義された名前と一致する必要があります。 |
     | **[コレクション ID]** | 項目 | 新しいコレクションの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |

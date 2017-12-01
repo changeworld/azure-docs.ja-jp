@@ -68,7 +68,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
     ![アクティビティ ログ アラートの作成](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings.png)
 
-    | 設定      |  推奨値   | Description                              |
+    | 設定      |  推奨値   | 説明                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **アクティビティ ログ アラート名** | resource-group-create-alert | アクティビティ ログ アラートの名前。 |
     | **サブスクリプション** | 該当するサブスクリプション | このチュートリアルで使用しているサブスクリプション。 | 
