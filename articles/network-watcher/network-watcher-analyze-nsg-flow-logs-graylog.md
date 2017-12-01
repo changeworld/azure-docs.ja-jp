@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 1d79b775e97765a48be48a96cf10bc9435b4539b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eaee4e1ed213d0834d959d862feffd4bca57cd9f
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -148,9 +148,9 @@ Logstash を使用して、JSON 形式のフロー ログをフロー タプル 
     ```
 用意されている Logstash 構成ファイルは、input、filter、output の 3 つの部分で構成されます。 input セクションでは、Logstash が処理するログの入力ソースを指定します。この例では、(次の手順でインストールする) Azure Blob 入力プラグインを使用します。このプラグインにより、Blob Storage に保存されているネットワーク セキュリティ グループ フロー ログ JSON ファイルにアクセスできるようになります。
 
-    The filter section then flattens each flow log file so that each individual flow tuple and its associated properties becomes a separate Logstash event.
+filter セクションは、個々のフロー タプルとそれに関連付けられたプロパティが別の Logstash イベントになるように、各フロー ログ ファイルをフラット化します。
 
-    Finally, the output section forwards each Logstash event to the Graylog server. To suit your specific needs, modify the Logstash config file, as required.
+最後に、output セクションは、各 Logstash イベントを Graylog サーバーに転送します。 特定のニーズに合わせるために、Logstash 構成ファイルは適宜変更を加えてください。
 
     > [!NOTE]
     > The previous config file assumes that the Graylog server has been configured on the local host loopback IP address 127.0.0.1. If not, be sure to change the host parameter in the output section to the correct IP address.

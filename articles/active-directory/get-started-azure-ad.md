@@ -1,12 +1,12 @@
 ---
 title: "Azure Active Directory の概要 | Microsoft Docs"
-description: 
+description: "Azure Active Diretory で、ライセンスの取得、ドメイン名の追加、カスタム サインイン ページの作成、セルフサービスによるパスワードのリセットを行います"
 keywords: 
-author: jeffgilb
-manager: femila
-ms.author: jeffgilb
+author: curtand
+manager: michael.tillman
+ms.author: curtand
 ms.reviewer: jsnow
-ms.date: 10/04/2017
+ms.date: 11/14/2017
 ms.topic: article
 ms.prod: 
 ms.service: active-directory
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.technology: 
 ms.assetid: 
 services: active-directory
-custom: it-pro
-ms.openlocfilehash: 714f90155dbf53c5728e27995cee95f132fa452b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.custom: it-pro
+ms.openlocfilehash: dd745869494a1ed740a0a05a5508363334aa7360
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="get-started-with-azure-ad"></a>Azure AD の概要
 最新の ID 管理には、アプリケーションとサービスの可用性を、認証済みユーザーに対してのみ確保できるように、スケーラブルで一貫性のある信頼性が求められています。 ユーザーの ID 管理のニーズに適切に対応するには、IT には、承認済みパブリック SaaS (サービスとしてのソフトウェア) アプリへのアクセスを提供する方法、内部の基幹業務アプリをホストする方法、さらにはオンプレミスのアプリの開発と使用を強化する方法も必要です。 こうした要件はすべて、クラウド ベースの ID 管理ソリューションの必要性を示しています。      
@@ -41,8 +41,8 @@ Active Directory Premium にはいくつかの方法でサインアップでき�
 - Enterprise Mobility + Security ライセンス プランを使用する
 - マイクロソフト ボリューム ライセンス プランを使用する
 
-> ### <a name="verification-step"></a>確認手順
-> サブスクリプションをアクティブにした後、サービスにログインできることを確認します。
+### <a name="verification-step"></a>確認手順
+サブスクリプションをアクティブにした後、サービスにログインできることを確認します。
 
 ## <a name="add-a-custom-domain-name"></a>カスタム ドメイン名を追加する
 Azure AD ディレクトリにはすべて、*domainname*.onmicrosoft.com の形式の初期ドメイン名が付いています。初期ドメイン名は変更も削除もできませんが、[企業ドメイン名を Azure AD に追加することもできます](add-custom-domain.md)。 たとえば、組織には多くの場合、ビジネスを行うために使用する別のドメイン名と、企業ドメイン名を使用してサインインするユーザーが存在します。 Azure AD にカスタム ドメイン名を追加すると、ディレクトリ内で、"alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を、 "alice@.onmicrosoft.com" の代わりに割り当てることができます。 この場合のプロセスは単純です。
@@ -51,22 +51,22 @@ Azure AD ディレクトリにはすべて、*domainname*.onmicrosoft.com の形
 2. ドメイン名レジストラーでドメイン名の DNS エントリを追加する
 3. Azure AD でカスタム ドメイン名を検証する
 
-> ### <a name="verification-step"></a>確認手順
-> カスタム ドメインを追加した後、Azure AD ポータルの **[ドメイン名]** ブレードで、そのドメインの状態が **[確認済み]** であることを確認します。
+### <a name="verification-step"></a>確認手順
+カスタム ドメインを追加した後、Azure AD ポータルの **[カスタム ドメイン名]** ブレードで、そのドメインの状態が **[確認済み]** であることを確認します。
 
 ## <a name="add-company-branding-to-your-sign-in-page"></a>サインイン ページに会社のブランドを追加する 
 多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory (Azure AD) では、[会社のロゴや独自の配色でサインイン ページの外観をカスタマイズ](customize-branding.md)できるようにすることでこれを実現します。 サインイン ページは、Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。 このページを使用して資格情報を入力します。
 
-> ### <a name="verification-step"></a>確認手順
-> Azure Portal にログインし、カスタマイズされたサインイン ページと、追加の言語カスタマイズが正しく構成されていることを確認します。 
+### <a name="verification-step"></a>確認手順
+Azure Portal にログインし、カスタマイズされたサインイン ページと、追加の言語カスタマイズが正しく構成されていることを確認します。 
 
 ## <a name="add-new-users"></a>新しいユーザーを追加する
 [組織の Azure AD に新しいユーザーを追加](add-users-azure-active-directory.md)するには、Azure Portal を使用して 1 人ずつ追加するか、オンプレミスの Windows Server AD リソース データを同期します。 Azure AD ポータルから直接クラウド ベースのユーザーを追加するか、オンプレミスのユーザー情報を同期することができます。
 
 Azure AD へのオンプレミスの ID 同期を有効にするには、組織のサーバーに [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) をインストールして構成する必要があります。 このアプリケーションは、既存の ID ソースから Azure AD テナントへのユーザーとグループの同期を処理します。
 
-> ### <a name="verification-step"></a>確認手順
-> 新しいユーザーを作成および同期した後、そのユーザーが Azure AD に表示されることを確認します。
+### <a name="verification-step"></a>確認手順
+新しいユーザーを作成および同期した後、そのユーザーが Azure AD に表示されることを確認します。
 
 ## <a name="assign-licenses"></a>ライセンスを割り当てる
 有料機能を構成するうえで必要なことはサブスクリプションの入手だけですが、引き続き Azure AD Premium の有料機能の[ライセンスはユーザーに割り当てる](license-users-groups.md)必要があります。 Azure AD の有料機能へのアクセスが必要なユーザーや Azure AD の有料機能で管理されているユーザーには、ライセンスを割り当てる必要があります。 ライセンスの割り当てとは、ユーザーと、Azure AD Premium、Basic、Enterprise Mobility + Security などの購入済みのサービスとのマッピングです。
@@ -77,17 +77,17 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 - 適切な役職を持つすべてのユーザーがライセンスを取得する
 - 組織内の他の管理者に決定を委任することができる (セルフサービス グループを使用)
 
-> ### <a name="verification-step"></a>確認手順
-> **[Azure Active Directory]**  >  **[ライセンス]**  >  **[すべての製品]** で、割り当てられている利用可能なライセンスを確認します。
+### <a name="verification-step"></a>確認手順
+**[Azure Active Directory]**  >  **[ライセンス]**  >  **[すべての製品]** で、割り当てられている利用可能なライセンスを確認します。
 
 ## <a name="configure-self-service-password-reset"></a>セルフサービスのパスワードのリセットを構成する
 [セルフサービスのパスワードのリセット (SSPR)](active-directory-passwords-getting-started.md) は、IT 管理者が、ユーザーによるパスワードやアカウントのリセットまたはロック解除を、簡単に許可できるようにします。 このシステムには、ユーザーがいつシステムを使用したかを追跡する詳細なレポートと、誤用や悪用について警告する通知が用意されています。
 
-> ### <a name="verification-step"></a>確認手順
-> **Azure Active Directory**  >  **[パスワードのリセット]** の有効な SSPR プロパティに、適切なユーザーとグループが割り当てられていることを確認します。 
+### <a name="verification-step"></a>確認手順
+**Azure Active Directory**  >  **[パスワードのリセット]** の有効な SSPR プロパティに、適切なユーザーとグループが割り当てられていることを確認します。 
 
 
-### <a name="learn-more"></a>詳細情報
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory の製品ページ](https://azure.microsoft.com/services/active-directory/)
 
 [Azure Active Directory の価格情報ページ](https://azure.microsoft.com/pricing/details/active-directory/)

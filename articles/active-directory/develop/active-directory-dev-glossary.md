@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2017
+ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 1002ce29ff0d9ee2a6eac44c6e4402fc7e9ade31
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 6a657177087ca01f4507b12048a88850aea1a03f
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 この記事では、Azure Active Directory (AD) 開発で重要となるいくつかの概念について定義しています。Azure AD のアプリケーション開発を習得する際の参考としてください。
@@ -33,6 +33,9 @@ ms.lasthandoff: 11/07/2017
 * ["クライアント資格情報" 型の承認付与](#authorization-grant): クライアントが行うのは単一の認証のみです。クライアントがリソース所有者の認証/承認なしで機能することから、このトークンは、"App-Only" トークンと呼ばれることがあります。
 
 詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
+
+## <a name="application-id-client-id"></a>アプリケーション ID (クライアント ID)
+特定のアプリケーションと関連付けられた構成を識別する、Azure AD がアプリケーションの登録に発行する一意識別子。  このアプリケーション ID ([クライアント ID](https://tools.ietf.org/html/rfc6749#page-15)) は、認証要求の実行時に使用され、開発時に認証ライブラリに提供されます。 アプリケーション ID (クライアント ID) はシークレットではありません。 
 
 ## <a name="application-manifest"></a>アプリケーション マニフェスト
 [Azure Portal][AZURE-portal]に備わっている機能の 1 つで、アプリケーションの ID 構成が JSON 形式で生成されて表現されます。そのマニフェストが関連付けられている [Application][AAD-Graph-App-Entity] エンティティと [ServicePrincipal][AAD-Graph-Sp-Entity] エンティティを更新するための機構として使用されます。 詳細については、「[Azure Active Directory のアプリケーション マニフェストについて][AAD-App-Manifest]」を参照してください。
@@ -174,7 +177,7 @@ Web サーバーからコードをダウンロードしてユーザー エージ
 Web サーバーですべてのコードを実行する[クライアント アプリケーション](#client-application)の一種。資格情報をサーバー上に安全に保存することで、"confidential" クライアントとして動作することができます。 詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-「[Azure Active Directory 開発者ガイド][AAD-Dev-Guide]」をお読みください。Azure AD と[アプリケーションの統合][AAD-How-To-Integrate]や、[Azure AD 認証の基礎、サポートされる認証シナリオ][AAD-Auth-Scenarios]など、Azure AD 開発に関連したあらゆるトピックへの入口となっています。
+[Azure AD 開発者ガイド][AAD-Dev-Guide]は、[アプリケーションの統合][AAD-How-To-Integrate]の概要や[Azure AD 認証の基礎とサポートされる認証シナリオ][AAD-Auth-Scenarios]など、Azure AD 開発に関連したあらゆるトピックに使用するためのランディング ページとなっています。  また、迅速に開始および実行する方法に関するコード サンプルやチュートリアルは、[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) で見つかります。
 
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。新しい定義に関するリクエストのほか、既存の定義の更新のリクエストもお待ちしております。
 

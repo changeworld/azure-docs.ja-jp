@@ -1,6 +1,6 @@
 ---
-title: "SAP 用の Microsoft Azure の認定資格 | Microsoft Docs"
-description: "現在の構成と、Azure プラットフォーム上の SAP の認定資格の最新の一覧です。"
+title: "SAP 用の Microsoft Azure の認定 | Microsoft Docs"
+description: "現在の構成と、Azure プラットフォーム上の SAP の認定の最新の一覧です。"
 services: virtual-machines-linux
 documentationcenter: 
 author: RicksterCDN
@@ -17,15 +17,15 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2017
 ms.author: rclaus
 ms.custom: 
-ms.openlocfilehash: 1bfc95977634a41a23fc8bcfee22c44849a9cf04
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 865fa54c908481b3f4c211f12293538c617b6129
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定資格と構成
+# <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定と構成
 
-SAP およびマイクロソフトは、お客様に対して相互にメリットを持つ強力なパートナーシップの中で互いに連携している長い歴史があります。 マイクロソフトでは、定期的にプラットフォームを更新し、Microsoft Azureが SAP のワークロードを実行する最適なプラットフォームであることを保証するための新しい認定資格の詳細を SAP に提出しています。 次の表に、サポート対象の構成と増加する認定資格の一覧を示します。 
+SAP および Microsoft は、お客様に対して相互にメリットを持つ強力なパートナーシップの中で互いに連携している長い歴史があります。 Microsoft では、定期的にプラットフォームを更新し、Microsoft Azure が SAP のワークロードを実行する最適なプラットフォームであることを保証するための新しい認定の詳細を SAP に提出しています。 次の表に、サポート対象の構成と増加する認定資格の一覧を示します。 
 
 ## <a name="sap-hana-certifications"></a>SAP HANA 認定
 参照:
@@ -42,7 +42,7 @@ SAP およびマイクロソフトは、お客様に対して相互にメリッ�
 | HANA Enterprise for BW、OLAP | Red Hat Enterprise Linux、SUSE Linux Enterprise | 単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス) |
 | SAP BW/4 HANA | Red Hat Enterprise Linux、SUSE Linux Enterprise | 単一ノード デプロイメント用 GS5、SAP HANA on Azure (L インスタンス) |
 
-## <a name="sap-netweaver-certifications"></a>SAP NetWeaver 認定資格
+## <a name="sap-netweaver-certifications"></a>SAP NetWeaver 認定
 以下の SAP 製品に関して Microsoft Azure は認定を受けており、マイクロソフトと SAP から完全サポートを受けることができます。
 参照:
 
@@ -64,3 +64,4 @@ SAP およびマイクロソフトは、お客様に対して相互にメリッ�
 | SAP BPC 10.01 MS SP08 | Windows | | すべての種類の NetWeaver 認定 VM<br /> SAP Note #2451795 |
 | SAP ビジネス オブジェクト BI プラットフォーム | Windows | | SAP Note #2145537 |
 | SAP Data Services 4.2 | | | SAP Note #2288344 |
+| SAP Hybris Commerce Platform 5.x および 6.x | Windows | SQL Server、Oracle | すべての種類の NetWeaver 認定 VM<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |

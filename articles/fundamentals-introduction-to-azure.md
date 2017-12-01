@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-ms.openlocfilehash: 2d2cc04887d90b9f005bfe5310a9ce2fb2f7e217
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69b8ec86f764077a0e6d029f7c540fa25d022a31
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="introducing-microsoft-azure"></a>Microsoft Azure の概要
 Microsoft Azure は、パブリック クラウド向けの Microsoft のアプリケーション プラットフォームです。  この記事を読めば、クラウド コンピューティングに関する知識がまったくなくても、Azure の基礎を理解することができます。
@@ -77,7 +77,7 @@ VM を作成するには、使用する VHD と VM のサイズを指定しま�
 
 これこそ、Web Apps が提供する機能です。 このコンピューティング モデルには、Microsoft Azure 管理ポータルおよび API を使用した、管理された Web 環境が用意されています。 既存の Web サイト アプリケーションを変更せずに Web Apps に移行することもできれば、クラウドに直接新しいサイトを作成することもできます。 Web サイトが稼働したら、インスタンスを動的に追加または削除し、Azure Web Apps で要求の負荷分散を行うことができます。 Azure Apps には、仮想マシン内で他の Web サイトと共に稼働する Shared オプションと、専用の VM でサイトを実行する Standard オプションが用意されています。 標準オプションは、必要に応じてインスタンスのサイズ (コンピューティング能力) を増強することもできます。
 
-開発用には、.NET、PHP、Node.js、Java、Python に加え、リレーショナル ストレージのための SQL Database と MySQL (マイクロソフト パートナーである ClearDB 製) をサポートしています。 さらに、WordPress、Joomla、Drupal など、一般的なアプリケーションのサポートも多数組み込まれています。 パブリック クラウド内で Web サイトと Web アプリケーションを作成するための低価格でスケーラブル、広範な利便性を備えたプラットフォームを提供することが、その目的です。
+開発用には、.NET、PHP、Node.js、Java、Python に加え、リレーショナル ストレージのための SQL Database と Azure Database for MySQL をサポートしています。 さらに、WordPress、Joomla、Drupal など、一般的なアプリケーションのサポートも多数組み込まれています。 パブリック クラウド内で Web サイトと Web アプリケーションを作成するための低価格でスケーラブル、広範な利便性を備えたプラットフォームを提供することが、その目的です。
 
 **Web Apps のシナリオ**
 

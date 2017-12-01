@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.openlocfilehash: 121dd1a90e9bde66f1c3b752412a657a67295084
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ac630982b47f7105feb034982eae070faa72d9e
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のためのネットワークの考慮事項 #
 
@@ -164,7 +164,7 @@ NSG は、Azure Portal または PowerShell を使用して構成できます。
 
 ![送信セキュリティ規則][5]
 
-NSG が定義されたら、それを ASE が存在するサブネットに割り当てます。 ASE VNet またはサブネットを覚えていない場合は、ASE 管理ポータルから確認できます。 NSG をサブネットに割り当てるには、サブネット UI に移動して、NSG を選択します。
+NSG が定義されたら、それを ASE が存在するサブネットに割り当てます。 ASE VNet またはサブネットを覚えていない場合は、ASE ポータル ページから確認できます。 NSG をサブネットに割り当てるには、サブネット UI に移動して、NSG を選択します。
 
 ## <a name="routes"></a>ルート ##
 
@@ -200,7 +200,7 @@ UDR を作成するには、次の手順を実行します
 
 3. ルート テーブル UI 内から、**[ルート]** > **[追加]** を選択します。
 
-4. **[次ホップの種類]** を **[インターネット]** に、**[アドレス プレフィックス]** を **[0.0.0.0/0]** に設定します。 [ **保存**] を選択します。
+4. **[次ホップの種類]** を **[インターネット]** に、**[アドレス プレフィックス]** を **[0.0.0.0/0]** に設定します。 **[保存]** を選択します。
 
     次のような内容が表示されます。
 

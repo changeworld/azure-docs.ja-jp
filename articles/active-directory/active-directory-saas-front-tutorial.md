@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: d936bc50a66ac2a3c17038ff08351edf9902c99f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 944149746b05108040cd0cc340e882b39713f06e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>チュートリアル: Azure Active Directory と Front の統合
 
@@ -104,66 +104,60 @@ Front で Azure AD のシングル サインオンを構成してテストする
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-front-tutorial/tutorial_front_samlbase.png)
 
-3. **[Front のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+3. **[Front のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-front-tutorial/tutorial_front_url1.png)
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<companyname>.frontapp.com` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<companyname>.frontapp.com/sso/saml/callback` のパターンを使用して URL を入力します。
-
-4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにします。
-
-    ![[シングル サインオンの構成]](./media/active-directory-saas-front-tutorial/tutorial_front_url2.png)
-
-    **[サインオン URL]** ボックスに、`https://<companyname>.frontapp.com` のパターンを使用して URL を入力します。
      
     > [!NOTE] 
-    > これらは実際の値ではありません。 これらの値は実際の識別子、応答 URL、およびサインオン URL に変更してください。これらの値の取得方法については、チュートリアルの後半の説明を参照するか、[Front クライアント サポート チーム](mailto:support@frontapp.com)に問い合わせてください。 
+    > これらは実際の値ではありません。 これらの値は実際の識別子と応答 URL で更新してください。これらの値の取得方法については、チュートリアルの後半の説明を参照するか、[Front クライアント サポート チーム](mailto:support@frontapp.com)にお問い合わせください。 
 
-5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-front-tutorial/tutorial_front_certificate.png) 
 
-6. **[保存]** ボタンをクリックします。
+5. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-front-tutorial/tutorial_general_400.png)
     
-7. **[Front 構成]** セクションで、**[Front の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+6. **[Front 構成]** セクションで、**[Front の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-front-tutorial/tutorial_front_configure.png) 
 
-8. Front テナントに管理者としてサインオンします。
+7. Front テナントに管理者としてサインオンします。
 
-9. **[Settings (設定)] \(左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** の順に移動します。
+8. **[Settings (設定)] \(左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** の順に移動します。
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_000.png)
 
-10. **[シングル サインオン]** のリンクをクリックします。
+9. **[シングル サインオン]** のリンクをクリックします。
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_001.png)
 
-11. **[Single Sign On]\(シングル サインオン\)** のドロップダウン リストで、**[SAML]** を選択します。
+10. **[Single Sign On]\(シングル サインオン\)** のドロップダウン リストで、**[SAML]** を選択します。
    
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_002.png)
 
-12. **[Entry Point (エントリ ポイント)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[シングル サインオン サービス URL]** の値を入力します。
+11. **[Entry Point (エントリ ポイント)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[シングル サインオン サービス URL]** の値を入力します。
     
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_003.png)
 
-13. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[Signing certificate]** ボックスに貼り付けます。
+12. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[Signing certificate]** ボックスに貼り付けます。
     
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_004.png)
 
-14. **[Service provider settings]** セクションで、次の手順に従います。
+13. **[Service provider settings]** セクションで、次の手順に従います。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_005.png)
 
     a. **Entity ID** の値をコピーして Azure Portal の **[Front のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    b. **ACS URL** の値をコピーして Azure Portal の **[Front のドメインと URL]** セクションの**[サインオン URL]** ボックスに貼り付けます。
+    b. **ACS URL** の値をコピーして Azure Portal の **[Front のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
     
-15. **[保存]** ボタンをクリックします。
+14. **[保存]** ボタンをクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。

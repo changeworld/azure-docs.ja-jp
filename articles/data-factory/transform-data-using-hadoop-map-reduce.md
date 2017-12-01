@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: shengc
-ms.openlocfilehash: b473ba03b8b700b3123f82343e59a1ed897c4189
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c022d1c091fdd1b1e4d16270467c7191fc24ae3
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -53,7 +53,6 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
             "type": "LinkedServiceReference"
         },
         "jarFilePath": "MyAzureStorage/jars/sample.jar",
-        "jarlibs": "MyAzureStorage/jars/jar1",
         "getDebugInfo": "Failure",
         "arguments": [
           "-SampleHadoopJobArgument1"
@@ -76,7 +75,7 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 | className         | 実行するクラスの名前         | あり      |
 | jarLinkedService  | Jar ファイルの格納に使用される Azure Storage のリンクされたサービスへの参照。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
 | jarFilePath       | jarLinkedServiceで参照される Azure Storage に格納されている Jar ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | あり      |
-| jarlibs           | jarLinkedServiceで参照される Azure Storage に格納されているジョブで参照される Jar ライブラリ ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | いいえ       |
+| jarlibs           | jarLinkedServiceで定義される Azure Storage に格納されているジョブで参照される Jar ライブラリ ファイルへのパスの文字列配列。 ファイル名は大文字と小文字が区別されます。 | いいえ       |
 | getDebugInfo      | HDInsight クラスターで使用されている Azure Storage または jarLinkedService で指定された Azure Storage にログ ファイルがコピーされるタイミングを指定します。 使用できる値: None、Always、または Failure。 既定値: None。 | いいえ       |
 | arguments         | Hadoop ジョブの引数の配列を指定します。 引数はコマンド ライン引数として各タスクに渡されます。 | いいえ       |
 | defines           | Hive スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ       |

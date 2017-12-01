@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/17/2017
 ms.author: nitinme
-ms.openlocfilehash: 73c472140861a0d0d270021ab268e8c1113c23b5
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6677b0b3ed047ce011bfbb72c25e45195859830a
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics を使用して Azure HDInsight クラスターを監視する
 
@@ -31,7 +31,7 @@ Azure Log Analytics を使って HDInsight でHadoop クラスターの操作を
 
 * **Azure サブスクリプション**。 このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free)」をご覧ください。
 
-* **Azure HDInsight クラスター**。 現在、Azure OMS は次の HDInsight クラスター タイプで使用することができます。
+* **Azure HDInsight クラスター**。 現在、Azure Operations Management Suite は次の HDInsight クラスター タイプで使用することができます。
 
     * Hadoop
     * HBase
@@ -56,7 +56,7 @@ Azure Log Analytics を使って HDInsight でHadoop クラスターの操作を
 
     設定を保存するまでしばらく時間がかかります。  設定完了後、上部に **[OMS ダッシュ ボードを開く]** ボタンが表示されます。 
 
-    ![OMS ダッシュボードを開く](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-open-workspace.png "OMS ダッシュボードを開く")
+    ![Operations Management Suite ダッシュボードを開く](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-open-workspace.png "OMS ダッシュボードを開く")
 
 5. **[OMS ダッシュ ボードを開く]** をクリックします。
 6. メッセージが表示されたら、Azure の資格情報を入力します。

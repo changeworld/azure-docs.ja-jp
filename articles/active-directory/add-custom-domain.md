@@ -3,26 +3,26 @@ title: "Azure AD へのカスタム ドメインの追加 | Microsoft Docs"
 description: "Azure Active Directory にカスタム ドメインを追加する方法について説明します。"
 services: active-directory
 author: curtand
-manager: femila
+manager: michael.tillman
 ms.assetid: 0a90c3c5-4e0e-43bd-a606-6ee00f163038
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/14/2017
 ms.author: curtand
-ms.reviewer: jsnow
+ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: d2f0287202e1b39f395354b1124078b7b0dc95a7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 27e7449f039da8f7661d113999e1c4e5d76c3cf6
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>クイック スタート: カスタム ドメイン名を Azure Active Directory に追加する
 
-Azure AD ディレクトリにはすべて、*domainname*.onmicrosoft.com の形式の初期ドメイン名が付いています。初期ドメイン名は変更も削除もできませんが、企業ドメイン名を Azure AD に追加することもできます。 たとえば、組織には多くの場合、ビジネスを行うために使用する別のドメイン名と、企業ドメイン名を使用してサインインするユーザーが存在します。 Azure AD にカスタム ドメイン名を追加すると、ディレクトリ内で、"alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を、 "alice@*<domain name>*.onmicrosoft.com" の代わりに割り当てることができます。 この場合のプロセスは単純です。
+Azure AD ディレクトリにはすべて、*domainname*.onmicrosoft.com の形式の初期ドメイン名が付いています。初期ドメイン名は変更も削除もできませんが、企業ドメイン名を Azure AD に追加することもできます。 たとえば、組織には多くの場合、ビジネスを行うために使用する別のドメイン名と、企業ドメイン名を使用してサインインするユーザーが存在します。 Azure AD にカスタム ドメイン名を追加すると、ディレクトリ内で、"alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を、 "alice@*<ドメイン名>*.onmicrosoft.com" の代わりに割り当てることができます。 この場合のプロセスは単純です。
 
 1. カスタム ドメイン名をディレクトリに追加する
 2. ドメイン名レジストラーでドメイン名の DNS エントリを追加する
@@ -30,11 +30,11 @@ Azure AD ディレクトリにはすべて、*domainname*.onmicrosoft.com の形
 
 ## <a name="add-the-custom-domain-name-to-your-directory"></a>カスタム ドメイン名をディレクトリに追加する
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) にサインインします。
-2. 左側で **[ドメイン名]** を選択します。
-3. ***[ディレクトリ名]* の [ドメイン名]** で、**[追加]**をクリックします。
+2. 左側で **[カスタム ドメイン名]** を選択します。
+3. **[カスタム ドメインの追加]** を選択します。
    
-   ![[追加] コマンドをクリックする](./media/active-directory-domains-add-azure-portal/add-command.png)
-5. **[ドメイン名]** で、ボックスにカスタム ドメイン名 ("contoso.com" など) を入力し、**[ドメインの追加]** をクリックします。 必ず、.com、.net、その他の上位拡張子を含めます。
+   ![[追加] コマンドをクリックする](./media/add-custom-domain/add-custom-domain.png)
+5. **[カスタム ドメイン名]** で、ボックスにカスタム ドメインの名前 ("contoso.com" など) を入力し、**[ドメインの追加]** を選択します。 必ず、.com、.net、その他の上位拡張子を含めます。
 6. ***[<ドメイン名>]*** (つまり、新しいドメイン名がタイトルになっている画面) で必要な DNS エントリ情報を収集し、Azure AD でカスタム ドメイン名を確認するために後で使用します。
    
    ![DNS エントリ情報を取得する](./media/active-directory-domains-add-azure-portal/get-dns-info.png)
@@ -51,17 +51,15 @@ Azure AD でカスタム ドメイン名を使用できるようにするため�
 ## <a name="verify-the-custom-domain-name-in-azure-ad"></a>Azure AD でカスタム ドメイン名を検証する
 DNS エントリを追加すると、Azure AD でドメイン名を検証することができるようになります。 DNS レコードが反映された後でないと、ドメイン名を検証できません。 反映には数秒しかかからない場合がほとんどですが、1 時間以上かかる場合もあります。 最初から検証が機能しない場合は、後でもう一度やり直してください。
 
-1. ディレクトリの全体管理者であるアカウントで [Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) にサインインします。
-2. 左側で **[ドメイン名]** を選択します。
-3. ***[ディレクトリ名]* - [ドメイン名]** で、**[ドメイン名の追加]** コマンドを選択します。 
-  ![[追加] コマンドをクリックする](./media/active-directory-domains-add-azure-portal/add-command.png)
-3. ***[ディレクトリ名]* - [ドメイン名]** で、これから確認する未確認のドメイン名を選択します。
-4. ***[<ドメイン名>]*** (つまり、選択したドメイン名がタイトルになっている画面) で、**[確認]** を選択して検証を実行します。
+1. テナントの全体管理者であるアカウントで [Azure AD](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) にサインインします。
+2. **[カスタム ドメイン名]** を選択します。
+3. 検証したい未確認のドメイン名を選択します。
+4. エントリを確認し、**[Verify]\(検証\)** を選択して検証を完了します。
 
 これで [カスタム ドメイン名を含んだユーザー名を割り当てる](active-directory-users-create-azure-portal.md)ことができます。 カスタム ドメイン名を使用して、クラウドベースのユーザー アカウントを作成したり、以前に同期したオンプレミスのユーザー アカウント情報を更新したりすることができるようになりました。 また、同期したユーザー アカウントのドメイン サフィックス情報を、[Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) または [Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations) を使用して変更することもできます。
 
 > [!TIP]
-> 管理対象ドメインの名前は最大 900 件追加できます。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに構成する場合、各ディレクトリに最大 450 件のドメイン名を追加できます。 詳細については、「[フェデレーション ドメイン名および管理対象ドメイン名](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names)」を参照してください。
+> 管理対象ドメインの名前は最大 900 件追加できます。 Active Directory とのオンプレミスのフェデレーション用にすべてのドメインを構成している場合、各ディレクトリに最大 450 件のドメイン名を追加できます。 詳細については、「[フェデレーション ドメイン名および管理対象ドメイン名](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain-concepts#federated-and-managed-domain-names)」を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 カスタム ドメイン名を確認できない場合は、以下のトラブルシューティング手順を試してください。
@@ -74,10 +72,9 @@ DNS エントリを追加すると、Azure AD でドメイン名を検証する�
   ドメインの DNS レコードをドメイン名レジストラーで更新するアクセス権がない場合は、組織内でそのアクセス権を持つ人物またはチームと DNS エントリを共有し、DNS エントリの追加を依頼します。
 3. **Azure AD の他のディレクトリから、そのドメイン名を削除する**。 ドメイン名は、1 つのディレクトリ内だけでしか検証できません。 ドメイン名が現在、別のディレクトリで検証済みになっている場合、もう一方のディレクトリで削除されるまで、新しいディレクトリでは検証できません。 ドメイン名の削除については、[カスタム ドメイン名の管理](active-directory-domains-manage-azure-portal.md)に関する記事を参照してください。    
 
-## <a name="add-more-custom-domain-names"></a>カスタム ドメイン名を追加する
-複数のカスタム ドメイン名 (たとえば "contoso.com" と "contosobank.com" など) を使用する場合、ドメイン名は最大 900 個まで使用することができます。 この記事の手順に従って、各ドメイン名を追加できます。
+各ドメイン名を追加するには、この記事の手順を繰り返してください。
 
-### <a name="learn-more"></a>詳細情報
+## <a name="learn-more"></a>詳細情報
 [Azure AD でのカスタム ドメイン名の概念の概要](active-directory-domains-manage-azure-portal.md)
 
 [カスタム ドメイン名を管理する](active-directory-domains-manage-azure-portal.md)

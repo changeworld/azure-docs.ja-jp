@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: 63e63f69cb6463adcca480eccf1cc485574d9eff
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 522d0590595b0fc0fef503599f1677658f223bd8
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions の host.json のリファレンス
 
@@ -165,23 +165,7 @@ ms.lasthandoff: 11/16/2017
 
 [http トリガーとバインディング](functions-bindings-http-webhook.md)の構成設定。
 
-```json
-{
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 20,
-        "maxConcurrentRequests": 
-        "dynamicThrottlesEnabled": false
-    }
-}
-```
-
-|プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|routePrefix|api|すべてのルートに適用されるルート プレフィックス。 既定のプレフィックスを削除するには、空の文字列を使用します。 |
-|maxOutstandingRequests|-1|特定の時点で同時に保持される未処理の要求の最大数 (-1 は無制限を示します)。 この制限には、キューに格納され、まだ実行が開始されていない要求と、処理中の実行が含まれます。 この制限を超える受信要求は、429 "Too Busy" 応答で拒否されます。 呼び出し元は、その応答を使用して、時間ベースの再試行戦略を採用できます。 この設定は、ジョブ ホストの実行パス内で発生するキューのみを制御します。 ASP.NET 要求キューなど、他のキューはこの設定の影響を受けません。 |
-|maxConcurrentRequests|-1|並列で実行される HTTP 関数の最大数 (-1 は無制限を示します)。 たとえば、並行性が高く、HTTP 関数が使用するシステム リソースが多すぎる場合は、制限を設定する可能性があります。 また、関数からサードパーティのサービスに対して要求を送信する場合、状況によってはその呼び出しのレートを制限する必要があります。|
-|dynamicThrottlesEnabled|false|要求処理パイプラインで、システム パフォーマンス カウンターを定期的に確認するようにします。 カウンターには、接続、スレッド、プロセス、メモリ、および cpu が含まれます。 いずれかのカウンターが組み込みのしきい値 (80%) を超える場合、カウンターが通常のレベルに戻るまで、要求は 429 "Too Busy" で拒否されます。|
+[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 ## <a name="id"></a>id
 

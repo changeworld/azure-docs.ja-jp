@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ef5ec3d8f4b96d4a318e01b449d3baad8a6324a
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 2461e5fbf620fa2651792b47d41e9835d4d6ef8c
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
@@ -243,7 +243,7 @@ HANA L インスタンスの基になるインフラストラクチャは、OS �
 
 **WAN:** ワークロード用に確立するオンプレミスから Azure デプロイメントへの接続。 HANA L インスタンスを使用するすべてのお客様が、接続に Azure ExpressRoute を使用します。 この接続は SAP HANA on Azure (L インスタンス) ソリューションの一部ではないため、この接続のセットアップを担当するのはユーザーです。
 
-**アーカイブ:** ストレージ アカウントで独自の手法を使用してデータのアーカイブ コピーを作成できます。 アーカイブには、管理、コンプライアンス、コスト、運用が必要です。 ユーザーが担当するのは、Azure でアーカイブ コピーとバックアップを生成し、対応する方法でそれらを保存する処理です。
+**アーカイブ:** ストレージ アカウントで独自の手法を使用してデータのアーカイブ コピーを作成できます。 アーカイブには、管理、コンプライアンス、コスト、運用が必要です。 ユーザーが担当するのは、Azure でアーカイブ コピーとバックアップを生成し、コンプライアンスに準拠している方法でそれらを保存する処理です。
 
 「[Azure 上の SAP HANA の L インスタンスの SLA](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/)」を参照してください。
 
@@ -291,7 +291,10 @@ SAP HANA on Azure (L インスタンス) を実行するための要件を以下
 - Azure VM 上の Azure にデプロイされる Red Hat Subscription Manager。 Red Hat Subscription Manager により、SAP HANA on Azure (L インスタンス) を Red Hat で登録し、個々に更新できるようになります (Azure L インスタンス スタンプにデプロイされたテナント内から直接インターネットにアクセスできないため)。
 - SAP が定める要件上、Linux プロバイダーとのサポート契約も必要です。 HANA L インスタンスのソリューションであるということ、または Linux を Azure 内で実行するという事実によって、この要件がなくなるわけではありません。 いくつかの Linux Azure ギャラリー イメージとは異なり、HANA L インスタンスのソリューション プランにサービス使用料は含まれません。 Linux ディストリビューターとのサポート契約に関する SAP の要件は、お客様ご自身で満たす必要があります。   
    - SUSE Linux については、「[SAP Note #1984787 - SUSE LINUX Enterprise Server 12: Installation notes (SAP ノート #1984787 - SUSE LINUX Enterprise Server 12: インストールに関する注意事項)](https://launchpad.support.sap.com/#/notes/1984787)」および「[SAP Note #1056161 - SUSE Priority Support for SAP applications (SAP ノート #1056161 - SAP アプリケーションの SUSE 優先サポート)](https://launchpad.support.sap.com/#/notes/1056161)」でサポート契約の要件を確認してください。
-   - Red Hat Linux の場合、サポートとサービス (HANA L インスタンスのオペレーティング システムに対する更新) を含む適切なサブスクリプション レベルを満たしている必要があります。 Red Hat では、"RHEL for SAP Business Applications" サブスクリプションの取得を推奨しています。 サポートとサービスの詳細については、「[SAP Note #2002167 - Red Hat Enterprise Linux 7.x: Installation and Upgrade (SAP ノート #2002167 - Red Hat Enterprise Linux 7.x: インストールとアップグレード)](https://launchpad.support.sap.com/#/notes/2002167)」および「[SAP Note #1496410 - Red Hat Enterprise Linux 6.x: Installation and Upgrade (SAP ノート #1496410 - Red Hat Enterprise Linux 6.x: インストールとアップグレード)](https://launchpad.support.sap.com/#/notes/1496410)」をご覧ください。
+   - Red Hat Linux の場合、サポートとサービス (HANA L インスタンスのオペレーティング システムに対する更新) を含む適切なサブスクリプション レベルを満たしている必要があります。 Red Hat では、"RHEL for [SAP Solutions](https://access.redhat.com/solutions/3082481)" サブスクリプションの取得を推奨しています。 
+
+各種 Linux バージョンと各種 SAP HANA バージョンのサポート マトリックスについては、[SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581) を確認してください。
+
 
 **データベース:**
 

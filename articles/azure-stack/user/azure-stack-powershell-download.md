@@ -14,30 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.openlocfilehash: 69ca030d1b7601df424fa9446e1d194a3f6bd50a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1957e63914d5f9f443a504ef90df49d79ec3e40f
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="download-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
 
-AzureStack-Tools は、リソースの管理と Azure Stack へのデプロイに使用できる PowerShell モジュールをホストする GitHub レポジトリです。 これらの PowerShell モジュールは、Azure Stack Development Kit にダウンロードするか、または VPN 接続を確立する予定の場合は Windows ベースの外部クライアントにダウンロードして使用できます。 これらのツールを取得するには、GitHub レポジトリを複製するか、AzureStack-Tools フォルダーをダウンロードします。 
-
-レポジトリを複製するには、Windows 用の [Git](https://git-scm.com/download/win) をダウンロードし、コマンド プロンプト ウィンドウを開いて、次のスクリプトを実行します。
-
-```PowerShell
-# Change directory to the root directory 
-cd \
-
-# clone the repository
-git clone https://github.com/Azure/AzureStack-Tools.git --recursive
-
-# Change to the tools directory
-cd AzureStack-Tools
-```
-
-ツールのフォルダーをダウンロードするには、次のスクリプトを実行します。
+AzureStack-Tools は、リソースの管理と Azure Stack へのデプロイに使用できる PowerShell モジュールをホストする GitHub レポジトリです。 これらの PowerShell モジュールは、Azure Stack Development Kit にダウンロードするか、または VPN 接続を確立する予定の場合は Windows ベースの外部クライアントにダウンロードして使用できます。 これらのツールを入手するには、GitHub リポジトリを複製するか、次のスクリプトを実行して AzureStack-Tools フォルダーをダウンロードします。
 
 ```PowerShell
 # Change directory to the root directory 
@@ -62,7 +47,7 @@ cd AzureStack-Tools-master
 
 AzureStack-Tools レポジトリには、Azure Stack の次の機能をサポートする PowerShell モジュールが含まれています。  
 
-| 機能 | Description | このモジュールを使用できるユーザー |
+| 機能 | 説明 | このモジュールを使用できるユーザー |
 | --- | --- | --- |
 | [クラウド機能](azure-stack-validate-templates.md) | このモジュールを使用すると、クラウドのクラウド機能を取得できます。 たとえば、このモジュールを使用して、Azure Stack および Azure クラウドで、API バージョン、Azure Resource Manager リソース、VM 拡張機能などのクラウド機能を取得できます。 | クラウドの管理者とユーザー。 |
 | [Azure Stack の Resource Manager ポリシー](azure-stack-policy-module.md) | このモジュールを使用すると、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションまたは Azure リソース グループを構成できます。 | クラウドの管理者とユーザー |

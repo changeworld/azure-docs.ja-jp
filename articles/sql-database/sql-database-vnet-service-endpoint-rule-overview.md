@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 11/13/2017
 ms.author: genemi
-ms.openlocfilehash: e1bb3e9f09ca7f5463228da4079b06ad2e771def
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 66dbc9c2c3ba9b9f0c7eb405dbafbd002ce50fbc
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -30,10 +30,7 @@ ms.lasthandoff: 11/13/2017
 
 
 > [!NOTE]
-> Azure SQL Database の場合、この機能は次の Azure リージョンのプレビューで利用できます。
->
-> - WestCentralUS、WestUS2、および EastUS。
-
+> Azure SQL Database の場合、Azure パブリック クラウドの全リージョンのプレビューで、この機能が利用できます。
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>仮想ネットワーク規則の作成方法
 
@@ -270,7 +267,7 @@ Microsoft Azure Virtual Network サービス エンドポイント機能、お�
 
 <!-- Link references, to text, Within this same Github repo. -->
 
-[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md#classic-deployment-characteristics
+[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
 [expressroute-indexmd-744v]: ../expressroute/index.md
 

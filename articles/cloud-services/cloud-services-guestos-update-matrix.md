@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/8/2017
+ms.date: 11/16/2017
 ms.author: raiye
-ms.openlocfilehash: 90ce26733c7018e2cf9464470a65bd0539772c3b
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: e19bb15be29fefbfbc94f7396bb2b68f8236f66a
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 「[Azure ゲスト OS の更新設定][Azure Guest OS Update Settings]」に説明されているゲスト OS の *自動更新*を使用するようにロールを構成している場合は、このページを読むことは必須ではありません。
@@ -88,7 +88,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-5.12_201710-01 |2017 年 11 月 8 日 |5.14 のリリース後 |TBD |
+| WA-GUEST-OS-5.12_201710-02 |2017 年 11 月 8 日 |5.14 のリリース後 |TBD |
 | WA-GUEST-OS-5.11_201709-01 |2017 年 10 月 6 日 |Post 5.13 |TBD |
 | WA-GUEST-OS-5.10_201708-01 |2017 年 8 月 24 日 |Post 5.12 |TBD |
 |~~WA-GUEST-OS-5.9_201707-01~~ |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
@@ -111,7 +111,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-4.47_201710-01 |2017 年 11 月 8 日 |4.49 のリリース後 |TBD |
+| WA-GUEST-OS-4.47_201710-02 |2017 年 11 月 8 日 |4.49 のリリース後 |TBD |
 | WA-GUEST-OS-4.46_201709-01 |2017 年 10 月 6 日 |Post 4.48 |TBD |
 | WA-GUEST-OS-4.45_201708-01 |2017 年 8 月 24 日 |Post 4.47 |TBD |
 |~~WA-GUEST-OS-4.44_201707-01~~ |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
@@ -134,7 +134,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-3.54_201710-01 |2017 年 11 月 8 日 |3.56 のリリース後 |TBD |
+| WA-GUEST-OS-3.54_201710-02 |2017 年 11 月 8 日 |3.56 のリリース後 |TBD |
 | WA-GUEST-OS-3.53_201709-01 |2017 年 10 月 6 日 |Post 3.55 |TBD |
 | WA-GUEST-OS-3.52_201708-01 |2017 年 8 月 24 日 |Post 3.54 |TBD |
 |~~WA-GUEST-OS-3.51_201707-01~~ |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
@@ -157,7 +157,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
-| WA-GUEST-OS-2.67_201710-01 |2017 年 11 月 8 日 |2.69 のリリース後 |TBD |
+| WA-GUEST-OS-2.67_201710-02 |2017 年 11 月 8 日 |2.69 のリリース後 |TBD |
 | WA-GUEST-OS-2.66_201709-01 |2017 年 10 月 6 日 |Post 2.68 |TBD |
 | WA-GUEST-OS-2.65_201708-01 |2017 年 8 月 24 日 |Post 2.67 |TBD |
 |~~WA-GUEST-OS-2.64_201707-01~~ |2017 年 8 月 3 日 |2017 年 11 月 8 日 |TBD |
