@@ -227,7 +227,7 @@ int main()
 
 
 ## <a name="delete-data"></a>データの削除
-接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 このコードでは、sql::Driver クラスとその connect() メソッドを使って MySQL との接続を確立しています。 その後、prepareStatement() メソッドと executeQuery() メソッドを使用して、delete コマンドを実行します。
+接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 このコードでは、sql::Driver クラスとその connect() メソッドを使って MySQL との接続を確立しています。 その後、prepareStatement() メソッドと executeQuery() メソッドを使用して、delete コマンドを実行します。
 
 Host、DBName、User、Password の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。 
 

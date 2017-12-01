@@ -39,12 +39,12 @@ Azure Stack 仮想マシンは、Azure Stack ポータルで作成できます�
 このクイック スタートを完了するには、SSH キー ペアが必要です。 既存の SSH キー ペアがある場合は、この手順はスキップしてかまいません。
 
 1. PuTTY のインストール フォルダー (既定の場所は ```C:\Program Files\PuTTY```) に移動し、```puttygen.exe``` を実行します。
-2. [PuTTY Key Generator] ウィンドウで、**[Type of key to generate] \(生成するキーの種類)** が **[RSA]** に設定され、**[Number of bits in a generated key] \(生成されるキーのビット数)** が **[2048]** に設定されていることを確認します。 準備ができたら、**[Generate] \(生成)** をクリックします。
+2. [PuTTY Key Generator] ウィンドウで、**[Type of key to generate] (生成するキーの種類)** が **[RSA]** に設定され、**[Number of bits in a generated key] (生成されるキーのビット数)** が **[2048]** に設定されていることを確認します。 準備ができたら、**[Generate] (生成)** をクリックします。
 
    ![puttygen.exe](media/azure-stack-quick-linux-portal/Putty01.PNG)
 
 3. キーの生成プロセスを完了するには、[PuTTY Key Generator] ウィンドウ内でマウス カーソルを移動します。
-4. キーの生成が完了したら、**[Save public key] \(公開キーを保存する)** および **[Save private key] \(秘密キーを保存する)** をクリックして公開キーと秘密キーをファイルに保存します。
+4. キーの生成が完了したら、**[Save public key] (公開キーを保存する)** および **[Save private key] (秘密キーを保存する)** をクリックして公開キーと秘密キーをファイルに保存します。
 
    ![PuTTY キー](media/azure-stack-quick-linux-portal/Putty02.PNG)
 
@@ -74,7 +74,7 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
 6. **[設定]** ページで、既定値をそのままにして **[OK]** をクリックします。
 
-7. **[概要]** ページで、**[OK]** をクリックして仮想マシンのデプロイを開始します。
+7. **[概要]** ページで、**[OK]** をクリックして仮想マシンの展開を開始します。
 
 
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
@@ -87,8 +87,8 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 3. **[PuTTY Configuration] \(PuTTY の構成)** 画面で、**[カテゴリ]** の下の **[SSH]** を展開してから、**[Auth] \(認証)** をクリックします。**[参照]** をクリックし、前に保存した秘密キー ファイルを選択します。
 
    ![PuTTY 秘密キー](media/azure-stack-quick-linux-portal/Putty03.PNG)
-4. **[カテゴリ]** で、上にスクロールして **[Session] \(セッション)** をクリックします。
-5. **[Host Name (or IP address)] \(ホスト名 (または IP アドレス))** ボックスで、前に表示した Azure Stack ポータルから接続文字列を貼り付けます。 この例では、この文字列は ```asadmin@192.168.102.34``` です。
+4. **[カテゴリ]** で、上にスクロールして **[Session] (セッション)** をクリックします。
+5. **[Host Name (or IP address)] (ホスト名 (または IP アドレス))** ボックスで、前に表示した Azure Stack ポータルから接続文字列を貼り付けます。 この例では、この文字列は ```asadmin@192.168.102.34``` です。
  
    ![PuTTY セッション](media/azure-stack-quick-linux-portal/Putty04.PNG)
 6. **[開く]** をクリックして、仮想マシンへのセッションを開きます。

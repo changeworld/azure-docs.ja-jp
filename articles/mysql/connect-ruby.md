@@ -189,7 +189,7 @@ end
 
 
 ## <a name="delete-data"></a>データの削除
-接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
+接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 このコードは、[mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) クラスの .new() メソッドを使用して Azure Database for MySQL に接続しています。 次に、[query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) メソッドを呼び出して DELETE コマンドを実行します。 その後、[close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) メソッドを呼び出して、終了する前に接続を閉じます。
 
