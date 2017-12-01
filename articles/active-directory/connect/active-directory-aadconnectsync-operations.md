@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: af32c3f2d96ca51f59e29f8d9635caa290d580aa
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 89bfedd282d04569bcf873fd7a9082791a94376b
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: 操作タスクおよび考慮事項
 このトピックでは、Azure AD Connect Sync の操作タスクについて説明します。
@@ -33,6 +33,11 @@ ms.lasthandoff: 11/08/2017
 ステージング モードのサーバーでは、構成を変更した後、そのサーバーをアクティブにする前に変更内容をプレビューできます。 また、フル インポートおよび完全同期を実行して、変更を運用環境に加える前に、すべての変更が予定どおりに加えられていることを確認できます。
 
 インストール時、サーバーを **ステージング モード**に設定することを選択できます。 この操作により、サーバーでインポートと同期が有効になりますが、エクスポートは実行されません。 ステージング モードのサーバーでは、インストール時にパスワード同期やパスワード ライトバックを選択した場合でも、パスワード同期やパスワード ライトバックは実行されません。 ステージング モードを無効にすると、サーバーはエクスポートを開始し、パスワード同期とパスワード ライトバックが有効になります。
+
+> [!NOTE]
+> たとえば、Azure AD Connect でパスワード ハッシュ同期機能が有効であるとします。 ステージング モードを有効にすると、サーバーはオンプレミス AD からのパスワード変更の同期を停止します。 ステージング モードを無効にすると、サーバーは停止されたところからパスワード変更の同期を再開します。 サーバーが一定時間ステージング モードになると、サーバーはその間に発生していたすべてのパスワードの変更を同期するため、時間がかかることがあります。
+>
+>
 
 同期サービス マネージャーを使用して、引き続き強制的にエクスポートすることもできます。
 

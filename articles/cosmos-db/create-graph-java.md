@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/20/2017
+ms.date: 11/20/2017
 ms.author: denlee
-ms.openlocfilehash: 4470b5adb52debce1492b084ce71100da77da046
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 84a9ae4a48e7e71d70214550dd203a0468a31de6
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを Java と Azure Portal で作成する
 
@@ -72,13 +72,19 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 次は、コードを使った作業に移りましょう。 GitHub から Graph API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。  
 
-1. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダに変更します。  
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。  
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上のサンプル アプリのコピーを作成します。 
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-java-getting-started.git
@@ -86,7 +92,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認してください。 こららのスニペットはすべて、C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted フォルダーの `Program.java` ファイルから取得されます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 こららのスニペットはすべて、C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted フォルダーの `Program.java` ファイルから取得されます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
 
 * Gremlin `Client` は、`src/remote.yaml` 内の構成から初期化されます。
 
@@ -134,7 +140,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
     `username: /dbs/$database$/colls/$collection$`
 
-    を次のように変更します。 
+    to 
 
     `username: /dbs/sample-database/colls/sample-graph`
 
@@ -148,11 +154,23 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     cd "C:\git-samples\azure-cosmos-db-graph-java-getting-started"
     ```
 
-2. git ターミナル ウィンドウで「`mvn package`」と入力して、必要な Java パッケージをインストールします。
+2. git ターミナル ウィンドウで、次のコマンドを実行して 必要な Java パッケージをインストールします。
 
-3. git ターミナル ウィンドウで `mvn exec:java -D exec.mainClass=GetStarted.Program` を実行して Java アプリケーションを起動します。
+   ```
+   mvn package
+   ```
 
-    グラフに追加される頂点がターミナル ウィンドウに表示されます。 プログラムが停止したら、インターネット ブラウザーで Azure Portal に切り替えます。 
+3. git ターミナル ウィンドウで、次のコマンドを実行して Java アプリケーションを起動します。
+    
+    ```
+    mvn exec:java -D exec.mainClass=GetStarted.Program
+    ```
+
+    グラフに追加される頂点がターミナル ウィンドウに表示されます。 
+    
+    タイムアウト エラーが発生した場合は、[[Update your connection information]\(接続情報の更新\)](#update-your-connection-information) で接続情報が適切に更新されていることを確認し、最後のコマンドを再試行してください。 
+    
+    プログラムが停止したら、Enter キーを押して、インターネット ブラウザーで Azure Portal に切り替えます。 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>サンプル データの確認と追加
@@ -200,7 +218,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 10. **[OK]**をクリックします。 
 
-11. 既定の `g.V()` フィルターで **[フィルターの適用]** をクリックして、グラフ内のすべての値を表示します。 すると、**[結果]** リストにすべてのユーザーが表示されます。 
+11. 既定の `g.V()` フィルターで **[フィルターの適用]** ボタンをクリックして、グラフ内のすべての値を表示します。 すると、**[結果]** リストにすべてのユーザーが表示されます。 
 
     追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** をクリックし、もう一度すべての結果を表示します。
 

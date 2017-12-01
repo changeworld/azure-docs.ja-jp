@@ -16,11 +16,11 @@ ms.date: 09/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 0bf6177bc34b6f7daf9c14a22c3b381025f0f825
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: d3496a5b18d8fecfbd8dff95ef667d456bbb1d59
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
 Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 高度なルール本体の合計文字数が 2048 文字を超えないようにしてください。
 
 > [!NOTE]
-> 文字列演算と正規表現演算は、大文字と小文字が区別されません。 定数に $null を使用することで Null チェックを実行することもできます (例: user.department -eq $null)。
+> 文字列演算と正規表現演算は、大文字と小文字が区別されません。 定数に *null* を使用することで Null チェックを実行することもできます (例: user.department -eq *null*)。
 > 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
 
 ## <a name="supported-expression-rule-operators"></a>サポートされている式のルール演算子
@@ -158,31 +158,31 @@ For example:
 
 | プロパティ | 使用できる値 | 使用法 |
 | --- | --- | --- |
-| city |任意の文字列値または $null |(user.city -eq "value") |
-| country |任意の文字列値または $null |(user.country -eq "value") |
-| companyName | 任意の文字列値または $null | (user.companyName -eq "value") |
-| department |任意の文字列値または $null |(user.department -eq "value") |
+| city |任意の文字列値または *null* |(user.city -eq "value") |
+| country |任意の文字列値または *null* |(user.country -eq "value") |
+| companyName | 任意の文字列値または *null* | (user.companyName -eq "value") |
+| department |任意の文字列値または *null* |(user.department -eq "value") |
 | displayName |任意の文字列値 |(user.displayName -eq "value") |
-| facsimileTelephoneNumber |任意の文字列値または $null |(user.facsimileTelephoneNumber -eq "value") |
-| givenName |任意の文字列値または $null |(user.givenName -eq "value") |
-| jobTitle |任意の文字列値または $null |(user.jobTitle -eq "value") |
-| mail |任意の文字列値または $null (ユーザーの SMTP アドレス) |(user.mail -eq "value") |
+| facsimileTelephoneNumber |任意の文字列値または *null* |(user.facsimileTelephoneNumber -eq "value") |
+| givenName |任意の文字列値または *null* |(user.givenName -eq "value") |
+| jobTitle |任意の文字列値または *null* |(user.jobTitle -eq "value") |
+| mail |任意の文字列値または *null* (ユーザーの SMTP アドレス) |(user.mail -eq "value") |
 | mailNickName |任意の文字列値 (ユーザーのメール エイリアス) |(user.mailNickName -eq "value") |
-| mobile |任意の文字列値または $null |(user.mobile -eq "value") |
+| mobile |任意の文字列値または *null* |(user.mobile -eq "value") |
 | objectId |ユーザー オブジェクトの GUID |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | オンプレミスからクラウドに同期されたユーザーのオンプレミスのセキュリティ識別子 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
-| physicalDeliveryOfficeName |任意の文字列値または $null |(user.physicalDeliveryOfficeName -eq "value") |
-| postalCode |任意の文字列値または $null |(user.postalCode -eq "value") |
+| physicalDeliveryOfficeName |任意の文字列値または *null* |(user.physicalDeliveryOfficeName -eq "value") |
+| postalCode |任意の文字列値または *null* |(user.postalCode -eq "value") |
 | preferredLanguage |ISO 639-1 コード |(user.preferredLanguage -eq "en-US") |
-| sipProxyAddress |任意の文字列値または $null |(user.sipProxyAddress -eq "value") |
-| state |任意の文字列値または $null |(user.state -eq "value") |
-| streetAddress |任意の文字列値または $null |(user.streetAddress -eq "value") |
-| surname |任意の文字列値または $null |(user.surname -eq "value") |
-| telephoneNumber |任意の文字列値または $null |(user.telephoneNumber -eq "value") |
+| sipProxyAddress |任意の文字列値または *null* |(user.sipProxyAddress -eq "value") |
+| state |任意の文字列値または *null* |(user.state -eq "value") |
+| streetAddress |任意の文字列値または *null* |(user.streetAddress -eq "value") |
+| surname |任意の文字列値または *null* |(user.surname -eq "value") |
+| telephoneNumber |任意の文字列値または *null* |(user.telephoneNumber -eq "value") |
 | usageLocation |2 文字の国コード |(user.usageLocation -eq "US") |
 | userPrincipalName |任意の文字列値 |(user.userPrincipalName -eq "alias@domain") |
-| userType |member guest $null |(user.userType -eq "Member") |
+| userType |member guest *null* |(user.userType -eq "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>文字列コレクション型のプロパティ
 使用可能な演算子
@@ -225,14 +225,10 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 ## <a name="use-of-null-values"></a>Null 値の使用
 
-ルールで null 値を指定するには、null または $null を使用します。 例:
+ルールで null 値を指定するには、*null* 値を使用します。 *null* という語を引用符で囲まないように注意してください。引用符をつけると、リテラル文字列値として解釈されます。 null 値を参照する正しい方法は次のとおりです。
 ```
    user.mail –ne null
 ```
-は次と同等
-```
-   user.mail –ne $null
-   ```
 
 ## <a name="extension-attributes-and-custom-attributes"></a>拡張属性とカスタム属性
 拡張属性とカスタム属性は、動的なメンバーシップ ルールでサポートされます。

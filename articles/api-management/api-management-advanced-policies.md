@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08834531b78a857b54f0e9e792290774f9e477de
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -268,26 +268,26 @@ ms.lasthandoff: 10/11/2017
 -   **ポリシー スコープ:** すべてのスコープ  
   
 ##  <a name="LimitConcurrency"></a>同時実行を制限する  
- `limit-concurrency` ポリシーは、含まれているポリシーが特定の時点で指定された数を超える要求によって実行されないようにします。 しきい値を超えた場合、新しい要求は、キューの最大長に達するまでキューに追加されます。 キューがいっぱいになると、新しい要求はすぐに失敗します。
+ `limit-concurrency` ポリシーは、含まれているポリシーが特定の時点で指定された数を超える要求によって実行されないようにします。 その数を超えた場合は、新しい要求は 429 Too Many Requests (要求が多すぎます) のステータス コードですぐに失敗します。
   
 ###  <a name="LimitConcurrencyStatement"></a> ポリシー ステートメント  
   
 ```xml  
-<limit-concurrency key="expression" max-count="number" timeout="in seconds" max-queue-length="number">
+<limit-concurrency key="expression" max-count="number">
         <!— nested policy statements -->  
 </limit-concurrency>
 ``` 
 
 ### <a name="examples"></a>例  
   
-####  <a name="ChooseExample"></a> 例  
+#### <a name="example"></a>例  
  次の例は、コンテキスト変数の値に基づいてバックエンドに転送される要求の数を制限する方法を示しています。
  
 ```xml  
 <policies>
   <inbound>…</inbound>
   <backend>
-    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3" timeout="60">
+    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3">
       <forward-request timeout="120"/>
     <limit-concurrency/>
   </backend>
@@ -307,10 +307,8 @@ ms.lasthandoff: 10/11/2017
 |---------------|-----------------|--------------|--------------|  
 |key|文字列。 式を使用できます。 同時実行スコープを指定します。 複数のポリシーで共有できます。|あり|該当なし|  
 |max-count|整数。 ポリシーに入力できる要求の最大数を指定します。|あり|該当なし|  
-|timeout|整数。 式を使用できます。 要求がスコープに入るまでに待機する必要がある秒数を指定します。この秒数を経過すると、要求は "429 要求が多すぎます" で失敗します。|いいえ|Infinity|  
-|max-queue-length|整数。 式を使用できます。 キューの最大長を指定します。 キューがいっぱいになっている場合、このポリシーに入ろうとしている受信した要求は、"429 要求が多すぎます" で終了します。|いいえ|Infinity|  
   
-###  <a name="ChooseUsage"></a> 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  

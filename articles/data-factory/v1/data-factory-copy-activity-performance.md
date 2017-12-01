@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 11/14/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2aeb3820667f264e4a26860913e3f7b0e22e4c4a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1f774bb881c66ceeb9f3223b735b3f34462b6a8d
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!NOTE]
@@ -49,6 +49,8 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 ![パフォーマンス マトリックス](./media/data-factory-copy-activity-performance/CopyPerfRef.png)
 
+>[!IMPORTANT]
+>Azure Data Factory バージョン 1 では、クラウド間のコピーの最小のクラウドデータ移動単位は 2 です。 指定しない場合、[クラウド データ移動単位](#cloud-data-movement-units)で使用されている既定のデータ移動単位を参照してください。
 
 **注意する点:**
 * スループットの計算には、[ソースから読み取られたデータ サイズ]/[コピー アクティビティの実行時間] という数式を使用します。
@@ -90,9 +92,16 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 この例では、**concurrency** 値が 2 に設定されると、**アクティビティの実行 1** と**アクティビティの実行 2** が 2 つのアクティビティ ウィンドウからデータを**同時に**コピーできるため、データ移動のパフォーマンスが向上します。 ただし、複数のファイルがアクティビティの実行 1 に関連付けられている場合、データ移動サービスは、ソースからターゲットへのファイルのコピーを 1 度に 1 ファイルずつ行います。
 
 ### <a name="cloud-data-movement-units"></a>クラウド データ移動単位
-**クラウド データ移動単位 (DMU)** は、Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 DMU はクラウド間のコピー操作で使用されますが、ハイブリッド コピーでは使用されません。
+**クラウド データ移動単位 (DMU)** は、Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 DMU はクラウド間のコピー操作では適用できますが、ハイブリッド コピーでは適用されません。
 
-既定では、Data Factory は 1 つのクラウド DMU を使用して、1 つのコピー アクティビティを実行します。 この既定の動作を無視するには、 **cloudDataMovementUnits** プロパティに次のように値を指定します。 特定のコピー ソースおよびシンクに、より多くの単位を構成した場合に得られるパフォーマンス向上レベルの情報については、「 [パフォーマンス リファレンス](#performance-reference)」を参照してください。
+**コピー アクティビティの実行を強化する最小クラウドデータ移動単位は 2 です。** 指定しない場合、次の表に、さまざまなコピー シナリオで使用される既定の DMU を示します。
+
+| コピー シナリオ | サービスによって決定される既定の DMU |
+|:--- |:--- |
+| ファイル ベースのストア間でのデータのコピー | ファイルの数とサイズに応じて 2 〜 16。 |
+| 他のすべてのコピー シナリオ | 2 |
+
+この既定の動作を無視するには、 **cloudDataMovementUnits** プロパティに次のように値を指定します。 **cloudDataMovementUnits** プロパティに**使用できる値**は、2、4、8、16、32 です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。 特定のコピー ソースおよびシンクに、より多くの単位を構成した場合に得られるパフォーマンス向上レベルの情報については、「 [パフォーマンス リファレンス](#performance-reference)」を参照してください。
 
 ```json
 "activities":[  
@@ -114,7 +123,6 @@ Azure によりエンタープライズ クラスのデータ ストレージお
     }
 ]
 ```
-**cloudDataMovementUnits** プロパティに**使用できる値**は、1 (既定値)、2、4、8、16、32 です。 コピー操作が実行時に使用する **クラウド DMU の実際の数** は、データ パターンに応じて、構成されている値以下になります。
 
 > [!NOTE]
 > スループットをより高めるためにさらにクラウド DMU が必要な場合は、 [Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP/クラウド SFTP から Blob Storage/Data Lake Store/Azure SQL Database にコピーする**場合のみです。

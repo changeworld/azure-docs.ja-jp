@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 10/30/2017
+ms.date: 11/20/2017
 ms.author: mimig
-ms.openlocfilehash: 5a793abdc24387ae2b758d29b9dfb25f134097d3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: b36de6bce597569b4e1eaa615860acdf28dfa798
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: ドキュメント データベースを Java と Azure Portal で作成する
 
@@ -97,13 +97,19 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 次は、コードを使った作業に移りましょう。 GitHub から DocumentDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。 
+1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+
+    ```bash
+    md "C:\git-samples"
+    ```
+
+2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。 
 
     ```bash
     cd "C:\git-samples"
     ```
 
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
+3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -209,13 +215,25 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     cd "C:\git-samples\azure-cosmos-db-documentdb-java-getting-started"
     ```
 
-2. git ターミナル ウィンドウで「`mvn package`」と入力して、必要な Java パッケージをインストールします。
+2. git ターミナル ウィンドウで、次のコマンドを実行して 必要な Java パッケージをインストールします。
 
-3. git ターミナル ウィンドウで `mvn exec:java -D exec.mainClass=GetStarted.Program` を実行して Java アプリケーションを起動します。
+    ```
+    mvn package
+    ```
 
-    ターミナル ウィンドウに、FamilyDB データベースが作成されたという通知が表示されます。 キーを押してコレクションを作成した後、データ エクスプローラーに切り替えると、FamilyDB データベースが追加されていることがわかります。
+3. git ターミナル ウィンドウで、次のコマンドを実行して Java アプリケーションを起動します。
+
+    ```
+    mvn exec:java -D exec.mainClass=GetStarted.Program
+    ```
+
+    ターミナル ウィンドウに、FamilyDB データベースが作成されたという通知が表示されます。 
     
-    キーを繰り返し押して、ドキュメントを作成した後、クエリを実行します。
+4. キーを押してコレクションを作成します。 
+
+5. データ エクスプローラーに戻ると、FamilyDB データベースが追加されていることがわかります。
+    
+6. コンソール ウィンドウでキーを押し続けると、コードによりドキュメントが作成され、クエリが実行されます。
     
     プログラムの終了時に、このアプリのすべてのリソースはアカウントから削除されるので、料金は発生しません。 
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Time Series Insights 環境に IoT Hub イベント ソースを追加する方法 | Microsoft Docs"
+title: "Azure Time Series Insights に IoT Hub イベント ソースを追加する方法 | Microsoft Docs"
 description: "この記事では、IoT Hub に接続されたイベント ソースを Time Series Insights 環境に追加する方法を説明します"
 services: time-series-insights
 ms.service: time-series-insights
@@ -10,28 +10,28 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: ed31a0e725d1e0863e9c4695d4eccb324f60678a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: 0469c35056d1d02457c162b8540af472b84f1e92
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する方法
 この記事では、Azure Portal を使用して、IoT Hub からデータを読み取るイベント ソースを Time Series Insights 環境に追加する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 - Time Series Insights 環境を作成します。 詳しくは、[Azure Time Series Insights 環境の作成](time-series-insights-get-started.md)に関するページをご覧ください。 
-- IoT Hub を作成します。 詳しくは、「[Azure Portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」をご覧ください。
+- IoT Hub を作成します。 IoT Hub の詳細は、「[Azure Portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」をご覧ください。
 - IoT Hub には、アクティブなメッセージ イベントが送信される必要があります。
 - IoT Hub に Time Series Insight 環境で使用する専用コンシューマー グループを作成します。 各 Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 詳細については、[IoT Hub 開発者ガイド](../iot-hub/iot-hub-devguide.md)をご覧ください。
 
 ## <a name="add-a-new-event-source"></a>新しいイベント ソースの追加
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューで **[すべてのリソース]** をクリックします。 Time Series Insights 環境を選択します。
+2. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックします。 Time Series Insights 環境を選択します。
 
-3. **[環境トポロジ]** 見出しの下の **[イベント ソース]** をクリックします。
+3. **[Environment Topology] (環境トポロジ)** 見出しで、**[イベント ソース]** をクリックします。
    ![[イベント ソース] と [+ 追加]](media/time-series-insights-how-to-add-an-event-source-iothub/1-event-sources.png)
 
 4. **[+ 追加]** をクリックします。
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/15/2017
 
    ![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-iothub/3-new-event-source.png)
 
-   | プロパティ | Description |
+   | プロパティ | 説明 |
    | --- | --- |
    | サブスクリプション ID | この IoT Hub が作成されたサブスクリプションを選択します。
    | IoT Hub 名 | IoT Hub の名前を選択します。
@@ -62,10 +62,10 @@ ms.lasthandoff: 11/15/2017
 
 9. **[IoT ハブ設定を手動で行う]** オプションを選択した場合に必要な各プロパティについて次の表に説明します。
 
-   | プロパティ | Description |
+   | プロパティ | 説明 |
    | --- | --- |
    | サブスクリプション ID | この IoT Hub が作成されたサブスクリプション。
-   | リソース グループ | この Iot Hub が作成されたリソース グループ名です。
+   | リソース グループ | この IoT Hub が作成されたリソース グループ名です。
    | IoT Hub 名 | IoT Hub の名前。 IoT Hub を作成した場合は、特定の名前も付けられています。
    | IoT Hub ポリシー名 | [IoT Hub の設定] タブで作成できる共有アクセス ポリシー。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。
    | IoT Hub ポリシー キー | Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 ここにプライマリ キーまたはセカンダリ キーを入力します。
@@ -79,11 +79,11 @@ ms.lasthandoff: 11/15/2017
 
    イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
 
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT Hub へのコンシューマー グループの追加
 コンシューマー グループは、Azure IoT Hub からデータをプルするアプリケーションによって使用されます。 IoT Hub から確実にデータを読み取るため、この Time Series Insights 環境でのみ使用する専用のコンシューマー グループを提供します。
 
 新しいコンシューマー グループを IoT Hub に追加するには、次の手順に従います。
-1. Azure Portal で、IoT Hub を見つけて、開きます。
+1. Azure Portal で、IoT Hub を見つけて開きます。
 
 2. **[メッセージング]** 見出しの下にある **[エンドポイント]** を選択します。 
 

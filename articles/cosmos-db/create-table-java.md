@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 5eade2b85737f9c381f6292a78fc5407398e2b9c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 90ba10990049cd1fb788d63a143eb1169191cf24
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>クイックスタート: Java と Azure Cosmos DB で Table API アプリを構築する
 
@@ -43,6 +43,10 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
 
 ## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+
+> [!IMPORTANT] 
+> 新しいテーブル API アカウントを作成して一般公開のテーブル API SDK を操作する必要があります。 プレビュー期間中に作成されたテーブル API アカウントは、一般公開の SDK ではサポートされません。
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -87,9 +91,24 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
    ![[接続文字列] ウィンドウに表示されている必要な接続文字列情報をコピーします。](./media/create-table-java/connection-string.png)
 
-2. config.properties ファイルを開き、必要な接続文字列プロパティを構成ファイルにコピーします。
+2. 右側にある [コピー] ボタンを使って、プライマリ接続文字列をコピーします。
 
-3. config.properties ファイルを保存します。
+3. C:\git-samples\storage-table-java-getting-started\src\main\resources フォルダーで config.properties を開きます。 
+
+5. 1 行目をコメント アウトし、2 行目をコメント解除します。 最初の 2 行は次のようになります。
+
+    ```
+    #StorageConnectionString = UseDevelopmentStorage=true
+    StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
+    ```
+
+6. ポータルのプライマリ接続文字列を、2 行目の StorageConnectionString に貼り付けます。 
+
+    > [!IMPORTANT]
+    > エンドポイントで documents.azure.com を使用している場合は、プレビュー アカウントを持っていることになるため、[新しいテーブル API](#create-a-database-account) アカウントを作成して、一般公開のテーブル API SDK を操作する必要があります。
+    >
+
+7. config.properties ファイルを保存します。
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 

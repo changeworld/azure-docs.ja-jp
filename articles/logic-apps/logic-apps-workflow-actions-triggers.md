@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: 7e0266cdc477715a5d2f9067c6dcea73da9ba763
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f95c0c486401e0d709829ce8d560f030932eea7
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>ロジック アプリ ワークフローのトリガーとアクション
 
@@ -111,11 +111,11 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-| 要素名 | 必須 | 型 | Description | 
+| 要素名 | 必須 | 型 | 説明 | 
 | ------------ | -------- | ---- | ----------- | 
 | frequency | あり | String | トリガーが呼び出される頻度の時間単位。 使用できる値は "second"、"minute"、"hour"、"day"、"week"、または "month" のみです | 
 | interval | あり | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 <p>間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- second: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "month" である場合は、繰り返しは 6 か月ごとになります。 | 
-| timeZone | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできません。 適用するタイム ゾーンを指定してください。 | 
+| timeZone | いいえ | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを指定してください。 | 
 | startTime | いいえ | String | この形式の開始日時を指定します。 <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2:00 の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除いた [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)で、[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従って入力する必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
 | weekDays | いいえ | 文字列または文字列配列 | `frequency` に "Week" を指定した場合、ワークフローを実行する 1 日または複数の日 ("Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、および "Sunday") をコンマ区切りで指定できます | 
 | hours | いいえ | 整数または整数配列 | `frequency` に "Day" または "Week" を指定した場合、ワークフローを実行する時刻として 0 ～ 23 の 1 つまたは複数の整数をコンマ区切りで指定できます。 <p>たとえば "10"、"12"、"14" を指定した場合、時刻のマークとして 10 AM、12 PM、2 PM が取得されます。 | 
@@ -178,7 +178,7 @@ ms.lasthandoff: 10/11/2017
 
 このトリガーには、*schema* という省略可能なプロパティもあります。
   
-| 要素名 | 必須 | 型 | Description |
+| 要素名 | 必須 | 型 | 説明 |
 | ------------ | -------- | ---- | ----------- |
 | schema | いいえ | オブジェクト | 受信要求を検証する JSON スキーマです。 以降のワークフロー手順において参照するプロパティを特定するのに役立ちます。 | 
 ||||| 
@@ -196,23 +196,13 @@ HTTP トリガーは、指定されたエンドポイントをポーリングし
 | クエリ | いいえ | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
 | headers | いいえ | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | いいえ | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 | 
+| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
 | [認証] | いいえ | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 <p>Scheduler 以外に、もう 1 つのプロパティ `authority` がサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、異なる値を使用できます。 | 
 ||||| 
-
-*再試行*ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5xx などの断続的エラーに適用されます。 以下のように、`retryPolicy` オブジェクトを使用してこのポリシーを定義できます。
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
  
 HTTP トリガーがロジック アプリでうまく動作するには、HTTP API が特定のパターンに準拠している必要があります。 トリガーは、以下のプロパティを認識します。  
   
-| 応答 | 必須 | Description | 
+| 応答 | 必須 | 説明 | 
 | -------- | -------- | ----------- |  
 | 状態コード | あり | 状態コード 200 ("OK") によって実行されます。 その他のすべての状態コードでは実行されません。 | 
 | Retry-after ヘッダー | いいえ | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数です。 | 
@@ -269,7 +259,7 @@ APIConnection トリガーの基本的な機能は、HTTP トリガーに似て�
 | クエリ | いいえ | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
 | headers | いいえ | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | いいえ | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 | 
+| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
 | [認証] | いいえ | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 | 
 ||||| 
 
@@ -280,16 +270,6 @@ APIConnection トリガーの基本的な機能は、HTTP トリガーに似て�
 | api runtimeUrl | あり | マネージ API のエンドポイントです。 | 
 | connection name |  | ワークフローが使用するマネージ API 接続の名前です。 `$connection` というパラメーターを参照する必要があります。 |
 |||| 
-
-*再試行*ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5xx などの断続的エラーに適用されます。 以下のように、`retryPolicy` オブジェクトを使用してこのポリシーを定義できます。
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 
 API 接続トリガーの出力は以下のとおりです。
   
@@ -480,25 +460,25 @@ HTTPWebhook トリガーの出力は以下のとおりです。これは受信�
 
 ### <a name="standard-actions"></a>標準アクション  
 
-| アクションの種類 | Description | 
+| アクションの種類 | 説明 | 
 | ----------- | ----------- | 
 | **HTTP** | HTTP Web エンドポイントを呼び出します。 | 
 | **ApiConnection**  | HTTP アクションと同様に動作しますが、[Microsoft が管理する API](https://docs.microsoft.com/azure/connectors/apis-list) を使用します。 | 
 | **ApiConnectionWebhook** | HTTPWebhook と同様に動作しますが、Microsoft が管理する API を使用します。 | 
-| **Response** | 着信呼び出しの応答を定義します。 | 
+| **応答** | 着信呼び出しの応答を定義します。 | 
 | **Function** | Azure 関数を表します。 | 
 | **Wait** | 一定の時間または特定の時刻まで待機します。 | 
 | **Workflow** | 入れ子になったワークフローを表します。 | 
-| **Compose** | アクションの入力から任意のオブジェクトを構築します。 | 
-| **Query** | 条件に基づいて配列をフィルター処理します。 | 
-| **Select** | 配列の各要素を新しい値に射影します。 たとえば、数値の配列をオブジェクトの配列に変換することができます。 | 
-| **Table** | アイテムの配列を CSV または HTML テーブルに変換します。 | 
+| **作成** | アクションの入力から任意のオブジェクトを構築します。 | 
+| **クエリ** | 条件に基づいて配列をフィルター処理します。 | 
+| **選択肢** | 配列の各要素を新しい値に射影します。 たとえば、数値の配列をオブジェクトの配列に変換することができます。 | 
+| **テーブル** | アイテムの配列を CSV または HTML テーブルに変換します。 | 
 | **Terminate** | ワークフローの実行を停止します。 | 
 ||| 
 
 ### <a name="collection-actions"></a>コレクション アクション
 
-| アクションの種類 | Description | 
+| アクションの種類 | 説明 | 
 | ----------- | ----------- | 
 | **Condition** | 式を評価し、結果に基づいて対応する分岐を実行します。 | 
 | **スコープ** | 他のアクションを論理的にグループ化するために使用します。 | 
@@ -529,20 +509,11 @@ HTTP アクションは、指定されたエンドポイントを呼び出し、
 | クエリ | いいえ | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
 | headers | いいえ | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | いいえ | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 | 
+| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
 | operationsOptions | いいえ | String | オーバーライドする特殊な動作のセットを定義します。 | 
 | authentication | いいえ | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 <p>Scheduler 以外に、もう 1 つのプロパティ `authority` がサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、異なる値を使用できます。 | 
 ||||| 
 
-HTTP アクションと APIConnection アクションは、*再試行ポリシー*をサポートします。 再試行ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5 xx などの断続的エラーに適用されます。 以下のように、`retryPolicy` オブジェクトを使用してこのポリシーを定義できます。
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 次の例の HTTP アクションでは、合計 3 回と 30 秒の再試行間隔の間に断続的なエラーがある場合、最新ニュースの取得を 2 回再試行します。
   
 ```json
@@ -631,20 +602,10 @@ APIConnection アクションの例を次に示します。
 | クエリ | いいえ | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
 | headers | いいえ | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | いいえ | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 | 
+| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
 | operationsOptions | いいえ | String | オーバーライドする特殊な動作のセットを定義します。 | 
 | authentication | いいえ | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
 ||||| 
-
-再試行ポリシーは、接続の例外に加えて、HTTP 状態コード 408、429、5 xx などの断続的エラーに適用されます。 以下のように、`retryPolicy` オブジェクトを使用してこのポリシーを定義できます。
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 
 ## <a name="apiconnection-webhook-action"></a>APIConnection webhook アクション
 
@@ -684,7 +645,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 | クエリ | いいえ | オブジェクト | URL に含める任意のクエリ パラメーターを表します。 <p>たとえば、`"queries": { "api-version": "2015-02-01" }` は `?api-version=2015-02-01` を URLに追加します。 | 
 | headers | いいえ | オブジェクト | 要求で送信される各ヘッダーを表します。 <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | いいえ | オブジェクト | エンドポイントに送信されるペイロードを表します。 | 
-| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 | 
+| retryPolicy | いいえ | オブジェクト | 4xx または 5xx エラーの再試行動作のカスタマイズにこのオブジェクトを使用します。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md)」をご覧ください。 | 
 | operationsOptions | いいえ | String | オーバーライドする特殊な動作のセットを定義します。 | 
 | authentication | いいえ | オブジェクト | 要求が認証に使用する方法を表します。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
 ||||| 
@@ -795,7 +756,7 @@ APIConnectionWebhook アクションは、Microsoft が管理するコネクタ�
 > [!NOTE]  
 > 待機期間は `until` オブジェクトまたは `interval` オブジェクトを使って指定できますが、両方を同時に使うことはできません。
   
-| 要素名 | 必須 | 型 | Description | 
+| 要素名 | 必須 | 型 | 説明 | 
 | ------------ | -------- | ---- | ----------- | 
 | until | いいえ | オブジェクト | 特定の時刻に基づく待機期間です。 | 
 | until timestamp | はい | String | 待機の期限を示す [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)の時点です。 | 

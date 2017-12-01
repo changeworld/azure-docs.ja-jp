@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 11/17/2017
 ms.author: glenga
-ms.openlocfilehash: b89e9af55342d5d7473d848956996f846250b4b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6882a7b1864d511e70495e1d1d782aa0f03beca3
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>プッシュ通知を Android アプリに追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -56,12 +56,12 @@ ms.lasthandoff: 10/11/2017
 ### <a name="verify-android-sdk-version"></a>Android SDK バージョンの検証
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-次の手順は、Google Play サービスをインストールすることです。 Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
+次の手順は、Google Play サービスをインストールすることです。 Firebase Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
 
-古いデバイスを使用してテストしている場合は、[Google Play Services SDK のセットアップ]に関するページを参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
+古いデバイスを使用してテストしている場合は、「[Android プロジェクトに Firebase を追加する]」を参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
 
-### <a name="add-google-play-services-to-the-project"></a>プロジェクトへの Google Play Services の追加
-[!INCLUDE [Add Play Services](../../includes/app-service-mobile-add-google-play-services.md)]
+### <a name="add-firebase-cloud-messaging-to-the-project"></a>プロジェクトに Firebase Cloud Messaging を追加する
+[!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
 ### <a name="add-code"></a>コードの追加
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
@@ -79,5 +79,4 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 
 <!-- URLs -->
 [Android クイック スタート]: app-service-mobile-android-get-started.md
-
-[Google Play Services SDK のセットアップ]:https://developers.google.com/android/guides/setup
+[Android プロジェクトに Firebase を追加する]:https://firebase.google.com/docs/android/setup

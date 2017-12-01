@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
-ms.openlocfilehash: 021c695a91ff46274b2a5174918711d04bcff239
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31c1cee5ddc4c8893da729af884ae7b7b8a58093
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -39,11 +39,14 @@ ms.lasthandoff: 10/11/2017
 4. [Azure PowerShell][link-azure-powershell-install] をインストールします。
 5. [Visual Studio 2017 用の継続的配信ツールの拡張機能][link-visualstudio-cd-extension]をインストールします。
 6. [Azure サブスクリプション][link-azure-subscription]と [Visual Studio Team Services アカウント][link-vsts-account]を作成します。 
-7. [Azure でのクラスターの作成](service-fabric-tutorial-create-cluster-azure-ps.md)
+7. [Azure でのクラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+
+## <a name="create-a-cluster-on-azure"></a>Azure でのクラスターの作成
+Service Fabric アプリケーションは、ネットワークに接続された一連の物理マシンであるクラスター上で実行されます。 アプリケーションを作成してデプロイする前に、[Azure で Service Fabric クラスターを設定します](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。 クラスターを作成するときは、(Windows Server 2016 Datacenter with Containers などの) 実行中のコンテナーをサポートする SKU を選択します。
 
 ## <a name="containerize-the-application"></a>アプリケーションのコンテナー格納
 
-これで、[Azure で Service Fabric クラスターが実行され](service-fabric-tutorial-create-cluster-azure-ps.md)、コンテナーに格納するアプリケーションを作成して、デプロイする準備ができました。 コンテナー内のアプリケーションの実行を開始するには、Visual Studio 内のプロジェクトに **Docker サポート**を追加する必要があります。 **Docker サポート**をアプリケーションに追加すると、2 つの処理が行われます。 まず、_Dockerfile_ がプロジェクトに追加されます。 この新しいファイルには、コンテナー イメージのビルド方法が記載されています。 次に、新しい _docker-compose_ プロジェクトがソリューションに追加されます。 新しいプロジェクトには、いくつかの docker-compose ファイルが含まれています。 docker-compose ファイルは、コンテナーの実行方法を説明するために使用できます。
+これで、Azure で Service Fabric クラスターが実行され、コンテナーに格納するアプリケーションを作成して、デプロイする準備ができました。 コンテナー内のアプリケーションの実行を開始するには、Visual Studio 内のプロジェクトに **Docker サポート**を追加する必要があります。 **Docker サポート**をアプリケーションに追加すると、2 つの処理が行われます。 まず、_Dockerfile_ がプロジェクトに追加されます。 この新しいファイルには、コンテナー イメージのビルド方法が記載されています。 次に、新しい _docker-compose_ プロジェクトがソリューションに追加されます。 新しいプロジェクトには、いくつかの docker-compose ファイルが含まれています。 docker-compose ファイルは、コンテナーの実行方法を説明するために使用できます。
 
 [Visual Studio Container Tools][link-visualstudio-container-tools] の使用に関する詳細
 

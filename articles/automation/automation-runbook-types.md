@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 2acf45187894aa3bfcaa4df639becf18605d50a5
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 508f4bb0fc8a443dd7b95cbf19861ab1a1abeb6e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 Azure Automation がサポートする数種類の Runbook について次の表で簡単に説明します。  その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
@@ -30,7 +30,6 @@ Azure Automation がサポートする数種類の Runbook について次の表
 | [PowerShell](#powershell-runbooks) |Windows PowerShell スクリプトに基づくテキスト Runbook です。 |
 | [PowerShell ワークフロー](#powershell-workflow-runbooks) |Windows PowerShell ワークフローに基づくテキスト Runbook です。 |
 | [Python](#python-runbooks) |Python に基づくテキスト Runbook です。 |
-| [Bash](#bash-runbooks) |Bash に基づくテキスト Runbook です。 |
 
 ## <a name="graphical-runbooks"></a>グラフィック Runbook
 [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) とグラフィカル PowerShell ワークフロー Runbookは、Azure ポータルのグラフィカル エディターで作成および編集します。  ファイルにエクスポートして別の Automation アカウントにインポートできますが、別のツールで作成または編集することはできません。  グラフィカル Runbook は PowerShell のコードを生成しますが、そのコードを直接表示または変更することはできません。 グラフィカル Runbook をいずれかの [テキスト形式](automation-runbook-types.md)に変換すること、またはテキスト Runbook をグラフィカル形式に変換することはできません。 インポート時には、グラフィカル Runbook からグラフィカル PowerShell ワークフロー Runbook への変換、およびこの逆の変換を行うことができます。
@@ -64,7 +63,7 @@ PowerShell Runbook は、Windows PowerShell に基づきます。  Azure ポー�
 ### <a name="known-issues"></a>既知の問題
 PowerShell Runbook に関する現在の既知の問題は次のとおりです。
 
-* PowerShell Runbook では、null 値を含む暗号化されていない [変数資産](automation-variables.md) は取得できません。
+* PowerShell Runbook では、null 値を含む暗号化されていない[変数資産](automation-variables.md)は取得できません。
 * PowerShell Runbook では、名前に [変数資産](automation-variables.md) が含まれる *~* は取得できません。
 * PowerShell Runbook のループ内の Get-Process が、約 80 回反復した後でクラッシュする可能性があります。 
 * PowerShell Runbook は、非常に大量のデータを一度に出力ストリームに書き込もうとした場合、失敗する可能性があります。   通常は、大きいオブジェクトを使用する場合、必要な情報だけを出力することによってこの問題を回避できます。  たとえば、*Get-Process* などを出力するのではなく、*Get-Process | Select ProcessName, CPU* で必要なフィールドだけを出力できます。

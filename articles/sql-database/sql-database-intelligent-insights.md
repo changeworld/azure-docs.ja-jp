@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 86011610885ff913bfd70aa46389e4e39989d0a3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 823855d88396a14ff7e5428a12d71384cdfe95a1
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="intelligent-insights"></a>Intelligent Insights
 
@@ -49,8 +49,6 @@ Intelligent Insights は、過去 1 時間のデータベース ワークロー�
 
 データベース パフォーマンスの問題の測定と検出に使用されるメトリックは、クエリ実行時間、タイムアウト要求、過剰な待機時間、エラーが発生した要求に基づきます。 メトリックの詳細については、このドキュメントの「[検出メトリック](sql-database-intelligent-insights.md#detection-metrics)」を参照してください。
 
-## <a name="degradations-detected"></a>検出される低下
-
 特定された SQL Database のパフォーマンス低下は、次のプロパティで構成されるインテリジェントなエントリを含む診断ログに記録されます。
 
 | プロパティ             | 詳細              |
@@ -64,36 +62,49 @@ Intelligent Insights は、過去 1 時間のデータベース ワークロー�
 | 根本原因分析 | 人間が判読可能な形式で特定された、問題の根本原因分析。 一部の洞察には、可能な場合にパフォーマンス向上に関する推奨事項が含まれます。 |
 |||
 
-## <a name="issues-state-lifecycle-active-verifying-and-complete"></a>問題の状態のライフサイクル: "Active"、"Verifying"、"Complete"
-
 診断ログに記録されたパフォーマンスの問題には、問題のライフ サイクルの 3 つの状態 ("Active"、"Verifying"、"Complete") のいずれかのフラグが設定されます。 パフォーマンスの問題が検出されると、SQL Database の組み込みインテリジェンスによってその存在が認められている限り、問題には "Active" のフラグが設定されます。 問題が緩和されたと見なされると、検証され、問題の状態が "Verifying" に変更されます。 SQL Database の組み込みインテリジェンスによって問題が解決済みと見なされると、問題の状態には "Complete" のフラグが設定されます。
 
 ## <a name="use-intelligent-insights"></a>Intelligent Insights を使用する
 
-Intelligent Insights 診断ログは、Azure Log Analytics、Azure Event Hubs、Azure Storage に送信できます。 詳細については、「[Azure SQL Database のメトリックと診断のロギング](sql-database-metrics-diag-logging.md)」を参照してください。 ログがこれらのターゲットのいずれかに送信されると、Microsoftまたはサード パーティー製のツールを使用したカスタム アラートおよび監視の開発にログを使用できます。 
+Intelligent Insights は優秀なパフォーマンス診断ログです。 使用する他の製品、Azure Log Analytics、Azure Event Hubs、Azure Storage のような特定のアプリケーション、またはサード パーティの製品と統合することができます。 
 
-Intelligent Insights を使用した SQL Database パフォーマンスのトラブルシューティング方法については、「[Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)」を参照してください。
+Intelligent Insights と Azure Log Analytics は通常、Web ブラウザー経由で分析情報を表示するのに使用され、製品を上手に使い始めるのにもっとも簡単な方法の 1 つでしょう。 Azure Event Hubs を伴う Intelligent Insights は通常、カスタムの監視と警告のシナリオを構成するのに使用されます。 Azure Storage を伴う Intelligent insights は通常、カスタム アプリケーションの開発に使用されます。たとえばカスタム レポート、あるいはデータのアーカイブや取得などです。
 
-## <a name="built-in-intelligent-insights-analytics-with-log-analytics"></a>Log Analytics での組み込みの Intelligent Insights 分析 
+Azure Log Analytics、Azure Event Hub、Azure Storage などの他製品、または使用するサード パーティ製品との Intelligent Insights の統合を実行するには、最初に Intelligent Insights ログ記録 (SQLInsights ログ) を有効にしてから、これらの製品のいずれかに Intelligent Insights ログ データがストリーミングされるように構成します。 Intelligent Insights のログ記録を有効にして、使用する製品にログ データがストリーミングされるように構成する方法については、「[Azure SQL Database のメトリックと診断のロギング](sql-database-metrics-diag-logging.md)」をご覧ください。 
 
-Log Analytics ソリューションは、Intelligent Insights 診断ログ データに基づくレポートとアラートの機能を提供します。 Azure SQL Analytics の Intelligent Insights レポートの例を以下に示します。
+Azure Log Analytics を伴う Intelligent Insights の使用に関する実践的な概要と、一般的な使用シナリオについては、埋め込みのビデオをご覧ください。
+
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
+>
+
+Intelligent Insights は、SQL Database のパフォーマンス問題の検出とトラブルシューティングで威力を発揮します。 Intelligent Insights を使用して SQL Database のパフォーマンスをトラブルシューティングする方法については、「[Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)」をご覧ください。
+
+## <a name="set-up-intelligent-insights-with-log-analytics"></a>Log Analytics で Intelligent Insights を設定する 
+
+Log Analytics ソリューションは、Intelligent Insights 診断ログ データに基づくレポートとアラートの機能を提供します。
+
+Log Analytics と共に Intelligent Insights を使用するには、Log Analytics に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure SQL Database のメトリックと診断のロギング](sql-database-metrics-diag-logging.md)」をご覧ください。 
+
+Azure SQL Analytics の Intelligent Insights レポートの例を以下に示します。
 
 ![Intelligent Insights レポート](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
 Intelligent Insights 診断ログが SQL Analytics にデータをストリーミングするように構成されたら、[SQL Analytics を使用して SQL Database を監視](../log-analytics/log-analytics-azure-sql.md)できます。
 
-## <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights ログのカスタム統合
-
-Microsoft またはサード パーティー製のツールを使用してカスタムのアラートと監視を開発するには、「[Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する](sql-database-intelligent-insights-use-diagnostics-log.md)」を参照してください。
-
 ## <a name="set-up-intelligent-insights-with-event-hubs"></a>Event Hubs で Intelligent Insights を設定する
 
-- Event Hubs にログ イベントをストリーミングするように Intelligent Insights を構成する方法については、「[Azure 診断ログを Event Hubs 名前空間にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)」を参照してください。
-- Event Hubs をカスタムの監視とアラートに使用するには、「[イベント ハブにおけるメトリックと診断のログの活用方法](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)」を参照してください。 
+Event Hubs と共に Intelligent Insights を使用するには、Event Hubs に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure 診断ログを Event Hubs 名前空間にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)」をご覧ください。
+
+Event Hubs をカスタムの監視とアラートの設定に使用するには、「[Event Hubs におけるメトリックと診断ログの活用方法](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)」をご覧ください。 
 
 ## <a name="set-up-intelligent-insights-with-storage"></a>Storage で Intelligent Insights を設定する
 
-- Storage に格納するように Intelligent Insights を構成するには、「[Azure Storage にストリーミングする](sql-database-metrics-diag-logging.md#stream-into-storage)」を参照してください。
+Storage と共に Intelligent Insights を使用するには、Storage に Intelligent Insights ログ データがストリーミングされるように構成します。「[Azure Storage にストリーミングする](sql-database-metrics-diag-logging.md#stream-into-storage)」をご覧ください。
+
+## <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights ログのカスタム統合
+
+サード パーティ製のツールと共に、または、カスタムのアラートと監視の開発に Intelligent Insights を使用するには、「[Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する](sql-database-intelligent-insights-use-diagnostics-log.md)」をご覧ください。
 
 ## <a name="detection-metrics"></a>検出メトリック
 

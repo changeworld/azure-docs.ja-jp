@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 86f1f8f0aaa9a699d2f816781cef65cda868ee55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4e27ec57543daed35811fff347f457b0dd2cd5c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるので、ファイルの転送速度を改善し、ページ読み込みのパフォーマンスを向上するには簡単で効率的な方法です。 帯域幅のコストが軽減され、ユーザーへの応答も改善されます。
@@ -100,7 +100,7 @@ ms.lasthandoff: 10/11/2017
 > * 128 バイトより大きい
 > * 1 MB 未満
 > 
-> これらのプロファイルは、**gzip** (GNU zip)、**deflate**、**bzip2**、または **br** (Brotli) エンコードをサポートしています。 Brotli エンコーディングでは、圧縮はエッジのみで行われます。 クライアント/ブラウザーが Brotli エンコーディングのために要求を送信する必要があります。圧縮されるアセットは最初に配信元で圧縮されている必要があります。 
+> これらのプロファイルは、**gzip** (GNU zip)、**deflate**、**bzip2**、または **br** (Brotli) エンコードをサポートしています。 Brotli エンコーディングでは、圧縮は配信元のみで行われます。 クライアント/ブラウザーが Brotli エンコーディングのために要求を送信する必要があります。圧縮されるアセットは最初に配信元で圧縮されている必要があります。 
 
 > [!IMPORTANT]
 > **Azure CDN from Akamai** プロファイルの場合、すべてのファイルが圧縮対象です。 ただし、ファイルの MIME タイプは、[圧縮用に構成されている](#enabling-compression)必要があります。

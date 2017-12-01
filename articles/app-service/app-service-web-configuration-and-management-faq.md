@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 3bf9e4673ffb756a8d159ed5733d3ddca70010c7
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 92cbc36ac2a566cf5dfbb2f7b3347973bab5ee8c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -69,7 +69,7 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
 2. **[アプリ設定]** で次の設定を追加します。
     * Key = WEBSITE_TIME_ZONE
     * Value = *目的のタイム ゾーン*
-3. **[ 保存]** を選択します。
+3. **[保存]** を選択します。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 
@@ -111,7 +111,7 @@ App Service 証明書は、Azure リソースと見なされます。 Azure サ�
 
 HTTP 応答からヘッダーを削除するには、サイトの web.config ファイルを更新します。 詳細については、「[Remove standard server headers on your Azure websites](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)」(Azure Web サイトで標準的なサーバーのヘッダーを削除) を参照してください。
 
-## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service は PCI 標準 3.0 と 3.1 に準拠してますか?
+## <a name="is-app-service-compliant-with-pci-standard-30-and-31"></a>App Service は PCI 標準 3.0 と 3.1 に準拠していますか?
 
 現時点では、Azure App Service の Web Apps の機能は PCI データ セキュリティ標準 (DSS) バージョン 3.0 レベル 1 に準拠しています。 PCI DSS バージョン 3.1 には今後準拠する予定です。 最新標準の採用をどのように進めるかについての計画は既に進行中です。
 
@@ -147,7 +147,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ### <a name="resolution"></a>解決策
 
-この問題を解決するために Hybrid Connection Manager の更新に努めています。 回避策は、「[Hybrid Connections error with SQL Server: System.OverflowException: Arithmetic operation resulted in an overflow](https://blogs.msdn.microsoft.com/waws/2016/05/17/hybrid-connection-error-with-sql-server-system-overflowexception-arithmetic-operation-resulted-in-an-overflow/)」(SQL Server でのハイブリッド接続のエラー: System.OverflowException: 算術演算結果オーバーフローが発生) を参照してください。
+修正されたハイブリッド接続マネージャーの問題によって、例外が発生しました。 この問題を解決するために [ハイブリッド接続マネージャーを更新](https://go.microsoft.com/fwlink/?LinkID=841308)してください。
 
 ## <a name="how-do-i-add-or-edit-a-url-rewrite-rule"></a>URL Rewrite (URL 書き換え) ルールを追加または編集する方法を教えてください?
 
@@ -319,4 +319,4 @@ Azure の自動スケールが期待どおりに Web アプリのインスタン
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>オンプレミス環境から App Serviceアプリ サービスへの移行方法を教えてください?
 
-サイトを Windows および Linux の Web サーバーから App Service に移行するには、Azure App Service Migration Assistant を使用できます。 移行ツールは、必要に応じて、Azure に Web アプリとデータベースを作成し、コンテンツを発行します。 詳細については、「[Azure App Service Migration Assistant](https://www.movemetothecloud.net/)」を参照してください。
+サイトを Windows および Linux の Web サーバーから App Service に移行するには、Azure App Service Migration Assistant を使用できます。 移行ツールは、必要に応じて、Azure に Web アプリとデータベースを作成し、コンテンツを発行します。 詳細については、「[Azure App Service Migration Assistant](https://www.migratetoazure.net/)」を参照してください。

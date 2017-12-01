@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 070e848f753452953b9e5dfe94799e7c0a314530
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ad22e78693c54c62f9230f7f52460e01e5e0022
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="pen-testing"></a>侵入テスト
-アプリケーションのテストとデプロイに Microsoft Azure を使用することの優れた点の 1 つは、アプリケーションを開発、テストおよびデプロイするために、オンプレミスのインフラストラクチャをまとめる必要がないことです。 すべてのインフラストラクチャが、Microsoft Azure Platform サービスで処理されます。 オンプレミスのハードウェアの要求、取得、および “ラックとスタック” に関して心配する必要はありません。
+アプリケーションのテストとデプロイに Azure を使用するメリットの 1 つが、環境をすばやく作成できることです。  オンプレミスのハードウェアの要求、取得、および “ラックとスタック” に関して心配する必要はありません。
 
 これは非常に良いことですが、通常のセキュリティで適切な注意を払う必要はあります。 実行する必要のある操作の 1 つは、Azure にデプロイするアプリケーションに対する侵入テストです。
 
-Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)を実行していることは、既にご存知かもしれません。 これは、セキュリティ コントロールの向上、新しいセキュリティ コントロールの導入、セキュリティ プロセスの向上という観点から、プラットフォームを向上し、アクションをガイドするために役立ちます。
+Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)を実行していることは、既にご存知かもしれません。 これは Azure の向上を促進するうえで役に立ちます。 
 
 お客様のためにアプリケーションの侵入テストを行うことはありませんが、お客様のアプリケーションに侵入テストを実行する必要があることは理解しています。 お客様のアプリケーションのセキュリティを強化するときに、Azure エコシステム全体のセキュリティ保護を高めることができるため、これは良いことです。
 
@@ -33,7 +33,8 @@ Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft
 
 どうすればよいでしょうか。
 
-Azure でホストされるアプリケーションの侵入テストを行う準備ができたら、[Microsoft に連絡する](https://portal.msrc.microsoft.com/en-us/engage/pentest)ことができます。 お客様が特定のテストを実行する予定であることを把握すると、テストが、「[Microsoft Cloud Unified Penetration Testing Rules of Engagement (Microsoft Cloud 統合侵入テストの活動規則)](https://technet.microsoft.com/en-us/mt784683)」に記載されている Azure 侵入テストの契約条件に適合している限り、不注意でシャットダウンすることはありません (テストを実行している IP アドレスをブロックするなど)。
+Azure でホストされるアプリケーションの侵入テストを行う準備ができたら、[Microsoft に連絡する](https://portal.msrc.microsoft.com/en-us/engage/pentest)ことができます。 一度 Microsoft に通知したら、Microsoft 側が誤ってシャットダウンすることはありません (テストを実行している IP アドレスをブロックするなど)。 テストは、「[Microsoft Cloud Unified Penetration Testing Rules of Engagement (Microsoft Cloud 統合侵入テストの活動規則)](https://technet.microsoft.com/en-us/mt784683)」に記載されている、Azure 侵入テストの契約条件に従っている必要があります。
+
 実行できる標準テストは、次のとおりです。
 
 * [Open Web Application Security Project (OWASP) の上位 10 の脆弱性](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
@@ -42,4 +43,6 @@ Azure でホストされるアプリケーションの侵入テストを行う�
 
 実行できないテストの種類の 1 つは、 [サービス拒否 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻撃です。 これには、Dos 攻撃自体を開始したり、DoS 攻撃の種類の判断、デモンストレーション、またはシミュレートを実行する可能性がある関連テストを実行したりすることも含まれます。
 
-Microsoft Azure でホストされているアプリケーションの侵入テストを行う準備はできていますか? その場合は、「 [侵入テストの概要](https://technet.microsoft.com/library/mt784683.aspx) 」ページに進みます (また、ページの下部にある [テスト要求を作成] ボタンをクリックします)。 また、侵入テストの契約条件の詳細と、Azure やその他の Microsoft サービスに関連するセキュリティの不備を報告する方法に関する役立つリンクを見つけることもできます。
+## <a name="next-steps"></a>次のステップ
+
+- Microsoft Azure でホストされているアプリケーションの侵入テストを行う準備はできていますか? その場合は、「 [侵入テストの概要](https://technet.microsoft.com/library/mt784683.aspx) 」ページに進みます (また、ページの下部にある [テスト要求を作成] ボタンをクリックします)。 

@@ -14,17 +14,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 35fd47025ca0dba1edbe1d7dd3ee0172fc45d6f5
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b6bc12c407a32388b7155a815b099b3b285fef18
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
 [Azure Portal] では Azure Functions の開発用およびテスト用ツールの完全なセットが提供されていますが、多くの開発者はローカルでの開発を選択します。 Azure Functions では、お気に入りのコード エディターとローカル開発ツールを使用して、ローカル コンピューターで簡単に関数を開発し、テストできます。 独自の関数を使用して Azure でイベントをトリガーし、ローカル コンピューターで C# 関数や JavaScript 関数をデバッグできます。 
 
 Visual Studio C# の開発者は、Azure Functions を [Visual Studio 2017 に統合](functions-develop-vs.md)することもできます。
+
+>[!IMPORTANT]  
+> 同じ関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数を発行するときは、ポータルではプロジェクト コードを管理または変更しないようにしてください。
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
@@ -83,7 +86,7 @@ func init MyFunctionProj
 
 ## <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
-ローカルで実行中の場合、Functions プロジェクトは、[host.json](functions-host-json.md) ファイルと [local.settings.json](#local-settings) ファイルが含まれるディレクトリです。 このディレクトリは、Azure の関数アプリに相当します。 Azure Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
+ローカルで実行中の場合、Functions プロジェクトは、[host.json](functions-host-json.md) ファイルと [local.settings.json](#local-settings-file) ファイルが含まれるディレクトリです。 このディレクトリは、Azure の関数アプリに相当します。 Azure Functions のフォルダー構造の詳細については、[Azure Functions の開発者向けガイド](functions-reference.md#folder-structure)を参照してください。
 
 ターミナル ウィンドウまたはコマンド プロンプトで、次のコマンドを実行してプロジェクトおよびローカルの Git リポジトリを作成します。
 
@@ -102,8 +105,6 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
 ローカル Git リポジトリを使用せずにプロジェクトを作成する場合は、`--no-source-control [-n]` オプションを使用します。
-
-<a name="local-settings"></a>
 
 ## <a name="local-settings-file"></a>ローカル設定ファイル
 

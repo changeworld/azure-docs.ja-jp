@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 11/15/2017
 ms.author: erikje
-ms.openlocfilehash: 24cde66a132ae2e1ba0eb9b1564915746e5ca448
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 977630741b8424c4c6bd5f5d492e33b9981b9cb5
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Azure サブスクリプションを使用した Azure Stack の登録
 
@@ -38,7 +38,6 @@ Azure を使用して Azure Stack を登録する前に、以下のものが必�
 - Azure サブスクリプションのサブスクリプション ID。 ID を取得する場合は、Azure にサインインし、**[More services]** (その他のサービス) > **[Subscriptions]** (サブスクリプション) をクリックして、使用するサブスクリプションをクリックすると、**[Essentials]** (Essentials) の下に **[Subscription ID]** (サブスクリプション ID) が表示されます。 中国、ドイツ、および米国政府機関向けのクラウド サブスクリプションは、現在サポートされていません。
 - サブスクリプションの所有者であるアカウントのユーザー名とパスワード (MSA/2FA アカウントがサポートされます)。
 - Azure サブスクリプションの Azure Active Directory。 Azure でこのディレクトリを検索するには、Azure Portal の右上隅にあるアバターにポインターを合わせます。 
-- [登録されている Azure Stack リソースプロバイダー](#register-azure-stack-resource-provider-in-azure)。
 
 これらの要件を満たす Azure サブスクリプションがない場合は、[ここで無料の Azure アカウントを作成](https://azure.microsoft.com/en-us/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。
 
@@ -49,36 +48,62 @@ Azure を使用して Azure Stack を登録する前に、以下のものが必�
 > この手順は、Azure Stack 環境で 1 回だけ実行する必要があります。
 >
 
-1. PowerShell ISE を管理者として起動します。
-2. -EnvironmentName パラメーターを「AzureCloud」に設定して、Azure サブスクリプションの所有者である Azure アカウントにログインします。
-3. Azure リソース プロバイダー「Microsoft.AzureStack」を登録します。
+1. PowerShell セッションを管理者として開始します。
+2. Azure サブスクリプションの所有者である Azure アカウントにログインします (Login-AzureRmAccount コマンドレットを使用してログインできますが、サインイン時に -EnvironmentName パラメーターを "AzureCloud" に設定してください)。
+3. Azure リソースプロバイダー "Microsoft.AzureStack" を登録します。
 
-例: 
+**例:** 
 ```Powershell
 Login-AzureRmAccount -EnvironmentName "AzureCloud"
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 ```
 
-
 ## <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
 > [!NOTE]
->これらの手順はすべて、ホスト コンピューターで完了する必要があります。
+> これらすべての手順は、特権エンドポイントにアクセスできるコンピューターから実行する必要があります。 Azure Stack Development Kit では、ホスト コンピューターがそれにあたります。 統合システムを使用している場合は、Azure Stack のオペレーターに問い合わせてください。
 >
 
-1. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。 
-2. [RegisterWithAzure.psm1 スクリプト](https://go.microsoft.com/fwlink/?linkid=842959)をフォルダー (C:\Temp など) にコピーします。
-3. 管理者として PowerShell ISE を起動し、RegisterWithAzure モジュールをインポートします。    
-4. RegisterWithAzure.psm1 スクリプトから Add-AzsRegistration モジュールを実行します。 次のプレースホルダーを置き換えます。 
-    - *YourCloudAdminCredential*は domain\cloudadmin (Development Kitでは azurestack\cloudadmin) のローカル ドメインの資格情報を含む PowerShell オブジェクトです。
-    - *YourAzureSubscriptionID* は、Azure Stack の登録に使用する Azure サブスクリプション ID です。
-    - *YourAzureDirectoryTenantName* は、自分の Azure サブスクリプションに関連付けられている Azure テナント ディレクトリの名前です。 登録リソースは、このディレクトリ テナントに作成されます。 
-    - *YourPrivilegedEndpoint* は[特権エンドポイント](azure-stack-privileged-endpoint.md)の名前です。
+1. PowerShell コンソールを管理者として開き、[PowerShell for Azure Stack をインストール](azure-stack-powershell-install.md)します。  
 
-    ```powershell
-    Add-AzsRegistration -CloudAdminCredential $YourCloudAdminCredential -AzureDirectoryTenantName $YourAzureDirectoryTenantName  -AzureSubscriptionId $YourAzureSubscriptionId -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Development 
-    ```
-5. ログインのポップアップ ウィンドウで、Azure サブスクリプションの資格情報を入力します。
+2. Azure Stack の登録に使用する Azure アカウントを追加します。 これを行うには、`Add-AzureRmAccount` コマンドレットをパラメーターなしで実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。  
+
+3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、使用するものを選択します。  
+
+   ```powershell
+      Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
+   ```
+
+4. 登録に対応する既存バージョンの Powershell モジュールをすべて削除し、[GitHub から最新バージョンをダウンロード](azure-stack-powershell-download.md)します。  
+
+5. 前の手順で作成された "AzureStack-Tools-master" ディレクトリから、"Registration" フォルダーに移動し、".\RegisterWithAzure.psm1" モジュールをインポートします。  
+
+   ```powershell 
+   Import-Module .\RegisterWithAzure.psm1 
+   ```
+
+6. 同じ PowerShell セッションで、次のスクリプトを実行します。 資格情報の入力を求められたら、`azurestack\cloudadmin` をユーザーとして指定すると、パスワードはデプロイ時にローカル管理者用に使用したものと同じです。  
+
+   ```powershell
+   $AzureContext = Get-AzureRmContext
+   $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"
+   Add-AzsRegistration `
+       -CloudAdminCredential $CloudAdminCred `
+       -AzureSubscriptionId $AzureContext.Subscription.Id `
+       -AzureDirectoryTenantName $AzureContext.Tenant.TenantId `
+       -PrivilegedEndpoint AzS-ERCS01 `
+       -BillingModel Development 
+   ```
+
+   | パラメーター | 説明 |
+   | -------- | ------------- |
+   | CloudAdminCredential | [特権エンドポイントへのアクセス](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)に使用するクラウド ドメイン資格情報。 ユーザー名の形式は "\<Azure Stack ドメイン\>\cloudadmin" です。 開発キットのユーザー名は "azurestack\cloudadmin" に設定されます。 統合システムを使用している場合は、Azure Stack のオペレーターに問い合わせてこの値を入手してください。|
+   | AzureSubscriptionId | Azure Stack の登録に使用する Azure サブスクリプション。|
+   | AzureDirectoryTenantName | Azure サブスクリプションと関連付けられている Azure テナント ディレクトリの名前。 登録リソースは、このディレクトリ テナントに作成されます。 |
+   | PrivilegedEndpoint | ログ収集およびその他のデプロイ後タスクのような機能を提供する、あらかじめ構成されたリモート PowerShell コンソール。 開発キットでは、特権エンドポイントは "AzS-ERCS01" 仮想マシン上にホストされます。 統合システムを使用している場合は、Azure Stack のオペレーターに問い合わせてこの値を入手してください。 詳細については、[特権エンドポイントの使用](azure-stack-privileged-endpoint.md)に関するトピックをご覧ください。|
+   | BillingModel | 自分のサブスクリプションで使用する請求モデル。 このパラメーターに使用できる値は、"Capacity"、"PayAsYouUse" および "Development" です。 開発キットでは、この値は "Development" に設定されています。 統合システムを使用している場合は、Azure Stack のオペレーターに問い合わせてこの値を入手してください。 |
+
+7. スクリプトが完了したら、"Azure Stack をアクティブ化しています (この手順は完了までに最大 10 分ほどかかります)" というメッセージが表示されます。 
 
 ## <a name="verify-the-registration"></a>登録の確認
 
