@@ -1,6 +1,6 @@
 ---
-title: "Windows フェールオーバー クラスターおよび SAP ASCS/SCS インスタンスのファイル共有を使用した SAP HA 向けの Azure インフラストラクチャの準備 | Microsoft Docs"
-description: "Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP HA 向けの Azure インフラストラクチャの準備"
+title: "Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP の高可用性向けの Azure インフラストラクチャの準備 | Microsoft Docs"
+description: "Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP の高可用性向けの Azure インフラストラクチャの準備"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,13 +17,13 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2468b5d0996fee5e0106d0d314c16654558e9f4
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 3f9e2108a7714dcbfd4f2db583cb6ee4b803f65a
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="azure-infrastructure-preparation-for-sap-ha-using-windows-failover-cluster-and-file-share-for-sap-ascs-instance"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した SAP HA 向けの Azure インフラストラクチャの準備
+# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -206,28 +206,28 @@ ms.lasthandoff: 10/25/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-このドキュメントでは、Azure インフラストラクチャの準備手順を説明します。この手順は、**Windows フェールオーバー クラスター (WSFC)** 上に高可用性 SAP システムをインストールおよび構成する際に必要で、SAP ASCS/SCS インスタンスのクラスター化のオプションとして**スケール アウト ファイル共有**を使用します。
+この記事では、Windows Server フェールオーバー クラスタリング クラスター (WSFC) 上に高可用性 SAP システムをインストールして構成するために必要な Azure インフラストラクチャの準備手順を説明します。ここでは、SAP ASCS/SCS インスタンスをクラスター化するためのオプションとしてスケールアウト ファイル共有を使用します。
 
 ## <a name="prerequisite"></a>前提条件
 
-インストールを開始する前に、必ず次のドキュメントをご確認ください。
+インストールを始める前に、次の記事を確認してください。
 
-* [Architecture Guide - Clustering SAP (A)SCS Instance on Windows Failover Cluster Using File Share (アーキテクチャ ガイド - **ファイル共有**を使用した **Windows フェールオーバー クラスター**での SAP ASCS/SCS インスタンスのクラスター化)][sap-high-availability-guide-wsfc-shared-disk]
+* [アーキテクチャ ガイド: ファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する][sap-high-availability-guide-wsfc-shared-disk]
 
 
 ## <a name="host-names-and-ip-addresses"></a>ホスト名と IP アドレス
 
 | 仮想ホスト名の役割 | 仮想ホスト名 | 静的 IP アドレス | 可用性セット |
 | --- | --- | --- | --- |
-| 最初のクラスター ノード ASCS/SCS クラスター | ascs-1 | 10.0.6.4 | ascs-as |
-| 2 番目のクラスター ノード ASCS/SCS クラスター | ascs-2 | 10.0.6.5 | ascs-as |
-| クラスター ネットワーク名 |ascs-cl | 10.0.6.6 | n.a |
-| SAP PR1 ASCS クラスター ネットワーク名 |pr1-ascs | 10.0.6.7 | n.a |
+| 最初のクラスター ノードの ASCS/SCS クラスター | ascs-1 | 10.0.6.4 | ascs-as |
+| 2 番目のクラスター ノードの ASCS/SCS クラスター | ascs-2 | 10.0.6.5 | ascs-as |
+| クラスター ネットワーク名 |ascs-cl | 10.0.6.6 | 該当なし |
+| SAP PR1 ASCS クラスターのネットワーク名 |pr1-ascs | 10.0.6.7 | 該当なし |
 
 
-**表 1:** ASCS/SCS クラスター
+**表 1**: ASCS/SCS クラスター
 
-| SAP &lt;SID&gt; | SAP ASCS/SCS インスタンス番号 |
+| SAP \<SID> | SAP ASCS/SCS インスタンスの番号 |
 | --- | --- |
 | PR1 | 00 |
 
@@ -239,53 +239,56 @@ ms.lasthandoff: 10/25/2017
 | 最初のクラスター ノード | sofs-1 | 10.0.6.10 | sofs-as |
 | 2 番目のクラスター ノード | sofs-2 | 10.0.6.11 | sofs-as |
 | 3 番目のクラスター ノード | sofs-3 | 10.0.6.12 | sofs-as |
-| クラスター ネットワーク名 | sofs-cl | 10.0.6.13 | n.a |
-| SAP グローバル ホスト名 | sapglobal | すべてのクラスター ノードの IP を使用 | n.a |
+| クラスター ネットワーク名 | sofs-cl | 10.0.6.13 | 該当なし |
+| SAP グローバル ホスト名 | sapglobal | すべてのクラスター ノードの IP を使用 | 該当なし |
 
-**表 3:** SOFS クラスター
-
-
-## <a name="deploy-vms-for-sap-ascs-cluster-dbms-cluster-and-sap-application-servers"></a>SAP ASCS/SCS クラスター、DBMS クラスター、SAP アプリケーション サーバー向けの VM のデプロイ
-
-Azure インフラストラクチャを準備するには、次の手順を実行します。
-* [Architectural Template 1、2、3 のインフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-shared-disk]
-
-* [Azure Virtual Network][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]
-
-* [DNS IP アドレス][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]
-
-* [SAP 仮想マシンの静的 IP アドレスの設定][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]
-
-* [ Azure 内部ロード バランサーの静的 IP アドレスの設定][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]
-
-* [Azure 内部ロード バランサーの ASCS/SCS 負荷分散規則を既定値に設定][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]
-
-* [Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則の変更][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]
-
-*  [ドメインへの Windows 仮想マシンの追加、SAP ASCS/SCS インスタンスの両方のクラスター ノードでのレジストリ エントリの追加][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]
-
-* Windows Server 2016 を使用するときは [Azure クラウド監視][deploy-cloud-witness]を構成することを推奨
+**表 3**: スケールアウト ファイル サーバー クラスター
 
 
-## <a name="deploy-scale-out-file-server-manually"></a>スケール アウト ファイル サーバーを手動でデプロイする 
+## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>SAP ASCS/SCS クラスター、データベース管理システム (DBMS) クラスター、および SAP アプリケーション サーバー インスタンス用の VM をデプロイする
 
-ブログ「[Storage Spaces Direct in Azure (Azure での記憶域スペース ダイレクト)][ms-blog-s2d-in-azure]」の説明に従うと、SOFS クラスターを手動でデプロイすることができます。  
+Azure インフラストラクチャを準備するには、以下を完了します。
+
+* [アーキテクチャ テンプレート 1、2、および 3 向けのインフラストラクチャを準備します][sap-high-availability-infrastructure-wsfc-shared-disk]。
+
+* [Azure 仮想ネットワークを作成します][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]。
+
+* [必要な DNS IP アドレスを設定します][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]。
+
+* [SAP 仮想マシンの静的 IP アドレスを設定します][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]。
+
+* [Azure 内部ロード バランサーの静的 IP アドレスを設定します][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]。
+
+* [Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を設定します][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
+
+* [Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を変更します][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]。
+
+* [Windows 仮想マシンをドメインに追加します][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
+
+* [SAP ASCS/SCS インスタンスの両方のクラスター ノードにレジストリ エントリを追加します][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
+
+* Windows Server 2016 を使用するときは [Azure クラウド監視][deploy-cloud-witness]を構成することをお勧めします。
+
+
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>スケールアウト ファイル サーバー クラスターを手動でデプロイする 
+
+ブログ「[Storage Spaces Direct in Azure][ms-blog-s2d-in-azure]」(Azure における記憶域スペース ダイレクト) に説明されているように、次のコードを実行することによって、Microsoft スケールアウト ファイル サーバー クラスターを手動でデプロイできます。  
 
 
 ```PowerShell
-# Set on Execution Policy  ALL cluster nodes!
+# Set an execution policy - all cluster nodes
 Set-ExecutionPolicy Unrestricted
 
-# Defines SOFS cluster nodes
+# Define Scale-Out File Server cluster nodes
 $nodes = ("sofs-1", "sofs-2", "sofs-3")
 
-# Add cluster and SOFS features
+# Add cluster and Scale-Out File Server features
 Invoke-Command $nodes {Install-WindowsFeature Failover-Clustering, FS-FileServer -IncludeAllSubFeature -IncludeManagementTools -Verbose}
 
 # Test cluster
 Test-Cluster -node $nodes -Verbose
 
-#Install cluster
+# Install cluster
 $ClusterNetworkName = "sofs-cl"
 $ClusterIP = "10.0.6.13"
 New-Cluster -Name $ClusterNetworkName -Node $nodes –NoStorage –StaticAddress $ClusterIP -Verbose
@@ -293,47 +296,51 @@ New-Cluster -Name $ClusterNetworkName -Node $nodes –NoStorage –StaticAddress
 # Set Azure Quorum
 Set-ClusterQuorum –CloudWitness –AccountName gorcloudwitness -AccessKey <YourAzureStorageAccessKey>
 
-# Enable Storage Spaces Direct S2D
+# Enable Storage Spaces Direct
 Enable-ClusterS2D
 
-# Create SOFS with SAP Global Host Name
+# Create Scale-Out File Server with an SAP global host name
 # SAPGlobalHostName
 $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-## <a name="deploy-scale-out-file-server-automatically"></a>スケール アウト ファイル サーバーを自動でデプロイする
+## <a name="deploy-scale-out-file-server-automatically"></a>スケールアウト ファイル サーバーを自動でデプロイする
 
-既存の VNET および Active Directory 環境で Azure Resource Manager テンプレートを使用して、SOFS のデプロイを**自動化**することもできます。
+既存の仮想ネットワークと Active Directory 環境で Azure Resource Manager テンプレートを使用することで、スケールアウト ファイル サーバーのデプロイを自動化することもできます。
 
 > [!IMPORTANT]
->SOFS には 3 個 (またはそれ以上) のクラスター ノードで 3 方向ミラーリングを構成することをお勧めします。
+> スケールアウト ファイル サーバーには、3 方向ミラーリングを行う 3 つ以上のクラスター ノードを使用することをお勧めします。
 >
->このため、SOFS Resource Manager テンプレートの UI では、VM の数を指定する必要があります。
+> スケールアウト ファイル サーバー リソース マネージャー テンプレートの UI に、VM の数を指定する必要があります。
 >
 
-### <a name="using-managed-disks"></a>Managed Disks を使用する場合
+### <a name="use-managed-disks"></a>管理ディスクを使用する
 
-記憶域スペース ダイレクト (S2D) と Azure Managed Disks を備えたスケール アウト ファイル サーバー (SOFS) をデプロイするための Azure Resource Manager テンプレートは、[Github][arm-sofs-s2d-managed-disks] から入手できます。
+記憶域スペース ダイレクトと Azure Managed Disks を備えたスケールアウト ファイル サーバー をデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-managed-disks] から入手できます。
 
-管理ディスクをお勧めします。
+Managed Disks を使用することをお勧めします。
 
-![図 1: 管理ディスクを備えた SOFS Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8010]
+![図 1: 管理ディスクを備えたスケールアウト ファイル サーバー リソース マネージャー テンプレートの UI 画面][sap-ha-guide-figure-8010]
 
-_**図 1:** 管理ディスクを備えた SOFS Resource Manager テンプレートの UI 画面_
+_**図 1**: 管理ディスクを備えたスケールアウト ファイル サーバー リソース マネージャー テンプレートの UI 画面_
 
-VM 数の最小値は 2、ディスク数の最小値は 2 + 1 スペア ディスク = 3、SAP グローバル ホスト ネットワーク名は **sapglobalhost**、ファイル共有は **sapmnt** です。
+このテンプレートで、次の操作を行います。
+1. **[VM 数]** ボックスに、最小数である「**2**」を入力します。
+2. **[VM ディスク数]** ボックスに、ディスクの最小数である「**3**」(2 台のディスク + 1 台のスペア ディスク = 3 台のディスク) を入力します。
+3. **[Sofs Name]\(SOFS 名\)** ボックスに、SAP のグローバル ホスト ネットワーク名である「**sapglobalhost**」を入力します。
+4. **[共有名]** ボックスに、ファイル共有名である「**sapmnt**」を入力します。
 
-### <a name="using-non-managed-disks"></a>管理されていないディスクを使用する場合
+### <a name="use-unmanaged-disks"></a>非管理ディスクを使用する
 
-記憶域スペース ダイレクト (S2D) と Azure の管理されていないディスクを備えたスケール アウト ファイル サーバー (SOFS) をデプロイするための Azure Resource Manager テンプレートは、[Github][arm-sofs-s2d-non-managed-disks] から入手できます。
+記憶域スペース ダイレクトと Azure 非管理ディスクを備えたスケールアウト ファイル サーバー をデプロイするための Azure Resource Manager テンプレートは、[GitHub][arm-sofs-s2d-non-managed-disks] から入手できます。
 
-![図 2: 管理ディスクのない SOFS Azure Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8011]
+![図 2: 管理ディスクを持たないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8011]
 
-_**図 2:** 管理ディスクのない SOFS Azure Resource Manager テンプレートの UI 画面_
+_**図 2**: 管理ディスクを持たないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_
 
-ストレージ アカウントの種類としては必ず、**Premium Storage** を選択してください。 その他の設定は、管理ディスクと同じです。
+**[ストレージ アカウントの種類]** ボックスで、**[Premium Storage]** を選択します。 その他の設定は、管理ディスクと同じです。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有上への SAP NetWeaver HA のインストール][sap-high-availability-installation-wsfc-file-share]
+* [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP NetWeaver の高可用性をインストールする][sap-high-availability-installation-wsfc-file-share]
