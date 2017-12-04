@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 1d2a5e5d639e2aa0023e99b73f87a68e19afc239
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 2f46fc37b9050b19b83685c97198c29a5ce46289
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -431,7 +431,7 @@ Azure Cosmos DB は、テーブルの作成元 (ポータルまたは CQL) に�
 スループットの概念については、「[Azure Cosmos DB の要求ユニット](request-units.md)」を参照してください。 テーブルのスループットは、基になる物理パーティション全体で均等に分散されます。  
 
 ### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>CQL で作成したときのテーブルの既定の RU/秒を教えてください。 変更する必要がある場合はどうなりますか?
-Azure Cosmos DB では、スループットの単位として 1 秒あたりの要求単位数 (RU/秒) が使われています。 CQL で作成したテーブルは 400 RU です。 この RU はポータルで 10,000 RU に変更できます。 プライベート プレビューで 10,000 を超える RU が必要な場合は、まずポータルから作成できます。 または、CQL でこの容量が必要な場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) までご連絡ください。 
+Azure Cosmos DB では、スループットの単位として 1 秒あたりの要求単位数 (RU/秒) が使われています。 CQL で作成したテーブルは 400 RU です。 RU はポータルから変更できます。 
 
 CQL
 ```

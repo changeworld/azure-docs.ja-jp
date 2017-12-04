@@ -21,8 +21,6 @@
 
 | リソース | 既定の制限 |
 | --- | --- |
-| VM あたりの最大 IOPS |GS5 VM<sup>1</sup> で 80,000 IOPS |
-| VM あたりの最大スループット |GS5 VM<sup>1</sup> で 2,000 MB/秒 |
-
-<sup>1</sup>他の VM サイズの制限については、[VM のサイズ](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するトピックを参照してください。 
+| VM あたりの最大 IOPS |GS5 VM で 80,000 IOPS |
+| VM あたりの最大スループット |GS5 VM で 2,000 MB/秒 |
 

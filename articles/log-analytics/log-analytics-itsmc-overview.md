@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics の IT Service Management Connector | Microsoft Docs"
-description: "IT Service Management Connector を使用して、Azure Log Analytics の ITSM 作業項目を一元的に監視および管理し、問題をすばやく解決できます。"
+description: "この記事では、IT Service Management Connector (ITSMC) の概要を説明し、このソリューションを使用して ITSM の作業項目を OMS Log Analytics で一元的に監視および管理して、問題を迅速に解決する方法に関する情報を示します。"
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: ba8542640fcec6e4bc63d8f0a41bf85b221d4c5e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bd384255b3c46b3ae88b1269ab26e0ddaa6f6e77
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>IT Service Management Connector を使用した ITSM 作業項目の一元管理 (プレビュー)
 
 ![IT Service Management Connector シンボル](./media/log-analytics-itsmc/itsmc-symbol.png)
 
-IT Service Management Connector (ITSMC) では、サポートされている IT Service Management (ITSM) 製品/サービスと Log Analytics 間の双方向の統合が提供されます。  この接続を介して、Log Analytics のアラートまたはログ レコードに基づいて ITSM 製品でインシデント、アラート、またはイベントを作成できます。 また、このコネクタは、インシデントなどのデータや ITSM 製品からの変更要求を OMS Log Analytics にインポートします。
+IT Service Management Connector (ITSMC) では、サポートされている IT Service Management (ITSM) 製品/サービスと Log Analytics 間の双方向の統合が提供されます。  この接続を介して、Log Analytics のアラート、ログ レコード、または Azure のアラートに基づいて ITSM 製品でインシデント、アラート、またはイベントを作成できます。 また、このコネクタは、インシデントなどのデータや ITSM 製品からの変更要求を OMS Log Analytics にインポートします。
 
 ITSMC を使用すると、次のことができます。
 
@@ -56,7 +56,7 @@ ITSMC を使用すると、次のことができます。
  ![ITSMC の更新](./media/log-analytics-itsmc/itsmc-connection-refresh.png)
 
 
-## <a name="configuring-the-connection-with-your-itsm-software"></a>ITSM ソフトウェアとの接続の構成
+## <a name="configuring-the-itsmc-connection-with-your-itsm-productsservices"></a>ITSM 製品/サービスとの ITSMC 接続を構成する
 
 ITSMC では、**System Center Service Manager**、**ServiceNow**、**Provance**、および **Cherwell** への接続がサポートされます。
 
@@ -105,7 +105,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 割当先
 - カテゴリ
 - タイトル
-- Description
+- 説明
 - 作成日
 - 終了日
 - 解決日
@@ -150,7 +150,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 | OMS のフィールド | ITSM のフィールド |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
+| ServiceDeskId_s| 番号 |
 | IncidentState_s | 状態 |
 | Urgency_s |緊急度 |
 | Impact_s |影響|
@@ -164,15 +164,15 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  簡単な説明 |
 | Description_s|  メモ |
 | CreatedDate_t|  開始済み |
-| ClosedDate_t| closed|
+| ClosedDate_t| 終了済み|
 | ResolvedDate_t|解決済み|
-| コンピューター  | 構成項目 |
+| Computer  | 構成項目 |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 変更要求の出力データ
 
 | OMS のフィールド | ITSM のフィールド |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
+| ServiceDeskId_s| 番号 |
 | CreatedBy_s | 要求者 |
 | ClosedBy_s | 終了者 |
 | AssignedTo_s | 割り当て先  |
@@ -190,8 +190,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   終了予定日 |
 | WorkStartDate_t  | 実際の開始日 |
 | WorkEndDate_t | 実際の終了日|
-| Description_s | Description |
-| コンピューター  | 構成項目 |
+| Description_s | 説明 |
+| Computer  | 構成項目 |
 
 **ITSM データに関する Log Analytics 画面 (サンプル):**
 
@@ -227,7 +227,7 @@ ITSMC ソリューションを適用して、接続されている ITSM ツー�
 
     このアラートについてログ エントリの数に関係なく 1 つの作業項目を作成するには、このチェックボックスをオフのままにしておきます。
 
-7. **[ Save]** をクリックします。
+7. **[保存]**をクリックします。
 
 作成した OMS アラートは、**[設定]**>**[アラート]** で確認できます。 指定したアラートの条件が満たされた場合は、それに対応する ITSM 接続の作業項目が作成されます。
 
@@ -258,6 +258,7 @@ ITSMC ソリューションを適用して、接続されている ITSM ツー�
 4. **[連絡先の種類]**、**[影響]**、**[緊急度]**、**[カテゴリ]**、**[サブ カテゴリ]** のテキスト ボックスに適切な値を入力し、**[作成]** をクリックします。
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Azure アラートから ITSM 作業項目を作成する
+
 ITSMC はアクション グループと統合されています。
 
 [アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)では、Azure アラートのアクションをトリガーする再利用可能なモジュール化された方法が提供されます。 アクション グループの ITSM アクションを使用して、ITSM Connector ソリューションへの接続が既に確保されている ITSM 製品で作業項目を作成できます。
@@ -286,7 +287,7 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 >[!NOTE]
 
-> 現在、Activity Log アラートのみで ITSM アクションがサポートされています。 他の Azure アラートでは、ITSM アクションはサポートされていません。
+> 現時点では、ITSM アクションをサポートしているのは Activity Log Alerts だけです。その他の Azure アラートはこれをサポートしていません。
 
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>OMS の ITSM 接続のトラブルシューティング

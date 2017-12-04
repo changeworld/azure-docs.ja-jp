@@ -12,14 +12,14 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 0e77ecc591173ae29311c2a1508e5a8a907816ac
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 29e6187c59f34122e98819b5775af261494995ca
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 
@@ -72,6 +72,10 @@ Azure Table Storage の複雑なタスクについては、次を参照してく
 ## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
 
 まず最初に、Azure Portal で Azure Cosmos DB アカウントを作成します。  
+ 
+> [!IMPORTANT]  
+> 新しいテーブル API アカウントを作成して一般公開のテーブル API SDK を操作する必要があります。 プレビュー期間中に作成されたテーブル API アカウントは、一般公開の SDK ではサポートされません。 
+>
 
 [!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
 
@@ -88,7 +92,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 2. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。 
 
     ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-table-dotnet-getting-started.git
+    git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
     ```
 
 3. Visual Studio でソリューション ファイルを開きます。 
@@ -99,24 +103,32 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 1. [Azure Portal](http://portal.azure.com/) で **[接続文字列]** をクリックします。 
 
-    画面の右側にある [コピー] ボタンを使って接続文字列をコピーします。
+    画面の右側にある [コピー] ボタンを使ってプライマリ接続文字列をコピーします。
 
     ![[接続文字列] ウィンドウで接続文字列を確認してコピーする](./media/create-table-dotnet/connection-string.png)
 
 2. Visual Studio で app.config ファイルを開きます。 
 
-3. 接続文字列の値を app.config ファイルに CosmosDBStorageConnectionString の値として貼り付けます。 
+3. このチュートリアルでは Storage Emulator を使用しないため、8 行目の StorageConnectionString のコメントを解除し、7 行目の StorageConnectionString をコメント アウトします。 7 行目と 8 行目は次のようになります。
 
-    `<add key="CosmosDBStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.net" />`    
+    ```
+    <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+    ```
 
-    > [!NOTE]
-    > このアプリを Azure Table Storage で使用するには、`app.config file` の接続文字列を変更する必要があります。 アカウント名には Table アカウント名、キーには Azure Storage プライマリ キーを使用します。 <br>
-    >`<add key="StandardStorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.windows.net" />`
-    > 
+4. ポータルのプライマリ接続文字列を、8 行目の StorageConnectionString に貼り付けます。 引用符の内側に文字列を貼り付けます。
+   
+    > [!IMPORTANT]
+    > エンドポイントで documents.azure.com を使用している場合は、プレビュー アカウントを持っていることになるため、[新しいテーブル API](#create-a-database-account) アカウントを作成して、一般公開のテーブル API SDK を操作する必要があります。 
     >
 
-4. app.config ファイルを保存します。
+    8 行目は次のようになります。
+
+    ```
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
+    ```
+
+5. app.config ファイルを保存します。
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
@@ -125,7 +137,7 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
 
 特定の機能には、接続ポリシーと一貫性レベルを指定できる CreateCloudTableClient の新しいオーバーロードを使ってアクセスします。
 
-| テーブル接続の設定 | Description |
+| テーブル接続の設定 | 説明 |
 | --- | --- |
 | 接続モード  | Azure Cosmos DB では 2 つの接続モードがサポートされます。 `Gateway` モードでは、要求は常に Azure Cosmos DB ゲートウェイに対して行われ、そこから対応するデータ パーティションに転送されます。 `Direct` 接続モードでは、クライアントがテーブルとパーティションのマッピングをフェッチし、要求がデータ パーティションに直接行われます。 既定値の `Direct` をお勧めします。  |
 | 接続プロトコル | Azure Cosmos DB では 2 つの接続プロトコル、`Https` と `Tcp` がサポートされます。 軽量であるため、既定の `Tcp` をお勧めします。 |
@@ -134,7 +146,7 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
 
 他の機能は、次の `appSettings` 構成値で有効にすることができます。
 
-| キー | Description |
+| キー | 説明 |
 | --- | --- |
 | TableThroughput | テーブルの予約スループット。1 秒あたりの要求ユニット数 (RU) で表されます。 1 つのテーブルで 1 秒あたり数億の RU をサポートすることができます。 [要求ユニット](request-units.md)に関する記事をご覧ください。 既定値は `400` です。 |
 | TableIndexingPolicy | インデックス作成ポリシーの仕様に準拠する JSON 文字列。 インデックス作成ポリシーを変更して特定の列を含めたり除外したりするには、[インデックス作成ポリシー](indexing-policies.md)に関する記事をご覧ください。 |
@@ -316,12 +328,9 @@ CloudTable table = tableClient.GetTableReference("people");
 table.DeleteIfExists();
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このアプリの使用を続けない場合は、以下の手順に従い、このチュートリアルで作成したすべてのリソースを Azure Portal で削除してください。   
-
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
-2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。 
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

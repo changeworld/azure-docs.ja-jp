@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics の IT Service Management Connector とのサポートされている接続 | Microsoft Docs"
-description: "ITSM 製品/サービスを Azure Log Analytics の IT Service Management Connector に接続して、ITSM 作業項目を一元的に監視して管理します。"
+description: "この記事では、ITSM 製品/サービスを OMS Log Analytics の IT Service Management Connector (ITSMC) に接続して、ITSM 作業項目を一元的に監視して管理する方法に関する情報を提供します。"
 documentationcenter: 
 author: JYOTHIRMAISURI
 manager: riyazp
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.openlocfilehash: e801d484ffb40a0d4aed517a741c45dc76b62b37
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d1f6d3af5fc414d06f4a6d3aeda660b759a88353
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>ITSM 製品/サービスを IT Service Management Connector に追加する (プレビュー)
-この記事では、お使いの ITSM 製品/サービスを OMS の IT Service Management Connector (ITSMC) に接続し、作業項目を一元管理する方法について説明します。 ITSMC の詳細については、「[ITSMC Overview (ITSMC の概要)](log-analytics-itsmc-overview.md)」を参照してください。
+この記事では、お使いの ITSM 製品/サービスを OMS の IT Service Management Connector (ITSMC) に接続し、作業項目を一元管理する方法について説明します。 ITSMC の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事を参照してください。
 
-次の製品/サービスがサポートされています。
+次の ITSM 製品/サービスがサポートされています。 ITSMC に製品を接続する方法に関する詳細な情報を表示する製品を選択してください。
 
 - [System Center Service Manager](#connect-system-center-service-manager-to-it-service-management-connector-in-oms)
 - [ServiceNow](#connect-servicenow-to-it-service-management-connector-in-oms)
@@ -153,7 +153,7 @@ Service Manager インスタンスを OMS の ITSMC に接続するハイブリ�
 
 3. Azure の資格情報でログインし、ハイブリッド接続を作成したサブスクリプションを選択します。
 
-4. **[ Save]** をクリックします。
+4. **[Save]** をクリックします。
 
 ハイブリッド接続が正常に接続されています。
 
@@ -162,7 +162,7 @@ Service Manager インスタンスを OMS の ITSMC に接続するハイブリ�
 
 > ハイブリッド接続を作成したら、デプロイした Service Manager Web アプリにアクセスして接続を確認し、テストします。 OMS の ITSMC に接続しようとする前に、その接続が正常であることを確認してください。
 
-次の図は、正常な接続の詳細を示しています。
+次のサンプル画面は、正常な接続の詳細を示しています。
 
 ![ハイブリッド接続のテスト](./media/log-analytics-itsmc/itsmc-hybrid-connection-test.png)
 

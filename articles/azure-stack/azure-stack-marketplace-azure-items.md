@@ -1,6 +1,6 @@
 ---
 title: "Azure Stack 用の Azure Marketplace アイテム | Microsoft Docs"
-description: "Azure Stack では Azure Marektplace の次のアイテムを使用できます。"
+description: "Azure Stack ではここで説明する Azure Marektplace アイテムを使うことができます。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: erikje
-ms.openlocfilehash: 09177c3d036c38c366253f9291d0096994cc123b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: d04a96e061c4f25e10b1582736012a3ada6f6a6b
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -26,18 +26,20 @@ ms.lasthandoff: 10/25/2017
 
 Microsoft Azure Stack では、次の Azure Marketplace アイテムがサポートされています。
 
-|  | 項目名 | Description | 発行元 |
+|  | 項目名 | 説明 | 発行元 |
 | --- | --- | --- | --- |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.docker-arm?tab=Overview) | Linux 仮想マシン用の Docker 拡張機能。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [R Server 専用 SQL Server 2016 Enterprise ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.RServerOnlySQLServer2016Enterprise?tab=Overview) | R Server 専用の SQL Server 2016 Enterprise。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server 2016 の Microsoft Machine Learning Server 9.2.1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016?tab=Overview) | Windows Server 2016 の Microsoft Machine Learning Server 9.2.1。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Ubuntu 16.04 の Microsoft Machine Learning Server 9.2.1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604?tab=Overview) | Ubuntu 16.04 の Microsoft Machine Learning Server 9.2.1。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [CentOS Linux 7.2 の Microsoft Machine Learning Server 9.2.1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72?tab=Overview) | CentOS Linux 7.2 の Microsoft Machine Learning Server 9.2.1。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/remotedesktopservicesdeployment.png) | [リモート デスクトップ サービス (RDS) デプロイ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/rds.remote-desktop-services-basic-deployment?tab=Overview) | 基本的なリモート デスクトップ サービス (RDS) デプロイを作成します。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 評価版](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SharePointServer2013Trial?tab=Overview) | Windows Server 2012 Datacenter および Visual Studio 2017 Community エディションの Microsoft SharePoint Server 2013 評価版。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 評価版](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SharePointServer2016Trial?tab=Overview) | Windows Server 2016 Datacenter の Microsoft SharePoint Server 2016 評価版。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2 の SQL Server 2014 SP2](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2014SP2-WS2012R2?tab=Overview) | SQL Server 2014 Service Pack 2。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP1 Developer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1DeveloperWindowsServer2016?tab=Overview) | トランザクション、データ ウェアハウス、ビジネス インテリジェンス、分析の各ワークロード用の SQL Server 2016 SP1 の Developer バージョン。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP1 Express](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1ExpressWindowsServer2016?tab=Overview) | SQL Server 2016 SP1 の Express バージョン | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 Enterprise on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2012 R2 の SQL Server 2014 SP2](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2014SP2-WS2012R2?tab=Overview) | SQL Server 2014 Service Pack 2。  **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP1](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP1 Developer](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1DeveloperWindowsServer2016?tab=Overview) | トランザクション、データ ウェアハウス、ビジネス インテリジェンス、分析の各ワークロード用の SQL Server 2016 SP1 の Developer バージョン。  **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [Windows Server 2016 の SQL Server 2016 SP1 Express](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1ExpressWindowsServer2016?tab=Overview) | SQL Server 2016 SP1 の Express バージョン。 **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 Enterprise on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。  **必要なダウンロード:** SQL IaaS 拡張機能。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview) | アプリケーションに焦点を当てた、ユーザー指向のエンタープライズ クラス ソリューションで、容易にデプロイできるほか、コスト効率に優れています。 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/abantecart.png) | [AbanteCart](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.abantecart?tab=Overview) | オープン ソースの e コマース ショッピング カート。 | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/activemq.png) | [ActiveMQ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.activemq?tab=Overview) | Java のオープン ソースのメッセージ ブローカー。 | Bitnami |
@@ -154,18 +156,22 @@ Microsoft Azure Stack では、次の Azure Marketplace アイテムがサポー
 | ![](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine Sales CRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.x2enginesalescrm?tab=Overview) | コンパクトなマーケティング、販売、および顧客サービス アプリケーション。 | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.xoops?tab=Overview) | CMS および動的な Web サイトを作成する Web ポータル プログラム。
 | ![](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.zurmo?tab=Overview) | オープン ソースの CRM システム (Mobile、Social、および Gamified)。 | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC セキュリティ管理](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec?tab=Overview) | Check Point vSEC は、Azure 内の顧客の資産をマルウェアや高度な脅威から保護する高性能の多層脅威防止機能を提供します。 | Check Point |
 | ![](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef Automate](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview) | Chef Automate を使用して Continuous Automation Platform をビルド、デプロイ、管理します。 | Chef Software, Inc |
-| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie" (バックポート カーネルを含む)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview) | Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。 | credativ |
+| ![](media/azure-stack-marketplace-azure-items/coreos.png) | [CoreOS の Container Linux](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CoreOS.CoreOS?tab=Overview) | Container Linux は、最新で最小の Linux ディストリビューションであり、コンテナーの実行、クラスターの管理、サーバーのシームレスな更新の簡単な方法を提供します。どのコンポーネントも、ウェアハウス規模のコンピューティングを可能にするものです。 | CoreOS |
+| ![](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Canonical.UbuntuServer?tab=Overview) | Ubuntu Server は、クラウド環境の世界で最も人気のある Linux です。 | Canonical |
+| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian?tab=Overview) | Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。 | credativ |
+| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 9 "Stretch"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian9?tab=Overview) | Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。 | credativ |
 | ![](media/azure-stack-marketplace-azure-items/kemp.png) | [LoadMaster ロード バランサー ADC コンテンツ スイッチ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kemptech.vlm-azure?tab=Overview) | レイヤー 4 ～ 7 のアプリケーション配信コントローラー (ADC) ロード バランサー、コンテンツ スイッチ、および Traffic Manager。 | KEMP Technologies Inc. |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 6.9](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased69?tab=Overview) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic)  |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.3](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased73?tab=Overview) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
+| ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.4](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased74?tab=Overview) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
 | ![](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS) ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription?tab=Overview) | SUSE Linux Enterprise Server 12 SP3。 | SUSE |
 | ![](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription?tab=Overview) | クラス最高のオープン ソースのインフラストラクチャ管理。 | SUSE |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [Deep Security Agent for Linux](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-linux?tab=Overview) | Linux 用の Trend Micro Deep Security 拡張機能。 | Trend Micro |
 | ![](media/azure-stack-marketplace-azure-items/trendmicro.png) | [Deep Security Agent for Windows](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/TrendMicroDeepSecurity.dsa-windows-arm?tab=Overview) | Windows 用の Trend Micro Deep Security 拡張機能。 | Trend Micro |
-| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Tool ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zerodown_software.zerodown-software-tool-7_1?tab=Overview) | ZeroDown Software Tool v7.1 - Migrate + HA。 | SUSE |
+| ![](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Tool ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zerodown_software.zerodown-software-tool-7_1?tab=Overview) | ZeroDown Software Tool v7.1 - Migrate + HA。 | ZeroDown Software |
 
 
 ### <a name="next-steps"></a>次のステップ
 [Marketplace アイテムをダウンロードする](azure-stack-download-azure-marketplace-item.md)
-

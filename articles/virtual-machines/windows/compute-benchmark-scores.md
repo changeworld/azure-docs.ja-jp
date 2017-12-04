@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cynthn
-ms.openlocfilehash: dc715a9bf4e5366e1719de7c649feb06b0c4bee7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37eaafdbcee87e6f6a6164dffcabaa7e9efa65ca
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM のコンピューティング ベンチマーク スコア
 次の SPECInt ベンチマーク スコアは、Windows Server を実行している高いパフォーマンスの Azure の VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 | Standard_H16mr |16 |2 |Intel Xeon E5-2667 v3 @ 3.2 GHz |7 |569.6 |2.8 |
 
 ## <a name="about-specint"></a>SPECint について
-Windows の数値は、Windows Server 上で [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) を実行して計算しました。 SPECint は、コアあたり 1 つのコピーを使用し、ベース レート オプション (SPECint_rate2006) を使用して実行しました。 SPECint は 12 個の個別のテストで構成され、それぞれを 3 回実行します。各テストの中央値を採用し、重み付けして複合スコアを割り出します。 これらのテストが複数の VM にわたって実行され、ご覧の平均スコアが算出されました。
+Windows の数値は、Windows Server 上で [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) を実行して計算しました。 SPECint は、vCPU あたり 1 つのコピーを使用し、ベース レート オプション (SPECint_rate2006) を使用して実行しました。 SPECint は 12 個の個別のテストで構成され、それぞれを 3 回実行します。各テストの中央値を採用し、重み付けして複合スコアを割り出します。 これらのテストが複数の VM にわたって実行され、ご覧の平均スコアが算出されました。
 
 ## <a name="next-steps"></a>次のステップ
 * ストレージの容量、ディスクの詳細、VM のサイズを選択する際のその他の考慮事項については、 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/24/2017
+ms.date: 11/20/2017
 ms.author: dekapur
-ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1277969d820c6348392d07e2dc5f35b52377fd7e
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="platform-level-event-and-log-generation"></a>プラットフォーム レベルのイベントとログの生成
 
@@ -26,12 +26,13 @@ ms.lasthandoff: 10/11/2017
 
 ハードウェアとクラスターが予想どおりに動作しているかどうかを確認するために、プラットフォーム レベルで監視することが重要です。 Service Fabric では、ハードウェアの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを診断する必要があります。 また、ハードウェアの追加や削除を決定する際に役立つ適切な容量計画を作成するために、クラスターを監視する必要があります。
 
-Service Fabric には、すぐに使える 5 種類のログ チャネルが用意されています。これらのチャネルでは、次のイベントが生成されます。
-
-* 稼働チャネル: Service Fabric とクラスターで実行される高度な操作。ノードの起動、新しいアプリケーションのデプロイ、SF アップグレードのロールバックなどのイベントが含まれます。
+Service Fabric では、次のログ チャネルが標準で提供されています。
+* 稼働チャネル: Service Fabric とクラスターで実行される高度な操作。ノードの起動、新しいアプリケーションのデプロイ、アップグレードのロールバックなどのイベントが含まれます。
 * 稼働チャネル - 詳細: 正常性レポートと負荷分散の決定
 * データおよびメッセージング チャネル: メッセージング (現時点では ReverseProxy のみ) とデータ パス (Reliable Services モデル) で生成された重要なログおよびイベント
 * データおよびメッセージング チャネル - 詳細: クラスター内のデータおよびメッセージングからの重大でないすべてのログを含む詳細チャンネル (このチャネルには大量のイベントが含まれます)   
+
+これらに加えて、2 つの構造化された EventSource チャネルと、サポートを目的として収集するログが提供されています。
 * [Reliable Services イベント](service-fabric-reliable-services-diagnostics.md): プログラミング モデル固有のイベント
 * [Reliable Actors イベント](service-fabric-reliable-actors-diagnostics.md): プログラミング モデル固有のイベントとパフォーマンス カウンター
 * サポート ログ: 弊社がサポートを提供する場合にのみ使用する Service Fabric によって生成されたシステム ログ

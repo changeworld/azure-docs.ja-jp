@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 042035c89d466083659176ac49fc1b470244ef61
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d43274875ca7ed3b2fe8a7d71481db27451a6080
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 この FAQ では、Azure Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、よく寄せられる質問に回答します。 FAQ の内容は、サービス全般、課金モデル、ユーザー エクスペリエンス、トラブルシューティングに分けてまとめられています。
@@ -95,7 +95,7 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 
 **Q: 組織が Azure Multi-Factor Authentication を使用するには、ID の使用と同期が必要ですか。**
 
-組織で使用量ベースの課金モデルを使用する場合、Azure Active Directory の利用は任意であり、必須ではありません。 MFA プロバイダーが Azure AD テナントにリンクされていない場合は、Azure Multi-Factor Authentication Server または Azure Multi-factor Authentication SDK をオンプレミスにのみデプロイできます。
+組織で使用量ベースの課金モデルを使用する場合、Azure Active Directory の利用は任意であり、必須ではありません。 MFA プロバイダーが Azure AD テナントにリンクされていない場合は、Azure Multi-Factor Authentication Server をオンプレミスにのみデプロイできます。
 
 ライセンス モデルでは Azure Active Directory が必要です。これは、ライセンスを購入してディレクトリ内のユーザーに割り当てると、そのライセンスが Azure AD テナントに追加されるためです。
 

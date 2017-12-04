@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2017
 ms.author: cherylmc
-ms.openlocfilehash: 12d414b9653aa6f07648fff991b6291e5f91be4c
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 00a9e580a324ded8e979c2a3c58d51319091b628
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-classic-azure-portal"></a>証明書認証 (クラシック) を使用した VNet へのポイント対サイト接続の構成 (クラシック): Azure Portal
 
@@ -35,8 +35,10 @@ ms.lasthandoff: 10/20/2017
 
 ポイント対サイト (P2S) VPN ゲートウェイでは、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 P2S VPN は、VNet への接続が必要なクライアントがごく少ない場合に、サイト対サイト VPN の代わりに使用するソリューションとしても便利です。 P2S VPN 接続は、クライアント コンピューターから接続を開始することによって確立されます。
 
-クラシック デプロイメント モデルでは、Windows VPN クライアントのみをサポートし、SSL ベースの VPN プロトコルである Secure Socket トンネリング プロトコル (SSTP) を使用します。 Windows 以外の VPN クライアントをサポートするには、Resource Manager デプロイメント モデルを使用して VNet を作成する必要があります。 Resource Manager デプロイメント モデルでは、SSTP に加えて IKEv2 VPN をサポートしています。 詳細については、[P2S 接続](point-to-site-about.md)に関するページを参照してください。
-
+> [!IMPORTANT]
+> クラシック デプロイメント モデルでは、Windows VPN クライアントのみをサポートし、SSL ベースの VPN プロトコルである Secure Socket トンネリング プロトコル (SSTP) を使用します。 Windows 以外の VPN クライアントをサポートするには、Resource Manager デプロイメント モデルを使用して VNet を作成する必要があります。 Resource Manager デプロイメント モデルでは、SSTP に加えて IKEv2 VPN をサポートしています。 詳細については、[P2S 接続](point-to-site-about.md)に関するページを参照してください。
+>
+>
 
 ![ポイント対サイトのダイアログ](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
 

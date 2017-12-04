@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/31/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: bb9c19bb489873d1a2175f4a85f7654a3bf099b8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c073cb28f5c37a402c04d5315d7f8e18de8a1b26
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -87,6 +87,16 @@ Linux エージェントは、更新リポジトリへのアクセスが必要�
 Azure 以外の Windows 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agents.md)」を参照してください。
 
 Azure 以外の Linux 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Linux コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-agent-linux.md)」を参照してください。
+
+## <a name="view-computers-attached-to-your-automation-account"></a>Automation アカウントに接続されているコンピューターを表示する
+マシンの更新管理を有効にした後は、**[コンピューター]** をクリックしてその情報を表示できます。 コンピューターの情報 (*[名前]*、*[コンプライアンス]*、*[環境]*、*[OS の種類]*、*[重要な更新プログラムとセキュリティ更新プログラム]*、*[他の更新プログラム]* など) が確認できます。 
+
+  ![[コンピューター] タブの表示](./media/manage-update-multi/update-computers-tab.png)
+
+最近になって更新管理が有効になったコンピューターについては、まだ評価が済んでいない可能性があります。 そのようなコンピューターがある場合、コンプライアンスの状態は "*評価が行われていません*" になります。  以下に列挙したのは、コンプライアンス状態に使用される一連の値です。
+* [準拠] - 重要な更新プログラムとセキュリティ更新プログラムがすべてインストールされているコンピューター。
+* [非準拠] - インストールされていない重要な更新プログラムまたはセキュリティ更新プログラムが少なくとも 1 つ存在するコンピューター。
+* [評価が行われていません] - 想定されている時間内にコンピューターから更新プログラムの評価データを受信しませんでした。  Linux コンピューターの場合は過去 3 時間、Windows コンピューターの場合は過去 12 時間です。  
 
 ## <a name="view-an-update-assessment"></a>更新の評価を表示する
 

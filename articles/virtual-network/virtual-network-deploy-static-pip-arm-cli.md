@@ -1,10 +1,10 @@
 ---
-title: "静的パブリック IP アドレスを持つ VM を作成する - Azure CLI 2.0 | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイス (CLI) 2.0 を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。"
+title: "静的パブリック IP アドレスを持つ VM を作成する - Azure CLI | Microsoft Docs"
+description: "Azure コマンド ライン インターフェイス (CLI) を使用して、静的パブリック IP アドレスを持つ VM を作成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 55bc21b0-2a45-4943-a5e7-8d785d0d015c
@@ -16,19 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4c32694949880037f01bb2b6b9779d2cbb9809c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c50f685745a645b5fbe383a5fe4726faa0e36345
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して静的パブリック IP アドレスを持つ VM を作成する
+# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-cli"></a>Azure CLI を使用して静的パブリック IP アドレスを持つ VM を作成する
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
+> * [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
 > * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-> * [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md)
-> * [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md)
+> * [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 > * [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
 > * [PowerShell (クラシック)](virtual-networks-reserved-public-ip.md)
 
@@ -40,7 +39,7 @@ Azure には、リソースの作成と操作に関して、[Resource Manager �
 
 ## <a name = "create"></a>VM の作成
 
-このタスクは、Azure CLI 2.0 (この記事) または [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md) を使用して行うことができます。 以下の手順で "" で囲まれている変数値は、シナリオの設定でリソースを作成するためのものです。 これらの値は、お使いの環境に合わせて変更してください。
+以下の手順で "" で囲まれている変数値は、シナリオの設定でリソースを作成するためのものです。 これらの値は、お使いの環境に合わせて変更してください。
 
 1. まだインストールしていない場合は、[Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールします。
 2. 「[Linux VM 用の SSH 公開キーと秘密キーのペアの作成](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」の手順を実行して、Linux VM 用の SSH 公開キーと秘密キーのペアを作成します。

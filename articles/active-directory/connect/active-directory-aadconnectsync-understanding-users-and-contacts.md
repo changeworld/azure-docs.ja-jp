@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi;andkjell
-ms.openlocfilehash: c298a2f99750ead099b8761699c914a3a6e41ce1
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7bb7bdba21d83817cf5579e779a6a4d509753c01
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect Sync: ユーザー、グループ、および連絡先について
 複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。 一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。 ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。 Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
@@ -42,15 +42,15 @@ Active Directory から Azure AD へグループを同期する場合に留意�
 
 * Active Directory グループをメール対応のグループとして Azure AD に同期するには、次の条件に従います。
 
-    * グループの *proxyAddress* 属性が空である場合、そのグループの *mail* 属性には値が必要です。 
+    * グループの *proxyAddress* 属性が空である場合、そのグループの *mail* 属性には値が必要です。
 
-    * グループの *proxyAddress* 属性が空でない場合、プライマリ SMTP プロキシ アドレス値 (大文字の **SMTP** プレフィックスで示される) も含んでいる必要があります。 次に例をいくつか示します。
+    * グループの *proxyAddress* 属性が空ではない場合、少なくとも 1 つの SMTP プロキシ アドレス値を含める必要があります。 次に例をいくつか示します。
     
-      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* の Active Directory グループは、Azure AD ではメール対応しません。 プライマリ SMTP アドレスを含みません。
-      
-      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* の Active Directory グループは、Azure AD ではメール対応しません。 SMTP アドレスを含みますが、プライマリではありません。
+      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* の Active Directory グループは、Azure AD ではメール対応しません。 SMTP アドレスを含みません。
       
       * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe@contoso.com"}* の Active Directory グループは、Azure AD ではメール対応します。
+      
+      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* の Active Directory グループは、Azure AD でメール対応にもなります。
 
 ## <a name="contacts"></a>連絡先
 合併や買収の後、連絡先は異なるフォレストのユーザーを表しているのが一般的です。そこでは、GALSync ソリューションが 2 つ以上の Exchange フォレストをつないでいます。 連絡先オブジェクトは、メール属性を使用してコネクタ スペースからメタバースを常に結合しています。 同じメール アドレスの連絡先オブジェクトまたはユーザー オブジェクトが既にある場合、これらのオブジェクトは一緒に結合されます。 これは、**In from AD – Contact Join** というルールで構成されます。 また、定数が **Contact** であるメタバース属性 **sourceObjectType** への属性フローを使用する **In from AD – Contact Common** というルールもあります。 このルールの優先順位は低いので、ユーザー オブジェクトが同じメタバース オブジェクトに結合された場合は、**In from AD – User Common** というルールによって User という値がこの属性に提供されます。 このルールでは、この属性は、ユーザーが 1 人も結合されていない場合に Contact という値を使用し、ユーザーが 1 人でも見つかった場合に User という値を使用します。

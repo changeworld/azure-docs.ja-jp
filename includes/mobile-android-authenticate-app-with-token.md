@@ -8,24 +8,32 @@
 
 1. ToDoActivity.java ファイルを開き、次の import ステートメントを追加します。
 
-        import android.content.Context;
-        import android.content.SharedPreferences;
-        import android.content.SharedPreferences.Editor;
+    ```java
+    import android.content.Context;
+    import android.content.SharedPreferences;
+    import android.content.SharedPreferences.Editor;
+    ```
+
 2. 次のメンバーをクラス `ToDoActivity` クラスに追加します。
 
-        public static final String SHAREDPREFFILE = "temp";    
-        public static final String USERIDPREF = "uid";    
-        public static final String TOKENPREF = "tkn";    
+    ```java
+    public static final String SHAREDPREFFILE = "temp";
+    public static final String USERIDPREF = "uid";
+    public static final String TOKENPREF = "tkn";
+    ```
+
 3. ToDoActivity.java ファイル内で、次の `cacheUserToken` メソッドの定義を追加します。
 
-        private void cacheUserToken(MobileServiceUser user)
-        {
-            SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
-            Editor editor = prefs.edit();
-            editor.putString(USERIDPREF, user.getUserId());
-            editor.putString(TOKENPREF, user.getAuthenticationToken());
-            editor.commit();
-        }    
+    ```java
+    private void cacheUserToken(MobileServiceUser user)
+    {
+        SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
+        Editor editor = prefs.edit();
+        editor.putString(USERIDPREF, user.getUserId());
+        editor.putString(TOKENPREF, user.getAuthenticationToken());
+        editor.commit();
+    }
+    ```
 
     このメソッドでは、プライベートとマークされた設定ファイルに、ユーザー ID とトークンを格納します。 これにより、キャッシュへのアクセスが保護され、デバイスの他のアプリケーションはトークンにアクセスできなくなります。 設定は、アプリケーション用にサンドボックス化されます。 ただし、他のユーザーは、デバイスにアクセスできるようになると、他の手段によってトークン キャッシュにアクセスできる可能性があります。
 
@@ -33,52 +41,65 @@
    > トークンによるデータへのアクセスの秘密性が高く、他のユーザーがそのデバイスにアクセスする可能性がある場合は、暗号化によりトークンの保護を強化できます。 ただし、完全に安全なソリューションはこのチュートリアルの範囲を超えており、またセキュリティの要件によって異なります。
    >
    >
+
 4. ToDoActivity.java ファイル内で、次の `loadUserTokenCache` メソッドの定義を追加します。
 
-        private boolean loadUserTokenCache(MobileServiceClient client)
+    ```java
+    private boolean loadUserTokenCache(MobileServiceClient client)
+    {
+        SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
+        String userId = prefs.getString(USERIDPREF, null);
+        if (userId == null)
+            return false;
+        String token = prefs.getString(TOKENPREF, null);
+        if (token == null)
+            return false;
+
+        MobileServiceUser user = new MobileServiceUser(userId);
+        user.setAuthenticationToken(token);
+        client.setCurrentUser(user);
+
+        return true;
+    }
+    ```
+
+5. *ToDoActivity.java* ファイルで、`authenticate` メソッドと `onActivityResult` メソッドを、トークン キャッシュを使う次のメソッドに置き換えます。 Google 以外のアカウントを使用する場合は、ログイン プロバイダーを変更します。
+
+    ```java
+    private void authenticate() {
+        // We first try to load a token cache if one exists.
+        if (loadUserTokenCache(mClient))
         {
-            SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
-            String userId = prefs.getString(USERIDPREF, null);
-            if (userId == null)
-                return false;
-            String token = prefs.getString(TOKENPREF, null);
-            if (token == null)
-                return false;
-
-            MobileServiceUser user = new MobileServiceUser(userId);
-            user.setAuthenticationToken(token);
-            client.setCurrentUser(user);
-
-            return true;
+            createTable();
         }
-5. *ToDoActivity.java* ファイルで、`authenticate` メソッドを、トークン キャッシュを使用する次のメソッドで置き換えます。 Google 以外のアカウントを使用する場合は、ログイン プロバイダーを変更します。
+        // If we failed to load a token cache, login and create a token cache
+        else
+        {
+            // Login using the Google provider.
+            mClient.login(MobileServiceAuthenticationProvider.Google, "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
+        }
+    }
 
-        private void authenticate() {
-            // We first try to load a token cache if one exists.
-            if (loadUserTokenCache(mClient))
-            {
-                createTable();
-            }
-            // If we failed to load a token cache, login and create a token cache
-            else
-            {
-                // Login using the Google provider.    
-                ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
-
-                Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
-                    @Override
-                    public void onFailure(Throwable exc) {
-                        createAndShowDialog("You must log in. Login Required", "Error");
-                    }           
-                    @Override
-                    public void onSuccess(MobileServiceUser user) {
-                        createAndShowDialog(String.format(
-                                "You are now logged in - %1$2s",
-                                user.getUserId()), "Success");
-                        cacheUserToken(mClient.getCurrentUser());
-                        createTable();    
-                    }
-                });
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // When request completes
+        if (resultCode == RESULT_OK) {
+            // Check the request code matches the one we send in the login request
+            if (requestCode == GOOGLE_LOGIN_REQUEST_CODE) {
+                MobileServiceActivityResult result = mClient.onActivityResult(data);
+                if (result.isLoggedIn()) {
+                    // login succeeded
+                    createAndShowDialog(String.format("You are now logged in - %1$2s", mClient.getCurrentUser().getUserId()), "Success");
+                    cacheUserToken(mClient.getCurrentUser());
+                    createTable();
+                } else {
+                    // login failed, check the error message
+                    String errorMessage = result.getErrorMessage();
+                    createAndShowDialog(errorMessage, "Error");
+                }
             }
         }
+    }
+    ```
+
 6. アプリケーションをビルドし、有効なアカウントを使用して認証をテストします。 最低 2 回アプリケーションを実行します。 最初の実行で、サインインとトークン キャッシュの作成を求めるプロンプトが表示されます。 それ以降、実行ごとに、認証のためのトークン キャッシュの読み込みが試行されます。 サインインする必要がなくなります。

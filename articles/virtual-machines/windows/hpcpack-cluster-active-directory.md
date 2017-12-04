@@ -1,23 +1,23 @@
 ---
 title: "HPC Pack クラスターと Azure Active Directory | Microsoft Docs"
-description: "Azure の HPC Pack 2016 クラスターを Azure Active Directory と統合する方法について説明します"
+description: "Azure の Microsoft HPC Pack 2016 クラスターを Azure Active Directory と統合する方法について説明します"
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.assetid: 9edf9559-db02-438b-8268-a6cba7b5c8b7
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 11/14/2016
+ms.date: 11/16/2017
 ms.author: danlep
-ms.openlocfilehash: c5a06a9c810349b1bcce01c7f73563941a5af0ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb0e878c4e987d111a535603cede25c639087ca7
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="manage-an-hpc-pack-cluster-in-azure-using-azure-active-directory"></a>Azure Active Directory を使用して Azure の HPC Pack クラスターを管理する
 [Microsoft HPC Pack 2016](https://technet.microsoft.com/library/cc514029) では、Azure の HPC クラスターをデプロイする管理者向けに [Azure Active Directory](../../active-directory/index.md) (Azure AD) との統合をサポートしています。
@@ -59,69 +59,66 @@ HPC Pack クラスターを Azure AD と統合することで、次の目標の�
 
 
 ## <a name="step-1-register-the-hpc-cluster-server-with-your-azure-ad-tenant"></a>手順 1: HPC クラスター サーバーを Azure AD テナントに登録する
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
-2. 左側のメニューの **[Active Directory]** をクリックし、サブスクリプション内の目的のディレクトリをクリックします。 ディレクトリ内のリソースにアクセスするには、そのディレクトリへのアクセス許可が必要です。
-3. **[ユーザー]** をクリックし、既に作成または構成されているユーザー アカウントが存在することを確認します。
-4. **[アプリケーション]** > 、**[追加]**、**[組織で開発中のアプリケーションを追加]** の順にクリックします。 ウィザードで次の情報を入力します。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. お使いのアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックします。 その後、ポータル セッションを目的のテナントに設定します。 ディレクトリ内のリソースにアクセスするには、そのディレクトリへのアクセス許可が必要です。 
+3. 左側のサービス ナビゲーション ウィンドウで **[Azure Active Directory]** をクリックし、**[ユーザーとグループ]** をクリックして、ユーザー アカウントが既に作成または構成されていることを確認します。
+4. **[Azure Active Directory]** で、**[アプリの登録]** > **[新しいアプリケーションの登録]** の順にクリックします。 次の情報を入力します。
     * **[名前]** - HPCPackClusterServer
-    * **[種類]** - **[Web アプリケーションや Web API]** を選択
+    * **[アプリケーションの種類]** - **[Web アプリ/API]** を選びます
     * **[サインイン URL]** - サンプルのベース URL (既定では `https://hpcserver`)
-    * **[アプリケーション ID/URI]** - `https://<Directory_name>/<application_name>`。 `<Directory_name`> を Azure AD テナントのフルネーム (`hpclocal.onmicrosoft.com` など) に置き換え、`<application_name>` を前に選択した名前に置き換えます。
+    * **Create** をクリックしてください。
+5. アプリが追加された後、**[アプリの登録]** の一覧でそのアプリを選びます。 次に、**[設定]** > **[プロパティ]** の順にクリックします。 次の情報を入力します。
+    * **[マルチテナント]** で **[はい]** を選びます。
+    * **[アプリケーション ID/URI]** を「`https://<Directory_name>/<application_name>`」に変更します。 `<Directory_name`> を Azure AD テナントのフルネーム (`hpclocal.onmicrosoft.com` など) に置き換え、`<application_name>` を前に選択した名前に置き換えます。
+6. **[Save]** をクリックします。 保存が完了したら、アプリ ページで **[マニフェスト]** をクリックします。 マニフェストを編集します。`appRoles` を探し、次のアプリケーション ロールを追加します。その後、**[保存]** をクリックします。
 
-5. アプリケーションが追加されたら、**[構成]** をクリックします。 次のプロパティを構成します。
-    * **[アプリケーションはマルチテナントです]** で **[はい]** を選択
-    * **[アプリにアクセスするにはユーザー割り当てが必要]** で **[はい]** を選択
-
-6. **[保存]**をクリックします。 保存が完了したら、**[マニフェストの管理]** をクリックします。 この操作により、アプリケーションのマニフェスト JavaScript Object Notation (JSON) ファイルがダウンロードされます。 ダウンロードしたマニフェストを編集します。`appRoles` を探し、次のアプリケーション ロールを追加します。
-    ```json
-    "appRoles": [
-        {
-        "allowedMemberTypes": [
-            "User",
-            "Application"
-        ],
-        "displayName": "HpcAdminMirror",
-        "id": "61e10148-16a8-432a-b86d-ef620c3e48ef",
-        "isEnabled": true,
-        "description": "HpcAdminMirror",
-        "value": "HpcAdminMirror"
-        },
-        {
-        "allowedMemberTypes": [
-            "User",
-            "Application"
-        ],
-        "description": "HpcUsers",
-        "displayName": "HpcUsers",
-        "id": "91e10148-16a8-432a-b86d-ef620c3e48ef",
-        "isEnabled": true,
-        "value": "HpcUsers"
-        }
-    ],
-    ```
-7. ファイルを保存します。 ポータルで、**[マニフェストの管理]** > **[マニフェストのアップロード]** をクリックします。 これで編集したマニフェストをアップロードできます。
-8. **[ユーザー]** をクリックしてユーザーを選択し、**[割り当て]** をクリックします。 利用可能な役割 (HpcUsers または HpcAdminMirror) のいずれかをユーザーに割り当てます。 ディレクトリ内の他のユーザーでこの手順を繰り返します。 クラスター ユーザーの背景情報については、「[クラスター ユーザーの管理](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx)」をご覧ください。
-
-   > [!NOTE] 
-   > ユーザーは、[Azure Portal](https://portal.azure.com)の Azure Active Directory プレビュー ブレードを使用して管理することをお勧めします。
-   >
+  ```json
+  "appRoles": [
+     {
+     "allowedMemberTypes": [
+         "User",
+         "Application"
+     ],
+     "displayName": "HpcAdminMirror",
+     "id": "61e10148-16a8-432a-b86d-ef620c3e48ef",
+     "isEnabled": true,
+     "description": "HpcAdminMirror",
+     "value": "HpcAdminMirror"
+     },
+     {
+     "allowedMemberTypes": [
+         "User",
+         "Application"
+     ],
+     "description": "HpcUsers",
+     "displayName": "HpcUsers",
+     "id": "91e10148-16a8-432a-b86d-ef620c3e48ef",
+     "isEnabled": true,
+     "value": "HpcUsers"
+     }
+  ],
+  ```
+7. **[Azure Active Directory]** で、**[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** の順にクリックします。 一覧から **HPCPackClusterServer** を選びます。
+8. **[プロパティ]** をクリックし、**[ユーザーの割り当てが必要]** を **[はい]** に変更します。 **[Save]** をクリックします。
+9. **[ユーザーとグループ]** > **[ユーザーの追加]** の順にクリックします。 ユーザーとロールを選び、**[割り当て]** をクリックします。 利用可能な役割 (HpcUsers または HpcAdminMirror) のいずれかをユーザーに割り当てます。 ディレクトリ内の他のユーザーでこの手順を繰り返します。 クラスター ユーザーの背景情報については、「[クラスター ユーザーの管理](https://technet.microsoft.com/library/ff919335(v=ws.11).aspx)」をご覧ください。
 
 
 ## <a name="step-2-register-the-hpc-cluster-client-with-your-azure-ad-tenant"></a>手順 2: HPC クラスター クライアントを Azure AD テナントに登録する
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
-2. 左側のメニューの **[Active Directory]** をクリックし、サブスクリプション内の目的のディレクトリをクリックします。 ディレクトリ内のリソースにアクセスするには、そのディレクトリへのアクセス許可が必要です。
-3. **[アプリケーション]** > 、**[追加]**、**[組織で開発中のアプリケーションを追加]** の順にクリックします。 ウィザードで次の情報を入力します。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. お使いのアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックします。 その後、ポータル セッションを目的のテナントに設定します。 ディレクトリ内のリソースにアクセスするには、そのディレクトリへのアクセス許可が必要です。 
+3. **[Azure Active Directory]** で、**[アプリの登録]** > **[新しいアプリケーションの登録]** の順にクリックします。 次の情報を入力します。
 
-    * **[名前]** - HPCPackClusterClient
-    * **[種類]** - **[ネイティブ クライアント アプリケーション]** を選択
+    * **[名前]** - HPCPackClusterClient    
+    * **[アプリケーションの種類]** - **[ネイティブ]** を選びます
     * **[リダイレクト URI]** - `http://hpcclient`
+    * **[作成]**
 
-4. アプリケーションが追加されたら、**[構成]** をクリックします。 **[クライアント ID]** の値をコピーして保存します。 この値は後でアプリケーションを構成するときに必要です。
+4. アプリが追加された後、**[アプリの登録]** の一覧でそのアプリを選びます。 **[アプリケーション ID]** の値をコピーして保存します。 この値は後でアプリケーションを構成するときに必要です。
 
-5. **[その他のアプリケーションに対するアクセス許可]** で、**[アプリケーションの追加]** をクリックします。 (手順 1 で作成した) HpcPackClusterServer アプリケーションを探して追加します。
+5. **[設定]** > **[必要なアクセス許可]** > **[追加]** > **[API を選択します]** の順にクリックします。 (手順 1 で作成した) HpcPackClusterServer アプリケーションを探して選びます。
 
-6. **[委任されたアクセス許可]** ドロップダウンで、**[Access HpcClusterServer (HpcClusterServer にアクセス)]** を選択します。 その後、 **[保存]**をクリックします。
+6. **[アクセスの有効化]** ページで、**[Access HpcClusterServer]\(HpcClusterServer へのアクセス\)** を選びます。 次に、 **[Done]**をクリックします。
 
 
 ## <a name="step-3-configure-the-hpc-cluster"></a>手順 3: HPC クラスターを構成する
@@ -134,21 +131,23 @@ HPC Pack クラスターを Azure AD と統合することで、次の目標の�
 
     ```powershell
 
-    Set-HpcClusterRegistry -SupportAAD true -AADInstance https://login.microsoftonline.com/ -AADAppName HpcClusterServer -AADTenant <your AAD tenant name> -AADClientAppId <client ID> -AADClientAppRedirectUri http://hpcclient
+    Set-HpcClusterRegistry -SupportAAD true -AADInstance https://login.microsoftonline.com/ -AADAppName HpcPackClusterServer -AADTenant <your AAD tenant name> -AADClientAppId <client ID> -AADClientAppRedirectUri http://hpcclient
     ```
     各値の説明:
 
     * `AADTenant` は Azure AD のテナント名を指定します (`hpclocal.onmicrosoft.com` など)。
-    * `AADClientAppId` は手順 2. で作成されたアプリケーションのクライアント ID を指定します。
+    * `AADClientAppId` では、手順 2 で作成したアプリのアプリケーション ID を指定します。
 
-4. HpcSchedulerStateful サービスを再起動します。
+4. ヘッド ノードの構成に応じて、次のいずれかを行います。
 
-    複数のヘッド ノードがあるクラスターでは、ヘッド ノードで次の PowerShell コマンドを実行して、HpcSchedulerStateful サービスのプライマリ レプリカを切り替えることができます。
+    * 単一ヘッド ノードの HPC Pack クラスターでは、HpcScheduler サービスを再起動します。
+
+    * 複数ヘッド ノードの HPC Pack クラスターでは、ヘッド ノードで次の PowerShell コマンドを実行して、HpcSchedulerStateful サービスを再起動します。
 
     ```powershell
     Connect-ServiceFabricCluster
 
-    Move-ServiceFabricPrimaryReplica –ServiceName “fabric:/HpcApplication/SchedulerStatefulService”
+    Move-ServiceFabricPrimaryReplica –ServiceName "fabric:/HpcApplication/SchedulerStatefulService"
 
     ```
 
@@ -161,7 +160,7 @@ HPC Pack クライアント ユーティリティを自分のコンピュータ�
 これで HPC Pack のコマンドを実行するか、HPC Pack のジョブ マネージャー GUI を使用して、Azure AD アカウントでクラスターのジョブを送信および管理できます。 ジョブの送信オプションについては、[Azure の HPC Pack クラスターに HPC のジョブを送信する方法](hpcpack-cluster-submit-jobs.md#step-3-run-test-jobs-on-the-cluster)に関する記事をご覧ください。
 
 > [!NOTE]
-> 初めて Azure の HPC Pack クラスターに接続しようとすると、ポップアップ ウィンドウが表示されます。 Azure ADの資格情報を入力してログインします。 トークンがキャッシュされます。 その後 Azure のクラスターに接続する際には、認証情報が変更されるかキャッシュがクリアされない限り、キャッシュされたトークンが使用されます。
+> 初めて Azure の HPC Pack クラスターに接続しようとすると、ポップアップ ウィンドウが表示されます。 Azure ADの資格情報を入力してログインします。 トークンがキャッシュされます。 その後 Azure のクラスターに接続するときは、認証情報が変更されるかキャッシュがクリアされない限り、キャッシュされたトークンが使われます。
 >
   
 たとえば、前の手順を完了すると、次のようにしてオンプレミスのクライアントからジョブをクエリできます。
@@ -174,7 +173,7 @@ Get-HpcJob –State All –Scheduler https://<Azure load balancer DNS name> -Own
 
 ### <a name="manage-the-local-token-cache"></a>ローカルのトークン キャッシュを管理する
 
-HPC Pack 2016 には、ローカルのトークン キャッシュを管理する 2 つの新しい HPC PowerShell コマンドレットが用意されています。 これらのコマンドレットは、非対話形式でジョブを送信するのに便利です。 次の例を参照してください。
+HPC Pack 2016 には、ローカルのトークン キャッシュを管理する次の HPC PowerShell コマンドレットが用意されています。 これらのコマンドレットは、非対話形式でジョブを送信するのに便利です。 次の例を参照してください。
 
 ```powershell
 Remove-HpcTokenCache
@@ -191,9 +190,9 @@ Set-HpcTokenCache -UserName <AADUsername> -Password $SecurePassword -scheduler h
 1. 次のコマンドを使用して、資格情報を設定します。
 
     ```powershell
-    $localUser = “<username>”
+    $localUser = "<username>"
 
-    $localUserPassword=”<password>”
+    $localUserPassword="<password>"
 
     $secpasswd = ConvertTo-SecureString $localUserPassword -AsPlainText -Force
 

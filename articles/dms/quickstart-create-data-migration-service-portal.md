@@ -10,20 +10,31 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/08/2017
-ms.openlocfilehash: 4213a0ae73c38dcad403140e3d45e28f2d338020
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/17/2017
+ms.openlocfilehash: 9faac0716334d627cdde4c0ef16262670333b5d4
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="create-a-database-migration-service-instance-using-the-azure-portal"></a>Azure ポータルを使用して Azure Database Migration Service インスタンスを作成する
+# <a name="create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Azure Portal を使用して Azure Database Migration Service のインスタンスを作成する
 このクイック スタートでは、Azure ポータルを使用して Azure Database Migration Service のインスタンスを作成します。  サービスを作成すると、そのサービスを使用してオンプレミスの SQL Server から Azure SQL データベースにデータを移行することができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 Web ブラウザーを開いて、[Microsoft Azure Portal](https://portal.azure.com/) にアクセスします。 資格情報を入力してポータルにサインインします。 既定のビューはサービス ダッシュボードです。
+
+## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
+最初の Database Migration Service を作成する前に、Microsoft.DataMigration リソース プロバイダーを登録する必要があります。
+
+1. Azure Portal で、**[すべてのサービス]** を選択してから、**[サブスクリプション]** を選択します。
+
+1. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択して、**[リソース プロバイダー]** を選択します。
+
+1. 移行を検索し、Microsoft.DataMigration の右側にある **[登録]** を選択します。
+
+![リソース プロバイダーの登録](media/quickstart-create-data-migration-service-portal/dms-register-provider.png)
 
 ## <a name="create-azure-database-migration-service"></a>Azure Database Migration Service を作成する
 1. 新しいサービスを作成するには、**+** をクリックします。  Database Migration Service はまだプレビュー段階にあります。  

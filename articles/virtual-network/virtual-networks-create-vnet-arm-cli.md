@@ -1,10 +1,10 @@
 ---
-title: "仮想ネットワークの作成 - Azure CLI 2.0 | Microsoft Docs"
-description: "Azure CLI 2.0 を使用して仮想ネットワークを作成する方法を説明します。"
+title: "仮想ネットワークの作成 - Azure CLI | Microsoft Docs"
+description: "Azure CLI を使用して仮想ネットワークを作成する方法を説明します。"
 services: virtual-network
 documentationcenter: 
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 75966bcc-0056-4667-8482-6f08ca38e77a
@@ -16,25 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c7d7b3543f488aedff1ea2c68a2b497e0ca744af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 659a791124eab002290ac0b7f0898cf1c06c2951
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="create-a-virtual-network-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用した仮想ネットワークの作成
+# <a name="create-a-virtual-network-using-the-azure-cli"></a>Azure CLI を使用した仮想ネットワークの作成
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
 Azure には、Azure Resource Manager とクラシックという 2 種類のデプロイメント モデルがあります。 Resource Manager デプロイメント モデルを使用してリソースを作成することをお勧めします。 2 つのモデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事を参照してください。
 
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-- [Azure CLI 1.0](virtual-networks-create-vnet-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI
-- [Azure CLI 2.0](#create-a-virtual-network) - リソース管理デプロイ モデル用の次世代 CLI (この記事)
- 
-    他のツールを使用して Resource Manager で VNet を作成することや、次の一覧から別のオプションを選択してクラシック デプロイメント モデルで VNet を作成することもできます。
+他のツールを使用して Resource Manager で仮想ネットワークを作成することや、次の一覧から別のオプションを選択してクラシック デプロイメント モデルで仮想ネットワークを作成することもできます。
 
 > [!div class="op_single_selector"]
 > * [ポータル](virtual-networks-create-vnet-arm-pportal.md)
@@ -47,10 +41,9 @@ Azure には、Azure Resource Manager とクラシックという 2 種類のデ
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
-
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-Azure CLI 2.0 を使用して仮想ネットワークを作成するには、次の手順を実行します。
+Azure CLI を使用して仮想ネットワークを作成するには、次の手順を実行します。
 
 1. 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
 

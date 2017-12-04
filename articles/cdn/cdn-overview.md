@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: v-semcev
-ms.openlocfilehash: 909c4dc3feaeaedf56ecacc78f4b7e0e15d98875
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 411c5a43d8a3245fc4642596b3725dadf8745728
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Azure Content Delivery Network (CDN) の概要
-> [!NOTE]
-> このドキュメントでは、Azure Content Delivery Network (CDN) の概要、しくみ、各 Azure CDN 製品の機能について説明します。  この情報をスキップし、CDN エンドポイントの作成方法に関するチュートリアルに直接進む場合は、「 [Azure CDN の使用](cdn-create-new-endpoint.md)」を参照してください。  現在の CDN ノードの場所の一覧については、「 [Azure CDN POP Locations (Azure CDN の POP の場所)](cdn-pop-locations.md)」を参照してください。
-> 
-> 
+Azure Content Delivery Network (CDN) では、戦略的に配置された場所に静的 Web コンテンツをキャッシュし、ユーザーへのコンテンツ配信に最大スループットを使用できます。 CDN では、世界各地の物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。 
 
-Azure Content Delivery Network (CDN) では、戦略的に配置された場所に静的 Web コンテンツをキャッシュし、ユーザーへのコンテンツ配信に最大スループットを使用できます。  CDN では、世界各地の物理ノードにコンテンツをキャッシュすることによって、高帯域幅コンテンツを配信するためのグローバル ソリューションを開発者に提供します。 
+> [!NOTE]
+> この記事では、Azure CDN とそのしくみ、各 Azure CDN 製品の機能について説明します。 この情報をスキップし、CDN エンドポイントの作成方法に関するチュートリアルに進む場合は、「[Azure CDN の概要](cdn-create-new-endpoint.md)」を参照してください。 現在の CDN ノードの場所の一覧については、「[Azure CDN の POP の場所](cdn-pop-locations.md)」を参照してください。
+> 
 
 CDN を使用して Web サイト資産をキャッシュすると、次のような利点があります。
 
 * エンド ユーザーのパフォーマンスとユーザー エクスペリエンスの向上。コンテンツの読み込みに複数のラウンドトリップか必要なアプリケーションを使用する場合は特にそうです。
 * 製品発表イベントの開始時のような、瞬間的高負荷を処理しやすくする大型のスケーリング。
-* ユーザー要求を分散させ、コンテンツをエッジ サーバーから配信することによる、配信元へのトラフィックの削減。
+* ユーザー要求を分散させ、コンテンツをエッジ サーバーから直接配信することによる、配信元へのトラフィックの削減。
+
 
 ## <a name="how-it-works"></a>動作のしくみ
 ![CDN の概要](./media/cdn-overview/cdn-overview.png)
@@ -90,13 +90,13 @@ Azure CDN 製品には、**Azure CDN Standard from Akamai**、**Azure CDN Standa
 > 
 
 ## <a name="next-steps"></a>次のステップ
-CDN の概要については、「 [Azure CDN の使用](cdn-create-new-endpoint.md)」を参照してください。
+CDN を導入するには、「[Azure CDN の概要](cdn-create-new-endpoint.md)」を参照してください。
 
 既存の CDN 顧客は、[Microsoft Azure Portal](https://portal.azure.com) から、または [PowerShell](cdn-manage-powershell.md) を使用して、CDN エンドポイントを管理できるようになりました。
 
-実際の CDN の効果については、 [Build 2016 セッションのビデオ](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
+実際の CDN の効果については、[Build 2016 セッションのビデオ](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/)をご覧ください。
 
 [.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
 
-料金情報については、 [CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
+価格については、「[Content Delivery Network の価格](https://azure.microsoft.com/pricing/details/cdn/)」をご覧ください。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 655bc3dd3735a35fbe7437e8dda92b2adf15f7bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 438eeee7353cbd1d534f27471c9c9054aecc12e8
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>Reliable Services によるサービスのリモート処理
 WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロトコルやスタックに関連付けられていないサービスでは、サービスのリモート プロシージャ コールを迅速かつ簡単に設定するためのリモート処理メカニズムを Reliable Services フレームワークが提供します。
@@ -82,12 +82,12 @@ string message = await helloWorldClient.HelloWorldAsync();
 リモート処理フレームワークは、サービスでスローされた例外をクライアントに伝達します。 そのため、 `ServiceProxy` を使用したクライアントでの例外処理ロジックでは、サービスがスローする例外を直接処理できます。
 
 ## <a name="service-proxy-lifetime"></a>サービス プロキシの有効期間
-ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシは、ユーザーがそれを必要とする間、再利用することができます。 リモート API が例外をスローしても、ユーザーは引き続き同じプロキシを再利用できます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 API を呼び出す間、使用されている通信クライアントが有効であるかどうかが内部的にチェックされます。 その結果に基づいて、通信クライアントが再作成されます。 したがって例外が発生しても、ユーザーは serviceproxy の再作成を行う必要はありません。
+ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシ インスタンスは、ユーザーがそれを必要とする間、再利用することができます。 リモート プロシージャ呼び出しから例外がスローされても、ユーザーは同じプロキシ インスタンスを再利用できます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 リモート呼び出しが発生したときに、内部チェックが通信クライアントが有効かどうかが確認されます。 その結果に基づいて、必要に応じて通信クライアントが再作成されます。 そのため、例外が発生してもユーザーは serviceproxy の再作成を行う必要はなく、この処理は透過的に行われます。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory の有効期間
-[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシを作成するファクトリです。 API ServiceProxy.Create を使ってプロキシを作成する場合、フレームワークによってシングルトン ServiceProxyFactory が作成されます。
+[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 プロキシの作成に api `ServiceProxy.Create` を使用する場合、フレームワークによってシングルトン ServiceProxy が作成されます。
 手動での作成は、[IServiceRemotingClientFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory) プロパティを上書きする必要があるときに効果的です。
-ファクトリは負荷の高い操作です。 ServiceProxyFactory は通信クライアントのキャッシュを保持します。
+ファクトリの作成は負荷の高い操作です。 ServiceProxyFactory は通信クライアントの内部キャッシュを保持します。
 ServiceProxyFactory はできるだけ長くキャッシュすることをお勧めします。
 
 ## <a name="remoting-exception-handling"></a>リモート処理の例外処理

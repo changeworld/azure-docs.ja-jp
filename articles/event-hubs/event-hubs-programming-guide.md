@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 08/17/2017
+ms.date: 11/16/2017
 ms.author: sethm
-ms.openlocfilehash: 405ec2b27b488b570c4a5c86e4950ff98233360e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69c07cb31b1dc3ec3685448d8187ef3a57bd3821
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="event-hubs-programming-guide"></a>Event Hubs のプログラミング ガイド
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 
 イベントは HTTP POST か AMQP 1.0 接続を使用して、イベント ハブに送信します。 何をいつ利用するかは、解決対象の具体的なシナリオによります。 AMQP 1.0 接続は Service Bus の仲介型接続として課金され、頻繁にメッセージ量が多くなり、低遅延の要件があるシナリオに適しています。固定のメッセージング チャンネルが提供されるためです。
 
-Event Hubs は [NamespaceManager][] クラスで作成し、管理します。 .NET のマネージ API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) クラスと [EventData][] クラスになります。 [EventHubClient][] は、イベントがイベント ハブに送信されるときに使われる AMQP 通信チャンネルを提供します。 [EventData][] クラスはイベントを表し、イベント ハブにメッセージを発行するために使用されます。 このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。 その他のプロパティは [EventData][] オブジェクトに追加され、イベント ハブに渡されます。
+[NamespaceManager][] クラスを使用して、イベント ハブを作成し、管理できます。 .NET のマネージ API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) クラスと [EventData][] クラスになります。 [EventHubClient][] は、イベントがイベント ハブに送信されるときに使われる AMQP 通信チャンネルを提供します。 [EventData][] クラスはイベントを表し、イベント ハブにメッセージを発行するために使用されます。 このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。 その他のプロパティは [EventData][] オブジェクトに追加され、イベント ハブに渡されます。
 
 ## <a name="get-started"></a>作業開始
 
@@ -57,7 +57,7 @@ var description = manager.CreateEventHubIfNotExists("MyEventHub");
 [EventHubDescription](/dotnet/api/microsoft.servicebus.messaging.eventhubdescription) クラスには、承認規則、メッセージの保有期間、パーティション ID、状態、パスなど、イベント ハブの詳細が含まれています。 このクラスを使用し、イベント ハブのメタデータを更新できます。
 
 ## <a name="create-an-event-hubs-client"></a>Event Hub クライアントの作成
-Event Hubs とやり取りするための主要クラスは [Microsoft.ServiceBus.Messaging.EventHubClient][EventHubClient] です。 このクラスは送信機能と受信機能の両方を提供します。 次の例のように、 [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create) メソッドを利用してこのクラスをインスタンス化できます。
+Event Hubs とやり取りするための主要クラスは [Microsoft.ServiceBus.Messaging.EventHubClient][EventHubClient] です。 このクラスは送信機能と受信機能の両方を提供します。 次の例のように、[Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create) メソッドを使用してこのクラスをインスタンス化できます。
 
 ```csharp
 var client = EventHubClient.Create(description.Path);
@@ -77,14 +77,14 @@ EventHubClient.CreateFromConnectionString("your_connection_string");
 Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[key]
 ```
 
-最後になりますが、[EventHubClient][] オブジェクトは [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) インスタンスから作成することもできます。その例を以下に示します。
+最後に、[EventHubClient][] オブジェクトは [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) インスタンスから作成することもできます。その例を以下に示します。
 
 ```csharp
 var factory = MessagingFactory.CreateFromConnectionString("your_connection_string");
 var client = factory.CreateEventHubClient("MyEventHub");
 ```
 
-これは重要なことですが、1 つのメッセージング ファクトリ インスタンスから作成された追加の [EventHubClient][] オブジェクトたちが、同一の内部 TCP 接続を再利用することに注意してください。 そのため、これらのオブジェクトでは、スループットにクライアント側の制限があります。 [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) メソッドでは 1 つのメッセージング ファクトリが再利用されます。 単一の送信元からの非常に高いスループットを必要とする場合には、複数メッセージング ファクトリを作成して、それぞれのメッセージ ファクトリから 1 つの [EventHubClient][] オブジェクトを作成するようにできます。
+Messaging Factoryのインスタンスから作成された追加の [EventHubClient][] オブジェクトは、内部で同じ TCP 接続を再利用することに注意してください。 そのため、これらのオブジェクトでは、スループットにクライアント側の制限があります。 [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) メソッドでは 1 つのメッセージング ファクトリが再利用されます。 単一の送信元からの非常に高いスループットを必要とする場合には、複数メッセージング ファクトリを作成して、それぞれのメッセージ ファクトリから 1 つの [EventHubClient][] オブジェクトを作成するようにできます。
 
 ## <a name="send-events-to-an-event-hub"></a>イベント ハブにイベントを送信する
 [EventData][] インスタンスを作成し、それを [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) メソッドで送信することで、イベント ハブにイベントを送信します。 このメソッドは [EventData][] インスタンス パラメーターを 1 つ受け取り、それをイベント ハブに同期的に送信します。
@@ -111,7 +111,7 @@ var client = factory.CreateEventHubClient("MyEventHub");
 可用性と一貫性の間のトレードオフに関する情報と詳細については、「[Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)」を参照してください。 
 
 ## <a name="batch-event-send-operations"></a>イベントのバッチ送信処理
-イベントをバッチ送信すると、スループットが劇的に上がります。 [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) メソッドは [EventData][] 型の **IEnumerable** パラメーターを受け取り、バッチ全体をアトミック操作としてイベント ハブに送信します。
+イベントをバッチ送信すると、スループット向上の役に立ちます。 [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) メソッドは [EventData][] 型の **IEnumerable** パラメーターを受け取り、バッチ全体をアトミック操作としてイベント ハブに送信します。
 
 ```csharp
 public void SendBatch(IEnumerable<EventData> eventDataList);
@@ -132,10 +132,10 @@ var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[
 [CreatePartitionedSender](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_CreatePartitionedSender_System_String_) は [EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender) オブジェクトを返します。このオブジェクトを使用し、特定のイベント ハブ パーティションにイベントを発行できます。
 
 ## <a name="event-consumers"></a>イベント コンシューマー
-Event Hubs にはイベント使用のために 2 つの主要モデルが用意されています。ダイレクト レシーバーと [EventProcessorHost][] のような上位の抽象構造です。 ダイレクト レシーバーは、コンシューマー グループ内のパーティションについて、自前でアクセス調整を行う責任があります。
+Event Hubs にはイベント使用のために 2 つの主要モデルが用意されています。ダイレクト レシーバーと [EventProcessorHost][] のような上位の抽象構造です。 ダイレクト レシーバーは、*コンシューマー グループ*内のパーティションについて、自分でアクセス調整を行う責任があります。 コンシューマー グループは、パーティション分割されたイベント ハブのビュー (状態、位置、またはオフセット) を表します。
 
 ### <a name="direct-consumer"></a>ダイレクト コンシューマー
-コンシューマー グループ内の 1 つのパーティションから読み取るための最も直接的な方法は [EventHubReceiver](/dotnet/apie/microsoft.servicebus.messaging.eventhubreceiver) クラスを使用することです。 このクラスのインスタンスを作成するには、 [EventHubConsumerGroup](/dotnet/api/microsoft.servicebus.messaging.eventhubconsumergroup) クラスのインスタンスを使用する必要があります。 次の例では、コンシューマー グループの受信者を作成するときにパーティション ID を指定する必要があります。
+パーティションから読み取る最も直接的な方法は、[EventHubReceiver](/dotnet/apie/microsoft.servicebus.messaging.eventhubreceiver) クラスを使用することです。 このクラスのインスタンスを作成するには、 [EventHubConsumerGroup](/dotnet/api/microsoft.servicebus.messaging.eventhubconsumergroup) クラスのインスタンスを使用する必要があります。 次の例では、コンシューマー グループの受信者を作成するときにパーティション ID を指定する必要があります。
 
 ```csharp
 EventHubConsumerGroup group = client.GetDefaultConsumerGroup();
@@ -158,7 +158,7 @@ while(receive)
 
 1 つの特定のパーティションについては、メッセージはイベント ハブに送信された順序で受信されます。 オフセットはパーティション内でのメッセージ識別に使用される文字列トークンです。
 
-いかなるタイミングでも、コンシューマー グループ内の 1 つのパーティションに 5 つ以上のリーダーを同時接続することはできないことに注意してください。 リーダーが接続または切断された場合、サービスが切断を認識するまで、セッションが数分間アクティブな状態のままになることがあります。 その間にパーティションに再接続すると、失敗することがあります。 Event Hubs のダイレクト レシーバーの完全な記述例については、[Event Hubs Direct Receivers](https://code.msdn.microsoft.com/Event-Hub-Direct-Receivers-13fa95c6) のサンプルを参照してください。
+どんなときでも、1 つのパーティションに 5 つを超えるリーダーを同時接続することはできないことに注意してください。 リーダーが接続または切断された場合、サービスが切断を認識するまで、セッションが数分間アクティブな状態のままになることがあります。 その間にパーティションに再接続すると、失敗することがあります。 Event Hubs のダイレクト レシーバーの完全な記述例については、[Event Hubs Direct Receivers](https://code.msdn.microsoft.com/Event-Hub-Direct-Receivers-13fa95c6) のサンプルを参照してください。
 
 ### <a name="event-processor-host"></a>イベント プロセッサ ホスト
 [EventProcessorHost][] クラスは Event Hubs からのデータを処理します。 .NET プラットフォームでのイベント リーダーを作成するときには、この実装を使用すべきです。 [EventProcessorHost][] はイベント プロセッサ実装のためにスレッドセーフでマルチプロセスの安全なランタイム環境を提供します。さらに、その環境では、チェックポイント処理とパーティション リースの管理が提供されます。
@@ -169,16 +169,16 @@ while(receive)
 * [CloseAsync](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor#Microsoft_ServiceBus_Messaging_IEventProcessor_CloseAsync_Microsoft_ServiceBus_Messaging_PartitionContext_Microsoft_ServiceBus_Messaging_CloseReason_)
 * [ProcessEventsAsync](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor#Microsoft_ServiceBus_Messaging_IEventProcessor_ProcessEventsAsync_Microsoft_ServiceBus_Messaging_PartitionContext_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__)
 
-イベント処理を開始するには、 [EventProcessorHost][]をインスタンス化し、イベント ハブの適切なパラメーターを提供します。 次に、[RegisterEventProcessorAsync](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost#Microsoft_ServiceBus_Messaging_EventProcessorHost_RegisterEventProcessorAsync__1) を呼び出し、[IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) 実装をランタイムに登録します。 この時点で、ホストは「どん欲な」アルゴリズムを利用して、イベント ハブにあるすべてのパーティションでリースの取得を試行します。 これらのリースは一定の期間存続し、その後、更新する必要があります。 新しいノード (この場合は worker インスタンス) がオンラインになると、新しいノードはリースを予約し、時間と共にリースの追加取得を試行し、負荷がノード間を移動します。
+イベント処理を開始するには、 [EventProcessorHost][]をインスタンス化し、イベント ハブの適切なパラメーターを提供します。 次に、[RegisterEventProcessorAsync](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost#Microsoft_ServiceBus_Messaging_EventProcessorHost_RegisterEventProcessorAsync__1) を呼び出し、[IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) 実装をランタイムに登録します。 この時点で、ホストは「どん欲な」アルゴリズムを利用して、イベント ハブにあるすべてのパーティションでリースの取得を試行します。 これらのリースは一定の期間存続しますが、その後、更新する必要があります。 新しいノード (この場合は worker インスタンス) がオンラインになると、新しいノードはリースを予約し、時間と共にリースの追加取得を試行し、負荷がノード間を移動します。
 
 ![イベント プロセッサ ホスト](./media/event-hubs-programming-guide/IC759863.png)
 
-時間と共に、均衡が確立されます。 この動的機能により、スケールアップとスケールダウンの両方で、CPU に基づく自動スケールがコンシューマーに適用されます。 Event Hubs にはメッセージ カウントの直接的概念がないため、平均的な CPU 利用率が、多くの場合、バックエンドまたはコンシューマー スケールを測定する最良のメカニズムとなります。 発行元がコンシューマーが処理できる数を超えたイベントを発行し始めた場合、コンシューマーの CPU 増加を利用し、worker インスタンス カウントを自動拡張できます。
+時間と共に、均衡が確立されます。 この動的機能により、スケールアップとスケールダウンの両方で、CPU に基づく自動スケールがコンシューマーに適用されます。 イベント ハブにはメッセージ カウントの直接的概念がないため、平均的な CPU 利用率が、多くの場合、バックエンドまたはコンシューマー スケールを測定する最良のメカニズムとなります。 発行元がコンシューマーが処理できる数を超えたイベントを発行し始めた場合、コンシューマーの CPU 増加を利用し、worker インスタンス カウントを自動拡張できます。
 
 [EventProcessorHost][] クラスは Azure ストレージベースのチェックポイント処理メカニズムも実装します。 このメカニズムはパーティションごとにオフセットを保存します。そのため、各コンシューマーは前回のコンシューマーが保存した内容から、最後のチェックポイントを判断できます。 パーティションがリースによってノード間を移動するにつれて、負荷移動を円滑にする同期メカニズムとなります。
 
 ## <a name="publisher-revocation"></a>発行元失効
-[EventProcessorHost][] の高度なランタイム機能に加え、Event Hubs は特定の発行元がイベント ハブにイベントを発行するのを防ぐ目的で発行元失効を有効にします。 このような機能は特に、発行元のトークンが侵害された、あるいはソフトウェア更新により不適切な動作が発生している場合に便利です。 そのような状況では、SAS トークンの一部である発行元 ID を利用してイベントの発行をブロックできます。
+[EventProcessorHost][] の高度なランタイム機能に加え、Event Hubs は特定の発行元がイベント ハブにイベントを発行するのを防ぐ目的で発行元失効を有効にします。 このような機能は、発行元のトークンが侵害されたり、ソフトウェア更新によって不適切な動作が発生したりする場合に便利です。 そのような状況では、SAS トークンの一部である発行元 ID を利用してイベントの発行をブロックできます。
 
 発行元失効の詳細のほか、発行元として Event Hubs に送信する方法の詳細については、[Event Hubs の大規模で安全な発行](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)に関するサンプルを参照してください。
 

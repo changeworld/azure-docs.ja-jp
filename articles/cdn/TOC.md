@@ -21,8 +21,8 @@
 ## 管理
 ### [Azure PowerShell を使用して管理する](cdn-manage-powershell.md)
 ### Time to Live を構成する
-#### [Web Apps/Cloud Services、ASP.NET、または IIS のコンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
-#### [Storage Blob service のコンテンツ](cdn-manage-expiration-of-blob-content.md)
+#### [Azure Web コンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
+#### [Azure BLOB Storage](cdn-manage-expiration-of-blob-content.md)
 ### [国ごとにアクセスを制限する](cdn-restrict-access-by-country.md)
 ### [ファイル圧縮によるパフォーマンスの向上](cdn-improve-performance.md)
 ### クエリ文字列別にコンテンツをキャッシュする

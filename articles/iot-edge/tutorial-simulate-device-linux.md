@@ -7,20 +7,25 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: elioda
-ms.date: 10/05/2017
+ms.date: 10/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 041919fd729880d429e08d8942f8d1ee087ccf61
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 327a959ad97897fd19f45a0599f37492938df104
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux---preview"></a>Linux のシミュレートされたデバイスに Azure IoT Edge をデプロイする - プレビュー
 
 Azure IoT Edge を使用すると、すべてのデータをクラウドにプッシュしなくても、デバイスで分析とデータ処理を実行することができます。 IoT Edge チュートリアルでは、Azure サービスまたはカスタム コードからビルドされたさまざまな種類の モジュールをデプロイする方法について説明しますが、まずテストするデバイスが必要になります。 
 
-このチュートリアルでは、シミュレートされた IoT Edge デバイスを作成してから、センサー データを生成するモジュールをデプロイする方法について説明します。 学習内容は次のとおりです。
+このチュートリアルで学習する内容は次のとおりです。
+
+1. IoT Hub の作成
+2. IoT Edge デバイスを登録する
+3. IoT Edge ランタイムを開始する
+4. モジュールを展開する
 
 ![チュートリアル アーキテクチャ][2]
 
@@ -52,35 +57,31 @@ IoT Hub を作成してチュートリアルを開始します。
 Azure IoT Edge ランタイムをデバイスにインストールして開始します。 
 ![デバイスを登録する][5]
 
-IoT Edge ランタイムはすべての IoT Edge デバイスにデプロイされます。 このランタイムは 2 つのモジュールから構成されます。 まず、IoT Edge エージェントは、IoT Edge デバイスでのモジュールのデプロイと監視を容易にします。 次に、IoT Edge ハブは、IoT Edge デバイス上のモジュール間、およびデバイスと IoT Hub の間の通信を管理します。 
+IoT Edge ランタイムはすべての IoT Edge デバイスにデプロイされます。 これは 2 つのモジュールから構成されます。 **IoT Edge エージェント**は、IoT Edge デバイスでのモジュールの展開と監視を容易にします。 **IoT Edge ハブ**は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。 新しいデバイスでランタイムを構成するときは、最初に IoT Edge エージェントだけが開始します。 IoT Edge ハブは、後でモジュールをデプロイすると開始します。 
 
-IoT Edge ランタイムをインストールして開始するには、次の手順を使用します。
+IoT Edge デバイスを実行するマシン上に、IoT Edge 制御スクリプトをダウンロードします。
+```cmd
+sudo pip install -U azure-iot-edge-runtime-ctl
+```
 
-1. IoT Edge デバイスを実行するマシン上に、IoT Edge 制御スクリプトをダウンロードします。
+前のセクションで保存した IoT Edge デバイス接続文字列を使用してランタイムを構成します。
+```cmd
+sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+```
 
-   ```
-   sudo pip install -U azure-iot-edge-runtime-ctl
-   ```
+ランタイムを開始します。
+```cmd
+sudo iotedgectl start
+```
 
-1. 前のセクションで保存した IoT Edge デバイス接続文字列を使用してランタイムを構成します。
+Docker を調べて、IoT Edge エージェントがモジュールとして実行されていることを確認します。
+```cmd
+sudo docker ps
+```
 
-   ```
-   sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
-   ```
+![Docker で edgeAgent を確認する](./media/tutorial-simulate-device-linux/docker-ps.png)
 
-1. ランタイムを開始します。
-
-   ```
-   sudo iotedgectl start
-   ```
-
-1. Docker を調べて、IoT Edge エージェントがモジュールとして実行されていることを確認します。
-
-   ```
-   sudo docker ps
-   ```
-
-## <a name="deploy-a-module"></a>モジュールをデプロイする
+## <a name="deploy-a-module"></a>モジュールを展開する
 
 Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統計情報を送信するモジュールをデプロイします。
 ![デバイスを登録する][6]
@@ -89,13 +90,23 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
-このクイックスタートでは、新しい IoT Edge デバイスを作成し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure Portal を使用して、デバイス自体を変更せずにデバイスで IoT Edge モジュールを実行するために、IoT Edge モジュールをプッシュしました。 この場合は、プッシュしたモジュールによって、チュートリアルで使用できる環境データが作成されます。 
+このチュートリアルでは、新しい IoT Edge デバイスを作成し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure Portal を使用して、IoT Edge モジュールをプッシュし、デバイス自体を変更せずにモジュールをデバイスで実行しました。 この場合は、プッシュしたモジュールによって、チュートリアルで使用できる環境データが作成されます。 
 
-tempSensor モジュールから送信されているメッセージを確認します。
+シミュレートされたデバイスを実行しているコンピューターで、もう一度コマンド プロンプトを開きます。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。
 
-```cmd/sh
-docker logs -f tempSensor
+```cmd
+sudo docker ps
 ```
+
+![ご利用のデバイスの 3 つのモジュールを表示する](./media/tutorial-simulate-device-linux/docker-ps2.png)
+
+tempSensor モジュールからクラウドに送信されているメッセージを確認します。
+
+```cmd
+sudo docker logs -f tempSensor
+```
+
+![モジュールからのデータを表示する](./media/tutorial-simulate-device-linux/docker-logs.png)
 
 また、[IoT Hub エクスプローラー ツール][lnk-iothub-explorer]を使用して、デバイスが送信しているテレメトリを表示することもできます。 
 

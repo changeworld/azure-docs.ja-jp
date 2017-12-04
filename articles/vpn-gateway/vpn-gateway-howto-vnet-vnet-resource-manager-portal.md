@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2017
+ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: b2da1c7148e27ca8dd8eb774d4201415a969fada
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: a660e8e83220d77f2b55020fade0732b3a140c54
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Azure Portal を使用した VNet 間 VPN Gateway 接続を構成する
 
-この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 
+この記事では、VNet 間という接続の種類を使用して仮想ネットワークを接続する方法を紹介します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 
 
 この記事の手順は、Resource Manager デプロイメント モデルに適用されます。また、この手順では Azure Portal を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
@@ -39,15 +39,15 @@ ms.lasthandoff: 11/21/2017
 
 ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/v2vrmps.png)
 
-仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 VNet 間ではなく、VNet どうしのサイト間 (IPsec) 接続を作成することはできます。 どちらの接続の種類も、通信時には同じように動作します。 ただし、VNet 間接続を作成すると、一方の VNet のアドレス空間を更新した場合に、もう一方の VNet は、更新されたアドレス空間へのルーティングを自動的に認識します。 サイト間 (IPsec) 接続を作成する場合は、ローカル ネットワーク ゲートウェイのアドレス空間を手動で構成する必要があります。 複雑な構成を使用する場合は、VNet 間ではなく、IPsec 接続を作成する方がよいことがあります。 そうすることで、ローカル ネットワーク ゲートウェイに対して追加のアドレス空間を手動で指定することができます。
+## <a name="about"></a>VNet の接続について
 
-複数の VNet が同じリージョンに存在する場合、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングは、VPN ゲートウェイを使用しません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
+VNet 間という接続の種類を使用して仮想ネットワークどうしを接続することは、オンプレミス サイトの場所への IPsec 接続を作成することに似ています。 どちらの接続の種類も、VPN ゲートウェイを使用して IPsec/IKE を使った安全なトンネルが確保され、通信時には同じように機能します。 この接続の種類の違いは、ローカル ネットワーク ゲートウェイの構成方法にあります。 VNet 間接続を作成するときは、ローカル ネットワーク ゲートウェイのアドレス空間は見えません。 自動的に作成されて値が設定されます。 一方の VNet のアドレス空間を更新した場合、もう一方の VNet が、更新されたアドレス空間へのルーティングを自動的に認識します。
 
-マルチサイト構成と VNet 間通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
+複雑な構成を使用している場合、接続の種類として VNet 間よりも IPsec を使用する方が好ましいケースがあります。 そうすることで、トラフィックをルーティングするための追加のアドレス空間をローカル ネットワーク ゲートウェイに指定することができます。 接続の種類に IPsec を使用して VNet どうしを接続する場合、ローカル ネットワーク ゲートウェイを手動で作成して構成する必要があります。 詳細については、[サイト間構成](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関するページを参照してください。
 
-![接続について](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "接続について")
+さらに、複数の VNet が同じリージョンに存在する場合、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングでは VPN ゲートウェイを使用しないため、料金と機能も若干異なります。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
-### <a name="why-connect-virtual-networks"></a>仮想ネットワークを接続する理由
+### <a name="why"></a>VNet 間接続を作成する理由
 
 仮想ネットワークを接続するのは次のような場合です。
 
@@ -59,7 +59,11 @@ ms.lasthandoff: 11/21/2017
 
   * 同じリージョン内で、分離または管理要件に基づいて相互に接続された複数の仮想ネットワークを利用し、多層アプリケーションをセットアップすることができます。
 
-以下の手順を練習として使用する場合は、この例の設定値を使用できます。 この例では、仮想ネットワークは同じサブスクリプション内にありながら、異なるリソース グループに含まれます。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) または [CLI](vpn-gateway-howto-vnet-vnet-cli.md) を使用できます。 VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。
+マルチサイト構成と VNet 間通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
+
+![接続について](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/aboutconnections.png "接続について")
+
+この記事では、接続の種類として VNet 間を使用して VNet を接続する方法を説明します。 以下の手順を練習として使用する場合は、この例の設定値を使用できます。 この例では、仮想ネットワークは同じサブスクリプション内にありながら、異なるリソース グループに含まれます。 対象となる VNet がそれぞれ異なるサブスクリプションに存在する場合、ポータルで接続を作成することはできません。 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) または [CLI](vpn-gateway-howto-vnet-vnet-cli.md) を使用できます。 VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。
 
 ### <a name="values"></a>設定例
 

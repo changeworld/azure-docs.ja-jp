@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: af27d01108cbfb3bd71023ffbce85f348abb0cfe
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 359887a8527d5432e705d9739e30f0eb2363e34f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Azure Container Service (AKS) でのサービス プリンシパル
 
@@ -43,7 +43,7 @@ Azure AD サービス プリンシパルを作成するには、アプリケー�
 次の例では、AKS クラスターが作成されます。また、既存のサービス プリンシパルが指定されていないため、そのクラスター用にサービス プリンシパルが作成されます。 この操作を完了するために、アカウントには、サービス プリンシパルを作成するための適切な権限が必要です。
 
 ```azurecli
-az aks create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-keys
+az aks create --name myK8SCluster --resource-group myResourceGroup --generate-ssh-keys
 ```
 
 ## <a name="use-an-existing-sp"></a>既存の SP を使用する
@@ -52,8 +52,6 @@ az aks create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 既存のサービス プリンシパルを使用する場合は、次の要件を満たしている必要があります。
 
-- スコープ: クラスターをデプロイするために使用されるサブスクリプション
-- ロール: 共同作成者
 - クライアント シークレット: パスワードである必要があります
 
 ## <a name="pre-create-a-new-sp"></a>新しい SP を事前に作成する
@@ -61,8 +59,7 @@ az aks create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 Azure CLI を使用してサービス プリンシパルを作成するには、[az ad sp create-for-rbac]() コマンドを使用します。
 
 ```azurecli
-id=$(az account show --query id --output tsv)
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$id"
+az ad sp create-for-rbac --skip-assignment
 ```
 
 出力は次のようになります。 `appId` と `password` を書き留めておきます。 これらの値は、AKS クラスターの作成時に使用します。
@@ -82,7 +79,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$id"
 事前に作成したサービス プリンシパルを使用するときに、`appId` と `password` を引数の値として `az aks create` コマンドに指定します。
 
 ```azurecli-interactive
-az aks create --resource-group myResourceGroup --name myK8SCluster --service-principal <appId> ----client-secret <password>
+az aks create --resource-group myResourceGroup --name myK8SCluster --service-principal <appId> --client-secret <password>
 ```
 
 Azure Portal から AKS クラスターをデプロイする場合は、AKS クラスターの構成フォームにこれらの値を入力します。
@@ -99,6 +96,7 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、次�
 * Kubernetes クラスター内のマスター VM とノード VM では、サービス プリンシパルの資格情報が /etc/kubernetes/azure.json ファイルに格納されます。
 * `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の ~/.azure/acsServicePrincipal.json ファイルに書き込まれます。
 * `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルは同じサブスクリプション内に作成された [Azure Container Registry](../container-registry/container-registry-intro.md) でも認証を行うことができます。
+* `az aks create` によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。 `az ad sp delete --id $clientID` を使用して削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 

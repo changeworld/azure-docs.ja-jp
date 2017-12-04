@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebb963236a069f272499fce59945d0cf0d3d647f
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -319,7 +319,7 @@ displayName | Azure メトリックスのこのデータに添付されるラベ
 
 counterSpecifier は任意の識別子です。 Azure ポータルのチャート作成およびアラート通知機能のようなメトリックのコンシューマーは、メトリックまたはメトリックのインスタンスを識別する "キー" として counterSpecifier を使用します。 `builtin` メトリックについては、`/builtin/` で始まる counterSpecifier 値を使用することをお勧めします。 メトリックの特定のインスタンスを収集する場合は、counterSpecifier 値にインスタンスの識別子を添付することをお勧めします。 次に例をいくつか示します。
 
-* `/builtin/Processor/PercentIdleTime` - すべてのコアの平均アイドル時間
+* `/builtin/Processor/PercentIdleTime` - すべての vCPU の平均アイドル時間
 * `/builtin/Disk/FreeSpace(/mnt)` - /mnt ファイル システム用の空き領域
 * `/builtin/Disk/FreeSpace` - マウントされたすべてのファイル システムの平均空き領域
 
@@ -424,7 +424,7 @@ sinks | (省略可能) ログ行が送信される追加のシンクの名前を
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>"プロセッサ" クラスの組み込みのメトリック
 
-"プロセッサ" クラスのメトリックは、VM のプロセッサ使用率に関する情報を提供します。 パーセンテージを集計すると、結果はすべての CPU の平均になります。 2 つのコアの VM で 1 つのコアが 100% ビジーで、もう 1 つのコアが 100% アイドル状態だった場合、報告 PercentIdleTime は 50 になります。 各コアが同じ期間に 50% ビジーだった場合、報告された結果はやはり 50 になります。 4 つのコアの VM で 1 つのコアが 100% ビジーで、他のコアがアイドル状態だった場合、報告 PercentIdleTime は 75 になります。
+"プロセッサ" クラスのメトリックは、VM のプロセッサ使用率に関する情報を提供します。 パーセンテージを集計すると、結果はすべての CPU の平均になります。 2 つの vCPU の VM で 1 つの vCPU が 100% ビジーで、もう 1 つのコアが 100% アイドル状態だった場合、報告 PercentIdleTime は 50 になります。 各 vCPU が同じ期間に 50% ビジーだった場合、報告された結果はやはり 50 になります。 4 つの vCPU の VM で 1 つのコアが 100% ビジーで、他の vCPU がアイドル状態だった場合、報告 PercentIdleTime は 75 になります。
 
 counter | 意味
 ------- | -------
@@ -438,7 +438,7 @@ PercentPrivilegedTime | 非アイドル時間のうち、特権 (カーネル) �
 
 最初の 4 つのカウンターの合計は 100% となる必要があります。 最後の 3 つカウンターの合計も 100% になります。PercentProcessorTime、PercentIOWaitTime、PercentInterruptTime の合計を細分したものが、それらのカウンターです。
 
-すべてのプロセッサで集計された単一のメトリックを取得するには、`"condition": "IsAggregate=TRUE"` のように設定します。 4 つのコアの VM の 2 番目の論理プロセッサなど、特定のプロセッサのメトリックを取得するには、`"condition": "Name=\\"1\\""` のように設定します。 論理プロセッサ番号は、 `[0..n-1]` の範囲内です。
+すべてのプロセッサで集計された単一のメトリックを取得するには、`"condition": "IsAggregate=TRUE"` のように設定します。 4 つの vCPU の VM の 2 番目の論理プロセッサなど、特定のプロセッサのメトリックを取得するには、`"condition": "Name=\\"1\\""` のように設定します。 論理プロセッサ番号は、 `[0..n-1]` の範囲内です。
 
 ### <a name="builtin-metrics-for-the-memory-class"></a>"メモリ" クラスの組み込みのメトリック
 

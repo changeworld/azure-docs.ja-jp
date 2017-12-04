@@ -15,23 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/05/2017
 ms.author: zhongc
-ms.openlocfilehash: 0a5a1129c5b7fc693ed7c187d928a128650f28b9
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f25a27a86b366b2302657c44108cd823b0384831
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics による高頻度取引のシミュレーション
-Azure Stream Analytics の SQL 言語に JavaScript の UDF と UDA を組み合わせることは、オンライン機械学習のトレーニングやスコア付け、さらにはステートフル プロセス シミュレーションなど、高度な分析への強力な手段となります。 この記事では、高頻度取引を例に、Azure Stream Analytics ジョブで線形回帰を実行し、継続的にトレーニングとスコア付けを行う方法について説明します。
+Azure Stream Analytics では、SQL 言語に JavaScript のユーザー定義関数 (UDF) とユーザー定義集計 (UDA) を組み合わせることで高度な分析を行うことができます。 高度な分析には、オンライン機械学習のトレーニングやスコアリングのほか、ステートフル プロセス シミュレーションが含まれます。 この記事では、高頻度取引を例に、Azure Stream Analytics ジョブで線形回帰を実行し、継続的にトレーニングとスコア付けを行う方法について説明します。
 
 ## <a name="high-frequency-trading"></a>高頻度取引
-高頻度取引の論理フローで大切なことは、証券取引所からリアルタイムの気配値を取得して、その気配値に基づく予測モデルを構築することです。そうすることで、私たちは値動きを予測し、それに応じた買い注文や売り注文を出すことができます。適切に値動きを予測して利益を得ることがその目的です。 そこで次のものが必要になります。
-* 気配値のリアルタイム フィード
-* リアルタイムの気配値に基づいて機能する予測モデル
-* 取引アルゴリズムの利益/損失をデモンストレーションする取引シミュレーション
+高頻度取引の論理フローで大切なことは、次の点です。
+1. 証券取引所からリアルタイムの気配値を取得する。
+2. 気配値に基づく予測モデルを構築し、ユーザーが値動きを予測できるようにする。
+3. 適切に値動きを予測して買い注文や売り注文を出し、利益を上げる。 
+
+結果として、次のものが必要になります。
+* 気配値のリアルタイム フィード。
+* リアルタイムの気配値に基づいて機能する予測モデル。
+* 取引アルゴリズムの利益/損失をデモンストレーションする取引シミュレーション。
 
 ### <a name="real-time-quote-feed"></a>気配値のリアルタイム フィード
-リアルタイムの買い気配値と売り気配値は、IEX から提供されている socket.io (https://iextrading.com/developer/docs/#websockets) を使用して無料で入手できます。 リアルタイムの気配値を取得してイベント ハブにデータ ソースしてプッシュする単純なコンソール プログラムを作成することができます。 以下に示したのは、そのプログラムのスケルトン コードです。 簡潔にするため、エラー処理は省略しています。 また、プロジェクトには別途 SocketIoClientDotNet および WindowsAzure.ServiceBus NuGet パッケージを追加する必要があります。
+[リアルタイムの買い気配値と売り気配値](https://iextrading.com/developer/docs/#websockets)は、IEX から提供されている socket.io を使用して無料で入手できます。 リアルタイムの気配値を取得して Azure Event Hubs にデータ ソースとしてプッシュする単純なコンソール プログラムを作成することができます。 以下に示したのは、そのプログラムのスケルトン コードです。 簡潔にするため、エラー処理は省略しています。 また、プロジェクトには別途 SocketIoClientDotNet および WindowsAzure.ServiceBus NuGet パッケージを追加する必要があります。
 
 
     using Quobject.SocketIoClientDotNet.Client;
@@ -65,9 +70,11 @@ Azure Stream Analytics の SQL 言語に JavaScript の UDF と UDA を組み合
 >イベントのタイムスタンプは **lastUpdated** で、エポック時間で表現されます。
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>高頻度取引の予測モデル
-デモンストレーションの目的上、ここでは Darryl Shen 氏がその論文の中で説明している線形モデルを使用します。 http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf.
+デモンストレーションの目的上、ここでは Darryl Shen 氏がその[論文](http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf)の中で説明している線形モデルを使用します。
 
-Volume Order Imbalance (VOI) は、現在の買い気配値/売り気配値/売買高と前回のティックの買い気配値/売り気配値/売買高との関数です。 同論文では、VOI と将来の値動きとの間には相関があると考え、過去の 5 つの VOI 値とそれに続く 10 ティックの価格変動との間で線形モデルを構築しています。 このモデルのトレーニングには、前日のデータと線形回帰が使用されます。 そのトレーニング済みのモデルを使用して、取引当日における気配値の価格変動をリアルタイムに予測します。 十分に大きな価格変動が予測されると取引が実行されます。 しきい値の設定によっては、1 つの株式に対して数千回の取引が 1 取引日に実行されることもあります。
+Volume Order Imbalance (VOI) は、現在の買い気配値/売り気配値/売買高と前回のティックの買い気配値/売り気配値/売買高との関数です。 同論文では、VOI と将来の値動きの間には相関があると考えています。 過去の 5 つの VOI 値とそれに続く 10 ティックの価格変動との間で線形モデルを構築しています。 このモデルのトレーニングには、前日のデータと線形回帰が使用されます。 
+
+そのトレーニング済みのモデルを使用して、取引当日における気配値の価格変動をリアルタイムに予測します。 十分に大きな価格変動が予測されると取引が実行されます。 しきい値の設定によっては、1 つの株式に対して数千回の取引が 1 取引日に実行されることもあります。
 
 ![VOI の定義](./media/stream-analytics-high-frequency-trading/voi-formula.png)
 
@@ -93,7 +100,7 @@ Volume Order Imbalance (VOI) は、現在の買い気配値/売り気配値/売�
     ),
     timefilteredquotes AS (
         /* filter between 7am and 1pm PST, 14:00 to 20:00 UTC */
-        /* cleanup invalid data points */
+        /* clean up invalid data points */
         SELECT * FROM typeconvertedquotes
         WHERE DATEPART(hour, lastUpdated) >= 14 AND DATEPART(hour, lastUpdated) < 20 AND bidSize > 0 AND askSize > 0 AND bidPrice > 0 AND askPrice > 0
     ),
@@ -116,7 +123,7 @@ Volume Order Imbalance (VOI) は、現在の買い気配値/売り気配値/売�
         FROM timefilteredquotes
     ),
 
-これで、VOI 値を計算することができます。 万一前回のティックが存在しない場合も想定して、フィルターで Null 値を除外していることに注意してください。
+これで、VOI 値を計算することができます。 万一前回のティックが存在しない場合も想定して、フィルターで Null 値を除外します。
 
     currentPriceAndVOI AS (
         /* calculate VOI */
@@ -230,7 +237,7 @@ Azure Stream Analytics には組み込みの線形回帰関数が存在しない
         FROM modelparambs
     ),
 
-現在のイベントのスコア付けに前日のモデルを使用するためには、気配値とモデルを結合する必要があります。 ただし、ここでは **JOIN** の代わりに **UNION** を使用してモデルのイベントと気配値のイベントとを統合したうえで、**LAG** を使用してイベントと前日のモデルとをペアにし、返される一致が 1 件だけになるようにします。 週末があるので、3 日前までさかのぼって確認する必要があります。 単純に **JOIN** を使用した場合、気配値イベントごとに 3 つのモデルを取得できることになります。
+現在のイベントのスコア付けに前日のモデルを使用するためには、気配値とモデルを結合する必要があります。 ただし、ここでは **JOIN** の代わりに **UNION** を使用してモデルのイベントと気配値のイベントを統合します。 その後、**LAG** を使用してイベントと前日のモデルをペアにし、返される一致が 1 件だけになるようにします。 週末があるので、3 日前までさかのぼって確認する必要があります。 単純に **JOIN** を使用した場合、気配値イベントごとに 3 つのモデルを取得できることになります。
 
     shiftedVOI AS (
         /* get two consecutive VOIs */
@@ -266,7 +273,7 @@ Azure Stream Analytics には組み込みの線形回帰関数が存在しない
         FROM model
     ),
     VOIANDModelJoined AS (
-        /* match VOIs with the latest model within 3 days (72 hours, to take weekend into account) */
+        /* match VOIs with the latest model within 3 days (72 hours, to take the weekend into account) */
         SELECT
             symbol,
             midPrice,
@@ -279,7 +286,7 @@ Azure Stream Analytics には組み込みの線形回帰関数が存在しない
         WHERE type = 'voi'
     ),
 
-これで、予測が可能な状態になりました。しきい値を 0.02 とするモデルに基づいて買い/売りシグナルを生成することができます。 trade 値 10 が買いで、trade 値 -10 が売りです。
+これで、予測が可能な状態になりました。しきい値を 0.02 とするモデルに基づいて買い/売りシグナルを生成することができます。 trade 値 10 が買いです。 trade 値 -10 が売りです。
 
     prediction AS (
         /* make prediction if there is a model */
@@ -308,11 +315,13 @@ Azure Stream Analytics には組み込みの線形回帰関数が存在しない
     ),
 
 ### <a name="trading-simulation"></a>取引のシミュレーション
-取引シグナルが得られたら、取引戦略の効果を、実際の取引は行わずにテストしたいと思います。 このシミュレーションは、ユーザー定義集計 (UDA) に、ホップ サイズを 1 分とするホッピング ウィンドウを組み合わせて行います。 別途、日付に基づくグループ化と having 句によって、同じ日に属するイベントだけを集計対象としています。 ホッピング ウィンドウが 2 日にまたがる場合は、日付の **GROUP BY** によって前日と当日にグループ分けされます。 当日に終わっているものの、前日にグループ分けされているウィンドウは、**HAVING** 句によって除外されます。
+取引シグナルが得られたら、取引戦略の効果を、実際の取引は行わずにテストしたいと思います。 
+
+このテストは、UDA に、ホップ サイズを 1 分とするホッピング ウィンドウを組み合わせて行います。 別途、日付に基づくグループ化と having 句によって、同じ日に属するイベントだけを集計対象としています。 ホッピング ウィンドウが 2 日にまたがる場合は、日付の **GROUP BY** によって前日と当日にグループ分けされます。 当日に終わっているものの、前日にグループ分けされているウィンドウは、**HAVING** 句によって除外されます。
 
     simulation AS
     (
-        /* perform trade simulation for the past 7 hours to cover an entire trading day, generate output every minute */
+        /* perform trade simulation for the past 7 hours to cover an entire trading day, and generate output every minute */
         SELECT
             DateAdd(hour, -7, System.Timestamp) AS time,
             symbol,
@@ -323,7 +332,13 @@ Azure Stream Analytics には組み込みの線形回帰関数が存在しない
         Having DateDiff(day, date, time) < 1 AND DATEPART(hour, time) < 13
     )
 
-この JavaScript UDA は、すべてのアキュムレータを init 関数で初期化し、ウィンドウに追加されたイベントごとに状態遷移を計算して、ウィンドウの最後にシミュレーション結果を返します。 一般的な取引プロセスでは、買いシグナルを受信し、かつ保有株がなければ株式を買います。逆に、売りシグナルを受信し、かつ保有株がある場合には株式を売ります (保有株がない場合には空売り)。 ショート ポジションで、かつ買いシグナルを受信した場合は、信用買いをすることになります。 このシミュレーションでは、特定の株式のホールドまたはショートが 10 株になることはありません。また、取引コストは 8 ドル固定です。
+この JavaScript UDA は、すべてのアキュムレータを `init` 関数で初期化し、ウィンドウに追加されたイベントごとに状態遷移を計算して、ウィンドウの最後にシミュレーション結果を返します。 一般的な取引プロセスは次のとおりです。
+
+- 買いシグナルを受信し、かつ保有株がなければ株式を買います。
+- 売りシグナルを受信し、かつ保有株がある場合には株式を売ります。
+- 保有株がない場合には空売りします。 
+
+ショート ポジションで、かつ買いシグナルを受信した場合は、信用買いをすることになります。 このシミュレーションでは、特定の株式のホールドまたはショートが 10 株になることはありません。 取引コストは 8 ドル固定です。
 
 
     function main() {
@@ -432,6 +447,10 @@ Azure Stream Analytics には組み込みの線形回帰関数が存在しない
 
 
 ## <a name="summary"></a>概要
-ご覧のとおり、実際の高頻度取引モデルを Azure Stream Analytics で実装するためには、やや複雑なクエリを使用することになります。 組み込みの線形回帰関数が存在しないため、入力変数を 5 つから 2 つに減らしてモデルを単純化する必要があります。 しかし、その気になれば、より次元の高い、洗練されたアルゴリズムを JavaScript UDA として実装することもできます。 注目すべき点は、JavaScript UDA を除く大半のクエリのテストとデバッグが、Visual Studio 内から [Azure Stream Analytics Tool for Visual Studio](stream-analytics-tools-for-visual-studio.md) を使って実行できることです。 筆者が最初のクエリを作成した後、Visual Studio でクエリのテストとデバッグに要した時間は 30 分足らずでした。 UDA については現在、Visual Studio でデバッグを行うことはできません。 JavaScript コードをステップ実行する機能も含め、その実現に向けて取り組んでいるところです。 また、UDA の中ではフィールド名がすべて小文字になることに注意してください。 クエリのテスト段階では、この動作が明らかになっていませんでした。 ただし、Azure Stream Analytics 互換性レベル 1.1 では、フィールド名の大文字と小文字が維持され、より自然な動作になっています。
+実際の高頻度取引モデルを Azure Stream Analytics で実装するためには、やや複雑なクエリを使用することになります。 組み込みの線形回帰関数が存在しないため、入力変数を 5 つから 2 つに減らしてモデルを単純化する必要があります。 しかし、その気になれば、より次元の高い、洗練されたアルゴリズムを JavaScript UDA として実装することもできます。 
+
+注目すべき点は、JavaScript UDA を除く大半のクエリのテストとデバッグが、[Visual Studio の Azure Stream Analytics ツール](stream-analytics-tools-for-visual-studio.md)を使って Visual Studio 内から実行できることです。 筆者が最初のクエリを作成した後、Visual Studio でクエリのテストとデバッグに要した時間は 30 分足らずでした。 
+
+UDA については現在、Visual Studio でデバッグを行うことはできません。 JavaScript コードをステップ実行する機能も含め、その実現に向けて取り組んでいるところです。 また、UDA の中ではフィールド名が小文字になることに注意してください。 クエリのテスト段階では、この動作が明らかになっていませんでした。 ただし、Azure Stream Analytics 互換性レベル 1.1 では、フィールド名の大文字と小文字が維持され、より自然な動作になっています。
 
 Azure Stream Analytics のすべてのユーザーは、Microsoft のサービスを使用して、高度な分析を絶え間なく、ほぼリアルタイムで実行することができます。この記事が創造的な思考のきっかけとなることを期待しています。 高度な分析のシナリオで、より簡単にクエリを実装する方法に関して、何かご意見があれば、ぜひお寄せください。

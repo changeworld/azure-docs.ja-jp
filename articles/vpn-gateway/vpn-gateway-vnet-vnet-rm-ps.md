@@ -1,6 +1,6 @@
 ---
-title: "Azure 仮想ネットワークを別の VNet に接続する: PowerShell | Microsoft Docs"
-description: "この記事では、Azure リソース マネージャーおよび PowerShell を使用して仮想ネットワーク同士を接続する方法を説明します。"
+title: "VNet 間接続を使用して Azure 仮想ネットワークを別の VNet に接続する: PowerShell | Microsoft Docs"
+description: "この記事では、VNet 間接続と PowerShell を使用して仮想ネットワークどうしを接続する方法を説明します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9bcad8ed57980b08e0290e0272a5ff9de46f11a0
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 8a772680355a62c13dbe0361b5b58029642cf84d
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
 
-この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 
+この記事では、VNet 間という接続の種類を使用して仮想ネットワークを接続する方法を紹介します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。
 
 この記事の手順は、Resource Manager デプロイメント モデルに適用されます。ここでは、PowerShell を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
@@ -37,13 +37,15 @@ ms.lasthandoff: 11/18/2017
 >
 >
 
-仮想ネットワークどうし (VNet 間) の接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 複数の VNet が同じリージョンに存在する場合、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングは、VPN ゲートウェイを使用しません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
+## <a name="about"></a>VNet の接続について
 
-マルチサイト構成と VNet 間通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続を組み合わせたネットワーク トポロジを確立することができます (下図参照)。
+VNet 間接続タイプ (VNet2VNet) を使用して仮想ネットワークどうしを接続することは、オンプレミス サイトがある場所との IPsec 接続を作成することに似ています。 どちらの接続の種類も、VPN ゲートウェイを使用して IPsec/IKE を使った安全なトンネルが確保され、通信時には同じように機能します。 この接続の種類の違いは、ローカル ネットワーク ゲートウェイの構成方法にあります。 VNet 間接続を作成するときは、ローカル ネットワーク ゲートウェイのアドレス空間は見えません。 自動的に作成されて値が設定されます。 一方の VNet のアドレス空間を更新した場合、もう一方の VNet が、更新されたアドレス空間へのルーティングを自動的に認識します。
 
-![接続について](./media/vpn-gateway-vnet-vnet-rm-ps/aboutconnections.png)
+複雑な構成を使用している場合、接続の種類として VNet 間よりも IPsec を使用する方が好ましいケースがあります。 そうすることで、トラフィックをルーティングするための追加のアドレス空間をローカル ネットワーク ゲートウェイに指定することができます。 接続の種類に IPsec を使用して VNet どうしを接続する場合、ローカル ネットワーク ゲートウェイを手動で作成して構成する必要があります。 詳細については、[サイト間構成](vpn-gateway-create-site-to-site-rm-powershell.md)に関するページを参照してください。
 
-### <a name="why-connect-virtual-networks"></a>仮想ネットワークを接続する理由
+さらに、複数の VNet が同じリージョンに存在する場合、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングでは VPN ゲートウェイを使用しないため、料金と機能も若干異なります。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
+
+### <a name="why"></a>VNet 間接続を作成する理由
 
 仮想ネットワークを接続するのは次のような場合です。
 
@@ -55,19 +57,22 @@ ms.lasthandoff: 11/18/2017
 
   * 同じリージョン内で、分離または管理要件に基づいて相互に接続された複数の仮想ネットワークを利用し、多層アプリケーションをセットアップすることができます。
 
-VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。
+マルチサイト構成と VNet 間通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
 
 ## <a name="which-set-of-steps-should-i-use"></a>どの手順を利用するべきでしょうか。
 
-この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順です。 この構成の手順では、TestVNet1 と TestVNet4 を使用します。
+この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順で、もう 1 つは [VNet が別のサブスクリプション内に存在する](#difsub)場合の手順です。
+大きく違うのは、異なるサブスクリプションに存在する VNet の接続を構成するときは、別々の PowerShell セッションを使用する必要がある点です。 
 
-![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+この演習では、構成を組み合わせるか、希望する方のみを選んでもかまいません。 どの構成でも、接続の種類として VNet 間を使用します。 ネットワーク トラフィックは、互いに直接接続されている VNet 間を行き来します。 この演習では、TestVNet4 からのトラフィックが TestVNet5 にルーティングされることはありません。
 
-それとは別に、[VNet が異なるサブスクリプションに存在する](#difsub)場合についての記事が存在します。 この構成の手順では、TestVNet1 と TestVNet5 を使用します。
+* [同じサブスクリプション内に存在する VNet:](#samesub) この構成の手順では、TestVNet1 と TestVNet4 を使用します。
 
-![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
+  ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-すべての仮想ネットワーク リソースとゲートウェイ リソースを同じ PowerShell セッションで作成して構成できるかどうかが、両者の大きな違いとなります。 異なるサブスクリプションに存在する VNet の接続を構成するときは、別々の PowerShell セッションを使用する必要があります。 必要に応じて構成を組み合わせるか、希望する方のみを選んでもかまいません。
+* [別のサブスクリプション内に存在する VNet:](#difsub) この構成の手順では、TestVNet1 と TestVNet5 を使用します。
+
+  ![v2v diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 ## <a name="samesub"></a>同じサブスクリプション内にある VNet を接続する方法
 

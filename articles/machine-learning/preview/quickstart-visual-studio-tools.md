@@ -1,6 +1,6 @@
 ---
-title: "Azure の Machine Learning 用 Visual Studio Code ツールに関するクイックスタート記事 | Microsoft Docs"
-description: "この記事では、Machine Learning 用 Visual Studio Code ツールの使用を開始するために、実験の作成、モデルのトレーニング、Web サービスの運用を開始する方法について説明します。"
+title: "Azure の Visual Studio Tools for Machine Learning に関するクイックスタート記事 | Microsoft Docs"
+description: "この記事では、Visual Studio Tools for Machine Learning の使用を開始するために、実験の作成、モデルのトレーニング、Web サービスの運用を開始する方法について説明します。"
 services: machine-learning
 author: ahgyger
 ms.author: ahgyger
@@ -10,72 +10,71 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: get-started-article
-ms.date: 09/12/2017
-ms.openlocfilehash: 400fc384519f2ff5c9bb7d83dab6499f5008a833
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.date: 11/15/2017
+ms.openlocfilehash: 582ec5babf2bac34f20d4e9c7517f78ee2002e0b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI
-Visual Studio Code Tools for AI は、ディープ ラーニングおよび AI ソリューションを構築、テスト、デプロイするための開発拡張機能です。 その重要な特徴として、Azure Machine Learning とのシームレスな統合、特に過去のトレーニングのパフォーマンスとカスタム メトリックの詳細が表示される実行履歴ビューがあります。 サンプル エクスプローラー ビューも用意されています。これを使用すると、[Microsoft Cognitive Toolkit (従来は CNTK と呼ばれていました)](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org)、その他のディープ ラーニング フレームワークで新しいプロジェクトを参照およびブートストラップすることができます。 最後に、コンピューティング ターゲット用のエクスプローラーも用意されています。これにより、Azure Virtual Machines や GPU 搭載の Linux サーバーなどのリモート環境でモデルをトレーニングするためのジョブを送信できます。 
+# <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
+Visual Studio Tools for AI は、ディープ ラーニングおよび AI ソリューションを構築、テスト、デプロイするための開発拡張機能です。 その重要な特徴として、Azure Machine Learning とのシームレスな統合、特に過去のトレーニングのパフォーマンスとカスタム メトリックの詳細が表示される実行履歴ビューがあります。 サンプル エクスプローラー ビューも用意されています。これを使用すると、[Microsoft Cognitive Toolkit (従来は CNTK と呼ばれていました)](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org)、その他のディープ ラーニング フレームワークで新しいプロジェクトを参照およびブートストラップすることができます。 最後に、コンピューティング ターゲット用のエクスプローラーも用意されています。これにより、Azure Virtual Machines や GPU 搭載の Linux サーバーなどのリモート環境でモデルをトレーニングするためのジョブを送信できます。 また、[Azure Batch AI (プレビュー)](https://docs.microsoft.com/en-us/azure/batch-ai/) にも簡単にアクセスできるようになっています。
  
 ## <a name="getting-started"></a>使用の開始 
-操作を開始するには、最初に [Visual Studio Code](https://code.visualstudio.com/Download) をダウンロードしてインストールする必要があります。 Visual Studio Code を開いたら、次の手順を実行します。
-1. アクティビティ バーの拡張機能アイコンをクリックします。 
-2. "Visual Studio Code Tools for AI" を検索します。 
-3. **[インストール]** ボタンをクリックします。 
-4. インストール後、**[再読み込み]** ボタンをクリックします。 
+操作を開始するには、最初に [Visual Studio](https://www.visualstudio.com/downloads/) をダウンロードしてインストールする必要があります。 Visual Studio を開いたら、次の手順を実行します。
+1. Visual Studio のメニュー バーをクリックし、[拡張機能と更新プログラム] を選択します。
+2. [オンライン] タブをクリックし、[Visual Studio Marketplace の検索] を選択します。
+3. 「Visual Studio for AI」を検索します。 
+3. **[ダウンロード]** ボタンをクリックします。 
+4. インストール後、Visual Studio を再起動します。 
 
-Visual Studio Code の再読み込みが完了すると、拡張機能がアクティブになります。 [拡張機能のインストールの詳細についてはこちらを参照してください](https://code.visualstudio.com/docs/editor/extension-gallery)。
+Visual Studio の再読み込みが完了すると、拡張機能がアクティブになります。 [拡張機能の検索の詳細についてはこちらを参照してください](hhttps://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions)。
+
+> [!NOTE]
+> Visual Studio Tools for AI には、Visual Studio 2015 または Visual Studio 2017 (Professional または Enterprise エディション) が必要です。 Apple OSX バージョンはサポートされていません。 
+
 
 ## <a name="exploring-project-samples"></a>プロジェクト サンプルの探索
-Visual Studio Code Tools for AI には、サンプル エクスプローラーが付属しています。 サンプル エクスプローラーを使用すると、数回のクリックでサンプルを簡単に見つけて試すことができます。 エクスプローラーを開くには、次の操作を実行します。   
-1. コマンド パレットを開きます ([表示] > **[コマンド パレット]** または **Ctrl + Shift + P** キー)。
-2. 「AI Sample」と入力します。 
-3. [AI: Open Azure ML Sample Explorer]\(AI: Azure ML サンプル エクスプローラーを開く\) が推奨されるのでこれを選択し、Enter キーを押します。 
+Visual Studio Tools for AI には、サンプル エクスプローラーが付属しています。 サンプル エクスプローラーを使用すると、数回のクリックでサンプルを簡単に見つけて試すことができます。 エクスプローラーを開くには、次のように実行します。   
+1. メニュー バーの **[AI Tools]\(AI ツール\)** をクリックします。
+2. [Azure Machine Learning Gallery]\(Azure Machine Learning ギャラリー\) をクリックします。
 
-または、サンプル エクスプローラーのアイコンをクリックすることもできます。
+タブが開き、Azure ML サンプルがすべて表示されます。
 
 ## <a name="creating-a-new-project-from-the-sample-explorer"></a>サンプル エクスプローラーからの新しいプロジェクトの作成 
-さまざまなサンプルを参照し、その詳細情報を取得できます。 サンプルを参照して "あやめの分類" サンプルを見つけます。 このサンプルに基づいて新しいプロジェクトを作成するには、次の手順を実行します。
-1. プロジェクト サンプルのインストール ボタンをクリックします。表示されるコマンドに従って、新しいプロジェクトの作成手順を実行します。 
-2. プロジェクトの名前を選択します (例: "Iris")。
-3. プロジェクトを作成するフォルダー パスを選択し、Enter キーを押します。 
-4. 既存のワークスペースを選択し、Enter キーを押します。
+さまざまなサンプルを参照し、その詳細情報を取得できます。 サンプルを参照して "あやめの分類" サンプルを見つけます。 このサンプルに基づいて新しいプロジェクトを作成するには、次のように実行します。
+1. プロジェクト サンプルの **[インストール]** ボタンをクリックし、新しいダイアログを開きます。 
+2. リソース グループ、アカウント、ワークスペースを選択します。
+3. プロジェクトの種類は、[全般] のままでかまいません。
+4. プロジェクトのパスと名前を入力し、Enter キーを押します。 
+5. ソリューションを保存するよう求めるダイアログが表示されたら、[保存] をクリックします。 
 
-プロジェクトが作成されます。
+完了すると、Visual Studio の新しいインスタンスで新しいプロジェクトが開きます。 
 
 > [!TIP]
 > Azure リソースにアクセスするには、ログインする必要があります。 埋め込みターミナルで「az login」と入力し、指示に従います。 
 
 ## <a name="submitting-experiment-with-the-new-project"></a>新しいプロジェクトでの実験の送信
-新しいプロジェクトが Visual Studio Code で開かれたら、別のコンピューティング ターゲット (ローカルおよび Docker が動作している VM) にジョブを送信します。
-Visual Studio Code Tools for AI では、複数の方法で実験を送信できます。 
-1. コンテキスト メニュー (右クリック) - **[AI: Submit Job]\(AI: ジョブの送信\)**。
-2. コマンド パレットから: [AI: Submit Job]\(AI: ジョブの送信\)。
-3. または、Azure CLI、Machine Learning コマンド、埋め込みターミナルを使用して、コマンドを直接実行することもできます。
+新しいプロジェクトが Visual Studio で開かれたら、コンピューティング ターゲット (ローカルまたは Docker が動作している VM) にジョブを送信します。
+ジョブを送信するには、次のように実行します。 
+1. ソリューション エクスプローラーから、送信するファイルを右クリックし、**[スタートアップ ファイルとして設定]** を選択します。
+2. プロジェクト名を選択して右クリックし、**[ジョブの送信]** を選択します。
+3. 新しいダイアログが開き、スクリプトを実行するクラスター (またはコンピューティング ターゲット) を選択することができます。
+4. **[送信]** をクリックします。
 
-iris_sklearn.py を開き、右クリックして **[AI: Submit Job]\(AI: ジョブの送信\)** を選択します。
-1. プラットフォームとして、[Azure Machine Learning] を選択します。
-2. 実行構成として、[Docker-Python] を選択します。
-
-> [!NOTE]
-> 初めてジョブを送信する場合は、"No Machine Learning configuration found, creating... (Machine Learning 構成が見つかりません。作成しています...)" というメッセージが表示されます。 JSON ファイルが開いたら保存します (**Ctrl + S**)。
-
-ジョブが送信されると、埋め込みターミナルに実行の進行状況が表示されます。 
+ジョブが送信されると、埋め込みターミナルに実行の進行状況が表示されます。
 
 ## <a name="view-list-of-jobs"></a>ジョブの一覧の表示
-ジョブが送信されると、実行履歴からジョブの一覧を表示できます。
-1. コマンド パレットを開きます ([表示] > **[コマンド パレット]** または **Ctrl + Shift + P** キー)。
-2. 「AI List」と入力します。
-3. [AI: List Jobs]\(AI: ジョブの一覧表示\) が推奨されるのでこれを選択し、Enter キーを押します。
+ジョブの送信後は、実行履歴からジョブの一覧を表示できます。
+1. **サーバー エクスプローラー**で **[AI Tools]\(AI ツール\)** をクリックします。
+2. 次に、**[Azure Machine Learning]** を選択します。
+3. **[ジョブ]** メニューをクリックします。
 
-ジョブ リスト ビューが開き、すべての実行といくつかの関連情報が表示されます。
+ジョブ エクスプローラーに、このプロジェクトに関して送信された実験がすべて一覧表示されます。 
 
 ## <a name="view-job-details"></a>ジョブの詳細を表示する
-開かれたジョブ リスト ビューのリストの最初の実行をクリックします。
-ジョブの結果を詳しく調べるために、先頭の**ジョブ ID** をクリックして詳細情報を表示します。 
+ジョブ エクスプローラー ビューを開いた状態で、一覧の先頭にある実行をクリックします。
+[ジョブの概要] パネルおよび [Logs and Outputs]\(ログと出力\) パネルが読み込まれます。
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
