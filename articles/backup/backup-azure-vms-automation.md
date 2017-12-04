@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/17/2017
+ms.date: 11/28/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6682bf5e4b0b64d5309f939379906efff6e017d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: ddd45dfb1f9e08add7a61a42e4f9b570dc25495d
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>AzureRM.RecoveryServices.Backup コマンドレットを使って仮想マシンをバックアップする
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      Az
 2. Recovery Services コンテナーは Resource Manager リソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、**[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)** コマンドレットを使って新しいリソース グループを作成することもできます。 新しいリソース グループを作成するときは、リソース グループの名前と場所を指定します。  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
+    PS C:\> New-AzureRmResourceGroup -Name "test-rg" -Location "West US"
     ```
 3. **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)** コマンドレットを使用して Recovery Services コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定してください。
 
@@ -116,7 +116,7 @@ Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      Az
 4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) を使用できます。 次に示す例では、testvault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testvault"
+    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault -Name "testvault"
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
@@ -290,8 +290,8 @@ VM の復元に Azure ポータルを使用した場合と PowerShell を使用�
 バックアップする正しいアイテムを特定する PowerShell オブジェクトを取得するには、資格情報コンテナー内のコンテナーから開始し、オブジェクト階層の上から下に進みます。 VM を表すコンテナーを選択するには、**[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** コマンドレットを使用し、**[Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** コマンドレットへのパイプとして使用します。
 
 ```
-PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" –Status "Registered" -FriendlyName "V2VM"
-PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem –Container $namedContainer  –WorkloadType "AzureVM"
+PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
+PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
 ### <a name="choose-a-recovery-point"></a>復元ポイントの選択
@@ -525,8 +525,8 @@ Azure VM バックアップからファイルを復元する基本的な手順�
 バックアップする正しいアイテムを特定する PowerShell オブジェクトを取得するには、資格情報コンテナー内のコンテナーから開始し、オブジェクト階層の上から下に進みます。 VM を表すコンテナーを選択するには、**[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)** コマンドレットを使用し、**[Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** コマンドレットへのパイプとして使用します。
 
 ```
-PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" –Status "Registered" -FriendlyName "V2VM"
-PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem –Container $namedContainer  –WorkloadType "AzureVM"
+PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
+PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
 ### <a name="choose-a-recovery-point"></a>復元ポイントの選択
