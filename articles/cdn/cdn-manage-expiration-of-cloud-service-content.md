@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: 87d65479960cd6b5977fd7ac31cbb71afc0959e2
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: fe519c3ad5f99899277bf005929142c52a4c4724
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Azure Content Delivery Network で Web コンテンツの有効期限を管理する
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/16/2017
 パブリックにアクセス可能な任意の配信元 Web サーバーのファイルは、それらの有効期間 (TTL) が経過するまで、Azure Content Delivery Network (CDN) でキャッシュできます。 TTL は、配信元サーバーからの HTTP 応答の `Cache-Control` ヘッダーによって決まります。 この記事では、Microsoft Azure App Service、Azure Cloud Services、ASP.NET アプリケーション、およびインターネット インフォメーション サービス (IIS) サイトでの Web Apps 機能の `Cache-Control` ヘッダーを設定する方法について説明します。これらはすべて同様に構成されます。 `Cache-Control` ヘッダーを設定するには、構成ファイルを使用するか、プログラムを使用します。
 
 > [!TIP]
-> ファイルに TTL を設定しないことも選択できます。 その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。
+> ファイルに TTL を設定しないことも選択できます。 その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。 この既定の TTL は、一般的な Web 配信の最適化に対してのみ適用されます。 大きなファイルの最適化に対する既定の TTL は 1 日、メディア ストリーミングの最適化に対する既定の TTL は 1 年です。
 > 
 > ファイルとその他のリソースへのアクセスを高速化する Azure CDN のしくみについて詳しくは、「[Azure Content Delivery Network (CDN) の概要](cdn-overview.md)」をご覧ください。
 > 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: f9631e8a383b88421c55d9c42c8059df9e732800
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa98672551a2089f1a306c838295dd1980da0bca
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -94,6 +94,9 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 | --- | --- | --- |
 | 403 |許可されていません |要求された URL に対してプロキシが開かれていません。 プロキシ構成を再検討し、 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) が開かれていることを確認してください。 |
 | 407 |プロキシの認証が必要です |プロキシ サーバーがサインイン情報を要求しましたが、何も指定されていません。 お使いのプロキシ サーバーで認証が必要な場合は、その設定が machine.config ファイル内で構成されているようにしてください。また、ウィザードを実行しているユーザーおよびサービス アカウントにドメイン アカウントを使用していることを確認してください。 |
+
+### <a name="proxy-idle-timeout-setting"></a>プロキシ アイドル タイムアウトの設定
+Azure AD Connect が Azure AD にエクスポート要求を送信すると、Azure AD は要求を処理して応答を生成するまでに、最大で 5 分かかります。 大きなグループ メンバーシップを持つグループ オブジェクトが同じエクスポート要求に多数含まれる場合、発生する可能性が特に高くなります。 プロキシ アイドル タイムアウトを、5 分より長く構成してください。 そうしないと、Azure AD Connect サーバーで Azure AD との接続の問題が断続的に発生する場合があります。
 
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect と Azure AD の間の通信パターン
 以上の手順をすべて実行しても接続できない場合は、その時点でネットワーク ログを確認することをお勧めします。 このセクションでは、通常の成功を示す接続パターンについて記載しています。 また、ネットワーク ログを確認するときに無視できる情報についても一覧にまとめています。

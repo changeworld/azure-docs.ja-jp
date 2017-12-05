@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: c1b832895476e2f64bbae638db76f89890e5c804
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 5369946b1e8a4851ee940cf6fe91a1bdb94db5f3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -58,7 +58,7 @@ App Service プランを作成するには、**[+ 新規作成]** をクリッ�
 
 **[App Service プランの変更]** で **[App Service プラン]** セレクターが表示されます。 このアプリの移動先の既存プランを選びます。 
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > **[Select App Service plan]\(App Service プランの選択\)** ページは、次の条件でフィルター処理されます。 
 > - 同じリソース グループに存在する 
 > - 同じ地理的リージョンに存在する 
@@ -82,7 +82,7 @@ App Service プランを作成するには、**[+ 新規作成]** をクリッ�
 
 ## <a name="scale-an-app-service-plan"></a>App Service プランのスケーリング
 
-App Service プランの価格レベルをスケールアップする方法については、「[Azure でのアプリのスケールアップ](web-sites-scale.md)」をご覧ください。
+App Service プランの価格レベルをスケールアップする方法については、「[Azure でのアプリのスケールアップ](web-sites-scale.md)」を参照してください。
 
 アプリのインスタンスの数をスケールアウトする方法については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」をご覧ください。
 

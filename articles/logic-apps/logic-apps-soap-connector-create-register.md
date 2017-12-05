@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2d4d009dfc4d43ccc3c69bb3da15ca2c478b9efe
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0323b0f7ee03dce209d5a71c6711988a34ba7633
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-and-register-soap-connectors-in-azure-logic-apps"></a>Azure Logic Apps で SOAP コネクタを作成および登録する
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/31/2017
    Azure がコネクタをデプロイした後、ロジック アプリ コネクタ メニューが自動的に開きます。 
    開かない場合は、Azure ダッシュボードから SOAP コネクタを選びます。
 
-## <a name="2-define-your-connector"></a>2.コネクタを定義する
+## <a name="2-define-your-connector"></a>手順 2.コネクタを定義する
 
 次に、コネクタを作成するための WSDL ファイルまたは URL、コネクタが使用する認証、SOAP コネクタが提供するアクションおよびトリガーを指定します。
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/31/2017
 
       ![API の WSDL ファイルを提供する](./media/logic-apps-soap-connector-create-register/provide-wsdl-file.png)
 
-      | オプション | 形式 |Description | 
+      | オプション | 形式 |説明 | 
       | ------ | ------ | ----------- | 
       | **ファイルからの WSDL のアップロード** | *WSDL ファイル* | WSDL ファイルの場所を参照して、ファイルを選びます。 | 
       | **URL からの WSDL のアップロード** | http://*path-to-wsdl-file* | サービスの WSDL ファイルの URL を提供します。 | 
@@ -95,7 +95,7 @@ ms.lasthandoff: 10/31/2017
 
       ![コネクタの詳細](./media/logic-apps-soap-connector-create-register/add-general-details.png)
 
-      | オプションまたは設定 | 形式 | Description | 
+      | オプションまたは設定 | 形式 | 説明 | 
       | ----------------- | ------ | ----------- | 
       | **アップロード アイコン** | <*1 MB 以下の PNG または JPG ファイル*> | コネクタを表すアイコン <p>色: できれば、白いロゴとカラーの背景。 <p>寸法: 230 ピクセルの四角形の中に 160 ピクセル以下のロゴ | 
       | **アイコンの背景色** | <*アイコンのブランドの色の 16 進数コード*> | <p>アイコン ファイルの背景色に一致するアイコンの背景色。 <p>形式: 16 進数。 例: #007ee5 は青を表します。 | 
@@ -130,7 +130,7 @@ ms.lasthandoff: 10/31/2017
 2. 既存のアクションとトリガーを編集するか、新しいアクションとトリガーを追加する必要がある場合は、[以下の手順に進みます](logic-apps-custom-connector-register.md#add-action-or-trigger)。
 
 
-## <a name="3-finish-creating-your-connector"></a>3.コネクタの作成を完了する
+## <a name="3-finish-creating-your-connector"></a>手順 3.コネクタの作成を完了する
 
 準備ができたら、**[コネクタの更新]** を選んでコネクタをデプロイできるようにします。 
 
@@ -149,6 +149,12 @@ ms.lasthandoff: 10/31/2017
 これらの境界の外側の外部ユーザー (たとえば、すべての Logic Apps ユーザー) とコネクタを共有するには、[Microsoft の認定を受けるためにコネクタを提出](../logic-apps/custom-connector-submit-certification.md)します。
 
 ## <a name="faq"></a>FAQ
+
+**Q:** SOAP コネクタは一般公開 (GA) されていますか。 </br>
+**A:** SOAP コネクタは**プレビュー**段階であり、まだ GA サービスではありません。
+
+**Q:** SOAP コネクタに制限や既知の問題は何かありますか。 </br>
+**A:** はい。[SOAP コネクタの制限と既知の問題](../api-management/api-management-api-import-restrictions.md#wsdl)に関するページを参照してください。
 
 **Q:** カスタム コネクタには制限が何かありますか。 </br>
 **A:** はい。[カスタム コネクタの制限についてはこちら](../logic-apps/logic-apps-limits-and-config.md#custom-connector-limits)をご覧ください。

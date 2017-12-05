@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/26/2017
+ms.date: 11/21/2017
 ms.author: asgang
-ms.openlocfilehash: 6ebec2e06566b1e2d6834fdd81c0d8b2801b80b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a8cd09731ccdf7ad7385f7e707125c3902ebdf2
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="troubleshoot-on-premises-vmwarephysical-server-replication-issues"></a>オンプレミス VMware/物理サーバーのレプリケーションに関する問題のトラブルシューティング
 VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使用して保護する際に、特定のエラー メッセージが表示される場合があります。 この記事では、よく発生するエラー メッセージのいくつかと、それを解決するためのトラブルシューティング手順について詳しく説明します。
@@ -26,11 +26,11 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 ## <a name="initial-replication-is-stuck-at-0"></a>初期レプリケーションが 0% で停止している
 サポートで検出される初期レプリケーション エラーのほとんどは、ソース サーバーとプロセス サーバー間またはプロセス サーバーと Azure 間の接続問題によるものです。
-ほとんどの場合、以下に示す手順に従うことで、お客様自身でこれらの問題をトラブルシューティングできます。
+ほとんどの場合、以下に示す手順に従うことで、これらの問題をトラブルシューティングできます。
 
 ###<a name="check-the-following-on-source-machine"></a>ソース マシンで次のことを確認する
 * ソース サーバー マシンのコマンド ラインから、Telnet を使用して、次のように https ポート (既定値は 9443) を指定してプロセス サーバーを ping し、ネットワーク接続の問題であるか、ファイアウォールのポート ブロックの問題であるかを確認します。
-     
+
     `telnet <PS IP address> <port>`
 > [!NOTE]
     > 接続をテストする場合は、PING ではなく、Telnet を使用してください。  Telnet がインストールされていない場合は、[こちら](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx)に示されている手順に従ってください。
@@ -38,12 +38,12 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 接続できない場合は、プロセス サーバーの受信ポート 9443 を許可し、問題がまだ発生するかどうかを確認します。 場合によっては、プロセス サーバーが DMZ の背後にあることが原因で、この問題が発生します。
 
 * サービス (`InMage Scout VX Agent – Sentinel/OutpostStart`) の状態を調べ、実行されていないかどうかを確認し、問題がまだ発生するかどうかを確認します。   
- 
+
 ###<a name="check-the-following-on-process-server"></a>プロセス サーバーで次のことを確認する
 
-* **プロセス サーバーが Azure にデータをアクティブにプッシュしているかどうかを確認する** 
+* **プロセス サーバーが Azure にデータをアクティブにプッシュしているかどうかを確認する**
 
-プロセス サーバー マシンから、タスク マネージャーを開きます (Ctrl-Shift-Esc キーを押す)。 [パフォーマンス] タブに移動し、[リソース モニターを開く] リンクをクリックします。 リソース マネージャーから、[ネットワーク] タブに移動します。[ネットワーク活動のプロセス] で cbengine.exe がアクティブに大量 (MB 単位) のデータを送信しているかどうかを確認します。
+プロセス サーバー マシンから、タスク マネージャーを開きます (Ctrl + Shift + Esc キーを押します)。 [パフォーマンス] タブに移動し、[リソース モニターを開く] リンクをクリックします。 リソース マネージャーから、[ネットワーク] タブに移動します。[ネットワーク活動のプロセス] で cbengine.exe がアクティブに大量 (MB 単位) のデータを送信しているかどうかを確認します。
 
 ![Enable replication](./media/site-recovery-protection-common-errors/cbengine.png)
 
@@ -60,12 +60,12 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
      * Microsoft Azure Recovery Services Agent
      * Microsoft Azure Site Recovery Service
      * tmansvc
-     * 
+     *
 実行されていないサービスを開始 (再始動) し、問題がまだ発生するかどうかを確認します。
 
 * **プロセス サーバーがポート 443 を使用して Azure のパブリック IP アドレスに接続できることを確認する**
 
-`%programfiles%\Microsoft Azure Recovery Services Agent\Temp` から最新の CBEngineCurr.errlog を開き、:443 と connection attempt failed を探します。
+`%programfiles%\Microsoft Azure Recovery Services Agent\Temp` から最新の CBEngineCurr.errlog を開き、443 と connection attempt failed を探します。
 
 ![Enable replication](./media/site-recovery-protection-common-errors/logdetails1.png)
 
@@ -75,10 +75,10 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 接続できない場合は、次の手順に従って、アクセスの問題がファイアウォールまたはプロキシによるものであるかを確認します。
 
 
-* **プロセス サーバーの IP アドレスベースのファイアウォールがアクセスをブロックしていないかどうかを確認する**: サーバーで IP アドレスベースのファイアウォール ルールを使用している場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=41653)から Microsoft Azure データセンターの IP 範囲の完全なリストをダウンロードしてファイアウォール構成に追加し、Azure (および HTTP (443) ポート) との通信が許可されていることを確認します。  ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
+* **プロセス サーバーの IP アドレスベースのファイアウォールがアクセスをブロックしていないかどうかを確認する**: サーバーで IP アドレスベースのファイアウォール ルールを使用している場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=41653)から Microsoft Azure データセンターの IP 範囲の完全なリストをダウンロードしてファイアウォール構成に追加し、Azure (および HTTPS (443) ポート) との通信が許可されていることを確認します。  ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
 
-* **プロセス サーバーの URL ベースのファイアウォールがアクセスをブロックしていないかどうかを確認**: サーバーで URL ベースのファイアウォール ルールを使用している場合は、以下の URL がファイアウォール構成に追加されていることを確認します。 
-     
+* **プロセス サーバーの URL ベースのファイアウォールがアクセスをブロックしていないかどうかを確認**: サーバーで URL ベースのファイアウォール ルールを使用している場合は、以下の URL がファイアウォール構成に追加されていることを確認します。
+
   `*.accesscontrol.windows.net:` アクセス制御と ID 管理に使用
 
   `*.backup.windowsazure.com:` レプリケーション データの転送とオーケストレーションに使用
@@ -97,7 +97,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 `* .ugi.hypervrecoverymanager.windowsazure.us`
 
-`* .ugi.backup.windowsazure.us` 
+`* .ugi.backup.windowsazure.us`
 
 * **プロセス サーバーのプロキシ設定がアクセスをブロックしていないかどうかを確認**:   プロキシ サーバーを使用している場合は、DNS サーバーでプロキシ サーバー名が解決されていることを確認します。
 構成サーバーのセットアップ時に指定した内容を確認するには、 レジストリ キーに移動します。
@@ -105,7 +105,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
     `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings`
 
 ここで、データを送信するために Azure Site Recovery エージェントで同じ設定が使用されていることを確認します。
-Microsoft Azure Backup を検索します。 
+Microsoft Azure Backup を検索します。
 
 ![Enable replication](./media/site-recovery-protection-common-errors/mab.png)
 
@@ -116,4 +116,4 @@ Microsoft Azure Backup を検索します。
 * **プロセス サーバーでスロットルの帯域幅が制限されていないかどうかを確認**: 帯域幅を増やし、問題がまだ発生するかどうかを確認します。
 
 ##<a name="next-steps"></a>次のステップ
-さらに支援が必要な場合は、[ASR フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)にクエリを投稿してください。 弊社のアクティブなコミュニティを通じて、エンジニアがサポートいたします。
+さらに支援が必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)にクエリを投稿してください。 弊社のアクティブなコミュニティを通じて、エンジニアがサポートいたします。
