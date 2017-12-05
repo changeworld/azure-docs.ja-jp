@@ -29,6 +29,8 @@
       href: how-to-manage-account-keys.md
     - name: マップ コントロールの使用方法
       href: how-to-use-map-control.md
+    - name: アドレスの検索方法
+      href: how-to-search-for-address.md
 - name: リファレンス
   items:
     - name: Azure IoT デベロッパー センター

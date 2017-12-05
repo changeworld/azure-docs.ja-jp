@@ -31,6 +31,8 @@
 ### [U-SQL Cognitive 拡張機能](data-lake-analytics-u-sql-cognitive.md)
 ### [Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)
 ### [Visual Studio Code 用の U-SQL カスタム コード](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
+### [Visual Studio Code での U-SQL](data-lake-analytics-data-lake-tools-for-vscode.md)
+### [U-SQL データベースのエクスポート](data-lake-analytics-data-lake-tools-export-database.md)
 
 ## U-SQL プログラムのデバッグ
 ### [ジョブの監視およびトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

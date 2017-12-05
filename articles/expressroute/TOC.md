@@ -58,6 +58,7 @@
 
 ## トラブルシューティング
 ### [ExpressRoute 接続の確認](expressroute-troubleshooting-expressroute-overview.md)
+### [失敗した回線のリセット](reset-circuit.md)
 ### [ARP テーブルの取得](expressroute-troubleshooting-arp-resource-manager.md)
 ### [ARP テーブルの取得 (クラシック)](expressroute-troubleshooting-arp-classic.md)
 

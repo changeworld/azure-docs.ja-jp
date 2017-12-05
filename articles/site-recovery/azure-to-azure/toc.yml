@@ -1,0 +1,113 @@
+- name: Site Recovery のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Site Recovery とは
+      href: ../site-recovery-overview.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Azure VM をセカンダリ リージョンにレプリケートする
+      href: azure-to-azure-quickstart.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: ディザスター リカバリーを設定する
+      href: azure-to-azure-tutorial-enable-replication.md
+    - name: ディザスター リカバリー訓練を実行する
+      href: azure-to-azure-tutorial-dr-drill.md
+    - name: フェールオーバーとフェールバックを実行する
+      href: azure-to-azure-tutorial-failover-failback.md
+- name: 概念
+  items:
+    - name: Azure から Azure へのアーキテクチャ
+      href: concepts-azure-to-azure-architecture.md
+    - name: Azure から Azure へのサポート マトリックス
+      href: site-recovery-support-matrix-azure-to-azure.md
+    - name: ロールベースのアクセス許可
+      href: ../site-recovery-role-based-linked-access-control.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+    - name: FAQ
+      href: ../site-recovery-faq.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+- name: ハウツー ガイド
+  items:
+    - name: ネットワーク
+      items:
+        - name: Azure VM ディザスター リカバリーのネットワークを設定する
+          href: site-recovery-azure-to-azure-networking-guidance.md
+        - name: Azure VM ディザスター リカバリーのネットワーク マッピングを設定する
+          href: site-recovery-network-mapping-azure-to-azure.md
+    - name: 構成
+      items:
+        - name: Azure リージョン間のレプリケーションを有効にする
+          href: site-recovery-replicate-azure-to-azure.md
+    - name: フェールオーバーとフェールバック
+      items:
+        - name: 復旧計画を設定する
+          href: ../site-recovery-create-recovery-plans.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: 復旧計画に Azure Runbook を追加する
+          href: ../site-recovery-runbook-automation.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: フェールオーバー後にマシンを再保護する
+          href: site-recovery-how-to-reprotect-azure-to-azure.md
+    - name: 移行
+      items:
+        - name: Azure VM を別の Azure リージョンに移行する
+          href: ../site-recovery-migrate-azure-to-azure.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: 移行後にマシンを別の Azure リージョンにレプリケートする
+          href: ../site-recovery-azure-to-azure-after-migration.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+    - name: ワークロード
+      items:
+        - name: Active Directory と DNS
+          href: ../site-recovery-active-directory.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: SQL Server のレプリケート
+          href: ../site-recovery-sql.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: SharePoint
+          href: ../site-recovery-sharepoint.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: Dynamics AX
+          href: ../site-recovery-dynamicsax.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: RDS
+          href: '../site-recovery-workload.md#protect-rds?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json'
+        - name: Exchange
+          href: '../site-recovery-workload.md#protect-exchange?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json'
+        - name: SAP
+          href: ../site-recovery-sap.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: ファイル サーバー
+          href: ../file-server-disaster-recovery.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: IIS ベースの Web アプリケーション
+          href: ../site-recovery-iis.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: Citrix XenApp と XenDesktop
+          href: ../site-recovery-citrix-xenapp-and-xendesktop.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+        - name: その他のワークロード
+          href: '../site-recovery-workload.md#workload-summary?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json'
+    - name: 管理
+      items:
+        - name: サーバーの削除と保護の無効化
+          href: ../site-recovery-manage-registration-and-protection.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.jsos
+        - name: コンテナーの削除
+          href: ../delete-vault.md?toc=%2fazure%2fsite-recovery%2fazure-to-azure%2ftoc.json
+    - name: トラブルシューティング
+      items:
+        - name: Azure から Azure へのレプリケーションの問題
+          href: site-recovery-azure-to-azure-troubleshoot-errors.md
+- name: リファレンス
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.siterecovery
+    - name: Azure PowerShell クラシック
+      href: /powershell/module/azure/?view=azuresmps-3.7.0
+    - name: REST ()
+      href: 'https://msdn.microsoft.com/library/mt750497'
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: ブログ
+      href: 'http://azure.microsoft.com/blog/tag/azure-site-recovery/'
+    - name: フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr'
+    - name: ラーニング パス
+      href: 'https://azure.microsoft.com/documentation/learning-paths/site-recovery/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/site-recovery/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=site-recovery'

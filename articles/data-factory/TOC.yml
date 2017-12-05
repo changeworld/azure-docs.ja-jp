@@ -4,6 +4,8 @@
   items:
     - name: Data Factory の概要
       href: introduction.md
+    - name: バージョン 1 と 2 の比較
+      href: compare-versions.md
 - name: クイック スタート
   expanded: true
   items:
@@ -19,6 +21,8 @@
           href: quickstart-create-data-factory-rest-api.md
         - name: ポータル
           href: quickstart-create-data-factory-portal.md
+        - name: Resource Manager テンプレート
+          href: quickstart-create-data-factory-resource-manager-template.md
 - name: Tutorials (チュートリアル)
   items:
     - name: 1 - SSIS パッケージを Azure にデプロイする

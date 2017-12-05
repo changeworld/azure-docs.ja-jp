@@ -133,6 +133,7 @@
 ## [サイバーセキュリティに関する相談](azure-security-cyber-services.md)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Azure Marketplace イメージのセキュリティに関する推奨事項](security-recommendations-azure-marketplace-images.md)
+## [セキュリティ イベント サポート チケットをログに記録する方法](azure-security-event-support-ticket.md)
 ## シナリオ
 ### [Azure で個人データを管理する](manage-personal-data-azure.md)
 ### [Azure で個人データを検出、特定、分類する](how-to-discover-classify-personal-data-azure.md)

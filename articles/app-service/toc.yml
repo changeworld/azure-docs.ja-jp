@@ -127,6 +127,8 @@
               href: app-service-mobile-how-to-configure-twitter-authentication.md
         - name: 管理対象のサービス ID の使用
           href: app-service-managed-service-identity.md
+        - name: アプリケーション コードでの SSL 証明書の使用
+          href: app-service-web-ssl-cert-load.md
         - name: TLS 相互認証の構成
           href: app-service-web-configure-tls-mutual-auth.md
     - name: アプリのスケール

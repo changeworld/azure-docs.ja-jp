@@ -29,14 +29,18 @@
       href: project-ic-tasks.md
 - name: プロジェクト構造
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
-- name: プロジェクトの計画と実行
+- name: プロジェクトの計画
+  href: team-data-science-process-project-templates.md
+- name: プロジェクトの実行
   items:
-    - name: プロジェクトの計画
-      href: team-data-science-process-project-templates.md
-    - name: プロジェクトの実行
-      items:
-        - name: データ サイエンス プロジェクト
-          href: project-execution.md
+    - name: アジャイル開発
+      href: agile-development.md
+    - name: Git を使用した共同コーディング
+      href: collaborative-coding-with-git.md
+    - name: データ サイエンス タスクの実行
+      href: execute-data-science-tasks.md
+    - name: 進捗状況の追跡
+      href: track-progress.md
 - name: 例
   href: walkthroughs.md
   items:
@@ -52,12 +56,12 @@
     - name: PySpark と Scala を使用した Spark
       href: walkthroughs-spark.md
       items:
-        - name: データを調査する
+        - name: データの探索とモデリング
           href: spark-data-exploration-modeling.md
+        - name: 高度なデータ探索とモデリング
+          href: spark-advanced-data-exploration-modeling.md
         - name: モデルにスコアを付ける
           href: spark-model-consumption.md
-        - name: 高度なデータの探索
-          href: spark-advanced-data-exploration-modeling.md
     - name: HDInsight Hadoop での Hive の使用
       href: walkthroughs-hdinsight-hadoop.md
     - name: Azure Data Lake での U-SQL の使用
@@ -136,7 +140,8 @@
             - name: AzCopy を使用する
               href: move-data-to-azure-blob-using-azcopy.md
             - name: Python の使用
-              href: move-data-to-azure-blob-using-python.md
+              href: ../../storage/blobs/storage-python-how-to-use-blob-storage.md
+              maintainContext: true
             - name: SSIS を使用する
               href: move-data-to-azure-blob-using-ssis.md
             - name: VM に移動する
@@ -211,14 +216,8 @@
             - name: アルゴリズム チート シート
               href: ../studio/algorithm-cheat-sheet.md
               maintainContext: true
-    - name: モデルをデプロイする
-      items:
-        - name: Web サービスを利用する
-          href: ../studio/publish-a-machine-learning-web-service.md
-          maintainContext: true
-        - name: Web サービスを使用する
-          href: ../studio/consume-web-services.md
-          maintainContext: true
+    - name: 運用環境でのモデルのデプロイ
+      href: deploy-models-in-production.md
 - name: 関連項目
   items:
     - name: Microsoft Cognitive Toolkit - CNTK

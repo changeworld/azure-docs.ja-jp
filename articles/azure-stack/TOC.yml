@@ -213,6 +213,10 @@
           items:
             - name: VPN を使用した接続
               href: azure-stack-connect-vpn.md
+            - name: VPN ゲートウェイについて
+              href: azure-stack-vpn-gateway-about-vpn-gateways.md
+            - name: VPN ゲートウェイの設定
+              href: azure-stack-vpn-gateway-settings.md
             - name: ExpressRoute を使用した接続
               href: azure-stack-connect-expressroute.md
     - name: トラブルシューティング

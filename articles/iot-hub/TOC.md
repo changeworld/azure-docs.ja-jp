@@ -70,9 +70,10 @@
 ### [C 用 Azure IoT device SDK の使用](iot-hub-device-sdk-c-intro.md)
 #### [IoTHubClient の使用](iot-hub-device-sdk-c-iothubclient.md)
 #### [シリアライザーの使用](iot-hub-device-sdk-c-serializer.md)
-### デバイスからクラウドへのメッセージの処理
+### メッセージのルーティング
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
+#### [Node.JS](iot-hub-node-node-process-d2c.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)

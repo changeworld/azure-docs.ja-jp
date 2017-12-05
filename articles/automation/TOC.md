@@ -70,6 +70,7 @@
 ### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
 ### [Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする](automation-deploy-template-runbook.md)
 ## 解決方法
+### [更新および変更の追跡のオンボード](automation-onboard-solutions.md)
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
 #### [複数の VM の更新プログラムの管理](manage-update-multi.md)
 #### [SCCM と OMS Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)

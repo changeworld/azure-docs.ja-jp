@@ -59,6 +59,8 @@
       href: /powershell/module/azurerm.containerregistry
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.containerregistry/registries
+    - name: webhook スキーマ
+      href: container-registry-webhook-reference.md
 - name: リソース
   items:
     - name: 利用可能なリージョン
