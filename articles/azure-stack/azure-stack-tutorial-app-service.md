@@ -1,6 +1,6 @@
 ---
-title: "Web、モバイル、および API アプリを Azure Stack ユーザーから使用可能にする | Microsoft Docs"
-description: "App Service リソース プロバイダーをインストールし、Azure Stack ユーザーが Web、モバイル、および API アプリを作成できるようにするオファーを作成するためのチュートリアル。"
+title: "Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする | Microsoft Docs"
+description: "App Service リソース プロバイダーをインストールし、Azure Stack ユーザーが Web アプリおよび API アプリを作成できるようにするプランを作成するためのチュートリアル。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42d94eea8b9e4db611b821cd84e7d02f1d226293
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
-# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Web、モバイル、および API アプリを Azure Stack ユーザーから使用可能にする
+# <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする
 
-Azure Stack クラウド管理者として、ユーザー (テナント) が Azure Functions や Web、モバイル、および API アプリケーションを作成できるようにするオファーを作成できます。 これらのオンデマンドで、クラウド ベースのアプリへのアクセスをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。 これを設定するには、次のことを行います。
+Azure Stack クラウド管理者は、ユーザー (テナント) が Azure Functions、Web アプリケーション、API アプリケーションを作成できるようにするプランを作成できます。 これらのオンデマンドで、クラウド ベースのアプリへのアクセスをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。 これを設定するには、次のことを行います。
 
 > [!div class="checklist"]
 > * App Service リソース プロバイダーをデプロイする
@@ -43,7 +43,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が Azu
 例として、ユーザーが DNN Web コンテンツ管理システムを作成できるようにするオファーを作成できます。 それには、SQL Server リソース プロバイダーをインストールすることによって既に有効にしている SQL Server サービスが必要です。
 
 1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *AppServiceQuota* という名前を付けます。 **[Namespace] (名前空間)** フィールドの **[Microsoft.Web]** を選択します。
-2.  [プランを作成します](azure-stack-create-plan.md)。 それに *TestAppServicePlan* という名前を付け、**[Microsoft.SQL]** サービスおよび **[AppService Quota] (AppService クォータ)** クォータを選択します。
+2.  [プランを作成します](azure-stack-create-plan.md)。 *TestAppServicePlan* という名前を付け、**[Microsoft.SQL]** サービスと **[AppService Quota]\(AppService クォータ\)** クォータを選択します。
 
     > [!NOTE]
     > ユーザーが他のアプリを作成できるようにするには、プランに他のサービスが必要になることがあります。 たとえば、Azure Functions ではプランに **Microsoft.Storage** サービスが含まれている必要があるのに対して、Wordpress には **Microsoft.MySQL** が必要です。

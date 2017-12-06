@@ -63,7 +63,7 @@
 ### [X12 のエンタープライズ統合](logic-apps-enterprise-integration-x12.md)
 ### [X12 のエンコード](logic-apps-enterprise-integration-x12-encode.md)
 ### [X12 のデコード](logic-apps-enterprise-integration-x12-decode.md)
-### [障害復旧](logic-apps-enterprise-integration-b2b-business-continuity.md)
+### [ディザスター リカバリー ](logic-apps-enterprise-integration-b2b-business-continuity.md)
 ### [エラーと解決策](logic-apps-enterprise-integration-b2b-list-errors-solutions.md)
 
 ## オンプレミスのデータへのアクセス
@@ -139,7 +139,7 @@
 ### [スケジュール](../connectors/connectors-native-recurrence.md)
 ### [Service Bus](../connectors/connectors-create-api-servicebus.md)
 ### [SharePoint Online](../connectors/connectors-create-api-sharepointonline.md)
-### [SharePoint Server](../connectors/connectors-create-api-sharepointonline.md)
+### [SharePoint Server](../connectors/connectors-create-api-sharepointserver.md)
 ### [SQL Server](../connectors/connectors-create-api-sqlazure.md)
 ### [XML を変換する](logic-apps-enterprise-integration-transform.md)
 ### [Twitter](../connectors/connectors-create-api-twitter.md)

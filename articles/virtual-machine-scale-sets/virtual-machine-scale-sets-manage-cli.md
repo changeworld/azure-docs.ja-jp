@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 2348db8f19391292f79608092a3c2482216493c6
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5686d8bd3f9817be2308583afe778e0615154580
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用した仮想マシン スケール セットの管理
-仮想マシン スケール セットのライフサイクルを通じて、1 つ以上の管理タスクを実行する必要がある場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI 2.0 コマンドの一部について説明します。
+仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI 2.0 コマンドの一部について説明します。
 
 これらの管理タスクを実行するには、最新の Azure CLI 2.0 ビルドが必要です。 最新バージョンをインストールして使用する方法については、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure Portal でスケール セットを作成](virtual-machine-scale-sets-portal-create.md)できます。
 
 
 ## <a name="view-information-about-a-scale-set"></a>スケール セットに関する情報を表示する
-スケール セットに関する全体的な情報を表示するには、[az vmss show](/cli/azure/vmss#show) を使用します。 次の例を実行すると、*myResourceGroup* リソース グループ内の *myScaleSet* という名前のスケール セットに関する情報を取得できます。 実際の名前を次のように入力してください。
+スケール セットに関する全体的な情報を表示するには、[az vmss show](/cli/azure/vmss#show) を使用します。 次の例を実行すると、*myResourceGroup* リソース グループ内の *myScaleSet* という名前のスケール セットに関する情報を取得できます。 独自の名前を次のように入力します。
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -36,7 +36,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>スケール セットの VM を表示する
-スケール セット内の VM インスタンスの一覧を表示するには、[az vmss list-instances](/cli/azure/vmss#list-instances) を使用します。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のすべての VM インスタンスを一覧表示できます。 これらの名前に実際の値を入力してください。
+スケール セット内の VM インスタンスの一覧を表示するには、[az vmss list-instances](/cli/azure/vmss#list-instances) を使用します。 次の例では、*myResourceGroup* リソース グループの *myScaleSet* という名前のスケール セットのすべての VM インスタンスを一覧表示します。 これらの名前には独自の値を指定します。
 
 ```azurecli
 az vmss list-instances \
@@ -56,7 +56,7 @@ az vmss get-instance-view \
 
 
 ## <a name="list-connection-information-for-vms"></a>VM の接続情報を一覧表示する
-スケール セット内の VM に接続するには、割り当てられたパブリック IP アドレスとポート番号に SSH または RDP を使用して接続します。 既定では、リモート接続トラフィックを各 VM に転送する Azure ロード バランサーに NAT (Network Address Translation) 規則が追加されます。 スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示するには、[az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info) を使用します。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンスの接続情報を一覧表示できます。 これらの名前に実際の値を入力してください。
+スケール セット内の VM に接続するには、割り当てられたパブリック IP アドレスとポート番号に SSH または RDP を使用して接続します。 既定では、リモート接続トラフィックを各 VM に転送する Azure ロード バランサーに NAT (Network Address Translation) 規則が追加されます。 スケール セット内の VM インスタンスに接続するためのアドレスとポートを一覧表示するには、[az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info) を使用します。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンスの接続情報を一覧表示できます。 これらの名前には独自の値を指定します。
 
 ```azurecli
 az vmss list-instance-connection-info \
@@ -66,7 +66,7 @@ az vmss list-instance-connection-info \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
-前述のコマンドでは、スケール セットと VM インスタンスに関する情報が表示されました。 スケール セット内のインスタンスの数を増減するには、容量を変更します。 スケール セットでは、必要な数の VM を作成または削除した後、アプリケーション トラフィックを受信するように VM を構成します。
+前のコマンドでは、スケール セットと VM インスタンスに関する情報を表示しました。 スケール セット内のインスタンスの数を増減するには、容量を変更します。 スケール セットでは、必要な数の VM を作成または削除した後、アプリケーション トラフィックを受信するように VM を構成します。
 
 現時点でスケール セットに存在するインスタンスの数を確認するには、[az vmss show](/cli/azure/vmss#show) と *sku.capacity* に対するクエリを使います。
 
@@ -87,7 +87,7 @@ az vmss scale \
     --new-capacity 5
 ```
 
-スケール セットの容量を更新するには数分かかります。 スケール セットの容量を減らした場合、インスタンス ID が最も大きい VM が最初に削除されます。
+スケール セットの容量を更新するには数分かかります。 スケール セットの容量を減らした場合は、最も大きなインスタンス ID を持つ VM が最初に削除されます。
 
 
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>スケール セット内の VM を停止および起動する
@@ -109,7 +109,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 ### <a name="start-vms-in-a-scale-set"></a>スケール セット内の VM を起動する
 スケール セット内の 1 つ以上の VM を起動するには、[az vmss start](/cli/azure/vmss#start) を使用します。 `--instance-ids` パラメーターには、起動する VM を 1 つ以上指定することができます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM が起動されます。 複数の VM を起動するには、それぞれのインスタンス ID をスペースで区切ります。
 
-次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が起動されます。 実際の値を次のように入力してください。
+次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が起動されます。 独自の値を次のように指定します。
 
 ```azurecli
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -119,7 +119,7 @@ az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 
 ## <a name="restart-vms-in-a-scale-set"></a>スケール セット内の VM を再起動する
 スケール セット内の 1 つ以上の VM を再起動するには、[az vmss restart](/cli/azure/vmss#restart) を使用します。 `--instance-ids` パラメーターには、再起動する VM を 1 つ以上指定することができます。 インスタンス ID を指定しない場合は、スケール セット内のすべての VM が再起動されます。 複数の VM を再起動するには、それぞれのインスタンス ID をスペースで区切ります。
 
-次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が再起動されます。 実際の値を次のように入力してください。
+次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が再起動されます。 独自の値を次のように指定します。
 
 ```azurecli
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -129,7 +129,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 ## <a name="remove-vms-from-a-scale-set"></a>スケール セットから VM を削除する
 スケール セット内の 1 つ以上の VM を削除するには、[az vmss delete-instances](/cli/azure/vmss#delete-instances) を使用します。 `--instance-ids`` パラメーターには、削除する VM を 1 つ以上指定することができます。 インスタンス ID に * を指定した場合は、スケール セット内のすべての VM が削除されます。 複数の VM を削除するには、それぞれのインスタンス ID をスペースで区切ります。
 
-次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が削除されます。 実際の値を次のように入力してください。
+次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が削除されます。 独自の値を次のように指定します。
 
 ```azurecli
 az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --instance-ids 0

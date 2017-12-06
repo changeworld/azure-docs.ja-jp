@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: babanisa
-ms.openlocfilehash: 5b69478bf00284594b984fde452f6bed4e73859b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ccbd861c985e54a3808c0d4e8ea6169b6a61f134
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 
@@ -20,7 +20,7 @@ Azure Event Grid の主要な概念を次に示します。
 
 ## <a name="events"></a>イベント
 
-イベントは、システム内で発生した何かを完全に記述する最小限の情報です。  すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。  すべてのイベントは、特定のイベントに関連する特定の情報も持っています。 たとえば、Azure Storage 内に作成される新しいファイルに関するイベントには、lastTimeModified 値などのファイルの詳細が含まれます。 また、仮想マシンの再起動に関するイベントには、仮想マシンの名前と再起動の理由が含まれます。 各イベントは、64 KB のデータに制限されます。
+イベントは、システム内で発生した何かを完全に記述する最小限の情報です。  すべてのイベントは、イベントの発生元、イベントの発生時間、一意識別子などの一般的な情報を持っています。  各イベントには、特定の種類のイベントにのみ関連する情報も含まれます。 たとえば、Azure Storage に作成される新しいファイルに関するイベントには、`lastTimeModified` 値などのファイルの詳細が含まれます。 また、仮想マシンの再起動に関するイベントには、仮想マシンの名前と再起動の理由が含まれます。 各イベントは、64 KB のデータに制限されます。
 
 ## <a name="event-sourcespublishers"></a>イベント ソース/発行元
 
@@ -46,7 +46,7 @@ Event Grid から考えると、イベント ハンドラーはイベントの�
 
 ## <a name="security"></a>セキュリティ
 
-イベントは、トピックのサブスクライブと配信をセキュリティで保護します。 サブスクライブするときは、リソースまたはトピックに対する十分なアクセス許可が必要です。 発行するときは、トピック用の SAS トークンまたはキー認証が必要です。 詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
+Event Grid は、トピックのサブスクライブと発行をセキュリティで保護します。 サブスクライブするときは、リソースまたはトピックに対する十分なアクセス許可が必要です。 発行するときは、トピック用の SAS トークンまたはキー認証が必要です。 詳細については、「[Event Grid security and authentication](security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。
 
 ## <a name="failed-delivery"></a>失敗した配信
 

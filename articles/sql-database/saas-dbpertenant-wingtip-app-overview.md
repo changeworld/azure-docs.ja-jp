@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: sstein
-ms.openlocfilehash: ddd51c23c7e7d01e38b02c79c27d1951eea61e70
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: d17c361d2249cc95be78cde143925251ad65db44
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>SQL Database のマルチ テナント SaaS アプリの例の概要
 
 *Wingtip SaaS* アプリケーションは、SQL Database の独自のメリットを示すためのサンプルのマルチテナント アプリです。 このアプリは、SaaS アプリケーション パターンとしてテナント単位のデータベースを使用して、複数のテナントにサービスを提供します。 アプリの目的は、複数の SaaS の設計と管理のパターンを含む各種の SaaS シナリオを実現している Azure SQL Database の機能を紹介することにあります。 このアプリをすぐに使い始めるために、Wingtip SaaS アプリを 5 分以内でデプロイできます。
 
-アプリケーションのソース コードと管理スクリプトは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 スクリプトを実行するには、[Learning Modules](#download-and-unblock-the-wingtip-saas-scripts) フォルダーをローカル コンピューターにダウンロードします。
+アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリから入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="application-architecture"></a>アプリケーションのアーキテクチャ
 
-Wingtip SaaS アプリでは、テナント単位のデータベース モデルを使用します。また、SQL エラスティック プールを使用して効率を最大化します。 テナントをプロビジョニングしてデータにマッピングするために、カタログ データベースが使用されます。 主要な Wingtip SaaS アプリケーションは、3 つのサンプル テナントと 1 つのカタログ データベースを備えたプールを使用します。 多数の Wingtip SaaS チュートリアルを完了すると、分析データベース、複数データベース スキーマ管理などを導入することで、結果的に初期デプロイへのアドオンになります。
+Wingtip SaaS アプリでは、テナント単位のデータベース モデルを使用します。また、SQL エラスティック プールを使用して効率を最大化します。 テナントをプロビジョニングしてデータにマッピングするために、カタログ データベースが使用されます。 主要な Wingtip SaaS アプリケーションは、3 つのサンプル テナントと 1 つのカタログ データベースを備えたプールを使用します。 多数の Wingtip SaaS チュートリアルを完了すると、分析データベース、複数データベース スキーマ管理などが導入されるため、結果的に初期デプロイのアドオンになります。
 
 
 ![Wingtip SaaS のアーキテクチャ](media/saas-dbpertenant-wingtip-app-overview/app-architecture.png)
@@ -40,9 +40,9 @@ Wingtip SaaS アプリでは、テナント単位のデータベース モデル
 アプリをデプロイしたら、初期デプロイを前提とする以下のチュートリアルを参照してください。 これらのチュートリアルでは、SQL Database、SQL Data Warehouse、およびその他の Azure サービスに組み込まれた機能を活用した一般的な SaaS パターンを確認できます。 チュートリアルには、PowerShell スクリプトとその詳細な説明が含まれています。これらを利用すると、SaaS 管理パターンの理解、およびお使いのアプリケーションでの同じ SaaS 管理パターンの実装を大幅に簡略化できます。
 
 
-| チュートリアル | Description |
+| チュートリアル | 説明 |
 |:--|:--|
-| [Azure SQL Database のマルチテナント SaaS アプリ例のガイダンスとヒント](saas-dbpertenant-wingtip-app-guidance-tips.md) | **ここから開始** PowerShell スクリプトをダウンロードして実行し、アプリケーションの各部分を準備します。 |
+| [Azure SQL Database のマルチテナント SaaS アプリ例のガイダンスとヒント](saas-tenancy-wingtip-app-guidance-tips.md) | **ここから開始** PowerShell スクリプトをダウンロードして実行し、アプリケーションの各部分を準備します。 |
 |[Wingtip SaaS アプリケーションをデプロイして調査する](saas-dbpertenant-get-started-deploy.md)|  Wingtip SaaS アプリケーションをお使いの Azure サブスクリプションにデプロイして調査する |
 |[テナントのプロビジョニングおよびカタログ登録を行う](saas-dbpertenant-provision-and-catalog.md)| アプリケーションからカタログ データベースを使用するテナントに接続する方法、カタログがテナントをデータにマッピングする方法について説明します。 |
 |[パフォーマンスを監視および管理する](saas-dbpertenant-performance-monitoring.md)| SQL Database の監視機能の使用方法と、パフォーマンスのしきい値が超過した場合のアラートの設定方法について説明します。 |
@@ -55,6 +55,6 @@ Wingtip SaaS アプリでは、テナント単位のデータベース モデル
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure SQL Database のマルチテナント SaaS アプリ例のガイダンスとヒント](saas-dbpertenant-wingtip-app-guidance-tips.md)
+- [Azure SQL Database のマルチテナント SaaS アプリ例のガイダンスとヒント](saas-tenancy-wingtip-app-guidance-tips.md)
 
 - [Wingtip SaaS アプリケーションのデプロイ](saas-dbpertenant-get-started-deploy.md)
