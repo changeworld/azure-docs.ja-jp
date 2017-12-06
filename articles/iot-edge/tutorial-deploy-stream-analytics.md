@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ebda79442b8feb9f052c3ae455fa43aafb7b5a6a
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 0d19d1142cf15221f84692f7e613edd6b46b4083
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics を IoT Edge モジュールとしてデプロイする - プレビュー
 
@@ -62,13 +62,16 @@ Azure Stream Analytics について詳しくは、「[Stream Analytics のドキ
     ![新しいストレージ アカウント][1]
 
 3. Azure Portal で、作成したストレージ アカウントに移動します。 **[Blob Service]** で **[BLOB の参照]** をクリックします。 
-1. ASA モジュールがデータを保存するための新しいコンテナーを作成します。 アクセス レベルは_コンテナー_に設定します。 **[OK]**をクリックします。
+4. ASA モジュールがデータを保存するための新しいコンテナーを作成します。 アクセス レベルは_コンテナー_に設定します。 **[OK]**をクリックします。
 
     ![ストレージの設定][10]
 
-1. Azure Portal で、**[リソースの作成]** > **[モノのインターネット]** に移動し、**[Stream Analytics ジョブ]** を選択します。
+5. Azure Portal で、**[リソースの作成]** > **[モノのインターネット]** に移動し、**[Stream Analytics ジョブ]** を選択します。
 
-1. 名前を入力し、**ホスティング環境として「Edge」を選択**して残りは既定値を使用します。  **Create** をクリックしてください。
+2. 名前を入力し、ホスティング環境として **[Edge]** を選んで、残りは既定値を使います。  **Create** をクリックしてください。
+
+    >[!NOTE]
+    >現在、IoT Edge 上の ASA ジョブは、米国西部 2 リージョンではサポートされていません。 別の場所を選んでください。
 
     ![ASA の作成][5]
 

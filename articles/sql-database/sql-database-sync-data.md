@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 8bcecdff2bb9ac037e2cd71a431619883dfb5084
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 5cf74140969fb354e426c41552d4d73a06c76890
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する
 
@@ -80,16 +80,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ## <a name="sync-req-lim"></a> 要件と制限
 
-### <a name="general-requirements"></a>一般的な要件
-
--   各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 主キーの値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
-
--   テーブルに、主キー以外の ID 列を設けることはできません。
-
--   オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
-
--   スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
-
 ### <a name="general-considerations"></a>一般的な考慮事項
 
 #### <a name="eventual-consistency"></a>最終的な一貫性
@@ -98,7 +88,19 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 #### <a name="performance-impact"></a>パフォーマンスへの影響
 データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 これにより、ユーザー データベース内に変更追跡のためのサイド テーブルが作成されます。 これらの変更追跡アクティビティは、データベースのワークロードに影響します。 サービス層を評価し、必要な場合はアップグレードします。
 
+### <a name="general-requirements"></a>一般的な要件
+
+-   各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 主キーの値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
+
+-   スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
+
 ### <a name="general-limitations"></a>一般的な制限事項
+
+-   テーブルに、主キー以外の ID 列を設けることはできません。
+
+-   オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
+
+-   Azure Active Directory 認証はサポートされていません。
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 
@@ -166,7 +168,7 @@ SQL データ同期 (プレビュー) を使ってデータのバックアップ
 
 SQL データ同期の詳細については、以下を参照してください。
 
--   [Azure SQL データ同期の設定](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL データ同期のセットアップ](sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
 -   [OMS Log Analytics を使用した Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)

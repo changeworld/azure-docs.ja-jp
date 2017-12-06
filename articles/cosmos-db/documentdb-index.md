@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: ce24e445177b7e2e499309f016478030efa6bfe8
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 8d618e00ed274f5d5705346a4ffd8281769de4e3
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-documentation"></a>Azure Cosmos DB: DocumentDB API のドキュメント
 
@@ -36,9 +36,9 @@ Azure Cosmos DB 用 DocumentDB API の学習を開始するにあたり、以下
 
 ## <a name="quickstarts"></a>クイック スタート
 
-クイック スタートのトピックに従うと、Azure Cosmos DB で動作するアプリケーションをすばやく作成できます。 各クイック スタートで、UI ベースの Azure Portal とお気に入りのコーディング言語を使って、Azure Cosmos DB でデータベース ソリューションを作成する方法について説明します。 GitHub の複製可能な Web アプリを、各クイック スタート用に利用できます。 
+クイック スタートのトピックに従うと、Azure Cosmos DB で動作するアプリケーションをすばやく作成できます。 各クイック スタートで、UI ベースの Azure ポータルとお気に入りのコーディング言語を使って、Azure Cosmos DB でデータベース ソリューションを作成する方法について説明します。 GitHub の複製可能な Web アプリを各クイック スタートで利用できます。 
 
-- [.NET + Azure Portal + Web アプリ](create-documentdb-dotnet.md)
+- [.NET + Azure ポータル + Web アプリ](create-documentdb-dotnet.md)
 - [Java + Azure Portal + Web アプリ](create-documentdb-java.md)
 - [Node.js + Azure Portal + Web アプリ](create-documentdb-nodejs.md)
 - [Python + Azure Portal + Web アプリ](create-documentdb-python.md)
@@ -46,7 +46,7 @@ Azure Cosmos DB 用 DocumentDB API の学習を開始するにあたり、以下
 
 ## <a name="tutorials"></a>Tutorials (チュートリアル)
 
-チュートリアルには、クイック スタートよりも詳細な説明が記載されています。 こうしたチュートリアルでは、アプリをゼロから一から構築し、コードをコピーしてアプリに貼り付けます。 また、データのインポートや照会のほか、データベースをグローバルに配布する方法についても説明します。
+チュートリアルには、クイック スタートよりも詳細な説明が記載されています。 こうしたチュートリアルでは、アプリをゼロから構築し、コードをコピーしてアプリに貼り付けます。 また、データのインポートや照会のほか、データベースをグローバルに配布する方法についても説明します。
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
@@ -71,7 +71,7 @@ Azure Cosmos DB 用 DocumentDB API の学習を開始するにあたり、以下
 
 - [データのインポート](import-data.md)
 - [クエリ](tutorial-query-documentdb.md)
-- [データのグローバル分散](tutorial-global-distribution-documentdb.md)
+- [データのグローバル配布](tutorial-global-distribution-documentdb.md)
 
 ### <a name="work-with-azure-functions"></a>Azure Functions を操作する
 

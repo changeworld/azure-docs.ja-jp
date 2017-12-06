@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: c158c67a82e12501386179e19bc75fd852d7e308
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 157a10277f89643245746223f2cd1d73680ac700
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services 管理対象ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
@@ -56,7 +56,7 @@ AD ディレクトリの Azure AD アプリケーション プロキシを有効
 
 
 ## <a name="task-2---provision-domain-joined-windows-servers-to-deploy-the-azure-ad-application-proxy-connector"></a>タスク 2 - Azure AD アプリケーション プロキシ コネクタをデプロイするためのドメイン参加済み Windows Server をプロビジョニングする
-Azure AD アプリケーション プロキシ コネクタをインストールできる、ドメイン参加済みの Windows Server 仮想マシンが必要です。 発行するアプリケーションによっては、コネクタをインストールするサーバーを複数プロビジョニングすることもできます。 このデプロイ オプションにより、可用性が向上し、負荷の高い認証を処理できます。
+Azure AD アプリケーション プロキシ コネクタをインストールできる、ドメイン参加済みの Windows Server 仮想マシンが必要です。 一部のアプリケーションでは、コネクタをインストールするサーバーを複数プロビジョニングすることもできます。 このデプロイ オプションにより、可用性が向上し、負荷の高い認証を処理できます。
 
 Azure AD Domain Services 管理対象ドメインを有効化済みの同じ仮想ネットワーク (または接続/ピアリングされている仮想ネットワーク) 上でコネクタ サーバーをプロビジョニングします。 同様に、アプリケーション プロキシを経由して発行するアプリケーションをホストするサーバーを同じ Azure 仮想ネットワークにインストールする必要があります。
 
@@ -113,12 +113,12 @@ Azure アプリケーション プロキシ コネクタで Kerberos の制約�
 >
 
 Get-ADComputer PowerShell コマンドレットを使用して、Azure AD アプリケーション プロキシ コネクタがインストールされているコンピューターの設定を取得します。
-```
+```powershell
 $ConnectorComputerAccount = Get-ADComputer -Identity contoso100-proxy.contoso100.com
 ```
 
 その後、Set-ADComputer コマンドレットを使用して、リソース サーバーにリソースベースの KCD を設定します。
-```
+```powershell
 Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateToAccount $ConnectorComputerAccount
 ```
 

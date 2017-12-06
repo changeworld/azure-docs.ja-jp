@@ -13,6 +13,8 @@
   items:
     - name: 一般的な質問
       href: frequently-asked-questions-databricks.md
+    - name: リリース ノート
+      href: 'https://docs.azuredatabricks.net/release-notes/index.html'
     - name: Databricks のドキュメント
       href: 'https://docs.azuredatabricks.net/user-guide/index.html'
     - name: Azure のロードマップ

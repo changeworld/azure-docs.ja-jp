@@ -1,6 +1,6 @@
 ---
-title: "Windows フェールオーバー クラスターと SAP (A)SCS インスタンスのファイル共有を使用した、Azure への SAP NetWeaver HA のインストール | Microsoft Docs"
-description: "Windows フェールオーバー クラスターと SAP (A)SCS インスタンスのファイル共有を使用した、SAP NetWeaver HA のインストール"
+title: "Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール | Microsoft Docs"
+description: "Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,13 +17,13 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ec7888cfb9b0d288b5b25f580c852ee32306684c
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: fc957ece0250d233db9cec4f1fdd8b063c13a136
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="sap-netweaver-ha-installation-on-windows-failover-cluster-and-file-share-for-sap-ascs-instance-on-azure"></a>Windows フェールオーバー クラスターと SAP (A)SCS インスタンスのファイル共有を使用した、Azure への SAP NetWeaver HA のインストール
+# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -33,6 +33,8 @@ ms.lasthandoff: 10/16/2017
 [1596496]:https://launchpad.support.sap.com/#/notes/1596496
 
 [sap-installation-guides]:http://service.sap.com/instguides
+
+[sap-powershell-scrips]:https://github.com/Azure-Samples/sap-powershell
 
 [azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
 [azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
@@ -194,60 +196,59 @@ ms.lasthandoff: 10/16/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-このドキュメントでは、SAP (A)SCS インスタンスをクラスター化するためのオプションとして **Windows フェールオーバー クラスター (WSFC)** と**スケール アウト ファイル共有** を使用し、Azure に高可用性 SAP システムをインストールして構成する方法を説明します。
+この記事では、SAP ASCS/SCS インスタンスをクラスター化するためのオプションとして Windows サーバー フェールオーバー クラスター (WSFC) とスケールアウト ファイル サーバーを使用し、Azure に高可用性 SAP システムをインストールして構成する方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-インストールを開始する前に、必ず次のドキュメントを確認してください。
+インストールを始める前に、次の記事を確認してください。
 
-* [アーキテクチャ ガイド - **ファイル共有**を使用した **Windows フェールオーバー クラスター**での SAP (A)SCS インスタンスのクラスター化][sap-high-availability-guide-wsfc-file-share]
+* [アーキテクチャ ガイド: ファイル共有を使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する][sap-high-availability-guide-wsfc-file-share]
 
-* [**Windows フェールオーバー クラスター**と SAP (A)SCS インスタンスの**ファイル共有**を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-file-share]
+* [Windows フェールオーバー クラスターおよび SAP ASCS/SCS インスタンスのファイル共有を使用した SAP HA 向けの Azure インフラストラクチャの準備][sap-high-availability-infrastructure-wsfc-file-share]
 
-
-次の SAP の実行可能ファイルまたは dll が必要です。
-* SAP **Software Provisioning Manager** (**SWPM**) インストール ツール バージョン **SPS21 (またはそれ以降)**。
-* 新しい SAP クラスター リソース DLL を使用した、**最新の NTCLUST.SAR** アーカイブのダウンロード。 新しい SAP クラスター dll は、Windows Server フェールオーバー クラスターでのファイル共有を使用した SAP (A)SCS の高可用性をサポートしています。
+次の SAP の実行可能ファイルおよび DLL が必要です。
+* SAP Software Provisioning Manager (SWPM) インストール ツール バージョン SPS21 以降。
+* 新しい SAP クラスター リソース DLL を使用した、最新の NTCLUST.SAR アーカイブのダウンロード。 新しい SAP クラスター DLL は、Windows Server フェールオーバー クラスターでのファイル共有を使用した SAP ASCS/SCS の高可用性をサポートしています。
 
   新しい SAP クラスター リソース DLL の詳細については、ブログ「[New SAP cluster resource DLL is available! (新しい SAP クラスター リソース DLL が使用可能です!)][sap-blog-new-sap-cluster-resource-dll]」をご覧ください。
 
-DBMS の設定は、使用する DBMS システムによって異なるため、ここでは説明しません。 ただし、さまざまな DBMS ベンダーが Azure でサポートする機能を使用して、DBMS に関する高可用性の問題に対処していることを想定しています。 たとえば、SQL Server の Always On またはデータベース ミラーリング、Oracle データベースの Oracle Data Guard があります。 この記事のシナリオでは、DBMS の保護は強化しませんでした。
+データベース管理システム (DBMS) の設定は、使用する DBMS システムによって異なるため、ここでは説明しません。 ただし、さまざまな DBMS ベンダーが Azure でサポートする機能を使用して、DBMS に関する高可用性の問題に対処していることを想定しています。 たとえば、SQL Server の Always On またはデータベース ミラーリング、Oracle データベースの Oracle Data Guard などがあります。 この記事のシナリオでは、DBMS の保護は強化しませんでした。
 
-異なる DBMS サービスが Azure のこの種のクラスター化された SAP ASCS/SCS 構成と対話する際に、特別な考慮事項はありません。
+各種 DBMS サービスが Azure のこの種のクラスター化された SAP ASCS/SCS 構成と対話する際に、特別な考慮事項はありません。
 
 > [!NOTE]
 > SAP NetWeaver ABAP システム、Java システム、ABAP + Java システムのインストール手順はほとんど同じです。 最も重要な違いは、SAP ABAP システムでは 1 つの ASCS インスタンスを使用することです。 SAP Java システムは 1 つの SCS インスタンスを使用します。 SAP ABAP + Java システムでは、1 つの ASCS インスタンスと、同じ Microsoft フェールオーバー クラスター グループで実行する 1 つの SCS インスタンスを使用します。 各 SAP NetWeaver インストール スタックのインストールの違いについて明確に説明します。 他のすべての部分は同じであると考えることができます。  
 >
 >
 
-## <a name="install-ascs-instance-on-ascs-cluster"></a>(A)SCS クラスターへの (A)SCS インスタンスのインストール
+## <a name="install-an-ascsscs-instance-on-an-ascsscs-cluster"></a>ASCS/SCS クラスターへの ASCS/SCS インスタンスのインストール
 
 > [!IMPORTANT]
 >
->現在、SAP インストール ツールの Software Provisioning Manager (SWPM) では、ファイル共有構成での HA 設定はサポートされていません。 そのため、SAP システムをインストールするには、手動によるインストール方法を採用する必要があります。たとえば、SAP (A)SCS インスタンスをインストールしてクラスター化し、別の SAP GLOBALHOST を構成するなどです。  
+> 現在、ファイル共有の構成を使用した高可用性設定は、SAP SWPM インストール ツールでサポートされていません。 そのため、SAP システムをインストールするには、手動によるインストール方法を採用する必要があります。たとえば、SAP ASCS/SCS インスタンスをインストールしてクラスター化し、別の SAP グローバル ホストを構成するなどです。  
 >
->DBMS インスタンスと SAP アプリケーション サーバーをインストール (およびクラスター化) するための、その他のインストール手順に変更はありません。
+> DBMS インスタンスと SAP アプリケーション サーバーをインストール (およびクラスター化) するための、その他のインストール手順に変更はありません。
 >
 
-### <a name="install-ascs-instance-on-local-drive"></a>ローカル ドライブへの (A)SCS インスタンスのインストール
+### <a name="install-an-ascsscs-instance-on-your-local-drive"></a>ローカル ドライブへの ASCS/SCS インスタンスのインストール
 
-SAP (A)SCS インスタンスを (A)SCS クラスターの **両方**のノードにインストールします。 次にそれを**ローカル** ドライブにインストールします。 たとえば、ここではローカル ドライブを C:\\ にします。 他のローカル ドライブでもかまいません。  
+SAP ASCS/SCS インスタンスを ASCS/SCS クラスターの "*両方*" のノードにインストールします。 インストール先はローカル ドライブとします。 この例では、ローカル ドライブが C:\\ になっていますが、他のローカル ドライブを選択してもかまいません。  
 
-インストールするには、SAP インストール ツールの SWPM で次のパスに移動します。
+インスタンスをインストールするには、SAP SWPM インストール ツールで、次のように選択します。
 
-&lt;製品&gt; -> &lt;DBMS&gt; -> [Installation]\(インストール\) -> [Application Server ABAP (or Java)]\(アプリケーション サーバー ABAP (または Java)\) -> [Distributed System]\(分散システム\) -> [(A)SCS Instance]\((A)SCS インスタンス\)
+**\<製品>** > **\<DBMS>** > **[Installation]\(インストール\)** > **[Application Server ABAP (or **Java**)]\(アプリケーション サーバー ABAP (または Java)\)** > **[Distributed System]\(分散システム\)** > **[ASCS/SCS Instance]\(ASCS/SCS インスタンス\)**
 
 > [!IMPORTANT]
->現在、SAP インストール ツールの SWPM ではファイル共有がサポートされていないため、次のインストール パスは**使用できません**。
+> 現在、SAP SWPM インストール ツールでは、ファイル共有のシナリオはサポートされていません。 次のインストール パスは "*使用できません*"。
 >
->&lt;製品&gt; -> &lt;DBMS&gt; -> [Installation]\(インストール\) -> [Application Server ABAP (or Java)]\(アプリケーション サーバー ABAP (または Java)\) -> [High-Availability  System]\(高可用性システム\) -> …
+> **\<製品>** > **\<DBMS>** > **[Installation]\(インストール\)** > **[Application Server ABAP (or **Java**)]\(アプリケーション サーバー ABAP (または Java)\)** > **[High-Availability System]\(高可用性システム\)** > …
 >
 
-### <a name="remove-sapmnt-and-create-saploc-file-share"></a>SAPMNT の削除と SAPLOC ファイル共有の作成
+### <a name="remove-sapmnt-and-create-an-saploc-file-share"></a>SAPMNT の削除と SAPLOC ファイル共有の作成
 
-SWMP によって C:\\usr\\sap フォルダに SAPMNT ローカル共有が作成されました。
+SWMP によって C:\\usr\\sap フォルダーに SAPMNT ローカル共有が作成されました。
 
-**両方**の (A)SCS クラスター ノードで SAPMNT ファイル共有を削除します。
+"*両方*" の ASCS/SCS クラスター ノードで SAPMNT ファイル共有を削除します。
 
 次の PowerShell スクリプトを実行します。
 
@@ -255,7 +256,7 @@ SWMP によって C:\\usr\\sap フォルダに SAPMNT ローカル共有が作�
 Remove-SmbShare sapmnt -ScopeName * -Force
  ```
 
-SAPLOC 共有が存在しない場合は、BOTH ASCS クラスター ノードに作成します。
+SAPLOC 共有が存在しない場合は、"*両方*" の ASCS/SCS クラスター ノードに作成します。
 
 次の PowerShell スクリプトを実行します。
 
@@ -272,19 +273,19 @@ $SAPusrSapPath = "$SAPDisk\usr\sap"
 New-SmbShare -Name saploc -Path c:\usr\sap -FullAccess "BUILTIN\Administrators", $SAPSIDGlobalAdminGroupName , $SAPLocalAdminGroupName  
  ```
 
-## <a name="prepare-sap-global-host-on-sofs-cluster"></a>SOFS クラスターでの SAP GLOBAL HOST の準備
+## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>SOFS クラスターでの SAP グローバル ホストの準備
 
-このステップでは、SOFS クラスターに次のボリュームとファイル共有を作成します。
+SOFS クラスターに次のボリュームとファイル共有を作成します。
 
-* SOFS クラスター共有ボリューム (CSV) 上の C:\ClusterStorage\Volume1\usr\sap\\&lt;SID&gt;\SYS\ 構造に SAP GLOBALHOST ファイル
+* SOFS クラスター共有ボリューム (CSV) 上の C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS\ 構造に SAP GLOBALHOST ファイル
 
-* SAPMNT ファイル共有を作成する
+* SAPMNT ファイル共有
 
-* 次のものをフル コントロールして、SAPMNT ファイル共有およびフォルダにセキュリティを設定する:
-    * **&lt;DOMAIN&gt;\SAP_&lt;SID&gt;_GlobalAdmin** ユーザー グループ
-    * SAP (A)SCS クラスター ノード コンピューター **オブジェクト &lt;DOMAIN&gt;\ClusterNode1$ および &lt;DOMAIN&gt;\ClusterNode2$**
+* 次のものに対するフル コントロールを持つように、SAPMNT ファイル共有およびフォルダーにセキュリティを設定する:
+    * \<ドメイン>\SAP_\<SID>_GlobalAdmin ユーザー グループ
+    * SAP ASCS/SCS クラスター ノード コンピューター オブジェクト \<ドメイン>\ClusterNode1$ および \<ドメイン>\ClusterNode2$
 
-「**SAP Prerequisites for SOFS in Azure  - ADD LINK (Azure における SOFS 向けの SAP 前提条件 - リンクの追加)**」の章で定義したように、Mirror の回復性を使用して CSV ボリュームを作成するには、SOFS クラスター ノードのいずれかで次の PowerShell コマンドレットを実行します。
+ミラーの回復性を使用して CSV ボリュームを作成するには、SOFS クラスター ノードのいずれかで次の PowerShell コマンドレットを実行します。
 
 
 ```PowerShell
@@ -298,11 +299,11 @@ $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
 $SAPSIDGlobalAdminGroupName = "$DomainName\SAP_" + $SAPSID + "_GlobalAdmin"
 
-# SAP (A)SCS cluster nodes
+# SAP ASCS/SCS cluster nodes
 $ASCSClusterNode1 = "ascs-1"
 $ASCSClusterNode2 = "ascs-2"
 
-# Define SAP (A)SCS cluster node computer objects
+# Define SAP ASCS/SCS cluster node computer objects
 $ASCSClusterObjectNode1 = "$DomainName\$ASCSClusterNode1$"
 $ASCSClusterObjectNode2 = "$DomainName\$ASCSClusterNode2$"
 
@@ -312,85 +313,81 @@ New-Item -Path $SAPGlobalFOlder -ItemType Directory
 
 $UsrSAPFolder = "C:\ClusterStorage\Volume1\usr\sap\"
 
-# Create SAPMNT file share and set share security
+# Create a SAPMNT file share and set share security
 New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $SAPSIDGlobalAdminGroupName, $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $false -CachingMode None -Verbose
 
 # Get SAPMNT file share security settings
 Get-SmbShareAccess sapmnt
 
-# Set files & folder security
+# Set file and folder security
 $Acl = Get-Acl $UsrSAPFolder
 
-# Add file security object of SAP_<sid>_GlobalAdmin group
+# Add a file security object of SAP_<sid>_GlobalAdmin group
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($SAPSIDGlobalAdminGroupName,"FullControl", 'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode1$ computer object
+# Add  a security object of the clusternode1$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSClusterObjectNode1,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode2$ computer object
+# Add a security object of the clusternode2$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSClusterObjectNode2,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
 # Set security
 Set-Acl $UsrSAPFolder $Acl -Verbose
  ```
-## <a name="stop-ascs-instances-and-sap-services"></a>(A)SCS インスタンスと SAP サービスの停止
+## <a name="stop-ascsscs-instances-and-sap-services"></a>ASCS/SCS インスタンスと SAP サービスの停止
 
 次の手順を実行します。
-* 両方の (A)SCS クラスター ノードで、SAP (A)SCS インスタンスを停止する
-* 両方のクラスター ノードで、SAP (A)SCS Windows サービスの **SAP&lt;SID&gt;_&lt;インスタンス番号&gt;** を停止する
+1. 両方の ASCS/SCS クラスター ノードで SAP ASCS/SCS インスタンスを停止します。
+2. 両方のクラスター ノードで SAP ASCS/SCS Windows サービス **SAP\<SID>_\<インスタンス番号>** を停止します。
 
-## <a name="move-sys-folder-to-sofs-cluster"></a>\SYS\... フォルダーの SOFS クラスターへの移動
+## <a name="move-the-sys-folder-to-the-sofs-cluster"></a>SOFS クラスターへの \SYS\... フォルダーの移動
 
 次の手順を実行します。
-* SYS フォルダー (例: C:\usr\sap\\&lt;SID&gt;\SYS) を (A)SCS クラスター ノードのいずれかから SOFS クラスター (例: C:\ClusterStorage\Volume1\usr\sap\\&lt;SID&gt;\SYS) にコピーする
-* 両方の (A)SCS クラスター ノードから、C:\usr\sap\\&lt;SID&gt;\SYS フォルダーを削除する
+1. いずれかの ASCS/SCS クラスター ノードから SYS フォルダー (C:\usr\sap\\<SID>\SYS など) を SOFS クラスター (C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS など) にコピーします。
+2. 両方の ASCS/SCS クラスター ノードから C:\usr\sap\\<SID>\SYS フォルダーを削除します。
 
-## <a name="update-cluster-security-setting-on-sap-ascs-cluster"></a>SAP (A)SCS クラスターでのクラスター セキュリティ設定の更新
+## <a name="update-the-cluster-security-setting-on-the-sap-ascsscs-cluster"></a>SAP ASCS/SCS クラスターでのクラスター セキュリティ設定の更新
 
-SAP (A)SCS クラスター ノードのいずれかで、次の PowerShell スクリプトを実行します。
+いずれかの SAP ASCS/SCS クラスター ノードで次の PowerShell スクリプトを実行します。
 
 ```PowerShell
-# Grant <DOMAIN>\SAP_<SID>_GlobalAdmin group access to cluster
+# Grant <DOMAIN>\SAP_<SID>_GlobalAdmin group access to the cluster
 
 $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
 $SAPSIDGlobalAdminGroupName = "$DomainName\SAP_" + $SAPSID + "_GlobalAdmin"
 
-# Set full access for <DOMAIn>\SAP_<SID>_GlobalAdmin group
+# Set full access for the <DOMAIN>\SAP_<SID>_GlobalAdmin group
 Grant-ClusterAccess -User $SAPSIDGlobalAdminGroupName -Full
 
 #Check security settings
 Get-ClusterAccess
 ```
 
-## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascs-instance"></a>クラスター化された SAP (A)SCS インスタンスの仮想ホスト名の作成
+## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成
 
-「[Create a virtual host name for the clustered SAP (A)SCS instance (クラスター化された SAP (A)SCS インスタンスの仮想ホスト名の作成)][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]」の章で説明したように、SAP (A)SCS クラスター ネットワーク名 (例: **pr1-ascs [10.0.6.7]**) を作成します。
+「[クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host]」で説明したように SAP ASCS/SCS クラスター ネットワーク名 (例: **pr1-ascs [10.0.6.7]**) を作成します。
 
-## <a name="update-default-and-sap-ascs-instance-profile"></a>既定値と SAP (A)SCS インスタンス プロファイルの更新
+## <a name="update-the-default-and-sap-ascsscs-instance-profile"></a>既定のプロファイルと SAP ASCS/SCS インスタンスのプロファイルの更新
 
-次のホスト名を使用するには、既定値と SAP (A)SCS インスタンス プロファイル &lt;SID&gt;_(A)SCS<Nr>_  <Host>を更新する必要があります。
-
-* 新しい SAP (A)SCS 仮想ホスト名
-
-* 新しい SAP GLOBAL ホスト名
+新しい SAP ASCS/SCS 仮想ホスト名と SAP グローバル ホスト名を使用するには、既定のプロファイルと SAP ASCS/SCS インスタンス プロファイルの \<SID>_ASCS/SCS\<Nr>_<Host> を更新する必要があります。
 
 
 | 古い値 |  |
 | --- | --- |
-| SAP (A)SCS ホスト名 = SAP グローバル ホスト | ascs-1 |
-| SAP (A)SCS インスタンス プロファイル名 | PR1_ASCS00_ascs-1 |
+| SAP ASCS/SCS ホスト名 = SAP グローバル ホスト | ascs-1 |
+| SAP ASCS/SCS インスタンス プロファイル名 | PR1_ASCS00_ascs-1 |
 
 | 新しい値 |  |
 | --- | --- |
-| SAP (A)SCS ホスト名 | **pr1-ascs** |
-| SAP GLOBAL ホスト | **sapglobal** |
-| SAP (A)SCS インスタンス プロファイル名 | PR1\_ASCS00\_**pr1-ascs** |
+| SAP ASCS/SCS ホスト名 | **pr1-ascs** |
+| SAP グローバル ホスト | **sapglobal** |
+| SAP ASCS/SCS インスタンス プロファイル名 | PR1\_ASCS00\_**pr1-ascs** |
 
-### <a name="update-sap-default-profile"></a>SAP DEFAULT プロファイルの更新
+### <a name="update-sap-default-profile"></a>SAP の既定のプロファイルの更新
 
 
 | パラメーター名 | パラメーター値 |
@@ -399,12 +396,12 @@ Get-ClusterAccess
 | rdisp/mshost | **pr1-ascs** |
 | enque/serverhost | **pr1-ascs** |
 
-### <a name="update-sap-ascs-instance-profile"></a>SAP (A)SCS インスタンス プロファイルの更新
+### <a name="update-the-sap-ascsscs-instance-profile"></a>SAP ASCS/SCS インスタンス プロファイルの更新
 
 | パラメーター名 | パラメーター値 |
 | --- | --- |
 | SAPGLOBALHOST | **sapglobal** |
-| DIR_PROFILE | \\\\**sapglobal**\sapmnt\PR1\SYS\profile |
+| DIR_PROFILE | \\\sapglobal\sapmnt\PR1\SYS\profile |
 | _PF | $(DIR_PROFILE)\PR1\_ASCS00_ pr1-ascs |
 | Restart_Program_02 = local$(_MS) pf=$(_PF) | **Start**_Program_02 = local$(_MS) pf=$(_PF) |
 | SAPLOCALHOST | **pr1-ascs** |
@@ -414,28 +411,28 @@ Get-ClusterAccess
 | service/ha_check_node | **1** |
 
 > [!IMPORTANT]
->PowerShell コマンドレットの **Update-SAPASCSSCSProfile** を使用して、プロファイルの更新を自動化できます
+>PowerShell コマンドレットの **Update-SAPASCSSCSProfile** を使用して、プロファイルの更新を自動化できます。
 >
->PowerShell コマンドレットでは、SAP ABAP ASCS と SAP Java SCS インスタンスの両方がサポートされています。
+>PowerShell コマンドレットでは、SAP ABAP ASCS インスタンスと SAP Java SCS インスタンスの両方がサポートされています。
 >
 
-**SAPScripts.ps1** をローカル ドライブの C:\tmp にコピーして、次の PowerShell コマンドレットを実行します。
+[**SAPScripts.psm1**][sap-powershell-scrips] をローカル ドライブの C:\tmp にコピーし、次の PowerShell コマンドレットを実行します。
 
 ```PowerShell
-Import-Module C:\tmp\SAPScripts.ps1
+Import-Module C:\tmp\SAPScripts.psm1
 
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
 ```
 
-![図 1: SAPScripts.ps1 の出力][sap-ha-guide-figure-8012]
+![図 1: SAPScripts.psm1 の出力][sap-ha-guide-figure-8012]
 
-_**図 1:** SAPScripts.ps1 の出力_
+_**図 1**: SAPScripts.psm1 の出力_
 
-## <a name="update-ltsidgtadm-user-environment-variable"></a>&lt;sid&gt;adm ユーザー環境変数の更新
+## <a name="update-the-sidadm-user-environment-variable"></a>\<sid>adm ユーザー環境変数の更新
 
-両方の (A)SCS クラスター ノードで、&lt;sid&gt;adm ユーザー環境変数の新しい GLOBALHOST UNC パスを更新します。
-&lt;sid&gt;adm ユーザーとしてログオンし、Regedit.exe ツールを起動します。
-**[HKEY_CURRENT_USER]** -> **[Environment]\(環境\)** に移動し、変数を新しい値に更新します。
+1. "*両方*" の ASCS/SCS クラスター ノードで、\<sid>adm ユーザー環境変数の新しい GLOBALHOST UNC パスを更新します。
+2. \<sid>adm ユーザーとしてログオンし、Regedit.exe ツールを起動します。
+3. **[HKEY_CURRENT_USER]** > **[Environment]\(環境\)** に移動し、変数を新しい値に更新します。
 
 | 変数 | 値 |
 | --- | --- |
@@ -445,31 +442,25 @@ _**図 1:** SAPScripts.ps1 の出力_
 | SAPLOCALHOST  | **pr1-ascs** |
 
 
-## <a name="install-new-saprcdll"></a>新しい SAPRC.DLL のインストール
+## <a name="install-a-new-saprcdll-file"></a>新しい saprc.dll ファイルのインストール
 
-ファイル共有をサポートする SAP クラスター リソースの新しいバージョンをインストールする必要があります。
+1. ファイル共有シナリオをサポートする SAP クラスター リソースの新しいバージョンをインストールします。
 
-SAP サービス マーケットプレイスから最新の **NTCLUST.SAR** パッケージをダウンロードします。
+2. SAP サービス マーケットプレイスから最新の NTCLUST.SAR パッケージをダウンロードします。
 
-(A)SCS クラスター ノードのいずれかで NTCLUS.SAR を展開し、コマンド プロンプトで次のコマンドを実行して新しい saprc.dll をインストールします。
+3. ASCS/SCS クラスター ノードのいずれかで NTCLUS.SAR を展開し、コマンド プロンプトで次のコマンドを実行して新しい saprc.dll ファイルをインストールします。
 
 ```
 .\NTCLUST\insaprct.exe -yes -install
 ```
 
-新しい saprc.dll は、両方の (A)SCS クラスター ノードにインストールされます。
+新しい saprc.dll は、両方の ASCS/SCS クラスター ノードにインストールされます。
 
-詳細については、「[SAP Note 1596496 - How to update SAP Resource Type DLLs for Cluster Resource Monitor (SAP ノート 1596496 - クラスタ リソース モニターの SAP リソース タイプ DLL の更新方法)][1596496]」をご覧ください。
+詳細については、「[SAP Note 1596496 - How to update SAP resource type DLLs for Cluster Resource Monitor (SAP ノート 1596496 - クラスタ リソース モニターの SAP リソース タイプ DLL の更新方法)][1596496]」をご覧ください。
 
-## <a name="create-sap-sid-cluster-group-network-name-and-ip"></a>SAP <SID> クラスター グループ、ネットワーク名、IP の作成
+## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>SAP <SID> クラスター グループ、ネットワーク名、IP の作成
 
-次のものを作成する必要があります。
-
-* SAP &lt;SID&gt; クラスター グループ
-* <(A)SCS ネットワーク名>
-* 対応する IP アドレス
-
-次の PowerShell コマンドレットを実行します。
+SAP \<SID> クラスター グループ、ASCS/SCS ネットワーク名、および対応する IP アドレスを作成するには、次の PowerShell コマンドレットを実行します。
 
 ```PowerShell
 # Create SAP Cluster Group
@@ -480,23 +471,23 @@ $SAPASCSNetworkName = "pr1-ascs"
 $SAPASCSIPAddress = "10.0.6.7"
 $SAPASCSSubnetMask = "255.255.255.0"
 
-# Create SAP ASCS instance Virtual IP cluster resource
+# Create an SAP ASCS instance virtual IP cluster resource
 Add-ClusterGroup -Name $SAPClusterGroupName -Verbose
 
-#Create SAP ASCS Virtual IP Address
+#Create an SAP ASCS virtual IP address
 $SAPIPClusterResource = Add-ClusterResource -Name $SAPIPClusterResourceName -ResourceType "IP Address" -Group $SAPClusterGroupName -Verbose
 
-# Set static IP Address
+# Set a static IP address
 $param1 = New-Object Microsoft.FailoverClusters.PowerShell.ClusterParameter $SAPIPClusterResource,Address,$SAPASCSIPAddress
 $param2 = New-Object Microsoft.FailoverClusters.PowerShell.ClusterParameter $SAPIPClusterResource,SubnetMask,$SAPASCSSubnetMask
 $params = $param1,$param2
 $params | Set-ClusterParameter
 
-# Create corresponding network name
+# Create a corresponding network name
 $SAPNetworkNameClusterResourceName = $SAPASCSNetworkName
 Add-ClusterResource -Name $SAPNetworkNameClusterResourceName -ResourceType "Network Name" -Group $SAPClusterGroupName -Verbose
 
-# Set Network DNS Name
+# Set a network DNS name
 $SAPNetworkNameClusterResource = Get-ClusterResource $SAPNetworkNameClusterResourceName
 $SAPNetworkNameClusterResource | Set-ClusterParameter -Name Name -Value $SAPASCSNetworkName
 
@@ -506,15 +497,15 @@ $SAPNetworkNameClusterResource | Get-ClusterParameter
 #Set resource dependencies
 Set-ClusterResourceDependency -Resource $SAPNetworkNameClusterResourceName -Dependency "[$SAPIPClusterResourceName]" -Verbose
 
-#Start SAP <SID> Cluster Group
+#Start an SAP <SID> cluster group
 Start-ClusterGroup -Name $SAPClusterGroupName -Verbose
 ```
 
-## <a name="register-sap-start-service-on-both-nodes"></a>両方のノードでの SAP START サービスの登録
+## <a name="register-the-sap-start-service-on-both-nodes"></a>両方のノードでの SAP 起動サービスの登録
 
-新しいプロファイルとプロファイル パスがポイントされるようにするには、SAP (A)SCS sapstart サービスを再登録する必要があります。
+新しいプロファイルとプロファイル パスを指すように、SAP ASCS/SCS 起動サービスを再登録します。
 
-両方の (A)SCS クラスター ノードで、これを実行する必要があります。
+この再登録は、"*両方*" の ASCS/SCS クラスター ノードで実行する必要があります。
 
 管理者特権でのコマンド プロンプトで、次のコマンドを実行します。
 
@@ -526,18 +517,18 @@ C:\usr\sap\PR1\ASCS00\exe\sapstartsrv.exe -r -p \\sapglobal\sapmnt\PR1\SYS\profi
 
 _**図 2:** SAP サービスの再インストール_
 
-パラメーターが正しいことを確認し、スタートアップの種類として **[Manual]\(手動\)** を選択します。
+パラメーターが正しいことを確認し、**[Startup Type]\(スタートアップの種類\)** として **[Manual]\(手動\)** を選択します。
 
-## <a name="stop-ascs-service"></a>(A)SCS サービスの停止
+## <a name="stop-the-ascsscs-service"></a>ASCS/SCS サービスの停止
 
-両方の (A)SCS クラスター ノードで、SAP (A)SCS サービスの **SAP&lt;SID&gt;_&lt;インスタンス番号&gt;** を停止します。
+両方の ASCS/SCS クラスター ノードで SAP ASCS/SCS サービス SAP\<SID>_\<インスタンス番号> を停止します。
 
-## <a name="create-new-sap-service-and-sap-instance-resources"></a>新しい SAP サービスと SAP インスタンス リソースの作成
+## <a name="create-a-new-sap-service-and-sap-instance-resources"></a>新しい SAP サービスと SAP インスタンス リソースの作成
 
-SAP &lt;SID&gt; クラスター グループのリソースの作成を完了する必要があります。たとえば、次のリソースを作成する必要があります。
+SAP SAP\<SID> クラスター グループのリソースの作成の最終処理を行うには、次のリソースを作成します。
 
-* **SAP &lt;SID&gt; &lt;インスタンス番号&gt; サービス**と
-* **SAP &lt;SID&gt; &lt;インスタンス番号&gt; インスタンス**
+* SAP \<SID> \<インスタンス番号> サービス
+* SAP \<SID> \<インスタンス番号> インスタンス
 
 次の PowerShell コマンドレットを実行します。
 
@@ -559,10 +550,10 @@ Set-ClusterResourceDependency -Resource $SAPASCSServiceClusterResource  -Depende
 
 $SAPInstanceClusterResourceName = "SAP $SAPSID $SAPInstanceNumber Instance"
 
-# Create SAP Instance cluster resource
+# Create SAP instance cluster resource
 $SAPASCSServiceClusterResource = Add-ClusterResource -Name $SAPInstanceClusterResourceName -Group $SAPClusterGroupName -ResourceType "SAP Resource" -SeparateMonitor -Verbose
 
-#Set SAP Instance cluster resource parameters
+#Set SAP instance cluster resource parameters
 $SAPASCSServiceClusterResource  | Set-ClusterParameter  -Name SAPSystemName -Value $SAPSID -Verbose
 $SAPASCSServiceClusterResource  | Set-ClusterParameter  -Name SAPSystem -Value $SAPInstanceNumber -Verbose
 
@@ -572,25 +563,24 @@ Set-ClusterResourceDependency -Resource $SAPASCSServiceClusterResource  -Depende
 
 ## <a name="add-a-probe-port"></a>プローブ ポートの追加
 
-このステップでは、PowerShell を使用して、SAP クラスター リソース SAP-SID-IP プローブ ポートを構成します。 この構成は、[こちら][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]で説明したように、SAP ASCS/SCS クラスター ノードのいずれかで実行します。
+PowerShell を使用して、SAP クラスター リソース SAP-SID-IP プローブ ポートを構成します。 この構成は、[こちらの記事][sap-high-availability-installation-wsfc-shared-disk-add-probe-port]で説明したように、SAP ASCS/SCS クラスター ノードのいずれかで実行します。
 
-## <a name="install-ers-instance-on-both-cluster-nodes"></a>両方のクラスター ノードでの ERS インスタンスのインストール
+## <a name="install-an-ers-instance-on-both-cluster-nodes"></a>両方のクラスター ノードでの ERS インスタンスのインストール
 
-次のステップでは、(A)SCS クラスターの両方のノードに ERS (Enqueue Replication Server) インスタンスをインストールする必要があります。
-インストール オプションは SWPM メニューにあります。
+ASCS/SCS クラスターの "*両方*" のノードに Enqueue Replication Server (ERS) インスタンスをインストールします。 SWPM メニューで、次のインストール パスを辿ります。
 
-&lt;製品&gt; -> &lt;DBMS&gt; -> [Installation]\(インストール\) -> [Additional SAP System instances]\(追加の SAP システム インスタンス\) -> **[Enqueue Replication Server Instance]\(Enqueue Replication Server インスタンス\)**
+**\<製品>** > **\<DBMS>** > **[Installation]\(インストール\)** > **[Additional SAP System instances]\(追加の SAP システム インスタンス\)** > **[Enqueue Replication Server Instance]\(Enqueue Replication Server インスタンス\)**
 
-## <a name="install-dbms-instance-and-sap-application-servers"></a>DBMS インスタンスと SAP アプリケーション サーバーのインストール
+## <a name="install-a-dbms-instance-and-sap-application-servers"></a>DBMS インスタンスと SAP アプリケーション サーバーのインストール
 
 次のものをインストールして、SAP システムのインストールを完了します。
-* DBMS インスタンス
-* プライマリの SAP アプリケーション サーバー
-* 追加の SAP アプリケーション サーバー
+* DBMS インスタンス。
+* プライマリの SAP アプリケーション サーバー。
+* 追加の SAP アプリケーション サーバー。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [フェールオーバー クラスターでの共有ディスクなしでの (A)SCS インスタンスのインストール - HA ファイル共有向け公式 SAP ガイドライン][sap-official-ha-file-share-document]:
+* [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする: 高可用性ファイル共有向け公式 SAP ガイドライン][sap-official-ha-file-share-document]
 
 * [Windows Server 2016 での記憶域スペース ダイレクト][s2d-in-win-2016]
 

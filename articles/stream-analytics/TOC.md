@@ -35,7 +35,7 @@
 
 ## Visual Studio ツールの使用
 ### [インストール](stream-analytics-tools-for-visual-studio-install.md)
-### [概要](stream-analytics-tools-for-visual-studio.md)
+### [作業の開始](stream-analytics-tools-for-visual-studio.md)
 ### [CI/CD パイプラインの設定](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## 監視と最適化
@@ -57,7 +57,6 @@
 ### [リソース正常性ブレード](stream-analytics-resource-health.md)
 ### [ジョブのダイアグラムとメトリック](stream-analytics-job-diagram-with-metrics.md)
 ### [SELECT INTO によるデバッグ](stream-analytics-select-into.md)
-### [イベントの順序の処理](stream-analytics-out-of-order-and-late-events.md)
 ### [イベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)
 ### [イベント ハブ リーダーの制限](stream-analytics-event-hub-consumer-groups.md)
 ### [診断ログ](stream-analytics-job-diagnostic-logs.md)

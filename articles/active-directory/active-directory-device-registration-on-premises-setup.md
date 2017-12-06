@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 11/22/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6d53d08156d0e5d1d070361db5b74d201f18a224
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 2342690d983b6e27fa008b5c72a736a9ecda8f47
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -166,9 +166,9 @@ Azure Active Directory デバイス登録では、iOS デバイスに対して�
 4. メッセージが表示されたら、ユーザーの資格情報でサインインします。 これでデバイスが参加します。
 
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用して Windows 7 デバイスを参加させる
-Windows 7 ドメイン参加済みデバイスを登録するには、デバイス登録ソフトウェア パッケージをデプロイする必要があります。 このソフトウェア パッケージは Workplace Join for Windows 7 という名前で、[Microsoft Connect Web サイト](https://connect.microsoft.com/site1164)からダウンロードできます。 
+Windows 7 ドメイン参加済みデバイスを登録するには、[デバイス登録ソフトウェア パッケージ](https://www.microsoft.com/download/details.aspx?id=53554)をデプロイする必要があります。
 
-パッケージを使用するための手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」を参照してください。
+パッケージを使用する手順については、「[非 Windows 10 コンピューター用の Windows インストーラー パッケージ](device-management-hybrid-azuread-joined-devices-setup.md#windows-installer-packages-for-non-windows-10-computers)」をご覧ください。
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>登録済みのデバイスが Active Directory に書き戻されていることを確認する
 LDP.exe または ADSI Edit を使用して、デバイス オブジェクトが Active Directory に書き戻されたことを表示し、確認することができます。 どちらも、Active Directory 管理ツールで利用できます。

@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: c2b49058ec7dd52b5063e815447697fa17ddb53a
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 8c15d198e92b1478b84b2140df416df3909ba141
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
@@ -30,14 +30,14 @@ ms.lasthandoff: 11/16/2017
 Azure Storage の [Blob Storage サービス](../storage/common/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure Content Delivery Network (CDN) と統合されたサービスの 1 つです。 パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。 TTL は、配信元サーバーからの HTTP 応答の `Cache-Control` ヘッダーによって決まります。 この記事では、Azure Storage の BLOB で `Cache-Control` ヘッダーを設定する方法のいくつかを示します。
 
 > [!TIP]
-> BLOB に TTL を設定しないこともできます。 その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。
+> BLOB に TTL を設定しないこともできます。 その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。 この既定の TTL は、一般的な Web 配信の最適化に対してのみ適用されます。 大きなファイルの最適化に対する既定の TTL は 1 日、メディア ストリーミングの最適化に対する既定の TTL は 1 年です。
 > 
 > その他のファイルと BLOB へのアクセスを高速化する Azure CDN のしくみについて詳しくは、「[Azure Content Delivery Network (CDN) の概要](cdn-overview.md)」をご覧ください。
 > 
 > Azure Blob Storage について詳しくは、「[Blob Storage の概要](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)」をご覧ください。
  
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Azure PowerShell を使った Cache-Control ヘッダーの設定
 [Azure PowerShell](/powershell/azure/overview) は、Azure の各種サービスを管理する最も簡単で最も強力な方法の 1 つです。 `Get-AzureStorageBlob` コマンドレットを使用して BLOB への参照を取得し、`.ICloudBlob.Properties.CacheControl` プロパティを設定します。 
 
 For example:
@@ -61,8 +61,8 @@ $blob.ICloudBlob.SetProperties()
 > 
 >
 
-## <a name="azure-storage-client-library-for-net"></a>.NET 用 Azure Storage クライアント ライブラリ
-.NET を使用して BLOB の `Cache-Control` ヘッダーを設定するには、[.NET 用 Azure Storage クライアント ライブラリ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)を使用して、[CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) プロパティを設定します。
+## <a name="setting-cache-control-headers-by-using-net"></a>.NET を使った Cache-Control ヘッダーの設定
+.NET コードを使って BLOB の `Cache-Control` ヘッダーを設定するには、[.NET 用 Azure Storage クライアント ライブラリ](../storage/blobs/storage-dotnet-how-to-use-blobs.md)を使って、[CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) プロパティを設定します。
 
 For example:
 
@@ -96,26 +96,28 @@ class Program
 > [!TIP]
 > 「[Azure Blob Storage Samples for .NET ](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)」(.NET 用 Azure Blob Storage のサンプル) には、他にも多くの使用可能な .NET コード サンプルがあります。
 > 
-> 
 
-## <a name="other-methods"></a>その他の方法
-* [Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)
-  
-    BLOB をアップロードする際、Azure コマンド ライン インターフェイスの `-p` スイッチを使用して、*cacheControl* プロパティを設定できます。 次の例では、TTL を 1 時間 (3,600 秒) に設定します。
+## <a name="setting-cache-control-headers-by-using-other-methods"></a>他の方法を使った Cache-Control ヘッダーの設定
+
+### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+[Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) を使うと、*CacheControl* のようなプロパティなどの Blob Storage リソースを表示して編集できます。 
+
+### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
+BLOB をアップロードするときに、[Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)で `-p` スイッチを使って *cacheControl* プロパティを設定できます。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt
     ```
-* [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-  
-    [Put Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx)、[Put Block List](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx)、または [Set Blob Properties](https://msdn.microsoft.com/library/azure/ee691966.aspx) 要求で *x-ms-blob-cache-control* プロパティを明示的に設定します。
 
-* サード パーティのストレージの管理ツール
+### <a name="azure-storage-services-rest-api"></a>Azure ストレージ サービス REST API
+[Azure ストレージ サービス REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) を使うと、要求で次の操作を使って *x-ms-blob-cache-control* プロパティを明示的に設定できます。
   
-    一部のサードパーティの Azure Storage 管理ツールでは、BLOB の **CacheControl** プロパティを設定できます。 
+   - [Put Blob](https://msdn.microsoft.com/en-us/library/azure/dd179451.aspx)
+   - [Put Block List](https://msdn.microsoft.com/en-us/library/azure/dd179467.aspx)
+   - [Set Blob Properties](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>Cache-Control ヘッダーのテスト
-BLOB の TTL 設定を簡単に確認できます。 ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使って、BLOB に `Cache-Control` 応答ヘッダーが含まれているかどうかをテストします。 **wget**、[Postman](https://www.getpostman.com/)、[Fiddler](http://www.telerik.com/fiddler) などのツールを使って応答ヘッダーを確認することもできます。
+BLOB の TTL 設定を簡単に確認できます。 ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使って、BLOB に `Cache-Control` 応答ヘッダーが含まれているかどうかをテストします。 [Wget](https://www.gnu.org/software/wget/)、[Postman](https://www.getpostman.com/)、[Fiddler](http://www.telerik.com/fiddler) などのツールを使って応答ヘッダーを確認することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を確認します](cdn-manage-expiration-of-cloud-service-content.md)

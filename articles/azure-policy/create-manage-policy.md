@@ -3,17 +3,17 @@ title: "Azure Policy を使用して組織のコンプライアンスを強制�
 description: "Azure Policy を使用して、標準を強制し、規制遵守および監査の要件を満たし、コストを制御し、セキュリティとパフォーマンスの一貫性を維持し、企業全体の設計原則を適用します。"
 services: azure-policy
 keywords: 
-author: Jim-Parker
-ms.author: jimpark
-ms.date: 11/01/2017
+author: bandersmsft
+ms.author: banders
+ms.date: 11/17/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 63e8e4d3dbbc2e50b55f7e293d324ceed0484bb7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 517f85307e97c1e98a84da95cb51660d6d4fe679
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -122,7 +122,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 -->
    JSON コードのサンプルを確認するには、「[Azure Policy のテンプレート](json-samples.md)」を参照してください。
 
-4. **[ 保存]** を選択します。
+4. **[保存]** を選択します。
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>REST API を使用したポリシー定義の作成
 
@@ -386,9 +386,9 @@ az policy definition list
 
 ## <a name="resolve-a-non-compliant-or-denied-resource"></a>準拠していないリソースまたは拒否されたリソースを解決する
 
-上の例に従って、SQL Server バージョン 12.0 を必須にするポリシー定義を割り当てると、別バージョンで作成された SQL サーバーは拒否されます。 このセクションでは、別バージョンで SQL サーバーを作成しようとして拒否された場合を解決する手順について説明します。
+上の例に従って、SQL Server バージョン 12.0 を必須にするポリシー定義を割り当てると、別バージョンで作成された SQL サーバーは拒否されます。 このセクションでは、別バージョンで SQL サーバーを作成しようとして拒否された場合に、除外を要求して解決する手順について説明します。
 
-1. 左側のウィンドウの **[Assignments]\(割り当て\)** を選択します。
+1. 左側のウィンドウの **[割り当て]** を選択します。
 2. すべてのポリシー割り当て一覧から、*[Require SQL Server Version 12.0]\(SQL Server バージョン 12.0 が必要\)* 割り当てを開始します。
 3. SQL サーバーを作成するリソース グループについて、除外を要求します。 この例では、Microsoft.Sql/servers/databases の *baconandbeer/Cheetos* と *baconandbeer/Chorizo* を除外します。
 
@@ -396,7 +396,7 @@ az policy definition list
 
    拒否されたリソースを解決する他の方法として、作成した SQL サーバーが必要であるという強い理由がある場合はポリシーに関連付けられた連絡先に連絡する方法と、ポリシーにアクセス権を持っている場合は直接編集する方法があります。
 
-4. **[ 保存]** を選択します。
+4. **[保存]** を選択します。
 
 このセクションでは、バージョン 12.0 で SQL サーバーを作成しようとして拒否された場合に、リソースの除外を要求して解決しました。
 

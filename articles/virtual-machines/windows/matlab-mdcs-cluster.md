@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: b302c6b3c6acbb8552796e7fb1bfd153d23dceb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 177f8a61487130e718e3e6cfb779b17a3ed8ed69
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM での MATLAB Distributed Computing Server クラスターの作成
 コンピューティング集中型の並列 MATLAB ワークロードを実行する 1 つ以上の MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します。 VM に MATLAB Distributed Computing Server ソフトウェアをインストールして基本イメージとして使用し、Azure のクイック スタート テンプレートまたは Azure PowerShell スクリプト ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)から入手可能) を使用してクラスターをデプロイおよび管理します。 デプロイ後には、クラスターに接続してワークロードを実行します。
@@ -32,7 +32,7 @@ Azure の仮想マシンを使用すると、対話型のジョブ、バッチ �
 * **クライアント コンピューター** : デプロイ後の Azure と MATLAB Distributed Computing Server クラスターとの通信に、Windows ベースのクライアント コンピューターが必要です。
 * **Azure PowerShell** : クライアント コンピューターにインストールする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
 * **Azure サブスクリプション** - サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。 大規模なクラスターでは、従量課金制のサブスクリプションまたはその他の購入オプションを検討してください。
-* **コア クォータ** : 大規模なクラスターまたは複数の MATLAB Distributed Computing Server クラスターをデプロイするには、コア クォータを増やす必要があります。 クォータを増やすには、 [オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
+* **vCPU クォータ** : 大規模なクラスターまたは複数の MATLAB Distributed Computing Server クラスターをデプロイするには、vCPU クォータを増やす必要があります。 クォータを増やすには、 [オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 * **MATLAB の Parallel Computing Toolbox および MATLAB Distributed Computing Server ライセンス** : このスクリプトでは、すべてのライセンスで [MathWorks Hosted License Manager](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) が使用されていることを想定しています。  
 * **MATLAB Distributed Computing Server ソフトウェア** : クラスター VM の基本 VM イメージとして使用される VM にインストールされます。
 
@@ -62,7 +62,7 @@ MATLAB のクライアント ノード、MATLAB のジョブ スケジューラ 
 * クラスターを使用するには、クライアント ノードにリモート デスクトップで接続します。 クライアント ノードで、MATLAB のクライアントが実行されます。
 * クライアント ノードには、すべての worker がアクセスできるファイル共有があります。
 * MathWorks Hosted License Manager は、すべての MATLAB ソフトウェアのライセンスのチェックに使用されます。
-* 既定では、worker VM には、コアあたり 1 つの MATLAB Distributed Computing Server が作成されますが、これには任意の数を指定することができます。
+* 既定では、worker VM には、vCPU あたり 1 つの MATLAB Distributed Computing Server が作成されますが、これには任意の数を指定することができます。
 
 ## <a name="use-an-azure-based-cluster"></a>Azure ベースのクラスターの使用
 MATLAB Job Scheduler クラスター プロファイルを作成するには、他の種類の MATLAB Distributed Computing Server クラスターと同様に、(クライアント VM 上の) MATLAB クライアントで Cluster Profile Manager を使用します。

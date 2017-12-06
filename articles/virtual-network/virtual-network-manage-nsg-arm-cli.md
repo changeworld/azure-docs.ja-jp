@@ -1,10 +1,10 @@
 ---
-title: "ネットワーク セキュリティ グループの管理 - Azure CLI 2.0 | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイス (CLI) 2.0 を使用してネットワーク セキュリティ グループを管理する方法について説明します。"
+title: "ネットワーク セキュリティ グループの管理 - Azure CLI | Microsoft Docs"
+description: "Azure コマンド ライン インターフェイスを使用してネットワーク セキュリティ グループを管理する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: ed17d314-07e6-4c7f-bcf1-a8a2535d7c14
@@ -16,23 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11ec0d3d9e33c06d4c0a164f7fba5dd5cca73872
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c8d9f932746811a5b21dbd667d7c7bdc8f721fb
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="manage-network-security-groups-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用したネットワーク セキュリティ グループの管理
+# <a name="manage-network-security-groups-using-the-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループの管理
 
 [!INCLUDE [virtual-network-manage-arm-selectors-include.md](../../includes/virtual-network-manage-nsg-arm-selectors-include.md)]
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン 
-
-次のいずれかの CLI バージョンを使用してタスクを完了できます。 
-
-- [Azure CLI 1.0](virtual-network-manage-nsg-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI 
-- [Azure CLI 2.0](#View-existing-NSGs) - リソース管理デプロイ モデル用の次世代 CLI (この記事)
-
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
@@ -44,7 +36,6 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisite"></a>前提条件
 まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。 
-
 
 ## <a name="view-existing-nsgs"></a>既存の NSG を表示する
 特定のリソース グループの NSG の一覧を表示するには、[az network nsg list](/cli/azure/network/nsg#list) コマンドを `-o table` の出力形式で実行します。
@@ -89,13 +80,13 @@ az network nsg list -g RG-NSG -o table
 
 ## <a name="view-nsg-associations"></a>NSG の関連付けを表示する
 
-**NSG-FrontEnd** NSG が関連付けられているリソースを表示するには、次のように `az network nsg show` コマンドを実行します。 
+**NSG-FrontEnd** NSG が関連付けられているリソースを表示するには、`az network nsg show` コマンドを実行します。 
 
 ```azurecli
 az network nsg show -g RG-NSG -n nsg-frontend --query '[subnets,networkInterfaces]'
 ```
 
-次の **NetworkInterfaces** と **Subnets** の各プロパティをご確認ください。
+**NetworkInterfaces** と **Subnets** の各プロパティを確認してください。次のように出力されます。
 
 ```json
 [
@@ -117,7 +108,7 @@ az network nsg show -g RG-NSG -n nsg-frontend --query '[subnets,networkInterface
 ]
 ```
 
-上の例では、NSG はネットワーク インターフェイス (NIC) に関連付けられておらず、 **FrontEnd**というサブネットに関連付けられています。
+上の例では、NSG はネットワーク インターフェイス (NIC) に関連付けられておらず、**FrontEnd**というサブネットに関連付けられています。
 
 ## <a name="add-a-rule"></a>規則を追加する
 任意のコンピューターから **NSG-FrontEnd** NSG へのポート **443** に対する**受信**トラフィックを許可する規則を追加するには、次のコマンドを入力します。
@@ -160,7 +151,7 @@ az network nsg rule create  \
 ```
 
 ## <a name="change-a-rule"></a>規則を変更する
-上の手順で作成した規則を、**インターネット**からの受信トラフィックのみを許可する規則に変更するには、[az network nsg rule update](/cli/azure/network/nsg/rule#update) コマンドを実行します。
+上記の手順で作成した規則を、**インターネット**からの受信トラフィックのみを許可する規則に変更するには、[az network nsg rule update](/cli/azure/network/nsg/rule#update) コマンドを実行します。
 
 ```azurecli
 az network nsg rule update \

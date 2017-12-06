@@ -4,6 +4,8 @@
   items:
     - name: Data Factory の概要
       href: introduction.md
+    - name: バージョン 1 と 2 の比較
+      href: compare-versions.md
 - name: クイック スタート
   expanded: true
   items:
@@ -19,6 +21,8 @@
           href: quickstart-create-data-factory-rest-api.md
         - name: ポータル
           href: quickstart-create-data-factory-portal.md
+        - name: Resource Manager テンプレート
+          href: quickstart-create-data-factory-resource-manager-template.md
 - name: Tutorials (チュートリアル)
   items:
     - name: 1 - SSIS パッケージを Azure にデプロイする
@@ -30,7 +34,14 @@
     - name: 4 - データを一括コピーする
       href: tutorial-bulk-copy.md
     - name: 5 - データを増分コピーする
-      href: tutorial-incremental-copy-powershell.md
+      href: tutorial-incremental-copy-overview.md
+      items:
+        - name: 5.1 - 1 つのテーブルからコピーする
+          href: tutorial-incremental-copy-powershell.md
+        - name: 5.2 - 複数のテーブルからコピーする
+          href: tutorial-incremental-copy-multiple-tables-powershell.md
+        - name: 5.3 - 変更追跡機能を使用する
+          href: tutorial-incremental-copy-change-tracking-feature-powershell.md
     - name: 6 - クラウドのデータを変換する
       href: tutorial-transform-data-spark-powershell.md
     - name: 7 - 仮想ネットワーク内のデータを変換する
@@ -224,6 +235,16 @@
           href: create-azure-ssis-integration-runtime.md
         - name: Azure-SSIS 統合ランタイムの VNet への参加
           href: join-azure-ssis-integration-runtime-virtual-network.md
+    - name: Azure での SSIS パッケージの実行
+      items:
+        - name: Azure-SSIS 統合ランタイムの作成
+          href: create-azure-ssis-integration-runtime.md
+        - name: Azure-SSIS 統合ランタイムの VNet への参加
+          href: join-azure-ssis-integration-runtime-virtual-network.md
+        - name: Azure SSIS 統合ランタイムの管理
+          href: manage-azure-ssis-integration-runtime.md
+        - name: Azure-SSIS 統合ランタイムのパフォーマンスの構成
+          href: configure-azure-ssis-integration-runtime-performance.md
 - name: リファレンス
   items:
     - name: .NET

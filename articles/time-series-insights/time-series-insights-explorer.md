@@ -3,7 +3,7 @@ title: "Azure Time Series Insights エクスプローラーを使用してデー
 description: "この記事では、Web ブラウザーで Azure Time Series Insights エクスプローラーを使用して、ビッグ データの全体像をすばやく表示したり、IoT 環境を検証したりする方法について説明します。"
 services: time-series-insights
 ms.service: time-series-insights
-author: kfile
+author: MarkMcGeeAtAquent
 ms.author: kfile
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 112c1a86e302c2549018fc3a8c6dbc22a689c8a6
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 35f7bf0504075e8bb0b99f8492b850df2b7ceae1
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 この記事では、Time Series Insights エクスプローラー Web アプリ内で使用できるさまざまな機能とオプションについて説明します。 Web ブラウザーで Time Series Insights エクスプローラーを使用して、データを視覚化します。
@@ -50,10 +50,10 @@ Time Series Insights エクスプローラーを使用するための前提条�
       - **[次で分割:]**: このドロップダウンではカテゴリ列 (文字列) が表示されます
       - [メジャー] の隣にあるコントロール パネルから、ステップ補間の有効化、最小値と最大値の表示、Y 軸の調整を行うことができます。  さらに、表示されるデータが総数であるか、平均値であるか、またはデータの合計であるかを調整できます。
       - 同じ X 軸上に表示する期間を最大 5 つまで追加できます。  **コピー ダウン** ボタンを使用して追加期間を追加するか、**[追加]** ボタンをクリックして新しい期間を追加します。
+     
+        ![期間編集パネル](media/time-series-insights-explorer/explorer2.png)
 
-      ![期間編集パネル](media/time-series-insights-explorer/explorer2.png)
-
-      - **[述語]**:  述語を使用すると、次に示す一連のオペランドを使用して、イベントをすばやくフィルター処理できます。 選択/クリックによって検索を実施した場合、述語はその検索に基づいて自動的に更新されます。  サポートされるオペランドの型には以下が含まれます。
+      - **[述語]**:  述語を使用すると、次に示す一連のオペランドを使用して、イベントをすばやくフィルター処理できます。 選択/クリックによって検索を実施した場合、述語はその検索に基づいて自動的に更新されます。      サポートされるオペランドの型には以下が含まれます。
 
          |操作  |サポートされている型  |メモ  |
          |---------|---------|---------|
@@ -100,11 +100,12 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
    - **[パターン]**: この機能では、選択されたデータ領域の中の統計的に最も有意なパターンが積極的に表示されます。 これによって、時間とエネルギーを保証する最適なパターンを理解するために何千ものイベントを確認する必要がなくなります。 さらに、Time Series Insights ではこれらの統計的に有意なパターンに直接取りかかって、分析の実施を続けられます。 この機能は、履歴データの事後分析にも役立ちます。 
 
-   - **[Column Stats]\(列の統計\)**: 列の統計では、選択された期間の選択されたデータ系列の各列のデータを分解する、グラフ作成とテーブルが提供されます。  
+   - **[列の統計]**: 列の統計では、選択された期間の選択されたデータ系列の各列のデータを分解する、グラフ作成とテーブルが提供されます。  
  
       ![[統計]](media/time-series-insights-explorer/explorer8.png) 
 
 ここまでで、Time Series Insights エクスプローラー Web アプリ内で使用できるさまざまな機能とオプションが確認できました。 
 
 ## <a name="next-steps"></a>次のステップ
-[Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)
+> [!div class="nextstepaction"]
+>[Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)

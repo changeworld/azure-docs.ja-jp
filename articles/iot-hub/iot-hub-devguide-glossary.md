@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c2c95373912131445b584fa8518785b26caa9c02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a780461bb934b4766f8050fba825e1d7503f4fd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 複数の言語で使用可能な_デバイス SDK_ があり、IoT Hub と対話する[デバイス アプリ](#device-app)を作成できます。 IoT Hub のチュートリアルでは、これらのデバイス SDK を使用する方法を説明します。 デバイス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
-IoT Edge では、ゲートウェイに接続されたデバイスと [IoT Hub](#iot-hub) との通信を有効にするアプリケーションを作成できます。 IoT Edge のチュートリアルでは、このサービスの使用方法を示します。 Azure IoT Edge のソース コードと詳細については、この GitHub [レポジトリ](https://github.com/Azure/iot-edge)を参照してください。
+Azure IoT Edge は、企業がデータの管理に手間取ることなくビジネス インサイトに専念できるよう、これまでクラウドで行っていた分析とカスタム ビジネス ロジックをデバイス側で実行できるようにするものです。 ご利用の IoT ソフトウェアを構成して標準のコンテナーによりそれをデバイスにデプロイし、すべてクラウドから監視することで、カスタム ソリューションに真のスケーラビリティがもたらされます。 まず、[Linux](../iot-edge/tutorial-simulate-device-linux.md) デバイスまたは [Windows](../iot-edge/tutorial-simulate-device-windows.md) デバイスに Azure IoT Edge をインストールして使用する方法について説明したチュートリアルから始めてください。
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT サービス SDK
 複数の言語で使用可能な_サービス SDK_ があり、IoT Hub と対話する[バックエンド アプリ](#back-end-app)を作成できます。 IoT Hub のチュートリアルでは、これらのサービス SDK を使用する方法を説明します。 サービス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
@@ -189,7 +189,7 @@ Azure IoT Suite では、複数の Azure サービスと構成済みソリュー
 [ジョブ REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) を使用して、IoT Hub で実行されている[ジョブ](#job)を管理できます。
 
 ## <a name="module"></a>モジュール
-[Azure IoT Edge](iot-hub-linux-iot-edge-get-started.md) では、[モジュール](iot-hub-linux-iot-edge-get-started.md)は特定のタスクを実行するコンポーネントです。 タスクには、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信などが含まれます。 ブローカーがモジュール間でメッセージを転送します。 Azure IoT Edge には、一連のサンプル モジュールが含まれています。 また、独自のカスタム モジュールを作成することもできます。
+[Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md) では、[モジュール](../iot-edge/iot-edge-modules.md)は特定のタスクを実行するコンポーネントです。 タスクには、デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信などが含まれます。 ブローカーがモジュール間でメッセージを転送します。 Azure IoT Edge には、一連のサンプル モジュールが含まれています。 また、独自のカスタム モジュールを作成することもできます。
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) は、デバイスと通信するために [IoT Hub](#iot-hub) がサポートするメッセージング プロトコルの 1 つです。 IoT Hub がサポートするメッセージング プロトコルの詳細については、「[IoT Hub でのメッセージの送受信](iot-hub-devguide-messaging.md)」を参照してください。

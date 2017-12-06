@@ -1,96 +1,105 @@
-1. **アプリ** プロジェクトで、`AndroidManifest.xml` ファイルを開きます。 続く 2 つの手順では、コード内の *`**my_app_package**`* を、プロジェクトのアプリ パッケージの名前に置き換えます。 これは、`manifest` タグの `package` 属性の値です。
-2. 次の新しいアクセス許可を、既存の `uses-permission` 要素の後に追加します。
+1. **アプリ** プロジェクトで、`AndroidManifest.xml` ファイルを開きます。 `application` 開始タグの後に次のコードを追加します。
 
-        <permission android:name="**my_app_package**.permission.C2D_MESSAGE"
-            android:protectionLevel="signature" />
-        <uses-permission android:name="**my_app_package**.permission.C2D_MESSAGE" />
-        <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-        <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-        <uses-permission android:name="android.permission.WAKE_LOCK" />
-3. `application` 開始タグの後に次のコードを追加します。
+    ```xml
+    <service android:name=".ToDoMessagingService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+        </intent-filter>
+    </service>
+    <service android:name=".ToDoInstanceIdService">
+        <intent-filter>
+            <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+        </intent-filter>
+    </service>
+    ```
 
-        <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
-                                         android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="**my_app_package**" />
-            </intent-filter>
-        </receiver>
-4. ファイル *ToDoActivity.java*を開き、次の import ステートメントを追加します。
+2. `ToDoActivity.java` ファイルを開き、次のように変更します。
 
-        import com.microsoft.windowsazure.notifications.NotificationsManager;
-5. 次のプライベート変数をクラスに追加します。 *`<PROJECT_NUMBER>`* は、前の手順で Google によってアプリケーションに割り当てられたプロジェクト番号に置き換えます。
+    - import ステートメントを追加します。
 
-        public static final String SENDER_ID = "<PROJECT_NUMBER>";
-6. *MobileServiceClient* の定義を **private** から **public static** に変更し、次のようにします。
+        ```java
+        import com.google.firebase.iid.FirebaseInstanceId;
+        ```
 
-        public static MobileServiceClient mClient;
-7. 通知を処理する新しいクラスを追加します。 Project Explorer で、**src** > **main** > **java** ノードの順に開き、パッケージ名のノードを右クリックします。 **[New (新規)]** をクリックし、**[Java Class (Java クラス)]** をクリックします。
-8. **[Name (名前)]** に「`MyHandler`」と入力して、**[OK]** をクリックします。
+    - `MobileServiceClient` の定義を、**private** から **private static** に変更し、次のようにします。
 
-    ![](./media/app-service-mobile-android-configure-push/android-studio-create-class.png)
+        ```java
+        private static MobileServiceClient mClient;
+        ```
 
-9. MyHandler ファイルで、クラス宣言を以下の内容と置き換えます。
+    - `registerPush` メソッドを追加します。
 
-        public class MyHandler extends NotificationsHandler {
-10. 次の `MyHandler` クラスの import ステートメントを追加します。
+        ```java
+        public static void registerPush() {
+            final String token = FirebaseInstanceId.getInstance().getToken();
+            if (token != null) {
+                new AsyncTask<Void, Void, Void>() {
+                    protected Void doInBackground(Void... params) {
+                        mClient.getPush().register(token);
+                        return null;
+                    }
+                }.execute();
+            }
+        }
+        ```
 
-        import com.microsoft.windowsazure.notifications.NotificationsHandler;
-        import android.app.NotificationManager;
-        import android.app.PendingIntent;
-        import android.content.Context;
-        import android.content.Intent;
-        import android.os.AsyncTask;
-        import android.os.Bundle;
-        import android.support.v4.app.NotificationCompat;
-11. 次に、 `MyHandler` クラスにこのメンバーを追加します。
+    - `ToDoActivity` クラスの **onCreate** メソッドを更新します。 `MobileServiceClient` がインスタンス化された後に、このコードを追加します。
 
-        public static final int NOTIFICATION_ID = 1;
-12. `MyHandler` クラスで、次のコードを追加して、**onRegistered** メソッドをオーバーライドします。このコードにより、デバイスがモバイル サービスの通知ハブに登録されます。
+        ```java
+        registerPush();
+        ```
 
-        @Override
-        public void onRegistered(Context context,  final String gcmRegistrationId) {
-           super.onRegistered(context, gcmRegistrationId);
+3. 通知を処理する新しいクラスを追加します。 プロジェクト エクスプローラーで、**[app]** > **java** > **<お使いのプロジェクト名前空間>** ノードの順に開き、パッケージ名のノードを右クリックします。 **[New (新規)]** をクリックし、**[Java Class (Java クラス)]** をクリックします。 [名前] に「`ToDoMessagingService`」と入力して、[OK] をクリックします。 次に、クラスの宣言を以下の内容に置き換えます。
 
-           new AsyncTask<Void, Void, Void>() {
+    ```java
+    import android.app.Notification;
+    import android.app.NotificationManager;
+    import android.app.PendingIntent;
+    import android.content.Context;
+    import android.content.Intent;
 
-               protected Void doInBackground(Void... params) {
-                   try {
-                       ToDoActivity.mClient.getPush().register(gcmRegistrationId);
-                       return null;
-                   }
-                   catch(Exception e) {
-                       // handle error                
-                   }
-                   return null;              
-               }
-           }.execute();
-       }
-13. `MyHandler` クラスで、次のコードを追加して、**onReceive** メソッドをオーバーライドします。このコードは、通知を受信したときにその通知を表示します。
+    import com.google.firebase.messaging.FirebaseMessagingService;
+    import com.google.firebase.messaging.RemoteMessage;
+
+    public class ToDoMessagingService extends FirebaseMessagingService {
+
+        private static final int NOTIFICATION_ID = 1;
 
         @Override
-        public void onReceive(Context context, Bundle bundle) {
-               String msg = bundle.getString("message");
+        public void onMessageReceived(RemoteMessage remoteMessage) {
+            String message = remoteMessage.getData().get("message");
+            if (message != null) {
+                sendNotification("Notification Hub Demo", message);
+            }
+        }
 
-               PendingIntent contentIntent = PendingIntent.getActivity(context,
-                       0, // requestCode
-                       new Intent(context, ToDoActivity.class),
-                       0); // flags
+        private void sendNotification(String title, String messageBody) {
+            PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, ToDoActivity.class), 0);
+            Notification.Builder notificationBuilder = new Notification.Builder(this)
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentTitle(title)
+                    .setContentText(messageBody)
+                    .setContentIntent(contentIntent);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (notificationManager != null) {
+                notificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
+            }
+        }
+    }
+    ```
 
-               Notification notification = new NotificationCompat.Builder(context)
-                       .setSmallIcon(R.drawable.ic_launcher)
-                       .setContentTitle("Notification Hub Demo")
-                       .setStyle(new NotificationCompat.BigTextStyle().bigText(msg))
-                       .setContentText(msg)
-                       .setContentIntent(contentIntent)
-                       .build();
+4. トークンの更新を処理する別のクラスを追加します。 `ToDoInstanceIdService` Java クラスを作成し、クラスの宣言を以下の内容に置き換えます。
 
-               NotificationManager notificationManager = (NotificationManager)
-                       context.getSystemService(Context.NOTIFICATION_SERVICE);
-               notificationManager.notify(NOTIFICATION_ID, notification);
-       }
-14. TodoActivity.java ファイルに戻り、 **ToDoActivity** クラスの *onCreate* メソッドを更新して、通知のハンドラー クラスを登録します。 *MobileServiceClient* がインスタンス化された後に、このコードを追加してください。
+    ```java
+    import com.google.firebase.iid.FirebaseInstanceIdService;
 
-        NotificationsManager.handleNotifications(this, SENDER_ID, MyHandler.class);
+    public class ToDoInstanceIdService extends FirebaseInstanceIdService {
 
-    これで、アプリケーションがプッシュ通知をサポートするように更新されました。
+        @Override
+        public void onTokenRefresh() {
+            ToDoActivity.registerPush();
+        }
+    }
+    ```
+
+これで、アプリケーションがプッシュ通知をサポートするように更新されました。

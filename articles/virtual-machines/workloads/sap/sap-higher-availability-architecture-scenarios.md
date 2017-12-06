@@ -1,6 +1,6 @@
 ---
-title: "Azure インフラストラクチャ VM Restart を利用した SAP システムの \"高可用性\" の実現 | Microsoft Docs"
-description: "Azure インフラストラクチャ VM Restart を利用した SAP アプリケーションの \"高可用性\" の実現"
+title: "Azure インフラストラクチャの VM 再起動を利用して SAP システムの \"高可用性\" を実現する | Microsoft Docs"
+description: "Azure インフラストラクチャの VM 再起動を利用して SAP アプリケーションの \"高可用性\" を実現します"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,14 +17,15 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ebdc79d240a1250150d8ec2ef1d41b9a65ea0ee
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: be0792affba1eba32c2643344b7e284858adb9d6
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-system"></a>Azure インフラストラクチャ VM Restart を利用した SAP システムの "高可用性" の実現
+# <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Azure インフラストラクチャの VM 再起動を利用して SAP システムの "高可用性" を実現する
 
+[1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -207,70 +208,79 @@ ms.lasthandoff: 10/16/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-> この章は、次の両方に当てはまります。
+> このセクションは次に適用されます。
 >
 > ![Windows][Logo_Windows] Windows および ![Linux][Logo_Linux] Linux
 >
 
-Windows Server フェールオーバー クラスタリング (WSFC) または Linux 上の Pacemaker (現在、SLES 12 以降についてのみサポートされています) などの機能を使用しない場合、Azure VM Restart を使用して、Azure の物理サーバー インフラストラクチャや基になる Azure プラットフォーム全体の計画したまたは計画外のダウンタイムから SAP システムを保護します。
+Windows Server フェールオーバー クラスタリング (WSFC) や Linux の Pacemaker などの機能 (現在 SUSE Linux Enterprise Server [SLES] 12 以降でのみサポート) を使用しない場合は、Azure の VM 再起動を利用します。 これにより、Azure 物理サーバー インフラストラクチャと基になる Azure プラットフォーム全体の計画済みおよび計画外のダウンタイムに対して SAP システムを保護します。
 
 > [!NOTE]
-> Azure VM Restart で主に保護されるのはアプリケーションではなく、VM であることに注意してください。 VM Restart では SAP アプリケーションの高可用性は提供されませんが、一定のレベルのインフラストラクチャ可用性が提供されるため、間接的に SAP システムの "可用性を高める" ことができます。 また、計画されたまたは計画外のホスト障害の後、VM の再起動にかかる時間で SLA を必要としません。 そのため、"高可用性" のこのメソッドは、(A)SCS や DBMS などの SAP システムの重要なコンポーネントには適していません。
+> Azure の VM 再起動は、主に VM を保護するものであり、アプリケーションを保護するものでは "*ありません*"。 VM 再起動は、SAP アプリケーションの高可用性を提供するものではなく、一定レベルのインフラストラクチャの可用性を提供します。 それは、間接的に SAP システムの "高可用性" も提供します。 計画されたまたは計画外のホスト停止後に VM を再起動するためにかかる時間に対する SLA はないため、この方法による高可用性の実現は、SAP システムの重要なコンポーネントには適していません。 重要なコンポーネントの例として、ASCS/SCS インスタンスやデータベース管理システム (DBMS) があります。
 >
 >
 
-高可用性の別の重要なインフラストラクチャ要素はストレージです。 たとえば、Azure Storage SLA は 99.9% の可用性です。 すべての VM をそのディスクと共に 1 つの Azure Storage アカウントにデプロイした場合、潜在的な Azure Storage の非可用性により、その Azure Storage アカウントに配置されたすべての VM と、これらの VM 内で実行されているすべての SAP コンポーネントの可用性が失われます。  
+高可用性の別の重要なインフラストラクチャ要素はストレージです。 たとえば、Azure Storage SLA の可用性は 99.9% です。 すべての VM とそれらのディスクを単一の Azure Storage アカウントにデプロイしている場合、Azure Storage が使用不能になると、ストレージ アカウントに配置されているすべての VM と VM 内で実行されているすべての SAP コンポーネントの可用性が失われます。  
 
-すべての VM を 1 つの Azure Storage アカウントにデプロイするのではなく、各 VM に専用のストレージ アカウントを使用できます。この方法では、複数の独立した Azure Storage アカウントを使用して全体的な VM および SAP アプリケーションの可用性を改善できます。
+すべての VM を単一の Azure Storage アカウントに配置する代わりに、各 VM に専用の Storage アカウントを使用できます。 複数の独立した Azure Storage アカウントを使用することで、VM と SAP アプリケーションの全体的な可用性を向上させることができます。
 
-Azure Managed Disks は、アタッチされている仮想マシンの障害ドメインに自動的に配置されます。 可用性セットに 2 つの仮想マシンを配置し、Managed Disks を使用するプラットフォームでは、異なる障害ドメインへの Managed Disks の配布にも対応できます。 また、Premium Storage を使用する場合は、Managed Disks を使用することも強くお勧めします。
+Azure 管理ディスクは、それらが接続されている仮想マシンの障害ドメインに自動的に配置されます。 2 つの仮想マシンを可用性セットに配置し、管理ディスクを使用した場合、プラットフォームが異なる障害ドメインへの管理ディスクの分散も処理します。 Premium Storage アカウントを使用する場合は、管理ディスクを使用することを強くお勧めします。
 
-Azure インフラストラクチャ HA とストレージ アカウントを使用した SAP NetWeaver システムのアーキテクチャの例を以下に示します。
+Azure インフラストラクチャの高可用性とストレージ アカウントを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
 
-![Utilizing Azure infrastructure HA to achieve SAP application “higher” availability (Azure インフラストラクチャ HA を利用した SAP アプリケーションの "高可用性" の実現)][planning-guide-figure-2900]
+![Azure インフラストラクチャ高可用性を利用して SAP アプリケーションの高可用性を実現する][planning-guide-figure-2900]
 
-Azure インフラストラクチャ HA と Managed Disks を使用した SAP NetWeaver システムのアーキテクチャの例を以下に示します。
+Azure インフラストラクチャの高可用性と管理ディスクを使用する SAP NetWeaver システムのアーキテクチャの例を次に示します。
 
-![Utilizing Azure infrastructure HA to achieve SAP application “higher” availability (Azure インフラストラクチャ HA を利用した SAP アプリケーションの "高可用性" の実現)][planning-guide-figure-2901]
+![Azure インフラストラクチャの高可用性を利用して SAP アプリケーションの "高可用性" を実現する][planning-guide-figure-2901]
 
-重要な SAP コンポーネントについて、これまでに以下を実現しました。
+重要な SAP コンポーネントについて、これまでに以下が実現されています。
 
-* SAP アプリケーション サーバー (AS) の高可用性
+* SAP アプリケーション サーバーの高可用性
 
-  SAP アプリケーション サーバー インスタンスは、冗長コンポーネントです。 各 SAP AS インスタンスは、異なる Azure 障害ドメインおよびアップグレード ドメインで実行されている独自の VM にデプロイされます (「[障害ドメイン][planning-guide-3.2.1]」の章と「[アップグレード ドメイン][planning-guide-3.2.2]」の章をご覧ください)。 これは、Azure 可用性セットを使用して確保できます (「[Azure 可用性セット][planning-guide-3.2.3]」の章をご覧ください)。 Azure 障害またはアップグレード ドメインの計画されたまたは計画外の潜在的な非可用性により、SAP AS インスタンスでの制限された数の VM の可用性が失われます。
+    SAP アプリケーション サーバー インスタンスは、冗長コンポーネントです。 各 SAP アプリケーション サーバー インスタンスは独自の VM にデプロイされ、別々の Azure の障害ドメインとアップグレード ドメインで実行されます。 詳細については、「[障害ドメイン][planning-guide-3.2.1]」セクションと「[アップグレード ドメイン][planning-guide-3.2.2]」セクションを参照してください。 
 
-  各 SAP AS インスタンスは独自の Azure Storage アカウントに配置され、Azure Storage アカウントの非利用可能性により、その SAP AS での 1 つの VM のみの可用性が失われます。 ただし、1 つの Azure サブスクリプション内の Azure Storage アカウント数に制限があることに注意してください。 VM 再起動後の (A)SCS インスタンスを確実に自動開始するには、(A)SCS インスタンスの開始プロファイルで自動開始パラメーターを設定します。詳細については、「[SAP インスタンスでの自動開始の使用][planning-guide-11.5]」の章を参照してください。
-  詳細については、「[SAP アプリケーション サーバーの高可用性][planning-guide-11.4.1]」の章もお読みください。
+    Azure 可用性セットを使用してこの構成を保証できます。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」を参照してください。 
 
-  Managed Disks を使用している場合でも、Azure Storage アカウントにも格納されるので、ストレージの故障時に使用できなくなる可能性があります。
+    Azure の障害やアップグレード ドメインによる計画されたまたは計画外の停止によって、限られた数の VM と SAP アプリケーション サーバー インスタンスが使用不可になります。
 
-* *向上* 
+    各 SAP アプリケーション サーバー インスタンスは、独自の Azure Storage アカウントに配置されます。 1 つの Azure ストレージ アカウントが使用できなくなった場合、1 つの VM と SAP アプリケーション サーバー インスタンスのみが使用不可になります。 ただし、1 つの Azure サブスクリプションに配置できる Azure Storage アカウントの数には制限があることに注意してください。 VM 再起動の後に ASCS/SCS インスタンスを確実に自動開始するには、「[SAP インスタンスでの Autostart の使用][planning-guide-11.5]」セクションの説明に従って、ASCS/SCS インスタンスの開始プロファイルに Autostart パラメーターを設定します。
+  
+    詳細については、「[SAP アプリケーション サーバーの高可用性][planning-guide-11.4.1]」を参照してください。
 
-  ここでは、Azure VM Restart を使用して、インストールされた SAP (A)SCS インスタンスにより VM を保護します。 計画されたまたは計画外の Azure サーバーのダウンタイムの発生時に、VM は別の使用できるサーバーで起動されます。 前述のように、Azure VM Restart ではアプリケーションではなく主に VM が保護されます (この場合は (A)SCS インスタンス)。 VM Restart を使用して、SAP (A)SCS インスタンスの "可用性の向上" を間接的に達成します。 VM 再起動後の (A)SCS インスタンスを確実に自動開始するには、(A)SCS インスタンスの開始プロファイルで自動開始パラメーターを設定します。詳しくは、「[SAP インスタンスでの自動開始の使用][planning-guide-11.5]」の章をご覧ください。 これは、単一の VM で実行する単一障害点 (SPOF) としての (A)SCS インスタンスが SAP ランドスケープ全体の可用性の決定要因になることを意味します。
+    管理ディスクを使用している場合でも、ディスクは Azure Storage アカウントに格納されるため、Storage の停止が発生した場合は使用不可になる可能性があります。
 
-* *向上* 
+* SAP ASCS/SCS インスタンスの*可用性の向上*
 
-  ここでは、SAP (A)SCS インスタンスのユース ケースと同様に、Azure VM Restart を使用して、インストールされた DBMS ソフトウェアで VM を保護し、VM Restart 経由で DBMS ソフトウェアの "可用性の向上" を実現します。
-  1 つの VM で実行される DBMS が SPOF であり、また SAP ランドス ケープ全体の可用性の決定要因です。
+    このシナリオでは、Azure の VM 再起動を利用して、VM と インストール済みの SAP ASCS/SCS インスタンスを保護します。 Azure サーバーの計画されたまたは計画外のダウンタイムが発生した場合、VM は使用可能な別のサーバー上で起動されます。 前述したように、Azure の VM 再起動は、主に VM を保護するものであり、アプリケーション (ここでは ASCS/SCS インスタンス) を保護するものでは "*ありません*"。 VM 再起動を通して、SAP ASCS/SCS インスタンスの “可用性の向上” を間接的に実現できます。 
 
-## <a name="using-autostart-for-sap-instances"></a>SAP インスタンスでの自動開始の使用
-  SAP では、VM 内の OS の起動直後に SAP インスタンスを開始する機能の提供が開始されました。 詳細な手順については、SAP Knowledge Base Article [1909114] を参照してください。 ただし、SAP はこの設定の使用を推奨していません。これは、インスタンスの再起動を管理する方法がないためであり、1 つ以上の VM が影響を受けるか、VM あたり複数のインスタンスが実行されるためです。 VM 内に SAP アプリケーション サーバー インスタンスが 1 つあるという一般的な Azure シナリオと、単一 VM が最終的に起動される場合を想定すると、自動開始はそれほどクリティカルではなく、このパラメーターを追加して有効にすることができます。
+    VM 再起動の後に ASCS/SCS インスタンスを確実に自動開始するには、「[SAP インスタンスでの Autostart の使用][planning-guide-11.5]」セクションの説明に従って、ASCS/SCS インスタンスの開始プロファイルに Autostart パラメーターを設定します。 この設定は、単一の VM で実行される単一障害点 (SPOF) としての ASCS/SCS インスタンスが SAP ランドスケープ全体の可用性を決定することを意味します。
+
+* DBMS サーバーの*可用性の向上*
+
+    上記の SAP ASCS/SCS インスタンスのユース ケースと同様に、Azure の VM 再起動を利用して VM とインストール済みの DBMS ソフトウェアを保護することで、VM 再起動による DBMS ソフトウェアの "可用性の向上" を実現できます。
+  
+    単一の VM で実行される DBMS は SPOF でもあるため、SAP ランドスケープ全体の可用性の決定要因になります。
+
+## <a name="using-autostart-for-sap-instances"></a>SAP インスタンスでの Autostart の使用
+SAP には、VM 内の OS の起動直後に SAP インスタンスを開始できる設定が用意されています。 手順については、SAP Knowledge Base Article [1909114] を参照してください。 ただし、SAP では、複数の VM に影響する場合、または VM で複数のインスタンスが実行される場合、この設定ではインスタンスを再起動する順序を制御できないため、その使用はもう推奨されていません。 
+
+VM 内に 1 つの SAP アプリケーション サーバー インスタンスがあり、最終的に単一の VM が起動されるという一般的な Azure シナリオでは、Autostart は重要ではありません。 ただし、次のパラメーターを SAP Advanced Business Application Programming (ABAP) または Java インスタンスの開始プロファイルに追加することで、それを有効にすることができます。
 
       Autostart = 1
 
-  このパラメーターを、SAP ABAP または Java インスタンスの開始プロファイルに追加します。
 
   > [!NOTE]
-  > 自動開始パラメーターには、いくつかの欠点もあります。 具体的には、インスタンスの関連する Windows/Linux サービスが開始されたときに、パラメーターにより SAP ABAP または Java インスタンスの起動がトリガーされます。 オペレーティング システムの起動時がまさにこれに該当します。 ただし、SAP サービスの再起動は、SUM などの SAP ソフトウェア ライフサイクル管理機能や、その他の更新プログラムまたはアップグレードには通常の動作でもあります。 これらの機能では、インスタンスが再起動されることはまったく想定されません。 したがって、こうしたタスクを実行する前に、自動開始パラメーターを無効にする必要があります。 また、自動開始パラメーターは、ASCS/SCS/CI などのクラスター化された SAP インスタンスに使用しないでください。
+  > Autostart パラメーターには欠点もあります。 具体的には、このパラメーターは、インスタンスと関連する Windows/Linux サービスが開始されたときに、SAP ABAP または Java インスタンスの起動をトリガーします。 このシーケンスは、オペレーティング システムの起動時に発生します。 ただし、SAP サービスの再起動は、Software Update Manger (SUM) などの SAP ソフトウェア ライフサイクル管理機能や、その他の更新またはアップグレードでも一般的に発生します。 これらの機能では、インスタンスが再起動されることは想定していません。 したがって、このようなタスクを実行する前に、Autostart パラメーターを無効にする必要があります。 ASCS/SCS/CI などのクラスター化された SAP インスタンスでも、Autostart パラメーターは使用しないでください。
   >
   >
 
-  SAP インスタンスの自動開始に関するその他の情報については、以下を参照してください。
+  SAP インスタンスの Autostart の詳細については、次の記事を参照してください。
 
-  * [Start/Stop SAP along with your Unix Server Start/Stop (Unix サーバーの開始/停止に伴う SAP の開始/停止)](http://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
-  * [Starting and Stopping SAP NetWeaver Management Agents (SAP NetWeaver 管理エージェントの開始と停止)](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-  * [How to enable auto Start of HANA Database (HANA データベースの自動開始を有効にする方法)](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+  * [Start or stop SAP along with your Unix Server Start/Stop](http://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop) (Unix サーバーの開始/停止に伴う SAP の開始/停止)
+  * [Starting and stopping SAP NetWeaver management agents](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm) (SAP NetWeaver 管理エージェントの開始と停止)
+  * [How to enable autostart of the HANA database](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html) (HANA データベースの自動開始を有効にする方法)
 
 ## <a name="next-steps"></a>次のステップ
 
-完全な SAP NetWeaver アプリケーション対応の高可用性については、「[SAP Application High Availability on Azure IaaS (Azure IaaS での SAP アプリケーションの高可用性)][sap-high-availability-architecture-scenarios-sap-app-ha]」をご覧ください。
+完全な SAP NetWeaver アプリケーション対応の高可用性の詳細については、「[Azure IaaS での SAP アプリケーションの高可用性][sap-high-availability-architecture-scenarios-sap-app-ha]」をご覧ください。

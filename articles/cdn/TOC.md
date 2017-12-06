@@ -20,16 +20,19 @@
  
 ## 管理
 ### [Azure PowerShell を使用して管理する](cdn-manage-powershell.md)
-### Time to Live を構成する
-#### [Web Apps/Cloud Services、ASP.NET、または IIS のコンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
-#### [Storage Blob service のコンテンツ](cdn-manage-expiration-of-blob-content.md)
 ### [国ごとにアクセスを制限する](cdn-restrict-access-by-country.md)
 ### [ファイル圧縮によるパフォーマンスの向上](cdn-improve-performance.md)
-### クエリ文字列別にコンテンツをキャッシュする
-#### [Standard レベル](cdn-query-string.md)
-#### [Premium レベル](cdn-query-string-premium.md)
-### [キャッシュしたアセットを消去する](cdn-purge-endpoint.md)
-### [キャッシュしたアセットを事前に読み込む](cdn-preload-endpoint.md)
+### キャッシュ動作の制御
+#### [キャッシュのしくみ](cdn-how-caching-works.md)
+#### [キャッシュ規則によるキャッシュ動作の制御](cdn-caching-rules.md)
+#### クエリ文字列によるコンテンツのキャッシュ
+##### [Standard レベル](cdn-query-string.md)
+##### [Premium レベル](cdn-query-string-premium.md)
+#### [キャッシュしたアセットを消去する](cdn-purge-endpoint.md)
+#### [キャッシュしたアセットを事前に読み込む](cdn-preload-endpoint.md)
+### Time to Live を構成する
+#### [Azure Web コンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
+#### [Azure BLOB Storage](cdn-manage-expiration-of-blob-content.md)
 ### [認証トークン](cdn-token-auth.md)
 ### [リソースの監視](cdn-resource-health.md)
 ### [規則に従って動作を上書きする](cdn-rules-engine.md)

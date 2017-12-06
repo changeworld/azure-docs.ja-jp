@@ -30,6 +30,13 @@
     - name: API Management
       tocHref: /azure/api-management/
       topicHref: /azure/api-management/
+      items:
+        - name: ポリシー
+          tocHref: /azure/api-management/policies/
+          topicHref: /azure/api-management/policy-samples/
+        - name: Azure PowerShell
+          tocHref: /azure/api-management/scripts/
+          topicHref: /azure/api-management/powershell-samples/
     - name: App Service
       tocHref: /azure/app-service/
       topicHref: /azure/app-service/
@@ -79,7 +86,7 @@
     - name: Azure China 21Vianet
       tocHref: /azure/china/
       topicHref: /azure/china/
-    - name: Azure ポータル
+    - name: Azure Portal
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/
     - name: リソース マネージャー

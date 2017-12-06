@@ -10,19 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 050758240c9670a6f120f069d736cf6d6475b534
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a03fb4f202bddb6454f703c998e95abf13d14fff
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
 
-> [!IMPORTANT]
-> サポート チームとやり取りするときは、ビルド番号を確認しておくことが重要です。 アプリのビルド番号を調べるには、**[ヘルプ]** メニューをクリックします。 ビルド番号をクリックすると、クリップボードにコピーされます。 これを電子メールやサポート フォーラムに貼り付けると、問題のレポートに役立ちます。
-
-![バージョン番号の検査](media/known-issues-and-troubleshooting-guide/buildno.png)
+## <a name="find-the-workbench-build-number"></a>ワークベンチのビルド番号を調べる
+サポート チームとやり取りするときは、Workbench アプリのビルド番号を確認しておくことが重要です。 Windows では、**[ヘルプ]** メニューをクリックし、**[About Azure ML Workbench]\(Azure ML Workbench のバージョン情報\)** を選択することで、ビルド番号を調べることができます。 Macos では、**[Azure ML Workbench]** メニューをクリックし、**[About Azure ML Workbench]\(Azure ML Workbench のバージョン情報\)** を選択します。
 
 ## <a name="machine-learning-msdn-forum"></a>Machine Learning MSDN フォーラム
 MSDN フォーラムに質問を投稿できます。 製品チームは、このフォーラムを積極的に監視しています。 フォーラムの URL は [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum) です。 
@@ -75,10 +73,13 @@ Azure ML Workbench での作業中に、アプリケーション シェルの左
     >この制限は、`.git`、`docs`、`outputs` の各フォルダーには適用されません。 これらのフォルダー名では大文字と小文字が区別されます。 大きなファイルを処理する場合は、「[Persisting Changes and Deal with Large Files (大きなファイルの変更の永続化と処理)](how-to-read-write-files.md)」をご覧ください。
 
 - 実験実行時間の上限: 7 日間
+
 - 実行時に `outputs` フォルダーで追跡されるファイルの最大サイズ: 512 MB
   - スクリプトによって、outputs フォルダーに 512 MB を超えるファイルが生成された場合、フォルダーでそのファイルは収集されません。 大きなファイルを処理する場合は、「[Persisting Changes and Deal with Large Files (大きなファイルの変更の永続化と処理)](how-to-read-write-files.md)」をご覧ください。
 
 - SSH キーは、リモート マシンまたは SSH 経由の Spark クラスターに接続しているときにはサポートされません。 現在サポートされているのは、ユーザー名/パスワード モードだけです。
+
+- HDInsight クラスターをコンピューティング ターゲットとして使用する場合は、プライマリ ストレージとして Azure BLOB を使用する必要があります。 Azure Data Lake Storage の使用はサポートされていません。
 
 - Mac では、テキストのクラスタリング変換はサポートされていません。
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure Time Series Insights でパフォーマンスを監視し、調整を軽減し、待機時間を防止する方法 | Microsoft Docs"
+title: "Azure Time Series Insights で待機時間を防止するために調整を監視して軽減する方法 | Microsoft Docs"
 description: "この記事では、Azure Time Series Insights の待機時間と調整の原因になるパフォーマンスの問題を監視、診断、および緩和する方法について説明します。"
 services: time-series-insights
 ms.service: time-series-insights
@@ -12,13 +12,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/15/2017
-ms.openlocfilehash: 5af5589922ded802703b9ba8f3b0aa8c5524bbad
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9d53cd0ee8e15d47ac1daa122331b3145f936adb
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
-# <a name="improve-performance-reduce-latency-and-mitigate-throttling-in-azure-time-series-insights"></a>Azure Time Series Insights のパフォーマンスの向上、待機時間の軽減、調整の緩和
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 着信データの量が環境の構成を超えると、Azure Time Series Insights で待機時間や調整が発生する可能性があります。
 
 分析するデータ量に合わせて環境を正しく構成することによって待機時間と調整を回避できます。
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/15/2017
 
 そこから、次のメトリックを使用してアラートを構成できます。
 
-|メトリック  |Description  |
+|メトリック  |説明  |
 |---------|---------|
 |**受信バイトの受信**     | イベント ソースから読み取られた生バイト数。 通常、生バイト数にはプロパティの名前と値が含まれます。  |  
 |**無効な受信メッセージの受信**     | すべての Azure Event Hubs または Azure IoT Hub イベント ソースから読み取られた無効なメッセージの数。      |

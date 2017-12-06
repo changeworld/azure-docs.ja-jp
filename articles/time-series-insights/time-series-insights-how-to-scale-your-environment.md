@@ -12,8 +12,8 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: d3c8b2b1ba220bf07a2bcdbd7fb26b94f897981f
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: edcd9561778998c4df09cc5014f8b8ba81c0e369
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/16/2017
@@ -22,7 +22,7 @@ ms.lasthandoff: 11/16/2017
 
 この記事では、Azure Portal を使用して Time Series Insights 環境の容量を変更する方法について説明します。 容量は、受信レート、ストレージの容量、および選択された SKU に関連するコストに適用される乗数です。 
 
-Azure Portal を使用して、容量を特定の価格 SKU 内で増減できます。 
+Azure ポータルを使用して、容量を特定の価格 SKU 内で増減できます。 
 
 ただし、価格レベル SKU の変更は許可されません。 たとえば、S1 価格の SKU の環境を S2 に変換したり、その逆方向に変換したりすることはできません。 
 
@@ -46,7 +46,7 @@ Azure Portal を使用して、容量を特定の価格 SKU 内で増減でき�
 ## <a name="change-the-capacity-of-your-environment"></a>環境の容量を変更する
 1. Azure Portal で Time Series Insights 環境を見つけて選択します。 
 
-2. **[設定]** という見出しの **[構成]** を選択します。
+2. Time Series Insighs 環境のメニューから、**[構成]** を選択します。
 
    ![configure.png](media/scale-your-environment/configure.png)
 

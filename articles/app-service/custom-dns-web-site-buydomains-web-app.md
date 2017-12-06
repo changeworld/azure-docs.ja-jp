@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 3cb22b935624041ab51e64028a1b668fd694f9b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ba6e3a79e5eb4eca4a3c7d35ada8c58bfe2295e
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Azure Web Apps のカスタム ドメイン名を購入する
 
@@ -31,6 +31,7 @@ App Service ドメイン (プレビュー) は、Azure で直接管理される�
 このチュートリアルを完了するには、以下が必要です。
 
 * [App Service アプリを作成する](/azure/app-service/)か、別のチュートリアルで作成したアプリを使用します。
+* [サブスクリプションで使用制限を削除](../billing/billing-spending-limit.md#remove)します。 無料のサブスクリプション クレジットで App Service ドメインを購入することはできません。
 
 ## <a name="prepare-the-app"></a>アプリの準備
 
@@ -86,11 +87,21 @@ Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Pre
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
+> [!NOTE]
+> **[App Service ドメイン]** セクションが表示されていない場合は、Azure アカウントの使用制限を削除する必要があります (「[前提条件](#prerequisites)」をご覧ください)。
+>
+>
+
 ### <a name="configure-the-domain-purchase"></a>ドメインの購入を構成する
 
-**[App Service ドメイン]** ページの **[ドメインの検索]** ボックスに購入するドメイン名を入力して、`Enter` キーを押します。 推奨される使用可能なドメインがテキスト ボックスの下に表示されます。 購入するドメインを 1 つ以上選びます。 
+**[App Service ドメイン]** ページの **[ドメインの検索]** ボックスに購入するドメイン名を入力して、`Enter` キーを押します。 推奨される使用可能なドメインがテキスト ボックスの下に表示されます。 購入するドメインを 1 つ以上選びます。
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+
+> [!NOTE]
+> App Service ドメインでは、_com_、_net_、_co.uk_、_org_、_nl_、_in_、_biz_、_org.uk_、_co.in_ の各[トップレベル ドメイン](https://wikipedia.org/wiki/Top-level_domain)がサポートされています。
+>
+>
 
 **[連絡先情報]** をクリックし、ドメインの連絡先情報フォームに入力します。 終了したら、**[OK]** をクリックして [App Service ドメイン] ページに戻ります。
    
@@ -100,8 +111,7 @@ Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Pre
 
 | 設定 | 推奨値 | 説明 |
 |-|-|-|
-|自動更新 | **有効にする** | App Service ドメインを毎年自動的に更新します。 更新時には、同じ購入価格がクレジット カードに課金されます。 |
-|プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です (_.co.in_ や _.co.uk_ など、レジストリがプライバシー保護をサポートしていないトップレベル ドメインを除きます)。 |
+|プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、**[プライバシー保護]** ページに表示されます。 |
 | 既定のホスト名の割り当て | **www** および **@** | 必要に応じて、適切なホスト名バインドを選びます。 ドメイン購入操作が完了すると、選んだホスト名で Web アプリにアクセスできるようになります。 Web アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) の背後にある場合、Traffic Manager は A レコードをサポートしていないため、ルート ドメイン (@) を割り当てるオプションは表示されません。 ドメインの購入が完了した後で、ホスト名の割り当てを変更することができます。 |
 
 ### <a name="accept-terms-and-purchase"></a>ライセンス条項に同意して購入する
@@ -125,7 +135,7 @@ Web アプリに既定のホスト名を割り当てた場合、選択した各�
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-選んだホスト名は、**[カスタム ドメイン]** ページの **[ホスト名]** セクションにも表示されます。 
+選択したホスト名は、**[カスタム ドメイン]** ページの **[カスタム ホスト名]** セクションにも表示されます。 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
@@ -182,7 +192,25 @@ Web アプリに既定のホスト名を割り当てた場合、選択した各�
 
 一覧表示されているホスト名にブラウザーで移動します。 前掲のスクリーンショットの例では、_abc.kontoso.net_ に移動してみます。
 
-<a name="custom" />
+## <a name="renew-the-domain"></a>ドメインを更新する
+
+購入した App Service ドメインは、購入時点から 1 年間有効です。 既定では、ドメインは、翌年の支払方法に課金することによって自動的に更新するように構成されています。 自動更新をオフにする場合やドメインを手動で更新する場合は、次の手順に従います。
+
+**[Web Apps]** タブで、Web アプリの名前をクリックし、**[設定]**、**[カスタム ドメイン]** の順に選択します。
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+
+**[App Service ドメイン]** セクションで、構成するドメインを選択します。
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+
+ドメインの左側のナビゲーションで、**[ドメインの更新]** を選択します。 ドメインの自動更新を停止するには、**[オフ]**、**[保存]** の順に選択します。 
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+
+ドメインを手動で更新するには、**[ドメインの更新]** を選択します。 ただし、このボタンはドメインの有効期限の 90 日前になるまでアクティブではありません。
+
+<a name="custom"></a>
 
 ## <a name="manage-custom-dns-records"></a>カスタム DNS レコードを管理する
 
@@ -236,6 +264,14 @@ Azure Portal の左側のメニューから、**[その他のサービス]** > *
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
-**[OK]** を選び、操作を確定します。 操作を続けない場合は、確認ダイアログの外側のどこかをクリックします。
+**[はい]** を選択して操作を確定します。
 
 操作が完了すると、ドメインはサブスクリプションから解放され、他のユーザーが再び購入できるようになります。 
+
+## <a name="direct-default-url-to-a-custom-directory"></a>既定の URL でカスタム ディレクトリを参照する
+
+既定では、App Service は Web 要求をアプリ コードのルート ディレクトリに送信します。 `public` などのサブディレクトリに要求を送信する場合は、「[Direct default URL to a custom directory (既定の URL でカスタム ディレクトリを参照する)](app-service-web-tutorial-custom-domain.md#virtualdir)」をご覧ください。
+
+## <a name="more-resources"></a>その他のリソース
+
+[よくあるご質問: App Service ドメイン (プレビュー) とカスタム ドメイン](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

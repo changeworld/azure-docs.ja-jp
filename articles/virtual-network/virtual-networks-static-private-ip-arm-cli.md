@@ -1,11 +1,11 @@
 ---
-title: "VM のプライベート IP アドレスの構成 - Azure CLI 2.0 | Microsoft Docs"
-description: "Azure コマンド ライン インターフェイス (CLI) 2.0 を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。"
+title: "VM のプライベート IP アドレスの構成 - Azure CLI | Microsoft Docs"
+description: "Azure コマンド ライン インターフェイス (CLI) を使用して、仮想マシンのプライベート IP アドレスを構成する方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: 
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,23 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9925b29a60fc46e9ecc775ca132bd2365f64b15
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシンのプライベート IP アドレスを構成する
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
-
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン 
-
-次のいずれかの CLI バージョンを使用してタスクを完了できます。 
-
-- [Azure CLI 1.0](virtual-networks-static-private-ip-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI 
-- [Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm) - リソース管理デプロイ モデル用の次世代 CLI (この記事)
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
@@ -43,11 +35,11 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> 次の Azure CLI 2.0 サンプル コマンドでは、単純な環境が既に作成されていると想定しています。 このドキュメントに表示されているコマンドを実行する場合は、まず、[vnet の作成](virtual-networks-create-vnet-arm-cli.md)に関する記事に示されているテスト環境を構築します。
+> 次のサンプル Azure CLI コマンドは、既存の単純な環境を想定しています。 このドキュメントに表示されているコマンドを実行する場合は、まず、[vnet の作成](virtual-networks-create-vnet-arm-cli.md)に関する記事に示されているテスト環境を構築します。
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>VM 作成時に静的プライベート IP アドレスを指定する
 
-静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、以下の手順に従います。
+静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、次の手順を実行します。
 
 1. まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。 
 
@@ -131,7 +123,7 @@ ms.lasthandoff: 10/11/2017
     パラメーター:
 
     * `--private-ip-address`: NIC の静的プライベート IP アドレスです。
-    * `--vnet-name`: NIC を作成するための VNet の名前です。
+    * `--vnet-name`: NIC を作成する VNet の名前です。
     * `--subnet`: NIC を作成するためのサブネットの名前です。
 
 4. [azure vm create](/cli/azure/vm/nic#create) コマンドを実行し、パブリック IP および上記で作成した NIC を使用して VM を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
@@ -169,7 +161,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>VM の静的プライベート IP アドレス情報を取得する
 
-作成した VM の静的プライベート IP アドレス情報を表示するには、次の Azure CLI コマンドを実行し、*Private IP alloc-method* と *Private IP address* の値を確認します。
+次の Azure CLI コマンドを実行し、*Private IP alloc-method* と *Private IP アドレス*の値を確認します。
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -204,13 +196,13 @@ rivateIpAllocationMethod,PublicAddress:publicIpAddress}'
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>VM から静的プライベート IP アドレスを削除する
 
-リソース マネージャー デプロイ用の Azure CLI では、NIC から静的プライベート IP アドレスを削除することはできません。 前提条件は、以下のとおりです。
+Azure Resource Manager デプロイ用の Azure CLI では、NIC から静的プライベート IP アドレスを削除することはできません。 前提条件は、以下のとおりです。
 - 動的 IP を使用した新しい NIC の作成
 - 新しく作成された NIC の VM に NIC を設定します。 
 
-上記のコマンドで使用された VM の NIC を変更するには、次の手順に従います。
+前述のコマンドで使用されている VM の NIC を変更するには、次の手順を実行します。
 
-1. **azure network nic create** コマンドを実行し、動的 IP 割り当てと新しい IP アドレスを使用して、新しい NIC を作成します。 IP アドレスが指定されていないため、割り当て方法が**動的**であることに注意してください。
+1. **azure network nic create** コマンドを実行し、動的 IP 割り当てと新しい IP アドレスを使用して、新しい NIC を作成します。 IP アドレスが指定されていないため、割り当て方法は**動的**です。
 
     ```azurecli
     az network nic create     \

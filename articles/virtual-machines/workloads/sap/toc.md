@@ -11,8 +11,9 @@
 ### [STONITH を使用した HA セットアップ](ha-setup-with-stonith.md)
 ### [Type II SKU 向けの OS バックアップ](os-backup-type-ii-skus.md)
 # Azure Virtual Machines 上の SAP HANA
-## [単一インスタンスの SAP HANA](hana-get-started.md)
+## [単一インスタンスの SAP HANA のインストール](hana-get-started.md)
 ## [S/4 HANA または BW/4 HANA SAP CAL のデプロイ ガイド](cal-s4h.md)
+## [SAP HANA on Azure 運用ガイド](hana-vm-operations.md)
 ## [Azure VM での SAP HANA の高可用性](sap-hana-high-availability.md)
 ## [SAP HANA のバックアップの概要](sap-hana-backup-guide.md)
 ## [SAP HANA のファイル レベルのバックアップ](sap-hana-backup-file-level.md)

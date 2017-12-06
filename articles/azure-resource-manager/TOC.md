@@ -38,7 +38,7 @@
 #### [リソースのデプロイ](resource-group-template-deploy-portal.md)
 #### [テンプレートをエクスポートする](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [リソース グループ間のデプロイ](resource-manager-cross-resource-group-deployment.md)
+### [複数のリソース グループまたはサブスクリプション](resource-manager-cross-resource-group-deployment.md)
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)
 
@@ -67,26 +67,20 @@
 
 ## トラブルシューティング
 ### [一般的なデプロイのエラー](resource-manager-common-deployment-errors.md)
-### [デプロイ エラーについて](resource-manager-troubleshoot-tips.md)
-### エラーの解決
 #### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
 #### [InvalidTemplate](resource-manager-invalid-template-errors.md)
+#### [Linux デプロイの問題](../virtual-machines/linux/troubleshoot-deploy-vm.md)
 #### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
 #### [NotFound](resource-manager-not-found-errors.md)
 #### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
+#### [Linux のプロビジョニングと割り当ての問題](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
+#### [Windows のプロビジョニングと割り当ての問題](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
 #### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
 #### [ReservedResourceName](resource-manager-reserved-resource-name.md)
 #### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
 #### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
-### 仮想マシンのデプロイのエラー
-#### Linux
-##### [デプロイの問題](../virtual-machines/linux/troubleshoot-deploy-vm.md)
-##### [プロビジョニングと割り当ての問題](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
-##### [一般的なエラー メッセージ](../virtual-machines/linux/error-messages.md)
-#### Windows
-##### [デプロイの問題](../virtual-machines/windows/troubleshoot-deploy-vm.md)
-##### [プロビジョニングと割り当ての問題](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
-##### [一般的なエラー メッセージ](../virtual-machines/windows/error-messages.md)
+#### [Windows デプロイの問題](../virtual-machines/windows/troubleshoot-deploy-vm.md)
+### [デプロイ エラーについて](resource-manager-troubleshoot-tips.md)
 
 # リファレンス
 ## [テンプレートの形式](/azure/templates/)

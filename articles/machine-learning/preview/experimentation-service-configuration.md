@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 5635ef890537a2f37d9d6e9066d0258fc0cb346e
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 470bba665dcf8b3517b86ee633a9570ec0f3cd33
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Azure Machine Learning 実験サービスの構成
 
@@ -161,7 +161,7 @@ _**Python スクリプトのローカル実行の概要:**_
 ```
 $az ml experiment submit -c docker myscript.py
 ```
-または
+or
 ```
 az ml experiment submit --run-configuration docker myscript.py
 ```
@@ -220,6 +220,8 @@ _**Python スクリプトのリモート VM 実行の概要:**_
 
 ## <a name="running-a-script-on-an-hdinsight-cluster"></a>HDInsight クラスター上でのスクリプトの実行
 HDInsight は、Apache Spark をサポートする、ビッグ データ分析のための一般的なプラットフォームです。 Workbench では、HDInsight Spark クラスターを使用してビッグ データに関する実験を行うことができます。 
+
+>![NOTE] HDInsight クラスターは、プライマリ ストレージとして Azure BLOB を使用する必要があります。 Azure Data Lake Storage はまだサポートされていません。
 
 コンピューティング ターゲットを作成して HDInsight Spark クラスター向けに構成するには、次のコマンドを使用します。
 

@@ -12,26 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.author: jeanb
-ms.openlocfilehash: 6e94758581bd510e58a709a53e30c11a5c1f1b62
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f1df2f52d00444ba0a27644a6e65cee789788f58
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics on IoT Edge (プレビュー)
 
 > [!IMPORTANT]
 > この機能はプレビュー状態です。 運用環境での使用はお勧めできません。
  
-Azure Stream Analytics (ASA) on IoT Edge を使用することで、開発者は、ほぼリアルタイムの分析インテリジェンスをより IoT デバイスに近い場所に展開し、デバイス生成データの価値を最大限に活用できるようになります。 低待機時間、回復性、帯域幅の効率的な使用、およびコンプライアンスを必要とするお客様を対象に設計されているため、企業は制御ロジックを生産工程に近い場所に展開し、クラウドで実行されるビッグ データ分析を補完できるようになりました。  
-Azure Stream Analytics on IoT Edge は [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) フレームワーク内で実行され、いったん ASA でジョブを作成したら、IoT ハブを使用して ASA ジョブを展開および管理できます。
+Azure Stream Analytics (ASA) on IoT Edge を使用することで、開発者は、ほぼリアルタイムの分析インテリジェンスをより IoT デバイスに近い場所に展開し、デバイス生成データの価値を最大限に活用できるようになります。 低待機時間、回復性、帯域幅の効率的な使用、およびコンプライアンスを意図して設計されているため、企業は制御ロジックを生産工程に近い場所に展開し、クラウドで実行されるビッグ データ分析を補完できるようになりました。  
+Azure Stream Analytics on IoT Edge は [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) フレームワークの内部で実行されます。 ASA でジョブが作成されたら、IoT Hub を使用して ASA ジョブを配置し、管理します。
 この機能はプレビュー段階にあります。質問やフィードバックは、[こちらのアンケート](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u)から製品チームにお寄せください。 
 
 ## <a name="scenarios"></a>シナリオ
-![概要図](media/stream-analytics-edge/ASAedge_highlevel.png) エッジで ASA を実行する一般的なシナリオとして特に興味深いものを次に示します。
-* **コマンドと制御の待機時間が短い**: たとえば、製造安全システムは、非常に短い待機時間でオペレーショナル データに応答する必要があります。 ASA on IoT Edge を使用すると、異常検出時にセンサー データをほぼリアルタイムに分析し、コマンドを発行して、マシンを停止したり警告をトリガーしたりできます。
+![概要図](media/stream-analytics-edge/ASAedge_highlevel.png)
+
+* **コマンドと制御の待機時間が短い**: たとえば、製造安全システムは、非常に短い待機時間で運用データに応答する必要があります。 ASA on IoT Edge を使用することで、センサー データをほぼリアルタイムで分析し、異常を検出した際はコマンドを発行してマシンを停止したり、アラートをトリガーしたりできます。
 *   **クラウドへの接続が制限されている**: リモート採掘装置、接続された船舶、海洋掘削など、ミッション クリティカルなシステムでは、クラウド接続が断続的なときでも、データを分析し、そのデータに対応する必要があります。 ASA では、ネットワーク接続とは関係なくストリーミング ロジックが実行され、さらなる処理や保存のためにクラウドに送信するデータを選択できます。
 * **帯域幅が制限されている**: ジェット エンジンやコネクテッド カーによって生成されるデータ量は膨大になる可能性があるため、クラウドに送信する前に、データをフィルター処理または前処理する必要があります。 ASA を使用すると、クラウドに送信する必要があるデータをフィルター処理したり集計したりできます。
 * **コンプライアンス**: 法令順守では、一部のデータについてはクラウドに送信する前に、ローカルでの匿名化または集計が必要になる可能性があります。 ASA を使用すると、 

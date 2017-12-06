@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 4788fa14a6c49d39b5a3096a69b6738f4a5d8cca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 342bd20466cdeb0b9df1cdacd4664fa4e3e0c604
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure に SAP S/4HANA または BW/4HANA をデプロイする
 この記事では、SAP Cloud Appliance Library (SAP CAL) 3.0 を使用して Azure に S/4HANA をデプロイする方法について説明します。 BW/4HANA などの他の SAP HANA ベースのソリューションをデプロイする手順は同じです。
@@ -95,7 +95,7 @@ SAP CAL について詳しくは、[SAP Cloud Appliance Library](https://cal.sap
 これで Azure のユーザー サブスクリプションに S/4HANA のデプロイを開始できます。
 
 > [!NOTE]
-続行する前に、Azure H シリーズの VM 用の Azure のコア クォータがあるかどうかを判定します。 現時点では、SAP CAL は Azure H シリーズの VM を使用して、SAP HANA ベースの一部のソリューションをデプロイします。 お使いの Azure サブスクリプションには H シリーズ用の H シリーズ コア クォータがない可能性があります。 ない場合は、Azure サポートに問い合わせて 16 H シリーズ コア以上のクォータを入手する必要がある場合があります。
+続行する前に、Azure H シリーズの VM 用の Azure の vCPU クォータがあるかどうかを判定します。 現時点では、SAP CAL は Azure H シリーズの VM を使用して、SAP HANA ベースの一部のソリューションをデプロイします。 お使いの Azure サブスクリプションには H シリーズ用の H シリーズ vCPU クォータがない可能性があります。 ない場合は、Azure サポートに問い合わせて 16 H シリーズ vCPU 以上のクォータを入手する必要がある場合があります。
 
 > [!NOTE]
 SAP CAL で Azure にソリューションをデプロイするときに、1 つの Azure リージョンのみを選択できることがわかる場合があります。 SAP CAL で提案されたリージョン以外の Azure リージョンにデプロイするには、SAP から CAL のサブスクリプションを購入する必要があります。 また、最初に提案された Azure リージョン以外に送るには、SAP でメッセージを開き、CAL アカウントを有効にする必要がある場合があります。

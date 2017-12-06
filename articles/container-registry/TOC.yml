@@ -57,8 +57,16 @@
       href: /rest/api/containerregistry
     - name: PowerShell
       href: /powershell/module/azurerm.containerregistry
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerregistry
+    - name: Python
+      href: /python/api/overview/azure/container-registry
+    - name: Node.js
+      href: /javascript/api/overview/azure/container-registry
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.containerregistry/registries
+    - name: webhook スキーマ
+      href: container-registry-webhook-reference.md
 - name: リソース
   items:
     - name: 利用可能なリージョン

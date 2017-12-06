@@ -3,8 +3,8 @@ title: "プライベート ドメインに Azure DNS を使用する |Microsoft 
 description: "Microsoft Azure のプライベート DNS ホスティング サービスの概要です。"
 services: dns
 documentationcenter: na
-author: garbrad
-manager: 
+author: KumudD
+manager: jennoc
 editor: 
 ms.assetid: 
 ms.service: dns
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/04/2017
-ms.author: garbrad
-ms.openlocfilehash: ed47a9d850995aaf9e78bfde8b6a5fd80dc36918
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/20/2017
+ms.author: kumud
+ms.openlocfilehash: 95cf8ab2bd34e698e12452e062687219bad49eb6
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="using-azure-dns-for-private-domains"></a>プライベート ドメインに Azure DNS を使用する
 ドメイン ネーム システム (DNS) は、サービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。  Azure DNS では、インターネットに接続する DNS ドメインだけでなく、プライベート DNS ドメインもプレビュー機能としてサポートするようになりました。  
@@ -39,14 +39,14 @@ Azure DNS は、信頼性が高くセキュリティで保護された DNS サ�
 
 * **仮想ネットワーク間のホスト名解決。** Azure 提供のホスト名とは異なり、プライベート DNS ゾーンは仮想ネットワーク間で共有できます。  この機能により、仮想ネットワークのピアリングなどのネットワーク間とサービス検索のシナリオが簡略化されます。
 
-* **使い慣れたツールとユーザー エクスペリエンス。** 習得に要する時間を軽減するために、この新しい機能では既に確立された Azure DNS ツール (PowerShell、Resource Manager テンプレート、REST API) を使用しており、CLI とポータルのサポートはできるだけ早く追加される予定です。
+* **使い慣れたツールとユーザー エクスペリエンス。** 習得に要する時間を短縮するため、この新しい機能では既に確立された Azure DNS ツール (PowerShell、Resource Manager テンプレート、REST API) が使われています。
 
 * **水平分割 DNS サポート。** Azure DNS では、同じ名前でゾーンを作成し、それが仮想ネットワーク内からとパブリック インターネットからとで異なる回答に解決されるようにすることができます。  水平分割 DNS の一般的なシナリオでは、仮想ネットワーク内で使用する専用のバージョンのサービスを提供します。
 
 
 ## <a name="pricing"></a>価格
 
-プライベート DNS ゾーンは、管理プレビュー期間中は無料です。 この機能は一般提供の発表後、既存の Azure DNS オファリングに類似した、使用に基づく料金モデルを使用します。 
+プライベート DNS ゾーンは、管理プレビュー期間中は無料です。 一般提供期間中、この機能は既存の Azure DNS オファリングに類似した、使用に基づく料金モデルを使います。 
 
 
 ## <a name="next-steps"></a>次のステップ

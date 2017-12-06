@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fb93efcf00cb7b165c497d7ef38685f80bce84c0
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: bfa6652eac34f88baf09f55353cf58227a20e4cf
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-linux-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Linux デバイスに展開する - プレビュー
 
@@ -51,9 +51,9 @@ IoT ハブを Azure サブスクリプションで作成します。 このク�
 
 ## <a name="register-an-iot-edge-device"></a>IoT Edge デバイスを登録する
 
-お使いの IoT ハブと通信できるように、シミュレートされたデバイスのデバイス ID を作成します。 IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作をし、別々に管理できるので、最初から IoT Edge デバイスであることを宣言します。 
+お使いの IoT ハブと通信できるように、シミュレートされたデバイスのデバイス ID を作成します。 IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作をし、別に管理できるため、IoT Edge デバイスであることを最初から宣言します。 
 
-1. Azure Portal で、IoT ハブに移動します。
+1. Azure Portal で、お使いの IoT ハブに移動します。
 1. **[IoT Edge (preview)]\(IoT Edge (プレビュー)\)** を選択します。
 1. **[Add IoT Edge device]\(IoT Edge デバイスの追加\)** を選択します。
 1. シミュレートされたデバイスに一意のデバイス ID を付与します。
@@ -66,24 +66,26 @@ IoT ハブを Azure サブスクリプションで作成します。 このク�
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 2 つのモジュールから構成されます。 まず、IoT Edge エージェントは、IoT Edge デバイスでのモジュールの展開と監視を容易にします。 次に、IoT Edge ハブは、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。 
 
 IoT Edge デバイスを実行するマシン上に、IoT Edge 制御スクリプトをダウンロードします。
-```python
+```cmd
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
 前のセクションで保存した IoT Edge デバイス接続文字列を使用してランタイムを構成します。
-```python
+```cmd
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 ランタイムを開始します。
-```python
+```cmd
 sudo iotedgectl start
 ```
 
 Docker を調べて、IoT Edge エージェントがモジュールとして実行されていることを確認します。
-```python
+```cmd
 sudo docker ps
 ```
+
+![Docker で edgeAgent を確認する](./media/tutorial-simulate-device-linux/docker-ps.png)
 
 ## <a name="deploy-a-module"></a>モジュールを展開する
 
@@ -93,11 +95,21 @@ sudo docker ps
 
 このクイック スタートでは、新しい IoT Edge デバイスを作成し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure Portal を使用して、IoT Edge モジュールをプッシュし、デバイス自体を変更せずにモジュールをデバイスで実行しました。 この場合は、プッシュしたモジュールによって、チュートリアルで使用できる環境データが作成されます。 
 
-tempSensor モジュールから送信されているメッセージを確認します。
+シミュレートされたデバイスを実行しているコンピューターで、もう一度コマンド プロンプトを開きます。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。
 
-```cmd/sh
+```cmd
+sudo docker ps
+```
+
+![ご利用のデバイスの 3 つのモジュールを表示する](./media/tutorial-simulate-device-linux/docker-ps2.png)
+
+tempSensor モジュールからクラウドに送信されているメッセージを確認します。
+
+```cmd
 sudo docker logs -f tempSensor
 ```
+
+![モジュールからのデータを表示する](./media/tutorial-simulate-device-linux/docker-logs.png)
 
 また、[IoT Hub エクスプローラー ツール][lnk-iothub-explorer]を使用して、デバイスが送信しているテレメトリを表示することもできます。 
 

@@ -40,8 +40,6 @@
 - name: 管理対象のサービス ID
   href: msi-overview.md
   items:
-    - name: サインイン方法またはトークンの取得方法
-      href: msi-how-to-get-access-token-using-msi.md
     - name: Azure VM 用の MSI の構成
       items:
         - name: Azure Portal の使用
@@ -62,6 +60,14 @@
           href: msi-howto-assign-access-powershell.md
         - name: Azure CLI の使用
           href: msi-howto-assign-access-cli.md
+    - name: VM MSI の使用方法
+      items:
+        - name: アクセス トークンの取得
+          href: msi-how-to-use-vm-msi-token.md
+        - name: PowerShell、Azure CLI へのサインイン
+          href: msi-how-to-use-vm-msi-sign-in.md
+        - name: Azure SDK での使用
+          href: msi-how-to-use-vm-msi-sdk.md
     - name: VM MSI を使用した Azure Data Lake Store へのアクセス
       items:
         - name: Windows VM から

@@ -27,6 +27,10 @@
   items:
     - name: コスト レポートについて
       href: understading-cost-reports.md
+- name: ハウツー ガイド
+  items:
+    - name: Cost Management レポートの使用
+      href: use-reports.md
 - name: リソース
   items:
     - name: コスト管理のビデオ

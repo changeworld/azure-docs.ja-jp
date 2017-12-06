@@ -247,6 +247,8 @@
       items:
         - name: .NET のデータがない
           href: app-insights-asp-net-troubleshoot-no-data.md
+        - name: スナップショット デバッガー
+          href: app-insights-troubleshoot-snapshot-debugger.md
         - name: 分析
           href: app-insights-analytics-troubleshooting.md
         - name: Java

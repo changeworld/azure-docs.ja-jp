@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: dkshir
-ms.openlocfilehash: 99fb80d5cafc8fd20f5048de305fef99bf49c286
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 93f9099d7aef1161f7789e7b21a88a8691cb2a8e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -80,7 +80,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
 2. **[追加]** をクリックして新しいデバイスを追加します。 
 
-3. **[デバイス ID]** にわかりやすい表示名を指定し、**[認証の種類]** として **_[X.509 CA Signed]\(X.509 CA 署名済み\)_** を選択します。 **[ Save]** をクリックします。
+3. **[デバイス ID]** にわかりやすい表示名を指定し、**[認証の種類]** として **_[X.509 CA Signed]\(X.509 CA 署名済み\)_** を選択します。 **[Save]** をクリックします。
 
    ![ポータルでの X.509 デバイスの作成](./media/iot-hub-security-x509-get-started/create-x509-device.png)
 
@@ -179,10 +179,10 @@ IoT ソリューションのセキュリティ保護の詳細については、�
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-* [Azure IoT Edge を使用したデバイスのシミュレーション][lnk-iotedge]
+* [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
 
 [lnk-security-best-practices]: iot-hub-security-best-practices.md
 [lnk-security-architecture]: iot-hub-security-architecture.md
 [lnk-security-deployment]: iot-hub-security-deployment.md
 
-[lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
+[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
