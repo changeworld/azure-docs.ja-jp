@@ -38,7 +38,7 @@
 #### [リソースのデプロイ](resource-group-template-deploy-portal.md)
 #### [テンプレートをエクスポートする](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
-### [リソース グループ間のデプロイ](resource-manager-cross-resource-group-deployment.md)
+### [複数のリソース グループまたはサブスクリプション](resource-manager-cross-resource-group-deployment.md)
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)
 

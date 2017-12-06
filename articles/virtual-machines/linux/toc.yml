@@ -172,8 +172,6 @@
           href: change-vm-size.md
         - name: VM にタグを付ける
           href: tag.md
-        - name: cloud-init を使用する
-          href: using-cloud-init.md
         - name: VM でのスクリプトの実行
           href: extensions-customscript.md
         - name: リモート デスクトップを使用する
@@ -252,6 +250,22 @@
               href: terraform-install-configure.md
             - name: 完全な VM の作成
               href: terraform-create-complete-vm.md
+        - name: cloud-init
+          items:
+            - name: cloud-init の概要
+              href: using-cloud-init.md
+            - name: VM のホスト名の構成
+              href: cloudinit-update-vm-hostname.md
+            - name: VM 内のパッケージの更新
+              href: cloudinit-update-vm.md
+            - name: VM へのユーザーの追加
+              href: cloudinit-add-user.md
+            - name: スワップ ファイルの構成
+              href: cloudinit-configure-swapfile.md
+            - name: 既存の Bash スクリプトの実行
+              href: cloudinit-bash-script.md
+            - name: cloud-init のための既存の VM の準備
+              href: cloudinit-prepare-custom-image.md
         - name: Jenkins
           href: ../../jenkins/overview.md
           items:

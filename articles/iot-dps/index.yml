@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure IoT Hub Device Provisioning Service (プレビュー) のドキュメント
+title: Azure IoT Hub Device Provisioning Service のドキュメント
 metadata:
-  title: Azure IoT Hub Device Provisioning Service (プレビュー) のドキュメント - チュートリアル、API リファレンス
+  title: Azure IoT Hub Device Provisioning Service のドキュメント - チュートリアル、API リファレンス
   meta.description: Overview of Azure IoT Hub Device Provisioning Service.
   services: iot-dps
   author: nberdy
@@ -14,7 +14,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: nberdy
 abstract:
-  description: IoT Hub Device Provisioning Service (プレビュー) は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、デバイスを IoT ハブにプロビジョニングする方法を確認してください。
+  description: IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、デバイスを IoT ハブにプロビジョニングする方法を確認してください。
 sections:
   - title: 5 分間のクイック スタート
     items:
@@ -34,7 +34,7 @@ sections:
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
-        text: IoT Hub Device Provisioning Service (プレビュー) を使用して、セキュリティが有効なデバイスを単一または複数の IoT ハブに自動でプロビジョニングする方法について説明します。
+        text: IoT Hub Device Provisioning Service を使用して、セキュリティが有効なデバイスを単一または複数の IoT ハブに自動でプロビジョニングする方法について説明します。
       - type: list
         style: ordered
         items:

@@ -13,8 +13,10 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: .NET アプリの作成
+    - name: .NET Core アプリの作成
       href: app-service-web-get-started-dotnet.md
+    - name: .NET Framework アプリの作成
+      href: app-service-web-get-started-dotnet-framework.md
     - name: Node.js アプリの作成
       href: app-service-web-get-started-nodejs.md
     - name: PHP アプリの作成
