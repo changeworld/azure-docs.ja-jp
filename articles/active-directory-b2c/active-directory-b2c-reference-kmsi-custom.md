@@ -1,4 +1,4 @@
----
+﻿---
 title: 'Azure Active Directory B2C: KMSI | Microsoft Docs'
 description: "\"サインインしたままにする\" ための設定方法を説明するトピック"
 services: active-directory-b2c
