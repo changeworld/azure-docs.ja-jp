@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2016
+ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 283428c603cc73d23f0afa94670a23dbb45068d5
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 58ccdba6f01cfb7de72f28f185102bf7f618eab4
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Azure App Service でアプリを監視する方法
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure Portal](https://portal.azure.com) に用意されています。
-この監視機能には、アプリと App Service プランの**クォータ**と**メトリック**を確認する機能、**アラート**のセットアップ、さらにこれらのメトリックに基づいた自動**スケール**が含まれています。
+この Azure ポータルには、アプリと App Service プランの**クォータ**と**メトリック**を確認する機能、**アラート**のセットアップ、さらにこれらのメトリックに基づいた自動**スケール**が含まれています。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -53,7 +53,7 @@ App Service でホストされているアプリケーションは、使用で�
 異なる App Service SKU で利用できる特定のクォータ、制限、機能について詳しくは、こちらの [Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md#app-service-limits)に関するページをご覧ください
 
 #### <a name="quota-enforcement"></a>クォータの適用
-アプリケーションの使用量が **CPU (ショート)**、**CPU (1 日)**、**帯域幅**のクォータを超過すると、クォータがリセットされるまでアプリケーションは停止されます。 この停止期間中は、すべての受信要求の結果が **HTTP 403**になります。
+アプリケーションが **CPU (ショート)**、**CPU (1 日)**、**帯域幅**のクォータを超過すると、クォータがリセットされるまでアプリケーションは停止されます。 この停止期間中は、すべての受信要求の結果が **HTTP 403**になります。
 ![][http403]
 
 アプリケーションで使用される**メモリ**がクォータを超過した場合、アプリケーションは再起動されます。
@@ -125,14 +125,14 @@ CPU の使用状況を反映するメトリックには、 **CPU 時間**と **C
 
 **CPU 時間**は、**Free** プランまたは **Shared** プランでホストされているアプリで役に立ちます。これは、これらのプランのクォータの 1 つが、アプリによって使用される CPU 時間 (分数) で定義されているためです。
 
-**CPU の割合**は、**Basic**、**Standard**、**Premium** のプランでホストされているアプリで役に立ちます。これらのアプリではスケールアウトが可能であり、このメトリックが全インスタンスの全体的な使用状況を示す優れた指標となるためです。
+**[CPU の割合]** は、スケール アウトが可能な **Basic**、**Standard**、および **Premium** プランでホストされるアプリで使用します。CPU 使用率は、すべてのインスタンスにわたる使用率の有効な指標になります。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>メトリックの粒度と保持ポリシー
 アプリケーションと App Service プランのメトリックがサービスによってログに記録され、集計される際には、次の粒度と保持ポリシーが適用されます。
 
-* 粒度が**分**のメトリックは **48 時間**保持されます。
+* 粒度が**分**のメトリックは **30 時間**保持されます。
 * 粒度が**時間**のメトリックは **30 日間**保持されます。
-* 粒度が**日**のメトリックは **90 日間**保持されます。
+* 粒度が**日**のメトリックは **30 日間**保持されます。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Azure Portal でのクォータとメトリックの監視。
 アプリケーションに影響するさまざまな**クォータ**と**メトリック**の状態を、[Azure Portal](https://portal.azure.com) で確認できます。
@@ -149,7 +149,7 @@ CPU の使用状況を反映するメトリックには、 **CPU 時間**と **C
 ## <a name="alerts-and-autoscale"></a>アラートと自動スケール
 アプリまたは App Service プランのメトリックは、アラートに関連付けることができます。 詳しくは、[アラート通知の受信](../monitoring-and-diagnostics/insights-alerts-portal.md)に関するページをご覧ください。
 
-Basic、Standard、Premium の App Service プランでホストされている App Service アプリでは、**自動スケール**がサポートされています。 これにより、App Service プランのメトリックを監視する規則を構成できるほか、インスタンス数を増減させ、必要に応じてリソースを追加したり、アプリケーションのプロビジョニングが過剰なときにコストを節約したりできます。 自動スケールの詳細については、[スケールの方法](../monitoring-and-diagnostics/insights-how-to-scale.md)に関するページと「[Azure Insights の自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)」をご覧ください。
+Basic、Standard、Premium の App Service プランでホストされている App Service アプリでは、**自動スケール**がサポートされています。 自動スケールでは、App Service プランのメトリックスを監視するルールを構成することができます。 ルールを使用することによって、必要に応じて追加リソースを提供するインスタンス数を増減できます。 また、アプリケーションがオーバー プロビジョニングされたときのコスト削減にも役立ちます。 自動スケールの詳細については、[スケールの方法](../monitoring-and-diagnostics/insights-how-to-scale.md)に関するページと「[Azure Insights の自動スケールのベスト プラクティス](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)」をご覧ください。
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](https://azure.microsoft.com/try/app-service/)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。

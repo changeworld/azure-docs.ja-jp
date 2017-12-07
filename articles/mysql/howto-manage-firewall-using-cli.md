@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 66d192287eeaaaa82c0f61f8aa13b8bf7bf8cd47
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.date: 11/28/2017
+ms.openlocfilehash: 0adcf8fd21049ee75972352b2e7d3c56300e0f87
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MySQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for PostgreSQL ファイアウォールの概要については、「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -48,25 +48,25 @@ az login
 
 3. プロンプトで、Azure 資格情報を使用してログインします。
 
-4. ログインの認証が完了すると、サブスクリプションの一覧がコンソールに出力されます。 目的のサブスクリプションの ID をコピーして、使用する現在のサブスクリプションを設定します。
+4. ログインの認証が完了すると、サブスクリプションの一覧がコンソールに出力されます。 目的のサブスクリプションの ID をコピーして、使用する現在のサブスクリプションを設定します。 [az account set](/cli/azure/account#az_account_set) コマンドを使用します。
    ```azurecli-interactive
    az account set --subscription {your subscription id}
    ```
 
-5. サブスクリプションとリソース グループの名前がわからない場合は、Azure Databases for MySQL サーバーを一覧表示します。
+5. サブスクリプションとリソース グループの名前がわからない場合は、Azure Databases for MySQL サーバーを一覧表示します。 [az mysql server list](/cli/azure/mysql/server#az_mysql_server_list) コマンドを使用します。
 
    ```azurecli-interactive
    az mysql server list --resource-group myResourceGroup
    ```
 
-   この一覧に表示される名前属性を確認します。これは、使用する MySQL サーバーを指定するために必要です。 必要に応じて、そのサーバーの詳細を確認し、名前属性を使用して正しいかどうかを確認します。
+   この一覧に表示される名前属性を確認します。これは、使用する MySQL サーバーを指定するために必要です。 必要に応じて、そのサーバーの詳細を確認し、名前属性を使用して正しいかどうかを確認します。 [az mysql server showt](/cli/azure/mysql/server#az_mysql_server_show) コマンドを使用します。
 
    ```azurecli-interactive
    az mysql server show --resource-group myResourceGroup --name mysqlserver4demo
    ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのファイアウォール規則を一覧表示する 
-サーバー名とリソース グループ名を使用して、そのサーバー上で既存のサーバー ファイアウォール規則を一覧表示します。 サーバー名属性は、**--name** スイッチではなく **--server** スイッチで指定されることに注意してください。
+サーバー名とリソース グループ名を使用して、そのサーバー上で既存のサーバー ファイアウォール規則を一覧表示します。 [az mysql server firewall list](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_list) コマンドを使用します。  サーバー名属性は、**--name** スイッチではなく **--server** スイッチで指定されることに注意してください。 
 ```azurecli-interactive
 az mysql server firewall-rule list --resource-group myResourceGroup --server mysqlserver4demo
 ```
@@ -75,7 +75,7 @@ az mysql server firewall-rule list --resource-group myResourceGroup --server mys
 az mysql server firewall-rule list --resource-group myResourceGroup --server mysqlserver4demo --output table
 ```
 ## <a name="create-a-firewall-rule-on-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのファイアウォール規則を作成する
-Azure MySQL サーバー名とリソース グループ名を使用して、サーバーに新しいファイアウォール規則を作成します。 規則の名前に加え、(IP アドレス範囲へのアクセスを提供するための) 開始 IP と終了 IP を指定します。
+Azure MySQL サーバー名とリソース グループ名を使用して、サーバーに新しいファイアウォール規則を作成します。 [az mysql server firewall create](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) コマンドを使用します。 規則の名前に加え、(IP アドレス範囲へのアクセスを提供するための) 開始 IP と終了 IP を指定します。
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myResourceGroup  --server mysqlserver4demo --name "Firewall Rule 1" --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
@@ -87,7 +87,7 @@ az mysql server firewall-rule create --resource-group myResourceGroup
 正常に完了すると、コマンドの出力として、作成したファイアウォール規則の詳細が JSON 形式 (既定) で一覧表示されます。 失敗した場合は、代わりにエラー メッセージ テキストが出力されます。
 
 ## <a name="update-a-firewall-rule-on-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのファイアウォール規則を更新する 
-Azure MySQL サーバー名とリソース グループ名を使用して、サーバーの既存のファイアウォール規則を更新します。 入力として既存のファイアウォール規則の名前に加え、更新する開始 IP と終了 IP 属性を指定します。
+Azure MySQL サーバー名とリソース グループ名を使用して、サーバーの既存のファイアウォール規則を更新します。 [az mysql server firewall update](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_update) コマンドを使用します。 入力として既存のファイアウォール規則の名前に加え、更新する開始 IP と終了 IP 属性を指定します。
 ```azurecli-interactive
 az mysql server firewall-rule update --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1" --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
@@ -97,14 +97,14 @@ az mysql server firewall-rule update --resource-group myResourceGroup --server m
 > ファイアウォール規則が存在しない場合は、更新コマンドによって規則が作成されます。
 
 ## <a name="show-firewall-rule-details-on-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのファイアウォール規則の詳細を表示する
-Azure MySQL サーバー名とリソース グループ名を使用して、サーバーの既存のファイアウォール規則の詳細を表示します。 既存のファイアウォール規則の名前を入力します。
+Azure MySQL サーバー名とリソース グループ名を使用して、サーバーの既存のファイアウォール規則の詳細を表示します。 [az mysql server firewall show](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_show) コマンドを使用します。 既存のファイアウォール規則の名前を入力します。
 ```azurecli-interactive
 az mysql server firewall-rule show --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1"
 ```
 正常に完了すると、コマンドの出力として、指定したファイアウォール規則の詳細が JSON 形式 (既定) で一覧表示されます。 失敗した場合は、代わりにエラー メッセージ テキストが出力されます。
 
 ## <a name="delete-a-firewall-rule-on-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーのファイアウォール規則を削除する
-Azure MySQL サーバー名とリソース グループ名を使用して、サーバーの既存のファイアウォール規則を削除します。 既存のファイアウォール規則の名前を入力します。
+Azure MySQL サーバー名とリソース グループ名を使用して、サーバーの既存のファイアウォール規則を削除します。 [az mysql server firewall delete](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_delete) コマンドを使用します。 既存のファイアウォール規則の名前を入力します。
 ```azurecli-interactive
 az mysql server firewall-rule delete --resource-group myResourceGroup --server mysqlserver4demo --name "Firewall Rule 1"
 ```

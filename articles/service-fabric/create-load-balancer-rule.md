@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/22/2017
+ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: d152444f38e7a09b97ce7cb9778d8c67a0a5a421
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71dbc2b5f6c3c37e432f5318169a088c5607f083
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric クラスターのポートを開く
 
@@ -57,7 +57,7 @@ az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol 
 
 Azure CLI コマンドには、いくつかのパラメーターがあります。それらのパラメーターを次の表に示します。
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --------- | ----------- |
 | `--backend-port`  | Service Fabric アプリケーションがリッスンしているポート。 |
 | `--frontend-port` | ロード バランサーが外部接続用に公開するポート。 |

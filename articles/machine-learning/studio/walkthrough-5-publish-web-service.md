@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: 1bbc8ce31fc8e5ffb048a1fb9553a82975680a3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba8f1678d87159088c58cf0e05e0fe5a6579b358
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>チュートリアル手順 5: Azure Machine Learning Web サービスをデプロイする
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
@@ -190,26 +190,6 @@ Web サービスがアクセスされると、ユーザーのデータは **Web 
 
 
 ## <a name="manage-the-web-service"></a>Web サービスを管理する
-
-### <a name="manage-a-classic-web-service-in-the-azure-classic-portal"></a>Azure クラシック ポータルで従来の Web サービスを管理する
-
-デプロイした従来の Web サービスは、[Azure クラシック ポータル](https://manage.windowsazure.com)から管理できます。
-
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
-2. Microsoft Azure サービス パネルで、**[Machine Learning]** をクリックします。
-3. 自分のワークスペースをクリックします。
-4. **[Web サービス]** タブをクリックします。
-5. 作成した Web サービスをクリックします
-6. "既定の" エンドポイントをクリックします。
-
-そこから、Web サービスの動作の監視や、サービスが処理できる同時呼び出し数の変更によるパフォーマンスの微調整などを実行できます。
-
-詳細については、次のリンクを参照してください。
-
-* [エンドポイントを作成する](create-endpoint.md)
-* [Web サービスのスケーリング](scaling-webservice.md)
-
-### <a name="manage-a-classic-or-new-web-service-in-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルで従来の Web サービスまたは新しい Web サービスを管理する
 
 デプロイした Web サービスは、従来の Web サービスでも新しい Web サービスでも、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルから管理できます。
 

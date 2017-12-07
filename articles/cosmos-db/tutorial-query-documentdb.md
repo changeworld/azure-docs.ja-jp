@@ -9,18 +9,18 @@ editor:
 tags: 
 ms.assetid: 
 ms.service: cosmos-db
-ms.custom: tutorial-develop
+ms.custom: tutorial-develop, mvc
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 270fe75e61bb26ad3bb9cae1105e83911bae677d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61a2516ec9f51df4ac88beaf55108208c7b8c6bc
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-using-sql"></a>Azure Cosmos DB: SQL を使用してクエリを実行する方法
 

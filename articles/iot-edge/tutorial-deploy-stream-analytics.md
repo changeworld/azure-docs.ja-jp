@@ -6,22 +6,24 @@ keywords:
 author: msebolt
 manager: timlt
 ms.author: v-masebo
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0d19d1142cf15221f84692f7e613edd6b46b4083
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 5a143bbf7abb5304ac51782d517c02ec184a05a2
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics を IoT Edge モジュールとしてデプロイする - プレビュー
 
 IoT デバイスは、大量のデータを生成できます。 クラウドにアップロードする前にこのデータを分析または処理してアップロードするデータのサイズを小さくするまたはラウンド トリップ遅延時間のアクションにつながる洞察を推測する必要がある場合があります。
 
-[Azure Stream Analytics][azure-stream] (ASA) には、クラウド上と IoT Edge デバイス上の両方でのデータ分析のために十分に構造化されたクエリ構文が用意されています。 IoT Edge 上の ASA について詳しくは、「[ASA ドキュメント](../stream-analytics/stream-analytics-edge.md)」を参照してください。
+IoT Edge は事前構築済みの Azure Service IoT Edge モジュールを利用してすばやくデプロイできます。[Azure Stream Analytics][azure-stream] (ASA) はこのようなモジュールの 1 つです。 そのポータルから ASA ジョブを作成し、IoT Hub ポータルに移動して IoT Edge モジュールとしてデプロイできます。  
 
-このチュートリアルでは、デバイス上で直接ローカル テレメトリ ストリームを処理し、アラートを生成してデバイスに対してすぐにアクションできるようにするための Azure Stream Analytics のジョブの作成、および IoT Edge デバイスへのジョブのデプロイについて説明します。  このチュートリアルには 2 つのモジュールがあります。 20 ～ 120 度の温度データ (5 秒ごとに 1 度上昇) を生成するシミュレートされた温度センサー モジュール (tempSensor) と、100 度よりも高い温度を除外する ASA モジュールです。 ASA モジュールは、30 秒間の平均値が 100 に達した場合も tempSensor をリセットします。
+Azure Stream Analytics には、クラウド上と IoT Edge デバイス上の両方でのデータ分析のために十分に構造化されたクエリ構文が用意されています。 IoT Edge 上の ASA について詳しくは、「[ASA ドキュメント](../stream-analytics/stream-analytics-edge.md)」を参照してください。
+
+このチュートリアルでは、デバイス上で直接ローカル テレメトリ ストリームを処理し、アラートを生成してデバイスに対してすぐにアクションできるようにするための Azure Stream Analytics のジョブの作成、および IoT Edge デバイスへのジョブのデプロイについて説明します。  このチュートリアルには 2 つのモジュールがあります。 シミュレートされた温度センサー モジュール (tempSensor) は、20 ～ 120 度の範囲で 5 秒ごとに 1 度ずつ上昇する温度データを生成します。 Stream Analytics モジュールは、30 秒間の平均温度が 70 度に達した場合に tempSensor をリセットします。 この機能を運用環境で使用して、温度が危険なレベルに達したときにマシンを停止させたり予防策を講じたりできます。 
 
 学習内容は次のとおりです。
 
@@ -33,64 +35,58 @@ IoT デバイスは、大量のデータを生成できます。 クラウドに
 ## <a name="prerequisites"></a>前提条件
 
 * IoT Hub 
-* [Windows][lnk-tutorial1-win] および [Linux][lnk-tutorial1-lin] のシミュレートされたデバイス上でクイックスタートまたは Deploy Azure IoT Edge で作成および構成されたデバイス。
-* IoT Edge デバイス上の Docker
-    * [Docker を Windows にインストールし][lnk-docker-windows]、稼働していることを確認します。
-    * [Docker を Linux にインストールし][lnk-docker-linux]、稼働していることを確認します。
+* [Windows][lnk-tutorial1-win] および [Linux][lnk-tutorial1-lin] のシミュレートされたデバイス上でクイックスタートまたは Deploy Azure IoT Edge で作成および構成されたデバイス。 デバイスの接続キーとデバイス ID を把握しておく必要があります。 
+* IoT Edge デバイス上で実行される Docker
+    * [Windows に Docker をインストールする][lnk-docker-windows]
+    * [Linux に Docker をインストールする][lnk-docker-linux]
 * IoT Edge デバイス上の Python 2.7.x
     * [Python 2.7 を Windows にインストールします][lnk-python]。
     * Ubuntu を含め、ほとんどの Linux ディストリビューションには既に Python 2.7 がインストールされています。  次のコマンドを使用して、pip がインストールされていることを確認します `sudo apt-get install python-pip`。
 
-> [!NOTE]
-> このチュートリアルでは、デバイスの接続文字列と IoT Edge デバイス ID が必要になります。
-
-IoT Edge は構築済みの Azure Service IoT Edge モジュールを利用して素早くデプロイできます。Azure Stream Analytics (ASA) はこのようなモジュールの 1 つです。 そのポータルから ASA ジョブを作成し、IoT Hub ポータルに移動して IoT Edge モジュールとしてデプロイできます。  
-
-Azure Stream Analytics について詳しくは、「[Stream Analytics のドキュメント][azure-stream]」の「**概要**」セクションをご覧ください。
 
 ## <a name="create-an-asa-job"></a>ASA ジョブを作成する
 
 このセッションでは、Azure Stream Analytics ジョブを作成し、IoT ハブからデータを取得し、デバイスから送信されたテレメトリ データをクエリし、その結果を Azure Storage Container (BLOB) に転送します。 詳細については、「[Stream Analytics のドキュメント][azure-stream]」の「**概要**」セクションをご覧ください。 
 
-> [!NOTE]
-> ASA ジョブの出力として使用するエンドポイントを提供するには Azure Storage アカウントが必要です。 次の例では BLOB ストレージ タイプを使用します。  詳細については、「[Azure Storage のドキュメント][azure-storage]」の「**Blob**」セクションを参照してください。
+### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-1. Azure Portal で、**[Create a resource (リソースの作成)] -> [ストレージ]** に移動し、**[すべて表示]** をクリックし、**[Storage account - blob, file, table, queue (ストレージ アカウント - Blob、ファイル、テーブル、キュー)]** をクリックします。
+ASA ジョブの出力として使用するエンドポイントを提供するには Azure Storage アカウントが必要です。 次の例では BLOB ストレージ タイプを使用します。  詳細については、「[Azure Storage のドキュメント][azure-storage]」の「**Blob**」セクションを参照してください。
 
-2. ストレージ アカウントの名前を入力し、IoT Hub の保存場所を選択します。 **Create** をクリックしてください。 後で使用するために名前をメモします。
+1. Azure Portal で、**[リソースの作成]** に移動し、検索バーに「`Storage account`」と入力します。 **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
+
+2. 自分のストレージ アカウントの名前を入力し、IoT ハブの保存場所と同じ場所を選択します。 **Create** をクリックしてください。 後で使用できるように、名前を忘れないでください。
 
     ![新しいストレージ アカウント][1]
 
-3. Azure Portal で、作成したストレージ アカウントに移動します。 **[Blob Service]** で **[BLOB の参照]** をクリックします。 
-4. ASA モジュールがデータを保存するための新しいコンテナーを作成します。 アクセス レベルは_コンテナー_に設定します。 **[OK]**をクリックします。
+3. 先ほど作成したストレージ アカウントに移動します。 **[BLOB の参照]** をクリックします。 
+4. ASA モジュールがデータを保存するための新しいコンテナーを作成します。 アクセス レベルは**コンテナー**に設定します。 **[OK]**をクリックします。
 
     ![ストレージの設定][10]
 
-5. Azure Portal で、**[リソースの作成]** > **[モノのインターネット]** に移動し、**[Stream Analytics ジョブ]** を選択します。
+### <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
+
+1. Azure Portal で、**[リソースの作成]** > **[モノのインターネット]** に移動し、**[Stream Analytics ジョブ]** を選択します。
 
 2. 名前を入力し、ホスティング環境として **[Edge]** を選んで、残りは既定値を使います。  **Create** をクリックしてください。
 
     >[!NOTE]
-    >現在、IoT Edge 上の ASA ジョブは、米国西部 2 リージョンではサポートされていません。 別の場所を選んでください。
+    >現在、IoT Edge 上の ASA ジョブは、米国西部 2 リージョンではサポートされていません。 
 
-    ![ASA の作成][5]
+3. 作成したジョブに移動します。 **[入力]** を選択してから **[追加]** をクリックします。
 
-2. 作成したジョブに移動し、**ジョブ トポロジ**で **[入力]** を選択し、**[追加]** をクリックします。
+4. 入力のエイリアスとして「`temperature`」と入力し、ソースの種類を **[データ ストリーム]** に設定します。他のパラメーターには既定値を使用します。 **Create** をクリックしてください。
 
-3. 名前を入力し`temperature`、ソースの種類として **[データ ストリーム]** を選択し、その他のパラメーターには既定値を使用します。 **Create** をクリックしてください。
+   ![ASA の入力](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-    ![ASA の入力][2]
+5. **[出力]** を選択してから **[追加]** をクリックします。
 
-    > [!NOTE]
-    > 追加の入力には、IoT Edge 固有のエンドポイントを含めることができます。
+6. 出力のエイリアスとして「`alert`」と入力し、他のパラメーターには既定値を使用します。 **Create** をクリックしてください。
 
-4. **[ジョブ トポロジ]** で**[出力]** を選択し、**[追加]** をクリックします。
+   ![ASA の出力](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-5. 名前 `alert` を入力し、既定値を使用します。 **Create** をクリックしてください。
 
-    ![ASA の出力][3]
-
-6. **[ジョブ トポロジ]** で、**[クエリ]** を選択し、以下を入力します。
+7. **[クエリ]** を選択します。
+8. 既定のテキストを次のクエリで置き換えます。
 
     ```sql
     SELECT  
@@ -100,28 +96,32 @@ Azure Stream Analytics について詳しくは、「[Stream Analytics のドキ
     FROM 
        temperature TIMESTAMP BY timeCreated 
     GROUP BY TumblingWindow(second,30) 
-    HAVING Avg(machine.temperature) > 100
+    HAVING Avg(machine.temperature) > 70
     ```
+9. **[Save]** をクリックします。
 
 ## <a name="deploy-the-job"></a>ジョブのデプロイ
 
 IoT Edge デバイスに ASA ジョブをデプロイする準備が整いました。
 
-1. Azure Portal の IoT Hub で、**IoT Edge (プレビュー)** に移動し、*{deviceId}* のブレードを開きます。
-
-1. **[Set modules]\(モジュールを設定\)**、**[Import Azure Service IoT Edge Module]\(Azure Service IoT Edge モジュールのインポート\)** の順に選択します。
-
-1. サブスクリプションと、作成した ASA Edge ジョブを選択します。 次に、ストレージ アカウントを選択します。 **[Save]** をクリックします。
+1. Azure Portal の IoT ハブで、**IoT Edge (プレビュー)** に移動し、自分の IoT Edge デバイスの詳細ページを開きます。
+1. **[Set modules]\(モジュールの設定\)** を選びます。
+1. 以前、このデバイスに tempSensor モジュールを展開したことがある場合は、自動入力されている可能性があります。 展開していない場合は、次の手順を使用してモジュールを追加します。
+   1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** をクリックします。
+   1. 名前として「`tempSensor`」、イメージの URI として「`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`」と入力します。 
+   1. 他の設定はそのままにして、**[保存]** をクリックします。
+1. ASA Edge ジョブを追加するには、**[Import Azure Stream Analytics IoT Edge Module]\(Azure Stream Analytics IoT Edge モジュールのインポート\)** を選択します。
+1. 自分のサブスクリプションと、作成した ASA Edge ジョブを選択します。 
+1. 自分のサブスクリプションと、作成したストレージ アカウントを選択します。 **[Save]** をクリックします。
 
     ![モジュールの設定][6]
 
-1. **[Add IoT Edge Module (IoT Edge モジュールの追加)]** をクリックして温度センサー モジュールを追加します。 名前として _tempSensor_、イメージの URL として `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` を入力します。 他の設定はそのままにして、**[保存]** をクリックします。
+1. 自動的に生成された、ASA モジュールの名前をコピーします。 
 
     ![温度モジュール][11]
 
-1. ASA モジュールの名前をコピーします。 **[次へ]** をクリックしてルートを構成します。
-
-1. 以下を**ルート**にコピーします。  _{moduleName}_ をコピーしたモジュール名に置き換えます。
+1. **[次へ]** をクリックしてルートを構成します。
+1. 以下を**ルート**にコピーします。  _{moduleName}_ を、コピーしたモジュール名で置き換えます。
 
     ```json
     {
@@ -138,7 +138,7 @@ IoT Edge デバイスに ASA ジョブをデプロイする準備が整いまし
 
 1. **[Review Template] (テンプレートのレビュー)** の手順で、**[送信]** をクリックします。
 
-1. デバイスの詳細ページに戻り、**[更新]** をクリックします。  新しい _{moduleName}_ モジュールが **IoT Edge エージェント** モジュールおよび **IoT Edge ハブ**と連動していることがわかります。
+1. デバイスの詳細ページに戻り、**[更新]** をクリックします。  新しい Stream Analytics モジュールが、**IoT Edge エージェント** モジュールおよび **IoT Edge ハブ**と共に実行されていることがわかります。
 
     ![モジュールの出力][7]
 
@@ -146,37 +146,24 @@ IoT Edge デバイスに ASA ジョブをデプロイする準備が整いまし
 
 ここで、IoT Edge デバイスに移動し、ASA モジュールと tempSensor モジュールの間のやり取りを確認できます。
 
-1. コマンド プロンプトで、IoT Edge デバイス接続文字列を使用してランタイムを構成します。
+すべてのモジュールが Docker で実行されていることを確認します。
 
-    ```cmd/sh
-    iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords  
-    ```
+   ```cmd/sh
+   docker ps  
+   ```
 
-1. 次のコマンドを実行してランタイムを起動します。
+   ![docker の出力][8]
 
-    ```cmd/sh
-    iotedgectl start  
-    ```
+すべてのシステム ログとメトリック データを表示します。 Stream Analytics モジュールの名前を使用してください。
 
-1. 次のコマンドを実行してモジュールが動作していることを確認します。
+   ```cmd/sh
+   docker logs -f {moduleName}  
+   ```
 
-    ```cmd/sh
-    docker ps  
-    ```
+30 秒間の温度が 70 度に達するまで、マシンの温度が徐々に上昇するのを観察できます。 次に、Stream Analytics モジュールによってリセットがトリガーされ、マシンの温度が 21 度まで下降します。 
 
-    ![docker の出力][8]
+   ![docker のログ][9]
 
-1. コマンドを実行してすべてのシステム ログとメトリック データを表示します。 上記のモジュール名を使用します。
-
-    ```cmd/sh
-    docker logs -f {moduleName}  
-    ```
-
-    ![docker のログ][9]
-
-1. Azure Portal のストレージ アカウントの**[Blob Service]** で、**[Browse blobs (Blob の参照)]** をクリックし、コンテナーを選択し、新しく作成した JSON ファイルを選択します。
-
-1. **[ダウンロード]** をクリックして結果を表示します。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -187,8 +174,6 @@ IoT Edge デバイスに ASA ジョブをデプロイする準備が整いまし
 
 <!-- Images. -->
 [1]: ./media/tutorial-deploy-stream-analytics/storage.png
-[2]: ./media/tutorial-deploy-stream-analytics/asa_input.png
-[3]: ./media/tutorial-deploy-stream-analytics/asa_output.png
 [4]: ./media/tutorial-deploy-stream-analytics/add_device.png
 [5]: ./media/tutorial-deploy-stream-analytics/asa_job.png
 [6]: ./media/tutorial-deploy-stream-analytics/set_module.png

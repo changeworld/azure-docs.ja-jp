@@ -2,26 +2,18 @@
 title: "Azure Container Instances のコンテナー グループ"
 description: "Azure Container Instances のコンテナー グループのしくみを理解します"
 services: container-instances
-documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/08/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 25eab41c3f0c986bcce33123f86f4c9638b77191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 568a99d44a5a32339d438ed1025670d12ecce791
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 

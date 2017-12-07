@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: sample
 ms.date: 06/13/2017
-ms.author: marsma
-ms.openlocfilehash: e0ef7d5bbc0bcf826e7b1c4cd64a3fd070ce3f6f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.author: tamram
+ms.openlocfilehash: e247a788a593b2e8fe7be76c25b85cad3cef2291
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure CLI サンプル
 

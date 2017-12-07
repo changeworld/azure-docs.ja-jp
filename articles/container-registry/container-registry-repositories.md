@@ -1,23 +1,18 @@
 ---
-title: "Azure Container Registry リポジトリ |Microsoft Docs"
+title: "Azure Container Registry リポジトリ"
 description: "Docker イメージ用に Azure Container Registry リポジトリを使用する方法"
 services: container-registry
-documentationcenter: 
 author: cristy
-manager: balans
-editor: dlepow
+manager: timlt
 ms.service: container-registry
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/24/2017
 ms.author: cristyg
-ms.openlocfilehash: d737df98fee955b57166cb44f45f61dff906514e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3321dd1d8bbd1b8232c26491edd8c374df16b813
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-container-registry-repositories"></a>Azure Container Registry リポジトリ
 

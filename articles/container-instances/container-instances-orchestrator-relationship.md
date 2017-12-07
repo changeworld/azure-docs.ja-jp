@@ -2,26 +2,18 @@
 title: "Azure Container Instances とコンテナーのオーケストレーション"
 description: "Azure Container Instances とコンテナー オーケストレーターがどのように対話するかを理解します"
 services: container-instances
-documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/24/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: b960d56188abf102cf4a8894582203205eaa9a03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a51e746c501cca0521972b09d145439348d1d22d
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances とコンテナー オーケストレーター
 

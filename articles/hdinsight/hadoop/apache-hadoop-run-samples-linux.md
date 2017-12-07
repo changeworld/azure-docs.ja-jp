@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 3e52fc6ee18faa9b8a04ad19db52dd48505782ae
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 700f73d86686761908d241f989aab25e0fb43c0e
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
 
@@ -67,10 +67,7 @@ HDInsight の Hadoop に含まれている MapReduce サンプルを実行する
 * `wordmedian`: 入力ファイル内の単語の長さの中央値をカウントする mapreduce プログラム。
 * `wordstandarddeviation`: 入力ファイル内の単語の長さの偏差値をカウントする mapreduce プログラム。
 
-**ソース コード**: これらのサンプルのソース コードは、次の HDInsight クラスターに含まれています。`/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`
-
-> [!NOTE]
-> パス内の `2.2.4.9-1` は、HDInsight クラスター用の Hortonworks Data Platform のバージョンであり、お使いのクラスターでは異なっている可能性があります。
+**ソース コード**: これらのサンプルのソース コードは、次の HDInsight クラスターに含まれています。`/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`
 
 ## <a name="run-the-wordcount-example"></a>Wordcount 例の実行
 

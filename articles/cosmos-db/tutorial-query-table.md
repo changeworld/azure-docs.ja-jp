@@ -10,16 +10,17 @@ tags:
 ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: cbb752692fbd618d9e7e14c8a80b582aad657b38
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: mvc
+ms.openlocfilehash: 80fed91c45ae19193f6b8dfcaef747f8c4253dee
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB: Table API を使用してテーブル データのクエリを実行する方法
 
@@ -38,7 +39,7 @@ Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テー�
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
 
-Table API を使用してクエリを実行する方法の詳細については、「Querying Tables and Entities (テーブルとエンティティのクエリ)」(https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) をご覧ください。 
+Table API を使用してクエリを実行する方法の詳細については、[テーブルおよびエンティティのクエリ](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities)に関するページを参照してください。 
 
 Azure Cosmos DB が提供する Premium 機能の詳細については、[Azure Cosmos DB: Table API](table-introduction.md) に関するページや [Table API を使用した .NET での開発](tutorial-develop-table-dotnet.md)に関するページをご覧ください。 
 

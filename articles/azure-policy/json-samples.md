@@ -10,17 +10,17 @@ tags:
 ms.assetid: 
 ms.service: azure-policy
 ms.devlang: na
-ms.topic: article
+ms.topic: samples
 ms.tgt_pltfrm: 
 ms.workload: 
 ms.date: 11/13/2017
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: 4042c3606155d1d37947afccafd64652c9659894
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 4ac9696028b9f24341a630d630b583ac5041cee0
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="templates-for-azure-policy"></a>Azure Policy のテンプレート
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 11/14/2017
 | [DB レベルの脅威検出設定の監査](scripts/audit-db-threat-det-setting.md) | SQL データベース セキュリティ アラート ポリシーが特定の状態に設定されていない場合、このポリシーの監査を行います。 脅威検出を有効または無効のどちらにするかを指示する値を指定します。  |
 | [SQL Server レベルの監査設定の監査](scripts/audit-sql-ser-leve-audit-setting.md) | SQL Server の監査設定が指定された設定と一致しない場合に、この設定の監査を行います。 監査設定を有効または無効のどちらにするべきかを指示する値を指定します。 |
 | [サーバー レベルの脅威検出設定の監査](scripts/audit-sql-ser-threat-det-setting.md) | SQL データベース セキュリティ アラート ポリシーが特定の状態に設定されていない場合、このポリシーの監査を行います。 脅威検出を有効または無効のどちらにするかを指示する値を指定します。  |
-| [Azure Active Directory 管理者不在の監査](scripts/audit-no-aad-admin.md) | Azure Active Directory 管理者が SQL Server に割り当てられていない場合に監査を行います。 |
+| [Azure Active Directory 管理者不在の監査](scripts/audit-no-aad-admin.md) | Azure Active Directory 管理者が SQL Server に割り当てられていない場合に、監査を行います。 |
 | [許可された SQL DB の SKU](scripts/allowed-sql-db-skus.md) | 承認された SKU が SQL データベースで使用される必要があります。 許可された SKU ID の配列または許可された SKU 名の配列を指定します。 |
 |**Storage**||
 | [ストレージ アカウントおよび仮想マシンに対して許可された SKU](scripts/allowed-skus-storage.md) | 承認された SKU がストレージ アカウントと仮想マシンで使用される必要があります。 組み込みのポリシーを使用して、承認された SKU を確認します。 承認された仮想マシンの SKU の配列と、承認されたストレージ アカウントの SKU の配列を指定します。 |

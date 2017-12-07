@@ -2,26 +2,18 @@
 title: "Azure Container Instances チュートリアル - Azure Container Registry の準備"
 description: "Azure Container Instances チュートリアル - Azure Container Registry の準備"
 services: container-instances
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: mmacy
-tags: acs, azure-container-service
-keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure"
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/20/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 0beadcca2247fb64c03835c4cb1e1e4fb9426d6f
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 6e69b7a3540ce90743f9dd75664b118751f4a63b
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
 

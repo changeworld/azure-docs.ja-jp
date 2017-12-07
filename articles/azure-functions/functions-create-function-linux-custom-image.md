@@ -6,16 +6,16 @@ keywords:
 author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
-ms.topic: article
+ms.topic: tutorial
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 67ee02df2c42ba39c2f186cc95fa886a3d735ed2
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9ba5f45034561f8d897676e8cc4b1a59945403b8
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>カスタム イメージを使用して Linux で関数を作成する (プレビュー)
 

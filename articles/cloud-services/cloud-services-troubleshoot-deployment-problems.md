@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: 944a29aebf7abfe32a7789ab239718b1cd2d7b15
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3adf4dd824b31d5e3d368a0199bc2e981cafe176
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>クラウド サービスのデプロイメントに関する問題のトラブルシューティング
 クラウド サービス アプリケーション パッケージを Azure にデプロイするとき、デプロイメントに関する情報は、Azure Portal の **[プロパティ]** ウィンドウで確認できます。 クラウド サービスに関する問題は、このウィンドウの情報を頼りにトラブルシューティングすることができます。新規にサポート リクエストを行う際も、この情報を Azure サポートに提供してください。
@@ -27,7 +27,6 @@ ms.lasthandoff: 11/04/2017
 **[プロパティ]** ウィンドウを表示する方法は次のとおりです。
 
 * Azure Portal では、クラウド サービスのデプロイメントをクリックして、**[すべての設定]**、**[プロパティ]** の順にクリックします。
-* Azure クラシック ポータルでは、クラウド サービスのデプロイメントをクリックし、ページの右下隅 (**[概要]** の下) にある **[ダッシュボード]** をクリックします。 このウィンドウには "プロパティ" というラベルが表示されないことに注意してください。
 
 > [!NOTE]
 > **[プロパティ]** ウィンドウの内容は、ウィンドウの右上隅にあるアイコンをクリックしてクリップボードにコピーできます。

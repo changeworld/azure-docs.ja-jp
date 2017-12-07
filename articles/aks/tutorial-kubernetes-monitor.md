@@ -2,26 +2,18 @@
 title: "Kubernertes on Azure チュートリアル - Kubernetes の監視"
 description: "AKS チュートリアル - Microsoft Operations Management Suite (OMS) を使用した Kubernetes の監視"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: aurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a41f699291a65129906680cbb6719c2478c0d830
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 084c6bf3855bdc757c3f2926b35eaf7bba0ef389
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="monitor-azure-container-service-aks"></a>Azure Container Service (AKS) の監視
 

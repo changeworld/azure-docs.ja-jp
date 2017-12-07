@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: d27a4be968dc12818f7031b59ed40fbc9f9d88d3
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 17ecf39128994dad93f017f87f105254f3017230
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Cloud Services と他のサービスのどちらを選択すればよいか
 Azure Cloud Services が最適な選択ですか? Azure にはアプリケーションを実行するための複数のホスティング モデルがあります。 それぞれの実行モデルには異なるサービスが用意されているため、実行する内容に正確に基づいて実行モデルを選択してください。
@@ -50,7 +50,7 @@ IIS を使用せず、アプリをスタンドアロンで実行します。
 ## <a name="scaling-and-management"></a>スケーリングと管理
 Cloud Services では、ユーザーは仮想マシンを作成しません。 代わりに、**Web ロール インスタンスを 3 個**、**Worker ロール インスタンスを 2 個**のように、それぞれがいくつ必要かを Azure に指示する設定ファイルを提供するだけで、プラットフォームがそれらを自動的に作成します。  その場合も、バッキング VM の [サイズ](cloud-services-sizes-specs.md) を選択する必要がありますが、自身で明示的に作成する必要はありません。 アプリケーションが高い負荷を処理する場合は、追加の VM を要求すると、Azure がそれらのインスタンスを作成します。 負荷が減少した場合は、それらのインスタンスをシャットダウンして支払いを停止できます。
 
-Cloud Services アプリケーションは通常、2 つの手順から成るプロセスで利用可能になります。 最初に、開発者はプラットフォームのステージング領域に [アプリケーションをアップロード](cloud-services-how-to-create-deploy-portal.md) します。 アプリケーションを稼働する準備が整ったら、Azure Portal を使用して運用とステージングを切り替えます。 [ステージングと運用の切り替え](cloud-services-nodejs-stage-application.md) にはダウンタイムが生じないため、ユーザーに支障を与えることなく、実行中のアプリケーションを新バージョンにアップグレードできます。
+Cloud Services アプリケーションは通常、2 つの手順から成るプロセスで利用可能になります。 最初に、開発者はプラットフォームのステージング領域に [アプリケーションをアップロード](cloud-services-how-to-create-deploy-portal.md) します。 アプリケーションを稼働する準備が整ったら、Azure Portal を使用して運用とステージングを切り替えます。 [ステージングと運用の切り替え](cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production) にはダウンタイムが生じないため、ユーザーに支障を与えることなく、実行中のアプリケーションを新バージョンにアップグレードできます。
 
 ## <a name="monitoring"></a>監視
 Cloud Services は監視も提供します。 Azure Virtual Machines と同様に、故障した物理サーバーを検出し、そのサーバーで実行していた VM を別のマシンで再開します。 さらに、Cloud Services はハードウェアの故障だけではなく、エラーが発生した VM やアプリケーションも検出します。 Virtual Machines と異なり、各 Web ロール内と Worker ロール内にエージェントが含まれているので、エラーが発生したときに、新しい VM とアプリケーションのインスタンスを開始できます。

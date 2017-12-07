@@ -3,8 +3,8 @@ title: "Azure Data Warehouse を復元する - ローカル冗長と geo 冗長 
 description: "Azure SQL Data Warehouse でデータベースを復旧するためのデータベース復元オプションの概要。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: Lakshmi1812
-manager: jhubbard
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: 3e01c65c-6708-4fd7-82f5-4e1b5f61d304
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: backup-restore
-ms.date: 10/31/2016
-ms.author: lakshmir;barbkess
-ms.openlocfilehash: ea42b7135d0695b66d569095e70bb3d9f8b9594b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: abf8f0b1005aec71812dc8ebfd12fe65250d7a0e
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="sql-data-warehouse-restore"></a>SQL Data Warehouse の復元
 > [!div class="op_single_selector"]
@@ -30,12 +30,12 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-SQL Data Warehouse には、データ ウェアハウスの障害復旧機能の一部として、ローカル バックアップからの復元と地理的バックアップからの復元の両方が用意されています。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元するには、データ ウェアハウスのバックアップを使用します。別のリージョンに復元するには、geo 冗長バックアップを使用します。 この記事では、データ ウェアハウスの復元の詳細について説明します。
+SQL Data Warehouse には、データ ウェアハウスのディザスター リカバリー機能の一部として、ローカル バックアップからの復元と地理的バックアップからの復元の両方が用意されています。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元するには、データ ウェアハウスのバックアップを使用します。別のリージョンに復元するには、geo 冗長バックアップを使用します。 この記事では、データ ウェアハウスの復元の詳細について説明します。
 
 ## <a name="what-is-a-data-warehouse-restore"></a>データ ウェアハウスの復元とは
 データ ウェアハウスの復元とは、既存または削除済みのデータ ウェアハウスのバックアップから作成された新しいデータ ウェアハウスのことです。 復元されたデータ ウェアハウスは、特定の時点でバックアップされたデータ ウェアハウスを再作成します。 SQL Data Warehouse は分散システムなので、データ ウェアハウスの復元は Azure BLOB に保存されている多くのファイルから作成されます。 
 
-データの不慮の破損または削除から保護するデータベース復元は、ビジネス継続性および障害復旧戦略の最も重要な部分です。
+データの不慮の破損または削除から保護するデータベース復元は、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。
 
 詳細については、次を参照してください。
 

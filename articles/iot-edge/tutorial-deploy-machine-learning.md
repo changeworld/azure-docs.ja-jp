@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9b8475dcc51fb24fadd1faa4a2008b25a4464080
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: e061e599f365bf3d343cb59b8dc6a61e06627517
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
@@ -46,10 +46,10 @@ Azure ML コンテナーを作成するには、[Azure IoT Edge の AI ツール
 1. **モジュールの追加**手順で、もう一度 **[Add IoT Edge module]\(IoT Edge モジュールの追加\)** を選択します。
 1. **[名前]** フィールドに、前のセクションで作成したコンテナーの名前を入力します。 名前を見つけるための情報については、[Azure IoT Edge の AI ツールキット](https://aka.ms/aml-iot-edge-anomaly-detection)に関するページをご覧ください。
 1. **[イメージ]** フィールドに、前のセクションで作成したコンテナーのイメージ URI を入力します。 イメージを見つけるための情報については、[Azure IoT Edge の AI ツールキット](https://aka.ms/aml-iot-edge-anomaly-detection)に関するページをご覧ください。
-1. **[ Save]** をクリックします。
+1. **[Save]** をクリックします。
 1. **モジュールの追加**手順に戻り、**[次へ]** をクリックします。
 1. モジュールのルートを更新します。
-1. **ルートの指定**手順で、以下の JSON をテキスト ボックスにコピーします。 モジュールによって、すべてのメッセージが Edge ランタイムに発行されます。 こうしたメッセージがフローする場所は、ランタイムの宣言型ルールによって定義されます。 このチュートリアルでは、2 つのルートが必要です。 1 つ目のルートは、すべての Azure Machine Learning モジュールが使用する "mlInput" エンドポイント経由で、温度センサーから機械学習モジュールにメッセージを転送します。 2 つ目のルートは、機械学習モジュールから IoT ハブにメッセージを転送します。 このルートでは、"mlOutput" は、すべての Azure Machine Learning モジュールがデータを出力するために使用するエンドポイントです。また、"upstream" は特別な転送先で、Edge Hub に対して、メッセージを IoT ハブに送信するように指示します。 
+1. **ルートの指定**手順で、以下の JSON をテキスト ボックスにコピーします。 モジュールによって、すべてのメッセージが Edge ランタイムに発行されます。 それらのメッセージが流れる場所は、ランタイム内の宣言型ルールによって定義されます。 このチュートリアルでは、2 つのルートが必要です。 1 つ目のルートは、すべての Azure Machine Learning モジュールが使用する "amlInput" エンドポイント経由で、温度センサーから機械学習モジュールにメッセージを転送します。 2 つ目のルートは、機械学習モジュールから IoT ハブにメッセージを転送します。 このルートでは、"amlOutput" は、すべての Azure Machine Learning モジュールがデータを出力するために使用するエンドポイントです。また、"$upstream" は特別な転送先で、Edge Hub に対して、メッセージを IoT Hub に送信するように指示します。 
 
     ```json
     {

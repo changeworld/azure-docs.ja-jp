@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d6cddf54827d44e41add9e1e6b1a4323e03879e7
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: dff87d41df2bdb5439785846c9653f2f0be2b40d
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -103,7 +103,7 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | &nbsp; | 米国中南部 | 米国中南部 |
 | &nbsp; | 米国中西部 | 米国中西部 |
 | &nbsp; | 米国西部 | 米国西部 |
-| &nbsp; | 米国西部 2 | 米国西部 |
+| &nbsp; | 米国西部 2 | 米国西部 2 |
 | カナダ | カナダ東部 | カナダ中部 |
 | &nbsp; | カナダ中部 | カナダ中部 |
 | ブラジル | ブラジル南部 | ブラジル南部 |

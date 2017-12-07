@@ -2,22 +2,18 @@
 title: "クイック スタート - PowerShell を使用した Azure でのプライベート Docker レジストリの作成"
 description: "PowerShell を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。"
 services: container-registry
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: tysonn
 ms.service: container-registry
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: quicksart
 ms.date: 10/08/2017
 ms.author: nepeters
-ms.openlocfilehash: b58b10e644e934cc38a6e0512ba7642ab8bf27c4
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.custom: mvc
+ms.openlocfilehash: fbf643ad342d712452d39c71b8706b6213198512
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-an-azure-container-registry-using-powershell"></a>PowerShell を使用して Azure Container Registry を作成する
 
