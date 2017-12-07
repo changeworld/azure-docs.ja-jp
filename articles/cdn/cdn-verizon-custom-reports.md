@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: v-deasim
-ms.openlocfilehash: 8df9fd46fe3ce8d87e7ad5377a21a0bc7a458d2b
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: f09195dc07a96ebcca7f7a9e4bcf521fae13630c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="custom-reports-from-verizon"></a>Verizon からのカスタム レポート
 
@@ -30,7 +30,7 @@ Verizon プロファイルの管理ポータル経由で Verizon カスタム �
 ## <a name="accessing-verizon-custom-reports"></a>Verizon カスタム レポートへのアクセス
 1. CDN プロファイル ブレードで、 **[管理]** をクリックします。
    
-    ![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-reports/cdn-manage-btn.png)
+    ![[CDN プロファイル] の [管理] ボタン](./media/cdn-reports/cdn-manage-btn.png)
    
     CDN 管理ポータルが開きます。
 2. **[分析]** タブにポインターを合わせ、次に **[カスタム レポート]** フライアウトにポインターを合わせます。 **[Edge CNAMEs] (エッジ CNAME)** をクリックします。
@@ -67,7 +67,7 @@ Verizon プロファイルの管理ポータル経由で Verizon カスタム �
 
 ## <a name="edge-cnames-custom-report-fields"></a>エッジ CNAME カスタム レポートのフィールド
 
-| フィールド                     | Description   |
+| フィールド                     | 説明   |
 |---------------------------|---------------|
 | 2xx                       | 2xx の HTTP 状態コード ([200 OK] など) で終了するエッジ CNAME の要求の総数または転送されたデータ (MB) を示します。 |
 | 3xx                       | 3xx の HTTP 状態コード ([302 Found] (302 見つかりました) や [304 Not Modified] (304 変更されていません) など) で終了するエッジ CNAME の要求の総数または転送されたデータ (MB) を示します。 |
@@ -76,7 +76,7 @@ Verizon プロファイルの管理ポータル経由で Verizon カスタム �
 | [Cache Hit %] (キャッシュ ヒット率)               | キャッシュから要求者に直接提供されたキャッシュ可能な要求の割合 (%) を示します。 |
 | キャッシュ ヒット数                | キャッシュ ヒット (TCP_EXPIRED_HIT、TCP_HIT、TCP_PARTIAL_HIT など) で終了するエッジ CNAME の要求の総数または転送されたデータ (MB) を示します。 キャッシュ ヒットは、要求されたコンテンツのキャッシュされたバージョンが見つかった場合に発生します。 |
 | [Data Transferred (MB)] (転送されたデータ (MB))     | エッジ CNAME のエッジ サーバーから HTTP クライアント (Web ブラウザー) に転送された合計のデータ量 (MB) を示します。 転送されたデータ量は、HTTP 応答ヘッダーを応答本文に追加することによって計算されます。 その結果、資産ごとの転送されたデータ量はその実際のファイル サイズより大きくなります。 |
-| Description               | ホスト名でエッジ CNAME を識別する |
+| 説明               | ホスト名でエッジ CNAME を識別する |
 | ヒット数                      | エッジ CNAME への要求の総数を示します。 |
 | [Misses] (ミス数)                    | キャッシュ ミス (TCP_CLIENT_REFRESH_MISS、TCP_EXPIRED_MISS、TCP_MISS など) で終了するエッジ CNAME の要求の総数または転送されたデータ (MB) を示します。 キャッシュ ミスは、要求されたコンテンツが、要求を処理したエッジ サーバーにキャッシュされていなかった場合に発生します。 | 
 | [No Cache] (キャッシュなし)                  | CONFIG_NOCACHE キャッシュ状態コードで終了するエッジ CNAME の要求の総数または転送されたデータ (MB) を示します。  |

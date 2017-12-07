@@ -3,7 +3,7 @@ title: "Azure Functions の開発に関するガイダンス | Microsoft Docs"
 description: "プログラミング言語とバインドを問わず、Azure での関数開発に必要な Azure Functions の概念とテクニックについて説明します。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -15,12 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
-ms.author: chrande
-ms.openlocfilehash: cf965170e0c645e77a9b8829a10a18b29889a061
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.author: tdykstra
+ms.openlocfilehash: 80996c8bc6e40665201057ed185700ddaeea170a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインドに固有の詳細を学習する前に、それらすべてに適用されるこの概要をお読みください。
@@ -81,11 +81,8 @@ Azure ポータルに組み込まれている関数エディターでは、 *fun
 関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service/app-service-deploy-local-git.md) はすべて、関数アプリでも利用できます。 ここでは、関数アプリ ファイルをアップロードまたは更新するための方法をいくつか紹介します。 
 
 #### <a name="to-use-app-service-editor"></a>App Service Editor を使用するには
-1. Azure Functions ポータルで、 **[関数アプリの設定]**をクリックします。
-2. **[詳細設定]** セクションで、**[App Service の設定に移動]** をクリックします。
-3. **[開発ツール]** の App Menu ナビゲーション バーの **[App Service Editor]** をクリックします。
-4. **[移動]**をクリックします。
-   
+1. Azure Functions ポータルで、**[プラットフォーム機能]**をクリックします。
+2. **[開発ツール]** セクションで、**[App Service Editor エディター]** をクリックします。   
    App Service Editor の読み込み後、*host.json* ファイルと関数フォルダーが *wwwroot* の下に表示されます。 
 5. ファイルを開いて編集するか、開発コンピューターからドラッグアンドドロップしてファイルをアップロードします。
 

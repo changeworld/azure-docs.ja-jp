@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2017
+ms.date: 11/29/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 16ce69855aa7505f52cd9d01dcd0843784fcb706
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: f084ea3a9fb97a334f3dec90f2c9020a842bc27c
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスのコントロール 
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 11/04/2017
 
 ### <a name="compliant-device"></a>準拠デバイス
 
-デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、信頼されたデバイスのみに許可することです。 準拠デバイスの要求は、信頼されるデバイスを定義する必要のある 1 つのオプションです。 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
+デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、信頼されたデバイスのみに許可することです。 準拠しているデバイスの要求は、信頼されるデバイスを定義する必要のある 1 つのオプションです。 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
 
 ### <a name="domain-joined-device"></a>ドメイン参加済みデバイス
 
@@ -111,7 +111,7 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 
 - RSA
 
-- Trusona
+- [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
 これらのサービスの詳細については、プロバイダーに直接問い合せてください。
 
@@ -156,7 +156,7 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 
 ### <a name="use-app-enforced-restrictions"></a>アプリによって適用される制限を使用する
 
-このコントロールを使用して、デバイス情報をクラウド アプリに渡すよう Azure AD に要求できます。 これにより、クラウド アプリは、ユーザーが準拠デバイスとドメイン参加済みデバイスのどちらからアクセスしているかを把握できます。 このコントロールは、現在、クラウド アプリとしての SharePoint でのみサポートされます。 SharePoint では、デバイス情報を使用して、デバイスの状態に応じて制限付きまたは完全なエクスペリエンスをユーザーに提供します。
+このコントロールを使用して、デバイス情報をクラウド アプリに渡すよう Azure AD に要求できます。 これにより、クラウド アプリは、ユーザーが準拠しているデバイスとドメイン参加済みデバイスのどちらからアクセスしているかを把握できます。 このコントロールは、現在、クラウド アプリとしての SharePoint でのみサポートされます。 SharePoint では、デバイス情報を使用して、デバイスの状態に応じて制限付きまたは完全なエクスペリエンスをユーザーに提供します。
 SharePoint での制限付きアクセスを要求する方法について詳しくは、[「非管理対象デバイスからのアクセスを制御する」](https://aka.ms/spolimitedaccessdocs)をご覧ください。
 
 

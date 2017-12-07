@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/24/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 6678f429d5d1242f1193933ec147fc910d53f925
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: a1e56a6d31568d1d36e713b9a1000d84c6446bac
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要 
 
@@ -63,10 +63,9 @@ Media Services ソリューションを構築するために、以下を使用�
 
 **Azure のコード サンプル** ギャラリーで複数のコード サンプルが見つかります: [Azure Media Services のコード サンプル](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0)。
 
-## <a name="concepts-and-overview"></a>概念と概要
-Azure Media Services の概念については、「 [概念](media-services-concepts.md)」を参照してください。
+## <a name="concepts"></a>概念
 
-Azure Media Services のすべての主要コンポーネントを紹介する入門シリーズについては、 [Azure Media Services のステップバイステップ チュートリアル](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)に関するページを参照してください。 このシリーズでは、概念の概要をわかりやすく示し、AMSE ツールを使用して AMS タスクについて説明しています。 AMSE ツールは Windows ツールです。 このツールは、[AMS SDK for .NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、または [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) を使用してプログラムで実行できるほとんどのタスクをサポートしています。
+Azure Media Services の概念については、「 [概念](media-services-concepts.md)」を参照してください。
 
 ## <a name="supported-scenarios-and-availability-of-media-services-across-data-centers"></a>Media Services のサポートされているシナリオとデータ センター全体における可用性
 

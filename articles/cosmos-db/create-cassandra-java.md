@@ -11,14 +11,14 @@ ms.custom: quick start connect, mvc
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 2097aa1c158f88a06ab93123f4e374b4245430d6
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 4d12fe3890b1d3190af1bc94eba7b93059a03f10
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>クイックスタート: Java と Azure Cosmos DB で Cassandra アプリを構築する
 

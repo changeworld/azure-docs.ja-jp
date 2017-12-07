@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 86b43b312bf7ce52ab75855424cc5db473245159
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 16cdd2780ae090a5388b3d2e6e4ab52a24f8116a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントの管理方法
 グローバルな整合性の設定、キーの操作、Azure Cosmos DB アカウントの削除を Azure Portal で行う方法について説明します。
@@ -33,10 +33,10 @@ ms.lasthandoff: 11/15/2017
 3. **[既定の整合性]** ページで、新しい一貫性レベルを選び、**[保存]** をクリックします。
     ![既定の一貫性セッション][5]
 
-## <a id="keys"></a>アクセス キーを表示、コピー、および再生成する
-Azure Cosmos DB アカウントを作成すると、2 つのマスター アクセス キーが生成されます。これらのアクセス キーは、Azure Cosmos DB アカウントにアクセスする際の認証に使用できます。 2 つのアクセス キーが提供されるので、Azure Cosmos DB アカウントを中断することなくキーを再生成できます。 
+## <a id="keys"></a>アクセス キーおよびパスワードを表示、コピー、および再生成する
+Azure Cosmos DB アカウントを作成すると、サービスによって 2 つのマスター アクセス キー (または MongoDB API アカウント用に 2 つのパスワード) が生成されます。これらのアクセス キーは、Azure Cosmos DB アカウントにアクセスする際の認証に使用できます。 2 つのアクセス キーが提供されるので、Azure Cosmos DB アカウントを中断することなくキーを再生成できます。 
 
-[Azure Portal](https://portal.azure.com/) で、**[Azure Cosmos DB アカウント]** ページのリソース メニューにある **[キー]** ページにアクセスし、Azure Cosmos DB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。
+[Azure Portal](https://portal.azure.com/) で、**[Azure Cosmos DB アカウント]** ページのリソース メニューにある **[キー]** ページにアクセスし、Azure Cosmos DB アカウントにアクセスするときに使用するアクセス キーの表示、コピー、再生成を行います。 MongoDB API アカウントの場合は、リソース メニューから **[接続文字列]** ページにアクセスし、アカウントへのアクセスに使用されるパスワードを表示、コピー、および再生成します。
 
 ![Azure Portal のスクリーン ショット、[キー] ページ](./media/manage-account/keys.png)
 
@@ -47,25 +47,25 @@ Azure Cosmos DB アカウントを作成すると、2 つのマスター アク�
 
 読み取り専用キーもこのページで入手できます。 読み取りとクエリは読み取り専用操作ですが、作成、削除、置換はそうではありません。
 
-### <a name="copy-an-access-key-in-the-azure-portal"></a>Azure Portal でアクセス キーをコピーする
-**[キー]** ページで、コピー対象のキーの右側にある **[コピー]** ボタンをクリックします。
+### <a name="copy-an-access-key-or-password-in-the-azure-portal"></a>Azure ポータルでアクセス キーまたはパスワードをコピーする
+**[キー]** ページ (または MongoDB API アカウントの場合は **[接続文字列]** ページ) で、コピーするキーまたはパスワードの右側にある [**コピー]** ボタンをクリックします。
 
 ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/manage-account/copykeys.png)
 
-### <a name="regenerate-access-keys"></a>アクセス キーを再生成する
-接続のセキュリティを高めるために、Azure Cosmos DB アカウントのアクセス キーは定期的に変更する必要があります。 一方のアクセス キーを使用して Azure Cosmos DB アカウントへの接続を維持しながら、もう一方のアクセス キーを再生成できるように、2 つのアクセス キーが割り当てられます。
+### <a name="regenerate-access-keys-and-passwords"></a>アクセス キーおよびパスワードを再生成する
+接続のセキュリティを高めるために、Azure Cosmos DB アカウントのアクセス キー (または MongoDB API アカウントのパスワード) は定期的に変更する必要があります。 一方のアクセス キー/パスワードを使用して Azure Cosmos DB アカウントへの接続を維持しながら、もう一方のアクセス キーを再生成できるように、2 つのアクセス キーが割り当てられます。
 
 > [!WARNING]
 > アクセス キーを再生成すると、現在のキーに依存するすべてのアプリケーションが影響を受けます。 アクセス キーを使用して Azure Cosmos DB アカウントにアクセスするすべてのクライアントを更新し、新しいキーが使用されるようにする必要があります。
 > 
 > 
 
-Azure Cosmos DB アカウントを使用するアプリケーションまたはクラウド サービスがある場合は、キーを再生成すると、キーを切り替えない限り接続が失われます。 次の手順は、キーの切り替えに含まれるプロセスの概要を示します。
+Azure Cosmos DB アカウントを使用するアプリケーションまたはクラウド サービスがある場合は、キーを再生成すると、キーを切り替えない限り接続が失われます。 次の手順は、キー/パスワードの切り替えに含まれるプロセスの概要を示します。
 
 1. Azure Cosmos DB アカウントのセカンダリ アクセス キーを参照するように、アプリケーション コードのアクセス キーを更新します。
 2. Azure Cosmos DB アカウントのプライマリ アクセス キーを再生成します。 [Azure Portal](https://portal.azure.com/) で、Azure Cosmos DB アカウントにアクセスします。
-3. **[Azure Cosmos DB アカウント]** ページで、**[キー]** をクリックします。
-4. **[キー]** ページで、[再生成] ボタンをクリックしてから **[OK]** をクリックして、新しいキーを生成することを確認します。
+3. **[Azure Cosmos DB アカウント]** ページで **[キー]** (または MongoDB アカウントの場合は **[接続文字列]****) をクリックします。
+4. **[キー]**/**[接続文字列]** ページで [再生成] ボタンをクリックしてから **[OK]** をクリックして、新しいキーの生成を確定します。
     ![アクセス キーを再生成する](./media/manage-account/regenerate-keys.png)
 5. (再生成してから約 5 分後に) 新しいキーが使用できることを確認したら、新しいプライマリ アクセス キーを参照するようにアプリケーション コードのアクセス キーを更新します。
 6. セカンダリ アクセス キーを再生成します。
@@ -77,11 +77,11 @@ Azure Cosmos DB アカウントを使用するアプリケーションまたは�
 > 
 > 
 
-## <a name="get-the--connection-string"></a>接続文字列を取得する
+## <a name="get-the-connection-string"></a>接続文字列を取得する
 接続文字列を取得するには、次の操作を行います。 
 
 1. [Azure Portal](https://portal.azure.com) で、Azure Cosmos DB アカウントにアクセスします。
-2. リソース メニューの **[キー]**をクリックします。
+2. リソース メニューで **[キー]** (または MongoDB API アカウントの場合は **[接続文字列]**) をクリックします。
 3. **[プライマリ接続文字列]** ボックスまたは **[セカンダリ接続文字列]** ボックスの横にある **[コピー]** ボタンをクリックします。 
 
 [Azure Cosmos DB データベース移行ツール](import-data.md)で接続文字列を使用する場合は、接続文字列の末尾にデータベース名を追加します。 `AccountEndpoint=< >;AccountKey=< >;Database=< >`」を参照してください。

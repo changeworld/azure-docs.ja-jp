@@ -4,7 +4,7 @@ description: "Cortana Intelligence の機能を使用して、車両の状態と
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 09fad60b-2f48-488b-8a7e-47d1f969ec6f
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/15/2017
 ms.author: bradsev
-ms.openlocfilehash: bec5066a2e1ba0e4e5e81c4e1be28ed8eb93ceed
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 8584cade8e12b4f06ae455227e702844a06f512a
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook"></a>車両テレメトリ分析ソリューション プレイブック
 このメニューは、このプレイブック内の各章にリンクされています。 

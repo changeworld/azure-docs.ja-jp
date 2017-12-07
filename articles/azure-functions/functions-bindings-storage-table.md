@@ -1,9 +1,9 @@
 ---
-title: "Azure Functions における Table Storage バインド"
+title: "Azure Functions における Azure Table Storage のバインド"
 description: "Azure Functions で Azure Table のバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -14,20 +14,20 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
-ms.author: chrande
-ms.openlocfilehash: 2f54df931d03318a50e9397211e3c50d0898556d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: tdykstra
+ms.openlocfilehash: a1305432d98c2e9f9f8bc30cacc62d49b1a8ba36
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="azure-functions-table-storage-bindings"></a>Azure Functions における Table Storage バインド
+# <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
 この記事では、Azure Functions で Azure Table Storage のバインドを使用する方法について説明します。 Azure Functions は、Azure Table ストレージの入力および出力のバインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="table-storage-input-binding"></a>Table Storage の入力バインド
+## <a name="input"></a>入力
 
 Azure Table Storage の入力バインドを使用して、Azure Storage アカウントのテーブルを読み取ります。
 
@@ -284,7 +284,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="input---attributes-for-precompiled-c"></a>入力 - プリコンパイル済み C# の属性
+## <a name="input---attributes"></a>入力 - 属性
  
 [プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、次の属性を使用してテーブル入力バインドを構成します。
 
@@ -298,6 +298,9 @@ module.exports = function (context, myQueueItem) {
       [QueueTrigger("table-items")] string input, 
       [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, 
       TraceWriter log)
+  {
+      ...
+  }
   ```
 
   次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
@@ -308,7 +311,12 @@ module.exports = function (context, myQueueItem) {
       [QueueTrigger("table-items")] string input, 
       [Table("MyTable", "Http", "{queueTrigger}", Connection = "StorageConnectionAppSetting")] MyPoco poco, 
       TraceWriter log)
+  {
+      ...
+  }
   ```
+
+  完全な例については、[入力 - プリコンパイル済み C# の例](#input---c-example)に関する記事をご覧ください。
 
 * NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義された [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -321,6 +329,9 @@ module.exports = function (context, myQueueItem) {
       [FunctionName("TableInput")]
       [StorageAccount("FunctionLevelStorageAppSetting")]
       public static void Run( //...
+  {
+      ...
+  }
   ```
 
 使用するストレージ アカウントは、次の順序で決定されます。
@@ -335,7 +346,7 @@ module.exports = function (context, myQueueItem) {
 
 次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |Description|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
@@ -345,7 +356,9 @@ module.exports = function (context, myQueueItem) {
 |**rowKey** |**RowKey** | 省略可能。 読み取るテーブル エンティティの行キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
 |**take** |**Take** | 省略可能。 JavaScript で読み取るエンティティの最大数。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
 |**filter** |**Filter** | 省略可能。 JavaScript のテーブル入力の OData フィルター式。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#input---usage)」セクションを参照してください。| 
-|**connection** |**Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br/>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+|**connection** |**Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="input---usage"></a>入力 - 使用方法
 
@@ -368,7 +381,7 @@ Table Storage の入力バインドは、次のシナリオをサポートして
 
   `filter` と `take` プロパティを設定します。 `partitionKey` と `rowKey` は設定しません。 `context.bindings.<name>` を使用して入力テーブルの単一のエンティティ (または複数のエンティティ) にアクセスします。 逆シリアル化されたオブジェクトには `RowKey` プロパティと `PartitionKey` プロパティがあります。
 
-## <a name="table-storage-output-binding"></a>Table Storage の出力バインド
+## <a name="output"></a>出力
 
 Azure Table Storage の出力バインドを使用して、Azure Storage アカウントのテーブルにエンティティを書き込みます。
 
@@ -554,9 +567,9 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="output---attributes-for-precompiled-c"></a>出力 - プリコンパイル済み C# の属性
+## <a name="output---attributes"></a>出力 - 属性
 
- [プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されている [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs) を使用します。
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されている [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs) を使用します。
 
 この属性のコンストラクターは、テーブル名を受け取ります。 次の例のように、`out` パラメーターまたは関数の戻り値で使用できます。
 
@@ -566,6 +579,9 @@ module.exports = function (context) {
 public static MyPoco TableOutput(
     [HttpTrigger] dynamic input, 
     TraceWriter log)
+{
+    ...
+}
 ```
 
 次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
@@ -576,15 +592,20 @@ public static MyPoco TableOutput(
 public static MyPoco TableOutput(
     [HttpTrigger] dynamic input, 
     TraceWriter log)
+{
+    ...
+}
 ```
 
-`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[入力 - プリコンパイル済み C# の属性](#input---attributes-for-precompiled-c)に関するページを参照してください。
+完全な例については、[出力 - プリコンパイル済み C# の例](#output---c-example)に関する記事をご覧ください。
+
+`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[入力 - 属性](#input---attributes-for-precompiled-c)を参照してください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
 次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |Description|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `out` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
@@ -592,7 +613,9 @@ public static MyPoco TableOutput(
 |**tableName** |**TableName** | テーブルの名前。| 
 |**partitionKey** |**PartitionKey** | 書き込むテーブル エンティティのパーティション キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#output---usage)」セクションを参照してください。| 
 |**rowKey** |**RowKey** | 書き込むテーブル エンティティの行キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#output---usage)」セクションを参照してください。| 
-|**connection** |**Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br/>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+|**connection** |**Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>出力 - 使用方法
 

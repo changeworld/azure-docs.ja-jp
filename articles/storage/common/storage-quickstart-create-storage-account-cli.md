@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/28/2017
-ms.author: marsma
-ms.openlocfilehash: 7186c5e2ce94d06b21d95a557e960b82e268cdce
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.author: tamram
+ms.openlocfilehash: d0f9f487226218e6a8409c60edd7ef39ce760386
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="create-a-storage-account-using-the-azure-cli"></a>Azure CLI を使用してストレージ アカウントを作成する
 

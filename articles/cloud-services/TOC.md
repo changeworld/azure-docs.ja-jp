@@ -41,7 +41,6 @@
 ### [ポータルでのクラウド サービスの作成とデプロイ](cloud-services-how-to-create-deploy-portal.md)
 ### [PowerShell での空のクラウド サービス コンテナーの作成](cloud-services-powershell-create-cloud-container.md)
 ### [カスタム ドメイン名の構成](cloud-services-custom-domain-name-portal.md)
-### [クラウド サービス デプロイのステージング (Node.js)](cloud-services-nodejs-stage-application.md)
 ### [カスタム ドメイン コントローラーに接続する](cloud-services-connect-to-custom-domain.md)
 
 ## サービスの管理

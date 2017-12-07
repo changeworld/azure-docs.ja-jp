@@ -8,15 +8,15 @@ ms.assetid:
 ms.service: backup
 ms.workload: storage-backup-recovery
 keywords: 
-ms.date: 05/15/2017
+ms.date: 11/28/2017
 ms.topic: article
 ms.author: markgal,masaran
 manager: carmonm
-ms.openlocfilehash: 3608c310f43ff9f97563d252437d50d962162f47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 45e3e7e1288c9c468619bd553963cfd018298c32
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/11/2017
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008 R2 SP1 - Enterprise および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダー、ボリューム、仮想ハード ドライブの項目レベルの回復|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|N|N|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダー、ボリューム、仮想ハード ドライブの項目レベルの回復|
 |VMware VM|VMware server 5.5、6.0、または 6.5 |オンプレミスの Hyper-V 仮想マシン|Y|Y (UR1 による)|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> 項目レベルのファイルとフォルダーの回復は Windows でのみ使用できます。<br /> VMware vApps はサポートされません。|
-|Linux|Hyper-V または VMware ゲストとして実行されている Linux|オンプレミスの Hyper-V 仮想マシン|Y|Y|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護: 仮想マシン全体<br /><br />回復: 仮想マシン全体|
+|Linux|Hyper-V または VMware ゲストとして実行されている Linux|オンプレミスの Hyper-V 仮想マシン|Y|Y|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護: 仮想マシン全体<br /><br />回復: 仮想マシン全体 <br/><br/> サポートされる Linux ディストリビューションおよびバージョンの完全なリストについては、「[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)」の記事を参照してください。|
 
 ## <a name="cluster-support"></a>クラスターのサポート
 Azure Backup Server は、次のクラスタ化されたアプリケーション内のデータを保護できます。

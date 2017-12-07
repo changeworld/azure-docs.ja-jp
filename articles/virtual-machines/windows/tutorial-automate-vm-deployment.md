@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c4e6bdba54ded3880aabfc22ea07217fb5035477
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0503cef234b01c4eefb1c1de3d88d9a812c4c39
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="how-to-customize-a-windows-virtual-machine-in-azure"></a>Azure で Windows 仮想マシンをカスタマイズする方法
 仮想マシン (VM) を迅速かつ一貫した方法で構成するには、一般的に、何らかの形で自動化することが望ましいです。 Windows VM をカスタマイズする一般的なアプローチとして、[Windows のカスタム スクリプト拡張機能](extensions-customscript.md)を使用する方法があります。 このチュートリアルで学習する内容は次のとおりです。
@@ -127,6 +127,7 @@ Set-AzureRmVMSourceImage -PublisherName MicrosoftWindowsServer `
     -Offer WindowsServer -Skus 2016-Datacenter -Version latest | `
 Add-AzureRmVMNetworkInterface -Id $nic.Id
 
+# Create a virtual machine using the configuration
 New-AzureRmVM -ResourceGroupName myResourceGroupAutomate -Location EastUS -VM $vmConfig
 ```
 

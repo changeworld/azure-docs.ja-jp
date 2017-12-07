@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/13/2017
+ms.date: 11/28/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: d22fe6456c3bd886f8f8863d362c0084fbe03da3
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 66748adc49ef921ab8adb5306b2a483234b076ae
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>環境内でホストされている Linux コンピューターからデータを収集する
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、物理的または仮想的な Linux コンピューターおよびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Linux コンピューターを構成し、データを収集する方法を示します。  Azure Linux VM の場合は、次のトピック「[Collect data about Azure Virtual Machines](log-analytics-quick-collect-azurevm.md)」 (Azure Virtual Machines に関するデータを収集する) を参照してください。  
- 
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="log-in-to-azure-portal"></a>Azure Portal へのログイン
@@ -55,6 +55,9 @@ OMS エージェント for Linux をインストールする前に、Log Analyti
 
 ## <a name="install-the-agent-for-linux"></a>Linux 用エージェントのインストール
 次の手順では、Azure および Azure Government クラウドで Log Analytics 用のエージェントのセットアップを構成します。  
+
+>[!NOTE]
+>Linux 用 OMS エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。  
 
 1. Log Analytics に接続できるように Linux コンピューターを構成するには、前にコピーしたワークスペース ID と主キーを指定した次のコマンドを実行します。  このコマンドは、エージェントをダウンロードし、そのチェックサムを検証し、エージェントをインストールします。 
     
@@ -116,7 +119,7 @@ Log Analytics は、イベントを Linux Syslog から収集でき、長期分�
 ワークスペースを削除するには、作成した Log Analytics ワークスペースを選択し、リソース ページで **[削除]** をクリックします。<br><br> ![Log Analytics リソースを削除する](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>次のステップ
-次はオンプレミスの Linux コンピューターからオペレーションおよびパフォーマンス データを収集し、*無料*で収集するデータの調査と分析、およびデータに対するアクションの実行を簡単に開始することができます。  
+これでオンプレミスの Linux コンピューターからオペレーション データとパフォーマンス データが収集されているので、収集したデータの調査と分析、およびデータに対するアクションの実行を*無料*で簡単に開始することができます。  
 
 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。   
 

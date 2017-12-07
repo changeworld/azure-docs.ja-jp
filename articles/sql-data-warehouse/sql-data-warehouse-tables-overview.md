@@ -3,8 +3,8 @@ title: "SQL Data Warehouse のテーブルの概要 | Microsoft Docs"
 description: "Azure SQL Data Warehouse テーブルの概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
-manager: jhubbard
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: 2114d9ad-c113-43da-859f-419d72604bdf
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 06/29/2016
-ms.author: shigu;jrj
-ms.openlocfilehash: c16fef2f302dbc56f257eaf2f0d2b68b6a3c1852
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: d736ad0dbfb109500a150d2bc3f7c40b16206fdb
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの概要
 > [!div class="op_single_selector"]

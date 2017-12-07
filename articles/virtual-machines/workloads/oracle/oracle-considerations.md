@@ -10,15 +10,15 @@ ms.assetid: 5d71886b-463a-43ae-b61f-35c6fc9bae25
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/15/2017
+ms.date: 011/28/2017
 ms.author: rclaus
-ms.openlocfilehash: 9174f7c8d16ff311312980fbe4d35996ec7ac832
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e903495e08001069fc33ddff5a343864fb7f7084
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle ソリューションとそのデプロイ
 この記事では、Microsoft Azure でさまざまな Oracle ソリューションを適切にデプロイするために必要な情報を取り上げます。 これらのソリューションは、Azure Marketplace で Oracle によって発行された仮想マシン イメージに基づいています。 現在利用可能なイメージの一覧を取得するには、次のコマンドを実行します。
@@ -55,13 +55,13 @@ Oracle では、Oracle Linux に基づく仮想マシン イメージで、Azure
 
 接続ディスクは Azure Blob Storage サービスを利用します。 各 Standard ディスクは理論上、毎秒最大約 500 回 の入出力の操作 (IOPS) が可能です。 Premium ディスク オファリングでは、高パフォーマンスのデータベース ワークロードが優先され、ディスクあたり最大 5000 IOps を実現できます。 パフォーマンスの要件を満たしている場合は、1 つのディスクを使用できます。一方、複数の接続ディスクを使い、それらの間でデータベースのデータを分散させ、Oracle Automatic Storage Management (ASM) を利用すると、効果的に IOPS パフォーマンスを改善できます。 Oracle ASM に固有の情報については、[Oracle Automatic Storage の概要](http://www.oracle.com/technetwork/database/index-100339.html)に関するページを参照してください。 Linux の Azure VM で Oracle ASM をインストールおよび構成する方法の例については、[Oracle Automated Storage Management のインストールと構成](configure-oracle-asm.md)のチュートリアルを試みることができます。
 
-### <a name="oracle-realtime-application-cluster-rac"></a>Oracle Realtime Application Cluster (RAC)
-Oracle RAC では、オンプレミスのマルチノード クラスター構成の単一ノードで発生する障害を軽減するように設計されています。  このクラスターは、超大規模パブリック クラウド環境にネイティブではない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 Azure で Oracle RAC をデプロイする必要がある場合は、これらのテクノロジをエミュレートする、[FlashGrid など](https://www.flashgrid.io/oracle-rac-in-azure/)のサード パーティ製のソリューションがあります。 
+## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
+Oracle RAC では、オンプレミスのマルチノード クラスター構成の単一ノードで発生する障害を軽減するように設計されています。 このクラスターは、超大規模パブリック クラウド環境にネイティブではない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 お使いのデータベース ソリューションの Azure で Oracle RAC が必要な場合は、サード パーティのソフトウェアを使用してこれらのテクノロジを有効にする必要があります。  FlashGrid inc. によって公開されている **Microsoft Azure 認定**の [FlashGrid Node for Oracle RAC](https://azuremarketplace.microsoft.com/marketplace/apps/flashgrid-inc.flashgrid-racnode?tab=Overview) と呼ばれるオファリングが Azure Marketplace で提供されています。このソリューションについて、また Azure との併用の詳細については、[FlashGrid ソリューション ページ](https://www.flashgrid.io/oracle-rac-in-azure/)をご覧ください。
 
-### <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性と障害復旧に関する考慮
+## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性とディザスター リカバリーに関する考慮
 Azure で Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性とディザスター リカバリー ソリューションを実装する責任があります。 
 
-Azure の Oracle Database Enterprise Edition (RAC なし) では、[Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性と障害復旧を実現できます。 両方の仮想マシンを同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。  さらに、Azure が仮想マシンを個別の障害ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ可用性セットに配置することをお勧めします。  地理的冗長性を実現する必要がある場合は、2 つの異なるリージョン間でこれらの 2 つのデータベースをレプリケートし、2 つのインスタンスを VPN Gateway で接続することができます。
+Azure の Oracle Database Enterprise Edition (Oracle RAC を使用しない) では、Azure で [Data Guard, Active Data Guard](http://www.oracle.com/technetwork/articles/oem/dataguardoverview-083155.html) または [Oracle Golden Gate](http://www.oracle.com/technetwork/middleware/goldengate) と 2 つの異なる仮想マシンの 2 つのデータベースを使用することで高可用性とディザスター リカバリーを実現できます。 両方の仮想マシンを同じ[仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に置き、プライベートの固定 IP アドレスで互いにアクセスできるようにする必要があります。  さらに、Azure が仮想マシンを個別の障害ドメインやアップグレード ドメインに配置できるように、仮想マシンを同じ可用性セットに配置することをお勧めします。  地理的冗長性を実現する必要がある場合は、2 つの異なるリージョン間でこれらの 2 つのデータベースをレプリケートし、2 つのインスタンスを VPN Gateway で接続することができます。
 
 [Azure での Oracle DataGuard の実装](configure-oracle-dataguard.md)に関するチュートリアルでは、Azure でこれを試すための基本的なセットアップ手順を説明しています。  
 
@@ -93,7 +93,7 @@ Azure で高可用性と災害復旧ソリューションが設計されてい�
 
 * **動的なクラスタリングと負荷分散の制限事項。** WebLogic Server で動的なクラスターを使用し、Azure 上の単一のパブリック負荷分散エンドポイントでそれを公開すると仮定します。 これは、それぞれの管理サーバーに固定のポート番号を使用し (範囲から動的に割り当てられていない)、管理者が追跡記録しているマシンより多く管理サーバーを起動しない (つまり、1 つの仮想マシンに対する管理サーバーが複数にならない) 限り、実現できます。 設定の結果、起動する WebLogic Server の数が仮想マシンより多くなる場合 (つまり、複数の WebLogic Server インスタンスが同じ仮想マシンを共有する場合)、指定したポート番号に複数の WebLogic Server インスタンス サーバーをバインドすることはできません。その仮想マシンのその他の WebLogic Server インスタンスは失敗します。
 
-   一方、管理サーバーに個別のポート番号を自動的に割り当てるように管理サーバーを設定した場合、負荷分散はできません。そのような設定では、単一のパブリック ポートから複数のプライベート ポートにマッピングする必要がありますが、Azure ではサポートされていないためです。
+   管理サーバーに個別のポート番号を自動的に割り当てるように管理サーバーを設定した場合、負荷分散はできません。そのような設定では、単一のパブリック ポートから複数のプライベート ポートにマッピングする必要がありますが、Azure ではサポートされていないためです。
 * **仮想マシン上の Weblogic サーバーの複数のインスタンス。** 仮想マシンが十分に大きい場合、デプロイ要件によりますが、同じ仮想マシン上で複数の WebLogic Server のインスタンスを実行することも検討できます。 たとえば、2 つのコアを持つ中程度のサイズの仮想マシンでは、WebLogic Server で 2 つのインスタンスを実行できます。 ただし、1 つの仮想マシンで複数の WebLogic Server インスタンスを実行する場合のように、単一障害点をアーキテクチャに導入することは避けることが推奨されます。 2 つ以上の仮想マシンを使うほうがより優れた手法であり、各仮想マシンは複数の WebLogic Server のインスタンスを実行できるようになります。 それでもなお、これらの WebLogic Server のインスタンスは同じクラスターの一部にすることができます。 ただし、現在は、Azure のロード バランサーを利用する場合、負荷を分散するサーバーを個別の仮想マシン間で配布する必要があるため、同じ仮想マシン内の WebLogic Server のデプロイによって公開されるエンドポイントの負荷を Azure で分散することはできません。
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK 仮想マシンのイメージ

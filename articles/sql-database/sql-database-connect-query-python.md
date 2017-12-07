@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: n
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/08/2017
+ms.date: 08/09/2017
 ms.author: carlrab
-ms.openlocfilehash: dc1697520080cbdc8e53686f800ad122e69c2478
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f7496c7b78449d5ceae861dc0daac607acdb1f84
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Python を使用して Azure SQL Database に照会する
 
@@ -29,11 +29,7 @@ ms.lasthandoff: 10/31/2017
 
 このクイック スタート チュートリアルを完了するには、以下のものが必要です。
 
-- Azure SQL Database。 このクイック スタートでは、次のいずれかのクイック スタートで作成したリソースを使用します。 
-
-   - [DB の作成 - ポータル](sql-database-get-started-portal.md)
-   - [DB の作成 - CLI](sql-database-get-started-cli.md)
-   - [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
 - このクイック スタート チュートリアルに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
 
@@ -45,15 +41,7 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
-Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
-
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。  
-
-   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
-
-4. サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じてパスワードをリセットします。     
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
     
 ## <a name="insert-code-to-query-sql-database"></a>SQL Database に照会するコードの挿入 
 

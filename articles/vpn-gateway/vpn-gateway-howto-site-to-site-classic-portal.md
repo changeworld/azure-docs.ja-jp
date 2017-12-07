@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/010/2017
+ms.date: 12/05/2017
 ms.author: cherylmc
-ms.openlocfilehash: 0be8dd6d90edb7b32b6777c76c9778cda0dcd5ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb8fe1ea6d4de066744a6277c1aec96073c1703c
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
@@ -96,8 +96,6 @@ S2S 接続に使用する仮想ネットワークを作成する際には、指�
 9. [作成] をクリックした後で、VNet の進捗状況を反映するタイルがダッシュボードに表示されます。 タイルは、VNet の作成が進むに従って変化します。
 
   ![仮想ネットワークの作成タイル](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png "仮想ネットワークの作成")
-
-仮想ネットワークが作成されると、Azure クラシック ポータルの [ネットワーク] ページの **[状態]** に **[作成済み]** と表示されます。
 
 ## <a name="additionaladdress"></a>2.アドレス空間の追加
 

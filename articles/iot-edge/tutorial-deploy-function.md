@@ -3,17 +3,18 @@ title: "Azure IoT Edge で Azure 関数を展開する | Microsoft Docs"
 description: "Azure 関数をモジュールとしてエッジ デバイスに展開します"
 services: iot-edge
 keywords: 
-author: JimacoMS2
+author: kgremban
 manager: timlt
 ms.author: v-jamebr
 ms.date: 11/15/2017
-ms.topic: article
+ms.topic: tutorial
 ms.service: iot-edge
-ms.openlocfilehash: cba901e8929d3626dc06e4600437b6d364e9bc44
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.custom: mvc
+ms.openlocfilehash: fb295b37819788ed14f54e4123ae0fe1b52d0210
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure 関数を IoT Edge モジュールとして展開する - プレビュー
 Azure Functions を使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、[Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成した、シミュレートされた IoT Edge デバイスで、センサー データをフィルター処理する Azure 関数を作成および展開します。 このチュートリアルで学習する内容は次のとおりです。     

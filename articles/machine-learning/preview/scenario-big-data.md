@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: b962ad3da6d5daff2c8b2524828a9450da702abb
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: c7ed8e695097d0cf2f5c99f8ccf3378c4e553c3b
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>数テラバイトのデータを活用したサーバー ワークロードの予測
 
@@ -95,7 +95,7 @@ DSVM の IP アドレス | xxx|
 
 合計データ サイズは約 1 TB です。 各ファイルは約 1 ～ 3 GB であり、ヘッダーなしの CSV ファイル形式です。 データの各行は、特定のサーバーで発生したトランザクションの負荷を示しています。 データ スキーマの詳細情報は次のとおりです。
 
-列番号 | フィールド名| 型 | Description |  
+列番号 | フィールド名| 型 | 説明 |  
 |------------|------|-------------|---------------|
 1  | `SessionStart` | DateTime |    セッションの開始時間
 2  |`SessionEnd`    | DateTime | セッションの終了時間
@@ -123,7 +123,7 @@ DSVM の IP アドレス | xxx|
 
 この例のファイルは、次のように整理されます。
 
-| ファイル名 | 型 | Description |
+| ファイル名 | 型 | 説明 |
 |-----------|------|-------------|
 | `Code` | フォルダー | このフォルダーには、この例のすべてのコードが含まれています。 |
 | `Config` | フォルダー | このフォルダーには、構成ファイルが含まれています。 |
@@ -154,7 +154,7 @@ DSVM の IP アドレス | xxx|
 
 1 か月のデータセットでの実験用に 1 つのコンテナーを使用し、完全なデータセットでの実験用に別のコンテナーを使用することをお勧めします。 データとモデルは Parquet ファイルとして保存されるので、各ファイルは実際には複数の BLOB を含むコンテナー内の 1 つのフォルダーです。 結果のコンテナーは次のようになります。
 
-| BLOB のプレフィックス名 | 型 | Description |
+| BLOB のプレフィックス名 | 型 | 説明 |
 |-----------|------|-------------|
 | featureScaleModel | Parquet | 数値特徴の標準スケーラー モデル。 |
 | stringIndexModel | Parquet | 数値特徴以外の文字列インデクサー モデル。|
@@ -180,7 +180,7 @@ DSVM の IP アドレス | xxx|
 
 最初の引数である `configFilename` は、Blob Storage 情報を格納し、データを読み込む場所を指定するローカル構成ファイルです。 既定では、[`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json) であり、1 か月のデータ実行で使用されます。 また、[`Config/fulldata_storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) も含まれています。これは、完全なデータセット実行で使用する必要があります。 構成の内容は次のとおりです。 
 
-| フィールド | 型 | Description |
+| フィールド | 型 | 説明 |
 |-----------|------|-------------|
 | storageAccount | String | Azure ストレージ アカウント名 |
 | storageContainer | String | 中間の結果を格納する Azure ストレージ アカウントのコンテナー |
@@ -203,7 +203,7 @@ DSVM の IP アドレス | xxx|
 
 **[ファイル]** > **[コマンド プロンプトを開く]** を選択して、Machine Learning Workbench からコマンド ラインを起動します。 次に、以下を実行します。 
 
-```az ml computetarget attach --name dockerdsvm --address $DSVMIPaddress  --username $user --password $password --type remotedocker```
+```az ml computetarget attach remotedocker --name dockerdsvm --address $DSVMIPaddress  --username $user --password $password ```
 
 プロジェクトの aml_config フォルダーに、次の 2 つのファイルが作成されます。
 
@@ -223,7 +223,7 @@ dockerdsvm.runconfig を参照し、フィールドの構成を次のように�
 
 `PrepareEnvironment` を true に設定すると、ジョブを送信するたびに、Machine Learning Workbench によってランタイム環境が作成されます。 `Config/conda_dependencies.yml` と `Config/dsvm_spark_dependencies.yml` には、ランタイム環境のカスタマイズが含まれています。 これら 2 つの YMAL ファイルを編集して、いつでも Conda の依存関係、Spark の構成、および Spark の依存関係を変更できます。 この例では、追加の Python パッケージとして `azure-storage` と `azure-ml-api-sdk` を `Config/conda_dependencies.yml` に追加しました。 また、`spark.default.parallelism`、`spark.executor.instances`、`spark.executor.cores` を `Config/dsvm_spark_dependencies.yml` に追加しました。 
 
-#####  <a name="2-data-preparation-and-feature-engineering-on-dsvm-docker"></a>手順 2.DSVM Docker 上のデータの準備と特徴エンジニアリング
+#####  <a name="2-data-preparation-and-feature-engineering-on-dsvm-docker"></a>2.DSVM Docker 上のデータの準備と特徴エンジニアリング
 
 DSVM Docker 上で `etl.py` スクリプトを実行します。 特定のサーバー IP アドレスで読み込まれるデータをフィルター処理するデバッグ パラメーターを使用します。
 
@@ -266,7 +266,7 @@ DSVM Docker 上でスクリプト `train.py` を実行します。
 
 ##### <a name="1-create-the-compute-target-in-machine-learning-workbench-for-the-hdinsight-cluster"></a>1.HDInsight クラスター用に Machine Learning Workbench にコンピューティング ターゲットを作成する
 
-```az ml computetarget attach --name myhdi --address $clustername-ssh.azurehdinsight.net --username $username --password $password --type cluster```
+```az ml computetarget attach cluster --name myhdi --address $clustername-ssh.azurehdinsight.net --username $username --password $password```
 
 aml_config フォルダーに、次の 2 つのファイルが作成されます。
     

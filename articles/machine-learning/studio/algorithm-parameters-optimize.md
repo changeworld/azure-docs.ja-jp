@@ -4,7 +4,7 @@ description: "Azure Machine Learning でアルゴリズムに最適なパラメ�
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 6717e30e-b8d8-4cc1-ad0b-1d4727928d32
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 8f1d9b48e505bef0ebd622267705c3e7e26a3a47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/29/2017
+ms.author: bradsev;garye
+ms.openlocfilehash: 664ab97cdfb663d9c8a4cc6c7b748eebfbdf580c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選ぶ
 このトピックでは、Azure Machine Learning でアルゴリズムの正しいハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。

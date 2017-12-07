@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/28/2017
-ms.openlocfilehash: 6a0d218a9b9cb41a87264cfd5f653bb631b0bce9
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.date: 11/29/2017
+ms.openlocfilehash: 5983bbf6fac9c3cddda19f6a11d2fe2b18177160
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Azure CLI を使用したサーバー構成パラメーターのカスタマイズ
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL サーバーの構成パラメーターを一覧表示、表示、および更新できます。 エンジン構成のサブセットは、サーバー レベルで公開され、変更が可能です。 
@@ -34,7 +34,7 @@ az mysql server configuration list --resource-group myresourcegroup --server mys
 一覧表示されている各パラメーターの定義については、「MySQL reference」(MySQL リファレンス) の「[Server System Variables](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)」(サーバー システム変数) セクションをご覧ください。
 
 ## <a name="show-server-configuration-parameter-details"></a>サーバー構成パラメーター詳細を表示する
-サーバーの特定の構成パラメーターに関する詳細を表示するには、[az mysql server configuration show](/cli/azure/mysql/server/configuration#show) コマンドを実行します。
+サーバーの特定の構成パラメーターに関する詳細を表示するには、[az mysql server configuration show](/cli/azure/mysql/server/configuration#az_mysql_server_configuration_show) コマンドを実行します。
 
 この例は、リソース グループ **myresourcegroup** にあるサーバー **myserver4demo.mysql.database.azure.com** の **slow\_query\_log** サーバー構成パラメーターの詳細を示します。
 ```azurecli-interactive

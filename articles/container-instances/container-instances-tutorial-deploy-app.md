@@ -2,26 +2,18 @@
 title: "Azure Container Instances チュートリアル - アプリのデプロイ"
 description: "Azure Container Instances チュートリアル - アプリのデプロイ"
 services: container-instances
-documentationcenter: 
 author: seanmck
 manager: timlt
-editor: mmacy
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/20/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 5222c43fe381c93527ec6c8b927d723f75dd58f9
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: a6b36349c7fae09e70178ae7e7c2b6c15c0c26d4
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>コンテナーを Azure Container Instances にデプロイする
 

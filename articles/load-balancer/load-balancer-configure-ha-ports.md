@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/02/2017
 ms.author: kumud
-ms.openlocfilehash: 4cd65c01d75af8539f5fa13dbbd2aaec548aea0b
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 646ade828e96810bdc3b07d4dc5c0276a1621969
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>内部 Load Balancer 用の高可用性ポートを構成する方法
 
@@ -41,13 +41,10 @@ ms.lasthandoff: 11/04/2017
 
 ## <a name="preview-sign-up"></a>プレビューのサインアップ
 
-Load Balancer Standard の HA ポート機能のプレビューに参加するには、Azure CLI 2.0 または PowerShell を使用してサブスクリプションを登録し、アクセスできるようにします。  次のサブスクリプションを登録してください。
-
-1. [Load Balancer Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up) および 
-2. [HA ポート プレビュー](https://aka.ms/haports#preview-sign-up)
+Load Balancer Standard の HA ポート機能のプレビューに参加するには、Azure CLI 2.0 または PowerShell を使用してサブスクリプションを登録し、アクセスできるようにします。 サブスクリプションを [Load Balancer Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up)に登録します。
 
 >[!NOTE]
->この機能を使用するには、HA ポートに加えて、Load Balancer [Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up)にもサインアップする必要があります。 HA ポートまたは Load Balancer Standard プレビューの登録には、最大で 1 時間ほどかかる場合があります。
+>Load Balancer Standard プレビューの登録には、1 時間ほどかかる場合があります。
 
 ## <a name="configuring-ha-ports"></a>HA ポートを構成する
 

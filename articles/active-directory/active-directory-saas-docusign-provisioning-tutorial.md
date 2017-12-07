@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b509ffa934949200277ae431761d2accd4a02d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6a618c9cb93fe5b82e97f84c346e3dc448737e4
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-configuring-docusign-for-user-provisioning"></a>チュートリアル: ユーザー プロビジョニングのための DocuSign の構成
 
@@ -41,9 +41,12 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ### <a name="important-tips-for-assigning-users-to-docusign"></a>ユーザーを DocuSign に割り当てる際の重要なヒント
 
-*   単一の Azure AD ユーザーを DocuSign に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+*   単一の Azure AD ユーザーを DocuSign に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後で追加のユーザーを割り当てられます。
 
 *   DocuSign にユーザーを割り当てるときに、有効なユーザー ロールを選択する必要があります。 "既定のアクセス" ロールはプロビジョニングでは使えません。
+
+> [!NOTE]
+> Azure AD は、Docusign のアプリケーションでのグループ プロビジョニングをサポートしていません。ユーザーのみをプロビジョニングすることができます。
 
 ## <a name="enable-user-provisioning"></a>ユーザー プロビジョニングの有効化
 
@@ -86,7 +89,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 12. **[保存]** をクリックします。
 
-[ユーザーとグループ] セクションで DocuSign に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 20 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、プロビジョニング サービスによって DocuSign アプリに対して実行されたすべてのアクションが記載されています。
+[ユーザーとグループ] セクションで DocuSign に割り当てたユーザーの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 20 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、プロビジョニング サービスによって DocuSign アプリに対して実行されたすべてのアクションが記載されています。
 
 これでテスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが DocuSign に同期されたことを確認します。
 

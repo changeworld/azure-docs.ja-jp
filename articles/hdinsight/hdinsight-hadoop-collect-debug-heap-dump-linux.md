@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
-ms.openlocfilehash: d61da54fc3172a730740e2b94a89fe787c4f121d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dcc04e5bba28d0cb32e8633542ab8d3c125003ec
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする
 

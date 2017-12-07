@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 45ae4ab4c832e7537e6ee78c32603734fa64ad86
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 397c0c610c05e65d06a6319672446a6e4c9c445a
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -75,13 +75,13 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 現在、電子メールの送信元フィールドを変更する方法はありません。 [feedback.azure.com](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) で、検証電子メールの本文のカスタマイズについてのご要望を投稿してください。
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
-Azure AD Graph API を使用して、移行ツールを作成できます。 詳細については、 [Graph API サンプル](active-directory-b2c-devquickstarts-graph-dotnet.md) に関するページを参照してください。
+Azure AD Graph API を使用して、移行ツールを作成できます。 詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。
 
 ### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C のローカル アカウントに使用されるパスワード ポリシーはどのようなものですか。
 Azure AD B2C のローカル アカウントのパスワード ポリシーは Azure AD のポリシーに基づいています。 Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ポリシーでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。 詳細については、 [Azure AD のパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx) に関するページを参照してください。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
-いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 ユーザーの移行には、[Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用することを検討してください。
+いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。 ユーザーの移行には、[Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用することを検討してください。  詳細については[ユーザーの移行ガイド](active-directory-b2c-user-migration.md)を参照してください。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>アプリで Azure AD B2C ページを iFrame 内で開くことはできますか。
 いいえ。セキュリティ上の理由から、Azure AD B2C ページを iFrame 内で開くことはできません。  このサービスは、iFrame を禁止するためにブラウザーと通信します。  一般のセキュリティ コミュニティと OAUTH2 仕様では、ID エクスペリエンスに iFrame を使用しないことを推奨しています。これは、クリックジャッキングの危険があるためです。

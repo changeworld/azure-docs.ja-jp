@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
-ms.openlocfilehash: e3bba2cfd765505a167fe4776f81d06445a8c39c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 764a41dc9e890de85c3bfab3d2f78d5a07b39dff
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 

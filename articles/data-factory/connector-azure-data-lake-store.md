@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: 3b2fbab10836b138792efad7ea30f4f0d15905c3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 69707931402de597c9d6a329da349723da2a782a
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Store をコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 さまざまな認証の種類それぞれのプロパティと JSON の使用例については、以下のセクションを参照してください。
 
 - [サービス プリンシパル認証の使用](#using-service-principal-authentication)
-- [管理対象のサービス ID の認証の使用](#using-managed-service-identitiy-authentication)
+- [管理対象のサービス ID の認証の使用](#using-managed-service-identity-authentication)
 
 ### <a name="using-service-principal-authentication"></a>サービス プリンシパル認証の使用
 

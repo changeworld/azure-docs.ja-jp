@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2017
+ms.date: 12/01/2017
 ms.author: szark
-ms.openlocfilehash: b753c76b8c3d789c681d7fbff6aa07590b860be5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18b7a5ec2a04962523a70886e1aa2344eb818458
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。
@@ -343,24 +343,33 @@ ms.lasthandoff: 10/11/2017
 
 19. qcow2 イメージを VHD 形式に変換します。
 
-    まず、イメージを未加工の形式に変換します。
+> [!NOTE]
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 リファレンス: https://bugs.launchpad.net/qemu/+bug/1490611。
+>
 
-        # qemu-img convert -f qcow2 -O raw rhel-6.8.qcow2 rhel-6.8.raw
 
-    未加工のイメージのサイズが 1 MB になっていることを確認します。 そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
+    First convert the image to raw format:
+
+        # qemu-img convert -f qcow2 -O raw rhel-6.9.qcow2 rhel-6.9.raw
+
+    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-6.9.raw" | \
           gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
         # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.8.raw $rounded_size
+        # qemu-img resize rhel-6.9.raw $rounded_size
 
-    未フォーマット ディスクを固定サイズの VHD に変換します。
+    Convert the raw disk to a fixed-sized VHD:
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.8.raw rhel-6.8.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
 
+    Or, with qemu version **2.6+** include the `force_size` option:
 
+        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
+
+        
 ### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>KVM からの RHEL 7 仮想マシンの準備
 
 1. Red Hat の Web サイトから、RHEL 7 の KVM イメージをダウンロードします。 この手順では、例として RHEL 7 を使用します。
@@ -483,22 +492,32 @@ ms.lasthandoff: 10/11/2017
 
 19. qcow2 イメージを VHD 形式に変換します。
 
-    まず、イメージを未加工の形式に変換します。
+> [!NOTE]
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 リファレンス: https://bugs.launchpad.net/qemu/+bug/1490611。
+>
 
-        # qemu-img convert -f qcow2 -O raw rhel-7.3.qcow2 rhel-7.3.raw
 
-    未加工のイメージのサイズが 1 MB になっていることを確認します。 そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
+    First convert the image to raw format:
+
+        # qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
+
+    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
           gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
         # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.8.raw $rounded_size
+        # qemu-img resize rhel-7.4.raw $rounded_size
 
-    未フォーマット ディスクを固定サイズの VHD に変換します。
+    Convert the raw disk to a fixed-sized VHD:
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.3.raw rhel-7.3.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+
+    Or, with qemu version **2.6+** include the `force_size` option:
+
+        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>VMware からの Red Hat ベースの仮想マシンの準備
 ### <a name="prerequisites"></a>前提条件
@@ -600,22 +619,32 @@ ms.lasthandoff: 10/11/2017
 
 15. 仮想マシンをシャットダウンし、VMDK ファイルを .vhd ファイルに変換します。
 
-    まず、イメージを未加工の形式に変換します。
+> [!NOTE]
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 リファレンス: https://bugs.launchpad.net/qemu/+bug/1490611。
+>
 
-        # qemu-img convert -f vmdk -O raw rhel-6.8.vmdk rhel-6.8.raw
 
-    未加工のイメージのサイズが 1 MB になっていることを確認します。 そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
+    First convert the image to raw format:
+
+        # qemu-img convert -f vmdk -O raw rhel-6.9.vmdk rhel-6.9.raw
+
+    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-6.9.raw" | \
           gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
         # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.8.raw $rounded_size
+        # qemu-img resize rhel-6.9.raw $rounded_size
 
-    未フォーマット ディスクを固定サイズの VHD に変換します。
+    Convert the raw disk to a fixed-sized VHD:
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.8.raw rhel-6.8.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
+
+    Or, with qemu version **2.6+** include the `force_size` option:
+
+        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
+
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>VMware からの RHEL 7 仮想マシンの準備
 1. `/etc/sysconfig/network` ファイルを作成または編集して次のテキストを追加します。
@@ -704,22 +733,32 @@ ms.lasthandoff: 10/11/2017
 
 14. 仮想マシンをシャットダウンし、VMDK ファイルを VHD 形式に変換します。
 
-    まず、イメージを未加工の形式に変換します。
+> [!NOTE]
+> qemu-img のバージョン 2.2.1 以降には VHD が適切にフォーマットされないというバグがあることがわかっています。 この問題は QEMU 2.6 で修正されています。 qemu-img 2.2.0 以前を使用するか、2.6 以降に更新することをお勧めします。 リファレンス: https://bugs.launchpad.net/qemu/+bug/1490611。
+>
 
-        # qemu-img convert -f vmdk -O raw rhel-7.3.vmdk rhel-7.3.raw
 
-    未加工のイメージのサイズが 1 MB になっていることを確認します。 そうでない場合は、1 MB になるようにサイズの端数を切り上げます。
+    First convert the image to raw format:
+
+        # qemu-img convert -f vmdk -O raw rhel-7.4.vmdk rhel-7.4.raw
+
+    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
 
         # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.8.raw" | \
+        # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
           gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
         # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.8.raw $rounded_size
+        # qemu-img resize rhel-7.4.raw $rounded_size
 
-    未フォーマット ディスクを固定サイズの VHD に変換します。
+    Convert the raw disk to a fixed-sized VHD:
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.3.raw rhel-7.3.vhd
+        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+
+    Or, with qemu version **2.6+** include the `force_size` option:
+
+        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>kickstart ファイルを使用して ISO から Red Hat ベースの仮想マシンを自動的に準備する
 ### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>kickstart ファイルからの RHEL 7 仮想マシンの準備

@@ -3,8 +3,8 @@ title: "Azure SQL Data Warehouse の復元 (REST API) | Microsoft Docs"
 description: "Azure SQL Data Warehouse を復元するための REST API タスク。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: Lakshmi1812
-manager: jhubbard
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: fca922c6-b675-49c7-907e-5dcf26d451dd
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: backup-restore
-ms.date: 10/31/2016
-ms.author: lakshmir;barbkess
-ms.openlocfilehash: 8656607611e7518e42b51b91774f55abec15c228
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: 3117bf6aa21641c30f33f38f096ded24bb0cf64e
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="restore-an-azure-sql-data-warehouse-rest-api"></a>Azure SQL Data Warehouse の復元 (REST API)
 > [!div class="op_single_selector"]

@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/02/2017
+ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 0ffa1f33c41ceb9f8cdd4c8c9e46f06efa4f89a7
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: d6cda201e4cf16549f296bf9873b1085effd3a45
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 

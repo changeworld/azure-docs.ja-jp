@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 0ebf8964bc565e5d4f95fb1ad3edbc16f841851c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d59dccec4532ff0903972f2b15ed9dd8429a2ed
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Machine Learning モデルを Web サービスとしてデプロイする
 
@@ -25,7 +25,7 @@ Azure Machine Learning モデル管理は、コンテナー化された Docker �
 ## <a name="deploying-web-services"></a>Web サービスのデプロイ
 CLI を使うと、ローカル コンピューターまたはクラスター上で実行する Web サービスをデプロイできます。
 
-ローカル デプロイで始めることをお勧めします。 モデルとコードが動作することを検証してから、運用スケールで使うためにクラスターに Web サービスをデプロイします。 クラスター デプロイ用の環境のセットアップについて詳しくは、「[モデル管理のセットアップ](model-management-configuration.md)」をご覧ください。 
+ローカル デプロイで始めることをお勧めします。 モデルとコードが動作することを検証してから、運用スケールで使うためにクラスターに Web サービスをデプロイします。 クラスター デプロイ用の環境のセットアップについて詳しくは、「[モデル管理のセットアップ](deployment-setup-configuration.md)」をご覧ください。 
 
 デプロイの手順は次のとおりです。
 1. 保存したトレーニング済みの Machine Learning モデルを使う
@@ -186,4 +186,4 @@ az ml service run realtime -i <service id> -d "{\"input_df\": [{\"sepal length\"
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Web サービスをローカルに実行してテストしたので、クラスターにデプロイして大規模に使うことができます。 Web サービスのデプロイ用にクラスターをセットアップする方法について詳しくは、「[モデル管理のセットアップ](model-management-configuration.md)」をご覧ください。 
+Web サービスをローカルに実行してテストしたので、クラスターにデプロイして大規模に使うことができます。 Web サービスのデプロイ用にクラスターをセットアップする方法について詳しくは、「[モデル管理のセットアップ](deployment-setup-configuration.md)」をご覧ください。 

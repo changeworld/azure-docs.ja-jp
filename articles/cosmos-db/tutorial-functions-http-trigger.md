@@ -10,18 +10,19 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: mvc
+ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: mimig
-ms.openlocfilehash: 86a660309fd3fd80f10f706ff460af2309c12174
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.openlocfilehash: 3fca64db9e19f8295fc462b790beb95f6796ae4c
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Azure Cosmos DB 入力バインドで Azure Functions HTTP トリガーを作成する
 
-Azure Cosmos DB は、スキーマレスでサーバーレスのグローバル分散型マルチモデル データベースです。 Azure 関数はサーバーレス コンピューティング サービスで、このサービスにより、オンデマンドでコードを実行することができます。 この 2 つの Azure サービスを組み合わせることで、サーバーレス アーキテクチャの基盤が確保され、優れたアプリの構築に専念できます。コンピューティングおよびデータベースのニーズに応じて、サーバーのプロビジョニングや保守を行うことを心配する必要がありません。
+Azure Cosmos DB は、スキーマレスかつサーバーレスなグローバル分散型マルチモデル データベースです。 Azure 関数はサーバーレス コンピューティング サービスで、このサービスにより、オンデマンドでコードを実行することができます。 この 2 つの Azure サービスを組み合わせることで、サーバーレス アーキテクチャの基盤が確保され、優れたアプリの構築に専念できます。コンピューティングおよびデータベースのニーズに応じて、サーバーのプロビジョニングや保守を行うことを心配する必要がありません。
 
 このチュートリアルは、[.NET 用 Graph API クイックスタート](create-graph-dotnet.md)で作成したコードに基づいており、 [HTTP トリガー](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger)を含む Azure 関数を追加します。 HTTP トリガーは、Azure Cosmos DB [入力バインド](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md)を使用して、クイックスタートで作成したグラフ データベースからデータを取得します。 この特定の HTTP トリガーは、Azure Cosmos DB に対してデータのクエリを実行しますが、Azure Cosmos DB からの入力バインドを使用して、関数に必要なものすべてについてデータ入力値を取得できます。
 
@@ -242,7 +243,7 @@ Azure 関数が検証され、正しく機能していると思われる場合�
 
    ![アプリケーション設定の確認](./media/tutorial-functions-http-trigger/15-function-in-portal.png)
 
-5. 以前、コンソール アプリケーションの App.config ファイルおよび Azure 関数アプリの local.settings.json ファイルで実行したように、Azure Cosmos DB データベースへの Endpoint および AuthKey を、発行された関数に追加する必要があります。 これにより、キーを含む構成コードをチェックインする必要がなくなります。キーはポータルで構成でき、ソース コントロールには保存されません。 各値を追加するには、**[新しい設定の追加]** をクリックし、**Endpoint** と app.config の値を追加して、**[新しい設定の追加]** を再度クリックします。次に、**AuthKey** とカスタム値を追加します。 値を追加して保存すると、設定は次のようになります。
+5. さきほどコンソール アプリケーションの App.config ファイルおよび Azure 関数アプリの local.settings.json ファイルで実行したように、Azure Cosmos DB データベースへの Endpoint および AuthKey を、発行された関数に追加する必要があります。 これにより、キーを含む構成コードをチェックインする必要がなくなります。キーはポータルで構成でき、ソース コントロールには保存されません。 各値を追加するには、**[新しい設定の追加]** をクリックし、**Endpoint** と app.config の値を追加して、**[新しい設定の追加]** を再度クリックします。次に、**AuthKey** とカスタム値を追加します。 値を追加して保存すると、設定は次のようになります。
 
    ![Endpoint と AuthKey の構成](./media/tutorial-functions-http-trigger/16-app-settings.png)
 

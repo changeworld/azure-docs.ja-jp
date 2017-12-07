@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions における Queue Storage バインド"
+title: "Azure Functions における Azure Queue Storage のバインド"
 description: "Azure Functions で Azure Queue Storage トリガーと出力バインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: 9cf506d571c8d67a1e48ce34860db3dbc3445509
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 0aae58fa52f9f7f64b08e1701b7688a90c56e6ed
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="azure-functions-queue-storage-bindings"></a>Azure Functions における Queue Storage バインド
+# <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
 この記事では、Azure Functions で Azure Queue Storage のバインドを使用する方法について説明します。 Azure Functions は、キューのトリガーと出力バインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="queue-storage-trigger"></a>Queue ストレージ トリガー
+## <a name="trigger"></a>トリガー
 
 キュー トリガーを使用して、キューで新しい項目を受け取ったときに関数を開始します。 キュー メッセージは、関数への入力として提供されます。
 
@@ -151,7 +151,7 @@ module.exports = function (context) {
 
 function.json の `name` プロパティで名前が指定された `myQueueItem` については、「[使用方法](#trigger---usage)」セクションを参照してください。  ここに表示されているその他すべての変数については、「[メッセージのメタデータ](#trigger---message-metadata)」セクションを参照してください。
 
-## <a name="trigger---attributes-for-precompiled-c"></a>トリガー - プリコンパイル済み C# の属性
+## <a name="trigger---attributes"></a>トリガー - 属性
  
 [プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、次の属性を使用してキュー トリガーを構成します。
 
@@ -164,6 +164,9 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
   public static void Run(
       [QueueTrigger("myqueue-items")] string myQueueItem, 
       TraceWriter log)
+  {
+      ...
+  }
   ```
 
   次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
@@ -173,8 +176,13 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
   public static void Run(
       [QueueTrigger("myqueue-items", Connection = "StorageConnectionAppSetting")] string myQueueItem, 
       TraceWriter log)
+  {
+      ....
+  }
   ```
  
+  完全な例については、[トリガー - プリコンパイル済み C# の例](#trigger---c-example)に関する記事をご覧ください。
+
 * NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義された [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
   使用するストレージ アカウントを指定する別の方法を提供します。 コンストラクターは、ストレージ接続文字列を含むアプリ設定の名前を受け取ります。 属性は、パラメーター、メソッド、またはクラス レベルで適用できます。 次の例では、クラス レベルとメソッド レベルを示します。
@@ -186,6 +194,9 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
       [FunctionName("QueueTrigger")]
       [StorageAccount("FunctionLevelStorageAppSetting")]
       public static void Run( //...
+  {
+      ...
+  }
   ```
 
 使用するストレージ アカウントは、次の順序で決定されます。
@@ -200,13 +211,15 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
 
 次の表は、*function.json* ファイルと `QueueTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |Description|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし| `queueTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction**| 該当なし | *function.json* ファイルの場合のみ。 `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし |関数コード内のキューを表す変数の名前。  | 
 |**queueName** | **QueueName**| ポーリングするキューの名前。 | 
-|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br/>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
  
@@ -223,7 +236,7 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 
 キュー トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 値は、[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) と同じセマンティクスを持ちます。
 
-|プロパティ|型|Description|
+|プロパティ|型|説明|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|キュー ペイロード (有効な文字列の場合)。 キュー メッセージ ペイロードが文字列の場合、`QueueTrigger` は、*function.json* の `name` プロパティで指定された変数と同じ値になります。|
 |`DequeueCount`|`int`|このメッセージがデキューされた回数。|
@@ -245,7 +258,7 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 
 [!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
-## <a name="queue-storage-output-binding"></a>キュー ストレージの出力バインド
+## <a name="output"></a>出力
 
 Azure Queue Storage の出力バインドを使用して、キューにメッセージを書き込みます。
 
@@ -386,7 +399,7 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="output---attributes-for-precompiled-c"></a>出力 - プリコンパイル済み C# の属性
+## <a name="output---attributes"></a>出力 - 属性
  
 [プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されている [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs) を使用します。
 
@@ -396,6 +409,9 @@ module.exports = function(context) {
 [FunctionName("QueueOutput")]
 [return: Queue("myqueue-items")]
 public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
+{
+    ...
+}
 ```
 
 次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
@@ -404,21 +420,28 @@ public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
 [FunctionName("QueueOutput")]
 [return: Queue("myqueue-items, Connection = "StorageConnectionAppSetting")]
 public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
+{
+    ...
+}
 ```
 
-`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、「[トリガー - プリコンパイル済み C# の属性](#trigger---attributes-for-precompiled-c)」を参照してください。
+完全な例については、[出力 - プリコンパイル済み C# の例](#output---c-example)に関する記事をご覧ください。
+
+`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[トリガー - 属性](#trigger---attributes-for-precompiled-c)をご覧ください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
 次の表は、*function.json* ファイルと `Queue` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |Description|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `queue` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `out` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のキューを表す変数の名前。 `$return` に設定して、関数の戻り値を参照します。| 
 |**queueName** |**QueueName** | キューの名前。 | 
-|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br>ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+|**connection** | **Connection** |このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>出力 - 使用方法
  

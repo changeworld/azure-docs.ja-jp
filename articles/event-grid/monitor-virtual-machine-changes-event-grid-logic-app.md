@@ -9,13 +9,13 @@ ms.assetid:
 ms.workload: logic-apps
 ms.service: logic-apps
 ms.topic: article
-ms.date: 08/16/2017
+ms.date: 11/30/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 8b9c7c9502be1a9d8681a304a6663c23c02c0298
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: df1e19b772b41064aff1f345dee93813f0c21c73
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
 
@@ -91,13 +91,13 @@ ms.lasthandoff: 10/21/2017
    ![Azure の資格情報でサインイン](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > @outlook.com または @hotmail.com などの個人用の Microsoft アカウントでサインインした場合、Event Grid トリガーが正しく表示されないことがあります。 この問題を回避するには、[[サービス プリンシパルを使用して接続する]](/azure-resource-manager/resource-group-create-service-principal-portal.md) を選択するか、*ユーザー名*@emailoutlook.onmicrosoft.com などの Azure サブスクリプションに関連する Azure Active Directory のメンバーとして認証します。
+   > @outlook.com または @hotmail.com などの個人用の Microsoft アカウントでサインインした場合、Event Grid トリガーが正しく表示されないことがあります。 この問題を回避するには、[[サービス プリンシパルを使用して接続する]](../azure-resource-manager/resource-group-create-service-principal-portal.md) を選択するか、*ユーザー名*@emailoutlook.onmicrosoft.com などの Azure サブスクリプションに関連する Azure Active Directory のメンバーとして認証します。
 
 8. 次に、ロジック アプリを発行元イベントに登録します。 次の表で指定したように、イベント サブスクリプションの詳細を指定します。
 
    ![イベント サブスクリプションの詳細を指定する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details-generic.png)
 
-   | 設定 | 推奨値 | Description | 
+   | 設定 | 推奨値 | 説明 | 
    | ------- | --------------- | ----------- | 
    | **サブスクリプション** | *{仮想マシンの Azure サブスクリプション}* | イベント発行元の Azure サブスクリプションを選択します。 このチュートリアルでは、ご利用の仮想マシンの Azure サブスクリプションを選択します。 | 
    | **リソースの種類** | Microsoft.Resources.resourceGroups | イベント発行元のリソースの種類を選択します。 このチュートリアルでは、指定した値を選択するため、ロジック アプリはリソース グループだけを監視します。 | 
@@ -241,9 +241,9 @@ ms.lasthandoff: 10/21/2017
   ![ロジック アプリをオフにする](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
 
   > [!TIP]
-  > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリをもう一度開き直してください。
+  > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリを開き直してください。
 
-* ロジック アプリを完全に削除するには、ロジック アプリのメニューから **[概要]** を選択します。 ツール バーで、**[削除]** を選択します。 ロジック アプリを削除することを確認し、**[削除]** を選択します。
+* ロジック アプリを完全に削除するには、ロジック アプリのメニューから **[概要]** を選択します。 ツール バーで、**[削除]** を選択します。 ロジック アプリを削除することに同意し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

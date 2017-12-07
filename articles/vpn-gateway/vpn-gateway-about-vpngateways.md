@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2017
+ms.date: 12/04/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2d5da55e757d190db0334ad82eae4042deb5205c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae8de17c6b2ca8e1b9888612221c7f39b629c1b1
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="about-vpn-gateway"></a>VPN Gateway について
 
@@ -87,9 +87,6 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 S2S 接続とは異なり、P2S 接続には、オンプレミスの公開 IP アドレスまたは VPN デバイスは必要ありません。 P2S 接続と S2S 接続は、両者の構成要件がすべて両立する場合に、同じ VPN ゲートウェイを使って組み合わせて使用できます。 ポイント対サイト接続について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
 
->[!NOTE]
->P2S の RADIUS 認証および IKEv2は 現在プレビューの段階です。
->
 
 ![Azure VPN Gateway ポイント対サイト接続の例](./media/vpn-gateway-about-vpngateways/point-to-site.png)
 

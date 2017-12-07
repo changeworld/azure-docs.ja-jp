@@ -9,11 +9,12 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
-ms.openlocfilehash: cb123107178f5e7c0207524c19331a6fa4658739
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.openlocfilehash: 29a47646074819492e2c5179276a0c4de7f0d2d9
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
 

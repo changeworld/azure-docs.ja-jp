@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
-ms.openlocfilehash: e0df58c24653d60e7594a70b911540662548a236
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b565ef0f7672d1288e922e28551ad3f6ec5b6cb7
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-ambari-views-to-debug-tez-jobs-on-hdinsight"></a>HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
-ms.author: marsma
-ms.openlocfilehash: 327639f49d27972548e4e8c243d1e349a9cb58bb
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.author: tamram
+ms.openlocfilehash: a300294c83cb206e6211985c736e3ff01bb1ab43
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>Azure CLI を使用して Azure Blob Storage との間でオブジェクトを転送する
 

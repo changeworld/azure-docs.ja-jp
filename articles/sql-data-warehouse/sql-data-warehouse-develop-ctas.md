@@ -3,8 +3,8 @@ title: "SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) | Microsoft Docs"
 description: "ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) ステートメントでコーディングする際のヒントです。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
-manager: jhubbard
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: 68ac9a94-09f9-424b-b536-06a125a653bd
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: queries
-ms.date: 01/30/2017
-ms.author: shigu;barbkess
-ms.openlocfilehash: cb08313726e8135feaa9b413937c2197ea397f4b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: a885ba4f455fecd158696faaee38c83c1e4ec0bf
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-table-as-select-ctas-in-sql-data-warehouse"></a>SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS)
 Create table as select ( `CTAS` ) は利用可能な最重要 T-SQL 機能のうちの 1 つです。 これは SELECT ステートメントの出力に基づいて新しいテーブルを作成する完全に並列化された操作です。 `CTAS` はテーブルのコピーを最も簡単かつすばやく作成する方法です。 このドキュメントには `CTAS`の例とベスト プラクティスの両方が記載されています。
@@ -131,7 +131,7 @@ DROP TABLE FactInternetSales_old;
 > 
 
 ## <a name="using-ctas-to-work-around-unsupported-features"></a>CTAS を使用したサポートされていない機能の回避
-`CTAS` を使用して、下記のサポートされていない多くの機能を回避することもできます。 この機能は、ユーザーのコードに対応できるというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。 これは、完全に並列化された設計により可能になりました。 CTAS で対処できるシナリオは次のとおりです。
+`CTAS` を使用して、下記のサポートされていない多くの機能を回避することもできます。 この機能は、ユーザーのコードに準拠するというだけでなく、SQL Data Warehouse 上でより高速に実行されるという効果があります。 これは、完全に並列化された設計により可能になりました。 CTAS で対処できるシナリオは次のとおりです。
 
 * ANSI JOINS を使用した UPDATE    
 * ANSI JOIN を使用した DELETE

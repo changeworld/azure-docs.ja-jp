@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 93e75429d66a30bfc4588a3070e32d58eec0df4b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: mvc
+ms.openlocfilehash: a1682ef88760da39d33fac2cc9f34e0e66ea19fb
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-table-api"></a>Table API を使用して Azure Cosmos DB グローバル分散をセットアップする方法
 

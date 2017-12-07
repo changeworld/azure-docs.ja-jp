@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: hero-article
-ms.date: 11/28/2017
+ms.date: 11/29/2017
 ms.custom: mvc
-ms.openlocfilehash: a03f2e862305ed0ada49de086c59716d6e58f9d5
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: f2b9df09135ae922f617c21cc5b9e32556d515f6
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL サーバーの作成
 このクイック スタートでは、Azure CLI を使用して、約 5 分で Azure Database for MySQL サーバーを Azure リソース グループに作成する方法を説明します。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。
@@ -50,7 +50,7 @@ az mysql server create --resource-group myresourcegroup --name myserver4demo --l
 ```
 
 ## <a name="configure-firewall-rule"></a>ファイアウォール規則の構成
-**[az mysql server firewall-rule create](/cli/azure/mysql/firewall-rule#az_mysql_server_firewall_rule_create)** コマンドで、Azure Database for MySQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、**mysql.exe** コマンド ライン ツールや MySQL Workbench などの外部アプリケーションが、Azure MySQL service ファイアウォールを経由してサーバーに接続できるようになります。 
+**[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create)** コマンドで、Azure Database for MySQL サーバーレベルのファイアウォール規則を作成します。 サーバーレベルのファイアウォール規則により、**mysql.exe** コマンド ライン ツールや MySQL Workbench などの外部アプリケーションが、Azure MySQL service ファイアウォールを経由してサーバーに接続できるようになります。 
 
 次の例では、定義済みのアドレス範囲に対するファイアウォール規則が作成されます。この例でのアドレス範囲は、IP アドレスの範囲として可能な全範囲です。
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 02fcff7cf2b40c712f0575f7885eac95f9de04b8
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: bc12646840b0a28eee1ea11c40a57e59995bbf75
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスター作成時のカスタム Hive ライブラリの追加
 

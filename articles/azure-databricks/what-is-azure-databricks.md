@@ -10,14 +10,15 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: 7ced38cda2669cf03e51f50fbbbeea0344da9277
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.custom: mvc
+ms.openlocfilehash: 20f6899362420d96e7f03ea4dddeb6147a92f304
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="what-is-azure-databricks"></a>Azure Databricks とは
 

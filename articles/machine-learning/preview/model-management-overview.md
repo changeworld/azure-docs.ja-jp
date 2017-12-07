@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 31b859d86e82c92839462280721c5f84f1d923cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0474e7ae77128a46fc6218de814913d07aa63d97
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning のモデル管理
 
@@ -124,4 +124,4 @@ Azure Machine Learning モデル管理で提供されている API を使って�
    そして、 同じクラスターで 100 個のサービス/エンドポイントを実行できます。 
 
 ## <a name="next-steps"></a>次のステップ
-モデル管理を使い始めるには、「[モデル管理のセットアップ](model-management-configuration.md)」をご覧ください。
+モデル管理を使い始めるには、「[モデル管理のセットアップ](deployment-setup-configuration.md)」をご覧ください。

@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/02/2017
-ms.openlocfilehash: e37e706c3c12b87cc4b49315589582ae7ab8b015
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 517208b76757655990f82f50677267320eb1393c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI での Azure Database for MySQL サーバーの監視とスケーリング
 このサンプル CLI スクリプトは、単一の Azure Database for MySQL サーバーのメトリックを照会したうえで、異なるパフォーマンス レベルにスケーリングするものです。
@@ -35,10 +35,10 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 | **コマンド** | **メモ** |
 |---|---|
-| [az group create](/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az mysql server create](/cli/azure/mysql/server#create) | データベースのホストとなる MySQL サーバーを作成します。 |
-| [az monitor metrics list](/cli/azure/monitor/metrics#list) | リソースのメトリック値を一覧表示します。 |
-| [az group delete](/cli/azure/group#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) | データベースのホストとなる MySQL サーバーを作成します。 |
+| [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) | リソースのメトリック値を一覧表示します。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure/overview)

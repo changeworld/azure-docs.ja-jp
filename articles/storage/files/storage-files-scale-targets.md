@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 10/17/2017
+ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 35d430b683224d1035cccdfb58b9db415d47ea3b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 381e96a0a777415b916e4093fe55aa0d355782a1
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 この記事では、Azure Files と Azure File Sync (プレビュー) のスケーラビリティとパフォーマンスのターゲットについて説明します。

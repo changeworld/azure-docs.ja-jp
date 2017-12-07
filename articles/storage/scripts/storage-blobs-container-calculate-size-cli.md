@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/28/2017
-ms.author: marsma
-ms.openlocfilehash: ddaa656df4ee003dde44fe0e76c33eef8a996830
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.author: tamram
+ms.openlocfilehash: 61a553e47a642aead323a19d0724fdccc94a6282
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob ストレージ コンテナーのサイズを計算する
 

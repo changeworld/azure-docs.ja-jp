@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 960ea1540d644b6f41b95ab7df61cf91adcbb4ad
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 9aa21beb8963462b1cb6bdad6079b01e4d2e9c34
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
@@ -192,7 +192,7 @@ Azure Portal で、ExpressRoute 回線の状態を確認するには、左側の
 Azure プライベート ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt
+    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
 正常に構成されたプライベート ピアリングの応答のサンプルは次のとおりです。
 

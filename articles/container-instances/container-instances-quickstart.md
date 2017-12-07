@@ -4,17 +4,16 @@ description: "Azure Container Instances でのデプロイおよび作業の開�
 services: container-instances
 author: seanmck
 manager: timlt
-editor: mmacy
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: f6c809698bed4f91a7121c4515b4375b3cad6d70
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 22f7ec70b5fc9d04de18a8b6029f0e24d3f6a83f
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Azure Container Instances での最初のコンテナーの作成
 Azure Container Instances を使用すると、仮想マシンをプロビジョニングしたり、より高度なレベルのサービスを採用したりしなくても、Azure の Docker コンテナーを簡単に作成、管理できます。 このクイックスタートでは、Azure でコンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 わずか数秒で、お使いのブラウザーに次のように表示されます。

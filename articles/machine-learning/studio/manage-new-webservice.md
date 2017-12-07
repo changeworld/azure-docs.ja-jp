@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 2fc71d3a03ff978485104bcd1cd9391c1d5ee392
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed9b4e2fc2dd7c795861dc8f1c0f2c6d61d26439
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
@@ -155,36 +155,4 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 * **ログ記録** エンドポイントに関するエラー ログ記録を有効または無効にすることができます。 ログ記録の詳細については、「[Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」をご覧ください。
 * **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
 
-## <a name="grant-or-suspend-access-to-web-services-for-users-in-the-portal"></a>ポータルでユーザーの Web サービスへのアクセスを許可または一時停止する
-Azure クラシック ポータルを使用して、特定ユーザーのアクセスを許可または拒否することができます。
-
-### <a name="access-for-users-of-new-web-services"></a>新しい Web サービスのユーザーのアクセス
-Azure Machine Learning Web サービス ポータルで、他のユーザーが Web サービスを操作できるようにするには、そのユーザーを Azure サブスクリプションで共同管理者として追加する必要があります。
-
-Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、[Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
-
-1. ナビゲーション ウィンドウで、**[設定]**、**[管理者]** の順にクリックします。
-2. ウィンドウの下部にある **[追加]**をクリックします。 
-3. [共同管理者の追加] ダイアログで、共同管理者として追加する個人の電子メール アドレスを入力し、共同管理者にアクセス権を付与するサブスクリプションを選択します。
-4. **[保存]**をクリックします。
-
-### <a name="access-for-users-of-classic-web-services"></a>クラシック Web サービスのユーザーのアクセス
-ワークスペースを管理するには
-
-Microsoft Azure アカウント (Azure サブスクリプションに関連付けられているアカウント) を使用して、[Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
-
-1. Microsoft Azure サービス パネルで、 **[MACHINE LEARNING]**をクリックします。
-2. 管理するワークスペースをクリックします。
-3. **[構成]** タブをクリックします。
-
-[構成] タブで **[拒否]** をクリックすると、Machine Learning ワークスペースへのアクセスを中断できます。 ユーザーは、Machine Learning Studio でワークスペースを開くことができなくなります。 アクセスを復元するには、**[許可]** をクリックします。
-
-特定のユーザーに対して設定を行うには
-
-Machine Learning Studio のワークスペースにアクセスできる追加アカウントを管理するには、**[ダッシュボード]** タブで **[ML Studio にサインイン]** をクリックします。Machine Learning Studio でワークスペースが開きます。 ここで、**[設定]** タブの **[ユーザー]** をクリックします。 **[その他のユーザーの招待]** をクリックしてユーザーにワークスペースへのアクセス権を付与するか、ユーザーを選択して **[削除]** をクリックします。
-
-> [!NOTE]
-> **[ML Studio にサインイン]** リンクは、現在サインイン中の Microsoft アカウントを使用して Machine Learning Studio を開きます。 Azure クラシック ポータルへのサインインに使用する Microsoft アカウントでワークスペースを作成する場合は、ワークスペースを開く権限が自動的には付与されません。 ワークスペースを開くには、ワークスペースの所有者として定義された Microsoft アカウントにサインインするか、所有者からワークスペースへの参加の招待を受け取る必要があります。
-> 
-> 
 

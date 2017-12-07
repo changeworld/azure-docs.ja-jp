@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/10/2017
 ms.author: ryanwi
-ms.openlocfilehash: 97bcf312621ec0fed28e26179d4c4aa101a8a92d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b3bf91a7ae5ed70456352ecdba9c0324f20f3555
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>Service Fabric を使用して API Management をデプロイする
 このチュートリアルは、シリーズの第 3 部です。  Service Fabric での Azure API Management のデプロイは高度なシナリオです。  API Management は、バックエンドの Service Fabric サービスのルーティング規則を豊富に備えた API を公開する必要があるときに便利です。 通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 Service Fabric では、ASP.NET Core アプリケーション、Event Hubs、IoT Hub、Azure API Management など、トラフィック イングレス用に設計された任意のステートレス サービスをゲートウェイとして使用できます。 
@@ -326,7 +326,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="conclusion"></a>まとめ
+## <a name="next-steps"></a>次のステップ
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -335,6 +335,10 @@ az group delete --name $ResourceGroupName
 > * API 操作の作成
 > * バックエンド ポリシーの構成
 > * API を製品に追加する
+
+次のチュートリアルでは、クラスター ランタイムをアップグレードする方法について説明します。
+> [!div class="nextstepaction"]
+> [Azure Service Fabric クラスター ランタイムのアップグレード](service-fabric-tutorial-upgrade-cluster.md)
 
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 

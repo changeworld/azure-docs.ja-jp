@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 20fbc21224410456919e82f3a63c506eb6e573e4
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8c0bd1aa2236eb44a41142f9cfc20c220ca49e99
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 Azure で SQL Server 仮想マシン イメージを構成するとき、ポータルを使用して、ストレージ構成を自動化すると便利です。 これには、ストレージを VM に接続する、そのストレージが SQL Server にアクセスできるようにする、特定のパフォーマンス要件を最適化するためにストレージを構成する、などの作業が含まれます。
@@ -30,7 +30,7 @@ Azure で SQL Server 仮想マシン イメージを構成するとき、ポー�
 ## <a name="prerequisites"></a>前提条件
 自動化されたストレージ構成設定を使用するには、仮想マシンには次の特性が必要です。
 
-* [SQL Server ギャラリー イメージ](virtual-machines-windows-sql-server-iaas-overview.md#option-1-create-a-sql-vm-with-per-minute-licensing)でプロビジョニングされている。
+* [SQL Server ギャラリー イメージ](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)でプロビジョニングされている。
 * [Resource Manager デプロイメント モデル](../../../azure-resource-manager/resource-manager-deployment-model.md)を使用している。
 * [Premium Storage](../premium-storage.md)を使用している。
 

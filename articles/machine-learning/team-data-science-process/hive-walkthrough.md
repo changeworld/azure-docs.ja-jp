@@ -4,7 +4,7 @@ description: "HDInsight Hadoop クラスターを用いたエンド ツー エ�
 services: machine-learning,hdinsight
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: e9e76c91-d0f6-483d-bae7-2d3157b86aa0
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
-ms.author: hangzh;bradsev
-ms.openlocfilehash: 1be39ab258235740c7e0875a5c0c29ee4a665a71
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.date: 11/29/2017
+ms.author: bradsev
+ms.openlocfilehash: ad7bc8bb65a3395599a4de9a9954ff203fa624c6
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の活用: Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行するエンド ツー エンドのシナリオで、[Team Data Science Process (TDSP)](overview.md) を使用します。 データのモデルは、Azure Machine Learning を使用して作成され、二項分類、多クラス分類、回帰予測タスクを処理します。

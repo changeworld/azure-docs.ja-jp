@@ -2,26 +2,18 @@
 title: "クイックスタート - Azure ポータルでの最初の Azure Container Instances コンテナーの作成"
 description: "Azure Container Instances でのデプロイおよび作業の開始"
 services: container-instances
-documentationcenter: 
 author: mmacy
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/25/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 0179107ece1e150246ab40836783d810425be3ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7007fa8989f6d87028906918dbbc9c2998cd3bf4
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Azure Container Instances での最初のコンテナーの作成
 

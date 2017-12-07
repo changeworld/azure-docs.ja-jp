@@ -11,13 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 11/29/2017
 ms.author: dobett
-ms.openlocfilehash: a499783fc02e1371562edd41b827758e19fbd823
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1e22a4378caf69d2077d79f78682c4d438dbcd2
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
@@ -33,6 +33,8 @@ IoT Hub では、メッセージ プロパティに基づいて、IoT Hub サー
 1 つのメッセージが複数のルーティング ルールの条件と一致することがあり、その場合、IoT Hub は一致する各ルールに関連するエンドポイントにメッセージを送信します。 IoT Hub はメッセージ配信の重複を自動的に排除するため、あるメッセージが複数のルールに一致し、それらのルールの配信先がすべて同じであった場合は、配信先には 1 度のみメッセージが配信されます。
 
 IoT hub は、既定の[組み込みのエンドポイント][lnk-built-in]を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
+
+ルーティングとカスタム エンドポイントを使用すると、メッセージは、規則に一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、**イベント** エンドポイントにメッセージを送信するルートを追加します。
 
 > [!NOTE]
 > IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。

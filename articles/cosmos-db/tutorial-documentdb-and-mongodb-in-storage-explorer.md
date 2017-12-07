@@ -14,14 +14,14 @@ ms.custom: Azure Cosmos DB active
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: Jiaj-Li
-ms.openlocfilehash: e695cdd7c51e18a386764ab8444d3336366ae265
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 303fcfbda1934e3b29cb8ed06087c560275489e0
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Azure Cosmos DB を Azure Storage Explorer で管理する (プレビュー)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/15/2017
-ms.author: marsma
-ms.openlocfilehash: 58313148f20c6680b131cf7a9f3f5aa015ca4add
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.author: tamram
+ms.openlocfilehash: 0c3fc2d73a0caf0e0331cb9073bfcc0574240dac
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="perform-blob-storage-operations-with-azure-cli"></a>Azure CLI を使用して Blob Storage の操作を実行する
 

@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 11/03/2017
-ms.openlocfilehash: 286b16148d28509714862714dcc5986496d9af44
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 9a94f257e5cd3534127e8594ddee3c5f837876df
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーの構成を一覧表示および更新する
 このサンプル CLI スクリプトは、Azure Database for MySQL サーバーのすべての利用可能な構成パラメーターと、許容値を一覧表示し、*innodb_lock_wait_timeout* を既定値以外の値に設定します。
@@ -37,12 +37,12 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 | **コマンド** | **メモ** |
 |---|---|
-| [az group create](/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az mysql server create](/cli/azure/mysql/server#create) | データベースのホストとなる MySQL サーバーを作成します。 |
-| [az mysql server configuration list](/cli/azure/mysql/server/configuration#list) | Azure Database for MySQL サーバーの構成を一覧表示します。 |
-| [az mysql server configuration set](/cli/azure/mysql/server/configuration#set) | Azure Database for MySQL サーバーの構成を更新します。 |
-| [az mysql server configuration show](/cli/azure/mysql/server/configuration#show) | Azure Database for MySQL サーバーの構成を表示します。 |
-| [az group delete](/cli/azure/group#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az mysql server create](/cli/azure/mysql/server#az_msql_server_create) | データベースのホストとなる MySQL サーバーを作成します。 |
+| [az mysql server configuration list](/cli/azure/mysql/server/configuration#az_msql_server_configuration_list) | Azure Database for MySQL サーバーの構成を一覧表示します。 |
+| [az mysql server configuration set](/cli/azure/mysql/server/configuration#az_msql_server_configuration_set) | Azure Database for MySQL サーバーの構成を更新します。 |
+| [az mysql server configuration show](/cli/azure/mysql/server/configuration#az_msql_server_configuration_show) | Azure Database for MySQL サーバーの構成を表示します。 |
+| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure/overview)

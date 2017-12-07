@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/21/2017
+ms.date: 12/01/2017
 ms.author: larryfr
-ms.openlocfilehash: 27a5d0e69ec9c47feab2b23d7c79fe2547edfc08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e9951132ebb46d1053fbf62528b43e82cc76d2e
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>オンプレミス ネットワークへの HDInsight の接続
 

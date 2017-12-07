@@ -11,15 +11,15 @@ ms.service: cosmos-db
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: c6d31816b5919afb2cc67bc42321422183ab30df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37bc34c470190f3acb1f0f2e9bed5e0a4918405b
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する 
 

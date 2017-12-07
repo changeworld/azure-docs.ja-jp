@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 3000acf91a66af3ec512af52362f7f1e2ba0019b
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 310306e22a9f3c4c770e326d3284d02da7f06039
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 このリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -411,7 +411,7 @@ Media Services .NET SDK 3.0.0.5 リリースでは、次の改善が加えられ
 
 現在、Media Services SDK の最新バージョンは 3.0.0.0 です。 Nuget から最新パッケージをダウンロードするか、 [GitHub]からビットを取得できます。
 
-Media Services SDK Version 3.0.0.0 から、 [Azure Active Directory Access Control Service (ACS)] トークンを再利用できます。 詳細については、[Media Services SDK for .NET を使用した Media Services への接続]に関する記事の Access Control Service トークンの再利用に関するセクションをご覧ください。
+Media Services SDK Version 3.0.0.0 から、Azure Active Directory Access Control Service (ACS) トークンを再利用できます。 
 
 ### <a name="dec_13_donnet_ext_changes"></a>Azure Media Services .NET SDK Extensions 2.0.0.0
 Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure Media Services による開発を容易にする一連の拡張機能メソッドおよびヘルパー機能です。 [Azure Media Services .NET SDK Extensions]から最新のビットを取得できます。
@@ -581,7 +581,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [ビデオのセグメントの結合]: http://msdn.microsoft.com/library/azure/dn640504.aspx
 [Azure Media Services .NET SDK 3.0.0.1 および 3.0.0.2 のリリース]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
 [Azure Active Directory Access Control Service (ACS)]: http://msdn.microsoft.com/library/hh147631.aspx
-[Media Services SDK for .NET を使用した Media Services への接続]: http://msdn.microsoft.com/library/azure/jj129571.aspx
+[Connecting to Media Services with the Media Services SDK for .NET]: http://msdn.microsoft.com/library/azure/jj129571.aspx
 [Azure Media Services .NET SDK Extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [azure-sdk-tools]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
