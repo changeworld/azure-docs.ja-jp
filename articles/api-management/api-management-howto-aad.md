@@ -3,22 +3,21 @@ title: "Azure Active Directory を使用して開発者アカウントを認証�
 description: "API Management で Azure Active Directory を使用してユーザーを認証する方法について説明します。"
 services: api-management
 documentationcenter: API Management
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 33a69a83-94f2-4e4e-9cef-f2a5af3c9732
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 2e8bc33ddf38657fe2d0d84a7bf64d4177d51572
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3faa6c1867808436a66a2b33ea1a9d79ede2c8fb
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/04/2017
 ---
 > [!WARNING]
 > Azure Active Directory の統合では、[Developer および Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) レベルのみで使用できます。
@@ -227,10 +226,10 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
-[Get started with Azure API Management]: api-management-get-started.md
+[Get started with Azure API Management]: get-started-create-service-instance.md
 [API Management policy reference]: api-management-policy-reference.md
 [Caching policies]: api-management-policy-reference.md#caching-policies
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: get-started-create-service-instance.md
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet

@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 1689374d180e9c806516812d6d4b51df3b06cb21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.openlocfilehash: a934643be02abeadecf9e8384e29bd3e0e1a36f5
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>MongoDB API を使用して Azure Cosmos DB グローバル分散をセットアップする方法
 
@@ -77,7 +78,7 @@ var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
 ```
 
-プライマリ読み取り/書き込みリージョンと障害復旧 (DR) 用のセカンダリ リージョンを使用するアプリケーションでは、コレクションの読み取り設定を *SecondaryPreferred* に設定することをお勧めします。 *SecondaryPreferred* 読み取り設定は、プライマリ リージョンが利用できない場合、セカンダリ リージョンから読み取るように構成します。
+プライマリ読み取り/書き込みリージョンとディザスター リカバリー (DR) 用のセカンダリ リージョンを使用するアプリケーションでは、コレクションの読み取り設定を *SecondaryPreferred* に設定することをお勧めします。 *SecondaryPreferred* 読み取り設定は、プライマリ リージョンが利用できない場合、セカンダリ リージョンから読み取るように構成します。
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);

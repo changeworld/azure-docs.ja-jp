@@ -5,15 +5,15 @@ services: azure-stack
 author: ErikjeMS
 manager: byronr
 ms.service: azure-stack
-ms.topic: azure-stack
+ms.topic: quickstart
 ms.date: 09/15/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: abca538f28bbc0a8f3f00311ca1a69d196f10272
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64a623b3f5cb443e0676e7d89d7040837be95737
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-stack-portal"></a>Azure Stack ポータルで Windows 仮想マシンを作成する
 
@@ -28,7 +28,7 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. **[新規]** > **[Compute]** > **[Windows Server 2016 Datacenter Eval]** > **[作成]** の順にクリックします。 **Windows Server 2016 Datacenter Eval** エントリが表示されない場合は、Azure Stack オペレーターに問い合わせてください。 「[Add the Windows Server 2016 VM image to the Azure Stack marketplace](../azure-stack-add-default-image.md)」(Windows Server 2016 VM イメージの Azure Stack Marketplace への追加) の記事の説明に従って、マーケットプレースに追加するように求めます。 
+1. **[新規]** > **[Compute]** > **[Windows Server 2016 Datacenter Eval]** > **[作成]** の順にクリックします。 **Windows Server 2016 Datacenter Eval** エントリが表示されない場合は、Azure Stack オペレータに問い合わせてください。 「[Add the Windows Server 2016 VM image to the Azure Stack marketplace](../azure-stack-add-default-image.md)」(Windows Server 2016 VM イメージの Azure Stack Marketplace への追加) の記事の説明に従って、マーケットプレースに追加するように求めます。 
     ![](media/azure-stack-quick-windows-portal/image01.png)
 2. **[基本]** で、**[名前]**、**[ユーザー名]**、**[パスワード]** を入力します。 **[サブスクリプション]**を選択します。 **リソース グループ**を作成するか、既存のリソース グループを選択し、**[場所]** を選択して、**[OK]** をクリックします。
 

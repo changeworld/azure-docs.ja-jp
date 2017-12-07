@@ -1,26 +1,19 @@
 ---
-title: "AKS と Azure Container Registry で Draft を使用する | Microsoft Docs"
+title: "AKS と Azure Container Registry で Draft を使用します。"
 description: "AKS と Azure Container Registry で Draft を使用します。"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: draft, helm, aks, azure-container-service
-keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, Draft, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3e607a6ce5662f6ff597fafbcec8c864f25ff54c
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: df5614d8a708b49ee1368c4d7983f45d29920fd8
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Draft の使用
 
@@ -30,7 +23,7 @@ Draft は、Kubernetes クラスターでコードをパッケージ化し、実
 
 ## <a name="prerequisites"></a>前提条件
 
-このドキュメントで説明する手順は、AKS クラスターを作成済みであり、クラスターとの kubectl 接続が確立されていることを前提としています。 これらの項目が必要な場合は、[AKS のクイックスタート](./kubernetes-walkthrough.md)をご覧ください。
+このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイックスタート](./kubernetes-walkthrough.md)をご覧ください。
 
 Azure Container Registry (ACR) のプライベート Docker レジストリも必要です。 ACR インスタンスをデプロイする手順については、[Azure Container Registry のクイックスタート](../container-registry/container-registry-get-started-azure-cli.md)をご覧ください。
 

@@ -75,7 +75,7 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 さまざまなストレージの種類と可用性オプションの料金情報については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」をご覧ください。
 
 ## <a name="availability-sets"></a>可用性セット
-可用性セットはデータセンター内の VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 1 つの VM が [Azure Premium Storage](../articles/storage/common/storage-premium-storage.md) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 
+可用性セットはデータセンター内の VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 1 つの VM が [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 
 
 可用性セットは、ハードウェアの障害から保護する障害ドメイン (FD) と、更新の安全な適用を可能にする更新ドメイン (UD) という 2 つの追加グループで構成されています。 [Linux VM](../articles/virtual-machines/linux/manage-availability.md) または [Windows VM](../articles/virtual-machines/windows/manage-availability.md) の可用性を管理する方法については、詳細をお読みください。
 

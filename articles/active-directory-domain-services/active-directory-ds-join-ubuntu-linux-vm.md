@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 8946166c04ce778d751ad79f7a010c9a5e71a05c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b41cebcc8592468fcabb157b1aee830dfe954229
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Azure 内の Ubuntu 仮想マシンを管理対象ドメインに参加させる
 この記事では、Ubuntu Linux 仮想マシンを Azure AD Domain Services の管理対象ドメインに参加させる方法について説明します。
@@ -120,12 +120,12 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     sudo realm discover CONTOSO100.COM
     ```
 
-      > [!NOTE] 
-      > **トラブルシューティング:** *realm discover* で管理対象ドメインが見つからない場合:
-        * Ensure that the domain is reachable from the virtual machine (try ping).
-        * Check that the virtual machine has indeed been deployed to the same virtual network in which the managed domain is available.
-        * Check to see if you have updated the DNS server settings for the virtual network to point to the domain controllers of the managed domain.
-      >
+   > [!NOTE] 
+   > **トラブルシューティング:** *realm discover* で管理対象ドメインが見つからない場合:
+     * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。
+     * 仮想マシンが、管理対象ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
+     * 管理対象ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。
+   >
 
 2. Kerberos を初期化します。 SSH ターミナルで、次のコマンドを入力します。 
 

@@ -11,14 +11,15 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/17/2016
 ms.author: naziml
-ms.openlocfilehash: 3c218a6fe3857c216bc185c5d3630025f332147b
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.custom: mvc
+ms.openlocfilehash: bfe36ee5365e71db4280e8e2ccff6db8e552dd39
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>Overview

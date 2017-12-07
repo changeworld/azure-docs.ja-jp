@@ -1,6 +1,6 @@
 # <a name="azure-managed-disks-overview"></a>Azure Managed Disks の概要
 
-Azure Managed Disks は、VM ディスクに関連付けられている[ストレージ アカウント](../articles/storage/common/storage-introduction.md)を管理することで、Azure IaaS VM のディスク管理を簡素化します。 必要なディスクの種類 ([Premium](../articles/storage/common/storage-premium-storage.md) または [Standard](../articles/storage/common/storage-standard-storage.md)) とサイズを指定するだけで、ディスクの作成と管理は Azure によって行われます。
+Azure Managed Disks は、VM ディスクに関連付けられている[ストレージ アカウント](../articles/storage/common/storage-introduction.md)を管理することで、Azure IaaS VM のディスク管理を簡素化します。 必要なディスクの種類 ([Premium](../articles/virtual-machines/windows/premium-storage.md) または [Standard](../articles/virtual-machines/windows/standard-storage.md)) とサイズを指定するだけで、ディスクの作成と管理は Azure によって行われます。
 
 ## <a name="benefits-of-managed-disks"></a>管理ディスクの利点
 
@@ -44,7 +44,7 @@ Managed Disks を使用するときには、課金に関する次の考慮事項
 
 これらについて詳しく見ていきましょう。
 
-**ストレージの種類**: Managed Disks には、[Premium](../articles/storage/common/storage-premium-storage.md) (SSD ベース) と [Standard](../articles/storage/common/storage-standard-storage.md) (HDD ベース) の 2 つのパフォーマンス レベルが用意されています。 管理ディスクへの課金は、ディスク用に選択したストレージの種類によって異なります。
+**ストレージの種類**: Managed Disks には、[Premium](../articles/virtual-machines/windows/premium-storage.md) (SSD ベース) と [Standard](../articles/virtual-machines/windows/standard-storage.md) (HDD ベース) の 2 つのパフォーマンス レベルが用意されています。 管理ディスクへの課金は、ディスク用に選択したストレージの種類によって異なります。
 
 
 **ディスク サイズ**: 管理ディスクへの課金は、ディスクのプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、次の表に示す Managed Disks オプションの中で最も近いオプションにマップします。 各管理ディスクは、サポートされているプロビジョニング済みサイズのいずれかにマップされ、それに応じて課金されます。 たとえば、Standard 管理ディスクを作成し、200 GB のプロビジョニング済みサイズを指定した場合、S20 ディスクの価格に従って課金されます。
@@ -131,9 +131,9 @@ Managed Disks の詳細については、次の記事をご覧ください。
 
 ### <a name="compare-managed-disks-storage-options"></a>Managed Disks のストレージ オプションの比較
 
-* [Premium Storage とディスク](../articles/storage/common/storage-premium-storage.md)
+* [Premium Storage とディスク](../articles/virtual-machines/windows/premium-storage.md)
 
-* [Standard Storage とディスク](../articles/storage/common/storage-standard-storage.md)
+* [Standard Storage とディスク](../articles/virtual-machines/windows/standard-storage.md)
 
 ### <a name="operational-guidance"></a>操作ガイダンス
 

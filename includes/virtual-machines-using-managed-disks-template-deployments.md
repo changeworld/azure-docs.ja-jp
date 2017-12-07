@@ -214,6 +214,6 @@ REST API の仕様の詳細については、[管理ディスク作成の REST A
     * [管理ディスクを使用した Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
     * [管理ディスク テンプレートの全一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * 管理ディスクの詳細については、「[Azure Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)」のドキュメントを参照してください。
-* 仮想マシン リソースのテンプレートについては、[Microsoft.Compute/virtualMachines テンプレート リファレンス](/templates/microsoft.compute/virtualmachines) ドキュメントを参照してください。
-* ディスク リソースのテンプレートについては、[Microsoft.Compute/disks テンプレート リファレンス](/templates/microsoft.compute/disks) ドキュメントを参照してください。
+* 仮想マシン リソースのテンプレートについては、[Microsoft.Compute/virtualMachines テンプレート リファレンス](/azure/templates/microsoft.compute/virtualmachines) ドキュメントを参照してください。
+* ディスク リソースのテンプレートについては、[Microsoft.Compute/disks テンプレート リファレンス](/azure/templates/microsoft.compute/disks) ドキュメントを参照してください。
  

@@ -10,17 +10,17 @@ tags:
 ms.assetid: 
 ms.service: backup
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/07/2017
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 2e35b5fea99bf70c9ff9a6aacbe570b616bbb96f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0ab7f5c397637a7d2c4d423edd29bc6edeb3841
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell のサンプル
 

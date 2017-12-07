@@ -12,15 +12,15 @@ ms.service: back up
 ms.workload: storage-back up-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/23/2017
 ms.author: saurabhsensharma;markgal;
-ms.custom: 
-ms.openlocfilehash: 67a5c1494f2944e91fed2b077cf04e8906788c1e
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.custom: mvc
+ms.openlocfilehash: 0dbf3850c7fcccb1a02e70a19b498522a4ce0e79
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 

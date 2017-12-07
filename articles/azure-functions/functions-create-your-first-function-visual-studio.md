@@ -14,18 +14,20 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 12/1/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 14ab60a5bb6059794d730151193aad36bc2a969e
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 7f71ecb2b58728f466371c7aa6d2aac965177863
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
 
 Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)環境でコードを実行できます。
+
+> [!VIDEO https://www.youtube-nocookie.com/embed/DrhG-Rdm80k]
 
 このトピックでは、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" 関数を作成してローカルでテストする方法を学習します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 バージョン 15.3 以降の Azure 開発ワークロードの一部として利用できます。
 

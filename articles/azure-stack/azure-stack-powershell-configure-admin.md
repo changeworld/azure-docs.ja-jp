@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: sngun
-ms.openlocfilehash: 51861184b92e482484ce61c5006f403d439bfec7
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 54f0305afb94b8b19ea7fada837a73f7c6a1963c
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="configure-the-azure-stack-operators-powershell-environment"></a>Azure Stack オペレーターの PowerShell 環境の構成
 
@@ -55,7 +55,10 @@ $KeyvaultDnsSuffix = “<Keyvault DNS suffix for your environment>”
   Add-AzureRMEnvironment `
     -Name "AzureStackAdmin" `
     -ArmEndpoint $ArmEndpoint
-
+    
+  Set-AzureRmEnvironment `
+    -Name "AzureStackAdmin" `
+    -GraphAudience $GraphAudience 
 
   # Get the Active Directory tenantId that is used to deploy Azure Stack
   $TenantID = Get-AzsDirectoryTenantId `

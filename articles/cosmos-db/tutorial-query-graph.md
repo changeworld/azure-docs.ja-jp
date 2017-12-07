@@ -10,16 +10,17 @@ tags:
 ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: denlee
-ms.openlocfilehash: ee420983104f199edf57966bf22aa4d8451b4782
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.custom: mvc
+ms.openlocfilehash: b47aee24d4cc8e7fdf05ce03ed3aa0fb7c7432b6
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-with-the-graph-api-preview"></a>Azure Cosmos DB: Graph API (プレビュー) を使用してクエリを実行する方法
 

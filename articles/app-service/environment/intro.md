@@ -10,14 +10,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 2a619943abaf8835e591872cba0ed046d4c6c4a9
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.custom: mvc
+ms.openlocfilehash: 803a1cde5387b549504b42346d1a2e6a5df04746
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="introduction-to-app-service-environments"></a>App Service Environment の概要 #
  

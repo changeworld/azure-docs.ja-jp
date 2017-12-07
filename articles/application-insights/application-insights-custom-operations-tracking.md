@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 6412445f4e7a9b639ae9a38a44ff51038c6fcc00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18712b1c19fc81e290ead62f73a177874ebe86cd
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -33,7 +33,7 @@ Application Insights SDK は、受信 HTTP 要求および依存関係にある�
 ## <a name="overview"></a>概要
 操作は、アプリケーションによって実行される処理の 1 つの論理部分です。 操作には、名前、開始時刻、継続時間、および実行コンテキストがあります (ユーザー名、プロパティ、結果など)。 操作 A が 操作 B によって開始された場合は、操作 B が A の親として設定されます。1 つの操作は、親を 1 つだけ持つことができますが、複数の子操作を持つことができます。 操作とテレメトリの関連付けの詳細については、「[Application Insights におけるテレメトリの相関付け](application-insights-correlation.md)」を参照してください。
 
-Application Insights .NET SDK では、操作は、抽象クラス [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/Extensibility/Implementation/OperationTelemetry.cs) とその子孫である [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/RequestTelemetry.cs) と [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Core/Managed/Shared/DataContracts/DependencyTelemetry.cs) によって表されます。
+Application Insights .NET SDK では、操作は、抽象クラス [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) とその子孫である [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) と [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) によって表されます。
 
 ## <a name="incoming-operations-tracking"></a>受信操作の追跡 
 Application Insights Web SDK は、IIS パイプラインで実行される ASP.NET アプリケーションとすべての ASP.NET Core アプリケーションを対象に、HTTP 要求を自動的に収集します。 それ以外のプラットフォームとフレームワークについては、コミュニティによってサポートされるソリューションが存在します。 ただし、標準のソリューションとコミュニティによってサポートされるソリューションの対象外であるアプリケーションについては、独自にインストルメント化することができます。

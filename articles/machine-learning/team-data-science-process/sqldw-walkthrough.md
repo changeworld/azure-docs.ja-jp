@@ -4,7 +4,7 @@ description: "Advanced Analytics Process and Technology の活用"
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
-ms.author: bradsev;hangzh;weig
-ms.openlocfilehash: 9a913533074bfd9b077d66d133f0ad02319a53ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/24/2017
+ms.author: bradsev;weig
+ms.openlocfilehash: 9c858427b01f7b94aae87136a46e1d9ae5e09a1c
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -839,7 +839,6 @@ AzureML ワークスペースを既にセットアップしている場合は、
 3. データベースの DNS 名を **[データベース サーバー名]** フィールドに入力します。 形式: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. **データベース名** を対応するフィールドに入力します。
 5. <*SQL ユーザー名*> を **[Server user account name (サーバーのユーザー アカウント名)]** に、<*パスワード*> を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
-6. **[あらゆるサーバー証明書を承諾する]** オプションをオンにします。
 7. **データベース クエリ** テキスト編集領域で、必要なデータベース フィールド (ラベルなどの計算フィールドなど) を抽出するクエリを貼り付けてから、データを希望するサンプルのサイズにダウンサンプリングします。
 
 SQL Data Warehouse データベースから直接データを読み取る、二項分類の実験の例を次の図に示します (テーブル名の nyctaxi_trip と nyctaxi_fare は、必ずチュートリアルで使用したスキーマ名とテーブル名に置き換えてください)。 同様の実験を、多クラス分類と回帰問題で構築することができます。
