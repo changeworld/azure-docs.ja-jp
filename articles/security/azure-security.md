@@ -148,14 +148,14 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 -   アプリケーション エラー (例外イベントを表示)
 -   パフォーマンス (パフォーマンス イベントを表示)
 
-## <a name="storage"></a>ストレージ
+## <a name="storage"></a>Storage
 このセクションでは、Azure Storage のセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。 [組み込み RBAC ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)(ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
 
-### <a name="shared-access-signature"></a>共有アクセス署名
-[共有アクセス署名 (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
+### <a name="shared-access-signature"></a>Shared Access Signature
+[shared access signature (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。
 
 ### <a name="encryption-in-transit"></a>転送中の暗号化
 転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。 Azure Storage では、以下を使用してデータをセキュリティ保護できます。
@@ -180,7 +180,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 
 -   失敗した要求 (タイムアウト、帯域幅調整、ネットワーク、承認などに関する各種エラー)
 
--   共有アクセス署名 (SAS) を使用した要求 (失敗した要求と成功した要求を含む)
+-   Shared Access Signature (SAS) を使用した要求 (失敗した要求と成功した要求を含む)
 
 -   データの分析要求
 
@@ -211,7 +211,7 @@ Azure Virtual Network におけるルーティング動作を制御する機能�
 
 ### <a name="azure-virtual-network"></a>Azure Virtual Network
 
-Azure Virtual Network (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。 サブスクリプション専用に Azure ネットワーク ファブリックが論理的に分離されています。 このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。 VNet をサブネットに分割し、Azure IaaS 仮想マシン (VM) や[クラウド サービス (PaaS ロール インスタンス)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me) を配置できます。
+Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。 サブスクリプション専用に Azure ネットワーク ファブリックが論理的に分離されています。 このネットワークでは、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。 VNet をサブネットに分割し、Azure IaaS 仮想マシン (VM) や[クラウド サービス (PaaS ロール インスタンス)](https://docs.microsoft.com/azure/cloud-services/cloud-services-choose-me) を配置できます。
 
 また、Azure のいずれかの[接続オプション](https://docs.microsoft.com/azure/vpn-gateway/)を使用し、仮想ネットワークをオンプレミスのネットワークに接続することができます。 つまり、Azure が提供するエンタープライズ規模のメリットを享受しながら、IP アドレス ブロックを完全に制御して、ネットワークを Azure に拡張できます。
 
@@ -322,12 +322,12 @@ Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky な�
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
 組織の[ビジネス継続性/ディザスター リカバリー (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) 戦略において重要となるのは、計画済みおよび計画外の停止が発生した場合に企業のワークロードとアプリを継続して実行する方法を見極めることです。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) は、ワークロードとアプリのレプリケーション、フェールオーバー、および復旧の調整に役立ちます。これにより、1 次拠点がダウンした場合でも 2 次拠点からワークロードとアプリを利用できます。
 
-### <a name="sql-vm-tde"></a>SQL Server VM TDE
+### <a name="sql-vm-tde"></a>SQL VM TDE
 [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault)、および列レベルの暗号化 (CLE)が SQL Server の暗号化機能です。 これらの形態の暗号化では、暗号化に利用する暗号鍵を管理し、保存する必要があります。
 
 Azure Key Vault (AKV) サービスは、セキュリティを強化し、安全かつ可用性の高い場所で鍵を管理できるように設計されています。 SQL Server コネクタ を利用すると、SQL Server で Azure Key Vault にある鍵を利用できるようになります。
 
-SQL Server をオンプレミス コンピューターで実行している場合、いくつかの手順を踏んでオンプレミスの SQL Server コンピューターから Azure Key Vault にアクセスできます。 ただし、Azure VM の SQL Server の場合、 Azure Key Vault の統合機能を利用することで時間を節約できます。 いくつかの Azure PowerShell コマンドレットでこの機能を有効にし、SQL Server VM が Key Vault にアクセスするために必要な構成を自動化できます。
+SQL Server をオンプレミス コンピューターで実行している場合、いくつかの手順を踏んでオンプレミスの SQL Server コンピューターから Azure Key Vault にアクセスできます。 ただし、Azure VM の SQL Server の場合、 Azure Key Vault の統合機能を利用することで時間を節約できます。 いくつかの Azure PowerShell コマンドレットでこの機能を有効にし、SQL VM が Key Vault にアクセスするために必要な構成を自動化できます。
 
 ### <a name="vm-disk-encryption"></a>VM ディスクの暗号化
 [Azure Disk Encryption ](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、Windows および Linux IaaS 仮想マシン ディスクを暗号化するのに役立つ新機能です。 この機能では、OS およびデータ ディスクのボリュームを暗号化するために、Windows の業界標準である BitLocker 機能と Linux の DM-Crypt 機能が使用されます。 このソリューションは Azure Key Vault と統合されており、ディスクの暗号化キーと秘密は Key Vault サブスクリプションで制御および管理できます。 またこのソリューションでは、仮想マシン ディスク上のすべてのデータが、Azure Storage での保存時に暗号化されます。
