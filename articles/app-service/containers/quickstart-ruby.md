@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a54ef1ae40ba6ea9ad604a29c67e41228c0d5946
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: b609756f6fcea2a57210889d8082ffb45cbc92de
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>App Service on Linux での Ruby アプリの作成
 
@@ -169,4 +169,4 @@ http://<app name>.azurewebsites.net
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure App Service on Linux の FAQ](https://docs.microsoft.com/azure/app-service-web/app-service-linux-faq.md)
+[Azure App Service on Linux の FAQ](https://docs.microsoft.com/azure/app-service-web/app-service-linux-faq)

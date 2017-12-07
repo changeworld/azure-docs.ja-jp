@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.openlocfilehash: f52157df298ddfc1c1b29a18dc9a54aae59b52a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6ff877914f1bbe0b4c4a0dfaf708f6213c4894b3
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>ユーザーのサインインに Microsoft Authentication Library (MSAL) を使用する
 
@@ -96,7 +96,6 @@ function callGraphApi() {
                     userAgentApplication.acquireTokenRedirect(graphAPIScopes);
                 }
             });
-
     }
 }
 
@@ -105,7 +104,7 @@ function callGraphApi() {
  * @param {string} errorDesc - If error occur, the error message
  * @param {object} token - The token received from login
  * @param {object} error - The error string
- * @param {string} tokenType - the token type: usually id_token
+ * @param {string} tokenType - The token type: For loginRedirect, tokenType = "id_token". For acquireTokenRedirect, tokenType:"access_token".
  */
 function loginCallback(errorDesc, token, error, tokenType) {
     if (errorDesc) {

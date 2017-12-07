@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 1939a18fbaf0aed0f62ac9e7641b9901ec4762ea
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 03e51ab298a08386f0094d6d0290aa1ec85d337f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure Machine Learning モデル管理アカウント API リファレンス
 
-デプロイ環境のセットアップに関する情報は、[モデル管理アカウントのセットアップ](model-management-configuration.md)に関する記事を参照してください。
+デプロイ環境のセットアップに関する情報は、[モデル管理アカウントのセットアップ](deployment-setup-configuration.md)に関する記事を参照してください。
 
 Azure Machine Learning モデル管理アカウント API には、次の操作が実装されています。
 
@@ -72,11 +72,11 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
  |
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 モデルを登録します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -87,7 +87,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | OK です。 モデルの登録が成功しました。 | [モデル](#model) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -98,11 +98,11 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models 
  |
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 アカウントにあるモデルの一覧を照会します。 結果の一覧は、タグおよび名前でフィルター処理できます。 フィルターが渡されない場合、クエリを実行するとアカウントにあるすべてのモデルが一覧表示されます。 返された一覧は改ページ調整され、各ページの項目数は省略可能なパラメーターになっています。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -115,7 +115,7 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 | $skipToken | クエリ | 次のページを取得する継続トークン | いいえ | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [PaginatedModelList](#paginatedmodellist) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -127,11 +127,11 @@ az ad sp create-for-rbac --scopes /subscriptions/<SubscriptionId>/resourcegroups
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/models/{id}  
  |
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 ID でモデルを取得します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -141,7 +141,7 @@ ID でモデルを取得します。
 | 承認 | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | あり | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [モデル](#model) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -153,11 +153,11 @@ ID でモデルを取得します。
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 登録されたモデルおよびすべての依存関係と共にマニフェストを登録します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -167,7 +167,7 @@ ID でモデルを取得します。
 | manifestRequest | body | マニフェストの登録に使用されるペイロード | あり | [Manifest](#manifest) |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | マニフェストの登録に成功しました。 | [Manifest](#manifest) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -179,11 +179,11 @@ ID でモデルを取得します。
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 アカウントにあるマニフェストの一覧を照会します。 結果の一覧は、モデル ID およびマニフェスト名でフィルター処理できます。 フィルターが渡されない場合、クエリを実行するとアカウントにあるすべてのマニフェストが一覧表示されます。 返された一覧は改ページ調整され、各ページの項目数は省略可能なパラメーターになっています。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -196,7 +196,7 @@ ID でモデルを取得します。
 | $skipToken | クエリ | 次のページを取得する継続トークン | いいえ | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [PaginatedManifestList](#paginatedmanifestlist) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -208,11 +208,11 @@ ID でモデルを取得します。
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/manifests/{id} | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 ID でマニフェストを取得します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -222,7 +222,7 @@ ID でマニフェストを取得します。
 | 承認 | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | あり | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [Manifest](#manifest) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -234,11 +234,11 @@ ID でマニフェストを取得します。
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 Azure Container Registry に Docker イメージとしてイメージを作成します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -248,7 +248,7 @@ Azure Container Registry に Docker イメージとしてイメージを作成�
 | imageRequest | body | イメージの作成に使用されるペイロード | あり | [ImageRequest](#imagerequest) |
 
 ### <a name="responses"></a>応答
-| コード | Description | headers | スキーマ |
+| コード | 説明 | headers | スキーマ |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | 非同期操作の場所の URL。 GET 呼び出しは、イメージの作成タスクの状態を示します。 | Operation-Location |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -260,11 +260,11 @@ Azure Container Registry に Docker イメージとしてイメージを作成�
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 アカウントにあるイメージの一覧を照会します。 結果の一覧は、マニフェスト ID および名前でフィルター処理できます。 フィルターが渡されない場合、クエリを実行するとアカウントにあるすべてのイメージが一覧表示されます。 返された一覧は改ページ調整され、各ページの項目数は省略可能なパラメーターになっています。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -277,7 +277,7 @@ Azure Container Registry に Docker イメージとしてイメージを作成�
 | $skipToken | クエリ | 次のページを取得する継続トークン | いいえ | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [PaginatedImageList](#paginatedimagelist) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -289,11 +289,11 @@ Azure Container Registry に Docker イメージとしてイメージを作成�
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/images/{id} | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 ID でイメージを取得します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -303,7 +303,7 @@ ID でイメージを取得します。
 | 承認 | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | あり | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [イメージ](#image) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -316,11 +316,11 @@ ID でイメージを取得します。
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 イメージからサービスを作成します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -330,7 +330,7 @@ ID でイメージを取得します。
 | serviceRequest | body | サービスの作成に使用されるペイロード | あり | [ServiceCreateRequest](#servicecreaterequest) |
 
 ### <a name="responses"></a>応答
-| コード | Description | headers | スキーマ |
+| コード | 説明 | headers | スキーマ |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | 非同期操作の場所の URL。 GET 呼び出しは、サービスの作成タスクの状態を示します。 | Operation-Location |
 | 409 | 指定された名前のサービスが既に存在しています。 |
@@ -343,11 +343,11 @@ ID でイメージを取得します。
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 アカウントにあるサービスの一覧を照会します。 結果の一覧は、モデルの名前と ID、マニフェストの名前と ID、イメージ ID、サービス名、または Machine Learning のコンピューティング リソース ID でフィルター処理できます。 フィルターが渡されない場合、クエリを実行するとアカウントにあるすべてのサービスが一覧表示されます。 返された一覧は改ページ調整され、各ページの項目数は省略可能なパラメーターになっています。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -365,7 +365,7 @@ ID でイメージを取得します。
 | $skipToken | クエリ | 次のページを取得する継続トークン | いいえ | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [PaginatedServiceList](#paginatedservicelist) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse) |
@@ -377,11 +377,11 @@ ID でイメージを取得します。
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 ID でサービスを取得します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -391,7 +391,7 @@ ID でサービスを取得します。
 | 承認 | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | あり | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [ServiceResponse](#serviceresponse) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse)
@@ -403,11 +403,11 @@ ID でサービスを取得します。
 |------------|------------|
 | PUT |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 既存のサービスを更新します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -418,7 +418,7 @@ ID でサービスを取得します。
 | serviceUpdateRequest | body | 既存のサービスの更新に使用されるペイロード | あり |  [ServiceUpdateRequest](#serviceupdaterequest) |
 
 ### <a name="responses"></a>応答
-| コード | Description | headers | スキーマ |
+| コード | 説明 | headers | スキーマ |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | 非同期操作の場所の URL。 GET 呼び出しは、サービスの更新タスクの状態を示します。 | Operation-Location |
 | 404 | 指定された ID のサービスが存在しません。 |
@@ -431,11 +431,11 @@ ID でサービスを取得します。
 |------------|------------|
 | 削除 |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id} | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 サービスを削除します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -445,7 +445,7 @@ ID でサービスを取得します。
 | 承認 | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | あり | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 |  |
 | 204 | 指定された ID のサービスが存在しません。 |
@@ -458,11 +458,11 @@ ID でサービスを取得します。
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 サービス キーを取得します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -472,7 +472,7 @@ ID でサービスを取得します。
 | 承認 | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | あり | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [AuthKeys](#authkeys)
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse)
@@ -484,11 +484,11 @@ ID でサービスを取得します。
 |------------|------------|
 | POST |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/services/{id}/keys | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 サービス キーを再生成して返します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -499,7 +499,7 @@ ID でサービスを取得します。
 | regenerateKeyRequest | body | 既存のサービスの更新に使用されるペイロード | あり | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [AuthKeys](#authkeys)
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse)
@@ -511,11 +511,11 @@ ID でサービスを取得します。
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 アカウントにあるデプロイ一覧を照会します。 結果の一覧は、サービス ID でフィルター処理できます。特定のサービスに対して作成されたデプロイのみが返されます。 フィルターが渡されない場合、クエリを実行するとアカウントにあるすべてのデプロイが一覧表示されます。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -525,7 +525,7 @@ ID でサービスを取得します。
 | serviceId | クエリ | サービス ID | いいえ | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [DeploymentList](#deploymentlist) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse)
@@ -537,11 +537,11 @@ ID でサービスを取得します。
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/deployments/{id} | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 ID でデプロイを取得します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -551,7 +551,7 @@ ID でデプロイを取得します。
 | 承認 | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | あり | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [デプロイ](#deployment) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse)
@@ -563,11 +563,11 @@ ID でデプロイを取得します。
 |------------|------------|
 | GET |  /api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/accounts/{accountName}/operations/{id} | 
 
-### <a name="description"></a>Description
+### <a name="description"></a>説明
 操作 ID で非同期操作の状態を取得します。
 
 ### <a name="parameters"></a>パラメーター
-| 名前 | 場所 | Description | 必須 | スキーマ
+| 名前 | 場所 | 説明 | 必須 | スキーマ
 |--------------------|--------------------|--------------------|--------------------|--------------------|
 | subscriptionId | path | Azure サブスクリプション ID。 | あり | string |
 | resourceGroupName | path | モデル管理アカウントが配置されているリソース グループの名前 | あり | string |
@@ -577,7 +577,7 @@ ID でデプロイを取得します。
 | 承認 | ヘッダー | 承認トークン。 "Bearer XXXXXX." のような形式にする必要があります。 | あり | string |
 
 ### <a name="responses"></a>応答
-| コード | Description | スキーマ |
+| コード | 説明 | スキーマ |
 |--------------------|--------------------|--------------------|
 | 200 | 成功。 | [OperationStatus](#asyncoperationstatus) |
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse)
@@ -592,7 +592,7 @@ ID でデプロイを取得します。
 Docker イメージの作成中に必要となる資産オブジェクトです。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**id**  <br>*省略可能*|資産 ID|string|
 |**mimeType**  <br>*省略可能*|モデル コンテンツの MIME の種類。 MIME の種類の詳細については、「[IANA メディアの種類の一覧](https://www.iana.org/assignments/media-types/media-types.xhtml)」を参照してください。|string|
@@ -612,7 +612,7 @@ Docker イメージの作成中に必要となる資産オブジェクトです�
 操作の状態です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**createdTime**  <br>*省略可能*  <br>*読み取り専用*|非同期操作の作成時刻 (UTC)|String (日時)|
 |**endTime**  <br>*省略可能*  <br>*読み取り専用*|非同期操作の終了時刻 (UTC)|String (日時)|
@@ -628,7 +628,7 @@ Docker イメージの作成中に必要となる資産オブジェクトです�
 サービスの認証キーです。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**primaryKey**  <br>*省略可能*|主キー|string|
 |**secondaryKey**  <br>*省略可能*|セカンダリ キー|string|
@@ -639,11 +639,11 @@ Docker イメージの作成中に必要となる資産オブジェクトです�
 AutoScaler の設定です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**autoscaleEnabled**  <br>*省略可能*|AutoScaler を有効または無効にします。|boolean|
 |**maxReplicas**  <br>*省略可能*|ポッド レプリカの最大スケールアップ数。  <br>**最小値**: `1`|integer|
-|**minReplicas**  <br>*省略可能*|ポッド レプリカの最小スケールダウン数。  <br>**最小値** : `0`|integer|
+|**minReplicas**  <br>*省略可能*|ポッド レプリカの最小スケールダウン数。  <br>**最小値**: `0`|integer|
 |**refreshPeriodInSeconds**  <br>*省略可能*|自動スケール トリガーの更新時刻。  <br>**最小値**: `1`|integer|
 |**targetUtilization**  <br>*省略可能*|自動スケールをトリガーする使用率。  <br>**最小値**: `0`  <br>**最大値** : `100`|integer|
 
@@ -653,7 +653,7 @@ AutoScaler の設定です。
 Machine Learning のコンピューティング リソースです。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**id**  <br>*省略可能*|リソースの ID|string|
 |**type**  <br>*省略可能*|リソースの種類。|列挙型 (クラスター)|
@@ -664,7 +664,7 @@ Machine Learning のコンピューティング リソースです。
 クラスターのコンテナーに対してリソースを予約するための構成です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**cpu**  <br>*省略可能*|CPU 予約を指定します。 Kubernetes の形式: 「[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)」(CPU の意味) を参照してください。|string|
 |**memory**  <br>*省略可能*|メモリ予約を指定します。 Kubernetes の形式: 「[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)」(メモリの意味) を参照してください。|string|
@@ -675,14 +675,14 @@ Machine Learning のコンピューティング リソースです。
 Azure Machine Learning デプロイのインスタンスです。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**createdAt**  <br>*省略可能*  <br>*読み取り専用*|デプロイの作成時刻 (UTC)|String (日時)|
 |**expiredAt**  <br>*省略可能*  <br>*読み取り専用*|デプロイの期限切れ時刻 (UTC)|String (日時)|
 |**id**  <br>*省略可能*|デプロイ ID|string|
 |**imageId**  <br>*省略可能*|このデプロイに関連付けられているイメージ ID|string|
 |**serviceName**  <br>*省略可能*|サービス名|string|
-|**状態**  <br>*省略可能*|現在のデプロイの状態|string|
+|**status**  <br>*省略可能*|現在のデプロイの状態|string|
 
 
 <a name="deploymentlist"></a>
@@ -697,9 +697,9 @@ Azure Machine Learning デプロイのインスタンスです。
 モデル管理サービス エラーの詳細です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
-|**code**  <br>*必須*|エラー コード|string|
+|**code**  <br>*必須*|エラー コード。|string|
 |**message**  <br>*必須*|エラー メッセージ。|string|
 
 
@@ -708,9 +708,9 @@ Azure Machine Learning デプロイのインスタンスです。
 モデル管理サービス エラー オブジェクトです。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
-|**code**  <br>*必須*|エラー コード|string|
+|**code**  <br>*必須*|エラー コード。|string|
 |**details**  <br>*省略可能*|エラー詳細オブジェクトの配列|<[ErrorDetail](#errordetail)> 配列|
 |**message**  <br>*必須*|エラー メッセージ。|string|
 |**statusCode**  <br>*省略可能*|HTTP 状態コード。|integer|
@@ -721,7 +721,7 @@ Azure Machine Learning デプロイのインスタンスです。
 Auzre Machine Learning のイメージです。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**computeResourceId**  <br>*省略可能*|Machine Learning のコンピューティング リソースで作成された環境の ID|string|
 |**createdTime**  <br>*省略可能*|イメージの作成時刻 (UTC)|String (日時)|
@@ -742,7 +742,7 @@ Auzre Machine Learning のイメージです。
 Auzre Machine Learning イメージを作成するための要求です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**computeResourceId**  <br>*必須*|Machine Learning のコンピューティング リソースで作成された環境の ID|string|
 |**description**  <br>*省略可能*|イメージの説明のテキスト|string|
@@ -763,7 +763,7 @@ Auzre Machine Learning イメージを作成するための要求です。
 Azure Machine Learning のマニフェストです。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**assets**  <br>*必須*|資産の一覧|<[Asset](#asset)> 配列|
 |**createdTime**  <br>*省略可能*  <br>*読み取り専用*|マニフェストの作成時刻 (UTC)|String (日時)|
@@ -783,7 +783,7 @@ Azure Machine Learning のマニフェストです。
 Azure Machine Learning モデルのインスタンスです。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**createdAt**  <br>*省略可能*  <br>*読み取り専用*|モデルの作成時刻 (UTC)|String (日時)|
 |**description**  <br>*省略可能*|モデルの説明のテキスト|string|
@@ -801,7 +801,7 @@ Azure Machine Learning モデルのインスタンスです。
 モデル データ コレクションの情報です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**eventHubEnabled**  <br>*省略可能*|サービスのイベント ハブを有効にします。|boolean|
 |**storageEnabled**  <br>*省略可能*|サービスのストレージを有効にします。|boolean|
@@ -812,7 +812,7 @@ Azure Machine Learning モデルのインスタンスです。
 改ページ調整されたイメージ一覧です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|string|
 |**値**  <br>*省略可能*|モデル オブジェクトの配列|<[Image](#image)> 配列|
@@ -823,7 +823,7 @@ Azure Machine Learning モデルのインスタンスです。
 改ページ調整されたマニフェスト一覧です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|string|
 |**値**  <br>*省略可能*|マニフェスト オブジェクトの配列|<[Manifest](#manifest)> 配列|
@@ -834,7 +834,7 @@ Azure Machine Learning モデルのインスタンスです。
 改ページ調整されたモデル一覧です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|string|
 |**値**  <br>*省略可能*|モデル オブジェクトの配列|<[Model](#model)> 配列|
@@ -845,7 +845,7 @@ Azure Machine Learning モデルのインスタンスです。
 改ページ調整されたサービスの一覧です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**nextLink**  <br>*省略可能*|一覧にある結果の次のページへの継続リンク (絶対 URI)|string|
 |**値**  <br>*省略可能*|サービス オブジェクトの配列|<[ServiceResponse](#serviceresponse)> 配列|
@@ -856,7 +856,7 @@ Azure Machine Learning モデルのインスタンスです。
 サービスを作成するための要求です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**appInsightsEnabled**  <br>*省略可能*|サービスの Application Insights を有効にします。|boolean|
 |**autoScaler**  <br>*省略可能*||[AutoScaler](#autoscaler)|
@@ -874,7 +874,7 @@ Azure Machine Learning モデルのインスタンスです。
 サービスのキーを再生成する要求です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**keyType**  <br>*省略可能*|再生成するキーを指定します。|列挙型 (プライマリ、セカンダリ)|
 
@@ -884,7 +884,7 @@ Azure Machine Learning モデルのインスタンスです。
 サービスの詳細な状態です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**createdAt**  <br>*省略可能*|サービスの作成時刻 (UTC)|String (日時)|
 |**ID**  <br>*省略可能*|サービス ID|string|
@@ -910,7 +910,7 @@ Azure Machine Learning モデルのインスタンスです。
 サービスを更新するための要求です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**appInsightsEnabled**  <br>*省略可能*|サービスの Application Insights を有効にします。|boolean|
 |**autoScaler**  <br>*省略可能*||[AutoScaler](#autoscaler)|
@@ -926,7 +926,7 @@ Azure Machine Learning モデルのインスタンスです。
 ターゲット ランタイムの型です。
 
 
-|名前|Description|スキーマ|
+|名前|説明|スキーマ|
 |---|---|---|
 |**properties**  <br>*必須*||<string, string> マップ|
 |**runtimeType**  <br>*必須*|ランタイムを指定します。|列挙型 (SparkPython、Python)|

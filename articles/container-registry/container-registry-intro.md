@@ -2,25 +2,18 @@
 title: "Azure のプライベート Docker コンテナー レジストリ"
 description: "クラウド ベースの管理されたプライベート Docker レジストリを提供する Azure Container Registry サービスの紹介です。"
 services: container-registry
-documentationcenter: 
 author: stevelas
-manager: balans
-editor: mmacy
-tags: 
-keywords: 
-ms.assetid: ee2b652b-fb7c-455b-8275-b8d4d08ffeb3
+manager: timlt
 ms.service: container-registry
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: overview
 ms.date: 10/13/2017
 ms.author: stevelas
-ms.openlocfilehash: d54caa45078221cdbe091649cb3fe3b65eaa47e8
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.custom: mvc
+ms.openlocfilehash: e4bca1cc09d115cf0b1b13f7675645ef1ef5ec53
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 

@@ -19,7 +19,7 @@ VNet は、VM の作成前と作成時に作成できます。 VM との通信�
 
 [ネットワーク インターフェイス (NIC)](../articles/virtual-network/virtual-network-network-interface.md) とは、VM と仮想ネットワーク (VNet) の間の相互接続です。 VM には少なくとも 1 つの NIC が必要ですが、作成する VM のサイズによっては複数あってもかまいません。 [Windows](../articles/virtual-machines/windows/sizes.md) または [Linux](../articles/virtual-machines/linux/sizes.md) の各 VM サイズでサポートされている NIC の数について確認してください。
 
-複数の NIC を持つ VM を作成し、VM のライフサイクルを通じて NIC を追加または削除することができます。 複数の NIC を使用すると、VM を異なるサブネットに接続し、最も適切なインターフェイスでトラフィックを送受信できます。 [Windows](../articles/virtual-machines/windows/multiple-nics.md) または [Linux](../articles/virtual-machines/linux/multiple-nics.md) VM で複数の NIC を使用する方法の詳細を確認してください。
+複数の NIC を持つ VM を作成し、VM のライフサイクルを通じて NIC を追加または削除することができます。 複数の NIC を使用すると、VM を異なるサブネットに接続し、最も適切なインターフェイスでトラフィックを送受信できます。
 
 VM が可用性セットに追加された場合、可用性セット内のすべての VM に、1 つまたは複数の NIC が存在する必要があります。 複数の NIC がある VM は、NIC の数は同じでなくてもかまいませんが、少なくとも 2 つの NIC を備えている必要があります。
 
@@ -30,8 +30,8 @@ VM に接続された各 NIC は、VM と同じ場所およびサブスクリプ
 | メソッド | 説明 |
 | ------ | ----------- |
 | Azure ポータル | Azure Portal で VM を作成する場合、ネットワーク インターフェイスは自動的に作成されます (別個に作成する NIC は使用できません)。 ポータルで作成されるのは、NIC を 1 つだけ備えた VM です。 複数の NIC を備えた VM を作成したい場合は、別の方法で作成する必要があります。 |
-| [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) | 以前作成したパブリック IP アドレスの識別子を **-PublicIpAddressId** パラメーターで指定して、[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を実行します。 |
-| [Azure CLI](../articles/virtual-network/virtual-network-deploy-multinic-arm-cli.md) | 以前作成したパブリック IP アドレスの識別子を指定するために、**--public-ip-address** パラメーターを使用して [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) を実行します。 |
+| [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | 以前作成したパブリック IP アドレスの識別子を **-PublicIpAddressId** パラメーターで指定して、[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を実行します。 |
+| [Azure CLI](../articles/virtual-machines/linux/multiple-nics.md) | 以前作成したパブリック IP アドレスの識別子を指定するために、**--public-ip-address** パラメーターを使用して [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) を実行します。 |
 | [テンプレート](../articles/virtual-network/virtual-network-deploy-multinic-arm-template.md) | テンプレートを使用したネットワーク インターフェイスのデプロイのガイドとして、「[Network Interface in a Virtual Network with Public IP Address (パブリック IP アドレスを使用した仮想ネットワークのネットワーク インターフェイス)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)」を使用してください。 |
 
 ## <a name="ip-addresses"></a>IP アドレス 

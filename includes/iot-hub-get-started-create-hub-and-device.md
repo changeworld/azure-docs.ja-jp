@@ -1,33 +1,14 @@
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-1. [Azure Portal](https://portal.azure.com/) で **[新規]** > **[モノのインターネット (IoT)]** > **[IoT Hub]** の順にクリックします。
+[!INCLUDE [iot-hub-create-hub](iot-hub-create-hub.md)]
 
-   ![Azure Portal で IoT ハブを作成する](../articles/iot-hub/media/iot-hub-create-hub-and-device/1_create-azure-iot-hub-portal.png)
-2. **[IoT Hub]** ウィンドウで、IoT Hub のために以下の情報を入力します。
+IoT Hub を作成したら、その IoT Hub にデバイスとアプリケーションを接続するために必要な重要な情報を把握します。 
 
-     **[名前]**: IoT ハブの名前を入力します。 入力した名前が有効である場合は、緑色のチェック マークが表示されます。
-
-     **[価格とスケールティア]**: **[F1 - Free]** レベルを選択します。 このデモでは、このオプションで十分です。 詳細については、[料金とスケール レベル](https://azure.microsoft.com/pricing/details/iot-hub/)に関するページを参照してください。
-
-     **[リソース グループ]**: IoT Hub をホストするリソース グループを作成するか、既存のリソース グループを使用します。 詳細については、[リソース グループを使用した Azure リソースの管理](../articles/azure-resource-manager/resource-group-portal.md)に関するページを参照してください。
-
-     **[場所]**: IoT Hub が作成される場所に最も近い場所を選択します。
-
-     **[ダッシュボードにピン留めする]**: ダッシュボードから IoT Hub に簡単にアクセスできるようにするには、このオプションをオンにします。
-
-   ![情報を入力して IoT ハブを作成する](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
-
-   [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
-
-3. **Create** をクリックしてください。 IoT ハブの作成には数分かかることがあります。 **[通知]** ウィンドウで進行状況を確認できます。
-
-   ![IoT ハブの進捗状況の通知を見る](../articles/iot-hub/media/iot-hub-create-hub-and-device/3_notification-azure-iot-hub-creation-progress-portal.png)
-
-4. IoT ハブが作成されたら、ダッシュボードでその IoT ハブをクリックします。 **ホスト名**をメモして、**[共有アクセス ポリシー]** をクリックします。
+1. IoT ハブが作成されたら、ダッシュボードでその IoT ハブをクリックします。 **ホスト名**をメモして、**[共有アクセス ポリシー]** をクリックします。
 
    ![IoT Hub のホスト名を取得する](../articles/iot-hub/media/iot-hub-create-hub-and-device/4_get-azure-iot-hub-hostname-portal.png)
 
-5. **[共有アクセス ポリシー]** ウィンドウで、**[iothubowner]** ポリシーをクリックし、IoT Hub の **[接続文字列]** をコピーしてメモしておきます。 詳細については、「[IoT Hub へのアクセスの制御](../articles/iot-hub/iot-hub-devguide-security.md)」を参照してください。
+1. **[共有アクセス ポリシー]** ウィンドウで、**[iothubowner]** ポリシーをクリックし、IoT Hub の **[接続文字列]** をコピーしてメモしておきます。 詳細については、「[IoT Hub へのアクセスの制御](../articles/iot-hub/iot-hub-devguide-security.md)」を参照してください。
 
 > [!NOTE] 
 このセットアップ チュートリアルでは、この iothubowner 接続文字列は必要ありません。 ただし、このセットアップの完了後、異なる IoT シナリオの一部のチュートリアルでは必要になる場合があります。
@@ -53,7 +34,7 @@
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-4. [ **Save**] をクリックします。
+4. **[Save]** をクリックします。
 5. デバイスが作成された後、**デバイス エクスプローラー** ウィンドウでデバイスを開きます。
 6. 接続文字列の主キーをメモします。
 
