@@ -14,13 +14,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 11/29/2017
 ms.author: daleche
-ms.openlocfilehash: dda284b45e2e8a35a7228d77afef0ad058c8ea42
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1db0dee597ffe60c587e7bacd00640a308d04e99
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止
 この記事では、クライアント アプリケーションが Azure SQL Database とやり取りする際に発生する接続エラーと一時エラーを防止、トラブルシューティング、診断、軽減する方法について説明します。 再試行ロジックの構成方法、接続文字列の作成方法、およびその他の接続設定の調整方法について説明します。
@@ -40,16 +40,17 @@ ms.lasthandoff: 11/04/2017
 * **接続試行中に一時エラーが発生した場合**: 数秒待ってから接続を再試行する必要があります。
 * **SQL クエリ コマンドの実行中に一時エラーが発生した場合**: そのコマンドをすぐに再試行することは避けてください。 ある程度の時間差を伴って接続が新たに確立されます。 その後でコマンドを再試行してください。
 
+
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
 
-### <a name="retry-logic-for-transient-errors"></a>一時エラーの再試行ロジック
+## <a name="retry-logic-for-transient-errors"></a>一時エラーの再試行ロジック
 一時エラーが多少なりとも生じるクライアント プログラムは、再試行ロジックを組み込むことで堅牢性を高めることができます。
 
 Azure SQL Database との通信にサード パーティのミドルウェアを使用する場合、一時エラーに対する再試行ロジックがそのミドルウェアに備わっているかどうかをベンダーに確認してください。
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
-#### <a name="principles-for-retry"></a>再試行の原則
+### <a name="principles-for-retry"></a>再試行の原則
 * エラーが一時エラーである場合、再度、接続を開いてみる。
 * 一時エラーで失敗した SQL SELECT ステートメントをそのまま再試行することはしない。
   
@@ -58,30 +59,31 @@ Azure SQL Database との通信にサード パーティのミドルウェアを
   
   * データベース トランザクション全体が完了するかトランザクション全体がロールバックされたことを再試行ロジックで確認する必要があります。
 
-#### <a name="other-considerations-for-retry"></a>再試行に関するその他の注意点
+### <a name="other-considerations-for-retry"></a>再試行に関するその他の注意点
 * 業務終了時刻に自動的に起動されて翌朝にかけて完了するようなバッチ プログラムは、再試行間隔をある程度長めにしても問題ありません。
 * 人間の心理として、待ち時間があまり長いと途中でキャンセルされる可能性があります。ユーザー インターフェイス プログラムはその点を考慮するようにしてください。
   
   * ただし、数秒おきに再試行するようなやり方は避けてください。そのような方法を用いると、大量の要求でシステムが処理しきれなくなる可能性があります。
 
-#### <a name="interval-increase-between-retries"></a>再試行の間隔を長くする
+### <a name="interval-increase-between-retries"></a>再試行の間隔を長くする
 最初に再試行する前に、5 秒間待つことをお勧めします。 5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。 再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
 
 ADO.NET を使用するクライアントの *ブロック期間* については、「 [SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 加えて、最大再試行回数を設定し、プログラムが自動的に終了するように配慮する必要があります。
 
-#### <a name="code-samples-with-retry-logic"></a>再試行ロジックを含んだコード サンプル
-さまざまなプログラミング言語での再試行ロジックが使われているコード サンプルは次のリンクからアクセスできます。
+### <a name="code-samples-with-retry-logic"></a>再試行ロジックを含んだコード サンプル
+再試行ロジックを含むコード サンプルについては次の記事をご覧ください。
 
-* [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
+- [ADO.NET を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [PHP を使用して SQL に弾性的に接続する][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
-#### <a name="test-your-retry-logic"></a>再試行ロジックのテスト
+### <a name="test-your-retry-logic"></a>再試行ロジックのテスト
 再試行ロジックをテストするには、プログラムの実行中に修復可能なエラーをシミュレートする (人為的に発生させる) 必要があります。
 
-##### <a name="test-by-disconnecting-from-the-network"></a>ネットワークから切断することによるテスト
+#### <a name="test-by-disconnecting-from-the-network"></a>ネットワークから切断することによるテスト
 再試行ロジックをテストする手段として、プログラムの実行中にクライアント コンピューターをネットワークから切断する方法が挙げられます。 次のエラーが発生します。
 
 * **SqlException.Number** = 11001
@@ -98,7 +100,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
    * **Console.ReadLine** メソッドか、[OK] ボタンを含むダイアログのいずれかを使用して、以降の実行を一時停止します。 コンピューターをネットワークに接続した後、ユーザーが Enter キーを押します。
 5. 再度接続を試みます。
 
-##### <a name="test-by-misspelling-the-database-name-when-connecting"></a>接続時に間違った綴りのデータベース名を使用することによるテスト
+#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>接続時に間違った綴りのデータベース名を使用することによるテスト
 意図的に間違ったユーザー名を使って初回接続を試みます。 次のエラーが発生します。
 
 * **SqlException.Number** = 18456
@@ -114,15 +116,15 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 4. ユーザー名から 'WRONG_' を削除します。
 5. 再度接続を試みます。
 
+
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
-### <a name="net-sqlconnection-parameters-for-connection-retry"></a>接続再試行用の .NET SqlConnection パラメーター
+## <a name="net-sqlconnection-parameters-for-connection-retry"></a>接続再試行用の .NET SqlConnection パラメーター
 .NET Framework クラスの **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから Azure SQL Database に接続する場合は、接続再試行機能を活用できるように .NET 4.6.1 以降 (または .NET Core) を使用してください。 この機能の詳細については [こちら](http://go.microsoft.com/fwlink/?linkid=393996)を参照してください。
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
-
 
 [接続文字列](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) を **SqlConnection** オブジェクト用に作成するときは、次のパラメーター間で値を調整する必要があります。
 
@@ -138,7 +140,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
-### <a name="connection-versus-command"></a>接続とコマンド
+## <a name="connection-versus-command"></a>接続とコマンド
 **ConnectRetryCount** パラメーターと **ConnectRetryInterval** パラメーターを使用すると、プログラムに制御を返すなど、プログラムへの通知や介入なしに、**SqlConnection** オブジェクトで接続操作を再試行できます。 再試行は次の状況で発生することがあります。
 
 * mySqlConnection.Open メソッドの呼び出し
@@ -146,8 +148,9 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 これには注意が必要です。 *クエリ* の実行中に一時エラーが発生した場合、 **SqlConnection** オブジェクトで接続操作が再試行されないため、クエリは再試行されません。 ただし、実行するクエリを送信する前に、 **SqlConnection** ですばやく接続が確認されます。 簡単なチェックで接続の問題が検出された場合、 **SqlConnection** で接続操作が再試行されます。 再試行に成功すると、実行するクエリが送信されます。
 
-#### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount をアプリケーションの再試行ロジックと組み合わせて使用する必要があるかどうか
+### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount をアプリケーションの再試行ロジックと組み合わせて使用する必要があるかどうか
 アプリケーションにカスタムの堅牢な再試行ロジックが組み込まれていると仮定します。 このロジックでは、接続操作が 4 回再試行されます。 **ConnectRetryInterval** と **ConnectRetryCount** = 3 を接続文字列に追加すると、再試行回数が 4 * 3 = 12 に増加します。 このように何回も再試行するのは、適切ではない可能性があります。
+
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
@@ -373,9 +376,7 @@ EntLib60 に関する情報は以下のリンクから入手できます。
 ### <a name="entlib60-istransient-method-source-code"></a>EntLib60 IsTransient メソッドのソース コード
 以下に示したのは、**SqlDatabaseTransientErrorDetectionStrategy** クラスの **IsTransient** メソッドの C# ソース コードです。 どのようなエラーが一過性で、再試行する価値があるかは、このソース コードを見るとはっきりわかります (2013 年 4 月時点)。
 
-このソース コードのコピーは、読みやすくするために、大部分の **コメント (//)** 行を省略しています。
-
-```
+```csharp
 public bool IsTransient(Exception ex)
 {
   if (ex != null)
@@ -444,6 +445,14 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>次のステップ
 * Azure SQL Database の他の一般的な接続の問題のトラブルシューティングについては、「 [Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md)」をご覧ください。
-* [SQL Server の接続プーリング (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
+* [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
+* [SQL Server の接続プーリング (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 * [*Retrying* は Apache 2.0 ライセンスで配布される汎用の再試行ライブラリです。**Python** で作成されています。対象を選ばず、再試行の動作を簡単に追加することができます。](https://pypi.python.org/pypi/retrying)
+
+
+<!-- Link references. -->
+
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+
+[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
 

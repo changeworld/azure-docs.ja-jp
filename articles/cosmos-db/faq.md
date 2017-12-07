@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 2f46fc37b9050b19b83685c97198c29a5ce46289
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 0f45468616884a6866bd95ef53acab71b4fed06c
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -194,9 +194,11 @@ Azure Cosmos DB Table API は [Azure Portal][azure-portal] で利用できます
 * Azure Cosmos DB Table API ではパフォーマンスを保証するために予約容量モデルが使われていますが、これは、テーブルが作成されると直ちに、たとえ容量が使われていない場合でも、容量に対して課金されることを意味します。 Azure Table Storage では、実際に使われた容量に対してのみ課金されます。 Table API では 99 パーセンタイルで 10 ミリ秒の読み取り SLA と 15 ミリ秒の書き込み SLA が提供されるのに対し、Azure Table Storage で提供される SLA が 10 秒であるのは、このためです。 ただし、その結果として、Table API のテーブルでは、要求が含まれない空のテーブルであっても、Azure Cosmos DB が提供する SLA でテーブルへの要求を処理できる容量を確保するためにコストがかかります。
 * Table API によって返されるクエリ結果は、Azure Table Storage のようなパーティション キー/行キーの順序にはなりません。
 * 行キーに許される最大長は 255 バイトです。
+* バッチが含むことができるのは最大 2 MB です。
 * CreateIfNotExist の呼び出しは、管理スロットルによって調整されます。管理スロットルは固定であり、RU によってカバーされる他のテーブル操作から独立しています。 つまり、多数の CreateIfNotExist を実行すると調整され、制限は RU によるものではないため、どうすることもできません。
 * CORS は現在サポートされていません。
 * Azure Table Storage のテーブル名は大文字小文字が区別されませんが、Azure Cosmos DB Table API では区別されます。
+* 現在、バイナリ フィールドなどのエンコード情報に対する Azure Cosmos DB の内部形式の一部は、それほど効率的ではありません。 そのため、データ サイズの予期しない制限が発生する可能性があります。 たとえば、現在、エンコードによってデータ サイズが増加するため、フル 1 メガのテーブル エンティティを使用してバイナリ データを格納することはできません。
 
 REST API に関しては、Azure Cosmos DB Table API によってサポートされないエンドポイント/クエリ オプションがいくつかあります
 | REST メソッド | REST エンドポイント/クエリ オプション | ドキュメントの URL | 説明 |

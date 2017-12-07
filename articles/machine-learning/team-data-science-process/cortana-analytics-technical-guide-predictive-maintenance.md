@@ -14,74 +14,79 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 03ae6245e83c1f26546ec2a33c74dc9519847d7b
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
-## <a name="important"></a>**重要**
-これは非推奨の記事です。 この説明は、当面の問題である航空宇宙業界における予測メンテナンスに関連します。ただし、最新情報については、[ビジネス ユーザー向けのソリューションの概要](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)に関するページをご覧ください。
+>[!Important]
+これは非推奨の記事です。 航空宇宙業界の予測メンテナンスに関する議論には今でも意義がありますが、最新情報については、[ビジネス ユーザー向けのソリューションの概要](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace)に関するページをご覧ください。
 
-## <a name="acknowledgements"></a>**謝辞**
-この記事は Microsoft のデータ サイエンティストである Yan Zhang、Gauher Shaheen、Fidan Boylu Uz とソフトウェア エンジニアの Dan Grecoe によって記述されました。
 
-## <a name="overview"></a>**概要**
-ソリューション テンプレートは、Cortana Intelligence Suite に基づいて、エンド ツー エンドのデモを構築するプロセスを促進するために設計されています。 デプロイされたテンプレートは、必要な Cortana Intelligence コンポーネントのサブスクリプションをプロビジョニングし、それらの関係を構築します。 また、ソリューション テンプレートのデプロイ後にローカル コンピューターにダウンロードし、インストールするデータ ジェネレーター アプリケーションから生成されたサンプル データをデータ パイプラインに入力します。 ジェネレーターから生成されたデータがデータ パイプラインに入力され、Machine Learning 予測の生成が開始されます。生成された Machine Learning 予測は Power BI ダッシュボードで視覚化されます。 デプロイ プロセスでは、ソリューション資格情報を設定するためのいくつかの手順を進みます。 デプロイ時に指定したソリューション名、ユーザー名、パスワードなどの資格情報を記録しておくようにしてください。  
+ソリューション テンプレートは、Cortana Intelligence Suite に基づいて、エンド ツー エンドのデモを構築するプロセスを促進するために設計されています。 デプロイされたテンプレートは、必要な Cortana Intelligence コンポーネントと共にサブスクリプションをプロビジョニングし、それらの関係を構築します。 さらに、データ ジェネレーター アプリケーションからのサンプル データでデータ パイプラインのシード処理を実行します。データ ジェネレーターは、ソリューション テンプレートのデプロイ後にローカル コンピューターにダウンロードしてインストールします。 ジェネレーターからのデータがデータ パイプラインに入力され、Machine Learning 予測の生成が開始されます。生成された Machine Learning 予測は Power BI ダッシュボードで視覚化されます。
 
-このドキュメントの目的は、参照アーキテクチャと、このソリューション テンプレートの一部としてサブスクリプション内でプロビジョニングされたコンポーネントについて説明し、サンプル データを独自のデータに置き換える方法と、ソリューション テンプレートを変更する方法について説明することです。  
+デプロイ プロセスでは、ソリューション資格情報を設定するためのいくつかの手順を進みます。 デプロイ時に指定したソリューション名、ユーザー名、パスワードなどの資格情報を記録しておくようにしてください。 
+
+
+この記事の目標を以下に示します。
+- サブスクリプション内にプロビジョニングされるリファレンス アーキテクチャとコンポーネントについて説明します。
+- サンプル データを独自のデータに置き換える方法を示します。 
+- ソリューション テンプレートを変更する方法を示します。  
 
 > [!TIP]
-> [このドキュメントの PDF バージョン](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)をダウンロードして、印刷できます。
+> [この記事の PDF バージョン](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)をダウンロードして印刷できます。
 > 
 > 
 
-## <a name="overview"></a>**概要**
+## <a name="overview"></a>概要
 ![予測的なメンテナンス アーキテクチャ](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
-ソリューションをデプロイすると、Cortana Analytics Suite 内のさまざまな Azure サービスがアクティブ化されます (イベント ハブ、Stream Analytics、HDInsight、データ ファクトリ、Machine Learning "*など*")。 上のアーキテクチャ図は、航空宇宙ソリューション テンプレートの予測メンテナンスの構築方法を示しています。 これらのサービスは Azure Portal で調査できます。その場合、ソリューションのデプロイで作成されたソリューション テンプレート図でサービスをクリックします (HDInsight は例外となります。このサービスは、関連するパイプライン アクティビティを実行し、後で削除するときにオンデマンドでプロビジョニングされます)。
+ソリューションをデプロイすると、Cortana Analytics Suite 内のさまざまな Azure サービスがアクティブ化されます (イベント ハブ、Stream Analytics、HDInsight、データ ファクトリ、Machine Learning など)。 上のアーキテクチャ図は、航空宇宙ソリューション テンプレートの予測メンテナンスの構築方法を示しています。 これらのサービスは Azure Portal で調査できます。その場合、ソリューションのデプロイで作成されたソリューション テンプレート図でサービスをクリックします (HDInsight は例外となります。このサービスは、関連するパイプライン アクティビティを実行し、後で削除するときにオンデマンドでプロビジョニングされます)。
 [図のフルサイズ バージョン](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)をダウンロードします。
 
 以下のセクションでは、ソリューションの構成要素について説明します。
 
-## <a name="data-source-and-ingestion"></a>**データ ソースと取り込み**
+## <a name="data-source-and-ingestion"></a>データ ソースと取り込み
 ### <a name="synthetic-data-source"></a>合成データソース
-このテンプレートでは、デプロイの成功後に、ローカルにダウンロードして実行するデスクトップ アプリケーションから、使用するデータ ソースが生成されます。 このアプリケーションをダウンロードしてインストールする手順については、ソリューション テンプレート図の予測メンテナンス データ ジェネレーターと呼ばれる最初のノードを選択すると、プロパティ バーに表示されます。 このアプリケーションは、[Azure Event Hub](#azure-event-hub) サービスに、ソリューション フローの残りで使用されるデータ ポイント、またはイベントを提供します。 このデータ ソースは、[Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) (ターボファン エンジンの劣化シミュレーション データ セット) を使用して、[NASA データ リポジトリ](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)で公開されているデータから得たものです。
+このテンプレートでは、デプロイの成功後にローカルにダウンロードして、実行するデスクトップ アプリケーションから、使用するデータ ソースが生成されます。
+
+このアプリケーションをダウンロードしてインストールする手順を確認するには、ソリューション テンプレート図の最初のノード (予測メンテナンス データ ジェネレーター) を選択します。 手順はプロパティ バーに表示されます。 このアプリケーションは、[Azure Event Hub](#azure-event-hub) サービスに、ソリューション フローの残りで使用されるデータ ポイント、またはイベントを提供します。 このデータ ソースは、[Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) (ターボファン エンジンの劣化シミュレーション データ セット) を使用して、[NASA データ リポジトリ](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)で公開されているデータから得たものです。
 
 イベント生成アプリケーションは、コンピューターで実行中の場合にのみ、Azure Event Hub にデータを入力します。
 
 ### <a name="azure-event-hub"></a>Azure Event Hub
 [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) サービスは、合成データ ソースによって提供される入力の受け取り側です。
 
-## <a name="data-preparation-and-analysis"></a>**データの準備と分析**
+## <a name="data-preparation-and-analysis"></a>データの準備と分析
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) サービスを使用して、[Azure Event Hub](#azure-event-hub) サービスからの入力ストリームをほぼリアルタイムで分析し、結果を [Power BI](https://powerbi.microsoft.com) ダッシュボードに公開するほか、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスで処理するために、未加工のすべての受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブできます。
+[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、[Azure イベント ハブ](#azure-event-hub) サービスから取得した入力ストリームをほぼリアルタイムで分析できます。 次に結果を [Power BI](https://powerbi.microsoft.com) ダッシュボード上に公開し、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスによって処理するために、すべての未加工の受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブします。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight カスタム集計
 HDInsight を使用して、(Azure Data Factory によって調整される) [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行し、Azure Stream Analytics サービスによってアーカイブされた未加工のイベントの集計を行います。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-(Azure Data Factory によって調整される) [Azure Machine Learning サービス](https://azure.microsoft.com/services/machine-learning/)を使用して、受け取った入力から、特定の航空機エンジンの残存耐用年数 (RUL) を予測します。 
+(Azure Data Factory によって調整される) [Azure Machine Learning サービス](https://azure.microsoft.com/services/machine-learning/)で受け取った入力を使用して、特定の航空機エンジンの残存耐用年数 (RUL) を予測します。 
 
-## <a name="data-publishing"></a>**データの公開**
-### <a name="azure-sql-database-service"></a>Azure SQL Database サービス
-[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) サービスを使用して、[Power BI](https://powerbi.microsoft.com) ダッシュボードで使用される Azure Machine Learning サービスが受け取った予測を格納します (Azure Data Factory によって管理されます)。
+## <a name="data-publishing"></a>データの公開
+### <a name="azure-sql-database"></a>Azure SQL Database
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) を使用して、Azure Machine Learning サービスが受け取った予測を格納します。予測は次に [Power BI](https://powerbi.microsoft.com) ダッシュボードで使用されます。
 
-## <a name="data-consumption"></a>**データの使用**
+## <a name="data-consumption"></a>データの使用
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) サービスを使用して、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) サービスによって提供される集計とアラートのほか、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) サービスを使用して生成され、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) に保存された RUL 予測が記載されたダッシュボードを表示します。
+[Power BI](https://powerbi.microsoft.com) を使用して、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) によって提供される集計とアラートのほか、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) を使用して生成され、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) に保存された RUL 予測が記載されたダッシュボードを表示します。
 
-## <a name="how-to-bring-in-your-own-data"></a>**独自のデータを取り込む方法**
+## <a name="how-to-bring-in-your-own-data"></a>独自のデータを取り込む方法
 このセクションでは、Azure に独自のデータを取り込む方法と、このアーキテクチャに取り込むデータに応じて変更が必要になる領域について説明します。
 
 データセットが、このソリューション テンプレートで使用されている [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) (ターボファン エンジンの劣化シミュレーション データ セット) によって使用されているデータセットに一致している可能性はほとんどありません。 自分のデータと要件を理解することは、独自のデータで動作するように、このテンプレートを変更する方法においてきわめて重要です。 
 
-以降のセクションでは、新しいデータセットを導入したときに変更が必要となるテンプレートのセクションについて説明します。
+以降のセクションでは、新しいデータセットを導入したときに変更が必要となるテンプレートの部分について説明します。
 
 ### <a name="azure-event-hub"></a>Azure Event Hub
-Azure Event Hub サービスは汎用的で、データを CSV または JSON 形式でハブに投稿できます。 Azure Event Hub では特別な処理は行われませんが、それに入力されるデータを理解することが重要です。
+Azure Event Hub は汎用的で、データを CSV または JSON 形式でハブに投稿できます。 Azure Event Hub では特別な処理は行われませんが、それに入力されるデータを理解することが重要です。
 
 このドキュメントでは、データを取り込む方法について説明しませんが、Event Hub API を使用して、イベントやデータを Azure Event Hub に簡単に送信できます。
 
@@ -142,7 +147,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 Azure Machine Learning の実験の作成方法については、「 [Predictive Maintenance: Step 1 of 3, data preparation and feature engineering (予測メンテナンス: ステップ 1/3、データの準備と特徴エンジニアリング)](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)」を参照してください。
 
-## <a name="monitor-progress"></a>**進行状況の監視**
+## <a name="monitor-progress"></a>進行状況の監視
 データ ジェネレーターを起動すると、データを取り込むパイプラインのデハイドレートが開始され、データ ファクトリによって発行されたコマンドに従ってソリューションのさまざまなコンポーネントがアクションを開始します。 パイプラインを監視する方法は 2 つあります。
 
 1. いずれかの Stream Analytics ジョブが、未加工の受信データを Blob Storage に書き込みます。 ソリューションが正常にデプロイされた画面からソリューションの Blob Storage コンポーネントをクリックし、右側のパネルの [開く] をクリックすると、[Azure Portal](https://portal.azure.com/) に移動します。 管理ポータルで、BLOB をクリックします。 次のパネルに、コンテナーの一覧が表示されます。 **maintenancesadata** をクリックします。 次のパネルに **rawdata** フォルダーが表示されます。 rawdata フォルダーの中に、hour=17、hour=18 などの名前の付いたフォルダーが表示されます。 これらのフォルダーの存在は、生データがコンピューター上に生成され、BLOB ストレージに格納されたことを示しています。 これらのフォルダーの中に、有限サイズ (MB 単位) の csv ファイルがあります。
@@ -152,7 +157,7 @@ Azure Machine Learning の実験の作成方法については、「 [Predictive
    
     ここで、[新しいクエリ] をクリックし、行数をクエリできます (例: select count(*) from PMResult)。 データベースが大きくなれば、テーブル内の行数も増加します。
 
-## <a name="power-bi-dashboard"></a>**Power BI ダッシュボード**
+## <a name="power-bi-dashboard"></a>Power BI ダッシュボード
 
 Power BI ダッシュボードを設定して、Azure Stream Analytics データ (ホット パス)や、Azure Machine Learning からのバッチ予測結果 (コールド パス) を視覚化します。
 
@@ -227,10 +232,10 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
    * 折れ線グラフの右上隅の **[ビジュアルをピン留めする]** アイコンをクリックします。 ダッシュボードを選択する [ダッシュボードにピン留めする] ウィンドウが表示されることがあります。 [Predictive Maintenance Demo] を選択し、[ピン留め] をクリックします。
    * ダッシュボードのこのタイルにマウス ポインターを置き、右上隅の [編集] アイコンをクリックし、そのタイトルを「Fleet View of Sensor 11 vs.Threshold 48.26」に変更し、サブタイトルを「Average across fleet over time」に変更します。
 
-## <a name="how-to-delete-your-solution"></a>**ソリューションを削除する方法**
-データ ジェネレーターはコストを上げるので、ソリューションを活発に使用していないときはデータ ジェネレーターを停止してください。 使用していない場合、ソリューションを削除してください。 ソリューションを削除すると、ソリューションのデプロイ時にサブスクリプションにプロビジョニングされたすべてのコンポーネントが削除されます。 ソリューションを削除するには、ソリューション テンプレートの左パネルでソリューション名をクリックし、[削除] をクリックします。
+## <a name="delete-your-solution"></a>ソリューションの削除
+データ ジェネレーターはコストを上げるので、ソリューションを活発に使用していないときはデータ ジェネレーターを停止してください。 使用していない場合、ソリューションを削除してください。 ソリューションを削除すると、ソリューションのデプロイ時にサブスクリプションにプロビジョニングされたすべてのコンポーネントが削除されます。 ソリューションを削除するには、ソリューション テンプレートの左パネルでソリューション名をクリックし、**[削除]** をクリックします。
 
-## <a name="cost-estimation-tools"></a>**コスト見積もりツール**
+## <a name="cost-estimation-tools"></a>コスト見積もりツール
 各自のサブスクリプションで航空宇宙ソリューション テンプレートの予測メンテナンスを実行する場合に関連する合計コストを詳しく知るために役立つ次の 2 つのツールがあります。
 
 * [Microsoft Azure 料金計算ツール (オンライン)](https://azure.microsoft.com/pricing/calculator/)

@@ -11,22 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2017
+ms.date: 11/28/2017
 ms.author: bwren
-ms.openlocfilehash: 38cb11befe844178572981abb29fe5439286dbc1
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 9c487ab33859ae453a0074ef0344f61de19c7b4d
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Azure Log Analytics の新しいクエリ言語への移行
 最近、Log Analytics は新しいクエリ言語を実装しました。  この記事は、従来のクエリ言語を使い慣れていて、ある程度のサポートが必要な方を対象に、Log Analytics のこの言語への移行を支援する内容となっています。
+
+## <a name="resources"></a>リソース
+
 
 ## <a name="language-converter"></a>言語コンバーター
 
 従来の Log Analytics クエリ言語を使用した経験がある場合、同じクエリを新しい言語で作成するには、ワークスペースを変換するときにログ検索ポータルにインストールされる言語コンバーターを使用するのが最も簡単です。  コンバーターの使い方は簡単です。最上部のテキスト ボックスに従来のクエリを入力して **[変換]** をクリックするだけです。  クエリは、検索ボタンをクリックして実行できるほか、クエリをコピーして他の場所に貼り付けて使用することもできます。
 
 ![言語コンバーター](media/log-analytics-log-search-upgrade/language-converter.png)
+
+
+## <a name="resources"></a>リソース
+[Log Analytics クエリ言語のドキュメント サイト](https://docs.loganalytics.io)には、新しい言語を短時間で学習するために必要なすべてのリソースがあります。  これには、チュートリアル、例、完全な言語リファレンスが含まれます。
 
 
 ## <a name="cheat-sheet"></a>チート シート

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d43274875ca7ed3b2fe8a7d71481db27451a6080
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 8881fc9193aa905b5d7083644a3ce8ac4411d693
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 この FAQ では、Azure Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、よく寄せられる質問に回答します。 FAQ の内容は、サービス全般、課金モデル、ユーザー エクスペリエンス、トラブルシューティングに分けてまとめられています。
@@ -45,6 +45,22 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
 オプション フィールドを Multi-Factor Authentication Server で構成できます。
 
 認証データと共に、認証結果 (成功または拒否) と、拒否された場合はその理由が保存されます。 このデータは、認証と使用状況のレポートで確認できます。
+
+**ユーザーに SMS メッセージを送る際には、どの SMS ショート コードが使用されますか。**
+
+米国では、Microsoft は次の SMS ショート コードを使用します。
+
+   * 97671
+   * 69829
+   * 51789
+   * 99399
+
+カナダでは、Microsoft は次の SMS ショート コードを使用します。
+
+   * 759731 
+   * 673801
+
+Microsoft は、一貫した SMS や音声ベース Multi-Factor Authentication のプロンプトが同じ番号で配信されることを保証しません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国ではショート コードをサポートしていません
 
 ## <a name="billing"></a>課金
 課金に関するほとんどの疑問は、「[Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)」ページか「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」のドキュメントを参照することで解決します。

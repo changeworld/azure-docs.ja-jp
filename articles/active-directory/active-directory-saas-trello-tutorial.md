@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: d93667f16f2d72995e4a42e79e9125b8e3f6b07c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 598387b6066612c6c4a4c92cba5ba03e03a55203
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>チュートリアル: Azure Active Directory と Trello の統合
 
@@ -96,6 +96,10 @@ Trello で Azure AD のシングル サインオンを構成してテストす�
 
 このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、Trello アプリケーションでシングル サインオンを構成します。
 
+>[!NOTE]
+    >Trello から **\<enterprise\>** スラグを取得する必要があります。 スラグ値を取得していない場合は、[Trello サポート チーム](mailto:support@trello.com)に問い合わせて、自社のスラグを取得してください。
+    > 
+
 **Trello で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 1. Azure Portal の **Trello** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
@@ -112,17 +116,15 @@ Trello で Azure AD のシングル サインオンを構成してテストす�
 
     **[応答 URL]** ボックスに、`https://trello.com/auth/saml/consume/<enterprise>` のパターンを使用して URL を入力します。
 
-4. **SP 開始モード**でアプリケーションを構成する場合は、**[Trello のドメインと URL]** セクションで次の手順を実行します。
-    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
+4. **SP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
+
+  ![[シングル サインオンの構成]](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
 
     a. **[詳細な URL 設定の表示]** をクリックします。
 
-    b. **[サインオン URL]** ボックスに、`https://trello.com/auth/saml/consume/<enterprise>` のパターンを使用して URL を入力します。
+    b. **[サインオン URL]** ボックスに、`https://trello.com/auth/saml/login/<enterprise>` のパターンを使用して URL を入力します。
 
-    >[!NOTE]
-    >Trello から **\<enterprise\>** スラグを取得する必要があります。 スラグ値を取得していない場合は、[Trello サポート チーム](mailto:support@trello.com)に問い合わせて、自社のスラグを取得してください。
-    > 
+  c. **[識別子]** ボックスに、次の URL を入力します。`https://trello.com/auth/saml/metadata`
 
 5. Trello アプリケーションは SAML アサーションを使用し、特定の属性を含みます。 このアプリケーションには、次の属性を構成します。 これらの属性の値は、アプリケーションの **[ユーザー属性]** から管理できます。 次のスクリーンショットはその例です。
 

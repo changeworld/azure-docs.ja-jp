@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 11/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6a8024a12c4a79e92e37df0a56b6e6bd0cb6a8d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ed3da2d9730d8c30d8170ddf40fe4895dfa5dec
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>リソース クォータのエラーを解決する
 
@@ -51,7 +51,7 @@ please delete some resources of this type before creating a new one.
 
 ### <a name="solution-1"></a>解決策 1
 
-Azure CLI で、`az vm list-usage` コマンドを使用して仮想マシンのクォータを検索します。
+Azure CLI で、`az vm list-usage` コマンドを使用して仮想マシン クォータを検索します。
 
 ```azurecli
 az vm list-usage --location "South Central US"
@@ -75,7 +75,7 @@ az vm list-usage --location "South Central US"
 
 ### <a name="solution-2"></a>解決策 2
 
-PowerShell で、**Get-AzureRmVMUsage** コマンドを使用して仮想マシンのクォータを検索します。
+PowerShell で、**Get-AzureRmVMUsage** コマンドを使用して仮想マシン クォータを検索します。
 
 ```powershell
 Get-AzureRmVMUsage -Location "South Central US"
@@ -93,9 +93,29 @@ Virtual Machines                             0 10000 Count
 
 ### <a name="solution-3"></a>解決策 3
 
-クォータ制限を増やす必要がある場合は、ポータルに移動し、ファイルをデプロイするリージョンのクォータを増加させるように、サポートに問題を報告してください。
+クォータの引き上げを依頼するには、ポータルに移動し、サポート案件を提出します。 サポート案件で、デプロイするリージョンのクォータの引き上げを依頼します。
 
 > [!NOTE]
 > リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。 米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。 アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 の Resource Manager コアを要求する必要があります。
 >
 >
+
+1. **[サブスクリプション]** を選択します。
+
+   ![サブスクリプション](./media/resource-manager-quota-errors/subscriptions.png)
+
+2. クォータの追加が必要なサブスクリプションを選択します。
+
+   ![サブスクリプションを選択します。](./media/resource-manager-quota-errors/select-subscription.png)
+
+3. **[使用量 + クォータ]** を選択します。
+
+   ![使用量とクォータを選択します。](./media/resource-manager-quota-errors/select-usage-quotas.png)
+
+4. 右上の **[引き上げを依頼する]** を選択します。
+
+   ![引き上げを依頼する](./media/resource-manager-quota-errors/request-increase.png)
+
+5. フォームに引き上げが必要なクォータの種類を入力します。
+
+   ![フォームに入力する](./media/resource-manager-quota-errors/forms.png)

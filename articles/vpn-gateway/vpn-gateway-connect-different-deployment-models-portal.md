@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2017
+ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2100b2b8710207ddb5d1848f11f4d6133f1dfd91
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -49,7 +49,9 @@ ms.lasthandoff: 10/26/2017
 
 VNet name = ClassicVNet <br>
 Address space = 10.0.0.0/24 <br>
-Subnet-1 = 10.0.0.0/27 <br>
+サブネット名 = Subnet-1 <br>
+サブネットのアドレス範囲 = 10.0.0.0/27 <br>
+サブスクリプション = 使用するサブスクリプション <br>
 Resource Group = ClassicRG <br>
 Location = West US <br>
 GatewaySubnet = 10.0.0.32/28 <br>
@@ -59,18 +61,20 @@ Local site = RMVNetLocal <br>
 
 VNet name = RMVNet <br>
 Address space = 192.168.0.0/16 <br>
-Subnet-1 = 192.168.1.0/24 <br>
-GatewaySubnet = 192.168.0.0/26 <br>
 Resource Group = RG1 <br>
 Location = East US <br>
+サブネット名 = Subnet-1 <br>
+アドレス範囲 = 192.168.1.0/24 <br>
+GatewaySubnet = 192.168.0.0/26 <br>
 Virtual network gateway name = RMGateway <br>
 Gateway type = VPN <br>
 VPN type = Route-based <br>
-Gateway Public IP address name = rmgwpip <br>
-Local network gateway = ClassicVNetLocal <br>
+SKU = VpnGw1 <br>
+Location = East US <br>
+仮想ネットワーク = RMVNet <br> (VPN ゲートウェイをこの VNet に関連付ける) 最初の IP 構成 = rmgwpip <br> (ゲートウェイ パブリック IP アドレス) ローカル ネットワーク ゲートウェイ = ClassicVNetLocal <br>
 Connection name = RMtoClassic
 
-### <a name="connection-overview"></a>接続の概要
+### <a name="connectoverview"></a>接続の概要
 
 この構成では、仮想ネットワーク間で IPsec/IKE VPN トンネルを介した VPN Gateway 接続を作成します。 VNet のアドレス範囲が、互いに重複していないこと、または接続先のすべてのローカル ネットワークと重複していないことを確認します。
 
@@ -83,82 +87,104 @@ Connection name = RMtoClassic
 
 ## <a name="classicvnet"></a>セクション 1 - クラシック VNet 設定を構成する
 
-このセクションでは、クラシック VNet のローカル ネットワーク (ローカル サイト) と仮想ネットワーク ゲートウェイを作成します。 クラシック VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)と上記の設定[例](#values)の値を使用して VNet を作成できます。
+このセクションでは、クラシック VNet、ローカル ネットワーク (ローカル サイト)、および仮想ネットワーク ゲートウェイを作成します。 スクリーンショットは例として示されています。 例の値を実際の値で置き換えるか、[例](#values)の値を使用してください。
 
-ポータルを使ってクラシック仮想ネットワークを作成するときは、以下の手順を使って仮想ネットワーク ページに移動する必要があります。そうしないと、クラシック仮想ネットワークを作成するオプションが表示されません。
+### 1.<a name="classicvnet">クラシック VNet の作成</a>
 
-1. [+] をクリックして [新規作成] ページを開きます。
-2. [Marketplace を検索] フィールドに「仮想ネットワーク」と入力します。 代わりに、[ネットワーク] -> [仮想ネットワーク] を選ぶと、クラシック VNet を作成するオプションが表示されません。
-3. 検索結果の一覧から "仮想ネットワーク" を探してクリックし、[仮想ネットワーク] ページを開きます。 
-4. [仮想ネットワーク] ページで、[クラシック] を選んでクラシック VNet を作成します。 
+クラシック VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)と上記の設定[例](#values)の値を使用して VNet を作成できます。
 
-VPN Gateway と共に VNet を既に使用している場合、そのゲートウェイが動的であることを確認してください。 静的である場合、まず、その VPN Gateway を削除してから進む必要があります。
+VPN Gateway と共に VNet を既に使用している場合、そのゲートウェイが動的であることを確認してください。 静的である場合は、まず VPN ゲートウェイを削除してから、「[ローカル サイトの構成](#local)」に進む必要があります。
 
-スクリーンショットは例として示されています。 例の値を実際の値で置き換えるか、[例](#values)の値を使用してください。
+1. [Azure Portal](https://ms.portal.azure.com) を開き、Azure アカウントでサインインします。
+2. **[+ リソースの作成]** をクリックして、"新しい" ページを開きます。
+3. [Marketplace を検索] フィールドに「仮想ネットワーク」と入力します。 代わりに、[ネットワーク] -> [仮想ネットワーク] を選ぶと、クラシック VNet を作成するオプションが表示されません。
+4. 検索結果の一覧から "仮想ネットワーク" を探してクリックし、[仮想ネットワーク] ページを開きます。 
+5. [仮想ネットワーク] ページで、[クラシック] を選んでクラシック VNet を作成します。 ここで既定値を使用すると、Resource Manager VNet が作成されます。
 
-### 1.<a name="local"></a>ローカル サイトの構成
-
-[Azure Portal](https://ms.portal.azure.com) を開き、Azure アカウントでサインインします。
+### 2.<a name="local"></a>ローカル サイトの構成
 
 1. **[すべてのリソース]** に移動し、リスト内で **ClassicVNet** を見つけます。
-2. **[概要]** ページの **[VPN 接続]** セクションで、**[ゲートウェイ]** のグラフィックをクリックしてゲートウェイを作成します。
-
-    ![VPN Gateway を構成する](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN Gateway を構成する")
+2. **[概要]** ページの **[VPN 接続]** セクションで、**[ゲートウェイ]** をクリックしてゲートウェイを作成します。
+  ![VPN Gateway を構成する](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN Gateway を構成する")
 3. **[新しい VPN 接続]** ページの **[接続の種類]** で、**[サイト対サイト]** を選びます。
 4. **[ローカル サイト]** で、**[必要な設定の構成]** をクリックします。 これにより、**[ローカル サイト]** ページが開きます。
 5. **[ローカル サイト]** ページで、Resource Manager の VNet を参照するための名前を作成します。 たとえば、「RMVNetLocal」などにします。
 6. Resource Manager VNet の VPN Gateway にパブリック IP アドレスが既にある場合は、**[VPN ゲートウェイの IP アドレス]** フィールドでその値を使います。 これらの手順を演習として実行しているか、Resource Manager VNet の仮想ネットワーク ゲートウェイがまだない場合、プレースホルダー IP アドレスを作成できます。 プレースホルダー IP アドレスで有効な形式が使われていることを確認します。 後で、プレースホルダー IP アドレスを、Resource Manager 仮想ネットワーク ゲートウェイのパブリック IP アドレスで置き換えます。
-7. **[Client Address Space (クライアント アドレス空間)]** に対しては、Resource Manager VNet の仮想ネットワーク IP アドレス空間の値を使います。 この設定を使用して、Resource Manager 仮想ネットワークにルーティングするアドレス空間を指定します。
+7. **[クライアント アドレス空間]** に対しては、Resource Manager VNet の仮想ネットワーク IP アドレス空間の[値](#connectoverview)を使います。 この設定を使用して、Resource Manager 仮想ネットワークにルーティングするアドレス空間を指定します。 この例では、RMVNet のアドレス範囲である 192.168.0.0/16 を使用します。
 8. **[OK]** をクリックして値を保存し、**[新しい VPN 接続]** ページに戻ります。
 
-### <a name="classicgw"></a>2.仮想ネットワーク ゲートウェイを作成する
+### <a name="classicgw"></a>3.仮想ネットワーク ゲートウェイを作成する
 
-1. **[新しい VPN 接続]** ページで、**[ゲートウェイをすぐに作成する]** チェック ボックスをオンにし、**[ゲートウェイの構成 (オプション)]** をクリックして **[ゲートウェイの構成]** ページを開きます。 
+1. **[新しい VPN 接続]** ページで、**[ゲートウェイをすぐに作成する]** チェック ボックスをオンにします。
+2. **[ゲートウェイの構成 (オプション)]** をクリックして、**[ゲートウェイの構成]** ページを開きます。
 
-    ![[ゲートウェイの構成] ページを開く](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[ゲートウェイの構成] ページを開く")
-2. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet** で既に構成されています。
-3. **[アドレス範囲]** は、ゲートウェイ サブネットの範囲を示します。 /29 アドレス範囲 (3 アドレス) でゲートウェイ サブネットを作成することもできますが、さらに多くの IP アドレスを含むゲートウエイ サブネットを作成することをお勧めします。 これにより、将来の構成でさらに多くの IP アドレスが必要になった場合にも対応できるようになります。 可能であれば、/27 または /28 を使います。 これらの手順を演習として使用している場合は、[例](#values)の値を参照してください。 **[OK]** をクリックして、ゲートウェイ サブネットを作成します。
-4. **[ゲートウェイの構成]** ページの **[サイズ]** は、ゲートウェイの SKU を示します。 VPN Gateway のゲートウェイ SKU を選びます。
-5. **[ルーティングの種類]** が **[動的]** であることを確認した後、**[OK]** をクリックして **[新しい VPN 接続]** ページに戻ります。
-6. **[新しい VPN 接続]** ページで、**[OK]** をクリックして VPN Gateway の作成を開始します。 VPN Gateway の作成を完了するまでに、最大 45 分かかることがあります。
+  ![[ゲートウェイの構成] ページを開く](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[ゲートウェイの構成] ページを開く")
+3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet** で既に構成されています。
+4. **[アドレス範囲]** は、ゲートウェイ サブネットの範囲を示します。 /29 アドレス範囲 (3 アドレス) でゲートウェイ サブネットを作成することもできますが、さらに多くの IP アドレスを含むゲートウエイ サブネットを作成することをお勧めします。 これにより、将来の構成でさらに多くの IP アドレスが必要になった場合にも対応できるようになります。 可能であれば、/27 または /28 を使います。 これらの手順を演習として使用している場合は、[例の値](#values)を参照してください。 この例では、10.0.0.32/28 を使用します。 **[OK]** をクリックして、ゲートウェイ サブネットを作成します。
+5. **[ゲートウェイの構成]** ページの **[サイズ]** は、ゲートウェイの SKU を示します。 VPN Gateway のゲートウェイ SKU を選びます。
+6. **[ルーティングの種類]** が **[動的]** であることを確認した後、**[OK]** をクリックして **[新しい VPN 接続]** ページに戻ります。
+7. **[新しい VPN 接続]** ページで、**[OK]** をクリックして VPN Gateway の作成を開始します。 VPN Gateway の作成を完了するまでに、最大 45 分かかることがあります。
 
-### <a name="ip"></a>3.仮想ネットワーク ゲートウェイのパブリック IP アドレスをコピーする
+### <a name="ip"></a>4.仮想ネットワーク ゲートウェイのパブリック IP アドレスをコピーする
 
 仮想ネットワーク ゲートウェイが作成されると、ゲートウェイ IP アドレスを確認できます。 
 
 1. クラシック VNet に移動し、**[概要]** をクリックします。
-2. **[VPN 接続]** をクリックして、[VPN 接続] ページを開きます。 [VPN 接続] ページで、パブリック IP アドレスを確認できます。 これは、仮想ネットワーク ゲートウェイに割り当てられたパブリック IP アドレスです。 
-3. この IP アドレスを、書き留めるかコピーしておきます。 後で、Resource Manager ローカル ネットワーク ゲートウェイの構成を設定するときに使います。 ゲートウェイ接続の状態も見ることができます。 作成したローカル ネットワーク サイトが [接続中] になっていることに注意してください。 接続を作成すると、状態が変化します。
-4. ゲートウェイの IP アドレスをコピーした後、ページを閉じます。
+2. **[VPN 接続]** をクリックして、[VPN 接続] ページを開きます。 [VPN 接続] ページで、パブリック IP アドレスを確認できます。 これは、仮想ネットワーク ゲートウェイに割り当てられたパブリック IP アドレスです。 IP アドレスを書き留めておきます。 後で、Resource Manager ローカル ネットワーク ゲートウェイの構成を設定するときに使います。 
+3. ゲートウェイ接続の状態を見ることができます。 作成したローカル ネットワーク サイトが [接続中] になっていることに注意してください。 接続を作成すると、状態が変化します。 状態の表示を確認したらこのページを閉じます。
 
 ## <a name="rmvnet"></a>セクション 2 - Resource Manager の VNet の設定を構成する
 
-このセクションでは、仮想ネットワーク ゲートウェイと、Resource Manager の VNet 用のローカル ネットワーク ゲートウェイを作成します。 Resource Manager VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)と上記の設定[例](#values)の値を使用して VNet を作成できます。
+このセクションでは、仮想ネットワーク ゲートウェイと、Resource Manager の VNet 用のローカル ネットワーク ゲートウェイを作成します。 スクリーンショットは例として示されています。 例の値を実際の値で置き換えるか、[例](#values)の値を使用してください。
 
-スクリーンショットは例として示されています。 例の値を実際の値で置き換えるか、[例](#values)の値を使用してください。
+### <a name="1-create-a-virtual-network"></a>1.仮想ネットワークの作成
 
-### <a name="1-create-a-gateway-subnet"></a>1.ゲートウェイ サブネットの作成
+**値の例:**
 
-仮想ネットワーク ゲートウェイを作成する前に、まずゲートウェイ サブネットを作成する必要があります。 CIDR カウント /28 以上 (/27、/26 など) で、ゲートウェイ サブネットを 作成します。
+* VNet name = RMVNet <br>
+* Address space = 192.168.0.0/16 <br>
+* Resource Group = RG1 <br>
+* Location = East US <br>
+* サブネット名 = Subnet-1 <br>
+* アドレス範囲 = 192.168.1.0/24 <br>
+
+
+Resource Manager VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)と例の値を使用して VNet を作成できます。
+
+### <a name="2-create-a-gateway-subnet"></a>2.ゲートウェイ サブネットの作成
+
+**例の値:** GatewaySubnet = 192.168.0.0/26
+
+仮想ネットワーク ゲートウェイを作成する前に、まずゲートウェイ サブネットを作成する必要があります。 CIDR カウント /28 以上 (/27、/26 など) で、ゲートウェイ サブネットを作成します。 練習としてこれを作成している場合、例の値を使用できます。
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-### <a name="creategw"></a>2.仮想ネットワーク ゲートウェイの作成
+### <a name="creategw"></a>3.仮想ネットワーク ゲートウェイの作成
+
+**値の例:**
+
+* Virtual network gateway name = RMGateway <br>
+* Gateway type = VPN <br>
+* VPN type = Route-based <br>
+* SKU = VpnGw1 <br>
+* Location = East US <br>
+* 仮想ネットワーク = RMVNet <br>
+* 最初の IP構成 = rmgwpip <br>
 
 [!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-### <a name="createlng"></a>3.ローカル ネットワーク ゲートウェイの作成
+### <a name="createlng"></a>4.ローカル ネットワーク ゲートウェイの作成
 
-ローカル ネットワーク ゲートウェイでは、クラシック VNet およびその仮想ネットワーク ゲートウェイに関連付けられているアドレス範囲とパブリック IP アドレスを指定します。
+**例の値:** ローカル ネットワーク ゲートウェイ = ClassicVNetLocal
 
-これらの手順を演習として実行している場合、次の設定を参照してください。
-
-| 仮想ネットワーク | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |ゲートウェイのパブリック IP アドレス|
+| Virtual Network | アドレス空間 | リージョン | ローカル ネットワーク サイトへの接続 |ゲートウェイのパブリック IP アドレス|
 |:--- |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |米国西部 | RMVNetLocal (192.168.0.0/16) |ClassicVNet ゲートウェイに割り当てられているパブリック IP アドレス|
 | RMVNet | (192.168.0.0/16) |米国東部 |ClassicVNetLocal (10.0.0.0/24) |RMVNet ゲートウェイに割り当てられているパブリック IP アドレス|
+
+ローカル ネットワーク ゲートウェイでは、クラシック VNet およびその仮想ネットワーク ゲートウェイに関連付けられているアドレス範囲とパブリック IP アドレスを指定します。 これらの手順を演習として実行している場合、例の値を参照してください。
 
 [!INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 

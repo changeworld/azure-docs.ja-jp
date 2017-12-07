@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: cfb6758703ebf3ce0458a4e1ad74324a4ccc2ece
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 822abf5cd09a0cd0d66441acfe4ae114c6ba73eb
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/13/2017
 
 このサンプルでは、[Twilio](https://www.twilio.com/) サービスを使って、携帯電話に SMS メッセージを送信します。 Azure Functions では [Twilio バインディング](https://docs.microsoft.com/azure/azure-functions/functions-bindings-twilio)により Twilio が既にサポートされており、サンプルではその機能を使います。
 
-最初に必要なものは Twilio アカウントです。 https://www.twilio.com/try-twilio にアクセスして無料で作成できます。 アカウントを作成したら、次の 3 つの**アプリ設定**をプロジェクトに追加します。
+最初に必要なものは Twilio アカウントです。 https://www.twilio.com/try-twilio にアクセスして無料で作成できます。 アカウントを作成したら、次の 3 つの**アプリ設定**を関数アプリに追加します。
 
 | アプリ設定の名前 | 値の説明 |
 | - | - |

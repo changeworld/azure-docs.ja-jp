@@ -8,18 +8,18 @@ editor: jasonwhowell
 manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/25/2017
-ms.openlocfilehash: 83830e4776eaa7c4f10bc14dcefd47c6eaf25997
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/27/2017
+ms.openlocfilehash: 289d1c4c0ffd2667c49c5625e72780d54a71ceb5
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する
 Azure Database for MySQL は、Secure Sockets Layer (SSL) を使用した、クライアント アプリケーションへの Azure Database for MySQL サーバーへの接続をサポートします。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
 
 ## <a name="step-1-obtain-ssl-certificate"></a>手順 1: SSL 証明書を取得する
-Azure Database for MySQL サーバーで SSL 経由で通信するために必要な証明書を [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) からダウンロードし、その証明書ファイルをローカル ドライブ (このチュートリアルでは c:\ssl を使用) に保存します。
+Azure Database for MySQL サーバーで SSL 経由で通信するために必要な証明書を [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) からダウンロードし、その証明書ファイルをローカル ドライブ (このチュートリアルでは例として c:\ssl を使用) に保存します。
 **Microsoft Internet Explorer と Microsoft Edge の場合:** ダウンロードが完了したら、証明書の名前を BaltimoreCyberTrustRoot.crt.pem に変更します。
 
 ## <a name="step-2-bind-ssl"></a>手順 2: SSL をバインドする
@@ -53,8 +53,9 @@ mysql> status
 
 ## <a name="sample-code"></a>サンプル コード
 アプリケーションから Azure Database for MySQL へのセキュリティで保護された接続を SSL 経由で確立するためには、次のコード サンプルを参照してください。
+
 ### <a name="php"></a>PHP
-```
+```php
 $conn = mysqli_init();
 mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/BaltimoreCyberTrustRoot.crt.pem", NULL, NULL) ; 
 mysqli_real_connect($conn, 'myserver4demo.mysql.database.azure.com', 'myadmin@myserver4demo', 'yourpassword', 'quickstartdb', 3306, MYSQLI_CLIENT_SSL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
@@ -63,7 +64,7 @@ die('Failed to connect to MySQL: '.mysqli_connect_error());
 }
 ```
 ### <a name="python-mysqlconnector-python"></a>Python (MySQLConnector Python)
-```
+```python
 try:
     conn=mysql.connector.connect(user='myadmin@myserver4demo', 
         password='yourpassword', 
@@ -74,7 +75,7 @@ except mysql.connector.Error as err:
     print(err)
 ```
 ### <a name="python-pymysql"></a>Python (PyMySQL)
-```
+```python
 conn = pymysql.connect(user = 'myadmin@myserver4demo', 
         password = 'yourpassword', 
         database = 'quickstartdb', 
@@ -82,7 +83,7 @@ conn = pymysql.connect(user = 'myadmin@myserver4demo',
         ssl = {'ssl': {'ca': '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'}})
 ```
 ### <a name="ruby"></a>Ruby
-```
+```ruby
 client = Mysql2::Client.new(
         :host     => 'myserver4demo.mysql.database.azure.com', 
         :username => 'myadmin@myserver4demo',      
@@ -92,7 +93,7 @@ client = Mysql2::Client.new(
     )
 ```
 ### <a name="golang"></a>Golang
-```
+```go
 rootCertPool := x509.NewCertPool()
 pem, _ := ioutil.ReadFile("/var/www/html/BaltimoreCyberTrustRoot.crt.pem")
 if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
@@ -104,7 +105,7 @@ connectionString = fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?allowNativePasswords=true&
 db, _ := sql.Open("mysql", connectionString)
 ```
 ### <a name="javajdbc"></a>JAVA(JDBC)
-```
+```java
 # generate truststore and keystore in code
 String importCert = " -import "+
     " -alias mysqlServerCACert "+
@@ -131,7 +132,7 @@ properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
 ### <a name="javamariadb"></a>JAVA(MariaDB)
-```
+```java
 # generate truststore and keystore in code
 String importCert = " -import "+
     " -alias mysqlServerCACert "+

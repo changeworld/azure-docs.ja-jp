@@ -10,13 +10,13 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 063232e40b30d03b0ee8b087a602fed0fee3be0a
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 588437af80ecf60b7c4b24dbf6bccc67fc33da7a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
@@ -44,9 +44,11 @@ ms.lasthandoff: 11/17/2017
 
 ### <a name="bindings"></a>バインド 
 
-ランタイム 1.x でサポートされている試験段階のバインドは、2.x では使用できません。 2.x でのバインドのサポートおよびその他の機能的な差異については、[ランタイム 2.0 の既知の問題](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues)に関するページを参照してください。
-
 ランタイム 2.x では、カスタム [バインド拡張](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)を作成できます。 この拡張モデルを使用する組み込みバインドは、2.x だけで使用できます。最初の組み込みバインドとして、[Microsoft Graph バインド](functions-bindings-microsoft-graph.md)などがあります。
+
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+2.x でのバインドのサポートおよびその他の機能的な差異については、[ランタイム 2.0 の既知の問題](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues)に関するページをご覧ください。
 
 ### <a name="cross-platform-development"></a>クロスプラットフォーム開発
 

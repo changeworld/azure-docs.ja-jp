@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions における Mobile Apps のバインド | Microsoft Docs"
+title: "Azure Functions における Mobile Apps のバインド"
 description: "Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
@@ -8,75 +8,44 @@ manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
-ms.assetid: faad1263-0fa5-41a9-964f-aecbc0be706a
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/31/2016
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: d2c0e4e233761584bad2df05a8e702e4fc77e84f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c29c43f88608760cc6d5f19f27f692c8448ebd9
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
-# <a name="azure-functions-mobile-apps-bindings"></a>Azure Functions における Mobile Apps のバインド
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+# <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 
-この記事では、Azure Functions で [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) のバインドを構成したりコーディングしたりする方法について説明します。 Azure Functions は、Mobile Apps の入力および出力バインドをサポートしています。
+この記事では、Azure Functions で [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) のバインドを操作する方法について説明します。 Azure Functions は、Mobile Apps の入力および出力バインドをサポートしています。
 
-Mobile Apps の入力および出力バインドを使用すると、モバイル アプリで[データ テーブルの読み取り/書き込み](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations)を行うことができます。
+Mobile Apps のバインドを使用すると、モバイル アプリのデータ テーブルの読み取りや更新を行うことができます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-<a name="input"></a>
+## <a name="input"></a>入力
 
-## <a name="mobile-apps-input-binding"></a>Mobile Apps 入力バインド
 Mobile Apps 入力バインドは、モバイル テーブル エンドポイントからレコードを読み込んで関数に渡します。 C# および F# 関数では、レコードに加えられた変更は、関数が正常に終了したときに、テーブルに自動的に送り返されます。
 
-関数への Mobile Apps 入力では、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+## <a name="input---example"></a>入力 - 例
 
-```json
-{
-    "name": "<Name of input parameter in function signature>",
-    "type": "mobileTable",
-    "tableName": "<Name of your mobile app's data table>",
-    "id" : "<Id of the record to retrieve - see below>",
-    "connection": "<Name of app setting that has your mobile app's URL - see below>",
-    "apiKey": "<Name of app setting that has your mobile app's API key - see below>",
-    "direction": "in"
-}
-```
+言語固有の例をご覧ください。
 
-以下の点に注意してください。
+<!-- * [Precompiled C#](#input---c-example)-->
+* [C# スクリプト](#input---c-script-example)
+* [JavaScript](#input---javascript-example)
 
-* `id` は、静的にすることも、関数を呼び出すトリガーに基づいて設定することもできます。 たとえば、関数に[キュー トリガー]()を使用した場合、`"id": "{queueTrigger}"` は、キュー メッセージの文字列値を、取得するレコード ID として使用します。
-* `connection` には、モバイル アプリの URL が含まれている Function App のアプリ設定の名前が含まれている必要があります。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL (たとえば、`http://<appname>.azurewebsites.net`) を含む[アプリ設定を Function App で作成]()し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 
-* [API キーを Node.js モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)場合や [API キーを .NET モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)場合は、`apiKey` を指定する必要があります。 そのためには、API キーを含む[アプリ設定を Function App で作成]()し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 
-  
-  > [!IMPORTANT]
-  > この API キーは、モバイル アプリ クライアント間で共有しないでください。 この API キーは、Azure Functions のようなサービス側のクライアントにのみ、セキュリティで保護された方法で配布する必要があります。 
-  > 
-  > [!NOTE]
-  > Azure Functions では接続情報と API キーがアプリ設定として保存されるため、これらはソース管理リポジトリにチェックインされません。 これにより、機密情報が保護されます。
-  > 
-  > 
+### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
 
-<a name="inputusage"></a>
+次の例は、*function.json* ファイルの Mobile Apps 入力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、レコード識別子を含むキュー メッセージによってトリガーされます。 この関数は、指定されたレコードを読み取って、`Text` プロパティを変更します。
 
-## <a name="input-usage"></a>入力の使用方法
-このセクションでは、Mobile Apps 入力バインドを関数のコードで使用する方法について説明します。 
-
-指定したテーブルとレコード ID を持つレコードが検出されると、レコードは名前付き [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) パラメーターに渡されます (Node.js の場合は `context.bindings.<name>` オブジェクトに渡されます)。 レコードが検出されなかった場合、パラメーターは `null` になります。 
-
-C# および F# の関数では、入力レコード (名前付き入力パラメーター) に加えられた変更は、関数が正常に終了したときに、Mobile Apps テーブルに自動的に送り返されます。 Node.js 関数では、`context.bindings.<name>` を使用して入力レコードにアクセスします。 Node.js でレコードを変更することはできません。
-
-<a name="inputsample"></a>
-
-## <a name="input-sample"></a>入力サンプル
-キュー トリガー メッセージの ID を持つモバイル アプリのテーブル レコードを取得する次の function.json があるとします。
+*function.json* ファイルのバインディング データを次に示します。
 
 ```json
 {
@@ -101,15 +70,9 @@ C# および F# の関数では、入力レコード (名前付き入力パラ�
 "disabled": false
 }
 ```
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
 
-バインドからの入力レコードを使用する、言語固有のサンプルを参照してください。 C# および F# のサンプルでは、レコードの `text` プロパティも変更します。
-
-* [C#](#inputcsharp)
-* [Node.JS](#inputnodejs)
-
-<a name="inputcsharp"></a>
-
-### <a name="input-sample-in-c"></a>C# での入力サンプル #
+C# スクリプト コードを次に示します。
 
 ```cs
 #r "Newtonsoft.Json"    
@@ -124,21 +87,38 @@ public static void Run(string myQueueItem, JObject record)
 }
 ```
 
-<!--
-<a name="inputfsharp"></a>
-### Input sample in F# ## 
+### <a name="input---javascript"></a>入力 - JavaScript
 
-```fsharp
-#r "Newtonsoft.Json"    
-open Newtonsoft.Json.Linq
-let Run(myQueueItem: string, record: JObject) =
-  inputDocument?text <- "This has changed."
+次の例は、*function.json* ファイルの Mobile Apps 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、レコード識別子を含むキュー メッセージによってトリガーされます。 この関数は、指定されたレコードを読み取って、`Text` プロパティを変更します。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+"bindings": [
+    {
+    "name": "myQueueItem",
+    "queueName": "myqueue-items",
+    "connection":"",
+    "type": "queueTrigger",
+    "direction": "in"
+    },
+    {
+        "name": "record",
+        "type": "mobileTable",
+        "tableName": "MyTable",
+        "id" : "{queueTrigger}",
+        "connection": "My_MobileApp_Url",
+        "apiKey": "My_MobileApp_Key",
+        "direction": "in"
+    }
+],
+"disabled": false
+}
 ```
--->
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
 
-<a name="inputnodejs"></a>
-
-### <a name="input-sample-in-nodejs"></a>Node.js での入力サンプル
+JavaScript コードを次に示します。
 
 ```javascript
 module.exports = function (context, myQueueItem) {    
@@ -147,48 +127,71 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-<a name="output"></a>
+## <a name="input---attributes"></a>入力 - 属性
 
-## <a name="mobile-apps-output-binding"></a>Mobile Apps 出力バインド
-Mobile Apps 出力バインドを使用して、Mobile Apps テーブル エンドポイントにレコードを書き込みます。  
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) で定義されている [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
 
-関数への Mobile Apps 出力では、function.json の `bindings` 配列内にある次の JSON オブジェクトが使用されます。
+属性のプロパティについて詳しくは、[この後の構成に関するセクション](#input---configuration)をご覧ください。
 
-```json
+## <a name="input---configuration"></a>入力 - 構成
+
+次の表は、*function.json* ファイルと `MobileTable` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |説明|
+|---------|---------|----------------------|
+| **type**|| "mobileTable" に設定する必要があります。|
+| **direction**||"in" に設定する必要があります。|
+| **name**|| 関数シグネチャの入力パラメーターの名前。|
+|**tableName** |**TableName**|モバイル アプリのデータ テーブルの名前|
+| **id**| **Id** | 取得するレコードの識別子。 静的にすることも、関数を呼び出すトリガーに基づいて設定することもできます。 たとえば、関数にキュー トリガーを使用した場合、`"id": "{queueTrigger}"` は、キュー メッセージの文字列値を、取得するレコード ID として使用します。|
+|**connection**|**Connection**|モバイル アプリの URL を含むアプリ設定の名前。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL を含むアプリ設定を Function App で作成し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 URL は、`http://<appname>.azurewebsites.net` のようになります。
+|**apiKey**|**ApiKey**|モバイル アプリの API キーを含むアプリ設定の名前。 [API キーを Node.js モバイル アプリに実装する](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)場合や、[API キーを .NET モバイル アプリに実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)場合は、API キーを指定します。 キーを指定するには、API キーを含むアプリ設定を Function App で作成し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!IMPORTANT]
+> API キーをモバイル アプリのクライアントと共有しないでください。 この API キーは、Azure Functions のようなサービス側のクライアントにのみ、セキュリティで保護された方法で配布する必要があります。 Azure Functions では接続情報と API キーがアプリ設定として保存されるため、これらはソース管理リポジトリにチェックインされません。 これにより、機密情報が保護されます。
+
+## <a name="input---usage"></a>入力 - 使用方法
+
+C# 関数では、指定の ID を含むレコードが検出されると、指定された [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) パラメーターに渡されます。 レコードが検出されなかった場合、パラメーター値は `null` になります。 
+
+JavaScript 関数では、レコードは `context.bindings.<name>` オブジェクトに渡されます。 レコードが検出されなかった場合、パラメーター値は `null` になります。 
+
+C# および F# の関数では、入力レコード (名前付き入力パラメーター) に加えられた変更は、関数が正常に終了したときに、テーブルに自動的に送り返されます。 JavaScript 関数ではレコードを変更できません。
+
+## <a name="output"></a>出力
+
+Mobile Apps 出力バインドを使用して、Mobile Apps テーブルにレコードを書き込みます。  
+
+## <a name="output---example"></a>出力 - 例
+
+言語固有の例をご覧ください。
+
+* [プリコンパイル済み C#](#output---c-example)
+* [C# スクリプト](#output---c-script-example)
+* [JavaScript](#output---javascript-example)
+
+### <a name="output---c-example"></a>出力 - C# の例
+
+次の例は、キュー メッセージによってトリガーされ、モバイル アプリ テーブルにレコードを作成する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+
+```csharp
+[FunctionName("MobileAppsOutput")]        
+[return: MobileTable(ApiKeySetting = "MyMobileAppKey", TableName = "MyTable", MobileAppUriSetting = "MyMobileAppUri")]
+public static object Run(
+    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
+    TraceWriter log)
 {
-    "name": "<Name of output parameter in function signature>",
-    "type": "mobileTable",
-    "tableName": "<Name of your mobile app's data table>",
-    "connection": "<Name of app setting that has your mobile app's URL - see below>",
-    "apiKey": "<Name of app setting that has your mobile app's API key - see below>",
-    "direction": "out"
+    return new { Text = $"I'm running in a C# function! {myQueueItem}" };
 }
 ```
 
-以下の点に注意してください。
+### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
 
-* `connection` には、モバイル アプリの URL が含まれている Function App のアプリ設定の名前が含まれている必要があります。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL (たとえば、`http://<appname>.azurewebsites.net`) を含む[アプリ設定を Function App で作成]()し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 
-* [API キーを Node.js モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)場合や [API キーを .NET モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)場合は、`apiKey` を指定する必要があります。 そのためには、API キーを含む[アプリ設定を Function App で作成]()し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 
-  
-  > [!IMPORTANT]
-  > この API キーは、モバイル アプリ クライアント間で共有しないでください。 この API キーは、Azure Functions のようなサービス側のクライアントにのみ、セキュリティで保護された方法で配布する必要があります。 
-  > 
-  > [!NOTE]
-  > Azure Functions では接続情報と API キーがアプリ設定として保存されるため、これらはソース管理リポジトリにチェックインされません。 これにより、機密情報が保護されます。
-  > 
-  > 
+次の例は、*function.json* ファイルの Mobile Apps 出力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、キュー メッセージによってトリガーされ、`Text` プロパティにハードコーディングされた値を使用して新しいレコードを作成します。
 
-<a name="outputusage"></a>
-
-## <a name="output-usage"></a>出力の使用方法
-このセクションでは、Mobile Apps 出力バインドを関数のコードで使用する方法について説明します。 
-
-C# 関数では、`out object` 型の名前付き出力パラメーターを使用して出力レコードにアクセスします。 Node.js 関数では、`context.bindings.<name>` を使用して出力レコードにアクセスします。
-
-<a name="outputsample"></a>
-
-## <a name="output-sample"></a>出力サンプル
-キューのトリガーと Mobile Apps の出力を定義する次の function.json があるとします。
+*function.json* ファイルのバインディング データを次に示します。
 
 ```json
 {
@@ -213,14 +216,9 @@ C# 関数では、`out object` 型の名前付き出力パラメーターを使�
 }
 ```
 
-Mobile Apps テーブル エンドポイントにレコードを作成してキュー メッセージの内容を設定する、言語固有のサンプルを参照してください。
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
 
-* [C#](#outcsharp)
-* [Node.JS](#outnodejs)
-
-<a name="outcsharp"></a>
-
-### <a name="output-sample-in-c"></a>C# での出力サンプル #
+C# スクリプト コードを次に示します。
 
 ```cs
 public static void Run(string myQueueItem, out object record)
@@ -231,16 +229,38 @@ public static void Run(string myQueueItem, out object record)
 }
 ```
 
-<!--
-<a name="outfsharp"></a>
-### Output sample in F# ## 
-```fsharp
+### <a name="output---javascript-example"></a>出力 - JavaScript の例
 
+次の例は、*function.json* ファイルの Mobile Apps 出力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、キュー メッセージによってトリガーされ、`Text` プロパティにハードコーディングされた値を使用して新しいレコードを作成します。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+"bindings": [
+    {
+    "name": "myQueueItem",
+    "queueName": "myqueue-items",
+    "connection":"",
+    "type": "queueTrigger",
+    "direction": "in"
+    },
+    {
+    "name": "record",
+    "type": "mobileTable",
+    "tableName": "MyTable",
+    "connection": "My_MobileApp_Url",
+    "apiKey": "My_MobileApp_Key",
+    "direction": "out"
+    }
+],
+"disabled": false
+}
 ```
--->
-<a name="outnodejs"></a>
 
-### <a name="output-sample-in-nodejs"></a>Node.js での出力サンプル
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -253,6 +273,54 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="next-steps"></a>次のステップ
-[!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+## <a name="output---attributes"></a>出力 - 属性
 
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) で定義されている [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
+
+構成可能な属性プロパティについては、「[出力 - 構成](#output---configuration)」を参照してください。 メソッド シグネチャでの `MobileTable` 属性の例を次に示します。
+
+```csharp
+[FunctionName("MobileAppsOutput")]        
+[return: MobileTable(ApiKeySetting = "MyMobileAppKey", TableName = "MyTable", MobileAppUriSetting = "MyMobileAppUri")]
+public static object Run(
+    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
+    TraceWriter log)
+{
+    ...
+}
+```
+
+完全な例については、[出力 - プリコンパイル済み C# の例](#output---c-example)に関する記事をご覧ください。
+
+## <a name="output---configuration"></a>出力 - 構成
+
+次の表は、*function.json* ファイルと `MobileTable` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |説明|
+|---------|---------|----------------------|
+| **type**|| "mobileTable" に設定する必要があります。|
+| **direction**||"out" に設定する必要があります。|
+| **name**|| 関数シグネチャの出力パラメーターの名前。|
+|**tableName** |**TableName**|モバイル アプリのデータ テーブルの名前|
+|**connection**|**MobileAppUriSetting**|モバイル アプリの URL を含むアプリ設定の名前。 この関数は、この URL を使用して、モバイル アプリに対して必要な REST 操作を作成します。 モバイル アプリの URL を含むアプリ設定を Function App で作成し、入力バインドの `connection` プロパティでアプリ設定の名前を指定します。 URL は、`http://<appname>.azurewebsites.net` のようになります。
+|**apiKey**|**ApiKeySetting**|モバイル アプリの API キーを含むアプリ設定の名前。 [API キーを Node.js モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)場合や [API キーを .NET モバイル アプリのバックエンドに実装する](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)場合は、API キーを指定します。 キーを指定するには、API キーを含むアプリ設定を Function App で作成し、アプリ設定の名前を指定した `apiKey` プロパティを入力バインドに追加します。 |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!IMPORTANT]
+> API キーをモバイル アプリのクライアントと共有しないでください。 この API キーは、Azure Functions のようなサービス側のクライアントにのみ、セキュリティで保護された方法で配布する必要があります。 Azure Functions では接続情報と API キーがアプリ設定として保存されるため、これらはソース管理リポジトリにチェックインされません。 これにより、機密情報が保護されます。
+
+## <a name="output---usage"></a>出力 - 使用方法
+
+C# スクリプト関数では、`out object` 型の名前付き出力パラメーターを使用して出力レコードにアクセスします。 プリコンパイル済み C# 関数では、`MobileTable` 属性は次のどの型に対しても使用できます。
+
+* `ICollector<T>` または `IAsyncCollector<T>`。このとき、`T` は `JObject` か、`public string Id` プロパティを持つ任意の型です。
+* `out JObject`
+* `out T` または `out T[]`。このとき、`T` は `public string Id` プロパティを持つ任意の型です。
+
+Node.js 関数では、`context.bindings.<name>` を使用して出力レコードにアクセスします。
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

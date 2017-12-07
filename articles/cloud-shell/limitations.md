@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: juluk
-ms.openlocfilehash: bd947af4cca0ed240ba5811d6a5cd06ff7fffc82
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 65a5c40ce0a4d0cfdc0a325476bea6e8ccebe8c6
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -28,10 +28,10 @@ Azure Cloud Shell には、次の既知の制限があります。
 
 ### <a name="system-state-and-persistence"></a>システム状態と永続化
 
-Cloud Shell セッションを提供するマシンは一時的であり、セッションが 20 分間非アクティブの状態になると、リサイクルされます。 Cloud Shell では、ファイル共有をマウントする必要があります。 そのため、Cloud Shell にアクセスするには、ご利用のサブスクリプションでストレージ リソースをセットアップできることが必要です。 その他の考慮事項:
+Cloud Shell セッションを提供するマシンは一時的であり、セッションが 20 分間非アクティブの状態になると、リサイクルされます。 Cloud Shell では、Azure ファイル共有がマウントされている必要があります。 そのため、Cloud Shell にアクセスするには、ご利用のサブスクリプションでストレージ リソースをセットアップできることが必要です。 その他の考慮事項:
 
 * マウントされたストレージでは、`clouddrive` ディレクトリ内の変更のみが永続化されます。 Bash では、`$Home` ディレクトリも永続化されます。
-* ファイル共有は、[割り当て済みリージョン](persisting-shell-storage.md#mount-a-new-clouddrive)内からのみマウントできます。
+* Azure ファイル共有は、[割り当て済みリージョン](persisting-shell-storage.md#mount-a-new-clouddrive)内からのみマウントできます。
   * Bash では、`env` を実行して、`ACC_LOCATION` として設定されたリージョンを検索します。
 * Azure Files は、ローカル冗長ストレージと geo 冗長ストレージのアカウントのみをサポートします。
 
@@ -77,7 +77,12 @@ Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間�
 アプリケーション (たとえば、git、vim など) によって `$Home` に書き込まれたデータは、PowerShell セッション間で保持されません。 回避策については、[こちらをご覧ください](troubleshooting.md#powershell-resolutions)。
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Azure ドライブから作成された場合の既定のファイルの場所
+
 ユーザーは、PowerShell コマンドレットを使用して Azure ドライブにファイルを作成することができません。 Vim や Nano などの他のツールを使用して新しいファイルを作成すると、ファイルは既定で C:\Users フォルダーに保存されます。 
+
+### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
+
+Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Login-AzureRMAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

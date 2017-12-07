@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 5e758e831765ba2762b7efe7c3a10f10e59a5ddc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9e463273fff0ecc198b0574443c4241dde7be79
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Node.js で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -61,7 +61,7 @@ var azure = require('azure');
 ```
 
 ### <a name="set-up-a-service-bus-connection"></a>Service Bus 接続の設定
-Azure モジュールは、Service Bus に接続するために必要な情報を得るために、環境変数 `AZURE_SERVICEBUS_NAMESPACE` と `AZURE_SERVICEBUS_ACCESS_KEY` を読み取ります。 これらの環境変数が設定されていない場合、`createServiceBusService` を呼び出すときにアカウント情報を指定する必要があります。
+Azure モジュールは、前の手順の「資格情報の取得」から取得した接続文字列の `AZURE_SERVICEBUS_CONNECTION_STRING` 環境変数を読み取ります。 この環境変数が設定されていない場合は、`createServiceBusService` を呼び出すときにアカウント情報を指定する必要があります。
 
 Azure Cloud Service の環境変数を設定する例については、[Storage を使用する Node.js Cloud Service][Node.js Cloud Service with Storage] に関する記事をご覧ください。
 

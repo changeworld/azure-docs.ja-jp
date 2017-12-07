@@ -14,21 +14,25 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 11/28/2017
 ms.author: larryfr
-ms.openlocfilehash: 652719a80133434ecb31c00738dcda261cfa0683
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a780a7d954486dbce402e4bf45be55af8ad36ab9
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-on-hdinsight"></a>HDInsight 上の Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
 Apache Spark を使用して、DStreams による HDInsight 上の Apache Kafka 内外へのデータのストリームを行う方法について説明します。 この例では、Spark クラスター上で実行する Jupyter ノートブックを使用します。
+
 > [!NOTE]
 > このドキュメントの手順では、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループを作成します。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
 >
 > このドキュメントの手順を完了したら、余分に課金されないようにするためにクラスターは削除してください。
+
+> [!IMPORTANT]
+> この例では DStreams を使用します。DStreams は古い Spark ストリーミング テクノロジです。 新しい Spark ストリーミング機能を使用する例については、[Kafka を使った Spark 構造化ストリーミング](hdinsight-apache-kafka-spark-structured-streaming.md)に関するドキュメントを参照してください。
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 

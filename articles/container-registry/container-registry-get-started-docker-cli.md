@@ -1,118 +1,126 @@
 ---
-title: "Docker イメージをプライベート Azure レジストリにプッシュする | Microsoft Docs"
+title: "Docker イメージをプライベート Azure レジストリにプッシュする"
 description: "Docker CLI を使用した、Azure のプライベート コンテナー レジストリに対する Docker イメージのプッシュとプル"
 services: container-registry
-documentationcenter: 
 author: stevelas
-manager: balans
-editor: cristyg
-tags: 
-keywords: 
-ms.assetid: 64fbe43f-fdde-4c17-a39a-d04f2d6d90a1
+manager: timlt
 ms.service: container-registry
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/24/2017
+ms.date: 11/29/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10f01e4e8c86bbbfa17cf2559caca645ff13bdcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21d1abfbb49eaeae654a600d35ab350b96a12fd3
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
-[Docker Hub](https://hub.docker.com/) で公開 Docker イメージを格納するように、Azure コンテナー レジストリではプライベート [Docker](http://hub.docker.com) コンテナー イメージを格納および管理します。 コンテナー レジストリに対する[ログイン](https://docs.docker.com/engine/reference/commandline/login/)、[プッシュ](https://docs.docker.com/engine/reference/commandline/push/)、[プル](https://docs.docker.com/engine/reference/commandline/pull/)などの操作には、[Docker コマンド ライン インターフェイス](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) を使用します。
 
-背景と概念の詳細については、[概要](container-registry-intro.md)に関するページを参照してください。
+[Docker Hub](https://hub.docker.com/) で公開 Docker イメージを格納するように、Azure コンテナー レジストリではプライベート [Docker](http://hub.docker.com) コンテナー イメージを格納および管理します。 コンテナー レジストリに対する[ログイン](https://docs.docker.com/engine/reference/commandline/login/)、[プッシュ](https://docs.docker.com/engine/reference/commandline/push/)、[プル](https://docs.docker.com/engine/reference/commandline/pull/)などの操作には、[Docker コマンド ライン インターフェイス](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) を使用できます。
 
-
+以下の手順では、公式の [Nginx イメージ](https://store.docker.com/images/nginx)を公開 Docker Hub レジストリからダウンロードし、プライベート Azure コンテナー レジストリにタグ付けしてレジストリにプッシュした後、レジストリからもう一度プルします。
 
 ## <a name="prerequisites"></a>前提条件
+
 * **Azure コンテナー レジストリ** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI 2.0](container-registry-get-started-azure-cli.md) を使用します。
-* **Docker CLI** - ローカル コンピューターを Docker ホストとして設定し、Docker CLI コマンドにアクセスするには、[Docker エンジン](https://docs.docker.com/engine/installation/)をインストールします。
+* **Docker CLI** - ローカル コンピューターを Docker ホストとして設定し、Docker CLI コマンドにアクセスするには、[Docker](https://docs.docker.com/engine/installation/) をインストールします。
 
 ## <a name="log-in-to-a-registry"></a>レジストリへのログイン
-[レジストリの資格情報](container-registry-authentication.md)を使用してコンテナー レジストリにログインするには、`docker login` を実行します。
 
-次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/active-directory-application-objects.md)の ID とパスワードを渡します。 たとえば、自動化シナリオのために、レジストリにサービス プリンシパルを割り当てることができます。
+プライベート コンテナー レジストリで[認証するさまざまな方法](container-registry-authentication.md)があります。 コマンド ラインで作業するときに推奨される方法は、Azure CLI コマンドの [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login)を使用することです。 たとえば、*myregistry* という名前のレジストリにログインするには、次のように入力します。
 
+```azurecli
+az acr login --name myregistry
 ```
+
+[docker login](https://docs.docker.com/engine/reference/commandline/login/) でログインすることもできます。 次の例では、Azure Active Directory [サービス プリンシパル](../active-directory/active-directory-application-objects.md)の ID とパスワードを渡します。 たとえば、オートメーション シナリオで、[レジストリにサービス プリンシパルを割り当てる](container-registry-authentication.md#service-principal)ことができます。
+
+```Bash
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
+どちらのコマンドも、完了すると `Login Succeeded` が返されます。 `docker login` を使用した場合は、`--password-stdin` パラメーターの使用を推奨するセキュリティ警告が表示されることもあります。 このパラメーターの使用について、ここでは説明していませんが、このベスト プラクティスに従うことをお勧めします。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
+
 > [!TIP]
-> 必ずレジストリの完全修飾名 (すべて小文字) を指定してください。 この例では `myregistry.azurecr.io` です。
+> `docker login` を使用する場合とレジストリにプッシュするために画像にタグ付けする場合は、常にレジストリの完全修飾名 (すべて小文字) を指定してください。 この記事の例では、完全修飾名は *myregistry.azurecr.io* です。
 
-## <a name="steps-to-pull-and-push-an-image"></a>イメージをプルおよびプッシュするための手順
-次の例では、Nginx イメージを公開 Docker Hub レジストリからダウンロードし、プライベート Azure コンテナー レジストリにタグ付けして、レジストリにプッシュし、もう一度プルします。
+## <a name="pull-the-official-nginx-image"></a>公式の Nginx イメージをプルする
 
-**1.Docker の公式 Nginx イメージをプルする**
+まず、公開 Nginx イメージをローカル コンピューターにプルします。
 
-まず、ローカル コンピューターに公開 Nginx イメージをプルします。
-
-```
+```Bash
 docker pull nginx
 ```
-**2.Nginx コンテナーを起動する**
 
-次のコマンドでは、ポート 8080 でローカルの Nginx コンテナーを対話形式で起動し、Nginx からの出力を確認できるようにしています。 実行中のコンテナーは、停止すると削除されます。
+## <a name="run-the-container-locally"></a>コンテナーをローカルで実行する
 
-```
+次の [docker run](https://docs.docker.com/engine/reference/run/) コマンドを実行して、Nginx コンテナーのローカル インスタンスを 対話形式でポート 8080 で起動します (`-it`)。 `--rm` 引数は、コンテナーが停止されたときに、それを削除するように指定します。
+
+```Bash
 docker run -it --rm -p 8080:80 nginx
 ```
 
-ブラウザーで [http://localhost:8080](http://localhost:8080) に移動して、実行中のコンテナーを表示します。 次のような画面が表示されます。
+[http://localhost:8080](http://localhost:8080) に移動して、実行中のコンテナーの Nginx によって提供される既定の Web ページを表示します。 次のようなページが表示されます。
 
 ![ローカル コンピューター上の Nginx](./media/container-registry-get-started-docker-cli/nginx.png)
 
-実行中のコンテナーを停止するには、Ctrl + C キーを押します。
+`-it` を指定して対話形式でコンテナーを開始したため、ブラウザーでそれに移動すると、コマンド ラインに Nginx サーバーの出力が表示されます。
 
-**3.レジストリ内のイメージのエイリアスを作成する**
+コンテナーを停止して削除するには、`Control`+`C` を押します。
 
-次のコマンドでは、レジストリへの完全修飾パスを使用して、イメージのエイリアスを作成します。 この例では、レジストリのルートが煩雑にならないように、`samples` 名前空間を指定しています。
+## <a name="create-an-alias-of-the-image"></a>イメージのエイリアスを作成する
 
-```
+[docker tag](https://docs.docker.com/engine/reference/commandline/tag/) でレジストリへの完全修飾パスを使用して、イメージのエイリアスを作成します。 この例では、レジストリのルートが煩雑にならないように、`samples` 名前空間を指定しています。
+
+```Bash
 docker tag nginx myregistry.azurecr.io/samples/nginx
-```  
-
-**4.レジストリにイメージをプッシュする**
-
 ```
+
+名前空間を持つタグ付けの詳細については、「[Azure Container Registry のベスト プラクティス](container-registry-best-practices.md)」の「[リポジトリの名前空間](container-registry-best-practices.md#repository-namespaces)」セクションを参照してください。
+
+## <a name="push-the-image-to-your-registry"></a>イメージをレジストリにプッシュする
+
+これで、完全修飾パスを使用してイメージにプライベート レジストリへのタグが付けられたので、[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用してレジストリにプッシュできます。
+
+```Bash
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
-**5.レジストリからイメージをプルする**
+## <a name="pull-the-image-from-your-registry"></a>レジストリからイメージをプルする
 
-```
+レジストリからイメージをプルするには、[docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用します。
+
+```Bash
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
-**6.レジストリから Nginx コンテナーを起動する**
+## <a name="start-the-nginx-container"></a>Nginx コンテナーを起動する
 
-```
+レジストリからプルしたイメージを実行するには、[docker run](https://docs.docker.com/engine/reference/run/) コマンドを使用します。
+
+```Bash
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
 ブラウザーで [http://localhost:8080](http://localhost:8080) に移動して、実行中のコンテナーを表示します。
 
-実行中のコンテナーを停止するには、Ctrl + C キーを押します。
+コンテナーを停止して削除するには、`Control`+`C` を押します。
 
-**7.(省略可) イメージを削除する**
+## <a name="remove-the-image-optional"></a>イメージを削除する (任意指定)
 
-```
+Nginx イメージが不要になった場合は、[docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) コマンドを使用して、ローカルに削除できます。
+
+```Bash
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-##<a name="concurrent-limits"></a>同時実行の制限
-一部のシナリオでは、複数の呼び出しを同時に実行すると、エラーが発生する場合があります。 以下の表は、Azure コンテナー レジストリに対する "プッシュ" 操作と "プル" 操作について、呼び出しの同時実行数の上限を示したものです。
+Azure コンテナー レジストリからイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az_acr_repository_delete) を使用できます。 たとえば、次のコマンドは、タグ、タグによって参照されるマニフェスト、関連付けられているレイヤー データ、およびマニフェストを参照するその他すべてのタグを削除します。
 
-| 操作  | 制限                                  |
-| ---------- | -------------------------------------- |
-| プル       | プルの同時実行数はレジストリあたり 10 件まで |
-| プッシュ       | プッシュの同時実行数はレジストリあたり 5 件まで |
+```azurecli
+az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
+```
 
 ## <a name="next-steps"></a>次のステップ
-基本を理解したので、レジストリの使用を開始する準備ができました。 たとえば、[Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) クラスターへのコンテナー イメージのデプロイを開始できます。
+
+基本を理解したので、レジストリの使用を開始する準備ができました。 たとえば、コンテナー イメージをレジストリから [Azure Container Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) クラスターに展開できます。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
-ms.openlocfilehash: 660fe4fb9f962c835de9a2f900ceaabb4371b0db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8fd09c748786f0bfe070c3f41201eddc3d272116
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -154,6 +154,21 @@ COPYFILE の強制フラグ **f** を使用すると、Unix 上で **cp -p -f** 
 ### <a name="solution"></a>解決策
 
 この問題を解決するには、「[Troubleshooting tool for Azure Files mounting errors on Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)」 (Lunux での Azure Files のマウント エラー用トラブルシューティング ツール) を使用します。 このツールは、クライアントの実行環境を検証する場合や、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出するのに役立ち、自己修正に関する規範的なガイダンスを提供し、診断トレースを収集します。
+
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: cannot access '&lt;path&gt;': Input/output error
+
+ls コマンドを使用して Azure ファイル共有のファイル一覧を表示しようとすると、ファイルの一覧表示時に次のエラーが表示され、ls コマンドが停止します。
+
+**ls: cannot access'&lt;path&gt;': Input/output error**
+
+
+### <a name="solution"></a>解決策
+この問題が修正されている次のバージョンに Linux カーネルをアップグレードします。
+
+- 4.4.87 以降
+- 4.9.48 以降
+- 4.12.11 以降
+- 4.13 以降のすべてのバージョン
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

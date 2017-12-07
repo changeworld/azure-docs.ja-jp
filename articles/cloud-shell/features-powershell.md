@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: damaerte
-ms.openlocfilehash: e45d66eff4be4918ffd6e7940bbfb5adb4c88c00
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9c2eeef9c20f25d2af97e6c754f005b698222385
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) での PowerShell の機能とツール
 
@@ -37,7 +37,7 @@ Cloud Shell (プレビュー) での PowerShell は、Azure PowerShell のアカ
 
 ### <a name="files-persistence-across-sessions"></a>セッション間でのファイルの永続化
 
-セッション間でファイルを保持する場合、Cloud Shell の初回起動時に、Azure ファイル共有のアタッチについてのチュートリアルがあります。
+セッション間でファイルを保持する場合、Cloud Shell の初回起動時に、Microsoft Azure ファイル共有のアタッチについてのチュートリアルがあります。
 チュートリアルが完了すると、今後のすべてのセッションで、記憶域 (`$home\clouddrive` としてマウントされる) が自動的にアタッチされます。
 Cloud Shell に対する各要求は一時的なマシンを割り当てるので、`$home\clouddrive` の外のファイルやマシンの状態は、セッション間で保持されません。
 

@@ -1,27 +1,19 @@
 ---
-title: "Azure Container Service (AKS) クラスターの更新 | Microsoft Docs"
+title: "Azure Container Service (AKS) クラスターの更新"
 description: "Azure Container Service (AKS) クラスターの更新"
 services: container-service
-documentationcenter: 
 author: gabrtv
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: "Kubernetes, Docker, コンテナー, マイクロサービス, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: article
 ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 15e3e96587962ef9cc531e1825f37b92d26928fd
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 40b55309ee4c52743b30682d8751e6e432f9bb4a
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="upgrade-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターの更新
 
@@ -43,7 +35,7 @@ Name     ResourceGroup    MasterVersion    MasterUpgrades       NodePoolVersion 
 default  myResourceGroup  1.7.7            1.8.2, 1.7.9, 1.8.1  1.7.7               1.8.2, 1.7.9, 1.8.1
 ```
 
-アップグレードで利用できるバージョンは、1.7.9、1.8.1、および 1.8.2 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)。
+アップグレードで利用できるバージョンは、1.7.9、1.8.1、および 1.8.2 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)。  クラスター ノードの追加と削除が行われるため、クラスターのアップグレードを開始する前に、ワークロードを処理できる十分な追加のコンピューティング容量があることを確認します。
 
 ```azurecli-interactive
 az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes-version 1.8.2

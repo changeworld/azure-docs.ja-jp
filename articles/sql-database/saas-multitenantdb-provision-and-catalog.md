@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: billgib
-ms.openlocfilehash: ec753027c8ce8040cbc574279a44eb24590fcb05
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: e7de7bb545e0ce04dc1b3dd398cc920213d09bae
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-sql-database"></a>シャード マルチテナント SQL データベースを使用した SaaS アプリケーションでの新しいテナントのプロビジョニングおよびカタログ登録 | Microsoft Docs
 
@@ -78,19 +78,18 @@ SQL スクリプトの実行、bacpac のデプロイ、またはテンプレー
 * Wingtip Tickets SaaS マルチテナント データベース アプリがデプロイされます。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイと探索)](saas-multitenantdb-get-started-deploy.md)」を参照してください。
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
-## <a name="get-the-wingtip-tickets-management-scripts"></a>Wingtip Tickets 管理スクリプトの入手
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Wingtip Tickets SaaS マルチテナント データベース アプリケーションのソース コードとスクリプトを入手する
 
-管理スクリプトとアプリケーションのソース コードは、[WingtipTicketsSaaS-MultiTenantDB](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub リポジトリから入手できます。 <!--See [Steps to download the Wingtip SaaS scripts](saas-tenancy-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts).-->
-
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーションのソース コードは、[WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub リポジトリで入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。 
 
 ## <a name="provision-a-tenant-in-a-shared-database-with-other-tenants"></a>他のテナントと共有しているデータベースにテナントをプロビジョニングする
 
 Wingtip Tickets アプリケーションを使用して共有データベースに新しいテナントのプロビジョニングを実装する方法を理解するには、ブレークポイントを追加して、次のワークフローに従います。
 
-1. _PowerShell ISE_ で、...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_ を開き、次のパラメーターを設定します。
+1. _PowerShell ISE_ で、...\\Learning Modules\\ProvisionTenants\\_Demo-ProvisionTenants.ps1_ を開き、次のパラメーターを設定します。
    * **$TenantName** = **Bushwillow Blues** (新しい会場の名前)。
-   * **$VenueType** = **blues** (事前に定義しておいた会場の種類のいずれか: *blues*、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer (小文字、スペースなし))。
-   * **$Scenario** = **1** (*他のテナントと共有しているデータベースにテナントをプロビジョニング*します)。
+   * **$VenueType** = **blues** (事前に定義しておいた会場の種類のいずれか: blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer (小文字、スペースなし))。
+   * **$DemoScenario** = **1** (*他のテナントと共有しているデータベースにテナントをプロビジョニング*します)。
 
 1. ブレークポイントを追加します。追加するためには、38 行目 (*New-Tenant `* と記述されている行) のどこかにカーソルを置いて、**F9** キーを押します。
 
@@ -121,10 +120,10 @@ Wingtip Tickets アプリケーションを使用して共有データベース�
 
 次に、独自のデータベースにテナントを作成するプロセスを説明します。
 
-1. 引き続き ...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_ 内で、次のパラメーターを設定します。
+1. 引き続き ...\\Learning Modules\\ProvisionTenants\\_Demo-ProvisionTenants.ps1_ 内で、次のパラメーターを設定します。
    * **$TenantName** = **Sequoia Soccer** (新しい会場の名前)。
-   * **$VenueType** = **soccer** (事前に定義しておいた会場の種類のいずれか: blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、*soccer* (小文字、スペースなし))。
-   * **$Scenario** = **2** (*他のテナントと共有しているデータベースにテナントをプロビジョニング*します)。
+   * **$VenueType** = **soccer** (事前に定義しておいた会場の種類のいずれか: blues、classicalmusic、dance、jazz、judo、motorracing、multipurpose、opera、rockmusic、soccer (小文字、スペースなし))。
+   * **$DemoScenario** = **2** (*独自のデータベースにテナントをプロビジョニング*します)。
 
 1. 新しいブレークポイントを追加します。これには、57 行目 (*&&nbsp;$PSScriptRoot\New-TenantAndDatabase `* と記述されている行) のどこかにカーソルを置いて、**F9 キー**を押します。
 
@@ -152,30 +151,31 @@ Wingtip Tickets アプリケーションを使用して共有データベース�
 
 この演習では、17 のテナントのバッチをプロビジョニングします。 他の Wingtip Tickets チュートリアルを開始する前に、このテナントをまとめてプロビジョニングして、多くのデータベースを操作できるようにしておくことをお勧めします。
 
-1. *PowerShell ISE* で ...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1* を開き、*$Scenario* パラメーターを 3 に変更します。
-   * **$Scenario** = **3** (*テナントをまとめて共有データベースにプロビジョニングする*します)。
+
+1. *PowerShell ISE* で ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* を開き、*$DemoScenario* パラメーターを 4 に変更します。
+   * **$DemoScenario** = **4** (*テナントをまとめて共有データベースにプロビジョニング*します)。
 1. **F5** キーを押して、スクリプトを実行します。
 
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>テナントのデプロイ済みセットを確認する 
-現在、共有データベースにデプロイされたテナントと、独自のデータベースにデプロイされたテナントが混在しています。 Azure Portal を使用して、作成したデータベースを検査できます。  
-
-* [Azure Portal](https://portal.azure.com) で、SQL サーバーの一覧を表示して **tenants1-mt-\<USER\>** サーバーを開きます。  **SQL データベース**の一覧には、**tenants1** 共有データベースと、独自データベース内のテナントのデータベースが含まれているはずです。
+現在、共有データベースにデプロイされたテナントと、独自のデータベースにデプロイされたテナントが混在しています。 Azure Portal を使用して、作成したデータベースを検査できます。 [Azure Portal](https://portal.azure.com) で、SQL サーバーの一覧を表示して **tenants1-mt-\<USER\>** サーバーを開きます。  **SQL データベース**の一覧には、**tenants1** 共有データベースと、独自データベース内のテナントのデータベースが含まれているはずです。
 
    ![データベースの一覧](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
 Azure Portal でテナント データベースを表示しても、共有データベースの*内部*のテナントは表示されません。 テナントの全リストは、次のように Wingtip Tickets Events ハブ ページでカタログを閲覧すると表示できます。   
 
-1. ブラウザーで Events Hub ページを開きます (http:events.wingtip-mt.\<USER\>.trafficmanager.net)  
+**Wingtip Tickets イベント ハブ ページを使用する** <br>
+ブラウザーで Events Hub ページを開きます (http:events.wingtip-mt.\<USER\>.trafficmanager.net)  
 
-   テナントの全リストとそれに対応するデータベースがカタログで確認できます。 tenantcatalog データベース内では SQL ビューを利用できます。SQL ビューでは Tenants テーブルに格納されているテナント名と、Shard Management テーブルのデータベース名が結び付けられます。 このビューは、カタログに格納されているメタデータの値を拡張するのが有用であることを示す好例です。
+**カタログ データベースを使用する** <br>
+テナントの全リストとそれに対応するデータベースがカタログで確認できます。 tenantcatalog データベース内では SQL ビューを利用できます。SQL ビューでは Tenants テーブルに格納されているテナント名と、Shard Management テーブルのデータベース名が結び付けられます。 このビューは、カタログに格納されているメタデータの値を拡張するのが有用であることを示す好例です。
 
-2. *SQL Server Management Studio (SSMS)* 内で、次の資格情報を使って **tenants1-mt.\<USER\>.database.windows.net** にあるテナント サーバーに接続します。[ログイン]: 「**developer**」、[パスワード]: 「**P@ssword1**」
+1. *SQL Server Management Studio (SSMS)* 内で、次の資格情報を使って **catalog-mt.\<USER\>.database.windows.net** にあるテナント サーバーに接続します。[ログイン]: 「**developer**」、[パスワード]: 「**P@ssword1**」
 
     ![SSMS 接続ダイアログ](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
-2. *オブジェクト エクスプローラー*で、*tenantcatalog* データベース内のビューを表示します。
-2. *TenantsExtended* ビューを右クリックして、**[Select Top 1000 Rows]\(上位 1000 行の選択\)** を選択します。 別のテナントのテナント名とデータベースとの間のマッピングに注意してください。
+1. *オブジェクト エクスプローラー*で、*tenantcatalog* データベース内のビューを表示します。
+1. *TenantsExtended* ビューを右クリックして、**[Select Top 1000 Rows]\(上位 1000 行の選択\)** を選択します。 別のテナントのテナント名とデータベースとの間のマッピングに注意してください。
 
     ![SSMS 内の ExtendedTenants ビュー](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
       

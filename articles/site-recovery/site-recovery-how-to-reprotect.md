@@ -3,7 +3,7 @@ title: "Azure からオンプレミス サイトに再保護する | Microsoft D
 description: "VM を Azure にフェールオーバーした後に、フェールバックを開始して VM をオンプレミスに戻すことができます。 フェールバックの前に再保護する方法について説明します。"
 services: site-recovery
 documentationcenter: 
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
-ms.author: ruturajd
-ms.openlocfilehash: 3644b41c3e3293a263bd9ff996d4e3d26417aeed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rajanaki
+ms.openlocfilehash: 17a43de3faaa3a146fa9d8f43d36545d6d82b274
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへの再保護
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 この記事では、Azure 仮想マシンを Azure からオンプレミス サイトに再保護する方法について説明します。 VMware 仮想マシンまたは Windows/Linux 物理サーバーが (「[Replicate VMware virtual machines and physical servers to Azure with Azure Site Recovery (Azure Site Recovery を使用して VMware 仮想マシンおよび物理サーバーを Azure にレプリケートする)](site-recovery-failover.md)」の説明に従って) オンプレミス サイトから Azure にフェールオーバーされた後にそれらをフェールバックする準備ができたら、この記事の手順に従ってください。
 
 > [!WARNING]
-> 既に[移行が完了](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)している場合、仮想マシンを別のリソース グループに移動した場合、または Azure 仮想マシンを削除した場合、その後フェールバックを実行することはできません。 仮想マシンの保護を無効にした場合は、フェールバックを実行できません。
+> 既に[移行が完了](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)している場合、仮想マシンを別のリソース グループに移動した場合、または Azure 仮想マシンを削除した場合、その後フェールバックを実行することはできません。 仮想マシンの保護を無効にした場合は、フェールバックを実行できません。 仮想マシンを最初に Azure で作成した場合は (クラウド生まれの仮想マシン)、オンプレミスに再保護して戻すことはできません。 マシンは、最初にオンプレミスで保護されていて、再保護の前に Azure にフェールオーバーされたものでなければなりません。
 
 
 再保護が完了し、保護された仮想マシンがレプリケートされた後、仮想マシン上でフェールバックを開始してそのマシンをオンプレミス サイトに移動できます。
@@ -62,13 +62,20 @@ ms.lasthandoff: 10/11/2017
   * **マスター ターゲット サーバー**: マスター ターゲット サーバーは、フェールバック データを受信します。 作成したオンプレミスの管理サーバーには、既定でマスター ターゲット サーバーがインストールされています。 ただし、フェールバック トラフィックの量によっては、フェールバック用に別のマスター ターゲット サーバーを作成する必要があります。
     * [Linux 仮想マシンには、Linux マスター ターゲット サーバーが必要です](site-recovery-how-to-install-linux-master-target.md)。
     * Windows 仮想マシンには、Windows マスター ターゲット サーバーが必要です。 オンプレミスのプロセス サーバーとマスター ターゲット コンピューターを再利用できます。
+    * マスター ターゲットには、「[Common things to check on a master target before reprotect (再保護の前にマスター ターゲット上で確認すべき一般的な事項)](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)」に一覧表示されているその他の前提条件があります。
 
-    マスター ターゲットには、「[Common things to check on a master target before reprotect (再保護の前にマスター ターゲット上で確認すべき一般的な事項)](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)」に一覧表示されているその他の前提条件があります。
+> [!NOTE]
+> レプリケーション グループのすべての仮想マシンは、同じオペレーティング システムの種類 (すべて Windows、またはすべて Linux) である必要があります。 現在、異種オペレーティング システムが混在するレプリケーション グループは、オンプレミスへの再保護およびフェールバックではサポートされていません。 これは、マスター ターゲットは仮想マシンと同じオペレーティング システムでなければならず、レプリケーション グループのすべての仮想マシンはマスター ターゲットが同じである必要があるためです。 
+
+    
 
 * フェールバックするときは、構成サーバーがオンプレミスに必要です。 フェールバック中、仮想マシンが構成サーバー データベースに存在している必要があります。 それ以外の場合、フェールバックは失敗します。 
 
 > [!IMPORTANT]
 > 必ず、構成サーバーを定期的にバックアップするようスケジュールを設定します。 障害が発生した場合は、フェールバックが機能するように、同じ IP アドレスを持つサーバーを復元します。
+
+> [!WARNING]
+> レプリケーション グループのすべての VM は同じマスター ターゲット サーバーを使い、Linux VM には Linux のマスター ターゲット サーバーが、Windows VM には Windows のマスター ターゲット サーバーが必要なので、レプリケーション グループは Windows VM または Linux VM のどちらか一方だけで構成されなければならず、両方が混在することはできません。
 
 * VMware でマスター ターゲット仮想マシンの構成パラメーターに `disk.EnableUUID=true` を設定します。 この行が存在しない場合は追加してください。 この設定は、一貫性のある UUID を仮想マシン ディスク (VMDK) に提供することでマウントが適切に実行されるようにするために必要です。
 
@@ -170,6 +177,8 @@ Azure ベースのプロセス サーバーのインストールについては�
 * マスター ターゲット サーバーのディスクにはスナップショットが存在してはいけません。 スナップショットが存在する場合、再保護およびフェールバックは失敗します。
 
 * 準仮想化 SCSI コントローラーをマスター ターゲットに割り当てることはできません。 LSI Logic コントローラー以外は使用できません。 LSI Logic コントローラがない場合、再保護は失敗します。
+
+* 特定のインスタンスでマスター ターゲットにアタッチできるディスクの最大数は 60 台です。 オンプレミスのマスター ターゲットに再保護される仮想マシンのディスクの合計数が 60 を超える場合は、マスター ターゲットへの再保護が失敗します。 マスター ターゲットに十分な数のディスク スロットがあることを確認するか、マスター ターゲット サーバーを追加展開してください。
 
 <!--
 ### Failback policy

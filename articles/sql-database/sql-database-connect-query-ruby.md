@@ -13,13 +13,13 @@ ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 07/14/2017
+ms.date: 07/15/2017
 ms.author: carlrab
-ms.openlocfilehash: b7617d8f4cfe09052204182b40f6e5f7d46087b8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 3427d216540451bc10b968f866d0fce0f6df3c54
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-ruby-to-query-an-azure-sql-database"></a>Ruby を使用して Azure SQL Database に照会する
 
@@ -27,30 +27,19 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタート チュートリアルを完了するには、次の前提条件を満たしておく必要があります。
+このクイック スタート チュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
-- Azure SQL Database。 このクイック スタートでは、次のいずれかのクイック スタートで作成したリソースを使用します。 
-
-   - [DB の作成 - ポータル](sql-database-get-started-portal.md)
-   - [DB の作成 - CLI](sql-database-get-started-cli.md)
-   - [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
 - このクイック スタート チュートリアルに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+
 - ご使用のオペレーティング システムに対応した Ruby とそれに関連するソフトウェアをインストール済みであること。
     - **MacOS**: Homebrew をインストールし、rbenv と ruby-build をインストールした後、Ruby と FreeTDS を順にインストールします。 [手順 1.2.、手順 1.3.、手順 1.4.、手順 1.5.](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/) を参照してください。
     - **Ubuntu**: Ruby の前提条件をインストールし、rbenv と ruby-build をインストールした後、Ruby と FreeTDS を順にインストールします。 [手順 1.2.、手順 1.3.、手順 1.4.、手順 1.5.](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/) を参照してください。
 
 ## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
-Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
-
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ウィンドウで、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます (下図参照)。
-
-   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
-
-4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 > [!IMPORTANT]
 > このチュートリアルを実行するコンピューターのパブリック IP アドレスに対してファイアウォール規則を設定しておく必要があります。 別のコンピューターから実行する場合または別のパブリック IP アドレスがある場合は、[Azure Portal でサーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)を作成してください。 

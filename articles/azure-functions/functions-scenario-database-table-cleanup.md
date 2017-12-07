@@ -15,14 +15,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: ac0399867e0cdab1825022c4ed73ce003cc8c7e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
-このトピックでは、Azure Functions を使用して Azure SQL Database のテーブルの行をクリーンアップするスケジュール済みジョブを作成する方法を示します。 この新しい C# 関数は、Azure ポータルの定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリの設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 Mobile Apps のテーブルにおける CRUD 操作を関数で個別に処理する場合は、[Mobile Apps バインド](functions-bindings-mobile-apps.md)を使用する必要があります。
+このトピックでは、Azure Functions を使用して Azure SQL Database のテーブルの行をクリーンアップするスケジュール済みジョブを作成する方法を示します。 この新しい C# 関数は、Azure ポータルの定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
+
+Mobile Apps のテーブルにおける、作成、読み取り、更新、および削除 (CRUD) のそれぞれの操作を関数で処理する場合は、[Mobile Apps バインド](functions-bindings-mobile-apps.md)を使用する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,10 +61,10 @@ ms.lasthandoff: 10/11/2017
     | Setting       | 推奨値 | Description             | 
     | ------------ | ------------------ | --------------------- | 
     | **名前**  |  sqldb_connection  | 関数コードで保存されている接続文字列にアクセスするために使用します。    |
-    | **値** | コピーされた文字列  | 前のセクションでコピーした接続文字列を貼り付けます。 |
+    | **値** | コピーされた文字列  | 前のセクションでコピーした接続文字列を貼り付け、`{your_username}` および `{your_password}` プレースホルダーを実際の値で置き換えます。 |
     | **型** | SQL Database | 既定の SQL Database 接続を使用します。 |   
 
-3. [ **Save**] をクリックします。
+3. **[Save]** をクリックします。
 
 それでは、SQL Database に接続する C# 関数のコードを追加しましょう。
 
@@ -84,7 +86,7 @@ ms.lasthandoff: 10/11/2017
     using System.Threading.Tasks;
     ```
 
-4. 既存の **Run** 関数を次のコードに置き換えます。
+4. 既存の `Run` 関数を次のコードに置き換えます。
     ```cs
     public static async Task Run(TimerInfo myTimer, TraceWriter log)
     {
@@ -105,7 +107,7 @@ ms.lasthandoff: 10/11/2017
     }
     ```
 
-    このサンプル コマンドは、出荷日に基づいて **[ステータス]** 列を更新します。 これは、32 行のデータが更新されるはずです。
+    このサンプル コマンドは、出荷日に基づいて `Status` 列を更新します。 これは、32 行のデータが更新されるはずです。
 
 5. **[保存]** をクリックして、次に関数が実行されるようすを **[ログ]** ウィンドウで観察し、**SalesOrderHeader** テーブルの更新された行数をメモします。
 

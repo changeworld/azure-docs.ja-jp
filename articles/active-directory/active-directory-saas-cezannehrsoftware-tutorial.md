@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: cf44d749ecbfcffb3d5a6e5e12aa49e66f7cde2e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 620b0f62bceeda6fac87c31b325a078260f7d3d0
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル: Azure Active Directory と Cezanne HR Software の統合
 
@@ -108,11 +108,14 @@ Cezanne HR Software で Azure AD のシングル サインオンを構成して�
 
     ![[Cezanne HR Software のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://w3.cezanneondemand.com/CezanneOnDemand/-/optyma`」を入力します。
+    a. **[サインオン URL]** ボックスに、URL として「`https://w3.cezanneondemand.com/CezanneOnDemand/-/<tenantidentifier>`」を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`https://w3.cezanneondemand.com/CezanneOnDemand/`
 
-    c. **[応答 URL]** ボックスに、URL として「`https://w3.cezanneondemand.com:443/cezanneondemand/-/optyma/Saml/samlp`」と入力します。
+    c. **[応答 URL]** ボックスに、URL として「`https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`」と入力します。
+    
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を入手するには、[Cezanne HR Software クライアント サポート チーム](https://cezannehr.com/services/support/)にお問い合わせください。
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 

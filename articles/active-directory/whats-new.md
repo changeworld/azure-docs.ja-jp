@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 11/28/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9de535b2fb70181c68fb698e847dd8361bf54385
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f1538e1c26cfe658c7f42ccdd57d8bf5aca0b1fb
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -43,18 +43,20 @@ ms.lasthandoff: 11/22/2017
 
 ## <a name="november-2017"></a>2017 年 11 月
  
+### <a name="retiring-acs"></a>ACS の廃止
+
 
 
 **タイプ:** 変更の計画  
 **サービス カテゴリ:** ACS  
 **製品の機能:** Access Control Service 
 
-**ACS の廃止**
 
 Microsoft Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) は 2018 年後半に廃止されます。  詳しいスケジュールや大まかな移行ガイダンスなどの詳細については、数週間以内にお知らせします。 この間に、ACS に関する質問があればこのページにコメントを投稿してください。Microsoft のチームのメンバーが回答します。
 
 ---
 
+### <a name="restrict-browser-access-to-the-intune-managed-browser"></a>ブラウザー アクセスを Intune Managed Browser に限定する 
 
 
 **タイプ:** 変更の計画  
@@ -62,7 +64,6 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 **製品の機能:** ID のセキュリティと保護
 
 
-**ブラウザー アクセスを Intune Managed Browser に限定する** 
 
 
 この動作により、Intune Managed Browser を承認されたアプリとして使用して、Office 365 やその他の Azure AD 接続クラウド アプリへのブラウザー アクセスを制限できるようになります。 
@@ -82,6 +83,7 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
  
 ---
 
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD アプリベースの条件付きアクセス向けの承認されたクライアント アプリの新規追加
 
  
 **タイプ:** 変更の計画  
@@ -89,7 +91,6 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 **製品の機能:** ID のセキュリティと保護
 
 
-**Azure AD アプリベースの条件付きアクセス向けの承認されたクライアント アプリの新規追加**
 
 
 以下のアプリが、[承認されたクライアント アプリ](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)の一覧に追加される予定です。
@@ -108,6 +109,9 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 
 ---
 
+### <a name="terms-of-use-support-for-multiple-languages"></a>使用条件での多言語のサポート
+
+
 
 **タイプ:** 新機能    
 **サービス カテゴリ:** 使用条件  
@@ -115,7 +119,6 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 
 
 
-**使用条件での多言語のサポート**
 
 
 管理者は、PDF ドキュメントを複数含めた新しい使用条件 (TOU) を作成できるようになりました。 これらの PDF ドキュメントは、対応する言語にタグ付けできます。 スコープに該当するユーザーには、PDF はユーザー設定に基づいて一致する言語で表示されます。 一致する言語がない場合は、既定の言語が表示されます。
@@ -124,13 +127,15 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 ---
  
 
+### <a name="realtime-password-writeback-client-status"></a>パスワード ライトバック クライアントのリアルタイムの状態
+
+
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** SSPR  
 **製品の機能:** ユーザー認証
 
 
-**パスワード ライトバック クライアントのリアルタイムの状態**
  
 
 オンプレミスのパスワード ライトバック クライアントの状態を確認できるようになりました。 このオプションは、**[[パスワードのリセット]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)** ページの **[オンプレミスの統合]** セクションで使用できます。 
@@ -145,6 +150,12 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 
  
 ---
+
+
+### <a name="azure-ad-app-based-conditional-access"></a>Azure AD のアプリベースの条件付きアクセス 
+
+
+
  
 **タイプ:** 新機能  
 **サービス カテゴリ:** Azure AD  
@@ -152,7 +163,6 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 
 
 
-**Azure AD のアプリベースの条件付きアクセス** 
 
 
 [Azure AD アプリベースの条件付きアクセス](active-directory-conditional-access-mam.md)を使用して、Office 365 やその他の Azure AD 接続クラウド アプリへのアクセスを Intune App Protection ポリシーがサポートされる[承認されたクライアント アプリ](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)に限定できるようになりました。 Intune App Protection ポリシーは、これらのクライアント アプリケーション上にある企業データの構成と保護に使用されます。
@@ -180,6 +190,8 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
  
 ---
 
+### <a name="managing-azure-ad-devices-in-the-azure-portal"></a>Azure Portal での Azure AD デバイスの管理
+
 
 
 **タイプ:** 新機能  
@@ -188,7 +200,6 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 
  
 
-**Azure Portal での Azure AD デバイスの管理**
 
 
 Azure AD に接続されているすべてのデバイスと、それらのデバイス関連のアクティビティを 1 か所で確認できるようになりました。 Azure Portal にすべてのデバイスの ID と設定を管理できる新しい管理機能が追加されました。 このリリースでは以下の操作を行うことができます。
@@ -209,14 +220,13 @@ Azure AD に接続されているすべてのデバイスと、それらのデ�
  
 ---
 
+### <a name="support-for-macos-as-device-platform-for-azure-ad-conditional-access"></a>Azure AD の条件付きアクセス用デバイス プラットフォームとしての macOS のサポート 
+
+
 
 **タイプ:** 新機能    
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護 
-
-
-
-**Azure AD の条件付きアクセス用デバイス プラットフォームでの macOS のサポート** 
  
 
 Azure AD 条件付きアクセス ポリシーのデバイス プラットフォームの条件に macOS を追加 (または除外) できるようになりました。 サポートされるデバイス プラットフォームに macOS が追加されたことで、以下の操作が可能になりました。
@@ -236,13 +246,14 @@ Azure AD 条件付きアクセス ポリシーのデバイス プラットフォ
  
 ---
 
+### <a name="nps-extension-for-azure-mfa"></a>Azure MFA の NPS 拡張機能 
+
 
 **タイプ:** 新機能    
 **サービス カテゴリ:** MFA  
 **製品の機能:** ユーザー認証
 
 
-**Azure MFA の NPS 拡張機能** 
 
 
 Azure MFA のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、新しいサーバーをインストール、構成、管理することなく、電話、テキスト メッセージ、またはモバイル アプリによる検証を既存の認証フローに追加できます。 
@@ -255,13 +266,13 @@ Azure MFA のネットワーク ポリシー サーバー (NPS) 拡張機能は�
  
 ---
 
+### <a name="restore-or-permanently-remove-deleted-users"></a>削除済みユーザーの復元または完全な削除
+
 
 **タイプ:** 新機能    
 **サービス カテゴリ:** ユーザー管理  
 **製品の機能:** ディレクトリ 
 
-
-**削除済みユーザーの復元または完全な削除**
 
 
 Azure AD 管理センターで以下の操作が可能になりました。
@@ -281,14 +292,12 @@ Azure AD 管理センターで以下の操作が可能になりました。
  
 ---
 
-
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Azure AD アプリベースの条件付きアクセス向けの承認されたクライアント アプリの新規追加
 
  
 **タイプ:** 変更された機能  
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
-
-**Azure AD アプリベースの条件付きアクセス向けの承認されたクライアント アプリの新規追加**
 
 
 以下のアプリが、[承認されたクライアント アプリ](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)の一覧に追加されました。
@@ -307,14 +316,13 @@ Azure AD 管理センターで以下の操作が可能になりました。
 
 ---
 
+### <a name="ability-to-or-between-controls-in-a-conditional-access-policy"></a>条件付きアクセス ポリシーのコントロールの "OR" 結合機能 
 
 
 **タイプ:** 変更された機能    
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
-
-**条件付きアクセス ポリシーのコントロールの "OR" 結合機能** 
  
 条件付きアクセス コントロールを "OR" で結合する (選択したコントロールのいずれかを必須にする) 機能がリリースされました。 この機能を使用すると、アクセス コントロールを **OR** で結合してポリシーを作成することができます。 たとえば、この機能を使用して、多要素認証を使用したサインイン**または**準拠デバイスの使用をユーザーに求めるポリシーを作成できます。
 
@@ -323,13 +331,13 @@ Azure AD 管理センターで以下の操作が可能になりました。
  
 ---
 
+### <a name="aggregation-of-realtime-risk-events"></a>リアルタイムのリスク イベントの集計
 
 
 **タイプ:** 変更された機能    
 **サービス カテゴリ:** Identity Protection  
 **製品の機能:** ID のセキュリティと保護
 
-**リアルタイムのリスク イベントの集計**
 
 管理能力の向上のため、Azure AD Identity Protection では、指定日に同一の IP アドレスで発生したすべてのリアルタイム リスク イベントが、リスク イベントの種類ごとに集計されるようになりました。 この変更により表示されるリスク イベントの量が制限されますが、ユーザーのセキュリティが変更されることはありません。
 
@@ -344,12 +352,15 @@ Azure AD 管理センターで以下の操作が可能になりました。
 
 ## <a name="october-2017"></a>2017 年 10 月
 
+
+### <a name="deprecating-azure-ad-reports"></a>Azure AD レポートの廃止
+
+
 **タイプ:** 変更の計画  
 **サービス カテゴリ:** レポート  
 **製品の機能:** ID ライフサイクル管理  
 
 
-**Azure AD レポートの廃止**
 
 Azure Portal では次の機能が提供されています。
 
@@ -360,12 +371,13 @@ Azure Portal では次の機能が提供されています。
 
 ---
 
+### <a name="automatic-sign-in-field-detection"></a>サインイン フィールドの自動検出
+
+
 **タイプ:** 固定   
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO  
 
-
-**サインイン フィールドの自動検出**
 
 
 Azure Active Directory は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。  この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](application-config-sso-problem-configure-password-sso-non-gallery.md#how-to-manually-capture-sign-in-fields-for-an-application)」に示されています。 この機能は、[Azure Portal](http://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの **シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
@@ -374,12 +386,14 @@ Azure Active Directory は、HTML ユーザー名とパスワード フィール
 
 ---
 
+### <a name="new-mfa-features"></a>MFA の新機能
+
+
 **タイプ:** 新機能  
 **サービス カテゴリ:** MFA  
 **製品の機能:** ID のセキュリティと保護  
 
 
-**MFA の新機能**
 
 多要素認証 (MFA) は、組織を保護する上で欠かせない要素です。 資格情報の適応性を高めて多要素認証をよりシームレスに利用できるようにするため、以下の機能が追加されました。 
 
@@ -393,12 +407,16 @@ Azure Active Directory は、HTML ユーザー名とパスワード フィール
 
 
 ---
+
+### <a name="introducing-terms-of-use"></a>使用条件の導入
+
+
+
 **タイプ:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** ガバナンス  
 
 
-**使用条件の導入**
 
 Azure AD Terms of Use では、エンド ユーザーに対して簡単な方法で情報を提示できます。 これにより、ユーザーは法律またはコンプライアンスの要件に関する免責事項を確認できます。
 
@@ -414,11 +432,14 @@ Azure AD Terms of Use は、次のシナリオで使用できます。
 
 
 ---
+
+### <a name="enhancements-to-privileged-identity-management"></a>Privileged Identity Management の機能強化
+
+
 **タイプ:** 新機能  
 **サービス カテゴリ:** PIM  
 **製品の機能:** Privileged Identity Management  
 
-**Privileged Identity Management の機能強化**
 
 Azure Active Directory Privileged Identity Management (PIM) で、組織内の以下の Azure リソース (プレビュー) へのアクセスを管理、制御、監視できるようになりました。
 
@@ -432,11 +453,14 @@ Azure のロール ベースのアクセス制御 (RBAC) 機能を利用する A
 
 
 ---
+
+### <a name="introducing-access-reviews"></a>アクセス レビューの導入
+
+
 **タイプ:** 新機能  
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** ガバナンス  
 
-**アクセス レビューの導入**
 
 
 組織でアクセス レビュー (プレビュー) を使うことにより、グループ メンバーシップおよびエンタープライズ アプリケーションへのアクセスを、効率的に管理できます。 
@@ -451,12 +475,16 @@ Azure のロール ベースのアクセス制御 (RBAC) 機能を利用する A
 
 
 ---
+
+### <a name="hiding-third-party-applications-from-my-apps-and-the-office-365-launcher"></a>マイ アプリおよび Office 365 ランチャーでサード パーティ製アプリケーションを非表示にする
+
+
+
 **タイプ:** 新機能  
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO  
 
 
-**マイ アプリおよび Office 365 ランチャーでサード パーティ製アプリケーションを非表示にする**
 
 新しい**アプリの非表示**プロパティにより、ユーザー ポータルに表示されるアプリを管理しやすくなりました。 アプリの非表示は、アプリ タイルにバックエンド サービスのタイルや重複したタイルが表示され、ユーザーのアプリ ランチャーが雑然となっている場合に役立ちます。 切り替えボタンはサード パーティ製アプリの [プロパティ] セクションにあり、**[ユーザーに表示しますか?]** というラベルが付いています。 PowerShell を介してプログラムでアプリを非表示にすることもできます。 
 
@@ -470,12 +498,14 @@ Azure のロール ベースのアクセス制御 (RBAC) 機能を利用する A
 
 ## <a name="september-2017"></a>2017 年 9 月
 
+### <a name="hotfix-for-microsoft-identity-manager"></a>Microsoft Identity Manager の修正プログラム
+
+
 **タイプ:** 変更された機能  
 **サービス カテゴリ:** Microsoft Identity Manager  
 **製品の機能:** ID ライフサイクル管理  
 
 
-**Microsoft Identity Manager の修正プログラム**
 
 2017 年 9 月 25 日より、Microsoft Identity Manager (MIM) 2016 2016 Service Pack 1 (SP1) の修正プログラム ロールアップ パッケージ (ビルド 4.4.1642.0) の提供が開始されました。 このロールアップ パッケージの説明は以下のとおりです。
 

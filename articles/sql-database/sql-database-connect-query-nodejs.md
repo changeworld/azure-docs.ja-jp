@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/05/2017
+ms.date: 07/06/2017
 ms.author: carlrab
-ms.openlocfilehash: a0b716fa37b4f8071bc1b8260fa73e807e37f78d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: fc7bc80e332afeb284f9e71609d1d02b8193b6f7
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-nodejs-to-query-an-azure-sql-database"></a>Node.js を使用して Azure SQL Database に照会する
 
@@ -29,13 +29,10 @@ ms.lasthandoff: 10/31/2017
 
 このクイック スタート チュートリアルを完了するには、以下のものが必要です。
 
-- Azure SQL Database。 このクイック スタートでは、次のいずれかのクイック スタートで作成したリソースを使用します。 
-
-   - [DB の作成 - ポータル](sql-database-get-started-portal.md)
-   - [DB の作成 - CLI](sql-database-get-started-cli.md)
-   - [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
 - このクイック スタート チュートリアルに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+
 - ご使用のオペレーティング システムに対応した Node.js とそれに関連するソフトウェアをインストール済みであること。
     - **MacOS**: Homebrew と Node.js をインストールした後、ODBC ドライバーと SQLCMD をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/node/mac/) を参照してください。
     - **Ubuntu**: Node.js をインストールした後、ODBC ドライバーと SQLCMD をインストールします。 [手順 1.2. と手順 1.3.](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/) を参照してください。
@@ -43,15 +40,7 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
-Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
-
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。 
-
-   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
-
-4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示し、必要に応じて、パスワードをリセットします。
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 > [!IMPORTANT]
 > このチュートリアルを実行するコンピューターのパブリック IP アドレスに対してファイアウォール規則を設定しておく必要があります。 別のコンピューターから実行する場合または別のパブリック IP アドレスがある場合は、[Azure Portal でサーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)を作成してください。 
@@ -144,5 +133,4 @@ Azure SQL データベースに接続するために必要な接続情報を取�
 - [SSMS で初めての Azure SQL Database を設計](sql-database-design-first-database.md)する方法や [.NET で初めての Azure SQL Database を設計](sql-database-design-first-database-csharp.md)する方法についての情報を入手します。
 - [SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)の方法についての情報を入手します。
 - [Visual Studio Code を使用した接続とクエリ](sql-database-connect-query-vscode.md)の方法についての情報を入手します。
-
 

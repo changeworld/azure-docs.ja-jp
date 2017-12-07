@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: juluk
-ms.openlocfilehash: 5d376ea0bce1088206aa369decf92b1b7523918a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4eb5680c618d78e0722e1eb4a0f551f26b4dc902
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell ウィンドウの使用
 
@@ -32,7 +32,7 @@ Bash 環境と PowerShell 環境をスワップするには、Cloud Shell ツー
 ## <a name="restart-cloud-shell"></a>Cloud Shell の再起動
 ![](media/using-the-shell-window/restart.png)
 > [!WARNING]
-> Cloud Shell を再起動すると、マシンの状態がリセットされ、ファイル共有に保持されていないファイルはすべて失われます。
+> Cloud Shell を再起動すると、マシンの状態がリセットされ、Azure ファイル共有に保持されていないファイルはすべて失われます。
 
 * マシンの状態をリセットするには、Cloud Shell ツール バーの再起動アイコンをクリックします。
 

@@ -9,11 +9,11 @@ ms.date: 10/31/2017
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: 8ff85f842356eff3f12ccd04e337d71c52d0efcd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1b8fd12e071bfbd01567803370e510e7e07ccb99
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -64,7 +64,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 すべての Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](json-samples.md)」をご覧ください。
 
-## <a name="mode"></a>Mode
+## <a name="mode"></a>モード
 
 `mode` を `all` に設定して、ポリシーの割り当てですべてのリソース グループと種類を評価できるようにすることをお勧めします。 「[Allow custom VM image from a Resource Group (リソース グループからのカスタムの VM イメージを許可する)](scripts/allow-custom-vm-image.md)」で、リソース グループにタグを適用するポリシー定義の例を確認できます。
 
@@ -88,13 +88,21 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
     "type": "array",
     "metadata": {
       "description": "The list of allowed locations for resources.",
-      "displayName": "Allowed locations"
+      "displayName": "Allowed locations",
+      "strongType": "location"
     }
   }
 }
 ```
 
 パラメーターの型は、文字列または配列のどちらも可能です。 メタデータ プロパティは、Azure Portal などのツールでわかりやすい情報を表示するために、使用されます。
+
+メタデータ プロパティの中で **strongType** を使用して、Azure ポータル内にオプションの複数選択リストを用意できます。  現時点で **strongType** で使用できる値には、以下が含まれます。
+
+* `"location"`
+* `"resourceTypes"`
+* `"storageSkus"`
+* `"vmSKUs"`
 
 ポリシー規則では、次の構文でパラメーターを参照します。
 

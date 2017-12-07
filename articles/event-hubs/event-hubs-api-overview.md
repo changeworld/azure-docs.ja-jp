@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: 40cd76e1aacb68d6051cae4a3c90a8970f5449f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abd44fd0c9cbfab2365b1552e3cd90e84a5348d7
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="available-event-hubs-apis"></a>使用可能な Event Hubs API
+
+この記事では、Event Hubs リソースの管理に使うことができる API クライアントのセットについて説明します。
 
 ## <a name="runtime-apis"></a>ランタイム API
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 913805901bf8131e4908be03e9213539a26205ed
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 0973f83ae839597f3b499814a4a04a8a640a1fb6
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
@@ -46,7 +46,7 @@ Azure Portal を開発に使用する場合は、こちらの orchestrator 機�
 重要な点は、`orchestrationTrigger` というバインドの種類です。 すべての orchestrator 機能は、このトリガーの種類を使用する必要があります。
 
 > [!WARNING]
-> Orchestrator 機能の "I/O なし" の規則に従うには、`orchestrationTrigger` トリガー バインドを使用する場合に、入力または出力バインドを使用しないでください。  他の入力または出力バインドが必要な場合、代わりに `activityTrigger` 関数のコンテキストで使用する必要があります。
+> Orchestrator 機能の "I/O なし" の規則に従うには、`orchestrationTrigger` トリガー バインドを使用する場合に、入力または出力バインドを使用しないでください。  他の入力または出力バインドが必要な場合は、`activityTrigger` 関数のコンテキストで使用する必要があります。それらがオーケストレーターによって呼び出されます。
 
 ## <a name="c-script"></a>C# スクリプト
 
@@ -54,7 +54,7 @@ Azure Portal を開発に使用する場合は、こちらの orchestrator 機�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-すべての C# オーケストレーション関数は、`Microsoft.Azure.WebJobs.Extensions.DurableTask` アセンブリにある `DurableOrchestrationContext` パラメーターを持つ必要があります。 C# スクリプトを使用している場合、アセンブリは `#r` 表記を使用して参照できます。 このコンテキスト オブジェクトでは、他の*アクティビティ*関数を呼び出し、その [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) メソッドを使用して入力パラメーターを渡すことができます。
+すべての C# オーケストレーション関数は、`Microsoft.Azure.WebJobs.Extensions.DurableTask` アセンブリにある `DurableOrchestrationContext` 型のパラメーターを持つ必要があります。 C# スクリプトを使用している場合、アセンブリは `#r` 表記を使用して参照できます。 このコンテキスト オブジェクトでは、他の*アクティビティ*関数を呼び出し、その [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) メソッドを使用して入力パラメーターを渡すことができます。
 
 このコードでは、`E1_SayHello` を異なるパラメーター値で 3 回続けて呼び出します。 各呼び出しの戻り値が `outputs` 一覧に追加され、それが関数の末尾に返されます。
 
@@ -69,7 +69,7 @@ Azure Portal を開発に使用する場合は、こちらの orchestrator 機�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-この関数は [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) パラメーターを持ち、orchestrator 関数の [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_)> への呼び出しによって渡された入力を取得するのに使用されます。
+この関数は [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) 型のパラメーターを持ち、オーケストレーター関数の [`CallActivityAsync<T>`](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) への呼び出しによって渡された入力を取得するのに使用されます。
 
 ## <a name="run-the-sample"></a>サンプルの実行
 

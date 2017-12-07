@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 355cb2cef52b5dfecddae228d0cc24a069d3b695
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33d4a193cc3152bfab1f03dde32ad4f1bcb0afe1
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -50,7 +50,7 @@ Functions には、Application Insights を使用しないビルトイン監視�
 
 ### <a name="existing-function-app"></a>既存の関数アプリ
 
-次のようにして、インストルメンテーション キーを取得し、関数アプリに保存します。
+インストルメンテーション キーを取得し、関数アプリに保存します。
 
 1. Application Insights インスタンスを作成します。 アプリケーションの種類を **[全般]** に設定します。
 
@@ -60,15 +60,15 @@ Functions には、Application Insights を使用しないビルトイン監視�
 
    ![Application Insights のインストルメンテーション キーをコピーする](media/functions-monitoring/copy-ai-key.png)
 
-1. 関数アプリの **[アプリケーションの設定]** ページで、APPINSIGHTS_INSTRUMENTATIONKEY という名前の[アプリ設定を追加し](functions-how-to-use-azure-function-app-settings.md#settings)、インストルメンテーション キーを貼り付けます。
+1. 関数アプリの **[アプリケーション設定]** ページで、**[新しい文字列の追加]** をクリックして[アプリの設定を追加](functions-how-to-use-azure-function-app-settings.md#settings)します。 新しい設定の名前を APPINSIGHTS_INSTRUMENTATIONKEY にして、コピーしたインストルメンテーション キーを貼り付けます。
 
    ![インストルメンテーション キーをアプリ設定に追加する](media/functions-monitoring/add-ai-key.png)
 
-1. [ **Save**] をクリックします。
+1. **[Save]** をクリックします。
 
 ## <a name="view-telemetry-data"></a>テレメトリ データを表示する
 
-ポータルで関数アプリから Application Insights に移動するには、関数アプリの **[概要]** ページで **[Application Insights]** リンクを選びます。
+ポータルで関数アプリから接続された Application Insights インスタンスに移動するには、関数アプリの **[概要]** ページで **[Application Insights]** リンクを選びます。
 
 Application Insights の使用方法については、「[Application Insights のドキュメント](https://docs.microsoft.com/azure/application-insights/)」をご覧ください。 このセクションでは、Application Insights でデータを表示する方法の例をいくつか示します。 Application Insights をすでに使い慣れている場合は、[テレメトリ データの構成とカスタマイズに関するセクション](#configure-categories-and-log-levels)に直接進んでかまいません。
 
@@ -84,7 +84,7 @@ Application Insights の使用方法については、「[Application Insights �
 
 ![パフォーマンス](media/functions-monitoring/performance.png)
 
-**[サーバー]** タブには、リソース使用率とサーバーあたりのスループットが表示されます。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 サーバーは、*クラウド ロール インスタンス*と呼ばれます。 
+**[サーバー]** タブには、リソース使用率とサーバーあたりのスループットが表示されます。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 サーバーは、**クラウド ロール インスタンス**と呼ばれます。
 
 ![サーバー](media/functions-monitoring/servers.png)
 
@@ -94,7 +94,7 @@ Application Insights の使用方法については、「[Application Insights �
 
 ## <a name="query-telemetry-data"></a>テレメトリをクエリする
 
-[Application Insights Analytics](../application-insights/app-insights-analytics.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作するためのクエリ言語が用意されています。
+[Application Insights Analytics](../application-insights/app-insights-analytics.md) では、データベース内のテーブルの形式ですべてのテレメトリ データにアクセスできます。 Analytics では、データを抽出、操作、視覚化するためのクエリ言語が用意されています。
 
 ![Analytics を選択する](media/functions-monitoring/select-analytics.png)
 
@@ -131,7 +131,7 @@ traces
 
 ## <a name="configure-categories-and-log-levels"></a>カテゴリとログ レベルを構成する
 
-Application Insights はカスタム構成なしで使用できますが、既定の構成ではデータ量が多くなる可能性があります。 Visual Studio Azure サブスクリプションを使用している場合、App Insights のデータ上限に達する可能性があります。 この記事の残りの部分では、関数から Application Insights に送信するデータを構成し、カスタマイズする方法を説明します。
+Application Insights はカスタム構成なしで使用できますが、既定の構成ではデータ量が多くなる可能性があります。 Visual Studio Azure サブスクリプションを使っている場合、Application Insights のデータ上限に達する可能性があります。 この記事の残りの部分では、関数から Application Insights に送信するデータを構成し、カスタマイズする方法を説明します。
 
 ### <a name="categories"></a>カテゴリ
 
@@ -178,7 +178,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 この例では、次のルールを設定します。
 
-1. カテゴリが "Host.Results" または "Function" のログの場合は、`Error` 以上のレベルのみを Application Insights に送信する。 `Information` 以下のレベルのログは無視する。
+1. カテゴリが "Host.Results" または "Function" のログの場合は、`Error` 以上のレベルのみを Application Insights に送信する。 `Warning` 以下のレベルのログは無視する。
 2. カテゴリが "Host" のログの場合は、 `Information` 以上のレベルのみを Application Insights に送信する。 `Debug` 以下のレベルのログは無視する。
 3. その他すべてのログについては、`Information` 以上のレベルのみを Application Insights に送信する。
 
@@ -217,7 +217,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 これらのログには、[構成可能な](#configure-the-aggregator)期間の関数呼び出しの回数と平均回数が記録されます。 既定の期間は、30 秒か 1,000 回のどちらか早い方です。 
 
-これらのログは、Application Insights では "customMetrics" として示されます。 例としては、実行回数、成功率、時間などがあります。
+ログは、Application Insights の **customMetrics** テーブルで利用できます。 例としては、実行回数、成功率、時間などがあります。
 
 ![customMetrics クエリ](media/functions-monitoring/custom-metrics-query.png)
 
@@ -225,7 +225,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ### <a name="other-categories"></a>その他のカテゴリ
 
-すでに示されているカテゴリ以外のカテゴリのすべてのログは、Application Insights では "traces" として示されます。
+すでに示されているカテゴリ以外のカテゴリのすべてのログは、Application Insights の **traces** テーブルで利用できます。
 
 ![traces クエリ](media/functions-monitoring/analytics-traces.png)
 
@@ -291,7 +291,7 @@ logger.LogInformation("partitionKey={partitionKey}, rowKey={rowKey}", partitionK
 
 プレースホルダーはこのように処理されるため、構造化ログを実行できます。 Application Insights では、メッセージ文字列だけでなく、パラメーターの名前と値のペアも保存します。 そのため、メッセージ引数はクエリ可能なフィールドになります。
 
-たとえば、前の例のようなロガー メソッド呼び出しでは、フィールド `customDimensions.prop__rowKey` をクエリできます。 プレフィックスを追加して、ランタイムが追加したフィールドと、ご使用の関数コードが追加したフィールドとの間に競合が起こらないようにします。
+たとえば、前の例のようなロガー メソッド呼び出しでは、フィールド `customDimensions.prop__rowKey` をクエリできます。 `prop__` プレフィックスを追加して、ランタイムが追加したフィールドと、ご使用の関数コードが追加したフィールドとの間に競合が起こらないようにします。
 
 フィールド `customDimensions.prop__{OriginalFormat}` を参照することで、元のメッセージ文字列をクエリすることもできます。  
 
@@ -454,7 +454,7 @@ module.exports = function (context, req) {
 
 ### <a name="dependencies"></a>依存関係
 
-依存関係は自動的には表示されませんが、依存関係を表示するようにカスタム コードを記述することができます。 [C# カスタム テレメトリ セクション](#custom-telemetry-in-c-functions)にあるサンプル コードで方法を示します。 このサンプル コードでは、次のような Application Insights の*アプリケーション マップ*が作成されます。
+他のサービスに対する関数の依存関係は自動的には表示されませんが、依存関係を表示するようにカスタム コードを記述することができます。 [C# カスタム テレメトリ セクション](#custom-telemetry-in-c-functions)にあるサンプル コードで方法を示します。 このサンプル コードでは、次のような Application Insights の*アプリケーション マップ*が作成されます。
 
 ![アプリケーション マップ](media/functions-monitoring/app-map.png)
 
@@ -473,10 +473,10 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ### <a name="real-time-monitoring"></a>リアルタイム監視
 
-リアルタイム監視を行うには、関数の **[監視]** タブで **[ライブ イベント ストリーム]** をクリックします。ライブ イベント ストリームは、ブラウザー内の新しいタブにグラフで表示されます
+リアルタイム監視を行うには、関数の **[監視]** タブで **[ライブ イベント ストリーム]** をクリックします。ライブ イベント ストリームが、新しいブラウザー タブにグラフで表示されます。
 
 > [!NOTE]
-> データの取り込みに失敗する可能性がある、既知の問題があります。 イベント ストリーム データを正しく取り込むために、ライブ イベント ストリームが表示されているブラウザー タブを閉じて、**[ライブ イベント ストリーム]** を再度クリックする必要があります。 
+> データの取り込みに失敗する可能性がある、既知の問題があります。 イベント ストリーム データを正しく取り込むためには、ライブ イベント ストリームが表示されているブラウザー タブを閉じて、**[ライブ イベント ストリーム]** を再度クリックすることが必要な場合があります。 
 
 これらの統計はリアルタイムですが、実行データの実際のグラフには 10 秒程度の遅延がある場合があります。
 

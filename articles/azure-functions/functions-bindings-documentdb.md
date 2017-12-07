@@ -1,69 +1,67 @@
-﻿---
-title: "Functions の Azure Cosmos DB バインド | Microsoft Docs"
+---
+title: "Functions の Azure Cosmos DB バインド"
 description: "Azure Functions で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
-ms.assetid: 3d8497f0-21f3-437d-ba24-5ece8c90ac85
 ms.service: functions; cosmos-db
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: d05c0342e771e229a7175570ad227c4359980990
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: a725d6e08721107ddd83999dac85dddb88896ebf
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/30/2017
 ---
-# <a name="azure-cosmos-db-bindings-for-functions"></a>Functions の Azure Cosmos DB バインド
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+# <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure Functions の Azure Cosmos DB バインド
 
-この記事では、Azure Functions で Azure Cosmos DB のバインドを構成したりコーディングしたりする方法について説明します。 Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
+この記事では、Azure Functions で [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Azure Cosmos DB のサーバーレス コンピューティングの詳細については、「[Azure Cosmos DB: Azure Functions を使用したサーバーなしのデータベースのコンピューティング](..\cosmos-db\serverless-computing-database.md)」をご覧ください。
-
-<a id="trigger"></a>
-<a id="cosmosdbtrigger"></a>
-
-## <a name="azure-cosmos-db-trigger"></a>Azure Cosmos DB のトリガー
+## <a name="trigger"></a>トリガー
 
 Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmos-db/change-feed.md)を使用して、パーティション間の変更をリッスンします。 トリガーは、パーティションに_リース_を保存するために使用する 2 つ目のコレクションを必要とします。
 
 トリガーが機能するためには、監視されるコレクションと、リースを含むコレクションの両方が使用できる必要があります。
 
-Azure Cosmos DB のトリガーは、次のプロパティをサポートしています。
+## <a name="trigger---example"></a>トリガー - 例
 
-|プロパティ  |Description  |
-|---------|---------|
-|**type** | `cosmosDBTrigger` に設定する必要があります。 |
-|**name** | 変更されるドキュメントの一覧を表す、関数コードで使用する変数の名前。 | 
-|**direction** | `in` に設定する必要があります。 このパラメーターは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
-|**connectionStringSetting** | 監視されている Azure Cosmos DB アカウントに接続するために使用される接続文字列を含めたアプリ設定の名前。 |
-|**databaseName** | 監視されているコレクションを使用する Azure Cosmos DB データベースの名前。 |
-|**collectionName** | 監視されているコレクションの名前。 |
-| **leaseConnectionStringSetting** | (省略可能) リース コレクションを保持するサービスへの接続文字列を含むアプリ設定の名前。 この値を設定しない場合、`connectionStringSetting` という値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
-| **leaseDatabaseName** | (省略可能) リースの保存のために使用するコレクションを保持しているデータベースの名前。 この値を設定しない場合、`databaseName` の設定の値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
-| **leaseCollectionName** | (省略可能) リースの保存のために使用するコレクションの名前。 この値を設定しない場合、`leases` という値が使用されます。 |
-| **createLeaseCollectionIfNotExists** | (省略可能) `true` を設定すると、リース コレクションが存在していない場合に自動でリース コレクションを作成します。 既定値は `false` です。 |
-| **leaseCollectionThroughput** | (省略可能) リース コレクションの作成に割り当てる要求ユニットの量を定義します。 この設定は、`createLeaseCollectionIfNotExists` が `true` に設定されている場合のみ使用できます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。
+言語固有の例をご覧ください。
 
->[!NOTE] 
->リース コレクションに接続するために使用される接続文字列には書き込み権限が必要です。
+* [プリコンパイル済み C#](#trigger---c-example)
+* [C# スクリプト](#trigger---c-script-example)
+* [JavaScript](#trigger---javascript-example)
 
-これらのプロパティは、Azure Portal の関数の [統合] タブで、または `function.json` プロジェクト ファイルを編集することで、設定できます。
+### <a name="trigger---c-example"></a>トリガー - C# の例
 
-## <a name="using-an-azure-cosmos-db-trigger"></a>Azure Cosmos DB のトリガーの使用
+次の例は、特定のデータベースとコレクションからトリガーされる[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示します。
 
-このセクションには、Azure Cosmos DB のトリガーを使用する方法の例が含まれています。 その例は、次のようなトリガー メタデータを前提にしています。
+```cs
+[FunctionName("DocumentUpdates")]
+public static void Run(
+    [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+IReadOnlyList<Document> documents,
+    TraceWriter log)
+{
+        log.Info("Documents modified " + documents.Count);
+        log.Info("First document Id " + documents[0].Id);
+}
+```
+
+### <a name="trigger---c-script"></a>トリガー - C# スクリプト
+
+次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、Cosmos DB レコードが変更されるとログ メッセージを書き込みます。
+
+*function.json* ファイルのバインディング データを次に示します。
 
 ```json
 {
@@ -77,10 +75,9 @@ Azure Cosmos DB のトリガーは、次のプロパティをサポートして�
   "createLeaseCollectionIfNotExists": true
 }
 ```
- 
-ポータルの関数アプリから Azure Cosmos DB のトリガーを作成する方法の例については、「[Azure Cosmos DB によってトリガーされる関数の作成](functions-create-cosmos-db-triggered-function.md)」をご覧ください。 
 
-### <a name="trigger-sample-in-c"></a>C# でのトリガー サンプル #
+C# スクリプト コードを次に示します。
+ 
 ```cs 
     #r "Microsoft.Azure.Documents.Client"
     using Microsoft.Azure.Documents;
@@ -93,8 +90,27 @@ Azure Cosmos DB のトリガーは、次のプロパティをサポートして�
     }
 ```
 
+### <a name="trigger---javascript"></a>トリガー - JavaScript
 
-### <a name="trigger-sample-in-javascript"></a>JavaScript でのトリガー サンプル
+次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、Cosmos DB レコードが変更されるとログ メッセージを書き込みます。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+  "type": "cosmosDBTrigger",
+  "name": "documents",
+  "direction": "in",
+  "leaseCollectionName": "leases",
+  "connectionStringSetting": "<connection-app-setting>",
+  "databaseName": "Tasks",
+  "collectionName": "Items",
+  "createLeaseCollectionIfNotExists": true
+}
+```
+
+JavaScript コードを次に示します。
+
 ```javascript
     module.exports = function (context, documents) {
         context.log('First document Id modified : ', documents[0].id);
@@ -103,35 +119,97 @@ Azure Cosmos DB のトリガーは、次のプロパティをサポートして�
     }
 ```
 
-<a id="docdbinput"></a>
+## <a name="trigger---attributes"></a>トリガー - 属性
 
-## <a name="documentdb-api-input-binding"></a>DocumentDB API 入力バインド
-DocumentDB API 入力バインドでは、Azure Cosmos DB ドキュメントを取得して関数の名前付き入力パラメーターに渡します。 ドキュメント ID は、関数を呼び出したトリガーに基づいて決定することができます。 
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) で定義されている [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs) 属性を使用します。
 
-DocumentDB API 入力バインドには、*function.json* に次のプロパティがあります。
+この属性のコンストラクターにはデータベース名とコレクションを指定します。 これらの設定や構成できる他のプロパティについて詳しくは、「[トリガー - 構成](#trigger---configuration)」をご覧ください。 次に示すのは、メソッド シグネチャでの `CosmosDBTrigger` 属性の例です。
 
-|プロパティ  |Description  |
-|---------|---------|
-|**name**     | 関数のドキュメントを表すバインド パラメーターの名前。  |
-|**type**     | `documentdb` に設定する必要があります。        |
-|**databaseName** | ドキュメントを含むデータベース。        |
-|**collectionName**  | ドキュメントを含むコレクションの名前。 |
-|**id**     | 取得するドキュメントの ID。 このプロパティは、バインド パラメーターをサポートしています。 詳細については、「[バインド式でのカスタム入力プロパティへのバインド](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)」を参照してください。 |
-|**sqlQuery**     | 複数のドキュメントを取得するときに使用する Azure Cosmos DB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。例: `SELECT * FROM c where c.departmentId = {departmentId}`        |
-|**connection**     |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
-|**direction**     | `in` に設定する必要があります。         |
+```csharp
+[FunctionName("DocumentUpdates")]
+public static void Run(
+    [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+IReadOnlyList<Document> documents,
+    TraceWriter log)
+{
+    ...
+}
+```
 
-設定できるのは **id** と **sqlQuery** のいずれかです。 どちらも設定しないと、コレクション全体が取得されます。
+完全な例については、[トリガー - プリコンパイル済み C# の例](#trigger---c-example)に関する記事をご覧ください。
 
-## <a name="using-a-documentdb-api-input-binding"></a>Azure DocumentDB API 入力バインドの使用
+## <a name="trigger---configuration"></a>トリガー - 構成
 
-* C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。 
-* JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript のサンプル](#injavascript)を参照してください。
+次の表は、*function.json* ファイルと `CosmosDBTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-<a name="inputsample"></a>
+|function.json のプロパティ | 属性のプロパティ |説明|
+|---------|---------|----------------------|
+|**type** || `cosmosDBTrigger` に設定する必要があります。 |
+|**direction** || `in` に設定する必要があります。 このパラメーターは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
+|**name** || 変更されるドキュメントの一覧を表す、関数コードで使用する変数の名前。 | 
+|**connectionStringSetting**|**ConnectionStringSetting** | 監視されている Azure Cosmos DB アカウントに接続するために使用される接続文字列を含めたアプリ設定の名前。 |
+|**databaseName**|**DatabaseName**  | 監視されているコレクションを使用する Azure Cosmos DB データベースの名前。 |
+|**collectionName** |**CollectionName** | 監視されているコレクションの名前。 |
+| **leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (省略可能) リース コレクションを保持するサービスへの接続文字列を含むアプリ設定の名前。 この値を設定しない場合、`connectionStringSetting` という値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
+| **leaseDatabaseName** |**LeaseDatabaseName** | (省略可能) リースの保存のために使用するコレクションを保持しているデータベースの名前。 この値を設定しない場合、`databaseName` の設定の値が使用されます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。 |
+| **leaseCollectionName** | **LeaseCollectionName** | (省略可能) リースの保存のために使用するコレクションの名前。 この値を設定しない場合、`leases` という値が使用されます。 |
+| **createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (省略可能) `true` を設定すると、リース コレクションが存在していない場合に自動でリース コレクションを作成します。 既定値は `false` です。 |
+| **leaseCollectionThroughput**| | (省略可能) リース コレクションの作成に割り当てる要求ユニットの量を定義します。 この設定は、`createLeaseCollectionIfNotExists` が `true` に設定されている場合のみ使用できます。 このパラメーターは、ポータルでバインドが作成されるときに自動で設定されます。
+| |**LeaseOptions** | [ChangeFeedHostOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.changefeedprocessor.changefeedhostoptions) クラスのインスタンスにプロパティを設定して、リースのオプションを構成します。
 
-## <a name="input-sample-for-single-document"></a>1 つのドキュメントの入力サンプル
-function.json の `bindings` 配列に次の DocumentDB API 入力バインドがあるとします。
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+>[!NOTE] 
+>リース コレクションの接続文字列には書き込み権限が必要です。
+
+## <a name="input"></a>入力
+
+DocumentDB API 入力バインドでは、1 つ以上の Azure Cosmos DB ドキュメントを取得して関数の入力パラメーターに渡します。 ドキュメント ID またはクエリ パラメーターは、関数を呼び出したトリガーに基づいて決定することができます。 
+
+## <a name="input---example-1"></a>入力 - 例 1
+
+単一のドキュメントを読み取る言語固有の例を参照してください。
+
+* [C# スクリプト](#input---c-script-example)
+* [F#](#input---f-example)
+* [JavaScript](#input---javascript-example)
+
+### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
+
+次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+  "name": "inputDocument",
+  "type": "documentDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id" : "{queueTrigger}",
+  "connection": "MyAccount_COSMOSDB",     
+  "direction": "in"
+}
+```
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
+
+C# スクリプト コードを次に示します。
+
+```cs
+// Change input document contents using DocumentDB API input binding 
+public static void Run(string myQueueItem, dynamic inputDocument)
+{   
+  inputDocument.text = "This has changed.";
+}
+```
+
+<a name="infsharp"></a>
+
+### <a name="input---f-example"></a>入力 - F# の例
+
+次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [F# スクリプト関数](functions-reference-fsharp.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
+
+*function.json* ファイルのバインディング データを次に示します。
 
 ```json
 {
@@ -145,25 +223,9 @@ function.json の `bindings` 配列に次の DocumentDB API 入力バインド�
 }
 ```
 
-この入力バインドを使用してドキュメントのテキスト値を更新する、言語固有のサンプルを参照してください。
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
 
-* [C#](#incsharp)
-* [F#](#infsharp)
-* [JavaScript](#injavascript)
-
-<a name="incsharp"></a>
-### <a name="input-sample-in-c"></a>C# での入力サンプル #
-
-```cs
-// Change input document contents using DocumentDB API input binding 
-public static void Run(string myQueueItem, dynamic inputDocument)
-{   
-  inputDocument.text = "This has changed.";
-}
-```
-<a name="infsharp"></a>
-
-### <a name="input-sample-in-f"></a>F# での入力サンプル #
+F# コードを次に示します。
 
 ```fsharp
 (* Change input document contents using DocumentDB API input binding *)
@@ -172,7 +234,7 @@ let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-このサンプルには、`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルが必要です。
+この例には、`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルが必要です。
 
 ```json
 {
@@ -189,9 +251,26 @@ let Run(myQueueItem: string, inputDocument: obj) =
 
 `project.json` ファイルの追加方法については、[のパッケージ管理](functions-reference-fsharp.md#package)に関するセクションを参照してください。
 
-<a name="injavascript"></a>
+### <a name="input---javascript-example"></a>入力 - JavaScript の例
 
-### <a name="input-sample-in-javascript"></a>JavaScript での入力サンプル
+次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+  "name": "inputDocument",
+  "type": "documentDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id" : "{queueTrigger}",
+  "connection": "MyAccount_COSMOSDB",     
+  "direction": "in"
+}
+```
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
 
 ```javascript
 // Change input document contents using DocumentDB API input binding, using context.bindings.inputDocumentOut
@@ -202,11 +281,35 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="input-sample-with-multiple-documents"></a>複数のドキュメントの入力サンプル
+## <a name="input---example-2"></a>入力 - 例 2
 
-SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得するとします。 
+複数のドキュメントを読み取る言語固有の例を参照してください。
 
-この例では、キュー トリガーには `departmentId` パラメーターが用意されており、`{ "departmentId" : "Finance" }` のキュー メッセージは財務部門のすべてのレコードを返します。 *function.json* で次を使用します。
+* [プリコンパイル済み C#](#input---c-example-2)
+* [C# スクリプト](#input---c-script-example-2)
+* [JavaScript](#input---javascript-example-2)
+
+### <a name="input---c-example-2"></a>入力 - C# の例 2
+
+次の例は、SQL クエリを実行する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示します。
+
+```csharp
+[FunctionName("CosmosDBSample")]
+public static HttpResponseMessage Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestMessage req,
+    [DocumentDB("test", "test", ConnectionStringSetting = "CosmosDB", sqlQuery = "SELECT top 2 * FROM c order by c._ts desc")] IEnumerable<object> documents)
+{
+    return req.CreateResponse(HttpStatusCode.OK, documents);
+}
+```
+
+### <a name="input---c-script-example-2"></a>入力 - C# スクリプトの例 2
+
+次の例は、*function.json* ファイルの DocumentDB 入力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
+
+キュー トリガーがパラメーター `departmentId` を提供します。 `{ "departmentId" : "Finance" }` のキュー メッセージは、金融部門のすべてのレコードを返します。 
+
+*function.json* ファイルのバインディング データを次に示します。
 
 ```
 {
@@ -215,12 +318,14 @@ SQL クエリで指定されている複数のドキュメントを、キュー 
     "direction": "in",
     "databaseName": "MyDb",
     "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
     "connection": "CosmosDBConnection"
 }
 ```
 
-### <a name="input-sample-with-multiple-documents-in-c"></a>C# での複数のドキュメントの入力サンプル
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
+
+C# スクリプト コードを次に示します。
 
 ```csharp
 public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
@@ -237,7 +342,29 @@ public class QueuePayload
 }
 ```
 
-### <a name="input-sample-with-multiple-documents-in-javascript"></a>JavaScript での複数のドキュメントの入力サンプル
+### <a name="input---javascript-example-2"></a>入力 - JavaScript の例 2
+
+次の例は、*function.json* ファイルの DocumentDB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
+
+キュー トリガーがパラメーター `departmentId` を提供します。 `{ "departmentId" : "Finance" }` のキュー メッセージは、金融部門のすべてのレコードを返します。 
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```
+{
+    "name": "documents",
+    "type": "documentdb",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
+    "connection": "CosmosDBConnection"
+}
+```
+
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
 
 ```javascript
 module.exports = function (context, input) {    
@@ -250,33 +377,87 @@ module.exports = function (context, input) {
 };
 ```
 
-## <a id="docdboutput"></a>DocumentDB API 出力バインド
-DocumentDB API 出力バインドを使用すると、Azure Cosmos DB データベースに新しいドキュメントを記述できます。 *function.json* には次のプロパティがあります。
+## <a name="input---attributes"></a>入力 - 属性
 
-|プロパティ  |Description  |
-|---------|---------|
-|**name**     | 関数のドキュメントを表すバインド パラメーターの名前。  |
-|**type**     | `documentdb` に設定する必要があります。        |
-|**databaseName** | ドキュメントが作成されたコレクションを含むデータベース。     |
-|**collectionName**  | ドキュメントが作成されたコレクションの名前。 |
-|**createIfNotExists**     | コレクションが存在しないときに作成するかどうかを示すブール値。 既定値は *false* です。 新しいコレクションは予約済みのスループットで作成され、これが価格に影響を及ぼすためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。  |
-|**connection**     |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
-|**direction**     | `out` に設定する必要があります。         |
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) で定義されている [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) 属性を使用します。
 
-## <a name="using-a-documentdb-api-output-binding"></a>DocumentDB API 出力バインドの使用
-このセクションでは、DocumentDB API 出力バインドを関数のコードで使用する方法について説明します。
+この属性のコンストラクターにはデータベース名とコレクションを指定します。 これらの設定や構成できる他のプロパティについて詳しくは、[この後の構成に関するセクション](#input---configuration)をご覧ください。 
 
-既定では、関数の出力パラメーターに書き込むと、ドキュメントがデータベースに作成されます。 このドキュメントには、自動的に生成された GUID がドキュメント ID として割り当てられます。 出力ドキュメントのドキュメント ID を指定するには、出力パラメーターに渡された JSON オブジェクトで `id` プロパティを指定します。 
+## <a name="input---configuration"></a>入力 - 構成
 
->[!Note]  
->既存のドキュメントの ID を指定した場合、既存のドキュメントは新しい出力ドキュメントによって上書きされます。 
+次の表は、*function.json* ファイルと `DocumentDB` 属性で設定したバインド構成のプロパティを説明しています。
 
-複数のドキュメントを出力するために `ICollector<T>` または `IAsyncCollector<T>` にバインドすることもできます。`T` は、サポートされている型のいずれかです。
+|function.json のプロパティ | 属性のプロパティ |説明|
+|---------|---------|----------------------|
+|**type**     || `documentdb` に設定する必要があります。        |
+|**direction**     || `in` に設定する必要があります。         |
+|**name**     || 関数のドキュメントを表すバインド パラメーターの名前。  |
+|**databaseName** |**DatabaseName** |ドキュメントを含むデータベース。        |
+|**collectionName** |**CollectionName** | ドキュメントを含むコレクションの名前。 |
+|**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、バインド パラメーターをサポートしています。 詳細については、「[バインド式でのカスタム入力プロパティへのバインド](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)」を参照してください。 **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |
+|**sqlQuery**  |**SqlQuery**  | 複数のドキュメントを取得するときに使用する Azure Cosmos DB SQL クエリ。 このプロパティは、次の例のように実行時のバインドをサポートします。`SELECT * FROM c where c.departmentId = {departmentId}` **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。|
+|**connection**     |**ConnectionStringSetting**|Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+||**PartitionKey**|参照用のパーティション キー値を指定します。 バインディング パラメーターを含めることもできます。|
 
-<a name="outputsample"></a>
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="documentdb-api-output-binding-sample"></a>DocumentDB API 出力バインドのサンプル
-function.json の `bindings` 配列に次の DocumentDB API 出力バインドがあるとします。
+## <a name="input---usage"></a>入力 - 使用方法
+
+C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。 
+
+JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript の例](#input---javascript-example)を参照してください。
+
+## <a name="output"></a>出力
+
+DocumentDB API 出力バインドを使用すると、Azure Cosmos DB データベースに新しいドキュメントを記述できます。 
+
+## <a name="output---example"></a>出力 - 例
+
+言語固有の例をご覧ください。
+
+* [プリコンパイル済み C#](#trigger---c-example)
+* [C# スクリプト](#trigger---c-script-example)
+* [F#](#trigger---f-example)
+* [JavaScript](#trigger---javascript-example)
+
+### <a name="output---c-example"></a>出力 - C# の例
+
+次の例は、キュー ストレージからのメッセージで提供されるデータを使用して、ドキュメントをデータベースに追加する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+
+```cs
+[FunctionName("QueueToDocDB")]        
+public static void Run(
+    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
+    [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+{
+    document = new { Text = myQueueItem, id = Guid.NewGuid() };
+}
+```
+
+### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
+
+次の例は、*function.json* ファイルの DocumentDB 出力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
+
+```json
+{
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+この関数は、各レコードに対して次の形式の Azure Cosmos DB ドキュメントを作成します。
+
+```json
+{
+  "id": "John Henry-123456",
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+*function.json* ファイルのバインディング データを次に示します。
 
 ```json
 {
@@ -290,36 +471,9 @@ function.json の `bindings` 配列に次の DocumentDB API 出力バインド�
 }
 ```
 
-さらに、次の形式で JSON を受信するキューのキュー入力バインドがあるとします。
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
 
-```json
-{
-  "name": "John Henry",
-  "employeeId": "123456",
-  "address": "A town nearby"
-}
-```
-
-ここで、各レコードに対して次の形式の Azure Cosmos DB ドキュメントを作成するとします。
-
-```json
-{
-  "id": "John Henry-123456",
-  "name": "John Henry",
-  "employeeId": "123456",
-  "address": "A town nearby"
-}
-```
-
-この出力バインドを使用してドキュメントをデータベースに追加する、言語固有のサンプルを参照してください。
-
-* [C#](#outcsharp)
-* [F#](#outfsharp)
-* [JavaScript](#outjavascript)
-
-<a name="outcsharp"></a>
-
-### <a name="output-sample-in-c"></a>C# での出力サンプル #
+C# スクリプト コードを次に示します。
 
 ```cs
 #r "Newtonsoft.Json"
@@ -343,9 +497,47 @@ public static void Run(string myQueueItem, out object employeeDocument, TraceWri
 }
 ```
 
-<a name="outfsharp"></a>
+複数のドキュメントを作成するために `ICollector<T>` または `IAsyncCollector<T>` にバインドできます。`T` は、サポートされている型のいずれかです。
 
-### <a name="output-sample-in-f"></a>F# での出力サンプル #
+### <a name="output---f-example"></a>出力 - F# の例
+
+次の例は、*function.json* ファイルの DocumentDB 出力バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
+
+```json
+{
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+この関数は、各レコードに対して次の形式の Azure Cosmos DB ドキュメントを作成します。
+
+```json
+{
+  "id": "John Henry-123456",
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+  "name": "employeeDocument",
+  "type": "documentDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": true,
+  "connection": "MyAccount_COSMOSDB",     
+  "direction": "out"
+}
+```
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
+
+F# コードを次に示します。
 
 ```fsharp
 open FSharp.Interop.Dynamic
@@ -368,7 +560,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-このサンプルには、`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルが必要です。
+この例には、`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルが必要です。
 
 ```json
 {
@@ -385,9 +577,46 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
 
 `project.json` ファイルの追加方法については、[のパッケージ管理](functions-reference-fsharp.md#package)に関するセクションを参照してください。
 
-<a name="outjavascript"></a>
+### <a name="output---javascript-example"></a>出力 - JavaScript の例
 
-### <a name="output-sample-in-javascript"></a>JavaScript での出力サンプル
+次の例は、*function.json* ファイルの DocumentDB 出力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
+
+```json
+{
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+この関数は、各レコードに対して次の形式の Azure Cosmos DB ドキュメントを作成します。
+
+```json
+{
+  "id": "John Henry-123456",
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+  "name": "employeeDocument",
+  "type": "documentDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": true,
+  "connection": "MyAccount_COSMOSDB",     
+  "direction": "out"
+}
+```
+
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
 
 ```javascript
 module.exports = function (context) {
@@ -402,3 +631,57 @@ module.exports = function (context) {
   context.done();
 };
 ```
+
+## <a name="output---attributes"></a>出力 - 属性
+
+[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) で定義されている [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) 属性を使用します。
+
+この属性のコンストラクターにはデータベース名とコレクションを指定します。 これらの設定や構成できる他のプロパティについて詳しくは、「[出力 - 構成](#output---configuration)」をご覧ください。 次に示すのは、メソッド シグネチャでの `DocumentDB` 属性の例です。
+
+```csharp
+[FunctionName("QueueToDocDB")]        
+public static void Run(
+    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
+    [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+{
+    ...
+}
+```
+
+完全な例については、[出力 - プリコンパイル済み C# の例](#output---c-example)に関する記事をご覧ください。
+
+## <a name="output---configuration"></a>出力 - 構成
+
+次の表は、*function.json* ファイルと `DocumentDB` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |説明|
+|---------|---------|----------------------|
+|**type**     || `documentdb` に設定する必要があります。        |
+|**direction**     || `out` に設定する必要があります。         |
+|**name**     || 関数のドキュメントを表すバインド パラメーターの名前。  |
+|**databaseName** | **DatabaseName**|ドキュメントが作成されたコレクションを含むデータベース。     |
+|**collectionName** |**CollectionName**  | ドキュメントが作成されたコレクションの名前。 |
+|**createIfNotExists**  |**CreateIfNotExists**    | コレクションが存在しないときに作成するかどうかを示すブール値。 既定値は *false* です。新しいコレクションは予約済みのスループットで作成され、これが価格に影響を及ぼすためです。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。  |
+||**PartitionKey** |`CreateIfNotExists` が true の場合に、作成されるコレクションのパーティション キー パスを定義します。|
+||**CollectionThroughput**| `CreateIfNotExists` が true の場合に、作成されるコレクションの[スループット](../cosmos-db/set-throughput.md)を定義します。|
+|**connection**    |**ConnectionStringSetting** |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="output---usage"></a>出力 - 使用方法
+
+既定では、関数の出力パラメーターに書き込むと、ドキュメントがデータベースに作成されます。 このドキュメントには、自動的に生成された GUID がドキュメント ID として割り当てられます。 出力ドキュメントのドキュメント ID を指定するには、出力パラメーターに渡された JSON オブジェクトで `id` プロパティを指定します。 
+
+> [!Note]  
+> 既存のドキュメントの ID を指定した場合、既存のドキュメントは新しい出力ドキュメントによって上書きされます。 
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [Cosmos DB トリガーを使用するクイックスタートに進む](functions-create-cosmos-db-triggered-function.md)
+
+> [!div class="nextstepaction"]
+> [Cosmos DB のサーバーレス データベース コンピューティングの詳細情報](..\cosmos-db\serverless-computing-database.md)
+
+> [!div class="nextstepaction"]
+> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

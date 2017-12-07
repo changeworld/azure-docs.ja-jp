@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 9970452b62b31f28f8277580dd1075c306767d8b
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 7fad1b662c587fed6cd7dd6a1792d8598f0e4f85
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
@@ -45,7 +45,7 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Azure ポータルを使用して VNET 接続を有効にする
 
 1. [Azure ポータル](https://portal.azure.com/)で、APIM インスタンスに移動します。
-2. **[カスタム ドメインと SSL]** をクリックします。
+2. **[仮想ネットワーク]** を選択します。
 3. 仮想ネットワーク内にデプロイされる API Management インスタンスを構成します。
 
     ![API Management の [仮想ネットワーク] メニュー][api-management-using-vnet-menu]
@@ -116,6 +116,7 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 14000 - 14999 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure SQL V12 へのアクセス** |外部 / 内部 |
 | * / 5671 |送信 |AMQP |VIRTUAL_NETWORK / INTERNET|Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |外部 / 内部 |
 | * / 445 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|GIT のための Azure ファイル共有への依存関係 |外部 / 内部 |
+| * / 25028 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|電子メールを送信するために SMTP リレーに接続する |外部 / 内部 |
 | * / 6381 - 6383 |受信および送信 |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Role インスタンス間での Redis Cache インスタンスへのアクセス |外部 / 内部 |
 | * / * | 受信 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure インフラストラクチャの Load Balancer |外部 / 内部 |
 

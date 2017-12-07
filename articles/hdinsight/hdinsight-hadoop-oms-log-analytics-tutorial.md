@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 11/27/2017
 ms.author: nitinme
-ms.openlocfilehash: 6677b0b3ed047ce011bfbb72c25e45195859830a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ca2cf642cfff2961dcb0dd18f0e712f61d6915c2
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics を使用して Azure HDInsight クラスターを監視する
 
@@ -44,7 +44,7 @@ Azure Log Analytics を使って HDInsight でHadoop クラスターの操作を
 
 * **Log Analytics ワークスペース**。 ワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Log Analytics 環境として考えることができます。 Azure HDInsight クラスターと関連付けることができる、このようなクラスターを少なくとも 1 つ作成しておく必要があります。 手順については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)に関するページを参照してください。
 
-## <a name="configure-hdinsight-cluster-to-use-log-analytics"></a>Log Analytics を使用するように HDInsight クラスターを構成する
+## <a name="enable-log-analytics-by-using-the-portal"></a>ポータルを使用して Log Analytics を有効にする
 
 ここでは、ジョブやデバッグ ログなどを監視するために、Azure Log Analytics ワークスペースを使用するよう既存の HDInsight Hadoop クラスターを構成します。
 
@@ -62,6 +62,25 @@ Azure Log Analytics を使って HDInsight でHadoop クラスターの操作を
 6. メッセージが表示されたら、Azure の資格情報を入力します。
 
     ![Operations Management Suite ポータル](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-oms-portal.png "Operations Management Suite ポータル")
+
+## <a name="enable-log-analytics-by-using-azure-powershell"></a>Azure PowerShell を使用して Log Analytics を有効にする
+
+Azure PowerShell を使用して Log Analytics を有効にすることができます。 コマンドレットは次のとおりです。
+
+```powershell
+Enable-AzureRmHDInsightOperationsManagementSuite
+```
+
+「[Enable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/Enable-AzureRmHDInsightOperationsManagementSuite?view=azurermps-5.0.0)」(Enable-AzureRmHDInsightOperationsManagementSuite) をご覧ください。
+
+無効にするコマンドレットは次のとおりです。 
+
+```powershell
+Disable-AzureRmHDInsightOperationsManagementSuite
+```
+
+「[Disable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0)」(Disable-AzureRmHDInsightOperationsManagementSuite) をご覧ください。
+
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics に HDInsight クラスター管理ソリューションを追加する](hdinsight-hadoop-oms-log-analytics-management-solutions.md)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: 7a77e6ecbf59944c62aa4ae014bf5b8a5a7f7f1f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: f72f4a3a81fc3a03c86805787caeeacbe6135c5e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
@@ -65,69 +65,10 @@ HA ポート機能は、[Load Balancer Standard と同じリージョン](https:
 
 ## <a name="preview-sign-up"></a>プレビューのサインアップ
 
-Load Balancer Standard の HA ポート機能のプレビューに参加するには、サブスクリプションを登録し、アクセスできるようにします。 Azure CLI 2.0 または PowerShell を使うことができます。
+Load Balancer Standard の HA ポート機能のプレビューに参加するには、Load Balancer [Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up)にサブスクリプションを登録します。 Azure CLI 2.0 か PowerShell を使用して登録できます。
 
 >[!NOTE]
->この機能を使うには、HA ポート機能に加えて、Load Balancer [Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up)にもサインアップする必要があります。 登録には最大 1 時間かかります。
-
-### <a name="sign-up-by-using-azure-cli-20"></a>Azure CLI 2.0 を使用したサインアップ
-
-1. 機能を次のようにプロバイダーに登録します。
-    ```cli
-    az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network
-    ```
-    
-2. この操作は、完了するまで最大 10 分かかることがあります。 操作の状態は、次のコマンドで確認できます。
-
-    ```cli
-    az feature show --name AllowILBAllPortsRule --namespace Microsoft.Network
-    ```
-    
-    次に示すように、機能の登録状態が **Registered** になったら、操作は正常に行われました。
-   
-    ```json
-    {
-       "id": "/subscriptions/foo/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowLBPreview",
-       "name": "Microsoft.Network/AllowILBAllPortsRule",
-       "properties": {
-          "state": "Registered"
-       },
-       "type": "Microsoft.Features/providers/features"
-    }
-    ```
-    
-3. サブスクリプションをリソース プロバイダーに再登録して、プレビューのサインアップを完了してください。
-
-    ```cli
-    az provider register --namespace Microsoft.Network
-    ```
-    
-### <a name="sign-up-by-using-powershell"></a>PowerShell を使用したサインアップ
-
-1. 機能を次のようにプロバイダーに登録します。
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-    
-2. この操作は、完了するまで最大 10 分かかることがあります。 操作の状態は、次のコマンドで確認できます。
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-    次に示すように、機能の登録状態が **Registered** になったら、操作は正常に行われました。
-   
-    ```
-    FeatureName          ProviderName      RegistrationState
-    -----------          ------------      -----------------
-    AllowILBAllPortsRule Microsoft.Network Registered
-    ```
-    
-3. サブスクリプションをリソース プロバイダーに再登録して、プレビューのサインアップを完了してください。
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
-
+>登録には最大 1 時間かかります。
 
 ## <a name="limitations"></a>制限事項
 
