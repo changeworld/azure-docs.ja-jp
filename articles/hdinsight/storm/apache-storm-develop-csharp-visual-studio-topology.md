@@ -14,13 +14,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/02/2017
+ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: d972def582ff8fee74c2eae59f4756eb1dcd0a70
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d777d467b3f0d4ef6101dffa551ec5c85feb209c
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -42,6 +42,9 @@ C# トポロジを Linux ベースのクラスターで使うには、プロジ�
 
 > [!IMPORTANT]
 > Linux ベースのクラスターの C# トポロジは、.NET 4.5 を使い、Mono を使って HDInsight クラスターで実行する必要があります。 互換性のない可能性がある機能については、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)のドキュメントを参照してください。
+
+> [!WARNING]
+> SCP.NET バージョン 1.0.0.x を使用するプロジェクトを構築する際に問題が発生した場合は、Microsoft サポートに対処方法をお問い合わせください。
 
 ## <a name="install-visual-studio"></a>Visual Studio のインストール
 

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: AyoOlubeko
-ms.openlocfilehash: c85dec1023e4d4f0a14dfbc249850b6dc6e78edf
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c0ed3eb344ea8ec7e2d3e86125d60c8cc28f723d
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースにわたるアドホック分析クエリの実行
 
@@ -52,12 +52,11 @@ SaaS アプリケーションは、クラウドで一元的に格納されてい
 
 テナント データベース全体でクエリを分散することで、エラスティック クエリはライブ プロダクション データを短時間で洞察できます。 ただし、エラスティック クエリはたくさんのデータベースからデータを引き出すため、1 つのマルチテナント データベースに同じようなクエリを送信する場合と比較し、待機時間が長くなることがあります。 返されるデータを最小限に抑えるように、クエリを設計してください。 頻繁に使用される、あるいは複雑な分析クエリ/レポートとは対照的に、エラスティック クエリは多くの場合、少量のリアルタイム データの問い合わせに最適です。 クエリの動作に問題がある場合は、[実行プラン](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan)を参照して、クエリのどの部分がリモート データベースにプッシュダウンされているかを確認し、 返されるデータの量を評価します。 複雑な分析処理を必要とするクエリは、分析クエリのために最適化された専用のデータベースやデータ ウェアハウスにテナント データを抽出することで、より効果的に機能することがあります。 SQL Database および SQL Data Warehouse では、このような分析データベースをホストできます。
 
-<!-- ?? This pattern for analytics is explained in the [tenant analytics tutorial](saas-multitenantdb-tenant-analytics.md).
--->
+この分析用のパターンは、[テナント分析のチュートリアル](saas-multitenantdb-tenant-analytics.md)で説明されています。
 
-## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-scripts"></a>Wingtip Tickets SaaS マルチテナント データベース アプリケーション スクリプトを入手する
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Wingtip Tickets SaaS マルチテナント データベース アプリケーションのソース コードとスクリプトを入手する
 
-Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-MultitenantDB](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) Github リポジトリで入手できます。 必ず readme ファイルで説明されているブロック解除手順に従ってください。
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーションのソース コードは、[WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub リポジトリで入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="create-ticket-sales-data"></a>チケット売り上げデータを作成する
 
@@ -96,7 +95,7 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 
     ![資格情報を作成する](media/saas-multitenantdb-adhoc-reporting/create-credential.png)
 
-   カタログ データベースでテナント シャード マップを使用するように定義されている外部データ ソース。 これを外部データ ソースとして使用すると、クエリが実行されたとき、カタログに登録されているすべてのデータベースにクエリが分散されます。 デプロイごとにサーバー名が異なるため、この初期化スクリプトでは、スクリプトが実行された現在のサーバー (@@servername) を検索することでカタログ サーバーの場所を取得します。
+   カタログ データベースを外部データ ソースとして使用すると、クエリが実行されたとき、カタログに登録されているすべてのデータベースにクエリが分散されます。 デプロイごとにサーバー名が異なるため、この初期化スクリプトでは、スクリプトが実行された現在のサーバー (@@servername) を検索することでカタログ サーバーの場所を取得します。
 
     ![外部データ ソースを作成する](media/saas-multitenantdb-adhoc-reporting/create-external-data-source.png)
 
@@ -120,7 +119,7 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 
 実行プランを調べるとき、プラン アイコンにカーソルを合わせると詳細が表示されます。 
 
-1. SSMS で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql* を開きます。
+1. *SSMS* で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql* を開きます。
 2. **adhocreporting** データベースに接続していることを確認します。
 3. **[クエリ]** メニューを選択し、**[実際の実行プランを含める]** をクリックします。
 4. *[Which venues are currently registered?]* クエリを強調表示し、**F5** を押します。
@@ -155,9 +154,7 @@ Wingtip Tickets SaaS Multi-tenant Database アプリケーションでは、テ�
 > * すべてのテナント データベースにわたって分散クエリを実行する
 > * アドホック レポート データベースをデプロイし、それにスキーマを追加し、分散クエリを実行します。
 
-<!-- ??
-Now try the [Tenant Analytics tutorial](saas-multitenantdb-tenant-analytics.md) to explore extracting data to a separate analytics database for more complex analytics processing...
--->
+それでは、[テナント分析チュートリアル](saas-multitenantdb-tenant-analytics.md)をお試しください。個別の分析データベースにデータを抽出することで、より複雑な分析を処理できます。
 
 ## <a name="additional-resources"></a>その他のリソース
 

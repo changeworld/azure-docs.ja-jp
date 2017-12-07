@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/03/2017
+ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: 6b48b98e87d5317c7e673977b87417210a595d6b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9ad160377a8779ae917e6fd2d605ee01b12c3e2a
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
 
@@ -36,6 +36,9 @@ HDInsight の Apache Storm から Azure Event Hubs を使用する方法につ�
 > このドキュメントの手順は Visual Studio を使う Windows 開発環境でのものですが、コンパイル済みのプロジェクトは、Linux を使用する HDInsight クラスターの Storm に送信できます。 SCP.NET トポロジをサポートする Linux ベースのクラスターは、2016 年 10 月 28 日より後に作成されたものだけです。
 
 HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行します。 このドキュメントで使用される例は、HDInsight 3.6 で動作します。 HDInsight の独自の .NET ソリューションを作成する場合は、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)に関するドキュメントで、非互換性がないか確認してください。
+
+> [!WARNING]
+> SCP.NET バージョン 1.0.0.x を使用するプロジェクトを構築する際に問題が発生した場合は、Microsoft サポートに対処方法をお問い合わせください。
 
 ### <a name="cluster-versioning"></a>クラスターのバージョン管理
 

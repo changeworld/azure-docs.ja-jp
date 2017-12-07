@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.openlocfilehash: 866b5eec6e9c7e8bf98547143c0393bfb6f97b14
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: ee2bc6d8b75b92243c0550db0044895e41c9474b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>マルチ テナント SaaS アプリでは、1 つのテナントの Azure SQL データベースを復元します。
+# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>マルチ テナント SaaS アプリでは、1 つのテナントの Azure SQL Database を復元する
 
-Wingtip SaaS アプリは、テナントごとのデータベース モデルを使用して構築されています。このモデルでは、各テナントに独自のデータベースが用意されています。 このモデルの利点の 1 つは、他のテナントに影響を与えることなく、シングル テナントのデータを切り離して簡単に復元できることです。
+Wingtip Tickets SaaS アプリは、テナントごとのデータベース モデルを使用して構築されています。このモデルでは、各テナントに独自のデータベースが用意されています。 このモデルの利点の 1 つは、他のテナントに影響を与えることなく、シングル テナントのデータを切り離して簡単に復元できることです。
 
 このチュートリアルでは、2 つのデータ回復パターンについて説明します。
 
@@ -53,9 +53,9 @@ Wingtip SaaS アプリは、テナントごとのデータベース モデルを
 
 2 番目のパターン (テナントでデータが失われたか、またはデータが破損したことが前提) では、テナントの運用データベースが以前の時点に復元されます。 所定の時点への復元パターンでは、テナントが短時間オフラインになり、データベースを復元するとオンラインに戻ります。 元のデータベースは削除されますが、さらに前の時点に戻る必要がある場合は、そのデータベースから復元可能です。 このパターンのバリエーションとして、データベースを削除する代わりにデータベース名を変更できます。ただし、データ セキュリティの観点では、データベース名の変更による追加のメリットはありません。
 
-## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
 
-Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリで入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>データを誤って削除した状態のテナントをシミュレートする
 

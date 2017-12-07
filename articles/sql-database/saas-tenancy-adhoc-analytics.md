@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: articles
 ms.date: 11/13/2017
 ms.author: billgib; sstein; AyoOlubeko
-ms.openlocfilehash: db8a079c76f38bbf7b90f8d914ce1bbf192343d7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: ddad47ccac57ddbb9387709ababbc5be6bad3462
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>複数の Azure SQL データベースにわたるアドホック分析クエリの実行
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/14/2017
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
 
-* Wingtip Tickets SaaS Database Per Tenant アプリをデプロイします。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイと探索)](saas-dbpertenant-get-started-deploy.md)」を参照してください。
+* Wingtip Tickets SaaS Database Per Tenant アプリをデプロイします。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイと探索)](saas-dbpertenant-get-started-deploy.md)」を参照してください
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 * SQL Server Management Studio (SSMS) をインストールしている。 SSMS のダウンロードとインストールについては、[SQL Server Management Studio (SSMS) のダウンロード](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)に関するページを参照してください。
 
@@ -57,7 +57,7 @@ SaaS アプリケーションで得られる優れた機会の 1 つは、アプ
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
 
-Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant Github リポジトリ](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/)で入手できます。 必ず readme ファイルで説明されているブロック解除手順に従ってください。
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリで入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="create-ticket-sales-data"></a>チケット売り上げデータを作成する
 
@@ -73,7 +73,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 このパターンをシミュレートするために、'グローバル' ビュー セットがテナント データベースに追加されます。このビューは、グローバルにクエリ実行される各テーブルにテナント ID を与えます。 たとえば、*VenueEvents* ビューは、計算した *VenueId* を *Events* テーブルから与えられた列に追加します。 同様に、*VenueTicketPurchases* と *VenueTickets* ビューは、それぞれのテーブルから与えられた計算済みの *VenueId* 列を追加します。 これらのビューは、*VenueId* 列が存在する場合、クエリを並列化して適切なリモート テナント データベースにそれらをプッシュダウンするために、エラスティック クエリによって使用されます。 これにより返されるデータの量が劇的に減り、クエリがたくさんあってもパフォーマンスが相当上がります。 これらのグローバル ビューはすべてのテナント データベースで事前作成されています。
 
-1. SSMS を開き、[tenants1-&lt;USER&gt; サーバーに接続します](saas-dbpertenant-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
+1. SSMS を開き、[tenants1-&lt;USER&gt; サーバーに接続します](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms)。
 2. **[データベース]** を展開し、**[contosoconcerthall]** を右クリックして、**[新しいクエリ]** を選択します。
 3. 次のクエリを実行して、シングル テナント テーブルとグローバル ビューの違いを調べます。
 
@@ -95,7 +95,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 *Venues* ビューの定義を調べるには:
 
-1. **オブジェクト エクスプローラー**で、**[contosoconcethall]** > **[ビュー]** の順に展開します。
+1. **オブジェクト エクスプローラー**で、**[contosoconcerthall]** > **[ビュー]** の順に展開します。
 
    ![ビュー](media/saas-tenancy-adhoc-analytics/views.png)
 
@@ -121,13 +121,13 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 1. SQL Server Management Studio を開き、前の手順で作成したアドホック レポート データベースに接続します。 データベースの名前は *adhocreporting* になります。
 2. SSMS で、...\Learning Modules\Operational Analytics\Adhoc Reporting\ *Initialize-AdhocReportingDB.sql* を開きます。
-3. SQL スクリプトを読み、次の点に注意します。
+3. SQL スクリプトを確認し、次の点に注意します。
 
    エラスティック クエリは、データベース スコープの資格情報を使用して、各テナント データベースにアクセスします。 この資格情報は、すべてのデータベースで使用できる必要があり、通常、これらのアドホック クエリを有効にするために必要な最小限の権限が付与されている必要があります。
 
     ![資格情報を作成する](media/saas-tenancy-adhoc-analytics/create-credential.png)
 
-   カタログ データベースでテナント シャード マップを使用するように定義されている外部データ ソース。 これを外部データ ソースとして使用すると、クエリが実行されたとき、カタログに登録されているすべてのデータベースにクエリが分散されます。 デプロイごとにサーバー名が異なるため、この初期化スクリプトでは、スクリプトが実行された現在のサーバー (@@servername) を検索することでカタログ サーバーの場所を取得します。
+   カタログ データベースを外部データ ソースとして使用すると、クエリが実行されたとき、カタログに登録されているすべてのデータベースにクエリが分散されます。 デプロイごとにサーバー名が異なるため、この初期化スクリプトでは、スクリプトが実行された現在のサーバー (@@servername) を検索することでカタログ サーバーの場所を取得します。
 
     ![外部データ ソースを作成する](media/saas-tenancy-adhoc-analytics/create-external-data-source.png)
 
@@ -160,7 +160,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
    クエリは会場一覧全体を返します。すべてのテナントにクエリを実行し、各テナントからデータを返すことがいかに簡単かわかります。
 
-   プランを調べ、コスト全体がリモート クエリであることを確認します。各テナント データベースに進み、会場情報を選択しているためです。
+   プランを調べ、コスト全体がリモート クエリであることを確認します。各テナント データベースが独自のクエリを処理し、その会場情報を返すためです。
 
    ![SELECT * FROM dbo.Venues](media/saas-tenancy-adhoc-analytics/query1-plan.png)
 
@@ -168,7 +168,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
    このクエリは、テナント データベースとローカル *VenueTypes* テーブル (*adhocreporting* データベースのテーブルであり、ローカル) のデータを結合します。
 
-   プランを調べ、コストの大半がリモート クエリであることを確認します。各テナントの会場情報 (dbo.Venues) を問い合わせ、ローカル *VenueTypes* テーブルでクイック ローカル結合を行い、フレンドリ名を表示しているためです。
+   プランを調べ、コストの大半がリモート クエリであることを確認します。 各テナント データベースが会場情報を返し、ローカル *VenueTypes* テーブルでローカル結合を行い、フレンドリ名を表示します。
 
    ![リモートとローカルのデータで結合](media/saas-tenancy-adhoc-analytics/query2-plan.png)
 
@@ -189,7 +189,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 > * アドホック レポート データベースをデプロイし、それにスキーマを追加し、分散クエリを実行します。
 
 
-それでは[テナント分析チュートリアル](saas-tenancy-tenant-analytics.md)を試してください。個別の分析データベースにデータを抽出することでより複雑な分析を処理できます。
+それでは、[テナント分析チュートリアル](saas-tenancy-tenant-analytics.md)をお試しください。個別の分析データベースにデータを抽出することで、より複雑な分析を処理できます。
 
 ## <a name="additional-resources"></a>その他のリソース
 

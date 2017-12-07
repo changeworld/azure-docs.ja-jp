@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: sstein
-ms.openlocfilehash: 450a5fc578948db044d9e0bb9db09508b2512aca
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 289f1f99b1661e499fa7132887e2f65e086ad689
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
@@ -62,9 +62,9 @@ Wingtip Tickets SaaS Database Per Tenant アプリでは、会場 (テナント)
 
 多くのリソースを処理する大規模なシナリオの場合は、[Log Analytics (OMS)](saas-dbpertenant-log-analytics.md) を使用できます。 これは、出力された診断ログと、ログ分析ワークスペースで収集されたテレメトリに分析を提供する個別の Azure サービスです。 Log Analytics は、多くのサービスからテレメトリを収集できます。また、このサービスを使用して、クエリを実行し、アラートを設定することもできます。
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-source-code-and-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーションのソース コードとスクリプトを入手する
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
 
-Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) Github リポジトリで入手できます。 [Wingtip Tickets SaaS Database Per Tenant スクリプトをダウンロードするための手順](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリで入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="provision-additional-tenants"></a>その他のテナントのプロビジョニング
 

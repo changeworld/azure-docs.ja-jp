@@ -12,27 +12,27 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 11/24/2017
 ms.author: pullabhk;markgal;
-ms.openlocfilehash: 7ef808e933d1c3ff88e18766cd3a29138959297a
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 696f86f616575364bb65021260daf0c8458fc4e9
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
 次の表に示す情報を使って、Azure Backup Server の使用中に発生したエラーのトラブルシューティングを行うことができます。
 
-## <a name="error-invalid-vault-credentials-provided-the-file-is-either-corrupted-or-does-not-have-the-latest-credentials-associated-with-recovery-service"></a>エラー: 無効なコンテナーの資格情報が指定されました。 ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません 
+## <a name="invalid-vault-credentials-provided"></a>無効なコンテナーの資格情報が指定されました 
 
 この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) に従います。
 
-## <a name="error-the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-server"></a>エラー: Server の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました 
+## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-server"></a>Server の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました 
 
 この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) に従います。
 
-## <a name="error-setup-could-not-update-registry-metadata"></a>エラー: セットアップでレジストリのメタデータを更新できませんでした
+## <a name="setup-could-not-update-registry-metadata"></a>セットアップでレジストリのメタデータを更新できません
 
 この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#installation-issues) に従います。
 
@@ -65,16 +65,16 @@ ms.lasthandoff: 10/13/2017
 ## <a name="backup"></a>Backup
 | 操作 | エラーの詳細 | 対処法 |
 | --- | --- | --- |
-| バックアップ | レプリカに整合性がありません | 保護グループ ウィザードで自動的な整合性チェック オプションが有効になっていることを確認してください。 レプリカの不整合の原因に関する詳細や関連する推奨事項については、[こちら](https://technet.microsoft.com/library/cc161593.aspx)を参照してください <br> <ol><li> システム状態/BMR のバックアップの場合は、保護されるサーバーに Windows Server バックアップがインストールされているかどうかを確認してください </li><li> DPM/MABS サーバー上のDPM 記憶域プールの領域に関連する問題の有無を確認し、必要に応じて、記憶域を割り当てます </li><li> 保護されるサーバーのボリューム シャドウ コピー サービスの状態を確認します。 無効な状態の場合は、手動で開始するように設定し、サーバーでサービスを開始します。 DPM/MABS コンソールに戻り、整合性チェック ジョブとの同期を開始します。</li></ol>|
+| バックアップ | レプリカに整合性がありません | 保護グループ ウィザードで自動の整合性チェック オプションが有効になっていることを確認してください。 レプリカの不整合の原因に関する詳細や関連する推奨事項については、[こちら](https://technet.microsoft.com/library/cc161593.aspx)を参照してください <br> <ol><li> システム状態/BMR のバックアップの場合は、保護されるサーバーに Windows Server バックアップがインストールされているかどうかを確認してください </li><li> DPM/MABS サーバー上の DPM 記憶域プールの領域に関連する問題の有無を確認し、必要に応じて、記憶域を割り当てます </li><li> 保護されるサーバーのボリューム シャドウ コピー サービスの状態を確認します。 無効な状態の場合は、手動で開始するように設定し、サーバーでサービスを開始します。 DPM/MABS コンソールに戻り、整合性チェック ジョブとの同期を開始します。</li></ol>|
 | バックアップ | ジョブの実行中に予期しないエラーが発生しました。デバイスの準備ができていません | **製品の推奨操作が機能しない場合** <br> <ol><li>保護グループ内の項目でシャドウ コピーの記憶域の領域を無制限に設定し、整合性チェックを実行します <br></li> (または) <li>既存の保護グループを削除してから、複数の保護グループを新しく作成します (個々の項目ごとに)</li></ol> |
-| バックアップ | システム状態だけをバックアップする場合は、システム状態のバックアップを格納する保護コンピューターに十分な空き領域があることを確認してください | <ol><li>保護されたマシンに WSB がインストールされていることを確認します</li><li>システム状態のバックアップを格納する保護コンピューターに十分な空き領域があることを確認します。これを行う最も簡単な方法は、保護コンピューターに移動し、WSB を開き、選択項目をクリックし、BMR を選択することです。 この方法では、必要な領域の量が UI に表示されます。 WSB を開き、[ローカル バックアップ] -> [バックアップ スケジュール] -> [バックアップの構成の選択] -> [サーバー全体] の順に選択します (サイズが表示されます)。 このサイズを検証に使用します。</li></ol>
+| バックアップ | システム状態だけをバックアップする場合は、システム状態のバックアップを格納する保護コンピューターに十分な空き領域があることを確認してください | <ol><li>保護されたマシンに WSB がインストールされていることを確認します</li><li>システム状態のバックアップを格納する保護コンピューターに十分な空き領域があることを確認します。これを行う最も簡単な方法は、保護コンピューターに移動し、WSB を開き、選択項目をクリックし、BMR を選択することです。 これに必要な領域の量が UI に表示されます。 WSB を開き、[ローカル バックアップ] -> [バックアップ スケジュール] -> [バックアップの構成の選択] -> [サーバー全体] の順に選択します (サイズが表示されます)。 このサイズを検証に使用します。</li></ol>
 | バックアップ | オンライン回復ポイントを作成できませんでした | "Microsoft Azure Backup Agent は、選択されたボリュームのスナップショットを作成できませんでした。" というエラー メッセージが表示された場合は、レプリカと回復ポイントのボリュームの領域を増やしてください。
 | バックアップ | オンライン回復ポイントを作成できませんでした | "Windows Azure Backup エージェントが OBEngine サービスに接続できません"というエラー メッセージが表示された場合は、コンピューター上で実行中のサービスの一覧に OBEngine が表示されていることを確認します。 OBEngine サービスが実行されていない場合は、"net start OBEngine" コマンドを使用して、OBEngine サービスを開始します。
 | バックアップ | オンライン回復ポイントを作成できませんでした | "このサーバーの暗号化のパスフレーズが設定されていません。パスフレーズを構成してください。" という エラー メッセージが表示された場合は、暗号化のパスフレーズを構成します。 それでも解決しない場合は、 <br> <ol><li>スクラッチ場所が存在するかどうかを確認します。 レジストリの HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config に "ScratchLocation" という名前で場所が存在している必要があります。</li><li> スクラッチ場所が存在する場合は、以前のパスフレーズを使用して再登録します。 **暗号化のパスフレーズを構成したら、必ず安全な場所に保管してください**</li><ol>
 | バックアップ | BMR のバックアップの失敗 | BMR のサイズが大きい場合は、一部のアプリケーション ファイルを OS ドライブに移動した後で再試行します |
 | Backup | 新しい MABS サーバーで VMWare VM を再保護しても、追加可能とは表示されません。 | VMWare のプロパティは、古い使用されなくなった MABS サーバーで参照されています。 この問題を解決するには: (SC-VMM に相当する) VCenter で [概要] タブの [カスタム属性] に移動します。  'DPMServer' 値から古い MABS サーバー名を削除します。  新しい MABS サーバーに戻り、PG を変更します。  [更新] ボタンを使用すると、保護の追加に使用できるチェックボックスが VM に表示されます。 |
 | Backup | ファイル/共有フォルダーへのアクセス中のエラー | [ここで](https://technet.microsoft.com/library/hh757911.aspx)推奨されているとおりにウイルス対策の設定を変更します|
-| バックアップ | VMware VM のオンライン回復ポイント作成ジョブが失敗しました。 DPM での ChangeTracking 情報の取得中に VMware でエラーが発生しました。 ErrorCode - FileFaultFault (ID 33621) |  1.影響を受けた仮想マシンの VMWare で ctk をリセットします <br/> 独立したディスクが VMWare 上にないことを確認します <br/> 影響を受けた仮想マシンの保護を停止し、[更新] ボタンを押して再度保護します <br/> 影響を受けた仮想マシンに CC を実行します|
+| Backup | VMware VM のオンライン復旧ポイント作成ジョブが失敗しました。 DPM での ChangeTracking 情報の取得中に VMware でエラーが発生しました。 ErrorCode - FileFaultFault (ID 33621) |  1.影響を受けた仮想マシンの VMWare で ctk をリセットします <br/> 手順 2.独立したディスクが VMWare 上にないことを確認します <br/> 3.影響を受けた仮想マシンの保護を停止し、[更新] ボタンを押して再度保護します <br/> 4.影響を受けた仮想マシンに CC を実行します|
 
 
 ## <a name="change-passphrase"></a>パスフレーズの変更
@@ -87,4 +87,4 @@ ms.lasthandoff: 10/13/2017
 ## <a name="configure-email-notifications"></a>電子メール通知の構成
 | 操作 | エラーの詳細 | 対処法 |
 | --- | --- | --- |
-| Office 365 アカウントを使用して電子メール通知を設定しようとしています。 | エラー ID: 2013| **原因:**<br/> Office 365 アカウントを使用しようとしています。 <br/> **推奨される操作:**<br/> まず、Exchange で DPM サーバーが “受信コネクタで匿名リレーを許可する” と設定されていることを確認します。 この構成方法についてのリンクを次に示します: http://technet.microsoft.com/en-us/library/bb232021.aspx <br/> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、このリレーとして IIS を設定することができます。 <br/> IIS https://technet.microsoft.com/en-us/library/aa995718(v=exchg.65).aspx を使用して、DPM サーバーが SMTP を O365 にリレーし、IIS が O365 にリレーするよう設定する必要があります。 <br/> 重要な注意事項: 手順 3 の g、ii では、ドメイン\ユーザーではなく、user@domain.com 形式を使用してください。 <br/> DPM で SMTP サーバーとしてローカル サーバー名を使用するよう設定し、ポート 587、電子メールの送信元となるユーザー メールを設定します。 <br/> SMTP の DPM のセットアップ ページのユーザー名とパスワードには、ドメイン DPM があるドメイン アカウントのものを入力します。 <br/> 注: SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない場合があるため、この方法でテストすることをお勧めします。 <br/> DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。<br/> HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> SMTPPassword と SMTPUserName キーを削除します。 <br/> もう一度起動したときに、UI からそれらを追加して戻すことができます。
+| Office 365 アカウントを使用して電子メール通知を設定しようとしています。 | エラー ID: 2013| **原因:**<br/> Office 365 アカウントを使用しようとしています。 <br/> **推奨される操作:**<br/> 1.まず、Exchange で DPM サーバーが “受信コネクタで匿名リレーを許可する” と設定されていることを確認します。 この構成方法についての[リンク](http://technet.microsoft.com/en-us/library/bb232021.aspx)を示します。  <br/> 2.内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、このリレーとして IIS を設定することができます。 DPM サーバーが、[IIS を使用して SMTP を O365 にリレーできる](https://technet.microsoft.com/en-us/library/aa995718(v=exchg.65).aspx)ように設定する必要があります。 <br/><br/> 重要な注意事項: 手順 3 の g、ii では、ドメイン\ユーザーではなく、user@domain.com 形式を使用してください。 <br/> DPM で SMTP サーバーとしてローカル サーバー名を使用するよう設定し、ポート 587、電子メールの送信元となるユーザー メールを設定します。 <br/> SMTP の DPM のセットアップ ページのユーザー名とパスワードには、ドメイン DPM があるドメイン アカウントのものを入力します。 <br/><br/> 注: SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。 <br/><br/> DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。<br/> HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> SMTPPassword と SMTPUserName キーを削除します。 <br/> もう一度起動したときに、UI からそれらを追加して戻すことができます。

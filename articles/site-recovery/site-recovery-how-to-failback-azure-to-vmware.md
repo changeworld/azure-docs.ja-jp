@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 11/28/2017
 ms.author: ruturajd
-ms.openlocfilehash: 1ca34b262a51b694cb9541750588bbea139eeae1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad424818f41e6b48e754dd0d39771248a1cd04fb
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへのフェールバック
 
@@ -135,3 +135,17 @@ Windows 仮想マシンのフェールバック時に、フェールバックと
 
 ## <a name="common-issues"></a>一般的な問題
 フェールバックを実行する前に、必ず vCenter を接続された状態にしてください。 接続されていない場合、ディスクの切断と仮想マシンへの接続は失敗します。
+
+### <a name="common-error-codes"></a>一般的なエラー コード
+
+#### <a name="error-code-8038"></a>エラー コード 8038
+
+*エラーが原因で、オンプレミスの仮想マシンを呼び出せませんでした*
+
+このエラーは次の場合に発生します。 
+1. 充分なメモリがプロビジョニングされていないホストに、オンプレミスの仮想マシンが呼び出された場合。
+
+この問題を解決するには
+1. ESXi ホストにさらに多くのメモリをプロビジョニングできます。
+2. vMotion を使用して、仮想マシンを起動するために充分なメモリを搭載した別の ESXi ホストに VM を移動します。
+

@@ -1,6 +1,7 @@
 ---
 title: "既存のカスタム DNS 名を Azure Web Apps にマップする | Microsoft Docs"
 description: "既存のカスタム DNS ドメイン名 (バニティ ドメイン) を、Azure App Service の Web アプリ、モバイル アプリ バックエンド、または API アプリに追加する方法について説明します。"
+keywords: "App Service, Azure App Service, ドメイン マッピング, ドメイン名, 既存のドメイン, ホスト名"
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,11 +16,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d7c99b1b02a0450cae406e2bc70a7e5563e2ac2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1a0b54e75bd6356ba7ba351d51d5f4a59bd64c75
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>既存のカスタム DNS 名を Azure Web Apps にマップする
 
@@ -269,6 +270,27 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 先ほど構成した DNS 名 (たとえば、`contoso.com`、`www.contoso.com`、`sub1.contoso.com`、および `sub2.contoso.com`) を参照します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
+
+## <a name="resolve-404-error-web-site-not-found"></a>404 エラー “Web サイト未検出” を解決する
+
+カスタム ドメインの URL 参照時に HTTP 404 (Not Found) エラーが発生した場合は、<a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> を使用して、お客様のドメインがアプリの IP アドレスに解決されることを確認します。 解決されない場合、次のいずれかの理由が考えられます。
+
+- 構成されているカスタム ドメインに A レコードまたは CNAME レコード (またはその両方) がない。
+- クライアントのブラウザーが、ドメインの古い IP アドレスをキャッシュしている。 キャッシュをクリアして、DNS の解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
+
+<a name="virtualdir"></a>
+
+## <a name="direct-default-url-to-a-custom-directory"></a>既定の URL でカスタム ディレクトリを参照する
+
+既定では、App Service は Web 要求をアプリ コードのルート ディレクトリに送信します。 ただし、特定の Web フレームワークはルート ディレクトリで開始されません。 たとえば、[Laravel](https://laravel.com/) は `public` サブディレクトリで開始されます。 `contoso.com` の DNS の例を継続する場合、そのようなアプリには `http://contoso.com/public` でアクセス可能ですが、実際は `http://contoso.com` を `public` ディレクトリに転送したいと考えます。 この手順に DNS の解決は含まれませんが、仮想ディレクトリのカスタマイズは含まれます。
+
+これを行うには、Web アプリ ページの左側のナビゲーションで **[アプリケーション設定]** を選択します。 
+
+ページの下部でルート仮想ディレクトリ `/` が既定で `site\wwwroot` をポイントしていますが、これがお客様のアプリ コードのルート ディレクトリです。 たとえば、代わりに `site\wwwroot\public` をポイントするように変更して、変更内容を保存できます。 
+
+![仮想ディレクトリのカスタマイズ](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
+
+操作が完了すると、アプリからルート パスの正しいページが返されます (http://contoso.com など)。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 

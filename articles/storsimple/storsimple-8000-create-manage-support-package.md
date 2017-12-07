@@ -4,7 +4,7 @@ description: "StorSimple 8000 シリーズ デバイスのサポート パッケ
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 92abbb96b2117e10800de61b5c405a784453265b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 641109970865ea915f83d48488f1bdf5cb2d5242
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -58,14 +58,14 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
    
    * ネットワーク共有がパスワードで保護されている場合は、次のコマンドを入力します。
      
-       `Export-HcsSupportPackage –PackageTag "MySupportPackage" –Credential "Username" -Force`
+       `Export-HcsSupportPackage -Path <\\IP address\location of the shared folder> -Include Default -Credential domainname\username`
      
-       パスワード、ネットワーク共有フォルダーへのパス、および暗号化パスフレーズ (サポート パッケージが暗号化されているため) を入力するよう求められます。 指定したフォルダーにサポート パッケージが作成されます。
+       パスワード、および暗号化パスフレーズを入力するよう求められます (サポート パッケージが暗号化されているため)。 既定のフォルダー (デバイス名に現在の日付と時刻が追加されたもの) にサポート パッケージが作成されます。
    * パスワードで保護されていない共有の場合、 `-Credential` パラメーターは必要ありません。 次のように入力します。
      
-       `Export-HcsSupportPackage –PackageTag "MySupportPackage" -Force`
+       `Export-HcsSupportPackage`
      
-       サポート パッケージは、指定したネットワーク共有フォルダー内の両方のコントローラー用に作成されます。 これは、トラブルシューティングの際に Microsoft サポートに送信できる、暗号化された圧縮ファイルです。 詳細については、「 [Microsoft サポートに問い合わせる](storsimple-8000-contact-microsoft-support.md)」を参照してください。
+       サポート パッケージは、既定のフォルダー内の両方のコントローラー用に作成されます。 このパッケージは、暗号化された圧縮ファイルで、トラブルシューティングの際は Microsoft サポートに送信できます。 詳細については、「 [Microsoft サポートに問い合わせる](storsimple-8000-contact-microsoft-support.md)」を参照してください。
 
 ### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>Export-HcsSupportPackage コマンドレットのパラメーター
 

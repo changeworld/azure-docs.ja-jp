@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: c036901bde5fff0d63ee2494de87e49410662099
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 48e8eb91a5febcc1109bee3404bb534bd0391f88
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="setup-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する
+# <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する
 
-このチュートリアルでは、エラスティック プールおよびデータベースを監視するために、*Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))*を設定して使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)を基礎とします。 *Log Analytics* を使用して、Azure Portal で提供された監視とアラート設定を拡張する方法を示します。 Log Analytics は、数百のプールや数千のデータベースをサポートするため、大規模な監視とアラートに適しています。 それは、単一監視ソリューションも提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
+このチュートリアルでは、エラスティック プールおよびデータベースを監視するために、*Log Analytics ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* を設定して使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)を基礎とします。 *Log Analytics* を使用して、Azure Portal で提供された監視とアラート設定を拡張する方法を示します。 Log Analytics は、数百のプールや数千のデータベースをサポートするため、大規模な監視とアラートに適しています。 それは、単一監視ソリューションも提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/14/2017
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* Wingtip Tickets SaaS Database Per Tenant アプリをデプロイします。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイと探索)](saas-dbpertenant-get-started-deploy.md)」を参照してください。
+* Wingtip Tickets SaaS Database Per Tenant アプリをデプロイします。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイと探索)](saas-dbpertenant-get-started-deploy.md)」を参照してください
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 
 SaaS のシナリオとパターン、および監視ソリューションの要件に対する影響については、[パフォーマンスの監視と管理を行うためのチュートリアル](saas-dbpertenant-performance-monitoring.md)を参照してください。
@@ -59,7 +59,7 @@ Log Analytics のワークスペースと分析ソリューションは、Azure 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
 
-Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) Github リポジトリで入手できます。 スクリプト ファイルは、[Learning Modules フォルダー](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/tree/master/Learning%20Modules)にあります。 **Learning Modules** フォルダーを、フォルダー構造を保ったままローカル コンピューターにダウンロードします。
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリで入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>Log Analytics と Azure SQL Analytics ソリューションをインストールして構成する
 
@@ -85,7 +85,8 @@ Log Analytics は構成する必要がある独立したサービスです。 Lo
 1. **[概要]** を選択して、Azure ポータルで Log Analytics ソリューションを選択します。
    ![overview-link](media/saas-dbpertenant-log-analytics/click-overview.png)
 
-    **重要**: ソリューションがアクティブになるまで数分かかる可能性があります。 しばらくお待ちください。
+    > [!IMPORTANT]
+    > ソリューションがアクティブになるまで数分かかる場合があります。 しばらくお待ちください。
 
 1. [Azure SQL Analytics] タイルをクリックして開きます。
 

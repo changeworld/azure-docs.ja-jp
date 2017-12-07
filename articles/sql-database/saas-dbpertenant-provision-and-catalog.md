@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: 17eb9b3ff059912e4fe3fafda0b9c435e3983888
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: b82623f63681daff502f1e23d052da7480dda942
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する方法の詳細
 
@@ -68,9 +68,9 @@ Wingtip Tickets SaaS サンプルでは、[Elastic Database クライアント �
 Wingtip Tickets SaaS Database per Tenant アプリは、カタログ サーバーにデプロイされている、_basetenantdb_ という名前のテンプレート データベースをコピーすることで、新しいテナントをプロビジョニングします。  プロビジョニングは、サインアップ エクスペリエンスや、スクリプトを使用してサポートされるオフラインの一部として、アプリケーションに統合できます。 このチュートリアルでは、PowerShell を使ったプロビジョニングについて説明します。 プロビジョニング スクリプトは、basetenantdb データベースをコピーしてエラスティック プールに新しいテナント データベースを作成し、テナント固有情報を使ってこのデータベースを初期化して、カタログ シャード マップに登録します。  Wingtip Tickets SaaS Database Per Tenant アプリでは、テナント データベースはテナント名に基づいた名前を付与されますが、これは、パターンの主要な部分ではありません。カタログを使用すると、任意の名前をテナント データベースに割り当てることができます。 
 
 
-## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
 
-Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリから入手できます。 [Wingtip Tickets SaaS のスクリプトをダウンロードする手順](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリで入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 
 ## <a name="provision-and-catalog-detailed-walkthrough"></a>プロビジョニングとカタログ登録の詳細手順
