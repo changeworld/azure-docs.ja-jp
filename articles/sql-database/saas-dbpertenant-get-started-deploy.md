@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: sstein
-ms.openlocfilehash: 9b1ae219eb1278b818e3e1d4237d04fe54c980ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f91ddff81e51e7cc3d1561dc799013764530924b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションのデプロイと操作
 
@@ -173,7 +173,7 @@ ms.lasthandoff: 11/15/2017
 
 ロード ジェネレーターを数分間実行したら、十分な量のデータが生成されています。このデータを使って、プールとデータベースに組み込まれている監視機能の一部を確認してみましょう。
 
-1. サーバー **tenants1-dpt-&lt;USER&gt;** を参照し、**[Pool1]** をクリックしてプールのリソース使用率を表示します (次のグラフではロード ジェネレーターは 1 時間実行しました)。
+サーバー **tenants1-dpt-&lt;USER&gt;** を参照し、**[Pool1]** をクリックしてプールのリソース使用率を表示します (次のグラフではロード ジェネレーターは 1 時間実行しました)。
 
    ![プールの監視](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

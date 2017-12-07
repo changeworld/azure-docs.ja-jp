@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 701a7296368cd8150eedf8cc50b989fdf6112101
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: c3eaa4d490b61b746e427d2fe2640ae5cdd6032c
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="manage-schema-for-multiple-tenants-in-a-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント アプリケーションで複数のテナントのスキーマを管理します
 
@@ -42,10 +42,10 @@ ms.lasthandoff: 11/16/2017
 
 * Wingtip Tickets SaaS Database Per Tenant アプリをデプロイします。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイと探索)](saas-dbpertenant-get-started-deploy.md)」を参照してください
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
-* 最新バージョンの SQL Server Management Studio (SSMS) のインストール。 [SSMS のダウンロードとインストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+* 最新バージョンの SQL Server Management Studio (SSMS) のインストール。 [SSMS をダウンロードしてインストールします](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
-"*このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。このプレビューは限定的であるため、関連する質問やサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。*
-
+> [!NOTE]
+> このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。 このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS スキーマ管理パターンの概要
 
@@ -59,11 +59,11 @@ ms.lasthandoff: 11/16/2017
 Azure SQL Database の統合機能となったエラスティック ジョブの新しいバージョンが入手可能です (追加のサービスまたはコンポーネントを必要としない)。 現在、この新しいバージョンのエラスティック ジョブは限定プレビュー中です。 現在、この限定プレビューでは、ジョブ アカウントを作成するための PowerShell と、ジョブを作成および管理するための T-SQL がサポートされています。
 
 > [!NOTE]
-> "*このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。このプレビューは限定的であるため、関連する質問やサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。*
+> このチュートリアルでは、限定プレビューに含まれる SQL Database サービスの機能を使用します (Elastic Database ジョブ)。 このチュートリアルを実行する場合、サブスクリプション ID を SaaSFeedback@microsoft.com までお送りください (件名: Elastic Jobs Preview)。 サブスクリプションが有効であることを通知するメールが届いたら、[最新のプレリリース ジョブ コマンドレットをダウンロードしてインストール](https://github.com/jaredmoo/azure-powershell/releases)します。 このプレビューは限定的であるため、関連する質問やサポートについては、SaaSFeedback@microsoft.com にお問い合わせください。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
 
-Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) Github リポジトリで入手できます。 [Wingtip Tickets SaaS Database Per Tenant スクリプトをダウンロードするための手順](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)。
+Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリで入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>ジョブ アカウント データベースと新しいジョブ アカウントの作成
 
@@ -91,13 +91,14 @@ Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーシ
 1. ステートメント SET @wtpUser = &lt;user&gt; を変更し、Wingtip Tickets SaaS Database Per Tenant アプリをデプロイしたときに使用した User の値に置き換えます
 1. jobaccount データベースに接続していることを確認し、**F5** キーを押してスクリプトを実行します。
 
+*DeployReferenceData.sql* スクリプトで以下を確認します。
 * **sp\_add\_target\_group** は、ターゲット グループ名 DemoServerGroup を作成します。次に、ターゲット メンバーを追加する必要があります。
 * **sp\_add\_target\_group\_member** は、*server* ターゲット メンバー タイプを追加します。これがジョブに含まれると、ジョブの実行時に、そのサーバー (テナント データベースを含む tenants1-dpt-&lt;User&gt; サーバー) 内のすべてのデータベースがジョブに含まれます。次に、*database* ターゲット メンバー タイプ、具体的には "ゴールデン" データベース (basetenantdb) を追加します。これは、catalog-dpt-&lt;User&gt; サーバーにあります。最後に、他の *database* ターゲット グループ メンバー タイプを追加して、後のチュートリアルで使用される adhocanalytics データベースを含めます。
 * **sp\_add\_job** は、"Reference Data Deployment" というジョブを作成します。
 * **sp\_add\_jobstep** は、T-SQL コマンド テキストを含むジョブ ステップを作成して、参照テーブル VenueTypes を更新します。
 * スクリプトの残りのビューは、オブジェクトの存在を表示し、ジョブの実行を監視します。 これらのクエリを使用して **lifecycle** 列の状態値を調べ、すべてのテナント データベースおよび参照テーブルを含むその他 2 つのデータベースで、ジョブがいつ正常に終了したかを確認します。
 
-1. SSMS で、*tenants1-dpt-\<user\>* サーバーの *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルにクエリを実行して *Motorcycle Racing* および *Swimming Club* が結果の一覧に**含まれている**ことを確認します。
+SSMS で、*tenants1-dpt-\<user\>* サーバーの *contosoconcerthall* データベースを参照し、*VenueTypes* テーブルにクエリを実行して *Motorcycle Racing* および *Swimming Club* が結果の一覧に**含まれている**ことを確認します。
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>参照テーブルのインデックスを管理するジョブの作成
@@ -111,9 +112,10 @@ Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーシ
 1. 右クリックして [接続] を選択し、catalog-dpt-&lt;User&gt;.database.windows.net server サーバーに接続します (まだ接続していない場合)
 1. jobaccount データベースに接続していることを確認し、F5 キーを押してスクリプトを実行します。
 
-* sp\_add\_job は、"Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885" という新しいジョブを作成します。
-* sp\_add\_jobstep は、T-SQL コマンド テキストを含むジョブ ステップを作成して、インデックスを更新します。
-
+*OnlineReindex.sql* スクリプトで以下を確認します。
+* **sp\_add\_job** は、"Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885" という新しいジョブを作成します
+* **sp\_add\_jobstep** は、T-SQL コマンド テキストを含むジョブ ステップを作成して、インデックスを更新します
+* スクリプトの残りのビューは、ジョブの実行を監視します。 これらのクエリを使用して **lifecycle** 列の状態値を調べ、すべてのターゲット グループ メンバーで、ジョブがいつ正常に終了したかを確認します。
 
 
 
@@ -127,7 +129,7 @@ Wingtip Tickets SaaS Database Per Tenant のスクリプトとアプリケーシ
 > * すべてのテナント データベースでデータを更新する
 > * すべてのテナント データベース内のテーブルにインデックスを作成する
 
-[アドホック分析の実行のチュートリアル](saas-tenancy-adhoc-analytics.md)
+続いて、[アドホック レポートに関するチュートリアル](saas-tenancy-adhoc-analytics.md)をお試しください。
 
 
 ## <a name="additional-resources"></a>その他のリソース
