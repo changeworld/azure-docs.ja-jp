@@ -84,7 +84,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 Azure Resource Manager のテンプレート ベースのデプロイにより、Azure にデプロイされたソリューションのセキュリティが向上します。これは、標準的なセキュリティ制御設定によるもので、標準化されたテンプレート ベースのデプロイに統合できます。 これにより、手動によるデプロイ時に発生する可能性のあるセキュリティ構成エラーのリスクが軽減されます。
 
 ### <a name="application-insights"></a>Application Insights
-[Application Insights](https://docs.microsoft.com/azure/application-insights/) は、Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights でライブ web アプリケーションを監視し、パフォーマンス上の問題を自動的に検出することができます。 Application Insights には強力な分析ツールが組み込まれているため、問題の診断や、ユーザーがアプリを使用して実行している操作を把握できます。 テスト中と公開後またはデプロイ後の両方で、実行中のアプリケーションを常時監視します。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/) は、Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 Application Insights でライブ Web アプリケーションを監視し、パフォーマンス上の問題を自動的に検出することができます。 Application Insights には強力な分析ツールが組み込まれているため、問題の診断や、ユーザーがアプリを使用して実行している操作を把握できます。 テスト中と公開後またはデプロイ後の両方で、実行中のアプリケーションを常時監視します。
 
 Application Insights が作成するグラフや表を見ると、たとえば、1 日の中でユーザー数が最も多い時間帯、アプリの反応性、アプリが依存している外部サービスのサービス性能などがわかります。
 
@@ -101,7 +101,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 ### <a name="azure-advisor"></a>Azure Advisor
 [Azure Advisor](https://docs.microsoft.com/azure/advisor/) は、Azure のデプロイの最適化に役立つ、個人用に設定されたクラウド コンサルタントです。 Azure Advisor では、リソース構成と使用量テレメトリを分析します。 次に、[Azure の全体的な使用量を削減する](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations)機会を探すと同時に、[パフォーマンス](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations)、[セキュリティ](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations)、リソースの[高可用性](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations)の向上に役立つソリューションを提案します。 Azure Advisor では、Azure にデプロイするソリューションの全体的なセキュリティの状況を大幅に改善することができる提案を行います。 これらの提案は [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) で実施されるセキュリティ分析に基づいています。
 
-### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+### <a name="azure-security-center"></a>Azure Security Center
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 さらに、Azure Security Center は、すぐに対応できるようにアラートや推奨事項が表示された単一のダッシュ ボードを提供することで、セキュリティ操作に役立てることができます。 多くの場合、Azure Security Center コンソール内で 1 回クリックすれば問題を修復することができます。
@@ -292,7 +292,7 @@ NSG に対して、以下の診断ログ カテゴリを有効にできます。
 
 -   ルール カウンター: トラフィックを許可または拒否するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
-### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+### <a name="azure-security-center"></a>Azure Security Center
 Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。 ネットワークに関する推奨事項は、ファイアウォール、ネットワーク セキュリティ グループ、受信トラフィック規則の構成などが中心です。
 
 ネットワークに関する利用可能な推奨事項は次のとおりです。
@@ -341,7 +341,7 @@ SQL Server をオンプレミス コンピューターで実行している場�
 ### <a name="security-policy-management-and-reporting"></a>セキュリティ ポリシーの管理とレポート
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+### <a name="azure-security-center"></a>Azure Security Center
 セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 ## <a name="identify-and-access-management"></a>ID 管理とアクセス管理
