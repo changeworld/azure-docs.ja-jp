@@ -38,7 +38,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 > [!Note]
 > ここでは、アプリケーションやサービスをカスタマイズしてセキュリティを強化できる顧客向けの制御機能に重点を置いています。
 >
-> 概要情報だけでなく Microsoft で Azure プラットフォーム自体のセキュリティを保護する方法の詳細について確認するには、 [Microsoft トラスト センター](https://www.microsoft.com/TrustCenter/default.aspx) を参照してください。
+> 概要情報だけでなく Microsoft で Azure プラットフォーム自体のセキュリティを保護する方法の詳細について確認するには、 [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx) を参照してください。
 
 ### <a name="abstract"></a>要約
 当初、パブリック クラウドの移行は、コストの削減と素早い導入によって決定されていました。 セキュリティは、これまで長い間パブリック クラウドの移行にとって重大な懸念事項であり、致命的な問題でもありました。 しかし、パブリック クラウドのセキュリティはいつしか重大な懸念事項からクラウド移行の原動力へと変化していきました。 この背景には、アプリケーションを保護する大規模なパブリック クラウド サービス プロバイダーの優れた能力と、クラウド ベースの資産データがあります。
@@ -149,7 +149,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 -   パフォーマンス (パフォーマンス イベントを表示)
 
 ## <a name="storage"></a>ストレージ
-このセクションでは、Azure Storageのセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
+このセクションでは、Azure Storage のセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。 [組み込み RBAC ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)(ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
