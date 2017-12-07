@@ -1,6 +1,6 @@
 ---
-title: "Microsoft トラスト センターおよび Azure セキュリティ情報 | Microsoft Docs"
-description: "Microsoft トラスト センターは、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。"
+title: "Microsoft Trust Center および Azure セキュリティ情報 | Microsoft Docs"
+description: "Microsoft Trust Center は、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。"
 services: security
 documentationcenter: na
 author: TomShinder
@@ -20,14 +20,14 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/22/2017
 ---
-# <a name="microsoft-trust-center"></a>Microsoft トラスト センター
-Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。 Microsoft トラスト センターでは、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
+# <a name="microsoft-trust-center"></a>Microsoft Trust Center
+Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。 Microsoft Trust Center は、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
 
 Azure にアプリケーションとデータを委託するときには、さまざまな疑問があるでしょう。 場所はどこなのか。 だれがアクセスできるのか。 Microsoft は保護のために何をしているのか。 Microsoft が説明どおりに実行していることをどうすれば確認できるのか。
 
 そうした疑問には、答えることができます。 データはお客様のものであるため、だれがアクセスできるかはお客様が決定します。どこに配置されるかは、お客様と Microsoft が共同で決定します。 データの保護には、最先端のセキュリティ テクノロジや世界最高クラスの暗号化が使用されます。 Microsoft のコンプライアンスは独立した監査を受け、お客様の顧客データに対する法的な要求への対処方法から Microsoft のコードのセキュリティまで、さまざまなレベルで透明性を高めています。
 
-Microsoft トラスト センターでは、次のような情報を提供しています。
+Microsoft Trust Center では、次のような情報を提供しています。
 
 * [セキュリティ](https://aka.ms/tcsecurity) – すべての Microsoft クラウド サービスがどのようにセキュリティで保護されているかについて説明しています。
 * [プライバシー](https://aka.ms/tcprivacy) – Microsoft が Microsoft クラウドでお客様のデータのプライバシーを確保している方法について説明しています。
