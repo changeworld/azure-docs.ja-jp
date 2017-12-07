@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/21/2017
 ms.author: bradsev;BuckWoody
-ms.openlocfilehash: d572fe3ad01d75b76ac87b441a5397d1c1841547
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 52d6fe0757043a0a298c3fdee0478fb364074537
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>データ サイエンティスト向け Team Data Science Process
 
@@ -30,6 +30,8 @@ ms.lasthandoff: 10/31/2017
 - データ転送およびストレージの基礎
 - データ ソース ドキュメントの提供
 - 分析処理ツールの使用
+
+これらのトレーニング資料は、Team Data Science Process (TDSP)、Microsoft、オープンソースのソフトウェアとツールキットに関連しており、データ サイエンス ソリューションの計画、遂行、および実現に役立ちます。
 
 ## <a name="lesson-path"></a>レッスン パス
 次の表の各項目を使用して、ご自分で学習を進めることができます。 「*説明*」列を読んでパスに従い、「*トピック*」のリンクをクリックして学習内容を参照し、「*知識チェック*」列でご自分のスキルを確認します。

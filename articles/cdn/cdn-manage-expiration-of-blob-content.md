@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: 8c15d198e92b1478b84b2140df416df3909ba141
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 50015fabb323e618d3c093d4083cc648ff13b8f1
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ $context = New-AzureStorageContext -StorageAccountName "<storage account name>" 
 $blob = Get-AzureStorageBlob -Context $context -Container "<container name>" -Blob "<blob name>"
 
 # Set the CacheControl property to expire in 1 hour (3600 seconds)
-$blob.ICloudBlob.Properties.CacheControl = "public, max-age=3600"
+$blob.ICloudBlob.Properties.CacheControl = "max-age=3600"
 
 # Send the update to the cloud
 $blob.ICloudBlob.SetProperties()
@@ -85,7 +85,7 @@ class Program
         CloudBlob blob = container.GetBlobReference("<blob name>");
 
         // Set the CacheControl property to expire in 1 hour (3600 seconds)
-        blob.Properties.CacheControl = "public, max-age=3600";
+        blob.Properties.CacheControl = "max-age=3600";
 
         // Update the blob's properties in the cloud
         blob.SetProperties();
@@ -102,12 +102,20 @@ class Program
 ### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
 [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) を使うと、*CacheControl* のようなプロパティなどの Blob Storage リソースを表示して編集できます。 
 
+Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新するには、以下の操作を行います。
+   1. BLOB を選択し、コンテキスト メニューから **[プロパティ]** を選択します。 
+   2. 下にスクロールして *CacheControl* プロパティを表示させます。
+   3. 値を入力し、**[保存]** をクリックします。
+
+
+![Azure Storage Explorer のプロパティ](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
+
 ### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
 BLOB をアップロードするときに、[Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)で `-p` スイッチを使って *cacheControl* プロパティを設定できます。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
   
-    ```text
-    azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt
-    ```
+```command
+azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\test.txt myContainer test.txt
+```
 
 ### <a name="azure-storage-services-rest-api"></a>Azure ストレージ サービス REST API
 [Azure ストレージ サービス REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) を使うと、要求で次の操作を使って *x-ms-blob-cache-control* プロパティを明示的に設定できます。

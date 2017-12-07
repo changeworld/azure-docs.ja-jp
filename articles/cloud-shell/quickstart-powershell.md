@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: 995a5bf0b28f6bfa0e501f5930b9efcad9041b8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 913bd917ae7c2b44df097ead9c3e35841338905c
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の PowerShell のクイックスタート
 
@@ -135,7 +135,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 
 ```
 
-接続文字列で次のコマンドを使って、Azure ファイル共有をマウントできます。
+接続文字列で次のコマンドを使って、Azure Files 共有をマウントできます。
         
 ``` PowerShell
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
@@ -143,9 +143,9 @@ net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<My
 
 ```
 
-詳細については、「[Windows で Azure ファイル共有をマウントして共有にアクセスする][azmount]」を参照してください。
+詳しくは、「[Windows で Azure ファイル共有をマウントして共有にアクセスする][azmount]」をご覧ください。
 
-次のようにして、Azure ファイル共有下のディレクトリ間を移動することもできます。
+次のようにして、Azure Files 共有の下のディレクトリ間を移動することもできます。
 
             
 ``` PowerShell
@@ -288,7 +288,7 @@ PS Azure:\> Get-Help
 PS Azure:\> Get-Help Get-AzureRmVM
 ```
 
-## <a name="use-azure-file-storage-to-store-your-data"></a>Azure File Storage を使ってデータを保存する
+## <a name="use-azure-files-to-store-your-data"></a>Azure Files を使ってデータを保存する
 
 たとえば `helloworld.ps1` といったスクリプトを作成して `CloudDrive` に保存し、それを異なるシェル セッションで使うことができます。
 
@@ -300,7 +300,7 @@ PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
 Hello World!
 ```
 
-Cloud Shell の PowerShell を次に使うとき、`helloworld.ps1` ファイルは、Azure ファイル共有をマウントした `CloudDrive` フォルダーにあります。
+Cloud Shell で PowerShell を次に使うとき、`helloworld.ps1` ファイルは、Azure Files 共有をマウントした `CloudDrive` フォルダーにあります。
 
 ## <a name="use-custom-profile"></a>カスタム プロファイルを使う
 

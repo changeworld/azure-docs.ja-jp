@@ -1,9 +1,9 @@
 ---
-title: "Azure Functions におけるタイマー トリガー"
+title: "Azure Functions のタイマー トリガー"
 description: "Azure Functions でタイマー トリガーを使用する方法について説明します。"
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -15,15 +15,15 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/27/2017
-ms.author: glenga
+ms.author: tdykstra
 ms.custom: 
-ms.openlocfilehash: 2a62d70b22081e45bc318dd9fb624b37cf7069e3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: fd9c1d40ba1398c7ca3f48f0423457482da9a483
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="azure-functions-timer-trigger"></a>Azure Functions におけるタイマー トリガー
+# <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
 この記事では、Azure Functions でタイマー トリガーを使用する方法について説明します。 タイマー トリガーを使用すると、スケジュールに基づいて関数を実行できます。 
 
@@ -118,7 +118,7 @@ let Run(myTimer: TimerInfo, log: TraceWriter ) =
 }
 ```
 
-F# スクリプト コードを次に示します。
+JavaScript スクリプト コードを次に示します。
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -134,7 +134,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## <a name="attributes-for-precompiled-c"></a>プリコンパイル済み C# の属性
+## <a name="attributes"></a>属性
 
 [プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) で定義されている [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs) を使用します。
 
@@ -143,9 +143,14 @@ module.exports = function (context, myTimer) {
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+{
+   ...
+}
  ```
 
 関数アプリが (従量課金プランではなく) App Service プランで実行されている場合、CRON 式の代わりに `TimeSpan` を指定できます。
+
+完全な例については、[プリコンパイル済み C# の例](#c-example)をご覧ください。
 
 ## <a name="configuration"></a>構成
 
@@ -156,7 +161,9 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 |**type** | 該当なし | "timerTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のタイマー オブジェクトを表す変数の名前。 | 
-|**schedule**|**ScheduleExpression**|従量課金プランでは、CRON 式を使用してスケジュールを定義することができます。 App Service プランを使用している場合は、`TimeSpan` 文字列も使用できます。 以降のセクションでは、CRON 式について説明します。 スケジュール式をアプリ設定に含めて、たとえば "%NameOfAppSettingWithCRONExpression%" のように、**%** 記号で囲まれた値にこのプロパティを設定できます。 ローカルで開発している場合、アプリ設定は [local.settings.json ファイル](functions-run-local.md#local-settings-file)の値になります。|
+|**schedule**|**ScheduleExpression**|従量課金プランでは、CRON 式を使用してスケジュールを定義することができます。 App Service プランを使用している場合は、`TimeSpan` 文字列も使用できます。 以降のセクションでは、CRON 式について説明します。 スケジュール式をアプリ設定に含めて、たとえば "%NameOfAppSettingWithCRONExpression%" のように、**%** 記号で囲まれた値にこのプロパティを設定できます。 |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ### <a name="cron-format"></a>CRON の形式 
 

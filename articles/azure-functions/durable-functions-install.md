@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: debadde78d937bcd4ec1df665aacfd1887fbcd02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03326304e438f3b716c43d268f07d8e22cd15ea3
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Durable Functions 拡張機能とサンプルをインストールする (Azure Functions)
 
 Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機能は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) に提供されます。 この記事では、次の開発環境用のパッケージとサンプル セットをインストールする方法を示します。
 
 * Visual Studio 2017 (推奨) 
-* Azure ポータル
+* Azure Portal
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
 
@@ -33,7 +33,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Visual Studio の最新バージョン](https://www.visualstudio.com/downloads/)のインストール (バージョン 15.3 以降)。 セットアップ オプションに Azure ツールを含めてください。
+* [Visual Studio の最新バージョン](https://www.visualstudio.com/downloads/)のインストール (バージョン 15.3 以降)。 **[Azure の開発]** ワークロードをセットアップ オプションに含めます。
 
 ### <a name="start-with-sample-functions"></a>サンプル関数から始める
 
@@ -53,7 +53,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="1.0.0-beta" />
    ```
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure Portal
 
 必要に応じて、Durable Functions 開発で Azure ポータルを使用できます。
 
@@ -61,7 +61,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 
 1. [functions.azure.com](https://functions.azure.com/signin) で関数アプリを新規作成します。
 2. 関数アプリを [2.0 ランタイム バージョン](functions-versions.md)を使用するように構成します。
-3. 新しい関数を作成し、**Durable Functions オーケストレーター - C#** テンプレートを選択します。
+3. 言語として [C#]、シナリオとして [すべて] を選び、新しい関数を作成します。 その後、**[Durable Functions Orchestrator - C#]\(Durable Functions オーケストレーター - C#\)** テンプレートを選びます。
 4. **[拡張機能がインストールされていません]** の下の **[インストール]** をクリックして、NuGet.org から拡張機能をダウンロードします。
 
 ### <a name="copy-sample-code-to-the-function-app"></a>サンプル コードを関数アプリにコピーする

@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: ec93bbb477a047a028328964d3e152c1ab4bb58f
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 549b6abf5728e50ee365f40326263d391e4b26fd
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>抽出されたデータを使用したクロステナント分析
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/21/2017
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
 - Wingtip Tickets SaaS マルチテナント データベース アプリケーションがデプロイされている。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS マルチテナント データベース アプリケーションのデプロイと探索)](saas-multitenantdb-get-started-deploy.md)」を参照してください。
-- Wingtip SaaS スクリプトとアプリケーションの[ソース コード](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)が GitHub からダウンロードされている。 内容を抽出する前に、必ず *ZIP ファイルのブロックを解除*してください。
+- Wingtip SaaS スクリプトとアプリケーションの[ソース コード](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)が GitHub からダウンロードされている。 内容を抽出する前に、必ず *ZIP ファイルのブロックを解除*してください。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 - Power BI Desktop をインストールします。 [Power BI Desktop のダウンロード](https://powerbi.microsoft.com/downloads/)
 - 追加のテナントのバッチをプロビジョニングします。[**テナントのプロビジョニングに関するチュートリアル**](saas-multitenantdb-provision-and-catalog.md)をご覧ください。
 - ジョブ アカウントとジョブ アカウント データベースを作成します。 適切な手順については、[**スキーマ管理に関するチュートリアル**](saas-multitenantdb-schema-management.md#create-a-job-account-database-and-new-job-account)をご覧ください。
@@ -212,7 +212,7 @@ Contoso Concert Hall の上記のプロットは、購入が殺到する状態�
 
 チケット販売パターンに関する洞察により、Wingtip Tickets でビジネス モデルを最適化できます。 Wingtip では、すべてのテナントに均等に課金するのではなく、パフォーマンス レベルが異なるサービス層を導入する必要があると考えられます。 1 日により多くのチケットを販売する必要がある大規模な会場には、サービス レベル アグリーメント (SLA) が高い上位層を提供できます。 これらの会場では、データベースごとのリソースの上限が高いプールにデータベースを配置できます。 各サービス層に時間単位の販売割り当てを設定し、割り当てを超えた場合は追加料金が課金されるようにすることもできます。 売上が定期的に激増する大規模な会場は上位層からメリットが得られ、Wingtip Tickets はサービスをより効率的に収益化できます。
 
-その一方で、Wingtip Tickets の一部の顧客は、サービス コストに見合うだけのチケットを販売するのに苦戦していると不満を漏らしています。 これらの洞察に、業績が低迷している会場のチケットの売上を伸ばす機会がおそらくあります。 売上が増加すれば、サービスの知覚価値が高まります。 fact_Tickets を右クリックし、**[新しいメジャー]** を選択します。 **AverageTicketsSold** という新しいメジャーの次の式を入力します。
+その一方で、Wingtip Tickets の一部の顧客は、サービス コストに見合うだけのチケットを販売するのに苦戦していると不満を漏らしています。 これらの洞察の中に、業績が低迷している会場のチケットの売上を伸ばす機会がおそらくあります。 売上が増加すれば、サービスの知覚価値が高まります。 fact_Tickets を右クリックし、**[新しいメジャー]** を選択します。 **AverageTicketsSold** という新しいメジャーの次の式を入力します。
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))

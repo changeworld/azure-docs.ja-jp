@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/08/2017
 ms.author: sethm
-ms.openlocfilehash: d566b74429bf158e0c9cc51419ba35c9e6c32f64
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: f13c7330c9e828abe6557149b9a31c7170e33dcd
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -30,12 +30,12 @@ Azure では **Storage キュー**と **Service Bus キュー**の 2 種類の�
 
 **Service Bus キュー**は、より大きな [Azure メッセージング](https://azure.microsoft.com/services/service-bus/) インフラストラクチャの一部です。このインフラストラクチャでは、キュー処理だけでなく、パブリッシュ/サブスクライブなどの高度な統合パターンがサポートされています。 Service Bus キュー、トピック、およびサブスクリプションの詳細情報については、[Service Bus メッセージングの概要](service-bus-messaging-overview.md)に関するページを参照してください。
 
-この 2 つのキュー テクノロジは共存していますが、最初に Storage キューが、Azure Storage サービス上に構築された専用のキュー ストレージ メカニズムとして導入されました。 Service Bus キューは、より大きな「メッセージング」インフラストラクチャ上に構築されています。このインフラストラクチャは、複数の通信プロトコル、データ コントラクト、信用ドメイン、ネットワーク環境などにまたがるアプリケーションやアプリケーション コンポーネントの統合を目的としています。
+この 2 つのキュー テクノロジは共存していますが、最初に Storage キューが、Azure Storage サービス上に構築された専用のキュー ストレージ メカニズムとして導入されました。 Service Bus キューは、より大きなメッセージング インフラストラクチャ上に構築されています。このインフラストラクチャは、複数の通信プロトコル、データ コントラクト、信頼ドメイン、ネットワーク環境などにまたがるアプリケーションやアプリケーション コンポーネントの統合を目的としています。
 
 ## <a name="technology-selection-considerations"></a>テクノロジの選択に関する考慮事項
 Storage キューと Service Bus キューは、どちらも現在 Microsoft Azure により提供されているメッセージ キュー サービスの実装です。 機能に若干の違いがあるため、個々のソリューションの要件や、解決する必要があるビジネス上または技術上の問題に応じて、いずれかまたは両方を使用できます。
 
-特定のソリューションの目的に合うキュー テクノロジを判断する場合、ソリューション設計者および開発者は次の推奨事項を検討する必要があります。 詳細については、次のセクションをご覧ください。
+特定のソリューションの目的に合うキュー テクノロジを判断する際、ソリューション設計者および開発者はこれらの推奨事項を検討する必要があります。 詳細については、次のセクションをご覧ください。
 
 ソリューション設計者または開発者として、次の場合に **Storage キューの使用を検討してください**。
 
@@ -75,8 +75,8 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | プッシュ型 API |**いいえ** |**はい**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) と **OnMessage** セッション .NET API |
 | 受信モード |**Peek & Lease** |**Peek & Lock**<br/><br/>**Receive & Delete** |
 | 排他アクセス モード |**リース ベース** |**ロック ベース** |
-| リース/ロックの期間 |**30 秒 (既定値)**<br/><br/>**7 日間 (最大)** ([UpdateMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage.aspx) API を使用してメッセージ リースを更新または変更できます) |**60 秒 (既定値)**<br/><br/>[RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API を使用してメッセージのロックを更新できます。 |
-| リース/ロックの粒度 |**メッセージ レベル**<br/><br/>(各メッセージには異なるタイムアウト値を設定できます。この値は [UpdateMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage.aspx) API を使用して、メッセージの処理中に必要に応じて更新できます) |**キュー レベル**<br/><br/>(各キューのすべてのメッセージに同じロック粒度が適用されますが、[RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API を使用してロックを更新できます) |
+| リース/ロックの期間 |**30 秒 (既定値)**<br/><br/>**7 日間 (最大)** ([UpdateMessage](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage) API を使用してメッセージ リースを更新または変更できます) |**60 秒 (既定値)**<br/><br/>[RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API を使用してメッセージのロックを更新できます。 |
+| リース/ロックの粒度 |**メッセージ レベル**<br/><br/>(各メッセージには異なるタイムアウト値を設定できます。この値は [UpdateMessage](/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage) API を使用して、メッセージの処理中に必要に応じて更新できます) |**キュー レベル**<br/><br/>(各キューのすべてのメッセージに同じロック粒度が適用されますが、[RenewLock](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API を使用してロックを更新できます) |
 | 一括受信 |**はい**<br/><br/>(メッセージを取得するときに最大 32 のメッセージ数を明示的に指定します) |**はい**<br/><br/>(プレフェッチ プロパティを有効にして暗黙的に行うか、トランザクションを使用して明示的に行います) |
 | 一括送信 |**いいえ** |**はい**<br/><br/>(トランザクションまたはクライアント側のバッチ処理を使用) |
 
@@ -134,7 +134,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | 最大キュー サイズ |**500 TB**<br/><br/>([1 つのストレージ アカウントの容量](../storage/common/storage-introduction.md#queue-storage)に制限) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
 | 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
 | メッセージの最大 TTL |**7 日** |**TimeSpan.Max** |
-| キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり。増やすことができます) |
+| キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり) |
 | 同時クライアントの最大数 |**無制限** |**無制限**<br/><br/>(最大 100 の同時接続数の制限は TCP プロトコル ベースの通信にのみ適用されます) |
 
 ### <a name="additional-information"></a>追加情報

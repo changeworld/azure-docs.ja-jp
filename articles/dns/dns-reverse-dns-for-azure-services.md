@@ -3,7 +3,7 @@ title: "Azure サービスの逆引き DNS | Microsoft Docs"
 description: "Azure でホストされているサービスの逆引き DNS 参照を構成する方法について説明します"
 services: dns
 documentationcenter: na
-author: jtuliani
+author: KumudD
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: 63701e1ce0c1c6dcf2ce02ebce272b8280395e7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 0c5d12e9d6b5ddbee2a930e4e537b8180b7a9c7b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 
@@ -28,9 +28,8 @@ Azure のサービスは、Azure によって割り当てられて、Microsoft �
 
 この記事を読む前に、[逆引き DNS と Azure でのサポートの概要](dns-reverse-dns-overview.md)について理解しておいてください。
 
-Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。
-* Resource Manager デプロイ モデルでは、コンピューティング リソース (仮想マシン、仮想マシンのスケール セット、Service Fabric クラスターなど) は、PublicIpAddress リソースによって公開されます。 逆引き DNS 参照は、PublicIpAddress の "ReverseFqdn" プロパティを使って構成します。
-* クラシック デプロイ モデルでは、コンピューティング リソースは Cloud Services を使って公開します。 逆引き DNS 参照は、クラウド サービスの "ReverseDnsFqdn" プロパティを使って構成します。
+Azure DNS では、コンピューティング リソース (仮想マシン、仮想マシンのスケール セット、Service Fabric クラスターなど) は、PublicIpAddress リソースによって公開されます。 逆引き DNS 参照は、PublicIpAddress の "ReverseFqdn" プロパティを使って構成します。
+
 
 現在、Azure App Service については逆引き DNS はサポートされていません。
 

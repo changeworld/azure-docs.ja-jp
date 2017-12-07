@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ef6e649d2f5563ea066b70d5ef3f80c5af36ce23
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 85484b79012243afd374a97e7f518e9a8b1043ea
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
@@ -67,13 +67,13 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 4. すべてのアップロードが完了するまで待機します。
 5. Azure Blob ストレージにアップロードされたバイト数の合計を返します。
 
-`await Task.WhenAll(tasks);` 行に注目してください。 `E2_CopyFileToBlob` 関数に対するすべての呼び出しが*待機されているわけではありません*。 これは、呼び出しを同時に実行できるようにするための意図的な設定です。 このタスク配列を `Task.WhenAll` に渡すと、"*すべてのコピー操作が完了するまで*" 完了することがない 1 つのタスクが戻ります。 .NET のタスク並列ライブラリ (TPL) を知っていれば、これは新しい事柄ではありません。 違いは、これらのタスクは複数の VM で同時に実行される可能性があり、エンド ツー エンドの実行がプロセスのリサイクルに柔軟に対応することが拡張機能によって保証されることです。
+`await Task.WhenAll(tasks);` 行に注目してください。 `E2_CopyFileToBlob` 関数に対するすべての呼び出しが*待機されているわけではありません*。 これは、呼び出しを同時に実行できるようにするための意図的な設定です。 このタスク配列を `Task.WhenAll` に渡すと、"*すべてのコピー操作が完了するまで*" 完了することがない 1 つのタスクが戻ります。 .NET のタスク並列ライブラリ (TPL) を知っていれば、これは新しい事柄ではありません。 違いは、これらのタスクは複数の VM で同時に実行される可能性があり、エンド ツー エンドの実行がプロセスのリサイクルに柔軟に対応することが Durable Functions 拡張機能によって保証されることです。
 
 `Task.WhenAll` から応答が返ることは、すべての関数呼び出しが完了し、値が戻っていることを意味します。 `E2_CopyFileToBlob` への各呼び出しがアップロードしたバイト数を返しているため、バイト数の合計を計算することは、これらの返された値をすべて合計するだけの操作です。
 
 ## <a name="helper-activity-functions"></a>ヘルパー アクティビティ関数
 
-ヘルパー アクティビティ関数は、他のサンプルと同じように、`activityTrigger` トリガー バインドを使用する標準的な関数です。 たとえば、`E2_GetFileList` の *function.json* ファイルは次のようになります。
+ヘルパー アクティビティ関数は、他のサンプルと同じように、`activityTrigger` トリガー バインドを使う標準的な関数です。 たとえば、`E2_GetFileList` の *function.json* ファイルは次のようになります。
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
@@ -92,7 +92,7 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-この実装は、ディスクからファイルを読み込み、同じ名前の BLOB に内容を非同期でストリーミングします。 戻り値はストレージにコピーされたバイト数であり、この数値がオーケストレーター関数によって集計の合計を計算するために使用されます。
+この実装は、ディスクからファイルを読み込み、"backups" コンテナー内の同じ名前の BLOB に内容を非同期でストリーミングします。 戻り値はストレージにコピーされたバイト数であり、この数値がオーケストレーター関数によって集計の合計を計算するために使用されます。
 
 > [!NOTE]
 > これは、I/O 操作を `activityTrigger` 関数に移動させる完璧な例です。 作業を複数の VM に分散できるだけではなく、進行状況のチェックポイント処理のメリットも得ることができます。 ホスト プロセスが何らかの理由で終了した場合でも、どのアップロードが完了しているかがわかります。

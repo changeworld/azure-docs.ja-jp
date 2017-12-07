@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: sstein
-ms.openlocfilehash: cb55bf1f1c7eeb0fc7608aca8d70818b5e3e06c0
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 1ef4355f7234bc6a534d21a57fa52b480983b99b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作
 
@@ -35,7 +35,7 @@ Wingtips のこの実装では、シャード化されたマルチテナント �
 
 アプリケーションは、3 つのサンプル テナント用のデータと共にデプロイされます。 テナントは、1 つのマルチテナント データベースにまとめて保存されます。
 
-誰でも[当社の Github リポジトリ][link-github-wingtip-multitenantdb-55g]から Wingtip Tickets の C# および PowerShell のソース コードをダウンロードできます。
+誰でも[当社の GitHub リポジトリ][link-github-wingtip-multitenantdb-55g]から Wingtip Tickets の C# および PowerShell のソース コードをダウンロードできます。
 
 #### <a name="learn-in-this-tutorial"></a>このチュートリアルの詳細
 
@@ -93,7 +93,7 @@ Wingtips のこの実装では、シャード化されたマルチテナント �
 > [!IMPORTANT]
 > 実行可能なコンテンツ (スクリプト、dll) は、zip ファイルが外部ソースからダウンロードされ、抽出されると、Windows によってブロックされる場合があります。 zip ファイルからスクリプトを抽出するとき、以下の手順を実行して、.zip ファイルをブロック解除してから抽出します。 .zip ファイルをブロック解除することによってスクリプトを実行できるようになります。
 
-1. [WingtipTicketsSaaS-MultiTenantDb github リポジトリ](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)を参照します。
+1. [WingtipTicketsSaaS-MultiTenantDb GitHub リポジトリ](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)を参照します。
 2. **[複製またはダウンロード]** をクリックします。
 3. **[Download ZIP]** をクリックし、ファイルを保存します。
 4. **WingtipTicketsSaaS-MultiTenantDb-master.zip** ファイルを右クリックし、**[プロパティ]** を選択します。
@@ -120,7 +120,7 @@ WTP アプリは、コンサート ホール、ジャズ クラブ、スポー�
 固有デプロイのテナントへのリンク一覧が、**Events Hub** という中央のページに表示されます。
 
 1. Web ブラウザーで *Events Hub* を開きます。
-    - http://events.wingtip-mt.&lt;ユーザー&gt;.trafficmanager.net &nbsp; *(<ユーザー> は実際のデプロイのユーザー値に置き換えてください)。*
+    - http://events.wingtip.&lt;ユーザー&gt;.trafficmanager.net &nbsp; *(ユーザーは実際のデプロイのユーザー値に置き換えてください)。*
 
     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -130,7 +130,7 @@ WTP アプリは、コンサート ホール、ジャズ クラブ、スポー�
 
 アプリは、着信要求の分散を制御するために [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用します。 テナントに固有であるイベント ページには、URL にテナント名が含まれています。 この URL には、固有のユーザー値も含まれています。その形式は次のとおりです。
 
-- http://events.wingtip-mt.&lt;ユーザー&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip.&lt;ユーザー&gt;.trafficmanager.net/*fabrikamjazzclub*
  
 イベント アプリは URL からテナント名を解析し、その名前をハッシュして、[シャード マップ管理](sql-database-elastic-scale-shard-map-management.md)を使用するカタログにアクセスするためのキーを作成します。 このカタログによってキーがテナントのデータベースの場所にマップされます。 **Events Hub** はカタログに登録されているすべてのテナントを一覧表示します。 **Events Hub** は、カタログ内の拡張メタデータを使用して、各マッピングに関連付けられたテナントの名前を取得し、URL を構築します。
 
@@ -156,7 +156,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
 最初のデプロイの *Tenants1* データベースには 3 つのサンプル テナントが含まれています。 別のテナントを作成して、デプロイ済みのアプリケーションにどのように影響するか確認してみましょう。 この手順では、新しいテナントを短時間で作成します。
 
-1. *PowerShell ISE* で、...\\Learning Modules\ProvisionTenants\\*Demo-ProvisionTenants.ps1* を開きます。
+1. *PowerShell ISE* で ...\\Learning Modules\Provision を開き、\\*Demo-ProvisionTenants.ps1* をカタログに登録します。
 2. **F5** を押してスクリプトを実行します (この時点では、既定値のままにしておきます)。
 
    > [!NOTE]
@@ -174,7 +174,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
 ここで別のテナントをプロビジョニングします。今回は独自のデータベースにプロビジョニングします。
 
-1. ...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1* で、*$TenantName* を **Salix Salsa** に、*$VenueType* を **dance** に、*$Scenario* を **2** に、それぞれ変更します。
+1. ...\\Learning Modules\\ で、\*Demo-ProvisionTenants.ps1* をプロビジョニングおよびカタログし、*$TenantName* を **Salix Salsa**、*$VenueType* を **ダンス**、*$Scenario* を **2** に変更します。
 
 2. **F5** キーを押して、スクリプトを再実行します。
     - F5 キーを押すと、別のデータベースに新しいテナントがプロビジョニングされます。 データベースとテナントはカタログに登録されます。 ブラウザーからテナントの [Events] ページを開きます。
@@ -239,7 +239,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 > - プール使用率を表示してテナント アクティビティを監視する方法
 > - サンプル リソースを削除して、関連する課金を停止する方法
 
-続いて、[テナントのプロビジョニングに関するチュートリアル](sql-database-saas-tutorial-provision-and-catalog.md)をお試しください。
+続いては、[プロビジョニングとカタログに関するチュートリアル](sql-database-saas-tutorial-provision-and-catalog.md)をお試しください。
 
 
 

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2017
+ms.date: 11/29/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 585e0ab016dcf489ab99f30a9db43b879a8d3070
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 11f3a3fdc5caf96ce672976067e47680822315d4
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Azure Multi-Factor Authentication の設定を構成する - パブリック プレビュー
 
@@ -170,21 +170,40 @@ ms.lasthandoff: 11/23/2017
 
 [信頼できる IP] が有効であっても無効であっても、ブラウザー フローでは 2 段階認証が必要であり、以前のリッチ クライアント アプリではアプリ パスワードが必要です。 
 
-### <a name="to-enable-trusted-ips"></a>信頼できる IP アドレスを有効にするには
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
-2. 左側で、 **[Active Directory]**を選択します。
-3. 管理するディレクトリを選択します。 
-4. **[構成]** を選択します。
-5. Multi-Factor Authentication の **[サービス設定の管理]** を選択します。
-6. [サービス設定] ページの [信頼できる IP] には、次の 2 つのオプションがあります。
+### <a name="enable-named-locations-using-conditional-access"></a>条件付きアクセスを使用した名前付きの場所の有効化
+
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側で、**[Azure Active Directory]** > **[条件付きアクセス]** > **[名前付きの場所]** を選択します。
+3. **[新しい場所]** を選択します。
+4. 場所の名前を指定します。
+5. **[信頼できる場所としてマークする]** を選択します。
+6. IP 範囲を CIDR 表記 (192.168.1.1/24 など) で指定します。
+7. **[作成]**
+
+### <a name="enable-trusted-ips-using-conditional-access"></a>条件付きアクセスを使用した信頼できる IP の有効化
+
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側で、**[Azure Active Directory]** > **[条件付きアクセス]** > **[名前付きの場所]** を選択します。
+3. **[MFA の信頼できる IP の構成]** を選択します。
+4. [サービス設定] ページの [信頼できる IP] には、次の 2 つのオプションがあります。
    
-   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 規則が存在しない場合、AD FS で "c:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);" という規則を作成します。
-
-
+   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 規則が存在しない場合、AD FS で "c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);" という規則を作成します。
 
    * **特定範囲の IP から送信されたリクエストの場合** - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。 例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。 最大で 50 の IP アドレス範囲を入力できます。 これらの IP アドレスからサインインしているユーザーは、2 段階認証をバイパスします。
-7. **[保存]**をクリックします。
-8. 更新が適用されたら、**[閉じる]** をクリックします。
+5. **[保存]** を選択します。
+
+### <a name="enable-trusted-ips-using-service-settings"></a>サービス設定を使用した信頼できる IP の有効化
+
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側で、**[Azure Active Directory]** > **[ユーザーとグループ]** > **[すべてのユーザー]** を選択します。
+3. **[Multi-Factor Authentication]** を選択します。
+4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
+5. [サービス設定] ページの [信頼できる IP] には、次の 2 つのオプションがあります。
+   
+   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。 イントラネットの要求を適切なトラフィックに追加する規則が AD FS にあることを確認します。 規則が存在しない場合、AD FS で "c:[Type== "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);" という規則を作成します。
+
+   * **特定範囲の IP から送信されたリクエストの場合** - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。 例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。 最大で 50 の IP アドレス範囲を入力できます。 これらの IP アドレスからサインインしているユーザーは、2 段階認証をバイパスします。
+6. **[保存]** を選択します。
 
 ![信頼できる IP](./media/multi-factor-authentication-whats-next/trustedips3.png)
 
@@ -239,11 +258,10 @@ Azure AD は、オンプレミスの Windows Server Active Directory Domain Serv
 ### <a name="allow-app-password-creation"></a>アプリ パスワードを作成できるようにする
 既定では、ユーザーはアプリ パスワードを作成できません。 この機能を有効にする必要があります。 ユーザーがアプリ パスワードを作成できるようにするには、次の手順を使用します。
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
-2. 左側で、 **[Active Directory]**を選択します。
-3. 管理するディレクトリを選択します。 
-4. **[構成]** を選択します。
-5. Multi-Factor Authentication の **[サービス設定の管理]** を選択します。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側で、**[Azure Active Directory]** > **[ユーザーとグループ]** > **[すべてのユーザー]** を選択します。
+3. **[Multi-Factor Authentication]** を選択します。
+4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
 6. **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する]** の横のラジオ ボタンをオンにします。
 
 ![アプリ パスワードの作成](./media/multi-factor-authentication-whats-next/trustedips3.png)
@@ -270,16 +288,16 @@ Multi-Factor Authentication の記憶機能は、ブラウザーでユーザー�
 >Azure MFA サーバーまたはサードパーティの MFA ソリューションを介して AD FS の 2 段階認証を行うとき、Multi-Factor Authentication の記憶機能は、AD FS の "サインインしたままにする" 機能とは互換性がありません。 ユーザーが AD FS の "サインインしたままにする" を選択したうえでさらに、MFA に対して信頼済みデバイスとして指定した場合、"MFA の記憶" 日数が過ぎると本人確認ができなくなります。 Azure AD からは新たに 2 段階認証を行うよう要求されますが、AD FS からは、2 段階認証を再実行するように求められるのではなく、元の MFA クレームと日付を含んだトークンが返されます。 その結果、Azure AD と AD FS との間で本人確認がループ状態に陥ります。 
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶を有効にする
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
-2. 左側で、 **[Active Directory]**を選択します。
-3. 管理するディレクトリを選択します。 
-4. **[構成]** を選択します。
-5. Multi-Factor Authentication の **[サービス設定の管理]** を選択します。
-6. [サービス設定] ページの [ユーザーのデバイス設定の管理] で、**[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする]** をオンにします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側で、**[Azure Active Directory]** > **[ユーザーとグループ]** > **[すべてのユーザー]** を選択します。
+3. **[Multi-Factor Authentication]** を選択します。
+4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
+5. [サービス設定] ページの **[Multi-Factor Authentication を記憶する]** で、**[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする]** をオンにします。
+
    ![デバイスの記憶](./media/multi-factor-authentication-whats-next/remember.png)
-7. 信頼済みデバイスで 2 段階認証のバイパスを許可する日数を設定します。 既定値は 14 日です。
-8. **[保存]**をクリックします。
-9. **[閉じる]**をクリックします。
+
+6. 信頼済みデバイスで 2 段階認証のバイパスを許可する日数を設定します。 既定値は 14 日です。
+7. **[保存]** を選択します。
 
 ### <a name="mark-a-device-as-trusted"></a>デバイスを信頼済みとマークする
 
@@ -300,13 +318,12 @@ Multi-Factor Authentication の記憶機能は、ブラウザーでユーザー�
 | モバイル アプリからの確認コード |Microsoft Authenticator アプリは、30 秒ごとに新しい OATH 確認コードを生成します。 ユーザーは、この確認コードをサインイン インターフェイスに入力します。<br>Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
 
 ### <a name="how-to-enabledisable-authentication-methods"></a>認証方法を有効または無効にする方法
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
-2. 左側で、 **[Active Directory]**を選択します。
-3. 管理するディレクトリを選択します。 
-4. **[構成]** を選択します。
-5. Multi-Factor Authentication の **[サービス設定の管理]** を選択します。
-6. [サービスの設定] ページの検証オプションで、使用するオプションをオンまたはオフにします。
-   ![検証オプション](./media/multi-factor-authentication-whats-next/authmethods.png)
-7. **[保存]**をクリックします。
-8. **[閉じる]**をクリックします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側で、**[Azure Active Directory]** > **[ユーザーとグループ]** > **[すべてのユーザー]** を選択します。
+3. **[Multi-Factor Authentication]** を選択します。
+4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
+5. [サービスの設定] ページの **[検証オプション]** で、使用するオプションをオンまたはオフにします。
 
+   ![検証オプション](./media/multi-factor-authentication-whats-next/authmethods.png)
+
+6. **[Save]** をクリックします。

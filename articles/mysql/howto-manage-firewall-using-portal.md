@@ -1,5 +1,5 @@
 ---
-title: "Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理 | Microsoft Docs"
+title: "Azure Database for MySQL の MySQL ファイアウォール規則の作成と管理 | Microsoft Docs"
 description: "Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理"
 services: mysql
 author: v-chenyh
@@ -8,19 +8,19 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 0604b29fcd9849545886a783ae5bbb2cbb72f2ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/27/2017
+ms.openlocfilehash: 63ea6337b35193420924096690ed15cc1d5ede25
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は、指定された IP アドレスまたは IP アドレス範囲から Azure Database for MySQL サーバーにアクセスできます。 
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
 
-1. MySQL サーバー ブレードの [設定] で、**[接続のセキュリティ]** をクリックして Azure Database for MySQL の [接続のセキュリティ] ブレードを開きます。
+1. MySQL サーバー ページの [設定] で、**[接続のセキュリティ]** をクリックして Azure Database for MySQL の [接続のセキュリティ] ページを開きます。
 
    ![Azure Portal - [接続のセキュリティ] のクリック](./media/howto-manage-firewall-using-portal/1-connection-security.png)
 
@@ -48,8 +48,8 @@ ms.lasthandoff: 10/11/2017
 * 現在のコンピューターを追加するには、**[自分の IP を追加]** をクリックします。
 * さらに IP アドレスを追加するには、**規則名**、**開始 IP**、および**終了 IP** を入力します。
 * 既存の規則を変更するには、規則内の任意のフィールドをクリックしてから、変更します。
-* 既存の規則を削除するには、省略記号 [...をクリックして、**削除** をクリックします。
+* 既存の規則を削除するには、省略記号 [...] をクリックして、**削除** をクリックします。
 * **[保存]** をクリックして変更を保存します。
 
 ## <a name="next-steps"></a>次のステップ
-- Azure Database for MySQL サーバーに接続する方法のヘルプについては、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」をご覧ください。
+Azure Database for MySQL サーバーに接続する方法のヘルプについては、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」をご覧ください。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/16/2017
 ms.author: jeanb
-ms.openlocfilehash: f1df2f52d00444ba0a27644a6e65cee789788f58
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 916aefb7916ab374c882efb95417babfc5b06a50
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics on IoT Edge (プレビュー)
 
@@ -35,7 +35,7 @@ Azure Stream Analytics on IoT Edge は [Azure IoT Edge](https://azure.microsoft.
 * **コマンドと制御の待機時間が短い**: たとえば、製造安全システムは、非常に短い待機時間で運用データに応答する必要があります。 ASA on IoT Edge を使用することで、センサー データをほぼリアルタイムで分析し、異常を検出した際はコマンドを発行してマシンを停止したり、アラートをトリガーしたりできます。
 *   **クラウドへの接続が制限されている**: リモート採掘装置、接続された船舶、海洋掘削など、ミッション クリティカルなシステムでは、クラウド接続が断続的なときでも、データを分析し、そのデータに対応する必要があります。 ASA では、ネットワーク接続とは関係なくストリーミング ロジックが実行され、さらなる処理や保存のためにクラウドに送信するデータを選択できます。
 * **帯域幅が制限されている**: ジェット エンジンやコネクテッド カーによって生成されるデータ量は膨大になる可能性があるため、クラウドに送信する前に、データをフィルター処理または前処理する必要があります。 ASA を使用すると、クラウドに送信する必要があるデータをフィルター処理したり集計したりできます。
-* **コンプライアンス**: 法令順守では、一部のデータについてはクラウドに送信する前に、ローカルでの匿名化または集計が必要になる可能性があります。 ASA を使用すると、 
+* **コンプライアンス**: 法令順守では、一部のデータについてはクラウドに送信する前に、ローカルでの匿名化または集計が必要になる可能性があります。
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Azure Stream Analytics のエッジ ジョブ
 ### <a name="what-is-an-edge-job"></a>"エッジ" ジョブとは
@@ -53,7 +53,7 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 手順の概要を次の表に示します。 詳細については、以降のセクションを参照してください。
 |      |手順   | 場所     | メモ   |
 | ---   | ---   | ---       |  ---      |
-| 1   | **ASA エッジ ジョブを作成する**   | Azure ポータル      |  新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。     |
+| 1   | **ASA エッジ ジョブを作成する**   | Azure Portal      |  新しいジョブを作成し、**ホスティング環境**として **Edge** を選択します。 <br> このジョブはクラウドから作成および管理され、お使いの IoT Edge デバイスで実行されます。     |
 | 2   | **ストレージ コンテナーを作成する**   | Azure ポータル       | ストレージ コンテナーを使用してジョブ定義を保存します。コンテナーには、IoT デバイスからアクセスできます。 <br>  既存のストレージ コンテナーを再利用できます。     |
 | 3   | **デバイスで IoT Edge 環境を設定する**   | デバイス      | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) または [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 用の手順。          |
 | 4   | **ASA を IoT Edge デバイスに展開する**   | Azure ポータル      |  ASA ジョブ定義は、先ほど作成したストレージ コンテナーにエクスポートされます。       |
@@ -61,6 +61,11 @@ ASA では、IoT ハブを使用してエッジ ジョブをデバイスに展�
 
 #### <a name="create-an-asa-edge-job"></a>ASA Edge ジョブを作成する
 1. Azure Portal で、新しい "Stream Analytics ジョブ" を作成します。 新しい ASA ジョブを作成するには、[こちらの直接リンク](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)を参照してください。
+
+> [!Note]
+> ASA でサポートされているすべてのリージョンでエッジ ジョブを作成できます。ただし、**"米国西部 2" リージョンを除きます**。
+> この制限は、間もなく削除されます。
+
 2. 作成画面で、**ホスティング環境**として **Edge** を選択します (次の図を参照) ![ジョブの作成](media/stream-analytics-edge/ASAEdge_create.png)
 3. ジョブ定義
     1. **入力ストリームの定義**。 ジョブに対して 1 つ以上の入力ストリームを定義します。

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/04/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 910077645b521d4cd303d39f543cf155161a31c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2d4915cf12690c98275b1fe327dd2574a6343e9e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -33,7 +33,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Cognitive Services アカウントを作成します。
+> * Cognitive Services API リソースを作成します。
 > * ツイートのセンチメントを分類する関数を作成します。
 > * Twitter に接続するロジック アプリを作成します。
 > * センチメントの検出をロジック アプリに追加します。 
@@ -47,29 +47,28 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 + このトピックでは、「[Azure Portal で初めての関数を作成する](functions-create-first-azure-function.md)」で作成したリソースを使用して作業を開始します。  
 リソースの作成が済んでいない場合は、すぐにこれらの手順に従って Function App を作成してください。
 
-## <a name="create-a-cognitive-services-account"></a>Cognitive Services アカウントを作成する
+## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
 
-Cognitive Services アカウントは、監視対象のツイートのセンチメントを検出するために必要となります。
+Cognitive Services APIs は、個々のリソースとして Azure で使用できます。 Text Analytics API を使用して、監視されているツイートのセンチメントを検出します。
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
-2. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+2. Azure Portal の左上にある **[新規]** ボタンをクリックします。
 
-3. **[データ + 分析]** > **[Cognitive Services]** の順にクリックします。 表で指定されている設定を使用したうえで、条項に同意し、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
+3. **[AI + Cognitive Services]** > **[Text Analytics API]** をクリックします。 表で指定されている設定を使用したうえで、条項に同意し、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
-    ![[Create Cognitive account]\(Cognitive アカウントの作成\) ページ](media/functions-twitter-email/cog_svcs_account.png)
+    ![Cognitive リソースを作成するページ](media/functions-twitter-email/cog_svcs_resource.png)
 
     | 設定      |  推奨値   | Description                                        |
     | --- | --- | --- |
     | **名前** | MyCognitiveServicesAccnt | 一意のアカウント名を選択します。 |
-    | **[API の種類]** | Text Analytics API | テキストの分析に使用する API です。  |
-    | **場所** | 米国西部 | 現時点では、テキストの分析に使用できるのは **[米国西部]** のみです。 |
+    | **場所** | 米国西部 | お近くの場所を使用します。 |
     | **[価格レベル]** | F0 | まずは低いレベルを選んでください。 呼び出し回数が不足する場合は、高いレベルにスケーリングします。|
     | **[リソース グループ]** | myResourceGroup | このチュートリアルでは、すべてのサービスで同じリソース グループを使用します。|
 
-4. **[作成]** をクリックしてアカウントを作成します。 アカウントが作成されたら、ダッシュボードにピン留めされた新しい Cognitive Services アカウントをクリックします。 
+4. **[作成]** をクリックして、リソースを作成します。 作成されたら、ダッシュボードにピン留めされた新しい Cognitive Services リソースを選択します。 
 
-5. アカウントで **[キー]** をクリックし、**[キー 1]** の値をコピーして保存します。 このキーは、ロジック アプリを Cognitive Services アカウントに接続するために使用します。 
+5. 左側のナビゲーション列で **[キー]** をクリックし、**[キー 1]** の値をコピーして保存します。 このキーは、ロジック アプリを Cognitive Services API に接続するために使用します。 
  
     ![構成する](media/functions-twitter-email/keys.png)
 
@@ -77,13 +76,26 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
 
 関数は、Logic Apps ワークフローの処理タスクをオフロードするのに役立ちます。 このチュートリアルでは、HTTP によってトリガーされる関数を使用して、Cognitive Services からのツイート センチメント スコアを処理し、カテゴリ値を返します。  
 
-1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックして、**HTTPTrigger** テンプレートをクリックします。 関数の**名前**として「`CategorizeSentiment`」と入力し、**[作成]** をクリックします。
+1. **[新規]** ボタンをクリックして、**[計算]** > **[Function App]** を選択します。 次の表で指定されている設定を使用してください。 条項に同意し、**[ダッシュボードにピン留めする]** を選択します。
+
+    ![Azure Function App の作成](media/functions-twitter-email/create_fun.png)
+
+    | 設定      |  推奨値   | Description       |
+    | --- | --- | --- |
+    | **名前** | MyFunctionApp | 一意のアカウント名を選択します。 |
+    | **[リソース グループ]** | myResourceGroup | このチュートリアルでは、すべてのサービスで同じリソース グループを使用します。|
+    | **ホスティング プラン** | 従量課金プラン | これは、料金と使用量の割り当てを定義します。
+    | **場所** | 米国西部 | お近くの場所を使用します。 |
+    | **Storage** | 新規作成 | 新しいストレージ アカウントを自動的に生成します。|
+    | **[価格レベル]** | F0 | まずは低いレベルを選んでください。 呼び出し回数が不足する場合は、高いレベルにスケーリングします。|
+
+2. ダッシュボードから関数アプリを選択して、関数を展開し、**[関数]**の横の **+** ボタンをクリックし、**[Webhook + API]**、**[CSharp]**、**[この関数を作成する]** を順にクリックします。 これによって、HTTPTrigger C# テンプレートを使用する関数が作成されます。 コードは新しいウィンドウに `run.csx` として表示されます。
 
     ![[Function App] ブレード、[関数 +]](media/functions-twitter-email/add_fun.png)
 
-2. この run.csx ファイルの内容を次のコードに置き換えて、**[保存]** をクリックします。
+3. この `run.csx` ファイルの内容を次のコードに置き換えて、**[保存]** をクリックします。
 
-    ```c#
+    ```csharp
     using System.Net;
     
     public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
@@ -110,11 +122,11 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
     ```
     この関数コードは、要求で受信したセンチメント スコアに基づいて、色のカテゴリを返します。 
 
-3. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。**[要求本文]** に「`0.2`」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
+4. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。**[要求本文]** に「`0.2`」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
 
     ![Azure Portal で関数をテストする](./media/functions-twitter-email/test.png)
 
-これで、センチメント スコアを分類する関数が作成できました。 次に、Twitter および Cognitive Services アカウントに関数を統合するロジック アプリを作成します。 
+これで、センチメント スコアを分類する関数が作成できました。 次に、Twitter および Cognitive Services API に関数を統合するロジック アプリを作成します。 
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します   
 
@@ -124,7 +136,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
  
 4. 次に、`TweetSentiment` などの**名前**を入力し、表で指定されている設定を使用したうえで、条項に同意します。さらに、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
 
-    ![Azure Portal でロジック アプリを作成する](./media/functions-twitter-email/new_logicApp.png)
+    ![Azure Portal でロジック アプリを作成する](./media/functions-twitter-email/new_logic_app.png)
 
     | Setting      |  推奨値   | Description                                        |
     | ----------------- | ------------ | ------------- |
@@ -152,7 +164,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
 
     | Setting      |  推奨値   | Description                                        |
     | ----------------- | ------------ | ------------- |
-    | **[検索テキスト]** | #Azure | 選択した間隔で新しいツイートが十分に投稿される程度に一般的なハッシュタグを使用します。 Free レベルを使用している状態で、使用頻度の高すぎるハッシュタグを使用すると、Cognitive Services アカウントでのトランザクションがすぐに上限に達してしまう場合があります。 |
+    | **[検索テキスト]** | #Azure | 選択した間隔で新しいツイートが十分に投稿される程度に一般的なハッシュタグを使用します。 Free レベルを使用している状態で、使用頻度の高すぎるハッシュタグを使用すると、Cognitive Services API でのトランザクションのクォータがすぐに上限に達してしまう場合があります。 |
     | **頻度** | [分] | Twitter のポーリングに使用する頻度の単位です。  |
     | **間隔** | 15 | 頻度の単位での、Twitter に対する要求間の間隔です。 |
 
@@ -170,7 +182,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
 
     ![センチメントを検出する](media/functions-twitter-email/detect_sent.png)
 
-3. `MyCognitiveServicesConnection` などの接続名を入力し、保存した Cognitive Services アカウント用のキーを貼り付けてから、**[作成]** をクリックします。  
+3. `MyCognitiveServicesConnection` などの接続名を入力し、保存した Cognitive Services API 用のキーを貼り付けてから、**[作成]** をクリックします。  
 
 4. **[Text to analyze]\(分析するテキスト\)** > **[ツイート テキスト]** の順にクリックし、**[保存]** をクリックします。  
 
@@ -202,7 +214,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
 
     ![ロジック アプリに条件を追加する](media/functions-twitter-email/condition.png)
 
-3. **[IF YES, DO NOTHING]\(はいの場合、何もしない\)** で **[アクションの追加]** をクリックします。`outlook.com` を検索して、**[電子メールの送信]** をクリックし、Outlook.com アカウントにサインインします。
+3. **[true の場合]** で **[アクションの追加]** をクリックします。`outlook.com` を検索して、**[電子メールの送信]** をクリックし、Outlook.com アカウントにサインインします。
     
     ![条件に対するアクションを選択する](media/functions-twitter-email/outlook.png)
 
@@ -211,7 +223,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
 
 4. **[電子メールの送信]** アクションでは、表で指定されている電子メール設定を使用します。 
 
-    ![[電子メールの送信] アクション用に電子メールを構成する](media/functions-twitter-email/sendEmail.png)
+    ![[電子メールの送信] アクション用に電子メールを構成する](media/functions-twitter-email/send_email.png)
 
     | Setting      |  推奨値   | Description  |
     | ----------------- | ------------ | ------------- |
@@ -219,7 +231,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
     | **[件名]** | "ネガティブなツイートのセンチメントを検出しました"  | 電子メール通知の件名。  |
     | **本文** | [ツイート テキスト]、[場所] | **[ツイート テキスト]** パラメーターと **[場所]** パラメーターをクリックします。 |
 
-5.  [ **Save**] をクリックします。
+5.  **[Save]** をクリックします。
 
 これでワークフローが完成したので、ロジック アプリを有効にして、関数の動作を確認できます。
 
@@ -246,7 +258,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
         return req.CreateResponse(HttpStatusCode.OK, category);
 
     > [!IMPORTANT]
-    > このチュートリアルを完了した後は、ロジック アプリを無効にする必要があります。 アプリを無効にすることで、実行に対して課金されたり、Cognitive Services アカウントでのトランザクションが上限に達したりするのを回避できます。
+    > このチュートリアルを完了した後は、ロジック アプリを無効にする必要があります。 アプリを無効にすることで、実行に対して課金されたり、Cognitive Services API でのトランザクションが上限に達したりするのを回避できます。
 
 ここまでで、Functions を Logic Apps ワークフローと簡単に統合できることが確認できました。
 
@@ -261,7 +273,7 @@ Cognitive Services アカウントは、監視対象のツイートのセンチ�
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Cognitive Services アカウントを作成します。
+> * Cognitive Services API リソースを作成します。
 > * ツイートのセンチメントを分類する関数を作成します。
 > * Twitter に接続するロジック アプリを作成します。
 > * センチメントの検出をロジック アプリに追加します。 

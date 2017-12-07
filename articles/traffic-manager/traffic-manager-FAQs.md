@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: eac9c3c2b7fde4ac225e17cc3b98ca5ee926c3b3
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 5b0a7d423bc0d8d9f9f7cad56838bd006e944050
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -79,7 +79,7 @@ Traffic Manager が DNS クエリを受信すると、応答に Time to Live (TT
 
 ### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Traffic Manager の応答に設定できる TTL の値を教えてください。
 
-DNS TTL は、プロファイル レベルで 0 ～ 2,147,483,647 秒に設定できます (最大範囲は [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) に準拠)。 TTL を 0 にすると、ダウンストリームの DNS リゾルバーはクエリの応答をキャッシュしないので、すべてのクエリが解決のために Traffic Manager の DNS サーバーに送信されることになります。
+DNS TTL は、プロファイル レベルで 0 ～ 2,147,483,647 秒に設定できます (最大範囲は [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) に準拠しています)。 TTL を 0 にすると、ダウンストリームの DNS リゾルバーはクエリの応答をキャッシュしないので、すべてのクエリが解決のために Traffic Manager の DNS サーバーに送信されることになります。
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager の地理的トラフィック ルーティング方法
 
@@ -277,7 +277,7 @@ Azure Resource Manager では、すべてのリソース グループに対し�
 
 各エンドポイントとプロファイル全体の現在の監視状態は、Azure ポータルに表示されます。 この情報は、Traffic Manager の [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell コマンドレット](https://msdn.microsoft.com/library/mt125941.aspx)、および [クロスプラットフォームの Azure CLI](../cli-install-nodejs.md) を使用して取得することもできます。
 
-Azure では、過去のエンドポイントの正常性に関する履歴情報や、エンドポイントの正常性の変更に関してアラートを生成する機能は提供されません。
+Azure Monitor を使用すると、エンドポイントの正常性を追跡して、視覚的に表現することもできます。 Azure Monitor の使用方法について詳しくは、[Azure Monitoring のドキュメント](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)をご覧ください。
 
 ### <a name="can-i-monitor-https-endpoints"></a>HTTPS エンドポイントを監視できますか。
 
@@ -288,6 +288,10 @@ Traffic Manager は、次のように証明書の検証を提供できません�
 * サーバー側証明書は検証されません。
 * SNI サーバー側証明書はサポートされていません。
 * クライアント証明書はサポートされていません。
+
+### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Azure クラウド サービス/Web アプリケーションのエンドポイントを Traffic Manager プロファイルで停止した後で再起動しましたが、トラフィック イベントを受信しなくなりました。 どうしたらいいですか。
+
+Azure クラウド サービス/Web アプリケーションのエンドポイントが停止されると、Traffic Manager は正常性のチェックを停止します。エンドポイントの再起動を検出しないと正常性チェックは再開されません。 この遅延を防ぐには、エンドポイントを再起動した後で、Traffic Manager プロファイルでエンドポイントを無効にしてから再び有効にします。   
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>アプリケーションが HTTP または HTTPS をサポートしていなくても Traffic Manager を使用できますか。
 

@@ -12,7 +12,7 @@ az group create --name myResourceGroup --location eastus
 
 [az vm create](/cli/azure/vm#create) コマンドで VM を作成します。 
 
-次の例では、*myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
+次の例では、*myVM* という名前の VM を作成し、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 このコマンドは、管理者ユーザー名として *azureuser* も設定します。 後でこの名前を使って VM に接続します。 
 
 ```azurecli-interactive 
 az vm create \
@@ -23,7 +23,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。
+VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAddress` を書き留めておきます。 このアドレスは、後の手順で VM にアクセスするために使われます。
 
 ```azurecli-interactive 
 {
@@ -50,14 +50,14 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ## <a name="ssh-into-your-vm"></a>VM への SSH 接続
 
 
-VM のパブリック IP アドレスが未確認である場合は、[az network public-ip list](/cli/azure/network/public-ip#list) コマンドを実行してください。
+VM のパブリック IP アドレスが未確認である場合は、[az network public-ip list](/cli/azure/network/public-ip#list) コマンドを実行します。 後の複数の手順で、この IP アドレスが必要になります。
 
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
 ```
 
-次のコマンドを使用して、仮想マシンとの SSH セッションを作成します。 ご使用の仮想マシンの正しいパブリック IP アドレスに置き換えてください。 この例の IP アドレスは *40.68.254.142* です。
+次のコマンドを使用して、仮想マシンとの SSH セッションを作成します。 ご使用の仮想マシンの正しいパブリック IP アドレスに置き換えてください。 この例の IP アドレスは *40.68.254.142* です。 *azureuser* は、VM を作成するときに設定された管理者ユーザー名です。
 
 ```bash
 ssh azureuser@40.68.254.142

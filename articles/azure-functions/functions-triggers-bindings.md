@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions でのトリガーとバインドの使用 | Microsoft Docs"
+title: "Azure Functions でのトリガーとバインドの使用"
 description: "Azure Functions で、トリガーとバインドを使用してコード実行をオンライン イベントおよびクラウドベース サービスに接続する方法について説明します。"
 services: functions
 documentationcenter: na
@@ -8,26 +8,25 @@ manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
-ms.assetid: cbc7460a-4d8a-423f-a63e-1cd33fef7252
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 7d22a6749216486de6132a6d39e2dcf683d0e678
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e3413c9e1055ca9198dae4a467bcf47372ad4ecb
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 Azure Functions では、*トリガー*と*バインド*を使用して、Azure やその他のサービスで発生したイベントに応答するコードを記述できます。 この記事では、サポートされているすべてのプログラミング言語でのトリガーとバインドの概念的な概要を説明します。 ここでは、すべてのバインドに共通する機能について説明します。
 
 ## <a name="overview"></a>概要
 
-トリガーとバインドは、関数を呼び出す方法と、その関数で処理するデータを定義する宣言型の方法です。 *トリガー*は、関数を呼び出す方法を定義します。 1 つの関数には 1 つのトリガーしか含められません。 トリガーにはデータが関連付けられていて、通常そのデータは、その関数をトリガーしたペイロードです。 
+トリガーとバインドは、関数を呼び出す方法と、その関数で処理するデータを定義する宣言型の方法です。 *トリガー*は、関数を呼び出す方法を定義します。 1 つの関数には 1 つのトリガーしか含められません。 トリガーにはデータが関連付けられていて、通常そのデータは、その関数をトリガーしたペイロードです。
 
 入出力*バインド*によって、コード内からデータに接続する宣言型の方法が提供されます。 トリガーと同様に、関数の構成に接続文字列やその他のプロパティを指定します。 バインドは省略可能で、関数は複数の入出力バインドを持つことができます。 
 
@@ -35,11 +34,13 @@ Azure Functions では、*トリガー*と*バインド*を使用して、Azure 
 
 トリガーとバインドは、Azure Functions ポータルの **[統合]** タブで構成できます。 この UI は内部的に、function ディレクトリ内の *function.json* という名前のファイルを変更します。 **詳細エディター**に変更すると、このファイルを編集できます。
 
-次の表に、Azure Functions でサポートされているトリガーとバインドを示します。 
+## <a name="supported-bindings"></a>サポートされるバインディング
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-### <a name="example-queue-trigger-and-table-output-binding"></a>例: キュー トリガーとテーブルの出力バインド
+どのバインディングがプレビューでどのバインディングが実稼働環境で承認されているかについては、[サポートされている言語](supported-languages.md)に関する記事をご覧ください。
+
+## <a name="example-queue-trigger-and-table-output-binding"></a>例: キュー トリガーとテーブルの出力バインド
 
 Azure Queue Storage に新しいメッセージが表示されるたびに、Azure Table Storage に新しい行を書き込みたいと仮定します。 このシナリオは、Azure Queue トリガーと Azure Table Storage の出力バインドを使用して実装できます。 
 
@@ -126,9 +127,9 @@ Azure ポータルで *function.json* の内容を表示して編集するには
 
 Azure Storage との統合のコード例と詳細については、「[Azure Functions における Azure Storage のトリガーとバインド](functions-bindings-storage.md)」を参照してください。
 
-### <a name="binding-direction"></a>バインドの方向
+## <a name="binding-direction"></a>バインドの方向
 
-すべてのトリガーとバインドには `direction` プロパティがあります。
+すべてのトリガーとバインドには、*function.json* ファイルに `direction` プロパティがあります。
 
 - トリガーの場合、方向は常に `in` です
 - 入出力バインドは `in` と `out` を使用します
@@ -243,7 +244,7 @@ JavaScript など、動的に型指定された言語については、バイン
 
 各トリガーのメタデータ プロパティの詳細については、対応するリファレンス トピックを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  
 
-たとえば、BLOB トリガーには一定の遅延があるため、キュー トリガーを使用して関数を実行できます ([BLOB ストレージ トリガー](functions-bindings-storage-blob.md#blob-storage-trigger)に関するページを参照)。 キュー メッセージにはトリガーする対象の Blob ファイル名が含まれます。 `queueTrigger` メタデータ プロパティを使用する場合は、この動作をすべて、コードではなく構成に指定できます。
+たとえば、BLOB トリガーには一定の遅延があるため、キュー トリガーを使用して関数を実行できます ([BLOB ストレージ トリガー](functions-bindings-storage-blob.md#trigger)に関するページを参照)。 キュー メッセージにはトリガーする対象の Blob ファイル名が含まれます。 `queueTrigger` メタデータ プロパティを使用する場合は、この動作をすべて、コードではなく構成に指定できます。
 
 ```json
   "bindings": [

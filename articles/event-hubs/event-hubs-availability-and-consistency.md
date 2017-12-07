@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: 681a9d1636d547492f6f827461c6b2494b918778
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be1398e9b0a10efcd694e46d6322d5d7b9e7a843
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
 
@@ -36,7 +36,7 @@ Azure Event Hubs は[パーティション分割モデル](event-hubs-features.m
 Event Hubs は、パーティション分割されたデータ モデルの上に構築されます。 Event Hub のパーティションの数はセットアップ時に構成できますが、後でこの値を変更することはできません。 Event Hubs でパーティションを使用する必要があるため、アプリケーションの可用性と一貫性について決定を行う必要があります。
 
 ## <a name="availability"></a>可用性
-Event Hubs の使用を開始する最も簡単な方法は、既定の動作を使用することです。 新しい `EventHubClient` オブジェクトを作成し、`Send` メソッドを使用すると、イベントはイベント ハブのパーティション間に自動的に分散されます。 この動作により、アップ タイムを最大にすることができます。
+Event Hubs の使用を開始する最も簡単な方法は、既定の動作を使用することです。 新しい **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** オブジェクトを作成し、**[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** メソッドを使用すると、イベントはイベント ハブのパーティション間に自動的に分散されます。 この動作により、アップ タイムを最大にすることができます。
 
 最大のアップ タイムを必要とするユース ケースでは、このモデルが適しています。
 

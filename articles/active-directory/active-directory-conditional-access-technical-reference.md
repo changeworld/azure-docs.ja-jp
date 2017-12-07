@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/19/2017
+ms.date: 11/29/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: c9e44a696010541ab153597bb1ab5d556c2e7b65
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: cfb3a309208c78dc7896d61891da9825cf36dbd9
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を利用し、許可されたユーザーがリソースにアクセスする方法を微調整できます。  
+[Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を利用し、許可されたユーザーがリソースにアクセスする方法を微調整できます。   
 
-このトピックでは、条件付きアクセス ポリシーの次の構成オプションのサポート情報を提供します。 
+この記事では、条件付きアクセス ポリシーの次の構成オプションに対するサポート情報が提供されます。 
 
 - クラウド アプリケーションの割り当て
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/20/2017
 
 ## <a name="cloud-apps-assignments"></a>クラウド アプリの割り当て
 
-条件付きアクセス ポリシーを構成する場合、[ポリシーを使用するクラウド アプリを選択](active-directory-conditional-access-azure-portal.md#who)する必要があります。 
+条件付きアクセス ポリシーを使用して、ユーザーが[クラウド アプリ](active-directory-conditional-access-azure-portal.md#who)にアクセスする方法を制御します。 条件付きアクセス ポリシーを構成する際に、クラウド アプリを少なくとも 1 つ選択する必要があります。 
 
 ![ポリシーに対してクラウド アプリを選択する](./media/active-directory-conditional-access-technical-reference/09.png)
 
@@ -48,6 +48,7 @@ ms.lasthandoff: 11/20/2017
 Microsoft から、次のクラウド アプリに条件付きアクセス ポリシーを割り当てることができます。
 
 - Azure Information Protection - [詳細](https://docs.microsoft.com/information-protection/get-started/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+
 - Azure RemoteApp
 
 - Microsoft Dynamics 365
@@ -103,7 +104,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 ## <a name="client-apps-condition"></a>クライアント アプリの条件 
 
-条件付きアクセス ポリシーを構成する場合、クライアント アプリの条件に[クライアント アプリを選択](active-directory-conditional-access-azure-portal.md#client-apps)できます。 クライアント アプリの条件を設定し、次の種類のクライアント アプリからアクセス試行が行われたときに、アクセスを許可またはブロックします。
+条件付きアクセス ポリシー内で、[クライアント アプリ](active-directory-conditional-access-azure-portal.md#client-apps)の条件を構成して、アクセス試行を開始したクライアント アプリにポリシーを関連付けることができます。 クライアント アプリの条件を設定し、次の種類のクライアント アプリからアクセス試行が行われたときに、アクセスを許可またはブロックします。
 
 - [ブラウザー] ボタンを
 - モバイル アプリとデスクトップ アプリ
@@ -112,11 +113,11 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 ### <a name="supported-browsers"></a>サポートされているブラウザー 
 
-条件付きアクセス ポリシーの **[ブラウザー]** オプションを利用してブラウザーのアクセスを制御します。 サポートされているブラウザーがアクセスを試行したときにのみ、アクセスが与えられます。 サポートされていないブラウザーでアクセスが試された場合、アクセスはブロックされます。
+条件付きアクセス ポリシー内で、クライアント アプリとして **[ブラウザー]** を選択できます。
 
 ![サポートされているブラウザーのアクセスの制御](./media/active-directory-conditional-access-technical-reference/05.png)
 
-条件付きアクセス ポリシーでは、次のブラウザーがサポートされています。 
+この設定は、以下のブラウザーからのアクセス試行に影響を与えます。 
 
 
 | OS                     | ブラウザー                            | サポート     |
@@ -140,42 +141,43 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>サポートされているモバイル アプリケーションとデスクトップ クライアント
 
-条件付きアクセス ポリシーの **[モバイル アプリとデスクトップ クライアント]** オプションを利用してアプリとクライアントのアクセスを制御します。 サポートされているモバイル アプリまたはデスクトップ クライアントがアクセスを試行したときにのみ、アクセスが許可されます。 サポートされていないアプリまたはクライアントでアクセスが試された場合、アクセスはブロックされます。
+条件付きアクセス ポリシー内で、クライアント アプリとして **[モバイル アプリとデスクトップ クライアント]** を選択できます。
+
 
 ![サポートされているモバイル アプリまたはデスクトップ クライアントのアクセスの制御](./media/active-directory-conditional-access-technical-reference/06.png)
 
-以下のモバイル アプリとデスクトップ クライアントは、Office 365 をはじめとする Azure AD 接続サービス アプリケーションに対する条件付きアクセスをサポートします。
+
+この設定は、以下のモバイル アプリおよびデスクトップ クライアントからのアクセス試行に影響を与えます。 
 
 
-| クライアント アプリ| 対象サービス| プラットフォーム |
-| --- | --- | --- |
-| Azure リモート アプリ| Azure Remote App サービス| Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X|
-| Dynamics CRM アプリ| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS、Android|
-| メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Office 365 Exchange Online| Windows 10|
-| アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス| Android および iOS|
-| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS|
-| Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)| Office 365 SharePoint Online| Windows 8.1、Windows 7|
-| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定| Office 365 SharePoint Online| Windows 10|
-| Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定| Office 365 SharePoint Online| Mac OS X|
-| Office モバイル アプリ| Office 365 SharePoint Online| iOS、Android|
-| Office Yammer アプリ| Office 365 Yammer| Windows 10、iOS、Android|
-| Outlook 2016 (Office for macOS)| Office 365 Exchange Online| Mac OS X|
-| Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)| Office 365 Exchange Online| Windows 8.1、Windows 7|
-| Outlook Mobile アプリ| Office 365 Exchange Online| iOS|
-| PowerBI アプリ。 Android 用の Power BI では現在、デバイス ベースの条件付きアクセスはサポートされていません。| PowerBI サービス| Windows 10、Windows 8.1、Windows 7、iOS|
-| Skype for Business| Office 365 Exchange Online| Android、IOS|
-| Visual Studio Team Services アプリ| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS、Android|
-
+|クライアント アプリ|対象サービス|プラットフォーム|
+|---|---|---|
+|Azure リモート アプリ|Azure Remote App サービス|Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X|
+|Dynamics CRM アプリ|Dynamics CRM|Windows 10、Windows 8.1、Windows 7、iOS、Android|
+|メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)|Office 365 Exchange Online|Windows 10|
+|アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。 |任意のマイ アプリ アプリ サービス|Android および iOS|
+|Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する|Microsoft Teams|Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
+|Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)|Office 365 SharePoint Online|Windows 8.1、Windows 7|
+|Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定|Office 365 SharePoint Online|Windows 10|
+|Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定|Office 365 SharePoint Online|Mac OS X|
+|Office モバイル アプリ|Office 365 SharePoint Online|Android、iOS|
+|Office Yammer アプリ|Office 365 Yammer|Windows 10、iOS、Android|
+|Outlook 2016 (Office for macOS)|Office 365 Exchange Online|Mac OS X|
+|Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)|Office 365 Exchange Online|Windows 8.1、Windows 7|
+|Outlook Mobile アプリ|Office 365 Exchange Online|Android、iOS|
+|PowerBI アプリ。 Android 用の Power BI では現在、デバイス ベースの条件付きアクセスはサポートされていません。|PowerBI サービス|Windows 10、Windows 8.1、Windows 7、iOS|
+|Skype for Business|Office 365 Exchange Online|Android、IOS |
+|Visual Studio Team Services アプリ|Visual Studio Team Services|Windows 10、Windows 8.1、Windows 7、iOS、Android|
 
 
 
 ## <a name="approved-client-app-requirement"></a>承認されたクライアント アプリケーションの要件 
 
-条件付きアクセス ポリシーの **[承認されたクライアント アプリが必要です]** オプションを利用してクライアント接続を制御します。 承認されたクライアント アプリが接続を試行したときにのみ、アクセスが許可されます。
+条件付きアクセス ポリシー内で、選択したクラウド アプリに対しては承認されたクライアント アプリからアクセス試行されるように要求することができます。 
 
 ![承認されたクライアント アプリのアクセスの制御](./media/active-directory-conditional-access-technical-reference/21.png)
 
-次のクライアント アプリは、承認されたクライアント アプリケーションの要件に基づいて使用できます。
+この設定は、以下のクライアント アプリに適用されます。
 
 
 - Microsoft Azure Information Protection

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/16/2017
 ms.author: sethm
-ms.openlocfilehash: 69c07cb31b1dc3ec3685448d8187ef3a57bd3821
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7d5f14d5a65253cf0aad1811ace419bf2f39f7db
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="event-hubs-programming-guide"></a>Event Hubs のプログラミング ガイド
 
@@ -117,10 +117,10 @@ Messaging Factoryのインスタンスから作成された追加の [EventHubCl
 public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
-単一のバッチがイベントの 256 KB 制限を超えてはならないことに注意してください。 また、バッチの各メッセージでは同じ発行元 ID が使用されます。 バッチが最大イベント サイズを超えないようにすることは送信元の責任となります。 超えた場合、クライアント **送信** エラーが生成されます。
+単一のバッチがイベントの 256 KB 制限を超えてはならないことに注意してください。 また、バッチの各メッセージでは同じ発行元 ID が使用されます。 バッチが最大イベント サイズを超えないようにすることは送信元の責任となります。 超えた場合、クライアント **送信** エラーが生成されます。 ヘルパー メソッド [EventHubClient.CreateBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.createbatch) を使用して、バッチが 256 KB を超えないようにします。 [CreateBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.createbatch) API から空の [EventDataBatch](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch) を取得し、[TryAdd](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch.tryadd#Microsoft_ServiceBus_Messaging_EventDataBatch_TryAdd_Microsoft_ServiceBus_Messaging_EventData_) を使用してイベントを追加し、バッチを構築します。 最後に、[EventDataBatch.ToEnumerable](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch.toenumerable) を使用して基盤となるイベントを取得し、[EventHubClient.Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.send) API に渡します。
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>非同期送信と大規模送信
-イベント ハブにイベントを非同期送信することもできます。 非同期送信を利用すると、クライアントがイベントを送信する速度が上がります。 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) メソッドと [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) メソッドの両方で [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返す非同期バージョンを利用できます。 この手法ではスループットが上がりますが、Event Hubs でスロットルされていてもクライアントがイベントの送信を続けるので、適切に実装されていない場合、クライアントに障害が発生したり、メッセージが失われたりすることがあります。 また、クライアントの [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy) プロパティを使用し、クライアント側の再試行オプションを制御できます。
+イベント ハブにイベントを非同期送信することもできます。 非同期送信を利用すると、クライアントがイベントを送信する速度が上がります。 [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.send) メソッドと [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendbatch) メソッドの両方で [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返す非同期バージョンを利用できます。 この手法ではスループットが上がりますが、Event Hubs でスロットルされていてもクライアントがイベントの送信を続けるので、適切に実装されていない場合、クライアントに障害が発生したり、メッセージが失われたりすることがあります。 また、クライアントの [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity.retrypolicy) プロパティを使用し、クライアント側の再試行オプションを制御できます。
 
 ## <a name="create-a-partition-sender"></a>パーティション送信元の作成
 パーティション キーを持たないイベント ハブにイベントを送信するのが最も一般的ですが、特定のパーティションにイベントを直接送信することもあります。 For example:

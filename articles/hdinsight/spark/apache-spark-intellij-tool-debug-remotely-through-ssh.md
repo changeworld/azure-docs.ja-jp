@@ -17,11 +17,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: jejiang
-ms.openlocfilehash: 6f9259ae5e8f382c6714d468004624c2cbcbbc33
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 87cda776195dc93a35c6e978b18e823bf54c9ffb
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>ローカルまたはリモートから SSH 経由で Azure Toolkit for IntelliJ を使用して HDInsight クラスター上の Spark アプリケーションをデバッグする
 
@@ -121,7 +121,7 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
    
    ![リモート実行ボタン](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
 
-7. 実行中のログが右側のパネルに表示されないようにするには、**[Disconnect]\(切断\)** ボタンをクリックしてください。 ただしバックエンドでは引き続き実行されており、左側のパネルに結果が表示されます。
+7. **[切断]** ボタンをクリックします。送信ログは左側のパネルに表示されません。 ただし、バックエンドで実行が続けられています。
 
    ![リモート実行ボタン](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 

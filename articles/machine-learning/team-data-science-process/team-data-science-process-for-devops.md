@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/21/2017
 ms.author: bradsev;BuckWoody
-ms.openlocfilehash: e043de0aa4ed861139f50291a98c3300574e6078
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 2ab36da70e2c08b770973f4c4d33eddfdebed9e1
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>DevOps 向け Team Data Science Process
 
-この記事では、Advanced Analytics と Cognitive Services ソリューションを実装するための開発者の操作 (DevOps) の機能について説明します。 Data Science Process と Platform、DevOps プロセス、データ サイエンスと AI プロジェクトおよびソリューション用の DevOps ツールチェーンについて理解するためのトピックを取り上げます。
+この記事では、Advanced Analytics と Cognitive Services ソリューションを実装するための開発者の操作 (DevOps) の機能について説明します。 これらのトレーニング資料は、Team Data Science Process (TDSP)、Microsoft、オープンソースのソフトウェアとツールキットに関連しており、データ サイエンス ソリューションの計画、遂行、および実現に役立ちます。 ここでは、データ サイエンス、AI プロジェクトおよびソリューションに固有の DevOps ツールチェーンに関するトピックを参照しています。
 
 ## <a name="lesson-path"></a>レッスン パス
 次の表では、Azure テクノロジを使用した、データ サイエンス ソリューションを実装するために必要な DevOps 目標の達成方法をレベル別にまとめています。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: vturecek
-ms.openlocfilehash: eb076c30eda63c37a8b555d40d5903cbbf0d426a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ internal class HelloWorld : Actor, IHelloWorld
     ![[新しいプロジェクトの追加] ダイアログ][6]    
     
     > [!NOTE]
-    > コンソール アプリケーションは、Service Fabric でクライアントとして通常使用するアプリの種類ではありませんが、ローカル Service Fabric エミュレーターを使用したデバッグおよびテストの例として役に立ちます。
+    > コンソール アプリケーションは、Service Fabric でクライアントとして通常使用するアプリの種類ではありませんが、ローカル Service Fabric クラスターを使用したデバッグおよびテストの例として役に立ちます。
 
 3. コンソール アプリケーションは、インターフェイス プロジェクトおよびその他の依存関係との互換性を維持するために、64 ビット アプリケーションである必要があります。  ソリューション エクスプローラーで、**ActorClient** プロジェクトを右クリックし､**[プロパティ]** をクリックします｡  **[ビルド]** タブで、**[プラットフォーム ターゲット]** を **[x64]** に設定します。
     

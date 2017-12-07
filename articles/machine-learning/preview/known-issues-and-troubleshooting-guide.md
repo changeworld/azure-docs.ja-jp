@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: a03fb4f202bddb6454f703c998e95abf13d14fff
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 5c7c15eacdf43d3623000ed228adfaeb55803c8f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -39,6 +39,17 @@ MSDN フォーラムに質問を投稿できます。 製品チームは、こ�
 /tmp/amlinstaller/logs/*
 ```
 これらのディレクトリの内容を zip で圧縮し、Microsoft に診断を送信してください。
+
+### <a name="app-update"></a>アプリの更新 
+#### <a name="no-update-notification-on-windows-desktop"></a>Windows デスクトップで更新が通知されない 
+この問題は、今後の更新で対処されます。 その間の回避策として、タスク バーにピン留めされたショートカットからはアプリを起動しないようにします。 代わりに、[スタート] メニュー、スタートの検索バー、またはデスクトップ上のショートカット (ある場合) を使用することでアプリを起動します。 
+
+#### <a name="no-update-notification-on-an-ubuntu-data-sciece-virtual-machine-dsvm"></a>Ubuntu データ サイエンス仮想マシン (DSVM) で更新が通知されない
+次の手順を実行して、最新のアプリケーションをダウンロードします。   
+   - フォルダー \Users\AppData\Local\amlworkbench を削除する
+   - スクリプト `c:\dsvm\tools\setup\InstallAMLFromLocal.ps1` を削除する
+   - 上のスクリプトを起動するデスクトップ ショートカットを削除する
+   - [https://aka.ms/azureml-wb-msi](https://aka.ms/azureml-wb-msi) を使用して正常にインストールする
 
 ### <a name="workbench-desktop-app"></a>Workbench デスクトップ アプリ
 ログインで問題が発生した場合、または Workbench デスクトップ アプリがクラッシュした場合、ログ ファイルは次の場所にあります。

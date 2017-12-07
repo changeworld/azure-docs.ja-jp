@@ -1,5 +1,5 @@
 ---
-title: ".NET Standard を使用して Azure Event Hubs からイベントを受信する | Microsoft Docs"
+title: ".NET Standard ライブラリを使用して Azure Event Hubs からイベントを受信する | Microsoft Docs"
 description: ".NET standard で EventProcessorHost を使用したメッセージ受信を開始する"
 services: event-hubs
 documentationcenter: na
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: cc62792dad0284f9514664795fdfb32e94a85943
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a88b5da8fa504e0528caa7fa212d4cec26d1cf66
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>.NET Standard で EventProcessorHost を使用したメッセージ受信を開始する
 
 > [!NOTE]
 > このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) で入手できます。
 
-このチュートリアルでは、**EventProcessorHost** を使用してイベント ハブからメッセージを受信する .NET Core コンソール アプリケーションの記述方法を説明します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) ソリューションをそのまま実行するには、文字列をイベント ハブとストレージ アカウントの値に置き換えます。 このチュートリアルの手順に従って独自のものを作成します。
+このチュートリアルでは、**イベント プロセッサ ホスト** ライブラリを使ってイベント ハブからメッセージを受信する .NET Core コンソール アプリケーションを作成する方法を説明します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) ソリューションをそのまま実行するには、文字列をイベント ハブとストレージ アカウントの値に置き換えます。 このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,22 +33,22 @@ ms.lasthandoff: 10/11/2017
 * [.NET Core Visual Studio 2015 または 2017 ツール](http://www.microsoft.com/net/core)。
 * Azure サブスクリプション。
 * Azure Event Hubs 名前空間。
-* Azure ストレージ アカウント。
+* Azure Storage のアカウント
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する  
 
-最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して イベント ハブ型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[この記事](event-hubs-create.md)の手順を踏み、次のステップに進みます。  
+最初のステップでは、[Azure Portal](https://portal.azure.com) を使用して イベント ハブ型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を済ませた後、このチュートリアルに進みます。  
 
-## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成  
+## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成  
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。  
+1. [Azure ポータル](https://portal.azure.com)にサインインします。  
 2. ポータルの左側のナビゲーション ウィンドウで **[新規]** をクリックし、**[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。  
-3. ストレージ アカウントのブレードで、フィールドを入力し、**[作成]** をクリックします。
+3. ストレージ アカウント ウィンドウのフィールドを入力して、**[作成]** をクリックします。
 
     ![[ストレージ アカウントの作成]][1]
 
-4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウント名をクリックし、 **[要点]** ブレードで **[BLOB]** をクリックします。 **[Blob service]** ブレードが開いたら、上部にある **[+ Container (+ コンテナー)]** をクリックします。 コンテナーに名前を付け、**[Blob service]** ブレードを閉じます。  
-5. 左のブレードにある **[アクセス キー]** をクリックして、ストレージ コンテナーとストレージ アカウントの名前、および **[key1]** の値をコピーします。 これらの値をメモ帳などに一時的に保存します。  
+4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウント名をクリックし、 **[要点]** ウィンドウで **[BLOB]** をクリックします。 **[Blob service]** ダイアログ ボックスが開いたら、上部にある **[+ コンテナー]** をクリックします。 コンテナーの名前を指定して、**[Blob service]** を閉じます。  
+5. 左側のウィンドウで **[アクセス キー]** をクリックし、ストレージ コンテナーとストレージ アカウントの名前、および **[key1]** の値をコピーします。 これらの値をメモ帳などに一時的に保存します。  
 
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
@@ -58,10 +58,10 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Event Hubs NuGet パッケージの追加
 
-[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) と [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET 標準ライブラリの NuGet パッケージを、次の手順でプロジェクトに追加します。 
+次の手順に従って、.NET Standard ライブラリ NuGet パッケージの [**Microsoft.Azure.EventHubs**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) と [**Microsoft.Azure.EventHubs.Processor**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) をプロジェクトに追加します。 
 
 1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
-2. **[参照]** タブをクリックして、"Microsoft.Azure.EventHubs" を検索し、**Microsoft.Azure.EventHubs** パッケージを選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+2. **[参照]** タブをクリックし、**Microsoft.Azure.EventHubs** を探して、**Microsoft.Azure.EventHubs** パッケージを選びます。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 3. 手順 1 と 2 を繰り返し、**Microsoft.Azure.EventHubs.Processor** パッケージをインストールします。
 
 ## <a name="implement-the-ieventprocessor-interface"></a>IEventProcessor インターフェイスの実装

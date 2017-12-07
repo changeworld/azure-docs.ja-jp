@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/05/2017
+ms.date: 07/07/2017
 ms.author: carlrab
-ms.openlocfilehash: 6eb026b5f478769f680e3899a7c743546c2c9d88
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1d2a22500c322a63b134e29e5f7509df271eafb9
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>.NET Core (C#) を使用して Azure SQL データベースに照会する
 
@@ -29,30 +29,21 @@ ms.lasthandoff: 10/31/2017
 
 このクイック スタート チュートリアルを完了するには、以下のものが必要です。
 
-- Azure SQL Database。 このクイック スタートでは、次のいずれかのクイック スタートで作成したリソースを使用します。 
-
-   - [DB の作成 - ポータル](sql-database-get-started-portal.md)
-   - [DB の作成 - CLI](sql-database-get-started-cli.md)
-   - [DB の作成 - PowerShell](sql-database-get-started-powershell.md)
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
 - このクイック スタート チュートリアルに使用するコンピューターのパブリック IP アドレスに対する[サーバー レベルのファイアウォール規則](sql-database-get-started-portal.md#create-a-server-level-firewall-rule)。
+
 - [ご使用のオペレーティング システムの .NET Core](https://www.microsoft.com/net/core) をインストール済みであること。 
 
 ## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
-Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
-3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。 
+#### <a name="for-adonet"></a>ADO.NET の場合
 
-   ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
+1. **[データベース接続文字列の表示]** をクリックして先に進みます。
 
-4. Azure SQL Database サーバーのログイン情報を忘れた場合は、[SQL データベース サーバー] ページに移動して、サーバー管理者名を表示します。 必要に応じてパスワードをリセットしてください。
-
-5. **[データベース接続文字列の表示]** をクリックします。
-
-6. 完全な **ADO.NET** 接続文字列を確認します。
+2. 完全な **ADO.NET** 接続文字列を確認します。
 
     ![ADO.NET の接続文字列](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
 

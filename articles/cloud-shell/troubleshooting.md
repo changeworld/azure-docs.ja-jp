@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: damaerte
-ms.openlocfilehash: 59aec1cb6433e90caf683b4bce98c92e9f79fd18
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 233569303ea3651192aafe9681f58a9582625d29
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshooting-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティング
 
@@ -64,8 +64,9 @@ Azure Cloud Shell での問題に対する既知の解決策は以下のとお�
 
 ### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
 
-- **詳細**: ユーザーが GUI アプリを起動しても、プロンプトが返りません。 たとえば、ユーザーが 2 要素認証が有効なプライベート GitHub リポジトリを閉じると、2 要素認証を完了するためのダイアログ ボックスが表示されます。
-- **解決策**: コマンドを終了するには `Ctrl+C` キーを押します。
+- **詳細**: ユーザーが GUI アプリを起動しても、プロンプトが返りません。 たとえば、ユーザーが 2 要素認証が有効なプライベート GitHub リポジトリを閉じると、2 要素認証を完了するためのダイアログ ボックスが表示されます。  
+- **解決策**: シェルをいったん閉じて、再び開きます。
+
 
 ### <a name="get-help--online-does-not-open-the-help-page"></a>Get-Help -online でヘルプ ページが開かない
 

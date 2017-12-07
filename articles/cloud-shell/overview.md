@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: juluk
-ms.openlocfilehash: 08ab3b38e4c1fbeb1fac67c5d1b6f6749f7a0a3e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 05c4d419f6d7b42a14b9bb13570daaa666d52db3
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
@@ -55,9 +55,9 @@ Azure Portal から使用可能な Cloud Shell に加えて、以下からもア
 * [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
-### <a name="connect-your-azure-files-storage"></a>Azure Files ストレージの接続
+### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure Files ストレージの接続
 Cloud Shell マシンは一時的なものであるため、お使いの $Home ディレクトリを永続化するためには、Azure Files 共有を `clouddrive` としてマウントする必要があります。
-Cloud Shell の初回起動時に、リソース グループとストレージ アカウント、ファイル共有を自動的に作成するよう促されます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 1 つのファイル共有をマップすると、Cloud Shell (プレビュー) の Bash と PowerShell の両方で使われます。
+Cloud Shell の初回起動時に、リソース グループ、ストレージ アカウント、Azure ファイル共有を作成するように求められます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 Cloud Shell の Bash と PowerShell (プレビュー) を使用して、単一の Azure ファイル共有をマッピングし、使用できます。
 
 #### <a name="create-new-storage"></a>新しいストレージの作成
 ![](media/overview/basic-storage.png)
@@ -70,7 +70,7 @@ Cloud Shell の初回起動時に、リソース グループとストレージ 
 3. `cs-<user>-<domain>-com-<uniqueGuid>` という名前のファイル共有
 
 > [!Note]
-> Cloud Shell の Bash は、`$Home` を永続化するための既定の 5 GB ディスク イメージも作成します。 SSH キーなど、$Home ディレクトリ内のすべてのファイルが、マウントされたファイル共有に格納されたユーザー ディスク イメージに永続化されます。 $Home ディレクトリおよびマウントされたファイル共有へのファイルの保存時に、ベスト プラクティスを適用します。
+> Cloud Shell の Bash は、`$Home` を永続化するための既定の 5 GB ディスク イメージも作成します。 SSH キーなどの $Home ディレクトリ内のすべてのファイルが、マウントされた Azure ファイル共有に格納されたユーザー ディスク イメージ内に保持されます。 $Home ディレクトリとマウントされた Azure ファイル共有へのファイルの保存時に、ベスト プラクティスを適用します。
 
 #### <a name="use-existing-resources"></a>既存のリソースの使用
 ![](media/overview/advanced-storage.png)
@@ -79,13 +79,13 @@ Cloud Shell の初回起動時に、リソース グループとストレージ 
 ストレージのセットアップを促す画面が表示されたら、[詳細設定の表示] をクリックして、追加オプションを表示します。
 ドロップダウン ボックスには、割り当てられている Cloud Shell リージョンとローカル/グローバル冗長ストレージ アカウントが一覧表示されます。
 
-[Cloud Shell ストレージ、ファイル共有の更新、ファイルのアップロード/ダウンロードについてはこちらを参照してください。](persisting-shell-storage.md)
+[Cloud Shell ストレージ、Azure ファイル共有の更新、ファイルのアップロード/ダウンロードについては、こちらをご覧ください。](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>概念
 * Cloud Shell は、ユーザーごとにセッション単位で一時的に提供されるホスト上で実行されます。
 * Cloud Shell は、無操作状態で 20 分経過するとタイムアウトとなります。
-* Cloud Shell では、ファイル共有をマウントする必要があります。
-* Cloud Shell は、Bash と PowerShell の両方に同じファイル共有を使います。
+* Cloud Shell では、Azure ファイル共有がマウントされている必要があります
+* Cloud Shell では、Bash と PowerShell に対して同じ Azure ファイル共有が使用されます
 * Cloud Shell には、ユーザー アカウントごとに 1 台のマシンが割り当てられます。
 * Bash では、標準の Linux ユーザーとしてアクセス許可が設定されます。
 
@@ -103,4 +103,4 @@ Cloud Shell のホストとなるマシンは無料です。ただし、前提�
 
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
-[Cloud Shell (プレビュー) での PowerShell のクイックスタート](quickstart-powershell.md)
+[Cloud Shell での PowerShell (プレビュー) のクイックスタート](quickstart-powershell.md)

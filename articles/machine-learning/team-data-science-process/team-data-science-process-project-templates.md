@@ -1,6 +1,6 @@
 ---
 title: "Team Data Science Process のプロジェクト計画 - Azure | Microsoft Docs"
-description: TBD
+description: "データ サイエンス プロジェクトを計画し、管理するのに役立つ Microsoft Project と Excel のテンプレート。"
 documentationcenter: 
 author: bradsev
 manager: cgronlun
@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 11/27/2017
 ms.author: bradsev;
-ms.openlocfilehash: 554e653a1f1b060743a2f461327c58e9a60a56b1
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 7f99b0bc36a08f52148f032567771f21c56ce42e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process のプロジェクト計画
 
-Team Data Science Process (TDSP) には、データ サイエンス プロジェクトの開発を体系化するライフサイクルが用意されています。 ライフサイクルは、プロジェクトで通常 (多くの場合に繰り返し) 実行される主要なステージのアウトラインを示します。
+Team Data Science Process (TDSP) には、データ サイエンス プロジェクトの開発を体系化するライフサイクルが用意されています。 この記事には、これらのプロジェクト ステージの計画と管理に役立つ Microsoft Project と Excel のテンプレートへのリンクが掲載されています。
+
+ライフサイクルは、プロジェクトで通常 (多くの場合に繰り返し) 実行される主要なステージのアウトラインを示します。
 
 - ビジネスの把握
 - データの取得と理解
@@ -31,8 +33,7 @@ Team Data Science Process (TDSP) には、データ サイエンス プロジェ
 
 このような各ステージの説明については、「[Team Data Science Process ライフサイクル](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle)」を参照してください。
 
-この記事には、これらのプロジェクト ステージの計画と管理に役立つ Microsoft Project と Excel のテンプレートへのリンクが掲載されています。 
-
+ 
 ## <a name="microsoft-project-template"></a>Microsoft Project テンプレート
 
 Team Data Science Process 用の Microsoft Project テンプレートは、ここから入手できます: [Microsoft Project テンプレート](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
@@ -54,7 +55,7 @@ Microsoft Project へのアクセス権がない場合は、同じデータす�
 
 ## <a name="next-steps"></a>次のステップ
 
-[データ サイエンス プロジェクトの実行](project-execution.md) このドキュメントでは、Team Data Science Process を使用して、プロジェクト チーム内でバージョン コントロールされた体系的、協調的な方法でデータ サイエンス プロジェクトを実行することについて説明します。
+[データ サイエンス プロジェクトのアジャイル開発](agile-development.md) このドキュメントでは、Team Data Science Process を使用した、プロジェクト チーム内でバージョン コントロールされた体系的、協調的な方法によるデータ サイエンス プロジェクトの実行ついて説明します。
 
 また、**特定のシナリオ**のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)のトピックで簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
 

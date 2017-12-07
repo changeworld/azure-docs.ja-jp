@@ -8,15 +8,15 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/03/2017
-ms.openlocfilehash: 17f045f516792e50f7349805ec9f7a01e3f9d5b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/27/2017
+ms.openlocfilehash: d3de3fdf28997b63321bf23443472db43ebb5c52
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
-このトピックでは、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。
+この記事では、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。
 
 ## <a name="what-is-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーとは
 
@@ -38,15 +38,13 @@ Azure Database for MySQL サーバー内には 1 つまたは複数のデータ�
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーへの接続および認証方法
 
 次の要素が、データベースへの安全なアクセスを確保するうえで役に立ちます。
-
 |||
 | :-- | :-- |
 | **認証と権限承認** | Azure Database for MySQL サーバーは、ネイティブ MySQL 認証をサポートしています。 サーバーにはサーバーの管理者ログインで接続し、認証できます。 |
 | **プロトコル** | サービスは、MySQL で使用されるメッセージ ベースのプロトコルをサポートしています。 |
 | **TCP/IP** | プロトコルは、TCP/IP および UNIX ドメイン ソケット経由でサポートされます。 |
-| **ファイアウォール** | データを保護するため、ファイアウォール規則は、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーまたはそのデータベースへのすべてのアクセスを遮断します。 「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」を参照してください。 |
+| **ファイアウォール** | データを保護するため、ファイアウォール規則は、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 「[Azure Database for MySQL サーバーのファイアウォール規則](./concepts-firewall-rules.md)」を参照してください。 |
 | **SSL** | アプリケーションとデータベース サーバーの間に SSL 接続を適用できます。  「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。 |
-|||
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 Azure Database for MySQL サーバーを管理するには、Azure Portal または Azure CLI を使用します。

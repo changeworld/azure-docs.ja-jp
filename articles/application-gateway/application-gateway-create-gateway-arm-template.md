@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 305a0529b6f6ad8bd96ac10da5f7ebc48317df45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用した Application Gateway の作成
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 10/11/2017
 
 Azure Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、HTTP 負荷分散、Cookie ベースのセッション アフィニティ、Secure Sockets Layer (SSL) オフロード、カスタムの正常性プローブ、マルチサイトのサポートなどの多くのアプリケーション配信コントローラー (ADC) 機能を備えています。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」を参照してください。
 
-この記事では、GitHub から既存の Azure Resource Manager テンプレートをダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
+この記事では、GitHub から既存の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)をダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
 
-GitHub から直接 Azure リソース マネージャー テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
+GitHub から直接テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -75,9 +75,6 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
    * **type**。 テンプレートによって作成されるリソースのタイプ。 この場合、タイプは `Microsoft.Network/applicationGateways` です。これは、アプリケーション ゲートウェイを表します。
    * **name**。 リソースの名前です。 `[parameters('applicationGatewayName')]` が使用されているため、名前はデプロイ中にユーザーまたはパラメーター ファイルによって入力されます。
    * **properties**。 リソースのプロパティの一覧です。 このテンプレートは、Application Gateway の作成の過程で、仮想ネットワークとパブリック IP アドレスを使用します。
-
-   > [!NOTE]
-   > テンプレートの詳細については、「[Resource Manager テンプレート リファレンス](/templates/)」を参照してください。
 
 1. [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf) に戻ります。
 1. **[azuredeploy-paremeters.json]**、**[RAW]** の順にクリックします。
@@ -190,7 +187,7 @@ Azure CLI を使用してダウンロードした Azure Resource Manager テン�
 
 1. 「[Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する](https://azure.microsoft.com/documentation/templates/101-application-gateway-waf/)」に移動します。
 
-1. [ **Azure へのデプロイ**] をクリックします。
+1. **[Azure へのデプロイ]** をクリックします。
 
     ![Azure へのデプロイ](./media/application-gateway-create-gateway-arm-template/deploytoazure.png)
     
