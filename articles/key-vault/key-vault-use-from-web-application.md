@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Web アプリケーションからの Azure Key Vault の使用 | Microsoft Docs"
 description: "このチュートリアルを使用すると、Web アプリケーションから Azure Key Vault を使用する方法について学習できます。"
 services: key-vault

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure での Linux VM のメンテナンス通知の処理 | Microsoft Docs"
 description: "Azure で実行されている Linux 仮想マシンのメンテナンス通知を表示し、セルフサービス メンテナンスを開始します。"
 services: virtual-machines-linux
@@ -55,7 +55,7 @@ az vm get-instance-view  - g rgName  -n vmName
 
 MaintenanceRedeployStatus では、次の値が返されます。 
 
-| 値 | 説明   |
+| 値 | Description   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 ||
 | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 ||
