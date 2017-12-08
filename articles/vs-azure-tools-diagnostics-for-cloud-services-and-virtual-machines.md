@@ -3,7 +3,7 @@ title: "Azure クラウド サービスと仮想マシンに対する診断を�
 description: "Visual Studio で Azure クラウド サービスと仮想マシン (VM) をデバッグするための診断を設定する方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
+author: mikejo
 manager: ghogen
 editor: 
 ms.assetid: e70cd7b4-6298-43aa-adea-6fd618414c26
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 8e8cef539ef69d75642c43121202d3b713ddc8f7
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.author: mikejo
+ms.openlocfilehash: f00771d89749e7507d7f303f366fe63f537900ff
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Azure クラウド サービスと仮想マシンに対する診断を設定する
 Azure クラウド サービスまたは Azure 仮想マシンのトラブルシューティングを行うときは、Visual Studio を使用して Azure 診断を簡単に構成できます。 診断は、クラウド サービスを実行する仮想マシンと仮想マシン インスタンスのシステム データとログ データを取り込みます。 診断データは、選択したストレージ アカウントに転送されます。 Azure での診断ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](app-service/web-sites-enable-diagnostic-log.md)」を参照してください。
@@ -169,7 +169,7 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
 
 詳細については、「[Azure 診断を使用したログ データの収集](https://msdn.microsoft.com/library/azure/gg433048.aspx)」を参照してください。
 
-### <a name="log-directories"></a>ログ ディレクトリ
+### <a name="log-directories"></a>[ログ ディレクトリ]
 ログ ディレクトリには、インターネット インフォメーション サービス (IIS) の要求、失敗した要求、または選択したフォルダーのログ ディレクトリから収集されたデータがあります。 ログ ディレクトリを取り込むには、**[ログ ディレクトリの転送を有効にする]** チェック ボックスをオンにします。 ストレージ アカウントへのログの転送間隔を増減するには、**[転送間隔 (分)]** の値を変更します。
 
 **[IIS ログ]** や **[失敗した要求ログ]** など、収集するログのチェック ボックスを選択します。 既定のストレージ コンテナー名が指定されていますが、必要に応じて名前を変更できます。
