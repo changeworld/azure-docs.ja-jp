@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure のネットワーク セキュリティの概要 | Microsoft Docs"
 description: "Azure リソース間のネットワーク トラフィック フローを制御するためのセキュリティ オプションについて説明します。"
 services: virtual-network
