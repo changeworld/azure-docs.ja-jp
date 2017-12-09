@@ -101,7 +101,6 @@
 
 ## アプリケーションの管理
 ### [概要](service-fabric-application-lifecycle.md)
-### [ImageStoreConnectionString 設定](service-fabric-image-store-connection-string.md)
 ### アプリケーションのアップグレード
 #### [概要](service-fabric-application-upgrade.md)
 #### [構成](service-fabric-visualstudio-configure-upgrade.md)
@@ -109,6 +108,7 @@
 #### [アプリケーション アップグレードでのデータのシリアル化](service-fabric-application-upgrade-data-serialization.md)
 #### [アプリケーション アップグレードの高度なトピック](service-fabric-application-upgrade-advanced.md)
 ### [Fault Analysis の概要](service-fabric-testability-overview.md)
+### [ImageStoreConnectionString 設定](service-fabric-image-store-connection-string.md)
 
 ## クラスターを作成および管理する
 ### [概要](service-fabric-deploy-anywhere.md)
@@ -136,8 +136,6 @@
 #### [調整](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
 
-## [API Management との統合](service-fabric-api-management-overview.md)
-
 ## 監視と診断
 ### [アプリケーションの監視と診断](service-fabric-diagnostics-overview.md)
 ### イベントの生成
@@ -164,13 +162,14 @@
 #### [OMS を使ったイベントの分析](service-fabric-diagnostics-event-analysis-oms.md)
 ### [ローカル クラスターのトラブルシューティング](service-fabric-troubleshoot-local-cluster-setup.md)
 
+## [API Management との統合](service-fabric-api-management-overview.md)
+
 # ハウツー ガイド
 ## 開発環境を設定する
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
 ### [Mac OS](service-fabric-get-started-mac.md)
-
-## [Service Fabric CLI のセットアップ](service-fabric-cli.md)
+### [Service Fabric CLI のセットアップ](service-fabric-cli.md)
 
 ## アプリケーションのビルド
 ### [Visual Studio での最初の C# アプリの作成](service-fabric-create-your-first-application-in-visual-studio.md)
