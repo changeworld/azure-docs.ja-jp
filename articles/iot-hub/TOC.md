@@ -3,7 +3,7 @@
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)
 
-# [概要](iot-hub-get-started.md)
+# [作業開始](iot-hub-get-started.md)
 
 ## デバイスのセットアップ
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
@@ -150,8 +150,8 @@
 ## [.NET (デバイス)](/dotnet/api/microsoft.azure.devices.client)
 ## [Java (サービス)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (デバイス)](/java/api/com.microsoft.azure.sdk.iot.device)
-## [Node.js (デバイス)](https://docs.microsoft.com/en-us/javascript/api/azure-iot-device/)
-## [Node.js (サービス)](https://docs.microsoft.com/en-us/javascript/api/azure-iothub)
+## [Node.js (デバイス)](https://docs.microsoft.com/javascript/api/azure-iot-device/)
+## [Node.js (サービス)](https://docs.microsoft.com/javascript/api/azure-iothub)
 ## [C デバイス SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (リソース プロバイダー)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
