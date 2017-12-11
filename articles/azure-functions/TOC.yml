@@ -135,6 +135,8 @@
       items:
         - name: 継続的なデプロイ
           href: functions-continuous-deployment.md
+        - name: zip プッシュ デプロイ
+          href: deployment-zip-push.md
         - name: リソースのデプロイの自動化
           href: functions-infrastructure-as-code.md
         - name: オンプレミスの関数

@@ -50,6 +50,7 @@
 ### [XML を検証する](logic-apps-enterprise-integration-xml-validation.md)
 ### [XML 検証用のスキーマを追加する](logic-apps-enterprise-integration-schemas.md)
 ### [XML を変換する](logic-apps-enterprise-integration-transform.md)
+### [JSON を変換する](logic-apps-enterprise-integration-liquid-transform.md)
 ### [XML 変換のためのマップを追加する](logic-apps-enterprise-integration-maps.md)
 ### [B2B セキュリティ用の証明書を追加する](logic-apps-enterprise-integration-certificates.md)
 ### [アーティファクトのメタデータを格納する](logic-apps-enterprise-integration-metadata.md)
