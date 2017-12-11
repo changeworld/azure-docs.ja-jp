@@ -1,5 +1,5 @@
 ---
-title: "Azure Security の概要 | Microsoft Docs"
+title: "Azure セキュリティの概要 | Microsoft Docs"
 description: "Azure のセキュリティ、サービス、およびそのしくみについて説明します。"
 services: security
 documentationcenter: na
@@ -20,11 +20,11 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/22/2017
 ---
-# <a name="introduction-to-azure-security"></a>Azure Security の概要
+# <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。
 
-Microsoft Azure に実装されている多数のセキュリティ コントロールについて、お客様側と Microsoft 側の運用上の観点からご理解いただくために、このホワイト ペーパー「Azure Security の概要」では、Microsoft Azure で提供されるセキュリティについて総合的に説明します。
+Microsoft Azure に実装されている多数のセキュリティ コントロールについて、お客様側と Microsoft 側の運用上の観点からご理解いただくために、このホワイト ペーパー「Azure セキュリティの概要」では、Microsoft Azure で提供されるセキュリティについて総合的に説明します。
 
 ### <a name="azure-platform"></a>Azure プラットフォーム
 Azure は、オペレーティング システム、プログラミング言語、フレームワーク、ツール、データベース、デバイスにおいて幅広い選択肢をサポートするパブリック クラウド サービス プラットフォームです。 Docker を統合した Linux コンテナーの実行、JavaScript、Python、.NET、PHP、Java、Node.js によるアプリの構築、iOS、Android、Windows の各デバイスに対応したバックエンドの構築を行えます。

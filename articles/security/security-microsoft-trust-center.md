@@ -1,6 +1,6 @@
 ---
-title: "Microsoft セキュリティ センターおよび Azure セキュリティ情報 | Microsoft Docs"
-description: "Microsoft セキュリティ センターは、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。"
+title: "Microsoft Trust Center および Azure セキュリティ情報 | Microsoft Docs"
+description: "Microsoft Trust Center は、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。"
 services: security
 documentationcenter: na
 author: TomShinder
@@ -20,14 +20,14 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/22/2017
 ---
-# <a name="microsoft-trust-center"></a>Microsoft セキュリティ センター
-Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。 Microsoft セキュリティ センターでは、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
+# <a name="microsoft-trust-center"></a>Microsoft Trust Center 
+Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。 Microsoft Trust Center では、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
 
 Azure にアプリケーションとデータを委託するときには、さまざまな疑問があるでしょう。 場所はどこなのか。 だれがアクセスできるのか。 Microsoft は保護のために何をしているのか。 Microsoft が説明どおりに実行していることをどうすれば確認できるのか。
 
 そうした疑問には、答えることができます。 データはお客様のものであるため、だれがアクセスできるかはお客様が決定します。どこに配置されるかは、お客様と Microsoft が共同で決定します。 データの保護には、最先端のセキュリティ テクノロジや世界最高クラスの暗号化が使用されます。 Microsoft のコンプライアンスは独立した監査を受け、お客様の顧客データに対する法的な要求への対処方法から Microsoft のコードのセキュリティまで、さまざまなレベルで透明性を高めています。
 
-Microsoft セキュリティ センターでは、次のような情報を提供しています。
+Microsoft Trust Center では、次のような情報を提供しています。
 
 * [セキュリティ](https://aka.ms/tcsecurity) – すべての Microsoft クラウド サービスがどのようにセキュリティで保護されているかについて説明しています。
 * [プライバシー](https://aka.ms/tcprivacy) – Microsoft が Microsoft クラウドでお客様のデータのプライバシーを確保している方法について説明しています。
@@ -36,6 +36,6 @@ Microsoft セキュリティ センターでは、次のような情報を提供
 * [製品とサービス](https://aka.ms/tcproductsservices) – すべての Microsoft Cloud 製品とサービスの一覧を確認できます。
 * [サービス セキュリティ ポータル](https://aka.ms/tcservicetrportal) – Microsoft クラウド サービスの独立監査レポート、リスク評価、セキュリティ ベスト プラクティス、および関連資料のコピーを入手できます。
 * [最新情報](https://aka.ms/tcwhatsnew) – Microsoft Cloud セキュリティの最新情報を確認できます。
-* [リソース](https://aka.ms/tcresources) – Microsoft セキュリティ センターにあるホワイト ペーパー、ビデオ、およびケース スタディを入手できます。
+* [リソース](https://aka.ms/tcresources) – Microsoft Trust Center にあるホワイト ペーパー、ビデオ、およびケース スタディを入手できます。
 
-[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter) には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。
+[Microsoft Trust Center](https://www.microsoft.com/trustcenter) には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。
