@@ -11,6 +11,9 @@
   items:
     - name: Kafka クラスターの作成
       href: apache-kafka-get-started.md
+    - name: HDInsight アプリをインストールする
+      href: ../hdinsight-apps-install-applications.md
+      maintainContext: true
     - name: 容量計画
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -50,20 +53,11 @@
         - name: スクリプト アクションを使用したクラスターのカスタマイズ
           href: ../hdinsight-hadoop-customize-cluster-linux.md
           maintainContext: true
-        - name: オンプレミス ネットワークへの HDInsight の接続
-          href: ../connect-on-premises-network.md
-          maintainContext: true
         - name: スクリプト アクションを開発する
           href: ../hdinsight-hadoop-script-actions-linux.md
           maintainContext: true
-        - name: Virtual Network を使用する
-          href: ../hdinsight-extend-hadoop-virtual-network.md
-          maintainContext: true
         - name: HDInsight アプリケーションの構築
           items:
-            - name: HDInsight アプリをインストールする
-              href: ../hdinsight-apps-install-applications.md
-              maintainContext: true
             - name: カスタム アプリをインストールする
               href: ../hdinsight-apps-install-custom-applications.md
               maintainContext: true
@@ -145,20 +139,6 @@
         - name: HDInsight クラスター用の OS の修正プログラム
           href: ../hdinsight-os-patching.md
           maintainContext: true
-    - name: 監視
-      items:
-        - name: Azure Log Analytics の使用
-          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: クラスター固有のダッシュボード
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
-          maintainContext: true
-        - name: Log Analytics でのクエリの使用
-          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
-          maintainContext: true
-        - name: クラスター パフォーマンスの監視
-          href: ../hdinsight-key-scenarios-to-monitor.md
-          maintainContext: true
     - name: トラブルシューティング
       href: ../hdinsight-troubleshoot-guide.md
       maintainContext: true
@@ -183,6 +163,33 @@
             - name: Hadoop サービスのヒープ ダンプの有効化
               href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
               maintainContext: true
+- name: エンタープライズ対応
+  items:
+    - name: データのセキュリティ保護
+      href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+      maintainContext: true
+    - name: ネットワーク アクセス
+      items:
+        - name: Azure VNet の HDInsight
+          href: ../hdinsight-extend-hadoop-virtual-network.md
+          maintainContext: true
+        - name: HDInsight とオンプレミス ネットワークの接続
+          href: ../connect-on-premises-network.md
+          maintainContext: true
+    - name: OMS を使用した監視
+      items:
+        - name: Azure Log Analytics の使用
+          href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+          maintainContext: true
+        - name: クラスター固有のダッシュボード
+          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+          maintainContext: true
+        - name: Log Analytics でのクエリの使用
+          href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+          maintainContext: true
+        - name: クラスター パフォーマンスの監視
+          href: ../hdinsight-key-scenarios-to-monitor.md
+          maintainContext: true
 - name: リファレンス
   items:
     - name: コード サンプル

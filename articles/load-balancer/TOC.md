@@ -1,7 +1,7 @@
 # 概要
 ## [Load Balancer とは](load-balancer-overview.md)
 ## [Load Balancer Standard とは](load-balancer-standard-overview.md)
-## [インターネットに接続するロード バランサー](load-balancer-internet-overview.md)
+## [パブリック ロード バランサー](load-balancer-internet-overview.md)
 ## [内部ロード バランサー](load-balancer-internal-overview.md)
 ## [Load Balancer プローブを理解する](load-balancer-custom-probe-overview.md)
 ## [高可用性ポートについて](load-balancer-ha-ports-overview.md)
@@ -17,26 +17,18 @@
 ### [内部ロード バランサーを構成する (CLI)](load-balancer-get-started-ilb-arm-cli.md)
 ### [内部ロード バランサーを構成する (テンプレート)](load-balancer-get-started-ilb-arm-template.md)
 
-## [Cloud Services の内部ロード バランサーを構成する](load-balancer-get-started-ilb-classic-cloud.md)
-### [Cloud Services の内部ロード バランサーを構成する (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
-### [Cloud Services の内部ロード バランサーを構成する (CLI)](load-balancer-get-started-ilb-classic-cli.md)
+## [パブリック ロード バランサーを構成する](load-balancer-get-started-internet-portal.md)
+### [パブリック ロード バランサーを構成する (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
+### [パブリック ロード バランサーを構成する (CLI)](load-balancer-get-started-internet-arm-cli.md)
+### [パブリック ロード バランサーを構成する (テンプレート)](load-balancer-get-started-internet-arm-template.md)
 
-## [インターネットに接続するロード バランサーを構成する](load-balancer-get-started-internet-portal.md)
-### [インターネットに接続するロード バランサーを構成する (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-### [インターネットに接続するロード バランサーを構成する (CLI)](load-balancer-get-started-internet-arm-cli.md)
-### [インターネットに接続するロード バランサーを構成する (テンプレート)](load-balancer-get-started-internet-arm-template.md)
+## [IPv6 を使用してパブリック ロード バランサーを作成する](load-balancer-ipv6-internet-ps.md)
+### [IPv6 を使用してパブリック ロード バランサーを作成する (CLI)](load-balancer-ipv6-internet-cli.md)
+### [IPv6 を使用してパブリック ロード バランサーを作成する (テンプレート)](load-balancer-ipv6-internet-template.md)
 
-## [インターネットに接続するロード バランサーを構成する (クラシック PowerShell)](load-balancer-get-started-internet-classic-ps.md)
-### [インターネットに接続するロード バランサーを構成する (クラシック クラウド)](load-balancer-get-started-internet-classic-cloud.md)
-### [インターネットに接続するロード バランサーを構成する (クラシック CLI)](load-balancer-get-started-internet-classic-cli.md)
-
-## [IPv6 を使用してインターネットに接続するロード バランサーを作成する](load-balancer-ipv6-internet-ps.md)
-### [IPv6 を使用してインターネットに接続するロード バランサーを作成する (CLI)](load-balancer-ipv6-internet-cli.md)
-### [IPv6 を使用してインターネットに接続するロード バランサーを作成する(テンプレート)](load-balancer-ipv6-internet-template.md)
-
-## [ゾーン冗長パブリック Load Balancer Standard を作成する](load-balancer-get-started-internet-az-portal.md)
-### [ゾーン冗長パブリック Load Balancer Standard を作成する (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
-### [ゾーン冗長パブリック Load Balancer Standard を作成する (CLI)](load-balancer-get-started-internet-az-cli.md)
+## [ゾーン冗長パブリック ロード バランサー (Standard) を作成する](load-balancer-get-started-internet-az-portal.md)
+### [ゾーン冗長パブリック ロード バランサー (Standard) を作成する (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [ゾーン冗長パブリック ロード バランサー (Standard) を作成する (CLI)](load-balancer-get-started-internet-az-cli.md)
 
 # 方法
 ## [Load Balancer の TCP アイドル タイムアウトを構成する](load-balancer-tcp-idle-timeout.md)
@@ -50,11 +42,17 @@
 ## [Azure Load Balancer のログ分析](load-balancer-monitor-log.md)
 ## [Linux VM の DHCPv6 の設定](load-balancer-ipv6-for-linux.md)
 ## [内部ロード バランサー用の高可用性ポートを構成する](load-balancer-configure-ha-ports.md)
-## [可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-portal.md)
-## [可用性ゾーン内にパブリック IP アドレスを作成する (PowerShell)](../virtual-network/create-public-ip-availability-zone-powershell.md)
-## [可用性ゾーン内にパブリック IP アドレスを作成する (CLI)](../virtual-network/create-public-ip-availability-zone-cli.md)
+
 ## トラブルシューティング
 ### [Azure Load Balancer のトラブルシューティング](load-balancer-troubleshoot.md)
+
+## クラシック デプロイメント モデルに関する記事
+### [Cloud Services の内部ロード バランサーを構成する](load-balancer-get-started-ilb-classic-cloud.md)
+#### [Cloud Services の内部ロード バランサーを構成する (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
+#### [Cloud Services の内部ロード バランサーを構成する (CLI)](load-balancer-get-started-ilb-classic-cli.md)
+### [パブリック ロード バランサーを構成する (クラシック PowerShell)](load-balancer-get-started-internet-classic-ps.md)
+#### [パブリック ロード バランサーを構成する (クラシック クラウド)](load-balancer-get-started-internet-classic-cloud.md)
+#### [パブリック ロード バランサーを構成する (クラシック CLI)](load-balancer-get-started-internet-classic-cli.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)

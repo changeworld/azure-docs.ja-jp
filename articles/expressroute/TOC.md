@@ -28,6 +28,7 @@
 ### [Azure ポータル](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Azure CLI](howto-linkvnet-cli.md)
+## [Microsoft ピアリング経由のサイト間 VPN を構成する](site-to-site-vpn-over-microsoft-peering.md)
 ## ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 ### [Azure ポータル](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -92,5 +93,5 @@
 ### [接続のためにネットワーク インフラストラクチャを拡張する](https://go.microsoft.com/fwlink/p/?LinkId=615124)
 ### [回線のプライベート ピアリングを設定する方法](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit/)
 ### [ハイブリッド パートナーシップ: オンプレミスのシナリオの有効化](https://go.microsoft.com/fwlink/p/?LinkId=615125)
-### [回線の Microsoft ピアリングを設定する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
-### [回線のパブリック ピアリングを設定する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
+### [回線の Microsoft ピアリングの設定](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/)
+### [回線のパブリック ピアリングの設定](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/)
