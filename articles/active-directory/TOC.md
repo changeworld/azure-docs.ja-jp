@@ -205,11 +205,6 @@
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 #### [トラブルシューティング](active-directory-application-proxy-troubleshoot.md)
-#### クラシック ポータルの使用
-##### [コネクタをダウンロードする](application-proxy-enable-classic-portal.md)
-##### [アプリを発行する](active-directory-application-proxy-publish.md)
-##### [コネクタを使用する](active-directory-application-proxy-connectors-azure-portal.md)
-##### [条件付きアクセス](application-proxy-enable-remote-access-sharepoint.md)
 
 ### エンタープライズ アプリの管理
 #### [ユーザーを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)
@@ -286,7 +281,7 @@
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [概要](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### タスク

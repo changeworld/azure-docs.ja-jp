@@ -41,6 +41,8 @@
       href: kubernetes-draft.md
     - name: Azure Files によるデータ保持
       href: azure-files.md
+    - name: OSBA を使用した Azure との統合
+      href: integrate-azure.md
     - name: Kubernetes ダッシュボードの使用
       href: kubernetes-dashboard.md
     - name: サービス プリンシパルの作成
