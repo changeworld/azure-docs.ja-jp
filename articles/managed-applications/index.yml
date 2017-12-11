@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Managed Applications のドキュメント
+title: "Azure Managed Applications のドキュメント"
 metadata:
-  title: Azure Managed Applications のドキュメント - チュートリアル、API リファレンス
-  description: Azure Managed Applications を使用して、コンシューマーが管理しやすいクラウド ソリューションを発行します。
+  title: "Azure Managed Applications のドキュメント - チュートリアル、API リファレンス"
+  description: "Azure Managed Applications を使用して、コンシューマーが管理しやすいクラウド ソリューションを発行します。"
   services: managed-applications
   author: tfitzmac
   manager: timlt
@@ -13,38 +13,43 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/25/2017
   ms.author: tomfitz
+  ms.openlocfilehash: a51f2d028dc09bfe8d58357d2ade7c3dfa6e3fef
+  ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/08/2017
 abstract:
-  description: Azure Managed Applications を使用すると、クラウド ソリューションを内部および外部の顧客に提供できます。 ソリューションのインフラストラクチャのほか、ソリューションの継続的な管理の条件を定義します。 ソリューションの課金は、Azure Billing によって処理されます。
+  description: "Azure Managed Applications を使用すると、クラウド ソリューションを内部および外部の顧客に提供できます。 ソリューションのインフラストラクチャのほか、ソリューションの継続的な管理の条件を定義します。 ソリューションの課金は、Azure Billing によって処理されます。"
 sections:
-  - title: 5 分間のクイック スタート
+- title: "5 分間のクイック スタート"
+  items:
+  - type: paragraph
+    text: "マネージ アプリケーションを発行してデプロイする方法を説明します。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: マネージ アプリケーションを発行してデプロイする方法を説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/managed-applications/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/managed-applications/managed-apps-quickstart-cli
-  - title: ステップバイステップのチュートリアル
+    - image:
+        src: /azure/managed-applications/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/managed-applications/managed-apps-quickstart-cli
+- title: "ステップバイステップのチュートリアル"
+  items:
+  - type: paragraph
+    text: "マネージ アプリケーションを開発する方法と Azure Marketplace を通じてそれらを提供する方法を説明します。"
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: マネージ アプリケーションを開発する方法と Azure Marketplace を通じてそれらを提供する方法を説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/managed-applications/publish-service-catalog-app">マネージ アプリケーションを内部のユーザーに発行する</a>
-          - html: <a href="/azure/managed-applications/publish-marketplace-app">マネージ アプリケーションを外部のユーザーに発行する</a>
-  - title: リファレンス
+    - html: "<a href=\"/azure/managed-applications/publish-service-catalog-app\">マネージ アプリケーションを内部のユーザーに発行する</a>"
+- title: "リファレンス"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
-          - title: REST API
-            html: <p><a href="/rest/api/resources/">REST ()</a></p>
-          - title: ユーザー インターフェイス
-            html: <p><a href="/azure/managed-applications/create-uidefinition-elements">UI 要素</a></p><p><a href="/azure/managed-applications/create-uidefinition-functions">UI 関数</a></p>
+    - title: "コマンド ライン"
+      html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
+    - title: REST API
+      html: <p><a href="/rest/api/resources/">REST ()</a></p>
+    - title: "ユーザー インターフェイス"
+      html: "<p><a href=\"/azure/managed-applications/create-uidefinition-elements\">UI 要素</a></p><p><a href=\"/azure/managed-applications/create-uidefinition-functions\">UI 関数</a></p>"

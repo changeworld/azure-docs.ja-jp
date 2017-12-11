@@ -2,8 +2,8 @@
 title: "Azure Machine Learning Studio のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "アプリケーションで予測分析を使用するデータ サイエンティストと開発者向けのクラウド サービスである、Machine Learning Studio のドキュメント、ビデオ、サンプル モデル。"
 services: machine-learning
-author: czeumault
-manager: carolz
+author: garyericson
+manager: jhubbard
 layout: LandingPage
 ms.assetid: 
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/23/2017
-ms.author: carolz
-ms.openlocfilehash: da4048b8233fd016ba0f9a0774772b8eff3f925d
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.author: garye
+ms.openlocfilehash: c500229df4f397e07cbe164d1f5f5166ba9b19f3
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="azure-machine-learning-studio-documentation"></a>Azure Machine Learning Studio のドキュメント
 
