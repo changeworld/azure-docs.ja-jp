@@ -89,7 +89,7 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
-    - name: データの移行
+    - name: データベースの移行
       items:
         - name: ダンプと復元
           href: howto-migrate-using-dump-and-restore.md
@@ -103,7 +103,7 @@
           href: howto-configure-server-parameters-using-cli.md
     - name: サーバー ログへのアクセス
       items:
-        - name: Azure ポータル
+        - name: Azure Portal
           href: howto-configure-server-logs-in-portal.md
         - name: Azure CLI
           href: howto-configure-server-logs-using-cli.md
@@ -139,3 +139,5 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: 顧客事例
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'
+    - name: データベース移行ガイド
+      href: 'https://datamigration.microsoft.com/'

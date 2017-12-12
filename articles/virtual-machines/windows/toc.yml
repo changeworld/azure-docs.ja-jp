@@ -66,6 +66,9 @@
         - name: コンピューティング最適化
           href: sizes-compute.md
         - name: メモリ最適化
+          items:
+            - name: 制約付き vCPU
+              href: constrained-vcpu.md
           href: sizes-memory.md
         - name: ストレージ最適化
           href: sizes-storage.md
@@ -154,7 +157,7 @@
       items:
         - name: 単一の VM のバックアップ
           items:
-            - name: Azure ポータル
+            - name: Azure Portal
               href: ../../backup/quick-backup-vm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Azure PowerShell
               href: ../../backup/quick-backup-vm-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
@@ -164,6 +167,8 @@
       items:
         - name: VM の前払い - 予約済みインスタンス
           href: prepay-reserved-vm-instances.md
+        - name: VM の使用状況
+          href: vm-usage.md
         - name: 一般的な PowerShell タスク
           href: ps-common-ref.md
         - name: VM の移動

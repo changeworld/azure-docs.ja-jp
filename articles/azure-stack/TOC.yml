@@ -45,6 +45,8 @@
       items:
         - name: 前提条件
           href: azure-stack-deploy.md
+        - name: テレメトリ
+          href: azure-stack-telemetry.md
         - name: デプロイ
           href: azure-stack-run-powershell-script.md
         - name: PowerShell をインストールする

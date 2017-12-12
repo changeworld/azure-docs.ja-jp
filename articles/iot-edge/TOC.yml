@@ -34,6 +34,8 @@
       href: how-to-install-iot-core.md
 - name: 概念
   items:
+    - name: IoT Edge の用語集
+      href: iot-edge-glossary.md
     - name: IoT Edge のモジュール
       href: iot-edge-modules.md
       items:

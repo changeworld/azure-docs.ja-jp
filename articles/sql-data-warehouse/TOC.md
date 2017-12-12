@@ -38,6 +38,7 @@
 
 ## 統合
 ### [概要](sql-data-warehouse-overview-integrate.md)
+### [SQL Database エラスティック クエリ](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 
 ## 監視とチューニング
@@ -100,9 +101,8 @@
 
 
 ## 統合
-###  [SQL Database からのエラスティック クエリの構成](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
+### [SQL Database エラスティック クエリの構成](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ### [Azure Stream Analytics ジョブの追加](sql-data-warehouse-integrate-azure-stream-analytics.md)
-### [エラスティック クエリの構成](how-to-use-elastic-query-with-sql-data-warehouse.md)
 ### [機械学習の使用](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 ### [Power BI による視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 

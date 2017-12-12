@@ -16,6 +16,7 @@
 ## [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
 
 # 方法
+## [Azure CSP サブスクリプションで Azure AD Domain Services を使用する](active-directory-ds-csp.md)
 ## [PowerShell を使用して Azure AD Domain Services を有効にする](active-directory-ds-enable-using-powershell.md)
 ## 管理対象ドメインに参加する
 ### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)

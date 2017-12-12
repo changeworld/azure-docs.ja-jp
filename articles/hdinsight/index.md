@@ -10,17 +10,19 @@ ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 12/05/2017
 ms.author: carolz
-ms.openlocfilehash: 7d639ca03261f3a9cad537dd92103c5aa6cd0af9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8dce980e50b465b67d3d6f14dc79c48c5f2fcdb5
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight のドキュメント
 
-HDInsight のクラウドで Hadoop を使用して、ストリーミング データや履歴データを分析する方法について説明します。 チュートリアルなどのドキュメントでは、クラスターの作成、ビッグ データの処理と分析、Hadoop エコシステムでの Hadoop、Spark、HBase、R-Server、Storm などのテクノロジによるソリューションの開発を行う方法を紹介します。
+Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントでは、Hadoop、Spark、Hive、LLAP、Kafka、Storm、R といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します 
+
+Azure HDInsight は、完全に管理され全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。  
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -41,7 +43,156 @@ HDInsight のクラウドで Hadoop を使用して、ストリーミング デ�
         </div>
         </a>
     </li>
-     <li>
+    <li>
+        <a href="/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight での Hadoop の使用</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/spark/apache-spark-jupyter-spark-sql">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight での Spark の使用</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/kafka/apache-kafka-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight での Kafka の使用</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/storm/apache-storm-tutorial-get-started-linux">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight での Storm の使用</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/hbase/apache-hbase-tutorial-get-started-linux">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight での HBase の使用</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/r-server/r-server-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight での R Server の使用</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/hdinsight-apps-install-applications">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight へのサードパーティ アプリケーションのインストール</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/domain-joined/apache-domain-joined-introduction">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>HDInsight でのエンタープライズ セキュリティ</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
+
+---
+<h2>学習用のリソース</h2>
+<ul class="panelContent cardsFTitle">
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=hdinsight">
         <div class="cardSize">
             <div class="cardPadding">
@@ -60,78 +211,6 @@ HDInsight のクラウドで Hadoop を使用して、ストリーミング デ�
         </a>
     </li>
     <li>
-        <a href="/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Linux ベースの Hadoop クラスターを使用した HDInsight の概要</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/hdinsight/hdinsight-hadoop-r-server-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Spark クラスターと R Server を使用した HDInsight の概要</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/hdinsight/hdinsight-hbase-tutorial-get-started-linux">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>HBase クラスターを使用した HDInsight の概要</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/hdinsight/hdinsight-apache-storm-tutorial-get-started-linux">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Apache Storm クラスターを使用した HDInsight の概要</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-<li>
         <a href="https://github.com/hdinsight/hdinsight-dev-guide/blob/master/HDInsight%20Developer%20Guide.pdf">
         <div class="cardSize">
             <div class="cardPadding">

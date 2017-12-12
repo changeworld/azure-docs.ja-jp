@@ -128,6 +128,8 @@
           href: scenario-tdsp-classifying-us-incomes.md
         - name: CNTK を使用した画像の分類
           href: scenario-image-classification-using-cntk.md
+        - name: 予測メンテナンスのためのディープ ラーニング
+          href: scenario-deep-learning-for-predictive-maintenance.md
 - name: リファレンス
   items:
     - name: データの準備
