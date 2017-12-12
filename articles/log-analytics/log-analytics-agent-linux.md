@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/07/2017
+ms.date: 11/30/2017
 ms.author: magoedte
-ms.openlocfilehash: 56c666d1a18937df21a6aca8acde87beda1cad8e
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 1f6e0f2a638d9ce9b06f19feba1c9e216812862c
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="connect-your-linux-computers-to-log-analytics"></a>Linux コンピューターを Log Analytics に接続する 
 
@@ -43,7 +43,7 @@ IT セキュリティ ポリシーで、ネットワーク上のコンピュー�
 * Oracle Linux 5、6、および 7 (x86/x64)
 * Red Hat Enterprise Linux Server 5、6、および 7 (x86/x64)
 * Debian GNU/Linux 6、7、および 8 (x86/x64)
-* Ubuntu 12.04 LTS、14.04 LTS、15.04、15.10、16.04 LTS (x86/x64)
+* Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)
 * SUSE Linux Enterprise Server 11 および 12 (x86/x64)
 
 ### <a name="network"></a>ネットワーク

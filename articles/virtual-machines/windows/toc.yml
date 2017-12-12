@@ -116,6 +116,8 @@
       items:
         - name: インフラストラクチャのガイドライン
           href: infrastructure-example.md
+        - name: vCPU のクォータ
+          href: quotas.md
 - name: ハウツー ガイド
   items:
     - name: VM の作成

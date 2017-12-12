@@ -139,24 +139,24 @@
           items:
             - name: 概要と前提条件
               href: site-recovery-deployment-planner.md
-            - name: Deployment Planner の実行
+            - name: Deployment Planner ツールの実行
               href: site-recovery-vmware-deployment-planner-run.md
             - name: 生成されたレポートの分析
               href: site-recovery-vmware-deployment-planner-analyze-report.md
-            - name: ディザスター リカバリー コスト見積りレポートの分析
+            - name: コスト見積もりレポートの分析
               href: site-recovery-vmware-deployment-planner-cost-estimation.md
         - name: VMware レプリケーション用のプロセス サーバーのスケールアウト
           href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
-        - name: Hyper-V から Azure へのレプリケーションのためのデプロイ計画とツール
+        - name: Hyper-V から Azure へのレプリケーションのための Deployment Planner ツール
           href: null
           items:
             - name: 概要と前提条件
               href: site-recovery-hyper-v-deployment-planner.md
-            - name: Deployment Planner の実行
+            - name: Deployment Planner ツールの実行
               href: site-recovery-hyper-v-deployment-planner-run.md
             - name: 生成されたレポートの分析
               href: site-recovery-hyper-v-deployment-planner-analyze-report.md
-            - name: ディザスター リカバリー コスト見積りレポートの分析
+            - name: コスト見積もりレポートの分析
               href: site-recovery-hyper-v-deployment-planner-cost-estimation.md
         - name: オンプレミス サイト間での Hyper-V レプリケーションのパフォーマンス スケール テスト
           href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md

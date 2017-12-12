@@ -8,14 +8,35 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/02/2017
-ms.openlocfilehash: 069ad2fcdd11f6fd2c7c282d28dbfa67edb902a1
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.date: 12/01/2017
+ms.openlocfilehash: 08af9d01e55c3f7541d89605323602ec28c73db3
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL のビデオ
+
+
+[概要: Azure Database for PostgreSQL および Azure Database for MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+
+<iframe src="https://channel9.msdn.com/Events/Connect/2017/T147/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>
+
+Azure Database for PostgreSQL および Azure Database for MySQL は、お客様が、データベースの管理ではなく、アプリケーションに集中できるよう、完全に管理されたサービスを実現するコミュニティ エディション データベース エンジンです。 サービスを使用する利点の概要や、機能の実行例をご覧ください。
+
+[MySQL および PostgreSQL のための管理サービス機能の詳細](https://channel9.msdn.com/Events/Connect/2017/T148)
+
+<iframe src="https://channel9.msdn.com/Events/Connect/2017/T148/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>
+
+Azure Database for PostgreSQL および Azure Database for MySQL は、完全に管理されたサービスを実現するコミュニティ エディション データベース エンジンです。 これらのサービスの機能の詳細や、高可用性を確保する方法、顧客ニーズを満たすために高速でスケーリング (数秒内) する方法についてご説明します。 また、セキュリティや世界レベルの可用性の基盤となる投資についてもご説明します。
+
+[PostgreSQL を使用したインテリジェントな分析アプリの開発](https://channel9.msdn.com/Events/Connect/2017/T149)
+
+<iframe src="https://channel9.msdn.com/Events/Connect/2017/T149/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>
+
+Azure Database for PostgreSQL は、お客様が、データベースの管理ではなく、アプリケーションに集中できるよう、完全に管理されたサービスを実現するコミュニティ エディション データベース エンジンです。 Azure を使用することで、お客様のアプリに Cognitive Services を追加するなど、新しい体験をいかに簡単に実現できるかを実証します。
+
+
 [新しい Azure Database for PostgreSQL サービスの紹介](https://channel9.msdn.com/events/Build/2017/B8046)
 
 <iframe src="https://channel9.msdn.com/Events/Build/2017/B8046/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>

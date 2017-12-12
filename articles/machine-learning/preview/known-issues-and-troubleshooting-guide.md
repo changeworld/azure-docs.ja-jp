@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 5c7c15eacdf43d3623000ed228adfaeb55803c8f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 54038785f513e56b07f5f3fafa3dbd6d4b6e7400
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -112,6 +112,19 @@ Azure ML Workbench での作業中に、アプリケーション シェルの左
    - スクリプト `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1` を削除する
    - 上のスクリプトを起動するデスクトップ ショートカットを削除する
    - インストーラー https://aka.ms/azureml-wb-msi をダウンロードし、再インストールする。
+
+## <a name="get-stuck-at-checking-experimentation-account-screen-after-logging-in"></a>ログイン後、[Checking experimentation accoun]\(実験アカウントをチェックしています\) 画面から先に進まない
+ログイン後、Workbench アプリで回転する歯車が表示され、[Checking experimentation accoun]\(実験アカウントをチェックしています\) というメッセージが表示された空白の画面のままになることがあります。 これを解決するには、次の手順をお試しください。
+1. アプリをシャットダウンする
+2. 次のファイルを削除する
+  ```
+  # on Windows
+  %appdata%\AmlWorkbench\AmlWb.settings
+
+  # on macOS
+  ~/Library/Application Support/AmlWorkbench/AmlWb.settings
+  ```
+3. アプリを再起動します。
 
 ## <a name="cant-delete-experimentation-account"></a>実験アカウントを削除できない
 CLI を使用して実験アカウントを削除できますが、最初に、子ワークスペースとその子ワークスペース内の子プロジェクトを削除する必要があります。 そうしないと、エラーが表示されます。

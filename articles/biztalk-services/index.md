@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 8aef3ad31551b0a4c5048e418cf8b1456bd4f274
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bd9a5b40ac49a9f16b7af3383f17ea05a87b33c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk Services のドキュメント
 
@@ -70,7 +70,7 @@ BizTalk Services を使用して、クラウドからオンプレミスに接続
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Portal での BizTalk Services の概要</h3>
+                        <h3>BizTalk Services の使用</h3>
                     </div>
                 </div>
             </div>

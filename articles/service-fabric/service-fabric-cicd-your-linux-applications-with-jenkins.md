@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: saysa
-ms.openlocfilehash: e9422745de1f46098f1a1b0605c2560f44c02f3c
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 89b356c3959b7cb63a746805d60535e07f0d6898
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
 
 ## <a name="general-prerequisites"></a>一般的な前提条件
 - Git をローカルにインストールしておきます。 [Git のダウンロード ページ](https://git-scm.com/downloads)から、お使いのオペレーティング システムに応じて適切な Git バージョンをインストールできます。 Git を使用するのが初めての場合、[Git に関するドキュメント](https://git-scm.com/docs)で詳細を確認してください。
-- Service Fabric Jenkins プラグインを用意します。 これは、[Service Fabric のダウンロード](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)で入手できます。
+- Service Fabric Jenkins プラグインを用意します。 これは、[Service Fabric のダウンロード](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)で入手できます。 エッジ ブラウザーを使用している場合は、ダウンロードしたファイルの拡張子を.zip から .hpi に変更します。
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>Service Fabric クラスター内での Jenkins のセットアップ
 
@@ -129,8 +129,8 @@ Docker がインストールされている必要があります。 ターミナ
 ターミナルで ``docker info`` を実行すると、Docker サービスが実行されていることが出力に表示されます。
 
 ### <a name="steps"></a>手順
-  1. Service Fabric Jenkins コンテナー イメージを取得します。``docker pull sayantancs/jenkins:v9``
-  2. コンテナー イメージを実行します。``docker run -itd -p 8080:8080 sayantancs/jenkins:v9``
+  1. Service Fabric Jenkins コンテナー イメージを取得します。``docker pull rapatchi/jenkins:v9``
+  2. コンテナー イメージを実行します。``docker run -itd -p 8080:8080 rapatchi/jenkins:v9``
   3. コンテナー イメージ インスタンスの ID を取得します。 ``docker ps –a`` コマンドを使用して、すべての Docker コンテナーの一覧を取得できます。
   4. 次の手順を使用して Jenkins ポータルにサインインします。
 

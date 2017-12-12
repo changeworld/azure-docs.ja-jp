@@ -75,6 +75,7 @@
 ##### [型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
 ### [アプリケーション モデル](service-fabric-application-model.md)
+### [アプリケーション マニフェストとサービス マニフェスト](service-fabric-application-and-service-manifests.md)
 ### [ホスティング モデル](service-fabric-hosting-model.md)
 
 ### サービス

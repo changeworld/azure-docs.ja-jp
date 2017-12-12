@@ -2,8 +2,8 @@
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
-  document_id: null
-  title: Azure IoT Edge - チュートリアル、API リファレンス
+  document_id: 
+  title: "Azure IoT Edge - チュートリアル、API リファレンス"
   meta.description: Use Azure IoT Edge to deploy Azure services and custom business logic to devices at the edge.
   services: iot-edge
   author: kgremban
@@ -12,35 +12,41 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/08/2017
+  ms.date: 12/08/2017
   ms.author: kgremban
+  ms.openlocfilehash: d49e1647db25023cefd59d667f87396827b7ca27
+  ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/11/2017
 abstract:
-  description: Azure IoT Edge は、IoT Hub の上に構築されるモノのインターネット (IoT) サービスです。 このサービスは、クラウド内ではなく、デバイスで (つまり "エッジで") データを分析したいお客様を対象としています 。 ワークロードの一部をエッジに移動することで、デバイスがクラウドにメッセージを送る時間を減らし、状態の変化により迅速に反応できるようにすることができます。
+  description: "Azure IoT Edge は、IoT Hub の上に構築されるモノのインターネット (IoT) サービスです。 このサービスは、クラウド内ではなく、デバイスで (つまり \"エッジで\") データを分析したいお客様を対象としています 。 ワークロードの一部をエッジに移動することで、デバイスがクラウドにメッセージを送る時間を減らし、状態の変化により迅速に反応できるようにすることができます。"
 sections:
-  - title: 5 分間のクイック スタート
+- title: "5 分間のクイック スタート"
+  items:
+  - type: paragraph
+    text: "初めての IoT Edge モジュールをデプロイし、シミュレートされたデバイスでデータを処理します。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 初めての IoT Edge モジュールをデプロイし、シミュレートされたデバイスでデータを処理します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/virtual-machines/linux/media/index/portal.svg
-            text: Windows
-            href: /azure/iot-edge/quickstart
-          - image:
-              src: /azure/virtual-machines/linux/media/index/portal.svg
-            text: Linux
-            href: /azure/iot-edge/quickstart-linux
-  - title: ステップバイステップのチュートリアル
+    - image:
+        src: /azure/virtual-machines/linux/media/index/portal.svg
+      text: Windows
+      href: /azure/iot-edge/quickstart
+    - image:
+        src: /azure/virtual-machines/linux/media/index/portal.svg
+      text: Linux
+      href: /azure/iot-edge/quickstart-linux
+- title: "ステップバイステップのチュートリアル"
+  items:
+  - type: paragraph
+    text: "IoT Edge をインストールして構成する方法、モジュールをデプロイする方法、Stream Analytics などの Azure サービスをエッジで利用する方法について説明します。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: IoT Edge をインストールして構成する方法、モジュールをデプロイする方法、Stream Analytics などの Azure サービスをエッジで利用する方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-edge/tutorial-simulate-device-windows">Windows で IoT Edge デバイスをシミュレートする</a>
-          - html: <a href="/azure/iot-edge/tutorial-simulate-device-Linux">Linux で IoT Edge デバイスをシミュレートする</a>
-          - html: '<a href="/azure/iot-edge/tutorial-csharp-module">C# モジュールの開発とデプロイを行う</a>'
-          - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Azure Stream Analytics をモジュールとしてデプロイする</a>
-          - html: <a href="/azure/iot-edge/tutorial-deploy-function">Azure Functions をモジュールとしてデプロイする</a>
+    - html: "<a href=\"/azure/iot-edge/tutorial-simulate-device-windows\">Windows で IoT Edge デバイスをシミュレートする</a>"
+    - html: "<a href=\"/azure/iot-edge/tutorial-simulate-device-Linux\">Linux で IoT Edge デバイスをシミュレートする</a>"
+    - html: "<a href=\"/azure/iot-edge/tutorial-csharp-module\">C# モジュールの開発とデプロイを行う</a>"
+    - html: "<a href=\"/azure/iot-edge/tutorial-deploy-stream-analytics\">Azure Stream Analytics をモジュールとして展開する</a>"
+    - html: "<a href=\"/azure/iot-edge/tutorial-deploy-machine-learning\">Azure Machine Learning をモジュールとしてデプロイする</a>"
+    - html: "<a href=\"/azure/iot-edge/tutorial-deploy-function\">Azure Functions をモジュールとしてデプロイする</a>"

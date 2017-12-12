@@ -60,6 +60,8 @@
       items:
         - name: レプリケーション
           href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: ストレージ アカウントのオプション
+          href: storage-account-options.md
         - name: ホット層、クール層、アーカイブ層
           href: storage-blob-storage-tiers.md
         - name: イベントへの反応

@@ -9,7 +9,7 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: DocumentDB
+    - name: SQL
       items:
         - name: .NET
           href: create-documentdb-dotnet.md
@@ -71,7 +71,7 @@
   items:
     - name: 1 - 作成
       items:
-        - name: DocumentDB
+        - name: SQL
           href: tutorial-develop-documentdb-dotnet.md
         - name: .NET での MongoDB
           href: tutorial-develop-mongodb.md
@@ -87,7 +87,7 @@
           href: tutorial-develop-cassandra-java.md
     - name: 2 - インポート
       items:
-        - name: DocumentDB
+        - name: SQL
           href: import-data.md
         - name: MongoDB
           href: mongodb-migrate.md
@@ -97,7 +97,7 @@
           href: cassandra-import-data.md
     - name: 3 - クエリ
       items:
-        - name: DocumentDB
+        - name: SQL
           href: tutorial-query-documentdb.md
         - name: MongoDB
           href: tutorial-query-mongodb.md
@@ -107,7 +107,7 @@
           href: tutorial-query-graph.md
     - name: 4 - グローバル分散
       items:
-        - name: DocumentDB
+        - name: SQL
           href: tutorial-global-distribution-documentdb.md
         - name: MongoDB
           href: tutorial-global-distribution-mongodb.md
@@ -147,7 +147,7 @@
       href: request-units.md
     - name: マルチモデルの API
       items:
-        - name: DocumentDB
+        - name: SQL
           href: documentdb-introduction.md
         - name: MongoDB
           href: mongodb-introduction.md
@@ -170,7 +170,7 @@
   items:
     - name: 開発
       items:
-        - name: DocumentDB API
+        - name: SQL API
           href: documentdb-index.md
           items:
             - name: リソース
@@ -239,8 +239,6 @@
                   href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: サービスの更新情報
                   href: 'https://azure.microsoft.com/updates/?product=cosmos-db'
-                - name: コミュニティ ポータル
-                  href: community.md
                 - name: スキーマ独立型インデックス作成資料
                   href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
                 - name: S1、S2、S3 の廃止
@@ -378,13 +376,13 @@
           href: powerbi-visualize.md
         - name: ODBC ドライバーを利用してデータを視覚化する
           href: odbc-driver.md
-        - name: DocumentDB API で Spring Boot Starter を使用する
+        - name: SQL API で Spring Boot Starter を使用する
           href: documentdb-java-spring-boot-starter-with-cosmos-db.md
 - name: リファレンス
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
-    - name: DocumentDB API
+    - name: SQL API
       items:
         - name: Java
           href: documentdb-sdk-java.md
