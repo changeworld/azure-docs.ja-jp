@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2017
-ms.author: eslesar
-ms.openlocfilehash: 839689ab991fdc251608cf79d65a5810db5eeeb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/01/2017
+ms.author: magoedte;eslesar
+ms.openlocfilehash: 668065933745168c88a1f4bf755f1adc0cc31d7f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
 
@@ -57,7 +57,7 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
 更新プログラムの展開で指定した日時に、対象のコンピューターでデプロイが並行して実行されます。  まず、スキャンが実行され、その更新プログラムが必須であることが確認されてからインストールされます。  WSUS クライアント コンピューターの場合、更新プログラムが WSUS で承認されていないと更新プログラムの展開は失敗するので、注意してください。  適用された更新プログラムの結果は OMS に転送され、そこで処理されてダッシュボードに要約が表示されます。また、イベントを検索することもできます。     
 
 ## <a name="prerequisites"></a>前提条件
-* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2008 R2 SP1 以降に対する更新プログラムのデプロイです。  Server Core と Nano Server のインストール オプションはサポートされていません。
+* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2008 R2 SP1 以降に対する更新プログラムのデプロイです。  Nano Server はサポートされていません。
 
     > [!NOTE]
     > Windows Server 2008 R2 SP1 に更新プログラムをデプロイするためには、.NET Framework 4.5 および WMF 5.0 以降が必要です。
@@ -156,7 +156,7 @@ Operations Manager 管理グループが OMS と通信していることを確�
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 OMS ワークスペースに更新管理ソリューションを追加すると、OMS のダッシュボードに **[Update Management (更新管理)]** タイルが追加されます。 このタイルには、ご利用の環境におけるコンピューターの数と更新プログラムの対応状態が数字とグラフで表示されます。<br><br>
-![更新管理の概要タイル](media/oms-solution-update-management/update-management-summary-tile.png)  
+![Update Management の概要タイル](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 
 ## <a name="viewing-update-assessments"></a>更新プログラムの評価の表示

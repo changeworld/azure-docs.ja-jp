@@ -13,22 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shengc
-ms.openlocfilehash: b8c30a2fd68178ddd2bfb3ff079c47ba00928855
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c15d723efdcf273c86f54ddce04904ce1a274631
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
-
-[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
-
-#### <a name="this-tutorial"></a>このチュートリアルの内容
-
-> [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
-
-このチュートリアルでは、Azure PowerShell を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure 仮想ネットワークにある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
+このチュートリアルでは、Azure PowerShell を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。 
@@ -39,6 +31,8 @@ ms.lasthandoff: 11/04/2017
 > * パイプラインの実行を監視します 
 > * 出力を検証します。 
 
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -71,22 +65,32 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    FROM hivesampletable
    ```
 2. Azure BLOB ストレージで、**adftutorial** という名前のコンテナーを作成します (存在しない場合)。
-3. `hivescripts` という名前のフォルダーを作成します。
-4. `hivescript.hql` ファイルを `hivescripts` サブフォルダーにアップロードします。
+3. **hivescripts** という名前のフォルダーを作成します。
+4. **hivescript.hql** ファイルを **hivescripts** サブフォルダーにアップロードします。
 
  
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
 
-1. 変数を 1 つずつ設定します。
+1. リソース グループ名を設定します。 このチュートリアルの一環として、リソース グループを作成します。 ただし、既存のリソース グループを使用してもかまいません。 
 
     ```powershell
-    $subscriptionID = "<subscription ID>" # Your Azure subscription ID
-    $resourceGroupName = "ADFTutorialResourceGroup" # Name of the resource group
-    $dataFactoryName = "MyDataFactory09142017" # Globally unique name of the data factory
-    $pipelineName = "MyHivePipeline" # Name of the pipeline
-    $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" # make it a unique name. 
+    $resourceGroupName = "ADFTutorialResourceGroup" 
+    ```
+2. データ ファクトリ名を指定します。 名前はグローバルに一意である必要があります。
+
+    ```powershell
+    $dataFactoryName = "MyDataFactory09142017"
+    ```
+3. パイプラインの名前を指定します。 
+
+    ```powershell
+    $pipelineName = "MyHivePipeline" # 
+    ```
+4. セルフホステッド統合ランタイムの名前を指定します。 セルフホステッド統合ランタイムは、Data Factory が VNet 内のリソース (Azure SQL Database など) にアクセスする必要がある場合に必要になります。 
+    ```powershell
+    $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
 2. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。 現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
@@ -226,17 +230,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
   
         `10.6.0.15 myHDIClusterName.azurehdinsight.net`
 
-JSON ファイルを作成したフォルダーに移動し、次のコマンドを実行して、リンクされたサービスをデプロイします。 
+## <a name="create-linked-services"></a>リンクされたサービスを作成します
+PowerShell で、JSON ファイルを作成したフォルダーに移動し、次のコマンドを実行して、リンクされたサービスをデプロイします。 
 
+1. PowerShell で、JSON ファイルを作成したフォルダーに移動します。
+2. 次のコマンドを実行して、Azure Storage のリンクされたサービスを作成します。 
 
-```powershell
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
+    ```powershell
+    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
+    ```
+3. 次のコマンドを実行して、Azure HDInsight のリンクされたサービスを作成します。 
 
-Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDILinkedService" -File "MyHDILinkedService.json"
-```
+    ```powershell
+    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDInsightLinkedService" -File "MyHDInsightLinkedService.json"
+    ```
 
 ## <a name="author-a-pipeline"></a>パイプラインを作成する
-この手順では、Hive アクティビティがある新しいパイプラインを作成します。 このアクティビティでは、Hive スクリプトを実行してサンプル テーブルからデータを返し、定義されたパスに保存します。 任意のエディターで JSON ファイルを作成し、パイプライン定義から次の JSON 定義をコピーして、**MyHiveOnDemandPipeline.json** として保存します。
+この手順では、Hive アクティビティがある新しいパイプラインを作成します。 このアクティビティでは、Hive スクリプトを実行してサンプル テーブルからデータを返し、定義されたパスに保存します。 任意のエディターで JSON ファイルを作成し、パイプライン定義から次の JSON 定義をコピーして、**MyHivePipeline.json** として保存します。
 
 
 ```json

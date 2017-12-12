@@ -1,26 +1,19 @@
 ---
-title: "Azure Kubernetes クラスターのサービス プリンシパル | Microsoft Docs"
+title: "Azure Kubernetes クラスターのサービス プリンシパル"
 description: "Azure Container Service の Kubernetes クラスター用の Azure Active Directory サービス プリンシパルを作成および管理する"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service, kubernetes
-keywords: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c07bebb98345981d36eb928bea14a09df9bc741
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 0c7e05525f1c6d11c17b4b36946dd797a7a95d08
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Container Service の Kubernetes クラスター用の Azure AD サービス プリンシパルをセットアップする
 
@@ -36,9 +29,9 @@ Azure Container Service で Kubernetes クラスターを使用するには、Az
 
 次の要件を満たす既存の Azure AD サービス プリンシパルを使用することも、新たに作成することもできます。
 
-* **スコープ**: クラスターのデプロイに使用するリソース グループ。
+* **スコープ**: リソース グループ
 
-* **ロール**: **共同作成者**
+* **ロール**: 共同作成者
 
 * **クライアント シークレット**: パスワードである必要があります。 現時点では、証明書の認証用に設定されたサービス プリンシパルを使用することはできません。
 
@@ -59,7 +52,7 @@ az account set --subscription "mySubscriptionID"
 
 az group create --name "myResourceGroup" --location "westus"
 
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/mySubscriptionID"
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>"
 ```
 
 出力は次のようになります (ここで示されている出力は編集されています)。
@@ -126,11 +119,50 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 * サービス プリンシパルの**クライアント ID** を指定する場合、この記事で示したように `appId` の値を使用するか、対応するサービス プリンシパルの `name` (例: `https://www.contoso.org/example`) を使用することができます。
 
-* Kubernetes クラスター内のマスター VM とエージェント VM では、サービス プリンシパルの資格情報が /etc/kubernetes/azure.json ファイルに格納されます。
+* Kubernetes クラスター内のマスター VM とエージェント VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます。
 
-* `az acs create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の ~/.azure/acsServicePrincipal.json ファイルに書き込まれます。
+* `az acs create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/acsServicePrincipal.json` ファイルに書き込まれます。
 
 * `az acs create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルは同じサブスクリプション内に作成された [Azure Container Registry](../../container-registry/container-registry-intro.md) でも認証を行うことができます。
+
+* サービス プリンシパルの資格情報の有効期限が切れて、クラスター ノードが **NotReady** 状態になる可能性があります。 軽減策については、「[資格情報の有効期限](#credential-expiration)」セクションを参照してください。
+
+## <a name="credential-expiration"></a>資格情報の有効期限
+
+サービス プリンシパルを作成するときに、`--years` パラメーターで独自の有効期間を指定しなかった場合、その資格情報の有効期間は、作成から 1 年です。 資格情報の有効期限が切れてクラスター ノードが **NotReady** 状態になる可能性があります。
+
+サービス プリンシパルの有効期限日を確認するには、[az ad app show](/cli/azure/ad/app#az_ad_app_show) コマンドに `--debug` パラメーターを指定して実行し、出力結果の下の方を見て `passwordCredentials` の `endDate` 値を探します。
+
+```azurecli
+az ad app show --id <appId> --debug
+```
+
+出力 (抜粋):
+
+```json
+...
+"passwordCredentials":[{"customKeyIdentifier":null,"endDate":"2018-11-20T23:29:49.316176Z"
+...
+```
+
+サービス プリンシパルの資格情報の有効期限が切れた場合は、[az ad sp reset-credentials](/cli/azure/ad/sp#az_ad_sp_reset_credentials) コマンドを使用して資格情報を更新します。
+
+```azurecli
+az ad sp reset-credentials --name <appId>
+```
+
+出力:
+
+```json
+{
+  "appId": "4fd193b0-e6c6-408c-a21a-803441ad2851",
+  "name": "4fd193b0-e6c6-408c-a21a-803441ad2851",
+  "password": "404203c3-0000-0000-0000-d1d2956f3606",
+  "tenant": "72f988bf-0000-0000-0000b-2d7cd011db47"
+}
+```
+
+次に、すべてのクラスター ノードの `/etc/kubernetes/azure.json` を新しい資格情報で更新し、ノードを再起動します。
 
 ## <a name="next-steps"></a>次のステップ
 

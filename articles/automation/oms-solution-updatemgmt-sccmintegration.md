@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.openlocfilehash: c3ae8da65e03fe9e11b5657a6a40d02de0567da6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04540524f83e367f92912171ddc55b6e6f82f80e
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
-# <a name="integrate-system-center-configuration-manager-with-oms-update-management-preview"></a>System Center Configuration Manager と OMS Update Management (プレビュー) の統合
+# <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>System Center Configuration Manager と OMS Update Management の統合
 
 PC、サーバー、モバイル デバイスを管理するために System Center Configuration Manager に投資してきたお客様は、ソフトウェア更新管理 (SUM) サイクルの一環として、ソフトウェア更新プログラムの管理でもその強さと成熟度を活用できます。  
 
@@ -42,12 +42,13 @@ Azure IaaS でホストされているクライアントを既存の Configurati
 Configuration Manager から更新プログラムのデプロイを引き続き管理する場合は、次の手順を実行します。  OMS は Configuration Manager に接続し、Log Analytics ワークスペースに接続されているクライアント コンピューターに更新プログラムを適用します。 更新プログラムの内容は、Configuration Manager によってデプロイが管理されているかのように、クライアント コンピューターのキャッシュから利用できます。  
 
 1. [ソフトウェア更新プログラムのデプロイのプロセス](https://docs.microsoft.com/en-us/sccm/sum/deploy-use/deploy-software-updates)に関するページで説明されているプロセスを使用して、Configuration Manager 階層の最上位サイトからソフトウェア更新プログラムのデプロイを作成します。  標準のデプロイとは異なる構成が必要な唯一の設定は、デプロイ パッケージのダウンロード動作を制御するための **[ソフトウェアの更新をインストールしない]** オプションです。 この動作は、次の手順でスケジュールされた更新プログラムのデプロイを作成することによって、OMS Update Management ソリューションによって管理されます。  
-2. Azure Portal の **[Automation アカウント]** 画面で Automation アカウントを選択し、「[Azure Portal で新しい変数を作成するには](../automation/automation-variables.md#to-create-a-new-variable-with-the-azure-portal)」の手順に従って **true** の値を備えた **UseOMSForSCCMUpdates** という名前のブール型の変数を作成します。
-3. OMS ポータルで Update Management ダッシュボードを開きます。  「[更新プログラムの展開の作成](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、OMS コンピューター グループとして表される適切な Configuration Manager コレクションをドロップダウン リストから選択します。  以下の重要な点に注意してください。
+
+1. OMS ポータルで Update Management ダッシュボードを開きます。  「[更新プログラムの展開の作成](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、OMS コンピューター グループとして表される適切な Configuration Manager コレクションをドロップダウン リストから選択します。  以下の重要な点に注意してください。
     1. 選択した Configuration Manager デバイス コレクションにメンテナンス期間が定義されている場合、コレクションのメンバーは、OMS のスケジュールされたデプロイで定義されている **[期間]** 設定ではなくこの設定を使用します。
-    2. ターゲット コレクションのメンバーは、(直接、プロキシ サーバー経由、または OMS ゲートウェイ経由で) インターネットに接続できる必要があります。  
+    1. ターゲット コレクションのメンバーは、(直接、プロキシ サーバー経由、または OMS ゲートウェイ経由で) インターネットに接続できる必要があります。  
 
 OMS ソリューションによる更新プログラムのデプロイが完了した後、選択したコンピューター グループのメンバーであるターゲット コンピューターによって、スケジュールされた時刻にローカル クライアント キャッシュから更新プログラムがインストールされます。  [更新プログラムのデプロイ ステータスを表示](../operations-management-suite/oms-solution-update-management.md#viewing-update-deployments)して、デプロイの結果を監視できます。  
+
 
 ### <a name="manage-software-updates-from-oms"></a>OMS からのソフトウェア更新プログラムの管理
 

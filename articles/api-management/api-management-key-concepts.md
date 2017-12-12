@@ -6,22 +6,22 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: 
-ms.assetid: e71da405-835a-48f3-956f-45c1a85698d7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/23/2017
+ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: becffc6011ef1dd49e07d22880d3346036629393
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: fbde63a2fe986342026e2b9dca5db06ea667c8d6
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="what-is-api-management"></a>API Management とは
-API Management が組織にもたらす利点は、外部のパートナーや社内の開発者に API を公開することによって、社内に眠っているデータやサービスの可能性を発掘できることです。 どの企業も、その業務をデジタル プラットフォームで拡大し、新しい販路と顧客を開拓すると共に、既存の顧客との絆を深めようと模索しています。 API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。
+
+API Management (APIM) が組織にもたらす利点は、外部のパートナーや社内の開発者に API を公開することによって、社内に眠っているデータやサービスの可能性を発掘できることです。 どの企業も、その業務をデジタル プラットフォームで拡大し、新しい販路と顧客を開拓すると共に、既存の顧客との絆を深めようと模索しています。 API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。 Azure API Management を任意のバックエンドで実行し、それに基づいて本格的な API プログラムを起動できます。
 
 Azure API Management の概要や、API Management を使用して最小限の操作で多くの機能 (アクセス制御、レート制限、監視、イベント ログ、応答のキャッシュなど) を API に追加する方法については、次のビデオをご覧ください。
 
@@ -29,24 +29,51 @@ Azure API Management の概要や、API Management を使用して最小限の�
 > 
 > 
 
-API Management を使用するには、管理者が API を作成します。 API はそれぞれ、少なくとも 1 つの操作で構成され、1 つまたは複数の成果物に追加することができます。 API を使用する開発者は、その API を含んだ成果物をサブスクライブしたうえで、使用ポリシーが適用されていればその範囲の中で、API の操作を呼び出すことができます。
+このトピックでは、APIM に関連する一般的なシナリオの概要について説明します。  また、APIM システムの主要コンポーネントの概要についても説明します。 さらに、各コンポーネントの詳細な概要を示します。
 
-このトピックでは、API Management の重要な概念を簡単に説明します。
+## <a name="overview"></a>概要
 
-> [!NOTE]
-> 詳細については、 [クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper) に関する PDF ホワイトペーパーをご覧ください。 CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。 
-> 
-> * API の一般的な要件と課題
-> * API の分離とファサードの提供
-> * 開発者の準備時間の短縮
-> * アクセスのセキュリティ保護
-> * 分析とメトリック
-> * API Management プラットフォームを使用した制御と把握
-> * クラウド ソリューションとオンプレミス ソリューションの利用の違い
-> * Azure API Management
-> 
-> 
+API Management を使用するには、管理者が API を作成します。 API はそれぞれ、少なくとも 1 つの操作で構成され、1 つまたは複数の成果物に追加することができます。 API を使用する開発者は、その API を含んだ成果物をサブスクライブしたうえで、使用ポリシーが適用されていればその範囲の中で、API の操作を呼び出すことができます。 一般的なシナリオは、次のとおりです。
 
+* **モバイル インフラストラクチャのセキュリティを強化する**。API キーによるアクセス制御、スロットル処理による DOS 攻撃の防止、JWT トークン検証などの高度なセキュリティ ポリシーの使用によって、これを行います。
+* **ISV パートナー エコシステムを可能にする**。開発者ポータルを通したパートナーとの迅速な協力の提供と、パートナーによる使用の準備が整っていない内部実装から切り離された API ファサードの構築によって、これを行います。
+* **内部 API プログラムを実行する**。組織が可用性と API に対する最新の変更を伝達するための一元的な場所の提供と、組織アカウントに基づいたアクセスの制限によって、これを行います。そのすべてが、API ゲートウェイとバックエンドの間のセキュリティ保護されたチャネルに基づいて実行されます。
+
+システムは、次のコンポーネントで構成されます。
+
+* **API ゲートウェイ**。これは次の機能を持つエンドポイントです。
+  
+  * API 呼び出しを受け入れ、バックエンドにルーティングします。
+  * API キー、JWT トークン、証明書、その他の資格情報を検証します。
+  * 使用量クォータとレート制限を適用します
+  * コードを変更せずにその場で API を変換します。
+  * セットアップ時にバックエンドの応答をキャッシュします。
+  * 分析目的で呼び出しメタデータを記録します。
+* **パブリッシャー ポータル** は、API プログラムをセットアップする管理インターフェイスです。 このインターフェイスを使用して、次の操作を行います。
+  
+  * API スキーマを定義またはインポートします。
+  * API を製品にパッケージします。
+  * API のクォータや変換などのポリシーを設定します。
+  * 分析から洞察を得ます。
+  * ユーザーを管理します。
+* **開発者ポータル** は、開発者用のメイン Web として機能し、次の操作を実行できます。
+  
+  * API のドキュメントを読みます。
+  * 対話型コンソールを使用して API を試します。
+  * API キーを取得するために、アカウントを作成してサブスクライブします。
+  * 自分自身の使用に関する分析にアクセスします。
+
+詳細については、 [クラウド ベースの API Management: API が持つ力の活用](http://j.mp/ms-apim-whitepaper) に関する PDF ホワイトペーパーをご覧ください。 CITO Research 社が作成した API Management に関するこの概要ホワイト ペーパーでは、次のトピックが取り上げられています。 
+ 
+ * API の一般的な要件と課題
+ * API の分離とファサードの提供
+ * 開発者の準備時間の短縮
+ * アクセスのセキュリティ保護
+ * 分析とメトリック
+ * API Management プラットフォームを使用した制御と把握
+ * クラウド ソリューションとオンプレミス ソリューションの利用の違い
+ * Azure API Management
+ 
 ## <a name="apis"> </a>API と操作
 API Management サービス インスタンスの基礎となるのは API です。 それぞれの API は、開発者が利用できる一連の操作を表します。 各 API は、それを実装するバックエンド サービスへの参照を含んでおり、その操作は、バックエンド サービスに実装されている操作と対応します。 操作は、API Management で細かく設定することができます。URL のマッピング、クエリとパスのパラメーター、要求と応答の内容、操作から返される応答のキャッシュを制御することが可能です。 また、レート制限、クォータ、IP 制限のポリシーを API レベルや個々の操作レベルで導入することもできます。
 
@@ -56,12 +83,6 @@ API Management サービス インスタンスの基礎となるのは API で�
 開発者から見える API の全体像が成果物です。 API Management の成果物には、少なくとも 1 つの API が含まれており、タイトルや説明、使用条件などが設定されます。 成果物の種類には、**オープンな**成果物と**保護された**成果物があります。 保護された成果物を使用するには、事前にサブスクライブする必要があります。一方、オープンな成果物は、サブスクライブせずに使用できます。 開発者に使用してもらう準備が整ったら、成果物を発行することができます。 発行された成果物は、開発者が見ることができます (保護された成果物の場合は、開発者がサブスクライブできるようになります)。 サブスクリプションの承認は成果物レベルで構成します。管理者による承認を必須とするか自動的に承認するかを選択できます。
 
 開発者に成果物の表示を許可するかどうかは、グループを使用して管理します。 成果物の表示の可否はグループに対して付与されます。開発者は、自分が所属するグループから見える成果物を表示してサブスクライブすることができます。 
-
-詳細については、[成果物を作成して発行する方法][How to create and publish a product]に関するページと、次のビデオをご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Using-Products/player]
-> 
-> 
 
 ## <a name="groups"> </a> グループ
 開発者に成果物の表示を許可するかどうかは、グループを使用して管理します。 API Management には、次に示すシステム グループが用意されています。これらのシステム グループを変更することはできません。
@@ -84,29 +105,31 @@ API Management サービス インスタンスの基礎となるのは API で�
 ## <a name="policies"> </a> ポリシー
 ポリシーは、発行者がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
 
-ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) ポリシーや[変数の設定](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[Advanced policies (詳細なポリシー)](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies)」、[ポリシーの式](https://msdn.microsoft.com/library/azure/dn910913.aspx)に関する記事、および次のビデオを参照してください。
+ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) ポリシーや[変数の設定](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies)」と「[ポリシーの式](https://msdn.microsoft.com/library/azure/dn910913.aspx)」をご覧ください。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player]
-> 
-> 
 
-API Management の全ポリシー一覧については、[ポリシー リファレンス][Policy reference]に関するページを参照してください。 ポリシーの使用と構成の詳細については、[API Management のポリシー][API Management policies]に関するページを参照してください。 レート制限ポリシーとクォータ ポリシーを持つ成果物の作成に関するチュートリアルについては、[成果物の詳細設定を作成して構成する方法][How create and configure advanced product settings]に関するページを参照してください。 デモについては、次のビデオをご覧ください。
+API Management の全ポリシー一覧については、[ポリシー リファレンス][Policy reference]に関するページを参照してください。 ポリシーの使用と構成の詳細については、[API Management のポリシー][API Management policies]に関するページを参照してください。 レート制限ポリシーとクォータ ポリシーを持つ成果物の作成に関するチュートリアルについては、[成果物の詳細設定を作成して構成する方法][How create and configure advanced product settings]に関するページを参照してください。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
-> 
-> 
 
 ## <a name="developer-portal"> </a> 開発者ポータル
-開発者ポータルは、開発者が API の使用法を習得したり、操作を確認して呼び出したり、成果物をサブスクライブしたりすることができる場です。 利用予定者は、開発者ポータルにアクセスして、API と操作を閲覧したうえで、サインアップすることができます。 開発者ポータルの URL は、API Management サービス インスタンスの Azure クラシック ポータルのダッシュボードに配置されます。
+開発者ポータルは、開発者が API の使用法を習得したり、操作を確認して呼び出したり、成果物をサブスクライブしたりすることができる場です。 利用予定者は、開発者ポータルにアクセスして、API と操作を閲覧したうえで、サインアップすることができます。 開発者ポータルの URL は、API Management サービス インスタンスの Azure Portal のダッシュボードに示されます。
 
 カスタム コンテンツを追加したり、スタイルをカスタマイズしたり、貴社のブランドを追加したりすることによって、開発者ポータルのルック アンド フィールをカスタマイズすることができます。
 
 ## <a name="api-management-and-the-api-economy"></a>API Management と API エコノミー
-API Management の詳細については、Microsoft Ignite 2015 カンファレンスの次のプレゼンテーションを参照してください。
 
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3708/player]
+API Management の詳細については、Microsoft Ignite 2017 カンファレンスの次のプレゼンテーションを参照してください。
+
+> [!VIDEO https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2186/player]
 > 
 > 
+
+## <a name="next-steps"></a>次のステップ
+
+次のクイックスタートを完了して、Azure API Management の使用を開始します。
+
+> [!div class="nextstepaction"]
+> [Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
 
 [APIs and operations]: #apis
 [Products]: #products
@@ -120,11 +143,11 @@ API Management の詳細については、Microsoft Ignite 2015 カンファレ�
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
-[How create and configure advanced product settings]: api-management-howto-product-with-rules.md
+[How create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
 [Policy reference]: api-management-policy-reference.md
 [API Management policies]: api-management-howto-policies.md
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: get-started-create-service-instance.md
 
 
 

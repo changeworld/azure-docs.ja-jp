@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 12/04/2017
 ms.author: owend
-ms.openlocfilehash: 350f95b2f9ec8dc4a3e2dc8f7d390f841b248fa1
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 224ecbb80e8fc5b3f1a32e42eda7ec5452e9e553
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -124,7 +124,7 @@ Power BI、Excel、サードパーティ製ツールなど、データの探索�
 ## <a name="get-help"></a>問い合わせ
 
 #### <a name="documentation"></a>ドキュメント
-Azure Analysis Services は簡単にセットアップして管理できます。 サーバーのサービスの作成と管理に必要なすべての情報はこちらで確認できます。 データ モデルの作成とサーバーへのデプロイは、オンプレミスのサーバーにデプロイするデータ モデルを作成する場合とほぼ同じです。 概念、手順、チュートリアル、リファレンスの記事の広範なライブラリが、[Analysis Services](https://docs.microsoft.com/sql/analysis-services/analysis-services) にあります。
+Azure Analysis Services は簡単にセットアップして管理できます。 サーバーのサービスの作成と管理に必要なすべての情報はこちらで確認できます。 データ モデルの作成とサーバーへのデプロイは、オンプレミスのサーバーにデプロイするデータ モデルを作成する場合とほぼ同じです。 概念、手順、チュートリアル、リファレンスの記事の広範なライブラリが、[SQL Server Analysis Services ヘルプ](https://docs.microsoft.com/sql/analysis-services/analysis-services)にあります。
 
 #### <a name="videos"></a>ビデオ
 [Azure Analysis Services に関する Channel 9](https://channel9.msdn.com/series/Azure-Analysis-Services) にある、役立つビデオをご確認ください。

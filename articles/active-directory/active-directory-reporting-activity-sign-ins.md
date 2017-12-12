@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d28def78ef34e7c41e846fc10771992f109efd45
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: b764c813910b8188b2da7a8168d7e8ab8af70762
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -52,7 +52,7 @@ Azure Active Directory のレポート アーキテクチャは、次のコン�
 ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
 
 * ユーザーのサインインにどのようなパターンがあるか。
-* 1 週間で何人のユーザーがユーザー サインインを行ったか。
+* 1 週間で何人のユーザーがサインインを行ったか。
 * これらのサインインはどのような状態か。
 
 すべてのサインイン アクティビティ データへの最初のエントリ ポイントは、**[Azure Active Directory]** の [アクティビティ] セクションの **[サインイン]** です

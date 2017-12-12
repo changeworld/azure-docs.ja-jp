@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Container Instances のドキュメント
+title: "Azure Container Instances のドキュメント"
 metadata:
-  title: Azure Container Instances のドキュメント - チュートリアル | Microsoft Docs
-  description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。
+  title: "Azure Container Instances のドキュメント - チュートリアル | Microsoft Docs"
+  description: "Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。"
   services: container-instances
   author: czeumault
   manager: carolz
@@ -13,43 +13,48 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
+  ms.openlocfilehash: 37acd22cd6a85b1a9062b0c0aee6e48957f1ea11
+  ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/07/2017
 abstract:
-  description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 完全なコンテナー オーケストレーション ソリューションが必要な場合は、<a href="/azure/container-service/kubernetes/">Azure Container Service の Kubernetes ドキュメント</a>を参照してください。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、コンテナー インスタンスを作成および管理する方法を確認してください。
+  description: "Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 完全なコンテナー オーケストレーション ソリューションが必要な場合は、<a href=\"/azure/container-service/kubernetes/\">Azure Container Service の Kubernetes ドキュメント</a>を参照してください。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、コンテナー インスタンスを作成および管理する方法を確認してください。"
 sections:
-  - title: 5 分間のクイック スタート
+- title: "5 分間のクイック スタート"
+  items:
+  - type: paragraph
+    text: "Azure Container Instances でコンテナー イメージをデプロイする方法を学習します。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: Azure Container Instances でコンテナー イメージをデプロイする方法を学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/virtual-machines/linux/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/container-instances/container-instances-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: /azure/container-instances/container-instances-quickstart-portal
-  - title: ステップバイステップのチュートリアル
+    - image:
+        src: /azure/virtual-machines/linux/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/container-instances/container-instances-quickstart
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure Portal
+      href: /azure/container-instances/container-instances-quickstart-portal
+- title: "ステップバイステップのチュートリアル"
+  items:
+  - type: paragraph
+    text: "コードをコンテナー イメージにパッケージ化し、Azure Container Instances で実行する方法を学習します。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: コードをコンテナー イメージにパッケージ化し、Azure Container Instances で実行する方法を学習します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">コンテナー イメージにアプリケーションをパッケージ化する</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Azure Container Registry を作成し、コンテナー イメージをアップロードする</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Azure Container Instances にコンテナー イメージをデプロイする</a>
-  - title: リファレンス
+    - html: "<a href=\"/azure/container-instances/container-instances-tutorial-prepare-app\">コンテナー イメージにアプリケーションをパッケージ化する</a>"
+    - html: "<a href=\"/azure/container-instances/container-instances-tutorial-prepare-acr\">Azure Container Registry を作成し、コンテナー イメージをアップロードする</a>"
+    - html: "<a href=\"/azure/container-instances/container-instances-tutorial-deploy-app\">Azure Container Instances にコンテナー イメージをデプロイする</a>"
+- title: "リファレンス"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: '<p><a href="/cli/azure/container">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerinstance#container_instances">PowerShell</a></p>'
-          - title: 言語
-            html: <p><a href="/dotnet/api/overview/azure/containerinstances">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstance">Node.JS</a></p>
-          - title: REST ()
-            html: <p><a href="/rest/api/container-instances">REST API リファレンスに関するページ</a></p><p><a href="/azure/templates/microsoft.containerinstance/containergroups">Resource Manager テンプレート</a></p>
+    - title: "コマンド ライン"
+      html: <p><a href="/cli/azure/container">Azure CLI</a></p><p><a href="/powershell/module/azurerm.containerinstance#container_instances">PowerShell</a></p>
+    - title: "言語"
+      html: <p><a href="/dotnet/api/overview/azure/containerinstances">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstance">Node.JS</a></p>
+    - title: REST ()
+      html: "<p><a href=\"/rest/api/container-instances\">REST API リファレンスに関するページ</a></p><p><a href=\"/azure/templates/microsoft.containerinstance/containergroups\">Resource Manager テンプレート</a></p>"

@@ -1,27 +1,19 @@
 ---
-title: "クイックスタート - Linux 用 Azure Docker Swarm クラスター | Microsoft Docs"
+title: "クイックスタート - Linux 用 Azure Docker Swarm クラスター"
 description: "Azure CLI を使用して Azure Container Service で Linux コンテナー用 Docker Swarm クラスターを作成する方法を簡単に説明します。"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service, Docker, Swarm
-keywords: 
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/14/2017
 ms.author: nepeters
 ms.custom: 
-ms.openlocfilehash: 876135d62d548e155f4ebefd8bbd9d9cca8b87d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79e4fab9501141c78bca4b28eabb3964604be909
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="deploy-docker-swarm-cluster"></a>Docker Swarm クラスターのデプロイ
 

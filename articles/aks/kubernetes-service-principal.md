@@ -1,26 +1,19 @@
 ---
-title: "Azure Kubernetes クラスターのサービス プリンシパル | Microsoft Docs"
+title: "Azure Kubernetes クラスターのサービス プリンシパル"
 description: "AKS で Kubernetes クラスターの Azure Active Directory サービス プリンシパルを作成および管理します"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service, kubernetes
-keywords: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/15/2017
+ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 359887a8527d5432e705d9739e30f0eb2363e34f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: a217f4cc8ac18888de8dfa803b4b8667a566dc0b
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Azure Container Service (AKS) でのサービス プリンシパル
 
@@ -30,11 +23,10 @@ AKS クラスターには、Azure API と対話するための [Azure Active Dir
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイック スタート](./kubernetes-walkthrough.md)を参照してください。
 
 Azure AD サービス プリンシパルを作成するには、アプリケーションを Azure AD テナントに登録し、そのアプリケーションをサブスクリプション内のロールに割り当てるためのアクセス許可が必要です。 必要なアクセス許可がない場合は、必要なアクセス許可の割り当てを Azure AD またはサブスクリプションの管理者に依頼するか、Kubernetes クラスターのサービス プリンシパルを事前に作成することが必要になる可能性があります。
 
-また、Azure CLI バージョン 2.0.21 以降がインストールされ、構成されていることも必要です。 バージョンを確認するには、az --version を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+また、Azure CLI バージョン 2.0.21 以降がインストールされ、構成されていることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-sp-with-aks-cluster"></a>AKS クラスターで SP を作成する
 
@@ -48,15 +40,11 @@ az aks create --name myK8SCluster --resource-group myResourceGroup --generate-ss
 
 ## <a name="use-an-existing-sp"></a>既存の SP を使用する
 
-既存の Azure AD サービス プリンシパルは、AKS クラスターで使用することも、AKS クラスターで使用するために事前に作成しておくことも可能です。 これは、サービス プリンシパルの情報を指定する必要がある Azure Portal からクラスターをデプロイする際に役立ちます。
-
-既存のサービス プリンシパルを使用する場合は、次の要件を満たしている必要があります。
-
-- クライアント シークレット: パスワードである必要があります
+既存の Azure AD サービス プリンシパルは、AKS クラスターで使用することも、AKS クラスターで使用するために事前に作成しておくことも可能です。 これは、サービス プリンシパルの情報を指定する必要がある Azure Portal からクラスターをデプロイする際に役立ちます。 既存のサービス プリンシパルを使用するとき、クライアント シークレットはパスワードとして構成されている必要があります。
 
 ## <a name="pre-create-a-new-sp"></a>新しい SP を事前に作成する
 
-Azure CLI を使用してサービス プリンシパルを作成するには、[az ad sp create-for-rbac]() コマンドを使用します。
+Azure CLI を使用してサービス プリンシパルを作成するには、[az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) コマンドを使用します。
 
 ```azurecli
 az ad sp create-for-rbac --skip-assignment
@@ -64,7 +52,7 @@ az ad sp create-for-rbac --skip-assignment
 
 出力は次のようになります。 `appId` と `password` を書き留めておきます。 これらの値は、AKS クラスターの作成時に使用します。
 
-```
+```json
 {
   "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
   "displayName": "azure-cli-2017-10-15-02-20-15",
@@ -82,7 +70,7 @@ az ad sp create-for-rbac --skip-assignment
 az aks create --resource-group myResourceGroup --name myK8SCluster --service-principal <appId> --client-secret <password>
 ```
 
-Azure Portal から AKS クラスターをデプロイする場合は、AKS クラスターの構成フォームにこれらの値を入力します。
+Azure Portal を使用して AKS クラスターをデプロイする場合は、AKS クラスター構成フォームの **[サービス プリンシパル クライアント ID]** フィールドに `appId` 値を、**[Service principal client secret]\(サービス プリンシパル クライアント シークレット\)** フィールドに `password` 値を入力します。
 
 ![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-service-principal/sp-portal.png)
 
@@ -93,8 +81,8 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、次�
 * Kubernetes のサービス プリンシパルは、クラスター構成の一部です。 ただし、クラスターのデプロイに ID を使用しないでください。
 * すべてのサービス プリンシパルは、Azure AD アプリケーションに関連付けられています。 Kubernetes クラスターのサービス プリンシパルは、有効な任意の Azure AD アプリケーション名 (たとえば `https://www.contoso.org/example`) に関連付けることができます。 アプリケーションの URL は、実際のエンドポイントである必要はありません。
 * サービス プリンシパルの**クライアント ID** を指定する場合、この記事で示したように `appId` の値を使用するか、対応するサービス プリンシパルの `name` (例: `https://www.contoso.org/example`) を使用することができます。
-* Kubernetes クラスター内のマスター VM とノード VM では、サービス プリンシパルの資格情報が /etc/kubernetes/azure.json ファイルに格納されます。
-* `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の ~/.azure/acsServicePrincipal.json ファイルに書き込まれます。
+* Kubernetes クラスター内のマスター VM とノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます。
+* `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/acsServicePrincipal.json` ファイルに書き込まれます。
 * `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルは同じサブスクリプション内に作成された [Azure Container Registry](../container-registry/container-registry-intro.md) でも認証を行うことができます。
 * `az aks create` によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。 `az ad sp delete --id $clientID` を使用して削除してください。
 

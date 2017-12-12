@@ -41,13 +41,14 @@
 
 ## 分析
 ### [Azure CDN の使用パターンの分析](cdn-log-analysis.md)
-#### [Verizon からのコア レポート](cdn-analyze-usage-patterns.md)
-#### [Verizon からのカスタム レポート](cdn-verizon-custom-reports.md)
 #### [Azure 診断ログ](cdn-azure-diagnostic-logs.md)
-### Azure CDN from Verizon の分析ツール
-#### [詳細な HTTP レポートを生成する](cdn-advanced-http-reports.md)
-#### [リアルタイム統計情報を表示する](cdn-real-time-stats.md)
-#### [エッジ ノードのパフォーマンスを分析する](cdn-edge-performance.md)
+#### Azure CDN from Verizon の分析ツール
+##### [Verizon からのコア レポート](cdn-analyze-usage-patterns.md)
+##### [Verizon からのカスタム レポート](cdn-verizon-custom-reports.md)
+#### Azure CDN Premium from Verizon の分析ツール
+##### [詳細な HTTP レポートを生成する](cdn-advanced-http-reports.md)
+##### [リアルタイム統計情報を表示する](cdn-real-time-stats.md)
+##### [エッジ ノードのパフォーマンスを分析する](cdn-edge-performance.md)
 
 ## 開発
 ### [.NET](cdn-app-dev-net.md)

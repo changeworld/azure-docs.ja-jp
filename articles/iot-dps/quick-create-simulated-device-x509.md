@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 567c5d82ecc7f840e6b337da7e58aa8ffe37cec2
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: a51debfc80c28cd7d7e271448e30619f2bc72f86
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="create-and-provision-an-x509-simulated-device-using-iot-hub-device-provisioning-service-preview"></a>シミュレートされた X.509 デバイスを作成して IoT Hub Device Provisioning Service (プレビュー) でプロビジョニングする
+# <a name="create-and-provision-an-x509-simulated-device-using-iot-hub-device-provisioning-service"></a>シミュレートされた X.509 デバイスを作成して IoT Hub Device Provisioning Service でプロビジョニングする
 > [!div class="op_single_selector"]
 > * [TPM](quick-create-simulated-device.md)
 > * [X.509](quick-create-simulated-device-x509.md)

@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Factory を使ってデータを増分コピーする | Microsoft Docs"
+title: "Azure Data Factory を使ってテーブルを増分コピーする | Microsoft Docs"
 description: "このチュートリアルでは、Azure SQL データベースから Azure BLOB ストレージにデータを増分コピーする Azure Data Factory パイプラインを作成します。"
 services: data-factory
 documentationcenter: 
@@ -13,24 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shlo
-ms.openlocfilehash: f352f46f2d4c23124f4ee7e886cae9bdd8d5d2c9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0b05971b5ab8ec3fd14dd4ce14d07df478e1dcc9
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage"></a>Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
+このチュートリアルでは、Azure SQL Database 内のテーブルから Azure Blob Storage に差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
 
-[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
-
-#### <a name="this-tutorial"></a>このチュートリアルの内容
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
-データを統合する過程で広く行われているシナリオの 1 つとして、データの増分を定期的に読み込んで、初回データ読み込み/分析後に更新された分析結果を反映するというものがあります。 このチュートリアルでは、データ ソースからデータ シンクに新しいレコードまたは更新されたレコードだけを読み込む方法について詳しく説明します。 特にデータセットが大きい場合には、全体を読み込むよりも高い実行効率が得られます。    
-
-Data Factory のパイプラインでルックアップ、コピー、ストアド プロシージャの各アクティビティを使用し、基準値を使ったソリューションを構築することでデータの増分読み込みを実現できます。  
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -46,7 +41,7 @@ Data Factory のパイプラインでルックアップ、コピー、ストア�
 ## <a name="overview"></a>概要
 ソリューションの概略図を次に示します。 
 
-![データの増分読み込み](media\tutorial-Incrementally-load-data-from-azure-sql-to-blob\incrementally-load.png)
+![データの増分読み込み](media\tutorial-Incrementally-copy-powershell\incrementally-load.png)
 
 このソリューションを作成するにあたっての重要な手順を次に示します。 
 
@@ -71,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL データベースにデータ ソース テーブルを作成する
-1. **SQL Server Management Studio** を開き、**サーバー エクスプローラー**で目的のデータベースを右クリックして **[新しいクエリ]** を選択します。
+1. **SQL Server Management Studio**を開きます。 **サーバー エクスプローラー**で目的のデータベースを右クリックして **[新しいクエリ]** を選択します。
 2. Azure SQL データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをソース データ ストアとして作成します。  
     
     ```sql
@@ -151,40 +146,47 @@ END
 ```
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
-
-1. **PowerShell**を起動します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-
-    次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
-        
-    ```powershell
-    Login-AzureRmAccount
-    ```        
-    次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
-
-    ```powershell
-    Get-AzureRmSubscription
-    ```
-    次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
-
-    ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
-    ```
-2. **Set-AzureRmDataFactoryV2** コマンドレットを実行してデータ ファクトリを作成します。 各プレースホルダーを実際の値に置き換えてからコマンドを実行してください。
-
-    ```powershell
-    Set-AzureRmDataFactoryV2 -ResourceGroupName "<your resource group to create the factory>" -Location "East US" -Name "<specify the name of data factory to create. It must be globally unique.>" 
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
+   
+     ```powershell
+    $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
-    以下の点に注意してください。
+    リソース グループが既に存在する場合、上書きしないようお勧めします。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+2. データ ファクトリの場所の変数を定義します。 
 
-    * Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
+    ```powershell
+    $location = "East US"
+    ```
+3. Azure リソース グループを作成するには、次のコマンドを実行します。 
 
-        ```
-        The specified Data Factory name '<data factory name>' is already in use. Data Factory names must be globally unique.
-        ```
+    ```powershell
+    New-AzureRmResourceGroup $resourceGroupName $location
+    ``` 
+    リソース グループが既に存在する場合、上書きしないようお勧めします。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。 
+3. データ ファクトリ名の変数を定義します。 
 
-    * Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
-    * 現在、Data Factory V2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+    > [!IMPORTANT]
+    >  データ ファクトリ名は、グローバルに一意となるように更新してください。 たとえば、ADFTutorialFactorySP1127 です。 
+
+    ```powershell
+    $dataFactoryName = "ADFIncCopyTutorialFactory";
+    ```
+5. データ ファクトリを作成するには、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
+    
+    ```powershell       
+    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    ```
+
+以下の点に注意してください。
+
+* Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
+
+    ```
+    The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
+    ```
+* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**または**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
+* 現在、Data Factory バージョン 2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
@@ -224,7 +226,7 @@ END
     ```
 
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
-1. 以下の内容を記述した **AzureSQLDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADF** フォルダー内に作成します (ADF フォルダーがない場合は作成します)。 **&lt;server&gt;、&lt;user id&gt;、&lt;password&gt;** を実際の Azure SQL サーバーの名前、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
+1. 以下の内容を記述した **AzureSQLDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADF** フォルダー内に作成します (ADF フォルダーがない場合は作成します)。 **&lt;server&gt;、&lt;database&gt;、&lt;user id&gt;、&lt;password&gt;** を実際の Azure SQL サーバーの名前、データベース、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
 
     ```json
     {
@@ -233,15 +235,15 @@ END
             "type": "AzureSqlDatabase",
             "typeProperties": {
                 "connectionString": {
-                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database name>; Persist Security Info=False; User ID=<user name> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
+                    "value": "Server = tcp:<server>.database.windows.net,1433;Initial Catalog=<database>; Persist Security Info=False; User ID=<user> ; Password=<password>; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;",
                     "type": "SecureString"
                 }
             }
         }
     }
     ```
-2. **Azure PowerShell** で **ADF** フォルダーに切り替えます。
-3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureSQLDatabaseLinkedService** を作成します。 
+1. **Azure PowerShell** で **ADF** フォルダーに切り替えます。
+2. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureSQLDatabaseLinkedService** を作成します。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -512,7 +514,7 @@ END
 1. **Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って **IncrementalCopyPipeline** パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup "<your resource group>" -dataFactoryName "<your data factory name>"
+    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ``` 
 2. Get-AzureRmDataFactoryV2ActivityRun コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインのステータスをチェックします。 RunStartedAfter パラメーターと RunStartedBefore パラメーターのプレースホルダーには、実際の時刻を指定してください。  このチュートリアルでは、-RunStartedAfter "2017/09/14" -RunStartedBefore "2017/09/15" を使用します。
 
@@ -632,7 +634,7 @@ END
 2. 再度、**Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って **IncrementalCopyPipeline** パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroup "<your resource group>" -dataFactoryName "<your data factory name>"
+    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
 3. **Get-AzureRmDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 RunStartedAfter パラメーターと RunStartedBefore パラメーターのプレースホルダーには、実際の時刻を指定してください。  このチュートリアルでは、-RunStartedAfter "2017/09/14" -RunStartedBefore "2017/09/15" を使用します。
 
@@ -725,10 +727,10 @@ END
 > * パイプラインを実行します。
 > * パイプラインの実行を監視します。 
 
-次のチュートリアルに進み、Azure 上の Spark クラスターを使ってデータを変換する方法について学習しましょう。
+このチュートリアルでは、パイプラインで Azure SQL Database 内の**単一のテーブル**から Azure Blob Storage にデータをコピーしました。 次のチュートリアルに進んで、オンプレミスの SQL Server データベースにある**複数のテーブル**から Azure SQL Database にデータをコピーする方法について学習しましょう。 
 
 > [!div class="nextstepaction"]
->[クラウド内の Spark クラスターを使用してデータを変換する](tutorial-transform-data-spark-powershell.md)
+>[SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/23/2017
 ms.author: raynew
-ms.openlocfilehash: d3d5a3bcd3be55d1915ff7fdc6d82aebbb992fc7
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5c78f68c481b68cff31bdc5fd410549c2d44ba5a
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -32,15 +32,17 @@ Azure Migrate サービスは、Azure への移行についてオンプレミス
 Azure Migrate によって次のことが可能になります。
 
 - **Azure 対応性を評価する**: オンプレミスのマシンが Azure での実行に適しているかどうかを評価します。 
-- **推奨サイズを把握する**: オンプレミス VM のパフォーマンス履歴から、移行後の Azure VM の推奨サイズが得られます。 
-- **毎月のコストを見積もる**: オンプレミスのマシンを Azure で実行するためのコストを見積もります。
-- **強い確信をもって移行する**: 評価の対象となるオンプレミスのマシンをグループする過程で依存関係が視覚化され、評価結果の信頼度が高まります。 特定のマシンに関して、またはグループ内のすべてのマシンに関して、依存関係を正確に把握することができます。
+- **推奨サイズを把握する**: オンプレミス VM のパフォーマンス履歴から、Azure VM の推奨サイズが得られます。 
+- **毎月のコストを見積もる**: オンプレミスのマシンを Azure で実行するためのコストを見積もります。  
+- **高い信頼性で移行する**: オンプレミスのマシンの依存関係を視覚化して、同時に評価および移行するマシンのグループを作成します。 特定のマシンに関して、またはグループ内のすべてのマシンに関して、依存関係を正確に把握することができます。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
 - 現時点では Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) を評価することができます。
+
 > [!NOTE]
 > Hyper-V のサポートもロードマップにあり、数か月以内での実現を目指しています。 それまでの間、Hyper-V のワークロードの移行を計画する際は、Azure Site Recovery Deployment Planner を使用することをお勧めします。 
+
 - 1 回に評価できる VM は最大 1,000 台です。また、1 つの Azure Migrate プロジェクトで評価できるマシンは 1,500 台までです。 評価対象がそれを超える場合は、プロジェクトの数を増やすか、評価の回数を増やしてください。 [詳細情報](how-to-scale-assessment.md)
 - 評価対象となる VM は、vCenter Server (バージョン 5.5、6.0、6.5 のいずれか) で管理されていることが必要です。
 - Azure Migrate プロジェクトを作成できるのは米国中西部リージョンに限られます。 ただし、これが他の Azure リージョンへの移行計画に影響することはありません。 移行プロジェクトの場所は単に、オンプレミス環境から検出されたメタデータを保存するためにのみ使用されます。
@@ -54,11 +56,11 @@ Azure Migrate は、追加料金なしで利用できます。 ただし、パ�
 
 ## <a name="whats-in-an-assessment"></a>評価の内容
 
-Azure Migrate の評価に使用される設定を表にまとめました。
+評価は、オンプレミス VM の Azure 適合性を特定し、Azure で VM を実行するための適切な推奨サイズとコスト見積もりを得るのに役立ちます。 評価は、次の表に要約されているプロパティに基づいて行われます。 これらのプロパティは、Azure Migrate ポータルで変更できます。 
 
-**設定** | **詳細**
+**プロパティ** | **詳細**
 --- | ---
-**ターゲットの場所** | Azure 上の移行先となる場所。 既定では、Azure Migrate プロジェクトを作成した場所になります。 この設定は変更できます。   
+**ターゲットの場所** | Azure 上の移行先となる場所。 既定では、ターゲットの場所は、米国西部 2 に設定されます。 
 **記憶域冗長** | 移行後に Azure VM で使用されるストレージの種類。 既定値は LRS です。
 **価格プラン** | 評価では、ソフトウェア アシュアランスに加入済みかどうかや、[Azure ハイブリッド使用特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を利用できるかどうかが考慮されます。 また、適用すべき Azure プランも考慮されるほか、そのプランに加えて適用されるサブスクリプション固有の割引 (%) を指定することができます。 
 **[価格レベル]** | Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md) を指定できます。 これにより、運用環境であるかどうかに応じて適切な Azure VM ファミリに移行することができます。 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
@@ -69,12 +71,12 @@ Azure Migrate の評価に使用される設定を表にまとめました。
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate のしくみ
 
 1.  Azure Migrate プロジェクトを作成します。
-2.  Azure Migrate は、コレクター アプライアンスと呼ばれるオンプレミス VM を使用して、オンプレミスのマシンに関する情報を検出します。 このアプライアンスを作成するには、Open Virtualization Appliance (.ova) 形式のセットアップ ファイルをダウンロードし、それをオンプレミスの vCenter サーバー上の VM としてインポートします。
-3.  vCenter サーバーの読み取り専用の資格情報を使用して VM に接続し、コレクターを実行します。
+2.  Azure Migrate は、コレクター アプライアンスと呼ばれるオンプレミス VM を使用して、オンプレミスのマシンに関する情報を検出します。 このアプライアンスを作成するには、Open Virtualization Appliance (.ova) 形式のセットアップ ファイルをダウンロードし、それをオンプレミスの vCenter Server 上の VM としてインポートします。
+3.  vCenter Server のコンソール接続を使用して VM に接続し、接続中に VM の新しいパスワードを指定します。次に、VM でコレクター アプリケーションを実行して検出操作を開始します。
 4.  コレクターが、VMware PowerCLI のコマンドレットを使用して VM のメタデータを収集します。 検出はエージェントレスであり、VMware ホストまたは VM には何もインストールされません。 収集されるメタデータには、VM 情報 (コア、メモリ、ディスク、ディスク サイズ、ネットワーク アダプター) が含まれています。 また、CPU とメモリの使用率、ディスク IOPS、ディスクのスループット (MBps)、ネットワーク出力 (MBps) など、VM のパフォーマンス データも収集されます。
 5.  このメタデータが Azure Migrate プロジェクトにプッシュされます。 それを Azure Portal で確認することができます。
-6.  評価目的で VM をグループにまとめます。 たとえば、同じアプリを実行する VM をグループにまとめる場合があります。 vCenter または vCenter ポータルから、タグ付けを使用して VM をグループ化することができます。 視覚化を使用して、特定のマシンまたはグループ内のすべてのマシンの依存関係を検証します。
-7.  グループの評価を作成します。
+6.  評価の目的で、検出された VM をグループにまとめます。 たとえば、同じアプリケーションを実行する VM をグループにまとめます。 VM をグループ化するには、Azure Migrate ポータルを使用することも、vCenter Server でタグ付けを使用することもできます。 さらに、依存関係の視覚化を使用して、特定のマシンまたはグループ内のすべてのマシンの依存関係を表示し、グループを絞り込むことができます。
+7.  グループを作成したら、そのグループの評価を作成します。 
 8.  評価が完了したら、それをポータルで表示することも、Excel 形式でダウンロードすることもできます。
 
 
@@ -89,7 +91,7 @@ Azure Migrate の評価に使用される設定を表にまとめました。
 |-------------------|------------------------|---------------|---------|
 |コレクター          |Azure Migrate サービス   |TCP 443        |コレクターは、SSL ポート 443 経由でサービスに接続します。|
 |コレクター          |vCenter Server          |9443 (既定)   | 既定では、コレクターはポート 9443 で vCenter サーバーに接続します。 他のポートでサーバーがリッスンしている場合、それをコレクター VM で送信ポートとして構成する必要があります。 |
-|オンプレミス VM     | OMS ワークスペース          |[TCP 443](../log-analytics/log-analytics-windows-agents.md#system-requirements-and-required-configuration) |MMA エージェントは、TCP 443 を使用して Log Analytics に接続します。 依存関係の視覚化機能を使用していて、MMA エージェントをインストールする場合のみ、このポートが必要になります。 |
+|オンプレミス VM     | Operations Management Suite (OMS) ワークスペース          |[TCP 443](../log-analytics/log-analytics-windows-agents.md#system-requirements-and-required-configuration) |MMA エージェントは、TCP 443 を使用して Log Analytics に接続します。 依存関係の視覚化機能を使用していて、Microsoft Monitoring Agent (MMA) エージェントをインストールする場合のみ、このポートが必要になります。 |
 
 
   

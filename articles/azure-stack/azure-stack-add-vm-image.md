@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.openlocfilehash: 54b6a6984e66f32642336f4ea5e1e9f4ec9d03f3
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: b54bb67e1188037385d0b373850b6b923eb8d7ac
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Azure Stack でカスタム仮想マシン イメージを提供する
 
@@ -145,7 +145,7 @@ Remove-AzsVMImage `
 
 ## <a name="parameters"></a>パラメーター
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | **publisher** |イメージをデプロイするときにユーザーが使用する VM イメージの発行元名のセグメント。 たとえば、**Microsoft** です。 このフィールドではスペースや他の特殊文字は使用できません。 |
 | **offer** |VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、**WindowsServer** です。 このフィールドではスペースや他の特殊文字は使用できません。 |
@@ -184,7 +184,7 @@ Remove-AzsVMImage `
 
 2. Azure Stack にオペレーターとしてサインインします。 メニューから **[その他のサービス]** > **[リソース プロバイダー]** を選択します。 次に、**[Compute]** > **[VM イメージ]** > **[追加]** を選択します。
 
-3. **[Add a VM Image]\(VM イメージの追加\)** で、パブリッシャー、プラン、SKU、および仮想マシン イメージのバージョンを入力します。 これらの名前セグメントによって、Resource Manager テンプレートで VM イメージが参照されます。 正しい **osType** の値を選択してください。 **[OD Disk Blob URI]\(OD ディスク BLOB URI\)** には、イメージがアップロードされた BLOB URI を入力します。 その後 **[作成]** をクリックすると VM イメージの作成が開始されます。
+3. **[Add a VM Image]\(VM イメージの追加\)** で、パブリッシャー、プラン、SKU、および仮想マシン イメージのバージョンを入力します。 これらの名前セグメントによって、Resource Manager テンプレートで VM イメージが参照されます。 正しい **osType** の値を選択してください。 **[OS Disk Blob URI]\(OS ディスク BLOB URI\)** には、イメージがアップロードされた BLOB URI を入力します。 その後 **[作成]** をクリックすると VM イメージの作成が開始されます。
    
    ![イメージの作成を開始](./media/azure-stack-add-vm-image/image4.png)
 
