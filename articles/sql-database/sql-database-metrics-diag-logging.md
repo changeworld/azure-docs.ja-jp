@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 6d5fc10b5186f2830f724325846a485e4064d12b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9f201454d58dbc646923d0155ff41761d593ab7e
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -34,7 +34,7 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 
 メトリックや診断のロギングは既定では有効になっていません。 次のいずれかの方法を使用してメトリックと診断のロギングを有効にして管理できます。
 
-- Azure ポータル
+- Azure Portal
 - PowerShell
 - Azure CLI
 - Azure Monitor REST API 
@@ -48,7 +48,7 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 
 新しい Azure リソースをプロビジョニングするか、既存のリソースを選択できます。 ストレージ リソースを選択したら、収集するデータを指定する必要があります。 次のオプションを使用できます。
 
-- [1 分メトリック](sql-database-metrics-diag-logging.md#1-minute-metrics): DTU の割合、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。
+- [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics): DTU の割合、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。
 - [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): CPU 使用率、クエリ実行時間など、クエリのランタイム統計に関する情報が含まれます。
 - [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): CPU、ログ、ロック状態など、クエリが何を待機したかを示すクエリ待機統計に関する情報が含まれます。
 - [Errors](sql-database-metrics-diag-logging.md#errors-dataset): このデータベースで発生した SQL エラーに関する情報が含まれます。
@@ -243,7 +243,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-たとえば、1 分メトリックの BLOB 名は次のようになります。
+たとえば、すべてのメトリックの BLOB 名は次のようになります。
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -261,7 +261,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
-### <a name="1-minute-metrics"></a>1 分メトリック
+### <a name="all-metrics"></a>すべてのメトリック
 
 |**リソース**|**メトリック**|
 |---|---|
@@ -271,7 +271,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-runtime-statistics"></a>クエリ ストアのランタイム統計
 
-|プロパティ|Description|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -322,7 +322,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-wait-statistics"></a>クエリ ストアの待機統計
 
-|プロパティ|Description|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -360,7 +360,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="errors-dataset"></a>エラー データセット
 
-|プロパティ|Description|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -389,7 +389,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="database-wait-statistics-dataset"></a>データベースの待機統計データセット
 
-|プロパティ|Description|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -418,7 +418,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="time-outs-dataset"></a>タイムアウトのデータセット
 
-|プロパティ|Description|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
@@ -441,7 +441,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="blockings-dataset"></a>ブロックしているデータセット
 
-|プロパティ|Description|
+|プロパティ|説明|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|

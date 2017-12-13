@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: f2e7b5b96b70333ae4ee92d24c354960008c7f00
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 17967131853d4334ae2c0ba3c0aa01089b7f3b61
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -68,7 +68,7 @@ Azure Stack でワークロードをデプロイできるのは 1 つの障害�
 
 スクリプトを Azure Stack Development Kit ホストで実行し、PowerShell が azurestack\CloudAdmin として実行されていることを確認します。
 
-1. azurestack\CloudAdmin として実行されている PowerShell セッションで、ヘルパー スクリプトを展開したフォルダーから Create-AppServiceCerts.ps1 スクリプトを実行します。 このスクリプトでは、App Service で必要となる証明書作成スクリプトと同じフォルダーに 4 つの証明書が作成されます。
+1. azurestack\AzureStackAdmin として実行されている PowerShell セッションで、ヘルパー スクリプトを展開したフォルダーから Create-AppServiceCerts.ps1 スクリプトを実行します。 このスクリプトでは、App Service で必要となる証明書作成スクリプトと同じフォルダーに 4 つの証明書が作成されます。
 2. .pfx ファイルを保護するためのパスワードを入力し、そのパスワードを書き留めておきます。 それを App Service on Azure Stack インストーラーに入力する必要があります。
 
 #### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 のパラメーター
@@ -120,11 +120,11 @@ ID アプリケーション用の証明書は以下が可能です。
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-#### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>Azure Stack Azure Resource Manager のルート証明書を展開する
+### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>Azure Stack Azure Resource Manager のルート証明書を展開する
 
 azurestack\CloudAdmin として実行されている PowerShell セッションで、ヘルパー スクリプトを展開したフォルダーから Get-AzureStackRootCert.ps1 スクリプトを実行します。 このスクリプトでは、App Service で必要となる証明書作成スクリプトと同じフォルダーに 4 つの証明書が作成されます。
 
-| Get-AzureStackRootCert.ps1 パラメーター | 必須/省略可能 | 既定値 | Description |
+| Get-AzureStackRootCert.ps1 パラメーター | 必須/省略可能 | 既定値 | 説明 |
 | --- | --- | --- | --- |
 | PrivelegedEndpoint | 必須 | AzS-ERCS01 | 特権エンドポイント。 |
 | CloudAdminCredential | 必須 | AzureStack\CloudAdmin | Azure Stack Cloud Admin ドメイン アカウントの資格情報 |
@@ -134,12 +134,10 @@ azurestack\CloudAdmin として実行されている PowerShell セッション�
 
 Azure App Service では、ファイル サーバーを使用する必要があります。 運用環境の場合、ファイル サーバーは高可用性サーバーとしてエラーを処理できるように構成する必要があります。
 
-Azure Stack Development Kit のデプロイのみで使用する場合、この例の Azure Resource Manager Deployment Template (https://aka.ms/appsvconmasdkfstemplate) を使用して、構成済みの単一ノードのファイル サーバーをデプロイできます。
+Azure Stack Development Kit のデプロイのみで使用する場合、この例の Azure Resource Manager Deployment Template (https://aka.ms/appsvconmasdkfstemplate) を使用して、構成済みの単一ノードのファイル サーバーをデプロイできます。 この単一ノードのファイル サーバーは、ワークグループ内に存在します。
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>Active Directory でグループとアカウントをプロビジョニングする
 
->[!NOTE]
-> 管理者コマンド プロンプト セッションで、ファイル サーバーを構成するとき、次のコマンドを実行します。  **PowerShell は使用しないでください。**
 
 1. 次の Active Directory グローバル セキュリティ グループを作成します。
     - FileShareOwners
@@ -159,7 +157,10 @@ Azure Stack Development Kit のデプロイのみで使用する場合、この�
 
 ### <a name="provision-groups-and-accounts-in-a-workgroup"></a>ワークグループでグループとアカウントをプロビジョニングする
 
-ワークグループで、net および WMIC コマンドを実行してグループとアカウントをプロビジョニングします。
+>[!NOTE]
+> 管理者コマンド プロンプト セッションで、ファイル サーバーを構成するとき、次のコマンドを実行します。  **PowerShell は使用しないでください。**
+
+上記の Azure Resource Manager テンプレートを使用する時点で、ユーザーは既に作成済みです。
 
 1. 次のコマンドを実行して、FileShareOwner アカウントと FileShareUser アカウントを作成します。 <password> を独自の値に置き換えます。
 ``` DOS
@@ -185,11 +186,11 @@ net localgroup FileShareOwners FileShareOwner /add
 
 #### <a name="provision-the-content-share-on-a-single-file-server-ad-or-workgroup"></a>1 つのファイル サーバー (AD または ワークグループ) でコンテンツ共有をプロビジョニングする
 
-1 つのファイル サーバーで、管理者特権のコマンド プロンプトで次のコマンドを実行します。 < C:\WebSites > の値を、使用する環境の対応するパスと置き換えます。
+1 つのファイル サーバーで、管理者特権のコマンド プロンプトで次のコマンドを実行します。 'C:\WebSites' の値を、使用する環境の対応するパスで置き換えます。
 
 ```DOS
 set WEBSITES_SHARE=WebSites
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 md %WEBSITES_FOLDER%
 net share %WEBSITES_SHARE% /delete
 net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
@@ -223,7 +224,7 @@ net localgroup Administrators FileShareOwners /add
 #### <a name="active-directory"></a>Active Directory
 ```DOS
 set DOMAIN=<DOMAIN>
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
 icacls %WEBSITES_FOLDER% /grant %DOMAIN%\FileShareOwners:(OI)(CI)(M)
@@ -234,7 +235,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 #### <a name="workgroup"></a>ワークグループ
 ```DOS
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
 icacls %WEBSITES_FOLDER% /grant FileShareOwners:(OI)(CI)(M)
@@ -251,7 +252,7 @@ Azure Stack Development Kit で使用する場合は、SQL Express 2014 SP2 以�
 
 運用と高可用性のためには、SQL 2014 SP2 以降の完全バージョンを使用し、混合モード認証を有効にして、[高可用性構成](https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)でデプロイを行う必要があります。
 
-Azure App Service on Azure Stack SQL Server は、すべての App Service ロールからアクセスできる必要があります。 SQL Server は、Azure Stack の既定のプロバイダー サブスクリプション内でデプロイできます。 あるいは、組織内の既存のインフラストラクチャーを利用できます (Azure Stack に接続されている場合)。
+Azure App Service on Azure Stack SQL Server は、すべての App Service ロールからアクセスできる必要があります。 SQL Server は、Azure Stack の既定のプロバイダー サブスクリプション内でデプロイできます。 あるいは、組織内の既存のインフラストラクチャーを利用できます (Azure Stack に接続されている場合)。 Azure Marketplace イメージを使用している場合は、適宜ファイアウォールを構成してください。 
 
 どの SQL Server ロールの場合も、既定のインスタンスまたは名前付きインスタンスを使用できます。 ただし、名前付きインスタンスを使用する場合は、手動で SQL Browser サービスを開始してポート 1434 を開いてください。
 
@@ -269,12 +270,12 @@ Azure AD サービス プリンシパルで以下をサポートするように�
 
 次の手順に従います。
 
-1. azurestack\cloudadmin として PowerShell インスタンスを開きます。
+1. azurestack\AzureStackAdmin として PowerShell インスタンスを開きます。
 2. [前提条件の手順](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)でダウンロードして展開したスクリプトの場所に移動します。
 3. [Azure Stack PowerShell をインストールします](azure-stack-powershell-install.md)。
 4. **Create-AADIdentityApp.ps1** スクリプトを実行します。 Azure AD テナント ID の指定を求められたら、Azure Stack のデプロイに使っている Azure AD テナント ID (例: myazurestack.onmicrosoft.com) を入力します。
 5. **[資格情報]** ウィンドウで、Azure AD サービスの管理者アカウントとパスワードを入力します。 **[OK]**をクリックします。
-6. [先ほど作った証明書](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、sso.appservice.local.azurestack.external.pfx です。
+6. [先ほど作った証明書](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 7. このスクリプトにより、テナント Azure AD で新しいアプリケーションが作成されます。 PowerShell の出力で返されるアプリケーション ID を書き留めておきます。 インストール時にこの情報が必要になります。
 8. 新しいブラウザー ウィンドウを開き、**Azure Active Directory サービス管理者**として Azure Portal (portal.azure.com) にサインインします。
 9. Azure AD リソース プロバイダーを開きます。
@@ -312,7 +313,7 @@ AD FS によって保護されている Azure Stack 環境の場合、 AD FS サ
 5.  **[資格情報]** ウィンドウで、AD FS クラウドの管理者アカウントとパスワードを入力します。 **[OK]**をクリックします。
 6.  [先ほど作った証明書](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、sso.appservice.local.azurestack.external.pfx です。
 
-| Create-ADFSIdentityApp.ps1 パラメーター | 必須/省略可能 | 既定値 | Description |
+| Create-ADFSIdentityApp.ps1 パラメーター | 必須/省略可能 | 既定値 | 説明 |
 | --- | --- | --- | --- |
 | AdminArmEndpoint | 必須 | Null | 管理者の Azure Resource Manager エンドポイント。 例: adminmanagement.local.azurestack.external。 |
 | PrivilegedEndpoint | 必須 | Null | 特権エンドポイント。 AzS-ERCS01 など。 |

@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: jonbeck
-ms.openlocfilehash: 63ea13decd7553b2a14507dd78aadb28b56c203c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c4bba2365dd314fd6b72910aaf53f1bdbc23912
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="b-series-burstable-virtual-machine-sizes-preview"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ (プレビュー)
+# <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
 [!INCLUDE [virtual-machines-common-b-series-burstable](../../../includes/virtual-machines-common-b-series-burstable.md)]
 

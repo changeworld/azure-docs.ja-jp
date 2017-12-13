@@ -1,22 +1,22 @@
 ---
-title: "Azure IoT Hub Device Provisioning Service (プレビュー) の概要 | Microsoft Docs"
+title: "Azure IoT Hub Device Provisioning Service の概要 | Microsoft Docs"
 description: "Device Provisioning Service と IoT Hub を使用した Azure へのデバイス プロビジョニングについて説明します"
 services: iot-dps
 keywords: 
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a9df3f4e27e0d6e11b9d85a44467f3c62f453121
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 021ff1299321ae1aece3a77fc61129517c85697b
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service-preview"></a>Azure IoT Hub Device Provisioning Service (プレビュー) を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。
@@ -59,7 +59,7 @@ Device Provisioning Service が関係するデバイスのデプロイ プロセ
 
 Device Provisioning Service によって製造プロセスに新しい手順が加わることはありませんが、初期ソフトウェアと (理想的には) HSM をデバイスにインストールする既存の手順に関係しています。 この手順ではデバイス ID は作成されず、プロビジョニング サービス情報がデバイスにプログラミングされるだけです。これは、デバイスの電源を入れたときに、プロビジョニング サービスを呼び出して接続情報や IoT ソリューションの割り当てを取得するための処理です。
 
-また、この手順では、製造元がデバイスのデプロイ担当者やオペレーターに識別キー情報を提供します。 これは、デバイスのデプロイ担当者やオペレーターが指定したルート CA から生成された X.509 証明書をすべてのデバイスにインストールされていることを確認する処理や、各 TPM デバイスから TPM 保証キーの公開部分を抽出する処理と同程度の単純な処理である可能性があります。 現在、多くのシリコン製造元がこれらのサービスを提供しています。
+また、この手順では、製造元がデバイスのデプロイ担当者やオペレーターに識別キー情報を提供します。 これは、デバイスのデプロイ担当者やオペレーターが指定した署名証明書から生成された X.509 証明書をすべてのデバイスにインストールされていることを確認する処理や、各 TPM デバイスから TPM 保証キーの公開部分を抽出する処理と同程度の単純な処理である可能性があります。 現在、多くのシリコン製造元がこれらのサービスを提供しています。
 
 ### <a name="cloud-setup-step"></a>クラウドのセットアップ手順
 これは、適切な自動プロビジョニングのためにクラウドを構成する手順です。 通常、クラウドのセットアップ手順には 2 種類のユーザーが関係します。初期段階でデバイスをどのようにセットアップする必要があるかを把握しているユーザー (デバイス オペレーター) と、デバイスを IoT ハブ間で分割する方法を把握しているユーザー (ソリューション オペレーター) です。
@@ -84,19 +84,29 @@ Device Provisioning Service には、デバイスのプロビジョニングに�
 * **複数の割り当てポリシー**。実際のシナリオに合わせて Device Provisioning Service がデバイスを IoT ハブに割り当てる方法を制御できます。
 * **監視および診断ログ**。すべての機能が正常に動作していることを確認できます。
 * **マルチハブのサポート**。Device Provisioning Service でデバイスを複数の IoT ハブに割り当てることができます。 Device Provisioning Service は、複数の Azure サブスクリプションにわたってハブと対話できます。
+* **リージョン間のサポート**。Device Provisioning Service でデバイスを他のリージョンの IoT ハブに割り当てることができます。
 
 デバイスのプロビジョニングに関係する概念と機能の詳細については、[デバイスの概念](concepts-device.md)、[サービスの概念](concepts-service.md)、[セキュリティの概念](concepts-security.md)に関する記事を参照してください。
 
 ## <a name="cross-platform-support"></a>クロスプラットフォームのサポート
-Device Provisioning Service は、他のすべての Azure IoT サービスと同様に、多様なオペレーティング システムとクロスプラットフォームで動作します。 パブリック プレビューではサポートされる言語とプロトコルが制限されていますが、Device Provisioning Service の一般公開時には多数機能を利用できるようになる予定です。 パブリック プレビューの Device Provisioning Service では、デバイス操作とサービス操作の両方について HTTPS 接続のみがサポートされています。 デバイス SDK は C で、サービス SDK は C# で作成されています。
+Device Provisioning Service は、他のすべての Azure IoT サービスと同様に、多様なオペレーティング システムとクロスプラットフォームで動作します。 Azure ではさまざまな[言語](https://github.com/Azure/azure-iot-sdks)でオープン ソース SDK が提供されており、容易にデバイスを接続して、サービスを管理できます。 Device Provisioning Service は、次のプロトコルを使ったデバイスの接続をサポートしています。
+
+* HTTPS
+* AMQP
+* WebSocket 経由の AMQP
+* MQTT
+* WebSocket 経由の MQTT
+
+Device Provisioning Service は、サービス操作の HTTPS 接続のみをサポートしています。
 
 ## <a name="regions"></a>地域
-Device Provisioning Service のパブリック プレビューは、米国東部、西ヨーロッパ、東南アジアでご利用いただけます。 すべてのサービスについて既存のリージョンと新しく発表されたリージョンの一覧を最新の状態に維持しています。
+Device Provisioning Service は、多くのリージョンで利用可能です。 すべてのサービスの既存リージョンと新規発表リージョンの一覧は、「[Azure リージョン](https://azure.microsoft.com/regions/)」で最新の状態に維持されています。 Device Provisioning Service を利用できるリージョンについては、「[Azure の状態](https://azure.microsoft.com/status/)」ページをご覧ください。
 
-* [Azure リージョン](https://azure.microsoft.com/regions/)
+> [!NOTE]
+> Device Provisioning Service はグローバルであり、場所にバインドされてはいません。 ただし、Device Provisioning Service プロファイルに関連付けられたメタデータが存在するリージョンを指定する必要があります。
 
 ## <a name="availability"></a>可用性
-パブリック プレビュー期間中は、ベストエフォートのサービス可用性を維持しています。 パブリック プレビュー期間中のサービス レベル アグリーメントはありません。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/) では、全体としての Azure の可用性の確保について説明します。
+Device Provisioning Service では、99.9% のサービス レベル アグリーメントが維持されています。[SLA についてはこちら](https://azure.microsoft.com/support/legal/sla/iot-hub/)をご覧ください。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/) では、全体としての Azure の可用性の確保について説明します。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 各 Azure サブスクリプションには既定のクォータ制限が設けられており、IoT ソリューションの範囲に影響する可能性があります。 サブスクリプションごとの現在の上限は、サブスクリプションあたり 10 個の Device Provisioning Service です。

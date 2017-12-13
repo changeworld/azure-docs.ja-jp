@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: genli
-ms.openlocfilehash: 7b435b6904b05228a63e3ed3a9fed78747b843c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d86f3ec043c504c9d79b18f1f0b4c9cf0adb115b
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題についてよくあるご質問 (FAQ)
 
@@ -48,8 +48,8 @@ Azure では、分散型サービス拒否 (DDoS) 攻撃からプラットフォ
 
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>自分のクラウド サービス インスタンスに RDP 接続しようとすると、「ユーザー アカウントの有効期限が切れました」というメッセージを受け取ります。
 RDP の設定で構成されている有効期限の日付を無視すると、「このユーザー アカウントは有効期限が切れました」のエラー メッセージを受け取ることがあります。 ポータルから有効期限の日付を変更するには、次の手順を実行します。
-1. Azure の管理コンソール (https://manage.windowsazure.com) にログインし、お使いのクラウド サービスに移動して、**[構成]** タブを選択します。
-2. **[リモート]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にログインし、お使いのクラウド サービスに移動して、**[リモート デスクトップ]** タブを選びます。
+2. **[運用]** または **[ステージング]** の展開スロットを選びます。
 3. [有効期限] の日付を変更し、構成を保存します。
 
 これで、お使いのマシンに RDP 接続できるようになるはずです。

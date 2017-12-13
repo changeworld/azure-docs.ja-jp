@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 667ff16dc7608dab2a5b8b1fd7df715da4620ca1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 68d519cd36d41728f57419cd6cecd2a79d65a4af
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要
-## <a name="overview"></a>Overview
-Azure Media Services では、Widevine ライセンスを構成および要求できるようになりました。 エンド ユーザーのプレーヤーが Widevine の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
+Azure Media Services では、Widevine ライセンスを構成および要求できます。 エンド ユーザーのプレーヤーが Widevine の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
 
 Widevine ライセンス要求の形式は、JSON メッセージです。  
 
@@ -197,5 +196,5 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>関連項目
-[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
+[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)
 

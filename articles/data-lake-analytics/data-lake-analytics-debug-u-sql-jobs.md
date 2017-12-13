@@ -1,9 +1,9 @@
 ---
-title: "U-SQL ジョブのデバッグ | Microsoft Docs"
-description: "Visual Studio を使用して、U-SQL の失敗した頂点をデバッグする方法について説明します。"
+title: "失敗した Azure Data Lake U-SQL ジョブについてユーザー定義の C# コードをデバッグする | Microsoft Docs"
+description: "Azure Data Lake Tools for Visual Studio を使用して、U-SQL の失敗した頂点をデバッグする方法について説明します。"
 services: data-lake-analytics
 documentationcenter: 
-author: saveenr
+author: yanancai
 manager: jhubbard
 editor: cgronlun
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
@@ -12,27 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
-ms.author: saveenr
-ms.openlocfilehash: 2a77c72d3062272305208934d6406d040266c753
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/31/2017
+ms.author: yanacai
+ms.openlocfilehash: 8b16fda041663160c62710cabbe0cd2bd4a83d1e
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
 
-U-SQL は C# を使用した拡張モデルを提供しているため、独自のコードを記述してカスタムの抽出やレジューサなどの機能を追加できます。 詳細については、「[U-SQL プログラミング ガイド](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf)」をご覧ください。 実際にはどのコードもデバッグが必要ですが、大規模なデータ システムでは、ログ ファイルのように限られたランタイムのデバッグ情報しか提供されない可能性があります。
+U-SQL は C# を使用した機能拡張モデルを提供しています。 U-SQL スクリプトでは、C# 関数を簡単に呼び出して、SQL のような宣言型言語がサポートしていない分析関数を実行できます。 U-SQL 機能拡張の詳細については、「[U-SQL プログラミング ガイド](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf)」を参照してください。 
 
-Azure Data Lake Tools for Visual Studio が提供する "**失敗した頂点のデバッグ**" と呼ばれる機能を使用すると、失敗したジョブをクラウドからローカル コンピューターに複製して、デバッグできます。 ローカルのクローンは、入力データとユーザー コードを含むクラウド環境全体をキャプチャします。
+実際にはすべてのコードにデバッグが必要ですが、限られたログ ファイルを使用して、クラウド上にカスタム コードを持つ分散ジョブをデバッグするのは困難です。 [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) には**失敗した頂点のデバッグ**と呼ばれる機能が用意されており、カスタム コードで発生したエラーをより簡単にデバッグするのに役立ちます。 U-SQL ジョブが失敗すると、サービスではエラーの状態が維持されます。このツールは、クラウドのエラー環境をローカル マシンにダウンロードしてデバッグするうえで役立ちます。 ローカルのダウンロードには、入力データとユーザー コードを含むクラウド環境全体がキャプチャされています。
 
 次のビデオでは、Azure Data Lake Tools for Visual Studio の失敗した頂点のデバッグ機能をデモンストレーションします。
 
-> [!VIDEO https://e0d1.wpc.azureedge.net/80E0D1/OfficeMixProdMediaBlobStorage/asset-d3aeab42-6149-4ecc-b044-aa624901ab32/b0fc0373c8f94f1bb8cd39da1310adb8.mp4?sv=2012-02-12&sr=c&si=a91fad76-cfdd-4513-9668-483de39e739c&sig=K%2FR%2FdnIi9S6P%2FBlB3iLAEV5pYu6OJFBDlQy%2FQtZ7E7M%3D&se=2116-07-19T09:27:30Z&rscd=attachment%3B%20filename%3DDebugyourcustomcodeinUSQLADLA.mp4]
+> [!VIDEO https://www.youtube.com/embed/3enkNvprfm4]
 >
 
-> [!NOTE]
-> Visual Studio では、[Microsoft Visual C++ 2015 再頒布可能パッケージ Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) と [Windows ユニバーサル C ランタイム](https://www.microsoft.com/download/details.aspx?id=50410)の 2 つの更新プログラムが必要です (インストールが済んでいない場合)。
+> [!IMPORTANT]
+> Visual Studio でこの機能を使用するには、[Microsoft Visual C++ 2015 再頒布可能パッケージ Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) と [Windows ユニバーサル C ランタイム](https://www.microsoft.com/download/details.aspx?id=50410)の 2 つの更新プログラムが必要です。
+>
 
 ## <a name="download-failed-vertex-to-local-machine"></a>失敗した頂点をローカル コンピューターにダウンロードする
 
@@ -44,80 +45,73 @@ Azure Data Lake Tools for Visual Studio で失敗したジョブを開くと、�
 
 ![Azure Data Lake Analytics の U-SQL デバッグ Visual Studio 頂点のダウンロード](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
-ジョブには、コードビハインドのソース ファイルや登録されたアセンブリが含まれる場合があり、これら 2 つの種類では、デバッグのシナリオが異なります。
-
-- [コードビハインドで失敗したジョブをデバッグする](#debug-job-failed-with-code-behind)
-- [アセンブリで失敗したジョブをデバッグする](#debug-job-failed-with-assemblies)
-
-
-## <a name="debug-job-failed-with-code-behind"></a>コードビハインドで失敗したジョブをデバッグする
-
-U-SQL ジョブが失敗し、ジョブにユーザー コード (U-SQL プロジェクトで通常 `Script.usql.cs` という名前) が含まれる場合、このソース コードはデバッグ ソリューションにインポートされます。  そこから Visual Studio のデバッグ ツール (ウォッチ、変数など) を使用して、問題のトラブルシューティングを行うことができます。
+## <a name="configure-the-debugging-environment"></a>デバッグ環境を構成する
 
 > [!NOTE]
 > デバッグする前に、[例外設定] ウィンドウ (**Ctrl + Alt + E**) で **[Common Language Runtime Exceptions]\(共通言語ランタイム例外\)** をチェックしてください。
 
 ![Azure Data Lake Analytics の U-SQL デバッグ Visual Studio 設定](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
 
-1. **F5** キーを押してコードビハインド コードを実行します。 例外によって停止されるまで実行されます。
+起動した新しい Visual Studio インスタンスでは、ユーザー定義の C# ソース コードが見つかる場合もあれば、見つからない場合もあります。
 
-2. `ADLTool_Codebehind.usql.cs` ファイルを開いてブレークポイントを設定してから、**F5** キーを押してステップ バイ ステップでコードをデバッグします。
+1. [ソリューションでソース コードを見つけることができる](#source-code-is-included-in-debugging-solution)
+
+2. [ソリューションでソース コードを見つけることができない](#source-code-is-not-included-in-debugging-solution)
+
+### <a name="source-code-is-included-in-debugging-solution"></a>ソース コードがデバッグ ソリューションに含まれている
+
+C# ソース コードがキャプチャされるケースは 2 つあります。
+
+1. ユーザー コードは、分離コード ファイルで定義されています (通常、U-SQL プロジェクトでは `Script.usql.cs` という名前です)。
+
+2. ユーザー コードは、U-SQL アプリケーションの C# クラス ライブラリ プロジェクトで定義され、アセンブリとして**デバッグ情報**に登録されます。
+
+ソース コードがソリューションにインポートされている場合、Visual Studio のデバッグ ツール (ウォッチ、変数など) を使用して、問題のトラブルシューティングを行うことができます。
+
+1. **F5** キーを押してデバッグを開始します。 コードは、例外によって停止されるまで実行されます。
+
+2. ソース コード ファイルを開いて、ブレークポイントを設定してから、**F5** キーを押して、ステップ バイ ステップでコードをデバッグします。
 
     ![Azure Data Lake Analytics U-SQL デバッグ例外](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
 
-## <a name="debug-job-failed-with-assemblies"></a>アセンブリで失敗したジョブをデバッグする
+### <a name="source-code-is-not-included-in-debugging-solution"></a>ソース コードがデバッグ ソリューションに含まれていない
 
-登録されたアセンブリを U-SQL スクリプトで使用すると、ソース コードはシステムで自動的に取得されません。 この場合は、ソリューションにアセンブリのソース コード ファイルを手動で追加します。
+ユーザー コードが分離コード ファイルに含まれない場合、またはアセンブリを**デバッグ情報**に登録しなかった場合は、ソース コードが、デバッグ ソリューションに自動的に追加されることはありません。 この場合は、ソース コードを追加する手順が別に必要になります。
 
-### <a name="configure-the-solution"></a>ソリューションの構成
-
-1. **[Solution ’VertexDebug’]\(ソリューション 'VertexDebug'\)(右クリック) > [追加] > [既存のプロジェクト…]** を選択してアセンブリのソース コードを検索し、プロジェクトをデバッグ ソリューションに追加します。
+1. **[ソリューション 'VertexDebug'] (右クリック) > [追加] > [既存のプロジェクト]** の順に選択し、アセンブリのソース コードを検索し、プロジェクトをデバッグ ソリューションに追加します。
 
     ![Azure Data Lake Analytics U-SQL デバッグ追加プロジェクト](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-add-project-to-debug-solution.png)
 
-2. ソリューションで **[LocalVertexHost](右クリック) > [プロパティ]** を選択し、**[作業ディレクトリ]** パスをコピーします。
+2. **FailedVertexDebugHost** プロジェクトのプロジェクト フォルダー パスを取得します。 
 
-3. **アセンブリのソース コード プロジェクト (右クリック) > [プロパティ]** で、左側にある **[ビルド]** を選択し、コピーしたパスを **[出力] > [出力パス]** に貼り付けます。
+3. **追加されたアセンブリのソース コード プロジェクト (右クリック) > [プロパティ]** で、左側にある **[ビルド]** タブを選択し、コピーしたパス (末尾は \bin\debug) を **[出力] > [出力パス]** に貼り付けます。 最終的な出力パスは、"<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\" のようになります。
 
     ![Azure Data Lake Analytics U-SQL デバッグ PDB パス設定](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
-4. **Ctrl + Alt + E** キーを押して、[例外設定] ウィンドウで**[Common Language Runtime Exceptions]\(共通言語ランタイム例外\)** をチェックします。
-
-### <a name="start-debug"></a>デバッグの開始
-
-1. **アセンブリのソース コード プロジェクト (右クリック) > [再構築]** を選択して PDB ファイルを `LocalVertexHost` 作業ディレクトリに出力します。
-
-2. **F5** キーを押すと、プロジェクトが、例外によって停止されるまで実行されます。 次の警告メッセージが表示される場合がありますが、このメッセージは無視しても安全性に問題はありません。 デバッグ画面が表示されるまで最大 1 分間かかることがあります。
-
-    ![Azure Data Lake Analytics の U-SQL デバッグ Visual Studio 警告](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-visual-studio-u-sql-debug-warning.png)
-
-3. ソース コードを開いてブレークポイントを設定してから、**F5** キーを押してステップ バイ ステップでコードをデバッグします。
-
-Visual Studio のデバッグ ツール (ウォッチ、変数など) を使用して、問題をトラブルシューティングすることもできます。
+この設定の後、**F5** キーとブレークポイントを使用してデバッグを開始します。 Visual Studio のデバッグ ツール (ウォッチ、変数など) を使用して、問題をトラブルシューティングすることもできます。
 
 > [!NOTE]
 > コードを変更して更新された PDB ファイルを生成するたびに、アセンブリのソース コード プロジェクトをリビルドします。
 
+## <a name="resubmit-the-job"></a>ジョブを再送信する
+
 デバッグが終了し、プロジェクトが正常に完了すると、出力ウィンドウに次のメッセージが表示されます。
 
-```
-The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
-```
+    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
 
 ![Azure Data Lake Analytics の U-SQL デバッグ成功](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
-## <a name="resubmit-the-job"></a>ジョブを再送信する
+失敗したジョブを再送信するには:
 
-デバッグが完了したら、失敗したジョブを再送信します。
+1. 分離コード ソリューションのジョブの場合は、C# コードを、分離コードのソース ファイル (通常は `Script.usql.cs`) に コピーします。
 
-1. コードビハインド ソリューションのジョブの場合は、コードビハインドのソース ファイル (通常は `Script.usql.cs`) に C# コードをコピーします。
-2. アセンブリのジョブの場合は、次の手順で更新された .dll アセンブリを ADLA データベースに登録します。
-    1. サーバー エクスプローラーまたは Cloud Explorer から、**[ADLA アカウント] > [データベース]** ノードを展開します。
-    2. **[アセンブリ]** を右クリックして新しい .dll アセンブリを ADLA データベース: ![Azure Data Lake Analytics U-SQL デバッグ登録アセンブリ](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-register-assembly.png)に登録します。
-3. ジョブを再送信します。
+2. アセンブリのジョブの場合は、デバッグ ソリューションで、アセンブリ ソース コード プロジェクトを右クリックし、更新された .dll アセンブリを Azure Data Lake カタログに登録します。
+
+3. U-SQL ジョブを再送信します。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 - [Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-- [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+- [ローカル実行と Azure Data Lake U-SQL SDK を使用した U-SQL ジョブのテストおよびデバッグ](data-lake-analytics-data-lake-tools-local-run.md)
+- [異常な定期的ジョブをトラブルシューティングする方法](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

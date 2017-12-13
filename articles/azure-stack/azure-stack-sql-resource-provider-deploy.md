@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 11/29/2017
 ms.author: JeffGo
-ms.openlocfilehash: 31ffd31b5d540617c4a7a1224e6cf0ee656c9678
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 6c74071cedb1da9a59f47b10eaf538d24cb9ab01
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 
@@ -49,10 +49,17 @@ SQL Server リソースプロバイダー アダプターを使用して、SQL �
 
     b. マルチノードのシステムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。
 
-3. [SQL リソースプロバイダー バイナリ ファイルをダウンロード](https://aka.ms/azurestacksqlrp)し、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。
+3. SQL リソース プロバイダー バイナリをダウンロードし、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。
 
-    > [!NOTE]
-    > Azure Stack ビルド 20170928.3 以前で実行している場合、[このバージョンをダウンロード](https://aka.ms/azurestacksqlrp1709)します。
+    >[!NOTE] 
+    > リソース プロバイダーのビルドは、Azure Stack のビルドに対応します。 実行されている Azure Stack のバージョンに適合する正しいバイナリをダウンロードする必要があります。
+
+    | Azure Stack ビルド | SQL RP インストーラー |
+    | --- | --- |
+    | 1.0.171122.1 | [SQL RP バージョン 1.1.10.0](https://aka.ms/azurestacksqlrp) |
+    | 1.0.171028.1 | [SQL RP バージョン 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
+    | 1.0.170928.3 | [SQL RP バージョン 1.1.3.0](https://aka.ms/azurestacksqlrp1709) |
+   
 
 4. Azure Stack のルート証明書は、特権エンドポイントから取得されます。 ASDK には、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 
@@ -102,7 +109,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set the credentials for the Resource Provider VM
+# Set credentials for the new Resource Provider VM
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 

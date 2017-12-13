@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: v-donglo
-ms.openlocfilehash: 40079da0e04520477771a11a1e4111768cf18280
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 4f117e7099ffd0a8f85aa96f0fd075d4bcbeb6b4
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>既存の予測 Web サービスを再トレーニングする
 このドキュメントでは、次のシナリオの再トレーニング プロセスについて説明します。
@@ -86,20 +86,19 @@ ms.lasthandoff: 11/07/2017
 ### <a name="update-the-azure-storage-information"></a>Azure Storage 情報を更新する
 BES サンプル コードは、ファイルをローカル ドライブ ("C:\temp\CensusIpnput.csv" など) から Azure Storage にアップロードして処理し、その結果を Azure Storage に書き込みます。  
 
-Azure Storage 情報を更新するには、ストレージ アカウントのストレージ アカウント名、キー、およびコンテナー情報を Azure クラシック ポータルから取得して、コード内の対応する値を更新する必要があります。
 実験を実行すると、結果として得られるワークフローは次のようになります。
 
 ![実行後のワークフロー][4]
 
-1. Azure クラシック ポータルにサインインします。
-2. 左側のナビゲーションで **[ストレージ]**をクリックします。
+1. Azure ポータルにサインインします。
+2. 左側のナビゲーションで **[その他のサービス]** をクリックし、**[ストレージ アカウント]** を探して選択します。
 3. ストレージ アカウントの一覧から、再トレーニング済みのモデルを格納するいずれかのアカウントを選択します。
-4. ページの下部にある **[アクセス キーの管理]**をクリックします。
-5. **プライマリ アクセス キー** をコピーして保存し、ダイアログを閉じます。
-6. ページ上部の **[コンテナー]**をクリックします。
+4. 左側のナビゲーションで **[アクセス キー]** をクリックします。
+5. **プライマリ アクセス キー**をコピーして保存します。
+6. 左側のナビゲーションで **[コンテナー]** をクリックします。
 7. 既存のコンテナーを選択するか、コンテナーを新規作成して、名前を保存します。
 
-*StorageAccountName*、*StorageAccountKey*、および *StorageContainerName* 宣言を見つけて、従来のポータルから保存した値に更新します。
+*StorageAccountName*、*StorageAccountKey*、および *StorageContainerName* 宣言を見つけて、ポータルから保存した値を更新します。
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key

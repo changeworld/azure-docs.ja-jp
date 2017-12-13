@@ -1,27 +1,19 @@
 ---
-title: "Azure Kubernetes クラスターを CoScale を使用して監視する | Microsoft Docs"
+title: "Azure Kubernetes クラスターを CoScale を使用して監視する"
 description: "Azure Container Service の Kubernetes クラスターを CoScale を使用して監視します"
 services: container-service
-documentationcenter: 
 author: fryckbos
-manager: 
-editor: 
-tags: acs, azure-container-service, kubernetes
-keywords: 
-ms.assetid: 
+manager: timlt
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: ec73646f7b49669da82d9cda2a1348d447942619
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 2d6757397d76b6ca87a45254cb31f34d34a42541
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>Azure Kubernetes クラスターを CoScale を使用して監視する
 

@@ -3,8 +3,8 @@ title: "SQL Data Warehouse でのテーブルのインデックス作成 | Micro
 description: "Azure SQL Data Warehouse でのテーブルのインデックス作成の概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
-manager: barbkess
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: 3e617674-7b62-43ab-9ca2-3f40c41d5a88
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 07/12/2016
-ms.author: shigu;barbkess
-ms.openlocfilehash: b205ed47833f675286539705e2754d2ea3821b8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: 672270536a7405e617edbcf5ec0e6eff68be7fde
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのインデックス作成
 > [!div class="op_single_selector"]
@@ -191,7 +191,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 これらの根本原因により、列ストア インデックスの列グループあたりの行が最適な 100 万行より大幅に少なくなる可能性があります。  また、行が圧縮行グループではなくデルタ行グループに移動される可能性もあります。 
 
 ### <a name="memory-pressure-when-index-was-built"></a>インデックスが構築されたときのメモリ不足
-圧縮行グループあたりの行の数は、行の幅と行グループの処理に使用可能なメモリの量に直接関連します。  行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。  そのため、列ストア インデックス テーブルへの書き込みセッションに、できるだけ多くメモリへのアクセスを与えることをお勧めします。  メモリと同時実行の間にトレードオフがあるため、適切なメモリの割り当てに関するガイドラインは、テーブルの各行のデータ、システムに割り当てた DWU の量、テーブルにデータを書き込むセッションに提供する同時実行スロットの量によって異なります。  ベスト プラクティスとして、DW300 かそれ未満を使用している場合は xlargerc、DW400 から DW600 を使用している場合は largerc、DW1000 かそれ以上を使用している場合は mediumrc で始めることをお勧めします。
+圧縮行グループあたりの行の数は、行の幅と行グループの処理に使用可能なメモリの量に直接関連します。  行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。  そのため、列ストア インデックス テーブルへの書き込みセッションに、できるだけ多くメモリへのアクセスを与えることをお勧めします。  メモリと同時実行の間にトレードオフがあるため、適切なメモリの割り当てに関するガイドラインは、テーブルの各行のデータ、システムに割り当てられた Data Warehouse ユニット、テーブルにデータを書き込むセッションに提供する同時実行スロットの数によって異なります。  ベスト プラクティスとして、DW300 かそれ未満を使用している場合は xlargerc、DW400 から DW600 を使用している場合は largerc、DW1000 かそれ以上を使用している場合は mediumrc で始めることをお勧めします。
 
 ### <a name="high-volume-of-dml-operations"></a>大量の DML 操作
 行を更新および削除する大量の DML 操作では、列ストアの効率性が低下する可能性があります。 これは、行グループ内の多数の行が変更される場合に特に当てはまります。
@@ -247,7 +247,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-SQL Data Warehouse でのインデックスの再構築は、オフライン操作です。  インデックスの再構築の詳細については、「[列ストア インデックスの最適化][Columnstore Indexes Defragmentation]」の ALTER INDEX REBUILD に関するセクションと、構文トピック「[ALTER INDEX][ALTER INDEX]」を参照してください。
+SQL Data Warehouse でのインデックスの再構築は、オフライン操作です。  インデックスの再構築について詳しくは、「[列ストア インデックスの最適化][Columnstore Indexes Defragmentation]」の ALTER INDEX REBUILD に関するセクションと、「[ALTER INDEX][ALTER INDEX]」をご覧ください。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>手順 3. クラスター化列ストア セグメントの品質改善を確認する
 セグメントの品質が低いテーブルを特定するクエリを再実行し、セグメントの品質が改善したことを確認します。  セグメントの品質が改善されていない場合は、テーブル内の行の幅が余分である可能性があります。  インデックスを再構築するときに、より高いリソース クラスまたは DWU の使用を検討してください。

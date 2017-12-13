@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: ec7d51d3f30eb3417a48fbf8d31a9b8359e39ab9
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 05099e868e62f612be0a3354eb8b339507ac7e4a
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="stateful-singletons-in-durable-functions---counter-sample"></a>Durable Functions のステートフル シングルトン - カウンター サンプル
 
@@ -45,15 +45,33 @@ Durable Functions は、この種のシナリオの実装をありふれたも�
 
 この記事では、サンプル アプリの **E3_Counter** について説明します。
 
-以降のセクションでは、Visual Studio 開発で使用されるコードについて説明します。 Azure ポータル開発でのコードもこれに類似しています。
+
 
 ## <a name="the-counter-orchestration"></a>カウンターのオーケストレーション
+
+以降のセクションでは、Visual Studio Code および Azure Portal 開発で使用されるコードについて説明します。
+
+### <a name="c-script"></a>C# スクリプト
+
+function.json ファイル:
+
+[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)]
+
+run.csx ファイル:
+
+[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)]
+
+### <a name="precompiled-c"></a>プリコンパイル済み C# 
+
+以降のセクションでは、Visual Studio 開発で使用されるコードについて説明します。
 
 オーケストレーター関数を実装するコードを次に示します。
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)]
 
-このオーケストレーター関数は、基本的には次の操作を行います。
+### <a name="explanation-of-the-code"></a>コードの説明
+
+このオーケストレーター関数は、基本的に次の操作を行います。
 
 1. *operation* という名前の外部イベントを [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) を使用してリッスンします。
 2. 要求された操作に応じて、`counterState` ローカル変数を増減します。

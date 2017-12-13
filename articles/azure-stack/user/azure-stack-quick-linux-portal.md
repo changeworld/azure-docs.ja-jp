@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5f815bafdcc7c05ec7f4149fb7c9df178f0f80e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f986c060b26489e412f6230665ec76a4730293f1
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Azure Stack ポータルで Linux 仮想マシンを作成する
 
@@ -26,7 +26,7 @@ Azure Stack 仮想マシンは、Azure Stack ポータルで作成できます�
 
 * **Azure Stack Marketplace 内の Linux イメージ**
 
-   Azure Stack Marketplace には、既定では Linux イメージが含まれていません。 そのため、Linux 仮想マシンを作成するには、その前に Azure Stack オペレーターが「[Download marketplace items from Azure to Azure Stack (Azure から Azure Stack へのマーケットプレース項目のダウンロード)](../azure-stack-download-azure-marketplace-item.md)」のトピックで説明されている手順を使用して **Ubuntu Server 16.04 LT** イメージをダウンロードしていることを確認してください。
+   Azure Stack Marketplace には、既定では Linux イメージが含まれていません。 そのため、Linux 仮想マシンを作成するには、その前に Azure Stack オペレーターが「[Azure から Azure Stack に Marketplace の項目をダウンロードする](../azure-stack-download-azure-marketplace-item.md)」のトピックで説明されている手順を使用して **Ubuntu Server 16.04 LTS** イメージをダウンロードしていることを確認してください。
 
 * **SSH クライアントへのアクセス**
 

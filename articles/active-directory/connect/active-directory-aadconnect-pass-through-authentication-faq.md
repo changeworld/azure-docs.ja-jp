@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 12/05/2017
 ms.author: billmath
-ms.openlocfilehash: d6a405f7245bf1b9635872efd0e29f8361d6a2f6
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 8722d7827aad10bcae3e8ec06b7014ebc64179d5
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
@@ -101,24 +101,20 @@ Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法
 
 複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)が確保されます。 ただし認証エージェント間の確定的な負荷分散は提供されません。
 
-テナント上で想定されるサインイン要求のピーク時の負荷および平均的な負荷を検討してください。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300,000 - 400,000 の認証を処理できます。 ほとんどのお客様の場合、高可用性と大容量を確保するには、合計 2 つまたは 3 つの認証エージェントがあれば十分です。
+テナント上で想定されるサインイン要求のピーク時の負荷および平均的な負荷を検討してください。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300 - 400 の認証を処理できます。
 
-サインインの待機時間を向上させるために、認証エージェントは、ドメイン コントローラーの近くにインストールする必要があります。
+ネットワーク トラフィックを見積もるには、サイズ設定に関する次のガイダンスに従ってください。
+- 各要求のペイロード サイズは、(0.5K + 1K * num_of_agents) バイトで、これは Azure AD から認証エージェントへのデータ量に相当します。 ここで "num_of_agents" は、テナントに登録されている認証エージェントの数を示します。
+- 各応答のペイロード サイズは 1K バイトで、これは認証エージェントから Azure AD へのデータ量に相当します。
+
+ほとんどのお客様の場合、高可用性と大容量を確保するには、合計 2 つまたは 3 つの認証エージェントがあれば十分です。 サインインの待機時間を向上させるために、認証エージェントは、ドメイン コントローラーの近くにインストールする必要があります。
+
+>[!NOTE]
+>認証エージェントの数は、テナントあたり 12 個に制限されています。
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Azure AD Connect が実行されているのとは別のサーバーに、最初のパススルー認証エージェントをインストールできますか。
 
 いいえ、このシナリオはサポートされて "_いません_"。
-
-## <a name="how-many-pass-through-authentication-agents-should-i-install"></a>いくつのパススルー認証エージェントをインストールする必要がありますか。
-
-推奨事項は次のとおりです。
-
-- 合計で 2 ～ 3 の認証エージェントをインストールします。 この構成でほとんどのユーザーの用途に対応できます。
-- サインインの待機時間を向上させるには、認証エージェントを、ドメイン コントローラーに、またはドメイン コントローラーのできるだけ近くにインストールします。
-- パスワードを検証する必要があるユーザーと同じ Active Directory フォレストに、認証エージェントをインストールしたサーバーが追加されていることを確認します。
-
->[!NOTE]
->認証エージェントの数は、テナントあたり 12 個に制限されています。
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>パススルー認証を無効にするには、どうすればよいですか。
 

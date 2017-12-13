@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 04e019501be6880fcc7e92de690a9f31195282e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab3c0b5776f9a32ab2703f462d58071f7bfd52ff
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="retrain-a-classic-web-service"></a>従来の Web サービスの再トレーニングを行う
 デプロイした予測 Web サービスは、既定のスコア付けエンドポイントです。 既定のエンドポイントは、元のトレーニングおよびスコア付け実験との同期が維持されるため、既定のエンドポイントのトレーニング済みモデルは置き換えることができません。 Web サービスを再トレーニングするには、Web サービスに新しいエンドポイントを追加する必要があります。 
@@ -43,11 +43,10 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
 > 
 > 
 
-新しいエンドポイントを Web サービスに追加する方法は 3 つあります。
+新しいエンドポイントを Web サービスに追加する方法は 2 つあります。
 
 1. プログラムを使用する
 2. Microsoft Azure Web サービス ポータルを使用する
-3. Azure クラシック ポータルを使用する
 
 ### <a name="programmatically-add-an-endpoint"></a>プログラムを使用してエンドポイントを追加する
 [GitHub リポジトリ](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs)で提供されているサンプル コードを使用して、スコア付けエンドポイントを追加できます。
@@ -58,18 +57,10 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
 3. **[追加]**をクリックします。
 4. 新しいエンドポイントの名前と説明を入力します。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 詳細については、「 [Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」を参照してください。
 
-### <a name="use-the-azure-classic-portal-to-add-an-endpoint"></a>Azure クラシック ポータルを使用してエンドポイントを追加する
-1. [従来の Azure Portal](https://manage.windowsazure.com) にサインインします。
-2. 左側のメニューで **[Machine Learning]**をクリックします。
-3. [名前] でワークスペースをクリックし、 **[Web サービス]**をクリックします。
-4. [名前] で **[Census Model [predictive exp.]]**をクリックします。
-5. ページの下部にある **[エンドポイントの追加]**をクリックします。 エンドポイントの追加の詳細については、「 [エンドポイントを作成する](create-endpoint.md)」をご覧ください。 
-
 ## <a name="update-the-added-endpoints-trained-model"></a>追加エンドポイントのトレーニング済みモデルを更新する
 再トレーニング プロセスを完了するには、追加した新しいエンドポイントのトレーニング済みモデルを更新する必要があります。
 
-* 従来の Azure Portal を使用して新しいエンドポイントを追加した場合、ポータルで新しいエンドポイントの名前をクリックしてから、 **UpdateResource** リンクをクリックすると、エンドポイントのモデルを更新するときに必要な URL を入手できます。
-* サンプル コードを使用してエンドポイントを追加した場合は、 *HelpLocationURL* 値によって特定されたヘルプ URL の場所が出力に追加されます。
+サンプル コードを使用してエンドポイントを追加した場合は、 *HelpLocationURL* 値によって特定されたヘルプ URL の場所が出力に追加されます。
 
 パスの URL を取得するには:
 

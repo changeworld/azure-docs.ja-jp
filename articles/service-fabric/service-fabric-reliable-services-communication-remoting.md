@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 438eeee7353cbd1d534f27471c9c9054aecc12e8
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 53c9072f98dfe9c03b85eb7409b8ed91c3c0ce33
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>Reliable Services によるサービスのリモート処理
 WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロトコルやスタックに関連付けられていないサービスでは、サービスのリモート プロシージャ コールを迅速かつ簡単に設定するためのリモート処理メカニズムを Reliable Services フレームワークが提供します。
@@ -79,10 +79,10 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-リモート処理フレームワークは、サービスでスローされた例外をクライアントに伝達します。 そのため、 `ServiceProxy` を使用したクライアントでの例外処理ロジックでは、サービスがスローする例外を直接処理できます。
+リモート処理フレームワークは、サービスでスローされた例外をクライアントに伝達します。 結果として、`ServiceProxy` を使うときは、サービスによってスローされた例外をクライアントが処理する必要があります。
 
 ## <a name="service-proxy-lifetime"></a>サービス プロキシの有効期間
-ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシ インスタンスは、ユーザーがそれを必要とする間、再利用することができます。 リモート プロシージャ呼び出しから例外がスローされても、ユーザーは同じプロキシ インスタンスを再利用できます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 リモート呼び出しが発生したときに、内部チェックが通信クライアントが有効かどうかが確認されます。 その結果に基づいて、必要に応じて通信クライアントが再作成されます。 そのため、例外が発生してもユーザーは serviceproxy の再作成を行う必要はなく、この処理は透過的に行われます。
+ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要に応じていくつでも ServiceProxy を作成できます。 サービス プロキシ インスタンスは、ユーザーがそれを必要とする間、再利用することができます。 リモート プロシージャ呼び出しから例外がスローされても、ユーザーは同じプロキシ インスタンスを再利用できます。 各 ServiceProxy は、メッセージをネットワーク経由で送信するための通信クライアントを含んでいます。 リモート呼び出しが発生したときに、内部チェックが通信クライアントが有効かどうかが確認されます。 その結果に基づいて、必要に応じて通信クライアントが再作成されます。 この処理は透過的に行われるため、例外が発生してもユーザーは `ServiceProxy` の再作成を行う必要はありません。
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory の有効期間
 [ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) は、さまざまなリモート処理インターフェイスのプロキシ インスタンスを作成するファクトリです。 プロキシの作成に api `ServiceProxy.Create` を使用する場合、フレームワークによってシングルトン ServiceProxy が作成されます。
@@ -91,12 +91,13 @@ ServiceProxy の作成は負荷の低い操作であり、ユーザーは必要�
 ServiceProxyFactory はできるだけ長くキャッシュすることをお勧めします。
 
 ## <a name="remoting-exception-handling"></a>リモート処理の例外処理
-サービス API によってスローされるリモート処理の例外はすべて、AggregateException としてクライアントに返されます。 RemoteExceptions は DataContract Serializable である必要があります。それ以外の場合、シリアル化エラーと共に [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) がプロキシ API にスローされます。
+サービス API によってスローされるリモート処理の例外はすべて、AggregateException としてクライアントに返されます。 RemoteExceptions は DataContract シリアル化可能である必要があります。そうでない場合、プロキシ API は内部のシリアル化エラーで [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) をスローします。
 
 ServiceProxy は、それが作成されたサービス パーティションのすべてのフェールオーバー例外を処理します。 フェールオーバー例外 (一時的ではない例外) が発生した場合、エンドポイントを再度解決し、正しいエンドポイントでの呼び出しを再試行します。 フェールオーバー例外の再試行回数に上限はありません。
 一時的な例外が発生した場合、プロキシは呼び出しを再試行します。
 
-既定の再試行パラメーターは、[OperationRetrySettings] で指定します。 (https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) OperationRetrySettings オブジェクトを ServiceProxyFactory コンストラクターに渡すことでこれらの値を構成できます。
+既定の再試行パラメーターは、[OperationRetrySettings](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) で指定します。
+ユーザーは、ServiceProxyFactory コンストラクターに OperationRetrySettings オブジェクトを渡すことによって、これらの値を構成できます。
 ## <a name="how-to-use-remoting-v2-stack"></a>リモート処理 V2 スタックを使用する方法
 2.8 NuGet リモート処理パッケージを使用すると、リモート処理 V2 スタックを使用するオプションを選択できます。 リモート処理 V2 スタックは高性能で、カスタムのシリアル化などの機能と、より多くのプラグ可能な API を提供します。
 既定では、次の変更を行わない場合、リモート処理 V1 スタックが引き続き使用されます。

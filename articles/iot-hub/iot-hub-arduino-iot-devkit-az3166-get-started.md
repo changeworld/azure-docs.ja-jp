@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2017
 ms.author: xshi
-ms.openlocfilehash: deb362796966524ec2db5808623d2f92a1bf44e1
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 6a9d5e029e48c1bb62ad4731c7413f023b97c8c9
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/27/2017
 ## <a name="what-you-do"></a>作業内容
 作成する Azure IoT ハブに [DevKit](https://microsoft.github.io/azure-iot-developer-kit/) を接続し、センサーから温度と湿度のデータを収集して、そのデータを IoT ハブに送信します。
 
-DevKit をお持ちでない場合は、 [1 つ取得](https://aka.ms/iot-devkit-purchase)します。
+DevKit をお持ちでない場合は、 [DevKit シミュレーターを試す](https://azure-samples.github.io/iot-devkit-web-simulator/)か、[取得](https://aka.ms/iot-devkit-purchase)してください。
 
 ## <a name="what-you-learn"></a>学習内容
 
@@ -257,7 +257,7 @@ VS Code ターミナルでは、対話型コマンド ラインを使用して�
 DevKit が再起動され、コードの実行が開始されます。
 
 > [!NOTE] 
-> "エラー: AZ3166: 不明なパッケージ" エラーが発生する場合があります。 これは、ボード パッケージのインデックスが更新されていないためです。 これを解決するには、こちらの[よくあるご質問の手順](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)を確認してください。
+> "エラー: AZ3166: 不明なパッケージ" エラーが発生する場合があります。 これは、ボード パッケージのインデックスが更新されていないためです。 これを解決するには、こちらの[FAQ の手順](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)を確認してください。
 
 ### <a name="macos"></a>macOS
 

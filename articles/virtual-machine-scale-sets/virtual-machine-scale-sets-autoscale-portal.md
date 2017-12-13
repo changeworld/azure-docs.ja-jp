@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 3714a4feb14bc47132e501629fc339bc7d0e40a1
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 141ae5f004ec1c85c506955873c69c03a89cd08c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。
@@ -122,7 +122,7 @@ VM インスタンスの数と状態を確認するには、スケール セッ�
 
     ![スケジュールに基づいてスケーリングする自動スケール ルールを作成する](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)
 
-自動スケール ルールがどのように適用されているかを確認するには、**[スケーリング]** ウィンドウの上部の **[実行履歴]** を選択します。 グラフおよびイベントの一覧に、自動スケール ルールがトリガーされたタイミングと、スケール内で増減された VM インスタンスの数が表示されます。
+自動スケール ルールがどのように適用されているかを確認するには、**[スケーリング]** ウィンドウの上部の **[実行履歴]** を選択します。 グラフおよびイベントの一覧に、自動スケール ルールがトリガーされたタイミングと、スケール セット内で増減された VM インスタンスの数が表示されます。
 
 
 ## <a name="next-steps"></a>次のステップ

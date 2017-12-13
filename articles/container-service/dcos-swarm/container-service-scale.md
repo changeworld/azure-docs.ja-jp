@@ -1,27 +1,19 @@
 ---
-title: "Azure Container Service クラスターのスケーリング | Microsoft Docs"
+title: "Azure Container Service クラスターのスケーリング"
 description: "Azure CLI または Azure Portal を使用して、Azure Container Service で DC/OS、Docker Swarm、または Kubernetes クラスター内のエージェント ノードをスケーリングする方法。"
 services: container-service
-documentationcenter: 
 author: sauryadas
-manager: madhana
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
-ms.assetid: 
+manager: timlt
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 446eee0ffff3d10d09c691e9f2f0f4790c8ff7ab
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: faa1aee1f059f240074544e5e4727a7082824a77
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Container Service クラスター内のエージェント ノードのスケーリング
 

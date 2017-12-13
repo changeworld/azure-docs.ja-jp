@@ -3,7 +3,7 @@ title: "Media Services .NET SDK を使用したコンテンツ キー承認ポ�
 description: "Media Services .NET SDK を利用し、コンテンツ キー承認ポリシーを構成する方法について説明します。"
 services: media-services
 documentationcenter: 
-author: Mingfeiy
+author: mingfeiy
 manager: cfowler
 editor: 
 ms.assetid: 1a0aedda-5b87-4436-8193-09fc2f14310c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 75dd9107dca215a0b31db3d44bada69210fe9ac6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9a7aa64d434efcf44553d5d900601638a329a1d
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -36,22 +36,19 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 Media Services では、Secure Token Services は提供されません。 トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。 STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定した要求を発行するよう構成する必要があります (この記事の説明を参照)。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
-詳細については、次をご覧ください。
-
-[JWT トークンの承認](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-
-[Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT 要求に基づいてコンテンツ キーの配信を制限する](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
-
-[Azure ACS を使用してトークンを発行する](http://mingfeiy.com/acs-with-key-services)。
+詳細については、次の記事を参照してください。
+- [JWT トークンの承認](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
+- [Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT 要求に基づいてコンテンツ キーの配信を制限する](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)。
 
 ### <a name="some-considerations-apply"></a>いくつかの考慮事項が適用されます。
 * AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、ストリーミング エンドポイントが**実行中**状態である必要があります。 
 * 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート Smooth Streaming ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 * **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
-* 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することを強くお勧めします。
+* 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することをお勧めします。
 * キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。  ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
 * 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
 * 現時点では、プログレッシブ ダウンロードは暗号化できません。
+* AMS ストリーミング エンドポイントは、プレフライト応答の CORS "Access-Control-Allow-Origin" ヘッダーをワイルドカード "\*" に設定します。 これは、Azure Media Player、Roku、JW など、ほとんどのプレーヤーでうまく機能します。 ただし、dashjs を利用する一部のプレーヤーでは、資格情報モードを "include" に設定すると、dashjs 内の XMLHttpRequest が "Access-Control-Allow-Originin" の値としてワイルドカード "\*" を許可しないため、機能しません。 dashjs でのこの制限の回避策としては、単一のドメインからクライアントをホストしている場合は、Azure Media Services はそのドメインをプレフライト応答ヘッダー内で指定できます。 Azure Portal でサポート チケットを開くことで連絡できます。
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 動的暗号化
 ### <a name="open-restriction"></a>オープン制限
@@ -101,7 +98,7 @@ Media Services では、Secure Token Services は提供されません。 トー
 
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、次の XML スキーマに準拠する必要があります。
 
-#### <a id="schema"></a>トークン制限スキーマ
+#### <a name="token-restriction-schema"></a>トークン制限スキーマ
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -149,7 +146,7 @@ Media Services では、Secure Token Services は提供されません。 トー
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-**トークン**制限ポリシーを構成する際は、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。 **プライマリ検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。 **対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。 
+**トークン**制限ポリシーを構成するときは、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。 プライマリ**検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。 **対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 **Media Services SDK for .NET** を使用する場合、**TokenRestrictionTemplate** クラスを使用して制限トークンを生成できます。
 次の例では、トークン制限を含む承認ポリシーを作成します。 この例では、クライアントが署名キー (VerificationKey)、トークン発行者、必要な要求を含むトークンを提示する必要があります。
@@ -208,7 +205,7 @@ Media Services では、Secure Token Services は提供されません。 トー
         return TokenRestrictionTemplateSerializer.Serialize(template);
     }
 
-#### <a id="test"></a>テスト トークン
+#### <a name="test-token"></a>テスト トークン
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、次の処理を行います。
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
@@ -233,7 +230,7 @@ Media Services により、ユーザーが保護されたコンテンツを再�
 
 PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 Media Services SDK for .NET では、**PlayReadyLicenseResponseTemplate** クラスと **PlayReadyLicenseTemplate** クラスを利用して、PlayReady ライセンス テンプレートを定義できます。
 
-[このトピック](media-services-protect-with-drm.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法を説明しています。
+[この記事](media-services-protect-with-playready-widevine.md)では、**PlayReady** と **Widevine** を使用してコンテンツを暗号化する方法を説明しています。
 
 ### <a name="open-restriction"></a>オープン制限
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。 この制限は、テストに便利です。
@@ -415,14 +412,12 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
         JWT = 2,
     }
 
-
-
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、[資産の配信ポリシーの構成方法](media-services-dotnet-configure-asset-delivery-policy.md)に関するページをご覧ください。
 

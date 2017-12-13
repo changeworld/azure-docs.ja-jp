@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory における名前付きの場所 | Microsoft Docs"
-description: "名前付きの場所を構成することによって、組織が所有している IP アドレスが、特殊な場所へのあり得ない移動というリスク イベントの種類について誤検出を行うことを回避できます。"
+description: "名前付きの場所とその構成方法について説明します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -11,22 +11,50 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: da437908509e40386ed23863648bd6956b308186
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 126646d7460831f0235221595b8a93c88be6146d
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="named-locations-in-azure-active-directory"></a>Azure Active Directory における名前付きの場所
 
-Azure Active Directory の名前付きの場所機能を使用して、組織内の信頼された IP アドレス範囲にラベル付けできます。 環境内で、[リスク イベント](active-directory-reporting-risk-events.md)の検出のコンテキストで名前付きの場所を使用できます。 この機能によって、種類が "*特殊な場所へのあり得ない移動*" であるリスク イベントの誤検出の報告数が減少します。 
+名前付きの場所を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure Active Directory は次の場合に名前付きの場所を使います。
 
-## <a name="configuration"></a>構成
+- 報告される偽陽性の数を減らすための[リスク イベント](active-directory-reporting-risk-events.md)の検出。  
 
-名前付きの場所は、次のように構成します。
+- [場所ベースの条件付きアクセス](active-directory-conditional-access-azure-portal.md#locations)。
+
+
+この記事では、環境内で名前付きの場所を構成する方法について説明します。
+
+
+## <a name="entry-points"></a>エントリ ポイント
+
+名前付きの場所の構成ページにアクセスするには、Azure Active Directory ページの **[セキュリティ]** セクションで以下をクリックします。
+
+![エントリ ポイント](./media/active-directory-named-locations/34.png)
+
+- **条件付きアクセス:**
+
+    - **[管理]** セクションで、**[名前付きの場所]** をクリックします。
+    
+        ![[名前付きの場所] コマンド](./media/active-directory-named-locations/06.png)
+
+- **危険なサインイン:**
+
+    - 上部のツール バーで、**[既知の IP アドレス範囲の追加]** をクリックします。
+
+       ![[名前付きの場所] コマンド](./media/active-directory-named-locations/35.png)
+
+
+
+## <a name="configuration-example"></a>構成の例
+
+**名前付きの場所は、次のように構成します。**
 
 1. [Azure ポータル](https://portal.azure.com)にグローバル管理者としてサインインします。
 
@@ -34,22 +62,22 @@ Azure Active Directory の名前付きの場所機能を使用して、組織内
 
     ![左側のウィンドウの [Azure Active Directory] リンク](./media/active-directory-named-locations/01.png)
 
-3. **[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、**[条件付きアクセス]** をクリックします。
+3. **[Azure Active Directory]** ページの **[セキュリティ]** セクションで、**[条件付きアクセス]** をクリックします。
 
     ![[条件付きアクセス] コマンド](./media/active-directory-named-locations/05.png)
 
 
-4. **[条件付きアクセス]** ブレードの **[管理]** セクションで、**[Named locations] \(名前付きの場所)** をクリックします。
+4. **[条件付きアクセス]** ページの **[管理]** セクションで、**[名前付きの場所]** をクリックします。
 
     ![[名前付きの場所] コマンド](./media/active-directory-named-locations/06.png)
 
 
-5. **[名前付きの場所]** ブレードで、**[新しい場所]** をクリックします。
+5. **[名前付きの場所]** ページで、**[新しい場所]** をクリックします。
 
     ![[新しい場所] コマンド](./media/active-directory-named-locations/07.png)
 
 
-6. **[新規]** ブレードで、次の操作を行います。
+6. **[新規]** ページで、次の操作を行います。
 
     ![[新規] ブレード](./media/active-directory-named-locations/56.png)
 
@@ -73,5 +101,10 @@ Azure Active Directory の名前付きの場所機能を使用して、組織内
 
 ## <a name="next-steps"></a>次のステップ
 
-リスク イベントの詳細については、「[Azure Active Directory リスク イベント](active-directory-reporting-risk-events.md)」を参照してください。
+関連情報:
 
+- **リスク イベント**については、「[Azure Active Directory リスク イベント](active-directory-reporting-risk-events.md)」をご覧ください。
+
+- **条件付きアクセス**については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」をご覧ください。
+
+- **リスクの高いサインイン レポート**については、「[Azure Active Directory ポータルのリスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)」をご覧ください。  

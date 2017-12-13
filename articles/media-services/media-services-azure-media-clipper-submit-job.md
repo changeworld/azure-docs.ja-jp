@@ -9,16 +9,20 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a142648793f934e939be26378504c19facf40e1
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d29889a4c972638f5d127e9c518aa85fbc19d861
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Azure Media Clipper からのクリッピング ジョブの送信
 Azure Media Clipper には、クリッピング ジョブの送信を処理するために実装された **submitSubclipCallback** メソッドが必要です。 この関数は、Clipper 出力の Web サービスへの HTTP POST を実装するためのものです。 この Web サービスで、エンコード ジョブを送信できます。 Clipper の出力は、レンダリング ジョブでの Media Encoder Standard エンコーディング プリセット、または動的マニフェスト フィルター呼び出しでの REST API ペイロードのいずれかになります。 メディア サービス アカウントの資格情報が、クライアントのブラウザーでは安全でないために、このパススルー モデルが必要となります。
 
-次のコードのサンプルは、**submitSubclipCallback** メソッドの例です。 このメソッドで、MES エンコード プリセットの HTTP POST を実装します。 POST の (**結果**) が成功であった場合、**Promise** は成功となり、それ以外の場合は拒否されてエラーの詳細が戻ります。
+次のシーケンス図は、ブラウザー クライアント、Web サービス、および Azure Media Services の間のワークフローを示したものです。![Azure Media Clipper のシーケンス図](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
+
+前の図の 4 つのエンティティは、エンド ユーザーのブラウザー、Web サービス、Clipper リソースをホストしている CDN エンドポイント、および Azure Media Services です。 エンド ユーザーが Web ページに移動すると、ページはホストしている CDN エンドポイントから Clipper の JavaScript と CSS リソースを取得します。 エンド ユーザーは、自分のブラウザーから、クリッピング ジョブまたは動的マニフェスト フィルター作成呼び出しを構成します。 エンド ユーザーがジョブまたはフィルター作成呼び出しを送信すると、ブラウザーはデプロイする必要がある Web サービスにジョブのペイロードを格納します。 この Web サービスは、最終的に、お使いの Media Services アカウント資格情報を使って、クリッピング ジョブまたはフィルター作成呼び出しを Azure Media Services に送信します。
+
+次のコードのサンプルは、**submitSubclipCallback** メソッドの例です。 このメソッドに、Media Encoder Standard エンコード プリセットの HTTP POST を実装します。 POST の (**結果**) が成功であった場合、**Promise** は成功となり、それ以外の場合は拒否されてエラーの詳細が戻ります。
 
 ```javascript
 // Submit Subclip Callback
@@ -49,9 +53,11 @@ var subclipper = new subclipper({
     submitSubclipCallback: onSubmitSubclip,
 });
 ```
-ジョブ送信の出力は、レンダリング ジョブでの MES エンコーディング プリセット、または動的マニフェスト フィルター での REST API ペイロードのいずれかとなります。
+ジョブ送信の出力は、レンダリング ジョブでの Media Encoder Standard エンコーディング プリセット、または動的マニフェスト フィルター での REST API ペイロードのいずれかとなります。
 
-## <a name="rendered-output"></a>表示される出力
+## <a name="submitting-encoding-job-to-create-video"></a>ビデオを作成するためのエンコード ジョブの送信
+Media Encoder Standard エンコード ジョブを送信して、正確なフレームのビデオ クリップを作成できます。 エンコード ジョブは、レンダリングされたビデオ (新しいフラグメント化された MP4 ファイル) を生成します。
+
 レンダリングされたクリッピングのジョブ出力コントラクトは、次のプロパティを持つ JSON オブジェクトです。
 
 ```json
@@ -145,8 +151,10 @@ var subclipper = new subclipper({
 }
 ```
 
-## <a name="filter-output"></a>フィルターの出力
-フィルター クリッピングの出力コントラクトは、次のプロパティを持つ JSON オブジェクトです。
+エンコード ジョブを実行するには、Media Encoder Standard エンコード ジョブと共に関連付けられたプリセットを送信します。 エンコード ジョブの送信について詳しくは、[.NET SDK の記事](https://docs.microsoft.com/en-us/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard)または [REST API の記事](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-encode-asset)をご覧ください。
+
+## <a name="quickly-creating-video-clips-without-encoding"></a>エンコードを使わないビデオ クリップの簡易作成
+エンコード ジョブを作成する代わりに、Azure Media Clipper を使って動的なマニフェスト フィルターを作成できます。 フィルターは、エンコードを必要とせず、新しい資産が作成されないので簡単に作成できます。 フィルター クリッピングの出力コントラクトは、次のプロパティを持つ JSON オブジェクトです。
 
 ```json
 {
@@ -218,3 +226,5 @@ var subclipper = new subclipper({
   }
 }
 ```
+
+REST 呼び出しを送信して動的マニフェスト フィルターを作成するには、[REST API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-dynamic-manifest) を使って関連付けられたフィルター ペイロードを送信します。

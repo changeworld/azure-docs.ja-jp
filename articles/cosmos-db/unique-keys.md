@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: rafats
-ms.openlocfilehash: 030d6d136c16946d6231b165b4b33d496bb7c818
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 127b42b67a3e29022ac5d9535751a1b2a3be250e
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB における一意なキー
 
-一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コンテナーの作成時に一意キー ポリシーを作成すると、1 つまたは複数の値の一意性を[パーティション](partition-data.md)ごとに保証できます。 一意キー ポリシーを使用したコンテナーが作成されると、一意キー制約で指定されている値と重複する値を含む項目を新たに作成したり更新したりすることができなくなります。   
+一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コンテナーの作成時に一意キー ポリシーを作成すると、1 つまたは複数の値の一意性を[パーティション キー](partition-data.md)ごとに保証できます。 一意キー ポリシーを使用したコンテナーが作成されると、一意キー制約で指定されている値と重複する値を含む項目を新たに作成したり更新したりすることができなくなります。   
 
 > [!NOTE]
 > 一意なキーは、[.NET](documentdb-sdk-dotnet.md)、[.NET Core](documentdb-sdk-dotnet-core.md) DocumentDB (SQL) SDK、および [MongoDB API](mongodb-feature-support.md#unique-indexes) の最新バージョンでサポートされています。 現時点では、Table API および Graph API で一意なキーはサポートされていません。 

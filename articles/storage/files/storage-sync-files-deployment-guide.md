@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 42a0e7a3816e0f1d96951feac210e5770add4fe1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 7b4de3e7b7e98ab76c02ea7c1cf069cee94706fc
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Azure File Sync (プレビュー) をデプロイする
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -66,7 +66,7 @@ Azure File Sync (プレビュー) を使用して、オンプレミスのファ�
 
 3. [Azure PowerShell をインストールして構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)します。 最新バージョンの Azure PowerShell モジュールを使用することをお勧めします。
 
-## <a name="install-the-azure-file-sync-agent"></a>Azure File Sync エージェントをインストールする
+## <a name="install-the-azure-file-sync-agent"></a>Azure ファイル同期エージェントをインストールする
 Azure File Sync エージェントは、Windows Server を Azure ファイル共有と同期できるようにするダウンロード可能なパッケージです。 このエージェントは、[Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?linkid=858257) からダウンロードできます。 ダウンロードが完了したら、MSI パッケージをダブルクリックして Azure File Sync エージェントのインストールを開始します。
 
 > [!Important]  
@@ -83,7 +83,7 @@ Windows Server をストレージ同期サービスに登録すると、サー�
 
 サインインすると、次の情報の入力を求められます。
 
-![サーバー登録 UI のスクリーンショット](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
+![[サーバーの登録] UI のスクリーンショット](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
 - **Azure サブスクリプション**: ストレージ同期サービスを含むサブスクリプション (「[ストレージ同期サービスのデプロイ](#deploy-the-storage-sync-service)」をご覧ください)。 
 - **リソース グループ**: ストレージ同期サービスを含むリソース グループ。
@@ -91,19 +91,19 @@ Windows Server をストレージ同期サービスに登録すると、サー�
 
 適切な情報を選択したら、**[登録]** を選択してサーバー登録を完了します。 登録プロセスの一環として、追加のサインインを求められます。
 
-## <a name="create-a-sync-group"></a>同期グループの作成
-同期グループは、一連のファイルの同期トポロジを定義します。 同期グループ内のエンドポイントは、相互に同期状態が維持されます。 同期グループには、Azure ファイル共有を表すクラウド エンドポイントが少なくとも 1 つと、Windows サーバー上のパスを表すサーバー エンドポイントが 1 つ含まれている必要があります。 同期グループを作成するには、[Azure ポータル](https://portal.azure.com/)でストレージ同期サービスに移動し、**[+ 同期グループ]** を選択します。
+## <a name="create-a-sync-group"></a>同期グループを作成する
+同期グループは、一連のファイルの同期トポロジを定義します。 同期グループ内のエンドポイントは、相互に同期状態が維持されます。 同期グループには、Azure ファイル共有を表すクラウド エンドポイントが少なくとも 1 つと、Windows サーバー上のパスを表すサーバー エンドポイントが 1 つ含まれている必要があります。 同期グループを作成するには、[Azure Portal](https://portal.azure.com/) でストレージ同期サービスに移動し、**[+ 同期グループ]** を選びます。
 
-![Azure ポータルで新しい同期グループを作成する](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
+![Azure Portal で新しい同期グループを作成する](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
-開いたウィンドウに、同期グループとクラウド エンドポイントを作成するための次の情報を入力します。
+表示されるウィンドウで次の情報を入力して、同期グループとクラウド エンドポイントを作成します。
 
 - **同期グループ名**: 作成する同期グループの名前。 この名前は、ストレージ同期サービス内で一意である必要がありますが、理にかなった任意の名前を指定できます。
 - **サブスクリプション**: 「[ストレージ同期サービスのデプロイ](#deploy-the-storage-sync-service)」でストレージ同期サービスをデプロイしたサブスクリプション。
 - **ストレージ アカウント**: **［ストレージ アカウントの選択］** を選択した場合は、同期する Azure ファイル共有を持っているストレージ アカウントを選択できる別のウィンドウが奉持されます。
 - **Azure ファイル共有**: 同期する Azure ファイル共有の名前。
 
-サーバー エンドポイントを追加するには、新規に作成した同期グループに移動し、**[サーバー エンドポイントの追加]** を選択します。
+サーバー エンドポイントを追加するには、新しく作成した同期グループに移動し、**[サーバー エンドポイントの追加]** を選びます。
 
 ![[同期グループ] ウィンドウで新しいサーバー エンドポイントを追加する](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
 
@@ -114,10 +114,26 @@ Windows Server をストレージ同期サービスに登録すると、サー�
 - **クラウドの階層化**: クラウドの階層化を有効または無効にするスイッチ。 クラウドの階層化によって、使用頻度やアクセス頻度が低いファイルを Azure Files に階層化できます。
 - **ボリュームの空き領域**: サーバー エンドポイントが配置されているボリュームに確保する空き領域のサイズ。 たとえば、単一のサーバー エンドポイントで [ボリュームの空き領域] をボリュームの 50% に設定すると、データの約半量が Azure Files に階層化されます。 クラウドの階層化が有効かどうかにかかわらず、Azure ファイル共有は、データの完全なコピーを常に同期グループ内に保持します。
 
-サーバー エンドポイントを追加するには、**[作成]** を選択します。 Azure ファイル共有と Windows Server でファイルの同期が維持されます。 
+サーバー エンドポイントを追加するには、**[作成]** を選びます。 Azure ファイル共有と Windows Server でファイルの同期が維持されます。 
 
 > [!Important]  
-> 同期グループ内の任意のクラウド エンドポイントまたはサーバー エンドポイントに変更を加えることにより、ファイルを同期グループ内の他のエンドポイントと同期できます。 クラウド エンドポイント (Azure ファイル共有) を直接変更した場合、その変更は、Azure File Sync の変更検出ジョブによって最初に認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
+> 同期グループ内の任意のクラウド エンドポイントまたはサーバー エンドポイントで変更を行うことにより、ファイルを同期グループ内の他のエンドポイントに同期できます。 クラウド エンドポイント (Azure ファイル共有) を直接変更した場合、その変更は、Azure File Sync の変更検出ジョブによって最初に認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
+
+## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>DFS レプリケーション (DFS-R) のデプロイを Azure File Sync に移行する
+DFS-R のデプロイを Azure File Sync に移行するには:
+
+1. 置き換える DFS-R トポロジを表すための同期グループを作成します。
+2. 移行する DFS-R トポロジの完全なデータ セットがあるサーバーで開始します。 そのサーバーに Azure File Sync をインストールします。
+3. そのサーバーを登録し、移行する最初のサーバーのサーバー エンドポイントを作成します。 クラウドの階層化を有効にしないでください。
+4. すべてのデータが Azure ファイル共有 (クラウド エンドポイント) に同期されるようにします。
+5. 残りの各 DFS-R サーバーに、Azure File Sync エージェントをインストールします。
+6. DFS-R を無効にします。 
+7. 各 DFS-R サーバーにサーバー エンドポイントを作成します。 クラウドの階層化を有効にしないでください。
+8. 同期の完了を確認した後、必要に応じてトポロジをテストします。
+9. DFS-R の使用を終了します。
+10. 必要に応じて、任意のサーバー エンドポイントでクラウドの階層化を有効にできるようになります。
+
+詳しくは、[Azure File Sync と分散ファイル システム (DFS) の相互運用](storage-sync-files-planning.md#distributed-file-system-dfs)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure File Sync のサーバー エンドポイントの追加/削除](storage-sync-files-server-endpoint.md)

@@ -4,18 +4,18 @@
   items:
     - name: 概要
       href: apache-domain-joined-introduction.md
-    - name: エンタープライズ セキュリティの計画
+    - name: ドメイン参加済みクラスターの計画
       href: apache-domain-joined-architecture.md
-    - name: HDInsight でのエンタープライズ セキュリティの構成
+    - name: ドメイン参加済みサンドボックス環境の構成
       href: apache-domain-joined-configure.md
-    - name: Azure AD DS を使用した HDInsight でのエンタープライズ セキュリティの構成
+    - name: Azure AD DS によるドメイン参加済みクラスターの構成
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Hive ポリシーを構成する
       href: apache-domain-joined-run-hive.md
     - name: 容量計画
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
-    - name: エンタープライズ セキュリティでのクラスターの管理
+    - name: ドメイン参加済みクラスターの管理
       href: apache-domain-joined-manage.md
 - name: データのセキュリティ保護
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md

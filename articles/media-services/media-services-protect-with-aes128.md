@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: a441e76fae0bda829cb112d307b3b436809b9c9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04c015a6fb6f9398e83b8717e869ba1d8e32a702
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="using-aes-128-dynamic-encryption-and-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 > [!div class="op_single_selector"]
@@ -26,10 +26,10 @@ ms.lasthandoff: 10/11/2017
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
-> 
 
 ## <a name="overview"></a>概要
 > [!NOTE]
+> **Safari on macOS** への配信用に AES でコンテンツを暗号化する場合は、こちらの[ブログ投稿](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)をご覧ください。
 > AES 暗号化でメディア コンテンツを保護する方法の概要については、[この](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption)ビデオをご覧ください。
 > 
 > 
@@ -38,9 +38,9 @@ Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 
 
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) 形式のトークンがサポートされます。 詳細については、「 [コンテンツ キー承認ポリシーを構成する](media-services-protect-with-aes128.md#configure_key_auth_policy)」を参照してください。
 
-動的暗号化を使用するには、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産が必要です。 また、資産の配信ポリシーを構成する必要があります (このトピックで後述します)。 次に、ストリーミング URL で指定された形式に基づいて、オンデマンド ストリーミング サーバーは、選択されたプロトコルでストリームを配信できるようにします。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
+動的暗号化を使用するには、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産が必要です。 また、資産の配信ポリシーを構成する必要があります (この記事で後述します)。 次に、ストリーミング URL で指定された形式に基づいて、オンデマンド ストリーミング サーバーは、選択されたプロトコルでストリームを配信できるようにします。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
-このトピックには、保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。 このトピックでは、認証ポリシーを使用するキー配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが暗号化キーを受け取ることができるようになります。 また、動的暗号化の使用方法についても説明します。
+この記事には、保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。 この記事では、承認ポリシーを使用するキー配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが暗号化キーを受け取ることができるようになります。 また、動的暗号化の使用方法についても説明します。
 
 
 ## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a>AES-128 動的暗号化とキー配信サービスのワークフロー
@@ -57,15 +57,15 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 6. [OnDemand ロケーターを作成](media-services-protect-with-aes128.md#create_locator) します。
 
-このトピックでは、 [クライアント アプリケーションがキー配信サービスにキーを要求する方法](media-services-protect-with-aes128.md#client_request)についても説明します。
+この記事では、[クライアント アプリケーションがキー配信サービスにキーを要求する方法](media-services-protect-with-aes128.md#client_request)についても説明します。
 
-このトピックの最後に、詳細な .NET の [例](media-services-protect-with-aes128.md#example) があります。
+この記事の最後に、詳細な .NET の[例](media-services-protect-with-aes128.md#example)があります。
 
 前述したワークフローを図にすると、次のようになります。 ここでは、認証のためにトークンが使用されています。
 
 ![AES-128 での保護](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
-このトピックの残りの部分では、詳細な説明、コード例、および前述したタスクの実行方法を説明するトピックへのリンクを紹介します。
+この記事の残りの部分では、詳細な説明、コード例、および前述したタスクの実行方法を説明するトピックへのリンクを紹介します。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
@@ -103,7 +103,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 * 資産配信プロトコル (たとえば、MPEG DASH、HLS、Smooth Streaming、またはすべて)。
 * 動的暗号化の種類 (AES エンベロープなど) または動的暗号化なし。 
 
-詳細については、 [資産の配信ポリシーの構成 ](media-services-rest-configure-asset-delivery-policy.md)に関するページを参照してください。
+詳しくは、[資産の配信ポリシーの構成](media-services-dotnet-configure-asset-delivery-policy.md)に関するページをご覧ください。
 
 ## <a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ロケーターを作成する
 Smooth、DASH、HLS のストリーミング URL をユーザーに提供する必要があります。
@@ -135,7 +135,7 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 以前の手順で、マニフェスト ファイルを参照する URL を構成しました。 クライアントは、キー配信サービスへの要求を実行するために、ストリーミング マニフェスト ファイルから必要な情報を抽出する必要があります。
 
 ### <a name="manifest-files"></a>マニフェスト ファイル
-クライアントはマニフェスト ファイルから URL 値 (コンテンツ キー ID (kid) も含まれる) を抽出する必要があります。 その後、クライアントは、キー配信サービスからの暗号化キーの取得を試みます。 さらに、IV 値を抽出し、それを用いてストリームの暗号化を解除することも必要です。次のスニペットは、Smooth Streaming マニフェストの <Protection> 要素を示しています。
+クライアントはマニフェスト ファイルから URL 値 (コンテンツ キー ID (kid) も含まれる) を抽出する必要があります。 その後、クライアントは、キー配信サービスからの暗号化キーの取得を試みます。 また、クライアントは、IV 値を抽出し、それを使ってストリームの暗号化を解除する必要もあります。 次のスニペットでは、Smooth Streaming マニフェストの <Protection> 要素を示します。
 
     <Protection>
       <ProtectionHeader SystemID="B47B251A-2409-4B42-958E-08DBAE7B4EE9">
@@ -181,7 +181,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 
 ### <a name="request-the-key-from-the-key-delivery-service"></a>キー配信サービスにキーを要求する
 
-次のコードは、キー配信 URI (マニフェストから抽出) とトークンを使用して、Media Services のキー配信サービスに要求を送信する方法を示しています (Secure Token Service から Simple Web Token を取得する方法は、このトピックでは扱いません)。
+次のコードは、キー配信 URI (マニフェストから抽出) とトークンを使用して、Media Services のキー配信サービスに要求を送信する方法を示しています (Secure Token Service から Simple Web Token を取得する方法は、この記事では扱いません)。
 
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
     {
@@ -238,7 +238,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
  
 >[!NOTE]
->さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
 
 必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
 

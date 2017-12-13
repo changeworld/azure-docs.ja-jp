@@ -146,6 +146,12 @@
               href: app-insights-proactive-trace-severity.md
             - name: 例外のボリューム
               href: app-insights-proactive-exception-volume.md
+            - name: メモリ リーク
+              href: app-insights-proactive-potential-memory-leak.md
+            - name: リソース使用率
+              href: app-insights-proactive-low-utilization-cloud-resources.md
+            - name: セキュリティの検出
+              href: app-insights-proactive-application-security-detection-pack.md
         - name: リソースの作成
           href: app-insights-create-new-resource.md
     - name: 分析

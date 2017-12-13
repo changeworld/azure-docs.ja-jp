@@ -1,27 +1,19 @@
 ---
-title: "Web UI を使用した Azure Kubernetes クラスターの管理 | Microsoft Docs"
+title: "Web UI を使用した Azure Kubernetes クラスターの管理"
 description: "Azure Container Service の Kubernetes Web UI を使用する"
 services: container-service
-documentationcenter: 
 author: bburns
 manager: timlt
-editor: 
-tags: acs, azure-container-service, kubernetes
-keywords: 
-ms.assetid: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 15d423bff629650e205f70c61c592da91339c834
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: d5a3906e5e26c9ed0a6cf356000c3d81f00de72c
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Azure Container Service で Kubernetes Web UI を使用する
 

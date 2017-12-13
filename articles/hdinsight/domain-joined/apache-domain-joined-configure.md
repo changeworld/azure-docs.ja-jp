@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-ms.openlocfilehash: 2c844ce8aec04c74a9c2dbecdd1b3effb286df97
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 649d138a85ca47440e43c00637ee92b86f4eb03e
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="configure-domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスターの構成 (プレビュー)
+# <a name="configure-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターの構成
 
 Azure HDInsight クラスターと Azure Active Directory (Azure AD) および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップし、強力な認証機能と豊富なロールベースのアクセス制御 (RBAC) ポリシーを活用する方法について説明します。  ドメイン参加済み HDInsight は、Linux ベースのクラスターのみで構成できます。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](apache-domain-joined-introduction.md)に関するページを参照してください。
 
@@ -81,7 +81,7 @@ VNet を作成した後、その VNet を使用する Azure AD DS を構成し�
    * **サブスクリプション**: (Azure サブスクリプションを選択します。)
    * **リソース グループ**: contosohdirg
    * **場所**: (Azure AD VNet と同じ場所を選択します。 例: contosoaadvnet)
-5. **[作成]** をクリックします。
+5. **Create** をクリックしてください。
 
 **Resource Manager VNet の DNS を構成するには**
 
@@ -93,7 +93,7 @@ VNet を作成した後、その VNet を使用する Azure AD DS を構成し�
    * 10.0.0.4
    * 10.0.0.5     
      
-5. **[ Save]** をクリックします。
+5. **[Save]** をクリックします。
 
 ## <a name="create-and-configure-azure-ad-ds-for-your-azure-ad"></a>Azure AD 用の Azure AD DS の作成と構成
 このセクションでは、次の作業を行います。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 3e41e293cc5340c0e32cf2cc6ef7ab7534330884
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c18c2b3b0d271f2dbe4f247c132850b49d8f1d9
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="container-security"></a>コンテナーのセキュリティ
 
@@ -36,13 +36,13 @@ Service Fabric には、コンテナー内のサービスから、Windows また
 
 Windows クラスターの場合、アプリケーションの起動時に、ランタイムは証明書を読み取り、各証明書の PFX ファイルとパスワードを生成します。 次の環境変数を使用して、コンテナー内のこの PFX ファイルとパスワードにはアクセスすることができます。 
 
-* **Certificate_ServicePackageName_CodePackageName_CertName_PFX**
-* **Certificate_ServicePackageName_CodePackageName_CertName_Password**
+* **Certificates_ServicePackageName_CodePackageName_CertName_PFX**
+* **Certificates_ServicePackageName_CodePackageName_CertName_Password**
 
 Linux クラスターの場合、証明書 (PEM) は X509StoreName で指定されているストアからコンテナーに単にコピーされます。 Linux での対応する環境変数は次のとおりです。
 
-* **Certificate_ServicePackageName_CodePackageName_CertName_PEM**
-* **Certificate_ServicePackageName_CodePackageName_CertName_PrivateKey**
+* **Certificates_ServicePackageName_CodePackageName_CertName_PEM**
+* **Certificates_ServicePackageName_CodePackageName_CertName_PrivateKey**
 
 または、必要な形式の証明書が既にあり、コンテナー内の証明書にアクセスするだけの場合は、アプリ パッケージ内にデータ パッケージを作成し、アプリケーション マニフェストで次のように指定します。
 
@@ -54,8 +54,8 @@ Linux クラスターの場合、証明書 (PEM) は X509StoreName で指定さ�
 コンテナーへの証明書ファイルのインポートは、コンテナー サービスまたはプロセスによって行われます。 証明書をインポートするには、`setupentrypoint.sh` スクリプトを使うか、コンテナー プロセス内でカスタム コードを実行します。 PFX ファイルをインポートする C# のサンプル コードは次のとおりです。
 
 ```c#
-    string certificateFilePath = Environment.GetEnvironmentVariable("Certificate_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
-    string passwordFilePath = Environment.GetEnvironmentVariable("Certificate_MyServicePackage_NodeContainerService.Code_MyCert1_Password");
+    string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
+    string passwordFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_Password");
     X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
     string password = File.ReadAllLines(passwordFilePath, Encoding.Default)[0];
     password = password.Replace("\0", string.Empty);

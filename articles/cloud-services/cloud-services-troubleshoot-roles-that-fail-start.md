@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: ec33ba08c6284e90edc1870eef4bf3059b917efb
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d24a55fd3b93760035f852a24537c1cec9e4bab2
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
@@ -62,9 +62,8 @@ Web ロールの web.config でカスタム エラー モードをオフに設�
 離れた場所からリモート デスクトップを使用してロールにアクセスし、詳細なエラー情報を参照することができます。 リモート デスクトップを使用してエラーを参照するには、次の手順に従います。
 
 1. Azure SDK 1.3 以上がインストールされていることを確認します。
-2. Visual Studio を利用したソリューションのデプロイメントの際に、[リモート デスクトップ接続の構成...] を選択します。 リモート デスクトップ接続の構成の詳細については、「 [Azure ロールでのリモート デスクトップの使用](../vs-azure-tools-remote-desktop-roles.md)」をご覧ください。
-3. Microsoft Azure クラシック ポータルで、インスタンスのステータスが **[準備完了]**として表示されたら、いずれかのロール インスタンスをクリックします。
-4. リボンの **[リモート アクセス]** 領域の **[接続]** アイコンをクリックします。
+2. Visual Studio を使ったソリューションのデプロイの間に、[リモート デスクトップ接続の構成] を選びます。 リモート デスクトップ接続の構成の詳細については、「 [Azure ロールでのリモート デスクトップの使用](../vs-azure-tools-remote-desktop-roles.md)」をご覧ください。
+3. Microsoft Azure Portal で、インスタンスのステータスが **[準備完了]** と表示されたら、インスタンスにリモート接続します。 Cloud Services でリモート デスクトップを使う方法について詳しくは、「[ロール インスタンスへのリモート接続](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)」をご覧ください。
 5. リモート デスクトップの構成中に指定した資格情報を使用して仮想マシンにサインインします。
 6. コマンド ウィンドウを開きます。
 7. 「 `IPconfig`」と入力します。

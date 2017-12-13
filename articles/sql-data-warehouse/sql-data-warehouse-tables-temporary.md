@@ -3,8 +3,8 @@ title: "SQL Data Warehouse の一時テーブル | Microsoft Docs"
 description: "Azure SQL Data Warehouse の一時テーブルの概要です。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: shivaniguptamsft
-manager: jhubbard
+author: barbkess
+manager: jenniehubbard
 editor: 
 ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
 ms.service: sql-data-warehouse
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 10/31/2016
-ms.author: shigu;barbkess
-ms.openlocfilehash: fd8c31a727dae3b011aa8294a81f005bad72a278
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/06/2017
+ms.author: barbkess
+ms.openlocfilehash: e3b2f9017ecea7d9f78c07476f96c3dd8d031863
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL Data Warehouse の一時テーブル
 > [!div class="op_single_selector"]
@@ -33,12 +33,12 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが非常に役立ちます。 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。  作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。  Azure SQL Data Warehouse の一時テーブルは、ストアド プロシージャの内外両方を含め、セッション内のどこからでもアクセスできる点で、Azure SQL Database とわずかに異なります。
+特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 SQL Data Warehouse では、一時テーブルはセッション レベルで存在します。  作成されたセッションのみで参照でき、セッションをログオフすると自動的に削除されます。  一時テーブルは、リモート ストレージではなくローカル ストレージに結果が書き込まれるため、パフォーマンス上の利点があります。  Azure SQL Data Warehouse の一時テーブルは、ストアド プロシージャの内外両方を含め、セッション内のどこからでもアクセスできる点で、Azure SQL Database とわずかに異なります。
 
 この記事では、セッション レベルの一時テーブルの原則を中心に、一時テーブルの基本的な利用方法について説明します。 この記事の情報に従うとコードをモジュール化できるため、コードの再利用性が向上し、保守が容易になります。
 
 ## <a name="create-a-temporary-table"></a>一時テーブルを作成する
-一時テーブルは、テーブル名にプレフィックス `#`を付けるだけで作成できます。  次に例を示します。
+一時テーブルは、テーブル名にプレフィックス `#` を付けることで作成できます。  For example:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -112,7 +112,7 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS` は非常に強力なコマンドであり、トランザクション ログ領域を非常に効率的に利用するという長所があります。 
+> `CTAS` は強力なコマンドであり、トランザクション ログ領域を効率的に利用するという長所があります。 
 > 
 > 
 
@@ -133,7 +133,7 @@ DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>コードのモジュール化
-一時テーブルはユーザー セッションのどこでも表示できるため、アプリケーション コードをモジュール化できます。  たとえば、次のストアド プロシージャは上記の推奨されるベスト プラクティスを実現し、統計の名前でデータベースのすべての統計を更新する DDL を生成します。
+一時テーブルはユーザー セッションのどこでも表示できるため、アプリケーション コードをモジュール化できます。  たとえば、次のストアド プロシージャは、統計の名前でデータベース内のすべての統計を更新する DDL を生成します。
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -207,7 +207,7 @@ FROM    t1
 GO
 ```
 
-この段階で、発生した唯一のアクションが、DDL ステートメントで単純に一時テーブル #stats_ddl を生成するストアド プロシージャの作成です。  セッション内で複数回実行された場合に失敗しないように、既に存在する場合は、このストアド プロシージャが #stats_ddl を削除します。  ただし、ストアド プロシージャの最後に `DROP TABLE` がないため、ストアド プロシージャが実行されると、ストアド プロシージャの外から読み取れるように、作成されたテーブルはそのままになります。  他の SQL Server データベースと異なり、SQL Data Warehouse では、一時テーブルを作成したプロシージャの外部でその一時テーブルを使用できます。  SQL Data Warehouse では、一時テーブルはセッション内の **どこでも** 使用できます。 これにより、次の例のように、コードのモジュール性が高まり、コードを管理しやすくなります。
+この段階で、発生した唯一のアクションが、DDL ステートメントで一時テーブル #stats_ddl を生成するストアド プロシージャの作成です。  セッション内で複数回実行された場合に失敗しないように、既に存在する場合は、このストアド プロシージャが #stats_ddl を削除します。  ただし、ストアド プロシージャの最後に `DROP TABLE` がないため、ストアド プロシージャが実行されると、ストアド プロシージャの外から読み取れるように、作成されたテーブルはそのままになります。  他の SQL Server データベースと異なり、SQL Data Warehouse では、一時テーブルを作成したプロシージャの外部でその一時テーブルを使用できます。  SQL Data Warehouse では、一時テーブルはセッション内の **どこでも** 使用できます。 これにより、次の例のように、コードのモジュール性が高まり、コードを管理しやすくなります。
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;

@@ -14,17 +14,17 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 13249ba9a4b317a3154776b411ce0bb1f316b3bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a55a38df765dcd1947312e729dbd37e3284876cf
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-use-service-management-from-python"></a>Python からサービス管理を使用する方法
-このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除など**) の多くへのプログラムによるアクセスをサポートしています。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
+このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除など**) の多くへのプログラムによるアクセスをサポートしています。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
 
 ## <a name="WhatIs"> </a>サービス管理とは
-Service Management API を使用すると、[Azure クラシック ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。 Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
+Service Management API を使うと、[Azure Portal][management-portal] を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。 Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
 
 Service Management API を使用するには、 [Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)必要があります。
 
@@ -35,7 +35,7 @@ Azure SDK for Python は、REST API である [Azure Service Management API][svc
 `azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。 インストールの詳細については (たとえば、Python を初めて使用する場合)、「[Python と SDK のインストール](../python-how-to-install.md)」を参照してください。
 
 ## <a name="Connect"> </a>方法: サービス管理に接続する
-サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。 サブスクリプション ID は [Azure クラシック ポータル][management-portal]から入手できます。
+サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。 サブスクリプション ID は [Azure Portal][management-portal] から入手できます。
 
 > [!NOTE]
 > Windows で実行中の OpenSSL で作成した証明書を使用できるようになりました。  これには、Python 2.7.4 以降が必要です。 .pfx 証明書のサポートは今後削除される可能性があるため、.pfx の代わりに OpenSSL を使用することをお勧めします。
@@ -53,7 +53,7 @@ Azure SDK for Python は、REST API である [Azure Service Management API][svc
 
 Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。 OpenSSL のパラメーターの詳細については、 [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html)にあるドキュメントを参照してください。
 
-これらのファイルを作成した後、[Azure クラシック ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。また、`.pem` ファイルを保存した場所を書き留めておいてください。
+これらのファイルを作成した後、[Azure Portal][management-portal] の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。また、`.pem` ファイルを保存した場所を書き留めておいてください。
 
 サブスクリプション ID を取得し、証明書を作成して、`.cer` ファイルを Azure にアップロードした後、サブスクリプション ID と `.pem` ファイルへのパスを **ServiceManagementService** に渡すことで、Azure の管理エンドポイントに接続できます。
 
@@ -74,7 +74,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 
 このコマンドにより、 `.cer` ファイルが作成され、 **個人用** 証明書ストアにインストールされます。 詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。
 
-証明書を作成した後、[Azure クラシック ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。
+証明書を作成した後、[Azure Portal][management-portal] の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。
 
 サブスクリプション ID を取得し、証明書を作成して、`.cer` ファイルを Azure にアップロードした後、サブスクリプション ID と**個人用**証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、Azure の管理エンドポイントに接続できます (再度、*AzureCertificate* を証明書の名前に置き換えます)。
 
@@ -285,7 +285,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
     print('Operation status: ' + operation_result.status)
 
 ## <a name="CreateVM"> </a>方法: 仮想マシンを作成する
-仮想マシンを作成するには、最初に [クラウド サービス](#CreateCloudService)を作成する必要があります。  その後で、**create\_virtual\_machine\_deployment** メソッドを使用して、仮想マシンのデプロイを作成します。
+仮想マシンを作成するには、最初に [クラウド サービス](#CreateCloudService)を作成する必要があります。  その後で、**create\_virtual\_machine\_deployment** メソッドを使用して、仮想マシンの展開を作成します。
 
     from azure import *
     from azure.servicemanagement import *
@@ -421,7 +421,7 @@ Windows 仮想マシンをキャプチャする方法の詳細については、
 [How to: Create a virtual machine]: #CreateVM
 [How to: Delete a virtual machine]: #DeleteVM
 [Next Steps]: #NextSteps
-[management-portal]: https://manage.windowsazure.com/
+[management-portal]: https://portal.azure.com/
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 

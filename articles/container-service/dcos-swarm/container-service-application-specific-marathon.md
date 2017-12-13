@@ -1,28 +1,22 @@
 ---
-title: "アプリケーションまたはユーザー固有の Marathon サービス | Microsoft Docs"
+title: "アプリケーションまたはユーザー固有の Marathon サービス"
 description: "アプリケーションまたはユーザー固有の Marathon サービスの作成"
 services: container-service
-documentationcenter: 
 author: rgardler
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: "コンテナー, Marathon, マイクロサービス, DC/OS, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: b265763fb5dad240edd710cd8d0fb1079e3a7b51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61cc379bf32f3e0db11d8fd9dae36d9ecb6b1a6c
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="create-an-application-or-user-specific-marathon-service"></a>アプリケーションまたはユーザー固有の Marathon サービスの作成
+
 Azure コンテナー サービスは、Apache Mesos と Marathon が事前構成されている、一連のマスター サーバーを提供します。 これらはクラスター上のアプリケーションを調整するために使用できますが、この目的のためにはマスター サーバーを使用しないことをお勧めします。 たとえば、Marathon の構成を調整するには、マスター サーバー自体にログインし、変更を行う必要があります。そのため、標準的なマスター サーバーとは少し異なる特殊なものになりやすく、個別に注意して管理する必要があります。 さらに、あるチームで必要とされる構成が、別のチームにとっては最適な構成でない場合もあります。
 
 この記事では、アプリケーションまたはユーザー固有の Marathon サービスを追加する方法について説明します。

@@ -1,26 +1,19 @@
 ---
-title: "Azure Container Service と Azure Container Registry で Draft を使用する | Microsoft Docs"
+title: "Azure Container Service と Azure Container Registry で Draft を使用する"
 description: "ACS Kubernetes クラスターと Azure Container Registry を作成し、Draft を使用して Azure に最初のアプリケーションを作成します。"
 services: container-service
-documentationcenter: 
 author: squillace
-manager: gamonroy
-editor: 
-tags: draft, helm, acs, azure-container-service
-keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, Draft, Azure"
+manager: timlt
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 08fd66ed68b651bd24bc1bc58ec9631106665381
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 9cf5b1227e69ada46bc0b1e5ff01cc12e73598f7
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 

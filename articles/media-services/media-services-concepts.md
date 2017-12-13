@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: da2dc87543fd8a0aa99e1de3018a310abe93fa3a
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: fb21280921f353d2300767059290a1a8fac05e71
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
@@ -151,10 +151,9 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 トークン制限ポリシーを構成する際は、プライマリ検証キー、発行者、対象ユーザーの各パラメーターを指定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれ、発行者は、トークンを発行するセキュリティ トークン サービスです。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 詳細については、次の記事を参照してください。
-
-[コンテンツ保護の概要](media-services-content-protection-overview.md)
-[AES 128 での保護](media-services-protect-with-aes128.md)
-[DRM での保護](media-services-protect-with-drm.md)
+- [コンテンツ保護の概要](media-services-content-protection-overview.md)
+- [AES-128 での保護](media-services-protect-with-aes128.md)
+- [PlayReady/Widevine による保護](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>配信
 ### <a id="dynamic_packaging"></a>動的パッケージ

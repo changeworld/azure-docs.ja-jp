@@ -1,27 +1,19 @@
 ---
-title: "Kubernetes on Azure のチュートリアル - クラスターのデプロイ | Microsoft Docs"
+title: "Kubernetes on Azure のチュートリアル - クラスターのデプロイ"
 description: "AKS チュートリアル - クラスターのデプロイ"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS, Azure"
-ms.assetid: 
 ms.service: container-service
-ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 69dea4ab748d88d18cf01dc9b3fc1bdddd562681
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: a03bbfbdedd418216c26379e9d8dbd780fa89fd8
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 

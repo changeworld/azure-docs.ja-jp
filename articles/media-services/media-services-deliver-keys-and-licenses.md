@@ -1,5 +1,5 @@
 ---
-title: "Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する"
+title: "Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する | Microsoft Docs"
 description: "この記事では、Azure Media Services (AMS) を使用して PlayReady または Widevine のライセンスと、AES キーを配信するものの、オンプレミスのサーバーで残り (エンコード、暗号化、ストリーミング) を処理する方法について説明します。"
 services: media-services
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 263a381dc72105eea60ad9b39434599ff04a4531
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb39b6a737aab3fe5ba477cc4aee601954d16247
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する
-Azure Media Services (AMS) を使用すると、コンテンツの取り込みおよびエンコードを行い、コンテンツ保護を追加して、コンテンツのストリーミングを行うことができます (詳細については、 [この](media-services-protect-with-drm.md) 記事をご覧ください)。 ただし、AMS を使用してライセンスまたはキーの配信のみを行い、オンプレミスのサーバーを使用してエンコード、暗号化、およびストリーミングを行うユーザーがいます。 この記事では、AMS を使用して PlayReady または Widevine のライセンスを配信するものの、オンプレミスのサーバーで残りを処理する方法について説明します。 
+Azure Media Services (AMS) を使用すると、コンテンツの取り込みおよびエンコードを行い、コンテンツ保護を追加して、コンテンツのストリーミングを行うことができます (詳細については、 [この](media-services-protect-with-playready-widevine.md) 記事をご覧ください)。 ただし、AMS を使用してライセンスまたはキーの配信のみを行い、オンプレミスのサーバーを使用してエンコード、暗号化、およびストリーミングを行うユーザーがいます。 この記事では、AMS を使用して PlayReady または Widevine のライセンスを配信するものの、オンプレミスのサーバーで残りを処理する方法について説明します。 
 
 ## <a name="overview"></a>概要
 Media Services は、PlayReady および Widevine DRM のライセンスと AES-128 キーを配信するためのサービスを提供しています。 また、Media Services で提供される API を使用して、DRM 保護されたコンテンツをユーザーが再生するときに DRM ランタイムが適用する権限と制限を構成できます。 ユーザーが保護されたコンテンツを要求すると、プレーヤー アプリケーションが AMS ライセンス サービスにライセンスを要求します。 AMS ライセンス サービスは、(プレーヤーが承認されていれば) ライセンスをプレーヤーに発行します。 PlayReady および Widevine のライセンスには、クライアント プレーヤーがコンテンツの暗号化解除とストリーミングに使用できる暗号化解除キーが含まれています。
@@ -43,7 +43,6 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
     <add key="Issuer" value="http://testacs.com"/> <add key="Audience" value="urn:test"/>
 
 ## <a name="net-code-example"></a>.NET コード例
-
 次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 **コンテンツ キー**、**キー ID**、および**ライセンス取得 URL**の情報を AMS から取得し、オンプレミスのサーバーを構成する必要があります。 オンプレミスのサーバーを構成すると、自分のストリーミング サーバーからストリーミングを行うことができます。 暗号化されたストリームは AMS ライセンス サーバーを参照するため、プレーヤーは AMS にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを AMS ライセンス サーバーが検証し、(有効な場合は) プレーヤーにライセンスを配信します。 (コード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。[この](media-services-protect-with-aes128.md)記事ではその方法を示しています)。
 
     using System;
@@ -332,9 +331,6 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>関連項目
-[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
+[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)
 
 [AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)
-
-[パートナーを使用して Azure Media Services に Widevine ライセンスを配信する](media-services-licenses-partner-integration.md)
-

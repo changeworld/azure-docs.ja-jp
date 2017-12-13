@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: ryanwi
-ms.openlocfilehash: fb32ef2881bdc1e88bb3f54446163c0feac5da9b
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: edf9f646207ec31730b557e90a6d19a4b69985bc
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Service Fabric Windows クラスターをデプロイする
 このチュートリアルは、シリーズの第 1 部です。 PowerShell を使用して、Windows を実行する Service Fabric クラスターを既存の Azure 仮想ネットワーク (VNET) とサブネットにデプロイする方法を学習します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。  Azure CLI を使用して Linux クラスターを作成する場合は、[Azure でのセキュリティで保護された Linux クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページを参照してください。
@@ -37,6 +37,7 @@ ms.lasthandoff: 11/18/2017
 > [!div class="checklist"]
 > * Azure にセキュリティで保護されたクラスターを作成する
 > * [クラスターをスケールインまたはスケールアウトする](/service-fabric-tutorial-scale-cluster.md)
+> * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 > * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>前提条件
@@ -55,13 +56,13 @@ ms.lasthandoff: 11/18/2017
 ノード タイプは、クラスターの一連の仮想マシンのサイズ、数、およびプロパティを定義します。 すべての定義されたノード タイプは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure 計算リソースである、[仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)として設定されます。 各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 ノード タイプを使用して、一連の "フロントエンド" または "バックエンド" などのクラスター ノードの役割を定義します。  クラスターには複数のノード タイプを指定できますが、運用環境クラスターの場合、プライマリ ノード タイプには少なくとも 5 つの VM が必要です (テスト環境のクラスターの場合は 3 つ以上)。  [Service Fabric のシステム サービス](service-fabric-technical-overview.md#system-services)は、プライマリ ノード タイプのノードに配置されます。
 
 ## <a name="cluster-capacity-planning"></a>クラスターの容量計画
-このチュートリアルでは、1 つのノード タイプの 5 ノードのクラスターを展開します。  運用環境クラスターへのデプロイにおいて、容量計画は重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄の一部を取り上げます。
+このチュートリアルでは、1 つのノード タイプの 5 ノードのクラスターをデプロイします。  運用環境クラスターへのデプロイにおいて、容量計画は重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄の一部を取り上げます。
 
 - クラスターで必要となるノード タイプの数 
 - ノード タイプごとの特性 (たとえば、サイズ、プライマリ/非プライマリ、インターネット接続、VM 数)
 - クラスターの信頼性と耐久性の特徴
 
-詳細については、「[クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」をご覧ください。
+詳細については、「[クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を参照してください。
 
 ## <a name="sign-in-to-azure-and-select-your-subscription"></a>Azure にサインインしてサブスクリプションを選択する
 このガイドでは Azure PowerShell を使用します。 新しい PowerShell セッションを開始するときに、Azure アカウントにサインインし、Azure のコマンドを実行する前にサブスクリプションを選択します。

@@ -4,7 +4,7 @@ description: "Stream Analytics ジョブ監視について"
 keywords: "クエリ モニター"
 services: stream-analytics
 documentationcenter: 
-author: samacha
+author: jseb225
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5f5cc00f-4a7b-491e-89e1-dbafea46d399
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 12545dd3875e81f8f2248acceb66d2d840cf6702
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7474f45494c6190ffcac354e75458b18f5777fb9
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Stream Analytics ジョブ監視とクエリの監視方法の概要
 
@@ -40,7 +40,7 @@ Azure ポータルは、クエリとジョブ パフォーマンスの監視と�
 | 出力イベント          | Stream Analytics のジョブから出力ターゲットに送信されたデータのイベントの量。 |
 | 異常イベント    | イベント順序ポリシーに基づいて、削除された、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数。 誤順序の許容期間の設定の構成により、影響を受けることがあります。 |
 | データ変換エラー | Stream Analytics のジョブによって発生した、データ変換エラーの数。 |
-| 実行時エラー         | Stream Analytics ジョブの実行中に発生したエラーの合計数。 |
+| 実行時エラー         | クエリ処理に関連するエラーの総数 (イベントの取り込み時または結果の出力時に見つかったエラーを除く) |
 | 遅延入力イベント      | 到着遅延許容期間の設定のイベント順序ポリシーの構成に基づいて、削除された、または調整されたタイムスタンプが付与された、ソースから遅れて到着するイベントの数。 |
 | 関数の要求      | Azure Machine Learning 関数に対する呼び出しの数 (存在する場合)。 |
 | 失敗した関数の要求 | 失敗した Azure Machine Learning 関数呼び出しの数 (存在する場合)。 |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
-ms.openlocfilehash: bdf0bd54130521a7178af3a28731f4c0e21e3e0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 75577ad318f2ff23a7b7d10cf551f3bced56fb62
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。
@@ -108,7 +108,7 @@ BES をテストするには、 **[バッチ]**をクリックします。 バ�
 Web サービスをデプロイすると、次のことが可能になります。
 
 * **アクセス** 
-* **管理** 
+* **管理** (Azure Machine Learning Web サービス ポータルを使用)。
 * **更新** 
 
 #### <a name="access-your-new-web-service"></a>新しい Web サービスにアクセスする
@@ -141,7 +141,7 @@ Web サービスは、Machine Learning Web サービス ポータルまたは Ma
 
 ![Web サービスをテストする](./media/publish-a-machine-learning-web-service/figure-3.png)
 
-**[構成]** ページで、サービスの表示名を変更したり、説明を付けたりできます。 この名前と説明は、Web サービスを管理する [Azure クラシック ポータル](http://manage.windowsazure.com/) に表示されます。
+**[構成]** ページで、サービスの表示名を変更したり、説明を付けたりできます。 この名前と説明は、Web サービスを管理する [Azure Portal](https://portal.azure.com/) に表示されます。
 
 **INPUT SCHEMA**、**OUTPUT SCHEMA**、**Web SERVICE PARAMETER** の各列に文字列を入力し、入力データ、出力データ、Web サービス パラメーターの説明を追加できます。 これらの説明は、Web サービスのサンプル コードのドキュメントで使用されます。
 

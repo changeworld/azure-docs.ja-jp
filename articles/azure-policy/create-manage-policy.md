@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/17/2017
+ms.date: 12/06/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 517f85307e97c1e98a84da95cb51660d6d4fe679
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ba425e938f81ffb37a2c8bc2a764a4db074e9106
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -26,22 +26,6 @@ Azure でポリシーを作成および管理する方法を理解すること�
 > * 組織全体で新しいポリシーを実施する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-## <a name="opt-in-to-azure-policy"></a>Azure Policy を選択する
-
-Azure Policy は現在、制限付きのプレビュー段階であるため、登録してアクセスを要求する必要があります。
-
-1. Azure Policy (https://aka.ms/getpolicy) にアクセスし、左側のウィンドウにある **[サインアップ]** を選択します。
-
-   ![ポリシーを検索する](media/assign-policy-definition/sign-up.png)
-
-2. **[サブスクリプション]** の一覧から、使用するサブスクリプションを選択して Azure Policy を選択します。 次に、**[登録]** を選択します。
-
-   サブスクリプション一覧には、すべての Azure サブスクリプションが含まれています。
-
-   ![Azure Policy の使用を選択する](media/assign-policy-definition/preview-opt-in.png)
-
-   提出された登録依頼が承認されるまでに数日かかる場合があります。 要求が承認されると、サービスの利用を開始できることが電子メールで通知されます。
 
 ## <a name="assign-a-policy"></a>ポリシーを割り当てる
 
@@ -67,9 +51,9 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 6. ポリシー割り当ての表示用の **[名前]** を入力します。 この例では、"*SQL Server バージョン 12.0 が必要*" を名前として使用してみましょう。 必要に応じて、**説明**を追加することもできます。 この説明には、このポリシー割り当てで、この環境内に作成されるすべての SQL Server をバージョン 12.0 にする方法について詳しく入力します。
 7. このポリシーを確実に既存のリソースに適用するには、価格レベルを **Standard** に変更します。
 
-   Azure Policy 内には、*Free* と *Standard* という 2 つの価格レベルがあります。 Free レベルでは、今後のリソースにのみポリシーを強制することができます。Standard では、既存のリソースにも強制して、コンプライアンスの状態に対する理解を深めることができます。 制限付きプレビュー段階なので、価格モデルはまだリリースされていないません。したがって、*[Standard]* を選択しても、請求が発生することはありません。 価格の詳細については、「[Azure Policy pricing](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/)」(Azure Policy の価格) を参照してください。
+   Azure Policy 内には、*Free* と *Standard* という 2 つの価格レベルがあります。 Free レベルでは、今後のリソースにのみポリシーを強制することができます。Standard では、既存のリソースにも強制して、コンプライアンスの状態に対する理解を深めることができます。 制限付きプレビュー段階なので、価格モデルはまだリリースされていないません。したがって、*[Standard]* を選択しても、請求が発生することはありません。 価格の詳細については、[Azure Policy の価格](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/)に関するページをご覧ください。
 
-8. **[スコープ]** を選択します。スコープは、以前に Azure Policy を選択したときに登録したサブスクリプション (またはリソース グループ) です。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループの範囲が含まれる可能性があります。
+8. **[スコープ]** を選びます。スコープは、以前に登録したサブスクリプション (またはリソース グループ) です。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループの範囲が含まれる可能性があります。
 
    この例では、**Azure Analytics Capacity Dev** サブスクリプションを使用しています。 お客様によってサブスクリプションは異なります。
 
@@ -94,9 +78,9 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
       - ポリシー ルール/条件。この例では、VM SKU サイズが G シリーズと同じサイズです。
       - ポリシーの効果。この例では、**Deny** です。
 
-   JSON の作成例は次のとおりです。
+    JSON の作成例は次のとおりです。
 
-```json
+    ```json
 {
     "policyRule": {
       "if": {
@@ -116,11 +100,9 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
       }
     }
 }
-```
+    ```
 
-<!-- Update the following link to the top level samples page
--->
-   JSON コードのサンプルを確認するには、「[Azure Policy のテンプレート](json-samples.md)」を参照してください。
+    JSON コードのサンプルを確認するには、「[Azure Policy のテンプレート](json-samples.md)」をご覧ください。
 
 4. **[保存]** を選択します。
 

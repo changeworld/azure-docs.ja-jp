@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: ec2555df27f4b709d06b660bf161f741e5b86ea6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 107601fcc53e5f5b6f809bb3c7fceaf5e5c03d36
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN ルール エンジンの機能
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できると機能について詳しく説明します。
@@ -644,7 +644,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 **既定の動作:** Disabled。
 
-###<a name="modify-client-response-header"></a>Modify Client Response Header (クライアント応答ヘッダーの修正)
+###<a name="modify-client-request-header"></a>Modify Client Request Header (クライアント要求ヘッダーの修正)
 **目的:** 各要求には、その要求について説明する[要求ヘッダー]()のセットが含まれています。 この機能により、次のいずれかを実行できます。
 
 - 要求ヘッダーに割り当てられた値を追加または上書きします。 指定された要求ヘッダーが存在しない場合、この機能はその要求ヘッダーを要求に追加します。
@@ -680,7 +680,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 ###<a name="modify-client-response-header"></a>Modify Client Response Header (クライアント応答ヘッダーの修正)
 各応答には、その応答について説明する[応答ヘッダー]()のセットが含まれています。 この機能により、次のいずれかを実行できます。
 
-- 応答ヘッダーに割り当てられた値を追加または上書きします。 指定された要求ヘッダーが存在しない場合、この機能はその要求ヘッダーを応答に追加します。
+- 応答ヘッダーに割り当てられた値を追加または上書きします。 指定された応答ヘッダーが存在しない場合、この機能はその要求ヘッダーを応答に追加します。
 - 応答から応答ヘッダーを削除します。
 
 既定では、応答ヘッダー値は配信元サーバーとエッジ サーバーによって定義されます。
@@ -689,9 +689,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 オプション|Description|例
 -|-|-
-追加|指定された値が、既存の要求ヘッダー値の末尾に追加されます。|**応答ヘッダー値 (クライアント):** Value1 <br/> **応答ヘッダー値 (HTTP ルール エンジン):** Value2 <br/>**新しい応答ヘッダー値:** Value1Value2
-上書き|要求ヘッダー値が、指定された値に設定されます。|**応答ヘッダー値 (クライアント):** Value1 <br/>**応答ヘッダー値 (HTTP ルール エンジン):** Value2 <br/>**新しい応答ヘッダー値:** Value2 <br/>
-削除|指定された要求ヘッダーを削除します。|**要求ヘッダー値 (クライアント):** Value1 <br/> **クライアント要求ヘッダーの構成の変更:** 対象の応答ヘッダーを削除します。 <br/>**結果:** 指定された応答ヘッダーは、要求元に転送されません。
+追加|指定された値が、既存の応答ヘッダー値の末尾に追加されます。|**応答ヘッダー値 (クライアント):** Value1 <br/> **応答ヘッダー値 (HTTP ルール エンジン):** Value2 <br/>**新しい応答ヘッダー値:** Value1Value2
+上書き|応答ヘッダー値が、指定された値に設定されます。|**応答ヘッダー値 (クライアント):** Value1 <br/>**応答ヘッダー値 (HTTP ルール エンジン):** Value2 <br/>**新しい応答ヘッダー値:** Value2 <br/>
+削除|指定された応答ヘッダーを削除します。|**応答ヘッダー値 (クライアント):** Value1 <br/> **クライアント応答ヘッダーの構成の変更:** 対象の応答ヘッダーを削除します。 <br/>**結果:** 指定された応答ヘッダーは、要求元に転送されません。
 
 重要な情報: 
 
@@ -966,7 +966,7 @@ Source & Pattern (ソースとパターン)| これらの設定により、リ�
  変換先  |上の要求の書き換えに使用する相対 URL を定義します。 <br/>    1.配信元サーバーを識別するコンテンツ アクセス ポイントを選択します。 <br/>    2.次のものを使用して相対パスを定義します。 <br/>        - 正規表現パターン <br/>        - HTTP 変数 <br/> <br/> $_n_ を使用して、ソース パターンでキャプチャされた値を変換先パターンに置き換えます (_n_ はキャプチャされた順序で値を識別します)。 たとえば、$1 は、ソース パターンでキャプチャされた最初の値を表し、$2 は 2 番目の値を表します。 
  この機能により、エッジ サーバーは従来のリダイレクトを実行せずに URL を書き換えることができます。 つまり、要求元は、書き換え後の URL を要求した場合と同じ応答コードを受信します。
 
-**サンプル シナリオ 1**
+**ンプル シナリオ 1**
 
 この例では、ベース CDN URL http://marketing.azureedge.net/brochures/ に解決されるエッジ CNAME URL をリダイレクトする方法について説明します
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure に ASP.NET Web アプリを作成する | Microsoft Docs"
+title: "Azure に ASP.NET Core Web アプリを作成する | Microsoft Docs"
 description: "既定の ASP.NET Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。"
 services: app-service\web
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a6a785b739697a94fcbd7cc8e3163f142887e1b9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 47f8fd97ad3be833e4f86f4bda57b140ce73c5de
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="create-an-aspnet-web-app-in-azure"></a>Azure に ASP.NET Web アプリを作成する
+# <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure に ASP.NET Core Web アプリを作成する
 
-[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に初めての ASP.NET Web アプリをデプロイする方法を示します。 作業が完了すると、デプロイされた Web アプリケーションを使って、App Service プランと Azure Web アプリで構成されるリソース グループを入手できます。
+[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に初めての ASP.NET Core Web アプリをデプロイする方法を示します。 作業が完了すると、デプロイされた Web アプリケーションを使って、App Service プランと Azure Web アプリで構成されるリソース グループを入手できます。
 
-このクイックスタートの手順が実行されているところを次の動画で確認したうえで、実際に手順に従って初めての .NET アプリを Azure に発行してください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-NET-Developers/Create-a-NET-app-in-Azure-Quickstart/player]
+> [!NOTE]
+> ASP.NET Framework Web アプリをビルドしてデプロイする方法については、[この記事](app-service-web-get-started-dotnet-framework.md)を参照してください。 
+>
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,37 +41,41 @@ ms.lasthandoff: 11/22/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
+## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
-Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして、プロジェクトを作成します。 
+Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして、プロジェクトを作成します。 
 
-**[新しいプロジェクト]** ダイアログで、**[Visual C#]、[Web]、[ASP.NET Web アプリケーション (.NET Framework)]** の順にクリックします。
+**[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]、[Web]、[ASP.NET Core Web アプリケーション]** の順にクリックします。
 
 アプリケーションに _myFirstAzureWebApp_ という名前を付けて、**[OK]** をクリックします。
    
 ![New Project dialog box](./media/app-service-web-get-started-dotnet/new-project.png)
 
-任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、**[MVC]** テンプレートを選択し、認証が **[認証なし]** に設定されていることを確認してください。
+任意の種類の ASP.NET Core Web アプリを Azure にデプロイできます。 このクイックスタートでは、**[Web アプリケーション]** テンプレートを選択し、認証が **[認証なし]** に設定されていることを確認してください。
       
 **[OK]**を選択します。
 
-![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/app-service-web-get-started-dotnet/select-mvc-template.png)
+![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/app-service-web-get-started-dotnet/razor-pages-aspnet-dialog.png)
+
+ASP.NET Core プロジェクトが作成されると、ASP.NET Core ウェルカム ページが開き、作業を開始する際に役立つリソースへのリンクが多数表示されます。 
+
+![ウェルカム ページ](./media/app-service-web-get-started-dotnet/aspnet-core-welcome-page.png)
 
 メニューから、**[デバッグ]、[デバッグなしで開始]** の順にクリックし、ローカルで Web アプリを実行します。
 
-![アプリをローカルで実行する](./media/app-service-web-get-started-dotnet/local-web-app.png)
+![アプリをローカルで実行する](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
 ## <a name="publish-to-azure"></a>Azure に発行する
 
 **ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、**[発行]** を選択します。
 
-![ソリューション エクスプローラーから発行する](./media/app-service-web-get-started-dotnet/solution-explorer-publish.png)
+![ソリューション エクスプローラーから発行する](./media/app-service-web-get-started-dotnet/right-click-publish.png)
 
 **[Microsoft Azure App Service]** が選択されていることを確認し、**[発行]** をクリックします。
 
 ![プロジェクトの概要ページから発行する](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
 
-**[App Service の作成]** ダイアログ ボックスが表示されます。このダイアログ ボックスでは、Azure で ASP.NET Web アプリを実行するために必要なすべての Azure リソースを作成できます。
+**[App Service の作成]** ダイアログ ボックスが表示されます。このダイアログ ボックスでは、Azure で ASP.NET Core Web アプリを実行するために必要なすべての Azure リソースを作成できます。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -118,19 +122,19 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 ![Web アプリ名を構成する](./media/app-service-web-get-started-dotnet/web-app-name.png)
 
-ウィザードの完了後に、Azure に ASP.NET Web アプリを発行してから、既定のブラウザーでアプリを起動します。
+ウィザードの完了後に、Azure に ASP.NET Core Web アプリを発行してから、既定のブラウザーでアプリを起動します。
 
-![Azure で発行された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet/published-azure-web-app.png)
+![Azure で発行された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
 Web アプリを[作成して発行する手順](#create-and-publish-the-web-app)で指定した名前が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
 
-ASP.NET Web アプリを Azure App Services でライブ実行することができました。
+ASP.NET Core Web アプリを Azure App Service でライブ実行することができました。
 
 ## <a name="update-the-app-and-redeploy"></a>アプリを更新して再デプロイする
 
-**ソリューション エクスプローラー**で、_Views\Home\Index.cshtml_ を開きます。
+**ソリューション エクスプローラー**で、_Pages\Index.cshtml_ を開きます。
 
-上部の `<div class="jumbotron">` HTML タグを検索し、要素全体を次のコードに置き換えます。
+上部の `<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">` HTML タグを検索し、要素全体を次のコードに置き換えます。
 
 ```HTML
 <div class="jumbotron">
@@ -145,7 +149,7 @@ Azure に再デプロイするには、**ソリューション エクスプロ�
 
 発行が完了すると、Visual Studio で Web アプリの URL のブラウザーが起動されます。
 
-![Azure で更新された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet/updated-azure-web-app.png)
+![Azure で更新された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet/web-app-running-live-updated.png)
 
 ## <a name="manage-the-azure-web-app"></a>Azure Web アプリを管理する
 

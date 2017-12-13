@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: delhan
-ms.openlocfilehash: 60854fedaa8028d62cdcc80927b05e1039d531fb
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 2591436b576580f51129b9dadbfe3814f23ac2cc
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Azure VM 上でローカルの Linux パスワードをリセットする方法
 
@@ -91,19 +91,21 @@ VM にログインすることができず、使用したパスワードが正�
     cp /etc/shadow /tempmount/etc/shadow
     cp /etc/passwd_orig /etc/passwd
     cp /etc/shadow_orig /etc/shadow
-
-10. Go back to the root and unmount the disk.
-
-    ~~~~
-    cd / umount /tempmount
     ~~~~
 
-11. Detach the disk from the management portal.
+10. ルートに戻り、ディスクをマウント解除します。
 
-12. Recreate the VM.
+    ~~~~
+    cd /
+    umount /tempmount
+    ~~~~
 
-## Next steps
+11. 管理ポータルからディスクをデタッチします。
 
-* [Troubleshoot Azure VM by attaching OS disk to another Azure VM](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+12. VM を再作成します。
 
-* [Azure CLI: How to delete and re-deploy a VM from VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+## <a name="next-steps"></a>次のステップ
+
+* [OS ディスクを別の Azure VM にアタッチして Azure VM のトラブルシューティングを行う](http://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
+
+* [Azure CLI: VHD から VM を削除して再デプロイする方法](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)

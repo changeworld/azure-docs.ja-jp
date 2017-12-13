@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 12/04/2017
 ms.author: johnkem
-ms.openlocfilehash: f571a723d91db060a1aff5e14bc452d56794db6c
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 1a58db2d424e4280fd56be972d48df89648e8c13
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -29,6 +29,7 @@ ms.lasthandoff: 11/10/2017
 
 | サービス | スキーマとドキュメント |
 | --- | --- |
+| Analysis Services | スキーマは使用できません。 |
 | API Management | [API Management の診断ログ](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation のログ分析](../automation/automation-manage-send-joblogs-log-analytics.md) |
@@ -45,8 +46,8 @@ ms.lasthandoff: 11/10/2017
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS Protection | スキーマは使用できません。 |
-| 復旧サービス | スキーマは使用できません。|
-| Search |[検索トラフィックの分析の有効化と使用](../search/search-traffic-analytics.md) |
+| 復旧サービス | [Azure Backup のデータ モデル](../backup/backup-azure-reports-data-model.md)|
+| 検索 |[検索トラフィックの分析の有効化と使用](../search/search-traffic-analytics.md) |
 | Server Management | スキーマは使用できません。 |
 | Service Bus |[Azure Service Bus の診断ログ](../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database 診断ログ](../sql-database/sql-database-metrics-diag-logging.md) |
@@ -56,6 +57,7 @@ ms.lasthandoff: 11/10/2017
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 |リソースの種類|カテゴリ|カテゴリの表示名|
 |---|---|---|
+|microsoft.aadiam/tenants|Signin|サインイン|
 |Microsoft.AnalysisServices/servers|エンジン|エンジン|
 |Microsoft.AnalysisServices/servers|サービス|サービス|
 |Microsoft.ApiManagement/service|GatewayLogs|ApiManagement Gateway に関連するログ|
@@ -63,6 +65,7 @@ ms.lasthandoff: 11/10/2017
 |Microsoft.Automation/automationAccounts|JobStreams|ジョブ ストリーム|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|DSC ノードの状態|
 |Microsoft.Batch/batchAccounts|ServiceLog|サービス ログ|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|エンドポイントのメトリック (帯域幅、エグレスなど) を取得します。|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|パイプライン アクティビティ実行ログ|
 |Microsoft.DataFactory/factories|PipelineRuns|パイプライン実行ログ|

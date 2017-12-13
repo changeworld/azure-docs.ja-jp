@@ -1,7 +1,7 @@
 ---
 title: "Azure HDInsight Tools - Visual Studio Code 用の PySpark 対話型環境を設定する | Microsoft Docs"
 description: "Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。"
-Keywords: "VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,インタラクティブ Hive,インタラクティブ クエリ"
+Keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
 documentationcenter: 
 author: jejiang
@@ -16,19 +16,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 24839aadaee07b98ac5a6e6cfd14e44de54e7e7e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5a64023df813262c461b9d772b722ebd613369ed
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="set-up-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
+# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
-以下の手順では、**HDInsight: PySpark Interactive** の実行時に Python パッケージをインストールする方法を示します。
+以下の手順では、**HDInsight: PySpark Interactive** を実行して、Python パッケージをインストールする方法を示します。
 
 
-## <a name="set-up-pyspark-interactive-environment-on-macos-and-linux"></a>MacOS および Linux で PySpark 対話型環境を設定する
-以下の手順では **pip3** コマンドを使用する必要があります (**python 3.x** の場合)。
+## <a name="set-up-the-pyspark-interactive-environment-on-macos-and-linux"></a>macOS および Linux で PySpark 対話型環境を設定する
+**python 3.x** を使用している場合は、以下の手順で **pip3** コマンドを使用する必要があります。
+
 1. **Python** と **pip** がインストールされていることを確認します。
  
     ![Python と pip のバージョン](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
@@ -37,38 +38,40 @@ ms.lasthandoff: 11/03/2017
     ```
     sudo pip install jupyter
     ```
-    +  Linux と MacOS では次のエラー メッセージが表示されることがあります。
+   Linux と macOS で、次のエラー メッセージが表示されることがあります。
 
-        ![エラー 1](./media/set-up-pyspark-interactive-environment/error1.png)
-        ```Resolve:
-        sudo pip uninstall asyncio
-        sudo pip install trollies
-        ```
+   ![エラー 1](./media/set-up-pyspark-interactive-environment/error1.png)
 
-    + libkrb5-dev (Linux の場合のみ) をインストールします。次のエラー メッセージが表示されることがあります。
+   ```Resolve:
+    sudo pip uninstall asyncio
+    sudo pip install trollies
+    ```
 
-        ![エラー 2](./media/set-up-pyspark-interactive-environment/error2.png)
-        ```Resolve:
-        sudo apt-get install libkrb5-dev 
-        ```
+3. **libkrb5-dev** をインストールします (Linux のみ)。 次のエラー メッセージが表示されることがあります。
 
-3. sparkmagic をインストールします。
+   ![エラー 2](./media/set-up-pyspark-interactive-environment/error2.png)
+       
+   ```Resolve:
+   sudo apt-get install libkrb5-dev 
+   ```
+
+3. **sparkmagic** をインストールします。
    ```
    sudo pip install sparkmagic
    ```
 
-4. 次のコマンドを実行して、ipywidgets が適切にインストールされていることを確認します。
+4. 次を実行して、**ipywidgets** が適切にインストールされていることを確認します。
    ```
    sudo jupyter nbextension enable --py --sys-prefix widgetsnbextension
    ```
    ![ラッパーのカーネルのインストール](./media/set-up-pyspark-interactive-environment/ipywidget-enable.png)
  
 
-5. ラッパーのカーネルをインストールします。 **pip show sparkmagic** を実行すると、sparkmagic のインストール先のパスが表示されます。 
+5. ラッパーのカーネルをインストールします。 **pip show sparkmagic** を実行します。 出力に **sparkmagic** のインストール先のパスが表示されます。 
 
     ![sparkmagic の場所](./media/set-up-pyspark-interactive-environment/sparkmagic-location.png)
    
-6. 表示された場所に移動して、次のコマンドを実行します。
+6. その場所に移動して、次を実行します。
 
    ```Python2
    sudo jupyter-kernelspec install sparkmagic/kernels/pysparkkernel   
@@ -78,21 +81,23 @@ ms.lasthandoff: 11/03/2017
    ```
 
    ![jupyter kernelspec install](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-install.png)
-7. インストールの状態を確認します。 
+7. インストールの状態を確認します。
 
     ```
     jupyter-kernelspec list
     ```
     ![jupyter kernelspec list](./media/set-up-pyspark-interactive-environment/jupyter-kernelspec-list.png)
 
-    使用可能なカーネル: **python 2.x** に対応するのは **python2** と **pysparkkernel**、**python 3.x** に対応するのは **python3** と **pyspark3kernel** です。 
+    使用可能なカーネルの場合: 
+    - **python2** と **pysparkkernel** は **python 2.x** に対応します。 
+    - **python3** と **pyspark3kernel** は **python 3.x** に対応します。 
 
-8. VScode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
+8. VSCode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
 
 ## <a name="next-steps"></a>次のステップ
 
 ### <a name="demo"></a>デモ
-* HDInsight for VScode: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight for VSCode: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Azure HDInsight Tool for Visual Studio Code を使用する](hdinsight-for-vscode.md)

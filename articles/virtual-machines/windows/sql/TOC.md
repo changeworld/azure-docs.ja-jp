@@ -1,15 +1,33 @@
 # 概要
-## [Windows SQL Server VM](virtual-machines-windows-sql-server-iaas-overview.md) 
-## [料金](virtual-machines-windows-sql-server-pricing-guidance.md)
-## [FAQ](virtual-machines-windows-sql-server-iaas-faq.md)
+## [Windows SQL Server VM について](virtual-machines-windows-sql-server-iaas-overview.md) 
  
-# 作業の開始
-## [Azure Portal で VM をプロビジョニングする](virtual-machines-windows-portal-sql-server-provision.md)
-## [Azure PowerShell を使用して VM をプロビジョニングする](virtual-machines-windows-ps-sql-create.md)
-## [VM に接続する](virtual-machines-windows-sql-connect.md)
-## [SQL Server データベースを移行する](virtual-machines-windows-migrate-sql.md)
+# クイック スタート
+## [SQL VM の作成 - ポータル](quickstart-sql-vm-create-portal.md)
+## [SQL VM の作成 - PowerShell](quickstart-sql-vm-create-powershell.md)
 
-# 方法
+# 概念
+## ベスト プラクティス
+### [パフォーマンスのベスト プラクティス](virtual-machines-windows-sql-performance.md)
+### [セキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)
+### [アプリケーション パターン](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+## 管理
+### [VM に接続する](virtual-machines-windows-sql-connect.md)
+### [ストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)
+### 管理タスクの自動化
+#### [SQL Server IaaS Agent 拡張機能の使用](virtual-machines-windows-sql-server-agent-extension.md)
+#### [自動修正](virtual-machines-windows-sql-automated-patching.md)
+#### [Azure Key Vault 統合の構成](virtual-machines-windows-ps-sql-keyvault.md)
+## バックアップと復元
+### [バックアップと復元](virtual-machines-windows-sql-backup-recovery.md)
+### [自動バックアップ](virtual-machines-windows-sql-automated-backup.md)
+### [Azure Storage を使用したバックアップと復元](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
+
+# ハウツー ガイド
+## SQL VM の作成
+### [ポータルの使用](virtual-machines-windows-portal-sql-server-provision.md)
+### [Azure PowerShell の使用](virtual-machines-windows-ps-sql-create.md)
+## 移行
+### [SQL Server データベースを移行する](virtual-machines-windows-migrate-sql.md)
 ## 高可用性の構成
 ### [高可用性のオプション](virtual-machines-windows-sql-high-availability-dr.md) 
 ### [Always On 可用性グループ](virtual-machines-windows-portal-sql-availability-group-overview.md)
@@ -22,32 +40,20 @@
 ### フェールオーバー クラスター インスタンス
 #### [構成](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
-## Manage
-### [SQL Server IaaS Agent 拡張機能の使用](virtual-machines-windows-sql-server-agent-extension.md)
-### [自動修正](virtual-machines-windows-sql-automated-patching.md)
-### [Azure Key Vault 統合の構成](virtual-machines-windows-ps-sql-keyvault.md)
-### [セキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)
-## バックアップと復元
-### [バックアップと復元](virtual-machines-windows-sql-backup-recovery.md)
-### [自動化されたバックアップ](virtual-machines-windows-sql-automated-backup.md)
-### [Azure Storage を使用したバックアップと復元](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
-## [パフォーマンスのベスト プラクティス](virtual-machines-windows-sql-performance.md)
-## [ストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)
-## [アプリケーション パターン](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
-
 # リファレンス
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/)
-## [T-SQL](https://msdn.microsoft.com/library/azure/bb510741.aspx)
-## [SQL Server ドライバー](https://msdn.microsoft.com/library/mt654049.aspx)
+## [T-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)
+## [SQL Server ドライバー](https://docs.microsoft.com/sql/connect/sql-connection-libraries)
 ## [REST ()](/rest/api/)
 
 # リソース
+## [FAQ](virtual-machines-windows-sql-server-iaas-faq.md)
+## [料金](virtual-machines-windows-sql-server-pricing-guidance.md)
+## [PaaS または IaaS](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json)
+## [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)
+## [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
+## [SQL Server Tools](https://docs.microsoft.com/sql/tools/overview-sql-tools)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
-## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
-## [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
-## [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
-## [SQL Server Tools](https://msdn.microsoft.com/library/mt238365.aspx)
 ## [Stack Overflow](http://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
-

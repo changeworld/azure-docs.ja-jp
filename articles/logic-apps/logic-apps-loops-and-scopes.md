@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 413a2ba9107ca259ed577825bf0a17ff5622f1ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a17de187f67c075147ea8ff7f69434014eea3fdb
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Logic Apps のループ、スコープ、分割処理
   
@@ -26,7 +26,7 @@ Logic Apps には、ワークフロー内で配列、コレクション、バッ
   
 ## <a name="foreach-loop-and-arrays"></a>ForEach ループと配列
   
-Logic Apps では、一連のデータをループ処理し、各項目に対してアクションを実行できます。  これは、 `foreach` アクションを使用して実行できます。  デザイナーでは、for each ループの追加を指定できます。  反復処理を行う配列を選択した後、アクションの追加を開始できます。  現在は、foreach ループにつきアクションは 1 つに制限されていますが、この制限は今後数週間のうち解除される予定です。  ループ内では、配列のそれぞれの値で行われる処理を指定できるようになります。
+Logic Apps では、一連のデータをループ処理し、各項目に対してアクションを実行できます。  これは、 `foreach` アクションを使用して実行できます。  デザイナーでは、for each ループの追加を指定できます。  反復処理を行う配列を選択した後、アクションの追加を開始できます。  for each ループごとに複数のアクションを追加できます。  ループ内では、配列のそれぞれの値で行われる処理を指定できるようになります。
 
 コード ビューを使用した場合は、次のように for each ループを指定できます。  これは、"microsoft.com" を含む各メール アドレスにメールを送信する for each ループの例です。
 

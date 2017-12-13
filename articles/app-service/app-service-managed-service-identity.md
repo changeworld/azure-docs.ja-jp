@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 59e6db7caf4988623e6d2f93e986b423db7d7248
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6b2dcaa4b0e0f59bf8a632b48813ba6a24202ec5
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>App Service および Azure Functions で管理対象のサービス ID (パブリック プレビュー) を使用する方法
 
@@ -42,9 +42,38 @@ ID を持つアプリを作成するには、アプリケーションで追加�
 
 3. **[Managed service identity]\(管理対象のサービス ID\)** を選びます。
 
-4. **[Register with Azure Active Directory]\(Azure Active Directory に登録\)** を **[オン]** に切り替えます。 **[ Save]** をクリックします。
+4. **[Register with Azure Active Directory]\(Azure Active Directory に登録\)** を **[オン]** に切り替えます。 **[Save]** をクリックします。
 
 ![App Service での管理対象のサービス ID](media/app-service-managed-service-identity/msi-blade.png)
+
+### <a name="using-the-azure-cli"></a>Azure CLI の使用
+
+Azure CLI を使用して、管理対象のサービス ID を設定するには、既存のアプリケーションに対して `az webapp assign-identity` コマンドを使用する必要があります。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
+
+- Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
+- 以下の各コード ブロックの右上隅にある [試してみる] を利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
+- ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.21 以降) をインストールする](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+
+次の手順では、CLI を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
+
+1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 次のように、アプリケーションをデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+
+    ```azurecli-interactive
+    az login
+    ```
+2. CLI を使用して Web アプリケーションを作成します。 App Service で CLI を使用する方法の他の例については、[App Service の CLI のサンプル](../app-service/app-service-cli-samples.md)に関するページを参照してください。
+
+    ```azurecli-interactive
+    az group create --name myResourceGroup --location westus
+    az appservice plan create --name myplan --resource-group myResourceGroup --sku S1
+    az webapp create --name myapp --resource-group myResourceGroup --plan myplan
+    ```
+
+3. `assign-identity` コマンドを実行してこのアプリケーションの ID を作成します。
+
+    ```azurecli-interactive
+    az webapp assign-identity --name myApp --resource-group myResourceGroup
+    ```
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
@@ -130,7 +159,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
 > [!div class="mx-tdBreakAll"]
-> |パラメーター名|イン|Description|
+> |パラメーター名|イン|説明|
 > |-----|-----|-----|
 > |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。|
 > |api-version|クエリ|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
@@ -140,7 +169,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 正常終了の応答である 200 OK には、JSON 本文と次のプロパティが含まれています。
 
 > [!div class="mx-tdBreakAll"]
-> |プロパティ名|Description|
+> |プロパティ名|説明|
 > |-------------|----------|
 > |access_token|要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。|
 > |expires_on|アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。|

@@ -1,6 +1,6 @@
 ---
 title: "Azure API Management の FAQ | Microsoft Docs"
-description: "Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。"
+description: "Azure API Management についてよくあるご質問 (FAQ) の回答、パターン、ベスト プラクティスについて説明します。"
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -12,20 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: a9740cf527e4a9811b510ad5c96e5ab769efc2d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d0072a56c2688c297d499533a125926ba9915ff9
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
 
 ## <a name="contact-us"></a>お問い合わせ
 * [Microsoft Azure API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
-
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 * [機能がプレビュー段階とはどういう意味ですか。](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -62,7 +61,7 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>API Management ゲートウェイとバックエンド サービス間の接続をセキュリティで保護するにはどうすればよいですか。
 API Management ゲートウェイとバックエンド サービス間の接続は複数の方法で保護できます。 そのための方法は次のとおりです。
 
-* HTTP 基本認証を使用します。 詳細については、「 [API 設定の構成](api-management-howto-create-apis.md#configure-api-settings)」を参照してください。
+* HTTP 基本認証を使用します。 詳細については、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」を参照してください。
 * 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
 * バックエンド サービスで IP ホワイトリストを使用します。 Standard レベルまたは Premium レベルの API Management インスタンスを使用している場合は、ゲートウェイの IP アドレスが変わることはありません。 この IP アドレスを許可するようにホワイトリストを設定できます。 API Management インスタンスの IP アドレスは、Azure Portal のダッシュボードで取得できます。
 * API Management インスタンスを Azure Virtual Network に接続します。
@@ -70,7 +69,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。
 複数の方法で API Management インスタンスを新しいインスタンスにコピーできます。 そのための方法は次のとおりです。
 
-* API Management のバックアップと復元の機能を使用します。 詳細については、「[Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法](api-management-howto-disaster-recovery-backup-restore.md)」を参照してください。
+* API Management のバックアップと復元の機能を使用します。 詳細については、「[Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](api-management-howto-disaster-recovery-backup-restore.md)」を参照してください。
 * [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx) を使用して独自のバックアップと復元の機能を作成します。 REST API を使用すると、任意のサービス インスタンスからエンティティを保存して復元できます。
 * Git を使用してサービス構成をダウンロードし、新しいインスタンスにアップロードします。 詳細については、「[Git を使用して API Management サービス構成を保存および構成する方法](api-management-configuration-repository-git.md)」を参照してください。
 
@@ -102,7 +101,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 API Management では API のバージョン管理を複数の方法で使用できます。
 
 * API Management では、バージョンが異なる複数の API を構成できます。 たとえば、MyAPIv1 と MyAPIv2 という 2 つの API を構成できます。 こうすれば、開発者は自分でバージョンを選ぶことができます。
-* バージョン セグメントを含まないサービス URL で API を構成することもできます (例: https://my.api )。 その後で、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成できます。 たとえば、/resource という [URL](api-management-howto-add-operations.md#url-template) テンプレートと /v1/Resource という[書き換え URL](api-management-howto-add-operations.md#rewrite-url-template) テンプレートで操作を作成することができます。 バージョン セグメントの値は各操作で個別に変更できます。
+* バージョン セグメントを含まないサービス URL で API を構成することもできます (例: https://my.api )。 その後で、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成できます。 
 * API のサービス URL 内に "既定" のバージョン セグメントを保持する場合は、選択した操作に対して、[バックエンド サービスの設定](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) ポリシーを使用してバックエンド要求パスを変更するポリシーを設定できます。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>1 つの API で複数の環境をセットアップするにはどうすればよいですか。
