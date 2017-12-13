@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: juliako
-ms.openlocfilehash: 024b4cbb13001d67e7c1f0b86a84dfb43478c49d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5dd263a2e925989069c3b0257cfafa4c43e6157
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="media-services-development-with-net"></a>.NET を使用した Media Services 開発
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
 また、GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) または [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)) から最新の Media Services .NET SDK bits を取得してソリューションをビルドし、クライアント プロジェクトに参照を追加できます。 必要な依存関係はすべて自動的にダウンロードされ抽出されます。
 
-1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 **名前**、**場所**、**ソリューション名** を入力し、OKをクリックします。
+1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 **[名前]**、**[場所]**、**[ソリューション名]** を入力し、[OK] をクリックします。
 2. ソリューションをビルドします。
 3. **NuGet** を使用して、**Azure Media Services .NET SDK Extensions** (**windowsazure.mediaservices.extensions**) をインストールして追加します。 このパッケージをインストールすると、 **Media Services .NET SDK** が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
    
@@ -66,8 +66,11 @@ ms.lasthandoff: 10/11/2017
 
     [ユーザー認証](media-services-use-aad-auth-to-access-ams-api.md#types-of-authentication)を使用している場合、構成ファイルには、おそらく、Azure AD テナントのドメインおよび AMS REST API エンドポイントに対する値が含まれています。
     
+    >[!Note]
+    >Azure Media Services のドキュメント セットのコード サンプルのほとんどで、AMS API への接続に対する認証の種類としてユーザー (対話型) が使用されます。 この認証方法は、ネイティブ アプリ (例: モバイル アプリ、Windows アプリ、コンソール アプリケーション) の管理や監視に適しています。
+    
     >[!Important]
-    >Azure Media Services のドキュメント セットのコード サンプルのほとんどで、AMS API への接続に対する認証の種類としてユーザー (対話型) が使用されます。 この認証方法は、ネイティブ アプリ (例: モバイル アプリ、Windows アプリ、コンソール アプリケーション) の管理や監視に適しています。 この認証方法は、サーバー、Web サービス、API という種類のアプリケーションには適していません。  詳細については、「[Azure AD Authentication を使用した AMS API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
+    > **対話型**認証方法は、サーバー、Web サービス、API という種類のアプリケーションには適していません。 この種のアプリケーションでは、**サービス プリンシパル**認証方法を使用します。 詳細については、「[Azure AD Authentication を使用した AMS API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
 
         <configuration>
         ...

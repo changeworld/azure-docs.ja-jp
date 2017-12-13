@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 35d7c04f245e93d8cc795dca7c01c2bab5a14eb8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 51a1b65446a1a0db93c21378f156b608a38ef817
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Azure Machine Learning データ準備のプレビューでサポートされているインスペクター
 このドキュメントでは、このプレビューで使用可能なインスペクターのセットについて説明します。
@@ -113,3 +113,18 @@ X 軸での時間認識の線グラフ
 このインスペクターは、マップ上のポイント選択によるフィルタリングをサポートしています。 **Ctrl** キーを押して、マウスをクリックしたままドラッグして、ポイントの周りに四角形を描きます。 続いて前述のように、フィルターを適用します。
 
 マップの左側にある **[E]** を押すことで、可能性のあるポイントだけを表示するようにマップのサイズをすばやく設定できます。
+
+
+## <a name="pattern-frequency"></a>パターン頻度 
+
+このインスペクターは、選択した文字列の列のパターンを一覧表示します。 パターンは、正規表現に似た構文を使用して表されます。 パターンにカーソルを置くと、そのパターンによって表される値の例が示されます。 パターンと共に、おおよその範囲がパーセンテージで表示されます。
+
+![パターン インスペクターの画像](media/data-prep-appendix4-supported-inspectors/PatternInspectorProductNumber.png)
+
+### <a name="options"></a>オプション
+- 上位の値の数
+- 降順
+- ハローを表示
+
+### <a name="actions"></a>アクション
+このインスペクターは、表示されたパターンに基づくフィルター処理をサポートします。 **Ctrl** キーを押して、パターン インスペクターの塗りつぶされたバーを選択します。 続いて前述のように、フィルターを適用します。 ユーザーのアクションにより、高度なフィルターの手順が追加されます。 高度なフィルターの手順の編集オプションを起動することで、生成された Python コードを参照し変更できます。

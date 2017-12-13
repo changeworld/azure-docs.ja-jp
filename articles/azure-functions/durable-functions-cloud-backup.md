@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 85484b79012243afd374a97e7f518e9a8b1043ea
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: a5d539172f03246e3c658f2485d29d3ae389ae52
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
@@ -49,7 +49,7 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 
 以下のセクションでは、Azure ポータル開発で使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
 
-## <a name="the-cloud-backup-orchestration"></a>クラウド バックアップのオーケストレーション
+## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>クラウド バックアップ オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード)
 
 `E2_BackupSiteContent` 関数は、オーケストレーター関数用の標準的な *function.json* を使用します。
 

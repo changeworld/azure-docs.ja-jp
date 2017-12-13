@@ -1,6 +1,6 @@
 ---
 title: "Azure Functions ランタイムのインストール | Microsoft Docs"
-description: "Azure Functions ランタイムをインストールする方法"
+description: "Azure Functions ランタイム プレビュー 2 をインストールする方法"
 services: functions
 documentationcenter: 
 author: apwestgarth
@@ -12,33 +12,39 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: b6078ba7b553773294ebbf11949f7d3b53f46f0c
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: f8ce27bf28f73818932f2ac9056d4fdd573679e8
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="install-the-azure-functions-runtime-preview"></a>Azure Functions ランタイム プレビューをインストールする
+# <a name="install-the-azure-functions-runtime-preview-2"></a>Azure Functions ランタイム プレビュー 2 をインストールする
 
-Azure Functions ランタイム プレビューをインストールする場合は、次の手順に従う必要があります。
+Azure Functions ランタイム プレビュー 2 をインストールする場合は、次の手順に従います。
 
 1. コンピューターが最小要件を満たしていることを確認します。
-1. [Azure Functions ランタイム プレビュー インストーラー](https://aka.ms/azafr)をダウンロードします。
-1. Azure Functions ランタイム プレビューをインストールします。
-1. Azure Functions ランタイム プレビューの構成を完了します。
+1. [Azure Functions ランタイム プレビュー インストーラー](https://aka.ms/azafrv2)をダウンロードする
+1. Azure Functions ランタイム プレビュー 1 をアンインストールします。
+1. Azure Functions ランタイム プレビュー 2 をインストールします。
+1. Azure Functions ランタイム プレビュー 2 の構成を完了します。
+1. Azure Functions ランタイム プレビューで最初の関数を作成します
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Functions ランタイム プレビューをインストールする前に、次の内容を準備する必要があります。
+Azure Functions ランタイム プレビューをインストールする前に、次のリソースが使用可能になっている必要があります。
 
 1. Microsoft Windows Server 2016 または Microsoft Windows 10 Creators Update (Professional または Enterprise Edition) を実行しているコンピューター。
 1. ネットワーク上で実行される SQL Server のインスタンス。  必要な最小エディションは SQL Server Express です。
 
+## <a name="uninstall-previous-version"></a>以前のバージョンをアンインストールする
+
+以前に Azure Functions ランタイム プレビューをインストールした場合は、最新リリースをインストールする前にアンインストールする必要があります。  Windows の [プログラムの追加と削除] でプログラムを削除して、Azure Functions ランタイム プレビューをアンインストールします。
+
 ## <a name="install-the-azure-functions-runtime-preview"></a>Azure Functions ランタイム プレビューをインストールする
 
-Azure Functions ランタイム プレビュー インストーラーの手順に従って、Azure Functions ランタイム プレビューの管理ロールと worker ロールをインストールします。  同じコンピューターに管理ロールと worker ロールをインストールすることができます。  ただし、多くの関数を追加すると、複数の worker ロールに関数を拡張できるように、追加のマシン上にさらに worker ロールをデプロイする必要があります。
+Azure Functions ランタイム プレビュー インストーラーの手順に従って、Azure Functions ランタイム プレビューの管理ロールと worker ロールをインストールします。  同じコンピューターに管理ロールと worker ロールをインストールすることができます。  ただし、多くの関数アプリを追加すると、複数の worker に関数を拡張できるように、追加のマシン上にさらに worker ロールをデプロイする必要があります。
 
 ## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>同じコンピューターに管理ロールと worker ロールをインストールする
 
@@ -48,7 +54,7 @@ Azure Functions ランタイム プレビュー インストーラーの手順�
 
 1. **[次へ]** をクリックします。
 1. **使用許諾契約書**の条項を読み終わったら、**チェック ボックスをオン**にして条項に同意し、**[次へ]** をクリックして先に進みます。
-1. このコンピューターにインストールするロールとして **[Functions Management Role]\(Functions 管理ロール\)** と **[Functions Worker Role]\(Functions worker ロール\)** のどちらか一方または両方を選び、**[次へ]** をクリックします。
+1. このマシンにインストールするロールとして **[Functions Management Role]\(Functions 管理ロール\)** と **[Functions Worker Role]\(Functions worker ロール\)** のどちらか一方または両方を選び、**[次へ]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー インストーラー - ロールの選択][3]
 
@@ -58,7 +64,7 @@ Azure Functions ランタイム プレビュー インストーラーの手順�
 1. **[次へ]** をクリックして、**Azure Functions ランタイム セットアップ ウィザード**でコンピューターへのインストール プロセスを開始します。
 1. 完了すると、セットアップ ウィザードによって **Azure Functions ランタイム**構成ツールが起動されます。
 
-    ![Azure Functions ランタイム プレビュー インストーラーの完了][5]
+    ![Azure Functions ランタイム プレビュー インストーラーの完了][6]
 
     > [!NOTE]
     > **Windows 10** にインストールしている場合、**コンテナー**機能が前もって有効にされていないときは、インストールを完了するためにコンピューターを再起動するように **Azure Functions ランタイム セットアップ**から求められます。
@@ -69,43 +75,85 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
 1. **Azure Functions ランタイム**構成ツールに、コンピューターにインストールされるロールが表示されます。
 
-    ![Azure Functions ランタイム プレビュー構成ツール][6]
+    ![Azure Functions ランタイム プレビュー構成ツール][7]
 
-1. **[データベース]** タブをクリックし、SQL Server インスタンスの接続の詳細を入力して、**[適用]** をクリックします。  これは、Azure Functions ランタイムでランタイムをサポートするデータベースを作成するために必要です。
-    
-    ![Azure Functions ランタイム プレビュー データベース構成][7]
+1. **[データベース]** タブをクリックし、[データベース マスター キー](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine)の指定など、SQL Server インスタンスの接続の詳細を入力して、**[適用]** をクリックします。  SQL Server インスタンスへの接続性は、Azure Functions ランタイムでランタイムをサポートするデータベースを作成するために必要です。
 
-1. **[資格情報]** タブをクリックします。この画面で、すべての Azure Functions をホストするために、FileShare と使用する目的で新しい資格情報を 2 つ作成する必要があります。  **ファイル共有の所有者**および**ファイル共有のユーザー**の **[ユーザー名]** と **[パスワード]** の組み合わせを指定し、**[適用]** をクリックします。
+    ![Azure Functions ランタイム プレビュー データベース構成][8]
 
-    ![Azure Functions ランタイム プレビュー資格情報][8]
+1. **[資格情報]** タブをクリックします。ここで、すべての関数アプリをホストするために、ファイル共有で使用する目的で新しい資格情報を 2 つ作成する必要があります。  **ファイル共有の所有者**および**ファイル共有のユーザー**の **[ユーザー名]** と **[パスワード]** の組み合わせを指定し、**[適用]** をクリックします。
 
-1. **[ファイルの共有]** タブをクリックします。この画面では、**ファイルの共有**の場所の詳細を指定する必要があります。  そのためには、自分用に作成するか、既存のファイル共有を使用して、**[適用]** をクリックします。  新しいファイル共有の場所を選択した場合は、Azure Functions ランタイムで使用するディレクトリを指定する必要があります。
-    
-    ![Azure Functions ランタイム プレビュー ファイル共有][9]
+    ![Azure Functions ランタイム プレビュー資格情報][9]
 
-1. **[IIS]** タブをクリックします。このタブには、Azure Functions ランタイム構成ツールで作成される IIS の Web サイトの詳細が表示されます。  **[適用]** をクリックして完了します。
+1. **[ファイルの共有]** タブをクリックします。ここでは、ファイルの共有の場所の詳細を指定する必要があります。  自分用のファイル共有を作成するか、既存のファイル共有を使用して、**[適用]** をクリックします。  新しいファイル共有の場所を選択した場合は、Azure Functions ランタイムで使用するディレクトリを指定する必要があります。
 
-    ![Azure Functions ランタイム プレビュー IIS][10]
+    ![Azure Functions ランタイム プレビュー ファイル共有][10]
 
-1. **[サービス]** タブをクリックします。このタブには、Azure Functions ランタイム構成ツールのサービスの状態が表示されます。  初期構成後、**Azure Functions ホスト アクティブ化サービス**が実行されていない場合は、**[サービスの開始]** をクリックします。
+1. **[IIS]** タブをクリックします。このタブには、Azure Functions ランタイム構成ツールで作成される IIS の Web サイトの詳細が表示されます。  Azure Functions ランタイム プレビュー ポータル用にカスタムの DNS 名をここで指定できます。  **[適用]** をクリックして完了します。
 
-    ![Azure Functions ランタイム プレビュー構成の完了][11]
+    ![Azure Functions ランタイム プレビュー IIS][11]
 
-1. 最後に、**Azure Functions ランタイム ポータル**を `https://<machinename>/` として参照します。
+1. **[サービス]** タブをクリックします。このタブには、Azure Functions ランタイム構成ツールのサービスの状態が表示されます。  初期構成後に **Azure Functions ホスト アクティブ化サービス**が実行されていない場合は、**[サービスの開始]** をクリックします。
 
-    ![Azure Functions ランタイム プレビュー ポータル][12]
+    ![Azure Functions ランタイム プレビュー構成の完了][12]
 
+1. **Azure Functions ランタイム ポータル**を `https://<machinename>.<domain>/` として参照します。
+
+    ![Azure Functions ランタイム プレビュー ポータル][13]
+
+## <a name="create-your-first-function-in-azure-functions-runtime-preview"></a>Azure Functions ランタイム プレビューで最初の関数を作成する
+
+Azure Functions ランタイム プレビューで最初の関数を作成するには
+
+1. **Azure Functions ランタイム ポータル**を https://<machinename>.<domain> として参照します。 たとえば https://mycomputer.mydomain.com などです
+1. **ログイン** を要求されます。ドメインにデプロイした場合はドメイン アカウントのユーザー名とパスワードを使用し、それ以外の場合はローカル アカウントのユーザー名とパスワードを使用してポータルにログインします。
+
+![Azure Functions ランタイム プレビュー ポータルのログイン][14]
+
+1. 関数アプリを作成するには、サブスクリプションを作成する必要があります。  ポータルの左上隅で、サブスクリプションの横にある **[+]** オプションをクリックします
+
+![Azure Functions ランタイム プレビュー ポータルのサブスクリプション][15]
+
+1. **[DefaultPlan]** を選択し、サブスクリプションの名前を入力して、**[作成]** をクリックします。
+
+![Azure Functions ランタイム プレビュー ポータルのサブスクリプション プランと名前][16]
+
+1. すべての関数アプリがポータルの左側のウィンドウに表示されます。  新しい Function App を作成するには、見出し **[Function App]** を選択し、**[+]** オプションをクリックします。
+
+1. 関数アプリの名前を入力し、適切なサブスクリプションを選び、プログラミング対象の Azure Functions ランタイムのバージョンを選んで **[作成]** をクリックします
+
+![Azure Functions ランタイム プレビュー ポータルの新しい関数アプリ][17]
+
+1. 新しい関数アプリは、ポータルの左側のウィンドウに表示されます。  関数を選び、ポータルで中央のウィンドウの上部にある **[新しい関数]** をクリックします。
+
+![Azure Functions ランタイム プレビュー テンプレート][18]
+
+1. タイマー トリガー関数を選び、右側のポップアップで関数に名前を付け、スケジュールを `*/5 * * * * *` に変更し (この cron 式によってタイマー関数が 5 秒ごとに実行されます)、**[作成]** をクリックします
+
+![Azure Functions ランタイム プレビューの新しいタイマー関数構成][19]
+
+1. 関数が作成されました。  Function App の実行ログは、ポータルの下部にある **[ログ]** ウィンドウを展開して表示できます。
+
+![Azure Functions ランタイム プレビュー関数の実行][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png
 [2]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer2-EULA.png
 [3]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer3-ChooseRoles.png
 [4]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer4-Install.png
-[5]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer5-InstallComplete.png
-[6]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration1.png
-[7]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration2_SQL.png
-[8]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration3_Credentials.png
-[9]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration4_Fileshare.png
-[10]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration5_IIS.png
-[11]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration6_Services.png
-[12]: ./media/functions-runtime-install/AzureFunctionsRuntime_Portal.png
+[5]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer5-Progress.png
+[6]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer6-InstallComplete.png
+[7]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration1.png
+[8]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration2_SQL.png
+[9]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration3_Credentials.png
+[10]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration4_Fileshare.png
+[11]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration5_IIS.png
+[12]: ./media/functions-runtime-install/AzureFunctionsRuntime_Configuration6_Services.png
+[13]: ./media/functions-runtime-install/AzureFunctionsRuntime_Portal.png
+[14]: ./media/functions-runtime-install/AzureFunctionsRuntime_Portal_Login.png
+[15]: ./media/functions-runtime-install/AzureFunctionsRuntime_Portal_Subscriptions.png
+[16]: ./media/functions-runtime-install/AzureFunctionsRuntime_Portal_Subscriptions1.png
+[17]: ./media/functions-runtime-install/AzureFunctionsRuntime_Portal_NewFunctionApp.png
+[18]: ./media/functions-runtime-install/AzureFunctionsRuntime_v1FunctionsTemplates.png
+[19]: ./media/functions-runtime-install/AzureFunctionsRuntime_Portal_NewTimerFunction.png
+[20]: ./media/functions-runtime-install/AzureFunctionsRuntime_Portal_RunningV2Function.png

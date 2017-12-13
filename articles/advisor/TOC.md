@@ -11,7 +11,8 @@
 ## [Advisor の使用を開始する](advisor-get-started.md)
 
 # リファレンス
-## [REST ()](https://docs.microsoft.com/rest/api/advisor)
+## [REST API](https://docs.microsoft.com/rest/api/advisor)
+## [CLI](https://docs.microsoft.com/cli/azure/advisor)
 
 # 関連項目
 ## [セキュリティ センター](https://azure.microsoft.com/services/security-center/)

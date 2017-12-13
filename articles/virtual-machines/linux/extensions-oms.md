@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 6eb07b5ad4b3ebdde75575fc5682ae2153a0c12f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: dcb7a777c66200c5046a6ad34dc4ff5d346f13e0
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Linux 用の OMS 仮想マシン拡張機能
 
@@ -41,6 +41,10 @@ OMS Agent 拡張機能は、次の Linux ディストリビューションに対
 | Debian GNU/Linux | 6、7、8 |
 | Ubuntu | 12.04 LTS、14.04 LTS、15.04、15.10、16.04 LTS |
 | SUSE Linux Enterprise Server | 11、12 |
+
+### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+
+Azure Security Center は自動的に OMS エージェントをプロビジョニングし、Azure サブスクリプションの既定のログ分析ワークスペースに接続します。 Azure Security Center を使用している場合は、このドキュメントの手順を実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Azure Security Center との接続が中断されます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 

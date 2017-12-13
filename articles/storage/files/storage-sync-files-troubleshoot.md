@@ -1,5 +1,5 @@
 ---
-title: "Azure File Sync (プレビュー) のトラブルシューティング| Microsoft Docs"
+title: "Azure ファイル同期のトラブルシューティング (プレビュー) | Microsoft Docs"
 description: "Azure File Sync の一般的な問題をトラブルシューティングします。"
 services: storage
 documentationcenter: 
@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 265c5f660c4bee53a2faf4a073384587eb3f65fc
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: f12ee39f900373fcab80e59bc20de59fa039f0ff
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="troubleshoot-azure-file-sync-preview"></a>Azure File Sync (プレビュー) のトラブルシューティング
+# <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
 この記事は、Azure File Sync のデプロイで発生する可能性がある問題のトラブルシューティングと解決を支援することを目的としています。 問題をさらに調査する必要がある場合に、システムから重要なログを収集する方法についても説明します。 質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
 
 1. この記事のコメント セクション。
-2. [Azure Storage フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredata)。
+2. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、**[ヘルプとサポート]** ボタンを選択し、**[新しいサポート要求]** を選択します。
 
@@ -43,7 +43,7 @@ installer.log をレビューして、インストールが失敗した原因を
 > [!Note]  
 > コンピューターが Microsoft Update を使用するように設定されているときに Windows Update サービスが実行されていない場合、エージェントのインストールは失敗します。
 
-<a id="server-registration-missing"></a>**Azure ポータルの [登録済みサーバー] にサーバーが表示されない**  
+<a id="server-registration-missing"></a>**Azure Portal の [登録済みサーバー] にサーバーが表示されない**  
 サーバーがストレージ同期サービスの **[登録済みサーバー]** に表示されない場合:
 1. 登録するサーバーにログインします。
 2. ファイル エクスプローラーを開き、ストレージ同期エージェントのインストール ディレクトリ (既定の場所は C:\Program Files\Azure\StorageSyncAgent) に移動します。 
@@ -91,8 +91,8 @@ Reset-StorageSyncServer
 * 書き込み: ロール割り当ての作成
 
 次の組み込みロールには、必要な Microsoft 承認アクセス許可が付与されています。  
-* Owner
-* User Access Administrator
+* 所有者
+* ユーザーアクセスの管理者
 
 現在のユーザー アカウントのロールに必要なアクセス許可が付与されているかどうかを確認するには:  
 1. Azure ポータルで、**[リソース グループ]** を選択します。
@@ -113,9 +113,9 @@ Reset-StorageSyncServer
 
 <a id="broken-sync"></a>**サーバーで同期が失敗する**  
 サーバーで同期が失敗する場合:
-1. Azure ポータルで、Azure ファイル共有と同期するディレクトリ用のサーバー エンドポイントが存在することを確認します。
+1. Azure Portal で、Azure ファイル共有と同期するディレクトリ用のサーバー エンドポイントが存在することを確認します。
     
-    ![Azure ポータルのクラウド エンドポイントとサーバー エンドポイントの両方が表示されている同期グループのスクリーンショット](media/storage-sync-files-troubleshoot/sync-troubleshoot-1.png)
+    ![Azure Portal のクラウド エンドポイントとサーバー エンドポイントの両方が表示されている同期グループのスクリーンショット](media/storage-sync-files-troubleshoot/sync-troubleshoot-1.png)
 
 2. イベント ビューアーで、Applications と Services\Microsoft\FileSync\Agent に配置されている操作イベント ログと診断イベント ログをレビューします。
     1. サーバーにインターネット接続があることを確認します。
@@ -133,6 +133,28 @@ Reset-StorageSyncServer
     > Azure File Sync は、開いているハンドルがあるファイルを同期するために VSS スナップショットを定期的に取得します。
 
 ## <a name="cloud-tiering"></a>クラウドの階層化 
+クラウドの階層化の障害パスは 2 つあります。
+
+- ファイルを階層化できないことがあります。これは、Azure File Sync がファイルを Azure Files に階層化しようとして失敗することを意味します。
+- ファイルを再呼び出しできません。これは、ユーザーが階層化されたファイルにアクセスしようとしたときに、Azure File Sync ファイル システム フィルター (StorageSync.sys) がデータのダウンロードに失敗することを意味します。
+
+いずれかの障害パスで発生する可能性がある障害には 2 つの主要なクラスがあります。
+
+- クラウド ストレージの障害
+    - "*一時的なストレージ サービスの可用性の問題*"。 詳しくは、[Azure Storage のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/storage/v1_2/) に関するページをご覧ください。
+    - "*アクセスできない Azure ファイル共有*"。 この障害は通常、Azure ファイル共有がまだ同期グループ内のクラウド エンドポイントであるときにこれを削除した場合に発生します。
+    - "*アクセスできないストレージ アカウント*"。 この障害は通常、同期グループ内のクラウド エンドポイントである Azure ファイル共有がまだあるときにストレージ アカウントを削除した場合に発生します。 
+- サーバーの障害 
+    - "*Azure File Sync ファイル システム フィルター (StorageSync.sys) が読み込まれていない*"。 階層化/再呼び出し要求に応答するためには、Azure File Sync ファイル システム フィルターが読み込まれている必要があります。 フィルターが読み込まれない理由はいくつかありますが、最も一般的な理由は、管理者が手動でアンロードしたことです。 Azure File Sync が正常に機能するためには、Azure File Sync ファイル システム フィルターが常に読み込まれている必要があります。
+    - "*不足、破損、切断している再解析ポイント*"。 再解析ポイントは、ファイルの特別なデータ構造であり、次の 2 つの部分で構成されています。
+        1. Azure File Sync ファイル システム フィルター (StorageSync.sys) がファイルへの IO になんらかのアクションを行う必要があることをオペレーティング システムに示す再解析タグ。 
+        2. 関連付けられているクラウド エンドポイント (Azure ファイル共有) 上のファイルの URI をファイル システムがフィルターすることを示す再解析データ。 
+        
+        再解析ポイントが破損する最も一般的な原因は、管理者がタグまたはそのデータを変更しようとしたことです。 
+    - "*ネットワーク接続性の問題*"。 ファイルを階層化または再呼び出しするには、サーバーにインターネット接続が必要です。
+
+次の各セクションでは、クラウド階層化の問題のトラブルシューティングを行い、問題がクラウド ストレージの問題かサーバーの問題かを確認する方法を示します。
+
 <a id="files-fail-tiering"></a>**階層化に失敗するファイルをトラブルシューティングする**  
 ファイルが Azure ファイルへの階層化に失敗する場合:
 
