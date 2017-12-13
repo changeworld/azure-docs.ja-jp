@@ -8,14 +8,14 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
   仮想マシンでも、データセンター全体やリージョン全体に影響する停電や災害といった予期しない事象によってダウンタイムが発生することがあります。 こうしたシナリオにおいて、Azure は[可用性ゾーン](../articles/availability-zones/az-overview.md)や[リージョン ペア](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)といった保護オプションを提供します。
 
-* **計画メンテナンス イベント**は、仮想マシンを実行しているプラットフォーム インフラストラクチャの全体的な信頼性、パフォーマンス、セキュリティを向上させるために、基盤となる Azure プラットフォームに対して Microsoft が実行する定期的な更新です。 これらの更新のほとんどは、仮想マシンやクラウド サービスに影響を及ぼすことなく実行されます ([VM 保持メンテナンス](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/preserving-maintenance)に関する記事を参照してください)。 Azure プラットフォームでは、可能な限り VM 保持メンテナンスを使用しようとしますが、基盤となるインフラストラクチャに必要な更新を適用するために、仮想マシンの再起動が必要になる場合もまれにあります。 この場合、適切な時間帯に VM のメンテナンスを開始することで、メンテナンスによる再デプロイ操作を伴う Azure の計画メンテナンスを実行できます。 詳細については、[仮想マシンの計画メンテナンス](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/planned-maintenance/)に関する記事を参照してください。
+* **計画メンテナンス イベント**は、仮想マシンを実行しているプラットフォーム インフラストラクチャの全体的な信頼性、パフォーマンス、セキュリティを向上させるために、基盤となる Azure プラットフォームに対して Microsoft が実行する定期的な更新です。 これらの更新のほとんどは、仮想マシンやクラウド サービスに影響を及ぼすことなく実行されます ([VM 保持メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/preserving-maintenance)に関する記事を参照してください)。 Azure プラットフォームでは、可能な限り VM 保持メンテナンスを使用しようとしますが、基盤となるインフラストラクチャに必要な更新を適用するために、仮想マシンの再起動が必要になる場合もまれにあります。 この場合、適切な時間帯に VM のメンテナンスを開始することで、メンテナンスによる再デプロイ操作を伴う Azure の計画メンテナンスを実行できます。 詳細については、[仮想マシンの計画メンテナンス](https://docs.microsoft.com/azure/virtual-machines/windows/planned-maintenance/)に関する記事を参照してください。
 
 
 前述のようなイベントが 1 つ以上発生した場合にダウンタイムの影響を低減するため、下記のような高可用性のためのベスト プラクティスを仮想マシンに適用することをお勧めします。
 
 * [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]
 * [可用性セット内の VM に管理ディスクを使用する]
-* [スケジュールされたイベントを使用して、VM に影響を与えるイベントに事前に対応する](https://docs.microsoft.com/en-us/azure/virtual-machines/virtual-machines-scheduled-events)
+* [スケジュールされたイベントを使用して、VM に影響を与えるイベントに事前に対応する](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [各アプリケーション層に対して別々の可用性セットを構成する]
 * [ロード バランサーと可用性セットを結合する]
 * [可用性ゾーンを使ってデータセンター レベルの障害から保護する]
@@ -24,7 +24,7 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 アプリケーションに冗長性をもたらすには、可用性セット内に 2 つ以上の仮想マシンをグループ化することをお勧めします。 データセンター内のこのような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 詳細については、「 [Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)」を参照してください。
 
 > [!IMPORTANT]
-> 可用性セット内の仮想マシンが 1 つだけにならないようにしてください。 この構成の VM は、SLA 保証の対象とはならず、単一の VM が[Azure Premium Storage](../articles/storage/common/storage-premium-storage.md) を使用している場合を除き、Azure の計画的メンテナンス イベント時にダウンタイムが発生します。 Premium Storage を使用する単一 の VM では、Azure SLA が適用されます。
+> 可用性セット内の仮想マシンが 1 つだけにならないようにしてください。 この構成の VM は、SLA 保証の対象とはならず、単一の VM が[Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) を使用している場合を除き、Azure の計画的メンテナンス イベント時にダウンタイムが発生します。 Premium Storage を使用する単一 の VM では、Azure SLA が適用されます。
 
 基盤となる Azure プラットフォームにより、可用性セット内の各仮想マシンに**更新ドメイン**と**障害ドメイン**が割り当てられます。 所定の可用性セットに対して、同時に再起動される仮想マシンのグループと物理ハードウェアを示す、ユーザーが構成できない 5 つの更新ドメインが既定で割り当てられます (その後、最大 20 の更新ドメインを提供できるように Resource Manager のデプロイを増やすことができます)。 1 つの可用性セット内に 5 つ以上の仮想マシンが構成されているとき、6 つ目の仮想マシンは 1 つ目の仮想マシンと同じ更新ドメイン内に配置され、7 つ目は 2 つ目の仮想マシンと同じ更新ドメイン内に配置されるという方法で処理されます。 計画的メンテナンス中は、更新ドメインの再起動が順番に処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみです。 再起動された更新ドメインには、別の更新ドメインでメンテナンスが開始されるまでに、復旧するための時間として 30 分が与えられます。
 
@@ -81,3 +81,4 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 [ロード バランサーと可用性セットを結合する]: #combine-a-load-balancer-with-availability-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [可用性セット内の VM に管理ディスクを使用する]: #use-managed-disks-for-vms-in-an-availability-set
+[可用性ゾーンを使ってデータセンター レベルの障害から保護する]: #use-availability-zones-to-protect-from-datacenter-level-failures

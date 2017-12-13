@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: c28a1d30127956f6cc589b1efef6bff12117e3f1
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 6e812b3049cec7206e847a503a28aebe011689ab
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>カスタム ポリシーでパスワードの複雑さを構成する
 
 > [!NOTE]
-> "**この機能はプレビュー段階にあります。**"  この機能でテスト テナントを有効にするには、[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にお問い合わせください。
+> "**この機能はプレビュー段階にあります。**"  この機能でテスト テナントを有効にするには、[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にお問い合わせください。  運用環境のテナントではこれをテストしないでください。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 

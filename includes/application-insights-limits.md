@@ -2,7 +2,7 @@
 
 | **リソース** | **既定の制限** | **注**
 | --- | --- | --- |
-| 1 日あたりの合計データ量 | 500 GB | 上限を設定することでデータを削減できます。 さらに必要な場合は、AIDataCap@microsoft.com まで電子メールでご連絡ください。
+| 1 日あたりの合計データ量 | 100 GB | 上限を設定することでデータを削減できます。 さらに必要である場合は、ポータルから上限を最大 1,000 GB まで引き上げることができます。 1,000 GB を超える容量については、AIDataCap@microsoft.com までメールでご連絡ください。
 | 1 月あたりの無料データ量<br/> (Basic 料金プラン) | 1 GB | 超過分については、GB 単位で課金されます。
 | 調整 | 32,000 件のイベント/秒 | 制限は 1 分以上にわたって測定されます。
 | データの保持 | 90 日間 | このリソースは、[Search](../articles/application-insights/app-insights-diagnostic-search.md)、[Analytics](../articles/application-insights/app-insights-analytics.md)、および[メトリックス エクスプローラー](../articles/application-insights/app-insights-metrics-explorer.md)用です。

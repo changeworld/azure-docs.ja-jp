@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: c7604fdb948a2f4d2adca5d6821d9ea36e96dae6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a4c4b7daf5c07ca5f6b6bb72464279658d372
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -28,15 +28,12 @@ ms.lasthandoff: 10/11/2017
 -   応答キャッシュ ポリシー  
   
     -   [キャッシュから取得](api-management-caching-policies.md#GetFromCache) - キャッシュを検索して、キャッシュに格納された有効な応答があればそれを返します。  
-  
     -   [キャッシュに格納](api-management-caching-policies.md#StoreToCache) - 指定されたキャッシュ制御の構成に従って応答をキャッシュに格納します。  
   
 -   値キャッシュ ポリシー  
-  
-    -   [キャッシュから値を取得](#GetFromCacheByKey) - キャッシュされたキー別の項目を取得します。  
-  
-    -   [値をキャッシュに格納](#StoreToCacheByKey) - 項目をキー別にキャッシュに格納します。  
-  
+
+    -   [キャッシュから値を取得](#GetFromCacheByKey) - キャッシュされたキー別の項目を取得します。 
+    -   [値をキャッシュに格納](#StoreToCacheByKey) - 項目をキー別にキャッシュに格納します。 
     -   [キャッシュから値を削除](#RemoveCacheByKey) - キー別にキャッシュ内の項目を削除します。  
   
 ##  <a name="GetFromCache"></a> キャッシュから取得  
@@ -54,7 +51,7 @@ ms.lasthandoff: 10/11/2017
   <vary-by-header>Accept-Charset</vary-by-header>  
   <!-- should be present in most cases -->  
   <vary-by-header>Authorization</vary-by-header>  
-  <!-- should be present when allow-authorized-response-caching is "true"-->  
+  <!-- should be present when allow-private-response-caching is "true"-->  
   <vary-by-header>header name</vary-by-header>  
   <!-- optional, can repeated several times -->  
   <vary-by-query-parameter>parameter name</vary-by-query-parameter>  
@@ -119,14 +116,13 @@ ms.lasthandoff: 10/11/2017
 |allow-private-response-caching|`true` に設定すると、証人ヘッダーを含む要求をキャッシュできます。|いいえ|false|  
 |downstream-caching-type|この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。|なし|なし|  
 |must-revalidate|ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。|いいえ|true|  
-|vary-by-developer|`true` に設定すると、開発者キーごとに応答をキャッシュします。|いいえ|false|  
-|vary-by-developer-groups|`true` に設定すると、ユーザー ロールごとに応答をキャッシュします。|なし|false|  
+|vary-by-developer|`true` に設定すると、開発者キーごとに応答をキャッシュします。|あり||  
+|vary-by-developer-groups|`true` に設定すると、ユーザー ロールごとに応答をキャッシュします。|あり||  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
-  
 -   **ポリシー スコープ:** API、操作、製品  
   
 ##  <a name="StoreToCache"></a> キャッシュに格納  
@@ -198,8 +194,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
--   **ポリシー セクション:** outbound  
-  
+-   **ポリシー セクション:** outbound    
 -   **ポリシー スコープ:** API、操作、製品  
   
 ##  <a name="GetFromCacheByKey"></a> キャッシュから値を取得  
@@ -244,7 +239,6 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
-  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
   
 ##  <a name="StoreToCacheByKey"></a> 値をキャッシュに格納  
@@ -287,11 +281,10 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
-  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
   
 ###  <a name="RemoveCacheByKey"></a> キャッシュから値を削除  
- `cache-remove-value` は、キーで指定された、キャッシュされている項目を削除します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。  
+`cache-remove-value` は、キーで指定された、キャッシュされている項目を削除します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。  
   
 #### <a name="policy-statement"></a>ポリシー ステートメント  
   
@@ -325,9 +318,13 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
-  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
-  
 
 ## <a name="next-steps"></a>次のステップ
-ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
+
+ポリシーを使用する方法の詳細については、次のトピックを参照してください。
+
++ [API Management のポリシー](api-management-howto-policies.md)
++ [API を変換する](transform-api.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ [ポリシーのサンプル](policy-samples.md)   

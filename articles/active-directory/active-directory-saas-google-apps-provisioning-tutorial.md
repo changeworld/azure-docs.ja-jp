@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 12/01/2017
 ms.author: jeedes
-ms.openlocfilehash: e8ca7fdacf8361570d88260b3c359ee6e2fd3e17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 026eca7fc8f17602ba44ba38db138d645c9d7713
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Google Apps を構成する
 
@@ -91,6 +91,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     e. ディレクトリに追加するすべてのドメインに対して、前述の手順を繰り返します。
 
+    > [!NOTE]
+    ユーザー プロビジョニングでは、Google Apps のカスタム ドメインがソースの Azure AD のドメイン名と一致する必要があります。 ドメイン名が一致しない場合は、属性マッピングのカスタマイズを実装することにより、問題が解決する場合があります。
+
+
 5. すべてのドメインを Azure AD で確認したので、Google Apps でも確認する必要があります。 Google Apps にまだ登録されていない各ドメインに対して、次の手順を実行します。
    
     a. [Google Apps の管理コンソール](http://admin.google.com/)で、**[ドメイン]** をクリックします。
@@ -151,7 +155,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 19. Google Apps に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** の **[プロビジョニング状態]** を **[オン]** に変更します。
 
-20. [ **保存**] を選択します。
+20. **[保存]** を選択します。
 
 このプロセスは、[ユーザーとグループ] セクションで Google Apps に割り当てたユーザーとグループの初期同期を開始します。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている間、約 20 分ごとに実行されます。 
 

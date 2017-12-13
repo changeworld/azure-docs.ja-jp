@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: faee3bc9b0b1a10a48a514d830af5045cb047e02
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: e1c1b8bdf94104c0047e367f67a29d557fcc8df9
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory レポートに関する FAQ
 
@@ -119,5 +119,11 @@ ms.lasthandoff: 10/13/2017
 **Q: サインインとリスクの高いサインイン レポートでは、IP アドレスはどのように計算されていますか。**
 
 **A:** IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 これは、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから IP アドレスを発行するモバイル プロバイダーや VPN などの要因によって複雑になります。 これにより、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。 
+
+---
+
+**Q: リスク イベント "追加のリスクが検出されたサインイン" は何を意味していますか。**
+
+**A:** 環境内のすべての危険なサインインについて知らせるために、Azure AD Identity Protection サブスクライバー以外が検出されて危険だと見なされたサインインに対して、リスク イベント "追加のリスクが検出されたサインイン" が表示されます。
 
 ---

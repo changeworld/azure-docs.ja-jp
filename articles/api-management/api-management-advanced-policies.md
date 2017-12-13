@@ -6,53 +6,38 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: 
-ms.assetid: 8a13348b-7856-428f-8e35-9e4273d94323
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 08834531b78a857b54f0e9e792290774f9e477de
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 191870aea5f35830115ae1e8885cd3035597411f
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
-  
+
 ##  <a name="AdvancedPolicies"></a> 高度なポリシー  
   
 -   [制御フロー](api-management-advanced-policies.md#choose) - ブール[式](api-management-policy-expressions.md)の評価の結果に基づいてポリシー ステートメントを条件付きで適用します。  
-  
 -   [要求を転送する](#ForwardRequest) - バックエンド サービスに要求を転送します。
-
 -   [同時実行を制限する](#LimitConcurrency) - 含まれているポリシーが指定された数を超える要求によって同時に実行されないようにします。
-  
 -   [イベント ハブにログを記録する](#log-to-eventhub) - 指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 
-
 -   [Mock response (モック応答)](#mock-response) - パイプラインの実行を中止し、モック応答を呼び出し元に直接返します。
-  
 -   [再試行](#Retry) - 条件が満たされるまで、囲まれたポリシー ステートメントの実行を再試行します。 実行は、指定された間隔で、指定された最大試行回数まで繰り返されます。  
-  
 -   [応答を返す](#ReturnResponse) - パイプラインの実行を中止し、指定された応答を呼び出し元に直接返します。 
-  
 -   [1 方向の要求を送信する](#SendOneWayRequest) - 指定された URL に要求を送信します。応答は待機しません。  
-  
 -   [要求を送信する](#SendRequest) - 指定された URL に要求を送信します。  
-
 -   [HTTP プロキシを設定する](#SetHttpProxy) - HTTP プロキシ経由で、転送された要求をルーティングできます。  
-
 -   [要求メソッドを設定する](#SetRequestMethod) - 要求の HTTP メソッドを変更できます。  
-  
 -   [状態コードを設定する](#SetStatus) - HTTP 状態コードを指定された値に変更します。  
-  
 -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付き[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数の値を、後でアクセスできるように保持します。  
-
 -   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。  
-  
 -   [待機](#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。  
   
 ##  <a name="choose"></a> 制御フロー  
@@ -264,7 +249,6 @@ ms.lasthandoff: 11/22/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** backend  
-  
 -   **ポリシー スコープ:** すべてのスコープ  
   
 ##  <a name="LimitConcurrency"></a>同時実行を制限する  
@@ -807,7 +791,6 @@ status code and media type. If no example or schema found, the content is empty.
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** outbound、backend、on-error  
-  
 -   **ポリシー スコープ:** すべてのスコープ  
 
 ##  <a name="set-variable"></a> 変数の設定  
@@ -843,72 +826,41 @@ status code and media type. If no example or schema found, the content is empty.
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
-  
 -   **ポリシー スコープ:** すべてのスコープ  
   
 ###  <a name="set-variableAllowedTypes"></a> 使用できる型  
  `set-variable` ポリシーで使用する式は、次の基本的な型のいずれかを返す必要があります。  
   
 -   System.Boolean  
-  
 -   System.SByte  
-  
 -   System.Byte  
-  
 -   System.UInt16  
-  
 -   System.UInt32  
-  
 -   System.UInt64  
-  
 -   System.Int16  
-  
 -   System.Int32  
-  
 -   System.Int64  
-  
 -   System.Decimal  
-  
 -   System.Single  
-  
 -   System.Double  
-  
 -   System.Guid  
-  
 -   System.String  
-  
 -   System.Char  
-  
 -   System.DateTime  
-  
 -   System.TimeSpan  
-  
 -   System.Byte?  
-  
 -   System.UInt16?  
-  
 -   System.UInt32?  
-  
 -   System.UInt64?  
-  
 -   System.Int16?  
-  
 -   System.Int32?  
-  
 -   System.Int64?  
-  
 -   System.Decimal?  
-  
 -   System.Single?  
-  
 -   System.Double?  
-  
 -   System.Guid?  
-  
 -   System.String?  
-  
 -   System.Char?  
-  
 -   System.DateTime?  
 
 ##  <a name="Trace"></a> トレース  
@@ -1004,13 +956,16 @@ status code and media type. If no example or schema found, the content is empty.
 |for|`wait` ポリシーがすべての直接の子ポリシーが完了するまで待機するか、1 つが完了するまで待機するかを決定します。 使用できる値は、以下のとおりです。<br /><br /> -   `all` - すべての直接の子ポリシーが完了するまで待機します。<br />- any - いずれかの直接の子ポリシーが完了するまで待機します。 最初の直接の子ポリシーが完了すると、`wait` ポリシーが完了し、他の直接の子ポリシーの実行が終了します。|いいえ|すべて|  
   
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ 
+このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend  
-  
 -   **ポリシー スコープ:** すべてのスコープ  
   
 ## <a name="next-steps"></a>次のステップ
+
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
--   [API Management のポリシー](api-management-howto-policies.md) 
--   [ポリシー式](api-management-policy-expressions.md)
++ [API Management のポリシー](api-management-howto-policies.md) 
++ [ポリシー式](api-management-policy-expressions.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ [ポリシーのサンプル](policy-samples.md)   

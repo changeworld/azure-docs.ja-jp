@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub のデバイスからクラウドへのメッセージの処理 (Java) | Microsoft Docs"
-description: "他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。"
+title: "Azure IoT Hub を使用したメッセージのルーティング (Java) | Microsoft Docs"
+description: "他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。"
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.openlocfilehash: 0fb3e9012ae88112515ebb552e49fa463a087f54
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 81f846e1fd8cca586613e6fc57737ec27e43a639
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="process-iot-hub-device-to-cloud-messages-java"></a>IoT Hub のデバイスからクラウドへのメッセージの処理 (Java)
+# <a name="routing-messages-with-iot-hub-java"></a>IoT Hub でのメッセージのルーティング (Java)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
@@ -44,7 +44,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 * [Maven 3](https://maven.apache.org/install.html)
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
-[Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
+[Azure Storage] と [Azure Service Bus] の記事も読むことをお勧めします。
 
 ## <a name="send-interactive-messages-from-a-device-app"></a>デバイス アプリからの対話型メッセージの送信
 このセクションでは、[IoT Hub の使用]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
@@ -66,9 +66,15 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
                     String msgStr;
                     Message msg;
                     if (new Random().nextDouble() > 0.7) {
-                        msgStr = "This is a critical message.";
-                        msg = new Message(msgStr);
-                        msg.setProperty("level", "critical");
+                        if (new Random().nextDouble() > 0.5) {
+                            msgStr = "This is a critical message.";
+                            msg = new Message(msgStr);
+                            msg.setProperty("level", "critical");
+                        } else {
+                            msgStr = "This is a storage message.";
+                            msg = new Message(msgStr);
+                            msg.setProperty("level", "storage");
+                        }
                     } else {
                         double currentTemperature = minTemperature + rand.nextDouble() * 15;
                         double currentHumidity = minHumidity + rand.nextDouble() * 20; 
@@ -99,7 +105,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     }
     ```
    
-    このメソッドは、デバイスによって送信されたメッセージに `"level": "critical"` プロパティをランダムに追加して、アプリケーションのバックエンドによる早急な対応を必要とするメッセージをシミュレートします。 アプリケーションは、この情報を、メッセージの本文ではなくメッセージのプロパティに渡して、IoT Hub がそのメッセージを適切な送信先にルーティングできるようにします。
+    このメソッドは、デバイスによって送信されたメッセージに `"level": "critical"` と `"level": "storage"` のプロパティをランダムに追加して、アプリケーションのバックエンドによる早急な対応を必要とするメッセージまたは永続的に保存する必要があるメッセージをシミュレートします。 アプリケーションは、この情報を、メッセージの本文ではなくメッセージのプロパティに渡して、IoT Hub がそのメッセージを適切な送信先にルーティングできるようにします。
    
    > [!NOTE]
    > メッセージのプロパティを使用したメッセージのルーティングは、ここで示すホット パスの例に加え、コールド パス処理などのさまざまなシナリオで使用できます。
@@ -107,7 +113,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 2. simulated-device\src\main\java\com\mycompany\app\App.java を保存して閉じます。
 
     > [!NOTE]
-    > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、MSDN の記事「 [Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+    > MSDN の記事「[Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することを強くお勧めします。
 
 3. Maven を使用して **simulated-device** アプリをビルドするには、コマンド プロンプトで simulated-device フォルダーに移動し、次のコマンドを実行します。
 
@@ -168,6 +174,30 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
    ```
    
    ![simulated-device の実行][simulateddevice]
+
+## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(省略可能) IoT Hub にストレージ コンテナーを追加し、そこにメッセージをルーティングします。
+
+このセクションでは、ストレージ アカウントを作成して IoT Hub に接続し、メッセージのプロパティの有無に基づいてこのアカウントにメッセージを送信するように IoT Hub を構成します。 ストレージを管理する方法の詳細については、[Azure Storage の概要][Azure Storage]に関する記事をご覧ください。
+
+ > [!NOTE]
+   > **エンドポイント**が 1 つに制限されていない場合は、**StorageContainer** と **CriticalQueue** を設定して両方を同時に実行します。
+
+1. [Azure Storage のドキュメント][lnk-storage] の説明に従ってストレージ アカウントを作成します。 アカウント名をメモします。
+
+2. Azure Portal で、IoT Hub を開き、**[エンドポイント]** をクリックします。
+
+3. **[エンドポイント]** ブレードで **CriticalQueue** エンドポイントを選択し、**[削除]** をクリックします。 **[はい]** をクリックし、**[追加]** をクリックします。 エンドポイントに「**StorageContainer**」と名前を付け、ドロップダウンを使用して **[Azure Storage コンテナー]** を選択し、**[ストレージ アカウント]** と **[ストレージ コンテナー]** を作成します。  名前をメモします。  完了したら、下部にある **[OK]** をクリックします。 
+
+ > [!NOTE]
+   > **エンドポイント**が 1 つに制限されていない場合は、**CriticalQueue** を削除する必要はありません。
+
+4. IoT Hub で **[ルート]** をクリックします。 ブレードの上部にある **[追加]** をクリックして、先ほど追加したキューにメッセージをルーティングするルーティング規則を作成します。 データのソースとして **[デバイス メッセージ]** を選択します。 条件として「`level="storage"`」を入力し、ルーティング規則エンドポイントとしてカスタム エンドポイントの **StorageContainer** を選択します。 下部にある **[保存]** をクリックします。  
+
+    フォールバック ルートが **[オン]** に設定されていることを確認します。 この設定は IoT Hub の既定の構成です。
+
+1. 以前のアプリケーションがまだ実行されていることを確認します。 
+
+1. Azure Portal でストレージ アカウントに移動し、**[Blob service]** の **[BLOB の参照]** をクリックします。お使いのコンテナーを選択して移動し、JSON ファイルをクリックします。次に **[ダウンロード]** をクリックしてデータを表示します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3544112b025f5df10e6f67c8e2e02f4bb587b4e0
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>シナリオ別の Azure コンテンツ配信の最適化
 
@@ -103,7 +103,7 @@ Akamai の Azure Content Delivery Network を使用している場合、1.8 GB �
 
 Akamai の Azure Content Delivery Network を使用している場合、大容量ファイルのダウンロードは、10 MB より大きいコンテンツ用に最適化されています。 平均ファイル サイズが 10 MB より小さい場合は、一般的な Web 配信を使用します。 平均ファイル サイズが常に 10 MB より大きい場合、大容量ファイル用に個別のエンドポイントを作成する方がより効率的な場合があります。 たとえば、ファームウェアやソフトウェアの更新プログラムは、通常、サイズの大きなファイルになります。
 
-Azure Content Delivery Network from Verizon は、一般的な Web 配信の最適化の種類でストリーミング メディア コンテンツを配信します。
+Azure Content Delivery Network from Verizon は、一般的な Web 配信の最適化の種類で大きなファイルのダウンロード コンテンツを配信します。
 
 大きなファイルの最適化の詳細については、「[大きなファイルの最適化](cdn-large-file-optimization.md)」をご覧ください。
 

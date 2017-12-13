@@ -1,6 +1,6 @@
 ---
-title: "Azure Batch の Docker コンテナー ワークロード |Microsoft ドキュメント"
-description: "Azure Batch で Docker コンテナー イメージからアプリケーションを実行する方法について説明します。"
+title: "Azure Batch の コンテナー ワークロード | Microsoft Docs"
+description: "Azure Batch で コンテナー イメージからアプリケーションを実行する方法について説明します。"
 services: batch
 author: v-dotren
 manager: timlt
@@ -8,15 +8,15 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 12/01/2017
 ms.author: v-dotren
-ms.openlocfilehash: fc15b2db051b5ebbf39665b803b22d3a5e4885f9
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 1795bdde5506f599849a30d4e59ed7b916595ac4
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="run-docker-container-applications-on-azure-batch"></a>Azure Batch で Docker コンテナー アプリケーションを実行する
+# <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
 Azure Batch を使用すると、Azure で膨大な数のバッチ コンピューティング ジョブを実行および拡大縮小できます。 これまで Batch タスクは、Batch プール内の仮想マシン (VM) で直接実行されていましたが、タスクが Docker コンテナーで実行されるように Batch プールを設定できるようになりました。
 
@@ -112,12 +112,11 @@ Batch プールは、Batch がジョブのタスクを実行するコンピュ�
 
 ### <a name="pool-without-prefetched-container-images"></a>プリフェッチされたコンテナー イメージを使用しないプール
 
-プリフェッチされたコンテナー イメージを使用せずにプールを構成するには、次の例に示すように `ContainerConfiguration` を使用します。 以降の例では、Docker エンジンがインストールされているカスタム Ubuntu 16.04 LTS イメージを使用していることを前提としています。
+プリフェッチされたコンテナー イメージを使用せずにプールを構成するには、次の例に示すように `ContainerConfiguration` および `VirtualMachineConfiguration` オブジェクトを定義します。 以降の例では、Docker エンジンがインストールされているカスタム Ubuntu 16.04 LTS イメージを使用していることを前提としています。
 
 ```csharp
 // Specify container configuration
-ContainerConfiguration containerConfig = new ContainerConfiguration(
-    type: "Docker");
+ContainerConfiguration containerConfig = new ContainerConfiguration();
 
 // VM configuration
 VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
@@ -136,14 +135,14 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 pool.Commit();
 ```
 
+
 ### <a name="prefetch-images-for-container-configuration"></a>コンテナー構成用にイメージをプリフェッチする
 
-プールでコンテナー イメージをプリフェッチするには、コンテナー イメージの一覧 (`containerImageNames`) をコンテナー構成に追加し、イメージの一覧に名前を付けます。 次の例では、カスタム Ubuntu 16.04 LTS イメージを使用し、TensorFlow イメージを [Docker Hub](https://hub.docker.com) からプリフェッチして、開始タスクで TensorFlow を開始することを前提としています。
+プールでコンテナー イメージをプリフェッチするには、コンテナー イメージの一覧 (`containerImageNames`) を `ContainerConfiguration` に追加し、イメージの一覧に名前を付けます。 次の例では、カスタム Ubuntu 16.04 LTS イメージを使用し、TensorFlow イメージを [Docker Hub](https://hub.docker.com) からプリフェッチして、開始タスクで TensorFlow を開始することを前提としています。
 
 ```csharp
 // Specify container configuration, prefetching Docker images
 ContainerConfiguration containerConfig = new ContainerConfiguration(
-    type: "Docker",
     containerImageNames: new List<string> { "tensorflow/tensorflow:latest-gpu" } );
 
 // VM configuration
@@ -176,7 +175,7 @@ pool.Commit();
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>プライベート コンテナー レジストリからイメージをプリフェッチする
 
-プライベート コンテナー レジストリ サーバーの認証により、コンテナー イメージをプリフェッチすることもできます。 次の例では、カスタム Ubuntu 16.04 LTS イメージを使用して、プライベート TensorFlow イメージを、プライベート Azure コンテナー レジストリからプリフェッチしていることを前提としています。
+プライベート コンテナー レジストリ サーバーの認証により、コンテナー イメージをプリフェッチすることもできます。 次の例では、`ContainerConfiguration` および `VirtualMachineConfiguration` オブジェクトはカスタム Ubuntu 16.04 LTS イメージを使用して、プライベート TensorFlow イメージを、プライベート Azure Container Registry からプリフェッチします。
 
 ```csharp
 // Specify a container registry
@@ -187,7 +186,6 @@ ContainerRegistry containerRegistry = new ContainerRegistry (
 
 // Create container configuration, prefetching Docker images from the container registry
 ContainerConfiguration containerConfig = new ContainerConfiguration(
-    type: "Docker",
     containerImageNames: new List<string> {
         "myContainerRegistry.azurecr.io/tensorflow/tensorflow:latest-gpu" },
     containerRegistries: new List<ContainerRegistry> { containerRegistry } );

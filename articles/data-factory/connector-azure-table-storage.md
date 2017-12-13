@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: jingwang
-ms.openlocfilehash: ca5f8e43b6667aa1c2e3ac38e7ea00b5bd86b72f
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: a80a947f5dc6176aaa6334a10eabf1a2b4be5847
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="copy-data-to-or-from-azure-table-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,8 +48,8 @@ Azure Storage へのグローバル アクセスが可能なデータ ファク�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AzureStorage** を設定する必要があります。 |はい |
-| connectionString | connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 このフィールドを SecureString とマークします。 |はい |
+| type | type プロパティを **AzureStorage** |はい |
+| connectionString | connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 このフィールドを SecureString とマークします。 |あり |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
@@ -87,8 +87,8 @@ Shared Access Signature (SAS) を使用すると、ストレージ アカウン�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AzureStorage** を設定する必要があります。 |はい |
-| sasUri | BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 このフィールドを SecureString とマークします。 |はい |
+| type | type プロパティを **AzureStorage** |あり |
+| sasUri | BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 このフィールドを SecureString とマークします。 |あり |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
@@ -126,8 +126,8 @@ Azure Table をコピー先またはコピー元としてデータをコピー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |はい |
-| tableName |リンクされたサービスが参照する Azure テーブル データベース インスタンスのテーブルの名前です。 |はい |
+| type | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |あり |
+| tableName |リンクされたサービスが参照する Azure テーブル データベース インスタンスのテーブルの名前です。 |あり |
 
 **例:**
 
@@ -167,23 +167,25 @@ Azure Table からデータをコピーする場合は、コピー アクティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |はい |
+| type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |あり |
 | AzureTableSourceQuery |カスタム AzureTable 　クエリを使用してデータを読み取ります。 次のセクションの例を参照してください。 |いいえ |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。<br/>使用可能な値: **True**、および **False** (既定値)。 |いいえ |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery の例
 
-Azure テーブルの列が文字列型の場合:
-
-```json
-"azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}\\' and PartitionKey le \\'{0:yyyyMMddHH00_9999}\\'', <datetime parameter>)"
-```
-
 Azure テーブルの列が datetime 型の場合:
 
 ```json
-"azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', <datetime parameter>, <datetime parameter>)"
+"azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
+
+Azure テーブルの列が文字列型の場合:
+
+```json
+"azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
+```
+
+パイプラインのパラメーターを使用している場合は、上記のサンプルに従って、datetime 値を適切なフォーマットにキャストします。
 
 ### <a name="azure-table-as-sink"></a>シンクとしての Azure Table
 
@@ -191,7 +193,7 @@ Azure Table にデータをコピーする場合は、コピー アクティビ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |はい |
+| type | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |あり |
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |いいえ |
 | azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |いいえ |
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |いいえ |

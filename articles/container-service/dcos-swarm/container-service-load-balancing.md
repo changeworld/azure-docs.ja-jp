@@ -1,28 +1,22 @@
 ---
-title: "Azure DC/OS クラスターの負荷分散コンテナー | Microsoft Docs"
+title: "Azure DC/OS クラスターの負荷分散コンテナー"
 description: "Azure Container Service DC/OS クラスターの複数のコンテナーに負荷を分散します。"
 services: container-service
-documentationcenter: 
 author: rgardler
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: "コンテナー, マクロサービス, DC/OS, Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 78725c9d23e13d307821a188028ef573d1def038
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8dfa99b609cf2c54d29c55d3f5ba748910f7513b
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターの負荷分散コンテナー
+
 この記事では、Marathon-LB を使用して、DC/OS によって管理された Azure Container Service で内部ロード バランサーを作成する方法を見ていきます。 この構成により、アプリケーションを水平方向にスケーリングすることができます。 また、ロード バランサーをパブリック クラスターに配置し、アプリケーション コンテナーをプライベート クラスターに配置することによって、パブリックおよびプライベート エージェント クラスターを活用することもできます。 このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]

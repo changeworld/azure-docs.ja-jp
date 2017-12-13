@@ -1,144 +1,124 @@
 ---
-title: "Azure Monitor を使用して API Management を監視する | Microsoft Docs"
-description: "Azure Monitor を使用して API Management を監視する方法について説明します。"
+title: "Azure API Management で発行された API を監視する | Microsoft Docs"
+description: "このチュートリアルの手順に従って、Azure API Management で API を監視する方法を学びます。"
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/23/2017
+ms.custom: mvc
+ms.topic: tutorial
+ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 717e033aa4bbd4dd8ebcc727c3f551aee81770dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdca9d4968e9e68314f350787907f15e417821f7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="monitor-api-management-with-azure-monitor"></a>Azure Monitor を使用して API Management を監視する
+# <a name="monitor-published-apis"></a>発行された API を監視する
+
 Azure Monitor は、すべての Azure リソースを監視するための単一ソースを提供する Azure サービスです。 Azure Monitor を使用すると、API Management などの Azure リソースのメトリックとログを視覚化、クエリ、ルーティング、アーカイブし、そのメトリックとログに対してアクションを実行できます。 
 
-次のビデオは、Azure Monitor を使用して API Management を監視する方法を示しています。 Azure Monitor の詳細については、「[Azure Monitor の使用]」を参照してください。 
+このチュートリアルで学習する内容は次のとおりです。
 
+> [!div class="checklist"]
+> * アクティビティ ログを表示する
+> * 診断ログを表示する
+> * API のメトリックを表示する 
+> * API が許可されていない呼び出しを受けたときのアラート ルールをセットアップする
+
+次のビデオは、Azure Monitor を使用して API Management を監視する方法を示しています。 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
 >
 >
- 
-## <a name="metrics"></a>メトリック
-現時点では、API Management は、5 つのメトリックを出力していますが、今後追加される予定です。 これらのメトリックは 5 分間隔で出力され、API の状態と正常性をほぼリアルタイムで把握できます。 メトリックの概要を次に示します。
+
+## <a name="prerequisites"></a>前提条件
+
++ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
++ また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
+
+[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+
+## <a name="diagnostic-logs"></a>アクティビティ ログを表示する
+
+アクティビティ ログは、API Management サービスで実行された操作に関する情報を提供します。 アクティビティ ログを使用すると、API Management サービスで発生した書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 
+
+> [!NOTE]
+> アクティビティ ログには、読み取り (GET) 操作、従来のパブリッシャー ポータルで実行された操作、または元の管理 API の使用に関する情報は含まれません。
+
+アクティビティ ログには API Management サービスでアクセスするか、Azure Monitor ですべての Azure リソースのログにアクセスできます。 
+
+アクティビティ ログを表示するには、次の手順に従います。
+
+1. **API Management** インスタンスで、**[アクティビティ ログ]** をクリックします。
+
+## <a name="view-diagnostic-logs"></a>診断ログを表示する
+
+診断ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。 アクティビティ ログは、API リソースで実行された操作に関する情報を提供します。 診断ログでは、リソース自体が実行した操作を調査できます。
+
+診断ログにアクセスするには、次の手順に従います。
+
+1. **API Management** インスタンスで、**[診断ログ]** をクリックします。
+
+## <a name="view-metrics-of-your-apis"></a>API のメトリックを表示する
+
+API Management はメトリックを 1 分間隔で出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 使用できるメトリックの一部の概要を次に示します。
+
+* 容量 (プレビュー): APIM サービスのアップグレード/ダウングレードに関する判断に役立ちます。 このメトリックは 1 分ごとに出力され、報告時のゲートウェイの容量を反映しています。 メトリックの範囲は 0 ～ 100 で、CPU やメモリの使用率などのゲートウェイ リソースに基づいて計算されます。
 * ゲートウェイ要求の合計: 期間中の API 要求の数。 
 * 成功したゲートウェイ要求: 304、307 および 301 よりも小さな値 (200 など) を含む成功した HTTP 応答コードを受信した API 要求の数。 
 * 失敗したゲートウェイ要求: 400 および 500 よりも大きな値を含む失敗した HTTP 応答コードを受信した API 要求の数。
 * 未承認ゲートウェイ要求: 401、403、および 429 を含む HTTP 応答コードを受信した API 要求の数。 
 * その他のゲートウェイ要求: 上記のカテゴリのいずれにも属していない HTTP 応答コード (たとえば 418) を受信した API 要求の数。
 
-API Management サービスでメトリックにアクセスするか、Azure Monitor ですべての Azure リソースにアクセスできます。 API Management サービスでメトリックを表示するには:
-1. Azure Portal を開きます。
-2. API Management サービスに移動します。
-3. **[メトリック]** をクリックします。
+メトリックにアクセスするには、次の手順に従います。
 
-![[メトリック] ブレード][metrics-blade]
+1. ページの下部にあるメニューの **[メトリック]** を選択します。
+2. ドロップダウン リストで、関心のあるメトリックを選択します (複数のメトリックを追加することができます)。 
+    
+    たとえば、使用できるメトリックの一覧で、**[Total Gateway Requests]\(ゲートウェイ要求の合計\)** と **[Failed Gateway Requests]\(失敗したゲートウェイ要求\)** を選択します。
+3. グラフには、API 呼び出しの合計数が表示されます。 失敗した API 呼び出しの数も表示されます。 
 
-メトリックの使用方法の詳細については、「[メトリックの概要]」を参照してください。
+## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>許可されていない要求に対するアラート ルールをセットアップする
 
-## <a name="activity-logs"></a>アクティビティ ログ
-アクティビティ ログは、API Management サービスで実行された操作に関する情報を提供します。 以前は "監査ログ" や "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、API Management サービスで発生した書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 
-
-> [!NOTE]
-> アクティビティ ログには、読み取り (GET) 操作、従来のパブリッシャー ポータルで実行された操作、または元の管理 API の使用に関する情報は含まれません。
-
-アクティビティ ログには API Management サービスでアクセスするか、Azure Monitor ですべての Azure リソースのログにアクセスできます。 API Management サービスでアクティビティ ログを表示するには:
-1. Azure Portal を開きます。
-2. API Management サービスに移動します。
-3. **[アクティビティ ログ]** をクリックします。
-
-![[アクティビティ ログ] ブレード][activity-logs-blade]
-
-メトリックの使用方法の詳細については、「[アクティビティ ログの概要]」を参照してください。
-
-## <a name="alerts"></a>Alerts
 メトリックとアクティビティ ログに基づいてアラートを受け取るように設定できます。 Azure Monitor では、アラートがトリガーされたときに次の処理を実行するように構成することができます。
 
 * 電子メール通知を送信する
 * Webhook を呼び出す
 * Azure Logic App を呼び出す
 
-アラート ルールは、API Management サービスまたは Azure Monitor 内に構成できます。 API Management 内に構成するには: 
-1. Azure Portal を開きます。
-2. API Management サービスに移動します。
-3. **[アラート ルール]** をクリックします。
+アラートを構成するには、以下の手順に従います。
 
-![[アラート ルール] ブレード][alert-rules-blade]
+1. ページの下部にあるメニュー バーの **[アラート ルール]** を選択します。
+2. **[メトリック アラートの追加]** を選択します。
+3. このアラートの**名前**を入力します。
+4. 監視するメトリックとして、**[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
+5. **[所有者、共同作成者、閲覧者に電子メールを送信]** を選択します。
+6. **[OK]** をクリックします。
+7. API キーなしで、Conference API を呼び出してみます。 この API Management サービスの所有者として、電子メール アラートを受信します。 
 
-アラートの使用に関する詳細については、[アラートの概要]に関するページを参照してください。
+    > [!TIP]
+    > アラート ルールは、トリガーされたときに webhook または Azure Logic App を呼び出すこともできます。
 
-## <a name="diagnostic-logs"></a>診断ログ
-診断ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。 アクティビティ ログは、API リソースで実行された操作に関する情報を提供します。 診断ログでは、リソース自体が実行した操作を調査できます。
+    ![アラートのセットアップ](./media/api-management-azure-monitor/set-up-alert.png)
 
-現時点では、API Management は、個々の API 要求についての診断ログ (1 時間ごとにバッチ処理) を、次の構造を持つエントリで提供します。
+## <a name="next-steps"></a>次のステップ
 
-```
-{
-    "Tenant": "",
-      "DeploymentName": "",
-      "time": "",
-      "resourceId": "",
-      "category": "GatewayLogs",
-      "operationName": "Microsoft.ApiManagement/GatewayLogs",
-      "durationMs": ,
-      "Level": ,
-      "properties": "{
-          "ApiId": "",
-          "OperationId": "",
-          "ProductId": "",
-          "SubscriptionId": "",
-          "Method": "",
-          "Url": "",
-          "RequestSize": ,
-          "ServiceTime": "",
-          "BackendMethod": "",
-          "BackendUrl": "",
-          "BackendResponseCode": ,
-          "ResponseCode": ,
-          "ResponseSize": ,
-          "Cache": "",
-          "UserId"
-      }"
- }
-```
+このチュートリアルで学習した内容は次のとおりです。
 
-診断ログには API Management サービスでアクセスするか、Azure Monitor ですべての Azure リソースのログにアクセスできます。 API Management サービスで診断ログを表示するには:
-1. Azure Portal を開きます。
-2. API Management サービスに移動します。
-3. **[診断ログ]** をクリックします。
+> [!div class="checklist"]
+> * アクティビティ ログを表示する
+> * 診断ログを表示する
+> * API のメトリックを表示する 
+> * API が許可されていない呼び出しを受けたときのアラート ルールをセットアップする
 
-![[診断ログ] ブレード][diagnostic-logs-blade]
+次のチュートリアルに進みます。
 
-メトリックの使用方法の詳細については、[診断ログの概要]に関するページを参照してください。
-
-## <a name="next-step"></a>次のステップ
-
-* [Azure Monitor の使用]
-* [メトリックの概要]
-* [アクティビティ ログの概要]
-* [診断ログの概要]
-* [アラートの概要]
-
-[Azure Monitor の使用]: ../monitoring-and-diagnostics/monitoring-get-started.md
-[メトリックの概要]: ../monitoring-and-diagnostics/monitoring-overview-metrics.md
-[アクティビティ ログの概要]: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md
-[診断ログの概要]: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md
-[アラートの概要]: ../monitoring-and-diagnostics/insights-alerts-portal.md
-
-
-
-[metrics-blade]: ./media/api-management-azure-monitor/api-management-metrics-blade.png
-[activity-logs-blade]: ./media/api-management-azure-monitor/api-management-activity-logs-blade.png
-[alert-rules-blade]: ./media/api-management-azure-monitor/api-management-alert-rules-blade.png
-[diagnostic-logs-blade]: ./media/api-management-azure-monitor/api-management-diagnostic-logs-blade.png
+> [!div class="nextstepaction"]
+> [呼び出しをトレースする](api-management-howto-api-inspector.md)

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 11/03/2017
 ms.author: roalexan
-ms.openlocfilehash: 53a6b18fb74db46ccb66c7c70851a9bf364e927c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2c9f53de1abd2aea5fabbefecc5bbb144148a7b
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>API Management を使用した AzureML Web サービスの管理方法
 ## <a name="overview"></a>Overview
@@ -39,94 +39,133 @@ AzureML は、高度な分析ソリューションを簡単に構築、デプロ
 * Web サービスとしてデプロイされる AzureML 実験用のワークスペース、サービス、api_key。 [ここ](create-experiment.md) をクリックして、AzureML 実験の作成方法の詳細についてご覧ください。 [ここ](publish-a-machine-learning-web-service.md) をクリックして、Web サービスとして AzureML 実験をデプロイする方法の詳細についてご覧ください。 また、シンプルな AzureML 実験を作成してテストし、Web サービスとしてデプロイする方法については付録 A をご覧ください。
 
 ## <a name="create-an-api-management-instance"></a>API Management インスタンスの作成
-API Management を使用して、AzureML Web サービスを管理する手順を次に示します。 まず、サービス インスタンスを作成します。 [クラシック ポータル](https://manage.windowsazure.com/)にログインし、**[新規]** > **[App Services]** > **[API Management]** > **[作成]**をクリックします。
 
-![create-instance](./media/manage-web-service-endpoints-using-api-management/create-instance.png)
+Azure Machine Learning Web サービスは、API Management インスタンスを使って管理できます。
 
-一意の **URL**を指定します。 このガイドでは **demoazureml** を使用しますが、実際には別のものを選択する必要があります。 サービス インスタンスの **[サブスクリプション]** と **[リージョン]** を選択します。 それらを選択したら、次に進むボタンをクリックします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. **[+ リソースの作成]** を選択します。
+3. 検索ボックスに「API management」と入力して "API Management" リソースを選択します。
+4. **Create** をクリックしてください。
+5. **[名前]** の値は、一意の URL を作成するために使用されます (この例では "demoazureml" を使用します)。
+6. サービス インスタンスの **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を選択します。
+7. **[組織名]** の値を指定します (この例では "demoazureml" を使用します)。
+8. **[管理者のメール アドレス]** を入力します。API Management システムからの通知には、このメール アドレスが使用されます。
+9. **Create** をクリックしてください。
 
-![create-service-1](./media/manage-web-service-endpoints-using-api-management/create-service-1.png)
+新しいサービスの作成には最大 30 分かかる場合があります。
 
-**[組織名]**の値を指定します。 このガイドでは **demoazureml** を使用しますが、実際には別のものを選択する必要があります。 **[管理者の電子メール]** フィールドに電子メール アドレスを入力します。 API Management システムからの通知には、この電子メール アドレスが使用されます。
+![サービスの作成](./media/manage-web-service-endpoints-using-api-management/create-service.png)
 
-![create-service-2](./media/manage-web-service-endpoints-using-api-management/create-service-2.png)
-
-チェック ボックスをクリックすると、サービス インスタンスが作成されます。 *新しいサービスを作成するまでに最大で 30 分かかります*。
 
 ## <a name="create-the-api"></a>API の作成
 サービス インスタンスが作成されたら、API を作成します。 API は、クライアント アプリケーションから呼び出すことのできる一連の操作で構成されます。 API の操作は、既存の Web サービスに引き渡されます。 このガイドでは、既存の AzureML RRS と BES Web サービスにプロキシする API を作成します。
 
-API は API パブリッシャー ポータルから作成され、構成されます。このポータルには、Azure クラシック ポータルからアクセスします。 パブリッシャー ポータルに到達するには、サービス インスタンスを選択します。
+API を作成するには、次の手順に従います。
 
-![select-service-instance](./media/manage-web-service-endpoints-using-api-management/select-service-instance.png)
+1. 先ほど作成したサービス インスタンスを Azure Portal で開きます。
+2. 左側のナビゲーション ウィンドウで **[API]** を選択します。
 
-ご利用の API Management サービスの Azure クラシック ポータルで **[管理]** をクリックします。
+   ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
 
-![manage-service](./media/manage-web-service-endpoints-using-api-management/manage-service.png)
+1. **[API の追加]** をクリックします。
+2. **[Web API 名]** を入力します (この例では "AzureML Demo API" を使用します)。
+3. **[Web サービスの URL]** に「`https://ussouthcentral.services.azureml.net`」と入力します。
+4. **Web API URL サフィックス**を入力します。 ユーザーがサービス インスタンスに要求を送信する際に使用する URL 末尾の構成要素になります (この例では "azureml-demo" を使用します)。
+5. **[Web API URL scheme]\(Web API の URL スキーム\)** に **[HTTPS]** を選択します。
+6. **[製品]** として **[スターター]** を選択します。
+7. **[Save]** をクリックします。
 
-左側の **[API Management]** メニューの **[API]** をクリックし、**[API の追加]** をクリックします。
-
-![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management-menu.png)
-
-**[Web API 名]** として「**AzureML Demo API**」と入力します。 **[Web サービス URL]** として「**https://ussouthcentral.services.azureml.net**」と入力します。 **[Web API URL サフィックス]** として「**azureml-demo**」と入力します。 **[Web API URL]** として **[HTTPS]** を選択します。 **[製品]** として **[スターター]** を選択します。 完了したら、**[保存]** をクリックして、API を作成します。
-
-![add-new-api](./media/manage-web-service-endpoints-using-api-management/add-new-api.png)
 
 ## <a name="add-the-operations"></a>操作の追加
-**[操作の追加]** をクリックして新しい操作を この API に追加します。
 
-![add-operation](./media/manage-web-service-endpoints-using-api-management/add-operation.png)
+操作を API に追加して構成するには、パブリッシャー ポータルを使用します。 発行者ポータルにアクセスするには、API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックし、**[API]**、**[操作]** の順に選択して、**[操作の追加]** をクリックします。
+
+![add-operation](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
 **[新しい操作]** ウィンドウが表示され、**[署名]** タブが既定で選択されます。
 
 ## <a name="add-rrs-operation"></a>RRS 操作の追加
-まず、AzureML RRS サービスの操作を作成します。 **[HTTP 動詞]** として **[POST]** を選択します。 **[URL template]** として「**/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}**」と入力します。 **[表示名]** として「**RRS Execute**」と入力します。
+まず、AzureML RRS サービスの操作を作成します。
 
-![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
+1. **[HTTP 動詞]** に **[POST]** を選択します。
+2. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`」と入力します。
+3. **[表示名]** を入力します (この例では "RRS Execute" を使用します)。
 
-左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
+   ![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-![add-rrs-operation-response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
+4. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+5. **[保存]** を選択してこの操作を保存します。
+
+   ![add-rrs-operation-response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
 ## <a name="add-bes-operations"></a>BES 操作の追加
-RRS 操作の追加の場合とよく似ているため、BES 操作のスクリーン ショットは用意されていません。
+
+> [!NOTE]
+> RRS 操作の追加の場合とよく似ているため、BES 操作のスクリーン ショットは省略します。
 
 ### <a name="submit-but-not-start-a-batch-execution-job"></a>バッチ実行ジョブの送信 (開始はしない)
-**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。 **[HTTP 動詞]** に **[POST]** を選択します。 **[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}**」と入力します。 **[表示名]** に「**BES Submit**」と入力します。 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
+
+1. **[操作を追加]** をクリックして、BES 操作を API に追加します。
+2. **[HTTP 動詞]** に **[POST]** を選択します。
+3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`」と入力します。
+4. **[表示名]** を入力します (この例では "BES Submit" を使用します)。
+5. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+6. **[Save]** をクリックします。
 
 ### <a name="start-a-batch-execution-job"></a>バッチ実行ジョブを送信する
-**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。 **[HTTP 動詞]** に **[POST]** を選択します。 **[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}**」と入力します。 **[表示名]** に「**BES Start**」と入力します。 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
+
+1. **[操作を追加]** をクリックして、BES 操作を API に追加します。
+2. **[HTTP 動詞]** に **[POST]** を選択します。
+3. **[HTTP 動詞]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`」と入力します。
+4. **[表示名]** を入力します (この例では "BES Start" を使用します)。
+6. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+7. **[Save]** をクリックします。
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>バッチ実行ジョブの状態または結果を取得する
-**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。 **[HTTP 動詞]** に **[GET]** を選択します。 **[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}**」と入力します。 **[表示名]** に「**BES Status**」と入力します。 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
+
+1. **[操作を追加]** をクリックして、BES 操作を API に追加します。
+2. **[HTTP 動詞]** に **[GET]** を選択します。
+3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`」と入力します。
+4. **[表示名]** を入力します (この例では "BES Status" を使用します)。
+6. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+7. **[Save]** をクリックします。
 
 ### <a name="delete-a-batch-execution-job"></a>バッチ実行ジョブの削除
-**[操作を追加]** をクリックして、AzureML BES 操作を API に追加します。 **[HTTP 動詞]** に **[削除]** を選択します。 **[URL template]** に「**/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}**」と入力します。 **[表示名]** に **[BES Delete]** と入力します。 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。 **[保存]** を選択してこの操作を保存します。
+
+1. **[操作を追加]** をクリックして、BES 操作を API に追加します。
+2. **[HTTP 動詞]** に **[削除]** を選択します。
+3. **[URL テンプレート]** に「`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`」と入力します。
+4. **[表示名]** を入力します (この例では "BES Delete" を使用します)。
+5. 左側の **[応答]** > **[追加]** をクリックし、**[200 OK]** を選択します。
+6. **[Save]** をクリックします。
 
 ## <a name="call-an-operation-from-the-developer-portal"></a>開発者ポータルから操作を呼び出す
-開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。 このガイドの手順では、**AzureML Demo API** に追加された **RRS Execute** メソッドを呼び出します。 クラシック ポータルの右上のメニューから **[開発者ポータル]** をクリックします。
 
-![developer-portal](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
+開発者ポータルには、API の操作を見てテストするための便利が環境が用意されており、操作を直接呼び出すことができます。 この手順では、**AzureML Demo API** に追加された **RRS Execute** メソッドを呼び出します。 
 
-上部のメニューで **[API]** をクリックし、**[AzureML Demo API]** をクリックして、利用できる操作を表示します。
+1. **[開発者ポータル]** をクリックします。
 
-![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
+   ![developer-portal](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
-操作の **[RRS Execute]** を選択します。 **[試用版]**をクリックします。
+2. 上部のメニューで **[API]** をクリックし、**[AzureML Demo API]** をクリックして、利用できる操作を表示します。
 
-![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
+   ![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
-要求パラメーターで、**[apiversion]** に「**workspace**」、「**service**」、「**2.0**」と入力し、**[詳細]** に「**true**」と入力します。 AzureML Web サービスのダッシュボードに**ワークスペース**と**サービス**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+3. 操作の **[RRS Execute]** を選択します。 **[試用版]**をクリックします。
 
-要求ヘッダーで、**[ヘッダーの追加]** をクリックして「**Content-Type**」と「**application/json**」を入力し、**[ヘッダーの追加]** をクリックして「**Authorization**」と「**Bearer <YOUR AZUREML SERVICE API-KEY>**」を入力します。 AzureML Web サービスのダッシュボードに **API キー**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
+   ![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-要求本文に「**{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}**」と入力します。
+4. **[要求パラメーター]** の **[ワークスペース]** と **[サービス]** を入力し、**[apiversion]** に「2.0」を、**[詳細]** に「true」を入力します。 AzureML Web サービスのダッシュボードに**ワークスペース**と**サービス**が表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+   **[要求ヘッダー]** で **[ヘッダーの追加]** をクリックし、「Content-Type」と「application/json」を入力します。 **[ヘッダーの追加]** をもう一度クリックし、「Authorization」と「Bearer *\<実際のサービス API キー\>*」を入力します。 AzureML Web サービスのダッシュボードに API キーが表示されます (付録 A の「**Web サービスをテストする**」をご覧ください)。
 
-**[Send]**をクリックします。
+   **[要求本文]** に「`{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}`」と入力します。
 
-![[Send]](./media/manage-web-service-endpoints-using-api-management/send.png)
+   ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+
+5. **[Send]**をクリックします。
+
+   ![[Send]](./media/manage-web-service-endpoints-using-api-management/send.png)
 
 操作を呼び出すと、バックエンド サービスの**要求された URL**、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 

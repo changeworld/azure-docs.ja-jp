@@ -68,8 +68,9 @@ Azure ではカスタム HPC アプリケーションや商用 HPC アプリケ�
 
 ### <a name="ai-and-deep-learning"></a>AI とディープ ラーニング
 
+* ディープ ラーニング モデルの [Batch AI](../articles/batch-ai/overview.md) トレーニング
 * [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
-* [Deep learning toolkit for Data Science VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
+* [ディープ ラーニング VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
 * [ディープ ラーニング用の Batch Shipyard レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
 
 
@@ -104,7 +105,7 @@ SaaS のプロバイダーやデベロッパーは、Batch の SDK とツール�
 
 * [Batch を使った初めての開発](../articles/batch/batch-dotnet-get-started.md)
 * [Azure Batch のコード サンプルを使用する](https://github.com/Azure/azure-batch-samples)
-* [Batch で優先順位の低い VM を使用する (プレビュー)](../articles/batch/batch-low-pri-vms.md)
+* [Batch で優先順位の低い VM を使用する](../articles/batch/batch-low-pri-vms.md)
 * [Batch Shipyard を使ってコンテナー化した HPC ワークロードを実行する](https://github.com/Azure/batch-shipyard)
 * [Batch で R 言語を使用する](https://github.com/Azure/doAzureParallel)
 
@@ -138,7 +139,7 @@ Azure の仮想マシン、仮想マシン スケール セット、Batch、お�
 * [File Storage](../articles/storage/storage-files-introduction.md)
 
 ### <a name="data-and-analytics"></a>データと分析
-* [HDInsight](../articles/hdinsight/hdinsight-hadoop-introduction.md) (Azure 上の Hadoop クラスター用)
+* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md) (Azure 上の Hadoop クラスター用)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)

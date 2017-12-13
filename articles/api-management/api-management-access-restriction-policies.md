@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: a8bbe6c4f6919f150012163b0c7559d2986e072f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9872ee033d8c0bed215f8b37d64395e5dcd534c
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -26,17 +26,11 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="AccessRestrictionPolicies"></a> アクセス制限ポリシー  
   
 -   [HTTP ヘッダーを確認する](api-management-access-restriction-policies.md#CheckHTTPHeader) - HTTP ヘッダーの存在と値の両方、またはそのどちらかを適用します。  
-  
 -   [呼び出しレートをサブスクリプション別に制限する](api-management-access-restriction-policies.md#LimitCallRate) - 呼び出しレートをサブスクリプションに基づいて制限することで、API の使用量の急増を防ぎます。  
-  
 -   [呼び出しレートをキー別に制限する](#LimitCallRateByKey) - 呼び出しレートをキーに基づいて制限することで、API の使用量の急増を防ぎます。  
-  
 -   [呼び出し元 IP を制限する](api-management-access-restriction-policies.md#RestrictCallerIPs) - 特定の IP アドレスとアドレス範囲の両方、またはそのどちらかからの呼び出しをフィルター処理 (許可/拒否) します。  
-  
 -   [使用量のクォータをサブスクリプション別に設定する](api-management-access-restriction-policies.md#SetUsageQuota) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをサブスクリプションに基づいて適用できます。  
-  
 -   [使用量のクォータをキー別に設定する](#SetUsageQuotaByKey) - 更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用できます。  
-  
 -   [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT) - 指定された HTTP ヘッダーまたは指定されたクエリ パラメーターから抽出した JWT の存在と有効性を適用します。  
   
 ##  <a name="CheckHTTPHeader"></a> HTTP ヘッダーを確認する  
@@ -64,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 |名前|説明|必須|  
 |----------|-----------------|--------------|  
 |check-header|ルート要素。|はい|  
-|value|許可される HTTP ヘッダーの値。 複数の要素を指定した場合、いずれかの値に一致すればチェックは成功とみなされます。|いいえ|  
+|値|許可される HTTP ヘッダーの値。 複数の要素を指定した場合、いずれかの値に一致すればチェックは成功とみなされます。|いいえ|  
   
 ### <a name="attributes"></a>属性  
   
@@ -119,7 +113,7 @@ ms.lasthandoff: 10/11/2017
 |名前|説明|必須|  
 |----------|-----------------|--------------|  
 |set-limit|ルート要素。|はい|  
-|api|製品内の API に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。|いいえ|  
+|api|製品内の API に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しレート制限は別々に適用されます。|なし|  
 |operation|API 内の操作に対して呼び出しレート制限をかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しレート制限は別々に適用されます。|いいえ|  
   
 ### <a name="attributes"></a>属性  
@@ -235,7 +229,6 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
-  
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
 ##  <a name="SetUsageQuota"></a> 使用量のクォータをサブスクリプション別に設定する  
@@ -291,7 +284,6 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
-  
 -   **ポリシー スコープ:** 製品  
   
 ##  <a name="SetUsageQuotaByKey"></a> 使用量のクォータをキー別に設定する  
@@ -352,7 +344,6 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
-  
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
 ##  <a name="ValidateJWT"></a> JWT を検証する  
@@ -492,13 +483,13 @@ ms.lasthandoff: 10/11/2017
   
 ### <a name="elements"></a>要素  
   
-|要素|説明|必須|  
+|要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |validate-jwt|ルート要素。|はい|  
 |audiences|トークン上に存在する可能性がある、許容される対象ユーザー クレームの一覧を記載します。 対象ユーザー値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。 少なくとも 1 つの対象ユーザーを指定する必要があります。|いいえ|  
-|issuer-signing-keys|署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。|いいえ|  
-|issuers|トークンを発行した、許容されるプリンシパルの一覧。 発行者の値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。|いいえ|  
-|openid-config|署名キーと発行者を取得可能な適合 Open ID 構成エンドポイントを指定するために使用する要素。|いいえ|  
+|issuer-signing-keys|署名付きトークンの検証に使用する base64 でエンコードされたセキュリティ キーの一覧。 セキュリティ キーが複数存在する場合は、すべてのキーが消費される (この場合検証は失敗します) かいずれかのキーの検証が成功する (トークンのロールオーバーに使用されます) まで、各キーについて検証が行われます。 キー要素には、`kid` クレームとの照合に使用される `id` 属性を必要に応じて設定できます。|なし|  
+|issuers|トークンを発行した、許容されるプリンシパルの一覧。 発行者の値が複数存在する場合は、すべての値が消費される (この場合検証は失敗します) かいずれかの値の検証が成功するまで、各値について検証が行われます。|なし|  
+|openid-config|署名キーと発行者を取得可能な準拠している Open ID 構成エンドポイントを指定するために使用する要素。|なし|  
 |required-claims|トークン上に存在すると予測される、有効とみなすクレームの一覧を記載します。 `match` 属性を `all` に設定した場合、検証が成功するにはポリシー内のクレーム値がすべてトークン内に存在する必要があります。 `match` 属性を `any` に設定した場合、検証が成功するには少なくとも 1 つのクレームがトークン内に存在する必要があります。|いいえ|  
 |zumo-master-key|Azure Mobile Services によって発行されたトークンのマスター キー|いいえ|  
   
@@ -506,25 +497,30 @@ ms.lasthandoff: 10/11/2017
   
 |名前|説明|必須|既定値|  
 |----------|-----------------|--------------|-------------|  
-|clock-skew|期間。 トークン内にトークンの有効期限クレームが存在し、このクレームが現在の日時よりも前であった場合に備えて短時間の猶予を設けます。|いいえ|0 秒|  
-|failed-validation-error-message|JWT が検証で不合格となった場合に HTTP 応答本文で返すエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|いいえ|既定のエラー メッセージは検証の問題によって異なります ("JWT not present" (JWT が存在しません) など)。|  
+|clock-skew|期間。 トークン内にトークンの有効期限クレームが存在し、このクレームが現在の日時よりも前であった場合に備えて短時間の猶予を設けます。|なし|0 秒|  
+|failed-validation-error-message|JWT が検証で不合格となった場合に HTTP 応答本文で返すエラー メッセージ。 このメッセージ内では、特殊文字を適切にエスケープする必要があります。|なし|既定のエラー メッセージは検証の問題によって異なります ("JWT not present" (JWT が存在しません) など)。|  
 |failed-validation-httpcode|JWT が検証で不合格となった場合に返す HTTP 状態コード。|いいえ|401|  
 |header-name|トークンを保持する HTTP ヘッダーの名前。|`header-name` と `query-paremeter-name` はどちらかを指定する必要がありますが、両方を指定する必要はありません。|該当なし|  
-|id|`key` 要素の `id` 属性を使用すると、署名検証用の適切なキーを確認するためにトークン内の `kid` クレーム (存在する場合) と照合する文字列を指定できます。|いいえ|該当なし|  
-|match|`claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> -                          `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> -                          `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも 1 つトークン内に存在する必要があります。|いいえ|all|  
+|id|`key` 要素の `id` 属性を使用すると、署名検証用の適切なキーを確認するためにトークン内の `kid` クレーム (存在する場合) と照合する文字列を指定できます。|なし|該当なし|  
+|match|`claim` 要素の `match` 属性では、検証が成功するためにポリシー内のクレーム値がすべてトークン内に存在する必要があるかどうかを指定します。 次のいずれかの値になります。<br /><br /> -                          `all` - 検証が成功するには、ポリシー内のクレーム値がすべてトークン内に存在する必要があります。<br /><br /> -                          `any` - 検証が成功するには、ポリシー内のクレーム値が少なくとも 1 つトークン内に存在する必要があります。|なし|すべて|  
 |query-paremeter-name|トークンを保持するクエリ パラメーターの名前。|`header-name` と `query-paremeter-name` はどちらかを指定する必要がありますが、両方を指定する必要はありません。|該当なし|  
 |require-expiration-time|ブール値。 トークン内に有効期限クレームが存在する必要があるかどうかを指定します。|いいえ|true|
 |require-scheme|トークンの名前。例: "Bearer"。 この属性が設定されている場合、ポリシーは指定したスキームが承認ヘッダーの値に存在していることを確認します。|いいえ|該当なし|
 |require-signed-tokens|ブール値。 トークンに署名が必要かどうかを指定します。|いいえ|true|  
-|separator|文字列。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。|いいえ|該当なし| 
+|separator|文字列 をオンにします。 複数値を含む要求から一連の値を抽出するために使用する区切り記号を指定します (例: ",")。|いいえ|該当なし| 
 |url|Open ID 構成メタデータを取得可能な Open ID 構成エンドポイントの URL。 Azure Active Directory の場合は、`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` という URL をご使用のディレクトリ テナント名 (`contoso.onmicrosoft.com` など) に置き換えて使用します。|はい|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
-  
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
 ## <a name="next-steps"></a>次のステップ
-ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
+
+ポリシーを使用する方法の詳細については、次のトピックを参照してください。
+
++ [API Management のポリシー](api-management-howto-policies.md)
++ [API を変換する](transform-api.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ [ポリシーのサンプル](policy-samples.md)   

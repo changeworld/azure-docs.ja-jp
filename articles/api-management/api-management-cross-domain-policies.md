@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 05b25ffad4a91859932cd53475d82b11bf3e43e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 590831454e8a18678e357b4824eb35a717d1fee0
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -26,9 +26,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="CrossDomainPolicies"></a> クロス ドメイン ポリシー  
   
 -   [クロスドメイン呼び出しを許可](api-management-cross-domain-policies.md#AllowCrossDomainCalls) - Adobe Flash や Microsoft Silverlight ブラウザーベースのクライアントから API を利用できるようにします。  
-  
 -   [CORS](api-management-cross-domain-policies.md#CORS) - クロス オリジン リソース共有 (CORS) のサポートを操作または API に追加して、ブラウザーベースのクライアントからのクロスドメイン呼び出しを可能にします。  
-  
 -   [JSONP](api-management-cross-domain-policies.md#JSONP) - JSON with padding (JSONP) のサポートを操作または API に追加して、JavaScript ブラウザーベースのクライアントからのクロスドメイン呼び出しを可能にします。  
   
 ##  <a name="AllowCrossDomainCalls"></a> クロスドメイン呼び出しを許可  
@@ -63,7 +61,6 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
-  
 -   **ポリシー スコープ:** グローバル  
   
 ##  <a name="CORS"></a> CORS  
@@ -147,7 +144,6 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
-  
 -   **ポリシー スコープ:** API、操作  
   
 ##  <a name="JSONP"></a> JSONP  
@@ -185,8 +181,13 @@ ms.lasthandoff: 10/11/2017
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** outbound  
-  
 -   **ポリシー スコープ:** グローバル、製品、API、操作  
   
 ## <a name="next-steps"></a>次のステップ
-ポリシーを使用する方法の詳細については、「[Azure API Management のポリシー](api-management-howto-policies.md)」を参照してください。  
+
+ポリシーを使用する方法の詳細については、次のトピックを参照してください。
+
++ [API Management のポリシー](api-management-howto-policies.md)
++ [API を変換する](transform-api.md)
++ ポリシー ステートメントとその設定の一覧に関する[ポリシー リファレンス](api-management-policy-reference.md)
++ [ポリシーのサンプル](policy-samples.md)   

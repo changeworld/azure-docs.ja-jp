@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 800199b3d1d91d700d26f988a4d49713028de1ce
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: b7103103201563c6878095cf31cfcdf2938a9c7f
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: パスワードの複雑さの要件を構成する
 
 > [!NOTE]
-> "**この機能はプレビュー段階にあります。**"  [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) に連絡し、ご利用のテスト テナントでこの機能を有効にしてください。
+> "**この機能はプレビュー段階にあります。**"  この機能でテスト テナントを有効にするには、[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にお問い合わせください。  運用環境のテナントではこれをテストしないでください。
 
 Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時にエンド ユーザーが指定するパスワードの複雑さの要件の変更がサポートされます。  既定では、Azure AD B2C では `Strong` パスワードを使います。  Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。
 
@@ -49,7 +49,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ### <a name="comparison-chart"></a>比較チャート
 
-| 複雑さ | Description |
+| 複雑さ | 説明 |
 | --- | --- |
 | シンプル | 少なくとも 8 ～ 64 文字のパスワード。 |
 | Strong | 少なくとも 8 ～ 64 文字のパスワード。 小文字、大文字、数字、記号の 4 種類のうち 3 種が必要です。 |

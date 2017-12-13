@@ -54,7 +54,7 @@ Managed Disks では、ストレージ アカウントに関連する制限が�
 
 **Managed Disks は Azure Portal の既定オプションですか?**
 
-現在は違いますが、将来的には既定になります。
+はい。 
 
 **空の管理ディスクを作成できますか?**
 
@@ -108,6 +108,42 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ管理デ
 **管理ディスクを使用して VM を作成するための Azure Resource Manager のサンプル テンプレートは、どこで見つけることができますか?**
 * [Managed Disks を使用するテンプレートの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
+
+## <a name="migrate-to-managed-disks"></a>管理ディスクに移行する 
+
+**Managed Disks への移行前後に、既存の Azure Backup サービス構成にどのような変更が必要でしょうか?**
+
+変更の必要はありません。 
+
+**移行前に Azure Backup サービスを使用して作成した VM バックアップは引き続き正常に機能しますか?**
+
+はい。バックアップはシームレスに機能します。
+
+**Managed Disks への移行前後に、既存の Azure Disk Encryption 構成にどのような変更が必要でしょうか?**
+
+変更の必要はありません。 
+
+**既存の VM Scale Sets (VMSS) に関して、非管理対象ディスクから Managed Disks への移行は自動化されていますか?**
+
+
+いいえ。 非管理対象ディスクを含んだ以前の VMSS からのイメージを使用し、Managed Disks で新しい VMSS を作成してください。 
+
+**Managed Disks への移行前に作成したページ BLOB のスナップショットから Managed Disks を作成することはできますか?**
+
+
+いいえ。 ページ BLOB のスナップショットをページ BLOB としてエクスポートしておき、エクスポートしたページ BLOB から Managed Disks を作成してください。 
+
+**Azure Site Recovery で保護されているオンプレミスのマシンを Managed Disks の VM にフェールオーバーすることはできますか?**
+
+はい。Managed Disks を使用した VM にフェールオーバーすることを選択できます。
+
+**Azure Site Recovery (ASR) で Azure から Azure へのレプリケーションによって保護されている Azure VM に、何か移行の影響はありますか?**
+
+はい。 ASR の Azure から Azure へのレプリケーションを使用した保護は、Managed Disks を使用した VM ではサポートされません。 2018 年の終わりにはサポートされる予定です。 
+
+**暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されている非管理ディスクを持つ VM を管理ディスクに移行できますか?**
+
+あり
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks と Storage Service Encryption 
 

@@ -1,11 +1,10 @@
 ---
-title: "Azure App Service アプリに SSL 証明書を追加する |Microsoft Docs"
-description: "SSL 証明書を App Service アプリに追加する方法について説明します。"
+title: "Azure App Service の SSL 証明書を購入して構成する | Microsoft Docs"
+description: "App Service 証明書を購入して App Service アプリにバインドする方法を説明します。"
 services: app-service
 documentationcenter: .net
-author: ahmedelnably
-manager: stefsch
-editor: cephalin
+author: cephalin
+manager: cfowler
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -13,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-ms.author: apurvajo
-ms.openlocfilehash: 214f05f45f59b0403e6902988f9184d6b62618bd
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 12/01/2017
+ms.author: apurvajo;cephalin
+ms.openlocfilehash: 256cb9a33d49bc3c24b2d94c417632edb0c8df31
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -74,12 +73,16 @@ SSL 証明書の購入が完了したら、[[App Service 証明書]](https://por
 
 ## <a name="step-4---verify-the-domain-ownership"></a>手順 4 - ドメインの所有権を確認する
 
-> [!NOTE]
-> App Service 証明書では、ドメイン、メール、手動の 3 種類のドメイン確認がサポートされています。 これらの確認の種類の詳細については、「[詳細](#advanced)」をご覧ください。
-
 手順 3 で使用した **[証明書の構成]** ページで、**[手順 2: 確認]** をクリックします。
 
-**ドメイン確認**: **[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)****場合にのみ**、最も便利な方法です。
+優先するドメイン確認方法を選択します。 
+
+App Service 証明書では、App Service、ドメイン、メールおよび手動の 4 種類のドメイン確認がサポートされています。 これらの確認の種類の詳細については、「[詳細](#advanced)」をご覧ください。
+
+> [!NOTE]
+> 確認したいドメインが同一のサブスクリプションで既に App Service アプリにマップされている場合は、**App Service の確認**が最も便利なオプションです。 この方法は、App Service アプリがドメインの所有権を既に確認済みである事実を利用しています。
+>
+
 **[確認]** ボタンをクリックして、この手順を実行します。
 
 ![ドメイン確認のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
@@ -142,6 +145,10 @@ App Service 証明書では、メールと手動のさらに 2 種類のドメ�
 
 確認メールを再送信する必要がある場合は、**[メールの再送信]** ボタンをクリックします。
 
+#### <a name="domain-verification"></a>ドメイン確認
+
+[Azure で購入した App Service のドメイン](custom-dns-web-site-buydomains-web-app.md)にのみこのオプションを選択します。 Azure は確認 TXT レコードを自動的に追加し、プロセスを完了します。
+
 #### <a name="manual-verification"></a>手動による確認
 
 > [!IMPORTANT]
@@ -197,6 +204,7 @@ IP ベースの SSL バインドを構成すると、専用の IP アドレス�
 - App Service 証明書を生成する GoDaddy では、3 年に 1 回、ドメインの確認を要求します。 ドメインを確認するために、3 年に 1 回、ドメイン管理者に電子メールが送られます。 この電子メールの確認やドメインの確認を怠ると、App Service 証明書は自動的に更新されなくなります。 
 - 2017 年 3 月 31 日より前に発行された App Service 証明書は、いずれも次回更新時にドメインの再確認が必要となります (証明書の自動更新が有効になっている場合も同様です)。 これは、GoDaddy ポリシーの変更によるものです。 電子メールを確認し、この 1 回限りのドメインの確認を完了すると、App Service 証明書の自動更新が続行されます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="more-resources"></a>その他のリソース
 
-* [Content Delivery Network を追加する](app-service-web-tutorial-content-delivery-network.md)
+* [Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)
+* [FAQ: App Service 証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

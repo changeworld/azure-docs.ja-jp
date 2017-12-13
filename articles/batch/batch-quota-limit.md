@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 11/29/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8bb5470918aa3ad15cb9081f5c02b40984d83f51
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 210ba4a90f24ce9b0b55c4565028232c2b7fd7cc
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -51,10 +51,11 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | アプリケーションあたりのアプリケーション パッケージ数 |40 |
 | 各アプリケーション パッケージのサイズ |約 195 GB<sup>1</sup> |
 | 開始タスクの最大サイズ | 32768 文字<sup>2</sup> |
+| タスクの最長有効期間 | 7 日間<sup>3</sup> |
 
 <sup>1</sup> 最大ブロック BLOB サイズに関する Azure Storage の制限<br />
-<sup>2</sup> リソース ファイルと環境変数を含む
-
+<sup>2</sup> リソース ファイルと環境変数を含む<br />
+<sup>3</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、7 日間です。 完了したタスクは、無期限に保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 
 
 ## <a name="view-batch-quotas"></a>Batch クォータの確認
