@@ -4,7 +4,7 @@ description: "Azure Active Directory のアクセス レビューを使用して
 services: active-directory
 documentationcenter: 
 author: markwahl-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: c4ea5d797613b214be569c6405a0fc672cae83a0
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6a4d25b2eb228cafab48419a0d0eda92bba9f1ec
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 
 ## <a name="prerequisites"></a>前提条件 
 
-アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 アクセス レビューを使用してレビューの作成、レビューへのアクセス、レビューの適用を行うには、この機能を使用する各ユーザーにライセンスが必要です。
+アクセス レビューは、Microsoft Enterprise Mobility + Security E5 に含まれる Premium P2 エディションの Azure AD でご利用いただけます。 詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。 この機能を使用してレビューの作成、レビューへのアクセス、レビューの適用を行う各ユーザーにライセンスが必要です。
 
 
 ## <a name="create-and-perform-an-access-review"></a>アクセス レビューの作成と実行
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 
 4. アクセス レビューを開始します。 詳細については、[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)に関するページをご覧ください。
 
-5. レビュー担当者に確認を依頼します。 既定では、レビュー担当者はそれぞれ、Azure AD からアクセス パネルへのリンクが記載されたメールを受信し、そこで[アクセス レビューを実行](active-directory-azure-ad-controls-perform-access-review.md)します。
+5. レビュー担当者に確認を依頼します。 既定では、各レビュー担当者には、アクセス パネルへのリンクが記載されたメールが Azure AD から届き、そこで[アクセス レビューを実行](active-directory-azure-ad-controls-perform-access-review.md)します。
 
 6. レビュー担当者がまだ入力していない場合は、そのレビュー担当者に通知を送信するよう Azure AD を設定できます。 既定では、終了日まであと半分になった時点で、Azure AD はまだ応答していないレビュー担当者に自動的に通知が送信されます。
 

@@ -4,7 +4,7 @@ description: "Azure Portal の多要素認証レポートの参照情報"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 10/24/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3b817c59658f4a5d102a3d65a17fade254e0257c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 8e4fc5c9eb031beef42b52c771ef88ea80dba068
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="reference-for-multi-factor-authentication-reporting-in-the-azure-portal"></a>Azure Portal の多要素認証レポートのリファレンス
 
@@ -174,7 +174,7 @@ Azure Multi-Factor Authentication denied; (Azure Multi-Factor Authentication は
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」を参照してください。
+詳細については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」をご覧ください。
 
 
 

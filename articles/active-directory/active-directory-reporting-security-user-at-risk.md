@@ -3,7 +3,7 @@ title: "Azure Active Directory ポータルのリスクのフラグ付きユー�
 description: "Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。"
 services: active-directory
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d8fa72003b16a36b70a98dc27d8b6fdd9e9a0847
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: dca87eef3026ef43c0548a73f1b071b56e410e90
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート
 

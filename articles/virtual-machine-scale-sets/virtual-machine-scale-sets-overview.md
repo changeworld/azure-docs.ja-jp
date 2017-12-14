@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a786e9baa275e029343571bdb9a6480334f5cf3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 3a0d181ad0732458e67d0f3f1d6676be099b52fc
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Azure Virtual Machine Scale Sets とは
 Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよび管理するための Azure コンピューティング リソースです。 すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
@@ -124,7 +124,7 @@ Azure リソースの基盤となっている JSON 定義を表示または編�
 * スケール セットでは、最大 1,000 個の VM がサポートされます。 独自のカスタム VM イメージを作成してアップロードする場合は、上限が 300 個になります。 大規模なスケール セットを使用する際の考慮事項については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。
 * Scale Sets を使用するために Azure ストレージ アカウントを事前作成する必要はありません。 スケール セットでは Azure 管理ディスクがサポートされているため、ストレージ アカウントあたりのディスク数に関してパフォーマンスを懸念しなくて済みます。 詳細については、「[Azure VM Scale Sets と管理ディスク](virtual-machine-scale-sets-managed-disks.md)」をご覧ください。
 * VM のプロビジョニング時間を短縮して予測できるものにし、I/O パフォーマンスを向上させるために、Azure Storage ではなく Azure Premium Storage を使用することを検討してください。
-* 作成できる VM の数は、デプロイ先のリージョンの vCPU クォータによって制限されます。 コンピューティング クォータの制限を緩和するには、現時点で Azure Cloud Services で使用するための vCPU の上限が高い場合でも、カスタマー サポートへの連絡が必要である場合があります。 クォータを照会するには、Azure CLI コマンド `azure vm list-usage` を実行します。 または、PowerShell コマンド `Get-AzureRmVMUsage` を実行します。
+* 作成できる VM の数は、デプロイ先のリージョンの vCPU クォータによって制限されます。 コンピューティング クォータの制限を緩和するには、現時点で Azure Cloud Services で使用するための vCPU の上限が高い場合でも、カスタマー サポートへの連絡が必要である場合があります。 クォータを照会するには、Azure CLI コマンド `az vm list-usage` を実行します。 または、PowerShell コマンド `Get-AzureRmVMUsage` を実行します。
 
 ## <a name="frequently-asked-questions-for-scale-sets"></a>Scale Sets に関してよく寄せられる質問
 **Q.** Scale Sets には何個の VM を設定できますか?

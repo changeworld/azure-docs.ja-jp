@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.openlocfilehash: 04540524f83e367f92912171ddc55b6e6f82f80e
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: ec97432cd14c6289928f0419c242e1ccc2c8d876
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>System Center Configuration Manager と OMS Update Management の統合
 
@@ -41,7 +41,7 @@ Azure IaaS でホストされているクライアントを既存の Configurati
 
 Configuration Manager から更新プログラムのデプロイを引き続き管理する場合は、次の手順を実行します。  OMS は Configuration Manager に接続し、Log Analytics ワークスペースに接続されているクライアント コンピューターに更新プログラムを適用します。 更新プログラムの内容は、Configuration Manager によってデプロイが管理されているかのように、クライアント コンピューターのキャッシュから利用できます。  
 
-1. [ソフトウェア更新プログラムのデプロイのプロセス](https://docs.microsoft.com/en-us/sccm/sum/deploy-use/deploy-software-updates)に関するページで説明されているプロセスを使用して、Configuration Manager 階層の最上位サイトからソフトウェア更新プログラムのデプロイを作成します。  標準のデプロイとは異なる構成が必要な唯一の設定は、デプロイ パッケージのダウンロード動作を制御するための **[ソフトウェアの更新をインストールしない]** オプションです。 この動作は、次の手順でスケジュールされた更新プログラムのデプロイを作成することによって、OMS Update Management ソリューションによって管理されます。  
+1. [ソフトウェア更新プログラムのデプロイのプロセス](https://docs.microsoft.com/sccm/sum/deploy-use/deploy-software-updates)に関するページで説明されているプロセスを使用して、Configuration Manager 階層の最上位サイトからソフトウェア更新プログラムのデプロイを作成します。  標準のデプロイとは異なる構成が必要な唯一の設定は、デプロイ パッケージのダウンロード動作を制御するための **[ソフトウェアの更新をインストールしない]** オプションです。 この動作は、次の手順でスケジュールされた更新プログラムのデプロイを作成することによって、OMS Update Management ソリューションによって管理されます。  
 
 1. OMS ポータルで Update Management ダッシュボードを開きます。  「[更新プログラムの展開の作成](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、OMS コンピューター グループとして表される適切な Configuration Manager コレクションをドロップダウン リストから選択します。  以下の重要な点に注意してください。
     1. 選択した Configuration Manager デバイス コレクションにメンテナンス期間が定義されている場合、コレクションのメンバーは、OMS のスケジュールされたデプロイで定義されている **[期間]** 設定ではなくこの設定を使用します。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 47cdbf31e6b01055405cefedda11d5eeef82f32e
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: b36e8064da2661e6424d68f11b1e08d5af96131f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート  
 
@@ -162,4 +162,4 @@ Azure Site Recovery Deployment Planner は、次のいずれかの通貨でコ�
 |TRY|トルコ リラ (TL)||USD| 米ドル ($)||ZAR|南アフリカ ランド (R)|
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Site Recovery を使用して Hyper-V から Azure に VM](https://docs.microsoft.com/en-us/azure/site-recovery/tutorial-hyper-v-to-azure) をレプリケートして保護する方法について詳しく調べてみましょう。
+[Azure Site Recovery を使用して Hyper-V から Azure に VM](https://docs.microsoft.com/azure/site-recovery/tutorial-hyper-v-to-azure) をレプリケートして保護する方法について詳しく調べてみましょう。

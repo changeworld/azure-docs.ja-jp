@@ -4,7 +4,7 @@ description: "カスタム ポリシーを使用した Azure Active Directory B2
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: f2079f53-a637-4f2d-b3a0-61a9647ad433
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 5/06/2017
 ms.author: parakhj
-ms.openlocfilehash: cb7a9f01e43d41eb7315cb37a41e69f044ce5566
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 304500d2adc2d5093c3d053a1b982bac4da374bc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C: カスタムポリシーを使用して、アプリケーションでコンシューマーのサインアップおよびサインインを実行する
 カスタム ポリシーは、Azure AD B2C テナントの動作を定義する構成ファイルです。 これらは、ほぼ無制限の数のタスクを完了するために ID 開発者が完全に編集できます。

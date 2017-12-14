@@ -3,7 +3,7 @@ title: "Azure Active Directory ポータルのリスクの高いサインイン 
 description: "Azure Active Directory ポータルのリスクの高いサインイン レポートについて説明します。"
 services: active-directory
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fd9ac1fa9aa44947448d5b422faf08f8d66aeb5f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 5836c8dfbb82f22ecb243fedcd8a455d5743460c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート
 
