@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 30d8d4f3565fcc5e4c5c514a74f94c3ce24819e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29aa1bfcc0060e456c1e4b4b13ff7857fcff8373
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-advisor-documentation"></a>Azure Advisor のドキュメント
 
@@ -88,8 +88,10 @@ Azure Advisor は、ベスト プラクティスに従って Azure デプロイ�
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>REST ()</h3>
+                        <h3>REST API</h3>
                         <p><a href="/rest/api/advisor">REST API リファレンスに関するページ</a></p>
+                        <h3>CLI</h3>
+                        <p><a href="/cli/azure/advisor">CLI リファレンス</a></p>
                     </div>
                 </div>
             </div>

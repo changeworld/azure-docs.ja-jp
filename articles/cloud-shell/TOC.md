@@ -17,7 +17,7 @@
 # 例
 ## [Bash で Terraform を使用して Azure リソースをデプロイする](example-terraform-bash.md)
 
-# [料金](pricing.md)
+# [Cloud Shell を埋め込む](embed-cloud-shell.md)
 
 # [トラブルシューティング](troubleshooting.md)
 
