@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: 
 author: asmalser-msft
 writer: asmalser-msft
-manager: stevenpo
+manager: mtillman
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 1a1414eefd20e6d7c025da08cfd5ae7c45daad33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9dcc7f81b32498802d52e864c834d785386985c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-configuring-zendesk-for-automatic-user-provisioning"></a>チュートリアル: ZenDesk を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -82,7 +82,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 7. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、[エラーが発生したときにメール通知を送信します] チェック ボックスをオンにします。
 
-8. [ **Save**] をクリックします。 
+8. **[Save]** をクリックします。 
 
 9. [マッピング] セクションの **[Synchronize Azure Active Directory Users to ZenDesk]\(Azure Active Directory ユーザーを ZenDesk に同期する\)** を選びます。
 
@@ -90,11 +90,11 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 11. ZenDesk に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
-12. [ **Save**] をクリックします。 
+12. **[Save]** をクリックします。 
 
 これにより、[ユーザーとグループ] セクションで ZenDesk に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 20 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、プロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)」をご覧ください。
 
 
 ## <a name="additional-resources"></a>その他のリソース

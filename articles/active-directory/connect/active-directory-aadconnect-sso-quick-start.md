@@ -5,20 +5,20 @@ services: active-directory
 keywords: "Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
 documentationcenter: 
 author: swkrish
-manager: femila
+manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 12/05/2017
 ms.author: billmath
-ms.openlocfilehash: b85afe54832319fae2ea3a2501ec268bc63fc7c1
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: b533df58d24b3bc76a229ad09c682d1d8aeaf741
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -127,7 +127,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 ### <a name="browser-considerations"></a>ブラウザーの考慮事項
 
-#### <a name="mozilla-firefox"></a>Mozilla Firefox
+#### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (すべてのプラットフォーム)
 
 Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各ユーザーが、次の手順に従って、Firefox の設定に Azure AD の URL を手動で追加する必要があります。
 1. Firefox を実行し、アドレス バーに「`about:config`」と入力します。 表示されているすべての通知を無視します。
@@ -136,11 +136,15 @@ Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各
 4. フィールドに「https://autologon.microsoftazuread-sso.com」と「https://aadg.windows.net.nsatc.net」を入力します。
 5. **[OK]** を選択してから、ブラウザーをもう一度開きます。
 
-#### <a name="safari-on-mac-os"></a>Mac OS 上の Safari
+#### <a name="safari-mac-os"></a>Safari (Mac OS)
 
 Mac OS を実行しているコンピューターが Azure AD に参加していることを確認します。 Azure AD への参加の詳細については、『[Best Practices for Integrating OS X with Active Directory (OS X と Active Directory の統合に関するベスト プラクティス)](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf)』をご覧ください。
 
-#### <a name="google-chrome-on-mac-os"></a>Mac OS 上の Google Chrome
+#### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
+
+お使いの環境の [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) ポリシー設定または [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ポリシー設定をオーバーライドした場合は、Azure AD の URL (https://autologon.microsoftazuread-sso.com および https://aadg.windows.net.nsatc.net) を必ず追加してください。
+
+#### <a name="google-chrome-mac-os-only"></a>Google Chrome (Mac OS のみ)
 
 Mac OS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証で Azure AD の URL をホワイトリスト化する方法については、[Chromium プロジェクト ポリシー リスト](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)に関する記事をご覧ください。
 
@@ -149,9 +153,6 @@ Mac OS などの Windows 以外のプラットフォームで Google Chrome を�
 #### <a name="known-browser-limitations"></a>ブラウザーの既知の制限事項
 
 シームレス SSO は、Firefox および Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。
-
->[!IMPORTANT]
->お客様から報告された問題を調査するために、先般 Edge のサポートをロールバックしました。
 
 ## <a name="step-4-test-the-feature"></a>手順 4: 機能をテストする
 

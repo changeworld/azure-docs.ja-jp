@@ -3,7 +3,7 @@ title: "リソース グループの削除の自動化 | Microsoft Docs"
 description: "サブスクリプション内のすべてのリソース グループを削除する Runbook が含まれた、PowerShell Workflow バージョンの Azure Automation のシナリオ。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: 
 ms.assetid: b848e345-fd5d-4b9d-bc57-3fe41d2ddb5c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: 8b23e55a597f293b17183e80eea6c2763aabe9ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7b27ca64d9aacabf96fdff8e7dca16f13000d19
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation のシナリオ - リソース グループの削除の自動化
 多くのユーザーは、1 つ以上のリソース グループを作成します。 リソース グループは、実稼働アプリケーションの管理に使用することもあれば、開発、テスト、ステージング環境として使用することもあります。 これらのリソースのデプロイを自動化することと、ワンクリックでリソース グループを削除する機能は、まったくの別物です。 Azure Automation を使用することで、この一般的な管理タスクを効率化できます。 これは、MSDN や Microsoft Partner Network Cloud Essentials プログラムなどのメンバー プランを通じて使用制限のある Azure サブスクリプションを使っている場合に役立ちます。
@@ -28,14 +28,14 @@ ms.lasthandoff: 10/11/2017
 ## <a name="getting-the-scenario"></a>シナリオの取得
 このシナリオは、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Remove-ResourceGroup/1.0/DisplayScript)からダウンロードできる PowerShell Runbook で構成されています。 この Runbook は、Azure Portal の [Runbook ギャラリー](automation-runbook-gallery.md)から直接インポートすることもできます。<br><br>
 
-| Runbook | Description |
+| Runbook | 説明 |
 | --- | --- |
 | Remove-ResourceGroup |1 つ以上の Azure リソース グループとそれに関連付けられているリソースをサブスクリプションから削除します。 |
 
 <br>
 この Runbook では、次の入力パラメーターを定義します。
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | NameFilter (必須) |名前フィルターを指定して、削除するリソース グループを限定します。 コンマ区切りのリストを使用して複数の値を渡すことができます。<br>フィルターでは大文字と小文字が区別されず、文字列を含むすべてのリソース グループが一致します。 |
 | PreviewMode (省略可能) |削除されるリソース グループを確認するために Runbook を実行します。ただし、実際の削除は行われません。<br>Runbook に渡される 1 つ以上のリソース グループが誤って削除されないように、既定では **true** に設定されています。 |

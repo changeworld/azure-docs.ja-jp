@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/21/2017
+ms.date: 12/04/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 043aea81258d96fc6598903f9b523f29a5bf2c15
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 67ec6489a6aeed946d41ac8b297d3d99b86e4169
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
 
@@ -92,20 +92,13 @@ CSP の場合:
 
 エンティティに CSP のアカウントをさらに追加するには、新しいエンティティを作成するときに、**[エンタープライズ]** の代わりに **[MSP Access]\(MSP アクセス\)** を選択します。 Enterprise Agreement として登録されているアカウントに CSP の資格情報を追加するには、Cloudyn のサポート担当者がそのアカウントの設定を変更する必要がある場合があります。 有料の Azure サブスクライバーの場合は、Azure Portal で新しいサポート要求を作成できます。 **[ヘルプとサポート]** を選択し、**[新しいサポート要求]** を選択します。
 
-## <a name="how-do-i-change-the-currency-symbol-used-in-cloudyn"></a>Cloudyn で使用されている通貨記号はどのようにして変更すればよいですか
+## <a name="currency-symbols-in-cloudyn-reports"></a>Cloudyn レポートの通貨記号
 
-単一のエンティティ内のすべての Azure アカウントが同じ通貨を使用している場合、使用する通貨は自動的に検出されます。 ただし、次の通貨を使用している場合、通貨記号が誤って **$** として表示されます。
+異なる通貨を使用する複数の Azure アカウントがある場合があります。 ただし、Cloudyn のコスト レポートでは、レポートあたり複数の通貨の種類は表示されません。
 
-- GBP = イギリス スターリング ポンド
-- EUR = ユーロ
-- INR = インド ルピー
-- NOK =ノルウェー クローネ
+異なる通貨を使用している複数のサブスクリプションがある場合は、親エンティティとその子エンティティの通貨が **$** 記号で表示されます。 推奨されるベスト プラクティスは、同じエンティティ階層で異なる通貨を使用しないことです。 つまり、エンティティ構造に整理されているすべてのサブスクリプションで同一の通貨を使用する必要があります。
 
-米ドルの通貨記号は **$** と表示される場合があるものの、そのコスト価格は正しい通貨で表示されます。 たとえば、同じエンティティ内のすべてのアカウントでユーロが使用されている場合、Cloudyn で表示される "_価格_" は、誤って **$** 記号が表示されている場合でも、ユーロになります。
-
-Azure Enterprise Agreement のお客様の場合、Cloudyn のサポート担当者は $ で表示されているコスト レポートの通貨記号を変更できます。 Azure Portal で新しいサポート要求を作成できます。 **[ヘルプとサポート]** を選択し、**[新しいサポート要求]** を選択します。
-
-CSP のお客様の場合、通貨記号は変更できません。 Cloudyn は米ドルを使用する価格カードのみをサポートします。 Cloudyn では、別の通貨の価格カードをサポートするオプションを検討しています。
+Cloudyn は Enterprise Agreement サブスクリプションの通貨を自動的に検出し、レポートに正しく表示します。  ただし Cloudyn では、CSP および Web ダイレクト Azure アカウントに対しては **$** 記号のみが表示されます。
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Cloudyn のデータ更新タイムラインは何ですか
 

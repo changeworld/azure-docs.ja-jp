@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 11/08/2017
 ms.author: jovanpop
-ms.openlocfilehash: 34aa035368a0516f9fa1c71c1bda491daf5ab370
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 50d1548637ecc6862f680f73e333e8d7f8d20e39
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 
@@ -48,7 +48,7 @@ Azure SQL Database に適用されるチューニング操作は、最も負荷�
 
 ![自動チューニングのしくみ](./media/sql-database-automatic-tuning/how-does-automatic-tuning-work.png)
 
-Azure SQL Database の自動チューニングの核となるロジックは、SQL Server の自動チューニング エンジンでも使用されています。 組み込みインテリジェンスのしくみに関する技術的な情報の詳細については、[SQL Server の自動チューニング](https://docs.microsoft.com/en-us/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。
+Azure SQL Database の自動チューニングの核となるロジックは、SQL Server の自動チューニング エンジンでも使用されています。 組み込みインテリジェンスのしくみに関する技術的な情報の詳細については、[SQL Server の自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。
 
 ## <a name="use-automatic-tuning"></a>自動チューニングを使用する
 
@@ -80,4 +80,4 @@ Azure SQL Database は、データベースを最適化できる **CREATE INDEX*
 - Azure SQL Database で自動チューニングを有効にするには、「[自動チューニングの有効化](sql-database-automatic-tuning-enable.md)」をご覧ください。
 - 自動チューニングの推奨設定を手動で確認して適用するには、「[パフォーマンスに関する推奨事項の検索と適用](sql-database-advisor-portal.md)」をご覧ください。
 - 自動チューニングに使用されている組み込みインテリジェンスの詳細については、「[人工知能による Azure SQL Database のチューニング](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)」をご覧ください。
-- Azure SQL Database と SQL server 2017 における自動チューニングの動作の詳細については、[SQL Server の自動チューニング](https://docs.microsoft.com/en-us/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。
+- Azure SQL Database と SQL server 2017 における自動チューニングの動作の詳細については、[SQL Server の自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。

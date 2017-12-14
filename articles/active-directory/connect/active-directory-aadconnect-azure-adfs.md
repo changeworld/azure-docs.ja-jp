@@ -5,7 +5,7 @@ keywords: "azure への AD FS のデプロイ, azure adfs のデプロイ, azure
 services: active-directory
 documentationcenter: 
 author: anandyadavmsft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 692a188c-badc-44aa-ba86-71c0e8074510
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddd29a1230286de8999175498ee793f3b3ea24e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 954d161b3fbc66f594429f33d1bb5c88c2bc83b4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
@@ -220,7 +220,7 @@ WAP のデプロイ方法について詳しくは、「 [Web アプリケーシ�
 ### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.インターネット接続 (パブリック) ロード バランサーをデプロイする
 **8.1.インターネット接続 (パブリック) ロード バランサーを作成する**
 
-Azure ポータルで ロード バランサー を選択し、追加をクリックします。 [ロード バランサーの作成] パネルで次の情報を入力します。
+Azure ポータルで [ロード バランサー] を選択し、[追加] をクリックします。 [ロード バランサーの作成] パネルで次の情報を入力します。
 
 1. **[名前]**: ロード バランサーの名前。
 2. **[スキーム]**: [パブリック] - このオプションを選択することで、作成するロード バランサーにパブリック アドレスが必要であるという情報が Azure に提供されます。

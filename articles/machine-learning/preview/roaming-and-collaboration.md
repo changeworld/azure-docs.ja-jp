@@ -1,6 +1,6 @@
 ---
 title: "Azure Machine Learning Workbench のローミングとコラボレーション | Microsoft Docs"
-description: "既知の問題の一覧とトラブルシューティングに役立つガイド"
+description: "Azure Machine Learning Workbench でのローミングとコラボレーションをセットアップする方法を説明します。"
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -10,193 +10,193 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 50f48fb096cb907e050769a8a4159689eb25418c
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 137608007716452ec6468f1e13f494b095a11cb0
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench のローミングとコラボレーション
-このドキュメントでは、Azure Machine Learning Workbench を使用した、複数のコンピューターにわたるプロジェクトのローミングや、他のチーム メンバーとのコラボレーションについて説明します。 
+この記事では、Azure Machine Learning Workbench を使って、コンピューター間のローミングやチーム メンバーとのコラボレーション用にプロジェクトを設定する方法について説明します。 
 
-リモート Git リポジトリ (リポジトリ) リンクを使用して Azure Machine Learning プロジェクトを作成すると、プロジェクトのメタデータとスナップショットは、クラウドに保存されます。 クラウドのリンクを使って、別のコンピューターからプロジェクトにアクセス (ローミング) することができます。 また、同僚にアクセスを許可して、コラボレーションすることができます。 
+リモート Git リポジトリ (リポジトリ) とのリンクがある Azure Machine Learning プロジェクトを作成すると、プロジェクトのメタデータとスナップショットがクラウドに保存されます。 クラウドのリンクを使って、別のコンピューターからプロジェクトにアクセス (ローミング) することができます。 また、チーム メンバーにプロジェクトへのアクセスを許可して共同作業することもできます。 
 
 ## <a name="prerequisites"></a>前提条件
-まず、実験アカウントにアクセス権のある Azure Machine Learning ワークベンチをインストールします。 詳細については、[インストール ガイド](quickstart-installation.md)を参照してください。
+1. Machine Learning Workbench アプリをインストールします。 Azure Machine Learning 実験アカウントにアクセスできることを確認します。 詳しくは、[インストール ガイド](quickstart-installation.md)をご覧ください。
 
-次に、[Visual Studio Team System](https://www.visualstudio.com) にアクセスして、プロジェクトをリンクするリポジトリを作成します。 Git の詳細については、[Azure Machine Learning Workbench プロジェクトで Git リポジトリを使用する](using-git-ml-project.md)に関する記事を参照してください。
+2. [Visual Studio Team Services](https://www.visualstudio.com) (Team Services) にアクセスして、プロジェクトをリンクするリポジトリを作成します。 詳しくは、「[Azure Machine Learning Workbench プロジェクトでの Git リポジトリの使用](using-git-ml-project.md)」をご覧ください。
 
-## <a name="create-a-new-azure-machine-learning-project"></a>新しい Azure Machine Learning プロジェクトを作成する
-Azure Machine Learning Workbench を起動し、新しいプロジェクトを作成します (たとえば、_iris_)。 **[Visualstudio.com GIT Repository URL]\(Visualstudio.com GIT リポジトリの URL\)** テキストボックスに有効な VSTS Git リポジトリの URL を入力します。 
+## <a name="create-a-new-machine-learning-project"></a>新しい Machine Learning プロジェクトを作成する
+Azure Machine Learning Workbench を開き、新しいプロジェクトを作成します (たとえば、iris という名前のプロジェクト)。 **[Visualstudio.com GIT Repository URL]\(Visualstudio.com GIT Rリポジトリの URL\)** ボックスに、Team Services の Git リポジトリの有効な URL を入力します。 
 
 > [!IMPORTANT]
-> 空のプロジェクト テンプレートを選択する場合は、選択する Git リポジトリに既に _master_ 分岐があっても大丈夫です。 Azure ML は単に _master_ 分岐をローカルに複製し、`aml_config` フォルダーおよびその他のプロジェクトのメタデータ ファイルを、ローカルのプロジェクト フォルダーに追加します。 しかしその他のプロジェクト テンプレートを選択する場合は、Git リポジトリに _master_ 分岐があってはいけません。その場合エラーが表示されます。 代替手段としては、`az ml project create` コマンド ライン ツールを使用して、プロジェクトを作成し、`--force` スイッチを指定します。 これにより、元の master 分岐上のファイルを削除し、選択したテンプレートの新しいファイルに置き換えます。
+> 空のプロジェクト テンプレートを選んだ場合、選んだ Git リポジトリに既に master ブランチがある場合があります。 Machine Learning は、単に master ブランチをローカルに複製します。 そして、aml_config フォルダーと他のプロジェクト メタデータ ファイルを、ローカルのプロジェクト フォルダーに追加します。 
+>
+> 他のプロジェクト テンプレートを選ぶ場合は、Git リポジトリに master ブランチが既に存在していては "*なりません*"。 存在していると、エラーが表示されます。 代替手段としては、`az ml project create` コマンドを使い、`--force` スイッチを指定して、プロジェクトを作成します。 これにより、元の master ブランチ上のファイルが削除されて、選んだテンプレートの新しいファイルに置き換わります。
 
-プロジェクトが作成されたら、プロジェクト内で任意のスクリプトを何回か実行します。 この操作により、リモート Git リポジトリの実行履歴の分岐に、プロジェクトの状態がコミットされます。 
+プロジェクトを作成した後、プロジェクト内で任意のスクリプトを何回か実行します。 この操作により、リモート Git リポジトリの実行履歴のブランチに、プロジェクトの状態がコミットされます。 
 
 > [!NOTE] 
-> 実行履歴の分岐へのコミットをトリガーするのは、スクリプトの実行だけです。 データ準備の実行や Notebook の実行では、実行履歴の分岐でのプロジェクト スナップショットはトリガーされません。
+> 実行履歴の分岐へのコミットをトリガーするのは、スクリプトの実行だけです。 データ準備の実行や Notebook の実行では、実行履歴のブランチでのプロジェクト スナップショットはトリガーされません。
 
-Git の認証を設定した場合も、明示的にマスター分岐で操作したり、新しい分岐を作成できます。 
+Git の認証を設定した場合も、master ブランチで操作することができます。 または、新しいブランチを作成できます。 
 
-例 
+例: 
 ```
-# check current repo status
+# Check current repo status.
 $ git status
 
-# stage all changes in the current repo
+# Stage all changes in the current repo.
 $ git add -A
 
-# commit changes
+# Commit changes.
 $ git commit -m "my commit fixes this weird bug!"
 
-# push to remote repo.
+# Push to the remote repo.
 $ git push origin master
 ```
 
 ## <a name="roaming"></a>ローミング
 <a name="roaming"></a>
 
-### <a name="open-azure-machine-learning-workbench-on-second-machine"></a>Azure Machine Learning Workbench を 2 番目のコンピューターで開く
-VSTS Git リポジトリがプロジェクトにリンクされると、Azure Machine Learning ワークベンチがインストールされている任意のコンピューターから _iris_ プロジェクトにアクセスできるようになります。 
+### <a name="open-machine-learning-workbench-on-a-second-computer"></a>Machine Learning Workbench を 2 番目のコンピューターで開く
+Team Services Git リポジトリがプロジェクトにリンクされると、Machine Learning Workbench がインストールされている任意のコンピューターから iris プロジェクトにアクセスできるようになります。 
 
-別のコンピューターにある iris プロジェクトにアクセスするには、プロジェクトの作成中に使用されたものと同じ資格情報で、アプリにログインする必要があります。 さらに、同じ実験アカウントとワークスペースに移動する必要があります。 _iris_ プロジェクトは、ワークスペース内で他のプロジェクトと共にアルファベット順に一覧表示されます。 
+別のコンピューターにある iris プロジェクトにアクセスするには、プロジェクトの作成に使ったものと同じ資格情報を使って、アプリにサインインする必要があります。 また、Machine Learning 実験アカウントとワークスペースも同じである必要があります。 iris プロジェクトは、ワークスペース内の他のプロジェクトと共にアルファベット順に一覧表示されます。 
 
-### <a name="download-project-on-second-machine"></a>2 番目のコンピューターにプロジェクトをダウンロードします。
-2 番目のコンピューターでワークスペースを開くと、一般的なフォルダーのアイコンとは異なるアイコンが _iris_ プロジェクトの横に表示されます。 ダウンロード アイコンは、プロジェクトのコンテンツがクラウド上にあり、現在のコンピューターにダウンロードする必要があることを示します。 
+### <a name="download-the-project-on-a-second-computer"></a>2 番目のコンピューターでプロジェクトをダウンロードする
+2 番目のコンピューターでワークスペースを開くと、一般的なフォルダーのアイコンとは異なるアイコンが iris プロジェクトの横に表示されます。 ダウンロード アイコンは、プロジェクトのコンテンツがクラウドにあり、現在のコンピューターにプロジェクトをダウンロードする準備ができていることを示します。 
 
-![プロジェクトの作成](./media/roaming-and-collaboration/downloadable-project.png)
+![Create project](./media/roaming-and-collaboration/downloadable-project.png)
 
-_iris_ プロジェクトをクリックすると、ダウンロード操作が開始されます。 ダウンロードが完了するまで少し待つと、2 番目のコンピューターのプロジェクトにアクセスできるようになります。 
+iris プロジェクトを選んでダウンロードを始めます。 ダウンロードが完了すると、2 番目のコンピューターのプロジェクトにアクセスできるようになります。 
 
-Windows では `C:\Users\<username>\Documents\AzureML` にダウンロードされます。
+Windows では、プロジェクトは C:\Users\\<ユーザー名\>\Documents\AzureML にあります。
 
-macOS では、`/home/<username>/Documents/AzureML` にダウンロードされます。
+macOS では、プロジェクトは /home/\<ユーザー名\>/Documents/AzureML にあります。
 
-今後のリリースで、ダウンロード先のフォルダーを選択できるように機能を拡張する予定です。 
+今後のリリースでは、ダウンロード先のフォルダーを選ぶことができるように機能を拡張する予定です。 
 
 > [!NOTE]
-> プロジェクトとまったく同じ名前のフォルダーが Azure ML ディレクトリ内にあると、ダウンロードが失敗します。 機能が拡張されるまで、この問題を回避するには、既存のフォルダーの名前を変更する必要があります。
+> プロジェクトとまったく同じ名前のフォルダーが Machine Learning ディレクトリ内にあると、ダウンロードが失敗します。 この問題を回避するには、既存のフォルダーの名前を一時的に変更します。
 
 
 ### <a name="work-on-the-downloaded-project"></a>ダウンロードしたプロジェクトでの作業 
-新しくダウンロードしたプロジェクトには、プロジェクトの前回の実行時点でプロジェクトの状態が反映されます。 プロジェクトの状態のスナップショットは、実行を送信するたびに VSTS Git リポジトリの実行履歴分岐に対し自動的にコミットされます。 2 番目のコンピューターでプロジェクトをインスタンス化するときに、最新の実行に関連付けられているスナップショットを使用します。 
+新しくダウンロードしたプロジェクトには、プロジェクトを最後に実行したときのプロジェクトの状態が反映されています。 プロジェクトの状態のスナップショットは、実行を送信するたびに Team Services Git リポジトリの実行履歴ブランチに対し自動的にコミットされます。 最新の実行に関連付けられているスナップショットを使って、2 番目のコンピューターのプロジェクトがインスタンス化されます。 
  
 
 ## <a name="collaboration"></a>コラボレーション
-VSTS の Git リポジトリにリンクされているプロジェクトの他のチーム メンバーとコラボレーションできます。 実験アカウント、ワークスペース、およびプロジェクトのユーザーに権限を割り当てることができます。 この時点で、Azure CLI を使用して Azure Resource Manager のコマンドを実行できます。 [Azure ポータル](https://portal.azure.com)を使用することもできます。 [次のセクション](#portal)を参照してください。    
+Team Services Git リポジトリにリンクされているプロジェクトを使って、チーム メンバーとコラボレーションできます。 Machine Learning 実験アカウント、ワークスペース、プロジェクトに対するアクセス許可を、ユーザーに割り当てることができます。 この段階で、Azure CLI を使って Azure Resource Manager のコマンドを実行できます。 [Azure Portal](https://portal.azure.com) を使用することもできます。 詳しくは、「[Azure Portal を使ってユーザーを追加する](#portal)」をご覧ください。    
 
-### <a name="using-command-line-to-add-users"></a>コマンドラインを使用してユーザーを追加する
-例を見てましょう。 たとえば、e_Iris_ プロジェクトの所有者であるアリスは、ボブとアクセスを共有する必要があります。 
+### <a name="use-the-command-line-to-add-users"></a>コマンド ラインを使ってユーザーを追加する
+例として、Alice は iris プロジェクトの所有者であるものとします。 Alice は、プロジェクトへのアクセスを Bob と共有することを望んでいます。 
 
-アリスは、**[ファイル]** メニューをクリックし、**[コマンド プロンプト]** メニュー項目を選択して、_iris_ プロジェクトに構成されているコマンド プロンプトを起動します。 アリスは、次のコマンドを実行して、ボブに付与するレベルのアクセス権限を決定できます。  
+Alice は、**[ファイル]** メニューの **[コマンド プロンプト]** メニュー項目を選びます。 iris プロジェクトでコマンド プロンプト ウィンドウが開きます。 Alice は、Bob に与えるアクセス レベルを決定できます。 彼女は、次のコマンドを実行してアクセス許可を付与します。  
 
 ```azurecli
-# Find ARM ID of the experimnetation account
+# Find the Resource Manager ID of the Experimentation account.
 az ml account experimentation show --query "id"
 
-# Add Bob to the Experimentation Account as a Contributor.
-# Bob now has read/write access to all workspaces and projects under the Account by inheritance.
-az role assignment create --assignee bob@contoso.com --role Contributor --scope <experimentation account ARM ID>
+# Add Bob to the Experimentation account as a Contributor.
+# Bob now has read/write access to all workspaces and projects under the account by inheritance.
+az role assignment create --assignee bob@contoso.com --role Contributor --scope <Experimentation account Resource Manager ID>
 
-# Find ARM ID of the workspace
+# Find the Resource Manager ID of the workspace.
 az ml workspace show --query "id"
 
 # Add Bob to the workspace as an Owner.
-# Bob now has read/write access to all projects under the Workspace by inheritance. And he can invite or remove others.
-az role assignment create --assignee bob@contoso.com --role Owner --scope <workspace ARM ID>
+# Bob now has read/write access to all projects under the workspace by inheritance. Bob can invite or remove other users.
+az role assignment create --assignee bob@contoso.com --role Owner --scope <workspace Resource Manager ID>
 ```
 
-ロールの割り当て後に、直接または継承により、ボブは Workbench プロジェクトの一覧で、プロジェクトを参照できます。 プロジェクトを表示するために、アプリケーションを再起動する必要がある場合があります。 ボブは、[ローミング セクション](#roaming)に説明されているとおり、プロジェクトをダウンロードしてアリスとコラボレーションできます。 
+直接または継承によりロールを割り当てた後、Bob は Machine Learning Workbench のプロジェクト一覧でプロジェクトを見ることができるようになります。 Bob は、プロジェクトを表示するには、アプリケーションの再起動が必要な場合があります。 Bob は、「[ローミング](#roaming)」で説明されているようにしてプロジェクトをダウンロードし、Alice とのコラボレーションを始めることができます。きます。 
 
-プロジェクトでコラボレーションを行うすべてのユーザーの実行履歴は、同じリモート Git リポジトリにコミットされます。 アリスが実行すると、ボブは、それを Workbench アプリのプロジェクトの実行履歴セクションで確認できます。 ボブは、アリスによって開始された実行を含む、任意の実行状態にプロジェクトを復元することもできます。 
+プロジェクトでコラボレーションしているすべてのユーザーの実行履歴は、同じリモート Git リポジトリにコミットされます。 Alice が行った実行を、Bob は、Machine Learning Workbench アプリのプロジェクトの実行履歴セクションで確認できます。 Bob は、Alice が開始した実行も含めて、任意の実行状態にプロジェクトを復元することもできます。 
 
-プロジェクトのリモート Git リポジトリを共有することにより、アリスとボブは、マスター分岐でもコラボレーションできます。 必要な場合は、個人用分岐を作成して Git プル要求や結合を使用してコラボレーションすることもできます。 
+プロジェクトのリモート Git リポジトリを共有することにより、Alice と Bob は master ブランチでもコラボレーションできます。 必要な場合は、個人用ブランチを作成し、Git のプル要求や結合を使ってコラボレーションすることもできます。 
 
-### <a name="using-azure-portal-to-add-users"></a>Azure ポータルを使用してユーザーを追加する
+### <a name="use-the-azure-portal-to-add-users"></a>Azure Portal を使ってユーザーを追加する
 <a name="portal"></a>
 
-Azure Machine Learning の実験アカウント、ワークスペース、およびプロジェクトは、Azure Resource Manager のリソースです。 [Azure ポータル](https://portal.azure.com)では、[アクセス制御] リンクを使用して、ロールを割り当てることができます。 
+Machine Learning の実験アカウント、ワークスペース、およびプロジェクトは、Azure Resource Manager のリソースです。 ロールの割り当ては、[Azure Portal](https://portal.azure.com) の **[アクセス制御]** リンクを使って行うことができます。 
 
-[All Resources]\(すべてのリソース\) ビューから、ユーザーを追加するリソースを特定します。 ページ内のアクセス制御 (IAM) リンクをクリックします。 Add users 
+ユーザーを追加するリソースを探すには、**[すべてのリソース]** ビューを使います。 **[アクセス制御 (IAM)]** リンクを選び、**[ユーザーの追加]** を選びます。 
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
 
 ## <a name="sample-collaboration-workflow"></a>コラボレーションのワークフローの例
-コラボレーションのフローを、例を使って説明します。 Contoso の従業員である Alice と Bob は、Azure ML Workbench を使ってデータ サイエンス プロジェクトでコラボレーションを行うことを考えています。 2 人の ID は、同じ Contoso Azure AD テナントに属しています。
+コラボレーションのワークフローを、例を使って説明します。 Contoso の従業員である Alice と Bob は、Machine Learning Workbench を使ってデータ サイエンス プロジェクトでコラボレーションを行うことを考えています。 2 人の ID は、同じ Contoso Azure Active Directory (Azure AD) テナントに属しています。 Alice と Bob に必要な手順は次のとおりです。
 
-1. 最初に、Alice が、VSTS プロジェクトで空の Git リポジトリを作成します。 この VSTS プロジェクトは、Contoso AAD テナントで作成された Azure サブスクリプション内に存在する必要があります。 
+1. Alice が、Team Services プロジェクトに空の Git リポジトリを作成します。 Team Services プロジェクトは、Contoso Azure AD テナントの下に作成された Azure サブスクリプション内に存在する必要があります。 
 
-2. その後、Alice は、Azure ML の実験アカウント、ワークスペース、および Azure ML Workbench プロジェクトを、自分のコンピューターで作成します。 プロジェクトを作成するとき、彼女は Git リポジトリの URL を指定します。
+2. Alice は、Machine Learning 実験アカウント、ワークスペース、および Machine Learning Workbench プロジェクトを、自分のコンピューターに作成します。 Alice は、プロジェクトを作成するとき、Team Services の Git リポジトリの URL を入力します。
 
-3. Alice は、プロジェクトでの作業を始めます。 彼女は、スクリプトをいくつか作成して何回か実行します。 実行のたびに、プロジェクト フォルダー全体のスナップショットが、Workbench によって作成された VSTS Git リポジトリの実行履歴の分岐に、コミットとして自動的にプッシュされます。
+3. Alice は、プロジェクトでの作業を始めます。 彼女は、スクリプトをいくつか作成して何回か実行します。 実行のたびに、プロジェクト フォルダー全体のスナップショットが、Machine Learning Workbench によって作成された Team Services Git リポジトリの実行履歴ブランチに、コミットとして自動的にプッシュされます。
 
-4. Alice は作業の進行に満足しています。 彼女は、変更をローカルな _master_ 分岐にコミットし、それを VSTS Git リポジトリの _master_ 分岐にプッシュしようと考えます。 そのために、彼女はプロジェクトを開き、Azure ML Workbench からコマンド プロンプト ウィンドウを起動して、次のコマンドを実行します。
+4. Alice は作業の進行に満足しています。 彼女は、変更をローカルな master ブランチにコミットした後、それを Team Services Git リポジトリの master ブランチにプッシュしようと考えます。 プロジェクトを開き、Machine Learning Workbench でコマンド プロンプト ウィンドウを開いて、次のコマンドを入力します。
     
     ```sh
-    # verify the Git remote is pointing to the VSTS Git repo
+    # Verify that the Git remote is pointing to the Team Services Git repo.
     $ git remote -v
 
-    # verify that the current branch is master
+    # Verify that the current branch is master.
     $ git branch
 
-    # stage all changes
+    # Stage all changes.
     $ git add -A
 
-    # commit changes with a comment
+    # Commit changes with a comment.
     $ git commit -m "this is a good milestone"
 
-    # push the commit to the master branch of the remote Git repo in VSTS
+    # Push the commit to the master branch of the remote Git repo in Team Services.
     $ git push
     ```
 
-5. その後、Alice は共同作成者として Bob をワークスペースに追加します。 彼女はこれを、Azure Portal から、または上で示した `az role assignment` コマンドを使って、行うことができます。 また彼女は、VSTS Git リポジトリへの読み取り/書き込みアクセス権を Bob に与えます。
+5. Alice は共同作成者として Bob をワークスペースに追加します。 これは、Azure Portal で、または前に示したように `az role assignment` コマンドを使って、行うことができます。 また、Alice は、Bob に Team Services Git リポジトリへの読み取り/書き込みアクセス許可も付与します。
 
-6. Bob は、自分のコンピューターで Azure ML Workbench にログインします。 彼は、Alice から共有を受けているワークスペースと、そのワークスペースに表示されたプロジェクトを見ることができます。 
+6. Bob は、自分のコンピューターで Machine Learning Workbench にサインインします。 彼は、Alice から共有されているワークスペースを見ることができます。 Bob は、そのワークスペースに一覧表示されている iris プロジェクトを参照できます。 
 
-7. Bob がプロジェクト名をクリックすると、プロジェクトが彼のコンピューターにダウンロードされます。
-    
-    a. ダウンロードされるプロジェクト ファイルは、実行履歴に記録された最新の実行のスナップショットの複製です。 master 分岐に対する最新のコミットではありません。
-    
-    b. ローカルのプロジェクト フォルダーは、ステージングされていない変更を含む _master_ 分岐に設定されています。
+7. Bob は、プロジェクト名を選びます。 プロジェクトが、Bob のコンピューターにダウンロードされます。
+    * ダウンロードされるプロジェクト ファイルは、実行履歴に記録された最新の実行のスナップショットのコピーです。 master 分岐に対する最新のコミットではありません。
+    * ローカルのプロジェクト フォルダーは、ステージングされていない変更を含む master ブランチに設定されています。
 
-8. Bob は、Alice によって行われた実行を参照し、以前の任意の実行のスナップショットを復元できるようになります。
+8. Bob は、Alice によって行われた実行を見ることができます。 彼は、以前の実行のスナップショットをどれでも復元できます。
 
-9. Bob は、Alice によってプッシュされた最新の変更を取得し、別の分岐で作業を始めようと考えます。 そこで、彼は Azure ML Workbench からコマンド プロンプト ウィンドウを開き、次のコマンドを実行します。
+9. Bob は、Alice がプッシュした最新の変更を取得し、異なるブランチで作業を始めようと考えます。 そこで Bob は、Machine Learning Workbench でコマンド プロンプト ウィンドウを開き、次のコマンドを実行します。
 
     ```sh
-    # verify the Git remote is pointing to the VSTS Git repo
+    # Verify that the Git remote is pointing to the Team Services Git repo.
     $ git remote -v
 
-    # verify that the current branch is master
+    # Verify that the current branch is master.
     $ git branch
 
-    # get the latest commit in VSTS Git master branch and overwrite current files
+    # Get the latest commit in the Team Services Git master branch and overwrite current files.
     $ git pull --force
 
-    # create a new local branch named "bob" so Bob's work is done on the "bob" branch
+    # Create a new local branch named "bob" so that Bob's work is done in the "bob" branch
     $ git checkout -b bob
     ```
 
-10. Bob はプロジェクトを変更し、新しい実行を送信します。 _bob_ 分岐で変更が行われます。 Bob の実行が、Alice からも見えるようになります。
+10. Bob はプロジェクトを変更して、新しい実行を送信します。 bob ブランチで変更が行われます。 Bob の実行が、Alice からも見えるようになります。
 
-11. Bob は、自分の変更をリモート Git リポジトリにプッシュする準備ができました。 Alice が作業している _master_ 分岐との競合を回避するため、彼は自分の作業をやはり _bob_ という名前の新しいリモート分岐にプッシュすることにします。
+11. Bob は、自分の変更をリモート Git リポジトリにプッシュする準備ができました。 Alice が作業している master ブランチとの競合を回避するため、Bob は自分の作業をやはり bob という名前の新しいリモート ブランチにプッシュします。
 
     ```sh
-    # verify that the current branch is "bob" and it has unstaged changes
+    # Verify that the current branch is "bob," and that it has unstaged changes.
     $ git status
     
-    # stage all changes
+    # Stage all changes.
     $ git add -A
 
-    # commit them with a comment
+    # Commit the changes with a comment.
     $ git commit -m "I found a cool new trick."
 
-    # create a new branch on the remote VSTS Git repo, and push changes
+    # Create a new branch on the remote Team Services Git repo, and then push the changes.
     $ git push origin bob
     ```
 
-12. Bob は自分のコードでの新しいすばらしい手法について Alice に伝え、_bob_ 分岐から _master_ 分岐へのプル要求をリモート Git リポジトリに作成します。 その後、Alice はプル要求を _master_ 分岐にマージできます。
+12. Bob は、自分のコードでのすばらしい新手法について Alice に伝えるために、bob ブランチから master ブランチへのプル要求をリモート Git リポジトリに作成します。 その後、Alice はプル要求を master ブランチにマージできます。
 
 ## <a name="next-steps"></a>次のステップ
-Azure ML Workbench での Git の使用について詳しくは、「[Azure Machine Learning Workbench プロジェクトでの Git リポジトリの使用](using-git-ml-project.md)」をご覧ください。
+- [Azure Machine Learning Workbench プロジェクトでの Git リポジトリの使用](using-git-ml-project.md)について、詳しく学習してください。

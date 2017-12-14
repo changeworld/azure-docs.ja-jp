@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: sdanie
-ms.openlocfilehash: ba078a870a3998568170cc197bd6698b97b7fadb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3a425251035e09bb3163fbb052669d0a874806f
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Azure CLI を使用して Azure Redis Cache インスタンスを作成および
 
 * Azure アカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) をほんの少しの時間で作成することができます。
 * [Azure CLI のインストール](../cli-install-nodejs.md)を実行します。
-* Azure CLI のインストールを個人の Azure アカウント、仕事用 Azure アカウント、学校用 Azure アカウントに関連付けることで、 `azure login` コマンドを使用して Azure CLI からログインすることができます。 相違点を理解して選択するには、「 [Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」を参照してください。
+* Azure CLI のインストールを個人の Azure アカウント、仕事用 Azure アカウント、学校用 Azure アカウントに関連付けることで、 `azure login` コマンドを使用して Azure CLI からログインすることができます。 相違点を理解して選択するには、「 [Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli)」を参照してください。
 * 以下のコマンドを実行する前に、 `azure config mode arm` コマンドを実行して、Azure CLI をリソース マネージャー モードに切り替えます。 詳細については、「[Azure CLI を使用して Azure のリソースとリソース グループを管理する](../xplat-cli-azure-resource-manager.md)」を参照してください。
 
 ## <a name="redis-cache-properties"></a>Redis Cache のプロパティ

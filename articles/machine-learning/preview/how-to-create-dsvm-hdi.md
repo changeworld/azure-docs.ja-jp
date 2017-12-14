@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 9ce1d32a2785bec1164d2a89dea9946fe113cb33
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 2560ca144f8ce4041aa592554f9945ed546cc49b
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>コンピューティング ターゲットとしての DSVM および HDI Spark クラスターの作成
 
@@ -63,18 +63,22 @@ Azure リソース管理テンプレートを使用して DSVM をデプロイ�
 
 _[vmSize]_ フィールドには、[Ubuntu DSVM Azure リソース管理テンプレート](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json)に記載されている、サポートされている任意の VM サイズを使用することができます。 Azure ML のコンピューティング ターゲットとして次のいずれかのサイズを使用することをお勧めします。 
 
-- Standard_DS2_v2 
-- Standard_DS3_v2 
-- Standard_DS4_v2 
-- Standard_DS12_v2 
-- Standard_DS13_v2 
-- Standard_DS14_v2 
-- Standard_NC6 
-- Standard_NC12 
-- Standard_NC24 
- 
+
 >[!TIP]
-> "NC" で始まる VM サイズが、GPU が搭載されるサイズです。
+> [ディープ ラーニング ワークロード](how-to-use-gpu.md)の場合、GPU を備えた VM にデプロイできます。
+
+- [汎用 VM](/virtual-machines/linux/sizes-general.md)
+  - Standard_DS2_v2 
+  - Standard_DS3_v2 
+  - Standard_DS4_v2 
+  - Standard_DS12_v2 
+  - Standard_DS13_v2 
+  - Standard_DS14_v2 
+- [GPU を備えた VM](/virtual-machines/linux/sizes-gpu.md)
+  - Standard_NC6 
+  - Standard_NC12 
+  - Standard_NC24 
+ 
 
 詳細については、「[Azure の Linux 仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)」とその[価格情報](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)を参照してください。
 
@@ -121,7 +125,7 @@ DSVM を作成したら、これを Azure ML プロジェクトにアタッチ�
 ```azurecli
 # attach the DSVM compute target
 # it is a good idea to use FQDN in case the IP address changes after you deallocate the VM and restart it
-$ az ml computetarget attach --name <compute target name> --address <ip address or FQDN> --username <admin username> --password <admin password> --type remotedocker
+$ az ml computetarget attach remotedocker --name <compute target name> --address <ip address or FQDN> --username <admin username> --password <admin password> 
 
 # prepare the Docker image on the DSVM 
 $ az ml experiment prepare -c <compute target name>
@@ -171,7 +175,7 @@ Spark HDI クラスターが作成されたら、そのクラスターを Azure 
 
 ```azurecli
 # attach the HDI compute target
-$ az ml computetarget attach --name <compute target name> --address <cluster name, such as myhdicluster123.azurehdinsight.net> --username <ssh username> --password <ssh password> --type cluster
+$ az ml computetarget attach cluster --name <compute target name> --address <cluster name, such as myhdicluster123.azurehdinsight.net> --username <ssh username> --password <ssh password> 
 
 # prepare the conda environment on HDI
 $ az ml experiment prepare -c <compute target name>

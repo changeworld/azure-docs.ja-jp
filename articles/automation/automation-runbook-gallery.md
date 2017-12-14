@@ -3,7 +3,7 @@ title: "Azure Automation 用の Runbook ギャラリーとモジュール ギャ
 description: "Microsoft やコミュニティからの Runbook とモジュールを Azure Automation 環境にインストールして使用できます。  この記事では、これらのリソースにアクセスしたり、自分の Runbook をギャラリーに投稿したりする方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: d3fee7b4-630a-4c10-8425-9bf51d7c9e58
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: e46c09a0cfecf07514f85b5801129fbd8162510f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70bbc131f153efd88816450c239920c79665fdff
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているさまざまなシナリオにアクセスできます。  これらのシナリオを変更しないでそのまま使用することも、特定の要件に合うように編集することもできます。
@@ -50,7 +50,7 @@ Runbook ギャラリーから直接インポートできるのは、Azure クラ
 3. **[ギャラリーの参照]** ボタンをクリックします。
    
     ![[ギャラリーの参照] ボタン](media/automation-runbook-gallery/browse-gallery-button.png)
-4. 必要なギャラリー項目を探し、選択して詳細を表示します。
+4. 必要なギャラリー アイテムを探し、選択して詳細を表示します。
    
     ![[ギャラリーの参照]](media/automation-runbook-gallery/browse-gallery.png)
 5. **[ソース プロジェクトの表示]** をクリックして、 [TechNet スクリプト センター](http://gallery.technet.microsoft.com/)の項目を表示します。
@@ -75,7 +75,7 @@ Runbook ギャラリーから直接インポートできるのは、Azure クラ
   * Change Control
   * コンプライアンス
   * Dev / Test Environments
-  * 障害復旧
+  * ディザスター リカバリー
   * 監視
   * Patching
   * プロビジョニング

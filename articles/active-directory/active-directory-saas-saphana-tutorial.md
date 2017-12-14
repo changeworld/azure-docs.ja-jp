@@ -4,7 +4,7 @@ description: "Azure Active Directory と SAP HANA の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: cef4a146-f4b0-4e94-82de-f5227a4b462c
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 02c751b5d9e6f13c81b9c957cd6689c1fc744a07
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 855525e2c1d3c33cc7134bbc1cd9b53ca59e1a70
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>チュートリアル: Azure Active Directory と SAP HANA の統合
 
@@ -244,7 +244,7 @@ SAP HANA では、Just-In-Time プロビジョニングがサポートされて�
 
 **SAP HANA に Britta Simon を割り当てるには、次の手順を実行します。**
 
-1. Azure Portal で、アプリケーション ビューを開きます。 ディレクトリ ビューに移動し、**[エンタープライズ アプリケーション]** に移動します。 **[すべてのアプリケーション]** を選択します。
+1. Azure ポータルで、アプリケーション ビューを開きます。 ディレクトリ ビューに移動し、**[エンタープライズ アプリケーション]** に移動します。 **[すべてのアプリケーション]** を選択します。
 
     ![ユーザーの割り当て][201] 
 

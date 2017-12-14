@@ -4,7 +4,7 @@ description: "ここでは、追加のセキュリティ確認を強制するな
 documentationcenter: 
 services: multi-factor-authentication
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: aac3b922-7cc1-428c-9044-273579aa7b5a
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 06/23/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: cec582462d6f9b3ae7fbee0dd2a3ab66d7b0d1da
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 718ac36c8f4ca2367f90ad51edb175715194a17c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
 管理者は、ユーザーとデバイスの次の設定を管理できます。

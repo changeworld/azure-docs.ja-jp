@@ -4,7 +4,7 @@ description: "Azure Active Directory で管理アクセス許可を持つエン�
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: c4fb6f94-34f8-4323-8bd7-a3ee44901f7d
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 13a45733b3b8d9ea0593e3b546b6ea58aa5f1a46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd933ee33212007a58903b607055f437cc9206fd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="view-all-the-enterprise-apps-that-i-can-manage-in-azure-active-directory"></a>Azure Active Directory で管理できるすべてのエンタープライズ アプリケーションを表示する
 Azure Active Directory (Azure AD) でエンタープライズ アプリケーションを管理できます。 管理できるアプリケーションの表示、アプリケーションへのユーザーまたはグループの割り当て、アプリケーションのプロパティ (アプリケーションの名前やロゴなど) の管理、ユーザーがサインインできないようにするためのアプリケーションの無効化などを行うことができます。

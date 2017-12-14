@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: e06c73c2c00b27178f8431b83b5c5a42110b6b1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3187939fa813f941c2fe12a359df474a6c487c71
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -172,6 +172,14 @@ SAS URL を使用してサービスに接続し、上記のエラーが発生す
 - URL の有効期限が切れていないかを確認します。
 
 - SAS URL がアクセス ポリシーに基づいている場合は、このアクセス ポリシーが失効されていないかを確認します。
+
+無効な SAS URL を誤ってアタッチし、デタッチできない場合は、次の手順を実行します。
+1.  Storage Explorer を実行している場合は、F12 キーを押して開発者ツール ウィンドウを開きます。
+2.  [アプリケーション] タブをクリックし、ローカル記憶域をクリックし、左側のツリーで file:// をクリックします。
+3.  問題がある SAS URI のサービスの種類と関連付けられているキーを見つけます。 たとえば、不適切な SAS URI が BLOB コンテナーの URI の場合は、"StorageExplorer_AddStorageServiceSAS_v1_blob" というキーを探します。
+4.  キーの値は JSON 配列にする必要があります。 不適切な URI に関連付けられたオブジェクトを見つけて削除します。
+5.  Ctrl キーを押しながら R キーを押して、Storage Explorer をリロードします。
+
 
 ## <a name="next-steps"></a>次のステップ
 

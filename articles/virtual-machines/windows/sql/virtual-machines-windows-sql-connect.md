@@ -12,26 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/14/2017
+ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 67ba43f9456bbeffbf602067586143c4c68af672
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d90904315e5d0a99ead193d1f95b504e796d587
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="connect-to-a-sql-server-virtual-machine-on-azure-resource-manager"></a>Azure での SQL Server 仮想マシンへの接続 (リソース マネージャー)
-> [!div class="op_single_selector"]
-> * [Resource Manager](virtual-machines-windows-sql-connect.md)
-> * [クラシック](../classic/sql-connect.md)
-> 
-> 
+# <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure での SQL Server 仮想マシンへの接続
 
 ## <a name="overview"></a>概要
 
-このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスへ接続する方法について説明します。 ここでは、[一般的な接続のシナリオ](#connection-scenarios)をいくつか紹介してから、[Azure VM での SQL Server への接続を構成する手順の詳細](#steps-for-manually-configuring-sql-server-connectivity-in-an-azure-vm)について説明します。
-
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
+このトピックでは、Azure 仮想マシンで実行されている SQL Server インスタンスへ接続する方法について説明します。 [一般的な接続シナリオ](#connection-scenarios)をいくつか紹介し、[ポータルで接続設定を変更する手順](#change)を説明します。 ポータルの外部で接続のトラブルシューティングや構成を行う必要がある場合は、このトピックの最後の[手動構成](#manual)に関するセクションをご覧ください。 
 
 プロビジョニングと接続の両方に関する完全なチュートリアルについては、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。
 
@@ -121,17 +114,34 @@ SQL Server 接続の設定を変更するとき、Azure は SQL Server Developer
 
 最初に、リモート デスクトップを使用して、SQL Server コンピューターに接続します。
 
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
+[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
 次に、**SQL Server 構成マネージャー**を使用して、TCP/IP プロトコルを有効にします。
 
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
+[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
 ## <a name="connect-with-ssms"></a>SSMS で接続する
 
 次の手順では、Azure VM の省略可能な DNS ラベルを作成し、SQL Server Management Studio (SSMS) と接続する方法を示します。
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
+
+## <a id="manual"></a>手動構成とトラブルシューティング
+
+ポータルには接続を自動的に構成するオプションが用意されていますが、接続を手動で構成する方法も知っておくと便利です。 要件を把握しておくと、トラブルシューティングにも役立ちます。
+
+Azure VM で実行されている SQL Server に接続するための要件を次の表に示します。
+
+| 要件 | 説明 |
+|---|---|
+| [SQL Server 認証モードを有効にする](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Virtual Network で Active Directory を構成済みである場合を除き、VM にリモート接続するには SQL Server 認証が必要になります。 |
+| [SQL ログインを作成する](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL 認証を使用する場合、ターゲット データベースへのアクセス許可も持つ、ユーザー名とパスワードによる SQL ログインが必要です。 |
+| [TCP/IP プロトコルを有効にする](#manualTCP) | SQL Server では、TCP 経由の接続を許可する必要があります。 |
+| [SQL Server ポートのファイアウォール規則を有効にする](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | VM 上のファイアウォールでは、SQL Server ポート (既定では 1433) の受信トラフィックを許可する必要があります。 |
+| [TCP 1433 のネットワーク セキュリティ グループの規則を作成する](../../../virtual-network/virtual-networks-create-nsg-arm-pportal.md#create-rules-in-an-existing-nsg) | インターネット経由で接続する場合は、VM が SQL Server ポート (既定では 1433) でトラフィックを受信できるようにする必要があります。 ローカル接続と仮想ネットワーク専用の接続では不要です。 これは、Azure Portal で必要な唯一の手順です。 |
+
+> [!TIP]
+> ポータルで接続を構成すると、上記の表の手順が自動的に実行されます。 これらの手順を使用するのは、構成を確認する場合または SQL Server の接続を手動で設定する場合だけです。
 
 ## <a name="next-steps"></a>次のステップ
 

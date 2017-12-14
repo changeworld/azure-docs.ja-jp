@@ -16,22 +16,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jgao
-ms.openlocfilehash: 3c98150239134c686ac8edebd3c477bec8be7dd8
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: b2208f0553ce62be054409a415723445733708d4
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理 
 
-この記事では、Ambari UI、YARN UI、Spark History Server など、Spark クラスターに関連付けられているインターフェイスにアクセスする方法を説明します。 クラスターの構成をチューニングしてパフォーマンスを最適化する方法についても取り上げます。
+Ambari UI、YARN UI、Spark History Server など、Spark クラスターに関連付けられているインターフェイスにアクセスする方法と、クラスターの構成をチューニングしてパフォーマンスを最適化する方法を説明します。
 
 **前提条件:**
 
-* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
-## <a name="how-do-i-launch-the-ambari-web-ui"></a>Ambari Web UI の起動方法
+## <a name="open-the-ambari-web-ui"></a>Ambari Web UI を開く
 1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 2. Spark クラスターについては、**[ダッシュボード]** をクリックします。 入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 11/29/2017
 
     ![Ambari Web UI](./media/apache-spark-resource-manager/ambari-web-ui.png "Ambari Web UI")   
 
-## <a name="how-do-i-launch-the-spark-history-server"></a>Spark History Server の起動方法
+## <a name="open-the-spark-history-server"></a>Spark History Server を開く
 1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。
 2. クラスター ブレードの **[クイック リンク]** で、**[クラスター ダッシュボード]** をクリックします。 **[クラスター ダッシュボード]** ブレードで **[Spark History Server]** をクリックします。
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 11/29/2017
 
     入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
-## <a name="how-do-i-launch-the-yarn-ui"></a>Yarn UI の起動方法
+## <a name="open-the-yarn-ui"></a>Yarn UI を開く
 Spark クラスターで現在実行されているアプリケーションを監視するには、YARN UI を使用することができます。
 
 1. クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[YARN]** をクリックします。
@@ -60,7 +59,7 @@ Spark クラスターで現在実行されているアプリケーションを�
    >
    >
 
-## <a name="what-is-the-optimum-cluster-configuration-to-run-spark-applications"></a>Spark アプリケーションを実行するための最適なクラスター構成とは
+## <a name="the-optimum-cluster-configuration-to-run-spark-applications"></a>Spark アプリケーションを実行するための最適なクラスター構成
 アプリケーションの要件に応じて Spark を構成するための主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、`spark.executor.memory` の 3 つです。 Executor は、Spark アプリケーション用に起動されるプロセスです。 ワーカー ノードで動作し、アプリケーションのタスクを実行する役割を担います。 それぞれのクラスターで使用される Executor の既定の数とサイズは、ワーカー ノードの数とワーカー ノードのサイズに基づいて計算され、 この情報はクラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。
 
 3 つの構成パラメーターは、クラスター レベルで (クラスター上で動作するすべてのアプリケーションに対して) 構成できるほか、個々のアプリケーションに対して指定することもできます。

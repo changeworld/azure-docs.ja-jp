@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/14/2017
-ms.openlocfilehash: 2efffd14c748a070fff59bcf9dd21c02eb9f6dcd
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: c7f4bf0fed35ffb2c03e8b983260c6093032fe79
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-the-azure-machine-learning-experimentation-service"></a>Azure Machine Learning 実験サービスを構成する
 
 ## <a name="overview"></a>概要
-Azure Machine Learning 実験サービスのアカウント、ワークスペース、プロジェクトは、Azure リソースです。 そのため、Resource Manager テンプレートを使ってデプロイできます。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)」を参照してください。
+Azure Machine Learning 実験サービスのアカウント、ワークスペース、プロジェクトは、Azure リソースです。 そのため、Resource Manager テンプレートを使ってデプロイできます。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)」を参照してください。
 
 ## <a name="deploy-a-template"></a>テンプレートのデプロイ
 Azure コマンド ライン インターフェイスまたは Azure Portal を使ってテンプレートをデプロイするのに必要な手順は 2 つだけです。
@@ -137,7 +137,7 @@ az group deployment create -n testdeploy -g <resource group name> --template-fil
 変更可能な値が 3 つあります。 
 * accountName: 実験アカウントの名前。
 * location: サポートされている Azure リージョンのいずれか。
-* storageAccountSku: Azure ML は Standard ストレージのみをサポートし、Premium はサポートしません。 ストレージについて詳しくは、「[Microsoft Azure Storage の概要](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction)」をご覧ください。 
+* storageAccountSku: Azure ML は Standard ストレージのみをサポートし、Premium はサポートしません。 ストレージについて詳しくは、「[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)」をご覧ください。 
 
 ```json
 {

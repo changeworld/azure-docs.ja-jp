@@ -4,7 +4,7 @@ description: "既存の Azure AD ギャラリー アプリケーションのフ�
 services: active-directory
 documentationcenter: 
 author: ajamess
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 1b1d00718981b2c7d11f5b88428d02e16dd0b34d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8c22d20151fa70ba33ef017ab24c787f71fe6e0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する方法
 
@@ -141,7 +141,7 @@ Azure AD ギャラリーからアプリケーションを追加するには、�
   
    1. **[属性の追加]** をクリックします。 **[名前]** に入力し、ドロップダウンから **[値]** を選択します。
 
-   2. [ **Save**] をクリックします。 テーブルに新しい属性が表示されます。
+   2. **[Save]** をクリックします。 テーブルに新しい属性が表示されます。
 
 ## <a name="download-the-azure-ad-metadata-or-certificate"></a>Azure AD メタデータまたは証明書をダウンロードする
 

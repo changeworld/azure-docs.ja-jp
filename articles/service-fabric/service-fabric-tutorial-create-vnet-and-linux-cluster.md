@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: 47e023e7240cfae3553b220ebc44c95ec96d62a7
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.custom: mvc
+ms.openlocfilehash: de67512a9b03095b793fc82f3b0c348577511d5f
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Service Fabric Linux クラスターをデプロイする
 このチュートリアルは、シリーズの第 1 部です。 Azure CLI を使用して Linux Service Fabric クラスターを既存の Azure 仮想ネットワーク (VNET) とサブネットにデプロイする方法を学習します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。 PowerShell を使用して Windows クラスターを作成する場合は、[Azure でのセキュリティで保護された Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)に関するページを参照してください。
@@ -35,7 +36,8 @@ ms.lasthandoff: 11/18/2017
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
 > * Azure にセキュリティで保護されたクラスターを作成する
-> * [クラスターをスケールインまたはスケールアウトする](/service-fabric-tutorial-scale-cluster.md)
+> * [クラスターをスケールインまたはスケールアウトする](service-fabric-tutorial-scale-cluster.md)
+> * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 > * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>前提条件

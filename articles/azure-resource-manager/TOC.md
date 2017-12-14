@@ -12,6 +12,9 @@
 # 方法
 ## テンプレートの作成
 ### [テンプレート セクション](resource-group-authoring-templates.md)
+#### [パラメーター](resource-manager-templates-parameters.md)
+#### [変数](resource-manager-templates-variables.md)
+#### [リソース](resource-manager-templates-resources.md)
 ### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)

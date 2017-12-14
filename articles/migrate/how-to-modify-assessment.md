@@ -1,24 +1,16 @@
 ---
 title: "Azure Migrate の評価の設定をカスタマイズする | Microsoft Docs"
 description: "Azure Migration Planner を使用して VMware VM を Azure に移行するための、評価の設定と実行方法について説明します。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: a068b9c7-5f87-4fe1-90b9-3be48d91aa3f
-ms.service: migrate
-ms.devlang: na
+ms.service: azure-migrate
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 20aeb2073ad307952f92c8377bc9d78169f1756c
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: ce47790f6214864afdba33eb5cbe3a9e49b81cd5
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
@@ -48,4 +40,4 @@ ms.lasthandoff: 11/29/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-評価の計算方法の[詳細](concepts-assessment-calculation.md)を確認します。
+評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。

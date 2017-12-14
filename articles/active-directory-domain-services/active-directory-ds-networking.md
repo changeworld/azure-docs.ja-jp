@@ -4,7 +4,7 @@ description: "Azure Active Directory Domain Services のネットワークに関
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: 5f9236c5cf660be00db6e09d61df617b64d978e9
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: b35e87da943de8d47f36b6443fa62e251f742149
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
@@ -28,10 +28,6 @@ ms.lasthandoff: 10/23/2017
 * **Resource Manager の仮想ネットワーク**: Azure AD Domain Services は、Azure Resource Manager を使って作成された仮想ネットワーク上で有効にできます。
 * 従来の Azure 仮想ネットワークで Azure AD Domain Services を有効にすることはできません。
 * Azure AD Domain Services が有効になっている仮想ネットワークに他の仮想ネットワークを接続することはできません。 詳細については、「[ネットワーク接続](active-directory-ds-networking.md#network-connectivity)」を参照してください。
-* **リージョン仮想ネットワーク**: 既存の仮想ネットワークを使用する予定がある場合は、リージョン仮想ネットワークであることを確認してください。
-
-  * 従来のアフィニティ グループ機構を使った仮想ネットワークは、Azure AD ドメイン サービスでは使用できません。
-  * Azure AD Domain Services を使用するには、 [従来の仮想ネットワークをリージョン仮想ネットワークに移行してください](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
 
 ### <a name="azure-region-for-the-virtual-network"></a>仮想ネットワークの Azure リージョン
 * Azure AD Domain Services の管理対象ドメインは、サービスを有効にすることを選択した仮想ネットワークと同じ Azure リージョンにデプロイされます。
@@ -48,12 +44,11 @@ ms.lasthandoff: 10/23/2017
 >
 >
 
-## <a name="network-security-groups-and-subnet-design"></a>ネットワーク セキュリティ グループとサブネットの設計
-[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) には、仮想ネットワークの VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
+
+## <a name="guidelines-for-choosing-a-subnet"></a>サブネットの選択に関するガイドライン
 
 ![Recommended subnet design](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-### <a name="guidelines-for-choosing-a-subnet"></a>サブネットの選択に関するガイドライン
 * Azure AD Domain Services は、Azure 仮想ネットワーク内の**別の専用サブネット**にデプロイします。
 * 管理対象ドメインの専用サブネットに NSG を適用しないでください。 この専用サブネットに NSG を適用する必要がある場合は、**ドメインのサービス提供および管理に必要なポートがブロックされていない**ことを確認してください。
 * 管理対象ドメインの専用サブネット内で使用できる IP アドレスの数を過度に制限しないでください。 このような制限により、サービスが管理対象ドメインに対して 2 つのドメイン コントローラーを利用できなくなります。
@@ -64,20 +59,40 @@ ms.lasthandoff: 10/23/2017
 >
 >
 
-### <a name="ports-required-for-azure-ad-domain-services"></a>Azure AD Domain Services に必要なポート
+## <a name="ports-required-for-azure-ad-domain-services"></a>Azure AD Domain Services に必要なポート
 Azure AD Domain Services による管理対象ドメインのサービス提供および管理には、次のポートが必要です。 管理対象ドメインを有効にしたサブネットに対してこれらのポートがブロックされていないことを確認してください。
 
-| ポート番号 | 目的 |
-| --- | --- |
-| 443 |Azure AD テナントとの同期 |
-| 3389 |ドメインの管理 |
-| 5986 |ドメインの管理 |
-| 636 |管理対象ドメインへのセキュリティで保護された LDAP (LDAPS) アクセス |
+| ポート番号 | 必須 | 目的 |
+| --- | --- | --- |
+| 443 | 必須 |Azure AD テナントとの同期 |
+| 5986 | 必須 | ドメインの管理 |
+| 3389 | 省略可能 | ドメインの管理 |
+| 636 | 省略可能 | 管理対象ドメインへのセキュリティで保護された LDAP (LDAPS) アクセス |
 
-ポート 5986 は、PowerShell のリモート処理を使用して管理対象ドメインの管理タスクを実行するために使用されます。 管理対象ドメインのドメイン コントローラーは、通常はこのポートをリッスンしません。 サービスは、管理操作またはメンテナンス操作を管理対象ドメインに対して実行する必要がある場合にのみ、管理されたドメイン コントローラー上のこのポートを開きます。 操作が完了すると、サービスはすぐに管理対象ドメイン コントローラー上のこのポートを停止します。
+**ポート 443 (Azure AD との同期)**
+* 管理対象ドメインと Azure AD ディレクトリを同期するために使用されます。
+* NSG でこのポートへのアクセスを許可する必要があります。 このポートにアクセスできない場合、管理対象ドメインは Azure AD ディレクトリと同期されません。 ユーザーのパスワードが管理対象ドメインと同期されていないために、ユーザーがサインインできないことがあります。
+* このポートへの受信アクセスを、Azure の IP アドレス範囲に属する IP アドレスに限定できます。
 
-ポート 3389 は、管理対象ドメインへのリモート デスクトップ接続に使用されます。 このポートも、管理対象ドメイン上でほとんど無効な状態を保持します。 サービスはトラブルシューティングの目的で管理対象ドメインに接続する必要がある場合にのみ、このポートを有効にします。このポートは、通常サービスの開始要求に応答して開始されます。 管理タスクと監視タスクは PowerShell のリモート処理を使用して実行されるため、この仕組みは継続的には使用されません。 このポートは、高度なトラブルシューティングのために管理対象ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。 トラブルシューティングの操作が完了すると、ポートはただちに閉じられます。
+**Port 5986 (PowerShell リモート処理)** 
+* PowerShell のリモート処理を使用して管理対象ドメインの管理タスクを実行するために使用されます。
+* NSG でこのポートを利用するアクセスを許可する必要があります。 このポートにアクセスできない場合、管理対象ドメインの更新、構成、バックアップおよび監視は行えません。
+* このポートへの受信アクセスを、次の発信元 IP アドレスに限定できます: 52.180.183.8 23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209、52.180.179.108 52.175.18.134、52.138.68.41 104.41.159.212、52.169.218.0、52.187.120.237、52.161.110.169、52.174.189.149 13.64.151.161 
+* 管理対象ドメインのドメイン コントローラーは、通常はこのポートをリッスンしません。 サービスは、管理操作またはメンテナンス操作を管理対象ドメインに対して実行する必要がある場合にのみ、管理されたドメイン コントローラー上のこのポートを開きます。 操作が完了すると、サービスはすぐに管理対象ドメイン コントローラー上のこのポートを停止します。
 
+**ポート 3389 (リモート デスクトップ)** 
+* 管理対象ドメインのドメイン コントローラーへのリモート デスクトップ接続に使用されます。 
+* NSG でこのポートを開くかどうかは任意です。 
+* このポートも、管理対象ドメイン上でほとんど無効な状態を保持します。 管理タスクと監視タスクは PowerShell のリモート処理を使用して実行されるため、この仕組みは継続的には使用されません。 このポートは、Microsoft が高度なトラブルシューティングのために管理対象ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。 トラブルシューティングの操作が完了すると、ポートはただちに閉じられます。
+
+**ポート 636 (Secure LDAP)**
+* インターネット経由で管理対象ドメインへの Secure LDAP によるアクセスを有効にするために使用されます。
+* NSG でこのポートを開くかどうかは任意です。 インターネット経由で Secure LDAP によるアクセスを有効にしている場合にのみ、ポートを開きます。
+* このポートへの受信アクセスを、Secure LDAP での接続が見込まれる送信元 IP アドレスに限定できます。
+
+
+## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
+[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) には、仮想ネットワークの VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Azure AD Domain Services を使用する仮想ネットワークのサンプル NSG
 次の表は、Azure AD Domain Services の管理対象ドメインを使用して仮想ネットワークを構成できるサンプル NSG を示しています。 この規則によって、必須ポートからの受信トラフィックで管理対象ドメインへの修正プログラムや更新プログラムを適用し、Microsoft による監視を可能にしています。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。

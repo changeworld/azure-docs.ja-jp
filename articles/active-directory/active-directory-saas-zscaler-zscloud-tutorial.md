@@ -4,7 +4,7 @@ description: "Azure Active Directory と Zscaler ZSCloud の間でシングル �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 411d5684-a780-410a-9383-59f92cf569b5
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 2b6eb113e5725260bc04f50e9218939bf28b1ff0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 44fa15a3057975617116a10f044ddba2298feba2
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合
 
@@ -162,7 +162,7 @@ Zscaler ZSCloud で Azure AD のシングル サインオンを構成してテ�
 
     ![Administration](./media/active-directory-saas-zscaler-zscloud-tutorial/ic800210.png "Administration")
     
-    a. [ **Save**] をクリックします。
+    a. **[Save]** をクリックします。
 
     b. **[今すぐ認証する]**をクリックします。
 
@@ -255,7 +255,7 @@ ZScaler ZSCloud の場合、プロビジョニングは手動で行います。
    
     a. プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
 
-    b. [ **Save**] をクリックします。
+    b. **[Save]** をクリックします。
 
 > [!NOTE]
 > ZScaler ZSCloud から提供されている他の ZScaler ZSCloud ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。

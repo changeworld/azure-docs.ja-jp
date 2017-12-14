@@ -15,20 +15,20 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 68788efffd27edf2813cf455490b651c2c7106a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce854a3dc41dec69c3f8de245a03d55a2354335f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Service Fabric での ASP.NET Core アプリケーションの監視と診断
-このチュートリアルは、シリーズの第 4 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を設定する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションから利用統計情報を収集します。 
+このチュートリアルは、シリーズの第 4 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を設定する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションからテレメトリを収集します。 
 
 シリーズの第 4 部で学習する内容は次のとおりです。
 > [!div class="checklist"]
 > * Application Insights をお使いのアプリケーション用に構成する
-> * 応答の利用統計情報を収集してサービス間の HTTP ベース通信を追跡する
-> * Application Insights でアプリケーション マップ機能を使用する
+> * 応答のテレメトリを収集してサービス間の HTTP ベース通信を追跡する
+> * Application Insights でアプリ マップ機能を使用する
 > * Application Insights API を使用してカスタム イベントを追加する
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
@@ -65,7 +65,7 @@ Application Insights は、Azure のアプリケーション パフォーマン�
 
 ## <a name="add-application-insights-to-the-applications-services"></a>Application Insights をアプリケーションのサービスに追加する
 
-昇格された特権で Visual Studio 2017 を起動します。 これを行うには、スタート メニューで Visual Studio アイコンを右クリックし、**[管理者として実行]** を選択します。 **[ファイル]**  >  **[開く]**  >  **[Project/Solution]\(プロジェクト/ソリューション\)** の順にクリックし、投票アプリケーション (チュートリアルの第 1 部または git からの複製のいずれかで作成) に移動します。 *Voting.sln* を開き、アプリケーションの NuGet パッケージを復元するかを尋ねるプロンプトが表示されたら **[はい]** をクリックします。
+昇格された特権で Visual Studio 2017 を起動します。 これを行うには、スタート メニューで Visual Studio アイコンを右クリックし、**[管理者として実行]** を選択します。 **[ファイル]**  >  **[開く]**  >  **[プロジェクト/ソリューション]** の順にクリックし、投票アプリケーション (チュートリアルの第 1 部で作成済みまたは git から複製済み) に移動します。 *Voting.sln* を開き、アプリケーションの NuGet パッケージを復元するかを尋ねるプロンプトが表示されたら **[はい]** をクリックします。
 
 次の手順に従って、VotingWeb と VotingData の両方のサービス用に Application Insights を構成します。
 1. サービス名を右クリックして、**[Application Insights の構成...]** をクリックします。
@@ -77,7 +77,7 @@ Application Insights は、Azure のアプリケーション パフォーマン�
 
     ![AI の登録](./media/service-fabric-tutorial-monitoring-aspnet/register-ai.png)
 
-4. **[完了]** をクリックすると、ポップアップ表示されるダイアログ ボックスの操作が完了になります。
+4. ポップアップ表示されるダイアログ ボックスの操作が完了したら、**[完了]** をクリックします。
     
 アプリケーションの**両方**のサービスで上記の手順を実行して、アプリケーション用の Application Insights の構成を完了します。 受信要求と送信要求、およびサービス間の通信を確認するために、両方のサービスで同じ Application Insights リソースを使用します。
 
@@ -92,7 +92,7 @@ Application Insights では、シナリオによって使い分けられる Serv
 4. 右側で、アプリケーションの 2 つのサービス (**[VotingWeb]** と **[VotingData]**) の横にある 2 つのチェックボックスをオンにして、**[インストール]** をクリックします。
     ![AI 登録の完了](./media/service-fabric-tutorial-monitoring-aspnet/aisdk-sf-nuget.png)
 5. ポップアップで表示される *[変更の確認]* ダイアログ ボックスで **[OK]** をクリックし、*[ライセンスの同意]* に同意します。 これで、サービスへの NuGet の追加が完了します。
-6. 今度は 2 つのサービスに利用統計情報の初期化子を設定する必要があります。 この処理を行うには、*VotingWeb.cs* と *VotingData.cs* を開きます。 両方に対して、次の 2 つの手順を実行します。
+6. 今度は 2 つのサービスにテレメトリの初期化子を設定する必要があります。 この処理を行うには、*VotingWeb.cs* と *VotingData.cs* を開きます。 両方に対して、次の 2 つの手順を実行します。
     1. それぞれの *\<サービス名>.cs* の上部に、次の 2 つの *using* ステートメントを追加します。
     
     ```csharp
@@ -101,7 +101,7 @@ Application Insights では、シナリオによって使い分けられる Serv
     ```
     
     2. *CreateServiceInstanceListeners()* または *CreateServiceReplicaListeners()* の入れ子になった *return* ステートメント内で、*ConfigureServices*  >  *services* の下に宣言されている 2 つのシングルトン サービスの間に、以下を追加します。`.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`
-    これにより、お使いの利用統計情報に*サービス コンテキスト*が追加され、Application Insights の利用統計情報のソースをより深く理解できるようになります。 *VotingWeb.cs* の入れ子になった *return* ステートメントは、次のようになります。
+    これにより、お使いのテレメトリに*サービス コンテキスト*が追加され、Application Insights のテレメトリのソースをより深く理解できるようになります。 *VotingWeb.cs* の入れ子になった *return* ステートメントは、次のようになります。
     
     ```csharp
     return new WebHostBuilder().UseWebListener()
@@ -138,36 +138,36 @@ Application Insights では、シナリオによって使い分けられる Serv
 
 この時点で、アプリケーションをデプロイする準備が整いました。 上部にある **[開始]** をクリックする (または **F5** キーを押す) と、Visual Studio でアプリケーションがビルドおよびパッケージ化され、ローカル クラスターが設定され、そのクラスターにアプリケーションがデプロイされます。 
 
-アプリケーションのデプロイが完了した後に [localhost:8080](localhost:8080) にアクセスすると、単一ページの投票アプリケーションのサンプルを確認できます。 サンプル データと利用統計情報を作成する項目をいくつか選んで投票します。この例ではデザートにしています!
+アプリケーションのデプロイが完了した後に [localhost:8080](localhost:8080) にアクセスすると、単一ページの投票アプリケーションのサンプルを確認できます。 サンプル データとテレメトリを作成する項目をいくつか選んで投票します。この例ではデザートにしています!
 
 ![AI 投票のサンプル](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
 
 投票を追加し終わったら、投票オプションの一部を*削除*することもできます。
 
-## <a name="view-telemetry-and-the-app-map-in-application-insights"></a>Application Insights で利用統計情報とアプリケーション マップを表示する 
+## <a name="view-telemetry-and-the-app-map-in-application-insights"></a>Application Insights でテレメトリとアプリ マップを表示する 
 
-Azure Portal で Application Insights リソースにアクセスして、リソースの左側のナビゲーション バーで *[構成]* の下にある **[プレビュー]** をクリックします。 使用可能なプレビューの一覧で、*[複数ロールのアプリケーション マップ]* を **[オン]** にします。
+Azure Portal で Application Insights リソースにアクセスして、リソースの左側のナビゲーション バーで *[構成]* の下にある **[プレビュー]** をクリックします。 利用可能なプレビューの一覧で、*[複数ロールのアプリケーション マップ]* を **[オン]** にします。
 
 ![AI アプリケーション マップを有効にする](./media/service-fabric-tutorial-monitoring-aspnet/ai-appmap-enable.png)
 
 **[概要]** をクリックして、お使いのリソースのランディング ページに戻ります。 次に、上部の **[検索]** をクリックして受信トレースを確認します。 Application Insights にトレースが表示されるまで数分かかります。 何も表示されない場合は、しばらく待ってから上部の **[更新]** をクリックします。
 ![AI トレースの確認](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
-*[検索]* ウィンドウを下にスクロールすると、Application Insights ですぐに利用できるすべての受信利用統計情報が表示されます。 投票アプリケーションで行った各操作によって、*VotingWeb* からの送信 PUT 要求 (PUT Votes/Put [name]) と *VotingData* からの受信 PUT 要求 (PUT VoteData/Put [name]) が発生し、その後、表示データを最新の情報に更新するように求めるペアの GET 要求が発生します。 それらは HTTP 要求であるため、ローカルホストでも HTTP に対する依存関係トレースが発生します。 1 つの投票がどのように追加されるかが分かるサンプルを次に示します。![AI 要求トレースのサンプル](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
+*[検索]* ウィンドウを下にスクロールすると、Application Insights ですぐに利用できるすべての受信テレメトリが表示されます。 投票アプリケーションで行った操作ごとに、*VotingWeb* からの送信 PUT 要求 (PUT Votes/Put [name]) と *VotingData* からの受信 PUT 要求 (PUT VoteData/Put [name]) が発生し、その後、 表示データを最新の情報に更新するように求める GET 要求が対になって発生します。 それらは HTTP 要求であるため、ローカルホストでも HTTP に対する依存関係トレースが発生します。 1 つの投票がどのように追加されるかが分かるサンプルを次に示します。![AI 要求トレースのサンプル](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
 トレースのひとつをクリックすると、その詳細を表示できます。 Application Insights で提供される情報には、*応答時間*や*要求 URL* など、要求に関する有用な情報があります。 また、Service Fabric 固有の NuGet を追加したため、後述の *Custom Data* セクションでは、お使いのアプリケーションに関する情報を Service Fabric クラスターのコンテキストで取得することもできます。 これにはサービス コンテキストが含まれるため、要求のソースの *PartitionID* と *ReplicaId* を確認して、アプリケーションでのエラー診断時に問題箇所を適切に特定することができます。
 
 ![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
 
-また、アプリケーション マップを有効にしたため、*[概要]* ページで**アプリケーション マップ** アイコンをクリックすると、接続されている両方のサービスが表示されます。
+また、アプリケーション マップを有効にしたため、*[概要]* ページで**アプリ マップ** アイコンをクリックすると、接続されている両方のサービスが表示されます。
 
 ![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/app-map.png)
 
-アプリケーション マップを利用すると、アプリケーションのトポロジをより深く理解できます。特に、連携して動く複数の異なるサービスを追加し始めるときには有用です。 また、これによって要求の成功率に関する基本的なデータを取得し、失敗した要求を診断して、問題が起きた可能性のある場所を把握するのに役立てることもできます。 アプリケーション マップの使用方法について詳しくは、「[Application Insights のアプリケーション マップ](../application-insights/app-insights-app-map.md)」をご覧ください。
+アプリ マップを利用すると、アプリケーションのトポロジをより深く理解できます。特に、連携して動く複数の異なるサービスを追加し始めるときには有用です。 また、これによって要求の成功率に関する基本的なデータを取得し、失敗した要求を診断して、問題が起きた可能性のある場所を把握するのに役立てることもできます。 アプリ マップの使用方法について詳しくは、「[Application Insights のアプリケーション マップ](../application-insights/app-insights-app-map.md)」をご覧ください。
 
 ## <a name="add-custom-instrumentation-to-your-application"></a>カスタム インストルメンテーションをアプリケーションに追加する
 
-Application Insights では多くの利用統計情報をすぐに利用できますが、さらにカスタム インストルメンテーションを追加することもできます。 これは、ビジネス ニーズに基づいて行うことも、またはアプリケーションでの問題発生時に診断を改善するために行うこともできます。 Application Insights にはカスタム イベントとメトリックを取り込める API があります。詳細については[こちら](../application-insights/app-insights-api-custom-events-metrics.md)をご覧ください。
+Application Insights では多くのテレメトリをすぐに利用できますが、さらにカスタム インストルメンテーションを追加することもできます。 これは、ビジネス ニーズに基づいて行うことも、またはアプリケーションでの問題発生時に診断を改善するために行うこともできます。 Application Insights にはカスタム イベントとメトリックを取り込める API があります。詳細については[こちら](../application-insights/app-insights-api-custom-events-metrics.md)をご覧ください。
 
 *VoteDataController.cs* (*VotingData*  >  *Controllers* の下) にカスタム イベントを追加して、基礎となる *votesDictionary* に対していつ投票が追加され、削除されるかを追跡します。 
 1. 他の using ステートメントの最後に `using Microsoft.ApplicationInsights;` を追加します。
@@ -220,7 +220,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-これらの変更が完了したら、アプリケーションを **[開始]** して、最新バージョンのビルドとデプロイを行います。 アプリケーションのデプロイが完了したら、[localhost:8080](localhost:8080) にアクセスし、一部の投票オプションの追加と削除を行います。 次に、Application Insights リソースに戻って、最新の実行に関するトレースを確認します (前と同様に、トレースが Application Insights に表示されるまでに 1 ～ 2 分かかります)。 追加および削除したすべての投票の "カスタム イベント" が、すべての応答の利用統計情報とともに表示されます。 
+これらの変更が完了したら、アプリケーションを **[開始]** して、最新バージョンのビルドとデプロイを行います。 アプリケーションのデプロイが完了したら、[localhost:8080](localhost:8080) にアクセスし、一部の投票オプションの追加と削除を行います。 次に、Application Insights リソースに戻って、最新の実行に関するトレースを確認します (前と同様に、トレースが Application Insights に表示されるまでに 1 ～ 2 分かかります)。 追加および削除したすべての投票の "カスタム イベント" が、すべての応答のテレメトリとともに表示されます。 
 
 ![カスタム イベント](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
@@ -228,11 +228,11 @@ public async Task<IActionResult> Delete(string name)
 このチュートリアルで学習した内容は次のとおりです。
 > [!div class="checklist"]
 > * Application Insights をお使いのアプリケーション用に構成する
-> * 応答の利用統計情報を収集してサービス間の HTTP ベース通信を追跡する
-> * Application Insights でアプリケーション マップ機能を使用する
+> * 応答のテレメトリを収集してサービス間の HTTP ベース通信を追跡する
+> * Application Insights でアプリ マップ機能を使用する
 > * Application Insights API を使用してカスタム イベントを追加する
 
 ASP.NET アプリケーションの監視と診断の設定が完了したところで、以下を試してみてください。
 - [Service Fabric での監視と診断についてさらに詳しく知る](service-fabric-diagnostics-overview.md)
 - [Application Insights を使用した Service Fabric イベントの分析](service-fabric-diagnostics-event-analysis-appinsights.md)
-- Application Insights の詳細については、[Application Insights のドキュメント](https://docs.microsoft.com/en-us/azure/application-insights/)をご覧ください。
+- Application Insights の詳細については、[Application Insights のドキュメント](https://docs.microsoft.com/azure/application-insights/)をご覧ください。

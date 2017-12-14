@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: robb
-ms.openlocfilehash: 1c05bd6dc4c4d394aa043b9995de9c184e4f14c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca0dd96389a605ed8bf34af81eb4d75bef581338
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure 診断データをストリーム配信する
 Azure 診断では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。 2016 年 3 月 (SDK 2.9) の期間から、診断をカスタムのデータ ソースに送信し、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
@@ -104,7 +104,7 @@ Event Hubs シンクは、 **.wadcfgx** 構成ファイルの *PrivateConfig* �
 }
 ```
 
-`SharedAccessKeyName` 値は、**Event Hubs** 名前空間に定義されている Shared Access Signature (SAS) のキーとポリシーに一致する必要があります。 [Azure Portal](https://manage.windowsazure.com) の Event Hubs のダッシュボードに移動し、**[構成]** タブをクリックして、"*送信*" のアクセス許可を持つ名前付きのポリシー (たとえば、"SendRule") を設定します。 **StorageAccount** は **PrivateConfig** でも宣言されています。 正常に動作している場合、ここでは値を変更する必要はありません。 この例では、値を空のまま残しました。これはダウン ストリームの資産によって、値が設定されることを意味します。 たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルによって、環境に適した名前とキーが設定されます。  
+`SharedAccessKeyName` 値は、**Event Hubs** 名前空間に定義されている Shared Access Signature (SAS) のキーとポリシーに一致する必要があります。 [Azure Portal](https://portal.azure.com) の Event Hubs のダッシュボードに移動し、**[構成]** タブをクリックして、"*送信*" のアクセス許可を持つ名前付きのポリシー (たとえば、"SendRule") を設定します。 **StorageAccount** は **PrivateConfig** でも宣言されています。 正常に動作している場合、ここでは値を変更する必要はありません。 この例では、値を空のまま残しました。これはダウン ストリームの資産によって、値が設定されることを意味します。 たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルによって、環境に適した名前とキーが設定されます。  
 
 > [!WARNING]
 > Event Hubs の SAS キーは、 *.wadcfgx* ファイルにプレーン テキストで保存されます。 多くの場合、このキーは、ソース コード管理にチェックインされるか、ビルド サーバーの資産として利用されるため、適切に保護する必要があります。 ここでは、悪意のあるユーザーがイベント ハブに書き込むことはできても、リッスンしたり操作したりすることはできないように、 *"送信のみ"* のアクセス許可を持つ SAS キーを使用することが推奨されます。

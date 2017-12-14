@@ -1,27 +1,19 @@
 ---
-title: "Azure Container Instances の概要 | Azure Docs"
+title: "Azure Container Instances の概要"
 description: "Azure Container Instances について"
 services: container-instances
-documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/20/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6e614f1120b3dc54871b393ac0a2703c21b30ae8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 98feed192f21cbc2bf9197b6d32646f50ddbd0c5
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 

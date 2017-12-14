@@ -4,7 +4,7 @@ description: "いずれかのアプリケーションへの条件付きアクセ
 services: active-directory
 documentationcenter: 
 author: ajamess
-manager: kbrint
+manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 2de668f38ca836d3a8ab205a2689156349f8f8d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 955f8bdaf61658bfacfb5c751602a34510d275ad
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="problems-configuring-conditional-access-to-one-of-my-applications"></a>アプリケーションへの条件付きアクセスの構成に関する問題
 

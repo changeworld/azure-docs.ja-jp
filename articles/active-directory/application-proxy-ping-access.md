@@ -4,7 +4,7 @@ description: "ヘッダーベースの認証に対応するには、PingAccess �
 services: active-directory
 documentationcenter: 
 author: kgremban
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 10/11/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: f6e6bb39164f9b3dea206ebcf850ee98e2506dcf
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 7c2e56a5f747aa2a37fc4bed0e3f3877b64f2be2
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -83,7 +83,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 7. クイック スタート メニューで **[テスト用のユーザーを割り当てる]** を選択し、少なくとも 1 ユーザーをアプリケーションに追加します。 このテスト アカウントでオンプレミスのアプリケーションにアクセスできることを確認します。
 8. **[割り当て]** を選択して、テスト ユーザーの割り当てを保存します。
 9. アプリの管理ブレードで **[シングル サインオン]** を選択します。
-10. ドロップダウン メニューから **[Header-based sign-on (ヘッダーベースのサインオン)]** を選択します。 [ **保存**] を選択します。
+10. ドロップダウン メニューから **[Header-based sign-on (ヘッダーベースのサインオン)]** を選択します。 **[保存]** を選択します。
 
    >[!TIP]
    >ヘッダー ベースのシングル サインオンを初めて使用する場合は、PingAccess をインストールする必要があります。 Azure サブスクリプションを PingAccess のインストールに自動的に関連付けるには、このシングル サインオン ページのリンクを使用して PingAccess をダウンロードします。 今すぐダウンロード サイトを開くことも、後でこのページに戻ることもできます。 
@@ -123,7 +123,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
   ![[キー] を選択する](./media/application-proxy-ping-access/Keys.png)
 
 4. キーの説明を入力し、ドロップダウン メニューから有効期限を選択して、キーを作成します。
-5. [ **保存**] を選択します。 **[値]** フィールドに GUID が表示されます。
+5. **[保存]** を選択します。 **[値]** フィールドに GUID が表示されます。
 
   この値は、このウィンドウを閉じると確認できなくなります。ここで保存してください。
 

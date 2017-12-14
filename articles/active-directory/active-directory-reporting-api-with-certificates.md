@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/08/2017
 ms.author: ramical
-ms.openlocfilehash: 38c240ed1608b2e99bde78f3633e722f8e2fa30b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4900e47084256ad6c85886f7ba363399678da9aa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Azure AD Reporting API と証明書を使ってデータを取得する
 この記事では、Azure AD Reporting API と証明書の資格情報を使い、ユーザーの介入なしでディレクトリからデータを取得する方法について説明します。 
@@ -89,7 +89,7 @@ Azure AD PowerShell V2 と AzureADUtils モジュールをインストールす�
 ここから CSV をエクスポートして SIEM システムに保存することができます。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure ID 管理の基礎](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)<br>
+[Azure ID 管理の基礎](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)<br>
 
 
 

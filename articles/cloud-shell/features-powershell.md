@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 12/6/2017
 ms.author: damaerte
-ms.openlocfilehash: 9c2eeef9c20f25d2af97e6c754f005b698222385
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 31ba4b68850e14fc038df0bbe91146b90f8ca4b3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) での PowerShell の機能とツール
 
@@ -47,7 +47,7 @@ Cloud Shell に対する各要求は一時的なマシンを割り当てるの�
 
 Cloud Shell (プレビュー) の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
 Azure ドライブを使うと、ファイル システムのナビゲーションと同じように、Compute、Network、Storage などの Azure リソースを簡単に検出およびナビゲーションできるようになります。
-引き続き、使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/en-us/powershell/azure)を使ってこれらのリソースを管理できます。
+引き続き、使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使ってこれらのリソースを管理できます。
 Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレットを使って行われたものも、Azure ドライブにすぐに反映されます。
 
 ![](media/features-powershell/azure-drive.png)
@@ -91,7 +91,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 
 |**カテゴリ**    |**名前**                                 |
 |----------------|-----------------------------------------|
-|Azure ツール     |[Azure PowerShell (5.0.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)<br> [Azure CLI (2.0.21)](https://docs.microsoft.com/en-us/cli/azure/overview)|
+|Azure ツール     |[Azure PowerShell (5.0.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)<br> [Azure CLI (2.0.22)](https://docs.microsoft.com/cli/azure/overview)|
 |テキスト エディター    |vim<br> nano                             |
 |パッケージ マネージャー |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |ソース管理  |git                                      |

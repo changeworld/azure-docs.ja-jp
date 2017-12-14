@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 558c3c65a811a228f9d8ecae7ce41798ac8178c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 065638c1d724865f45b0c1e2691041848f90ad00
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -32,7 +32,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 - [.NET Core 2.0 SDK のインストール](https://www.microsoft.com/net/core)
 - Azure サブスクリプションと既存の .NET Core Web アプリケーションが必要です。
 
-ASP.NET Core Web アプリケーションがない場合は、[ASP.NET Core Web アプリを作成するためのガイド](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs)に従って作成できます。
+ASP.NET Core Web アプリケーションがない場合は、[ASP.NET Core Web アプリを作成するためのガイド](https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs)に従って作成できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -126,4 +126,4 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [実行時の例外の特定と診断](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-tutorial-runtime-exceptions)
+> [実行時の例外の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

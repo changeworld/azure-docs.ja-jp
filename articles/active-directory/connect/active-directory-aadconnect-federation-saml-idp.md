@@ -1,9 +1,9 @@
 ---
 title: "Azure AD Connect: シングル サインオンに SAML 2.0 ID プロバイダーを使用する | Microsoft Docs"
-description: "このトピックでは、シングル サインオンに SAML 2.0 対応 IdP を使用する方法について説明します。"
+description: "このトピックでは、シングル サインオンに SAML 2.0 に準拠している IdP を使用する方法について説明します。"
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 ms.custom: it-pro
 ms.service: active-directory
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 048697f87383662506fb851bb3ea510c2cddf043
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46c65e0efdc91b70c5d0d2afdf83d7205efc8057
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
-このトピックでは、SAML 2.0 対応の SP-Lite プロファイルを推奨セキュリティ トークン サービス (STS)/ID プロバイダーとして使用する方法について説明します。 これは、SAML 2.0 を使用してアクセスできるユーザー ディレクトリとパスワード ストアがオンプレミスに既に格納されている場合に有用です。 この既存のユーザー ディレクトリを使用して、Office 365 やその他の Azure AD で保護されたリソースにサインオンできます。 SAML 2.0 SP-Lite プロファイルは、サインオンおよび属性交換フレームワークを提供するために広く使用されている Security Assertion Markup Language (SAML) フェデレーション ID 標準に基づいています。
+このトピックでは、SAML 2.0 に準拠している SP-Lite プロファイルを推奨セキュリティ トークン サービス (STS)/ID プロバイダーとして使用する方法について説明します。 これは、SAML 2.0 を使用してアクセスできるユーザー ディレクトリとパスワード ストアがオンプレミスに既に格納されている場合に有用です。 この既存のユーザー ディレクトリを使用して、Office 365 やその他の Azure AD で保護されたリソースにサインオンできます。 SAML 2.0 SP-Lite プロファイルは、サインオンおよび属性交換フレームワークを提供するために広く使用されている Security Assertion Markup Language (SAML) フェデレーション ID 標準に基づいています。
 
 >[!NOTE]
 >Azure AD との使用テストが行われているサード パーティの IDP の一覧については、「[Azure AD のフェデレーション互換性リスト](active-directory-aadconnect-federation-compatibility.md)」を参照してください。
@@ -92,7 +92,7 @@ SAML 応答メッセージでは、署名ノードにメッセージ自体のデ
     <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
     </samlp:AuthnRequest>`
 
-これは、サンプル SAML 2.0 対応 ID プロバイダーから Azure AD/Office 365 に送信される応答メッセージの例です。
+これは、サンプル SAML 2.0 に準拠している ID プロバイダーから Azure AD/Office 365 に送信される応答メッセージの例です。
 
     `<samlp:Response ID="_592c022f-e85e-4d23-b55b-9141c95cd2a5" Version="2.0" IssueInstant="2014-01-31T15:36:31.357Z" Destination="https://login.microsoftonline.com/login.srf" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="_049917a6-1183-42fd-a190-1d2cbaf9b144" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
     <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">http://WS2012R2-0.contoso.com/adfs/services/trust</Issuer>
@@ -145,7 +145,7 @@ SAML 応答メッセージでは、署名ノードにメッセージ自体のデ
     </Assertion>
     </samlp:Response>`
 
-## <a name="configure-your-saml-20-compliant-identity-provider"></a>SAML 2.0 対応 ID プロバイダーを構成する
+## <a name="configure-your-saml-20-compliant-identity-provider"></a>SAML 2.0 に準拠している ID プロバイダーを構成する
 このトピックには、SAML 2.0 ID プロバイダーを Azure AD とフェデレーションするように構成して、SAML 2.0 プロトコルを使用して 1 つまたは複数の Microsoft クラウド サービス (Office 365 など) にシングル サインオンできるようにする方法に関するガイドラインが含まれています。 このシナリオで使用される Microsoft クラウド サービスの SAML 2.0 証明書利用者は Azure AD です。
 
 ## <a name="add-azure-ad-metadata"></a>Azure AD メタデータを追加する

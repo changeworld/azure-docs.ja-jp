@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: mazha
-ms.openlocfilehash: 98d4900e28f1850050dc4fbe1f97435e52afaf08
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: fd36b94c64ad31064dbb2e0badceaee5e5bc400f
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="add-a-custom-domain-to-your-cdn-endpoint"></a>カスタム ドメインを CDN エンドポイントに追加する
 プロファイルを作成したら、HTTP または HTTPS を使ってコンテンツを配信するために、通常 1 つ以上の CDN [エンドポイント](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint) (`azureedge.net` のサブドメイン) も作成します。 既定では、このエンドポイントはすべての URL (たとえば、`https://contoso.azureedge.net/photo.png`) に含まれます。 Azure CDN では、カスタム ドメイン (たとえば、`www.contoso.com`) とエンドポイントを簡単に関連付けることができます。 このオプションでは、コンテンツを配信するためにエンドポイントではなくカスタム ドメインを使用します。 このオプションは、たとえば、ブランド化のために独自のドメイン名を顧客に表示する必要がある場合などに便利です。
@@ -54,7 +54,7 @@ CNAME レコードは、`www.contoso.com` や `cdn.contoso.com` のような特�
  
   | 名前             | タイプ  | 値                  |
   |------------------|-------|------------------------|
-  | www\.consoto.com | CNAME | consoto\.azureedge.net |
+  | www\.contoso.com | CNAME | contoso\.azureedge.net |
 
 
 - 方法 2: **cdnverify** サブドメインでマップする。 カスタム ドメインで中断することのできない運用環境のトラフィックが実行されている場合は、CDN エンドポイントに一時的な CNAME マッピングを作成することができます。 この方法では、Azure **cdnverify** サブドメインを使用して中間的な登録手順を指定し、DNS マッピング中にも中断することなくユーザーがドメインにアクセスできるようにします。
@@ -64,7 +64,7 @@ CNAME レコードは、`www.contoso.com` や `cdn.contoso.com` のような特�
 
    | 名前                       | タイプ  | 値                            |
    |----------------------------|-------|----------------------------------|
-   | cdnverify.www\.consoto.com | CNAME | cdnverify.consoto\.azureedge.net | 
+   | cdnverify.www\.contoso.com | CNAME | cdnverify.contoso\.azureedge.net | 
 
 
 ## <a name="step-3-enable-the-cname-record-mapping-in-azure"></a>手順 3: Azure で CNAME レコード マッピングを有効にする
@@ -103,7 +103,7 @@ CNAME レコードは、`www.contoso.com` や `cdn.contoso.com` のような特�
  
    | 名前             | タイプ  | 値                  |
    |------------------|-------|------------------------|
-   | www\.consoto.com | CNAME | consoto\.azureedge.net |
+   | www\.contoso.com | CNAME | contoso\.azureedge.net |
 2. 以前に作成した **cdnverify** サブドメインの CNAME レコードを削除します。
 
 ## <a name="see-also"></a>関連項目

@@ -7,11 +7,11 @@ ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.openlocfilehash: 68da653052d0e3dfd66d6b65958046e42cefce73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c37ad8ac5b6c37261e22237e843dd97e2bbd09f9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 仮想マシンの概要
 
@@ -65,7 +65,7 @@ Azure Stack には、オペレーティング システムのさまざまなバ�
 次の表に、イメージに関する情報を見つける方法をいくつか示します。
 
 
-|メソッド|Description|
+|メソッド|説明|
 |---------|---------|
 |Azure Stack ポータル|値は、使用するイメージを選択する際に自動的に指定されます。|
 |Azure Stack PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
@@ -87,13 +87,13 @@ VM の拡張機能は、デプロイ後の構成と自動化タスクを通じ�
 次の表のリソースは VM によって使用されるため、VM の作成時に存在するか、作成する必要があります。
 
 
-|リソース|必須|Description|
+|リソース|必須|説明|
 |---------|---------|---------|
 |リソース グループ|あり|VM は、リソース グループに含まれる必要があります。|
 |ストレージ アカウント|あり|VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。|
 |Virtual Network|あり|VM は、仮想ネットワークのメンバーである必要があります。|
 |パブリック IP アドレス|いいえ|VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。|
-|ネットワーク インターフェイス|あり|VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。|
+|Linux|あり|VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。|
 |データ ディスク|いいえ|VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。|
 
 ## <a name="how-do-i-create-my-first-vm"></a>最初の VM の作成方法
@@ -118,11 +118,11 @@ VM は、ブラウザーベースのポータル、スクリプトがサポー�
 次の表に、VM に関する情報の取得方法の一部を示します。
 
 
-|メソッド|Description|
+|メソッド|説明|
 |---------|---------|
 |Azure Stack ポータル|ハブ メニューの [Virtual Machines (仮想マシン)] をクリックし、一覧から VM を選択します。 その VM のページで、概要情報を確認したり、値の設定やメトリックの監視を実行したりできます。|
-|Azure PowerShell|VM の管理は、Azure と Azure Stack とで似ています。 PowerShell の使用について詳しくは、次の Azure トピックをご覧ください。<br>[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
-|クライアント SDK|C# による VM の管理は、Azure と Azure Stack とで似ています。 詳細については、次の Azure トピックを参照してください。<br>[C# を使用して Azure で Windows VM を作成および管理する](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/csharp)|
+|Azure PowerShell|VM の管理は、Azure と Azure Stack とで似ています。 PowerShell の使用について詳しくは、次の Azure トピックをご覧ください。<br>[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
+|クライアント SDK|C# による VM の管理は、Azure と Azure Stack とで似ています。 詳細については、次の Azure トピックを参照してください。<br>[C# を使用して Azure で Windows VM を作成および管理する](https://docs.microsoft.com/azure/virtual-machines/windows/csharp)|
 
 ### <a name="connect-to-the-vm"></a>VM に接続します
 

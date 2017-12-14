@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 8c9d8dadcd6181d9894ab6ee7110841afdec5708
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: ac734ffc6cb57188b7b0959cbe7655949b2853de
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>Azure Site Recovery を使用してファイル サーバーを保護する 
 
@@ -145,7 +145,7 @@ Azure File Sync と Azure Site Recovery を統合する際に推奨される方�
 
 以下の手順では、Azure File Sync サービスの使用方法を示します。
 
-1. [Azure にストレージ アカウントを作成します](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 ストレージ アカウントに対して読み取りアクセス geo 冗長ストレージ (RA-GRS) (推奨) を選択した場合は、災害時にセカンダリ リージョンからデータに読み取りアクセスできます。 詳細については、[Azure ファイル共有のディザスター リカバリーの戦略](https://docs.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
+1. [Azure にストレージ アカウントを作成します](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 ストレージ アカウントに対して読み取りアクセス geo 冗長ストレージ (RA-GRS) (推奨) を選択した場合は、災害時にセカンダリ リージョンからデータに読み取りアクセスできます。 詳細については、[Azure ファイル共有のディザスター リカバリーの戦略](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
 2. [ファイル共有を作成します](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. オンプレミスのファイル サーバーに [Azure File Sync をデプロイ](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)します。
 4. 同期グループを作成します。同期グループ内のエンドポイントは、相互に同期状態が維持されます。 同期グループには、Azure ファイル共有を表すクラウド エンドポイントが少なくとも 1 つと、オンプレミスの Windows サーバー上のパスを表すサーバー エンドポイントが 1 つ含まれている必要があります。

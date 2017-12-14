@@ -4,7 +4,7 @@ description: "REST API を使用したロールベースの Access Control の�
 services: active-directory
 documentationcenter: na
 author: andredm7
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: andredm
-ms.openlocfilehash: a5c19fd87ce1ae3e199bf1dfc8cf82f5653baac2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ec64dc3ce95de9c29331699ad2140e5a3c25673
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>REST API を使用してロールベースのアクセス制御を管理する
 > [!div class="op_single_selector"]

@@ -3,27 +3,26 @@ title: "Azure API Management のページ コントロール | Microsoft Docs"
 description: "Azure API Management の開発者ポータル テンプレートで使用できるページ コントロールについて説明します。"
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 03e0ac8d-64ff-4e9a-b029-d7be14fb31e3
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 6aa7a25a9addceee78abe027fb3a19351940464e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management のページ コントロール
 Azure API Management には、開発者ポータル テンプレート用に次のページ コントロールが用意されています。  
   
- コントロールを使用するには、開発者ポータル テンプレート内の必要な位置に配置します。 [app-actions](#app-actions) コントロールなど、一部のコントロールには、次の例に示すようなパラメーターがあります。  
+コントロールを使用するには、開発者ポータル テンプレート内の必要な位置に配置します。 [app-actions](#app-actions) コントロールなど、一部のコントロールには、次の例に示すようなパラメーターがあります。  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
@@ -36,19 +35,12 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 ## <a name="developer-portal-template-page-controls"></a>開発者ポータル テンプレートのページ コントロール  
   
 -   [app-actions](#app-actions)  
-  
 -   [basic-signin](#basic-signin)  
-  
 -   [paging-control](#paging-control)  
-  
 -   [providers](#providers)  
-  
 -   [search-control](#search-control)  
-  
 -   [sign-up](#sign-up)  
-  
 -   [subscribe-button](#subscribe-button)  
-  
 -   [subscription-cancel](#subscription-cancel)  
   
 ##  <a name="app-actions"></a> app-actions  
@@ -69,7 +61,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |appId|アプリケーションの ID。|  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
- `app-actions` コントロールは、次の開発者ポータル テンプレートで使用できます。  
+ `app-actions` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [アプリケーション](api-management-user-profile-templates.md#Applications)  
   
@@ -88,7 +80,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
  なし。  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
- `basic-signin` コントロールは、次の開発者ポータル テンプレートで使用できます。  
+ `basic-signin` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [サインイン](api-management-page-templates.md#SignIn)  
   
@@ -107,7 +99,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
  なし。  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
- `paging-control` コントロールは、次の開発者ポータル テンプレートで使用できます。  
+ `paging-control` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [API リスト](api-management-api-templates.md#APIList)  
   
@@ -130,7 +122,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
  なし。  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
- `providers` コントロールは、次の開発者ポータル テンプレートで使用できます。  
+ `providers` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [サインイン](api-management-page-templates.md#SignIn)  
   
@@ -149,7 +141,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
  なし。  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
- `search-control` コントロールは、次の開発者ポータル テンプレートで使用できます。  
+ `search-control` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [API リスト](api-management-api-templates.md#APIList)  
   
@@ -170,7 +162,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
  なし。  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
- `sign-up` コントロールは、次の開発者ポータル テンプレートで使用できます。  
+ `sign-up` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [サインアップ](api-management-page-templates.md#SignUp)  
   
@@ -189,12 +181,12 @@ Azure API Management には、開発者ポータル テンプレート用に次�
  なし。  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
- `subscribe-button` コントロールは、次の開発者ポータル テンプレートで使用できます。  
+ `subscribe-button` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [成果物](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a> subscription-cancel  
- `subscription-cancel` コントロールは、開発者ポータルのユーザー プロファイル ページで成果物へのサブスクリプションをキャンセルするコントロールを提供します。  
+ `subscription-cancel` コントロールは、開発者ポータルのユーザー プロファイル ページで成果物へのサブスクリプションを取り消すコントロールを提供します。  
   
  ![subscription&#45;cancel control](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM subscription-cancel control")  
   
@@ -214,7 +206,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |cancelUrl|サブスクリプション キャンセル URL。|  
   
 ### <a name="developer-portal-templates"></a>開発者ポータル テンプレート  
- `subscription-cancel` コントロールは、次の開発者ポータル テンプレートで使用できます。  
+ `subscription-cancel` コントロールは、以下の開発者ポータル テンプレートで使用できます。  
   
 -   [成果物](api-management-product-templates.md#Product)
 

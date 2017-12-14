@@ -4,7 +4,7 @@ description: "Azure Resource Manager テンプレートを使用して Windows S
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory-ds
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: 8cfa13ee028b5e367158de42ceab0a1cd99d45c2
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: b90198696b7bdb9277fd2f2b8e8e727af42c5cfa
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Windows Server 仮想マシンを管理対象ドメインに参加させます。
 この記事では、Resource Manager テンプレートを使用して Windows Server 仮想マシンを Azure AD Domain Services の管理対象ドメインに参加させる方法を示します。
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/20/2017
 
 Windows Server 仮想マシンをデプロイして管理対象ドメインに参加させるには、次の手順を実行します。
 1. [クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)に移動します。
-2. [ **Azure へのデプロイ**] をクリックします。
+2. **[Azure へのデプロイ]** をクリックします。
 3. **[カスタム デプロイ]** ページで、仮想マシンのプロビジョニングに必要な情報を入力します。
 4. 仮想マシンをプロビジョニングする **Azure サブスクリプション**を選択します。 Azure AD Domain Services を有効にしたのと同じ Azure サブスクリプションを選択してください。
 5. 既存の**リソース グループ**を選択するか、新しいリソース グループを作成します。
@@ -74,7 +74,7 @@ Windows Server 仮想マシンをデプロイして管理対象ドメインに�
 
 既存の Windows Server 仮想マシンを管理対象ドメインに参加させるには、次の手順を実行します。
 1. [クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)に移動します。
-2. [ **Azure へのデプロイ**] をクリックします。
+2. **[Azure へのデプロイ]** をクリックします。
 3. **[カスタム デプロイ]** ページで、仮想マシンのプロビジョニングに必要な情報を入力します。
 4. 仮想マシンをプロビジョニングする **Azure サブスクリプション**を選択します。 Azure AD Domain Services を有効にしたのと同じ Azure サブスクリプションを選択してください。
 5. 既存の**リソース グループ**を選択するか、新しいリソース グループを作成します。

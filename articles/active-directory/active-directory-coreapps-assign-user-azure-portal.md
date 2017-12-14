@@ -3,8 +3,8 @@ title: "Azure Active Directory でエンタープライズ アプリにユーザ
 description: "Azure Active Directory プレビューでエンタープライズ アプリケーションを選択し、このアプリケーションにユーザーまたはグループを割り当てる方法"
 services: active-directory
 documentationcenter: 
-author: curtand
-manager: femila
+author: daveba
+manager: mtillman
 editor: 
 ms.assetid: 5817ad48-d916-492b-a8d0-2ade8c50a224
 ms.service: active-directory
@@ -12,25 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
-ms.author: curtand
-ms.reviewer: asteen
-ms.openlocfilehash: 8e61044f261033a473241e2de152026bf49c4c70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/30/2017
+ms.author: daveba
+ms.reviewer: luleon
+ms.openlocfilehash: 827d5c8669eb54630adbaba0306e73b5de6a7137
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
-Azure Active Directory (Azure AD) では、ユーザーまたはグループを簡単にエンタープライズ アプリに割り当てることができます。 エンタープライズ アプリを管理するには、適切なアクセス許可が必要です。また、ディレクトリの全体管理者である必要があります。
+ユーザーまたはグループをエンタープライズ アプリに割り当てるには、適切なアクセス許可でエンタープライズ アプリを管理する必要があります。また、ディレクトリの全体管理者である必要があります。
+> [!NOTE]
+> Microsoft のアプリケーション (Office 365 アプリなど) では、PowerShell を使用してエンタープライズ アプリにユーザーを割り当てます。
 
-## <a name="how-do-i-assign-user-access-to-an-enterprise-app"></a>エンタープライズ アプリケーションにユーザー アクセスを割り当てる方法
-1. ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com) にサインインします。
+## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Azure Portal でユーザーにエンタープライズ アプリケーションへのアクセス許可を割り当てる方法
+1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「Azure Active Directory」と入力して、**Enter** キーを押します。
 3. **[Azure Active Directory - <*ディレクトリ名*>]** ブレード (管理対象のディレクトリの Azure AD ブレード) で、**[エンタープライズ アプリケーション]** を選択します。
 
     ![エンタープライズ アプリケーションを開く](./media/active-directory-coreapps-assign-user-azure-portal/open-enterprise-apps.png)
-4. **[エンタープライズ アプリケーション]** ブレードで、**[すべてのアプリケーション]** を選択します。 管理できるアプリケーションの一覧が表示されます。
+4. **[エンタープライズ アプリケーション]** ブレードで、**[すべてのアプリケーション]** を選択します。 これにより、管理できるアプリが一覧で表示されます。
 5. **[Enterprise applications - All applications (エンタープライズ アプリケーション - すべてのアプリケーション)]** ブレードで、アプリケーションを選択します。
 6. ***[アプリケーション名]*** ブレード (タイトルが選択したアプリケーションの名前であるブレード) で、**[ユーザーとグループ]** を選択します。
 
@@ -41,7 +43,72 @@ Azure Active Directory (Azure AD) では、ユーザーまたはグループを�
     ![アプリケーションにユーザーまたはグループを割り当てる](./media/active-directory-coreapps-assign-user-azure-portal/assign-users.png)
 9. **[ユーザーとグループ]** ブレードで一覧から 1 つまたは複数のユーザーまたはグループを選択し、ブレードの下部にある **[選択]** をクリックします。
 10. **[Add Assignment (割り当ての追加)]** ブレードで **[ロール]** を選択します。 次に、**[ロールを選択する]** ブレードで、選択したユーザーまたはグループに適用するロールを選択して、ブレードの下部にある **[OK]** をクリックします。
-11. **[Add Assignment (割り当ての追加)]** ブレードで、下部にある **[割り当て]** をクリックします。 割り当て対象のユーザーまたはグループに、このエンタープライズ アプリケーションで選択したロールにより定義されるアクセス許可が付与されます。
+11. **[Add Assignment (割り当ての追加)]** ブレードで、下部にある **[割り当て]** をクリックします。 割り当て対象のユーザーまたはグループに、選択したエンタープライズ アプリケーションのロールにより定義されるアクセス許可が付与されます。
+
+## <a name="how-do-i-assign-a-user-to-an-enterprise-app-using-powershell"></a>PowerShell を使用してエンタープライズ アプリケーションにユーザーを割り当てる方法
+
+1. 管理者特権での Windows PowerShell コマンド プロンプトを開きます。
+
+    >[!NOTE] 
+    > Azure AD モジュールをインストールする必要があります (`Install-Module -Name AzureAD` コマンドを使用してください)。 NuGet モジュールまたは新しい Azure Active Directory V2 PowerShell モジュールをインストールするように求められたら「Y」と入力し、ENTER キーを押します。
+
+2. `Connect-AzureAD` を実行してグローバル管理者ユーザー アカウントでサインインします。
+3. 次のスクリプトを使用して、アプリケーションにユーザーとロールを割り当てます。
+
+    ```powershell
+    # Assign the values to the variables
+    $username = "<You user's UPN>"
+    $app_name = "<Your App's display name>"
+    $app_role_name = "<App role display name>"
+    
+    # Get the user to assign, and the service principal for the app to assign to
+    $user = Get-AzureADUser -ObjectId "$username"
+    $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
+    $appRole = $sp.AppRoles | Where-Object { $_.DisplayName -eq $app_role_name }
+    
+    # Assign the user to the app role
+    New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
+    ```     
+
+アプリケーション ロールにユーザーを割り当てる方法の詳細については、「[AzureADUserAppRoleAssignment](https://docs.microsoft.com/powershell/module/azuread/new-azureaduserapproleassignment?view=azureadps-2.0)」のドキュメントをご覧ください。
+
+### <a name="example"></a>例
+
+この例では PowerShell を使用して、ユーザー Britta Simon を [Microsoft Workplace Analytics](https://products.office.com/en-us/business/workplace-analytics) アプリケーションに割り当てます。
+
+1. PowerShell で、変数 $username、$app_name および $app_role_name に対応する値を割り当てます。 
+
+    ```powershell
+    # Assign the values to the variables
+    $username = "britta.simon@contoso.com"
+    $app_name = "Workplace Analytics"
+    ```
+
+2. この例では、Britta Simon に割り当てるアプリケーション ロールの正確な名前はわかりません。 次のコマンドを実行し、ユーザーの UPN とサービス プリンシパル表示名を使用してユーザー ($user) と サービス プリンシパル ($sp) を取得します。
+
+    ```powershell
+    # Get the user to assign, and the service principal for the app to assign to
+    $user = Get-AzureADUser -ObjectId "$username"
+    $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
+    ```
+        
+3. `$sp.AppRoles` コマンドを実行して、Workplace Analytics アプリケーションで使用できるロールを表示します。 この例では、Britta Simon にアナリスト (制限付きアクセス) のロールを割り当てます。
+    
+    ![Workplace Analytics ロール](media/active-directory-coreapps-assign-user-azure-portal/workplace-analytics-role.png)
+
+4. `$app_role_name` 変数にロール名を割り当てます。
+        
+    ```powershell
+    # Assign the values to the variables
+    $app_role_name = "Analyst (Limited access)"
+    ```
+
+5. 次のコマンドを実行して、アプリのロールにユーザーを割り当てます。
+
+    ```powershell
+    # Assign the user to the app role
+    New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
+    ```
 
 ## <a name="next-steps"></a>次のステップ
 * [自分のグループをすべて表示する](active-directory-groups-view-azure-portal.md)

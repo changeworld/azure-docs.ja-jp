@@ -12,40 +12,43 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/15/2017
+ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: dc17ba7f8cc1326790b0256de277ccb2eaa20949
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: bd6e5c1591d01329d95ccb168e5a14e436920baf
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
-この記事では、ClusterConfig.JSON ファイルを使用して、スタンドアロン Azure Service Fabric クラスターを構成する方法について説明します。 このファイルを使って、Service Fabric ノードとその IP アドレス、クラスターの各種ノードなどの情報を指定できます。 また、セキュリティ構成に加え、スタンドアロン クラスターの障害/アップグレード ドメインの観点でのネットワーク トポロジも指定できます。
+この記事では、ClusterConfig.json ファイルを使用して、スタンドアロン Azure Service Fabric クラスターを構成する方法について説明します。 このファイルを使って、クラスターのノード、セキュリティ構成、およびフォールト ドメインとアップグレード ドメインに関するネットワーク トポロジに関する情報を指定します。
 
-[スタンドアロン Service Fabric パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)すると、ClusterConfig.JSON ファイルのサンプルが作業コンピューターにダウンロードされます。 名前に DevCluster が含まれているサンプルを使用すると、論理ノードのように、同じマシン上に 3 つのノードすべてが配置されたクラスターを作成できます。 これらのノードのうち、少なくとも 1 つのノードをプライマリ ノードとしてマークする必要があります。 このクラスターは、開発環境またはテスト環境で役立ちます。 運用環境クラスターとしてはサポートされていません。 名前に MultiMachine が含まれているサンプルでは、それぞれのノードが別々のマシン上に配置された運用環境品質クラスターを作成できます。 これらのクラスターのプライマリ ノードの数は、[信頼性レベル](#reliability)に基づきます。 リリース 5.7 の API バージョン 05-2017 では、信頼性レベルのプロパティが削除されました。 代わりに、クラスターに最適な信頼性レベルがコードによって計算されます。 5.7 以降のバージョンのコードでは、このプロパティを使用しないでください。
+[スタンドアロンの Service Fabric パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)すると、ClusterConfig.json サンプルも含まれます。 名前に "DevCluster" が含まれているサンプルは、論理ノードを使って、同じマシン上に 3 つのノードすべてが配置されたクラスターを作成します。 これらのノードのうち、少なくとも 1 つのノードをプライマリ ノードとしてマークする必要があります。 この種類のクラスターは、開発環境またはテスト環境で役立ちます。 運用環境クラスターとしてはサポートされていません。 名前に "MultiMachine" が含まれているサンプルでは、それぞれのノードが別々のマシン上に配置された運用環境グレードのクラスターを作成できます。 これらのクラスターのプライマリ ノードの数は、クラスターの[信頼性レベル](#reliability)に基づきます。 リリース 5.7 の API バージョン 05-2017 では、信頼性レベルのプロパティが削除されました。 代わりに、クラスターに最適な信頼性レベルがコードによって計算されます。 バージョン 5.7 以降では、このプロパティの値を設定しないでください。
 
 
-* ClusterConfig.Unsecure.DevCluster.JSON と ClusterConfig.Unsecure.MultiMachine.JSON は、それぞれがセキュリティ保護されていないテスト クラスターと運用環境クラスターを作成する方法を示しています。
+* ClusterConfig.Unsecure.DevCluster.json と ClusterConfig.Unsecure.MultiMachine.json は、それぞれがセキュリティ保護されていないテスト クラスターと運用環境クラスターを作成する方法を示しています。
 
-* ClusterConfig.Windows.DevCluster.JSON と ClusterConfig.Windows.MultiMachine.JSON は、[Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)を使用してセキュリティ保護されたテスト クラスターまたは運用環境クラスターを作成する方法を示しています。
+* ClusterConfig.Windows.DevCluster.json と ClusterConfig.Windows.MultiMachine.json は、[Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)を使用してセキュリティ保護されたテスト クラスターまたは運用環境クラスターを作成する方法を示しています。
 
-* ClusterConfig.X509.DevCluster.JSON と ClusterConfig.X509.MultiMachine.JSON は、[X509 証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)を使用してセキュリティ保護されたテスト クラスターまたは運用環境クラスターを作成する方法を示しています。
+* ClusterConfig.X509.DevCluster.json と ClusterConfig.X509.MultiMachine.json は、[X509 証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)を使用してセキュリティ保護されたテスト クラスターまたは運用環境クラスターを作成する方法を示しています。
 
-次に、ClusterConfig.JSON ファイルの各セクションについて説明します。
+次に、ClusterConfig.json ファイルの各セクションについて説明します。
 
 ## <a name="general-cluster-configurations"></a>一般的なクラスター構成
 一般的なクラスター構成では、次の JSON スニペットで示すように、クラスター固有の広範な構成に対応できます。
 
+```json
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
     "apiVersion": "01-2017",
+```
 
 フレンドリ名は、name 変数に割り当てることで、Service Fabric クラスターに付けることができます。 clusterConfigurationVersion は、クラスターのバージョン番号です。 Service Fabric クラスターをアップグレードするたびに大きくします。 apiVersion の設定は、既定値のままにします。
 
+## <a name="nodes-on-the-cluster"></a>クラスターのノード
+
     <a id="clusternodes"></a>
 
-## <a name="nodes-on-the-cluster"></a>クラスターのノード
 次のスニペットに示すように、nodes セクションを使用して Service Fabric クラスターのノードを構成できます。
 
     "nodes": [{
@@ -79,12 +82,12 @@ Service Fabric クラスターには、少なくとも 3 つのノードを含�
 | upgradeDomain |アップグレード ドメインは、Service Fabric のアップグレードのためにほぼ同時にシャットダウンされる一連のノードを表します。 アップグレード ドメインは物理的な要件によって制限されないため、どのノードをどのアップグレード ドメインに割り当てるかを選択できます。 |
 
 ## <a name="cluster-properties"></a>クラスターのプロパティ
-ClusterConfig.JSON の properties セクションは、以下のようにクラスターの構成に使用します。
-
-    <a id="reliability"></a>
+ClusterConfig.json の properties セクションは、以下のようにクラスターの構成に使用します。
 
 ### <a name="reliability"></a>信頼性
 reliabilityLevel の概念を使用して、クラスターのプライマリ ノードで実行できる Service Fabric システム サービスのレプリカ数やインスタンス数を定義します。 これにより、これらのサービスの信頼性が向上するため、クラスターの信頼性が決まります。 この値は、クラスターの作成時およびアップグレード時にシステムによって計算されます。
+
+    <a id="reliability"></a>
 
 ### <a name="diagnostics"></a>診断
 diagnosticsStore セクションでは、次のスニペットに示すように、ノードまたはクラスターの障害に関する診断とトラブルシューティングを可能にするパラメーターを構成できます。 
@@ -119,9 +122,10 @@ security セクションは、セキュリティで保護されたスタンド�
 
 metadata はセキュリティで保護されたクラスターの説明であり、セットアップに従って設定できます。 ClusterCredentialType と ServerCredentialType によって、クラスターとノードが実装するセキュリティの種類が決まります。 これらは、証明書ベースのセキュリティの場合は *X509*、Azure Active Directory ベースのセキュリティの場合は *Windows* に設定されます。 security セクションの残りの部分は、セキュリティの種類に基づきます。 security セクションの残りの部分の記述方法については、[スタンドアロン クラスターの証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)に関する記事または[スタンドアロン クラスターの Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)に関する記事を参照してください。
 
+### <a name="node-types"></a>ノード タイプ
+
     <a id="nodetypes"></a>
 
-### <a name="node-types"></a>ノード タイプ
 nodeTypes セクションでは、クラスターに含まれるノードのタイプを記述します。 次のスニペットに示すように、クラスターにはノード タイプを少なくとも 1 つ指定する必要があります。 
 
     "nodeTypes": [{
@@ -197,5 +201,5 @@ KtlLogger セクションでは、Reliable Services のグローバル構成設�
 
 
 ## <a name="next-steps"></a>次のステップ
-スタンドアロン クラスターのセットアップに従って ClusterConfig.JSON ファイル全体を構成したら、クラスターをデプロイできます。 [スタンドアロン Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関するページの手順に従います。 その後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進み、その手順に従います。
+スタンドアロン クラスターのセットアップに従って ClusterConfig.json ファイル全体を構成したら、クラスターをデプロイできます。 [スタンドアロン Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関するページの手順に従います。 その後、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」に進み、その手順に従います。
 

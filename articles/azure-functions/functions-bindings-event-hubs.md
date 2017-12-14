@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 70219ada2f4886f40d088486063afda2bc489611
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5e0ff1b98be73eb5990601ae7c5528e4a7af670b
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のバインド
 
@@ -33,6 +33,27 @@ ms.lasthandoff: 11/29/2017
 イベント ハブ トリガーを使用して、イベント ハブのイベント ストリームに送信されたイベントに応答します。 トリガーをセットアップするには、イベント ハブへの読み取りアクセスが必要です。
 
 イベント ハブ トリガー関数がトリガーされると、それをトリガーするメッセージが文字列として関数に渡されます。
+
+## <a name="trigger---scaling"></a>トリガー - スケーリング
+
+Event Hub-Triggered 関数の各インスタンスは、EventProcessorHost (EPH) インスタンスを 1 つのみ使用します。 Event Hubs では、1 つの EPH のみが特定のパーティションのリースを取得できます。
+
+たとえば、次の設定と前提条件の Event Hub があったとします。
+
+1. 10 パーティション。
+1. 1000 イベントがすべてのパーティション間で均等に分散され、各パーティション内に 100 以上のメッセージがある。
+
+関数が最初に有効化されたときに存在する関数インスタンスは 1 つのみ。 この関数のインスタンスを Function_0 とします。 Function_0 には、10 パーティションすべてのリースの取得を管理する 1 EPH があります。 1 EPH は、パーティション 0 ～ 9 からのイベントの読み取りを開始します。 この後、次のいずれかが発生します。
+
+* **関数インスタンスが 1 つのみ必要** - Function_0 は、Azure Functions のスケーリングのロジックが開始される前に 1000 メッセージすべてを処理することができます。 そのため、1000 メッセージすべてが、Function_0 によって処理されます。
+
+* **関数インスタンスを 1 つ追加** - Azure Functions のスケーリング ロジックにより、Function_0 が処理できる量より多いメッセージがあると判断され、新しいインスタンス Function_1 が作成されます。 Event Hubs は、新しい EPH インスタンスがメッセージを読み取ろうとしていることを検知します。 Event Hubs は、複数の EPH インスタンスのパーティションにわたって負荷分散を開始します。たとえば、パーティション 0 ～ 4 は Function_0 に割り当てられ、パーティション 5 ～ 9 は Function_1 に割り当てられます。 
+
+* **N 個の関数インスタンスを追加** - Azure Functions のスケーリング ロジックが、Function_0 と Function_1 の両方に、それぞれが処理できる量より多いメッセージがあると判断します。 Function_2... N まで再スケーリングします。ここで、N は Event Hub パーティションよりも大きい値です。 Event Hubs は、Function_0...9 インスタンスにわたってパーティションを負荷分散します。
+
+Azure Functions の現在のロジック スケーリングに固有の特長として、N はパーティションの数より大きい数になります。 これは、他のインスタンスから利用可能になったパーティションへのロックを EPH のインスタンスが常にすぐに使用できるようにするための設定です。 ユーザーには、関数インスタンスが実行されたときに使用されたリソースに対してのみ料金が発生し、オーバー プロビジョニングには課金されません。
+
+すべての関数がエラーなく実行された場合は、関連付けられているストレージ アカウントにチェックポイントが追加されます。 チェックポイントが成功した場合、1000 のすべてのメッセージが再取得されることはありません。
 
 ## <a name="trigger---example"></a>トリガー - 例
 

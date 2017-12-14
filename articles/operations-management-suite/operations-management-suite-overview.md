@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: bwren
-ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94dedebe48060441cd3167fea87f6b721eb14517
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Operations Management Suite (OMS) とは
 この記事では、Operations Management Suite (OMS) の概要を説明します。ここには、OMS によってもたらされるビジネス上の価値、OMS 内のサービスと管理ソリューション、多様なサービスとソリューションが 1 つにまとめられたサービス内容の簡単な概要が含まれます。  各サービスとソリューションのデプロイと使用に関する詳細なドキュメントへのリンクが記載されています。
@@ -64,7 +64,7 @@ OMS のコア機能は、Azure で実行される一連のサービスによっ�
 #### <a name="collecting-data"></a>データの収集
 分析を行うためにデータを Log Analytics のリポジトリに収集する方法はさまざまです。
 
-- **Windows または Linux のコンピューターと仮想マシン。**  データの収集元にする [Windows](../log-analytics/log-analytics-windows-agents.md) と [Linux](../log-analytics/log-analytics-linux-agents.md) のコンピューターまたは仮想マシンに Microsoft Monitoring Agent をインストールします。  エージェントによって、収集するイベントとパフォーマンス データを定義した構成が Log Analytics から自動的にダウンロードされます。  Azure で実行されている仮想マシンへのエージェントのインストールは、Azure Portal を使用して簡単に実行できます。  既存の Operations Manager 環境がある場合、管理グループを Log Analytics に接続して、既存の全エージェントからのデータ収集を自動的に開始することができます。
+- **Windows または Linux のコンピューターと仮想マシン。**  データの収集元にする [Windows](../log-analytics/log-analytics-windows-agent.md) と [Linux](../log-analytics/log-analytics-linux-agents.md) のコンピューターまたは仮想マシンに Microsoft Monitoring Agent をインストールします。  エージェントによって、収集するイベントとパフォーマンス データを定義した構成が Log Analytics から自動的にダウンロードされます。  Azure で実行されている仮想マシンへのエージェントのインストールは、Azure Portal を使用して簡単に実行できます。  既存の Operations Manager 環境がある場合、管理グループを Log Analytics に接続して、既存の全エージェントからのデータ収集を自動的に開始することができます。
 - **Azure サービス。**  Log Analytics によって [Azure 診断と Azure 監視](../log-analytics/log-analytics-azure-storage.md)からリポジトリにテレメトリが収集され、Azure リソースを監視できるようになります。
 - **データ コレクター API。**  Log Analytics には、[任意のクライアントからデータを送信するための REST API](../log-analytics/log-analytics-data-collector-api.md) があります。  この API を使用すると、サード パーティ製のアプリケーションからデータを収集したり、カスタム管理シナリオを実装したりできます。  Azure Automation の Runbook を使用してデータを収集し、データ コレクター API を使用してそれをリポジトリに書き込む方法が一般的です。
 
@@ -137,7 +137,7 @@ Azure Backup には、3 つの基本的なシナリオがあります。
 #### <a name="azure-site-recovery"></a>Azure Site Recovery
 [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) を使用すると、オンプレミスの仮想マシンと物理マシンを Azure (またはセカンダリ サイト) にレプリケートする際の調整を行って、ビジネス継続性を実現できます。 プライマリ サイトが使用できなくなった場合、ユーザーが作業を継続できるようにセカンダリの場所にフェールオーバーし、システムが使用できる状態に戻ったらフェールバックします。 
 
-Azure Site Recovery は、サーバーとアプリケーションの高可用性を実現します。  また、オンプレミスの Hyper-V 仮想マシン、VMware 仮想マシン、物理 Windows/Linux サーバーのレプリケーション、フェールオーバー、回復を調整して、ビジネスの継続性と障害復旧 (BCDR) の戦略に貢献します。 マシンをセカンダリ データセンターにレプリケートしたり、Azure にレプリケートしてデータセンターを拡張したりすることができます。 Site Recovery で、ワークロードの単純なフェールオーバーと回復も実行できます。 SQL Server AlwaysOn などの障害復旧メカニズムと統合して、複数のマシンにわたって階層化されたワークロードの簡単なフェールオーバーを行うための復旧計画を提供します。
+Azure Site Recovery は、サーバーとアプリケーションの高可用性を実現します。  また、オンプレミスの Hyper-V 仮想マシン、VMware 仮想マシン、物理 Windows/Linux サーバーのレプリケーション、フェールオーバー、回復を調整して、ビジネスの継続性とディザスター リカバリー (BCDR) の戦略に貢献します。 マシンをセカンダリ データセンターにレプリケートしたり、Azure にレプリケートしてデータセンターを拡張したりすることができます。 Site Recovery で、ワークロードの単純なフェールオーバーと回復も実行できます。 SQL Server AlwaysOn などのディザスター リカバリー メカニズムと統合して、複数のマシンにわたって階層化されたワークロードの簡単なフェールオーバーを行うための復旧計画を提供します。
 
 Azure Site Recovery には、3 つの基本的なレプリケーション シナリオがあります。
 

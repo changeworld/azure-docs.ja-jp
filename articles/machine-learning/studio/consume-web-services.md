@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: 13de6daabf2b6d83cc703ae6b3f0a30a1dfa34d6
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: ed41ec58dbdfd41931e8bab3a3cbe33caafe9a74
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスを使用する方法
 
@@ -64,18 +64,11 @@ Machine Learning Web サービスの詳細については、「[Azure Machine Le
 5. **主キー**をコピーして保存します。
 
 ### <a name="classic-web-service"></a>従来の Web サービス
- Machine Learning Studio または Azure クラシック ポータルからクラシック Web サービスのキーを取得することもできます。
+ Machine Learning Studio からクラシック Web サービスのキーを取得することもできます。
 
 #### <a name="machine-learning-studio"></a>Machine Learning Studio
 1. Machine Learning Studio で、左側の **[Web サービス]** をクリックします。
 2. Web サービスをクリックします。 **[ダッシュボード]** タブに **[API キー]** があります。
-
-#### <a name="azure-classic-portal"></a>Azure クラシック ポータル
-1. 左側の **[Machine Learning]** をクリックします。
-2. Web サービスがあるワークスペースをクリックします。
-3. **[Web サービス]**をクリックします。
-4. Web サービスをクリックします。
-5. エンドポイントをクリックします。 [API キー] が右下にあります。
 
 ## <a id="connect"></a>Machine Learning Web サービスに接続する
 HTTP 要求と応答をサポートする任意のプログラミング言語を使用して、Machine Learning Web サービスに接続することができます。 Machine Learning Web サービス ヘルプ ページから、C#、Python、および R の例を表示できます。

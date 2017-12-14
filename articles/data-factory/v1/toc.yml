@@ -179,6 +179,8 @@
           href: data-factory-troubleshoot.md
         - name: Data Management Gateway の使用に関する問題のトラブルシューティング
           href: data-factory-troubleshoot-gateway-issues.md
+    - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの呼び出し
+      href: how-to-invoke-ssis-package-stored-procedure-activity.md
 - name: リファレンス
   items:
     - name: コード サンプル

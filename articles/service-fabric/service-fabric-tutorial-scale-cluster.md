@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2017
 ms.author: adegeo
-ms.openlocfilehash: d203580f676d55acbad4936160982a40592af1d0
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.custom: mvc
+ms.openlocfilehash: 63b4747164959b0e95f6d3f1908d1fd265589a98
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="scale-a-service-fabric-cluster"></a>Service Fabric クラスターのスケール
 
@@ -30,6 +31,13 @@ ms.lasthandoff: 11/10/2017
 > * クラスター ノード数を読み取る
 > * クラスター ノードを追加する (スケールアウト)
 > * クラスター ノードを削除する (スケールイン)
+
+このチュートリアル シリーズで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * テンプレートを使用して、セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成する
+> * クラスターをスケールインまたはスケールアウトする
+> * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
+> * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に
@@ -250,8 +258,8 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 > * クラスター ノードを削除する (スケールイン)
 
 
-では、次のチュートリアルに進んで、アプリケーションのデプロイ方法と API Management の使用方法について学習しましょう。
+次のチュートリアルでは、クラスターのランタイムをアップグレードする方法について説明します。
 > [!div class="nextstepaction"]
-> [API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
+> [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster

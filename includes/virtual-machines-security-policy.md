@@ -24,7 +24,7 @@ VM に接続するときは、公開キー暗号化を使用して、より安�
 
 ## <a name="policies"></a>ポリシー
 
-社内の [Windows VM](../articles/virtual-machines/windows/policy.md) と [Linux VM](../articles/virtual-machines/linux/policy.md) には、[Azure Resource Manager ポリシー](../articles/azure-resource-manager/resource-manager-policy.md)を使って必要な動作を定義することができます。 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。
+社内の [Windows VM](../articles/virtual-machines/windows/policy.md) と [Linux VM](../articles/virtual-machines/linux/policy.md) には、[Azure ポリシー](../articles/azure-policy/azure-policy-introduction.md)を使って必要な動作を定義することができます。 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 

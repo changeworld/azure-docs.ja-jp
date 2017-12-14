@@ -1,29 +1,22 @@
 ---
-title: "Marathon REST API を使用した Azure DC/OS クラスターの管理 | Microsoft Docs"
+title: "Marathon REST API を使用した Azure DC/OS クラスターの管理"
 description: "Marathon REST API を使用して、Azure Container Service DC/OS クラスターにコンテナーをデプロイします。"
 services: container-service
-documentationcenter: 
 author: dlepow
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
-ms.assetid: c7175446-4507-4a33-a7a2-63583e5996e3
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 65f8e0170fa7b89162e811a1d5dd58775fd20d7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9322756c30011305ebe6f4f2fd38554f275a1b3
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>Marathon REST API を使用した DC/OS コンテナー管理
+
 DC/OS はクラスター化されたワークロードをデプロイし、スケールするための環境を提供すると共に、基礎となるハードウェアを抽象化します。 DC/OS に加え、コンピューティング ワークロードのスケジュールと実行を管理するフレームワークもあります。 一般的な各種ワークロードに対応したフレームワークはいくつかありますが、このドキュメントでは、Marathon REST API を使用してコンテナーのデプロイを作成し、スケールする方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件

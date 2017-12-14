@@ -3,8 +3,8 @@ title: "CLI を使用した Azure Stack への接続 | Microsoft Docs"
 description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
@@ -12,40 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2017
-ms.author: sngun
-ms.openlocfilehash: 60b06cf41ea632219d2f16b29607899bd2e8d789
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.date: 12/04/2017
+ms.author: mabrigg
+ms.openlocfilehash: 5d15815e9b1d20ab03b5716de45ad0fa77a11057
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Azure Stack で使用する CLI をインストールして構成する
 
 この記事では、Azure コマンド ライン インターフェイス (CLI) を使用して、Linux および Mac クライアントのプラットフォームから Azure Stack 開発キットのリソースを管理するプロセスについて説明します。 
-
-## <a name="export-the-azure-stack-ca-root-certificate"></a>Azure Stack の CA ルート証明書をエクスポートする
-
-Azure Stack 開発キット環境内で実行されている仮想マシンから CLI を使用する場合、Azure Stack のルート証明書は仮想マシンに既にインストールされているので直接取得できます。 開発キット外部のワークステーションから CLI を使用する場合は、Azure Stack の CA ルート証明書を開発キットからエクスポートして、開発ワークステーション (外部の Linux または Mac プラットフォーム) の Python 証明書ストアに追加する必要があります。 
-
-PEM 形式で Azure Stack ルート証明書をエクスポートするために、開発キットにサインインし、次のスクリプトを実行します。
-
-```powershell
-   $label = "AzureStackSelfSignedRootCert"
-   Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
-   $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
-   if (-not $root)
-   {
-       Log-Error "Certificate with subject CN=$label not found"
-       return
-   }
-
-   Write-Host "Exporting certificate"
-   Export-Certificate -Type CERT -FilePath root.cer -Cert $root
-
-   Write-Host "Converting certificate to PEM format"
-   certutil -encode root.cer root.pem
-```
 
 ## <a name="install-cli"></a>CLI のインストール
 
@@ -59,7 +36,7 @@ az --version
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack の CA ルート証明書を信頼する
 
-Azure Stack の CA ルート証明書を信頼するには、Python の既存の証明書に追加します。 Azure Stack 環境内で作成された Linux マシンから CLI を実行する場合は、次の bash コマンドを実行します。
+Azure Stack の CA ルート証明書を Azure Stack オペレーターから取得して信頼します。 Azure Stack の CA ルート証明書を信頼するには、Python の既存の証明書に追加します。 Azure Stack 環境内で作成された Linux マシンから CLI を実行する場合は、次の bash コマンドを実行します。
 
 ```bash
 sudo cat /var/lib/waagent/Certificates.pem >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
@@ -110,11 +87,10 @@ Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-package
 Write-Host "Python Cert store was updated for allowing the azure stack CA root certificate"
 ```
 
-## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>仮想マシンのエイリアス エンドポイントを設定する
+## <a name="get-the-virtual-machine-aliases-endpoint"></a>仮想マシンのエイリアス エンドポイントを取得する
 
-ユーザーが CLI を使用して仮想マシンを作成するためには、まず、クラウド管理者が仮想マシン イメージのエイリアスを含んだパブリックにアクセスできるエンドポイントを設定し、このエンドポイントをクラウドに登録する必要があります。 `az cloud register` コマンドの `endpoint-vm-image-alias-doc` パラメーターは、この目的に使用します。 クラウド管理者は、イメージをイメージ エイリアス エンドポイントに追加する前に、そのイメージを Azure Stack Marketplace にダウンロードする必要があります。
+ユーザーが CLI を使用して仮想マシンを作成するには、Azure Stack のオペレーターに連絡し、仮想マシンのエイリアス エンドポイント URI を取得する必要があります。 たとえば、Azure では、https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json という URI を使用します。 クラウド管理者は Azure Stack Marketplace で使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。 次のセクションで示すように、ユーザーは、エンドポイント URI を `az cloud register` コマンドの `endpoint-vm-image-alias-doc` パラメーターに渡す必要があります。 
    
-たとえば、Azure では、https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json という URI を使用します。 クラウド管理者は Azure Stack Marketplace で使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。
 
 ## <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
@@ -169,7 +145,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
      --profile 2017-03-09-profile
    ```
 
-4. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
+4. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
 
    * "*ユーザー*" としてサインインする場合: `az login` コマンド内で直接ユーザー名とパスワードを指定するか、ブラウザーを使用して認証できます。 多要素認証が有効になっているアカウントの場合は、後者を実行する必要があります。
 
@@ -219,4 +195,3 @@ Azure Stack で CLI を使うときに注意する必要がある既知の問題
 [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 
 [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)
-

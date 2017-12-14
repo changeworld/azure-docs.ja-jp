@@ -5,7 +5,7 @@ services: multi-factor-authentication
 keywords: "認証 サーバー, azure 多要素認証アプリ アクティブ化ページ, 認証サーバーのダウンロード"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: e94120e4-ed77-44b8-84e4-1c5f7e186a6b
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: a164dfa23a0bd8a598eb8871a160ced4158b172a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4a3e7bd851c2b7e082caeeb451c865eab4fe6635
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -89,7 +89,7 @@ Azure MFA Server は、次の 3 つの Web コンポーネントで構成され�
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
 | 70.37.154.200/29 |255.255.255.248 |70.37.154.201 – 70.37.154.206 |
 
-## <a name="download-the-mfa-server---public-preview"></a>MFA Server のダウンロード - パブリック プレビュー
+## <a name="download-the-mfa-server"></a>MFA Server のダウンロード
 
 Azure Portal から Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
 
@@ -101,28 +101,6 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
    ![MFA Server のダウンロード](./media/multi-factor-authentication-get-started-server/downloadportal.png)
 
 5. このページは、インストーラーの実行後に参照するので開いたままにしておいてください。
-
-
-## <a name="download-the-mfa-server"></a>MFA Server のダウンロード
-
-pfweb ポータルから Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
-
-1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. 左側で、**[Active Directory]** を選択します。
-3. **[ユーザーとグループ]** を選択します。
-4. **[すべてのユーザー]** を選択します。
-5. **[Multi-Factor Authentication]** を選択します。
-6. **[Multi-Factor Authentication]** セクションの **[サービス設定]** を選択します。
-
-   ![[サービス設定] ページ](./media/multi-factor-authentication-get-started-server/servicesettings.png)
-
-6. サービス設定ページで、画面の下部にある **[ポータルに移動する]**をクリックします。 新しいページが開きます。
-7. **[ダウンロード]** を選択します。
-8. **[ダウンロード]** リンクをクリックし、インストーラーを保存します。
-
-   ![MFA Server のダウンロード](./media/multi-factor-authentication-get-started-server/download4.png)
-
-9. このページは、インストーラーの実行後に参照するので開いたままにしておいてください。
 
 ## <a name="install-and-configure-the-mfa-server"></a>MFA Server のインストールと構成
 

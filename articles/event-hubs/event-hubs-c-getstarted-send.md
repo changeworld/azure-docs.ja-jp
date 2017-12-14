@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 12/4/2017
 ms.author: sethm
-ms.openlocfilehash: 25311958314cca049d109ecbe3f46aaaa36b694d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2b714c5de96a8fb7ed66a30c62daaa38b84fdc5b
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>C を使用して Azure Event Hubs にイベントを送信する
 
@@ -27,16 +27,16 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 詳細については、[Event Hubs の概要][Event Hubs の概要] に関するページを参照してください。
 
-このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにイベントを送信する方法について説明します。イベントを受け取るには、左側の目次で適切な受信言語をクリックします。
+このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにイベントを送信する方法について説明します。イベントの受け取りについては、左側の目次で適切な受信言語をクリックします。
 
-このチュートリアルを最後まで行うには、以下のものが必要です。
+このチュートリアルを完了するには、以下が必要です。
 
 * C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での Azure Linux VM 上の GCC スタックを想定しています。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
 * アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
 ## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
-このセクションでは、イベントをイベント ハブに送信する C アプリを作成します。 コードでは、[Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、 [ここ](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューと Topics と使用するのに似ています。 詳細については、「 [Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)」を参照してください。
+このセクションでは、イベントをイベント ハブに送信する C アプリの作成方法を示します。 コードでは、[Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、[この例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューとトピックと共に使用するのに似ています。 詳しくは、[Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)をご覧ください。
 
 1. [Qpid AMQP Messenger ページ](https://qpid.apache.org/proton/messenger.html)で、環境に応じた Qpid Proton をインストールするための指示に従ってください。
 2. Proton ライブラリをコンパイルするには、次のパッケージをインストールします。
@@ -59,7 +59,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次のコードを使用して作成します。 イベント ハブの名前と名前空間の名前の値を必ず置き換えます。 前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。 [ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
+5. 作業ディレクトリに **sender.c** と呼ばれる新しいファイルを次のコードを使用して作成します。 SAS キー/名前、イベント ハブの名前、名前空間の値を忘れずに置換してください。 前に作成した **SendRule** のキーの URL でエンコードされたバージョンも代入する必要があります。 [ここ](http://www.w3schools.com/tags/ref_urlencode.asp)で URL でエンコードすることができます。
    
     ```c
     #include "proton/message.h"
@@ -147,15 +147,13 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
     ```
 
     > [!NOTE]
-    > コンパイルしたコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。 一般に、アプリケーションではスループットが向上するようにメッセージをバッチ処理する必要があります。 この環境やその他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](https://qpid.apache.org/proton/messenger.html)」を参照してください。
+    > このコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。 アプリケーションではスループットが向上するようにメッセージをバッチ処理することをお勧めします。 この環境やその他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](https://qpid.apache.org/proton/messenger.html)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md
-)
-* [イベント ハブの作成](event-hubs-create.md)
+* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
 <!-- Images. -->

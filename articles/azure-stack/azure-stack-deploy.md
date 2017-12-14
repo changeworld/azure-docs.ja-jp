@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/14/2017
+ms.date: 12/08/2017
 ms.author: jeffgilb
-ms.openlocfilehash: 8a0d23e14ef50034d5f9595cf154c3513a09c464
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0fa0d00112e731a9f2effd453ba74f5561fca358
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack のデプロイの前提条件
 
@@ -85,7 +85,7 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
 
 1. 少なくとも 1 つの Azure AD のディレクトリ管理者である Azure AD アカウントを作成します。 既にある場合は、それを使うことができます。 ない場合は、[http://azure.microsoft.com/en-us/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (中国の場合は <http://go.microsoft.com/fwlink/?LinkID=717821>) において無料で作成できます。 後で [Azure Stack を Azure に登録する](azure-stack-register.md)予定の場合は、この新規作成したアカウントでのサブスクリプションも必要です。
    
-    「[Deploy the development kit](azure-stack-run-powershell-script.md#deploy-the-development-kit)」(開発キットをデプロイする) の手順 6 で使うので、資格情報を保存しておきます。 この*サービス管理者*アカウントは、リソース クラウド、ユーザー アカウント、テナント プラン、クォータ、価格を構成、管理することができます。 ポータルで、Web サイト クラウド、仮想マシン プライベート クラウドを作成したり、プランの作成やユーザーのサブスクリプションの管理を行えます。
+    「[Deploy the development kit](azure-stack-run-powershell-script.md)」(開発キットをデプロイする) の手順 6 で使うので、資格情報を保存しておきます。 この*サービス管理者*アカウントは、リソース クラウド、ユーザー アカウント、テナント プラン、クォータ、価格を構成、管理することができます。 ポータルで、Web サイト クラウド、仮想マシン プライベート クラウドを作成したり、プランの作成やユーザーのサブスクリプションの管理を行えます。
 2. テナントとして開発キットにサインインできるように、少なくとも 1 つのアカウントを[作成](azure-stack-add-new-user-aad.md)します。
    
    | **Azure Active Directory アカウント** | **サポートの有無** |
@@ -121,62 +121,6 @@ NIC を接続するネットワークで使用できる DHCP サーバーがあ�
 
 ### <a name="internet-access"></a>インターネットへのアクセス
 Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレスによって) MAS-BGPNAT01 に割り当てられた IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
-
-## <a name="telemetry"></a>テレメトリ
-
-テレメトリは、Azure Stack の将来のバージョンの構想に役立ちます。 フィードバックに迅速に対応し、新しい機能を提供し、品質を向上させることができます。 Microsoft Azure Stack には、Windows Server 2016 と SQL Server 2014 が含まれています。 これらの製品はどちらも既定の設定から変更されておらず、Microsoft Enterprise のプライバシーに関する声明で説明されていません。 また、Azure Stack には、Microsoft にテレメトリを送信するように変更されていないオープン ソース ソフトウェアが含まれます。 Azure Stack のテレメトリ データの例を次に示します。
-
-- デプロイ登録情報
-- アラートが開かれた日時と閉じられた日時
-- ネットワーク リソースの数
-
-テレメトリ データ フローをサポートするには、ネットワークでポート 443 (HTTPS) を開く必要があります。 クライアント エンドポイントは https://vortex-win.data.microsoft.com です。
-
-Azure Stack のテレメトリを提供したくない場合は、以下で説明するように、開発キット ホストおよびインフラストラクチャの仮想マシンでオフにすることができます。
-
-### <a name="turn-off-telemetry-on-the-development-kit-host-optional"></a>開発キット ホストでテレメトリをオフにする (省略可能)
-
->[!NOTE]
-開発キット ホストでテレメトリをオフにする場合は、デプロイ スクリプトの実行前に行う必要があります。
-
-[asdk-installer.ps1 スクリプトを実行]()して開発キット ホストをデプロイする前に、CloudBuilder.vhdx で起動し、管理者特権の PowerShell ウィンドウで次のスクリプトを実行します。
-```powershell
-### Get current AllowTelmetry value on DVM Host
-(Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name AllowTelemetry).AllowTelemetry
-### Set & Get updated AllowTelemetry value for ASDK-Host 
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name "AllowTelemetry" -Value '0'  
-(Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
--Name AllowTelemetry).AllowTelemetry
-```
-
-**AllowTelemetry** を 0 に設定すると、Windows と Azure Stack 両方のデプロイのテレメトリがオフになります。 オペレーティング システムからの重要なセキュリティ イベントのみが送信されます。 この設定は、すべてのホストとインフラストラクチャ VM の Windows テレメトリを制御し、スケールアウト操作が実行されると新しいノード/VM に再適用されます。
-
-
-### <a name="turn-off-telemetry-on-the-infrastructure-virtual-machines-optional"></a>インフラストラクチャの仮想マシンでテレメトリをオフにする (省略可能)
-
-デプロイが成功した後、開発キット ホスト上の管理者特権の PowerShell ウィンドウで (AzureStack\AzureStackAdmin ユーザーとして)、次のスクリプトを実行します。
-
-```powershell
-$AzSVMs= get-vm |  where {$_.Name -like "AzS-*"}
-### Show current AllowTelemetry value for all AzS-VMs
-invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
-### Set & Get updated AllowTelemetry value for all AzS-VMs
-invoke-command -computername $AzSVMs.name {Set-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Value '0'}
-invoke-command -computername $AzSVMs.name {(Get-ItemProperty -Path `
-"HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name AllowTelemetry).AllowTelemetry}
-```
-
-SQL Server のテレメトリの構成については、「[フィードバックをマイクロソフトに送信するように SQL Server 2016 を構成する方法](https://support.microsoft.com/en-us/help/3153756/how-to-configure-sql-server-2016-to-send-feedback-to-microsoft)」を参照してください。
-
-### <a name="usage-reporting"></a>使用状況レポート
-
-登録により、Azure Stack は Azure に使用状況情報を転送するようにも構成されます。 使用状況レポートはテレメトリとは別に制御されます。 [登録](azure-stack-register.md)時に Github のスクリプトを使って使用状況レポートを無効にできます。 **$reportUsage** パラメーターを **$false** に設定するだけです。
-
-使用状況データは、「[Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)」(Azure に Azure Stack 使用状況データを報告する) で詳しく説明されているように書式設定されます。 Azure Stack 開発キットのユーザーに実際に料金がかかることはありません。 この機能は、使用状況レポートの動作をテストして理解できるように、開発キットに含まれています。 
 
 
 ## <a name="next-steps"></a>次のステップ

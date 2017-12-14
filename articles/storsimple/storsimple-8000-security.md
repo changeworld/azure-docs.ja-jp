@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/02/2017
+ms.date: 12/06/2017
 ms.author: alkohli
-ms.openlocfilehash: e4980cdb77650f011d143ed9e86fbe0af6b29d5d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8990d68b327e5688c7078a6b1a9d41ad0600a67
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple のセキュリティとデータの保護
 
@@ -157,7 +157,7 @@ StorSimple デバイス マネージャー サービスの主な目的は、Stor
 > 
 > サービス データ暗号化キーを紛失した場合、マイクロソフトのサポート担当者の支援を得ることでキーを読み出すことができます。そのためには、少なくとも 1 つのデバイスがオンライン状態であることが必要です。 サービス データ暗号化キーは、その取得後に変更するようお勧めします。 手順については、「[サービス データ暗号化キーの変更](storsimple-service-dashboard.md#change-the-service-data-encryption-key)」をご覧ください。
 
-サービス データ暗号化キーとそれに対応するデータ暗号化証明書を変更するには、サービス ダッシュボードで **[サービス データ暗号化キーの変更]** オプションを選択します。 データのセキュリティ侵害を確実に防ぐために、サービス データ暗号化キーは、物理 StorSimple デバイスを使用して変更する必要があります。 暗号化キーを変更する場合、すべてのデバイスを新しいキーで更新する必要があります。 そのため、キーの変更は、すべてのデバイスがオンライン状態のときに行うようお勧めします。 デバイスがオフラインである場合、それらのキーが異なるタイミングで変更される可能性があります。 デバイスのキーの有効期限が切れていても、バックアップは実行できますが、キーが更新されるまでデータは復元できません。 詳細については、「[StorSimple Manager サービスのダッシュボードを使用する](storsimple-8000-service-dashboard.md)」をご覧ください。
+サービス データ暗号化キーとそれに対応するデータ暗号化証明書を変更するには、[StorSimple デバイス マネージャー サービスのサービス データ暗号化キーの変更](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)手順に従います。 暗号化キーを変更する場合、すべてのデバイスを新しいキーで更新する必要があります。 そのため、キーの変更は、すべてのデバイスがオンライン状態のときに行うようお勧めします。 デバイスがオフラインである場合、それらのキーが異なるタイミングで変更される可能性があります。 デバイスのキーの有効期限が切れていても、バックアップは実行できますが、キーが更新されるまでデータは復元できません。
 
 サービス データ暗号化キーとデータ暗号化証明書には、有効期限がありません。 サービス データ暗号化キーは年に 1 回変更し、キーの侵害を防ぐことをお勧めします。
 
@@ -212,7 +212,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 **A:** サービス データ暗号化キーと、データの階層化に使用されているストレージ アカウントのストレージ アカウント キーを直ちに変更してください。 手順については、次をご覧ください。
 
-* [サービス データ暗号化キーの変更](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+* [サービス データ暗号化キーの変更](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [ストレージ アカウントのキー ローテーション](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts)
 
 **Q:** 新しい StorSimple デバイスがあるのですが、サービス登録キーを求められました。 どうすれば入手できますか。
@@ -225,7 +225,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 
 **A:** Microsoft サポートにお問い合わせください。 デバイスのサポート セッションにログインし、キーを取得できるようにサポートします (少なくとも 1 台のデバイスがオンラインである必要があります)。 サービス データ暗号化キーを取得したらすぐに変更し、お客様だけが新しいキーを認識するようにする必要があります。 手順については、次をご覧ください。
 
-* [サービス データ暗号化キーの変更](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+* [サービス データ暗号化キーの変更](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
 **Q:** デバイスにサービス データ暗号化キーの変更を承認しましたが、キー変更プロセスが開始されませんでした。 どうすればよいですか。
 
@@ -240,7 +240,7 @@ StorSimple ソリューションに保存されるデータとソリューショ
 **A:** StorSimple デバイスにアクセスするためのパスワードを変更するかリセットし、サービス データ暗号化キーを変更して、承認された人員のみが新しい情報を知っている状態にします。 手順については、次をご覧ください。
 
 * [StorSimple デバイス マネージャー サービスを使用して StorSimple のパスワードを変更する](storsimple-8000-change-passwords.md)
-* [サービス データ暗号化キーの変更](storsimple-service-dashboard.md#change-the-service-data-encryption-key)
+* [サービス データ暗号化キーの変更](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [StorSimple デバイスの CHAP を構成する](storsimple-8000-configure-chap.md)
 
 **Q:** StorSimple デバイスに接続しているホストに StorSimple Snapshot Manager のパスワードを指定する必要がありますが、パスワードを利用できません。 どうすればよいですか。

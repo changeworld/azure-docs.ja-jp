@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 12/04/2017
 ms.author: cherylmc
-ms.openlocfilehash: 8c4b2d578a8a586fc63c972ab5da694b2dd9d571
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 367288e313ae5517b126b17c905ae291b5b37975
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成: PowerShell
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 接続するクライアントでは、次の認証方法を使用できます。
 
-* RADIUS サーバー - 現在プレビューの段階です。
+* RADIUS サーバー
 * VPN Gateway のネイティブ Azure 証明書認証
 
 この記事は、P2S 構成にネイティブ Azure 証明書認証を使った認証を構成する際に役立ちます。 接続するユーザーを RADIUS を使って認証する場合には、[RADIUS 認証を使った P2S](point-to-site-how-to-radius-ps.md) に関するページを参照してください。
@@ -47,11 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 * SSTP は、Windows クライアント プラットフォームでのみサポートされる SSL ベースの VPN トンネルです。 ファイアウォールを通過できるため、接続元の場所を問わず Azure に接続する際の理想的なオプションとなっています。 サーバー側でのサポート対象の SSTP バージョンは、1.0、1.1、1.2 です。 使用するバージョンはクライアントによって決まります。 Windows 8.1 以降の場合、SSTP では既定で 1.2 が使用されます。
 
-* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。 IKEv2 は現在プレビューの段階です。
-
->[!NOTE]
->P2S 用 IKEv2 は現在プレビューの段階です。
->
+* IKEv2 VPN。これは、標準ベースの IPsec VPN ソリューションです。 IKEv2 VPN は、Mac デバイス (OSX バージョン 10.11 以上) から接続する際に使用できます。
 
 ポイント対サイトのネイティブ Azure 証明書認証接続には、以下のものが必要です。
 
@@ -69,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="example"></a>値の例
 
-値の例を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 この記事のパート [1](#declare) で変数を設定します。 手順をチュートリアルとして利用して値を変更せずに使用することも、実際の環境に合わせて値を変更することもできます。
+値の例を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 この記事のセクション [1](#declare) で変数を設定します。 手順をチュートリアルとして利用して値を変更せずに使用することも、実際の環境に合わせて値を変更することもできます。
 
 * **名前: VNet1**
 * **アドレス空間: 192.168.0.0/16** と **10.254.0.0/16**<br>この例では、この構成が複数のアドレス空間で機能することを示すために、複数のアドレス空間を使用します。 ただし、この構成で複数のアドレス空間は必須ではありません。
@@ -167,14 +163,14 @@ ms.lasthandoff: 10/11/2017
 
 VNet の仮想ネットワーク ゲートウェイを構成、作成します。
 
-* *-GatewayType* は **Vpn** に、*-VpnType* は **RouteBased** にする必要があります。
-* -VpnClientProtocols は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションは、**SSTP** と **IKEv2** の 2 つがあります。 どちらか一方を有効にすることも、両方を有効にすることもできます。 両方を有効にする場合は、両方の名前をコンマで区切って指定します。 Android と Linux の Strongswan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。
-* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。 この例では、現在プレビュー版が提供されている、IKEv2 が使用されています。
+* -GatewayType は **Vpn**、-VpnType は **RouteBased** にする必要があります。
+* -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションは、**SSTP** と **IKEv2** の 2 つがあります。 どちらか一方を有効にすることも、両方を有効にすることもできます。 両方を有効にする場合は、両方の名前をコンマで区切って指定します。 Android と Linux の Strongswan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。
+* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。 この例では、現在プレビュー版が提供されている IKEv2 が使用されています。
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
--VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocols "IKEv2"
+-VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
 ```
 
 ## <a name="addresspool"></a>4.VPN クライアント アドレス プールの追加

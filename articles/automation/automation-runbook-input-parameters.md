@@ -3,7 +3,7 @@ title: "Runbook の入力パラメーター | Microsoft Docs"
 description: "Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 4d3dff2c-1f55-498d-9a0e-eee497e5bedb
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: sngun
-ms.openlocfilehash: e5a2afdc0dbe6171b27c11400f460eac46147f37
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 889d1ac1597bd88ae7455ac98bfdb34f4013e0de
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
 
@@ -83,7 +83,7 @@ Runbook に object 型の入力パラメーターが含まれている場合は�
 
 [**Get-AzureRmVm**](https://msdn.microsoft.com/library/mt603718.aspx)で、仮想マシンのプロパティを取得します。
 
-[**Write-Output**](https://technet.microsoft.com/library/hh849921.aspx) アクティビティを利用し、仮想マシンの名前を出力できます。 **Get-AzureRmVm** アクティビティは 2 つのパラメーターを受け取ります。**仮想マシンの名前** と **リソース グループの名前**です。 これらのパラメーターは Runbook を起動するたびに異なる値を必要とする可能性があるため、入力パラメーターを Runbook に追加できます。 以下は入力パラメーターを追加する手順です。
+[**Write-Output**](https://technet.microsoft.com/library/hh849921.aspx) アクティビティを利用し、仮想マシンの名前を出力できます。 **Get-AzureRmVm** アクティビティは 2 つのパラメーターを受け取ります。**仮想マシン名** と **リソース グループの名前**です。 これらのパラメーターは Runbook を起動するたびに異なる値を必要とする可能性があるため、入力パラメーターを Runbook に追加できます。 以下は入力パラメーターを追加する手順です。
 
 1. **[Runbook]** ブレードからグラフィカル Runbook を選択し、[**[編集]**](automation-graphical-authoring-intro.md) します。
 2. Runbook エディタで **[入力と出力]** をクリックし、**[入力と出力]** ブレードを開きます。

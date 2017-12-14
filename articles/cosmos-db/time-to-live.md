@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 6213019131eec60263172f468ced516037a33c61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b236ab8dd80b0c34501e0d60ba74dee3043d262
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする
 アプリケーションで膨大なデータを生成し、格納することができます。 このデータの一部 (コンピューターによって生成されるイベント データ、ログ、およびユーザー セッション情報など) は、一定期間でのみ有効です。 アプリケーションで必要以上のデータがある場合は、そのデータを消去し、アプリケーションでのストレージの必要性を減らすのが安全です。
@@ -149,6 +149,8 @@ TTL が設定されているドキュメントを期限切れにする必要が�
     
     await client.ReplaceDocumentCollectionAsync(collection);
 
+## <a name="ttl-and-index-interaction"></a>TTL とインデックスの相互作用
+TTL を追加または変更すると、基になるインデックスが変更されます。 TTL がないときに、有効な TTL 値を指定すると、インデックス再作成操作が発生します。 同期インデックスの場合は、ユーザーがインデックスの状態の変化を目にすることはありません。 非同期インデックスの場合は、最初のインデックスが常に TTL での変更を検出して、インデックスが最初から再作成されます。 後者の場合の影響として、インデックス再構築中に実行されたクエリは、完全な結果または正しい結果を返しません。 インデックス作成モード自体が非同期のときに正確なデータ数などが必要な場合は、非同期インデックスの TTL を変更しないでください。  常に同期インデックスを選ぶのが理想的です。 
 
 ## <a name="faq"></a>FAQ
 **TTL にコストはかかりますか?**

@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 12/05/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 822293da48f14dc3fe29e7e95e7a30faaadbfea4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 002072c8eac37ffb1548b44627ec08e941c96a1d
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>HDInsight における Hive および Pig での Python ユーザー定義関数 (UDF) の使用
 
@@ -166,7 +166,7 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-Pig Latin の例では、入力の一貫したスキーマがないため、`LINE` 入力を chararray として定義しました。 この Python スクリプトでは、出力用に、データを一貫したスキーマに変換します。
+Pig Latin の例では、入力の一貫したスキーマがないため、`LINE` 入力は chararray と定義されています。 この Python スクリプトでは、出力用に、データを一貫したスキーマに変換します。
 
 1. `@outputSchema` ステートメントは、Pig に返されるデータの形式を定義します。 この場合、Pig のデータ型である、 **data bag**になります。 この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
 
@@ -178,7 +178,7 @@ Pig Latin の例では、入力の一貫したスキーマがないため、`LIN
 
 2. 次に、`def create_structure(input)` では、Pig が行項目を渡す関数が定義されています。
 
-3. 例のデータ `sample.log` は、日付、時刻、クラス名、レベル、および詳細のデータを返すスキーマにほぼ従っています。 ただし、`*java.lang.Exception*` で始まる行がいくつか含まれています。 これらの行は、スキーマに合わせて変更する必要があります。 `if` ステートメントでそれらをチェックした後、想定される出力スキーマと一致するように、入力データの `*java.lang.Exception*` 文字列を末尾に移動します。
+3. 例のデータ `sample.log` は、日付、時刻、クラス名、レベル、および詳細スキーマにほぼ従っています。 ただし、`*java.lang.Exception*` で始まる行がいくつか含まれています。 これらの行は、スキーマに合わせて変更する必要があります。 `if` ステートメントでそれらをチェックした後、想定される出力スキーマと一致するように、入力データの `*java.lang.Exception*` 文字列を末尾に移動します。
 
 4. 次に、`split` コマンドを使って、最初の 4 つの空白文字でデータを分割します。 出力は、`date`、`time`、`classname`、`level`、および `detail` に割り当てられます。
 
@@ -291,7 +291,7 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](.
     #from pig_util import outputSchema
     ```
 
-    これで、Jython ではなく C Python を使用するように Python スクリプトが変更されます。 変更を加えた後は、**Ctrl キーを押しながら X キー**を押してエディターを終了します。 **Y** キーを押し、**Enter** キーを押して変更を保存します。
+    この行は、Jython ではなく C Python を使用するように Python スクリプトを変更します。 変更を加えた後は、**Ctrl キーを押しながら X キー**を押してエディターを終了します。 **Y** キーを押し、**Enter** キーを押して変更を保存します。
 
 6. `pig` コマンドを使用してシェルを再起動します。 `grunt>` プロンプトが出たら、次のステートメントを使って C Python インタープリターを使用する Python スクリプトを実行します。
 

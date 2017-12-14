@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 035f51d9f12e887d2017b058f0b0471870f411f7
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d8d52b7e151d116678169dd4839f0380f63132d7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 ## <a name="introduction"></a>はじめに
@@ -67,13 +67,13 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 
 | ログのカテゴリ | ログの種類 | 使用法 | 統合 |
 | ------------ | -------- | ------ | ----------- |
-|[アクティビティ ログ](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure Resource Manager リソースのコントロールプレーン イベント| サブスクリプションのリソースに対して実行された操作を調査できます。| Rest API & [Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
-|[Azure 診断ログ](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|サブスクリプションの Azure Resource Manager リソースの操作に関する豊富なデータ|   リソース自体が実行した操作を調査できます。| Azure Monitor、[Stream](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
-|[AAD レポート](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-azure-portal)|ログとレポート|ユーザーのサインイン アクティビティ情報と、ユーザーおよびグループ管理に関するシステム アクティビティ情報|[Graph API](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[Virtual Machine と Cloud Services](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows のイベント ログと Linux の Syslog|  仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   [WAD](https://docs.microsoft.com/en-us/azure/azure-diagnostics) (Windows Azure 診断ストレージ) を使用する Windows と Azure Monitor の Linux|
-|[Storage Analytics](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログと、ストレージ アカウントのメトリック データの提供|要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断に対する洞察が得られます。|  REST API または[クライアント ライブラリ](https://msdn.microsoft.com/en-us/library/azure/mt347887.aspx)|
-|[NSG (ネットワーク セキュリティ グループ) のフロー ログ](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON 形式、送信および受信のフローをルールごとに表示|ネットワーク セキュリティ グループを介した IP トラフィックの送信と受信に関する情報を表示します。|[Network Watcher](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)|
-|[Application Insight](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|  複数のプラットフォームの Web 開発者向けのアプリケーション パフォーマンス管理 (APM) サービスです。| REST API、[Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
+|[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Azure Resource Manager リソースのコントロールプレーン イベント|   サブスクリプションのリソースに対して実行された操作を調査できます。| Rest API & [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
+|[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|サブスクリプションの Azure Resource Manager リソースの操作に関する豊富なデータ| リソース自体が実行した操作を調査できます。| Azure Monitor、[Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
+|[AAD レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|ログとレポート|ユーザーのサインイン アクティビティ情報と、ユーザーおよびグループ管理に関するシステム アクティビティ情報|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
+|[Virtual Machine と Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows のイベント ログと Linux の Syslog|    仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (Windows Azure 診断ストレージ) を使用する Windows と Azure Monitor の Linux|
+|[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログと、ストレージ アカウントのメトリック データの提供|要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断に対する洞察が得られます。|    REST API または[クライアント ライブラリ](https://msdn.microsoft.com/en-us/library/azure/mt347887.aspx)|
+|[NSG (ネットワーク セキュリティ グループ) のフロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON 形式、送信および受信のフローをルールごとに表示|ネットワーク セキュリティ グループを介した IP トラフィックの送信と受信に関する情報を表示します。|[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
+|[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|    複数のプラットフォームの Web 開発者向けのアプリケーション パフォーマンス管理 (APM) サービスです。| REST API、[Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
 |データの処理/セキュリティ アラート| Azure Security Center アラート、OMS アラート| セキュリティに関する情報と警告。|   REST API、JSON|
 
 ### <a name="activity-log"></a>アクティビティ ログ
@@ -121,29 +121,29 @@ Azure 診断ログは、PowerShell、コマンド ライン インターフェ�
 
 | サービス | スキーマとドキュメント | リソースの種類 | カテゴリ |
 | ------- | ------------- | ------------- | -------- |
-|Load Balancer| [Azure Load Balancer のログ分析 (プレビュー)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers|  LoadBalancerAlertEvent|
+|Load Balancer| [Azure Load Balancer のログ分析 (プレビュー)](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent|
 |||Microsoft.Network/loadBalancers| LoadBalancerProbeHealthStatus
-|ネットワーク セキュリティ グループ|[ネットワーク セキュリティ グループ (NSG) のためのログ分析](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-nsg-manage-log)|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|
+|ネットワーク セキュリティ グループ|[ネットワーク セキュリティ グループ (NSG) のためのログ分析](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|
 |||Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|
-|Application Gateway|[Application Gateway の診断ログ](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-diagnostics)|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|
+|Application Gateway|[Application Gateway の診断ログ](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|
 |||Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|
 |||Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|
-|Key Vault|[Azure Key Vault のログ記録](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
-|Azure Search|[検索トラフィックの分析の有効化と使用](https://docs.microsoft.com/en-us/azure/search/search-traffic-analytics)|Microsoft.Search/searchServices|OperationLogs|
-|Data Lake Store|[Azure Data Lake Store の診断ログへのアクセス](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Audit|
-|Data Lake Analytics|[Azure Data Lake Analytics の診断ログへのアクセス](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|Audit|
+|Key Vault|[Azure Key Vault のログ記録](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
+|Azure Search|[検索トラフィックの分析の有効化と使用](https://docs.microsoft.com/azure/search/search-traffic-analytics)|Microsoft.Search/searchServices|OperationLogs|
+|Data Lake Store|[Azure Data Lake Store の診断ログへのアクセス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Audit|
+|Data Lake Analytics|[Azure Data Lake Analytics の診断ログへのアクセス](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|Audit|
 |||Microsoft.DataLakeAnalytics/accounts|要求|
 |||Microsoft.DataLakeStore/accounts|要求|
-|Logic Apps|[Logic Apps B2B カスタム追跡スキーマ](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|WorkflowRuntime|
+|Logic Apps|[Logic Apps B2B カスタム追跡スキーマ](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|WorkflowRuntime|
 |||Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|
-|Azure Batch|[Azure Batch 診断ログ](https://docs.microsoft.com/en-us/azure/batch/batch-diagnostics)|Microsoft.Batch/batchAccounts|ServiceLog|
-|Azure Automation|[Azure Automation のログ分析](https://docs.microsoft.com/en-us/azure/automation/automation-manage-send-joblogs-log-analytics)|Microsoft.Automation/automationAccounts|JobLogs|
+|Azure Batch|[Azure Batch 診断ログ](https://docs.microsoft.com/azure/batch/batch-diagnostics)|Microsoft.Batch/batchAccounts|ServiceLog|
+|Azure Automation|[Azure Automation のログ分析](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|Microsoft.Automation/automationAccounts|JobLogs|
 |||Microsoft.Automation/automationAccounts|JobStreams|
-|Event Hubs|[Azure Event Hubs の診断ログ](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-diagnostic-logs)|Microsoft.EventHub/namespaces|ArchiveLogs|
+|Event Hubs|[Azure Event Hubs の診断ログ](https://docs.microsoft.com/azure/event-hubs/event-hubs-diagnostic-logs)|Microsoft.EventHub/namespaces|ArchiveLogs|
 |||Microsoft.EventHub/namespaces|OperationalLogs|
-|Stream Analytics|[ジョブの診断ログ](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|実行|
+|Stream Analytics|[ジョブの診断ログ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|実行|
 |||Microsoft.StreamAnalytics/streamingjobs|作成|
-|Service Bus|[Azure Service Bus の診断ログ](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
+|Service Bus|[Azure Service Bus の診断ログ](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
 ### <a name="azure-active-directory-reporting"></a>Azure Active Directory レポート
 Azure Active Directory (Azure AD) には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。 [Azure Active Directory 監査レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)を利用すると、Azure Active Directory で発生した特権アクションを識別できます。 特権アクションとしては、昇格の変更 (例: ロールの作成、パスワードのリセット)、ポリシー構成の変更 (例: パスワード ポリシー)、ディレクトリ構成の変更 (例: ドメインのフェデレーション設定の変更) などがあります。
@@ -300,17 +300,17 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 
 | 統合シナリオ | Description |
 | --------------------- | :---------- |
-|[アプリケーション マップ](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-app-map)|アプリのコンポーネントを、主要なメトリックとアラートと共に表示します。||
-|[インスタンス データの診断検索](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-diagnostic-search)| 要求、例外、依存関係の呼び出し、ログ トレースおよびページ ビューなどのイベントを検索およびフィルター処理します。||
-|[集計データのメトリックス エクスプローラー](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-metrics-explorer)|要求、失敗、および例外の比率、応答時間、ページの読み込み時間などの集計データを調査、フィルター処理、およびセグメント分割します。||
-|[ダッシュボード](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-dashboards#dashboards)|複数のリソースからのデータをマッシュアップし、他のユーザーと共有します。 複数コンポーネントのアプリケーションと、チーム ルームでの継続的な表示に最適です。||
-|[Live Metrics Stream](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-live-stream)|新しいビルドをデプロイする場合、このほぼリアルタイムのパフォーマンス インジケーターを監視し、すべてが期待どおりに動作することを確認します。||
-|[Analytics](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics)|この強力なクエリ言語を使用して、アプリのパフォーマンスと使用状況に関する難しい質問に回答します。||
-|[自動および手動のアラート](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-alerts)|アプリのテレメトリの通常パターンに対して自動アラートを適応し、通常とは異なるパターンがある場合にアラートをトリガーします。 カスタムまたは標準のメトリックスの特定レベルでアラートを設定することもできます。||
-|[Visual Studio](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-visual-studio)|パフォーマンス データをコードで確認します。 スタック トレースからコードに移動します。||
-|[Power BI](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-export-power-bi)|使用状況のメトリックをその他のビジネス インテリジェンスと統合します。||
+|[アプリケーション マップ](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|アプリのコンポーネントを、主要なメトリックとアラートと共に表示します。||
+|[インスタンス データの診断検索](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| 要求、例外、依存関係の呼び出し、ログ トレースおよびページ ビューなどのイベントを検索およびフィルター処理します。||
+|[集計データのメトリックス エクスプローラー](https://docs.microsoft.com/azure/application-insights/app-insights-metrics-explorer)|要求、失敗、および例外の比率、応答時間、ページの読み込み時間などの集計データを調査、フィルター処理、およびセグメント分割します。||
+|[ダッシュボード](https://docs.microsoft.com/azure/application-insights/app-insights-dashboards#dashboards)|複数のリソースからのデータをマッシュアップし、他のユーザーと共有します。 複数コンポーネントのアプリケーションと、チーム ルームでの継続的な表示に最適です。||
+|[Live Metrics Stream](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream)|新しいビルドをデプロイする場合、このほぼリアルタイムのパフォーマンス インジケーターを監視し、すべてが期待どおりに動作することを確認します。||
+|[Analytics](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)|この強力なクエリ言語を使用して、アプリのパフォーマンスと使用状況に関する難しい質問に回答します。||
+|[自動および手動のアラート](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)|アプリのテレメトリの通常パターンに対して自動アラートを適応し、通常とは異なるパターンがある場合にアラートをトリガーします。 カスタムまたは標準のメトリックスの特定レベルでアラートを設定することもできます。||
+|[Visual Studio](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)|パフォーマンス データをコードで確認します。 スタック トレースからコードに移動します。||
+|[Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)|使用状況のメトリックをその他のビジネス インテリジェンスと統合します。||
 |[REST API](https://dev.applicationinsights.io/)|メトリックと生データのクエリを実行するコードを記述します。||
-|[連続エクスポート](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-export-telemetry)|生データが届いたらストレージに一括エクスポートします。||
+|[連続エクスポート](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry)|生データが届いたらストレージに一括エクスポートします。||
 
 ### <a name="azure-security-center-alerts"></a>Azure Security Center のアラート
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、真の脅威を検出し、誤検知を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。
@@ -354,25 +354,25 @@ Log Analytics の核となる機能は、Azure クラウドでホストされて
 
 | サービス | リソースの種類 | ログ | メトリック | 解決策 |
 | :------ | :------------ | :--- | :------ | :------- |
-|アプリケーション ゲートウェイ|  Microsoft.Network/<br>applicationGateways|  診断|診断|    [Azure Application](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Gateway 分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
+|アプリケーション ゲートウェイ|  Microsoft.Network/<br>applicationGateways|  診断|診断|    [Azure Application](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics) [Gateway 分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
 |Application Insights||     コネクタ|  コネクタ|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [コネクタ (プレビュー)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
-|Automation アカウント|   Microsoft.Automation/<br>AutomationAccounts|    診断||       [詳細情報](https://docs.microsoft.com/en-us/azure/automation/automation-manage-send-joblogs-log-analytics)|
+|Automation アカウント|   Microsoft.Automation/<br>AutomationAccounts|    診断||       [詳細情報](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
 |Batch アカウント|    Microsoft.Batch/<br>batchAccounts|  診断|    診断||
-|従来のクラウド サービス||       Storage||       [詳細情報](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage-iis-table)|
+|従来のクラウド サービス||       Storage||       [詳細情報](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
 |Cognitive Services|    Microsoft.CognitiveServices/<br>accounts|       診断|||
 |Data Lake Analytics|   Microsoft.DataLakeAnalytics/<br>accounts|   診断|||
 |Data Lake Store|   Microsoft.DataLakeStore/<br>accounts|   診断|||
 |Event Hub 名前空間|   Microsoft.EventHub/<br>namespaces|  診断|    診断||
 |IoT Hub|  Microsoft.Devices/<br>IotHubs||     診断||
-|Key Vault| Microsoft.KeyVault/<br>vaults|  診断  || [KeyVault 分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-key-vault)|
+|Key Vault| Microsoft.KeyVault/<br>vaults|  診断  || [KeyVault 分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |ロード バランサー|    Microsoft.Network/<br>loadBalancers|    診断|||
 |Logic Apps|    Microsoft.Logic/<br>workflows|  診断|    診断||
 ||Microsoft.Logic/<br>integrationAccounts||||
-|ネットワーク セキュリティ グループ|   Microsoft.Network/<br>networksecuritygroups|診断||   [Azure ネットワーク セキュリティ グループ分析](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
+|ネットワーク セキュリティ グループ|   Microsoft.Network/<br>networksecuritygroups|診断||   [Azure ネットワーク セキュリティ グループ分析](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
 |Recovery コンテナー|   Microsoft.RecoveryServices/<br>vaults|||[Azure Recovery Services Analytics (プレビュー)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Search サービス|   Microsoft.Search/<br>searchServices|    診断|    診断||
 |Service Bus 名前空間| Microsoft.ServiceBus/<br>namespaces|    診断|診断|    [Service Bus Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-|Service Fabric||       Storage||    [Service Fabric Analytics (プレビュー)](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-service-fabric)|
+|Service Fabric||       Storage||    [Service Fabric Analytics (プレビュー)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>servers/<br>データベース||       診断||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
 |Storage|||         スクリプト| [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|

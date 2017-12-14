@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/31/2017
+ms.date: 11/30/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: c073cb28f5c37a402c04d5315d7f8e18de8a1b26
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: aea0b93e658a0c5dd14deedbd2c5c92bb1fbf652
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/28/2017
 
 ### <a name="windows"></a>Windows
 
-* Windows Server 2008 以降、および Windows Server 2008 R2 SP1 以降に対する更新プログラムの展開。 Server Core と Nano Server のインストール オプションはサポートされていません。
+* Windows Server 2008 以降、および Windows Server 2008 R2 SP1 以降に対する更新プログラムの展開。 Nano Server はサポートされていません。
 
   Windows Server 2008 R2 SP1 への更新プログラムのデプロイをサポートするには、.NET Framework 4.5 および Windows Management Framework 5.0 以降が必要です。
 
@@ -84,7 +84,7 @@ Linux エージェントは、更新リポジトリへのアクセスが必要�
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Azure 以外の仮想マシンおよびコンピューターの更新管理を有効にする
 
-Azure 以外の Windows 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agents.md)」を参照してください。
+Azure 以外の Windows 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agent.md)」を参照してください。
 
 Azure 以外の Linux 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Linux コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-agent-linux.md)」を参照してください。
 

@@ -4,7 +4,7 @@ description: "OAuth2 プロトコルとカスタム ポリシーを使用した 
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
-ms.openlocfilehash: f72fac677aa7d461f174b2b06db69df235273375
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -204,7 +204,7 @@ ID プロバイダーはセットアップしました。 ただし、どのサ�
 
 5. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
 
-6. *TrustFrameworkBase.xml* ファイルと *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格したことを確認します。
+6. *TrustFrameworkBase.xml* ファイルと *TrustFrameworkExtensions.xml* ファイルをアップロードし、検証に合格することを確認します。
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>手順 6: [今すぐ実行] を使用してカスタム ポリシーをテストする
 1. **[Azure AD B2C の設定]** を選択してから、**[Identity Experience Framework]** を選択します。
@@ -219,4 +219,4 @@ ID プロバイダーはセットアップしました。 ただし、どのサ�
 LinkedIn アカウント ID プロバイダーを `ProfileEdit` ユーザー体験に追加することもできます。 ユーザー体験を使用できるようにするには、"手順 4" を繰り返します。 ここでは、`Id="ProfileEdit"` を含む `<UserJourney>` ノードを選択します。 ポリシーを保存し、アップロードしてテストします。
 
 ## <a name="optional-download-the-complete-policy-files"></a>(省略可能) 完全なポリシー ファイルをダウンロードする
-[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-li-app)が提供されています。
+「[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-li-app)が提供されています。

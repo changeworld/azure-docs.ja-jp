@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: anwestg
-ms.openlocfilehash: 19b712d622276b6521317d79c68fc093dba547db
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: fd2d355b2556faddb06acf2998b54ffcc9aa7919
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
 
@@ -37,8 +37,8 @@ App Service のいくつかの主要機能を次に示します。
 
 App Service にはアプリの種類が複数用意されており、それぞれ特定のワークロードをホストするよう設計されています。
 
-- [Web Apps](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview) - Web サイトと Web アプリケーションをホストするためのアプリの種類。
-- [API Apps](https://docs.microsoft.com/en-us/azure/app-service-api/app-service-api-apps-why-best-platform) - RESTful API をホストするためのアプリの種類。
+- [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) - Web サイトと Web アプリケーションをホストするためのアプリの種類。
+- [API Apps](https://docs.microsoft.com/azure/app-service-api/app-service-api-apps-why-best-platform) - RESTful API をホストするためのアプリの種類。
 - イベント ドリブンでサーバーレスのワークロードをホスティングするための Azure Functions。
 
 ここで言うアプリとは、ワークロードの実行専用のホスティング リソースを指しています。 "Web アプリ" を例にとると、Web アプリをコンピューティング リソースとアプリケーション コードの両方の観点から捉えることに皆さんおそらく慣れていることでしょう。この両者が合わさって、ブラウザーに機能が提供されます。 しかし、App Service の Web アプリとは、アプリケーション コードをホストするために Azure Stack が提供するコンピューティング リソースです。

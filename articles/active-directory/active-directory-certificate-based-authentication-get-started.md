@@ -3,7 +3,7 @@ title: "Azure Active Directory の証明書ベースの認証 - 概要 | Microso
 description: "各環境で証明書ベースの認証を構成する方法について説明します。"
 author: MarkusVi
 documentationcenter: na
-manager: femila
+manager: mtillman
 ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.workload: identity
 ms.date: 10/13/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 5e423ee6818c50775aa604891951c7ded2a84eb3
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 4dfc0d2f334404e4984f677a4b2966fc958ca98d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 

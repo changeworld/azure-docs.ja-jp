@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 6d737e354f5e7ee57c2e2c3d9b5599d4ba2b09af
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 6fdf65ac87273502edb1548ed6c1cf5c7bc25649
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
@@ -340,5 +340,5 @@ static void Main(string[] args)
 [Service Fabric のアプリケーションのモデル化](service-fabric-application-model.md)
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
-[10]: service-fabric-application-model.md
+[10]: service-fabric-package-apps.md
 [11]: service-fabric-application-upgrade.md

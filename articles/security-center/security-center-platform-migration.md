@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: yurid
-ms.openlocfilehash: 5ddf71dcd9c5a2b03e3b1441d8c9b4d91b6bad12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89970b50a2f7246a43ac9666be4d992649605cbf
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-security-center-platform-migration"></a>Azure Security Center のプラットフォームの移行
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="agent"></a>エージェント
 
-移行の一環として、現在データが収集されているすべての Azure VM に Microsoft Monitoring Agent ([Windows ](../log-analytics/log-analytics-windows-agents.md) 用または [Linux](../log-analytics/log-analytics-linux-agents.md) 用) がインストールされます。  VM に Microsoft Monitoring Agent が既にインストールされている場合、Security Center は、現在インストールされているエージェントを活用します。
+移行の一環として、現在データが収集されているすべての Azure VM に Microsoft Monitoring Agent ([Windows ](../log-analytics/log-analytics-windows-agent.md) 用または [Linux](../log-analytics/log-analytics-linux-agents.md) 用) がインストールされます。  VM に Microsoft Monitoring Agent が既にインストールされている場合、Security Center は、現在インストールされているエージェントを活用します。
 
 一定期間 (通常は数日間) にわたって、データの損失がないスムーズな移行を保証するために、両方のエージェントが共存して実行されます。 これにより、Microsoft は、現在のパイプラインの使用を中止する前に、新しいデータ パイプラインが動作することを検証することができます。 検証が終わったら、Azure Monitoring Agent は VM から削除されます。 ユーザー側で必要な作業はありません。 すべての顧客の移行が完了すると、電子メールで通知されます。
  

@@ -29,7 +29,7 @@ UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “
 |-|-|-|-|
 |/Role|必須|モビリティ サービス (MS) とマスター ターゲット (MS) のどちらをインストールするかを指定します|MS </br> MT|
 |/InstallLocation|省略可能。|モビリティ サービスをインストールする場所|コンピューター上の任意のフォルダー|
-|/Platform|必須|モビリティ サービスをインストールするプラットフォームを指定します </br> </br>- **VMware**: *VMware vSphere ESXi ホスト*、*Hyper-V ホスト*、または*物理サーバー*で実行されている VM にモビリティ サービスをインストールする場合は、この値を使用します </br> - **Azure**: Azure IaaS VM にエージェントをインストールする場合は、この値を使用します| VMware </br> Azure|
+|/Platform|必須|モビリティ サービスをインストールするプラットフォームを指定します </br> </br>- **VMware**: "*VMware vSphere ESXi ホスト*"、"*Hyper-V ホスト*"、または "*物理サーバー*" で実行されている VM にモビリティ サービスをインストールする場合は、この値を使用します </br> - **Azure**: Azure IaaS VM にエージェントをインストールする場合は、この値を使用します| VMware </br> Azure|
 |/Silent|省略可能。|インストーラーをサイレント モードで実行するよう指定します| 該当なし|
 
 >[!TIP]
@@ -39,7 +39,7 @@ UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “
 
 ```
 Usage :
-UnifiedAgentConfigurator.exe”  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
+UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
 ```
 
   | パラメーターが含まれる必要があります。|型|Description|指定できる値|

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: 63b35ed25b809a16b61b685fd35aa67474b0a369
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 67aa5bb122b277e998119506bb2a574d6b4fde5e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="install-the-azure-cli-10"></a>Azure CLI 1.0 のインストール
 > [!div class="op_single_selector"]
@@ -28,7 +28,8 @@ ms.lasthandoff: 10/11/2017
 > * [Azure CLI 2.0](/cli/azure/install-azure-cli)
 
 > [!IMPORTANT]
-> このトピックでは、Azure CLI 1.0 をインストールする方法について説明します。これは nodeJs に構築され、すべてのクラシック デプロイメント API 呼び出しと、多数の Resource Manager デプロイ アクティビティに対応します。 新しいまたは将来的な CLI デプロイメントおよび管理の場合は、[Azure CLI 2.0](/cli/azure/overview) を使用する必要があります。
+> このトピックでは、Azure CLI 1.0 のインストール方法について説明します。 この CLI は廃止されており、"従来の" リソースを使用した Azure サービス管理 (ASM) モデルのサポートにのみ使用されます。
+> Azure Resource Manager (ARM) のデプロイには、[Azure CLI 2.0](/cli/azure/overview) を使用します。
 
 Azure コマンド ライン インターフェイス (Azure CLI 1.0) を簡単にインストールして、コマンド ライン シェルからオープン ソースのコマンドを使って Microsoft Azure 上のリソースを作成したり管理したりすることができます。 お使いのコンピューターにこれらのクロスプラットフォーム ツールをインストールするオプションは複数あります。
 
@@ -38,7 +39,7 @@ Azure コマンド ライン インターフェイス (Azure CLI 1.0) を簡単�
 
 その他のオプションと背景については、 [GitHub](https://github.com/azure/azure-xplat-cli)のプロジェクト リポジトリを参照してください。
 
-Azure CLI 1.0 をインストールした後、[Azure サブスクリプションに接続](xplat-cli-connect.md)し、コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプトなど) から **azure** コマンドを実行して、Azure リソースを操作します。
+Azure CLI 1.0 をインストールした後、[Azure サブスクリプションに接続](/cli/azure/authenticate-azure-cli)し、コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプトなど) から **azure** コマンドを実行して、Azure リソースを操作します。
 
 ## <a name="option-1-install-an-npm-package"></a>オプション 1: npm パッケージのインストール
 CLI を npm パッケージからインストールするには、[最新の Node.js と npm](https://nodejs.org/en/download/package-manager/) をダウンロードし、インストールしていることを確認してください。 次に、**npm install** を実行して、azure-cli パッケージをインストールします。
@@ -98,7 +99,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 azure --version
 ```
 
-これで準備が整いました。 すべての CLI コマンドにアクセスして独自のリソースを操作するには、 [Azure CLI から Azure サブスクリプションに接続](xplat-cli-connect.md)します。
+これで準備が整いました。 すべての CLI コマンドにアクセスして独自のリソースを操作するには、 [Azure CLI から Azure サブスクリプションに接続](/cli/azure/authenticate-azure-cli)します。
 
 > [!NOTE]
 > Azure CLI を初めて使用する場合、Microsoft が使用状況についての情報を収集することを許可するかどうかをたずねるメッセージが表示されます。 参加は任意です。 参加した後でも、 `azure telemetry --disable`を実行するといつでも停止できます。 参加を有効にするには、任意のタイミングで `azure telemetry --enable`を実行します。
@@ -128,7 +129,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 
 ## <a name="next-steps"></a>次のステップ
-* [CLI から Azure サブスクリプションへの接続](xplat-cli-connect.md) を行い、Azure リソースを作成および管理します。
+* [CLI から Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli) を行い、Azure リソースを作成および管理します。
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、 [GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli)のページを参照してください。
 * Azure CLI または Azure の使用に関してご不明な点がある場合は、 [Azure のフォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting)をご覧ください。
 

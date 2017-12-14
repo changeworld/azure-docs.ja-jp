@@ -1,28 +1,22 @@
 ---
-title: "Azure DC/OS コンテナー アプリへのアクセスの有効化 | Microsoft Docs"
+title: "Azure DC/OS コンテナー アプリへのアクセスの有効化"
 description: "Azure Container Service の DC/OS コンテナーへのパブリック アクセスを有効にする方法。"
 services: container-service
-documentationcenter: 
 author: sauryadas
 manager: madhana
-editor: 
-tags: acs, azure-container-service
-keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: c9ef5913859cf3a55a2de2107a9304f1d28a4829
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aedc97335a0b9ad00cf653477b62bf530b556900
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Azure Container Service アプリケーションへのパブリック アクセスを有効にする
+
 ACS [パブリック エージェント プール](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) のすべての DC/OS コンテナーは、自動的にインターネットに公開されます。 既定では、ポート **80**、**443**、**8080** が開かれ、それらのポートでリッスンしているすべての (パブリック) コンテナーにアクセスできます。 この記事では、Azure Container Service のアプリケーションのために、さらに多くのポートを開く方法について説明します。
 
 ## <a name="open-a-port-portal"></a>ポートを開く (ポータル)

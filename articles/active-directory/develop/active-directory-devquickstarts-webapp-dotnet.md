@@ -4,7 +4,7 @@ description: "サインインのために Azure AD と連携する .NET MVC Web 
 services: active-directory
 documentationcenter: .net
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: e15a41a4-dc5d-4c90-b3fe-5dc33b9a1e96
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 3c1e558c9d41e385f80939203a3457b74e30973b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5025ebda6eb47c4155c098be4a5479d5c3814942
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="aspnet-web-app-sign-in-and-sign-out-with-azure-ad"></a>Azure AD を使用した ASP.NET Web アプリへのサインインおよびサインアウト
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 7bae18e151fbdccf95f3fe5f569041d6dd9c42eb
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: e818a1b94891e687d8aa5962092e0a577b0db356
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Log Analytics を使用した Azure PaaS リソース メトリックの収集を構成する
 
@@ -37,7 +37,7 @@ Azure PaaS (サービスとしてのプラットフォーム) リソースは、
 >[!NOTE]
 >PowerShell から Azure Resource Manager のコマンドを実行するときの互換性を確保するために、すべての Azure Resource Manager モジュールを同じバージョンにすることをお勧めします。
 >
-Azure Resource Manager モジュールの最新バージョンをコンピューターにインストールするには、[Azure PowerShell のインストールと構成](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps)に関する記事を参照してください。  
+Azure Resource Manager モジュールの最新バージョンをコンピューターにインストールするには、[Azure PowerShell のインストールと構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.1#update-azps)に関する記事を参照してください。  
 
 ## <a name="enable-azure-diagnostics"></a>Azure 診断を有効にする  
 PaaS リソース用の Azure 診断の構成は、**Enable-AzureRMDiagnostics.ps1** スクリプトを実行することによって実現されます。このスクリプトは [PowerShell ギャラリー](https://www.powershellgallery.com/packages/Enable-AzureRMDiagnostics/2.52/DisplayScript)から入手できます。  スクリプトは、次のシナリオをサポートします。

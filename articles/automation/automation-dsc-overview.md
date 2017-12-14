@@ -3,7 +3,7 @@ title: "Azure Automation DSC の概要 | Microsoft Docs"
 description: "Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題"
 services: automation
 documentationcenter: dev-center-name
-author: eslesar
+author: georgewallace
 manager: carmonm
 keywords: "powershell dsc, 必要な状態の構成, powershell dsc azure"
 ms.assetid: fd40cb68-c1a6-48c3-bba2-710b607d1555
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
-ms.author: eslesar
-ms.openlocfilehash: 468321fa6863d78bc0d179fbe5c2ed6195040d50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: gwallace
+ms.openlocfilehash: 7440fa58f9cbd201984d178a7e9a2c12afc84783
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC Overview
 

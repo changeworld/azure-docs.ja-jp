@@ -1,41 +1,33 @@
 ---
-title: "Azure Container Instances - 複数コンテナー グループ | Azure Docs"
-description: "Azure Container Instances - 複数コンテナー グループ"
+title: "Azure Container Instances に複数コンテナー グループをデプロイする"
+description: "複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。"
 services: container-instances
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e1f23e20b001404d3f781e7e6deac87ede12684
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-a-container-group"></a>コンテナー グループのデプロイ
 
-Azure Container Instances では、"*コンテナー グループ*" を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 これは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。 
+Azure Container Instances では、"*コンテナー グループ*" を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 これは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
 このドキュメントでは、Azure Resource Manager テンプレートを使用して、シンプルな複数コンテナー サイドカー構成を実行します。
 
 ## <a name="configure-the-template"></a>テンプレートの構成
 
-`azuredeploy.json` という名前のファイルを作成し、次の json をそのファイルにコピーします。 
+`azuredeploy.json` という名前のファイルを作成し、次の json をそのファイルにコピーします。
 
-このサンプルでは、2 つのコンテナーを含むコンテナー グループと、パブリック IP アドレスが定義されています。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。 
+このサンプルでは、2 つのコンテナーを含むコンテナー グループと、パブリック IP アドレスが定義されています。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
 
-このサイドカーの例は、200 OK 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。 
+このサイドカーの例は、200 OK 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
 
 ```json
 {
@@ -46,7 +38,7 @@ Azure Container Instances では、"*コンテナー グループ*" を使用し
   "variables": {
     "container1name": "aci-tutorial-app",
     "container1image": "microsoft/aci-helloworld:latest",
-    "container2name": "aci-tutorial-sidecar",    
+    "container2name": "aci-tutorial-sidecar",
     "container2image": "microsoft/aci-tutorial-sidecar"
   },
     "resources": [
@@ -135,7 +127,7 @@ az group create --name myResourceGroup --location westus
 az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
-数秒以内に、Azure から最初の応答を受信します。 
+数秒以内に、Azure から最初の応答を受信します。
 
 ## <a name="view-deployment-state"></a>デプロイ状態の表示
 
@@ -153,9 +145,9 @@ Name              ResourceGroup    ProvisioningState    Image                   
 myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-sidecar,microsoft/aci-tutorial-app:v1      40.118.253.154:80  1.0 core/1.5 gb   Linux     westus
 ```
 
-## <a name="view-logs"></a>ログを表示する。   
+## <a name="view-logs"></a>ログを表示する。
 
-コンテナーのログ出力を表示するには、`az container logs` コマンドを使用します。 `--container-name` 引数は、プルするログが含まれるコンテナーを指定します。 この例では、最初のコンテナーが指定されています。 
+コンテナーのログ出力を表示するには、`az container logs` コマンドを使用します。 `--container-name` 引数は、プルするログが含まれるコンテナーを指定します。 この例では、最初のコンテナーが指定されています。
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup

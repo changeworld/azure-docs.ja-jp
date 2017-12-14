@@ -73,6 +73,9 @@
           href: sizes-compute.md
         - name: メモリ最適化
           href: sizes-memory.md
+          items:
+            - name: 制約付き vCPU
+              href: constrained-vcpu.md
         - name: ストレージ最適化
           href: sizes-storage.md
         - name: GPU 最適化
@@ -121,6 +124,8 @@
       items:
         - name: インフラストラクチャのガイドライン
           href: infrastructure-example.md
+        - name: vCPU のクォータ
+          href: quotas.md
 - name: ハウツー ガイド
   items:
     - name: VM の作成
@@ -164,6 +169,8 @@
       items:
         - name: VM の前払い - 予約済みインスタンス
           href: prepay-reserved-vm-instances.md
+        - name: VM の使用状況
+          href: vm-usage.md
         - name: 一般的な CLI タスク
           href: cli-manage.md
         - name: VM の移動

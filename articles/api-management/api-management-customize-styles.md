@@ -1,89 +1,87 @@
 ---
-title: "Azure API Management での開発者ポータルのスタイルのカスタマイズ | Microsoft Docs"
-description: "Azure API Management で開発者ポータルの任意のページで使用されているスタイルを変更する方法について説明します。"
+title: "Azure API Management 開発者ポータルでページのスタイルをカスタマイズする方法 | Microsoft Docs"
+description: "クイック スタートの手順に従って Azure API Management 開発者ポータルで要素のスタイルをカスタマイズします。"
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: vlvinogr
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/09/2017
-ms.author: antonba
-ms.openlocfilehash: 89baf60d0204a1701e93309f09b90bc94c4ca57b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.topic: tutorial
+ms.date: 11/19/2017
+ms.author: apimpm
+ms.openlocfilehash: f427663ba1c437785c8c521925d9f733c45cb40d
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>Azure API Management での開発者ポータルのスタイルのカスタマイズ
-Azure API Management で開発者ポータルをカスタマイズする基本的な方法は 3 つあります。
+# <a name="customize-the-style-of-the-developer-portal-pages"></a>開発者ポータル ページのスタイルをカスタマイズする
 
-* [静的なページの内容とページ レイアウト要素を編集する][modify-content-layout]
-* [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles] (このガイドで説明します)
-* [ポータルで生成されたページで使用されるテンプレートを変更する][portal-templates] (例: API ドキュメント、製品、ユーザー認証など)
+Azure API Management で開発者ポータルをカスタマイズするもっとも一般的な方法は 3 つあります。
+ 
+* [静的なページの内容とページ レイアウト要素を編集する](api-management-modify-content-layout.md)
+* 開発者ポータル全体のページ要素で使用されるスタイルを更新する (このガイドで説明します)
+* [ポータルで生成されたページで使用されるテンプレートを変更する](api-management-developer-portal-templates.md) (例: API ドキュメント、製品、ユーザー認証など)
 
-## <a name="change-headers-styling"> </a>ページ要素のスタイルを変更する
+このチュートリアルで学習する内容は次のとおりです。
 
-色、フォント、サイズ、文字間隔など、ポータル ページのスタイルに関連したあらゆる要素は、スタイルのルールによって定義されます。 
+> [!div class="checklist"]
+> * **開発者ポータル**のページで要素のスタイルをカスタマイズする
+> * 変更を確認する
 
-スタイル ルールの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure Portal を開き、API Management インスタンスのサービス ツール バーにある **[パブリッシャー ポータル]** をクリックします。
+![スタイルのカスタマイズ](./media/modify-developer-portal-style/developer_portal.png)
 
-![パブリッシャー ポータル][api-management-management-console]
+## <a name="prerequisites"></a>前提条件
 
-右上にある **[開発者ポータル]** をクリックします。 
++ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します。
++ また、「[Import and publish your first API (最初の API のインポートと発行)](import-and-publish.md)」のチュートリアルも完了します。
 
-![パブリッシャー ポータルにある開発者ポータル リンク][api-management-pp-dp-link]
+[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-カスタマイズ ツール バーを開くには、マウスをカスタマイズ アイコンの上に移動 (またはアイコンを選択) し、ツールバーの STYLES (スタイル)をクリックします。
+## <a name="customize-the-developer-portal"></a>開発者ポータルをカスタマイズする
 
-![カスタマイズ ツール バー ボタン][api-management-customization-toolbar-button]
+1. **[概要]** を選択します。
+2. **[概要]** ウィンドウの上部にある **[開発者ポータル]** をクリックします。 または **[開発者ポータル URL]** のリンクをクリックすることもできます。
+3. 画面の上部左側に、2 つのペイント ブラシでできたアイコンがあります。 このアイコンにカーソルを重ねると、ポータルのカスタマイズ メニューが開きます。
 
-スタイルのルールを編集する方法は、主に 2 つあります。1 つ目は、既定で表示される、いずれかの場所で使用されているすべてのスタイル ルールの一覧でスタイルを探し、必要に応じて変更する方法です。もう 1 つは、**[Select an element on the page (ページの要素を選択)]** を選択し、ページの任意の場所をクリックして、その要素のスタイルだけを表示する方法です。
+    ![スタイルのカスタマイズ](./media/modify-developer-portal-style/modify-developer-portal-style01.png)
+4. メニューから **[スタイル]** を選択し、スタイルのカスタマイズ ウィンドウを開きます。
 
-![Customization toolbar][api-management-customization-toolbar]
+    ページに表示される **[スタイル]** を使用して、すべての要素をカスタマイズできます。
+5. **[Change variable values to customize developer portal appearance:]\(変数の値を変更して開発者ポータルの外観をカスタマイズする:\)** フィールドに、「headings-color (見出しの色)」と入力します。
 
-この例の **[Select an element on the page (ページの要素を選択)]** オプションをクリックします。  要素にマウスを重ねると、その要素が強調表示されるようになり、クリックした場合にどの要素のスタイルが編集対象となるかを把握できます。 ヘッダーのテキストの上にマウスを移動し (通常ここには会社名が表示されます)、このテキストをクリックします。 名前とカテゴリを持つ一連のスタイル ルールがスタイル エディター内に表示されます。 それぞれのルールは、選択された要素のスタイルに関するプロパティを表します。 たとえば、上で選択したヘッダー テキストの場合、テキストのサイズは @font-size-h1 で定義され、フォント (代替候補を含む) の名前は @headings-font-family で定義されています。
+    **@headings-color** 要素がページに表示されます。 この変数はテキストの色を制御します。
 
-> [Bootstrap][bootstrap] をご存じの方のためにいうと、実際には、開発者ポータルに使用されている Bootstrap テーマの [LESS 変数][LESS variables]にこれらのルールが含まれています。
-> 
-> 
+    ![スタイルのカスタマイズ](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
+    
+6. **@headings-color** 変数のフィールドをクリックします。 
+    
+    カラー ピッカーのドロップダウンが開きます。
+7. カラー ピッカーのドロップダウンから、新しい色を選択します。
 
-見出しテキストの色を変更してみましょう。 **@headings-color** ボックスの入力内容を選択し、「**#000000**」と入力します。 これは、黒色を表す 16 進コードです。 すると、テキスト ボックスの端に正方形のカラー インジケーターが表示されます。 このインジケーターをクリックするとカラー ピッカーが表示され、色を選択することができます。
+    > [!TIP]
+    > 変更内容はすべてリアルタイムでプレビューできます。 カスタマイズ ウィンドウの上部には進行状況のインジケーターが表示されます。 2、3 秒後にヘッダー テキストが新しく選択した色に変わります。
 
-![Color picker][api-management-customization-toolbar-color-picker]
+8. メニューのカスタマイズ ウィンドウ メニューの左下から **[発行]** を選択します。
+9. **[カスタマイズの公開]** を選択して、変更内容を一般に公開します。
 
-変更は操作時にリアルタイムでプレビューされますが、管理者だけに表示されます。 変更を全員が閲覧できるようにするには、スタイル エディターで **[発行]** をクリックして変更を確定してください。
+## <a name="view-your-change"></a>変更を確認する
 
-![[発行] メニュー][api-management-customization-toolbar-publish-form]
+1. 開発者ポータルに移動します。
+2. 行った変更内容を確認できます。
 
-> ページの他の要素に適用されるスタイル ルールを変更するには、ヘッダーの場合と同じ手順を実行します。 スタイル エディターで **[Select an element on the page (ページの要素を選択)]** をクリックし、対象の要素を選択して、画面に表示されるスタイル ルールの値の変更を開始します。
-> 
-> 
+## <a name="next-steps"></a>次のステップ
 
+このチュートリアルで学習した内容は次のとおりです。
 
-## <a name="next-steps"> </a>次のステップ
-* [開発者ポータル テンプレート](api-management-developer-portal-templates.md)を使用して開発者ポータル ページの内容をカスタマイズする方法について説明します。
+> [!div class="checklist"]
+> * **開発者ポータル**のページで要素のスタイルをカスタマイズする
+> * 変更を確認する
 
-[Change the styling of the headers]: #change-headers-styling
-[Next steps]: #next-steps
-
-[Azure Classic Portal]: https://manage.windowsazure.com/
-
-[api-management-management-console]: ./media/api-management-customize-styles/api-management-management-console.png
-[api-management-pp-dp-link]: ./media/api-management-customize-styles/api-management-pp-dp-link.png
-[api-management-customization-toolbar-button]: ./media/api-management-customize-styles/api-management-customization-toolbar-button.png
-[api-management-customization-toolbar]: ./media/api-management-customize-styles/api-management-customization-toolbar.png
-[api-management-customization-toolbar-color-picker]: ./media/api-management-customize-styles/api-management-customization-toolbar-color-picker.png
-[api-management-customization-toolbar-publish-form]: ./media/api-management-customize-styles/api-management-customization-toolbar-publish-form.png
-
-[modify-content-layout]: api-management-modify-content-layout.md
-[customize-styles]: api-management-customize-styles.md
-[portal-templates]: api-management-developer-portal-templates.md
-
-[bootstrap]: http://getbootstrap.com/
-[LESS variables]: http://getbootstrap.com/css/
+> [!div class="nextstepaction"]
+> [Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする](api-management-developer-portal-templates.md)

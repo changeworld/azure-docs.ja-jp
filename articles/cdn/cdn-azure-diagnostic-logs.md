@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 3e8727e80571be70124fb439f4c7e448f521b692
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bb4eebc80d1c0fdcb9fb5d0f6bb7aeeeb3cb08d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -95,7 +95,7 @@ OMS Log Analytics を使用してログを保存するには、次の手順に�
 
     ログ分析の構成を設定したら、**[CoreAnalytics]** が選択されていることを確認します。
 
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 
 7. 新しい OMS ワークスペースを確認するには、Azure Portal のダッシュボードに移動し、Log Analytics ワークスペースの名前をクリックします。 OMS リポジトリのワークスペースを表示するには、[OMS Portal] タイルをクリックします。 
 
@@ -261,7 +261,7 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
 ### <a name="offers-and-pricing-tiers"></a>プランと価格レベル
 
-[こちら](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)で OMS 管理ソリューションのプランと価格レベルを確認できます。
+[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)で OMS 管理ソリューションのプランと価格レベルを確認できます。
 
 ### <a name="customizing-views"></a>ビューのカスタマイズ
 
@@ -410,8 +410,8 @@ Verizon のログ データには 1 時間の遅延があり、エンドポイ�
 
 * [Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Azure CDN の補助ポータルを使用したコア分析](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure OMS Log Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-overview)
-* [Azure Log Analytics REST API](https://docs.microsoft.com/en-us/rest/api/loganalytics)
+* [Azure OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 24df96f55b0f207d8576bd05c2c83a884e7fc2bd
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 4c839bf0c39bf10855f8a31770b82a04ed1ca457
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>HDInsight の R Server (プレビュー) の計算コンテキストのオプション
 
@@ -33,19 +33,19 @@ Azure HDInsight 上の Microsoft R Server は、コンピューティング コ�
 ## <a name="compute-contexts-for-an-edge-node"></a>エッジ ノードに対する計算コンテキスト
 一般に、エッジ ノードの R Server で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。 ScaleR 関数を呼び出すステップは例外です。 ScaleR 呼び出しは、ScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。  エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は次のとおりです。
 
-- local sequential (*'local'*)
-- local parallel (*'localpar'*)
+- local sequential (*local*)
+- local parallel (*localpar*)
 - Map Reduce
 - Spark
 
-オプション *'local'* と *'localpar'* の違いは、**rxExec** 呼び出しを実行する方法のみです。 ScaleR の **numCoresToUse** オプションの使用を通じて別途指定されている (`rxOptions(numCoresToUse=6)` など) 場合を除き、どちらも、他の rx 関数呼び出しは使用可能なすべてのコアで並列に実行します。 並列実行は、パフォーマンスの面で最も有利なオプションです。
+オプション *local* と *localpar* の違いは、**rxExec** 呼び出しを実行する方法のみです。 ScaleR の **numCoresToUse** オプションの使用を通じて別途指定されている (`rxOptions(numCoresToUse=6)` など) 場合を除き、どちらも、他の rx 関数呼び出しは使用可能なすべてのコアで並列に実行します。 並列実行は、パフォーマンスの面で最も有利なオプションです。
 
 次の表は、呼び出しの実行方法を設定する各種コンピューティング コンテキスト オプションをまとめたものです。
 
 | 計算コンテキスト  | 設定方法                      | 実行コンテキスト                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
-| Local sequential | rxSetComputeContext(‘local’)    | エッジ ノード サーバーのコアの実行の並列化 (順次実行される rxExec 呼び出しを除く) |
-| Local parallel   | rxSetComputeContext(‘localpar’) | エッジ ノード サーバーのコアの実行の並列化 |
+| Local sequential | rxSetComputeContext('local')    | エッジ ノード サーバーのコアの実行の並列化 (順次実行される rxExec 呼び出しを除く) |
+| Local parallel   | rxSetComputeContext('localpar') | エッジ ノード サーバーのコアの実行の並列化 |
 | Spark            | RxSpark()                       | HDI クラスターのノード間での、Spark を介した分散実行の並列化 |
 | Map Reduce       | RxHadoopMR()                    | HDI クラスターのノード間での Map Reduce を介した分散実行の並列化 |
 
@@ -62,8 +62,8 @@ Azure HDInsight 上の Microsoft R Server は、コンピューティング コ�
 これらの原則を考慮したうえで、コンピューティング コンテキストを選択するための、いくつかの一般的な経験則を以降のセクションで取り上げます。
 
 ### <a name="local"></a>ローカル
-* 分析するデータが少量で、繰り返し分析が必要ない場合は、データを分析ルーチンに直接ストリーミングして、*'local'* または *'localpar'* を使用します。
-* 分析するデータが少量または中規模の量で、繰り返し分析が必要である場合は、データをローカル ファイル システムにコピーして XDF にインポートし、*'local'* または *'localpar'* を使用して分析します。
+* 分析するデータが少量で、繰り返し分析が必要ない場合は、データを分析ルーチンに直接ストリーミングして、*local* または *localpar* を使用します。
+* 分析するデータが少量または中規模の量で、繰り返し分析が必要である場合は、データをローカル ファイル システムにコピーして XDF にインポートし、*local* または *localpar* を使用して分析します。
 
 ### <a name="hadoop-spark"></a>Hadoop Spark
 * 分析するデータが大量である場合、**RxHiveData** または **RxParquetData** を使用して Spark データフレームにインポートするか、ストレージに問題がなければ、HDFS の XDF にインポートし、Spark コンピューティング コンテキストを使用して分析を行います。
@@ -76,7 +76,7 @@ ScaleR コンピューティング コンテキストの詳細と例について
 
     > ?rxSetComputeContext
 
-[MSDN の R Server](https://msdn.microsoft.com/library/mt674634.aspx "R Server on MSDN") ライブラリで入手可能な [ScaleR 分散コンピューティング ガイド](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing)を参照することもできます。
+[Microsoft R Server MSDN](https://msdn.microsoft.com/library/mt674634.aspx) ライブラリで入手可能な [ScaleR 分散コンピューティング ガイド](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing)を参照することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて説明しました。 HDInsight クラスターで R Server を使用する方法の詳細については、次のトピックを参照してください。

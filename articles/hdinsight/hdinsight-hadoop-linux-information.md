@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/04/2017
+ms.date: 12/05/2017
 ms.author: larryfr
-ms.openlocfilehash: befd03d94f816cb2b59219cd9f1f9af238949592
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 372e9465eec1a373ff2b59209673e65fa1f994b6
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -91,6 +91,8 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
     > [!NOTE]
     > クラスター ヘッド ノードにアクセスするには、クライアント コンピューターから SSH を使用する必要があります。 接続されたら、ヘッドノードから SSH を使用して worker ノードにアクセスできます。
 
+詳しくは、「[HDInsight 上の Hadoop サービスで使用されるポート](hdinsight-hadoop-port-settings-for-services.md)」をご覧ください。
+
 ## <a name="file-locations"></a>ファイルの場所
 
 Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあります。 このディレクトリには、次のサブディレクトリが含まれます。
@@ -108,9 +110,6 @@ HDInsight では、既定のストアとして Azure Data Lake Store または A
 
 * 低コストの長期ストレージ
 * Websites、ファイル アップロード/ダウンロード ユーティリティ、さまざまな言語の SDK、Web ブラウザーなどの外部サービスからアクセスできます。
-
-> [!WARNING]
-> __汎用__の Azure ストレージ アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
 
 Azure Storage アカウントは最大 4.75 TB を保持できますが、個々の BLOB (HDInsight から見たファイル) は最大 195 GB を保持できます。 Azure Data Lake Store は、膨大な数のファイルを保持するように動的に拡張可能であり、ペタバイト以上のファイルも保持できます。 詳細については、[BLOB の概要](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)に関するページと「[Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)」を参照してください。
 
@@ -234,6 +233,8 @@ __Azure Data Lake Store__ を使用している場合は、次のリンクを参
 
         1. Web ブラウザーで **https://CLUSTERNAME.azurehdinsight.net/stormui** にアクセスします。CLUSTERNAME は実際の Storm クラスターの名前です。 メッセージが表示されたら、HDInsight クラスター管理者 (admin) の名前と、クラスターの作成時に指定したパスワードを入力します。
         2. 再調整するトポロジを選択し、 **[Rebalance]** \(再調整) ボタンをクリックします。 再調整の操作が実行されるまでの待ち時間を入力します。
+
+* **Kafka**: スケーリング操作の後で、パーティションのレプリカを再調整する必要があります。 詳しくは、「[HDInsight 上の Apache Kafka によるデータの高可用性](./kafka/apache-kafka-high-availability.md)」をご覧ください。
 
 HDInsight クラスターのスケーリングに関する具体的な情報については、以下を参照してください。
 

@@ -4,7 +4,7 @@ description: "オンプレミス Active Directory ドメイン用のレプリカ
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 8c9ebf1b-289a-4dd6-9567-a946450005c0
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 11/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 60839f93954bfe38f0346b235259f68e479b8a00
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 3f7624d588e958985a73c5b40e8010e18e8879cb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
 この記事では、Azure 仮想ネットワークの Azure 仮想マシン (VM) に、オンプレミス Active Directory ドメインのレプリカ DC として使用される追加のドメイン コントローラー (DC) をインストールする方法を説明します。 [Azure 仮想ネットワーク上に Windows Server Active Directory フォレストをインストールする](active-directory-new-forest-virtual-machine.md)こともできます。 Azure 仮想ネットワークに Active Directory Domain Services (AD DS) をインストールする方法については、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
@@ -50,7 +50,7 @@ DC ロールをホストする VM を作成するには、「[Azure ポータル
 
 Azure ポータルではなく Windows PowerShell を使用して VM を作成する方法については、[Azure PowerShell を使用した Windows ベースの Virtual Machines の作成と事前構成](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事を参照してください。
 
-DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azure/overview) し、Set-AzureStaticVNetIP コマンドレットを実行します。 次に例を示します。
+DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azure/overview) し、Set-AzureStaticVNetIP コマンドレットを実行します。 For example:
 
 ````
 Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM

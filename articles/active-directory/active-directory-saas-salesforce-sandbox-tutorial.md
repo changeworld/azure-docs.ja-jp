@@ -4,7 +4,7 @@ description: "Azure Active Directory と Salesforce Sandbox の間でシング�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: ee54c39e-ce20-42a4-8531-da7b5f40f57c
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 128d04fdf191b60441b695efef2bf602920d80e6
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 16b60342106c69cb9959aad539b794cb8003acda
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
 
@@ -129,11 +129,11 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
 7. ブラウザーで新しいタブを開き、Salesforce Sandbox の管理者アカウントにログインします。
 
-8. ページの右上隅の**設定アイコン**の下の **[セットアップ]** をクリックします。
+8. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-sandbox-tutorial/configure1.png)
 
-9. ナビゲーション ウィンドウの **[設定]** まで下にスクロールし、**[ID]** をクリックして、関連セクションを展開します。 次に、**[シングル サインオンの設定]** をクリックします。
+9. ナビゲーション ウィンドウの **[SETTINGS]\(設定\)** まで下へスクロールし、**[Identity]\(ID\)** をクリックして、関連セクションを展開します。 次に、**[シングル サインオンの設定]** をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-admin-sso.png)
 
@@ -155,15 +155,15 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     c. これがディレクトリに追加する最初の Salesforce Sandbox インスタンスの場合は、**[エンティティ ID]** テキストボックスに「`https://<instancename>--Sandbox.<entityid>.my.salesforce.com`」と入力します。 Salesforce Sandbox のインスタンスを既に追加している場合は、**[Entity Id (エンティティ ID)]** に次の形式の**サインオン URL** を入力します。`https://<instancename>--Sandbox.<entityid>.my.salesforce.com`  
  
-    d. **ID プロバイダー証明書**をアップロードするには、**[ファイルの選択]** をクリックし、Azure Portal からダウンロードした証明書ファイルを参照して、選択します。  
+    d. **ID プロバイダー証明書**をアップロードするには、**[Choose File]\(ファイルの選択\)** をクリックし、Azure Portal からダウンロードした証明書ファイルを参照して、選択します。  
 
     e. **SAML ID タイプ**として、次のオプションのいずれかを選択します。
     
-      * SAML アサーション内でユーザーの Salesforce ユーザー名が渡される場合は、**[Assertion contains the User's Salesforce username]** (アサーションにユーザーの Salesforce ユーザー名が含まれています) を選択します
+      * SAML アサーション内でユーザーの Salesforce ユーザー名が渡される場合は、**[Assertion contains the User's Salesforce username]\(アサーションにユーザーの Salesforce ユーザー名が含まれています\)** を選択します
 
-      * SAML アサーション内でユーザー オブジェクトのフェデレーション ID が渡される場合は、**[Assertion contains the Federation ID from the User object]** (アサーションにユーザー オブジェクトのフェデレーション ID が含まれています) を選択します
+      * SAML アサーション内でユーザー オブジェクトのフェデレーション ID が渡される場合は、**[Assertion contains the Federation ID from the User object]\(アサーションにユーザー オブジェクトのフェデレーション ID が含まれています\)** を選択します
 
-      * SAML アサーション内でユーザー オブジェクトのユーザー ID が渡される場合は、**[Assertion contains the Use ID from the User object]** (アサーションにユーザー オブジェクトのユーザー ID が含まれています) を選択します
+      * SAML アサーション内でユーザー オブジェクトのユーザー ID が渡される場合は、**[Assertion contains the Use ID from the User object]\(アサーションにユーザー オブジェクトのユーザー ID が含まれています\)** を選択します
  
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[SAML Identity Location (SAML ID の場所)]** で、**[Identity is in the NameIdentifier element of the Subject statement (ID は Subject ステートメントの NameIdentifier 要素にあります)]** を選択します。
 
@@ -180,7 +180,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
 **ドメインを有効にするには、次の手順に従います。**
 
-1. Salesforce の左側のナビゲーション ウィンドウで、**[会社の設定]** をクリックして関連するセクションを展開し、**[マイ ドメイン]** をクリックします。
+1. Salesforce の左側のナビゲーション ウィンドウで、**[Company Settings]\(会社の設定\)** をクリックして関連するセクションを展開し、**[My Domain]\(マイ ドメイン\)** をクリックします。
    
      ![[シングル サインオンの構成]](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-my-domain.png)
    

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: kumud
-ms.openlocfilehash: 08e4e22ae7e5d6f6efad458b4240a6d57090e865
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: c6b89cb473f6b7a14bd9de88dfb72a2a42d915f5
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure Load Balancer Standard の概要 (プレビュー)
 
@@ -68,7 +68,7 @@ Load Balancer Standard は、リージョンの仮想ネットワーク内の任
 
 Load Balancer Standard には、パブリックおよび内部ロード バランサー構成の新しい多次元診断機能が用意されています。 Azure Monitor (プレビュー) によって次の新しいメトリックが提供されます。これらのメトリックでは、ダウンストリーム コンシューマーと統合するための機能など、関連するすべての機能を利用します。
 
-| メトリック | Description |
+| メトリック | 説明 |
 | --- | --- |
 | VIP 可用性 | Load Balancer Standard は、リージョン内から Load Balancer フロントエンドを経て、VM をサポートする SDN スタックに至るまでのデータ パスを継続的に学習します。 正常なインスタンスが保持されていれば、測定ではアプリケーションの負荷分散されたトラフィックと同じパスに従います。 顧客が使用しているデータ パスも検証されます。 測定はアプリケーションには見えないので、他の操作と干渉することはありません。|
 | DIP 可用性 | Load Balancer Standard では、構成設定に従ってアプリケーション エンドポイントの正常性を監視する、分散型の正常性プローブ サービスを使用します。 このメトリックは、Load Balancer プールの個々のインスタンス エンドポイントの集計ビューまたはエンドポイントごとのフィルター ビューを提供します。  正常性プローブ構成で示されているアプリケーションの正常性を、Load Balancer がどのように表示するのかを確認できます。
@@ -335,7 +335,7 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 ## <a name="sku-service-limits-and-abilities"></a>SKU のサービスの制限と機能
 
-[Azure サービスのネットワークの制限](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#networking-limits)は、各サブスクリプションのリージョンごとに適用されます。 
+[Azure サービスのネットワークの制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)は、各サブスクリプションのリージョンごとに適用されます。 
 
 次の表では、Load Balancer の Basic SKU と Standard SKU の制限と機能を比較しています。
 

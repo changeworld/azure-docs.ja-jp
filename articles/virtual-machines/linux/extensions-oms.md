@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 6eb07b5ad4b3ebdde75575fc5682ae2153a0c12f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b20c54660552f527ff403fb41f2a04e478832d43
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Linux 用の OMS 仮想マシン拡張機能
 
@@ -41,6 +41,10 @@ OMS Agent 拡張機能は、次の Linux ディストリビューションに対
 | Debian GNU/Linux | 6、7、8 |
 | Ubuntu | 12.04 LTS、14.04 LTS、15.04、15.10、16.04 LTS |
 | SUSE Linux Enterprise Server | 11、12 |
+
+### <a name="azure-security-center"></a>Azure Security Center
+
+Azure Security Center は自動的に OMS エージェントをプロビジョニングし、Azure サブスクリプションの既定のログ分析ワークスペースに接続します。 Azure Security Center を使用している場合は、このドキュメントの手順を実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Azure Security Center との接続が中断されます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
@@ -178,7 +182,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 10 | VM は既に OMS ワークスペースに接続されています | 拡張スキーマに指定されたワークスペースに VM を接続するには、パブリック設定で stopOnMultipleConnections を false に設定するか、このプロパティを削除します。 この VM は、各ワークスペースに接続された後、課金されます。 |
 | 11 | 拡張機能に提供された構成が無効です | 前の例に従って、デプロイするために必要なすべてのプロパティ値を設定します。 |
 | 12 | dpkg パッケージ マネージャーがロックされています | コンピューター上のすべての dpkg 更新操作が終了していることを確認し、再試行します。 |
-| 20 | Enable が予定よりも早く呼び出されました | 入手できる最新のバージョンに [Azure Linux エージェントを更新](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent)します。 |
+| 20 | Enable が予定よりも早く呼び出されました | 入手できる最新のバージョンに [Azure Linux エージェントを更新](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)します。 |
 | 51 | VM のオペレーティング システムでは、この拡張機能はサポートされていません | |
 | 55 | Microsoft Operations Management Suite サービスに接続できません | システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいことを確認します。 |
 

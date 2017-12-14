@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 4ba53dd1239290c64907ed431d404b2d1be66c36
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 08503a7f6f32125c324173636dbda0548f3ccb8c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
@@ -84,7 +84,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 
 コマンドによって次のような出力が生成されます。
 
-```bash
+```
 # The output from the commands in this article has been shortened for brevity.
 
 Sending build context to Docker daemon  5.558MB
@@ -130,7 +130,7 @@ docker run -p 2222:8000 <docker-ID>/mydockerimage:v1.0.0
 
 Docker Hub は Docker イメージのレジストリであり、パブリックまたはプライベートの独自のリポジトリをホストすることができます。 カスタム Docker イメージをパブリック Docker Hub にプッシュするには、[docker push](https://docs.docker.com/engine/reference/commandline/push/) コマンドを使用し、完全なイメージ名とタグを指定します。 完全なイメージ名とタグは、次の例のようになります。
 
-```bash
+```
 <docker-id>/image-name:tag
 ```
 
@@ -143,12 +143,12 @@ docker login --username <docker-id> --password <docker-hub-password>
 「ログインに成功しました」のメッセージで、ログインしていることを確認します。 ログインしたら、[docker push](https://docs.docker.com/engine/reference/commandline/push/) コマンドを使用して Docker Hub にイメージをプッシュできます。
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0 .
+docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
 コマンドの出力を調べて、プッシュが成功したことを確認します。
 
-```bash
+```
 The push refers to a repository [docker.io/<docker-id>/mydockerimage:v1.0.0]
 c33197c3f6d4: Pushed
 ccd2c850ee43: Pushed
@@ -314,7 +314,7 @@ top
 
 `top` コマンドは、コンテナー内のすべての実行中のプロセスを公開します。
 
-```bash
+```
 PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
  1 root      20   0  945616  35372  15348 S  0.0  2.1   0:04.63 node
 20 root      20   0   55180   2776   2516 S  0.0  0.2   0:00.00 sshd
@@ -343,7 +343,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 コマンドは、次の JSON 文字列のような出力を表示し、構成が正常に変更されたことを示します。
 
-```bash
+```json
 [
   {
     "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
@@ -383,7 +383,7 @@ az acr create --name <azure-container-registry-name> --resource-group myResource
 
 コンテナーを作成すると、次の出力が生成されます。
 
-```bash
+```
  - Finished ..
 Create a new service principal and assign access:
   az ad sp create-for-rbac --scopes /subscriptions/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<azure-container-registry-name> --role Owner --password <password>
@@ -447,6 +447,12 @@ docker login <azure-container-registry-name>.azurecr.io --username <registry-use
 
 ### <a name="push-an-image-to-azure-container-registry"></a>Azure Container Registry へのイメージのプッシュ
 
+> [!NOTE]
+> 独自のイメージを使用している場合は、次のようにイメージにタグ付けします。
+> ```bash
+> docker tag <azure-container-registry-name>.azurecr.io/mydockerimage
+> ```
+
 コマンド `docker push` を使用してイメージをプッシュします。 レジストリの名前、イメージの名前、およびタグでイメージをタグ付けします。
 
 ```bash
@@ -505,7 +511,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 コマンドは、次の JSON 文字列のような出力を表示し、構成が正常に変更されたことを示します。
 
-```bash
+```json
 [
   {
     "name": "DOCKER_CUSTOM_IMAGE_NAME",

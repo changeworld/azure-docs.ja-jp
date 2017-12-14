@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
 documentationcenter: 
 author: swkrish
-manager: femila
+manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 2e1468c6a576ab71b85e3f69e5914df6ee9e4d5a
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: abd9b8559cb70be6d03b85cfe19a6b37b7069985
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory パススルー認証: スマート ロックアウト
 
@@ -149,4 +149,4 @@ Active Directory アカウント ロックアウト ポリシーを確認する�
 「[スマート ロックアウトの値を表示する](#view-smart-lockout-values)」の手順を使って、テナントのスマート ロックアウトの値が正しく更新されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): 新しい機能の要望を登録するには、Azure Active Directory Forum を使用します。
+[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムで、新しい機能の要望を出します。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.openlocfilehash: 0ec9ceb63c3e1872e9815a7895b624276fc46123
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ce6297d7d6b61ac95df58db3fa1a2a0a123a64e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Azure のレポート ツールによる、個人データのドキュメント保護
 
@@ -90,7 +90,7 @@ Azure Directory レポート機能に接続するためのプログラミング�
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) を使用すると、[Azure Monitor](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage) からデータを収集して他のデータと関連付け、追加の分析を行うことができます。 Azure Monitor は、Azure 環境の監視データを収集、分析します。 
+[Log Analytics](https://azure.microsoft.com/services/log-analytics/) を使用すると、[Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) からデータを収集して他のデータと関連付け、追加の分析を行うことができます。 Azure Monitor は、Azure 環境の監視データを収集、分析します。 
 
 ログ検索、ビュー、ソリューションなどの Log Analytics の解析ツールは、収集されたすべてのデータに対して動作し、環境全体を一元的に分析します。 Log Analytics は、Windows イベント ログ、IIS ログ、および Syslog を集計および解析し、個人データを権限のないユーザーに公開される危険性がある、潜在的な個人データ侵害の検出に貢献できます。
 
@@ -228,7 +228,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
 Storage Analytics のログ記録を有効にする方法については、「[Azure ポータルでのストレージ アカウントの監視](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)」を参照してください。
 
-### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center) 
+### <a name="azure-security-center"></a>Azure Security Center 
 
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) は、Azure リソースのセキュリティ状態を監視して、脅威を予防および検出して対応策を推奨します。 個人データのプライバシーを保護するセキュリティ対策を文書化する方法がいくつかあります。
 

@@ -4,7 +4,7 @@ description: "シナリオ別に整理された Azure Active Directory のコー
 services: active-directory
 documentationcenter: dev-center-name
 author: msmbaldwin
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: a242a5ff-7300-40c2-ba83-fb6035707433
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: mbaldwin
 ms.custom: aaddev
-ms.openlocfilehash: 19d71e65dc2c78663d94c74228dcff038566391b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba8356a018605331dc4b9cc9ff401929cd8793bf
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-code-samples"></a>Azure Active Directory のコード例
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

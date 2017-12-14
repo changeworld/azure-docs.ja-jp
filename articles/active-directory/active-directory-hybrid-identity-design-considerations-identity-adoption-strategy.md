@@ -4,7 +4,7 @@ description: "条件を利用してアクセスを制御する Azure Active Dire
 documentationcenter: 
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 2c57b394beb6382807a4c8c83de975a0ae68d726
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28d10cd6be93226c93bda98c88cee454ec5cb2c7
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -78,7 +78,7 @@ ms.lasthandoff: 10/11/2017
 
 タスク 1 で、サードパーティ IdP があるか、サードパーティ IdP を使用して Azure AD とフェデレーションを行うことを決定した場合は、次のサポートされる機能を理解しておく必要があります。
 
-* Sp-Lite プロファイルに準拠する SAML 2.0 プロバイダーは、Azure AD および関連するアプリケーションに対する認証をサポートできます。
+* Sp-Lite プロファイルに準拠している SAML 2.0 プロバイダーは、Azure AD および関連するアプリケーションに対する認証をサポートできます。
 * パッシブ認証がサポートされます。これにより、OWA や SPO などに対する認証が容易になります。
 * SAML 2.0 Enhanced Client Profile (ECP) を使用して Exchange Online クライアントをサポートできます。
 

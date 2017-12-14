@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 59dce2fe7d91cc80f991e5ff298be7757ae19ef4
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: d3c955d7be0e7e6d45751c0e685bad498e524d94
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Azure マネージ アプリケーションのマネージ リソース グループを操作する
 
@@ -96,5 +96,4 @@ az policy assignment show --name locationAssignment --scope $managedGroup --quer
 ## <a name="next-steps"></a>次のステップ
 
 * マネージ アプリケーションの概要については、[マネージ アプリケーションの概要](overview.md)に関するページをご覧ください。
-* サンプル プロジェクトについては、[Azure マネージ アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。.
-* マネージ アプリケーションを Marketplace に発行する方法については、[Marketplace のマネージ アプリケーション](publish-marketplace-app.md)に関する記事を参照してください。
+* サンプル プロジェクトについては、[Azure マネージ アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。

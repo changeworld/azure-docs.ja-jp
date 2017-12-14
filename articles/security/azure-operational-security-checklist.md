@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 499ba030e9768b82dfdc01df416fc9c8fe3de37d
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: de225fde09665f25b326f4012ff0452ab6cef83b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-checklist"></a>Azure で運用可能なセキュリティのチェックリスト
 Azure でのアプリケーションのデプロイは、すばやく簡単に、高いコスト効率で行うことができます。 運用環境にクラウド アプリケーションをデプロイする前に、検討する必須および推奨の運用上のセキュリティ アクションの一覧に照らしてアプリケーションを評価する際に役立つチェックリストがあると便利です。
@@ -52,6 +52,6 @@ Azure では、アプリケーションのデプロイに使用できるイン�
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、OMS のセキュリティと監査ソリューションについて紹介しました。 OMS セキュリティの詳細については、次の記事を参照してください。
 
-- [Operations Management Suite (OMS) の概要](https://docs.microsoft.com/en-us/azure/operations-management-suite/operations-management-suite-overview)。
+- [Operations Management Suite (OMS) の概要](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)。
 - [設計および運用面のセキュリティ](https://www.microsoft.com/trustcenter/security/designopsecurity)。
 - [Azure Security Center 計画および運用](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)。

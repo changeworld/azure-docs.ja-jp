@@ -4,7 +4,7 @@ description: "スコープ、アクセス許可、同意など、Azure AD v2.0 �
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 04869a7627ecb3e6a0d11733fae7da2ecb04ed51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a93cfd710f89efbd4dab01b84ecdb12b4acb0033
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントでのスコープ、アクセス許可、および同意
 Azure Active Directory (Azure AD) と統合されるアプリでは、アプリがどのようにデータにアクセスできるかをユーザーが制御できるようにする承認モデルが使用されます。 この承認モデルの v2.0 実装が更新され、アプリが Azure AD とやり取りする方法が変わりました。 この記事では、スコープ、アクセス許可、同意など、この承認モデルの基本的な概念について説明します。
@@ -46,8 +46,8 @@ Azure AD と統合されたサードパーティのリソースも同様です�
 
 Azure AD と OAuth では、これらの種類のアクセス許可は*スコープ*と呼ばれています。 または、*oAuth2Permissions* と呼ばれる場合もあります。 スコープは、Azure AD では文字列値として表されます。 Microsoft Graph の例では、各アクセス許可のスコープ値は次のとおりです:
 
-* `Calendar.Read` を使用したユーザーの予定表の読み取り
-* `Mail.ReadWrite` を使用したユーザーの予定表への書き込み
+* `Calendars.Read` を使用したユーザーの予定表の読み取り
+* `Calendars.ReadWrite` を使用したユーザーの予定表への書き込み
 * `Mail.Send` を使用したユーザーとしてのメールの送信
 
 アプリは、v2.0 エンドポイントへの要求でスコープを指定することによって、これらのアクセス許可を要求できます。
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
 &scope=
-https%3A%2F%2Fgraph.microsoft.com%2Fcalendar.read%20
+https%3A%2F%2Fgraph.microsoft.com%2Fcalendars.read%20
 https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```

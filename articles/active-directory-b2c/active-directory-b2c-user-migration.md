@@ -4,7 +4,7 @@ description: "Graph API を使用した、および任意で Azure AD B2C のカ
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,17 +14,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/04/2017
 ms.author: yoelh
-ms.openlocfilehash: f98f1826b492b8596f352b403b3b12775814c399
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 25023359e3f1eeb241f6f0e70bcb179aa32974af
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: ユーザー移行
 ご利用の ID プロバイダーを Azure Active Directory B2C (Azure AD B2C) に移行する場合は、ユーザー アカウントも移行する必要がある場合があります。 この記事では、既存のユーザー アカウントを ID プロバイダーから Azure AD B2C に移行する方法を説明します。 この記事の内容はこうしなければならないというものではなく、いくつかある方法のうちの 2 つを紹介しています。 どちらの方法が適しているかは、開発者が判断してください。
 
 ## <a name="user-migration-flows"></a>ユーザー移行のフロー
-Azure AD B2C を使用すると、[Graph API](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) を通じてユーザーを移行できます。 ユーザー移行プロセスは、次の 2 つのフローに分類されます。
+Azure AD B2C を使用すると、[Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) を通じてユーザーを移行できます。 ユーザー移行プロセスは、次の 2 つのフローに分類されます。
 
 * **移行前**: このフローは、ユーザーの資格情報 (ユーザー名とパスワード) に明確なアクセス権を持っている場合、または資格情報は暗号化されていて、それを復号することができる場合に適用されます。 この移行前プロセスには、旧 ID プロバイダーからユーザーを読み込み、Azure AD B2C ディレクトリで新しいアカウントを作成する作業も含まれます。
 
@@ -100,7 +100,7 @@ Graph API と通信するには、まず管理特権を持つサービス アカ
 > B2C テナントの*ローカル*である B2C テナント管理者アカウントを使用する必要があります。 アカウント名の構文は *admin@contosob2c.onmicrosoft.com* です。
 
 >[!NOTE]
-> 以下の PowerShell スクリプトを実行するには、[Azure Active Directory PowerShell バージョン 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) が必要になります。
+> 以下の PowerShell スクリプトを実行するには、[Azure Active Directory PowerShell バージョン 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) が必要になります。
 
 この PowerShell スクリプトで、次の手順を実行します。
 1. ご利用のオンライン サービスに接続します。 そのためには、Windows PowerShell コマンド プロンプトで `Connect-AzureAD` コマンドレットを実行して、資格情報を入力します。 
@@ -278,7 +278,7 @@ Azure AD テナントをクリーンアップして Azure AD ディレクトリ�
     ```
 
 ### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>手順 4.2: Azure App Service に Web アプリケーションをデプロイする
-Azure App Service にご利用の API サービスを発行します。 詳細については、[Azure App Service へのアプリのデプロイ](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy)に関する記事を参照してください。
+Azure App Service にご利用の API サービスを発行します。 詳細については、[Azure App Service へのアプリのデプロイ](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy)に関する記事を参照してください。
 
 ### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>手順 4.3: ポリシーに技術プロファイルと技術プロファイル検証を追加する 
 1. 作業ディレクトリで、*TrustFrameworkExtensions.xml* 拡張ポリシー ファイルを開きます。 
@@ -384,7 +384,7 @@ Azure App Service にご利用の API サービスを発行します。 詳細�
 
 6. RESTful API の出力を確認します。
 
-詳細については、[ログのストリーミングとコンソール](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-streaming-logs-and-console)に関する記事を参照してください。
+詳細については、[ログのストリーミングとコンソール](https://docs.microsoft.com/azure/app-service-web/web-sites-streaming-logs-and-console)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > 診断ログは、開発段階とテスト段階にのみ使用してください。 RESTful API の出力には、運用環境で公開すべきではない機密情報が含まれている場合があります。

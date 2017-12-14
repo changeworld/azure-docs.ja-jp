@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a454199137f8ccc99ddbef66758fd1cabd8fd486
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 5ff0bcf9bdf9eaf1b4f0084acf9e5ee6ccfeba19
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -64,9 +64,9 @@ Microsoft は引き続き検出プロセスに投資して、次を実現して�
 
 ### <a name="impossible-travel-to-atypical-locations"></a>特殊な場所へのあり得ない移動
 
-このリスク イベントの種類では、地理的に離れた 2 つの場所で行われたサインインを識別します。少なくとも 1 つの場所は、ユーザーの過去の行動から考えて、ユーザーが普通いそうにない場所でもあります。 さらに、2 つのサインインの間の時間が、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間より短く、別のユーザーが同じ資格情報を使用していることを示唆します。 
+このリスク イベントの種類では、地理的に離れた 2 つの場所で行われたサインインを識別します。少なくとも 1 つの場所は、ユーザーの過去の行動から考えて、ユーザーが普通いそうにない場所でもあります。 さまざまな要素がある中、この機械学習アルゴリズムでは、2 回のサインインの間隔と、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間が考慮されます。これにより、異なるユーザーが同じ資格情報を使用していることが示唆されます。
 
-この機械学習アルゴリズムは、組織内の他のユーザーによって普通に使用される VPN や場所など、不可能な移動状況の原因になる明らかな "*誤検知*" を無視します。  システムには 14 日間の初期学習期間があり、その間に新しいユーザーのサインイン行動が学習されます。
+このアルゴリズムは、組織内の他のユーザーによって普通に使用される VPN や場所など、不可能な移動状況の原因になる明らかな "誤検知" を無視します。 システムには 14 日間の初期学習期間があり、その間に新しいユーザーのサインイン行動が学習されます。 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>未知の場所からのサインイン
 
@@ -90,7 +90,7 @@ Microsoft は引き続き検出プロセスに投資して、次を実現して�
 | 検出の種類 | レポートされるまでの時間 |
 | --- | --- |
 | リアルタイム | 5 ～ 10 分 |
-| オフライン | 2 ～ 4 時間 |
+| オフライン | 2 ～ 4 分 |
 
 
 Azure Active Directory で検出されるリスク イベントの種類と、対応する検出の種類を次に示します。

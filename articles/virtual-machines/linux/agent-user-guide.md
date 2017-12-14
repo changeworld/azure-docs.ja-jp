@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 486ad6bb148583a957fb82b7954ff94f853b12cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59266c6d6452eeff56b05e60389ac14f0b2c3f1f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -67,7 +67,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
 ## <a name="communication"></a>通信
 プラットフォームからエージェントへの情報の流れは 2 つのチャンネルを経由します。
 
-* 起動時に接続される IaaS デプロイ用 DVD。 この DVD に、OVF に準拠した構成ファイルが収録されており、このファイルに、実際の SSH キー ペア以外のすべてのプロビジョニング情報が保存されています。
+* 起動時に接続される IaaS デプロイ用 DVD。 この DVD に、OVF に準拠している構成ファイルが収録されており、このファイルに、実際の SSH キー ペア以外のすべてのプロビジョニング情報が保存されています。
 * デプロイとトポロジの構成を取得するために使用する REST API を公開する TCP エンドポイント。
 
 ## <a name="requirements"></a>必要条件
@@ -143,6 +143,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
     Provisioning.MonitorHostName=y
     Provisioning.DecodeCustomData=n
     Provisioning.ExecuteCustomData=n
+    Provisioning.AllowResetSysUser=n
     Provisioning.PasswordCryptId=6
     Provisioning.PasswordCryptSaltLength=10
     ResourceDisk.Format=y
@@ -157,6 +158,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
     OS.OpensslPath=None
     HttpProxy.Host=None
     HttpProxy.Port=None
+    AutoUpdate.Enabled=y
 
 さまざまな構成オプションについて次に詳述します。 構成オプションには、ブール、文字列、整数の 3 つの型があります。 ブール型の構成オプションは "y" または "n" として指定できます。 特別なキーワード "None" は、次に詳述しているように、一部の文字列型の構成オプションに使用できます。
 
@@ -209,9 +211,13 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 設定した場合、waagent はプロビジョニング後に CustomData を実行します。
 
+**Provisioning.AllowResetSysUser** 型: ブール値の既定: n
+
+このオプションでは sys ユーザーのパスワードをリセットします。既定値は無効です。
+
 **Provisioning.PasswordCryptId**  
 型: 文字列  
-既定: 6
+既定値: 6
 
 パスワード ハッシュの生成時に、crypt によって使用されるアルゴリズム。  
  1 - MD5  
@@ -221,7 +227,7 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 
 **Provisioning.PasswordCryptSaltLength**  
 型: 文字列  
-既定: 10
+既定値: 10
 
 パスワード ハッシュの生成時に使用されるランダム salt の長さ。
 
@@ -290,6 +296,12 @@ OS ディスクおよびデータ ドライブの SCSI タイムアウトを秒�
 既定値: None
 
 設定した場合、エージェントはこのプロキシ サーバーを使用して、インターネットにアクセスします。 
+
+**AutoUpdate.Enabled** 型: ブール値の既定: y
+
+目標状態の処理の自動更新を有効または無効にします。規定値は有効です。
+
+
 
 ## <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Image
 Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) を使用して、通常は Azure Linux エージェントで管理される、さまざまな構成タスクを実行します。  以下の相違点に注意してください。

@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント"
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/02/2017
 ms.author: billmath
-ms.openlocfilehash: eff198a522470e1145c97758a54fc9b8f294287f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 724ccfbe6849c53f7c7e4e20444ac87197763e65
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](active-directory-aadconnect-get-started-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -47,7 +47,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 ![User Sign in](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
 
-| シングル サインオン オプション | Description |
+| シングル サインオン オプション | 説明 |
 | --- | --- |
 | パスワード ハッシュの同期 |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。 ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。 詳細については、[パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-synchronization.md)に関するページを参照してください。 |
 |パススルー認証|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザー パスワードはオンプレミスの Active Directory コントローラーにパススルーされて検証されます。

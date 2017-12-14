@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: bd5de92a418ae5caa23ae4b081b688707cedcf06
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: ddddf280613554e81884dbcbd0c0011e505500bc
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -269,7 +269,7 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 要件が満たされない場合は、Azure Data Factory が設定を確認し、データ移動には自動的に BULKINSERT メカニズムが使用されるように戻ります。
 
 1. **ソースのリンクされたサービス**の型が **AzureStorage** または **AzureDataLakeStore** であること。
-2. **入力データセット**の種類が **AzureBlob** または **AzureDataLakeStoreFile** で、`type` プロパティの形式が **OrcFormat** または次の構成の **TextFormat** であること。
+2. **入力データセット**の型が **AzureBlob** または **AzureDataLakeStoreFile** で、`type` プロパティの形式が次の構成で **OrcFormat**、**ParquetFormat** または **TextFormat** であること。
 
    1. `rowDelimiter` は **\n** である必要があります。
    2. `nullValue` が **空の文字列** ("") に設定されている。または、`treatEmptyAsNull` が **true** に設定されている。

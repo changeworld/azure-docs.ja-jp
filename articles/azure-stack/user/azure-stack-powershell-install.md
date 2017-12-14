@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: sngun
-ms.openlocfilehash: f45b65c1cb16a79a44e873e3e001e0f5c12a8e37
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 1c4c9aa36836398ad87c3655ff039a9dc8730456
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack のインストール  
 
@@ -27,7 +27,7 @@ Azure Stack を使用するには、Azure Stack と互換性のある Azure Powe
 この記事では、PowerShell for Azure Stack をインストールする手順について詳しく説明しています。 ただし、PowerShell をすばやくインストールして構成する場合は、「Get up and running with PowerShell」(PowerShell の起動と実行) のトピックにあるスクリプトを使用できます。 
 
 > [!NOTE]
-> 次の手順では、PowerShell 5.0 が必要です。 バージョンを確認するには、$PSVersionTable.PSVersion を実行して、[Major] \(メジャー) のバージョンを比較します。
+> 次の手順では、PowerShell 5.0 が必要です。 バージョンを確認するには、$PSVersionTable.PSVersion を実行して、[Major] (メジャー) のバージョンを比較します。
 
 Azure Stack 用の PowerShell コマンドは、PowerShell ギャラリーを介してインストールされます。 PSGallery レポジトリを登録するには、開発キットから、または VPN 経由で接続している場合は Windows ベースの外部クライアントから、管理者特権の PowerShell セッションを開いて、次のコマンドを実行します。
 
@@ -51,7 +51,7 @@ Set-PSRepository `
 
 以下のセクションでは、PowerShell for Azure Stack のインストールに必要な手順について説明します。 PowerShell は、接続されているシナリオ、部分的に接続されているシナリオ、または接続が切断されたシナリオで運用される Azure Stack にインストールできます。 
 
-## <a name="install-powershell-in-a-connected-scenario"></a>接続されているシナリオでの PowerShell のインストール 
+## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>接続されているシナリオでの PowerShell のインストール (インターネット接続を使用)
 
 Azure Stack と互換性のある AzureRM モジュールは、API バージョン プロファイルを使用してインストールされます。 Azure Stack には **2017-03-09-profile** API バージョン プロファイルが必要です。このプロファイルは、AzureRM.Bootstrapper モジュールをインストールすることで利用できます。 API バージョン プロファイル、およびそれらのプロファイルによって提供されるコマンドレットについては、 「[manage API version profiles](azure-stack-version-profiles.md)」(API バージョン プロファイルの管理) を参照してください。 AzureRM モジュールだけでなく、Azure Stack 固有の PowerShell モジュールもインストールする必要があります。 次の PowerShell スクリプトを実行して、これらのモジュールを開発用ワークステーションにインストールします。
 
@@ -80,7 +80,7 @@ Azure Stack と互換性のある AzureRM モジュールは、API バージョ�
   ```
   インストールに成功した場合、出力に AzureRM および AzureStack モジュールが表示されます。
 
-## <a name="install-powershell-in-a-disconnected-or-in-a-partially-connected-scenario"></a>接続が切断されたシナリオまたは部分的に接続されているシナリオでの PowerShell のインストール
+## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>接続が切断されたシナリオまたは部分的に接続されているシナリオでの PowerShell のインストール (制限されたインターネット接続を使用)
 
 接続が切断されたシナリオまたは部分的に接続されているシナリオでは、まずインターネット接続が確立されたコンピューターに PowerShell モジュールをダウンロードしてから、モジュールを Azure Stack Development Kit に転送してインストールします。
 

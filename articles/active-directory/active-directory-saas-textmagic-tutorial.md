@@ -4,7 +4,7 @@ description: "Azure Active Directory と TextMagic の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3e5b49d2-7096-46bc-a9ce-90e09177ba28
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 701a97aa2001256354fe487c9499ff3cbb8b4540
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 23270e14e8b6072c167f5d5979c9a73988b19dd3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>チュートリアル: Azure Active Directory と TextMagic の統合
 
@@ -146,7 +146,7 @@ TextMagic で Azure AD のシングル サインオンを構成してテスト�
 
     d. Azure Portal からダウンロードした **base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[Public x509 certificate]\(パブリック x509 証明書\)** ボックスに貼り付けます。
 
-    e. [ **Save**] をクリックします。
+    e. **[Save]** をクリックします。
 
 
 > [!TIP]

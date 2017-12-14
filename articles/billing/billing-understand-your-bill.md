@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 668b32e99ba9a3bdf8e8f16ac51c35c609444cd9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ade40f8937d56cc561741e251095c4f14b4bb304
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
@@ -31,7 +31,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 
 請求書および詳細な毎日の使用状況ファイルの詳しい用語と説明については、[Microsoft Azure 請求書の用語の確認](billing-understand-your-invoice.md)に関する記事と「[Microsoft Azure の詳細な利用料金の用語を理解する](billing-understand-your-usage.md)」をご覧ください。 
 
-コスト管理レポートの詳細については、[Azure ポータルのコスト管理](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started)に関する記事をご覧ください。
+コスト管理レポートの詳細については、[Azure ポータルのコスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started)に関する記事をご覧ください。
 
 ## <a name="charges"></a>請求書の料金が正しいことを確認する方法
 <div style="padding-top: 56.25%; position: relative; width: 100%;">
@@ -42,7 +42,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 
 ### <a name="option-1-review-your-invoice-and-compare-the-usage-and-costs-with-the-detailed-usage-csv-file"></a>オプション 1: 請求書を確認し、使用状況およびコストを使用状況の詳細の CSV ファイルと比較する
 
-使用状況の詳細の CSV ファイルは、請求期間と毎日の使用状況ごとの料金を示します。 使用状況の詳細の CSV ファイルを取得するには、[Azure 課金の請求書および毎日の使用状況データの取得](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date)に関する記事をご覧ください。
+使用状況の詳細の CSV ファイルは、請求期間と毎日の使用状況ごとの料金を示します。 使用状況の詳細の CSV ファイルを取得するには、[Azure 課金の請求書および毎日の使用状況データの取得](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date)に関する記事をご覧ください。
 
 使用料金は、メーター レベルで表示されます。 以下の用語は、請求書と使用状況の詳細ファイルの両方で同じ内容を意味します。 たとえば、請求書の請求サイクルは、使用状況の詳細ファイルに示された請求期間と同じです。
 

@@ -3,9 +3,8 @@ title: "Azure CosmosDB Graph API .NET SDK とリソース | Microsoft Docs"
 description: "リリース日、提供終了日、各バージョン間で行われた変更など、Azure CosmosDB Graph API に関するあらゆる情報を提供します。"
 services: cosmos-db
 documentationcenter: .net
-author: rnagpal
+author: luisbosquez
 manager: jhubbard
-editor: cgronlun
 ms.assetid: 
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/17/2017
-ms.author: mimig
-ms.openlocfilehash: 7d6ba5794e4a3e431abd72a780b60b9e59e9f4db
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.author: lbosq
+ms.openlocfilehash: 28f926d8d1f4c6006a348ba9c8289b885aef7641
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-graph-net-api-download-and-release-notes"></a>Azure Cosmos DB Graph .NET API: ダウンロードおよびリリース ノート
 

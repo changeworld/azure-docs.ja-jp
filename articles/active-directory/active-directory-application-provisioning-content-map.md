@@ -4,7 +4,7 @@ description: "アプリケーションに対するユーザーの構成および
 services: active-directory
 documentationcenter: 
 author: ajamess
-manager: kbrint
+manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 55c5abccb2472d653a4e355e39a19a224b979b85
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a3b83f0a5ed9638f3e9277d4a467b478961d3fc3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="problems-configuring-and-provisioning-users-to-an-application"></a>アプリケーションに対するユーザーの構成およびプロビジョニングに関する問題
 

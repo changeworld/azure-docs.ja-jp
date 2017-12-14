@@ -4,7 +4,7 @@ description: "OpenID Connect (OIDC) プロトコルを使って Microsoft を ID
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
-ms.openlocfilehash: 8c981046ff41d3927ff60d6dc4f40366ae25ba74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdc77d093358fa15bb1acbc9ba6b1867bae062f8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する
 
@@ -71,7 +71,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 
     ![Microsoft アカウント - 新しいパスワードのコピー](media/active-directory-b2c-custom-setup-ms-account-idp/msa-new-password.png)
 
-9.  **[詳細オプション]** セクションの **[Live SDK サポート]** というチェック ボックスをオンにします。 [ **Save**] をクリックします。
+9.  **[詳細オプション]** セクションの **[Live SDK サポート]** というチェック ボックスをオンにします。 **[Save]** をクリックします。
 
     ![Microsoft account - Live SDK support](media/active-directory-b2c-custom-setup-ms-account-idp/msa-live-sdk-support.png)
 

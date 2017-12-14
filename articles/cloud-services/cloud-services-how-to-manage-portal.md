@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 9af1fdeb5cfe69631cabe13bd341b43319175aae
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: a06becda42541b22d3e090087dd96cd08c980f44
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-manage-cloud-services"></a>Cloud Services の管理方法
-Azure Portal の **[Cloud Services (クラシック)]** 領域では、サービス ロールまたはデプロイメントの更新、ステージングされたデプロイメントの運用環境への昇格、クラウド サービスに対するリソースのリンク (リソースの依存関係を把握してリソースの規模をまとめて設定するため)、およびクラウド サービスまたはデプロイメントの削除ができます。
+Azure Portal の **[Cloud Services]** 領域では、サービス ロールまたはデプロイメントの更新、ステージングされたデプロイメントの運用環境への昇格、クラウド サービスに対するリソースのリンク (リソースの依存関係を把握してリソースの規模をまとめて設定するため)、およびクラウド サービスまたはデプロイメントの削除ができます。
 
 クラウド サービスのスケールの方法については、 [こちら](cloud-services-how-to-scale-portal.md)をご覧ください。
 
@@ -80,9 +80,6 @@ Azure Portal の **[Cloud Services (クラシック)]** 領域では、サービ
 **スワップで、アプリケーションのダウンタイムは発生しますか。どのように対応する必要がありますか。**
 
 直前のセクションで説明したように、デプロイのスワップは、Azure ロード バランサーの構成を変更するだけなので、通常は高速で実行されます。 ただし、場合によっては 10 数秒かかることがあり、その結果、一時的な接続エラーが発生します。 お客様への影響を制限するために、[クライアント再試行ロジック](../best-practices-retry-general.md)の実装を検討してください。
-
-## <a name="how-to-link-a-resource-to-a-cloud-service"></a>方法: クラウド サービスに対するリソースのリンク
-Azure ポータルでは、現在の Azure クラシック ポータルとは異なり、リソースが一緒にリンクされません。 代わりに、追加のリソースを、クラウド サービスで使用されている同じリソース グループにデプロイしてください。
 
 ## <a name="how-to-delete-deployments-and-a-cloud-service"></a>方法: デプロイメントとクラウド サービスの削除
 クラウド サービスを削除する前に、既存のデプロイメントをそれぞれ削除する必要があります。

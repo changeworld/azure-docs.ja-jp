@@ -1,5 +1,5 @@
 
-1. [Azure CLI 1.0 からの Azureへの接続](../articles/xplat-cli-connect.md)に関する記事で示されている手順を使用して、Azure サブスクリプションにサインインします。
+1. [Azure CLI 1.0 からの Azureへの接続](/cli/azure/authenticate-azure-cli)に関する記事で示されている手順を使用して、Azure サブスクリプションにサインインします。
 
 2. 以下を使用して、クラシック デプロイ モードであることを確認します。
 

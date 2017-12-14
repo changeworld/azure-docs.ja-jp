@@ -219,7 +219,6 @@
 ### [HRD ポリシーを使用してサインイン自動アクセラレーションを構成する](active-directory-auto-acceleration-using-hrd.md)
 
 ### [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
-#### [セルフ サービス アクセス](active-directory-self-service-application-access.md)
 #### [SSO アクセス](active-directory-appssoaccess-whatis.md)
 #### [SSO の証明書](active-directory-sso-certs.md)
 #### [テナント制限](active-directory-tenant-restrictions.md)
@@ -281,11 +280,12 @@
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
+#### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
 #### タスク
-##### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
+##### [クラシック MFA ポリシーの移行](active-directory-conditional-access-migration-mfa.md)
 ##### [デバイスベースの条件付きアクセスの設定](active-directory-conditional-access-policy-connected-applications.md)
 ##### [アプリベースの条件付きアクセスの設定](active-directory-conditional-access-mam.md)
 ##### [ユーザーとアプリの使用条件を指定する](active-directory-tou.md)

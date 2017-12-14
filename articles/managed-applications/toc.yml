@@ -12,8 +12,6 @@
   items:
     - name: サービス カタログ アプリケーションの作成
       href: publish-service-catalog-app.md
-    - name: マーケットプレース アプリケーションの作成
-      href: publish-marketplace-app.md
 - name: サンプル
   items:
     - name: Azure CLI

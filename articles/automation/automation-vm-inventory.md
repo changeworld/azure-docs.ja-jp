@@ -8,11 +8,11 @@ ms.author: jehunte
 ms.date: 09/13/2017
 ms.topic: hero-article
 manager: carmonm
-ms.openlocfilehash: bfdd67ac1018f242e415da1a66d93f22bea8d054
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 275e4e9103808710e2a71168a05b3440bb288c6a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
@@ -20,7 +20,7 @@ Azure 仮想マシンに対するインベントリの追跡は、その仮想�
 
 ## <a name="before-you-begin"></a>開始する前に
 Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-Azure 仮想マシンをお持ちでない場合は、[仮想マシンを作成](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)してください。
+Azure 仮想マシンをお持ちでない場合は、[仮想マシンを作成](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 [Azure ポータル](https://portal.azure.com/)にサインインします。

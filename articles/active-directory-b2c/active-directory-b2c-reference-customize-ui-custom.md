@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C のカスタム ポリシーに関す�
 services: active-directory-b2c
 documentationcenter: 
 author: rojasja
-manager: krassk
+manager: mtillman
 editor: rojasja
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
-ms.openlocfilehash: 68f40aa638a687398512278a0b77d1ba392859cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f07e05a1786f8afc1ccecf21994b1ad263ead285
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -60,7 +60,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 </html>
 ```
 
-ページの Azure AD B2C 関連コンテンツはこの div に挿入されますが、ページの他の部分は自分で制御できます。 Azure AD B2C の JavaScript コードは、コンテンツを取り込んで、この特定の div 要素に HTML を挿入します。 Azure AD B2C は、必要に応じてコントロールを挿入します。コントロールの種類は、アカウント セレクター コントロール、ログイン コントロール、多要素コントロール (現在は電話ベース)、属性コレクション コントロールです。 Azure AD B2C では、すべてのコントロールが HTML5 に準拠し、アクセス可能であるほか、コントロールのスタイルを自在に編集することができます。また、コントロールが古いバージョンに戻ることはありません。
+ページの Azure AD B2C 関連コンテンツはこの div に挿入されますが、ページの他の部分は自分で制御できます。 Azure AD B2C の JavaScript コードは、コンテンツを取り込んで、この特定の div 要素に HTML を挿入します。 Azure AD B2C は、必要に応じてコントロールを挿入します。コントロールの種類は、アカウント セレクター コントロール、ログイン コントロール、多要素コントロール (現在は電話ベース)、属性コレクション コントロールです。 Azure AD B2C では、すべてのコントロールが HTML5 に準拠していて、アクセス可能であるほか、コントロールのスタイルを自在に編集することができます。また、コントロールが古いバージョンに戻ることはありません。
 
 結合されたコンテンツは、最終的には動的なドキュメントとしてコンシューマーに表示されます。
 

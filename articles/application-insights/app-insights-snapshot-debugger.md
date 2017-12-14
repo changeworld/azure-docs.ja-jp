@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a0344dcef779a9818be3e320bd5c269a2859f71
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 2f1f9f306d7759cbd1202c985da27a2a3b879ebd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 
@@ -27,6 +27,16 @@ ms.lasthandoff: 10/26/2017
 スナップショット コレクションは次のアプリケーションで使用できます。
 * .NET Framework 4.5 以降を実行している .NET Framework アプリケーションと ASP.NET アプリケーション。
 * Windows 上で動作している .NET core 2.0 アプリケーションと ASP.NET Core 2.0 アプリケーション。
+
+次の環境がサポートされています。
+* Azure App Service。
+* OS ファミリ 4 以降を実行している Azure クラウド サービス。
+* Windows Server 2012 R2 以降を実行している Azure Service Fabric サービス。
+* Windows Server 2012 R2 以降を実行している Azure Virtual Machines。
+* Windows Server 2012 R2 以降を実行しているオンプレミスの仮想マシンまたは物理マシン。
+
+> [!NOTE]
+> クライアント アプリケーション (たとえば、WPF、Windows フォーム、または UWP) はサポートされません。
 
 ### <a name="configure-snapshot-collection-for-aspnet-applications"></a>ASP.NET アプリケーションのスナップショット コレクションの構成
 
@@ -289,6 +299,6 @@ App Service にホストされて_いない_アプリケーションでは、ア
 
 ## <a name="next-steps"></a>次のステップ
 
-* [コードでスナップポイントを設定](https://docs.microsoft.com/en-us/visualstudio/debugger/debug-live-azure-applications)し、例外を待たずにスナップショットを取得します。
+* [コードでスナップポイントを設定](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)し、例外を待たずにスナップショットを取得します。
 * [Web アプリの例外の診断](app-insights-asp-net-exceptions.md)に関する記事では、Application Insights に表示される例外を増やす方法を説明しています。 
 * [スマート検出](app-insights-proactive-diagnostics.md)は、パフォーマンスの異常を自動的に検出します。

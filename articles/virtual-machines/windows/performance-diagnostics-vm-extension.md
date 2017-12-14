@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 85d4764534c77ea0e4d999e249abe456d0234d75
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d9384af2cf1d8b3f55f9ec2316046536634c124e
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -46,7 +46,6 @@ Azure パフォーマンス診断 VM 拡張機能を使うと、Windows VM か�
         "settings": {
             "performanceScenario": "[parameters('performanceScenario')]",
                   "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "diagnosticsTrace": "[parameters('diagnosticsTrace')]",
                   "perfCounterTrace": "[parameters('perfCounterTrace')]",
                   "networkTrace": "[parameters('networkTrace')]",
                   "xperfTrace": "[parameters('xperfTrace')]",
@@ -72,13 +71,11 @@ Azure パフォーマンス診断 VM 拡張機能を使うと、Windows VM か�
 |typeHandlerVersion|1.0|拡張機能ハンドラーのバージョン
 |performanceScenario|basic|データをキャプチャするパフォーマンス シナリオ。 有効な値: **basic**、**vmslow**、**azurefiles**、**custom**。
 |traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
-|DiagnosticsTrace|d|診断のトレースを有効にするオプション。 有効な値: **d**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |networkTrace|n|Netmon のトレースを有効にするオプション。 有効な値: **n**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |xperfTrace|○|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |storPortTrace|s|StorPort のトレースを有効にするオプション。 有効な値: s、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |srNumber|123452016365929|サポート チケット番号 (ある場合)。 ない場合は空のままにします。
-|requestTimeUtc|9/2/2017 11:06:00 PM|現在の日時 (UTC)。 ポータルを使ってこの拡張機能をインストールしている場合は、この値を指定する必要はありません。
 |storageAccountName|mystorageaccount|診断ログと結果を格納するストレージ アカウントの名前。
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|ストレージ アカウントのキー。
 
@@ -104,7 +101,7 @@ Windows 仮想マシンに VM 拡張機能をインストールするには、�
     ![プロビジョニング成功メッセージ](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
 
     > [!NOTE]
-    > プロビジョニングが正常に済むと、拡張機能の実行が開始され、基本的なシナリオの実行が完了するまでに 2 ～ 3 分かかります。 他のシナリオの場合は、インストール中に指定した期間だけ実行されます。
+    > プロビジョニングが正常に済むと、拡張機能の実行が開始され、基本的なシナリオの実行が完了するまでに 2 - 3 分かかります。 他のシナリオの場合は、インストール中に指定した期間だけ実行されます。
 
 ## <a name="remove-the-extension"></a>拡張機能を削除する
 仮想マシンから拡張機能を削除するには、以下の手順のようにします。
@@ -153,10 +150,6 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
       "type": "int",
     "defaultValue": 300
     },
-    "diagnosticsTrace": {
-      "type": "string",
-      "defaultValue": "d"
-    },
     "perfCounterTrace": {
       "type": "string",
       "defaultValue": "p"
@@ -192,7 +185,6 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
         "settings": {
             "performanceScenario": "[parameters('performanceScenario')]",
                   "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "diagnosticsTrace": "[parameters('diagnosticsTrace')]",
                   "perfCounterTrace": "[parameters('perfCounterTrace')]",
                   "networkTrace": "[parameters('networkTrace')]",
                   "xperfTrace": "[parameters('xperfTrace')]",
@@ -216,8 +208,8 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario" = "basic"; "traceDurationInSeconds" = 300; "diagnosticsTrace" = "d"; "perfCounterTrace" = "p"; "networkTrace" = ""; "xperfTrace" = ""; "storPortTrace" = ""; "srNumber" = ""; "requestTimeUtc" = "2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName" = "mystorageaccount" ; "storageAccountKey" = "mystoragekey"}
+$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
@@ -231,7 +223,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ````
 
 ## <a name="information-on-the-data-captured"></a>キャプチャされるデータについて
-PerfInsights ツールは、選んだシナリオに応じて、さまざまなログ、構成、診断データなどを収集します。 シナリオごとに収集されるデータについて詳しくは、[PerfInsights のドキュメント](http://aka.ms/perfinsights)をご覧ください。
+PerfInsights ツールは、選んだシナリオに応じて、さまざまなログ、構成、診断データなどを収集します。 シナリオごとに収集されるデータの詳細については、[PerfInsights のドキュメント](http://aka.ms/perfinsights)をご覧ください。
 
 ## <a name="view-and-share-the-results"></a>結果を表示および共有する
 

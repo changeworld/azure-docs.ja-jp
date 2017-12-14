@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 72936a4d38f809934ddea74e5ae4a6029450a97c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92a52910ef8b9f078a8ea6ac409f89719f889b24
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management テンプレート データ モデル リファレンス
 このトピックでは、Azure API Management の開発者ポータル テンプレートのデータ モデルで使用される一般的な項目のエンティティと型表現について説明します。  
@@ -76,11 +76,11 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="Application"></a> Application  
  `application` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |ID|string|アプリケーションの一意の識別子。|  
 |タイトル|string|アプリケーションのタイトル。|  
-|Description|string|アプリケーションの説明。|  
+|説明|string|アプリケーションの説明。|  
 |Url|URI|アプリケーションの URI。|  
 |バージョン|string|アプリケーションのバージョン情報。|  
 |必要条件|string|アプリケーションの要件の説明。|  
@@ -103,7 +103,7 @@ ms.lasthandoff: 10/11/2017
   
 ##  <a name="Sample"></a> Code sample  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |title|string|操作の名前。|  
 |snippet|string|このプロパティは廃止されました。使用しないでください。|  
@@ -121,7 +121,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="Comment"></a> Comment  
  `API` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |ID|number|コメントの ID。|  
 |CommentText|string|コメントの本文。 HTML を含めることができます。|  
@@ -131,7 +131,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="Issue"></a> Issue  
  `issue` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |ID|string|問題の一意の識別子。|  
 |ApiID|string|この問題が報告された API の ID。|  
@@ -168,7 +168,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="HTTPRequest"></a> HTTP Request  
  このセクションでは、`request` 表現を記述します。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |description|string|操作要求の説明。|  
 |ヘッダー|[Header](#Header) エンティティの配列。|要求ヘッダー。|  
@@ -178,7 +178,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="HTTPResponse"></a> HTTP Response  
  このセクションでは、`response` 表現を記述します。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |StatusCode|正の整数|操作応答の状態コード。|  
 |description|string|操作応答の説明。|  
@@ -212,7 +212,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="MenuItem"></a> Operation menu item  
  `operation menu item` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |ID|string|操作の ID。|  
 |タイトル|string|操作の説明。|  
@@ -221,7 +221,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="Paging"></a> Paging  
  `paging` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |ページ|number|現在のページ番号。|  
 |PageSize|number|1 ページに表示される結果の最大数。|  
@@ -245,7 +245,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="Product"></a> Product  
  `product` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |ID|string|リソース識別子。 現在の API Management サービス インスタンス内の製品を一意に識別します。 値は `products/{pid}` 形式の有効な相対 URL です。ここで、`{pid}` は製品識別子です。 このプロパティは読み取り専用です。|  
 |タイトル|string|製品の名前。 空にしないでください。 最大長は 100 文字です。|  
@@ -258,7 +258,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="Provider"></a> Provider  
  `provider` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |プロパティ|文字列辞書|この認証プロバイダーのプロパティ。|  
 |AuthenticationType|string|プロバイダーの種類  (Azure Active Directory、Facebook ログイン、Google アカウント、Microsoft アカウント、Twitter)。|  
@@ -275,7 +275,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="Subscription"></a> Subscription  
  `subscription` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |ID|string|リソース識別子。 現在の API Management サービス インスタンス内のサブスクリプションを一意に識別します。 値は `subscriptions/{sid}` 形式の有効な相対 URL です。ここで、`{sid}` はサブスクリプション識別子です。 このプロパティは読み取り専用です。|  
 |ProductId|string|サブスクライブされている製品の製品リソース識別子。 値は `products/{pid}` 形式の有効な相対 URL です。ここで、`{pid}` は製品識別子です。|  
@@ -301,7 +301,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="SubscriptionSummary"></a> Subscription summary  
  `subscription summary` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |ID|string|リソース識別子。 現在の API Management サービス インスタンス内のサブスクリプションを一意に識別します。 値は `subscriptions/{sid}` 形式の有効な相対 URL です。ここで、`{sid}` はサブスクリプション識別子です。 このプロパティは読み取り専用です。|  
 |DisplayName|string|サブスクリプションの表示名|  
@@ -322,7 +322,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="UseSignIn"></a> User sign in  
  `user sign in` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |電子メール|string|電子メール アドレス。 空にしないでください。値は、サービス インスタンス内で一意である必要があります。 最大長は 254 文字です。|  
 |パスワード|string|ユーザー アカウントのパスワード。|  
@@ -332,7 +332,7 @@ ms.lasthandoff: 10/11/2017
 |DelegationEnabled|boolean|委任されたサインインが有効になっているかどうか。|  
 |DelegationUrl|string|委任されたサインイン URL (有効な場合)。|  
 |SsoSignUpUrl|string|ユーザーのシングル サインオン URL (存在する場合)。|  
-|AuxServiceUrl|string|現在のユーザーが管理者である場合、これは、Azure クラシック ポータルのサービス インスタンスへのリンクを示します。|  
+|AuxServiceUrl|string|現在のユーザーが管理者である場合、これは、Azure Portal のサービス インスタンスへのリンクを示します。|  
 |プロバイダー|[Provider](#Provider) エンティティのコレクション|このユーザーの認証プロバイダー。|  
 |UserRegistrationTerms|string|ユーザーがサインインする前に同意する必要がある条件。|  
 |UserRegistrationTermsEnabled|boolean|条件が有効になっているかどうか。|  
@@ -340,7 +340,7 @@ ms.lasthandoff: 10/11/2017
 ##  <a name="UserSignUp"></a> User sign up  
  `user sign up` エンティティには、次のプロパティがあります。  
   
-|プロパティ|型|Description|  
+|プロパティ|型|説明|  
 |--------------|----------|-----------------|  
 |PasswordConfirm|boolean|[sign-up](api-management-page-controls.md#sign-up) コントロールで使用される値。|  
 |パスワード|string|ユーザー アカウントのパスワード。|  

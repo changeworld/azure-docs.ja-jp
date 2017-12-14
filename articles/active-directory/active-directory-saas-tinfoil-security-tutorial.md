@@ -4,7 +4,7 @@ description: "Azure Active Directory と TINFOIL SECURITY の間でシングル 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: da02da92-e3b0-4c09-ad6c-180882b0f9f8
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 614e4de3335574f4b56c7d641af4fcfafdb17d12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7794564396c2ade8ba45b9f2b1238f304f6b3921
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>チュートリアル: Azure Active Directory と TINFOIL SECURITY の統合
 
@@ -150,7 +150,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
    
     ![Security (セキュリティ)](./media/active-directory-saas-tinfoil-security-tutorial/ic798972.png "Security")
 
-11. [ **シングル サインオン** ] 構成ページで、次の手順を実行します。
+11. **[シングル サインオン]** 構成ページで、次の手順を実行します。
    
     ![シングル サインオン](./media/active-directory-saas-tinfoil-security-tutorial/ic798973.png "Single Sign-On")
    
@@ -164,7 +164,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
   
     e. **[Your Account ID]\(アカウント ID\)** の値をコピーし、Azure Portal の **[属性の追加]** セクションの **[属性値]** ボックスに値を貼り付けます。
    
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 [ **Save**] をクリックします。
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。

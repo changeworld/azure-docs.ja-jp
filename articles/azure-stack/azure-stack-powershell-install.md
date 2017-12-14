@@ -3,22 +3,22 @@ title: "PowerShell for Azure Stack のインストール | Microsoft Docs"
 description: "PowerShell for Azure Stack をインストールする方法について説明します。"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 0CDD8B9B-EC32-4453-918A-D0A606C7BC10
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
-ms.author: sngun
-ms.openlocfilehash: 3014b8a424e554f3c46f1c7e76eab586d089e059
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.author: mabrigg
+ms.openlocfilehash: b44129400e878e9032623e4d0962153d50303660
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack をインストールする  
 
@@ -53,7 +53,7 @@ Set-PSRepository `
 
 以下のセクションでは、PowerShell for Azure Stack のインストールに必要な手順について説明します。 PowerShell は、接続されているシナリオ、部分的に接続されているシナリオ、または接続が切断されたシナリオで運用される Azure Stack にインストールできます。 
 
-## <a name="install-powershell-in-a-connected-scenario"></a>接続されているシナリオでの PowerShell のインストール 
+## <a name="install-powershell-in-a-connected-scenario-with-internet-connectivity"></a>接続されているシナリオでの PowerShell のインストール (インターネット接続を使用)
 
 Azure Stack と互換性のある AzureRM モジュールは、API バージョン プロファイルを使用してインストールされます。 Azure Stack には **2017-03-09-profile** API バージョン プロファイルが必要です。このプロファイルは、AzureRM.Bootstrapper モジュールをインストールすることで利用できます。 API バージョン プロファイル、およびそれらのプロファイルによって提供されるコマンドレットについては、 「[manage API version profiles](azure-stack-version-profiles.md)」(API バージョン プロファイルの管理) を参照してください。 AzureRM モジュールだけでなく、Azure Stack 固有の PowerShell モジュールもインストールする必要があります。 次の PowerShell スクリプトを実行して、これらのモジュールを開発用ワークステーションにインストールします。
 
@@ -82,7 +82,7 @@ Azure Stack と互換性のある AzureRM モジュールは、API バージョ�
   ```
   インストールに成功した場合、出力に AzureRM および AzureStack モジュールが表示されます。
 
-## <a name="install-powershell-in-a-disconnected-or-in-a-partially-connected-scenario"></a>接続が切断されたシナリオまたは部分的に接続されているシナリオでの PowerShell のインストール
+## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>接続が切断されたシナリオまたは部分的に接続されているシナリオでの PowerShell のインストール (制限されたインターネット接続を使用)
 
 接続が切断されたシナリオでは、まずインターネット接続が確立されたコンピューターに PowerShell モジュールをダウンロードしてから、モジュールを Azure Stack Development Kit に転送してインストールします。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: f0cb50c5ad991073b83dc5e87fbfb0300f40fc03
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: c359b77efbfdbcf7d2c0193dc015ce418a3d997d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>Security Center のセキュリティ ポリシーを Azure Policy に統合する
 この記事では、Azure Policy を利用する Azure Security Center のセキュリティ ポリシーの構成方法について説明します。 
@@ -30,7 +30,7 @@ Security Center では、Azure サブスクリプションごとに自動で既�
 * ポリシーのコンプライアンスを監視する。
 
 > [!NOTE]
-> Azure Policy は現在、制限付きのプレビュー段階です。 参加するには、「[Sign up for Azure Policy (Azure Policy へのサインアップ)](https://aka.ms/getpolicy)」に移動します。 Azure Policy の詳細については、「[コンプライアンスを強制するポリシーの作成と管理](http://docs.microsoft.com/en-us/azure/azure-policy/create-manage-policy)」を参照してください。
+> Azure Policy は現在、制限付きのプレビュー段階です。 参加するには、「[Sign up for Azure Policy (Azure Policy へのサインアップ)](https://aka.ms/getpolicy)」に移動します。 Azure Policy の詳細については、「[コンプライアンスを強制するポリシーの作成と管理](http://docs.microsoft.com/azure/azure-policy/create-manage-policy)」を参照してください。
 
 ## <a name="edit-security-policies"></a>セキュリティ ポリシーの編集
 Security Center では、各 Azure サブスクリプションの既定のセキュリティ ポリシーを編集できます。 セキュリティ ポリシーを変更するには、サブスクリプションまたはそれが含まれる管理グループの所有者、共同作成者、セキュリティ管理者のいずれかである必要があります。 Security Center でセキュリティ ポリシーを表示するには、次の操作を行います。
@@ -50,7 +50,7 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
 
 5. ポリシー定義を削除するには、**[Policies and parameters]\(ポリシーとパラメーター\)** で、削除する定義の横にある **[削除]** を選択します。
 
-6. **[ Save]** をクリックします。  
+6. **[Save]** をクリックします。  
     **[Available Definitions]\(使用できる定義\)** ウィンドウが開き、Azure Policy を介して Security Center に割り当てられている既定のポリシーが表示されます。 
 
 7. (省略可能) **[Available Definitions]\(使用できる定義\)** ウィンドウで、次のいずれかの操作を実行します。

@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: 50015fabb323e618d3c093d4083cc648ff13b8f1
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 6f82ae396a17f903a522c716f73a5f7d2de660e7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
@@ -29,12 +29,14 @@ ms.lasthandoff: 11/30/2017
 
 Azure Storage の [Blob Storage サービス](../storage/common/storage-introduction.md#blob-storage)は、Azure ベースに元々あって Azure Content Delivery Network (CDN) と統合されたサービスの 1 つです。 パブリックにアクセス可能な BLOB コンテンツは、その有効期間 (TTL) が経過するまで、Azure CDN でキャッシュできます。 TTL は、配信元サーバーからの HTTP 応答の `Cache-Control` ヘッダーによって決まります。 この記事では、Azure Storage の BLOB で `Cache-Control` ヘッダーを設定する方法のいくつかを示します。
 
+[CDN キャッシュ規則](cdn-caching-rules.md)を設定して、Azure Portal からキャッシュの設定を制御することもです。 1 つ以上のキャッシュ規則を設定し、キャッシュの動作を **[上書き]** または **[キャッシュのバイパス]** に設定すると、この記事で説明する最初に提供されるキャッシュ設定は無視されます。 全般的なキャッシュの概念については、「[キャッシュのしくみ](cdn-how-caching-works.md)」をご覧ください。
+
 > [!TIP]
-> BLOB に TTL を設定しないこともできます。 その場合は、Azure CDN が既定の 7 日間の TTL を自動的に適用します。 この既定の TTL は、一般的な Web 配信の最適化に対してのみ適用されます。 大きなファイルの最適化に対する既定の TTL は 1 日、メディア ストリーミングの最適化に対する既定の TTL は 1 年です。
+> BLOB に TTL を設定しないこともできます。 この場合は、Azure Portal でキャッシュ規則を設定していない限り、Azure CDN によって既定の 7 日間の TTL が自動的に適用されます。 この既定の TTL は、一般的な Web 配信の最適化に対してのみ適用されます。 大きなファイルの最適化に対する既定の TTL は 1 日、メディア ストリーミングの最適化に対する既定の TTL は 1 年です。
 > 
 > その他のファイルと BLOB へのアクセスを高速化する Azure CDN のしくみについて詳しくは、「[Azure Content Delivery Network (CDN) の概要](cdn-overview.md)」をご覧ください。
 > 
-> Azure Blob Storage について詳しくは、「[Blob Storage の概要](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)」をご覧ください。
+> Azure Blob Storage について詳しくは、「[Blob Storage の概要](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)」をご覧ください。
  
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Azure PowerShell を使った Cache-Control ヘッダーの設定
@@ -111,9 +113,9 @@ Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新す�
 ![Azure Storage Explorer のプロパティ](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
-BLOB をアップロードするときに、[Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)で `-p` スイッチを使って *cacheControl* プロパティを設定できます。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
+[Azure コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) (CLI) では、コマンド ラインから Azure BLOB リソースを管理することができます。 Azure CLI で BLOB をアップロードするときにキャッシュ制御ヘッダーを設定するには、`-p` スイッチを使って *cacheControl* プロパティを設定します。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
   
-```command
+```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\test.txt myContainer test.txt
 ```
 
@@ -129,4 +131,5 @@ BLOB の TTL 設定を簡単に確認できます。 ブラウザーの[開発�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure CDN でクラウド サービスのコンテンツの有効期限を管理する方法を確認します](cdn-manage-expiration-of-cloud-service-content.md)
+* [キャッシュの概念を学習する](cdn-how-caching-works.md)
 

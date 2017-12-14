@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 3c56719d99a5a3cc3e650b72ecd2e92438533448
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9246def86fa647213aa3ec12427d829c24fa8034
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Java Web アプリケーションの監視を開始する
 
@@ -30,7 +30,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 - [無料の Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/) をインストールします。 このクイック スタートでは Eclipse Oxygen (4.7) を使用します。
 - Azure サブスクリプションと既存の Java Dynamic Web プロジェクトが必要です。
  
-Java Dynamic Web プロジェクトをお持ちでない場合は、[Java Web アプリ作成のクイック スタート](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-java)に従って作成できます。
+Java Dynamic Web プロジェクトをお持ちでない場合は、[Java Web アプリ作成のクイック スタート](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java)に従って作成できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -138,4 +138,4 @@ Java の監視に関する詳細については、[App Insights Java の追加�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics)
+> [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

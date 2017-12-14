@@ -18,11 +18,11 @@ ms.dyn365.ops.version:
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: mcollier
-ms.openlocfilehash: ab522b444c234e1159acfea1780bae1801c4d047
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 357a63c65a4f6864dca259aad8a76f83681cd501
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 この記事では、コードが [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を使用できるように、認証を実行する方法について説明します。         
@@ -93,7 +93,7 @@ $authHeader = @{
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>メトリック定義の取得 (多次元 API)
 
-[Azure Monitor メトリック定義 REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricdefinitions) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
+[Azure Monitor メトリック定義 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
 
 **メソッド**: GET
 

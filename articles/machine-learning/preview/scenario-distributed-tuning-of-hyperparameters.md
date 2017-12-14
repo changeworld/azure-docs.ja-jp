@@ -8,11 +8,11 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 643cea5cc134a2eb25a0dec4abefd9edca726332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用したハイパーパラメーターの分散チューニング
 
@@ -27,21 +27,29 @@ ms.lasthandoff: 10/11/2017
 
 多くの機械学習アルゴリズムには、ハイパーパラメーターという 1 つまたは複数のノブがあります。 これらのノブを使用すると、アルゴリズムをチューニングして、ユーザーが指定したメトリック (精度、AUC、RMSE など) に従って測定される今後のデータについてパフォーマンスを最適化することができます。 データ サイエンティストは、トレーニング データのモデルを構築する場合、将来のテスト データを表示する前に、ハイパーパラメーターの値を用意する必要があります。 既知のトレーニング データに基づいて、モデルが未知のテスト データでも効率的なパフォーマンスになるように、ハイパーパラメーターの値を設定するにはどうすればよいでしょうか。 
 
-ハイパーパラメーターのチューニングで一般的な手法は、*グリッド検索*と*クロス検証*を組み合わせる方法です。 クロス検証は、トレーニング セットに対してトレーニングされたモデルを使用して、テスト セットに対して予測する方法を評価する手法です。 この手法を使用して、まずデータセットを K フォールドに分割してから、ラウンドロビン形式で、1 つのフォールドを除くすべてのフォールド (ヘルドアウト フォールドと呼ばれます) に対してアルゴリズムを K 回トレーニングします。 ここでは、K ヘルドアウト フォールドに対して、K モデルのメトリックの平均値を計算します。 この平均値は、*クロス検証パフォーマンス推定値*と呼ばれ、K モデルを作成するときに使用されるハイパーパラメーターの値に依存します。 ハイパーパラメーターのチューニング時に、ハイパーパラメーター値候補の領域を検索し、クロス検証パフォーマンスの推定値を最適化する値を見つけます。 グリッド検索は、一般的な検索手法です。複数のハイパーパラメーターの候補値の領域は、個々のハイパーパラメーターの候補値セットのクロス積です。 
+ハイパーパラメーターのチューニングで一般的な手法は、*グリッド検索*と*クロス検証*を組み合わせる方法です。 クロス検証は、トレーニング セットに対してトレーニングされたモデルを使用して、テスト セットに対して予測する方法を評価する手法です。 この手法を使い、最初にデータセットを K フォールドに分割してから、ラウンドロビン方式でアルゴリズムを K 回トレーニングします。 "ヘルドアウト フォールド" と呼ばれる 1 つのフォールドを除くすべてのフォールドに対してこれを行います。 ここでは、K ヘルドアウト フォールドに対して、K モデルのメトリックの平均値を計算します。 この平均値は、*クロス検証パフォーマンス推定値*と呼ばれ、K モデルを作成するときに使用されるハイパーパラメーターの値に依存します。 ハイパーパラメーターのチューニング時に、ハイパーパラメーター値候補の領域を検索し、クロス検証パフォーマンスの推定値を最適化する値を見つけます。 グリッド検索は一般的な検索手法です。 グリッド検索では、複数のハイパーパラメーターの候補値の領域は、個々のハイパーパラメーターの候補値セットのクロス積です。 
 
-クロス検証を使用するグリッド検索は時間がかかることがあります。 アルゴリズムに 5 個のハイパーパラメーターがあり、それぞれに 5 個の候補値があり、K=5 フォールドを使用する場合、グリッド検索を完了するには、5<sup>6</sup>=15625 モデルをトレーニングする必要があります。 幸いなことに、クロス検証を使用するグリッド検索は並列プロシージャであり、これらすべてのモデルを並列してトレーニングできます。
+クロス検証を使用するグリッド検索は時間がかかることがあります。 アルゴリズムに 5 つのハイパーパラメーターがあり、それぞれに 5 つの候補値が含まれる場合は、K = 5 フォールドを使います。 そして、5<sup>6</sup>=15625 モデルをトレーニングすることでグリッド検索を完了します。 幸いなことに、クロス検証を使用するグリッド検索は並列プロシージャであり、これらすべてのモデルを並列してトレーニングできます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)。
 * Workbench をインストールしてアカウントを作成するために、[インストールと作成のクイックスタート](./quickstart-installation.md)に関するページに従ってインストールした [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のコピー。
 * このシナリオでは、Docker エンジンをローカルにインストールした Windows 10 または MacOS で Azure ML Workbench を実行していることを前提とします。 
-* リモート Docker コンテナーを使用するシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-provision-vm)に従って Ubuntu データ サイエンス仮想マシン (DSVM) をプロビジョニングします。 少なくとも 8 個のコアと 28 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 D4 インスタンスの仮想マシンにはこのような容量があります。 
-* Spark クラスターを使用してこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って HDInsight クラスターをプロビジョニングします。 6 個以上の worker ノードと、ヘッド ノードと worker ノードの両方に少なくとも 8 コアと 28 GB のメモリのクラスターを用意することをお勧めします。 D4 インスタンスの仮想マシンにはこのような容量があります。 クラスターのパフォーマンスを最大限にするために、[こちらの手順](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-resource-manager)に従ってパラメーター spark.executor.instances、spark.executor.cores、および spark.executor.memory を変更し、"カスタムの Spark の既定値" セクションの定義を編集します。
+* リモート Docker コンテナーを使用するシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)に従って Ubuntu データ サイエンス仮想マシン (DSVM) をプロビジョニングします。 少なくとも 8 個のコアと 28 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 D4 インスタンスの仮想マシンにはこのような容量があります。 
+* Spark クラスターでこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って Azure HDInsight クラスターをプロビジョニングします。 クラスターには少なくとも次のものを用意することをお勧めします。 
+- 6 個の worker ノード
+- 8 個のコア
+- ヘッド ノードと worker ノードの両方に 28 GB のメモリ。 D4 インスタンスの仮想マシンにはこのような容量があります。 クラスターのパフォーマンスを最大化するために、次のパラメーターを変更することをお勧めします。
+- spark.executor.instances
+- spark.executor.cores
+- spark.executor.memory 
 
-     **トラブルシューティング**: Azure サブスクリプションには、使用できるコア数にクォータが設定されている場合があります。 Azure Portal では、クォータ数を超える合計コア数のクラスターは作成できません。 クォータを確認するには、Azure Portal の [サブスクリプション] セクションに移動し、クラスターのデプロイに使用されているサブスクリプションをクリックし、**[使用量 + クォータ]** をクリックします。 通常、クォータは Azure リージョンごとに定義されており、空きコアが十分にあるリージョンに Spark コアをデプロイすることができます。 
+[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager)に従って、[Custom spark-defaults]\(カスタム Spark 既定値\) セクションの定義を編集できます。
 
-* データセットの格納に使用される Azure ストレージ アカウントを作成します。 [こちらの手順](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account)に従って、ストレージ アカウントを作成してください。
+     **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
+
+* データセットの格納に使用される Azure ストレージ アカウントを作成します。 [こちらの手順](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)に従って、ストレージ アカウントを作成します。
 
 ## <a name="data-description"></a>データの説明
 
@@ -72,7 +80,7 @@ Azure Machine Learning Workbench アイコンをクリックして Azure Machine
 
 変更した conda\_dependencies.yml ファイルは、チュートリアルの aml_config ディレクトリに保存します。 
 
-次の手順では、実行環境を Azure アカウントに接続します。 AML Workbench の左上にある [ファイル] メニューをクリックし、[コマンド プロンプトを開く] を選択して、コマンド ライン ウィンドウ (CLI) を開きます。 CLI で次のコマンドを実行します
+次の手順では、実行環境を Azure アカウントに接続します。 AML Workbench の左上隅にある [File]\(ファイル\) メニューをクリックします。 [Open Command Prompt]\(コマンド プロンプトを開く\) を選びます。 CLI で次のコマンドを実行します
 
     az login
 
@@ -84,7 +92,7 @@ Azure Machine Learning Workbench アイコンをクリックして Azure Machine
 
     az account list -o table
 
-AML Workbench ワークスペース アカウントがある Azure サブスクリプションのサブスクリプション ID を確認します。 最後に、CLI で次のコマンドを実行します
+AML Workbench ワークスペース アカウントがある Azure サブスクリプション ID を確認します。 最後に、CLI で次のコマンドを実行します
 
     az account set -s <subscription ID>
 
@@ -96,7 +104,7 @@ AML Workbench ワークスペース アカウントがある Azure サブスク�
 
  リモート Docker コンテナーを設定するには、CLI で次のコマンドを実行します。
 
-    az ml computetarget attach --name dsvm --address <IP address> --username <username> --password <password> --type remotedocker
+    az ml computetarget attach remotedocker --name dsvm --address <IP address> --username <username> --password <password> 
 
 このコマンドで、DSVM の IP アドレス、ユーザー名、およびパスワードを指定します。 DSVM の IP アドレスは、Azure Portal の DSVM ページの [概要] セクションで確認できます。
 
@@ -106,7 +114,7 @@ AML Workbench ワークスペース アカウントがある Azure サブスク�
 
 Spark 環境を設定するには、CLI で次のコマンドを実行します
 
-    az ml computetarget attach --name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> --type cluster
+    az ml computetarget attach cluster--name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
 
 このコマンドで、クラスターの名前、クラスターの SSH ユーザー名とパスワードを指定します。 クラスターのプロビジョニング時に変更していない場合、SSH ユーザー名の既定値は `sshuser` です。 クラスターの名前は、Azure Portal のクラスター ページの [プロパティ] セクションで確認できます。
 
@@ -131,18 +139,18 @@ spark-sklearn パッケージを使用して、ハイパーパラメーターの
 ### <a name="data-ingestion"></a>データの取り込み
 このシナリオのコードでは、データが Azure BLOB ストレージに保存されることを前提としています。 まず Kaggle サイトのデータをコンピューターにダウンロードし、BLOB ストレージにアップロードする方法について説明します。 次に、BLOB ストレージからデータを読み取る方法について説明します。 
 
-Kaggle からデータをダウンロードするには、[データセット ページ](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data)に移動し、[ダウンロード] ボタンをクリックします。 Kaggle にログインするように求められます。 ログイン後は、元のデータセット ページにリダイレクトされます。 次に、左側の列で最初の 7 個のファイルを選択し、[ダウンロード] ボタンをクリックしてダウンロードします。 ダウンロードしたファイルの合計サイズは、289 MB です。 これらのファイルを BLOB ストレージにアップロードするには、ストレージ アカウントで BLOB ストレージ コンテナーの "データセット" を作成します。 作成するには、ストレージ アカウントの Azure ページに移動し、BLOB をクリックし、+ コンテナーをクリックします。 [名前] に「dataset」と入力し、[OK] をクリックします。 次のスクリーン ショットは、これらの手順を示しています。
+Kaggle からデータをダウンロードするには、[データセット ページ](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data)に移動し、[ダウンロード] ボタンをクリックします。 Kaggle にログインするように求められます。 ログイン後は、元のデータセット ページにリダイレクトされます。 次に、左側の列で最初の 7 個のファイルを選択し、[ダウンロード] ボタンをクリックしてダウンロードします。 ダウンロードしたファイルの合計サイズは、289 MB です。 これらのファイルを BLOB ストレージにアップロードするには、ストレージ アカウントで BLOB ストレージ コンテナーの "データセット" を作成します。 作成するには、ストレージ アカウントの Azure ページに移動し、BLOB をクリックし、[+ コンテナー] をクリックします。 [名前] に「dataset」と入力し、[OK] をクリックします。 次のスクリーン ショットは、これらの手順を示しています。
 
 ![BLOB を開く](media/scenario-distributed-tuning-of-hyperparameters/open_blob.png)
 ![コンテナーを開く](media/scenario-distributed-tuning-of-hyperparameters/open_container.png)
 
-その後、一覧からデータセット コンテナーを選択し、[アップロード] ボタンをクリックします。 Azure Portal では、同時に複数のファイルをアップロードすることができます。 BLOB のアップロード セクションでフォルダー ボタンをクリックし、データセットのすべてのファイルを選択して 開くをクリックし、アップロードをクリックします。 次のスクリーンショットはこれらの手順を示しています。
+その後、一覧からデータセット コンテナーを選択し、[アップロード] ボタンをクリックします。 Azure Portal では、同時に複数のファイルをアップロードすることができます。 [BLOB のアップロード] セクションでフォルダー ボタンをクリックし、データセットのすべてのファイルを選択して [開く] をクリックし、[アップロード] をクリックします。 次のスクリーンショットはこの手順を示したものです。
 
 ![BLOB のアップロード](media/scenario-distributed-tuning-of-hyperparameters/upload_blob.png) 
 
 使用しているインターネット接続によって変わりますが、ファイルのアップロードには数分かかります。 
 
-このコードでは、[Azure Storage SDK](https://azure-storage.readthedocs.io/en/latest/) を使用して、BLOB ストレージのデータセットを現在の実行環境にダウンロードしています。 ダウンロードは、load_data.py ファイルの load\_data() 関数で実行されます。 このコードを使用するには、<ACCOUNT_NAME> と <ACCOUNT_KEY> を、データセットをホストしているストレージ アカウントの名前とプライマリ キーで置き換える必要があります。 アカウント名は、ストレージ アカウントの Azure ページの左上に表示されます。 アカウント キーを取得するには、ストレージ アカウントの Azure ページで [アクセス キー] を選択し (「データの取り込み」セクションの最初のスクリーンショットを参照してください)、キー列の最初の行の長い文字列をコピーします。
+このコードでは、[Azure Storage SDK](https://azure-storage.readthedocs.io/en/latest/) を使用して、BLOB ストレージのデータセットを現在の実行環境にダウンロードしています。 ダウンロードは、load_data.py ファイルの load\_data() 関数で実行されます。 このコードを使用するには、<ACCOUNT_NAME> と <ACCOUNT_KEY> を、データセットをホストしているストレージ アカウントの名前とプライマリ キーで置き換える必要があります。 ストレージ アカウントの Azure ページの左上でアカウント名を確認できます。 アカウント キーを取得するには、ストレージ アカウントの Azure ページで [アクセス キー] を選択し (「データの取り込み」セクションの最初のスクリーンショットを参照してください)、キー列の最初の行の長い文字列をコピーします。
  
 ![アクセス キー](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 
@@ -190,7 +198,7 @@ CLI ウィンドウで上のコマンドを実行します。
 グラデーション ツリー ブーストの [xgboost](https://anaconda.org/conda-forge/xgboost) 実装 [1] を使用します。 [scikit-learn](http://scikit-learn.org/) パッケージを使用して、xgboost のハイパーパラメーターをチューニングします。 xgboost は scikit-learn パッケージに含まれていませんが、scikit-learn API を実装しているため、scikit-learn のハイパーパラメーター チューニング関数と併用できます。 
 
 Xgboost には 8 個のハイパーパラメーターがあります。
-* n_esitmators
+* n_estimators
 * max_depth
 * reg_alpha
 * reg_lambda
@@ -198,7 +206,10 @@ Xgboost には 8 個のハイパーパラメーターがあります。
 * learning_rate
 * colsample\_by_level
 * subsample
-* objective これらのハイパーパラメーターの説明については、[こちら](http://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn)と[こちら](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)を参照してください。 最初に、リモートの DSVM を使用し、少数のグリッドの候補値からハイパーパラメーターをチューニングします。
+* objective これらのハイパーパラメーターの説明については、以下をご覧ください。
+- http://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn- https://github.com/dmlc/xgboost/blob/master/doc/parameter.md。 
+- 
+最初に、リモートの DSVM を使用し、少数のグリッドの候補値からハイパーパラメーターをチューニングします。
 
     tuned_parameters = [{'n_estimators': [300,400], 'max_depth': [3,4], 'objective': ['multi:softprob'], 'reg_alpha': [1], 'reg_lambda': [1], 'colsample_bytree': [1],'learning_rate': [0.1], 'colsample_bylevel': [0.1,], 'subsample': [0.5]}]  
 
@@ -249,13 +260,13 @@ DSVM に 8 コアと 28 GB のメモリが搭載されている場合、この�
 
 ![実行履歴](media/scenario-distributed-tuning-of-hyperparameters/run_history.png)
 
-既定で [実行履歴] ウィンドウには、最初の 1 ～ 2 個のログに記録された値とグラフが表示されます。 選択した ハイパーパラメーター値の完全な一覧を表示するには、前のスクリーンショットで赤枠で囲まれた設定アイコンをクリックし、表に表示するハイパーパラメーターを選択します。 また、[実行履歴] ウィンドウの上部に表示されるグラフを選択するには、青枠で囲まれた設定アイコンをクリックし、一覧からグラフを選択します。 
+既定で [実行履歴] ウィンドウには、最初の 1 ～ 2 個のログに記録された値とグラフが表示されます。 選んだ ハイパーパラメーター値の完全な一覧を表示するには、前のスクリーンショットで赤枠で囲まれた設定アイコンをクリックします。 次に、表に表示するハイパーパラメーターを選びます。 また、[実行履歴] ウィンドウの上部に表示されるグラフを選択するには、青枠で囲まれた設定アイコンをクリックし、一覧からグラフを選択します。 
 
 ハイパーパラメーターの選択されている値は、[実行のプロパティ] ウィンドウでも確認できます。 
 
 ![実行のプロパティ](media/scenario-distributed-tuning-of-hyperparameters/run_properties.png)
 
-[実行のプロパティ] ウィンドウの右上には、実行環境の '.\output' フォルダーに作成されたすべてのファイルの一覧が掲載された [出力ファイル] セクションがあります。 ここで sweeping\_results.txt を選択し、[ダウンロード] ボタンをクリックしてダウンロードすることができます。 sweeping_results.txt の出力は次のようになります。
+[実行のプロパティ] ウィンドウの右上には、".\output" フォルダーに作成されたすべてのファイルの一覧が掲載された [出力ファイル] セクションがあります。 ここで sweeping\_results.txt を選択し、[ダウンロード] ボタンをクリックしてダウンロードすることができます。 sweeping_results.txt の出力は次のようになります。
 
     metric =  neg_log_loss
     mean: -2.29096, std: 0.03748, params: {'colsample_bytree': 1, 'learning_rate': 0.1, 'subsample': 0.5, 'n_estimators': 300, 'reg_alpha': 1, 'objective': 'multi:softprob', 'colsample_bylevel': 0.1, 'reg_lambda': 1, 'max_depth': 3}
@@ -297,15 +308,15 @@ CLI ウィンドウで実行します。 このインストールには数分か
 
     az ml experiment submit -c spark .\distributed_sweep.py
 
-Spark クラスターに 28 GB のメモリが搭載された worker ノードが 6 個ある場合、このコマンドは 1 時間 6 分で完了します。 Spark クラスターのハイパーパラメーターのチューニング結果、つまりログ、ハイパーパラメーターの最適な値、および sweeping_results.txt ファイルには、リモートの DSVM 実行と同じ方法で Azure Machine Learning Workbench でアクセスできます。 
+Spark クラスターに 28 GB のメモリが搭載された worker ノードが 6 個ある場合、このコマンドは 1 時間 6 分で完了します。 ハイパーパラメーターのチューニングの結果には、リモート DSVM 実行と同じようにして、Azure Machine Learning Workbench でアクセスできます  (つまり、ログ、ハイパーパラメーターの最適値、および sweeping_results.txt ファイル)。
 
 ### <a name="architecture-diagram"></a>アーキテクチャ ダイアグラム
 
-次に、エンドツーエンドのワークフロー図を示します。![アーキテクチャ](media/scenario-distributed-tuning-of-hyperparameters/architecture.png) 
+ワークフロー全体の図を次に示します。![アーキテクチャ](media/scenario-distributed-tuning-of-hyperparameters/architecture.png) 
 
 ## <a name="conclusion"></a>まとめ 
 
-このシナリオでは、Azure Machine Learning Workbench を使用して、リモートの仮想マシンとリモートの Spark クラスターでハイパーパラメーターのチューニングを実行する方法について説明しました。 また、Azure Machine Learning Workbench には、実行環境を簡単に構成し、切り替えることができるツールが用意されていることも説明しました。 
+このシナリオでは、Azure Machine Learning Workbench を使用して、リモートの仮想マシンと Spark クラスターでハイパーパラメーターのチューニングを実行する方法について説明しました。 Azure Machine Learning Workbench には、実行環境を簡単に構成するためのツールが用意されていることも説明しました。 このツールでは、環境を簡単に切り替えることもできます。 
 
 ## <a name="references"></a>参照
 

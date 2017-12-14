@@ -4,7 +4,7 @@ description: "アクセス パネルを使用する場合は、一般的なタ�
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 9e2f8aa6ad7534ff822907285aa9fe290a4db586
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 5887dbd606acd1df47be1c421bee1a1008dc91d1
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="do-you-need-help-with-the-my-apps-portal"></a>MyApps ポータルの操作についてお困りの場合
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/23/2017
 
 - パスワードが期限切れになったり、忘れられたりしていないことを確認します。 パスワードを更新する方法の詳細については、[ここ](active-directory-passwords-update-your-own-password.md)を参照してください。
 
-- 認証の連絡先情報が最新で、アクセスをブロックしていないかどうかを確認します。 認証情報を設定する方法の詳細については、[ここ](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user)を参照してください。
+- 認証の連絡先情報が最新で、アクセスをブロックしていないかどうかを確認します。 認証情報を設定する方法の詳細については、[ここ](https://docs.microsoft.com/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user)を参照してください。
 
 - ブラウザーの Cookie を削除してから、再度サインインしてみます。
 

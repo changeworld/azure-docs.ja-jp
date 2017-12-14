@@ -3,7 +3,7 @@ title: "Machine Learning バッチ実行サービス ジョブ専用の容量 | 
 description: "Machine Learning ジョブ用の Azure Batch サービスの概要。"
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.service: machine-learning
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 40641910f904aa0c0516f96d84d0ebbbbe8e5501
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f7498c63db89a77121d33afc9d48a4132b1a51d
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Machine Learning ジョブ用の Azure Batch サービス
 

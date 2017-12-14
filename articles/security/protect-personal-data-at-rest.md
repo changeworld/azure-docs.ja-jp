@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/31/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 2bb8370d23d9450fb8154f21c27817666fd7852c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 31e41f9befd9319115e5d147b473756486100c6e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Azure の暗号化テクノロジ: 個人の保存データを暗号化で保護する
 
@@ -57,7 +57,7 @@ Azure サービスでは、暗号化による個人の保存データの保護�
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
-[Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) は、Azure サービス内の保存データの暗号化に役立つキーをセキュリティ保護されたストレージに提供する、推奨のキー ストレージ管理ソリューションです。 暗号化キーの管理は、保存データをセキュリティ保護するために不可欠です。
+[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) は、Azure サービス内の保存データの暗号化に役立つキーをセキュリティ保護されたストレージに提供する、推奨のキー ストレージ管理ソリューションです。 暗号化キーの管理は、保存データをセキュリティ保護するために不可欠です。
 
 #### <a name="how-do-i-use-azure-key-vault-to-protect-keys-that-encrypt-personal-data"></a>Azure Key Vault を使用して個人データの暗号化キーを保護する方法
 
@@ -79,13 +79,13 @@ Azure Key Vault はソフトウェアで保護されたキーを提供します�
 
 ローカルの HSM でキーを生成して、キーを HSM の境界内から出すことなく、Key Vault サービスで HSM に転送することができます。
 
-Azure Key Vault の使用方法の詳細については、「[Azure Key Vault の概要](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-get-started)」の手順をご覧ください。
+Azure Key Vault の使用方法の詳細については、「[Azure Key Vault の概要](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)」の手順をご覧ください。
 
-Azure Key Vault で使用する PowerShell コマンドレットの一覧については、「[AzureRM.KeyVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0)」をご覧ください。
+Azure Key Vault で使用する PowerShell コマンドレットの一覧については、「[AzureRM.KeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0)」をご覧ください。
 
 ### <a name="azure-disk-encryption-for-windows"></a>Windows 用の Azure Disk Encryption
 
-[Windows と Linux の IaaS VM 用の Azure Disk Encryption](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption) は、Azure 仮想マシン上の個人の保存データを保護するサービスで、Azure Key Vault と統合されています。 Azure Disk Encryption では、Windows の [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) や Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用して、OS とデータ ディスクの両方を暗号化します。 Azure Disk Encryption は、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8 と Windows 10 のクライアントでサポートされています。
+[Windows と Linux の IaaS VM 用の Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、Azure 仮想マシン上の個人の保存データを保護するサービスで、Azure Key Vault と統合されています。 Azure Disk Encryption では、Windows の [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) や Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用して、OS とデータ ディスクの両方を暗号化します。 Azure Disk Encryption は、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8 と Windows 10 のクライアントでサポートされています。
 
 #### <a name="how-do-i-use-azure-disk-encryption-to-protect-personal-data"></a>Azure Disk Encryption を使用して個人データを保護する方法
 
@@ -103,11 +103,11 @@ Azure が VM とキー コンテナー構成を更新し、暗号化された VM
 
 ![](media/protect-personal-data-at-rest/create-key.png)
 
-具体的なデプロイ シナリオとユーザー エクスペリエンスの詳細については、「[Windows および Linux IaaS VM の Azure ディスク暗号化](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)」をご覧ください。
+具体的なデプロイ シナリオとユーザー エクスペリエンスの詳細については、「[Windows および Linux IaaS VM の Azure ディスク暗号化](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)」をご覧ください。
 
 ### <a name="azure-storage-service-encryption"></a>Azure Storage Service Encryption
 
-[Azure Storage Service Encryption (SSE) for Data at Rest](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption) は、データを保護して安全性を確保し、組織のセキュリティとコンプライアンスの要件を満たすお手伝いをします。 Azure Storage は、ストレージに保存する前に 256 ビット AES 暗号化を使用してデータを自動的に暗号化したり、取得する前に復号化したりします。 このサービスは、Azure Blob と Azure Files で利用できます。
+[Azure Storage Service Encryption (SSE) for Data at Rest](https://docs.microsoft.com/azure/storage/storage-service-encryption) は、データを保護して安全性を確保し、組織のセキュリティとコンプライアンスの要件を満たすお手伝いをします。 Azure Storage は、ストレージに保存する前に 256 ビット AES 暗号化を使用してデータを自動的に暗号化したり、取得する前に復号化したりします。 このサービスは、Azure Blob と Azure Files で利用できます。
 
 #### <a name="how-do-i-use-storage-service-encryption-to-protect-personal-data"></a>Storage Service Encryption を使用して個人データを保護する方法
 
@@ -129,13 +129,13 @@ Storage Service Encryption を有効にするには、次の操作を行いま�
 
 暗号化を有効にしたあと、次のいずれかの方法でデータをストレージ アカウントにコピーします。
 
-1. [AzCopy コマンド ライン ユーティリティ](https://docs.microsoft.com/en-us/azure/storage/storage-use-azcopy)を使用して BLOB またはファイルをコピーします。
+1. [AzCopy コマンド ライン ユーティリティ](https://docs.microsoft.com/azure/storage/storage-use-azcopy)を使用して BLOB またはファイルをコピーします。
 
-2. [SMB を使用してファイル共有をマウントする](https://docs.microsoft.com/en-us/azure/storage/storage-file-how-to-use-files-windows)と、Robocopy などのユーティリティを使用してファイルをコピーできます。
+2. [SMB を使用してファイル共有をマウントする](https://docs.microsoft.com/azure/storage/storage-file-how-to-use-files-windows)と、Robocopy などのユーティリティを使用してファイルをコピーできます。
 
-3. [.NET などのストレージ クライアント ライブラリ](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-blobs)を使用して BLOB またはファイルのデータをコピーし、BLOB ストレージやストレージ アカウント間でやりとりできます。
+3. [.NET などのストレージ クライアント ライブラリ](https://docs.microsoft.com/azure/storage/storage-dotnet-how-to-use-blobs)を使用して BLOB またはファイルのデータをコピーし、BLOB ストレージやストレージ アカウント間でやりとりできます。
 
-4.  [ストレージ エクスプローラー](https://docs.microsoft.com/en-us/azure/storage/storage-explorers)を使用して、暗号化を有効にした状態で BLOB をストレージ アカウントにアップロードします。
+4.  [ストレージ エクスプローラー](https://docs.microsoft.com/azure/storage/storage-explorers)を使用して、暗号化を有効にした状態で BLOB をストレージ アカウントにアップロードします。
 
 ### <a name="transparent-data-encryption"></a>Transparent Data Encryption
 
@@ -159,7 +159,7 @@ REST API または PowerShell を使用して、Azure Portal で TDE を構成�
 
 ![データの暗号化を有効にする](media/protect-personal-data-at-rest/turn-data-encryption-on.png)
 
-TDE を有効にする方法と、TDE で保護されたデータベースの複合化に関する情報の詳細については、[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) に関する記事をご覧ください。
+TDE を有効にする方法と、TDE で保護されたデータベースの複合化に関する情報の詳細については、[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) に関する記事をご覧ください。
 
 ## <a name="summary"></a>概要
 
@@ -169,10 +169,10 @@ Azure でデータを暗号化するために使用されるキーを保護す�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Disk Encryption トラブルシューティング ガイド](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-tsg)
+- [Azure Disk Encryption トラブルシューティング ガイド](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg)
 
-- [Azure Virtual Machine の暗号化](https://docs.microsoft.com/en-us/azure/security-center/security-center-disk-encryption?toc=%2fazure%2fsecurity%2ftoc.json)
+- [Azure Virtual Machine の暗号化](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption?toc=%2fazure%2fsecurity%2ftoc.json)
 
-- [Azure Data Lake Store でのデータの暗号化](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-encryption)
+- [Azure Data Lake Store でのデータの暗号化](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption)
 
-- [保存時の Azure Cosmos DB データベースの暗号化](https://docs.microsoft.com/en-us/azure/cosmos-db/database-encryption-at-rest)
+- [保存時の Azure Cosmos DB データベースの暗号化](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest)

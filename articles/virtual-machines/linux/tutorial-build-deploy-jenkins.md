@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: c96aafeb05293ccdc4c30c2b828cead1dfdb157c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: bfda0475b58556db1236c8b051c59393384720f7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-your-app-to-linux-vms-by-using-jenkins-and-team-services"></a>Jenkins と Team Services を使用してアプリを Linux VM にデプロイする
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/09/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* Jenkins サーバーにアクセスする必要があります。 Jenkins サーバーをまだ作成していない場合は、[Azure 仮想マシンへの Jenkins マスターの作成](https://docs.microsoft.com/en-us/azure/jenkins/install-jenkins-solution-template)に関するページをご覧ください。 
+* Jenkins サーバーにアクセスする必要があります。 Jenkins サーバーをまだ作成していない場合は、[Azure 仮想マシンへの Jenkins マスターの作成](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template)に関するページをご覧ください。 
 
 * Team Services アカウント (**https://{youraccount}.visualstudio.com**) にサインインします。 
   [無料の Team Services アカウント](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308)を取得することができます。
@@ -48,9 +48,9 @@ ms.lasthandoff: 11/09/2017
   > [!NOTE]
   > 詳細については、「[Connect to Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services)」(Team Services への接続) を参照してください。
 
-*  デプロイ ターゲットの Linux 仮想マシンが必要です。  詳細については、「[Azure CLI を使用した Linux VM の作成と管理](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-manage-vm)」をご覧ください。
+*  デプロイ ターゲットの Linux 仮想マシンが必要です。  詳細については、「[Azure CLI を使用した Linux VM の作成と管理](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)」をご覧ください。
 
-*  仮想マシンの受信ポート 80 を開きます。 詳細については、「[Azure Portal を使用したネットワーク セキュリティ グループの作成](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)」をご覧ください。
+*  仮想マシンの受信ポート 80 を開きます。 詳細については、「[Azure Portal を使用したネットワーク セキュリティ グループの作成](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)」をご覧ください。
 
 ## <a name="get-the-sample-app"></a>サンプル アプリを入手する
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 11/09/2017
 5. Jenkins ダッシュボードに戻り、**[Jenkins の管理]** を選択します。
 6. **[Global Tool Configuration](ツールのグローバル構成)** を選択します。 **[NodeJS]** を検索して **[NodeJS installations](NodeJS のインストール)** を選択します。
 7. **[Install automatically](自動的にインストールする)** オプションを選択して、**[名前]** の値を入力します。
-8. **[ 保存]** を選択します。
+8. **[保存]** を選択します。
 
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Node.js の Jenkins フリースタイル プロジェクトを構成する
 

@@ -17,20 +17,20 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: jejiang
-ms.openlocfilehash: 87cda776195dc93a35c6e978b18e823bf54c9ffb
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 6ea6d94453583c6b5ed680f96ebc43d33d0262a0
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>ローカルまたはリモートから SSH 経由で Azure Toolkit for IntelliJ を使用して HDInsight クラスター上の Spark アプリケーションをデバッグする
 
 この記事では、Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight クラスター上でアプリケーションをリモート デバッグするための詳細な手順を紹介します。 プロジェクトをデバッグするために、「[Debug HDInsight Spark applications with Azure Toolkit for IntelliJ (Azure Toolkit for IntelliJ を使用して HDInsight Spark アプリケーションをデバッグする)](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)」ビデオを参照することもできます。
 
 **前提条件**
-* **Azure Toolkit for IntelliJ のHDInsight ツール**。 このツールは Azure Toolkit for IntelliJ に付属しています。 詳細については、「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation)」を参照してください。 **Azure Toolkit for IntelliJ**。 このツールキットは、HDInsight クラスター向けの Spark アプリケーションの作成に使用します。 詳細については、「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)」を参照してください。
+* **Azure Toolkit for IntelliJ のHDInsight ツール**。 このツールは Azure Toolkit for IntelliJ に付属しています。 詳細については、「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/azure/azure-toolkit-for-intellij-installation)」を参照してください。 **Azure Toolkit for IntelliJ**。 このツールキットは、HDInsight クラスター向けの Spark アプリケーションの作成に使用します。 詳細については、「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin)」を参照してください。
 
-* **ユーザー名とパスワードを使って管理された HDInsight SSH サービス**。 詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)」と「[SSH トンネリングを使用して Ambari Web UI、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel)」を参照してください。 
+* **ユーザー名とパスワードを使って管理された HDInsight SSH サービス**。 詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)」と「[SSH トンネリングを使用して Ambari Web UI、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](https://docs.microsoft.com/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel)」を参照してください。 
  
 ## <a name="learn-how-to-perform-local-run-and-debugging"></a>ローカルで実行してデバッグする方法
 ### <a name="scenario-1-create-a-spark-scala-application"></a>シナリオ 1: Spark Scala アプリケーションを作成する 

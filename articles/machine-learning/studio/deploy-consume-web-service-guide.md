@@ -3,7 +3,7 @@ title: "Azure Machine Learning Web サービス: デプロイと使用 | Microso
 description: "Web サービスをデプロイおよび使用するためのリソース。"
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.assetid: 47635376-d1f4-4ea4-a6af-bd1f99f69a69
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 9841b61c21586976ee06ffc1fe4d01e3fc3428b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0afbd54ddad4cc4be2b35c85d81abe90c717692
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning Web サービス: デプロイと使用
 Azure Machine Learning により、Machine Learning のワークフローとモデルを Web サービスとしてデプロイできます。 この Web サービスを使用すると、インターネット経由で機械学習モデルをアプリケーションから呼び出して、リアルタイムまたはバッチ モードで予測することができます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。
@@ -26,6 +26,7 @@ Azure Machine Learning により、Machine Learning のワークフローとモ�
 次のセクションでは、作業を開始するために役立つチュートリアル、コード、ドキュメントへのリンクを示します。
 
 ## <a name="deploy-a-web-service"></a>Web サービスのデプロイ
+
 ### <a name="with-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使って
 Machine Learning Studio と Microsoft Azure Machine Learning Web サービス ポータルを使用すると、コードを記述せずに、Web サービスをデプロイして管理することができます。
 
@@ -58,7 +59,7 @@ Web サービス用の Azure Machine Learning リソースプロバイダーで�
 
 * ストレージ アカウントの名前とキー
 
-    ストレージ アカウントの名前とキーは、[Azure Portal](https://portal.azure.com/) または [Azure クラシック ポータル](http://manage.windowsazure.com/)から取得できます。
+    ストレージ アカウントの名前とキーは、[Azure Portal](https://portal.azure.com/) から取得できます。
 * コミットメント プラン ID
 
     プラン ID を取得するには、 [Azure Machine Learning Web サービス](https://services.azureml.net) ポータルにサインインし、プラン名をクリックします。

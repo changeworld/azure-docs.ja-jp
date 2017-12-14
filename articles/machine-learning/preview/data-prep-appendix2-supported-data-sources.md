@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: db4774de28a17e022de111986f72a1f15ec32beb
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 458338cd23c704c40c512dd96b22a4790f27d017
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Azure Machine Learning データ準備のサポートされているデータ ソース 
 この記事では、Azure Machine Learning データ準備で現在サポートされているデータ ソースについて説明します。
@@ -24,6 +24,25 @@ ms.lasthandoff: 11/06/2017
 このリリースでサポートされているデータ ソースは次のとおりです。
 
 ## <a name="types"></a>型 
+
+### <a name="sql-server"></a>SQL Server
+オンプレミスの SQL Server または Azure SQL データベースから読み取ります。
+
+#### <a name="options"></a>オプション
+- サーバー アドレス
+- 信頼できるサーバー (サーバー上の証明書が有効ではない場合でも 慎重に使用してください)。
+- 認証方法 (Windows、サーバー)
+- ユーザー名
+- パスワード
+- 接続先のデータベース
+- SQL クエリ
+
+#### <a name="notes"></a>メモ
+- sql-variant 型の列はサポートされません
+- Time 列は変換され、データベースの時刻に日付 1970/1/1 を付加して決定されます
+- Spark クラスター上で実行すると、1583 年よりも前の日付の場合、すべてのデータ関連の列 (date、datetime、datetime2、datetimeoffset) は不適切な値を評価します
+- 10 進数の列の値は 10 進数への変換のために有効桁数を失う可能性があります
+
 ### <a name="directory-vs-file"></a>ディレクトリとファイル
 1 つのファイルを選択し、データ準備に読み込みます。 ファイルの種類が解析され、次の画面に表示されるファイル接続の既定のパラメーターを決定します。
 
@@ -88,6 +107,9 @@ Parquet データ セットは、複数の .parquet ファイルのコレクシ�
 ## <a name="locations"></a>場所
 ### <a name="local"></a>ローカル
 ローカルのハード ドライブまたはマップされたネットワーク上の保存場所。
+
+### <a name="sql-server"></a>SQL Server
+オンプレミスの SQL Server または Azure SQL データベース。
 
 ### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 Azure サブスクリプションを必要とする Azure Blob Storage。

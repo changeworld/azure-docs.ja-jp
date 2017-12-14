@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Azure Acitve Directory、戦略、概念実証、PoC"
 documentationcenter: 
 author: dstefanMSFT
-manager: asuthar
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: dstefan
-ms.openlocfilehash: 7d43be3cbfd63b6bc5f06426e9810a37bbf3d071
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ff4a8601b619837d835ec25c26b1f7e69b46ae85
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-ingredients"></a>Azure Active Directory の概念実証戦略の成分 
 

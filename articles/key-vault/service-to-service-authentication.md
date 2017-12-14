@@ -12,11 +12,11 @@ ms.prod:
 ms.service: microsoft-keyvault
 ms.technology: 
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: f67f81aeee0775ea8d90e4459f2c46266a774786
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: bff4b15ca2f1c985c4b4e27d159adaa5fd039553
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -28,7 +28,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 `Microsoft.Azure.Services.AppAuthentication` ライブラリによって認証が自動的に管理される結果、資格情報ではなくソリューションに重点を置くことができます。
 
-`Microsoft.Azure.Services.AppAuthentication` ライブラリでは、Microsoft Visual Studio、Azure CLI、Azure AD 統合認証を使用したローカル開発がサポートされます。 Azure App Services または Azure 仮想マシン (VM) にデプロイされると、このライブラリは自動的に[管理対象サービス ID](/azure/active-directory/msi-overview) (MSI) を使用します。 コードまたは構成を変更する必要はありません。 MSI を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、このライブラリは、Azure AD の[クライアントの資格情報](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authenticate-service-principal)を直接使用することもサポートします。
+`Microsoft.Azure.Services.AppAuthentication` ライブラリでは、Microsoft Visual Studio、Azure CLI、Azure AD 統合認証を使用したローカル開発がサポートされます。 Azure App Services または Azure 仮想マシン (VM) にデプロイされると、このライブラリは自動的に[管理対象サービス ID](/azure/active-directory/msi-overview) (MSI) を使用します。 コードまたは構成を変更する必要はありません。 MSI を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、このライブラリは、Azure AD の[クライアントの資格情報](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)を直接使用することもサポートします。
 
 <a name="asal"></a>
 ## <a name="using-the-library"></a>ライブラリの使用
@@ -57,7 +57,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 `AzureServiceTokenProvider` クラスは、トークンをメモリ内にキャッシュし、有効期限の直前に Azure AD から取得します。 このため、`GetAccessTokenAsync` メソッドを呼び出す前に有効期限を確認する必要がなくなります。 トークンが必要になった時点で、いつでもメソッドを呼び出すことができます。 
 
-`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[Azure サービスは管理対象サービス ID をサポートしますか](https://docs.microsoft.com/en-us/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity)」を参照してください。
+`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[Azure サービスは管理対象サービス ID をサポートしますか](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity)」を参照してください。
 
 
 <a name="samples"></a>

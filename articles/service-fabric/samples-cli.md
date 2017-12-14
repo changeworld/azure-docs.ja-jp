@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 08/22/2017
+ms.date: 12/06/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 5c8eb783459928104b91529cd56be369c3b332ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 218b6065b4bd4f05ca578dc2b20d99be4cc417a3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-cli-samples"></a>Azure Service Fabric CLI のサンプル
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 0d972e8b9ffb8bfe158ec394baf237ef65333026
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 1a2107f0f813c39ec3e9676ec952803f6be2ebf9
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>ストレージ最適化済み仮想マシンのサイズ
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 12/01/2017
 
 
 ## <a name="other-sizes"></a>その他のサイズ
-- [汎用](../windows/sizes-general.md)
-- [コンピューティングの最適化](../windows/sizes-compute.md)
-- [メモリの最適化](../windows/sizes-memory.md)
-- [GPU](../windows/sizes-gpu.md)
-- [ハイ パフォーマンス コンピューティング](../windows/sizes-hpc.md)
+- [汎用](sizes-general.md)
+- [コンピューティングの最適化](sizes-compute.md)
+- [メモリの最適化](sizes-memory.md)
+- [GPU](sizes-gpu.md)
+- [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 
 ## <a name="next-steps"></a>次のステップ
-[Azure コンピューティング ユニット (ACU)](../windows/acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
+[Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

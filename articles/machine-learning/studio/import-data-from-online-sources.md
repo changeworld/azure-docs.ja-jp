@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: 4c699a8e5a9fafa0fec10bcb731f9ba533e3d283
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: c6185cd240d1c040c993e581c27624e1f170f709
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>データのインポート モジュールで各種オンライン データ ソースから Azure Machine Learning Studio にデータをインポートする
 この記事では、各種ソースからのオンライン データのインポートのサポートについて説明し、これらのソースから Azure Machine Learning の実験にデータを移動するために必要な情報を提供します。
@@ -43,7 +43,7 @@ ms.lasthandoff: 12/04/2017
 * Azure SQL Database または Azure VM の SQL Server
 * オンプレミス SQL Server データベース
 * データ フィード プロバイダー (現在は OData)
-* Azure CosmosDB (旧称 DocumentDB)
+* Azure Cosmos DB
 
 Studio の実験でオンライン データ ソースにアクセスするには、[データのインポート][import-data] モジュールを追加し、**[データ ソース]** を選択して、データ アクセスに必要なパラメーターを指定します。 サポートされているオンライン データ ソースは、以下の表にまとめました。 サポートされているファイル形式と、データにアクセスするためのパラメーターも記載されています。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 3bb4c82268fe7805227c213000dc803307876fe7
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 331cc9d27dd416900e0145f3e453dfd3bfcfbcb5
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -58,7 +58,7 @@ OMS エージェントに加えて、ワイヤ データ ソリューション�
 
 | **接続先ソース** | **サポートされています** | **説明** |
 | --- | --- | --- |
-| Windows エージェント | あり | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [OMS エージェント](log-analytics-windows-agents.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
+| Windows エージェント | あり | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [OMS エージェント](log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
 | Linux エージェント | あり | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [OMS エージェント](log-analytics-quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
 | System Center Operations Manager 管理グループ | あり | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 データは管理グループから Log Analytics に転送されます。 |
 | Azure ストレージ アカウント | いいえ | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
@@ -208,7 +208,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
 Windows を実行している各コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. [環境でホストされている Windows コンピューターからのデータの収集](log-analytics-windows-agents.md)に関する記事の手順に従って、OMS エージェントをインストールします。
+1. [環境でホストされている Windows コンピューターからのデータの収集](log-analytics-windows-agent.md)に関する記事の手順に従って、OMS エージェントをインストールします。
 2. 前のセクションのリンクを使用して Windows Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
 3. ウィザードに従ってエージェントをインストールします。
 4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントの場合、ログ ディレクトリは %Programfiles%\Microsoft Dependency Agent\logs です。

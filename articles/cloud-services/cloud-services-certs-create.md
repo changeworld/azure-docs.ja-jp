@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 37a3a990b5f0164b1b6f53727e92e09fece7f6fb
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4032a429901c675436cb5e7fb04aa5645925fa30
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
-証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使用されます (非往来の Azure ポータルではなく、Azure クラシック ポータルを使用している場合は、[管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure に[デプロイ](#deploy)する方法について説明します。
+証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure に[デプロイ](#deploy)する方法について説明します。
 
 Azure で使用される証明書は x.509 v3 証明書であり、別の信頼された証明書によって署名することも、自己署名することもできます。 自己署名証明書は、作成者自身が署名するため、既定では信頼されません。 ほとんどのブラウザーではこの問題を無視できます。 自己署名証明書は、クラウド サービスを開発し、テストする際にのみ使用することをお勧めします。 
 
@@ -30,7 +30,7 @@ Azure が使用する証明書には、プライベート キーか公開キー�
 ## <a name="what-are-service-certificates"></a>サービス証明書とは何でしょうか。
 サービス証明書はクラウド サービスに付属して、サービスとの間のセキュリティで保護された通信を有効にします。 次の例では、Web ロールをデプロイして、公開されている HTTPS エンドポイントを認証できる証明書を指定します。 サービス定義で定義されているサービス証明書は、ロールのインスタンスを実行している仮想マシンに自動的にデプロイされます。 
 
-Azure クラシック ポータルまたは Azure クラシック デプロイメント モデルを使用して、サービス証明書を Azure クラシック ポータルにアップロードすることができます。 サービス証明書は特定のクラウド サービスに関連付けられ、 サービス定義ファイルのデプロイメントに割り当てられています。
+Azure Portal または Azure クラシック デプロイメント モデルを使って、サービス証明書を Azure にアップロードすることができます。 サービス証明書は特定のクラウド サービスに関連付けられ、 サービス定義ファイルのデプロイメントに割り当てられています。
 
 サービス証明書は、サービスとは別に管理することができ、別の人が管理する場合があります。 たとえば、開発者が IT 管理者が 以前 Azure にアップロードした証明書を参照するサービス パッケージをアップロードする場合があります。 IT 管理者は、新しいサービス パッケージをアップロードすることなくサービスの構成を変更する証明書を管理および更新できます。 論理名、ストアの名前、証明書の場所がサービス定義ファイルにあり、証明書の拇印はサービス構成ファイルで指定されているため、新しいサービス パッケージなしで更新することは可能です。 証明書を更新するには、サービス構成ファイルに新しい証明書をアップロードし、拇印値を変更するだけです。
 
@@ -71,7 +71,7 @@ Windows で証明書を作成する簡単な方法として、 `makecert.exe` �
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
-$cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My"
+$cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My" -KeyLength 2048 -KeySpec "KeyExchange"
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
@@ -95,5 +95,5 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ## <a name="next-steps"></a>次のステップ
 [サービス証明書を Azure Portal にアップロードします](cloud-services-configure-ssl-certificate-portal.md)。
 
-[管理 API 証明書](../azure-api-management-certs.md) を Azure クラシック ポータルにアップロードします。 Azure Portal では、認証用の管理証明書は使用しません。
+[管理 API 証明書](../azure-api-management-certs.md) を Azure Portal にアップロードします。
 

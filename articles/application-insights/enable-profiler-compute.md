@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 66ea24cfe9dd03ed62c06daa76ee043886ad7bcc
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 57a4cb560825e0c05ac49df26ac12ee52da52c3c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-cloud-services"></a>Azure VM、Service Fabric、および Cloud Services で Application Insights Profiler を有効にする
 
 この記事では、Azure コンピューティング リソースによってホストされる ASP.NET アプリケーションで Azure Application Insights Profiler を有効にする方法を示します。 
 
-この記事の例には、Azure Virtual Machines、仮想マシン スケール セット、Azure Service Fabric、および Azure Cloud Services のサポートが含まれています。 例は、[Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) デプロイ モデルをサポートするテンプレートを活用しています。  
+この記事の例には、Azure Virtual Machines、仮想マシン スケール セット、Azure Service Fabric、および Azure Cloud Services のサポートが含まれています。 例は、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) デプロイ モデルをサポートするテンプレートを活用しています。  
 
 
 ## <a name="overview"></a>概要
@@ -47,14 +47,14 @@ Azureポータルで、Application Insights インスタンスを作成するか
 このインスタンスは、アプリケーションと同じである必要があります。 要求ごとにテレメトリ データを送信するように構成されています。
 このインスタンスで、Profiler の結果を使用することもできます。  
 
-Azure ポータルで、「[プロファイラーを有効にする](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler)」の手順を完了して、Profiler 用の Application Insights インスタンスの設定を完了します。 この記事の例では、Web アプリをリンクする必要はありません。 ポータルで Profiler が有効になっていることだけを確認してください。
+Azure ポータルで、「[プロファイラーを有効にする](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler)」の手順を完了して、Profiler 用の Application Insights インスタンスの設定を完了します。 この記事の例では、Web アプリをリンクする必要はありません。 ポータルで Profiler が有効になっていることだけを確認してください。
 
 
 ## <a name="set-up-the-application-source-code"></a>アプリケーションのソース コードを設定する
 
 `Request` 操作ごとに、テレメトリ データを Application Insights インスタンスに送信するようにアプリケーションを設定します。  
 
-1. [Application Insights SDK](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview#get-started) をアプリケーション プロジェクトに追加します。 NuGet パッケージが次のバージョンであることを確認します。  
+1. [Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) をアプリケーション プロジェクトに追加します。 NuGet パッケージが次のバージョンであることを確認します。  
   - ASP.NET アプリケーションの場合: [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 以降。
   - ASP.NET Core アプリケーションの場合: [Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0 以降。
   - 他の .NET および .NET Core アプリケーションの場合 (例: Service Fabric ステートレス サービスや Cloud Services worker ロール): [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) または [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 以降。  
@@ -85,7 +85,7 @@ Azure ポータルで、「[プロファイラーを有効にする](https://doc
     }
     ```
 
-  別の `StartOperation<RequestTelemetry>` スコープ内で `StartOperation<RequestTelemetry>` を呼び出すことはサポートされません。 代わりに、入れ子にしたスコープで `StartOperation<DependencyTelemetry>` を使用できます。 次に例を示します。  
+  別の `StartOperation<RequestTelemetry>` スコープ内で `StartOperation<RequestTelemetry>` を呼び出すことはサポートされません。 代わりに、入れ子にしたスコープで `StartOperation<DependencyTelemetry>` を使用できます。 For example:  
 
     ```csharp
     using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))
@@ -138,9 +138,9 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
   * [仮想マシン スケール セット](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
   * [Service Fabric クラスター](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
-1. [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降が使用されていることを確認するために、デプロイされている OS が `Windows Server 2012 R2` 以降であることを確認します。
+1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降が使用されていることを確認するために、デプロイされている OS が `Windows Server 2012 R2` 以降であることを確認します。
 
-2. デプロイ テンプレート ファイルで [Azure 診断](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)拡張機能を探し、`WadCfg` の子要素として次の `SinksConfig` セクションを追加します。 `ApplicationInsightsProfiler` プロパティ値は、自分の Application Insights のインストルメンテーション キーに置き換えます。  
+2. デプロイ テンプレート ファイルで [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)拡張機能を探し、`WadCfg` の子要素として次の `SinksConfig` セクションを追加します。 `ApplicationInsightsProfiler` プロパティ値は、自分の Application Insights のインストルメンテーション キーに置き換えます。  
   ```json
   "SinksConfig": {
     "Sink": [
@@ -152,16 +152,16 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
   }
   ```
 
-  デプロイ テンプレートへの診断拡張機能の追加の詳細については、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+  デプロイ テンプレートへの診断拡張機能の追加の詳細については、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 
 ### <a name="cloud-services"></a>Cloud Services
 
-1. [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降が使用されていることを確認するには、ServiceConfiguration.\*.cscfg ファイルの `osFamily` の値が **"5"** 以降であることを確認すれば十分です。
+1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降が使用されていることを確認するには、ServiceConfiguration.\*.cscfg ファイルの `osFamily` の値が **"5"** 以降であることを確認すれば十分です。
 
-2. アプリケーション ロールで、[Azure 診断の ](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx ファイルを探します。  
+2. アプリケーション ロールで、[Azure 診断の ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx ファイルを探します。  
   ![診断構成ファイルの場所](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
-  ファイルが見つからない場合は、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](https://docs.microsoft.com/en-us/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them)」で、Cloud Services プロジェクトで診断拡張機能を有効にする方法を確認してください。
+  ファイルが見つからない場合は、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them)」で、Cloud Services プロジェクトで診断拡張機能を有効にする方法を確認してください。
 
 3. `WadCfg` の子要素として次の `SinksConfig` セクションを追加します。  
   ```xml
@@ -205,11 +205,11 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
 2. [IIS](https://www.microsoft.com/web/platform/server.aspx) 経由で目的のアプリケーションが実行されている場合は、`IIS Http Tracing` Windows 機能を有効にします。  
   
-  1. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/en-us/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
+  1. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-  2. リモート アクセスの確立に問題がある場合は、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) を使用して次のコマンドを実行できます。  
+  2. リモート アクセスの確立に問題がある場合は、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して次のコマンドを実行できます。  
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
     ```
@@ -223,7 +223,7 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-monitor-web-app-availability)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
-- Azure ポータルで [Profiler トレース](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler)を表示します。
+- アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
+- Azure ポータルで [Profiler トレース](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler)を表示します。
 - Profiler の問題をトラブルシューティングするための情報を [Profilerのトラブルシューティング](app-insights-profiler.md#troubleshooting)に関するセクションで探します。
 - [Application Insights Profiler](app-insights-profiler.md) で profiler の詳細を確認します。

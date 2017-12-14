@@ -3,7 +3,7 @@ title: "Azure Automation ソース管理と GitHub Enterprise の統合 | Micros
 description: "GitHub Enterprise との統合を構成して Automation Runbook のソース管理を実現する方法の詳細について説明します。"
 services: automation
 documentationCenter: 
-authors: eslesar
+authors: georgewallace
 manager: jwhit
 editor: 
 ms.assetid: e01d817c-7d38-421c-adf5-647a4b526eb4
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 2b3ca90382a1c4fb6446799ad539ab8ee603aefc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf72c6d05e2872bea84b8a7218bd318d5b8c9694
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure Automation のシナリオ - Automation ソース管理と GitHub Enterprise の統合
 

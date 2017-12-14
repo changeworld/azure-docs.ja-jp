@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 10/20/2017
 ms.author: LADocs; estfan
 ms.openlocfilehash: 5906605192f9b03f612e6ca3a445434a23713d7f
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="automate-your-first-workflow-to-process-data-with-a-logic-app"></a>ロジック アプリでデータを処理するための初めてのワークフローの自動化
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/21/2017
 > * その RSS フィード項目の詳細が記載された電子メールを送信するアクションを追加します。
 > * ロジック アプリ ワークフローを実行します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+Azure サブスクリプションがない場合は、始める前に[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,9 +69,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | 設定 | 推奨値 | Description | 
    | ------- | --------------- | ----------- | 
    | **名前** | <*ロジック アプリ名*> | 一意のロジック アプリ名を指定します。 | 
-   | **サブスクリプション** | *Azure サブスクリプション名* | 使用する Azure サブスクリプションを選択します。 | 
-   | **[リソース グループ]** | *Azure リソース グループ名* | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成し、このアプリに関連するすべてのリソースを整理します。 | 
-   | **場所** | *Azure データセンターのリージョン* | ロジック アプリをデプロイするデータセンターのリージョンを選択します (たとえば米国西部)。 | 
+   | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
+   | **[リソース グループ]** | <*Azure リソース グループ名*> | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成し、このアプリに関連するすべてのリソースを整理します。 | 
+   | **場所** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
    | **Log Analytics** | オフ | ロジック アプリの診断ログは有効にしますが、このクイックスタートでは**オフ**の設定のままにします。 | 
    |||| 
 
@@ -173,7 +173,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
       ![電子メールの本文の内容を追加する](./media/logic-apps-create-a-logic-app/logic-app-complete.png)
 
-      | フィールド | Description | 
+      | フィールド | 説明 | 
       | ----- | ----------- | 
       | **フィード タイトル** | 項目のタイトルが表示されます。 | 
       | **フィードの公開日付** | 項目の公開日時が表示されます。 | 

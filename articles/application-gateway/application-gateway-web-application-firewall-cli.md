@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: davidmu
-ms.openlocfilehash: c9c740a3a1a28a1a9a4f2abf579fe2adb54e4f47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e60bfc89378569b154f4f973d1dceb683fa58482
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>Azure CLI を使用して新規または既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを構成する
 
@@ -47,7 +47,7 @@ Azure Application Gateway の WAF は、SQL インジェクション、クロス
 
 ## <a name="prerequisite-install-the-azure-cli-20"></a>前提条件: Azure CLI 2.0 のインストール
 
-この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (Azure CLI) をインストールする](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)必要があります。
+この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (Azure CLI) をインストールする](https://docs.microsoft.com/cli/azure/install-az-cli2)必要があります。
 
 ## <a name="waf-configuration-differences"></a>WAF の構成上の相違点
 

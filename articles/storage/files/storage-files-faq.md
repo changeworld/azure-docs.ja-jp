@@ -11,13 +11,13 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/13/2017
+ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: da8ccf35dcc873a5c31842c6eb7bdf72879854c2
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 0bcf56e06c34af94746d42d8af18e32fcd9a7496
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure Files に関してよく寄せられる質問
 [Azure Files](storage-files-introduction.md) は、クラウド上で、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (別称 Common Internet File System または CIFS) を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync (プレビュー) で Azure ファイル共有をキャッシュすることによって高速なアクセスを実現することもできます。
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/20/2017
 この記事では、Azure Files での Azure File Sync の使用を含め、Azure Files の機能についてよく寄せられる質問に答えます。 質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
 
 1. この記事のコメント セクション。
-2. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuredata)。
+2. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、**[ヘルプとサポート]** ボタンを選択し、**[新しいサポート要求]** を選択します。
 
@@ -147,6 +147,9 @@ ms.lasthandoff: 11/20/2017
     Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
     Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
     ```
+
+* <a id="afs-effective-vfs"></a>**ボリューム上に複数のサーバー エンドポイントがある場合、"*ボリュームの空き領域*" はどのように解釈されますか。**  
+    ボリューム上に複数のサーバー エンドポイントがある場合、ボリュームの空き領域の有効なしきい値は、そのボリューム上のサーバー エンドポイントで指定されているボリュームの最大空き領域になります。 ファイルは、どのサーバー エンドポイントに属しているかに関係なく、使用パターンに従って階層化されます。 たとえば、ボリューム上に Endpoint1 と Endpoint2 の 2 つのサーバー エンドポイントがあり、ボリュームの空き領域のしきい値が Endpoint1 では 25%、Endpoint2 では 50% の場合、ボリュームの空き領域のしきい値は、どちらのサーバー エンドポイントでも 50% になります。
 
 * <a id="afs-files-excluded"></a>**Azure ファイル同期によって自動的に除外されるのは、どのファイルまたはフォルダーですか。**  
     Azure ファイル同期は既定で、次のファイルを除外します。

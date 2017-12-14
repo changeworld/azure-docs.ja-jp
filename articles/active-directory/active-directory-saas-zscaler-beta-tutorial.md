@@ -4,7 +4,7 @@ description: "Azure Active Directory と Zscaler Beta の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 56b846ae-a1e7-45ae-a79d-992a87f075ba
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 72b4efc6b3bb58e63a399ab26c42984f070d9307
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 01e76ba6e89fd04fb48e7eb2a3965b2928ba72ff
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>チュートリアル: Azure Active Directory と Zscaler Beta の統合
 
@@ -162,7 +162,7 @@ Zscaler Beta で Azure AD のシングル サインオンを構成してテス�
 
     ![Administration](./media/active-directory-saas-zscaler-beta-tutorial/ic800210.png "Administration")
     
-    a. [ **Save**] をクリックします。
+    a. **[Save]** をクリックします。
 
     b. **[今すぐ認証する]**をクリックします。
 
@@ -258,7 +258,7 @@ Azure AD ユーザーが Zscaler Beta にログインできるようにするに
    
     a. プロビジョニングする有効な Azure AD アカウントの **[UserID]\(ユーザー ID\)**、**[User Display Name]\(ユーザー表示名\)**、**[Password]\(パスワード\)**、**[Confirm Password]\(確認パスワード\)** を入力し、**[Groups]\(グループ\)** と **[Department]\(部署\)** を選びます。
 
-    b. [ **Save**] をクリックします。
+    b. **[Save]** をクリックします。
 
 > [!NOTE]
 > Zscaler Beta から提供されている他の Zscaler Beta ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

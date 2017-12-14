@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: 2b4d04af7fe7a40a1d907a06ab8772f20956bc19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問: 課金、機能、制限、サポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -230,7 +230,7 @@ Retraining API を使用することもできます。
 
 **運用環境にデプロイされた Web サービスはどのように監視できますか?**
 
-予測モデルは、デプロイ後、Azure クラシック ポータル (クラシック Web サービスのみ) または Azure Machine Learning Web サービス ポータルから監視できます。 デプロイされた各サービスには専用のダッシュボードがあり、ここでそのサービスについての監視情報を参照できます。 デプロイされた Web サービスの管理方法の詳細については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」および「[Azure Machine Learning ワークスペースの管理](manage-workspace.md)」を参照してください。
+予測モデルは、デプロイ後、Azure Machine Learning Web サービス ポータルから監視できます。 デプロイされた各サービスには専用のダッシュボードがあり、ここでそのサービスについての監視情報を参照できます。 デプロイされた Web サービスの管理方法の詳細については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」および「[Azure Machine Learning ワークスペースの管理](manage-workspace.md)」を参照してください。
 
 **RRS/BES の出力を確認できまる場所はありますか。**
 
@@ -285,7 +285,7 @@ Machine Learning Studio のモジュールは、一般的に、最大 10 GB の�
 ## <a name="security-and-availability"></a>セキュリティと可用性
 **既定では Web サービスの http エンドポイントにだれがアクセスできますか?エンドポイントへのアクセスはどのようにして制限できますか?**
 
-Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。 既定のエンドポイントは、その API キーを使用して呼び出すことができます。 エンドポイントの追加は、Azure クラシック ポータルからそれぞれのキーを使用して行うか、Web Service Management API を使用してプログラム的に行うことができます。 Web サービスを呼び出すには、アクセス キーが必要です。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」をご覧ください。
+Web サービスがデプロイされた後に、そのサービスに対して既定のエンドポイントが作成されます。 既定のエンドポイントは、その API キーを使用して呼び出すことができます。 エンドポイントの追加は、Web サービス ポータルからそれぞれのキーを使用して行うか、Web Service Management API を使用してプログラムで行うことができます。 Web サービスを呼び出すには、アクセス キーが必要です。 詳しくは、「[Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」をご覧ください。
 
 **Azure ストレージ アカウントが見つからない場合はどうなりますか?**
 
@@ -297,7 +297,7 @@ Machine Learning Studio は、ワークフローの実行時に中間データ�
 
 Machine Learning Studio は、ワークフローの実行時に中間データを格納する際、ユーザーが指定した Azure ストレージ アカウントを使用します。 このストレージ アカウントは、ワークスペースの作成時に Machine Learning Studio に提供され、アクセス キーはそのワークスペースに関連付けられます。 ワークスペースの作成後にアクセス キーが変更されると、ワークスペースはストレージ アカウントにアクセスできなくなります。 その場合、機能が停止し、そのワークスペース内のすべての実験が失敗します。
 
-ストレージ アカウントのアクセス キーを変更した場合は、Azure クラシック ポータルを使用してワークスペースのアクセス キーを再同期します。  
+ストレージ アカウントのアクセス キーを変更した場合は、Azure Portal を使用してワークスペースのアクセス キーを再同期します。  
 
 ## <a name="support-and-training"></a>サポートとトレーニング
 **どこで Azure Machine Learning のトレーニングを受講できますか?**
@@ -509,7 +509,7 @@ Azure Machine Learning API サービスの請求額は、クラシック Web サ
 
 **Azure Machine Learning Standard レベルにサインアップするには、どうすればよいですか?**
 
-Standard Machine Learning ワークスペースを作成するには、まず Azure サブスクリプションに対するアクセスが必要です。 30 日間の無料試用版 Azure サブスクリプションにサインアップし、後で Azure 有料サブスクリプションにアップグレードすることも、最初から Azure 有料サブスクリプションを購入することもできます。 サブスクリプションへのアクセスを取得後、Microsoft Azure クラシック ポータルから Machine Learning ワークスペースを作成できます。 [こちら](https://azure.microsoft.com/trial/get-started-machine-learning-b/)から詳細な手順をご確認ください。
+Standard Machine Learning ワークスペースを作成するには、まず Azure サブスクリプションに対するアクセスが必要です。 30 日間の無料試用版 Azure サブスクリプションにサインアップし、後で Azure 有料サブスクリプションにアップグレードすることも、最初から Azure 有料サブスクリプションを購入することもできます。 サブスクリプションへのアクセスを取得後、Microsoft Azure Portal から Machine Learning ワークスペースを作成できます。 [こちら](https://azure.microsoft.com/trial/get-started-machine-learning-b/)から詳細な手順をご確認ください。
 
 また、Standard Machine Learning ワークスペースの所有者からの招待によって、その所有者のワークスペースにアクセスするという方法もあります。
 

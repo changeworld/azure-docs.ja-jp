@@ -4,7 +4,7 @@ description: "Azure AD の参加と Azure AD Domain Services を見極める"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
 ms.service: active-directory-ds
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 8f34688c53dc909b0ec97df34bbfc7a24209a314
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: fb28c7a66d26119444dd720c2e134f2818d46cfc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Azure Active Directory の参加と Azure Active Directory Domain Services 間で選定する
 この記事では、Azure Active Directory (AD) の参加と Azure AD Domain Services の違いを説明し、お使いのユースケースに基づく選定を支援します。
 
 ## <a name="azure-ad-registered-and-azure-ad-joined-devices"></a>Azure AD の登録と Azure AD の参加デバイス
-Azure AD では、組織で使用されているデバイスの ID を管理して、これらのデバイスから企業リソースへのアクセスを制御できます。 ユーザーは Azure AD によって個人用デバイス (BYOD) を登録でき、デバイスに ID を提供することになります。 結果として、ユーザーが Azure AD にサインインし、デバイスを使って安全なリソースにアクセスする場合に、Azure AD でデバイスを認証できます。 さらに、Microsoft Intune などのモバイル デバイス管理 (MDM) ソフトウェアを使用してデバイスを管理できます。 この機能では、管理対象およびポリシー準拠のデバイスから、機密性の高いリソースへのアクセスを制限できます。
+Azure AD では、組織で使用されているデバイスの ID を管理して、これらのデバイスから企業リソースへのアクセスを制御できます。 ユーザーは Azure AD によって個人用デバイス (BYOD) を登録でき、デバイスに ID を提供することになります。 結果として、ユーザーが Azure AD にサインインし、デバイスを使って安全なリソースにアクセスする場合に、Azure AD でデバイスを認証できます。 さらに、Microsoft Intune などのモバイル デバイス管理 (MDM) ソフトウェアを使用してデバイスを管理できます。 この機能では、管理対象およびポリシーに準拠しているデバイスから、機密性の高いリソースへのアクセスを制限できます。
 
 組織が所有するデバイスを Azure AD に参加させることもできます。 このメカニズムには、Azure AD での個人用デバイスの登録に相当する利点があります。 さらに、ユーザーは企業の資格情報を使用してデバイスにサインインできます。 Azure AD に参加しているデバイスには、次のような利点があります。
 * Azure AD によって保護されたアプリケーションに対するシングル サインオン (SSO)
-* デバイス間でのユーザー設定の企業ポリシー準拠のローミング
+* デバイス間でのユーザー設定の企業ポリシーに準拠しているローミング
 * 企業の資格情報を使用したビジネス向け Windows ストアへのアクセス
 * Windows Hello for Business
 * 企業のポリシーに準拠しているデバイスからアプリおよびリソースへのアクセス制限

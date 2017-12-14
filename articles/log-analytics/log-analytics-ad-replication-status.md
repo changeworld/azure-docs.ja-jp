@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfe52ef5d9d09ffe179faaf6ffbd90ef964fbda9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e56687519459f93998bcdd92336050093539270a
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Log Analytics で Active Directory レプリケーションの状態を監視する
 
@@ -32,7 +32,7 @@ AD レプリケーションの状態ソリューション パックは、レプ�
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-* 評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを OMS に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを OMS に接続する方法の詳細については、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)」を参照してください。 ドメイン コントローラーが、OMS に接続する既存の System Center Operations Manager 環境の一部である場合、「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
+* 評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを OMS に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを OMS に接続する方法の詳細については、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agent.md)」を参照してください。 ドメイン コントローラーが、OMS に接続する既存の System Center Operations Manager 環境の一部である場合、「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
 * Active Directory のレプリケーションの状態を OMS ワークスペースに追加するには、「 [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」で説明されている手順に従います。  さらに手動で構成する必要はありません。
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD レプリケーションの状態データの収集に関する詳細
@@ -47,7 +47,7 @@ AD レプリケーションの状態ソリューション パックは、レプ�
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-oms"></a>ドメイン コントローラー以外から AD データを OMS に送信するには
 1. コンピューターが、AD レプリケーションの状態ソリューションを使用して監視するドメインのメンバーであることを確認します。
-2. まだ接続されていない場合は、[Windows コンピューターを OMS に接続する](log-analytics-windows-agents.md)か、[既存の Operations Manager 環境を使用してそれを OMS に接続します](log-analytics-om-agents.md)。
+2. まだ接続されていない場合は、[Windows コンピューターを OMS に接続する](log-analytics-windows-agent.md)か、[既存の Operations Manager 環境を使用してそれを OMS に接続します](log-analytics-om-agents.md)。
 3. そのコンピューターで、次のレジストリ キーを設定します。
 
    * キー: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
@@ -89,7 +89,7 @@ AD レプリケーションの状態データが OMS に送信されたら、OMS
 
 廃棄 (tombstone) の有効期間が近づいている、またはそれが経過したレプリケーション エラーは把握しておく必要があります。 廃棄 (tombstone) の有効期間が経過しても 2 つのドメイン コントローラー間でレプリケーション エラーが続いている場合、基になるレプリケーション エラーを修正しても、その 2 つのドメイン コントローラー間でのレプリケーションは無効となります。
 
-廃棄 (tombstone) の有効期間の領域を使用すると、これが発生する危険性ある無効のレプリケーションがある場所を特定できます。 [ **TSL 100% 超** ] カテゴリ内の各エラーは、少なくともフォレストの廃棄 (tombstone) の有効期間、移行元サーバーと移行先サーバーでレプリケーションが行われていないパーティションを表しています。
+廃棄 (tombstone) の有効期間の領域を使用すると、これが発生する危険性ある無効のレプリケーションがある場所を特定できます。 **[TSL 100% 超]** カテゴリ内の各エラーは、少なくともフォレストの廃棄 (tombstone) の有効期間、移行元サーバーと移行先サーバーでレプリケーションが行われていないパーティションを表しています。
 
 このような場合、レプリケーション エラーを修正するだけでは不十分です。 レプリケーションを再開するには、手動で調べて、残留オブジェクトを特定し、クリーンアップする必要があります。 場合によっては、ドメイン コントローラーの使用を停止する必要があります。
 
@@ -111,9 +111,9 @@ AD レプリケーションの状態データが OMS に送信されたら、OMS
 
 ここで、さらにフィルタリングを行い、検索クエリなどの修正を行います。 ログ検索の使用方法の詳細については、「 [ログ検索](log-analytics-log-searches.md)」を参照してください。
 
-[ **HelpLink** ] フィールドには、その特定のエラーの追加情報を含む TechNet ページの URL が表示されます。 このエラーをトラブルシューティングして修正するには、このリンクをブラウザー ウィンドウにコピーして貼り付け、情報を確認します。
+**[HelpLink]** フィールドには、その特定のエラーの追加情報を含む TechNet ページの URL が表示されます。 このエラーをトラブルシューティングして修正するには、このリンクをブラウザー ウィンドウにコピーして貼り付け、情報を確認します。
 
-[ **エクスポート** ] をクリックして、結果を Excel にエクスポートすることもできます。 データのエクスポートは、求めている方法でレプリケーション エラー データを視覚化するうえで役に立ちます。
+**[エクスポート]** をクリックして、結果を Excel にエクスポートすることもできます。 データのエクスポートは、求めている方法でレプリケーション エラー データを視覚化するうえで役に立ちます。
 
 ![Excel にエクスポートされた AD レプリケーションの状態エラー](./media/log-analytics-ad-replication-status/oms-ad-replication-export.png)
 
@@ -148,7 +148,7 @@ A: Active Directory への標準のアクセス許可で十分です。
 ## <a name="troubleshoot-data-collection-problems"></a>データの収集の問題のトラブルシューティング
 AD レプリケーションの状態ソリューション パックでデータを収集する場合、OMS ワークスペースには少なくとも 1 つのドメイン コントローラーが接続されている必要があります。 ドメイン コントローラーに接続するまで、**データをまだ収集している**ことを示すメッセージが表示されます。
 
-1 つのドメイン コントローラーの接続に支援が必要な場合は、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)」のドキュメントを参照してください。 または、ドメイン コントローラーが既存の System Center Operations Manager 環境に接続されている場合は、「 [System Center Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」のドキュメントを参照してください。
+1 つのドメイン コントローラーの接続に支援が必要な場合は、「 [Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agent.md)」のドキュメントを参照してください。 または、ドメイン コントローラーが既存の System Center Operations Manager 環境に接続されている場合は、「 [System Center Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」のドキュメントを参照してください。
 
 ドメイン コントローラーを OMS または SCOM に直接接続しない場合は、「[ドメイン コントローラー以外から AD データを OMS に送信するには](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms)」を参照してください。
 

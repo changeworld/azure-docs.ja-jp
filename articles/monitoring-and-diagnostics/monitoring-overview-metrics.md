@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: eb519aab87c13e8836bf1d41992812762f0cd737
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32ca0ce5148ae2641500c98cb04b0d7db1987960
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 この記事では、Microsoft Azure のメトリック概要、利点、および使用方法について説明します。  
@@ -89,11 +89,11 @@ Azure Monitor には、プレビューで利用できる新しいメトリック
 ## <a name="access-metrics-via-the-rest-api"></a>REST API を使用してメトリックにアクセスする
 Azure メトリックには、Azure Monitor API を使用してアクセスできます。 メトリックの検出とアクセスに役立つ API は 2 つあります。
 
-* [Azure Monitor メトリック定義 REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metricdefinitions) を使うと、サービスに利用できるメトリックの一覧および任意のディメンションにアクセスできます。
-* [Azure Monitor メトリック REST API](https://docs.microsoft.com/en-us/rest/api/monitor/metrics) を使うと、実際のメトリック データの分割、フィルター処理、アクセスを行うことができます。
+* [Azure Monitor メトリック定義 REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使うと、サービスに利用できるメトリックの一覧および任意のディメンションにアクセスできます。
+* [Azure Monitor メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics) を使うと、実際のメトリック データの分割、フィルター処理、アクセスを行うことができます。
 
 > [!NOTE]
-> この記事では、Azure リソースの [メトリックを対象とした新しい API](https://docs.microsoft.com/en-us/rest/api/monitor/) で使用するメトリックについて説明します。 新しいメトリック定義 API およびメトリック API のバージョンは、2017-05-01-preview です。 従来のメトリック定義とメトリックには、API バージョン 2014-04-01 でアクセスできます。
+> この記事では、Azure リソースの [メトリックを対象とした新しい API](https://docs.microsoft.com/rest/api/monitor/) で使用するメトリックについて説明します。 新しいメトリック定義 API およびメトリック API のバージョンは、2017-05-01-preview です。 従来のメトリック定義とメトリックには、API バージョン 2014-04-01 でアクセスできます。
 >
 >
 

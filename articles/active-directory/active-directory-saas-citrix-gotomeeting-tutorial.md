@@ -4,7 +4,7 @@ description: "Azure Active Directory と GoToMeeting の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: jeedes
-ms.openlocfilehash: e8871ea9c3aa9f962bf961a8b44b748392a56ba7
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 1c3ea5175b02e35e7c624ce936d59fd82163b0fc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>チュートリアル: Azure Active Directory と GoToMeeting の統合
 
@@ -167,7 +167,7 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
 
     b. **メタデータ URL** (前の手順で生成したもの) を **[メタデータ URL]** テキスト ボックスに貼り付けます。
 
-    c. [ **Save**] をクリックします。
+    c. **[Save]** をクリックします。
 
 11. **メタデータ ファイル**の場合は、次の手順を実行します。
 
@@ -177,7 +177,7 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
 
     b. ダウンロードしたメタデータ ファイルをアップロードするには、**[Upload metadata file]\(メタデータ ファイルのアップロード\)** をクリックします。
 
-    c. [ **Save**] をクリックします。
+    c. **[Save]** をクリックします。
 
 12. **手動**の場合は、次の手順を実行します。
 
@@ -191,7 +191,7 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
 
     d. ダウンロードしたメタデータ ファイルから X509Certificate を抽出し、**[Upload certificate]\(証明書のアップロード\)** をクリックしてこの証明書をアップロードします。
 
-    e. [ **Save**] をクリックします。
+    e. **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -279,7 +279,7 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-* [[ユーザー プロビジョニングの構成]](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-citrixgotomeeting-provisioning-tutorial)
+* [[ユーザー プロビジョニングの構成]](https://docs.microsoft.com/azure/active-directory/active-directory-saas-citrixgotomeeting-provisioning-tutorial)
 
 
 <!--Image references-->

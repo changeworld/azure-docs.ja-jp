@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/22/2017
 ms.author: kmouss
-ms.openlocfilehash: c2b406530aec60299ea2db38ad9e34895fe36dcd
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 245bffbc208ce67d990a63e744c42dc671686b4b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure Hybrid Benefit を使用して、Azure でサポートされるプラットフォームの Windows Server イメージまたはカスタムの Windows イメージから新しい仮想マシンをデプロイできます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
@@ -58,10 +58,10 @@ Azure Marketplace から利用できるすべての Windows Server イメージ�
 ```powershell
 Get-AzureRmVMImagesku -Location westus -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
-手順に従って [PowerShell で Windows 仮想マシンを作成](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)し、LicenseType = "Windows_Server" を渡すことができます。 このオプションを使用すると、Azure で既存の Windows Server ライセンスを使用することができます。
+手順に従って [PowerShell で Windows 仮想マシンを作成](#https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)し、LicenseType = "Windows_Server" を渡すことができます。 このオプションを使用すると、Azure で既存の Windows Server ライセンスを使用することができます。
 
 ### <a name="portal"></a>ポータル
-手順に従って [Azure Portal で Windows 仮想マシンを作成](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)し、既存の Windows Server ライセンスを使用するオプションを選択できます。
+手順に従って [Azure Portal で Windows 仮想マシンを作成](#https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)し、既存の Windows Server ライセンスを使用するオプションを選択できます。
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>既存の VM を Windows Server 向け Azure ハイブリッド特典を使用するように変換する
 Windows Server 向け Azure ハイブリッド特典を利用するように変換したい既存の VM がある場合は、VM のライセンスの種類を以下のように更新できます。
@@ -181,17 +181,17 @@ foreach ($vm in $vms) {"VM Name: " + $vm.Name, "   Azure Hybrid Benefit for Wind
             "adminPassword": "[parameters('adminPassword')]"
     }
 ```
-[仮想マシン スケール セットを作成して展開](#https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create)し、LicenseType プロパティを設定することもできます
+[仮想マシン スケール セットを作成して展開](#https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create)し、LicenseType プロパティを設定することもできます
 
 ## <a name="next-steps"></a>次のステップ
 [Azure ハイブリッド特典でコストを削減する方法](https://azure.microsoft.com/pricing/hybrid-use-benefit/)について詳しく読みます
 
-[Windows Server 向け Azure ハイブリッド特典のライセンスの詳しいガイダンス](https://docs.microsoft.com/en-us/windows-server/get-started/azure-hybrid-benefit)を確認します。
+[Windows Server 向け Azure ハイブリッド特典のライセンスの詳しいガイダンス](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)を確認します。
 
 [Resource Manager テンプレートの使用方法](../../azure-resource-manager/resource-group-overview.md)の詳細を確認します
 
 [Windows Server 向け Azure ハイブリッド特典と Azure Site Recovery によって、Azure へのアプリケーションの移行のコスト効率を高める方法](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)の詳細を確認します
 
-[マルチテナント ホスティング権限を使用した Azure 上の Windows 10](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) について確認します
+[マルチテナント ホスティング権限を使用した Azure 上の Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) について確認します
 
 [よく寄せられる質問](#https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/faq/)を参照します

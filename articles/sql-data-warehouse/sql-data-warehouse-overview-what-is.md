@@ -4,7 +4,7 @@ description: "エンタープライズ クラスの分散データベースで�
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
-manager: bjhubbard
+manager: jenniehubbard
 editor: 
 ms.assetid: 4006c201-ec71-4982-b8ba-24bba879d7bb
 ms.service: sql-data-warehouse
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: overview
 ms.date: 10/23/2017
-ms.author: jrj;barbkess
-ms.openlocfilehash: d5ad5b566bd8d40ab6d7a9151af54890fd47cc88
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: jrj
+ms.openlocfilehash: 7fd17c29c413905084c6b3736018d111d3b28fea
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="what-is-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の概要
 
@@ -41,9 +41,9 @@ SQL Data Warehouse はカラム型ストレージを使用してリレーショ�
 
 SQL Data Warehouse は、データのニーズ、規模の大小に合わせて柔軟に設計された[パフォーマンス レベル](performance-tiers.md)を提供しています。 そのため、弾力性やコンピューティングに合わせて最適化された、データ ウェアハウスを選択できます。 
 
-- **弾力性パフォーマンス レベル用の最適化**では、アーキテクチャのコンピューティング層とストレージ層を分けます。 この選択肢は、短期間のピーク活動をサポートするために頻繁にスケーリングすることで、コンピューティングとストレージの分離をフルに活用できるワークロードを得意としています。 このコンピューティング層は、最低レベルの価格であり、スケーリングでお客様のワークロードの大半をサポートできます。
+- **弾力性パフォーマンス レベル用の最適化**では、アーキテクチャのコンピューティング層とストレージ層を分けます。 このオプションは、短期間のピーク活動をサポートするために頻繁にスケーリングすることで、コンピューティングとストレージの分離を完全に活用できるワークロードが特長です。 このコンピューティング層は、最低レベルの価格であり、スケーリングによりお客様のワークロードの大半をサポートできます。
 
-- **コンピューティング パフォーマンス レベル用の最適化**では、最新の Azure ハードウェアを使用して、新しい NVMe ソリッド ステート ディスク キャッシュを導入し、最も頻繁にアクセスされるデータ (必要なデータ) に CPU を継続的に割り当てます。 このパフォーマンス レベルはストレージの階層処理を自動的に実行し、すべての IO がコンピューティング層のローカルで行われるので、複雑なクエリを得意としています。 さらに、SQL Data Warehouse にサイズ制限なしでデータを格納できるように列ストアは強化されています。 コンピューティング パフォーマンス レベル用の最適化では、最高レベルのスケーラビリティが提供されるので、最大 30,000 コンピューティング Data Warehouse ユニット (cDWU) までスケール アップできます。 継続的で超高速なパフォーマンスが必要なワークロードにこの層を選択してください。
+- **コンピューティング パフォーマンス レベル用の最適化**では、最新の Azure ハードウェアを使用して、新しい NVMe ソリッド ステート ディスク キャッシュを導入し、最も頻繁にアクセスされるデータ (必要なデータ) に CPU を継続的に割り当てます。 このパフォーマンス レベルはストレージの階層処理を自動的に実行し、すべての IO がコンピューティング層のローカルで行われるので、複雑なクエリに適しています。 さらに、SQL Data Warehouse にサイズ制限なしでデータを格納できるように列ストアは強化されています。 コンピューティング パフォーマンス レベル用の最適化では、最高レベルのスケーラビリティが提供されるので、最大 30,000 コンピューティング Data Warehouse ユニット (cDWU) までスケール アップできます。 継続的で超高速なパフォーマンスが必要なワークロードにこの層を選択してください。
 
 ## <a name="next-steps"></a>次のステップ
 SQL Data Warehouse の概要については学習したので、次はすばやく [SQL Data Warehouse を作成][create a SQL Data Warehouse]し、[サンプル データを読み込む][load sample data]方法について学習してください。 Azure に慣れていない場合に新しい用語を調べるには、[Azure 用語集][Azure glossary]が役立ちます。 または、次の SQL Data Warehouse リソースも確認できます。  

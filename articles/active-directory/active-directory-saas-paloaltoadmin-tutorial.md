@@ -4,7 +4,7 @@ description: "Azure Active Directory と Palo Alto Networks - Admin UI の間で
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: a826eaec-15af-4c85-8855-8a3374d1efb9
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e73739588f1422e1e5b724784eedd6f25d71bf9
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 5dca976449ee856cc61407d0eae831fc1e1e7a50
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>チュートリアル: Azure Active Directory と Palo Alto Networks - Admin UI の統合
 
@@ -167,7 +167,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
 
     a. **[Profile Name]\(プロファイル名\)** ボックスに名前 (「Azure AD Admin UI」など) を入力します。
     
-    b. **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** の **[Browse]\(参照\)** を選択し、Azure Portal からダウンロードした metadata.xml ファイルを選択します。
+    b. **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** の **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードした metadata.xml ファイルを選択します。
     
     c. **[OK]**
 
@@ -209,7 +209,7 @@ Palo Alto Networks - Admin UI で Azure AD のシングル サインオンを構
  
 ### <a name="create-a-palo-alto-networks---admin-ui-test-user"></a>Palo Alto Networks - Admin UI テスト ユーザーの作成
 
-Palo Alto Networks - Admin UI は、ジャストインタイムのユーザー プロビジョニングをサポートしているため、ユーザーは正常に認証された後、システムに存在しなければ自動的に作成されます。 ここで手動での操作は一切必要ありません。
+Palo Alto Networks - Admin UI は、ジャストインタイムのユーザー プロビジョニングをサポートしているため、ユーザーは正常に認証された後、システムに存在しなければ自動的に作成されます。 ここでは何も行う必要はありません。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -217,7 +217,7 @@ Palo Alto Networks - Admin UI は、ジャストインタイムのユーザー �
 
 ![ユーザー ロールを割り当てる][200] 
 
-**を Palo Alto Networks - Admin UI に割り当てるには、次の手順に従います。**
+ **を Palo Alto Networks - Admin UI に割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 

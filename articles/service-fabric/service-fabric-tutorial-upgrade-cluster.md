@@ -14,15 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
-ms.openlocfilehash: 15acfbce3bde585ed2b39762b08733901133a3dd
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.custom: mvc
+ms.openlocfilehash: faf134bc0952da913e90a93bc872a53f5f2369ff
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="upgrade-the-runtime-of-a-service-fabric-cluster"></a>Service Fabric クラスターのランタイムをアップグレードします。
 
-このチュートリアルは、4 つのシリーズの一部で、Azure Service Fabric クラスター上の Service Fabric ランタイムをアップグレードする方法について説明します。 チュートリアルのこの部分は、Azure で実行されている Service Fabric クラスター用に書かれており、自己ホスト型の Service Fabric クラスターには適用されません。
+このチュートリアルは、3 つのシリーズの一部で、Azure Service Fabric クラスター上の Service Fabric ランタイムをアップグレードする方法について説明します。 チュートリアルのこの部分は、Azure で実行されている Service Fabric クラスター用に書かれており、スタンドアロン Service Fabric クラスターには適用されません。
 
 > [!WARNING]
 > チュートリアルのこの部分では、PowerShell が必要です。 クラスターのランタイムをアップグレードする機能は、Azure CLI ツールでまだサポートされていません。 代替方法として、クラスターはポータルからアップグレードできます。 詳細については、「[Azure Service Fabric クラスターのアップグレード](service-fabric-cluster-upgrade.md)」をご覧ください。
@@ -34,6 +35,13 @@ ms.lasthandoff: 11/29/2017
 > [!div class="checklist"]
 > * クラスター バージョンの読み取り
 > * クラスター バージョンの設定
+
+このチュートリアル シリーズで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * テンプレートを使用して、セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成する
+> * [クラスターをスケールインまたはスケールアウトする](service-fabric-tutorial-scale-cluster.md)
+> * クラスターのランタイムをアップグレードする
+> * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に
@@ -190,3 +198,7 @@ sfctl cluster upgrade-status
 > * クラスターのランタイムのバージョンを取得する
 > * クラスター ランタイムをのアップグレードする
 > * アップグレードを監視する
+
+次のチュートリアルでは、Service Fabric クラスターを使用して API Management をデプロイする方法について説明します。
+> [!div class="nextstepaction"]
+> [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)

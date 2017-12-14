@@ -1,29 +1,53 @@
 - name: Azure HDInsight のドキュメント
   href: /azure/hdinsight
-- name: HDInsight でのエンタープライズ セキュリティ
+- name: エンタープライズ セキュリティ
   items:
     - name: 概要
       href: apache-domain-joined-introduction.md
-    - name: ドメイン参加済み HDInsight の計画
+    - name: ドメイン参加済みクラスターの計画
       href: apache-domain-joined-architecture.md
-    - name: コンポーネントのバージョン管理
-      href: ../hdinsight-component-versioning.md
-      maintainContext: true
-- name: 作業開始
-  items:
-    - name: ドメイン参加済み HDInsight の構成
+    - name: ドメイン参加済みサンドボックス環境の構成
       href: apache-domain-joined-configure.md
-    - name: Azure AD DS によるドメイン参加済み HDInsight の構成
+    - name: Azure AD DS によるドメイン参加済みクラスターの構成
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Hive ポリシーを構成する
       href: apache-domain-joined-run-hive.md
     - name: 容量計画
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
-- name: 方法
-  items:
-    - name: クラスターの管理
+    - name: ドメイン参加済みクラスターの管理
       href: apache-domain-joined-manage.md
+- name: データのセキュリティ保護
+  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+  maintainContext: true
+- name: ネットワーク アクセス
+  items:
+    - name: Azure VNet の HDInsight
+      href: ../hdinsight-extend-hadoop-virtual-network.md
+      maintainContext: true
+    - name: HDInsight とオンプレミス ネットワークの接続
+      href: ../connect-on-premises-network.md
+      maintainContext: true
+    - name: Azure VNet での HBase クラスターの作成
+      href: ../hbase/apache-hbase-provision-vnet.md
+      maintainContext: true
+    - name: Azure VNet での HBase クラスター レプリケーション
+      href: ../hbase/apache-hbase-replication.md
+      maintainContext: true
+- name: OMS を使用した監視
+  items:
+    - name: Azure Log Analytics の使用
+      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+      maintainContext: true
+    - name: クラスター固有のダッシュボード
+      href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+      maintainContext: true
+    - name: Log Analytics でのクエリの使用
+      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+      maintainContext: true
+    - name: クラスター パフォーマンスの監視
+      href: ../hdinsight-key-scenarios-to-monitor.md
+      maintainContext: true
 - name: リファレンス
   items:
     - name: コード サンプル

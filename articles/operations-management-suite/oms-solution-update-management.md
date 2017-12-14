@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2017
-ms.author: eslesar
-ms.openlocfilehash: 839689ab991fdc251608cf79d65a5810db5eeeb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/01/2017
+ms.author: magoedte;eslesar
+ms.openlocfilehash: e3d605b12a1db2fca1048be15e7b365e5336f663
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
 
@@ -57,7 +57,7 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
 更新プログラムの展開で指定した日時に、対象のコンピューターでデプロイが並行して実行されます。  まず、スキャンが実行され、その更新プログラムが必須であることが確認されてからインストールされます。  WSUS クライアント コンピューターの場合、更新プログラムが WSUS で承認されていないと更新プログラムの展開は失敗するので、注意してください。  適用された更新プログラムの結果は OMS に転送され、そこで処理されてダッシュボードに要約が表示されます。また、イベントを検索することもできます。     
 
 ## <a name="prerequisites"></a>前提条件
-* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2008 R2 SP1 以降に対する更新プログラムのデプロイです。  Server Core と Nano Server のインストール オプションはサポートされていません。
+* このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2008 R2 SP1 以降に対する更新プログラムのデプロイです。  Nano Server はサポートされていません。
 
     > [!NOTE]
     > Windows Server 2008 R2 SP1 に更新プログラムをデプロイするためには、.NET Framework 4.5 および WMF 5.0 以降が必要です。
@@ -81,7 +81,7 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
     > このソリューションでは、OMS Agent for Linux が複数の OMS ワークスペースにレポートする構成はサポートされていません。  
     >
 
-OMS Agent for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。  Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agents.md)に関するページを参照してください。  
+OMS Agent for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。  Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agent.md)に関するページを参照してください。  
 
 ### <a name="permissions"></a>アクセス許可
 更新プログラムのデプロイを作成するには、Automation アカウントと Log Analytics ワークスペースの両方で共同作成者ロールを付与されている必要があります。  
@@ -126,7 +126,7 @@ Windows コンピューターでは、次の内容を調べて、OMS とエー�
 1.  コントロール パネルで [Microsoft Monitoring Agent] を開き、**[Azure Log Analytics (OMS)]** タブで、エージェントに "**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**" というメッセージが表示されていることを確認します。   
 2.  Windows イベント ログを開き、**アプリケーションとサービス ログ\Operations Manager** に移動して、ソースのサービス コネクタでイベント ID 3000 および 5002 を検索します。  これらのイベントは、コンピューターが OMS ワークスペースに登録され、構成を受信していることを示しています。  
 
-エージェントが OMS サービスと通信できない場合、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されているのであれば、[Windows エージェントのネットワーク構成](../log-analytics/log-analytics-windows-agents.md#network)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md#network)に関するページを参照して、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。
+エージェントが OMS サービスと通信できない場合、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されているのであれば、[Windows エージェントのネットワーク構成](../log-analytics/log-analytics-windows-agent.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関するページを参照して、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。
 
 > [!NOTE]
 > Linux システムがプロキシまたは OMS ゲートウェイと通信するよう構成されており、このソリューションをオンボードしている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、*proxy.conf* のアクセス許可を更新してください。  
@@ -156,7 +156,7 @@ Operations Manager 管理グループが OMS と通信していることを確�
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 OMS ワークスペースに更新管理ソリューションを追加すると、OMS のダッシュボードに **[Update Management (更新管理)]** タイルが追加されます。 このタイルには、ご利用の環境におけるコンピューターの数と更新プログラムの対応状態が数字とグラフで表示されます。<br><br>
-![更新管理の概要タイル](media/oms-solution-update-management/update-management-summary-tile.png)  
+![Update Management の概要タイル](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 
 ## <a name="viewing-update-assessments"></a>更新プログラムの評価の表示

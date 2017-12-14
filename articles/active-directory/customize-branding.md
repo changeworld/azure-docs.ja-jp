@@ -4,7 +4,7 @@ description: "Azure サインイン ページに会社のブランドを追加�
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 41f4ceea4842303760c5b156e90bd9e0746a7825
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: 0855129c35c0c3d0f1814e8d29b6f3ae7d950db7
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>クイック スタート: Azure AD のサインイン ページに会社のブランドを追加する
 多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。 Azure Active Directory (Azure AD) では、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。 サインイン ページは、Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。 このページを使用して資格情報を入力します。
@@ -88,7 +88,7 @@ Azure AD サインインでは、ユーザーはブラウザーを閉じたり�
 
     ![カスタム ブランドを編集する](./media/customize-branding/edit-branding.png)
 5. カスタマイズする要素に変更を加えます。 すべての要素は省略できます。
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 
 サインイン ページのブランドに加えた変更が表示されるまでに、最大 1 時間かかる場合があります。
 
@@ -103,7 +103,7 @@ Azure AD サインインでは、ユーザーはブラウザーを閉じたり�
 
     ![言語固有のブランド要素を追加する](./media/customize-branding/add-language.png)
 5. カスタマイズする要素に変更を加えます。 すべての要素は省略できます。
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 
 サインイン ページのブランドに加えた変更が表示されるまでに、最大 1 時間かかる場合があります。
 

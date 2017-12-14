@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 9503dc4a1fa8bc7773677de1673fed3abe1c1b51
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 7ae0fbf5f7566bd3f1f6591501b8b004a1e5cb0f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="prepare-a-geo-replicated-azure-container-registry"></a>geo レプリケーション Azure Container Registry の準備
 
@@ -93,7 +93,7 @@ Azure Portal で新しいコンテナー レジストリに移動し、**[SERVIC
 
 geo レプリケーションを構成したので、コンテナー イメージを構築し、レジストリにプッシュします。 イメージをプッシュする前に、まず ACR インスタンスにログインする必要があります。 [Basic、Standard、および Premium SKU](container-registry-skus.md) では、Azure ID を使用して認証できます。
 
-[az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#az_acr_login) コマンドを使用して、レジストリの資格情報を認証し、キャッシュします。 `<acrName>` を、前の手順で作成したレジストリの名前に置き換えます。
+[az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) コマンドを使用して、レジストリの資格情報を認証し、キャッシュします。 `<acrName>` を、前の手順で作成したレジストリの名前に置き換えます。
 
 ```azurecli
 az acr login --name <acrName>

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: e4a53d053a4c792f54e215c19a8f0c4064815839
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 50bcb71cd4f52386e9ea428fc124ac30ae9a862b
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>CENC とマルチ DRM および Access Control: Azure および Azure Media Services での参照設計と実装
  
@@ -186,8 +186,8 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 
 1. テスト資産を準備します。テスト ビデオを Azure Media Services のマルチビットレートの Fragmented MP4 にエンコード/パッケージ化します。 この資産は、DRM では保護されません。 DRM 保護は、後で動的保護によって行われます。
 2. キー ID および (必要に応じてキー シードから) コンテンツ キーを作成します。 このトピックでは、2 つのテスト資産のために 1 セットのキー ID とコンテンツ キーだけを使用するので、キー管理システムは必要ありません。
-3. AMS API を使用して、テスト資産用のマルチ DRM ライセンス配信サービスを構成します。 Azure Media Services のライセンス サービスではなく、会社または会社のベンダーによるカスタム ライセンス サーバーを使用している場合は、この手順を省略し、ライセンス配信を構成するステップでライセンス取得 URL を指定できます。 承認ポリシーの制限、異なる DRM ライセンス サービスのライセンス応答テンプレートなど、一部の詳細構成を指定するには AMS API が必要です。現在の Azure ポータルでは、この構成に必要な UI はまだ提供されていません。 API レベルの情報およびサンプル コードについては、「 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)」を参照してください。
-4. AMS API を使用して、テスト資産の資産配信ポリシーを構成します。 API レベルの情報およびサンプル コードについては、「 [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)」を参照してください。
+3. AMS API を使用して、テスト資産用のマルチ DRM ライセンス配信サービスを構成します。 Azure Media Services のライセンス サービスではなく、会社または会社のベンダーによるカスタム ライセンス サーバーを使用している場合は、この手順を省略し、ライセンス配信を構成するステップでライセンス取得 URL を指定できます。 承認ポリシーの制限、異なる DRM ライセンス サービスのライセンス応答テンプレートなど、一部の詳細構成を指定するには AMS API が必要です。現在の Azure ポータルでは、この構成に必要な UI はまだ提供されていません。 API レベルの情報およびサンプル コードについては、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)」をご覧ください。
+4. AMS API を使用して、テスト資産の資産配信ポリシーを構成します。 API レベルの情報およびサンプル コードについては、「[PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)」をご覧ください。
 5. Azure で Azure Active Directory テナントを作成して構成します。
 6. Azure Active Directory テナントでユーザー アカウントとグループをいくつか作成します。少なくとも、"EntitledUser" グループを作成し、このグループにユーザーを追加する必要があります。 このグループのユーザーはライセンス取得での権利チェックに合格しますが、このグループに属さないユーザーは合格せず、ライセンスを取得できません。 この "EntitledUser" グループのメンバーであることは、Azure AD によって発行される JWT トークンにおいて必要な "groups" 要求です。 この要求要件は、マルチ DRM ライセンス配信サービスを構成するステップで指定する必要があります。
 7. ビデオ プレーヤーをホストする ASP.NET MVC アプリを作成します。 この ASP.NET アプリは、Azure Active Directory テナントに対するユーザー認証で保護されます。 ユーザー認証後に取得されるアクセス トークンには、適切な要求が含まれます。 このステップには、OpenID Connect API を使用することが推奨されます。 次の NuGet パッケージをインストールする必要があります。
@@ -330,7 +330,7 @@ Web アプリが API アプリを呼び出す場合の認証フローは次の�
 ### <a name="what-about-live-streaming"></a>ライブ ストリーミングの場合
 これまではオンデマンド資産について説明しました。 ライブ ストリーミングの場合
 
-プログラムに関連付けられた資産を「VOD 資産」として扱うことにより、Azure Media Services のライブ ストリーミングでもまったく同じ設計と実装を使用できます。
+プログラムに関連付けられた資産を "VOD 資産" として扱うことにより、Azure Media Services のライブ ストリーミングでもまったく同じ設計と実装を使用できます。
 
 具体的には、Azure Media Services でライブ ストリーミングを行うには、チャネルを作成した後、チャネルの下にプログラムを作成する必要があることはよく知られています。 プログラムを作成するには、プログラムのライブ アーカイブを含む資産を作成する必要があります。 CENC にライブ コンテンツのマルチ DRM 保護を提供するには、プログラムを開始する前に、「VOD 資産」の場合と同じセットアップ/処理を資産に適用する必要があります。
 
@@ -366,7 +366,7 @@ IDX10630: 署名の 'System.IdentityModel.Tokens.X509AsymmetricSecurityKey' は 
 
 プレーヤー Web アプリケーションとそのログインは、 [こちら](https://openidconnectweb.azurewebsites.net/)にあります。
 
-「統合されていない」シナリオが必要な場合: Azure Media Services でホストされているビデオ資産が保護されていない場合、または DRM で保護されていてもトークン認証がない (要求するすべてのユーザーにライセンスを発行する) 場合は、ログインなしでテストできます (ビデオ ストリーミングが HTTP 経由の場合は HTTP に切り替えることによって)。
+"統合されていない" シナリオが必要な場合: Azure Media Services でホストされているビデオ資産が保護されていない場合、または DRM で保護されていてもトークン認証がない (要求するすべてのユーザーにライセンスを発行する) 場合は、ログインなしでテストできます (ビデオ ストリーミングが HTTP 経由の場合は HTTP に切り替えることによって)。
 
 エンド ツー エンドの統合シナリオが必要な場合: ビデオ資産が Azure Media Services による動的な DRM 保護下にあり、トークン認証と、Azure AD によって生成される JWT トークンを使用する場合は、ログインが必要です。
 
@@ -412,7 +412,7 @@ Windows 8.1 での IE 11 以上や、Windows 10 での Microsoft Edge ブラウ�
 
 ![PlayReady に対する EME の使用](./media/media-services-cenc-with-multidrm-access-control/media-services-eme-for-playready2.png)
 
-Windows 10 の Microsoft Edge や IE 11 の EME は、 [PlayReady SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) を対応する Windows 10 デバイス上で呼び出すことができます。 PlayReady SL3000 により、拡張プレミアム コンテンツ (4 K や HDR など) の配信や新しいコンテンツ配信モデル (拡張コンテンツ向けのアーリー ウィンドウ) の利用が可能になります。
+Windows 10 の Microsoft Edge や IE 11 の EME は、[PlayReady SL3000](https://www.microsoft.com/playready/features/EnhancedContentProtection.aspx/) を対応する Windows 10 デバイス上で呼び出すことができます。 PlayReady SL3000 により、拡張プレミアム コンテンツ (4 K や HDR など) の配信や新しいコンテンツ配信モデル (拡張コンテンツ向けのアーリー ウィンドウ) の利用が可能になります。
 
 Windows デバイスにフォーカス: PlayReady は、Windows デバイスで利用可能なハードウェアベースの唯一の DRM です (PlayReady SL3000)。 ストリーミング サービスは EME または UWP アプリケーションを介して PlayReady を使用でき、PlayReady SL3000 を使って他の DRM よりも高い画質を提供することができます。 通常、(サービスの設定や実装に応じて) 2 K コンテンツは Chrome または Firefox へ、4 K コンテンツは Microsoft Edge/IE11 または同じデバイス上の UWP アプリケーションへ配信されます。
 
@@ -441,9 +441,9 @@ X509 証明書で非対称キーを使用する場合 (Microsoft の最新のブ
 
 ![カスタム STS の実行](./media/media-services-cenc-with-multidrm-access-control/media-services-running-sts2.png)
 
-どちらの場合も、ユーザー認証は変わらず、Azure AD によって行われます。 唯一の違いは、JWT トークンが Azure AD ではなくカスタム STS によって発行されることです。 もちろん、動的 CENC 保護を構成するときは、ライセンス配信サービスの制限で JWT トークンの種類として対称キーまたは非対称キーが指定されます。
+どちらの場合も、ユーザー認証は変わらず、Azure AD によって行われます。 唯一の違いは、JWT トークンが Azure AD ではなくカスタム STS によって発行されることです。 動的 CENC 保護を構成するときは、ライセンス配信サービスの制限で JWT トークンの種類として対称キーまたは非対称キーが指定されます。
 
-## <a name="summary"></a>まとめ
+## <a name="summary"></a>概要
 このドキュメントでは、トークン認証によるマルチ ネイティブ DRM およびアクセス制御を使用する CENC、Azure を使用したその設計と実装、Azure Media Services、Azure Media Player について説明しました。
 
 * DRM/CENC サブシステムのすべての必要なコンポーネントを含む参照設計を示しました。

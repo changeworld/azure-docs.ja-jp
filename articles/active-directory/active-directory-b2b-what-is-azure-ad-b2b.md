@@ -4,7 +4,7 @@ description: "Azure Active Directory B2B コラボレーションは、会社の
 services: active-directory
 documentationcenter: 
 author: sasubram
-manager: femila
+manager: mtillman
 editor: 
 tags: 
 ms.assetid: 1464387b-ee8b-4c7c-94b3-2c5567224c27
@@ -17,11 +17,11 @@ ms.date: 06/27/2017
 ms.author: curtand
 ms.custom: aaddev
 ms.reviewer: sasubram
-ms.openlocfilehash: fbc12a52555b190d43b5e953fd4d19923a25b0ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eef95f80f8107c13cd057c56eb5219a353acc854
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="what-is-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションとは
 

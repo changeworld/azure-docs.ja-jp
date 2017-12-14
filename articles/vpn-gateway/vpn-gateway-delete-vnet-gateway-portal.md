@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: cherylmc
-ms.openlocfilehash: 1d289c09465cb8d5e4bfa569441dffcbf562b3bf
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: b67fdfc82bbc132772186e3500079cfcfdafe02b
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>ポータルを使用して仮想ネットワーク ゲートウェイを削除する
 
@@ -28,11 +28,15 @@ ms.lasthandoff: 11/17/2017
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
-VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削除する際に利用できる方法はいくつかあります。
+この記事では、Resource Manager デプロイメント モデルを使用してデプロイされた Azure VPN ゲートウェイを削除する手順について説明します。 VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削除する際に利用できる方法はいくつかあります。
 
 - テスト環境の場合のように、すべてを削除してやり直す場合は、リソース グループを削除することができます。 リソース グループを削除すると、グループ内のすべてのリソースが削除されます。 この方法は、リソース グループ内のどのリソースも保持する必要がない場合にのみお勧めします。 この方法を使用して一部のリソースだけを選択して削除することはできません。
 
 - リソース グループ内の一部のリソースを保持する必要がある場合は、仮想ネットワーク ゲートウェイの削除が少し複雑になります。 仮想ネットワーク ゲートウェイを削除する前に、まず、そのゲートウェイに依存しているリソースをすべて削除する必要があります。 従う手順は、作成した接続の種類と、各接続に依存するリソースによって異なります。
+
+> [!IMPORTANT]
+> 以下の手順では、Resource Manager デプロイメント モデルを使用してデプロイされた Azure VPN ゲートウェイを削除する方法について説明します。 クラシック デプロイメント モデルを使用してデプロイされた VPN ゲートウェイを削除するには、[こちら](vpn-gateway-delete-vnet-gateway-classic-powershell.md)の手順に従って Azure PowerShell を使用してください。
+
 
 ## <a name="delete-a-vpn-gateway"></a>VPN ゲートウェイの削除
 
@@ -63,5 +67,5 @@ VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削
 リソース グループにどのリソースも保持する必要がなく、単に最初からやり直したい場合は、リソース グループ全体を削除できます。 すべてを削除するには、これが簡単な方法です。 次の手順は、Resource Manager デプロイ モデルに該当します。
 
 1. **[すべてのリソース]** でリソース グループを見つけ、クリックしてブレードを開きます。
-2. **[ 削除]** をクリックします。 [削除] ブレードに関連するリソースを表示します。 これらのリソースをすべて削除することを確認します。 削除しない場合は、この記事の上部にある、「[VPN ゲートウェイの削除](#deletegw)」のステップに従ってください。
+2. **[削除]** をクリックします。 [削除] ブレードに関連するリソースを表示します。 これらのリソースをすべて削除することを確認します。 削除しない場合は、この記事の上部にある、「[VPN ゲートウェイの削除](#deletegw)」のステップに従ってください。
 3. 続行するには、削除するリソース グループの名前を入力し、**[削除]** をクリックします。

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1547b5c3a5c629b85ff5fa9de6b39b25531d9ec9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b7686dc5c52737106a8bc819c160b67baaffd147
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 > [!NOTE]
@@ -50,7 +50,7 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 
 - Azure Data Factory v1 のオンデマンド HDInsight のリンクされたサービスでは、Linux ベース HDInsight バージョン 3.3 (またはそれ以前のバージョン) のクラスターを作成できなくなります。 
 
-- 既存の Azure Data Factory v1 オンデマンド HDInsight のリンクされたサービス JSON 定義で、[osType や Version のプロパティ](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1、osType=Windows** から **Version=3.6、osType=Linux** に変更されます。
+- 既存の Azure Data Factory v1 オンデマンド HDInsight のリンクされたサービス JSON 定義で、[osType や Version のプロパティ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)が明示的に指定されていない場合、既定値は **Version=3.1、osType=Windows** から **Version=3.6、osType=Linux** に変更されます。
 
 2018 年 7月 31 日以降:
 
@@ -58,10 +58,10 @@ Azure HDInsight は、いつでもデプロイできる Hadoop クラスター �
 
  **推奨アクション** 
 
-- 影響を受ける Azure Data Factory v1 オンデマンド HDInsight のリンクされたサービス定義の [osType や Version プロパティ](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)を、新しい Linux ベース HDInsight バージョン (HDInsight 3.6) に更新して、最新の Hadoop エコシステム コンポーネントと修正プログラムを使用できるようにします。 
-- 2017 年 12 月 15 日より前の場合は、影響を受けるリンクされたサービスを参照する Azure Data Factory V1 Hive、Pig、MapReduce、および Hadoop のストリーミング アクティビティをテストして、これが、新しい *osType* や *Version* の既定値 (Version=3.6、osType=Linux) またはアップグレード先の明示的な HDInsight バージョンおよび osType と互換性があることを確認します。 互換性の詳細については、「[Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)」および「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions)」を参照してください。 
+- 影響を受ける Azure Data Factory v1 オンデマンド HDInsight のリンクされたサービス定義の [osType や Version プロパティ](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)を、新しい Linux ベース HDInsight バージョン (HDInsight 3.6) に更新して、最新の Hadoop エコシステム コンポーネントと修正プログラムを使用できるようにします。 
+- 2017 年 12 月 15 日より前の場合は、影響を受けるリンクされたサービスを参照する Azure Data Factory V1 Hive、Pig、MapReduce、および Hadoop のストリーミング アクティビティをテストして、これが、新しい *osType* や *Version* の既定値 (Version=3.6、osType=Linux) またはアップグレード先の明示的な HDInsight バージョンおよび osType と互換性があることを確認します。 互換性の詳細については、「[Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux)」および「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions)」を参照してください。 
 - Azure Data Factory v1 オンデマンド HDInsight のリンクされたサービスを引き続き使用して、Windows ベースの HDInsight クラスターを作成する する必要がある場合は、2017 年 12 月 15 日より前に osType を Windows に明示的に設定します。 ただし、やはり、2018 年 7 月 31日の前に、Linux ベースの HDInsight クラスターに移行することをお勧めします。 
-- オンデマンド HDInsight のリンクされたサービスを使用して、Azure Data Factory v1DotNet カスタム アクティビティを実行している場合は、Azure Batch のリンクされたサービスを使用するように DotNet カスタム アクティビティ JSON 定義を更新します。 詳細については、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-use-custom-activities)」を参照してください。 
+- オンデマンド HDInsight のリンクされたサービスを使用して、Azure Data Factory v1DotNet カスタム アクティビティを実行している場合は、Azure Batch のリンクされたサービスを使用するように DotNet カスタム アクティビティ JSON 定義を更新します。 詳細については、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)」を参照してください。 
 
 >[!Note]
 >Azure Data Factory v1 で既存 の BYOC (Bring Your Own Cluster) HDInsight のリンクされたサービスを使用しているお客様、または Azure Data Factory v2 で BYOC と オンデマンド HDInsight のリンクされたサービスを使用しているお客様については、Azure HDInsight クラスターの最新バージョンのサポート ポリシーが既に強制されているため、操作は不要です。 

@@ -6,18 +6,18 @@ documentationcenter:
 author: adamab
 manager: timlt
 editor: tysonn
-ms.service: multiple
+ms.service: azure-portal
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 6c0d76207233a04bdec604d95f1779c62f6e2d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9acb58791cb1412d5e67479ca6490e1548be2c8
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="overview"></a>概要
 
-Azure 内の共有ダッシュボードは、仮想マシンやストレージ アカウントと同様に[リソース](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)です。  このため、共有ダッシュボードは、[Azure Resource Manager REST API](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api)、または [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/overview)、[Azure PowerShell コマンド](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azurermps-4.2.0)、およびこれらの API を使用して構築されたその他の多数の [Azure ポータル](https://portal.azure.com)機能を使用してプログラム的に管理でき、リソース管理を簡易化できます。  
+Azure 内の共有ダッシュボードは、仮想マシンやストレージ アカウントと同様に[リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)です。  このため、共有ダッシュボードは、[Azure Resource Manager REST API](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-rest-api)、または [Azure CLI](https://docs.microsoft.com/cli/azure/overview)、[Azure PowerShell コマンド](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0)、およびこれらの API を使用して構築されたその他の多数の [Azure ポータル](https://portal.azure.com)機能を使用してプログラム的に管理でき、リソース管理を簡易化できます。  
 
 これらの API とツールを使用することにより、リソースの作成、一覧表示、取得、変更、および削除を実行できます。  ダッシュボードはリソースであるため、使用する API やツールを任意に選択できます。
 
@@ -55,7 +55,7 @@ Azure 内の共有ダッシュボードは、仮想マシンやストレージ �
 
 ![[共有] コマンド](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-[共有] コマンドをクリックすると、発行するサブスクリプションとリソース グループを選択するダイアログが表示されます。 選択したサブスクリプションとリソース グループに[書き込みアクセス権が必要](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure)であることに注意してください。
+[共有] コマンドをクリックすると、発行するサブスクリプションとリソース グループを選択するダイアログが表示されます。 選択したサブスクリプションとリソース グループに[書き込みアクセス権が必要](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)であることに注意してください。
 
 ![共有とアクセス](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
@@ -79,11 +79,11 @@ Azure 内の共有ダッシュボードは、仮想マシンやストレージ �
 
 このダッシュボードを任意の仮想マシン用に後で発行する際には、JSON 内のこの文字列すべてをパラメーター化する必要があります。 
 
-Azure でリソースを作成する API には、次の 2 種類があります。 一度に 1 つのリソースを作成する[命令型 API](https://docs.microsoft.com/en-us/rest/api/resources/resources) と、単一の API 呼び出しで依存する複数のリソースの作成を調整する[テンプレート ベースの展開](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy) API があります。 後者は、パラメーター化とテンプレートをネイティブでサポートするため、この例で使用します。
+Azure でリソースを作成する API には、次の 2 種類があります。 一度に 1 つのリソースを作成する[命令型 API](https://docs.microsoft.com/rest/api/resources/resources) と、単一の API 呼び出しで依存する複数のリソースの作成を調整する[テンプレート ベースの展開](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) API があります。 後者は、パラメーター化とテンプレートをネイティブでサポートするため、この例で使用します。
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>テンプレート デプロイを使用して、テンプレートからプログラムによってダッシュボードを作成します。
 
-Azure では、複数のリソースの配置を調整するための機能が提供されています。 展開するリソースを表し、その間の関係を表す展開テンプレートを作成します。  各リソースの JSON 形式は、1 つずつ作成した場合と同じです。 違いは、[テンプレート言語](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)では、変数、パラメーター、基本的な機能などのいくつかの概念が追加されている点です。 この拡張構文は、テンプレートのデプロイの文脈でのみサポートされ、前述の命令型 API では機能しません。
+Azure では、複数のリソースの配置を調整するための機能が提供されています。 展開するリソースを表し、その間の関係を表す展開テンプレートを作成します。  各リソースの JSON 形式は、1 つずつ作成した場合と同じです。 違いは、[テンプレート言語](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)では、変数、パラメーター、基本的な機能などのいくつかの概念が追加されている点です。 この拡張構文は、テンプレートのデプロイの文脈でのみサポートされ、前述の命令型 API では機能しません。
 
 この方法を使用する場合は、テンプレートのパラメーター構文を使用してパラメーター化する必要があります。  次のように、上記で特定したリソース ID のすべてのインスタンスを置換します。
 
@@ -119,7 +119,7 @@ Azure では、複数のリソースの配置を調整するための機能が�
 
 __このドキュメントの末尾に、実際に機能する、詳細なテンプレートがあります。__
 
-テンプレートを作成したら、[REST API](https://docs.microsoft.com/en-us/rest/api/resources/deployments)、[PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy)、[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/group/deployment#az_group_deployment_create)、または[ポータルの [テンプレートのデプロイ] ページ](https://portal.azure.com/#create/Microsoft.Template)を使用してデプロイできます。
+テンプレートを作成したら、[REST API](https://docs.microsoft.com/rest/api/resources/deployments)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)、[Azure CLI](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create)、または[ポータルの [テンプレートのデプロイ] ページ](https://portal.azure.com/#create/Microsoft.Template)を使用してデプロイできます。
 
 ここでは、2 つのバージョンのサンプル ダッシュボード JSON があります。 1 つ目は、既にリソースにバインドされている、ポータルからエクスポートされたバージョンです。 2 つ目は、すべての VM にプログラムを使用してバインドすることができ、Azure Resource Manager を使用して展開できるテンプレート バージョンです。
 

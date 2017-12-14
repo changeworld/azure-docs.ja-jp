@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/04/2017
 ms.author: ryanwi
-ms.openlocfilehash: a4bada3c099e348e2aa188fe08a67ef170ad50ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70d365910569a2acb1c230c803fdfca5cb6b35af
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>C# で最初の Service Fabric ステートフル リライアブル サービス アプリケーションを作成する
 
@@ -84,7 +84,7 @@ Visual Studio で `F5` キーを押して、デバッグ用にアプリケーシ
 
 このクイックスタートで使用したステートフル サービス テンプレートでは、**MyStatefulService.cs** の `RunAsync` メソッドでインクリメントされているカウンター値のみが表示されます。
 
-コードが実行されているノードなど、詳細を確認するには、イベントのいずれかを展開します。 この例では、\_Node\_2 になっていますが、使用するマシンによって異なる可能性があります。
+コードが実行されているノードなど、詳細を確認するには、イベントのいずれかを展開します。 この例では、\_Node\_0 になっていますが、使用するマシンによって異なる可能性があります。
    
 ![診断イベント ビューアーの詳細][6]
 

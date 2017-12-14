@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: c2de89ba3adaaa7d745731cff74269deecef03e2
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 62b1bf66647c762b17410c37fe6ebd996f577d25
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365/Dynamics CRM との間でデータをコピーする
 
@@ -30,14 +30,20 @@ ms.lasthandoff: 11/10/2017
 
 Dynamics CRM/Dynamics 365 のデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを Dynamics CRM/Dynamics 365 にコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
 
-具体的には、この Dynamics コネクタは、次の Dynamics のバージョンと認証の種類をサポートします。
+この Dynamics コネクタは、次の Dynamics のバージョンと認証の種類をサポートします。(*IFD は Internet Facing Deployment の省略形です。*)
 
 | Dynamics のバージョン | 認証の種類 | リンクされたサービスの例 |
 |:--- |:--- |:--- |
 | Dynamics 365 Online <br> Dynamics CRM Online | Office365 | [Dynamics Online + Office365 認証](#dynamics-365-and-dynamics-crm-online) |
 | IFD 対応オンプレミス Dynamics 365 <br> IFD 対応オンプレミス Dynamics CRM 2016 <br> IFD 対応オンプレミス Dynamics CRM 2015 | IFD | [IFD + IFD 認証対応オンプレミス Dynamics](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
-*IFD は Internet Facing Deployment の省略形です。*
+具体的には、Dynamics 365 では、次のアプリケーションの種類がサポートされます。
+
+- Dynamics 365 for Sales
+- Dynamics 365 for Customer Service
+- Dynamics 365 for Field Service
+- Dynamics 365 for Project Service Automation
+- Dynamics 365 for Marketing
 
 > [!NOTE]
 > Dynamics コネクタを使用するには、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティがプルできるようにします。 [リンクされたサービス プロパティ](#linked-service-properties)セクションで構成する方法を参照してください。

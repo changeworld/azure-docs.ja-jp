@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 3d3f31775ae9384faeae20f108b71cea5dcc2934
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04742a587284cf72632360a9575a63a576da36e8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-development-kit-deployment-quickstart"></a>Azure Stack 開発キット デプロイ クイックスタート
 
@@ -31,9 +31,9 @@ ms.lasthandoff: 10/11/2017
 
 2. [**デプロイ パッケージをダウンロードし、展開します**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit)。 開発キット ホストや別のコンピューターにデプロイ パッケージをダウンロードできます。 抽出されたデプロイ ファイルは 60 GB の空きディスク容量を占めます。そのため、別のコンピューターを利用することで、開発キット ホストのハードウェア要件を緩和できます。
 
-3. インストーラーを利用して[**開発キット ホスト**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host)を用意します。 この手順の後、開発キット ホストは Cloudbuilder.vhdx (起動可能オペレーティング システムと Azure Stack インストール ファイルを含む仮想ハード ドライブ) を起動します。
+3. インストーラーを利用して[**開発キット ホスト**](azure-stack-run-powershell-script.md)を用意します。 この手順の後、開発キット ホストは Cloudbuilder.vhdx (起動可能オペレーティング システムと Azure Stack インストール ファイルを含む仮想ハード ドライブ) を起動します。
 
-4. 開発キット ホストで[**開発キットをデプロイします**](azure-stack-run-powershell-script.md#deploy-the-development-kit)。
+4. 開発キット ホストで[**開発キットをデプロイします**](azure-stack-run-powershell-script.md)。
 
 5. Azure Active Directory を利用する構成で Azure Stack をデプロイした場合、Azure Stack に [Azure Marketplace アイテムをダウンロード](azure-stack-download-azure-marketplace-item.md)できるように [Azure に Azure Stack を登録する](azure-stack-register.md)必要があります。
 

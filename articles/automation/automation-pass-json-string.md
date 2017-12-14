@@ -3,7 +3,7 @@ title: "Azure Automation Runbook に JSON オブジェクトを渡す | Microsof
 description: "JSON オブジェクトとして Runbook にパラメーターを渡す方法"
 services: automation
 documentationcenter: dev-center-name
-author: eslesar
+author: georgewallace
 manager: carmonm
 keywords: powershell, runbook, json, azure automation
 ms.service: automation
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
-ms.author: eslesar
-ms.openlocfilehash: e9352ac1a346537d6214590be6dbc9db7ca0f461
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.author: gwallace
+ms.openlocfilehash: 5390ba34a25713aed84d6e778335e30f27c2b1f8
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Azure Automation Runbook に JSON オブジェクトを渡す
 

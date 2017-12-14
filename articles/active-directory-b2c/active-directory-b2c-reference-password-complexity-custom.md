@@ -4,7 +4,7 @@ description: "カスタム ポリシーでパスワードの複雑さの要件�
 services: active-directory-b2c
 documentationcenter: 
 author: saeedakhter-msft
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: 53ef86c4-1586-45dc-9952-dbbd62f68afc
 ms.service: active-directory-b2c
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: c28a1d30127956f6cc589b1efef6bff12117e3f1
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: eb187a120399089f1c3c145a06fbe993f50fb92b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>カスタム ポリシーでパスワードの複雑さを構成する
 
 > [!NOTE]
-> "**この機能はプレビュー段階にあります。**"  この機能でテスト テナントを有効にするには、[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にお問い合わせください。
+> "**この機能はプレビュー段階にあります。**"  この機能でテスト テナントを有効にするには、[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にお問い合わせください。  運用環境のテナントではこれをテストしないでください。
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 

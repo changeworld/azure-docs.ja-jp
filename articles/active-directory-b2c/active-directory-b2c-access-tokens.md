@@ -4,7 +4,7 @@ description: "この記事では、クライアント アプリケーション�
 services: active-directory-b2c
 documentationcenter: android
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: 
 ms.assetid: 1c75f17f-5ec5-493a-b906-f543b3b1ea66
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: parakhj
-ms.openlocfilehash: 7202be4e0e9b8b28b5ec1443d6d248c1738da6fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d2df39118741d4254f7b7fe4c419a00ceb4ba8e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: アクセス トークンの要求
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 1. Azure AD B2C の **[アプリケーション]** メニュー内で、Web API アプリケーション ("Contoso API") を開きます。
 1. **[Published scopes (公開スコープ)]** をクリックします。 ここで、他のアプリケーションに付与できるアクセス許可 (スコープ) を定義します。
 1. 必要に応じて**スコープ値**を追加します (たとえば、"read")。 既定では、"user_impersonation" スコープが定義されます。 これは、不要であれば無視できます。 **[スコープ名]** 列にスコープの説明を入力します。
-1. [ **Save**] をクリックします。
+1. **[Save]** をクリックします。
 
 > [!IMPORTANT]
 > **[スコープ名]** は、**スコープ値**の説明です。 スコープを使用する場合は、必ず**スコープ値**を使用してください。

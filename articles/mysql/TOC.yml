@@ -83,12 +83,6 @@
           href: concepts-compatibility.md
         - name: アプリケーション開発
           href: concepts-database-application-development.md
-    - name: データの移行
-      items:
-        - name: ダンプと復元
-          href: concepts-migrate-dump-restore.md
-        - name: インポートとエクスポート
-          href: concepts-migrate-import-export.md
 - name: ハウツー ガイド
   items:
     - name: サーバーの管理
@@ -107,6 +101,12 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+    - name: データベースの移行
+      items:
+        - name: ダンプと復元
+          href: concepts-migrate-dump-restore.md
+        - name: インポートとエクスポート
+          href: concepts-migrate-import-export.md
     - name: アプリケーションの接続
       items:
         - name: ユーザーの作成
@@ -125,7 +125,7 @@
           href: howto-configure-server-parameters-using-cli.md
     - name: サーバー ログへのアクセス
       items:
-        - name: Azure ポータル
+        - name: Azure Portal
           href: howto-configure-server-logs-in-portal.md
         - name: Azure CLI
           href: howto-configure-server-logs-in-cli.md
@@ -161,3 +161,5 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: 顧客事例
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
+    - name: データベース移行ガイド
+      href: 'https://datamigration.microsoft.com/'

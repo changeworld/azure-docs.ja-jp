@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
-ms.openlocfilehash: 1aadd604e676659475f00760af3b0bdfb13a4792
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b126072424bfc6ad54fd2497ffcdb410b9dc5fe
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC での構成のコンパイル
 
@@ -128,6 +128,50 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 ```
 
 PSCredentials をパラメーターとして渡す方法の詳細については、以下の「 <a href="#credential-assets">**資格情報資産**</a> 」を参照してください。
+
+## <a name="composite-resources"></a>複合リソース
+
+**複合リソース**の利点は、構成の内側に入れ子のリソースとして DSC 構成を使用できることです。  これにより、1 つのリソースに複数の構成を適用することができます。  **複合リソース**の詳細については、「[複合リソース: リソースとしての DSC 構成の使用](https://docs.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite)」を参照してください。
+
+> [!NOTE]
+> **複合リソース**を正常にコンパイルするためには、まず、その複合リソースが依存する DSC リソースを先に Azure Automation アカウント モジュール リポジトリにインストールしておく必要があります。そうしないとインポートが適切に実行されません。
+
+DSC の**複合リソース**を追加するには、リソース モジュールをアーカイブ (*.zip) に追加する必要があります。 Azure Automation アカウントのモジュール リポジトリに移動します。  次に、[モジュールの追加] ボタンをクリックします。
+
+![モジュールの追加](./media/automation-dsc-compile/add_module.png)
+
+そのアーカイブが置かれているディレクトリに移動します。  アーカイブ ファイルを選択し、[OK] をクリックします。
+
+![モジュールの選択](./media/automation-dsc-compile/select_dscresource.png)
+
+すると再びモジュール ディレクトリが表示され、アンパックと Azure Automation への登録が実行される間、**複合リソース**の状態を監視できます。
+
+![複合リソースのインポート](./media/automation-dsc-compile/register_composite_resource.png)
+
+登録したモジュールをクリックすると、その**複合リソース**が構成の中で使用できるようになったことを確認できます。
+
+![複合リソースの確認](./media/automation-dsc-compile/validate_composite_resource.png)
+
+その後、実際の構成の中で、次のようにして**複合リソース**を呼び出すことができます。
+
+```powershell
+
+    Node ($AllNodes.Where{$_.Role -eq "WebServer"}).NodeName
+    {
+            
+            JoinDomain DomainJoin
+            {
+                DomainName = $DomainName
+                Admincreds = $Admincreds
+            }
+
+            PSWAWebServer InstallPSWAWebServer
+            {
+                DependsOn = "[JoinDomain]DomainJoin"
+            }        
+    }
+
+```
 
 ## <a name="configurationdata"></a>ConfigurationData
 **ConfigurationData** によって、環境固有の構成と構造上の構成を分離することができます。 [ConfigurationData](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) の詳細については、 **PowerShell DSC で "環境" から "物" を分離する**ことに関する記事を参照してください。

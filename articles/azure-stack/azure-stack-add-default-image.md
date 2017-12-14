@@ -3,22 +3,22 @@ title: "既定の VM イメージの Azure Stack Marketplace への追加 | Micr
 description: "Windows Server 2016 VM の既定のイメージを Azure Stack Marketplace に追加します。"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 2849E53F-3D58-48A5-8007-3238FC39F630
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
-ms.author: sngun
-ms.openlocfilehash: e5e7ab55800eccea98cbd71ae32bdc611ee3e961
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.author: mabrigg
+ms.openlocfilehash: ed62f2f8441220eb37aea7f4c848702e9821698b
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Windows Server 2016 VM イメージの Azure Stack Marketplace への追加
 
@@ -137,7 +137,7 @@ Windows Server 2016 VM イメージに最新の累積的更新プログラムを
 
 ## <a name="parameters"></a>パラメーター
 
-|New-AzsServer2016VMImage パラメーター|必須|Description|
+|New-AzsServer2016VMImage パラメーター|必須|説明|
 |-----|-----|------|
 |ISOPath|あり|ダウンロードした Windows Server 2016 ISO の完全修飾パス。|
 |Net35|いいえ|Windows Server 2016 イメージに .NET 3.5 ランタイムをインストールします。 既定では、この値は **true** に設定されます。|

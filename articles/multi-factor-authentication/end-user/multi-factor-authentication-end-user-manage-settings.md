@@ -5,7 +5,7 @@ services: multi-factor-authentication
 keywords: "多要素認証のクライアント, 認証の問題, 関連付け ID"
 documentationcenter: 
 author: barlanmsft
-manager: femila
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
 ms.service: multi-factor-authentication
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 58f4b911944523ff78bc420dbe52bf321243f990
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 8d84574283aa0c94ce303b0a7e3bde335c0eb2b8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
 この記事では、2 段階認証または多要素認証の設定の更新方法に関する質問に回答しています。 アカウントへのサインインで問題が発生している場合のトラブルシューティング ヘルプについては、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」をご覧ください。
@@ -48,7 +48,7 @@ ms.lasthandoff: 11/15/2017
 **代表電話番号を変更するには:**  
 
 1. [追加のセキュリティ確認] ページで、現在の電話番号のテキスト ボックスを選択し、新しい電話番号を入力します。  
-2. **[ 保存]** を選択します。  
+2. **[保存]** を選択します。  
 3. この番号が確認オプションに使用する番号である場合は、保存する前にその新しい番号を確認する必要があります。  
 
 **予備の電話番号を追加するには:**  

@@ -3,8 +3,8 @@ title: "Azure Stack 統合システムのスケール ユニット ノードを�
 description: "Azure Stack 統合システムの物理的なスケール ユニット ノードを交換する方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: troettinger
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: f9434689-ee66-493c-a237-5c81e528e5de
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: twooley
-ms.openlocfilehash: 63ba6cedd32bcf6ea3039bc80cc4a3f3407adfa7
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: mabrigg
+ms.openlocfilehash: f3d6215b672be0d8de8ba0d94320b1a2413eadf1
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Azure Stack 統合システムのスケール ユニット ノードを交換する
 

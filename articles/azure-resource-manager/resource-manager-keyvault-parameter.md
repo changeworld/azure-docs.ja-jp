@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2017
+ms.date: 11/30/2017
 ms.author: tomfitz
-ms.openlocfilehash: e789a234979be877d990665902fd6219ae7ec40b
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 7e02bd9c6130ef8b120282fafa9f0ee517890d0d
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 
@@ -66,7 +66,11 @@ Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue
 
 ## <a name="reference-a-secret-with-static-id"></a>固定 ID でのシークレットの参照
 
-キー コンテナーのシークレットを受け取るテンプレートは、その他のテンプレートに似ています。 これは、**テンプレートではなく、パラメーター ファイルでキー コンテナーを参照する**ためです。 たとえば、次のテンプレートでは、管理者のパスワードを含む SQL データベースがデプロイされます。 パスワード パラメーターは、セキュリティで保護された文字列に設定されます。 しかしこのテンプレートでは、その値がどこから来るかは指定されません。
+キー コンテナーのシークレットを受け取るテンプレートは、その他のテンプレートに似ています。 これは、**テンプレートではなく、パラメーター ファイルでキー コンテナーを参照する**ためです。 次の図は、パラメーター ファイルがシークレットを参照し、その値をテンプレートに渡すしくみを示しています。
+
+![静的 ID](./media/resource-manager-keyvault-parameter/statickeyvault.png)
+
+たとえば、[次のテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver.json)では、管理者のパスワードを含む SQL データベースがデプロイされます。 パスワード パラメーターは、セキュリティで保護された文字列に設定されます。 しかしこのテンプレートでは、その値がどこから来るかは指定されません。
 
 ```json
 {
@@ -102,7 +106,7 @@ Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue
 }
 ```
 
-ここで、前のテンプレートのためにパラメーター ファイルを作成します。 このパラメーター ファイルで、テンプレート内のパラメーターの名前に一致するパラメーターを指定します。 パラメーター値のために、キー コンテナーのシークレットを参照します。 シークレットを参照するには、Key Vault のリソース識別子とシークレットの名前を渡します。 次の例では、Key Vault シークレットが既に存在しているという前提で、リソース ID に静的な値を指定します。
+ここで、前のテンプレートのためにパラメーター ファイルを作成します。 このパラメーター ファイルで、テンプレート内のパラメーターの名前に一致するパラメーターを指定します。 パラメーター値のために、キー コンテナーのシークレットを参照します。 シークレットを参照するには、Key Vault のリソース識別子とシークレットの名前を渡します。 [次のパラメーター ファイル](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver.parameters.json)では、Key Vault シークレットが既に存在しているという前提で、リソース ID に静的な値を指定します。 このファイルをローカルにコピーし、サブスクリプション ID、コンテナー名、および SQL サーバー名を設定します。
 
 ```json
 {
@@ -127,25 +131,27 @@ Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue
 }
 ```
 
-ここで、テンプレートをデプロイし、パラメーター ファイルを渡します。 Azure CLI では、次を使用します。
+ここで、テンプレートをデプロイし、パラメーター ファイルを渡します。 GitHub のサンプル テンプレートを使用できますが、環境に合わせて値が設定されているローカル パラメーター ファイルを使用する必要があります。
+
+Azure CLI では、次を使用します。
 
 ```azurecli-interactive
-az group create --name datagroup --location "Central US"
+az group create --name datagroup --location "South Central US"
 az group deployment create \
     --name exampledeployment \
     --resource-group datagroup \
-    --template-file sqlserver.json \
+    --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json \
     --parameters @sqlserver.parameters.json
 ```
 
 PowerShell では、次を使用します。
 
 ```powershell
-New-AzureRmResourceGroup -Name datagroup -Location "Central US"
+New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
 New-AzureRmResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName datagroup `
-  -TemplateFile sqlserver.json `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json `
   -TemplateParameterFile sqlserver.parameters.json
 ```
 
@@ -153,7 +159,13 @@ New-AzureRmResourceGroupDeployment `
 
 前のセクションでは、Key Vault シークレットの静的リソース ID を渡す方法を紹介しました。 しかし参照すべき Key Vault シークレットがデプロイごとに変わる状況も考えられます。 その場合、パラメーター ファイルでリソース ID をハードコーディングすることはできません。 パラメーター ファイルではテンプレート式が使用できないので、パラメーター ファイルでリソース ID を動的に生成することはできません。
 
-Key Vault シークレットのリソース ID を動的に生成するには、そのシークレットを必要とするリソースを、入れ子になったテンプレートに移す必要があります。 マスター テンプレートに、その入れ子になったテンプレートを追加し、動的に生成されたリソース ID をパラメーターに格納して渡します。 入れ子になったテンプレートは、外部 URI を通じて使用可能である必要があります。 この記事の残りの部分では、ストレージ アカウントに上記のテンプレートを追加し、URI - `https://<storage-name>.blob.core.windows.net/templatecontainer/sqlserver.json` を通じてそれを使用可能であることを前提としています。
+Key Vault シークレットのリソース ID を動的に生成するには、そのシークレットを必要とするリソースを、リンクされたテンプレートに移す必要があります。 親テンプレートに、そのリンクされたテンプレートを追加し、動的に生成されたリソース ID をパラメーターに格納して渡します。 次の図は、リンクされたテンプレート内のパラメーターがシークレットを参照するしくみを示しています。
+
+![動的 ID](./media/resource-manager-keyvault-parameter/dynamickeyvault.png)
+
+リンクされたテンプレートは、外部 URI を通じて使用可能である必要があります。 通常は、テンプレートをストレージ アカウントに追加し、`https://<storage-name>.blob.core.windows.net/templatecontainer/sqlserver.json` のような URI を通じてアクセスします。
+
+[次のテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver-dynamic-id.json)は、動的に key vault ID を作成し、パラメーターとして渡します。 GitHub の[サンプル テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/keyvaultparameter/sqlserver.json)にリンクしています。
 
 ```json
 {
@@ -184,7 +196,7 @@ Key Vault シークレットのリソース ID を動的に生成するには、
       "properties": {
         "mode": "incremental",
         "templateLink": {
-          "uri": "https://<storage-name>.blob.core.windows.net/templatecontainer/sqlserver.json",
+          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver.json",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -205,7 +217,29 @@ Key Vault シークレットのリソース ID を動的に生成するには、
 }
 ```
 
-上記のテンプレートをデプロイし、パラメーターの値を指定します。
+上記のテンプレートをデプロイし、パラメーターの値を指定します。 GitHub のサンプル テンプレートを使用できますが、環境に合わせたパラメーター値を指定する必要があります。
+
+Azure CLI では、次を使用します。
+
+```azurecli-interactive
+az group create --name datagroup --location "South Central US"
+az group deployment create \
+    --name exampledeployment \
+    --resource-group datagroup \
+    --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver-dynamic-id.json \
+    --parameters vaultName=<your-vault> vaultResourceGroup=examplegroup secretName=examplesecret adminLogin=exampleadmin sqlServerName=<server-name>
+```
+
+PowerShell では、次を使用します。
+
+```powershell
+New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
+New-AzureRmResourceGroupDeployment `
+  -Name exampledeployment `
+  -ResourceGroupName datagroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/keyvaultparameter/sqlserver-dynamic-id.json `
+  -vaultName <your-vault> -vaultResourceGroup examplegroup -secretName examplesecret -adminLogin exampleadmin -sqlServerName <server-name>
+```
 
 ## <a name="next-steps"></a>次のステップ
 * Key Vault の全般的な情報については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。

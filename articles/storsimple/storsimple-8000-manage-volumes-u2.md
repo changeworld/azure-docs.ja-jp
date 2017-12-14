@@ -4,7 +4,7 @@ description: "StorSimple ボリュームを追加、変更、監視、削除す�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/19/2017
+ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 09f4de79ab9b0cdfafd10c7c7c29b0f8e6304f14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9c575f42e6c8730b9404c62fb60e710d9d3bc80
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -119,11 +119,7 @@ StorSimple ボリュームは、次のいずれかです。
       
        8100 デバイスに 8.5 TB (許容される最大サイズ) のローカル固定のボリュームをプロビジョニングすると、デバイスで使用可能なローカル領域がすべて使い果たされます。 この時点で、階層化されたボリュームのワーキング セットをホストするためのローカル領域がデバイスになくなるため、階層化されたボリュームを以後作成できなくなります。 既存の階層化されたボリュームも、使用可能な領域に影響します。 たとえば、約 106 TB のボリュームが既に階層化されている 8100 デバイスがある場合、ローカル固定されたボリュームに使用できるのは 4 TB の領域のみになります。
 
-    6. **[接続済みのホスト]** フィールドで矢印をクリックします。 
-
-        ![接続済みのホスト](./media/storsimple-8000-manage-volumes-u2/step5createvol2.png)
-
-    7. **[接続済みホスト]** ブレードで、既存の ACR を選択するか、新しい ACR を追加します。 新しい ACR を選択する場合は、ACR の**名前**を指定し、Windows ホストの **iSCSI 修飾名** (IQN) を入力します。 IQN がない場合は、「 [Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。 **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
+    6. **[接続済みのホスト]** フィールドで矢印をクリックします。 **[接続済みホスト]** ブレードで、既存の ACR を選択するか、新しい ACR を追加します。 新しい ACR を選択する場合は、ACR の**名前**を指定し、Windows ホストの **iSCSI 修飾名** (IQN) を入力します。 IQN がない場合は、「 [Windows Server ホストの IQN の取得](#get-the-iqn-of-a-windows-server-host)」を参照してください。 **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
 
         ![Click Create](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 

@@ -4,7 +4,7 @@ description: "インプレース アップグレードとスウィング移行�
 services: active-directory
 documentationcenter: 
 author: AndKjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: c4f0ec95c02116a19f2d69c6fa1e8aa639c56c69
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: acce2e8f0c875d0211f132efab5f55d77a0def67
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure Active Directory (Azure AD) Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。 Azure AD Connect を常に最新リリースにしておくことをお勧めします。 構成を大幅に変更する際は、「[スウィング移行](#swing-migration)」で説明されている手順を使用することもできます。
@@ -48,7 +48,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 
 インプレース アップグレード中、アップグレード後に特定の同期アクティビティ (フル インポート手順、完全同期手順など) の実行を必要とする変更が行われる可能性があります。 このようなアクティビティを保留にするには、「[アップグレード後に完全な同期を保留にする方法](#how-to-defer-full-synchronization-after-upgrade)」を参照してください。
 
-非標準のコネクタ (Generic LDAP コネクタや Generic SQL コネクタなど) で Azure AD Connect を使用している場合は、インプレース アップグレード後に [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) で対応するコネクタ構成を更新する必要があります。 コネクタ構成を更新する方法の詳細については、「[コネクタ バージョンのリリース履歴 - トラブルシューティング](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting)」をご覧ください。 構成を更新していない場合、インポート/エクスポートの実行手順がコネクタで正しく動作しなくなります。 アプリケーション イベント ログに、"*"Assembly version in AAD Connector configuration ("X.X.XXX.X") is earlier than the actual version ("X.X.XXX.X") of "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll""\(AAD コネクタ構成 ("X.X.XXX.X") のアセンブリ バージョンが、"C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" の実際のバージョン ("X.X.XXX.X") より前のバージョンです\)*" というエラー メッセージが表示されます。
+非標準のコネクタ (Generic LDAP コネクタや Generic SQL コネクタなど) で Azure AD Connect を使用している場合は、インプレース アップグレード後に [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) で対応するコネクタ構成を更新する必要があります。 コネクタ構成を更新する方法の詳細については、「[コネクタ バージョンのリリース履歴 - トラブルシューティング](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting)」をご覧ください。 構成を更新していない場合、インポート/エクスポートの実行手順がコネクタで正しく動作しなくなります。 アプリケーション イベント ログに、"*"Assembly version in AAD Connector configuration ("X.X.XXX.X") is earlier than the actual version ("X.X.XXX.X") of "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll""\(AAD コネクタ構成 ("X.X.XXX.X") のアセンブリ バージョンが、"C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" の実際のバージョン ("X.X.XXX.X") より前のバージョンです\)*" というエラー メッセージが表示されます。
 
 ## <a name="swing-migration"></a>スウィング移行
 複雑なデプロイまたは多くのオブジェクトがある場合は、ライブ システムでのインプレース アップグレードが現実的ではない場合があります。 ユーザーによっては、このプロセスに数日かかることがあり、この間差分変更は処理されません。 構成を大幅に変更する予定があり、テストを行ってからクラウドにプッシュしたい場合にもこの方法は使用できます。

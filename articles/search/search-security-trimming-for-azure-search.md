@@ -11,11 +11,11 @@ caps.latest.revision: "26"
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: 28f400abbafcc3cff35bd4575b975c1e7150a6f0
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 7ca5502efa281dcc0f374312d8f36f8c64d9c6c9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="security-trimming-with-azure-search"></a>Azure Search を使用したセキュリティによるトリミング
 
@@ -108,13 +108,13 @@ api-key: [admin key]
 }
 ```
 
-セキュリティの追加または更新の詳細については、[セキュリティの編集](https://docs.microsoft.com/en-us/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
+セキュリティの追加または更新の詳細については、[セキュリティの編集](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
    
 ## <a name="apply-the-security-filter"></a>セキュリティ フィルターを適用する
 
 `group_ids` のアクセス権に基づいてドキュメントをトリミングするには、`group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` フィルターを含む検索クエリを発行する必要があります (この "group_id1, group_id2,..." は、検索要求の発行元が属するグループです)。
 このフィルターは、指定された識別子のいずれかが `group_ids` フィールドに含まれるすべてのドキュメントと一致します。
-Azure Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents)に関するページを参照してください。
+Azure Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページを参照してください。
 このサンプルでは、POST 要求を使用してドキュメントを検索する方法について説明している点に注意してください。
 
 HTTP POST 要求を発行します。

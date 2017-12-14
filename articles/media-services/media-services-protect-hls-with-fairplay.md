@@ -6,19 +6,18 @@ documentationcenter:
 author: Juliako
 manager: cfowler
 editor: 
-ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 895d6307b1cef74e195cc2ffd8dbef4196e97b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ab743cadf91be05e1d2b2edf3143d8c14ae2bdb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 Azure Media Services では、次の形式を使用して HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化することができます。  
@@ -33,12 +32,12 @@ Azure Media Services では、次の形式を使用して HTTP ライブ スト�
 
 次の図は、**HLS + FairPlay または PlayReady 動的暗号化**ワークフローを示しています。
 
-![動的暗号化ワークフローの図](./media/media-services-content-protection-overview/media-services-content-protection-with-fairplay.png)
+![動的暗号化ワークフローの図](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 
-このトピックでは、Media Services を使用して HLS コンテンツを Apple FairPlay で動的に暗号化する方法を示します。 また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。
+この記事では、Media Services を使って HLS コンテンツを Apple FairPlay で動的に暗号化する方法を示します。 また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。
 
 > [!NOTE]
-> HLS コンテンツを PlayReady で暗号化する必要がある場合は、共通コンテンツ キーを作成し、それを資産に関連付ける必要があります。 また、[PlayReady の動的共通暗号化の使用](media-services-protect-with-drm.md)に関する記事の説明に従って、コンテンツ キーの承認ポリシーを構成する必要もあります。
+> HLS コンテンツを PlayReady で暗号化する必要がある場合は、共通コンテンツ キーを作成し、それを資産に関連付ける必要があります。 また、[PlayReady の動的共通暗号化の使用](media-services-protect-with-playready-widevine.md)に関する記事の説明に従って、コンテンツ キーの承認ポリシーを構成する必要もあります。
 >
 >
 
@@ -65,10 +64,10 @@ Media Services キーの配信側で次の設定が必要です。
         Apple によって提供される FairPlay 証明書とその他のファイルが含まれるフォルダーに移動します。
     2. コマンド ラインから次のコマンドを実行します。 このコマンドにより、.cer ファイルが .pem ファイルに変換されます。
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in fairplay.cer -out fairplay-out.pem
+        "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in FairPlay.cer -out FairPlay-out.pem
     3. コマンド ラインから次のコマンドを実行します。 このコマンドにより、.pem ファイルが秘密キーを含む .pfx ファイルに変換されます。 OpenSSL によって .pfx ファイルのパスワードが求められます。
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out fairplay-out.pfx -inkey privatekey.pem -in fairplay-out.pem -passin file:privatekey-pem-pass.txt
+        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
   * **アプリ証明書パスワード**: .pfx ファイルを作成するためのパスワード。
   * **アプリ証明書パスワード ID**: 他の Media Services キーをアップロードするのと同様の方法で、パスワードをアップロードする必要があります。 **ContentKeyType.FairPlayPfxPassword** 列挙値を使用して、Media Services ID を取得します。 これは、キー配信ポリシー オプションの内部で使用する必要がある ID です。
   * **iv**: 16 バイトのランダム値。 資産配信ポリシーの iv と一致している必要があります。 iv を生成し、アセット配信ポリシーとキー配信ポリシー オプションの両方に配置します。
@@ -125,7 +124,7 @@ FairPlay で暗号化されたストリームを再生するには、まず実�
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Azure Media Player では、すぐに使用できる FairPlay 再生はサポートされていません。 MAC OS X で FairPlay 再生を入手するには、Apple 開発者アカウントからサンプル プレーヤーを取得します。
+> Azure Media Player は FairPlay の再生をサポートします。 詳しくは、[Azure Media Player のドキュメント](https://amp.azure.net/libs/amp/latest/docs/index.html)をご覧ください。
 >
 >
 
@@ -157,32 +156,37 @@ FairPlay で暗号化されたストリームを再生するには、まず実�
 Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 
 >[!NOTE]
->さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
 
 必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
 
-    using System;
-    using System.Collections.Generic;
-    using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using System.Threading;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
-    using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
-    using Microsoft.WindowsAzure.MediaServices.Client.FairPlay;
-    using Newtonsoft.Json;
-    using System.Security.Cryptography.X509Certificates;
+```
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
+using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
+using Microsoft.WindowsAzure.MediaServices.Client.FairPlay;
+using Newtonsoft.Json;
+using System.Security.Cryptography.X509Certificates;
 
-    namespace DynamicEncryptionWithFairPlay
+namespace DynamicEncryptionWithFairPlay
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static readonly Uri _sampleIssuer =
             new Uri(ConfigurationManager.AppSettings["Issuer"]);
@@ -200,7 +204,11 @@ Program.cs ファイルのコードを、このセクションで示されてい
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -220,9 +228,9 @@ Program.cs ファイルのコードを、このセクションで示されてい
             Console.WriteLine();
 
             if (tokenRestriction)
-            tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
+                tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
             else
-            AddOpenAuthorizationPolicy(key);
+                AddOpenAuthorizationPolicy(key);
 
             Console.WriteLine("Added authorization policy: {0}", key.AuthorizationPolicyId);
             Console.WriteLine();
@@ -233,19 +241,19 @@ Program.cs ファイルのコードを、このセクションで示されてい
 
             if (tokenRestriction && !String.IsNullOrEmpty(tokenTemplateString))
             {
-            // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
-            // back into a TokenRestrictionTemplate class instance.
-            TokenRestrictionTemplate tokenTemplate =
-                TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
+                // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
+                // back into a TokenRestrictionTemplate class instance.
+                TokenRestrictionTemplate tokenTemplate =
+                    TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-            // Generate a test token based on the the data in the given TokenRestrictionTemplate.
-            // Note, you need to pass the key id Guid because we specified
-            // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
-            Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
-            string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
-                                        DateTime.UtcNow.AddDays(365));
-            Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-            Console.WriteLine();
+                // Generate a test token based on the the data in the given TokenRestrictionTemplate.
+                // Note, you need to pass the key id Guid because we specified
+                // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+                Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
+                string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
+                                            DateTime.UtcNow.AddDays(365));
+                Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+                Console.WriteLine();
             }
 
             string url = GetStreamingOriginLocator(encodedAsset);
@@ -258,8 +266,8 @@ Program.cs ファイルのコードを、このセクションで示されてい
         {
             if (!File.Exists(singleFilePath))
             {
-            Console.WriteLine("File does not exist.");
-            return null;
+                Console.WriteLine("File does not exist.");
+                return null;
             }
 
             var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
@@ -530,14 +538,14 @@ Program.cs ファイルのコードを、このセクションで示されてい
             using (var rng =
             new System.Security.Cryptography.RNGCryptoServiceProvider())
             {
-            rng.GetBytes(returnValue);
+                rng.GetBytes(returnValue);
             }
 
             return returnValue;
         }
-        }
     }
-
+}
+```
 
 ## <a name="next-steps-media-services-learning-paths"></a>次のステップ: Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

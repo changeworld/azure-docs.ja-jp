@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C によってセキュリティ保護さ
 services: active-directory-b2c
 documentationcenter: 
 author: sromeroz
-manager: krassk
+manager: mtillman
 editor: sromeroz
 ms.assetid: b875f235-a1d2-4abb-b9f0-b89beac38a32
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/7/2017
 ms.author: sromeroz
-ms.openlocfilehash: 8c2154fcf33537358b549395d15b4ba937371cd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f551a7ba9b7ddbb373e6b6418ab43fe7ce9be36
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C: Facebook アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-facebook-application"></a>Facebook アプリケーションを作成する

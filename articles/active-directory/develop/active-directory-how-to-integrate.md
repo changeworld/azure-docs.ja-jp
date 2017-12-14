@@ -4,7 +4,7 @@ description: "Azure Active Directory との統合に関する利点とリソー�
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: e2a83e8dcd054576b4a99533cdfbb9f5605cd6f9
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: bd9f984a625ae951a16eb729c0a4565eea05e46b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

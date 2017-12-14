@@ -4,7 +4,7 @@ description: "ID の柱と、ハイブリッド環境内のユーザーのリソ
 documentationcenter: 
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: e3b3b984-0d15-4654-93be-a396324b9f5e
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 6404940da460461632616fe49f055d50c2a7aba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 069c83a0bbbb21ba85aea07375c186fe0b11c781
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのアクセス制御要件の決定
 組織がハイブリッド ID ソリューションを設計する場合、その機会に、ユーザーに使用できるようにする予定のリソースについて、アクセス要件を見直すこともできます。 データは、次に示す ID の 4 本の柱全体にかかっています。
@@ -57,7 +57,6 @@ ms.lasthandoff: 10/11/2017
   * 「はい」の場合、ハイブリッド ID モデルを採用すると、このプロセスに影響がありますか。
 
 ## <a name="access-control"></a>Access Control
-
 認証と承認は、ユーザーの検証によって企業データへのアクセスを可能にするための重要な要素ですが、ユーザーが持つアクセス権のレベルと、管理者が管理対象のリソースに対して持つアクセス権のレベルを制御するためにも重要です。 ハイブリッド ID ソリューションの場合、リソース、委任、ロール ベースのアクセス制御に対するアクセス権をより詳細に指定できるようにします。 アクセス制御について、次のチェック項目に回答してください。
 
 * 社内には、ID システムを管理するための昇格された特権を持つ複数のユーザーがいますか。

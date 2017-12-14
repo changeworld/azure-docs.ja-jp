@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 470bba665dcf8b3517b86ee633a9570ec0f3cd33
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 26ab8f9ab561cc218f3dcb249741a96d8f14c579
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Azure Machine Learning 実験サービスの構成
 
@@ -198,7 +198,7 @@ _**Python スクリプトのローカル Docker 実行の概要:**_
 次のコマンドを使用して、リモート Docker ベースの実行用のコンピューティング ターゲット定義と実行構成の両方を作成できます。
 
 ```
-az ml computetarget attach --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" --type remotedocker
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
 ```
 
 コンピューティング ターゲットを構成したら、次のコマンドを使用してスクリプトを実行できます。
@@ -211,7 +211,7 @@ $ az ml experiment submit -c remotevm myscript.py
 リモート VM の Docker 構築プロセスはローカル Docker 実行のプロセスと全く同じであるため、同様の実行エクスペリエンスとなることが予想されます。
 
 >[!TIP]
->初回実行向けに Docker イメージを構築して待ち時間が発生しないようにするには、次のコマンドを使用して、スクリプトを実行する前にコンピューティング ターゲットを準備します。 az ml experiment prepare -c <remotedocker>
+>初回実行向けに Docker イメージを構築して待ち時間が発生しないようにするには、次のコマンドを使用して、スクリプトを実行する前にコンピューティング ターゲットを準備します。 az ml experiment prepare -c remotedocker
 
 
 _**Python スクリプトのリモート VM 実行の概要:**_
@@ -226,7 +226,7 @@ HDInsight は、Apache Spark をサポートする、ビッグ データ分析�
 コンピューティング ターゲットを作成して HDInsight Spark クラスター向けに構成するには、次のコマンドを使用します。
 
 ```
-$ az ml computetarget attach --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword" --type cluster 
+$ az ml computetarget attach cluster --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword"  
 ```
 
 >[!NOTE]
@@ -253,6 +253,29 @@ _**PySpark スクリプトの HDInsight ベースの実行の概要**_
 ## <a name="running-a-script-on-gpu"></a>GPU 上でのスクリプトの実行
 GPU 上でスクリプトを実行するには、「[Azure Machine Learning で GPU を使用する方法](how-to-use-gpu.md)」で説明されているガイダンスに従います。
 
+## <a name="using-ssh-key-based-authentication-for-creating-and-using-compute-targets"></a>SSH キー ベースの認証を使用してコンピューティング ターゲットを作成および使用する
+Azure Machine Learning Workbench では、ユーザー名/パスワード ベースのスキームに加えて SSH キー ベースの認証を使用して、コンピューティング ターゲットを作成および使用できます。 remotedocker またはクラスターをコンピューティング ターゲットとして使用する場合は、この機能を使用することができます。 このスキームを使用すると、Workbench は公開キーと秘密キーのペアを作成し、公開キーをレポートします。 ユーザー名の ~/.ssh/authorized_keys ファイルに公開キーを追加します。 Azure Machine Learning Workbench は、このコンピューティング ターゲットでのアクセスと実行に ssh キー ベースの認証を使用します。 コンピューティング ターゲット用の秘密キーはワークスペースのキー ストアに保存されるため、ワークスペースの他のユーザーは、コンピューティング ターゲットを作成するために指定したユーザー名を指定して、コンピューティング ターゲットを同じ方法で使用できます。  
+
+この機能を使用するには次の手順に従います。 
+
+- 以下のコマンドのいずれかを使用してコンピューティング ターゲットを作成します。
+
+```
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --use-azureml-ssh-key
+```
+or
+```
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" -k
+```
+- Workbench によって生成された公開キーを、接続されているコンピューティング ターゲット上の ~/.ssh/authorized_keys ファイルに追加します。 
+
+[!IMPORTANT] コンピューティング ターゲットの作成に使用したのと同じユーザー名を使用してコンピューティング ターゲットにログオンする必要があります。 
+
+- これで、SSH キー ベースの認証を使用してコンピューティング ターゲットを準備および使用できるようになりました。
+
+```
+az ml experiment prepare -c remotevm
+```
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Machine Learning を作成およびインストールする](quickstart-installation.md)

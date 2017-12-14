@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags: clicktale
-ms.openlocfilehash: ef6d74496520b61392503bf5a1b9bc3c611b0352
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 4cc932ca2dcdad16f4b1b7cfc2494eec0ccf18b3
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/13/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -3228,7 +3228,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                 </a>
                             </li>
                             <li>
-                                <a href="https://azure.microsoft.com/en-us/develop/identity">
+                                <a href="/azure/active-directory/develop">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4106,7 +4106,7 @@ Azure CLI </h3>
                                                     <a href="https://www.visualstudio.com/vs/azure-tools/">Visual Studio Tools for Azure</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids">ダウンロード</a>
+                                                    <a href="https://www.visualstudio.com/vs/azure-tools/">ダウンロード</a>
                                                 </p>
                                             </div>
                                         </div>

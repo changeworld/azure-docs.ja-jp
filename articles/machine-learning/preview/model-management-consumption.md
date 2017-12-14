@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 39023712f72d5ac874de1f20a110bef9703ed5e8
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 64141afe421ace44fe71c04f8a2fba48144633c9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="consuming-web-services"></a>Web サービスの使用
 モデルをリアルタイム Web サービスとしてデプロイしたら、さまざまなプラットフォームやアプリケーションから予測を取得できるようになります。 リアルタイム Web サービスでは、予測を取得するために REST API を公開します。 単一行または複数行の形式でデータを Web サービスに送信して、1 つまたは複数の予測を一度に取得できます。
 
-[Azure Machine Learning Web サービス](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-service-deploy)では、外部のアプリケーションは、サービス URL に HTTP POST 呼び出しを実行することによって、予測モデルと同期的に通信します。 Web サービス呼び出しを実行するには、クライアント アプリケーションは、予測のデプロイ時に作成される API キーを指定して、要求データを POST 要求の本文に格納する必要があります。
+[Azure Machine Learning Web サービス](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy)では、外部のアプリケーションは、サービス URL に HTTP POST 呼び出しを実行することによって、予測モデルと同期的に通信します。 Web サービス呼び出しを実行するには、クライアント アプリケーションは、予測のデプロイ時に作成される API キーを指定して、要求データを POST 要求の本文に格納する必要があります。
 
 API キーを使用できるのは、クラスター デプロイ モードだけであることに注意してください。 ローカルの Web サービスにはキーがありません。
 

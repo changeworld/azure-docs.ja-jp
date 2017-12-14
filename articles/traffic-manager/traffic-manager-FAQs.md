@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: 5b0a7d423bc0d8d9f9f7cad56838bd006e944050
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: d6681a5b46aa352b1aa0dadedad8a51c9d1e5eaf
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -368,7 +368,7 @@ Traffic Manager の監視設定は、プロファイル レベルで行われま
 
 ### <a name="how-do-i-configure-nested-profiles"></a>入れ子になったプロファイルを構成するにはどうすればよいですか。
 
-入れ子になった Traffic Manager プロファイルは、Azure Resource Manager と従来の Azure REST API (Azure PowerShell コマンドレットとクロスプラットフォームの Azure CLI コマンド) を使用して構成できます。 新しい Azure Portal を使用する場合もサポートされます。 クラシック ポータルではサポートされません。
+入れ子になった Traffic Manager プロファイルは、Azure Resource Manager と従来の Azure REST API (Azure PowerShell コマンドレットとクロスプラットフォームの Azure CLI コマンド) を使用して構成できます。 新しい Azure Portal を使用する場合もサポートされます。
 
 ### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Traffic Manager では、何層の入れ子がサポートされますか。
 

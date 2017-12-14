@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: andredm
-ms.openlocfilehash: 4d98556f17fa834c497c2d1cd1854c9e6b02e021
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: b9f45462fb108ff9cc9039cdb0d0a9ef318fc218
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-stack-1711-update"></a>Azure Stack 1711 更新プログラム
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/30/2017
 
 ## <a name="build-reference"></a>ビルドのリファレンス
 
-Azure Stack 1711 更新プログラムのビルド番号は **20171122.1** です。
+Azure Stack 1711 更新プログラムのビルド番号は **171201.3** です。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -85,7 +85,7 @@ Azure Stack 1711 更新プログラムのビルド番号は **20171122.1** で�
 
 ### <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 
-このセクションには、ビルド **20171122.1** のインストール後の既知の問題が含まれています。
+このセクションには、ビルド **20171201.3** のインストール後の既知の問題が含まれています。
 
 #### <a name="portal"></a>ポータル
 

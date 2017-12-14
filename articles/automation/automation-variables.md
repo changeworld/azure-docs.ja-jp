@@ -3,7 +3,7 @@ title: "Azure Automation の変数資産 | Microsoft Docs"
 description: "変数アセットとは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。  この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: b880c15f-46f5-4881-8e98-e034cc5a66ec
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: d3b04dcc856d4637cf7029701a5e169d3096d15c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e642a63486317387d66a9403b8276d2e0bd38fb6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
 
@@ -74,7 +74,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 次の表の関数を使用して、Python2 Runbook の変数にアクセスしてそれを取得します。 
 
-|Python2 関数|Description|
+|Python2 関数|説明|
 |:---|:---|
 |automationassets.get_automation_variable|既存の変数の値を取得します。 |
 |automationassets.set_automation_variable|既存の変数の値を設定します。 |

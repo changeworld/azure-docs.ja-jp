@@ -2,26 +2,18 @@
 title: "Azure Container Instances での Azure Files ボリュームのマウント"
 description: "Azure Files ボリュームをマウントして、Azure Container Instances で状態を保持する方法について説明します"
 services: container-instances
-documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/09/2017
+ms.date: 12/05/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 0f824dad7ba5b661941e952383025e5171f32e55
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: b2e8e27cecb4d1225e378690063b42f5d5242868
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="mount-an-azure-file-share-with-azure-container-instances"></a>Azure Container Instances での Azure ファイル共有のマウント
 
@@ -32,7 +24,7 @@ ms.lasthandoff: 11/10/2017
 Azure Container Instances で Azure ファイル共有を使用するには、まず、ファイル共有を作成する必要があります。 次のスクリプトを実行して、ファイル共有および共有自体をホストするためのストレージ アカウントを作成してください。 ストレージ アカウント名はグローバルに一意にする必要があるため、このスクリプトは、ベース文字列にランダムな値を追加します。
 
 ```azurecli-interactive
-# Change these four parameters
+# Change these four parameters as needed
 ACI_PERS_STORAGE_ACCOUNT_NAME=mystorageaccount$RANDOM
 ACI_PERS_RESOURCE_GROUP=myResourceGroup
 ACI_PERS_LOCATION=eastus
@@ -41,10 +33,11 @@ ACI_PERS_SHARE_NAME=acishare
 # Create the storage account with the parameters
 az storage account create -n $ACI_PERS_STORAGE_ACCOUNT_NAME -g $ACI_PERS_RESOURCE_GROUP -l $ACI_PERS_LOCATION --sku Standard_LRS
 
-# Export the connection string as an environment variable, this is used when creating the Azure file share
+# Export the connection string as an environment variable. The following 'az storage share create' command
+# references this environment variable when creating the Azure file share.
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $ACI_PERS_STORAGE_ACCOUNT_NAME -g $ACI_PERS_RESOURCE_GROUP -o tsv`
 
-# Create the share
+# Create the file share
 az storage share create -n $ACI_PERS_SHARE_NAME
 ```
 
@@ -59,147 +52,40 @@ STORAGE_ACCOUNT=$(az storage account list --resource-group $ACI_PERS_RESOURCE_GR
 echo $STORAGE_ACCOUNT
 ```
 
-共有名は既にわかっているため (上記のスクリプトでは *acishare*)、あとはストレージ アカウント キーです。このキーを見つけるには、次のコマンドを使用します。
+共有名は既にわかっているため (上記のスクリプトでは *acishare* として定義)、あとはストレージ アカウント キーです。このキーを見つけるには、次のコマンドを使用します。
 
 ```azurecli-interactive
 STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv)
 echo $STORAGE_KEY
 ```
 
-## <a name="store-storage-account-access-details-with-azure-key-vault"></a>Azure Key Vault でストレージ アカウント アクセスの詳細を格納する
+## <a name="deploy-the-container-and-mount-the-volume"></a>コンテナーのデプロイとボリュームのマウント
 
-ストレージ アカウント キーによりデータへのアクセスが保護されます。したがって、このキーは、Azure Key Vault に格納することをお勧めします。
-
-Azure CLI を使用してキー コンテナーを作成します。
+Azure ファイル共有をコンテナーのボリュームとしてマウントするには、[az container create](/cli/azure/container#az_container_create) でコンテナーを作成する際に、共有とボリュームのマウント ポイントを指定します。 前述の手順に従った場合、次のコマンドを使ってコンテナーを作成すれば、先ほど作成した共有をマウントすることができます。
 
 ```azurecli-interactive
-KEYVAULT_NAME=aci-keyvault
-az keyvault create -n $KEYVAULT_NAME --enabled-for-template-deployment -g $ACI_PERS_RESOURCE_GROUP
+az container create \
+    --resource-group $ACI_PERS_RESOURCE_GROUP \
+    --name hellofiles \
+    --image seanmckenna/aci-hellofiles \
+    --ip-address Public \
+    --ports 80 \
+    --azure-file-volume-account-name $ACI_PERS_STORAGE_ACCOUNT_NAME \
+    --azure-file-volume-account-key $STORAGE_KEY \
+    --azure-file-volume-share-name $ACI_PERS_SHARE_NAME \
+    --azure-file-volume-mount-path /aci/logs/
 ```
 
-`enabled-for-template-deployment` スイッチを使用すると、Azure Resource Manager が、デプロイ時にキー コンテナーからシークレットをプルできます。
+## <a name="manage-files-in-mounted-volume"></a>マウントしたボリューム内のファイルの管理
 
-ストレージ アカウント キーを新しいシークレットとしてキー コンテナーに格納します。
-
-```azurecli-interactive
-KEYVAULT_SECRET_NAME=azurefilesstoragekey
-az keyvault secret set --vault-name $KEYVAULT_NAME --name $KEYVAULT_SECRET_NAME --value $STORAGE_KEY
-```
-
-## <a name="mount-the-volume"></a>ボリュームをマウントする
-
-Azure ファイル共有をボリュームとしてコンテナーにマウントするプロセスは、2 つのステップに分かれています。 まず、コンテナー グループを定義する一環として共有の詳細を指定します。その後、グループ内の 1 つ以上のコンテナーで、ボリュームをどのようにマウントするかを指定します。
-
-ボリュームをマウントできるように定義するには、Azure Resource Manager テンプレートで `volumes` 配列をコンテナー グループ定義に追加し、それを個別のコンテナーの定義で参照します。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageaccountname": {
-      "type": "string"
-    },
-    "storageaccountkey": {
-      "type": "securestring"
-    }
-  },
-  "resources":[{
-    "name": "hellofiles",
-    "type": "Microsoft.ContainerInstance/containerGroups",
-    "apiVersion": "2017-08-01-preview",
-    "location": "[resourceGroup().location]",
-    "properties": {
-      "containers": [{
-        "name": "hellofiles",
-        "properties": {
-          "image": "seanmckenna/aci-hellofiles",
-          "resources": {
-            "requests": {
-              "cpu": 1,
-              "memoryInGb": 1.5
-            }
-          },
-          "ports": [{
-            "port": 80
-          }],
-          "volumeMounts": [{
-            "name": "myvolume",
-            "mountPath": "/aci/logs/"
-          }]
-        }
-      }],
-      "osType": "Linux",
-      "ipAddress": {
-        "type": "Public",
-        "ports": [{
-          "protocol": "tcp",
-          "port": "80"
-        }]
-      },
-      "volumes": [{
-        "name": "myvolume",
-        "azureFile": {
-          "shareName": "acishare",
-          "storageAccountName": "[parameters('storageaccountname')]",
-          "storageAccountKey": "[parameters('storageaccountkey')]"
-        }
-      }]
-    }
-  }]
-}
-```
-
-テンプレートには、ストレージ アカウント名とキーがパラメーターとして含まれています。このパラメーターは、別のパラメーター ファイルで指定できます。 パラメーター ファイルを設定するには、ストレージ アカウント名、Azure Key Vault のリソース ID、ストレージ キーを格納するときに使用したキー コンテナー シークレットの3 つの値が必要です。 これまでの手順に従っている場合、この値は次のスクリプトで取得できます。
-
-```azurecli-interactive
-echo $STORAGE_ACCOUNT
-echo $KEYVAULT_SECRET_NAME
-az keyvault show --name $KEYVAULT_NAME --query [id] -o tsv
-```
-
-その値をパラメーター ファイルに挿入します。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageaccountname": {
-      "value": "<my_storage_account_name>"
-    },
-   "storageaccountkey": {
-      "reference": {
-        "keyVault": {
-          "id": "<my_keyvault_id>"
-        },
-        "secretName": "<my_storage_account_key_secret_name>"
-      }
-    }
-  }
-}
-```
-
-## <a name="deploy-the-container-and-manage-files"></a>コンテナーをデプロイして、ファイルを管理する
-
-テンプレートが定義されている場合は、Azure CLI を使用して、コンテナーを作成し、そのボリュームをマウントできます。 テンプレート ファイルの名前が *azuredeploy.json*、パラメーター ファイルの名前が *azuredeploy.parameters.json* の場合、コマンド ラインは次のようになります。
-
-```azurecli-interactive
-az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group $ACI_PERS_RESOURCE_GROUP
-```
-
-コンテナーが起動したら、**seanmckenna/aci-hellofiles** イメージ経由でデプロイされる単純な Web アプリを使用して、指定したマウント パスにある Azure ファイル共有のファイルを管理できます。 [az container show](/cli/azure/container#az_container_show) コマンドを使用して、Web アプリの IP アドレスを取得します。
+コンテナーが起動したら、[seanmckenna/aci-hellofiles](https://hub.docker.com/r/seanmckenna/aci-hellofiles/) イメージ経由でデプロイされる単純な Web アプリを使用して、指定したマウント パスにある Azure ファイル共有のファイルを管理できます。 [az container show](/cli/azure/container#az_container_show) コマンドを使用して、Web アプリの IP アドレスを取得します。
 
 ```azurecli-interactive
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles -o table
 ```
 
-[Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)などのツールを使用して、ファイル共有に書き込まれるファイルを取得して検査できます。
-
->[!NOTE]
-> Azure Resource Manager テンプレートやパラメーター ファイルの使用、および Azure CLI でのデプロイの詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md)」を参照してください。
+[Azure Portal](https://portal.azure.com) または [Microsoft Azure Storage Explorer](https://storageexplorer.com) などのツールを使用して、ファイル共有に書き込まれるファイルを取得して検査できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Container Instances の[クイック スタート](container-instances-quickstart.md)を使用して、最初のコンテナーをデプロイします。
-- [Azure Container Instances とコンテナー オーケストレーターの関係](container-instances-orchestrator-relationship.md)について学習します
+[Azure Container Instances とコンテナー オーケストレーター](container-instances-orchestrator-relationship.md)の関係について学習します。

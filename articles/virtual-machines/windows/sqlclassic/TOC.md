@@ -12,7 +12,7 @@
 # 方法
 ## 高可用性の構成
 ### [高可用性のオプション](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
-### [クラシック ポータルでの AlwaysOn 可用性グループの構成](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
+### [ポータルでの AlwaysOn 可用性グループの構成](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 ### [PowerShell を使用した AlwaysOn 可用性グループの構成](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
 ### [可用性グループ向けの内部リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)
 ### [可用性グループ向けの外部リスナーの構成](virtual-machines-windows-classic-ps-sql-ext-listener.md)

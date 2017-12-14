@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 57f9dae1b353b873fdc0ec5903018d160cfe384f
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: f21561269e90e3643ef5d8d48ee28712ee7f611c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows 開発用マシンで Linux Service Fabric クラスターを設定する
 
@@ -83,7 +83,7 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
     > Eclipse プラグインは、現在、Windows でサポートされていません。 
 
 ## <a name="next-steps"></a>次のステップ
-* [Eclipse](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-eclipse) の概要
+* [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) の概要
 * その他の [Java サンプル](https://github.com/Azure-Samples/service-fabric-java-getting-started)を確認する
 
 

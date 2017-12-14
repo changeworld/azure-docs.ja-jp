@@ -26,6 +26,9 @@
     - name: Azure VM エージェントでのスケーリング
       href: /azure/jenkins/jenkins-azure-vm-agents
       maintainContext: true
+    - name: Azure Container Instances を使用したビルド
+      href: /azure/jenkins/azure-container-agents-plugin-run-container-as-an-agent
+      maintainContext: true
 - name: 操作方法
   items:
     - name: Azure 上の Jenkins をセキュリティで保護する

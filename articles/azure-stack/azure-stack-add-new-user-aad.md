@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: 91d1c52c0abf14656e08b511e4f6c8041e319020
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7fd3c36825746a009c01c97fb8664e04278159f
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 *適用対象: Azure Stack 開発キット*
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Azure ポータルを使用して Azure Stack テナント アカウントを作成する
 Azure ポータルを使用するには Azure サブスクリプションが必要です。
 
-1. [Azure](http://manage.windowsazure.com) にログインします。
+1. [Azure](https://portal.azure.com)にログインします。
 2. Microsoft Azure の左側のナビゲーション バーで、 **[Active Directory]**をクリックします。
 3. ディレクトリ一覧で Azure Stack に使用するディレクトリをクリックするか、新しいディレクトリを作成します。
 4. ディレクトリ ページで **[ユーザー]**をクリックします。

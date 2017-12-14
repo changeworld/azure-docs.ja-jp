@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: banders
-ms.openlocfilehash: 10e8eeaade5d51b1a15c30802b28600bcf6c72d9
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: d5d5ec1b524fa455c8d2231c7c16fd7942f713c4
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Log Analytics のネットワーク パフォーマンス モニター ソリューション
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/19/2017
 さらに、既に他のネットワーク監視ツールを運用している場合、これらのツールをネットワーク パフォーマンス監視ソリューションで補完できます。これは、ほとんどの従来のネットワーク監視ソリューションでは、損失や待機時間などのエンドツーエンドのネットワーク パフォーマンス メトリックに関する洞察を得ることができないためです。  ネットワーク パフォーマンス モニター ソリューションを使用すれば、この点を補うことができます。
 
 ## <a name="installing-and-configuring-agents-for-the-solution"></a>ソリューションのエージェントのインストールと構成
-「[Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agents.md)」と「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
+「[Windows コンピューターを Log Analytics に接続する](log-analytics-windows-agent.md)」と「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
 
 > [!NOTE]
 > ネットワーク リソースを検出して監視するうえで十分なデータを確保するために、少なくとも 2 つのエージェントをインストールする必要があります。 エージェントを 2 つ以上インストールしていないと、ソリューションは追加のエージェントをインストールして構成するまで構成中の状態のままになります。
@@ -139,7 +139,7 @@ Network Performance Monitor のネットワークは、サブネット用の論�
 #### <a name="to-enable-or-disable-monitoring-for-nodes"></a>ノードの監視を有効または無効にするには
 1. 監視するノードを選択します。または、監視を停止するノードの選択を解除します。
 2. 必要に応じて、**[監視に使用します]** ボックスをオンまたはオフにします。
-3. [ **Save**] をクリックします。<br><br> ![ノードの監視の有効化](./media/log-analytics-network-performance-monitor/npm-enable-node-monitor.png)
+3. **[Save]** をクリックします。<br><br> ![ノードの監視の有効化](./media/log-analytics-network-performance-monitor/npm-enable-node-monitor.png)
 
 ### <a name="set-monitoring-rules"></a>監視ルールの設定
 Network Performance Monitor は、2 つのサブネットワーク間、または 2 つのネットワーク間のネットワーク接続のパフォーマンスがしきい値を超えた場合に、正常性イベントを生成します。 これらのしきい値は、システムに自動的に学習させることができます。または、カスタムしきい値を指定することもできます。

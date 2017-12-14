@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 10/27/2017
-ms.openlocfilehash: 07e74c64e587cce99612cd5047516bf131943f2e
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: cb66514f40bd37f0495eca5037740d318fd5ea09
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="aerial-image-classification"></a>航空画像の分類
 
@@ -59,10 +59,15 @@ ms.lasthandoff: 11/15/2017
 - [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md)
     - [インストールと作成のクイックスタート](quickstart-installation.md)に関するページを参照して Azure Machine Learning Workbench をインストールし、実験用アカウントとモデル管理アカウントを作成します。
 - [Batch AI](https://github.com/Azure/BatchAI) Python SDK と Azure CLI 2.0
-    - [レシピの前提条件セクション](https://github.com/Azure/BatchAI/tree/master/recipes)の説明に従って、Batch AI SDK と Azure CLI 2.0 をインストールします。
-        - このドキュメントの作成時点では、Azure Machine Learning Workbench は Azure CLI 2.0 の別の分岐を使います。 はっきりさせるため、Workbench の CLI バージョンを "Azure Machine Learning Workbench から起動された CLI" と呼び、一般公開バージョン (Batch AI を含むもの) を "Azure CLI 2.0" と呼びます。
-    - [こちらの手順](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)に従って、Azure Active Directory アプリケーションとサービス プリンシパルを作成します。 クライアント ID、シークレット、およびテナント ID を記録しておきます。
-- [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)。Azure ストレージ アカウント間のファイル転送を調整する無料のユーティリティです。
+    - [Batch AI Recipes の README](https://github.com/Azure/BatchAI/tree/master/recipes) の次のセクションを完了します。
+        - "Prerequisites (前提条件)"
+        - "Create and get your Azure Active Directory (AAD) application (Azure Active Directory (AAD) アプリケーションの作成と取得)"
+        - "Register BatchAI Resource Providers (BatchAI リソースプロバイダーの登録)" ("Run Recipes Using Azure CLI 2.0 (Azure CLI 2.0 を使用したレシピの実行)" の下)
+        - "Install Azure Batch AI Management Client (Azure Batch AI 管理クライアントのインストール)"
+        - "Install Azure Python SDK (Azure Python SDK のインストール)"
+    - 作成するよう指示された Azure Active Directory アプリケーションのクライアント ID、シークレット、テナント ID をメモしておきます。 これらの資格情報は、このチュートリアルで後ほど使用します。
+    - このドキュメントの作成時点では、Azure Machine Learning Workbench と Azure Batch AI は Azure CLI 2.0 の別々の分岐を使用しています。 はっきりさせるため、Workbench の CLI バージョンを "Azure Machine Learning Workbench から起動された CLI" と呼び、一般公開バージョン (Batch AI を含むもの) を "Azure CLI 2.0" と呼びます。
+- [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)。Azure ストレージ アカウント間のファイル転送を調整する無料のユーティリティです。
     - AzCopy の実行可能ファイルを含むフォルダーが、システム PATH 環境変数にあることを確認します (環境変数の変更手順については、[こちら](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp)をご覧ください)。
 - SSH クライアント。[PuTTY](http://www.putty.org/) をお勧めします。
 
@@ -215,7 +220,7 @@ Batch AI クラスターは、ネットワーク ファイル サーバー上の
 1. ネットワーク ファイル サーバーを作成するには、次のコマンドを実行します。
 
     ```
-    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_D2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
+    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
     ```
 
 1. 次のコマンドを使って、ネットワーク ファイル サーバーのプロビジョニング状態を確認します。

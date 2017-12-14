@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 908bdaf002e42035567974b204f5b39e73e82024
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64717da922701aabd27e15a67e8da1b0acb30b77
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric セキュリティの概要
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題に対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。
@@ -50,7 +50,7 @@ Azure で実行するクラスターまたは Windows で実行するスタン�
 
 Service Fabric では、クラスターを作成するときに指定した X.509 サーバー証明書を使用します。 これらの証明書の概要とその入手または作成方法については、「[証明書の使用](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates)」を参照してください。
 
-証明書セキュリティは、Azure Portal、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用してクラスターを作成する際に構成します。 プライマリ証明書と、証明書のロールオーバーに使用されるオプションのセカンダリ証明書を指定できます。 指定するプライマリ証明書とセカンダリ証明書は、[クライアントとノードの間のセキュリティ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-security)に指定する管理用クライアント証明書と読み取り専用クライアント証明書とは異なる必要があります。
+証明書セキュリティは、Azure Portal、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用してクラスターを作成する際に構成します。 プライマリ証明書と、証明書のロールオーバーに使用されるオプションのセカンダリ証明書を指定できます。 指定するプライマリ証明書とセカンダリ証明書は、[クライアントとノードの間のセキュリティ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)に指定する管理用クライアント証明書と読み取り専用クライアント証明書とは異なる必要があります。
 
 ### <a name="client-to-node-security"></a>クライアントとノードの間のセキュリティ
 クライアントとノードの間のセキュリティはクライアント ID を使用して構成します。 クライアントとクラスターの間の信頼を確立するためには、どのクライアントの ID なら信頼できるのかを認識できるようにクラスターを構成する必要があります。 これは、2 つの方法で実行できます。
@@ -120,7 +120,7 @@ Windows Server 2012 R2 と Active Directory を使用しているスタンドア
 
 次の表は、クラスターのセットアップに必要な証明書の一覧です。
 
-|証明書情報の設定 |Description|
+|証明書情報の設定 |説明|
 |-------------------------------|-----------|
 |ClusterCertificate|    クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 2 つの異なる証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。|
 |ServerCertificate| この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 2 つの異なるサーバー証明書を使用できます。プライマリ証明書と、アップグレードのためのセカンダリ証明書です。|

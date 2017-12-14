@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions のホスティング プランの比較 | Microsoft Docs"
+title: "Azure Functions のスケールとホスティング | Microsoft Docs"
 description: "Azure Functions の従量課金プランと App Service プランの選択方法について説明します。"
 services: functions
 documentationcenter: na
@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09bb662e30a97e2741303e2e4630582625954909
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ff3f7072792c76c5d05310451771bde61b61e009
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions のホスティング プラン
+# <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
-Azure Functions は、従量課金プランと Azure App Service プランという 2 つの異なるモードで実行できます。 従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールダウンします。 そのため、アイドル状態の VM に対して課金されることがなく、事前に容量を予約する必要もありません。 この記事では、従量課金プランである[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/) アプリ モデルを中心に説明します。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
+Azure Functions は、従量課金プランと Azure App Service プランという 2 つの異なるモードで実行できます。 従量課金プランでは、コードの実行時にコンピューティング能力を自動的に割り当て、負荷の処理の必要性に応じてスケールアウトし、コードを実行していないときはスケールダウンします。 アイドル状態の VM に対して課金されることはなく、事前に容量を予約する必要もありません。 この記事では、従量課金プランである[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/) アプリ モデルを中心に説明します。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
 
 >[!NOTE]  
 > Linux ホスティングは現在、App Service プランでのみ利用可能です。
@@ -84,18 +84,20 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 関数アプリを使用するには、従量課金プランと App Service プランのどちらでも、Azure BLOB、Queue、Files、Table Storage をサポートする一般的な Azure ストレージ アカウントが必要です。 内部的には、Azure Functions はトリガーの管理や関数実行のログなどの操作に Azure Storage を使用します。 BLOB 専用のストレージ アカウント (Premium Storage を含む)、ゾーン冗長ストレージ レプリケーションを使用する汎用ストレージ アカウントなど、一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントは、関数アプリの作成時に **[ストレージ アカウント]** ブレードから除外されます。
 
+<!-- JH: Does using a PRemium Storage account improve perf? -->
+
 ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)に関する記事をご覧ください。
 
 ## <a name="how-the-consumption-plan-works"></a>従量課金プランの仕組み
 
-従量課金プランでは、関数がトリガーされるイベントの数に基づいて Functions ホストのインスタンスを追加することで、スケール コントローラーによって CPU とメモリのリソースが自動的に拡大縮小されます。 Functions ホストの各インスタンスのメモリは、1.5 GB に制限されています。
+従量課金プランでは、関数がトリガーされるイベントの数に基づいて Functions ホストのインスタンスを追加することで、スケール コントローラーによって CPU とメモリのリソースが自動的に拡大縮小されます。 Functions ホストの各インスタンスのメモリは、1.5 GB に制限されています。  ホストのインスタンスは Function App です。つまり、関数アプリ内のすべての関数がインスタンス内のリソースを共有し、同時にスケールされます。
 
 従量課金ホスティング プランを使用する場合は、関数コード ファイルが、関数のメイン ストレージ アカウントの Azure Files 共有に保存されます。 関数アプリのメイン ストレージ アカウントを削除すると、関数コード ファイルは削除され、復元できません。
 
 > [!NOTE]
 > 従量課金プランで BLOB トリガーを使用しているときに関数アプリがアイドル状態になると、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 この初期段階の遅延を避けるために、次のオプションのいずれかを検討してください。
 > - 常時接続が有効な App Service プランで関数アプリをホストする。
-> - BLOB 名を含むキュー メッセージなど、別のメカニズムを使用して BLOB 処理をトリガーする。 たとえば、[BLOB 入力および出力バインディングの C# スクリプトと JavaScript の例](functions-bindings-storage-blob.md#input--output---example)をご覧ください。
+> - Event Grid サブスクリプションや BLOB 名を含むキュー メッセージなど、別のメカニズムを使用して BLOB 処理をトリガーする。 たとえば、[BLOB 入力および出力バインディングの C# スクリプトと JavaScript の例](functions-bindings-storage-blob.md#input--output---example)をご覧ください。
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 
@@ -104,6 +106,20 @@ Azure Functions は "*スケール コントローラー*" と呼ばれるコン
 スケーリングは Function App 単位で行われます。 関数アプリがスケールアウトするときは、Azure Functions ホストの複数のインスタンスを実行するための追加リソースが割り当てられます。 反対に、コンピューティングの需要が減ると、スケール コントローラーにより、関数ホストのインスタンスが削除されます。 Function App 内で関数が何も実行されていない場合、インスタンスの数は最終的に 0 にスケールダウンされます。
 
 ![イベントを監視してインスタンスを作成しているスケール コントローラー](./media/functions-scale/central-listener.png)
+
+### <a name="understanding-scaling-behaviors"></a>スケーリングの動作について
+
+スケーリングはさまざまな要因によって異なる可能性があり、選択したトリガーと言語に基づいて異なる方法でスケールします。 ただし、今日のシステムにはスケーリングのいくつかの側面があります。
+* 1 つの関数アプリは、最大 200 インスタンスにスケールできます。 1 つのインスタンスで一度に複数のメッセージや要求を処理できるので、同時実行の数に上限は設定されていません。
+* 新しいインスタンスは、10 秒ごとに最大 1 回しか割り当てられません。
+
+次の記事に記載されているように、トリガーごとにスケーリングの上限が異なる場合もあります。
+
+* [イベント ハブ](functions-bindings-event-hubs.md#trigger---scaling)
+
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>スケーラブルなアプリのベスト プラクティスとパターン
+
+関数アプリには、スケールに影響を及ぼすさまざまな側面 (ホスト構成、ランタイム フットプリント、リソースの効率など) があります。  詳細については、[パフォーマンスの考慮事項に関する記事のスケーラビリティのセクション](functions-best-practices.md#scalability-best-practices)をご覧ください。
 
 ### <a name="billing-model"></a>課金モデル
 

@@ -4,7 +4,7 @@ description: "Resource Manager デプロイ モデルでのデプロイの自動
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
@@ -13,24 +13,24 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 9e4c0c3cf0e233447369a24b1d5fe27495abd1cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93ed84cb146119c877c3a143c5f7af9ca8ba0656
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="download-the-template-for-a-vm"></a>VM のテンプレートをダウンロードする
 Azure でポータルまたは PowerShell を使用して VM を作成する際に、Resource Manager テンプレートが自動的に作成されます。 このテンプレートを使用すると、デプロイを簡単に複製できます。 テンプレートには、リソース グループ内のすべてのリソースに関する情報が含まれています。 仮想マシンの場合、これはそのリソース グループ内の VM をサポートするために作成されたすべてのもの (ネットワーク リソースなど) がテンプレートに含まれていることを意味します。
 
 ## <a name="download-the-template-using-the-portal"></a>ポータルを使用してテンプレートをダウンロードする
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
-2. ハブ メニューで **[Virtual Machines]** をクリックします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
+2. 左側のメニューで **[Virtual Machines]** を選択します。
 3. 一覧から仮想マシンを選択します。
 4. **[Automation スクリプト]**を選択します。
-5. **[ダウンロード]** を選択して .zip ファイルをローカル コンピューターに保存します。
-6. .zip ファイルを開き、ファイルをフォルダーに展開します。 .zip ファイルには、次のものが含まれています。
+5. 上部のメニューから **[ダウンロード]** を選択して .zip ファイルをローカル コンピューターに保存します。
+6. .zip ファイルを開き、ファイルをフォルダーに展開します。 .zip ファイルには以下が含まれています。
    
    * deploy.ps1
    * deploy.sh 

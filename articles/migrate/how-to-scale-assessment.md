@@ -1,24 +1,16 @@
 ---
 title: "Azure Migrate での大規模な検出と評価 | Microsoft Docs"
 description: "Azure Migrate サービスを使用して、多数のオンプレミス マシンを評価する方法について説明します。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: dde0d07f-94b7-4b6a-a158-a89aa9324a35
-ms.service: migrate
-ms.devlang: na
+ms.service: azure-migrate
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
 ms.date: 11/22/2017
 ms.author: raynew
-ms.openlocfilehash: 930ec182cf329e7dda072dc49bd7f70abb413f2d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e28a2144dd102fcd2ec05531432cac0df250ae01
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -27,7 +19,7 @@ ms.lasthandoff: 11/28/2017
 ## <a name="prerequisites"></a>前提条件
 
 - **VMware**: 少なくとも 1 つの VMware VM が、バージョン 5.0 以降を実行しているESXi ホスト上またはクラスター上に配置されている必要があります。 ホストまたはクラスターが、バージョン 5.5 または 6.0 を実行している vCenter サーバーによって管理されている必要があります。
-- **vCenter アカウント**: vCenter サーバーの管理者の資格情報と、読み取り専用のアカウントが必要です。 Azure Migrate はこのアカウントを使用して VM を検出します。
+- **vCenter アカウント**: vCenter サーバーの管理者の資格情報と、読み取り専用のアカウントが必要です。 Azure Migrate はこのアカウントを使って VM を検出します。
 - **アクセス許可**: vCenter サーバー上で、.OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。
 - **統計情報の設定**: デプロイを開始する前に、vCenter サーバーの統計レベルを 2 以上に設定する必要があります。
 
@@ -50,8 +42,8 @@ Azure Migrate プロジェクトは、最大 1500 台のマシンを評価でき
 要件に従って Azure Migrate プロジェクトを作成します。
 
 1. Azure Portal で、**[リソースの作成]** をクリックします。
-2. 「**Azure Migrate**」を検索して、検索結果に表示された **Azure Migrate (プレビュー)** を選択します。 **[Create]**をクリックします。
-3. プロジェクト名とそのプロジェクトの Azure サブスクリプションを指定します。
+2. 「**Azure Migrate**」を検索し、検索結果でサービス (**Azure Migrate (プレビュー)**) を選びます。 **[Create]**をクリックします。
+3. プロジェクト名およびプロジェクトの Azure サブスクリプションを指定します。
 4. 新しいリソース グループを作成します。
 5. プロジェクトを作成するリージョンを指定して、**[作成]** をクリックします。 オンプレミス VM から収集されるメタデータが、このリージョンに保存されます。
 
@@ -70,7 +62,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
    
 ### <a name="verify-the-collector-appliance"></a>コレクター アプライアンスの確認
 
-.OVA ファイルをデプロイする前に、それが安全なファイルかどうかを確認します。
+.OVA ファイルをデプロイする前に、それが安全であることを確認します。
 
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
@@ -90,11 +82,11 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 
 1. vSphere Client コンソールで、**[File]\(ファイル\)** > **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** の順にクリックします。
 
-    ![OVF のデプロイ](./media/how-to-scale-assessment/vcenter-wizard.png)
+    ![OVF をデプロイする](./media/how-to-scale-assessment/vcenter-wizard.png)
 
 2. [Deploy OVF Template]\(OVF テンプレートのデプロイ\) ウィザードで **[Source]\(ソース\)** を選択し、.OVA ファイルの場所を指定します。
 3. **[Name]\(名前\)** と **[Location]\(場所\)** で、コレクター VM のフレンドリ名と、VM がホストされるインベントリ オブジェクトを指定します。
-5. **[Host/Cluster]\(ホスト/クラスター\)** で、コレクター VM を実行するホストまたはクラスターを指定します。
+5. **[Host/Cluster]\(ホスト/クラスター\)** で、コレクター VM が実行するホストまたはクラスターを指定します。
 7. ストレージで、コレクター VM の保存先を指定します。
 8. **[Disk Format]\(ディスク フォーマット\)** で、ディスクの種類とサイズを指定します。
 9. **[Network Mapping]\(ネットワーク マッピング\)** で、コレクター VM の接続先となるネットワークを指定します。 このネットワークには、Azure にメタデータを送信するためのインターネット接続が必要です。 
@@ -155,7 +147,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 検出時間は検出している VM の数によって異なります。 通常、VM が 100 台の場合、コレクターが実行を終了した後、検出が完了するまで約 1 時間かかります。 
 
 1. Azure Migrate プロジェクト内で、**[管理]** > **[マシン]** の順にクリックします。
-2. 検出する VM がポータルに表示されていることを確認してください。
+2. 検出対象の VM がポータルに表示されていることを確認します。
 
 
 ## <a name="next-steps"></a>次のステップ

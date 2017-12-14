@@ -41,21 +41,24 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 
 ## <a name="cloud-init"></a>cloud-init
-[cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 初回起動処理中に cloud-init が実行されるので、構成を適用するために追加の手順や必要なエージェントはありません。
+[cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 cloud-init は初回起動プロセスの間に呼び出されるので、構成を適用するために追加の手順や必要なエージェントはありません。  `#cloud-config` ファイルの形式を正しく設定する方法について詳しくは、[cloud-init のドキュメント サイト](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)をご覧ください。  `#cloud-config` ファイルは、base64 でエンコードされたテキスト ファイルです。
 
-cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、インストールするパッケージの一覧をユーザーが定義します。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
+cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
-Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 次の表は、Azure プラットフォーム イメージでの最新の cloud-init の可用性の概要を示しています。
+ Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が VM および VM Scale Sets (VMSS) とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
 
-| エイリアス | 発行元 | プラン | SKU | バージョン |
+| 発行元 | プラン | SKU | バージョン | cloud-init 対応
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |最新 |
-| UbuntuLTS |Canonical |UbuntuServer |16.04 LTS |最新 |
-| CoreOS |CoreOS |CoreOS |安定版 |最新 |
+|Canonical |UbuntuServer |16.04 LTS |最新 |○ | 
+|Canonical |UbuntuServer |14.04.5-LTS |最新 |○ |
+|CoreOS |CoreOS |安定版 |最新 |○ |
+|OpenLogic |CentOS |7-CI |最新 |preview |
+|RedHat |RHEL |7-RAW-CI |最新 |preview |
 
-以下の項目について説明します。
+Azure の cloud-init について詳しくは、次のページをご覧ください。
 
-- [cloud-init を使用して Linux VM をカスタマイズする](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)。
+- [Azure での Linux 仮想マシンに対する cloud-init のサポート](../articles/virtual-machines/linux/using-cloud-init.md)
+- [cloud-init を使用した VM 構成の自動化に関するチュートリアル](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: 682ad79cc5fe4f08051477b7b90ae80981e5d595
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -64,7 +64,7 @@ Azure Service Fabric のセキュリティに関して推奨されるベスト �
 クラスターにセキュリティを実装する[シナリオ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)は 3 つあり、それぞれさまざまなテクノロジを使用します:
 
 -   ノード間のセキュリティ: このシナリオでは、クラスター内の VM とコンピューターの間の通信をセキュリティで保護します。 この形式のセキュリティを使用した場合、クラスターへの参加が承認されているコンピューターのみが、クラスター内のアプリケーションとサービスをホストできます。
-このシナリオでは、Azure で実行するクラスターまたは Windows で実行するスタンドアロン クラスターで、[証明書セキュリティ](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)と [Windows セキュリティ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-windows-cluster-windows-security) (Windows Server マシンの場合) のいずれかを使用できます。
+このシナリオでは、Azure で実行するクラスターまたは Windows で実行するスタンドアロン クラスターで、[証明書セキュリティ](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)と [Windows セキュリティ](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security) (Windows Server マシンの場合) のいずれかを使用できます。
 -   クライアントとノードの間のセキュリティ: このシナリオでは、Service Fabric クライアントとクラスター内の個々のノードとの間の通信をセキュリティで保護します。
 -   ロールベースのアクセス制御 (RBAC): このシナリオでは、クラスターにアクセスする管理者ロールとユーザー クライアント ロールのそれぞれに別個の ID (証明書、Azure AD など) を使用します。 ロールの ID は、クラスターの作成時に指定します。
 
@@ -125,7 +125,7 @@ Service Fabric では、Reliable Actors アプリケーション フレームワ
 レプリケーター構成では、アクター状態プロバイダーの状態の信頼性を高める役割を担うレプリケーターを構成します。
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>Azure Service Fabric の SSL を構成する
-サーバー認証プロセスにより、管理クライアントに対してクラスター管理エンドポイントを[認証](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)します。 これにより、管理クライアントは自らが実際のクラスターと通信していることを認識します。 この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対しても [SSL](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-creation-via-arm) を提供します。
+サーバー認証プロセスにより、管理クライアントに対してクラスター管理エンドポイントを[認証](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)します。 これにより、管理クライアントは自らが実際のクラスターと通信していることを認識します。 この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対しても [SSL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) を提供します。
 クラスターのカスタム ドメイン名を取得する必要があります。 証明機関に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
 アプリケーションに SSL を構成するには、まず CA によって署名された SSL 証明書を取得する必要があります。 CA は信頼されたサード パーティであり、SSL を使ったセキュリティ保護のための証明書を発行する機関です。 まだ SSL 証明書を持っていない場合には、SSL 証明書を販売する会社から購入する必要があります。

@@ -5,42 +5,27 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2017
+ms.date: 12/06/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 6ea39618a24249d92b77afdf5cb0ea284b180223
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 88ceb47d46b66e716c6c263098d5b9458e4aff22
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Azure CLI を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 
 Azure のコンプライアンスを理解する第一歩は、自分の現在のリソースの状態を把握することです。 このクイックスタートでは、ポリシー割り当てを作成して、管理ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
 このプロセスを終了すると、管理ディスクを使用していない、つまり "*非準拠*" の仮想マシンを適切に特定できるようになります。
-が必要です。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
-
-## <a name="opt-in-to-azure-policy"></a>Azure Policy を選択する
-
-Azure Policy は現在、パブリック プレビュー段階であるため、登録してアクセスを要求する必要があります。
-
-1. Azure Policy (https://aka.ms/getpolicy) にアクセスし、左側のウィンドウにある **[サインアップ]** を選択します。
-
-   ![ポリシーの検索](media/assign-policy-definition/sign-up.png)
-
-2. **[サブスクリプション]** 一覧から、使用したいサブスクリプションを選択して Azure Policy を選択します。 次に、**[登録]** を選択します。
-
-   ![Azure Policy の使用を選択する](media/assign-policy-definition/preview-opt-in.png)
-
-   要求のプレビューは自動的に承認されます。 登録が処理されるまでに最大で 30 分ほどかかる場合があります。
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
@@ -64,9 +49,9 @@ Azure Policy には、使用できる組み込みのポリシー定義があら�
 
 - ポリシー割り当ての表示用の**名前**。 ここでは、"*管理ディスクのない仮想マシンを監査*" を使用しましょう。
 - **ポリシー** - 割り当ての作成に使用している基のポリシー定義です。 ここでは、"*管理ディスクのない仮想マシンを監査*" というポリシー定義です
-- **スコープ** - スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループの範囲が含まれる可能性があります。
+- **スコープ** - スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。
 
-  Azure Policy を選択したときに登録したサブスクリプション (またはリソース グループ) を使用します。この例では、サブスクリプション ID **bc75htn-a0fhsi-349b-56gh-4fghti-f84852** とリソース グループ名 **FabrikamOMS** を使用しています。 これらの値は、実際に使用するサブスクリプションの ID とリソース グループの名前に変更してください。
+  以前に登録したサブスクリプション (またはリソース グループ) を使います。 この例では、**bc75htn-a0fhsi-349b-56gh-4fghti-f84852** というサブスクリプション ID と、**FabrikamOMS** というリソース グループ名を使っています。 これらの値は、実際に使用するサブスクリプションの ID とリソース グループの名前に変更してください。
 
 コマンドは次のようになります。
 

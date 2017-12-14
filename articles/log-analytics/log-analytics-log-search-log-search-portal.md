@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08d8ebfd18491eb78190651b76f444ffe0eca899
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>ログ検索ポータルを使用して Azure Log Analytics でログ検索を作成する
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルでは、1 つ以上のソースが接続された Log Analytics ワークスペースが既にあり、クエリで分析するデータが生成されることを前提としています。  
 
 - ワークスペースがない場合は、「[Log Analytics ワークスペースを使って作業を開始する](log-analytics-get-started.md)」の手順を使用して無料で作成できます。
-- 1 つ以上の [Windows エージェント](log-analytics-windows-agents.md)または [Linux エージェント](log-analytics-linux-agents.md)をワークスペースに接続します。  
+- 1 つ以上の [Windows エージェント](log-analytics-windows-agent.md)または [Linux エージェント](log-analytics-linux-agents.md)をワークスペースに接続します。  
 
 ## <a name="open-the-log-search-portal"></a>ログ検索ポータルを開く
 最初に、ログ検索ポータルを開きます。  Azure Portal または OMS ポータルのいずれかにアクセスできます。

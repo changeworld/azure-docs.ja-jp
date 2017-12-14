@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b78179a5e7c7eaab7a18a1937aeb25c99b2789a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 5f41dd62d3f074eebe0c996a9c14bc7811d5b365
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connect-your-device-to-your-iot-hub-using-java"></a>Java を使用してデバイスを IoT ハブに接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
@@ -215,7 +215,7 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
                   Iterable<EventData> receivedEvents = receiver.receive(100).get();
                   int batchSize = 0;
                   if (receivedEvents != null) {
-                    System.out.println("Got some evenst");
+                    System.out.println("Got some events");
                     for (EventData receivedEvent : receivedEvents) {
                       System.out.println(String.format("Offset: %s, SeqNo: %s, EnqueueTime: %s",
                         receivedEvent.getSystemProperties().getOffset(),

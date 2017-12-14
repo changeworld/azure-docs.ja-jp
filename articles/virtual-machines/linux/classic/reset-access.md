@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-ms.openlocfilehash: 74765877e7836d6878284b350a25d8355dc83d7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cad36fdaf0e7b151809cf07ede10abd1abec99d0
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>VMAccess 拡張機能を使用して、Linux VM のパスワードまたは SSH キーをリセットし、SSH 構成を修正し、ディスクの整合性チェックを実行する方法について説明します。
 パスワードを忘れたため、Secure Shell (SSH) キーが正しくないため、または SSH 構成に問題があるために、Azure の Linux 仮想マシンに接続できない場合は、Azure CLI で VMAccessForLinux 拡張機能を使用して、パスワードまたは SSH キーのリセット、SSH 構成の修正、ディスクの整合性のチェックを行います。 
@@ -44,7 +44,7 @@ Azure CLI を使用すると、次のタスクを実行できます。
 ## <a name="prerequisites"></a>前提条件
 次の手順を実行する必要があります。
 
-* [Azure CLI をインストール](../../../cli-install-nodejs.md)して、ログオンし、アカウントに関連付けられている Azure のリソースを使用する[サブスクリプションに接続](../../../xplat-cli-connect.md)する必要があります。
+* [Azure CLI をインストール](../../../cli-install-nodejs.md)して、ログオンし、アカウントに関連付けられている Azure のリソースを使用する[サブスクリプションに接続](/cli/azure/authenticate-azure-cli)する必要があります。
 * コマンド プロンプトで以下の内容を入力して、クラシック デプロイメント モデルの正しいモードを設定します。
     ``` 
         azure config mode asm

@@ -4,7 +4,7 @@ description: "Azure AD を使用して、複数のサードパーティ SaaS ア
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: 3fe57e9c22d04a3557978093ce3fe86613c5c1d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd82ef109abbc5707db4c02c2f14f9d55dfb74e3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>SaaS アプリへのユーザー プロビジョニングの自動化とは
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Azure AD の自動ユーザー プロビジョニングで利用できるアプリケーションとシステム
 
-Azure AD は、一般に普及しているさまざまな SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、[SCIM 2.0 標準](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-scim-provisioning)の特定の領域を実装するアプリにも広く対応しています。
+Azure AD は、一般に普及しているさまざまな SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、[SCIM 2.0 標準](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning)の特定の領域を実装するアプリにも広く対応しています。
 
 Azure AD アプリケーション ギャラリーの "おすすめ" アプリのすべてで、自動的なユーザー プロビジョニングがサポートされています。 おすすめアプリの一覧を表示するには、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)をクリックしてください。
 
@@ -85,14 +85,14 @@ Azure AD アプリケーション ギャラリーの "おすすめ" アプリの
 
 プロビジョニングの構成は、アプリケーション管理画面の **[プロビジョニング]** タブで行います。
 
-![設定](./media/active-directory-saas-app-provisioning/provisioning_settings0.PNG)
+![[設定]](./media/active-directory-saas-app-provisioning/provisioning_settings0.PNG)
 
 
 * Azure AD プロビジョニング サービスには、アプリケーションが提供するユーザー管理 API に接続できるように**管理者資格情報**を指定する必要があります。
 
 * ソース システム (例: Azure AD) のどのフィールドの内容をターゲット システム (例: ServiceNow) のどのフィールドと同期させるかを指定する**属性マッピング**を構成できます。 ターゲット アプリケーションが対応していれば、ユーザー アカウントだけでなく、必要に応じてグループのプロビジョニングもこのセクションで構成することができます。 システム間のアカウントの照合に使用するフィールドは、[Matching properties]\(一致するプロパティ\) で選択できます。 "[式](active-directory-saas-writing-expressions-for-attribute-mappings.md)" を使用すると、ソース システムから取得した値をターゲット システムに書き込む前に変更または変換できます。 詳細については、[属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)に関するページを参照してください。
 
-![設定](./media/active-directory-saas-app-provisioning/provisioning_settings1.PNG)
+![[設定]](./media/active-directory-saas-app-provisioning/provisioning_settings1.PNG)
 
 * **スコープ フィルター**により、ターゲット システムへのプロビジョニング/プロビジョニング解除の対象となるソース システム内のユーザーとグループをプロビジョニング サービスに指定します。 スコープ フィルターでは、次の 2 つの側面を総合的に評価してプロビジョニング対象ユーザーが決定されます。
 
@@ -104,7 +104,7 @@ Azure AD アプリケーション ギャラリーの "おすすめ" アプリの
 
 * **[監査ログ]** には、Azure AD プロビジョニング サービスによって実行された各操作の記録が表示されます。 詳細については、[プロビジョニング レポートに関するガイド](active-directory-saas-provisioning-reporting.md)を参照してください。
 
-![設定](./media/active-directory-saas-app-provisioning/audit_logs.PNG)
+![[設定]](./media/active-directory-saas-app-provisioning/audit_logs.PNG)
 
 ## <a name="what-happens-during-provisioning"></a>プロビジョニング中の動作
 

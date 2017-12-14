@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: c09a01af8053feb4d5450b350503484507014765
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 16d79f02bffeb3db22a0190822d4304d3a1de73b
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="connect-computers-without-internet-access-to-oms-using-the-oms-gateway"></a>インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する
 
@@ -129,7 +129,7 @@ Windows Server 2016 のネットワーク負荷分散クラスターの設計お
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>OMS エージェントと Operations Manager 管理グループを構成する
 以下のセクションでは、直接接続されている OMS エージェント、Operations Manager 管理グループ、または Azure Automation Hybrid Runbook Worker に対して OMS との通信のために OMS ゲートウェイを構成する手順を説明します。  
 
-OMS に直接接続している Windows コンピューターに OMS エージェントをインストールするための要件と手順については、[Windows コンピューターを OMS に接続する](log-analytics-windows-agents.md)方法に関するページを参照してください。Linux コンピューターの場合には、[Linux コンピューターを OMS に接続する](log-analytics-linux-agents.md)方法に関するページを参照してください。 
+OMS に直接接続している Windows コンピューターに OMS エージェントをインストールするための要件と手順については、[Windows コンピューターを OMS に接続する](log-analytics-windows-agent.md)方法に関するページを参照してください。Linux コンピューターの場合には、[Linux コンピューターを OMS に接続する](log-analytics-linux-agents.md)方法に関するページを参照してください。 
 
 ### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>OMS エージェントと Operations Manager に対してプロキシ サーバーとして OMS ゲートウェイを構成する
 

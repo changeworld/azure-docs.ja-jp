@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: guybo
-ms.openlocfilehash: c7093e221ff8fe69ded1cfbce4f3ddeb1a195666
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aef243e34f1d5fc8240576a9803bb8b08693a7b7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>仮想マシン スケール セットのアップグレード
 この記事では、ダウンタイムなしで Azure 仮想マシン スケール セットに OS の更新を展開する方法について説明します。 ここでは、OS の更新により、OS のバージョン、OS の SKU、またはカスタム イメージの URI が変更されます。 ダウンタイムのない更新とは、すべての仮想マシンを一度に更新するのではなく、一度に 1 つずつ、またはグループごとに更新する (一度に 1 つの障害ドメインなど) ということです。 そうすることで、アップグレード中ではない仮想マシンを実行し続けることができます。
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 * Azure Managed Disks を使用して作成されたスケール セットのイメージ参照を変更します。
 * 仮想マシン内から OS を更新します (この例には、セキュリティ更新プログラムのインストールと Windows Update の実行が含まれます)。 このシナリオはサポートされますが、この記事では説明されていません。
 
-[Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) クラスターの一部としてデプロイされる仮想マシン スケール セットについては、ここでは説明しません。 Service Fabric の更新プログラムの詳細については、[Service Fabric クラスター内の Windows OS へのパッチの適用](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-patch-orchestration-application)に関するページをご覧ください。
+[Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) クラスターの一部としてデプロイされる仮想マシン スケール セットについては、ここでは説明しません。 Service Fabric の更新プログラムの詳細については、[Service Fabric クラスター内の Windows OS へのパッチの適用](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)に関するページをご覧ください。
 
 プラットフォーム イメージの OS バージョンまたは SKU、あるいはカスタム イメージの URI を変更するための基本的なシーケンスは次のようになります。
 

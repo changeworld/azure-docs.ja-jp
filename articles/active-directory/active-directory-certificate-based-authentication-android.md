@@ -4,7 +4,7 @@ description: "Android デバイスでソリューションに証明書ベース�
 services: active-directory
 author: MarkusVi
 documentationcenter: na
-manager: femila
+manager: mtillman
 ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 10/13/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 728bf4caf97fdb742cc1560cb06e4b0c85614020
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: d3e2ed44777a5963c8bd88f6479c4c58bebdb940
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android での Azure Active Directory の証明書ベースの認証
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5a35c7255a1c30a693862589c14f6a22a1900790
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36ec76718d21cac5ae3203f1c6d4b8af2aacb9ed
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="configure-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -28,7 +28,7 @@ Microsoft Azure Media Services を使用すると、Advanced Encryption Standard
 
 Media Services では、クライアントが暗号化されたコンテンツを再生するために AES キーまたは PlayReady/Widevine ライセンスを取得できる **キー/ライセンス配信サービス** も提供します。
 
-このトピックでは、Azure Portal を使用して、コンテンツ キー承認ポリシーを構成する方法について説明します。 キーは、動的にコンテンツを暗号化するために、後で使用できます。 現時点で暗号化できるストリーミング形式は、HLS、MPEG DASH、およびスムーズ ストリーミングであることに注意してください。 プログレッシブ ダウンロードを暗号化することはできません。
+この記事では、Azure Portal を使用して、コンテンツ キー承認ポリシーを構成する方法について説明します。 キーは、動的にコンテンツを暗号化するために、後で使用できます。 現時点では、HLS、MPEG DASH、Smooth Streaming というストリーミング形式を暗号化できます。 プログレッシブ ダウンロードを暗号化することはできません。
 
 プレーヤーが動的に暗号化するように設定されたストリームを要求すると、Media Services は構成済みのキーを使用して、AES または DRM 暗号化によってコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
@@ -42,6 +42,7 @@ Media Services では、クライアントが暗号化されたコンテンツ�
 * AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、ストリーミング エンドポイントが**実行中**状態である必要があります。 
 * 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
 * キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。  ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
+* AMS ストリーミング エンドポイントは、プレフライト応答の CORS "Access-Control-Allow-Origin" ヘッダーをワイルドカード "\*" に設定します。 これは、Azure Media Player、Roku、JW など、ほとんどのプレーヤーでうまく機能します。 ただし、dashjs を利用する一部のプレーヤーでは、資格情報モードを "include" に設定すると、dashjs 内の XMLHttpRequest が "Access-Control-Allow-Originin" の値としてワイルドカード "\*" を許可しないため、機能しません。 dashjs でのこの制限の回避策としては、単一のドメインからクライアントをホストしている場合は、Azure Media Services はそのドメインをプレフライト応答ヘッダー内で指定できます。 Azure Portal でサポート チケットを開くことで連絡できます。
 
 ## <a name="how-to-configure-the-key-authorization-policy"></a>方法: キーの承認ポリシーを構成する
 キーの承認ポリシーを構成するには、 **[コンテンツ保護]** ページを選択します。
@@ -49,7 +50,7 @@ Media Services では、クライアントが暗号化されたコンテンツ�
 Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、**オープン**、**トークン**、または **IP** 承認制限を設定することができます (**IP** は REST または .NET SDK を使用して構成できます)。
 
 ### <a name="open-restriction"></a>オープン制限
-**オープン** 制限では、キーを要求するすべてのユーザーにシステムがキーを配信します。 この制限は、テストに便利です。
+**オープン**制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。 この制限は、テストに便利です。
 
 ![OpenPolicy][open_policy]
 
@@ -60,7 +61,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 Media Services では、 **Secure Token Service**は提供されません。 トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。 詳細については、「 [Use Azure ACS to issue tokens](http://mingfeiy.com/acs-with-key-services)」(Azure ACS を使用してトークンを発行する) をご覧ください。
 
-**トークン**制限ポリシーを構成する場合は、**検証キー**、**発行者**、および**対象ユーザー**の値を設定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれ、発行者は、トークンを発行するセキュリティ トークン サービスです。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
+**トークン**制限ポリシーを構成するときは、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。 プライマリ**検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。 **対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 ### <a name="playready"></a>PlayReady
 **PlayReady**を使用してコンテンツを保護する場合、PlayReady ライセンス テンプレートを定義する XML 文字列を承認ポリシーで指定する必要があります。 既定では、次のポリシーが設定されます。
@@ -69,7 +70,7 @@ Media Services では、 **Secure Token Service**は提供されません。 ト
 
 **[ポリシー xml のインポート]** ボタンをクリックして、[ここ](media-services-playready-license-template-overview.md)で定義された XML スキーマに準拠した別の XML を指定します。
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

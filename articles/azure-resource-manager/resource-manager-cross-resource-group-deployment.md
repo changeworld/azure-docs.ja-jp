@@ -1,6 +1,6 @@
 ---
-title: "複数のリソース グループに Azure リソースをデプロイする | Microsoft Docs"
-description: "デプロイ時に複数の Azure リソース グループを対象にする方法について説明します。"
+title: "複数のサブスクリプションとリソース グループに Azure リソースをデプロイする | Microsoft Docs"
+description: "デプロイ時に複数の Azure サブスクリプションとリソース グループを対象にする方法について説明します。"
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,43 +11,58 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2017
+ms.date: 12/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 763f46b9b5be7edf06ee0604bfc51a2482405b60
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="deploy-azure-resources-to-more-than-one-resource-group"></a>複数のリソース グループに Azure リソースをデプロイする
+# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
 
-テンプレートに含まれているリソースはすべて 1 つのリソース グループにデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで複数のリソース グループにデプロイしたい状況もあります。 たとえば Azure Site Recovery に使うバックアップ仮想マシンは、別のリソース グループと場所にデプロイした方がよい場合があります。 Resource Manager では、入れ子になったテンプレートを使用することで、親テンプレートに使われているリソース グループとは異なるリソース グループを対象にすることができます。
+テンプレートに含まれているリソースはすべて 1 つのリソース グループにデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで、複数のリソース グループまたはサブスクリプションにデプロイしたい状況もあります。 たとえば Azure Site Recovery に使うバックアップ仮想マシンは、別のリソース グループと場所にデプロイした方がよい場合があります。 Resource Manager では、入れ子になったテンプレートを使用することで、親テンプレートに使われているサブスクリプションおよびリソース グループとは異なる、サブスクリプションとリソース グループを対象にすることができます。
 
 アプリケーションとその一連のリソースにとって、リソース グループはライフサイクルのコンテナーと言えます。 リソース グループはテンプレートの外で作成し、デプロイ時にその対象として、そのリソース グループを指定することになります。 リソース グループの概要については、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
 
-## <a name="example-template"></a>テンプレートの例
+## <a name="specify-a-subscription-and-resource-group"></a>サブスクリプションとリソース グループの指定
 
-異なるリソースをデプロイ対象とするには、入れ子になった (リンクされた) テンプレートをデプロイ時に使う必要があります。 `Microsoft.Resources/deployments` リソース タイプには、`resourceGroup` というパラメーターがあり、入れ子になったデプロイ用に異なるリソース グループを指定することができます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。 次の例では、2 つのストレージ アカウントをデプロイしています。1 つは、デプロイ時に指定されるリソース グループ内のストレージ アカウントで、もう 1 つは、`crossResourceGroupDeployment` という名前のリソース グループ内のストレージ アカウントです。
+異なるリソースをデプロイ対象とするには、入れ子になった (リンクされた) テンプレートをデプロイ時に使う必要があります。 `Microsoft.Resources/deployments` リソース タイプは、`subscriptionId` および `resourceGroup` にパラメーターを提供します。 こうしたプロパティを使用すると、入れ子になったデプロイ用に異なるサブスクリプションとリソース グループを指定することができます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。 サブスクリプション ID またはリソース グループを指定しない場合は、親テンプレートのサブスクリプションおよびリソース グループが使用されます。
+
+次の例では、2 つのストレージ アカウントをデプロイしています。1 つは、デプロイ時に指定されるリソース グループのストレージ アカウントで、もう 1 つは、`secondResourceGroup` パラメーターで指定されるリソース グループのストレージ アカウントです。
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "StorageAccountName1": {
+        "storagePrefix": {
+            "type": "string",
+            "maxLength": 11
+        },
+        "secondResourceGroup": {
             "type": "string"
         },
-        "StorageAccountName2": {
-            "type": "string"
+        "secondSubscriptionID": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "secondStorageLocation": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
         }
     },
-    "variables": {},
+    "variables": {
+        "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
+        "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
+    },
     "resources": [
         {
             "apiVersion": "2017-05-10",
             "name": "nestedTemplate",
             "type": "Microsoft.Resources/deployments",
-            "resourceGroup": "crossResourceGroupDeployment",
+            "resourceGroup": "[parameters('secondResourceGroup')]",
+            "subscriptionId": "[parameters('secondSubscriptionID')]",
             "properties": {
                 "mode": "Incremental",
                 "template": {
@@ -58,11 +73,14 @@ ms.lasthandoff: 10/11/2017
                     "resources": [
                         {
                             "type": "Microsoft.Storage/storageAccounts",
-                            "name": "[parameters('StorageAccountName2')]",
-                            "apiVersion": "2015-06-15",
-                            "location": "West US",
+                            "name": "[variables('secondStorageName')]",
+                            "apiVersion": "2017-06-01",
+                            "location": "[parameters('secondStorageLocation')]",
+                            "sku":{
+                                "name": "Standard_LRS"
+                            },
+                            "kind": "Storage",
                             "properties": {
-                                "accountType": "Standard_LRS"
                             }
                         }
                     ]
@@ -72,54 +90,115 @@ ms.lasthandoff: 10/11/2017
         },
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[parameters('StorageAccountName1')]",
-            "apiVersion": "2015-06-15",
-            "location": "West US",
+            "name": "[variables('firstStorageName')]",
+            "apiVersion": "2017-06-01",
+            "location": "[resourceGroup().location]",
+            "sku":{
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
             "properties": {
-                "accountType": "Standard_LRS"
             }
         }
     ]
 }
 ```
 
-存在しないリソース グループの名前を `resourceGroup` に設定した場合、デプロイは失敗します。 `resourceGroup` の値を指定しなかった場合は、親リソース グループが Resource Manager で使用されます。  
+存在しないリソース グループの名前を `resourceGroup` に設定した場合、デプロイは失敗します。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-テンプレートの例をデプロイするには、ポータル、Azure PowerShell、または Azure CLI を使用できます。 Azure PowerShell または Azure CLI の場合、2017 年 5 月以降のリリースを使用する必要があります。 この例は、テンプレートが **crossrgdeployment.json** というファイル名でローカルに保存されていることを前提としています。
+テンプレートの例をデプロイするには、2017 年 5 月以降のリリースの Azure PowerShell または Azure CLI を使用します。 この例では、GitHub の[クロス サブスクリプション テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json)を使用してください。
 
-PowerShell の場合
+### <a name="two-resource-groups-in-the-same-subscription"></a>同じサブスクリプションの 2 つのリソース グループ
+
+PowerShell の場合、2 つのストレージ アカウントを、同じサブスクリプションの 2 つのリソース グループにデプロイするには、次を使用します。
 
 ```powershell
-Login-AzureRmAccount
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
 
-New-AzureRmResourceGroup -Name mainResourceGroup -Location "South Central US"
-New-AzureRmResourceGroup -Name crossResourceGroupDeployment -Location "Central US"
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName mainResourceGroup `
-  -TemplateFile c:\MyTemplates\crossrgdeployment.json
+New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+New-AzureRmResourceGroup -Name $secondRG -Location eastus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus
 ```
 
-Azure CLI の場合
+Azure CLI の場合、2 つのストレージ アカウントを、同じサブスクリプションの 2 つのリソース グループにデプロイするには、次を使用します。
 
-```azurecli
-az login
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
 
-az group create --name mainResourceGroup --location "South Central US"
-az group create --name crossResourceGroupDeployment --location "Central US"
+az group create --name $firstRG --location southcentralus
+az group create --name $secondRG --location eastus
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group mainResourceGroup \
-    --template-file crossrgdeployment.json
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
 デプロイが完了すると、2 つのリソース グループが確認できます。 それぞれのリソース グループにストレージ アカウントが存在します。
 
-## <a name="use-resourcegroup-function"></a>resourceGroup() 関数の使用
+### <a name="two-resource-groups-in-different-subscriptions"></a>異なるサブスクリプションの 2 つのリソース グループ
 
-リソース グループ間のデプロイの場合、[resouceGroup() 関数](resource-group-template-functions-resource.md#resourcegroup)は、入れ子になったテンプレートの指定方法に基づいてさまざまに解決されます。 
+PowerShell の場合、2 つのストレージ アカウントを、2 つのサブスクリプションにデプロイするには、次を使用します。
 
-あるテンプレートを別のテンプレートに埋め込む場合、入れ子になったテンプレート内の resouceGroup() は親リソース グループに解決されます。 埋め込みテンプレートでは次の形式が使用されます。
+```powershell
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
+
+$firstSub = "<first-subscription-id>"
+$secondSub = "<second-subscription-id>"
+
+Select-AzureRmSubscription -Subscription $secondSub
+New-AzureRmResourceGroup -Name $secondRG -Location eastus
+
+Select-AzureRmSubscription -Subscription $firstSub
+New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus `
+  -secondSubscriptionID $secondSub
+```
+
+Azure CLI の場合、2 つのストレージ アカウントを、2 つのサブスクリプションにデプロイするには、次を使用します。
+
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
+
+firstSub="<first-subscription-id>"
+secondSub="<second-subscription-id>"
+
+az account set --subscription $secondSub
+az group create --name $secondRG --location eastus
+
+az account set --subscription $firstSub
+az group create --name $firstRG --location southcentralus
+
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
+```
+
+## <a name="use-the-resourcegroup-function"></a>resourceGroup() 関数の使用
+
+リソース グループ間のデプロイの場合、[resourceGroup() 関数](resource-group-template-functions-resource.md#resourcegroup)は、入れ子になったテンプレートの指定方法に基づいてさまざまに解決されます。 
+
+あるテンプレートを別のテンプレートに埋め込む場合、入れ子になったテンプレート内の resourceGroup() は親リソース グループに解決されます。 埋め込みテンプレートでは次の形式が使用されます。
 
 ```json
 "apiVersion": "2017-05-10",
@@ -135,7 +214,7 @@ az group deployment create \
 }
 ```
 
-別のテンプレートにリンクする場合、リンクされたテンプレート内の resouceGroup() は入れ子になったリソース グループに解決されます。 リンクされたテンプレートでは次の形式が使用されます。
+別のテンプレートにリンクする場合、リンクされたテンプレート内の resourceGroup() は入れ子になったリソース グループに解決されます。 リンクされたテンプレートでは次の形式が使用されます。
 
 ```json
 "apiVersion": "2017-05-10",
@@ -149,6 +228,33 @@ az group deployment create \
         resourceGroup() in linked template refers to linked resource group
     }
 }
+```
+
+`resourceGroup()` によるさまざまな解決方法をテストするには、親テンプレート、インライン テンプレート、およびリンクされたテンプレートのリソース グループ オブジェクトを返す[サンプル テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)をデプロイします。 親テンプレートとインライン テンプレートの両方が、同じリソース グループに解決されます。 リンクされたテンプレートは、リンクされたリソース グループに解決されます。
+
+PowerShell では、次を使用します。
+
+```powershell
+New-AzureRmResourceGroup -Name parentGroup -Location southcentralus
+New-AzureRmResourceGroup -Name inlineGroup -Location southcentralus
+New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName parentGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
+```
+
+Azure CLI では、次を使用します。
+
+```azurecli-interactive
+az group create --name parentGroup --location southcentralus
+az group create --name inlineGroup --location southcentralus
+az group create --name linkedGroup --location southcentralus
+
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group parentGroup \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
 ## <a name="next-steps"></a>次のステップ

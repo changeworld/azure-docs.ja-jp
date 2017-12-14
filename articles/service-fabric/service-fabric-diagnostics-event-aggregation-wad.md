@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: e417458a16a5f23d8b89cbf87ab2713fab352046
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 8e6c82aa60544d672bb249d589b63d55b48309fe
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 ポータルを使ってクラスターを作成する場合、**[OK] をクリックしてクラスターを作成する前に**テンプレートをダウンロードすることを強くお勧めします。 詳細については、[Azure Resource Manager テンプレートを使用して Service Fabric クラスターをセットアップする方法](service-fabric-cluster-creation-via-arm.md)に関するページを参照してください。 いくつかの変更はポータルを使用して行うことができないため、後で変更を行うためにこのテンプレートが必要になります。
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>Azure リソース マネージャー を使用してクラスター作成の一環で診断拡張機能をデプロイする
-Resource Manager を使用してクラスターを作成するには、診断の構成 JSON を完全なクラスターの Resource Manager テンプレートに追加してから、クラスターを作成します。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーの「 [Five-node cluster with Diagnostics Resource Manager template sample](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)」で参照できます。
+Resource Manager を使用してクラスターを作成するには、診断の構成 JSON を完全なクラスターの Resource Manager テンプレートに追加してから、クラスターを作成します。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーの「 [Five-node cluster with Diagnostics Resource Manager template sample](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)」で参照できます。
 
 Resource Manager テンプレートの診断設定を確認するには、azuredeploy.json ファイルを開き、**IaaSDiagnostics** を検索します。 このテンプレートを使用してクラスターを作成するには、前のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 

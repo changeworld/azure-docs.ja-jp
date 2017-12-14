@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2017
 ms.author: kraigb
-ms.openlocfilehash: 12250adbfaf8621b80acd5de5de06b21e05ef07c
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: fc6f88ee3b808e46e693de7c31b836be86728cd5
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="set-up-named-authentication-credentials"></a>名前付き認証資格情報の設定
 
@@ -42,6 +42,6 @@ Visual Studio から Azure にアプリケーションを発行したり、既�
 ## <a name="next-steps"></a>次のステップ
 
 - [Web Apps の概要](https://docs.microsoft.com/azure/app-service/)
-- [Azure App Service へのアプリのデプロイ](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) 
-- [Visual Studio を使用した Web ジョブの展開](https://docs.microsoft.com/en-us/azure/app-service/websites-dotnet-deploy-webjobs)
+- [Azure App Service へのアプリのデプロイ](https://docs.microsoft.com/azure/app-service/app-service-deploy-local-git) 
+- [Visual Studio を使用した Web ジョブの展開](https://docs.microsoft.com/azure/app-service/websites-dotnet-deploy-webjobs)
 - [クラウド サービスの作成とデプロイ](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy-portal)

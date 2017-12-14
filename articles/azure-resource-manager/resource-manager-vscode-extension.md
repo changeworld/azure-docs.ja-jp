@@ -13,11 +13,11 @@ ms.devlang: na
 ms.date: 09/06/2017
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 71544726b4ec8701ef558bf50d15bddfabd830cc
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 0dd48146624052fbd00093066d79067b75e33c92
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Visual Studio Code 拡張機能を使って Azure Resource Manager テンプレートを作成する
 この記事では、Azure Resource Manager ツールの拡張機能を Visual Studio Code にインストールして使用する利点を紹介します。 VS Code では、拡張機能を使わずに Resource Manager テンプレートを作成することもできますが、拡張機能を利用すれば、オートコンプリート機能によってテンプレートの開発を省力化することができます。 テンプレートで使用できる関数やパラメーター、変数の入力候補が表示されます。
@@ -179,8 +179,8 @@ Azure ソリューションのデプロイと管理に関する概念につい�
          "value": "[resourceGroup().location]"
        },
        "storageUri": {
-         "type": "object",
-         "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName')))]"
+         "type": "string",
+         "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
        }
    }
    ```
@@ -247,8 +247,8 @@ Azure ソリューションのデプロイと管理に関する概念につい�
       "value": "[resourceGroup().location]"
     },
     "storageUri": {
-      "type": "object",
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName')))]"
+      "type": "string",
+      "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
     }
   }
 }

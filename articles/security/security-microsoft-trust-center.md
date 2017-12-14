@@ -1,4 +1,4 @@
----
+﻿---
 title: "Microsoft Trust Center および Azure セキュリティ情報 | Microsoft Docs"
 description: "Microsoft Trust Center は、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。"
 services: security

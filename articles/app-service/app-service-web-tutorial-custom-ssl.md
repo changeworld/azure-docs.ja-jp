@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/23/2017
+ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c18ca8e81fefdee723714c6535160e75ef4d698d
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: f69bc731b2858c338d7f7b4d347e7107a0f4eeed
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>既存のカスタム SSL 証明書の Azure Web Apps へのバインド
 
@@ -214,63 +214,19 @@ Web アプリの **[カスタム ドメイン]** ページが、新規の専用 
 
 ## <a name="enforce-https"></a>HTTPS の適用
 
-App Service *では* HTTPS の使用が強制されないため、どなたでも引き続き HTTP を使用してアプリにアクセスできます。 Web アプリに対して HTTPS の使用を強制するには、Web アプリの _web.config_ ファイルで書き換え規則を定義します。 App Service は、Web アプリの言語フレームワークに関係なく、このファイルを使用します。
+既定では、どなたでも引き続き HTTP を使用して Web アプリにアクセスできます。 すべての HTTP 要求を HTTPS ポートにリダイレクトできます。
 
-> [!NOTE]
-> 言語に固有の要求のリダイレクトがあります。 ASP.NET MVC では、_web.config_ 内の書き換え規則の代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用できます。
+Web アプリ ページで、左側のナビゲーションにある **[カスタム ドメイン]** を選択します。 その後、**[HTTPS のみ]** で、**[On]** を選択します。
 
-.NET 開発者の方は、比較的このファイルに馴染みがあると思います。 このファイルは、ソリューションのルートにあります。
+![HTTPS の適用](./media/app-service-web-tutorial-custom-ssl/enforce-https.png)
 
-また、PHP、Node.js、Python または Java で開発する場合は、お客様の代わりに App Service でこのファイルを生成することもできます。
+操作が完了すると、アプリを指定する HTTP URL のいずれかに移動します。 For example:
 
-「[FTP/S を使用した Azure App Service へのアプリのデプロイ](app-service-deploy-ftp.md)」の指示に従って、Web アプリの FTP エンドポイントに接続します。
+- `http://<app_name>.azurewebsites.net`
+- `http://contoso.com`
+- `http://www.contoso.com`
 
-このファイルは、_/home/site/wwwroot_ にあります。 ない場合は、次の XML を含む _web.config_ ファイルをこのフォルダーに作成します。
-
-```xml   
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-  <system.webServer>
-    <rewrite>
-      <rules>
-        <!-- BEGIN rule ELEMENT FOR HTTPS REDIRECT -->
-        <rule name="Force HTTPS" enabled="true">
-          <match url="(.*)" ignoreCase="false" />
-          <conditions>
-            <add input="{HTTPS}" pattern="off" />
-          </conditions>
-          <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" appendQueryString="true" redirectType="Permanent" />
-        </rule>
-        <!-- END rule ELEMENT FOR HTTPS REDIRECT -->
-      </rules>
-    </rewrite>
-  </system.webServer>
-</configuration>
-```
-
-既存の _web.config_ ファイルの場合は、`<rule>` 要素全体を _web.config_ の `configuration/system.webServer/rewrite/rules` 要素にコピーします。 他の `<rule>` 要素が _web.config_ 内にある場合は、コピーした `<rule>` 要素を他の `<rule>` タグの前に配置します。
-
-この規則は、ユーザーが HTTP を Web アプリに要求したときに、HTTPS プロトコルに HTTP 301 (永続的リダイレクト) を返します。 たとえば、`http://contoso.com` から `https://contoso.com` にリダイレクトします。
-
-IIS URL 書き換えモジュールの詳細については、 [URL 書き換え](http://www.iis.net/downloads/microsoft/url-rewrite) のドキュメントを参照してください。
-
-## <a name="enforce-https-for-web-apps-on-linux"></a>Web Apps on Linux に対する HTTPS の適用
-
-App Service on Linux *では* HTTPS の使用が強制されないため、どなたでも引き続き HTTP を使用して Web アプリにアクセスできます。 Web アプリに対して HTTPS の使用を強制するには、Web アプリの _.htaccess_ ファイルで書き換え規則を定義します。 
-
-「[FTP/S を使用した Azure App Service へのアプリのデプロイ](app-service-deploy-ftp.md)」の指示に従って、Web アプリの FTP エンドポイントに接続します。
-
-_/home/site/wwwroot_ で、次のコードを使用して _.htaccess_ ファイルを作成します。
-
-```
-RewriteEngine On
-RewriteCond %{HTTP:X-ARR-SSL} ^$
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-```
-
-この規則は、ユーザーが HTTP を Web アプリに要求したときに、HTTPS プロトコルに HTTP 301 (永続的リダイレクト) を返します。 たとえば、`http://contoso.com` から `https://contoso.com` にリダイレクトします。
-
-## <a name="automate-with-scripts"></a>スクリプトによる自動化
+## <a name="automate-with-scripts"></a>スクリプトで自動化する
 
 [Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用すると、Web アプリの SSL バインドをスクリプトで自動化することができます。
 
@@ -312,7 +268,7 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>パブリック証明書 (省略可能)
-[パブリック証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)は Web アプリにアップロードできます。 App Service または App Service Environment (ASE) の Web アプリでパブリック証明書をご利用いただけます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Enviroment で Web アプリを使用する必要があります。 詳細については、[Web アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページを参照してください。
+[パブリック証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)は Web アプリにアップロードできます。 App Service Environment でも、アプリのパブリック証明書をご利用いただけます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Enviroment で Web アプリを使用する必要があります。 詳細については、[Web アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページをご覧ください。
 
 ![パブリック証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
@@ -330,3 +286,5 @@ New-AzureRmWebAppSSLBinding `
 
 > [!div class="nextstepaction"]
 > [Azure App Service に Content Delivery Network (CDN) を追加する](app-service-web-tutorial-content-delivery-network.md)
+
+詳細については、「[Use an SSL certificate in your application code in Azure App Service (Azure App Service の SSL 証明書を購入して構成する)](app-service-web-ssl-cert-load.md)」をご覧ください。

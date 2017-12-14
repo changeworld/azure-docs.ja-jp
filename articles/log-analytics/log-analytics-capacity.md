@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: banders
-ms.openlocfilehash: 5ca005127721092b8efcf0ac83cc967ab15fe72d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 031a538c7e3a7dd381fa9bd996d8a027f761a50a
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -45,7 +45,7 @@ Log Analytics の容量とパフォーマンス ソリューションは、Hyper
 
 | 接続されているソース | サポート | 説明 |
 |---|---|---|
-| [Windows エージェント](log-analytics-windows-agents.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
+| [Windows エージェント](log-analytics-windows-agent.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | いいえ    | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
 | [SCOM 管理グループ](log-analytics-om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから OMS への直接接続は必要ありません。 データは管理グループから OMS リポジトリに転送されます。|
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|

@@ -4,7 +4,7 @@ description: "iOS デバイスでソリューションに証明書ベースの�
 services: active-directory
 author: MarkusVi
 documentationcenter: na
-manager: femila
+manager: mtillman
 ms.assetid: 26a6fc54-0153-44fb-b970-9b432c99e9f9
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 8e9610fee635ec24f8f7eaeba0c6a19a421c0456
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: b6038e1d6bedccca107688fd258088ae992af678
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS での Azure Active Directory の証明書ベースの認証
 

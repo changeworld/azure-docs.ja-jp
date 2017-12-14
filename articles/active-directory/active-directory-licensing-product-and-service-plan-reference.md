@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Azure Active Directory のライセンスのサービス プラン"
 documentationcenter: 
 author: piotrci
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/26/2017
 ms.author: piotrci
-ms.openlocfilehash: b2c540c69a95f0912a71c25ddc70061fa8043aa4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 421c7472442c0f01a99ac2ae8c49417b26724573
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>ライセンスのための製品名とサービス プラン 識別子
 

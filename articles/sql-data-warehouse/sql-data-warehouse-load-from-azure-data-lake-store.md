@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 09/15/2017
 ms.author: cakarst;barbkess
-ms.openlocfilehash: bb478484fba5a76fa12d5d1976919224965b6e0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c3ca2a26fe47a8f0831a1ce4edf2c35911f3fc1
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
 このドキュメントでは、PolyBase を使用して Azure Data Lake Store (ADLS) から SQL Data Warehouse にデータを読み込むために必要な手順を 1 つずつ説明します。
@@ -56,7 +56,7 @@ PolyBase では T-SQL 外部オブジェクトを使用して、外部データ�
 ###  <a name="create-a-credential"></a>資格情報を作成する
 Azure Data Lake Store にアクセスするには、次の手順で使用する資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。
 次に、AAD のサービス プリンシパルの資格情報設定が格納されたデータベース スコープ資格情報を作成します。 資格情報の構文が異なるため、PolyBase を使用して Microsoft Azure Storage BLOB に接続しているユーザーはこの点に注意してください。
-Azure Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、アプリケーションのアクセス許可を Azure Data Lake のリソースに付与する必要があります。 これらの作業の実行手順については、[こちら](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)をご覧ください。
+Azure Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、アプリケーションのアクセス許可を Azure Data Lake のリソースに付与する必要があります。 これらの作業の実行手順については、[こちら](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory)をご覧ください。
 
 ```sql
 -- A: Create a Database Master Key.

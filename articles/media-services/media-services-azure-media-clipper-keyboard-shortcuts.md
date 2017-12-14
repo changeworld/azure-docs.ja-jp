@@ -1,5 +1,5 @@
 ---
-title: "Azure Media Clipper キーボード設定の構成| Microsoft Docs"
+title: "Azure Media Clipper キーボード設定の構成 | Microsoft Docs"
 description: "Azure Media Clipper の構成可能なキーボード ショートカットを設定するための手順"
 services: media-services
 keywords: "クリップ;サブクリップ;エンコード;メディア"
@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 00c1bba54444336b1a6390c1f40a867b4a06d942
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d6fa463f71c00787c994b41d84bb349dce676de5
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Azure Media Clipper キーボード ショートカットの構成
 Azure Media Clipper では、オプションの `keymap` JSON パラメーターを指定することで、既定のキーボード ショートカットをカスタマイズできます。

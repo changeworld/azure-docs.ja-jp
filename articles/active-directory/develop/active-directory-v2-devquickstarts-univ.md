@@ -4,7 +4,7 @@ description: "サインインに個人の Microsoft アカウントと会社/学
 services: active-directory
 documentationcenter: 
 author: jmprieur
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: d2c92b65-3c1d-46d1-81c8-88f32f6b2c4b
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.date: 02/20/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 369802f1a42b8720aa730d5ac7e5576ed20eeddf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f39b6e0c209ad0891db478706c6f50585c80b58
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-sign-in-to-a-windows-universal-app-using-the-v20-endpoint"></a>v2.0 エンドポイントを使用してサインインを Windows ユニバーサル アプリに追加する
   Windows ユニバーサル アプリのクイック スタート チュートリアルは、まだ準備ができていません...後でもう一度確認して、Twitter の @AzureAD から最新情報をチェックしてください。

@@ -3,8 +3,8 @@ title: "Azure Stack での更新プログラムの管理概要 | Microsoft Docs"
 description: "Azure Stack 統合システムの更新プログラムの管理について説明します。"
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 9b0781f4-2cd5-4619-a9b1-59182b4a6e43
 ms.service: azure-stack
@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: twooley
-ms.openlocfilehash: 3d0d5ea6cc3f3cc7bc0550b83dabbf0ae6af8a27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 4355e7a8c220dea03df5eda54ed4e94d6ebc5c94
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack での更新プログラムの管理概要
 
 *適用対象: Azure Stack 統合システム*
 
-Microsoft では、Azure Stack 統合システムの更新プログラム パッケージを定期的にリリースします。 Microsoft ソフトウェア更新プログラムの各リリースは、1 つの更新プログラム パッケージとしてバンドルされます。 Azure Stack のオペレーターは、これらの更新プログラム パッケージのインポート、インストール、そのインストール状況の監視を、管理者ポータルから簡単に行うことができます。 
+Microsoft では、Azure Stack 統合システムの更新プログラム パッケージを一般公開の時点から定期的 (通常、毎月第 4 火曜日) にリリースします。 組織に更新通知が必ず届くようにするには、具体的な通知プロセスについて OEM に質問するか、このページから、[概念]、[リリース ノート]、[統合システムのリリース ノート] の順に移動して、個別のリリースの詳細を確認してください。
+
+Microsoft ソフトウェア更新プログラムの各リリースは、1 つの更新プログラム パッケージとしてバンドルされます。 Azure Stack のオペレーターは、これらの更新プログラム パッケージのインポート、インストール、そのインストール状況の監視を、管理者ポータルから簡単に行うことができます。 
 
 また、お使いの OEM (Original Equipment Manufacturer) ハードウェア ベンダーからも、ドライバーやファームウェアの更新などの更新プログラムがリリースされます。 これらの更新プログラムは、OEM ハードウェア ベンダーによって別パッケージとして配布され、Microsoft の更新プログラムとは別に管理されます。
 

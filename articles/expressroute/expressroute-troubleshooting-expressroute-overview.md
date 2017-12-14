@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9aa21beb8963462b1cb6bdad6079b01e4d2e9c34
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: e52e53255a1462522f297d8918eb1c347a460f77
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
@@ -402,8 +402,7 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 [Support]: https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [CreateCircuit]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-circuit-portal-resource-manager 
 [CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
-[OldPortal]: https://manage.windowsazure.com
-[ARP]: https://docs.microsoft.com/en-us/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
+[ARP]: https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
 
 
 

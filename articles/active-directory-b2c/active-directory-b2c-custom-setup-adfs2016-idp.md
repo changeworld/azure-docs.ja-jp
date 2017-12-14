@@ -4,7 +4,7 @@ description: "SAML プロトコルとカスタム ポリシーを使用した AD
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
-ms.openlocfilehash: 8713fc7dd27023e1244ccb00673dd1652689baf5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22b360aec8878925ebe8d2c67c76d275a42ca7a8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして ADFS �
 
 AD FS 管理スナップインを使用して新しい証明書利用者信頼を追加するには、手動で設定を構成して、フェデレーション サーバーで次の手順を実行します。
 
-この手順を完了するためには、ローカル コンピューター上の**管理者**のメンバーシップ、またはそれと同等の権限が最低限必要です。 適切なアカウントとグループ メンバーシップの使用に関する詳細については、[ローカルおよびドメインの既定のグループ](http://go.microsoft.com/fwlink/?LinkId=83477)に関する記事をご覧ください。
+この手順を完了するためには、ローカル コンピューター上の**管理者**のメンバーシップ、またはそれと同等であることが最低限求められます。 適切なアカウントとグループ メンバーシップの使用に関する詳細については、[ローカルおよびドメインの既定のグループ](http://go.microsoft.com/fwlink/?LinkId=83477)に関する記事をご覧ください。
 
 1.  [サーバー マネージャー] で、**[ツール]** をクリックし、**[ADFS Management\(ADFS 管理\)]** を選びます。
 

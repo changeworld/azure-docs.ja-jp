@@ -4,7 +4,7 @@ description: "Azure Active Directory v2.0 エンドポイントと互換性の�
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 50a1cc0bf9e00cf5b866b88b3e88c62b06a2376b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a1e2c4db54ca81325751ed85b26b904174e94078
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 認証ライブラリ
-[Azure Active Directory (Azure AD) v2.0 エンドポイント](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare)は、業界標準の OAuth 2.0 および OpenID Connect 1.0 プロトコルをサポートします。 v2.0 エンドポイントでは、Microsoft およびその他の組織のさまざまなライブラリを使用することができます。
+[Azure Active Directory (Azure AD) v2.0 エンドポイント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)は、業界標準の OAuth 2.0 および OpenID Connect 1.0 プロトコルをサポートします。 v2.0 エンドポイントでは、Microsoft およびその他の組織のさまざまなライブラリを使用することができます。
 
 v2.0 エンドポイントを使用するアプリケーションを構築する場合は、[Microsoft が使用する][Microsoft-SDL]ような Microsoft Security Development Lifecycle (SDL) の手法を採用するプロトコル ドメインの専門家が記述したライブラリを使用することをお勧めします。 プロトコルのサポートをハンド コードする場合は、SDL 手法に従い、各プロトコルの標準仕様におけるセキュリティ上の考慮事項によく注意することをお勧めします。
 
 > [!NOTE]
-> Azure AD v1.0 ライブラリ (ADAL) をお探しの場合は、 [ADAL ライブラリ ガイド](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries)を確認してください。 
+> Azure AD v1.0 ライブラリ (ADAL) をお探しの場合は、 [ADAL ライブラリ ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)を確認してください。 
 > 
 > 
 
@@ -38,7 +38,7 @@ Azure AD v2.0 エンドポイントは、次の 2 種類のライブラリに対
 * **サーバー ミドルウェア ライブラリ**。 Web アプリは、ユーザーのサインインにサーバー ミドルウェア ライブラリを使用します。 Web API は、サーバー ミドルウェア ライブラリを使用して、ネイティブ クライアントまたは他のサーバーによって送信されるトークンを検証します。
 
 ## <a name="library-support"></a>ライブラリのサポート
-v2.0 エンドポイントを使用する場合は標準に準拠した任意のライブラリを選択できるため、サポートの入手先を知っておく必要があります。 ライブラリ コードの問題と機能に関する要望については、ライブラリ所有者にお問い合わせください。 サービス側のプロトコルの実装の問題と機能に関する要望については、Microsoft にお問い合わせください。
+v2.0 エンドポイントを使用する場合は標準に準拠している任意のライブラリを選択できるため、サポートの入手先を知っておく必要があります。 ライブラリ コードの問題と機能に関する要望については、ライブラリ所有者にお問い合わせください。 サービス側のプロトコルの実装の問題と機能に関する要望については、Microsoft にお問い合わせください。
 
 ライブラリには、次の 2 種類のサポート カテゴリがあります:
 

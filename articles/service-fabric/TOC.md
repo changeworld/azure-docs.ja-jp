@@ -50,14 +50,11 @@
 ## [用語集](service-fabric-technical-overview.md)
 
 ## アプリケーションとサービスの構築
-### サポートされるプログラミング モデル
-#### [概要](service-fabric-choose-framework.md)
-#### コンテナー
-##### [概要](service-fabric-containers-overview.md)
+### [サポートされるプログラミング モデル](service-fabric-choose-framework.md)
+#### [コンテナー](service-fabric-containers-overview.md)
 ##### [Docker Compose (プレビュー)](service-fabric-docker-compose.md)
 ##### [リソース ガバナンス](service-fabric-resource-governance.md)
-#### Reliable Service
-##### [概要](service-fabric-reliable-services-introduction.md)
+#### [Reliable Service](service-fabric-reliable-services-introduction.md)
 ##### [Reliable Services のライフサイクル - C#](service-fabric-reliable-services-lifecycle.md)
 ##### [Reliable Services のライフサイクル - Java](service-fabric-reliable-services-lifecycle-java.md)
 ##### [Reliable Collection](service-fabric-reliable-services-reliable-collections.md)
@@ -69,8 +66,7 @@
 ##### [Reliable State Manager と Reliable Collection の内部](service-fabric-reliable-services-reliable-collections-internals.md)
 ##### [詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 
-#### Reliable Actor
-##### [概要](service-fabric-reliable-actors-introduction.md)
+#### [Reliable Actor](service-fabric-reliable-actors-introduction.md)
 ##### [アーキテクチャ](service-fabric-reliable-actors-platform.md)
 ##### [ライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
 ##### [状態管理](service-fabric-reliable-actors-state-management.md)
@@ -79,6 +75,7 @@
 ##### [型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
 
 ### [アプリケーション モデル](service-fabric-application-model.md)
+### [アプリケーション マニフェストとサービス マニフェスト](service-fabric-application-and-service-manifests.md)
 ### [ホスティング モデル](service-fabric-hosting-model.md)
 
 ### サービス
@@ -86,10 +83,9 @@
 #### [サービスの状態](service-fabric-concepts-state.md)
 #### [サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 #### [サービスの可用性](service-fabric-availability-services.md)
-#### [レプリカとインスタンス](service-fabric-concepts-replica-lifecycle.md)
+#### [レプリカとインスタンスのライフサイクル](service-fabric-concepts-replica-lifecycle.md)
 #### [再構成](service-fabric-concepts-reconfiguration.md)
-#### サービス通信
-##### [概要](service-fabric-connect-and-communicate-with-services.md)
+#### [サービス通信](service-fabric-connect-and-communicate-with-services.md)
 ##### [DNS サービス](service-fabric-dnsservice.md)
 ##### [リバース プロキシ](service-fabric-reverseproxy.md)
 ##### [セキュリティで保護された通信用のリバース プロキシの構成](service-fabric-reverseproxy-configure-secure-communication.md)
@@ -99,10 +95,8 @@
 
 ### [アプリケーション容量の計画](service-fabric-capacity-planning.md)
 
-## アプリケーションの管理
-### [概要](service-fabric-application-lifecycle.md)
-### アプリケーションのアップグレード
-#### [概要](service-fabric-application-upgrade.md)
+## [アプリケーションの管理](service-fabric-application-lifecycle.md)
+### [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 #### [構成](service-fabric-visualstudio-configure-upgrade.md)
 #### [アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)
 #### [アプリケーション アップグレードでのデータのシリアル化](service-fabric-application-upgrade-data-serialization.md)
@@ -110,8 +104,7 @@
 ### [Fault Analysis の概要](service-fabric-testability-overview.md)
 ### [ImageStoreConnectionString 設定](service-fabric-image-store-connection-string.md)
 
-## クラスターを作成および管理する
-### [概要](service-fabric-deploy-anywhere.md)
+## [クラスターの作成と管理](service-fabric-deploy-anywhere.md)
 ### 計画と準備
 #### [容量計画](service-fabric-cluster-capacity.md)
 #### [ディザスター リカバリー ](service-fabric-disaster-recovery.md)
@@ -121,8 +114,7 @@
 ### Azure 上のクラスター
 #### [ノードの種類と VM Scale Sets](service-fabric-cluster-nodetypes.md)
 #### [クラスター ネットワークのパターン](service-fabric-patterns-networking.md)
-### Cluster Resource Manager
-#### [概要](service-fabric-cluster-resource-manager-introduction.md)
+### [クラスター リソース マネージャー](service-fabric-cluster-resource-manager-introduction.md)
 #### [アーキテクチャ](service-fabric-cluster-resource-manager-architecture.md)
 #### [クラスターの説明](service-fabric-cluster-resource-manager-cluster-description.md)
 #### [アプリケーション グループの概要](service-fabric-cluster-resource-manager-application-groups.md)
@@ -230,7 +222,7 @@
 #### [アプリケーション シークレットの管理](service-fabric-application-secret-management.md)  
 #### [アプリケーションのセキュリティ ポリシーの構成](service-fabric-application-runas-security.md)
 
-## Windows 開発環境での作業
+## Windows/VS 開発環境での作業
 ### [Visual Studio でのアプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 ### [Visual Studio でセキュリティ保護された接続を構成する](service-fabric-visualstudio-configure-secure-connections.md)
 ### [複数環境向けアプリケーションの構成](service-fabric-manage-multiple-environment-app-configuration.md)
@@ -239,7 +231,7 @@
 ### [ローカルでの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 ### [Windows での Linux クラスターの設定](service-fabric-local-linux-cluster-windows.md)
 
-## Linux 開発環境での作業
+## Linux/Eclipse 開発環境での作業
 ### [Java 開発用の Eclipse プラグインの使用](service-fabric-get-started-eclipse.md)
 ### [Eclipse での Java サービスのデバッグ](service-fabric-debugging-your-application-java.md)
 ### [ローカルでの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)

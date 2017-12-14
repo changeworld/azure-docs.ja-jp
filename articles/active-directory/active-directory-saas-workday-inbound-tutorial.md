@@ -4,7 +4,7 @@ description: "Workday を Active Directory および Azure Active Directory の 
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
-manager: femila
+manager: mtillman
 ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: asmalser
-ms.openlocfilehash: 86f5591cd2d67d7f734b7148b79c8ee388336283
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f267a59fadb7f402ac81f43b5465b6ac1f28943e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>チュートリアル: Workday を構成し、オンプレミスの Active Directory および Azure Active Directory による自動ユーザー プロビジョニングを行う
 このチュートリアルでは、Workday から Active Directory と Azure Active Directory の両方にユーザーをインポートするために必要な手順と、Workday にいくつかの属性を書き戻すオプションについて説明します。 
@@ -445,7 +445,7 @@ Powershell コマンドで指定された Active Directory または Azure Activ
 
 1.  **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
 
-2. [ **Save**] をクリックします。
+2. **[Save]** をクリックします。
 
 3. これにより初期同期が開始されます。これに要する時間は Workday のユーザー数に応じて異なります。
 
@@ -456,7 +456,7 @@ Powershell コマンドで指定された Active Directory または Azure Activ
 
 6. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
-![Azure ポータル](./media/active-directory-saas-workday-inbound-tutorial/WD_3.PNG)
+![Azure Portal](./media/active-directory-saas-workday-inbound-tutorial/WD_3.PNG)
 
 
 ## <a name="configuring-user-provisioning-to-azure-active-directory"></a>Azure Active Directory へのユーザー プロビジョニングの構成
@@ -568,7 +568,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 1.  **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
 
-2. [ **Save**] をクリックします。
+2. **[Save]** をクリックします。
 
 3. これにより初期同期が開始されます。これに要する時間は Workday のユーザー数に応じて異なります。
 
@@ -629,7 +629,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 1.  **[プロビジョニング]** タブで、**[プロビジョニングの状態]** を **[ON]** に設定します。
 
-2. [ **Save**] をクリックします。
+2. **[Save]** をクリックします。
 
 3. これにより初期同期が開始されます。これに要する時間は Workday のユーザー数に応じて異なります。
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Fabric コンテナー サービスのネットワーク モードを構成する | Microsoft Docs"
-description: "Azure Service Fabric がサポートするさまざまなネットワーク モードを設定する方法について説明します。"
+description: "Azure Service Fabric によってサポートされるさまざまなネットワーク モードを設定する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,28 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 855e315f66858210875039f91f7f05055ff7d9b9
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 1dacbbef915580b0095ef588f3dafad35daf1bde
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
-コンテナー サービスの Service Fabric クラスターで提供されている既定のネットワーク モードは、`nat` ネットワーク モードです。 `nat` ネットワーク モードでは、同じポートをリッスンしているコンテナー サービスが複数あると、デプロイ エラーが発生します。 同じポートをリッスンしているサービスをいくつか実行している場合、Service Fabric は `Open` ネットワーク モード (バージョン 5.7 以降) をサポートしています。 `Open` ネットワーク モードでは、各コンテナー サービスに動的に IP アドレスが割り当てられるので、内部的には複数のサービスが同じポートをリッスンできます。   
+コンテナー サービス用の Azure Service Fabric クラスターは、既定では **nat** ネットワーク モードを使います。 複数のコンテナー サービスが同じポートでリッスンしていて、nat モードが使われていると、デプロイ エラーが発生することがあります。 複数のコンテナー サービスが同じポートでリッスンできるようにするため、Service Fabric では **Open** ネットワーク モード (バージョン 5.7 以降) が提供されています。 Open モードでは、各コンテナー サービスに、複数のサービスによる同じポートでのリッスンをサポートする内部的な IP アドレスが動的に割り当てられます。  
 
-したがって、サービス マニフェストに定義されている静的エンドポイントがある単一のサービスの種類の場合、デプロイ エラーが発生することなく、`Open` ネットワーク モードを使用して新しいサービスを作成および削除することができます。 同様に、ポート マッピングが静的な同じ `docker-compose.yml` ファイルを使用して、複数のサービスを作成することができます。
+サービス マニフェストに静的なエンドポイントを使うコンテナー サービスが 1 つ含まれる場合は、Open モードを使って新しいサービスを作成および削除でき、デプロイ エラーは発生しません。 同じ docker-compose.yml ファイルを静的ポート マッピングで使って、複数のサービスを作成することもできます。
 
-サービスの再起動時や別のノードへの移行時に IP アドレスは変化するため、動的に割り当てられた IP を使用してサービスを検出することは推奨されません。 サービスの検出には、**Service Fabric ネーム サービス**または **DNS サービス**のみを使用してください。 
+コンテナー サービスが再起動するか、クラスター内の別のノードに移動すると、IP アドレスが変わります。 このため、動的に割り当てられる IP アドレスを使ってコンテナー サービスを検出することはお勧めしません。 サービスの検出には、Service Fabric ネーム サービスまたは DNS サービスのみを使う必要があります。 
 
-
-> [!WARNING]
-> Azure では 1 つの vNET で使用できる IP の数は合計 4096 個までです。 したがって、ノード数とコンテナー サービス インスタンス数 (`Open` ネットワークの場合) の合計は、vNET 内の 4096 個を超えることはできません。 このような高密度シナリオの場合は、`nat` ネットワーク モードが推奨されます。
+>[!WARNING]
+>Azure では、仮想ネットワークごとに全部で 4,096 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 4,096 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。
 >
 
-## <a name="setting-up-open-networking-mode"></a>Open ネットワーク モードの設定
+## <a name="set-up-open-networking-mode"></a>Open ネットワーク モードを設定する
 
-1. `fabricSettings` で DNS サービスと IP プロバイダーを有効にして、Azure Resource Manager テンプレートを設定します。 
+1. Azure Resource Manager テンプレートを設定します。 **fabricSettings** セクションで、DNS サービスと IP プロバイダーを有効にします。 
 
     ```json
     "fabricSettings": [
@@ -78,7 +77,7 @@ ms.lasthandoff: 11/11/2017
             ],
     ```
 
-2. 複数の IP アドレスをクラスターの各ノードに構成できるように、ネットワーク プロファイル セクションを設定します。 次の例では、Windows/Linux Service Fabric クラスターの 1 つのノードに 5 つの IP アドレスを設定します (そのため、各ノードのポートを 5 つのサービス インスタンスからリッスンできます)。
+2. 複数の IP アドレスをクラスターの各ノードに構成できるように、ネットワーク プロファイル セクションを設定します。 次の例は、Windows/Linux Service Fabric クラスター用にノードごとに 5 つの IP アドレスを設定します。 各ノードのポートで 5 つのサービス インスタンスがリッスンできます。
 
     ```json
     "variables": {
@@ -175,15 +174,19 @@ ms.lasthandoff: 11/11/2017
               }
    ```
  
+3. Windows クラスターのみの場合は、次の値で仮想ネットワーク用のポート UDP/53 を開く Azure ネットワーク セキュリティ グループ (NSG) ルールを設定します。
 
-3. Windows クラスターの場合にのみ、次の値を使用して、vNET 用にポート UDP/53 を開く NSG 規則を設定します。
+   |設定 |値 | |
+   | --- | --- | --- |
+   |優先順位 |2000 | |
+   |名前 |Custom_Dns  | |
+   |ソース |VirtualNetwork | |
+   |変換先 | VirtualNetwork | |
+   |サービス | DNS (UDP/53) | |
+   |[操作] | ALLOW  | |
+   | | |
 
-   | 優先順位 |    名前    |    ソース      |  変換先   |   サービス    | [操作] |
-   |:--------:|:----------:|:--------------:|:--------------:|:------------:|:------:|
-   |     2000 | Custom_Dns | VirtualNetwork | VirtualNetwork | DNS (UDP/53) | ALLOW  |
-
-
-4. 各サービスの `<NetworkConfig NetworkType="Open">` について、アプリ マニフェストでネットワーク モードを指定します。  モード `Open` にすると、結果としてサービスに専用 IP アドレスが割り当てられます。 モードが指定されていない場合、既定で基本の `nat` モードです。 したがって、次のマニフェスト例では、`NodeContainerServicePackage1` と `NodeContainerServicePackage2` がそれぞれ同じポートをリッスンできます (いずれのサービスも `Endpoint1` をリッスンしています)。 `Open` ネットワーク モードを指定するときに `PortBinding` 構成を指定することはできません。
+4. 各サービスのアプリケーション マニフェストでネットワーク モードを指定します。`<NetworkConfig NetworkType="Open">` **Open** ネットワーク モードにすると、サービスに専用 IP アドレスが割り当てられます。 モードを指定しないと、サービスは既定で **nat** モードになります。 次のマニフェストの例では、`NodeContainerServicePackage1` サービスと `NodeContainerServicePackage2` サービスはそれぞれ同じポートでリッスンできます (どちらのサービスも `Endpoint1` でリッスンしています)。 Open ネットワーク モードを指定するときは、`PortBinding` 構成を指定できません。
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -211,13 +214,15 @@ ms.lasthandoff: 11/11/2017
       </ServiceManifestImport>
     </ApplicationManifest>
     ```
-Windows クラスターの場合、アプリケーション内のサービス全体で複数のネットワーク モードを混在させ、対応付けることができます。 そのため、一部のサービスは `Open` モードに、一部のサービスは `nat` ネットワーク モードにすることができます。 `nat` を使用してサービスを構成する場合、リッスンするポートを一意にする必要があります。 Linux クラスターの場合、複数のサービスについてネットワーク モードを混在させることはサポートされていません。 
 
+    Windows クラスターの場合、アプリケーション内のサービス全体で複数のネットワーク モードを混在させ、対応付けることができます。 一部のサービスで Open モードを使い、他のサービスで nat モードを使うことができます。 nat モードを使うようにサービスを構成するときは、サービスがリッスンするポートは一意である必要があります。
+
+    >[!NOTE]
+    >Linux クラスターでは、複数のサービスについてネットワーク モードを混在させることはサポートされていません。 
+    >
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、Service Fabric が提供しているネットワーク モードについて説明します。  
-
-* [Service Fabric のアプリケーション モデル](service-fabric-application-model.md)
-* [Service Fabric サービス マニフェスト リソース](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Service Fabric アプリケーション モデルを理解する](service-fabric-application-model.md)
+* [Service Fabric サービス マニフェスト リソースについて詳しく学習する](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
 * [Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)
 * [Linux 上での Service Fabric への Docker コンテナーのデプロイ](service-fabric-get-started-containers-linux.md)

@@ -4,7 +4,7 @@ description: "Azure Active Directory と Netsuite の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: dafa0864-aef2-4f5e-9eac-770504688ef4
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.openlocfilehash: f2184f426c0e60ea2b6ce029b80d3d63821794d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 23e39f20f5b3faa4f6cfba57508d1649e2bbdaa3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル: Azure Active Directory と Netsuite の統合
 
@@ -187,7 +187,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
       
       ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-new-role.png)
 
-    e. [ **Save**] をクリックします。
+    e. **[Save]** をクリックします。
 
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 上部のメニューで、 **[Permissions]**をクリックします。 **[Setup]**をクリックします。
       
@@ -195,7 +195,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
 
     g. **[Set Up SAM Single Sign-on]**、**[Add]** の順にクリックします。
 
-    h. [ **Save**] をクリックします。
+    h. **[Save]** をクリックします。
 
     i. 上部のナビゲーション メニューで、**[Setup]**、**[Setup Manager]** の順にクリックします。
       
@@ -213,7 +213,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
       
        ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-add-role.png)
 
-    m. [ **Save**] をクリックします。
+    m. **[Save]** をクリックします。
     
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。

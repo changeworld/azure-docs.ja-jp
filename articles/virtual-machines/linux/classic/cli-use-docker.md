@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-ms.openlocfilehash: a542332c921862241f1f000e6a8f0a0ae0e8a934
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b276911ecbbf161cb6068c1af7a035850035b98d
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用
 > [!IMPORTANT] 
@@ -45,7 +45,7 @@ Azure CLI のインストールと構成の方法については、[Azure コマ
 > 
 
 ### <a name="connect-the-azure-cli-to-to-your-azure-account"></a>Azure アカウントへの Azure CLI の接続
-Azure CLI を使用する前に、プラットフォーム上で Azure アカウントの資格情報を Azure CLI に関連付ける必要があります。 [Azure サブスクリプションへの接続方法](../../../xplat-cli-connect.md) に関するセクションで、 **.publishsettings** ファイルをダウンロードしてインポートする方法と Azure CLI を組織 ID に関連付ける方法が説明されています。
+Azure CLI を使用する前に、プラットフォーム上で Azure アカウントの資格情報を Azure CLI に関連付ける必要があります。 [Azure サブスクリプションへの接続方法](/cli/azure/authenticate-azure-cli) に関するセクションで、 **.publishsettings** ファイルをダウンロードしてインポートする方法と Azure CLI を組織 ID に関連付ける方法が説明されています。
 
 > [!NOTE]
 > 使用する認証方法によって動作に若干の違いがあるため、必ず前述のドキュメントをよく読んで、機能の違いを理解してください。

@@ -4,7 +4,7 @@ description: "Azure Active Directory (AAD) によって発行された SAML 2.0 
 documentationcenter: na
 author: dstrockis
 services: active-directory
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: be28230b9c56dcbca4ba8f70e44741f65a447f73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3104b47d7ff8585142674b0ee545012f1e291ddd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD のトークン リファレンス
 Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
@@ -96,7 +96,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 ## <a name="validating-tokens"></a>トークンの検証
 
-id_token または access_token を検証するには、アプリはトークンの署名とクレームの両方を検証する必要があります。 アクセス トークンを検証するには、発行者、対象ユーザー、および署名トークンをアプリで検証する必要もあります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) にあります。 Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-code-samples)を参照できます。 JWT トークンを明示的に検証する方法の詳細については、[手動による JWT の検証のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)を参照してください。  
+id_token または access_token を検証するには、アプリはトークンの署名とクレームの両方を検証する必要があります。 アクセス トークンを検証するには、発行者、対象ユーザー、および署名トークンをアプリで検証する必要もあります。 これらの検証は、OpenID 探索ドキュメント内の値に対して行ってください。 たとえば、テナントに依存しないバージョンのドキュメントは [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) にあります。 Azure AD ミドルウェアにはアクセス トークンを検証するための機能が組み込まれており、選択した言語の[サンプル](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)を参照できます。 JWT トークンを明示的に検証する方法の詳細については、[手動による JWT の検証のサンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)を参照してください。  
 
 トークンの検証を簡単に処理する方法を示すライブラリとコード サンプルが提供されています。以下の情報は、基になるプロセスを理解したい開発者だけを対象としたものです。  JWT の検証に使用できるサード パーティ製オープン ソース ライブラリも複数あります。ほとんどすべてのプラットフォームと言語に対して少なくとも 1 つのライブラリがあります。 Azure AD 認証ライブラリとコード サンプルの詳細については、「[Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)」を参照してください。
 

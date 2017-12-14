@@ -4,7 +4,7 @@ description: "Azure AD v2.0 エンドポイントでサポートされるプロ�
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 3750f975600575349e5ea9de249cf4521636fd2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce9a7cb14b933da23873d69e1f14a744d012a858
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 プロトコル - OAuth 2.0 と OpenID Connect
 v2.0 エンドポイントは、業界標準のプロトコルである OpenID Connect と OAuth 2.0 を使用し、Azure AD を Identity-as-a-Service (サービスとしての ID) として使用することできます。  このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。  ここでは、Microsoft のオープン ソース ライブラリを使うのではなく、コードから直接 HTTP 要求を送信して処理するか、サード パーティのオープン ソース ライブラリを使用する場合に役立つ情報を紹介します。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: 72b724d5cf6787f8d6afc73fb37f4944cbae78a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスにリンクする高速プライベート通信です。 
@@ -30,13 +30,13 @@ ExpressRoute は高可用性を実現するための一対の回線で構成さ�
 > 
 > 
 
-Microsoft Azure には顧客向けに提供できるさまざまなサービスがあり、その数はますます増加しています。  これらのサービスを最大限に活用するためには、ExpressRoute 接続を利用して Microsoft Azure 環境への高速かつ待機時間の短いアクセスを実現する必要があります。
+Microsoft Azure には顧客向けに提供できるさまざまなサービスがあり、その数はますます増加しています。 ExpressRoute を利用すれば、Microsoft Azure 環境に高速かつ短い待ち時間でアクセスできるため、そうしたサービスを企業やその顧客が最大限に活用することができます。
 
 ## <a name="microsoft-azure-management"></a>Microsoft Azure の管理
 Microsoft では、プログラムによって独自のサービス管理システムに統合することで Azure 顧客サブスクリプションを管理できる API を、CSP 向けに提供しています。 サポートされている管理機能は [こちら](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)から確認できます。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure リソースの管理
-サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、"Connect-Through" モデルと "Connect-To" モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
+サブスクリプションの管理方法は、顧客との契約内容によって異なります。 CSP がリソースの作成とメンテナンスを直接管理することもできますが、顧客が Microsoft Azure サブスクリプションを制御し、必要に応じて Azure リソースを作成することもできます。 顧客が Microsoft Azure サブスクリプションでのリソースの作成を管理する場合、"*Connect-Through*" モデルと "*Connect-To*" モデルという 2 つのモデルのいずれかを使用することになります。 以降のセクションで、これらのモデルの詳細について説明します。  
 
 ### <a name="connect-through-model"></a>Connect-Through モデル
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -67,7 +67,7 @@ Connect-To モデルでは、サービス プロバイダーが顧客のネッ�
 
 * **ロールベースのアクセス制御 (RBAC)** - RBAC は Azure Active Directory を基にした機能です。  Azure RBAC の詳細については、 [こちら](../active-directory/role-based-access-control-configure.md)を参照してください。
 * **ネットワーク** - Microsoft Azure でのネットワークに関するさまざまなトピックを紹介します。
-* **Azure Active Directory (AAD)** - AAD では、Microsoft Azure およびサード パーティ SaaS アプリケーション向けの ID 管理機能を提供します。 Azure AD の詳細については、 [こちら](https://azure.microsoft.com/documentation/services/active-directory/)を参照してください。  
+* **Azure Active Directory (Azure AD)** - Azure AD では、Microsoft Azure およびサード パーティ SaaS アプリケーション向けの ID 管理機能を提供します。 Azure AD の詳細については、 [こちら](https://azure.microsoft.com/documentation/services/active-directory/)を参照してください。  
 
 ## <a name="network-speeds"></a>ネットワーク速度
 ExpressRoute では、50 Mb/秒～ 10 Gb/秒のネットワーク速度をサポートしています。 このため、顧客固有の環境に必要となる量のネットワーク帯域幅を購入することができます。

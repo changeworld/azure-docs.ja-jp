@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C についてよく寄せられる質問
 services: active-directory-b2c
 documentationcenter: 
 author: saeeda
-manager: krassk
+manager: mtillman
 editor: bryanla
 ms.assetid: ed33c2ca-76d0-442a-abb1-8b7b7bb92d6a
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 397c0c610c05e65d06a6319672446a6e4c9c445a
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 8bc487bdcc33f70d39d884830bfaf9187828694e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -37,7 +37,7 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 現在、Facebook、Google+、LinkedIn、Amazon、Twitter (プレビュー)、WeChat (プレビュー)、Weibo (プレビュー)、および QQ (プレビュー) をサポートしています。 お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
 
-Azure AD B2C でも[カスタム ポリシー](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom)のサポートがを追加されています。  開発者は、これらの[カスタム ポリシー](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom)を使用して、[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。 
+Azure AD B2C でも[カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)のサポートがを追加されています。  開発者は、これらの[カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)を使用して、[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。 
 
 [カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)を使ってカスタム ポリシーの作成をお試しください。
 
@@ -87,7 +87,7 @@ Azure AD B2C のローカル アカウントのパスワード ポリシーは A
 いいえ。セキュリティ上の理由から、Azure AD B2C ページを iFrame 内で開くことはできません。  このサービスは、iFrame を禁止するためにブラウザーと通信します。  一般のセキュリティ コミュニティと OAUTH2 仕様では、ID エクスペリエンスに iFrame を使用しないことを推奨しています。これは、クリックジャッキングの危険があるためです。
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Azure AD B2C は Microsoft Dynamics のような CRM システムと連携しますか。
-Microsoft Dynamics 365 ポータルとの統合を使用できます。  [Azure AD B2C を使用して認証するための Dynamics 365 ポータルの構成](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/portals/azure-ad-b2c)に関する記事を参照してください。
+Microsoft Dynamics 365 ポータルとの統合を使用できます。  [Azure AD B2C を使用して認証するための Dynamics 365 ポータルの構成](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c)に関する記事を参照してください。
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Azure AD B2C はオンプレミスの SharePoint 2016 以前と連携しますか。
 Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには適していません。この記事ではなく、[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) に関する記事を参照してください。

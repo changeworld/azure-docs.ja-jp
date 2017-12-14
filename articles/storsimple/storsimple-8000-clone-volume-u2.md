@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/26/2017
+ms.date: 12/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 70c85bcb2c26d2ad3d0515d24e028f84495634c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3965c74d51996b3e4144130fad01fae9e265897
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Azure ポータルで StorSimple デバイス マネージャー サービスを使用してボリュームを複製する
 
@@ -69,12 +69,7 @@ StorSimple デバイス マネージャー サービスの **[バックアップ
    
     ![バックアップ セットの一覧](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. バックアップ セットを展開して、関連付けられているボリュームを表示します。 これらのボリュームは、復元する前にホストおよびデバイス上でオフラインにする必要があります。 ボリュームをオフラインにするには、デバイスの **[ボリューム]** ブレードでボリュームにアクセスし、「[ボリュームをオフラインにする](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline)」の手順を実行します。
-   
-   > [!IMPORTANT]
-   > 最初にホスト上のボリュームをオフラインにしてから、デバイス上のボリュームをオフラインにします。 ホスト上でボリュームをオフラインにしない場合、データの破損を招く可能性があります。
-   
-4. **[バックアップ カタログ]** に戻り、バックアップ セット内のボリュームを選択します。 右クリックし、コンテキスト メニューの **[複製]** を選択します。
+3. バックアップ セットを展開して、関連付けられているボリュームを表示し、バックアップ セットでボリュームを選択します。 右クリックし、コンテキスト メニューの **[複製]** を選択します。
 
    ![バックアップ セットの一覧](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 

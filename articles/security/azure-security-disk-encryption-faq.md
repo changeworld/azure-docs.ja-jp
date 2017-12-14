@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw
-ms.openlocfilehash: 2ccadfdec0e653264671f5a9a38d4541b0fc4e69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db82c2b8f0f9acec41b0b0f87b8839d3d7f49c68
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
 
@@ -119,13 +119,13 @@ ms.lasthandoff: 10/11/2017
 * 暗号化 (VM の特性や、インストールされているデータ ディスクのサイズによっては数時間から数日かかることがあります)
 * 必要に応じて、イメージをカスタマイズし、イメージにソフトウェアを追加します。
 
-このワークフローが可能でない場合は、DM-Crypt を使用したディスク全体の暗号化に代わる方法として、プラットフォームのストレージ アカウント レイヤーで [Storage Service Encryption](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption) (SSE) を使用できます。
+このワークフローが可能でない場合は、DM-Crypt を使用したディスク全体の暗号化に代わる方法として、プラットフォームのストレージ アカウント レイヤーで [Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) (SSE) を使用できます。
 
 **Q:** "Bek ボリューム" ディスクまたは "/mnt/azure_bek_disk" とは何ですか?
 
 **A:** Windows の "Bek ボリューム"、または Linux の "/mnt/azure_bek_disk" は、暗号化された Azure IaaS VM の暗号化キーを安全に格納する、ローカルなデータ ボリュームです。
 > [!NOTE]
-> このディスクの内容を削除したり、編集しないでください。 IaaS VM 上のすべての暗号化操作にディスク暗号化キーが必要なため、ディスクのマウントを解除しないでください。
+> このディスクの内容を削除したり、編集しないでください。 IaaS VM 上のすべての暗号化操作に暗号化キーが必要なため、ディスクのマウントを解除しないでください。
 
 **Q:** 質問やフィードバックはどこに投稿すればよいでしょうか。
 

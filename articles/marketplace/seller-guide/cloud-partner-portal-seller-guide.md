@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: divacc@microsoft.com
-ms.openlocfilehash: 0985c7da429202cc6003df73c6ca17714b5a1287
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 9a9e9b3116c0d787162284197c8dbbd77374cff3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure Marketplace 販売者ガイド
 
 Microsoft Azure Marketplace 販売者ガイドをご覧くださりありがとうございます。 このガイドは、IT プロフェッショナルと開発者を対象とした Azure Certified 取得済み仮想マシン イメージおよびマネージ アプリケーションの販売に関心がある、独立系ソフトウェア ベンダー (ISV) のビジネス ユーザーと製品マネージャー向けに作成されています。 Azure のお客様は世界中に存在します。[Azure Marketplace](https://azuremarketplace.microsoft.com/) を利用すれば、自社製品をきわめて多くのお客様にリーチさせることができます。
 
 > [!NOTE]
-> [マネージ アプリケーション](https://docs.microsoft.com/en-us/azure/managed-applications/overview)を販売したい場合は、そのアプリケーションを[こちら](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app)の手順に従って Azure Marketplace のリストに掲載する必要があります。
+> [マネージ アプリケーション](https://docs.microsoft.com/azure/managed-applications/overview)を販売したい場合は、そのアプリケーションを[こちら](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)の手順に従って Azure Marketplace のリストに掲載する必要があります。
 
 > [!NOTE]
 > 完成したサービスとしてのソフトウェア (SaaS) 製品を _IT プロフェッショナルと開発者_に販売したい場合は、各種オプションの詳細について saas-on-amp@microsoft.com までお問い合わせください。
@@ -100,7 +100,7 @@ Azure Marketplace はまさに自社の製品にぴったりだ、と考えて�
 公開しようとしているワークロード (仮想マシンまたはマネージ アプリケーション) に応じて、プランを公開するための異なるプロセスに従います。 以下の内容では、"_仮想マシン プラン_" を公開する場合について重点的に説明します。
 
 > [!NOTE]
-> [マネージ アプリケーション](https://docs.microsoft.com/en-us/azure/managed-applications/overview)を販売したい場合は、そのアプリケーションを[こちら](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app)の手順に従って Azure Marketplace のリストに掲載する必要があります。
+> [マネージ アプリケーション](https://docs.microsoft.com/azure/managed-applications/overview)を販売したい場合は、そのアプリケーションを[こちら](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)の手順に従って Azure Marketplace のリストに掲載する必要があります。
 
 > [!NOTE]
 > 完成したサービスとしてのソフトウェア (SaaS) 製品を _IT プロフェッショナルと開発者_に販売したい場合は、各種オプションの詳細について saas-on-amp@microsoft.com までお問い合わせください。

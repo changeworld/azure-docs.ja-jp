@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C でのサービス拒否攻撃やパス
 services: active-directory-b2c
 documentationcenter: 
 author: vigunase
-manager: Ajith Alexander
+manager: mtillman
 editor: 
 ms.assetid: 6df79878-65cb-4dfc-98bb-2b328055bc2e
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2016
 ms.author: 
-ms.openlocfilehash: 9472cb01eb713e297053727b1a314293574bb657
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a88a04dcc83482813b8ada0e7dbff985e9f49aba
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: 脅威の管理
 

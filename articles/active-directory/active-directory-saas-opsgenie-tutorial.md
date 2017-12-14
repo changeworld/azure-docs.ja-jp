@@ -4,7 +4,7 @@ description: "Azure Active Directory と OpsGenie の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: ce63726d2406d2f1415d29786f0ef92ca95b9b90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0d8fa13c13ad8d4a85cb482bcd7e440006f0437
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル: Azure Active Directory と OpsGenie の統合
 
@@ -203,7 +203,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
    
    b. **[フル ネーム]** ボックスに「**Britta Simon**」と入力します。
    
-   c. [ **Save**] をクリックします。 
+   c. **[Save]** をクリックします。 
 
 >[!NOTE]
 >Britta にプロファイルの設定方法が記載されたメールが届きます。

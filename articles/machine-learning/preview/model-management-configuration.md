@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: c89596a6d721c4cba899b8a6e2859ee36cba7b80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 151e7c2dc808a8fa117a0d7a1950185abe9e3152
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 
@@ -27,7 +27,7 @@ Azure ML モデル管理を使用すると、SparkML、Keras、TensorFlow、Micr
 
 ## <a name="what-you-need-to-get-started"></a>はじめにやるべきこと
 このガイドを最大限に活用するには、モデルをデプロイできる Azure サブスクリプションに対する所有者アクセス権が必要です。
-Azure Machine Learning Workbench および [Azure DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) には CLI がプレインストールされています。
+Azure Machine Learning Workbench および [Azure DSVM](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) には CLI がプレインストールされています。
 
 ## <a name="using-the-cli"></a>CLI の使用
 Workbench からコマンド ライン インターフェイス (CLI) を使うには、**[ファイル]** > **[Open CommandLine Interface]\(コマンド ライン インターフェイスを開く\)** をクリックします。 

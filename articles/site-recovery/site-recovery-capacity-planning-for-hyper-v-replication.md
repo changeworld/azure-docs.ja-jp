@@ -12,14 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 11/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: db790f9dc56605b5b752e7ab797903e32b2fc675
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: e2a69f240068d3155c2fdd52c118dc037ccbcdcb
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/05/2017
 ---
+[Hyper-V から Azure への Azure Site Recovery Deployment Planner](site-recovery-hyper-v-deployment-planner.md) の新しい強化されたバージョンが使用可能になり、従来のツールを置換しました。 デプロイの計画には新しいツールを使用します。 ツールでは次のガイドラインが提供されます。 
+* ディスク数、ディスク サイズ、IOPS、変更頻度、いくつかの VM 特性に基づく VM の適格性評価。
+* ネットワーク帯域幅ニーズと RPO の評価。
+* Azure インフラストラクチャの要件。
+* オンプレミスのインフラストラクチャの要件。
+* 初期レプリケーションのバッチ処理に関するガイダンス。
+* 推定される Azure の合計 DR コスト。
+
+
 # <a name="hyper-v-capacity-planner-tool-for-site-recovery"></a>Site Recovery の Hyper-V Capacity Planner ツール
 
 Azure Site Recovery デプロイメントの一環として、お客様のレプリケーションと帯域幅の要件を確認する必要があります。 Hyper-V 仮想マシンのレプリケーションの場合には、この確認は Site Recovery の Hyper-V Capacity Planner を使用して行うことができます。

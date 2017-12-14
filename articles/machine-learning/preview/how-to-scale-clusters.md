@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 44aa167375355433851453010cebe5b49ef56ebd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d709936bfba5c89091d7f26449d165bddb930de
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Web サービスのスループットを管理するためのクラスターのスケーリング
 
@@ -55,7 +55,7 @@ ACS にデプロイした Web サービスは、以下を調整することで�
 az acs scale -g <resource group> -n <cluster name> --new-agent-count <new scale>
 ```
 
-これが完了するまでに数分かかります。 クラスター内のノード数のスケーリングの詳細については、「[Container Service クラスター内のエージェント ノードのスケーリング](https://docs.microsoft.com/en-us/azure/container-service/container-service-scale)」を参照してください。
+これが完了するまでに数分かかります。 クラスター内のノード数のスケーリングの詳細については、「[Container Service クラスター内のエージェント ノードのスケーリング](https://docs.microsoft.com/azure/container-service/container-service-scale)」を参照してください。
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>クラスター内の Kubernetes ポッド レプリカ数のスケーリング
  
@@ -83,7 +83,7 @@ az ml service update realtime -i <service id> --autoscale-enabled true --autosca
 たとえば、`autoscale-min-replicas` を 5 に設定すると、5 つのレプリカが作成されます。 Web サービスに最適な数を見つけるには、この数に 10 などの値を設定し、503 エラー メッセージの数を監視します。 その後、この数を適宜調整します。
 
 
-| パラメーター名 | 型 | Description |
+| パラメーター名 | 型 | 説明 |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | boolean | 自動スケールを有効にするかどうかを指定します。 既定値: true |
 | `autoscale-min-replicas` | integer | ポッドの最小数を指定します。 0 以上にする必要があります。 既定値: 1 |

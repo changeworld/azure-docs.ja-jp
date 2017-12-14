@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C でコンシューマー向けにセル
 services: active-directory-b2c
 documentationcenter: 
 author: vigunase
-manager: ajalexander
+manager: mtillman
 ms.assetid: 712a7128-5788-4914-8a52-24e200aa4de1
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2016
 ms.author: vigunase
-ms.openlocfilehash: b152c22c96da38f8724010504cc2711ab82af00a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76e7ed328716d09dc57e25f15c411f07fda77bb9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーにパスワードの変更を構成する  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -200,7 +200,7 @@ ms.lasthandoff: 10/11/2017
 
 
 
-## <a name="create-a-relying-party-rp-file"></a>証明書利用者 (RP) ファイルを作成する
+## <a name="create-a-relying-party-rp-file"></a>証明書利用者 (RP) ファイルの作成
 
 次に、作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
 

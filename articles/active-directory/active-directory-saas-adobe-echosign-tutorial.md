@@ -4,7 +4,7 @@ description: "Azure Active Directory と Adobe Sign の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: b413772de1af1fbb128d29b81e5831cfd6a39ab4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f68701cc345ee1bb04cde265ac4e2d6a402da557
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>チュートリアル: Azure Active Directory と Adobe Sign の統合
 
@@ -142,7 +142,7 @@ Adobe Sign で Azure AD のシングル サインオンを構成してテスト�
    
    a. **[SAML モード]** として **[SAML Mandatory]** を選択します。
    
-   b. [ **EchoSign 資格情報を使用して、EchoSign アカウント管理者のログインを許可する**] を選択します。
+   b. **[EchoSign 資格情報を使用して、EchoSign アカウント管理者のログインを許可する]** を選択します。
    
    c. **[ユーザーの作成]** として、**[SAML を使用して認証されたユーザーを自動的に追加]** を選択します。
 
@@ -210,7 +210,7 @@ Azure AD ユーザーが Adobe Sign にログインできるようにするに�
    
    ![Account](./media/active-directory-saas-adobe-echosign-tutorial/ic789524.png "Account")
    
-3. [ **新しいユーザーの作成** ] セクションで、次の手順に従います。
+3. **[新しいユーザーの作成]** セクションで、次の手順に従います。
    
    ![Create User](./media/active-directory-saas-adobe-echosign-tutorial/ic789525.png "Create User")
    

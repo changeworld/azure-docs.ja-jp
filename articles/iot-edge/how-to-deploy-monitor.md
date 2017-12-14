@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e7007bd6cca24dc4c2573fb274cecbf88ecfa374
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b507b9108dca2fd3aee4acdac231acad9c9154e8
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>大規模な IoT Edge モジュールの展開と監視 - プレビュー
 
@@ -42,19 +42,21 @@ Azure IoT Edge を使用することにより、分析をエッジに移動し�
 
 1. [Azure Portal][lnk-portal] にサインインし、IoT ハブに移動します。 
 1. **[IoT Edge (preview)]\(IoT Edge (プレビュー)\)** を選択します。
-1. **[Create Edge Deployment]\(Edge デプロイの作成\)** を選択します。
+1. **[Add IoT Edge Deployment]\(IoT Edge の展開の追加\)** を選びます。
 
 デプロイを作成するには、5 つの手順があります。 次のセクションで、手順ごとに説明します。 
 
-### <a name="step-1-label-deployment"></a>手順 1: ラベルの展開
+### <a name="step-1-name-and-label"></a>手順 1: 名前とラベル
 
-1. デプロイに一意の IDを付けます。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
+1. 展開に一意名を付けます。 スペースや、無効な文字は使用しないでください。`& ^ [ ] { } \ | " < > /`
 1. デプロイを追跡するためのラベルを追加します。 ラベルは、デプロイを説明する、**[名前]** と **[値]** で一組になっています。 たとえば、`HostPlatform, Linux` または `Version, 3.0.1` です。
 1. **[次へ]** を選択して手順 2 に進みます。 
 
-### <a name="step-2-add-modules"></a>手順 2: モジュールの追加
+### <a name="step-2-add-modules-optional"></a>手順 2: モジュールの追加 (省略可能)
 
 デプロイに追加できるモジュールは 2 種類あります。 1 つめは、ストレージ アカウントや Stream Analytics などの Azure サービスを使用するモジュールです。 2 つめは、ユーザー独自のコードを使用するモジュールです。 各種類の複数のモジュールをデプロイに追加できます。 
+
+モジュールを含まない展開を作成すると、デバイスから既存のモジュールが削除されます。 
 
 >[!NOTE]
 >Azure Machine Learning および Azure Functions では、自動化された Azure サービスの展開はまだサポートされていません。 デプロイにそれらのサービスを手動で追加するには、カスタム モジュールの展開を使用します。 
@@ -83,7 +85,7 @@ Azure サービスからモジュールを追加するには、次の手順を�
 
 展開するすべてのモジュールを構成したら、**[次へ]** を選択して手順 3 に進みます。
 
-### <a name="step-3-specify-routes-optional"></a>手順 3: ルートを指定します (省略可能)。
+### <a name="step-3-specify-routes-optional"></a>手順 3: ルートの指定 (省略可能)
 
 ルートは、デプロイ内のモジュール間の通信方法を定義します。 デプロイのルートを指定し、**[次へ]** を選択して手順 4 に進みます。 
 
@@ -148,7 +150,7 @@ Azure サービスからモジュールを追加するには、次の手順を�
    * 対象の条件 
    * ラベル 
    * 優先順位 
-1. **[ 保存]** を選択します。
+1. **[保存]** を選択します。
 1. [デプロイの監視][anchor-monitor]に記載された手順に従って、変更が適用されることを確認します。 
 
 ## <a name="delete-a-deployment"></a>デプロイの削除

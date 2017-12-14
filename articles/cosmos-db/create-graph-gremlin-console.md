@@ -2,7 +2,7 @@
 title: "Azure Cosmos DB チュートリアル: Apache TinkerPops Gremlin コンソールでの作成、クエリ、走査 | Microsoft Docs"
 description: "Azure Cosmos DB Graph API を使用して頂点、辺、およびクエリを作成するための Azure Cosmos DB クイック スタート。"
 services: cosmos-db
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: monicar
 ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: terminal
 ms.topic: quickstart
 ms.date: 07/27/2017
-ms.author: denlee
-ms.openlocfilehash: 9755446d2c01313db9fd80b4f2a7f46f8bec500c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: lbosq
+ms.openlocfilehash: 59336c23eb322453a7c9a487002de9bdf57da633
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Gremlin コンソールでのグラフの作成、クエリ、および走査
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 12/05/2017
 ms.author: barclayn
-ms.openlocfilehash: 6c49b086fd35a855fa8e32fa576c5b52d16f1d04
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 0d34a19658ae67a9c98d6f31aaca35e67add5beb
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Azure Key Vault の HSM 保護キーを生成し、転送する方法
 ## <a name="introduction"></a>はじめに
@@ -82,10 +82,14 @@ Azure Key Vault の Bring Your Own Key (BYOK) の前提条件の一覧につい�
 ### <a name="step-12-get-your-azure-subscription-id"></a>手順 1.2: Azure サブスクリプション ID を取得する
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。
 
-        Add-AzureAccount
+```Powershell
+   Add-AzureAccount
+```
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 次に [Get-azuresubscription](/powershell/module/azure/get-azuresubscription?view=azuresmps-3.7.0) コマンドを使用します。
 
-        Get-AzureSubscription
+```powershell
+   Get-AzureSubscription
+```
 出力から、Azure Key Vault で使用するサブスクリプションの ID を見つけます。 このサブスクリプション ID は後で必要になります。
 
 Azure PowerShell ウィンドウを閉じないでください。
@@ -188,7 +192,9 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 ダウンロードした BYOK ツールセットの整合性を検証するには、Azure PowerShell セッションから、 [Get FileHash](https://technet.microsoft.com/library/dn520872.aspx) コマンドレットを使用します。
 
-    Get-FileHash KeyVault-BYOK-Tools-*.zip
+   ```powershell
+   Get-FileHash KeyVault-BYOK-Tools-*.zip
+   ```
 
 ツールセットには次が含まれます。
 
@@ -208,7 +214,9 @@ Windows コンピューターに nCipher (Thales) サポート コンピュー�
 
 Thales ツールがパスにあることを確認します (**%nfast_home%\bin**)。 たとえば、次を入力します。
 
-        set PATH=%PATH%;"%nfast_home%\bin"
+  ```cmd
+  set PATH=%PATH%;"%nfast_home%\bin"
+  ```
 
 詳細については、Thales HSM に付属のユーザー ガイドを参照してください。
 
@@ -229,7 +237,9 @@ Thales nShield Edge を使用している場合、モードを変更するには
 ### <a name="step-32-create-a-security-world"></a>手順 3.2: セキュリティ ワールドを作成する
 コマンド プロンプトを起動し、Thales new-world プログラムを実行します。
 
+   ```cmd
     new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
+   ```
 
 このプログラムにより **Security World** ファイルが %NFAST_KMDATA%\local\world で作成されます。これは C:\ProgramData\nCipher\Key Management Data\local フォルダーに対応します。 クォーラムにはさまざまな値を使用できますが、今回の例では、3 枚の空白カードと各カードのピンを入力するように求められます。 いずれかの 2 枚のカードがセキュリティ ワールドに完全アクセスを与えます。 その 2 枚のカードが新しいセキュリティ ワールドの**管理者カード セット**になります。
 
@@ -293,6 +303,10 @@ Thales nShield Edge を使用している場合、モードを変更するには
    * インドの場合:
 
          "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-INDIA-1 -w BYOK-SecurityWorld-pkg-INDIA-1
+   * 英国の場合:
+
+         "%nfast_home%\python\bin\python" verifykeypackage.py -k BYOK-KEK-pkg-UK-1 -w BYOK-SecurityWorld-pkg-UK-1
+
      > [!TIP]
      > Thales ソフトウェアの %NFAST_HOME%\python\bin に Python が含まれています。
      >
@@ -370,6 +384,9 @@ Thales **generatekey** プログラムを利用してキーを生成します。
 * インドの場合:
 
         KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1
+* 英国の場合:
+
+        KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1
 
 このコマンドを実行するとき、*contosokey* を、「**キーを生成する**」の「[手順 3.5: 新しいキーを作成する](#step-3-generate-your-key)」で指定した値に置き換えます。
 
@@ -426,6 +443,9 @@ Thales ユーティリティを使用すると、次のコマンドで ACL を�
 * インドの場合:
 
         KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-INDIA-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-INDIA-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
+* 英国の場合:
+
+        KeyTransferRemote.exe -Package -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-UK-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-UK-1 -SubscriptionId SubscriptionID -KeyFriendlyName ContosoFirstHSMkey
 
 このコマンドを実行するとき、次の指示に従います。
 
@@ -441,7 +461,9 @@ USB ドライブまたはその他のポータブル ストレージを使用し
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>手順 5: キーを Azure Key Vault に転送する
 この最後の手順では、インターネット接続ワークステーションで、[Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) コマンドレットを使用し、未接続ワークステーションからコピーしたキー転送パッケージを Azure Key Vault HSM にアップロードします。
 
-    Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+   ```powershell
+        Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+   ```
 
 アップロードされると、追加したキーのプロパティが表示されます。
 

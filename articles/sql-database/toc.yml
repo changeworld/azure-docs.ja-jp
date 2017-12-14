@@ -60,9 +60,8 @@
 - name: 概念
   items:
     - name: サービスの機能
+      href: sql-database-servers-databases.md
       items:
-        - name: 概要
-          href: sql-database-servers-databases.md
         - name: サービス階層
           href: sql-database-service-tiers.md
         - name: リソース制限
@@ -106,9 +105,8 @@
         - name: SQL Server の共通機能
           href: sql-database-features.md
     - name: セキュリティ
+      href: sql-database-security-overview.md
       items:
-        - name: 概要
-          href: sql-database-security-overview.md
         - name: Access control
           href: sql-database-control-access.md
         - name: Azure AD
@@ -121,10 +119,11 @@
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: データ マスク
           href: sql-database-dynamic-data-masking-get-started.md
+    - name: 高可用性
+      href: sql-database-high-availability.md
     - name: ビジネス継続性
+      href: sql-database-business-continuity.md
       items:
-        - name: 概要
-          href: sql-database-business-continuity.md
         - name: データベースの回復
           href: sql-database-recovery-using-backups.md
         - name: セキュリティを構成する
@@ -140,9 +139,8 @@
         - name: 復旧訓練の実行
           href: sql-database-disaster-recovery-drills.md
     - name: SQL Database への移行
+      href: sql-database-cloud-migrate.md
       items:
-        - name: SQL Server DB の移行
-          href: sql-database-cloud-migrate.md
         - name: T-SQL の変更
           href: sql-database-transact-sql-information.md
         - name: 移行後のデータベースの管理
@@ -158,9 +156,8 @@
         - name: データの同期
           href: sql-database-sync-data.md
     - name: 監視とチューニング
+      href: sql-database-troubleshoot-performance.md
       items:
-        - name: 概要
-          href: sql-database-troubleshoot-performance.md
         - name: パフォーマンスの監視
           href: sql-database-single-database-monitor.md
         - name: パフォーマンスの推奨事項
@@ -180,9 +177,8 @@
         - name: インメモリの監視
           href: sql-database-in-memory-oltp-monitoring.md
     - name: スケールアウト
+      href: sql-database-elastic-scale-introduction.md
       items:
-        - name: 概要
-          href: sql-database-elastic-scale-introduction.md
         - name: シャード マップ
           href: sql-database-elastic-scale-shard-map-management.md
         - name: クエリのルーティング
@@ -203,6 +199,8 @@
       items:
         - name: SaaS の設計パターン
           href: saas-tenancy-app-design-patterns.md
+        - name: SaaS Video Indexer
+          href: saas-tenancy-video-index-wingtip-brk3120-20171011.md
         - name: SaaS アプリのセキュリティ
           href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
     - name: データベースの開発
@@ -218,9 +216,8 @@
         - name: インメモリの構成
           href: sql-database-in-memory-oltp-migration.md
     - name: アプリケーションの開発
+      href: sql-database-develop-overview.md
       items:
-        - name: 概要
-          href: sql-database-develop-overview.md
         - name: 接続
           href: sql-database-libraries.md
         - name: アプリの認証

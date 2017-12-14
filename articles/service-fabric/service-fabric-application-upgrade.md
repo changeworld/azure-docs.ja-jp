@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 43e1a66c3aca882f8f572d2bf71976d6b65a9c68
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 5fed3b5b127a2b398b99ab2b46c762920e9dc249
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
-Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。
+Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。
 
 ## <a name="rolling-upgrades-overview"></a>ローリング アップグレードの概要
 アプリケーションのローリング アップグレードでは、アップグレードは段階的に実行されます。 各段階で、アップグレードは、更新ドメインと呼ばれる、クラスター内のノードのサブセットに適用されます。 その結果、アプリケーションはアップグレード全体を通して引き続き使用できます。 アップグレード中に、クラスターに古いバージョンと新しいバージョンが混在することがあります。
@@ -47,14 +47,14 @@ Service Fabric アプリケーションは、サービスのコレクション�
 監視対象外手動モードでは、更新ドメインですべてのアップグレードが行われた後、次の更新ドメインでアップグレードを開始するために、手動操作が必要になります。 Service Fabric の正常性チェックは実行されません。 管理者は、次の更新ドメインでアップグレードを開始する前に、正常性または状態のチェックを実行します。
 
 ## <a name="upgrade-default-services"></a>既定のサービスをアップグレードする
-Service Fabric アプリケーション内の既定のサービスは、アプリケーションのアップグレード処理の間にアップグレードできます。 既定のサービスは、[アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application)で定義されています。 既定サービスのアップグレードの標準的な規則は次のとおりです。
+Service Fabric アプリケーション内の既定のサービスは、アプリケーションのアップグレード処理の間にアップグレードできます。 既定のサービスは、[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)で定義されています。 既定サービスのアップグレードの標準的な規則は次のとおりです。
 
-1. クラスターに存在しない新しい[アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application)の既定のサービスは、作成されます。
+1. クラスターに存在しない新しい[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)の既定のサービスは、作成されます。
 > [!TIP]
 > 次の規則を有効にするには、[EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) を true に設定する必要があります。 この機能は v5.5 からサポートされています。
 
-2. 以前の[アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application)と新しいバージョンの両方に存在している既定のサービスは、更新されます。 新しいバージョンのサービス記述により、クラスター内の既存の記述が上書きされます。 既定のサービスの更新が失敗すると、アプリケーションのアップグレードは自動的にロールバックします。
-3. 以前の[アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application)には存在し、新しいバージョンには存在しない既定のサービスは、削除されます。 **この既定サービスの削除は元に戻せないことに注意してください。**
+2. 以前の[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)と新しいバージョンの両方に存在している既定のサービスは、更新されます。 新しいバージョンのサービス記述により、クラスター内の既存の記述が上書きされます。 既定のサービスの更新が失敗すると、アプリケーションのアップグレードは自動的にロールバックします。
+3. 以前の[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)には存在し、新しいバージョンには存在しない既定のサービスは、削除されます。 **この既定サービスの削除は元に戻せないことに注意してください。**
 
 アプリケーションのアップグレードがロールバックされる場合、既定のサービスはアップグレード開始前の状態に戻されます。 ただし、削除されたサービスを作成することはできません。
 

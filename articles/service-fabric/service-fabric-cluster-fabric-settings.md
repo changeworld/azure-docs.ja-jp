@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: 19caa05f0de7b4ff4ed7f4eafe50839d04f4ab50
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 986aa2a3254374f77c5e21b7d7b7562ced660744
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
-このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
+このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定とアップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
 
 > [!NOTE]
 > ポータルで利用できるのは一部の設定のみです。 次に示す設定がポータルで利用できない場合は、Azure Resource Manager テンプレートを使用してカスタマイズします。
@@ -772,8 +772,8 @@ PropertyGroup|X509NameMap、既定値は None|動的| |
 |MaxPrimaryReplicationQueueMemorySize|uint、既定値は 0|静的|プライマリ レプリケーション キューの最大値 (バイト単位)。|
 |MaxSecondaryReplicationQueueSize|uint、既定値は 2048|静的|セカンダリ レプリケーション キューに存在する可能性がある操作の最大数。 この値は 2 の累乗にする必要があります。|
 |MaxSecondaryReplicationQueueMemorySize|uint、既定値は 0|静的|セカンダリ レプリケーション キューの最大値 (バイト単位)。|
-|QueueHealthMonitoringInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(30)|静的|timespan を秒単位で指定します。 この値は、レプリケーターが、レプリケーション操作キューで警告/エラーの正常性イベントを監視するときに使用する時間を決定します。 値 "0" の場合、正常性の監視は無効になります |
-|QueueHealthWarningAtUsagePercent|uint、既定値は 80|静的|この値は、レプリケーション キューの使用率の基準を決定します。このパーセンテージを上回ると、キューの使用率が高いことが警告されます。 警告は、QueueHealthMonitoringInterval の猶予期間の後にレポートされます。 キューの使用率が猶予期間にこのパーセンテージを下回った場合|
+|QueueHealthMonitoringInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(30)|静的|timespan を秒単位で指定します。 この値は、レプリケーターが、レプリケーション操作キューで警告/エラーの正常性イベントを監視するときに使用する時間を決定します。 値 "0" の場合、正常性の監視は無効になります。 |
+|QueueHealthWarningAtUsagePercent|uint、既定値は 80|静的|この値は、レプリケーション キューの使用率の基準を決定します。このパーセンテージを上回ると、キューの使用率が高いことが警告されます。 警告は、QueueHealthMonitoringInterval の猶予期間の後にレポートされます。 キューの使用率が猶予期間にこのパーセンテージを下回った場合、警告はレポートされません。|
 |RetryInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(5)|静的|timespan を秒単位で指定します。 このタイマーは、操作が失われた場合、または拒否された場合に、レプリケーターが操作の送信の再試行をどのくらいの頻度で行うかを決定します。|
 
 ### <a name="section-name-transport"></a>セクション名: Transport

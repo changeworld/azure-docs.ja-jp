@@ -4,7 +4,7 @@ description: "Azure Active Directory と RunMyProcess の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: d31f7395-048b-4a61-9505-5acf9fc68d9b
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: f8a08ef4f90d5cb98e7648ae6001055a3f4696e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f718e6e93d14df6b71b99dc68fcbcd5e8264b95
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>チュートリアル: Azure Active Directory と RunMyProcess の統合
 
@@ -206,7 +206,7 @@ Azure AD ユーザーが RunMyProcess にログインできるようにするに
 
     c. **[アカウント作成の電子メールを自分に送信]**を選択します。 
 
-    d. [ **Save**] をクリックします。
+    d. **[Save]** をクリックします。
    
     >[!NOTE]
     >他の RunMyProcess ユーザー アカウントの作成ツールまたは RunMyProcess から提供されている API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。 

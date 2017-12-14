@@ -1,6 +1,6 @@
 ---
 title: "Azure App Service Environment の強制トンネリングを構成する"
-description: "送信トラフィックが強制トンネリングされている場合に ASE が機能するように設定します"
+description: "送信トラフィックが強制トンネリングされている場合に App Service Environment が機能するように設定します"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -10,93 +10,97 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/10/2017
 ms.author: ccompy
-ms.openlocfilehash: cd89bd23074dec1de6fa0e8784d42a5c539938b1
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.custom: mvc
+ms.openlocfilehash: 4caaf0df3f1dd4b2cb9b76283a6beed897531c1c
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
-App Service Environment (ASE) は、ユーザーの Azure 仮想ネットワーク (VNet) 内に Azure App Service をデプロイしたものです。 多くのユーザーは、VPN または ExpressRoute 接続を使用して、VNet をオンプレミス ネットワークの拡張網として構成しています。 これらのユーザーは、企業のポリシーやその他のセキュリティ上の制約から、すべての送信トラフィックを、インターネットに向かう前にオンプレミスに送るようにルートを構成します。 VNet から外に出て行くトラフィックが、VPN 接続または ExpressRoute 接続を介してオンプレミスに向かうように VNet のルーティングを変更することを強制トンネリングと言います。  
+App Service Environment は、ユーザーの Azure 仮想ネットワーク内のインスタンスに Azure App Service をデプロイしたものです。 多くのユーザーは、VPN または Azure ExpressRoute 接続を使用して、仮想ネットワークをオンプレミス ネットワークの拡張網として構成しています。 これらのユーザーは、企業のポリシーやその他のセキュリティ上の制約から、すべての送信トラフィックを、インターネットに向かう前にオンプレミスに送るようにルートを構成します。 仮想ネットワークから外に出て行くトラフィックが、VPN 接続または ExpressRoute 接続を介してオンプレミスに向かうように仮想ネットワークのルーティングを変更することを、強制トンネリングと言います。 
 
-ASE では、強制トンネリングが問題の原因となる場合があります。 ASE には外部の依存関係が多数あります。これらは、こちらの [ASE のネットワーク アーキテクチャ][network]に関するドキュメントに列挙されています。 既定の ASE では、外に向かうすべての通信が、その ASE と共にプロビジョニングされた VIP を経由する必要があります。
+App Service Environment では、強制トンネリングが問題の原因となる場合があります。 App Service Environment には外部の依存関係が多数あります。これらは、[App Service Environment のネットワーク アーキテクチャ][network]に関するドキュメントに列挙されています。 既定の App Service Environment では、外に向かうすべての通信が、その App Service Environment と共にプロビジョニングされた VIP を経由する必要があります。
 
-強制トンネリングとは何か、またどのように扱えばよいかを考えるうえで欠かすことのできない視点はルートです。 Azure 仮想ネットワークでは、最長プレフィックス一致 (LPM) に基づいてルーティングが実行されます。  同じ LPM マッチの複数のルートが存在する場合は、そのルートが検出された経緯に応じて次の順序でルートが選択されます。
+強制トンネリングとは何か、またどのように扱えばよいかを考えるうえで、ルートは重要な要素です。 Azure 仮想ネットワークでは、最長プレフィックス一致 (LPM) に基づいてルーティングが実行されます。 同じ LPM マッチの複数のルートが存在する場合は、そのルートが検出された経緯に応じて次の順序でルートが選択されます。
 
-1. ユーザーの定義ルート
-1. BGP のルート (ExpressRoute を使用している場合)
-1. システム ルート
+* ユーザー定義のルート (UDR)
+* BGP のルート (ExpressRoute を使用している場合)
+* システム ルート
 
-VNet におけるルーティングの詳細については、[ユーザー定義ルートと IP 転送][routes]に関するページを参照してください。 
+仮想ネットワークにおけるルーティングの詳細については、[ユーザー定義ルートと IP 転送][routes]に関するページをご覧ください。 
 
-強制トンネリングの対象となる VNet 内で ASE を運用する必要がある場合、2 つの選択肢があります。
+強制トンネリングの仮想ネットワークで App Service Environment を機能させるには、次の 2 つの選択肢があります。
 
-1. ASE で直接インターネットにアクセスできるようにする
-1. ASE のエグレス エンドポイントを変更する
+* インターネットに直接アクセスするように App Service Environment を設定します。
+* App Service Environment のエグレス エンドポイントを変更します。
 
-## <a name="enable-your-ase-to-have-direct-internet-access"></a>ASE で直接インターネットにアクセスできるようにする
+## <a name="enable-your-app-service-environment-to-have-direct-internet-access"></a>インターネットに直接アクセスするように App Service Environment を設定する
 
-ExpressRoute を使って構成されている VNet で ASE が機能するには、次の方法があります。
+ExpressRoute 接続を使用して仮想ネットワークを構成しつつ、App Service Environment を機能させるには、次の手順を実行します。
 
 * 0.0.0.0/0 をアドバタイズするように ExpressRoute を構成します。 既定では、すべての送信トラフィックをオンプレミスに強制的にトンネリングします。
-* UDR を作成します。 0.0.0.0/0 のアドレス プレフィックスとインターネットの次ホップの種類を指定して、それを ASE が含まれるサブネットに適用します。
+* UDR を作成します。 アドレス プレフィックスに 0.0.0.0/0 と次ホップの種類にインターネットを指定して、App Service Environment が含まれるサブネットにそれを適用します。
 
-これらの 2 つの変更を行った場合、ASE サブネットから発信されたインターネット宛てのトラフィックは ExpressRoute を強制的に経由せず、ASE は機能します。
+これらの 2 つの変更を行った場合、App Service Environment サブネットから発信されたインターネット宛てのトラフィックは ExpressRoute 接続を強制的に経由せず、App Service Environment は機能します。
 
 > [!IMPORTANT]
 > UDR に定義されているルートは、ExpressRoute 構成でアドバタイズされたどのルートよりも優先されるように、詳細にする必要があります。 前の例では、0.0.0.0/0 という広いアドレス範囲を使用しています。 これは、より具体的なアドレス範囲を使用するルート アドバタイズによって誤って上書きされる可能性があります。
 >
-> ASE は、ルートをパブリックピアリング パスからプライベートピアリング パスにクロスアドバタイズする ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、Microsoft からルート アドバタイズを受信します。 これらのアドバタイズには、Microsoft Azure の一連の広い IP アドレス範囲が含まれています。 これらのアドレス範囲がプライベートピアリング パスでクロスアドバタイズされた場合、ASE のサブネットからの送信ネットワーク パケットはすべて、顧客のオンプレミスのネットワーク インフラストラクチャに強制的にトンネリングされます。 既定では現在、このネットワーク フローは ASE でサポートされていません。 この問題の 1 つの解決策として、パブリックピアリング パスからプライベートピアリング パスへのクロスアドバタイズ ルートの停止があります。  もう 1 つの解決策は、強制トンネリング構成で機能するように ASE を設定することです。
+> App Service Environment は、パブリック ピアリング パスからプライベート ピアリング パスにルートをクロスアドバタイズした ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、Microsoft からルート アドバタイズを受信します。 これらのアドバタイズには、Microsoft Azure の一連の広い IP アドレス範囲が含まれています。 これらのアドレス範囲がプライベートピアリング パスでクロスアドバタイズされた場合、App Service Environment のサブネットからの送信ネットワーク パケットはすべて、顧客のオンプレミスのネットワーク インフラストラクチャに強制的にトンネリングされます。 既定では現在、このネットワーク フローは App Service Environment でサポートされていません。 この問題の 1 つの解決策として、パブリックピアリング パスからプライベートピアリング パスへのクロスアドバタイズ ルートの停止があります。 もう 1 つの解決策は、強制トンネリング構成で機能するように App Service Environment を設定することです。
 
-## <a name="change-the-egress-endpoint-for-your-ase"></a>ASE のエグレス エンドポイントを変更する ##
+## <a name="change-the-egress-endpoint-for-your-app-service-environment"></a>App Service Environment のエグレス エンドポイントを変更する ##
 
-このセクションでは、強制トンネリング構成で ASE が機能するように、ASE で使用されるエグレス エンドポイントを変更する方法について説明します。 ASE からの送信トラフィックがオンプレミス ネットワークへと強制トンネリングされている場合、そのトラフィックが、ASE の VIP アドレスではない IP アドレスから出て行くことを許可する必要があります。
+このセクションでは、強制トンネリング構成で App Service Environment が機能するように、App Service Environment で使用されるエグレス エンドポイントを変更する方法について説明します。 App Service Environment からの送信トラフィックがオンプレミス ネットワークへと強制トンネリングされている場合、そのトラフィックが、App Service Environment の VIP アドレスではない IP アドレスから出て行くことを許可する必要があります。
 
-ASE は、外部の依存関係があることに加え、ASE を管理するための受信トラフィックをリッスンする必要があります。 ASE は、そのようなトラフィックに対して応答できることが必要です。また、その応答を別のアドレスから返すことはできません。そのような応答は TCP に違反します。  そのため、ASE のエグレス エンドポイントを変更するために必要なステップが 3 つあります。
+App Service Environment には外部の依存関係があるだけでなく、受信トラフィックをリッスンしてこのようなトラフィックに応答する必要があります。 TCP が中断するため、別のアドレスから返信を送ることはできません。 App Service Environment のエグレス エンドポイントを変更するために必要なステップは次の 3 つです。
 
-1. 受信管理トラフィックが同じ IP アドレスから出て行くことができるようにルート テーブルを設定する
-1. エグレス用の IP アドレスを ASE のファイアウォールに追加する
-1. ASE から外に出て行くトラフィックのルートをトンネリングする
+1. 受信管理トラフィックが同じ IP アドレスから出て行くことができるようにルート テーブルを設定する。
 
-![強制トンネリングのネットワーク フロー][1]
+2. エグレス用の IP アドレスを App Service Environment のファイアウォールに追加する。
 
-ASE の稼働後、異なるエグレス アドレスで ASE を構成できるほか、ASE のデプロイ中にエグレス アドレスを設定することもできます。  
+3. App Service Environment から外に出て行くトラフィックのルートをトンネリングする。
 
-### <a name="changing-the-egress-address-after-the-ase-is-operational"></a>ASE の稼働後にエグレス アドレスを変更する ###
-1. ASE のエグレス IP として使用する IP アドレスを取得します。 強制トンネリングを実施している場合、これはご使用の NAT またはゲートウェイ IP になります。  NVA を経由するよう ASE の送信トラフィックをルーティングする場合は、その NVA のパブリック IP がエグレス アドレスになります。
-2. そのエグレス アドレスを ASE の構成情報で設定します。 resource.azure.com にアクセスして Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name> に移動すると、ご利用の ASE を表す json を確認できます。  一番上に読み取り/書き込みの表示があることを確認してください。  [編集] をクリックし、一番下までスクロールして、userWhitelistedIpRanges を変更します。  
+   ![強制トンネリングのネットワーク フロー][1]
 
-       "userWhitelistedIpRanges": null 
-      
-  次のように変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
+App Service Environment が起動して操作可能の状態になったら、App Service Environment が別のエグレス アドレスを持つように構成できます。または、App Service Environment のデプロイ時に設定できます。
 
-      "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
+### <a name="change-the-egress-address-after-the-app-service-environment-is-operational"></a>App Service Environment が操作可能になった後にエグレス アドレスを変更する ###
+1. App Service Environment のエグレス IP として使用する IP アドレスを取得します。 強制トンネリングを実施している場合、これらのアドレスはご使用の NAT またはゲートウェイ IP から取得します。 NVA を経由するよう App Service Environment の送信トラフィックをルーティングする場合は、その NVA のパブリック IP がエグレス アドレスになります。
 
-  上部にある [PUT] をクリックします。 これにより、ASE に対するスケーリング操作がトリガーされ、ファイアウォールが調整されます。
-   
-3. ルート テーブルを作成するか編集し、ASE の場所に対応する管理アドレスへのアクセスとそれらのアドレスからのアクセスを許可するルールを設定します。  管理アドレスは、「[App Service Environment の管理アドレス][management]」に記載されています。 
+2. そのエグレス アドレスを App Service Environment の構成情報で設定します。 resource.azure.com にアクセスして Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に**読み取り/書き込み**の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールし、**userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
 
-4. ルート テーブルまたは BGP ルートを使用して、ASE サブネットに適用されているルートを調整します。  
+        "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 
-ASE がポータルからの操作に反応しない場合、変更に問題があります。  エグレス アドレスの一覧が不完全であったり、トラフィックが失われていたり、トラフィックがブロックされていたりする可能性があります。  
+   一番上にある **[PUT]** を選択します。 このオプションは、App Service Environment 上のスケール操作をトリガーし、ファイアウォールを調整します。
+ 
+3. ルート テーブルを作成するか編集し、App Service Environment の場所に対応する管理アドレスへのアクセスと、それらのアドレスからのアクセスを許可するルールを設定します。 管理アドレスは、「[App Service Environment の管理アドレス][management]」に記載されています。
 
-### <a name="create-a-new-ase-with-a-different-egress-address"></a>異なるエグレス アドレスで新しい ASE を作成する  ###
+4. ルート テーブルまたは BGP ルートを使用して、App Service Environment サブネットに適用されているルートを調整します。 
 
-VNet が既にすべてのトラフィックを強制トンネリングするように構成されている場合、ASE が正常に起動するよう、さらにいくつかのステップで ASE を作成する必要があります。 つまり ASE を作成する過程で、もう 1 つのエグレス エンドポイントの使用を有効にする必要があります。  そのためには、許可するエグレス アドレスが指定されたテンプレートで ASE を作成する必要があります。
+App Service Environment がポータルからの操作に反応しない場合、実施した変更に問題があります。 エグレス アドレスの一覧が不完全であったり、トラフィックが失われていたり、トラフィックがブロックされていたりする可能性があります。 
 
-1. ASE のエグレス アドレスとして使用する IP アドレスを取得します。
-1. ASE で使用するサブネットをあらかじめ作成しておきます。 これはルートを設定するために必要となるほか、テンプレートでも必要となります。  
-1. ASE の場所に対応した管理 IP を使用してルート テーブルを作成し、ASE に割り当てます。
-1. [テンプレートを使用した ASE の作成][template]に関するページの説明に従い、適切なテンプレートを入手してください。
-1. azuredeploy.json ファイルの "resources" セクションを編集します。 次のように、値が含まれた **userWhitelistedIpRanges** 行を追加します。
+### <a name="create-a-new-app-service-environment-with-a-different-egress-address"></a>別のエグレス アドレスを持つ新しい App Service Environment を作成する ###
+
+仮想ネットワークが既にすべてのトラフィックを強制トンネリングするように構成されている場合、App Service Environment が正常に起動するよう、さらにいくつかのステップを踏んで App Service Environment を作成する必要があります。 App Service Environment を作成する過程で、もう 1 つのエグレス エンドポイントの使用を有効にする必要があります。 そのためには、許可するエグレス アドレスが指定されたテンプレートで App Service Environment を作成する必要があります。
+
+1. App Service Environment のエグレス アドレスとして使用する IP アドレスを取得します。
+
+2. App Service Environment で使用するサブネットをあらかじめ作成しておきます。 これはルートを設定するために必要となるほか、テンプレートでも必要となります。
+
+3. App Service Environment の場所に対応した管理 IP を使用してルート テーブルを作成します。 これを、App Service Environment に割り当てます。
+
+4. [テンプレートを使用した App Service Environment の作成][template]に関する指示に従います。 適切なテンプレートを入手します。
+
+5. azuredeploy.json ファイルの "resources" セクションを編集します。 次のように、値が含まれた **userWhitelistedIpRanges** 行を追加します。
 
        "userWhitelistedIpRanges":  ["11.22.33.44/32", "55.66.77.0/30"]
 
-これが適切に構成されると、ASE は問題なく起動します。  
+このセクションが正しく構成されると、App Service Environment が正常に起動します。 
 
 
 <!--IMAGES-->

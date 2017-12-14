@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2017
+ms.date: 11/29/2017
 ms.author: cherylmc
-ms.openlocfilehash: be33522fbabc801f64b7d3f38be83443c0327128
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 663e3cb35308b354c7221e34ac6fcfc8eda15f2a
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
@@ -39,15 +39,23 @@ ms.lasthandoff: 11/28/2017
 
 ## <a name="about"></a>VNet の接続について
 
-VNet 間接続タイプ (VNet2VNet) を使用して仮想ネットワークどうしを接続することは、オンプレミス サイトがある場所との IPsec 接続を作成することに似ています。 どちらの接続の種類も、VPN ゲートウェイを使用して IPsec/IKE を使った安全なトンネルが確保され、通信時には同じように機能します。 この接続の種類の違いは、ローカル ネットワーク ゲートウェイの構成方法にあります。 VNet 間接続を作成するときは、ローカル ネットワーク ゲートウェイのアドレス空間は見えません。 自動的に作成されて値が設定されます。 一方の VNet のアドレス空間を更新した場合、もう一方の VNet が、更新されたアドレス空間へのルーティングを自動的に認識します。
+VNet の接続方法は複数あります。 以降のセクションでは、仮想ネットワークを接続するさまざまな方法について説明します。
 
-複雑な構成を使用している場合、接続の種類として VNet 間よりも IPsec を使用する方が好ましいケースがあります。 そうすることで、トラフィックをルーティングするための追加のアドレス空間をローカル ネットワーク ゲートウェイに指定することができます。 接続の種類に IPsec を使用して VNet どうしを接続する場合、ローカル ネットワーク ゲートウェイを手動で作成して構成する必要があります。 詳細については、[サイト間構成](vpn-gateway-howto-site-to-site-resource-manager-cli.md)に関するページを参照してください。
+### <a name="vnet-to-vnet"></a>VNet 間
 
-さらに、複数の VNet が同じリージョンに存在する場合、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングでは VPN ゲートウェイを使用しないため、料金と機能も若干異なります。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
+VNet 間接続の構成は、VNet を簡単に接続するための良い方法です。 VNet 間接続の種類を使用して仮想ネットワークどうしを接続することは、オンプレミスの場所へのサイト間 IPsec 接続を作成することに似ています。 どちらの接続の種類も、VPN ゲートウェイを使用して IPsec/IKE を使った安全なトンネルが確保され、通信時には同じように機能します。 この接続の種類の違いは、ローカル ネットワーク ゲートウェイの構成方法にあります。 VNet 間接続を作成するときは、ローカル ネットワーク ゲートウェイのアドレス空間は見えません。 自動的に作成されて値が設定されます。 一方の VNet のアドレス空間を更新した場合、もう一方の VNet が、更新されたアドレス空間へのルーティングを自動的に認識します。 VNet 間接続の作成は、通常、VNet どうしのサイト間接続を作成するよりも高速で簡単です。
 
-### <a name="why"></a>VNet 間接続を作成する理由
+### <a name="connecting-vnets-using-site-to-site-ipsec-steps"></a>サイト間 (IPsec) の手順による VNet の接続
 
-仮想ネットワークを接続するのは次のような場合です。
+複雑なネットワーク構成で作業している場合は、VNet 間の手順の代わりに、[サイト間](vpn-gateway-howto-site-to-site-resource-manager-cli.md)の手順を使用して VNet を接続する方がよい場合もあります。 サイト間の手順を使用する場合は、ローカル ネットワーク ゲートウェイを手動で作成および構成します。 各 VNet のローカル ネットワーク ゲートウェイは、他方の VNet をローカル サイトとして扱います。 そうすることで、トラフィックをルーティングするための追加のアドレス空間をローカル ネットワーク ゲートウェイに指定することができます。 VNet のアドレス空間が変更されたら、変更を反映するように、対応するローカル ネットワーク ゲートウェイを手動で更新する必要があります。 自動的には更新されません。
+
+### <a name="vnet-peering"></a>VNET ピアリング
+
+VNET ピアリングを使用して VNet を接続することを検討する場合もあります。 VNET ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。 さらに、[VNET ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は、[VNet 間 VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway)と計算方法が異なります。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
+
+## <a name="why"></a>VNet 間接続を作成する理由
+
+VNet 間接続による仮想ネットワークの接続が望ましいのは、次のような場合です。
 
 * **リージョン間の geo 冗長性および geo プレゼンス**
 
@@ -59,9 +67,9 @@ VNet 間接続タイプ (VNet2VNet) を使用して仮想ネットワークど�
 
 マルチサイト構成と VNet 間通信を組み合わせることができます。 そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
 
-### <a name="which-set-of-steps-should-i-use"></a>どの手順を利用するべきでしょうか。
+## <a name="steps"></a>どの VNet 間の手順を使用する必要がありますか。
 
-この記事では、接続の種類として VNet 間を使用して VNet を接続する方法を説明します。 この記事では、2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順で、もう 1 つは [VNet が別のサブスクリプション内に存在する](#difsub)場合の手順です。 
+この記事では、VNet 間接続の 2 種類の手順について説明します。 1 つは [VNet が同じサブスクリプション内に存在する](#samesub)場合の手順で、もう 1 つは [VNet が別のサブスクリプション内に存在する](#difsub)場合の手順です。 
 
 この演習では、構成を組み合わせるか、希望する方のみを選んでもかまいません。 どの構成でも、接続の種類として VNet 間を使用します。 ネットワーク トラフィックは、互いに直接接続されている VNet 間を行き来します。 この演習では、TestVNet4 からのトラフィックが TestVNet5 にルーティングされることはありません。
 
@@ -100,7 +108,6 @@ VNet 間接続タイプ (VNet2VNet) を使用して仮想ネットワークど�
 * VPN の種類: RouteBased
 * 接続 (1 ～ 4): VNet1toVNet4
 * 接続 (1 ～ 5): VNet1toVNet5 (VNet が異なるサブスクリプションに存在する場合)
-* 接続の種類: VNet2VNet
 
 **TestVNet4 の値:**
 
@@ -115,8 +122,6 @@ VNet 間接続タイプ (VNet2VNet) を使用して仮想ネットワークど�
 * パブリック IP: VNet4GWIP
 * VPN の種類: RouteBased
 * 接続: VNet4toVNet1
-* 接続の種類: VNet2VNet
-
 
 ### <a name="Connect"></a>手順 1 - サブスクリプションに接続する
 

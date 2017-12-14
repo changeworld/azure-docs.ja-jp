@@ -4,7 +4,7 @@ description: "Azure Active Directory と TOPdesk - Public の間でシングル 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0873299f-ce70-457b-addc-e57c5801275f
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: f21fe0b363776974108ff460060e4c15a51a58a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f88b232df01aa73a7e06b891ef5ff635d03086a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>チュートリアル: Azure Active Directory と TOPdesk - Public の統合
 
@@ -185,7 +185,7 @@ TOPdesk - Public で Azure AD のシングル サインオンを構成してテ�
 
     e. **[Display name]** テキスト ボックスに、構成の名前を入力します。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 [ **Save**] をクリックします。
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -244,7 +244,7 @@ TOPdesk - Public の場合、プロビジョニングは手動で行います。
  
     c. アカウントの **[Site]** を選択します。
  
-    d. [ **Save**] をクリックします。
+    d. **[Save]** をクリックします。
 
 > [!NOTE]
 > 他の TOPdesk - Public ユーザー アカウントの作成ツールまたは TOPdesk - Public から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

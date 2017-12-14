@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 7a051e0f35b2dd943f3569391d7ca0f206a9ef02
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7565efd82945f21b83471ee66098cd476b7bb59f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
@@ -42,7 +42,7 @@ HDInsight での実行に必要な 4 つの主要な手順を次に示します�
 3. すべての worker ノードに必要なライブラリを配布する
 4. Caffe モデルを作成し、それを分散して実行する
 
-HDInsight は PaaS ソリューションであるため、優れたプラットフォーム機能が用意されています。したがって、いくつかのタスクを簡単に実行できます。 このブログ記事では、[スクリプト アクション](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)と呼ばれる、シェル コマンドを実行してクラスター ノード (ヘッド ノード、worker ノード、またはエッジ ノード) をカスタマイズできる機能を多く使用しています。
+HDInsight は PaaS ソリューションであるため、優れたプラットフォーム機能が用意されています。したがって、いくつかのタスクを簡単に実行できます。 このブログ記事では、[スクリプト アクション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)と呼ばれる、シェル コマンドを実行してクラスター ノード (ヘッド ノード、worker ノード、またはエッジ ノード) をカスタマイズできる機能を多く使用しています。
 
 ## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>手順 1: すべてのノードに必要な依存関係をインストールする
 
@@ -71,14 +71,14 @@ HDInsight は PaaS ソリューションであるため、優れたプラット�
 
 2 番目の手順では、実行時に Caffe 用の protobuf 2.5.0 をダウンロードし、コンパイルしてインストールします。 protobuf 2.5.0 が[必要](https://github.com/yahoo/CaffeOnSpark/issues/87)です。ただし、このバージョンは Ubuntu 16 のパッケージとして入手できないため、ソース コードからコンパイルする必要があります。 コンパイル方法については、インターネットでもいくつかのリソースが見つかります。 詳細については、[このページ](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)を参照してください。
 
-作業を開始するには、このスクリプト アクションをクラスターに対して実行して、すべての worker ノードとヘッド ノード (HDInsight 3.5 用) に適用します。 既存のクラスターでスクリプト アクションを実行するか、クラスターの作成時にスクリプト アクションを使用します。 スクリプト アクションの詳細については、[こちらの](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)ドキュメントを参照してください。
+作業を開始するには、このスクリプト アクションをクラスターに対して実行して、すべての worker ノードとヘッド ノード (HDInsight 3.5 用) に適用します。 既存のクラスターでスクリプト アクションを実行するか、クラスターの作成時にスクリプト アクションを使用します。 スクリプト アクションの詳細については、[こちらの](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)ドキュメントを参照してください。
 
 ![依存関係をインストールするスクリプト アクション](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
 ## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>手順 2: ヘッド ノードで HDInsight 用 CaffeOnSpark をビルドする
 
-2 番目の手順では、ヘッド ノードで Caffe をビルドし、コンパイルされたライブラリをすべての worker ノードに配布します。 この手順では、[ヘッド ノードに ssh 接続する](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)必要があります。 その後で、[CaffeOnSpark ビルド プロセス](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)に従う必要があります。 いくつかの手順が追加された次のスクリプトを使用して、CaffeOnSpark を構築できます。 
+2 番目の手順では、ヘッド ノードで Caffe をビルドし、コンパイルされたライブラリをすべての worker ノードに配布します。 この手順では、[ヘッド ノードに ssh 接続する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)必要があります。 その後で、[CaffeOnSpark ビルド プロセス](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn)に従う必要があります。 いくつかの手順が追加された次のスクリプトを使用して、CaffeOnSpark を構築できます。 
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive

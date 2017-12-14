@@ -4,7 +4,7 @@ description: "PIM の用語や通知を含めた RBAC 機能の概要につい�
 services: active-directory
 documentationcenter: 
 author: barclayn
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barclayn
-ms.openlocfilehash: 114ef434e6167ef2b25b040e35ab3ce1b85151a9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19715f800e7d8d40336d8e9fa3bf8073795dce5b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="pim-for-azure-resources-preview"></a>Azure リソースの PIM (プレビュー)
+# <a name="pim-for-azure-resources-preview"></a>Azure リソース向けの PIM (プレビュー)
 
-組織内の Azure リソース (プレビュー) に対するアクセス権が、Azure Active Directory Privileged Identity Management (PIM) で管理、制御、監視できるようになりました。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure ロールベースのアクセス制御 (RBAC) 機能を活用する Azure ポータル内のすべてのリソースが、Azure AD PIM から提供される優れたセキュリティとライフサイクル管理機能、そして間もなく Azure AD ロールに提供される強力な新機能の一部を活用できます。 
+組織内の Azure リソース (プレビュー) に対するアクセス権が、Azure Active Directory Privileged Identity Management (PIM) で管理、制御、監視できるようになりました。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure ロールベースのアクセス制御 (RBAC) 機能を活用する Azure ポータル内のすべてのリソースにおいて、Azure AD PIM から提供される優れたセキュリティとライフサイクル管理機能の全部と、近日中に Azure AD ロールに提供が予定されている強力な新機能の一部を活用できます。 
 
-## <a name="pim-for-azure-resources-preview-helps-resource-administrators"></a>Azure リソースの PIM (プレビュー) はリソース管理者に便利
+## <a name="pim-for-azure-resources-preview-helps-resource-administrators"></a>Azure リソース向けの PIM (プレビュー) はリソース管理者に便利
 
-- 管理対象の Azure リソースのロールが割り当てられているユーザーとグループを確認する
-- サブスクリプション、リソース グループなどのリソース管理のために、オンデマンドの "Just In Time な" アクセスを有効化する
+- 管理対象の Azure リソースに おいて、ロールが割り当てられているユーザーとグループを確認する
+- サブスクリプション、リソース グループなどのリソース管理のために、オンデマンドで "必要な時に必要な分だけ" のアクセスを有効にする
 - 新しい期限付きの割り当て設定により、割り当てられたユーザー/グループのリソース アクセスを自動的に期限切れにする
 - クイック タスクまたはオンコール スケジュールのために、一時的なリソース アクセスを割り当てる
 - 組み込みまたはカスタム ロールのリソース アクセスのために、多要素認証を適用する 
 - ユーザーのアクティブなセッション中にリソース アクティビティと相関関係のあるリソース アクセスに関するレポートを取得する
-- 新しいユーザーまたはグループにリソース アクセスを割り当てたときや、適格な割り当てをアクティブ化するときにアラートを取得する
+- 新しいユーザーまたはグループがリソース アクセスの割り当てを受けたときや、そのようなユーザーまたはグループが資格のある割り当てをアクティブ化するときにアラートを取得する
 
 Azure AD PIM は、組み込みの Azure リソース ロールと、以下を含むカスタム (RBAC) ロール (ただしこれらに限定されません) を管理できます。
 
-- Owner
-- User Access Administrator
-- Contributor
+- 所有者
+- ユーザーアクセスの管理者
+- 共同作成者
 - セキュリティ管理者
 - セキュリティ マネージャーなど
 
 >[!NOTE]
-Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者ロールに割り当てられたグループのユーザーまたはメンバー、および全体管理者がリソース管理者です。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソースの PIM を使用したアクセス レビューができます。 [Azure リソースの組み込みロール](../role-based-access-built-in-roles.md)の一覧をご確認ください。
+Azure AD でサブスクリプション管理を有効にする、所有者またはユーザー アクセス管理者ロールに割り当てられたグループのユーザーまたはメンバー、および全体管理者がリソース管理者です。 これらの管理者は、ロールの割り当て、ロール設定の構成、Azure リソースの PIM を使用したアクセスの確認ができます。 [Azure リソースの組み込みロール](../role-based-access-built-in-roles.md)の一覧をご確認ください。
 
 ## <a name="tasks"></a>タスク
 
-PIM はロールのアクティブ化、保留中のアクティブ化/要求の表示、保留中の承認 ([Azure AD ディレクトリ ロール](azure-ad-pim-approval-workflow.md)の場合) の表示のためのアクセスを簡単にし、左側のナビゲーション メニューの [タスク] セクションの応答に対する保留をレビューします。
+PIM はロールのアクティブ化、保留中のアクティブ化/要求の表示、保留中の承認 ([Azure AD ディレクトリ ロール](azure-ad-pim-approval-workflow.md)の場合) の表示のためのアクセスを簡単にし、左側のナビゲーション メニューの [タスク] セクションの応答に対する保留を確認します。
 
 概要のエントリ ポイントから [タスク] メニュー項目のいずれかにアクセスして表示されるビューには、Azure AD ディレクトリ ロールと Azure リソース ロール (プレビュー) の両方の結果が含まれています。 
 
@@ -57,7 +57,7 @@ PIM はロールのアクティブ化、保留中のアクティブ化/要求の
 
 ## <a name="activate-roles"></a>ロールをアクティブ化する
 
-Azure リソース (プレビュー) のロールをアクティブ化すると、適格なロール メンバーが将来の日付/時刻でアクティブ化をスケジュールしたり、特定のアクティブ化最大期間 (管理者により構成) を選択できるようになります。 Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください。
+Azure リソース (プレビュー) のロールをアクティブ化すると、ロールの有資格メンバーは、将来の日付/時刻でのアクティブ化をスケジュールしたり、管理者が許可した最長期間の範囲内でアクティブ化期間を指定できるという新しいエクスペリエンスが導入されます。 Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください。
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 

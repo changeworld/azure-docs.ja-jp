@@ -7,18 +7,18 @@ author: davidwrede
 manager: erikre
 editor: jimbe
 ms.assetid: 53cb9df1-c96a-4f4e-b022-18336cd3d697
-ms.service: na
+ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: overview
 ms.date: 12/16/2015
 ms.author: dwrede
-ms.openlocfilehash: 71820306716c6297085a29f3ceab89b55396bfe6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 45decfdec01b7086d1f9d18b31cf01cec1adb34d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="microsoft-azure-portal-overview"></a>Microsoft Azure ポータルの概要
 Azure リソースのプロビジョニングと管理は、Microsoft Azure ポータルを使って 1 か所で行うことができます。  このチュートリアルは、ポータルについて説明し、次のような主要な機能を使用する方法を示します。

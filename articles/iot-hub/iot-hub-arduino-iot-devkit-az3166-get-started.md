@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2017
 ms.author: xshi
-ms.openlocfilehash: deb362796966524ec2db5808623d2f92a1bf44e1
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 7d3f610674d9491f7689cc911ba21de0b6b615d7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/27/2017
 ## <a name="what-you-do"></a>作業内容
 作成する Azure IoT ハブに [DevKit](https://microsoft.github.io/azure-iot-developer-kit/) を接続し、センサーから温度と湿度のデータを収集して、そのデータを IoT ハブに送信します。
 
-DevKit をお持ちでない場合は、 [1 つ取得](https://aka.ms/iot-devkit-purchase)します。
+DevKit をお持ちでない場合は、 [DevKit シミュレーターを試す](https://azure-samples.github.io/iot-devkit-web-simulator/)か、[取得](https://aka.ms/iot-devkit-purchase)してください。
 
 ## <a name="what-you-learn"></a>学習内容
 
@@ -186,7 +186,7 @@ Arduino の VS Code 拡張機能では、Arduino IDE が使用されます。 Ar
 .zip ファイルに含まれるツールとパッケージは次のとおりです。 既にインストール済みのコンポーネントがある場合、スクリプトによってそのコンポーネントが検出され、スキップされます。
 
 * Node.js と Yarn: セットアップ スクリプトおよび自動化されたタスクのランタイム。
-* [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest#a-namemacosinstall-on-macos): Azure リソースを管理するためのクロスプラットフォーム コマンドライン エクスペリエンス。
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest#a-namemacosinstall-on-macos): Azure リソースを管理するためのクロスプラットフォーム コマンドライン エクスペリエンス。
 * [Visual Studio Code](https://code.visualstudio.com/) (VS Code): DevKit 開発のための軽量なコード エディター。
 * [Arduino の Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino): Visual Studio Code での Arduino 開発を可能にする拡張機能。
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software): Arduino の拡張機能が依存するツール。
@@ -257,7 +257,7 @@ VS Code ターミナルでは、対話型コマンド ラインを使用して�
 DevKit が再起動され、コードの実行が開始されます。
 
 > [!NOTE] 
-> "エラー: AZ3166: 不明なパッケージ" エラーが発生する場合があります。 これは、ボード パッケージのインデックスが更新されていないためです。 これを解決するには、こちらの[よくあるご質問の手順](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)を確認してください。
+> "エラー: AZ3166: 不明なパッケージ" エラーが発生する場合があります。 これは、ボード パッケージのインデックスが更新されていないためです。 これを解決するには、こちらの[FAQ の手順](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)を確認してください。
 
 ### <a name="macos"></a>macOS
 

@@ -4,7 +4,7 @@ description: "管理者が Azure Active Directory でユーザーのパスワー
 services: active-directory
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 11/01/2017
 ms.author: joflore
 ms.reviewer: sahenry
 ms.custom: it-pro
-ms.openlocfilehash: bea082081e3f3f52ba78188903a9536fe9de9392
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 6d01dff567e49b602e98f717dace4dc75abecb4c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Azure Active Directory でのユーザー パスワードのリセット
 

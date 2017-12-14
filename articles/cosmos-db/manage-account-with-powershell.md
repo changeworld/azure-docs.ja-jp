@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 25c543528119410dff0684845a713dcb0d6151d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3bdf30dad5e729ae1e028be2d917b6c38e1bebaf
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウントを作成する
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/11/2017
 * 前の例では、2 つのリージョンでデータベース アカウントを作成します。 単一リージョン (書き込みリージョンとして指定されており、フェールオーバー優先度の値が 0 であるもの) または 3 つ以上のリージョンでデータベース アカウントを作成することも可能です。 詳細については、[複数リージョンのデータベース アカウント][scaling-globally]に関する記事を参照してください。
 * 場所は、Azure Cosmos DB が一般公開されているリージョンである必要があります。 最新のリージョン一覧については、 [Azure のリージョン ページ](https://azure.microsoft.com/regions/#services)を参照してください。
 
-## <a id="update-documentdb-account-powershell"></a> DocumentDB データベース アカウントの更新
+## <a id="update-documentdb-account-powershell"></a>Azure Cosmos DB データベース アカウントを更新する
 
 このコマンドでは、Azure Cosmos DB データベース アカウントのプロパティを更新できます。 これには、一貫性ポリシーと、データベース アカウントが存在する場所が含まれます。
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 10/11/2017
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Properties $CosmosDBProperties
 
-## <a id="delete-documentdb-account-powershell"></a> DocumentDB データベース アカウントの削除
+## <a id="delete-documentdb-account-powershell"></a>Azure Cosmos DB データベース アカウントを削除する
 
 このコマンドでは、既存の Azure Cosmos DB データベース アカウントを削除できます。
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 10/11/2017
 
     Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test"
 
-## <a id="get-documentdb-properties-powershell"></a> DocumentDB データベース アカウントのプロパティの取得
+## <a id="get-documentdb-properties-powershell"></a>Azure Cosmos DB データベース アカウントのプロパティを取得する
 
 このコマンドでは、既存の Azure Cosmos DB データベース アカウントのプロパティを取得できます。
 

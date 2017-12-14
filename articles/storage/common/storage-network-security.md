@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 2e155231e430a8333095fdcd92a727a17c6d1e8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2ea1c217031761e93d393aefa07eedd03f88d9b0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
@@ -118,7 +118,7 @@ az storage account update --name "mystorageaccount" --resource-group "myresource
 ### <a name="managing-virtual-network-rules"></a>仮想ネットワーク ルールの管理
 ストレージ アカウント用の仮想ネットワーク ルールは、Azure Portal、PowerShell、または CLIv2 を通じて管理できます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure Portal
 1. セキュリティで保護するストレージ アカウントを表示します。  
 2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
@@ -293,13 +293,12 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 
 |サービス|リソース プロバイダー名|目的|
 |:------|:---------------------|:------|
-|Azure DevTest Labs|Microsoft.DevTestLab|カスタム イメージの作成とアーティファクトのインストール  [詳細情報](https://docs.microsoft.com/en-us/azure/devtest-lab/devtest-lab-overview)|
-|Azure Event Grid|Microsoft.EventGrid|Blob Storage イベントの発行を有効にする  [詳細情報](https://docs.microsoft.com/en-us/azure/event-grid/overview)|
-|Azure Event Hubs|Microsoft.EventHub|Event Hubs Capture を使用したアーカイブ データのキャプチャ  [詳細情報](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-capture-overview)|
-|Azure HDInsight|Microsoft.HDInsight|クラスターのプロビジョニングおよびインストール  [詳細情報](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-blob-storage)|
-|Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析  [詳細情報](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-packet-capture-overview)|
-|Azure SQL Data Warehouse|Microsoft.Sql|データのインポートとエクスポート  [詳細情報](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-load#load-from-azure-blob-storage)|
-|Azure Backup|Microsoft.RecoveryServices|非管理対象ディスクのバックアップと復元  [詳細情報](https://docs.microsoft.com/en-us/azure/backup/backup-introduction-to-azure-backup)|
+|Azure DevTest Labs|Microsoft.DevTestLab|カスタム イメージの作成とアーティファクトのインストール  [詳細情報](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)|
+|Azure Event Grid|Microsoft.EventGrid|Blob Storage イベントの発行を有効にする  [詳細情報](https://docs.microsoft.com/azure/event-grid/overview)|
+|Azure Event Hubs|Microsoft.EventHub|Event Hubs Capture を使用したアーカイブ データのキャプチャ  [詳細情報](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
+|Azure HDInsight|Microsoft.HDInsight|クラスターのプロビジョニングおよびインストール  [詳細情報](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage)|
+|Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析  [詳細情報](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)|
+|Azure Backup|Microsoft.RecoveryServices|非管理対象ディスクのバックアップと復元  [詳細情報](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup)|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス
