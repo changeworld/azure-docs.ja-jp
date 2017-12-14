@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Active Directory リスク イベント | Microsoft Docs"
 description: "このトピックでは、リスク イベントの詳細な概要を示します。"
 services: active-directory

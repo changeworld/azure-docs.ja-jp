@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure セキュリティの概要 | Microsoft Docs"
 description: "Azure のセキュリティ、サービス、およびそのしくみについて説明します。"
 services: security
@@ -24,7 +24,7 @@ ms.lasthandoff: 11/22/2017
 ## <a name="overview"></a>概要
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。
 
-Microsoft Azure に実装されている多数のセキュリティ コントロールについて、お客様側と Microsoft 側の運用上の観点からご理解いただくために、このホワイト ペーパー「Azure セキュリティの概要」では、Microsoft Azure で提供されるセキュリティについて総合的に説明します。
+Microsoft Azure に実装されている多数のセキュリティ制御について、お客様側と Microsoft 側の運用上の観点からご理解いただくために、このホワイト ペーパー「Azure セキュリティの概要」では、Microsoft Azure で提供されるセキュリティについて総合的に説明します。
 
 ### <a name="azure-platform"></a>Azure プラットフォーム
 Azure は、オペレーティング システム、プログラミング言語、フレームワーク、ツール、データベース、デバイスにおいて幅広い選択肢をサポートするパブリック クラウド サービス プラットフォームです。 Docker を統合した Linux コンテナーの実行、JavaScript、Python、.NET、PHP、Java、Node.js によるアプリの構築、iOS、Android、Windows の各デバイスに対応したバックエンドの構築を行えます。
@@ -38,7 +38,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 > [!Note]
 > ここでは、アプリケーションやサービスをカスタマイズしてセキュリティを強化できる顧客向けの制御機能に重点を置いています。
 >
-> 概要情報だけでなく Microsoft で Azure プラットフォーム自体のセキュリティを保護する方法の詳細について確認するには、 [Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/default.aspx) を参照してください。
+> 概要情報だけでなく Microsoft で Azure プラットフォーム自体のセキュリティを保護する方法の詳細について確認するには、 [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx) を参照してください。
 
 ### <a name="abstract"></a>要約
 当初、パブリック クラウドの移行は、コストの削減と素早い導入によって決定されていました。 セキュリティは、これまで長い間パブリック クラウドの移行にとって重大な懸念事項であり、致命的な問題でもありました。 しかし、パブリック クラウドのセキュリティはいつしか重大な懸念事項からクラウド移行の原動力へと変化していきました。 この背景には、アプリケーションを保護する大規模なパブリック クラウド サービス プロバイダーの優れた能力と、クラウド ベースの資産データがあります。
@@ -78,7 +78,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 
 さらに、OMS のセキュリティとコンプライアンスを構成して、特定のイベントが検出されたときに[特定のアクションを自動的に実行](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)します。
 
-### <a name="azure-resource-manager"></a>Azure リソース マネージャー
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) を使用すると、ソリューション内の複数のリソースを 1 つのグループにまとめて作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイには [Azure Resource Manager テンプレート](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)を使用します。このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 リソース マネージャーには、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
 Azure Resource Manager のテンプレート ベースのデプロイにより、Azure にデプロイされたソリューションのセキュリティが向上します。これは、標準的なセキュリティ制御設定によるもので、標準化されたテンプレート ベースのデプロイに統合できます。 これにより、手動によるデプロイ時に発生する可能性のあるセキュリティ構成エラーのリスクが軽減されます。
@@ -121,7 +121,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)は、アプリのバックエンドでコードを変更する必要がないように、アプリケーションでユーザーをサインインさせる方法を提供する機能です。 これにより、アプリケーションの保護が容易になり、またユーザーごとのデータにも対応できるようになります。
 
 ### <a name="layered-security-architecture"></a>複数層セキュリティ アーキテクチャ
-[App Service Environments](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) は、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、アプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。 一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。 App Service Environment を含んだ Azure Virtual Network サブネットに対して[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
+[App Service Environment](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-intro) は、[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、アプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。 一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。 App Service Environment を含んだ Azure Virtual Network サブネットに対して[ネットワーク セキュリティ グループ (NSG)](https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/) を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
 
 ### <a name="web-server-diagnostics-and-application-diagnostics"></a>Web サーバー診断とアプリケーション診断
 App Service Web Apps は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。 これらは論理的に [Web サーバー診断](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)と[アプリケーション診断](https://technet.microsoft.com/library/hh530058(v=sc.12).aspx)に分けられます。 Web サーバーでは、サイトおよびアプリケーションの診断とトラブルシューティングに 2 つの大きな進展があります。
@@ -149,7 +149,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 -   パフォーマンス (パフォーマンス イベントを表示)
 
 ## <a name="storage"></a>Storage
-このセクションでは、Azure ストレージのセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
+このセクションでは、Azure Storage のセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。 [組み込み RBAC ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)(ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
@@ -306,12 +306,12 @@ Security Center は、脅威の回避、検出、対応に役立つサービス�
 -   [インターネットに接続するエンドポイント経由のアクセスを制限する](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)。NSG の着信トラフィック規則を構成することをお勧めします。
 
 
-## <a name="compute"></a>計算
+## <a name="compute"></a>コンピューティング
 
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="antimalware--antivirus"></a>マルウェア対策とウイルス対策ソフトウェア
-Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 Azure Cloud Services および Azure Virtual Machines に対する [Microsoft マルウェア対策](https://docs.microsoft.com/azure/security/azure-security-antimalware)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ保護機能です。 Microsoft マルウェア対策は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。 Microsoft マルウェア対策は、Azure Security Center を使用してデプロイすることもできます。
+Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 Azure Cloud Services および Azure Virtual Machines に対する [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ保護機能です。 Microsoft Antimalware は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。 Microsoft Antimalwareは、Azure Security Center を使用してデプロイすることもできます。
 
 ### <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 暗号化と認証は、キー自体が保護されない限り、セキュリティを向上させません。 大切な秘密情報とキーを [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に格納することで、それらの管理とセキュリティ保護をシンプルにできます。 Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。
@@ -342,7 +342,7 @@ SQL Server をオンプレミス コンピューターで実行している場�
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 ### <a name="azure-security-center"></a>Azure Security Center
-セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+Security Center は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 ## <a name="identify-and-access-management"></a>ID 管理とアクセス管理
 
