@@ -22,6 +22,8 @@
       href: storage-quickstart-blobs-java.md
     - name: BLOB の使用 - Python
       href: storage-quickstart-blobs-python.md
+    - name: BLOB の使用 - Ruby
+      href: storage-quickstart-blobs-ruby.md
     - name: BLOB の使用 - Node.js
       href: storage-quickstart-blobs-nodejs.md
     - name: BLOB の使用 - Storage Explorer
@@ -46,6 +48,16 @@
           href: storage-simulate-failure-ragrs-account-app.md
     - name: クラウド ストレージで非構造化データを検索する
       href: storage-unstructured-search.md
+    - name: ストレージ アプリケーションのパフォーマンスとスケーラビリティを最適化する
+      items:
+        - name: VM とストレージ アカウントを作成する
+          href: storage-blob-scalable-app-create-vm.md
+        - name: Azure ストレージ アカウントに大きなデータをアップロードする
+          href: storage-blob-scalable-app-upload-files.md
+        - name: Azure ストレージ アカウントから大きなデータをダウンロードする
+          href: storage-blob-scalable-app-download-files.md
+        - name: スループットと待ち時間のメトリックを検証する
+          href: storage-blob-scalable-app-verify-metrics.md
 - name: サンプル
   items:
     - name: .NET

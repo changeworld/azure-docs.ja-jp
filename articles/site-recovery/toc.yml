@@ -176,8 +176,10 @@
               href: site-recovery-prepare-target-physical-to-azure.md
         - name: VMware から Azure へのレプリケーション設定の構成
           href: site-recovery-setup-replication-settings-vmware.md
-        - name: レプリケーションからディスクを除外する
+        - name: VMware から Azure へのレプリケーションからディスクを除外する
           href: site-recovery-exclude-disk.md
+        - name: Hyper-V から Azure へのレプリケーションからディスクを除外する
+          href: site-recovery-hyper-v-exclude-disk.md
         - name: VMware のレプリケーション用にモビリティ サービスをデプロイする
           href: site-recovery-vmware-to-azure-install-mob-svc.md
           items:

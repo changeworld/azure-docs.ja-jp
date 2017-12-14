@@ -1,0 +1,31 @@
+- name: Microsoft Genomics のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Microsoft Genomics とは
+      href: overview-what-is-genomics.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: サンプル Genomics ワークフローの実行
+      href: quickstart-run-genomics-workflow-portal.md
+    - name: 各種入力ファイル形式の使用
+      items:
+        - name: FASTQ ファイルのペア
+          href: quickstart-input-pair-fastq.md
+        - name: BAM ファイル
+          href: quickstart-input-bam.md
+        - name: 複数の FASTQ ファイルまたは BAM ファイル
+          href: quickstart-input-multiple.md
+- name: リソース
+  items:
+    - name: 一般的な質問
+      href: frequently-asked-questions-genomics.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/genomics/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: サポート オプション
+      href: 'https://azure.microsoft.com/support/options/'

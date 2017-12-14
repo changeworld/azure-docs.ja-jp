@@ -89,6 +89,8 @@
       items:
         - name: アプリケーションのデプロイ
           items:
+            - name: ZIP ファイルのデプロイ
+              href: app-service-deploy-zip.md
             - name: FTP 経由でのデプロイ
               href: app-service-deploy-ftp.md
             - name: クラウドの同期を使用したデプロイ
