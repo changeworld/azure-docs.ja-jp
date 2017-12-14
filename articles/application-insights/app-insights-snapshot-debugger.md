@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 68686e128d7e9528396f338b95f483adf07c3292
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 2f1f9f306d7759cbd1202c985da27a2a3b879ebd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 
@@ -299,6 +299,6 @@ App Service にホストされて_いない_アプリケーションでは、ア
 
 ## <a name="next-steps"></a>次のステップ
 
-* [コードでスナップポイントを設定](https://docs.microsoft.com/en-us/visualstudio/debugger/debug-live-azure-applications)し、例外を待たずにスナップショットを取得します。
+* [コードでスナップポイントを設定](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)し、例外を待たずにスナップショットを取得します。
 * [Web アプリの例外の診断](app-insights-asp-net-exceptions.md)に関する記事では、Application Insights に表示される例外を増やす方法を説明しています。 
 * [スマート検出](app-insights-proactive-diagnostics.md)は、パフォーマンスの異常を自動的に検出します。

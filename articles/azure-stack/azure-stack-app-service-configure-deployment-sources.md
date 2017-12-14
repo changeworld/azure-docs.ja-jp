@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: anwestg
-ms.openlocfilehash: 82b6002557431f87de8fd206b4d7f4a07dec08b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc341d872a3b8943a934217ace21537f45bafd10
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-deployment-sources"></a>デプロイ ソースを構成する
 
@@ -55,7 +55,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 8.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
 9. **[Source control configuration (ソース管理構成)]** をクリックします。
 10. **[Client ID (クライアント ID)]** と**[Client Secret (クライアント シークレット)]** をコピーして、GitHub 用の対応する入力ボックスに貼り付けます。
-11. [ **Save**] をクリックします。
+11. **[Save]** をクリックします。
 
 ## <a name="configure-bitbucket"></a>BitBucket を構成する
 
@@ -72,13 +72,13 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 7. 必要な **[Permissions]\(権限\)** を次のように選択します。
     - **[Repositories]\(リポジトリ\)**: *[Read]\(読み取り\)*
     - **[Webhooks]**: *[Read and write]\(読み取りと書き込み\)*
-8. [ **Save**] をクリックします。  新しいアプリケーションが **[OAuth consumers (OAuth コンシューマー)]**の下に **[Key (キー)]** と **[Secret (シークレット)]** と共に表示されます。
+8. **[Save]** をクリックします。  新しいアプリケーションが **[OAuth consumers (OAuth コンシューマー)]**の下に **[Key (キー)]** と **[Secret (シークレット)]** と共に表示されます。
     ![BitBucket アプリケーション リスト][9]
 9.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。
 10.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
 11. **[Source control configuration (ソース管理構成)]** をクリックします。
 12. **[Key (キー)]**をコピーして BitBucket 用の **[クライアント ID]** 入力ボックスに、**[Secret (シークレット)]** をコピーして BitBucket 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
-13. [ **Save**] をクリックします。
+13. **[Save]** をクリックします。
 
 
 ## <a name="configure-onedrive"></a>OneDrive を構成する
@@ -100,12 +100,12 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
     - **Files.ReadWrite.AppFolder**
     - **User.Read**  
       ![OneDrive アプリケーション - Graph のアクセス許可][13]
-9. [ **Save**] をクリックします。
+9. **[Save]** をクリックします。
 10.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。
 11.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
 12. **[Source control configuration (ソース管理構成)]** をクリックします。
 13. **[アプリケーション ID]** をコピーして OneDrive 用の **[クライアント ID]** 入力ボックスに、**[パスワード]** をコピーして OneDrive 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
-14. [ **Save**] をクリックします。
+14. **[Save]** をクリックします。
 
 ## <a name="configure-dropbox"></a>DropBox を構成する
 
@@ -129,7 +129,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 10.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
 11. **[Source control configuration (ソース管理構成)]** をクリックします。
 12. **[Application Key (アプリケーション キー)]** をコピーして DropBox 用の **[クライアント ID]** 入力ボックスに、**[App secret (アプリ シークレット)]** をコピーして DropBox 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
-13. [ **Save**] をクリックします。
+13. **[Save]** をクリックします。
 
 
 <!--Image references-->
@@ -152,4 +152,4 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 
 ## <a name="next-steps"></a>次のステップ
 
-[継続的配置](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-continuous-deployment)、[ローカルの Git デプロイ](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-deploy-local-git)、[クラウド フォルダーの同期](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-deploy-content-sync)などでデプロイ ソースを使用できるようになりました。
+[継続的配置](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)、[ローカルの Git デプロイ](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-local-git)、[クラウド フォルダーの同期](https://docs.microsoft.com/azure/app-service-web/app-service-deploy-content-sync)などでデプロイ ソースを使用できるようになりました。

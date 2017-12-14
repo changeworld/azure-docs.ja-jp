@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a0a4558da0b308799a153b300b098891e933712b
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: ebfe23ea1e07e7578e8bd352a482ecb1016829de
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services のライフサイクルの概要
 > [!div class="op_single_selector"]
@@ -118,13 +118,13 @@ Service Fabric は、さまざまな理由でステートフル サービスの�
 
 取り消しを適切に処理しないサービスでは、いくつかの問題が発生する可能性があります。 サービスが正常に停止するのを Service Fabric が待機するため、それらの操作の速度が遅くなります。 最終的には、アップグレードがタイムアウトしてロールバックし、アップグレードに失敗することにつながります。 キャンセル トークンに対応しないことにより、クラスターが不均衡になることもあります。 クラスターが不均衡になる原因は、ノードの負荷が高くなってもサービスの移動に時間がかかるためサービスを分散できないためです。 
 
-サービスがステートフルなため、サービスが [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) を使用する可能性も高くなります。 Service Fabric では、プライマリが降格されたときに最初に発生することの 1 つは、基になる状態への書き込みアクセスの取り消しです。 これは、サービスのライフサイクルに影響を与える第 2 の一連の問題につながります。 レプリカが移動中なのかあるいはシャットダウンされているのかと、そのタイミングに基づいて、コレクションが例外を返します。 これらの例外を正しく処理する必要があります。 Service Fabric によってスローされる例外は、永続的なカテゴリ [(`FabricException`)](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) と一時的なカテゴリ [(`FabricTransientException`)](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) に分類されます。 永続的な例外はログに記録してスローするべきですが、一時的な例外は再試行ロジックに基づいて再試行することもできます。
+サービスがステートフルなため、サービスが [Reliable Collection](service-fabric-reliable-services-reliable-collections.md) を使用する可能性も高くなります。 Service Fabric では、プライマリが降格されたときに最初に発生することの 1 つは、基になる状態への書き込みアクセスの取り消しです。 これは、サービスのライフサイクルに影響を与える第 2 の一連の問題につながります。 レプリカが移動中なのかあるいはシャットダウンされているのかと、そのタイミングに基づいて、コレクションが例外を返します。 これらの例外を正しく処理する必要があります。 Service Fabric によってスローされる例外は、永続的なカテゴリ [(`FabricException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) と一時的なカテゴリ [(`FabricTransientException`)](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) に分類されます。 永続的な例外はログに記録してスローするべきですが、一時的な例外は再試行ロジックに基づいて再試行することもできます。
 
 `ReliableCollections` とサービスのライフサイクル イベントを組み合わせて使用した結果の例外を処理することは、Reliable Service のテストと検証の重要な部分です。 運用環境にデプロイする前にアップグレードと[カオス テスト](service-fabric-controlled-chaos.md)を実行するときは、サービスに常に負荷がかかっている状態で行うことをお勧めします。 このような基本の手順を行うことで、サービスが正しく実装され、ライフサイクル イベントを正しく処理できるようになります。
 
 
 ## <a name="notes-on-the-service-lifecycle"></a>サービスのライフサイクルに関するメモ
-  - `RunAsync()` メソッドおよび `CreateServiceReplicaListeners/CreateServiceInstanceListeners` の呼び出しは両方とも省略可能です。 サービスには、これらのいずれかまたは両方を含めることも、どちらも含めないこともできます。 たとえば、サービスがユーザーの呼び出しに応答してすべての処理を実行する場合、`RunAsync()` を実装する必要はありません。 通信リスナーおよびそれに関連付けられたコードのみが必要です。 同様に、サービスにはバックグラウンドの作業しかない場合があり、この場合 `RunAsync()` の実装のみが必要なため、通信リスナーを作成して返す必要はありません。
+  - `RunAsync()` メソッドおよび `CreateServiceReplicaListeners/CreateServiceInstanceListeners` の呼び出しは両方とも省略可能です。 サービスには、これらのいずれかまたは両方を含めることも、どちらも含めないこともできます。 例えば、サービスがユーザーの呼び出しに応答してすべての処理を実行する場合、`RunAsync()` を実装する必要はありません。 通信リスナーおよびそれに関連付けられたコードのみが必要です。 同様に、サービスにはバックグラウンドの作業しかない場合があり、この場合 `RunAsync()` の実装のみが必要なため、通信リスナーを作成して返す必要はありません。
   - サービスは、正常に `RunAsync()` を完了して戻ることができます。 完了は、エラー条件ではありません。 `RunAsync()` の完了は、サービスのバックグラウンド処理が完了したことを示します。 ステートフル リライアブル サービスで、レプリカがプライマリからセカンダリへ一度降格して再度プライマリに昇格した場合、`RunAsync()` が再度呼び出されます。
   - サービスが予期しない例外をスローして `RunAsync()` を終了した場合はエラーです。 サービス オブジェクトがシャットダウンされ、正常性のエラーが報告されます。
   - これらのメソッドから制御が戻るときに時間制限はありませんが、Reliable Collection への書き込みはすぐにできなくなるため、実際の処理を完了できません。 取り消し要求を受信したらできるだけ短時間で制御が戻るようにすることをお勧めします。 サービスが適切な時間内にこれらの API 呼び出しに応答しない場合、Service Fabric はサービスを強制的に終了する場合があります。 通常、これはアプリケーションのアップグレード中か、サービスの削除中のみに発生します。 このタイムアウト時間は既定で 15 分です。

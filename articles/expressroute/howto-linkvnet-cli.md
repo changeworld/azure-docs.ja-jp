@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: anzaman,cherylmc
-ms.openlocfilehash: 0ea696e796ec3a943bc028f56da417978b728b82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa55cbad9fca799faff4e4cef87f9eedb8d2023f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -35,13 +35,13 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
-* 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)」を参照してください。
+* 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認する必要があります。
 * アクティブな ExpressRoute 回線が必要です。 
   * 手順に従って、 [ExpressRoute 回線を作成](howto-circuit-cli.md) し、接続プロバイダー経由で回線を有効にしてください。 
   * 回線用に Azure プライベート ピアリングが構成されていることを確認してください。 ルーティング手順については、 [ルーティングの構成](howto-routing-cli.md) に関する記事を参照してください。 
   * Azure プライベート ピアリングが構成されていることを確認します。 また、エンド ツー エンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを起動しておく必要があります。
-  * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを構成](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)します。 `--gateway-type ExpressRoute` を使用してください。
+  * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを構成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)します。 `--gateway-type ExpressRoute` を使用してください。
 
 * 最大 10 個の仮想ネットワークを標準 ExpressRoute 回線に接続できます。 標準 ExpressRoute 回線を使用する場合は、すべての仮想ネットワークが同じ地理的リージョンに存在する必要があります。 
 

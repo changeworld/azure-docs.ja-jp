@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: samacha
-ms.openlocfilehash: cd8f4e0dd07be8878d6bbb1739fb84a3cc96a186
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f434f1fe600877d1a12174ae84aaa47e878a055
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK v1.x: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 Azure Stream Analytics は、待機時間の短縮、高可用性、クラウド内のデータのストリーミング データに対する拡張性の高い複雑なイベント処理を実現する、十分に管理されたサービスです。 Stream Analytics により、ユーザーはデータ ストリームを分析するためにストリーミングのジョブを設定でき、ほぼリアルタイムで分析を実行できます。  
 
 > [!NOTE]
-> この記事のサンプル コードでは、Azure Stream Analytics 管理用 .NET SDK のレガシ (1.x) バージョンを引き続き使用します。 最新バージョンの SDK を使用するサンプル コードについては、「[管理用 .NET SDK: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk)」を参照してください。
+> この記事のサンプル コードでは、Azure Stream Analytics 管理用 .NET SDK のレガシ (1.x) バージョンを引き続き使用します。 最新バージョンの SDK を使用するサンプル コードについては、「[管理用 .NET SDK: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。

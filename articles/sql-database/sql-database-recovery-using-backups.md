@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Active
 ms.date: 11/20/2017
 ms.author: carlrab
-ms.openlocfilehash: ea762816cf0aa4c5fcafd2010bfc06eb580219fa
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: b23ee0629720676b76de17c81f90b33a4fd4d8a3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 SQL Database は、[自動データベース バックアップ](sql-database-automated-backups.md)および[長期保存でのバックアップ](sql-database-long-term-retention.md)を使用して、データベース復旧のためのこれらのオプションを提供します。 データベース バックアップは、次のものに復元できます。
@@ -70,7 +70,7 @@ SQL Database は、[自動データベース バックアップ](sql-database-au
 
 ## <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
-Azure Portal、[PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用して、既存のデータベースを同じ論理サーバー上の新しいデータベースとして以前の時点に復元できます。 
+Azure Portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用して、既存のデータベースを同じ論理サーバー上の新しいデータベースとして以前の時点に復元できます。 
 
 > [!TIP]
 > データベースのポイントインタイム リストアの実行方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページを参照してください。
@@ -90,7 +90,7 @@ Azure Portal を使用してある時点に復旧するには、データベー�
 ![ポイントインタイム リストア](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
 ## <a name="deleted-database-restore"></a>削除されたデータベースの復元
-Azure Portal、[PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用して、削除されたデータベースを同じ論理サーバー上の削除されたデータベースの削除時刻に復元できます。 
+Azure Portal、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase)、または [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用して、削除されたデータベースを同じ論理サーバー上の削除されたデータベースの削除時刻に復元できます。 
 
 > [!TIP]
 > 削除されたデータベースの復元方法を示すサンプル PowerShell スクリプトについては、[PowerShell を使用した SQL データベースの復元](scripts/sql-database-restore-database-powershell.md)に関するページを参照してください。

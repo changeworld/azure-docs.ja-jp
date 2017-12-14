@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: c2540120bcb1eca9f4ba62c7dbc0675343bf4f99
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: fa672fd7811e68368c311ef6a3f57eac4b240a4a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-and-upload-a-windows-server-vhd-to-azure"></a>Windows Server VHD の作成と Azure へのアップロード
 この記事では、仮想マシンを作成できるように、独自の一般化された VM イメージを仮想ハードディスク (VHD) としてアップロードする方法について説明します。 Microsoft Azure でのディスクと VHD の詳細については、「[Virtual Machines 用のディスクと VHD について](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
@@ -88,7 +88,7 @@ VHD を Azure にアップロードする前に、Sysprep ツールを使用し�
     ```
 
 ## <a name="step-3-upload-the-vhd-file"></a>手順 3: .vhd ファイルをアップロードする
-[Add-AzureVhd](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevhd) を使用して VHD をアップロードします。
+[Add-AzureVhd](https://docs.microsoft.com/powershell/module/azure/add-azurevhd) を使用して VHD をアップロードします。
 
 前の手順で使用した Azure PowerShell ウィンドウから次のコマンドを入力し、角かっこ (&lsaquo;&rsaquo;) 内の変数を実際の情報に置き換えます。
 
@@ -97,7 +97,7 @@ Add-AzureVhd -Destination "https://<StorageAccountName>.blob.core.windows.net/<C
 ```
 
 ## <a name="step-4-add-the-image-to-your-list-of-custom-images"></a>手順 4: カスタム イメージの一覧にイメージを追加する
-[Add-AzureVMImage](https://docs.microsoft.com/en-us/powershell/module/azure/add-azurevmimage) コマンドレットを使用して、カスタム イメージの一覧にイメージを追加します。
+[Add-AzureVMImage](https://docs.microsoft.com/powershell/module/azure/add-azurevmimage) コマンドレットを使用して、カスタム イメージの一覧にイメージを追加します。
 
 ```powershell
 Add-AzureVMImage -ImageName <ImageName> -MediaLocation "https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/<vhdName>.vhd" -OS "Windows"

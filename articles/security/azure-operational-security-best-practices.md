@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ced8ecde1f36c49b479c7b253a90614567783663
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
@@ -156,7 +156,7 @@ Azure では、VNet、ExpressRoute、Application Gateway、ロード バラン�
 Network Watcher を使用すると、仮想マシン (VM) にログインすることなくネットワークの問題を監視して診断できます。 アラートの設定により[パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-alert-triggered-packet-capture)をトリガーし、パフォーマンスに関する情報をパケット レベルでリアルタイムに確認可能です。 問題が起きた場合には、詳細に調査してより適切に診断できます。
 
 ### <a name="gain-insight-into-your-network-traffic-using-flow-logs"></a>フロー ログを使用してネットワーク トラフィックの詳細を把握
-[ネットワーク セキュリティ グループのフロー ログ](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview)により、ネットワーク トラフィックのパターンをより深く把握できます。 フロー ログから得られた情報をもとに、コンプライアンスに関するデータを収集し、ネットワークのセキュリティ プロファイルを監査、監視できます。
+[ネットワーク セキュリティ グループのフロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)により、ネットワーク トラフィックのパターンをより深く把握できます。 フロー ログから得られた情報をもとに、コンプライアンスに関するデータを収集し、ネットワークのセキュリティ プロファイルを監査、監視できます。
 
 ### <a name="diagnose-vpn-connectivity-issues"></a>VPN 接続の問題を診断
 Network Watcher には、[VPN Gateway と接続に関する最も一般的な問題を診断](https://docs.microsoft.com/azure/network-watcher/network-watcher-diagnose-on-premises-connectivity)する機能があります。 問題を特定できるだけでなく、作成された詳細なログを使用した、より深い調査も可能です。

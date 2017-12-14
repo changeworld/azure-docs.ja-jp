@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 3183c61323b1b9ce22b0b64d9021f683b2276d9d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 1e156b2baad0d49c21e852a22d3b149e630b3750
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
-[Azure Managed Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
+[Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
 
 この機能は、個々の仮想マシンの外部でストレージまたはソフトウェアを管理する場合に便利です。 ストレージまたはソフトウェアがデータ ディスク内に既に存在する場合、そのデータ ディスクを所有するユーザーが所有する任意の VM に対して、アタッチ、デタッチ、再アタッチを簡単に行えます。
 
 ## <a name="attach-a-data-disk"></a>データ ディスクの接続
 データ ディスクを VM にアタッチする前に、以下のヒントを確認してください。
 
-- VM のサイズによって、アタッチできるデータ ディスクの数が変わります。 詳細については、「 [仮想マシンのサイズ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes)」を参照してください。
+- VM のサイズによって、アタッチできるデータ ディスクの数が変わります。 詳細については、「 [仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)」を参照してください。
 - データ ディスクをアタッチできるのは、実行中の VM だけです。 データ ディスクのアタッチを試みる前に、VM が実行されていることを確認してください。
 
 ### <a name="attach-a-new-disk"></a>新しいディスクの接続

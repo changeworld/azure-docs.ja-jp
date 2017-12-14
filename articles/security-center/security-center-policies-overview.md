@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 60cc65bb94e05da1c0b7ee20930c0530f46e71ec
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 7a4d056fa71f211dea5e7be649c39034eabc9395
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="security-policies-overview"></a>セキュリティ ポリシーの概要
 この記事では、Security Center のセキュリティ ポリシーの概要を示します。
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/06/2017
 Security Center のポリシーには、次のコンポーネントが含まれています。
 
 - **データ収集**: エージェントのプロビジョニングと[データ収集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)の設定を決定します。
-- **セキュリティ ポリシー**: Security Center がどのコントロールを監視し、推奨するかを決定します。 Security Center.の[セキュリティ ポリシー](https://docs.microsoft.com/en-us/azure/security-center/security-center-policies)を編集できます。 [Azure Policy](security-center-azure-policy.md) を (制限付きのプレビューで) 使用し、新しい定義の作成、追加のポリシーの定義、管理グループ間でのポリシーの割り当てを行うこともできます。
+- **セキュリティ ポリシー**: Security Center がどのコントロールを監視し、推奨するかを決定します。 Security Center.の[セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-policies)を編集できます。 [Azure Policy](security-center-azure-policy.md) を (制限付きのプレビューで) 使用し、新しい定義の作成、追加のポリシーの定義、管理グループ間でのポリシーの割り当てを行うこともできます。
 - **電子メール通知**: セキュリティ連絡先と[電子メール通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)の設定を決定します。
 - **価格レベル**: 無料または標準[価格選択](https://docs.microsoft.com/azure/security-center/security-center-pricing)を定義します。 選択したレベルでは、スコープ内のリソースに使用できる Security Center の機能を決定します。 サブスクリプション、リソース グループ、およびワークスペースのレベルを指定できます。 
 

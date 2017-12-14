@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: 8ff0d38a679b673b148dd808050eda82060cfe80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4aca25f74d3e22911ab5059a8cdec45f189dc8cf
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド ネイティブ アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Service Fabric は、コンテナーで実行するこれらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代プラットフォームの代表例です。
@@ -49,7 +49,7 @@ Service Fabric はどこでも動きます。 Azure、オンプレミス、Windo
 
 ![Service Fabric platform][Image1]
 
-Windows 開発の場合、Service Fabric .NET SDK は、Visual Studio と PowerShell に統合されています。 「[開発環境を準備する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started.md)」を参照してください。 Linux 開発の場合、Service Fabric Java SDK が Eclipse に統合されており、Java、.NET Core、およびコンテナー アプリケーション用のテンプレートを生成する必要はありません 「[Linux で開発環境を準備する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started.md)」を参照してください。
+Windows 開発の場合、Service Fabric .NET SDK は、Visual Studio と PowerShell に統合されています。 「[開発環境を準備する](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started.md)」を参照してください。 Linux 開発の場合、Service Fabric Java SDK が Eclipse に統合されており、Java、.NET Core、およびコンテナー アプリケーション用のテンプレートを生成する必要はありません 「[Linux で開発環境を準備する](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started.md)」を参照してください。
 
 クラスター作成の詳細については、[Windows Server または Linux でのクラスターの作成](service-fabric-deploy-anywhere.md)に関する記事を参照してください。また、Azure でのクラスター作成の詳細については、[Azure Portal を使用したクラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
 

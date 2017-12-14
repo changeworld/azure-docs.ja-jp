@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: yurid
-ms.openlocfilehash: 0e0a0ce5c0795cec0e47cd5f729099f4762381a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d61bf2af5eb7ca5d1da1aac406f4b8fe55c7f75b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -66,7 +66,7 @@ Security Center では、Microsoft Monitoring Agent を使用して、仮想マ�
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>監視エージェントのネットワーク要件のトラブルシューティング
 Security Center に接続して登録するエージェントには、ドメイン URL とポート番号を含むネットワーク リソースへのアクセスが必要です。
 
-- プロキシ サーバーでは、適切なプロキシ サーバーのリソースがエージェントの設定で構成されていることを確認する必要があります。 詳細については、[プロキシ設定を変更する方法](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)に関する記事を参照してください。
+- プロキシ サーバーでは、適切なプロキシ サーバーのリソースがエージェントの設定で構成されていることを確認する必要があります。 詳細については、[プロキシ設定を変更する方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings)に関する記事を参照してください。
 - インターネットへのアクセスを制限するファイアウォールでは、OMS へのアクセスを許可するようにファイアウォールを構成する必要があります。 エージェントの設定で必要な操作はありません。
 
 次の表は、通信で必要なリソースを示しています。

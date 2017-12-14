@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: jgao
-ms.openlocfilehash: c0f89f98c26b80e8b71c58fc89ea7ecebe734f71
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f59083510bab1f8d665444f829cffced98f4fe28
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする
 
@@ -98,15 +98,6 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 ### <a name="hdinsight-version"></a>HDInsight のバージョン
 このクラスターの HDInsight のバージョンを選択します。 詳細については、「[サポートされる HDInsight のバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)」を参照してください。
-
-### <a name="cluster-tiers"></a>クラスター レベル: HDInsight のサービス レベル
-
-Azure HDInsight では、Standard と Premium の 2 つのサービス レベルでビッグ データ クラウド サービスを提供します。  詳細については、「[HDInsight Standard と HDInsight Premium](hdinsight-component-versioning.md#hdinsight-standard-and-hdinsight-premium)」を参照してください。
-
-次のスクリーンショットは、クラスターの種類を選択するための Azure ポータルの情報を示しています。
-
-![HDInsight Premium の構成](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-type-configuration.png)
-
 
 ## <a name="cluster-login-and-ssh-user-name"></a>クラスター ログインと SSH ユーザー名
 HDInsight クラスターでは、クラスターの作成時に次の 2 つのユーザー アカウントを構成できます。

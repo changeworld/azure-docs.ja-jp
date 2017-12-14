@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: 8340ae1231b7f40f739d7bbb63cee1bf0f095ab5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9ea8164d5866662a7ed81672ee1ba776603b193
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence ソリューション評価ツール
 ## <a name="overview"></a>概要
@@ -95,17 +95,17 @@ AppSource に追加するための承認を得る前に、ソリューション�
 
 | 詳細情報 | 参照する記事 |
 | --- | --- |
-| SQL Database と SQL Data Warehouse で使用する AAD | [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) |
-| AAD の構成と管理 | [SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) |
-| Azure WebApps 認証 | [Azure App Service での認証および承認](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-overview) |
-| WebApps を AAD を使用して構成する | [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
+| SQL Database と SQL Data Warehouse で使用する AAD | [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) |
+| AAD の構成と管理 | [SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) |
+| Azure WebApps 認証 | [Azure App Service での認証および承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) |
+| WebApps を AAD を使用して構成する | [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
 
 ### <a name="datasets-accessible-to-end-users-should-support-role-based-access-control"></a>エンドユーザーがアクセスできるデータセットはロールベースのアクセス制御をサポートする必要があります
 評価ツールの実行中に、レポート リソースまたは発行リソースを指定することを求められます。 これらのリソースは、開発者ではなく、エンドユーザーがアクセスすることを前提としています。 エンドユーザーが許可されたデータのみにアクセスできることを保証するために、これらのリソースにはロールベースのアクセス制御 (RBAC) を用意する必要があります。
 
 具体的には、次の Azure リソースは RBAC を使用して構成でき、許容可能であるとみなされます。
-- Secure HDInsight: [ドメイン参加済み HDInsight クラスターでの Hadoop セキュリティの概要](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-domain-joined-introduction)
-- Azure SQL。[AAD 認証と Azure SQL]( https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication)に関するページを参照してください。
+- Secure HDInsight: [ドメイン参加済み HDInsight クラスターでの Hadoop セキュリティの概要](https://docs.microsoft.com/azure/hdinsight/hdinsight-domain-joined-introduction)
+- Azure SQL。[AAD 認証と Azure SQL]( https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)に関するページを参照してください。
 - Azure Analysis Services。「[Manage database roles and users for Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-database-users)」(Azure Analysis Services のデータベース ロールとユーザーの管理) を参照してください
 - Azure SQL Data Warehouse (SQL DW は RBAC をサポートしないため、エンドユーザーによる直接アクセスは推奨されないことに注意してください)。
 
@@ -114,17 +114,17 @@ RBAC をサポートする別のリソースの種類を使用している場合
 ### <a name="azure-data-lake-store-should-use-at-rest-encryption"></a>Azure Data Lake Store では保存データの暗号化を使用する必要があります
 Azure Data Lake Store (ADLS) は、ADLS で管理される暗号化キーを使用した保存データの暗号化を既定でサポートしています。 Azure Key Vault を使用した暗号化を構成することもできます。
 
-ADLS 暗号化設定を指定する方法については、「[Azure Data Lake Store アカウントを作成する](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-portal#create-an-azure-data-lake-store-account)」を参照してください。
+ADLS 暗号化設定を指定する方法については、「[Azure Data Lake Store アカウントを作成する](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal#create-an-azure-data-lake-store-account)」を参照してください。
 
 ### <a name="azure-sql-and-azure-sql-data-warehouse-should-use-encryption"></a>Azure SQL と Azure SQL Data Warehouse では暗号化を使用する必要があります
 Azure SQL と Azure SQL DW はどちらも、データとログ ファイルの両方をリアルタイムで暗号化および復号化する Transparent Data Encryption (TDE) をサポートしています。
 
 | 詳細情報 | 参照する記事 |
 | --- | --- |
-| 透過的なデータ暗号化 (TDE) | [透過的なデータ暗号化](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
-| Azure SQL Data Warehouse と TDE | [SQL Data Warehouse の暗号化 TDE T-SQL](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-encryption-tde-tsql)に関するページ |
-| Azure SQL を TDE を使用するように構成する | [Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) |
-| Azure SQL を Always Encrypted を使用するように構成する | [SQL Database の Always Encrypted と Azure Key Vault](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault) に関するページ|
+| 透過的なデータ暗号化 (TDE) | [透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) |
+| Azure SQL Data Warehouse と TDE | [SQL Data Warehouse の暗号化 TDE T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-encryption-tde-tsql)に関するページ |
+| Azure SQL を TDE を使用するように構成する | [Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) |
+| Azure SQL を Always Encrypted を使用するように構成する | [SQL Database の Always Encrypted と Azure Key Vault](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) に関するページ|
 
 TDE に加え、Azure SQL では、Always Encrypted もサポートしています。これは、保存時とクライアントとサーバー間の移動中だけデータが暗号化されるのではなく、サーバーでのコマンドの実行中にデータが使用されている間も暗号化されることを保証する新しいデータ暗号化テクノロジです。
 
@@ -133,7 +133,7 @@ AppSource 全体で一貫性のあるレベルのセキュリティを提供す�
 
 現在の Azure Marketplace イメージの一覧を検索するには、[Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute) を参照してください。
 
-Azure Marketplace に仮想マシン イメージを公開する方法については、「[Azure Marketplace 向け仮想マシン イメージ作成ガイド](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)」を参照してください。
+Azure Marketplace に仮想マシン イメージを公開する方法については、「[Azure Marketplace 向け仮想マシン イメージ作成ガイド](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)」を参照してください。
 
 ## <a name="scalability-evaluation-considerations"></a>スケーラビリティの評価に関する考慮事項
 ### <a name="cortana-intelligence-solutions-should-include-a-scalable-big-data-platform"></a>Cortana Intelligence ソリューションにはスケーラブルなビッグ データ プラットフォームを含める必要があります
@@ -145,14 +145,14 @@ Cortana Intelligence ソリューションは、非常に大きなデータ サ�
 ### <a name="cortana-intelligence-solutions-should-include-dedicated-ingestion-data-environments"></a>Cortana Intelligence ソリューションには専用の取り込みデータ環境を含める必要があります
 Cortana Intelligence ソリューションは、通常は、リレーショナル データ ソースにデータを直接挿入することは避ける必要があります。 代わりに、構造化されていない環境に生データを格納し、Azure Data Factory を使用して、リレーショナル ストアにべき等挿入/更新を行う必要があります。
 
-Azure Data Factory を使用してデータをコピーする方法の詳細については、「[チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio)」を参照してください。
+Azure Data Factory を使用してデータをコピーする方法の詳細については、「[チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する](https://docs.microsoft.com/azure/data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio)」を参照してください。
 
 ### <a name="azure-sql-data-warehouse-should-use-polybase-for-data-ingestion"></a>Azure SQL Data Warehouse では PolyBase を使用してデータを取り込む必要があります
 Azure SQL DW は、スケーラブルな並列のデータ取り込みを行う PolyBase をサポートしています。 PolyBase によって、Azure Blob Storage または Azure Data Lake Store に格納されている外部データセットに対するクエリを Azure SQL DW で発行することができます。 これは、他の一括更新方法に比べ、優れたパフォーマンスを提供します。
 
-PolyBase と Azure SQL DW の概要については、「[SQL Data Warehouse で PolyBase によってデータを読み込む](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-get-started-load-with-polybase)」を参照してください。
+PolyBase と Azure SQL DW の概要については、「[SQL Data Warehouse で PolyBase によってデータを読み込む](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-load-with-polybase)」を参照してください。
 
-PolyBase と Azure SQL DW のベスト プラクティスについては、「[SQL Data Warehouse で PolyBase を使用するためのガイド](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-load-polybase-guide)」を参照してください。
+PolyBase と Azure SQL DW のベスト プラクティスについては、「[SQL Data Warehouse で PolyBase を使用するためのガイド](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-polybase-guide)」を参照してください。
 
 ## <a name="availability-evaluation-considerations"></a>可用性の評価に関する考慮事項
 
@@ -161,38 +161,38 @@ PolyBase と Azure SQL DW のベスト プラクティスについては、「[S
 
 具体的には、Azure SQL Data Warehouse をエンドユーザーが使用できる唯一のデータ ソースにすべきではありません。 Azure SQL DW をパワー ユーザー向けの リソースとして提供する場合、一般的なユーザーは Azure Analysis Services を利用できるようにする必要があります。
 
-Azure SQL DW の同時実行の制限の詳細については、「[SQL Data Warehouse での同時実行とワークロード管理](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-develop-concurrency)」を参照してください。
+Azure SQL DW の同時実行の制限の詳細については、「[SQL Data Warehouse での同時実行とワークロード管理](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-concurrency)」を参照してください。
 
 Azure Analysis Services の詳細については、「[Azure Analysis Services とは](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview)」を参照してください。
 
 ### <a name="azure-sql-resources-should-have-a-read-only-replica-for-failover"></a>Azure SQL リソースには読み取り専用のフェールオーバー レプリカが必要です
 Azure SQL データベースは、セカンダリ インスタンスへの geo レプリケーションをサポートしています。 このインスタンスをフェールオーバー インスタンスとして使用することで、高可用性アプリケーションを提供できます。
 
-Azure SQL データベースの geo レプリケーションの詳細については、[SQL Database の GEO レプリケーションの概要](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview)に関するページを参照してください。
+Azure SQL データベースの geo レプリケーションの詳細については、[SQL Database の GEO レプリケーションの概要](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)に関するページを参照してください。
 
-Azure SQL の geo レプリケーションを構成する方法の手順については、「[Transact-SQL を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-transact-sql)」を参照してください。
+Azure SQL の geo レプリケーションを構成する方法の手順については、「[Transact-SQL を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-transact-sql)」を参照してください。
 
 ### <a name="azure-sql-data-warehouse-should-have-geo-redundant-backups-enabled"></a>Azure SQL Data Warehouse で地理冗長バックアップが有効になっている必要があります
 Azure SQL DW は、geo 冗長ストレージに対する毎日のバックアップをサポートしています。 この geo レプリケーションによって、プライマリ リージョンに格納されているスナップショットにアクセスできない状況でも、データ ウェアハウスを復元できることが保証されます。 この機能は既定で有効になっており、Cortana Intelligence ソリューションで無効にすべきではありません。
 
-Azure SQL DW のバックアップと復元の詳細については、「[SQL Data Warehouse のバックアップ](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-backups)」を参照してください。
+Azure SQL DW のバックアップと復元の詳細については、「[SQL Data Warehouse のバックアップ](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-backups)」を参照してください。
 
 ### <a name="virtual-machines-should-be-configured-with-availability-sets"></a>仮想マシンは可用性セットを使用して構成する必要があります
 Azure の仮想マシンは、計画されたメンテナンス イベントと計画外のメンテナンス イベントの影響を最小限に抑えるために、可用性セット内に構成する必要があります。
 
-Azure の仮想マシンの可用性の詳細については、「[Azure での Windows 仮想マシンの可用性の管理](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability)」を参照してください。
+Azure の仮想マシンの可用性の詳細については、「[Azure での Windows 仮想マシンの可用性の管理](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)」を参照してください。
 
 ## <a name="other-evaluation-considerations"></a>その他の評価に関する考慮事項
 ### <a name="cortana-intelligence-apps-should-use-a-centralized-tool-for-data-orchestration"></a>Cortana Intelligence アプリはデータのオーケストレーションを行う一元化ツールを使用する必要があります
-データの移行や変換の管理とスケジュール設定を行う単一のツールを使用することで、ミッション クリティカルなデータの一貫性が確保され、 再試行ロジック、依存関係の管理、アラート/ログなどを行うための明確なロジックが用意されます。Azure でのデータのオーケストレーションでは、[Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-introduction) を使用することをお勧めします。
+データの移行や変換の管理とスケジュール設定を行う単一のツールを使用することで、ミッション クリティカルなデータの一貫性が確保され、 再試行ロジック、依存関係の管理、アラート/ログなどを行うための明確なロジックが用意されます。Azure でのデータのオーケストレーションでは、[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-introduction) を使用することをお勧めします。
 
 データのオーケストレーションを行うために Azure Data Factory 以外のツールを使用している場合は、使用しているツールを記述してください。
 ### <a name="azure-machine-learning-models-should-be-retrained-using-azure-data-factory"></a>Azure Machine Learning モデルは Azure Data Factory を使用して再トレーニングする必要があります
 Azure Machine Learning (AzureML) には、予測モデルと機械学習のパイプラインを作成してデプロイするための使いやすいツールが用意されています。 ただし、これらの AzureML モデルの運用デプロイでは、1 つの固定されたデータセットをベースにするのではなく、現実世界の現象の変化に適応できるようにすることが重要です。
 
-AzureML の再トレーニング Web サービスの作成の詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-retrain-models-programmatically)」を参照してください。
+AzureML の再トレーニング Web サービスの作成の詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](https://docs.microsoft.com/azure/machine-learning/machine-learning-retrain-models-programmatically)」を参照してください。
 
-Azure Data Factory を使用したモデルのトレーニング プロセスの自動化の詳細については、「[更新リソース アクティビティを使って Azure Machine Learning モデルを更新する](https://docs.microsoft.com/en-us/azure//data-factory/v1/data-factory-azure-ml-update-resource-activity)」を参照してください。
+Azure Data Factory を使用したモデルのトレーニング プロセスの自動化の詳細については、「[更新リソース アクティビティを使って Azure Machine Learning モデルを更新する](https://docs.microsoft.com/azure//data-factory/v1/data-factory-azure-ml-update-resource-activity)」を参照してください。
 
 ## <a name="existing-documentation"></a>既存のドキュメント
 [Microsoft Azure Certified でクラウド ビジネスを拡大](https://azure.microsoft.com/en-us/marketplace/programs/certified/)

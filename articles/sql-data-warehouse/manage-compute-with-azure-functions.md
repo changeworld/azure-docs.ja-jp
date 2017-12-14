@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 11/06/2017
 ms.author: elbutter
-ms.openlocfilehash: e2138f26a78338406b466bdd2aa6e756e602726d
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 8947da9d34261be46ad9aea961b6020141484172
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-functions-to-automate-sql-dw-compute-levels"></a>Azure Functions を使用して SQL DW のコンピューティング レベルを自動化する
 
 このチュートリアルでは、Azure SQL Data Warehouse のコンピューティング レベルを Azure Functions で管理する方法を紹介しています。 これらのアーキテクチャは、[弾力性に最適化][Performance Tiers]された SQL Data Warehouse での使用をお勧めします。
 
-Azure Function App を SQL Data Warehouse と組み合わせて使用するためには、ご利用のデータ ウェアハウス インスタンスと同じサブスクリプションに、共同作成者のアクセス権を持った[サービス プリンシパル アカウント](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)を作成する必要があります。 
+Azure Function App を SQL Data Warehouse と組み合わせて使用するためには、ご利用のデータ ウェアハウス インスタンスと同じサブスクリプションに、共同作成者のアクセス権を持った[サービス プリンシパル アカウント](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)を作成する必要があります。 
 
 ## <a name="deploy-timer-based-scaler-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してタイマー ベースのスケーラーをデプロイする
 

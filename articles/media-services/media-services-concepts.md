@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: fb21280921f353d2300767059290a1a8fac05e71
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: f7d2fd61dce93e8100ec33f82cd648b77efc1c0f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
@@ -83,7 +83,7 @@ Media Services では、2 種類のロケーターがサポートされていま
 Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 Media Service アカウントに、1 つまたは複数のストレージ アカウントを関連付けることができます。 アカウントに格納できるコンテナーの数は、ストレージ アカウントあたりのコンテナーの合計サイズが 500 TB 未満である限り無制限です。  Media Services が提供する SDK レベルのツールを使用すると、複数のストレージ アカウントを管理すると共に、これらのアカウントへのアップロード中にメトリックまたはランダム配布に基づいて資産の配布を負荷分散できます。 詳細については、「 [Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx)の操作」をご覧ください。 
 
 ## <a name="jobs-and-tasks"></a>ジョブとタスク
-[ジョブ](https://docs.microsoft.com/en-us/rest/api/media/operations/job) は、通常、1 つのオーディオ/ビデオ プレゼンテーションを処理 (インデックス作成やエンコードなど) するために使用されます。 複数のビデオを処理する場合は、エンコードするビデオごとにジョブを作成します。
+[ジョブ](https://docs.microsoft.com/rest/api/media/operations/job) は、通常、1 つのオーディオ/ビデオ プレゼンテーションを処理 (インデックス作成やエンコードなど) するために使用されます。 複数のビデオを処理する場合は、エンコードするビデオごとにジョブを作成します。
 
 ジョブには、実行する処理に関するメタデータが含まれます。 ジョブ内の複数の [タスク](https://docs.microsoft.com/rest/api/media/operations/task)は、1 つのタスクの出力アセットを次のタスクの入力アセットとして指定した場合、連結できます。 ジョブ内の複数のタスクは、1 つのタスクの出力資産を次のタスクの入力資産として指定した場合、連結できます。 この方法では、1 つのジョブにメディア表現に必要なすべての処理を含めることができます。
 

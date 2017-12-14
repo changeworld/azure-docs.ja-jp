@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 358986f58c431aebfe7b41daa8c40ba641dc408a
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e147ca57658c232580fd9867790e55c3454e7e05
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する
 
@@ -139,13 +139,13 @@ Intelligent Insights パフォーマンス ログの最後の部分には、識�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Intelligent Insights パフォーマンス ログは、[Azure Log Analytics]( https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
+Intelligent Insights パフォーマンス ログは、[Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションで使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得
 - [Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)の習得
-- [Azure SQL Analytics を使用した Azure SQL Database の監視](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql)の習得
-- [Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)の習得
+- [Azure SQL Analytics を使用した Azure SQL Database の監視](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)の習得
+- [Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)の習得
 
 
 

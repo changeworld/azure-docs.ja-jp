@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: tamram
-ms.openlocfilehash: f4d3d6a7c6b16ca9c6f1ae7e73b57103a5ae4844
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: cee6ece907950724f6ad4a86c489a5f07dfcaaec
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="develop-for-azure-files-with-python"></a>Python での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/29/2017
 * ファイルのアップロード、ダウンロード、および削除
 
 > [!Note]  
-> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Python I/O クラスと関数を使って Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage Python SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/file-service-rest-api) を使います。
+> Azure Files は SMB 経由でアクセスできるため、ファイル I/O の標準 Python I/O クラスと関数を使って Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage Python SDK を使うアプリケーションを記述する方法を説明します。この SDK は、Azure Files との通信に [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使います。
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Microsoft Azure Storage SDK for Python をダウンロードしてインストールする
 

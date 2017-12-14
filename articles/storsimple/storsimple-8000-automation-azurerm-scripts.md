@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4bb6becd0b664b9287a1973d5221cff46dca57da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f4456200d6f497a87424f12a23034dbff00c75aa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Azure Resource Manager SDK ベースのサンプル スクリプトの表
 
-| Azure Resource Manager スクリプト                    | Description                                                                                                                                                                                                       |
+| Azure Resource Manager スクリプト                    | 説明                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | このスクリプトを使用して、StorSimple デバイスによるサービス データ暗号化キーの変更を承認できます。                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | このスクリプトでは、8010 または 8020 の StorSimple Cloud Appliance を作成します。 クラウド アプライアンスを構成し、StorSimple Data Manager サービスに登録できます。                                                       |
@@ -61,10 +61,10 @@ ms.lasthandoff: 10/11/2017
 開始する前に、次の要件が満たされていることを確認します。
 
 *   Azure PowerShell がインストールされている。 Azure PowerShell モジュールをインストールするには、次の手順を実行します。
-    * Windows 環境では、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)」の手順に従います。 StorSimple の Windows Server ホストに Azure PowerShell をインストールできます (Windows Server ホストを使用している場合)。
-    * Linux または MacOS 環境では、「[macOS および Linux での Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/en-us/powershell/azure/install-azurermps-maclinux?view=azurermps-4.4.0)」の手順に従います。
+    * Windows 環境では、「[Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)」の手順に従います。 StorSimple の Windows Server ホストに Azure PowerShell をインストールできます (Windows Server ホストを使用している場合)。
+    * Linux または MacOS 環境では、「[macOS および Linux での Azure PowerShell のインストールおよび構成](https://docs.microsoft.com/powershell/azure/install-azurermps-maclinux?view=azurermps-4.4.0)」の手順に従います。
 
-Azure PowerShell の使用方法の詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azurermps-4.4.0)」をご覧ください。
+Azure PowerShell の使用方法の詳細については、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.4.0)」をご覧ください。
 
 ### <a name="run-azure-powershell-script"></a>Azure PowerShell スクリプトの実行
 

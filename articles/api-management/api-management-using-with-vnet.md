@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: b3fda4e6f38b0966820cc56d24e52feb07b44d15
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: b37c9d9de171e69e38a4bae58f9fbac99eae2091
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
@@ -99,7 +99,7 @@ API Management サービスを Virtual Network にデプロイするときに発
 * **カスタム DNS サーバーのセットアップ**: API Management サービスは、複数の Azure サービスに依存します。 カスタム DNS サーバーを使用して VNET で API Management をホストする場合、その DNS サーバーはこれらの Azure サービスのホスト名を解決する必要があります。 カスタム DNS のセットアップについては、 [こちらの](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) ガイダンスに従ってください。 下にあるポートの表とその他のネットワーク要件を参照してください。
 
 > [!IMPORTANT]
-> VNET でカスタム DNS サーバーを使用する場合は、API Management サービスをデプロイする**前**にサーバーをセットアップすることをお勧めします。 それ以外の場合、[ネットワーク構成の処理の適用](https://docs.microsoft.com/en-us/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)を実行して DNS サーバー (s) を変更するたびに API Management サービスを更新する必要があります。
+> VNET でカスタム DNS サーバーを使用する場合は、API Management サービスをデプロイする**前**にサーバーをセットアップすることをお勧めします。 それ以外の場合、[ネットワーク構成の処理の適用](https://docs.microsoft.com/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)を実行して DNS サーバー (s) を変更するたびに API Management サービスを更新する必要があります。
 
 * **API Management に必要なポート**: API Management がデプロイされるサブネットへの受信トラフィックと送信トラフィックは[ネットワーク セキュリティ グループ][Network Security Group]を使用して制御できます。 これらのポートのいずれかが利用できない場合、API Management は正しく動作しない可能性があり、アクセス不能になる場合があります。 VNET で API Management を使用した場合の不正な構成に関するその他の一般的な問題として、これらの 1 つまたは複数のポートがブロックされていることが挙げられます。
 
@@ -148,7 +148,7 @@ API Management サービス インスタンスが VNET でホストされてい�
  > [!IMPORTANT]
  > 接続を確認したら、サブネットにデプロイされているすべてのリソースを必ず削除してから、サブネットに API Management をデプロイしてください。
 
-* **増分更新**: ネットワークを変更するときは、[NetworkStatus API](https://docs.microsoft.com/en-us/rest/api/apimanagement/networkstatus) を参照して、API Management サービスが依存している重要なリソースへのアクセスが失われていないことを確認してください。 接続状態は、15 分間隔で更新されます。
+* **増分更新**: ネットワークを変更するときは、[NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus) を参照して、API Management サービスが依存している重要なリソースへのアクセスが失われていないことを確認してください。 接続状態は、15 分間隔で更新されます。
 
 * **リソース ナビゲーション リンク**: Resource Manager スタイルの VNET サブネットにデプロイすると、API Management は、リソース ナビゲーション リンクを作成することでサブネットを予約します。 サブネットに別のプロバイダーのリソースが既に含まれている場合、デプロイは**失敗**します。 同様に、API Management サービスを別のサブネットに 移動するか削除すると、そのリソース ナビゲーション リンクが削除されます。 
 

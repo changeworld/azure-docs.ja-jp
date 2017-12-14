@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 87ab620444df4588cc43a3691cb215006561090d
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7e6590b97470bb00c5967f232e3ae134ce20a347
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -162,16 +162,16 @@ IoT Hub に送信される[デバイスからクラウドへ](#device-to-cloud)�
 対話型メッセージは、ソリューション バックエンドの即時動作をトリガーする[クラウドからデバイスへ](#cloud-to-device)のメッセージです。 たとえば、デバイスは、CRM システムに自動的に記録される必要がある障害に関するアラームを送信できます。
 
 ## <a name="iot-edge"></a>IoT Edge
-Azure IoT Edge は、Azure サービスのクラウド中心のデプロイと、オンプレミスのデバイスに対するソリューション固有のコードを可能にします。 IoT Edge デバイスでは、他のデバイスからデータを集計して、データがクラウドに送信される前にコンピューティングと分析を実行できます。 詳細については、「[Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/)」をご覧ください。
+Azure IoT Edge は、Azure サービスのクラウド中心のデプロイと、オンプレミスのデバイスに対するソリューション固有のコードを可能にします。 IoT Edge デバイスでは、他のデバイスからデータを集計して、データがクラウドに送信される前にコンピューティングと分析を実行できます。 詳細については、「[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/)」をご覧ください。
 
 ## <a name="iot-edge-agent"></a>IoT Edge エージェント
 IoT Edge ランタイムの、モジュールのデプロイと監視を担当する部分です。
 
 ## <a name="iot-edge-device"></a>IoT Edge デバイス
-IoT Edge デバイスには IoT Edge ランタイムがインストールされており、デバイスの詳細で "IoT Edge デバイス" としてフラグが付けられています。 「[Linux のシミュレートされたデバイスに Azure IoT Edge をデプロイする - プレビュー](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux)」をご覧ください。
+IoT Edge デバイスには IoT Edge ランタイムがインストールされており、デバイスの詳細で "IoT Edge デバイス" としてフラグが付けられています。 「[Linux のシミュレートされたデバイスに Azure IoT Edge をデプロイする - プレビュー](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux)」をご覧ください。
 
 ## <a name="iot-edge-deployment"></a>IoT Edge のデプロイ
-IoT Edge のデプロイでは、一連の IoT Edge モジュールを実行する IoT Edge デバイスの対象のセットを構成します。 各デプロイでは、新しいデバイスが作成されたかターゲット条件と一致するよう変更されたときでも、対象の条件と一致するすべてのデバイスが特定のモジュールのセットを実行することが継続的に保証されます。 各 IoT Edge デバイスは、そのターゲット条件を満たす最優先のデプロイのみを受け取ります。 詳細については、[IoT Edge のデプロイ](https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring)に関するページをご覧ください。
+IoT Edge のデプロイでは、一連の IoT Edge モジュールを実行する IoT Edge デバイスの対象のセットを構成します。 各デプロイでは、新しいデバイスが作成されたかターゲット条件と一致するよう変更されたときでも、対象の条件と一致するすべてのデバイスが特定のモジュールのセットを実行することが継続的に保証されます。 各 IoT Edge デバイスは、そのターゲット条件を満たす最優先のデプロイのみを受け取ります。 詳細については、[IoT Edge のデプロイ](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)に関するページをご覧ください。
 
 ## <a name="iot-edge-deployment-manifest"></a>IoT Edge のデプロイ マニフェスト
 一連のモジュール、ルート、関連するモジュールに必要なプロパティをデプロイするために、1 つ以上の IoT Edge デバイスのモジュール ツインにコピーされる情報を含んだ Json ドキュメントです。
@@ -186,7 +186,7 @@ IoT Edge ランタイムの、モジュール間通信、(IoT Hub への) アッ
 ダウンストリーム デバイスを備えない IoT Edge デバイスです。 
 
 ## <a name="iot-edge-module"></a>IoT Edge モジュール
-IoT Edge モジュールは、IoT Edge デバイスにデプロイできる Docker コンテナーです。 デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信など、特定のタスクを実行します。 他のモジュールと通信し、IoT Edge ランタイムにデータを送信します。 「[IoT Edge モジュールを開発するための要件と ツールについて理解する - プレビュー](https://docs.microsoft.com/en-us/azure/iot-edge/module-development)」をご覧ください。
+IoT Edge モジュールは、IoT Edge デバイスにデプロイできる Docker コンテナーです。 デバイスからのメッセージの取り込み、メッセージの変換、IoT Hub へのメッセージの送信など、特定のタスクを実行します。 他のモジュールと通信し、IoT Edge ランタイムにデータを送信します。 「[IoT Edge モジュールを開発するための要件と ツールについて理解する - プレビュー](https://docs.microsoft.com/azure/iot-edge/module-development)」をご覧ください。
 
 ## <a name="iot-edge-module-identity"></a>IoT Edge モジュール ID
 Edge ハブか IoT Hub で認証するためにモジュールに使用される存在とセキュリティ資格情報が記載された、IoT Hub モジュール ID レジストリ内のレコードです。
@@ -241,7 +241,7 @@ IoT Hub の[操作の監視](iot-hub-operations-monitoring.md)では、IoT Hub �
 IoT Hub 上のデバイス向け、またはサービス向けエンドポイントに接続する場合、[接続文字列](#connection-string)には、アクセスを許可するためのキーが含まれます。 デバイスを [ID レジストリ](#identity-registry)に追加するか、[共有アクセス ポリシー](#shared-access-policy)をハブに追加すると、サービスによって主キーと 2 次キーが生成されます。 2 つのキーがあることにより、キーの更新時に、IoT Hub へのアクセスを失うことなく、1 つのキーから別のキーにロール オーバーできます。
 
 ## <a name="priority"></a>優先順位
-2 つの IoT Edge のデプロイが同じデバイスを対象にしている場合は、優先度の高いデプロイが適用されます。 2 つのデプロイの優先順位が同じだった場合は、作成日が新しいデプロイが適用されます。 [優先順位](#https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring#priority)について詳しくご覧ください。
+2 つの IoT Edge のデプロイが同じデバイスを対象にしている場合は、優先度の高いデプロイが適用されます。 2 つのデプロイの優先順位が同じだった場合は、作成日が新しいデプロイが適用されます。 [優先順位](#https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority)について詳しくご覧ください。
 
 ## <a name="protocol-gateway"></a>プロトコル ゲートウェイ
 プロトコル ゲートウェイは、通常はクラウドに展開され、[IoT Hub](#iot-hub) に接続するデバイスに対してプロトコル変換サービスを提供します。 詳細については、「[Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)」を参照してください。
@@ -289,7 +289,7 @@ Azure サブスクリプションでは、課金が発生します。 作成す�
 [デバイス ツイン](iot-hub-devguide-device-twins.md)においては、タグは、ソリューション バックエンドによって JSON ドキュメントの形式で保存および取得されるデバイスのメタデータです。 タグは、デバイス上のアプリが認識することはありません。
 
 ## <a name="target-condition"></a>対象の条件
-IoT Edge のデプロイにおけるターゲット条件は、デプロイの対象となるデバイスを選択するための、デバイス ツインのタグに関するブール条件です。例: "tag.environment = prod"。 ターゲット条件は、要求を満たす新しいデバイスを含めたり、要求を満たさなくなったデバイスを削除したりするために、継続的に評価されます。 [ターゲット条件](https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring#target-condition)について詳しくご覧ください。
+IoT Edge のデプロイにおけるターゲット条件は、デプロイの対象となるデバイスを選択するための、デバイス ツインのタグに関するブール条件です。例: "tag.environment = prod"。 ターゲット条件は、要求を満たす新しいデバイスを含めたり、要求を満たさなくなったデバイスを削除したりするために、継続的に評価されます。 [ターゲット条件](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)について詳しくご覧ください。
 
 ## <a name="telemetry"></a>テレメトリ
 デバイスは風速や温度などのテレメトリ データを収集し、[データ ポイント メッセージ](#data-point-messages)を使用して IoT Hub にテレメトリを送信します。

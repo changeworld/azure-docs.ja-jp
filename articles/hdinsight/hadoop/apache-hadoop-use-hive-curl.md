@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: larryfr
-ms.openlocfilehash: 07386c2fbb5fe4ce4fe1ca6844f6308cf59cbfb4
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: b05dbdcec3cfb5c78115061567bb6229623cd0ff
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>REST を使用した HDInsight における Hadoop での Hive クエリの実行
 
@@ -122,7 +122,7 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 
 4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、**/example/curl** です。 このアドレスは、クラスターの既定ストレージに **example/curl** ディレクトリの出力を格納します。
 
-    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)を使用します。 Azure Storage で Azure CLI を使用する際の詳細については、[Azure Storage で Azure CLI 2.0 を使用する](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli#create-and-manage-blobs)を参照してください。
+    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure Storage で Azure CLI を使用する際の詳細については、[Azure Storage で Azure CLI 2.0 を使用する](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs)を参照してください。
 
 5. 次のステートメントを使用して、 **errorLogs**という名前の新しい "内部" テーブルを作成します。
 

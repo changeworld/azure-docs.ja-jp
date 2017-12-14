@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 9f201454d58dbc646923d0155ff41761d593ab7e
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 2e377ef96f6c2b5866ad258a88d6403fd0bb1e41
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -318,7 +318,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_id_d|クエリ ストアでのクエリの ID。|
 |plan_id_d|クエリ ストアでのプランの ID。|
 
-[クエリ ストアのランタイム統計データ](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)の詳細。
+[クエリ ストアのランタイム統計データ](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql)の詳細。
 
 ### <a name="query-store-wait-statistics"></a>クエリ ストアの待機統計
 
@@ -356,7 +356,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_id_d|クエリ ストアでのクエリの ID。|
 |plan_id_d|クエリ ストアでのプランの ID。|
 
-[クエリ ストアの待機統計データ](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)の詳細。
+[クエリ ストアの待機統計データ](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)の詳細。
 
 ### <a name="errors-dataset"></a>エラー データセット
 
@@ -414,7 +414,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |delta_wait_time_ms_d|期間内の合計待機時間。|
 |delta_waiting_tasks_count_d|待機中のタスク数。|
 
-[データベース待機統計](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)の詳細。
+[データベース待機統計](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql)の詳細。
 
 ### <a name="time-outs-dataset"></a>タイムアウトのデータセット
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: devtiw
-ms.openlocfilehash: c7734b8e02b6a2f08f5fc6ebe4b2ec43e34b35c3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 618e5e6d159a8f0d4610d6d652c21e121a93a5e0
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 
@@ -36,7 +36,7 @@ Linux オペレーティング システム (OS) ディスクの暗号化には�
 - OS ディスクが Logical Volume Manager (LVM) スキームを使用している。 一部の LVM データ ディスクはサポートされていますが、LVM OS ディスクはサポートされていません。
 - 最小メモリ要件が満たされていない (OS ディスクの暗号化には 7 GB を推奨)。
 - データ ドライブは、/mnt/ ディレクトリ下に、または相互に再帰的にマウントされます (例: /mnt/data1、/mnt/data2、/data3 + /data3/data4)。
-- Linux 用のその他の Azure Disk Encryption の[前提条件](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)が満たされていない。
+- Linux 用のその他の Azure Disk Encryption の[前提条件](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)が満たされていない。
 
 ## <a name="unable-to-encrypt"></a>暗号化できない
 

@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d29889a4c972638f5d127e9c518aa85fbc19d861
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Azure Media Clipper からのクリッピング ジョブの送信
 Azure Media Clipper には、クリッピング ジョブの送信を処理するために実装された **submitSubclipCallback** メソッドが必要です。 この関数は、Clipper 出力の Web サービスへの HTTP POST を実装するためのものです。 この Web サービスで、エンコード ジョブを送信できます。 Clipper の出力は、レンダリング ジョブでの Media Encoder Standard エンコーディング プリセット、または動的マニフェスト フィルター呼び出しでの REST API ペイロードのいずれかになります。 メディア サービス アカウントの資格情報が、クライアントのブラウザーでは安全でないために、このパススルー モデルが必要となります。
@@ -151,7 +151,7 @@ Media Encoder Standard エンコード ジョブを送信して、正確なフ�
 }
 ```
 
-エンコード ジョブを実行するには、Media Encoder Standard エンコード ジョブと共に関連付けられたプリセットを送信します。 エンコード ジョブの送信について詳しくは、[.NET SDK の記事](https://docs.microsoft.com/en-us/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard)または [REST API の記事](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-encode-asset)をご覧ください。
+エンコード ジョブを実行するには、Media Encoder Standard エンコード ジョブと共に関連付けられたプリセットを送信します。 エンコード ジョブの送信について詳しくは、[.NET SDK の記事](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard)または [REST API の記事](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset)をご覧ください。
 
 ## <a name="quickly-creating-video-clips-without-encoding"></a>エンコードを使わないビデオ クリップの簡易作成
 エンコード ジョブを作成する代わりに、Azure Media Clipper を使って動的なマニフェスト フィルターを作成できます。 フィルターは、エンコードを必要とせず、新しい資産が作成されないので簡単に作成できます。 フィルター クリッピングの出力コントラクトは、次のプロパティを持つ JSON オブジェクトです。
@@ -227,4 +227,4 @@ Media Encoder Standard エンコード ジョブを送信して、正確なフ�
 }
 ```
 
-REST 呼び出しを送信して動的マニフェスト フィルターを作成するには、[REST API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-dynamic-manifest) を使って関連付けられたフィルター ペイロードを送信します。
+REST 呼び出しを送信して動的マニフェスト フィルターを作成するには、[REST API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest) を使って関連付けられたフィルター ペイロードを送信します。

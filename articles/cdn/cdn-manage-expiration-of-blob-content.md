@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: 694d0c27b26c1ed9f6a1a54f766d024d882b5b64
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 6f82ae396a17f903a522c716f73a5f7d2de660e7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Azure Content Delivery Network で Azure Blob Storage の有効期限を管理する
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Azure Storage の [Blob Storage サービス](../storage/common/storage-introduc
 > 
 > その他のファイルと BLOB へのアクセスを高速化する Azure CDN のしくみについて詳しくは、「[Azure Content Delivery Network (CDN) の概要](cdn-overview.md)」をご覧ください。
 > 
-> Azure Blob Storage について詳しくは、「[Blob Storage の概要](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)」をご覧ください。
+> Azure Blob Storage について詳しくは、「[Blob Storage の概要](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)」をご覧ください。
  
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Azure PowerShell を使った Cache-Control ヘッダーの設定
@@ -113,7 +113,7 @@ Azure Storage Explorer で BLOB の *CacheControl* プロパティを更新す�
 ![Azure Storage Explorer のプロパティ](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure コマンド ライン インターフェイス
-[Azure コマンド ライン インターフェイス](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) (CLI) では、コマンド ラインから Azure BLOB リソースを管理することができます。 Azure CLI で BLOB をアップロードするときにキャッシュ制御ヘッダーを設定するには、`-p` スイッチを使って *cacheControl* プロパティを設定します。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
+[Azure コマンド ライン インターフェイス](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) (CLI) では、コマンド ラインから Azure BLOB リソースを管理することができます。 Azure CLI で BLOB をアップロードするときにキャッシュ制御ヘッダーを設定するには、`-p` スイッチを使って *cacheControl* プロパティを設定します。 次の例では、TTL を 1 時間 (3,600 秒) に設定する方法を示します。
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\test.txt myContainer test.txt

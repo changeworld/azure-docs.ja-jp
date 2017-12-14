@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 3284f9f9c3cef27cba599238f06b0dcf0f35de78
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 612b8d2c36e9b46e99452e78d1b30fda03474151
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/20/2017
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET Core と .NET Core アプリケーション
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>ソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに保存する
-クイック プロトタイプを実行しているか、インターネットにアクセスできない場合は、まずソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに移動します。 User Secret ストアは、ユーザー プロファイラー フォルダーの下に保存されているファイルです。そのため、シークレットはソース管理にチェックインされません。 次の図では、[User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) がどのように機能するかを示します。
+クイック プロトタイプを実行しているか、インターネットにアクセスできない場合は、まずソース管理フォルダーの外部にあるシークレット設定を User Secret ストアに移動します。 User Secret ストアは、ユーザー プロファイラー フォルダーの下に保存されているファイルです。そのため、シークレットはソース管理にチェックインされません。 次の図では、[User Secret](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) がどのように機能するかを示します。
 
 ![User Secret ではシークレット設定はソース管理の外部に保持される](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/20/2017
 
     ![Azure Key Vault を作成する](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. 自分とチーム メンバーに Key Vault へのアクセス権を付与します。 チームが大規模な場合は、[Azure Active Directory グループ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-groups-create-azure-portal)を作成し、そのセキュリティ グループに Key Vault へのアクセス権を追加します。 *[シークレットのアクセス許可]* ボックスで、*[シークレットの管理操作]* の下の *[取得]* と *[リスト]* を選択します。
+2. 自分とチーム メンバーに Key Vault へのアクセス権を付与します。 チームが大規模な場合は、[Azure Active Directory グループ](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal)を作成し、そのセキュリティ グループに Key Vault へのアクセス権を追加します。 *[シークレットのアクセス許可]* ボックスで、*[シークレットの管理操作]* の下の *[取得]* と *[リスト]* を選択します。
 
     ![Key Vault アクセス ポリシーを追加する](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 

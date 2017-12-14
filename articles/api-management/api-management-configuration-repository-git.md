@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 87fb2b49ef6680d3d7a46f378aedf99936fb580c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0abf2635e08bfc3113e9dec1947b9bb162cd3952
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 > 
@@ -159,7 +159,7 @@ git push
 
 ![デプロイ][api-management-configuration-deploy]
 
-REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://docs.microsoft.com/en-us/rest/api/apimanagement/tenantconfiguration)」を参照してください。
+REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration)」を参照してください。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス
 ローカル Git リポジトリのファイルとフォルダーには、サービス インスタンスに関する構成情報が含まれています。

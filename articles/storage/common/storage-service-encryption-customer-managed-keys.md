@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: lakasa
-ms.openlocfilehash: 6d1e6752fb631114f5be06cb27a63e40547bf6ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a05a0d28899cc3db11f8fda8aec5bd6ed9bd5f8
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する
 
@@ -50,7 +50,7 @@ SSE には Microsoft が管理する暗号化キーのほか、ユーザー独�
 ![暗号化オプションが表示されたポータルのスクリーンショット](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
 <br/>*Blob service の SSE を有効にする*
 
-ストレージ アカウントの Storage Service Encryption をプログラムを使用して有効または無効にする場合は、[Azure Storage Resource Provider REST API](https://docs.microsoft.com/en-us/rest/api/storagerp/?redirectedfrom=MSDN)、[.NET 用 Storage Resource Provider クライアント ライブラリ](https://docs.microsoft.com/en-us/dotnet/api/?redirectedfrom=MSDN)、[Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.0.0)、または [Azure CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli) を使用します。
+ストレージ アカウントの Storage Service Encryption をプログラムを使用して有効または無効にする場合は、[Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)、[.NET 用 Storage Resource Provider クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/?redirectedfrom=MSDN)、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.0.0)、または [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli) を使用します。
 
 この画面で、[独自のキーを使用する] チェック ボックスが表示されない場合、プレビューの使用がまだ承認されていません。 [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com) 宛てに電子メールで承認依頼を送信してください。
 
@@ -71,10 +71,10 @@ SSE には Microsoft が管理する暗号化キーのほか、ユーザー独�
 アクセス権の付与は、Azure Portal で行うこともできます。Azure Portal の [Azure Key Vault] に移動して、ストレージ アカウントにアクセス権を付与します。
 
 ## <a name="step-4-copy-data-to-storage-account"></a>手順 4: ストレージ アカウントにデータをコピーする
-新しいストレージ アカウントにデータを暗号化した状態で転送する方法については、[「torage Service Encryption for Data at Rest (保存データに対する Storage Service Encryption)」の「Getting Started (概要)」の手順 3](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account) をご覧ください。
+新しいストレージ アカウントにデータを暗号化した状態で転送する方法については、[「torage Service Encryption for Data at Rest (保存データに対する Storage Service Encryption)」の「Getting Started (概要)」の手順 3](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account) をご覧ください。
 
 ## <a name="step-5-query-the-status-of-the-encrypted-data"></a>手順 5: 暗号化データの状態を照会する
-暗号化データの状態を照会する方法については、[「torage Service Encryption for Data at Rest (保存データに対する Storage Service Encryption)」の「Getting Started (概要)」の手順 4](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data) をご覧ください。
+暗号化データの状態を照会する方法については、[「torage Service Encryption for Data at Rest (保存データに対する Storage Service Encryption)」の「Getting Started (概要)」の手順 4](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data) をご覧ください。
 
 ## <a name="frequently-asked-questions-about-storage-service-encryption-for-data-at-rest"></a>Storage Service Encryption for Data at Rest に関してよく寄せられる質問
 **Q: Premium Storage を使用しています。ユーザーが管理するキーで SSE を使うことはできますか。**
@@ -91,7 +91,7 @@ A: Azure Key Vault の使用に関連した料金が発生します。 詳細に
 
 **Q: 暗号化キーへのアクセスを取り消すことはできますか?**
 
-A: はい。いつでもアクセスを取り消すことができます。 キーへのアクセスは、いくつかの方法で取り消すことができます。 詳細については、[Azure Key Vault PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) に関するページと [Azure Key Vault CLI](https://docs.microsoft.com/en-us/cli/azure/keyvault) に関するページを参照してください。 アクセスを取り消すと、Azure Storage がアカウント暗号化キーにアクセスできなくなるため、ストレージ アカウント内の全 BLOB へのアクセスが事実上ブロックされます。
+A: はい。いつでもアクセスを取り消すことができます。 キーへのアクセスは、いくつかの方法で取り消すことができます。 詳細については、[Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) に関するページと [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault) に関するページを参照してください。 アクセスを取り消すと、Azure Storage がアカウント暗号化キーにアクセスできなくなるため、ストレージ アカウント内の全 BLOB へのアクセスが事実上ブロックされます。
 
 **Q: ストレージ アカウントとキーを別々のリージョンに作成してもかまいませんか。**
 
@@ -123,6 +123,6 @@ A: Storage Service Encryption に関する問題は、 [ssediscussions@microsoft
 
 ## <a name="next-steps"></a>次のステップ
 
-*   安全なアプリケーション開発を支援する包括的なセキュリティ機能の詳細については、[Storage セキュリティ ガイド](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide)に関するページをご覧ください。
-*   Azure Key Vault の概要については、「[Azure Key Vault とは](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis)」を参照してください。
+*   安全なアプリケーション開発を支援する包括的なセキュリティ機能の詳細については、[Storage セキュリティ ガイド](https://docs.microsoft.com/azure/storage/storage-security-guide)に関するページをご覧ください。
+*   Azure Key Vault の概要については、「[Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)」を参照してください。
 *   Azure Key Vault の概要については、[Azure Key Vault の概要](../../key-vault/key-vault-get-started.md)に関するページを参照してください。

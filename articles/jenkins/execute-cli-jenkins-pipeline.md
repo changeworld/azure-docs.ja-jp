@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: b93e787050613b241ea116e7263f63835bd211fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 490112417870fb3bfdb75abdb82f9adfff550f0a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)で Azure CLI を使用します。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -56,7 +56,7 @@ sudo apt-get install -y maven
 Azure CLI を実行するには、Azure の資格情報が必要です。
 
 * Jenkins ダッシュボードで、**[資格情報] -> [システム] ->** の順にクリックします。 **[Global credentials(unrestricted)]\(グローバル資格情報 (制限なし)\)** をクリックします。
-* **[資格情報の追加]** をクリックして、サブスクリプション ID、クライアント ID、クライアント シークレット、OAuth 2.0 トークン エンドポイントなどの値を入力し、[Microsoft Azure サービス プリンシパル](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)を追加します。 後の手順で使用する ID を指定します。
+* **[資格情報の追加]** をクリックして、サブスクリプション ID、クライアント ID、クライアント シークレット、OAuth 2.0 トークン エンドポイントなどの値を入力し、[Microsoft Azure サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)を追加します。 後の手順で使用する ID を指定します。
 
 ![資格情報の追加](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
@@ -135,7 +135,7 @@ az webapp config set \
 ```
 
 ## <a name="prepare-a-github-repository"></a>GitHub レポジトリを準備する
-[Azure 用のシンプルな Java Web アプリ](https://github.com/azure-devops/javawebappsample) レポジトリを開きます。 自身の GitHub アカウントにレポジトリをフォークするには､右上隅の [**Fork**] ボタンをクリックします｡
+[Azure 用のシンプルな Java Web アプリ](https://github.com/azure-devops/javawebappsample) レポジトリを開きます。 自身の GitHub アカウントにレポジトリをフォークするには､右上隅の **[Fork]** ボタンをクリックします｡
 
 * GitHub Web UI で、**Jenkinsfile** ファイルを開きます。 鉛筆アイコンをクリックしてこのファイルを編集します。20 行目と 21 行目にある、リソース グループと Web アプリの名前をそれぞれ更新します。
 

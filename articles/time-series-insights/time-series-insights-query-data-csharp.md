@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 77d3135790bbfd79679d188e3b3f1af876d2b905
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 40f282d2deb2ed9739929ed674fcb711a5d3f7bd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境からデータを照会する
 
@@ -49,7 +49,7 @@ namespace TimeSeriesInsightsQuerySample
         // For automated execution under application identity,
         // use application created in Active Directory.
         // To create the application in AAD, follow the steps provided here:
-        // https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization
+        // https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization
 
         // SET the application ID of application registered in your Azure Active Directory
         private static string ApplicationClientId = "#DUMMY#";
@@ -217,7 +217,7 @@ namespace TimeSeriesInsightsQuerySample
             if (ApplicationClientId == "#DUMMY#" || ApplicationClientSecret == "#DUMMY#" || Tenant.StartsWith("#DUMMY#"))
             {
                 throw new Exception(
-                    $"Use the link {"https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
+                    $"Use the link {"https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization"} to update the values of 'ApplicationClientId', 'ApplicationClientSecret' and 'Tenant'.");
             }
 
             var authenticationContext = new AuthenticationContext(

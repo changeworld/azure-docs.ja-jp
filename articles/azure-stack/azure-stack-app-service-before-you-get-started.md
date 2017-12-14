@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 17967131853d4334ae2c0ba3c0aa01089b7f3b61
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: d6962bf2ffbf731a4aa301e663c7c7d3428080d4
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -250,7 +250,7 @@ Azure App Service on Azure Stack のホスティング データベースと測�
 
 Azure Stack Development Kit で使用する場合は、SQL Express 2014 SP2 以降を使用できます。
 
-運用と高可用性のためには、SQL 2014 SP2 以降の完全バージョンを使用し、混合モード認証を有効にして、[高可用性構成](https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)でデプロイを行う必要があります。
+運用と高可用性のためには、SQL 2014 SP2 以降の完全バージョンを使用し、混合モード認証を有効にして、[高可用性構成](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)でデプロイを行う必要があります。
 
 Azure App Service on Azure Stack SQL Server は、すべての App Service ロールからアクセスできる必要があります。 SQL Server は、Azure Stack の既定のプロバイダー サブスクリプション内でデプロイできます。 あるいは、組織内の既存のインフラストラクチャーを利用できます (Azure Stack に接続されている場合)。 Azure Marketplace イメージを使用している場合は、適宜ファイアウォールを構成してください。 
 

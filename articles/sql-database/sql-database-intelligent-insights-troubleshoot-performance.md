@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 85da2a521af0ca92c07d8b2041e92b98f98e9661
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cce112929ff2f4fb48c2c6e2ddc2d4eee743b790
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
@@ -52,7 +52,7 @@ Intelligent Insights は、クエリ実行の待機時間、エラー、また�
 | [価格レベルのダウングレード](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | 価格レベルのダウングレード アクションによって使用可能なリソースが減少し、SQL Database のパフォーマンスに影響を与えています。 |
 
 > [!TIP]
-> SQL Database のパフォーマンスを継続的に最適化するには、[Azure SQL Database の自動チューニング](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning)を有効にします。 この SQL Database に組み込まれているインテリジェンスの固有機能は、SQL データベースを継続的に監視し、インデックスを自動的に調整して、クエリ実行プランの修正を適用します。
+> SQL Database のパフォーマンスを継続的に最適化するには、[Azure SQL Database の自動チューニング](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning)を有効にします。 この SQL Database に組み込まれているインテリジェンスの固有機能は、SQL データベースを継続的に監視し、インデックスを自動的に調整して、クエリ実行プランの修正を適用します。
 >
 
 次のセクションでは、上記の検出可能なパフォーマンス パターンについてさらに詳しく説明します。
@@ -63,7 +63,7 @@ Intelligent Insights は、クエリ実行の待機時間、エラー、また�
 
 この検出可能なパフォーマンス パターンは、使用可能なリソースの上限、worker の上限、およびセッションの上限への到達に関連するパフォーマンスの問題を組み合わせたものです。 このパフォーマンスの問題が検出されると、診断ログの説明フィールドに、パフォーマンスの問題がリソース、worker、セッションの上限のいずれに関連しているかが示されます。
 
-SQL Database 上のリソースは、通常、[DTU リソース](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-what-is-a-dtu)と呼ばれます。 CPU リソースと I/O (データおよびトランザクション ログの I/O) リソースを組み合わせた指標で構成されます。 リソースの上限への到達パターンが認識されるのは、検出されたクエリ パフォーマンスの低下が、測定されるリソース上限のいずれかに到達したことによって生じている場合です。
+SQL Database 上のリソースは、通常、[DTU リソース](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu)と呼ばれます。 CPU リソースと I/O (データおよびトランザクション ログの I/O) リソースを組み合わせた指標で構成されます。 リソースの上限への到達パターンが認識されるのは、検出されたクエリ パフォーマンスの低下が、測定されるリソース上限のいずれかに到達したことによって生じている場合です。
 
 セッション上限のリソースは、SQL データベースに同時にログインできる数を示します。 このパフォーマンス パターンは、SQL データベースに接続しているアプリケーションが、データベースに同時にログインできる数に到達した場合に認識されます。 データベースで利用できる数よりも多くのセッションをアプリケーションが使用しようとすると、クエリのパフォーマンスが影響を受けます。
 
@@ -75,7 +75,7 @@ SQL Database 上のリソースは、通常、[DTU リソース](https://docs.mi
 
 使用可能なセッションの上限に到達した場合は、データベースへのログイン数を減らすことで、アプリケーションを最適化できます。 アプリケーションからデータベースへのログイン数を減らすことができない場合は、データベースの価格レベルを上げることを検討します。 または、データベースを分割して複数のデータベースに移動させ、より均等にワークロードを分散させることができます。
 
-セッションの上限に対応するためのその他の推奨事項については、「[How to deal with the limits of Azure SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)」(Azure SQL Database の最大ログイン数の上限に対応する方法) をご覧ください。 サブスクリプション レベルで使用可能なリソースの制限を確認するには、「[Azure SQL Database のリソース制限](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-resource-limits)」をご覧ください。
+セッションの上限に対応するためのその他の推奨事項については、「[How to deal with the limits of Azure SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)」(Azure SQL Database の最大ログイン数の上限に対応する方法) をご覧ください。 サブスクリプション レベルで使用可能なリソースの制限を確認するには、「[Azure SQL Database のリソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits)」をご覧ください。
 
 ## <a name="workload-increase"></a>ワークロードの増加
 
@@ -145,7 +145,7 @@ SQL エンジンで実行されたトランザクションが、使用がロッ�
 
 診断ログには、必要以上に並列処理されているために実行時間が増加しているクエリに関連するクエリ ハッシュが出力されます。 また、CXP 待機時間も出力されます。 この時間は、1 つのオーガナイザーまたはコーディネーター スレッド (thread 0) が、結果をマージして先に進む前に、他のすべてのスレッドが終了するのを待機している時間を表します。 さらに、診断ログには、パフォーマンスの低いクエリが実行で待機していた全体の待機時間も出力されます。 トラブルシューティングのための基準としてこの情報を使うことができます。
 
-最初に、複雑なクエリを最適化または単純化します。 長いバッチ ジョブを細かく分割することをお勧めします。 さらに、クエリをサポートするためのインデックスを作成したことを確認します。 また、パフォーマンスが低いことを示すフラグが設定されたクエリに対しては、最大限の並列化 (MAXDOP) を手動で強制することもできます。 T-SQL を使ってこの操作を構成する方法については、「[max degree of parallelism サーバー構成オプションの構成](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)」をご覧ください。
+最初に、複雑なクエリを最適化または単純化します。 長いバッチ ジョブを細かく分割することをお勧めします。 さらに、クエリをサポートするためのインデックスを作成したことを確認します。 また、パフォーマンスが低いことを示すフラグが設定されたクエリに対しては、最大限の並列化 (MAXDOP) を手動で強制することもできます。 T-SQL を使ってこの操作を構成する方法については、「[max degree of parallelism サーバー構成オプションの構成](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option)」をご覧ください。
 
 MAXDOP サーバー構成オプションを既定値のゼロ (0) に設定すると、SQL Database は、使用可能なすべての論理 CPU コアを 1 つのクエリを実行するスレッドの並列処理に使うことができます。 MAXDOP を 1 に設定することは、1 つのクエリ実行に使えるコアが 1 つだけであることを示します。 実際には、これは並列処理がオフであるという意味です。 場合によっては、データベースで使用できるコア数、および診断ログの情報に応じて、MAXDOP オプションを調整し、クエリの並列実行に使用できるコア数をそれぞれのケースで問題を解決できる可能性がある値に設定できます。
 
@@ -231,7 +231,7 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 診断ログには、tempDB の競合の詳細が出力されます。 トラブルシューティングの出発点としてこの情報を使うことができます。 この種の競合を軽減し、ワークロード全体のスループットを増やすためにできることが 2 つあります。まず、一時テーブルの使用を停止することができます。 また、メモリ最適化テーブルを使うこともできます。 
 
-詳しくは、「[メモリ最適化テーブルの概要](https://docs.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)」をご覧ください。 
+詳しくは、「[メモリ最適化テーブルの概要](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables)」をご覧ください。 
 
 ## <a name="elastic-pool-dtu-shortage"></a>エラスティック プールの DTU の不足
 
@@ -328,10 +328,10 @@ Azure SQL Analytics に移動して、Azure Portal から Intelligent Insights �
 > [!TIP]
 > PDF バージョンをダウンロードするには、フローチャートを選びます。
 
-Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します  (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
+Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します  (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得。
 - [Intelligent Insights Azure SQL Database パフォーマンス診断ログ](sql-database-intelligent-insights-use-diagnostics-log.md)の使用。
-- [Azure SQL Analytics を使用した Azure SQL Database](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) の監視。
+- [Azure SQL Analytics を使用した Azure SQL Database](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) の監視。
 - [Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)の習得。

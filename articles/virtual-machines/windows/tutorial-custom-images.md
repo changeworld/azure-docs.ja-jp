@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/08/2017
+ms.date: 12/07/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cee283268057a407003a38f8db5af8cac151439f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 7001e5df235d65c531b9102f879bde9693c4f853
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>PowerShell を使用した Azure VM のカスタム イメージの作成
 

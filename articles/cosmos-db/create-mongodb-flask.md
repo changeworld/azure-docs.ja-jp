@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: e4d90e69edb67cf070bb54b9d60a986eb5d0e386
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: f86c6cce82812e02f373d7307c76ace26ea3e99b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: MongoDB API による Flask アプリの構築
 
@@ -116,7 +116,7 @@ github から Flask-MongoDB API アプリを複製し、接続文字列を設定
 
 ## <a name="deploy-to-azure"></a>Azure へのデプロイ
 
-このアプリをデプロイするには、Azure で新しい Web アプリを作成し、この github リポジトリのフォークで継続的配置を有効にします。 この[チュートリアル](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-continuous-deployment)に従って、Azure で Github による継続的配置を設定します。
+このアプリをデプロイするには、Azure で新しい Web アプリを作成し、この github リポジトリのフォークで継続的配置を有効にします。 この[チュートリアル](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)に従って、Azure で Github による継続的配置を設定します。
 
 Azure にデプロイする場合は、アプリケーション キーを削除し、以下のセクションがコメント アウトされていないことを確認する必要があります。
 
@@ -126,7 +126,7 @@ Azure にデプロイする場合は、アプリケーション キーを削除�
     db.authenticate(name=os.getenv("MONGO_USERNAME"),password=os.getenv("MONGO_PASSWORD"))
 ```
 
-アプリケーション設定に MONGOURL、MONGO_PASSWORD、MONGO_USERNAME を追加する必要があります。 この[チュートリアル](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-configure#application-settings)に従って、Azure Web Apps のアプリケーション設定の詳細を確認できます。
+アプリケーション設定に MONGOURL、MONGO_PASSWORD、MONGO_USERNAME を追加する必要があります。 この[チュートリアル](https://docs.microsoft.com/azure/app-service-web/web-sites-configure#application-settings)に従って、Azure Web Apps のアプリケーション設定の詳細を確認できます。
 
 このリポジトリのフォークを作成しない場合は、下の [Azure へのデプロイ] をクリックすることもできます。 Azure に移動し、Cosmos DB アカウント情報でアプリケーション設定を設定する必要があります。
 

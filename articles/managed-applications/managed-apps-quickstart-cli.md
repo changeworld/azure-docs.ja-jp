@@ -10,11 +10,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 10/20/2017
 ms.author: tomfitz
-ms.openlocfilehash: e104778db445d078ffca7a9ddb9d28fc84a93c81
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 062e6b4d9edd9ca9220b8d11336f1a3ff544a1dd
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Azure CLI を使用した Azure マネージ アプリケーションの作成とデプロイ
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 10/27/2017
 
 作業が完了すると、マネージ アプリケーションのさまざまな部分を含む 3 つのリソース グループが作成されます。
 
-| リソース グループ | 指定値を含む | Description |
+| リソース グループ | 指定値を含む | 説明 |
 | -------------- | -------- | ----------- |
 | appDefinitionGroup | マネージ アプリケーション定義。 | 発行元が、このリソース グループとマネージ アプリケーション定義を作成します。 マネージ アプリケーション定義へのアクセス権を持つすべてのユーザーがデプロイできます。 |
 | applicationGroup | マネージ アプリケーション インスタンス。 | コンシューマーが、このリソース グループとマネージ アプリケーション インスタンスを作成します。 コンシューマーは、このインスタンスを使用してマネージ アプリケーションを更新できます。 |
@@ -121,5 +121,4 @@ az managedapp create \
 
 * マネージ アプリケーションの概要については、[マネージ アプリケーションの概要](overview.md)に関するページをご覧ください。
 * サンプル ファイルについては、[マネージ アプリケーションのサンプル](https://github.com/Azure/azure-managedapp-samples/tree/master/samples)に関するページを参照してください。
-* マネージ アプリケーションを Azure Marketplace に発行する方法については、[Marketplace アプリケーションの作成](publish-marketplace-app.md)に関する記事をご覧ください。
 * マネージ アプリケーションの UI 定義ファイルの作成する方法については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。

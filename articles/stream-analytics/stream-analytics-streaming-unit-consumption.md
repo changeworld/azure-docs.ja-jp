@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e1fb9ee3147f94b173b0fd324943b8801b984d2b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -27,7 +27,7 @@ Azure Stream Analytics では、ジョブを実行する際のパフォーマン
 
 待機時間が短いストリーミング処理を実現するために、Azure Stream Analytics ジョブはすべての処理をメモリ内で実行します。 メモリが不足した場合は、ストリーミング ジョブが失敗します。 そのため、実稼働ジョブでは、ストリーミング ジョブのリソース使用状況を監視し、ジョブの稼働を 24 時間、週 7 日維持するのに十分なリソースが割り当てられていることを確認することが重要です。
 
-メトリックは、0% から 100% の範囲のパーセンテージの数値です。 最小フットプリントのストリーミング ジョブでは、SU % 使用率メトリックは、通常は 10 ～ 20% です。 偶発的なスパイクを考慮して、メトリックを 80% 未満に維持することをお勧めします。  メトリックにはアラートを設定できます ([メトリック アラートを設定するには、こちら](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-alerts-portal)をご覧ください)。
+メトリックは、0% から 100% の範囲のパーセンテージの数値です。 最小フットプリントのストリーミング ジョブでは、SU % 使用率メトリックは、通常は 10 ～ 20% です。 偶発的なスパイクを考慮して、メトリックを 80% 未満に維持することをお勧めします。  メトリックにはアラートを設定できます ([メトリック アラートを設定するには、こちら](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal)をご覧ください)。
 
 
 
@@ -82,7 +82,7 @@ Azure Stream Analytics ジョブの固有の機能の 1 つに、ウィンドウ
 
 クエリは、パーティション分割されると、複数のノードに広がります。 その結果、各ノードで受信される clusterid 数が削減されるため、group by 演算子の基数が減少します。 
 
-削減手順の必要性をなくすには、イベント ハブ パーティションをグループ化キーでパーティション分割する必要があります。 詳しくは、[こちら](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-overview)をご覧ください。 
+削減手順の必要性をなくすには、イベント ハブ パーティションをグループ化キーでパーティション分割する必要があります。 詳しくは、[こちら](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview)をご覧ください。 
 #### <a name="temporal-join"></a>一時的な結合
 一時的な結合の状態サイズは、イベント入力速度にウィグル領域サイズを乗算した、結合の一時的なウィグル領域におけるイベント数に比例します。 
 
