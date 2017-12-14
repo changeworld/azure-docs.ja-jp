@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.openlocfilehash: b810e37e393ddab55500f636b72450789285a4f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 601e059af6040834f1ceb520ffe23aeadb6cdb18
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 #  <a name="agent-health-solution-in-oms"></a>OMS の Agent Health ソリューション
 OMS の Agent Health ソリューションを使用すると、OMS ワークスペースに対して、または OMS に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
 
 ## <a name="prerequisites"></a>前提条件
-このソリューションをデプロイする前に、現在サポートされている [Windows エージェント](../log-analytics/log-analytics-windows-agents.md)が、OMS ワークスペースに対して、または OMS ワークスペースに統合されている [Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)に対して報告を行っていることを確認してください。    
+このソリューションをデプロイする前に、現在サポートされている [Windows エージェント](../log-analytics/log-analytics-windows-agent.md)が、OMS ワークスペースに対して、または OMS ワークスペースに統合されている [Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)に対して報告を行っていることを確認してください。    
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 このソリューションは次のリソースで構成されています。これらのリソースは、ワークスペースに追加され、エージェントに直接接続されるか、Operations Manager に接続された管理グループに接続されます。

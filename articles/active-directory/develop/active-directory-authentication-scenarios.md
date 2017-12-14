@@ -4,7 +4,7 @@ description: "Azure Active Directory (AAD) の 5 つの最も一般的な認証�
 services: active-directory
 documentationcenter: dev-center-name
 author: skwan
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
-ms.openlocfilehash: 2f9410bdaa037f1839cf7c12c3532b51be669ed5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32077c1e9415dd8be7064a2377ee806ae21d1390
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Azure AD の認証シナリオ
 Azure Active Directory (Azure AD) は、OAuth 2.0 や OpenID Connect などの業界標準プロトコルをサポートする Identity as a Service と、コーディングを手軽に開始するうえで役立つ、さまざまなプラットフォーム向けのオープン ソース ライブラリを提供することで、開発者のために認証を簡素化します。 このドキュメントでは、Azure AD がサポートするさまざまなシナリオについて説明し、開発を開始する方法を示します。 このドキュメントは次のセクションに分かれています。

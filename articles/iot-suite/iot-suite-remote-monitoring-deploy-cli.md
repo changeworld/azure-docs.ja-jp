@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d0ed9a7fbb202b2008fee7f810ae0102b6f51c3d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: ea3764299d07f548abbc2857a3adbfb4dc50dec8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution-using-the-cli"></a>CLI を使用してリモート監視の構成済みソリューションをデプロイする
 
@@ -52,7 +52,7 @@ pcs login
 
 構成済みのソリューションをデプロイするときに、デプロイ プロセスを構成するいくつかのオプションがあります。
 
-| オプション | 値 | Description |
+| オプション | 値 | 説明 |
 | ------ | ------ | ----------- |
 | SKU    | `basic`、`standard` | _基本_デプロイは、テストおよびデモを目的としており、すべてのマイクロサービスを単一の仮想マシンにデプロイします。 _標準_デプロイは、実稼働を目的としており、マイクロサービスを複数の仮想マシンにデプロイします。 |
 | ランタイム | `dotnet`、`java` | マイクロサービスの言語の実装を選択します。 |

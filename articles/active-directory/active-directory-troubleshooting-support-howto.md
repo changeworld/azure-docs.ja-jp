@@ -4,7 +4,7 @@ description: "Azure Active Directory のサポートを受ける方法"
 services: active-directory
 documentationcenter: na
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: a67fcbb8b41b79bad995b38fae3db0a7a85be428
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e856ed740849a072f183d1e566d46d6132f5ffc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-get-support-for-azure-active-directory"></a>Azure Active Directory のサポートを受ける方法
 

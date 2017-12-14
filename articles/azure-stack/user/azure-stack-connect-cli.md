@@ -3,8 +3,8 @@ title: "CLI を使用した Azure Stack への接続 | Microsoft Docs"
 description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
-ms.author: sngun
-ms.openlocfilehash: 9a0ad3d8c2cdd3cd1d46e789c2b65677ac5a10b1
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.author: mabrigg
+ms.openlocfilehash: 5d15815e9b1d20ab03b5716de45ad0fa77a11057
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Azure Stack で使用する CLI をインストールして構成する
 
@@ -145,7 +145,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
      --profile 2017-03-09-profile
    ```
 
-4. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
+4. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
 
    * "*ユーザー*" としてサインインする場合: `az login` コマンド内で直接ユーザー名とパスワードを指定するか、ブラウザーを使用して認証できます。 多要素認証が有効になっているアカウントの場合は、後者を実行する必要があります。
 
@@ -195,4 +195,3 @@ Azure Stack で CLI を使うときに注意する必要がある既知の問題
 [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 
 [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)
-

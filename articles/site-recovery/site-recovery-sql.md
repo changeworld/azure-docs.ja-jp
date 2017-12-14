@@ -12,19 +12,19 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 12/13/2017
 ms.author: pratshar
-ms.openlocfilehash: e53f60979e01a0eabe118d3ae6457a61bd4b0ded
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04fb9ebc8a235dd15817fbb5efd08922ae287aa1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護
 
 この記事では、SQL Server のビジネス継続性とディザスター リカバリー (BCDR) テクノロジおよび[Azure Site Recovery](site-recovery-overview.md) の組み合わせを使用してアプリケーションの SQL Server バックエンドを保護する方法について説明します。
 
-開始する前に、フェールオーバー クラスタリング、Always On 可用性グループ、データベース ミラーリング、ログ配布など、SQL Server 障害復旧機能についてよく理解してください。
+開始する前に、フェールオーバー クラスタリング、Always On 可用性グループ、データベース ミラーリング、ログ配布など、SQL Server ディザスター リカバリー機能についてよく理解してください。
 
 
 ## <a name="sql-server-deployments"></a>SQL Server のデプロイメント
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
  この記事では、次に示すネイティブの SQL ディザスター リカバリー テクノロジを活用して、データベースを リモート サイトに復旧します。
 
-* SQL Always On 可用性グループ: SQL Server 2012 または 2014 Enterprise の各エディションの障害復旧を提供します。
+* SQL Always On 可用性グループ: SQL Server 2012 または 2014 Enterprise の各エディションのディザスター リカバリーを提供します。
 * 高い安全性モードでの SQL Database ミラーリング: SQL Server Standard エディション (全バージョン) または SQL Server 2008 R2 用です。
 
 ## <a name="site-recovery-support"></a>Site Recovery のサポート
@@ -49,7 +49,8 @@ Site Recovery は、次の表のように SQL Server を保護できます。
 --- | --- | ---
 **Hyper-V** | はい | はい
 **VMware** | はい | はい
-**物理サーバー** | はい | はい
+**物理サーバー** | はい | あり
+**Azure**|該当なし| あり
 
 ### <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 これらの SQL Server バージョンは、サポートされるシナリオに対応しています。
@@ -186,7 +187,7 @@ SQL Server Standard エディション または SQL Server 2008 R2 を実行す
 
 ### <a name="on-premises-to-azure"></a>オンプレミスと Azure 間
 
-Site Recovery は、Azure にレプリケートするときに、ゲスト クラスター サポートを提供していません。 SQL Server も Standard エディション用に低コストの障害復旧ソリューションを提供しません。 このシナリオでは、スタンドアロンの SQL Server でオンプレミスの SQL Server クラスターを保護し、Azure で復旧することをお勧めします。
+Site Recovery は、Azure にレプリケートするときに、ゲスト クラスター サポートを提供していません。 SQL Server も Standard エディション用に低コストのディザスター リカバリー ソリューションを提供しません。 このシナリオでは、スタンドアロンの SQL Server でオンプレミスの SQL Server クラスターを保護し、Azure で復旧することをお勧めします。
 
 1. オンプレミスのサイトで、追加のスタンドアロン SQL Server インスタンスを構成します。
 1. このインスタンスを、保護が必要なデータベースのミラーとして機能するように構成します。 高い安全性モードでミラーリングを構成します。

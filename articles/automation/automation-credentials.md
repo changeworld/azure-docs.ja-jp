@@ -3,7 +3,7 @@ title: "Azure Automation での資格情報資産 | Microsoft Docs"
 description: "Azure Automation の資格情報資産には、Runbook または DSC 構成によってアクセスされるリソースの認証に使用できるセキュリティ資格情報が含まれます。 この記事では、資格情報資産を作成し、Runbook または DSC 構成でそれを使用する方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 3209bf73-c208-425e-82b6-df49860546dd
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: bwren
-ms.openlocfilehash: 70f6272d936b097a9458dfa18279a70727da9d6b
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 516f0ddcc50b3e6d744f70063b2112090d2e411d
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
 Automation の資格情報資産は、ユーザー名やパスワードなどのセキュリティ資格情報を含む [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) オブジェクトを保持しています。 Runbook および DSC 構成では、認証に PSCredential オブジェクトを受け付けるコマンドレットを使用したり、PSCredential オブジェクトのユーザー名とパスワードを抽出して認証を必要とするアプリケーションやサービスに提供したりできます。 資格情報のプロパティは、Azure Automation に安全に格納されており、Runbook または DSC 構成で [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) アクティビティを使用してアクセスできます。
@@ -39,7 +39,7 @@ Windows PowerShell で Automation 資格情報資産を作成および管理す�
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
 AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。  これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview) に付属しています。
 
-| コマンドレット | Description |
+| コマンドレット | 説明 |
 |:--- |:--- |
 | [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential?view=azurermps-4.4.0) |資格情報資産に関する情報を取得します。  |
 | [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential?view=azurermps-4.4.0) |新しい Automation 資格情報を作成します。 |
@@ -59,7 +59,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 ## <a name="python2-functions"></a>Python2 関数
 次の表の関数を使用して、Python2 Runbook の資格情報にアクセスします。
 
-| 関数 | Description |
+| 関数 | 説明 |
 |:---|:---|
 | automationassets.get_automation_credential | 資格情報資産に関する情報を取得します。 |
 

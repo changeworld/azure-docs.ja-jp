@@ -4,7 +4,7 @@ description: "Azure Active Directory アクセス レビューを使用し、ゲ
 services: active-directory
 documentationcenter: 
 author: markwahl-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: d67b12eaac17e278724ddf8670e65afba235f099
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8d5cc8035d085ac9c8fc46077376836726afbb1a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 アクセス レビューを使用すると、グループに招待されて追加されていたユーザーが今もアクセス権を必要としていることを確かめることができます。 ゲストに自身のグループ メンバーシップをレビューしてもらうのは簡単です。
 
-1. グループのアクセス レビューを開始するには、ゲスト ユーザーのメンバーだけをレビュー対象とし、メンバーに自身でレビューしてもらうよう選択します。 詳細については、「[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)」を参照してください。
+1. グループのアクセス レビューを開始するには、ゲスト ユーザーのメンバーだけをレビュー対象とし、メンバーに自身でレビューしてもらうよう選択します。 詳細については、[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)に関するページをご覧ください。
 
 2. 各ゲストに自身のメンバーシップをレビューするよう依頼します。 既定では、招待状を受け取った各ゲストには、アクセス レビューへのリンクが記載されたメールが Azure AD から届きます。 Azure AD のゲスト向けの手順については、[アクセス権をレビューする方法](active-directory-azure-ad-controls-perform-access-review.md)に関するページを参照してください。
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 ゲストのグループ メンバーシップが引き続き必要であるかどうかをレビューするよう責任者 (グループの所有者など) に依頼することができます。
 
-1. グループのアクセス レビューを開始するには、ゲスト ユーザー メンバーだけをレビュー対象として選択します。 そのうえで、レビュー担当者を 1 人以上指定します。 詳細については、「[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)」を参照してください。
+1. グループのアクセス レビューを開始するには、ゲスト ユーザー メンバーだけをレビュー対象として選択します。 そのうえで、レビュー担当者を 1 人以上指定します。 詳細については、[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)に関するページをご覧ください。
 
 2. レビュー担当者に確認を依頼します。 既定では、各レビュー担当者には、アクセス パネルへのリンクが記載されたメールが Azure AD から届き、そこで[アクセス レビューを実行](active-directory-azure-ad-controls-perform-access-review.md)します。
 
@@ -80,7 +80,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 アクセス レビューを使用すると、特定のアプリケーションに招待されていたユーザーが今もアクセス権を必要としていることを確かめることができます。 アクセスの必要性をゲスト自身にレビューしてもらうのは簡単です。
 
-1. アプリケーションのアクセス レビューを開始するには、ゲストだけをレビュー対象とし、ユーザーに自身のアクセス権をレビューしてもらうよう選択します。 詳細については、「[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)」を参照してください。
+1. アプリケーションのアクセス レビューを開始するには、ゲストだけをレビュー対象とし、ユーザーに自身のアクセス権をレビューしてもらうよう選択します。 詳細については、[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)に関するページをご覧ください。
 
 2. 各ゲストに自身のアプリケーション アクセスをレビューするよう依頼します。 既定では、招待状を受け取った各ゲストには、組織のアクセス パネル内のアクセス レビューへのリンクが記載されたメールが Azure AD から届きます。 Azure AD のゲスト向けの手順については、[アクセス権をレビューする方法](active-directory-azure-ad-controls-perform-access-review.md)に関するページを参照してください。
 
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 ゲストによるアプリケーション アクセスが引き続き必要であるかどうかをレビューするよう責任者 (アプリケーションの所有者など) に依頼することができます。
 
-1. アプリケーションのアクセス レビューを開始するには、ゲストだけをレビュー対象として選択します。 そのうえで、レビュー担当者としてユーザーを 1 人以上指定します。 詳細については、「[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)」を参照してください。
+1. アプリケーションのアクセス レビューを開始するには、ゲストだけをレビュー対象として選択します。 そのうえで、レビュー担当者としてユーザーを 1 人以上指定します。 詳細については、[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)に関するページをご覧ください。
 
 2. レビュー担当者に確認を依頼します。 既定では、各レビュー担当者には、アクセス パネルへのリンクが記載されたメールが Azure AD から届き、そこで[アクセス レビューを実行](active-directory-azure-ad-controls-perform-access-review.md)します。
 
@@ -107,7 +107,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 1. ゲストをメンバーとするセキュリティ グループを Azure AD に作成します (適切なグループがまだ存在しない場合)。 たとえば、手動で管理されたゲストのメンバーシップを基にグループを作成します。 または、UserType 属性の値が Guest である Contoso テナントのユーザー用に "Guests of Contoso" などの名前の動的グループを作成してもよいでしょう。
 
-2. そのグループのアクセス レビューを開始するには、メンバー自身をレビュー担当者として選択します。 詳細については、「[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)」を参照してください。
+2. そのグループのアクセス レビューを開始するには、メンバー自身をレビュー担当者として選択します。 詳細については、[アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)に関するページをご覧ください。
 
 3. 各ゲストに自身のメンバーシップをレビューするよう依頼します。 既定では、招待状を受け取った各ゲストには、組織のアクセス パネル内のアクセス レビューへのリンクが記載されたメールが Azure AD から届きます。 Azure AD のゲスト向けの手順については、[アクセス権をレビューする方法](active-directory-azure-ad-controls-perform-access-review.md)に関するページを参照してください。
 

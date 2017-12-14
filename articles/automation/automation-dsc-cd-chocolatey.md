@@ -3,7 +3,7 @@ title: "Chocolatey を使用した Azure Automation DSC の継続的なデプロ
 description: "Azure Automation DSC と Chocolatey パッケージ マネージャーを使用した DevOps の継続的なデプロイメント。  完全な JSON の ARM テンプレートと PowerShell ソースの例です。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/29/2016
 ms.author: golive
-ms.openlocfilehash: f23d7374a8954a0a95853fa9e00b54a8d9c468c4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9957d745ed910fbdcbeeee7d9ddb24a51da141b
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>使用例: Automation DSC と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 DevOps 領域には、継続的な統合パイプラインのさまざまなポイントで役立つ多くのツールがあります。  Azure Automation Desired State Configuration (DSC) は、DevOps チームが採用できる新たに追加された待望のオプションです。  この記事では、Windows コンピューター用の継続的なデプロイメント (CD) の設定について説明します。  必要な数の Windows コンピューターをロール (Web サイトなど) に含め、さらにそこから追加ロールにも含めるために手法を簡単に拡張することができます。

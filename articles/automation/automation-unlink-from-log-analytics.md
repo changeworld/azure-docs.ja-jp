@@ -3,7 +3,7 @@ title: "Log Analytics から Azure Automation アカウントのリンクを解�
 description: "この記事では、OMS ワークスペースから Azure Automation アカウントのリンクを解除する方法の概要を説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 09/29/2017
 ms.author: magoedte
-ms.openlocfilehash: 86af4eacf460e16d837643ec6f03d530450e56ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7deac9800471065d2bd5b921143b4ed08ee408da
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>Log Analytics ワークスペースから Automation アカウントのリンクを解除する方法
 

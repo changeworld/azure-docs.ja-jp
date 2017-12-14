@@ -4,7 +4,7 @@ description: "Azure Active Directory と SpringCM の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 4a42f797-ac58-4aca-a8e6-53bfe5529083
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: edfd06a06c730597fee4569ca1ce29092b45244a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7538c749b3fc31ad02e52ca986e43e3293e2fe20
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル: Azure Active Directory と SpringCM の統合
 
@@ -145,7 +145,7 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
             
     d. **[SAML Enabled]\(SAML の有効化\)** で **[Enable]\(有効\)** を選びます。
 
-    e. [ **Save**] をクリックします。
+    e. **[Save]** をクリックします。
  
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -207,7 +207,7 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 
 7. ユーザーを **[Security group]**に追加します。
 
-8. [ **Save**] をクリックします。
+8. **[Save]** をクリックします。
 
   >[!NOTE]
   >SpringCM から提供されている他の SpringCM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。  

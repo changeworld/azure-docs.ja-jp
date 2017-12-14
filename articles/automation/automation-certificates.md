@@ -3,7 +3,7 @@ title: "Azure Automation の証明書資産 | Microsoft Docs"
 description: "証明書を Azure Automation に安全に保存し、Runbook または DSC 構成でアクセスして Azure およびサードパーティのリソースで認証できます。  この記事では、証明書の詳細およびテキスト作成とグラフィカル作成の両方で証明書を使用する方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: stevenka
 editor: tysonn
 ms.assetid: ac9c22ae-501f-42b9-9543-ac841cf2cc36
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: e434292485ef9da1a8e23da25ac731d9bf0177ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6a5ff4fa3fd0084fd910968651c6ae0fefaf2cf
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation の証明書資産
 
@@ -45,7 +45,7 @@ Windows PowerShell で Automation 証明書資産を作成および管理する�
 
 次の表の関数を使用して、Python2 Runbook の証明書にアクセスします。
 
-| 関数 | Description |
+| 関数 | 説明 |
 |:---|:---|
 | automationassets.get_automation_certificate | 証明書の資産に関する情報を取得します。 |
 

@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: 
 author: asmalser-msft
 writer: asmalser-msft
-manager: stevenpo
+manager: mtillman
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 526666301aad1e5284c621024649d9cd52c92d18
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c2f26e6df435b522346f22ce697468d094de23e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-configuring-linkedin-elevate-for-automatic-user-provisioning"></a>チュートリアル: LinkedIn Elevate を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -106,7 +106,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 12) プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
-13) [ **Save**] をクリックします。 
+13) **[Save]** をクリックします。 
 
 14) **[属性マッピング]** セクションで、Azure AD から LinkedIn Elevate に同期するユーザーおよびグループ属性を確認します。 **[Matching (照合)]** プロパティとして選択されている属性は、更新処理で LinkedIn Elevate のユーザー アカウントおよびグループとの照合に使用されることに注意してください。 [保存] ボタンをクリックして変更をコミットします。
 
@@ -114,7 +114,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 15) LinkedIn Elevate に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-16) [ **Save**] をクリックします。 
+16) **[Save]** をクリックします。 
 
 これで、[ユーザーとグループ] セクションで LinkedIn Elevate に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 20 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、プロビジョニング サービスによって LinkedIn Elevate アプリに対して実行されたすべてのアクションが記載されています。
 

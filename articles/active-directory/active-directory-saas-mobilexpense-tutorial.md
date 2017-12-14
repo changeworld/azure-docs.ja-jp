@@ -4,7 +4,7 @@ description: "Azure Active Directory と MobileXpense の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: e649fc4e-3e15-4948-b977-00bfe9f7db13
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 030a1fc9f36d6fcfa607552d85ce232e36eaa64b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f1d65a2404fc90943bba4921158f5366bc9778ac
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobilexpense"></a>チュートリアル: Azure Active Directory と MobileXpense の統合
 

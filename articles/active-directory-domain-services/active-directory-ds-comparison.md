@@ -4,7 +4,7 @@ description: "Azure Active Directory Domain Services と自作のドメイン �
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
 ms.service: active-directory-ds
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 09a68c7f4e7169a6ca02e33e89e0f048155fa88c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Azure AD Domain Services がユースケースに適しているかを判断する方法
 Azure AD Domain Services を利用すると、Azure の ID インフラストラクチャのメンテナンスについて心配することなく、Azure インフラストラクチャ サービスでワークロードをデプロイできます。 管理されたこのサービスは、自分でデプロイおよび管理する、典型的な Windows Server Active Directory デプロイとは異なります。 サービスのデプロイは簡単で、稼働状況の監視および修復を自動的に実行します。 このサービスには定期的に、一般的なデプロイのシナリオのサポートが追加されます。

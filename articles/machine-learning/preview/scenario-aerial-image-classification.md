@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 10/27/2017
-ms.openlocfilehash: f8ea2c269906732aef8d577c0d744e730c1dedcd
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: cb66514f40bd37f0495eca5037740d318fd5ea09
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="aerial-image-classification"></a>航空画像の分類
 
@@ -67,7 +67,7 @@ ms.lasthandoff: 12/05/2017
         - "Install Azure Python SDK (Azure Python SDK のインストール)"
     - 作成するよう指示された Azure Active Directory アプリケーションのクライアント ID、シークレット、テナント ID をメモしておきます。 これらの資格情報は、このチュートリアルで後ほど使用します。
     - このドキュメントの作成時点では、Azure Machine Learning Workbench と Azure Batch AI は Azure CLI 2.0 の別々の分岐を使用しています。 はっきりさせるため、Workbench の CLI バージョンを "Azure Machine Learning Workbench から起動された CLI" と呼び、一般公開バージョン (Batch AI を含むもの) を "Azure CLI 2.0" と呼びます。
-- [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)。Azure ストレージ アカウント間のファイル転送を調整する無料のユーティリティです。
+- [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)。Azure ストレージ アカウント間のファイル転送を調整する無料のユーティリティです。
     - AzCopy の実行可能ファイルを含むフォルダーが、システム PATH 環境変数にあることを確認します (環境変数の変更手順については、[こちら](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp)をご覧ください)。
 - SSH クライアント。[PuTTY](http://www.putty.org/) をお勧めします。
 

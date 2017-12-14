@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: ed2a17fd735c1b0e67cbf5d08450d36620d4c857
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ccad7e41921c2fecbac113f3b950f654c62b1c8e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>エネルギーの需要予測のための Cortana Intelligence ソリューション テンプレートに関する技術ガイド
 ## <a name="overview"></a>**概要**
@@ -82,7 +82,7 @@ Azure HDInsight サービスを使用して、[Hive](http://blogs.msdn.com/b/big
 
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) クエリは、次のようにして見つけることができます。
 
-* [Azure Portal](https://manage.windowsazure.com/) にログインする
+* [Azure Portal](https://portal.azure.com/) にログインする
 * ソリューションがデプロイされたときに生成された Stream Analytics ジョブ ![](media/cortana-analytics-technical-guide-demand-forecast/icon-stream-analytics.png) を検索する。 1 つはデータを Blob Storage にプッシュするジョブ (例: mytest1streaming432822asablob)、もう 1 つはデータを Power BI にプッシュするジョブ (例: mytest1streaming432822asapbi) です。
 * 次を選択する
 
@@ -152,7 +152,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
     パイプラインの最後の手順は、データ (Machine Learning からの予測など) を SQL Database に書き込むことです。 データが SQL Database に表示されるまで、最大 2 時間の待機が必要な場合があります。 SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure Portal](https://manage.windowsazure.com/) を使用することです。 左側のパネルで、[SQL データベース]![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) を見つけてそれをクリックします。 次に、データベース (例: demo123456db) を見つけてそれをクリックします。 次のページの **[データベースに接続する]** セクションで、**[SQL データベースに対して Transact-SQL クエリを実行する]** をクリックします。
 
-    ここで、新しいクエリをクリックし、行数を照会できます (例: select count(*) from DemandRealHourly)。データベースが大きくなるにつれ、テーブル内の行数も増加します。
+    ここで、[新しいクエリ] をクリックし、行数を照会できます (例: select count(*) from DemandRealHourly)。データベースが大きくなるにつれ、テーブル内の行数も増加します。
 3. Power BI ダッシュボードからデータを確認します。
 
     Power BI ホット パス ダッシュボードは、未加工の受信データを監視するよう設定できます。 「Power BI ダッシュボード」の手順に従ってください。

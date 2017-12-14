@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 358b3701773e6cd61b4a3dfddf4bb092741ff713
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 0da456e13042168f3c8e871f180e6477b73392d5
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 このリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -58,7 +58,7 @@ Media Services REST API バージョン履歴の詳細については、「 [Azu
 2.  H.265 (HEVC) ビデオ コーデックでエンコードされたソース ビデオ (iOS11 や GoPro Hero 6 を使用してキャプチャされたビデオなど) がある場合、Premium Encoder または Standard Encoder を使用してそれらのビデオをエンコードできるようになりました。 特許ライセンスに関する重要な注意事項については、[オンライン サービス条件](https://azure.microsoft.com/support/legal/)に関するページをご覧ください。
 3.  複数の言語のオーディオ トラックが含まれたコンテンツがある場合、対応するファイル形式の仕様 (ISO MP4 など) に従って言語の値に正しくラベル付けされていれば、Standard Encoder を使用してそのコンテンツをストリーミング用にエンコードできます。 作成されたストリーミング ロケーターには、使用可能なオーディオ言語の一覧が表示されます。
 4.  Standard Encoder で、"AAC Audio" と "AAC Good Quality Audio" の 2 つの新しいオーディオのみのシステム プリセットがサポートされるようになりました。 それぞれ 128 kbps、192 kbps のビット レートで、どちらもステレオ AAC 出力を生成します。
-5.  ビデオ コーデックが[こちらに記載された Apple ProRes フレーバー](https://docs.microsoft.com/en-us/azure/media-services/media-services-media-encoder-standard-formats)のいずれかであり、オーディオが AAC または PCM であれば、Premium Encoder で入力として QuickTime/MOV ファイル形式がサポートされるようになりました。
+5.  ビデオ コーデックが[こちらに記載された Apple ProRes フレーバー](https://docs.microsoft.com/azure/media-services/media-services-media-encoder-standard-formats)のいずれかであり、オーディオが AAC または PCM であれば、Premium Encoder で入力として QuickTime/MOV ファイル形式がサポートされるようになりました。
 
 > [!NOTE]
 > Premium Encoder では、たとえば、QuickTime/MOV ファイルにラップされた DVC/DVCPro ビデオは入力としてサポートされません。  ただし、Standard Encoder ではこれらのビデオ コーデックをサポートしています。
@@ -324,13 +324,6 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です。
 * **オリジン** の名前が [ストリーミング エンドポイント]に変更されました。
 * **Azure ポータル**で MP4 ファイルをエンコードし、その後、発行する際の既定の動作が変更されました。
 
-以前は、Azure クラシック ポータルを使用して単一ファイルの MP4 ビデオ資産を発行すると、SAS URL が作成されました (SAS URL を使用して、Blob Storage からビデオをダウンロードできます)。 現在は、Azure クラシック ポータルを使用して、単一ファイルの MP4 ビデオ資産をエンコードし、発行すると、生成された URL は Azure Media Services ストリーミング エンドポイントを指します。  この変更は、Media Services に直接アップロードされ、Azure Media Services によってエンコードされずに発行された MP4 ビデオには影響しません。
-
-現在、問題を解決するための次の 2 つのオプションがあります。
-
-* ストリーミング ユニットを有効にし、動的パッケージを使用して、.mp4 資産を Smooth Streaming プレゼンテーションとしてストリーミングします。
-* .mp4 をダウンロード (または、漸次的に再生) するための SAS url を作成します。 SAS ロケーターの作成方法の詳細については、「 [コンテンツの配信]」を参照してください。
-
 ### <a id="sept_14_GA_changes"></a>GA リリースに含まれる新機能/シナリオ
 * **インデクサー メディア プロセッサ**。 詳しくは、「[Azure Media Indexer によるメディア ファイルのインデックス作成]」をご覧ください。
 * 現在、 [ストリーミング エンドポイント] エンティティを使用して、カスタム ドメイン (ホスト) 名を追加できます。
@@ -561,7 +554,7 @@ Azure Media Services .NET SDK Extensions は、コードを簡素化し、Azure 
 [Media Services の価格詳細]: http://azure.microsoft.com/pricing/details/media-services/
 [入力メタデータ]: http://msdn.microsoft.com/library/azure/dn783120.aspx
 [出力メタデータ]: http://msdn.microsoft.com/library/azure/dn783217.aspx
-[コンテンツの配信]: http://msdn.microsoft.com/library/azure/hh973618.aspx
+[Delivering Content]: http://msdn.microsoft.com/library/azure/hh973618.aspx
 [Azure Media Indexer によるメディア ファイルのインデックス作成]: http://msdn.microsoft.com/library/azure/dn783455.aspx
 [ストリーミング エンドポイント]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [Working with Azure Media Services Live Streaming (Azure Media Services ライブ ストリーミングでの動作)]: http://msdn.microsoft.com/library/azure/dn783466.aspx

@@ -4,7 +4,7 @@ description: "CoreOS Linux 仮想マシンを Azure AD Domain Services に参加
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory-ds
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: a75871f0395ceb7d7abd79a0b9d336b400a88542
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 790ad85df0dbf68674e2b9c6254858100ddfd0fd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>CoreOS Linux 仮想マシンを管理対象ドメインに参加させる
 この記事では、Azure 内の CoreOS Linux 仮想マシンを Azure AD Domain Services の管理対象ドメインに参加させる方法について説明します。

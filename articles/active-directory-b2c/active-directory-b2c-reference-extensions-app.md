@@ -4,7 +4,7 @@ description: "b2c-extensions-app の復元"
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: f0392e32-0771-473c-a799-81438ca2bcff
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/06/2017
 ms.author: parja
-ms.openlocfilehash: a2b883ad010b93ec83c273988493412c06597641
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b28a1bb6287a0e30eda21d9a7c03abbf14b5d8d9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Extensions アプリ
 

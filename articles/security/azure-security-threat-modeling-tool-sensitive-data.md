@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 21d1ba02052862e16ef27ec313d53cd0bffcc21a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 60fcb24ffe813d7fb633c5398252dc8ea7d7a19f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 | **Web アプリケーション** | <ul><li>[機密コンテンツがブラウザーにキャッシュされないようにする](#cache-browser)</li><li>[Web アプリの構成ファイルの機密データを含むセクションを暗号化する](#encrypt-data)</li><li>[機密性の高いフォームおよび入力の autocomplete HTML 属性を明示的に無効にする](#autocomplete-input)</li><li>[ユーザーの画面に表示される機密データをマスクする](#data-mask)</li></ul> | 
 | **データベース** | <ul><li>[動的データ マスクを実装して、権限を持たないユーザーへの機密データの露出を制限する](#dynamic-users)</li><li>[パスワードを salt ハッシュ形式で保存する](#salted-hash)</li><li>[データベースの列の機密データを暗号化する](#db-encrypted)</li><li>[データベース レベルの暗号化 (TDE) を有効にする](#tde-enabled)</li><li>[データベースのバックアップを暗号化する](#backup)</li></ul> | 
 | **Web API** | <ul><li>[Web API に関連する機密データがブラウザーの記憶域に保存されないようにする](#api-browser)</li></ul> | 
-| Azure Document DB | <ul><li>[DocumentDB に保存される機密データを暗号化する](#encrypt-docdb)</li></ul> | 
+| Azure Document DB | <ul><li>[Azure Cosmos DB に保存される機密データを暗号化する](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS VM の信頼の境界** | <ul><li>[Virtual Machines によって使われるディスクを、Azure Disk Encryption を使って暗号化する](#disk-vm)</li></ul> | 
 | **Service Fabric の信頼の境界** | <ul><li>[Service Fabric アプリケーションでシークレットを暗号化する](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[セキュリティ モデリングを実行し、必要に応じて部署/チームを使う](#modeling-teams)</li><li>[重要なエンティティでの共有機能へのアクセスを最小限にする](#entities)</li><li>[Dynamics CRM の共有機能に関連するリスクおよび適切なセキュリティ プラクティスについてユーザーをトレーニングする](#good-practices)</li><li>[例外管理での構成の詳細の表示を禁止する開発標準規則を含める](#exception-mgmt)</li></ul> | 

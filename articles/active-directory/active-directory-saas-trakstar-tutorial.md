@@ -4,7 +4,7 @@ description: "Azure Active Directory と Trakstar の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 411cb8c3-95c6-4138-acf2-ffc7f663e89a
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 19948f1e2e77c78b7ce8aed66a7bdb74ba8640dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72ba6b9f02bc36b46628394afdb29acc6a2fa332
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>チュートリアル: Azure Active Directory と Trakstar の統合
 

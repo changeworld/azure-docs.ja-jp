@@ -4,7 +4,7 @@ description: "Azure Active Directory と Synergi の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 73c970e1-f1ba-420b-b225-414fdf93b140
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: dedbe96fbb26bc34c4d7e213892b318f0e6fef12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 535f2b91c3df12aebffb04a198b5b21defdda0ec
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>チュートリアル: Azure Active Directory と Synergi の統合
 

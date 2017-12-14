@@ -6,7 +6,7 @@
 ## <a name="find-the-disk"></a>ディスクの特定
 VM からディスクを切断するには、まず切断するディスクの識別子である LUN 番号を確認する必要があります。 そのためには、次の手順に従います。
 
-1. Azure CLI を開いて、 [Azure サブスクリプションに接続](../articles/xplat-cli-connect.md)します。 Azure サービス管理モード (`azure config mode asm`) であることを確認します。
+1. Azure CLI を開いて、 [Azure サブスクリプションに接続](/cli/azure/authenticate-azure-cli)します。 Azure サービス管理モード (`azure config mode asm`) であることを確認します。
 2. VM に接続されているディスクを確認します。 次の例では、`myVM` という名前の VM のディスクが一覧表示されます。
 
     ```azurecli

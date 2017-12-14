@@ -4,7 +4,7 @@ description: "Azure Active Directory と Kiteworks の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: f7984aaf-ab1f-4a85-9646-a9523f5275d9
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 2fd9b346cb6d838069ef94ee9c2a8d113f22779c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea38f465f65daad5c5ac7e5f276ad5c997050031
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kiteworks"></a>チュートリアル: Azure Active Directory と Kiteworks の統合
 
@@ -155,7 +155,7 @@ Kiteworks で Azure AD のシングル サインオンを構成してテスト�
 
     f. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[RSA Public Key Certificate (RSA 公開キーの証明書)]** ボックスに貼り付けます。
  
-    g. [ **Save**] をクリックします。
+    g. **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。

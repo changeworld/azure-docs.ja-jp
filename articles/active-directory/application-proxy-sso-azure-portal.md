@@ -4,7 +4,7 @@ description: "Azure Portal で Azure AD アプリケーション プロキシを
 services: active-directory
 documentationcenter: 
 author: kgremban
-manager: femila
+manager: mtillman
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 07/20/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 9ddc0c1bd5f2cbb24f6761cfd041b820ee6464b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ca913d79d9abd4b50e4f280eb993235ca543b0f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>アプリケーション プロキシを使用したシングル サインオン用のパスワードの保管
 
@@ -43,7 +43,7 @@ Azure Active Directory アプリケーション プロキシを使用してオ�
 
    ![パスワード ベースのサインオンの選択と URL の入力](./media/application-proxy-sso-azure-portal/password-sso.png)
 
-7. [**保存**] を選択します。
+7. **[保存]** を選択します。
 
 <!-- Need to repro?
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 

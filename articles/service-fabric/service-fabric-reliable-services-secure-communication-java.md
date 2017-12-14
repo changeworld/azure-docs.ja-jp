@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: c4634e3d8efb1745fffcfe3e647e43d867038716
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e2f36b3de1dd04c1a3f36ae308af164d10654ea
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Azure Service Fabric のサービスで使用される通信のセキュリティ
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Reliable Services のリモート処理の設定方法について説明した�
 
     サービスの通信のセキュリティ保護に使用する証明書が、クラスター内のすべてのノードにインストールされていることを確認します。 リスナー設定とセキュリティ資格情報は、次の 2 とおりの方法で指定できます。
 
-   1. [構成パッケージ](service-fabric-application-model.md)を使用して指定する。
+   1. [構成パッケージ](service-fabric-application-and-service-manifests.md)を使用して指定する。
 
        settings.xml ファイルに `TransportSettings` セクションを追加します。
 

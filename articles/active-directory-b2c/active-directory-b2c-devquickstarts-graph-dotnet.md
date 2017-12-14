@@ -4,7 +4,7 @@ description: "アプリケーション ID を使用して B2C テナント用の
 services: active-directory-b2c
 documentationcenter: .net
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: cce30360145fe430141ceaf2efc91a6b87938601
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: d7d809570012b292877813c7350e55edf509183b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API を使用する
 
@@ -71,7 +71,7 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 ## <a name="configure-delete-permissions-for-your-application"></a>アプリケーション用に削除アクセス許可を構成する
 現時点では、*ディレクトリ データの読み取りと書き込み*アクセス許可には、ユーザーの削除など、削除を行う機能は含まれて**いません**。 アプリケーションにユーザーを削除する権限を付与する場合は、PowerShell に関連する下記の追加手順を実行する必要がありますそれ以外の場合、次のセクションにスキップできます。
 
-まず、[Azure AD PowerShell v1 モジュール (MSOnline)](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) をまだインストールしていない場合は、それをインストールします。
+まず、[Azure AD PowerShell v1 モジュール (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) をまだインストールしていない場合は、それをインストールします。
 
 ```powershell
 Install-Module MSOnline

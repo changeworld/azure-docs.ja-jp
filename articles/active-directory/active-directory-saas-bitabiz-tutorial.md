@@ -4,7 +4,7 @@ description: "Azure Active Directory と BitaBIZ の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 1a51e677-c62b-4aee-9c61-56926aaaa899
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: dca0a460224436d3886cf9a9c354ce662f99ae84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6265f11216aaa75a2dd0dbbf572ecbd913135458
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>チュートリアル: Azure Active Directory と BitaBIZ の統合
 

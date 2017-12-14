@@ -3,7 +3,7 @@ title: "Azure Active Directory の概要 | Microsoft Docs"
 description: "Azure Active Diretory で、ライセンスの取得、ドメイン名の追加、カスタム サインイン ページの作成、セルフサービスによるパスワードのリセットを行います"
 keywords: 
 author: curtand
-manager: michael.tillman
+manager: mtillman
 ms.author: curtand
 ms.reviewer: jsnow
 ms.date: 11/14/2017
@@ -15,11 +15,11 @@ ms.technology:
 ms.assetid: 
 services: active-directory
 ms.custom: it-pro
-ms.openlocfilehash: dd745869494a1ed740a0a05a5508363334aa7360
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: eb428b6ce8af85f06506fb9edc2696477d87c70e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-azure-ad"></a>Azure AD の概要
 最新の ID 管理には、アプリケーションとサービスの可用性を、認証済みユーザーに対してのみ確保できるように、スケーラブルで一貫性のある信頼性が求められています。 ユーザーの ID 管理のニーズに適切に対応するには、IT には、承認済みパブリック SaaS (サービスとしてのソフトウェア) アプリへのアクセスを提供する方法、内部の基幹業務アプリをホストする方法、さらにはオンプレミスのアプリの開発と使用を強化する方法も必要です。 こうした要件はすべて、クラウド ベースの ID 管理ソリューションの必要性を示しています。      

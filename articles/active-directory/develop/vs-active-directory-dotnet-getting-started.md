@@ -4,7 +4,7 @@ description: "Visual Studio 接続済みサービスを使用して Azure Active
 services: active-directory
 documentationcenter: 
 author: kraigb
-manager: ghogen
+manager: mtillman
 editor: 
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: c4d49cfc9887e422b3eaed2b96348c99eca48881
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: efe12842cf0dd5ac865d95902f53e68affcbe54f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a>Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC プロジェクト)
 > [!div class="op_single_selector"]

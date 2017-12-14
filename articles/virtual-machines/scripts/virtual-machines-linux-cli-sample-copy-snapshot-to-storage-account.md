@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: dfb78106bc72aacee85f8412032165fdfcfc1ab3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd0128256e016a329b0940eec4be41426cdaf51a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-cli"></a>CLI を使用して別のリージョンのストレージ アカウントに管理スナップショットを VHD としてエクスポート/コピーする
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 | コマンド | メモ |
 |---|---|
 | [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_grant_access) | 基になる VHD ファイルのストレージ アカウントへのコピー、またはそのオンプレミスへのダウンロードに使用する、読み取り専用の SAS を生成します  |
-| [az storage blob copy start](https://docs.microsoft.com/en-us/cli/azure/storage/blob/copy#az_storage_blob_copy_start) | BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします |
+| [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy#az_storage_blob_copy_start) | BLOB を、あるストレージ アカウントから別のストレージ アカウントに非同期的にコピーします |
 
 ## <a name="next-steps"></a>次のステップ
 

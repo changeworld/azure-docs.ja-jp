@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: shengc
-ms.openlocfilehash: a530b08c276596ddbffafc21e6cffdd9e0e9e3fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: db3be2120c998a0c8973a85d375b526f53e73247
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
@@ -136,7 +136,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 
 ### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
-オンデマンドの HDInsight リンク サービスでは、ユーザーに代わって HDInsight クラスターを作成するためにサービス プリンシパル認証が必要になります。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、サブスクリプションの、または HDInsight クラスターが作成されるリソース グループの**共同作成者**のロールを付与します。 詳細な手順については、[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+オンデマンドの HDInsight リンク サービスでは、ユーザーに代わって HDInsight クラスターを作成するためにサービス プリンシパル認証が必要になります。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、サブスクリプションの、または HDInsight クラスターが作成されるリソース グループの**共同作成者**のロールを付与します。 詳細な手順については、[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)に関する記事を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
 - アプリケーション ID
 - アプリケーション キー 

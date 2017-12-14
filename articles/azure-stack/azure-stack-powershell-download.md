@@ -3,22 +3,22 @@ title: "GitHub からの Azure Stack ツールのダウンロード | Microsoft 
 description: "Azure Stack の操作に必要なツールをダウンロードする方法について説明します。"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: E4DF77FA-F468-42B5-B44F-F10ED8049171
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: sngun
-ms.openlocfilehash: 661f24e1271b3f16fddc6426c94464dd8b388f18
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: mabrigg
+ms.openlocfilehash: e730df58c54f7804d77b052a699d827bb82e5204
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="download-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
 

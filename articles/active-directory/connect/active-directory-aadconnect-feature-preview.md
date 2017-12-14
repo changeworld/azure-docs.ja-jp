@@ -4,7 +4,7 @@ description: "このトピックでは、Azure AD Connect のプレビュー段�
 services: active-directory
 documentationcenter: 
 author: andkjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: c75cd8cf-3eff-4619-bbca-66276757cc07
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: cbf8f729d0ebfb271bb0d8702ac043442b42c262
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cba65b0fe2c2fa0ed92cd2f95464e300a29a7f54
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="more-details-about-features-in-preview"></a>プレビュー段階の機能の詳細
 このトピックでは、現在プレビュー段階の機能を使用する方法について説明します。

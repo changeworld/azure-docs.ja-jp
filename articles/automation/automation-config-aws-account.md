@@ -3,7 +3,7 @@ title: "アマゾン ウェブ サービスで認証を構成する | Microsoft 
 description: "この記事では、AWS リソースを管理する Azure Automation の Runbook 用に AWS 資格情報を作成し検証する方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 keywords: "AWS の認証, AWS の構成"
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/29/2017
 ms.author: magoedte
-ms.openlocfilehash: 0802bb0f2c4d5b761c5833d7231bd3d2d1002cfc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2064c081da6d72ab15fb6cf72ba9d18a74a67fdd
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>アマゾン ウェブ サービスによる Runbook の認証
 アマゾン ウェブ サービス (AWS) のリソースに関する一般的なタスクを自動化する処理は、Azure の Automation Runbook で実現することができます。  Automation Runbook を使用すれば、Azure のリソースの場合と同様に、AWS でも多くのタスクを自動化することができます。  必要となるのは次の 2 点だけです。

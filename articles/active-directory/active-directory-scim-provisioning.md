@@ -4,7 +4,7 @@ description: "Azure Active Directory では、SCIM プロトコル仕様のイ�
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
@@ -12,25 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.custom: aaddev;it-pro;oldportal
-ms.openlocfilehash: 91978cee88d55c99bcb63c63cdaf01581ae84668
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: aaddev;it-pro
+ms.openlocfilehash: 82649b0da67882a0088876798b6f0d79e46051a7
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
 ## <a name="overview"></a>概要
 Azure Active Directory (Azure AD) では、[Cross-Domain Identity Management (SCIM) 2.0 プロトコル仕様](https://tools.ietf.org/html/draft-ietf-scim-api-19)のインターフェイスを持つ Web サービスによってアクセスされるアプリケーションや ID ストアにユーザーやグループを自動的にプロビジョニングできます。 Azure Active Directory は、割り当てられたユーザーとグループを Web サービスに対して作成、変更、または削除するための要求を送信できます。 Web サービスは、これらの要求を、ターゲット ID ストアに対する操作に変換できます。 
-
-> [!IMPORTANT]
-> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 
-
-
 
 ![][0]
 *図 1: Azure Active Directory から Web サービスを介して ID ストアにプロビジョニングする*
@@ -87,7 +82,7 @@ Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://to
 13. Azure AD のプロビジョニング サービスを開始するには、**[保存]** をクリックします。 
 14. 割り当てられたユーザーとグループのみを同期する (推奨) 場合は、**[ユーザーとグループ]** タブを選択し、同期するユーザーとグループを割り当てます。
 
-初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)」をご覧ください。
+初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)」をご覧ください。
 
 >[!NOTE]
 >初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている限り約 20 分ごとに実行されます。 
@@ -159,7 +154,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 13. Azure AD のプロビジョニング サービスを開始するには、**[保存]** をクリックします。 
 14. 割り当てられたユーザーとグループのみを同期する (推奨) 場合は、**[ユーザーとグループ]** タブを選択し、同期するユーザーとグループを割り当てます。
 
-初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)」をご覧ください。
+初期同期が開始されたら、**[監査ログ]** タブを使用して進行状況を監視できます。このタブには、プロビジョニング サービスがアプリに対して実行しているすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)」をご覧ください。
 
 サンプルを確認する最後の手順として、Windows コンピューターの \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug フォルダーにある TargetFile.csv ファイルを開きます。 プロビジョニング プロセスが完了すると、割り当てられ、プロビジョニングされたすべてのユーザーとグループに関する詳細がこのファイルに表示されます。
 

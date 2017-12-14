@@ -3,8 +3,8 @@ title: "特権エンドポイントを使用した Azure Stack での更新プ�
 description: "特権エンドポイントを使用して Azure Stack 統合システムの更新プログラムの状態をモニターする方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
-ms.author: twooley
-ms.openlocfilehash: af7387268d60dc639a39da23e040097fd0695a22
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.author: mabrigg
+ms.openlocfilehash: 55688ad4959d59e41dca9be2d00011e1d41ebd8c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/19/2017
 
 更新管理用の次の新しい PowerShell コマンドレットは、Azure Stack 統合システムの 1710 更新プログラムに含まれています。
 
-| コマンドレット  | Description  |
+| コマンドレット  | 説明  |
 |---------|---------|
 | `Get-AzureStackUpdateStatus` | 現在実行中、完了済み、または失敗した更新プログラムの状態を返します。 更新操作の状態の詳細と、現在のステップと対応する状態の両方について説明する XML ドキュメントを提供します。 |
 | `Get-AzureStackUpdateVerboseLog` | 更新プログラムによって生成される詳細ログを返します。 |

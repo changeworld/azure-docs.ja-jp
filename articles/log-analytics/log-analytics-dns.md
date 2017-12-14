@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.openlocfilehash: 0e8fc0ffb8e0d0bdf00bea46594fe050c00b6c8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f83d019c0168aa5abbf3211b4a599f631e9f426
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -42,7 +42,7 @@ DNS 分析ソリューションは、Windows DNS の分析ログと監査ログ�
 
 | **接続先ソース** | **サポート** | **説明** |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agents.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
+| [Windows エージェント](log-analytics-windows-agent.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | なし | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
 | [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Operations Management Suite への直接接続は必要ありません。 データは管理グループから Operations Management Suite レポジトリに転送されます。 |
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | なし | ソリューションでは、Azure Storage は使用されません。 |
@@ -55,7 +55,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 次の情報を使用して、ソリューションを構成します。
 
-- 監視対象の各 DNS サーバーに [Windows](log-analytics-windows-agents.md) エージェントまたは [Operations Manager](log-analytics-om-agents.md) エージェントが必要です。
+- 監視対象の各 DNS サーバーに [Windows](log-analytics-windows-agent.md) エージェントまたは [Operations Manager](log-analytics-om-agents.md) エージェントが必要です。
 - [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS 分析ソリューションを Operations Management Suite ワークスペースに追加できます。 [ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページの手順も使用できます。
 
 さらに構成を行わなくても、ソリューションはデータの収集を開始します。 ただし、次の構成を使用してデータ収集をカスタマイズできます。

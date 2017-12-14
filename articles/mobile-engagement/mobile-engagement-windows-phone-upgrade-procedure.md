@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: f87f65788075c7f4067e77946e1bcbc8f3709317
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 633bf79a3bcaa9c97a5c70e3b362fd928178dcce
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="windows-phone-silverlight-sdk-upgrade-procedures"></a>Windows Phone Silverlight SDK アップグレード手順
 既に古いバージョンの SDK をアプリケーションに統合している場合は、SDK をアップグレードする際に次の点を考慮する必要があります。
@@ -128,7 +128,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
         /* Initialize Engagement angent with above configuration. */
         EngagementAgent.Instance.Init(engagementConfiguration);
 
-アプリケーションの接続文字列が Azure クラシック ポータルに表示されます。
+アプリケーションの接続文字列が Azure Portal に表示されます。
 
 ### <a name="items-name-change"></a>項目名の変更
 *capptain* という名前の項目はすべて *engagement* という名前に変更されています。 同様に、*Capptain* は *Engagement* に変更されています。

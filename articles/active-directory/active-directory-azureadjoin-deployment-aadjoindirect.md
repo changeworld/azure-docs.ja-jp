@@ -4,7 +4,7 @@ description: "管理者がエンド ユーザー (従業員、学生、他のユ
 services: active-directory
 documentationcenter: 
 author: femila
-manager: femila
+manager: mtillman
 editor: 
 tags: azure-classic-portal
 ms.assetid: 81d4461e-21c8-4fdd-9076-0e4991979f62
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: fd0aab1a14bbd324e734e5efe8fe101e8a8dfefa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 173ad6f07699ca6bfa534dedc053663bba571382
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="usage-scenarios-and-deployment-considerations-for-azure-ad-join"></a>Azure AD 参加の使用シナリオとデプロイに関する考慮事項
 ## <a name="usage-scenarios-for-azure-ad-join"></a>Azure AD 参加の使用シナリオ
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 * [個人の Windows 10 デバイスを組織に参加させる](active-directory-azureadjoin-personal-device.md)
 
 ## <a name="enable-byod-in-your-organization-for-windows-10"></a>Windows 10 で組織の BYOD を有効にする
-会社のユーザーと従業員が個人の Windows デバイスを使用して (BYOD) 会社のアプリとリソースにアクセスできるように設定できます。 ユーザーは、Azure AD のアカウント (職場または学校アカウント) を個人の Windows デバイスに追加することで、安全かつポリシーに準拠する方法で、リソースにアクセスできます。
+会社のユーザーと従業員が個人の Windows デバイスを使用して (BYOD) 会社のアプリとリソースにアクセスできるように設定できます。 ユーザーは、Azure AD のアカウント (職場または学校アカウント) を個人の Windows デバイスに追加することで、安全かつポリシーに準拠している方法で、リソースにアクセスできます。
 
 ### <a name="prerequisites"></a>前提条件
 **企業レベル (管理者)**

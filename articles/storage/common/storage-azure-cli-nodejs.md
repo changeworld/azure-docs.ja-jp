@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: 55b857bd5b3d0c32553a60ff0649aeeb721cd6da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 772417012e4c6aa519e83177bd8e93778f6af3b5
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Azure Storage での Azure CLI 1.0 の使用
 
@@ -95,7 +95,7 @@ Azure サブスクリプションの詳細については、「 [Azure Active Di
 
 ## <a name="manage-storage-accounts-with-the-azure-cli"></a>Azure CLI を使用してストレージ アカウントを管理する
 ### <a name="connect-to-your-azure-subscription"></a>Azure サブスクリプションへの接続
-ほとんどのストレージ コマンドは、Azure サブスクリプションがなくても動作しますが、Azure CLI からサブスクリプションに接続することをお勧めします。 Azure CLI がサブスクリプションで動作するように構成するには、 [Azure CLI からの Azure サブスクリプションへの接続](../../xplat-cli-connect.md)に関するページの手順に従ってください。
+ほとんどのストレージ コマンドは、Azure サブスクリプションがなくても動作しますが、Azure CLI からサブスクリプションに接続することをお勧めします。 Azure CLI がサブスクリプションで動作するように構成するには、 [Azure CLI からの Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli)に関するページの手順に従ってください。
 
 ### <a name="create-a-new-storage-account"></a>新しいストレージ アカウントの作成
 Azure Storage を使用するには、ストレージ アカウントが必要です。 コンピューターを構成してサブスクリプションに接続できるようにすると、新しい Azure ストレージ アカウントを作成できます。

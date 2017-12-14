@@ -4,7 +4,7 @@ description: "OAuth1 プロトコルを使用して ID プロバイダーとし�
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
-ms.openlocfilehash: f3a7936a468df7b0a2713f1f30c5b91e74d1d917
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 629e0bbaa7c62ef5d381085588c6a99c203c41cb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/24/2017
 この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して Twitter アカウントのユーザーのサインインを有効にする方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
-「[Azure Active Directory B2C: カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」記事の手順を完了します。
+「[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」記事の手順を完了します。
 
 ## <a name="step-1-create-a-twitter-account-application"></a>手順 1: Twitter アカウント アプリケーションを作成する
 Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Twitter を使用するには、Twitter アプリケーションを作成し、適切なパラメーターを指定する必要があります。 Twitter アプリケーションは、[Twitter のサインアップ ページ](https://twitter.com/signup)に移動して登録することができます。
@@ -183,7 +183,7 @@ ID プロバイダーをセットアップしました。 ただし、どのサ�
 
 2. **[Identity Experience Framework]** を選択します。
 
-3. **[すべてのポリシー]** を選択します
+3. **[すべてのポリシー]** を選択します。
 
 4. **[ポリシーのアップロード]** を選択します。
 
@@ -206,4 +206,4 @@ Twitter アカウント ID プロバイダーを `ProfileEdit` ユーザー体�
 
 
 ## <a name="optional-download-the-complete-policy-files"></a>(省略可能) 完全なポリシー ファイルをダウンロードする
-[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-twitter-app)が提供されています。
+「[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-twitter-app)が提供されています。

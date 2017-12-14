@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f986c060b26489e412f6230665ec76a4730293f1
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: a97372002052570ccad2bb8bc442eb0dd1ca76d9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Azure Stack ポータルで Linux 仮想マシンを作成する
 
@@ -30,7 +30,7 @@ Azure Stack 仮想マシンは、Azure Stack ポータルで作成できます�
 
 * **SSH クライアントへのアクセス**
 
-   Azure Stack Development Kit (ASDK) を使用している場合は、使用している環境で SSH クライアントにアクセスできない可能性があります。 この場合は、SSH クライアントを含むいくつかのパッケージから選択できます。 たとえば、SSH クライアントと SSH キー ジェネレーターを含む PuTTY (puttygen.exe) をインストールできます。 指定できるオプションの詳細については、Azure の関連記事「[How to Use SSH keys with Windows on Azure (Azure 上の Windows で SSH キーを使用する方法)](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients)」を参照してください。
+   Azure Stack Development Kit (ASDK) を使用している場合は、使用している環境で SSH クライアントにアクセスできない可能性があります。 この場合は、SSH クライアントを含むいくつかのパッケージから選択できます。 たとえば、SSH クライアントと SSH キー ジェネレーターを含む PuTTY (puttygen.exe) をインストールできます。 指定できるオプションの詳細については、Azure の関連記事「[How to Use SSH keys with Windows on Azure (Azure 上の Windows で SSH キーを使用する方法)](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients)」を参照してください。
 
    このクイック スタートでは、PuTTY を使用して SSH キーを生成し、Linux 仮想マシンに接続します。 PuTTY をダウンロードしてインストールするには、[http://www.putty.org/](http://www.putty.org) にアクセスしてください。
 

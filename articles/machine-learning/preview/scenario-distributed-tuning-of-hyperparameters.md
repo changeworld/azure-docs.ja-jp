@@ -8,11 +8,11 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 9372e45e8666dc572b805dfd4a505c9446145079
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用したハイパーパラメーターの分散チューニング
 
@@ -36,8 +36,8 @@ ms.lasthandoff: 12/05/2017
 * [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)。
 * Workbench をインストールしてアカウントを作成するために、[インストールと作成のクイックスタート](./quickstart-installation.md)に関するページに従ってインストールした [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のコピー。
 * このシナリオでは、Docker エンジンをローカルにインストールした Windows 10 または MacOS で Azure ML Workbench を実行していることを前提とします。 
-* リモート Docker コンテナーを使用するシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-provision-vm)に従って Ubuntu データ サイエンス仮想マシン (DSVM) をプロビジョニングします。 少なくとも 8 個のコアと 28 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 D4 インスタンスの仮想マシンにはこのような容量があります。 
-* Spark クラスターでこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って Azure HDInsight クラスターをプロビジョニングします。 クラスターには少なくとも次のものを用意することをお勧めします。 
+* リモート Docker コンテナーを使用するシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)に従って Ubuntu データ サイエンス仮想マシン (DSVM) をプロビジョニングします。 少なくとも 8 個のコアと 28 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 D4 インスタンスの仮想マシンにはこのような容量があります。 
+* Spark クラスターでこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って Azure HDInsight クラスターをプロビジョニングします。 クラスターには少なくとも次のものを用意することをお勧めします。 
 - 6 個の worker ノード
 - 8 個のコア
 - ヘッド ノードと worker ノードの両方に 28 GB のメモリ。 D4 インスタンスの仮想マシンにはこのような容量があります。 クラスターのパフォーマンスを最大化するために、次のパラメーターを変更することをお勧めします。
@@ -45,11 +45,11 @@ ms.lasthandoff: 12/05/2017
 - spark.executor.cores
 - spark.executor.memory 
 
-[こちらの手順](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-resource-manager)に従って、[Custom spark-defaults]\(カスタム Spark 既定値\) セクションの定義を編集できます。
+[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager)に従って、[Custom spark-defaults]\(カスタム Spark 既定値\) セクションの定義を編集できます。
 
      **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
 
-* データセットの格納に使用される Azure ストレージ アカウントを作成します。 [こちらの手順](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account)に従って、ストレージ アカウントを作成します。
+* データセットの格納に使用される Azure ストレージ アカウントを作成します。 [こちらの手順](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)に従って、ストレージ アカウントを作成します。
 
 ## <a name="data-description"></a>データの説明
 

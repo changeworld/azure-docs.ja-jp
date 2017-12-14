@@ -4,7 +4,7 @@ description: "Azure Active Directory と Egnyte の間でシングル サイン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 62d01333b61e73c83588d2d1701c0c300df4ab1c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94c71859aff01b60cee1b49664ad62257f9f9f2a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>チュートリアル: Azure Active Directory と Egnyte の統合
 
@@ -159,7 +159,7 @@ Egnyte で Azure AD のシングル サインオンを構成してテストす�
    
     g. **[ドメイン固有の発行者の値を使用]** として **[無効]** を選択します。
    
-    h. [ **Save**] をクリックします。
+    h. **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -216,7 +216,7 @@ Azure AD ユーザーが Egnyte にログインできるようにするには、
 
    a. プロビジョニングする有効な Azure Active Directory アカウントの、**メール**、**ユーザー名**などの詳細を入力します。
    
-   b. [ **Save**] をクリックします。
+   b. **[Save]** をクリックします。
     
     >[!NOTE]
     >Azure Active Directory アカウント保有者に通知メールが届きます。

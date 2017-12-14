@@ -4,7 +4,7 @@
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Attach an empty disk
-1. Azure CLI 1.0 を開いて、[Azure サブスクリプションに接続](../articles/xplat-cli-connect.md)します。 Azure サービス管理モード (`azure config mode asm`) であることを確認します。
+1. Azure CLI 1.0 を開いて、[Azure サブスクリプションに接続](/cli/azure/authenticate-azure-cli)します。 Azure サービス管理モード (`azure config mode asm`) であることを確認します。
 2. 次の例に示すように「`azure vm disk attach-new`」と入力し、新しいディスクを作成して接続します。 *myVM* は Linux 仮想マシンの名前で置き換え、ディスクのサイズを GB 単位で指定します (この例では *100 GB*)。
 
     ```azurecli
@@ -37,7 +37,7 @@
 ## <a name="attach-an-existing-disk"></a>既存のディスクの接続
 既存のディスクを接続する場合は、ストレージ アカウントで利用できる .vhd を持っている必要があります。
 
-1. Azure CLI 1.0 を開いて、[Azure サブスクリプションに接続](../articles/xplat-cli-connect.md)します。 Azure サービス管理モード (`azure config mode asm`) であることを確認します。
+1. Azure CLI 1.0 を開いて、[Azure サブスクリプションに接続](/cli/azure/authenticate-azure-cli)します。 Azure サービス管理モード (`azure config mode asm`) であることを確認します。
 2. 接続する VHD が Azure サブスクリプションに既にアップロードされているかどうかを確認します。
    
     ```azurecli

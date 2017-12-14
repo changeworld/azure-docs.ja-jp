@@ -4,7 +4,7 @@ description: "この記事では、アプリケーションを Azure Active Dire
 services: active-directory
 documentationcenter: 
 author: shoatman
-manager: kbrint
+manager: mtillman
 editor: 
 ms.assetid: 3321d130-f2a8-4e38-b35e-0959693f3576
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 02/09/2016
 ms.author: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: a97c6af38b1d3191447ad16a789a034a9d475422
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 51ef7e554b6fd3764893f0fd35464088e42e49f8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>アプリケーションを Azure AD に追加する方法と理由
 Azure Active Directory のインスタンスでアプリケーションの一覧を表示したときに最初に理解しにくいことの 1 つは、アプリケーションの元の場所と追加された理由を理解することです。  この記事では、ディレクトリでのアプリケーションの表現方法と、アプリケーションがディレクトリに追加された方法を理解するのに役立つコンテキストについて説明します。

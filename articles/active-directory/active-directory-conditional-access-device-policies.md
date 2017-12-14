@@ -4,7 +4,7 @@ description: "ユーザー コンプライアンスやサービスへのアク�
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 8664c0bb-bba1-4012-b321-e9c8363080a0
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: d33babd331570624ca6a0fc967c79dbc467a1b40
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 2b586aee9559b62d4cc8b21ab88ab193e61e7c14
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="active-directory-conditional-access-device-policies-for-office-365-services"></a>Office 365 サービス用の Active Directory の条件付きアクセスのデバイス ポリシー
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) は 、Office 365 サービスへのアクセ�
 
 ## <a name="how-does-a-conditional-access-policy-work"></a>条件付きアクセス ポリシーのしくみ
 
-サポートされているデバイス プラットフォームから、ユーザーが Office 365 サービスへのアクセスを要求すると、Azure AD によってそのユーザーとデバイスが認証されます。 Azure AD は、ユーザーがサービスに対して設定されているポリシーに準拠している場合にのみ、そのサービスへのアクセス権を付与します。 登録されていないデバイスを使用しているユーザーには、登録方法や社内の Office 365 サービスにアクセスするための準拠の方法に関する手順が示されます。 iOS および Android デバイスを使用しているユーザーは、Intune ポータル サイト アプリケーションを使用して自分のデバイスを登録する必要があります。 ユーザーがデバイスを登録すると、そのデバイスは Azure AD に登録されます。これでデバイス管理とコンプライアンスについて登録済みの状態となります。 Office 365 サービスに対するモバイル デバイスの管理を行うには、Azure AD デバイス登録サービスと Microsoft Intune を併用する必要があります。 デバイス ポリシーが適用されている場合、ユーザーが Office 365 サービスにアクセスするにはデバイスの登録が必要です。
+サポートされているデバイス プラットフォームから、ユーザーが Office 365 サービスへのアクセスを要求すると、Azure AD によってそのユーザーとデバイスが認証されます。 Azure AD は、ユーザーがサービスに対して設定されているポリシーに準拠している場合にのみ、そのサービスへのアクセス権を付与します。 登録されていないデバイスを使用しているユーザーには、登録方法や社内の Office 365 サービスにアクセスするために準拠する方法に関する手順が示されます。 iOS および Android デバイスを使用しているユーザーは、Intune ポータル サイト アプリケーションを使用して自分のデバイスを登録する必要があります。 ユーザーがデバイスを登録すると、そのデバイスは Azure AD に登録されます。これでデバイス管理とコンプライアンスについて登録済みの状態となります。 Office 365 サービスに対するモバイル デバイスの管理を行うには、Azure AD デバイス登録サービスと Microsoft Intune を併用する必要があります。 デバイス ポリシーが適用されている場合、ユーザーが Office 365 サービスにアクセスするにはデバイスの登録が必要です。
 
 ユーザーによるデバイス登録が成功すると、そのデバイスは信頼済みの状態となります。 Azure AD は、認証されたユーザーに社内のアプリケーションへのシングル サインオン アクセスを提供します。 Azure AD は、ユーザーが初めてアクセスを要求したときだけでなく、アクセスへの要求を更新するたびに、サービスへのアクセス権を付与するための条件付きアクセス ポリシーを適用します。 サインインの資格情報が変更された場合、対象デバイスが紛失するか盗まれた場合、または更新が要求された時点でポリシーの条件が満たされていない場合に、ユーザーはサービスへのアクセスを拒否されます。
 

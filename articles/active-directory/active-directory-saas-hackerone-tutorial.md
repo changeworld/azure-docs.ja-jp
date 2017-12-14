@@ -4,7 +4,7 @@ description: "Azure Active Directory と HackerOne の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 229d1efb-b6a5-4df8-9839-5d551487db4e
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 657d8d4c98b7b133698a5cda0aa675da7f68c464
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f8a4b6b3b089ce075b3398ac36fe5bd1979c366
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル: Azure Active Directory と HackerOne の統合
 
@@ -150,7 +150,7 @@ HackerOne で Azure AD のシングル サインオンを構成してテスト�
 
     c. Azure Portal からダウンロードした **証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X509 証明書]** ボックスに貼り付けます。
     
-    d. [ **Save**] をクリックします。
+    d. **[Save]** をクリックします。
 
 11. [Authentication Settings] ダイアログで、次の手順を実行します。
    

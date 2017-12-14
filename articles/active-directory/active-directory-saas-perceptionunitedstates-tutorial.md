@@ -4,7 +4,7 @@ description: "Azure Active Directory と Perception United States (非 UltiPro) 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: b4a8f026-cb5f-41eb-9680-68eddc33565e
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e2f9f979f8b94e0c043d4db6e93bd7a53c3dd27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d94d233a12e51bf851a791fda481b91c513d64b7
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合
 
@@ -70,7 +70,7 @@ Azure AD への Perception United States (非 UltiPro) の統合を構成する�
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Perception United States (非 UltiPro)**」と入力し、結果パネルで [**Perception United States (非 UltiPro)**] を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Perception United States (非 UltiPro)**」と入力し、結果パネルで **[Perception United States (非 UltiPro)]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Perception United States (非 UltiPro)](./media/active-directory-saas-perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
 

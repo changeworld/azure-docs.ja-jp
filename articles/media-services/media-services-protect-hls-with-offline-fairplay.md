@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: bf5828ecd6b6bd2e862c4d7709014ecac47c6be0
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: b68ceac2056f0a9a7a9c4df7984789858c77a626
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="offline-fairplay-streaming"></a>オフラインの FairPlay Streaming
 Microsoft Azure Media Services では、次のものを対象にして、適切に設計された[コンテンツ保護サービス](https://azure.microsoft.com/services/media-services/content-protection/)のセットが提供されます。
@@ -189,7 +189,7 @@ FPS Server SDK の v3 または v4 サンプルでは、マスター再生リス
 - **FPS オフライン モードの次の API で、最後のパラメーターは何を表していますか。**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-この API のドキュメントは[こちら](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)にあります。 このパラメーターはオフライン レンタルの期間を表します (単位は時間)。
+この API のドキュメントは[こちら](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)にあります。 このパラメーターはオフライン レンタルの期間を表します (単位は時間)。
 - **iOS デバイスでのダウンロード済み/オフライン ファイルの構造はどのようなものですか。** iOS デバイスにダウンロードされたファイルは、次のような構造になっています (スクリーンショット)。 `_keys` フォルダーには、ダウンロードされた FPS ライセンスが格納されます (ライセンス サービス ホストごとに 1 つのストア ファイル)。 `.movpkg` フォルダーには、オーディオとビデオのコンテンツが格納されます。 名前の最後がダッシュと数字になっている最初のフォルダーには、ビデオのコンテンツが含まれます。 数字はビデオ再生の "PeakBandwidth" です。 名前の最後がダッシュと 0 になっている 2 番目のフォルダーには、オーディオのコンテンツが含まれます。 "Data" という名前の 3 番目のフォルダーには、FPS コンテンツのマスター再生リストが含まれます。 boot.xml では、`.movpkg` フォルダーの内容の完全な説明が提供されています (boot.xml ファイルのサンプルは以下を参照してください)。
 
 ![オフライン FairPlay の iOS サンプル アプリ ファイルの構造](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)

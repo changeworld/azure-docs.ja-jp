@@ -4,7 +4,7 @@ description: "これは、MFA で次に何を実行するかを説明する Azur
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 75af734e-4b12-40de-aba4-b68d91064ae8
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -14,18 +14,15 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 11f3a3fdc5caf96ce672976067e47680822315d4
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 4dc029e01762d9ab6eb1c930f2941d0c1ac8ed7d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Azure Multi-Factor Authentication の設定を構成する - パブリック プレビュー
+# <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
 この記事は、導入した Azure Multi-factor Authentication を管理する際に役立ちます。  ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。  ただし、[Azure Multi-factor Authentication のすべてのバージョン](/multi-factor-authentication-get-started.md#what-features-do-i-need)ですべての機能を使用できるわけではありません。
-
->[!NOTE]
->これらの設定は、Azure Portal でパブリック プレビュー中です。 pfweb ポータルで Azure Multi-Factor Authentication の設定を管理する方法については、「[Azure Multi-Factor Authentication の設定を構成する](multi-factor-authentication-whats-next-pfweb.md)」を参照してください。
 
 | 機能 | 説明 | 
 |:--- |:--- |

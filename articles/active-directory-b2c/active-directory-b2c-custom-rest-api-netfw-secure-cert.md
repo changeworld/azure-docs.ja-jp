@@ -4,7 +4,7 @@ description: "クライアント証明書を使用して Azure AD B2C でのカ�
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: 867484799020a4e65844523a88240b3d550c69f7
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 9547ba8c65360a03168ff1b6eba01038554e7fd3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
 関連する記事では、Azure Active Directory B2C (Azure AD B2C) と対話する [RESTful サービスを作成](active-directory-b2c-custom-rest-api-netfw.md)します。
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/21/2017
 クライアント証明書を要求するように **Azure App Service** を設定するには、Web アプリの `clientCertEnabled` サイト設定を *true* に設定します。 この変更を行うには、REST API を使用する必要があります。 この設定は、Azure Portal の管理エクスペリエンスを通じて使用できます。 この設定を見つけるには、RESTful アプリケーションの **[設定]** メニューの **[開発ツール]** で、**[リソース エクスプローラー]** を選択します。
 
 >[!NOTE]
->Azure App Service プランが Standard 以上であることを確認してください。 詳細については、[Azure App Service プランの詳細な概要](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)に関する記事をご覧ください。
+>Azure App Service プランが Standard 以上であることを確認してください。 詳細については、[Azure App Service プランの詳細な概要](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)に関する記事をご覧ください。
 
 
 次の図のように、[Azure Resource Explorer (プレビュー)](https://resources.azure.com) を使用して、**clientCertEnabled** プロパティを *true* に設定します。
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/21/2017
 ![Azure Resource Explorer で clientCertEnabled を設定](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-resource-explorer.png)
 
 >[!NOTE]
->**clientCertEnabled** プロパティを設定する方法の詳細については、[Web アプリの TLS 相互認証を構成する](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-configure-tls-mutual-auth)方法に関する記事をご覧ください。
+>**clientCertEnabled** プロパティを設定する方法の詳細については、[Web アプリの TLS 相互認証を構成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)方法に関する記事をご覧ください。
 
 >[!TIP]
 >また、[ARMClient](https://github.com/projectkudu/ARMClient) ツールを使用して、REST API 呼び出しを簡単に作成することもできます。
@@ -165,7 +165,7 @@ Azure AD B2C によって RESTful サービスに送信されたクライアン�
 このセクションでは、認証するために証明書のプロパティを検証するサンプル ASP.NET コードを追加します。
 
 > [!NOTE]
->クライアント証明書認証に対して Azure App Service を構成する方法の詳細については、[Web アプリの TLS 相互認証を構成する](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-configure-tls-mutual-auth)方法に関する記事をご覧ください。
+>クライアント証明書認証に対して Azure App Service を構成する方法の詳細については、[Web アプリの TLS 相互認証を構成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)方法に関する記事をご覧ください。
 
 ### <a name="61-add-application-settings-to-your-projects-webconfig-file"></a>6.1 アプリケーション設定をプロジェクトの web.config ファイルに追加する
 以前に作成した Visual Studio プロジェクトの *web.config* ファイルで、次のアプリケーション設定を `appSettings` 要素の後に追加します。

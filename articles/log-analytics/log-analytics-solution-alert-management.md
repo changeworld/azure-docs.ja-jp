@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: bwren
-ms.openlocfilehash: 4a394ead09794c52e92dbd2db8be8166d1fab83b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ec80fccdf4521792ff6be115ec66227f0fe1ed2
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) アラート管理ソリューション
 
@@ -49,7 +49,7 @@ System Center Operations Manager 管理グループが OMS ワークスペース
 
 | 接続されているソース | サポート | 説明 |
 |:--- |:--- |:--- |
-| [Windows エージェント](log-analytics-windows-agents.md) | なし |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
+| [Windows エージェント](log-analytics-windows-agent.md) | なし |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | いいえ |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
 | [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) |あり |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
 

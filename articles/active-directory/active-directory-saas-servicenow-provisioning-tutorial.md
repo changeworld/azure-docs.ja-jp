@@ -4,7 +4,7 @@ description: "Azure AD から ServiceNow に対してユーザー アカウン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: e338804a0c5fcb09dfdfd9bf18ae4d0466cd9a82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 06772c9e21936d224f721413ccdc1c859b07b940
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-configuring-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>チュートリアル: ServiceNow を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる
 

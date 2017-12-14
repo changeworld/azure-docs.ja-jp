@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 433424a6700d3e8940e3d1142ce2ff579a92067c
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 772e51519d1ad45ababa0f4c1f4b402d280f9c14
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>コンテナーで Docker ボリューム プラグインとログ ドライバーを使用する
 Azure Service Fabric では、コンテナー サービスへの [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)および [Docker ログ ドライバー](https://docs.docker.com/engine/admin/logging/overview/)の指定がサポートされています。 コンテナーが別のホストに移動または再開された場合でも、[Azure Files](https://azure.microsoft.com/services/storage/files/) にデータを維持できます。
@@ -28,7 +28,7 @@ Azure Service Fabric では、コンテナー サービスへの [Docker ボリ�
 
 ## <a name="install-the-docker-volumelogging-driver"></a>Docker ボリューム/ログ ドライバーをインストールする
 
-Docker ボリューム/ログ ドライバーがコンピューターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-model#describe-a-service)を使って実行できます。
+Docker ボリューム/ログ ドライバーがコンピューターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service)を使って実行できます。
 
 [Azure 用 Docker ボリューム ドライバー](https://docs.docker.com/docker-for-azure/persistent-data-volumes/)をインストールするスクリプトの例を次に示します。
 

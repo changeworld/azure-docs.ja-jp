@@ -4,7 +4,7 @@ description: "アプリケーションの追加または構成に関する問題
 services: active-directory
 documentationcenter: 
 author: ajamess
-manager: kbrint
+manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 11231bb5af5374f3c05cfd5038e1ad03cdd01372
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3b3ba7a0e42ec06abc72c6641aede370a76c8fd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="problems-adding-or-configuring-applications"></a>アプリケーションの追加または構成に関する問題
 

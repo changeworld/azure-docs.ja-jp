@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/11/2017
 ms.author: asgang
-ms.openlocfilehash: aa8a79cd152a532ef8989e61c2ec9609b826634b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 8ffc4a5a573b1c5951fab98fb766aed36f626fe4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする
 
@@ -31,7 +31,6 @@ ms.lasthandoff: 11/28/2017
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、Dynamics AX アプリケーションのディザスター リカバリー ソリューションを作成する方法について説明します。 ワンクリックの復旧計画を使用した計画された/計画されていない/テスト フェールオーバー、サポートされている構成、前提条件についても説明します。
 
-Site Recovery ベースのディザスター リカバリー ソリューションは、Dynamics AX により完全にテスト済みであり、認定され、推奨されています。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -112,7 +111,7 @@ Site Recovery で復旧計画を作成して、フェールオーバー プロ�
 
 3. **[ソース]** と **[ターゲット]** を選択します。 ターゲットには、Azure またはセカンダリ サイトを指定できます。 Azure を選択した場合は、デプロイ モデルを指定する必要があります。
 
-    ![復旧計画の作成](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
+    ![[復旧計画の作成]](./media/site-recovery-dynamics-ax/recoveryplancreation1.png)
 
 4. 復旧計画用の Application Object Server とクライアント VM を選択し、[✓] を選択します。
 

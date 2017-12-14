@@ -4,7 +4,7 @@ description: "HTTP 基本認証を使用して Azure AD B2C でのカスタム R
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,18 +14,18 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: 641e0cc691eae77ef0480e5743d85e020cd8d354
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: d65d94bb5c807abfd6cbb1fae786a02f179e93d6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
 [関連する Azure AD B2C の記事](active-directory-b2c-custom-rest-api-netfw.md)では、Azure Active Directory B2C (Azure AD B2C) のユーザー体験を認証なしで統合する RESTful サービス (Web API) を作成しました。 
 
 この記事では、RESTful サービスに HTTP 基本認証を追加して、B2C を含む検証済みのユーザーのみが API にアクセスできるようにします。 HTTP 基本認証では、ユーザーの資格情報 (アプリ ID とアプリ シークレット) をカスタム ポリシーに設定します。 
 
-詳細については、「[Basic authentication in ASP.NET web API](https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication)」(ASP.NET Web API における基本認証) を参照してください。
+詳細については、「[Basic authentication in ASP.NET web API](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)」(ASP.NET Web API における基本認証) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 [REST API 要求交換の Azure AD B2C ユーザー体験への統合](active-directory-b2c-custom-rest-api-netfw.md)に関する記事の手順を完了してください。

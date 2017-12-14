@@ -4,7 +4,7 @@ description: "ハイブリッド ID の設計上の考慮事項のガイドの�
 documentationcenter: 
 services: active-directory
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: e2a70f2474298618dd8ee11c583f8f445d7eba7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94e67c5ea0028419e9bf74420e2bb46709b3df01
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory ハイブリッド ID の設計上の考慮事項
 企業世界では消費者基準のデバイスが広まっており、クラウド基準の SaaS (Software-as-a-Service/サービスとしてのソフトウェア) アプリケーションの導入が簡単になっています。 結果的に、内部データセンターとクラウド プラットフォームにわたりユーザーのアプリケーション アクセスを制御することが課題となります。  

@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C によってセキュリティ保護さ
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
-manager: mbaldwin
+manager: mtillman
 editor: bryanla
 ms.assetid: 4dcca66f-29e4-4b4d-8840-50baad736bd7
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: 6ab73e5c79742ab548733f5712dee1e28461db9f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93589352094fdd556811ba906ee27e7b8ac1d8b5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Azure Active Directory B2C: Google+ アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-google-application"></a>Google+ アプリケーションを作成する

@@ -4,7 +4,7 @@ description: "Azure Active Directory と Jobscience の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 77282dcc-bbe2-4728-953d-adb4ab6a713b
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 66bec35a8f17482433dbf02827b90620d1cff378
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a2840968cadb3d78dee9d35fd0048d5941508cd3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>チュートリアル: Azure Active Directory と Jobscience の統合
 
@@ -173,7 +173,7 @@ Jobscience で Azure AD のシングル サインオンを構成してテスト�
 
     h. **[Identity Provider Logout URL]\(ID プロバイダー ログアウト URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
-    i. [ **Save**] をクリックします。
+    i. **[Save]** をクリックします。
 
 14. 左側のナビゲーション ウィンドウの **[管理]** セクションで、**[ドメインの管理]** をクリックして関連するセクションを展開し、**[マイ ドメイン]** をクリックして **[マイ ドメイン]** ページを開きます。 
     
@@ -265,7 +265,7 @@ Azure AD ユーザーが Jobscience にログインできるようにするに�
 
    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Nick Name]\(ニック ネーム\)** ボックスに、ユーザーのニック ネーム (Simon など) を入力します。
 
-   g. [ **Save**] をクリックします。
+   g. **[Save]** をクリックします。
 
     
 > [!NOTE]

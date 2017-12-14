@@ -4,7 +4,7 @@ description: "REST API エンドポイントを介して Azure AD にプログ�
 services: active-directory
 documentationcenter: 
 author: viv-liu
-manager: mbaldwin
+manager: mtillman
 editor: mbaldwin
 ms.assetid: 5471ad74-20b3-44df-a2b5-43cde2c0a045
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: viviali
 ms.custom: aaddev
-ms.openlocfilehash: 79bb96171c00fa62f24113800c3824856febe728
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 815b9f75864ba3a08f623af12417391fba430f7d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 > [!IMPORTANT]

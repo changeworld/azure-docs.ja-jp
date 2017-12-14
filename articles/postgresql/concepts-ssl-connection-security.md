@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: 
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 3173964f0315559b0839fd7e659f8f3bd2c30b2a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: d84a9fd45f2e6e44218ebd36d19c6a6c5f3438ce
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL での SSL 接続の構成
 Azure Database for PostgreSQL では、クライアント アプリケーションを PostgreSQL サービスに接続する際、Secure Sockets Layer (SSL) の使用が優先されます。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化され、"man in the middle" 攻撃から保護されます。
@@ -110,10 +110,6 @@ openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
 
 ### <a name="connecting-to-azure-database-for-postgresql-with-ssl-certificate-authentication"></a>SSL 証明書認証での Azure Database for PostgreSQL への接続
 証明書を適切にデコードしたら、SSL 経由でデータベース サーバーに安全に接続できます。 サーバー証明書検証を許可するには、その証明書を、ユーザーのホーム ディレクトリの ~/.postgresql/root.crt ファイルに配置する必要があります  (Microsoft Windows の場合、ファイル名は %APPDATA%\postgresql\root.crt です)。 Azure Database for PostgreSQL に接続するための手順を次に示します。
-
-> [!NOTE]
-> 現時点で、既知の問題が 1 つあります。サービスへの接続で "sslmode=verify-full" を使用すると、次のエラーで接続が失敗します。_"&lt;リージョン&gt;.control.database.windows.net" (およびその他 7 つの名前) のサーバー証明書がホスト名 "&lt;サーバー名&gt;.postgres.database.azure.com" と一致しません_。
-> "sslmode=verify-full" を使用する必要がある場合は、接続文字列のホスト名として、サーバーの名前付け規則 (**&lt;サーバー名&gt;.database.windows.net**) を使用してください。 この制限は、今後削除する予定です。 その他の [SSL モード](https://www.postgresql.org/docs/9.6/static/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS)を使用する接続では、推奨されるホストの命名規則 (**&lt;サーバー名&gt;.postgres.database.azure.com**) を引き続き使用してください。
 
 #### <a name="using-psql-command-line-utility"></a>psql コマンド ライン ユーティリティの使用
 次の例は、psql コマンド ライン ユーティリティを使用して PostgreSQL サーバーに正常に接続する方法を示しています。 作成した `root.crt` ファイルと、`sslmode=verify-ca` または `sslmode=verify-full`オプションを使用してください。

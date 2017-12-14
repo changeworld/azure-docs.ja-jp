@@ -4,7 +4,7 @@ description: "Azure Active Directory と ClearCompany の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 2819da18-c7eb-43cf-aac3-1403a540bf6e
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jeedes
-ms.openlocfilehash: ed8adf38d7e4ed1525e8174497cef6fda5b6f4b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f17256f4302a9fd94e3f4497ed27d5e4929fc276
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>チュートリアル: Azure Active Directory と ClearCompany の統合
 

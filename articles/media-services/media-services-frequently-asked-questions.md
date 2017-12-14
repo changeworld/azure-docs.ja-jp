@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: juliako
-ms.openlocfilehash: e2a580b835496c677f048599ae83287dbb61621d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab66994b0212593aff1384b0801f3359eb0a3751
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -60,7 +60,7 @@ A: Media Services は、ストリーミング コンテンツ (たとえば、ht
 
 Q: REST を使用して接続する方法を教えてください。
 
-A: AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。 
+A: AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
 Q: エンコーディング プロセスでビデオをローテーションする方法を教えてください。
 

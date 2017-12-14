@@ -4,7 +4,7 @@ description: "Azure AD 認証ライブラリ (ADAL) を使用すると、クラ�
 services: active-directory
 documentationcenter: 
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: mbaldwin
 ms.assetid: 2e4fc79a-0285-40be-8c77-65edee408a22
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 08/25/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 1b79fb5b280b0cb4e087c2acde07796fd51e81fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f017e3d323b98660fdee902770652b3165e70e5e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 認証ライブラリ
 Azure Active Directory 認証ライブラリ (ADAL) を使用すると、アプリケーション開発者は、クラウドまたはオンプレミスの Active Directory (AD) に対してユーザーを認証し、API 呼び出しを保護するためのトークンを取得できます。 ADAL の次の機能を利用すると、開発者にとって認証が簡単になります。
@@ -29,7 +29,7 @@ Azure Active Directory 認証ライブラリ (ADAL) を使用すると、アプ�
  - その他
 
 > [!NOTE]
-> Azure AD v2.0 ライブラリ (MSAL) をお探しの場合には、 [MSAL ライブラリ ガイド](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-libraries)を参照してください。 
+> Azure AD v2.0 ライブラリ (MSAL) をお探しの場合には、 [MSAL ライブラリ ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)を参照してください。 
 > 
 > 
 
@@ -59,7 +59,7 @@ Azure Active Directory 認証ライブラリ (ADAL) を使用すると、アプ�
 
 ### <a name="v20-client-libraries-msal"></a>v2.0 クライアント ライブラリ (MSAL)
 
-[Azure AD v2.0 エンドポイント](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare)は、1 つのエンドポイントの裏で Azure AD アカウントと Microsoft アカウントを組み合わせたものです。 開発者がこのエンドポイントにアクセスする際は、ADAL の代わりに [運用環境対応のプレビュー MSAL ライブラリ](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-libraries)を利用できます。
+[Azure AD v2.0 エンドポイント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)は、1 つのエンドポイントの裏で Azure AD アカウントと Microsoft アカウントを組み合わせたものです。 開発者がこのエンドポイントにアクセスする際は、ADAL の代わりに [運用環境対応のプレビュー MSAL ライブラリ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)を利用できます。
 
 | プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス
 | --- | --- | --- | --- | --- | --- |

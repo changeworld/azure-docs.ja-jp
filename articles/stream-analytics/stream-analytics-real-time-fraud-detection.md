@@ -26,11 +26,11 @@
     >[!NOTE]
     >ダウンロードされた zip ファイルが Windows によってブロックされる可能性があります。 ファイルを解凍できない場合は、ファイルを右クリックし、**[プロパティ]** を選びます。 "このファイルは他のコンピューターから取得したものです。このコンピューターを保護するため、このファイルへのアクセスはブロックされる可能性があります" というメッセージが表示されたら、**[ブロック解除]** オプションをオンにして、**[適用]** をクリックします。
 
-Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Storage コンテナーの内容を表示するためのツールも必要です。 Visual Studio を使っている場合は、[Azure Tools for Visual Studio](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) または [Visual Studio Cloud Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-resources-managing-with-cloud-explorer) を使うことができます。 または、[Azure Storage エクスプローラー](http://storageexplorer.com/)や [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) などのスタンドアロン ツールをインストールすることもできます。 
+Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Storage コンテナーの内容を表示するためのツールも必要です。 Visual Studio を使っている場合は、[Azure Tools for Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) または [Visual Studio Cloud Explorer](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) を使うことができます。 または、[Azure Storage エクスプローラー](http://storageexplorer.com/)や [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) などのスタンドアロン ツールをインストールすることもできます。 
 
 ## <a name="create-an-azure-event-hubs-to-ingest-events"></a>イベントを取り込むための Azure イベント ハブを作成する
 
-データ ストリームを分析するには、Azure に "*取り込む*" 必要があります。 データを取り込む一般的な方法は、[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を使うことです。Azure Event Hubs は、1 秒間に数百万件のイベントを取り込み、処理して、イベント情報を格納することができます。 このチュートリアルでは、イベント ハブを作成し、呼び出しイベント ジェネレーター アプリでそのイベント ハブに呼び出しデータを送信します。 Event Hubs について詳しくは、[Azure Service Bus のドキュメント](https://docs.microsoft.com/en-us/azure/service-bus/)をご覧ください。
+データ ストリームを分析するには、Azure に "*取り込む*" 必要があります。 データを取り込む一般的な方法は、[Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を使うことです。Azure Event Hubs は、1 秒間に数百万件のイベントを取り込み、処理して、イベント情報を格納することができます。 このチュートリアルでは、イベント ハブを作成し、呼び出しイベント ジェネレーター アプリでそのイベント ハブに呼び出しデータを送信します。 Event Hubs について詳しくは、[Azure Service Bus のドキュメント](https://docs.microsoft.com/azure/service-bus/)をご覧ください。
 
 >[!NOTE]
 >この手順についてさらに詳しくは、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 
@@ -300,7 +300,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
     ![6 レコードが生成されたことを示す自己結合の Stream Analytics ジョブの出力](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-sample-output-self-join.png)
 
-3. [ **Save**] をクリックします。 自己結合クエリが Stream Analytics ジョブの一部として保存されます  (サンプル データは保存されません)。
+3. **[Save]** をクリックします。 自己結合クエリが Stream Analytics ジョブの一部として保存されます  (サンプル データは保存されません)。
 
     ![Stream Analytics ジョブを保存する](./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png)
 

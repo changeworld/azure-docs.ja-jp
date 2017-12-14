@@ -4,7 +4,7 @@ description: "Microsoft アプリ登録ポータルの各種機能の説明。"
 services: active-directory
 documentationcenter: 
 author: lnalepa
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: f0507c28-9464-4d3e-bd53-de9053fd5278
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: c60499c425a7fd800f7ca9a5bac1fed5af73b801
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3340df3fcc2456a355e523bfcf09978a16966036
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="app-registration-reference"></a>アプリ登録のリファレンス
 このドキュメントでは、Microsoft アプリ登録ポータル ([https://apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) の各種機能のコンテキストと説明を提供します。

@@ -4,7 +4,7 @@ description: "Azure Active Directory と FreshDesk の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: f4b47e345a40b64f69ad8a4618564662b4a6c879
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 232058fc35c8206c4d8f4e990d1aea5d3d9a5a69
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル: Azure Active Directory と FreshDesk の統合
 
@@ -219,7 +219,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
    d. **[エージェント ロール]** を選択し、**[割り当て]** をクリックします。
        
-   e. [ **Save**] をクリックします。     
+   e. **[Save]** をクリックします。     
    
     >[!NOTE]
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。 

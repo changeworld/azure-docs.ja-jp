@@ -4,7 +4,7 @@ description: "Azure Active Directory と SAML SSO for Confluence by resolution G
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 6b47d483-d3a3-442d-b123-171e3f0f7486
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 17bd8294c957c0666ffe75d1ff06b863f1176048
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 70c01e2ee5d97ed5d09e9281c69f1110b5c220da
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Confluence by resolution GmbH の統合
 

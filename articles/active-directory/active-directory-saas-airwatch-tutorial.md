@@ -4,7 +4,7 @@ description: "Azure Active Directory と AirWatch の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 96a3bb1c-96c6-40dc-8ea0-060b0c2a62e5
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 1996ec97e7c0d94c5606ca43bb5956548f1f3712
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a0e314aaf59a70107058829ea84dde362f097274
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>チュートリアル: Azure Active Directory と AirWatch の統合
 
@@ -144,7 +144,7 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
    
    ![ユーザー](./media/active-directory-saas-airwatch-tutorial/ic791922.png "User")
 
-11. [ **Server** ] タブをクリックします。
+11. **[Server]** タブをクリックします。
    
    ![サーバー](./media/active-directory-saas-airwatch-tutorial/ic791923.png "Server")
 
@@ -154,11 +154,11 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
     
     a. **[Directory Type]** として **[None]** を選択します。
 
-    b. [ **Use SAML For Authentication**] を選択します。
+    b. **[Use SAML For Authentication]** を選択します。
 
-    c. ダウンロードした証明書をアップロードするには、[ **Upload**] をクリックします。
+    c. ダウンロードした証明書をアップロードするには、**[Upload]** をクリックします。
 
-13. [ **Request** ] セクションで、次の手順に従います。
+13. **[Request]** セクションで、次の手順に従います。
     
     ![要求](./media/active-directory-saas-airwatch-tutorial/ic791925.png "Request")  
 
@@ -168,13 +168,13 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
 
     c. **[NameID Format]** として **[Email Address]** を選択します。
 
-    d. [ **Save**] をクリックします。
+    d. **[Save]** をクリックします。
 
-14. [ **User** ] タブをもう一度クリックします。
+14. **[User]** タブをもう一度クリックします。
     
     ![ユーザー](./media/active-directory-saas-airwatch-tutorial/ic791926.png "User")
 
-15. [ **Attribute** ] セクションで、次の手順に従います。
+15. **[Attribute]** セクションで、次の手順に従います。
     
     ![属性](./media/active-directory-saas-airwatch-tutorial/ic791927.png "Attribute")
 
@@ -190,7 +190,7 @@ AirWatch で Azure AD のシングル サインオンを構成してテストす
 
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Email]** ボックスに、**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** と入力します。
 
-    g. [ **Save**] をクリックします。
+    g. **[Save]** をクリックします。
 
 <CE>
 
@@ -240,7 +240,7 @@ Azure AD ユーザーが AirWatch にログインできるようにするには�
 3. **[Users]** メニューで、**[List View]**、**[Add] \> [Add User]** の順にクリックします。
    
    ![ユーザーの追加](./media/active-directory-saas-airwatch-tutorial/ic791930.png "Add User")
-4. [ **Add / Edit User** ] ダイアログで、次の手順を実行します。
+4. **[Add / Edit User]** ダイアログで、次の手順を実行します。
 
    ![ユーザーの追加](./media/active-directory-saas-airwatch-tutorial/ic791931.png "Add User")   
    1. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **[Username]**、**[Password]**、**[Confirm Password]**、**[First Name]**、**[Last Name]**、**[Email Address]** を入力します。

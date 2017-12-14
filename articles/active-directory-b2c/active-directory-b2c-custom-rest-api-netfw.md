@@ -4,7 +4,7 @@ description: "REST API 要求交換をユーザー入力の検証として Azure
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: e9a5b6ffdf2a2c30ae1bcb2bd8f91adb12f35266
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: b7ce383b5297b0973f2999e7310fad94a0abe7dd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework を使用すると、ユーザー体験における RESTful API と統合することができます。 このチュートリアルでは、Azure AD B2C と .NET Framework RESTful サービス (Web API) がどのように対話するかを学習します。
@@ -215,7 +215,7 @@ Web API では、_コントローラー_は、HTTP 要求を処理するオブ�
     **[App Service の作成]** ウィンドウが開きます。 このウィンドウでは、Azure で ASP.NET Web アプリを実行するために必要なすべての Azure リソースを作成します。
 
     > [!NOTE]
-    >発行方法の詳細については、「[Azure に ASP.NET Web アプリを作成する](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)」を参照してください。
+    >発行方法の詳細については、「[Azure に ASP.NET Web アプリを作成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)」を参照してください。
 
 3. **[Web アプリ名]** ボックスに、一意のアプリ名 (有効な文字は a-z、0-9、およびハイフン (-)) を入力します。 Web アプリの URL は http://<app_name>.azurewebsites.NET です。*app_name* は、Web アプリの名前です。 自動的に生成される名前をそのまま使用してもかまいません。この名前は一意になっています。
 
@@ -378,9 +378,9 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 }
 ```
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
-* 「[Azure Active Directory B2C: カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)が提供されています。
-* 完全なコードは、[参照用の Visual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)からダウンロードできます。
+## <a name="optional-download-the-complete-policy-files-and-code"></a>(省略可能) 完全なポリシー ファイルとコードをダウンロードする
+* [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)が提供されています。
+* 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)からダウンロードできます。
     
 ## <a name="next-steps"></a>次のステップ
 * [基本認証 (ユーザー名とパスワード) を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)

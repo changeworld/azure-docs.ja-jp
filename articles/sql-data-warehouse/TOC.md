@@ -32,8 +32,8 @@
 ### [データの移行](sql-data-warehouse-migrate-data.md)
 
 ## データの読み込みと移動
-### [概要](sql-data-warehouse-overview-load.md)
-### [PolyBase](sql-data-warehouse-load-polybase-guide.md)
+### [概要](design-elt-data-loading.md)
+### [ガイダンス](guidance-for-loading-data.md)
 
 
 ## 統合

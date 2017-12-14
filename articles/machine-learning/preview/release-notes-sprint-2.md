@@ -10,22 +10,22 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2017
-ms.openlocfilehash: f3579942624de282b01d74c4b8c449c56a66e7b7
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 6fede727a36b0f3243975bf23df2ef53baf1b15c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="sprint-2---december-2017"></a>スプリント 2 - 2017 年 12 月 
 
 #### <a name="version-number-01171115263"></a>バージョン番号: 0.1.1711.15263
 
->バージョン番号を調べる方法については、[こちら](https://docs.microsoft.com/en-us/azure/machine-learning/preview/known-issues-and-troubleshooting-guide)をご覧ください。
+>バージョン番号を調べる方法については、[こちら](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide)をご覧ください。
 
 Azure Machine Learning Workbench の 3 回目の更新へようこそ。 この更新には、Workbench アプリ、コマンド ライン インターフェイス (CLI)、およびバックエンド サービスの改良が含まれます。 当社に長所と欠点を送信していただき誠にありがとうございます。 以下の更新の多くは、お客様のフィードバックの直接の結果として行われました。 
 
 ## <a name="notable-new-features"></a>注目すべき新機能
-- [データ ソースとしての SQL Server および Azure SQL DB のサポート](https://docs.microsoft.com/en-us/azure/machine-learning/preview/data-prep-appendix2-supported-data-sources#types) 
+- [データ ソースとしての SQL Server および Azure SQL DB のサポート](https://docs.microsoft.com/azure/machine-learning/preview/data-prep-appendix2-supported-data-sources#types) 
 - [MMLSpark を使用した GPU サポートのある Spark でのディープ ラーニング](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
 - [デプロイの時点で Azure IoT Edge デバイスと互換性のあるすべての AML コンテナー (余分な手順は不要)](http://aka.ms/aml-iot-edge-blog)
 - Azure Portal で利用可能な登録済みモデル リストと詳細ビュー
@@ -56,7 +56,7 @@ Azure Machine Learning Workbench の 3 回目の更新へようこそ。 この�
 
 - "例による列の派生" 変換でのレビューのためのエッジ ケース推奨の間のパフォーマンスの向上
 
-- [データ ソースとしての SQL Server および Azure SQL DB のサポート](https://docs.microsoft.com/en-us/azure/machine-learning/preview/data-prep-appendix2-supported-data-sources#types) 
+- [データ ソースとしての SQL Server および Azure SQL DB のサポート](https://docs.microsoft.com/azure/machine-learning/preview/data-prep-appendix2-supported-data-sources#types) 
 
 ![新しい SQL Server データ ソースの作成の画像](media/release-notes-sprint-2/sql-server-data-source.png)
 
@@ -83,7 +83,7 @@ Azure Machine Learning Workbench の 3 回目の更新へようこそ。 この�
 
 - このコンピューティング ターゲットを準備して実行に使うことができ、Azure ML Workbench は認証にこのキーを使います。  
 
-コンピューティング ターゲットの作成について詳しくは、「[Azure Machine Learning 実験サービスの構成](https://docs.microsoft.com/en-us/azure/machine-learning/preview/experimentation-service-configuration)」をご覧ください。
+コンピューティング ターゲットの作成について詳しくは、「[Azure Machine Learning 実験サービスの構成](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration)」をご覧ください。
 
 ### <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
 - [Visual Studio Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vstoolsai-vs2017) のサポートが追加されました。 

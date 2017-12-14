@@ -3,22 +3,22 @@ title: "ポータルを使って Azure Stack の Key Vault を管理する | Mic
 description: "ポータルを使って Azure Stack の Key Vault を管理する方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: D4300668-461F-45F6-BF3B-33B502C39D17
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
-ms.author: sngun
-ms.openlocfilehash: d263cbcc81be37eaedfdb771436fd13ef25362f8
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.author: mabrigg
+ms.openlocfilehash: d76a1e188c5a5bf008ac2fba9b43741a6a8d97b1
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>ポータルを使って Azure Stack の Key Vault を管理する
 
@@ -26,7 +26,7 @@ Azure Stack ポータルを使用して Azure Stack の Key Vault を管理で�
 
 ## <a name="prerequisites"></a>前提条件  
 
-ユーザーは、Azure Key Vault サービスを含むプランをサブスクライブする必要があります。
+Azure Key Vault サービスを含むプランをサブスクライブする必要があります。
  
 ## <a name="create-a-key-vault"></a>Key Vault を作成します 
 

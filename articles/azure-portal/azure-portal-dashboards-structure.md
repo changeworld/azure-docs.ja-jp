@@ -6,25 +6,25 @@ documentationcenter:
 author: adamab
 manager: timlt
 editor: tysonn
-ms.service: multiple
+ms.service: azure-portal
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 694b5bd1ddfbaa4c973e9f55bce1c94ffd89c3dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f71ff9383f20a1a75fd2c1cf4dc3aaf049d970cf
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造
 このドキュメントでは、次のダッシュボードを例として、Azure のダッシュボードの構造を説明します。
 
 ![サンプルのダッシュボード](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-共有 [Azure ダッシュボードは、リソース](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)であるため、このダッシュボードを JSON として表すことができます。  次の JSON は、上記のダッシュボードを視覚化したものです。
+共有 [Azure ダッシュボードは、リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)であるため、このダッシュボードを JSON として表すことができます。  次の JSON は、上記のダッシュボードを視覚化したものです。
 
 ```json
 
@@ -294,7 +294,7 @@ JSON の関連するセクションを分割してみましょう。  最上位�
 
 ### <a name="the-id-property"></a>ID プロパティ
 
-Azure のリソース ID は、[Azure リソースの名前付け規則](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions)に従います。 ポータルでダッシュボードが作成されるときは一般的に guid の形式の ID が選択されますが、プログラムで作成する場合は、任意の有効な名前を自由に使用できます。 
+Azure のリソース ID は、[Azure リソースの名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に従います。 ポータルでダッシュボードが作成されるときは一般的に guid の形式の ID が選択されますが、プログラムで作成する場合は、任意の有効な名前を自由に使用できます。 
 
 ### <a name="the-name-property"></a>名前プロパティ
 名前は、サブスクリプション、リソースの種類またはリソース グループの情報が含まれていない リソース ID のセグメントです。 基本的に、リソース ID の最後のセグメントです。
@@ -303,7 +303,7 @@ Azure のリソース ID は、[Azure リソースの名前付け規則](https:/
 すべてのダッシュボードは、__Microsoft.Portal/dashboards__ の型です。
 
 ### <a name="the-location-property"></a>場所プロパティ
-他のリソースとは異なり、ダッシュボードにはランタイム コンポーネントがありません。  ダッシュボードの場合、場所は、ダッシュボードの JSON 表現を格納するプライマリ地理的場所を示します。 値は、[サブスクリプション リソースの場所 API](https://docs.microsoft.com/en-us/rest/api/resources/subscriptions) を使用してフェッチできる場所コードの 1 つです。
+他のリソースとは異なり、ダッシュボードにはランタイム コンポーネントがありません。  ダッシュボードの場合、場所は、ダッシュボードの JSON 表現を格納するプライマリ地理的場所を示します。 値は、[サブスクリプション リソースの場所 API](https://docs.microsoft.com/rest/api/resources/subscriptions) を使用してフェッチできる場所コードの 1 つです。
 
 ### <a name="the-tags-property"></a>タグ プロパティ
 タグは、任意の名前値のペア別にリソースを整理するための Azure リソース共通の機能です。 ダッシュボードには、__非表示タイトル__と呼ばれる特別なタグがあります。 ダッシュボードにこのプロパティが設定されている場合は、ポータルのダッシュボードの表示名として使用されます。 Azure リソース ID の名前は変更できませんが、タグ名は変更できます。 このタグを使用することにより、名前変更可能な表示名をダッシュボードで使用できます。

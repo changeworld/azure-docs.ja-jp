@@ -4,7 +4,7 @@ description: "Azure Active Directory と Merchlogix の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: a1f49bb8-6b17-433d-8f25-9d26fb390e77
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 44fc8226480cafc130720fbe78aa85ee95caec6c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21e099cc89145c8366a926730a7a13b5d6757f52
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>チュートリアル: Azure Active Directory と Merchlogix の統合
 

@@ -4,7 +4,7 @@ description: "Azure Active Directory と SAML SSO for Bitbucket by resolution Gm
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: fc947df1-f24e-43ae-9a34-518293583d69
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 853a0acd2c596f2dd26f1132d4ecff56cef5aa2e
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 52c741c66a796e53698a690c415cc60c814f74e8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
 
@@ -137,7 +137,7 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サイン
 
     ![Samlsingle](./media/active-directory-saas-bitbucket-tutorial/tutorial_bitbucket_samlsingle.png)
 
-10. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで、**[Add idp]\(idp の追加\)** をクリックします。 
+10. **[SAML SingleSignOn Plugin Configuration]\(SAML SingleSignOn プラグインの構成\)** ページで、**[Add idp]\(IDP の追加\)** をクリックします。 
 
     ![IDP の追加](./media/active-directory-saas-bitbucket-tutorial/tutorial_bitbucket_addidp.png)
 
@@ -145,11 +145,11 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サイン
 
     ![ID プロバイダー](./media/active-directory-saas-bitbucket-tutorial/tutorial_bitbucket_identityprovider.png)
 
-    a. **[Idp Type]\(IDP の種類\)** を **[AZURE AD]** として選択します。
+    a. **[Idp Type]\(IDP の種類\)** として **[AZURE AD]** を選択します。
 
-    b. **[名前]** ボックスに、名前を入力します。
+    b. **[Name]\(名前\)** ボックスに、名前を入力します。
 
-    c. **[説明]** ボックスに、説明を入力します。
+    c. **[Description]\(説明\)** ボックスに、説明を入力します。
 
     d. **[次へ]** をクリックします。
 
@@ -163,7 +163,7 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD のシングル サイン
     
 14. **[次へ]** をクリックします。
 
-15. **[設定の保存]** をクリックします。
+15. **[Save settings]\(設定の保存\)** をクリックします。
 
     ![保存](./media/active-directory-saas-bitbucket-tutorial/tutorial_bitbucket_save.png)
 

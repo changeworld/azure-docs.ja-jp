@@ -3,7 +3,7 @@ title: "Azure Machine Learning の新機能 | Microsoft Docs"
 description: "Azure Machine Learning で利用できる新しい機能。"
 services: machine-learning
 documentationcenter: 
-author: vDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.assetid: ddc716ed-2615-4806-bf27-6c9a5662a7f2
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 1e3dc7e1375488ae9473cdd26f4d00871a091fbd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82ec23f4edba88ec75c2073e24cad24b66323d72
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure Machine Learning の新機能
 

@@ -4,7 +4,7 @@ description: "Azure Active Directory 開発者ガイドのガイドおよびリ�
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 307e6ddc9b3d5a85a25b185144a548e0101a9877
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6190f64633034bb5fc28a1caf7ffa6c09215ef1
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="articles-in-the-azure-ad-developer-guide"></a>Azure AD 開発者ガイドの記事
 次に示すのは、Azure Active Directory 開発者ガイドで扱っているすべてのトピックの一覧です。

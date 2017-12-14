@@ -4,7 +4,7 @@ description: "Azure Active Directory と Mimecast Admin Console の間でシン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: f401f592d79ad954aa466de74d3e3fbb18aa9a5b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64bb18caa046f8a08be8f229e4c82a34306a8f72
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル: Azure Active Directory と Mimecast Admin Console の統合
 
@@ -143,7 +143,7 @@ Mimecast Admin Console で Azure AD のシングル サインオンを構成し�
 
     ![New Authentication Profiles](./media/active-directory-saas-mimecast-admin-console-tutorial/ic795000.png "New Authentication Profiles")
 
-11. [ **認証プロバイダー** ] セクションで、次の手順に従います。
+11. **[認証プロバイダー]** セクションで、次の手順に従います。
 
     ![Authentication Profile](./media/active-directory-saas-mimecast-admin-console-tutorial/ic795015.png "Authentication Profile")
     
@@ -166,7 +166,7 @@ Mimecast Admin Console で Azure AD のシングル サインオンを構成し�
     
     h. **[シングル サインオンの許可]**を選択します。
     
-    i. [ **Save**] をクリックします。
+    i. **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。 
@@ -227,7 +227,7 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
    
    a. 該当するテキストボックスに、プロビジョニングする有効な Azure AD アカウントの **[メール アドレス]**、**[グローバル名]**、**[パスワード]**、**[パスワードの確認]** 属性を入力します。
 
-   b. [ **Save**] をクリックします。
+   b. **[Save]** をクリックします。
 
 >[!NOTE]
 >Mimecast Admin Console から提供されている他の Mimecast Admin Console ユーザー アカウント作成ツールや API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。 

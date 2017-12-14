@@ -4,7 +4,7 @@ description: "Azure Active Directory v2.0 エンドポイントでサポート�
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 494a06b8-0f9b-44e1-a7a2-d728cf2077ae
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 9d59e7f0e8f326c40be86e199d7712f6c565cc13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0344c1da626a8b4679a632db239fc9ded9d5ce6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントのアプリの種類
 Azure Active Directory (Azure AD) v2.0 エンドポイントは、さまざまな最新アプリ アーキテクチャ向けの認証をサポートしています。そのいずれも、業界標準のプロトコルである [OAuth 2.0 または OpenID Connect](active-directory-v2-protocols.md) に基づいています。 この記事では、使用する言語やプラットフォームを問わず、Azure AD v2.0 を使用して作成できるアプリの種類について説明します。 この記事の情報は、[コードを詳しく確認する](active-directory-appmodel-v2-overview.md#getting-started)前に大まかなシナリオを理解するうえで役立ちます。

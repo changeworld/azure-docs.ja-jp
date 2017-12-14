@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.openlocfilehash: df4d85d0556a62311c112f24431b54d042333c7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f1b9c1ec2af8240ff71f6907516d8894c36ac9c3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="find-an-azure-subscription-or-management-group"></a>Azure のサブスクリプションまたは管理グループを検索する
 
-Azure でサブスクリプションまたは管理グループが見つからない場合、見ているディレクトリが間違っている可能性があります。 こうした状況は、お使いのアカウントが複数の Azure Active Directory に存在する場合に発生することがあります。 各 [Active Directory は独立している](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-directory-independence)ので、ディレクトリ間でアクセスは継承されません。      
+Azure でサブスクリプションまたは管理グループが見つからない場合、見ているディレクトリが間違っている可能性があります。 こうした状況は、お使いのアカウントが複数の Azure Active Directory に存在する場合に発生することがあります。 各 [Active Directory は独立している](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-directory-independence)ので、ディレクトリ間でアクセスは継承されません。      
 
 ![ディレクトリの切り替えメニュー](media/billing-enterprise-mgmt-groups/mgempty.png)
 
@@ -41,7 +41,7 @@ Azure でサブスクリプションまたは管理グループが見つから�
 ![asset-not-found](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 アクセスを付与してもらうには、サブスクリプションまたは管理グループの管理者に問い合わせてください。  
-* サブスクリプションの場合、[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure) に関するドキュメントをお読みになり、必要なロールの判断に役立ててください。
+* サブスクリプションの場合、[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) に関するドキュメントをお読みになり、必要なロールの判断に役立ててください。
 * 管理グループの場合、現在は RBAC アクセスを使用できません。まもなく使用可能になります。 アクセスを割り当ててもらうには、エンタープライズ ポータルの管理者に連絡してください。   
 
 ## <a name="improve-your-experience-with-management-groups-and-subscriptions-in-the-same-directory"></a>管理グループとサブスクリプションを同じディレクトリに格納して、エクスペリエンスを改善 

@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: 
 author: asmalser-msft
 writer: asmalser-msft
-manager: stevenpo
+manager: mtillman
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: 84613b7f8d7bd031d492a62da0bc53be96ac45a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7e6d4275940174074c1758a5b73030e0b3f107c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-configuring-cerner-central-for-automatic-user-provisioning"></a>チュートリアル: Cerner Central を構成して自動ユーザー プロビジョニングに対応する
 
@@ -113,17 +113,17 @@ Cerner Central にユーザー アカウントをプロビジョニングする�
 
 10. プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを **[通知用メール]** フィールドに入力して、下のチェック ボックスをオンにします。
 
-11. [ **Save**] をクリックします。 
+11. **[Save]** をクリックします。 
 
 12. **[属性マッピング]** セクションで、Azure AD から Cerner Central に同期されるユーザーとグループの属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Cerner Central のユーザー アカウントおよびグループとの照合に使用されます。 [保存] ボタンをクリックして変更をコミットします。
 
 13. Cerner Central に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-14. [ **Save**] をクリックします。 
+14. **[Save]** をクリックします。 
 
 これで、[ユーザーとグループ] セクションで Cerner Central に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 20 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、プロビジョニング サービスによって Cerner Central アプリに対して実行されたすべてのアクションが記載されています。
 
-Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)」をご覧ください。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -133,4 +133,4 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 ## <a name="next-steps"></a>次のステップ
-* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting)
+* [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)

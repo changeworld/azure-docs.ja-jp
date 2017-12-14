@@ -4,7 +4,7 @@ description: "Microsoft Azure Multi-Factor Authentication のユーザー ライ
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 514ef423-8ee6-4987-8a4e-80d5dc394cf9
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
 ROBOTS: NOINDEX
-ms.openlocfilehash: 48f6ca268630524dab6d239621a7824faaa67849
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bd07919b67d7df2c5737237d55ec77fb277109f6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="assigning-an-azure-mfa-azure-ad-premium-or-enterprise-mobility-license-to-users"></a>Azure MFA、Azure AD Premium、または Enterprise Mobility のライセンスをユーザーに割り当てる
 Azure MFA、Azure AD Premium、または Enterprise Mobility Suite のライセンスを購入済みである場合、Multi-Factor Auth プロバイダーを作成する必要はありません。 ユーザーにライセンスを割り当てたら、ユーザーに対して MFA の有効化を始めることができます。

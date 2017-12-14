@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: d200587e211758ade85b14cbeb206ebce9291f1d
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 4087cb787e43c3d1b40ad082e84534b34918c9e9
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
 
@@ -137,7 +137,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **インストール済みの Linux エージェントからコンテナー内のエージェントの使用への切り替え**
 
-これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMS Agent for Linux を削除する必要があります。 エージェントを正しくアンインストール方法について詳しくは、「[OMS Agent for Linux のアンインストール](log-analytics-agent-linux.md#uninstalling-the-oms-agent-for-linux)」をご覧ください。  
+これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMS Agent for Linux を削除する必要があります。 エージェントを正しくアンインストール方法について詳しくは、「[OMS Agent for Linux のアンインストール](log-analytics-agent-linux.md)」をご覧ください。  
 
 #### <a name="configure-an-oms-agent-for-docker-swarm"></a>Docker Swarm 用の OMS エージェントを構成する
 
@@ -515,9 +515,9 @@ Windows コンテナーで使用する Docker デーモン構成の詳細につ�
 
 #### <a name="install-windows-agents"></a>Windows エージェントのインストール
 
-Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合、[Log Analytics への Windows コンピューターの接続](log-analytics-windows-agents.md)に関する記事をご覧ください。 Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用して Log Analytics に接続します。
+Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合、[Log Analytics への Windows コンピューターの接続](log-analytics-windows-agent.md)に関する記事をご覧ください。 Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用して Log Analytics に接続します。
 
-Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](log-analytics-azure-vm-extension.md)と[オンプレミス環境で Windows を実行するコンピューター](log-analytics-windows-agents.md)のみです。
+Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](log-analytics-azure-vm-extension.md)と[オンプレミス環境で Windows を実行するコンピューター](log-analytics-windows-agent.md)のみです。
 
 Windows でコンテナー監視ソリューションが正しく設定されていることを確認できます。 管理パックが正常にダウンロードされているかどうかを確認するには、*ContainerManagement.xxx* を探します。 ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
 
@@ -534,7 +534,7 @@ Windows エージェントを使用している場合、このソリューショ
 データは、次のエージェントの種類によって 3 分ごとに収集されます。
 
 - [OMS Agent for Linux](log-analytics-linux-agents.md)
-- [Windows エージェント](log-analytics-windows-agents.md)
+- [Windows エージェント](log-analytics-windows-agent.md)
 - [Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md)
 
 

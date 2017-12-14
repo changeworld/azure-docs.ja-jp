@@ -4,7 +4,7 @@ description: "アプリケーション アクセスとアクセス許可の管�
 services: active-directory
 documentationcenter: 
 author: ajamess
-manager: kbrint
+manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 32d1c26a31f78bb58e9e1d5c47d9810c2ae881cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18931ee2f4ef53dc40695ff63d41b07ff977a2a1
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="problems-managing-application-access-and-permissions"></a>アプリケーション アクセスとアクセス許可の管理に関する問題
 

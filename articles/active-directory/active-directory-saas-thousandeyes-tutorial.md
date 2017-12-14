@@ -4,7 +4,7 @@ description: "Azure Active Directory と ThousandEyes の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 790e3f1e-1591-4dd6-87df-590b7bf8b4ba
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 392add7d5f0a55598b8b90760f5c3f2d1e67ac02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81132e40eba589dff7ede0ee94fab1a289dc19d7
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>チュートリアル: Azure Active Directory と ThousandEyes の統合
 
@@ -152,7 +152,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
   
     e. **[Verification Certificate]\(検証証明書\)** で **[Choose file]\(ファイルの選択\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
   
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 [ **Save**] をクリックします。
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Save]** をクリックします。
  
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -204,7 +204,7 @@ ThousandEyes の場合、プロビジョニングは手動で行います。
    
     ![設定](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
 
-3. [ **アカウント**] クリックします。
+3. **[アカウント]** クリックします。
    
     ![Account](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
 

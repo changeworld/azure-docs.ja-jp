@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 4597ee28e4c3b797c0ab050b21a126a95d9e8191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ebd6a8cb70f218c3b56bc78c9b853dbf51ab468
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する
 
@@ -55,7 +55,7 @@ BizTalk Services ポータルを使用して、X12 契約と EDIFACT 契約を�
 
 ## <a name="prerequisites"></a>前提条件
 * Service Bus 名前空間が必要です。 名前空間を作成する手順については、 [Service Bus サービスの名前空間を作成または変更する方法](https://msdn.microsoft.com/library/azure/hh674478.aspx)に関するページを参照してください。 このチュートリアルでは、「 **edifactbts**」という名前の Service Bus 名前空間が既にプロビジョニングされているものと想定しています。
-* BizTalk Services サブスクリプションが必要です。 手順については、 [Azure クラシック ポータルを使用して BizTalk サービスを作成する方法](http://go.microsoft.com/fwlink/?LinkID=302280)に関するページを参照してください。 このチュートリアルでは、「 **contosowabs**」という名前の BizTalk Services サブスクリプションがあるものと想定しています。
+* BizTalk Services サブスクリプションが必要です。 このチュートリアルでは、「 **contosowabs**」という名前の BizTalk Services サブスクリプションがあるものと想定しています。
 * BizTalk Services ポータルに BizTalk Services サブスクリプションを登録する必要があります。 手順については、 [BizTalk Services ポータルでの BizTalk サービス配置の登録と更新](https://msdn.microsoft.com/library/hh689837.aspx)
 * Visual Studio をインストールする必要があります。
 * BizTalk Services SDK をインストールする必要があります。 SDK は [http://go.microsoft.com/fwlink/?LinkId=235057](http://go.microsoft.com/fwlink/?LinkId=235057)  
@@ -120,7 +120,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
       ![][6]  
       
       1. **[ルール名]**、**[ルート ルール]**、**[ルーティング先]** に、図に示すように値を入力します。
-      2. [ **Save**] をクリックします。
+      2. **[Save]** をクリックします。
    5. **[ルート]** タブに戻り、保留受信確認 (処理中にエラーが発生した受信確認) の送信先を指定します。 トランスポートの種類を Azure Service Bus に、ルーティング先を**キュー**に、認証の種類を **Shared Access Signature** (SAS) に設定します。Service Bus 名前空間に SAS 接続文字列を入力し、キュー名に「**suspended**」と入力します。
 5. 最後に、 **[デプロイ]** をクリックし、契約をデプロイします。 送信契約と受信契約がデプロイされるエンドポイントを書き留めます。
    
@@ -139,7 +139,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
 
 ### <a name="create-the-biztalk-services-project"></a>BizTalk Services プロジェクトを作成する
 1. Visual Studio ソリューションで、InvoiceProcessingBridge プロジェクトを展開し、 **MessageFlowItinerary.bcs** ファイルを開きます。
-2. キャンバスの任意の場所をクリックし、プロパティ ボックスの **BizTalk サービスの URL** に BizTalk Services サブスクリプション名を指定します。 たとえば、「 `https://contosowabs.biztalk.windows.net`」のように入力します。
+2. キャンバスの任意の場所をクリックし、[プロパティ] ボックスの **[BizTalk サービスの URL]** に BizTalk Services サブスクリプション名を指定します。 たとえば、「 `https://contosowabs.biztalk.windows.net`」のように入力します。
    
    ![][7]  
 3. ツールボックスから、 **XML 一方向ブリッジ** をキャンバスにドラッグします。 ブリッジの **[エンティティ名]** プロパティと **[相対アドレス]** プロパティを **ProcessInvoiceBridge** に設定します。 **[ProcessInvoiceBridge]** をダブルクリックし、ブリッジ構成画面を開きます。

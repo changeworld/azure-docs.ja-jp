@@ -4,7 +4,7 @@ description: "Azure AD アプリケーション プロキシ コネクタの基�
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 10/12/2017
 ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 9dce8c3132b60b0b0c44f9f9d1e9cf01f68fa280
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -124,7 +124,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 通常、コネクタのデプロイはとても簡単で、特別な構成は必要ありません。 ただし、考慮すべき特別な条件がいくつかあります。
 
 * 送信トラフィックを制限している組織では、[必要なポートを開く](active-directory-application-proxy-enable.md#open-your-ports)必要があります。
-* FIPS 準拠のコンピューターは、コネクタ プロセスが証明書を生成して保存することを許可するよう、構成を変更する必要のある場合があります。
+* FIPS に準拠しているコンピューターは、コネクタ プロセスが証明書を生成して保存することを許可するよう、構成を変更する必要のある場合があります。
 * ネットワーク要求を発行するプロセスに基づいて環境をロック ダウンしている組織では、コネクタ サービスとコネクタ アップデーター サービスの両方が、すべての必要なポートと IP アドレスにアクセスできることを確認する必要があります。
 * 場合によっては、送信/転送プロキシにより証明書の双方向認証が中断されて、通信に失敗することがあります。
 

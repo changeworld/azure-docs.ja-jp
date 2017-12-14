@@ -4,7 +4,7 @@ description: "Azure Active Directory のデバイスベースの条件付きア�
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/04/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: a1aa2d4b4cc3acafb1f255d95e76abd80fb40596
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: fb646a56b51960d5b076027d942dabe8f2afbe97
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Azure Active Directory のデバイス ベースの条件付きアクセスポリシーを構成する
 

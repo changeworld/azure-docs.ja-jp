@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 256cb9a33d49bc3c24b2d94c417632edb0c8df31
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
-このチュートリアルでは、**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** の SSL 証明書を購入し、[Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) に安全に格納して、カスタム ドメインに関連付けることで、Web アプリをセキュリティで保護する方法について説明します。
+このチュートリアルでは、**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** の SSL 証明書を購入し、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に安全に格納して、カスタム ドメインに関連付けることで、Web アプリをセキュリティで保護する方法について説明します。
 
 ## <a name="step-1---log-in-to-azure"></a>手順 1 - Azure にログインする
 
@@ -49,7 +49,7 @@ SSL 証明書のフレンドリ**名**と**ドメイン名**を入力します
 ## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>手順 3 - 証明書を Azure Key Vault に保存する
 
 > [!NOTE]
-> [Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットを保護するための Azure サービスです。
+> [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットを保護するための Azure サービスです。
 >
 
 SSL 証明書の購入が完了したら、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページを開く必要があります。

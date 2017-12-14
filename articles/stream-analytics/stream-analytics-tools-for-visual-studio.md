@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: sujie
-ms.openlocfilehash: 8e3f1ae6739896dfd1329561dbcede38a6069546
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: b06eae6b85f2ca41390955cde2499af2531e2e12
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールの使用
 Visual Studio の Azure Stream Analytics ツールが一般公開されます。 これらのツールを使用すると、Stream Analytics ユーザーのトラブルシューティング エクスペリエンスがさらに充実すると共に、複雑なクエリを記述したり、ローカルでクエリを記述することができます。 また、Stream Analytics ジョブを Visual Studio プロジェクトにエクスポートすることもできます。
@@ -40,7 +40,7 @@ Visual Studio の Azure Stream Analytics ツールが一般公開されます。
 
 * チュートリアル「[Stream Analytics を使って IoT ソリューションを構築する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics)」の「Stream Analytics ジョブの作成」までの手順を完了します。 
 * Visual Studio 2017、Visual Studio 2015、または Visual Studio 2013 Update 4 をインストールします。 Enterprise (Ultimate/Premium)、Professional、Community の各エディションがサポートされています。 Express エディションはサポートされていません。 
-* [インストール手順](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)に従って、Visual Studio の Stream Analytics ツールをインストールします。
+* [インストール手順](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)に従って、Visual Studio の Stream Analytics ツールをインストールします。
 
 ## <a name="create-a-stream-analytics-project"></a>Stream Analytics プロジェクトを作成する
 Visual Studio で、**[ファイル]** > **[新しいプロジェクト]** を選択します。 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、**[Azure Stream Analytics アプリケーション]** を選択します。
@@ -115,7 +115,7 @@ Visual Studio で、**[ファイル]** > **[新しいプロジェクト]** を�
 
 4. **[ユーザー名]**に「**tolladmin**」と入力します。 **[パスワード]** に「**123toll!**」と入力します。 **[テーブル]** に「**TollDataRefJoin**」と入力します。
 
-5. [ **保存**] を選択します。
+5. **[保存]** を選択します。
 
    ![出力設定](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-define-output-01.png)
  
@@ -157,7 +157,7 @@ Visual Studio で、**[ファイル]** > **[新しいプロジェクト]** を�
    
    ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-2. ポップアップ ウィンドウで、ローカル パスからサンプル データを選択します。 [ **保存**] を選択します。
+2. ポップアップ ウィンドウで、ローカル パスからサンプル データを選択します。 **[保存]** を選択します。
    
    ![ローカル入力の追加](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-add-local-input-02.png)
    

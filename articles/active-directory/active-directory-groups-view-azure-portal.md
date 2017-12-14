@@ -4,7 +4,7 @@ description: "Azure Active Directory でグループを表示または検索す�
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 72686ee9-9f91-4fcc-86da-b990a1b6d4f2
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 32e34ce0d4d6c12f25fcd4ff2de10809ca7ac361
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1aaebb66287edc375909f7367648da6cf5f4cc40
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Azure Active Directory でユーザー グループを表示または検索する
 この記事では、Azure Active Directory (Azure AD) ですべてのグループを表示する方法について説明します。 Azure AD ユーザー管理の機能の 1 つに、グループを使って一度に多数のユーザーにライセンスまたはアクセス許可を割り当てることができる機能があります。

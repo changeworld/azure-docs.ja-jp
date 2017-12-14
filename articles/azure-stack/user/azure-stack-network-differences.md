@@ -8,11 +8,11 @@ ms.author: victorh
 ms.date: 9/25/2017
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 7b7bac508a759a1367ac7328840848efe17ea3c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c72c58e63335f1cb440811e283bd742b8124161
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ネットワークに関する考慮事項
 
@@ -34,7 +34,7 @@ Azure Stack ネットワークは Azure に備えられている機能の多く�
 | |ゾーンあたりの DNS レコード セット数|5000 (既定値)<br>ご希望により増やすことができます。|5000|
 ||ゾーンの委任用のネーム サーバー|Azure では、作成されるユーザー (テナント) ゾーンごとに 4 つのネーム サーバーを提供します。|Azure Stack では、作成されるユーザー (テナント) ゾーンごとに 2 つのネーム サーバーを提供します。|
 | Virtual Network|仮想ネットワーク ピアリング|同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続します。|まだサポートされていません|
-| |IPv6 アドレス|[ネットワーク インターフェイス構成](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions)の一部として IPv6 アドレスを割り当てることができます。|IPv4 のみがサポートされています。|
+| |IPv6 アドレス|[ネットワーク インターフェイス構成](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions)の一部として IPv6 アドレスを割り当てることができます。|IPv4 のみがサポートされています。|
 |VPN ゲートウェイ|ポイント対サイト VPN ゲートウェイ|サポートされています|まだサポートされていません|
 | |VNet 間ゲートウェイ|サポートされています|まだサポートされていません|
 | |VPN ゲートウェイの SKU|Basic、GW1、GW2、GW3、Standard High Performance、Ultra-High Performance をサポートします。 |Basic、Standard、および High-Performance の SKU をサポートします。|

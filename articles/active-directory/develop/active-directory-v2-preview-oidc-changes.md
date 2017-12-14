@@ -4,7 +4,7 @@ description: "アプリ モデル v2.0 パブリック プレビュー プロト
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: e6c5b891-0b5d-47dc-8184-5d0ef6a1a006
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ae73833a68db14804dc40eaf07ff7d3effaa9052
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d344529d1ac9891e5a961de630dea3c1e4caab4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="important-updates-to-the-v20-authentication-protocols"></a>v2.0 の認証プロトコルに対する重要な更新
 開発者を対象としています。 これからの 2 週間、プレビュー期間中に作成したすべてのアプリを大きく変える可能性があるいくつかの変更を v2.0 認証プロトコルに対して行います。  

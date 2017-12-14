@@ -14,18 +14,19 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: c403a73d03fd5152e2c0617b3e3784926c28f5c3
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: de1220e9b5a01429f4eea5c3605f1cf7221f3e1e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Azure SQL Data Warehouse のパフォーマンス レベル (プレビュー)
 Azure SQL Data Warehouse では、分析ワークロード用に最適化された 2 つのパフォーマンス レベルが用意されています。 この記事では、ワークロードに最適なパフォーマンス レベルを選択するための、パフォーマンス レベルの概念について説明します。 
 
-
 ## <a name="what-is-a-performance-tier"></a>パフォーマンス レベルとは何か。
 パフォーマンス レベルは、データ ウェアハウスの構成を決定するオプションです。 このオプションは、データ ウェアハウスを作成するときに行う最初の選択の 1 つです。  
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T140/player]
 
 - **弾力性パフォーマンス レベルのための最適化**では、アーキテクチャのコンピューティング層とストレージ層を分離します。 このオプションは、短期間のピーク活動をサポートするために頻繁にスケーリングすることで、コンピューティングとストレージの分離を完全に活用できるワークロードが特長です。 このコンピューティング層は、最低レベルの価格であり、スケーリングによりお客様のワークロードの大半をサポートできます。
 

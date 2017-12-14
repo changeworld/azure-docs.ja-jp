@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: ebb963236a069f272499fce59945d0cf0d3d647f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7d5252cab8c6238126c802b8c6a5293bb448e65e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -52,7 +52,7 @@ Azure ポータルを使用して、LAD 3.0 を有効化し、構成すること
 
 ### <a name="prerequisites"></a>前提条件
 
-* **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent)に従って更新します。
+* **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)に従って更新します。
 * **Azure CLI**。 マシンに [Azure CLI 2.0 環境をセットアップ](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
 * 既存の Azure サブスクリプションと、データをその中に格納するための既存のストレージ アカウント。

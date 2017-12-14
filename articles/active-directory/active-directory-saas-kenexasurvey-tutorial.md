@@ -4,7 +4,7 @@ description: "Azure Active Directory と IBM Kenexa Survey Enterprise の間で�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: c7aac6da-f4bf-419e-9e1a-16b460641a52
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 5c276c23288292a1c54dd9d57177d5072b90c9e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 929ae8b780c0e18074832adfefb9a7674097fd08
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>チュートリアル: Azure Active Directory と IBM Kenexa Survey Enterprise の統合
 
@@ -119,7 +119,7 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
     
     ![[ユーザー属性] ダイアログ ボックス](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_attribute.png)   
 
-5. [ **Save**] をクリックします。
+5. **[Save]** をクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_400.png)
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 4b2ceb64b1737918458f6d5c692fc2bfbc0f12ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52048fb8ccd445b93296d2686ca46785b0c3e726
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
 Azure で[ハイ パフォーマンス コンピューティング VM サイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。 この記事では、クラスターで Intel MPI を実行するために Linux HPC イメージを準備する手順を説明します。 準備ができたら、このイメージと、RDMA 対応の Azure VM サイズのいずれか (現時点では H16r、H16mr、A8、または A9) を使用して、VM のクラスターをデプロイします。 リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく低待機時間で高スループットのネットワークを介して効率的に通信する MPI アプリケーションを実行するには、このクラスターを使用します。
@@ -47,7 +47,7 @@ Azure で[ハイ パフォーマンス コンピューティング VM サイズ]
 * **Azure サブスクリプション**: サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。 大規模なクラスターでは、従量課金制のサブスクリプションまたはその他の購入オプションを検討してください。
 * **VM サイズの可用性**: RDMA に対応しているインスタンス サイズは H16r、H16mr、A8、A9 です。 各 Azure リージョンで利用できるかどうかについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/) 」を参照してください。
 * **コア クォータ**: コンピューティング集中型の VM のクラスターをデプロイするには、コア クォータを増やすことが必要な場合があります。 たとえば、8 個の A9 VM をデプロイする場合は、少なくとも 128 コアが必要です。 サブスクリプションによっては、H シリーズを含む特定の VM サイズ ファミリにデプロイできるコア数が制限されることがあります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../../../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。
-* **Azure CLI**: Azure CLI を[インストール](../../../cli-install-nodejs.md)し、クライアント コンピューターから [Azure サブスクリプションに接続します](../../../xplat-cli-connect.md)。
+* **Azure CLI**: Azure CLI を[インストール](../../../cli-install-nodejs.md)し、クライアント コンピューターから [Azure サブスクリプションに接続します](/cli/azure/authenticate-azure-cli)。
 
 ### <a name="provision-an-sles-12-sp1-hpc-vm"></a>SLES 12 SP1 HPC VM のプロビジョニング
 Azure CLI で Azure にサインインした後に、`azure config list` を実行して出力にサービス管理モードが表示されることを確認します。 表示されない場合は、次のコマンドを実行して asm モードに設定します。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/24/2017
 ms.author: kraigb
-ms.openlocfilehash: 9f3d564fd844d982838cc6f29af24399801a62bc
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: ee91ca168acf2fa0d248e18cce64ac546740a2bd
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 
@@ -69,7 +69,7 @@ BLOB コンテナー ビューの右上隅にあるボタンを使用して、BL
 
 * フィルター値を入力して適用する
 * コンテナー内の BLOB の一覧を更新する
-* ファイルをアップロードする
+* ファイルをアップロードします。
 * BLOB を削除する (BLOB コンテナーからファイルを削除しても、基になるファイルは削除されません。 BLOB コンテナーから削除されるだけです)
 * BLOB を開く
 * BLOB をローカル コンピューターに保存する
@@ -162,7 +162,7 @@ BLOB を選択し、**[BLOB を開く]** をクリックします。
 ストレージ サービスのキューの詳細については、「[.NET を使用して Azure Queue Storage を使用する](http://go.microsoft.com/fwlink/?LinkID=264702)」をご覧ください。 ストレージ サービス キューの Web サービスについては、「 [キュー サービスの概念](http://go.microsoft.com/fwlink/?LinkId=264788)」を参照してください。 Visual Studio を使用して、ストレージ サービス キューにメッセージを送信する方法については、「 [ストレージ サービスのキューにメッセージを送信する](https://msdn.microsoft.com/library/azure/jj649344.aspx)」を参照してください。
 
 > [!NOTE]
-> ストレージ サービスのキューは、Azure Service Bus キューとは異なります。 Service Bus キューの詳細については、「[Service Bus のキュー、トピック、サブスクリプション](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-queues-topics-subscriptions)」をご覧ください。
+> ストレージ サービスのキューは、Azure Service Bus キューとは異なります。 Service Bus キューの詳細については、「[Service Bus のキュー、トピック、サブスクリプション](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions)」をご覧ください。
 
 ## <a name="work-with-table-resources"></a>テーブル リソースの操作
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
 ms.author: v-masebo
-ms.openlocfilehash: 5a80195dd474414626cc54623945393c6f88093d
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: e6a22e9989bfe7064ead1c5598e9c68d4a929b07
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="routing-messages-with-iot-hub-node"></a>IoT Hub (ノード) でのメッセージのルーティング
 
@@ -198,9 +198,9 @@ ms.lasthandoff: 12/01/2017
    
    ![simulated-device の実行][simulateddevice]
 
-## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(省略可能) IoT ハブにストレージ コンテナーを追加し、そこにメッセージをルーティングします。
+## <a name="optional-add-storage-container-to-your-iot-hub-and-route-messages-to-it"></a>(省略可能) IoT ハブにストレージ コンテナーを追加してメッセージをルーティングする
 
-このセクションでは、ストレージ アカウントを作成して IoT ハブに接続し、メッセージのプロパティの有無に基づいてこのアカウントにメッセージを送信するように IoT ハブを構成します。 ストレージを管理する方法の詳細については、[Azure Storage][ の概要]に関する記事をご覧下さい。
+このセクションでは、ストレージ アカウントを作成して IoT Hub に接続し、メッセージのプロパティの有無に基づいてこのアカウントにメッセージを送信するように IoT Hub を構成します。 ストレージを管理する方法の詳細については、[Azure Storage の概要][Azure Storage]に関する記事をご覧ください。
 
  > [!NOTE]
    > **エンドポイント**が 1 つに制限されていない場合は、**StorageContainer** と **CriticalQueue** を設定して両方を同時に実行します。
@@ -209,7 +209,7 @@ ms.lasthandoff: 12/01/2017
 
 2. Azure Portal で、IoT Hub を開き、**[エンドポイント]** をクリックします。
 
-3. **[エンドポイント]** ブレードで **CriticalQueue** エンドポイントを選択し、**[削除]** をクリックします。 **[はい]** をクリックし、**[追加]** をクリックします。 エンドポイントに「**StorageContainer**」と名前を付け、ドロップダウンを使用して **[Azure ストレージ コンテナー]** を選択し、**[ストレージ アカウント]** と **[ストレージ コンテナー]** を作成します。  名前をメモします。  完了したら、下部にある **[OK]** をクリックします。 
+3. **[エンドポイント]** ブレードで **CriticalQueue** エンドポイントを選択し、**[削除]** をクリックします。 **[はい]** をクリックし、**[追加]** をクリックします。 エンドポイントに「**StorageContainer**」と名前を付け、ドロップダウンを使用して **[Azure Storage コンテナー]** を選択し、**[ストレージ アカウント]** と **[ストレージ コンテナー]** を作成します。  名前をメモします。  完了したら、下部にある **[OK]** をクリックします。 
 
  > [!NOTE]
    > **エンドポイント**が 1 つに制限されていない場合は、**CriticalQueue** を削除する必要はありません。
@@ -264,4 +264,4 @@ IoT Hub でのメッセージのルーティングの詳細については、[Io
 [lnk-c2d]: iot-hub-node-node-c2d.md
 [lnk-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-free-trial]: https://azure.microsoft.com/free/
-[lnk-storage]: https://docs.microsoft.com/en-us/azure/storage/
+[lnk-storage]: https://docs.microsoft.com/azure/storage/

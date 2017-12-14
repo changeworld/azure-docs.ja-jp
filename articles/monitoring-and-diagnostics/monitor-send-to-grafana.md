@@ -8,11 +8,11 @@ ms.author: robb
 ms.date: 11/06/2017
 ms.topic: article
 ms.service: monitoring-and-diagnostics
-ms.openlocfilehash: 709a98f8bcdb75962f8e41de348ca7a41c677610
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: c189e67c481239a8a68f2e2b30d05bb615cfa24e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure サービスおよびアプリケーションを監視することもできるようになりました。 このプラグインは、Application Insights SDK によって収集されたアプリケーション パフォーマンス データや、Azure Monitor によって提供されるインフラストラクチャ データを収集します。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -62,7 +62,7 @@ Grafana は Azure Active Directory サービス プリンシパルを使用し�
 
 1. サービス プリンシパルを作成するには、[この手順](../azure-resource-manager/resource-group-create-service-principal-portal.md)を参照してください。 テナント ID、クライアント ID、およびクライアント シークレットをコピーおよび保存します。
 
-2. Azure Active Directory アプリケーションにリーダー ロールを割り当てるには、「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)」を参照してください。   
+2. Azure Active Directory アプリケーションにリーダー ロールを割り当てるには、「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)」を参照してください。     
 
 3. Application Insights を使用する場合は、Application Insights ベースのメトリックを収集するための Application Insights API とアプリケーション ID も含めることができます。 詳細については、「[Getting your API key and Application ID (API キーとアプリケーション ID の取得)](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)」を参照してください。
 

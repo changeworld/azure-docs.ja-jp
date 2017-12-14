@@ -4,7 +4,7 @@ description: "サインインのために Azure AD と統合され、OAuth を�
 services: active-directory
 documentationcenter: windows
 author: jmprieur
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 3b96a6d1-270b-4ac1-b9b5-58070c896a68
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/16/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6b5189dc06d7f8b0ed4426944948b904feba847e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f76324e4415dcc300a0c2e21a89d30301c17ebab
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-azure-ad-with-windows-store-apps"></a>Azure AD と Windows ストア アプリの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]

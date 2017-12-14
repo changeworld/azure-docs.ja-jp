@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C テナントの作成方法に関する
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: patricka
 ms.assetid: eec4d418-453f-4755-8b30-5ed997841b56
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/07/2017
 ms.author: parja
-ms.openlocfilehash: 0a81b8717f9cd78b9e5c39267ff187656b0b2827
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: afca6cf8f19c9b96de292881582e27133e35f096
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2C テナントを作成する
 

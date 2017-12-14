@@ -15,11 +15,11 @@ ms.devlang: gremlin
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: khdang
-ms.openlocfilehash: 473cc23c73a721c54bc87c03069f4f3688cde11f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: d2ea692c5c353586cc2b653e57eca7ccb8c9c7ce
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure Cosmos DB: Spark と Apache TinkerPop Gremlin を使用してグラフ分析を実行する
 
@@ -176,7 +176,7 @@ Azure HDInsight Spark クラスターをセットアップする方法の詳細�
 
 ## <a name="get-the-azure-cosmos-db-spark-connector"></a>Azure Cosmos DB Spark コネクタを入手する
 
-1. Azure Cosmos DB Spark コネクタ `azure-documentdb-spark-0.0.3-SNAPSHOT.jar` と Cosmos DB Java SDK `azure-documentdb-1.10.0.jar` を [GitHub の Azure Cosmos DB Spark コネクタ](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark-0.0.3_2.0.2_2.11)のページから入手します。
+1. Azure Cosmos DB Spark コネクタ `azure-cosmosdb-spark-0.0.3-SNAPSHOT.jar` と Cosmos DB Java SDK `azure-documentdb-1.12.0.jar` を [GitHub の Azure Cosmos DB Spark コネクタ](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark-0.0.3_2.0.2_2.11)のページから入手します。
 
 2. または、ローカルでビルドしてもかまいません。 最新バージョンの Spark-Gremlin は Spark 1.6.1 でビルドされており、現在 Azure Cosmos DB Spark コネクタで使われている Spark 2.0.2 とは互換性がないため、手動で最新の TinkerPop3 のコードをビルドして jar をインストールできます。 以下の手順を実行します。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: bdeac373aa8270bd9de8f135ec7166d744fd83ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70f74b685f4d5b902b6f6780f7c1de4d357164b8
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのエクスポート ジョブの作成
 REST API を使用して Microsoft Azure Import/Export サービスのエクスポート ジョブを作成するには、次の手順を実行します。
@@ -57,7 +57,7 @@ REST API を使用して Microsoft Azure Import/Export サービスのエクス�
 
 次の手順に従って、送付先を取得します。
 
--   ストレージ アカウントの場所名を特定します。 この値は、クラシック ポータルでストレージ アカウントの **ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) 操作を使用して照会することができます。
+-   ストレージ アカウントの場所名を特定します。 この値は、Azure Portal でストレージ アカウントの**ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) 操作を使用して照会することができます。
 
 -   `Get Location` 操作を呼び出して、このストレージ アカウントを処理できる場所を取得します。
 

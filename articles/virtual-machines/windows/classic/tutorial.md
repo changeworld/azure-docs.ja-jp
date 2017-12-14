@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 61d71479ae39c1ee22618f2c7fc6677b5bae8fe4
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 0a80599df07767cd6a117157fc699315cce7ad23
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Windows を実行する仮想マシンを Azure ポータルで作成する
 > [!div class="op_single_selector"]
@@ -39,8 +39,6 @@ ms.lasthandoff: 11/09/2017
 このセクションでは、Azure Portal の **ダッシュボード** を使用して仮想マシンを選択して作成する方法について説明します。
 
 また、 [独自のイメージ](createupload-vhd.md)を使用して VM を作成することもできます。 この方法や他の方法の詳細については、「 [Windows 仮想マシンを作成するさまざまな方法](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-
-<!-- 02/27/2017 Video removed as it was based on the classic portal. -->
 
 ## <a id="createvirtualmachine"> </a>仮想マシンの作成
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]

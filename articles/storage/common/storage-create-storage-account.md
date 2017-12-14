@@ -15,11 +15,11 @@ ms.topic: get-started-article
 f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: c9630e575de15b404bd91cbeefc60d698c5da667
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6e20cf37f039f6bec32aee712a4d3c564d54cfc6
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Azure ストレージ アカウントについて
 
@@ -99,7 +99,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 レプリケーション オプションを変更すると価格が変更されます。 詳細については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」を参照してください。
 
-BLOB ストレージ アカウントでは、アクセス層を変更すると、料金の変更の他に、変更に対する課金が発生することがあります。 詳細については、 [BLOB ストレージ アカウントの価格と課金](../blobs/storage-blob-storage-tiers.md#pricing-and-billing) に関するセクションを参照してください。
+BLOB ストレージ アカウントでは、アクセス層を変更すると、料金の変更の他に、変更に対する課金が発生することがあります。 詳細については、 [BLOB ストレージ アカウントの価格と課金](../blobs/storage-account-options.md#pricing-and-billing) に関するセクションを参照してください。
 
 ### <a name="manage-your-storage-access-keys"></a>ストレージ アクセス キーの管理
 ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。 Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。

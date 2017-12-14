@@ -4,7 +4,7 @@ description: "Azure Active Directory B2B コラボレーションのサポート
 services: active-directory
 documentationcenter: 
 author: sasubram
-manager: femila
+manager: mtillman
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/26/2017
 ms.author: sasubram
-ms.openlocfilehash: ce4731966baefa76b72e5a1a065c06379fac065d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 97cf6337a6a8216ec6ba557d55267c1c09fd3538
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>B2B コラボレーションのサポートの利用
 

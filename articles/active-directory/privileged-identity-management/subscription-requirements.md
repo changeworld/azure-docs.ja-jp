@@ -4,7 +4,7 @@ description: "テナントで Azure AD Privileged Identity Management を管理�
 services: active-directory
 documentationcenter: 
 author: barclayn
-manager: mbaldwin
+manager: mtillman
 editor: mwahl
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: 62d8f80fa1bec3a1b75e316f0b0ee7be8cbefbff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b04544c6a1d288524783ed6d323146c0ef7bfe95
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Azure Active Directory Privileged Identity Management サブスクリプションの要件
 

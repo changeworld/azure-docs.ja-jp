@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.openlocfilehash: cd7dab8514b41d930d01fd134229cc9da48b18fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 519ac38c484b9631a3fc096a17be026e9378a178
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要
@@ -44,13 +44,13 @@ ms.lasthandoff: 10/11/2017
 >
 
 ## <a name="api-deployment"></a>API のデプロイ
-API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは、[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出のある異常検出と季節性検出のない異常検出という、2 つの AzureML Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[AzureML Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
+API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは、[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出のある異常検出と季節性検出のない異常検出という、2 つの AzureML Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[AzureML Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
 
 ## <a name="scaling-the-api"></a>API のスケーリング
 既定では、デプロイは、1,000 件のトランザクション/月と 2 時間のコンピューティング時間/月が含まれる開発/テスト無料プランで実行されます。  ニーズに応じて別のプランにアップグレードできます。  さまざまなプランの料金の詳細については、[こちらの](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)「実稼働 Web API の価格」を参照してください。
 
 ## <a name="managing-aml-plans"></a>AML プランの管理 
-課金プランは、[こちら](https://services.azureml.net/plans/)で管理できます。  プラン名は、API のデプロイ時に選択したリソース グループ名とサブスクリプションに固有の文字列に基づきます。  プランをアップグレードする手順については、[こちらの](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-manage-new-webservice)「課金プランの管理」セクションを参照してください。
+課金プランは、[こちら](https://services.azureml.net/plans/)で管理できます。  プラン名は、API のデプロイ時に選択したリソース グループ名とサブスクリプションに固有の文字列に基づきます。  プランをアップグレードする手順については、[こちらの](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)「課金プランの管理」セクションを参照してください。
 
 ## <a name="api-definition"></a>API の定義
 この Web サービスは、REST ベースの API を HTTPS 経由で提供しますが、これは Web アプリケーションやモバイル アプリケーション、R、Python、Excel などを含むさまざまな方法で使用できます。時系列データを REST API 呼び出しによってこのサービスに送信することができ、後述する 3 つの異常の種類の組み合わせを実行します。

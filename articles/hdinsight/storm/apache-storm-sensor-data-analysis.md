@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/19/2017
 ms.author: larryfr
-ms.openlocfilehash: 87c2aece68c5de06d683abf971b6c7ccf7f67a54
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8c8cda26f2b9b564dee330e4883ec12f39feb652
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
 
@@ -361,7 +361,7 @@ Storm クラスターから HBase に書き込むには、HBase クラスター�
     > [!NOTE]
     > 'your_HDInsight_cluster_name' を、使用する HDInsight クラスターの名前で置き換えます。 メッセージが表示されたら、HDInsight 管理者ログインのパスワードを入力します。
     >
-    > この例では、Azure PowerShell が必要です。 Azure PowerShell の使用方法の詳細については、「[Get started with Azure PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/Getting-Started-with-Windows-PowerShell?view=powershell-6)」(Azure PowerShell の使用) を参照してください。
+    > この例では、Azure PowerShell が必要です。 Azure PowerShell の使用方法の詳細については、「[Get started with Azure PowerShell](https://docs.microsoft.com/powershell/scripting/Getting-Started-with-Windows-PowerShell?view=powershell-6)」(Azure PowerShell の使用) を参照してください。
 
     以下の例では、次のテキストのような情報が返されます。
 

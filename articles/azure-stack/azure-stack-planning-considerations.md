@@ -3,8 +3,8 @@ title: "Azure Stack 統合システムの計画に関する考慮事項 | Micros
 description: "マルチノードの Azure Stack について今すぐ計画し、準備するためにできることについて説明します。"
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 90f8fa1a-cace-4bfa-852b-5abe2b307615
 ms.service: azure-stack
@@ -13,12 +13,12 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: twooley
-ms.openlocfilehash: 8484f7947f23a00c05b34babf13cd75f9d227740
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mabrigg
+ms.openlocfilehash: b39b3b8f73f9deef48173c712d7966eb13c6ecc3
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="planning-considerations-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの計画に関する考慮事項
 
@@ -100,7 +100,7 @@ Azure Stack の名前空間 (特にリージョン名) と外部のドメイン�
 
 次の表は、これらのドメイン名前付けの決定事項をまとめたものです。
 
-| 名前 | Description | 
+| 名前 | 説明 | 
 | -------- | ------------- | 
 |リージョン名 | 最初の Azure Stack リージョンの名前。 この名前は、Azure Stack によって管理されるパブリック仮想 IP アドレス (VIP) の FQDN の一部として使用されます。 通常、リージョン名は、データセンターの場所などの物理的な場所の識別子になります。 | 
 | 外部ドメイン名 | 外部接続 VIP を持つエンドポイントのドメイン ネーム システム (DNS) ゾーンの名前。 パブリック VIP の FQDN に使用します。 | 
@@ -163,7 +163,7 @@ Azure Stack のネットワーク インフラストラクチャは、スイッ�
 
 次の表は、論理ネットワークと、計画する必要がある関連付けらた IPv4 サブネット範囲を示します。
 
-| 論理ネットワーク | Description | サイズ | 
+| 論理ネットワーク | 説明 | サイズ | 
 | -------- | ------------- | ------------ | 
 | パブリック VIP | 少数の Azure Stack サービスのパブリック IP アドレス (残りはテナント仮想マシンによって使用される)。 Azure Stack インフラストラクチャは、このネットワークから 32 個のアドレスを使用します。 App Service と SQL リソース プロバイダーを使用する場合は、さらに 7 個を使用します。 | /26 (62 ホスト) - /22 (1022 ホスト)<br><br>推奨 = /24 (254 ホスト) | 
 | スイッチのインフラストラクチャ | ルーティングを目的としたポイント ツー ポイント IP アドレス (スイッチ管理専用インターフェイス) と、スイッチに割り当てられたループバック アドレス。 | /26 | 

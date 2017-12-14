@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 4ef5c9ad58f86a669fc5c0bceb085ef2a266a008
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: ce1557aed09384b0d7a0b65aabd473fe72ab740c
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Azure Machine Learning で GPU を使用する方法
 グラフィカル処理ユニット (GPU) は、特定の深層ニューラル ネットワーク モデルをトレーニングするときに通常発生する負荷の大きいタスクの処理に広く使用されます。 GPU の使用により、モデルのトレーニング時間を大幅に削減できます。 このドキュメントでは、GPU を搭載した [DSVM (データ サイエンス仮想マシン)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) を実行ターゲットとして使用するように Azure ML Workbench を構成する方法を説明します。 
@@ -64,10 +64,10 @@ Azure ML Workbench は、Azure Linux VM 上の Docker での実行もサポー�
 4. **[作成]** をクリックして Ubuntu DSVM を作成します。
 
 5. **[基本]** フォームに必要な情報を入力します。
-VM の場所を選択する際には、GPU VM が一部の Azure リージョン (**[米国中南部]** など) でのみ利用可能であることに注意してください。 [リージョン別の利用可能なコンピューティング製品](https://azure.microsoft.com/en-us/regions/services/)に関するページをご覧ください。
+VM の場所を選択する際には、GPU VM が一部の Azure リージョン (**[米国中南部]** など) でのみ利用可能であることに注意してください。 [リージョン別の利用可能なコンピューティング製品](https://azure.microsoft.com/regions/services/)に関するページをご覧ください。
 [OK] をクリックして **[基本]** の情報を保存します。
 
-6. 仮想マシンのサイズを選択します。 NC というプレフィックスの付いた VM (NVidia GPU チップ搭載の VM) のサイズから選択してください。  必要な場合は、**[すべて表示]** をクリックすると完全な一覧が表示されます。 詳細については、[GPU 搭載の Azure VM](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-gpu) に関する記事をご覧ください。
+6. 仮想マシンのサイズを選択します。 NC というプレフィックスの付いた VM (NVidia GPU チップ搭載の VM) のサイズから選択してください。  必要な場合は、**[すべて表示]** をクリックすると完全な一覧が表示されます。 詳細については、[GPU 搭載の Azure VM](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) に関する記事をご覧ください。
 
 7. 残りの設定を完了し、購入情報を確認します。 [購入] をクリックして VM を作成します。 この仮想マシンに割り当てられた IP アドレスを書き留めます。 
 
@@ -119,7 +119,7 @@ dependencies:
     - https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp35-cp35m-linux_x86_64.whl
 ```
 
-マルチ GPU の VM のパフォーマンスを向上する、1 ビット SGD バージョンの Microsoft Cognitive Toolkit を使用することもできます。 [1 ビット SGD のライセンス要件](https://docs.microsoft.com/en-us/cognitive-toolkit/cntk-1bit-sgd-license) に関する記事をご覧ください。
+マルチ GPU の VM のパフォーマンスを向上する、1 ビット SGD バージョンの Microsoft Cognitive Toolkit を使用することもできます。 [1 ビット SGD のライセンス要件](https://docs.microsoft.com/cognitive-toolkit/cntk-1bit-sgd-license) に関する記事をご覧ください。
 
 ```yaml
 name: project_environment

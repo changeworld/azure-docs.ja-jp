@@ -4,7 +4,7 @@ description: "Azure Active Directory と Absorb LMS の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 549e353bb41f1f31bc0441294d0a8066779402e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df39b957e70be38331b3711a36ce847348049591
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
 
@@ -113,7 +113,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![署名証明書のダウンロードのリンク](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_certificate.png) 
 
-5. [ **保存**] を選択します。
+5. **[保存]** を選択します。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-absorblms-tutorial/tutorial_general_400.png)
     

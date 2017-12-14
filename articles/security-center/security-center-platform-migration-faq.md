@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2017
 ms.author: terrylan
-ms.openlocfilehash: 69d0c368eb11953d1a6e954990a3be10df7044f0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6ccf104ea09dc1fbce1dd34a06168205d6f5fac8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="security-center-platform-migration-faq"></a>Security Center プラットフォームの移行についてよく寄せられる質問
 2017 年 6 月上旬より、Azure Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 ここでは、プラットフォームの移行についてよく寄せられる質問に答えます。
@@ -111,7 +111,7 @@ Security Center によって収集されたデータを保存する既存の Log
    >
    >
 
-3. **[ 保存]** を選択します。
+3. **[保存]** を選択します。
 4. **[保存]** をクリックすると、監視対象の VM を再構成するかどうかをたずねられます。
 
    - 新しいワークスペース設定を**新しい VM にのみ適用**する場合は、**[いいえ]** を選択します。 この場合、新しいワークスペース設定は、エージェントの新しいインストール (Microsoft Monitoring Agent がインストールされていない、新たに検出された VM) にのみ適用されます。
@@ -176,7 +176,7 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 移行が完了すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 停止した場合、Microsoft Monitoring Agent を手動でインストールする必要があります。 [停止する場合に推奨される手順](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)に関するセクションをご覧ください。
 
 ### <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>自動プロビジョニングを停止する場合、どのような手順が推奨されますか?
-Security Center がお使いの VM からセキュリティ データを収集して、推奨や通知を提示できるように、Microsoft Monitoring Agent を手動でインストールする必要があります。 インストールのガイダンスとして、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agents.md)」をご覧ください。
+Security Center がお使いの VM からセキュリティ データを収集して、推奨や通知を提示できるように、Microsoft Monitoring Agent を手動でインストールする必要があります。 インストールのガイダンスとして、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agent.md)」をご覧ください。
 
 エージェントをいずれかの既存のカスタム ワークスペースまたは Security Center が作成したワークスペースに接続できます。 カスタム ワークスペースの 'Security' または 'SecurityCenterFree' ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、**[セキュリティ ポリシー – 価格レベル]** ブレードを利用して、カスタム ワークスペースまたはサブスクリプションを選択します。
 

@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: dubansal
-ms.openlocfilehash: 43a2a9784668fad2aa5b1441cfd37751c0c240b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db72b1ca936e69a049d64f939d3399bfd9cdf89c
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="using-the-anomalydetection-operator"></a>ANOMALYDETECTION 演算子を使用する
 
@@ -38,12 +38,12 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="syntax"></a>構文
 
-`ANOMALYDETECTION(\<scalar_expression\>) OVER ([PARTITION BY \<partition key\>] LIMIT DURATION(\<unit\>, \<length\>) [WHEN boolean_expression])` 
+`ANOMALYDETECTION(<scalar_expression>) OVER ([PARTITION BY <partition key>] LIMIT DURATION(<unit>, <length>) [WHEN boolean_expression])` 
 
 
 ## <a name="example-usage"></a>使用例
 
-`SELECT id, val, ANOMALYDETECTION(val) OVER(PARTITION BY id LIMIT DURATION(hour, 1) WHEN id \> 100) FROM input`|
+`SELECT id, val, ANOMALYDETECTION(val) OVER(PARTITION BY id LIMIT DURATION(hour, 1) WHEN id > 100) FROM input`|
 
 
 ## <a name="arguments"></a>引数
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
 - **partition_by_clause** 
 
-  `PARTITION BY \<partition key\>` 句は、学習とトレーニングを個別のパーティションに分割します。 つまり、`\<partition key\>` の値ごとに異なるモデルが使われ、その値を持つイベントのみがそのモデルの学習とトレーニングに使われます。 たとえば、次のように入力します。
+  `PARTITION BY <partition key>` 句は、学習とトレーニングを個別のパーティションに分割します。 つまり、`<partition key>` の値ごとに異なるモデルが使われ、その値を持つイベントのみがそのモデルの学習とトレーニングに使われます。 たとえば、次のように入力します。
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 10/11/2017
 
 レコードから個々の値を抽出するには、**GetRecordPropertyValue** 関数を使います。 For example:
 
-`SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) \> 3.25` 
+`SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 
 これらの異常スコアのいずれかがしきい値を超えると、特定の種類の異常が検出されます。 しきい値は、\>= 0 以上の任意の浮動小数点数です。 しきい値は、感度と信頼性のトレードオフになります。 たとえば、しきい値を低くすると、変化の検出感度が高くなり、生成されるアラートの数が増えます。しきい値を高くすると、検出の感度は低くなり、信頼性は高くなりますが、一部の異常が見落とされる可能性があります。 使うしきい値の正確な値は、シナリオによって異なります。 上限はありませんが、推奨される範囲は 3.25 から 5 です。
@@ -160,12 +160,12 @@ ms.lasthandoff: 10/11/2017
 
     WHERE
 
-        CAST(GetRecordPropertyValue(scores, 'BiLevelChangeScore') as float) \>= 3.25
+        CAST(GetRecordPropertyValue(scores, 'BiLevelChangeScore') as float) >= 3.25
 
-        OR CAST(GetRecordPropertyValue(scores, 'SlowPosTrendScore') as float) \>=
+        OR CAST(GetRecordPropertyValue(scores, 'SlowPosTrendScore') as float) >=
         3.25
 
-       OR CAST(GetRecordPropertyValue(scores, 'SlowNegTrendScore') as float) \>=
+       OR CAST(GetRecordPropertyValue(scores, 'SlowNegTrendScore') as float) >=
        3.25
 
 ## <a name="references"></a>参照

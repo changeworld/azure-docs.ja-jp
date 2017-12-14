@@ -4,7 +4,7 @@ description: "アクセス パネルの各種構成 (Web ブラウザー、Andro
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a63e2d583e1203708e49c0fcef99876d2055343a
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: d40f67c354e29f3a58c9d0f1967e0154b5b998d0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="what-is-the-access-panel"></a>アクセス パネルの概要
 

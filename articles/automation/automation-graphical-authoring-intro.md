@@ -3,7 +3,7 @@ title: "Azure Automation でのグラフィカル作成 | Microsoft Docs"
 description: "グラフィカル作成では、コードを操作せずに Azure Automation の Runbook を作成することができます。 この記事では、グラフィカル作成の概要と、グラフィカル Runbook の作成を開始するうえで必要なすべての詳細情報を示します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 4b6f840c-e941-4293-a728-b33407317943
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 137e8503b9759136510db59700c3032853246c89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59f1f8c544c7ab3dce9373d65e0f6cbaa62c8f67
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 ## <a name="introduction"></a>はじめに
@@ -72,7 +72,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 ### <a name="testing-a-graphical-runbook"></a>グラフィカル Runbook のテスト
 発行バージョンの Runbook を変更せずに、ドラフト バージョンの Runbook を Azure ポータルでテストしたり、新しい Runbook を発行前にテストしたりすることができます。 これにより、発行バージョンを置き換える前に、Runbook が正常に機能していることを確認することができます。 Runbook のテスト時に、ドラフトの Runbook が実行され、行われたすべての操作が完了します。 ジョブ履歴は作成されませんが、出力がテスト出力ペインに表示されます。 
 
-Runbook のテスト コントロールを開くには、編集対象の Runbook を開いてから [ **テスト ペイン** ] ボタンをクリックします。
+Runbook のテスト コントロールを開くには、編集対象の Runbook を開いてから **[テスト ペイン]** ボタンをクリックします。
 
 ![[テスト ペイン] ボタン](media/automation-graphical-authoring-intro/runbook-edit-test-pane.png)
 
@@ -83,11 +83,11 @@ Runbook のテスト コントロールを開くには、編集対象の Runbook
 ### <a name="publishing-a-graphical-runbook"></a>グラフィカル Runbook の発行
 Azure Automation の各 Runbook には、ドラフト バージョンと発行バージョンがあります。 実行できるのは発行バージョンのみで、編集できるのはドラフト バージョンのみです。 ドラフト バージョンを変更しても発行バージョンに影響はありません。 ドラフト バージョンを使用する準備ができたら、それを発行します。これにより、発行バージョンがドラフト バージョンで上書きされます。
 
-グラフィカル Runbook は、編集対象の Runbook を開いてから [ **発行** ] ボタンをクリックすることで発行できます。
+グラフィカル Runbook は、編集対象の Runbook を開いてから **[発行]** ボタンをクリックすることで発行できます。
 
 ![[発行] ボタン](media/automation-graphical-authoring-intro/runbook-edit-publish.png)
 
-Runbook がまだ発行されていない場合、状態は [ **新規**] です。  発行されている場合、状態は [ **発行済み**] です。  Runbook を発行後に編集する際に、ドラフトと発行のバージョンが異なる場合、Runbook の状態は [ **編集**] になります。
+Runbook がまだ発行されていない場合、状態は **[新規]** です。  発行されている場合、状態は **[発行済み]** です。  Runbook を発行後に編集する際に、ドラフトと発行のバージョンが異なる場合、Runbook の状態は **[編集]** になります。
 
 ![Runbook のステータス](media/automation-graphical-authoring-intro/runbook-statuses-revised20165.png) 
 
@@ -96,14 +96,14 @@ Runbook がまだ発行されていない場合、状態は [ **新規**] です
 ![発行済みに戻すボタン](media/automation-graphical-authoring-intro/runbook-edit-revert-published.png)
 
 ## <a name="activities"></a>アクティビティ
-アクティビティは Runbook の構成要素です。  アクティビティは、PowerShell コマンドレット、子 Runbook、またはワークフロー アクティビティである場合があります。  Runbook にアクティビティを追加する場合は、ライブラリ　コントロールを右クリックして、[ **キャンバスに追加**] を選択します。  その後、アクティビティをクリックしてドラッグし、キャンバス上の任意の場所に配置できます。  キャンバス上のアクティビティの場所が、Runbook の操作に影響することは決してありません。  Runbook をレイアウトできますが、その操作を視覚化するために最適なレイアウトを見つけてください。 
+アクティビティは Runbook の構成要素です。  アクティビティは、PowerShell コマンドレット、子 Runbook、またはワークフロー アクティビティである場合があります。  Runbook にアクティビティを追加する場合は、ライブラリ　コントロールを右クリックして、**[キャンバスに追加]** を選択します。  その後、アクティビティをクリックしてドラッグし、キャンバス上の任意の場所に配置できます。  キャンバス上のアクティビティの場所が、Runbook の操作に影響することは決してありません。  Runbook をレイアウトできますが、その操作を視覚化するために最適なレイアウトを見つけてください。 
 
 ![キャンバスに追加](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
 
 構成ブレードでプロパティとパラメーターを構成するには、キャンバス上でアクティビティを選択します。  アクティビティの **ラベル** は、わかりやすいものに変更することができます。  元のコマンドレットは引き続き実行されるため、グラフィカル エディターで使用される表示名を変更するだけです。  ラベルは、Runbook 内で一意である必要があります。 
 
 ### <a name="parameter-sets"></a>パラメーター セット
-パラメーター セットは、特定のコマンドレットの値を受け入れる必須および省略可能なパラメーターを定義します。  すべてのコマンドレットには 1 つ以上のパラメーター セットがあり、複数存在する場合があります。  コマンドレットに複数のパラメーター セットがある場合は、使用するものを選択してからパラメーターを構成する必要があります。  構成可能なパラメーターは、選択するパラメーター セットによって異なります。  アクティビティで使用されるパラメーター セットは、[ **パラメーター セット** ] を選択してから別のセットを選択することで変更できます。  この場合、構成したパラメーター値はすべて失われます。
+パラメーター セットは、特定のコマンドレットの値を受け入れる必須および省略可能なパラメーターを定義します。  すべてのコマンドレットには 1 つ以上のパラメーター セットがあり、複数存在する場合があります。  コマンドレットに複数のパラメーター セットがある場合は、使用するものを選択してからパラメーターを構成する必要があります。  構成可能なパラメーターは、選択するパラメーター セットによって異なります。  アクティビティで使用されるパラメーター セットは、**[パラメーター セット]** を選択してから別のセットを選択することで変更できます。  この場合、構成したパラメーター値はすべて失われます。
 
 次の例では、Get-AzureRmVM コマンドレットに 3 つのパラメーター セットがあります。  パラメーター セットのいずれかを選択するまでは、パラメーター値を構成することはできません。  ListVirtualMachineInResourceGroupParamSet パラメーター セットは、リソース グループ内のすべての仮想マシンを返すためのものであり、1 つの省略可能なパラメーターがあります。  GetVirtualMachineInResourceGroupParamSet は、返される仮想マシンを指定するためのものであり、2 つの必須パラメーターと 1 つの省略可能なパラメーターがあります。
 
@@ -276,7 +276,7 @@ Runbook では、Azure ポータルで Runbook を開始する場合はユーザ
 
 Runbook の入力を受け入れる場合は、1 つ以上の入力パラメーターを定義します。  Runbook が開始されるたびに、これらのパラメーターの値を指定します。  Azure ポータルで Runbook を開始すると、Runbook の入力パラメーターのそれぞれの値を指定するように求められます。
 
-Runbook の入力パラメーターには、Runbook ツールバーの [ **入力と出力** ] ボタンをクリックしてアクセスできます。  
+Runbook の入力パラメーターには、Runbook ツールバーの **[入力と出力]** ボタンをクリックしてアクセスできます。  
 
 ![Runbook の入出力](media/automation-graphical-authoring-intro/runbook-edit-input-output.png) 
 

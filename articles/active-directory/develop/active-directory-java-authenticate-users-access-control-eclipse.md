@@ -4,7 +4,7 @@ description: "Azure 上で Java により Access Control を開発して使用�
 services: active-directory
 documentationcenter: java
 author: rmcmurray
-manager: erikre
+manager: mtillman
 editor: 
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
-ms.openlocfilehash: 698403d181e1fee09bb4692290c92203ded97ba4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
 このガイドでは、Azure Toolkit for Eclipse 内で Azure の Access Control Service (ACS) を使用する方法について説明します。 ACS の詳細については、「 [次のステップ](#next_steps) 」を参照してください。

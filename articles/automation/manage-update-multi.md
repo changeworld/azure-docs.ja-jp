@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: 119d8abcea91bf5c6ea03212fcb886f9e31c1ada
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: aea0b93e658a0c5dd14deedbd2c5c92bb1fbf652
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -84,7 +84,7 @@ Linux エージェントは、更新リポジトリへのアクセスが必要�
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Azure 以外の仮想マシンおよびコンピューターの更新管理を有効にする
 
-Azure 以外の Windows 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agents.md)」を参照してください。
+Azure 以外の Windows 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agent.md)」を参照してください。
 
 Azure 以外の Linux 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Linux コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-agent-linux.md)」を参照してください。
 

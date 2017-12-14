@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: b3a9befe5c6607c108e11b583f8b67c483710021
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c8f49a778ab5e32108531cab05cab7f7eb092221
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-database-security-best-practices"></a>Azure のデータベース セキュリティに関するベスト プラクティス
 
@@ -137,7 +137,7 @@ Azure Portal で Azure Storage を操作する場合、すべてのトランザ�
 
 転送中のデータを保護しない場合、[man-in-the-middle 攻撃](https://technet.microsoft.com/library/gg195821.aspx)、[盗聴](https://technet.microsoft.com/library/gg195641.aspx)、セッション ハイジャックに対して脆弱になります。 このような攻撃は、機密データへのアクセスを取得するための最初の手順として実行される場合があります。
 
-Azure VPN オプションについて詳しくは、「[VPN Gateway の計画と設計](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-plan-design)」をご覧ください。
+Azure VPN オプションについて詳しくは、「[VPN Gateway の計画と設計](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)」をご覧ください。
 
 ## <a name="enable-database-auditing"></a>データベース監査を有効にする
 SQL Server データベース エンジンまたは個々のデータベースのインスタンスを監査するには、データベース エンジンで発生するイベントを追跡し、ログに記録します。 SQL Server 監査では、サーバー監査を作成できます。これには、サーバー レベルのイベント用のサーバー監査の仕様と、データベース レベルのイベント用のデータベース監査仕様を含めることができます。 監査されるイベントは、イベント ログまたは監査ファイルに書き込むことができます。

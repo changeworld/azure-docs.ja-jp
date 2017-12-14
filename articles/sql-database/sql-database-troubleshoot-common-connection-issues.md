@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: daleche
-ms.openlocfilehash: cc9b1e1474e67628857dd80a63850634469ca5e8
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1d756aa023ae143608acc988ddd0ae8acee1a113
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Azure SQL Database との接続に関する一般的な問題のトラブルシューティング
 Azure SQL Database との接続に失敗すると、[エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。 この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介します。 ここでは接続の問題の[一般的な原因](#cause)を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues)を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および[永続的または一時的でないエラー](#troubleshoot-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。 
@@ -77,7 +77,7 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
 1. クライアントの IP アドレスを許可するには、 [ファイアウォール規則](sql-database-configure-firewall-settings.md) を設定します。 一時的なテストのために、0.0.0.0 を IP アドレス範囲の開始アドレス、255.255.255.255 を終了アドレスとするファイアウォール規則を設定します。 これにより、サーバーがすべての IP アドレスに開かれます。 これによって接続の問題が解決する場合は、この規則を削除した後、IP アドレスまたはアドレス範囲を適切に制限するファイアウォール規則を作成します。 
 2. クライアントとインターネットの間のすべてのファイアウォールで、送信接続用のポート 1433 が開いていることを確認します。 Azure Active Directory 認証のために追加で開く必要があるポートに関する詳しい情報は、「[Configure the Windows Firewall to Allow SQL Server Access (SQL Server のアクセスを許可するための Windows ファイアウォールの構成)](https://msdn.microsoft.com/library/cc646023.aspx)」および「[Hybrid Identity Required Ports and Protocols (ハイブリッド ID で必要なポートとプロトコル)](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-ports)」を参照してください。
-3. 接続文字列およびその他の接続設定を確認します。 [接続の問題に関するトピック](sql-database-connectivity-issues.md#connections-to-azure-sql-database)で、接続文字列のセクションを確認します。
+3. 接続文字列およびその他の接続設定を確認します。 [接続の問題に関するトピック](sql-database-connectivity-issues.md#connections-to-sql-database)で、接続文字列のセクションを確認します。
 4. ダッシュ ボードでサービスの正常性を確認します。 リージョンの障害があると思われる場合は、新しいリージョンへの回復手順を [障害からの回復](sql-database-disaster-recovery.md) のトピックで参照してください。
 
 ## <a name="next-steps"></a>次のステップ

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 07/06/2017
 ms.author: iainfou
-ms.openlocfilehash: 9ccdb3fbca21264065eeb1c4e46314c62af4c2e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 264fe2acbdd393a2f9d349e1522263f1728c5d48
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
 SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
@@ -113,7 +113,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。 Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。 ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。
 詳細については、「 [ネットワーク セキュリティ グループについて](../../virtual-network/virtual-networks-nsg.md)」をご覧ください。
 
-NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
+NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
 
 ## <a name="source-5-linux-based-azure-virtual-machine"></a>ソース 5: Linux ベースの Azure 仮想マシン
 最後に考えられる問題のソースは、Azure 仮想マシン自体に関連するものです。

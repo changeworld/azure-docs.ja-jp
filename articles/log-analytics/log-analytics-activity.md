@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.openlocfilehash: 1ad56a54f094f3c314596b3a7c9fecd09647d065
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa8f51d621bc262ec72ef03929689c4af3c339a6
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="view-azure-activity-logs"></a>Azure アクティビティ ログの表示
 
@@ -52,7 +52,7 @@ Free 価格レベルの場合は、アクティビティ ログに毎日のデ�
 
 | 接続されているソース | サポートの有無 | 説明 |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agents.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
+| [Windows エージェント](log-analytics-windows-agent.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | なし | ソリューションでは、Linux エージェントの情報は収集しません。 |
 | [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |

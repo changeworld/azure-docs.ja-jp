@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: 399ed17e997baf5dcf484f7798d3c4679522c633
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c0295af2e71d891d07dad7012b7a27402c375178
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Storm のトラブルシューティング
 
@@ -91,7 +91,7 @@ lib フォルダーには、エクスポート/インポート操作の実装を
  
 /usr/hdp には、特定の HDP バージョンの複数のバイナリが存在する場合があります (例: /usr/hdp/2.5.0.1233/storm)。 /usr/hdp/current/storm-client フォルダーは、クラスターで実行されている最新バージョンにシンボリック リンクされます。
 
-詳細については、[SSH を使用した HDInsight への接続](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)に関する記事および [Storm](http://storm.apache.org/) のページをご覧ください。
+詳細については、[SSH を使用した HDInsight への接続](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)に関する記事および [Storm](http://storm.apache.org/) のページをご覧ください。
  
 ## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Storm クラスターのデプロイ トポロジを特定する方法
 まず、HDInsight Storm でインストールされているすべてのコンポーネントを特定します。 Storm クラスターは、次の 4 つのノード カテゴリで構成されます。
@@ -127,10 +127,10 @@ Storm ワーカー ノードは、次のサービスを実行します。
 トポロジで Storm イベント ハブ スパウト .jar ファイルを使用する方法の詳細については、以下のリソースを参照してください。
  
 ### <a name="java-based-topology"></a>Java ベースのトポロジ
-[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
+[Process events from Azure Event Hubs with Storm on HDInsight (Java) (HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java))](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-java-event-hub-topology)
  
 ### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# ベースのトポロジ (HDInsight 3.4 以降の Linux Storm クラスター上の Mono)
-[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (C#)](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
  
 ### <a name="latest-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5 以降の Linux Storm クラスター用の最新の Storm イベント ハブ スパウト バイナリ
 HDInsight 3.5 以降の Linux Storm クラスターで動作する最新の Storm イベント ハブ スパウトの使用方法については、mvn-repo の [readme ファイル](https://github.com/hdinsight/mvn-repo/blob/master/README.md)をご覧ください。

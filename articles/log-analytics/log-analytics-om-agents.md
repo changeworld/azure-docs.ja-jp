@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2017
+ms.date: 12/10/2017
 ms.author: magoedte
-ms.openlocfilehash: 387ec757ec17799408ef45bfeb523eb98a5b1013
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Operations Manager を Log Analytics に接続する
 Operations Manager と OMS ワークスペースを統合することにより、System Center Operations Manager における既存の投資を維持しながら、Log Analytics で拡張機能を使用することができます。  この統合により、Operations Manager を使用して以下に示す処理を引き続き行いながら、OMS によってもたらされる利点を活用することができます。
@@ -40,9 +40,9 @@ IT セキュリティ ポリシーで、ネットワーク上のコンピュー�
 ## <a name="system-requirements"></a>システム要件
 始める前に、次の詳細を確認し、前提条件が満たされていることを確認してください。
 
-* OMS では、Operations Manager 2016、Operations Manager 2012 SP1 UR10 以上、および Operations Manager 2012 R2 UR11 以上のみがサポートされます。
+* OMS では、Operations Manager 2016、Operations Manager 2012 SP1 UR6 以上、および Operations Manager 2012 R2 UR2 以上のみがサポートされます。  プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
 * すべての Operations Manager エージェントが最小サポート要件を満たす必要があります。 エージェントに最小限の更新プログラムが適用されていることを確認してください。そうでないと、Windows エージェントのトラフィックに異常が発生し、Operations Manager イベント ログに多数のエラーが記録される可能性があります。
-* Azure Log Analytics サブスクリプション。  詳細については、「 [Log Analytics の起動と開始](log-analytics-get-started.md)」を参照してください。
+* OMS サブスクリプション。  詳細については、「 [Log Analytics の起動と開始](log-analytics-get-started.md)」を参照してください。
 
 ### <a name="network"></a>ネットワーク
 次に、OMS と通信するために、Operations Manager エージェント、管理サーバー、およびオペレーション コンソールに必要なプロキシとファイアウォールの構成情報を示します。  各コンポーネントからのトラフィックは、ネットワークから OMS サービスへの送信です。     
@@ -208,7 +208,7 @@ Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つの�
 > 
 
 ```
-    `param(
+    param(
     [String] $connectorName,
     [String] $msName="localhost"
     )

@@ -4,7 +4,7 @@ description: "Azure Active Directory と AppDynamics の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 25fd1df0-411c-4f55-8be3-4273b543100f
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 634e68bdb937eba68b27b824dc62fe2677e24ffe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b818f5d24873007aff5a8713a11d368cbe799ee6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>チュートリアル: Azure Active Directory と AppDynamics の統合
 
@@ -151,7 +151,7 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
        
     d. base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、 **[証明書]** テキストボックスに貼り付けます。
 
-    e. [ **Save**] をクリックします。
+    e. **[Save]** をクリックします。
 
      ![保存](./media/active-directory-saas-appdynamics-tutorial/ic777673.png "保存")
 
@@ -197,7 +197,7 @@ Azure AD ユーザーが AppDynamics にログインできるようにするに�
 
 1. AppDynamics 企業サイトに管理者としてログインします。
 
-2. **Users** に移動して、**+**をクリックして **Create User** ダイアログを開きます。
+2. **[Users]** に移動して、[**+**] をクリックして **[Create User]** ダイアログを開きます。
    
     ![ユーザー](./media/active-directory-saas-appdynamics-tutorial/ic790229.png "Users")
 
@@ -207,7 +207,7 @@ Azure AD ユーザーが AppDynamics にログインできるようにするに�
    
     a. 関連するテキスト ボックスに、プロビジョニングする有効な AAD アカウントの **[Username]**、**[Name]**、**[Email]**、**[New Password]**、**[Repeat New Password]** を入力します。
 
-    b. [ **Save**] をクリックします。
+    b. **[Save]** をクリックします。
 
     >[!NOTE]
     >他の AppDynamics ユーザー アカウント作成ツールまたは AppDynamics から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。

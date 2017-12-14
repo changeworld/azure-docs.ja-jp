@@ -4,7 +4,7 @@ description: "実行時に動的に変化する HTML5/CSS コンテンツで複�
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/20/2017
 ms.author: yoelh
-ms.openlocfilehash: fffb6c82b2e04976c420fba07bbcf967ffd25929
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 342e82071778156477d216c9b624a938c48cb37f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
 Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用して、クエリ文字列のパラメーターを送信することができます。 パラメーターを HTML エンドポイントに渡すことで、ページのコンテンツを動的に変更することができます。 たとえば、Web またはモバイル アプリケーションから渡すパラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。 
@@ -39,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
 
 `ContentDefinitions` セクションには一連の `ContentDefinition` XML 要素が含まれます。 `ContentDefinition` 要素の ID 属性は、コンテンツ定義に関連するページの種類を指定します。 つまり、要素では、カスタム HTML5/CSS テンプレートが適用されるコンテキストを定義します。 次の表で、IEF エンジンで認識されたコンテンツ定義 ID のセットと、それに関連するページの種類について説明します。
 
-| コンテンツ定義 ID | 既定の HTML5 テンプレート| Description | 
+| コンテンツ定義 ID | 既定の HTML5 テンプレート| 説明 | 
 |-----------------------|--------|-------------|
 | *api.error* | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーが一覧表示されます。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
@@ -155,7 +155,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
     **[App Service の作成]** ウィンドウが開きます。 ここで、Azure で ASP.NET Web アプリを実行するために必要なすべての Azure リソースの作成を開始できます。
 
     > [!NOTE]
-    > 発行の詳細については、「[Azure に ASP.NET Web アプリを作成する](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)」を参照してください。
+    > 発行の詳細については、「[Azure に ASP.NET Web アプリを作成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure)」を参照してください。
 
 3. **[Web アプリ名]** ボックスに、一意のアプリ名 (有効な文字は a-z、A-Z、0-9、およびハイフン (-)) を入力します。 Web アプリの URL は`http://<app_name>.azurewebsites.NET`です。`<app_name>` には Web アプリの名前を指定します。 自動的に生成される名前をそのまま使用してもかまいません。この名前は一意になっています。
 
@@ -181,7 +181,7 @@ Azure Active Directory B2C (Azure AD B2C) カスタム ポリシーを使用し�
     * JavaScript の呼び出し元として許可する URL を入力します。
     * アスタリスク (*) を入力して、元のドメインをすべて受け入れるように指定します。
 
-4. [ **保存**] を選択します。
+4. **[保存]** を選択します。
 
     ![[CORS] ウィンドウ](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-CORS3.png)
 
@@ -220,7 +220,7 @@ HTML5 テンプレートを使用する準備はできています。 ただし�
 
 2. **[Identity Experience Framework]** を選択します。
 
-3. **[すべてのポリシー]** を選択します
+3. **[すべてのポリシー]** を選択します。
 
 4. **[ポリシーのアップロード]** を選択します。
 
@@ -341,7 +341,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>(省略可能) 完全なポリシー ファイルとコードをダウンロードする
 * [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)が提供されています。
-* 完全なコードは、[参照用の Visual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)からダウンロードできます。
+* 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)からダウンロードできます。
 
 
 

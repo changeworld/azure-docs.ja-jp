@@ -5,15 +5,15 @@ services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.date: 08/14/2017
 ms.author: nepeters
-ms.custom: 
-ms.openlocfilehash: 79e4fab9501141c78bca4b28eabb3964604be909
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.custom: mvc
+ms.openlocfilehash: 180a476445760930ab4f3505e0e6e9474e404445
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="deploy-docker-swarm-cluster"></a>Docker Swarm クラスターのデプロイ
 

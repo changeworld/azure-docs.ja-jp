@@ -14,13 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: 5ab36a16ca87ae7a3e7b26571fc6aadd108841c9
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c6cfe5c3282064573542050ecc477903ded20467
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
 ほとんどのモバイル アプリでは、クラウドにデータを格納する必要があります。Azure Cosmos DB は、モバイル アプリ向けのクラウド データベースです。 モバイル開発者が必要なすべてのものを備えています。 必要に応じて拡大縮小できる、完全に管理されたサービスとしてのデータベースです。 ユーザーが世界中どこにいても、アプリケーションにデータを透過的に提供できます。 [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md) を使用すると、中間層なしで、Xamarin モバイル アプリが Azure Cosmos DB と直接やり取りすることができます。
 
 この記事では、Xamarin と Azure Cosmos DB を使用したモバイル アプリの構築についてのチュートリアルを提供します。 ユーザーとアクセス許可を管理する方法を含め、このチュートリアルの完全なソース コードについては、[GitHub の Xamarin と Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) に関するページを参照してください。

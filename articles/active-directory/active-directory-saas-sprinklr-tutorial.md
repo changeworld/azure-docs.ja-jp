@@ -4,7 +4,7 @@ description: "Azure Active Directory と Sprinklr の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: b33938a1-25a5-484c-8e75-7dc6de2d534d
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 6e1622cd55e3b0e8063604ac9dc0cb0673fa9753
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13eea1b7889c6382f1f4a6fb5c9bc02578c52711
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル: Azure Active Directory と Sprinklr の統合
 
@@ -163,7 +163,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
 
     j. **[SAML User ID Location]** として **[User ID is in the Name Identifier element of the Subject statement]** を選択します。
 
-    k. [ **Save**] をクリックします。
+    k. **[Save]** をクリックします。
        
     ![SAML](./media/active-directory-saas-sprinklr-tutorial/ic782911.png "SAML")
 

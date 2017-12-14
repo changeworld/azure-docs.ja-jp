@@ -3,7 +3,7 @@ title: "OMS Log Analytics への Azure Automation DSC レポート データの�
 description: "この記事では、Desired State Configuration (DSC) レポート データを Microsoft Operations Management Suite Log Analytics に送信して、詳細な情報を入手し、きめ細かい管理を実現する方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.service: automation
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
-ms.author: eslesar
-ms.openlocfilehash: 316031c5297a0201c8db4a9e177298c78962c673
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: gwallace
+ms.openlocfilehash: 5de22072a436e7a2dbaa7d413595c048f730189b
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>OMS Log Analytics への Azure Automation DSC レポート データの転送
 
@@ -43,7 +43,7 @@ Log Analytics への Automation DSC レポートの送信を開始するには�
 
 Azure Automation DSC から Log Analytics へのデータのインポートを開始するには、次の手順を実行します。
 
-1. PowerShell で Azure アカウントにログインします。 「[Azure PowerShell でのログイン](https://docs.microsoft.com/en-us/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)」をご覧ください。
+1. PowerShell で Azure アカウントにログインします。 「[Azure PowerShell でのログイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)」をご覧ください。
 1. 次の PowerShell コマンドを実行して、Automation アカウントの _ResourceId_ を取得します (Automation アカウントが 1 つ以上ある場合は、構成するアカウントの _ResourceID_ を選択します)。
 
   ```powershell
@@ -125,9 +125,9 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscNodeStatusData |
-| ResultType |ノードが適合しているかどうか。 |
+| ResultType |ノードが準拠しているかどうか。 |
 | NodeName_s |管理対象ノードの名前。 |
-| NodeComplianceStatus_s |ノードが適合しているかどうか。 |
+| NodeComplianceStatus_s |ノードが準拠しているかどうか。 |
 | DscReportStatus |コンプライアンス チェックが正常に実行されたかどうか。 |
 | ConfigurationMode | ノードに構成が適用される方法。 指定できる値は、__"ApplyOnly"__、__"ApplyandMonitior"__、および __"ApplyandAutoCorrect"__ です。 <ul><li>__ApplyOnly__: DSC が構成を適用し、以降は新しい構成がターゲット ノードにプッシュない限り、または新しい構成がサーバーからプルされるまで何もしません。 新しい構成が最初に適用された後、DSC は以前の構成された状態からの誤差を確認しません。 DSC は __ApplyOnly__ が有効になる前に、構成の適用を成功するまで試行します。 </li><li> __ApplyAndMonitor__: これが既定値です。 LCM が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告します。 DSC は __ApplyAndMonitor__ が有効になる前に、構成の適用を成功するまで試行します。</li><li>__ApplyAndAutoCorrect__: DSC が任意の新しい構成を適用します。 新しい構成が最初に適用された後、ターゲット ノードが目的の状態から変わった場合、DSC はログに不一致を報告し、現在の構成を再適用します。</li></ul> |
 | HostName_s | 管理対象ノードの名前。 |
@@ -156,7 +156,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscResourceStatusData|
-| ResultType |リソースが適合しているかどうか。 |
+| ResultType |リソースが準拠しているかどうか。 |
 | NodeName_s |管理対象ノードの名前。 |
 | カテゴリ | DscNodeStatus |
 | リソース | Azure Automation アカウントの名前。 |

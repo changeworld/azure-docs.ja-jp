@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/31/2017
 ms.author: yanacai
-ms.openlocfilehash: 8b16fda041663160c62710cabbe0cd2bd4a83d1e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 739d46753729b70a24dbd3d6e2d78f8513e143e6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする
 
-U-SQL は C# を使用した機能拡張モデルを提供しています。 U-SQL スクリプトでは、C# 関数を簡単に呼び出して、SQL のような宣言型言語がサポートしていない分析関数を実行できます。 U-SQL 機能拡張の詳細については、「[U-SQL プログラミング ガイド](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf)」を参照してください。 
+U-SQL は C# を使用した機能拡張モデルを提供しています。 U-SQL スクリプトでは、C# 関数を簡単に呼び出して、SQL のような宣言型言語がサポートしていない分析関数を実行できます。 U-SQL 機能拡張の詳細については、「[U-SQL プログラミング ガイド](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf)」を参照してください。 
 
 実際にはすべてのコードにデバッグが必要ですが、限られたログ ファイルを使用して、クラウド上にカスタム コードを持つ分散ジョブをデバッグするのは困難です。 [Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) には**失敗した頂点のデバッグ**と呼ばれる機能が用意されており、カスタム コードで発生したエラーをより簡単にデバッグするのに役立ちます。 U-SQL ジョブが失敗すると、サービスではエラーの状態が維持されます。このツールは、クラウドのエラー環境をローカル マシンにダウンロードしてデバッグするうえで役立ちます。 ローカルのダウンロードには、入力データとユーザー コードを含むクラウド環境全体がキャプチャされています。
 

@@ -14,6 +14,7 @@
 ### [テンプレート セクション](resource-group-authoring-templates.md)
 #### [パラメーター](resource-manager-templates-parameters.md)
 #### [変数](resource-manager-templates-variables.md)
+#### [リソース](resource-manager-templates-resources.md)
 ### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
@@ -36,7 +37,7 @@
 #### [テンプレートのデプロイ](resource-group-template-deploy-cli.md)
 #### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-cli-sas-token.md)
 #### [テンプレートをエクスポートして再デプロイする](resource-manager-export-template-cli.md)
-### Azure Portal
+### Azure ポータル
 #### [リソースのデプロイ](resource-group-template-deploy-portal.md)
 #### [テンプレートをエクスポートする](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)

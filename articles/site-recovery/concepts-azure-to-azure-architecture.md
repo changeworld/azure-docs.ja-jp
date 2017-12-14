@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/10/2017
+ms.date: 12/08/2017
 ms.author: raynew
-ms.openlocfilehash: f9cd57e47a8463440148b2bcc6c21beacd54382a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8251534b2e1e0d223f5e1df5dbd33831604615cb
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Azure から Azure へのレプリケーション アーキテクチャ
 

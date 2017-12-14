@@ -4,7 +4,7 @@ description: "管理者は、Azure Active Directory B2B コラボレーション
 services: active-directory
 documentationcenter: 
 author: sasubram
-manager: femila
+manager: mtillman
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43bf961e64d94ff57a3aeb395fbe134ef8b45a6a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法
 

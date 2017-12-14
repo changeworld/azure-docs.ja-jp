@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 75bdd4644f4ccc583271b9169c50a375e2cd6629
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a21dfde5544045e4961549fe5728e14647eb886
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors の FabricTransport 設定を構成する
 
 構成できる設定を以下に示します。
 - C#: [FabricTransportRemotingSettings](
-https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
+https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 - Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 
 次の方法で FabricTransport の既定の構成を変更できます。
 
 ## <a name="assembly-attribute"></a>Assembly 属性
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute)属性は、アクター クライアントおよびアクター サービス アセンブリに適用する必要があります。
+[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute)属性は、アクター クライアントおよびアクター サービス アセンブリに適用する必要があります。
 
 次の例では、FabricTransport OperationTimeout 設定の既定値を変更する方法を示します。
 
@@ -49,7 +49,7 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
 
 ## <a name="config-package"></a>構成パッケージ
 
-[構成パッケージ](service-fabric-application-model.md)を使用して既定の構成を変更できます。
+[構成パッケージ](service-fabric-application-and-service-manifests.md)を使用して既定の構成を変更できます。
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>アクター サービスの FabricTransport 設定を構成する
 

@@ -4,7 +4,7 @@ description: "Azure Active Directory (プレビュー) で Office 365 グルー�
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 12/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: c2dd56bd34e5b7845298fab1f36e231113a2e28e
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: d485d2e7d22ea79a87dc52dbc063a811f4a1a2ec
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-expiration-for-office-365-groups-preview"></a>Office 365 グループの有効期限の構成 (プレビュー)
 

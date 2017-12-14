@@ -11,7 +11,7 @@
 | プロパティとメトリック名の長さ | 150 | [型スキーマ](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)に関するページを参照してください。
 | プロパティ値の文字列の長さ | 8,192 | [型スキーマ](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)に関するページを参照してください。
 | トレースおよび例外のメッセージ長 | 10 k | [型スキーマ](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)に関するページを参照してください。
-| アプリあたりの[可用性テスト](../articles/application-insights/app-insights-monitor-web-app-availability.md)の数  | 10 |
+| アプリあたりの[可用性テスト](../articles/application-insights/app-insights-monitor-web-app-availability.md)の数  | 100 |
 | [プロファイラー](../articles/application-insights/app-insights-profiler.md)のデータ保持期間 | 5 日 |
 | [プロファイラー](../articles/application-insights/app-insights-profiler.md)の 1 日あたりの送信データ | 10 GB |
 

@@ -4,7 +4,7 @@ description: "AD ドメイン サービスと AD フェデレーション サー
 services: active-directory
 documentationcenter: 
 author: femila
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 04df4c46-e6b6-4754-960a-57b823d617fa
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 342d9e2787add3d04f1b744152e135db98848179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2c9b072551b467785dbb4aae02492ffae6cdb787
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン
 この記事では、Windows Server の Active Directory Domain Services (AD DS) および Active Directory フェデレーション サービス (AD FS) に関して、オンプレミスへのデプロイと Microsoft Azure 仮想マシンへのデプロイとの大きな違いについて説明します。
@@ -114,7 +114,7 @@ Windows Server 2012 以降では、[特別な保護機能が AD DS に組み込�
 ## <a name="why-deploy-windows-server-ad-ds-on-azure-virtual-machines"></a>Windows Server AD DS を Azure 仮想マシンにデプロイする理由
 Windows Server AD DS は多くの場合、Azure 上の VM としてデプロイすることができます。 たとえば、ヨーロッパに拠点のある会社で、アジアのリモート オフィスにいるユーザーを認証する必要があるとします。 この会社はこれまでアジアに Windows Server Active Directory DC をデプロイしたことはありません。デプロイに必要なコストが大きいうえに、サーバー デプロイ後の管理に必要な知識や経験も限られていたためです。 やむを得ずアジアからの認証要求は、ヨーロッパにある DC で処理しており、パフォーマンスは決して最善とはいえません。 このような場合、アジアの Azure データセンター内で実行するよう指定した VM に DC をデプロイすることができます。 リモート オフィスに直接接続されている Azure 仮想ネットワークにその DC を接続すれば、認証パフォーマンスが向上します。
 
-また、Azure は、コストが大きくなりがちな障害復旧 (DR) サイトに代わる有力な選択肢でもあります。 少数のドメイン コントローラーと 1 つの仮想ネットワークを Azure でホストした方がコストが小さくて済むため、魅力的な選択肢となっています。
+また、Azure は、コストが大きくなりがちなディザスター リカバリー (DR) サイトに代わる有力な選択肢でもあります。 少数のドメイン コントローラーと 1 つの仮想ネットワークを Azure でホストした方がコストが小さくて済むため、魅力的な選択肢となっています。
 
 さらに、Windows Server Active Directory は使用するものの、オンプレミスのネットワークや社内の Windows Server Active Directory には依存していないネットワーク アプリケーション (SharePoint など) があれば、ぜひ Azure にデプロイすることを検討してください。 そのようなケースでは、フォレストを分離して Azure にデプロイすることにより、SharePoint サーバーの要件を最適な形で満たすことができます。 もちろん、オンプレミス ネットワークと社内 Active Directory への接続を必要とするネットワーク アプリケーションのデプロイもサポートされています。
 

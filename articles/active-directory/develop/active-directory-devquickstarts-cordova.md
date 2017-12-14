@@ -4,7 +4,7 @@ description: "OAuth を使用して、Azure AD と連携してサインインし
 services: active-directory
 documentationcenter: 
 author: vibronet
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: b1a8d7bd-7ad6-44d5-8ccb-5255bb623345
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: vittorib
 ms.custom: aaddev
-ms.openlocfilehash: d9f53148787729d29a0a89cce1b8b2b83ba228f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eceeccc0d6225613fdd75a92b894290665168fc6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-azure-ad-with-an-apache-cordova-app"></a>Azure AD と Apache Cordova アプリとの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]

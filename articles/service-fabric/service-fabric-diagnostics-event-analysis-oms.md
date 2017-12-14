@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 09542c0e7f628ca4fea00a6562c0b9525432c213
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 977c5d64a32157b39aa6b618196dde20c4c3cc8e
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="event-analysis-and-visualization-with-oms"></a>OMS を使用したイベントの分析と視覚化
 
@@ -41,7 +41,7 @@ OMS ワークスペースに Service Fabric ソリューションを含めるこ
 
 ## <a name="using-the-oms-agent"></a>OMS エージェントの使用
 
-EventFlow と WAD を集計ソリューションとして使用することをお勧めします。診断と監視をモジュール方式で使用できます。 たとえば、EventFlow からの出力を変更する場合は、実際のインストルメンテーションを変更する必要はなく、構成ファイルを変更するだけで済みます。 ただし、OMS Log Analytics を使用することに投資すると決めた場合は、[OMS エージェント](../log-analytics/log-analytics-windows-agents.md)を設定する必要があります。 クラスターにコンテナーをデプロイするときは、次の説明のように OMS エージェントも使用する必要があります。 
+EventFlow と WAD を集計ソリューションとして使用することをお勧めします。診断と監視をモジュール方式で使用できます。 たとえば、EventFlow からの出力を変更する場合は、実際のインストルメンテーションを変更する必要はなく、構成ファイルを変更するだけで済みます。 ただし、OMS Log Analytics を使用することに投資すると決めた場合は、[OMS エージェント](../log-analytics/log-analytics-windows-agent.md)を設定する必要があります。 クラスターにコンテナーをデプロイするときは、次の説明のように OMS エージェントも使用する必要があります。 
 
 この手順については、「[Add the OMS Agent to a cluster (OMS エージェントのクラスターへの追加)](service-fabric-diagnostics-oms-agent.md)」をご覧ください。
 

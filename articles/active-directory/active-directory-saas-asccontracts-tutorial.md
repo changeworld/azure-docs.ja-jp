@@ -4,7 +4,7 @@ description: "Azure Active Directory と ASC Contracts の間でシングル サ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: f7f54202-1581-4e55-a97e-02633ff9382d
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 87ea3cc55f9683e7d5b9912a87d675575cea0347
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec222659a2f10bf0ecfefe0c63af335f6a8c09a8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>チュートリアル: Azure Active Directory と ASC Contracts の統合
 

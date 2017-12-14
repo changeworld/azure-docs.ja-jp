@@ -10,14 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
-ms.openlocfilehash: 0e8089cbcc5e38504d6b4c7ced372781f9a5e6d8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.custom: mvc
+ms.openlocfilehash: e951eb47290a2d1b6f892f1ccf923f6ce0c1899c
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="api-management-policy-samples"></a>API Management ポリシーのサンプル
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 12/04/2017
 |[バックエンド サービスに機能を追加して応答をキャッシュする](./policies/cache-response.md?toc=api-management/toc.json) |バックエンド サービスに機能を追加する方法を示します。 たとえば、天気予報 API で、緯度と経度ではなく場所の名前を受け入れます。|
 |[JWT クレームに基づくアクセスを承認する](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json) |API の特定の HTTP メソッドに対して、JWT クレームに基づくアクセスを承認する方法を示します。|
 |[Google OAuth トークンを使用してアクセスを承認する](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json) |OAuth トークン プロバイダーに Google を使用して、エンドポイントへのアクセスを承認する方法を示します。|
-|[Shared Access Signature を生成して Azure ストレージへ要求を転送する](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |式を使用して [Shared Access Signature](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1) を生成し、rewrite-uri ポリシーを使用して Azure ストレージに要求を転送する方法を示します。 |
+|[Shared Access Signature を生成して Azure ストレージへ要求を転送する](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |式を使用して [Shared Access Signature](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) を生成し、rewrite-uri ポリシーを使用して Azure ストレージに要求を転送する方法を示します。 |
 |[AAD から OAuth2 アクセス トークンを取得してバックエンドに転送する](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json) |ゲートウェイとバックエンドとの間の承認に OAuth2 を使用する例を示します。 AAD からアクセス トークンを取得してバックエンドに転送する方法を示します。|
 |[送信要求ポリシーを使用して SAP ゲートウェイから X-CSRF トークンを取得する](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json) |多くの API で使用される X-CSRF パターンを実装する方法を示します。 この例は SAP ゲートウェイに固有のものです。 |
 |[本文のサイズに基づいて要求をルーティングする](./policies/route-requests-based-on-size.md?toc=api-management/toc.json) |本文のサイズに基づいて要求をルーティングする方法を示します。|

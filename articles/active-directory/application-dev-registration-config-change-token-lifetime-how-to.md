@@ -4,7 +4,7 @@ description: "Azure AD で開発しているアプリケーションのトーク
 services: active-directory
 documentationcenter: 
 author: ajamess
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a28eacd820ed28a6470992ce86b060e886c00bcb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8067ecf3e274f65abe2c82f20dd2f4469344f3b6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>独自に開発したアプリケーションのトークン有効期間の既定値を変更する方法
 
@@ -29,10 +29,10 @@ Azure AD Premium では、非機密クライアントに対して発行された
 
  * 次のサンプル ポリシーは、MaxAgeSingleFactor 更新トークンを設定します。 次のポリシーを作成します。 ```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
 
- * その他のカスタム ポリシーを作成する方法については、[トークンの有効期間の構成](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)に関するドキュメントを参照してください。
+ * その他のカスタム ポリシーを作成する方法については、[トークンの有効期間の構成](https://docs.microsoft.com/azure/active-directory/active-directory-configurable-token-lifetimes)に関するドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-[トークンの有効期間の構成](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)<br>
+[トークンの有効期間の構成](https://docs.microsoft.com/azure/active-directory/active-directory-configurable-token-lifetimes)<br>
 
-[Azure AD のトークン リファレンス](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims)
+[Azure AD のトークン リファレンス](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)
 

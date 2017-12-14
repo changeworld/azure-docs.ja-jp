@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: 70ec03d2ed32cb0362bf2f7b24c66979093603be
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: d5b33b15c315c7538bba7bf9ae067946f3b6d3c4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 この記事では、Azure での自動スケールのベスト プラクティスについて説明します。 Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、および [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) にのみ適用されます。 他の Azure サービスでは、異なるスケーリング方法が使用されています。
@@ -44,9 +44,6 @@ ms.lasthandoff: 12/05/2017
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>増減を実行するスケールアウトとスケールインのルールの組み合わせを常に使用する
 組み合わせの一方だけを使用すると、最大値または最小値に達するまで、スケールアウトのみまたはスケールインのみが実行されます。
-
-### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>自動スケールを管理するときに、Azure ポータルと Azure クラシック ポータルを切り替えない
-Cloud Services と App Services (Web Apps) の場合、Azure Portal (portal.azure.com) を使用して自動スケール設定を作成し、管理します。 Virtual Machine Scale Sets の場合、PowerShell、CLI、または REST API を使用して自動スケール設定を作成し、管理します。 自動スケールの構成を管理するときに、Azure クラシック ポータル (manage.windowsazure.com) と Azure ポータル (portal.azure.com) を切り替えないでください。 Azure クラシック ポータルとその基になるバックエンドには制限事項があります。 グラフィカル ユーザー インターフェイスを使用して自動スケールを管理するには、Azure ポータルに移動します。 自動スケールで、PowerShell、CLI、または REST API (Azure リソース エクスプローラーを使用) を使用することもできます。
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>診断メトリックに適切な統計を選択する
 診断メトリックの場合、スケールに使用するメトリックとして、"*平均*"、"*最小*"、"*最大*"、"*合計*" の中から選択できます。 最も一般的な統計は *平均*です。

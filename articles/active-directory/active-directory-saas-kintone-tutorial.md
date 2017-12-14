@@ -4,7 +4,7 @@ description: "Azure Active Directory と Kintone の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: c2b947dc-e1a8-4f5f-b40e-2c5180648e4f
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: e5e847c12cba3611ce7ea2c3e956dbd55b1e0cac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a222d14115342592cf53980b5980222a89d0265
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>チュートリアル: Azure Active Directory と Kintone の統合
 
@@ -161,7 +161,7 @@ Kintone で Azure AD のシングル サインオンを構成してテストす�
     
     c. **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
     
-    d. [ **Save**] をクリックします。
+    d. **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -229,7 +229,7 @@ Kintone の場合、プロビジョニングは手動で行います。
    
     a. プロビジョニングする有効な AAD アカウントの **[Display Name]\(表示名\)**、**[Login Name]\(ログイン名\)**、**[New Password]\(新しいパスワード\)**、**[Confirm Password]\(確認パスワード\)**、**[E-mail Address]\(メール アドレス\)**、その他の詳細を該当するボックスに入力します。
  
-    b. [ **Save**] をクリックします。
+    b. **[Save]** をクリックします。
 
 > [!NOTE]
 > 他の Kintone ユーザー アカウント作成ツールや Kintone から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。

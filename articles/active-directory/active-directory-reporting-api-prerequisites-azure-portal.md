@@ -4,7 +4,7 @@ description: "Azure AD Reporting API にアクセスするための前提条件�
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9fbcac4bd6240aed607c3da6c6535d207a782448
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: f1f4d79b59d44bc1c151391290e79026051fe1df
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Azure AD Reporting API にアクセスするための前提条件
 
@@ -40,7 +40,7 @@ Reporting API へのアクセスを準備するには、次が必要です。
 2. アクセス許可を付与する 
 3. 構成設定を収集する 
 
-質問、問題点、またはフィードバックについては、[サポート チケットを提出](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto)してください。
+質問、問題点、またはフィードバックについては、[サポート チケットを提出](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)してください。
 
 ## <a name="register-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを登録する
 

@@ -4,7 +4,7 @@ description: "Azure AD B2C テナントの Azure サブスクリプションへ�
 services: active-directory-b2c
 documentationcenter: dev-center-name
 author: parakhj
-manager: krassk
+manager: mtillman
 ms.service: active-directory-b2c
 ms.devlang: na
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: parja
-ms.openlocfilehash: 35fab74abf2c2ba27a8bf99eb93eb53f39b26227
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: d6b25d6b9a0d5b3bcf613046a82a9c6c99475d6c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Azure サブスクリプションを Azure AD B2C テナントにリンクする
 

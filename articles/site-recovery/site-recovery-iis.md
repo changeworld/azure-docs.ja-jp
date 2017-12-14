@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
-ms.openlocfilehash: 4ac79df703de00ac009d9845772d8be740e74f29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cff6a7502e80eb4ff447cc99fe31b48cb660c27e
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application-using-azure-site-recovery"></a>Azure Site Recovery を使用して IIS ベースの多層 Web アプリケーションをレプリケートする
 
@@ -31,10 +31,10 @@ ms.lasthandoff: 10/11/2017
 
 従来の非レプリケーション ベースの回復方法では、手動による一連の操作で、さまざまな構成ファイル、レジストリ設定、バインディング、カスタム コンポーネント (COM または .NET)、コンテンツ、証明書をバックアップし、ファイルを回復する必要があります。 こうした手法は、明らかに煩雑で、エラーが発生しやすいうえに、スケーラブルではありません。 たとえば、証明書をバックアップし忘れ、フェールオーバー後にサーバーの新しい証明書を購入しなければならなくなる可能性が十分あります。
 
-優れた障害復旧ソリューションでは、上記の複雑なアプリケーション アーキテクチャの復旧計画をモデル化できる必要があります。また、さまざまな階層間のアプリケーション マッピングを処理するカスタム手順を追加できる必要もあります。それによって、障害が発生した場合に備えたワンクリックの確実なソリューションを提供し、RTO を短縮します。
+優れたディザスター リカバリー ソリューションでは、上記の複雑なアプリケーション アーキテクチャの復旧計画をモデル化できる必要があります。また、さまざまな階層間のアプリケーション マッピングを処理するカスタム手順を追加できる必要もあります。それによって、障害が発生した場合に備えたワンクリックの確実なソリューションを提供し、RTO を短縮します。
 
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して IIS ベースの Web アプリケーションを保護する方法について説明します。 また、IIS ベースの 3 層 Web アプリケーションを Azure にレプリケートするためのベスト プラクティス、障害復旧の訓練を実行する方法、およびアプリケーションを Azure にフェールオーバーする方法についても説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して IIS ベースの Web アプリケーションを保護する方法について説明します。 また、IIS ベースの 3 層 Web アプリケーションを Azure にレプリケートするためのベスト プラクティス、ディザスター リカバリーの訓練を実行する方法、およびアプリケーションを Azure にフェールオーバーする方法についても説明します。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -70,7 +70,8 @@ IIS ベースの Web アプリケーションは、通常、次のいずれか�
 --- | --- | ---
 **Hyper-V** | はい | はい
 **VMware** | はい | はい
-**物理サーバー** | いいえ | はい
+**物理サーバー** | いいえ | あり
+**Azure**|該当なし|あり
 
 ## <a name="replicate-virtual-machines"></a>仮想マシンのレプリケート
 

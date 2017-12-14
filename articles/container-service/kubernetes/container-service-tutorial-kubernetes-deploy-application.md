@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 397bb22918d5b181692a42d0f4c2d87be086c534
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: c763d6867deb76f5b9d197c7062ee07d7ed6d865
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="run-applications-in-kubernetes"></a>Kubernetes でアプリケーションを実行する
 
@@ -85,7 +85,7 @@ service "azure-vote-front" created
 
 アプリケーションをインターネットに公開する [Kubernetes サービス](https://kubernetes.io/docs/concepts/services-networking/service/)が作成されます。 このプロセスには数分かかることがあります。 
 
-進行状況を監視するには、[kubectl get service](https://review.docs.microsoft.com/en-us/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) コマンドを `--watch` 引数と一緒に使用します。
+進行状況を監視するには、[kubectl get service](https://review.docs.microsoft.com/azure/container-service/container-service-kubernetes-walkthrough?branch=pr-en-us-17681) コマンドを `--watch` 引数と一緒に使用します。
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch

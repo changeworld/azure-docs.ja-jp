@@ -4,7 +4,7 @@ description: "Azure Active Directory と BC in the Cloud の間でシングル �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.assetid: 7dc40d2c-6349-40cb-b304-b098bd03a66c
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: jeedes
-ms.openlocfilehash: ebc95d600eca1027331cd92cfe481d0c3ee833a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 97cbd4c88746500f1783f573478d279873d42f87
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>チュートリアル: Azure Active Directory と BC in the Cloud の統合
 

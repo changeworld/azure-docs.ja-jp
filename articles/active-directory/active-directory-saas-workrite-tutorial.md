@@ -4,7 +4,7 @@ description: "Azure Active Directory と Workrite の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 2a5c2956-a011-4d5c-877b-80679b6587b5
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 4358c4c621634c17cbbd7fa1c72f12746b8e4a2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d44a3719e01be8f6a414aeb9a9c73040ac3defa
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル: Azure Active Directory と Workrite の統合
 
@@ -191,7 +191,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
     
     d. **[ロールの選択]** で **[クライアント管理者]** を選択します。
     
-    e. [ **Save**] をクリックします。   
+    e. **[Save]** をクリックします。   
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 9e459a42a9fd7caedfa255a7baf51273eef2265a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 6a03986288fdb6acaf234a8abf690f728d160fd7
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>ExpressRoute に使用する Network Performance Monitor の構成 (プレビュー)
 
@@ -129,7 +129,7 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
 
 ### <a name="proxy"></a>2.3. プロキシ設定の構成 (省略可能)
 
-Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行してください。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script)」を参照してください。
+Web プロキシを使用してインターネットにアクセスしている場合、以下の手順を使用して、Microsoft Monitoring Agent のプロキシ設定を構成します。 これらの手順は、各サーバーに対して実行してください。 構成が必要なサーバーの数が多い場合には、このプロセスを自動化するスクリプトを使った方が作業が簡単に済むことも考えられます。 その場合は、「[スクリプトを使って Microsoft Monitoring Agent のプロキシ設定を構成するには](../log-analytics/log-analytics-windows-agent.md)」を参照してください。
 
 コントロール パネルを使って Microsoft Monitoring Agent のプロキシ設定を構成するには:
 

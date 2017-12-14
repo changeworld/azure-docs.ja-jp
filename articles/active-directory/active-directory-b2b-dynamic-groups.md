@@ -4,7 +4,7 @@ description: "Azure Active Directory B2B コラボレーションは、Azure AD 
 services: active-directory
 documentationcenter: 
 author: sasubram
-manager: femila
+manager: mtillman
 editor: 
 tags: 
 ms.assetid: 
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: sasubram
-ms.openlocfilehash: 5818c41610c8c5df89abcb0dcd058bcbe9579ce7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed0c8c271f8db5e5d17fd578317a04679df7987d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 

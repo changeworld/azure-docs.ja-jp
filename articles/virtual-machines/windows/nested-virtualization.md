@@ -11,11 +11,11 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: c2f511cd024accc099423f2ed5bbb15d2dd23414
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 8372817b00d8a5f9e4203b072dbc143185639120
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -31,7 +31,7 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 
 >[!NOTE]
 >
->新しい仮想マシンを作成する手順の詳細については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-manage-vm)」を参照してください。
+>新しい仮想マシンを作成する手順の詳細については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)」を参照してください。
     
 ## <a name="connect-to-your-azure-vm"></a>Azure VM に接続する
 

@@ -4,7 +4,7 @@ description: "Azure Active Directory と SAP Cloud Platform の間でシング�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 6b4b0e3ab126e70e4b27b971b15127aae0486bed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 309415a68308943f638195303ceb236569519472
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル: Azure Active Directory と SAP Cloud Platform の統合
 
@@ -177,7 +177,7 @@ SAP Cloud Platform で Azure AD のシングル サインオンを構成して�
 
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[Force Authentication (強制認証)]** で **[無効]** を選択します。
 
-    g. [ **Save**] をクリックします。
+    g. **[Save]** をクリックします。
 
 9. **[Local Service Provider]\(ローカル サービス プロバイダー\)** の設定を保存したら、次を実行して応答 URL を取得します。
    
@@ -294,7 +294,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 
     d. **[Assign]** をクリックしてユーザーをロールに割り当てます。
 
-    e. [ **Save**] をクリックします。
+    e. **[Save]** をクリックします。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

@@ -4,7 +4,7 @@ description: "スクリプト クライアント サインインおよびリソ�
 services: active-directory
 documentationcenter: 
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: bryanla
-ms.openlocfilehash: 5f0228dbe8df8cf0892569fd89162dfaf39cc8cb
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 5e771026950652c7d9c8e817773915a5a4c4ab63
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Azure VM の管理対象サービス ID (MSI) を使用してサインインする方法 
 
@@ -83,7 +83,7 @@ MSI を使用すると、スクリプト クライアントはこのいずれも
 
 ## <a name="resource-ids-for-azure-services"></a>Azure サービスのリソース ID
 
-Azure AD をサポートし、MSI でテスト済みのリソースの一覧と、そのリソース ID については、「[Azure AD 認証をサポートしている Azure サービス](msi-overview.md#azure-services-that-support-azure-ad-authentication)」を参照してください。
+Azure AD をサポートし、MSI でテスト済みのリソースの一覧と、そのリソース ID については、「[Azure AD 認証をサポートしている Azure サービス](msi-overview.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
 ## <a name="error-handling-guidance"></a>エラー処理に関するガイダンス 
 
@@ -97,7 +97,7 @@ Azure AD をサポートし、MSI でテスト済みのリソースの一覧と�
 - **[構成]** ページに移動して、[管理対象サービス ID] が [はい] に設定されていることを確認してください。
 - **[拡張]** ページに移動して、MSI 拡張機能が正常に展開されていることを確認します。
 
-いずれかが正しくない場合は、リソース上で MSI を再デプロイするか、デプロイ エラーのトラブルシューティングを行う必要があります。 VM の構成についてサポートが必要な場合は、「[Azure ポータルを使用して、VM 管理対象サービス ID (MSI) を構成する](msi-qs-configure-portal-windows-vm.md)」をご覧ください。
+いずれかが正しくない場合は、リソース上で MSI を再デプロイするか、デプロイ エラーのトラブルシューティングを行う必要があります。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して、VM 管理対象サービス ID (MSI) を構成する](msi-qs-configure-portal-windows-vm.md)」をご覧ください。
 
 ## <a name="related-content"></a>関連コンテンツ
 

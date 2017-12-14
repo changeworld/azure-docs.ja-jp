@@ -4,7 +4,7 @@ description: "Azure AD アプリケーション プロキシを使用して、�
 services: active-directory
 documentationcenter: 
 author: kgremban
-manager: femila
+manager: mtillman
 ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 08/04/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 426056d394af0a9ded28202615cb80c7b50e59fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ca7c7919f6cfcece38073520162dc44bbfd748e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
 

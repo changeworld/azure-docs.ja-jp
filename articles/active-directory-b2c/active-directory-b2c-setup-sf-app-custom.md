@@ -4,7 +4,7 @@ description: "Azure Active Directory B2C のカスタム ポリシーを作成�
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
-manager: krassk
+manager: mtillman
 editor: parakhj
 ms.assetid: d7f4143f-cd7c-4939-91a8-231a4104dc2c
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/11/2017
 ms.author: parakhj
-ms.openlocfilehash: 269cbd80fb6e861fa8588025eec70b6c6e2890d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16f7c5708b479f18de17a612a733a2be6e97ad01
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Azure Active Directory B2C: SAML を利用した、Salesforce アカウントでのサインイン
 
@@ -34,11 +34,11 @@ Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシーを使い
 
 チェックの内容は次のとおりです
 
-* Azure AD B2C テナントを作成します。
-* Azure AD B2C アプリケーションを作成します。
-* 2 つのポリシー エンジン アプリケーションを登録します。
-* キーをセットアップします。
-* スターター パックをセットアップします。
+* Azure AD B2C テナントを作成する。
+* Azure AD B2C アプリケーションを作成する。
+* 2 つのポリシー エンジン アプリケーションを登録する。
+* キーをセットアップする。
+* スターター パックをセットアップする。
 
 ### <a name="salesforce-setup"></a>Salesforce のセットアップ
 
@@ -59,12 +59,12 @@ Azure AD B2C が Salesforce と通信できるようにするには、Salesforce
 1. [Salesforce にサインインします](https://login.salesforce.com/)。 
 2. 左側のメニューで、**[設定]** の下の **[ID]** を展開し、**[ID プロバイダー]** をクリックします。
 3. **[Enable Identity Provider] \(ID プロバイダーを有効にする)** をクリックします。
-4. **[Select the certificate] \(証明書の選択)** の下から、Azure AD B2C と通信するときに Salesforce で使用する証明書を選択します。 (既定の証明書を使用できます。)[ **Save**] をクリックします。 
+4. **[Select the certificate] \(証明書の選択)** の下から、Azure AD B2C と通信するときに Salesforce で使用する証明書を選択します。 (既定の証明書を使用できます。)**[Save]** をクリックします。 
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Salesforce での接続されたアプリの作成
 
 1. **[ID プロバイダー]** ページで、**[サービス プロバイダー]** に移動します。
-2. **[Service Providers are now created via Connected Apps. Click here.]\(接続されたアプリでサービス プロバイダーが作成されました。ここをクリックしてください。\)** をクリックします。
+2. **[Service Providers are now created via Connected Apps. Click here.]\(接続されたアプリでサービス プロバイダーが作成されました。ここをクリックしてください。\) をクリックします。\(接続されたアプリでサービス プロバイダーが作成されました。ここをクリックしてください。\)** をクリックします。
 3. **[基本情報]** に、接続されたアプリの必須の値を入力します。
 4. **[Web アプリの設定]** で、**[SAML を有効にする]** チェック ボックスを選択します。
 5. **[エンティティ ID]** フィールドに、次の URL を入力します。 その際、`tenantName` の値を置き換えてください。
@@ -83,7 +83,7 @@ Azure AD B2C が Salesforce と通信できるようにするには、Salesforce
 1. 接続されたアプリの概要ページで **[管理]** をクリックします。
 2. **メタデータ検出エンドポイント**の値をコピーし、保存します。 この記事の後半で、その値を使用します。
 
-### <a name="set-up-salesforce-users-to-federate"></a>Salesforce ユーザーがフェデレーションを実行するようセットアップする
+### <a name="set-up-salesforce-users-to-federate"></a>フェデレーションのための Salesforce ユーザーの設定
 
 1. 接続されたアプリの **[管理]** ページから、**[プロファイル]** に移動します。
 2. **[プロファイルの管理]** をクリックします。
@@ -117,7 +117,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
     2. **名前**を入力します (たとえば、SAMLSigningCert)。 プレフィックス *B2C_1A_* がキーの名前に自動的に追加されます。
     3. 証明書を選択するには、**ファイルのアップロード コントロール**を選択します。 
     4. PowerShell スクリプトで設定した証明書のパスワードを入力します。
-3. **Create** をクリックしてください。
+3. ページの下部にある **[Create]**」を参照してください。
 4. キー (たとえば、B2C_1A_SAMLSigningCert) を作成したことを確認します。 フルネームをメモします (*B2C_1A_* を含む)。 ポリシーで、後でこのキーを参照します。
 
 ## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>基本ポリシーでの Salesforce SAML 要求プロバイダーの作成
@@ -223,7 +223,7 @@ Salesforce から SAML トークンを取得するためには、Azure AD B2C �
 
 ### <a name="link-the-identity-provider-button-to-an-action"></a>アクションへの ID プロバイダー ボタンのリンク
 
-ID プロバイダー ボタンが所定の位置に配置されたので、ボタンをアクションにリンクします。 この場合のアクションでは、Azure AD B2C が Salesforce と通信して SAML トークンを受信します。 これを行うには、Salesforce SAML 要求プロバイダーの技術プロファイルをリンクします。
+ID プロバイダー ボタンが所定の位置に配置されたので、ボタンをアクションにリンクします。 この場合のアクションとは、Azure AD B2C が Salesforce と通信して SAML トークンを受信することです。 これを行うには、Salesforce SAML 要求プロバイダーの技術プロファイルをリンクします。
 
 1. `<UserJourney>` ノードで `Order="2"` になっている `<OrchestrationStep>` を見つけます。
 2. 次の XML を追加します。

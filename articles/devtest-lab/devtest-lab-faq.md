@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
-ms.openlocfilehash: 1f261f97bbd9233d47eadc7e902e00ee87af9e34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a5e686a7f60b15b55d8f4365b73c71de02c4bad
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -226,11 +226,11 @@ Microsoft アカウントは、Microsoft のデバイスとサービスで実行
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>PowerShell から VM をプロビジョニングしたときに、"親リソースが見つからない" ことを示すエラーが発生するのはなぜですか。
 リソースが別のリソースの親である場合、子リソースを作成するには、親リソースが存在している必要があります。 親リソースが存在しない場合、**ParentResourceNotFound** メッセージが表示されます。 親リソースに依存関係を指定していない場合、子リソースは親の前にデプロイされる可能性があります。
 
-VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)に関する記事をご覧ください。
+VM は、リソース グループ内のラボの下の子リソースです。 PowerShell で Resource Manager テンプレートを使用して VM をデプロイした場合、PowerShell スクリプトで指定されたリソース グループ名がラボのリソース グループ名になります。 詳細については、[Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound)に関する記事をご覧ください。
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>VM のデプロイが失敗した場合、さらに詳しいエラー情報はどこで確認できますか。
 VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ブレードにあるリソース メニューの **[監査ログ]** または **[Virtual machine diagnostics]\(仮想マシン診断\)** で確認できます (VM ブレードは、**[My virtual machines]\(マイ仮想マシン\)** の一覧から VM を選択すると表示されます)。
 
-VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、**[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-audit)」を参照してください。
+VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、**[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」を参照してください。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

@@ -3,7 +3,7 @@ title: "Azure DNS での DNS ゾーンの管理 - Azure CLI 2.0 | Microsoft Docs
 description: "Azure CLI 2.0 を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します。"
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,30 +12,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: gwallace
-ms.openlocfilehash: 1414baf9e51d648cc3a46c4f8635040b4d276910
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 2042d9c2864a4f8da474e0df38882414bfe3417e
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure DNS で DNS ゾーンを管理する方法
 
 > [!div class="op_single_selector"]
 > * [ポータル](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
 
 このガイドでは、Windows、Mac、および Linux で使用できるクロス プラットフォームの Azure CLI を使用して、DNS ゾーンを管理する方法について説明します。 DNS ゾーンは、[Azure PowerShell](dns-operations-dnszones.md) または Azure Portal を使用して管理することもできます。
-
-## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
-
-次のいずれかの CLI バージョンを使用してタスクを完了できます。
-
-* [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI。
-* [Azure CLI 2.0](dns-operations-dnszones-cli.md) - Resource Manager デプロイ モデル用の次世代 CLI。
 
 ## <a name="introduction"></a>はじめに
 
@@ -49,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
-* Windows、Linux、または MAC 用の最新バージョンの Azure CLI 2.0 をインストールしてください。 詳しくは、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2)」をご覧ください。
+* Windows、Linux、または MAC 用の最新バージョンの Azure CLI 2.0 をインストールしてください。 詳しくは、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-az-cli2)」をご覧ください。
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 

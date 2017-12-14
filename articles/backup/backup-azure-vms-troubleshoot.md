@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: 5c4ea3e3714f6a3989a260937c2c67815a6dd6f7
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: f7fc4d367a0594a77d7ee25bbd1e40c4b2949c19
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/09/2017
 ### <a name="error-the-specified-disk-configuration-is-not-supported"></a>エラー: 指定されたディスク構成がサポートされていません
 
 > [!NOTE]
-> 1 TB を超える非管理対象ディスクがある VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください
+> 1 TB を超える非管理対象ディスクがある VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください。
 >
 >
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/09/2017
 | 仮想マシンが BEK だけで暗号化されているため、検証に失敗しました。 バックアップは、BEK と KEK の両方を使って暗号化した仮想マシンに限り、有効にすることができます。 |仮想マシンは、BitLocker 暗号化キーとキー暗号化キーの両方を使って暗号化する必要があります。 それが済んだら、バックアップを有効にしてください。 |
 | Azure Backup サービスには、暗号化された仮想マシンのバックアップ用 Key Vault に対する十分な権限がありません。 |[PowerShell ドキュメント](backup-azure-vms-automation.md)の「**バックアップの有効化**」セクションの手順に従い、PowerShell を使って Backup サービスに適切なアクセス許可を付与する必要があります。 |
 |"COM+ が Microsoft 分散トランザクション コーディネーターと通信できませんでした" というエラーでスナップショット拡張機能のインストールが失敗しました | Windows サービス "COM+ システム アプリケーション" を起動してみてください (管理者特権のコマンド プロンプトで _net start COMSysApp_ を実行します)。 <br>起動中に失敗した場合は、以下の手順に従ってください。<ol><li> サービスのログオン アカウントが "分散トランザクション コーディネーター" または "ネットワーク サービス" であることを確認します。 そうでない場合は、"ネットワーク サービス" に変更してサービスを再度起動し、"COM+ システム アプリケーション" サービスを起動してみてください。<li>それでも起動できない場合は、以下の手順に従って、"分散トランザクション コーディネーター" サービスのアンインストールとインストールを行ってください。<br> - MSDTC サービスを停止します<br> - コマンド プロンプト (cmd) を開きます <br> - コマンド “msdtc -uninstall” を実行します <br> - コマンド “msdtc -install” を実行します <br> - MSDTC サービスを起動します<li>Windows サービスの "COM + システム アプリケーション" を起動し、サービスが起動されたら、ポータルからバックアップをトリガーします。</ol> |
-|  COM+ エラーが発生したため、スナップショット操作に失敗しました | 推奨される操作は、Windows サービス "COM+ System Application" を再起動 (管理者特権でのコマンド プロンプトから _net start COMSysApp_ を実行) することです。 問題が解決しない場合は、VM を再起動します。 VM を再起動しても問題が解決しない場合は、[VMSnapshot 拡張機能を削除](https://docs.microsoft.com/en-us/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#cause-3-the-backup-extension-fails-to-update-or-load)してバックアップを手動でトリガーしてみてください。 |
+|  COM+ エラーが発生したため、スナップショット操作に失敗しました | 推奨される操作は、Windows サービス "COM+ System Application" を再起動 (管理者特権でのコマンド プロンプトから _net start COMSysApp_ を実行) することです。 問題が解決しない場合は、VM を再起動します。 VM を再起動しても問題が解決しない場合は、[VMSnapshot 拡張機能を削除](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#cause-3-the-backup-extension-fails-to-update-or-load)してバックアップを手動でトリガーしてみてください。 |
 | ファイル システムの一貫性のあるスナップショットの取得で VM の 1 つまたは複数のマウント ポイントをフリーズできませんでした | 次の手順に従います。 <ol><li>_'tune2fs'_ コマンドを使用して、マウントされているすべてのデバイスのファイル システムの状態を確認します。<br> 例: tune2fs -l /dev/sdb1 \| grep "Filesystem state" <li>ファイル システムの状態がクリーンではないデバイスを、_'umount'_ コマンドを使用してマウント解除します。 <li> これらのデバイスで、_'fsck'_ コマンドを使用して FileSystemConsistency チェックを実行します。 <li> デバイスを再度マウントして、バックアップをやり直します。</ol> |
 | セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました | <ol><Li> 管理者特権モードで regedit.exe を実行してレジストリ エディターを開きます。 <li> システムに存在するすべてのバージョンの .NetFramework を識別します。 それらは、レジストリ キーの階層 "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft" の下にあります。 <li> レジストリ キー内に存在する各 .NetFramework に対して、次のキーを追加します。 <br> "SchUseStrongCrypto"=dword:00000001 </ol>|
 | Visual Studio 2012 用の Visual C++ 再配布可能プログラムをインストールできないため、スナップショット操作が失敗しました | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2012_x64 をインストールします。 このサービスのインストールを許可するレジストリ キー値が正しい値に設定されていることを確認します。つまり、_HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver_ は  4 ではなく 3 に設定されている必要があります。 インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから _MSIEXEC /UNREGISTER_ と _MSIEXEC /REGISTER_ を続けて実行して、インストール サービスを再起動します。  |

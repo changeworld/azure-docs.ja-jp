@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 33d4a193cc3152bfab1f03dde32ad4f1bcb0afe1
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 1a8158dd60b6e2eb15a16bf3efb60ef30d602fd6
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -486,7 +486,7 @@ Azure コマンド ライン インターフェイス (CLI) 1.0 または PowerS
 
 ### <a name="monitor-function-app-log-files-with-the-azure-cli-10"></a>Azure CLI 1.0 で関数アプリのログ ファイルを監視する
 
-開始するには、[Azure CLI 1.0 をインストールして](../cli-install-nodejs.md)、[Azure にサインインします](../xplat-cli-connect.md)。
+開始するには、[Azure CLI 1.0 をインストールして](../cli-install-nodejs.md)、[Azure にサインインします](/cli/azure/authenticate-azure-cli)。
 
 次のコマンドを使用して、クラシック サービス管理モードを有効にし、ご使用のサブスクリプションを選択して、ログ ファイルをストリーミングします。
 
