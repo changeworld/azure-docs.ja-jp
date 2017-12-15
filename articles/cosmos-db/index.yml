@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/05/2017
   ms.author: mimig
-  ms.openlocfilehash: 57e4d41efebea7bd836afafed7d0aae6baac8355
-  ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+  ms.openlocfilehash: 4b9eb9a46924f7d4915c67cd8724d02ec3861d2c
+  ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/11/2017
+  ms.lasthandoff: 12/14/2017
 abstract:
   description: "Azure Cosmos DB は、グローバル分散型のマルチモデル データベース サービスです。 以下のクイックスタート、チュートリアル、サンプルを使用すると、一般的な API とプログラミング モデルを使って、ドキュメント、キー値、ワイドカラム、グラフのデータベースを構築できます。 また、一方で包括的な SLA を活用しながら、任意の数の Azure リージョンにデータをレプリケートし、ストレージから独立してスループットをスケーリングする方法について説明します。"
   aside:
@@ -51,10 +51,10 @@ sections:
     rows:
     - title: SQL API
       values:
-      - href: /azure/cosmos-db/create-documentdb-java
-      - href: /azure/cosmos-db/create-documentdb-dotnet
-      - href: /azure/cosmos-db/create-documentdb-nodejs
-      - href: /azure/cosmos-db/create-documentdb-python
+      - href: /azure/cosmos-db/create-sql-api-java
+      - href: /azure/cosmos-db/create-sql-api-dotnet
+      - href: /azure/cosmos-db/create-sql-api-nodejs
+      - href: /azure/cosmos-db/create-sql-api-python
       - href: 
     - title: MongoDB API
       values:
@@ -91,10 +91,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: "Cosmos DB でアプリを開発する&#58; <a href=\"/azure/cosmos-db/tutorial-develop-documentdb-dotnet\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-develop-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-develop-table-dotnet\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-develop-graph-dotnet\">Graph</a> | <a href=\"https://aka.ms/cassandratutorial\">Cassandra</a>"
+    - html: "Cosmos DB でアプリを開発する&#58; <a href=\"/azure/cosmos-db/tutorial-develop-sql-api-dotnet\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-develop-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-develop-table-dotnet\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-develop-graph-dotnet\">Graph</a> | <a href=\"https://aka.ms/cassandratutorial\">Cassandra</a>"
     - html: "Cosmos DB にデータをインポートする&#58; <a href=\"import-data\">SQL</a> | <a href=\"mongodb-migrate\">MongoDB</a> | <a href=\"https://aka.ms/tableapiimporttool\">Table</a> | <a href=\"https://aka.ms/cassandraimport\">Cassandra</a>"
-    - html: "Cosmos DB でデータのクエリを実行する&#58; <a href=\"/azure/cosmos-db/tutorial-query-documentdb\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-query-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-query-table\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-query-graph\">Graph</a>"
-    - html: "Cosmos DB でのグローバル データベース レプリケーション&#58; <a href=\"/azure/cosmos-db/tutorial-global-distribution-documentdb\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-table\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-graph\">Graph</a>"
+    - html: "Cosmos DB でデータのクエリを実行する&#58; <a href=\"/azure/cosmos-db/tutorial-query-sql-api\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-query-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-query-table\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-query-graph\">Graph</a>"
+    - html: "Cosmos DB でのグローバル データベース レプリケーション&#58; <a href=\"/azure/cosmos-db/tutorial-global-distribution-sql-api\">SQL</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-mongodb\">MongoDB</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-table\">Table</a> | <a href=\"/azure/cosmos-db/tutorial-global-distribution-graph\">Graph</a>"
     - html: "<a href=\"local-emulator\">エミュレーターを使用してアプリケーションをローカルに開発する</a>"
     - html: "<a href=\"/azure/cosmos-db/tutorial-functions-http-trigger\">Azure Cosmos DB 入力バインドで HTTP トリガーをする</a>"
 - title: "サンプル"
@@ -112,7 +112,7 @@ sections:
     className: cardsD
     items:
     - title: SQL API
-      html: "<p><a href=\"/rest/api/documentdb/\">REST ()</a></p><p><a href=\"https://aka.ms/acdbnetref\">.NET</a></p><p><a href=\"documentdb-sdk-dotnet-changefeed\">.NET Change Feed</a></p><p><a href=\"https://aka.ms/acdbnetcoreref\">.NET Core</a></p><p><a href=\"https://aka.ms/acdbnoderef\">Node.JS</a></p><p><a href=\"https://aka.ms/acdbjavaref\">Java</a></p><p><a href=\"https://aka.ms/acdbpythonref\">Python</a></p><p><a href=\"/rest/api/documentdbresourceprovider/\">REST リソース プロバイダー</a></p><p><a href=\"documentdb-sql-query-reference\">SQL</a></p>"
+      html: "<p><a href=\"/rest/api/documentdb/\">REST ()</a></p><p><a href=\"https://aka.ms/acdbnetref\">.NET</a></p><p><a href=\"sql-api-sdk-dotnet-changefeed\">.NET Change Feed</a></p><p><a href=\"https://aka.ms/acdbnetcoreref\">.NET Core</a></p><p><a href=\"https://aka.ms/acdbnoderef\">Node.JS</a></p><p><a href=\"https://aka.ms/acdbjavaref\">Java</a></p><p><a href=\"https://aka.ms/acdbpythonref\">Python</a></p><p><a href=\"/rest/api/documentdbresourceprovider/\">REST リソース プロバイダー</a></p><p><a href=\"sql-api-sql-query-reference\">SQL</a></p>"
     - title: MongoDB API
       html: <p><a href="https://docs.mongodb.com/manual/reference/mongodb-wire-protocol/">Wire Protocol</a></p><p><a href="https://mongodb.github.io/node-mongodb-native/ ">Node.JS</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/csharp/">C#</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/java/">Java</a></p><p><a href="https://docs.mongodb.com/ecosystem/drivers/python/">Python</a></p><p><a href="https://docs.mongodb.com/ruby-driver/master/">Ruby</a></p>
     - title: "テーブル API"

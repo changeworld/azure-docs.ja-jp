@@ -64,8 +64,8 @@
 ## データの保存
 ### [BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)
 ### [ファイル共有](https://docs.microsoft.com/azure/storage/files/storage-dotnet-how-to-use-files)
-### [キーと値のペア](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet)
-### [JSON ドキュメント](https://docs.microsoft.com/azure/cosmos-db/documentdb-get-started)
+### [キーと値のペア](https://docs.microsoft.com/azure/cosmos-db/create-table-dotnet)
+### [JSON ドキュメント](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet)
 ### [リレーショナル テーブル](https://docs.microsoft.com/azure/sql-database/sql-database-get-started)
 ### [メッセージ キュー](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues)
 
