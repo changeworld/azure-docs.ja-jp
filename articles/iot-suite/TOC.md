@@ -71,6 +71,7 @@
 ### [コネクティッド ファクトリ用のゲートウェイをデプロイする](iot-suite-connected-factory-gateway-deployment.md)
 ### [コネクテッド ファクトリをカスタマイズする](iot-suite-connected-factory-customize.md)
 ### [コネクテッド ファクトリに OPC Publisher を使用する](iot-suite-connected-factory-publisher.md)
+### [コネクテッド ファクトリを構成する](iot-suite-connected-factory-configure.md)
 ## [azureiotsuite.com のアクセス許可](iot-suite-permissions.md)
 
 # リファレンス

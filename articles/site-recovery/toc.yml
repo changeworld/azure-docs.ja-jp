@@ -241,6 +241,8 @@
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
         - name: vCenter サーバーの管理
           href: site-recovery-vmware-to-azure-manage-vCenter.md
+        - name: CSP によるマルチテナントの管理
+          href: site-recovery-manage-multi-tenancy-with-csp.md
         - name: サーバーの削除と保護の無効化
           href: site-recovery-manage-registration-and-protection.md
         - name: コンテナーの削除
