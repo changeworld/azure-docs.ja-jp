@@ -15,12 +15,11 @@
 #### [パラメーター](resource-manager-templates-parameters.md)
 #### [変数](resource-manager-templates-variables.md)
 #### [リソース](resource-manager-templates-resources.md)
-### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
+#### [Outputs](resource-manager-templates-outputs.md)
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
 ### [複数のインスタンスの作成](resource-group-create-multiple.md)
-### [リソースを更新する](resource-manager-update.md)
-### [リンク済みテンプレート間の状態を共有する](best-practices-resource-manager-state.md)
+### [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource)
 ### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
 
 
