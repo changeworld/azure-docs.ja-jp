@@ -19,11 +19,7 @@
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
 ### [複数のインスタンスの作成](resource-group-create-multiple.md)
-### [場所を設定する](resource-manager-template-location.md)
-### [タグを割り当てる](resource-manager-template-tags.md)
-### [子リソースの名前と種類を設定する](resource-manager-template-child-resource.md)
 ### [リソースを更新する](resource-manager-update.md)
-### [パラメーターにオブジェクトを使用する](resource-manager-objects-as-parameters.md)
 ### [リンク済みテンプレート間の状態を共有する](best-practices-resource-manager-state.md)
 ### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
 
