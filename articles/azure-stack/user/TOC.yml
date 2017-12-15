@@ -43,6 +43,8 @@
               href: azure-stack-compute-overview.md
             - name: VM に関する考慮事項
               href: azure-stack-vm-considerations.md
+            - name: VM ディスクの管理
+              href: azure-stack-manage-vm-disks.md
         - name: ストレージ
           items:
             - name: 概要

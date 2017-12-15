@@ -85,6 +85,7 @@
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=expressroute)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
+## [クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute](expressroute-for-cloud-solution-providers.md)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
 ### [仮想ネットワーク ゲートウェイを回線に接続する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [ExpressRoute の仮想ネットワークを作成する](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)

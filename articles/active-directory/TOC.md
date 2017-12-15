@@ -265,6 +265,7 @@
 #### [管理者ロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
+### [緊急アクセス用管理者アカウントを管理する](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## アクセス レビュー
 ### [アクセス レビューの概要](active-directory-azure-ad-controls-access-reviews-overview.md)

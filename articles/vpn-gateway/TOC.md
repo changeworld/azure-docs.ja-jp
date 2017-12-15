@@ -75,6 +75,7 @@
 ## サード パーティ VPN デバイスの構成
 ### [概要と Azure の構成](vpn-gateway-3rdparty-device-config-overview.md)
 ### [サンプル: Cisco ASA デバイス (IKEv2/BGP なし)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
+## [クラシックから Resource Manager への移行](vpn-gateway-classic-resource-manager-migration.md)
 ## トラブルシューティング
 ### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 ### [コミュニティで推奨される VPN またはファイアウォール デバイスの設定](vpn-gateway-third-party-settings.md)

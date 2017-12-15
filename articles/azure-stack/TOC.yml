@@ -107,6 +107,8 @@
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: ストレージ リソースの管理
           href: azure-stack-manage-storage-accounts.md
+        - name: ストレージ容量の管理
+          href: azure-stack-manage-storage-shares.md
         - name: Windows Azure Pack VM の管理
           href: azure-stack-manage-windows-azure-pack.md
         - name: ハードウェアの交換
