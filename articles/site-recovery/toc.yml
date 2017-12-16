@@ -211,7 +211,7 @@
       items:
         - name: Active Directory と DNS
           href: site-recovery-active-directory.md
-        - name: SQL Server のレプリケート
+        - name: SQL Server
           href: site-recovery-sql.md
         - name: SharePoint
           href: site-recovery-sharepoint.md

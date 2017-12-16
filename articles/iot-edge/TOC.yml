@@ -32,10 +32,10 @@
       href: how-to-deploy-monitor.md
     - name: IoT Core デバイスのプロビジョニング
       href: how-to-install-iot-core.md
+    - name: トラブルシューティング
+      href: troubleshoot.md
 - name: 概念
   items:
-    - name: IoT Edge の用語集
-      href: iot-edge-glossary.md
     - name: IoT Edge のモジュール
       href: iot-edge-modules.md
       items:
@@ -51,6 +51,8 @@
       href: iot-edge-as-gateway.md
     - name: セキュリティ
       href: security.md
+    - name: IoT Edge の用語集
+      href: iot-edge-glossary.md
 - name: リソース
   items:
     - name: IoT デバイス カタログ向けの Azure 認定
