@@ -26,7 +26,6 @@
 
 ## SQL Data Warehouse への移行
 ### [概要](sql-data-warehouse-overview-migrate.md)
-### [移行ユーティリティ](sql-data-warehouse-migrate-migration-utility.md)
 ### [スキーマの移行](sql-data-warehouse-migrate-schema.md)
 ### [コードの移行](sql-data-warehouse-migrate-code.md)
 ### [データの移行](sql-data-warehouse-migrate-data.md)

@@ -4,6 +4,16 @@
   items:
     - name: Azure Stack とは
       href: azure-stack-poc.md
+    - name: リリース ノート
+      items:
+        - name: Development Kit のリリース ノート
+          href: azure-stack-asdk-release-notes.md
+        - name: 統合システムのリリース ノート
+          items:
+            - name: 1711 更新プログラム
+              href: azure-stack-update-1711.md
+            - name: 1710 更新プログラム
+              href: azure-stack-update-1710.md
 - name: クイック スタート
   expanded: true
   items:
@@ -23,16 +33,6 @@
       href: azure-stack-planning-considerations.md
     - name: サービス ポリシー
       href: azure-stack-servicing-policy.md
-    - name: リリース ノート
-      items:
-        - name: Development Kit のリリース ノート
-          href: azure-stack-asdk-release-notes.md
-        - name: 統合システムのリリース ノート
-          items:
-            - name: 1711 更新プログラム
-              href: azure-stack-update-1711.md
-            - name: 1710 更新プログラム
-              href: azure-stack-update-1710.md
     - name: 主要機能および概念
       href: azure-stack-key-features.md
     - name: Development Kit のアーキテクチャ
