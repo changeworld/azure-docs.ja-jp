@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags: clicktale
-ms.openlocfilehash: a32159494fc374a162db07b67eb95ade87390d31
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 69213ca5c456f13b39c68eae2839329bfd05df6d
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/16/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -178,6 +178,7 @@ ms.lasthandoff: 12/14/2017
                                                 <h4>リレーショナル データベース</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">サービスとしての SQL データベース</a></li>
+                                                    <li><a class="barLink" href="/azure/sql-data-warehouse/">サービスとしての SQL Data Warehouse</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">サービスとしての PostgreSQL データベース</a></li>
                                                     <li><a class="barLink" href="/azure/mysql/">サービスとしての MySQL データベース</a></li>
                                                 </ul>
