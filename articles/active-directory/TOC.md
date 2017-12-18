@@ -58,6 +58,7 @@
 #### [B2B ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
 #### [動的グループと B2B ユーザー](active-directory-b2b-dynamic-groups.md)
 #### [監査とレポート](active-directory-b2b-auditing-and-reporting.md)
+#### [ハイブリッド組織向けの B2B](active-directory-b2b-hybrid-organizations.md)
 #### [B2B と Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 #### [B2B ライセンス](active-directory-b2b-licensing.md)
 #### [現時点での制限事項](active-directory-b2b-current-limitations.md)
