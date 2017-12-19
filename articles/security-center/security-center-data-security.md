@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 12/06/2017
 ms.author: yurid
-ms.openlocfilehash: 72a3e1eafb6f4150d8410fdd5a7a6095909c052d
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: c41e233e177f540562d80649c7bffc15e208e870
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、セキュリティに関連するさまざまなデータを収集、処理しています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -69,6 +69,16 @@ Azure で Security Center を有効にすると、各 Azure サブスクリプ�
 
 Azure Security Center Free を使用している場合は、セキュリティ ポリシーで仮想マシンからのデータ収集を無効にすることができます。 データ収集は、Standard レベルのサブスクリプションでは必須の機能です。 データ収集が無効になっていても、VM ディスクのスナップショットとアーティファクトの収集は引き続き有効になります。
 
+## <a name="data-consumption"></a>データの使用
+
+Security Center に関連したデータは、以下に示した各種のデータ ストリームから使用できます。
+
+* **Azure アクティビティ**: セキュリティに関するあらゆる警告、承認された Security Center の[ジャスト イン タイム](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)要求、[アダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)によって生成されたあらゆる警告が対象となります。
+* **Log Analytics**: セキュリティに関するあらゆる警告が対象となります。
+
+
+> [!NOTE]
+> セキュリティの推奨事項は、REST API 経由で使用することもできます。 詳細については、「[Security Resource Provider REST API Reference (セキュリティ リソース プロバイダーの REST API リファレンス)](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx)」を参照してください。 
 
 ## <a name="see-also"></a>関連項目
 この記事では、Azure Security Center でデータがどのように管理および保護されているかについて説明しました。 Azure Security Center の詳細については、以下の記事を参照してください。

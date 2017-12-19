@@ -3,7 +3,7 @@ title: "Log Analytics アラートから Azure Automation Runbook を呼び出�
 description: "この記事では、Microsoft OMS Log Analytics アラートから Automation Runbook を呼び出す方法の概要を示します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 10b445f8fcaa80182119e47f37ffb11240a46869
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0b15f33a177afc70a3662c5bd008eb236ed0d6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="calling-an-azure-automation-runbook-from-an-oms-log-analytics-alert"></a>OMS Log Analytics アラートから Azure Automation Runbook を呼び出す
 
@@ -43,7 +43,7 @@ OMS ワークスペースで Automation & Control サービスをインストー
 
 ## <a name="characteristics-of-a-runbook-for-both-options"></a>Runbook の特性 (両方のオプションに該当)
 
-Log Analytics アラートから Runbook を呼び出す 2 つの方法には、アラート ルールを構成する前に理解しておくべき特性があります。
+Log Analytics アラートから Runbook を呼び出す 2 つの方法には、アラート ルールを構成する前に理解しておくべき特性があります。 アラート データは、**SearchResult** という単一のプロパティに JSON 形式で格納されています。 この形式は、標準的なペイロードを含んだ Runbook アクションや webhook アクションに使用されます。 **RequestBody** に **IncludeSearchResults:True** などのカスタム ペイロードを含んだ webhook アクションのプロパティが **SearchResults** になります。
 
 * **Object** 型の **WebhookData** という Runbook 入力パラメーターが必要です。 これには必須と任意があります。 アラートは、この入力パラメーターを使用して検索結果を Runbook に渡します。
 
@@ -61,6 +61,7 @@ Log Analytics アラートから Runbook を呼び出す 2 つの方法には、
     ```
 
     *$SearchResult* はオブジェクトの配列になります。各オブジェクトには、1 つの検索結果からの値を含むフィールドが含まれています。
+
 
 ## <a name="example-walkthrough"></a>例のチュートリアル
 
@@ -80,6 +81,9 @@ $SearchResult.SvcDisplayName_CF
 サービスが停止すると、Log Analytics のアラート ルールは、一致を検出して Runbook をトリガーし、アラートのコンテキストを Runbook に送信します。 Runbook は、サービスが停止していることを確認するためのアクションを実行します。停止している場合は、サービスを再開し、正しく開始されたことを確認して、結果を出力します。     
 
 また、Automation アカウントを OMS ワークスペースにリンクしていない場合は、Runbook をトリガーする webhook アクションでアラート ルールを構成し、前に説明したガイダンスに従って JSON 形式の文字列を変換して \*.SearchResult\* をフィルター処理するよう Runbook を構成します。    
+
+>[!NOTE]
+> ご使用のワークスペースが[新しい Log Analytics クエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)にアップグレードされている場合は、webhook ぺイロードが変わります。  フォーマットの詳細については、「[Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,7 +4,7 @@ description: "Microsoft Authenticator アプリには、アウトオブバンド
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 6c8d6fcc-70f4-4da4-9610-c76d66635b8b
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 3d1e8d62127a3c5c888804278fbcd9a4fe81e33f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 83b04e48dd528881097bcf16bc03e1a18ea20c43
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server でモバイル アプリ認証を有効にする
 
@@ -63,7 +63,7 @@ Microsoft Authenticator アプリを使用するには、アプリがモバイ�
 3. インストールは既定の設定で行ってください (何らかの理由で変更しなければならない場合を除く)。
 4. IIS 内のサイトに SSL 証明書をバインドします。
 
-IIS サーバーに SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
+IIS サーバーに SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
 
 Web サービス SDK は、SSL 証明書で保護されている必要があります。 このために自己署名証明書を使用できます。 SSL 接続を開始するときにその証明書が信頼されるように、ユーザー ポータル Web サーバー上のローカル コンピューター アカウントの "信頼されたルート証明機関" ストアに証明書をインポートします。
 
@@ -88,6 +88,7 @@ Web サービス SDK は、SSL 証明書で保護されている必要があり�
 
 7. モバイル アプリ Web サービスがインストールされた Web サイトが公的署名証明書にまだバインドされていない場合は、証明書をサーバーにインストールし、IIS マネージャーを開いて、証明書を Web サイトにバインドします。
 8. 任意のコンピューターで Web ブラウザーを開き、モバイル アプリ Web サービスがインストールされた URL に移動します (例: https://mfa.contoso.com/MultiFactorAuthMobileAppWebService)。 証明書の警告およびエラーが表示されないことを確認してください。
+9. Web サービス SDK で利用できるメソッドの詳細については、MFA Server のヘルプ ファイルを参照してください。
 
 ## <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server でモバイル アプリ設定を構成する
 

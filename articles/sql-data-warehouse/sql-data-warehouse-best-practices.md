@@ -15,16 +15,18 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/06/2017
 ms.author: barbkess
-ms.openlocfilehash: f24dc2600bec8b7086ee34a960e777a8a1b288ad
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 861c2c977fa9d0341125127852bc7747dfd6001a
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のベスト プラクティス
 この記事には、Azure SQL Data Warehouse で最適なパフォーマンスを実現するのに役立つさまざまなベスト プラクティスがまとめられています。  この記事で取り上げている概念には、基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。  この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築するときに重視する必要がある重要な領域に対する認識を高めることです。  各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
 
 Azure SQL Data Warehouse を使ってみるだけの場合でも、この記事は手に負えないと思わないでください。  一連のトピックは、だいたい重要な順に並んでいます。  初めは最初のいくつかの概念に注力するだけでも、効果があります。  SQL Data Warehouse に使い慣れてきたら、戻ってきて、その他の概念もいくつか確認してください。  すべてを理解するまでに時間はかかりません。
+
+読み込みのガイダンスについては、[データの読み込みのガイダンス](guidance-for-loading-data.md)に関するページを参照してください。
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>一時停止とスケールでコストを削減する
 SQL Data Warehouse の重要な機能として、使用していないときは一時停止できます。そうすると、コンピューティング リソースの課金が停止されます。  もう 1 つの重要な機能として、リソースをスケールできます。  一時停止とスケールは、Azure Portal または PowerShell コマンドを使用して行うことができます。  これらの機能を使用すると、データ ウェアハウスを使用していないときにコストを大幅に削減できるため、これらの機能についてよく理解してください。  常にデータ ウェアハウスにアクセスできることが必要な場合は、一時停止ではなく、最小サイズ (DW100) へのスケールダウンを検討することをお勧めします。
@@ -52,7 +54,7 @@ SQL Data Warehouse では、Azure Data Factory、PolyBase、BCP など、さま�
 [データのロード][Load data]に関するページ、[PolyBase の使用ガイド][Guide for using PolyBase]、「[Azure SQL Data Warehouse loading patterns and strategies (Azure SQL Data Warehouse の読み込みパターンと戦略)][Azure SQL Data Warehouse loading patterns and strategies]」、[Azure Data Factory を使用したデータの読み込み][Load Data with Azure Data Factory]、[Azure Data Factory を使用したデータ移動][Move data with Azure Data Factory]、[CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]、[Create table as select (CTAS)][Create table as select (CTAS)] に関するページもご覧ください。
 
 ## <a name="load-then-query-external-tables"></a>外部テーブルを読み込んで、クエリを実行する
-外部テーブルとも呼ばれる Polybase は、最も高速にデータを読み込むことができますが、クエリには適していません。 SQL Data Warehouse の Polybase テーブルが現在サポートしているのは、Azure BLOB ファイルのみです。 このファイルには、それをバックアップするためのコンピューティング リソースがありません。  つまり、SQL Data Warehouse ではこの作業をオフロードできないため、データを読み取るには、ファイルを tempdb に読み込んで、ファイル全体を読み取る必要があります。  したがって、このデータに対して複数のクエリを実行する場合は、データを一度読み込んで、クエリがローカル テーブルを使うように指定することをお勧めします。
+外部テーブルとも呼ばれる Polybase は、最も高速にデータを読み込むことができますが、クエリには適していません。 SQL Data Warehouse の Polybase テーブルが現在サポートしているのは、Azure BLOB ファイルと Azure Data Lake ストレージのみです。 このファイルには、それをバックアップするためのコンピューティング リソースがありません。  つまり、SQL Data Warehouse ではこの作業をオフロードできないため、データを読み取るには、ファイルを tempdb に読み込んで、ファイル全体を読み取る必要があります。  したがって、このデータに対して複数のクエリを実行する場合は、データを一度読み込んで、クエリがローカル テーブルを使うように指定することをお勧めします。
 
 [PolyBase の使い方ガイド][Guide for using PolyBase]もご覧ください。
 
@@ -127,8 +129,8 @@ SQL Data Warehouse には、クエリの実行を監視するために使用で�
 [Table partitioning]: ./sql-data-warehouse-tables-partition.md
 [Manage table statistics]: ./sql-data-warehouse-tables-statistics.md
 [Temporary tables]: ./sql-data-warehouse-tables-temporary.md
-[Guide for using PolyBase]: ./sql-data-warehouse-load-polybase-guide.md
-[Load data]: ./sql-data-warehouse-overview-load.md
+[Guide for using PolyBase]: ./guidance-for-loading-data.md
+[Load data]: ./design-elt-data-loading.md
 [Move data with Azure Data Factory]: ../data-factory/transform-data-using-machine-learning.md
 [Load data with Azure Data Factory]: ./sql-data-warehouse-get-started-load-with-azure-data-factory.md
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md

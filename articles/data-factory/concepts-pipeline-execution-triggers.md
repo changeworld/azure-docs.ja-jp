@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 6f4c0b11039bbdaf29c90ec2358934dc1c24af90
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c472cf080f8138ec6d0210f3ca4a8b3f3c33e7ae
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -131,7 +131,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ## <a name="triggers"></a>トリガー
 トリガーは、パイプライン実行を行う 2 番目の方法を提供します。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現在、Data Factory は、実時間のスケジュールによってパイプラインを起動するトリガーをサポートしています。 それは**スケジューラ トリガー**と呼ばれます。 現在、Data Factory は、ファイル到着のイベント発生時のパイプライン実行のトリガーなど、イベント ベースのトリガーをサポートしていません。
 
-パイプラインとトリガーには "n-m" の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 次のトリガーの JSON 定義では、**pipelines** プロパティは、特定のトリガーによってトリガーされるパイプラインのリストと、パイプライン パラメーターの値を参照します。
+パイプラインとトリガーには多対多の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 次のトリガーの JSON 定義では、**pipelines** プロパティは、特定のトリガーによってトリガーされるパイプラインのリストと、パイプライン パラメーターの値を参照します。
 
 ### <a name="basic-trigger-definition"></a>基本的なトリガー定義: 
 ```json
@@ -165,7 +165,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="scheduler-trigger-json-definition"></a>スケジューラ トリガー JSON 定義
 スケジューラ トリガーを作成するときには、このセクションの例に示されているように、JSON を使用してスケジュールと繰り返しを指定できます。 
 
-スケジューラ トリガーにパイプライン実行を開始させるには、特定のパイプラインのパイプライン参照をトリガー定義に組み込みます。 パイプラインとトリガーには "n-m" の関係があります。 複数のトリガーが 1 つのパイプラインを開始することができます。 同じトリガーが複数のパイプラインを開始することもできます。
+スケジューラ トリガーにパイプライン実行を開始させるには、特定のパイプラインのパイプライン参照をトリガー定義に組み込みます。 パイプラインとトリガーには多対多の関係があります。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。
 
 ```json
 {
@@ -218,7 +218,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="overview-scheduler-trigger-schema"></a>概要: スケジューラ トリガーのスキーマ
 次の表に、トリガーでの繰り返しとスケジュール設定に関連する主要な要素の概要を示します。
 
-JSON プロパティ |     Description
+JSON プロパティ |     説明
 ------------- | -------------
 startTime | startTime は、日付/時刻です。 単純なスケジュールでは、startTime は最初の発生日時です。 複雑なスケジュールでは、トリガーは startTime になるとすぐに起動します。
 endTime | トリガーの終了日付/時刻を指定します。 トリガーはこの時刻より後には実行されません。 過去の日時を endTime に指定するのは無効です。
@@ -299,7 +299,7 @@ schedule の要素を複数指定した場合は、評価の順序は大きい�
 schedule の要素を次の表に詳しく示します。
 
 
-JSON での名前 | Description | 有効な値
+JSON での名前 | 説明 | 有効な値
 --------- | ----------- | ------------
 minutes | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
 hours | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul>
@@ -313,7 +313,7 @@ monthDays | トリガーが実行される月の日にち。 月単位の頻度�
 
 スケジュール例では、間隔が 1 に設定されていると仮定します。 また、schedule の値に合った適切な頻度が指定されていると仮定します。たとえば、frequency に "day" を使用し、schedule に "monthDays" の変更を指定することはできません。 これらの制限は、前のセクションの表で説明されています。 
 
-例 | Description
+例 | 説明
 ------- | -----------
 `{"hours":[5]}` | 毎日午前 5 時に実行
 `{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行

@@ -3,7 +3,7 @@ title: "Azure Automation の概要 | Microsoft Docs"
 description: "この記事では、Auzre Marketplace のサービスをオンボードする準備として、設計と実装の詳細を確認しながら Azure Automation サービスの概要について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 486e2b2da7a78cdc39743e60f4140fc58275a8fc
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 2a57b60a2222d6e2ea864410edc6a32a0bf0c76c
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Azure Automation の概要
 
@@ -112,7 +112,7 @@ Azure Portal で Automation アカウントを作成すると、次の 2 つの�
 **「方法」の「認証とセキュリティ」**セクションにあるサポート記事では、そうした環境専用の既存または新規のアカウントを使用して、その環境の認証を構成するための概要と実装手順を説明しています。  Azure 実行アカウントとクラシック実行アカウントについては、「[Automation 実行アカウントを更新する](automation-create-runas-account.md)」を参照してください。既存の Automation アカウントが最初に実行アカウントまたはクラシック実行アカウントと共に構成されていない場合に、ポータルまたは PowerShell を使用して、既存の Automation アカウントと実行アカウントを更新する方法について説明します。 エンタープライズ証明機関 (CA) から発行された証明書で実行アカウントとクラシック実行アカウントを作成しようとする場合は、この記事を読み、この構成を使用してアカウントを作成する方法を確認してください。     
  
 ## <a name="network-planning"></a>ネットワークの計画
-Hybrid Runbook Worker を Microsoft Operations Management Suite (OMS) に接続して登録するには、その Hybrid Runbook Worker は、以下で説明するポート番号と URL にアクセスできる必要があります。  OMS に接続するには、[Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-windows-agents.md#network) のほかに、このポートと URL が必要です。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 ファイアウォールを使用してインターネットへのアクセスを制限している場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
+Hybrid Runbook Worker を Microsoft Operations Management Suite (OMS) に接続して登録するには、その Hybrid Runbook Worker は、以下で説明するポート番号と URL にアクセスできる必要があります。  OMS に接続するには、[Microsoft Monitoring Agent に必要なポートと URL](../log-analytics/log-analytics-windows-agent.md) のほかに、このポートと URL が必要です。 エージェントと OMS サービス間の通信にプロキシ サーバーを使用する場合、適切なリソースにアクセスできることを確認する必要があります。 ファイアウォールを使用してインターネットへのアクセスを制限している場合は、アクセスを許可するようにファイアウォールを構成する必要があります。
 
 Automation と通信するには、次の一覧に示すポートと URL が Hybrid Runbook Worker に必要です。
 

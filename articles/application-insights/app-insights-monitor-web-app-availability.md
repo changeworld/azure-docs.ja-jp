@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8f4fcc3eb0dac2c5796b0a291425ad17a60a5bae
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: afe37dd1fcf2b663f3bf97d04b187b356381f3f3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Web サイトの可用性と応答性の監視
 いずれかのサーバーに Web アプリまたは Web サイトをデプロイした後、テストを設定して、その可用性と応答性を監視できます。 [ Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/01/2017
 * [URL の Ping テスト](#create): Azure Portal で作成できる簡単なテストです。
 * [複数ステップ Web テスト](#multi-step-web-tests): Visual Studio Enterprise で作成してポータルにアップロードします。
 
-アプリケーション リソースごとに最大 25 個の可用性テストを作成できます。
+アプリケーション リソースごとに最大 100 個の可用性テストを作成できます。
 
 ## <a name="create"></a>1.可用性テスト レポートのリソースを開く
 
@@ -37,16 +37,14 @@ Web アプリ用に**既に Application Insights を構成している場合**�
 
 **新しいリソースでレポートを表示する場合**は、[Microsoft Azure](http://azure.com) にサインアップし、[Azure Portal](https://portal.azure.com) に移動して、Application Insights リソースを作成します。
 
-![[新規] > [Application Insights]
-](./media/app-insights-monitor-web-app-availability/11-new-app.png)
+![[新規] &gt; [Application Insights]](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
 **[すべてのリソース]** をクリックして新しいリソースの概要ブレードを開きます。
 
 ## <a name="setup"></a>2.URL の Ping テストを作成する
 [可用性] ブレードを開き、テストを追加します。
 
-![少なくとも自分の Web サイトの URL を入力
-](./media/app-insights-monitor-web-app-availability/13-availability.png)
+![少なくとも自分の Web サイトの URL を入力](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 * **[URL]** にはテストする任意の Web ページを指定できますが、パブリック インターネットからアクセス可能である必要があります。 URL にはクエリ文字列を含めることができます。 したがって、たとえば限られた範囲でデータベースを実行できます。 URL が解決されてリダイレクトする場合、それに続いて最大で 10 個リダイレクトを使用できます。
 * **[従属要求の解析]**: このオプションをオンにしていると、テスト対象の Web ページの一部である画像、スクリプト、スタイル ファイル、その他のファイルがテストから要求されます。 記録される応答時間には、これらのファイルの取得にかかる時間が含まれます。 テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。 
@@ -74,8 +72,7 @@ Web アプリ用に**既に Application Insights を構成している場合**�
 
 数分後、**[更新]** をクリックしてテスト結果を表示します。 
 
-![ホーム ブレード上の概要結果
-](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
+![ホーム ブレード上の概要結果](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
 
 散布図には、診断テスト手順の詳細が含まれたテスト結果のサンプルが表示されます。 テスト エンジンは、失敗したテストの診断の詳細を格納します。 成功したテストの場合、診断の詳細は実行のサブセットに対して格納されます。 緑色または赤色の点の上にポインターを置くと、テスト タイムスタンプ、テスト期間、場所、およびテスト名が表示されます。 散布図内の任意の点をクリックすると、テスト結果の詳細が表示されます。  
 
@@ -92,8 +89,7 @@ Web アプリ用に**既に Application Insights を構成している場合**�
 
 [概要] ページから、特定のテストを選択します。 指定したテストの結果の表示や編集ができるほか、一時的に無効にすることもできます。
 
-![Web テストの編集または無効化
-](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
+![Web テストの編集または無効化](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
 
 サービスに対するメンテナンスを実行している間、関連付けられた可用性テストまたはアラート ルールを無効にすることもできます。 
 

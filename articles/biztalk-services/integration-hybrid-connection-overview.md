@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 992c438ab2dac8dc20ba284bd095afbcd801a62f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 819af52bb10c9ffcb7e1133437f6d0afbe6105ae
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="hybrid-connections-overview"></a>ハイブリッド接続の概要
 
@@ -90,12 +90,12 @@ ms.lasthandoff: 10/11/2017
 | 80、443 |これらのポートは Azure へのデータ要求に使用されます。 また、ポート 9352 とポート 5671 を使用できない場合に、 *ポート* 80 とポート 443 がデータ転送と制御チャネルに使用される代替ポートになります。<br/><br/>これらのポートへの発信接続を許可します。 <br/><br/>**注** これらを他の TCP ポートの代替ポートとして使用することは推奨されません。 HTTP/WebSocket はデータ チャンネルのネイティブ TCP ではなくプロトコルとして使用されます。 パフォーマンスの低下を招く可能性があります。 |
 
 ## <a name="next-steps"></a>次のステップ
-[Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
+[Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>関連項目
-[Microsoft Azure での BizTalk Services の管理用 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)
-[BizTalk Services: エディション チャート](biztalk-editions-feature-chart.md)<br/>
-[Azure Portal を使用した BizTalk Service の作成](biztalk-provision-services.md)<br/>
-[BizTalk Services: [ダッシュボード]、[監視]、[スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+[Microsoft Azure での BizTalk Services 管理の REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[BizTalk サービス: 開発者、基本、標準、およびプレミアム エディションのチャート](biztalk-editions-feature-chart.md)  
+[BizTalk サービスを作成する](biztalk-provision-services.md)  
+[BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)  
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png

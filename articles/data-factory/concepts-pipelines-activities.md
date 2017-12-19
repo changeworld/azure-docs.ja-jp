@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.openlocfilehash: 6b5552bbb3a56a95e616a79bf9adeabe68d01216
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 4214bc2a58a1ce6d0d329010ec7775a343e9d782
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,7 +68,7 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 ## <a name="control-activities"></a>制御アクティビティ
 次の制御フロー アクティビティがサポートされています。
 
-制御アクティビティ | Description
+制御アクティビティ | 説明
 ---------------- | -----------
 [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md) | パイプラインの実行アクティビティを使用すると、Data Factory の 1 つのパイプラインから別のパイプラインを呼び出すことができます。
 [ForEachActivity](control-flow-for-each-activity.md) | ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
@@ -97,7 +97,7 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 }
 ```
 
-タグ | Description | 型 | 必須
+タグ | 説明 | 型 | 必須
 --- | ----------- | ---- | --------
 name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数：260文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>•   次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、”\”</li></ul> | String | あり
 description | パイプラインの用途を説明するテキストを指定します。 | String | いいえ
@@ -169,7 +169,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
     }
 }
 ```
-JSON での名前 | Description | 使用できる値 | 必須
+JSON での名前 | 説明 | 使用できる値 | 必須
 --------- | ----------- | -------------- | --------
 timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | 
 いいえ。 既定のタイムアウトは 7 日間です。
