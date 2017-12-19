@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 10/26/2017
 ms.author: juliako
-ms.openlocfilehash: ad022eb8d3a0a22e679962d75c05eed799976ece
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: bbfe7fedb1d5216b8a159faa9543ade74176181f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services 用 Java クライアント SDK の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -42,7 +42,7 @@ Java 用 Media Services SDK の使用を開始するには、[Azure Media Servic
     compile group: 'com.microsoft.azure', name: 'azure-media', version: '0.9.8'
 
 >[!IMPORTANT]
->`azure-media` パッケージ バージョン `0.9.8` 以降では、Auzre Active Directory (AAD) 認証のサポートが追加され、Access Control Service (ACS) 認証のサポートが削除されます。 ACS サービスは、2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。 詳細については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」をご覧ください。
+>`azure-media` パッケージ バージョン `0.9.8` 以降では、Azure Active Directory (AAD) 認証のサポートが追加され、Azure Access Control Service (ACS) 認証のサポートが削除されます。 ACS サービスは、2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。 詳細については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」をご覧ください。
 
 >[!NOTE]
 >Azure Media Services Java SDK のソース コードは [GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)にあります。 master ブランチではなく、必ず 0.9 ブランチに切り替えてください。 

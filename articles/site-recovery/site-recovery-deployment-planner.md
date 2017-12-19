@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 665bb65d17e9abec98262b92afffba008ed6c891
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 0910d5802d64ca637b3ecd1e392a6df8629c7f25
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware から Azure 用の Azure Site Recovery Deployment Planner
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -42,6 +42,8 @@ Azure Site Recovery Deployment Planner (バージョン 2) は、Hyper-V から 
 * 差分レプリケーションに必要な推定ネットワーク帯域幅
 * オンプレミスから Azure までの間で Site Recovery が得られるスループット
 * 束ねる VM の数 (初回レプリケーションを所定の時間内に完了するための推定帯域幅に基づく)
+* 特定の帯域幅で達成できる RPO
+* プロビジョニングされた帯域幅が低かった場合に、必要な RPO に生じる影響
 
 **Azure インフラストラクチャの要件**
 
@@ -55,7 +57,7 @@ Azure Site Recovery Deployment Planner (バージョン 2) は、Hyper-V から 
 **オンプレミス インフラストラクチャの要件**
 * オンプレミスにデプロイする必要のある構成サーバーとプロセス サーバーの台数
 
-**推定される Azure の DR コスト** 
+**推定される Azure の DR コスト**
 * 推定される Azure の合計 DR コスト: コンピューティング、ストレージ、ネットワーク、Azure Site Recovery ライセンスのコスト
 * VM あたりの詳細なコスト分析
 

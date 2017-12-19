@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 12/13/2017
 ms.author: yurid
-ms.openlocfilehash: e68ec1b7d82a0e1d98953521b05f423044e6d2f2
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 71dcafab92a9045388c2e602c0dc297aed32e527
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Azure Security Center におけるアダプティブ アプリケーション制御 (プレビュー)
 このチュートリアルを使用して、Azure Security Center でアプリケーション制御を構成する方法を説明します。
@@ -32,9 +32,6 @@ ms.lasthandoff: 10/18/2017
 - 古くてサポートされていないアプリが実行されることを避ける。
 - 組織で許可されていない特定のソフトウェア ツールが実行されないようにする。
 - アプリの使用状況を通じて、機密データへのアクセスを IT 部門が制御できるようにする。
-
-> [!NOTE]
-> アダプティブ アプリケーション制御は、制限付きのパブリック プレビューとして、Azure Security Center Standard のお客様が使用できます。 プレビューに参加するには、サブスクリプション ID を記入した電子メールを[こちら](mailto:ASC_appcontrol@microsoft.com)に送信してください。
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>アダプティブ アプリケーション制御を有効にする方法
 アダプティブ アプリケーション制御では、構成済みリソース グループに対する実行が許可される一連のアプリケーションを定義できます。 この機能が使用できるのは、Windows マシンのみです (すべてのバージョン、クラシックまたは Azure Resource Manager)。 Security Center でアプリケーションのホワイトリストを構成するには、以下の手順に従います。
@@ -72,7 +69,7 @@ ms.lasthandoff: 10/18/2017
 
 - **[名前]**: アプリケーションの完全パス
 - **[プロセス]**: 各パス内に存在するアプリケーションの数
-- **[共通]**: true は、これらのプロセスがこのリソース グループ内のほとんどの VM で実行されていることを示します。
+- **[共通]**: "はい" は、これらのプロセスがこのリソース グループ内のほとんどの VM で実行されていることを示します。
 - **[利用可能]**: 警告アイコンは、アプリケーションがアプリケーション ホワイトリストをバイパスするために攻撃者によって使用されうることを示します。 これらのアプリケーションは、承認前に確認することをお勧めします。 
 
 選択を終了したら、**[作成]** ボタンをクリックします。 既定では、Security Center は常にアプリケーション制御を "*監査*" モードで有効にします。 ホワイトリストによるワークロードへの悪影響がないことを検証した後で、"*強制*" モードに変更できます。

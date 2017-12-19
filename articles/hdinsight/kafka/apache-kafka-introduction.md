@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: c4e0d792ae8f4c17d53430f49d81d179e56b9722
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 09a661b2a100245dd424e24d8a8ddef56c573b02
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka の概要
 
@@ -62,6 +62,8 @@ HDInsight における Kafka の機能は次のとおりです。
 ![Kafka クラスターの構成](./media/apache-kafka-introduction/kafka-cluster.png)
 
 この図は、コンシューマー グループ、パーティション分割、レプリケーションを使ってイベントの並列読み取りとフォールト トレランスを実現する標準的な Kafka の構成を示しています。 Apache ZooKeeper は、Kafka クラスターの状態管理におけるトランザクションの同時実行性、回復性、短い待ち時間の実現を目指して構築されています。 Kafka では、"*トピック*" 内にレコードが格納されます。 レコードは、*プロデューサー*によって生成され、*コンシューマー*によって消費されます。 プロデューサーは、Kafka の*ブローカー*からレコードを取得します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。 コンシューマーごとに 1 つのパーティションを作成することで、ストリーミング データの並列処理が可能となっています。 レプリケーションによって複数ノードにパーティションが分散されて、ノード (ブローカー) の機能不全に対する保護措置が講じられています。 *(L)* で示されたパーティションは、各パーティションのリーダーです。 プロデューサー トラフィックは、ZooKeeper によって管理された状態に基づいて、各ノードのリーダーにルーティングされます。
+
+Kafka ブローカーにはそれぞれ、Azure Managed Disks が使用されます。 ディスクの数は、ユーザーが定義し、ブローカーごとに最大 16 TB の記憶域を確保できます。
 
 > [!IMPORTANT]
 > 基になる Azure データ センターのハードウェア (ラック) は、Kafka では認識されません。 基になるハードウェア間でパーティションを正しく調整する方法については、[データの高可用性構成 (Kafka)](apache-kafka-high-availability.md) に関するページを参照してください。

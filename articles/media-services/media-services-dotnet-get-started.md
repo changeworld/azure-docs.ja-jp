@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/31/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: f0be787ba1ccee067fb1d7e6a6554be32f886089
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c66488ce4381a3c5f796aa9826810195b2738769
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>.NET SDK を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -86,22 +86,26 @@ ms.lasthandoff: 10/11/2017
 
 Media Services を .NET で使用するとき、Media Services に関連したプログラミング タスクの大半、たとえば、各種オブジェクト (資産、資産ファイル、ジョブ、アクセス ポリシー、ロケーターなど) の作成、更新、アクセス、削除の作業で、 **CloudMediaContext** クラスが必要となります。
 
-既定の Program クラスを次のコードで上書きします。 このコードは、App.config ファイルから接続値を読み取り、 **CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 詳細については、[Media Services API への接続](media-services-use-aad-auth-to-access-ams-api.md)に関するページを参照してください。
+既定の Program クラスを次のコードで上書きします。このコードは、App.config ファイルから接続値を読み取り、**CloudMediaContext** オブジェクトを作成して Media Services に接続する方法を示しています。 詳細については、[Media Services API への接続](media-services-use-aad-auth-to-access-ams-api.md)に関するページを参照してください。
 
 メディア ファイルのある場所に合わせて、ファイル名とパスを更新してください。
 
 **Main** 関数で呼び出すメソッドは、この後、定義していきます。
 
 > [!NOTE]
-> すべての関数の定義を追加するまでは、コンパイル エラーが発生します。
+> この記事の中で定義するすべての関数の定義を追加するまでは、コンパイル エラーが発生します。
 
     class Program
     {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context = null;
 
@@ -109,7 +113,11 @@ Media Services を .NET で使用するとき、Media Services に関連した�
         {
         try
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -137,7 +145,7 @@ Media Services を .NET で使用するとき、Media Services に関連した�
             Console.ReadLine();
         }
         }
-    }
+    
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>新しい資産の作成とビデオ ファイルのアップロード
 
@@ -145,7 +153,7 @@ Media Services で、デジタル ファイルを資産にアップロードし 
 
 以下に定義した **UploadFile** メソッドは、(.NET SDK Extensions で定義されている) **CreateFromFile** を呼び出します。 **CreateFromFile** によって、指定されたソース ファイルのアップロード先となる新しいアセットが作成されます。
 
-**CreateFromFile** メソッドの **AssetCreationOptions** 引数には、次のいずれかの資産作成オプションを指定できます。
+**CreateFromFile** メソッドの **AssetCreationOptions 引数には、次のいずれかの資産作成オプションを指定できます。
 
 * **None** : 暗号化は使用されません。 これが既定値です。 このオプションを使用した場合、送信経路上とストレージ内のいずれにおいてもコンテンツが保護されないので注意してください。
   プログレッシブ ダウンロードを使用して MP4 を配信する場合はこのオプションを使用します。

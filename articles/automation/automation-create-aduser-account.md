@@ -3,7 +3,7 @@ title: "Azure AD ユーザー アカウントを作成する | Microsoft Docs"
 description: "この記事では、Azure Automation の Runbook が Azure およびクラシック Azure で認証を受ける際に使用する Azure AD ユーザー アカウントを作成する方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 keywords: "Azure Active Directory ユーザー, Azure サービス管理, Azure AD ユーザー アカウント"
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 8f24e6e57c2eec5950c8c12d9f4383ce11cf5c11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 700c4419821934daac89025c889b21d8e2ef46b6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Azure クラシック デプロイメントと Resource Manager による Runbook の認証
 この記事では、Azure クラシック デプロイメント モデルまたは Azure Resource Manager のリソースに対して実行する Azure Automation Runbook 用に Azure AD ユーザー アカウントを構成するための手順を説明します。  Azure Resource Manager ベースの Runbook では、このアカウントを引き続き認証 ID として使用できますが、Azure 実行アカウントを使用することが推奨されます。       
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 このセクションでは、以下の手順を実行して、Azure クラシック デプロイメントでリソースを管理する Runbook で使用される Azure Automation アカウントを Azure Portal で作成します。  
 
 > [!NOTE]
-> Azure クラシック ポータルで作成した Automation アカウントは、Azure クラシック ポータルおよび Azure Portal の両方で、どちらのコマンドレット セットでも管理できます。 アカウントを作成してしまえば、そのアカウントのリソースの作り方や管理方法に違いはありません。 引き続き Azure クラシック ポータルを使用する場合、Automation アカウントの作成には Azure Portal ではなく、Azure クラシック ポータルを使用することをお勧めします。
+> Azure クラシック ポータルで作成した Automation アカウントは、Azure クラシック ポータルおよび Azure Portal の両方で、どちらのコマンドレット セットでも管理できます。 アカウントを作成してしまえば、そのアカウントのリソースの作り方や管理方法に違いはありません。 引き続き Azure クラシック ポータルを使用する場合、Automation アカウントの作成には Azure ポータルではなく、Azure クラシック ポータルを使用することをお勧めします。
 > 
 > 
 

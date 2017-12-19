@@ -3,7 +3,7 @@ title: "スタンドアロン Azure Automation アカウントを作成する | 
 description: "Azure Automation のセキュリティ プリンシパル認証の作成、テスト、使用例をわかりやすく説明しています。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 2f783441-15c7-4ea0-ba27-d7daa39b1dd3
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: e3c18c7886c8338efc6168464b63a9557909a769
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc4bfa4a94eaa2fb4e0e821c4931dcd1963f3109
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 このトピックでは、Azure Automation の評価および学習を目的として、Azure Portal から Automation アカウントを作成する方法について説明します。Runbook ジョブの高度な監視を実現する管理ソリューションの追加や OMS Log Analytics との統合は含まれていません。  そうした管理ソリューションの追加や Log Analytics との統合は、後からいつでも行うことができます。  Automation アカウントを使うと、Runbook の認証を行い、Azure Resource Manager または Azure クラシック デプロイメントのリソースを管理できます。

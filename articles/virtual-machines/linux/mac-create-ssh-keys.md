@@ -4,7 +4,7 @@ description: "Azure に Linux VM 用の SSH 公開キーと秘密キーのペア
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 34ae9482-da3e-4b2d-9d0d-9d672aa42498
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 6fcdcc96c7762e2362aebf909ef25f4a5ab62f99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 806d297c40af6ae2834ad529aaa11c51d26826dd
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法
-Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成でき、ログインするためのパスワードが不要になります。 この記事では、Linux VM 用に SSH プロトコル バージョン 2 RSA の公開キー ファイルと秘密キー ファイルのペアを短時間で生成し、使用する方法について説明します。 詳細な手順と補足的な例については、[SSH キー ペアと証明書を作成するための詳細な手順](create-ssh-keys-detailed.md)に関するページをご覧ください。
+Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成でき、ログインするためのパスワードが不要になります。 この記事では、Linux VM 用に SSH プロトコル バージョン 2 RSA の公開キー ファイルと秘密キー ファイルのペアを短時間で生成し、使用する方法について説明します。 これらの手順を実行するには、Azure Cloud Shell、macOS または Linux ホスト、あるいは Windows Subsystem for Linux を使用することができます。 詳細な手順と補足的な例については、[SSH キー ペアと証明書を作成するための詳細な手順](create-ssh-keys-detailed.md)に関するページをご覧ください。
 
 ## <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 `ssh-keygen` コマンドを使用して、SSH 公開キー ファイルと秘密キー ファイルを作成できます。ファイルは既定で `~/.ssh` ディレクトリに作成されますが、プロンプトが表示されたときに別の場所や追加のパスフレーズ (秘密キー ファイルにアクセスするためのパスワード) を指定できます。 これを行うには、Bash シェルから次のコマンドを実行し、使用したい情報をプロンプトで指定します。

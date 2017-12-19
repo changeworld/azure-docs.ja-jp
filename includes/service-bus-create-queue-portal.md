@@ -2,16 +2,16 @@
 
 1. [Azure Portal][azure-portal] にログオンします。
 2. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は **[More Services (その他のサービス)]** をクリックします)。
-3. キューを作成する名前空間をクリックします。 この例では、 **nstest1**です。
+3. キューを作成する名前空間をクリックします。 この例では、**sbnstest1** です。
    
     ![キューを作成する][createqueue1]
-4. **[Service Bus 名前空間]** ブレードで、**[キュー]** を選択し、**[キューの追加]** をクリックします。
+4. 名前空間ウィンドウで **[キュー]** をクリックし、**[キュー]** ウィンドウの **[+ キュー]** をクリックします。
    
     ![Select Queues][createqueue2]
 5. **[キュー名]** に入力し、他の値は既定値のままにします。
    
     ![Select New][createqueue3]
-6. ブレードの下部にある **[作成]**をクリックします。
+6. ウィンドウの下部にある **[作成]** をクリックします。
 
 [createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
 [createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
