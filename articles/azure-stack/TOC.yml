@@ -195,6 +195,8 @@
               href: azure-stack-create-and-publish-marketplace-item.md
             - name: Marketplace 発行ツールの使用
               href: azure-stack-marketplace-publisher.md
+            - name: Azure Stack でサポートされているゲスト オペレーティング システム
+              href: azure-stack-supported-os.md
             - name: カスタム仮想マシン イメージを追加する
               href: azure-stack-add-vm-image.md
             - name: 仮想マシン スケール セットの追加

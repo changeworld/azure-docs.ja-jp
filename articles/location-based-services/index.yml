@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Location Based Services (プレビュー) のドキュメント
+title: "Azure Location Based Services (プレビュー) のドキュメント"
 metadata:
-  document_id: null
-  title: Azure Location Based Services (プレビュー) のドキュメント | Microsoft Docs
+  document_id: 
+  title: "Azure Location Based Services (プレビュー) のドキュメント | Microsoft Docs"
   meta.description: Use Azure Location Based Services (preview) to provide geospatial services to your web or mobile application.
   services: location-based-services
   author: philmea
@@ -14,27 +14,42 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/22/2017
   ms.author: philmea
+  ms.openlocfilehash: d3a547418d9b5c412584aaa2f27a40024130335b
+  ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/19/2017
 abstract:
-  description: Azure Location Based Services (プレビュー) では、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 このサービスは Azure One API に準拠した一連の REST API であり、開発を簡単かつ容易にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。
+  description: "Azure Location Based Services (プレビュー) では、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 このサービスは Azure One API に準拠した一連の REST API であり、開発を簡単かつ容易にし、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。"
 sections:
-  - title: 5 分間のクイックスタート
+- title: "5 分間のクイックスタート"
+  items:
+  - type: paragraph
+    text: "Azure Location Based Services (プレビュー) を使用して地図検索アプリを起動します。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: Azure Location Based Services (プレビュー) を使用して地図検索アプリを起動します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/sql-database/media/index/portal.svg
-            text: デモ用の地図アプリの起動
-            href: /azure/location-based-services/quick-demo-map-app
-  - title: ステップバイステップのチュートリアル
+    - image:
+        src: /azure/sql-database/media/index/portal.svg
+      text: "デモ用の地図アプリの起動"
+      href: /azure/location-based-services/quick-demo-map-app
+- title: "ステップバイステップのチュートリアル"
+  items:
+  - type: paragraph
+    text: "Azure Location Based Services (プレビュー) を使用して観光名所の検索や場所へのルート設定を行う地理空間の Web アプリケーションを作成します。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: Azure Location Based Services (プレビュー) を使用して観光名所の検索や場所へのルート設定を行う地理空間の Web アプリケーションを作成します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/location-based-services/tutorial-search-location">観光名所の検索</a>
-          - html: <a href="/azure/location-based-services/tutorial-route-location">観光名所までのルート設定</a>
-          - html: <a href="/azure/location-based-services/tutorial-prioritized-routes">移動モード別のルート</a>
+    - html: "<a href=\"/azure/location-based-services/tutorial-search-location\">観光名所の検索</a>"
+    - html: "<a href=\"/azure/location-based-services/tutorial-route-location\">観光名所までのルート設定</a>"
+    - html: "<a href=\"/azure/location-based-services/tutorial-prioritized-routes\">移動モード別のルート</a>"
+- title: "リファレンス"
+  items:
+  - type: list
+    style: cards
+    className: cardsW
+    items:
+    - title: "言語"
+      html: "<p><a href=\"https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/\">マップ コントロール API - Javascript</a></p>"
+    - title: REST ()
+      html: <p><a href="https://docs.microsoft.com/en-us/rest/api/location-based-services/">Functional API - REST</a></p><p><a href="https://docs.microsoft.com/en-us/rest/api/location-based-services-management/">Management API - REST</a></p>

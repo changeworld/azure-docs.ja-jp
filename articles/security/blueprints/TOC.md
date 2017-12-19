@@ -54,6 +54,8 @@
 #### [コンプライアンス - UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
 ##### [概要](uk-official-three-tier-applications-overview.md)
 ##### [原則の概要](uk-official-three-tier-applications-principles-overview.md)
+#### [コンプライアンス - Financial Services](financial-services-regulated-workloads.md)
+##### [規制対象ワークロードに対応した Financial Services](financial-services-regulated-workloads.md)
 
 # 作業の開始
 ## [Azure のセキュリティの概要](../azure-security-getting-started.md)
