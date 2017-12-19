@@ -61,6 +61,9 @@
 
 ## [ラボのスケーリング](devtest-lab-scale-lab.md)
 
+## CI/CD との統合
+### [ラボを VSTS CI/CD パイプラインに統合する](devtest-lab-integrate-ci-cd-vsts.md)
+
 # リファレンス
 ## [CLI 2.0](/cli/azure/lab)
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)

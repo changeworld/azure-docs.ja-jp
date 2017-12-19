@@ -32,6 +32,12 @@
       href: how-to-deploy-monitor.md
     - name: IoT Core デバイスのプロビジョニング
       href: how-to-install-iot-core.md
+    - name: VS Code を使用した IoT Edge ソリューションの開発
+      items:
+        - name: 'C# モジュールの開発とデプロイ'
+          href: how-to-vscode-develop-csharp-module.md
+        - name: 'C# モジュールのデバッグ'
+          href: how-to-vscode-debug-csharp-module.md
     - name: トラブルシューティング
       href: troubleshoot.md
 - name: 概念

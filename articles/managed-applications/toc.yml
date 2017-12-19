@@ -6,11 +6,11 @@
       href: overview.md
 - name: クイック スタート
   items:
-    - name: Azure CLI を使用してマネージ アプリケーションを作成する
+    - name: マネージ アプリケーションを作成する
       href: managed-apps-quickstart-cli.md
 - name: Tutorials (チュートリアル)
   items:
-    - name: サービス カタログ アプリケーションの作成
+    - name: マネージ アプリケーション ファイルを作成する
       href: publish-service-catalog-app.md
 - name: サンプル
   items:
@@ -26,7 +26,7 @@
       href: create-uidefinition-overview.md
     - name: マネージ リソースの更新
       href: update-managed-resources.md
-    - name: サービス カタログ アプリの発行 - ポータル
+    - name: ポータルを使用して発行する
       href: publish-portal.md
 - name: リファレンス
   items:
