@@ -24,6 +24,8 @@
   items:
     - name: 計画と設計
       items:
+        - name: ストレージ アカウントのオプション
+          href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Files のデプロイの計画
           href: storage-files-planning.md
         - name: Azure Files のデプロイ方法

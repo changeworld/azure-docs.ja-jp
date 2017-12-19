@@ -59,8 +59,6 @@
           items:
             - name: Azure Portal での Azure Backup Server ワークロードの準備
               href: backup-azure-microsoft-azure-backup.md
-            - name: クラシック ポータルでの Azure Backup Server ワークロードの準備
-              href: backup-azure-microsoft-azure-backup-classic.md
             - name: Azure Backup Server へのストレージの追加
               href: backup-mabs-add-storage.md
             - name: Azure Backup Server の v.2 へのアップグレード
@@ -89,8 +87,6 @@
               href: backup-azure-arm-vms-prepare.md
             - name: Linux VM のアプリケーション整合性バックアップ
               href: backup-azure-linux-app-consistent.md
-            - name: Azure 仮想マシンの準備
-              href: backup-azure-vms-prepare.md
         - name: 環境を計画する
           items:
             - name: VM のバックアップ インフラストラクチャの計画
@@ -101,16 +97,12 @@
               href: backup-azure-arm-vms.md
             - name: 暗号化された仮想マシンのバックアップ
               href: backup-azure-vms-encryption.md
-            - name: Azure 仮想マシンのバックアップ
-              href: backup-azure-vms.md
         - name: VM の管理と監視
           items:
             - name: Azure Portal での Azure VM のバックアップの管理
               href: backup-azure-manage-vms.md
             - name: Azure Portal での Azure VM のバックアップに関するアラートの監視
               href: backup-azure-monitor-vms.md
-            - name: クラシック ポータルでの Azure VM のバックアップの管理と監視
-              href: backup-azure-manage-vms-classic.md
         - name: VM からのデータの復元
           items:
             - name: Azure VM のバックアップからのファイルの回復
@@ -119,8 +111,6 @@
               href: backup-azure-arm-restore-vms.md
             - name: 暗号化された仮想マシンの復元
               href: backup-azure-vms-encryption.md
-            - name: Azure での仮想マシンの復元
-              href: backup-azure-restore-vms.md
             - name: 暗号化された VM の Key Vault のキーとシークレットの復元
               href: backup-azure-restore-key-secret.md
     - name: Azure Backup のレポートを構成する
@@ -135,8 +125,6 @@
       items:
         - name: Azure Portal での DPM ワークロードの準備
           href: backup-azure-dpm-introduction.md
-        - name: クラシック ポータルでの DPM ワークロードの準備
-          href: backup-azure-dpm-introduction-classic.md
         - name: System Center DPM を使った Exchange サーバーのバックアップ
           href: backup-azure-backup-exchange-server.md
         - name: 別の DPM サーバーへのデータ復旧
@@ -149,16 +137,10 @@
       items:
         - name: Azure Portal での Azure VM
           href: backup-azure-vms-automation.md
-        - name: クラシック ポータルでの Azure VM
-          href: backup-azure-vms-classic-automation.md
         - name: Azure Portal での DPM
           href: backup-dpm-automation.md
-        - name: クラシック ポータルでの DPM
-          href: backup-dpm-automation-classic.md
         - name: Azure Portal での Windows Server
           href: backup-client-automation.md
-        - name: クラシック ポータルでの Windows Server
-          href: backup-client-automation-classic.md
     - name: Azure SQL Database
       items:
         - name: 長期のバックアップ リテンション期間の構成
@@ -181,14 +163,6 @@
           href: backup-azure-restore-system-state.md
         - name: Recovery Services コンテナーの監視と管理
           href: backup-azure-manage-windows-server.md
-        - name: クラシック ポータルを使用したバックアップと復元
-          items:
-            - name: クラシック デプロイメント モデルを使用した Windows Server
-              href: backup-configure-vault-classic.md
-            - name: クラシック デプロイメント モデルを使用した Backup コンテナーの管理
-              href: backup-azure-manage-windows-server-classic.md
-            - name: クラシック デプロイメント モデルを使用した Windows Server へのファイルの回復
-              href: backup-azure-restore-windows-server-classic.md
     - name: Recovery Services コンテナー
       items:
         - name: Recovery Services コンテナーの概要
@@ -201,8 +175,6 @@
       items:
         - name: Azure Portal での Azure VM のバックアップに関する問題
           href: backup-azure-vms-troubleshoot.md
-        - name: クラシック ポータルでの Azure VM のバックアップに関する問題
-          href: backup-azure-vms-troubleshoot-classic.md
         - name: 'Azure VM のバックアップの失敗: スナップショットの状態について VM エージェントと通信できませんでした - スナップショット VM サブタスクがタイムアウトしました'
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Azure Backup でファイルとフォルダーのバックアップが遅い
