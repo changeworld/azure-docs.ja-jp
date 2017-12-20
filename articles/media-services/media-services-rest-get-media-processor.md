@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 4ad90ad979c5bd74fc55155098c88d5c13cb12e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e673a92a9740b96eac20cdf5673395bacca8b77
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
 > [!div class="op_single_selector"]
@@ -27,8 +27,8 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="overview"></a>Overview
-メディア プロセッサは、Media Services のコンポーネントとして、メディア コンテンツのエンコード、形式変換、暗号化、復号化など、特定の処理タスクを担います。 通常、メディア コンテンツのエンコード、暗号化、形式変換を行うタスクの作成時にメディア プロセッサを作成します。
+## <a name="overview"></a>概要
+メディア プロセッサは、メディア コンテンツのエンコード、形式変換、暗号化、または復号化などの特定のビデオまたはオーディオ処理タスクを扱うコンポーネントです。 Media Services に送信されるすべてのタスクは、メディア プロセッサでビデオまたはオーディオ コンテンツのエンコード、暗号化、または変換を行う必要があります。 
 
 ## <a name="azure-media-processors"></a>Azure メディア プロセッサ 
 
@@ -44,8 +44,6 @@ ms.lasthandoff: 10/11/2017
 
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
->[!NOTE]
->に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
 ## <a name="get-a-media-processor"></a>メディア プロセッサを取得する
 
@@ -60,7 +58,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 応答:
@@ -89,5 +87,5 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
-これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、[資産のエンコード方法](media-services-rest-get-started.md)に関するトピックに進んでください。このトピックでは、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
+これで、メディア プロセッサ インスタンスを取得する方法がわかりました。次は、[資産のエンコード方法](media-services-rest-get-started.md)に関する記事に進んでください。この記事では、Media Encoder Standard を使用して資産をエンコードする方法を説明します。
 

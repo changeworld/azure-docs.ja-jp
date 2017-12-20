@@ -1,26 +1,25 @@
 ---
-title: "Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Docs"
-description: "Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Blob Storage の使用を開始する方法について説明します。"
+title: "Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET Core) | Microsoft Docs"
+description: "Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET Core プロジェクトで Azure Blob Storage の使用を開始する方法について説明します"
 services: storage
 documentationcenter: 
-author: kraigb
-manager: ghogen
+author: camsoper
+manager: wpickett
 editor: 
-ms.assetid: b3497055-bef8-4c95-8567-181556b50d95
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: kraig
-ms.openlocfilehash: f0d0815e71149749cb52efe21e1f0af3cabae21c
+ms.author: casoper
+ms.openlocfilehash: 889afa471eeb556662cddf8eb383a905f08b1f01
 ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/11/2017
 ---
-# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet"></a>Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Azure Blob ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET Core)
 
 > [!div class="op_single_selector"]
 > - [ASP.NET](./vs-storage-aspnet-getting-started-blobs.md)
@@ -28,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 Azure Blob Storage は、非構造化データをクラウド内にオブジェクト/BLOB として格納するサービスです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
-このチュートリアルでは、Azure Blob Storage を使用していくつかの一般的なシナリオの ASP.NET コードを記述する方法を示します。 シナリオには、BLOB コンテナーの作成や、BLOB のアップロード、一覧表示、ダウンロード、および削除が含まれます。
+このチュートリアルでは、Azure Blob Storage を使用していくつかの一般的なシナリオの ASP.NET Core コードを記述する方法を示します。 シナリオには、BLOB コンテナーの作成や、BLOB のアップロード、一覧表示、ダウンロード、および削除が含まれます。
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
@@ -38,27 +37,63 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
+## <a name="set-up-the-development-environment"></a>開発環境を設定する
 
-[!INCLUDE [storage-development-environment-include](../../includes/vs-storage-aspnet-getting-started-setup-dev-env.md)]
+このセクションでは、ASP.NET MVC アプリの作成、接続済みサービスの接続の追加、コントローラーの追加、必要な名前空間ディレクティブの指定など、開発環境の設定方法について説明します。
+
+### <a name="create-an-aspnet-mvc-app-project"></a>ASP.NET MVC アプリ プロジェクトを作成する
+
+1. Visual Studio を開きます。
+
+1. メイン メニューで、**[ファイル]、[新規作成]、[プロジェクト]** の順に選択します。
+
+1. **[新しいプロジェクト]** ダイアログ ボックスで、次の図で強調表示されているようにオプションを指定します。
+
+    ![ASP.NET Core プロジェクトの作成](./media/vs-storage-aspnet-core-getting-started-blobs/new-project.png)
+
+1. **[OK]**を選択します。
+
+1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、次の図で強調表示されているようにオプションを指定します。
+
+    ![MVC の指定](./media/vs-storage-aspnet-core-getting-started-blobs/new-mvc.png)
+
+1. **[OK]**を選択します。
+
+### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>接続済みサービスを使用して Azure ストレージ アカウントに接続する
+
+1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、コンテキスト メニューで **[追加]、[接続済みサービス]** の順に選択します。
+
+1. **[接続済みサービスの追加]** ダイアログで **[Azure Storage を使用したクラウド ストレージ]** を選択し、**[構成]** を選択します。
+
+    ![[接続済みサービス] ダイアログ](./media/vs-storage-aspnet-core-getting-started-blobs/connected-services.png)
+
+1. **[Azure Storage]** ダイアログで、このチュートリアルで使用する Azure Storage アカウントを選択します。  新しい Azure Storage アカウントを作成するには、**[新しいストレージ アカウントの作成]** をクリックし、フォームに入力します。  既存のストレージ アカウントを選択するか新しいストレージを作成したら、**[追加]** をクリックします。  Visual Studio によって Azure Storage 用の NuGet パッケージと **appsettings.json** へのストレージ接続文字列がインストールされます。
+
+> [!TIP]
+> [Azure ポータル](https://portal.azure.com)でのストレージ アカウントの作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+>
+> Azure ストレージ アカウントは、[Azure PowerShell](../storage/common/storage-powershell-guide-full.md)、[Azure CLI](../storage/common/storage-azure-cli.md)、または [Azure Cloud Shell](../cloud-shell/overview.md) を使用して作成することもできます。
+
 
 ### <a name="create-an-mvc-controller"></a>MVC コントローラーを作成する 
 
 1. **ソリューション エクスプローラー**で**コントローラー**を右クリックし、コンテキスト メニューで **[追加]、[コントローラー]** の順に選択します。
 
-    ![ASP.NET MVC アプリケーションへのコントローラーの追加](./media/vs-storage-aspnet-getting-started-blobs/add-controller-menu.png)
+    ![ASP.NET Core MVC アプリケーションへのコントローラーの追加](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-menu.png)
 
-1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC 5 コントローラー - 空]** を選択し、**[追加]** を選択します。
+1. **[スキャフォールディングの追加]** ダイアログ ボックスで **[MVC コントローラー - 空]** を選択し、**[追加]** を選択します。
 
-    ![MVC コントローラーの種類を指定する](./media/vs-storage-aspnet-getting-started-blobs/add-controller.png)
+    ![MVC コントローラーの種類を指定する](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller.png)
 
 1. **[コントローラーの追加]** ダイアログで、コントローラーに *BlobsController* という名前を付けて、**[追加]** を選択します。
 
-    ![MVC コントローラー指定](./media/vs-storage-aspnet-getting-started-blobs/add-controller-name.png)
+    ![MVC コントローラー指定](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-name.png)
 
 1. 次の *using* ディレクティブを `BlobsController.cs` ファイルに追加します。
 
     ```csharp
-    using Microsoft.Azure;
+    using System.IO;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
@@ -67,7 +102,7 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 
 BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階層です。  このドキュメントの残りの手順では、コードを再利用できるように独自のメソッドに配置する必要があるため、BLOB コンテナーへの参照が必要です。
 
-次の手順で、**Web.config** 内の接続文字列を使用してストレージ アカウントに接続するメソッドを作成し、コンテナーへの参照を作成します。  **Web.config** に設定する接続文字列は、`<storageaccountname>_AzureStorageConnectionString` の形式で名前が付けられます。 
+次の手順で、**appsettings.json** 内の接続文字列を使用してストレージ アカウントに接続するメソッドを作成し、コンテナーへの参照を作成します。  **appsettings.json** に設定する接続文字列は、`<storageaccountname>_AzureStorageConnectionString` の形式で名前が付けられます。 
 
 1. `BlobsController.cs` ファイルを開きます。
 
@@ -76,8 +111,12 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     ```csharp
     private CloudBlobContainer GetCloudBlobContainer()
     {
-        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-                CloudConfigurationManager.GetSetting("<storageaccountname>_AzureStorageConnectionString"));
+        var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json");
+        IConfigurationRoot Configuration = builder.Build();
+        CloudStorageAccount storageAccount = 
+            CloudStorageAccount.Parse(Configuration["ConnectionStrings:aspnettutorial_AzureStorageConnectionString"]);
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
         CloudBlobContainer container = blobClient.GetContainerReference("test-blob-container");
         return container;
@@ -111,7 +150,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 1. `CloudBlobContainer.CreateIfNotExists` メソッドを呼び出して、まだ存在しない場合はコンテナーを作成します。 `CloudBlobContainer.CreateIfNotExists` メソッドでは、コンテナーが存在せず、正常に作成された場合は **true** が返されます。 それ以外の場合は、**false** が返されます。    
 
     ```csharp
-    ViewBag.Success = container.CreateIfNotExists();
+    ViewBag.Success = container.CreateIfNotExistsAsync().Result;
     ```
 
 1. `ViewBag` を BLOB コンテナーの名前に変更します。
@@ -126,7 +165,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     public ActionResult CreateBlobContainer()
     {
         CloudBlobContainer container = GetCloudBlobContainer();
-        ViewBag.Success = container.CreateIfNotExists();
+        ViewBag.Success = container.CreateIfNotExistsAsync().Result;
         ViewBag.BlobContainerName = container.Name;
 
         return View();
@@ -134,7 +173,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     ```
 
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを右クリックし、コンテキスト メニューで **[追加]、[新しいフォルダー]** の順に選択します。 新しいフォルダーに *Blobs* という名前を付けます。 
- 
+
 1. **ソリューション エクスプローラー**で **[ビュー]** フォルダーを展開し、**[BLOB]** を右クリックし、コンテキスト メニューで **[追加]、[ビュー]** の順に選択します。
 
 1. **[ビューの追加]**  ダイアログで、ビューの名前として **CreateBlobContainer** と入力し、**[追加]** を選択します。
@@ -147,21 +186,21 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     }
     
     <h2>Create Blob Container results</h2>
-
+    
     Creation of @ViewBag.BlobContainerName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
 1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
-1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+1. `<ul class="nav navbar-nav">` のような順序なしリストを探します。  リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
     ```html
-    <li>@Html.ActionLink("Create blob container", "CreateBlobContainer", "Blobs")</li>
+    <li><a asp-area="" asp-controller="Blobs" asp-action="CreateBlobContainer">Create blob container</a></li>
     ```
 
 1. アプリケーションを実行して **[BLOB コンテナーの作成]** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
-    ![BLOB コンテナーを作成する](./media/vs-storage-aspnet-getting-started-blobs/create-blob-container-results.png)
+    ![BLOB コンテナーを作成する](./media/vs-storage-aspnet-core-getting-started-blobs/create-blob-container-results.png)
 
     前述したように、`CloudBlobContainer.CreateIfNotExists` メソッドは、コンテナーが存在しないために作成された場合にのみ **true** を返します。 そのため、コンテナーが存在するときにアプリを実行した場合、メソッドは **false** を返します。
 
@@ -202,7 +241,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     ```csharp
     using (var fileStream = System.IO.File.OpenRead(@"<file-to-upload>"))
     {
-        blob.UploadFromStream(fileStream);
+        blob.UploadFromStreamAsync(fileStream).Wait();
     }
     ```
     
@@ -215,7 +254,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
         CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
         using (var fileStream = System.IO.File.OpenRead(@"c:\src\sample.txt"))
         {
-            blob.UploadFromStream(fileStream);
+            blob.UploadFromStreamAsync(fileStream).Wait();
         }
         return "success!";
     }
@@ -223,15 +262,15 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
-1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+1. リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
     ```html
-    <li>@Html.ActionLink("Upload blob", "UploadBlob", "Blobs")</li>
+    <li><a asp-area="" asp-controller="Blobs" asp-action="UploadBlob">Upload blob</a></li>
     ```
 
 1. アプリケーションを実行し、**[BLOB のアップロード]** を選択します。  "success!" という単語が 表示されます。
     
-    ![成功の検証](./media/vs-storage-aspnet-getting-started-blobs/upload-blob.png)
+    ![成功の検証](./media/vs-storage-aspnet-core-getting-started-blobs/upload-blob.png)
   
 「[BLOB コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-blob-container)」セクションで、BLOB コンテナー内の BLOB を一覧表示する方法について説明します。    
 
@@ -257,12 +296,12 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     CloudBlobContainer container = GetCloudBlobContainer();
     ```
    
-1. コンテナー内の BLOB を一覧表示するには、`CloudBlobContainer.ListBlobs` メソッドを使用します。 `CloudBlobContainer.ListBlobs` メソッドは、`CloudBlockBlob`、`CloudPageBlob`、または `CloudBlobDirectory` オブジェクトにキャストできる `IListBlobItem` オブジェクトを返します。 次のコード スニペットでは、BLOB コンテナー内のすべての BLOB を列挙します。 各 BLOB がその型に基づいて適切なオブジェクトにキャストされ、その名前 (または、**CloudBlobDirectory** の場合は URI) が一覧に追加されます。
+1. コンテナー内の BLOB を一覧表示するには、`CloudBlobContainer.ListBlobsSegmentedAsync` メソッドを使用します。 `CloudBlobContainer.ListBlobsSegmentedAsync` メソッドは、`CloudBlockBlob`、`CloudPageBlob` または `CloudBlobDirectory` オブジェクトにキャストできる `IListBlobItem` オブジェクトを含む `BlobResultSegment` を返します。 次のコード スニペットでは、BLOB コンテナー内のすべての BLOB を列挙します。 各 BLOB がその型に基づいて適切なオブジェクトにキャストされ、その名前 (または、`CloudBlobDirectory` の場合は URI) が一覧に追加されます。
 
     ```csharp
     List<string> blobs = new List<string>();
-
-    foreach (IListBlobItem item in container.ListBlobs())
+    BlobResultSegment resultSegment = container.ListBlobsSegmentedAsync(null).Result;
+    foreach (IListBlobItem item in resultSegment.Results)
     {
         if (item.GetType() == typeof(CloudBlockBlob))
         {
@@ -283,41 +322,15 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
     return View(blobs);
     ```
-
-    BLOB コンテナーには BLOB だけでなく、ディレクトリを含めることもできます。 次のような階層の *test-blob-container* いう BLOB コンテナーがあるとします。
-
-        foo.png
-        dir1/bar.png
-        dir2/baz.png
-
-    前のコード例を使用すると、**BLOB** 文字列リストには、次のような値が含まれます。
-
-        foo.png
-        <storage-account-url>/test-blob-container/dir1
-        <storage-account-url>/test-blob-container/dir2
-
-    ご覧のように、リストには最上位のエンティティのみが含まれ、入れ子になったエンティティ (*bar.png* や *baz.png*) は含まれていません。 BLOB コンテナー内のすべてのエンティティを一覧表示するには、**CloudBlobContainer.ListBlobs** メソッドが **useFlatBlobListing** パラメーターに **true** を渡すようにコードを変更します。    
-
-    ```csharp
-    //...
-    foreach (IListBlobItem item in container.ListBlobs(useFlatBlobListing:true))
-    //...
-    ```
-
-    **useFlatBlobListing** パラメーターを **true** に設定すると、BLOB コンテナー内のすべてのエンティティのフラットな一覧が返され、次の結果が返されます。
-
-        foo.png
-        dir1/bar.png
-        dir2/baz.png
-    
-    完成した **ListBlobs** メソッドを次に示します。
+    完成した `ListBlobs` メソッドを次に示します。
 
     ```csharp
     public ActionResult ListBlobs()
     {
         CloudBlobContainer container = GetCloudBlobContainer();
         List<string> blobs = new List<string>();
-        foreach (IListBlobItem item in container.ListBlobs(useFlatBlobListing: true))
+        BlobResultSegment resultSegment = container.ListBlobsSegmentedAsync(null).Result;
+        foreach (IListBlobItem item in resultSegment.Results)
         {
             if (item.GetType() == typeof(CloudBlockBlob))
             {
@@ -357,22 +370,22 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     <ul>
         @foreach (var item in Model)
         {
-        <li>@item</li>
+            <li>@item</li>
         }
     </ul>
     ```
 
 1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
-1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+1. リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
     ```html
-    <li>@Html.ActionLink("List blobs", "ListBlobs", "Blobs")</li>
+    <li><a asp-area="" asp-controller="Blobs" asp-action="ListBlobs">List blobs</a></li>
     ```
 
 1. アプリケーションを実行して **[List blobs (BLOB の一覧表示)]** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
-    ![BLOB の一覧](./media/vs-storage-aspnet-getting-started-blobs/listblobs.png)
+    ![BLOB の一覧](./media/vs-storage-aspnet-core-getting-started-blobs/listblobs.png)
 
 ## <a name="download-blobs"></a>BLOB をダウンロードする
 
@@ -408,7 +421,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     ```csharp
     using (var fileStream = System.IO.File.OpenWrite(<local-file-name>))
     {
-        blob.DownloadToStream(fileStream);
+        blob.DownloadToStreamAsync(fileStream).Wait();
     }
     ```
     
@@ -421,7 +434,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
         CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
         using (var fileStream = System.IO.File.OpenWrite(@"c:\src\downloadedBlob.txt"))
         {
-            blob.DownloadToStream(fileStream);
+            blob.DownloadToStreamAsync(fileStream).Wait();
         }
         return "success!";
     }
@@ -429,10 +442,10 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 
 1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
-1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+1. リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
     ```html
-    <li>@Html.ActionLink("Download blob", "DownloadBlob", "Blobs")</li>
+    <li><a asp-area="" asp-controller="Blobs" asp-action="DownloadBlob">Download blob</a></li>
     ```
 
 1. アプリケーションを実行し、**[BLOB のダウンロード]** を選択して、BLOB をダウンロードします。 `CloudBlobContainer.GetBlockBlobReference` メソッドの呼び出しで指定された BLOB が `File.OpenWrite` メソッドの呼び出しで指定された場所にダウンロードされます。  "success!" というテキストが ブラウザーに表示されます。 
@@ -469,7 +482,7 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
 1. BLOB を削除するには、`Delete` メソッドを使用します。
 
     ```csharp
-    blob.Delete();
+    blob.DeleteAsync().Wait();
     ```
     
     完成した `DeleteBlob` メソッドは次のようになります。
@@ -479,24 +492,24 @@ BLOB コンテナーとは、BLOB とフォルダーの入れ子になった階�
     {
         CloudBlobContainer container = GetCloudBlobContainer();
         CloudBlockBlob blob = container.GetBlockBlobReference("myBlob");
-        blob.Delete();
+        blob.DeleteAsync().Wait();
         return "success!";
     }
     ```
 
 1. **ソリューション エクスプローラー**で、**[ビュー]、[共有]** フォルダーを順に展開し、`_Layout.cshtml` を開きます。
 
-1. 最後の **Html.ActionLink** の後に、次の **Html.ActionLink** を追加します。
+1. リストの最後の `<li>` 要素の後ろに、次の HTML を追加して別のナビゲーション メニュー項目を追加します。
 
     ```html
-    <li>@Html.ActionLink("Delete blob", "DeleteBlob", "Blobs")</li>
+    <li><a asp-area="" asp-controller="Blobs" asp-action="DeleteBlob">Delete blob</a></li>
     ```
 
 1. アプリケーションを実行し、**[BLOB の削除]** を選択して、`CloudBlobContainer.GetBlockBlobReference` メソッドの呼び出しで指定された BLOB を削除します。  "success!" というテキストが ブラウザーに表示されます。  ブラウザーの **[戻る]** ボタンをクリックし、**[BLOB の一覧表示]** を選択して、削除した BLOB がコンテナーに存在しないことを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、ASP.NET を使用して、Azure Storage に対して BLOB を格納、一覧表示、および取得する方法について学習しました。  Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
+このチュートリアルでは、ASP.NET Core を使用して、Azure Storage に対して BLOB を格納、一覧表示、および取得する方法について学習しました。  Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 
   * [テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)](vs-storage-aspnet-getting-started-tables.md)
   * [Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)](vs-storage-aspnet-getting-started-queues.md)
