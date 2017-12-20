@@ -32,6 +32,7 @@
 ### [ライセンスされたイメージの有効化](devtest-lab-enable-licensed-images.md)
 ### [ラボへのタグの追加](devtest-lab-add-tag.md)
 ### [ラボでのお知らせの投稿](devtest-lab-announcements.md)
+### [ラボへのサポート情報の追加](devtest-lab-internal-support-message.md)
 
 ## [カスタム イメージまたは式の選択](devtest-lab-comparing-vm-base-image-types.md)
 
