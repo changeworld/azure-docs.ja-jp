@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
 ms.openlocfilehash: 0b0d474752615e60747ffe7681c2d04cd2685bba
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-with-azure-dns-using-powershell"></a>PowerShell で Azure DNS の使用を開始する
 

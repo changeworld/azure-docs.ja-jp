@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 5a056bf1ef6b13a2989922e135b99d31d84637c7
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device"></a>オンプレミスの StorSimple デバイスのデプロイ
 > [!NOTE]
