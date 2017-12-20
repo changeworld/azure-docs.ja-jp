@@ -277,7 +277,7 @@ Azure AD サービス プリンシパルで以下をサポートするように�
 5. **[資格情報]** ウィンドウで、Azure AD サービスの管理者アカウントとパスワードを入力します。 **[OK]**をクリックします。
 6. [先ほど作った証明書](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 7. このスクリプトにより、テナント Azure AD で新しいアプリケーションが作成されます。 PowerShell の出力で返されるアプリケーション ID を書き留めておきます。 インストール時にこの情報が必要になります。
-8. 新しいブラウザー ウィンドウを開き、**Azure Active Directory サービス管理者**として Azure Portal (portal.azure.com) にサインインします。
+8. 新しいブラウザー ウィンドウを開き、**Azure Active Directory サービス管理者**として [Azure Portal] (https://portal.azure.com) にサインインします。
 9. Azure AD リソース プロバイダーを開きます。
 10. **[アプリの登録]** をクリックします。
 11. 手順 7 で返された**アプリケーション ID** を検索します。 一覧に App Service アプリケーションが表示されます。

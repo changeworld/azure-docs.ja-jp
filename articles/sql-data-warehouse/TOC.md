@@ -32,7 +32,7 @@
 
 ## データの読み込みと移動
 ### [概要](design-elt-data-loading.md)
-### [ガイダンス](guidance-for-loading-data.md)
+### [ベスト プラクティス](guidance-for-loading-data.md)
 
 
 ## 統合

@@ -68,7 +68,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 3. 顧客の **[名前]** を入力します (例: App Service on Azure Stack)。
 4. アプリケーションの **[説明]** を入力します。
 5. **[Callback URL (コールバック URL)]** を入力します。  Azure Stack の既定のデプロイでは、コールバック URL は https://portal.local.azurestack.external/TokenAuthorize です。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。  BitBucket の統合を成功させるには、URL の大文字と小文字をここに記載されているとおりにする必要があります。
-6. **[URL]** を入力します。この URL は、Azure Stack ポータルの URL にする必要があります (例: https://portal.local.azurestack.external)。
+6. **[URL]** を入力します。この URL は、Azure Stack ポータルの URL にする必要があります (例: https://portal.local.azurestack.external )。
 7. 必要な **[Permissions]\(権限\)** を次のように選択します。
     - **[Repositories]\(リポジトリ\)**: *[Read]\(読み取り\)*
     - **[Webhooks]**: *[Read and write]\(読み取りと書き込み\)*
