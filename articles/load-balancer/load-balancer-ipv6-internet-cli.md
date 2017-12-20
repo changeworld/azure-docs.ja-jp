@@ -1,6 +1,6 @@
 ---
-title: "IPv6 でインターネットに接続するロード バランサーの作成 - Azure CLI | Microsoft Docs"
-description: "Azure Resource Manager で Azure CLI を使用して、IPv6 でインターネットに接続するロード バランサーを作成する方法について説明します。"
+title: "IPv6 でのパブリック ロード バランサーの作成 - Azure CLI | Microsoft Docs"
+description: "Azure Resource Manager で Azure CLI を使用して、IPv6 でパブリック ロード バランサーを作成する方法について説明します。"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3ae62ddd350204d801012b9810aec669abe55817
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3abd47460999f7b059469a58a59a3e297e88effb
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
-# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-the-azure-cli"></a>Azure Resource Manager で Azure CLI を使用して、IPv6 でインターネットに接続するロード バランサーを作成する
+# <a name="create-a-public-load-balancer-with-ipv6-in-azure-resource-manager-by-using-azure-cli"></a>Azure Resource Manager で Azure CLI を使用して、IPv6 でパブリック ロード バランサーを作成する
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
+Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、ロード バランサーは、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
 ## <a name="example-deployment-scenario"></a>デプロイ シナリオの例
 
@@ -42,30 +42,31 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 * 2 つの仮想マシン (VM)
 * IPv4 と IPv6 の両方のアドレスが割り当てられている各 VM の仮想ネットワーク インターフェイス
-* IPv4 と IPv6 のパブリック IP アドレスでインターネットに接続するロード バランサー
+* IPv4 と IPv6 のパブリック IP アドレスを使用するパブリック ロード バランサー
 * 2 つの VM が含まれる可用性セット
 * パブリック VIP をプライベート エンドポイントにマップする 2 つの負荷分散規則
 
-## <a name="deploying-the-solution-using-the-azure-cli"></a>Azure CLI を使用したソリューションのデプロイ
+## <a name="deploy-the-solution-by-using-azure-cli"></a>Azure CLI を使用したソリューションのデプロイ
 
-次の手順では、CLI で Azure Resource Manager を使用して、インターネットに接続するロード バランサーを作成する方法を示します。 Azure Resource Manager では、それぞれのリソースは個別に作成され構成された後、リソースを作成するためにまとめられます。
+次の手順では、Azure CLI で Azure Resource Manager を使用して、パブリック ロード バランサーを作成する方法を示します。 Azure Resource Manager では、各オブジェクトは個別に作成され構成された後、リソースを作成するためにまとめられます。
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成します。
 
-* フロントエンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
-* バックエンド アドレス プール - ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
-* 負荷分散規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内のポートにマッピングする規則が含まれます。
-* 受信 NAT 規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングする規則が含まれます。
-* プローブ - バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
+* **フロントエンド IP 構成**: 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
+* **バックエンド アドレス プール**: ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
+* **負荷分散規則**: ロード バランサーのパブリック ポートをバック エンド アドレス プール内のポートにマッピングする規則が含まれます。
+* **受信 NAT 規則**: ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングするネットワーク アドレス変換 (NAT) 規則が含まれます。
+* **プローブ**: バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
 
 詳細については、「 [Azure Resource Manager によるロード バランサーのサポート](load-balancer-arm.md)」を参照してください。
 
-## <a name="set-up-your-cli-environment-to-use-azure-resource-manager"></a>Azure Resource Manager を使用するための CLI 環境の設定
+## <a name="set-up-your-azure-cli-environment-to-use-azure-resource-manager"></a>Azure Resource Manager を使用するための Azure CLI 環境の設定
 
-この例では、PowerShell コマンド ウィンドウで CLI ツールを実行しています。 Azure PowerShell コマンドレットは使用しませんが、PowerShell のスクリプト機能を使用して読みやすさを向上させ、再利用できるようにします。
+この例では、PowerShell コマンド ウィンドウで Azure CLI ツールを実行しています。 読みやすさを改善し、再利用できるようにするために、Azure PowerShell コマンドレットではなく、PowerShell のスクリプト機能を使用します。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
-2. **azure config mode** コマンドを実行して Resource Manager モードに切り替えます。
+1. Azure CLI を初めて使用する場合は、「[Azure CLI のインストール](../cli-install-nodejs.md)」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+
+2. Resource Manager モードに切り替えるには、**azure config mode** コマンドを実行します。
 
     ```azurecli
     azure config mode arm
@@ -81,15 +82,15 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
     azure login
     ```
 
-    メッセージが表示されたら、Azure の資格情報を入力します。
+4. プロンプトで Azure の資格情報を入力します。
 
     ```azurecli
     azure account list
     ```
 
-    使用するサブスクリプションを選択します。 次の手順のためにサブスクリプション ID をメモしておきます。
+5. 使用するサブスクリプションを選択し、次の手順で使用するサブスクリプション ID を書き留めます。
 
-4. CLI コマンドで使用するために PowerShell 変数を設定します。
+6. Azure CLI コマンドで使用するために PowerShell 変数を設定します。
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -107,25 +108,25 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 ## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>リソース グループ、ロード バランサー、仮想ネットワークおよびサブネットの作成
 
-1. リソース グループの作成
+1. リソース グループを作成します。
 
     ```azurecli
     azure group create $rgName $location
     ```
 
-2. ロード バランサーの作成
+2. ロード バランサーを作成します。
 
     ```azurecli
     $lb = azure network lb create --resource-group $rgname --location $location --name $lbName
     ```
 
-3. 仮想ネットワーク (VNet) を作成します。
+3. 仮想ネットワークを作成します。
 
     ```azurecli
     $vnet = azure network vnet create  --resource-group $rgname --name $vnetName --location $location --address-prefixes $vnetPrefix
     ```
 
-    この VNet に 2 つのサブネットを作成します。
+4. この仮想ネットワークでは、2 つのサブネットを作成します。
 
     ```azurecli
     $subnet1 = azure network vnet subnet create --resource-group $rgname --name $subnet1Name --address-prefix $subnet1Prefix --vnet-name $vnetName
@@ -149,12 +150,15 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
     ```
 
     > [!IMPORTANT]
-    > ロード バランサーはその FQDN としてパブリック IP のドメイン ラベルを使用します。 これはロード バランサー FQDN としてクラウド サービス名を使用する従来のデプロイメントからの変更点です。
+    > ロード バランサーはその完全修飾ドメイン名 (FQDN) としてパブリック IP のドメイン ラベルを使用します。 これはロード バランサー FQDN としてクラウド サービス名を使用する従来のデプロイメントからの変更点です。
+    >
     > この例では、FQDN は *contoso09152016.southcentralus.cloudapp.azure.com*です。
 
 ## <a name="create-front-end-and-back-end-pools"></a>フロントエンド プールとバックエンド プールの作成
 
-次の例では、ロード バランサーへの受信ネットワーク トラフィックを受信するフロントエンド IP プールと、負荷分散されたネットワーク トラフィックをフロントエンド プールが送信するバックエンド IP プールを作成します。
+このセクションでは、以下の IP プールを作成します。
+* ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
+* フロントエンド プールから負荷分散されたネットワーク トラフィックを送信する先のバックエンド IP プール。
 
 1. PowerShell 変数を設定します。
 
@@ -174,16 +178,16 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
     $backendAddressPoolV6 = azure network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-lb-rules"></a>プローブ、NAT 規則、および LB 規則の作成
+## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>プローブ、NAT 規則、およびロード バランサー規則の作成
 
 次の例では、以下の項目が作成されます:
 
-* TCP ポート 80 への接続を確認するプローブ規則
-* ポート 3389 のすべての受信トラフィックを RDP<sup>1</sup> のポート 3389 に転送する NAT 規則
-* ポート 3391 のすべての受信トラフィックを RDP<sup>1</sup> のポート 3389 に転送する NAT 規則
-* ポート 80 のすべての受信トラフィックをバックエンド プールのアドレスのポート 80 に分散するロード バランサー規則
+* TCP ポート 80 への接続を確認するプローブ規則。
+* ポート 3389 のすべての受信トラフィックを RDP のポート 3389 に転送する NAT 規則。\*
+* ポート 3391 のすべての受信トラフィックをリモート デスクトップ プロトコル (RDP) のポート 3389 に転送する NAT 規則。\*
+* ポート 80 のすべての受信トラフィックをバックエンド プールのアドレスのポート 80 に分散するロード バランサー規則。
 
-<sup>1</sup> NAT 規則は、ロード バランサーの背後にある特定の仮想マシン インスタンスに関連付られます。 ポート 3389 に到着したネットワーク トラフィックは、この NAT 規則に関連付けられている特定の仮想マシンとポートに送信されます。 NAT 規則のプロトコル (UDP または TCP) を指定する必要があります。 両方のプロトコルを、同じポートに割り当てることはできません。
+\* NAT 規則は、ロード バランサーの背後にある特定の仮想マシン インスタンスに関連付けられます。 ポート 3389 に到着したネットワーク トラフィックは、この NAT 規則に関連付けられている特定の仮想マシンとポートに送信されます。 NAT 規則のプロトコル (UDP または TCP) を指定する必要があります。 両方のプロトコルを同じポートに割り当てることはできません。
 
 1. PowerShell 変数を設定します。
 
@@ -195,9 +199,9 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. プローブを作成する
+2. プローブを作成します。
 
-    次の例では、15 秒ごとにバックエンド TCP ポート 80 への接続を確認する TCP プローブを作成します。 2 回連続して失敗すると、バックエンド リソースを利用不可とマークします。
+    次の例では、15 秒ごとにバックエンド TCP ポート 80 への接続を確認する TCP プローブを作成します。 2 回連続して失敗すると、バックエンド リソースは利用不可とマークされます。
 
     ```azurecli
     $probeV4V6 = azure network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --count 2 --lb-name $lbName
@@ -292,7 +296,7 @@ NIC を作成し、それらを NAT 規則、ロード バランサー規則、�
 
 ## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>バックエンドの VM のリソースの作成および各 NIC の関連付け
 
-VM を作成するには、ストレージ アカウントが必要です。 負荷分散には、VM を可用性セットのメンバーにする必要があります。 VM の作成の詳細については、「 [PowerShell を使用して Azure VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+VM を作成するには、ストレージ アカウントが必要です。 負荷分散には、VM を可用性セットのメンバーにする必要があります。 VM の作成の詳細については、[PowerShell で Azure VM を作成する方法](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)に関するページを参照してください。
 
 1. PowerShell 変数を設定します。
 
@@ -313,23 +317,23 @@ VM を作成するには、ストレージ アカウントが必要です。 負
     ```
 
     > [!WARNING]
-    > この例では、VM のユーザー名とパスワードをクリア テキストで使用します。 クリア テキストで資格情報取り扱う際には十分に注意する必要があります。 PowerShell で資格情報を処理するより安全な方法については、 [Get-credential](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを参照してください。
+    > この例では、VM のユーザー名とパスワードをクリア テキストで使用します。 クリア テキストでこれらの資格情報を使用するときは、適切な注意を払ってください。 PowerShell で資格情報を処理するより安全な方法については、[`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを参照してください。
 
-2. ストレージ アカウントと可用性セットの作成
+2. ストレージ アカウントと可用性セットを作成します。
 
-    VM を作成するときに、既存のストレージ アカウントを使用できます。 次のコマンドは、新しいストレージ アカウントを作成します。
+    VM を作成するときに、既存のストレージ アカウントを使用できます。 次のコマンドを使用して、新しいストレージ アカウントを作成します。
 
     ```azurecli
     $storageAcc = azure storage account create $storageAccountName --resource-group $rgName --location $location --sku-name "LRS" --kind "Storage"
     ```
 
-    次に、可用性セットを作成します。
+3. 可用性セットを作成します。
 
     ```azurecli
     $availabilitySet = azure availset create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-3. 関連付けられた NIC を使用した仮想マシンの作成
+4. 関連付けられた NIC を使用して仮想マシンを作成します。
 
     ```azurecli
     $vm1 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm1Name --nic-id $nic1Id --os-disk-vhd $osDisk1Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
@@ -339,8 +343,6 @@ VM を作成するには、ストレージ アカウントが必要です。 負
 
 ## <a name="next-steps"></a>次のステップ
 
-[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)
-
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
-
+[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)  
+[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)  
 [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

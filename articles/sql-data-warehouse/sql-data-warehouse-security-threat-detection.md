@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: f4a2376fe4fb710d031c35ca7fdbf4c7bb0f3caa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f5dab6936e8cac10ac7a4a7dc4c3be116de5ad5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-threat-detection"></a>脅威の検出の概要
 > [!div class="op_single_selector"]
@@ -55,14 +55,14 @@ ms.lasthandoff: 10/11/2017
    電子メールでは、異常なアクティビティの特徴、データベース名、サーバー名、イベントの時刻など、疑わしいセキュリティ イベントについての情報が提供されます。 さらに、データベースへの潜在的な脅威の考えられる原因および調査や緩和のための推奨されるアクションについての情報も提供されます。<br/>
    
     ![ナビゲーション ウィンドウ][4]
-2. 電子メールの **[Azure SQL 監査ログ]** リンクをクリックすると、Azure クラシック ポータルが起動し、疑わしいイベントの時刻前後の関連する監査レコードが表示されます。
+2. 電子メールの **[Azure SQL 監査ログ]** リンクをクリックすると、Azure ポータルが起動し、疑わしいイベントの時刻前後の関連する監査レコードが表示されます。
    
-    ![Navigation pane][5]
+    ![ナビゲーション ウィンドウ][5]
 3. 監査レコードをクリックすると、SQL ステートメント、エラーの理由、クライアントの IP など、疑わしいデータベース アクティビティについての詳細が表示されます。
    
     ![ナビゲーション ウィンドウ][6]
 4. [監査レコード] ブレードの **[Excel で開く]** をクリックすると、あらかじめ構成されている Excel テンプレートが開き、疑わしいイベントの時刻前後の監査ログがインポートされて詳細な分析が実行されます。<br/>
-   **注:** Excel 2010 以降では、Power Query と**高速結合**の設定が必要です
+   **注:** Excel 2010 以降では、Power Query と**高速結合**の設定が必要です。
    
     ![ナビゲーション ウィンドウ][7]
 5. **[高速結合]** の設定を構成するには、**[POWER QUERY]** リボン タブの **[オプション]** を選択して [オプション] ダイアログ ボックスを表示します。 [プライバシー] セクションを選択し、2 番目のオプション [プライバシー レベルを無視し、可能であればパフォーマンスを向上させる] をオンにします。

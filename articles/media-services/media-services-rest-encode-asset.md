@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 1622149009a37b864e84caa158da960ccc03ca65
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: a58cf1402d31538cb4d9753a66846f683839810c
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 > [!div class="op_single_selector"]
@@ -52,16 +52,11 @@ Media Services でエンティティにアクセスするときは、HTTP 要求
 
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
->[!NOTE]
->に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
-
 ## <a name="create-a-job-with-a-single-encoding-task"></a>1 つのエンコード タスクを持つジョブの作成
 > [!NOTE]
 > Media Services REST API を使用する場合は、次のことに考慮します。
 >
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
->
-> に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
 >
 > JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
 >
@@ -76,7 +71,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer <token value>
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
     Host: media.windows.net
@@ -95,13 +90,13 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
 
 ## <a name="considerations"></a>考慮事項
-* TaskBody プロパティでは、リテラル XML を使用して、タスクが使用する資産の入力または出力数を定義する必要があります。 タスクのトピックには、XML のための XML スキーマ定義が含まれます。
+* TaskBody プロパティでは、リテラル XML を使用して、タスクが使用する資産の入力または出力数を定義する必要があります。 タスクの記事には、XML のための XML スキーマ定義が含まれます。
 * TaskBody の定義には各 <inputAsset> の内部値と <outputAsset> を JobInputAsset(value) または JobOutputAsset(value) として設定する必要があります。
 * タスクは、複数の出力資産を持つことができます。 1 つの JobOutputAsset(x) はジョブ内のタスクの出力として一度だけ使用できます。
 * タスクの入力資産として、JobInputAsset または JobOutputAsset を指定できます。
 * タスクは、サイクルを形成することはできません。
 * JobInputAsset または JobOutputAsset に渡す値パラメーターは、資産のインデックス値を表します。 実際の資産は、ジョブ エンティティ定義の InputMediaAssets および OutputMediaAssets ナビゲーション プロパティで定義されます。
-* Media Services は OData v3 上に構築されるため、InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"__metadata : uri" の名前と値のペアによって参照されます。
+* Media Services は OData v3 上に構築されるため、InputMediaAssets および OutputMediaAssets ナビゲーション プロパティ コレクション内の個々の資産は、"__metadata: uri" の名前と値のペアによって参照されます。
 * InputMediaAssets は、Media Services で作成した1 つまたは複数の資産にマップされます。 OutputMediaAssets はシステムによって作成されます。 既存の資産は参照しません。
 * OutputMediaAssets は、assetName 属性を使用して名前を付けることができます。 この属性が存在しない場合、OutputMediaAsset の名前は、ジョブ名の値またはジョブ ID の値 (Name プロパティが定義されていない場合) のいずれかのサフィックスを持つ <outputAsset> 要素の内部テキストの値になります。 たとえば、"Sample" に assetName の値を設定する場合は、OutputMediaAsset Name プロパティは "Sample" に指定されます。 ただし、assetName の値を設定せずジョブ名を "NewJob" に設定した場合は、OutputMediaAsset Name は "JobOutputAsset(value)_NewJob" になります。
 
@@ -118,7 +113,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer <token value>
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
@@ -162,7 +157,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: multipart/mixed
     Accept-Charset: UTF-8
     Authorization: Bearer <token>
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
     Host: media.windows.net
 
@@ -182,7 +177,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
     Authorization: Bearer <token>
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
     {"Name" : "NewTestJob", "InputMediaAssets@odata.bind":["https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A2a22445d-1500-80c6-4b34-f1e5190d33c6')"]}
@@ -199,7 +194,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     MaxDataServiceVersion: 3.0
     Accept-Charset: UTF-8
     Authorization: Bearer <token>
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000
 
     {  
@@ -223,7 +218,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer <token value>
     Host: media.windows.net
 
@@ -250,7 +245,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer <token value>
     Host: media.windows.net
 

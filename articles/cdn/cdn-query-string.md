@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: mazha
-ms.openlocfilehash: 04c9ad5e58af073204eb6a16df96f0517a0ee668
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9ffd05a0eb4d976dc40a1c5d45fd22ebf9bd4db1
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="control-azure-content-delivery-network-caching-behavior-with-query-strings"></a>クエリ文字列による Azure コンテンツ配信ネットワーク キャッシュ動作の制御
 > [!div class="op_single_selector"]
@@ -43,13 +43,13 @@ Azure コンテンツ配信ネットワーク (CDN) を使用すると、クエ�
    
    ![CDN プロファイル エンドポイント](./media/cdn-query-string/cdn-endpoints.png)
    
-2. [設定] の **[キャッシュ]** をクリックします。
+2. 左側のウィンドウの [設定] で、**[キャッシュ規則]** をクリックします。
    
-    ![CDN プロファイルの [キャッシュ] ボタン](./media/cdn-query-string/cdn-cache-btn.png)
+    ![CDN の [キャッシュ規則] ボタン](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
 3. **[クエリ文字列のキャッシュ動作]** 一覧でクエリ文字列モードを選択し、**[保存]** をクリックします。
    
-  <!--- Replace screen shot after general caching goes live ![CDN query string caching options](./media/cdn-query-string/cdn-query-string.png) --->
+   ![CDN クエリ文字列のキャッシュ オプション](./media/cdn-query-string/cdn-query-string.png)
 
 > [!IMPORTANT]
 > 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。 **Azure CDN from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 **Azure CDN from Verizon** プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。

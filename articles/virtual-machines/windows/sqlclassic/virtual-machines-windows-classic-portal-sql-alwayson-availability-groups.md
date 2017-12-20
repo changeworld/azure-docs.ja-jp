@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: b360fe9f28eeb9b10c82fce729165b1b572ac3c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 275c0fdfecac558e4f10d36eee71d38528f34679
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック) での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
@@ -62,11 +62,11 @@ Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮�
 > 
 
 ## <a name="create-the-virtual-network-and-domain-controller-server"></a>仮想ネットワークとドメイン コントローラー サーバーの作成
-最初に新しい Azure 試用版アカウントを作成します。 アカウントをセットアップしたら、Azure クラシック ポータルのホーム画面が表示されます。
+最初に新しい Azure 試用版アカウントを作成します。 アカウントをセットアップしたら、Azure ポータルのホーム画面が表示されます。
 
 1. 次のスクリーン ショットに示すように、ページの左下隅にある **[新規]** ボタンをクリックします。
    
-    ![ポータルで 新規をクリックします](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665511.gif)
+    ![ポータルで [新規] をクリックします](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665511.gif)
 2. 次のスクリーンショットに示すように、**[ネットワーク サービス]** > **[仮想ネットワーク]** > **[カスタム作成]** の順にクリックします。
    
     ![[仮想ネットワークの作成]](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665512.gif)
@@ -89,7 +89,7 @@ Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮�
    | 仮想マシンの構成 |**[クラウド サービス]** = 新しいクラウド サービスの作成<br/>**[クラウド サービス DNS 名]** = 一意のクラウド サービス名<br/>**[DNS 名]** = 一意の名前 (例: ContosoDC123)<br/>**[リージョン/アフィニティ グループ/仮想ネットワーク]** = ContosoNET<br/>**[仮想ネットワーク サブネット]** = Back(10.10.2.0/24)<br/>**[ストレージ アカウント]**: 自動的に生成されたストレージ アカウントを使用<br/>**[可用性セット]** = (なし) |
    | 仮想マシンのオプション |既定値を使用 |
 
-新しい仮想マシンを構成したら、仮想マシンがプロビジョニングされるまで待機します。 このプロセスは完了するまで時間がかかります。 Azure クラシック ポータルで **[仮想マシン]** タブをクリックすると、ContosoDC の状態が **[開始中 (プロビジョニング中)]** から **[停止済み]**、**[開始中]**、**[実行中 (プロビジョニング中)]**、最後に **[実行中]** へ変化していくことがわかります。
+新しい仮想マシンを構成したら、仮想マシンがプロビジョニングされるまで待機します。 このプロセスは完了するまで時間がかかります。 Azure ポータルで **[仮想マシン]** タブをクリックすると、ContosoDC の状態が **[開始中 (プロビジョニング中)]** から **[停止済み]**、**[開始中]**、**[実行中 (プロビジョニング中)]**、最後に **[実行中]** へ変化していくことがわかります。
 
 これで、DC サーバーは正常にプロビジョニングされました。 次に、この DC サーバー上の Active Directory ドメインを構成します。
 
@@ -142,8 +142,8 @@ Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮�
    
    | 設定 | 値 |
    | --- | --- |
-   | **名** |[インストール] |
-   | **ユーザー SAM アカウント名** |[インストール] |
+   | **名** |インストール |
+   | **ユーザー SAM アカウント名** |インストール |
    | **パスワード** |Contoso!000 |
    | **パスワードの確認** |Contoso!000 |
    | **その他のパスワード オプション** |オン |
