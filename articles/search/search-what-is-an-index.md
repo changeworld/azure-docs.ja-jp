@@ -13,10 +13,10 @@ ms.tgt_pltfrm: na
 ms.date: 11/08/2017
 ms.author: ashmaka
 ms.openlocfilehash: 87f1121594d8577b5dacac4026aa7d86b2921d10
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="indexes-in-azure-search"></a>Azure Search のインデックス
 > [!div class="op_single_selector"]

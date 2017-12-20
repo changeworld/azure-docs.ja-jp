@@ -22,9 +22,11 @@ VPN Gateway 接続を使用している場合は、同じリージョン内の V
 
 ### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>VNet が同じサブスクリプションに存在しない場合、サブスクリプションが同じ AD テナントに関連付けられている必要がありますか?
 
+
 いいえ。
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>別々の Azure インスタンスに存在する仮想ネットワークを VNet 間接続で接続することはできますか。 
+
 
 いいえ。 VNet 間接続でサポートされるのは、同じ Azure インスタンス内の仮想ネットワークの接続だけです。 たとえば、パブリック Azure と Chinese/German/US Gov の Azure インスタンスとの間で接続を作成することはできません。 これらのシナリオについては、サイト間 VPN 接続の使用をご検討ください。
 
