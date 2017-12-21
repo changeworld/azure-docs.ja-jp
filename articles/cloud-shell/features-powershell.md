@@ -27,7 +27,7 @@ ms.lasthandoff: 12/08/2017
 > [!TIP]
 > [Bash](features.md) の機能とツールも利用できます。
 
-Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` で実行します。
+Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` 上で実行されます。
 
 ## <a name="features"></a>Features (機能)
 
