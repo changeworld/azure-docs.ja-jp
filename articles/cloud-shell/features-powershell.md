@@ -27,11 +27,11 @@ ms.lasthandoff: 12/08/2017
 > [!TIP]
 > [Bash](features.md) の機能とツールも利用できます。
 
-Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` 上で実行されています。
+Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` 上で実行されます。
 
 ## <a name="features"></a>Features (機能)
 
-### <a name="secure-automatic-authentication"></a>セキュアな自動認証
+### <a name="secure-automatic-authentication"></a>セキュリティで保護された自動認証
 
 Cloud Shell (プレビュー) での PowerShell は、Azure PowerShell へのアクセス アカウントを安全かつ自動的に認証します。
 
