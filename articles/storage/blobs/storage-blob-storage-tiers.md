@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: fd3ca18fd7a9d1226d41229d37e637a62478f92a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: b8f0f899dff0f9e238017cb77126b3ca1275f3cd
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -32,7 +32,7 @@ Azure Storage では、BLOB オブジェクト ストレージ用に 3 つのス
 
 ## <a name="storage-accounts-that-support-tiering"></a>階層制御をサポートするストレージ アカウント
 
-オブジェクト ストレージ データの階層制御は、Blob Storage アカウントと General Purpose v2 (GPv2) アカウントのホット、クール、アーカイブに対してのみ可能です。 General Purpose v1 (GPv1) アカウントは階層制御をサポートしていません。 ただし既存の GPv1 アカウントまたは Blob Storage アカウントは、Azure Portal からの簡単なワンクリックのプロセスで、すぐに GPv2 アカウントに変換できます。 GPv2 では、BLOB、ファイル、キューに関して新しい料金体系が用意されているほか、各種の新しいストレージ機能が利用できるようになっています。 しかもゆくゆくは、いくつかの新しい機能と料金体系が GPv2 アカウントでしか提供されなくなります。 そこで、お客様には GPv2 アカウントの使用を評価していただきたいのですが、GPv2 アカウントを使用する前に必ず、すべてのサービスの料金をよくご確認ください。一部のワークロードは GPv1 よりも費用負担が大きい可能性があります。 詳細については、「[Azure storage account options (Azure Storage アカウントのオプション)](storage-account-options.md)」を参照してください。
+オブジェクト ストレージ データの階層制御は、Blob Storage アカウントと General Purpose v2 (GPv2) アカウントのホット、クール、アーカイブに対してのみ可能です。 General Purpose v1 (GPv1) アカウントは階層制御をサポートしていません。 ただし既存の GPv1 アカウントまたは Blob Storage アカウントは、Azure Portal からの簡単なワンクリックのプロセスで、すぐに GPv2 アカウントに変換できます。 GPv2 では、BLOB、ファイル、キューに関して新しい料金体系が用意されているほか、各種の新しいストレージ機能が利用できるようになっています。 しかもゆくゆくは、いくつかの新しい機能と料金体系が GPv2 アカウントでしか提供されなくなります。 そこで、お客様には GPv2 アカウントの使用を評価していただきたいのですが、GPv2 アカウントを使用する前に必ず、すべてのサービスの料金をよくご確認ください。一部のワークロードは GPv1 よりも費用負担が大きい可能性があります。 詳細については、「[Azure storage account options (Azure Storage アカウントのオプション)](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 Blob Storage アカウントと GPv2 アカウントには、アカウント レベルで**アクセス層**属性が公開されていて、オブジェクト レベルで設定された階層を持たないストレージ アカウントの BLOB については、既定のストレージ層をホットまたはクールとして指定することができます。 オブジェクト レベルで階層が設定されているオブジェクトについては、アカウントの階層は適用されません。 アーカイブ層は、オブジェクト レベルでのみ適用することができます。 これらのストレージ層はいつでも切り替えることができます。
 
@@ -139,7 +139,7 @@ GB 単位の月額料金に加え、クール層 (GPv2 アカウントのみ) �
 
 階層制御には Blob Storage アカウントではなく GPv2 の使用をお勧めします。 GPv2 は、Blob Storage アカウントで利用できるすべての機能をサポートしており、それ以外にもさまざまな機能が利用できます。 Blob Storage と GPv2 の料金体系はほぼ同じですが、いくつかの新機能と値下げの対象は GPv2 アカウントに限られています。 GPv1 アカウントでは、階層制御がサポートされません。
 
-GPv1 アカウントと GPv2 アカウントとでは料金体系が異なります。GPv2 アカウントをご使用になる前に、両者を慎重に比較して評価してください。 既存の Blob Storage アカウントまたは GPv1 アカウントは、簡単なワンクリックのプロセスで GPv2 に変換することができます。 詳細については、「[Azure storage account options (Azure Storage アカウントのオプション)](storage-account-options.md)」を参照してください。
+GPv1 アカウントと GPv2 アカウントとでは料金体系が異なります。GPv2 アカウントをご使用になる前に、両者を慎重に比較して評価してください。 既存の Blob Storage アカウントまたは GPv1 アカウントは、簡単なワンクリックのプロセスで GPv2 に変換することができます。 詳細については、「[Azure storage account options (Azure Storage アカウントのオプション)](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 **同じアカウントの 3 つすべて (ホット、クール、アーカイブ) のストレージ層にオブジェクトを格納することはできますか。**
 

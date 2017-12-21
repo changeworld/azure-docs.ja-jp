@@ -3,8 +3,8 @@ title: "Azure Portal で Azure DNS の使用を開始する | Microsoft Docs"
 description: "Azure DNS で、DNS ゾーンとレコードを作成する方法について説明します。 Azure Portal を使用して最初の DNS ゾーンとレコードを作成して管理するためのステップ バイ ステップ ガイドです。"
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2017
-ms.author: jonatul
-ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/18/2017
+ms.author: kumud
+ms.openlocfilehash: b2a9a7dbd1fa7da7ebe479ac166602245cdaefde
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Azure Portal で Azure DNS の使用を開始する
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-getstarted-portal.md)
 > * [PowerShell](dns-getstarted-powershell.md)
-> * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
 この記事では、Azure Portal を使用して最初の DNS ゾーンとレコードを作成する手順について説明します。 これらの手順は、Azure PowerShell またはクロスプラットフォームの Azure CLI を使用して実行することもできます。
@@ -35,12 +34,12 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
 
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-1. Azure Portal にサインインします。
-2. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ブレードを開きます。
+1. Azure ポータルにサインインします。
+2. ハブ メニューの **[新規]、[ネットワーク]** の順にクリックし、**[DNS ゾーン]** をクリックして **[DNS ゾーンの作成]** ページを開きます。
 
     ![[DNS ゾーン]](./media/dns-getstarted-portal/openzone650.png)
 
-4. **[DNS ゾーンの作成]** ブレードで次の値を入力してから、**[作成]** をクリックします。
+4. **[DNS ゾーンの作成]** ページで次の値を入力してから、**[作成]** をクリックします。
 
 
    | **設定** | **値** | **詳細** |
@@ -57,11 +56,11 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
 
 次の例では、新しい "A" レコードを作成する手順を説明します。 他のレコードの種類と、既存のレコードの変更については、「[Azure Portal を使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-portal.md)」を参照してください。 
 
-1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードで **contoso.com** DNS ゾーンをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「**contoso.com**」と入力すると、 目的の DNS ゾーンがすぐに見つかります。
+1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 [すべてのリソース] ページで **contoso.com** DNS ゾーンをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「**contoso.com**」と入力すると、 目的の DNS ゾーンがすぐに見つかります。
 
-1. **[DNS ゾーン]** ブレードの上部にある **[+ レコード セット]** を選択して **[レコード セットの追加]** ブレードを開きます。
+1. **[DNS ゾーン]** ページの上部にある **[+ レコード セット]** を選択して **[レコード セットの追加]** ページを開きます。
 
-1. **[レコード セットの追加]** ブレードで次の値を入力して、**[OK]** をクリックします。 この例では、A レコードを作成します。
+1. **[レコード セットの追加]** ページで、次の値を入力し、**[OK]** をクリックします。 この例では、A レコードを作成します。
 
    |**設定** | **値** | **詳細** |
    |---|---|---|
@@ -73,7 +72,7 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
 
 ## <a name="view-records"></a>レコードの表示
 
-[DNS ゾーン] ブレードの下部に、DNS ゾーンのレコードが表示されます。 ここには、すべてのゾーンで作成される既定の DNS および SOA レコードと、ご自身で作成した新しいレコードが表示されています。
+[DNS ゾーン] ページの下部に、その DNS ゾーンのレコードが表示されます。 ここには、すべてのゾーンで作成される既定の DNS および SOA レコードと、ご自身で作成した新しいレコードが表示されています。
 
 ![ゾーン](./media/dns-getstarted-portal/viewzone500.png)
 
@@ -92,8 +91,8 @@ DNS ゾーンとレコードを正しく設定したら、Azure DNS ネーム �
 
 この記事で作成したリソースをすべて削除するには、次の手順を実行します。
 
-1. Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードで **MyResourceGroup** リソース グループをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「**MyResourceGroup**」と入力すると 目的のリソース グループがすぐに見つかります。
-1. **MyResourceGroup** ブレードで **[削除]** ボタンをクリックします。
+1. Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 [すべてのリソース] ページで **MyResourceGroup** リソース グループをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「**MyResourceGroup**」と入力すると 目的のリソース グループがすぐに見つかります。
+1. **MyResourceGroup** ページで **[削除]** ボタンをクリックします。
 1. 削除の意図を確認するために、リソース グループの名前を入力するよう求められます。 **[削除]** をクリックし、リソース グループの名前に「*MyResourceGroup*」と入力して、**[削除]** をクリックします。 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。削除する前に、リソース グループの内容を必ず確認してください。 まずリソース グループに含まれているすべてのリソースが削除された後、リソース グループそのものが削除されます。 このプロセスには数分かかります。
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: c22d516506ae89d8591e8fe162347e115a89cb34
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 323c1e7bb4703833cfc3047db9e6116eb7237162
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/29/2017
 
 ## <a name="install-the-sdk-and-tools"></a>SDK とツールのインストール
 ### <a name="to-use-visual-studio-2017"></a>Visual Studio 2017 を使用するには
-Service Fabric ツールは、Visual Studio 2017 の Azure 開発および管理ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
+Service Fabric ツールは、Visual Studio 2017 の Azure 開発ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
 さらに、Web Platform Installer を使用して Microsoft Azure Service Fabric SDK をインストールする必要があります。
 
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 12/18/2017
 ms.author: kumud
-ms.openlocfilehash: d73a42fd0f41c20b516c0348c86b40202fd06f53
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 3cb1a70835b5fa2b615f4adac4b0d9ae31074bce
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="delegate-a-domain-to-azure-dns"></a>Azure DNS へのドメインの委任
 
@@ -30,7 +30,7 @@ Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメイ
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
 1. Azure ポータルにサインインします。
-1. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ページを開きます。
+1. ハブ メニューの **[新規]、[ネットワーク]** の順にクリックし、**[DNS ゾーン]** をクリックして **[DNS ゾーンの作成]** ページを開きます。
 
     ![[DNS ゾーン]](./media/dns-domain-delegation/dns.png)
 

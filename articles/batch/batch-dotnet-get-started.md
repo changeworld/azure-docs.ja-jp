@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 83f751c6b5e44705509804e6872bb16d7c2e1d18
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>.NET 向け Batch クライアント ライブラリを使用してソリューション作成を開始する
 
@@ -69,16 +69,16 @@ ms.lasthandoff: 11/11/2017
 ![Batch のワークフロー例][8]<br/>
 
 [**手順 1.**](#step-1-create-storage-containers) Azure Blob Storage で**コンテナー**を作成します。<br/>
-[**手順 2.**](#step-2-upload-task-application-and-data-files) タスク アプリケーション ファイルと入力ファイルをコンテナーにアップロードします。<br/>
-[**手順 3.**](#step-3-create-batch-pool) Batch **プール**を作成します。<br/>
+[**手順 2.**](#step-2-upload-task-application-and-data-files)  タスク アプリケーション ファイルと入力ファイルをコンテナーにアップロードします。<br/>
+[**手順 3.**](#step-3-create-batch-pool)  Batch **プール**を作成します。<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**3a.** プールに参加するときに、プールの **StartTask** でタスク バイナリ ファイル (TaskApplication) をノードにダウンロードします。<br/>
-[**手順 4.**](#step-4-create-batch-job) Batch **ジョブ**を作成します。<br/>
-[**手順 5.**](#step-5-add-tasks-to-job) ジョブに **タスク** を追加します。<br/>
+[**手順 4.**](#step-4-create-batch-job)  Batch **ジョブ**を作成します。<br/>
+[**手順 5.**](#step-5-add-tasks-to-job)  ジョブに **タスク** を追加します。<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**5a.** タスクはノード上で実行されるようにスケジュールされています。<br/>
     &nbsp;&nbsp;&nbsp;&nbsp;**5b.** 各タスクは Azure Storage から入力データをダウンロードし、実行を開始します。<br/>
-[**手順 6.**](#step-6-monitor-tasks) タスクを監視するします。<br/>
+[**手順 6.**](#step-6-monitor-tasks)  タスクを監視するします。<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**6a.** タスクの完了後に、出力データを Azure Storage にアップロードします。<br/>
-[**手順 7.**](#step-7-download-task-output) Storage からタスク出力をダウンロードします。
+[**手順 7.**](#step-7-download-task-output)  Storage からタスク出力をダウンロードします。
 
 既に述べたように、このとおりの実行手順ではない Batch ソリューションもあり、他の手順が含まれる場合もありますが、 *DotNetTutorial* サンプル アプリケーションでは、Batch ソリューションの一般的なプロセスを実行します。
 
@@ -418,7 +418,7 @@ private static async Task CreateJobAsync(
 
 ## <a name="step-5-add-tasks-to-job"></a>手順 5: ジョブにタスクを追加する
 ![ジョブにタスクを追加する][5]<br/>
-"*(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします*"
+*(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします。*
 
 Batch の **タスク** は、コンピューティング ノードで実行される独立した作業単位です。 タスクはコマンド ラインを持ち、スクリプト (またはそのコマンド ラインに指定された実行可能ファイル) を実行します。
 
@@ -509,7 +509,7 @@ private static void UploadFileToContainer(string filePath, string containerSas)
 
 ## <a name="step-6-monitor-tasks"></a>手順 6: タスクを監視する
 ![タスクを監視する][6]<br/>
-"*クライアント アプリケーションで (1) タスクの完了と成功の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします*"
+*クライアント アプリケーションで (1) タスクの完了と成功の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします。*
 
 タスクをジョブに追加すると、そのジョブに関連付けられたプール内のコンピューティング ノードに実行待ちとして自動的にキューに追加され、スケジュールされます。 指定した設定に基づき、Batch は、すべてのタスクのキュー、スケジュール、再試行など、タスク管理作業を処理します。
 
