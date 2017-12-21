@@ -198,7 +198,7 @@ structure の各列には次のプロパティが含まれます。
 | name |列の名前です。 |あり |
 | type |列のデータ型です。  |いいえ |
 | culture |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 |なし |
-| BlobSink の format |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 |いいえ |
+| format |.NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 |いいえ |
 
 構造情報を含めるべき状況と、**structure** セクションに含める内容については、次のガイドラインに従ってください。
 
