@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 1e58dd50931f994ca2c6233e3e97022957c85327
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: aec3f107cc94fba2e9b478d86a848c762f1f8b0e
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-an-azure-data-factory-using-powershell"></a>PowerShell を使用した Azure データ ファクトリの作成 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -149,10 +149,7 @@ ms.lasthandoff: 12/08/2017
         "properties": {
             "type": "AzureBlob",
             "typeProperties": {
-                "folderPath": {
-                    "value": "@{dataset().path}",
-                    "type": "Expression"
-                }
+                "folderPath": "@{dataset().path}"
             },
             "linkedServiceName": {
                 "referenceName": "AzureStorageLinkedService",

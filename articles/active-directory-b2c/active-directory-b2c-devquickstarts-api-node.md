@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.openlocfilehash: b45114e9e0357e0b5a4cee59db4e685baf8cb1ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Node.js を使用して Web API をセキュリティで保護する
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -48,8 +48,6 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * **[応答 URL]** に「`http://localhost/TodoListService`」と入力します。 これはこのサンプル コードで使用する既定の URL です。
 * アプリケーション用の **アプリケーション シークレット** を作成し、それをメモしておきます。 このデータは後で必要になります。 この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) する必要があることに注意してください。
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 このデータは後で必要になります。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>ポリシーの作成
 Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインアップとサインインという 2 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。  3 つのポリシーを作成するときは、以下の点に注意してください。

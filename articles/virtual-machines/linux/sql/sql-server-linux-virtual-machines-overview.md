@@ -12,11 +12,11 @@ ms.topic: get-started-article
 ms.workload: iaas-sql-server
 ms.date: 10/02/2017
 ms.author: jroth
-ms.openlocfilehash: 787e696edd2a446bec280b763fe5ac591782c8ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 仮想マシン (Linux) における SQL Server の概要
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 Azure VM で実行されている SQL Server は、リレーショナル データを Azure に格納するための 1 つのオプションです。 Azure SQL Database サービスを使用するオプションもあります。 仮想マシンに SQL Server をインストールするか、Azure SQL Database を使用するかの選択に関する詳細については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)」を参照してください。
 
-## <a name="create-a-new-sql-vm"></a>新しい SQL VM の作成
+## <a id="create"></a> 新しい SQL VM の作成
 
 新しい SQL VM を作成する詳細な手順を示したチュートリアルは、[Azure での Linux SQL Server VM のプロビジョニング](provision-sql-server-linux-virtual-machine.md)に関するページを参照してください。
 

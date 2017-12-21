@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Python 向け Batch SDK の概要
 
@@ -103,16 +103,16 @@ Batch Python チュートリアルのコード サンプルは、2 つの Python
 ![Batch のワークフロー例][8]<br/>
 
 [**手順 1.**](#step-1-create-storage-containers) Azure Blob Storage で**コンテナー**を作成します。<br/>
-[**手順 2.**](#step-2-upload-task-script-and-data-files) タスク スクリプトと入力ファイルをコンテナーにアップロードします。<br/>
-[**手順 3.**](#step-3-create-batch-pool) Batch **プール**を作成します。<br/>
+[**手順 2.**](#step-2-upload-task-script-and-data-files)  タスク スクリプトと入力ファイルをコンテナーにアップロードします。<br/>
+[**手順 3.**](#step-3-create-batch-pool)  Batch **プール**を作成します。<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**3a.** プール **StartTask** は、そこに参加したノードにタスク スクリプト (python_tutorial_task.py) をダウンロードします。<br/>
-[**手順 4.**](#step-4-create-batch-job) Batch **ジョブ**を作成します。<br/>
-[**手順 5.**](#step-5-add-tasks-to-job) ジョブに **タスク** を追加します。<br/>
+[**手順 4.**](#step-4-create-batch-job)  Batch **ジョブ**を作成します。<br/>
+[**手順 5.**](#step-5-add-tasks-to-job)  ジョブに **タスク** を追加します。<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**5a.** タスクはノード上で実行されるようにスケジュールされています。<br/>
     &nbsp;&nbsp;&nbsp;&nbsp;**5b.** 各タスクは Azure Storage から入力データをダウンロードし、実行を開始します。<br/>
-[**手順 6.**](#step-6-monitor-tasks) タスクを監視するします。<br/>
+[**手順 6.**](#step-6-monitor-tasks)  タスクを監視するします。<br/>
   &nbsp;&nbsp;&nbsp;&nbsp;**6a.** タスクの完了後に、出力データを Azure Storage にアップロードします。<br/>
-[**手順 7.**](#step-7-download-task-output) Storage からタスク出力をダウンロードします。
+[**手順 7.**](#step-7-download-task-output)  Storage からタスク出力をダウンロードします。
 
 既に述べたように、このとおりの実行手順ではない Batch ソリューションも存在します。他の手順が含まれる場合もありますが、このサンプルでは、Batch ソリューションの一般的なプロセスを示します。
 
@@ -420,7 +420,7 @@ def create_job(batch_service_client, job_id, pool_id):
 
 ## <a name="step-5-add-tasks-to-job"></a>手順 5: ジョブにタスクを追加する
 ![ジョブにタスクを追加する][5]<br/>
-"*(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします*"
+*(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします。*
 
 Batch の **タスク** は、コンピューティング ノードで実行される独立した作業単位です。 タスクはコマンド ラインを持ち、スクリプト (またはそのコマンド ラインに指定された実行可能ファイル) を実行します。
 
@@ -493,7 +493,7 @@ blob_client = azureblob.BlockBlobService(account_name=args.storageaccount,
 
 ## <a name="step-6-monitor-tasks"></a>手順 6: タスクを監視する
 ![タスクを監視する][6]<br/>
-"*スクリプトで (1) タスクの完了の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします*"
+*スクリプトで (1) タスクの完了の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします。*
 
 タスクをジョブに追加すると、そのジョブに関連付けられたプール内のコンピューティング ノードに実行待ちとして自動的にキューに追加され、スケジュールされます。 指定した設定に基づき、Batch は、すべてのタスクのキュー、スケジュール、再試行など、タスク管理作業を処理します。
 

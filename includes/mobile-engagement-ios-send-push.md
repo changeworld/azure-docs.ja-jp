@@ -3,7 +3,7 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 
 1. Mobile Engagement ポータルに移動します。 このプロジェクト用に使用しているアプリを対象にしていることを確認し、下部にある **[エンゲージ]** ボタンをクリックします。
    
-    ![](./media/mobile-engagement-ios-send-push/engage-button.png)
+    ![](./media/mobile-engagement-create-app-in-portal-new/engage-button.png)
 2. Engagement ポータルで **[設定]** ページをクリックします。 このページで、p12 証明書をアップロードするために **[ネイティブ プッシュ通知]** セクションをクリックします。
    
     ![](./media/mobile-engagement-ios-send-push/engagement-portal.png)
@@ -14,7 +14,7 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
 ## <a id="send"></a>アプリへ通知を送信する
 プッシュ通知をアプリに送る簡単なプッシュ通知キャンペーンを作成してみましょう。
 
-1. Mobile Engagement ポータルで [ **リーチ** ] タブに移動します。
+1. Mobile Engagement ポータルで **[リーチ]** タブに移動します。
 2. **[新しいお知らせ]** をクリックして、プッシュ キャンペーンを作成します。
    
     ![](./media/mobile-engagement-ios-send-push/new-announcement.png)
