@@ -1,6 +1,7 @@
 # 概要
 
 ## [SQL Data Warehouse について](sql-data-warehouse-overview-what-is.md)
+## [チート シート](cheat-sheet.md)
 
 # クイック スタート
 

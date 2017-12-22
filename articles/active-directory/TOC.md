@@ -286,6 +286,7 @@
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
+#### [What if ツール](active-directory-conditional-access-whatif.md)
 #### タスク
 ##### [クラシック MFA ポリシーの移行](active-directory-conditional-access-migration-mfa.md)
 ##### [デバイスベースの条件付きアクセスの設定](active-directory-conditional-access-policy-connected-applications.md)
