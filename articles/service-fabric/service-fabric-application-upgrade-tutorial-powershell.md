@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.openlocfilehash: 54ca664a29ed8c6337bb27fe1fa17276e480c911
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell を使用した Service Fabric アプリケーションのアップグレード
 > [!div class="op_single_selector"]

@@ -38,6 +38,10 @@
           href: how-to-vscode-develop-csharp-module.md
         - name: 'C# モジュールのデバッグ'
           href: how-to-vscode-debug-csharp-module.md
+        - name: Azure 関数の開発とデプロイ
+          href: how-to-vscode-develop-azure-function.md
+        - name: Azure 関数のデバッグ
+          href: how-to-vscode-debug-azure-function.md
     - name: トラブルシューティング
       href: troubleshoot.md
 - name: 概念

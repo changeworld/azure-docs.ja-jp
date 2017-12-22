@@ -26,6 +26,8 @@
 
 # 方法
 ## 計画と設計
+### [管理対象サービス ID (プレビュー)](service-bus-managed-service-identity.md)
+### [ロールベースのアクセス制御 (プレビュー)](service-bus-role-based-access-control.md)
 ### [Premium メッセージング](service-bus-premium-messaging.md)
 ### [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [パフォーマンスを最適化する](service-bus-performance-improvements.md)

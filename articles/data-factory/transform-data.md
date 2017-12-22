@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: shengc
 ms.openlocfilehash: 88ff71956c82d79fb244f1a687debeb726291ae8
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 > [!div class="op_single_selector"]

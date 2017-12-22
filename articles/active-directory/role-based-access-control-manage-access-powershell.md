@@ -15,10 +15,10 @@ ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
 ms.openlocfilehash: 631274ec57586a777df8ee07a18b0ad72b905222
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-role-based-access-control-with-azure-powershell"></a>Azure PowerShell を使用したロールベースのアクセス制御の管理
 > [!div class="op_single_selector"]

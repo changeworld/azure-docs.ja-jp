@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
-ms.openlocfilehash: 433d2e585c884a10e7e923a0b27c179a95410d01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa545a9fbaac0686a0a29482c8dcd3379ee4db8f
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Node.js を使用して Azure Cosmos DB: MongoDB 用 API を構築する
 > [!div class="op_single_selector"]
-> * [.NET](documentdb-get-started.md)
-> * [.NET Core](documentdb-dotnetcore-get-started.md)
-> * [Java](documentdb-java-get-started.md)
+> * [.NET](sql-api-get-started.md)
+> * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [Java](sql-api-java-get-started.md)
 > * [MongoDB 用 Node.js](mongodb-samples.md)
-> * [Node.JS](documentdb-nodejs-get-started.md)
-> * [C++](documentdb-cpp-get-started.md)
+> * [Node.JS](sql-api-nodejs-get-started.md)
+> * [C++](sql-api-cpp-get-started.md)
 >  
 >
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
 ms.openlocfilehash: 645d417e22b32e6da978e8d94e67f9615100ea89
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="managing-media-services-entities-with-rest"></a>REST による Media Services エンティティの管理 
 > [!div class="op_single_selector"]

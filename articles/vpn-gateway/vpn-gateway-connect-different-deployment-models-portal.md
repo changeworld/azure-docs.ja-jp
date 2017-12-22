@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2017
 ms.author: cherylmc
 ms.openlocfilehash: 8fd058d74d00ecc980d295ee6bd9680ff832f891
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -101,7 +101,7 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 4. 検索結果の一覧から "仮想ネットワーク" を探してクリックし、[仮想ネットワーク] ページを開きます。 
 5. [仮想ネットワーク] ページで、[クラシック] を選んでクラシック VNet を作成します。 ここで既定値を使用すると、Resource Manager VNet が作成されます。
 
-### 2.<a name="local"></a>ローカル サイトの構成
+### 手順 2.<a name="local"></a>ローカル サイトの構成
 
 1. **[すべてのリソース]** に移動し、リスト内で **ClassicVNet** を見つけます。
 2. **[概要]** ページの **[VPN 接続]** セクションで、**[ゲートウェイ]** をクリックしてゲートウェイを作成します。
@@ -151,7 +151,7 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 
 Resource Manager VNet を所有しておらず、これらの手順を演習として実行している場合、[この記事](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)と例の値を使用して VNet を作成できます。
 
-### <a name="2-create-a-gateway-subnet"></a>2.ゲートウェイ サブネットの作成
+### <a name="2-create-a-gateway-subnet"></a>手順 2.ゲートウェイ サブネットの作成
 
 **例の値:** GatewaySubnet = 192.168.0.0/26
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: davidmu
 ms.openlocfilehash: e60bfc89378569b154f4f973d1dceb683fa58482
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>Azure CLI を使用して新規または既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを構成する
 

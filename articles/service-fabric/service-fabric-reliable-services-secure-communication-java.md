@@ -14,10 +14,10 @@ ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
 ms.openlocfilehash: 5e2f36b3de1dd04c1a3f36ae308af164d10654ea
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Azure Service Fabric のサービスで使用される通信のセキュリティ
 > [!div class="op_single_selector"]

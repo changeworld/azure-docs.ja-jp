@@ -17,6 +17,7 @@
 ### [IoT Edge での Stream Analytics (プレビュー)](stream-analytics-edge.md)
 ### [Azure 使用ガイドでの異常検出 (プレビュー)](stream-analytics-machine-learning-anomaly-detection.md)
 ### [Stream Analytics による高頻度取引のシミュレーション](stream-analytics-high-frequency-trading.md)
+### [Azure Functions と Azure Stream Analytics](stream-analytics-with-azure-functions.md)
 
 ## ジョブの作成
 ### [入力を作成する](stream-analytics-define-inputs.md)
@@ -35,7 +36,7 @@
 
 ## Visual Studio ツールの使用
 ### [インストール](stream-analytics-tools-for-visual-studio-install.md)
-### [作業の開始](stream-analytics-tools-for-visual-studio.md)
+### [作業開始](stream-analytics-tools-for-visual-studio.md)
 ### [CI/CD パイプラインの設定](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## 監視と最適化

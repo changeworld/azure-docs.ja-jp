@@ -90,6 +90,8 @@
           href: monitoring-enable-alerts-using-template.md
     - name: 自動スケールの使用
       items:
+        - name: 自動スケール設定について
+          href: monitoring-understanding-autoscale-settings.md
         - name: ベスト プラクティス
           href: insights-autoscale-best-practices.md
         - name: 一般的なメトリック

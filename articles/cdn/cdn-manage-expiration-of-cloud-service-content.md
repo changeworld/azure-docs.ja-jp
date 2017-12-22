@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
 ms.openlocfilehash: dca6ca5f21f4a4f1701af57eb40d92094b6a4754
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Azure Content Delivery Network で Web コンテンツの有効期限を管理する
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/06/2017
 
 パブリックにアクセス可能な任意の配信元 Web サーバーのファイルは、それらの有効期間 (TTL) が経過するまで、Azure Content Delivery Network (CDN) でキャッシュできます。 TTL は、配信元サーバーからの HTTP 応答の `Cache-Control` ヘッダーによって決まります。 この記事では、Microsoft Azure App Service、Azure Cloud Services、ASP.NET アプリケーション、およびインターネット インフォメーション サービス (IIS) サイトでの Web Apps 機能の `Cache-Control` ヘッダーを設定する方法について説明します。これらはすべて同様に構成されます。 `Cache-Control` ヘッダーを設定するには、構成ファイルを使用するか、プログラムを使用します。 
 
-[CDN キャッシュ規則](cdn-caching-rules.md)を設定して、Azure Portal からキャッシュの設定を制御することもです。 1 つ以上のキャッシュ規則を設定し、キャッシュの動作を **[上書き]** または**[キャッシュのバイパス]** に設定すると、この記事で説明する最初に提供されるキャッシュ設定は無視されます。 全般的なキャッシュの概念については、「[How caching works (キャッシュのしくみ)](cdn-how-caching-works.md)」を参照してください。
+[CDN キャッシュ規則](cdn-caching-rules.md)を設定して、Azure Portal からキャッシュの設定を制御することもです。 1 つ以上のキャッシュ規則を設定し、キャッシュの動作を **[上書き]** または **[キャッシュのバイパス]** に設定すると、この記事で説明する最初に提供されるキャッシュ設定は無視されます。 全般的なキャッシュの概念については、「[キャッシュのしくみ](cdn-how-caching-works.md)」をご覧ください。
 
 > [!TIP]
 > ファイルに TTL を設定しないことも選択できます。 この場合は、Azure Portal でキャッシュ規則を設定していない限り、Azure CDN によって既定の 7 日間の TTL が自動的に適用されます。 この既定の TTL は、一般的な Web 配信の最適化に対してのみ適用されます。 大きなファイルの最適化に対する既定の TTL は 1 日、メディア ストリーミングの最適化に対する既定の TTL は 1 年です。

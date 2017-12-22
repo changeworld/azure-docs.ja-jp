@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
 ms.openlocfilehash: 2a1445afa2c2fca1a31ad9c012b9c8a917ebf65c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="advanced-reporting-with-engagement-on-android"></a>Android での Engagement による詳細なレポート
 > [!div class="op_single_selector"]

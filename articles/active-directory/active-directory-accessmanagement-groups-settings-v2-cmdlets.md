@@ -17,10 +17,10 @@ ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: rodejo
 ms.openlocfilehash: 3f57e1a0ded679325c8c739e73cc79f69c037191
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット
 > [!div class="op_single_selector"]

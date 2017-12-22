@@ -22,6 +22,8 @@
 
 # 方法
 ## 計画と設計
+### [管理対象サービス ID (プレビュー)](event-hubs-managed-service-identity.md)
+### [ロールベースのアクセス制御 (プレビュー)](event-hubs-role-based-access-control.md)
 ### [geo ディザスター リカバリーと geo レプリケーション](event-hubs-geo-dr.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [認証とセキュリティ モデルの概要](event-hubs-authentication-and-security-model-overview.md)

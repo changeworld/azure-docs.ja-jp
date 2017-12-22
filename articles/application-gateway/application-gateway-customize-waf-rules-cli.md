@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
 ms.openlocfilehash: 3051f71f269e409b76e6a19fdcd2feae2a04b8fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli-20"></a>Azure CLI 2.0 を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
 
