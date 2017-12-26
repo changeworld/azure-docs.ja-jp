@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 10/17/2017
 ms.author: samacha
-ms.openlocfilehash: 889aaa697a04a81075b85c834d534bfeb4faf79b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 5747f2f1d3eed3905e0ae3123dab74287beccf66
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="what-is-stream-analytics"></a>Stream Analytics とは
 

@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: get-started-article
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: ac48969a9166080384dccf606f0401a82016a60a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: b7c58697323ec12ac08575916cb3ac5b38cc39c1
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -72,6 +72,22 @@ JavaScript における日付のミリ秒表現については、「[Epoch & Uni
 - `predicate=<string>`
   - サーバー側フィルター処理の *where* 句。
 
+'multiChartStack=<true/false>' パラメーターを使用すると、グラフの積み重ねが有効になります。また、'multiChartSameScale=<true/false>' パラメーターを使用すると、オプションのパラメーター内の期間全体で同じ Y 軸のスケールが有効になります。  
+
+- 'multiChartStack=false'
+  - 'True' は既定で有効なので、積み重ねるには 'false' を渡します。
+- 'multiChartStack=false&multiChartSameScale=true' 
+  - 期間全体で同じ Y 軸のスケールを使用するには、積み重ねを有効にする必要があります。  既定では 'false' なので、'true' を渡してこの機能を有効にします。  
+  
+'timeBucketUnit=<Unit>&timeBucketSize=<integer>' を使用すると、間隔スライダーを調整して、グラフの集計表示を細かく、または滑らかにすることができます。  
+- 'timeBucketUnit=<Unit>&timeBucketSize=<integer>'
+  - 単位 = 日、時間、分、秒、ミリ秒。  単位は常に大文字にします。
+  - timeBucketSize に目的の整数を渡して、単位数を定義します。  最大 7 日間まで滑らかにすることができます。  
+  
+'timezoneOffset=<integer>' パラメーターを使用すると、UTC のオフセットとして表示されるグラフのタイムゾーンを設定できます。  
+  - 'timezoneOffset=-<integer>'
+    - この整数は常にミリ秒単位です。  
+    - この機能は、ローカル時刻 (ブラウザーの時刻) または UTC を選択できる TSI エクスプローラーで有効にする機能とは少し異なります。  
  
 ### <a name="examples"></a>例
 

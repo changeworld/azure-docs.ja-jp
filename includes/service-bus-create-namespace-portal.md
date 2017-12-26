@@ -16,7 +16,7 @@ Azure の Service Bus メッセージング エンティティを使用するに
 ### <a name="obtain-the-management-credentials"></a>管理資格情報の取得
 新しい名前空間を作成すると、Shared Access Signature (SAS) の初期規則が自動的に生成され、あらゆる角度から名前空間を完全に制御することを可能にするプライマリ キーとセカンダリ キーのペアが関連付けられます。 その他、通常の送信者と受信者を対象に、より権限を制限した規則を作成する方法については、「[Service Bus の認証と承認](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md)」を参照してください。 初期規則をコピーするには、次の手順を実行します。 
 
-1. 名前空間の一覧で、新しく作成した名前空間の名前をクリックします。
+1.  **[すべてのリソース]** で、新しく作成した名前空間の名前をクリックします。
 2. 名前空間ウィンドウで、**[共有アクセス ポリシー]** をクリックします。
 3. **[共有アクセス ポリシー]** 画面で、**[RootManageSharedAccessKey]** をクリックします。
    

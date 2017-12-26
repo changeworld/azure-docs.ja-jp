@@ -3,8 +3,8 @@ title: "Azure 仮想マシン スケール セットの概要 | Microsoft Docs"
 description: "Azure 仮想マシン スケール セットについて説明します"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2017
-ms.author: guybo
+ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a0d181ad0732458e67d0f3f1d6676be099b52fc
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 7f2048a39f28a74ca8a31c2e6d7466c69ba4d58f
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Azure Virtual Machine Scale Sets とは
-Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよび管理するための Azure コンピューティング リソースです。 すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
+Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよび管理するための Azure コンピューティング リソースです。 すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、大規模なデータ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
 
 コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。 スケール セットの概要についてさらに確認したい場合は、[Azure ブログでの発表](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/)を参照してください。
 
@@ -50,7 +50,7 @@ Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよ�
 ## <a name="autoscale"></a>自動スケール
 一貫したアプリケーション パフォーマンスを維持するために、スケール セット内の VM インスタンスの数を自動的に増減できます。 この自動スケール機能により、スケール セットを監視し、時間の経過と共に変化する顧客の需要に合わせてスケール セットを調整する際の管理オーバーヘッドが削減されます。 パフォーマンス メトリック、アプリケーションの応答、または固定スケジュールに基づいてルールを定義すると、必要に応じてスケール セットが自動的にスケーリングされます。
 
-基本的な自動スケール ルールでは、CPU 使用率やディスク I/O などのホスト ベースのパフォーマンス メトリックを使用できます。 これらのホスト ベースのメトリックは、追加のエージェントや拡張機能をインストールして構成しなくても、すぐに使用できます。 ホストベースのメトリックを使用する自動スケール ルールは、次のツールのいずれかを使用して作成できます。
+基本的な自動スケール ルールでは、CPU 使用率やディスク I/O などのホスト ベースのパフォーマンス メトリックを使用できます。 これらのホスト ベースのメトリックは、追加のエージェントや拡張機能をインストールして構成しなくても、そのまま使用できます。 ホストベースのメトリックを使用する自動スケール ルールは、次のツールのいずれかを使用して作成できます。
 
 - [Azure ポータル](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
@@ -159,7 +159,7 @@ Azure リソースの基盤となっている JSON 定義を表示または編�
 
 **Q.** Scale Sets で複数の拡張機能を使用する場合、実行順序を強制できますか?
 
-**A.** 直接的にではありませんが、カスタム スクリプト拡張機能の場合、スクリプトで他の拡張機能が完了するまで待機できます 。 拡張機能の実行順序についての詳しいガイダンスについては、ブログ記事「[Extension Sequencing in Azure VM Scale Sets (Azure VM Scale Sets における拡張機能の実行順序)](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)」をご覧ください。
+**A.** 直接的にではありませんが、カスタム スクリプト拡張機能の場合、スクリプトで他の拡張機能が完了するまで待機できます 。 拡張機能の実行順序についての詳しいガイダンスについては、[Azure の仮想マシン スケール セットで拡張機能が実行される順序](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)に関するブログ記事を参照してください。
 
 **Q.** Scale Sets は、Azure 可用性セットと連携できますか?
 
