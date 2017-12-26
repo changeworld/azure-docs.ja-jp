@@ -37,10 +37,14 @@
           items:
             - name: Java
               href: quick-enroll-device-tpm-java.md
+            - name: Node.js
+              href: quick-enroll-device-tpm-node.md
         - name: X.509
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
+            - name: Node.js
+              href: quick-enroll-device-x509-node.md
 - name: Tutorials (チュートリアル)
   items:
     - name: 1 - クラウド リソースを設定する
@@ -67,6 +71,8 @@
           href: how-to-manage-enrollments.md
         - name: Service SDK でデバイス登録を管理する
           href: how-to-manage-enrollments-sdks.md
+    - name: デバイス アクセスの取り消し
+      href: how-to-revoke-device-access-portal.md
     - name: SDK での HSM の使用
       href: use-hsm-with-sdk.md
     - name: Provisioning Service へのアクセスの制御

@@ -79,6 +79,8 @@
           href: concepts-on-premises-to-azure-networking.md
         - name: フェールオーバー後のセカンダリ サイトへのアクセスに使用する IP アドレスを設定する
           href: concepts-on-premises-to-on-premises-networking.md
+        - name: オンプレミスから Azure へのシナリオでネットワーク インターフェイスを管理する
+          href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
     - name: ディザスター リカバリー
       items:
         - name: Hyper-V VM を Azure に

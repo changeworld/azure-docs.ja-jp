@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/11/2017
+ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 7c320c6ba51ae0800407aab7aee92c42b2b441a7
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Azure Stack Development Kit のデプロイ
 
@@ -104,7 +104,7 @@ ASDK ホスト コンピューターの準備ができたら、次の手順で A
 1. ホスト コンピューターが CloudBuilder.vhdx イメージで正常に起動した後、前の手順で指定した管理者資格情報を使用してログインします。 
 2. 管理者特権で PowerShell コンソールを開き、**\AzureStack_Installer\asdk-installer.ps1** スクリプト (現時点では CloudBuilder.vhdx イメージの別のドライブにある可能性があります) を実行します。 **[インストール]**をクリックします。
 3. **[タイプ]** ドロップダウン ボックスで、**[Azure クラウド]** または **[AD FS]** を選択します。
-    - **Azure クラウド**: Azure Active Directory (Azure AD) を ID プロバイダーとして構成します。 このオプションを使用するには、インターネット接続、*domainname*.onmicrosoft.com 形式の Azure AD ディレクトリ テナントのフル ネーム、および指定したディレクトリのグローバル管理者資格情報が必要です。 
+    - **Azure クラウド**: Azure Active Directory (Azure AD) を ID プロバイダーとして構成します。 このオプションを使用するには、インターネット接続、Azure AD ディレクトリ テナントのフル ネーム (*domainname*.onmicrosoft.com 形式) または Azure AD 確認済みドメイン名、および指定したディレクトリのグローバル管理者資格情報が必要です。 
     - **AD FS**: 既定のスタンプ ディレクトリ サービスが ID プロバイダーとして使用されます。 サインインに使用する既定のアカウントは azurestackadmin@azurestack.local であり、使用するパスワードは、セットアップの一部として指定したものです。
 4. **[Local administrator password]\(ローカル管理者のパスワード\)** の **[パスワード]** ボックスに、(現在の構成済みのローカル管理者パスワードと同じ) ローカル管理者パスワードを入力し、**[次へ]** をクリックします。
 5. 開発キットに使用するネットワーク アダプターを選択して、**[次へ]** をクリックします。
@@ -206,7 +206,7 @@ Azure AD ID が **2 つ以上**の Azure AD ディレクトリに関連付けら
 cd C:\CloudDeployment\Setup 
 $adminpass = Get-Credential Administrator 
 $aadcred = Get-Credential "<Azure AD global administrator account name>" #Example: user@AADDirName.onmicrosoft.com 
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<specific Azure AD directory in the form of domainname.onmicrosoft.com>" -TimeServer 52.168.138.145 #Example time server IP address.
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<Azure AD directory in the form of domainname.onmicrosoft.com or an Azure AD verified custom domain name>" -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 
 自分の環境で DHCP を有効にして**いない**場合は、上のいずれかのオプションに以下の追加パラメーターを含める必要があります (使用例を示しています)。 
@@ -219,7 +219,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 |パラメーター|必須/省略可能|説明|
 |-----|-----|-----|
 |AdminPassword|必須|開発キットのデプロイの一環として作成されたすべての仮想マシンのローカル管理者アカウントと他のすべてのユーザー アカウントを設定します。 このパスワードは、ホスト上の現在のローカル管理者パスワードと一致する必要があります。|
-|InfraAzureDirectoryTenantName|必須|テナント ディレクトリを設定します。 このパラメーターを使用して、AAD アカウントに複数のディレクトリを管理するアクセス許可がある特定のディレクトリを指定します。 .onmicrosoft.com 形式の、AAD ディレクトリ テナントの完全名です。|
+|InfraAzureDirectoryTenantName|必須|テナント ディレクトリを設定します。 このパラメーターを使用して、AAD アカウントに複数のディレクトリを管理するアクセス許可がある特定のディレクトリを指定します。 AAD ディレクトリ テナントのフル ネーム (.onmicrosoft.com 形式) または Azure AD 確認済みカスタム ドメイン名。|
 |TimeServer|必須|このパラメーターを使用して、特定のタイム サーバーを指定します。 このパラメーターは、有効なタイム サーバーの IP アドレスとして指定する必要があります。 サーバー名はサポートされていません。|
 |InfraAzureDirectoryTenantAdminCredential|省略可能|Azure Active Directory のユーザー名とパスワードを設定します。 これらの Azure 資格情報は、組織 ID である必要があります。|
 |InfraAzureEnvironment|省略可能|この Azure Stack デプロイを登録する Azure 環境を選択します。 オプションには、パブリック Azure、Azure China、Azure US Government などがあります。|

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 1eddd18e9b5ac0b4cb174e635f0f3cfd2f41059d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fe50f159baedf5455c2ea3cfe825d6d826e70851
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポート
 生成された Microsoft Excel レポートには、次のシートが含まれています。
@@ -234,8 +234,8 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 * VM サイズの合計 (レプリケーション + テスト フェールオーバー) が、サポートされているストレージ アカウントの上限サイズ (35 TB) を超えている。 これは通常、VM にあるいずれか 1 台のディスクのパフォーマンス特性が、Azure または Site Recovery でサポートされる Standard ストレージの上限を超えている場合に発生します。 そのような VM は Premium Storage の領域に分類されます。 一方、Premium ストレージ アカウントでサポートされる最大サイズは 35 TB です。保護対象となる単一の VM を複数のストレージ アカウントにまたがって保護することはできません。 また、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されることに注意してください。 この場合、レプリケーションの進行と同時にテスト フェールオーバーが正常完了するためには、対象となるディスク サイズの 2 倍の容量をセットアップする必要があります。
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (ディスクあたり 5,000 IOPS) を超えている。
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (VM あたり 80,000 IOPS) を超えている。
-* 平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (ディスクの平均 I/O サイズで 10 MBps) を超えている。
-* VM 上の全ディスクにおけるトータルなデータ変更頻度が、Site Recovery でサポートされるデータ変更頻度の上限 (VM あたり 54 MBps) を超えている。
+* 平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (ディスクの平均 I/O サイズで 10 MB/秒) を超えている。
+* VM 上の全ディスクにおけるトータルなデータ変更頻度が、Site Recovery でサポートされるデータ変更頻度の上限 (VM あたり 54 MB/秒) を超えている。
 * 平均実効書き込み IOPS が、Site Recovery でサポートされるディスク IOPS の上限 (840) を超えている。
 * 算出されたスナップショット ストレージが、スナップショット ストレージに関してサポートされている上限 (10 TB) を超えている。
 
@@ -263,12 +263,12 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
  
 **レプリケーション先のストレージ** | **レプリケーション元の平均ディスク I/O サイズ** |**レプリケーション元ディスクの平均データ変更頻度** | **レプリケーション元ディスクの 1 日あたりのデータ変更頻度合計**
 ---|---|---|---
-Standard Storage | 8 KB | 2 MBps | (ディスクあたり) 168 GB
-Premium P10 または P15 ディスク | 8 KB  | 2 MBps | (ディスクあたり) 168 GB
-Premium P10 または P15 ディスク | 16 KB | 4 MBps |  (ディスクあたり) 336 GB
-Premium P10 または P15 ディスク | 32 KB 以上 | 8 MBps | (ディスクあたり) 672 GB
-Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MBps | (ディスクあたり) 421 GB
-Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |10 MBps | (ディスクあたり) 842 GB
+Standard Storage | 8 KB | 2 MB/秒 | (ディスクあたり) 168 GB
+Premium P10 または P15 ディスク | 8 KB  | 2 MB/秒 | (ディスクあたり) 168 GB
+Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |  (ディスクあたり) 336 GB
+Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスクあたり) 672 GB
+Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
+Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |10 MB/s | (ディスクあたり) 842 GB
 
 前述の数値は、I/O のオーバーラップを 30% とした場合の平均値です。 Site Recovery は、オーバーラップ比に基づくより高いスループットと、より大きな書き込みサイズ、そして実ワークロード I/O 動作を扱うことができます。 上記の数値には、標準的なバックログとして約 5 分が想定されています。 つまりデータはアップロード後 5 分以内に処理されて復旧ポイントが作成されます。
 
