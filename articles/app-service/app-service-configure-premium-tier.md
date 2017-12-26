@@ -124,7 +124,7 @@ az appservice plan create \
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-次のコマンドは、App Service プランを _P1V2_ で作成します。 `-WorkerSize` のオプションは _[小]_、_[中]_、および _[大]_ です。
+次のコマンドは、App Service プランを _P1V2_ で作成します。 `-WorkerSize` のオプションは _[Small]_、_[Medium]_、および _[Large]_ です。
 
 ```PowerShell
 New-AzureRmAppServicePlan -ResourceGroupName <resource_group_name> `
