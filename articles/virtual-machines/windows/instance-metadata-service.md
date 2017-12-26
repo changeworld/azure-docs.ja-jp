@@ -24,28 +24,28 @@ ms.lasthandoff: 10/12/2017
 
 
 Azure Instance Metadata Service は、実行中の仮想マシン インスタンスに関する情報を提供します。これらの情報を使用して仮想マシンの管理と構成を行うことができます。
-取得可能な情報として SKU、ネットワークの構成、今後のメンテナンス イベントなどが含まれます。 使用できる情報の種類の詳細については、「[メタデータ のカテゴリ](#instance-metadata-data-categories)」を参照してください。
+SKU、ネットワークの構成、今後のメンテナンス イベントなどの情報が含まれます。 使用できる情報の種類の詳細については、「[メタデータ のカテゴリ](#instance-metadata-data-categories)」を参照してください。
 
-Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) を使用して作成されたすべての IaaS VM からアクセス可能な REST エンドポイントです。 このエンドポイントは、VM からのみアクセスすることができる、外部へルーティングされない IP アドレス (`169.254.169.254`) で提供されています。
+Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) を使用して作成されたすべての IaaS VM にアクセスできる REST エンドポイントです。 このエンドポイントは、VM からのみアクセスすることができる、よく知られているルーティング不可能な IP アドレス (`169.254.169.254`) で使用できます。
 
 > [!IMPORTANT]
-> このサービスは、すべての Azure リージョンで**一般公開 (GA)** されています。  仮想マシン インスタンスに関する新しい情報を公開する更新が定期的に行われています。 このページは、使用できる最新の[データ カテゴリ](#instance-metadata-data-categories)を反映しています。
+> このサービスは、すべての Azure リージョンで**一般公開**されています。  仮想マシン インスタンスに関する新しい情報を公開する更新が定期的に行われています。 このページは、使用できる最新の[データ カテゴリ](#instance-metadata-data-categories)を反映しています。
 
 ## <a name="service-availability"></a>サービスの提供状況
-このサービスは、一般公開 (GA) されているすべての Azure リージョンで使用できます。 但し、すべての API バージョンが、すべての Azure リージョンで利用可能なわけではありません。
+このサービスは、一般公開されているすべての Azure リージョンで使用できます。 すべての API バージョンが、すべての Azure リージョンで利用可能なわけではありません。
 
-地域                                        | 提供状況                                 | サポートされている API バージョン
+リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
-[一般公開 (GA) 済みのすべての Azure リージョン](https://azure.microsoft.com/regions/)     | GA | 2017-04-02、2017-08-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | GA | 2017-04-02
-[Azure China](https://www.azure.cn/)                                                           | GA | 2017-04-02
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | GA | 2017-04-02
+[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 |
+[Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02
 
-この表は、サービスのアップデートが行われた場合や、新しくサポートされる API バージョンが利用可能になった場合に、更新されます。
+この表は、サービスが更新された場合や、バージョンが新しくサポートされた場合に更新されます。
 
 Instance Metadata Service を試すには、上記のリージョンで [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) または [Azure ポータル](http://portal.azure.com)から VM を作成し、この後の例に従います。
 
-## <a name="usage"></a>利用方法
+## <a name="usage"></a>使用法
 
 ### <a name="versioning"></a>バージョン管理
 インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須であり、Global Azure の現在のバージョンは `2017-08-01` です。 現在サポートされているバージョンは ( 2017-04-02、2017-08-01 ) です。
