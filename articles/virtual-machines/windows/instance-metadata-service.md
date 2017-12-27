@@ -31,17 +31,17 @@ Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.micr
 > [!IMPORTANT]
 > このサービスは、すべての Azure リージョンで**一般公開**されています。  仮想マシン インスタンスに関する新しい情報を公開する更新が定期的に行われています。 このページは、使用できる最新の[データ カテゴリ](#instance-metadata-data-categories)を反映しています。
 
-## <a name="service-availability"></a>サービスの可用性
+## <a name="service-availability"></a>サービスの提供状況
 このサービスは、一般公開されているすべての Azure リージョンで使用できます。 すべての API バージョンが、すべての Azure リージョンで利用可能なわけではありません。
 
-地域                                        | 可用性                                 | サポートされているバージョン
+リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
 [一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02
 [Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02
 
-この表は、サービス更新プログラムがある場合や、新しくサポートされるバージョンが利用可能になった場合に、更新されます。
+この表は、サービスが更新された場合や、バージョンが新しくサポートされた場合に更新されます。
 
 Instance Metadata Service を試すには、上記のリージョンで [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) または [Azure ポータル](http://portal.azure.com)から VM を作成し、この後の例に従います。
 
