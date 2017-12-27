@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92816a5b1a74be5b64d974ad9ade47374db5db10
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ VM の NSG のトラブルシューティングを行うには、次の手順を
 
 NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧できます。 操作を行う権限を持っていれば、有効な規則のブレードから NIC とサブネット両方の NSG ルールを追加、変更、削除できます。
 
-1. https://portal.azure.com で Azure ポータルにログインします。
+1. Azure アカウントを使用して Azure ポータル (https://portal.azure.com) にログインします。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
 2. **[その他のサービス]** をクリックし、表示される一覧で **[仮想マシン]** をクリックします。
 3. 表示される一覧からトラブルシューティングを実行する VM を選択すると、VM のブレードとオプションが表示されます。
 4. **[問題の診断と解決]** をクリックし、一般的な問題を選択します。 例として、 **[Windows VM に接続できません]** を選択します。 
