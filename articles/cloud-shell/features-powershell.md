@@ -31,15 +31,15 @@ Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` で実
 
 ## <a name="features"></a>Features (機能)
 
-### <a name="secure-automatic-authentication"></a>自動認証をセキュリティで保護する
+### <a name="secure-automatic-authentication"></a>セキュリティで保護された自動認証
 
 Cloud Shell (プレビュー) での PowerShell は、Azure PowerShell のアカウント アクセスを安全かつ自動的に認証します。
 
 ### <a name="files-persistence-across-sessions"></a>セッション間でのファイルの永続化
 
 セッション間でファイルを保持する場合、Cloud Shell の初回起動時に、Microsoft Azure ファイル共有のアタッチについてのチュートリアルがあります。
-チュートリアルが完了すると、今後のすべてのセッションで、記憶域 (`$home\clouddrive` としてマウントされる) が自動的にアタッチされます。
-Cloud Shell に対する各要求は一時的なマシンを割り当てるので、`$home\clouddrive` の外のファイルやマシンの状態は、セッション間で保持されません。
+完了すると、今後すべてのセッションで、ストレージが自動的にアタッチされます (`$home\clouddrive` としてマウントされます) 。
+Cloud Shell ではそれぞれの要求に応じて一時的なマシンが割り当てられるため、`$home\clouddrive` 外のファイルやマシンの状態は、セッション間で保持されません。
 
 [Azure ファイル共有を Cloud Shell にアタッチする方法の詳細について説明します。](persisting-shell-storage-powershell.md)
 
@@ -58,23 +58,23 @@ Azure リソースに対するすべての変更は、Azure Portal で直接行�
 
     ![](media/features-powershell/resource-group-autocomplete.png)
 
-- **Get-AzureRmCommand**: このコマンドレットは、Azure ドライブ (`Azure:`) 下の場所のコンテキストで使用できるコマンドの一覧を返します。 たとえば、ユーザーが `Azure:\<subscription name>\StorageAccounts` にいるときは、ストレージ関連のコマンドのみを表示します。
+- **Get-AzureRmCommand**: このコマンドレットは、Azure ドライブ (`Azure:`) 下のその場所のコンテキストで使用できるコマンドの一覧を返します。 たとえば、ユーザーが `Azure:\<subscription name>\StorageAccounts` にいるときは、ストレージ関連のコマンドのみを表示します。
 
     ![](media/features-powershell/get-azurermcommand.png)
 
 ### <a name="rich-powershell-script-editing"></a>リッチな PowerShell スクリプトの編集
 
-VIM を使って PowerShell のファイル (`.ps1,.psm1,.psd1`) を編集すると、構文の強調表示と IntelliSense のサポートが自動的に得られます。
+PowerShell のファイル (`.ps1,.psm1,.psd1`) の編集に VIM を利用する場合、シンタックス ハイライトと IntelliSense が利用できます。
 IntelliSense のサポートは、[PowerShell エディター サービス](https://github.com/PowerShell/PowerShellEditorServices)のローカル インスタンスと対話する VIM プラグインを使って実装されています。
 
 > [!TIP]
-> `TAB` キーを使って、コマンド名、パラメーター名、およびパラメーター値 (該当する場合) の入力候補 (IntelliSense) を取得します。
+> `TAB` キーを使用すると、コマンド名、パラメーター名、およびパラメーター値 (該当する場合) の候補が表示されます (IntelliSense)。
 
 ![](media/features-powershell/powershell-editing-vim.png)
 
 ### <a name="extensible-model"></a>拡張可能なモデル
 
-[PowerShellGet](https://docs.microsoft.com/powershell/module/powershellget) を使うと、[PowerShell ギャラリー](https://www.powershellgallery.com)からカスタム モジュールとスクリプトを簡単にインストール (および更新) できます。
+-[PowerShellGet](https://docs.microsoft.com/powershell/module/powershellget) を使うと、[PowerShell ギャラリー](https://www.powershellgallery.com)からカスタム モジュールとスクリプトを簡単にインストール (および更新) できます。
 インストール後、モジュールは自動的に Cloud Shell セッション間で永続化されます。
 
 > [!TIP]
