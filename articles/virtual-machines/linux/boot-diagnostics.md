@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 08/21/2017
 ms.author: delhan
-ms.openlocfilehash: 79e412bd7523a55fc7d081121af9434520868880
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 70254d39b5c6326166f7e29fdfc99533835502f9
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>ブート診断を使用して、Azure の Linux 仮想マシンをトラブルシューティングする方法
 

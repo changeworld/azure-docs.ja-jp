@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: 64db243400fed063d1336c448ed6991877cca72d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: aea5db05843b0175b8ef8b713944e12262e33010
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Azure での新しい Linux 仮想マシンの作成に関する Resource Manager デプロイメントの問題のトラブルシューティング
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
