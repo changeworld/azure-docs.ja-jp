@@ -31,7 +31,7 @@
           href: connect-go.md
         - name: MySQL Workbench
           href: connect-workbench.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - データベースの設計
       items:
@@ -107,11 +107,13 @@
           href: concepts-migrate-dump-restore.md
         - name: インポートとエクスポート
           href: concepts-migrate-import-export.md
+        - name: 最小限のダウンタイムでの移行
+          href: howto-migrate-online.md
     - name: アプリケーションの接続
       items:
         - name: ユーザーの作成
           href: howto-create-users.md
-        - name: 接続文字列
+        - name: Connection strings
           href: howto-connection-string.md
         - name: SSL の構成
           href: howto-configure-ssl.md
@@ -125,7 +127,7 @@
           href: howto-configure-server-parameters-using-cli.md
     - name: サーバー ログへのアクセス
       items:
-        - name: Azure Portal
+        - name: Azure ポータル
           href: howto-configure-server-logs-in-portal.md
         - name: Azure CLI
           href: howto-configure-server-logs-in-cli.md

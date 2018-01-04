@@ -122,7 +122,7 @@ Verizon プロファイルの管理ポータルから Verizon コア レポー�
 * キャッシュできないことがヘッダーで示された資産の要求。 たとえば、`Cache-Control: private`、`Cache-Control: no-cache`、または `Pragma: no-cache` ヘッダーでは資産をキャッシュできません。
 * 部分的にキャッシュされた内容のバイト範囲要求。
 
-数式は次のとおりです: (TCP_ HIT/(TCP_ HIT+TCP_MISS))*100
+数式は次のとおりです: (TCP_ HIT/(TCP_ HIT+TCP_MISS))* 100
 
 ![キャッシュ ヒット率レポート](./media/cdn-reports/cdn-cache-hit-ratio.png)
 

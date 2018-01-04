@@ -68,7 +68,7 @@ URL Rewrite Module of IIS を使って、クラウド サービスの既定の U
 
 ## <a name="how-can-i-blockdisable-the-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>どうすれば自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にできますか。 
 
-自分のクラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックは、下記のように、クラウド サービス定義 (*.csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタムの DNS 名 (例: www.MyCloudService.com) に設定することにより、回避できます。 
+自分のクラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックは、下記のように、クラウド サービス定義 (* .csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタムの DNS 名 (例: www.MyCloudService.com) に設定することにより、回避できます。 
  
 
     <?xml version="1.0" encoding="utf-8"?> 
@@ -90,7 +90,7 @@ URL Rewrite Module of IIS を使って、クラウド サービスの既定の U
       </WebRole> 
     </ServiceDefinition> 
  
-このホスト ヘッダー バインドは csdef ファイルを介して強制されるので、サービスはカスタム名 'www.MyCloudService.com' を介してのみアクセス可能となり、'*.cloudapp.net' ドメインへのすべての着信要求は常に失敗します。 ただし、サービス内でカスタム SLB プローブまたは内部ロード バランサーを使用している場合は、サービスの既定の URL や名前をブロックすると、プローブの動作を妨害する可能性があります。 
+このホスト ヘッダー バインドは csdef ファイルを介して強制されるので、サービスはカスタム名 'www.MyCloudService.com' を介してのみアクセス可能となり、'* .cloudapp.net' ドメインへのすべての着信要求は常に失敗します。 ただし、サービス内でカスタム SLB プローブまたは内部ロード バランサーを使用している場合は、サービスの既定の URL や名前をブロックすると、プローブの動作を妨害する可能性があります。 
 
 ## <a name="how-to-make-sure-the-public-facing-ip-address-of-a-cloud-service-aka-vip-never-changes-so-that-it-could-be-customarily-whitelisted-by-few-specific-clients"></a>クラウド サービスのパブリックに公開された IP アドレス (別名、VIP) を変わらないようにして、特定のクライアントによって常にホワイトリストに登録できるようにするにはどうすればよいですか。
 

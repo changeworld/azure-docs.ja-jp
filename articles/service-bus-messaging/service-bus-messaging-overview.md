@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 08/30/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 462fa0a6e86237b8c9d9ba97aa377f8d112a8b8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e299ccfe587d37757cd67cb4367f019b21a09b4a
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="service-bus-messaging-flexible-data-delivery-in-the-cloud"></a>Service Bus メッセージング: クラウドの柔軟なデータ配信
 
@@ -48,7 +48,7 @@ Service Bus のメッセージング インフラストラクチャの中心的�
 
 ブローカー メッセージング機能は WCF Relay インフラストラクチャと同様、WCF と .NET Framework プログラマに提供され、REST からも提供されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

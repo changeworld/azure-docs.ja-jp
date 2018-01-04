@@ -2,24 +2,19 @@
 title: "Azure クイックスタート - Python を使用して Azure Blob Storage との間でオブジェクトを転送する | Microsoft Docs"
 description: "Python を使って Azure Blob Storage との間で双方向にオブジェクトを転送する方法を説明します"
 services: storage
-documentationcenter: storage
 author: ruthogunnnaike
-manager: cwatson
-editor: tysonn
-ms.assetid: 
-ms.custom: mvc
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/12/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 4a197af41f5450d84e1c18e15198d1febb02bab1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 50f43e6ef9ee60cbf489bb8d0c1c64ca61a393e1
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/02/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>Python を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイックスタートでは、Python を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 
@@ -52,7 +47,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git
 block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
 ```
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 このサンプルでは、"ドキュメント" フォルダーにテスト ファイルを作成します。 サンプル プログラムは、Blob Storage にテスト ファイルをアップロードし、コンテナー内の BLOB を一覧表示し、新しい名前を付けてファイルをダウンロードします。 
 
 サンプルを実行します。 次の出力は、アプリケーションを実行するときに返される出力の例です。
@@ -166,7 +161,7 @@ os.remove(full_path_to_file)
 os.remove(full_path_to_file2)
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  
 このクイックスタートでは、Python を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 

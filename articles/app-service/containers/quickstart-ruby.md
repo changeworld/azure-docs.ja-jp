@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b609756f6fcea2a57210889d8082ffb45cbc92de
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 29c2f897cbc5affcd6b2a70ec95a1a8855a5db69
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>App Service on Linux での Ruby アプリの作成
 
@@ -96,13 +96,13 @@ Web アプリに必要なアセットを格納するリソース グループが
 az group create --location westeurope --name myResourceGroup
 ```
 
-[az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) コマンドで、Web アプリの App Service プランを作成します。
+[az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) コマンドで、Web アプリの App Service プランを作成します。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
 ```
 
-次に、[az webapp create](https://docs.microsoft.com/cli/azure/webapp) コマンドを発行して、新しく作成されたサービス プランを使用する Web アプリを作成します。 ランタイムが `ruby|2.3` に設定されていることに注意してください。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
+次に、[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを発行して、新しく作成されたサービス プランを使用する Web アプリを作成します。 ランタイムが `ruby|2.3` に設定されていることに注意してください。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> \
@@ -147,7 +147,7 @@ To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
 myuser@ubuntu1234:~workspace/<app name>$
 ```
 
-デプロイが完了したら、次に示すように [az webapp restart](https://docs.microsoft.com/cli/azure/webapp#az_webapp_restart) コマンドを使用して Web アプリを再起動してデプロイが有効になるようにします。
+デプロイが完了したら、次に示すように [az webapp restart](/cli/azure/webapp?view=azure-cli-latest#az_webapp_restart) コマンドを使用して Web アプリを再起動してデプロイが有効になるようにします。
 
 ```azurecli-interactive
 az webapp restart --name <app name> --resource-group myResourceGroup
@@ -167,6 +167,6 @@ http://<app name>.azurewebsites.net
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure App Service on Linux の FAQ](https://docs.microsoft.com/azure/app-service-web/app-service-linux-faq)

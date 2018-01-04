@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 8391199fe4045ffdb5091cda69d50f592a4bfb83
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c4c9c94d369e0ed1ddbfe31484f55b0d276918d3
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Azure Portal を使用した Relay 名前空間の作成
 
@@ -31,9 +31,10 @@ ms.lasthandoff: 12/21/2017
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-ご利用ありがとうございます。 これで、リレー名前空間を作成できました。
+お疲れさまでした。 これで、リレー名前空間を作成できました。
 
-## <a name="next-steps"></a>次のステップ:
+## <a name="next-steps"></a>次の手順
+
 * [Relay に関する FAQ](relay-faq.md)
 * [.NET を使って作業を開始する](relay-hybrid-connections-dotnet-get-started.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)

@@ -23,12 +23,13 @@
 ### [データベース ユーザーの管理](analysis-services-database-users.md)
 ### [サーバー管理者の管理](analysis-services-server-admins.md)
 ### [サーバー メトリックの監視](analysis-services-monitor.md)
+### [診断ログのセットアップ](analysis-services-logging.md)
 ## 接続
 ### [クライアント ライブラリの取得](analysis-services-data-providers.md)
 ### [Excel を使用した接続](analysis-services-connect-excel.md)
 ### [Power BI を使用した接続](analysis-services-connect-pbi.md)
 ### [.odc ファイルの作成](analysis-services-odc.md)
-## Tutorials (チュートリアル)
+## チュートリアル
 ### [Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)
 ### [レッスン 1: 新しい表形式モデル プロジェクトを作成する](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 ### [レッスン 2: データを取得する](tutorials/aas-lesson-2-get-data.md)
@@ -49,7 +50,7 @@
 
 # リファレンス
 ## [Azure PowerShell](analysis-services-powershell.md)
-## [REST ()](/rest/api/analysisservices)
+## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)

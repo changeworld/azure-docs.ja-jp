@@ -95,6 +95,8 @@
           href: howto-migrate-using-dump-and-restore.md
         - name: インポートとエクスポート
           href: howto-migrate-using-export-and-import.md
+        - name: 最小限のダウンタイムでの移行
+          href: howto-migrate-online.md
     - name: サーバー パラメーターの構成
       items:
         - name: Azure ポータル
@@ -103,7 +105,7 @@
           href: howto-configure-server-parameters-using-cli.md
     - name: サーバー ログへのアクセス
       items:
-        - name: Azure Portal
+        - name: Azure ポータル
           href: howto-configure-server-logs-in-portal.md
         - name: Azure CLI
           href: howto-configure-server-logs-using-cli.md

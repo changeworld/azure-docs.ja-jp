@@ -67,7 +67,7 @@
           href: create-cassandra-dotnet.md
         - name: Python
           href: create-cassandra-python.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - 作成
       items:
@@ -123,7 +123,7 @@
           href: local-emulator-export-ssl-certificates.md
     - name: 6 - Functions との統合
       items:
-        - name: HTTP trigger
+        - name: HTTP トリガー
           href: tutorial-functions-http-trigger.md
 - name: サンプル
   items:
@@ -143,7 +143,7 @@
       href: unique-keys.md
     - name: 整合性
       href: consistency-levels.md
-    - name: スループット
+    - name: Throughput
       href: request-units.md
     - name: マルチモデルの API
       items:
@@ -187,15 +187,17 @@
               href: programming.md
             - name: パフォーマンス テスト
               href: performance-testing.md
-            - name: パフォーマンスに関するヒント
+            - name: .NET のパフォーマンスに関するヒント
               href: performance-tips.md
+            - name: Java のパフォーマンスに関するヒント
+              href: performance-tips-java.md
             - name: 複数のマスターのセットアップ
               href: multi-region-writers.md
             - name: DateTime
               href: working-with-dates.md
             - name: ドキュメント データのモデリング
               href: modeling-data.md
-            - name: Tutorials (チュートリアル)
+            - name: チュートリアル
               items:
                 - name: 最初のアプリを記述する
                   items:
@@ -318,7 +320,7 @@
           href: indexing-policies.md
         - name: Visual Studio での接続済みサービス
           href: connected-service.md
-    - name: 管理
+    - name: '[管理]'
       items:
         - name: コスト効率の優れた読み取りと書き込み
           href: key-value-store-cost.md
