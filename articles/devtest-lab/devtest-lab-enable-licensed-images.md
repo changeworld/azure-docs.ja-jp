@@ -3,7 +3,7 @@ title: "Azure DevTest Labs でのラボのライセンスされたイメージ�
 description: "Azure Portal を使って Azure DevTest Labs でライセンスされたイメージを有効にする方法について説明します"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 221390d2-8d3b-4e1f-b454-43d33f8072b7
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: tarcher
-ms.openlocfilehash: a74eff05285602574e45703dbe5b6caf074adecd
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.author: v-craic
+ms.openlocfilehash: 3c969495454db2cd301fc985e512531ef0d4b103
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのライセンスされたイメージの有効化
 
@@ -74,13 +74,13 @@ Azure DevTest Labs では、ライセンスされたイメージとは、イメ�
    >
 
 
-1. [ **保存**] を選択します。 Marketplace イメージの一覧で、イメージに **[同意した条件]** が表示され、ユーザーが仮想マシンを作成するために使用できるようになります。
+1. **[保存]** を選択します。 Marketplace イメージの一覧で、イメージに **[同意した条件]** が表示され、ユーザーが仮想マシンを作成するために使用できるようになります。
 
 ## <a name="related-blog-posts"></a>関連するブログ記事
 
 - [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [VM をラボに追加する](./devtest-lab-add-vm-with-artifacts.md)
+- [VM をラボに追加する](devtest-lab-add-vm.md)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c309c7c25a3ed75e96dec8046934530e24890f38
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: d06dd0a8ec63202825be347c4b69e21a6dd4b7db
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -30,12 +30,12 @@ ms.lasthandoff: 11/16/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
+この記事のいずれかのセクションの手順を実行する前に、次のタスクを完了します。
 
 - [Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事で、パブリック IP アドレスおよびプライベート IP アドレスの制限について確認します。
 - Azure アカウントを使って、Azure [Portal](https://portal.azure.com)、Azure コマンド ライン インターフェイス (CLI)、または Azure PowerShell にログインします。 まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure PowerShell をインストールして構成します](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
-- Azure コマンド ライン インターフェイス (CLI) のコマンドを使ってこの記事のタスクを実行する場合は、[Azure CLI をインストールして構成します](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure CLI がインストールされていることを確認してください。 CLI コマンドのヘルプを表示するには、「`az <command> --help`」と入力します。 CLI とその前提条件をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 Cloud Shell を使うには、[ポータル](https://portal.azure.com)の上部にある [Cloud Shell**> _**] ボタンをクリックします。
+- Azure コマンド ライン インターフェイス (CLI) のコマンドを使ってこの記事のタスクを実行する場合は、[Azure CLI をインストールして構成します](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure CLI がインストールされていることを確認してください。 CLI コマンドのヘルプを表示するには、「`az <command> --help`」と入力します。 CLI とその前提条件をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 Cloud Shell を使うには、[ポータル](https://portal.azure.com)の上部にある [Cloud Shell**>_**] ボタンをクリックします。
 
 ## <a name="add-ip-addresses"></a>IP アドレスを追加する
 
@@ -50,10 +50,10 @@ ms.lasthandoff: 11/16/2017
 
     |設定|必須|詳細|
     |---|---|---|
-    |名前|あり|ネットワーク インターフェイスについて一意である必要があります|
-    |型|あり|IP 構成を既存のネットワーク インターフェイスに追加しており、各ネットワーク インターフェイスには必ず[プライマリ](#primary) IP 構成があるため、選ぶことができるオプションは **[セカンダリ]** のみです。|
-    |プライベート IP アドレスの割り当て方法|あり|[**動的**](#dynamic): Azure により、ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で次に利用可能なアドレスが割り当てられます。 [**静的**](#static): ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で未使用のアドレスを自分で割り当てます。|
-    |パブリック IP アドレス|なし|**[無効]:** パブリック IP アドレス リソースは現在 IP 構成に関連付けられていません。 **[有効]:** 既存の IPv4 パブリック IP アドレスを選択するか、新しく作成します。 パブリック IP アドレスの作成方法については、「[Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address)」(パブリック IP アドレス) の記事をご覧ください。|
+    |Name|[はい]|ネットワーク インターフェイスについて一意である必要があります|
+    |type|[はい]|IP 構成を既存のネットワーク インターフェイスに追加しており、各ネットワーク インターフェイスには必ず[プライマリ](#primary) IP 構成があるため、選ぶことができるオプションは **[セカンダリ]** のみです。|
+    |プライベート IP アドレスの割り当て方法|[はい]|[**動的**](#dynamic): Azure により、ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で次に利用可能なアドレスが割り当てられます。 [**静的**](#static): ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で未使用のアドレスを自分で割り当てます。|
+    |パブリック IP アドレス|いいえ |**[無効]:** パブリック IP アドレス リソースは現在 IP 構成に関連付けられていません。 **[有効]:** 既存の IPv4 パブリック IP アドレスを選択するか、新しく作成します。 パブリック IP アドレスの作成方法については、「[Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address)」(パブリック IP アドレス) の記事をご覧ください。|
 7. 「[VM オペレーティング システムに IP アドレスを追加する](virtual-network-multiple-ip-addresses-portal.md#os-config)」の手順に従って、セカンダリ プライベート IP アドレスを仮想マシンのオペレーティング システムに手動で追加します。 仮想マシンのオペレーティング システムに IP アドレスを手動で追加する前の特別な考慮事項については、「[プライベート](#private)」を参照してください。 仮想マシンのオペレーティング システムにパブリック IP アドレスは追加しないでください。
 
 **コマンド**
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/16/2017
 
 ## <a name="change-ip-address-settings"></a>IP アドレス設定を変更する
 
-IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変更、またはネットワーク インターフェイスに割り当てられたパブリック IP アドレスの変更が必要になることがあります。 仮想マシンのセカンダリ ネットワーク インターフェイスに関連付けられているセカンダリ IP 構成のプライベート IPv4 アドレスを変更する場合は (詳細については、[プライマリとセカンダリのネットワーク インターフェイス](virtual-network-network-interface-vm.md#about)に関する記事を参照)、仮想マシンを停止 (割り当て解除) 状態にしてから、次の手順を実行します。 
+IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変更、またはネットワーク インターフェイスに割り当てられたパブリック IP アドレスの変更が必要になることがあります。 仮想マシンのセカンダリ ネットワーク インターフェイスに関連付けられているセカンダリ IP 構成のプライベート IPv4 アドレスを変更する場合は (詳細については、[プライマリとセカンダリのネットワーク インターフェイス](virtual-network-network-interface-vm.md)に関する記事を参照)、仮想マシンを停止 (割り当て解除) 状態にしてから、次の手順を実行します。 
 
 1. ご利用のサブスクリプションのネットワーク作成協力者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで [Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」の記事をご覧ください。
 2. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それをクリックします。
@@ -201,7 +201,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 > [!NOTE]
 > 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を利用し、所期のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、目的のトラフィックを明示的に許可するまで、そのリソースとの通信は失敗します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 異なる IP 構成で仮想マシンを作成する方法については、次の記事をご覧ください。
 
 |タスク|ツール|

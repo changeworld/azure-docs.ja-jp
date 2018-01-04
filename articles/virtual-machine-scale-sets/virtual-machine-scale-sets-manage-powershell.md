@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 39836b207a84911d4749da8a084779d93949846b
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5b5f3eb05f0d6c10f7efe8af1b93b2cb4fc585c5
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを管理する
 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するために使用できる一般的な Azure PowerShell コマンドレットのいくつかについて詳細に説明します。
 
-これらの管理タスクを完了するには、最新の Azure PowerShell モジュールが必要です。 最新バージョンをインストールして使用する方法については、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure Portal でスケール セットを作成](virtual-machine-scale-sets-portal-create.md)できます。
+これらの管理タスクを完了するには、最新の Azure PowerShell モジュールが必要です。 最新バージョンをインストールして使用する方法については、「[Azure PowerShell を使ってみる](/powershell/azure/get-started-azureps)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure Portal でスケール セットを作成](virtual-machine-scale-sets-create-portal.md)できます。
 
 
 ## <a name="view-information-about-a-scale-set"></a>スケール セットに関する情報を表示する
@@ -60,7 +60,7 @@ $vmss = Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "my
 
 # Set and update the capacity of your scale set
 $vmss.sku.capacity = 5
-Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet $vmss 
+Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -VirtualMachineScaleSet $vmss 
 ```
 
 スケール セットの容量を更新するには数分かかります。 スケール セットの容量を減らした場合は、最も大きなインスタンス ID を持つ VM が最初に削除されます。
@@ -108,5 +108,5 @@ Remove-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScale
 ```
 
 
-## <a name="next-steps"></a>次のステップ
-スケール セットに対するその他の一般的なタスクには、[アプリケーションをデプロイする](virtual-machine-scale-sets-deploy-app.md)方法や、[VM インスタンスをアップグレードする](virtual-machine-scale-sets-upgrade-scale-set.md)方法が含まれます。 また、Azure PowerShell を使用して、[自動スケールの規則を構成する](virtual-machine-scale-sets-autoscale-overview.md)こともできます。
+## <a name="next-steps"></a>次の手順
+スケール セットに対する他の一般的なタスクとして、[アプリケーションのデプロイ](virtual-machine-scale-sets-deploy-app.md)や [VM インスタンスのアップグレード](virtual-machine-scale-sets-upgrade-scale-set.md)があります。 また、Azure PowerShell を使用して、[自動スケールの規則を構成する](virtual-machine-scale-sets-autoscale-overview.md)こともできます。

@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 11/06/2017
-ms.openlocfilehash: 79374f18d46e8e7d84772423c2cd40d9acb4d7dd
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f3b4b41593e0956e98f05c7f8d1c71632a489e56
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>あやめの分類 (パート 2): モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -373,7 +373,7 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    >リモート HDInsight クラスターで実行するときは、`admin` ユーザー アカウントを使って YARN (Yet Another Resource Negotiator) ジョブの実行情報を `https://<cluster_name>.azurehdinsight.net/yarnui` で確認することもできます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 3 部構成のチュートリアル シリーズのパート 2 では、Azure Machine Learning サービスを使って次の作業を行う方法について説明しました。
 > [!div class="checklist"]
 > * Azure Machine Learning Workbench を使用する。

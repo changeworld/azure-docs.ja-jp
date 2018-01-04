@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 458338cd23c704c40c512dd96b22a4790f27d017
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 32707a8089abef6caebedea168f5891161b1b480
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Azure Machine Learning データ準備のサポートされているデータ ソース 
 この記事では、Azure Machine Learning データ準備で現在サポートされているデータ ソースについて説明します。
@@ -59,7 +59,7 @@ ms.lasthandoff: 12/04/2017
 
 #### <a name="options"></a>オプション
 - 区切り記号
-- コメント
+- Comment (コメント)
 - headers
 - 小数点の記号
 - ファイルのエンコード
@@ -69,7 +69,7 @@ ms.lasthandoff: 12/04/2017
 タブ区切り値ファイルをストレージから読み取ります。
 
 #### <a name="options"></a>オプション
-- コメント
+- Comment (コメント)
 - headers
 - ファイルのエンコード
 - スキップする行

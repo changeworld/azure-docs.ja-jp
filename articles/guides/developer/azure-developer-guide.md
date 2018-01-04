@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 37942b7aa2fa675e316f368e8c74cb2081ba4648
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: b54b806aad1e15702d2167dcf2870ba19c4708df
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -108,7 +108,7 @@ Azure では、アプリケーション ホスティングに加え、クラウ�
 -   **Azure Cosmos DB**: 包括的な SLA により、任意の数の地理的リージョンでスループットとストレージを柔軟にスケーリングできるグローバル分散マルチモデル データベースです。 
     >**使用する場合**: アプリケーションに、明確に定義された複数の整合性モデルのドキュメント、テーブル、またはグラフ データベース (MongoDB データベースを含む) が必要な場合。 
 
-    >**開始**: [Azure Cosmos DB Web アプリをビルドします](../../cosmos-db/create-documentdb-dotnet.md)。 MongoDB 開発者でない場合は、[Azure Cosmos DB を使用した MongoDB Web アプリのビルド](../../cosmos-db/create-mongodb-dotnet.md)に関する記事をご覧ください。
+    >**開始**: [Azure Cosmos DB Web アプリをビルドします](../../cosmos-db/create-sql-api-dotnet.md)。 MongoDB 開発者でない場合は、[Azure Cosmos DB を使用した MongoDB Web アプリのビルド](../../cosmos-db/create-mongodb-dotnet.md)に関する記事をご覧ください。
 
 -   **Azure Storage**: BLOB、クエリ、ファイルなどの非リレーショナル データに対して、耐久性があり、高可用な記憶域を提供します。 Storage は、VM 向けに記憶域の基盤を提供します。
 
@@ -241,7 +241,7 @@ REST API だけでなく、多くの Azure サービスでは、次の開発プ�
 
 [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) や [Azure Media Services](../../media-services/media-services-dotnet-how-to-use.md) などのサービスには、Web およびモバイル クライアント アプリからサービスにアクセスできるクライアント側 SDK があります。
 
-### <a name="azure-resource-manager"></a>Azure リソース マネージャー 
+### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
 Azure 上でアプリを実行すると、多くの場合は複数の Azure サービスを利用します。これらのサービスはいずれも同じライフ サイクルに従い、1 つの論理ユニットとして考えることができます。 たとえば、Web アプリは Web Apps、SQL Database、Storage、Azure Redis Cache、Azure Content Delivery Network サービスを使用する可能性があります。 [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数リソースを 1 つのグループとして操作できます。 これらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
 

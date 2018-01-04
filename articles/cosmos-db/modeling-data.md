@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2016
 ms.author: arramac
-ms.openlocfilehash: 041982f251ddee7570619c0e7e61d07906aaed2f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 73e546dea2c1c102736a2043e0b67f0f2c622b18
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>NoSQL データベースのドキュメント データのモデル化
 Azure Cosmos DB のようなスキーマのないデータベースでは、データ モデルに対する変更を受け入れることはとても簡単ですが、データについて十分検討する必要があります。 
@@ -39,7 +39,7 @@ Azure Cosmos DB などのドキュメント ストア内のデータのモデル
 
 さらに詳しく説明する前に、少し戻ってリレーショナル データベースにおけるモデル化のしくみを見てみましょう。これは、多くのユーザーが慣れ親しんでいるテーマです。 次の例は、ある個人がどのようにリレーショナル データベースに格納されるかを示しています。 
 
-![リレーショナル データベース モデル](./media/documentdb-modeling-data/relational-data-model.png)
+![リレーショナル データベース モデル](./media/sql-api-modeling-data/relational-data-model.png)
 
 リレーショナル データベースを操作する際に、長年教え込まれてきたことは "正規化" です。
 
@@ -290,7 +290,7 @@ Azure Cosmos DB などのドキュメント ストア内のデータのモデル
 ### <a name="how-do-i-model-manymany-relationships"></a>多対多のリレーションシップのモデル化
 リレーショナル データベースでは、 *多対多* のリレーションシップは多くの場合、単に他のテーブルからのレコードを結合する結合テーブルを使用してモデル化されます。 
 
-![テーブルの結合](./media/documentdb-modeling-data/join-table.png)
+![テーブルの結合](./media/sql-api-modeling-data/join-table.png)
 
 ドキュメントを使用して同じ内容を複製し、次の例のようなデータ モデルを作成したくなるかもしれません。
 
@@ -395,4 +395,4 @@ Azure Cosmos DB などのドキュメント ストア内のデータのモデル
 
 Azure Cosmos DB の詳細については、サービスの[ドキュメント](https://azure.microsoft.com/documentation/services/cosmos-db/)のページを参照してください。 
 
-複数のパーティション間でデータをシャーディングする方法については、[Azure Cosmos DB でのデータのパーティション分割](documentdb-partition-data.md)に関するページを参照してください。 
+複数のパーティション間でデータをシャーディングする方法については、[Azure Cosmos DB でのデータのパーティション分割](sql-api-partition-data.md)に関するページを参照してください。 

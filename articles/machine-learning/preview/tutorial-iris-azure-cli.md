@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 8ffa1c6dd4794cbea6b2c1904e08557ba2a68ba2
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 21fb0bca08bca0fe6384bbc9ba2511f7d8b746cf
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>チュートリアル: コマンド ライン インターフェイスを使用して Iris を分類する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -68,7 +68,7 @@ PATH=$HOME/Library/Caches/AmlWorkbench/Python/bin:$PATH
 >[!TIP]
 >上の環境変数を設定することにより、好みのターミナル ウィンドウで Azure CLI を有効にできます。
 
-## <a name="step-1-log-in-to-azure"></a>手順 1. Azure へのログイン
+## <a name="step-1-log-in-to-azure"></a>手順 1. Azure にログインする
 最初に、AMLWorkbench アプリから CLI を開きます ([ファイル] > [Open Command Prompt]\(コマンド プロンプトを開く\))。 これにより、正しい Python 環境が使われて、ML CLI コマンドを使うことができるようになります。 
 
 次に、Azure リソースにアクセスして管理するための適切なコンテキストを CLI で設定する必要があります。
@@ -265,7 +265,7 @@ $ az ml service run realtime -i <web service id> -d <input data>
 az group delete --name <resource group name>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure Machine Learning プレビュー機能を使って以下のことを行う方法を学習しました。 
 > [!div class="checklist"]
 > * 実験アカウントを設定してワークスペースを作成する

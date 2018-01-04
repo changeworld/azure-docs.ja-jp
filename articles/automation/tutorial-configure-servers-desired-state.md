@@ -3,7 +3,7 @@ title: "目的の状態へのサーバーの構成と Azure Automation での誤
 description: "チュートリアル - サーバーの構成を Azure Automation DSC で管理する"
 services: automation
 documentationcenter: automation
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/25/2017
-ms.author: eslesar
+ms.author: gwallace
 ms.custom: 
-ms.openlocfilehash: 9c0a44b37ac303f3e93c54e3bf691f14ba1d65e9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c510b2244dfa85b12ed08cad9dbab75067ebe41a
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する
 
@@ -44,7 +44,7 @@ Azure Automation Desired State Configuration (DSC) を使うと、サーバー�
 * Azure PowerShell モジュール バージョン 3.6 以降。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 * DSC に関する知識。 DSC については、「[Windows PowerShell Desired State Configuration の概要](https://docs.microsoft.com/powershell/dsc/overview)」をご覧ください。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 `Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
@@ -158,7 +158,7 @@ $reports = Get-AzureRmAutomationDscNodeReport -ResourceGroupName 'MyResourceGrou
 $reports[0]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Automation DSC で管理対象ノードをオンボードにする方法は、「[Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
 * Azure Portal を使って Automation DSC を使う方法については、「[Azure Automation DSC の使用](automation-dsc-getting-started.md)」をご覧ください。

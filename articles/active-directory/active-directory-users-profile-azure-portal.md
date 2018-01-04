@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 4121f94e15d9ba938d90d72e70d7bcb49a6c1ed5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f1085a8b434aca18499e17ba1c1d086edfc302e
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Azure Active Directory でユーザーのプロファイル情報を追加または変更する
 この記事では、Azure Active Directory (Azure AD) でユーザー プロファイル情報 (プロファイル画像、電話および電子メール認証情報など) を追加する方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。
@@ -38,9 +38,8 @@ ms.lasthandoff: 12/11/2017
     ![勤務先情報を開く](./media/active-directory-users-profile-azure-portal/active-directory-create-users-profile.png)
 6. プロファイル情報を追加、または変更します。 コマンド バーで、**[保存]**を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Active Directory に新しいユーザーを追加する](active-directory-users-create-azure-portal.md)
 * [Azure Active Directory でのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)
 * [Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)
-* [Azure Active Directory でユーザーのプロファイル情報を追加または変更する](active-directory-users-work-info-azure-portal.md)
 * [Azure Active Directory でディレクトリからユーザーを削除する](active-directory-users-delete-user-azure-portal.md)

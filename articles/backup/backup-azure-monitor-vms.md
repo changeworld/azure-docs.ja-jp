@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: b9dc3f52e5fc275bc56b9964f2115833f2dde42e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebd7a886f5853ec3fa9b6e816083e9edd868ef76
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
 アラートはサービスから返され、イベントのしきい値が満たされていること、またはしきい値を超えたことを示します。 ビジネス コストを抑えるには、問題が発生したときに、それを把握することが重要です。 通常、アラートはスケジュールに基づいて発生するわけではないため、発生後にできるだけ早く通知されると便利です。 たとえば、バックアップ ジョブまたは復元ジョブが失敗した場合、エラーの発生後 5 分以内にアラートが発生します。 コンテナーのダッシュボードの [バックアップ アラート] タイルには、重大なアラートと警告レベルのアラートが発生しているイベントが表示されます。 [バックアップ アラート] 設定では、すべてのイベントを確認することができますが、 別の問題に対応しているときに、アラートが発生したらどうでしょう。 アラートが発生したことを知らなくても、大きな問題にはならないかもしれませんが、データのセキュリティ侵害につながることもあります。 アラートが発生したことを、適切なユーザーに確実に知らせるには、アラート通知を電子メールで送信するようにサービスを構成します。 電子メール通知の設定の詳細については、「[通知の構成](backup-azure-monitor-vms.md#configure-notifications)」を参照してください。
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 3. **[受信者 (メール)]** ダイアログ ボックスに、通知を受け取る電子メール アドレスを、 username@domainname.com の形式で入力します。複数の電子メール アドレスを入力する場合は、セミコロン (;) で区切ります。
 4. 指定したアラートの発生時に通知を送信するには、**[通知]** 領域で **[アラートごと]** を選択します。過去 1 時間の概要を送信するには、**[1 時間ごとのダイジェスト]** を選択します。
 5. **[重大度]** ダイアログ ボックスで、電子メール通知をトリガーする 1 つ以上のレベルを選択します。
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 
    ### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup"></a>Azure IaaS VM のバックアップに使用できるアラートの種類
    | アラート レベル | 送信されるアラート |
@@ -139,7 +139,7 @@ ms.lasthandoff: 10/11/2017
 3. **[イベント]** ブレードで、**[リセット]** をクリックして属性の一覧をリセットします。 一覧で属性を追加または削除したら、 **[リセット]** を使用して、新しいイベント属性の一覧を表示します。
 4. **[更新]** をクリックして、イベント属性のデータを更新します。 次の表は、各属性の情報を示しています。
 
-| 列名 | Description |
+| 列名 | [説明] |
 | --- | --- |
 | 操作 |操作の名前 |
 | Level |操作のレベル。値は、情報、警告、エラー、重大のいずれかです |
@@ -168,11 +168,11 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **OperationName**: OperationName の形式は "Microsoft.RecoveryServices/recoveryServicesVault/<*イベント名*>" です。ここで、<*イベント名*> は次のいずれかです:<br/>
 
-* [登録] <br/>
+* Register <br/>
 * Unregister  <br/>
 * ConfigureProtection  <br/>
 * Backup  <br/>
-* Restore  <br/>
+* Restore <br/>
 * StopProtection  <br/>
 * DeleteBackupData  <br/>
 * CreateProtectionPolicy  <br/>
@@ -196,7 +196,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 2. この機能はプレビュー段階にあります。 [詳細情報](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
 3. アラートは "alerts-noreply@mail.windowsazure.com" から送信されます。 現時点で、電子メールの送信者を変更することはできません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 イベント ログは、バックアップ操作の事後分析や監査を行うのに役立ちます。 次の操作が記録されます。
 
 * Register 
@@ -213,4 +213,4 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 Azure サービス全般のイベント、操作、および監査ログの概要については、「 [View events and audit logs (イベントと監査ログの表示)](../monitoring-and-diagnostics/insights-debugging-with-events.md)」を参照してください。
 
-復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-restore-vms.md)に関するページをご覧ください。 仮想マシンの保護については、 [Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 VM バックアップの管理タスクについては、 [Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。
+復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-arm-restore-vms.md)に関するページをご覧ください。 仮想マシンの保護については、 [Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 VM バックアップの管理タスクについては、 [Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。

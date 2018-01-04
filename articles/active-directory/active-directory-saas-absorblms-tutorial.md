@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: df39b957e70be38331b3711a36ce847348049591
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4231b5e72ea0852de344e7484bdf20997243cee6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
 
@@ -102,7 +102,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Absorb LMS のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_url.png)
 
-    a. **[識別子]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.myabsorb.com/Account/SAML` の構文で URL を入力します。
      
@@ -139,7 +139,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] ページ](./media/active-directory-saas-absorblms-tutorial/4.png)
 
-    a. **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
 
     b. メモ帳で、Azure Portal からダウンロードした証明書を開きます。 **-----BEGIN CERTIFICATE-----** タグと **-----END CERTIFICATE-----** タグを削除します。 次に **[キー]** ボックスに残りのコンテンツを貼り付けます。
     
@@ -216,7 +216,7 @@ Absorb LMS の場合、設定は手動で行います。
 
     ![[ユーザーの追加] ページ](./media/active-directory-saas-absorblms-tutorial/user.png)
 
-    a. **[名]** ボックスに、ユーザーの名 (たとえば、**Britta**) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[名]** ボックスに、ユーザーの名 (たとえば、**Britta**) を入力します。
 
     b. **[姓]** ボックスに、ユーザーの姓 (たとえば、**Simon**) を入力します。
     
@@ -226,7 +226,7 @@ Absorb LMS の場合、設定は手動で行います。
 
     e. **[パスワードの確認]** ボックスに、パスワードを再度入力します。
     
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[アクティブ]** を **[アクティブ]** に切り替えます。  
+    f. **[アクティブ]** を **[アクティブ]** に切り替えます。  
 
 6. **[保存]** を選択します。
  

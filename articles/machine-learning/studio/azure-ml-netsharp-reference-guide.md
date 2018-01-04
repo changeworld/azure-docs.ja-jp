@@ -11,14 +11,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
+ms.topic: reference
+ms.date: 12/18/2017
 ms.author: jeannt
-ms.openlocfilehash: 54bef3e257363300ee1a13f7f45fc983e465ddbf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15e68e9b4e6432d14c403e3532b934bfad58b35b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Azure Machine Learning のための Net# ニューラル ネットワーク仕様言語について
 ## <a name="overview"></a>概要
@@ -56,7 +56,7 @@ Net# は、隠れ層や出力への入力のマッピング方法をカスタマ
 ニューラル ネットワークの構造を定義するために Net# を使用することで、ディープ ニューラル ネットワークや任意次元の畳み込みなどの複雑な構造を定義することが可能になり、これが画像、音声、映像などのデータを使用する学習に役立つことが知られています。  
 
 ## <a name="supported-customizations"></a>サポートされるカスタマイズ
-Azure Machine Learning で作成するニューラル ネットワーク モデルのアーキテクチャを使用すると、Net# で高度なカスタマイズができます。 そのための方法は次のとおりです。  
+Azure Machine Learning で作成するニューラル ネットワーク モデルのアーキテクチャを使用すると、Net# で高度なカスタマイズができます。 次のようにすることができます。  
 
 * 隠れ層を作成し、各層のノード数を管理する。
 * 層間の結合方法を指定する。
@@ -86,16 +86,16 @@ Azure Machine Learning で作成するニューラル ネットワーク モデ�
 
     Const X = 28;  
 
-2 つ以上の定数を同時に定義するには、識別子の名前と値を中かっこで囲み、セミコロンで区切ります。 For example:  
+2 つ以上の定数を同時に定義するには、識別子の名前と値を中かっこで囲み、セミコロンで区切ります。 例:   
 
     Const { X = 28; Y = 4; }  
 
-それぞれの代入式の右側には、整数、実数、ブール値 (True または False)、あるいは数式を使用することができます。 次に例を示します。  
+それぞれの代入式の右側には、整数、実数、ブール値 (True または False)、あるいは数式を使用することができます。 例:   
 
     Const { X = 17 * 2; Y = true; }  
 
 ## <a name="layer-declaration"></a>層の宣言
-層の宣言が必要です。 これは、サイズと、接続のバンドルと属性を含む、層のソースを定義します。 宣言ステートメントは、層の名前 (input、hidden または output) で始まり、それに層の次元 (正の整数のタプル) が続きます。 次に例を示します。  
+層の宣言が必要です。 これは、サイズと、接続のバンドルと属性を含む、層のソースを定義します。 宣言ステートメントは、層の名前 (input、hidden または output) で始まり、それに層の次元 (正の整数のタプル) が続きます。 例:   
 
     input Data auto;
     hidden Hidden[5,20] from Data all;

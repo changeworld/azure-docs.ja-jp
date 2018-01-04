@@ -7,6 +7,7 @@ author: bradsev
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: bradsev
-ms.openlocfilehash: efb681b85d3d7434e3114b8576abc64d00891f03
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 0f7a6d0a58e2dcfd94e20a81ae12b42f238016c8
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Team Data Science Process テンプレートでのプロジェクトの体系化
 
@@ -109,7 +110,7 @@ TDSP プロジェクト テンプレートには、次の最上位フォルダ�
 ### <a name="example-project-report"></a>プロジェクト レポートの例
 [プロジェクト レポート例](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome/blob/master/docs/deliverable_docs/ProjectReport.md)を取得することができます。 この[米国所得分類サンプル プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)のプロジェクト レポートは、データ サイエンス プロジェクト用の TDSP テンプレートをインスタンス化して使用する方法を示しています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Machine Learning プロジェクトで TDSP の構造とテンプレートを使用する方法についてよく理解できるように、Machine Learning のドキュメントで完成したプロジェクト例をいくつか提供しています。
 
 - Machine Learning で TDSP プロジェクトを作成する方法を示すサンプルについては、[Team Data Science Process サンプル プロジェクト: Azure Machine Learning での米国国勢調査データからの所得の分類](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)に関するページを参照してください。

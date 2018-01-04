@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/05/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 794117b6f383bdd1851681864e99b3c1ef077f86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 692d03ad80989a969a73b15bb9042a01c286d1ec
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -80,8 +80,6 @@ Resource Health は、次のリージョンを除くすべての Azure geo で�
 - US DoD Central
 - ドイツ中部
 - ドイツ北東部
-- 中国 (東部)
-- 中国 (北部)
 
 ## <a name="how-is-resource-health-different-from-the-service-health-dashboard-or-the-azure-portal-service-notifications"></a>Resource Health とサービス正常性ダッシュボードや Azure Portal のサービスの通知の違いは何ですか。
 Resource Health の方が、Azure サービス正常性ダッシュボードと比べて具体的な細かい情報が得られます。
@@ -94,6 +92,7 @@ Resource Health の方が、Azure サービス正常性ダッシュボードと�
 いいえ。正常性情報は、Resource Health からすべてのリソースの種類に対して利用できます。 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>自分の組織で Resource Health を有効にする必要がありますか。
+
 いいえ。  Azure Resource Health には Azure Portal 内でアクセスできます。セットアップ要件はありません。
 
 ## <a name="is-resource-health-available-free-of-charge"></a>Resource Health は無料で使用できますか。
@@ -102,7 +101,7 @@ Resource Health の方が、Azure サービス正常性ダッシュボードと�
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Resource Health で提示されている推奨事項とはどのようなものですか。
 Resource Health では、正常性状態に基づいて、トラブルシューティングに費やされる時間の削減を目標とする推奨事項を提示しています。 使用可能なリソースの場合は、顧客が直面する最も一般的な問題を解決する方法に絞り込んだ推奨事項を提示します。 Azure の計画外のイベントが原因でリソースを使用できない場合、回復プロセス中と回復プロセス終了後のサポートに対象が絞り込まれます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Resource Health に関する詳細情報を参照してください。
 -  [Azure Resource Health の概要](Resource-health-overview.md)

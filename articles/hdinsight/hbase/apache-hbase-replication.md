@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/09/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 6d7c2eaf139ddbff46a2fba99bdf5515f64be40c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b5497e9d66833ec8bc291c40d71931aff11820c2
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 
@@ -79,7 +79,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 **静的 IP アドレスを構成するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[リソース グループ]** を選択します。
 3. デスティネーション HBase クラスターを持つリソース グループを選択します。 これは、Resource Manager テンプレートを使用して環境を作成するときに指定したリソース グループです。 フィルターを使用して一覧を絞り込むことができます。 2 つの仮想ネットワークを含むリソースの一覧を表示できます。
 4. デスティネーション HBase クラスターを含む仮想ネットワークを選択します。 たとえば、**[xxxx-vnet2]** を選択します。 **nic-zookeepermode-** で始まる名前を持つ 3 つのデバイスがリストに表示されます。 これらのデバイスは、3 つの ZooKeeper VM です。
@@ -116,7 +116,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 | ゲートウェイ名 | vnet1gw |
 | ゲートウェイの種類 | Vpn |
 | ゲートウェイ VPN の種類 | RouteBased |
-| ゲートウェイ SKU | 基本 |
+| ゲートウェイ SKU | Basic |
 | ゲートウェイの IP | vnet1gwip |
 | クラスター名 | &lt;クラスター名のプレフィックス>1 |
 | クラスターのバージョン | 3.6 |
@@ -138,7 +138,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 | ゲートウェイ名 | vnet2gw |
 | ゲートウェイの種類 | Vpn |
 | ゲートウェイ VPN の種類 | RouteBased |
-| ゲートウェイ SKU | 基本 |
+| ゲートウェイ SKU | Basic |
 | ゲートウェイの IP | vnet1gwip |
 | クラスター名 | &lt;クラスター名のプレフィックス>2 |
 | クラスターのバージョン | 3.6 |
@@ -155,7 +155,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 **Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[HDInsight の Apache HBase を使用する方法に関する HBase チュートリアル](apache-hbase-tutorial-get-started-linux.md)の指示に従います。
 
-## <a name="enable-replication"></a>Enable replication
+## <a name="enable-replication"></a>レプリケーションを有効にする
 
 次の手順は、Azure Portal からスクリプト アクションのスクリプトを呼び出す方法を示しています。 Azure PowerShell と Azure コマンドライン ツール (Azure CLI) を使用したスクリプト アクションの実行については、[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする方法](../hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
@@ -182,7 +182,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 必須の引数:
 
-|名前|説明|
+|Name|[説明]|
 |----|-----------|
 |-s, --src-cluster | ソース HBase クラスターの DNS 名を指定します。 例: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | デスティネーション (レプリカ) HBase クラスターの DNS 名を指定します。 例: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -191,7 +191,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 省略可能な引数:
 
-|名前|説明|
+|Name|[説明]|
 |----|-----------|
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
@@ -268,7 +268,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 - **すべてのテーブルのレプリケーションを無効にする**:
 
         -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
-  または
+  or
 
         --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
@@ -276,7 +276,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
         -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で HBase レプリケーションを設定する方法を説明しました。 HDInsight と HBase の詳細については、以下の記事を参照してください。
 

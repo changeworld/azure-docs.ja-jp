@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 6e8fadd54a78d432ed802f4c4880c2f77bb28c37
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 8552f6b2723fef2c61d49a34d2d60c2a6c209a32
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシン スケール セットを自動的にスケールする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケール機能により、顧客のニーズに対応したり、アプリのライフ サイクルを通じて、アプリケーション パフォーマンスの変化に対応することができます。
 
-この記事では、スケール セット内の VM インスタンスのパフォーマンスを監視する Azure CLI 2.0 を使用して、自動スケール ルールを作成する方法を示します。 これらの自動スケール ルールは、これらのパフォーマンス メトリックに応じて VM インスタンスの数を増減します。 これらの手順は、[Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md) または [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md) を介して完了することもできます。
+この記事では、スケール セット内の VM インスタンスのパフォーマンスを監視する自動スケール ルールを Azure CLI 2.0 を使用して作成する方法を示します。 これらの自動スケール ルールは、これらのパフォーマンス メトリックに応じて VM インスタンスの数を増減します。 これらの手順は、[Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md) または [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md) を使用して完了することもできます。
 
 
 ## <a name="prerequisites"></a>前提条件
-自動スケール ルールを作成するには、既存の仮想マシン スケール セットが必要です。 スケール セットは、[Azure Portal](virtual-machine-scale-sets-portal-create.md)、[Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-azure-cli)、または[Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-powershell) を使用して作成できます。
+自動スケール ルールを作成するには、既存の仮想マシン スケール セットが必要です。 スケール セットは、[Azure Portal](virtual-machine-scale-sets-create-portal.md)、[Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)、または[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) を使用して作成できます。
 
-自動スケール ルールを作成しやすくするため、スケール セットのいくつかの変数を定義します。 次の例は、*myResourceGroup* という名前のリソース グループ内と *eastus* 領域内の *myScaleSet* という名前のスケール セットの変数を定義します。 サブスクリプション ID は、[az account show](/cli/azure/account#az_account_show) を使用して取得します。 複数のサブスクリプションがアカウントに関連付けられている場合は、最初のサブスクリプションだけが返されます。 名前とサブスクリプション ID を次のように調整します。
+自動スケール ルールを作成しやすくするため、使用するスケール セット用にいくつかの変数を定義します。 次の例は、*myResourceGroup* という名前のリソース グループ内に含まれ、かつ *eastus* リージョン内にある、 *myScaleSet* という名前のスケール セットの変数を定義します。 サブスクリプション ID は、[az account show](/cli/azure/account#az_account_show) を使用して取得します。 複数のサブスクリプションがアカウントに関連付けられている場合は、最初のサブスクリプションだけが返されます。 名前とサブスクリプション ID を次のように調整します。
 
 ```azurecli
 sub=$(az account show --query id -o tsv)
@@ -42,7 +42,7 @@ location_name="eastus"
 ## <a name="define-an-autoscale-profile"></a>自動スケール プロファイルの定義
 自動スケール ルールは、Azure CLI 2.0 を使用して、JSON (JavaScript Object Notation) としてデプロイされます。 自動スケール ルールを定義してデプロイする完全な JSON は、この記事の後半に記載されています。 
 
-自動スケール プロファイルの先頭で、スケール セット容量の既定、最小、および最大を定義します。 次の例では、既定および最小の容量として *2* つの VM インスタンスを設定し、最大の容量として *10* を定義しています。
+自動スケール プロファイルの先頭で、スケール セット容量の既定値、最小値、および最大値を定義します。 次の例では、既定および最小の容量として *2* つの VM インスタンスを設定し、最大の容量として *10* を定義しています。
 
 ```json
 {
@@ -57,9 +57,9 @@ location_name="eastus"
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>自動的にスケールアウトするルールの作成
-アプリケーションの需要が増加すると、スケール セット内の VM インスタンスの負荷が増加します。 この増加した負荷が短期的な需要ではなく、一貫性のあるものである場合は、スケール セット内の VM インスタンスの数を増やす自動スケール ルールを構成できます。 これらの VM インスタンスが作成され、アプリケーションがデプロイされるときに、スケール セットはロード バランサーを通じてこれらにトラフィックの分散を開始します。 監視するメトリック (CPU やディスクなど)、指定されたしきい値をアプリケーションの負荷が満たす必要がある期間、およびスケール セットに追加する VM インスタンスの数を制御します。
+アプリケーションの需要が増加すると、スケール セット内の VM インスタンスに対する負荷が増加します。 この増加した負荷が短期的な需要ではなく持続したものである場合は、スケール セット内の VM インスタンスの数を増やす自動スケール ルールを構成できます。 これらの VM インスタンスが作成され、アプリケーションがデプロイされると、スケール セットはロード バランサーを通じてそれらへのトラフィックの分散を開始します。 監視するメトリック (CPU やディスクなど)、指定されたしきい値をアプリケーションの負荷が満たす必要がある期間、およびスケール セットに追加する VM インスタンスの数を制御します。
 
-CPU に対する負荷の平均が 10 分間に 70% を上回った場合に、スケール セット内の VM インスタンスの数を増やすルールを作成してみましょう。 ルールがトリガーされると、VM インスタンスの数が 20% 増加します。 小数の VM インスタンスを持つスケール セットでは、`type` を *ChangeCount* に設定して、`value` を *1* つまたは *2* つのインスタンスに増やことができます。 多数の VM インスタンスがあるスケール セットでは、VM インスタンスを 10% または 20% 増やすとより適切になる場合があります。
+CPU に対する負荷の平均が 10 分間に 70% を上回った場合に、スケール セット内の VM インスタンスの数を増やすルールを作成してみましょう。 ルールがトリガーされると、VM インスタンスの数が 20% 増加します。 VM インスタンス数が少ないスケール セットでは、`type` を *ChangeCount* に設定して、`value` を *1* つまたは *2* つのインスタンスに増やことができます。 VM インスタンス数が多いスケール セットでは、VM インスタンスを 10% または 20% 増やすとより適切になる場合があります。
 
 このルールでは、次のパラメーターが使用されます。
 
@@ -103,7 +103,7 @@ CPU に対する負荷の平均が 10 分間に 70% を上回った場合に、�
 
 
 ## <a name="create-a-rule-to-automatically-scale-in"></a>自動的にスケールインするルールの作成
-夜間や週末は、アプリケーションの需要が低下する場合があります。 この低下した負荷が一定期間持続する場合、スケール セット内の VM インスタンスの数を減らす自動スケール ルールを構成できます。 このスケールイン アクションは、現在の需要を満たすのに必要な数のインスタンスのみを実行するため、スケール セットの実行コストを削減します。
+夜間や週末は、アプリケーションの需要が低下する可能性があります。 この低下した負荷が一定期間持続する場合、スケール セット内の VM インスタンスの数を減らす自動スケール ルールを構成できます。 このスケールイン アクションは、現在の需要を満たすのに必要な数のインスタンスのみを実行するため、スケール セットの実行コストを削減します。
 
 CPU に対する負荷の平均が 10 分間に 30% を下回った場合に、スケール セット内の VM インスタンスの数を減らす別のルールを作成します。 次の例では、VM インスタンスの数をスケールアウトするルールを定義します。 *metricResourceUri* は、サブスクリプション ID、リソース グループ名、およびスケール セット名に以前に定義した変数を使用します。
 
@@ -328,4 +328,4 @@ az monitor autoscale-settings create \
 
 VM インスタンスの管理方法については、「[Manage virtual machine scale sets with Azure PowerShell](virtual-machine-scale-sets-windows-manage.md)」 (Azure PowerShell を使用した仮想マシン スケール セットの管理) を参照してください。
 
-自動スケール ルールをトリガーするときにアラートを生成する方法については、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」を参照してください。 [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。

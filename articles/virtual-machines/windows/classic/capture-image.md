@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 6fa6d3099d8427a186e6095fdcbbc327d1acab7f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 66a7cef250890f1b6940f7bc7f3c5ae0ec6340f0
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
 > [!IMPORTANT]
@@ -42,7 +42,7 @@ Azure では、すべての Azure サービスを表示したときに表示さ�
 >
 >
 
-Azure 仮想マシンのイメージをキャプチャする前に、ターゲット仮想マシンをバックアップしておくことをお勧めします。 Azure 仮想マシンは、Azure Backup を使用してバックアップできます。 詳細については、「 [Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../../../backup/backup-azure-vms.md)」を参照してください。 その他のソリューションは認定パートナーから利用できます。 利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
+Azure 仮想マシンのイメージをキャプチャする前に、ターゲット仮想マシンをバックアップしておくことをお勧めします。 Azure 仮想マシンは、Azure Backup を使用してバックアップできます。 詳細については、「 [Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../../../backup/backup-azure-arm-vms.md)」を参照してください。 その他のソリューションは認定パートナーから利用できます。 利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
 
 ## <a name="capture-the-virtual-machine"></a>仮想マシンをキャプチャする
 1. [Azure Portal](http://portal.azure.com) で仮想マシンに**接続**します。 詳細については、[Windows Server が実行されている仮想マシンにサインインする方法][How to sign in to a virtual machine running Windows Server]に関するページを参照してください。
@@ -52,7 +52,7 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
 
    * **[システム クリーンアップ アクション]** で **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。 Sysprep の使い方の詳細については、「[Sysprep の使用方法: 紹介][How to Use Sysprep: An Introduction]」を参照してください。
    * **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
-   * **[OK]**をクリックします。
+   * Click **OK**.
 
    ![Sysprep を実行する](./media/capture-image/SysprepGeneral.png)
 5. Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure ポータルの仮想マシンの状態が **[停止済み]** に変わります。
@@ -72,7 +72,7 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
 
     ![イメージのキャプチャの成功](./media/capture-image/VMCapturedImageAvailable.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 イメージを使用して仮想マシンを作成する準備ができました。 イメージを使用して仮想マシンを作成するには、サービス メニューの下部の **[その他のサービス]** メニュー項目を選択し、**[Compute]** グループの **[VM イメージ (クラシック)]** を選択します。 手順については、「 [イメージから仮想マシンを作成](createportal.md)」を参照してください。
 
 [How to sign in to a virtual machine running Windows Server]:connect-logon.md

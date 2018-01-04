@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/21/2017
 ms.author: delhan
 ms.openlocfilehash: 70254d39b5c6326166f7e29fdfc99533835502f9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-linux-virtual-machines-in-azure"></a>ブート診断を使用して、Azure の Linux 仮想マシンをトラブルシューティングする方法
 
@@ -29,7 +29,7 @@ Azure で新たに 2 つのデバッグ機能が利用できるようになり�
 
 Linux 仮想マシンについては、コンソール ログの出力をポータルから簡単に表示することができます。
 
-![Azure Portal](./media/boot-diagnostics/screenshot1.png)
+![Azure ポータル](./media/boot-diagnostics/screenshot1.png)
  
 一方、Windows 仮想マシンと Linux 仮想マシンの両方に関して、ハイパーバイザーからの VM のスクリーンショットを表示することもできます。
 

@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 3bdf30dad5e729ae1e028be2d917b6c38e1bebaf
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d2436ad639c53360f4d1afde99d668285b606aa9
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウントを作成する
 
-次のガイドでは、Azure PowerShell を使用して Azure Cosmos DB データベース アカウントの管理を自動化するためのコマンドについて説明します。 また、[複数リージョンのデータベース アカウント][scaling-globally]でアカウント キーとフェールオーバー優先度を管理するコマンドについても説明します。 データベース アカウントを更新すると、一貫性ポリシーの変更と、リージョンの追加または削除を行うことができます。 Azure Cosmos DB アカウントのクロスプラットフォーム管理には、[Azure CLI](cli-samples.md)、[リソース プロバイダーの REST API][rp-rest-api]、[Azure Portal](create-documentdb-dotnet.md#create-account) のいずれも使用可能です。
+次のガイドでは、Azure PowerShell を使用して Azure Cosmos DB データベース アカウントの管理を自動化するためのコマンドについて説明します。 また、[複数リージョンのデータベース アカウント][scaling-globally]でアカウント キーとフェールオーバー優先度を管理するコマンドについても説明します。 データベース アカウントを更新すると、一貫性ポリシーの変更と、リージョンの追加または削除を行うことができます。 Azure Cosmos DB アカウントのクロスプラットフォーム管理には、[Azure CLI](cli-samples.md)、[リソース プロバイダーの REST API][rp-rest-api]、[Azure Portal](create-sql-api-dotnet.md#create-account) のいずれも使用可能です。
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
@@ -192,10 +192,9 @@ MongoDB アカウントの場合、MongoDB アプリをデータベース アカ
     $failoverPolicies = @(@{"locationName"="East US"; "failoverPriority"=0},@{"locationName"="West US"; "failoverPriority"=1})
     Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Name "docdb-test" -Parameters @{"failoverPolicies"=$failoverPolicies}
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* .NET を使用して接続する方法については、[.NET を使った接続とクエリ](create-documentdb-dotnet.md)に関する記事をご覧ください。
-* .NET Core を使用して接続する方法については、[.NET Core を使った接続とクエリ](create-documentdb-dotnet-core.md)に関する記事をご覧ください。
+* .NET を使用して接続する方法については、[.NET を使った接続とクエリ](create-sql-api-dotnet.md)に関する記事をご覧ください。
 * Node.js を使用して接続する方法については、[Node.js と MongoDB アプリを使った接続とクエリ](create-mongodb-nodejs.md)に関する記事をご覧ください。
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->

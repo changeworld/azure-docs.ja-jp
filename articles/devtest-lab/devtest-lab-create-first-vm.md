@@ -3,7 +3,7 @@ title: "Azure DevTest Labs のラボに最初の VM を作成する | Microsoft 
 description: "Azure DevTest Labs のラボに最初の仮想マシンを作成する方法について説明します。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: fbc5a438-6e02-4952-b654-b8fa7322ae5f
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2017
-ms.author: tarcher
-ms.openlocfilehash: aa6b60b799e1e98815cf288d5612f98cd77cc00e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: c807789dc2b47fe3632fc4ecf597904d8b0bbf6f
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-your-first-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボに最初の VM を作成する
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/11/2017
 
    ラボのブレードには VM の作成状況が表示されます。最初は **[作成中]**、VM が起動した後は **[実行中]** と表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * VM が作成されたら、VM のブレードで **[接続]** を選択して VM に接続できます。
 * [ラボへの VM の追加](devtest-lab-add-vm.md)に関するページで、ラボに VM を追加する詳しい手順を確認します。
 * [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)を検索します。

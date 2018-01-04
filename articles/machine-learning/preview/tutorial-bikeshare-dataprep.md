@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial, azure
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: e71680887c4e81eba831ab0b7af9fa2cceed74a0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 69f6911a95be382b06313d984f09c7e85aec10df
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>自転車シェアのチュートリアル: Azure Machine Learning Workbench による詳細データの準備
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -647,7 +647,7 @@ df.to_csv('Your Training Data File Path here')
 
 新しいジョブを送信するには、ページの上部にある **[実行]** アイコンを使用します。 新しい設定で**ジョブ**が送信されます。 このジョブの出力はトレーニング データです。 このデータは、先ほど作成したときと同じデータの準備手順を使用して、作成されています。 ジョブが完了するまで数分かかる場合があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 自転車シェアのデータ準備のチュートリアルを完了しました。 このチュートリアルでは、以下の方法を説明するために、Azure Machine Learning サービス (プレビュー) を使用しました。
 > [!div class="checklist"]
 > * Azure Machine Learning データ準備ツールを使用して対話形式でデータを準備する

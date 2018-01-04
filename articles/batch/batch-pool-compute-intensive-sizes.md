@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: danlep
-ms.openlocfilehash: 7624a905f81024fa87f15164efc56a300843972d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 26cab5ba892d892e035bd94c52cacabd23eebd0c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Batch プールでの RDMA 対応または GPU 対応インスタンスの使用
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/01/2017
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
-| [NC シリーズ*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 9.0 ドライバー | 該当なし | 
+| [NC シリーズ*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 9.0 ドライバー | 該当なし | 
 | [NV シリーズ](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA GRID 4.3 ドライバー | 該当なし |
 
 *NC24r VM の RDMA 接続は、Intel MPI がインストールされた Ubuntu 16.04 LTS または CentOS-based 7.3 HPC (Azure Marketplace から入手) でサポートされます。
@@ -122,7 +122,7 @@ Azure A8 ノードのプールで Windows MPI アプリケーションを実行�
 Linux NC ノードのプールで CUDA アプリケーションを実行するには、CUDA Toolkit 9.0 をノードにインストールする必要があります。 この Toolkit により、必要な NVIDIA Tesla GPU ドライバーがインストールされます。 GPU ドライバーがインストールされたカスタム Ubuntu 16.04 LTS イメージをデプロイする手順の例を次に示します。
 
 1. Ubuntu 16.04 LTS を実行する Azure NC6 VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 管理ディスクを使用して VM を作成してください。
-2. VM に接続し、[CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms)する手順に従います。
+2. VM に接続し、[CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms)する手順に従います。
 3. Linux エージェントをプロビジョニング解除した後、[Linux VM イメージをキャプチャ](../virtual-machines/linux/capture-image.md)します。
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。
 5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-custom-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
@@ -136,7 +136,7 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Batch プールで MPI ジョブを実行する方法については、[Windows](batch-mpi.md) または [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) の例を参照してください。
 
