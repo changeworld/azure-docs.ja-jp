@@ -12,8 +12,6 @@
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Hive ポリシーを構成する
       href: apache-domain-joined-run-hive.md
-    - name: 容量計画
-      href: ../hdinsight-capacity-planning.md
       maintainContext: true
     - name: ドメイン参加済みクラスターの管理
       href: apache-domain-joined-manage.md

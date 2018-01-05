@@ -6,11 +6,10 @@
 
 # 作業の開始
 ## [名前空間を作成する](service-bus-create-namespace-portal.md)
-### [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 ## キューの使用
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
-### [Node.js](service-bus-nodejs-how-to-use-queues.md)
+### [Node.JS](service-bus-nodejs-how-to-use-queues.md)
 ### [PHP](service-bus-php-how-to-use-queues.md)
 ### [Python](service-bus-python-how-to-use-queues.md)
 ### [Ruby](service-bus-ruby-how-to-use-queues.md)
@@ -18,7 +17,7 @@
 ## トピックとサブスクリプションの使用
 ### [.NET](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 ### [Java](service-bus-java-how-to-use-topics-subscriptions.md)
-### [Node.js](service-bus-nodejs-how-to-use-topics-subscriptions.md)
+### [Node.JS](service-bus-nodejs-how-to-use-topics-subscriptions.md)
 ### [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
 ### [Python](service-bus-python-how-to-use-topics-subscriptions.md)
 ### [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)
@@ -37,6 +36,7 @@
 
 ## 開発
 ### メッセージの処理
+#### [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 #### [メッセージ、ペイロード、シリアル化](service-bus-messages-payloads.md)
 #### [メッセージの転送、ロック、解決](message-transfers-locks-settlement.md)
 #### [メッセージのシーケンス処理とタイムスタンプ](message-sequencing.md)
@@ -64,7 +64,7 @@
 #### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
 #### [トランザクション処理](service-bus-transactions.md)
 #### [ペアの名前空間の実装](service-bus-paired-namespaces.md)
-## 管理
+## [管理]
 ### [Azure 監視による Service Bus の監視](service-bus-metrics-azure-monitor.md)
 ### [Service Bus 管理ライブラリ](service-bus-management-libraries.md)
 ### [診断ログ](service-bus-diagnostic-logs.md)
@@ -84,8 +84,8 @@
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
 ## [Java](/java/api/overview/azure/servicebus)
 ## [Azure PowerShell](/powershell/module/azurerm.servicebus)
-## [REST ()](/rest/api/servicebus)
-## [例外](service-bus-messaging-exceptions.md)
+## [REST](/rest/api/servicebus)
+## [Exceptions](service-bus-messaging-exceptions.md)
 ## [クォータ](service-bus-quotas.md)
 ## [SQLFilter 構文](service-bus-messaging-sql-filter.md)
 ## [SQLRuleAction 構文](service-bus-messaging-sql-rule-action.md)
