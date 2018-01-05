@@ -49,9 +49,10 @@
 ### [スループット向上のためのスケール](stream-analytics-scale-jobs.md)
 ### [Machine Learning 関数のスケール](stream-analytics-scale-with-machine-learning-functions.md)
 
-## 管理
+## [管理]
 ### [入出力の資格情報を交換する](stream-analytics-login-credentials-inputs-outputs.md)
 ### [更新中におけるジョブの信頼性](stream-analytics-job-reliability.md)
+### [互換性レベルの構成](stream-analytics-compatibility-level.md)
 
 ## トラブルシューティング
 ### [トラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)
@@ -71,7 +72,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [クエリ言語](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST ()](/rest/api/streamanalytics)
+## [REST](/rest/api/streamanalytics)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

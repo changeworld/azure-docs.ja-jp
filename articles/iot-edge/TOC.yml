@@ -10,7 +10,7 @@
       href: quickstart-linux.md
     - name: エッジへのデプロイ - Windows
       href: quickstart.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: Edge デバイスのシミュレート - Linux
       href: tutorial-simulate-device-linux.md
@@ -26,8 +26,12 @@
       href: tutorial-deploy-function.md
 - name: ハウツー ガイド
   items:
-    - name: 透過的なゲートウェイの作成
-      href: how-to-create-transparent-gateway.md
+    - name: ゲートウェイの作成
+      items:
+        - name: 透過的なゲートウェイの作成
+          href: how-to-create-transparent-gateway.md
+        - name: Modbus ゲートウェイ
+          href: deploy-modbus-gateway.md
     - name: 大規模なデプロイと監視
       href: how-to-deploy-monitor.md
     - name: IoT Core デバイスのプロビジョニング

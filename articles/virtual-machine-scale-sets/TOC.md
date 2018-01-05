@@ -22,6 +22,7 @@
 ## デプロイ
 ### [Visual Studio での作成](virtual-machine-scale-sets-vs-create.md)
 ### [スケール セットと管理ディスク](virtual-machine-scale-sets-managed-disks.md)
+### [可用性ゾーンの使用](virtual-machine-scale-sets-use-availability-zones.md)
 ### [スケール セットの自動スケール](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Azure Portal の使用](virtual-machine-scale-sets-autoscale-portal.md)
 #### [Azure CLI 2.0 の使用](virtual-machine-scale-sets-autoscale-cli.md)
@@ -32,7 +33,7 @@
 ### [大規模なスケール セットを処理する](virtual-machine-scale-sets-placement-groups.md)
 ### [スケール セット テンプレートを変換して管理ディスクを使用する](virtual-machine-scale-sets-convert-template-to-md.md)
 
-## 管理
+## [管理]
 ### 一般的な管理タスク
 #### [Azure CLI 2.0 の使用](virtual-machine-scale-sets-manage-cli.md)
 #### [Azure PowerShell の使用](virtual-machine-scale-sets-manage-powershell.md)
@@ -52,7 +53,7 @@
 # リファレンス
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](../virtual-machines/azure-cli-arm-commands.md)
-## [REST ()](/rest/api/virtualmachinescalesets/)
+## [REST](/rest/api/virtualmachinescalesets/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)

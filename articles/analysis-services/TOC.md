@@ -1,5 +1,5 @@
 # 概要
-## [Azure Analysis Services とは](analysis-services-overview.md)
+## [Analysis Services について](analysis-services-overview.md)
 ## [サポートされるデータ ソース](analysis-services-datasource.md)
 ## [認証とユーザーのアクセス許可](analysis-services-manage-users.md)
 ## [オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)

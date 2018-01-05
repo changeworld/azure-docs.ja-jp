@@ -7,7 +7,7 @@
 
 ## [作成と接続 - ポータル](create-data-warehouse-portal.md)
 
-# Tutorials (チュートリアル)
+# チュートリアル
 ## [1 - BLOB からデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
 
 # 概念
@@ -91,11 +91,11 @@
 
 ## データの読み込みと移動
 ### [AdventureWorks](sql-data-warehouse-load-sample-databases.md)
+### [Contoso のパブリック データ](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)
 ### [Data Factory](sql-data-warehouse-load-with-data-factory.md)
-### [Blob Storage からの PolyBase](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
-### [SQL Server からの PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
+### [AzCopy](sql-data-warehouse-load-from-sql-server-with-polybase.md)
 ### [RedGate](sql-data-warehouse-load-with-redgate.md)
 ### [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 
