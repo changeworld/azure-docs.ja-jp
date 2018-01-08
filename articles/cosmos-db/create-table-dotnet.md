@@ -13,19 +13,19 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/20/2017
+ms.date: 12/01/2017
 ms.author: mimig
-ms.openlocfilehash: 44637049dd5d6cfe353afe98427d843a0d4e403a
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: c3d4637871ed56bd32e514c9de4374257e55d844
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>クイックスタート: .NET と Azure Cosmos DB での Table API アプリの構築 
 
 このクイックスタートでは、GitHub から例を複製することで、.NET と Azure Cosmos DB の [Table API](table-introduction.md) を使用してアプリを構築する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal で Azure Cosmos DB アカウントを作成する方法、およびデータ エクスプローラーを使用してテーブルとエンティティを作成する方法も説明します。
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>データベース アカウントの作成
 
 > [!IMPORTANT] 
 > 新しいテーブル API アカウントを作成して一般公開のテーブル API SDK を操作する必要があります。 プレビュー期間中に作成されたテーブル API アカウントは、一般公開の SDK ではサポートされません。
@@ -52,7 +52,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 1. データ エクスプローラーで、**sample-table** を展開し、**[エンティティ]**、**[エンティティの追加]** の順にクリックします。
 
    ![Azure Portal のデータ エクスプローラーで新しいエンティティを作成する](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-document.png)
-2. PartitionKey 値ボックスと RowKey 値ボックスにデータを追加し、**[エンティティの追加]** をクリックします。
+2. PartitionKey 値ボックスと RowKey 値ボックスにデータを追加し、**[Add Entity] \(エンティティの追加)** をクリックします。
 
    ![新しいエンティティのパーティション キーと行キーを設定する](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-entity.png)
   
@@ -60,9 +60,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+GitHub で Table アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。 
+1. Git Bash などの Git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。 
 
     ```bash
     cd "C:\git-samples"
@@ -73,29 +73,36 @@ github で Table アプリの複製を作成し、接続文字列を設定して
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
     ```
+## <a name="open-the-sample-application-in-visual-studio"></a>Visual Studio でサンプル アプリケーションを開く
 
-3. 次に、Visual Studio で TableStorage ソリューション ファイルを開きます。 
+1. Visual Studio で、**[ファイル]** メニューから **[開く]** を選択して、**[プロジェクト/ソリューション]** を選択します。 
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+   ![ソリューションを開く](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
+
+2. サンプル アプリケーションを複製したフォルダーに移動し、TableStorage.sln ファイルを開きます。
+
+   ![複製されたアプリケーションを開く](media/create-table-dotnet/azure-cosmos-db-open-clone.png) 
+
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。 
 
 1. [Azure Portal](http://portal.azure.com/) で **[接続文字列]** をクリックします。 
 
-    画面の右側にある [コピー] ボタンを使ってプライマリ接続文字列をコピーします。
+    ウィンドウの右側にある [コピー] ボタンを使って**プライマリ接続文字列**をコピーします。
 
     ![[接続文字列] ウィンドウでプライマリ接続文字列を確認してコピーする](./media/create-table-dotnet/connection-string.png)
 
 2. Visual Studio で App.config ファイルを開きます。 
 
-3. このチュートリアルでは Storage Emulator を使用しないため、8 行目の StorageConnectionString のコメントを解除し、7 行目の StorageConnectionString をコメント アウトします。 7 行目と 8 行目は次のようになります。
+3. このチュートリアルでは Azure SDK Storage Emulator を使用しないため、8 行目の StorageConnectionString のコメントを解除し、7 行目の StorageConnectionString をコメント アウトします。 7 行目と 8 行目は次のようになります。
 
     ```
     <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     ```
 
-4. ポータルのプライマリ接続文字列を、8 行目の StorageConnectionString に貼り付けます。 引用符の内側に文字列を貼り付けます。 
+4. ポータルの**プライマリ接続文字列**を、8 行目の StorageConnectionString に貼り付けます。 引用符の内側に文字列を貼り付けます。 
 
     > [!IMPORTANT]
     > エンドポイントで documents.azure.com を使用している場合は、プレビュー アカウントを持っていることになるため、[新しいテーブル API](#create-a-database-account) アカウントを作成して、一般公開のテーブル API SDK を操作する必要があります。 
@@ -107,7 +114,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
     ```
 
-5. App.config ファイルを保存します。
+5. Ctrl + S キーを押して、App.config ファイルを保存します。
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
@@ -115,29 +122,43 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 1. Visual Studio の**ソリューション エクスプローラー**で **TableStorage** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
-2. NuGet の **[参照]** ボックスに「*Microsoft.Azure.CosmosDB.Table*」と入力します。
+   ![NuGet パッケージの管理](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
+2. NuGet の **[参照]** ボックスに「*Microsoft.Azure.CosmosDB.Table*」と入力します。 これで、Cosmos DB テーブル API のクライアント ライブラリが見つかります。
+   
+   ![NuGet の [参照] タブ](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 
-3. 結果から、**Microsoft.Azure.CosmosDB.Table** ライブラリをインストールします。 これにより、Azure Cosmos DB Table API パッケージとすべての依存関係がインストールされます。
+3. **[インストール]** をクリックして **Microsoft.Azure.CosmosDB.Table** ライブラリをインストールします。 これにより、Azure Cosmos DB Table API パッケージとすべての依存関係がインストールされます。
 
-4. BasicSamples.cs を開き、30 行目と 52 行目にブレークポイントを追加します。
+    ![[インストール] をクリックします。](media/create-table-dotnet/azure-cosmosdb-nuget-install.png)
 
-5. Ctrl + F5 キーを押してアプリケーションを実行します。
+4. BasicSamples.cs を開きます。 52 行目を右クリックし、**[ブレークポイント]** と **[ブレークポイントの挿入]** を順に選択します。 55 行目にもブレークポイントを挿入します。
 
-    コンソール ウィンドウに、Azure Cosmos DB の新しいテーブル データベースに追加されるテーブル データが表示されます。 
+   ![Add a breakpoint](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
+
+5. F5 キーを押してアプリケーションを実行します。
+
+    コンソール ウィンドウに、Azure Cosmos DB の新しいテーブル データベースの名前 (この場合は demo91ab4) が表示されます。 
     
+    ![コンソール出力](media/create-table-dotnet/azure-cosmosdb-console.png)
+
     依存関係に関するエラーが発生する場合は、「[トラブルシューティング](table-sdk-dotnet.md#troubleshooting)」をご覧ください。
 
-    最初のブレークポイントにヒットしたら、Azure Portal のデータ エクスプローラーに戻り、demo* テーブルを展開して、**[エンティティ]** をクリックします。 右側の **[エンティティ]** タブに、追加された新しいエンティティが表示されます。ユーザーの電話番号が 425-555-0101 であることを確認します。
+    最初のブレークポイントにヒットしたら、Azure Portal のデータ エクスプローラーに戻ります。 **[最新の情報に更新]** ボタンをクリックし、demo* table を展開して **[エンティティ]** をクリックします。 右側の **[エンティティ]** タブに、追加された Walter Harp の新しいエンティティが表示されます。 新しいエンティティの電話番号が 425-555-0101 であることを確認します。
+
+    ![新しいエンティティ](media/create-table-dotnet/azure-cosmosdb-entity.png)
     
-6. データ エクスプローラーの [エンティティ] タブを閉じます。
+6. データ エクスプローラーの **[エンティティ]** タブを閉じます。
     
-7. 次のブレークポイントまでアプリの実行を続けます。
+7. F5 キーを押して、次のブレークポイントまでアプリを実行します。 
 
-    ブレークポイントにヒットしたら、ポータルに戻り、[エンティティ] を再びクリックして [エンティティ] タブを開き、電話番号が 425-555-0105 に更新されていることを確認します。
+    ブレークポイントにヒットしたら、Azure Portal に戻り、**[エンティティ]** を再びクリックして **[エンティティ]**タブを開き、電話番号が 425-555-0105 に更新されていることを確認します。
 
-8. コンソール ウィンドウに戻り、Ctrl + C キーを押してアプリの実行を終了します。 
+8. F5 キーを押して、アプリを実行します。 
+ 
+   アプリによって高度なサンプル アプリで使用するためのエンティティが追加されますが、これらはテーブル API では現在サポートされていません。 その後、アプリは、サンプル アプリによって作成されたテーブルを削除します。
 
-    データ エクスプローラーに戻り、エンティティを追加または変更して、データのクエリを実行できます。
+9. コンソール ウィンドウで Enter キーを押してアプリの実行を終了します。 
+  
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
@@ -147,7 +168,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してテーブルを作成し、アプリを実行する方法を説明しました。  これで、Table API を使用して、データをクエリできます。  
 

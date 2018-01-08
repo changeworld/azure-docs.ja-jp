@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/13/2017
 ms.author: cgronlun
-ms.openlocfilehash: ba2a14e3f327fd8ab4f1ebfe329a64b4aa1a25a1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 49ec2f305c1aef50fcff977d60ff3ce0079ff5af
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="introduction-to-azure-hdinsight-the-hadoop-and-spark-technology-stack"></a>Azure HDInsight、Hadoop、Spark テクノロジ スタックの概要
 この記事では、完全に管理され、あらゆる領域をカバーするオープンソースのエンタープライズ向け分析サービス Azure HDInsight について紹介します。 Hadoop、Spark、Hive、LLAP、Kafka、Storm、R など、オープン ソースのフレームワークを使用することができます。 
@@ -45,7 +45,7 @@ Azure HDInsight は、[Hortonworks Data Platform (HDP)](https://hortonworks.com/
 このセクションでは、Azure HDInsight の一連の機能を紹介します。
 
 
-|機能  |説明  |
+|機能  |[説明]  |
 |---------|---------|
 |クラウド ネイティブ     |     Azure HDInsight を使用すると、[Hadoop](apache-hadoop-linux-tutorial-get-started.md)、 [Spark](../spark/apache-spark-jupyter-spark-sql.md)、 [Interactive query (LLAP)](../interactive-query/apache-interactive-query-get-started.md)、 [Kafka](../kafka/apache-kafka-get-started.md)、 [Storm](../storm/apache-storm-tutorial-get-started-linux.md)、 [HBase](../hbase/apache-hbase-tutorial-get-started-linux.md)、 [R Server](../r-server/r-server-get-started.md) 向けに最適化されたクラスターを Azure 上に作成することができます。 また、HDInsight は、あらゆる運用環境のワークロードについてエンド ツー エンドの SLA を提供します。  |
 |低コストでスケーラブル     | ワークロードを[スケールアップまたはスケールダウン](../hdinsight-administer-use-portal-linux.md) することができます。  [クラスターをオンデマンドで作成](../hdinsight-hadoop-create-linux-clusters-adf.md) し、実際に使用する分にのみ投資することでコストを削減できます。 データ パイプラインを作成して、必要なジョブを運用化することもできます。 コンピューティングとストレージが分離され、より高いパフォーマンスと柔軟性が実現されています。 |
@@ -137,6 +137,7 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 
 * [Azure HDInsight のデータ視覚化ツールを使用する Apache Spark BI](../spark/apache-spark-use-bi-tools.md)
 * [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](apache-hadoop-connect-hive-power-bi.md)。 
+* [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
 * [Power Query を使用した Excel から Hadoop への接続](apache-hadoop-connect-excel-power-query.md): Microsoft Power Query for Excel を使用して、HDInsight クラスターのデータを格納する Azure ストレージ アカウントに Excel を接続する方法を説明します。 Windows ワークステーションが必要です。 
 * [Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](apache-hadoop-connect-excel-hive-odbc-driver.md): Microsoft Hive ODBC ドライバーを使用して、HDInsight からデータをインポートする方法について説明します。 Windows ワークステーションが必要です。 
 * [Microsoft Cloud プラットフォーム](http://www.microsoft.com/server-cloud/solutions/business-intelligence/default.aspx)- Power BI for Office 365 の詳細、SQL Server 評価版のダウンロード、SharePoint Server 2013 と SQL Server BI のセットアップについて説明します。
@@ -144,7 +145,7 @@ Power Query アドインまたは Microsoft Hive ODBC ドライバーを使用�
 * [SQL Server Reporting Services](http://msdn.microsoft.com/library/ms159106.aspx)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [HDInsight での Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)
 * [HDInsight での Spark の使用](../spark/apache-spark-jupyter-spark-sql.md)

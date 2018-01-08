@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: tamram
-ms.openlocfilehash: a300294c83cb206e6211985c736e3ff01bb1ab43
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 7313df35baadf7aa6d476f44b113dc60e6845f4b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>Azure CLI を使用して Azure Blob Storage との間でオブジェクトを転送する
 
@@ -35,9 +35,9 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-BLOB は常にコンテナーにアップロードされます。 コンテナーを使うと、コンピューターでディレクトリにファイルを整理するように、BLOB のグループを整理できます。
+BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、BLOB のグループを整理できます。
 
-BLOB を格納するためのコンテナーを、[az storage container create](/cli/azure/storage/container#create) コマンドで作成します。
+BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container#create) コマンドで作成します。
 
 ```azurecli-interactive
 az storage container create --name mystoragecontainer
@@ -45,7 +45,10 @@ az storage container create --name mystoragecontainer
 
 ## <a name="upload-a-blob"></a>BLOB をアップロードする
 
-Blob Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB がサポートされています。 BLOB ストレージに格納されるほとんどのファイルは、ブロック BLOB として格納されます。 追加 BLOB は、ログ記録などのため、既存のコンテンツを変更することなく既存の BLOB にデータを追加する必要がある場合に使います。 ページ BLOB は、IaaS 仮想マシンの VHD ファイルをバックアップします。
+Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 BLOB ストレージに格納されるほとんどのファイルは、ブロック BLOB として格納されます。 追加 BLOB は、ログ記録などのため、既存のコンテンツを変更することなく既存の BLOB にデータを追加する必要がある場合に使います。 ページ BLOB は、IaaS 仮想マシンの VHD ファイルをバックアップします。
+
+まず、BLOB にアップロードするファイルを作成します。
+Azure Cloud Shell を使用している場合は、次の手順を使用してファイルを作成します。`vi helloworld` を実行し、ファイルが開いたら、**Insert** キーを押して、"Hello world" と入力し、**Esc** キーを押して、`:x` を入力し **Enter** キーを押します。
 
 この例では、最後のステップで [az storage blob upload](/cli/azure/storage/blob#upload) コマンドを使って作成したコンテナーに BLOB をアップロードします。
 
@@ -56,7 +59,18 @@ az storage blob upload \
     --file ~/path/to/local/file
 ```
 
+前に説明した方法を使用して、Azure Cloud Shell にファイルを作成した場合は、この CLI コマンドを代わりに使用できます (このファイルはベース ディレクトリで作成されているため、パスを指定する必要はないことに注意してください。通常、パスを指定する必要はありません)。
+
+```azurecli-interactive
+az storage blob upload \
+    --container-name mystoragecontainer \
+    --name helloworld
+    --file helloworld
+```
+
 この操作では、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。 続行する前に、希望する数のファイルをアップロードします。
+
+同時に複数のファイルをアップロードするには、[az storage blob upload-batch](/cli/azure/storage/blob#upload-batch) コマンドを使用できます。
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
@@ -101,7 +115,7 @@ azcopy \
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、ローカル ディスクと Azure Blob Storage のコンテナーとの間でファイルを転送する方法について学習しました。 Azure Storage の BLOB の他の処理について詳しくは、Azure Blob Storage の使用に関するチュートリアルに進んでください。
 
