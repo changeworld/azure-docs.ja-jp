@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d34862d96744e038d7c1890f703ead79c416ddfa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 544f189e79733c6476bf71e9ce39ab5f35e3d032
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-a-spring-boot-application"></a>Spring Boot アプリケーションのデプロイ
 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
 このクイックスタートでは、Spring Boot アプリケーションを Service Fabric にデプロイする方法を紹介します。 このクイックスタートでは、Spring の Web サイトからの [Getting Started](https://spring.io/guides/gs/spring-boot/) サンプルを使用します。 このクイックスタートでは、使い慣れたコマンド ライン ツールを使用し、Azure Service Fabric アプリケーションとして Spring Boot サンプルをデプロイする方法を説明します。 クイックスタートを完了すると、Spring Boot の Getting Started サンプルが Azure Service Fabric 上で動作します。 
 
-![アプリケーションのスクリーンショット](./media/service-fabric-quickstart-java-spring-boot/springbootsf.png)
+![アプリケーションのスクリーンショット](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
 このクイックスタートでは、次の方法について説明します。
 
@@ -76,7 +76,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     ```
     ローカル クラスターの起動には、一定の時間がかかります。 クラスターが完全に起動されたことを確認するには、**http://localhost:19080** で Service Fabric Explorer にアクセスします。 5 つの正常なノードは、ローカル クラスターが起動され、実行されていることを示します。 
     
-    ![正常なローカル クラスター](./media/service-fabric-quickstart-java/localclusterup.png)
+    ![正常なローカル クラスター](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
 
 2. `gs-spring-boot/SpringServiceFabric` フォルダーに移動します。
 3. 次のコマンドを実行して、ローカル クラスターに接続します。 
@@ -92,11 +92,11 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
 5. 使い慣れた Web ブラウザーを開き、**http://localhost:8080** に接続してアプリケーションにアクセスします。 
 
-    ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsf.png)
+    ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
     
 これで、Azure Service Fabric クラスターに展開された Spring Boot アプリケーションにアクセスできるようになりました。  
 
-## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションをデプロイする
+## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
 
 ### <a name="set-up-your-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターの設定
 Azure 内のクラスターにアプリケーションをデプロイするには、独自のクラスターを作成します。
@@ -132,52 +132,56 @@ Azure 内のクラスターにアプリケーションをデプロイするに�
 
 4. 任意の Web ブラウザーを開き、**http://\<ConnectionIPOrURL>:8080** に接続してアプリケーションにアクセスします。 
 
-    ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springsfazure.png)
+    ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsfazure.png)
     
 これで、Azure Service Fabric クラスターに展開された Spring Boot アプリケーションにアクセスできるようになりました。  
     
 ## <a name="scale-applications-and-services-in-a-cluster"></a>クラスター内のアプリケーションとサービスをスケールする
 サービスは、その負荷の変化に対応するために、クラスターで簡単にスケールすることができます。 サービスをスケールするには、クラスターで実行されるインスタンスの数を変更します。 サービスをスケールする方法は複数あり、Service Fabric CLI (sfctl) のスクリプトやコマンドを使用できます。 この例では、Service Fabric Explorer を使用します。
 
-Service Fabric Explorer は、あらゆる Service Fabric クラスターで動作し、ブラウザーからクラスターの HTTP 管理ポート (19080) にアクセスして利用することができます (例: `http://demolinuxsecure.westus.cloudapp.azure.com:19080`)。
+Service Fabric Explorer は、あらゆる Service Fabric クラスターで動作し、ブラウザーからクラスターの HTTP 管理ポート (19080) にアクセスして利用することができます (例: `http://localhost:19080`)。
 
 Web フロントエンド サービスをスケールするには、次の手順に従います。
 
-1. クラスターで Service Fabric Explorer を開きます (例: `http://demolinuxsecure.westus.cloudapp.azure.com:19080`)。
+1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
 2. ツリー ビューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
 
-    ![Service Fabric Explorer スケール サービス](./media/service-fabric-quickstart-java-spring-boot/springbootsfhowtoscale.png)
+    ![Service Fabric Explorer スケール サービス](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
 
     次に、スケーリングするサービスのインスタンス数を選択します。
 
-3. 数値を **5** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
+3. 数値を **3** に変更し、**[Scale Service]\(サービスのスケール\)** をクリックします。
 
     または、次のコマンドラインを使用してサービスを拡張することもできます。
 
     ```bash 
-    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted` --instance-count 5 --stateless 
+    # Connect to your local cluster
+    sfctl cluster select --endpoint http://localhost:19080
+
+    # Run Bash command to scale instance count for your service
+    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted` --instance-count 3 --stateless 
     ``` 
 
 4. ツリー ビューの **fabric:/SpringServiceFabric/SpringGettingStarted** ノードをクリックし、パーティション ノード (GUID で表されます) を展開します。
 
-    ![Service Fabric Explorer スケール サービスの完了](./media/service-fabric-quickstart-java-spring-boot/springsfscaled.png)
+    ![Service Fabric Explorer スケール サービスの完了](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
 
-    このサービスには 5 つのインスタンスがあることがわかります。また、ツリー ビューで、それらのインスタンスがどのノードで実行されているかが確認できます。
+    サービスには 3 つのインスタンスがあり、各インスタンスを実行しているノードがツリー ビューに表示されます。
 
-このように簡単な管理タスクを実行するだけで、Spring サービスでユーザー負荷を処理するためのリソースが追加されました。 実行するサービスの信頼性を高めるために、サービスのインスタンスを複数用意する必要はないことに注目してください。 サービスで障害が発生した場合、Service Fabric によって新しいサービス インスタンスがクラスターで実行されます。
+このように簡単な管理タスクを実行するだけで、Spring サービスでユーザー負荷を処理するためのリソースが追加されます。 実行するサービスの信頼性を高めるために、サービスのインスタンスを複数用意する必要はないことに注目してください。 サービスで障害が発生した場合、Service Fabric によって新しいサービス インスタンスがクラスターで実行されます。
 
-## <a name="failover-services-in-a-cluster"></a>クラスターのフェールオーバー サービス 
-サービスのフェールオーバーを示すために、Service Fabric Explorer を使用して、ノードの再起動をシミュレートできます。 サービス インスタンスが 1 つのみ実行されていることを確認してください。 
+## <a name="fail-over-services-in-a-cluster"></a>クラスターのフェールオーバー サービス 
+サービスのフェールオーバーを示すために、Service Fabric Explorer を使用して、ノードの再起動をシミュレートします。 サービス インスタンスが 1 つのみ実行されていることを確認してください。 
 
-1. クラスターで Service Fabric Explorer を開きます (例: `http://demolinuxsecure.westus.cloudapp.azure.com:19080`)。
+1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
 2. サービスのインスタンスを実行しているノードの横にある省略記号 (3 つのドット) をクリックし、ノードを再起動します。 
 
-    ![Service Fabric Explorer でのノードの再起動](./media/service-fabric-quickstart-java-spring-boot/springbootsfrestart.png)
+    ![Service Fabric Explorer でのノードの再起動](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
 3. サービスのインスタンスは別のノードに移動され、アプリケーションにはダウンタイムは発生しません。 
 
-    ![Service Fabric Explorer でのノード再起動成功](./media/service-fabric-quickstart-java-spring-boot/springbootsfrestartsucceed.png)
+    ![Service Fabric Explorer でのノード再起動成功](./media/service-fabric-quickstart-java-spring-boot/sfxfailedover.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、次の方法について説明しました。
 
 > [!div class="checklist"]
@@ -188,5 +192,5 @@ Web フロントエンド サービスをスケールするには、次の手順
 > * 可用性に影響を与えることなくサービスのフェールオーバーを実行する
 
 * [Azure Service Fabric プログラミング モデルを使用した Java microservices の構築](service-fabric-quickstart-java-reliable-services.md)の詳細
-* [Jenkins を使用したシームレスな統合とデプロイの設定](service-fabric-cicd-your-linux-applications-with-jenkins.md)について確認する
+* [Jenkins を使用した継続的インテグレーションとデプロイの設定](service-fabric-cicd-your-linux-applications-with-jenkins.md)について確認する
 * その他の[Java サンプル](https://github.com/Azure-Samples/service-fabric-java-getting-started)を確認する

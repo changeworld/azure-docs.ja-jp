@@ -1,5 +1,5 @@
 ---
-title: "Azure クイック スタート - Azure ポータルで VM をバックアップする | Microsoft Docs"
+title: "Azure クイックスタート - Azure ポータルで VM をバックアップする | Microsoft Docs"
 description: "Azure ポータルを使用して仮想マシンをバックアップする方法を説明します"
 services: virtual-machines-windows, azure-backup
 documentationcenter: virtual-machines
@@ -13,21 +13,21 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/18/2017
+ms.date: 12/18/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 68409d7832985bea635e4b6de341ea6aec6f560d
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 694d75b57d0f1b26640848344fbbe268fe285009
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure で仮想マシンをバックアップする
 Azure ポータルで Azure のバックアップを作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスで Azure のバックアップを作成し、すべての関連リソースを構成できます。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure ポータルを使用して仮想マシン (VM) をバックアップする方法を説明します。 
 
 このクイック スタートでは、既存の Azure VM のバックアップを実行できます。 VM を作成する必要がある場合は、[Azure ポータルを使用して VM を作成](../virtual-machines/windows/quick-create-portal.md)できます。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure Portal (http://portal.azure.com) にログインします。
 
@@ -36,13 +36,13 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
 1. 左側のメニューの **[仮想マシン]** を選択します。 
 2. バックアップする VM を一覧から選択します。 サンプルの VM クイック スタート コマンドを使用する場合、VM は *myVM* という名前で、*myResourceGroup* リソース グループ内にあります。
-3. **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ウィンドウが開きます。
+3. **[操作]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ウィンドウが開きます。
 
 
 ## <a name="enable-backup-on-a-vm"></a>VM のバックアップを有効化する
 Recovery Services コンテナーは、Azure VM などの保護された各リソースのバックアップ データを格納する論理コンテナーです。 保護されたリソースのバックアップ ジョブを実行すると、Recovery Services コンテナー内に復元ポイントが作成されます。 この復元ポイントのいずれかを使用して、データを特定の時点に復元できます。
 
-1. **[新規作成]** を選択し、新しいコンテナーの名前を指定します (**myRecoveryServicesVault**など)。
+1. **[新規作成]** を選択し、新しいコンテナーの名前を指定します (*myRecoveryServicesVault*など)。
 2. まだ選択していない場合は、**[Use existing]\(既存を使用\)** を選択し、ドロップ ダウン メニューから VM のリソース グループを選択します。
 
     ![Azure ポータルで VM のバックアップを有効にする](./media/quick-backup-vm-portal/enable-backup.png)
@@ -52,6 +52,8 @@ Recovery Services コンテナーは、Azure VM などの保護された各リ�
     バックアップ ジョブがいつ実行され、復元ポイントをどのくらいの期間格納するかを定義するポリシーを作成して使用します。 既定の保護ポリシーでは、毎日バックアップ ジョブが実行され、復元ポイントは 30 日間保持されます。 ポリシーのこれらの既定値を使用して、VM をすぐに保護できます。 
 
 3. バックアップ ポリシーの既定値をそのまま使用するには、**[バックアップの有効化]** を選択します。
+
+Recovery Services コンテナーが作成されるまでしばらく待ちます。
 
 
 ## <a name="start-a-backup-job"></a>バックアップ ジョブを開始する
@@ -92,7 +94,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
     ![Azure ポータルでリソース グループを削除する](./media/quick-backup-vm-portal/delete-resource-group.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、Recovery Services コンテナーを作成し、VM の保護を有効にし、最初の復元ポイントを作成しました。 Azure Backup と Recovery Services についてさらに学ぶには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
