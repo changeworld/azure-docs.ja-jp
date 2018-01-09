@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: 統合システムのリリース ノート
           items:
+            - name: 1712 更新プログラム
+              href: azure-stack-update-1712.md
             - name: 1711 更新プログラム
               href: azure-stack-update-1711.md
             - name: 1710 更新プログラム

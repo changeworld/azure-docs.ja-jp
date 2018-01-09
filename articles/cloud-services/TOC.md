@@ -44,6 +44,7 @@
 ### [カスタム ドメイン コントローラーに接続する](cloud-services-connect-to-custom-domain.md)
 
 ## サービスの管理
+### [予測実行の軽減](mitigate-se.md)
 ### [一般的な管理タスク](cloud-services-how-to-manage-portal.md)
 ### [クラウド サービスの構成](cloud-services-how-to-configure-portal.md)
 ### [Azure Automation を使用したクラウド サービスの管理](automation-manage-cloud-services.md)
@@ -102,7 +103,7 @@
 ## [.cscfg XML スキーマ](schema-cscfg-file.md)
 ### [Role スキーマ](schema-cscfg-role.md)
 ### [NetworkConfiguration スキーマ](schema-cscfg-networkconfiguration.md)
-## [REST ()](/rest/api/compute/cloudservices/)
+## [REST](/rest/api/compute/cloudservices/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)

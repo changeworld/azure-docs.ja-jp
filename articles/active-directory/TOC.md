@@ -93,7 +93,7 @@
 #### [Azure Portal](active-directory-groups-settings-azure-portal.md)
 #### [コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### 高度なルールの作成
-#### [Azure ポータル](active-directory-groups-dynamic-membership-azure-portal.md)
+#### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [セルフサービス グループのセットアップ](active-directory-accessmanagement-self-service-group-management.md)
 ### [トラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
@@ -140,7 +140,7 @@
 ### [SSPR データ要件](active-directory-passwords-data.md)
 ### [SSPR のレポート](active-directory-passwords-reporting.md)
 ### IT 管理者: パスワードのリセット
-#### [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
+#### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 ### [SSPR のライセンス](active-directory-passwords-licensing.md)
 ### [パスワード ライトバック](active-directory-passwords-writeback.md)
 ### [トラブルシューティング](active-directory-passwords-troubleshoot.md)

@@ -12,7 +12,7 @@
 
 # 方法
 ## データの読み込みと移動
-### [Azure Data Factory の使用](../data-factory/data-factory-azure-datalake-connector.md)
+### [Azure Data Factory の使用](../data-factory/connector-azure-data-lake-store.md)
 ### [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
@@ -49,7 +49,7 @@
 #### [REST API の使用](data-lake-store-data-operations-rest-api.md)
 #### [Python の使用](data-lake-store-data-operations-python.md)
 
-## パフォーマンス
+## [パフォーマンス]
 ### [Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-guidance.md)
 ### [Azure Data Lake Store で PowerShell を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-powershell.md)
 ### [HDInsight のSpark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
@@ -74,7 +74,7 @@
 ### [SQL Server Integration Services と共に使用する](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager)
 ### [その他の Azure 統合オプション](data-lake-store-integrate-with-other-services.md)
 
-## 管理
+## [管理]
 ### [診断ログにアクセスする](data-lake-store-diagnostic-logs.md)
 ### [高可用性向けの計画](data-lake-store-disaster-recovery-guidance.md)
 
@@ -83,10 +83,10 @@
 ## [Azure PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
-## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-store)
+## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
 ## [Python (アカウント管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python (ファイルシステム管理)](http://azure-datalake-store.readthedocs.io/en/latest)
-## [REST ()](/rest/api/datalakestore)
+## [REST](/rest/api/datalakestore)
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # リソース

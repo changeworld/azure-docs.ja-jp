@@ -1,5 +1,5 @@
 # 概要
-## [Power BI Embedded とは](what-is-power-bi-embedded.md)
+## [Power BI Embedded について](what-is-power-bi-embedded.md)
 
 # 作業開始
 ## [Power BI Embedded を使ってみる](get-started.md)
@@ -21,22 +21,20 @@
 # サンプル
 ## [コード サンプル](https://github.com/Microsoft/PowerBI-Developer-Samples)
 ## [サンプルのチュートリアル](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/)
+## [JavaScript 埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)
 
 # リファレンス
 ## API
 ### [Azure リソース管理 REST API](https://docs.microsoft.com/rest/api/power-bi-embedded/)
-### [REST API](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
-## SDK
-### [.NET SDK ダウンロード](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)
-### [JavaScript SDK ダウンロード](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)
+### [Power BI REST API](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
-## [JavaScript 埋め込みサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)
-## [Apiary](http://docs.powerbi.apiary.io/)
+## [Power BI コミュニティ](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+## [.NET SDK ダウンロード](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)
+## [JavaScript SDK ダウンロード](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## GitHub リポジトリ
-### [.NET](https://github.com/Microsoft/PowerBI-CSharp)
-### [JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
-## [Power BI コミュニティ](http://community.powerbi.com/t5/Developer/bd-p/Developer)
+### [Power BI 用 .NET](https://github.com/Microsoft/PowerBI-CSharp)
+### [Power BI 用 JavaScript](https://github.com/Microsoft/PowerBI-JavaScript)
+
 

@@ -20,7 +20,7 @@
 ### [セキュリティ ポリシー](security-center-policies.md)
 ### [Azure Policy を使用するセキュリティ ポリシー](security-center-azure-policy.md)
 ### [電子メール通知](security-center-provide-security-contact-details.md)
-### [[価格レベル]](security-center-pricing.md)
+### [価格レベル](security-center-pricing.md)
 
 ## [オンボード](security-center-onboarding.md)
 ## [イベント](security-center-events-dashboard.md)
@@ -83,13 +83,14 @@
 ### [トラブルシューティング ガイド](security-center-troubleshooting-guide.md)
 
 # リファレンス
-## [REST ()](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
+## [REST](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
 
 # 関連項目
 ## [Azure Security](/azure/security/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [Security Center の対応準備ロードマップ](security-center-readiness-roadmap.md)
 ## [Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの概要](https://azure.microsoft.com/services/security-center/)
