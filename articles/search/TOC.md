@@ -15,9 +15,9 @@
 ## [インデックスの検索](search-query-overview.md)
 ### [Azure Portal](search-explorer.md)
 ### [.NET](search-query-dotnet.md)
-### [REST ()](search-query-rest-api.md)
+### [REST](search-query-rest-api.md)
 
-# Tutorials (チュートリアル)
+# チュートリアル
 
 ## [.NET での開発](search-howto-dotnet-sdk.md)
 ## [.NET のシノニムのプレビュー](search-synonyms-tutorial-sdk.md)
@@ -51,12 +51,12 @@
 ### [Azure Blob Storage インデクサー](search-howto-indexing-azure-blob-storage.md)
 ### [Azure Table Storage インデクサー](search-howto-indexing-azure-tables.md)
 ### [Azure SQL インデクサー](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [Azure Cosmos DB インデクサー](search-howto-index-documentdb.md)
+### [Azure Cosmos DB インデクサー](search-howto-index-cosmosdb.md)
 ### [CSV BLOB のインデックスを作成する](search-howto-index-csv-blobs.md)
 ### [JSON BLOB のインデックスを作成する](search-howto-index-json-blobs.md)
 ### [Azure VM で SQL Server へのインデクサーの接続を構成する](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [インデクサーのフィールド マッピング](search-indexer-field-mappings.md)
-##  Search
+##  検索
 ### [フルテキスト検索のしくみ](search-lucene-query-architecture.md)
 ### クエリの構築
 #### [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
@@ -84,12 +84,12 @@
 ### [検索トラフィックの分析](search-traffic-analytics.md)
 ### [パフォーマンスと最適化](search-performance-optimization.md)
 
-# リファレンス
+# 参照
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (管理)](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python (管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
-## [REST ()](/rest/api/searchservice)
+## [REST](/rest/api/searchservice)
 ## [REST (管理)](/rest/api/searchmanagement)
 ## [サービス REST (プレビュー)](search-api-2016-09-01-preview.md)
 
