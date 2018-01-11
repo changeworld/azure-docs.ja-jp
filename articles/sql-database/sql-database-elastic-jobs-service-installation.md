@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 7c741deba180af56414b0711de94ba110aeea9b8
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: ef5a8931eeda0f7ddc485632acaf2d76b71dccde
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
-[**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)のインストールには PowerShell または Azure クラシック ポータルを使用できます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
+[**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)は、PowerShell または Azure Portal を使用してインストールできます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
 
 既存の**エラスティック プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。 PowerShell API 経由で公開されている新しい機能を活用するために、最新の **Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
 
@@ -155,7 +155,7 @@ ms.lasthandoff: 10/31/2017
 
 **推定所要時間:** 10 分。
 
-1. [Azure Portal](https://portal.azure.com/#) のエラスティック プールのダッシュボード ビューで、**[ジョブの作成]** をクリックします。
+1. [Azure Portal](https://portal.azure.com/#) で、エラスティック プールのダッシュボード ビューから、**[ジョブの作成]** をクリックします。
 2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**Elastic Database ジョブ**をインストールする必要があります。
 3. チェック ボックスをクリックして条項に同意します。
 4. [サービスのインストール] ビューで、 **[ジョブの資格情報]**をクリックします。

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/04/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 794ad146ee8cb72370216677913013b6bbcb4b8f
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -72,28 +72,31 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
  
     ![構成する](media/functions-twitter-email/keys.png)
 
-## <a name="create-the-function"></a>関数を作成する
+[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
+
+## <a name="create-the-function-app"></a>Function App の作成
 
 関数は、Logic Apps ワークフローの処理タスクをオフロードするのに役立ちます。 このチュートリアルでは、HTTP によってトリガーされる関数を使用して、Cognitive Services からのツイート センチメント スコアを処理し、カテゴリ値を返します。  
 
-1. **[新規]** ボタンをクリックして、**[計算]** > **[Function App]** を選択します。 次の表で指定されている設定を使用してください。 条項に同意し、**[ダッシュボードにピン留めする]** を選択します。
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-    ![Azure Function App の作成](media/functions-twitter-email/create_fun.png)
+## <a name="create-an-http-triggered-function"></a>HTTP によってトリガーされる関数の作成  
 
-    | 設定      |  推奨値   | Description       |
-    | --- | --- | --- |
-    | **名前** | MyFunctionApp | 一意のアカウント名を選択します。 |
-    | **[リソース グループ]** | myResourceGroup | このチュートリアルでは、すべてのサービスで同じリソース グループを使用します。|
-    | **ホスティング プラン** | 従量課金プラン | これは、料金と使用量の割り当てを定義します。
-    | **場所** | 米国西部 | お近くの場所を使用します。 |
-    | **Storage** | 新規作成 | 新しいストレージ アカウントを自動的に生成します。|
-    | **[価格レベル]** | F0 | まずは低いレベルを選んでください。 呼び出し回数が不足する場合は、高いレベルにスケーリングします。|
+1. Function App を展開し、**[関数]** の横にある **[+]** ボタンをクリックします。 これが Function App で初めての関数の場合、**[カスタム関数]** を選びます。 関数テンプレートの完全なセットが表示されます。
 
-2. ダッシュボードから関数アプリを選択して、関数を展開し、**[関数]**の横の **+** ボタンをクリックし、**[Webhook + API]**、**[CSharp]**、**[この関数を作成する]** を順にクリックします。 これによって、HTTPTrigger C# テンプレートを使用する関数が作成されます。 コードは新しいウィンドウに `run.csx` として表示されます。
+    ![Azure Portal での関数のクイック スタート ページ](media/functions-twitter-email/add-first-function.png)
 
-    ![[Function App] ブレード、[関数 +]](media/functions-twitter-email/add_fun.png)
+2. 検索フィールドに「`http`」と入力し、HTTP トリガー テンプレートとして **C#** を選択します。 
 
-3. この `run.csx` ファイルの内容を次のコードに置き換えて、**[保存]** をクリックします。
+    ![HTTP トリガーの選択](./media/functions-twitter-email/select-http-trigger-portal.png)
+
+3. 使用する関数の **[名前]** を入力し、**[[認証レベル]](functions-bindings-http-webhook.md#http-auth)** として `Function` を選択し、**[作成]** を選択します。 
+
+    ![HTTP によってトリガーされる関数の作成](./media/functions-twitter-email/select-http-trigger-portal-2.png)
+
+    これは、HTTP トリガー テンプレートを使用して C# スクリプトの関数を作成します。 コードは新しいウィンドウに `run.csx` として表示されます。
+
+4. この `run.csx` ファイルの内容を次のコードに置き換えて、**[保存]** をクリックします。
 
     ```csharp
     using System.Net;

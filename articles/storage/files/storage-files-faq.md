@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: 0bcf56e06c34af94746d42d8af18e32fcd9a7496
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f0337002bbaf554a6a775464edefc032e6c7bab2
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure Files に関してよく寄せられる質問
 [Azure Files](storage-files-introduction.md) は、クラウド上で、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (別称 Common Internet File System または CIFS) を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync (プレビュー) で Azure ファイル共有をキャッシュすることによって高速なアクセスを実現することもできます。
@@ -80,7 +80,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="azure-file-sync"></a>Azure ファイル同期
 * <a id="afs-region-availability"></a>**Azure File Sync (プレビュー) は、どのリージョンでサポートされていますか。**  
-    Azure File Sync は現在、米国西部、西ヨーロッパ、オーストラリア東部、および東南アジアで利用可能です。 一般公開に向けての作業が進むにつれ、サポートされるリージョンがさらに追加される予定です。 詳細については、「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」をご覧ください。
+    現在、Azure File Sync は米国東部、米国西部、西ヨーロッパ、オーストラリア東部、および東南アジアで利用可能です。 一般公開に向けての作業が進むにつれ、サポートされるリージョンがさらに追加される予定です。 詳細については、「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」をご覧ください。
 
 * <a id="cross-domain-sync"></a>**同じ同期グループ内にドメイン参加とドメイン非参加のサーバーを保持することはできますか。**  
     はい。 異なる Active Directory に属しているサーバー エンドポイントを 1 つの同期グループに含めることは可能です。ドメインに参加していない場合でも同様です。 この構成は技術的には機能するものの、通常の構成としては、お勧めできません。サーバー上のファイル/フォルダー用に定義されたアクセス制御リスト (ACL) は、同期グループ内の他のサーバーでは適用できない可能性があるためです。 最良の結果を得るには、同じ Active Directory フォレスト内にあるサーバー間、別の Active Directory フォレスト内にあるものの信頼関係が確立されているサーバー間、または 1 つのドメインにはないサーバー間で同期することをお勧めします。 これらの構成を混在させることは避けるようにしてください。

@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Active Directory パスワード管理, パスワード管理, Azure AD セルフサービスによるパスワードのリセット"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6497421b1c51e361d6881332a19c19c7d47c8e29
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 4216c417d137c00587bf65b39410eca6f4cef8bc
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -41,6 +41,11 @@ ms.lasthandoff: 12/07/2017
 * **Q: ユーザーが自分のパスワード リセット データを登録することはできますか。**
 
   > **A:** はい。 パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (http://aka.ms/ssprsetup) で、認証情報を登録できます。 ユーザーは、アクセス パネル (http://myapps.microsoft.com) で登録することもできます。 アクセス パネルで登録するには、自分のプロフィール画像を選び、**[プロファイル]** を選んで、**[パスワード リセットの登録]** オプションを選ぶ必要があります。
+  >
+  >
+* **Q: グループに対してパスワード リセットを有効にし、その後全員に対してパスワード リセットを有効にする場合、ユーザーは再登録する必要がありますか。**
+
+  > **A:** いいえ。 認証データを設定したユーザーは、再登録する必要はありません。
   >
   >
 * **Q: ユーザーの代わりにパスワード リセット データを定義することはできますか。**
