@@ -3,7 +3,7 @@ title: "Azure Automation DSC の使用 | Microsoft Docs"
 description: "Azure Automation Desired State Configuration (DSC) の最も一般的なタスクの説明と例"
 services: automation
 documentationcenter: na
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: a3816593-70a3-403b-9a43-d5555fd2cee2
@@ -13,26 +13,26 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
-ms.author: magoedte;eslesar
-ms.openlocfilehash: 8a10d961ad7c107c68b57c64ee6c88544ff8832b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: magoedte;gwallace
+ms.openlocfilehash: e8b7d0d38f59589cbe6f82798b4e725af7b20e23
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC の使用
-このトピックでは、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。 Azure Automation DSC の概要については、「 [Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。 DSC のドキュメントについては、「 [Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/PowerShell/dsc/overview)」を参照してください。
+この記事では、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。 Azure Automation DSC の概要については、「 [Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。 DSC のドキュメントについては、「 [Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/PowerShell/dsc/overview)」を参照してください。
 
-このトピックでは、Azure Automation DSC を使用するための詳しい手順を示しています。 このトピックで説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、 [次の ARM テンプレート](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup)を使用できます。 このテンプレートを使用すると、Azure Automation DSC で管理される Azure VM を含む、完成した Azure Automation DSC 環境が設定されます。
+この記事では、Azure Automation DSC を使用するための詳しい手順を示しています。 この記事で説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、次の [Resource Manager テンプレート](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup)を使用できます。 このテンプレートを使用すると、Azure Automation DSC で管理される Azure VM を含む、完成した Azure Automation DSC 環境が設定されます。
 
 ## <a name="prerequisites"></a>前提条件
-このトピックの例を完了するには、次のものが必要です。
+この記事の例を完了するには、次のものが必要です。
 
 * Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
 * Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>DSC 構成を作成する
-ここでは、ノードの割り当て方法に応じて、 [Web-Server](https://msdn.microsoft.com/powershell/dsc/configurations) Windows 機能 (IIS) が存在するかどうかを確認する、簡単な **DSC 構成** を作成します。
+ここでは、ノードの割り当て方法に応じて、[Web-Server](https://msdn.microsoft.com/powershell/dsc/configurations) Windows 機能 (IIS) が存在するかどうかを確認する、簡単な **DSC 構成**を作成します。
 
 1. Windows PowerShell ISE (または任意のテキスト エディター) を起動します。
 2. 次のテキストを入力します。
@@ -129,7 +129,7 @@ ms.lasthandoff: 10/11/2017
     ![Screenshot of the DSC Node Configurations blade](./media/automation-dsc-getting-started/NodeConfigs.png)
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-dsc"></a>Azure Automation DSC を使用して管理のために Azure VM をオンボードする
-Azure Automation DSC を使用すると、Azure VM (クラシックと Resource Manager の両方)、オンプレミスの VM、Linux マシン、AWS VM、オンプレミスの物理マシンを管理できます。 このトピックでは、Azure Resource Manager VM のオンボードの方法のみを説明します。 他の種類のマシンのオンボードの詳細については、「 [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
+Azure Automation DSC を使用すると、Azure VM (クラシックと Resource Manager の両方)、オンプレミスの VM、Linux マシン、AWS VM、オンプレミスの物理マシンを管理できます。 この記事では、Azure Resource Manager VM をオンボードする方法のみを説明します。 他の種類のマシンのオンボードの詳細については、「 [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>Azure Automation DSC を使用して管理のために Azure Resource Manager VM をオンボードするには
 1. [Azure ポータル](https://portal.azure.com)にサインインします。

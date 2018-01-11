@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.openlocfilehash: 4b7609fc5d6ce7bf0e3bd3ebf6d8f52e93a40a75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>SQL Data Warehouse での Power BI の使用
 Azure SQL Database の場合と同様、SQL Data Warehouse Direct Connect を使用すると、強力な論理プッシュ ダウンと共に Power BI の分析機能を活用できます。  Direct Connect では、データを検索する際に、クエリがリアルタイムで Azure SQL Data Warehouse に送信されます。  これを SQL Data Warehouse のスケールで組み合わすことで、テラバイト単位のデータに対して動的レポートを数分で作成できます。  さらに、[Power BI で開く] ボタンが導入されたため、Azure の他の部分から情報を収集しなくても、Power BI を直接 SQL Data Warehouse に接続できるようになりました。
@@ -39,7 +39,7 @@ Direct Connect を使用するときは、次の点に注意してください�
 ## <a name="using-the-open-in-power-bi-button"></a>[Power BI で開く] ボタンの使用
 SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、[Power BI で開く] ボタンを使用することです。 このボタンをクリックすると、Power BI で新しいダッシュボードの作成をシームレスに開始できます。  
 
-1. 作成を開始するには、Azure クラシック ポータルで SQL Data Warehouse インスタンスに移動します。
+1. 作成を開始するには、Azure Portal で SQL Data Warehouse インスタンスに移動します。
 2. [Power BI で開く] ボタンをクリックします。
 3. 直接サインインできない場合、または Power BI アカウントがない場合は、サインインする必要があります。  
 4. SQL Data Warehouse の情報があらかじめ入力された SQL Data Warehouse 接続ページにリダイレクトされます。
@@ -50,7 +50,7 @@ SQL Data Warehouse と Power BI の間を移動する最も簡単な方法は、
 
 1. ナビゲーション ウィンドウの下部にある [データの取得] をクリックします。
 2. [データベース] を選択します。
-3. データベース ページで、Azure SQL Data Warehouse を選択し、接続をクリックします。
+3. [データベース] ページで、[Azure SQL Data Warehouse] を選択し、[接続] をクリックします。
 4. 必要な接続情報を入力します。  Azure Portal では、サーバー名とデータベース名を検索できます。
 5. 接続が行われると、Power BI のメイン ページに戻り、[データベース] の下に新しいエントリがインスタンスの名前で表示されます。  
 6. 新しいデータセットをクリックして、データベース内のすべてのテーブルとビューを確認できます。 列を選択すると、ソースにクエリが送信されて、ビジュアルが動的に作成されます。 これらのビジュアルは新しいレポートに保存され、ダッシュボードに固定できます。

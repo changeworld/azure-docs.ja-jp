@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d70186513b7313c8181092bc93a723f21154f7bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub webhook でトリガーされる関数の作成
 
@@ -51,9 +51,13 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
     ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. 目的の言語の **GitHub WebHook** テンプレートを選択します。 **関数に名前を付け**てから、**[作成]** を選びます。
+2. 検索フィールドに、「`github`」と入力し、GitHub webhook トリガー テンプレート用の目的の言語を選択します。 
 
-     ![Azure Portal での GitHub webhook でトリガーされる関数の作成](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+     ![GitHub webhook トリガー テンプレートを選択します。](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+
+2. 関数の**名前**を入力し、**[作成]**を選択します。 
+
+     ![Azure Portal で GitHub webhook でトリガーされる関数を構成する](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger-2.png) 
 
 3. 新しい関数で、**[</> 関数の URL の取得]** をクリックし、値をコピーして保存します。 **[</> GitHub シークレットの取得]** で同じ操作を行います。 これらの値は GitHub で webhook を構成するために使用します。
 

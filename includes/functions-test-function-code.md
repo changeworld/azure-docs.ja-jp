@@ -1,4 +1,4 @@
-## <a name="test-the-function"></a>関数をテストする
+## <a name="test"></a>関数をテストする
 
 cURL を使用して、Mac または Linux コンピューターで、または Windows で Bash を使用して、デプロイした関数をテストします。 次の cURL コマンドを実行します。`<app_name>` プレースホルダーを Function App の名前に置き換えます。 URL にクエリ文字列 `&name=<yourname>` を追加します。
 

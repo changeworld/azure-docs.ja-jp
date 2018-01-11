@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: bd384255b3c46b3ae88b1269ab26e0ddaa6f6e77
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 991f86c328aba9aa184658c7da748f24ee2d6506
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>IT Service Management Connector を使用した ITSM 作業項目の一元管理 (プレビュー)
 
@@ -105,7 +105,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 割当先
 - カテゴリ
 - タイトル
-- 説明
+- Description
 - 作成日
 - 終了日
 - 解決日
@@ -150,7 +150,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 | OMS のフィールド | ITSM のフィールド |
 |:--- |:--- |
-| ServiceDeskId_s| 番号 |
+| ServiceDeskId_s| Number |
 | IncidentState_s | 状態 |
 | Urgency_s |緊急度 |
 | Impact_s |影響|
@@ -164,15 +164,15 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  簡単な説明 |
 | Description_s|  メモ |
 | CreatedDate_t|  開始済み |
-| ClosedDate_t| 終了済み|
+| ClosedDate_t| closed|
 | ResolvedDate_t|解決済み|
-| Computer  | 構成項目 |
+| コンピューター  | 構成項目 |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 変更要求の出力データ
 
 | OMS のフィールド | ITSM のフィールド |
 |:--- |:--- |
-| ServiceDeskId_s| 番号 |
+| ServiceDeskId_s| Number |
 | CreatedBy_s | 要求者 |
 | ClosedBy_s | 終了者 |
 | AssignedTo_s | 割り当て先  |
@@ -190,8 +190,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   終了予定日 |
 | WorkStartDate_t  | 実際の開始日 |
 | WorkEndDate_t | 実際の終了日|
-| Description_s | 説明 |
-| Computer  | 構成項目 |
+| Description_s | Description |
+| コンピューター  | 構成項目 |
 
 **ITSM データに関する Log Analytics 画面 (サンプル):**
 
@@ -227,7 +227,7 @@ ITSMC ソリューションを適用して、接続されている ITSM ツー�
 
     このアラートについてログ エントリの数に関係なく 1 つの作業項目を作成するには、このチェックボックスをオフのままにしておきます。
 
-7. **[保存]**をクリックします。
+7. **[Save]** をクリックします。
 
 作成した OMS アラートは、**[設定]**>**[アラート]** で確認できます。 指定したアラートの条件が満たされた場合は、それに対応する ITSM 接続の作業項目が作成されます。
 
@@ -292,9 +292,11 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>OMS の ITSM 接続のトラブルシューティング
 1.  接続されているソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示された場合は、次の手順を実行してください。
- - ServiceNow、Cherwell、Provance の接続の場合 - 各接続のユーザー名、パスワード、クライアント ID、およびクライアント シークレットが正しく入力されていることを確認します。
-        - 対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。
- - Service Manager の接続の場合 - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。
+ - ServiceNow、Cherwell および Provance の接続の場合  
+        - 各接続のユーザー名、パスワード、クライアント ID、およびクライアント シークレットが正しく入力されていることを確認します。  
+        - 対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。  
+ - Service Manager 接続の場合  
+        - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。  
 
 2.  ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 ServiceNow Dev インスタンスは、長時間アイドル状態になっている場合、スリープ状態になることがあります。 それ以外の場合は、問題を報告してください。
 3.  OMS アラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、以下を確認してください。

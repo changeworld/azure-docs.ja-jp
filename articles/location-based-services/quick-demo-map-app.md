@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0fcd25183617de879ada6d1f7d2a8fcf9551d6de
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 0edca9e5eb709eb3e1b42b45e5a41ac7a5ba1e75
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Azure Location Based Services (プレビュー) によるデモ版対話型マップ検索を開始する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure ポータル](https://portal.azure.com)の左上隅にある **[リソースの作成]** をクリックします。
 2. *[Marketplace を検索]* ボックスに「**location based services**」と入力します。
-3. *[結果]* をクリックして、**[Location Based Services (プレビュー)]** をクリックします。 マップの下に表示される **[作成]** ボタンをクリックします。 
+3. *[結果]* で **[Location Based Services (プレビュー)]** をクリックします。 マップの下に表示される **[作成]** ボタンをクリックします。 
 4. **[Create Location Based Services アカウントの作成]** ページで、新しいアカウントの *[名前]* を入力し、使用する *[サブスクリプション]* を選択し、新規または既存の *[リソース グループ]* の名前を入力します。 リソース グループの場所を選択し、*[プレビューの使用条件]* に同意して、**[作成]** をクリックします。
 
     ![ポータルで Location Based Services アカウントを作成する](./media/quick-demo-map-app/create-lbs-account.png)
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) ファイルの内容をコピーまたはダウンロードします。
 2. このファイルの内容を **AzureMapDemo.html** としてローカルに保存し、テキスト エディターで開きます。
-3. **<insert-key>** 文字列で検索し、前のセクションで取得した、**主キー**の値で置換します。 
+3. 文字列 **&#60;insert-key&#62;** を検索し、前のセクションで取得した**主キー**の値で置換します。 
 
 
 ## <a name="launch-the-demo-application-for-azure-maps"></a>Azure Maps のデモ アプリケーションを起動する

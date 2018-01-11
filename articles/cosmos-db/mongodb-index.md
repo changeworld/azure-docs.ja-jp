@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 8feabb464c87032db40a66a67f471d0f41cd98eb
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 63cfa92feb08f32081fe02d4202fa6256c7b99dc
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-mongodb-api-documentation"></a>Azure Cosmos DB: MongoDB API のドキュメント
 
 この記事では、MongoDB API に固有の、すべての Azure Cosmos DB コンテンツへのリンクを提供します。
 
-これらの記事は、DocumentDB API、Graph API、または Table API には適用されません。 
+これらの記事は、SQL API、Graph API、または Table API には適用されません。 
 
 ## <a name="introduction-and-concepts"></a>概要と概念
 
@@ -31,18 +31,20 @@ Azure Cosmos DB の MongoDB API の学習を開始するにあたり、次のト
 
 - [MongoDB API の概要](mongodb-introduction.md)
 - [MongoDB アカウントに接続する](connect-mongodb-account.md)
+- [MongoDB の機能と構文に対するサポート](mongodb-feature-support.md)
 
 ## <a name="quickstarts"></a>クイック スタート
 
-クイック スタートのトピックに従うと、Azure Cosmos DB で動作するアプリケーションをすばやく作成できます。 各クイック スタートで、UI ベースの Azure ポータルとお気に入りのコーディング言語を使って、Azure Cosmos DB でデータベース ソリューションを作成する方法について説明します。 GitHub から複製可能な Web アプリを、各クイック スタートで利用できます。 
+クイック スタートのトピックに従うと、Azure Cosmos DB で動作するアプリケーションをすばやく作成できます。 各クイック スタートで、UI ベースの Azure ポータルとお気に入りのコーディング言語を使って、Azure Cosmos DB でデータベース ソリューションを作成する方法について説明します。 GitHub の複製可能な Web アプリを、各クイック スタート用に利用できます。 
 
 
-- [MongoDB + Express + AngularJS + Node.js + Web アプリ](create-mongodb-nodejs.md)
+- [Node.js + Express + AngularJS + Web アプリ](create-mongodb-nodejs.md)
 - [.NET + Azure ポータル + Web アプリ](create-mongodb-dotnet.md)
 - [Java + Azure ポータル + Web アプリ](create-mongodb-java.md)
 - [Go + Azure ポータル + Go](create-mongodb-golang.md)
+- [Python + Flask + Azure Portal](create-mongodb-flask.md)
 
-## <a name="tutorials"></a>チュートリアル
+## <a name="tutorials"></a>Tutorials (チュートリアル)
 
 チュートリアルには、クイック スタートよりも詳細な説明が記載されています。 こうしたチュートリアルでは、アプリをゼロから構築し、コードをコピーしてアプリに貼り付けます。 また、データのインポートや照会のほか、データベースをグローバルに配布する方法についても説明します。
 

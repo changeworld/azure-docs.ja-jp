@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 09/18/2017
 ms.author: elbutter
-ms.openlocfilehash: 295cc59fdb23105534b4e7431902eaa720643330
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>SQL Data Warehouse のエラスティック クエリの使用方法
 
@@ -78,7 +78,7 @@ SQL Database のエラスティック クエリの詳細については、「[Az
 
 ### <a name="elastic-querying"></a>エラスティック クエリの実行
 
-- 外部テーブルと内部的にキャッシュされたテーブルは、SQL Database インスタンスの別のオブジェクトとして存在します。 キャッシュされた部分のテーブルと外部テーブルの上に、両方のテーブルを結合して各テーブルの境界点にフィルターを適用したビューを作成することを検討してください。
+- テーブルの一部分はパフォーマンスのためにキャッシュ データとして SQL Database 内に格納され、残りのデータは SQL Data Warehouse に格納される、一種のストレッチ テーブルを管理することがよくあります。 この場合、SQL Database に 2 つのオブジェクトを保持する必要があります。1 つは SQL Data Warehouse のベース テーブルを参照する SQL Database 内の外部テーブルであり、もう 1 つは SQL Database 内のテーブルの "キャッシュされた" 部分です。 そして、テーブルのキャッシュされた部分と外部テーブルの上位に両方のテーブルの和集合となるビューを作成し、SQL Database 内で具体化されているデータと、外部テーブルによって公開される SQL Data Warehouse のデータを分離するフィルターを適用することを検討します。
 
   たとえば、最も新しい年のデータを SQL Database インスタンスに保持する場合について考えてみましょう。 データ ウェアハウスの注文テーブルを参照する **ext.Orders** と、SQL Database インスタンス内の最も新しい年に相当するデータを表す **dbo.Orders** という 2 つのテーブルがあるとします。 どちらのテーブルに対してクエリを実行するかをユーザーに判断してもらう代わりに、両方のテーブルの最も新しい年のパーティション ポイントの上にビューを作成します。
 
@@ -135,13 +135,17 @@ SQL Database のエラスティック クエリの詳細については、「[Az
 
 ## <a name="faq"></a>FAQ
 
-Q: Elastic Database プール内のデータベースをエラスティック クエリに使用できますか?
+Q: エラスティック プール内のデータベースをエラスティック クエリに使用できますか?
 
 A: はい。 エラスティック プール内の SQL Database にエラスティック クエリを使用できます。 
 
 Q: エラスティック クエリに使用できるデータベースの数に上限はありますか?
 
-A: 論理サーバーには、お客様の偶発的な使いすぎを防ぐために DTU の上限が設けられています。 SQL Data Warehouse インスタンスと共に多数のデータベースを有効にした場合、予期せずにこの上限に達することがあります。 そのような場合には、論理サーバーの DTU の上限を引き上げる要求を送信してください。 [サポート チケットを作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)し、要求の種類として *[クォータ]* を選択することでクォータを引き上げることができます。
+A: エラスティック クエリに使用できるデータベースの数にハード キャップはありません。 ただし、各エラスティック クエリ (SQL Data Warehouse にヒットするクエリ) は、通常の同時実行制限に加算されます。
+
+Q: エラスティック クエリに関係する DTU 制限はありますか?
+
+A: エラスティック クエリにだけ特別に DTU 制限が適用されることはありません。 標準ポリシーとして、論理サーバーにはお客様の偶発的な使いすぎを防ぐために DTU の上限が設けられています。 SQL Data Warehouse インスタンスと共に多数のデータベースを有効にした場合、予期せずにこの上限に達することがあります。 そのような場合には、論理サーバーの DTU の上限を引き上げる要求を送信してください。 [サポート チケットを作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)し、要求の種類として *[クォータ]* を選択することでクォータを引き上げることができます。
 
 Q: エラスティック クエリに行レベルのセキュリティや動的データ マスクを使用することはできますか?
 

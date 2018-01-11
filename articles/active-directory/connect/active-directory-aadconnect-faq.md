@@ -4,7 +4,7 @@ description: "このページでは、Azure AD Connect についてよく寄せ�
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9d11795aa8b768a8574c3f8bc375b74402825ba3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 13f12f39fb72bd7d4e32056753a012c38034f807
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect についてよく寄せられる質問
 
@@ -35,6 +35,11 @@ ms.lasthandoff: 11/22/2017
 はい。 エージェントをインストールした後、次の PowerShell コマンドレットを使って登録プロセスを実行できます。 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
+
+**Q: AADConnect では、2 つのドメインから Azure AD への同期がサポートされていますか。**</br>
+はい、これはサポートされています。 [複数のドメイン](active-directory-aadconnect-multiple-domains.md)に関するページをご覧ください
+ 
+**Q: Azure AD Connect では同じ Active Directory ドメインに対する複数のコネクタの使用はサポートされていますか。**</br> いいえ、これはサポートされていません 
 
 ## <a name="network"></a>ネットワーク
 **Q: ファイアウォールやネットワーク デバイスなど、ネットワーク上で接続を開ける最大時間を制限するものがあります。Azure AD Connect を使用する場合、クライアント側のタイムアウトしきい値はどのくらいにすればいいでしょうか。**  
@@ -78,8 +83,6 @@ ms.lasthandoff: 11/22/2017
 **Q: 既存の Azure AD グループ/連絡先オブジェクトに対して手動で設定された ImmutableId 属性とオンプレミスの AD グループ/連絡先オブジェクトとの完全一致はサポートされていますか。**  
 いいえ。現在これはサポートされていません。
 
-
-
 ## <a name="custom-configuration"></a>カスタム構成
 **Q: Azure AD Connect 用の PowerShell コマンドレットのドキュメントはどこにありますか。**  
 このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
@@ -95,8 +98,6 @@ ms.lasthandoff: 11/22/2017
 
 **Q: 同時セッションを防ぐ方法はありますか。**</br>
 いいえ。
-
-
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 **Q: Azure AD Connect に関するヘルプを参照する方法を教えてください。**

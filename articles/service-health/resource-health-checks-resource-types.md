@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 22e1768257524400f341cf881dfebfb35115a43b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: b67e72af8a34799af97cd46f968636050f4ce485
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
@@ -73,7 +73,7 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |実行されるチェック|
 |---|
-|<ul><li>DocumentDB サービスが利用できないために処理されていないデータベースまたはコレクションの要求があるか</li><li>DocumentDB サービスが利用できないために処理されていないドキュメントの要求があるか</li></ul>|
+|<ul><li>Azure Cosmos DB サービスが利用できないために処理されていないデータベースまたはコレクションの要求があるか</li><li>Azure Cosmos DB サービスが利用できないために処理されていないドキュメントの要求があるか</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |実行されるチェック|

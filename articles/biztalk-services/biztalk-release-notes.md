@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Microsoft Azure BizTalk Services リリース ノートでは、このリリースの既知の問題について説明します。
 
@@ -34,8 +36,8 @@ Microsoft Azure BizTalk Services リリース ノートでは、このリリー�
 * 組織アカウントが次のようにサポートされます。  
   * **シナリオ**: BizTalk Services のデプロイを Microsoft アカウント (user@live.com など) を使用して登録した。 このシナリオでは、Microsoft アカウントのユーザーのみが BizTalk Services ポータルを使用して BizTalk Services を管理できます。 組織アカウントは使用できません。  
   * **シナリオ**: BizTalk Services のデプロイを Azure Active Directory の組織アカウント (user@fabrikam.com や user@contoso.com など) を使用して BizTalk Services のデプロイを登録した。 このシナリオでは、同じ組織内の Azure Active Directory ユーザーのみが、BizTalk Services ポータルを使用して、BizTalk Services を管理できます。 Microsoft アカウントは使用できません。  
-* Azure クラシック ポータルで BizTalk サービスを作成すると、ユーザーは BizTalk Services ポータルに自動的に登録されます。
-  * **シナリオ**: Azure クラシック ポータルにサインインして、BizTalk サービスを作成した後、初めて **[管理]** を選択した。 BizTalk Services ポータルが開くと、BizTalk サービスが自動的に登録され、デプロイできる状態になります。  
+* BizTalk サービスを作成すると、ユーザーは BizTalk Services ポータルに自動的に登録されます。
+  * **シナリオ**: Azure にサインインして、BizTalk サービスを作成した後、初めて **[管理]** を選択した。 BizTalk Services ポータルが開くと、BizTalk サービスが自動的に登録され、デプロイできる状態になります。  
     「 [BizTalk Services ポータルでの BizTalk サービス配置の登録と更新](https://msdn.microsoft.com/library/azure/hh689837.aspx)」を参照してください。  
 
 ### <a name="august-14-update"></a>8 月 14 日の更新

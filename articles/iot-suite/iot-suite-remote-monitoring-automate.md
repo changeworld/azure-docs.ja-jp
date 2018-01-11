@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 173ffbdd70313ef5a0d2af2cf1c8996d2395274a
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e00c4ab2fc8bb13a765f7c2154555607dddfc651
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>しきい値に基づくルールを使用して問題を検出する
 
@@ -40,7 +40,7 @@ Contoso には、**Chiller** デバイスによって報告される圧力が 25
 
 ## <a name="view-the-rules-in-your-solution"></a>ソリューション内のルールを表示する
 
-ソリューションの **[Rules & Actions]\(ルールとアクション\)** ページには、現在のすべてのルールの一覧が表示されます。
+ソリューションの **[Rules and Actions]\(ルールとアクション\)** ページには、現在のすべてのルールの一覧が表示されます。
 
 ![ルールとアクション ページ](media/iot-suite-remote-monitoring-automate/rulesactions.png)
 
@@ -67,16 +67,16 @@ Contoso には、**Chiller** デバイスによって報告される圧力が 25
 | 設定          | 値                                 |
 | ---------------- | ------------------------------------- |
 | 名前             | Chiller 警告                       |
-| ソース           | **Chiller**デバイス グループ              |
-| トリガー フィールド    | 圧力                              |
+| ソース           | **Chillers** デバイス グループ             |
+| トリガー フィールド    | pressure                              |
 | トリガーの演算子 | より大きい                          |
 | トリガーの値    | 150                                   |
 | 重大度レベル   | 警告                               |
-| アラーム イベントのテキスト | Chiller の圧力が 150 PSI を超えました |
+| 説明      | Chiller の圧力が 150 PSI を超えました |
 
 新しいルールを保存するには、**[適用]** を選択します。
 
-**[Rules & Actions]\(ルールとアクション\)** ページまたは、**[ダッシュボード]** ページでルールがトリガーされた時間を表示できます。
+**[Rules and Actions]\(ルールとアクション\)** ページまたは、**[ダッシュボード]** ページでルールがトリガーされた時間を表示できます。
 
 ## <a name="edit-an-existing-rule"></a>既存のルールを編集する
 

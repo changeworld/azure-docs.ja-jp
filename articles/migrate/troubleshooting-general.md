@@ -1,24 +1,16 @@
 ---
 title: "Azure Migrate に関する問題のトラブルシューティング | Microsoft Docs"
 description: "Azure Migrate サービスの既知の問題についての概要を説明し、一般的なエラーのトラブルシューティングのヒントを提供します。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 40faffa3f-1f44-4a72-94bc-457222ed7ac8
-ms.service: migrate
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/22/2017
+ms.service: azure-migrate
+ms.topic: troubleshooting
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 8c7c79a23ee09a7de35252d7819d1f0e5b1d98c5
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1fcc9e12e63eda73d53ae2085bc2a64d31ea2067
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -26,6 +18,16 @@ ms.lasthandoff: 11/28/2017
 
 [Azure Migrate](migrate-overview.md) は、オンプレミスのワークロードを評価することによって、Azure への移行を支援します。 この記事では、Azure Migrate をデプロイして使用する際に発生する問題のトラブルシューティングを説明します。
 
+
+**コレクターがインターネットに接続できない**
+
+これは、使用しているマシンがプロキシの内側にある場合に発生することがあります。 プロキシに承認資格情報が必要な場合は、これを提供してください。
+URL ベースのファイアウォール プロキシを使用して送信接続を制御している場合は、次の必須の URL を必ずホワイトリストに登録してください。
+
+**URL** | **目的**  
+--- | ---
+*.portal.azure.com | Azure サービスとの接続性を確認し、時刻の同期の問題を検証するために必要です。
+*.oneget.org | powershell ベースの vCenter PowerCLI モジュールをダウンロードするために必要です。
 
 **ポータルからコピーしたプロジェクト ID とキーを使用しても、コレクターがプロジェクトに接続できません。**
 

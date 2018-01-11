@@ -1,6 +1,6 @@
 ---
-title: "Azure で Windows SQL Server 2017 VM を作成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。"
+title: "Azure Portal で Windows SQL Server 2017 VM を構成する方法 | Microsoft Docs"
+description: "このハウツー ガイドでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成するためのオプションについて説明します。"
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -9,39 +9,29 @@ tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
+ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 48f9f97d6e0aee6b2c84444289a427bebcb296e2
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 440c783de73652ad2d312cd92db8635dc65df9ed
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Windows SQL Server 仮想マシンのプロビジョニング
+# <a name="how-to-create-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンを作成する方法
 
-> [!div class="op_single_selector"]
-> * [ポータル](virtual-machines-windows-portal-sql-server-provision.md)
-> * [PowerShell](virtual-machines-windows-ps-sql-create.md)
-> * [Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
+このガイドでは、Azure Portal で Windows SQL Server 仮想マシンを作成する際に使用できるさまざまなオプションについてのチュートリアルを示します。 手順に従って、さまざまな選択肢について学習しながら、独自の SQL Server VM を作成できます。 または、特定のセクションに移動して、ポータルの特定のステップについて参照することもできます。
 
-このクイック スタート チュートリアルでは、Azure Portal を使用して、SQL Server がインストールされている Windows 仮想マシンを作成します。
+> [!TIP]
+> 既定のポータル値ですぐに開始するには、[Azure クイックスタート - ポータルでの SQL Server VM の作成](quickstart-sql-vm-create-portal.md)に関するページをご覧ください。
 
-このチュートリアルでは、次のことについて説明します。
-
-* [ギャラリーから SQL VM イメージを選択する](#select)
-* [VM を構成して作成する](#configure)
-* [リモート デスクトップを使用して VM を開く](#remotedesktop)
-* [SQL Server にリモート接続する](#connect)
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a id="select"></a>ギャラリーから SQL VM イメージを選択する
 
 1. アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
-
-   > [!NOTE]
-   > Azure アカウントを持っていない場合は、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
 1. Azure Portal で、**[新規]**をクリックします。 **[新規]** ウィンドウが開きます。
 
@@ -277,19 +267,11 @@ Azure Portal でデプロイを監視できます。 画面の上部にある **
 
 リモート デスクトップを使用して SQL Server 仮想マシンに接続するには、次の手順に従います。
 
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
+[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
 SQL Server 仮想マシンに接続した後は、SQL Server Management Studio を起動し、ローカル管理者の資格情報を使用して Windows 認証で接続できます。 SQL Server 認証を有効にした場合は、プロビジョニングの間に構成した SQL のログインとパスワードを使用して SQL 認証で接続することもできます。
 
 マシンにアクセスすると、要件に基づいてマシンと SQL Server の設定を直接変更することができます。 たとえば、ファイアウォールの設定を構成したり、SQL Server の構成設定を変更したりできます。
-
-## <a name="enable-tcpip-for-developer-and-express-editions"></a>Developer および Express エディションの TCP/IP を有効にする
-
-SQL Server Developer および Express エディションの場合、新しい SQL Server VM をプロビジョニングするときに TCP/IP プロトコルは自動的に有効に設定されません。 TCP/IP を手動で有効にして IP アドレスでリモート接続できるようにするための手順を次に示します。
-
-次の手順では、**SQL Server 構成マネージャー**を使用して、SQL Server Developer および Express エディションの TCP/IP プロトコルを有効にします。
-
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
 ## <a id="connect"></a> SQL Server にリモート接続する
 
@@ -300,7 +282,7 @@ SQL Server Developer および Express エディションの場合、新しい S
 
 次のセクションでは、インターネット経由で別のコンピューターから VM の SQL Server インスタンスに接続する方法を示します。
 
-> [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
+[!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,6 +1,6 @@
 ---
-title: "Express を使用した Web アプリケーション (Node.js) | Microsoft Docs"
-description: "クラウド サービスのチュートリアルを基に、Express モジュールの使用方法を示すチュートリアル。"
+title: "Node.js Express アプリをビルドして Azure Cloud Services にデプロイする"
+description: "Node.js で Express.js アプリケーションをビルドして、Azure Cloud Services にデプロイします"
 services: cloud-services
 documentationcenter: nodejs
 author: craigshoemaker
@@ -14,15 +14,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: aa62438732db9e8df129440e6949858d9a61f65f
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: befca8d95880936e96d1b3618c172f87499627ed
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="build-a-nodejs-web-application-using-express-on-an-azure-cloud-service"></a>Azure Cloud Services での Express を使用した Node.js Web アプリケーションの構築
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Express を使用して Node.js Web アプリケーションをビルドし、Azure Cloud Services にデプロイする
+
 node.js には、コア ランタイムの最小限の機能セットが含まれます。
-多くの場合、開発者は Node.js アプリケーションを開発するときに、サード パーティ モジュールを使用して追加機能を指定します。 このチュートリアルでは、[Express][Express] モジュールを使用して新しいアプリケーションを作成します。Express モジュールは、Node.js Web アプリケーションを作成するための MVC フレームワークを提供します。
+多くの場合、開発者は Node.js アプリケーションを開発するときに、サード パーティ モジュールを使用して追加機能を指定します。 このチュートリアルでは、[Express](https://github.com/expressjs/express) モジュールを使って新しいアプリケーションを作成します。Express モジュールは、Node.js Web アプリケーションを作成するための MVC フレームワークを提供します。
 
 完成したアプリケーションのスクリーンショットは次のようになります。
 

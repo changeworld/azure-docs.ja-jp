@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
-ms.date: 03/08/2017
+ms.date: 12/12/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 6718694af487929d193dae54ecb2d85ece64887a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fdc5e03350783fb8c3e30b6c9a40af45a5925ba8
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 
@@ -29,6 +29,7 @@ ms.lasthandoff: 10/11/2017
 | | |
 |-|-|
 |**アプリの作成**||
+| [Web アプリを作成し、FTP を使用してファイルをデプロイする](./scripts/app-service-cli-deploy-ftp.md?toc=%2fcli%2fazure%2ftoc.json)| Azure Web アプリを作成し、FTP を使用してファイルをデプロイします。 |
 | [Web アプリを作成して GitHub からコードをデプロイする](./scripts/app-service-cli-deploy-github.md?toc=%2fcli%2fazure%2ftoc.json)| Azure Web アプリを作成し、パブリックの GitHub リポジトリからコードをデプロイします。 |
 | [GitHub からの継続的なデプロイで Web アプリを作成する](./scripts/app-service-cli-continuous-deployment-github.md?toc=%2fcli%2fazure%2ftoc.json)| Azure Web アプリを作成し、所有する GitHub リポジトリから継続的に発行します。 |
 | [Web アプリを作成してローカル Git リポジトリからコードをデプロイする](./scripts/app-service-cli-deploy-local-git.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリを作成し、ローカル Git リポジトリからのコードのプッシュを構成します。 |
@@ -45,6 +46,10 @@ ms.lasthandoff: 10/11/2017
 | [Web アプリをストレージ アカウントに接続する](./scripts/app-service-cli-app-service-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Azure Web アプリとストレージ アカウントを作成し、ストレージ接続文字列をアプリケーション設定に追加します。 |
 | [Web アプリを Redis Cache に接続する](./scripts/app-service-cli-app-service-redis.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリと Redis Cache を作成し、Redis の接続の詳細をアプリケーション設定に追加します。 |
 | [Web アプリと Cosmos DB の接続](./scripts/app-service-cli-app-service-documentdb.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリと Cosmos DB を作成し、Cosmos DB の接続の詳細をアプリケーション設定に追加します。 |
+|**アプリのバックアップと復元**||
+| [Web アプリをバックアップする](./scripts/app-service-cli-backup-onetime.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリを作成し、その Web アプリの 1 回限りのバックアップを作成します。 |
+| [Web アプリのスケジュールされたバックアップを作成する](./scripts/app-service-cli-backup-scheduled.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリを作成し、その Web アプリのスケジュールされたバックアップを作成します。 |
+| [Web アプリをバックアップから復元する](./scripts/app-service-cli-backup-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリをバックアップから復元します。 |
 |**アプリの監視**||
 | [Web サーバー ログによる Web アプリの監視](./scripts/app-service-cli-monitor.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Web アプリを作成し、ログ記録を有効にし、ログをローカル コンピューターにダウンロードします。 |
 | | |

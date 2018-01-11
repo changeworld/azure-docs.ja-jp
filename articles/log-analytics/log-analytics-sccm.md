@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
-ms.openlocfilehash: 62d31ed486458245156f7fc832294d662c62991e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6785bfcefb09fa6135ba451fafa76efc8c2e6c76
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 System Center Configuration Manager を OMS の Log Analytics に接続して、デバイス コレクション データを同期することができます。 そうすることで、Configuration Manager 階層からのデータを OMS で使用できます。
@@ -48,29 +48,29 @@ Configuration Manager と OMS の接続の詳細については、「[Sync data 
 >
 >
 
-1. [Azure Portal](https://portal.azure.com/) を開き、**[その他のサービス]** > **[Log Analytics (OMS)]** の順にクリックして、[Log Analytics (OMS)] ブレードを開きます。  
-2. **[Log Analytics (OMS)]** ブレードで **[追加]** をクリックして、**[OMS ワークスペース]** ブレードを開きます。  
-   ![[OMS] ブレード](./media/log-analytics-sccm/sccm-azure01.png)
-3. **[OMS ワークスペース]** ブレードで以下の情報を指定し、**[OK]** をクリックします。
+1. [Azure Portal](https://portal.azure.com/) を開き、**[参照]** > **[Log Analytics (OMS)]** の順にクリックして、[Log Analytics (OMS)] を開きます。  
+2. **[Log Analytics (OMS)]** で、**[追加]** をクリックして **[OMS ワークスペース]** を開きます。  
+   ![OMS](./media/log-analytics-sccm/sccm-azure01.png)
+3. **[OMS ワークスペース]** で以下の情報を指定し、**[OK]** をクリックします。
 
    * **OMS ワークスペース**
    * **サブスクリプション**
    * **[リソース グループ]**
    * **場所**
-   * **価格レベル**  
-     ![[OMS] ブレード](./media/log-analytics-sccm/sccm-azure02.png)  
+   * **[価格レベル]**  
+     ![OMS](./media/log-analytics-sccm/sccm-azure02.png)  
 
      > [!NOTE]
      > 上の例は、新しいリソース グループを作成します。 この例では、リソース グループは Configuration Manager に OMS ワークスペースへのアクセス許可を付与するためだけに使用されます。
      >
      >
-4. **[その他のサービス]** > **[リソース グループ]** の順にクリックし、**[リソース グループ]** ブレードを開きます。
-5. **[リソース グループ]** ブレードで、前の手順で作成したリソース グループをクリックして、&lt;リソース グループ名&gt;の設定ブレードを開きます。  
-   ![リソース グループの設定ブレード](./media/log-analytics-sccm/sccm-azure03.png)
-6. &lt;リソース グループ名&gt;の設定ブレードで、[アクセス制御 (IAM)] をクリックして、&lt;リソース グループ名&gt; のユーザー ブレードを開きます。  
-   ![リソース グループのユーザー ブレード](./media/log-analytics-sccm/sccm-azure04.png)  
-7. &lt;リソース グループ名&gt; のユーザー ブレードの **[追加]** をクリックして、**[アクセス権の追加]** ブレードを開きます。
-8. **[アクセス権の追加]** ブレードで **[ロールの選択]** をクリックし、**[共同作成者]** ロールを選択します。  
+4. **[参照]** > **[リソース グループ]** の順にクリックし、**[リソース グループ]** を開きます。
+5. **[リソース グループ]** で、前の手順で作成したリソース グループをクリックして、&lt;リソース グループ名&gt;の設定を開きます。  
+   ![リソース グループの設定](./media/log-analytics-sccm/sccm-azure03.png)
+6. &lt;リソース グループ名&gt;の設定で、[アクセス制御 (IAM)] をクリックして、&lt;リソース グループ名&gt; のユーザーを開きます。  
+   ![リソース グループのユーザー](./media/log-analytics-sccm/sccm-azure04.png)  
+7. &lt;リソース グループ名&gt; のユーザーの **[追加]** をクリックして、**[アクセス権の追加]** を開きます。
+8. **[アクセス権の追加]** で **[ロールの選択]** をクリックし、**[共同作成者]** ロールを選択します。  
    ![ロールの選択](./media/log-analytics-sccm/sccm-azure05.png)  
 9. **[ユーザーの追加]** をクリックし、Configuration Manager ユーザーを選択し、**[選択]****[OK]** の順にクリックします。  
    ![ユーザーの追加](./media/log-analytics-sccm/sccm-azure06.png)  
@@ -103,15 +103,15 @@ Configuration Manager を OMS にリンクした後、コレクションを追�
 ## <a name="update-oms-connection-properties"></a>OMS 接続プロパティを更新する
 パスワードまたはクライアント秘密鍵が期限切れになるか、それらを紛失した場合は、OMS 接続プロパティを手動で更新する必要があります。
 
-1. Configuration Manager で **[クラウド サービス]** に移動し、**[OMS コネクタ]** を選択して、**[OMS Connection Properties (OMS 接続プロパティ)]** ページを開きます。
+1. Configuration Manager で **[Cloud Services]** に移動し、**[OMS コネクタ]** を選択して、**[OMS Connection Properties]\(OMS 接続プロパティ\)** ページを開きます。
 2. このページで **[Azure Active Directory]** タブをクリックし、**[テナント]**、**[クライアント ID]**、**[Client secret key expiration (クライアントの秘密鍵の期限切れ)]** を表示します。 **クライアントの秘密鍵**が期限切れかどうかを**確認**します。
 
 ## <a name="download-and-install-the-agent"></a>エージェントのダウンロードとインストール
-1. OMS ポータルで、[OMS からエージェントのセットアップ ファイルをダウンロード](log-analytics-windows-agents.md#download-the-agent-setup-file-from-oms)します。
+1. OMS ポータルで、[OMS からエージェントのセットアップ ファイルをダウンロード](log-analytics-windows-agent.md)します。
 2. Configuration Manager サービス接続ポイントのサイト システムの役割を実行しているコンピューターに、次のいずれかの方法で、エージェントをインストールおよび構成します。
-   * [セットアップを使用してエージェントをインストールする](log-analytics-windows-agents.md#install-the-agent-using-setup)
-   * [コマンド ラインを使用してエージェントをインストールする](log-analytics-windows-agents.md#install-the-agent-using-the-command-line)
-   * [Azure Automation の DSC を使用してエージェントをインストールする](log-analytics-windows-agents.md#install-the-agent-using-dsc-in-azure-automation)
+   * [セットアップを使用してエージェントをインストールする](log-analytics-windows-agent.md)
+   * [コマンド ラインを使用してエージェントをインストールする](log-analytics-windows-agent.md)
+   * [Azure Automation の DSC を使用してエージェントをインストールする](log-analytics-windows-agent.md)
 
 ## <a name="import-collections"></a>コレクションをインポートする
 OMS 接続を Configuration Manager に追加し、Configuration Manager サービス接続ポイントのサイト システムの役割を実行しているコンピューターにエージェントをインストールしたら、次の手順は Configuration Manager からのコレクションをコンピューター グループとして OMS にインポートすることです。

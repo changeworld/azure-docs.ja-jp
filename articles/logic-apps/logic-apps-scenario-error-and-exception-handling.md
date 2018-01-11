@@ -16,11 +16,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8bae22b28b7de2f2579f310c8bd4b0e43885a0d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>シナリオ: ロジックアプリの例外処理とエラーのログ記録
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="how-we-solved-the-problem"></a>問題の解決方法
 
-ここでは、[Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") をログとエラーのレコードを格納するリポジトリとして選びました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
+ここでは、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") をログとエラーのレコードを格納するリポジトリとして選びました (Cosmos DB では、レコードはドキュメントと呼ばれます)。 Azure Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。 場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。 また、それぞれのスキーマを API アプリ内で定義してもかまいません。  
 
 もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。 Cosmos DB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。 この機能により、Cosmos DB から手動でレコードを削除する手間が省かれました。
 
@@ -107,7 +107,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
    CRM から取得したトリガーによって、**CRM 患者 ID**、**レコード タイプ**、**更新/新規レコード** (新しいレコードか更新されたレコードかを表すブール値)、**Salesforce ID** が得られます。 **Salesforce ID** は更新時にのみ使用されるので、null の場合もあります。
    CRM レコードは、CRM **患者 ID** と**レコードの種類**を使用して取得します。
 
-2. 次に、DocumentDB API アプリの **InsertLogEntry** 操作を追加する必要があります。下のロジック アプリ デザイナーの画像をご覧ください。
+2. 次に、Azure Cosmos DB SQL API アプリの **InsertLogEntry** 操作を追加する必要があります。下のロジック アプリ デザイナーの画像をご覧ください。
 
    **ログ エントリの挿入**
 
@@ -400,7 +400,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 ## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB リポジトリとポータル
 
-ソリューションの機能は、[Cosmos DB](https://azure.microsoft.com/services/documentdb) を使って拡張されています。
+ソリューションの機能は、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) を使って拡張されています。
 
 ### <a name="error-management-portal"></a>エラー管理ポータル
 
@@ -430,14 +430,14 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 Microsoft がソース コードを公開している Azure Logic Apps 例外管理 API アプリには、以下に示す機能が用意されており、次の 2 つのコントローラーがあります。
 
-* **ErrorController** は、DocumentDB コレクションにエラー レコード (ドキュメント) を挿入します。
-* **LogController** は、DocumentDB コレクションにログ レコード (ドキュメント) を挿入します。
+* **ErrorController** は、Azure Cosmos DB コレクションにエラー レコード (ドキュメント) を挿入します。
+* **LogController** は、Azure Cosmos DB コレクションにログ レコード (ドキュメント) を挿入します。
 
 > [!TIP]
-> 両方のコントローラーで `async Task<dynamic>` 操作が使用されており、操作を実行時に解決できるので、DocumentDB スキーマを操作の本体に作成することができます。 
+> 両方のコントローラーで `async Task<dynamic>` 操作が使用されており、操作を実行時に解決できるので、Azure Cosmos DB スキーマを操作の本体に作成することができます。 
 > 
 
-DocumentDB 内の各ドキュメントには、一意の ID が割り当てられている必要があります。 ここでは `PatientId` を使用し、Unix のタイムスタンプ値 (double) に変換したタイムスタンプを追加しています。 小数桁を除外するために値の切り詰め処理を行っています。
+Azure Cosmos DB 内の各ドキュメントには、一意 ID が割り当てられている必要があります。 ここでは `PatientId` を使用し、Unix のタイムスタンプ値 (double) に変換したタイムスタンプを追加しています。 小数桁を除外するために値の切り詰め処理を行っています。
 
 エラー コント ローラー API のソース コードは、[GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs) で参照することができます。
 
@@ -479,7 +479,7 @@ DocumentDB 内の各ドキュメントには、一意の ID が割り当てら�
 ## <a name="summary"></a>概要
 
 * ログ処理とエラー処理は、ロジック アプリで簡単に実装できます。
-* ログ レコードとエラー レコード (ドキュメント) のリポジトリとしては、DocumentDB を使用できます。
+* ログ レコードとエラー レコード (ドキュメント) のリポジトリとしては、Azure Cosmos DB を使用できます。
 * ログ レコードとエラー レコードを表示するためのポータルは MVC を使用して作成できます。
 
 ### <a name="source-code"></a>ソース コード

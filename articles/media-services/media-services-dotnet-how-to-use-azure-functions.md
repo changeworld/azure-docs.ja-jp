@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: e8cad53d95186f4f7679d1f19f339ad4149059a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f99fe340b6cfebaafb04af9dba8abf9cb0f09a2b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
-このトピックでは、Media Services を使用した Azure 関数の作成方法について説明しています。 このトピックで定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure 関数について確認するには、**Azure 関数**のセクションで[概要](../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
+この記事では、Media Services を使用した Azure Functions の作成方法について説明しています。 この記事で定義されている Azure Function は、新しい MP4 ファイルの **input** という名前付きストレージ アカウント コンテナーを監視します。 ストレージ コンテナーにファイルを削除すると、BLOB トリガーは関数を実行します。 Azure 関数について確認するには、**Azure 関数**のセクションで[概要](../azure-functions/functions-overview.md)およびその他のトピックを参照してください。
 
 Azure Media Services を使用する既存の Azure 関数を探してデプロイするには、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) をチェックアウトしてください。 このリポジトリには、Media Services を使ったサンプルが格納されています。Blob Storage から直接コンテンツを取り込んだり、エンコードしたり、Blob Storage にコンテンツを書き戻したりする処理に関連するワークフローの例が紹介されています。 また、webhook と Azure キューを介してジョブの通知を監視するサンプルも含まれています。 さらに、[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) リポジトリの例に基づいて関数をデプロイすることもできます。 関数をデプロイするには、**[Azure に配置する]** を押します。
 
@@ -47,7 +47,7 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
 **AMSAADTenantDomain**: Azure AD テナント エンドポイント。 AMS API への接続の詳細については、[こちら](media-services-use-aad-auth-to-access-ams-api.md)の記事を参照してください。
 
-**AMSRESTAPIEndpoint**:  REST API エンドポイントを表す URI。 
+**AMSRESTAPIEndpoint**: REST API エンドポイントを表す URI。 
 
 **AMSClientId**: Azure AD アプリケーション クライアント ID。
 
@@ -134,7 +134,7 @@ project.json ファイルには、依存関係が含まれています。 以下
 
 現実のシナリオでは、ほとんどの場合、ジョブの進行状況を追跡し、エンコードされた資産を発行します。 詳細については、[Azure WebHook を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)に関する記事を参照してください。 例については、「[Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)」を参照してください。  
 
-既存の run.csx ファイルの内容を次のコードで置き換えます。 必要な関数を定義したら、**[保存および実行]** をクリックします。
+既存の run.csx ファイルの内容を次のコードで置き換えます。必要な関数を定義したら、**[保存および実行]** をクリックします。
 
 ```
 #r "Microsoft.WindowsAzure.Storage"
@@ -334,7 +334,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 1. **StorageConnection** 環境変数で指定したストレージ アカウントを選択します。
 2. **[BLOB]** をクリックします。
 3. **[+ Container]** (+ コンテナー) をクリックします。 **input** コンテナーに名前を付けます。
-4. **[アップロード]** を押して、アップロードする .mp4 ファイルを参照します。
+4. **[アップロード]** をクリックして、アップロードする .mp4 ファイルを参照します。
 
 >[!NOTE]
 > 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings)」をご覧ください。

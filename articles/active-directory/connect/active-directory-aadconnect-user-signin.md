@@ -4,7 +4,7 @@ description: "Azure AD Connect ユーザー サインインのカスタム設定
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: curtand
 ms.assetid: 547b118e-7282-4c7f-be87-c035561001df
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 1d580ae43925bfb2cbe0fd9461cfb7e207fa56ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4670ec3cacd8d69a4ed59aa2bbbeb2e5c893f173
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -28,6 +28,10 @@ Azure Active Directory (Azure AD) Connect では、ユーザーは同じパス�
 * [シームレス シングル サインオン (SSO)](active-directory-aadconnect-sso.md) による[パスワード ハッシュの同期](#password-synchronization)
 * [シームレス シングル サインオン (SSO)](active-directory-aadconnect-sso.md) による[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)
 * [フェデレーション SSO (Active Directory フェデレーション サービス (AD FS) を使用する)](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+
+> [!NOTE] 
+> Azure AD に対してフェデレーションを構成することで、Azure AD テナントとフェデレーション ドメインの間に信頼が確立されるということを憶えておくことが重要です。 この信頼により、フェデレーション ドメインのユーザーは、テナント内の Azure AD クラウド リソースにアクセスできます。  
+>
 
 ## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>組織のユーザー サインイン方法の選択
 Office 365、SaaS アプリケーション、およびその他の Azure AD ベースのリソースへのユーザー サインインのみを有効にするほとんどの組織では、既定のパスワード ハッシュの同期オプションをお勧めします。 ただし、組織によっては、特定の理由によってこのオプションを使用できない場合があります。 その場合は、フェデレーション サインイン オプション (AD FS など) か、パススルー認証を選択できます。 次の表を使用して、適切な選択を行ってください。

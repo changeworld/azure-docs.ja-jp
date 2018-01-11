@@ -7,20 +7,20 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 8b84b90e72f8cac1fc1f8a90391b7a5a4f6be1f4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 7550748c496f4e5c671ab49f9b139d2d4926d497
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>シミュレートされたデバイスを使用したソリューションのテスト
 
-このチュートリアルでは、リモート監視の事前構成済みソリューションを使用したデバイス シミュレーター マイクロサービスのカスタマイズ方法について説明します。 デバイス シミュレーターの機能を説明するために、このチュートリアルでは Contoso の IoT アプリケーションにおける 2 つのシナリオを使用して説明します。
+このチュートリアルでは、リモート監視の事前構成済みソリューションでデバイス シミュレーター マイクロサービスをカスタマイズする方法について説明します。 デバイス シミュレーターの機能を説明するために、このチュートリアルでは Contoso の IoT アプリケーションにおける 2 つのシナリオを使用して説明します。
 
 最初のシナリオでは、Contoso が新しい電球のスマート デバイスをテストします。 テストを実施するために、次の特性をもった新しいシミュレートされたデバイスを作成します。
 
@@ -177,7 +177,7 @@ ms.lasthandoff: 11/18/2017
       "SwitchOff": {
         "Type": "javascript",
         "Path": "SwitchOff-method.js"
-      },
+      }
     }
     ```
 
@@ -273,9 +273,9 @@ ms.lasthandoff: 11/18/2017
 
 新しい **Lightbulb** デバイス ファイルを出力ディレクトリにコピーするよう、次のようにプロジェクトを構成します。
 
-* Visual Studio を使用している場合は、前のセクションで作成した 3 つの新しい Lightbulb ファイルをソリューション内の **Services** プロジェクトに必ず追加します。 次に、**ソリューション エクスプローラー**を使用して、出力ディレクトリにコピーされるようにマークします。
+* Visual Studio を使用している場合は、前のセクションで作成した 4 つの新しい Lightbulb ファイルをソリューション内の **Services** プロジェクトに必ず追加します。 次に、**ソリューション エクスプローラー**を使用して、出力ディレクトリにコピーされるようにマークします。
 
-* Visual Studio Code を使用している場合は、**Services.csproj** ファイルを開き、前のセクションで作成した 3 つの新しい Lightbulb ファイルを追加します。 例として、**Services.csproj** ファイルの既存のデバイス モデル ファイル エントリを参照してください。
+* Visual Studio Code を使用している場合は、**Services.csproj** ファイルを開き、前のセクションで作成した 4 つの新しい Lightbulb ファイルを追加します。 例として、**Services.csproj** ファイルの既存のデバイス モデル ファイル エントリを参照してください。
 
 デプロイされたソリューション内で新しいデバイスをテストする方法については、次の記事のいずれかをご覧ください。
 

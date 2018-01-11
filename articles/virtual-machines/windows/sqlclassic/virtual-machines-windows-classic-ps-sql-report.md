@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 5e5c11251cd316e8161dbe362b300be76927ac01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites-and-assumptions"></a>前提条件
 * **Azure サブスクリプション**: Azure サブスクリプションで使用できるコアの数を確認します。 推奨 VM サイズである **A3** で作成する場合は、使用可能なコアが **4 個**必要です。 VM サイズとして **A2** を使用する場合は、使用可能なコアが **2** 個必要です。
   
-  * サブスクリプションのコアの上限を確認するには、Azure クラシック ポータルの左側のウィンドウで [設定] をクリックし、上部のメニューの [使用状況] をクリックします。
+  * サブスクリプションのコアの上限を確認するには、Azure Portal の左側のウィンドウで [設定] をクリックし、上部のメニューの [使用状況] をクリックします。
   * コア クォータを増やすには、 [Azure サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 VM サイズについては、「 [Azure の仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * **Windows PowerShell スクリプト**: このトピックは、Windows PowerShell の使用方法に関する基本的な知識があることを前提としています。 Windows PowerShell の使用方法の詳細については、次のトピックをご覧ください。
   
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
   * [Getting Started with Windows PowerShell (Windows PowerShell の概要)](https://technet.microsoft.com/library/hh857337.aspx)
 
 ## <a name="step-1-provision-an-azure-virtual-machine"></a>手順 1: Azure 仮想マシンをプロビジョニングする
-1. Azure クラシック ポータルに移動します。
+1. Azure Portal にアクセスします。
 2. 左側のウィンドウで、 **[Virtual Machines]** をクリックします。
    
     ![Microsoft Azure Virtual Machines](./media/virtual-machines-windows-classic-ps-sql-report/IC660124.gif)
@@ -117,7 +117,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 
 1. ローカル VM 上の証明書のルート CA を信頼するには、証明書を **信頼されたルート証明機関**に追加する必要があります。 必要な手順の概要を次に示します。 CA を信頼する方法の詳しい手順については、「 [Install a Server Certificate (サーバー証明書のインストール)](https://technet.microsoft.com/library/cc740068)」をご覧ください。
    
-   1. Azure クラシック ポータルで VM を選択し、[接続] をクリックします。 ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+   1. Azure Portal で VM を選択し、[接続] をクリックします。 ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
       
        ![connect to azure virtual machine](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。 
       
@@ -153,7 +153,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>スクリプトを使用してレポート サーバーと HTTP を構成する
 Windows PowerShell スクリプトを使用してレポート サーバーを構成するには、次の手順を実行します。 この構成には、HTTPS ではなく HTTP が含まれます。
 
-1. Azure クラシック ポータルで VM を選択し、[接続] をクリックします。 ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+1. Azure Portal で VM を選択し、[接続] をクリックします。 ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
    
     ![connect to azure virtual machine](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。 
    
@@ -287,7 +287,7 @@ Windows PowerShell スクリプトを使用してレポート サーバーを構
 ### <a name="use-script-to-configure-the-report-server-and-https"></a>スクリプトを使用してレポート サーバーと HTTPS を構成する
 Windows PowerShell を使用してレポート サーバーを構成するには、次の手順を実行します。 この構成には、HTTP ではなく HTTPS が含まれます。
 
-1. Azure クラシック ポータルで VM を選択し、[接続] をクリックします。 ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
+1. Azure Portal で VM を選択し、[接続] をクリックします。 ブラウザー構成によっては、VM に接続するために .rdp ファイルを保存するよう求められる場合があります。
    
     ![connect to azure virtual machine](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) VM の作成時に構成したユーザー VM 名、ユーザー名、パスワードを使用します。 
    
@@ -495,10 +495,10 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 ### <a name="use-configuration-manager-to-configure-the-report-server"></a>構成マネージャーを使用してレポート サーバーを構成する
 レポート サーバーを構成する際に PowerShell スクリプトを実行しない場合は、このセクションの手順に従い、Reporting Services ネイティブ モード構成マネージャーを使用してレポート サーバーを構成します。
 
-1. Azure クラシック ポータルで VM を選択し、[接続] をクリックします。 VM の作成時に構成したユーザー名とパスワードを使用します。
+1. Azure Portal で VM を選択し、[接続] をクリックします。 VM の作成時に構成したユーザー名とパスワードを使用します。
    
     ![connect to azure virtual machine](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
-2. Windows Update を実行し、VM に更新プログラムをインストールします。 VM の再起動が必要な場合は、VM を再起動し、Azure クラシック ポータルから VM に再接続します。
+2. Windows Update を実行し、VM に更新プログラムをインストールします。 VM の再起動が必要な場合は、VM を再起動し、Azure Portal から VM に再接続します。
 3. VM の [スタート] メニューで「**Reporting Services**」と入力し、**Reporting Services 構成マネージャー**を開きます。
 4. **[サーバー名]** と **[レポート サーバー インスタンス]** は既定値のままにしておきます。 **[接続]**をクリックします。
 5. 左側のウィンドウで、 **[Web サービス URL]**をクリックします。
@@ -593,7 +593,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
 
 ## <a name="minimize-cost-if-you-are-not-using-the-vm"></a>VM を使用していない場合にコストを最小限に抑える
 > [!NOTE]
-> Azure Virtual Machines を使用していないときに料金を最小限に抑えるには、Azure クラシック ポータルから VM をシャットダウンします。 VM の内部で Windows の電源オプションを使用して VM をシャットダウンしても、VM に対して同じ金額が課金されます。 料金を削減するには、Azure クラシック ポータルで VM をシャットダウンする必要があります。 VM が不要になった場合は、ストレージ料金がかからないように、VM および関連する .vhd ファイルを必ず削除してください。詳細については、「[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」の「FAQ」をご覧ください。
+> Azure Virtual Machines を使用していないときに料金を最小限に抑えるには、Azure Portal から VM をシャットダウンします。 VM の内部で Windows の電源オプションを使用して VM をシャットダウンしても、VM に対して同じ金額が課金されます。 料金を削減するには、Azure Portal で VM をシャットダウンする必要があります。 VM が不要になった場合は、ストレージ料金がかからないように、VM および関連する .vhd ファイルを必ず削除してください。詳細については、「[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」の「FAQ」をご覧ください。
 
 ## <a name="more-information"></a>詳細情報
 ### <a name="resources"></a>リソース

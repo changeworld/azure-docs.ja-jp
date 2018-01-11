@@ -4,7 +4,7 @@ description: "この記事では、Azure Portal を使用して、Azure Active D
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 7dc7b89f-653f-405a-b5f4-2c1288720c15
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.openlocfilehash: 2f2817688beb2028fd0bba8522827d87a0097f21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f32f57d4c8b3e13d2aa31b04ee10bb46a6c71f7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>Azure Active Directory テナントにアプリケーションを登録する
 
@@ -45,7 +45,7 @@ Azure Portal を使用して、既存のアプリケーションの設定を簡�
   * **[プロパティ]** ページでは、アプリケーションに関する全般的な情報を変更できます。 これには、アプリケーションの名前、サインオン URL、ログアウト URL などが含まれます。
   * **応答 URL** ページでは、Azure AD がトークン応答を送信する場所である応答 URL を追加できます。
   * **[所有者]** ページでは、アプリケーションの所有者を追加できます。
-  * **[アクセス許可]** ページでは、アプリのアクセス許可を構成できます。 たとえば、Microsoft Graph API にアクセスするには、**[追加]** をクリックし、API セレクターの **[Microsoft Graph]** を選択してから、必要なアクセス許可 (**ディレクトリ データの読み取り**など) を選択します。
+  * **[必要なアクセス許可]** ページでは、アプリのアクセス許可を構成できます。 たとえば、Microsoft Graph API にアクセスするには、**[追加]** をクリックし、API セレクターの **[Microsoft Graph]** を選択してから、必要なアクセス許可 (**ディレクトリ データの読み取り**など) を選択します。
   * **[キー]** ページでは、アプリケーション シークレットを追加できます。 シークレットは作成直後にしか表示されないため、後で使用できるようにコピーしておきます。
 
 ## <a name="use-the-inline-manifest-editor"></a>インライン マニフェスト エディターの使用

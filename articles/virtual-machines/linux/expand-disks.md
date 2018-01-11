@@ -4,7 +4,7 @@ description: "Azure CLI 2.0 を使用して、Linux VM の仮想ハード ディ
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/21/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: b82cc0473c003da767ee230ab485c69b233977d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bc370c1f02eedf996824136b117a4021915fc57
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する方法
 Azure の Linux 仮想マシン (VM) では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加できますが、既存のデータ ディスクを拡張することもできます。 この記事では、Azure CLI 2.0 を使用して、Linux VM の管理ディスクを拡張する方法について詳しく説明します。 [Azure CLI 1.0](expand-disks-nodejs.md) を使用して、非管理対象 OS ディスクを拡張することもできます。
@@ -26,7 +26,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
 > [!WARNING]
 > ディスクのサイズ変更操作を実行する前に、常にデータをバックアップしていることを確認してください。 詳細については、「[Azure での Linux 仮想マシンのバックアップ](tutorial-backup-vms.md)」を参照してください。
 
-## <a name="expand-disk"></a>ディスクを拡張する
+## <a name="expand-azure-managed-disk"></a>Azure Managed Disks の拡張
 [Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしていることを確認します。
 
 この記事では、少なくとも 1 つのデータ ディスクが接続され、準備ができている Azure の既存の VM が必要です。 使用できる VM をまだ用意していない場合は、[データ ディスク付きの VM の作成と準備](tutorial-manage-disks.md#create-and-attach-disks)に関するページを参照してください。
@@ -40,7 +40,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     ```
 
     > [!NOTE]
-    > `az vm stop` では、コンピューティング リソースは解放されません。 コンピューティング リソースを解放するには、`az vm deallocate` を使用します。 仮想ハード ディスクを拡張するには、VM の割り当てを解除する必要があります。
+    > 仮想ハード ディスクを拡張するには、VM の割り当てを解除する必要があります。 `az vm stop` では、コンピューティング リソースは解放されません。 コンピューティング リソースを解放するには、`az vm deallocate` を使用します。
 
 2. [az disk list](/cli/azure/disk#list) を使用して、リソース グループに含まれる管理ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれる管理ディスクの一覧を表示します。
 
@@ -69,13 +69,17 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
-4. 適切な資格情報を使用して VM に SSH 接続します。 [az vm show](/cli/azure/vm#show) で、VM のパブリック IP アドレスを取得できます。
+
+## <a name="expand-disk-partition-and-filesystem"></a>ディスク パーティションとファイル システムの拡張
+拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張する必要があります。
+
+1. 適切な資格情報を使用して VM に SSH 接続します。 [az vm show](/cli/azure/vm#show) で、VM のパブリック IP アドレスを取得できます。
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-5. 拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張する必要があります。
+2. 拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張する必要があります。
 
     a. ディスクが既にマウントされている場合は、マウントを解除します。
 
@@ -116,25 +120,25 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
 
     d. 終了するには、`quit` を入力します。
 
-5. パーティションのサイズを変更したら、`e2fsck` を使用して、パーティションの整合性を確認します。
+3. パーティションのサイズを変更したら、`e2fsck` を使用して、パーティションの整合性を確認します。
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-6. 次に、`resize2fs` を使用して、ファイル システムのサイズを変更します。
+4. 次に、`resize2fs` を使用して、ファイル システムのサイズを変更します。
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-7. パーティションを目的の場所 (`/datadrive` など) にマウントします。
+5. パーティションを目的の場所 (`/datadrive` など) にマウントします。
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-8. OS ディスクのサイズが変更されたことを確認するには、`df -h` を使用します。 次の出力例は、データ ドライブ */dev/sdc1* が 200 GB になったことを示しています。
+6. OS ディスクのサイズが変更されたことを確認するには、`df -h` を使用します。 次の出力例は、データ ドライブ */dev/sdc1* が 200 GB になったことを示しています。
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

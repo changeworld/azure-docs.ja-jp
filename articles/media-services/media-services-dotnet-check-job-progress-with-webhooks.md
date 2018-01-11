@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9815e01dffb0342979f17974527b559de8146fed
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する
-ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 Azure Webhook または [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) を使用することで、Media Services ジョブ通知を監視することができます。 このトピックでは、Webhook を使用する方法を説明します。
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 Azure Webhook または [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) を使用することで、Media Services ジョブ通知を監視することができます。 この記事では、Webhook を使用する方法を説明します。
 
-このトピックでは、以下のことを行う方法を示します。
+この記事では、次の方法について説明します。
 
 *  Webhook に応答するように Azure Function をカスタマイズし、定義します。 
     
@@ -33,9 +33,9 @@ ms.lasthandoff: 10/11/2017
     >続行する前に、[Azure Functions における HTTP と Webhook のバインド](../azure-functions/functions-bindings-http-webhook.md)方法を理解しておいてください。
     >
     
-* Webhook をエンコード タスクに追加し、Webhook URL と、この Webhook が応答する秘密キーを指定します。 このトピックの最後に、webhook をエンコード タスクに追加する例があります。  
+* Webhook をエンコード タスクに追加し、Webhook URL と、この Webhook が応答する秘密キーを指定します。 この記事の最後に、webhook をエンコード タスクに追加する例があります。  
 
-さまざまな Media Services .NET Azure Functions の定義は、このトピックで紹介したものも含め、[こちら](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)で確認できます。
+さまざまな Media Services .NET Azure Functions の定義は、この記事で紹介したものも含め、[こちら](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)で確認できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 
 Media Services の関数を開発するときは、自分が開発するさまざまな関数で使用する環境変数を追加しておくと便利です。 アプリケーション設定を構成するには、[アプリケーション設定の構成] リンクをクリックします。 
 
-[アプリケーション設定](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)のセクションでは、このトピックで定義されている webhook で使用されるパラメーターを定義します。 また、次のパラメーターをアプリ設定に追加します。 
+[アプリケーション設定](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)のセクションでは、この記事で定義されている webhook で使用されるパラメーターを定義します。 また、次のパラメーターをアプリ設定に追加します。 
 
 |名前|定義|例| 
 |---|---|---|
@@ -372,7 +372,7 @@ webhook がトリガーされると、上記の例により次の出力が生成
 
 このセクションでは、タスクに Webhook 通知を追加するコードを示します。 チェーン タスクを使用したジョブでより役立つ可能性のあるジョブ レベル通知を追加することもできます。  
 
-1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 名前、場所、ソリューション名 を入力し、OKをクリックします。
+1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 [名前]、[場所]、[ソリューション名] を入力し、[OK] をクリックします。
 2. [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、Azure Media Services をインストールします。
 3. 適切な値で App.config ファイルを更新します。 
     

@@ -15,11 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: a71efa7ff052c7c69de2b9aba3c1ed9328538e3f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 76997f2e31f3edd6260b2ae19631236bc1c0c1b6
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 > [!IMPORTANT] 
@@ -51,7 +51,7 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 [!INCLUDE [create-account-and-vms-note](../../../../includes/create-account-and-vms-note.md)]
 
 ## <a name="to-create-a-virtual-machine"></a>仮想マシンを作成するには
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. **[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
 3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。
    **[JDK 6 Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
@@ -74,7 +74,7 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
    2. **[完了]**をクリックします。
 
 ## <a name="to-remotely-log-in-to-your-virtual-machine"></a>仮想マシンにリモート ログインするには
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログオンします。
+1. [Azure Portal](https://portal.azure.com) にログオンします。
 2. **[仮想マシン]**をクリックします。
 3. ログインする仮想マシンの名前をクリックします。
 4. **[接続]**をクリックします。
@@ -87,15 +87,15 @@ Azure の Service Bus キューを使用するには、最初にサービス名�
 
 サービス名前空間を作成するには:
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログオンします。
-2. Azure クラシック ポータルの左下のナビゲーション ウィンドウで、**[サービス バス、アクセス制御、キャッシュ]** をクリックします。
-3. Azure クラシック ポータルの左上のナビゲーション ウィンドウで、**[Service Bus]** ノードをクリックしてから **[新規]** をクリックします。  
+1. [Azure Portal](https://portal.azure.com) にログオンします。
+2. Azure Portal の左下のナビゲーション ウィンドウで、**[サービス バス、アクセス制御、キャッシュ]** をクリックします。
+3. Azure Portal の左上のナビゲーション ウィンドウで、**[Service Bus]** ノードをクリックしてから **[新規]** をクリックします。  
    ![[Service Bus] ノードのスクリーンショット][svc_bus_node]
 4. **[サービス名前空間の新規作成]** ダイアログ ボックスで **[名前空間]** に名前空間の名前を入力し、固有の名前であることを確認するために **[有効か確認]** をクリックします。  
    ![[名前空間の新規作成] のスクリーンショット][create_namespace]
 5. 名前空間の名前が有効であることを確認できたら、名前空間をホストする国またはリージョンを選択して、 **[名前空間の作成]** ボタンをクリックします。  
    
-   作成した名前空間が Azure クラシック ポータルに表示され、アクティブになります。これには少し時間がかかります。 状態が **[有効]** になるのを待ってから、次の手順に進みます。
+   作成した名前空間が Azure Portal に表示され、アクティブになります。これには少し時間がかかります。 状態が **[有効]** になるのを待ってから、次の手順に進みます。
 
 ## <a name="obtain-the-default-management-credentials-for-the-namespace"></a>名前空間の既定の管理資格情報の取得
 新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。

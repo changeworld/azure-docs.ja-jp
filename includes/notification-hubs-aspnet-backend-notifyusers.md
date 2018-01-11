@@ -148,7 +148,7 @@
    
         using Microsoft.Azure.NotificationHubs;
 
-6. `Notifications` クラス定義を以下のコードに置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure クラシック ポータル](http://manage.windowsazure.com)で確認できます) に置き換えます。
+6. `Notifications` クラス定義を以下のコードに置き換えます。2 つのプレースホルダーは、通知ハブに対する (フル アクセス権を持つ) 接続文字列と、ハブ名 ([Azure Portal](http://portal.azure.com)で確認できます) に置き換えます。
    
         public class Notifications
         {

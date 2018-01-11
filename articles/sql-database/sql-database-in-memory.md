@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: f136faf3df761b048c88e72f564f81fd32e630ab
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 23b313a473b93ba0eab7fc4cf97a5d26bfa31505
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -77,9 +77,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 インメモリ OLTP には、ユーザー データの格納に使用されるメモリ最適化テーブルが含まれています。 これらのテーブルは、メモリに格納する必要があります。 メモリは SQL Database サービスで直接管理するため、ユーザー データについてクォータの概念があります。 この考え方は、"*インメモリ OLTP ストレージ*" と呼ばれます。
 
-サポートされている各スタンドアロン データベースの価格レベルと各エラスティック プールの価格レベルには、一定量のインメモリ OLTP ストレージが含まれます。 この記事の執筆時点では、125 のデータベース トランザクション ユニット (DTU) またはエラスティック データベース トランザクション ユニット (eDTU) ごとに 1 GB のストレージが提供されます。
-
-[SQL Database のサービス レベル](sql-database-service-tiers.md)に関する記事には、サポートされるスタンドアロン データベースとエラスティック プールの価格レベルごとに使用できるインメモリ OLTP ストレージの公式の一覧があります。
+サポートされている各スタンドアロン データベースの価格レベルと各エラスティック プールの価格レベルには、一定量のインメモリ OLTP ストレージが含まれます。 この記事の執筆時点では、125 のデータベース トランザクション ユニット (DTU) またはエラスティック データベース トランザクション ユニット (eDTU) ごとに 1 GB のストレージが提供されます。 詳細については、[リソースの制限](sql-database-resource-limits.md)に関するページをご覧ください。
 
 インメモリ OLTP ストレージ上限では、以下が考慮されます。
 
