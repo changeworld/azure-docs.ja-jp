@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3fd5a5b9d2e2eec485fd9ecc5380ad6adb9851d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77c8c8dbe6228d80062f34f4bb7fc93a1871e8c4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Queue Storage によってトリガーされる関数の作成
 
@@ -52,13 +52,16 @@ Azure Storage キューにメッセージが送信されたときにトリガー
 
     ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-2. 目的の言語の **QueueTrigger** テンプレートを選び、次の表で指定されている設定を使います。
+2. 検索フィールドに、「`queue`」と入力し、Queue storage トリガー テンプレート用の目的の言語を選択します。
 
-    ![ストレージ キューによってトリガーされる関数を作成します。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    ![ストレージ キューのトリガー テンプレートを選択します。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+
+3. 画像の下の表に指定した設定を使用してください。
+    ![ストレージ キューによってトリガーされる関数を構成します。](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
     
-    | Setting | 推奨値 | 説明 |
+    | 設定 | 推奨値 | Description |
     |---|---|---|
-    | **関数名の指定** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
+    | **名前** | Function App 内で一意 | このキューによってトリガーされる関数の名前。 |
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
     | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |    
 

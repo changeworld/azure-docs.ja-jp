@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
 ms.openlocfilehash: 4a27ae1402717c91029eda9d635db124f8bb6b8d
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-by-using-the-azure-portal"></a>Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -82,8 +82,8 @@ Azure Portal を使用して、既定のストレージまたは追加のスト�
 
     - **[既定のコンテナー]**: 既定値を使用するか、独自の名前を指定します。
 
-    - [追加のストレージ アカウント]: 追加のストレージとして Azure Storage アカウントを追加します。
-    - [Data Lake Store アクセス]: Data Lake Store アカウントと HDInsight クラスターの間のアクセスを構成します。 手順については、「[Data Lake Store へのアクセスを構成する](#configure-data-lake-store-access)」を参照してください。
+    - 追加のストレージ アカウント: 追加のストレージとして Azure Storage アカウントを追加します。
+    - Data Lake Store アクセス: Data Lake Store アカウントと HDInsight クラスターの間のアクセスを構成します。 手順については、「[Data Lake Store へのアクセスを構成する](#configure-data-lake-store-access)」を参照してください。
 
 ## <a name="configure-data-lake-store-access"></a>Data Lake Store へのアクセスを構成する 
 

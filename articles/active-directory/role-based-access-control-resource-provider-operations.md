@@ -4,7 +4,7 @@ description: "Microsoft Azure Resource Manager の各リソース プロバイ�
 services: active-directory
 documentationcenter: 
 author: jboeshart
-manager: 
+manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 9fe7a5f254d8b384cae10ecd34e0bdafa433ff13
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 27880402d377701448d095a1295ece875729cd67
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
-このドキュメントでは、Microsoft Azure Resource Manager の各リソース プロバイダーで使用できる操作を示します。 これらの操作をカスタム ロールで使用することで、Azure のリソースにロールベースのアクセス制御 (RBAC) の詳細なアクセス許可を提供できます。 これは包括的な一覧ではないことに注意してください。各プロバイダーの更新に伴って、操作が追加または削除される場合があります。 操作文字列は、`Microsoft.<ProviderName>/<ChildResourceType>/<action>` の形式に従います。 最新の包括的な一覧については、`Get-AzureRmProviderOperation` (PowerShell の場合) または `azure provider operations show` (Azure CLI の場合) を使用して、Azure リソース プロバイダーの操作の一覧を表示してください。
+このドキュメントでは、Microsoft Azure Resource Manager の各リソース プロバイダーで使用できる操作を示します。 これらの操作をカスタム ロールで使用することで、Azure のリソースにロールベースのアクセス制御 (RBAC) の詳細なアクセス許可を提供できます。 これは包括的な一覧ではないことに注意してください。各プロバイダーの更新に伴って、操作が追加または削除される場合があります。 操作文字列は、`Microsoft.<ProviderName>/<ChildResourceType>/<action>` の形式に従います。 
+
+> [!NOTE]
+> 最新の包括的な一覧については、`Get-AzureRmProviderOperation` (PowerShell の場合) または `az provider operation list` (Azure CLI v2 の場合) を使って、Azure リソース プロバイダーの操作の一覧を表示してください。
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
@@ -2194,7 +2197,6 @@ ms.lasthandoff: 11/02/2017
 ## <a name="next-steps"></a>次のステップ
 
 - [カスタム ロールを作成する](role-based-access-control-custom-roles.md)方法を確認します。
-
 - [組み込みの RBAC ロール](role-based-access-built-in-roles.md)を確認します。
-
 - アクセス権の割り当てを[ユーザーごと](role-based-access-control-manage-assignments.md)または[リソースごと](role-based-access-control-configure.md)に管理する方法を確認します。 
+- [リソースのアクションを監査するアクティビティ ログを表示する](~/articles/azure-resource-manager/resource-group-audit.md)方法を確認します

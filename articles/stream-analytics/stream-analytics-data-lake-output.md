@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 3d867df3ef875d5cc41de418c3d1d269ff751fda
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2010e86e56c1ce7a98fae97a8f6f00c30b61035
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics の Data Lake Store 出力
 Stream Analytics ジョブは、 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)など、いくつかの出力方法をサポートしています。 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。
 
 ## <a name="authorize-a-data-lake-store-account"></a>Data Lake Store アカウントを承認する
-1. Azure Portal で出力として Data Lake Store を選択すると、既存の Data Lake Store の使用を承認するか、クラシック ポータルで Data Lake Store へのアクセス権を要求するように求められます。
+1. Azure Portal で出力として Data Lake Store を選択すると、既存の Data Lake Store の使用を承認するか、Data Lake Store へのアクセス権を要求するように求められます。
    
    ![](media/stream-analytics-data-lake-output/stream-analytics-data-lake-output-authorization.png)  
    

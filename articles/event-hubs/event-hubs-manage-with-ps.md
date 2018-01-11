@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 2b49c01153b1104612e6ebf9c88566fc40d1f635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: de86b8241166d4e0bd03beb22550464457e3db5e
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="use-powershell-to-manage-event-hubs-resources"></a>PowerShell を使用した Event Hubs リソースの管理
 
@@ -103,7 +103,7 @@ else
 
 ### <a name="create-a-consumer-group"></a>コンシューマー グループの作成
 
-イベント ハブ内でコンシューマー グループを作成するには、前のセクションのスクリプトを使用して名前空間とイベント ハブの確認を実行します。 次に、[New-AzureRmEventHubConsumerGroup](/powershell/module/azurerm.eventhub/new-azurermeventhubconsumergroup) コマンドレットを使用して、イベント ハブ内でコンシューマー グループを作成します。 次に例を示します。
+イベント ハブ内でコンシューマー グループを作成するには、前のセクションのスクリプトを使用して名前空間とイベント ハブの確認を実行します。 次に、[New-AzureRmEventHubConsumerGroup](/powershell/module/azurerm.eventhub/new-azurermeventhubconsumergroup) コマンドレットを使用して、イベント ハブ内でコンシューマー グループを作成します。 例: 
 
 ```powershell
 # Check if consumer group already exists
@@ -148,7 +148,7 @@ Remove-AzureRmEventHub -ResourceGroupName $ResGrpName -NamespaceName $Namespace 
 Remove-AzureRmEventHubNamespace -ResourceGroupName $ResGrpName -NamespaceName $Namespace
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Event Hubs の Resource Manager の PowerShell モジュールに関する全ドキュメントは、[ここ](/powershell/module/azurerm.eventhub)から参照してください。 このページには、利用可能なすべてのコマンドレットが一覧されています。
 - Azure Resource Manager テンプレートの使用の詳細については、記事「[イベント ハブとコンシューマー グループを含んだ Event Hubs 名前空間を Azure Resource Manager テンプレートで作成する](event-hubs-resource-manager-namespace-event-hub.md)」を参照してください。

@@ -1,0 +1,69 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Azure Policy のドキュメント"
+metadata:
+  title: "Azure Portal のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+  description: "Azure Policy では、リソースに対してルールとアクションを適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、ポリシー定義の作成、割り当て、管理を行う方法を確認してください。"
+  services: azure-policy
+  author: czeumault
+  manager: carolz
+  ms.service: azure-policy
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/18/2017
+  ms.author: carolz
+  ms.openlocfilehash: b5945fe76973aba267b529078466c7a97e5e6421
+  ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/20/2017
+abstract:
+  description: "Azure Policy では、リソースに対してルールとアクションを適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、ポリシー定義の作成、割り当て、管理を行う方法を確認してください。"
+sections:
+- title: "5 分間のクイック スタート"
+  items:
+  - type: paragraph
+    text: "Azure でポリシー定義の作成、割り当て、管理を行う方法について説明します。"
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/azure-policy/assign-policy-definition
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/azure-policy/assign-policy-definition-ps
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+      text: Azure CLI
+      href: /azure/azure-policy/assign-policy-definition-cli
+- title: "ステップバイステップのチュートリアル"
+  items:
+  - type: paragraph
+    text: "Azure でポリシー定義の作成、割り当て、管理を行う方法について説明します。"
+  - type: list
+    style: unordered
+    items:
+    - html: "<a href=\"/azure/azure-policy/create-manage-policy\">Azure ポリシーの作成と管理</a>"
+- title: "サンプル"
+  items:
+  - type: paragraph
+    text: "次の JSON のサンプルを使用すると、Azure でポリシー定義を作成できます。"
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/azure-policy/json-samples">Azure PowerShell</a>
+- title: "リファレンス"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: "コマンド ライン"
+      html: <p><a href="https://docs.microsoft.com/en-us/cli/azure/policy">Azure CLI</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>

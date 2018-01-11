@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: fd1a8cf442ea0688e027f8f8028ee8b4e149d8d2
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 9ec501d0a4e1c6165b83b5b590b87b0baa284423
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
+
 このトピックでは、 [Azure Portal]を使用して Web アプリを構成する方法について説明します。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="application-settings"></a>アプリケーションの設定
 1. [Azure Portal]で、Web アプリのブレードを開きます。
-3. [ **アプリケーションの設定**] をクリックします。
+3. **[アプリケーションの設定]** をクリックします。
 
 ![アプリケーションの設定][configure01]
 
@@ -45,6 +46,8 @@ ms.lasthandoff: 10/17/2017
 
 <a name="platform"></a>
 **プラットフォーム**。 Web アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。 64 ビット環境では Basic モードまたは Standard モードを使用する必要があります。 Free モードと Shared モードは常に 32 ビット環境で実行されます。
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 **[Web ソケット]**。 WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web アプリで [ASP.NET SignalR] または [socket.io](https://socket.io/) を使用する場合)。
 
@@ -64,7 +67,7 @@ ms.lasthandoff: 10/17/2017
 * .NET アプリの場合、実行時にこれらの設定が .NET 構成の `AppSettings` に挿入され、既存の設定がオーバーライドされます。 
 * PHP、Python、Java および Node アプリケーションでは、実行時に環境変数としてこれらの設定にアクセスできます。 各アプリ設定で、2 つの環境変数が作成されます。1 つは、アプリ設定エントリで指定された名前になり、もう 1 つはプレフィックスとして APPSETTING_ が付加されます。 両方に同じ値が格納されます。
 
-### <a name="connection-strings"></a>接続文字列
+### <a name="connection-strings"></a>Connection strings
 リンク済みリソースの接続文字列です。 
 
 .NET アプリの場合、これらの接続文字列は、実行時に .NET 構成の `connectionStrings` 設定に挿入され、キーがリンクされたデータベース名である既存のエントリがオーバーライドされます。 
@@ -116,11 +119,11 @@ Web アプリでは、静的コンテンツを提供する代わりに URL に�
 1. Web アプリのブレードで、 **[すべての設定]**をクリックします。
 2. **[デプロイ資格情報]**をクリックします。
 3. ユーザー名とパスワードを入力します。
-4. **[保存]**をクリックします。
+4. **[Save]** をクリックします。
 
-![デプロイ資格情報の設定][configure03]
+![デプロイメント資格情報の設定][configure03]
 
-完全な FTP ユーザー名は "app\username" です。*app* は Web アプリの名前です。 username は Web アプリ ブレードの **[Essentials]** の下に表示されます。  
+完全な FTP ユーザー名は "app\username" です。*app* は Web アプリの名前です。 username は Web アプリ ブレードの **[Essentials]** の下に表示されます。
 
 ![FTP デプロイ資格情報][configure02]
 
@@ -151,7 +154,7 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure App Service のカスタム ドメイン名の構成]
 * [アプリに対する HTTPS を Azure App Service で有効にする]
 * [Azure App Service での Web アプリの拡張]

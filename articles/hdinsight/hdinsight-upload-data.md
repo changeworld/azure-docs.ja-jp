@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: 9cdf41bd5c15abca3570a08584dc0958497848a7
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: cfe1b6bee9bc1f093b239f8f4acc523e47ad5d1a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブ用データのアップロード
 
@@ -166,13 +166,13 @@ Hadoop コマンドを使用するためには、まず、次の方法のいず�
 hadoop -copyFromLocal <localFilePath> <storageFilePath>
 ```
 
-たとえば、 `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
+たとえば、`hadoop fs -copyFromLocal data.txt /example/data/data.txt` のように指定します。
 
 HDInsight の既定のファイル システムは Azure Storage にあるため、/example/data.txt は実際は Azure Storage 上にあります。 このファイルは次のように表すこともできます。
 
     wasb:///example/data/data.txt
 
-または
+or
 
     wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
@@ -291,7 +291,7 @@ Ambari を使うことで、`fs.azure.write.request.size` の値をグローバ�
 
 Ambari の使用について詳しくは、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここでは、HDInsight にデータを取り込む方法を説明しました。次の記事でデータの分析方法を学習してください。
 
 * [Azure HDInsight の概要][hdinsight-get-started]

@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 189f576f9ead5d67b76b3e47c312f3de76df77fe
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: e6f87cd82ebe31965fcaac1f66d2df03fd58294f
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>キー値ストアとしての Azure Cosmos DB - コストの概要
 
-Azure Cosmos DB は、高可用性で大規模なアプリケーションを簡単に構築するための、マルチモデルなグローバル分散データベース サービスです。 既定では、Azure Cosmos DB が取り込むすべてのデータのインデックスが効率よく自動作成されます。 そのため、どのようの種類のデータであっても、高速かつ一貫性のある[SQL](documentdb-sql-query.md) (および [JavaScript](programming.md)) クエリが実行されます。 
+Azure Cosmos DB は、高可用性で大規模なアプリケーションを簡単に構築するための、マルチモデルなグローバル分散データベース サービスです。 既定では、Azure Cosmos DB が取り込むすべてのデータのインデックスが効率よく自動作成されます。 そのため、どのようの種類のデータであっても、高速かつ一貫性のある[SQL](sql-api-sql-query.md) (および [JavaScript](programming.md)) クエリが実行されます。 
 
 この記事では、キー/値ストアとして Azure Cosmos DB を使用し、シンプルな書き込みと読み取り操作を行う際のコストについて説明しています。 書き込み操作には、ドキュメントの挿入、置換、削除、および upsert などがあります。 Azure Cosmos DB では、すべての単一リージョンのアカウントとすべてのマルチリージョンのアカウントに対して緩やかな整合性で 99.99% の SLA 可用性と、すべてのマルチリージョンのデータベース アカウントに 99.999% の読み取り可用性を保持した上で、読み取りに 10 ミリ秒未満の待機時間と (インデックス付けされた) 書き込みに 15 ミリ未満の待機時間の保証をそれぞれ、99 パーセンタイルで提供しています。 
 
@@ -53,7 +53,7 @@ Azure Cosmos DB のパフォーマンスは、パーティションにプロビ�
 
 基本的な BLOB またはオブジェクト ストア サービスの多くでは、読み取りトランザクション 100 万回につき 0.40 ドル、書き込みトランザクション 100 万回につき 5 ドルが課金されます。 最適な方法で使用した場合は、Cosmos DB では他のソリューションと比べて最大で 98% のコストを削減できます (1 KB のトランザクションの場合)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Cosmos DB のリソース プロビジョニングの最適化に関する新しい記事をお見逃しなく。 Microsoft の [RU 計算ツール](https://www.documentdb.com/capacityplanner)を自由にご利用ください。
 

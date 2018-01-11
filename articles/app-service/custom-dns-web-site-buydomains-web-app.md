@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 2ba6e3a79e5eb4eca4a3c7d35ada8c58bfe2295e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 13a61caf9b4dff8ffc08970d5a4c09efa9c5f117
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Azure Web Apps のカスタム ドメイン名を購入する
 
@@ -34,6 +34,8 @@ App Service ドメイン (プレビュー) は、Azure で直接管理される�
 * [サブスクリプションで使用制限を削除](../billing/billing-spending-limit.md#remove)します。 無料のサブスクリプション クレジットで App Service ドメインを購入することはできません。
 
 ## <a name="prepare-the-app"></a>アプリの準備
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Azure Web Apps でカスタム ドメインを使うには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (**Shared**、**Basic**、**Standard**、または **Premium**) である必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
 
@@ -109,7 +111,7 @@ Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Pre
 
 次に、ドメインに必要なオプションを選びます。 次の表の説明をご覧ください。
 
-| 設定 | 推奨値 | 説明 |
+| 設定 | 推奨値 | [説明] |
 |-|-|-|
 |プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、**[プライバシー保護]** ページに表示されます。 |
 | 既定のホスト名の割り当て | **www** および **@** | 必要に応じて、適切なホスト名バインドを選びます。 ドメイン購入操作が完了すると、選んだホスト名で Web アプリにアクセスできるようになります。 Web アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) の背後にある場合、Traffic Manager は A レコードをサポートしていないため、ルート ドメイン (@) を割り当てるオプションは表示されません。 ドメインの購入が完了した後で、ホスト名の割り当てを変更することができます。 |
@@ -167,7 +169,7 @@ Web アプリに既定のホスト名を割り当てた場合、選択した各�
 **[ホスト名の追加]** を選択します。
 
 ### <a name="configure-hostname"></a>ホスト名を構成する
-**[ホスト名の追加]** ダイアログ ボックスで、App Service ドメインまたは任意のサブドメインの完全修飾ドメイン名を入力します。 次に例を示します。
+**[ホスト名の追加]** ダイアログ ボックスで、App Service ドメインまたは任意のサブドメインの完全修飾ドメイン名を入力します。 例: 
 
 - kontoso.net
 - www.kontoso.net

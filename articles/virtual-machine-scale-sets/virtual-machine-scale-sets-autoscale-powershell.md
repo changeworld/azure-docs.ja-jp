@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 1fbfbbc79a415af5e874c304412854849e134eb7
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 8928e56f353858234db314714d411a9c2990eb4e
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケール機能により、顧客のニーズに対応したり、アプリのライフ サイクルを通じて、アプリケーション パフォーマンスの変化に対応することができます。
@@ -28,9 +28,9 @@ ms.lasthandoff: 10/20/2017
 
 
 ## <a name="prerequisites"></a>前提条件
-自動スケール ルールを作成するには、既存の仮想マシン スケール セットが必要です。 スケール セットは、[Azure Portal](virtual-machine-scale-sets-portal-create.md)、[Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-powershell)、または [Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-azure-cli) を使用して作成できます。
+自動スケール ルールを作成するには、既存の仮想マシン スケール セットが必要です。 スケール セットは、[Azure Portal](virtual-machine-scale-sets-create-portal.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)、または [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) を使用して作成できます。
 
-自動スケール ルールを作成しやすくするため、スケール セットのいくつかの変数を定義します。 次の例は、*myResourceGroup* という名前のリソース グループ内と *East US* 領域内の *myScaleSet* という名前のスケール セットの変数を定義します。 サブスクリプション ID は、[Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) を使用して取得します。 複数のサブスクリプションがアカウントに関連付けられている場合は、最初のサブスクリプションだけが返されます。 名前とサブスクリプション ID を次のように調整します。
+自動スケール ルールを作成しやすくするため、使用するスケール セット用にいくつかの変数を定義します。 次の例は、*myResourceGroup* という名前のリソース グループ内と *East US* 領域内の *myScaleSet* という名前のスケール セットの変数を定義します。 サブスクリプション ID は、[Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) を使用して取得します。 複数のサブスクリプションがアカウントに関連付けられている場合は、最初のサブスクリプションだけが返されます。 名前とサブスクリプション ID を次のように調整します。
 
 ```powershell
 $mySubscriptionId = (Get-AzureRmSubscription).Id
@@ -41,7 +41,7 @@ $myLocation = "East US"
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>自動的にスケールアウトするルールの作成
-アプリケーションの需要が増加すると、スケール セット内の VM インスタンスの負荷が増加します。 この増加した負荷が短期的な需要ではなく、一貫性のあるものである場合は、スケール セット内の VM インスタンスの数を増やす自動スケール ルールを構成できます。 これらの VM インスタンスが作成され、アプリケーションがデプロイされるときに、スケール セットはロード バランサーを通じてこれらにトラフィックの分散を開始します。 監視するメトリック (CPU やディスクなど)、指定されたしきい値をアプリケーションの負荷が満たす必要がある期間、およびスケール セットに追加する VM インスタンスの数を制御します。
+アプリケーションの需要が増加すると、スケール セット内の VM インスタンスに対する負荷が増加します。 この増加した負荷が短期的な需要ではなく持続したものである場合は、スケール セット内の VM インスタンスの数を増やす自動スケール ルールを構成できます。 これらの VM インスタンスが作成され、アプリケーションがデプロイされると、スケール セットはロード バランサーを通じてそれらへのトラフィックの分散を開始します。 監視するメトリック (CPU やディスクなど)、指定されたしきい値をアプリケーションの負荷が満たす必要がある期間、およびスケール セットに追加する VM インスタンスの数を制御します。
 
 CPU に対する負荷の平均が 5 分間に 70% を上回った場合に、スケール セット内の VM インスタンスの数を増やすルールを [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) を使用して作成してみましょう。 ルールがトリガーされると、VM インスタンスの数が 20% 増加します。 小数の VM インスタンスを持つスケール セットでは、`-ScaleActionScaleType` を除外して `-ScaleActionValue` だけを指定して、*1* つまたは *2* つのインスタンスずつ増やことができます。 多数の VM インスタンスがあるスケール セットでは、VM インスタンスを 10% または 20% 増やすとより適切になる場合があります。
 
@@ -58,7 +58,7 @@ CPU に対する負荷の平均が 5 分間に 70% を上回った場合に、�
 | *-ScaleActionDirection* | ルールが適用されるときに、スケール セットをスケールアップするかスケールダウンするかを定義します。                                             | Increase (増加)       |
 | *– ScaleActionScaleType* | VM インスタンスの数をパーセンテージで変更することを示します。                                 | Percent Change (変化率) |
 | *-ScaleActionValue*     | ルールがトリガーされたときに VM インスタンスのパーセンテージを変更する必要があります。                                            | 20             |
-| *-ScaleActionCooldown*  | ルールを再度適用する前に待機する時間。この値を超えると、自動スケール操作が反映されます。 | 5 分      |
+| *-ScaleActionCooldown*  | 自動スケール アクションを有効にする時間を稼ぐため、ルールを再度適用する前に待機する時間。 | 5 分      |
 
 次の例では、このスケール アップ ルールを保持する *myRuleScaleOut* という名前のオブジェクトを作成します。 *-MetricResourceId* は、サブスクリプション ID、リソース グループ名、およびスケール セット名に以前に定義した変数を使用します。
 
@@ -79,7 +79,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 
 
 ## <a name="create-a-rule-to-automatically-scale-in"></a>自動的にスケールインするルールの作成
-夜間や週末は、アプリケーションの需要が低下する場合があります。 この低下した負荷が一定期間持続する場合、スケール セット内の VM インスタンスの数を減らす自動スケール ルールを構成できます。 このスケールイン アクションは、現在の需要を満たすのに必要な数のインスタンスのみを実行するため、スケール セットの実行コストを削減します。
+夜間や週末は、アプリケーションの需要が低下する可能性があります。 この低下した負荷が一定期間持続する場合、スケール セット内の VM インスタンスの数を減らす自動スケール ルールを構成できます。 このスケールイン アクションによって、現在の需要を満たすのに必要な数のインスタンスのみが実行されるようになるため、スケール セットの実行コストが削減されます。
 
 CPU に対する負荷の平均が 10 分間に 30% を下回った場合にスケール セット内の VM インスタンスの数を減らすルールを [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) を使用して作成します。 ルールがトリガーされると、VM インスタンスの数は 20% 低下します。次の例では、このスケール アップ ルールを保持する *myRuleScaleDown* という名前のオブジェクトを作成します。 *-MetricResourceId* は、サブスクリプション ID、リソース グループ名、およびスケール セット名に以前に定義した変数を使用します。
 
@@ -139,9 +139,9 @@ Get-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleS
 ホスト メトリックではなくスケジュールに基づいて自動スケール ルールを作成するには、Azure ポータルを使用します。 スケジュールに基づくルールは、Azure PowerShell では現在作成できません。
 
 
-## <a name="next-steps"></a>次のステップ
-この記事では、自動スケール ルールを使用して、水平方向にスケーリングして、スケール セット内の VM インスタンスの*数*を増減する方法について説明しました。 垂直方向にスケーリングして、VM インスタンスの "*サイズ*" を増減することもできます。 詳細については、「[仮想マシン スケール セットの使用を開始する](virtual-machine-scale-sets-vertical-scale-reprovision.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
+この記事では、自動スケール ルールを使用して、水平方向にスケーリングして、スケール セット内の VM インスタンスの*数*を増減する方法について説明しました。 垂直方向にスケーリングして、VM インスタンスの "*サイズ*" を増減することもできます。 詳細については、[仮想マシン スケール セットでの垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)に関するページを参照してください。
 
-VM インスタンスの管理方法については、「[Manage virtual machine scale sets with Azure PowerShell (Azure PowerShell を使用した仮想マシン スケール セットの管理)](virtual-machine-scale-sets-windows-manage.md)」を参照してください。
+VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](virtual-machine-scale-sets-windows-manage.md)に関するページを参照してください。
 
-自動スケール ルールをトリガーするときにアラートを生成する方法については、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」を参照してください。 [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。

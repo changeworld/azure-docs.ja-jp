@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/31/2016
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: joeyong;barbkess;kevin
+ms.openlocfilehash: 56bae284bb83b1ff18bf2caf644e6dd071b8eb69
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
 この記事では、動的管理ビュー (DMV) を使用し、Azure SQL データ ウェアハウスでワークロードを監視し、クエリの実行を調査する方法について説明します。
@@ -174,7 +174,7 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 クエリが別のクエリからのリソースを積極的に待っている場合、状態は **AcquireResources**になります。  クエリに必要なリソースがすべて揃っている場合、状態は **Granted**になります。
 
 ## <a name="monitor-tempdb"></a>tempdb を監視する
-tempdb の高使用率が、パフォーマンスの低下とメモリ不足の問題の根本原因になることがあります。 まず、データ スキューや低品質の行グループが存在するかどうかを確認し、適切なアクションを実行してください。 クエリの実行中に tempdb がその制限に達していることがわかった場合は、データ ウェアハウスのスケーリングを検討してください。 以下に、各ノードのクエリごとの tempdb 使用率を識別する方法について説明します。 
+tempdb の高使用率が、パフォーマンスの低下とメモリ不足の問題の根本原因になることがあります。 クエリの実行中に tempdb がその制限に達していることがわかった場合は、データ ウェアハウスのスケーリングを検討してください。 以下に、各ノードのクエリごとの tempdb 使用率を識別する方法について説明します。 
 
 以下のビューを作成し、sys.dm_pdw_sql_requests に適切なノード ID を関連付けます。 これにより、他のパススルー DMV を利用して、それらのテーブルを sys.dm_pdw_sql_requests と結合できます。
 
@@ -233,7 +233,7 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>メモリを監視する
 
-メモリが、パフォーマンスの低下とメモリ不足の問題の根本原因になることがあります。 まず、データ スキューや低品質の行グループが存在するかどうかを確認し、適切なアクションを実行してください。 クエリの実行中に SQL Server のメモリ使用率が制限に達していることがわかった場合は、データ ウェアハウスのスケーリングを検討してください。
+メモリが、パフォーマンスの低下とメモリ不足の問題の根本原因になることがあります。 クエリの実行中に SQL Server のメモリ使用率が制限に達していることがわかった場合は、データ ウェアハウスのスケーリングを検討してください。
 
 次のクエリでは、ノードあたりの SQL Server のメモリ使用率とメモリ負荷が返されます。   
 ```sql
@@ -258,7 +258,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>トランザクション ログのサイズを監視する
-次のクエリでは、配布ごとのトランザクション ログのサイズが返されます。 データ スキューや低品質の行グループが存在するかどうかを確認し、適切なアクションを実行してください。 ログ ファイルのいずれかが 160 GB に達している場合は、インスタンスのスケールアップまたはトランザクション サイズの制限を検討する必要があります。 
+次のクエリでは、配布ごとのトランザクション ログのサイズが返されます。 ログ ファイルのいずれかが 160 GB に達している場合は、インスタンスのスケールアップまたはトランザクション サイズの制限を検討する必要があります。 
 ```sql
 -- Transaction log size
 SELECT
@@ -284,7 +284,7 @@ JOIN sys.dm_pdw_nodes nod ON t.pdw_node_id = nod.pdw_node_id
 GROUP BY t.pdw_node_id, nod.[type]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 DMV の詳細については、「[システム ビュー][System views]」を参照してください。
 ベスト プラクティスの詳細については、「[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse best practices]」を参照してください。
 

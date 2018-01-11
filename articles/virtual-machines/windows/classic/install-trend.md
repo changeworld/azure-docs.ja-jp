@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 7922a9561369acf3c4299e1cadc0dc9f8f8eadb1
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 41b7ecf0d0c71b5c225454cc77ce87d5736c2165
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法
 > [!IMPORTANT]
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/08/2017
 
 このクライアントは、VM エージェントを使用することにより、セキュリティ拡張機能としてインストールされます。 新しい仮想マシンには、Azure Portal によって VM エージェントが自動作成されるときに、Deep Security Agent をインストールします。
 
-従来のポータル、Azure CLI、または PowerShell を使用して作成された既存の仮想マシンには、VM エージェントがありません。 VM エージェントがない既存の仮想マシンの場合は、最初に VM エージェントをダウンロードしてインストールする必要があります。 この記事では、この両方の場合について説明します。
+Azure Portal、Azure CLI、または PowerShell を使って作成された既存の仮想マシンには、VM エージェントがありません。 VM エージェントがない既存の仮想マシンの場合は、最初に VM エージェントをダウンロードしてインストールする必要があります。 この記事では、この両方の場合について説明します。
 
 Trend Micro のオンプレミスのソリューション用サブスクリプションが既にある場合は、それを使用して Azure の仮想マシンを保護できます。 サブスクリプションがない場合には、サインアップして試用サブスクリプションを利用できます。 このソリューションの詳細については、Trend Micro ブログの Deep Security 用の [Microsoft Azure VM エージェント拡張機能](http://go.microsoft.com/fwlink/p/?LinkId=403945)に関する投稿を参照してください。
 

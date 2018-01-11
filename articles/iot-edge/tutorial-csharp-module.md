@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b8afc266cd416f39a895285d05b8ff323fb46330
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: bf57fa11c63930c594c63043ab4b695f586d9e1b
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>C# IoT Edge モジュールを開発して、シミュレートしたデバイスにデプロイする - プレビュー
 
@@ -219,7 +219,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
         
    Azure コンテナー レジストリを作成したときにコピーしたユーザー名、パスワード、およびログイン サーバーを使用します。
 
-3. イメージを Docker リポジトリにプッシュします。 **[表示]** > **[コマンド パレット]** を選択し、**[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** メニュー コマンドを検索します。 VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 手順 1.d. で使用したのと同じイメージ名を使用してください。
+3. イメージを Docker リポジトリにプッシュします。 **[表示]** > **[コマンド パレット]** を選択し、**[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** メニュー コマンドを検索します。 VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 手順 4. で使用したのと同じイメージ名を使用してください。
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>Edge ランタイムにレジストリの資格情報を追加する
 Edge デバイスを実行しているコンピューターの Edge ランタイムに、レジストリの資格情報を追加します。 この資格情報により、コンテナーをプルするためのアクセス権がランタイムに付与されます。 

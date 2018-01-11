@@ -9,24 +9,23 @@ editor:
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: a7abba87035016eee05b4ab663404f10127bba1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf8a3eb502a808945e97822e10e44d38137d1161
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成 
 
 API Management (APIM) インスタンスを作成すると、Azure によって azure-api.net サブドメイン (例: `apim-service-name.azure-api.net`) に割り当てられます。 ただし、独自のドメイン名 (**contoso.com** など) を使用する APIM エンドポイントを公開できます。このチュートリアルでは、既存のカスタム DNS 名を Azure API Management インスタンスによって公開されるエンドポイントにマップする方法を示します。
 
-
 ## <a name="prerequisites"></a>前提条件
 
 この記事で説明されている手順を実行するには、以下が必要です。
 
-+ 有効な Azure サブスクリプション。
++ 有効な Azure サブスクリプション
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -58,6 +57,8 @@ API Management (APIM) インスタンスを作成すると、Azure によって 
     >[!NOTE]
     >証明書を割り当てる処理は、15 分程度かかります。
 
-## <a name="next-steps"></a>次のステップ
+[!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
+
+## <a name="next-steps"></a>次の手順
 
 [サービスのアップグレードとスケーリングを行う](upgrade-and-scale.md)

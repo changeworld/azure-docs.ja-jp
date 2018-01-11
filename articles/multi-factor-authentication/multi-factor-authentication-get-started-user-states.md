@@ -4,7 +4,7 @@ description: "Azure MFA におけるユーザーの状態について説明し�
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 0b9fde23-2d36-45b3-950d-f88624a68fbd
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 06/26/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: b73b5e47e3e14742e5094b8b0e979de7835cb9c7
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: b7fb5135ac1ae776851d79f936eb860b4b121c71
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>ユーザーまたはグループに 2 段階認証を要求する方法
 
@@ -40,11 +40,11 @@ ms.lasthandoff: 11/29/2017
 
 Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
 
-| 状態 | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリと先進認証に影響があるか |
-|:---:|:---:|:---:|:--:|
-| 無効 |新しいユーザーの既定の状態は、Azure Multi-Factor Authentication (MFA) に登録されていません。 |いいえ |いいえ |
-| 有効 |ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 |いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの更新トークンの有効期限が切れると、MFA の登録が必要になります。|
-| 適用 |ユーザーは、Azure MFA にサインインして Azure MFA に対する登録プロセスを完了しています。 |はい。  アプリはアプリ パスワードを必要とします。 |はい。 ログイン時に MFA が必要です。 |
+| 状態 | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 先進認証に影響があるか |
+|:---:|:---:|:---:|:--:|:--:|
+| 無効 |新しいユーザーの既定の状態は、Azure Multi-Factor Authentication (MFA) に登録されていません。 |いいえ |いいえ |いいえ |
+| 有効 |ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 |いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、MFA の登録が必要になります。 |
+| 適用 |ユーザーは、Azure MFA にサインインして Azure MFA に対する登録プロセスを完了しています。 |はい。  アプリはアプリ パスワードを必要とします。 |はい。 ログイン時に MFA が必要です。 | はい。 ログイン時に MFA が必要です。 |
 
 ユーザーの状態は、管理者がユーザーをAzure MFA に登録し、ユーザーが登録プロセスを完了したかどうかを反映します。
 

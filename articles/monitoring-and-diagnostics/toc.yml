@@ -90,6 +90,8 @@
           href: monitoring-enable-alerts-using-template.md
     - name: 自動スケールの使用
       items:
+        - name: 自動スケール設定について
+          href: monitoring-understanding-autoscale-settings.md
         - name: ベスト プラクティス
           href: insights-autoscale-best-practices.md
         - name: 一般的なメトリック
@@ -162,6 +164,8 @@
       href: monitoring-metric-charts.md
     - name: Grafana へのメトリックの送信
       href: monitor-send-to-grafana.md
+    - name: イベント ハブへの監視データの送信
+      href: monitor-stream-monitoring-data-event-hubs.md
 - name: リファレンス
   items:
     - name: Azure CLI

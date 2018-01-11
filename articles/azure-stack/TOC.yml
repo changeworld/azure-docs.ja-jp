@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: 統合システムのリリース ノート
           items:
+            - name: 1712 更新プログラム
+              href: azure-stack-update-1712.md
             - name: 1711 更新プログラム
               href: azure-stack-update-1711.md
             - name: 1710 更新プログラム
@@ -19,7 +21,7 @@
   items:
     - name: Azure Stack のデプロイ
       href: azure-stack-deploy-overview.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 仮想マシンの提供
       href: azure-stack-tutorial-tenant-vm.md
@@ -51,7 +53,7 @@
           href: azure-stack-run-powershell-script.md
         - name: PowerShell をインストールする
           href: azure-stack-powershell-install.md
-        - name: 登録
+        - name: Register
           href: azure-stack-register.md
         - name: Azure Stack への接続
           href: azure-stack-connect-azure-stack.md
@@ -71,7 +73,7 @@
           href: azure-stack-integrate-monitor.md
         - name: セキュリティ
           href: azure-stack-integrate-security.md
-    - name: 管理
+    - name: '[管理]'
       items:
         - name: リージョンの管理
           href: azure-stack-region-management.md
@@ -121,6 +123,21 @@
               href: azure-stack-replace-disk.md
             - name: コンポーネントの交換
               href: azure-stack-replace-component.md
+        - name: Azure Stack のバックアップ
+          href: azure-stack-backup-infrastructure-backup.md
+          items:
+            - name: 管理コンソールから Azure Stack のバックアップを有効にする
+              href: azure-stack-backup-enable-backup-console.md
+            - name: PowerShell で Azure Stack のバックアップを有効にする
+              href: azure-stack-backup-enable-backup-powershell.md
+            - name: Azure Stack のバックアップ
+              href: azure-stack-backup-back-up-azure-stack.md
+            - name: 致命的なデータの損失からの復旧
+              href: azure-stack-backup-recover-data.md
+            - name: バックアップのベスト プラクティス
+              href: azure-stack-backup-best-practices.md
+            - name: バックアップの参照
+              href: azure-stack-backup-reference.md
     - name: セキュリティ、コンプライアンス、ID
       items:
         - name: セキュリティの概要

@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 5491548885709c1c1048e45d699ef385a7c49a74
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9139866b0dffd102f9b7c34835443d6337e7d39a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>カスタム データ フロー変換のサンプル (Python) 
 メニューでのこの変換の名前は、「**データ フローの変換 (スクリプト)**」です。 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事をご覧ください。
@@ -45,7 +45,7 @@ score 列に対して計算された最初と最後の集計を使用して新�
 フィル ダウンには 2 つの変換が必要です。 次のようなデータを仮定します。
 
 
-|状態         |City       |
+|State         |City       |
 |--------------|-----------|
 |ワシントン    |レドモンド    |
 |              |ベルビュー   |
@@ -69,7 +69,7 @@ score 列に対して計算された最初と最後の集計を使用して新�
 
 この時点で、データは次のようになります。
 
-|状態         |newState         |City       |
+|State         |newState         |City       |
 |--------------|--------------|-----------|
 |ワシントン    |ワシントン    |レドモンド    |
 |              |ワシントン    |ベルビュー   |

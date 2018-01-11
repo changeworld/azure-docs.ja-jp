@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 03/30/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: c49b49cf832097bd5fbc423a36432a3eaff9bf14
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 48318397f9c5e463c82320ad9d7c23a1a62af77e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 このトピックでは、お客様から寄せられる一般的なトラブルシューティングに関する質問の一部を一覧で紹介します。
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/28/2017
 | Visual Studio オブジェクト エクスプローラーに AAD ユーザーが表示されない |これは既知の問題です。  回避策として、ユーザーを [sys.database_principals][sys.database_principals] で表示します。  SQL Data Warehouse での Azure Active Directory の使用方法の詳細については、「[Azure SQL Data Warehouse への認証][Authentication to Azure SQL Data Warehouse]」をご覧ください。 |
 |手動でのスクリプト作成、スクリプト作成ウィザードの使用、または SSMS を介した接続が遅かったり、ハングしたり、エラーが発生したりします。| ユーザーがマスター データベース内に作成されているかどうかを確認してください。 スクリプト作成オプションでも、エンジンのエディションが "Microsoft Azure SQL Data Warehouse Edition" と設定され、エンジンの種類が "Microsoft Azure SQL Database" であるかどうかを確認してください。|
 
-## <a name="performance"></a>パフォーマンス
+## <a name="performance"></a>[パフォーマンス]
 | 問題 | 解決策 |
 |:--- |:--- |
 | クエリ パフォーマンスのトラブルシューティング |特定のクエリのトラブルシューティングを行う場合は、まず、[クエリを監視する方法][Learning how to monitor your queries]に関する記事をご覧ください。 |
@@ -73,7 +73,7 @@ ms.lasthandoff: 11/28/2017
 | ストアド プロシージャの制限事項 |ストアド プロシージャの制限事項を理解するには、[ストアド プロシージャの制限事項][Stored procedure limitations]に関するセクションをご覧ください。 |
 | UDF が SELECT ステートメントをサポートしていない |これは、UDF の現在の制限です。  サポートされている構文については、[CREATE FUNCTION][CREATE FUNCTION] に関するページをご覧ください。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 上記の方法で問題を解決できなかった場合は、次に示すその他のリソースを参照してください。
 
 * [ブログ]
@@ -96,7 +96,7 @@ ms.lasthandoff: 11/28/2017
 [サポート チケットを作成する]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Scaling your SQL Data Warehouse]: ./sql-data-warehouse-manage-compute-overview.md
 [DWU]: ./sql-data-warehouse-overview-what-is.md
-[request a quota increase]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
+[request a quota increase]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Learning how to monitor your queries]: ./sql-data-warehouse-manage-monitor.md
 [Provisioning instructions]: ./sql-data-warehouse-get-started-provision.md
 [Configure server firewall access for your client IP]: ./sql-data-warehouse-get-started-provision.md

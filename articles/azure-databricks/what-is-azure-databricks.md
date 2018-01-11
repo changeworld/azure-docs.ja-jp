@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 20f6899362420d96e7f03ea4dddeb6147a92f304
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: b96896b22d406954e80d1df268f55c1c5a02ec6f
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="what-is-azure-databricks"></a>Azure Databricks とは
 
@@ -73,7 +73,7 @@ Databricks ランタイムは、Apache Spark を基盤として、Azure クラ�
 
 * 簡単なデータ探索でデータの使用方法を決定します。
 * R、Python、Scala、または SQL のノートブックで進行状況を文書化します。
-* 数回のクリックでデータを視覚化でき、Matplotlib、ggoplot、d3 などの使い慣れたツールを使うことができます。
+* 数回のクリックでデータを視覚化でき、Matplotlib、ggplot、d3 などの使い慣れたツールを使うことができます。
 * 対話型ダッシュボードを使って、動的なレポートを作成できます。
 * Spark を使い、データを同時に操作できます。
 
@@ -92,7 +92,7 @@ Azure Databricks は、SQL Data Warehouse、Cosmos DB、Data Lake Store、Blob S
 ## <a name="integration-with-power-bi"></a>Power BI との統合
 Power BI とのリッチな統合により、Azure Databricks は大きな影響を与えるインサイトを迅速かつ簡単に検出して共有することができます。 JDBC/ODBC クラスター エンドポイントを介して Tableau Software などの他の BI ツールを使うこともできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [クイックスタート: Azure Databricks で Spark ジョブを実行する](quickstart-create-databricks-workspace-portal.md)
 * [Spark クラスターを使用する](https://docs.azuredatabricks.net/user-guide/clusters/index.html)

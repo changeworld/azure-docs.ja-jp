@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 179c6bac9a2d9509baa0007a7008d75d0874a25e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66e85bd3e9e43ae360d0507f5bdf3596abbeb7d1
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 このトピックでは、インポート ジョブ用のドライブを準備するプロセスの手順について説明します。  
@@ -169,7 +169,7 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 
 ## <a name="copy-session-completion"></a>コピー セッションの完了
 
-コピー セッションが完了したら、コピー用コンピューターから 2 つのドライブを切断し、適切な Microsoft Azure データ センターに送付できます。 [Windows Azure ポータル](https://manage.windowsazure.com/)でインポート ジョブを作成する場合は、`FirstDrive.jrn` と `SecondDrive.jrn` の 2 つのジャーナル ファイルをアップロードします。  
+コピー セッションが完了したら、コピー用コンピューターから 2 つのドライブを切断し、適切な Microsoft Azure データ センターに送付できます。 [Azure Portal](https://portal.azure.com) でインポート ジョブを作成するときに、`FirstDrive.jrn` と `SecondDrive.jrn` の 2 つのジャーナル ファイルをアップロードします。  
   
 ## <a name="next-steps"></a>次のステップ
 

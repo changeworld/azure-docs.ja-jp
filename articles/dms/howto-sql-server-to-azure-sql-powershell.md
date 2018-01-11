@@ -10,41 +10,40 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/10/2017
-ms.openlocfilehash: ad6469fcf86aeb7a0076ab5909fbe593596df695
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.date: 12/13/2017
+ms.openlocfilehash: 9eebe8352d6a447df520c194b9906df8c2c9a83f
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Azure PowerShell を使用して オンプレミスの SQL Server を Azure SQL DB に移行する
-この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2016 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。  データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database に移行するには、Microsoft Azure PowerShell で `AzureRM.DataMigration` モジュールを使用します。
+この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2016 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。 データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database に移行するには、Microsoft Azure PowerShell で `AzureRM.DataMigration` モジュールを使用します。
 
 この記事では、次のことについて説明します:
 > [!div class="checklist"]
 > * リソース グループを作成します。
-> * Azure Database Migration Service のインスタンスを作成します。
+> * Azure Database Migration Service のインスタンスを作成する。
 > * Azure Database Migration Service インスタンスで移行プロジェクトを作成します。
-> * 移行を実行します。
-
+> * 移行を実行する。
 
 ## <a name="prerequisites"></a>前提条件
 これらの手順を完了するには、以下が必要です。
 
 - [SQL Server 2016 以上](https://www.microsoft.com/sql-server/sql-server-downloads) (任意のエディション)
-- SQL Server Express のインストールでは、既定で TCP/IP プロトコルが無効になっています。 [この記事の手順](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に従い、これを有効にします。
-- [データベース エンジンにアクセスできるように Windows ファイアウォールを構成します](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
+- SQL Server Express のインストールでは、TCP/IP プロトコルが既定で無効化されます。 [こちらの記事の手順](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に従って有効化してください。
+- [データベース エンジン アクセス用の Windows Firewall](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) の構成。
 - Azure SQL Database インスタンス。 Azure SQL Database インスタンスを作成するには、「[Azure Portal で Azure SQL データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)」にある手順に従ってください。
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降。
-- Azure Database Migration Service には、Azure Resource Manager デプロイ モデルを使用して作成された VNET が必要です。これは、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミスのソース サーバーへのサイト間接続を提供します。
+- Azure Database Migration Service では、Azure Resource Manager デプロイメント モデルを使用して作成された VNET が必要とされます。VNET では、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、オンプレミス ソース サーバーへのサイト間接続が提供されます。
 - [SQL Server の移行の評価](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事に従い、Data Migration Assistant を使用してオンプレミスのデータベースおよびスキーマの移行の評価を完了しています。
 - AzureRM.DataMigration モジュールを PowerShell ギャラリーからダウンロードし、[Install-Module PowerShell](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用してインストールします。
-- ソース SQL Server インスタンスへの接続に使用する資格情報には [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可が必要です。
-- ターゲット Azure SQL DB インスタンスへの接続に使用する資格情報には、ターゲット Azure SQL DB データベースで CONTROL DATABASE アクセス許可が必要です。
+- ソースの SQL Server インスタンスへの接続に使用される資格情報には、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) 権限が含まれている必要があります。
+- ターゲットの Azure SQL DB インスタンスへの接続に使用される資格情報には、ターゲットの Azure SQL Database に対する CONTROL DATABASE 権限が含まれている必要があります。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure サブスクリプションにログインする
 「[Azure PowerShell でのログイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.4.1)」にある手順に従い、PowerShell を使用して Azure サブスクリプションにログインします。
-
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンを作成する前に、リソース グループを作成する必要があります。
@@ -56,7 +55,6 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
-
 ## <a name="create-an-azure-database-migration-service-instance"></a>Azure Database Migration Service インスタンスを作成する 
 新しい Azure Database Migration Service インスタンスを作成するには、`New-AzureRmDataMigrationService` コマンドレットを使用します。 このコマンドレットでは、次のパラメーターが必要です。
 - *Azure リソース グループ名*。 [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-4.4.1) コマンドを使用して前述の Azure リソース グループを作成し、パラメーターとしてその名前を指定できます。
@@ -130,11 +128,9 @@ $project = New-AzureRmDataMigrationProject -ResourceGroupName myResourceGroup `
 ```
 
 ## <a name="create-and-start-a-migration-task"></a>移行タスクを作成して開始する
-
 最後に、Azure Database Migration タスクを作成して開始します。 Azure Database Migration タスクには、前提条件として作成されたプロジェクトで提供済みの情報に加えて、ソースとターゲットと両方の接続の資格情報と、移行するデータベース テーブルの一覧が必要です。 
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>ソースとターゲットの資格情報パラメーターを作成する
-
 接続のセキュリティ資格情報は [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクトとして作成できます。 
 
 次の例は、ソースとターゲットの両方の接続用の *PSCredential* オブジェクトを作成し、パスワードを文字列変数 *$sourcePassword* および *$targetPassword* として提供する方法を示しています。 
@@ -200,11 +196,11 @@ $migTask = New-AzureRmDataMigrationTask -TaskType MigrateSqlServerSqlDb `
 次の例で示すように、タスクの状態プロパティを照会することにより、実行中の移行タスクを監視することができます。
 
 ```powershell
-if (($task.Properties.State -eq "Running") -or ($task.Properties.State -eq "Queued"))
+if (($mytask.ProjectTask.Properties.State -eq "Running") -or ($mytask.ProjectTask.Properties.State -eq "Queued"))
 {
   write-host "migration task running"
 }
 ```
 
 ## <a name="next-steps"></a>次のステップ
-- 「[Microsoft Database Migration Guide](https://datamigration.microsoft.com/)」にある移行ガイドを確認する
+- 「[Microsoft Database Migration Guide](https://datamigration.microsoft.com/)」にある移行ガイドを確認する。

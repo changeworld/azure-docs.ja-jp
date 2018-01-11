@@ -4,7 +4,7 @@ description: "Azure で Linux VM を 最初に起動するときに cloud-init �
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2017
+ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e2d07a03902a8c837150da8d50ab9abec8d1c95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 83773e513ee2c92da733df05cd17dda2940a28cd
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Linux 仮想マシンを初回起動時にカスタマイズする方法
 前のチュートリアルでは、仮想マシン (VM) に SSH 接続して NGINX を手動でインストールする方法について説明しました。 VM を迅速かつ一貫した方法で作成するには、一般的に、何らかの形で自動化することが必要です。 VM を初回起動時にカスタマイズする一般的なアプローチには、[cloud-init](https://cloudinit.readthedocs.io) を使用する方法があります。 このチュートリアルで学習する内容は次のとおりです。
@@ -51,6 +51,8 @@ Microsoft ではパートナーと協力して、パートナーから Azure に
 | UbuntuLTS |Canonical |UbuntuServer |16.04 LTS |最新 |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |最新 |
 | CoreOS |CoreOS |CoreOS |安定版 |最新 |
+| | OpenLogic | CentOS | 7-CI | 最新 |
+| | RedHat | RHEL | 7-RAW-CI | 最新
 
 
 ## <a name="create-cloud-init-config-file"></a>cloud-init 構成ファイルを作成する
@@ -270,7 +272,7 @@ Web ブラウザーを開き、アドレス バーに「*https://<publicIpAddres
 ![セキュリティで保護された実行中の NGINX サイトの表示](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、VM の初回の起動時に cloud-init を使用してカスタマイズしました。 以下の方法について学習しました。
 
 > [!div class="checklist"]

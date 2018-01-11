@@ -4,21 +4,23 @@ description: "PowerShell と CLI を使用して作成したカスタム RBAC �
 services: active-directory
 documentationcenter: 
 author: andreicradu
-manager: catadinu
+manager: mtillman
 editor: kgremban
 ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 05/10/2017
+ms.date: 12/06/2017
 ms.author: a-crradu
-ms.openlocfilehash: 213b02205bbe7f767b6aff6a0693bb34b97cb9ec
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.reviewer: skwan
+ms.custom: it-pro
+ms.openlocfilehash: b3b65812d453a9f7d93ee4381c4261e685a60376
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="intro-on-role-based-access-control"></a>ロールベースのアクセス制御の概要
 
@@ -35,7 +37,7 @@ Azure 環境で RBAC を使用するには、以下のことが必要です。
 * ユーザーのサブスクリプションに次のリソース プロバイダーが登録されていることを確認する: **Microsoft.Authorization**。 リソース プロバイダーの登録方法の詳細については、[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](../azure-resource-manager/resource-manager-supported-services.md)に関するページを参照してください。
 
 > [!NOTE]
-> O365 ポータルからプロビジョニングされた Office 365 サブスクリプションまたは Azure Active Directory ライセンス (例: Azure Active Directory へのアクセス) に RBAC の使用資格はありません。
+> Office 365 管理センターからプロビジョニングされた Office 365 サブスクリプションまたは Azure Active Directory ライセンス (例: Azure Active Directory へのアクセス) に RBAC の使用資格はありません。
 
 ## <a name="how-can-rbac-be-used"></a>RBAC の使用方法
 RBAC は、Azure の 3 種類のスコープで適用できます。 最上位から最下位までの各スコープは以下のとおりです。
@@ -102,7 +104,7 @@ RBAC ロールを付与できるのは、サブスクリプションの**所有�
 
 ![RBAC ロールについての招待メールのメッセージ](./media/role-based-access-control-create-custom-roles-for-internal-external-users/6.png)
 
-この時点から外部ユーザーは Azure Active Directory テナントに外部ユーザーとして表示され、Azure Portal とクラシック ポータルの両方で確認できるようになります。
+この時点から外部ユーザーは Azure Active Directory テナントに外部ユーザーとして表示され、Azure Portal で確認できるようになります。
 
 
 
@@ -112,14 +114,7 @@ RBAC ロールを付与できるのは、サブスクリプションの**所有�
 
 
 
-
-
-![ユーザー ブレード Azure Active Directory (Azure クラシック ポータル)](./media/role-based-access-control-create-custom-roles-for-internal-external-users/8.png)
-
-両方のポータルの **[ユーザー]** ビューでは、以下の点で外部ユーザーを識別できます。
-
-* Azure Portal でのアイコンの種類の違い
-* クラシック ポータルでのソース ポイントの違い
+**[ユーザー]** ビューでは、Azure Portal の異なるアイコンの種類によって外部ユーザーを認識できます。
 
 ただし、**所有者**または**共同作成者**のアクセス権を**サブスクリプション** スコープで外部ユーザーに付与しても、**全体管理者**が許可しない限り、管理者ユーザーのディレクトリに外部ユーザーがアクセスすることはできません。 ユーザーのプロパティでは、**[メンバー]** と **[ゲスト]** という 2 つの共通パラメーターがある **[ユーザー タイプ]** を確認できます。 メンバーはディレクトリに登録されているユーザーであるのに対し、ゲストは外部ソースからディレクトリに招待されているユーザーです。 詳細については、「[Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)」を参照してください。
 
@@ -145,9 +140,6 @@ Azure Active Directory と Azure サブスクリプションには、他の Azur
 * サブスクリプション内の他の種類のリソースを表示できない
 * 課金の観点からはどのような変更も加えることができない
 
-> [!NOTE]
-> RBAC は Azure Portal 限定の機能であり、クラシック ポータルへのアクセス権を付与することはできません。
-
 ## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>組み込み RBAC ロールを外部ユーザーに割り当てる
 このテストの別のシナリオ向けに、外部ユーザー "alflanigan@gmail.com" が**仮想マシン共同作成者**として追加されています。
 
@@ -156,9 +148,7 @@ Azure Active Directory と Azure サブスクリプションには、他の Azur
 
 ![[仮想マシン共同作成者] 組み込みロール](./media/role-based-access-control-create-custom-roles-for-internal-external-users/11.png)
 
-この組み込みロールが割り当てられた外部ユーザーは、通常、仮想マシンと、それに隣接するデプロイ時に必要な Resource Manager 限定のリソースのみを表示および管理できます。 仕様により、このような制限付きロールでは、一部のリソース (例: 仮想マシン) がクラシック ポータルにデプロイされたままであっても、Azure Portal 内に作成された、ロールに対応するリソースにしかアクセスできません。
-
-
+この組み込みロールが割り当てられた外部ユーザーは、通常、仮想マシンと、それに隣接するデプロイ時に必要な Resource Manager 限定のリソースのみを表示および管理できます。 仕様により、これらの制限されたロールは、Azure Portal で作成された対応するリソースのみへのアクセスを提供します。
 
 
 

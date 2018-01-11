@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 84c2eaaab2dfc09c93fbfeac3fe2bfcc7066a411
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fab3fd4163141aadc06b385f5759c19eece7fd14
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-and-configure-your-devices"></a>デバイスの管理と構成
 
@@ -38,15 +38,15 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 このチュートリアルを実行するには、お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューションのインスタンスが必要です。
 
-リモート監視ソリューションをまだデプロイしていない場合は、「[Deploy the remote monitoring preconfigured solution](iot-suite-remote-monitoring-deploy.md)」(リモート監視構成済みソリューションのデプロイ) チュートリアルを完了しておく必要があります。
+まだリモート管理ソリューションをデプロイしていない場合は、「[リモート管理の事前構成済みソリューションをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
-## <a name="provision-a-simulated-device"></a>シミュレートされたデバイスのプロビジョニング
+## <a name="add-a-simulated-device"></a>シミュレートされたデバイスの追加
 
-ソリューションの **[デバイス]** ページに移動して、**[プロビジョニング]** を選択します。 **[プロビジョニング]** パネルで、**[シミュレート済み]** を選択します。
+ソリューションの **[デバイス]** ページに移動して、**[新規デバイス]** を選択します。 **[新規デバイス]** パネルで、**[シミュレート済み]** を選択します。
 
 ![シミュレートされたデバイスのプロビジョニング](media/iot-suite-remote-monitoring-manage/devicesprovision.png)
 
-プロビジョニングするデバイスの数を **1** のままにします。 **[デバイス モデル]** として **[エンジン]** を選択し、**[適用]** を選択してシミュレートされたデバイスを作成します。
+プロビジョニングするデバイスの数を **1** のままにします。 **[デバイス モデル]** として **[Faulty Engine]\(問題があるエンジン\)** を選択し、**[適用]** を選択してシミュレートされたデバイスを作成します。
 
 ![シミュレートされたエンジン デバイスのプロビジョニング](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
@@ -68,7 +68,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 ## <a name="act-on-a-device"></a>デバイスでの動作
 
-デバイスでの動作を設定するには、デバイスの一覧でデバイスを選択して、**[スケジュール]** を選択します。 **エンジン** デバイス モデルでは、デバイスでサポートする必要のある 4 つのメソッドを指定します。
+1 つ以上のデバイスでの動作を設定するには、デバイスの一覧でデバイスを選択して、**[スケジュール]** を選択します。 **エンジン** デバイス モデルでは、デバイスでサポートする必要のある 4 つのメソッドを指定します。
 
 ![エンジンのメソッド](media/iot-suite-remote-monitoring-manage/devicesmethods.png)
 
@@ -76,7 +76,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 ![restart メソッドのスケジュール](media/iot-suite-remote-monitoring-manage/devicesrestartengine.png)
 
-**[メンテナンス]** ページでジョブの状態を追跡するには、**[システムの状態]** を選択します。
+**[メンテナンス]** ページでジョブの状態を追跡するには、**[ジョブ]** を選択します。
 
 ![スケジュール ジョブの監視](media/iot-suite-remote-monitoring-manage/maintenancerestart.png)
 
@@ -96,7 +96,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 ![デバイスのプロパティ値の更新](media/iot-suite-remote-monitoring-manage/devicesreconfigurephysical.png)
 
-**[メンテナンス]** ページでジョブの状態を追跡するには、**[システムの状態]** を選択します。
+**[メンテナンス]** ページでジョブの状態を追跡するには、**[ジョブ]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

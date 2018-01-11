@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/12/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9f50a1762f003727e62b43b6e81e62b66878f2f
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>ジェネリック webhook でトリガーされる関数の作成
 
@@ -48,9 +48,13 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
     ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-generic-webhook-triggered-function/add-first-function.png)
 
-2. **Generic WebHook - C#** テンプレートを選択します。 C# 関数の名前を入力し、**[作成]** を選択します。
+2. 検索フィールドに、「`generic`」と入力し、汎用 webhook トリガー テンプレート用の目的の言語を選択します。 このトピックでは、c# 関数を使用します。
 
-     ![Azure Portal でのジェネリック webhook によってトリガーされる関数の作成](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
+     ![汎用 webhook トリガー テンプレートの選択](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png)
+
+2. 関数の**名前**を入力し、**[作成]**を選択します。 
+
+     ![Azure Portal でのジェネリック webhook によってトリガーされる関数の作成](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger-2.png) 
 
 2. 新しい関数で、**[</> 関数の URL の取得]** をクリックし、値をコピーして保存します。 この値を使用して、webhook を構成します。 
 

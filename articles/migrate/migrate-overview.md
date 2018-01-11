@@ -1,24 +1,16 @@
 ---
 title: "Azure Migrate について | Microsoft Docs"
 description: "Azure Migrate サービスの概要を示します。"
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 7b313bb4-c8f4-43ad-883c-789824add3288
-ms.service: migrate
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/23/2017
+ms.service: azure-migrate
+ms.topic: overview
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 5c78f68c481b68cff31bdc5fd410549c2d44ba5a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: e998a085399718340e2e3ce2524244844f4e6a14
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -41,13 +33,12 @@ Azure Migrate によって次のことが可能になります。
 - 現時点では Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) を評価することができます。
 
 > [!NOTE]
-> Hyper-V のサポートもロードマップにあり、数か月以内での実現を目指しています。 それまでの間、Hyper-V のワークロードの移行を計画する際は、Azure Site Recovery Deployment Planner を使用することをお勧めします。 
+> Hyper-V のサポートもロードマップにあり、近日中の実現を目指しています。 それまでの間、Hyper-V のワークロードの移行を計画するときは、[Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) を使うことをお勧めします。 
 
-- 1 回に評価できる VM は最大 1,000 台です。また、1 つの Azure Migrate プロジェクトで評価できるマシンは 1,500 台までです。 評価対象がそれを超える場合は、プロジェクトの数を増やすか、評価の回数を増やしてください。 [詳細情報](how-to-scale-assessment.md)
+- 1 回の検出で最大 1000 個の VM を検出でき、1 つのプロジェクトで最大 1500 個の VM を検出できます。 さらに、一度に最大 400 個の VM を評価できます。 さらに多くの VM を検出または評価する必要がある場合は、検出または評価の回数を増やしてください。 [詳細情報](how-to-scale-assessment.md)。
 - 評価対象となる VM は、vCenter Server (バージョン 5.5、6.0、6.5 のいずれか) で管理されていることが必要です。
 - Azure Migrate プロジェクトを作成できるのは米国中西部リージョンに限られます。 ただし、これが他の Azure リージョンへの移行計画に影響することはありません。 移行プロジェクトの場所は単に、オンプレミス環境から検出されたメタデータを保存するためにのみ使用されます。
-- Azure Migrate ポータルは現在、英語でのみ利用できます。 
-- Azure Migrate でサポートされるレプリケーションは現在[ローカル冗長ストレージ (LRS)](../storage/common/storage-introduction.md#replication) のみです。
+- Azure Migrate の移行評価では、管理ディスクのみがサポートされます。
 
 ## <a name="what-do-i-need-to-pay-for"></a>支払い対象について
 
@@ -63,7 +54,7 @@ Azure Migrate は、追加料金なしで利用できます。 ただし、パ�
 **ターゲットの場所** | Azure 上の移行先となる場所。 既定では、ターゲットの場所は、米国西部 2 に設定されます。 
 **記憶域冗長** | 移行後に Azure VM で使用されるストレージの種類。 既定値は LRS です。
 **価格プラン** | 評価では、ソフトウェア アシュアランスに加入済みかどうかや、[Azure ハイブリッド使用特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を利用できるかどうかが考慮されます。 また、適用すべき Azure プランも考慮されるほか、そのプランに加えて適用されるサブスクリプション固有の割引 (%) を指定することができます。 
-**[価格レベル]** | Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md) を指定できます。 これにより、運用環境であるかどうかに応じて適切な Azure VM ファミリに移行することができます。 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
+**価格レベル** | Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md) を指定できます。 これにより、運用環境であるかどうかに応じて適切な Azure VM ファミリに移行することができます。 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
 **パフォーマンス履歴** | 既定では、オンプレミスのマシンのパフォーマンスが、1 か月の履歴の 95% パーセンタイル値を使用して評価されます。 この設定は変更できます。
 **快適性係数** | Azure Migrate では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 既定の快適性設定は 1.3x です。
 
@@ -91,7 +82,7 @@ Azure Migrate は、追加料金なしで利用できます。 ただし、パ�
 |-------------------|------------------------|---------------|---------|
 |コレクター          |Azure Migrate サービス   |TCP 443        |コレクターは、SSL ポート 443 経由でサービスに接続します。|
 |コレクター          |vCenter Server          |9443 (既定)   | 既定では、コレクターはポート 9443 で vCenter サーバーに接続します。 他のポートでサーバーがリッスンしている場合、それをコレクター VM で送信ポートとして構成する必要があります。 |
-|オンプレミス VM     | Operations Management Suite (OMS) ワークスペース          |[TCP 443](../log-analytics/log-analytics-windows-agents.md#system-requirements-and-required-configuration) |MMA エージェントは、TCP 443 を使用して Log Analytics に接続します。 依存関係の視覚化機能を使用していて、Microsoft Monitoring Agent (MMA) エージェントをインストールする場合のみ、このポートが必要になります。 |
+|オンプレミス VM     | Operations Management Suite (OMS) ワークスペース          |[TCP 443](../log-analytics/log-analytics-windows-agent.md) |MMA エージェントは、TCP 443 を使用して Log Analytics に接続します。 依存関係の視覚化機能を使用していて、Microsoft Monitoring Agent (MMA) エージェントをインストールする場合のみ、このポートが必要になります。 |
 
 
   
@@ -106,9 +97,9 @@ Azure Migrate は、追加料金なしで利用できます。 ただし、パ�
   - フェールオーバーを実行して、オンプレミスのマシンを Azure に移行します。 
   - Site Recovery の移行のチュートリアルで[詳細](../site-recovery/tutorial-migrate-on-premises-to-azure.md)を確認します。
 
-- **Azure Database Migration**: オンプレミスのマシンで SQL Server、MySQL、Oracle などのデータベースを実行している場合は、Azure Database Migration Service を使用して Azure に移行することができます。 [詳細情報](https://azure.microsoft.com/campaigns/database-migration/)
+- **Azure Database Migration**: オンプレミスのマシンで SQL Server、MySQL、Oracle などのデータベースを実行している場合は、Azure Database Migration Service を使用して Azure に移行することができます。 [詳細情報](https://azure.microsoft.com/campaigns/database-migration/)。
 
 
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 オンプレミスの VMware VM に関する評価を[チュートリアルに従って](tutorial-assessment-vmware.md)作成します。

@@ -10,7 +10,7 @@
       href: quickstart-linux.md
     - name: エッジへのデプロイ - Windows
       href: quickstart.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: Edge デバイスのシミュレート - Linux
       href: tutorial-simulate-device-linux.md
@@ -26,8 +26,12 @@
       href: tutorial-deploy-function.md
 - name: ハウツー ガイド
   items:
-    - name: 透過的なゲートウェイの作成
-      href: how-to-create-transparent-gateway.md
+    - name: ゲートウェイの作成
+      items:
+        - name: 透過的なゲートウェイの作成
+          href: how-to-create-transparent-gateway.md
+        - name: Modbus ゲートウェイ
+          href: deploy-modbus-gateway.md
     - name: 大規模なデプロイと監視
       href: how-to-deploy-monitor.md
     - name: IoT Core デバイスのプロビジョニング
@@ -38,6 +42,10 @@
           href: how-to-vscode-develop-csharp-module.md
         - name: 'C# モジュールのデバッグ'
           href: how-to-vscode-debug-csharp-module.md
+        - name: Azure 関数の開発とデプロイ
+          href: how-to-vscode-develop-azure-function.md
+        - name: Azure 関数のデバッグ
+          href: how-to-vscode-debug-azure-function.md
     - name: トラブルシューティング
       href: troubleshoot.md
 - name: 概念

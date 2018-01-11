@@ -1,7 +1,7 @@
 ---
 title: "Azure SQL Database を使用した高可用性サービスの設計 | Microsoft Docs"
 description: "Azure SQL Database を使用した高可用性サービスのアプリケーション設計について説明します。"
-keywords: "クラウド障害復旧, 障害復旧ソリューション, アプリ データのバックアップ, geo レプリケーション, クラウド ビジネス継続性計画"
+keywords: "クラウド ディザスター リカバリー, ディザスター リカバリー ソリューション, アプリ データのバックアップ, geo レプリケーション, クラウド ビジネス継続性計画"
 services: sql-database
 documentationcenter: 
 author: anosov1960
@@ -13,14 +13,15 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.date: 12/13/2017
 ms.workload: On Demand
-ms.date: 09/08/2017
 ms.author: sashan
-ms.openlocfilehash: 0fb11ee553685618cc7466d3ad8b07ba01611027
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.reviewer: carlrab
+ms.openlocfilehash: 3d6ad95c1ca316b2e7c3f722315d2ddec03a3716
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Azure SQL Database を使用した高可用性サービスの設計
 
@@ -149,11 +150,11 @@ Traffic Manager は、リージョン A への接続障害を検出すると、�
 
 
 ## <a name="business-continuity-planning-choose-an-application-design-for-cloud-disaster-recovery"></a>ビジネス継続性計画: クラウド障害復旧用のアプリケーション設計を選択する
-実際のクラウド障害復旧戦略では、対象アプリケーションのニーズに合わせて、これらの設計パターンを組み合わせたり拡張したりすることができます。  既に述べたように、選択すべき戦略は、利用者に提供する SLA とアプリケーションのデプロイ トポロジによって異なります。 以下の表では、意思決定の目安として、復旧ポイントの目標 (RPO) と推定復旧時間 (ERT) に基づいてそれぞれの選択肢を比較しています。
+実際のクラウド ディザスター リカバリー戦略では、対象アプリケーションのニーズに合わせて、これらの設計パターンを組み合わせたり拡張したりすることができます。  既に述べたように、選択すべき戦略は、利用者に提供する SLA とアプリケーションのデプロイ トポロジによって異なります。 以下の表では、意思決定の目安として、復旧ポイントの目標 (RPO) と推定復旧時間 (ERT) に基づいてそれぞれの選択肢を比較しています。
 
 | パターン | RPO | ERT |
 |:--- |:--- |:--- |
-| アクティブ/パッシブ デプロイとデータベース併置による障害復旧 |読み取り/書き込みアクセス = 5 秒未満 |障害検出時間 + DNS TLL |
+| アクティブ/パッシブ デプロイとデータベース併置によるディザスター リカバリー |読み取り/書き込みアクセス = 5 秒未満 |障害検出時間 + DNS TLL |
 | アクティブ/アクティブ デプロイによるアプリケーション負荷分散 |読み取り/書き込みアクセス = 5 秒未満 |障害検出時間 + DNS TLL |
 | アクティブ/パッシブ デプロイによるデータ保存 |読み取り専用アクセス < 5 秒 | 読み取り専用アクセス = 0 |
 ||読み取り/書き込みアクセス = 0 | 読み取り/書き込みアクセス = 障害検出時間 + データ消失の猶予期間 |

@@ -121,6 +121,9 @@
       items:
         - name: Power Query を使用して分析する
           href: apache-hadoop-connect-excel-power-query.md
+        - name: Power BI を対話型クエリに接続する
+          href: ../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+          maintainContext: true
         - name: Power BI を Hadoop に接続する
           href: apache-hadoop-connect-hive-power-bi.md
         - name: Excel を Hadoop に接続する
@@ -201,7 +204,7 @@
         - name: Ambari Views のユーザー承認
           href: ../hdinsight-authorize-users-to-ambari.md
           maintainContext: true
-    - name: 管理
+    - name: '[管理]'
       items:
         - name: Linux クラスターを作成する
           href: ../hdinsight-hadoop-provision-linux-clusters.md

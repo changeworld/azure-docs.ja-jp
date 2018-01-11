@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 971f7979ca27bce5d147a9d479248c808dc658e3
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
@@ -88,10 +88,7 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 
 1. **ターゲット コンピューター**で *Microsoft Azure Backup* スナップインを開きます。
 2. "*ターゲット コンピューター*" および "*ソース コンピューター*" が同じ Recovery Services コンテナーに登録されていることを確認します。
-3. **[ データの回復 ]** をクリックして、ワークフローを開始します。
-
-    ![データの回復](./media/backup-azure-restore-windows-server-classic/recover.png)
-
+3. **[データの回復]** をクリックして、ワークフローを開始します。
 4. **[別のサーバー]**
 
     ![[別のサーバー]](./media/backup-azure-restore-system-state/anotherserver.png)
@@ -99,12 +96,9 @@ Windows Server が破損したり、アクセス不能になったりしたと�
 5. *サンプルの資格情報コンテナー*に対応するコンテナー資格情報ファイルを指定します。 コンテナー資格情報ファイルが無効である (または有効期限が切れている) 場合、Azure Portal の *サンプルの資格情報コンテナー*から、新しいコンテナー資格情報ファイルをダウンロードします。 コンテナー資格情報ファイルを指定すると、そのコンテナー資格情報ファイルに関連付けられている Recovery Services コンテナーが表示されます。
 
 6. [バックアップ サーバーの選択] ウィンドウで、表示されているコンピューターの一覧から*ソース コンピューター*を選択します。
-
-    ![List of machines](./media/backup-azure-restore-windows-server-classic/machinelist.png)
-
 7. [回復モードの選択] ウィンドウで、**[システム状態]** を選択し、**[次へ]** をクリックします。 
 
-    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![検索](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. **[ボリュームと日付の選択]** ウィンドウのカレンダーで回復ポイントを選択します。 任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、**[時間]** ドロップダウン メニューから特定の回復ポイントを選択します。 
 
@@ -222,5 +216,5 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。

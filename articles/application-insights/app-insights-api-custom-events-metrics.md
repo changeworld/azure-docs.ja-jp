@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1e7b5d4409b3e53db9313cf353894d5818837588
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4cbc423555abfe6beee2c89d9df0760ce7c2fd6e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="api-summary"></a>API の概要
 この API は、いくつかの小さな違いは別として、すべてのプラットフォームで一様になっています。
 
-| メソッド | 使用対象 |
+| 方法 | 使用対象 |
 | --- | --- |
 | [`TrackPageView`](#page-views) |ページ、画面、ブレード、フォーム |
 | [`TrackEvent`](#trackevent) |ユーザー アクションとその他のイベント。 ユーザーの行動を追跡するために、またはパフォーマンスを監視するために使用されます。 |
@@ -72,7 +72,7 @@ Application Insights SDK の参照がまだない場合:
 
     private TelemetryClient telemetry = new TelemetryClient();
     
-*Node.JS*
+*Node.js*
 
     var telemetry = applicationInsights.defaultClient;
 
@@ -106,7 +106,7 @@ Application Insights の*カスタム イベント*はデータ ポイントで�
 
     telemetry.trackEvent("WinGame");
     
-*Node.JS*
+*Node.js*
 
     telemetry.trackEvent({name: "WinGame"});
 
@@ -165,7 +165,7 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
     telemetryClient.TrackMetric(sample);
 ```
 
-*Node.JS*
+*Node.js*
 
  ```Javascript
      telemetry.trackMetric({name: "queueLength", value: 42.0});
@@ -488,7 +488,7 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
        appInsights.trackException(ex);
     }
     
-*Node.JS*
+*Node.js*
 
     try
     {
@@ -522,7 +522,7 @@ SDK が多数の例外を自動的にキャッチするため、常に TrackExce
 exceptions | summarize sum(itemCount) by type
 ```
 
-重要なスタック情報の大部分は既に個別の変数に抽出されていますが、`details` 構造を分析してさらに詳細な情報を取得できます。 この構造は動的なので、期待する型に結果をキャストする必要があります。 For example:
+重要なスタック情報の大部分は既に個別の変数に抽出されていますが、`details` 構造を分析してさらに詳細な情報を取得できます。 この構造は動的なので、期待する型に結果をキャストする必要があります。 例: 
 
 ```AIQL
 exceptions
@@ -545,7 +545,7 @@ TrackTrace を使用すると、Application Insights に "階層リンクの追�
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
     
-*Node.JS*
+*Node.js*
 
     telemetry.trackTrace({message: message, severity:applicationInsights.Contracts.SeverityLevel.Warning, properties:properties});
 
@@ -555,7 +555,7 @@ TrackTrace を使用すると、Application Insights に "階層リンクの追�
 `message` のサイズ制限は、プロパティの制限よりも非常に高くなっています。
 TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。  
 
-加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 For example:
+加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 例: 
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -724,7 +724,7 @@ ASP.NET Web MVC アプリケーションでの例:
     // Send the event:
     telemetry.TrackEvent("WinGame", properties, metrics);
 
-*Node.JS*
+*Node.js*
 
     // Set up some properties and metrics:
     var properties = {"game": currentGame.Name, "difficulty": currentGame.Difficulty};
@@ -880,7 +880,7 @@ requests
 
     gameTelemetry.TrackEvent("WinGame");
     
-*Node.JS*
+*Node.js*
 
     var gameTelemetry = new applicationInsights.TelemetryClient();
     gameTelemetry.commonProperties["Game"] = currentGame.Name;
@@ -900,7 +900,7 @@ requests
 
 テレメトリに[プロパティを追加する](app-insights-api-filtering-sampling.md#add-properties)には、`ITelemetryInitializer` を実装します。 たとえば、バージョン番号や、他のプロパティから算出された値を追加できます。
 
-`ITelemetryProcesor` を実装すると、テレメトリが SDK から送信される前に[フィルタリング](app-insights-api-filtering-sampling.md#filtering)によってテレメトリを変更または破棄することができます。 送信対象や破棄対象を指定できますが、メトリックへの影響を考慮する必要があります。 項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
+`ITelemetryProcessor` を実装すると、テレメトリが SDK から送信される前に[フィルタリング](app-insights-api-filtering-sampling.md#filtering)によってテレメトリを変更または破棄することができます。 送信対象や破棄対象を指定できますが、メトリックへの影響を考慮する必要があります。 項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
 
 [サンプリング](app-insights-api-filtering-sampling.md)は、アプリからポータルに送信されるデータの量を減らすためのパッケージ化ソリューションです。 これにより、表示されるメトリックに影響をあたえることなくデータ量を削減できます。 また、サンプリングを行った場合でも、変わらずに例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断できます。
 
@@ -920,7 +920,7 @@ requests
 
 *選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
-*Node.JS*
+*Node.js*
 
 ```Javascript
 
@@ -999,7 +999,7 @@ Web ページでは、スクリプトに一語一語コーディングするの�
 
 
 ## <a name="telemetrycontext"></a>TelemetryContext
-TelemetryClient には、すべてのテレメトリ データとともに送信される値が含まれる Context プロパティが備わっています。 通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。 次に例を示します。
+TelemetryClient には、すべてのテレメトリ データとともに送信される値が含まれる Context プロパティが備わっています。 通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。 例: 
 
     telemetry.Context.Operation.Name = "MyOperationName";
 

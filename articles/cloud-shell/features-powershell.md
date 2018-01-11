@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Cloud Shell (プレビュー) での PowerShell の機能 | Microsoft Docs"
 description: "Azure Cloud Shell での PowerShell の機能の概要"
 services: Azure
@@ -65,10 +65,12 @@ Azure リソースに対するすべての変更は、Azure Portal で直接行�
 ### <a name="rich-powershell-script-editing"></a>リッチな PowerShell スクリプトの編集
 
 PowerShell のファイル (`.ps1,.psm1,.psd1`) の編集に VIM を利用する場合、シンタックス ハイライトと IntelliSense が利用できます。
+
 IntelliSense のサポートは、[PowerShell エディター サービス](https://github.com/PowerShell/PowerShellEditorServices)のローカル インスタンスと対話する VIM プラグインを使って実装されています。
 
 > [!TIP]
 > `TAB` キーを使用すると、コマンド名、パラメーター名、およびパラメーター値 (該当する場合) の候補が表示されます (IntelliSense)。
+
 
 ![](media/features-powershell/powershell-editing-vim.png)
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 12/15/2017
 ms.author: raynew
-ms.openlocfilehash: 3987b50a7a1798d2094e8271ad2cc317c7f472ef
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 3105eaa9e97f02f2337832bef538959a94263ea4
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
@@ -49,21 +49,20 @@ Site Recovery は、アプリケーション レベルの保護と復旧に次�
 ## <a name="workload-summary"></a>ワークロードの概要
 Site Recovery は、サポート対象のマシンで実行されているすべてのアプリをレプリケートできます。 また、Microsoft では、製品チームと連携して、アプリに特化したテストを追加で実施しました。
 
-| **ワークロード** | **Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** |
-| --- | --- | --- | --- | --- |
-| Active Directory、DNS |Y |Y |Y |Y |
-| Web アプリケーション (IIS、SQL) |Y |Y |Y |Y |
-| System Center Operations Manager |Y |Y |Y |Y |
-| SharePoint |Y |Y |Y |Y |
-| SAP<br/><br/>SAP サイトを Azure にレプリケート (非クラスターの場合) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |
-| Exchange (DAG 以外) |Y |Y |Y |Y |
-| リモート デスクトップ/VDI |Y |Y |Y |該当なし |
-| Linux (オペレーティング システムおよびアプリケーション) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |
-| Dynamics AX |Y |Y |Y |Y |
-| Dynamics CRM |Y |近日対応予定 |Y |近日対応予定 |
-| Oracle |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |
-| Windows ファイル サーバー |Y |Y |Y |Y |
-| Citrix XenApp と XenDesktop |該当なし |Y |該当なし |Y |
+| **ワークロード** |**Azure VM を Azure にレプリケートする** |**Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** |
+| --- | --- | --- | --- | --- |---|
+| Active Directory、DNS |Y |Y |Y |Y |Y|
+| Web アプリケーション (IIS、SQL) |Y |Y |Y |Y |Y|
+| System Center Operations Manager |Y |Y |Y |Y |Y|
+| SharePoint |Y |Y |Y |Y |Y|
+| SAP<br/><br/>SAP サイトを Azure にレプリケート (非クラスターの場合) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み)|
+| Exchange (DAG 以外) |Y |Y |Y |Y |Y|
+| リモート デスクトップ/VDI |Y |Y |Y |Y |Y|
+| Linux (オペレーティング システムおよびアプリケーション) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み)|
+| Dynamics AX |Y |Y |Y |Y |Y|
+| Oracle |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み)|
+| Windows ファイル サーバー |Y |Y |Y |Y |Y|
+| Citrix XenApp と XenDesktop |Y|該当なし |Y |該当なし |Y |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory と DNS のレプリケート
 Active Directory と DNS インフラストラクチャは多くのエンタープライズ アプリにとって不可欠な要素です。 障害復旧の際は、これらのインフラストラクチャ コンポーネントを保護して復旧した後に、ワークロードとアプリケーションを復旧することが必要になります。
@@ -106,13 +105,16 @@ Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューシ�
 リモート デスクトップ サービス (RDS) を使用すると、ユーザーが仮想デスクトップ インフラストラクチャ (VDI)、セッションベースのデスクトップ、アプリケーションを使用して、どこにいても作業できるようになります。 Azure Site Recovery を使用すると、次のことができます。
 
 * 管理対象か管理対象外かを問わず、プールされた仮想デスクトップをセカンダリ サイトにレプリケートし、リモート アプリケーションとセッションをセカンダリ サイトまたは Azure にレプリケートできます。
+
 * レプリケートできるシナリオは次のとおりです。
 
-| **RDS** | **Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** | **物理サーバーをセカンダリ サイトにレプリケート** | **物理サーバーを Azure にレプリケート** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **プールされた仮想デスクトップ (管理対象外)** |あり |なし |あり |なし |あり |なし |
-| **プールされた仮想デスクトップ (管理対象、UPD なし)** |あり |なし |あり |なし |あり |なし |
-| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |あり |あり |あり |あり |あり |あり |
+| **RDS** |**Azure VM を Azure にレプリケートする** | **Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** | **物理サーバーをセカンダリ サイトにレプリケート** | **物理サーバーを Azure にレプリケート** |
+|---| --- | --- | --- | --- | --- | --- | --- |
+| **プールされた仮想デスクトップ (管理対象外)** |いいえ|あり |なし |あり |なし |あり |なし |
+| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ|あり |なし |あり |なし |あり |なし |
+| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |あり|あり |あり |あり |あり |あり |あり |
+
+[Azure Site Recovery を使用して RDS のディザスター リカバリーを設定します](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)。
 
 [こちら](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) を参照してください。
 
@@ -122,7 +124,6 @@ Site Recovery は、Exchange の保護に次のように役立ちます。
 * 単一サーバーやスタンドアロン サーバーなど、小規模な Exchange デプロイの場合、Site Recovery では Azure またはセカンダリ サイトへのレプリケートとフェールオーバーを実行できます。
 * 大規模なデプロイでは、Exchange DAG と統合します。
 * Exchange DAG は、企業における Exchange のディザスター リカバリーに推奨されるソリューションです。  Site Recovery の復旧計画に DAG を含めることで、サイト全体の DAG のフェールオーバーを調整できます。
-
 
 [こちら](https://gallery.technet.microsoft.com/Exchange-DR-Solution-using-11a7dcb6) を参照してください。
 
@@ -139,7 +140,7 @@ Site Recovery を使用して、SAP デプロイを次のように保護でき�
 ## <a name="protect-iis"></a>IIS の保護
 Site Recovery を使用して、IIS デプロイを次のように保護できます。
 
-Azure Site Recovery では、環境内の重要なコンポーネントをリモートのコールド サイトまたはパブリック クラウド (Microsoft Azure など) にレプリケートして、障害復旧を実行できます。 Web サーバーとデータベースを備えた仮想マシンが復旧サイトにレプリケートされるため、構成ファイルまたは証明書を別々にバックアップする必要はありません。 アプリケーションのマッピングとバインドはフェールオーバー後に変更される環境変数に依存しますが、これらは障害復旧計画に統合されたスクリプトを使用して更新できます。 仮想マシンが復旧サイトで起動されるのはフェールオーバーの発生時だけです。 さらに、Azure Site Recovery はエンド ツー エンドのフェールオーバーを調整する場合にも役立ちます。これは次の機能を備えているためです。
+Azure Site Recovery では、環境内の重要なコンポーネントをリモートのコールド サイトまたはパブリック クラウド (Microsoft Azure など) にレプリケートして、ディザスター リカバリーを実行できます。 Web サーバーとデータベースを備えた仮想マシンが復旧サイトにレプリケートされるため、構成ファイルまたは証明書を別々にバックアップする必要はありません。 アプリケーションのマッピングとバインドはフェールオーバー後に変更される環境変数に依存しますが、これらはディザスター リカバリー計画に統合されたスクリプトを使用して更新できます。 仮想マシンが復旧サイトで起動されるのはフェールオーバーの発生時だけです。 さらに、Azure Site Recovery はエンド ツー エンドのフェールオーバーを調整する場合にも役立ちます。これは次の機能を備えているためです。
 
 -   各種階層における仮想マシンのシャットダウンと起動のシーケンス処理。
 -   仮想マシン上のアプリケーションの依存関係とバインドを仮想マシンの起動後に更新できるスクリプトの追加。 スクリプトは、復旧サイトを指すよう DNS サーバーを更新するためにも使用できます。

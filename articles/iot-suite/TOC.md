@@ -48,6 +48,10 @@
 ### [コネクティッド ファクトリ ソリューションの概要](iot-suite-connected-factory-overview.md)
 ### [コネクティッド ファクトリ ソリューションのチュートリアル](iot-suite-connected-factory-sample-walkthrough.md)
 
+## デバイスのシミュレーション
+### [デバイス シミュレーションのデプロイ](iot-suite-device-simulation-deploy.md)
+### [デバイス シミュレーションの確認](iot-suite-device-simulation-explore.md)
+
 # ハウツー ガイド
 ## リモート監視
 ### [高度な監視の実行](iot-suite-remote-monitoring-monitor.md)

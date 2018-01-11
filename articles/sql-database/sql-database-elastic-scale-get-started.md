@@ -1,5 +1,5 @@
 ---
-title: "Elastic Database ツールの概要 | Microsoft Docs"
+title: "Elastic Database ツールの概要 - Azure | Microsoft Docs"
 description: "実行が容易なサンプル アプリケーションを含む、Azure SQL Database の Elastic Database ツール機能の基本説明です。"
 services: sql-database
 documentationcenter: 
@@ -15,45 +15,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: anjangsh
-ms.openlocfilehash: e7e072e310cabc2c4520df7e9f4f9e45b8218998
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 615e5b0bf299a844ea2d37476fc704c48e17b363
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
-このドキュメントでは、お客様はサンプル アプリを実行することで、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の開発を体験できます。 サンプル アプリでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。 また、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)のユース ケースに重点を置いています。 このクライアント ライブラリは .Net と Java で使用できます。 
+このドキュメントでは、サンプル アプリを実行することで、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の開発を体験できます。 サンプル アプリでは単純なシャーディング アプリケーションを作成し、Azure SQL Database の Elastic Database ツールの主な機能について詳しく見て行きます。 また、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)のユース ケースに重点を置いています。 このクライアント ライブラリは .NET と Java で使用できます。 
 
 ## <a name="elastic-database-tools-for-java"></a>Java 用 Elastic Database ツール
 ### <a name="prerequisites"></a>前提条件
-* Java Developer Kit (JDK) v 1.8 以降
+* Java Developer Kit (JDK) バージョン 1.8 以降
 * [Maven](http://maven.apache.org/download.cgi)
-* Azure の論理サーバーまたはローカル SQL Server
+* Azure の論理サーバーまたは SQL Server のローカル インスタンス
 
 ### <a name="download-and-run-the-sample-app"></a>サンプル アプリケーションのダウンロードと実行
-JAR ファイルをビルドし、サンプル プロジェクトを始めるには、以下の手順に従います。 
+JAR ファイルをビルドし、サンプル プロジェクトを始めるには、以下のようにします。 
 1. クライアント ライブラリとサンプル アプリを含む [GitHub リポジトリ](https://github.com/Microsoft/elastic-db-tools-for-java)を複製します。 
+
 2. _./sample/src/main/resources/resource.properties_ ファイルを編集して、次の項目を設定します。
     * TEST_CONN_USER
     * TEST_CONN_PASSWORD
     * TEST_CONN_SERVER_NAME
-3. _./sample_ ディレクトリから、次のコマンドを実行してサンプル プロジェクトを構築します。<br>
+
+3. サンプル プロジェクトをビルドするには、_./sample_ ディレクトリで次のコマンドを実行します。
 
     ```
     mvn install
     ```
     
-4. _./sample_ ディレクトリから、次のコマンドを実行してサンプル プロジェクトを開始します。 
+4. サンプル プロジェクトを開始するには、_./sample_ ディレクトリで次のコマンドを実行します。 
     
     ```
     mvn -q exec:java "-Dexec.mainClass=com.microsoft.azure.elasticdb.samples.elasticscalestarterkit.Program"
     ```
     
-5. クライアント ライブラリの機能をより深く知るために、さまざまなオプションを試してみてください。 サンプル アプリの実装の詳細を知るために、コードの詳細を確認することができます。
+5. クライアント ライブラリの機能をより深く知るには、さまざまなオプションを試してみてください。 サンプル アプリの実装の詳細を知るために、コードの詳細を確認することができます。
 
     ![Java の進行状況][5]
     
-ご利用ありがとうございます。 これで、SQL Database で Elastic Database ツールを使用して、最初のシャーディング アプリケーションを適切にビルドし、実行できました。 Visual Studio または SQL Server Management Studio を使用して SQL Database に接続し、サンプルで作成したシャードの内容を簡単に確認してください。 新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。 お客様の Maven プロジェクトにクライアント ライブラリを追加するには、POM ファイルに次の依存関係を追加します。<br>
+ご利用ありがとうございます。 これで、Azure SQL Database で Elastic Database ツールを使って、最初のシャーディング アプリケーションを適切にビルドし、実行できました。 Visual Studio または SQL Server Management Studio を使用して SQL Database に接続し、サンプルで作成したシャードの内容を簡単に確認してください。 新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。 
+
+お使いの Maven プロジェクトにクライアント ライブラリを追加するには、POM ファイルに次の依存関係を追加します。
 
 ```xml
 <dependency> 
@@ -63,7 +67,7 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 </dependency> 
 ```
 
-## <a name="elastic-database-tools-for-net"></a>.Net 用 Elastic Database ツール 
+## <a name="elastic-database-tools-for-net"></a>.NET 用 Elastic Database ツール 
 ### <a name="prerequisites"></a>前提条件
 * Visual Studio 2012 以降 (C#)。 「 [Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
 * NuGet 2.7 以降。 最新版を入手するには、「[Installing NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)(NuGet のインストール)」をご覧ください。
@@ -75,17 +79,17 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 
 1. [Elastic DB Tools for Azure SQL - Getting Started のサンプル](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6)を MSDN からダウンロードします。 任意の場所にサンプルを解凍します。
 
-2. **ElasticScaleStarterKit.sln** ソリューションを **C#** ディレクトリから開いてプロジェクトを作成します。
+2. *ElasticScaleStarterKit.sln* ソリューションを *C#* ディレクトリから開いてプロジェクトを作成します。
 
-3. サンプル プロジェクトのソリューションで、**app.config** ファイルを開きます。 ファイルの指示に従って、使用する Azure SQL Database サーバー名とサインイン情報 (ユーザー名とパスワード) を追加します。
+3. サンプル プロジェクトのソリューションで、*app.config* ファイルを開きます。 ファイルの指示に従って、使う Azure SQL Database サーバーの名前とサインイン情報 (ユーザー名とパスワード) を追加します。
 
-4. アプリケーションをビルドし、実行します。 メッセージが表示されたら、Visual Studio によるソリューションの NuGet パッケージの復元を有効にします。 これで Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
+4. アプリケーションをビルドし、実行します。 メッセージが表示されたら、Visual Studio によるソリューションの NuGet パッケージの復元を有効にします。 これにより、Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
 
-5. クライアント ライブラリの機能をより深く知るために、さまざまなオプションを試してみてください。 アプリケーションで実行されたステップはコンソールに出力されますので、動作していたコードをじっくりと検討することができます。
+5. クライアント ライブラリの機能をより深く知るには、さまざまなオプションを試してみてください。 アプリケーションで実行されたステップはコンソールに出力されるので、動作していたコードをじっくりと検討することができます。
    
     ![進捗状況][4]
 
-これで、最初のシャーディング アプリケーションを Elastic Database ツールを使用して正しく SQL Database にビルドし、実行できました。 Visual Studio または SQL Server Management Studio を使用して SQL Database に接続し、サンプルで作成したシャードの内容を簡単に確認してください。 新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。
+ご利用ありがとうございます。 これで、SQL Database で Elastic Database ツールを使って、最初のシャーディング アプリケーションを適切にビルドし、実行できました。 Visual Studio または SQL Server Management Studio を使用して SQL Database に接続し、サンプルで作成したシャードの内容を簡単に確認してください。 新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。
 
 > [!IMPORTANT]
 > 最新バージョンの Management Studio を常に使用して、Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。 [SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
@@ -93,32 +97,32 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 > 
 
 ## <a name="key-pieces-of-the-code-sample"></a>コード サンプルの主要部
-* **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが **ShardManagementUtils.cs** ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](http://go.microsoft.com/?linkid=9862595)」をご覧ください。  
+* **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが *ShardManagementUtils.cs* ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](http://go.microsoft.com/?linkid=9862595)」をご覧ください。  
 
-* **データ依存ルーティング**: トランザクションの適切なシャードへのルーティングは、**DataDependentRoutingSample.cs** に示されます。 詳細については、「[データ依存ルーティング](http://go.microsoft.com/?linkid=9862596)」をご覧ください。 
+* **データ依存ルーティング**: トランザクションの適切なシャードへのルーティングは、*DataDependentRoutingSample.cs* ファイルに示されます。 詳細については、「[データ依存ルーティング](http://go.microsoft.com/?linkid=9862596)」をご覧ください。 
 
-* **複数のシャードにまたがるクエリ実行**: 複数のシャードに対するクエリの実行は、**MultiShardQuerySample.cs** ファイルに示されます。 詳細については、「[マルチシャード クエリ実行](http://go.microsoft.com/?linkid=9862597)」をご覧ください。
+* **複数のシャードにまたがるクエリ実行**: 複数のシャードに対するクエリの実行は、*MultiShardQuerySample.cs* ファイルに示されます。 詳細については、「[マルチシャード クエリ実行](http://go.microsoft.com/?linkid=9862597)」をご覧ください。
 
-* **空のシャードの追加**: 新しい空のシャードの反復追加は、**CreateShardSample.cs** ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](http://go.microsoft.com/?linkid=9862595)」をご覧ください。
+* **空のシャードの追加**: 新しい空のシャードの反復追加は、*CreateShardSample.cs* ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](http://go.microsoft.com/?linkid=9862595)」をご覧ください。
 
 ## <a name="other-elastic-scale-operations"></a>他の Elastic Scale の操作
-* **既存のシャードの分割**: シャードを分割する機能は、**分割/マージ ツール**で提供されます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。
+* **既存のシャードの分割**: シャードを分割する機能は、分割/マージ ツールで提供されます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。
 
-* **既存のシャードのマージ**: シャードのマージも**分割/マージ ツール**を使用して行われます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。   
+* **既存のシャードのマージ**: シャードのマージも分割/マージ ツールを使って行われます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。   
 
 ## <a name="cost"></a>コスト
-Elastic Database ツールは無料です。 Elastic Database ツールを使用しても、Azure の利用料以外の追加料金は発生しません。 
+Elastic Database ツール ライブラリは無料です。 Elastic Database ツールを使っても、Azure の利用料以外の追加料金は発生しません。 
 
-たとえば、サンプル アプリケーションは新しいデータベースを作成します。 この場合のコストは、選択した SQL Database のエディションと、アプリケーションによる Azure の使用状況に応じて異なります。
+たとえば、サンプル アプリケーションは新しいデータベースを作成します。 この機能のコストは、選んだ SQL Database のエディションと、アプリケーションによる Azure の使用状況に応じて異なります。
 
 料金情報については、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-Elastic Database ツールの詳細については、以下のページをご覧ください。
+Elastic Database ツールについて詳しくは、以下の記事をご覧ください。
 
 * コード サンプル 
   * Elastic Database ツール ([.NET](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
-  * [Azure SQL 用 Elastic DB ツール - Entity Framework の統合](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+  * [Azure SQL 用 Elastic Database ツール - Entity Framework の統合](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * ブログ: [Elastic Scale の発表](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
 * Microsoft Virtual Academy: [Implementing Scale-Out Using Sharding with the Elastic Database Client Library Video (Elastic Database クライアント ライブラリのシャードを使用したスケールアウトの実装)](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554?l=lWyQhF1fC_6306218965) 

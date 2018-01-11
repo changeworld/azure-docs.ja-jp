@@ -1,10 +1,10 @@
 ---
-title: "Azure 仮想マシン スケール セットにアプリをデプロイする | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットにシンプルな自動スケール アプリケーションをデプロイする方法について説明します。"
+title: "Azure テンプレートを使用して仮想マシン スケール セットを作成する | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して仮想マシン スケール セットをすばやく作成する方法を説明します"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: rwike77
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,297 +13,211 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/24/2017
-ms.author: ryanwi
-ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/16/2017
+ms.author: iainfou
+ms.openlocfilehash: 614c7c82aabab212753529a21d7a770b7a02027e
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="deploy-an-autoscaling-app-using-a-template"></a>テンプレートを使用した自動スケール アプリのデプロイ
+# <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシン スケール セットを作成する
+仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 この入門記事では、Azure Resource Manager テンプレートを使用して仮想マシン スケール セットを作成します。 スケール セットは、[Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)、または [Azure ポータル](virtual-machine-scale-sets-create-portal.md)を使用して作成することもできます。
 
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアルは、[単純なスケール セットのデプロイ](virtual-machine-scale-sets-mvss-start.md)に関する記事に基づいて作成されています。このチュートリアルでは、Azure Resource Manager テンプレートを使用して、スケール セットにシンプルな自動スケール アプリケーションをデプロイする方法について説明します。  PowerShell、CLI、またはポータルを使用して、自動スケールを設定することもできます。 詳細については、[自動スケールの概要](virtual-machine-scale-sets-autoscale-overview.md)に関するページを参照してください。
 
-## <a name="two-quickstart-templates"></a>2 つのクイックスタート テンプレート
-スケール セットをデプロイするときに、[VM 拡張機能](../virtual-machines/virtual-machines-windows-extensions-features.md)を使用して、プラットフォーム イメージに新しいソフトウェアをインストールできます。 VM 拡張機能は、アプリのデプロイなど、Azure 仮想マシンでのデプロイ後の構成タスクと自動タスクを提供する小規模なアプリケーションです。 [Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) には、VM 拡張機能を使用して自動スケール アプリケーションをスケール セットにデプロイする方法を示す、2 種類のサンプル テンプレートが用意されています。
+## <a name="overview-of-templates"></a>テンプレートの概要
+Azure Resource Manager テンプレートを使用して、関連するリソースのグループをデプロイできます。 テンプレートは JavaScript Object Notation (JSON) で記述され、アプリケーションの Azure インフラストラクチャ環境全体を定義します。 1 つのテンプレートで、仮想マシン スケール セットの作成、アプリケーションのインストール、および自動スケール ルールの構成を実行できます。 変数やパラメーターを使用してこのテンプレートを再利用することで、既存のスケール セットを更新したり、追加のスケール セットを作成したりできます。 テンプレートは、Azure ポータル、Azure CLI 2.0、Azure PowerShell を介してデプロイすることも、継続的インテグレーション/継続的配信 (CI/CD) パイプラインから呼び出すこともできます。
 
-### <a name="python-http-server-on-linux"></a>Linux 上の Python HTTP サーバー
-[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)のサンプル テンプレートでは、Linux スケール セットで実行されるシンプルな自動スケール アプリケーションをデプロイします。  カスタム スクリプト VM 拡張機能を使用して、Python Web フレームワークである [Bottle](http://bottlepy.org/docs/dev/) と簡易 HTTP サーバーがスケール セットの各 VM にデプロイされます。 スケール セットは、すべての VM の平均 CPU 使用率が 60% を超えるとスケールアップされ、平均 CPU 使用率が 30% 未満になるとスケールダウンされます。
+テンプレートの詳細については、「[Azure Resource Manager の概要](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)」を参照してください。
 
-スケール セット リソースに加え、*azuredeploy.json* サンプル テンプレートでは、仮想ネットワーク、パブリック IP アドレス、ロード バランサー、自動スケール設定の各リソースも宣言されています。  テンプレートでこれらのリソースを作成する方法の詳細については、[自動スケールを使用した Linux スケール セット](virtual-machine-scale-sets-linux-autoscale.md)に関する記事をご覧ください。
 
-*azuredeploy.json* テンプレートでは、`Microsoft.Compute/virtualMachineScaleSets` リソースの `extensionProfile` プロパティでカスタム スクリプト拡張機能を指定します。 `fileUris` ではスクリプトの場所を指定します。 この例では、簡易 HTTP サーバーを定義する *workserver.py* と、Bottle をインストールし、HTTP サーバーを起動する *installserver.sh* の 2 つのファイルを指定しています。 `commandToExecute` では、スケール セットのデプロイ後に実行するコマンドを指定します。
+## <a name="define-a-scale-set"></a>スケール セットを定義する
+テンプレートは、各リソースの種類の構成を定義します。 仮想マシン スケール セットのリソースの種類は、個々の VM に似ています。 仮想マシン スケール セットのリソースの種類のコア部分は次のとおりです。
+
+| プロパティ                     | プロパティの説明                                  | テンプレート値の例                    |
+|------------------------------|----------------------------------------------------------|-------------------------------------------|
+| type                         | 作成する Azure リソースの種類                            | Microsoft.Compute/virtualMachineScaleSets |
+| name                         | スケール セットの名前                                       | myScaleSet                                |
+| location                     | スケール セットを作成する場所                     | East US                                   |
+| sku.name                     | 各スケール セット インスタンスの VM サイズ                  | Standard_A1                               |
+| sku.capacity                 | 最初に作成する VM インスタンスの数           | 2                                         |
+| upgradePolicy.mode           | 変更が発生した場合の VM インスタンスのアップグレード モード              | Automatic                                 |
+| imageReference               | VM インスタンスに使用するプラットフォームまたはカスタム イメージ | Canonical Ubuntu Server 16.04-LTS         |
+| osProfile.computerNamePrefix | 各 VM インスタンス名のプレフィックス                     | myvmss                                    |
+| osProfile.adminUsername      | 各 VM インスタンスのユーザー名                        | azureuser                                 |
+| osProfile.adminPassword      | 各 VM インスタンスのパスワード                        | P@ssw0rd!                                 |
+
+ 次のスニペットは、テンプレート内のコア スケール セットのリソース定義を示しています。 サンプルを短くするために、仮想ネットワーク インターフェイス カード (NIC) の構成は示されていません。 スケール セット テンプレートをカスタマイズするために、VM サイズや初期容量を変更したり、別のプラットフォームやカスタム イメージを使用したりできます。
 
 ```json
-          "extensionProfile": {
-            "extensions": [
-              {
-                "name": "lapextension",
-                "properties": {
-                  "publisher": "Microsoft.Azure.Extensions",
-                  "type": "CustomScript",
-                  "typeHandlerVersion": "2.0",
-                  "autoUpgradeMinorVersion": true,
-                  "settings": {
-                    "fileUris": [
-                      "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/installserver.sh",
-                      "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/workserver.py"
-                    ],
-                    "commandToExecute": "bash installserver.sh"
-                  }
-                }
-              }
-            ]
-          }
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "name": "myScaleSet",
+  "location": "East US",
+  "apiVersion": "2016-04-30-preview",
+  "sku": {
+    "name": "Standard_A1",
+    "capacity": "2"
+  },
+  "properties": {
+    "upgradePolicy": {
+      "mode": "Automatic"
+    },
+    "virtualMachineProfile": {
+      "storageProfile": {
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage"
+        },
+        "imageReference":  {
+          "publisher": "Canonical",
+          "offer": "UbuntuServer",
+          "sku": "16.04-LTS",
+          "version": "latest"
+        }
+      },
+      "osProfile": {
+        "computerNamePrefix": "myvmss",
+        "adminUsername": "azureuser",
+        "adminPassword": "P@ssw0rd!"
+      }
+    }
+  }
+}
 ```
 
-### <a name="aspnet-mvc-application-on-windows"></a>Windows 上の ASP.NET MVC アプリケーション
-[Windows 上の ASP.NET MVC アプリケーション](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)のサンプル テンプレートでは、IIS で実行されるシンプルな ASP.NET MVC アプリを Windows スケール セットにデプロイします。  [PowerShell Desired State Configuration (DSC)](virtual-machine-scale-sets-dsc.md) VM 拡張機能を使用して、IIS と MVC アプリがデプロイされます。  スケール セットは、5 分間の CPU 使用率が 50% を超えるとスケールアップされます (一度に 1 つの VM インスタンス)。 
 
-スケール セット リソースに加え、*azuredeploy.json* サンプル テンプレートでは、仮想ネットワーク、パブリック IP アドレス、ロード バランサー、自動スケール設定の各リソースも宣言されています。 また、このテンプレートはアプリケーションのアップグレードも示しています。  テンプレートでこれらのリソースを作成する方法の詳細については、[自動スケールを使用した Windows スケール セット](virtual-machine-scale-sets-windows-autoscale.md)に関する記事をご覧ください。
+## <a name="install-an-application"></a>アプリケーションをインストールする
+スケール セットをデプロイするとき、VM 拡張機能によって、デプロイ後の構成とオートメーション タスク (アプリのインストールなど) を提供できます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。 拡張機能をスケール セットに適用するには、上記のリソース例に *extensionProfile* セクションを追加します。 拡張機能プロファイルは、通常、次のプロパティを定義します。
 
-*azuredeploy.json* テンプレートでは、`Microsoft.Compute/virtualMachineScaleSets` リソースの `extensionProfile` プロパティで [Desired State Configuration (DSC)](virtual-machine-scale-sets-dsc.md) 拡張機能を指定します。この拡張機能は、IIS と WebDeploy パッケージの既定の Web アプリをインストールします。  *IISInstall.ps1* スクリプトは、仮想マシンに IIS をインストールします。このスクリプトは *DSC* フォルダーにあります。  MVC Web アプリは *WebDeploy* フォルダーにあります。  インストール スクリプトと Web アプリのパスは、*azuredeploy.parameters.json* ファイルの `powershelldscZip` パラメーターと `webDeployPackage` パラメーターで定義されています。 
+- 拡張機能の種類
+- 拡張機能の発行元
+- 拡張機能のバージョン
+- 構成またはインストール スクリプトの場所
+- VM インスタンスで実行するコマンド
+
+拡張機能を使用してアプリケーションをインストールする 2 つの方法を見てみましょう。カスタム スクリプト拡張機能を使用して Python アプリを Linux にインストールするか、PowerShell DSC 拡張機能を使用して ASP.NET アプリを Windows にインストールします。
+
+### <a name="python-http-server-on-linux"></a>Linux 上の Python HTTP サーバー
+[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)では、カスタム スクリプト拡張機能を使用して、[Bottle](http://bottlepy.org/docs/dev/)、Python Web フレームワーク、および単純な HTTP サーバーをインストールします。 
+
+*fileUris* には 2 つのスクリプト  - *installserver.sh*と *workserver.py*が定義されます。 これらのファイルが GitHub からダウンロードされた後、*commandToExecute*によって、インストールと構成が行われるアプリの `bash installserver.sh` が定義されます。
 
 ```json
-          "extensionProfile": {
-            "extensions": [
-              {
-                "name": "Microsoft.Powershell.DSC",
-                "properties": {
-                  "publisher": "Microsoft.Powershell",
-                  "type": "DSC",
-                  "typeHandlerVersion": "2.9",
-                  "autoUpgradeMinorVersion": true,
-                  "forceUpdateTag": "[parameters('powershelldscUpdateTagVersion')]",
-                  "settings": {
-                    "configuration": {
-                      "url": "[variables('powershelldscZipFullPath')]",
-                      "script": "IISInstall.ps1",
-                      "function": "InstallIIS"
-                    },
-                    "configurationArguments": {
-                      "nodeName": "localhost",
-                      "WebDeployPackagePath": "[variables('webDeployPackageFullPath')]"
-                    }
-                  }
-                }
-              }
-            ]
+"extensionProfile": {
+  "extensions": [
+    {
+      "name": "AppInstall",
+      "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "fileUris": [
+            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/installserver.sh",
+            "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/workserver.py"
+          ],
+          "commandToExecute": "bash installserver.sh"
+        }
+      }
+    }
+  ]
+}
+```
+
+### <a name="aspnet-application-on-windows"></a>Windows 上の ASP.NET アプリケーション
+[Windows 上の ASP.NET アプリケーション](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) サンプル テンプレートでは、PowerShell DSC 拡張機能を使用して、IIS で実行される ASP.NET MVC アプリをインストールします。 
+
+インストール スクリプトは、GitHub からダウンロードされます。これは *url* として定義されます。 次に、拡張機能は、*IISInstall.ps1* スクリプトの *InstallIIS* を実行します。これらは *Script*と *function* として定義されます。 ASP.NET アプリ自体は Web 配置パッケージとして提供され、GitHub からダウンロードされます。これは、*WebDeployPackagePath* として定義されます。
+
+```json
+"extensionProfile": {
+  "extensions": [
+    {
+      "name": "Microsoft.Powershell.DSC",
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.9",
+        "autoUpgradeMinorVersion": true,
+        "forceUpdateTag": "1.0",
+        "settings": {
+          "configuration": {
+            "url": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/DSC/IISInstall.ps1.zip",
+            "script": "IISInstall.ps1",
+            "function": "InstallIIS"
+          },
+          "configurationArguments": {
+            "nodeName": "localhost",
+            "WebDeployPackagePath": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/WebDeploy/DefaultASPWebApp.v1.0.zip"
           }
+        }
+      }
+    }
+  ]
+}
 ```
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
-[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)または [Windows 上の ASP.NET MVC アプリケーション](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)のテンプレートをデプロイする最も簡単な方法は、GitHub の readme ファイルにある **[Deploy to Azure]** ボタンを使用することです。  サンプル テンプレートは、PowerShell または Azure CLI を使用してデプロイすることもできます。
+[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)または [Windows 上の ASP.NET MVC アプリケーション](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) テンプレートをデプロイする最も簡単な方法は、GitHub の readme ファイルにある **[Deploy to Azure]** ボタンを使用することです。  サンプル テンプレートは、PowerShell または Azure CLI を使用してデプロイすることもできます。
 
-### <a name="powershell"></a>PowerShell
-[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)または [Windows 上の ASP.NET MVC アプリケーション](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) のファイルを、GitHub リポジトリからローカル コンピューター上のフォルダーにコピーします。  *azuredeploy.parameters.json* ファイルを開き、`vmssName`、`adminUsername`、`adminPassword` の各パラメーターの既定値を更新します。 次の PowerShell スクリプトをサンプル フォルダーの *deploy.ps1* に *azuredeploy.json* テンプレートとして保存します。 サンプル テンプレートをデプロイするには、PowerShell コマンド ウィンドウから *deploy.ps1* スクリプトを実行します。
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+次のように Azure CLI 2.0 を使用して、Linux に Python HTTP サーバーをインストールできます。
 
-```powershell
-param(
- [Parameter(Mandatory=$True)]
- [string]
- $subscriptionId,
+```azurecli-interactive
+# Create a resource group
+az group create --name myResourceGroup --location EastUS
 
- [Parameter(Mandatory=$True)]
- [string]
- $resourceGroupName,
-
- [string]
- $resourceGroupLocation,
-
- [Parameter(Mandatory=$True)]
- [string]
- $deploymentName,
-
- [string]
- $templateFilePath = "template.json",
-
- [string]
- $parametersFilePath = "parameters.json"
-)
-
-<#
-.SYNOPSIS
-    Registers RPs
-#>
-Function RegisterRP {
-    Param(
-        [string]$ResourceProviderNamespace
-    )
-
-    Write-Host "Registering resource provider '$ResourceProviderNamespace'";
-    Register-AzureRmResourceProvider -ProviderNamespace $ResourceProviderNamespace;
-}
-
-#******************************************************************************
-# Script body
-# Execution begins here
-#******************************************************************************
-$ErrorActionPreference = "Stop"
-
-# sign in
-Write-Host "Logging in...";
-Login-AzureRmAccount;
-
-# select subscription
-Write-Host "Selecting subscription '$subscriptionId'";
-Select-AzureRmSubscription -SubscriptionID $subscriptionId;
-
-# Register RPs
-$resourceProviders = @("microsoft.compute","microsoft.insights","microsoft.network");
-if($resourceProviders.length) {
-    Write-Host "Registering resource providers"
-    foreach($resourceProvider in $resourceProviders) {
-        RegisterRP($resourceProvider);
-    }
-}
-
-#Create or check for existing resource group
-$resourceGroup = Get-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue
-if(!$resourceGroup)
-{
-    Write-Host "Resource group '$resourceGroupName' does not exist. To create a new resource group, please enter a location.";
-    if(!$resourceGroupLocation) {
-        $resourceGroupLocation = Read-Host "resourceGroupLocation";
-    }
-    Write-Host "Creating resource group '$resourceGroupName' in location '$resourceGroupLocation'";
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
-}
-else{
-    Write-Host "Using existing resource group '$resourceGroupName'";
-}
-
-# Start the deployment
-Write-Host "Starting deployment...";
-if(Test-Path $parametersFilePath) {
-    New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -TemplateParameterFile $parametersFilePath;
-} else {
-    New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath;
-}
+# Deploy template into resource group
+az group deployment create \
+    --resource-group myResourceGroup \
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```
 
-### <a name="azure-cli"></a>Azure CLI
-```azurecli
-#!/bin/bash
-set -euo pipefail
-IFS=$'\n\t'
+アプリが動いていることを確認するには、次のように [az network public-ip show](/cli/azure/network/public-ip#show) を使用してロード バランサーのパブリック IP アドレスを取得します。
 
-# -e: immediately exit if any command has a non-zero exit status
-# -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
-
-usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
-
-declare subscriptionId=""
-declare resourceGroupName=""
-declare deploymentName=""
-declare resourceGroupLocation=""
-
-# Initialize parameters specified from command line
-while getopts ":i:g:n:l:" arg; do
-    case "${arg}" in
-        i)
-            subscriptionId=${OPTARG}
-            ;;
-        g)
-            resourceGroupName=${OPTARG}
-            ;;
-        n)
-            deploymentName=${OPTARG}
-            ;;
-        l)
-            resourceGroupLocation=${OPTARG}
-            ;;
-        esac
-done
-shift $((OPTIND-1))
-
-#Prompt for parameters is some required parameters are missing
-if [[ -z "$subscriptionId" ]]; then
-    echo "Subscription Id:"
-    read subscriptionId
-    [[ "${subscriptionId:?}" ]]
-fi
-
-if [[ -z "$resourceGroupName" ]]; then
-    echo "ResourceGroupName:"
-    read resourceGroupName
-    [[ "${resourceGroupName:?}" ]]
-fi
-
-if [[ -z "$deploymentName" ]]; then
-    echo "DeploymentName:"
-    read deploymentName
-fi
-
-if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below to create a new resource group else skip this"
-    echo "ResourceGroupLocation:"
-    read resourceGroupLocation
-fi
-
-#templateFile Path - template file to be used
-templateFilePath="template.json"
-
-if [ ! -f "$templateFilePath" ]; then
-    echo "$templateFilePath not found"
-    exit 1
-fi
-
-#parameter file path
-parametersFilePath="parameters.json"
-
-if [ ! -f "$parametersFilePath" ]; then
-    echo "$parametersFilePath not found"
-    exit 1
-fi
-
-if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentName" ]; then
-    echo "Either one of subscriptionId, resourceGroupName, deploymentName is empty"
-    usage
-fi
-
-#login to azure using your credentials
-az account show 1> /dev/null
-
-if [ $? != 0 ];
-then
-    az login
-fi
-
-#set the default subscription id
-az account set --name $subscriptionId
-
-set +e
-
-#Check for existing RG
-az group show $resourceGroupName 1> /dev/null
-
-if [ $? != 0 ]; then
-    echo "Resource group with name" $resourceGroupName "could not be found. Creating new resource group.."
-    set -e
-    (
-        set -x
-        az group create --name $resourceGroupName --location $resourceGroupLocation 1> /dev/null
-    )
-    else
-    echo "Using existing resource group..."
-fi
-
-#Start deployment
-echo "Starting deployment..."
-(
-    set -x
-    az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file $templateFilePath --parameters $parametersFilePath
-)
-
-if [ $?  == 0 ];
- then
-    echo "Template has been successfully deployed"
-fi
+```azurecli-interactive
+az network public-ip list \
+    --resource-group myResourceGroup \
+    --query [*].ipAddress -o tsv
 ```
 
-## <a name="next-steps"></a>次のステップ
+ロード バランサーのパブリック IP アドレスを *http://<publicIpAddress>: 9000/do_work* 形式で Web ブラウザーに入力します。 ロード バランサーは、次の例に示すように、VM インスタンスのいずれかにトラフィックを配分します。
 
-[!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
+![NGINX の既定の Web ページ](media/virtual-machine-scale-sets-create-template/running-python-app.png)
+
+
+### <a name="azure-powershell"></a>Azure PowerShell
+次のように Azure PowerShell を使用して、ASP.NET アプリケーションを Windows にインストールできます。
+
+```azurepowershell-interactive
+# Create a resource group
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+
+# Deploy template into resource group
+New-AzureRmResourceGroupDeployment `
+    -ResourceGroupName myResourceGroup `
+    -TemplateFile https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json
+```
+
+アプリが動いているのを確認するには、[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用してロード バランサーのパブリック IP アドレスを取得します。
+
+```azurepowershell-interactive
+Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
+```
+
+ロード バランサーのパブリック IP アドレスを *http://<publicIpAddress>: /MyApp* 形式で Web ブラウザーに入力します。 ロード バランサーは、次の例に示すように、VM インスタンスのいずれかにトラフィックを配分します。
+
+![実行中の IIS サイト](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
+
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+必要がなくなったら、次のように [az group delete](/cli/azure/group#delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。
+
+```azurecli-interactive 
+az group delete --name myResourceGroup
+```
+
+
+## <a name="next-steps"></a>次の手順

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
 ms.openlocfilehash: 0129a48e43e90001785a5977d4b0d1fd9fa9fd7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft ピアリングにルート フィルターを構成する: Azure Portal
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
 
 Microsoft ピアリング経由でアクセスできるサービスに関連付けられた BGP コミュニティ値は、「[ExpressRoute のルーティングの要件](expressroute-routing.md)」ページで確認できます。
 
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.使用する値をリストアップする
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>手順 2.使用する値をリストアップする
 
 ルート フィルターで使用する BGP コミュニティ値をリストアップします。 たとえば Dynamics 365 サービスの BGP コミュニティ値は 12076:5040 です。
 

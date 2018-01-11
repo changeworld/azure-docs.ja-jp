@@ -35,11 +35,11 @@
           href: functions-create-storage-queue-triggered-function.md
     - name: 統合
       items:
-        - name: ストレージ
+        - name: Storage
           href: functions-integrate-storage-queue-output-binding.md
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: Functions と Logic Apps
       href: functions-twitter-email.md
@@ -71,10 +71,10 @@
       items:
         - name: サポートされている言語
           href: supported-languages.md
-        - name: 'C# スクリプト'
-          href: functions-reference-csharp.md
-        - name: .NET クラス ライブラリ
+        - name: 'C# (クラス ライブラリ)'
           href: functions-dotnet-class-library.md
+        - name: 'C# スクリプト (.csx)'
+          href: functions-reference-csharp.md
         - name: 'F#'
           href: functions-reference-fsharp.md
         - name: JavaScript
@@ -165,7 +165,7 @@
           href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Durable Functions
       items:
-        - name: インストール
+        - name: '[インストール]'
           href: durable-functions-install.md
         - name: チェーン
           href: durable-functions-sequence.md

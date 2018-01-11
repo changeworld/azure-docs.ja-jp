@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: df139383eb2fa20fe75ecc6b3f5e2aa0773f186c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a33855213c4bd3a677c8ebbed6624c85138d8ea6
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
@@ -60,15 +60,15 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 
 
 
-| プロパティ                      | 説明                              | 必須 |
+| プロパティ                      | [説明]                              | 必須 |
 | :---------------------------- | :--------------------------------------- | :------- |
-| name                          | パイプラインのアクティビティの名前     | あり      |
-| 説明                   | アクティビティの動作を説明するテキスト。  | いいえ       |
-| type                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | あり      |
-| 既定のコンテナー             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | あり      |
-| trainedModelName              | Web サービスの実験で更新されるようにトレーニング済みのモデル モジュールの名前 | あり      |
-| trainedModelLinkedServiceName | 更新操作によってアップロードされる iLearner ファイルを保持する Azure Storage のリンクされたサービスの名前 | あり      |
-| trainedModelFilePath          | 更新操作によってアップロードされる iLearner ファイルを表す trainedModelLinkedService 内の相対ファイル パス | あり      |
+| name                          | パイプラインのアクティビティの名前。     | [はい]      |
+| 説明                   | アクティビティの動作を説明するテキスト。  | いいえ        |
+| 型                          | Azure Machine Learning 更新リソース アクティビティの場合、アクティビティの種類は **AzureMLUpdateResource** です。 | [はい]      |
+| 既定のコンテナー             | updateResourceEndpoint プロパティが含まれる Azure Machine Learning のリンクされたサービス。 | [はい]      |
+| trainedModelName              | Web サービスの実験で更新されるようにトレーニング済みのモデル モジュールの名前 | [はい]      |
+| trainedModelLinkedServiceName | 更新操作によってアップロードされる iLearner ファイルを保持する Azure Storage のリンクされたサービスの名前 | [はい]      |
+| trainedModelFilePath          | 更新操作によってアップロードされる iLearner ファイルを表す trainedModelLinkedService 内の相対ファイル パス | [はい]      |
 
 
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
@@ -86,33 +86,6 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 2. 予測 Web サービスの更新リソース エンドポイントへの Azure Machine Learning のリンクされたサービス。 このリンクされたサービスは、上記の手順から返された iLearner ファイルを使用して予測 Web サービスを更新する更新リソース アクティビティで使用されます。 
 
 2 番目の Azure Machine Learning のリンクされたサービスの場合、構成は、Azure Machine Learning Web サービスが従来の Web サービスであるか、新しい Web サービスであるかによって異なります。 相違点については、以降のセクションで個別に説明します。 
-
-## <a name="web-service-is-a-classic-web-service"></a>Web サービスが従来の Web サービスである
-予測 Web サービスが**従来の Web サービス**である場合は、Azure Portal を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成します。 手順については、「[エンドポイントを作成する](../machine-learning/machine-learning-create-endpoint.md)」を参照してください。 更新可能な既定以外のエンドポイントを作成したら、次の手順を行います。
-
-* **[バッチ実行]** をクリックして、**mlEndpoint** JSON プロパティの URI の値を取得します。
-* **[リソースの更新]** リンクをクリックして、**updateResourceEndpoint** JSON プロパティの URI の値を取得します。 API キーは、エンドポイントのページにあります (右下隅)。
-
-![updatable endpoint](./media/update-machine-learning-models/updatable-endpoint.png)
-
-その後、次のリンクされたサービスのサンプルを使用して、新しい Azure Machine Learning のリンクされたサービスを作成します。 リンクされたサービスでは、認証に apiKey が使用されます。  
-
-```json
-{
-    "name": "updatableScoringEndpoint2",
-    "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/xxx/services/--scoring experiment--/jobs",
-            "apiKey": {
-            "type": "SecureString",
-            "value": "APIKeyOfEndpoint2"
-            },
-            "updateResourceEndpoint": "https://management.azureml.net/workspaces/xxx/webservices/--scoring experiment--/endpoints/endpoint2"
-        }
-    }
-}
-```
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Web サービスが新しい Azure Resource Manager Web サービスである 
 
@@ -299,7 +272,7 @@ Azure Storage には次のデータが格納されています。
     }
 }
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8aec171b46df3e0e7f2a2d3cc9d44084d064e6fd
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Notification Hubs を使用したニュース速報の送信
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -207,7 +207,7 @@ ms.lasthandoff: 10/11/2017
 これで、アプリは、毎回の起動時に、通知ハブに登録するために使用されるカテゴリ セットをデバイスのローカル ストレージに格納できるようになりました。  ユーザーは、実行時にカテゴリの選択を変更し、 **subscribe** メソッドをクリックして、デバイスの登録を更新できます。 その場合、ニュース速報通知を送信するように、アプリ自体の中で直接アプリを更新します。
 
 ## <a name="optional-sending-tagged-notifications"></a>(省略可能) タグ付けされた通知の送信
-Visual Studio にアクセスできない場合は、次のセクションをスキップし、アプリ自体から通知を送信できます。 [Azure クラシック ポータル] で通知ハブの [デバッグ] タブを使用して、適切なテンプレート通知を送信することもできます。 
+Visual Studio にアクセスできない場合は、次のセクションをスキップし、アプリ自体から通知を送信できます。 [Azure Portal] で通知ハブの [デバッグ] タブを使用して、適切なテンプレート通知を送信することもできます。 
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -331,4 +331,4 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
-[Azure クラシック ポータル]: https://manage.windowsazure.com
+[Azure Portal]: https://portal.azure.com

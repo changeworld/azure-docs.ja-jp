@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 9/29/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 304db0cdcf650697f8e7d328b5f7214ab5ccef8c
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 4a917fbbc1beff9a8b16ba044052cc9864cd9728
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -121,11 +121,11 @@ Azure Backup では、完全な管理ディスク VM を復元するか、管理
 ### <a name="storage"></a>Storage
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| Recovery Services コンテナー |![あり][green] |![あり][green] |![あり][green] |![はい][green] |
-| ディスク ストレージ | |![はい][green] |![はい][green] | |
-| テープ ストレージ | |![はい][green] | | |
-| 圧縮 <br/>(Recovery Services コンテナー内) |![あり][green] |![あり][green] |![はい][green] | |
-| 増分バックアップ |![はい][green] |![あり][green] |![あり][green] |![はい][green] |
+| Recovery Services コンテナー |![[はい]][green] |![[はい]][green] |![[はい]][green] |![[はい]][green] |
+| ディスク ストレージ | |![[はい]][green] |![[はい]][green] | |
+| テープ ストレージ | |![[はい]][green] | | |
+| 圧縮 <br/>(Recovery Services コンテナー内) |![[はい]][green] |![[はい]][green] |![[はい]][green] | |
+| 増分バックアップ |![[はい]][green] |![[はい]][green] |![[はい]][green] |![[はい]][green] |
 | ディスクの重複除去 | |![部分的][yellow] |![部分的][yellow] | | |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
@@ -162,8 +162,8 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 ### <a name="security"></a>セキュリティ
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| ネットワークのセキュリティ<br/> (対 Azure) |![はい][green] |![あり][green] |![はい][green] |![部分的][yellow] |
-| データのセキュリティ<br/> (Azure 内) |![はい][green] |![あり][green] |![はい][green] |![部分的][yellow] |
+| ネットワークのセキュリティ<br/> (対 Azure) |![[はい]][green] |![[はい]][green] |![[はい]][green] |![部分的][yellow] |
+| データのセキュリティ<br/> (Azure 内) |![[はい]][green] |![[はい]][green] |![[はい]][green] |![部分的][yellow] |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -181,8 +181,8 @@ Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号
 ### <a name="network"></a>ネットワーク
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| ネットワーク圧縮 <br/>(対**バックアップ サーバー**) | |![はい][green] |![はい][green] | |
-| ネットワーク圧縮 <br/>(対 **Recovery Services コンテナー**) |![あり][green] |![あり][green] |![はい][green] | |
+| ネットワーク圧縮 <br/>(対**バックアップ サーバー**) | |![[はい]][green] |![[はい]][green] | |
+| ネットワーク圧縮 <br/>(対 **Recovery Services コンテナー**) |![[はい]][green] |![[はい]][green] |![[はい]][green] | |
 | ネットワーク プロトコル <br/>(対**バックアップ サーバー**) | |TCP |TCP | |
 | ネットワーク プロトコル <br/>(対 **Recovery Services コンテナー**) |HTTPS |HTTPS |HTTPS |HTTPS |
 
@@ -211,7 +211,7 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 
 ## <a name="what-is-a-protected-instance"></a>保護されているインスタンスとは
 保護されているインスタンスとは、Azure にバックアップするように構成されている Windows コンピューター、サーバー (物理または仮想)、または SQL データベースを総称したものです。 インスタンスは、コンピューター、サーバー、またはデータベースのバックアップ ポリシーを構成し、データのバックアップ コピーを作成すると保護されます。 その保護されているインスタンスのバックアップ データのそれ以降のコピー (復旧ポイントと呼ばれます) により、使用されるストレージの量が増加します。 保護されているインスタンスに作成できる復旧ポイントは最大 9,999 個です。 ストレージから復旧ポイントを削除すると、9,999 個の復旧ポイントの合計に対してカウントされません。
-保護されているインスタンスの一般的な例には、仮想マシン、アプリケーション サーバー、データベースのほか、Windows オペレーティング システムを実行しているパーソナル コンピューターがあります。 For example:
+保護されているインスタンスの一般的な例には、仮想マシン、アプリケーション サーバー、データベースのほか、Windows オペレーティング システムを実行しているパーソナル コンピューターがあります。 例: 
 
 * Hyper-V または Azure IaaS ハイパーバイザー ファブリックを実行している仮想マシン。 仮想マシンのゲスト オペレーティング システムには、Windows Server または Linux を指定できます。
 * アプリケーション サーバー。アプリケーション サーバーには、Windows Server と、バックアップする必要があるデータを含むワークロードを実行している物理マシンまたは仮想マシンを指定できます。 一般的なワークロードには、Microsoft SQL Server、Microsoft Exchange Server、Microsoft SharePoint Server、Windows Server のファイル サーバー ロールがあります。 これらのワークロードをバックアップするには、System Center Data Protection Manager (DPM) または Azure Backup Server が必要です。
@@ -238,13 +238,13 @@ Azure Backup は、オンプレミスのデータとクラウドのデータを�
 
 バックアップと障害復旧に関する意思決定を行うにあたっては、次の概念が役立ちます。
 
-| 概念 | 詳細 | バックアップ | ディザスター リカバリー (DR) |
+| 概念 | 詳細 | Backup | ディザスター リカバリー (DR) |
 | --- | --- | --- | --- |
 | 目標復旧時点 (RPO) |復旧を行う必要がある場合に許容されるデータ損失の量です。 |バックアップ ソリューションの許容されるRPO には幅があります。 仮想マシンのバックアップの RPO は通常 1 日であるのに対し、データベースのバックアップの RPO は最低 15 分です。 |障害復旧ソリューションでは RPO が低くなります。 DR コピーは、数秒遅れまたは数分遅れのことがあります。 |
 | 目標復旧時間 (RTO) |復旧または復元の完了に要する時間です。 |RPO が大きくなるほど、一般的にはバックアップ ソリューションで処理が必要なデータ量が増えるため、RTO は長くなります。 たとえば、オフサイトの場所からテープを輸送するのにかかる時間によっては、テープからのデータの復元に日単位の時間を要する場合があります。 |障害復旧ソリューションは、よりソースと同期されているため、RTO は短くなります。 必要な変更は少数です。 |
 | 保持 |データを保存する必要がある期間 |運用の復旧を必要とするシナリオ (データの破損、不注意によるファイルの削除、OS の障害) では、通常、バックアップ データの保持期間は最大 30 日です。<br>コンプライアンスの観点から、月単位または年単位でデータを保存することが必要になる場合があります。 バックアップ データは、このような場合のアーカイブに最適です。 |障害復旧には運用復旧データのみが必要となり、実行には通常、数時間から最大で 1 日かかります。 DR ソリューションでは詳細なデータ キャプチャが使用されるため、DR データを使用する長期的な保持はお勧めできません。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Windows Server でのデータ保護の詳細な段階的手順、または Azure での仮想マシン (VM) の保護については、次のいずれかのチュートリアルを参照してください。
 
 * [ファイルとフォルダーのバックアップ](backup-try-azure-backup-in-10-mins.md)
@@ -254,7 +254,7 @@ Windows Server でのデータ保護の詳細な段階的手順、または Azur
 
 * [Windows Server のバックアップ](backup-configure-vault.md)
 * [アプリケーション ワークロードのバックアップ](backup-azure-microsoft-azure-backup.md)
-* [Azure IaaS VM のバックアップ](backup-azure-vms-prepare.md)
+* [Azure IaaS VM のバックアップ](backup-azure-arm-vms-prepare.md)
 
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png

@@ -17,22 +17,22 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: jlian
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3975d65fca54f9c1b58175f5f48f91a7cb67987
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b9642eec0fd0f1e547f34de1077e551fbb61593
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
 
 Azure アカウント センターで、[無料試用版](https://azure.microsoft.com/free/)または [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) サブスクリプションを[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)にアップグレードします。
 
-1. [Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にサインインします。
-1. サブスクリプションの状態のセクションで **[今すぐアップグレード]** バナーを選択します。
+1. [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。
+2. サブスクリプションの状態のセクションで **[今すぐアップグレード]** バナーを選択します。
    
     ![無料試用版から従量課金制にアップグレードするためにクリックする場所を示すスクリーンショット](./media/billing-upgrade-azure-subscription/billpage.png)
-1. アップグレードを確認します。
+3. アップグレードを確認します。
    
     ![サブスクリプションのアップグレードを確認するために選ぶものを示すスクリーンショット](./media/billing-upgrade-azure-subscription/Upgrade.png)
 
-アップグレードはそれ自体では課金されません。使用したサービスに対してのみ料金が発生します。 アップグレードを確定した後は、試用期間が終了するまで試用版のクレジットを引き続き保持できます。
+ 無料試用版サブスクリプションからアップグレードした場合、残りのクレジットは、サブスクリプションの作成後、丸 30 日間保持されます。 また、12 か月間の無料サービスにアクセスすることもできます。

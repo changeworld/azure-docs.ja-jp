@@ -3,8 +3,8 @@ title: "Visual Studio を利用して仮想マシン スケール セットを�
 description: "Visual Studio とリソース マネージャーのテンプレートを利用して仮想マシン スケール セットをデプロイする"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.author: guybo
+ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4b0c8d305f57f495402cecb92d18425ff6bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 73454abc11a832a1b7f4131bf13699bd0a94edea
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Visual Studio による仮想マシン スケール セットの作成方法
 この記事では、Visual Studio の "リソース グループの配置" を使用して Azure 仮想マシン スケール セットをデプロイする方法について説明します。
@@ -53,8 +53,7 @@ Visual Studio で仮想マシン スケール セットをデプロイするに�
 
 4. プロジェクトを作成すると、PowerShell デプロイ スクリプト、Azure Resource Manager テンプレート、仮想マシン スケール セットのパラメーター ファイルが表示されます。
    
-    ![ソリューション エクスプローラー
-][solution_explorer]
+    ![ソリューション エクスプローラー][solution_explorer]
 
 ## <a name="customize-your-project"></a>プロジェクトのカスタマイズ
 これで、アプリケーションのニーズに応じてテンプレートを編集してカスタマイズできます。たとえば、VM 拡張機能のプロパティを追加したり、負荷分散の規則を編集したりできます。 既定では、仮想マシン スケール セット テンプレートは AzureDiagnostics 拡張機能をデプロイするように構成されているので、自動スケール規則を簡単に追加できます。 また、受信 NAT 規則で構成されたパブリック IP アドレスでロード バランサーがデプロイされます。 
@@ -68,11 +67,11 @@ Visual Studio で仮想マシン スケール セットをデプロイするに�
 ## <a name="deploy-the-project"></a>プロジェクトをデプロイする
 1. Azure Resource Manager テンプレートをデプロイして、仮想マシン スケール セット リソースを作成します。 プロジェクト ノードを右クリックし、**[配置]、[新しい配置]** の順に選択します。
    
-    ![Deploy Template][5deploy_Template]
+    ![テンプレートのデプロイ][5deploy_Template]
     
 2. [リソース グループに配置する] ダイアログで該当するサブスクリプションを選択します。
    
-    ![Deploy Template][6deploy_Template]
+    ![テンプレートのデプロイ][6deploy_Template]
 
 3. ここから、テンプレートのデプロイ先となる Azure リソース グループを作成できます。
    
@@ -93,7 +92,7 @@ Visual Studio で仮想マシン スケール セットをデプロイするに�
 
  ポータルの優れている点は、Azure のインフラストラクチャを Web ブラウザーを使って視覚的に管理できることです。一方、Azure Resource Explorer の利点は、Azure のリソースを手軽に調査し、デバッグできることです。"インスタンス ビュー" にウィンドウを追加したり、着目しているリソースの PowerShell コマンドを表示したりすることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Visual Studio を使用して仮想マシン スケール セットを正常にデプロイしたら、実際のアプリケーションの要件に合わせてプロジェクトをさらにカスタマイズできます。 たとえば、**Insights** リソースの追加、テンプレートへのインフラストラクチャ (スタンドアロン VM など) の追加、またはカスタム スクリプト拡張機能を使用したアプリケーションのデプロイによって自動スケールを構成します。 サンプル テンプレートは、[Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates) GitHub リポジトリで入手できます ("vmss" で検索してください)。
 
 [file_new]: ./media/virtual-machine-scale-sets-vs-create/1-FileNew.png

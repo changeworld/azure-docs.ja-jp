@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 12/14/2017
 ms.author: mblythe
 ms.custom: 
-ms.openlocfilehash: 120f5d69441c5e01ffafbdb8dccb179bf00bdb0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 38d2e3f2f2aa057b50ba12138cafc512ac110f9b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Microsoft Flow から関数を呼び出す
 
@@ -232,7 +232,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
     | **タイトル**           | Turbine 60 |
     | **LastServiceDate** | 08/04/2017 |
     | **MaxOutput**       | 2500 |
-    | **ServiceRequired** | あり |
+    | **ServiceRequired** | [はい] |
     | **EstimatedEffort** | 10 |
 
 3. **[Done]**をクリックします。
@@ -261,7 +261,7 @@ PowerApps から同じ関数を呼び出す方法について詳しくは、「[
 
     トークンがどのようにして、SharePoint リストと関数から得た正しい値に置き換えられたかを確認できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このトピックで学習した内容は次のとおりです。
 
 > [!div class="checklist"]

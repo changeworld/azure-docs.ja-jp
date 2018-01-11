@@ -3,7 +3,7 @@ title: "Azure 仮想マシン内の変更を追跡する | Microsoft Docs"
 description: "変更の追跡を使用して、仮想マシン上のファイルとレジストリの変更を追跡します。"
 services: automation
 documentationcenter: automation
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: infrastructure
 ms.date: 09/25/2017
-ms.author: eslesar
+ms.author: gwallace
 ms.custom: 
-ms.openlocfilehash: 5c6e8390ec8533fc7ab281c212e47a6982b30f1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a661fada2e768c2206183c125593d019b557c1d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="track-changes-in-your-azure-virtual-machines"></a>Azure 仮想マシン内の変更を追跡する
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 Azure 仮想マシンがない場合は、[Windows クイック スタート](../virtual-machines/windows/quick-create-portal.md)または [Linux のクイック スタート](../virtual-machines/linux/quick-create-portal.md)の記事の手順に従って作成できます。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
-[Azure ポータル](https://portal.azure.com/)にサインインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="enable-change-tracking-for-an-azure-virtual-machine"></a>Azure 仮想マシンに対する変更の追跡を有効にする
 
@@ -77,7 +77,7 @@ Azure 仮想マシンがない場合は、[Windows クイック スタート](..
 3. **[項目名]** ボックスに、フレンドリ名を入力します。
 4. (省略可能) **[グループ]** ボックスに、グループ名を入力します。
 5. **[Windows レジストリ キー]** ボックスに、追跡するレジストリ キーの名前を入力します。
-6. [ **保存**] を選択します。
+6. **[保存]** を選択します。
 
 ### <a name="add-a-windows-file"></a>Windows ファイルを追加する
 
@@ -90,7 +90,7 @@ Azure 仮想マシンがない場合は、[Windows クイック スタート](..
 3. **[項目名]** ボックスに、フレンドリ名を入力します。
 4. (省略可能) **[グループ]** ボックスに、グループ名を入力します。
 5. **[パスの入力]** ボックスに、追跡するファイルの完全なパスとファイル名を入力します。
-6. [ **保存**] を選択します。
+6. **[保存]** を選択します。
 
 ### <a name="add-a-linux-file"></a>Linux ファイルを追加する
 
@@ -106,7 +106,7 @@ Azure 仮想マシンがない場合は、[Windows クイック スタート](..
 6. **[パスの種類]** ボックスで、**[ファイル]** または **[ディレクトリ]** を選択します。
 7. **[再帰]** で、指定したパスとその下にあるすべてのファイルとパスの変更を追跡するには、**[オン]** を選択します。 選択したパスまたはファイルのみを追跡するには、**[オフ]** を選択します。
 8. **[Sudo の使用]** で、`sudo` コマンドを使用してアクセスする必要があるファイルを追跡するには、で、**[オン]** を選択します。 それ以外の場合は、**[オフ]** を選択します。
-9. [ **保存**] を選択します。
+9. **[保存]** を選択します。
 
 ## <a name="view-changes"></a>変更を表示する
 
@@ -124,7 +124,7 @@ Azure 仮想マシンがない場合は、[Windows クイック スタート](..
 
 Log Analytics でのログ ファイルの実行と検索については、[Log Analytics ](../log-analytics/log-analytics-overview.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 変更の追跡の詳細については、「[変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する](../log-analytics/log-analytics-change-tracking.md)」を参照してください。
 * 仮想マシンの更新管理の詳細については、「[OMS の更新管理ソリューション](../operations-management-suite/oms-solution-update-management.md)」を参照してください。

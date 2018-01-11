@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: a2760072acb7c62204759f3ec0d3cb9899460f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdbac0fd18ad440ece35881cbe165c3c7eff8914
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="service-bus-authentication-with-shared-access-signatures"></a>Shared Access Signature による Service Bus の認証
 
@@ -47,7 +47,7 @@ SAS を理解するうえで重要な点の 1 つは、SAS の基盤はポリシ
 
 ポリシーに使用可能な権限は、いずれも名前から意味がわかりやすくなっています。
 
-* 送信
+* Send
 * リッスン
 * [管理]
 
@@ -66,7 +66,7 @@ Service Bus の名前空間、キュー、トピックでは、このような�
 
 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の主なパラメーターは次のとおりです。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | *KeyName* |承認規則を説明する文字列。 |
 | *PrimaryKey* |SAS トークンの署名と検証用の Base64 でエンコードされた 256 ビットのプライマリ キー。 |
@@ -128,7 +128,7 @@ Service Bus 名前空間の共有アクセス承認規則にアクセスする�
 https://management.core.windows.net/{subscriptionId}/services/ServiceBus/namespaces/{namespace}/AuthorizationRules/
 ```
 
-Service Bus 名前空間に [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを作成するには、JSON または XML としてシリアル化された規則情報を使用して、このエンドポイントに対して POST 操作を実行します。 次に例を示します。
+Service Bus 名前空間に [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを作成するには、JSON または XML としてシリアル化された規則情報を使用して、このエンドポイントに対して POST 操作を実行します。 例: 
 
 ```csharp
 // Base address for accessing authorization rules on a namespace
@@ -317,18 +317,18 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 | 操作 | 必要な要求 | 要求のスコープ |
 | --- | --- | --- |
 | **名前空間** | | |
-| 名前空間での承認規則を構成する |Manage |任意の名前空間アドレス |
+| 名前空間での承認規則を構成する |[管理] |任意の名前空間アドレス |
 | **サービス レジストリ** | | |
-| プライベート ポリシーを列挙する |Manage |任意の名前空間アドレス |
+| プライベート ポリシーを列挙する |[管理] |任意の名前空間アドレス |
 | 名前空間でリッスンを開始する |リッスン |任意の名前空間アドレス |
 | 名前空間のリスナーにメッセージを送信する |送信 |任意の名前空間アドレス |
 | **キュー** | | |
-| キューを作成する |Manage |任意の名前空間アドレス |
-| キューを削除する |Manage |任意の有効なキュー アドレス |
-| キューを列挙する |Manage |/$Resources/Queues |
-| キューの説明を取得する |管理 |任意の有効なキュー アドレス |
-| キューの承認規則を構成する |Manage |任意の有効なキュー アドレス |
-| キューに送信する |送信 |任意の有効なキュー アドレス |
+| キューを作成する |[管理] |任意の名前空間アドレス |
+| キューを削除する |[管理] |任意の有効なキュー アドレス |
+| キューを列挙する |[管理] |/$Resources/Queues |
+| キューの説明を取得する |[管理] |任意の有効なキュー アドレス |
+| キューの承認規則を構成する |[管理] |任意の有効なキュー アドレス |
+| キューに送信する |Send |任意の有効なキュー アドレス |
 | キューからメッセージを受信する |リッスン |任意の有効なキュー アドレス |
 | ピーク ロック モードでメッセージを受信した後にそのメッセージを破棄または終了する |リッスン |任意の有効なキュー アドレス |
 | 後で取得するためにメッセージを保留する |リッスン |任意の有効なキュー アドレス |
@@ -337,27 +337,27 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 | メッセージのキュー セッションに関連付けられた状態を設定する |リッスン |任意の有効なキュー アドレス |
 | **トピック** | | |
 | トピックを作成する |Manage |任意の名前空間アドレス |
-| トピックを削除する |Manage |任意の有効なトピック アドレス |
-| トピックを列挙する |Manage |/$Resources/Topics |
-| トピックの説明を取得する |管理 |任意の有効なトピック アドレス |
-| トピックの承認規則を構成する |Manage |任意の有効なトピック アドレス |
-| トピックに送信する |送信 |任意の有効なトピック アドレス |
+| トピックを削除する |[管理] |任意の有効なトピック アドレス |
+| トピックを列挙する |[管理] |/$Resources/Topics |
+| トピックの説明を取得する |[管理] |任意の有効なトピック アドレス |
+| トピックの承認規則を構成する |[管理] |任意の有効なトピック アドレス |
+| トピックに送信する |Send |任意の有効なトピック アドレス |
 | **サブスクリプション** | | |
-| サブスクリプションを作成する |Manage |任意の名前空間アドレス |
-| サブスクリプションを削除する |Manage |../myTopic/Subscriptions/mySubscription |
-| サブスクリプションを列挙する |Manage |../myTopic/Subscriptions |
-| サブスクリプションの説明を取得する |管理 |../myTopic/Subscriptions/mySubscription |
+| サブスクリプションの作成 |[管理] |任意の名前空間アドレス |
+| サブスクリプションを削除する |[管理] |../myTopic/Subscriptions/mySubscription |
+| サブスクリプションを列挙する |[管理] |../myTopic/Subscriptions |
+| サブスクリプションの説明を取得する |[管理] |../myTopic/Subscriptions/mySubscription |
 | ピーク ロック モードでメッセージを受信した後にそのメッセージを破棄または終了する |リッスン |../myTopic/Subscriptions/mySubscription |
 | 後で取得するためにメッセージを保留する |リッスン |../myTopic/Subscriptions/mySubscription |
 | メッセージを配信不能にする |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を取得する |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を設定する |リッスン |../myTopic/Subscriptions/mySubscription |
 | **規則** | | |
-| 規則を作成する |Manage |../myTopic/Subscriptions/mySubscription |
-| 規則を削除する |Manage |../myTopic/Subscriptions/mySubscription |
+| 規則を作成する |[管理] |../myTopic/Subscriptions/mySubscription |
+| 規則を削除する |[管理] |../myTopic/Subscriptions/mySubscription |
 | 規則を列挙する |管理またはリッスン |../myTopic/Subscriptions/mySubscription/Rules 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

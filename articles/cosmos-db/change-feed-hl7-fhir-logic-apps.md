@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-ms.openlocfilehash: d2b50c0b6864af41fb9cfa051721c432772b228d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a041e2121a2762af4307d7044437032cce79f05
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Logic Apps と Azure Cosmos DB を使用して HL7 FHIR 医療記録の変更を患者に通知する
 
@@ -54,7 +54,7 @@ Azure MVP の Howard Edidin は、最近、患者向けポータルに新しい�
 
 ### <a name="azure-services-used-in-the-solution"></a>ソリューションで使用される Azure サービス
 
-#### <a name="azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB API
+#### <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 Azure Cosmos DB は、次の図に示すように FHIR リソースのレポジトリです。
 
 ![この HL7 FHIR 医療チュートリアルで使用する Azure Cosmos DB アカウント](./media/change-feed-hl7-fhir-logic-apps/account.png)
@@ -86,7 +86,7 @@ Azure Cosmos DB は、次の図に示すように FHIR リソースのレポジ�
 #### <a name="api-app"></a>API アプリ
 API アプリは、Azure Cosmos DB に接続し、リソースの種類によって新しい FHIR ドキュメントまたは変更された FHIR ドキュメントを照会します。 このアプリには 1 つのコントローラー **FhirNotificationApi** と 1 つの操作 **GetNewOrModifiedFhirDocuments** があります。[API アプリのソース](#api-app-source)を参照してください。
 
-Azure Cosmos DB DocumentDB .NET API の [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) クラスを使用しています。 詳細については、[Change Feed に関する記事](change-feed.md)をご覧ください。 
+Azure Cosmos DB SQL .NET API の [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) クラスを使用しています。 詳細については、[Change Feed に関する記事](change-feed.md)をご覧ください。 
 
 ##### <a name="getnewormodifiedfhirdocuments-operation"></a>GetNewOrModifiedFhirDocuments 操作
 

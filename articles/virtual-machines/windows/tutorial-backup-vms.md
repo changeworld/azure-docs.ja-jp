@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8e58a2290e5034ef393f65cbcddb86e18cf4a6ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20760650b093216a2929de580f5971c45e0534a8
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Windows 仮想マシンをバックアップする
 
@@ -78,7 +78,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
     ![既定の IIS web ページ](./media/tutorial-backup-vms/iis-broken.png)
 
 5. ローカル コンピューターで新しいタブを開き､ [Azure ポータル](https://portal.azure.com)に移動します。
-6. 左側のメニューで**仮想マシン**を選択し､一覧から目的の VM を選択します。
+6. 左側のメニューで **[仮想マシン]** を選択し､一覧から VM を選択します。
 8. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップ]** ブレードが開きます。 
 9. ブレード上部のメニューで **[ファイルの回復]** を選択します。 **[ファイルの回復]** ブレードが開きます。
 10. **[ステップ 1: 回復ポイントを選択する]** で、ドロップダウンから復旧ポイントを選択します。

@@ -5,16 +5,16 @@ services: machine-learning
 author: totekp
 ms.author: kefzhou
 manager: akannava
-ms.reviewer: akannava, haining, mldocs
+ms.reviewer: akannava, haining, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: aaadf526577b9b6c254204aae90200661d40f325
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 40e066fe602e8c4680043158f1d401a884e07c19
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>精度が最適で最短時間の実行を見つける
 実行が複数回の場合、ユース ケース例として、最適な精度の実行を見つけることがあります。 アプローチの 1 つは、[JMESPath](http://jmespath.org/) クエリでコマンド ライン インターフェイス (CLI) を使用することです。 Azure CLI で JMESPath を使用する方法については、「[Azure CLI 2.0 での JMESPath クエリの使用](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)」をご覧ください。 次の例では、0、0.98、1、および 1 の精度で 4 個の実行が作成されます。 範囲 `[MaxAccuracy-Threshold, MaxAccuracy]` (`Threshold = .03`) 内に含まれる場合、実行はフィルターされます。
@@ -68,5 +68,5 @@ $find_runs_query = '@[?Accuracy >= sum(`[{0}, -{1}]`)] | sort_by(@, &duration)' 
 az ml history list --query $find_runs_query
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ログ記録の詳細については、「[Azure Machine Learning Workbench で実行履歴とモデル メトリックを使用する方法](how-to-use-run-history-model-metrics.md)」をご覧ください。    

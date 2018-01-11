@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: d71c706a7db570e88339c4ff7af05a48c05df65b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c626d6415a27f8495304eeaab480ab62606102ea
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 今日の企業における重要事項は、外部のエンド ユーザーや社内の従業員向けのモバイル アプリケーションを作成することへと徐々に変化してきました。 社内にはメインフレームや LoB アプリケーションといった既存のバックエンド システムがありますが、これらをモバイル アプリケーション アーキテクチャへと統合する必要が出てきています。 このガイドでは、一般的なシナリオ向けのソリューションを推奨しながら、この統合を行うために最適な方法について説明します。
@@ -212,7 +212,7 @@ ms.lasthandoff: 10/11/2017
    
     ![][3]
    
-    g. ジョブを [連続実行する] ように構成すると、[Azure クラシック ポータル]にログインしたときに、以下のような画面が表示されます。
+    g. ジョブを [連続実行する] ように構成すると、[Azure Portal] にログインしたときに、以下のような画面が表示されます。
    
     ![][4]
 3. **EnterprisePushMobileApp**
@@ -245,7 +245,7 @@ ms.lasthandoff: 10/11/2017
 3. LoB バックエンドをシミュレートする **EnterprisePushBackendSystem** コンソール アプリケーションを実行して、メッセージの送信を開始すると、以下のようなトースト通知が表示されます。
    
     ![][5]
-4. メッセージは、最初に WebJobs の Service Bus のサブスクリプションによって監視されていた Service Bus のトピックに送信されます。 メッセージを受信すると、通知が作成されてモバイル アプリに送信されます。 [Azure クラシック ポータル] で WebJobs の [ログ] リンクをクリックすると、WebJobs ログで処理を確認することができます。
+4. メッセージは、最初に WebJobs の Service Bus のサブスクリプションによって監視されていた Service Bus のトピックに送信されます。 メッセージを受信すると、通知が作成されてモバイル アプリに送信されます。 [Azure Portal] で WebJobs の [ログ] リンクをクリックすると、WebJobs ログで処理を確認することができます。
    
     ![][6]
 
@@ -264,4 +264,4 @@ ms.lasthandoff: 10/11/2017
 [Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法)]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJobs]: ../app-service/web-sites-create-web-jobs.md
 [Notification Hubs の使用 - Windows Universal チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Azure Portal]: https://portal.azure.com/

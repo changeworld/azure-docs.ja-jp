@@ -5,7 +5,7 @@ services: active-directory, virtual-network
 keywords: "Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ  "
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 tags: 
 ms.assetid: eb7170d0-266a-4caa-adce-1855589d65d1
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/06/2017
+ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: 18151f647b857dec78e659a3394359ff21a818c7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 23bea4b6e3351bdce77e6d265ba258ce60a22a36
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Azure Virtual Network での新しい Active Directory フォレストのインストール
 この記事では、[Azure の仮想ネットワーク](../virtual-network/virtual-networks-overview.md)上の仮想マシン (VM) に新しい Windows Server Active Directory 環境を作成する方法について説明します。 この場合、Azure の仮想ネットワークはオンプレミスのネットワークには接続されません。
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/04/2017
 必要に応じて次の関連する記事も参照してください。
 
 * これらの手順については、ビデオ「 [How to install a new Active Directory forest on an Azure virtual network (Azure Virtual Network に新しい Active Directory フォレストをインストールする方法)](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
-* 必要であれば、 [サイト間 VPN を構成](../vpn-gateway/vpn-gateway-site-to-site-create.md) した後、新しいフォレストをインストールするか、オンプレミスのフォレストを Azure Virtual Network に拡張することもできます。 これらの手順については、「 [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](active-directory-install-replica-active-directory-domain-controller.md)」を参照してください。
+* 必要であれば、 [サイト間 VPN を構成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) した後、新しいフォレストをインストールするか、オンプレミスのフォレストを Azure Virtual Network に拡張することもできます。 これらの手順については、「 [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](active-directory-install-replica-active-directory-domain-controller.md)」を参照してください。
 * Azure の仮想ネットワークに Active Directory Domain Services (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
 
 ## <a name="scenario-diagram"></a>シナリオ図
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/04/2017
 | **Active Directory データベース ストレージ** |既定の保存先を C:\ から変更する (省略可能) |既定の保存先を C:\ から変更する (必須) |
 
 ## <a name="create-an-azure-virtual-network"></a>Azure の仮想ネットワークを作成する
-1. Azure クラシック ポータルにサインインします。
+1. Azure ポータルにサインインします。
 2. 仮想ネットワークを作成します。 **[ネットワーク]** > **[Virtual Network の作成]** の順にクリックします。 次の表の値を使用してウィザードの手順を完了します。
 
    | ウィザードのページ | 指定する値 |
@@ -59,7 +59,7 @@ ms.lasthandoff: 12/04/2017
 
 UI ではなく Windows PowerShell を使用して VM を作成する方法については、「 [UAzure PowerShell を使用して Windows ベースの仮想マシンを作成と事前構成する](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
-1. クラシック ポータルで、**[新規]** > **[Compute]** > **[仮想マシン]** > **[ギャラリーから]** の順にクリックします。 次の値を使用して、ウィザードを完了します。 別の値が推奨されたり、要求される場合を除いては、既定の設定値を受け入れます。
+1. Azure Portal で、**[新規]** > **[コンピューティング]** の順に選び、仮想マシンを選びます。 次の値を使用して、ウィザードを完了します。 別の値が推奨されたり、要求される場合を除いては、既定の設定値を受け入れます。
 
    | ウィザードのページ | 指定する値 |
    | --- | --- |
@@ -108,7 +108,7 @@ Windows PowerShell の使い方の詳細については、「[Azure コマンド
 ## <a name="see-also"></a>関連項目
 * [How to install a new Active Directory forest on an Azure virtual network (Azure Virtual Network に新しい Active Directory フォレストをインストールする方法)](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 * [Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
-* [サイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)
+* [サイト間 VPN の構成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 * [Azure Virtual Network でのレプリカ Active Directory ドメイン コントローラーのインストール](active-directory-install-replica-active-directory-domain-controller.md)
 * [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 * [Microsoft Azure IT Pro IaaS: (05) Virtual Network とクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)

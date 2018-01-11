@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: f72f4a3a81fc3a03c86805787caeeacbe6135c5e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 46e284d1636988390f3533d93bfd07399f45dc92
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
@@ -74,7 +74,7 @@ Load Balancer Standard の HA ポート機能のプレビューに参加する�
 
 HA ポート機能でサポートされる構成または例外は次のとおりです。
 
-- 1 つのフロントエンド IP 構成では、HA ポートについての 1 つの DSR 負荷分散規則、または HA ポートについての 1 つの非 DSR 負荷分散規則のどちらかを使うことができます。 両方を持つことはできません。
+- 1 つのフロントエンド IP 構成では、HA ポートについての 1 つの Direct Server Return (DSR - Azure の Floating IP) 負荷分散規則、または HA ポートについての 1 つの非 DSR 負荷分散規則のどちらかを使うことができます。 両方を持つことはできません。
 - 1 つのネットワーク インターフェイス IP 構成では、HA ポートについての非 DSR 負荷分散規則を 1 つだけ使うことができます。 この ipconfig に対して他の規則を構成することはできません。
 - 個々のフロントエンド IP 構成のすべてが一意であれば、1 つのネットワーク インターフェイス IP 構成で、HA ポートについての 1 つまたは複数の DSR ロード バランサー規則を使うことができます。
 - すべての負荷分散規則が HA ポート (DSR のみ) の場合、同じバックエンド プールを示す複数の Load Balancer 規則を併用できます。 すべての規則が HA ポート以外 (DSR および DSR 以外) の場合も同様です。 ただし、HA ポート規則と非 HA ポート規則の組み合わせがある場合は、そのような 2 つの負荷分散規則を併用することはできません。

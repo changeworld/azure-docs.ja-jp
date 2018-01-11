@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7065ceaf87f0cb5ebf46c53c71c6df4b069b2deb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 39c6de1ce2443cf027d7cde067281355ea0b7207
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-helm-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Helm の使用
 
-[Helm](https://github.com/kubernetes/helm/) は、Kubernetes アプリケーションのライフサイクルをインストールおよび管理するのに役立つオープン ソースのパッケージ化ツールです。 *APT* や *Yum* などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートの管理に使用されます。
+[Helm][helm] は、Kubernetes アプリケーションのインストールとライフサイクルの管理に役立つオープン ソースのパッケージ化ツールです。 *APT* や *Yum* などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートの管理に使用されます。
 
 このドキュメントでは、AKS の Kubernetes クラスターで Helm を構成して使用する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイック スタート](./kubernetes-walkthrough.md)を参照してください。
+このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイック スタート][aks-quickstart]をご覧ください。
 
 ## <a name="install-helm-cli"></a>Helm CLI のインストール
 
 Helm CLI は、開発システムで実行されるクライアントで、Helm チャートを使用してアプリケーションを起動、停止、管理することができます。
 
-Azure CloudShell を使用している場合、Helm CLI は既にインストールされています。 Helm CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、「[Installing Helm (Helm のインストール)](https://github.com/kubernetes/helm/blob/master/docs/install.md)」を参照してください。
+Azure CloudShell を使用している場合、Helm CLI は既にインストールされています。 Helm CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、「[Installing Helm (Helm のインストール)][helm-install-options]」をご覧ください。
 
 ```console
 brew install kubernetes-helm
@@ -50,23 +50,24 @@ Bash completion has been installed to:
 
 ## <a name="configure-helm"></a>Helm の構成
 
-Helm コンポーネントを Kubernetes クラスターにインストールし、クライアント側の構成を行うには、[helm init](https://docs.helm.sh/helm/#helm-init) コマンドを使用します。 Helm は AKS クラスターにプレインストールされているため、必要なのはクライアント側の構成のみです。 Helm クライアントを構成するには、次のコマンドを実行します。
+Helm コンポーネントを Kubernetes クラスターにインストールし、クライアント側の構成を行うには、[helm init][helm-init] コマンドを使用します。 次のコマンドを実行して AKS クラスターに Helm をインストールし、Helm クライアントを構成します。
 
 ```azurecli-interactive
-helm init --client-only
+helm init
 ```
 
 出力:
 
 ```
-$HELM_HOME has been configured at /Users/neilpeterson/.helm.
-Not installing Tiller due to 'client-only' flag having been set
+$HELM_HOME has been configured at /home/user/.helm.
+
+Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
 Happy Helming!
 ```
 
 ## <a name="find-helm-charts"></a>Helm チャートの検索
 
-Helm チャートは、Kubernetes クラスターにアプリケーションをデプロイするために使用されます。 事前に作成されている Helm チャートを検索するには、[helm search](https://docs.helm.sh/helm/#helm-search) コマンドを使用します。
+Helm チャートは、Kubernetes クラスターにアプリケーションをデプロイするために使用されます。 事前に作成されている Helm チャートを検索するには、[helm search][helm-search] コマンドを使用します。
 
 ```azurecli-interactive
 helm search
@@ -94,7 +95,7 @@ stable/datadog                  0.8.0   DataDog Agent
 ...
 ```
 
-チャートの一覧を更新するには、[helm repo update](https://docs.helm.sh/helm/#helm-repo-update) コマンドを使用します。
+チャートの一覧を更新するには、[helm repo update][helm-repo-update] コマンドを使用します。
 
 ```azurecli-interactive
 helm repo update
@@ -111,7 +112,7 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ## <a name="run-helm-charts"></a>Helm チャートの実行
 
-NGINX イングレス コントローラーをデプロイするには、[helm install](https://docs.helm.sh/helm/#helm-install) コマンドを使用します。
+NGINX イングレス コントローラーをデプロイするには、[helm install][helm-install] コマンドを使用します。
 
 ```azurecli-interactive
 helm install stable/nginx-ingress
@@ -142,11 +143,11 @@ tufted-ocelot-nginx-ingress-default-backend  1        1        1           1    
 ...
 ```
 
-Kubernetes での NGINX イングレス コントローラーの使用方法の詳細については、[NGINX イングレス コントローラー](https://github.com/kubernetes/ingress/tree/master/controllers/nginx)に関するページを参照してください。
+Kubernetes での NGINX イングレス コントローラーの使用方法の詳細については、[NGINX イングレス コントローラー][nginx-ingress]に関するページを参照してください。
 
 ## <a name="list-helm-charts"></a>Helm チャートの一覧表示
 
-クラスターにインストールされているチャートの一覧を表示するには、[helm list](https://docs.helm.sh/helm/#helm-list) コマンドを使用します。
+クラスターにインストールされているチャートの一覧を表示するには、[helm list][helm-list] コマンドを使用します。
 
 ```azurecli-interactive
 helm list
@@ -164,4 +165,18 @@ bilging-ant     1           Thu Oct  5 00:11:11 2017    DEPLOYED    nginx-ingres
 Kubernetes チャートの管理の詳細については、Helm のドキュメントを参照してください。
 
 > [!div class="nextstepaction"]
-> [Helm のドキュメント](https://github.com/kubernetes/helm/blob/master/docs/index.md)
+> [Helm のドキュメント][helm-documentation]
+
+<!-- LINKS - external -->
+[helm]: https://github.com/kubernetes/helm/
+[helm-documentation]: https://github.com/kubernetes/helm/blob/master/docs/index.md
+[helm-init]: https://docs.helm.sh/helm/#helm-init
+[helm-install]: https://docs.helm.sh/helm/#helm-install
+[helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
+[helm-list]: https://docs.helm.sh/helm/#helm-list
+[helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
+[helm-search]: https://docs.helm.sh/helm/#helm-search
+[nginx-ingress]: https://github.com/kubernetes/ingress-nginx
+
+<!-- LINKS - internal -->
+[aks-quickstart]: ./kubernetes-walkthrough.md

@@ -55,9 +55,9 @@
       items:
         - name: ワークスペースを管理する
           items:
-            - name: 作成
+            - name: '[作成]'
               href: create-workspace.md
-            - name: 管理
+            - name: '[管理]'
               href: manage-workspace.md
             - name: トラブルシューティング
               href: troubleshooting-creating-ml-workspace.md
@@ -195,7 +195,7 @@
       href: web-service-error-codes.md
 - name: 関連項目
   items:
-    - name: Cortana Intelligence ギャラリー
+    - name: Azure AI ギャラリー
       items:
         - name: 概要
           href: gallery-how-to-use-contribute-publish.md
@@ -211,7 +211,7 @@
           href: gallery-competitions.md
         - name: コンペティションに関する FAQ
           href: competition-faq.md
-        - name: Tutorials (チュートリアル)
+        - name: チュートリアル
           href: gallery-tutorials.md
         - name: コレクション
           href: gallery-collections.md

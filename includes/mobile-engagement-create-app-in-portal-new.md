@@ -3,7 +3,7 @@
 2. **[新規]**、**[Web + モバイル]**、**[Mobile Engagement]** の順にクリックします。
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
-3. 表示される **[New Mobile Engagement App Collection (新しい Mobile Engagement アプリ コレクション)]** ブレードで、Azure クラシック ポータルで作成するように、アプリではなくアプリ コレクションを作成します。 次の情報を入力します。
+3. 表示される **[New Mobile Engagement App Collection]\(新しい Mobile Engagement アプリ コレクション\)** ブレードで、アプリ コレクションを作成します。 次の情報を入力します。
    
     ![](./media/mobile-engagement-create-app-in-portal-new/new-azme-app.png)
    

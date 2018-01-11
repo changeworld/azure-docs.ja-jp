@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 2d940b42108948f4cd36a585f1e79def05fe8fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 73d6b42e7a97d6041f6213a1f7d060806734d763
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Threat Modeling Tool の概要
 
@@ -29,13 +29,13 @@ ms.lasthandoff: 10/11/2017
 
 簡単にまとめると、このアプローチにはダイアグラムの作成、脅威の特定、脅威の軽減、各軽減策の検証が含まれます。 このプロセスをまとめた図を次に示します。
 
-![SDL プロセス](./media/azure-security-threat-modeling-tool/sdlapproach.png)
+![SDL プロセス](./media/azure-security-threat-modeling-tool-feature-overview/sdlapproach.png)
 
 ## <a name="starting-the-threat-modeling-process"></a>脅威のモデリング プロセスを開始する
 
 Threat Modeling Tool を起動すると、次の図のようにいくつかの点に気づきます。
 
-![空白の開始ページ](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![空白の開始ページ](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
 ### <a name="threat-model-section"></a>[Threat model]\(脅威モデル\) セクション
 
@@ -70,7 +70,7 @@ Threat Modeling Tool チームはツールの機能と操作性を改善する�
 > 佐藤: はい。 見せてください。
 > 高橋さんがツールを開き、画面を佐藤さんと共有します。
 
-![基本的な脅威モデル](./media/azure-security-threat-modeling-tool/basictmt.png)
+![基本的な脅威モデル](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 > 佐藤: 単純に見えますが、簡単に説明していただけますか。
 > 高橋: もちろんだ。 内訳を説明する。
@@ -89,17 +89,17 @@ Threat Modeling Tool チームはツールの機能と操作性を改善する�
 
 このアプローチは、自宅を守るために、アラーム システムを追加したり、泥棒を追いかける前に、個々のドアと窓にロックのしくみを確実に持たせることに似ています。
 
-![基本的な脅威](./media/azure-security-threat-modeling-tool/basicthreats.png)
+![基本的な脅威](./media/azure-security-threat-modeling-tool-feature-overview/basicthreats.png)
 
 高橋さんは一覧の最初の項目を選択します。 これは次のように動作します。
 
 まず、2 つのステンシル間の相互作用が強調表示されます
 
-![相互作用](./media/azure-security-threat-modeling-tool/interaction.png)
+![相互作用](./media/azure-security-threat-modeling-tool-feature-overview/interaction.png)
 
 次に、脅威に関する詳細情報が [Threat Properties]\(脅威のプロパティ\) ウィンドウに表示されます
 
-![相互作用情報](./media/azure-security-threat-modeling-tool/interactioninfo.png)
+![相互作用情報](./media/azure-security-threat-modeling-tool-feature-overview/interactioninfo.png)
 
 高橋さんは生成された脅威を見て、設計の欠陥の可能性が把握できます。 STRIDE カテゴリは、攻撃ベクトルの可能性に関するヒントになります。また、詳細な説明で、問題のある点とその軽減策の案を正確に把握できます。 高橋さんは編集可能なフィールドを使用して、理由の詳細にメモを書き込んだり、組織のバグ バーに基づいて優先度を変更したりすることができます。
 
@@ -116,7 +116,7 @@ Azure テンプレートの詳細情報には、説明、例、Azure 固有の�
 
 高橋さんは佐藤さんと一覧を検討し、重要なメモ、軽減策/理由、優先度、状態の変更を追加し、[Reports]\(レポート\)、[Create Full Report]\(フル レポートの作成\)、[Save Report]\(レポートの保存\) の順に選択します。これで、同僚との検討に利用できる良質なレポートが印刷され、適切なセキュリティ対策を確実に実施することができます。
 
-![相互作用情報](./media/azure-security-threat-modeling-tool/report.png)
+![相互作用情報](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
 印刷するのではなく、ファイルを共有したい場合は、組織の OneDrive アカウントに保存することで簡単に共有できます。 OneDrive アカウントに保存したら、ドキュメントのリンクをコピーし、同僚と共有することもできます。 
 
@@ -140,6 +140,6 @@ Azure テンプレートの詳細情報には、説明、例、Azure 固有の�
 
 ここで紹介した脅威モデリングのアプローチは、Microsoft が過去に実行したアプローチよりもはるかに単純です。 ソフトウェア設計アプローチは、多くのチームに適していることがわかっています。 その中に皆さんも含まれることを願っています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ご質問、ご意見、懸念事項は tmtextsupport@microsoft.com に送信してください。**[Threat Modeling Tool をダウンロード](https://aka.ms/tmtpreview)**すると、すぐに使い始めることができます。

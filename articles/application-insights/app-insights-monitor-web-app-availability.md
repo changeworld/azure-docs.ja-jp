@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: afe37dd1fcf2b663f3bf97d04b187b356381f3f3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 12/14/2017
+ms.author: sdash
+ms.openlocfilehash: 6932802e7852efa90551c27f9145f7ca6e685d7e
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Web サイトの可用性と応答性の監視
 いずれかのサーバーに Web アプリまたは Web サイトをデプロイした後、テストを設定して、その可用性と応答性を監視できます。 [ Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/08/2017
 
 アプリケーション リソースごとに最大 100 個の可用性テストを作成できます。
 
-## <a name="create"></a>1.可用性テスト レポートのリソースを開く
+## <a name="create"></a>可用性テスト レポートのリソースを開く
 
 Web アプリ用に**既に Application Insights を構成している場合**は、[Azure Portal](https://portal.azure.com) でその Web アプリ用の Application Insights リソースを開きます。
 
@@ -41,7 +41,7 @@ Web アプリ用に**既に Application Insights を構成している場合**�
 
 **[すべてのリソース]** をクリックして新しいリソースの概要ブレードを開きます。
 
-## <a name="setup"></a>2.URL の Ping テストを作成する
+## <a name="setup"></a>URL の Ping テストを作成する
 [可用性] ブレードを開き、テストを追加します。
 
 ![少なくとも自分の Web サイトの URL を入力](./media/app-insights-monitor-web-app-availability/13-availability.png)
@@ -68,7 +68,7 @@ Web アプリ用に**既に Application Insights を構成している場合**�
 さらにテストを追加します。 たとえば、ホーム ページをテストするのに加えて、検索用の URL をテストしてデータベースが稼働していることを確認できます。
 
 
-## <a name="monitor"></a>3.可用性テストの結果を表示する
+## <a name="monitor"></a>可用性テストの結果を表示する
 
 数分後、**[更新]** をクリックしてテスト結果を表示します。 
 
@@ -102,14 +102,11 @@ Web アプリ用に**既に Application Insights を構成している場合**�
 可用性テストの結果から、次のことを実行できます。
 
 * サーバーから受信した応答を調べる。
-* 失敗した要求インスタンスの処理中に、サーバー アプリによって送信されたテレメトリを開く。
+* 失敗した要求インスタンスの処理中に収集されたサーバー側のテレメトリを使用してエラーを診断する。
 * 懸案や作業の項目を Git または VSTS に記録して問題を追跡する。 バグには、このイベントへのリンクが含まれます。
 * Visual Studio で Web テスト結果を開く。
 
-
-*問題がないように見えるのに、エラーとして報告されました。* イメージ、スクリプト、スタイル シート、およびページによって読み込まれるその他のファイルすべてを確認してください。 これらのいずれかにエラーがある場合、メインの html ページの読み込みに問題がない場合でも、テストはエラーとして報告されます。
-
-"*関連項目がない*" 場合は、 サーバー側のアプリケーションに対して Application Insights を設定している場合は、[サンプリング](app-insights-sampling.md)操作中のためである可能性があります。 
+*問題がないように見えるのに、エラーとして報告されました。* [FAQ](#qna) でノイズを減らす方法を確認してください。
 
 ## <a name="multi-step-web-tests"></a>複数手順の Web テスト
 URL の順序に関連するシナリオを監視することができます。 たとえば、販売 Web サイトを監視している場合は、ショッピング カートに商品を正しく追加できるかどうかをテストできます。
@@ -251,11 +248,25 @@ Web サイトに対してロード テストを実行できます。 可用性�
 > パフォーマンス テストの影響を観察するには、[Live Stream](app-insights-live-stream.md) と [Profiler](app-insights-profiler.md) を使用します。
 >
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>オートメーション
 * [PowerShell スクリプトを使用して、可用性テストを自動的に設定します](app-insights-powershell.md#add-an-availability-test)。
 * アラートが発生したときに呼び出される [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) を設定する。
 
 ## <a name="qna"></a>疑問や 問題が発生した場合
+* *プロトコル違反エラーでテストが断続的に失敗します。*
+
+    エラー ("プロトコル違反..CR の後には LF を指定しなければなりません") は、サーバー (または依存関係) に問題があることを示しています。 これは、応答に形式が正しくないヘッダーが設定されている場合に発生します。 ロード バランサーまたは CDN が原因である可能性があります。 具体的には、行末の指定で CRLF を使用していないヘッダーがあります。これは HTTP 仕様に違反しているため、.NET WebRequest レベルで失敗します。 応答を検査して、違反の可能性のあるヘッダーを見つけます。
+    
+    注: HTTP ヘッダーの緩和された検証を行うブラウザーでは、URL は 失敗しない場合があります。 この問題の詳細については、次のブログ記事を参照してください。http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+* *サイトには問題がないように見えるがテストは失敗する*
+
+    * イメージ、スクリプト、スタイル シート、およびページによって読み込まれるその他のファイルすべてを確認してください。 これらのいずれかにエラーがある場合、メインの html ページの読み込みに問題がない場合でも、テストはエラーとして報告されます。 このようなリソース エラーをテストで検出しないようにするには、テスト構成で [依存する要求の解析] をオフにするだけです。 
+
+    * ネットワークの一時的な問題によるノイズの可能性を減らすには、[Enable retries for test failures]\(テストが失敗した場合に再試行を有効にする\) 構成がオンになっていることを確認します。 複数の場所からテストを行い、アラート ルールのしきい値を適宜管理して、過度のアラートの原因となっている場所固有の問題を防ぐこともできます。
+    
+* *テストの失敗を診断するためのサーバー側の関連するテレメトリが表示されない。*
+    
+    サーバー側のアプリケーションに対して Application Insights を設定している場合は、[サンプリング](app-insights-sampling.md)操作中のためである可能性があります。
 * *Web テストからコードを呼び出すことはできますか。*
 
     いいえ。 テストの手順は、.webtest ファイルに含まれている必要があります。 他の Web テストの呼び出しまたはループの使用は許可されていません。 ただし、役に立つさまざまなプラグインがあります。

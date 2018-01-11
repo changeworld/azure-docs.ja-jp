@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/03/2017
+ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: e0e58e443897adad2b6029db4e64fa220cebb6b8
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 60e4a0dbbc15b0414bf1b81e1fd7885e47aa962d
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>トラブルシューティング: Azure で仮想ネットワークを削除できない
 
@@ -65,13 +65,7 @@ Azure Active Directory ドメイン サービスが有効になっていて仮�
 
 ![接続デバイスの確認](media/virtual-network-troubleshoot-cannot-delete-vnet/enable-domain-services.png)
 
-サービスを無効にするには、次の手順に従います。
-
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)に移動します。
-2. 左ウィンドウで、**[Active Directory]** を選択します。
-3. Active Directory ドメイン サービスが有効になっている Azure Active Directory (Azure AD) ディレクトリを選択します。
-4. **[構成]** タブをクリックします。
-5. **[ドメイン サービス]** で、**[このディレクトリのドメイン サービスを有効にします]** オプションを **[いいえ]** に変更します。  
+サービスを無効にするには、「[Azure Portal を使用して Azure Active Directory Domain Services を無効にする](../active-directory-domain-services/active-directory-ds-disable-aadds.md)」をご覧ください。
 
 ### <a name="check-whether-the-virtual-network-is-connected-to-other-resource"></a>仮想ネットワークが他のリソースに接続されていないか確認する
 

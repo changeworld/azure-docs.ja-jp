@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/10/2017
-ms.author: juliako
-ms.openlocfilehash: eada8f2bcd2488d5ed36b0c24aa3d1b917815517
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/05/2017
+ms.author: juliako;johndeu
+ms.openlocfilehash: 066959058576af830103aa98a12f0c36acfdbb14
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
 
-**Media Services Operations REST** API は、Media Services アカウントのオブジェクトでジョブ、アセット、アクセス ポリシー、およびその他の操作を作成するときに使用されます。 詳細については、[Media Services Operations REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)を参照してください。
+**Media Services Operations REST** API は、Media Services アカウントで、ジョブ、アセット、ライブ チャネル、およびその他のリソースを作成するときに使用されます。 詳細については、[Media Services Operations REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)を参照してください。
 
-Microsoft Azure Media Services は OData ベースの HTTP 要求を受け付けるサービスであり、詳細 JSON または atom+pub で応答が可能です。 Media Services は、Azure 設計ガイドラインに準拠しているため、Media Services に接続するときに各クライアントが使用する必要がある必須 HTTP ヘッダーのセットと、使用できる省略可能なヘッダーのセットがあります。 次のセクションでは、要求を作成したり Media Services から応答を受信したりするときに使用できるヘッダーと HTTP 動詞について説明します。
+Media Services は、JSON または atom+pub XML 形式を受け入れる REST API を提供します。 Media Services REST API には、Media Services に接続するときに各クライアントが送信する必要がある特定の HTTP ヘッダーと、省略可能な一連のヘッダーが必要です。 次のセクションでは、要求を作成したり Media Services から応答を受信したりするときに使用できるヘッダーと HTTP 動詞について説明します。
 
-このトピックでは、REST v2 を Media Services で使用する方法について概説します。
+Media Services REST API への認証は、Azure Active Directory 認証で実行されます。これについては、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」に概要が記載されています。
 
 ## <a name="considerations"></a>考慮事項
 
@@ -41,7 +41,7 @@ REST を使用するときには、次の考慮事項が適用されます。
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.11
+        x-ms-version: 2.17
         Authorization: Bearer <token> 
         Host: media.windows.net
   
@@ -52,17 +52,17 @@ REST を使用するときには、次の考慮事項が適用されます。
         . . . 
 
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 要求ヘッダー
-Media Services に対して行うそれぞれの呼び出しについて、要求に含める必要がある必須のヘッダーのセットと、含める可能性がある省略可能なヘッダーのセットがあります。 次の表に、それらの必須のヘッダーを示します。
+Media Services に対して行うそれぞれの呼び出しについて、要求に含める必要がある必須のヘッダーのセットと、含める可能性がある省略可能なヘッダーのセットがあります。 以下の表に、必須ヘッダーの一覧を示します。
 
 | ヘッダー | 型 | 値 |
 | --- | --- | --- |
-| 承認 |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、ACS によって提供されるアクセス トークンを含める必要もあります。 |
-| x-ms-version |小数点 |2.11 |
+| 承認 |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
+| x-ms-version |Decimal |2.17 (または最新バージョン)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
-> Media Services は、OData を使用して REST　APIを介して管理している資産メタデータ レポジトリを公開するため、DataServiceVersion および MaxDataServiceVersion ヘッダーをどの要求にも含める必要があります。含めない場合、Media Services は使用中の DataServiceVersion の値を3.0 と見なします。
+> Media Services は、OData を使用して REST API を公開するので、DataServiceVersion および MaxDataServiceVersion ヘッダーをすべての要求に含める必要があります。含めない場合、Media Services は使用中の DataServiceVersion の値を 3.0 と見なします。
 > 
 > 
 
@@ -71,7 +71,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 | ヘッダー | 型 | 値 |
 | --- | --- | --- |
 | Date |RFC 1123 の日付 |要求のタイムスタンプ |
-| Accept |コンテンツの種類 |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、blob フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの blob ストリームが含まれます。 |
+| Accept |コンテンツの種類 |次のような応答に対する要求のコンテンツの種類:<p> - application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
 | Accept-Encoding |Gzip、deflate |GZIP Encoding および DEFLATE Encoding　(該当する場合)。 注: 大きなリソースでは、Media Services はこのヘッダーを無視し、圧縮されていないデータを返す場合があります。 |
 | Accept-Language |"en"、"es" など。 |応答の優先言語を指定します。 |
 | Accept-Charset |"UTF-8"　などの文字の種類 |既定値は UTF-8 です。 |
@@ -86,7 +86,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 | --- | --- | --- |
 | request-id |String |現在の操作、生成されたサービスのための一意の識別子。 |
 | client-request-id |String |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |
-| Date |RFC 1123 の日付 |要求が処理された日付。 |
+| Date |RFC 1123 の日付 |要求が処理された日時。 |
 | Content-Type |多様 |応答本文のコンテンツの種類。 |
 | Content-Encoding |多様 |Gzip またはデフレート (必要に応じて)。 |
 
@@ -102,18 +102,22 @@ HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次
 | MERGE |名前付きプロパティを変更して、既存のオブジェクトを更新します。 |
 | HEAD |GET 応答に対するオブジェクトのメタデータを返します。 |
 
-## <a name="discover-media-services-model"></a>Media Services のモデルの検出
-Media Services のエンティティを見つけやすくするには、$metadata 操作を使用できます。 これによって、すべての有効なエンティティの種類、エンティティのプロパティ、関連付け、関数、アクションなどを取得できます。 次の例は、URI を作成する方法を示しています。 https://media.windows.net/API/$metadata
+## <a name="discover-and-browse-the-media-services-entity-model"></a>Media Services エンティティ モデルを検出および参照する
+Media Services のエンティティを見つけやすくするには、$metadata 操作を使用できます。 これによって、すべての有効なエンティティの種類、エンティティのプロパティ、関連付け、関数、アクションなどを取得できます。 $metadata 操作を Media Services REST API エンドポイントの末尾に追加すると、この検出サービスにアクセスできます。
+
+ /api/$metadata.
 
 ブラウザーにメタデータを表示する場合は　URI の末尾に "?api-version=2.x" を追加してください。または、要求に　x-ms-version　を含めないでください。
 
-## <a name="connect-to-media-services"></a>Media Services への接続
+## <a name="authenticate-with-media-services-rest-using-azure-active-directory"></a>Media Services REST で Azure Active Directory を使用して認証する
 
-AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
+REST API での認証は、Azure Active Directory (AAD) によって行われます。
+Media Services アカウントに必要な認証の詳細を Azure Portal から取得する方法の詳細については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
+
+Azure AD 認証を使用して REST API に接続するコードの作成の詳細については、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-
-REST を使った AMS API へのアクセスについては、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
+Media Services REST API で Azure AD 認証を使用する方法については、「[REST で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-rest-connect-with-aad.md)」を参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

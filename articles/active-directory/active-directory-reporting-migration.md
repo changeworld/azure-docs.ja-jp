@@ -1,37 +1,36 @@
 ---
-title: "Azure Portal でアクティビティ レポートを見つける | Microsoft Docs"
-description: "Azure Portal で Azure Active Directory のアクティビティ レポートを見つける方法について説明します。"
+title: "Azure Portal で Azure Active Directory のユーザー アクティビティ レポートを見つける | Microsoft Docs"
+description: "Azure Portal で Azure Active Directory のアクティビティ レポートがある場所について説明します。"
 services: active-directory
 documentationcenter: 
-author: MarkusVi
-manager: femila
+author: curtand
+manager: mtillman
 editor: 
 ms.assetid: d93521f8-dc21-4feb-aaff-4bb300f04812
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/21/2017
-ms.author: dhanyahk;markvi
+ms.date: 12/06/2017
+ms.author: curtand
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6f1485ad57eb28841ef5fe585e8cf1b8eb29e4a7
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 23c186e268e9a43982ec6c34d350900793fad8de
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
-Azure クラシック ポータルから Azure Portal に移行すると、Azure Active Directory (Azure AD) のアクティビティ ログが新しい形式で表示されます。 最近の[ブログの投稿](https://blogs.technet.microsoft.com/enterprisemobility/2016/11/08/azuread-weve-just-turned-on-detailed-auditing-and-sign-in-logs-in-the-new-azure-portal/)で、アクティビティ ログを作業対象のリソースのコンテキストで Azure Portal に表示する方法について説明しています。 この記事では、Azure クラシック ポータルで使用していたレポートを Azure Portal で見つける方法について説明します。
+この記事では、Azure Portal で Azure Active Directory のユーザー アクティビティ レポートを見つける方法について説明します。
 
 ## <a name="whats-new"></a>新機能
 
-Azure クラシック ポータルでは、レポートは次のカテゴリに分けられています。
-
-1.  セキュリティ レポート
-2.  アクティビティ レポート
-3.  統合アプリケーション レポート
+Azure クラシック ポータルでは、レポートは次のカテゴリに分けられていました。
+* セキュリティ レポート
+* アクティビティ レポート
+* 統合アプリケーション レポート
 
 ### <a name="activity-and-integrated-app-reports"></a>アクティビティ レポートと統合アプリケーション レポート
 
@@ -43,14 +42,14 @@ Azure Portal のコンテキストに基づくレポートでは、既存のレ�
 
 このビューには、次のレポートが統合されています。
 
--   監査レポート
--   パスワード リセット アクティビティ
--   パスワード リセット登録アクティビティ
--   セルフ サービス グループ アクティビティ
--   Office 365 グループ名の変更
--   アカウント プロビジョニングのアクティビティ
--   パスワード ロールオーバーの状態
--   アカウント プロビジョニング エラー
+* 監査レポート
+* パスワード リセット アクティビティ
+* パスワード リセット登録アクティビティ
+* セルフ サービス グループ アクティビティ
+* Office 365 グループ名の変更
+* アカウント プロビジョニングのアクティビティ
+* パスワード ロールオーバーの状態
+* アカウント プロビジョニング エラー
 
 
 アプリケーションの使用状況レポートは強化され、**[サインイン]** ビューに表示されるようになりました。 このビューを表示するには、**[Azure Active Directory]**ブレードで、**[アクティビティ]** の下の **[サインイン]** を選択します。

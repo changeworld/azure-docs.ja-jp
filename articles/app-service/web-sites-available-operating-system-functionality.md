@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-ms.openlocfilehash: 18ff5c81d0aa5e8a28ed8a11dad19811d2fa1d2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5f022eca8f901388c9cf003f3320db1b9c49e6a
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべてのアプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
@@ -27,6 +27,8 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="app-service-plan-tiers"></a>App Service プランの階層
 App Service は、マルチテナント ホスティング環境で顧客のアプリを実行します。 **Free** レベルと **Shared** レベルでデプロイされたアプリは、共有仮想マシン上のワーカー プロセスで実行されます。一方、**Standard** レベルと **Premium** レベルでデプロイされたアプリは、単一の顧客に関連付けられたアプリ専用の仮想マシン上で実行されます。
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 App Service はどのレベルでもシームレスにスケーリングされるので、App Service アプリのセキュリティ構成は選択するレベルに左右されません。 これにより、App Service プランを別のレベルに切り替えたときにアプリの動作が突然変わって予期しないエラーが発生することはありません。
 

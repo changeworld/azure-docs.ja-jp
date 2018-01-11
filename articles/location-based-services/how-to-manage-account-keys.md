@@ -6,14 +6,14 @@ keywords: "SEO チャンプを確認せずに、キーワードを追加また�
 author: philmea
 ms.author: philmea
 ms.date: 11/14/2017
-ms.topic: how-to
+ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: c7f877eebefb3ed7c8230c2436e5cb024cc99c11
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: ccdeafeaf869768f4094aaa31fe2a69d52d7cf9d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>Azure Location Based Services アカウントとキーを管理する方法
 
@@ -21,7 +21,7 @@ Azure Location Based Services アカウントとキーは、Azure Portal で管�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン 
+## <a name="log-in-to-azure"></a>Azure にログインする 
 
 Azure Portal (http://portal.azure.com) にログインします。
 

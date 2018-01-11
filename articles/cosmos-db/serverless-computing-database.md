@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: f9bcecff4031bcf51e3885ad98da69d9be41b397
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 8ec4cf774306a5b74627adc0d405bab09645ec9a
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -44,7 +44,7 @@ Azure Cosmos DB トリガー、入力バインディング、出力バインデ�
 * Azure Cosmos DB コンテナーへの入力バインディングは、Azure Cosmos DB トリガーと同じ関数で使用できます。また、出力バインディングの有無にかかわらず使用できます。 この組み合わせを使用すると、ショッピング カート サービスの新しい注文の変更フィードに最新の為替情報を適用できます (為替コンテナーに対する入力バインディングで取得します)。 最新の為替換算を適用して更新した後のショッピング カート合計は、出力バインディングを使用して 3 つ目のコンテナーに書き込むことができます。
 
 > [!NOTE]
-> 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、DocumentDB アカウント、Table アカウント、Graph API アカウントにのみ使用できます。
+> 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、SQL API アカウントと Graph API アカウントにのみ使用できます。
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -86,18 +86,18 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>ゲームのユース ケース - Azure Cosmos DB トリガーと出力バインディング
 
-ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Graph API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB Table データベース](table-introduction.md)に書き込むことができます。
+ゲームでは、新しいユーザーを作成するときに、[Azure Cosmos DB Graph API](graph-introduction.md) を使用して、知っている可能性のある他のユーザーを検索することができます。 簡単に取得できるように、結果を [Azure Cosmos DB SQL データベース] に書き込むことができます。
 
 **実装:** Azure Cosmos DB トリガーと出力バインディングを使用する
 
 1. Azure Cosmos DB [グラフ データベース](graph-introduction.md)を使用してすべてのユーザーを格納することで、Azure Cosmos DB トリガーを使用して新しい関数を作成できます。 
 2. 新しいユーザーが挿入されるたびに関数が呼び出され、結果は**出力バインディング**を使用して格納されます。
 3. この関数は、グラフ データベースに対して、新しいユーザーに直接関連するすべてのユーザーを検索するクエリを実行し、そのデータセットを関数に返します。
-4. このデータは、Azure Cosmos DB [テーブル データベース](table-introduction.md)にキーと値のペア セットとして格納されます。新規ユーザーに接続されている友人を表示する任意のフロントエンド アプリケーションから、このデータを簡単に取得できます。
+4. このデータは、Azure Cosmos DB に格納されます。新規ユーザーに接続されている友人を表示する任意のフロントエンド アプリケーションから、このデータを簡単に取得できます。
 
 ### <a name="retail-use-case---multiple-functions"></a>小売のユース ケース - 複数の関数
 
-小売の実装では、ユーザーがアイテムをバスケットに追加したときに、オプションのビジネス パイプライン コンポーネントの関数を柔軟に作成し、呼び出すことができるようになります。
+小売の実装では、ユーザーが項目をバスケットに追加したときに、オプションのビジネス パイプライン コンポーネントの関数を柔軟に作成し、呼び出すことができるようになります。
 
 **実装:** 1 つの接続をリッスンする複数の Azure Cosmos DB トリガー
 
@@ -120,11 +120,11 @@ Azure Portal では、Azure Cosmos DB と Azure Functions 間のネイティブ�
 *   Azure Cosmos DB ポータルで、Azure Cosmos DB トリガーを同じリソース グループ内の既存の Azure Functions アプリに追加できます。
     ![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/cosmos-db-portal.png)
 
-## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>サーバーレス コンピューティングに Azure Functions 統合を選択する理由
+## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>サーバーなしのコンピューティングに Azure Functions 統合を選択する理由
 
 Azure Functions には、スケーラブルなユニットの作業や、オンデマンドで実行できるロジックの簡潔な部分を作成する機能があります。インフラストラクチャをプロビジョニングまたは管理する必要はありません。 Azure Functions を使用すると、Azure Cosmos DB データベースの変更に反応する本格的なアプリケーションを作成する必要はありません。特定のタスクのために小さな再利用可能な関数を作成できます。 また、HTTP 要求または適時のトリガーなどのイベントに応答して、Azure Functions への入力または出力として Azure Cosmos DB データを使用することもできます。
 
-Azure Cosmos DB は、サーバーレス コンピューティング アーキテクチャに推奨されるデータベースです。その理由は次のとおりです。
+Azure Cosmos DB は、サーバーなしのコンピューティング アーキテクチャに推奨されるデータベースです。その理由は次のとおりです。
 
 * **すべてのデータにすぐにアクセス**: Azure Cosmos DB の既定では、すべてのデータの[インデックスが自動的に作成され](indexing-policies.md)、それらのインデックスをすぐに使用できるため、格納されているすべての値に対するアクセス権を細かくすることができます。 つまり、データベースに対して新しい項目のクエリ、更新、追加をいつでも実行し、Azure Functions 経由ですぐにアクセスできます。
 

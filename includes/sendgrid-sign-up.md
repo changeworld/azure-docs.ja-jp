@@ -1,7 +1,7 @@
 Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。 毎月 25,000 通の無料電子メールにより、高度なレポートおよび分析と [すべての API][all APIs] (Web、SMTP、イベント、解析など) を利用できるようになります。 SendGrid の提供するその他のサービスについては、[SendGrid のソリューション][SendGrid Solutions]に関するページにアクセスしてください。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid アカウントにサインアップするには
-1. [Azure 管理ポータル][Azure Management Portal]にログインします。
+1. [Azure Portal][Azure portal] にログインします。
 2. 左側のメニューで **[新規]** をクリックします。
 
     ![command-bar-new][command-bar-new]
@@ -33,7 +33,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 
     サブスクリプション プランを変更するか、SendGrid 連絡先設定を表示するには、SendGrid サービスの名前をクリックし、SendGrid Marketplace ダッシュボードを開きます。
 
-    ![[設定]][settings]
+    ![設定][settings]
 
     SendGrid を使用して電子メールを送信するには、API キーを指定する必要があります。
 
@@ -82,7 +82,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 <!--Links-->
 
 [SendGrid Solutions]: https://sendgrid.com/solutions
-[Azure Management Portal]: https://manage.windowsazure.com
+[Azure portal]: https://portal.azure.com
 [SendGrid Getting Started]: http://sendgrid.com/docs
 [SendGrid Provisioning Process]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [all APIs]: https://sendgrid.com/docs/API_Reference/index.html

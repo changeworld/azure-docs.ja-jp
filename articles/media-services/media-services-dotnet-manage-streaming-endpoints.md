@@ -1,6 +1,6 @@
 ---
 title: ".NET SDK を使用してストリーミング エンドポイントを管理する。 | Microsoft Docs"
-description: "このトピックでは、Azure ポータルを使用してストリーミング エンドポイントを管理する方法について説明します。"
+description: "この記事では、Azure ポータルを使ってストリーミング エンドポイントを管理する方法について説明します。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -13,20 +13,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 2f4f464f8604b6f453d6b50b736c6a3a889a3408
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba17e7a89ebfeb3bd854bb906bdb887b0cd54064
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>.NET SDK を使用してストリーミング エンドポイントを管理する
 
 >[!NOTE]
->必ず、[概要](media-services-streaming-endpoints-overview.md)トピックをお読みください。 また、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint) もお読みください。
+>必ず、[概要](media-services-streaming-endpoints-overview.md)記事をお読みください。 また、[StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint) もお読みください。
 
-このトピックでは、Azure Media Services .NET SDK を使用して次のタスクを実行するためのコードを示します。
+この記事では、Azure Media Services .NET SDK を使って次のタスクを実行するためのコードを示します。
 
 - 既定のストリーミング エンドポイントを調べる。
 - 新しいストリーミング エンドポイントを作成/追加する。
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
     >[!NOTE]
     >既定のストリーミング エンドポイントは削除できません。
 
-ストリーミング エンドポイントのスケールを設定する方法については、 [こちらの](media-services-portal-scale-streaming-endpoints.md) トピックを参照してください。
+ストリーミング エンドポイントのスケールを設定する方法については、[こちら](media-services-portal-scale-streaming-endpoints.md)の記事をご覧ください。
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
@@ -55,27 +55,37 @@ ms.lasthandoff: 10/11/2017
     
 Program.cs のコードを次のコードに置き換えます。
 
-    using System;
-    using System.Configuration;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using Microsoft.WindowsAzure.MediaServices.Client.Live;
+```
+using System;
+using System.Configuration;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using Microsoft.WindowsAzure.MediaServices.Client.Live;
 
-    namespace AMSStreamingEndpoint
+namespace AMSStreamingEndpoint
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
+
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context = null;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -104,10 +114,10 @@ Program.cs のコードを次のコードに置き換えます。
             var name = "StreamingEndpoint" + DateTime.UtcNow.ToString("hhmmss");
             var option = new StreamingEndpointCreationOptions(name, 1)
             {
-            StreamingEndpointVersion = new Version("2.0"),
-            CdnEnabled = true,
-            CdnProfile = "CdnProfile",
-            CdnProvider = CdnProviderType.PremiumVerizon
+                StreamingEndpointVersion = new Version("2.0"),
+                CdnEnabled = true,
+                CdnProfile = "CdnProfile",
+                CdnProvider = CdnProviderType.PremiumVerizon
             };
 
             var streamingEndpoint = _context.StreamingEndpoints.Create(option);
@@ -118,7 +128,7 @@ Program.cs のコードを次のコードに置き換えます。
         static public void UpdateStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
         {
             if (streamingEndpoint.StreamingEndpointVersion == "1.0")
-            streamingEndpoint.StreamingEndpointVersion = "2.0";
+                streamingEndpoint.StreamingEndpointVersion = "2.0";
 
             streamingEndpoint.CdnEnabled = false;
             streamingEndpoint.Update();
@@ -128,9 +138,9 @@ Program.cs のコードを次のコードに置き換えます。
         {
             streamingEndpoint.Delete();
         }
-        }
     }
-
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。

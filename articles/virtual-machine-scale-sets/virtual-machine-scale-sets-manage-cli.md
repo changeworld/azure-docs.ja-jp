@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 5686d8bd3f9817be2308583afe778e0615154580
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: 6ae05dc8faf950f584806d9b4a3e7e1466ded652
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用した仮想マシン スケール セットの管理
 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI 2.0 コマンドの一部について説明します。
 
-これらの管理タスクを実行するには、最新の Azure CLI 2.0 ビルドが必要です。 最新バージョンをインストールして使用する方法については、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure Portal でスケール セットを作成](virtual-machine-scale-sets-portal-create.md)できます。
+これらの管理タスクを実行するには、最新の Azure CLI 2.0 ビルドが必要です。 最新バージョンをインストールして使用する方法については、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure Portal でスケール セットを作成](virtual-machine-scale-sets-create-portal.md)できます。
 
 
 ## <a name="view-information-about-a-scale-set"></a>スケール セットに関する情報を表示する
@@ -45,7 +45,7 @@ az vmss list-instances \
   --output table
 ```
 
-特定の VM インスタンスに関する追加情報を表示するには、`--instance-id` パラメーターを [az vmss get-instance-view](/cli/azure/vmss#get-instance-view) に追加し、表示するインスタンスを指定します。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示できます。 実際の名前を次のように入力してください。
+特定の VM インスタンスに関する追加情報を表示するには、`--instance-id` パラメーターを [az vmss get-instance-view](/cli/azure/vmss#get-instance-view) に追加し、表示するインスタンスを指定します。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内の VM インスタンス *0* に関する情報を表示できます。 独自の名前を次のように入力します。
 
 ```azurecli
 az vmss get-instance-view \
@@ -99,7 +99,7 @@ az vmss scale \
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-停止した VM は割り当てられたままであり、引き続きコンピューティングの料金が発生します。 VM の割り当てを解除してストレージの料金のみが課金されるようにするには、[az vmss deallocate](/cli/azure/vmss#deallocate) を使用します。 複数の VM の割り当てを解除するには、それぞれのインスタンス ID をスペースで区切ります。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が停止され、割り当てが解除されます。 実際の値を次のように入力してください。
+停止した VM は割り当てられたままであり、引き続きコンピューティングの料金が発生します。 VM の割り当てを解除してストレージの料金のみが課金されるようにするには、[az vmss deallocate](/cli/azure/vmss#deallocate) を使用します。 複数の VM の割り当てを解除するには、それぞれのインスタンス ID をスペースで区切ります。 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が停止され、割り当てが解除されます。 独自の値を次のように指定します。
 
 ```azurecli
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -127,7 +127,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>スケール セットから VM を削除する
-スケール セット内の 1 つ以上の VM を削除するには、[az vmss delete-instances](/cli/azure/vmss#delete-instances) を使用します。 `--instance-ids`` パラメーターには、削除する VM を 1 つ以上指定することができます。 インスタンス ID に * を指定した場合は、スケール セット内のすべての VM が削除されます。 複数の VM を削除するには、それぞれのインスタンス ID をスペースで区切ります。
+スケール セット内の 1 つ以上の VM を削除するには、[az vmss delete-instances](/cli/azure/vmss#delete-instances) を使用します。 `--instance-ids` パラメーターでは、削除する VM を 1 つ以上指定できます。 インスタンス ID に * を指定した場合は、スケール セット内のすべての VM が削除されます。 複数の VM を削除するには、それぞれのインスタンス ID をスペースで区切ります。
 
 次の例を実行すると、*myScaleSet* という名前のスケール セットおよび *myResourceGroup* リソース グループ内のインスタンス *0* が削除されます。 独自の値を次のように指定します。
 
@@ -136,5 +136,5 @@ az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --in
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 スケール セットに対する他の一般的なタスクとして、[アプリケーションのデプロイ](virtual-machine-scale-sets-deploy-app.md)や [VM インスタンスのアップグレード](virtual-machine-scale-sets-upgrade-scale-set.md)があります。 Azure CLI を使用して[自動スケール ルールを構成する](virtual-machine-scale-sets-autoscale-overview.md)こともできます。

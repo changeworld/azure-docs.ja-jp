@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 62cd20474e7770c30353fc74dfc67086593fca7a
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2980d4733dcf138c3a9aa1713cff994bbf5a296c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introduction-to-azure-container-service-aks"></a>Azure Container Service (AKS) の概要
 
@@ -34,10 +34,10 @@ AKS は、責任の多くを Azure にオフロードすることで、Kubernete
 AKS クラスター内のノードの管理は Azure が処理するので、管理者は、クラスターのアップグレードなどの多くのタスクを手動で実行する必要がありません。 Azure がこれらの重要なメンテナンス タスクを自動的に処理するため、AKS ではクラスターへの直接的なアクセス (SSH など) は提供されていません。
 
 ## <a name="using-azure-container-service-aks"></a>Azure Container Service (AKS) の使用
-AKS は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。 この目的のために、標準の Kubernetes API エンドポイントを公開します。 これらの標準のエンドポイントを使用することにより、Kubernetes クラスターと通信できる任意のソフトウェアを活用できます。 たとえば、[kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)、[helm](https://helm.sh/)、[draft](https://github.com/Azure/draft) を選択できます。
+AKS は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。 この目的のために、標準の Kubernetes API エンドポイントを公開します。 これらの標準のエンドポイントを使用することにより、Kubernetes クラスターと通信できる任意のソフトウェアを活用できます。 たとえば、[kubectl][kubectl-overview]、[helm][helm]、[draft][draft] を選択できます。
 
 ## <a name="creating-a-kubernetes-cluster-using-azure-container-service-aks"></a>Azure Container Service (AKS) を使用した Kubernetes クラスターの作成
-AKS の使用を開始するには、[Azure CLI](./kubernetes-walkthrough.md) を使用するか、ポータル (Marketplace で **Azure Container Service** を検索) 経由で、AKS クラスターをデプロイします。 Azure Resource Manager テンプレートを細かく制御する必要がある上級ユーザーの場合は、オープン ソースの [acs-engine](https://github.com/Azure/acs-engine) プロジェクトを使用して、独自のカスタム Kubernetes クラスターを構築し、これを `az` CLI 経由でデプロイできます。
+AKS の使用を開始するには、[Azure CLI][aks-quickstart] を使用するか、ポータル (Marketplace で **Azure Container Service** を検索) 経由で、AKS クラスターをデプロイします。 Azure Resource Manager テンプレートを細かく制御する必要がある上級ユーザーの場合は、オープン ソースの [acs-engine][acs-engine] プロジェクトを使用して、独自のカスタム Kubernetes クラスターを構築し、これを `az` CLI 経由でデプロイできます。
 
 ### <a name="using-kubernetes"></a>Kubernetes の使用
 この Kubernetes により、コンテナー化されたアプリケーションのデプロイ、スケーリング、および管理が自動化されます。 Kubernetes には、次に示す豊富な機能セットが用意されています。
@@ -67,4 +67,14 @@ Kubernetes でのアプリケーションの開発およびデプロイに使用
 AKS のデプロイと管理の詳細を AKS クイックスタートで確認してください。
 
 > [!div class="nextstepaction"]
-> [AKS チュートリアル](./kubernetes-walkthrough.md)
+> [AKS チュートリアル][aks-quickstart]
+
+<!-- LINKS - external -->
+[acs-engine]: https://github.com/Azure/acs-engine
+[draft]: https://github.com/Azure/draft
+[helm]: https://helm.sh/
+[kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
+
+<!-- LINKS - internal -->
+[aks-quickstart]: ./kubernetes-walkthrough.md
+

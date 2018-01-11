@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal でクラシック ポリシーを移行する | Microsoft Docs"
-description: "Azure Portal でクラシック ポリシーを移行します。"
+description: "Azure Portal でクラシック ポリシーを移行するために知っておく必要があることについて説明します。"
 services: active-directory
 keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
 documentationcenter: 
@@ -13,162 +13,156 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/23/2017
+ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: c584eddb5542c2c49d08d35bcaf8e7acb5c5b83a
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 16628bd4fa41d2e7697e1c2501f2ccd31dbd0496
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="migrate-classic-policies-in-the-azure-portal"></a>Azure Portal でクラシック ポリシーを移行する 
 
 
-[条件付きアクセス](active-directory-conditional-access-azure-portal.md)は、Azure Active Directory (Azure AD) の 1 つの機能で、使用すると、承認されたユーザーがクラウド アプリにアクセスする方法を制御できます。 目的は変わりませんが、新しい Azure Portal のリリースにより、条件付きアクセスのしくみが大幅に改善されました。 Azure Portal 以外で構成した条件付きアクセス ポリシーは、Azure Portal で作成している新しいポリシーと共存できます。 それらは、無効にしたり削除したりしない限り、使用している環境で引き続き適用されます。 ただし、次の理由により、クラシック ポリシーを新しい Azure AD 条件付きアクセス ポリシーに移行することをお勧めします。
+[条件付きアクセス](active-directory-conditional-access-azure-portal.md)は、Azure Active Directory (Azure AD) の 1 つの機能で、使用すると、承認されたユーザーがクラウド アプリにアクセスする方法を制御できます。 目的は変わりませんが、新しい Azure Portal のリリースにより、条件付きアクセスのしくみが大幅に改善されました。
 
-- 新しいポリシーを使用すると、クラシック ポリシーでは対処できなかったシナリオに対応できます。
+次の理由から、Azure Portal で作成していないポリシーの移行を検討する必要があります。
+
+- 以前は処理できなかったシナリオに対処できるようになった可能性があります。
 
 - ポリシーを統合することで、管理する必要のあるポリシーの数を減らすことができます。   
 
-このトピックは、既存のクラシック ポリシーを新しい Azure AD 条件付きアクセス ポリシーに移行する際に役立ちます。
+- 一元的な場所ですべての条件付きアクセス ポリシーを管理することができます。
 
+- Azure クラシック ポータルは廃止されます。   
 
+この記事では、既存の条件付きアクセス ポリシーを新しいフレームワークに移行するために知っておく必要があることについて説明します。
+ 
 ## <a name="classic-policies"></a>クラシック ポリシー
 
-Azure Portal で作成していない、Azure AD および Intune の条件付きアクセス ポリシーは、**クラシック ポリシー**とも呼ばれます。 クラシック ポリシーを移行するために、Azure クラシック ポータルにアクセスできる必要はありません。 Azure Portal には、クラシック ポリシーを確認できる [**[クラシック ポリシー (プレビュー)]** ビュー](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies)が用意されています。
+[Azure Portal](https://portal.azure.com) では、[[条件付きアクセス - ポリシー]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) ページは条件付きアクセス ポリシーのエントリ ポイントです。 ただし、環境によっては、このページを使用して作成していない条件付きアクセス ポリシーがある場合もあります。 これらのポリシーは*クラシック ポリシー*と呼ばれます。 クラシック ポリシーは、次の場所で作成した条件付きアクセス ポリシーです。
 
-![Azure Active Directory](./media/active-directory-conditional-access-migration/33.png)
+- Azure クラシック ポータル
+- Intune クラシック ポータル
+- Intune App Protection ポータル
 
 
-### <a name="open-a-classic-policy"></a>クラシック ポリシーを開く
+**[条件付きアクセス]** ページでは、**[管理]** セクションの [**[クラシック ポリシー (プレビュー)]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) をクリックしてクラシック ポリシーにアクセスできます。 
 
-**クラシック ポリシーを開くには:**
 
-1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
+![Azure Active Directory](./media/active-directory-conditional-access-migration/71.png)
 
-    ![Azure Active Directory](./media/active-directory-conditional-access-migration/01.png)
 
-2. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
+**[クラシック ポリシー]** ビューには以下を行うオプションがあります。
 
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/02.png)
+- クラシック ポリシーをフィルター処理します。
  
-2. **[条件付きアクセス - ポリシー]** ページの **[管理]** セクションで、**[クラシック ポリシー (プレビュー)]** をクリックします。
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/72.png)
 
-3. クラシック ポリシーの一覧から、確認するポリシーを選択します。   
+- クラシック ポリシーを無効にします。
 
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/34.png)
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/73.png)
+   
+- クラシック ポリシーの設定をレビューします (また、無効にします)。
+
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/74.png)
+
+
+クラシック ポリシーを無効にした場合、この手順を元に戻すことはできません。 このため、クラシック ポリシーのグループ メンバーシップは **[詳細]** ビューを使用して変更できます。 
+
+![Azure Active Directory](./media/active-directory-conditional-access-migration/75.png)
+
+選択したグループを変更するか、特定のグループを除外すると、含まれるすべてのユーザーとグループに対してポリシーを無効にする前に、少数のテスト ユーザーに対して無効にしたクラシック ポリシーの効果をテストできます。 
 
 
 
 ## <a name="azure-ad-conditional-access-policies"></a>Azure AD 条件付きアクセス ポリシー
 
-このトピックでは、Azure AD 条件付きアクセス ポリシーの知識がなくてもクラシック ポリシーを移行できるようにする詳細な手順を紹介します。 ただし、Azure AD 条件付きアクセスの基本的な概念と用語を知っていると、移行エクスペリエンスの向上に役立ちます。
+Azure Portal の条件付きアクセスでは、すべてのポリシーを一元的な場所で管理することができます。 条件付きアクセスの実装方法は大幅に変更されたため、クラシック ポリシーを移行する前に基本的な概念をよく理解しておく必要があります。
 
 参照:
 
 - 「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」では、基本的な概念と用語について確認します。
 
+- 「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」では、組織内での条件付きアクセスの展開に関するガイダンスを取得します。
+
 - 「[Azure Active Directory での条件付きアクセスの基本](active-directory-conditional-access-azure-portal-get-started.md)」では、Azure Portal のユーザー インターフェイスについて理解を深めます。
 
 
  
+## <a name="migration-considerations"></a>移行に関する考慮事項
+
+この記事では、Azure AD の条件付きアクセス ポリシーを*新しいポリシー*とも呼びます。
+クラシック ポリシーは、無効にするか削除するまで新しいポリシーと並行して動作を続けます。 
+
+ポリシー統合のコンテキストでは次の側面が重要です。
+
+- クラシック ポリシーは特定のクラウド アプリに関連付けられていますが、新しいポリシーで必要な場合はクラウド アプリをいくつでも選択できます。
+
+- クラウド アプリのクラシック ポリシーと新しいポリシーのコントロールでは、すべてのコントロール (*AND*) を満たす必要があります。 
+
+
+- 新しいポリシーでは、次の操作を実行できます。
+ 
+    - シナリオで必要な場合に、複数の条件を結合します。 
+
+    - 複数の許可要件をアクセス制御として選び、それらを論理 *OR* (選択したコントロールのいずれかが必要) または論理 *AND* (すべての選択したコントロールが必要) で結合します。
+
+        ![Azure Active Directory](./media/active-directory-conditional-access-migration/25.png)
 
 
 
 
+### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
 
-## <a name="multi-factor-authentication-policy"></a>多要素認証ポリシー 
+**Exchange Active Sync** をクライアント アプリの条件として含む **Office 365 Exchange online** のクラシック ポリシーを移行する場合は、1 つの新しいポリシーに統合できないことがあります。 
 
-この例では、クラウドアプリに多要素認証** を要求するクラシック ポリシーを移行する方法を示します。 
+たとえば、すべてのクライアント アプリの種類をサポートしない場合などです。 **Exchange Active Sync** をクライアント アプリの条件として持つ新しいポリシーでは、他のクライアント アプリを選択できません。
 
-![Azure Active Directory](./media/active-directory-conditional-access-migration/33.png)
+![Azure Active Directory](./media/active-directory-conditional-access-migration/64.png)
 
+クラシック ポリシーに複数の条件が含まれている場合も、1 つの新しいポリシーに統合できません。 **Exchange Active Sync** がクライアント アプリの条件として構成されている新しいポリシーでは、他の条件はサポートされません。   
 
-**クラシック ポリシーを移行するには:**
+![Azure Active Directory](./media/active-directory-conditional-access-migration/08.png)
 
-1. [クラシック ポリシーを開き](#open-a-classic-policy)、構成設定を取得します。
-2. 新しい Azure AD 条件付きアクセス ポリシーを作成し、クラシック ポリシーを置き換えます。 
+**Exchange Active Sync** がクライアント アプリの条件として構成されている新しいポリシーがある場合は、他のすべての条件が構成されていないことを確認する必要があります。 
 
+![Azure Active Directory](./media/active-directory-conditional-access-migration/16.png)
+ 
 
-### <a name="create-a-new-conditional-access-policy"></a>新しい条件付きアクセス ポリシーを作成する
+**Exchange Active Sync** をクライアント アプリの条件として含む Office 365 Exchange Online の[アプリ ベース](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)のクラシック ポリシーは、**サポートされている**[デバイス プラットフォーム](active-directory-conditional-access-technical-reference.md#device-platform-condition)と**サポートされていない**デバイス プラットフォームに対応できます。 関連する新しいポリシーで個々のデバイス プラットフォームを構成することはできませんが、サポートを[サポートされているデバイス プラットフォーム](active-directory-conditional-access-technical-reference.md#device-platform-condition)のみに制限できます。 
 
+![Azure Active Directory](./media/active-directory-conditional-access-migration/65.png)
 
-1. [Azure Portal](https://portal.azure.com) の左側のナビゲーション バーで、**[Azure Active Directory]** をクリックします。
+以下がある場合は、**Exchange Active Sync** をクライアント アプリの条件として含む複数のクラシック ポリシーを統合できます。
 
-    ![Azure Active Directory](./media/active-directory-conditional-access-migration/01.png)
+- 条件としての **Exchange Active Sync** のみ 
 
-2. **[Azure Active Directory]** ページの **[管理]** セクションで、**[条件付きアクセス]** をクリックします。
+- アクセス権の付与を構成するための複数の要件
 
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/02.png)
+1 つの一般的なシナリオは、以下の統合です。
 
+- Azure クラシック ポータルからのデバイス ベースのクラシック ポリシー 
+- Intune App Protection ポータルのアプリ ベースのクラシック ポリシー 
+ 
+この場合、選択した両方の要件を持つ 1 つの新しいポリシーにクラシック ポリシーを統合できます。
 
-
-3. **[条件付きアクセス]** ページで **[新規]** ページを開くには、上部のツール バーの **[追加]** をクリックします。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/03.png)
-
-4. **[新規]** ページの **[名前]** ボックスに、ポリシーの名前を入力します。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/29.png)
-
-5. **[割り当て]** セクションで、**[ユーザーとグループ]** をクリックします。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/05.png)
-
-    a. クラシック ポリシーですべてのユーザーを選択している場合は、**[すべてのユーザー]** をクリックします。 
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/35.png)
-
-    b. クラシック ポリシーでグループを選択している場合は、**[ユーザーとグループの選択]** をクリックし、必要なユーザーとグループを選択します。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/36.png)
-
-    c. 除外されたグループがある場合は、**[除外]** タブをクリックし、必要なユーザーとグループを選択します。 
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/37.png)
-
-6. **[新規]** ページで **[クラウド アプリ]** ページを開くには、**[割り当て]** セクションで **[クラウド アプリ]** をクリックします。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/07.png)
-
-8. **[クラウド アプリ]** ページで、次の手順を実行します。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/08.png)
-
-    a. **[アプリを選択]** をクリックします。
-
-    b. **[選択]**をクリックします。
-
-    c. **[選択]** ページでクラウド アプリを選択し、**[選択]** をクリックします。
-
-    d. **[クラウド アプリ]** ページで、**[完了]** をクリックします。
+![Azure Active Directory](./media/active-directory-conditional-access-migration/62.png)
 
 
 
-9. **[多要素認証を要求する]** を選択している場合:
+### <a name="device-platforms"></a>デバイス プラットフォーム
 
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/26.png)
+[アプリ ベースのコントロール](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)を持つクラシック ポリシーは、iOS と Android で[デバイス プラットフォーム条件](active-directory-conditional-access-technical-reference.md#device-platform-condition)として事前に構成されています。 
 
-    a. **[アクセス制御]** セクションで、**[許可]** をクリックします。
+新しいポリシーでは、個別にサポートする[デバイス プラットフォーム](active-directory-conditional-access-technical-reference.md#device-platform-condition)を選ぶ必要があります。
 
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/27.png)
-
-    b. **[許可]** ページで、**[アクセス権の付与]** をクリックし、**[多要素認証を要求する]** をクリックします。
-
-    c. **[選択]**をクリックします。
-
-
-10. **[オン]** をクリックしてポリシーを有効にします。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/30.png)
-
-11. クラシック ポリシーを無効にします。 
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-migration/38.png)
+![Azure Active Directory](./media/active-directory-conditional-access-migration/41.png)
 
 
 
+ 
  
 
 

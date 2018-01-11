@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 7d8eb900bdc90a391d4121b7bfb863fc274fc564
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 19cf9da839d9d3a1ec78c8d1f6994628684f4e31
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Azure Location Based Services を使用してさまざまなトラベルのモードのルートを見つけます
 
@@ -209,9 +209,9 @@ ms.lasthandoff: 12/14/2017
     ```
     このコード スニペットは、[XMLHttpRequest](https://xhr.spec.whatwg.org/) を作成し、受信した応答を解析するためのイベント ハンドラーを追加します。 成功応答の場合、返されたルートの座標の配列が作成され、マップの `truckRouteLayerName` レイヤーが追加されます。 
     
-    また、このコード スニペットで、Route Service に対してクエリが送信され、アカウントのサブスクリプション キーに指定された起点と終点のルートが取得されます。 次の省略可能なパラメーターは、大型トラックのルートを示すために使用します。パラメーター `travelMode=truck` で、トラベルのモードを *truck* と指定します。 サポートされる他のトラベルのモードは、*taxi*、*bus*、*van*、*motorcycle*、既定の *car* です。 
-        - パラメーター `vehicleWidth`、`vehicleHeight`、`vehicleLength` で、車両の寸法 (メートル) を指定します。これらのパラメーターは、トラベルのモードが *truck* の場合にのみ考慮されます。 
-        - `vehicleLoadType` は、積み荷を一部の道路で危険であり制限されるものと分類します。 現在、このパラメーターも *truck* モードの場合にのみ考慮されます。 
+    また、このコード スニペットで、Route Service に対してクエリが送信され、アカウントのサブスクリプション キーに指定された起点と終点のルートが取得されます。 次の省略可能なパラメーターは、大型トラックのルートを示すために使用します。パラメーター `travelMode=truck` で、トラベルのモードを *truck* と指定します。 サポートされる他のトラベルのモードは、*taxi*、*bus*、*van*、*motorcycle*、既定の *car* です。  
+        - パラメーター `vehicleWidth`、`vehicleHeight`、`vehicleLength` で、車両の寸法 (メートル) を指定します。これらのパラメーターは、トラベルのモードが *truck* の場合にのみ考慮されます。  
+        - `vehicleLoadType` は、積み荷を一部の道路で危険であり制限されるものと分類します。 現在、このパラメーターも *truck* モードの場合にのみ考慮されます。  
 
 2. 次の JavaScript コードを追加して、Route Service を使用して car のルートを取得します。
 
@@ -255,7 +255,7 @@ ms.lasthandoff: 12/14/2017
 
     truck のルートは青色ですが、car のルートは紫色です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]

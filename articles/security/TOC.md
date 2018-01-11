@@ -54,6 +54,8 @@
 #### [コンプライアンス - UK-OFFICIAL](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [概要](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [原則の概要](./blueprints/uk-official-three-tier-applications-principles-overview.md)
+#### コンプライアンス - Financial Services
+##### [規制対象ワークロードに対応した Financial Services](./blueprints/financial-services-regulated-workloads.md)
 
 # 作業の開始
 ## [Azure のセキュリティの概要](azure-security-getting-started.md)
@@ -84,7 +86,7 @@
 
 ## セキュリティの管理と監視
 ### [セキュリティ管理](azure-security-management.md)
-### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [[Azure Security Center] (Azure Security Center)](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Azure ログ統合の概要](security-azure-log-integration-overview.md)
 #### [Azure ログ統合の使用](security-azure-log-integration-get-started.md)
 #### [Azure Active Directory の監査ログの統合](security-azure-log-integration-ad.md)

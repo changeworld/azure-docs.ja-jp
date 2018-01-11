@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 12/6/2017
 ms.author: sethm
-ms.openlocfilehash: ca771648e9be9b8fd2b5d930c65610311820c7ba
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5391951c34498b3bd684cd2e223b8288d4040247
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 このチュートリアルに含まれる手順は次のとおりです。
 
-1. Azure ポータルを使用して Service Bus 名前空間を作成する。
+1. Azure Portal を使用して Service Bus 名前空間を作成する。
 2. Azure Portal を使用して Service Bus トピックを作成する。
 3. そのトピックに対する Service Bus サブスクリプションを Azure Portal で作成する。
 4. トピックに一連のメッセージを送信するための .NET Core コンソール アプリケーションを作成する。
@@ -64,7 +64,7 @@ Service Bus メッセージング名前空間を既に作成している場合�
     ![Select New][createtopic3]
 6. ダイアログの下部にある **[作成]** をクリックします。
 
-## <a name="3-create-a-subscription-to-the-topic"></a>3.トピックに対するサブスクリプションの作成
+## <a name="3-create-a-subscription-to-the-topic"></a>手順 3.トピックに対するサブスクリプションの作成
 
 1. 手順 1. で作成した名前空間をポータル リソース ウィンドウでクリックし、**[トピック]** をクリックして、手順 2. で作成したトピックの名前をクリックします。
 2. 概要ウィンドウの上部で、**[+ サブスクリプション]** をクリックし、このトピックにサブスクリプションを追加します。
@@ -377,7 +377,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
 
             static void RegisterOnMessageHandlerAndReceiveMessages()
             {
-                // Configure the message hnadler options in terms of exception handling, number of concurrent messages to deliver, etc.
+                // Configure the message handler options in terms of exception handling, number of concurrent messages to deliver, etc.
                 var messageHandlerOptions = new MessageHandlerOptions(ExceptionReceivedHandler)
                 {
                     // Maximum number of concurrent calls to the callback ProcessMessagesAsync(), set to 1 for simplicity.
@@ -424,9 +424,9 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
    
     ![トピックの長さ][topic-message-receive]
 
-ご利用ありがとうございます。 以上、トピックとサブスクリプションを作成し、10 個のメッセージを送信して、それらのメッセージを受信するまでの流れを、.NET Standard ライブラリを使って説明しました。
+お疲れさまでした。 以上、トピックとサブスクリプションを作成し、10 個のメッセージを送信して、それらのメッセージを受信するまでの流れを、.NET Standard ライブラリを使って説明しました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングのさらに高度な機能を紹介する[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
 

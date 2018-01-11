@@ -7,4 +7,4 @@
 * [メディア分析](https://feedback.azure.com/forums/169396-media-services/category/146181-media-analytics)
 * [Azure ポータル](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
 * [REST API とプラットフォーム](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
-* [ビデオ オン デマンド ストリーミング](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
+* [ビデオ オンデマンド ストリーミング](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)

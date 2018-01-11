@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Instance Metadata Service | Microsoft Docs
 description: "Windows VM のコンピューティング、ネットワーク、および今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。"
 services: virtual-machines-windows

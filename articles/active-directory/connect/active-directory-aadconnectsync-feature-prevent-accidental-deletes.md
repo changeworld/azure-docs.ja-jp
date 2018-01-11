@@ -4,7 +4,7 @@ description: "このトピックでは、Azure AD Connect の \"誤って削除�
 services: active-directory
 documentationcenter: 
 author: AndKjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: a33fb729cff5007e40820af696cfec823a3ecfde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72283424ab750d10f9a0739347650d0a9eee1520
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect Sync: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
@@ -32,7 +32,7 @@ Azure AD Connect のインストール中は、誤った削除操作を防止す
 * OU 内のすべてのオブジェクトを削除した場合。
 * OU の名前を変更したことでその OU 内のすべてのオブジェクトが同期の対象外と見なされる場合。
 
-500 オブジェクトという既定値は PowerShell と `Enable-ADSyncExportDeletionThreshold`で変更できます。 組織の規模に合わせてこの値を構成する必要があります。 同期スケジューラは 30 分おきに実行されるので、この値は 30 分以内に確認される削除数になります。
+既定値の 500 オブジェクトは、PowerShell の `Enable-ADSyncExportDeletionThreshold` を使って変更できます。このコマンドレットは、Azure Active Directory Connect でインストールされる AD Sync モジュールの一部です。 組織の規模に合わせてこの値を構成する必要があります。 同期スケジューラは 30 分おきに実行されるので、この値は 30 分以内に確認される削除数になります。
 
 Azure AD にエクスポートするようにステージングされた削除の数が多すぎる場合は、エクスポートは停止され、次のような電子メールが送信されます。
 

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/28/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 4a4ab1ee022b6b33d35217df916d01f32e04d3a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 39fbdba404bda9383c9164dd1ecd9cb23bfb5cd7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Azure Portal を使用して Event Hubs Capture を有効にする
 
@@ -55,7 +55,7 @@ Azure Data Lake Store にデータをキャプチャするには、次の手順�
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>既存のイベント ハブに対する Capture の追加または構成
 
-Capture は、Event Hubs 名前空間内の既存のイベント ハブに対して構成することができます。 既存のイベント ハブで Capture を有効にするか、Capture の設定を変更するには、名前空間をクリックして **[要点]** 画面を読み込み、Capture の有効化または Capture 設定の変更を行う対象のイベント ハブをクリックします。 最後に、次の図に示すように、開いているページの **[プロパティ]** セクションをクリックし、Capture の設定を編集します。
+Capture は、Event Hubs 名前空間内の既存のイベント ハブに対して構成することができます。 既存のイベント ハブで Capture を有効にするか、Capture の設定を変更するには、名前空間をクリックして概要画面を読み込み、Capture の有効化または Capture 設定の変更を行う対象のイベント ハブをクリックします。 最後に、次の図に示すように、開いているページの左側にある **[キャプチャ]** オプションをクリックして設定を編集します。
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 

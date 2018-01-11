@@ -1,3 +1,5 @@
+- name: Azure Policy のドキュメント
+  href: index.yml
 - name: 概要
   items:
     - name: Azure Policy の概要

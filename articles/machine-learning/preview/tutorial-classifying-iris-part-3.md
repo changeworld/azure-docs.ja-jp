@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 11/29/2017
-ms.openlocfilehash: b48e5bc2552c92b45e0417e5a8a34705a473073e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 70286104db1b70aebd2f8b0feb4a0854b3cc2bb9
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -206,7 +206,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 1. リアルタイム Web サービスを作成するには、次のコマンドを使用します。
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c amlconfig\conda_dependencies.yml
    ```
    このコマンドにより、後で使用できる Web サービス ID が生成されます。
 
@@ -216,6 +216,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    * `--model-file`: モデル ファイル。 このケースでは、pickle から出力された model.pkl ファイルになります。
    * `-r`: モデルの種類。 このケースでは、Python モデルになります。
    * `--collect-model-data true`: データ収集を有効にします。
+   * `-c`: 追加のパッケージが指定されている conda 依存関係ファイルのパス。
 
    >[!IMPORTANT]
    >サービス名 (新しい Docker イメージ名) はすべて小文字であることが必要です。 そうしないと、エラーが発生します。 
@@ -254,10 +255,10 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 3. Docker イメージを作成します。
 
-   Docker イメージを作成するには、前の手順で出力されたマニフェスト ID の値を指定して次のコマンドを実行します。
+   Docker イメージを作成するには、前の手順で出力されたマニフェスト ID の値を指定して次のコマンドを実行します。 必要に応じて、`-c` スイッチを使用して conda 依存関係を含めることもできます。
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID>
+   az ml image create -n irisimage --manifest-id <manifest ID> -c amlconfig\conda_dependencies.yml
    ```
    このコマンドにより、Docker イメージ ID が生成されます。
    

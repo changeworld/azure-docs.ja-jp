@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 58ccdba6f01cfb7de72f28f185102bf7f618eab4
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 72694743a9e1f520211d133dcc0d7f473c087f38
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Azure App Service でアプリを監視する方法
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure Portal](https://portal.azure.com) に用意されています。
@@ -29,6 +29,8 @@ ms.lasthandoff: 11/29/2017
 ## <a name="understanding-quotas-and-metrics"></a>クォータとメトリックについて
 ### <a name="quotas"></a>Quotas (クォータ)
 App Service でホストされているアプリケーションは、使用できるリソースに一定の " *制限* " があります。 この制限は、アプリに関連付けられている **App Service プラン** によって定義されます。
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 アプリケーションが **Free** プランまたは **Shared** プランでホストされている場合、アプリで使用できるリソースの制限は**クォータ**によって定義されます。
 

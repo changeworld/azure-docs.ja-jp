@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5c60e13028c3ccdf3269d74ab4724bb34ca10c19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76e49fc0e680acbc2b7b7c62b69fbf72d6690acf
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool 機能の概要
 
@@ -29,11 +29,11 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 空白のページを開くには、**[Create A Model]\(モデルの作成\)** を選択します。
 
-![空白のページ](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![空白のページ](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
 ツールで現在利用可能な機能を確認するには、[概要](./azure-security-threat-modeling-tool-getting-started.md)に関するページの例で Microsoft チームが作成した脅威モデルを使用してください。
 
-![基本的な脅威モデル](./media/azure-security-threat-modeling-tool/basictmt.png)
+![基本的な脅威モデル](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 ## <a name="navigation"></a>「ナビゲーション」
 
@@ -43,7 +43,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 操作方法は、他の Microsoft 製品と似ています。 上部のメニュー項目を確認してみましょう。
 
-![メニュー項目](./media/azure-security-threat-modeling-tool/menuitems.png)
+![メニュー項目](./media/azure-security-threat-modeling-tool-feature-overview/menuitems.png)
 
 | ラベル                               | 詳細      |
 | --------------------------------------- | ------------ |
@@ -75,11 +75,11 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 #### <a name="drop-the-stencil-on-the-canvas"></a>キャンバスにステンシルをドロップする
 
-![キャンバスのドロップ](./media/azure-security-threat-modeling-tool/canvasdrop1.png)
+![キャンバスのドロップ](./media/azure-security-threat-modeling-tool-feature-overview/canvasdrop1.png)
 
 #### <a name="select-the-stencil"></a>ステンシルを選択する
 
-![要素のプロパティ](./media/azure-security-threat-modeling-tool/canvasdrop2.png)
+![要素のプロパティ](./media/azure-security-threat-modeling-tool-feature-overview/canvasdrop2.png)
 
 ### <a name="stencils"></a>ステンシル
 
@@ -120,15 +120,15 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 **[Open A Model]\(モデルを開く\)** にポインターを置くと、**[Open From This Computer]\(このコンピューターから開く\)** と **[Open From OneDrive]\(OneDrive から開く\)** という 2 つのオプションが表示されます。 最初のオプションでは、**[File Open]\(ファイルを開く\)** 画面が表示されます。 2 番目のオプションでは、OneDrive のサインイン プロセスが実行されます。 認証が成功すると、フォルダーとファイルを選択できます。
 
-![モデルを開く](./media/azure-security-threat-modeling-tool/openmodel.png)
+![モデルを開く](./media/azure-security-threat-modeling-tool-feature-overview/openmodel.png)
 
-![コンピューターまたは OneDrive から開く](./media/azure-security-threat-modeling-tool/openmodel2.png)
+![コンピューターまたは OneDrive から開く](./media/azure-security-threat-modeling-tool-feature-overview/openmodel2.png)
 
 ### <a name="feedback-suggestions-and-issues"></a>フィードバック、提案、問題
 
 **[Feedback, Suggestions and Issues]\(フィードバック、提案、問題\)** を選択すると、SDL ツールの MSDN フォーラムが表示されます。 回避策や新しいアイデアなど、他のユーザーがツールについて述べている内容を読むことができます。
 
-![フィードバック](./media/azure-security-threat-modeling-tool/feedback.png)
+![フィードバック](./media/azure-security-threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>デザイン ビュー
 
@@ -148,23 +148,23 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 - **ドラッグ アンド ドロップ**: 目的のデータ フローをグリッドにドラッグし、両端を適切な要素に接続します。
 - **Shift キーを押しながらクリック**: 1 つ目の要素 (データの送信) をクリックし、Shift キーを押しながら 2 つ目の要素 (データの受信) をクリックします。 右クリックし、**[接続]** を選択します。 双方向データ フローを使用している場合、順番は重要ではありません。
 
-### <a name="properties"></a>プロパティ
+### <a name="properties"></a>[プロパティ]
 
  ステンシル上で変更できるプロパティを表示するには、ステンシルを選択します。それに応じて情報が設定されます。 以下の例は、**[データベース]** ステンシルをダイアグラムにドラッグする前後を示しています。
 
 #### <a name="before"></a>実装する前
 
-![実装する前](./media/azure-security-threat-modeling-tool/properties1.png)
+![実装する前](./media/azure-security-threat-modeling-tool-feature-overview/properties1.png)
 
 #### <a name="after"></a>実装した後
 
-![実装した後](./media/azure-security-threat-modeling-tool/properties2.png)
+![実装した後](./media/azure-security-threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>メッセージ
 
 脅威モデルを作成し、データ フローを要素に接続し忘れた場合は、通知が表示されます。 メッセージを無視するか、指示に従って問題を修正することができます。 
 
-![メッセージ](./media/azure-security-threat-modeling-tool/messages.png)
+![メッセージ](./media/azure-security-threat-modeling-tool-feature-overview/messages.png)
 
 ### <a name="notes"></a>メモ
 
@@ -174,7 +174,7 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 ダイアグラムを作成した後、ショートカット ツール バーの**分析**シンボル (虫眼鏡) を選択して、**分析**ビューに切り替えます。
 
-![分析ビュー](./media/azure-security-threat-modeling-tool/analysisview.png)
+![分析ビュー](./media/azure-security-threat-modeling-tool-feature-overview/analysisview.png)
 
 ### <a name="generated-threat-selection"></a>生成された脅威項目
 
@@ -182,29 +182,29 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 | 機能                               | 情報      |
 | --------------------------------------- | ------------ |
-| **既読インジケーター** | <p>脅威が既読としてマークされます。これは、確認済みの項目を追跡するうえで役立ちます。</p><p>![既読/未読インジケーター](./media/azure-security-threat-modeling-tool/readmode.png)</p> |
-| **相互作用フォーカス** | <p>脅威に含まれているダイアグラム内の相互作用が、強調表示されます。</p><p>![相互作用フォーカス](./media/azure-security-threat-modeling-tool/interactionfocus.png)</p> |
-| **脅威のプロパティ** | <p>脅威に関する詳細情報が **[Threat Properties]\(脅威のプロパティ\)** ウィンドウに表示されます。</p><p>![脅威のプロパティ](./media/azure-security-threat-modeling-tool/threatproperties.png)</p> |
+| **既読インジケーター** | <p>脅威が既読としてマークされます。これは、確認済みの項目を追跡するうえで役立ちます。</p><p>![既読/未読インジケーター](./media/azure-security-threat-modeling-tool-feature-overview/readmode.png)</p> |
+| **相互作用フォーカス** | <p>脅威に含まれているダイアグラム内の相互作用が、強調表示されます。</p><p>![相互作用フォーカス](./media/azure-security-threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
+| **脅威のプロパティ** | <p>脅威に関する詳細情報が **[Threat Properties]\(脅威のプロパティ\)** ウィンドウに表示されます。</p><p>![脅威のプロパティ](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>優先度の変更
 
 生成された各脅威の優先度レベルを変更することができます。 異なる色を使用すると、優先度が高、中、低の脅威を簡単に識別できます。
 
-![優先度の変更](./media/azure-security-threat-modeling-tool/prioritychange.png)
+![優先度の変更](./media/azure-security-threat-modeling-tool-feature-overview/prioritychange.png)
 
 ### <a name="threat-properties-editable-fields"></a>脅威のプロパティの編集可能なフィールド
 
 上の図のように、ツールによって生成された情報を変更することができます。 また、特定のフィールドに情報 (理由など) を追加することもできます。 これらのフィールドは、テンプレートによって生成されます。 各脅威についてさらに情報が必要な場合は、変更を行えます。
 
-![脅威のプロパティ](./media/azure-security-threat-modeling-tool/threatproperties.png)
+![脅威のプロパティ](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)
 
 ## <a name="reports"></a>レポート
 
 優先度の変更と、生成された各脅威の状態の更新が終わったら、ファイルを保存したり、レポートを印刷したりすることができます。 **[レポート]** > **[Create Full Report]\(フル レポートの作成\)** の順に移動します。 レポートに名前を付けると、次の図のような内容が表示されます。
 
-![レポート](./media/azure-security-threat-modeling-tool/report.png)
+![レポート](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * コミュニティにテンプレートを投稿するには、[GitHub](https://github.com/Microsoft/threat-modeling-templates) ページにアクセスしてください。 
 * このツールの使用を開始するには、[ダウンロード](https://aka.ms/tmtpreview) ページにアクセスしてください。

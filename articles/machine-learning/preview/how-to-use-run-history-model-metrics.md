@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 920155b2e70409fe1c7c3569326cc5a1fa01b222
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 143cbfa66436796e1b61b100def030dde43faac9
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で実行履歴とモデル メトリックを使用する方法
 
@@ -32,7 +32,7 @@ Azure Machine Learning Workbench は、**実行履歴**機能と**モデル メ�
 ## <a name="azure-ml-logging-api-overview"></a>Azure ML ログ API の概要
 [Azure ML ログ API](reference-logging-api.md) は、Python (Azure ML Workbench と一緒にインストールされます) の **azureml.logging** モジュールを通じて利用できます。このモジュールをインポートしたら、**get_azureml_logger** メソッドを使用して**ロガー** オブジェクトをインスタンス化できます。
 次に、そのロガーの **log** メソッドを使用して、Python スクリプトによって生成されたキー/値のペアを格納できます。
-現時点では、次に示すように scalar、dictionary、list、dataframe 型のモデル メトリックのログがサポートされています。
+現時点では、次に示すように scalar および list 型のモデル メトリックのログがサポートされています。
 
 ```Python
 # create a logger instance in already set up environment 

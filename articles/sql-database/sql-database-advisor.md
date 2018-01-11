@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: sstein
-ms.openlocfilehash: 9b6c60a14578842f4b3b1a9e4724eab6de3f8815
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 84706837aeb416d13dab617f51a33d62a934c016
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 
@@ -57,7 +57,12 @@ SQL Server に対して発行されたすべてのクエリは、実行プラン
 
 推奨事項を適用すると、データベースの強制パラメーター化が速やかに有効になり、約 24 時間続く監視プロセスが開始されます。 監視期間後に、推奨事項が適用される前後 24 時間の、データベースの CPU 使用率を表示した検証レポートを確認できます。 SQL Database Advisor は、パフォーマンスの不具合が検出された場合に、推奨事項の適用を自動的に元に戻す安全メカニズムを備えています。
 
-## <a name="fix-schema-issues-recommendations"></a>スキーマの問題の修正に関する推奨事項
+## <a name="fix-schema-issues-recommendations-preview"></a>スキーマの問題の修正に関する推奨事項 (プレビュー)
+
+> [!IMPORTANT]
+> Microsoft は、現在、"スキーマの問題の修正" に関する推奨事項を廃止しているところです。 データベース パフォーマンスの問題の自動監視には [Intelligent Insights](sql-database-intelligent-insights.md) の使用を開始することをお勧めします。このスキーマの問題には、以前の "スキーマの問題の修正" に関する推奨事項も含まれています。
+> 
+
 SQL Database サービスが、Azure SQL Database で発生したスキーマ関連の SQL エラー数が異常であることを検出すると、**スキーマの問題の修正**に関する推奨事項が表示されます。 この推奨事項は、通常、データベースでスキーマ関連のエラー (無効な列名、無効なオブジェクト名など) が 1 時間に複数件発生した場合に表示されます。
 
 「スキーマの問題」は、SQL クエリの定義とデータベース スキーマの定義に不整合があった場合に発生する、SQL Server の構文エラーの種類の 1 つです。 たとえば、クエリで想定される列の 1 つがターゲット テーブルで見つからない、あるいはその逆の場合です。 

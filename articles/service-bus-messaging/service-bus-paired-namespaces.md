@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: bdd4c7948608c03447d1e040a746ed0eb7b0771b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f16c65286b0aa079889c9d53e98bf54e3d57c95f
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>ペアの名前空間の実装の詳細とコストの問題
+
 [PairNamespaceAsync][PairNamespaceAsync] メソッドは、[SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions] インスタンスを使用して、ユーザーに代わって表示可能なタスクを実行します。 この機能の使用はコストがかかる場合があるので、それらの動作の動作時にそれを予期できるように、それらのタスクについて理解していると便利です。 API は、ユーザーに代わって、次の動作を自動的に行います。
 
 * バックログ キューの作成。
@@ -97,7 +98,7 @@ ping メッセージは、その [ContentType][ContentType] プロパティが a
 ## <a name="closefault-behavior"></a>終了およびエラー動作
 サイホンをホストするアプリケーション内のプライマリまたはセカンダリ [MessagingFactory][MessagingFactory] で、(そのパートナーにエラーが発生したり、終了したりすることなく) エラーが発生するか、終了し、サイホンがこの状態を検出すると、サイホンが動作します。 その他の [MessagingFactory][MessagingFactory] が 5 秒以内に閉じない場合、サイホンはまだ開いている [MessagingFactory][MessagingFactory] をエラーとします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Service Bus の非同期メッセージングの詳細については、「[非同期メッセージング パターンと高可用性][Asynchronous messaging patterns and high availability]」を参照してください。 
 
 [PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PairNamespaceAsync_Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_

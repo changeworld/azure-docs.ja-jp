@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 565bcba848de1c518b25ff4c55a9a47aaa45bfb4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 170c3091efc90f640792682377ed10e2eab0cab3
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="perform-azure-blob-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用して Azure Blob Storage の操作を実行する
 
@@ -152,7 +152,7 @@ Get-AzureStorageBlob -Container $containerName -Context $ctx | select Name
 2 番目のストレージ アカウントを設定し、コンテキストを取得して、そのストレージ アカウントにコンテナーを設定してからコピーを実行します。 スクリプトのこの部分は、最初のストレージ アカウントではなく 2 番目のストレージ アカウントを使用することを除き、前述のスクリプトとほとんど同じです。
 
 ```powershell
-#create new storage acount, get context 
+#create new storage account, get context 
 $storageAccount2Name = "blobstutorialtestcopy"
 $storageAccount2 = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccount2Name `
@@ -365,7 +365,7 @@ URL の期限が切れるまで (この例では 2 分間) 十分待ってから
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の実行方法など、基本的な BLOB ストレージ管理について学習しました。
 

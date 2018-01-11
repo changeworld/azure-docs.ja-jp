@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
-ms.openlocfilehash: 7adaf2aa51d2a48116a816d83b42ba8416c157cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0218365a21f241b5672774005cd6e0417fba358b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-your-azure-ad-directory"></a>Azure AD ディレクトリの管理
 
@@ -80,7 +80,6 @@ Microsoft クラウド サービス サブスクリプションの管理者は�
 * Azure AD の ID サービスや認証サービスとのオンプレミス統合を設定する
 
 Azure AD 管理センター、Office 365 管理センター、Microsoft Intune アカウント ポータル、Azure AD コマンドレットはすべて、組織のディレクトリに関連付けられている Azure AD の 1 つの共有インスタンスとの間で読み取りと書き込みを行います。 これらの各ツールは、ディレクトリ データを取り込む (または変更する) フロントエンド インターフェイスとして機能します。
-
 これらのサービスのいずれかのコンテキストでサインインしているときに、いずれかのポータルまたはコマンドレットを使用して組織のデータを変更した場合、次回サインインしたときに、他のポータルでも変更が表示されます。 このデータは、登録している Microsoft クラウド サービス全体で共有されます。
 
 たとえば、Office 365 管理センターを使用して、ユーザーがサインインできないようにブロックした場合、そのユーザーは組織が現在登録している他のどのサービスにもサインインできなくなります。 また、Microsoft Intune アカウント ポータルで同じユーザー アカウントを見ると、そのユーザーがブロックされていることがわかります。
@@ -116,9 +115,9 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 * ディレクトリに関連付けられている、Microsoft Azure、Office 365、Azure AD Premium などの Microsoft Online Services のサブスクリプションが存在してはいけません。 たとえば、Azure で既定のディレクトリが作成されている場合、Azure サブスクリプションが認証にこのディレクトリを引き続き使用していれば、このディレクトリを削除することはできません。 同様に、別のユーザーがディレクトリにサブスクリプションを関連付けている場合、そのディレクトリを削除することはできません。 
 
 
-## <a name="next-steps"></a>次のステップ
-* [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
-* [Azure Multi-Factor Authentication フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
-* [Stack Overflow (Azure 関連の質問)](http://stackoverflow.com/questions/tagged/azure)
+## <a name="next-steps"></a>次の手順
+* [Azure AD フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuread)
+* [Azure Multi-Factor Authentication フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazureactiveauthentication)
+* [Azure の StackOverflow に関する質問](https://stackoverflow.com/questions/tagged/azure-active-directory)
 * [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory)
 * [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)
