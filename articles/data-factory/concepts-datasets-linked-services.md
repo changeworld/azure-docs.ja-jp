@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: 
 ms.date: 09/05/2017
 ms.author: shlo
-ms.openlocfilehash: a13e19c7e1a22581b14d1a96e20b8a649c303fc3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: e8572af6187a889067341bbebb254d701b39395a
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure Data Factory のデータセットとリンクされたサービス 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,6 +43,56 @@ Azure Data Factory を初めて使用する場合は、[Azure Data Factory の�
 次の図は、Data Factory でのパイプライン、アクティビティ、データセット、リンクされたサービスの関係を示しています。
 
 ![パイプライン、アクティビティ、データセット、リンクされたサービスの関係](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+
+## <a name="linked-service-json"></a>リンクされたサービスの JSON
+Data Factory のリンクされたサービスは、次のように JSON 形式で定義されます。
+
+```json
+{
+    "name": "<Name of the linked service>",
+    "properties": {
+        "type": "<Type of the linked service>",
+        "typeProperties": {
+              "<data store or compute-specific type properties>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+次の表では、上記の JSON のプロパティについて説明します。
+
+プロパティ | 説明 | 必須 |
+-------- | ----------- | -------- |
+name | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+type | リンクされたサービスの種類  例: AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | はい |
+typeProperties | 型のプロパティは、データ ストアまたはコンピューティングごとに異なります。 <br/><br/> サポートされているデータ ストア型と型のプロパティについては、この記事の「[データセットの型](#dataset-type)」の表を参照してください。 データ ストアに固有の型のプロパティについては、データ ストア コネクタに関する記事に移動してください。 <br/><br/> サポートされているコンピューティング型とその型のプロパティについては、[コンピューティングのリンクされたサービス](compute-linked-services.md)に関する記事を参照してください。 | はい |
+connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ
+
+## <a name="linked-service-example"></a>リンクされたサービスの例
+次のリンクされたサービスは、Azure Storage のリンクされたサービスです。 type が AzureStorage に設定されている点に注目してください。 Azure Storage のリンクされたサービスの型のプロパティには、接続文字列が含まれます。 Data Factory サービスは、この接続文字列を使用して、実行時にデータ ストアに接続します。 
+
+```json
+{
+    "name": "AzureStorageLinkedService",
+    "properties": {
+        "type": "AzureStorage",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="dataset-json"></a>データセットの JSON
 Data Factory のデータセットは JSON 形式では次のように定義されます。
@@ -72,12 +122,12 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 ```
 次の表では、上記の JSON のプロパティについて説明します。
 
-プロパティ | 説明 | 必須 | 既定値
--------- | ----------- | -------- | -------
-name | データセットの名前。 | [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 | あり | 該当なし
-type | データセットの型。 | Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-types)を参照してください。 | あり | 該当なし
-structure | データセットのスキーマ。 | 詳細については、「[データセット構造](#dataset-structure)」セクションを参照してください。 | いいえ | 該当なし
-typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい | 該当なし
+プロパティ | 説明 | 必須 |
+-------- | ----------- | -------- |
+name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-types)を参照してください。 | はい |
+structure | データセットのスキーマ。 詳細については、「[データセット構造](#dataset-structure)」セクションを参照してください。 | いいえ |
+typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
 
 ## <a name="dataset-example"></a>データセットの例
 以下の例では、データセットは SQL Database 内にある MyTable という名前のテーブルを表しています。
@@ -104,28 +154,6 @@ typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルな�
 - type が AzureSqlTable に設定されています。
 - (AzureSqlTable 型に固有の) 型プロパティ tableName が MyTable に設定されています。
 - linkedServiceName は、型が AzureSqlDatabase であるリンクされたサービスを参照します。これは、次の JSON スニペットで定義されています。
-
-## <a name="linked-service-example"></a>リンクされたサービスの例
-AzureSqlLinkedService は次のように定義されます。
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "description": "",
-        "typeProperties": {
-            "connectionString": "Data Source=tcp:<servername>.database.windows.net,1433;Initial Catalog=<databasename>;User ID=<username>@<servername>;Password=<password>;Integrated Security=False;Encrypt=True;Connect Timeout=30"
-        }
-    }
-}
-```
-上記の JSON スニペットは、次のようになっています。
-
-- **type** が AzureSqlDatabase に設定されています。
-- 型プロパティ **connectionString** は、SQL Database に接続するための情報を示しています。
-
-ご覧のように、リンクされたサービスによって、SQL Database に接続する方法が定義されています。 また、データセットは、どのテーブルがパイプライン内のアクティビティの入力/出力として使用されるかを定義しています。
 
 ## <a name="dataset-type"></a>データセットの型
 使用するデータ ストアによって、さまざまなデータセットの種類があります。 Data Factory でサポートされているデータ ストアの一覧については、次の表を参照してください。 データ ストアをクリックすると、そのデータ ストアに対応するリンクされたサービスとデータセットの作成方法を確認できます。
@@ -170,9 +198,9 @@ structure の各列には次のプロパティが含まれます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | 列の名前です。 | あり
+name | 列の名前です。 | はい
 type | 列のデータ型です。 | いいえ
-culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | なし
+culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ
 BlobSink の format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 | いいえ
 
 構造情報を含めるべき状況と、**structure** セクションに含める内容については、次のガイドラインに従ってください。

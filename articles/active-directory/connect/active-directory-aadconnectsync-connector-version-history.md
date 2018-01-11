@@ -4,7 +4,7 @@ description: "このトピックでは、Forefront Identity Manager (FIM) と Mi
 services: active-directory
 documentationcenter: 
 author: fimguy
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/06/2017
 ms.author: fimguy
-ms.openlocfilehash: e6df124a38c748294e92183df272dc266a0afc51
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3fbdc60a21aa16926bc4db00f41ade8ecda415f1
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connector-version-release-history"></a>コネクタ バージョンのリリース履歴
 Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタは頻繁に更新されます。
@@ -139,7 +139,7 @@ Lotus:
 * Lotus Domino:
 
   **シナリオ:** エクスポート時のユーザーの削除で、Domino メールの削除をサポートします。 </br>
-  **ソリューション:** エクスポート時のユーザーの削除で、構成可能な Domino メールの削除をサポートします。
+  **ソリューション:** エクスポート時のユーザーの削除で、構成可能なメールの削除をサポートします。
 
 ### <a name="fixed-issues"></a>修正された問題:
 * 一般的な Web サービス:

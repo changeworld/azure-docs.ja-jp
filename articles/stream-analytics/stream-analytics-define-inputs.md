@@ -4,8 +4,8 @@ description: "'入力' という Stream Analytics に対するデータ接続を
 keywords: "データ ストリーム、データ接続、イベント ストリーム"
 services: stream-analytics
 documentationcenter: 
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
 ms.service: stream-analytics
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/05/2017
-ms.author: samacha
-ms.openlocfilehash: 652137cf7a41f8d90a56aebe9f82fd37d5e4683d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 12/11/2017
+ms.author: sngun
+ms.openlocfilehash: e8b55269e861dc010c911491d52973b674dd50ca
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
 Stream Analytics ジョブに対するデータ接続は、データ ソースからのイベントのデータ ストリームです。これはジョブの "*入力*" と呼ばれます。 Stream Analytics は、Azure データ ストリーム ソース ([Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) など) と高度に統合されています。 分析ジョブと同じ Azure サブスクリプションまたは異なるサブスクリプションの入力ソースを指定できます。
@@ -37,9 +37,9 @@ Stream Analytics は、"*参照データ*" と呼ばれる入力もサポート�
 
 ## <a name="compression"></a>圧縮
 
-Azure Stream Analytics では、すべてのデータ ストリーム入力ソース (Event Hubs、IoT Hub、Blob Storage) にわたる圧縮がサポートされています。 この機能は、新しいドロップダウン リスト オプションを Azure Portal の **[新しい入力]** ブレードに追加して、オプションでデータ ストリームを圧縮できるようにします。 現在サポートされている圧縮の種類は、[なし]、[GZip]、[Deflate] です。 
+Azure Stream Analytics では、すべてのデータ ストリーム入力ソース (Event Hubs、IoT Hub、Blob Storage) にわたる圧縮がサポートされています。 この機能は、新しいドロップダウン リスト オプションを Azure Portal の **[新しい入力]** ブレードに追加して、オプションでデータ ストリームを圧縮できるようにします。 現在サポートされている参照の種類は、[なし]、[GZip]、[Deflate] 圧縮です。 参照データの圧縮はサポートされていません。
 
-圧縮は、Avro シリアル化と一緒にはサポートされず、参照データには適用できません。 
+Avro のシリアル化に圧縮の種類を指定する必要はありません。 入力の Avro データが圧縮されている場合、透過的に処理されます。 
 
 ## <a name="create-data-stream-input-from-event-hubs"></a>Event Hubs からデータ ストリーム入力を作成する
 

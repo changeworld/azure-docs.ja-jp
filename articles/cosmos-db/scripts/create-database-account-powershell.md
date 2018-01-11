@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell スクリプト - Azure Cosmos DB の DocumentDB API アカウントを作成する | Microsoft Docs"
-description: "Azure PowerShell サンプル スクリプト - Azure Cosmos DB の DocumentDB API アカウントを作成する"
+title: "Azure PowerShell スクリプト - Azure Cosmos DB の SQL API アカウントを作成する | Microsoft Docs"
+description: "Azure PowerShell サンプル スクリプト - Azure Cosmos DB の SQL API アカウントを作成する"
 services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 9b54236ce3446fe1c6a2a30b31f6d91ad43a92d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 060270f424cb3bbb984430d9e17656453fa30c4d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-create-a-documentdb-api-account-using-powershell"></a>Azure Cosmos DB: PowerShell を使用して DocumentDB API アカウントを作成する
+# <a name="azure-cosmos-db-create-a-sql-api-account-using-powershell"></a>Azure Cosmos DB: PowerShell を使用して SQL API アカウントを作成する
 
 この PowerShell サンプル スクリプトでは、Azure Cosmos DB API アカウントを作成します。 
 

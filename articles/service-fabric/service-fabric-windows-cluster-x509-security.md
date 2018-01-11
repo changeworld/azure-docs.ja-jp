@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: dd09a4df42c1022c2a9f96daf69591bbfc777d79
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: ca858408ecb258cc64645571d048de93449689d6
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -255,7 +255,7 @@ ms.lasthandoff: 10/30/2017
    Write-Host $cert.ToString($true)
    ```
 
-Azure サブスクリプションがある場合は、「[Key Vault に証明書を追加する](service-fabric-cluster-creation-via-arm.md#add-certificates-to-your-key-vault)」セクションに従って進めることもできます。
+Azure サブスクリプションがある場合は、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)」に記載された手順に従うこともできます。
 
 ## <a name="install-the-certificates"></a>証明書のインストール
 証明書を作成した後、それをクラスター ノードにインストールできます。 最新の Windows PowerShell 3.x が既にノードにインストールされている必要があります。 クラスター証明書とサーバー証明書、およびセカンダリ証明書の各ノードで次の手順を繰り返します。

@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: b14d0aad5a1f50c225391dbab27ec6240423a65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7b81c12c31fe7de40acca6baa8972e65c306ee0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのデータベースの管理
 SQL Data Warehouse を利用すると、データベース管理の自動化を進めることができます。 たとえば、パフォーマンスのスケーリングについては、調整後、最適なコンピューティング リソースの料金をお支払いいただけば、あとは SQL Data Warehouse がパフォーマンスの拡張/縮小をすべて行います。
@@ -47,7 +47,7 @@ Azure Portal の使用については、[SQL Data Warehouse の作成 (Azure Por
 ### <a name="sql-server-data-tools-in-visual-studio"></a>Visual Studio での SQL Server Data Tools
 Visual Studio の [SQL Server Data Tools][SQL Server Data Tools] (SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。 Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
 
-SSDT には SQL Server Object Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプト実行を行うことができます。 SQL Data Warehouse にすばやく接続するには、Azure クラシック ポータルにデータベース詳細が表示されているときに、コマンド バーで [ **Visual Studio で開く** ] ボタンをクリックするだけです。  
+SSDT には SQL Server Object Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプト実行を行うことができます。 SQL Data Warehouse にすばやく接続するには、Azure Portal にデータベース詳細が表示されているときに、コマンド バーで **[Visual Studio で開く]** をクリックするだけです。  
 
 Visual Studio の SSDT を使用する手順については、[Visual Studio を使用した Azure SQL Data Warehouse に対するクエリ][Query Azure SQL Data Warehouse with Visual Studio]に関する記事をご覧ください。
 

@@ -1,9 +1,7 @@
-1. [Azure クラシック ポータル](http://manage.windowsazure.com)にサインインします。  
-2. ウィンドウの下部にあるコマンド バーで、 **[新規]**をクリックします。
-3. **[Compute]** で、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+1. [Azure ポータル](http://portal.azure.com)にサインインします。  
+2. **[新規]** > **[コンピューティング]** > **[すべて表示]** の順にクリックし、「**SUSE**」と入力します。
    
-    ![新しい仮想マシンの作成][Image1]
-4. **[SUSE]** グループで OpenSUSE 仮想マシン イメージを選択し、矢印をクリックして次に進みます。
+3. OpenSUSE 仮想マシン イメージを選択し、矢印をクリックして次に進みます。
 5. 最初の **[仮想マシンの構成]** ページで次の作業を行います。
    
    * "testlinuxvm" など、**[仮想マシン名]** を入力します。 名前は、3 ～ 15 文字で指定する必要があります。文字、数字、およびハイフンのみ使用でき、文字で始まり、文字または数字で終わる必要があります。
@@ -49,7 +47,5 @@
 3. インストールが完了したら、 **[完了]**を選択します。  これでシステムが最新の状態になりました。
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
-
-[Image1]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png

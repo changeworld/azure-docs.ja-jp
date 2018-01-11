@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 3686057a267ef28d6a01ccc36775a399c64a0804
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: ab9e7b1b287be408f2d53ea005bad3815dc45f83
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/10/2017
 > * [バージョン 1 - 一般公開](v1/data-factory-azure-documentdb-connector.md)
 > * [バージョン 2 - プレビュー](connector-azure-cosmos-db.md)
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Cosmos DB (DocumentDB API) をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Cosmos DB (SQL API) をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の Azure Cosmos DB コネクタ](v1/data-factory-azure-documentdb-connector.md)に関する記事を参照してください。
@@ -36,7 +36,7 @@ Azure Cosmos DB のデータをサポートされる任意のシンク データ
 
 具体的には、この Azure Cosmos DB コネクタは、以下をサポートします。
 
-- Cosmos DB [DocumentDB API](https://docs.microsoft.com/en-us/azure/cosmos-db/documentdb-introduction)
+- Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction)
 - JSON ドキュメントをそのままインポートまたはエクスポートするか、表形式のデータセット (SQL Database、CSV ファイルなど) をコピー元またはコピー先としてデータをコピーします。
 
 JSON ファイルまたは他の Cosmos DB コレクションをコピー先またはコピー元としてドキュメントをそのままコピーするには、「[JSON ドキュメントのインポート/エクスポート](#importexport-json-documents)」を参照してください。

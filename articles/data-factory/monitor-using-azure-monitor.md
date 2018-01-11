@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 3d9ec6325e25477bf4ee0475caeca64b75b1f89f
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: f30042ad8d687db59e1aaa092c46cee371e8c7fb
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリを監視する  
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
 
-Azure Monitor では、Microsoft Azure のほとんどのサービス向けにベース レベルのインフラストラクチャのメトリックおよびログを提供します。 詳細については、[監視の概要](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)を参照してください。 Azure 診断ログは、リソースによって出力されるログで、そのリソースの操作に関する豊富なデータを提供します。 データ ファクトリは、Azure Monitor で診断ログを出力します。 
+Azure Monitor では、Microsoft Azure のほとんどのサービス向けにベース レベルのインフラストラクチャのメトリックおよびログを提供します。 詳細については、[監視の概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)を参照してください。 Azure 診断ログは、リソースによって出力されるログで、そのリソースの操作に関する豊富なデータを提供します。 データ ファクトリは、Azure Monitor で診断ログを出力します。 
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のパイプラインの監視と管理](v1/data-factory-monitor-manage-pipelines.md)に関する記事をご覧ください。
@@ -103,7 +103,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 } 
 ```
 
-| プロパティ | 型 | Description |
+| プロパティ | 型 | 説明 |
 | --- | --- | --- |
 | storageAccountId |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
 | serviceBusRuleId |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、"{サービス バス リソース ID}/authorizationrules/{キー名}"　です。|
@@ -273,7 +273,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 型 | Description | 例 |
+| プロパティ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
 | Level |String | 診断ログのレベルです。 アクティビティの実行ログの場合、レベル 4 常時です。 | `4`  |
 | correlationId |String | 特定の要求をエンド ツー エンドで追跡する一意の ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -320,7 +320,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 型 | Description | 例 |
+| プロパティ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
 | Level |String | 診断ログのレベルです。 アクティビティ実行ログの場合、レベル 4 です。 | `4`  |
 | correlationId |String | 特定の要求をエンド ツー エンドで追跡する一意の ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -365,7 +365,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| プロパティ | 型 | Description | 例 |
+| プロパティ | 型 | 説明 | 例 |
 | --- | --- | --- | --- |
 | Level |String | 診断ログのレベルです。 アクティビティ実行ログの場合、レベル 4 に設定します。 | `4`  |
 | correlationId |String | 特定の要求をエンド ツー エンドで追跡する一意の ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -396,7 +396,7 @@ ADFV2 は、次のメトリックを出力します
 | TriggerSucceededRuns | 成功したトリガー実行の回数メトリック  | カウント    | 合計                | 分の枠内で成功したトリガー実行の合計回数   |
 | TriggerFailedRuns    | 失敗したトリガー実行の回数メトリック     | カウント    | 合計                | 分の枠内で失敗したトリガー実行の合計回数      |
 
-メトリックにアクセスするには、記事 - https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics の説明に従ってください。 
+メトリックにアクセスするには、記事 - https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics の説明に従ってください 
 
 ## <a name="next-steps"></a>次のステップ
 実行によるパイプラインの監視と管理の詳細については、[パイプラインをプログラムで監視および管理する](monitor-programmatically.md)に関する記事を参照してください。 
