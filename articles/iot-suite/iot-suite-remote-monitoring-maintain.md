@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 46b0269b3f5b98e1bcecdbeabd5544e97bb5c06c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: d26275b6b03115b775990c9efb5d4706fcb829d1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>トラブルシューティングを行ってデバイスの問題を修復する
 
@@ -46,11 +46,7 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 ![ダッシュボードのアラームを確認する](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
 
-**[メンテナンス]** ページにアラームの一覧が表示されます。
-
-![メンテナンス ページのアラームの一覧](media/iot-suite-remote-monitoring-maintain/maintenancealarms.png)
-
-アラームの詳細を表示するには、**[アラーム]** 一覧からアラームを選択します。 詳細ビューでは次のものが表示されます。
+アラームの詳細ビューには、以下が表示されます。
 
 * アラームがトリガーされた時間
 * アラームに関連付けられているデバイスに関する状態の情報
@@ -70,7 +66,7 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 **プロトタイプ** デバイスの問題を修復するには、デバイスで **DecreaseTemperature** メソッドを呼び出す必要があります。
 
-デバイスでの動作を設定するには、デバイスの一覧でデバイスを選択して、**[スケジュール]** を選択します。 **エンジン** デバイス モデルでは、デバイスでサポートする必要のある 3 つのメソッドを指定します。
+デバイスでの動作を設定するには、デバイスの一覧でデバイスを選択して、**[スケジュール]** を選択します。 **プロトタイプ** デバイス モデルでは、デバイスでサポートする必要のある 4 つのメソッドを指定します。
 
 ![デバイスでサポートされているメソッドを表示する](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
 
@@ -78,11 +74,11 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 ![温度を低下させるジョブを作成する](media/iot-suite-remote-monitoring-maintain/maintenancecreatejob.png)
 
-**[メンテナンス]** ページで ジョブの状態を追跡するには、**[システムの状態]** を選択します。 **[システムの状態]** ビューを使用して、ソリューション内のすべてのジョブとメソッドの呼び出しを追跡します。
+**[メンテナンス]** ページでジョブの状態を追跡するには、**[ジョブ]** を選択します。 **[ジョブ]** ビューを使用して、ソリューション内のすべてのジョブとメソッドの呼び出しを追跡します。
 
 ![温度を低下させるジョブを監視する](media/iot-suite-remote-monitoring-maintain/maintenancerunningjob.png)
 
-特定のジョブまたはメソッドの呼び出しの詳細を表示するには、**[システムの状態]** ビューの一覧で選択します。
+特定のジョブまたはメソッドの呼び出しの詳細を表示するには、**[ジョブ]** ビューの一覧で選択します。
 
 ![ジョブの詳細を表示する](media/iot-suite-remote-monitoring-maintain/maintenancejobdetail.png)
 
