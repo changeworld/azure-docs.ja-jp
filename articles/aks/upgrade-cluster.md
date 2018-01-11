@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 40b55309ee4c52743b30682d8751e6e432f9bb4a
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 92c4850f623aea331e9834b5c8da66a7de34107f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="upgrade-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターの更新
 
@@ -35,7 +35,7 @@ Name     ResourceGroup    MasterVersion    MasterUpgrades       NodePoolVersion 
 default  myResourceGroup  1.7.7            1.8.2, 1.7.9, 1.8.1  1.7.7               1.8.2, 1.7.9, 1.8.1
 ```
 
-アップグレードで利用できるバージョンは、1.7.9、1.8.1、および 1.8.2 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)。  クラスター ノードの追加と削除が行われるため、クラスターのアップグレードを開始する前に、ワークロードを処理できる十分な追加のコンピューティング容量があることを確認します。
+アップグレードで利用できるバージョンは、1.7.9、1.8.1、および 1.8.2 の 3 つです。 `az aks upgrade` コマンドを使用して、利用可能な最新バージョンにアップグレードします。  アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、ノードは慎重に[切断およびドレイン][kubernetes-drain]されます。  クラスター ノードの追加と削除が行われるため、クラスターのアップグレードを開始する前に、ワークロードを処理できる十分な追加のコンピューティング容量があることを確認します。
 
 ```azurecli-interactive
 az aks upgrade --name myK8sCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
@@ -116,4 +116,10 @@ myK8sCluster  eastus     myResourceGroup  1.8.2                Succeeded        
 AKS のデプロイと管理の詳細を AKS チュートリアルで確認してください。
 
 > [!div class="nextstepaction"]
-> [AKS チュートリアル](./tutorial-kubernetes-prepare-app.md)
+> [AKS チュートリアル][aks-tutorial-prepare-app]
+
+<!-- LINKS - external -->
+[kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

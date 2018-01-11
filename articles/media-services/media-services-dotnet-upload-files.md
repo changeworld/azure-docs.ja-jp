@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/12/2017
 ms.author: juliako
 ms.openlocfilehash: ec8c1da633374ba684f6a0a895c542ee76ef73b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>.NET を使用した Media Services アカウントへのファイルのアップロード
 > [!div class="op_single_selector"]

@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 10/24/2017
 ms.author: stevelas
-ms.openlocfilehash: dfab0a371ffb2d8ea52bea2cdcf3d92d6c669a9d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -94,15 +94,15 @@ ACR は、構成済みのレプリカ間でイメージの同期を開始しま�
 
 ## <a name="geo-replication-pricing"></a>geo レプリケーションの価格
 
-geo レプリケーションは、Azure Container Registry の [Premium SKU](container-registry-skus.md#premium) の機能です。 レジストリを目的のリージョンにレプリケートすると、リージョンごとに Premium レジストリ料金が発生します。
+geo レプリケーションは、Azure Container Registry の [Premium SKU](container-registry-skus.md) の機能です。 レジストリを目的のリージョンにレプリケートすると、リージョンごとに Premium レジストリ料金が発生します。
 
 前の例では、Contoso は、米国東部、カナダ中部、西ヨーロッパにレプリカを追加して、2 つのレジストリを 1 つに統合しました。 Contoso には、1 か月あたり 4 倍の Premium 料金が課金されます。追加の構成や管理は不要です。 各リージョンではイメージをローカルでプルできるようになったため、米国西部からカナダおよび米国東部へのネットワーク エグレス料金が発生することなく、パフォーマンスと信頼性が向上します。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 geo レプリケーションにより、リージョン データ センターを 1 つのグローバル クラウドとして管理できます。 イメージは多くの Azure サービスで使用されるので、ネットワーク上の近い場所での高速で信頼性の高いローカル イメージのプルを維持しながら、単一の管理プレーンによるメリットが得られます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Container Registry の geo レプリケーション](container-registry-tutorial-prepare-registry.md)に関する 3 部構成のチュートリアル シリーズを確認します。 これらのチュートリアルでは、geo レプリケートされたレジストリを作成する方法、コンテナーをビルドする方法、1 つの `docker push` コマンドを使用してリージョンの複数の Web App for Containers インスタンスにデプロイする方法を説明します。
 

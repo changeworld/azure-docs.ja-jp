@@ -16,18 +16,13 @@ ms.topic: article
 ms.date: 8/15/2017
 ms.author: trinadhk;jimpark;markgal;
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40983a3de104238d09b976b5fcf2419da42c1bba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 892a88a2bc9d492f8a3afe59c05b4729f4830e6d
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-a-recovery-services-vault"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
-> [!div class="op_single_selector"]
-> * [Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)
-> * [バックアップ コンテナーへの VM のバックアップ](backup-azure-vms.md)
->
->
 
 この記事では、Azure VM (Resource Manager デプロイとクラシック デプロイの両方) を Recovery Services コンテナーにバックアップする方法について説明します。 VM をバックアップするための作業のほとんどがその準備です。 VM をバックアップまたは保護する前に、 [前提条件](backup-azure-arm-vms-prepare.md) の作業を行って、VM を保護するために環境を準備する必要があります。 前提条件の作業が完了したら、バックアップ操作を開始して VM のスナップショットを作成できます。
 

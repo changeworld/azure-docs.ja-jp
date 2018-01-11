@@ -17,10 +17,10 @@ ms.custom: security
 ms.date: 03/21/2017
 ms.author: rortloff;barbkess
 ms.openlocfilehash: 92f48027051bc4aff4d6b8d66fdd6de81bba3657
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="authentication-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への認証
 > [!div class="op_single_selector"]

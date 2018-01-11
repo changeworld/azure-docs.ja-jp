@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 06/20/2017
 ms.author: heidist
 ms.openlocfilehash: a7d98ab0937a7d3f932d5df34c19ae091129804e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-an-azure-search-index-using-the-azure-portal"></a>Azure Portal を利用して Azure Search インデックスを作成する
 > [!div class="op_single_selector"]

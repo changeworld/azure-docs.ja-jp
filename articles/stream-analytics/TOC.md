@@ -17,6 +17,7 @@
 ### [IoT Edge での Stream Analytics (プレビュー)](stream-analytics-edge.md)
 ### [Azure 使用ガイドでの異常検出 (プレビュー)](stream-analytics-machine-learning-anomaly-detection.md)
 ### [Stream Analytics による高頻度取引のシミュレーション](stream-analytics-high-frequency-trading.md)
+### [Azure Functions と Azure Stream Analytics](stream-analytics-with-azure-functions.md)
 
 ## ジョブの作成
 ### [入力を作成する](stream-analytics-define-inputs.md)
@@ -35,7 +36,7 @@
 
 ## Visual Studio ツールの使用
 ### [インストール](stream-analytics-tools-for-visual-studio-install.md)
-### [作業の開始](stream-analytics-tools-for-visual-studio.md)
+### [作業開始](stream-analytics-tools-for-visual-studio.md)
 ### [CI/CD パイプラインの設定](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## 監視と最適化
@@ -48,9 +49,10 @@
 ### [スループット向上のためのスケール](stream-analytics-scale-jobs.md)
 ### [Machine Learning 関数のスケール](stream-analytics-scale-with-machine-learning-functions.md)
 
-## 管理
+## [管理]
 ### [入出力の資格情報を交換する](stream-analytics-login-credentials-inputs-outputs.md)
 ### [更新中におけるジョブの信頼性](stream-analytics-job-reliability.md)
+### [互換性レベルの構成](stream-analytics-compatibility-level.md)
 
 ## トラブルシューティング
 ### [トラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)
@@ -70,7 +72,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [クエリ言語](https://msdn.microsoft.com/library/azure/dn834998)
-## [REST ()](/rest/api/streamanalytics)
+## [REST](/rest/api/streamanalytics)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

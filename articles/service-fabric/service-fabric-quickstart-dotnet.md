@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/02/2017
+ms.date: 01/02/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 40b29ccb454caf5462807d6c24ca3f470865d368
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: bdf73cc13cbdbe75c426fc17fce2828164297826
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>Azure に .NET Service Fabric アプリケーションを作成する
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -92,7 +92,7 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 コードでどのような処理が実行されているのかを確認するには、次の手順に従います。
 1. **/VotingWeb/Controllers/VotesController.cs** ファイルを開き、Web API の **Put** メソッド (47 行目) にブレークポイントを設定します。このファイルは、Visual Studio のソリューション エクスプローラーで検索できます。
 
-2. **/VotingData/ControllersVoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (50 行目) にブレークポイントを設定します。
+2. **/VotingData/Controllers/VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (50 行目) にブレークポイントを設定します。
 
 3. ブラウザーに戻り、投票の選択肢をクリックするか、新しい選択肢を追加します。 Web フロントエンドの API コントローラーで 1 つ目のブレークポイントに到達します。
     - ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
@@ -115,7 +115,7 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。
 
-## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションをデプロイする
+## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
 Azure にアプリケーションをデプロイするには、アプリケーションを実行する Service Fabric クラスターが必要です。 
 
 ### <a name="join-a-party-cluster"></a>パーティ クラスターに参加する
@@ -134,7 +134,7 @@ Azure にアプリケーションをデプロイするには、アプリケー�
 
     ![[発行] ダイアログ](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーし、**[発行]** をクリックします。 たとえば、「 `winh1x87d1d.westus.cloudapp.azure.com:19000`」のように入力します。
+2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーし、**[発行]** をクリックします。 たとえば、「`winh1x87d1d.westus.cloudapp.azure.com:19000`」のように入力します。
 
     クラスター内の各アプリケーションには、一意の名前が必要です。  パーティ クラスターはパブリックの共有環境ですが、既存のアプリケーションと競合している可能性があります。  名前の競合が発生している場合は、Visual Studio プロジェクトの名前を変更し、もう一度デプロイします。
 
@@ -171,7 +171,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 アプリケーションをアップグレードするには、次の手順に従います。
 
 1. Visual Studio で **/VotingWeb/Views/Home/Index.cshtml** ファイルを開きます。
-2. テキストを追加または更新して <h2> ページの見出しを変更します。 たとえば、見出しを "Service Fabric Voting Sample v2" に変更します。
+2. テキストを追加または更新して、ページの見出しを変更します。 たとえば、見出しを "Service Fabric Voting Sample v2" に変更します。
 3. ファイルを保存します。
 4. ソリューション エクスプローラーで **[Voting]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
 5. **[マニフェストのバージョン]** ボタンをクリックしてサービスとアプリケーションのバージョンを変更します。
@@ -189,7 +189,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 
 10. アップグレード中もアプリケーションを使い続けることができます。 クラスターで実行されているサービスのインスタンスは 2 つあるため、アップグレード後のアプリケーションによって処理される要求と、アップグレード前のアプリケーションによって処理される要求が混在する可能性があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、次の方法について説明しました。
 
 > [!div class="checklist"]

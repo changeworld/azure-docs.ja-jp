@@ -17,10 +17,10 @@ ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 10d8aa2b3ab8d7d8a9b91e95ffccf03faa89d237
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-a-sql-data-warehouse-database-by-using-transact-sql-tsql"></a>Transact-SQL (TSQL) を使用して SQL Data Warehouse データベースを作成する
 > [!div class="op_single_selector"]

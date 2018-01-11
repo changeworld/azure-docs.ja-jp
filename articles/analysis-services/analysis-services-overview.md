@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/04/2017
+ms.date: 12/08/2017
 ms.author: owend
-ms.openlocfilehash: 224ecbb80e8fc5b3f1a32e42eda7ec5452e9e553
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 60097a18afc76e09ecd7d69eececea53e9712bec
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -116,7 +116,7 @@ Azure のセキュリティについて詳しくは、[Microsoft セキュリテ
 ## <a name="supports-the-latest-client-tools"></a>最新のクライアント ツールをサポート
 ![データ可視化](./media/analysis-services-overview/aas-overview-clients.png)
 
-Power BI、Excel、サードパーティ製ツールなど、データの探索と視覚化用の最新ツールにより、ユーザーは、モデル データに対して非常にインタラクティブで視覚的に優れた洞察を得ることができます。
+Power BI、Excel、SQL Server 2017 Reporting Services、サードパーティ製ツールなど、データの探索と視覚化用の最新ツールがすべてサポートされているため、ユーザーは、モデル データに対して非常にインタラクティブで視覚的に優れた洞察を得ることができます。 
 
 クライアントは MSOLAP、AMO、または ADOMD の[クライアント ライブラリ](analysis-services-data-providers.md)を使用して、Analysis Services サーバーに接続します。 Power BI Desktop や Excel などの Microsoft クライアント アプリケーションでは、3 つのクライアント ライブラリがすべてインストールされます。 ただし、更新のバージョンや頻度によっては、クライアント ライブラリが Azure Analysis Services で必要な最新バージョンでない可能性があることに注意してください。 これは、カスタム アプリケーションまたは AsCmd、TOM、ADOMD.NET など他のインターフェイスでも同様です。 通常、これらのアプリケーションでは、パッケージの一部としてライブラリを手動でインストールする必要があります。
 

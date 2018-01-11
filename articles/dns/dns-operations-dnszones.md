@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2016
 ms.author: gwallace
 ms.openlocfilehash: 3f28e70bb6ef46f53375d256a520db40fcb71ad0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell を使用して DNS ゾーンを管理する方法
 

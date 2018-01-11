@@ -16,10 +16,10 @@ ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
 ms.openlocfilehash: 8a0f6e1838bcc550829c0da92dc224e1df859e9c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Web API プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 > [!div class="op_single_selector"]

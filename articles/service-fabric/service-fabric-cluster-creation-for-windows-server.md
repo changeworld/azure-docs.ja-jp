@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: chackdan;maburlik;dekapur
-ms.openlocfilehash: 6aa2905a97ec6b8c125f2ab9572a8e40bf525b27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b3b1e8a368419fe4014802f7b2a35b7ae3fba3c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成
 Azure Service Fabric を使用すると、Windows Server を実行するあらゆる仮想マシンまたはコンピューター上に Service Fabric クラスターを作成できます。 つまり相互に接続された一連の Windows Server コンピューターを含む環境さえあれば、オンプレミスであれ、クラウド プロバイダーであれ、Service Fabric アプリケーションをデプロイして実行できるということです。 Service Fabric には、Service Fabric クラスターを作成するためのセットアップ パッケージ (スタンドアロン Windows Server パッケージ) が用意されています。
@@ -36,7 +36,7 @@ Azure Service Fabric を使用すると、Windows Server を実行するあら�
 * Windows Server 用 Service Fabric スタンドアロン パッケージに関するコミュニティへの質問を [Azure Service Fabric フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?) で投稿します。
 * [Service Fabric の専門家によるサポート](http://support.microsoft.com/oas/default.aspx?prid=16146)については、チケットを申請してください。  Microsoft によるプロフェッショナル サポートの詳細については、[こちら](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)をご覧ください。
 * [Microsoft Premier サポート](https://support.microsoft.com/en-us/premier)の一環として、このパッケージのサポートを受けることもできます。
-* 詳細については、「[Azure Service Fabric のサポート オプション](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support)」を参照してください。
+* 詳細については、「[Azure Service Fabric のサポート オプション](https://docs.microsoft.com/azure/service-fabric/service-fabric-support)」を参照してください。
 * サポート目的でログを収集するには、[Service Fabric スタンドアロン ログ コレクター](service-fabric-cluster-standalone-package-contents.md)を実行します。
 
 <a id="downloadpackage"></a>

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/12/2017
 ms.author: dekapur;maburlik;chackdan
-ms.openlocfilehash: 67d47739c27081c4e10bf11988ed121ff02d8bb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1190ec5a3ff70a368b29465699f9082d2b989bf
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 <a id="preparemachines"></a>
 
@@ -161,7 +161,7 @@ Passed                     : True
 現在、この構成テスト モジュールではセキュリティ構成は検証されないため、別個に検証を行う必要があります。  
 
 > [!NOTE]
-> このモジュールの信頼性を高めるために絶えず改善を行っていますので、不備や、現時点では TestConfiguration により検出されないと思われるケースがある場合には、[サポート チャネル](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support) からお知らせください。   
+> このモジュールの信頼性を高めるために絶えず改善を行っていますので、不備や、現時点では TestConfiguration により検出されないと思われるケースがある場合には、[サポート チャネル](https://docs.microsoft.com/azure/service-fabric/service-fabric-support) からお知らせください。   
 > 
 > 
 

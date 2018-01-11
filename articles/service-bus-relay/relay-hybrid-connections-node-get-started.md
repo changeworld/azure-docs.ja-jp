@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 07/07/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: c3bfc45969f250059988129f532edd12dfe3dcfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Relay ハイブリッド接続の概要
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure ポータルを使用した名前空間の作成
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure Portal を使用した名前空間の作成
 
 Relay 名前空間を既に作成してある場合は、「[Azure Portal を使用したハイブリッド接続の作成](#2-create-a-hybrid-connection-using-the-azure-portal)」セクションに進んでください。
 
@@ -54,7 +54,7 @@ Relay 名前空間を既に作成してある場合は、「[Azure Portal を使
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
-## <a name="3-create-a-server-application-listener"></a>3.サーバー アプリケーション (リスナー) の作成
+## <a name="3-create-a-server-application-listener"></a>手順 3.サーバー アプリケーション (リスナー) の作成
 
 Relay からのメッセージをリッスンおよび受信するために、Node.js コンソール アプリケーションを作成します。
 
@@ -76,7 +76,7 @@ Relay にメッセージを送信するために、Node.js コンソール ア�
 
 これで、Node.js を使用してエンドツーエンドのハイブリッド接続アプリケーションを作成できました。
 
-## <a name="next-steps"></a>次のステップ:
+## <a name="next-steps"></a>次の手順
 
 * [Relay に関する FAQ](relay-faq.md)
 * [名前空間を作成する](relay-create-namespace-portal.md)

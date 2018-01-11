@@ -4,7 +4,7 @@ description: "Azure AD ドメイン サービスのトラブルシューティ�
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 3acecdf753162ad703ff51acf40c34335bf6cdcb
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 5fe36241efc11cbb85231137649f7b97e23cc0a5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -57,13 +57,10 @@ Azure AD ディレクトリに "Azure AD Domain Services Sync" という名前�
 
 アプリケーションの有無を確認し、存在した場合に削除する手順は、次のとおりです。
 
-1. **Azure クラシック ポータル** ([https://manage.windowsazure.com](https://manage.windowsazure.com)) に移動します。
-2. 左ウィンドウで、 **[Active Directory]** を選択します。
-3. Azure AD Domain Services を有効にする Azure AD テナント (ディレクトリ) を選択します。
-4. **[アプリケーション]** タブに移動します。
-5. ドロップダウンで **[自分の会社が所有するアプリケーション]** のオプションを選択します。
-6. **[Azure AD ドメイン サービス同期]**というアプリケーションを探します。アプリケーションが存在する場合は、削除に進みます。
-7. アプリケーションが削除されたら、もう一度 Azure AD ドメイン サービスの有効化を試します。
+1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) で Azure AD ディレクトリの **[アプリケーション]** セクションに移動します。
+2. **[表示]** ドロップダウンで **[すべてのアプリケーション]** を選びます。 **[アプリケーションの状態]** ドロップダウンで **[すべて]** を選びます。 **[アプリケーションの可視性]** ドロップダウンで **[すべて]** を選びます。
+3. 検索ボックスに「**Azure AD Domain Services Sync**」と入力します。 アプリケーションが存在する場合はそれをクリックし、ツール バーの **[削除]** をクリックして削除します。
+4. アプリケーションが削除されたら、もう一度 Azure AD ドメイン サービスの有効化を試します。
 
 ### <a name="invalid-configuration"></a>構成が無効です
 **エラー メッセージ:**
@@ -153,7 +150,7 @@ Azure AD では、ユーザー オブジェクトが誤って削除されない�
 
 ユーザー アカウントは、Azure AD ディレクトリで同じ UPN でユーザー アカウントを再作成した場合でも、管理対象ドメイン内で無効な状態のままです。 管理対象ドメインからユーザー アカウントを削除するには、Azure AD テナントからユーザーを強制的に削除する必要があります。
 
-管理対象ドメインからユーザー アカウントを完全に削除するには、Azure AD テナントからユーザーを完全に削除します。 こちらの[MSDN の記事](https://msdn.microsoft.com/library/azure/dn194132.aspx)で説明されているように、-RemoveFromRecycleBin オプションを指定した Remove-MsolUser PowerShell コマンドレットを使用します。
+管理対象ドメインからユーザー アカウントを完全に削除するには、Azure AD テナントからユーザーを完全に削除します。 [この MSDN の記事](https://msdn.microsoft.com/library/azure/dn194132.aspx)で説明されているように、`Remove-MsolUser` PowerShell コマンドレットを使って `-RemoveFromRecycleBin` オプションを指定します。
 
 ## <a name="contact-us"></a>お問い合わせ
 [フィードバックの共有およびサポートについては](active-directory-ds-contact-us.md)、Azure Active Directory Domain Services 製品チームにお問い合わせください。

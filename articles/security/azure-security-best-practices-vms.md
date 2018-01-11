@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1af02c90c6a97bed612903de438b4d8c26be19b6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db8b0cc58738308116da84f2a45d6507c87f3cde
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM のセキュリティのベスト プラクティス
 
@@ -51,7 +51,7 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 
 リソース グループに属する VM は、そのポリシーを自然に継承します。 この方法で VM を管理することをお勧めしますが、[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) を使って、個々の VM に対するアクセス ポリシーを制御することもできます。
 
-Resource Manager ポリシーと RBAC で VM のアクセス制御を行えるようにすると、VM 全体のセキュリティを高めることができます。 ライフ サイクルが同じ VM は、同じリソース グループにまとめることをお勧めします。 皆さんが使用するリソースは、リソース グループを使ってデプロイして監視し、請求額をまとめることができます。 VM へのアクセスと VM のセットアップをユーザーに許可する際は、[最小限の権限の原則](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)に従ってください。 また、ユーザーに権限を割り当てる際は、次に示した組み込みの Azure ロールの使用を検討してください。
+Resource Manager ポリシーと RBAC で VM のアクセス制御を行えるようにすると、VM 全体のセキュリティを高めることができます。 ライフ サイクルが同じ VM は、同じリソース グループにまとめることをお勧めします。 皆さんが使用するリソースは、リソース グループを使ってデプロイして監視し、請求額をまとめることができます。 VM へのアクセスと VM のセットアップをユーザーに許可する際は、[最小限の権限の原則](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models)に従ってください。 また、ユーザーに権限を割り当てる際は、次に示した組み込みの Azure ロールの使用を検討してください。
 
 - [仮想マシン共同作成者](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor): VM を管理することはできますが、それが接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
 - [従来の仮想マシン共同作成者](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor): クラシック デプロイメント モデルを使って作成された VM を管理することはできますが、その VM が接続されている仮想ネットワークまたはストレージ アカウントを管理することはできません。
@@ -80,7 +80,7 @@ VM がインターネットに公開される場合は、[ネットワーク セ
 
 Azure Disk Encryption を適用してデータを保護し、組織のセキュリティ要件とコンプライアンス要件を満たすことができます。 不正なデータ アクセスに関連するリスクを減らすために、暗号化の使用を検討してください。 またドライブの暗号化は、機密データを書き込む前に行うことをお勧めします。
 
-Azure ストレージ アカウントに保存される VM データ ボリュームを保護するため、VM データ ボリュームを必ず暗号化してください。 暗号化キーとシークレットは、[Azure Key Vault](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/) を使って保護します。
+Azure ストレージ アカウントに保存される VM データ ボリュームを保護するため、VM データ ボリュームを必ず暗号化してください。 暗号化キーとシークレットは、[Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-whatis/) を使って保護します。
 
 データの暗号化を行っていない組織は、データの整合性に関する問題にさらされることが多くなります。 たとえば侵入を受けたアカウントのデータが許可のないユーザーや悪意のあるユーザーによって盗まれたり、平文のデータが不正アクセスを受けたりするおそれがあります。 このようなリスクにさらされることに加えて、企業は、業界の規制を遵守するために、適切なセキュリティ制御を使用してデータのセキュリティ強化に努めていることを証明する必要もあります。
 
@@ -122,7 +122,7 @@ Security Center を使って Azure に存在する VM 内の脅威のリスク�
 
 VM のプロセスが必要以上に多くのリソースを消費しているときは、リソースの酷使が問題になる可能性があります。 VM のパフォーマンスの問題はサービス中断に発展する場合があり、そうなれば可用性というセキュリティの原則を損ないます。 そのため、VM のアクセスを監視することは、問題発生時の対処としてのみならず、通常運用時に測定された基準パフォーマンスと照らして能動的に行うことが不可欠となります。
 
-[Azure 診断ログ ファイル](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)を分析することで、VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定することができます。 Azure 診断の拡張機能は、Windows ベースの VM に関する監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
+[Azure 診断ログ ファイル](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/)を分析することで、VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定することができます。 Azure 診断の拡張機能は、Windows ベースの VM に関する監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md)に含めることによって、これらの機能を有効にすることができます。
 
 [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) を使ってリソースの正常性を把握することもできます。
 

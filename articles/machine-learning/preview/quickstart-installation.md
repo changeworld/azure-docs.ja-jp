@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 10/13/2017
-ms.openlocfilehash: fd99fec7ead28c02ffe0d8b8165e8a0ab89d525e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 9a2648d800b803bf0d9d565a806e627c49bb1a00
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Azure Machine Learning プレビュー アカウントの作成と Azure Machine Learning Workbench のインストール
 Azure Machine Learning サービス (プレビュー) は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -49,7 +49,7 @@ Azure Portal を使用して Azure Machine Learning アカウントをプロビ�
 
 4. Machine Learning 実験のフォームに次の情報を入力します。
 
-   設定|推奨値|説明
+   設定|推奨値|Description
    ---|---|---
    [Experimentation account name]\(実験アカウント名\) | "_一意の名前_" |アカウントを識別する一意の名前を選択します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
    [サブスクリプション] | _該当するサブスクリプション_ |実験に使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースが課金の対象となっている適切なサブスクリプションを選択してください。

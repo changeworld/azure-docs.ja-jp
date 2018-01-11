@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: saurse;markgal;jimpark;nkolli;trinadhk
-ms.openlocfilehash: d3f165c749af0553c4918b33b0d24cc1e21af2a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a7189d9ccc8ab7aee61cd32e465b2c9b63680d2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
-> [!div class="op_single_selector"]
-> * [ARM](backup-client-automation.md)
-> * [クラシック](backup-client-automation-classic.md)
->
->
-
 この記事では、PowerShell を使用して、Windows Server または Windows クライアント上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
 ## <a name="install-azure-powershell"></a>Azure PowerShell をインストールするには

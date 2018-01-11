@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: 495f64f31eae63fcee343b277e16ac04e8575c21
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 1210b2da9126c24b59e8ef59b50742a17b2e740d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/07/2017
 
 デプロイする Resource Manager テンプレートとして、コンピューター上のローカル ファイル、または GitHub などのリポジトリに配置した外部ファイルを使用できます。 この記事でデプロイするテンプレートは、「[サンプル テンプレート](#sample-template)」セクションから、または [GitHub のストレージ アカウントのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)として入手できます。
 
-[!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install.md)]
+必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell モジュールをインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
 
 <a id="deploy-local-template" />
 
@@ -210,7 +210,7 @@ New-AzureRmResourceGroupDeployment -Mode Complete -Name ExampleDeployment `
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * この記事の例では、既定のサブスクリプションのリソース グループにリソースをデプロイしています。 別のサブスクリプションを使用するには、「[Manage multiple Azure subscriptions (複数の Azure サブスクリプションの管理)](/powershell/azure/manage-subscriptions-azureps)」を参照してください。
 * テンプレートのデプロイ用の完全なサンプル スクリプトについては、[Resource Manager テンプレートのデプロイ用のスクリプト](resource-manager-samples-powershell-deploy.md)に関するページを参照してください。
 * テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」を参照してください。

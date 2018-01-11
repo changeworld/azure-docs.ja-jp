@@ -12,15 +12,15 @@
     - name: SQL
       items:
         - name: .NET
-          href: create-documentdb-dotnet.md
+          href: create-sql-api-dotnet.md
         - name: Java
-          href: create-documentdb-java.md
+          href: create-sql-api-java.md
         - name: Node.js
-          href: create-documentdb-nodejs.md
+          href: create-sql-api-nodejs.md
         - name: Python
-          href: create-documentdb-python.md
+          href: create-sql-api-python.md
         - name: Xamarin
-          href: create-documentdb-xamarin-dotnet.md
+          href: create-sql-api-xamarin-dotnet.md
     - name: MongoDB
       items:
         - name: Node.js
@@ -67,12 +67,12 @@
           href: create-cassandra-dotnet.md
         - name: Python
           href: create-cassandra-python.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - 作成
       items:
         - name: SQL
-          href: tutorial-develop-documentdb-dotnet.md
+          href: tutorial-develop-sql-api-dotnet.md
         - name: .NET での MongoDB
           href: tutorial-develop-mongodb.md
         - name: Angular での MongoDB
@@ -98,7 +98,7 @@
     - name: 3 - クエリ
       items:
         - name: SQL
-          href: tutorial-query-documentdb.md
+          href: tutorial-query-sql-api.md
         - name: MongoDB
           href: tutorial-query-mongodb.md
         - name: テーブル
@@ -108,7 +108,7 @@
     - name: 4 - グローバル分散
       items:
         - name: SQL
-          href: tutorial-global-distribution-documentdb.md
+          href: tutorial-global-distribution-sql-api.md
         - name: MongoDB
           href: tutorial-global-distribution-mongodb.md
         - name: テーブル
@@ -123,7 +123,7 @@
           href: local-emulator-export-ssl-certificates.md
     - name: 6 - Functions との統合
       items:
-        - name: HTTP trigger
+        - name: HTTP トリガー
           href: tutorial-functions-http-trigger.md
 - name: サンプル
   items:
@@ -143,12 +143,12 @@
       href: unique-keys.md
     - name: 整合性
       href: consistency-levels.md
-    - name: スループット
+    - name: Throughput
       href: request-units.md
     - name: マルチモデルの API
       items:
         - name: SQL
-          href: documentdb-introduction.md
+          href: sql-api-introduction.md
         - name: MongoDB
           href: mongodb-introduction.md
         - name: テーブル
@@ -171,68 +171,70 @@
     - name: 開発
       items:
         - name: SQL API
-          href: documentdb-index.md
+          href: sql-api-index.md
           items:
             - name: リソース
-              href: documentdb-resources.md
+              href: sql-api-resources.md
             - name: SQL クエリ
-              href: documentdb-sql-query.md
+              href: sql-api-sql-query.md
             - name: SQL クエリのパフォーマンス
-              href: documentdb-sql-query-metrics.md
+              href: sql-api-sql-query-metrics.md
             - name: SQL のプレイグラウンド
               href: 'https://www.documentdb.com/sql/demo'
             - name: パーティション分割
-              href: documentdb-partition-data.md
+              href: sql-api-partition-data.md
             - name: ストアド プロシージャ、トリガー、UDF
               href: programming.md
             - name: パフォーマンス テスト
               href: performance-testing.md
-            - name: パフォーマンスに関するヒント
+            - name: .NET のパフォーマンスに関するヒント
               href: performance-tips.md
+            - name: Java のパフォーマンスに関するヒント
+              href: performance-tips-java.md
             - name: 複数のマスターのセットアップ
               href: multi-region-writers.md
             - name: DateTime
               href: working-with-dates.md
             - name: ドキュメント データのモデリング
               href: modeling-data.md
-            - name: Tutorials (チュートリアル)
+            - name: チュートリアル
               items:
                 - name: 最初のアプリを記述する
                   items:
                     - name: .NET
-                      href: documentdb-get-started.md
+                      href: sql-api-get-started.md
                     - name: .NET Core
-                      href: documentdb-dotnetcore-get-started.md
+                      href: sql-api-dotnetcore-get-started.md
                     - name: Java
-                      href: documentdb-java-get-started.md
+                      href: sql-api-java-get-started.md
                     - name: Node.js
-                      href: documentdb-nodejs-get-started.md
+                      href: sql-api-nodejs-get-started.md
                     - name: C++
-                      href: documentdb-cpp-get-started.md
+                      href: sql-api-cpp-get-started.md
                 - name: Web アプリを構築する
                   items:
                     - name: .NET
-                      href: documentdb-dotnet-application.md
+                      href: sql-api-dotnet-application.md
                     - name: Xamarin
                       href: mobile-apps-with-xamarin.md
                     - name: Node.js
-                      href: documentdb-nodejs-application.md
+                      href: sql-api-nodejs-application.md
                     - name: Java
-                      href: documentdb-java-application.md
+                      href: sql-api-java-application.md
                     - name: Python Flask
-                      href: documentdb-python-application.md
+                      href: sql-api-python-application.md
             - name: サンプル
               items:
                 - name: .NET のサンプル
-                  href: documentdb-dotnet-samples.md
+                  href: sql-api-dotnet-samples.md
                 - name: Node.js のサンプル
-                  href: documentdb-nodejs-samples.md
+                  href: sql-api-nodejs-samples.md
                 - name: Python のサンプル
-                  href: documentdb-python-samples.md
+                  href: sql-api-python-samples.md
             - name: リソース
               items:
                 - name: SQL の文法チート シート
-                  href: documentdb-sql-query-cheat-sheet.md
+                  href: sql-api-sql-query-cheat-sheet.md
                 - name: スタック オーバーフロー
                   href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
                 - name: ビデオ
@@ -252,6 +254,8 @@
               href: mongodb-mongochef.md
             - name: Robomongo の使用
               href: mongodb-robomongo.md
+            - name: Mongoose の使用
+              href: mongodb-mongoose.md
             - name: MongoDB 機能のサポート
               href: mongodb-feature-support.md
             - name: Angular チュートリアル シリーズ
@@ -318,7 +322,7 @@
           href: indexing-policies.md
         - name: Visual Studio での接続済みサービス
           href: connected-service.md
-    - name: 管理
+    - name: '[管理]'
       items:
         - name: コスト効率の優れた読み取りと書き込み
           href: key-value-store-cost.md
@@ -377,31 +381,31 @@
         - name: ODBC ドライバーを利用してデータを視覚化する
           href: odbc-driver.md
         - name: SQL API で Spring Boot Starter を使用する
-          href: documentdb-java-spring-boot-starter-with-cosmos-db.md
-- name: リファレンス
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
+- name: 参照
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
     - name: SQL API
       items:
         - name: Java
-          href: documentdb-sdk-java.md
+          href: sql-api-sdk-java.md
         - name: .NET
-          href: documentdb-sdk-dotnet.md
+          href: sql-api-sdk-dotnet.md
         - name: .NET Change Feed
-          href: documentdb-sdk-dotnet-changefeed.md
+          href: sql-api-sdk-dotnet-changefeed.md
         - name: .NET Core
-          href: documentdb-sdk-dotnet-core.md
+          href: sql-api-sdk-dotnet-core.md
         - name: Node.js
-          href: documentdb-sdk-node.md
+          href: sql-api-sdk-node.md
         - name: Python
-          href: documentdb-sdk-python.md
+          href: sql-api-sdk-python.md
         - name: REST ()
           href: /rest/api/documentdb/
         - name: REST リソース プロバイダー
           href: /rest/api/documentdbresourceprovider/
         - name: SQL
-          href: documentdb-sql-query-reference.md
+          href: sql-api-sql-query-reference.md
     - name: テーブル API
       items:
         - name: .NET

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1a0b54e75bd6356ba7ba351d51d5f4a59bd64c75
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 9b35572b3275b5a2c5e89adf4890a2659d09626e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>既存のカスタム DNS 名を Azure Web Apps にマップする
 
@@ -58,6 +58,8 @@ ms.lasthandoff: 11/28/2017
 ## <a name="prepare-the-app"></a>アプリの準備
 
 Web アプリにカスタム DNS 名をマップするには、Web アプリの [App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が有料レベル (**Shared**、**Basic**、**Standard**、または **Premium**) である必要があります。 この手順では、App Service アプリがサポートされている価格レベルであることを確認します。
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -322,7 +324,7 @@ Set-AzureRmWebApp `
 
 詳細については、「[カスタム ドメインを Web アプリに割り当てる](scripts/app-service-powershell-configure-custom-domain.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

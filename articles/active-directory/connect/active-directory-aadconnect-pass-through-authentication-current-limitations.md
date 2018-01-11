@@ -5,20 +5,20 @@ services: active-directory
 keywords: "Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
 documentationcenter: 
 author: swkrish
-manager: femila
+manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 12/12/2017
 ms.author: billmath
-ms.openlocfilehash: a7edfd1939ad45dd3309fe5eaee2afa36086e9eb
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 98de47eab2636277acfd6393a7574ae18487bc6a
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 12/06/2017
 次のシナリオは完全にサポートされています。
 
 - すべての Web ブラウザー ベースのアプリケーションへのユーザー サインイン
-- [先進認証](https://aka.ms/modernauthga)をサポートする Office 365 クライアント アプリケーションへのユーザー サインイン
-- Office 2016、および Office 2013 (先進認証_あり_)
+- [先進認証](https://aka.ms/modernauthga)をサポートする Office アプリケーションへのユーザー サインイン: Office 2016、および Office 2013 (先進認証_あり_)
+- 先進認証 (オンライン トポロジとハイブリッド トポロジを含む) をサポートする Skype for Business へのユーザー サインイン。 サポートされているトポロジについて詳しくは、[こちら](https://technet.microsoft.com/library/mt803262.aspx)をご覧ください。
 - Azure AD ドメインの Windows 10 デバイスへの参加
 - Exchange ActiveSync のサポート
 
@@ -40,11 +40,11 @@ ms.lasthandoff: 12/06/2017
 次のシナリオはサポートされて_いません_。
 
 - 従来の Office クライアント アプリケーションへのユーザー サインイン: Office 2010、および Office 2013 (先進認証_なし_)。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 先進認証により、パススルー認証のサポートが可能になります。 Azure Multi-factor Authentication などの[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)機能を使用して、ユーザー アカウントをセキュリティで保護することもできます。
-- Skype for Business クライアント アプリケーション (Skype for Business 2016 を含む) へのユーザー サインイン。
+- Skype for Business クライアント アプリケーションへのユーザー サインイン (先進認証_なし_)。
 - PowerShell バージョン 1.0 へのユーザー サインイン。 PowerShell バージョン 2.0 を使用することをお勧めします。
-- Azure Active Directory Domain Services。
 - Multi-Factor Authentication のアプリ パスワード。
 - [資格情報が漏洩した](../active-directory-reporting-risk-events.md#leaked-credentials)ユーザーの検出。
+- Azure AD Domain Services を使用するには、パスワード ハッシュの同期をテナントで有効にする必要があります。 そのため、パススルー認証_のみ_を使用するテナントは、Azure AD Domain Services を必要とするシナリオに対応していません。
 
 >[!IMPORTANT]
 >サポートされていないシナリオに対処する場合に_のみ_、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。

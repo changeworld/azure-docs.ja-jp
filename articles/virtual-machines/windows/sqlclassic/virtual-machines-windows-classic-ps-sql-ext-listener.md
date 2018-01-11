@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 8e506be42aea4fb3c48c29b771a78dcf694f4518
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Azure での AlwaysOn 可用性グループの外部リスナーの構成
 > [!div class="op_single_selector"]

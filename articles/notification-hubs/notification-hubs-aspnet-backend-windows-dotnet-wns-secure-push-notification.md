@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 9c626ec1534c4899588150a58c0da57b9d963f6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs の安全なプッシュ
 > [!div class="op_single_selector"]

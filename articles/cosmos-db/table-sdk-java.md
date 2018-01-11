@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: 
 ms.openlocfilehash: 06ce541b42de2ad20014199a7e87fe3d8c2dfe01
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB Table API for Java: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/20/2017
 |**SDK への協力**|[Github](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]
-> プレビュー中にテーブル API アカウントを作成した場合は、一般公開のテーブル API SDK を操作できるように、[新しいテーブル API アカウント](create-table-dotnet.md#create-a-database-account)を作成してください。
+> プレビュー中にテーブル API アカウントを作成した場合、一般公開されたテーブル API SDK を使うには[新しいテーブル API アカウント](create-table-dotnet.md#create-a-database-account)を作成してください。
 >
 
 ## <a name="release-notes"></a>リリース ノート

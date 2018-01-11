@@ -3,7 +3,7 @@ title: "Azure DevTest Labs に関する FAQ | Microsoft Docs"
 description: "Azure DevTest Labs についてよく寄せられる質問の回答を示します。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: afe83109-b89f-4f18-bddd-b8b4a30f11b4
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2017
-ms.author: tarcher
-ms.openlocfilehash: 0a5e686a7f60b15b55d8f4365b73c71de02c4bad
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: v-craic
+ms.openlocfilehash: 24a3220a21280684a34405ac4c3d9f9eab9e3683
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。

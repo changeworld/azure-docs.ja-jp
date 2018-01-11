@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2017
+ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: e75929ee5d3f57af77c66910cc294a7c0fb6629a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0fdbd7fc4ec48037371ffa296cf668897e45b70
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
-Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 承認されていないユーザーが接続できないようにクラスターをセキュリティで保護する必要があります。 クラスターで実稼働ワークロードを実行している場合、セキュリティで保護されたクラスターは特に重要です。 セキュリティで保護されていないクラスターを作成することはできますが、パブリック インターネットに管理エンドポイントを公開している場合に、匿名ユーザーがそのクラスターに接続できるようになります。 
+Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 承認されていないユーザーが接続できないように、クラスターをセキュリティで保護する必要があります。 クラスターで実稼働ワークロードを実行している場合、セキュリティで保護されたクラスターは特に重要です。 セキュリティで保護されていないクラスターを作成することはできますが、パブリック インターネットに管理エンドポイントを公開している場合に、匿名ユーザーがそのクラスターに接続できるようになります。 セキュリティで保護されていないクラスターは、運用ワークロードでサポートされません。 
 
 この記事では、Azure クラスターとスタンドアロン クラスターのセキュリティ シナリオの概要と、その実装に使用できる多様なテクノロジについて説明します。
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: d997c291e487e27b7e12c015e34ad839ac020151
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 36869eb523706787257160e5859f50b24f7bf08b
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -103,7 +103,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 1. Azure Portal で、Web アプリに移動します。
 3. **[すべての設定]** > **[診断ログ]** を選択します。
 4. **[失敗した要求トレース]** の **[On] \(オン)** を選択します。
-5. **[ 保存]** を選択します。
+5. **[保存]** を選択します。
 6. Web アプリ ブレードで **[ツール]** を選択します。
 7. **[Visual Studio Online]** を選択します。
 8. 設定が **[On] \(オン)** でない場合は、**[On] \(オン)** を選択します。
@@ -174,7 +174,7 @@ Web ジョブは、バックグラウンド処理用に設計されています�
 
 App Service のローカル キャッシュ機能を使用する場合は、App Service インスタンスに対する LogFiles および Data フォルダーのフォルダー構造が影響を受けます。 ローカル キャッシュが使用されている場合は、LogFiles および Data フォルダーのストレージ内にサブフォルダが作成されます。 これらのサブフォルダは、"一意識別子" + タイムスタンプという名前付けパターンを使用します。 各サブフォルダは、Web アプリが実行されているか、または実行された VM インスタンスに対応します。
 
-ローカル キャッシュを使用しているかどうかを判定するには、App Service の **[アプリケーションの設定]** タブを確認します。ローカル キャッシュが使用されている場合、アプリの設定 `WEBSITE_LOCAL_CACHE_OPTION` は `Always` に設定されています。 
+ローカル キャッシュを使用しているかどうかを判定するには、App Service の **[アプリケーションの設定]** タブを確認します。ローカル キャッシュが使用されている場合、アプリの設定 `WEBSITE_LOCAL_CACHE_OPTION` は `Always` に設定されています。
 
 ローカル キャッシュを使用していないときにこの問題が発生する場合は、サポート要求を送信してください。
 

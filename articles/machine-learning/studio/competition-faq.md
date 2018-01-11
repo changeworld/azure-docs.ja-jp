@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 12/18/2017
 ms.author: haining;garye
-ms.openlocfilehash: 809df66042f6c765ed56836db40f72a5cd8ca7f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 848d0a0882d538cadadf3172a20e628799488042
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence コンペティションの FAQ
 **Microsoft Cortana Intelligence コンペティションとは何ですか。**
@@ -52,6 +52,7 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 コンペティション参加者は、データ サイエンス モデルの開発に、Cortana Intelligence Suite 内のクラウドベースのサービスである Azure Machine Learning Studio を利用して、送信用のコンペティション エントリを作成します。 Machine Learning Studio は、機械学習の実験を構築するための GUI インターフェイスを提供するだけでなく、R や Python の独自のスクリプトをネイティブで実行できるようにします。 Machine Learning Studio の R と Python のランタイムには、オープン ソースの R/Python パッケージの豊富なセットが付属しており、独自のパッケージも実験の一部としてインポートできます。 Machine Learning Studio には、フリー スタイルのデータ探索を行うための、組み込みの Jupyter Notebook サービスも用意されています。 もちろん、コンペティションで使用されるデータセットをいつでもダウンロードして、Machine Learning Studio 以外の任意のツールで探索することもできます。 
 
 **参加するには、データ サイエンティストである必要はありますか?**
+
 
 いいえ。 実際には、データ処理に強い関心がある人、データ サイエンスに興味がある人、データ サイエンティストになろうとしている人などに、コンテストへの参加をお勧めしています。 補助ドキュメントは、全員が完了できるように設計されています。 対象読者:
 
@@ -103,6 +104,7 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 送信時刻が判断基準になります。 先に送信されたエントリが、後で送信されたエントリより上位になります。
 
 **Guest ワークスペースを使用して参加することはできますか。**
+
 
 いいえ。 参加するには Free または Standard ワークスペースを使用する必要があります。 コンペティションの Starter Experiment は Guest ワークスペースでも開くことはできますが、そのワークスペースから送信できる有効なエントリを作成することはできません。 
 

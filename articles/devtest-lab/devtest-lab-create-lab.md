@@ -3,7 +3,7 @@ title: "Azure DevTest Labs でのラボの作成 | Microsoft Docs"
 description: "Azure DevTest Labs で仮想マシン用のラボを作成します。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 8b6d3e70-6528-42a4-a2ef-449575d0f928
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/07/2017
-ms.author: tarcher
-ms.openlocfilehash: 4c2c6cbff31f5d4992163d3fb46e4f1e13a58024
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.author: v-craic
+ms.openlocfilehash: 3fd1f0ca01e9a800eaf3ba9843c7e3165023ccef
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
 Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリソース グループを包含するインフラストラクチャであり、制限とクォータを指定することでこれらのリソースをより適切に管理することができます。 この記事では、Azure Portal を使用してラボを作成する手順を説明します。
@@ -56,7 +56,7 @@ Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリ
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ラボを作成した後は、次の手順を考慮します。
 
 * [ラボへのアクセスをセキュリティで保護する](devtest-lab-add-devtest-user.md)

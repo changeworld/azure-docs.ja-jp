@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 09/29/2017
 ms.author: nitinme
 ms.openlocfilehash: 93bd267adfac0d2dd5c22d2d7ac79b0643f5cded
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-java"></a>Data Lake Store での Java を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **Azure Active Directory "ネイティブ" アプリケーションを作成します**。 「[Data Lake Store での Azure Active Directory を使用したエンドユーザーの認証](data-lake-store-end-user-authenticate-using-active-directory.md)」の手順を完了している必要があります。
+* **Azure Active Directory "ネイティブ" アプリケーションを作成します**。 [Azure Active Directory を使用した Data Lake Store に対するエンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)のステップを完了している必要があります。
 
 * [Maven](https://maven.apache.org/install.html)。 このチュートリアルでは、ビルドとプロジェクトの依存関係に Maven を使用します。 Maven や Gradle などのビルド システムを使用しなくてもビルドすることはできますが、これらのシステムを使用すると、依存関係の管理が容易になります。
 

@@ -4,7 +4,7 @@ description: "このページは、アプリ パスワードの詳細と、Azure
 services: multi-factor-authentication
 documentationcenter: 
 author: barlanmsft
-manager: femila
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
 ms.service: multi-factor-authentication
@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
+ms.date: 12/12/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: c10a636b81751074f219682fec79ffe9f648a2c8
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 166a04fa18a57b239c195cbdd7b53a3baafbad65
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のアプリ パスワードとは
-現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。 多要素認証はユーザーごとに有効にします。 これは、ユーザーで多要素認証が有効になると、非ブラウザー アプリを使用しようとしても、操作を実行できないことを意味します。 アプリ パスワードによってこれが発生します。
+現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。 多要素認証はユーザーごとに有効にします。 これは、ユーザーで多要素認証が有効になると、非ブラウザー アプリを使用しようとしても、操作を実行できないことを意味します。 アプリ パスワードによってこれが発生します。 ユーザーごとの MFA ではなく条件付きアクセス ポリシーを使用して Multi-Factor Authentication を適用する場合は、アプリ パスワードを作成できません。 条件付きアクセス ポリシーを使用してアクセスを制御するアプリケーションにはアプリ パスワードは不要です。
 
 アプリ パスワードが取得できたら、これらの非ブラウザー アプリに対して、元のパスワードの代わりに使用します。 なぜなら、2 段階認証の登録をすることで、2 番目の確認を実行できない限りは元のパスワードでサインインできなくなるからです。 たとえば、Apple のネイティブ電子メール クライアントは 2 段階認証を要求できないので、そのままではサインインできません。 そこで、2 段階認証に対応していないアプリについては、日常的に使用していない、より安全なアプリ パスワードを作成します。 このアプリ パスワードを使用することで、アプリが多要素認証をバイパスして動作を続行できるようになります。
 

@@ -4,7 +4,7 @@ description: "リージョンと Azure で Windows 仮想マシンを実行す�
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: dab44d62-d4b1-43ac-b40f-8fd8818e075b
 ms.service: virtual-machines-windows
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/10/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 8f1c733f5af85668ba306992c4b3857f6b5cebed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31d2d6ae6f0a924c25109f31a7522773eca99d86
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 [!INCLUDE [virtual-machines-common-regions-and-availability](../../../includes/virtual-machines-common-regions-and-availability.md)]
 

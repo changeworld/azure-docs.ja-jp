@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ec29e6b250f927a3a4a94ffdf83d6c7c0e325722
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>例 1 – NSG と Azure Resource Manager テンプレートを使用して簡単な DMZ を構築する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -328,12 +328,12 @@ ms.lasthandoff: 10/11/2017
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 この例では、Microsoft によって管理され、コミュニティに公開されている Github リポジトリ上の定義済み Azure Resource Manager テンプレートを使用しています。 このテンプレートは、Github から直接デプロイすることもできるほか、ダウンロードしてニーズに合わせて変更することもできます。 
 
-メイン テンプレートは "azuredeploy.json" という名前のファイル内にあります。 PowerShell または CLI を使用して (関連付けられた "azuredeploy.parameters.json" ファイルとともに) このテンプレートを送信して、デプロイすることができます。 最も簡単な方法は、GitHub の README.md ページにある [Deploy to Azure] \(Azure にデプロイ) ボタンを使用することです。
+メイン テンプレートは "azuredeploy.json" という名前のファイル内にあります。 PowerShell または CLI を使用して (関連付けられた "azuredeploy.parameters.json" ファイルとともに) このテンプレートを送信して、デプロイすることができます。 最も簡単な方法は、GitHub の README.md ページにある [Deploy to Azure] (Azure にデプロイ) ボタンを使用することです。
 
 この例を構築するテンプレートを GitHub と Azure Portal からデプロイするには、次の手順を実行します。
 
 1. ブラウザーから、[テンプレート][Template]のページに移動します。
-2. [Deploy to Azure] \(Azure に配置する) ボタンをクリックします (または [Visualize] \(視覚化) ボタンをクリックして、このテンプレートをグラフィカルに表示します)。
+2. [Deploy to Azure] (Azure に配置する) ボタンをクリックします (または [Visualize] (視覚化) ボタンをクリックして、このテンプレートをグラフィカルに表示します)。
 3. [パラメーター] ブレードにストレージ アカウント、ユーザー名、パスワードを入力して、**[OK]** をクリックします。
 5. このデプロイ用にリソース グループを作成します (既存のリソース グループを使用することもできますが、最良の結果のために新しく作成することをお勧めします)。
 6. 必要に応じて、VNet の [サブスクリプション] と [場所] の設定を変更します。

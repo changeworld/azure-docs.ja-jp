@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 4a0e4bd58ffa4bc7062ee4844a090be43047e8a1
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 488fe5697992bf21f9b748d272a6bda50eb1eb90
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="execute-data-sources-and-data-preparations-packages-from-python"></a>Python からのデータ ソースおよびデータ準備パッケージの実行
 

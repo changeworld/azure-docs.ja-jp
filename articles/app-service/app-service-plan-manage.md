@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 5369946b1e8a4851ee940cf6fe91a1bdb94db5f3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 61179c5bf29ed2c338b45ba909ec01237806cf26
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
-[App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)は、App Service アプリの実行に必要なリソースを提供します。 このハウツー ガイドでは、App Service プランを管理する方法を示します。 
+[App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)は、App Service アプリの実行に必要なリソースを提供します。 このハウツー ガイドでは、App Service プランを管理する方法を示します。
 
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
@@ -69,6 +69,8 @@ App Service プランを作成するには、**[+ 新規作成]** をクリッ�
 
 ![App Service plan selector.][change]
 
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+
 各プランには価格レベルが割り当てられています。 たとえば、サイトを **Free** レベルから **Standard** レベルに移動すると、サイトに割り当てられたすべてのアプリで **Standard** レベルの機能とリソースを使うことができるようになります。 ただし、高いレベルのプランから低いレベルのプランにアプリを移動すると、特定の機能にアクセスできなくなります。 移動後のプランで利用できない機能をアプリが使っている場合、該当する機能を示すエラーが表示されます。 たとえば、アプリの 1 つが SSL 証明書を使っている場合、次のようなエラー メッセージが表示される可能性があります。`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`この場合は、移動先プランにアプリを移動する前に、移動先プランの価格レベルを **Basic** 以上にスケールアップするか、アプリに対するすべての SSL 接続を削除する必要があります。
 
 ## <a name="move-an-app-to-a-different-region"></a>アプリを異なるリージョンに移動する
@@ -95,7 +97,7 @@ App Service プランの価格レベルをスケールアップする方法に�
 > [!IMPORTANT]
 > **App Service プラン**にアプリが関連付けられていない場合でも、構成済みの VM インスタンスが引き続き確保されるため、料金が発生します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure でのアプリのスケールアップ](web-sites-scale.md)

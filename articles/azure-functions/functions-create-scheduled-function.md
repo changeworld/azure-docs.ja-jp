@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 476e103c7101621e116c5155241f56f1cb9036df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1c5ef3868a14f42d75720984ea19bb495b887e4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
@@ -52,13 +52,17 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
     ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-scheduled-function/add-first-function.png)
 
-2. 目的の言語の **TimerTrigger** テンプレートを選びます。 次の表で指定されている設定を使用してください。
+2. 検索フィールドに、「`timer`」と入力し、タイマー トリガー テンプレート用の目的の言語を選択します。 
 
-    ![タイマーによってトリガーされる関数を Azure Portal で作成する。](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+    ![タイマーによってトリガーされる関数のテンプレートを選択します。](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
 
-    | 設定 | 推奨値 | 説明 |
+3. 新しいトリガーは、次の画像の下の表に示したように設定します。
+
+    ![タイマーによってトリガーされる関数を Azure Portal で作成する。](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
+
+    | 設定 | 推奨値 | Description |
     |---|---|---|
-    | **関数名の指定** | TimerTriggerCSharp1 | タイマーによってトリガーされる関数の名前を定義します。 |
+    | **名前** | 既定値 | タイマーによってトリガーされる関数の名前を定義します。 |
     | **[スケジュール](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)。 |
 
 2. **Create** をクリックしてください。 選択した言語で、毎分実行する関数が作成されます。

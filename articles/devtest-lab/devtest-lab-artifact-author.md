@@ -3,7 +3,7 @@ title: "DevTest Labs 仮想マシンのカスタム アーティファクトの�
 description: "Azure DevTest Labs で使用する独自のアーティファクトを作成する方法を説明します。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 32dcdc61-ec23-4a01-b731-78c029ea5316
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
-ms.author: tarcher
-ms.openlocfilehash: 679819618452d65847c6163569e04945ba8a414d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 7766227d66df94eca72072f52ff02928f8ee277b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs 仮想マシンのカスタム アーティファクトの作成
 
@@ -52,15 +52,15 @@ ms.lasthandoff: 10/11/2017
       }
     }
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | [説明] |
 | --- | --- | --- |
-| $schema |いいえ |JSON スキーマ ファイルの場所。 JSON スキーマ ファイルは、定義ファイルの有効性をテストする際に役立ちます。 |
-| title |はい |ラボで表示されるアーティファクトの名前 |
-| Description |はい |ラボで表示されるアーティファクトの説明 |
-| iconUri |いいえ |ラボで表示されるアイコンの URI。 |
-| targetOsType |あり |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
-| パラメーター |いいえ |マシンでアーティファクトのインストール コマンドが実行されるときに指定する値。 これは、アーティファクトをカスタマイズする際に役立ちます。 |
-| runCommand |はい |VM 上で実行されるアーティファクトのインストール コマンド。 |
+| $schema |いいえ  |JSON スキーマ ファイルの場所。 JSON スキーマ ファイルは、定義ファイルの有効性をテストする際に役立ちます。 |
+| title |[はい] |ラボで表示されるアーティファクトの名前 |
+| Description |[はい] |ラボで表示されるアーティファクトの説明 |
+| iconUri |いいえ  |ラボで表示されるアイコンの URI。 |
+| targetOsType |[はい] |アーティファクトをインストールする VM のオペレーティング システム。 サポートされているオプションは、Windows と Linux です。 |
+| parameters |いいえ  |マシンでアーティファクトのインストール コマンドが実行されるときに指定する値。 これは、アーティファクトをカスタマイズする際に役立ちます。 |
+| runCommand |[はい] |VM 上で実行されるアーティファクトのインストール コマンド。 |
 
 ### <a name="artifact-parameters"></a>アーティファクトのパラメーター
 定義ファイルの parameters セクションでは、アーティファクトのインストール時にユーザーが入力できる値を指定します。 アーティファクトのインストール コマンドでこれらの値を参照できます。
@@ -75,11 +75,11 @@ ms.lasthandoff: 10/11/2017
         }
       }
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | [説明] |
 | --- | --- | --- |
-| type |はい |パラメーター値の型。 使用できる型については、下記を参照してください。 |
-| displayName |はい |ラボのユーザーに対して表示されるパラメーターの名前。 | |
-| Description |はい |ラボで表示されるパラメーターの説明。 |
+| 型 |[はい] |パラメーター値の型。 使用できる型については、下記を参照してください。 |
+| displayName |[はい] |ラボのユーザーに対して表示されるパラメーターの名前。 | |
+| 説明 |[はい] |ラボで表示されるパラメーターの説明。 |
 
 使用できる型は次のとおりです。
 
@@ -129,6 +129,6 @@ ms.lasthandoff: 10/11/2017
 * [DevTest Labs でアーティファクトのエラーを診断する方法](devtest-lab-troubleshoot-artifact-failure.md)
 * [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 

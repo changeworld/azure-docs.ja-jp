@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/31/2017
 ms.author: cherylmc
 ms.openlocfilehash: cc8a3e7f2a907b1eea4ecf39df2b291b0fb8b207
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
 

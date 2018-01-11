@@ -17,10 +17,10 @@ ms.date: 04/24/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>.NET 用の Batch 管理クライアント ライブラリを使用した Batch アカウントとクォータの管理
 

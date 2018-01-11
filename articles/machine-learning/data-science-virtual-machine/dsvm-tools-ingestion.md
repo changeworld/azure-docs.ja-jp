@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 564c06c5017a77431b7d6fed7b43c47141b12252
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f1477c5fd8f57a815eeb603d2bde580bf78cca2
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 | サポートされている DSVM バージョン      | Windows      |
 | 一般的な用途      | Azure ストレージから Azure Data Lake Store に複数の BLOB をインポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、`adlcopy` と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [Using AdlCopy]https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| サンプルへのリンク      | [AdlCopy を使用] https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | DSVM 上の関連ツール      | AzCopy、Azure コマンド ライン     |
 
 ## <a name="azure-command-line"></a>Azure コマンド ライン
@@ -58,19 +58,19 @@ ms.lasthandoff: 10/11/2017
 | サポートされている DSVM バージョン      | Windows      |
 | 一般的な用途      | BLOB ストレージにファイルをコピー、アカウント間で BLOB をコピーします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、`azcopy` と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [Windows での AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)      |
+| サンプルへのリンク      | [Windows での AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | DSVM 上の関連ツール      | AdlCopy     |
 
 
-## <a name="azure-cosmos-db-documentdb-api-data-migration-tool"></a>Azure Cosmos DB: DocumentDB API データ移行ツール
+## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB データ移行ツール
 
 |    |           |
 | ------------- | ------------- |
-| 紹介   | JSON ファイル、CSV ファイル、SQL、MongoDB、Azure Table ストレージ、Amazon DynamoDB、Azure Cosmos DB DocumentDB API コレクションなどのさまざまななソースから、Azure Cosmos DB または Azure DocumentDB にデータをインポートするツール。      |
+| 紹介   | JSON ファイル、CSV ファイル、SQL、MongoDB、Azure Table ストレージ、Amazon DynamoDB、Azure Cosmos DB SQL API コレクションなどのさまざまななソースから、Azure Cosmos DB にデータをインポートするツール。      |
 | サポートされている DSVM バージョン      | Windows      |
 | 一般的な用途      | VM から CosmosDB にファイルをインポート、Azure テーブル ストレージから CosmosDB にデータをインポート、または SQL Server データベースから CosmosDB にデータをインポートします。     |
 |  使用/実行方法    |   コマンド ライン バージョンを使用するには、コマンド プロンプトを開いて `dt` と入力します。 GUI ツールを使用するには、コマンド プロンプトを開いて `dtui` と入力します。    |
-| サンプルへのリンク      | [CosmosDB インポート データ](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data)      |
+| サンプルへのリンク      | [CosmosDB インポート データ](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
 
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 10/11/2017
 | サポートされている DSVM バージョン      | Windows      |
 | 一般的な用途      | CSV ファイルを SQL Server テーブルにインポート、SQL Server テーブルをファイルにエクスポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、`bcp` と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [一括コピー ユーティリティ](https://docs.microsoft.com/en-us/sql/tools/bcp-utility)      |
+| サンプルへのリンク      | [一括コピー ユーティリティ](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | DSVM 上の関連ツール      | SQL Server、sqlcmd      |
 
 

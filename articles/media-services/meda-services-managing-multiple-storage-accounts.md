@@ -6,19 +6,18 @@ documentationcenter:
 author: Juliako
 manager: cfowler
 editor: 
-ms.assetid: 4e4a9ec3-8ddb-4938-aec1-d7172d3db858
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 0b407c3b092fd2c706775154cee3164a9869315a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c99d39a7e33a161d63cf934e0b5983e3977598c4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>複数のストレージ アカウントでの Media Services 資産の管理
 Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカウントに複数のストレージ アカウントをアタッチできます。 Media Services アカウントに複数のストレージ アカウントをアタッチする機能には、次のような利点があります。
@@ -26,7 +25,7 @@ Microsoft Azure Media Services 2.2 以降では、1 つの Media Services アカ
 * アセットを複数のストレージ アカウントに負荷分散します。
 * 大量のコンテンツ処理のために Media Services を拡張します (現在、1 つのストレージ アカウントには最大 500 TB (テラバイト) の制限があります)。 
 
-このトピックでは、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) および [PowerShell](/powershell/module/azurerm.media) を使用して、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
+この記事では、[Azure Resource Manager API](https://docs.microsoft.com/rest/api/media/mediaservice) および [PowerShell](/powershell/module/azurerm.media) を使って、複数のストレージ アカウントを Media Services アカウントにアタッチする方法について説明します。 また、Media Services SDK を使用して資産を作成するときに、別のストレージ アカウントを指定する方法も説明します。 
 
 ## <a name="considerations"></a>考慮事項
 Media Services アカウントに複数のストレージ アカウントをアタッチする場合は、次の考慮事項が適用されます。
@@ -91,15 +90,23 @@ namespace MultipleStorageAccounts
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);

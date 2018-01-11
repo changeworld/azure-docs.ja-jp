@@ -4,7 +4,7 @@ description: "Azure Portal で Resource Manager デプロイメント モデル�
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/21/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 33bc0be0aeae6d0276fd8999b9ac0a010e3067ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08f0af6ecdb45b263d39c3d2d6442f4ed555e3c3
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -38,7 +38,12 @@ ms.lasthandoff: 10/11/2017
 
 ![受信規則の追加](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-**[サービス]** ボックスの一覧で共通のサービスを選択します (たとえば、*[HTTP]*)。 *[カスタム]* を選択して、使用する特定のポートを指定することもできます。 必要な場合は、優先度または名前を変更します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。 この画面の上部にある **[Advanced]\(詳細設定\)** を選択すると、特定の送信元 IP ブロックやポート範囲などを入力することもできます。 準備ができたら、**[OK]** を選択してルールを作成します。
+トラフィックを許可する規則の作成方法
+
+- **[基本]** ボタンを選択します。 既定では、**[詳細設定]** ウィンドウにその他の構成オプションがあり、特定の送信元 IP ブロックやポート範囲の定義などが行えます。
+- **[サービス]** ボックスの一覧で共通のサービスを選択します (たとえば、*[HTTP]*)。 *[カスタム]* を選択して、使用する特定のポートを指定することもできます。 
+- 必要な場合は、優先度または名前を変更します。 優先度は、ルールが適用される順序に影響します。数値が小さいほど、ルールが早く適用されます。
+- 準備ができたら、**[OK]** を選択してルールを作成します。
 
 ![受信規則の作成](./media/nsg-quickstart-portal/create-inbound-rule.png)
 

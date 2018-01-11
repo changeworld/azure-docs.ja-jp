@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 1ed64ece4d05dea93fd15e24aaf9921d8614277e
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 84d6c6b134d74e3d739fd1d65134672f2285787f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -279,7 +279,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ## <a name="instance-metadata-data-categories"></a>インスタンス メタデータのデータ カテゴリ
 Instance Metadata Service を通して次のデータ カテゴリを使用できます。
 
-データ | Description | 導入されたバージョン 
+データ | 説明 | 導入されたバージョン 
 -----|-------------|-----------------------
 location | VM を実行中の Azure リージョン | 2017-04-02 
 name | VM の名前 | 2017-04-02
@@ -402,7 +402,7 @@ Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 7. このサービスは仮想マシン スケール セット インスタンスで機能しますか。
    * はい。Metadata Service は、スケール セット インスタンスで利用できます。 
 8. このサービスのサポートを受けるにはどうすればよいですか。
-   * サービスのサポートを受けるには、時間がかかる再試行の後もメタデータの応答を取得できない VM を管理する Azure ポータルでサポート問題を作成します。 
+   * サービスのサポートを受けるには、時間がかかる再試行の後もメタデータの応答を取得できない VM を管理する Azure ポータルでサポート要求を作成します 
 
    ![Instance Metadata のサポート](./media/instance-metadata-service/InstanceMetadata-support.png)
     

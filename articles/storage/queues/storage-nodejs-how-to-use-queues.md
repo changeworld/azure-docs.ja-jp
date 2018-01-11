@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: ce61687e0f64b5971daca85265ef0e7d2b6f43b8
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 97522abd05d60eeaa2cc8dd07d3ab81d7f1d5fb9
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Node.js から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -197,7 +197,7 @@ queueSvc.getMessages('myqueue', function(error, result, response){
 ```
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
   if(!error){
-    // Messages retreived
+    // Messages retrieved
     for(var index in result){
       // text is available in result[index].messageText
       var message = result[index];
@@ -330,7 +330,7 @@ ACL を設定した後で、ポリシーの ID に基づいて SAS を作成で�
 queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
 * [Azure Storage チームのブログ][Azure Storage Team Blog]。

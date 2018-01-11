@@ -3,7 +3,7 @@ title: "Azure Automation DSC での構成のコンパイル | Microsoft Docs"
 description: "この記事では、Azure Automation の Desired State Configuration (DSC) 構成をコンパイルする方法について説明します。"
 services: automation
 documentationcenter: na
-author: eslesar
+author: georgewallace
 manager: carmonm
 ms.assetid: 49f20b31-4fa5-4712-b1c7-8f4409f1aecc
 ms.service: automation
@@ -12,16 +12,16 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
-ms.author: magoedte; eslesar
-ms.openlocfilehash: 7b126072424bfc6ad54fd2497ffcdb410b9dc5fe
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.author: magoedte; gwallace
+ms.openlocfilehash: 96702fb1b377861c3692358a5754e73475cee84d
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC での構成のコンパイル
 
-Azure Automation を使用して、Desired State Configuration (DSC) 構成をコンパイルする方法は、2 通りあります。Azure Portal で行う方法と、Windows PowerShell を使用する方法です。 次の表は、各方法の特徴を確認し、どちらの方法をどのような場合に使用するかを判断する際に役立ちます。
+Azure Automation を使用して、Desired State Configuration (DSC) 構成をコンパイルする方法は、2 通りあります。Azure Portal で行う方法と、Windows PowerShell を使用する方法です。 次の表は、各方法の特徴に基づいて、どちらの方法をどのような場合に使用するか決定するのに役立ちます。
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -131,16 +131,16 @@ PSCredentials をパラメーターとして渡す方法の詳細については
 
 ## <a name="composite-resources"></a>複合リソース
 
-**複合リソース**の利点は、構成の内側に入れ子のリソースとして DSC 構成を使用できることです。  これにより、1 つのリソースに複数の構成を適用することができます。  **複合リソース**の詳細については、「[複合リソース: リソースとしての DSC 構成の使用](https://docs.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite)」を参照してください。
+**複合リソース**の利点は、構成の内側に入れ子のリソースとして DSC 構成を使用できることです。 これにより、1 つのリソースに複数の構成を適用することができます。  **複合リソース**の詳細については、「[複合リソース: リソースとしての DSC 構成の使用](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite)」を参照してください。
 
 > [!NOTE]
 > **複合リソース**を正常にコンパイルするためには、まず、その複合リソースが依存する DSC リソースを先に Azure Automation アカウント モジュール リポジトリにインストールしておく必要があります。そうしないとインポートが適切に実行されません。
 
-DSC の**複合リソース**を追加するには、リソース モジュールをアーカイブ (*.zip) に追加する必要があります。 Azure Automation アカウントのモジュール リポジトリに移動します。  次に、[モジュールの追加] ボタンをクリックします。
+DSC の**複合リソース**を追加するには、リソース モジュールをアーカイブ (*.zip) に追加する必要があります。 Azure Automation アカウントのモジュール リポジトリに移動します。 次に、[モジュールの追加] ボタンをクリックします。
 
 ![モジュールの追加](./media/automation-dsc-compile/add_module.png)
 
-そのアーカイブが置かれているディレクトリに移動します。  アーカイブ ファイルを選択し、[OK] をクリックします。
+そのアーカイブが置かれているディレクトリに移動します。 アーカイブ ファイルを選択し、[OK] をクリックします。
 
 ![モジュールの選択](./media/automation-dsc-compile/select_dscresource.png)
 

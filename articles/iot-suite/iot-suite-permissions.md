@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: ee7acd393539277a5bc23a6fed40d07961974b9a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: e5804cda921e9d598d0ed02c4fafccdb40fbe7a5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>azureiotsuite.com サイトでのアクセス許可
 
@@ -74,7 +74,7 @@ Azure 管理者ロールの詳細については、[Azure 共同管理者、サ�
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>サービス管理者が自分のサブスクリプションと特定の AAD テナントの間のディレクトリ マッピングを変更する必要がある場合は、 どうすればよいですか
 
-「[既存のサブスクリプションを Azure AD ディレクトリに追加する方法](../active-directory/active-directory-how-subscriptions-associated-directory.md#to-add-an-existing-subscription-to-your-azure-ad-directory)」をご覧ください
+「[既存のサブスクリプションを Azure AD ディレクトリに追加する方法](../active-directory/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)」をご覧ください
 
 ### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organisational-account"></a>組織アカウントでログインするときにサービス管理者または共同管理者を変更するにはどうすればよいですか
 
@@ -93,7 +93,7 @@ Azure 管理者ロールの詳細については、[Azure 共同管理者、サ�
 
 Azure サブスクリプションが確かにある場合は、サブスクリプションのテナント マッピングを調べ、ドロップダウンで正しいテナントが選択されていることを確認してください。 目的のテナントが正しいことを確認できた場合は、上の図に従って、サブスクリプションとこの AAD テナントのマッピングを確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 IoT Suite について引き続き学習するには、[構成済みソリューションをカスタマイズする][lnk-customize]方法を参照してください。
 
 [img-flowchart]: media/iot-suite-permissions/flowchart.png

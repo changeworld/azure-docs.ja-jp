@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/20/2017
 ms.author: vturecek
 ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]

@@ -17,10 +17,10 @@ ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した仮想ネットワークの作成
 
@@ -215,7 +215,7 @@ Microsoft によって管理され、コミュニティにも公開されてい�
 
     ![Github の READEME.md ファイル](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
 
-3. [ **Azure へのデプロイ**] をクリックします。 必要な場合は、Azure ログイン資格情報を入力します。 
+3. **[Azure へのデプロイ]** をクリックします。 必要な場合は、Azure ログイン資格情報を入力します。 
 4. **[パラメーター]** ブレードで、新しい VNet の作成に使用する値を入力して、**[OK]** をクリックします。 次の図は、このシナリオの値を示しています。
    
     ![ARM テンプレートのパラメーター](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)

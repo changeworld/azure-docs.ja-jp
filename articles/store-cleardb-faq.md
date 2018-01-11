@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: b0fad1d151799f88c72cfe1359978d69cc1421c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d1e3c826e61b8dee264e1c01fd2d54ba7ebb636
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -68,7 +68,7 @@ Web Apps には Basic 以上の価格レベルを使用してください。 Cle
 [Azure Portal](https://portal.azure.com) では、ClearDB の共有ホスティング データベースをスケールアップできます。 詳しくは、[こちらの記事](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)をご覧ください。 現在、Azure Portal での ClearDB Premium クラスターへのアップグレードはサポートされていません。
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Azure Portal に ClearDB データベースが表示されないのはなぜですか。
-Azure Resource Manager または[新しい Azure Portal](https://portal.azure.com) を使って作成した ClearDB データベースは、[以前の Azure Portal](https://manage.windowsazure.com) には表示されません。 これは回避するには、データベースを Web アプリケーションにを手動でリンクします。 同様に、[古いポータル](https://manage.windowsazure.com)で作成した ClearDB データベースは、[新しい Azure Portal](https://portal.azure.com) には表示されません。 後者のシナリオの解決策はありません。
+クラシックで ClearDB データベースを作成した場合、そのデータベースは [Azure Portal](https://portal.azure.com) に表示されません。 このシナリオの回避策はありません。
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>データベースがダウンしたときはどこに問い合わせればよいですか。
 データベース関連の問題については、 [ClearDB のサポート](https://www.cleardb.com/developers/help/support) にお問い合わせください。 その際、Azure サブスクリプションの情報を提供できるよう準備しておいてください。

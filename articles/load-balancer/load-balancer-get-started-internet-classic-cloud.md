@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
 ms.openlocfilehash: b389d9a01db394b79d07ff9c3d6d1cd94e811472
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-for-cloud-services"></a>インターネットに接続するロード バランサー (クラウド サービス用) の作成の開始
 

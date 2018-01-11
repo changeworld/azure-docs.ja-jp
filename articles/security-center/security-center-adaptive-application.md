@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: e68ec1b7d82a0e1d98953521b05f423044e6d2f2
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: b54dfc454cfcdefb56bfda9b242412e0f213b50b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Azure Security Center におけるアダプティブ アプリケーション制御 (プレビュー)
 このチュートリアルを使用して、Azure Security Center でアプリケーション制御を構成する方法を説明します。
@@ -33,18 +33,14 @@ ms.lasthandoff: 10/18/2017
 - 組織で許可されていない特定のソフトウェア ツールが実行されないようにする。
 - アプリの使用状況を通じて、機密データへのアクセスを IT 部門が制御できるようにする。
 
-> [!NOTE]
-> アダプティブ アプリケーション制御は、制限付きのパブリック プレビューとして、Azure Security Center Standard のお客様が使用できます。 プレビューに参加するには、サブスクリプション ID を記入した電子メールを[こちら](mailto:ASC_appcontrol@microsoft.com)に送信してください。
-
 ## <a name="how-to-enable-adaptive-application-controls"></a>アダプティブ アプリケーション制御を有効にする方法
 アダプティブ アプリケーション制御では、構成済みリソース グループに対する実行が許可される一連のアプリケーションを定義できます。 この機能が使用できるのは、Windows マシンのみです (すべてのバージョン、クラシックまたは Azure Resource Manager)。 Security Center でアプリケーションのホワイトリストを構成するには、以下の手順に従います。
 
-1.  **[Security Center]** ダッシュボードを開き、**[概要]** をクリックします。
-2.  **[高度なクラウド防御]** の **[Adaptive application controls]\(アダプティブ アプリケーション制御\)** タイルに、すべての VM のうち、いくつの VM が現在制御されているかが表示されます。 また、過去 1 週間で検出された問題の数も表示されます。 
+1.  **[Security Center]** ダッシュボードを開き、左側のナビゲーション ウィンドウの **[高度なクラウド防御]** セクションにある **[適応型アプリケーション制御]** をクリックします。
 
-    ![アダプティブ アプリケーション制御](./media/security-center-adaptive-application\security-center-adaptive-application-fig1.png)
+    ![防衛](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
 
-3. **[Adaptive application controls]\(アダプティブ アプリケーション制御\)** タイルをクリックすると、他のオプションも表示されます。
+2. **[適応型アプリケーション制御]** ページが表示されます。
 
     ![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 
@@ -72,7 +68,7 @@ ms.lasthandoff: 10/18/2017
 
 - **[名前]**: アプリケーションの完全パス
 - **[プロセス]**: 各パス内に存在するアプリケーションの数
-- **[共通]**: true は、これらのプロセスがこのリソース グループ内のほとんどの VM で実行されていることを示します。
+- **[共通]**: "はい" は、これらのプロセスがこのリソース グループ内のほとんどの VM で実行されていることを示します。
 - **[利用可能]**: 警告アイコンは、アプリケーションがアプリケーション ホワイトリストをバイパスするために攻撃者によって使用されうることを示します。 これらのアプリケーションは、承認前に確認することをお勧めします。 
 
 選択を終了したら、**[作成]** ボタンをクリックします。 既定では、Security Center は常にアプリケーション制御を "*監査*" モードで有効にします。 ホワイトリストによるワークロードへの悪影響がないことを検証した後で、"*強制*" モードに変更できます。
@@ -147,7 +143,7 @@ Security Center では、安定した一連のアプリケーションが実行�
 - **[名前]**: サブスクリプションとリソース グループの名前。
 - **[VM]**: リソース グループ内の仮想マシンの数。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure VM で実行されるアプリケーションのホワイトリストを作成するために、Azure Security Center でアダプティブ アプリケーション制御を使用する方法について説明しました。 Azure セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティの警告の管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 Security Center でアラートを管理し、セキュリティ インシデントに対応する方法を説明します。

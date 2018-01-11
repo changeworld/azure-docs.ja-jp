@@ -3,8 +3,8 @@ title: "アプリケーションに Azure Stack Key Vault のシークレット�
 description: "サンプル アプリを使用して Azure Stack Key Vault を操作する"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 3748b719-e269-4b48-8d7d-d75a84b0e1e5
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/26/2017
-ms.author: sngun
-ms.openlocfilehash: 7cfb78cc5219d4adab5ceddc9d7eb8d1fc71b678
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 50103dca21d047c5cee211b2250e750739131bc1
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Key Vault に格納されているキーとシークレットを使用するサンプル アプリケーション
 
@@ -132,7 +132,7 @@ Write-Host
 
 ## <a name="download-and-run-the-sample-application"></a>サンプル アプリケーションのダウンロードと実行
 
-「[Azure Key Vault client samples (Azure Key Vault クライアントのサンプル)](https://www.microsoft.com/en-us/download/details.aspx?id=45343)」ページから、キー コンテナーのサンプルをダウンロードします。 .zip ファイルの内容を自分の開発ワークステーションに抽出します。 samples フォルダーには 2 つのサンプルがあります。 このトピックでは、HellpKeyVault サンプルを使用します。 **Microsoft.Azure.KeyVault.Samples** > **samples** > **HelloKeyVault** フォルダーを参照し、HelloKeyVault アプリケーションを Visual Studio で開きます。 
+「[Azure Key Vault client samples (Azure Key Vault クライアントのサンプル)](https://www.microsoft.com/en-us/download/details.aspx?id=45343)」ページから、キー コンテナーのサンプルをダウンロードします。 .zip ファイルの内容を自分の開発ワークステーションに抽出します。 samples フォルダーには 2 つのサンプルがあります。 この記事では、HellpKeyVault サンプルを使用します。 **Microsoft.Azure.KeyVault.Samples** > **samples** > **HelloKeyVault** フォルダーを参照し、HelloKeyVault アプリケーションを Visual Studio で開きます。 
 
 HelloKeyVault\App.config ファイルを開き、<appSettings> 要素の値を先ほどのスクリプトによって返された **VaultUrl**、**AuthClientId**、**AuthClientSecret** の値に置き換えます。 App.config には既定で *AuthCertThumbprint* のプレースホルダーが含まれていますが、代わりに *AuthClientSecret* を使用することに注意してください。 設定を置き換えたら、ソリューションをリビルドし、アプリケーションを起動します。
 

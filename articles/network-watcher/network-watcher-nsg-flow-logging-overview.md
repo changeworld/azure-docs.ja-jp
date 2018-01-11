@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: be29b993592e494053353aac1067bfb7eff90ed7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4eaffba08ccf601e440709d804891668340a376d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 フロー ログはネットワーク セキュリティ グループを対象としていますが、その他のログと同じようには表示されません。 フロー ログは、次の例で示すようにストレージ アカウント内と下記のログ記録パスにのみ格納されます。
 
 ```
-https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId%3D/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.network/networksecuritygroups/{nsgName}/{year}/{month}/{day}/PT1H.json
+https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
 その他のログで見られる同様のリテンション期間ポリシーが、フロー ログに適用されます。 ログにはリテンション期間ポリシーがあり、1 日 から 365 日まで設定できます。 リテンション期間ポリシーが設定されていない場合、ログは無期限に保持されます。
@@ -100,7 +100,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
         ...
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
 

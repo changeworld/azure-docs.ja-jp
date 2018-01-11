@@ -9,15 +9,15 @@ ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a217f4cc8ac18888de8dfa803b4b8667a566dc0b
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 9814dca53f1a410f4d1e95cc18b98373f27f9802
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Azure Container Service (AKS) でのサービス プリンシパル
 
-AKS クラスターには、Azure API と対話するための [Azure Active Directory サービス プリンシパル](../active-directory/develop/active-directory-application-objects.md)が必要です。 サービス プリンシパルは、[ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md)や[レイヤー 4 の Azure Load Balancer](../load-balancer/load-balancer-overview.md) などのリソースを動的に管理するために必要です。
+AKS クラスターには、Azure API と対話するための [Azure Active Directory サービス プリンシパル][aad-service-principal]が必要です。 サービス プリンシパルは、[ユーザー定義のルート][user-defined-routes]や[レイヤー 4 の Azure Load Balancer][azure-load-balancer-overview] などのリソースを動的に管理するために必要です。
 
 この記事では、AKS で Kubernetes クラスターのサービス プリンシパルを設定するためのさまざまなオプションを紹介します。
 
@@ -26,7 +26,7 @@ AKS クラスターには、Azure API と対話するための [Azure Active Dir
 
 Azure AD サービス プリンシパルを作成するには、アプリケーションを Azure AD テナントに登録し、そのアプリケーションをサブスクリプション内のロールに割り当てるためのアクセス許可が必要です。 必要なアクセス許可がない場合は、必要なアクセス許可の割り当てを Azure AD またはサブスクリプションの管理者に依頼するか、Kubernetes クラスターのサービス プリンシパルを事前に作成することが必要になる可能性があります。
 
-また、Azure CLI バージョン 2.0.21 以降がインストールされ、構成されていることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+また、Azure CLI バージョン 2.0.21 以降がインストールされ、構成されていることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="create-sp-with-aks-cluster"></a>AKS クラスターで SP を作成する
 
@@ -44,7 +44,7 @@ az aks create --name myK8SCluster --resource-group myResourceGroup --generate-ss
 
 ## <a name="pre-create-a-new-sp"></a>新しい SP を事前に作成する
 
-Azure CLI を使用してサービス プリンシパルを作成するには、[az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) コマンドを使用します。
+Azure CLI を使用してサービス プリンシパルを作成するには、[az ad sp create-for-rbac][az-ad-sp-create] コマンドを使用します。
 
 ```azurecli
 az ad sp create-for-rbac --skip-assignment
@@ -83,7 +83,7 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、次�
 * サービス プリンシパルの**クライアント ID** を指定する場合、この記事で示したように `appId` の値を使用するか、対応するサービス プリンシパルの `name` (例: `https://www.contoso.org/example`) を使用することができます。
 * Kubernetes クラスター内のマスター VM とノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます。
 * `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/acsServicePrincipal.json` ファイルに書き込まれます。
-* `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルは同じサブスクリプション内に作成された [Azure Container Registry](../container-registry/container-registry-intro.md) でも認証を行うことができます。
+* `az aks create` コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルは同じサブスクリプション内に作成された [Azure コンテナー レジストリ][acr-intro]でも認証を行うことができます。
 * `az aks create` によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。 `az ad sp delete --id $clientID` を使用して削除してください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -91,4 +91,13 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、次�
 Azure Active Directory サービス プリンシパルの詳細については、Azure AD アプリケーションのドキュメントを参照してください。
 
 > [!div class="nextstepaction"]
-> [アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/active-directory-application-objects.md)
+> [アプリケーション オブジェクトとサービス プリンシパル オブジェクト][service-principal]
+
+<!-- LINKS - internal -->
+[aad-service-principal]: ../active-directory/develop/active-directory-application-objects.md
+[acr-intro]: ../container-registry/container-registry-intro.md
+[az-ad-sp-create]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[azure-load-balancer-overview]: ../load-balancer/load-balancer-overview.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[service-principal]: ../active-directory/develop/active-directory-application-objects.md
+[user-defined-routes]: ../load-balancer/load-balancer-overview.md

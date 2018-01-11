@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 10/13/2017
 ms.author: nitinme
 ms.openlocfilehash: 018cf772f458bb29712ef9516c3af4e969a94564
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Store に対するアカウント管理操作
 > [!div class="op_single_selector"]

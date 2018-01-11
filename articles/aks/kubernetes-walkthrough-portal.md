@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 673cbc71202ffb3861ab1d2be6368ec7a07bb5d3
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: a8a6bf83f0e76aebdfd5accd3e86cccda8f36eed
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 12/04/2017
 
 ![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 Kubernetes の詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/home/)を参照してください。
+このクイックスタートは、Kubernetes の基本的な概念を理解していることを前提としています。 Kubernetes について詳しくは、[Kubernetes のドキュメント][kubernetes-documentation]をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -77,13 +77,13 @@ Azure Portal で AKS クラスターを作成する前に、サービス プリ�
 
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 
-Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl](https://kubernetes.io/docs/user-guide/kubectl/) を使用します。 kubectl クライアントは Azure Cloud Shell に事前にインストールされています。
+Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使います。 kubectl クライアントは Azure Cloud Shell に事前にインストールされています。
 
 Azure Portal の右上にあるボタンをクリックして Cloud Shell を開きます。
 
 ![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
 
-Kubernetes クラスターに接続するように kubectl を構成するには、[az aks get-credentials](/cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials) コマンドを実行します。
+Kubernetes クラスターに接続するように kubectl を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを実行します。
 
 次のコマンドをコピーして Cloud Shell に貼り付けます。 必要に応じてリソース グループとクラスター名を変更します。
 
@@ -91,7 +91,7 @@ Kubernetes クラスターに接続するように kubectl を構成するには
 az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを使用して、クラスター ノードの一覧を返します。
+クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使って、クラスター ノードの一覧を取得します。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -110,7 +110,7 @@ aks-agentpool-14693408-2   Ready     agent     7m        v1.8.1
 
 Kubernetes のマニフェスト ファイルでは、どのようなコンテナー イメージを実行するかというようなことも含め、クラスターの望ましい状態を定義します。 この例では、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。
 
-`azure-vote.yml` という名前のファイルを作成し、そこに以下の YAML コードをコピーします。 Azure Cloud Shell で作業している場合、仮想システムまたは物理システムで作業するときと同じように vi または Nano を使用してこのファイルを作成できます。
+`azure-vote.yaml` という名前のファイルを作成し、そこに以下の YAML コードをコピーします。 Azure Cloud Shell で作業している場合、仮想システムまたは物理システムで作業するときと同じように vi または Nano を使用してこのファイルを作成できます。
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -173,10 +173,10 @@ spec:
     app: azure-vote-front
 ```
 
-[kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) コマンドを使用してアプリケーションを実行します。
+[kubectl create][kubectl-create] コマンドを使ってアプリケーションを実行します。
 
 ```azurecli-interactive
-kubectl create -f azure-vote.yml
+kubectl create -f azure-vote.yaml
 ```
 
 出力:
@@ -190,9 +190,9 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>アプリケーションをテストする
 
-アプリケーションが実行されると、アプリケーション フロントエンドをインターネットに公開する [Kubernetes サービス](https://kubernetes.io/docs/concepts/services-networking/service/)が作成されます。 このプロセスが完了するまでに数分かかることがあります。
+アプリケーションが実行されると、アプリケーション フロントエンドをインターネットに公開する [Kubernetes サービス][kubernetes-service]が作成されます。 このプロセスが完了するまでに数分かかることがあります。
 
-進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを `--watch` 引数と一緒に使用します。
+進行状況を監視するには、[kubectl get service][kubectl-get] コマンドと `--watch` 引数を使います。
 
 ```azurecli-interactive
 kubectl get service azure-vote-front --watch
@@ -217,7 +217,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ## <a name="delete-cluster"></a>クラスターを削除する
 
-クラスターが不要になったら、クラスターのリソース グループを削除できます。削除すると、関連するすべてのリソースも削除されます。 この操作を行うには、Azure Portal で、リソース グループを選択し、[削除] ボタンをクリックします。 または、Cloud Shell で [az group delete](/cli/azure/group#delete) コマンドを実行します。
+クラスターが不要になったら、クラスターのリソース グループを削除できます。削除すると、関連するすべてのリソースも削除されます。 この操作を行うには、Azure Portal で、リソース グループを選択し、[削除] ボタンをクリックします。 または、Cloud Shell で [az group delete][az-group-delete] コマンドを実行します。
 
 ```azurecli-interactive
 az group delete --name myAKSCluster --no-wait
@@ -227,14 +227,28 @@ az group delete --name myAKSCluster --no-wait
 
 このクイック スタートでは、事前に作成したコンテナー イメージを使用して、Kubernetes のデプロイを作成しました。 関連するアプリケーション コード、Dockerfile、および Kubernetes マニフェスト ファイルは、GitHub で入手できます。
 
-[https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
+[https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Kubernetes クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。
 
 AKS の詳細を参照し、デプロイの例の完全なコードを確認するには、Kubernetes クラスター チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [AKS クラスターの管理](./tutorial-kubernetes-prepare-app.md)
+> [AKS クラスターの管理][aks-tutorial]
+
+<!-- LINKS - external -->
+[azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubernetes-documentation]: https://kubernetes.io/docs/home/
+[kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
+
+<!-- LINKS - internal -->
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
+[az-group-delete]: /cli/azure/group#delete
+[aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
+
 

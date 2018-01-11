@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.openlocfilehash: 62b1a34f2380446b9f5cbadda7eab8c698f1a92f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7b6bd5c95c909cf4ed4c67cd33d09170f670c275
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Windows デスクトップ アプリを作成する
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順でデスクトップ アプリに追加できます。 この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Windows Presentation Foundation (WPF) の "To-Do List" アプリの作成方法について説明します。 このアプリには、ユーザー名または電子メールを使用したサインアップとサインインのサポートが含まれます。 また、Facebook や Google などのソーシャル アカウントを使用したサインアップとサインインのサポートも含まれます。
@@ -32,8 +32,6 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリケーションに **ネイティブ クライアント** を含めます。
 * **[リダイレクト URI]** `urn:ietf:wg:oauth:2.0:oob` をコピーします。 これはこのサンプル コードで使用する既定の URL です。
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この情報は後で必要になります。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>ポリシーの作成
 Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、種類ごとにポリシーを作成する必要があります。 3 つのポリシーを作成するときは、以下の点に注意してください。

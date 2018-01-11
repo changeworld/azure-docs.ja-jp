@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: f7fc4d367a0594a77d7ee25bbd1e40c4b2949c19
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d09208596de4609faace67e11926ad30f68cd901
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
-> [!div class="op_single_selector"]
-> * [Recovery Services コンテナー](backup-azure-vms-troubleshoot.md)
-> * [バックアップ資格情報コンテナー](backup-azure-vms-troubleshoot-classic.md)
->
->
-
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
 
 ## <a name="backup"></a>Backup
@@ -137,7 +131,7 @@ Windows VM 上で VM エージェントのバージョンを確認する方法:
 VM のバックアップは、基礎をなすストレージへのスナップショット コマンドの発行に依存します。 ストレージにアクセスできなかったり、スナップショット タスクの実行が遅延したりすると、バックアップ ジョブが失敗することがあります。 次の場合にスナップショットのタスクが失敗することがあります。
 
 1. NSG を使用してストレージへのネットワーク アクセスがブロックされています<br>
-    IP のホワイトリスト登録またはプロキシ サーバーを使用してストレージへの[ネットワーク アクセスを有効にする](backup-azure-vms-prepare.md#network-connectivity)方法の詳細を参照してください。
+    IP のホワイトリスト登録またはプロキシ サーバーを使用してストレージへの[ネットワーク アクセスを有効にする](backup-azure-arm-vms-prepare.md#establish-network-connectivity)方法の詳細を参照してください。
 2. SQL Server のバックアップが構成されている VM はスナップショット タスクの遅延を引き起こすことがあります  <br>
    既定では、VM バックアップは Windows VM に対する VSS フル バックアップを発行します。 SQL Server を実行している VM で、SQL Server のバックアップが構成されている場合、スナップショットの実行に遅延が発生する可能性があります。 スナップショットに関する問題によりバックアップが失敗する場合は、次のレジストリ キーを設定してください。
 
@@ -169,7 +163,7 @@ Backup 拡張機能は、他の拡張機能と同様に、パブリックなイ�
    * [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) コマンドレットを使用して、IP アドレスのブロックを解除します。 管理者特権の PowerShell ウィンドウ (管理者として実行) で、Azure VM 内でこのコマンドレットを実行します。
    * 規則を NSG に追加して IP にアクセスできるようにします (NSG を使用している場合)。
 2. フローに対する HTTP トラフィック用のパスを作成する
-   * 何らかのネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。 HTTP プロキシ サーバーをデプロイする手順は、[こちら](backup-azure-vms-prepare.md#network-connectivity)を参照してください。
+   * 何らかのネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。 HTTP プロキシ サーバーをデプロイする手順は、[こちら](backup-azure-arm-vms-prepare.md#establish-network-connectivity)を参照してください。
    * 規則を NSG に追加して HTTP プロキシからインターネットにアクセスできるようにします (NSG を使用している場合)。
 
 > [!NOTE]

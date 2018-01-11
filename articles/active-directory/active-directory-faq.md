@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory に関する FAQ | Microsoft Docs"
-description: "Azure Active Directory に関する FAQ では、Azure と Azure Active Directory へのアクセス方法、パスワード管理、アプリケーション アクセスに関する質問に答えます。"
+description: "Azure Active Directory に関する FAQ では、Azure と Azure Active Directory、パスワード管理、およびアプリケーション アクセスに関する一般的な質問に答えます。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2017
+ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 5ec11f1a125cc4c6e7f5165091411dea7daca193
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7640d2ba495d465f06bd918df0c08f0d85b42e76
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -27,9 +27,9 @@ Azure Active Directory (Azure AD) は、包括的なサービスとしての ID 
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Azure と Azure Active Directory へのアクセス
-**Q: Azure クラシック ポータルで Azure AD にアクセスしようとすると、"サブスクリプションが見つかりません" と表示されるのはなぜですか?**
+**Q: Azure ポータルで Azure AD にアクセスしようとすると、"サブスクリプションが見つかりません" と表示されるのはなぜですか?**
 
-**A:** Azure クラシック ポータルにアクセスするために、各ユーザーは Azure サブスクリプションを使用したアクセス許可が必要です。 有料の Office 365 または Azure AD サブスクリプションをお持ちの場合は、1 回限りのアクティブ化の手順を行うために [http://aka.ms/accessAAD](http://aka.ms/accessAAD) にアクセスしてください。 これらをお持ちでない場合は、無料の [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)または有料のサブスクリプションをアクティブ化する必要があります。
+**A:** Azure ポータルにアクセスするには、各ユーザーは Azure サブスクリプションを使用したアクセス許可が必要です。 有料の Office 365 または Azure AD サブスクリプションをお持ちの場合は、1 回限りのアクティブ化の手順を行うために [http://aka.ms/accessAAD](http://aka.ms/accessAAD) にアクセスしてください。 これらをお持ちでない場合は、無料の [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)または有料のサブスクリプションをアクティブ化する必要があります。
 
 詳細については、次を参照してください。
 
@@ -44,11 +44,9 @@ Azure Active Directory (Azure AD) は、包括的なサービスとしての ID 
 Web サービスを使用するように設定されていないユーザーはすべて、1 つ以上の Azure AD インスタンス内のユーザー アカウントとして定義されます。 これらのアカウントは、クラウド アプリケーション アクセスなど、無料の Azure AD 機能に対して設定できます。
 
 Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Office 365 や Microsoft Azure などの他の Web サービスを補完します。
-- - -
-**Q: Azure Portal にサインインできるのに、Azure クラシック ポータルにサインインできないのはなぜですか?**
 
-**A:** Azure Portal には有効なサブスクリプションが必要ありませんが、クラシック ポータルには必要です。  サブスクリプションを持っていない場合、クラシック ポータルにサインインすることはできません。
 - - -
+
 **Q: サブスクリプション管理者とディレクトリ管理者の違いは何ですか?**
 
 **A:** 既定では、Azure にサインアップすると、サブスクリプション管理者ロールが割り当てられます。 サブスクリプション管理者は、Microsoft アカウントと、Azure サブスクリプションが関連付けられているディレクトリの職場または学校アカウントのどちらも使用できます。  このロールには、Azure Portal でのサービスの管理が許可されます。
@@ -56,7 +54,7 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 他のユーザーが同じサブスクリプションを使用してサインインし、サービスにアクセスする必要がある場合は、共同管理者として追加できます。 このロールには、サービス管理者と同じアクセス特権がありますが、サブスクリプションと Azure ディレクトリの関連付けを変更することはできません。  サブスクリプション管理者の詳細については、「[How to add or change Azure administrator roles (Azure 管理者ロールを追加または変更する方法)](../billing-add-change-azure-subscription-administrator.md)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
 
-Azure AD には、ディレクトリと ID に関連した機能を管理するために別の管理ロールのセットがあります。  これらの管理者は、Azure Portal または Azure クラシック ポータルのさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
+Azure AD には、ディレクトリと ID に関連した機能を管理するために別の管理ロールのセットがあります。  これらの管理者は、Azure Portal または Azure ポータルのさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
 
 さらに、Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Office 365 や Microsoft Azure などの他の Web サービスを補完します。
 
@@ -137,16 +135,20 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 - - -
 ## <a name="security"></a>セキュリティ
-**Q: 何回か試行が失敗した後、アカウントはロックされますか。または、より高度な戦略はありますか。**</br>
+**Q: 何回か試行が失敗した後、アカウントはロックされますか。または、より高度な戦略はありますか。**
+
 アカウントは、より高度な戦略によってロックされます。  これは、使用の IP と入力したパスワードに基づいています。 また、ロックアウト期間は、攻撃されている可能性に応じて長くなります。  
 
-**Q: (一般的な) あるパスワードが拒否され、"このパスワードは何回も使用されています" という内容のメッセージが表示されました。これは、パスワードが現在 Active Directory で使用されていることを意味しますか。**</br>
+**Q: (一般的な) あるパスワードが拒否され、"このパスワードは何回も使用されています" という内容のメッセージが表示されました。これは、パスワードが現在 Active Directory で使用されていることを意味しますか。**
+
 これは、パスワードが、"Password"、"123456" など、一般的によく使用されるものであることを意味します。
 
-**Q: 不審なソース (ボットネット、tor エンドポイント) からのサインイン要求は B2C テナントでブロックされますか。また、これには Basic または Premium Edition のテナントが必要ですか。**</br>
+**Q: 不審なソース (ボットネット、tor エンドポイント) からのサインイン要求は B2C テナントでブロックされますか。また、これには Basic または Premium Edition のテナントが必要ですか。**
+
 要求をフィルター処理するゲートウェイによって、ボットネットからの保護を提供します。また、これは B2C テナントすべてに適用されます。
 
 ## <a name="application-access"></a>アプリケーション アクセス
+
 **Q: Azure AD とその機能にあらかじめ統合されているアプリケーションの一覧はどこにありますか?**
 
 **A:** Azure AD には、Microsoft、アプリケーション サービス プロバイダー、パートナーが提供する、2,600 個を超える事前統合されたアプリケーションがあります。 事前統合されたアプリケーションすべてで、シングル サインオン (SSO) がサポートされています。 SSO を使用すると、アプリへのアクセスに、所属する組織の資格情報を使うことができます。 また、一部のアプリケーションでは、プロビジョニングとプロビジョニング解除の自動化がサポートされています。

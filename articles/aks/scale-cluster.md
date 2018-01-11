@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 299eb74686f00dc6d5eb9a1c6127aa134dcd9b77
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: a5380a3815335d7347b57dac49a3dca02c9d981c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scale-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのスケーリング
 
-AKS クラスターをさまざまな数のノードに容易にスケーリングできます。  目的のノードの数を選択し、`az aks scale` コマンドを実行します。  スケール ダウンの際、実行中のアプリケーションへの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/)。  スケール アップの際、ノードが Kubernetes クラスターによって `Ready` としてマークされるまで、`az` コマンドは待機します。
+AKS クラスターをさまざまな数のノードに容易にスケーリングできます。  目的のノードの数を選択し、`az aks scale` コマンドを実行します。  スケール ダウンの際、実行中のアプリケーションへの中断を最小限に抑えるために、ノードは慎重に[切断およびドレインされます][kubernetes-drain]。  スケール アップの際、ノードが Kubernetes クラスターによって `Ready` としてマークされるまで、`az` コマンドは待機します。
 
 ## <a name="scale-the-cluster-nodes"></a>クラスター ノードのスケーリング
 
@@ -88,4 +88,10 @@ az aks scale --name myK8sCluster --resource-group myResourceGroup --node-count 1
 AKS のデプロイと管理の詳細を AKS チュートリアルで確認してください。
 
 > [!div class="nextstepaction"]
-> [AKS チュートリアル](./tutorial-kubernetes-prepare-app.md)
+> [AKS チュートリアル][aks-tutorial]
+
+<!-- LINKS - external -->
+[kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
+
+<!-- LINKS - internal -->
+[aks-tutorial]: ./tutorial-kubernetes-prepare-app.md

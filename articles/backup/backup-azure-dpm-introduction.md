@@ -15,18 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 04a03436d554d9f06eed0fbdf5cf34a786061e21
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c22e6fc85e88d89007107c8c3bad142ac91e9d12
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>DPM を使用して Azure へのワークロードをバックアップするための準備
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
-> * [Azure Backup Server (クラシック)](backup-azure-microsoft-azure-backup-classic.md)
-> * [SCDPM (クラシック)](backup-azure-dpm-introduction-classic.md)
 >
 >
 
@@ -42,7 +40,7 @@ ms.lasthandoff: 12/08/2017
 >
 >
 
-[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) は、ファイルとアプリケーション データをバックアップします。 サポートされているワークロードの詳細については、[こちら](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)をご覧ください。DPM にバックアップされるデータは、テープやディスクに保存することも、Microsoft Azure Backup を使用して Azure にバックアップすることもできます。 DPM は、Azure Backup と次のように対話します。
+[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) は、ファイルとアプリケーション データをバックアップします。 サポートされるワークロードについて詳しくは、[こちら](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)をご覧ください。 DPM にバックアップされるデータは、テープやディスクに保存することも、Microsoft Azure Backup を使って Azure にバックアップすることもできます。 DPM は、Azure Backup と次のように対話します。
 
 * **物理サーバーまたはオンプレミス仮想マシンとしてデプロイされている DPM** — DPM が物理サーバーまたはオンプレミス Hyper-V 仮想マシンとしてデプロイされている場合、データはディスクやテープだけでなく、Recovery Services コンテナーにバックアップすることができます。
 * **Azure の仮想マシンとしてデプロイされている DPM** — System Center 2012 R2 Update 3 以降、DPM は Azure 仮想マシンとしてデプロイすることができます。 DPM が Azure 仮想マシンとしてデプロイされている場合、DPM Azure 仮想マシンにアタッチされている Azure ディスクにデータをバックアップすることができます。またはデータを Recovery Services コンテナーにバックアップして、データ ストレージをオフロードすることができます。
@@ -113,7 +111,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 資格情報コンテナーの資格情報ファイルは、セキュリティで保護されたチャネルを介して Azure ポータルからダウンロードされます。 Azure Backup サービスは証明書の秘密キーを認識せず、ポータルまたはサービスでは秘密キーは保持されません。 資格情報コンテナーの資格情報ファイルをローカル コンピューターにダウンロードするには、次の手順を使用します。
 
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. DPM を登録する Recovery Services コンテナーを開きます。
+2. DPM コンピューターを登録する Recovery Services コンテナーを開きます。
 3. 既定では、設定ブレードが開きます。 設定ブレードが閉じている場合は、コンテナー ダッシュ ボードの **[設定]** をクリックして設定ブレードを開きます。 設定ブレードの **[プロパティ]**をクリックします。
 
     ![Open vault blade](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
@@ -131,7 +129,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 ### <a name="3-install-backup-agent"></a>3.Backup エージェントのインストール
 Azure Backup コンテナーを作成したら、エージェントを各 Windows コンピューター (Windows Server、Windows クライアント、System Center Data Protection Manager サーバー、Azure Backup サーバー コンピューター) にインストールする必要があります。このエージェントにより、データやアプリケーションを Azure にバックアップできるようになります。
 
-1. DPM を登録する Recovery Services コンテナーを開きます。
+1. DPM コンピューターを登録する Recovery Services コンテナーを開きます。
 2. 既定では、設定ブレードが開きます。 設定ブレードが閉じている場合は、 **[設定]** をクリックして設定ブレードを開きます。 設定ブレードの **[プロパティ]**をクリックします。
 
     ![Open vault blade](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
@@ -139,7 +137,7 @@ Azure Backup コンテナーを作成したら、エージェントを各 Window
 
     ![ダウンロード](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
-   エージェントがダウンロードされたら、MARSAgentInstaller.exe をダブルクリックして Azure Backup エージェントのインストールを開始します。 エージェントに必要なインストール フォルダーとスクラッチ フォルダーを選択します。 指定されたキャッシュの場所には、バックアップ データの 5% 以上の空き領域が必要です。
+   エージェントがダウンロードされたら、MARSAgentInstaller.exe を実行して Azure Backup エージェントのインストールを開始します。 エージェントに必要なインストール フォルダーとスクラッチ フォルダーを選択します。 指定されたキャッシュの場所には、バックアップ データの 5% 以上の空き領域が必要です。
 4. プロキシ サーバーを使用してインターネットに接続する場合、 **[プロキシ構成]** 画面で、プロキシ サーバーの詳細を入力します。 認証済みのプロキシを使用する場合は、この画面でユーザー名とパスワードの詳細を入力します。
 5. Azure Backup エージェントは、.NET Framework 4.5 と Windows PowerShell を (まだ使用可能でない場合は) インストールして、インストールを完了します。
 6. エージェントがインストールされたら、ウィンドウを **閉じます** 。

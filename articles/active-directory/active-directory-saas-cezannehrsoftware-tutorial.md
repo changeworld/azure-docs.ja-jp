@@ -4,7 +4,7 @@ description: "Azure Active Directory と Cezanne HR Software の間でシング�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 620b0f62bceeda6fac87c31b325a078260f7d3d0
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 3934f814a9060adf275a4bdcc83403da4b2a4075
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル: Azure Active Directory と Cezanne HR Software の統合
 
@@ -125,25 +125,29 @@ Cezanne HR Software で Azure AD のシングル サインオンを構成して�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
 
-6. **[Cezanne HR Software 構成]** セクションで **[Cezanne HR Software の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+6. **[Cezanne HR Software 構成]** セクションで **[Cezanne HR Software の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。
 
-    ![Cezanne HR Software 構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
+    ![Cezanne HR Software 構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png)
 
-7. 別の Web ブラウザーのウィンドウで、管理者として Cezanne HR Software テナントにサインオンします。
+7. **[クイック リファレンス]** セクションまで下にスクロールします。 **[クイック リファレンス]** セクションから、**SAML シングル サインオン サービス URL と SAML エンティティ ID** をコピーします。
 
-8. 左側のナビゲーション ウィンドウで、 **[System Setup (システム設定)]**をクリックします。 **[Security Settings (セキュリティの設定)]**に移動します。 次に、 **[Single Sign-On Configuration (シングル サインオンの構成)]**に移動します。
+    ![Cezanne HR Software 構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure1.png)
+
+8. 別の Web ブラウザーのウィンドウで、管理者として Cezanne HR Software テナントにサインオンします。
+
+9. 左側のナビゲーション ウィンドウで、 **[System Setup (システム設定)]**をクリックします。 **[Security Settings (セキュリティの設定)]**に移動します。 次に、 **[Single Sign-On Configuration (シングル サインオンの構成)]**に移動します。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-9. **[Allow users to log in using the following Single Sign-On (SSO) Service (ユーザーに次のシングル サインオン (SSO) サービスを使用したログインを許可する)]** パネルで **[SAML 2.0]** チェック ボックスをオンにして、**[Advanced Configuration (詳細設定)]** オプションを選択します。
+10. **[Allow users to log in using the following Single Sign-On (SSO) Service (ユーザーに次のシングル サインオン (SSO) サービスを使用したログインを許可する)]** パネルで **[SAML 2.0]** チェック ボックスをオンにして、**[Advanced Configuration (詳細設定)]** オプションを選択します。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
-10. **[Add New (新規追加)]** ボタンをクリックします。
+11. **[Add New (新規追加)]** ボタンをクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-11. **[SAML 2.0 IDENTITY PROVIDERS (SAML 2.0 ID プロバイダー)]** セクションで、次の手順に従います。
+12. **[SAML 2.0 IDENTITY PROVIDERS (SAML 2.0 ID プロバイダー)]** セクションで、次の手順に従います。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
@@ -161,7 +165,7 @@ Cezanne HR Software で Azure AD のシングル サインオンを構成して�
     
     g. **[OK]** ボタンをクリックします。 
 
-12. **[保存]** ボタンをクリックします。
+13. **[保存]** ボタンをクリックします。
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 

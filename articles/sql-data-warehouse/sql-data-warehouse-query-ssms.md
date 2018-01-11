@@ -16,10 +16,10 @@ ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
 ms.openlocfilehash: 207fb9fd861c66039fbde89681aed3df3a2f4021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) で SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]

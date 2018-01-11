@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 51a1b65446a1a0db93c21378f156b608a38ef817
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: ff5fcbc6df8cb07e0b98b877f20d981d6bef5117
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Azure Machine Learning データ準備のプレビューでサポートされているインスペクター
 このドキュメントでは、このプレビューで使用可能なインスペクターのセットについて説明します。

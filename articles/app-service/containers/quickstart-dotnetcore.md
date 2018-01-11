@@ -16,13 +16,17 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: c01b55e9548f9b2e2c7aca161afda42c2c248379
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 529ddd23d144ef8edf7f3ec7c91da60a7ca8ac01
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core Web アプリの作成
+
+> [!NOTE]
+> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure で ASP.NET Core Web アプリを作成する](../app-service-web-get-started-dotnet.md)」を参照してください。
+>
 
 [App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、App Service on Linux に [.NET Core](https://docs.microsoft.com/aspnet/core/) アプリを作成する方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して Web アプリを作成し、Git を使用して Web アプリに .NET Core コードをデプロイします。
 
@@ -35,7 +39,7 @@ ms.lasthandoff: 11/22/2017
 このクイック スタートを完了するには、以下が必要です。
 
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
-* <a href="https://www.microsoft.com/net/download/core" target="_blank">.NET Core SDK をインストールする</a>
+* <a href="https://github.com/dotnet/core/blob/master/release-notes/download-archives/1.1.6-sdk-download.md" target="_blank">.NET Core SDK 1.1 をインストールする</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -177,7 +181,7 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成](tutorial-dotnetcore-sqldb-app.md)

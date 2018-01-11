@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.openlocfilehash: 601e059af6040834f1ceb520ffe23aeadb6cdb18
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>OMS の Agent Health ソリューション
 OMS の Agent Health ソリューションを使用すると、OMS ワークスペースに対して、または OMS に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
@@ -45,17 +45,17 @@ System Center Operations Manager 管理グループが OMS ワークスペース
 ### <a name="supported-agents"></a>サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続されているソース | サポートの有無 | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
-| Windows エージェント | あり | ハートビート イベントは、直接の Windows エージェントから収集されます。|
-| System Center Operations Manager 管理グループ | あり | ハートビート イベントは、管理グループに対して報告を行うエージェントから 60 秒ごとに収集されて Log Analytics に転送されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 ハートビート イベント データは管理グループから Log Analytics リポジトリに転送されます。|
+| Windows エージェント | [はい] | ハートビート イベントは、直接の Windows エージェントから収集されます。|
+| System Center Operations Manager 管理グループ | [はい] | ハートビート イベントは、管理グループに対して報告を行うエージェントから 60 秒ごとに収集されて Log Analytics に転送されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 ハートビート イベント データは管理グループから Log Analytics リポジトリに転送されます。|
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 OMS ワークスペースに Agent Health ソリューションを追加すると、OMS ダッシュボードに **[Agent Health]** タイルが追加されます。 このタイルには、エージェントの総数と直近 24 時間応答していないエージェントの数が表示されます。<br><br> ![ダッシュボードの Agent Health ソリューション タイル](./media/oms-solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 **[Agent Health]** タイルをクリックすると、**[Agent Health]** ダッシュボードが開きます。  ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してイベント全件を取得するには、各列の右下にある **[すべて表示]** を選択するか、列ヘッダーをクリックします。
 
-| 分割 | Description |
+| 分割 | [説明] |
 |--------|-------------|
 | Agent count over time (時間の経過に伴うエージェント数) | 7 日間にわたるエージェント数の傾向。Linux エージェントと Windows エージェントの両方が対象となります。|
 | Count of unresponsive agents (応答しないエージェントの数) | 過去 24 時間ハートビートを送信していないエージェントの一覧。|
@@ -74,11 +74,11 @@ OMS ワークスペースに Agent Health ソリューションを追加する�
 ### <a name="heartbeat-records"></a>ハートビート レコード
 **Heartbeat** という種類のレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
-| 型 | *Heartbeat*|
+| type | *Heartbeat*|
 | カテゴリ | *Direct Agent*、*SCOM Agent*、*SCOM Management Server* のいずれかの値になります。|
-| コンピューター | コンピューター名。|
+| Computer | コンピューター名。|
 | OSType | Windows または Linux オペレーティング システム。|
 | OSMajorVersion | オペレーティング システムのメジャー バージョン。|
 | OSMinorVersion | オペレーティング システムのマイナー バージョン。|
@@ -97,7 +97,7 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 次の表は、このソリューションによって収集されたレコードを探すログ検索の例です。
 
-| クエリ | Description |
+| クエリ | [説明] |
 | --- | --- |
 | Type=Heartbeat &#124; distinct Computer |エージェントの総数 |
 | Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |直近 24 時間応答がなかったエージェントの数 |
@@ -116,7 +116,7 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 >[!NOTE]
 > ワークスペースが[新しい Log Analytics クエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)にアップグレードされている場合、上記のクエリは次のように変更されます。
 >
->| クエリ | Description |
+>| クエリ | [説明] |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |エージェントの総数 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |直近 24 時間応答がなかったエージェントの数 |
@@ -131,6 +131,6 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |エージェントの地理的な位置 |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |インストールされている OMS ゲートウェイの数 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](../log-analytics/log-analytics-alerts.md) に関するページを参照してください。

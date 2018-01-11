@@ -3,7 +3,7 @@ title: "Azure DevTest Labs 内のラボへの Git レポジトリの追加 | Mic
 description: "Azure DevTest Labs でカスタム アーティファクト ソースの GitHub または Visual Studio Team Services Git リポジトリを追加する方法について説明します。"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 01b459f7-eaf2-45a8-b4b5-2c0a821b33c8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
-ms.author: tarcher
-ms.openlocfilehash: e0fb8b3c991d3f95acef77b37929fb5f6dc06242
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 345d095762b75b7a177bf4c6e7a07360a9c14068
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
 
@@ -84,7 +84,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
   5. **[フォルダー パス]**:  アーティファクトまたは Resource Manager テンプレートの定義を含む、複製 URL を基準としたフォルダー パスを少なくとも 1 つ入力します。 サブディレクトリを指定するときは、フォルダー パスにスラッシュを含めてください。
 
      ![[リポジトリ] 領域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. [ **保存**] を選択します。
+6. **[保存]** を選択します。
 
 ### <a name="related-blog-posts"></a>関連するブログ記事
 * [DevTest Labs でアーティファクトの失敗のトラブルシューティングを行う](devtest-lab-troubleshoot-artifact-failure.md)
@@ -92,7 +92,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 プライベート Git レポジトリを作成したら、必要に応じて、次のどちらかまたは両方を実行できます。
 * [カスタム アーティファクト](devtest-lab-artifact-author.md)を格納します。 後でこれらのアーティファクトを使用して、新しい VM を作成できます。
 * [Resource Manager テンプレートを使用して、マルチ VM 環境と PaaS リソースを作成](devtest-lab-create-environment-from-arm.md)します。 その後、テンプレートをプライベート リポジトリに格納します。

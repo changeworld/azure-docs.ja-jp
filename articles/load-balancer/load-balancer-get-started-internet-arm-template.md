@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 10d96920d3aa3cae19750d7c2437b88bac1c8cda
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>テンプレートを使用したインターネット接続ロード バランサーの作成
 

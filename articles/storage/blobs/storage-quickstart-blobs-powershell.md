@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: tamram
-ms.openlocfilehash: 7892200610d2b78c81dc16ff03abb9f0ed386fdc
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: bbc0de7b3a63e8b541a6425e0c7fef9a72dfdffc
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-azure-powershell"></a>Azure PowerShell を使用して Azure Blob Storage との間でオブジェクトを転送する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-BLOB は常にコンテナーにアップロードされます。 これにより、フォルダー内でコンピューター上のファイルを整理するように、BLOB のグループを整理できます。
+BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、BLOB のグループを整理できます。
 
 ファイルのパブリック アクセスを許可するには、コンテナー名を設定してから、[New-AzureStorageContainer](/powershell/module/azure.storage/new-azurestoragecontainer) を使用してコンテナーを作成し、アクセス許可を 'blob' に設定します。 この例でのコンテナー名は *quickstartblobs* です。
 
@@ -48,7 +48,7 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 
 ファイルをブロック BLOB にアップロードするには、コンテナー参照を取得してから、そのコンテナー内のブロック BLOB への参照を取得します。 BLOB 参照を取得したら、[Set-AzureStorageBlobContent](/powershell/module/azure.storage/set-azurestorageblobcontent) を使用して、それにデータをアップロードできます。 この操作により、BLOB がまだ存在しない場合は作成され、既に存在する場合は上書きされます。
 
-次の例では、ローカル ディスク上の D:\\_TestImages フォルダーの Image001.jpg と Image002.png を今作成したコンテナーにアップロードします。
+次の例では、ローカル ディスク上の D:\\_TestImages フォルダーの Image001.jpg と Image002.png を作成したコンテナーにアップロードします。
 
 ```powershell
 # upload a file
@@ -116,7 +116,7 @@ Get-AzureStorageBlobContent -Blob "Image002.png" `
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、ローカル ディスクと Azure Blob Storage の間でファイルを転送する方法を学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 

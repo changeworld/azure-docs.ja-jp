@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 4bbac0e82181e46b84afee5ff7601da018226ec0
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: aec3f107cc94fba2e9b478d86a848c762f1f8b0e
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-an-azure-data-factory-using-powershell"></a>PowerShell を使用した Azure データ ファクトリの作成 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,27 @@ ms.lasthandoff: 12/06/2017
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-[!INCLUDE [data-factory-quickstart-prerequisites-2](../../includes/data-factory-quickstart-prerequisites-2.md)]
+### <a name="azure-powershell"></a>Azure PowerShell
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+
+#### <a name="log-in-to-powershell"></a>PowerShell にログインする
+
+1. お使いのマシンで **PowerShell** を起動します。 PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
+2. 次のコマンドを実行して、Azure Portal へのサインインに使用するのと同じ Azure ユーザー名とパスワードを入力します。
+       
+    ```powershell
+    Login-AzureRmAccount
+    ```        
+3. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
+
+    ```powershell
+    Get-AzureRmSubscription
+    ```
+4. アカウントに複数のサブスクリプションが関連付けられている場合は、次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
+
+    ```powershell
+    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    ```
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
@@ -46,7 +66,7 @@ ms.lasthandoff: 12/06/2017
 2. Azure リソース グループを作成するには、次のコマンドを実行します。 
 
     ```powershell
-    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'eastus'
+    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'East US'
     ``` 
     リソース グループが既に存在する場合、上書きしないようお勧めします。 `$ResourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。 
 3. データ ファクトリ名の変数を定義します。 
@@ -55,7 +75,7 @@ ms.lasthandoff: 12/06/2017
     >  データ ファクトリ名は、グローバルに一意となるように更新してください。 たとえば、ADFTutorialFactorySP1127 です。 
 
     ```powershell
-    $DataFactoryName = "ADFQuickStartFactory";
+    $dataFactoryName = "ADFQuickStartFactory";
     ```
 
 5. データ ファクトリを作成するには、$ResGrp 変数の Location および ResourceGroupName プロパティを使用して、次の **Set-AzureRmDataFactoryV2** コマンドレットを実行します。 
@@ -100,10 +120,9 @@ ms.lasthandoff: 12/06/2017
     メモ帳を使用している場合は、**[名前を付けて保存]** ダイアログ ボックスの **[ファイルの種類]** フィールドで **[すべてのファイル]** を選択します。 そうしないと、ファイルに `.txt` 拡張子が追加されることがあります。 たとえば、「 `AzureStorageLinkedService.json.txt`」のように入力します。 このファイルをエクスプローラーで作成してからメモ帳で開くと、`.txt` 拡張子は表示されない場合があります。これは、**[登録されている拡張子は表示しない]** オプションが既定で設定されているためです。 `.txt` 拡張子を削除してから次の手順に進んでください。
 2. **PowerShell** で **ADFv2QuickStartPSH** フォルダーに切り替えます。
 
-```powershell
-Set-Location 'C:\ADFv2QuickStartPSH'
-```
-
+    ```powershell
+    Set-Location 'C:\ADFv2QuickStartPSH'
+    ```
 3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureStorageLinkedService** を作成します。 
 
     ```powershell
@@ -130,10 +149,7 @@ Set-Location 'C:\ADFv2QuickStartPSH'
         "properties": {
             "type": "AzureBlob",
             "typeProperties": {
-                "folderPath": {
-                    "value": "@{dataset().path}",
-                    "type": "Expression"
-                }
+                "folderPath": "@{dataset().path}"
             },
             "linkedServiceName": {
                 "referenceName": "AzureStorageLinkedService",

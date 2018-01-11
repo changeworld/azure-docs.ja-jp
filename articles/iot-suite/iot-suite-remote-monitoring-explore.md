@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: f4461b5c10ea4e4cce4c13cb590dd398c37cb7b6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e57ad43cc9a82e3944e93c6500ad5740818d10cc
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>リモート監視の構成済みソリューションについて知る
 
@@ -73,7 +73,7 @@ Contoso は、さまざまな種類のスマート デバイスを使用して�
 
 Contoso のオペレーターは、デバイスが正常に動作しているかどうかを判断するしきい値を把握しています。 たとえば、冷却装置からレポートされる圧力が 250 PSI を超えている場合、その冷却装置は正常に動作していません。 次の表に、Contoso がそれぞれのデバイスの種類に対して定義しているしきい値ベースの規則を示します。
 
-| 規則の名前 | Description | しきい値 | Severity | 影響を受けるデバイス |
+| 規則の名前 | 説明 | しきい値 | Severity | 影響を受けるデバイス |
 | --------- | ----------- | --------- | -------- | ---------------- |
 | 冷却装置の圧力が高すぎる | 冷却装置が正常な圧力レベルを超えた場合にアラートを送信します   |P>250 psi       | 重大 | 冷却装置            |
 | プロトタイプ作成デバイスの温度が高すぎる  | プロトタイプ作成デバイスが正常な温度レベルを超えた場合にアラートを送信します  |T>80&deg; F |重大 | プロトタイプ作成デバイス |
@@ -101,11 +101,11 @@ Contoso のオペレーターは、デバイスが正常に動作しているか
 
 1. **[Device detail]\(デバイスの詳細\)** を閉じます。
 
-1. **[メンテナンス]** ページに移動するには、アラーム グリッドの **[Explore Alarm]\(アラームの詳細\)** 列でアラームの横にある **[...]** をクリックします。
+1. **[メンテナンス]** ページに移動するには、ナビゲーション メニューで **[メンテナンス]** を選択します。
 
 **[メンテナンス]** ページで、冷却装置の圧力アラームをトリガーした規則の詳細を確認できます。
 
-1. アラームがトリガーされた回数、確認された数、未解決のアラームと解決済みのアラームの数が表示されます。
+1. 通知の一覧に、アラームがトリガーされた回数、確認された数、未解決のアラームと解決済みのアラームの数が表示されます。
 
     ![トリガーされたアラームの一覧が表示された [メンテナンス] ページ](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
@@ -123,9 +123,9 @@ Contoso のオペレーターは、デバイスが正常に動作しているか
 
     ![デバイスを選択してアクションをスケジュールする](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
-1. ジョブの状態を確認するには、**[メンテナンス]** ページに戻り、**[システムの状態]** ビューでジョブの一覧を確認します。 冷却装置で、弁の圧力を解放するジョブが実行されたことを確認できます。
+1. ジョブの状態を確認するには、**[メンテナンス]** ページに戻り、**ジョブ** ビューでジョブの一覧を確認します。 冷却装置で、弁の圧力を解放するジョブが実行されたことを確認できます。
 
-    ![[システムの状態] に表示されたジョブの状態](media/iot-suite-remote-monitoring-explore/maintenancerunningjob.png)
+    ![ジョブ ビューに表示されたジョブの状態](media/iot-suite-remote-monitoring-explore/maintenancerunningjob.png)
 
 最後に、冷却装置からのテレメトリ値が正常に戻っていることを確認します。
 
@@ -159,7 +159,7 @@ Contoso は、新しい種類のデバイスを実地にテストしています
     ![デバイスのファームウェアの更新をスケジュールする](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
     > [!NOTE]
-    > シミュレートされたデバイスでは、**[Firemware URI]\(ファームウェアの URI\)** の値として任意の URL を使用できます。 シミュレートされたデバイスは、この URL にアクセスしません。
+    > シミュレートされたデバイスでは、**[Firmware URI]\(ファームウェアの URI\)** の値として任意の URL を使用できます。 シミュレートされたデバイスは、この URL にアクセスしません。
 
 1. ジョブの影響を受けるデバイスの数をメモして、**[適用]** を選択します。
 
@@ -167,13 +167,13 @@ Contoso は、新しい種類のデバイスを実地にテストしています
 
 **[メンテナンス]** ページを使用して、実行中のジョブを追跡できます。
 
-1. **[メンテナンス]** ページに戻り、**[システムの状態]** をクリックしてジョブの一覧を表示します。
+1. **[メンテナンス]** ページに戻り、**[ジョブ]** をクリックしてジョブの一覧を表示します。
 
 1. 作成したジョブに関連するイベントを見つけます。 ファームウェアの更新プロセスが正常に開始されたことを確認します。
 
 ファームウェアのバージョンが正しく更新されたことを確認するためのフィルターを作成できます。
 
-1. フィルターを作成するには、**[デバイス]** ページに移動して **[管理]** を選択します。
+1. フィルターを作成するには、**[デバイス]** ページに移動して **[Manage filters]\(フィルターの管理\)** を選択します。
 
     ![デバイス フィルターを管理する](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
@@ -202,7 +202,7 @@ Contoso には、フィールド サービス アクティビティのための 
 
     ![プロトタイプ作成デバイスとトラック デバイスを選択する](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
-1. **[タグ]** を選択し、値 **ConnectedVehicle** を使用して **FieldService** という新しい文字列タグを作成します。 ジョブの名前を選択する 次に、**[適用]** をクリックします。
+1. **[タグ]** を選択し、値 **ConnectedVehicle** を使用して **FieldService** という新しいテキスト タグを作成します。 ジョブの名前を選択する 次に、**[適用]** をクリックします。
 
     ![プロトタイプ作成デバイスとトラック デバイスにタグを追加する](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
@@ -210,7 +210,7 @@ Contoso には、フィールド サービス アクティビティのための 
 
     ![冷却装置、エンジン、エレベーター デバイスを選択する](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. **[タグ]** を選択し、値 **SmartBuilding** を使用して **FieldService** という新しいタグを作成します。 ジョブの名前を選択する その後、**[保存]**をクリックします。
+1. **[タグ]** を選択し、値 **SmartBuilding** を使用して **FieldService** という新しいテキスト タグを作成します。 ジョブの名前を選択する その後、**[保存]**をクリックします。
 
     ![冷却装置、エンジン、エレベーター デバイスにタグを追加する](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 

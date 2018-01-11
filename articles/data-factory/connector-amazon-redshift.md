@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 598e7c0c60c82c6f752ec37676dae52488cccb21
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: dc8da80a89024d687a10b1539eeb1d90d218e4fb
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -130,7 +130,7 @@ Amazon Redshift からデータをコピーするには、コピー アクティ
 | type | コピー アクティビティのソースの type プロパティを **AmazonRedshiftSource** に設定する必要があります。 | あり |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (データセットの "tableName" が指定されている場合) |
 | redshiftUnloadSettings | Amazon Redshift の UNLOAD を使用する場合のプロパティ グループ。 | いいえ |
-| s3LinkedServiceName | ADF にリンクされた AmazonS3 型のサービス名を指定することで、中間ストアとして使用される Amazon S3 を参照します。 | アンロードを使用する場合は [はい] |
+| s3LinkedServiceName | リンクされた AmazonS3 型のサービス名を指定することで、中間ストアとして使用される Amazon S3 を参照します。 | アンロードを使用する場合は [はい] |
 | bucketName | 中間データを格納する S3 バケットを指定します。 指定しない場合、Data Factory サービスが自動的に生成します。  | アンロードを使用する場合は [はい] |
 
 **アンロードを使用したコピー アクティビティでの Amazon Redshift ソースの例:**
@@ -207,7 +207,7 @@ Amazon Redshift からデータをコピーするには、コピー アクティ
 
 ## <a name="data-type-mapping-for-amazon-redshift"></a>Amazon Redshift のデータ型マッピング
 
-Teradata からデータをコピーするとき、Teradata のデータ型から Azure Data Factory の中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Amazon Redshift からデータをコピーするとき、Amazon Redshift のデータ型から Azure Data Factory の中間データ型への次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
 | Amazon Redshift のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |

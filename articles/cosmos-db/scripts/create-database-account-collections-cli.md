@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI スクリプト - Azure Cosmos DB の DocumentDB API アカウント、データベース、およびコレクションを作成する |Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - Azure Cosmos DB の DocumentDB API アカウント、データベース、およびコレクションを作成する"
+title: "Azure CLI スクリプト - Azure Cosmos DB の SQL API アカウント、データベース、およびコレクションを作成する | Microsoft Docs"
+description: "Azure CLI のサンプル スクリプト - Azure Cosmos DB の SQL API アカウント、データベース、およびコレクションを作成する"
 services: cosmos-db
 documentationcenter: cosmosdb
 author: mimig1
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/06/2017
 ms.author: mimig
-ms.openlocfilehash: 28f99d56404e47adcd375d9f3106cc234469cbfd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8225b074420983096ee89d5816b0bfe9bc138fe
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-cosmos-db-create-an-documentdb-api-account-using-cli"></a>Azure Cosmos DB: CLI を使用して DocumentDB API アカウントを作成する
+# <a name="azure-cosmos-db-create-an-sql-api-account-using-cli"></a>Azure Cosmos DB: CLI を使用して SQL API アカウントを作成する
 
-この CLI サンプル スクリプトでは、Azure Cosmos DB の DocumentDB API アカウント、データベース、およびコレクションを作成します。  
+この CLI サンプル スクリプトでは、Azure Cosmos DB の SQL API アカウント、データベース、およびコレクションを作成します。  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -32,7 +32,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB DocumentDB API account, database, and collection")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB SQL API account, database, and collection")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

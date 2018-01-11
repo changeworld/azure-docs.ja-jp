@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
 ms.openlocfilehash: b6eeb972e759ece85ded4749320ac2c1654a7c92
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
 > [!div class="op_single_selector"]

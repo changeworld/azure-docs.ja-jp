@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 57f461f9a39e8069654985d86bfe3ae23dd0855a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 614f4422aa987fc32dcce62826bb2477473fdc32
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="expand-json-transformation"></a>JSON の展開変換
 **JSON の展開**変換を使用すると、ユーザーは、有効な JSON テキストが含まれている既存の列を複数の列に展開できます。
@@ -24,8 +24,8 @@ ms.lasthandoff: 10/11/2017
 
 この変換を実行するには、次の手順に従います。
 1. JSON テキストを含むソース列を選択します。
-2. **[Transforms] \(変換)** メニューから **[Expand JSON] \(JSON の展開)** を選択します。 または、ソース列のヘッダーを右クリックして、コンテキスト メニューから **[Expand JSON] \(JSON の展開)** を選択します。 
-3. **[OK]**をクリックします。 
+2. **[Transforms] (変換)** メニューから **[Expand JSON] (JSON の展開)** を選択します。 または、ソース列のヘッダーを右クリックして、コンテキスト メニューから **[Expand JSON] \(JSON の展開)** を選択します。 
+3. Click **OK**. 
  
 新しい列は、ソース列の横に追加されます。 これらの列には、JSON テキストにおける次のレベルの階層のプロパティが含まれます。 プロパティ キーは、存在する場合、対応する列の名前の作成に使用されます。 入れ子になったプロパティは、必要に応じてユーザーが繰り返し展開したり破棄したりできる JSON テキストとして保持されます。
 

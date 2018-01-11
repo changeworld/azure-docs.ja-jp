@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: thmullan;jackr
-ms.openlocfilehash: 181ad8471c0d0cb24d8f4eae6bddd9d750b4ee61
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 14a7fdb304e90aec10bee9167817f564870cd6c1
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="securing-your-sql-database"></a>SQL Database の保護
 
@@ -31,7 +31,7 @@ SQL のすべてのエディションで使用できるセキュリティ機能�
 SQL Database は、データを暗号化することでデータのセキュリティを保護します。移動中のデータには[トランスポート層セキュリティ](https://support.microsoft.com/kb/3135244)を使用し、保存データには [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用し、使用中のデータには [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) を使用します。 
 
 > [!IMPORTANT]
->データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 アプリケーションの接続文字列で、接続を暗号化するパラメーターを指定する必要があります。また、サーバーの証明書を信頼*しないでください* (Azure クラシック ポータルから接続文字列をコピーすると、この操作は自動的に実行されます)。この操作を実行しないと、サーバーの ID が確認されず、"man-in-the-middle" 攻撃を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、**Encrypt=True** と **TrustServerCertificate=False** です。 
+>データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 アプリケーションの接続文字列内に、接続を暗号化し、サーバー証明書を信頼*しない*ようにするためのパラメーターを指定する必要があります (Azure Portal から接続文字列をコピーすると、この操作は自動的に実行されます)。この操作を実行しないと、接続時にサーバーの ID が検証されず、"man-in-the-middle" 攻撃を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、**Encrypt=True** と **TrustServerCertificate=False** です。 
 
 その他の方法でデータを暗号化するには、次を検討してください。
 

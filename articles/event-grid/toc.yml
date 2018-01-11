@@ -16,7 +16,7 @@
       href: custom-event-quickstart-powershell.md
     - name: カスタム イベントの作成 - Azure Portal
       href: custom-event-quickstart-portal.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: ロジック アプリを使用した VM の変更の監視
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
@@ -36,6 +36,8 @@
   items:
     - name: Event Hubs からデータ ウェアハウスへのデータ ストリーミング
       href: event-grid-event-hubs-integration.md
+    - name: イベント サブスクリプション用のテンプレート
+      href: event-subscription-template.md
 - name: リファレンス
   items:
     - name: Azure CLI

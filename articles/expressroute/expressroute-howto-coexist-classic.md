@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
 ms.openlocfilehash: 09d1649f0ca0cf4ca464d95b29461cad3fe51788
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>ExpressRoute 接続とサイト間接続の共存の構成 (クラシック)
 > [!div class="op_single_selector"]

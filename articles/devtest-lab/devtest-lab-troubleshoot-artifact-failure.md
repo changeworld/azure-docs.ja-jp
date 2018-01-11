@@ -3,7 +3,7 @@ title: "Azure DevTest Labs 仮想マシンでアーティファクトの失敗�
 description: "Azure DevTest Labs でアーティファクトの失敗のトラブルシューティングを行う方法を説明します。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 115e0086-3293-4adf-8738-9f639f31f918
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
-ms.author: tarcher
-ms.openlocfilehash: 9a79e50902e8e99e94148f8ef534e6745e31809a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 6c03ce8f91ec688e32e379f1284767db9a45920c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>ラボでアーティファクトの失敗を診断する 
 アーティファクトの作成後、作成が成功したか失敗したかを確認できます。 Azure DevTest Labs のアーティファクト ログには、アーティファクトの失敗の診断に使用できる情報が含まれています。 Windows VM のアーティファクト ログ情報を表示する場合、次のいずれかを選択できます。
@@ -56,6 +56,6 @@ ms.lasthandoff: 10/11/2017
 ## <a name="related-blog-posts"></a>関連するブログ記事
 * [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ラボへの Git リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 

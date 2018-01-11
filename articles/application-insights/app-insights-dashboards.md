@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9a4a839e7b5cc772fb9d4c57ed70484d90a87fdd
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a6d3c89f0f99128e2bf754391c79c3d616f0730a
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights ポータルのナビゲーションおよびダッシュボード
 [プロジェクトに Application Insights を設定](app-insights-overview.md)すると、[Azure Portal](https://portal.azure.com) のプロジェクトの Application Insights リソースに、アプリのパフォーマンスと使用状況に関するテレメトリ データが表示されます。
@@ -97,6 +97,9 @@ ms.lasthandoff: 11/01/2017
 ![ダッシュボードのヘッダーで [共有] をクリックします](./media/app-insights-dashboards/41.png)
 
 詳細については、 [ロールとアクセス制御](app-insights-resources-roles-access-control.md)に関するページをご覧ください。
+
+## <a name="create-dashboards-programmatically"></a>プログラムによるダッシュボードの作成
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) と簡易 JSON エディターを使用して、ダッシュボードの作成を自動化できます。
 
 ## <a name="app-navigation"></a>アプリのナビゲーション
 概要ブレードはアプリの詳細情報へのゲートウェイです。

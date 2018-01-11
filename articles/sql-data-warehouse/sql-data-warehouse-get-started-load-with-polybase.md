@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 03/01/2017
 ms.author: barbkess
 ms.openlocfilehash: 47a2f48a1eef0c138875fbc079724b8d631abc54
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase によってデータを読み込む
 > [!div class="op_single_selector"]

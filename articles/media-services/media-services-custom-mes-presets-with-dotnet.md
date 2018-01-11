@@ -12,27 +12,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: b4d25f07349043da8cb745930fde3371c98f9960
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0391bb627ab899960d38b4eaf4478a6cdb8bd0b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Media Encoder Standard のプリセットのカスタマイズ
 
 ## <a name="overview"></a>概要
 
-このトピックでは、Media Encoder Standard (MES) をカスタム プリセットと共に使用して高度なエンコード タスクを実行する方法を紹介します。 また、.NET を使用して、エンコード タスクとそのタスクを実行するジョブを作成します。  
+この記事では、Media Encoder Standard (MES) をカスタム プリセットと共に使用して高度なエンコード タスクを実行する方法を紹介します。 また、.NET を使用して、エンコード タスクとそのタスクを実行するジョブを作成します。  
 
-このトピックでは、[H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) プリセットを取得してレイヤーの数を減らすことによってプリセットをカスタマイズする方法を説明します。 [Media Encoder Standard のプリセットのカスタマイズ](media-services-advanced-encoding-with-mes.md)のトピックでは、高度なエンコード タスクを実行するために使用できるカスタム プリセットを示しています。
+この記事では、[H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) プリセットを取得してレイヤーの数を減らすことによってプリセットをカスタマイズする方法を説明します。 [Media Encoder Standard のプリセットのカスタマイズ](media-services-advanced-encoding-with-mes.md)の記事では、高度なエンコード タスクを実行するために使用できるカスタム プリセットを示しています。
 
 ## <a id="customizing_presets"></a>MES プリセットのカスタマイズ
 
 ### <a name="original-preset"></a>元のプリセット
 
-「[H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md)」のトピックで定義されている JSON を、拡張子 .json を持つファイルに保存します。 たとえば、**CustomPreset_JSON.json** のようにします。
+「[H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md)」の記事で定義されている JSON を、拡張子 .json を持つファイルに保存します。 たとえば、**CustomPreset_JSON.json** のようにします。
 
 ### <a name="customized-preset"></a>カスタマイズしたプリセット
 
@@ -132,22 +132,27 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="example"></a>例   
 
-    using System;
-    using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.Threading;
+```
+using System;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Threading;
 
-    namespace CustomizeMESPresests
+namespace CustomizeMESPresests
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         // Field for service context.
         private static CloudMediaContext _context = null;
@@ -160,7 +165,11 @@ ms.lasthandoff: 10/11/2017
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -213,26 +222,26 @@ ms.lasthandoff: 10/11/2017
             Console.WriteLine("  Current state: " + e.CurrentState);
             switch (e.CurrentState)
             {
-            case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-            case JobState.Canceling:
-            case JobState.Queued:
-            case JobState.Scheduled:
-            case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-            case JobState.Canceled:
-            case JobState.Error:
+                case JobState.Finished:
+                    Console.WriteLine();
+                    Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                    break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                    Console.WriteLine("Please wait...\n");
+                    break;
+                case JobState.Canceled:
+                case JobState.Error:
 
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
+                    // Cast sender as a job.
+                    IJob job = (IJob)sender;
 
-                // Display or log error details as needed.
-                break;
-            default:
-                break;
+                    // Display or log error details as needed.
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -242,13 +251,14 @@ ms.lasthandoff: 10/11/2017
             ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
             if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
             return processor;
         }
 
-        }
     }
+}
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

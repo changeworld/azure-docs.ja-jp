@@ -3,7 +3,7 @@ title: "Azure DevTest Labs でのラボの基本ポリシーの管理 | Microsof
 description: "DevTest Labs のラボの基本ポリシー (設定) をいくつか設定する方法について説明します"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
-ms.author: tarcher
-ms.openlocfilehash: e87a37b7aafd774fb0176b74968ad0bba0f5cf3b
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: v-craic
+ms.openlocfilehash: f7ccd9f56742fe4500c6f5441623beca28801bcd
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの基本ポリシーの管理
 
@@ -65,7 +65,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 1. このポリシーを有効にした場合は、現在のラボのすべての VM をシャットダウンする時刻 (およびタイム ゾーン) を指定します。
 
-1. 指定した自動シャットダウン時刻の 15 分前に通知を送信するオプションに対して **[はい]** または **[いいえ]** を指定します。 **[はい]** を選択した場合は、通知が投稿または送信される Webhook URL のエンドポイントまたは電子メール アドレスを入力します。 ユーザーは通知を受信し、シャットダウンを遅延するオプションが示されます。
+1. 指定した自動シャットダウン時刻の 15 分前に通知を送信するオプションに対して **[はい]** または **[いいえ]** を指定します。 **[はい]** を選択した場合は、通知が投稿または送信される Webhook URL のエンドポイントまたは電子メール アドレスを入力します。 ユーザーは通知を受信し、シャットダウンを遅らせるオプションが表示されます。
 
    webhook の詳細については、「[webhook または API Azure Function を作成する](../azure-functions/functions-create-a-web-hook-or-api-function.md)」を参照してください。 
 
@@ -88,6 +88,6 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 このポリシーを有効にしても、現在のラボの VM に自動的に適用されることはありません。 この設定を既存の VM に適用するには、その VM の管理ウィンドウを開いて **[自動開始]** 設定を変更します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure DevTest Labs でのラボ ポリシーの定義](devtest-lab-set-lab-policy.md) - 他のラボ ポリシーを変更する方法について説明します。

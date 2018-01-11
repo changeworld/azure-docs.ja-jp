@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 12/06/2017
 ms.author: barbkess
-ms.openlocfilehash: 3117bf6aa21641c30f33f38f096ded24bb0cf64e
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 8739429342d3c8bbe0f09041976758276a9c3228
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="restore-an-azure-sql-data-warehouse-rest-api"></a>Azure SQL Data Warehouse の復元 (REST API)
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 
 <!--Article references-->
 [Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md#request-quota-change
+[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
 [How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Overview]: ./sql-data-warehouse-restore-database-overview.md

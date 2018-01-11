@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 54edb2d02701d36af52088cb8df7e252504a8760
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 815148d2a39ce8b18092619c9687a56b457c8339
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Hyper-V から Azure 用の Azure Site Recovery Deployment Planner
 この記事は、Hyper-V から Azure への運用デプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -40,6 +40,9 @@ Azure Site Recovery Deployment Planner (バージョン 2) は、Hyper-V から 
 
 * 差分レプリケーションに必要な推定ネットワーク帯域幅
 * オンプレミスから Azure への間で Azure Site Recovery が得られるスループット
+* 特定の帯域幅で達成できる RPO
+* プロビジョニングされた帯域幅が低かった場合に、必要な RPO に生じる影響
+
     
 **Azure インフラストラクチャの要件**
 
@@ -52,6 +55,7 @@ Azure Site Recovery Deployment Planner (バージョン 2) は、Hyper-V から 
 
 **オンプレミス インフラストラクチャの要件**
 * VM レプリケーションによって望ましくないダウンタイムが運用アプリケーションに発生することがないよう、初期レプリケーションと差分レプリケーションを成功させるために必要な、Hyper-V ストレージの各ボリューム上の空き記憶域
+* Hyper-V レプリケーションに関して設定される最大コピー頻度
 
 **初期レプリケーションのバッチに関するガイダンス** 
 * 保護に使用する VM バッチの数

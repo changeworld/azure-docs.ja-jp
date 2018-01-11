@@ -318,7 +318,7 @@ Verizon のログ データには 1 時間の遅延があり、エンドポイ�
 | EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。                   |あり   | いいえ  |
 | EgressCacheOthers |  その他のキャッシュ シナリオの送信データ転送。             |あり   | いいえ  |
 
-*送信データ転送は、CDN の POP サーバーからクライアントに配信されたトラフィックを指します。
+* 送信データ転送は、CDN の POP サーバーからクライアントに配信されたトラフィックを指します。
 
 
 ### <a name="schema-of-the-core-analytics-logs"></a>コア分析ログのスキーマ 

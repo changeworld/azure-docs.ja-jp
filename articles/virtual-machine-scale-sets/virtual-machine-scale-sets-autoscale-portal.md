@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 141ae5f004ec1c85c506955873c69c03a89cd08c
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: e43be53817e7fa65c3d7a95cab9821126ed88831
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/01/2017
 
 
 ## <a name="prerequisites"></a>前提条件
-自動スケール ルールを作成するには、既存の仮想マシン スケール セットが必要です。 スケール セットは、[Azure Portal](virtual-machine-scale-sets-portal-create.md)、[Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-powershell)、または [Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-azure-cli) を使用して作成できます。
+自動スケール ルールを作成するには、既存の仮想マシン スケール セットが必要です。 スケール セットは、[Azure Portal](virtual-machine-scale-sets-create-portal.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)、または [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) を使用して作成できます。
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>自動的にスケールアウトするルールの作成
@@ -125,8 +125,8 @@ VM インスタンスの数と状態を確認するには、スケール セッ�
 自動スケール ルールがどのように適用されているかを確認するには、**[スケーリング]** ウィンドウの上部の **[実行履歴]** を選択します。 グラフおよびイベントの一覧に、自動スケール ルールがトリガーされたタイミングと、スケール セット内で増減された VM インスタンスの数が表示されます。
 
 
-## <a name="next-steps"></a>次のステップ
-この記事では、自動スケール ルールを使用して、水平方向にスケーリングし、スケール セット内の VM インスタンスの "*数*" を増減する方法について説明しました。 垂直方向にスケーリングして、VM インスタンスの "*サイズ*" を増減することもできます。 詳細については、[仮想マシン スケール セットでの垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)に関するページを参照してください。
+## <a name="next-steps"></a>次の手順
+この記事では、自動スケール ルールを使用して、水平方向にスケーリングして、スケール セット内の VM インスタンスの*数*を増減する方法について説明しました。 垂直方向にスケーリングして、VM インスタンスの "*サイズ*" を増減することもできます。 詳細については、[仮想マシン スケール セットでの垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)に関するページを参照してください。
 
 VM インスタンスの管理方法については、[Azure PowerShell を使用した仮想マシン スケール セットの管理](virtual-machine-scale-sets-windows-manage.md)に関するページを参照してください。
 

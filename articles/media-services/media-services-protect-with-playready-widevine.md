@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: b30a444150c6ace87e9d506da9335373b5e017af
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: fb62a82f351502b5067367b2306f296272b6575b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="using-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady または Widevine の動的共通暗号化を使用する
 
@@ -27,7 +27,12 @@ ms.lasthandoff: 12/07/2017
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >
->
+
+> [!NOTE]
+> 最新バージョンの Java SDK を入手し、Java での開発を始めるには、「[Azure Media Services 用 Java クライアント SDK の概要](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)」を参照してください。 <br/>
+> Media Services 用の最新の PHP SDK をダウンロードするには、[Packagist リポジトリ](https://packagist.org/packages/microsoft/windowsazure#v0.5.7)でバージョン 0.5.7 の Microsoft/WindowAzure パッケージを検索してください。  
+
+## <a name="overview"></a>概要
 
 Microsoft Azure Media Services を使用すると、MPEG DASH、Smooth Streaming、および HTTP ライブ ストリーミング (HLS) のストリームを [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/)で保護して配信できます。 Widevine DRM ライセンスで暗号化された DASH ストリームを配信することもできます。 PlayReady と Widevine はいずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。 [AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (バージョン 3.5.1 以降) または REST API を使用して、Widevine を使用するように AssetDeliveryConfiguration を構成できます。
 
@@ -39,7 +44,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 動的暗号化を使用するには、一連のマルチビットレート MP4 ファイルまたはマルチビットレート Smooth Streaming ソース ファイルを含む資産が必要です。 また、資産の配信ポリシーを構成する必要があります (このトピック内で後述します)。 次に、ストリーミング URL で指定された形式に基づいて、オンデマンド ストリーミング サーバーは、選択されたプロトコルでストリームを配信できるようにします。 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの各要求に応じて、適切な HTTP 応答を構築して返します。
 
-このトピックには、PlayReady や Widevine など、複数の DRM で保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。 このトピックでは、認証ポリシーを使用する PlayReady ライセンス配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが PlayReady または Widevine のライセンスを受け取ることができるようになります。 また、DASH を介した PlayReady または Widevine DRM による動的な暗号化を使用する方法も説明します。
+この記事には、PlayReady や Widevine など、複数の DRM で保護されたメディアを配信するアプリケーションの開発に取り組む開発者にとって有用な情報が含まれています。 この記事では、認証ポリシーを使用する PlayReady ライセンス配信サービスの構成方法を説明します。これにより、許可されたクライアントのみが PlayReady または Widevine のライセンスを受け取ることができるようになります。 また、DASH を介した PlayReady または Widevine DRM による動的な暗号化を使用する方法も説明します。
 
 >[!NOTE]
 >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
@@ -64,13 +69,13 @@ Media Services では、キーを要求するユーザーを承認する複数�
 
 6. ストリーミング URL を取得するために OnDemand ロケーターを作成します。
 
-このトピックの最後に、詳細な .NET の例があります。
+この記事の最後に、詳細な .NET の例があります。
 
 前述したワークフローを図にすると、次のようになります。 ここでは、認証のためにトークンが使用されています。
 
 ![PlayReady による保護](media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
 
-このトピックの残りの部分では、詳細な説明、コード例、および前述したタスクの実行方法を説明するトピックへのリンクを紹介します。
+この記事の残りの部分では、詳細な説明、コード例、および前述したタスクの実行方法を説明するトピックへのリンクを紹介します。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 資産の配信ポリシーを追加または更新する場合は、関連するロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
@@ -104,7 +109,7 @@ Media Services では、キーを要求するユーザーを承認する複数�
 * 資産配信プロトコル (たとえば、MPEG DASH、HLS、Smooth Streaming、またはすべて)。
 * 動的暗号化のタイプ (この場合は、共通暗号化)
 
-詳細については、 [資産の配信ポリシーの構成 ](media-services-rest-configure-asset-delivery-policy.md)に関するページを参照してください。
+詳しくは、資産の配信ポリシーの構成に関するページをご覧ください。
 
 ## <a id="create_locator"></a>ストリーミング URL を取得するために OnDemand ロケーターを作成する
 Smooth、DASH、HLS のストリーミング URL をユーザーに提供する必要があります。
@@ -148,31 +153,36 @@ Smooth、DASH、HLS のストリーミング URL をユーザーに提供する�
 Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
 
 >[!NOTE]
->さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
 
 必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
 
-    using System;
-    using System.Collections.Generic;
-    using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using System.Threading;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
-    using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
-    using Microsoft.WindowsAzure.MediaServices.Client.Widevine;
-    using Newtonsoft.Json;
+```
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
+using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
+using Microsoft.WindowsAzure.MediaServices.Client.Widevine;
+using Newtonsoft.Json;
 
-    namespace DynamicEncryptionWithDRM
+namespace DynamicEncryptionWithDRM
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static readonly Uri _sampleIssuer =
             new Uri(ConfigurationManager.AppSettings["Issuer"]);
@@ -190,7 +200,11 @@ Program.cs ファイルのコードを、このセクションで示されてい
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -210,9 +224,9 @@ Program.cs ファイルのコードを、このセクションで示されてい
             Console.WriteLine();
 
             if (tokenRestriction)
-            tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
+                tokenTemplateString = AddTokenRestrictedAuthorizationPolicy(key);
             else
-            AddOpenAuthorizationPolicy(key);
+                AddOpenAuthorizationPolicy(key);
 
             Console.WriteLine("Added authorization policy: {0}", key.AuthorizationPolicyId);
             Console.WriteLine();
@@ -223,19 +237,19 @@ Program.cs ファイルのコードを、このセクションで示されてい
 
             if (tokenRestriction && !String.IsNullOrEmpty(tokenTemplateString))
             {
-            // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
-            // back into a TokenRestrictionTemplate class instance.
-            TokenRestrictionTemplate tokenTemplate =
-                TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
+                // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
+                // back into a TokenRestrictionTemplate class instance.
+                TokenRestrictionTemplate tokenTemplate =
+                    TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-            // Generate a test token based on the the data in the given TokenRestrictionTemplate.
-            // Note, you need to pass the key id Guid because we specified
-            // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
-            Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
-            string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
-                                        DateTime.UtcNow.AddDays(365));
-            Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-            Console.WriteLine();
+                // Generate a test token based on the the data in the given TokenRestrictionTemplate.
+                // Note, you need to pass the key id Guid because we specified
+                // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+                Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
+                string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
+                                            DateTime.UtcNow.AddDays(365));
+                Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+                Console.WriteLine();
             }
 
             // You can use the http://amsplayer.azurewebsites.net/azuremediaplayer.html player to test streams.
@@ -251,8 +265,8 @@ Program.cs ファイルのコードを、このセクションで示されてい
         {
             if (!File.Exists(singleFilePath))
             {
-            Console.WriteLine("File does not exist.");
-            return null;
+                Console.WriteLine("File does not exist.");
+                return null;
             }
 
             var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
@@ -465,8 +479,8 @@ Program.cs ファイルのコードを、このセクションで示されてい
         {
             var template = new WidevineMessage
             {
-            allowed_track_types = AllowedTrackTypes.SD_HD,
-            content_key_specs = new[]
+                allowed_track_types = AllowedTrackTypes.SD_HD,
+                content_key_specs = new[]
             {
                     new ContentKeySpecs
                     {
@@ -475,12 +489,12 @@ Program.cs ファイルのコードを、このセクションで示されてい
                     track_type = "SD"
                     }
                 },
-            policy_overrides = new
-            {
-                can_play = true,
-                can_persist = true,
-                can_renew = false
-            }
+                policy_overrides = new
+                {
+                    can_play = true,
+                    can_persist = true,
+                    can_renew = false
+                }
             };
 
             string configuration = JsonConvert.SerializeObject(template);
@@ -570,14 +584,14 @@ Program.cs ファイルのコードを、このセクションで示されてい
             using (var rng =
             new System.Security.Cryptography.RNGCryptoServiceProvider())
             {
-            rng.GetBytes(returnValue);
+                rng.GetBytes(returnValue);
             }
 
             return returnValue;
         }
-        }
     }
-
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 Media Services のラーニング パスを確認します。

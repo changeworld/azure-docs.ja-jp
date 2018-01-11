@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: b20c54660552f527ff403fb41f2a04e478832d43
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8aa29dfb46a1aafb9e7b713456e1006af423a2b2
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="oms-virtual-machine-extension-for-linux"></a>Linux 用の OMS 仮想マシン拡張機能
 
@@ -79,11 +79,11 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 
 ### <a name="property-values"></a>プロパティ値
 
-| 名前 | 値/例 |
+| Name | 値/例 |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
-| type | OmsAgentForLinux |
+| 型 | OmsAgentForLinux |
 | typeHandlerVersion | 1.4 |
 | workspaceId (例) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (例) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
@@ -93,7 +93,7 @@ Linux 用の OMS Agent 拡張機能では、ターゲットの仮想マシンが
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成 (OMS へのオンボードなど) が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 OMS Agent VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)にあります。 
 
-仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-manager-template-child-resource.md)に関する記事を参照してください。 
+仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources)に関する記事を参照してください。 
 
 次の例では、OMS 拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 

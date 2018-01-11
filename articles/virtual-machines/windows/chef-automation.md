@@ -1,6 +1,6 @@
 ---
-title: "Chef による Azure 仮想マシンのデプロイ | Microsoft Docs"
-description: "Chef を使用して自動化された仮想マシンのデプロイと構成を Microsoft Azure で実行する方法について説明します。"
+title: "Chef による Azure 仮想マシンの展開 | Microsoft Docs"
+description: "Chef を使用して自動化された仮想マシンの展開と構成を Microsoft Azure で実行する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
 author: diegoviso
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9dabf666c633b59c7d1f9478b0e9cfe9d313e129
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef で Azure 仮想マシンのデプロイメントを自動化する
+# <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef で Azure 仮想マシンの展開を自動化する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef は自動化と必要な状態の構成を提供する優れたツールです。
 
 Chef は最新の cloud-api リリースで Azure とのシームレスな統合を提供しており、1 つのコマンドで構成状態をプロビジョニングしてデプロイできます。
 
-この記事では、Chef 環境を設定し、Azure 仮想マシンをプロビジョニングする方法と、ポリシーまたは「CookBook」を作成し、それを Azure 仮想マシンに導入する方法について説明します。
+この記事では、Chef 環境を設定し、Azure 仮想マシンをプロビジョニングした後、ポリシーまたは "CookBook" を作成して、それを Azure 仮想マシンに展開します。
 
 早速始めましょう。
 
 ## <a name="chef-basics"></a>Chef の基礎
-開始する前に Chef の基本的な概念を確認しておくことをお勧めします。 <a href="http://www.chef.io/chef" target="_blank">ここ</a> に優れた資料があるので、このチュートリアルを開始する前に一読することをお勧めします。 基礎については開始する前に要約します。
+開始する前に、[Chef の基本的な概念を確認します](http://www.chef.io/chef)。 
 
 次の図は、大まかな Chef アーキテクチャを示しています。
 
@@ -58,8 +58,7 @@ Chef ワークステーションは管理者用のワークステーションで
 
 Azure 設定ファイルをダウンロードして Chef が Azure のサブスクリプションと通信できるようにする必要があります。
 
-<!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
-PowerShell Azure の [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) コマンドを使用して、発行設定をダウンロードします。 
+PowerShell Azure の [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) コマンドを使用して、発行設定をダウンロードします。 
 
 発行設定ファイルを C:\chef に保存します。
 
@@ -147,7 +146,7 @@ PATH 変数に C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\you
 おめでとうございます。 ワークステーションがセットアップされました。
 
 ## <a name="creating-a-cookbook"></a>Cookbook の作成
-Cookbookは管理するクライアント上で実行する一連のコマンドを定義するために Chef で使用します。 Cookbook は簡単に作成でき、 **chef generate cookbook** コマンドを使用して Cookbook のテンプレートを生成します。 ポリシーで IIS を自動的にデプロイさせるため、Cookbook webserver を呼び出します。
+Cookbookは管理するクライアント上で実行する一連のコマンドを定義するために Chef で使用します。 Cookbook は簡単に作成でき、**chef generate cookbook** コマンドを使用して Cookbook のテンプレートを生成します。 ポリシーで IIS を自動的にデプロイさせるため、Cookbook webserver を呼び出します。
 
 C:\Chef ディレクトリで次のコマンドを実行します。
 

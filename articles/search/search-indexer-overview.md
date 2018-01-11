@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: c1d393064313ea65d5226378172530115c338f86
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 827c0122fafceca369c0350e6846c77e98abc3b5
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="indexers-in-azure-search"></a>Azure Search のインデクサー
 > [!div class="op_single_selector"]
@@ -64,7 +64,10 @@ Azure Search の *インデクサー* は、検索可能なデータとメタデ
 データ ソースは、それを使用するインデクサーとは別に構成および管理されます。これは、1 つのデータ ソースを複数のインデクサーで使用して、一度に複数のインデックスを読み込めることを意味します。
 
 ### <a name="step-2-create-an-index"></a>手順 2: インデックスを作成する
-インデクサーは、データの取り込みに関連したいくつかのタスクを自動化しますが、そこにはインデックスの作成は含まれていません。 前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。 インデックス構築の詳細については、[インデックスの作成 (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) に関するページを参照してください。 フィールドの関連付けについては、「[Azure Search インデクサーのフィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
+インデクサーは、データ インジェストに関連したいくつかのタスクを自動化しますが通常、そこにはインデックスの作成は含まれていません。 前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。 インデックス構築の詳細については、[インデックスの作成 (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) に関するページを参照してください。 フィールドの関連付けについては、「[Azure Search インデクサーのフィールド マッピング](search-indexer-field-mappings.md)」を参照してください。
+
+> [!Tip]
+> インデクサーで自動的にインデックスを生成することはできませんが、ポータルにある**データのインポート**ウィザードを活用することができます。 ほとんどの場合、ウィザードで、ソース内の既存のメタデータからインデックス スキーマを推測し、仮のインデックス スキーマを得ることができます。ウィザードがアクティブである間は、このスキーマをインライン編集することが可能です。 サービスのインデックスが作成された後にポータルで行う編集は、主に新しいフィールドの追加に限定されます。 ウィザードは、あくまでインデックスの作成にご使用ください。インデックスの修正には適していません。 実践的なスキルを身に付けるには、[ポータルのチュートリアル](search-get-started-portal.md)をご覧ください。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>手順 3: インデクサーを作成してスケジュールを設定する
 インデクサーの定義とは、インデックスやデータ ソース、スケジュールを指定する構文です。 インデクサーは、データ ソースが同じサブスクリプションに属していれば、他のサービスのデータ ソースであっても参照できます。 インデクサー構築の詳細については、「 [Create Indexer (Azure Search REST API) (インデクサーの作成 (Azure Search REST API))](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)」を参照してください。

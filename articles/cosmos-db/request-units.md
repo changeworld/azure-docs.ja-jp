@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: fc544a776293e94114d8c07d89df588a17aa1962
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 57e8274d67bff86832d9cd070b781ade6575dee7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 Azure Cosmos DB の [要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が新たに公開されました。 詳細については、「 [スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照してください。
@@ -26,7 +26,7 @@ Azure Cosmos DB の [要求ユニット計算ツール](https://www.documentdb.c
 ![Throughput calculator][5]
 
 ## <a name="introduction"></a>はじめに
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、Microsoft が提供するグローバル分散型のマルチモデル データベースです。 Azure Cosmos DB では、仮想マシンのレンタル、ソフトウェアのデプロイ、データベースの監視などを自分で行う必要はありません。 Microsoft のトップ エンジニアによって運用され、継続的な監視が行われる Azure Cosmos DB は、卓越した可用性、パフォーマンス、データ保護を提供します。 [DocumentDB API](documentdb-introduction.md) を介した SQL、MongoDB API、[Table API](table-introduction.md)、[Graph API](graph-introduction.md) を介した Gremlin など、お好きな API を利用してデータへアクセスできます。こうした API はすべてネイティブにサポートされています。 Azure Cosmos DB の通貨は要求ユニット (RU) です。 RU を使用すると、読み取り、書き込み容量の予約や、CPU、メモリ、および IOPS のプロビジョニングが不要です。
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、Microsoft が提供するグローバル分散型のマルチモデル データベースです。 Azure Cosmos DB では、仮想マシンのレンタル、ソフトウェアのデプロイ、データベースの監視などを自分で行う必要はありません。 Microsoft のトップ エンジニアによって運用され、継続的な監視が行われる Azure Cosmos DB は、卓越した可用性、パフォーマンス、データ保護を提供します。 [SQL API](documentdb-introduction.md)、[MongoDB API](mongodb-introduction.md)、[Table API](table-introduction.md)、[Graph API](graph-introduction.md) を介した Gremlin など、お好きな API を利用してデータへアクセスできます。こうした API はすべてネイティブにサポートされています。 Azure Cosmos DB の通貨は要求ユニット (RU) です。 RU を使用すると、読み取り、書き込み容量の予約や、CPU、メモリ、および IOPS のプロビジョニングが不要です。
 
 Azure Cosmos DB は、単純な読み取りと書き込みから複雑なグラフのクエリまで、さまざまな操作を行うための API を多数サポートしています。 すべての要求が同等ではないため、要求を処理するために必要な計算量に基づいて、正規化された**要求ユニット**の量が割り当てられます。 1 つの操作の要求ユニットの数は確定的であり、Azure Cosmos DB のすべての操作で使用された要求ユニットの数は応答ヘッダーを介して追跡できます。 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: e642a63486317387d66a9403b8276d2e0bd38fb6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: e38d2b751090cfdc078de4e8c683c6bb9b48fac3
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
 
@@ -46,8 +46,8 @@ Azure Portal で変数を作成する場合、変数値を入力するための�
 Automation で使用できる変数の型の一覧を次に示します。
 
 * String
-* Integer
-* DateTime
+* 整数
+* Datetime
 * ブール
 * Null
 
@@ -55,7 +55,7 @@ Automation で使用できる変数の型の一覧を次に示します。
 
 Windows PowerShell で Automation 変数を作成および管理するには、次のテーブルのコマンドレットを使用します。 これらは、Automation Runbook および DSC 構成で使用できる [Azure PowerShell モジュール](../powershell-install-configure.md) に付属しています。
 
-|コマンドレット|説明|
+|コマンドレット|[説明]|
 |:---|:---|
 |[Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)|既存の変数の値を取得します。|
 |[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx)|新しい変数を作成し、その値を設定します。|
@@ -64,7 +64,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 次のテーブルのワークフロー アクティビティは、Runbook で Automation 変数にアクセスするために使用されます。 これらは、Runbook または DSC 構成でのみ使用できるものであり、Azure PowerShell モジュールには付属していません。
 
-|ワークフロー アクティビティ|Description|
+|ワークフロー アクティビティ|[説明]|
 |:---|:---|
 |Get-AutomationVariable|既存の変数の値を取得します。|
 |Set-AutomationVariable|既存の変数の値を設定します。|
@@ -74,7 +74,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 次の表の関数を使用して、Python2 Runbook の変数にアクセスしてそれを取得します。 
 
-|Python2 関数|説明|
+|Python2 関数|[説明]|
 |:---|:---|
 |automationassets.get_automation_variable|既存の変数の値を取得します。 |
 |automationassets.set_automation_variable|既存の変数の値を設定します。 |
@@ -96,10 +96,10 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 次のサンプル コマンドは、文字列型の変数を作成してから、その値を返す方法を示しています。
 
-    New-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" 
+    New-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" 
     –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable' `
     –Encrypted $false –Value 'My String'
-    $string = (Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" `
+    $string = (Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 
 次のサンプル コマンドは、複合型の変数を作成してから、そのプロパティを返す方法を示しています。 この場合、**Get-AzureRmVm** から仮想マシンのオブジェクトが使用されます。
@@ -125,8 +125,8 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 次のサンプル コマンドは、テキスト形式の Runbook で変数を設定し取得する方法を示しています。 このサンプルでは、*NumberOfIterations* および *NumberOfRunnings* という整数型の変数と、*SampleMessage* という文字列型の変数が既に作成されていることを前提にしています。
 
-    $NumberOfIterations = Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
-    $NumberOfRunnings = Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfRunnings'
+    $NumberOfIterations = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
+    $NumberOfRunnings = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfRunnings'
     $SampleMessage = Get-AutomationVariable -Name 'SampleMessage'
     
     Write-Output "Runbook has been run $NumberOfRunnings times."
@@ -134,7 +134,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
     for ($i = 1; $i -le $NumberOfIterations; $i++) {
        Write-Output "$i`: $SampleMessage"
     }
-    Set-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
+    Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 
 #### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>変数での複雑なオブジェクトの設定および取得
 
@@ -201,7 +201,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 ![単純変数の設定](media/automation-variables/runbook-set-simple-variable.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * グラフィカル作成でアクティビティを接続する方法については、 [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md) 

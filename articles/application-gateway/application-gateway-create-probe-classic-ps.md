@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: davidmu
 ms.openlocfilehash: b167a0584740a4e583a35bd6d44ec5d616ba04f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
 

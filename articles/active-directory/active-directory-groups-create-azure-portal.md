@@ -16,10 +16,10 @@ ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1be9947c43c70b7248201b9f470fb3cf5a11519e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Azure Active Directory でグループを作成し、メンバーを追加する
 > [!div class="op_single_selector"]

@@ -105,7 +105,7 @@ API Management サービスを Virtual Network にデプロイするときに発
 
 API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。
 
-| ソース / ターゲット ポート | 方向 | トランスポート プロトコル | ソース / ターゲット | 目的 (*) | 仮想ネットワークの種類 |
+| ソース / ターゲット ポート | 方向 | トランスポート プロトコル | ソース / ターゲット | 目的 ( * ) | 仮想ネットワークの種類 |
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|API Management へのクライアント通信|外部 |
 | * / 3443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|Azure Portal と Powershell 用の管理エンドポイント |内部 |
@@ -117,7 +117,7 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 445 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|GIT のための Azure ファイル共有への依存関係 |外部 / 内部 |
 | * / 25028 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|電子メールを送信するために SMTP リレーに接続する |外部 / 内部 |
 | * / 6381 - 6383 |受信および送信 |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Role インスタンス間での Redis Cache インスタンスへのアクセス |外部 / 内部 |
-| * / * | 受信 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure インフラストラクチャの Load Balancer |外部 / 内部 |
+| * / *  | 受信 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure インフラストラクチャの Load Balancer |外部 / 内部 |
 
 >[!IMPORTANT]
 > * "*目的*" が**太字**になっているポートは、API Management サービスの正常なデプロイを必要とします。 ただし、その他のポートをブロックすると、実行中のサービスの使用と監視を行う能力が低下します。

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 08/25/2017
 ms.author: sashan
-ms.openlocfilehash: 936f95700cb57325a572e5509334398a724c4986
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c2c5f18b736c83c281d56e0bdda977a9f8c48101
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -117,7 +117,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 
 アクションを実行するタイミング、復旧にかかる時間、および発生するデータ損失の量は、ビジネス継続性機能をアプリケーションでどのように使用するかによって異なります。 実際は、アプリケーションの要件に応じて、データベース バックアップとアクティブ geo レプリケーションを組み合わせて使用できます。 ビジネス継続性機能を使用したスタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)) に関するページと[エラスティック プールのディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
 
-以下のセクションでは、データベース バックアップまたは アクティブ geo レプリケーションのいずれかを使用して復旧する手順の概要について説明します。 要件の計画、復旧後の手順、障害をシミュレートして障害復旧訓練を実施する方法など、詳細な手順については、[障害からの SQL Database 復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
+以下のセクションでは、データベース バックアップまたは アクティブ geo レプリケーションのいずれかを使用して復旧する手順の概要について説明します。 要件の計画、復旧後の手順、障害をシミュレートしてディザスター リカバリー訓練を実施する方法など、詳細な手順については、[障害からの SQL Database 復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
 
 ### <a name="prepare-for-an-outage"></a>障害に備える
 使用するビジネス継続性機能に関係なく、次の操作を行う必要があります。
@@ -129,7 +129,7 @@ SQL Database は、データ損失からビジネスを守るために、デー�
 準備が不十分な状態で、フェールオーバーまたはデータベースの復旧後にアプリケーションをオンラインにすると、余計な時間がかかり、負荷がかかったときにトラブルシューティングが必要になる場合があります。良くない組み合わせです。
 
 ### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>geo レプリケートされたセカンダリ データベースにフェールオーバーする
-アクティブ geo レプリケーションと自動フェールオーバー グループ (プレビュー段階) を復旧メカニズムとして使用している場合は、自動フェールオーバー ポリシーを構成するか[手動フェールオーバー](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-database)を使用できます。 いったん開始すると、フェールオーバーによってセカンダリは新しいプライマリになり、新しいトランザクションを記録してクエリに応答できるようになります。失われるのは、レプリケートされなかった最小限のデータだけです。 フェールオーバー プロセスの設計については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
+アクティブ geo レプリケーションと自動フェールオーバー グループ (プレビュー段階) を復旧メカニズムとして使用している場合は、自動フェールオーバー ポリシーを構成するか[手動フェールオーバー](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-server-in-the-failover-group)を使用できます。 いったん開始すると、フェールオーバーによってセカンダリは新しいプライマリになり、新しいトランザクションを記録してクエリに応答できるようになります。失われるのは、レプリケートされなかった最小限のデータだけです。 フェールオーバー プロセスの設計については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
 
 > [!NOTE]
 > データ センターがオンラインに戻ると、古いプライマリは自動的に新しいプライマリに再接続し、セカンダリ データベースになります。 プライマリを元のリージョンに再配置する場合は、計画されたフェールオーバーを手動で開始することができます (フェールバック)。 
@@ -155,5 +155,5 @@ Geo 冗長ストレージ レプリケーションによる自動バックアッ
 ## <a name="upgrade-an-application-with-minimal-downtime"></a>最小のダウンタイムでアプリケーションをアップグレードする
 アプリケーションのアップグレードなど、計画されたメンテナンスのために、アプリケーションをオフラインにしなければならないことがあります。 [アプリケーション アップグレードの管理](sql-database-manage-application-rolling-upgrade.md) に関するページでは、アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを有効化し、アップグレード中のダウンタイムを最小限に抑え、問題が発生した場合の復旧パスを提供する方法について説明します。 
 
-## <a name="next-steps"></a>次のステップ
-スタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+## <a name="next-steps"></a>次の手順
+スタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド ディザスター リカバリー用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと[エラスティック プール ディザスター リカバリー戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。

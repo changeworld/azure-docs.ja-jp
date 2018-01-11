@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: 221bd7662eb4974395c7f970961d5bfb556417f4
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ffcf0766b89cdab7c79c28dad6bf4c80275e33fc
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
 この記事では、Azure Import/Export サービスを使用してディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage と Azure Files に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure Files にインポートできます。 
@@ -177,6 +177,8 @@ Azure Import/Export サービスでは、すべてのパブリック Azure Stora
 * 中国 (東部)
 * 中国 (北部)
 * 英国南部
+* ドイツ中部
+* ドイツ北東部
 
 ### <a name="shipping"></a>発送
 **データ センターへのドライブの発送:**
@@ -493,7 +495,7 @@ Import/Export サービスで、1 つのインポート ジョブまたはエク
 
 ** このサービスでインポートしたデータにアクセスする方法**
 
-Azure ストレージ アカウント内のデータには、Azure Portal から、またはストレージ エクスプローラーと呼ばれるスタンドアロン ツールを使用してアクセスできます。 https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer 
+Azure ストレージ アカウント内のデータには、Azure Portal から、またはストレージ エクスプローラーと呼ばれるスタンドアロン ツールを使用してアクセスできます。 https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer 
 
 **インポート ジョブの完了後、ストレージ アカウント内でデータはどのような状態になりますか。ディレクトリ階層は保持されますか。**
 

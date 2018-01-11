@@ -1,12 +1,11 @@
 ---
-title: "Azure Active Directory B2C: アプリケーションの登録 | Microsoft Docs"
+title: "アプリケーションの登録 - Azure Active Directory B2C"
 description: "Azure Active Directory B2C にアプリケーションを登録する方法"
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 20e92275-b25d-45dd-9090-181a60c99f69
+editor: parakhj
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 36a421056b123f397c3d5f7d7bfb4c5314c82b78
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b1d145466382c8fc2ea6c5e4e295940b0f000b97
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: アプリケーションを登録する
 
@@ -28,7 +27,7 @@ ms.lasthandoff: 12/11/2017
 
 コンシューマーのサインアップおよびサインインを受け付けるアプリケーションを作成するには、最初にアプリケーションを Azure Active Directory B2C テナントに登録する必要があります。 「 [Azure AD B2C テナントを作成する](active-directory-b2c-get-started.md)」に書かれている手順に従って独自のテナントを取得してください。
 
-Azure Portal の Azure AD B2C ブレードから作成したアプリケーションは、同じ場所から管理する必要があります。 PowerShell または別のポータルを使用して B2C アプリケーションを編集すると、そのアプリケーションはサポート対象外となり、Azure AD B2C で動作しなくなります。 詳細については、「[アプリの障害](#faulted-apps)」セクションを参照してください。 
+Azure ポータルで作成したアプリケーションは、同じ場所から管理する必要があります。 PowerShell または別のポータルを使用して Azure AD B2C アプリケーションを編集すると、そのアプリケーションはサポート対象外となり、Azure AD B2C で動作しなくなります。 詳細については、「[アプリの障害](#faulted-apps)」セクションを参照してください。 
 
 この記事では、サンプルを使い始めるために役立つ例を使用しています。 これらのサンプルの詳細については、後続の記事で説明しています。
 
@@ -117,7 +116,7 @@ Web アプリケーションから、Azure AD B2C によって保護された We
 
 モバイル/ネイティブ アプリケーションのリダイレクト URI を選択する際には、2 つの重要な考慮事項があります。
 
-* **一意**: リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 この例 (com.onmicrosoft.contoso.appname://redirect/path) では、スキームとして com.onmicrosoft.contoso.appname を使用しています。 このパターンに従うことをお勧めします。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーには [アプリの選択] ダイアログが表示されます。 ユーザーが不適切な選択を行った場合、ログインは失敗します。
+* **一意**: リダイレクト URI のスキームは、すべてのアプリケーションで一意である必要があります。 この例 (com.onmicrosoft.contoso.appname://redirect/path) では、com.onmicrosoft.contoso.appname がスキームです。 このパターンに従うことをお勧めします。 2 つのアプリケーションで同じスキームを共有している場合、ユーザーには [アプリの選択] ダイアログが表示されます。 ユーザーが不適切な選択を行った場合、ログインは失敗します。
 * **完全**: リダイレクト URI には、スキームとパスが必要です。 パスには、ドメインの後に 1 つ以上のスラッシュを含める必要があります (たとえば、//contoso/ は機能しますが、//contoso は失敗します)。
 
 リダイレクト URI にアンダースコアなどの特殊文字がないことを確認します。
@@ -126,10 +125,10 @@ Web アプリケーションから、Azure AD B2C によって保護された We
 
 B2C アプリケーションは次の手段で編集しないでください。
 
-* 他のアプリケーション管理ポータル ([Azure クラシック ポータル](https://manage.windowsazure.com/)や[アプリケーション登録ポータル](https://apps.dev.microsoft.com/)など)
+* 他のアプリケーション管理ポータル ([アプリケーション登録ポータル](https://apps.dev.microsoft.com/)など)
 * Graph API または PowerShell
 
-前に説明したように、B2C アプリケーションを編集し、それを Azure Portal の Azure AD B2C 機能ブレードでもう一度編集しようとすると、アプリに障害が発生し、Azure AD B2C で使用できなくなります。 この場合、アプリケーションを削除し、もう一度作成する必要があります。
+前に説明したように、Azure AD B2C アプリケーションを編集し、それを Azure ポータルの Azure AD B2C 機能でもう一度編集しようとすると、アプリに障害が発生し、Azure AD B2C で使用できなくなります。 この場合、アプリケーションを削除し、もう一度作成する必要があります。
 
 アプリケーションを削除するには、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/)に移動し、そこでアプリケーションを削除します。 アプリケーションを表示するためには、そのアプリケーションの所有者である必要があります (テナントの管理者であるだけでは不十分です)。
 

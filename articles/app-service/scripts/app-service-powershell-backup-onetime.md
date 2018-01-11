@@ -15,11 +15,11 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f6e8410eae619977c0ce3779df2e725bd3be5393
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 5984a7707552b2740b48e3c9da40a5e96a3a279b
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="back-up-a-web-app"></a>Web アプリをバックアップする
 
@@ -48,7 +48,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | ストレージ アカウントを作成します。 |
 | [New-AzureStorageContainer](/powershell/module/azure.storage/new-azurestoragecontainer) | Azure ストレージ コンテナーを作成します。 |
-| [New-AzureStorageContainerSASToken](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
+| [New-AzureStorageContainerSASToken](/powershell/module/azure.storage/new-azurestoragecontainersastoken) | Azure ストレージ コンテナーの SAS トークンを生成します。  |
 | [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | App Service プランを作成します。 |
 | [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Web アプリを作成します。 |
 | [New-AzureRmWebAppBackup](/powershell/module/azurerm.websites/new-azurermwebappbackup) | Web アプリのバックアップを作成します。 |

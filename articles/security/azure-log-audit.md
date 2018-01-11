@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d8d52b7e151d116678169dd4839f0380f63132d7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 ## <a name="introduction"></a>はじめに
@@ -71,9 +71,9 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 |[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|サブスクリプションの Azure Resource Manager リソースの操作に関する豊富なデータ| リソース自体が実行した操作を調査できます。| Azure Monitor、[Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[AAD レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|ログとレポート|ユーザーのサインイン アクティビティ情報と、ユーザーおよびグループ管理に関するシステム アクティビティ情報|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
 |[Virtual Machine と Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows のイベント ログと Linux の Syslog|    仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (Windows Azure 診断ストレージ) を使用する Windows と Azure Monitor の Linux|
-|[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログと、ストレージ アカウントのメトリック データの提供|要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断に対する洞察が得られます。|    REST API または[クライアント ライブラリ](https://msdn.microsoft.com/en-us/library/azure/mt347887.aspx)|
+|[Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログと、ストレージ アカウントのメトリック データの提供|要求のトレース、使用傾向の分析、ストレージ アカウントの問題の診断に対する洞察が得られます。|    REST API または[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[NSG (ネットワーク セキュリティ グループ) のフロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON 形式、送信および受信のフローをルールごとに表示|ネットワーク セキュリティ グループを介した IP トラフィックの送信と受信に関する情報を表示します。|[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
-|[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|    複数のプラットフォームの Web 開発者向けのアプリケーション パフォーマンス管理 (APM) サービスです。| REST API、[Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
+|[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|ログ、例外、カスタム診断|    複数のプラットフォームの Web 開発者向けのアプリケーション パフォーマンス管理 (APM) サービスです。| REST API、[Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |データの処理/セキュリティ アラート| Azure Security Center アラート、OMS アラート| セキュリティに関する情報と警告。|   REST API、JSON|
 
 ### <a name="activity-log"></a>アクティビティ ログ
@@ -132,8 +132,8 @@ Azure 診断ログは、PowerShell、コマンド ライン インターフェ�
 |Azure Search|[検索トラフィックの分析の有効化と使用](https://docs.microsoft.com/azure/search/search-traffic-analytics)|Microsoft.Search/searchServices|OperationLogs|
 |Data Lake Store|[Azure Data Lake Store の診断ログへのアクセス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Audit|
 |Data Lake Analytics|[Azure Data Lake Analytics の診断ログへのアクセス](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|Audit|
-|||Microsoft.DataLakeAnalytics/accounts|要求|
-|||Microsoft.DataLakeStore/accounts|要求|
+|||Microsoft.DataLakeAnalytics/accounts|Requests|
+|||Microsoft.DataLakeStore/accounts|Requests|
 |Logic Apps|[Logic Apps B2B カスタム追跡スキーマ](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|WorkflowRuntime|
 |||Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|
 |Azure Batch|[Azure Batch 診断ログ](https://docs.microsoft.com/azure/batch/batch-diagnostics)|Microsoft.Batch/batchAccounts|ServiceLog|
@@ -298,7 +298,7 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 
 **統合シナリオと説明:**
 
-| 統合シナリオ | Description |
+| 統合シナリオ | [説明] |
 | --------------------- | :---------- |
 |[アプリケーション マップ](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|アプリのコンポーネントを、主要なメトリックとアラートと共に表示します。||
 |[インスタンス データの診断検索](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| 要求、例外、依存関係の呼び出し、ログ トレースおよびページ ビューなどのイベントを検索およびフィルター処理します。||
@@ -317,7 +317,7 @@ Application Insights は、開発チーム用のツールであり、アプリ�
 
 Security Center の脅威検出は、Azure のリソースやネットワーク、接続されているパートナー ソリューションからセキュリティ情報を自動的に収集することによって機能します。 この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。 Security Center では、セキュリティの警告に優先順位が、脅威に対処するための推奨事項と共に割り当てられます。
 
-![[Azure Security Center] \(Azure Security Center)](./media/azure-log-audit/azure-log-audit-fig7.png)
+![Azure Security Center](./media/azure-log-audit/azure-log-audit-fig7.png)
 
 Security Center には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。 大量のデータや[機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)における革新的テクノロジを適用し、クラウド ファブリック全体にわたってイベントが評価されるので、手作業に頼った手法や攻撃の進化を予測する手法では特定できない脅威でも検出することができます。 こうしたセキュリティ分析の例を次に示します。
 
@@ -376,7 +376,7 @@ Log Analytics の核となる機能は、Azure クラウドでホストされて
 |SQL (v12)| Microsoft.Sql/<br>servers/<br>データベース||       診断||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
 |Storage|||         スクリプト| [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Virtual Machines|  Microsoft.Compute/<br>virtualMachines|  内線番号|  内線番号||
+|[Virtual Machines]|  Microsoft.Compute/<br>virtualMachines|  内線番号|  内線番号||
 ||||診断||
 |仮想マシン スケール セット|   Microsoft.Compute/<br>virtualMachines    ||診断||
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||
@@ -398,10 +398,10 @@ Azure ログ統合では、Windows (WAD) 仮想マシン、Azure アクティビ
 
 | ログのタイプ | JSON (Splunk、ArcSight、Qradar) をサポートする Log Analytics |
 | :------- | :-------------------------------------------------------- |
-|AAD 監査ログ|    ○|
-|アクティビティ ログ| はい|
-|ASC アラート |はい|
-|診断ログ (リソース ログ)|  はい|
+|AAD 監査ログ|    はい|
+|アクティビティ ログ| [はい]|
+|ASC アラート |[はい]|
+|診断ログ (リソース ログ)|  [はい]|
 |VM ログ|   はい (JSON 経由ではなく転送されたイベントの場合)|
 
 
@@ -417,7 +417,7 @@ Azure ログ統合では、Windows (WAD) 仮想マシン、Azure アクティビ
 
 -   [Azure ログ統合への Security Center の警告の統合](https://docs.microsoft.com/azure/security-center/security-center-integrating-alerts-with-log-integration) – このドキュメントでは、Azure Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションと同期させる方法について説明します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [監査とログ記録](https://www.microsoft.com/trustcenter/security/auditingandlogging)
 

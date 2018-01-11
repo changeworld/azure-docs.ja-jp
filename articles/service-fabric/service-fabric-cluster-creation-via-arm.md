@@ -12,15 +12,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/22/2017
+ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 47152d05eb7e31e7fe1f35e33a10fe8e903e21e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0065874c2f992ad9c18f68303878fb580ee8b391
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する
+# <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
 > * [Azure リソース マネージャー](service-fabric-cluster-creation-via-arm.md)
 > * [Azure ポータル](service-fabric-cluster-creation-via-portal.md)
@@ -31,126 +31,36 @@ ms.lasthandoff: 10/11/2017
 
 このガイドでは次の手順について説明します。
 
-* Azure Key Vault をセットアップして証明書をアップロードし、クラスターとアプリケーションのセキュリティを確保する
-* Azure Resource Manager を使用してセキュリティで保護されたクラスターを Azure で作成する
-* クラスター管理のため、Azure Active Directory (Azure AD) を使用してユーザーを認証する
+* Service Fabric クラスターをデプロイする前に、気を付ける必要がある主な概念。
+* Service Fabric Resource Manager モジュールを使用して Azure にクラスターを作成する方法。
+* クラスター上で管理操作を実行するユーザーを認証するための Azure Active Directory (Azure AD) を設定する方法。
+* カスタム Azure Resource Manager テンプレートを作成する方法。
 
-セキュリティで保護されたクラスターは、管理操作に対して未承認のアクセスを防止するクラスターです。 これには、アプリケーション、サービス、およびそれらに格納されているデータのデプロイ、アップグレード、削除が含まれます。 セキュリティで保護されていないクラスターとは、だれでも管理操作にいつでも接続し、実行できるクラスターを指します。 セキュリティで保護されていないクラスターを作成することもできますが、最初からセキュリティで保護されたクラスターを作成することを強くお勧めします。 セキュリティで保護されていないクラスターを後でセキュリティで保護することはできないためです。
+## <a name="key-concepts-to-be-aware-of"></a>気を付ける必要がある主な概念
+Azure の Service Fabric では、X509 証明書を使用してクラスターとそのエンドポイントをセキュリティで保護する必要があります。 Service Fabric では証明書を使用して、クラスターとそのアプリケーションのさまざまな側面をセキュリティで保護するための認証および暗号化を指定します。 アプリケーション、サービス、それらに含まれるデータのデプロイ、アップグレード、削除など、クラスターに対するクライアント アクセスや管理操作の実行について、証明書または Azure Active Directory の資格情報を使用できます。 クライアント上の証明書の共有を防ぐことができる唯一の方法なので、Azure Active Directory を使用することが強く勧められます。  Service Fabric での証明書の使用方法の詳細については、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をご覧ください。
 
-セキュリティで保護されたクラスターを作成する概念は、Linux のクラスターでも Windows のクラスターでも同じです。 セキュリティで保護された Linux クラスターの作成に関する情報とヘルパー スクリプトについて詳しくは、「[セキュリティで保護されたクラスターを Linux 上に作成する](#secure-linux-clusters)」をご覧ください。
+Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 [Key Vault][key-vault-get-started] を使用して Azure の Service Fabric クラスターの証明書を管理します。 
 
-## <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
-このガイドでは [Azure PowerShell][azure-powershell] を使用します。 新しい PowerShell セッションを開始するときに、Azure アカウントにサインインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
-
-Azure アカウントにサインインします。
-
-```powershell
-Login-AzureRmAccount
-```
-
-サブスクリプションを選択します。
-
-```powershell
-Get-AzureRmSubscription
-Set-AzureRmContext -SubscriptionId <guid>
-```
-
-## <a name="set-up-a-key-vault"></a>Key Vault の設定
-このセクションでは、Azure Service Fabric クラスターと Service Fabric アプリケーション用の Key Vault を作成する手順を説明します。 Azure Key Vault の完全なガイドについては、[Key Vault のファースト ステップ ガイド][key-vault-get-started]に関するページをご覧ください。
-
-Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 Key Vault を使用して Azure の Service Fabric クラスターの証明書を管理します。 Azure にクラスターがデプロイされると、Service Fabric クラスターの作成を担当する Azure リソース プロバイダーが Key Vault から証明書を取得し、クラスター VM にインストールします。
-
-次の図は、Azure Key Vault、Service Fabric クラスター、およびクラスターの作成時に Key Vault に格納された証明書を使用する Azure リソース プロバイダー間の関係を示しています。
-
-![証明書のインストールの図][cluster-security-cert-installation]
-
-### <a name="create-a-resource-group"></a>リソース グループの作成
-まず、Key Vault 専用のリソース グループを作成します。 Key Vault は専用のリソース グループに配置することをお勧めします。 そうすることで、必要なキーとシークレットを失うことなく、コンピューティング リソース グループやストレージ リソース グループを削除することができます (Service Fabric クラスターのあるリソース グループを含む)。 Key Vault を持つリソース グループは、それを使用するクラスターと同じリージョンにある必要があります__。
-
-複数のリージョンでクラスターをデプロイする場合は、そのリソース グループと Key Vault が属しているリージョンがわかるような名前を付けることをお勧めします。  
-
-```powershell
-
-    New-AzureRmResourceGroup -Name westus-mykeyvault -Location 'West US'
-```
-出力は次のようになります。
-
-```powershell
-
-    WARNING: The output object type of this cmdlet is going to be modified in a future release.
-
-    ResourceGroupName : westus-mykeyvault
-    Location          : westus
-    ProvisioningState : Succeeded
-    Tags              :
-    ResourceId        : /subscriptions/<guid>/resourceGroups/westus-mykeyvault
-
-```
-<a id="new-key-vault"></a>
-
-### <a name="create-a-key-vault-in-the-new-resource-group"></a>新しいリソース グループに Key Vault を作成する
-コンピューティング リソース プロバイダーが Key Vault から証明書を取得し、仮想マシンのインスタンスにインストールするには、その Key Vault をデプロイ用に有効にする必要があります。__
-
-```powershell
-
-    New-AzureRmKeyVault -VaultName 'mywestusvault' -ResourceGroupName 'westus-mykeyvault' -Location 'West US' -EnabledForDeployment
-
-```
-
-出力は次のようになります。
-
-```powershell
-
-    Vault Name                       : mywestusvault
-    Resource Group Name              : westus-mykeyvault
-    Location                         : West US
-    Resource ID                      : /subscriptions/<guid>/resourceGroups/westus-mykeyvault/providers/Microsoft.KeyVault/vaults/mywestusvault
-    Vault URI                        : https://mywestusvault.vault.azure.net
-    Tenant ID                        : <guid>
-    SKU                              : Standard
-    Enabled For Deployment?          : False
-    Enabled For Template Deployment? : False
-    Enabled For Disk Encryption?     : False
-    Access Policies                  :
-                                       Tenant ID                :    <guid>
-                                       Object ID                :    <guid>
-                                       Application ID           :
-                                       Display Name             :    
-                                       Permissions to Keys      :    get, create, delete, list, update, import, backup, restore
-                                       Permissions to Secrets   :    all
-
-
-    Tags                             :
-```
-<a id="existing-key-vault"></a>
-
-## <a name="use-an-existing-key-vault"></a>既存の Key Vault を使用する
-
-既存の Key Vault を使用するには、コンピューティング リソース プロバイダーがそこから証明書を取得し、クラスター ノードにインストールできるように、その Key Vault をデプロイ用に有効にする必要があります。__
-
-```powershell
-
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
-
-```
-
-<a id="add-certificate-to-key-vault"></a>
-
-## <a name="add-certificates-to-your-key-vault"></a>Key Vault に証明書を追加する
-
-Service Fabric では証明書を使用して、クラスターとそのアプリケーションのさまざまな側面をセキュリティで保護するための認証および暗号化を指定します。 Service Fabric での証明書の使用方法の詳細については、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をご覧ください。
 
 ### <a name="cluster-and-server-certificate-required"></a>クラスターとサーバーの証明書 (必須)
-この証明書はクラスターをセキュリティで保護し、クラスターに対する未承認のアクセスを防ぐために必要です。 クラスターのセキュリティは次の 2 つの方法で確保されます。
+これらの証明書 (1 つのプライマリと省略可能なセカンダリ) は、クラスターをセキュリティで保護し、クラスターに対する不正なアクセスを防ぐために必要です。 クラスターのセキュリティは次の 2 つの方法で確保されます。
 
-* クラスター認証: クラスター フェデレーション用のノード間通信を認証します。 この証明書で自分の ID を証明できたノードだけがクラスターに参加できます。
-* サーバー認証: 管理クライアントに対するクラスター管理エンドポイントを認証します。これで、管理クライアントにより、実際のクラスターと通信していることが認識されるようになります。 この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対して SSL も提供します。
+* **クラスター認証:** クラスター フェデレーション用のノード間通信を認証します。 この証明書で自分の ID を証明できたノードだけがクラスターに参加できます。
+* サーバー認証: 管理クライアントに対するクラスター管理エンドポイントを**認証**します。これで、管理クライアントにより、"中間者" ではなく実際のクラスターと通信していることが認識されるようになります。 この証明書は、HTTPS 管理 API および HTTPS 経由の Service Fabric Explorer に対して SSL も提供します。
 
 この目的のため、証明書は次の要件を満たす必要があります。
 
-* 証明書は秘密キーを含む必要があります。
+* 証明書は秘密キーを含む必要があります。 通常、これらの証明書の拡張子は .pfx または .pem です。  
 * 証明書はキー交換のために作成される必要があり、Personal Information Exchange (.pfx) ファイルにエクスポートできます。
-* 証明書のサブジェクト名は Service Fabric クラスターへのアクセスに使用されるドメインと一致している必要があります。 この整合性は、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 証明機関 (CA) から .cloudapp.azure.com ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
+* **証明書のサブジェクト名は Service Fabric クラスターへのアクセスに使用されるドメインと一致している必要があります**。 この整合性は、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 証明機関 (CA) から *.cloudapp.azure.com ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
+
+### <a name="set-up-azure-active-directory-for-client-authentication-optional-but-recommended"></a>クライアント認証用に Azure Active Directory をセットアップする (省略可能ですが推奨されます)
+
+Azure AD は組織 (テナントと呼ばれます) を有効にしてアプリケーションに対するユーザー アクセスを管理します。 アプリケーションは、Web ベースのサインイン UI を持つアプリケーションと、ネイティブ クライアントのエクスペリエンスを持つアプリケーションに分けられます。 この記事では、既にテナントを作成していることを前提としています。 まだ作成していない場合は、まず「[Azure Active Directory テナントを取得する方法][active-directory-howto-tenant]」をお読みください。
+
+Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer][service-fabric-visualizing-your-cluster] や [Visual Studio][service-fabric-manage-application-in-visual-studio] など、いくつかのエントリ ポイントから管理機能にアクセスできます。 このため、クラスターへのアクセスを制御するには、2 つの Azure AD アプリケーション (Web アプリケーションとネイティブ アプリケーション) を作成します。
+
+詳細な設定方法については後述します。
 
 ### <a name="application-certificates-optional"></a>アプリケーション証明書 (省略可能)
 アプリケーション セキュリティの目的で、任意の数の追加の証明書をクラスターにインストールできます。 クラスターを作成する前に、ノードにインストールする証明書を必要とするアプリケーション セキュリティ シナリオについて考慮します。これには次のようなものがあります。
@@ -158,135 +68,283 @@ Service Fabric では証明書を使用して、クラスターとそのアプ�
 * アプリケーション構成値の暗号化と復号化。
 * レプリケーション中のノード間のデータの暗号化。
 
-### <a name="formatting-certificates-for-azure-resource-provider-use"></a>Azure リソース プロバイダー用の証明書の書式設定
-秘密キー ファイル (.pfx) は Key Vault を通じて直接追加および使用できます。 ただし、Azure コンピューティング リソース プロバイダーには、特別な JavaScript Object Notation (JSON) 形式で格納されるキーが必要です。 形式には、base 64 でエンコードされた文字列と秘密キーのパスワードとして .pfx ファイルが含まれています。 これらの要件に対応するには、キーを JSON 文字列に配置して、"シークレット" として Key Vault に格納する必要があります。
+セキュリティで保護されたクラスターを作成する概念は、Linux のクラスターでも Windows のクラスターでも同じです。 
 
-このプロセスを簡単に進めるために、[PowerShell モジュールを GitHub から入手][service-fabric-rp-helpers]できます。 モジュールを使用するには、次の操作を行います。
+### <a name="client-authentication-certificates-optional"></a>クライアント認証証明書 (省略可能)
+管理者またはユーザーのクライアント操作用に、任意の数の証明書を追加で指定できます。 既定では、クラスター証明書には管理者クライアント特権があります。 このような追加のクライアント証明書は、クラスター構成で許可と指定する必要があるだけで、クラスターにインストールする必要はありません。ただし、クラスターに接続し、何らかの管理操作を実行するには、クライアント コンピューターにインストールする必要があります。
 
-1. リポジトリの内容全体をローカル ディレクトリにダウンロードします。
-2. ローカル ディレクトリに移動します。
-2. PowerShell ウィンドウで ServiceFabricRPHelpers モジュールをインポートします。
+
+## <a name="prerequisites"></a>前提条件 
+セキュリティで保護されたクラスターを作成する概念は、Linux のクラスターでも Windows のクラスターでも同じです。 このガイドでは、Azure PowerShell または Azure CLI を使用して新しいクラスターを作成する方法について説明します。 つぎのいずれかが前提条件です。 
+
+-  [Azure PowerShell 4.1 以降][azure-powershell]または [Azure CLI 2.0 以降][azure-CLI]。
+-  Service Fabric モジュールの詳細については、[AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric) と [az SF CLI モジュール](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)に関するページを参照してください。
+
+
+## <a name="use-service-fabric-rm-module-to-deploy-a-cluster"></a>Service Fabric RM モジュールを使用してクラスターをデプロイする
+
+このドキュメントでは、Service Fabric RM PowerShell と CLI モジュールを使用してクラスターをデプロイします。PowerShell または CLI コマンドには複数のシナリオがあります。 その各シナリオについて説明します。 ニーズに最も近いシナリオを参考にしてください。 
+
+- 新しいクラスターを作成する - システムで生成された自己署名証明書を使用する
+    - 既定のクラスター テンプレートを使用する
+    - 既存のテンプレートを使用する
+- 新しいクラスターを作成する - 既に所有している証明書を使用する
+    - 既定のクラスター テンプレートを使用する
+    - 既存のテンプレートを使用する
+
+### <a name="create-new-cluster----using-a-system-generated-self-signed-certificate"></a>新しいクラスターを作成する - システムで生成された自己署名証明書を使用する
+
+システムで自己署名証明書を生成し、クラスターのセキュリティ保護に使用する場合は、次のコマンドを使用してクラスターを作成します。 このコマンドで、クラスターのセキュリティに使用されるプライマリ クラスターの証明書が設定されます。また、その証明書を使用して管理操作を実行する管理者アクセス権が設定されます。
+
+### <a name="login-in-to-azure"></a>Azure にログインします。
+
+```Powershell
+
+Login-AzureRmAccount
+Set-AzureRmContext -SubscriptionId <guid>
+
+```
+
+```CLI
+
+azure login
+az account set --subscription $subscriptionId
+
+```
+#### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module-to-set-up-the-cluster"></a>モジュールに含まれる既定の 5 Node 1 nodetype テンプレートを使用してクラスターを設定する
+
+次のコマンドを使用し、最小限のパラメーターを指定して、簡単にクラスターを作成します。
+
+ここで使用されているテンプレートは、[Azure Service Fabric テンプレート サンプル: Windows テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)と [Ubuntu テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)のページで入手できます。
+
+次のコマンドは、Windows および Linux クラスターを作成する場合に利用できます。必要な変更は、使用する OS の指定のみです。 次の PowerShell/CLI コマンドから、CertificateOutputFolder に指定されている証明書も出力されます。 このコマンドは、VM SKU など他のパラメーターも受け取ります。
+
+```Powershell
+
+$resourceGroupLocation="westus"
+$resourceGroupName="mycluster"
+$vaultName="myvault"
+$vaultResourceGroupName="myvaultrg"
+$CertSubjectName="mycluster.westus.cloudapp.azure.com"
+$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
+$vmpassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$vmuser="myadmin"
+$os="WindowsServer2016DatacenterwithContainers"
+$certOutputFolder="c:\certificates"
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+
+```
+
+```CLI
+
+declare resourceGroupLocation="westus"
+declare resourceGroupName="mylinux"
+declare vaultResourceGroupName="myvaultrg"
+declare vaultName="myvault"
+declare CertSubjectName="mylinux.westus.cloudapp.azure.com"
+declare vmpassword="Password!1"
+declare certpassword="Password!1"
+declare vmuser="myadmin"
+declare vmOs="UbuntuServer1604"
+declare certOutputFolder="c:\certificates"
+
+
+
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --certificate-output-folder $certOutputFolder --certificate-password $certpassword  \
+    --vault-name $vaultName --vault-resource-group $resourceGroupName  \
+    --template-file $templateFilePath --parameter-file $parametersFilePath --vm-os $vmOs  \
+    --vm-password $vmpassword --vm-user-name $vmuser
+
+```
+
+#### <a name="use-the-custom-template-that-you-already-have"></a>既存のカスタム テンプレートを使用する 
+
+ニーズに合わせてカスタム テンプレートを作成する必要がある場合は、[Azure Service Fabric テンプレート サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)で入手できるテンプレートのいずれかから始めることを強くお勧めします。 ガイダンスと説明については、後述する[クラスター テンプレートのカスタマイズ][customize-your-cluster-template]に関するセクションを参照してください。
+
+カスタム テンプレートを既に持っている場合は、3 つの証明書すべてがテンプレートのパラメーターに関連付けられ、パラメーターのファイル名がテンプレートで指定され、値がテンプレートで null であることを慎重に確認してください。
+
+```Json
+   "certificateThumbprint": {
+      "value": ""
+    },
+    "sourceVaultValue": {
+      "value": ""
+    },
+    "certificateUrlValue": {
+      "value": ""
+    },
+```
+
+
+```Powershell
+
+
+$resourceGroupLocation="westus"
+$resourceGroupName="mycluster"
+$CertSubjectName="mycluster.westus.cloudapp.azure.com"
+$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
+$certOutputFolder="c:\certificates"
+
+$parameterFilePath="c:\mytemplates\mytemplateparm.json"
+$templateFilePath="c:\mytemplates\mytemplate.json"
+
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+
+```
+
+この処理と同等の処理を行う CLI コマンドを次に示します。 宣言ステートメントの値は適切な値に変更してください。 CLI は、上記の PowerShell コマンドがサポートする他のパラメーターをすべてサポートしています。
+
+```CLI
+
+declare certPassword=""
+declare resourceGroupLocation="westus"
+declare resourceGroupName="mylinux"
+declare certSubjectName="mylinuxsecure.westus.cloudapp.azure.com"
+declare parameterFilePath="c:\mytemplates\linuxtemplateparm.json"
+declare templateFilePath="c:\mytemplates\linuxtemplate.json"
+declare certOutputFolder="c:\certificates"
+
+
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --certificate-output-folder $certOutputFolder --certificate-password $certPassword  \
+    --certificate-subject-name $certSubjectName \
+    --template-file $templateFilePath --parameter-file $parametersFilePath
+
+```
+
+
+### <a name="create-new-cluster---using-the-certificate-you-bought-from-a-ca-or-you-already-have"></a>新しいクラスターを作成する - CA から購入した証明書または既に所有している証明書を使用する
+
+クラスターのセキュリティ保護に使用する証明書を持っている場合は、次のコマンドを使用してクラスターを作成します。
+
+CA で署名された証明書で、他の用途にも使用する予定がある場合は、Key Vault 専用のリソース グループを用意することをお勧めします。 Key Vault は専用のリソース グループに配置することをお勧めします。 そうすることで、必要なキーとシークレットを失うことなく、コンピューティング リソース グループやストレージ リソース グループを削除することができます (Service Fabric クラスターのあるリソース グループを含む)。 **Key Vault を持つリソース グループは、それを使用するクラスターと_同じリージョンにある必要があります_。**
+
+
+#### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module"></a>モジュールに含まれる既定の 5 Node 1 nodetype テンプレートを使用する
+ここで使用されているテンプレートは、[Azure サンプル: Windows テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG)と [Ubuntu テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)のページで入手できます。
+
+```Powershell
+$resourceGroupLocation="westus"
+$resourceGroupName="mylinux"
+$vaultName="myvault"
+$vaultResourceGroupName="myvaultrg"
+$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
+$vmpassword=("Password!1" | ConvertTo-SecureString -AsPlainText -Force) 
+$vmuser="myadmin"
+$os="WindowsServer2016DatacenterwithContainers"
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+
+```
+
+```CLI
+
+declare vmPassword="Password!1"
+declare certPassword="Password!1"
+declare vmUser="myadmin"
+declare resourceGroupLocation="westus"
+declare resourceGroupName="mylinux"
+declare vaultResourceGroupName="myvaultrg"
+declare vaultName="myvault"
+declare certificate-file="c:\certificates\mycert.pem"
+declare vmOs="UbuntuServer1604"
+
+
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --certificate-file $certificate-file --certificate-password $certPassword  \
+    --vault-name $vaultName --vault-resource-group $vaultResourceGroupName  \
+    --vm-os vmOs \
+    --vm-password $vmPassword --vm-user-name $vmUser
+
+```
+
+#### <a name="use-the-custom-template-that-you-have"></a>既存のカスタム テンプレートを使用する 
+ニーズに合わせてカスタム テンプレートを作成する必要がある場合は、[Azure Service Fabric テンプレート サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master)で入手できるテンプレートのいずれかから始めることを強くお勧めします。 ガイダンスと説明については、後述する[クラスター テンプレートのカスタマイズ][customize-your-cluster-template]に関するセクションを参照してください。
+
+カスタム テンプレートを既に持っている場合は、3 つの証明書すべてがテンプレートのパラメーターに関連付けられ、パラメーターのファイル名がテンプレートで指定され、値がテンプレートで null であることを慎重に確認してください。
+
+```Json
+   "certificateThumbprint": {
+      "value": ""
+    },
+    "sourceVaultValue": {
+      "value": ""
+    },
+    "certificateUrlValue": {
+      "value": ""
+    },
+```
+
+
+```Powershell
+
+$resourceGroupLocation="westus"
+$resourceGroupName="mylinux"
+$vaultName="myvault"
+$vaultResourceGroupName="myvaultrg"
+$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
+$os="WindowsServer2016DatacenterwithContainers"
+$parameterFilePath="c:\mytemplates\mytemplateparm.json"
+$templateFilePath="c:\mytemplates\mytemplate.json"
+$certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
+
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword #certPassword
+
+```
+
+この処理と同等の処理を行う CLI コマンドを次に示します。 宣言ステートメントの値は適切な値に変更してください。
+
+```CLI
+
+declare certPassword="Password!1"
+declare resourceGroupLocation="westus"
+declare resourceGroupName="mylinux"
+declare vaultResourceGroupName="myvaultrg"
+declare vaultName="myvault"
+declare parameterFilePath="c:\mytemplates\linuxtemplateparm.json"
+declare templateFilePath="c:\mytemplates\linuxtemplate.json"
+
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --certificate-file $certificate-file --certificate-password $password  \
+    --vault-name $vaultName --vault-resource-group $vaultResourceGroupName  \
+    --template-file $templateFilePath --parameter-file $parametersFilePath 
+```
+
+#### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-keyvault"></a>Key Vault に既にアップロードしてあるシークレットへのポインターを使用します。
+
+既存の Key Vault を使用するには、コンピューティング リソース プロバイダーがそこから証明書を取得し、クラスター ノードにインストールできるように、その Key Vault をデプロイ用に有効にする必要があります__。
 
 ```powershell
 
- Import-Module "C:\..\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+
+
+$parameterFilePath="c:\mytemplates\mytemplate.json"
+$templateFilePath="c:\mytemplates\mytemplateparm.json"
+$secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroup -SecretIdentifier $secretID -TemplateFile $templateFile -ParameterFile $templateParmfile 
 
 ```
+この処理と同等の処理を行う CLI コマンドを次に示します。 宣言ステートメントの値は適切な値に変更してください。
 
-この PowerShell モジュールの `Invoke-AddCertToKeyVault` コマンドは、証明書の秘密キーを JSON 文字列に自動的にフォーマットし、Key Vault にアップロードします。 このコマンドを使用してクラスター証明書と追加のアプリケーション証明書 (ある場合) を Key Vault に追加します。 必要に応じて、クラスターにインストールする追加の証明書についてこの手順を繰り返します。
+```cli
 
-#### <a name="uploading-an-existing-certificate"></a>既存の証明書をアップロードする
+declare $parameterFilePath="c:\mytemplates\mytemplate.json"
+declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
+declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-```powershell
 
- Invoke-AddCertToKeyVault -SubscriptionId <guid> -ResourceGroupName westus-mykeyvault -Location "West US" -VaultName mywestusvault -CertificateName mycert -Password "<password>" -UseExistingCertificate -ExistingPfxFilePath "C:\path\to\mycertkey.pfx"
-
-```
-
-ここに示されているようなエラーが発生した場合は、通常、リソース URL の競合があることを意味します。 競合を解決するには、Key Vault 名を変更します。
-
-```
-Set-AzureKeyVaultSecret : The remote name could not be resolved: 'westuskv.vault.azure.net'
-At C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1:440 char:11
-+ $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $Certif ...
-+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzureKeyVaultSecret], WebException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.KeyVault.SetAzureKeyVaultSecret
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --secret-identifieraz $secretID  \
+    --template-file $templateFilePath --parameter-file $parametersFilePath 
 
 ```
-
-競合が解決されると、出力は次のようになります。
-
-```
-
-    Switching context to SubscriptionId <guid>
-    Ensuring ResourceGroup westus-mykeyvault in West US
-    WARNING: The output object type of this cmdlet is going to be modified in a future release.
-    Using existing value mywestusvault in West US
-    Reading pfx file from C:\path\to\key.pfx
-    Writing secret to mywestusvault in vault mywestusvault
-
-
-Name  : CertificateThumbprint
-Value : E21DBC64B183B5BF355C34C46E03409FEEAEF58D
-
-Name  : SourceVault
-Value : /subscriptions/<guid>/resourceGroups/westus-mykeyvault/providers/Microsoft.KeyVault/vaults/mywestusvault
-
-Name  : CertificateURL
-Value : https://mywestusvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0978cb100e47
-
-```
-
->[!NOTE]
->セキュリティで保護された Service Fabric クラスターを設定し、アプリケーションのセキュリティ確保のために使用しているアプリケーション証明書を取得するには、先頭に CertificateThumbprint、SourceVault、および CertificateURL の 3 つの文字列が必要です。 文字列を保存しない場合、後で Key Vault を照会してそれらを取得するのが困難になることがあります。
-
-<a id="add-self-signed-certificate-to-key-vault"></a>
-
-#### <a name="creating-a-self-signed-certificate-and-uploading-it-to-the-key-vault"></a>自己署名証明書を作成して Key Vault にアップロードする
-
-Key Vault に既に証明書をアップロードしている場合は、この手順をスキップします。 この手順では、自己署名証明書を新しく生成して Key Vault にアップロードします。 次のスクリプトのパラメーターを変更して実行すると、証明書のパスワードを求められます。  
-
-```powershell
-
-$ResourceGroup = "chackowestuskv"
-$VName = "chackokv2"
-$SubID = "6c653126-e4ba-42cd-a1dd-f7bf96ae7a47"
-$locationRegion = "westus"
-$newCertName = "chackotestcertificate1"
-$dnsName = "www.mycluster.westus.mydomain.com" #The certificate's subject name must match the domain used to access the Service Fabric cluster.
-$localCertPath = "C:\MyCertificates" # location where you want the .PFX to be stored
-
- Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResourceGroup -Location $locationRegion -VaultName $VName -CertificateName $newCertName -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
-
-```
-
-ここに示されているようなエラーが発生した場合は、通常、リソース URL の競合があることを意味します。 競合を解決するには、Key Vault 名や RG 名などを変更します。
-
-```
-Set-AzureKeyVaultSecret : The remote name could not be resolved: 'westuskv.vault.azure.net'
-At C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1:440 char:11
-+ $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $Certif ...
-+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzureKeyVaultSecret], WebException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.KeyVault.SetAzureKeyVaultSecret
-
-```
-
-競合が解決されると、出力は次のようになります。
-
-```
-PS C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers> Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResouceGroup -Location $locationRegion -VaultName $VName -CertificateName $newCertName -Password $certPassword -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
-Switching context to SubscriptionId 6c343126-e4ba-52cd-a1dd-f8bf96ae7a47
-Ensuring ResourceGroup chackowestuskv in westus
-WARNING: The output object type of this cmdlet will be modified in a future release.
-Creating new vault westuskv1 in westus
-Creating new self signed certificate at C:\MyCertificates\chackonewcertificate1.pfx
-Reading pfx file from C:\MyCertificates\chackonewcertificate1.pfx
-Writing secret to chackonewcertificate1 in vault westuskv1
-
-
-Name  : CertificateThumbprint
-Value : 96BB3CC234F9D43C25D4B547sd8DE7B569F413EE
-
-Name  : SourceVault
-Value : /subscriptions/6c653126-e4ba-52cd-a1dd-f8bf96ae7a47/resourceGroups/chackowestuskv/providers/Microsoft.KeyVault/vaults/westuskv1
-
-Name  : CertificateURL
-Value : https://westuskv1.vault.azure.net:443/secrets/chackonewcertificate1/ee247291e45d405b8c8bbf81782d12bd
-
-```
-
->[!NOTE]
->セキュリティで保護された Service Fabric クラスターを設定し、アプリケーションのセキュリティ確保のために使用しているアプリケーション証明書を取得するには、先頭に CertificateThumbprint、SourceVault、および CertificateURL の 3 つの文字列が必要です。 文字列を保存しない場合、後で Key Vault を照会してそれらを取得するのが困難になることがあります。
-
- この時点で、次の要素が配置されます。
-
-* Key Vault リソース グループ。
-* Key Vault とその URL (上記の PowerShell の出力で呼び出された SourceVault)。
-* Key Vault 内のクラスター サーバー認証証明書とその URL。
-* Key Vault 内のアプリケーション証明書とその URL。
-
 
 <a id="add-AAD-for-client"></a>
 
@@ -306,24 +364,25 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 3. zip ファイルを解凍します。
 4. `SetupApplications.ps1` を実行します。パラメーターとして、TenantId、ClusterName、WebApplicationReplyUrl を指定します。 For example:
 
-    ```powershell
+```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
-    ```
 
-    TenantId は、PowerShell コマンド `Get-AzureSubscription` を実行することで検索できます。 このコマンドを実行すると、すべてのサブスクリプションの TenantId が表示されます。
+```
 
-    ClusterName は、スクリプトによって作成される Azure AD アプリケーションのプレフィックスとして使用されます。 実際のクラスター名と完全に一致している必要はありません。 これは、一緒に使用される Service Fabric クラスターに対して、Azure AD のアーティファクトのマッピングを容易にするためだけに使用します。
+TenantId は、PowerShell コマンド `Get-AzureSubscription` を実行することで検索できます。 このコマンドを実行すると、すべてのサブスクリプションの TenantId が表示されます。
 
-    WebApplicationReplyUrl は、サインインの完了後に Azure AD がユーザーに返す既定のエンドポイントです。 このエンドポイントをクラスターの Service Fabric Explorer エンドポイントして設定します。既定値は次のとおりです。
+ClusterName は、スクリプトによって作成される Azure AD アプリケーションのプレフィックスとして使用されます。 実際のクラスター名と完全に一致している必要はありません。 これは、一緒に使用される Service Fabric クラスターに対して、Azure AD のアーティファクトのマッピングを容易にするためだけに使用します。
 
-    https://&lt;cluster_domain&gt;:19080/Explorer
+WebApplicationReplyUrl は、サインインの完了後に Azure AD がユーザーに返す既定のエンドポイントです。 このエンドポイントをクラスターの Service Fabric Explorer エンドポイントして設定します。既定値は次のとおりです。
 
-    Azure AD テナント用の管理特権を持っているアカウントにサインインすることを求められます。 サインインすると、スクリプトは、Service Fabric クラスターを表す Web アプリケーションとネイティブ アプリケーションを作成します。 [Azure クラシック ポータル][azure-classic-portal]でテナントのアプリケーションを調べると、次の 2 つの新しいエントリがあることがわかります。
+https://&lt;cluster_domain&gt;:19080/Explorer
+
+Azure AD テナント用の管理特権を持っているアカウントにサインインすることを求められます。 サインインすると、スクリプトは、Service Fabric クラスターを表す Web アプリケーションとネイティブ アプリケーションを作成します。 [Azure クラシック ポータル][azure-classic-portal]でテナントのアプリケーションを調べると、次の 2 つの新しいエントリがあることがわかります。
 
    * *ClusterName*\_Cluster
    * *ClusterName*\_Client
 
-   次のセクションでクラスターを作成するとき、スクリプトによって、Azure Resource Manager テンプレートが必要とする JSON が出力されます。このため、PowerShell ウィンドウは開いたままにしてください。
+次のセクションでクラスターを作成するとき、スクリプトによって、Azure Resource Manager テンプレートが必要とする JSON が出力されます。このため、PowerShell ウィンドウは開いたままにしてください。
 
 ```json
 "azureActiveDirectory": {
@@ -333,23 +392,25 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 },
 ```
 
-## <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric クラスターの Resource Manager テンプレートを作成する
-このセクションでは、前述の PowerShell コマンドの出力が、Service Fabric クラスターの Resource Manager テンプレートで使用されます。
+<a id="customize-arm-template" ></a>
 
-サンプルの Resource Manager テンプレートは、[GitHub の Azure クイック スタート テンプレート ギャラリー][azure-quickstart-templates]で入手できます。 これらのテンプレートは、クラスター テンプレートの作成を始める際に使用できます。
+## <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric クラスターの Resource Manager テンプレートを作成する
+このセクションは、カスタムの Service Fabric クラスター Resource Manager テンプレートを作成するユーザー向けです。 テンプレートを持っている場合は、戻って PowerShell または CLI モジュールを使用してデプロイすることもできます。 
+
+サンプルの Resource Manager テンプレートは、[GitHub の Azure サンプル](https://github.com/Azure-Samples/service-fabric-cluster-templates)で入手できます。 これらのテンプレートは、クラスター テンプレートの作成を始める際に使用できます。
 
 ### <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
 このガイドでは、[セキュリティで保護された 5 ノード クラスター][service-fabric-secure-cluster-5-node-1-nodetype]の例にあるテンプレートとテンプレート パラメーターを使用します。 `azuredeploy.json` と `azuredeploy.parameters.json` をコンピューターにダウンロードして、任意のテキスト エディターで両方のファイルを開きます。
 
 ### <a name="add-certificates"></a>証明書の追加
-証明書は、証明書キーを含む Key Vault を参照することによって、Cluster Resource Manager テンプレートに追加されます。 Key Vault の値は Resource Manager テンプレート パラメーターのファイルに配置することをお勧めします。 これにより Resource Manager テンプレートのファイルを再利用可能にし、デプロイに合わせて値を変更できます。
+証明書は、証明書キーを含む Key Vault を参照することによって、Cluster Resource Manager テンプレートに追加されます。 Resource Manager テンプレート パラメーター ファイル (azuredeploy.parameters.json) にこれらの Key Vault パラメーターと値を追加します。 
 
 #### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>仮想マシン スケール セットの osProfile にすべての証明書を追加する
 クラスターにインストールするすべての証明書は、スケール セット リソース (Microsoft.Compute/virtualMachineScaleSets) の [osProfile] セクションで構成する必要があります。 このアクションにより、リソース プロバイダーに対して VM に証明書をインストールするよう指示されます。 このインストールには、クラスター証明書とアプリケーションで使用する予定のあらゆるアプリケーションのセキュリティ証明書が含まれます。
 
 ```json
 {
-  "apiVersion": "2016-03-30",
+  "apiVersion": "[variables('vmssApiVersion')]",
   "type": "Microsoft.Compute/virtualMachineScaleSets",
   ...
   "properties": {
@@ -382,10 +443,10 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 #### <a name="configure-the-service-fabric-cluster-certificate"></a>Service Fabric クラスターの証明書を構成する
 クラスターの認証証明書は、Service Fabric クラスター リソース (Microsoft.ServiceFabric/clusters) と、仮想マシン スケール セット リソースの仮想マシン スケール セット用 Service Fabric 拡張機能で構成する必要があります。 これにより、Service Fabric のリソース プロバイダーを使用してクラスターの認証および管理エンドポイントのサーバー認証用に構成できます。
 
-##### <a name="virtual-machine-scale-set-resource"></a>仮想マシン スケール セット リソース:
+##### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>仮想マシン スケール セット リソースの証明書情報を追加します。
 ```json
 {
-  "apiVersion": "2016-03-30",
+  "apiVersion": "[variables('vmssApiVersion')]",
   "type": "Microsoft.Compute/virtualMachineScaleSets",
   ...
   "properties": {
@@ -414,10 +475,10 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 }
 ```
 
-##### <a name="service-fabric-resource"></a>Service Fabric リソース:
+##### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Service Fabric クラスター リソースの証明書情報を追加します。
 ```json
 {
-  "apiVersion": "2016-03-01",
+  "apiVersion": "[variables('sfrpApiVersion')]",
   "type": "Microsoft.ServiceFabric/clusters",
   "name": "[parameters('clusterName')]",
   "location": "[parameters('clusterLocation')]",
@@ -434,12 +495,13 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 }
 ```
 
-### <a name="insert-azure-ad-configuration"></a>Azure AD 構成の挿入
-先ほど作成した Azure AD 構成は、Resource Manager テンプレートに直接挿入することができます。 ただし、Resource Manager テンプレートを再利用可能にし、デプロイに合わせて値を変更できるように、まず値をパラメーター ファイルに抽出することをお勧めします。
+### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>クライアント アクセスに Azure AD を使用する Azure AD の構成を追加する
+
+Azure AD 構成は、証明書キーを含む Key Vault を参照することによって、Cluster Resource Manager テンプレートに追加されます。 Resource Manager テンプレート パラメーター ファイル (azuredeploy.parameters.json) にこれらの Azure AD パラメーターと値を追加します。
 
 ```json
 {
-  "apiVersion": "2016-03-01",
+  "apiVersion": "[variables('sfrpApiVersion')]",
   "type": "Microsoft.ServiceFabric/clusters",
   "name": "[parameters('clusterName')]",
   ...
@@ -459,9 +521,30 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 }
 ```
 
-### <a "configure-arm" ></a>Resource Manager テンプレート パラメーターの構成
-<!--- Loc Comment: It seems that <a "configure-arm" > must be replaced with <a name="configure-arm"></a> since the link seems not to be redirecting correctly --->
+### <a name="populate-the-parameter-file-with-the-values"></a>パラメーター ファイルに値を設定します。
 最後に、Key Vault と Azure AD PowerShell コマンドからの出力値を使用してパラメーター ファイルを作成します。
+
+Azure Service Fabric RM PowerShell モジュールを使用する予定の場合は、クラスター証明書の情報を設定する必要はありません。クラスターのセキュリティのためにシステムで自己署名証明書を生成する場合は、null のままにしてください。 
+
+> [!NOTE]
+> RM モジュールでこれらの空のパラメーター値を取得して設定するには、パラメーター名が以下の名前と一致する必要があります。
+>
+
+```json
+        "clusterCertificateThumbprint": {
+            "value": ""
+        },
+        "clusterCertificateUrlValue": {
+            "value": ""
+        },
+        "sourceVaultvalue": {
+            "value": ""
+        },
+```
+
+アプリケーション証明書を使用している場合、または Key Vault にアップロードした既存のクラスターを使用している場合は、その情報を取得して設定する必要があります。 
+
+RM モジュールには、Azure AD 構成を自動生成する機能がありません。 そのため、クライアント アクセスのために Azure AD を使用する予定の場合は、設定する必要があります。
 
 ```json
 {
@@ -500,40 +583,34 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
     }
 }
 ```
-この時点で、次の要素が配置されます。
 
-* Key Vault リソース グループ
-  * Key Vault
-  * クラスター サーバー認証証明書
-  * データ暗号化証明書
-* Azure Active Directory テナント
-  * Web ベースの管理用の Azure AD アプリケーションと Service Fabric Explorer
-  * ネイティブ クライアント管理用の Azure AD アプリケーション
-  * ユーザーとユーザーに割り当てられたロール
-* Service Fabric クラスター Resource Manager テンプレート
-  * Key Vault で構成された証明書
-  * 構成済みの Azure Active Directory
-
-次の図は、Key Vault と Azure AD の構成を Resource Manager テンプレートに適合させる場所を示しています。
-
-![Resource Manager の依存関係マップ][cluster-security-arm-dependency-map]
-
-## <a name="create-the-cluster"></a>クラスターを作成する
-これで、[Azure リソース テンプレート デプロイ][resource-group-template-deploy]を使用してクラスターを作成する準備ができました。
-
-#### <a name="test-it"></a>テストする
+### <a name="test-your-template"></a>テンプレートのテスト  
 次の PowerShell コマンドを使用して、パラメーター ファイルで Resource Manager テンプレートをテストします。
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
-#### <a name="deploy-it"></a>デプロイする
-Resource Manager テンプレートのテストに合格した場合は、次の PowerShell コマンドを使用して、パラメーター ファイルで Resource Manager テンプレートをデプロイします。
+問題が発生し、不明なメッセージを受け取った場合は、オプションに "-Debug" を使用します。
+
+```powershell
+Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
+```
+
+次の図は、Key Vault と Azure AD の構成を Resource Manager テンプレートに適合させる場所を示しています。
+
+![Resource Manager の依存関係マップ][cluster-security-arm-dependency-map]
+
+## <a name="create-the-cluster-using-azure-resource-template"></a>Azure リソース テンプレートを使用してクラスターを作成する 
+
+このドキュメントで概要を説明した手順で、クラスターをデプロイできるようになりました。パラメーター ファイルに値があり、設定した場合は、[Azure リソース テンプレートのデプロイ][resource-group-template-deploy]を使用してクラスターを直接作成することもできます。
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
+
+問題が発生し、不明なメッセージを受け取った場合は、オプションに "-Debug" を使用します。
+
 
 <a name="assign-roles"></a>
 
@@ -555,65 +632,15 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 >
 >
 
- <a name="secure-linux-clusters"></a>
- <!--- Loc Comment: It seems that letter S in cluster was missing, which caused the wrong redirection of the link --->
 
-## <a name="create-secure-clusters-on-linux"></a>セキュリティで保護されたクラスターを Linux 上に作成する
-プロセス簡略化のために、[ヘルパー スクリプト](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux)を用意しました。 このヘルパー スクリプトを使用する前に、Azure コマンド ライン インターフェイス (CLI) が既にインストールされており、パス内にあることを確認します。 ダウンロード後、必ず `chmod +x cert_helper.py` を実行して、スクリプトに実行権限を割り当ててください。 まず、CLI から `azure login` コマンドを実行して Azure アカウントにサインインします。 Azure アカウントへのサインイン後、次のコマンドに示すように、証明機関の署名入りの証明書と一緒にヘルパー スクリプトを指定します。
-
-```sh
-./cert_helper.py [-h] CERT_TYPE [-ifile INPUT_CERT_FILE] [-sub SUBSCRIPTION_ID] [-rgname RESOURCE_GROUP_NAME] [-kv KEY_VAULT_NAME] [-sname CERTIFICATE_NAME] [-l LOCATION] [-p PASSWORD]
-```
-
--ifile パラメーターには、証明書の種類として .pfx ファイルまたは .pem ファイル (pfx または pem、自己署名証明書の場合は ss) を指定できます。
-パラメーター -h はヘルプ テキストを出力します。
-
-
-コマンドの出力として次の 3 つの文字列が返されます。
-
-* SourceVaultID: 新しく作成された KeyVault ResourceGroup の ID
-* CertificateUrl: 証明書にアクセスするために使用
-* CertificateThumbprint: 認証に使用
-
-次の例は、コマンドの使用方法を示しています。
-
-```sh
-./cert_helper.py pfx -sub "fffffff-ffff-ffff-ffff-ffffffffffff"  -rgname "mykvrg" -kv "mykevname" -ifile "/home/test/cert.pfx" -sname "mycert" -l "East US" -p "pfxtest"
-```
-先頭のコマンドを実行すると、次の 3 つの文字列が返されます。
-
-```sh
-SourceVault: /subscriptions/fffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/mykvrg/providers/Microsoft.KeyVault/vaults/mykvname
-CertificateUrl: https://myvault.vault.azure.net/secrets/mycert/00000000000000000000000000000000
-CertificateThumbprint: 0xfffffffffffffffffffffffffffffffffffffffff
-```
-
-証明書のサブジェクト名は Service Fabric クラスターへのアクセスに使用されるドメインと一致している必要があります。 この整合性は、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 CA から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
-
-これらのサブジェクト名は、「[Resource Manager テンプレート パラメーターの構成](#configure-arm)」で取り上げた、セキュリティで保護された Service Fabric クラスターを (Azure AD なしで) 作成するために必要なエントリです。 セキュリティで保護されたクラスターには、[クラスターに対するクライアント アクセスの認証](service-fabric-connect-to-secure-cluster.md)に関するページの手順に従って接続できます。 Linux クラスターでは、Azure AD 認証はサポートされません。 「[ユーザーをロールに割り当てる](#assign-roles)」セクションの説明に従って管理者ロールとクライアント ロールを割り当ててください。 Linux クラスターに管理者とクライアントのロールを指定する際には、認証に対して証明書の拇印を提供する必要があります。 チェーン検証や失効が行われないため、サブジェクト名は指定しません。
-
-テストに自己署名証明書を使用する場合は、同じスクリプトを使用して生成できます。 その後、証明書のパスと名前を指定する代わりに、フラグ `ss` を指定して Key Vault に証明書をアップロードできます。 たとえば自己署名証明書を作成してアップロードするには、次のコマンドを使用します。
-
-```sh
-./cert_helper.py ss -rgname "mykvrg" -sub "fffffff-ffff-ffff-ffff-ffffffffffff" -kv "mykevname"   -sname "mycert" -l "East US" -p "selftest" -subj "mytest.eastus.cloudapp.net"
-```
-このコマンドにより、3 つの同じ文字列 (SourceVault、CertificateUrl、および CertificateThumbprint) が返されます。 その後、これらの文字列を使用して、セキュリティで保護された Linux クラスターと自己署名証明書が配置される場所を作成できます。 クラスターに接続するには、自己署名証明書が必要です。 セキュリティで保護されたクラスターには、[クラスターに対するクライアント アクセスの認証](service-fabric-connect-to-secure-cluster.md)に関するページの手順に従って接続できます。
-
-証明書のサブジェクト名は Service Fabric クラスターへのアクセスに使用されるドメインと一致している必要があります。 この整合性は、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 CA から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書のサブジェクト名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
-
-ヘルパー スクリプトから得られるパラメーターは、「[Azure Portal でのクラスターの作成](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal)」セクションの説明に従って Azure Portal に入力できます。
-
-## <a name="next-steps"></a>次のステップ
-この時点で、管理認証を提供する Azure Active Directory で、セキュリティで保護されたクラスターの準備ができています。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。
-
-## <a name="troubleshoot-setting-up-azure-active-directory-for-client-authentication"></a>クライアント認証用の Azure Active Directory のセットアップのトラブルシューティングを行う
-クライアント認証のために Azure AD をセットアップしているときに問題が発生した場合は、このセクションの考えられる解決策を確認してください。
+## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Azure Active Directory の設定に関するトラブルシューティング
+Azure AD の設定時や使用時には問題が発生することがあります。そこで、問題のデバッグに役立つポインターをいくつか紹介します。
 
 ### <a name="service-fabric-explorer-prompts-you-to-select-a-certificate"></a>Service Fabric Explorer に、証明書の選択を求めるメッセージが表示される
 #### <a name="problem"></a>問題点
 Service Fabric Explorer で Azure AD に正常にサインインすると、ブラウザーはホームページに戻りますが、証明書の選択を求めるメッセージが表示されます。
 
-![SFX の証明書を選択するためのダイアログ][sfx-select-certificate-dialog]
+![SFX 証明書ダイアログ][sfx-select-certificate-dialog]
 
 #### <a name="reason"></a>理由
 ユーザーに Azure AD クラスター アプリケーション内でロールが割り当てられていません。 このため、Service Fabric クラスターで Azure AD の認証が失敗します。 Service Fabric エクスプローラーは、証明書認証にフォールバックします。
@@ -657,21 +684,26 @@ Connect-ServiceFabricCluster コマンドレットについて詳しくは、「
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Azure AD が有効になっているときもサーバーの証明書が必要なのはどうしてですか?
 FabricClient と FabricGateway では、相互認証が実行されます。 Azure AD 認証中、Azure AD 統合がクライアント ID をサーバーに提供し、サーバー証明書を使用してサーバー ID の確認が行われます。 Service Fabric の証明書について詳しくは、「[X.509 証明書と Service Fabric][x509-certificates-and-service-fabric]」をご覧ください。
 
+## <a name="next-steps"></a>次のステップ
+この時点で、管理認証を提供する Azure Active Directory で、セキュリティで保護されたクラスターの準備ができています。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。
+
+
 <!-- Links -->
-[azure-powershell]:https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[azure-CLI]:https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [key-vault-get-started]:../key-vault/key-vault-get-started.md
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
-[azure-classic-portal]: https://manage.windowsazure.com
-[service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
+[azure-classic-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
 [service-fabric-manage-application-in-visual-studio]: service-fabric-manage-application-in-visual-studio.md
 [sf-aad-ps-script-download]:http://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip
 [azure-quickstart-templates]: https://github.com/Azure/azure-quickstart-templates
-[service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/
+[service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
 [resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
+[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#Create-a-Service-Fabric-cluster- Resource-Manager-template
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-arm-dependency-map.png

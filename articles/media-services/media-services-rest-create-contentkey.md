@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: afee79e5081cbc6c217569a9d1bffdd7726e2f61
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 6ff8e5ccdc7e14ed39466b4525fdbae86fdc4e9a
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="create-content-keys-with-rest"></a>REST でコンテンツ キーを作成する
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Media Services では、暗号化されたアセットを新しく作成して�
 
 1. 16 バイトの AES キー (CommonEncryption と EnvelopeEncryption 向け) か 32 バイトの AES キー (StorageEncryption 向け) をランダムに生成します。 
    
-    これがアセットのコンテンツ キーになります。つまりこのアセットに関連するファイルは、暗号化の際に同じコンテンツ キーを使う必要があるということです。 
+    これがアセットのコンテンツ キーになります。つまり、このアセットに関連付けるすべてのファイルは、暗号化の際に同じコンテンツ キーを使う必要があります。 
 2. [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) メソッドと [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
 3. X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
    
@@ -68,7 +68,7 @@ Media Services では、暗号化されたアセットを新しく作成して�
 5. 前の手順で取得した **EncryptedContentKey** 値 (Base 64 エンコード形式の文字列に変換されます)、**ProtectionKeyId** 値、**ProtectionKeyType** 値、**ContentKeyType** 値、**Checksum** 値を使ってコンテンツ キーを作成します。
 6. $links 操作で、**ContentKey** エンティティと **Asset** エンティティを関連付けます。
 
-このトピックでは、AES キーの生成、キーの暗号化、および checksum の計算方法については説明しません。 
+この記事では、AES キーの生成、キーの暗号化、および checksum の計算方法については説明しません。 
 
 >[!NOTE]
 
@@ -77,9 +77,6 @@ Media Services では、暗号化されたアセットを新しく作成して�
 ## <a name="connect-to-media-services"></a>Media Services への接続
 
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
-
->[!NOTE]
->に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
 ## <a name="retrieve-the-protectionkeyid"></a>ProtectionKeyId の取得
 次の例では、コンテンツ キーを暗号化するときに必要な ProtectionKeyId と証明書の拇印を取得する方法を示します。 この手順を実行してコンピューターに適切な証明書があることを確認します。
@@ -92,7 +89,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 
@@ -124,7 +121,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-e769-2233-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423141026&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lDBz5YXKiWe5L7eXOHsLHc9kKEUcUiFJvrNFFSksgkM%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
 
@@ -191,7 +188,7 @@ X.509 証明書を取得して、その公開キーを使ってコンテンツ �
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423034908&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=7eSLe1GHnxgilr3F2FPCGxdL2%2bwy%2f39XhMPGY9IizfU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
     {
     "Name":"ContentKey",
@@ -241,7 +238,7 @@ ContentKey を作成した後、次の例に示すように $links 演算子を�
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423141026&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lDBz5YXKiWe5L7eXOHsLHc9kKEUcUiFJvrNFFSksgkM%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: media.windows.net
 
 

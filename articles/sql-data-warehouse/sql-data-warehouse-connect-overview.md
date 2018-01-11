@@ -13,23 +13,23 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 72c2b404e66611da421eca0dc30aa71e18c6d120
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: anvang;barbkess;kevin
+ms.openlocfilehash: bd2e89f39d54a2186fa9ca343d04135b2da5d352
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への接続
 この記事は、初めて SQL Data Warehouse に接続する際に役立つガイドとして書かれています。
 
 ## <a name="find-your-server-name"></a>サーバー名を検索する
-SQL Data Warehouse に接続するには、まず、サーバー名の検索方法を知る必要があります。  たとえば、次の例の場合、サーバー名は sample.database.windows.net です。 完全修飾サーバー名を検索するには、次の手順に従います。
+SQL Data Warehouse に接続するには、まず、サーバー名の検索方法を知る必要があります。  たとえば、次の例の場合、サーバー名は samplesvr.database.windows.net です。 完全修飾サーバー名を検索するには、次の手順に従います。
 
 1. [Azure Portal][Azure portal] にアクセスします。
-2. **[SQL Database]** 
-3. 接続先のデータベースをクリックします。
+2. **[SQL Data Warehouse]** をクリックします。
+3. 接続先のデータ ウェアハウスをクリックします。
 4. サーバーの完全名を見つけます。
    
     ![Full server name][1]
@@ -93,6 +93,6 @@ Visual Studio を使用して接続とクエリの実行を行うには、[Visua
 [Azure portal]: https://portal.azure.com
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-connect-overview/get-server-name.png
+[1]: media/sql-data-warehouse-connect-overview/server-connect.PNG
 
 

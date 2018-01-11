@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: c359b77efbfdbcf7d2c0193dc015ce418a3d997d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 045cf83caa15cb2487b4781f3c1f42752880580c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>Security Center のセキュリティ ポリシーを Azure Policy に統合する
 この記事では、Azure Policy を利用する Azure Security Center のセキュリティ ポリシーの構成方法について説明します。 
@@ -39,14 +39,14 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
 
 2. **Security Center** ダッシュボードの **[全般]** で、**[セキュリティ ポリシー]** を選択します。
 
-    ![[ポリシー管理] ウィンドウ](./media/security-center-policies/security-center-policies-fig10.png)
+    ![[ポリシー管理] ウィンドウ](./media/security-center-azure-policy/security-center-policies-fig10.png)
 
 3. セキュリティ ポリシーを有効にするサブスクリプションを選択します。  
 
 4. **[ポリシー コンポーネント]** セクションで、**[セキュリティ ポリシー]** を選択します。  
     **[基本]** ウィンドウが開きます。
 
-    ![ポリシー コンポーネント](./media/security-center-policies/security-center-policies-fig12.png)
+    ![ポリシー コンポーネント](./media/security-center-azure-policy/security-center-policies-fig12.png)
 
 5. ポリシー定義を削除するには、**[Policies and parameters]\(ポリシーとパラメーター\)** で、削除する定義の横にある **[削除]** を選択します。
 
@@ -57,12 +57,12 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
 
     * ポリシー定義を追加するには、定義の横にあるプラス記号 (+) を選択します。
 
-    ![使用できるポリシー定義](./media/security-center-policies/security-center-policies-fig11.png)
+    ![使用できるポリシー定義](./media/security-center-azure-policy/security-center-policies-fig11.png)
 
     * ポリシーの詳細を確認するには、該当するポリシーを選択します。  
     定義の **[プレビュー]** ウィンドウが開きます。 定義の説明と、[ポリシー定義](../azure-policy/policy-definition.md)の構造を提供する JSON コードへのリンクが表示されます。
 
-    ![定義の [プレビュー] ウィンドウ](./media/security-center-policies/security-center-policies-fig14.png)
+    ![定義の [プレビュー] ウィンドウ](./media/security-center-azure-policy/security-center-policies-fig14.png)
 
 7. 編集が終了したら、**[保存]** を選択します。
 

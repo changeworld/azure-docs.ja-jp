@@ -18,7 +18,8 @@
 ### [Azure でのガバナンス](../governance-in-azure.md)
 ### [保存データの暗号化](../azure-security-encryption-atrest.md)
 ### アーキテクチャのブループリント
-#### [コンプライアンス - PCI DSS](payment-processing-blueprint.md)
+#### コンプライアンス - PCI DSS
+##### [PCI DSS 準拠環境での支払い処理](payment-processing-blueprint.md)
 ##### [要件の概要](pci-dss-requirements-overview.md)
 ##### [要件 1 - ファイアウォール](pci-dss-requirement-1-firewall.md)
 ##### [要件 2 - パスワード](pci-dss-requirement-2-password.md)
@@ -32,7 +33,8 @@
 ##### [要件 10 - 監視](pci-dss-requirement-10-monitoring.md)
 ##### [要件 11 - テスト](pci-dss-requirement-11-testing.md)
 ##### [要件 12 - ポリシー](pci-dss-requirement-12-policy.md)
-#### [コンプライアンス - FedRAMP](fedramp.md)
+#### コンプライアンス - FedRAMP
+##### [FedRAMP 用の Web アプリ](fedramp.md)
 ##### [セキュリティ コントロールの概要](fedramp-controls-overview.md)
 ##### [アクセス制御](fedramp-access-controls.md)
 ##### [監査とアカウンタビリティ](fedramp-audit-accountability-controls.md)
@@ -51,9 +53,12 @@
 ##### [システムと通信の保護](fedramp-system-communications-protection-controls.md)
 ##### [システムと情報の整合性](fedramp-system-information-integrity-controls.md)
 ##### [システムとサービスの取得](fedramp-system-services-acquisition-controls.md)
-#### [コンプライアンス - UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
+#### コンプライアンス - UK-OFFICIAL
+##### [UK-OFFICIAL 向け 3 層 Web アプリ](uk-official-three-tier-applications-overview.md)
 ##### [概要](uk-official-three-tier-applications-overview.md)
 ##### [原則の概要](uk-official-three-tier-applications-principles-overview.md)
+#### コンプライアンス - Financial Services
+##### [規制対象ワークロードに対応した Financial Services](financial-services-regulated-workloads.md)
 
 # 作業の開始
 ## [Azure のセキュリティの概要](../azure-security-getting-started.md)

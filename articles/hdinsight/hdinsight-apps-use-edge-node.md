@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2017
+ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: ad161ada875ab30ed8de24506ed27265f26e994a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d529e66c80c6a3e305ffdf9a2df181a976e07127
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>HDInsight の Hadoop クラスターで空のエッジ ノードを使用する
 
@@ -152,7 +152,7 @@ Azure Portal からエッジ ノードを削除できます。
 4. 削除するエッジ ノードを右クリックし、 **[削除]**をクリックします。
 5. **[はい]** をクリックして確定します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、エッジ ノードを追加する方法とエッジ ノードにアクセスする方法について説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について確認します。

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 898160814304fa8ec65622056a77ca9d4caf2c99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 56a382a348609df1d1d308aeac39f47ca82ac4c8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="windows-universal-apps-engagement-sdk-integration"></a>Windows ユニバーサル アプリ Engagement SDK 統合
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ Engagement の構成は、プロジェクトの `Resources\EngagementConfigurati
           /* Initialize Engagement angent with above configuration. */
           EngagementAgent.Instance.Init(e, engagementConfiguration);
 
-アプリケーションの接続文字列が Azure クラシック ポータルに表示されます。
+アプリケーションの接続文字列が Azure Portal に表示されます。
 
 ### <a name="engagement-initialization"></a>Engagement の初期化
 新しいプロジェクトを作成すると、 `App.xaml.cs` ファイルが生成されます。 このクラスは、 `Application` から継承し、多くの重要なメソッドが含まれています。 また、Engagement SDK を初期化するためにも使用されます。

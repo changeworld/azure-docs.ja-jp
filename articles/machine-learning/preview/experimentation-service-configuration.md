@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 26ab8f9ab561cc218f3dcb249741a96d8f14c579
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: bd152cc79c08124a1acab2aefc8652c7d162ea2c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Azure Machine Learning 実験サービスの構成
 
@@ -221,7 +221,8 @@ _**Python スクリプトのリモート VM 実行の概要:**_
 ## <a name="running-a-script-on-an-hdinsight-cluster"></a>HDInsight クラスター上でのスクリプトの実行
 HDInsight は、Apache Spark をサポートする、ビッグ データ分析のための一般的なプラットフォームです。 Workbench では、HDInsight Spark クラスターを使用してビッグ データに関する実験を行うことができます。 
 
->![NOTE] HDInsight クラスターは、プライマリ ストレージとして Azure BLOB を使用する必要があります。 Azure Data Lake Storage はまだサポートされていません。
+>[!NOTE]
+>HDInsight クラスターは、プライマリ ストレージとして Azure BLOB を使用する必要があります。 Azure Data Lake Storage はまだサポートされていません。
 
 コンピューティング ターゲットを作成して HDInsight Spark クラスター向けに構成するには、次のコマンドを使用します。
 
@@ -269,7 +270,8 @@ az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP
 ```
 - Workbench によって生成された公開キーを、接続されているコンピューティング ターゲット上の ~/.ssh/authorized_keys ファイルに追加します。 
 
-[!IMPORTANT] コンピューティング ターゲットの作成に使用したのと同じユーザー名を使用してコンピューティング ターゲットにログオンする必要があります。 
+>[!IMPORTANT]
+>コンピューティング ターゲットの作成に使用したのと同じユーザー名を使用してコンピューティング ターゲットにログオンする必要があります。 
 
 - これで、SSH キー ベースの認証を使用してコンピューティング ターゲットを準備および使用できるようになりました。
 

@@ -15,45 +15,42 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2017
+ms.date: 12/08/2017
 ms.author: larryfr
-ms.openlocfilehash: c978a9ba97ecb9b8facaf32cbefbdd06cab8df67
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2232ae8a838ae2d7feb9a66e0953f006bf45c644
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
 [Apache Storm](http://storm.apache.org/) は、分散型でフォールト トレランスに優れたオープンソースの計算システムです。 Storm を使用すると、Hadoop によってデータ ストリームをリアルタイムで処理できます。 また、Storm のソリューションは、最初に正常に処理されなかったデータを再生する機能を備え、保証されたデータ処理を実現します。
 
-HDInsight における Storm の主なメリットは次のとおりです。
+[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
-* 稼働時間 99.9% の SLA を提供する、管理されたサービスとして実行されます。
+## <a name="why-use-storm-on-hdinsight"></a>HDInsight で Apache Storm を使用する理由
+
+HDInsight における Storm の機能は次のとおりです。
+
+* __Storm のアップタイムに関して 99% のサービス レベル アグリーメント (SLA)__: 詳細については、[HDInsight の SLA 情報](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)に関するドキュメントを参照してください。
 
 * 作成中や作成後の Storm クラスターに対してスクリプトを実行することで、簡単にカスタマイズできます。 詳細については、[スクリプト アクションを使った HDInsight クラスターのカスタマイズ](../hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
 
-* 各種の言語に対応しています。 Storm コンポーネントは、Java、C#、Python など、さまざまな言語で作成することができます。
+* **さまざまな言語でソリューションを作成**: Storm コンポーネントは、Java、C#、Python など、さまざまな言語で作成することができます。
 
     * C# トポロジの開発、管理、監視を目的として、Visual Studio と HDInsight を連携させることができます。 詳細については、[HDInsight Tools for Visual Studio を使用した C# Storm トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。
 
     * Trident Java インターフェイスをサポートします。 メッセージの厳密に 1 回の処理、トランザクションのデータストア永続化、一般的なストリーム分析操作のセットをサポートする Storm トポロジの作成が可能になります。
 
-*  Storm クラスターを簡単にスケールアップまたはスケールダウンできます。 Storm トポロジの実行に影響を与えることなく、worker ノードを追加または削除することができます。
+* **動的スケーリング**: Storm トポロジの実行に影響を与えることなく、worker ノードを追加または削除することができます。
 
-* 次の Azure サービスと連携します。
+    > [!NOTE]
+    > スケーリング操作を通じて追加された新しいノードを利用するためには、実行中のトポロジを非アクティブ化したり再アクティブ化したりする必要があります。
 
-    * Azure Event Hubs
+* **さまざまな Azure サービスを使ってストリーミング パイプラインを作成**: HDInsight の Storm は、Event Hubs、SQL Database、Azure Storage、Azure Data Lake Store など、他の Azure サービスと連携します。
 
-    * Azure Virtual Network
-
-    * Azure SQL Database
-
-    * Azure Storage
-
-    * Azure Cosmos DB
-
-* Virtual Network を使用して、複数の HDInsight クラスターの機能を安全に組み合わせることができます。 Storm、Kafka、Spark、HBase、または Hadoop クラスターを使用する分析パイプラインを作成できます。
+    Azure サービスと連携するソリューションの例については、[HDInsight の Storm を使用して Event Hubs からのイベントを処理する方法](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)に関するページを参照してください。
 
 リアルタイム分析ソリューションに Apache Storm を利用している企業の一覧については、[Apache Storm を使用している企業](https://storm.apache.org/documentation/Powered-By.html)に関するページを参照してください。
 
@@ -68,6 +65,16 @@ Storm では、一般的な MapReduce ジョブではなく、トポロジを実
 * スパウト コンポーネントは、データをトポロジに取り込みます。 1 つ以上のストリームをこのトポロジに出力します。
 
 * ボルト コンポーネントは、スパウトまたはその他のボルトから出力されたストリームを使用します。 ボルトは、必要に応じてストリームをトポロジに出力できます。 また、HDFS、Kafka、HBase などの外部サービスまたはストレージへのデータの書き込みも行います。
+
+## <a name="reliability"></a>信頼性
+
+Apache Storm では、データ分析が多数のノードにまたがる場合でも、各受信メッセージが必ず完全に処理されることを保証しています。
+
+Nimbus ノードは Hadoop JobTracker に同様の機能を提供し、Zookeeper を介して、タスクをクラスターの他のノードに割り当てます。 Zookeeper ノードは、クラスターに調整を提供し、Nimbus と worker ノードの Supervisor 処理間の通信を容易にします。 処理中のノードの 1 つがダウンした場合、Nimbus ノードに通知され、タスクと関連付けられているデータが別のノードに割り当てられます。
+
+Apache Storm クラスターの既定の構成では、Nimbus ノードは 1 つだけです。 HDInsight の Storm では、2 つの Nimbus ノードが提供されます。 プライマリ ノードで障害が発生すると、Storm クラスターはプライマリ ノードの復旧中にセカンダリ ノードに切り替わります。 次の図は、HDInsight 上の Storm に使用されるタスク フローの構成を示しています。
+
+![Nimbus、Zookeeper、スーパーバイザのダイアグラム](./media/apache-storm-overview/nimbus.png)
 
 ## <a name="ease-of-creation"></a>作成のしやすさ
 
@@ -100,23 +107,6 @@ HDInsight 上に新しい Storm クラスターを数分で作成できます。
     * [HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
 * __SQL Database____Cosmos DB__、__Event Hubs__、__HBase__: Data Lake Tools for Visual Studio にテンプレート例が含まれています。 詳細については、[HDInsight の Storm 向けの C# トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。
-
-## <a name="reliability"></a>信頼性
-
-Apache Storm では、データ分析が多数のノードにまたがる場合でも、各受信メッセージが必ず完全に処理されることを保証しています。
-
-Nimbus ノードは Hadoop JobTracker に同様の機能を提供し、Zookeeper を介して、タスクをクラスターの他のノードに割り当てます。 Zookeeper ノードは、クラスターに調整を提供し、Nimbus と worker ノードの Supervisor 処理間の通信を容易にします。 処理中のノードの 1 つがダウンした場合、Nimbus ノードに通知され、タスクと関連付けられているデータが別のノードに割り当てられます。
-
-Apache Storm クラスターの既定の構成では、Nimbus ノードは 1 つだけです。 HDInsight の Storm では、2 つの Nimbus ノードが提供されます。 プライマリ ノードで障害が発生すると、Storm クラスターはプライマリ ノードの復旧中にセカンダリ ノードに切り替わります。 次の図は、HDInsight 上の Storm に使用されるタスク フローの構成を示しています。
-
-![Nimbus、Zookeeper、スーパーバイザのダイアグラム](./media/apache-storm-overview/nimbus.png)
-
-## <a name="scale"></a>スケール
-
-HDInsight クラスターは、ワーカー ノードを追加または削除することで動的にスケールできます。 この操作はデータの処理中に実行できます。
-
-> [!IMPORTANT]
-> スケーリングによって追加された新しいノードを利用するには、クラスター サイズを増やす前に開始されていた Storm トポロジを再調整する必要があります。
 
 ## <a name="support"></a>サポート
 

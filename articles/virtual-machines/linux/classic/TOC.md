@@ -1,59 +1,39 @@
 # [概要](../overview.md)
-## [イメージ](about-images.md)
-## [VM 拡張機能](agents-and-extensions.md)
-## [可用性](configure-availability.md)
-## [FAQ](faq.md)
+## [VM 拡張機能](agents-and-extensions-classic.md)
+## [可用性](configure-availability-classic.md)
+## [FAQ](faq-classic.md)
 
 # 作業の開始
-## [Azure Portal を使用して Linux VM を作成する](createportal.md)
-## [Azure CLI のインストール](../../../cli-install-nodejs.md)
-## [SSH キーの作成](../mac-create-ssh-keys.md)
+## [Azure Portal を使用して Linux VM を作成する](createportal-classic.md)
 
 # 方法
 ## 計算
-### [カスタム VM の作成](create-custom.md)
-### [VM のキャプチャ](capture-image.md)
-### [Linux VM でリモート デスクトップを使用する](remote-desktop.md)
-### [VM 拡張機能を管理する](manage-extensions.md)
-### [Visual Studio で VM を管理する](manage-visual-studio.md)
-### [診断 VM 拡張機能を使用して VM を監視する](../diagnostic-extension.md)
+### [カスタム VM の作成](create-custom-classic.md)
+### [VM のキャプチャ](capture-image-classic.md)
+### [Linux VM でリモート デスクトップを使用する](remote-desktop-classic.md)
+### [VM 拡張機能を管理する](manage-extensions-classic.md)
 ### [診断 VM 拡張機能の v2.x を使用して VM を監視する](diagnostic-extension-v2.md)
-### [カスタム データを挿入する](inject-custom-data.md)
-### [Linux パスワードまたはキーのリセット、SSH の修正、ディスクのチェックを実行する](reset-access.md)
-### [メンテナンス](planned-maintenance-schedule.md)
-### [CLI を使用して Docker ホストを作成する](cli-use-docker.md)
-### [Azure Portal を使用して Docker ホストを作成する](portal-use-docker.md)
-### [Docker Swarm を使用する方法](../../virtual-machines-linux-docker-swarm.md)
+### [Linux パスワードまたはキーのリセット、SSH の修正、ディスクのチェックを実行する](reset-access-classic.md)
+### [メンテナンス](planned-maintenance-schedule-classic.md)
 
 ## ストレージの使用
-### [データ ディスクの接続](attach-disk.md)
-### [データ ディスクを切断する](detach-disk.md)
+### [データ ディスクの接続](attach-disk-classic.md)
+### [データ ディスクを切断する](detach-disk-classic.md)
 
 ## ネットワーク
 ### [VM へのポートを開く](setup-endpoints.md)
-### [VM を仮想ネットワークまたはクラウド サービスに接続する](connect-vms.md)
-
-## イメージのデプロイ
-### [VHD を作成とアップロード](create-upload-vhd.md)
-### [FreeBSD VHD の作成とアップロード](freebsd-create-upload-vhd.md)
-### [Oracle VM イメージの一覧](oracle-images.md)
 
 ## ワークロードの管理
-### [SAP](sap-get-started.md)
-### MySQL と MariaDB
-#### [MariaDB クラスターに関するチュートリアル](mariadb-mysql-cluster.md)
-#### [MySQL を OpenSUSE VM にインストールする](mysql-on-opensuse.md)
-#### [負荷分散セットを使用して MySQL をクラスター化する](mysql-cluster.md)
-#### [MySQL のパフォーマンスの最適化](optimize-mysql.md)
+### [MariaDB クラスターに関するチュートリアル](mariadb-mysql-cluster.md)
+### [MySQL を OpenSUSE VM にインストールする](mysql-on-opensuse.md)
+### [負荷分散セットを使用して MySQL をクラスター化する](mysql-cluster.md)
+### [MySQL のパフォーマンスの最適化](optimize-mysql.md)
 
 ## アプリケーションの実行
-### [Ruby on Rails Web アプリケーション](virtual-machines-linux-classic-ruby-rails-web-app.md)
+### [Ruby on Rails Web アプリケーション](ruby-rails-web-app.md)
 ### [Cassandra および Node.js クライアント](cassandra-nodejs.md)
-### [LAMP スタック](lamp-script.md)
 ### [Tomcat](setup-tomcat.md)
-### [Visual Studio による Web アプリケーション](web-app-visual-studio.md)
 ### [MPI アプリケーションを実行するための RDMA クラスター](rdma-cluster.md)
-### [Azure スレーブ プラグインを Hudson CI で使用する方法](../../virtual-machines-azure-slave-plugin-for-hudson.md)
 ### HPC Pack
 #### [Linux ワークロード用のクラスターの作成](hpcpack-cluster-powershell-script.md)
 #### [Linux ノードを含むクラスターの管理](hpcpack-cluster.md)

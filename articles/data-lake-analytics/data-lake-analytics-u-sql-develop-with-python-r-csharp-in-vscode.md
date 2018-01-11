@@ -1,6 +1,6 @@
 ---
-title: "Visual Studio Code で Azure Data Lake Analytics の Python、R、および CSharp を使用して U-SQL を開発する | Microsoft Docs"
-description: "Python、R、および CSharp で分離コードを使用して Azure Data Lake にジョブを送信する方法について説明します。"
+title: "Visual Studio Code で Azure Data Lake Analytics の Python、R、および C# を使用して U-SQL を開発する | Microsoft Docs"
+description: "Python、R、および C# で分離コードを使用して Azure Data Lake にジョブを送信する方法について説明します。"
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/22/2017
 ms.author: jejiang
-ms.openlocfilehash: 82f6527388017aadecf761871f5acb25eb100acb
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: 8fd8decfde1220be6aaa099c3afb24e8c1eecce4
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="develop-u-sql-with-python-r-and-csharp-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code で Azure Data Lake Analytics の Python、R、および CSharp を使用して U-SQL を開発する
-Visual Studio Code (VSCode) を使用して、U-SQL で Python、R、および CSharp 分離コードを記述し、Azure Data Lake サービスにジョブを送信する方法について説明します。 Data Lake Tools for VSCode の詳細については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」を参照してください。
+# <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Visual Studio Code で Azure Data Lake Analytics の Python、R、および C# を使用して U-SQL を開発する
+Visual Studio Code (VSCode) を使用して、U-SQL で Python、R、および C# 分離コードを記述し、Azure Data Lake サービスにジョブを送信する方法について説明します。 Data Lake Tools for VSCode の詳細については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」を参照してください。
 
 分離コードのカスタム コードを記述する前に、VSCode でフォルダーまたはワークスペースを開く必要があります。
 

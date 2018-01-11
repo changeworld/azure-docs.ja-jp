@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
 ms.openlocfilehash: 10d01d5d80e2d111d6b39598eed3612f80162b23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-an-application-gateway-by-using-path-based-routing-with-azure-cli-20"></a>Azure CLI 2.0 でパスベースのルーティングを使用してアプリケーション ゲートウェイを作成する
 

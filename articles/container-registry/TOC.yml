@@ -47,6 +47,8 @@
       href: ../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.json
     - name: レジストリによる認証
       href: container-registry-authentication.md
+    - name: クラシック レジストリのアップグレード
+      href: container-registry-upgrade.md
     - name: ACR webhook の使用
       href: ./container-registry-webhook.md
 - name: リファレンス

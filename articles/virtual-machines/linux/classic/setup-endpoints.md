@@ -1,6 +1,6 @@
 ---
 title: "クラシック Linux VM でのエンドポイントのセットアップ | Microsoft Docs"
-description: "Azure 上で Linux 仮想マシンとの通信を許可するように Azure クラシック ポータルで Linux VM のエンドポイントをセットアップする方法について説明します。"
+description: "Azure 上で Linux 仮想マシンとの通信を許可するように Azure Portal で Linux VM のエンドポイントをセットアップする方法について説明します"
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: cynthn
-ms.openlocfilehash: ec95f2eb1dfee728192dee325110728a7d079c67
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: bb82bfc4c5c85b9cacce907578326cab4e518766
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-set-up-endpoints-on-a-linux-classic-virtual-machine-in-azure"></a>Azure 上で Linux のクラシック仮想マシンにエンドポイントをセットアップする方法
 クラシック デプロイメント モデルを使用して Azure で作成したすべての Linux 仮想マシンが、プライベート ネットワーク チャネルを介して、同じクラウド サービスまたは仮想ネットワーク内の他の仮想マシンと自動的に通信できます。 ただし、インターネットまたは他の仮想ネットワークにあるコンピューターと通信するには、仮想マシンへの着信ネットワーク トラフィックを転送するエンドポイントが必要になります。 この記事は、 [Windows 仮想マシン](../../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)にも利用できます。

@@ -3,7 +3,7 @@ title: "ラボ内の VM を Azure DevTest Labs で再起動する | Microsoft Do
 description: "Azure DevTest Labs で仮想マシンを再起動する方法を説明します"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 8460f09e-482f-48ba-a57a-c95fe8afa001
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
-ms.author: tarcher
-ms.openlocfilehash: 4e46a7b21c8c9900ba61e9cf41000b341645133c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: v-craic
+ms.openlocfilehash: ffa669e2d07a93e9e5071ac8aab81ec14ea24eab
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs で再起動する
 この記事の手順に従うと、DevTest Labs で仮想マシンをすばやく簡単に再起動することができます。 VM を再起動する前に、次をご考慮ください。
@@ -53,6 +53,6 @@ ms.lasthandoff: 10/25/2017
 
 ![省略記号を使用して VM を再起動する](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 再起動の後、VM の管理ウィンドウで **[接続]** を選択すれば、VM に再接続できます。
 * [DevTest Labs Azure Resource Manager のクイックスタート テンプレート ギャラリー](https://github.com/Azure/azure-devtestlab/tree/master/Samples)を探索します。

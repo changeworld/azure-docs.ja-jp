@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: f533afebcb945a5ffe269ad8f21a095a81f54a18
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8a44542091ea4dddc214a4954766c63dacd3e2a2
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center 計画および運用ガイド
 このガイドは、所属組織が Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -46,7 +46,7 @@ ms.lasthandoff: 12/08/2017
 
 ![ロール](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center を使用すると、上記のようなさまざまな責任を果たすことができます。 For example:
+Security Center を使用すると、上記のようなさまざまな責任を果たすことができます。 例: 
 
 **Jeff (ワークロード所有者)**
 
@@ -178,7 +178,7 @@ Security Center の初期構成と推奨事項の適用を完了したら、次�
 
 Security Center の [概要] では、Azure リソースと接続済みの Azure 以外のリソースすべてのセキュリティが統合された 1 つのビューが表示されます。 以下の例は、対処すべき多くの問題を含む環境を示しています。
 
-![dashboard](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig10.png)
+![dashboard](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig11.png)
 
 > [!NOTE]
 > Security Center は、通常の運用上の手順には干渉しません。デプロイを受動的に監視し、有効にされたセキュリティ ポリシーに基づいて推奨事項を提供します。
@@ -205,7 +205,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 既存のリソースの状態を定期的に監視し、セキュリティ リスクの原因となった構成の変更、推奨されたベースラインからのズレ、およびセキュリティ アラートを特定する必要もあります。 出発点となるのは、Security Center のダッシュボードです。 ここで、主に 3 つの領域を定期的に確認します。
 
-![操作](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
+![[操作]](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. **[防止]** セクション パネルでは、主要なリソースにすばやくアクセスできます。 コンピューティング、ネットワーク、ストレージとデータ、およびアプリケーションを監視するには、このオプションを使用します。
 2. **[推奨事項]** パネルでは、Security Center の推奨事項を確認できます。 継続的な監視の実施中、推奨事項は毎日表示されるわけではありません。これは、Security Center の初回の設定時にすべての推奨事項に対処したためです。 この理由から、このセクションには毎日新しい情報が表示されるとは限らず、必要に応じてアクセスするだけで十分です。
@@ -254,7 +254,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このドキュメントでは、Security Center の導入を計画する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)

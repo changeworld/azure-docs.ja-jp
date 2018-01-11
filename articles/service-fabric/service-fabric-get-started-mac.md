@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
 ms.openlocfilehash: 328b2778a68e32d95b666124bf7bba969a5f52a6
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]

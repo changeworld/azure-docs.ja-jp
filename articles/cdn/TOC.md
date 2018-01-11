@@ -8,7 +8,9 @@
 ## 統合
 ### [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
-### [Storage](cdn-create-a-storage-account-with-cdn.md)
+### Storage
+#### [ストレージ アカウントの統合](cdn-create-a-storage-account-with-cdn.md)
+#### [SAS ストレージのサポート](cdn-sas-storage-support.md)
 ### [クロス オリジン リソース共有](cdn-cors.md)
 ### [カスタム ドメインを CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
 ### [カスタム ドメインで HTTPS を構成する](cdn-custom-ssl.md)
@@ -18,7 +20,7 @@
 ####[メディア ストリーミングの最適化](cdn-media-streaming-optimization.md)
 ####[動的サイト アクセラレーション](cdn-dynamic-site-acceleration.md)
  
-## 管理
+## [管理]
 ### [Azure PowerShell を使用して管理する](cdn-manage-powershell.md)
 ### [国ごとにアクセスを制限する](cdn-restrict-access-by-country.md)
 ### [ファイル圧縮によるパフォーマンスの向上](cdn-improve-performance.md)
@@ -63,7 +65,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
-## [REST ()](/rest/api/cdn/)
+## [REST](/rest/api/cdn/)
 
 # リソース
 ##  [ルール エンジンのリファレンス](cdn-rules-engine-reference.md)

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/03/2017
+ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: ff9bf262fecd7307a1150dd6ea59f0f7c4b87258
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: e14de80dc1fdf82c57f2a38d4ae2719ec83e01ed
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Store を使用する
 
@@ -46,11 +46,11 @@ HDInsight クラスターでは、2 つの方法で Data Lake Store を使用で
 
 | HDInsight クラスターの種類 | 既定ストレージとしての Data Lake Store | 追加ストレージとしての Data Lake Store| メモ |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight Version 3.6 | あり | あり | |
-| HDInsight Version 3.5 | あり | あり | HBase は例外|
-| HDInsight Version 3.4 | いいえ | あり | |
-| HDInsight Version 3.3 | いいえ | いいえ | |
-| HDInsight Version 3.2 | いいえ | あり | |
+| HDInsight Version 3.6 | [はい] | [はい] | |
+| HDInsight Version 3.5 | [はい] | [はい] | HBase は例外|
+| HDInsight Version 3.4 | いいえ  | [はい] | |
+| HDInsight Version 3.3 | いいえ  | いいえ  | |
+| HDInsight Version 3.2 | いいえ  | [はい] | |
 | Storm | | |Data Lake Store を使って、Storm トポロジからデータを書き込むことができます。 また、Data Lake Store を、Storm トポロジから読み取ることができる参照データとして使用することもできます。|
 
 Data Lake Store を追加ストレージ アカウントとして使っても、クラスターから Azure ストレージに対する読み取り/書き込みのパフォーマンスや機能には影響しません。
@@ -80,13 +80,13 @@ Data Lake Store を既定のストレージとして HDInsight がデプロイ�
 
 ## <a name="use-data-lake-store-as-additional-storage"></a>Data Lake Store を追加のストレージとして使用する
 
-Data Lake Store を、クラスターの追加のストレージとして使用することもできます。 この場合、クラスターの既定のストレージとしては、Azure Storage Blob アカウントまたは Data Lake Store アカウントを使うことができます。 追加のストレージとしての Data Lake Store に格納されているデータに対して HDInsight ジョブを実行する場合は、ファイルへの完全修飾パスを使う必要があります。 For example:
+Data Lake Store を、クラスターの追加のストレージとして使用することもできます。 この場合、クラスターの既定のストレージとしては、Azure Storage Blob アカウントまたは Data Lake Store アカウントを使うことができます。 追加のストレージとしての Data Lake Store に格納されているデータに対して HDInsight ジョブを実行する場合は、ファイルへの完全修飾パスを使う必要があります。 例: 
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
 URL に **cluster_root_path** がないことに注意してください。 これは、Data Lake Store が既定のストレージでないためです。必要な操作は、ファイルへのパスを指定することだけです。
 
-追加のストレージとして Data Lake Store を使うには、ファイルが保存されているパスへのアクセスをサービス プリンシパルに許可することだけが必要です。  For example:
+追加のストレージとして Data Lake Store を使うには、ファイルが保存されているパスへのアクセスをサービス プリンシパルに許可することだけが必要です。  例: 
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -135,10 +135,10 @@ Data Lake Store にアクセスできる HDInsight クラスターを作成す�
 * [Azure テンプレートの使用](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、HDInsight で HDFS と互換性のある Azure Data Lake Store を使う方法について説明しました。 これにより、収集したデータを長期にわたって格納できるスケーラブルなソリューションを構築できます。さらに HDInsight を使用すると、格納されている構造化データと非構造化データから有益な情報を得ることができます。
 
-詳細については、次を参照してください。
+詳細については、「
 
 * [Azure HDInsight の概要][hdinsight-get-started]
 * [Azure Data Lake Store の概要](../data-lake-store/data-lake-store-get-started-portal.md)

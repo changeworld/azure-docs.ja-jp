@@ -16,10 +16,10 @@ ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: 65b5389837dc1d1693b1c4326b98264c8d75fd06
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]

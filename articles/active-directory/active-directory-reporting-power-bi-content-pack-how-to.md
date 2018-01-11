@@ -3,21 +3,21 @@ title: "Azure Active Directory Power BI コンテンツ パックの使用方法
 description: "Azure Active Directory Power BI コンテンツ パックの使用方法について説明します。"
 services: active-directory
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/18/2017
+ms.date: 12/06/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ba3f9f74fd7ba658b4e082775e471ed65a386fed
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 503b3f4c576382d8ce965d1f90aadda32c819a0b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Azure Active Directory Power BI コンテンツ パックの使用方法
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/18/2017
 5.  確認を求められたら、Azure AD のテナント ID を入力し、**[次へ]** をクリックします。
 
     > [!TIP] 
-    > Office 365/Azure AD テナントのテナント ID を取得するには、Azure AD ポータルにログインして目的のディレクトリまで移動し、https://manage.windowsazure.com/woodgroveonline.com#Workspaces/ActiveDirectoryExtension/Directory/<tenantid>/directoryQuickStart という URL から ID をコピーするのが簡単です。
+    > Office 365 / Azure AD テナントのテナント ID を取得するには、Azure AD ポータルにサインインして目的のディレクトリまで移動し、[**[プロパティ]** ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)から **[ディレクトリ ID]** をコピーするのが簡単です。
 
     ![Azure Active Directory Power BI コンテンツ パック](./media/active-directory-reporting-power-bi-content-pack-how-to/04.png) 
 

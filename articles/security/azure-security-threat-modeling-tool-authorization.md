@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 312a66544a5e64daa86b4902b57d4050f1f66af5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fc92916b4164990059010645daa29e72b7143cb
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム: 承認 | 対応策 
 | 製品/サービス | 記事 |
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 | **データベース** | <ul><li>[最小権限のアカウントを使用して Database サーバーに接続していることを確認する](#privileged-server)</li><li>[テナントがお互いのデータにアクセスできないように行レベル セキュリティの RLS を実装する](#rls-tenants)</li><li>[Sysadmin ロールには必要かつ有効なユーザーのみを割り当てる](#sysadmin-users)</li></ul> |
 | **IoT クラウド ゲートウェイ** | <ul><li>[最小権限のトークンを使用してクラウド ゲートウェイに接続する](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[送信専用のアクセス許可 SAS キーを使用してデバイス トークンを生成する](#sendonly-sas)</li><li>[Event Hub への直接アクセスを提供するアクセス トークンは使用しない](#access-tokens-hub)</li><li>[必要最小限のアクセス許可が付与されている SAS キーを使用して Event Hub に接続する](#sas-minimum-permissions)</li></ul> |
-| **Azure Document DB** | <ul><li>[可能な限り、リソース トークンを使用して DocumentDB に接続する](#resource-docdb)</li></ul> |
+| **Azure Document DB** | <ul><li>[可能な限りリソース トークンを使用して Azure Cosmos DB に接続する](#resource-docdb)</li></ul> |
 | **Azure の信頼の境界** | <ul><li>[RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する](#grained-rbac)</li></ul> |
 | **Service Fabric の信頼の境界** | <ul><li>[RBAC を使用してクラスター操作へのクライアントのアクセスを制限する](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[必要に応じて、セキュリティのモデリングを実行し、フィールド レベルのセキュリティを使用する](#modeling-field)</li></ul> |
@@ -224,7 +224,7 @@ WHERE userID=:id < - session var
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | リソース トークンは、DocumentDB アクセス許可のリソースに関連付けられていて、データベースのユーザーと、ユーザーが持つ特定の DocumentDB アプリケーションのリソース (コレクション、ドキュメントなど) へのアクセス許可の間のリレーションシップをキャプチャします。 クライアントにマスター キーや読み取り専用キーを知らせたくない場合、たとえば、クライアントがモバイル クライアント、デスクトップ クライアントなどのエンド ユーザー アプリケーションの場合は、常にリソース トークンを使用して DocumentDB にアクセスします。マスター キーや読み取り専用キーは、こうしたキーを安全に格納できるバックエンド アプリケーションから使用してください。|
+| **手順** | リソース トークンは、Azure Cosmos DB アクセス許可のリソースに関連付けられていて、データベースのユーザーと、ユーザーが持つ特定の Azure Cosmos DB アプリケーションのリソース (コレクション、ドキュメントなど) へのアクセス許可の間のリレーションシップをキャプチャします。 クライアントにマスター キーや読み取り専用キーを知らせたくない場合、たとえば、クライアントがモバイル クライアント、デスクトップ クライアントなどのエンド ユーザー アプリケーションの場合は、常にリソース トークンを使用して Azure Cosmos DB にアクセスします。マスター キーや読み取り専用キーは、こうしたキーを安全に格納できるバックエンド アプリケーションから使用してください。|
 
 ## <a id="grained-rbac"></a>RBAC を使用して Azure サブスクリプションへのアクセスをきめ細かく管理する
 

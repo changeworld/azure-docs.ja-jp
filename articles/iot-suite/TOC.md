@@ -48,6 +48,10 @@
 ### [コネクティッド ファクトリ ソリューションの概要](iot-suite-connected-factory-overview.md)
 ### [コネクティッド ファクトリ ソリューションのチュートリアル](iot-suite-connected-factory-sample-walkthrough.md)
 
+## デバイスのシミュレーション
+### [デバイス シミュレーションのデプロイ](iot-suite-device-simulation-deploy.md)
+### [デバイス シミュレーションの確認](iot-suite-device-simulation-explore.md)
+
 # ハウツー ガイド
 ## リモート監視
 ### [高度な監視の実行](iot-suite-remote-monitoring-monitor.md)
@@ -71,6 +75,7 @@
 ### [コネクティッド ファクトリ用のゲートウェイをデプロイする](iot-suite-connected-factory-gateway-deployment.md)
 ### [コネクテッド ファクトリをカスタマイズする](iot-suite-connected-factory-customize.md)
 ### [コネクテッド ファクトリに OPC Publisher を使用する](iot-suite-connected-factory-publisher.md)
+### [コネクテッド ファクトリを構成する](iot-suite-connected-factory-configure.md)
 ## [azureiotsuite.com のアクセス許可](iot-suite-permissions.md)
 
 # リファレンス

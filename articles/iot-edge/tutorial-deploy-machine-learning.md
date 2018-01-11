@@ -6,50 +6,92 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 12/13/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e061e599f365bf3d343cb59b8dc6a61e06627517
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 2afdb257421b1333f451eb9d0dd4c2af5a12e946
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
-IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、[Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成した、シミュレートされた IoT Edge デバイスのセンサー データに基づいて、デバイスが失敗するタイミングを予測する Azure Machine Learning モジュールを展開します。 学習内容は次のとおりです。 
+IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、シミュレートされた IoT Edge デバイス上のセンサー データに基づいて、デバイスが故障するタイミングを予測する Azure Machine Learning モジュールを展開します。この IoT Edge デバイスは、[Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成しています。 
+
+このチュートリアルで学習する内容は次のとおりです。 
 
 > [!div class="checklist"]
+> * Azure Machine Learning モジュールを作成する
+> * Azure コンテナー レジストリにモジュール コンテナーをプッシュする
 > * Azure Machine Learning モジュールを IoT Edge デバイスに展開する
 > * 生成されたデータを表示する
 
-独自の [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/) モデルをソリューションで使用するには、IoT Edge 用に[モデルを展開](https://aka.ms/aml-iot-edge-doc)し、[Azure Container Registry](../container-registry/index.yml)、Docker などのコンテナー レジストリでホストします。
+このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成される温度データを読み取り、故障 (異常と呼びます) が予測されるときにだけ、上流の Azure IoT Hub にメッセージを送信します。 
+
 
 ## <a name="prerequisites"></a>前提条件
 
 * クイック スタートまたは最初のチュートリアルで作成した Azure IoT Edge デバイス。
 * IoT Edge デバイスの接続先 IoT ハブに対する IoT ハブ接続文字列。
-* Azure ML コンテナー
+* Azure Machine Learning アカウント。 アカウントを作成するには、[Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-accounts)に関するセクションの手順に従ってください。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
+* お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration)」の手順に従います。
 
 ## <a name="create-the-azure-ml-container"></a>Azure ML コンテナーを作成する
-Azure ML コンテナーを作成するには、[Azure IoT Edge の AI ツールキット](https://aka.ms/aml-iot-edge-anomaly-detection)に関するページの手順に従います。
+このセクションでは、トレーニング済みのモデル ファイルをダウンロードして、Azure ML コンテナーに変換します。  
+
+Azure ML のモジュール管理を実行しているマシンで、GitHub の Azure ML IoT Toolkit から [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) と [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) をダウンロードして保存します。 これらのファイルにはトレーニング済みの機械学習モデルが定義されており、このモデルを IoT Edge デバイスに展開します。 
+
+このトレーニング済みモデルを使用して、IoT Edge デバイスに展開できるコンテナーを作成します。
+
+```cmd
+az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
+```
+この例のサービス名 *machinelearningmodule* は、docker コンテナー イメージの名前になります。
+
+### <a name="view-the-container-repository"></a>コンテナー リポジトリを表示する
+
+コンテナー イメージが正常に作成され、機械学習環境に関連付けられている Azure のコンテナー リポジトリに格納されたことを確認してください。
+
+1. [Azure Portal](https://portal.azure.com) の **[すべてのサービス]** に移動し、**[コンテナー レジストリ]** を選択します。
+2. お使いのレジストリを選択します。 名前の先頭に **mlcr** と付くはずで、モジュール管理のセットアップで使用したリソース グループ、場所、サブスクリプションに属します。
+3. **[アクセス キー]** を選択します。
+4. **ログイン サーバー**、**ユーザー名**、および **パスワード** をコピーします。  Edge デバイスからレジストリへのアクセスに必要となります。
+5. **[リポジトリ]** を選択します。
+6. **machinelearningmodule** を選択します。
+7. これでコンテナー イメージの完全なパスが取得できました。 次のセクションで使用するために、イメージのパスを書き留めておきます。 これは次のようになります: **< registry_name >.azureacr.io/machinelearningmodule:1**
+
+## <a name="add-registry-credentials-to-your-edge-device"></a>レジストリ資格情報を Edge デバイスに追加する
+
+Edge デバイスを実行しているコンピューターの Edge ランタイムに、レジストリの資格情報を追加します。 このコマンドにより、コンテナーを取得するためのアクセス権がランタイムに付与されます。
+
+Linux:
+   ```cmd
+   sudo iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password> 
+   ```
+
+Windows:
+   ```cmd
+   iotedgectl login --address <registry-login-server> --username <registry-username> --password <registry-password> 
+   ```
 
 ## <a name="run-the-solution"></a>ソリューションを実行する
 
 1. [Azure Portal](https://portal.azure.com) で、IoT ハブに移動します。
 1. **IoT Edge (プレビュー)** に移動し、IoT Edge デバイスを選択します。
-1. **[Set modules]\(モジュールを設定\)** を選択します。
-1. **[Add IoT Edge module]\(IoT Edge モジュールの追加\)** を選択します。
-1. **[名前]** フィールドに「`tempSensor`」と入力します。
-1. **[イメージの URI]** フィールドに「`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`」と入力します。
-1. 他の設定はそのままにして、**[保存]** を選択します。
-1. **モジュールの追加**手順で、もう一度 **[Add IoT Edge module]\(IoT Edge モジュールの追加\)** を選択します。
-1. **[名前]** フィールドに、前のセクションで作成したコンテナーの名前を入力します。 名前を見つけるための情報については、[Azure IoT Edge の AI ツールキット](https://aka.ms/aml-iot-edge-anomaly-detection)に関するページをご覧ください。
-1. **[イメージ]** フィールドに、前のセクションで作成したコンテナーのイメージ URI を入力します。 イメージを見つけるための情報については、[Azure IoT Edge の AI ツールキット](https://aka.ms/aml-iot-edge-anomaly-detection)に関するページをご覧ください。
-1. **[Save]** をクリックします。
-1. **モジュールの追加**手順に戻り、**[次へ]** をクリックします。
-1. モジュールのルートを更新します。
-1. **ルートの指定**手順で、以下の JSON をテキスト ボックスにコピーします。 モジュールによって、すべてのメッセージが Edge ランタイムに発行されます。 それらのメッセージが流れる場所は、ランタイム内の宣言型ルールによって定義されます。 このチュートリアルでは、2 つのルートが必要です。 1 つ目のルートは、すべての Azure Machine Learning モジュールが使用する "amlInput" エンドポイント経由で、温度センサーから機械学習モジュールにメッセージを転送します。 2 つ目のルートは、機械学習モジュールから IoT ハブにメッセージを転送します。 このルートでは、"amlOutput" は、すべての Azure Machine Learning モジュールがデータを出力するために使用するエンドポイントです。また、"$upstream" は特別な転送先で、Edge Hub に対して、メッセージを IoT Hub に送信するように指示します。 
+1. **[Set modules]\(モジュールの設定\)** を選びます。
+1. 以前 IoT Edge デバイスに tempSensor モジュールを展開したことがある場合は、自動で入力されていることがあります。 モジュールの一覧にない場合は追加します。
+    1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
+    2. **[名前]** フィールドに「`tempSensor`」と入力します。
+    3. **[イメージの URI]** フィールドに「`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`」と入力します。
+    4. **[保存]** を選択します。
+1. 作成済みの機械学習モジュールを追加します。
+    1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
+    1. **[名前]** フィールドに「`machinelearningmodule`」と入力します。
+    1. **[イメージ]** フィールドに、イメージ アドレスを入力します (`<registry_name>.azurecr.io/machinelearningmodule:1` など)。
+    1. **[保存]** を選択します。
+1. **[モジュールの追加]** 手順に戻り、**[次へ]** を選択します。
+1. **[Specify Routes] (ルートの指定)** の手順で、下記の JSON をテキスト ボックスにコピーします。 1 つ目のルートは、すべての Azure Machine Learning モジュールが使用する "amlInput" エンドポイント経由で、温度センサーから機械学習モジュールにメッセージを転送します。 2 つ目のルートは、機械学習モジュールから IoT ハブにメッセージを転送します。 このルートでは、"amlOutput" はエンドポイントであり、すべての Azure Machine Learning モジュールでデータの出力に使用されます。"$upstream" は IoT Hub を指します。 
 
     ```json
     {
@@ -60,13 +102,24 @@ Azure ML コンテナーを作成するには、[Azure IoT Edge の AI ツール
     }
     ``` 
 
-1. **[次へ]** をクリックします。 
-1. "テンプレートのレビュー" 手順で、[送信] をクリックします。 
-1. デバイスの詳細ページに戻り、[更新] をクリックします。  新しい "machinelearningmodule" が、"tempSensor モジュール" および "IoT Edge ランタイム" と一緒に実行されています。
+1. **[次へ]**を選択します。 
+1. **[Review template]\(テンプレートのレビュー\)** ステップで、**[送信]** を選びます。 
+1. デバイスの詳細ページに戻り、**[更新]** を選びます。  新しい **machinelearningmodule** が、**tempSensor** モジュールおよび IoT Edge ランタイム モジュールと共に実行されていることがわかります。
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
- VS Code で、**[表示]、[コマンド パレット]、[IoT: Start monitoring D2C Message]\(IoT: D2C メッセージの監視を開始\)** メニュー コマンドを使用して、IoT ハブに届くデータを監視します。 
+Visual Studio Code 用の Azure IoT Toolkit の拡張機能を使用して、IoT Edge デバイスから送信される device-to-cloud メッセージを表示できます。 
+
+1. Visual Studio Code で、**[IoT Hub Devices]\(IoT Hub デバイス\)** を選択します。 
+2. **[...]** を選択した後、メニューで **[Set IoT Hub Connection String]\(IoT Hub の接続文字列の設定\)** を選択します。 
+
+   ![IoT Hub デバイスのその他のメニュー](./media/tutorial-deploy-machine-learning/set-connection.png)
+
+3. ページの上部に表示されるテキスト ボックスに、IoT Hub の iothubowner の接続文字列を入力します。 IoT Hub デバイスの一覧に、お使いの IoT Edge デバイスが表示されます。
+4. もう一度 **[...]** を選択した後で、**[Start monitoring D2C message]\(D2C メッセージの監視を開始する\)** を選択します。
+5. 5 秒おきに tempSensor からメッセージを受信することを確認します。このメッセージには、machinelearningmodule によってデバイスの正常性に関する評価が追加されています。 
+
+   ![メッセージ本文の Azure ML の応答](./media/tutorial-deploy-machine-learning/ml-output.png)
 
 ## <a name="next-steps"></a>次のステップ
 

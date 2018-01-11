@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2017
 ms.author: cherylmc
 ms.openlocfilehash: eb8fe1ea6d4de066744a6277c1aec96073c1703c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 

@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 279838150c94ab04eaea08dc30ee8b0f9f7ee3d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2c8b8cab312f581a9ceb14179a0a7cab94516d6
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="start-monitoring-your-nodejs-web-application"></a>Node.js Web アプリケーションの監視を開始する
 
@@ -28,7 +28,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 
 - Azure サブスクリプションと既存の Node.js Web アプリケーションが必要です。
 
-Node.js Web アプリケーションがない場合は、[Node.js Web アプリを作成するためのクイックスタート](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs)に従って作成できます。
+Node.js Web アプリケーションがない場合は、[Node.js Web アプリを作成するためのクイックスタート](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)に従って作成できます。
  
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -67,11 +67,11 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    npm install applicationinsights --save
    ```
 
-3. アプリの最初の .js ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイック スタート アプリ](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs)を使用している場合は、index.js ファイルを変更します。 
+3. アプリの最初の .js ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイック スタート アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)を使用している場合は、index.js ファイルを変更します。 &lt;instrumentation_key&gt; をアプリケーションのインストルメンテーション キーに置き換えます。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
-   appInsights.setup('<instrumentation_key').start();
+   appInsights.setup('<instrumentation_key>').start();
    ```
 
 4. アプリを再起動します。
@@ -135,4 +135,4 @@ Node.js の監視に関する詳細については、[App Insights Node.js の�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics)
+> [パフォーマンスの問題の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

@@ -27,17 +27,17 @@
 ### [エンタープライズ向けの予約インスタンスの使用について](billing-understand-reserved-instance-usage-ea.md)
 
 ## [サブスクリプションの管理]
+### [サブスクリプションまたは管理グループを検索する](billing-enterprise-mgmt-grp-find.md)
 ### [管理者ロールを管理する](billing-add-change-azure-subscription-administrator.md)
 ### [サブスクリプションの所有権を転送する](billing-subscription-transfer.md)
 ### [無効にしたサブスクリプションを再びアクティブにする](billing-subscription-become-disable.md)
 ### [無料サブスクリプションからアップグレードする](billing-upgrade-azure-subscription.md)
 ### [サブスクリプション プランの切り替え](billing-how-to-switch-azure-offer.md)
+### [Azure AD テナントのリンク](../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json)
 ### [サブスクリプションを取り消す](billing-how-to-cancel-azure-subscription.md)
-### [サブスクリプションまたは管理グループを検索する](billing-enterprise-mgmt-grp-find.md)
 ## アカウントを管理する
 ### [プロファイルを編集する](billing-how-to-change-azure-account-profile.md)
 ### [支払情報を更新する](billing-how-to-change-credit-card.md)
-### [Office 365 テナントをリンクする](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [請求書によるサブスクリプションの支払い](billing-how-to-pay-by-invoice.md)
 ## [予約 VM インスタンスを管理する](billing-manage-reserved-vm-instance.md)
 ## トラブルシューティング

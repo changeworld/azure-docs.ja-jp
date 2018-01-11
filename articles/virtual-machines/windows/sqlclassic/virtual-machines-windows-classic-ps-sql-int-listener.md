@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.openlocfilehash: fea70b389b1f1d6af963e3f14fdc48e8d857dd53
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Azure で AlwaysOn 可用性グループの ILB リスナーを構成する
 > [!div class="op_single_selector"]

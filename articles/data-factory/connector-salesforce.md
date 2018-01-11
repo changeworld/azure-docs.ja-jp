@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jingwang
-ms.openlocfilehash: d0db2bd3a7e4d93a8d0690fcb4535c4552cef7ab
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: d5bad9a3be9c3165e5d26001353b8955ff81a764
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="copy-data-fromto-salesforce-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,8 +65,8 @@ Salesforce のリンクされたサービスでは、次のプロパティがサ
 | type |type プロパティを **Salesforce**に設定する必要があります。 |はい |
 | environmentUrl | Salesforce インスタンスの URL を指定します。 <br> 既定値は `"https://login.salesforce.com"` です。 <br> - サンドボックスからデータをコピーするには、`"https://test.salesforce.com"` を指定します。 <br> - カスタム ドメインからデータをコピーするには、`"https://[domain].my.salesforce.com"`のように指定します。 |いいえ |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい |
-| パスワード |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 |あり |
-| securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。<br/><br/>このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にセキュリティ トークンを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 |あり |
+| パスワード |ユーザー アカウントのパスワードを指定します。<br/><br/>このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 |あり |
+| securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。<br/><br/>このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にセキュリティ トークンを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 |あり |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 
 >[!IMPORTANT]

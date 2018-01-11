@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shlo
-ms.openlocfilehash: 0b05971b5ab8ec3fd14dd4ce14d07df478e1dcc9
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 5317e2426111a813960db462ac6d6ab3980d0e00
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage"></a>Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
-このチュートリアルでは、Azure SQL Database 内のテーブルから Azure Blob Storage に差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
+このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
 
 
 > [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
+> この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開されている Data Factory サービスのバージョン 1 を使用する場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 
 このチュートリアルでは、以下の手順を実行します。
 
 > [!div class="checklist"]
-> * 基準値を格納するためのデータ ストアを準備します。   
+> * 基準値を格納するためのデータ ストアを準備します。
 > * データ ファクトリを作成します。
 > * リンクされたサービスを作成します。 
-> * ソース データセット、シンク データセット、基準値データセットを作成します。
+> * ソース データセット、シンク データセット、および基準値データセットを作成します。
 > * パイプラインを作成します。
 > * パイプラインを実行します。
 > * パイプラインの実行を監視します。 
@@ -43,31 +43,34 @@ ms.lasthandoff: 12/06/2017
 
 ![データの増分読み込み](media\tutorial-Incrementally-copy-powershell\incrementally-load.png)
 
-このソリューションを作成するにあたっての重要な手順を次に示します。 
+このソリューションを作成するための重要な手順を次に示します。 
 
 1. **基準値列を選択する**。
     ソース データ ストアのいずれか 1 つの列を選択します。実行ごとに新しいレコードまたは更新されたレコードを切り分ける目的で使用されます。 通常、行が作成または更新されたときに常にデータが増える列を選択します (last_modify_time、ID など)。 この列の最大値が基準値として使用されます。
+
 2. **基準値を格納するためのデータ ストアを準備する**。   
-    このチュートリアルでは、Azure SQL データベースに基準値を格納します。
+    このチュートリアルでは、SQL データベースに基準値を格納します。
+    
 3. **次のワークフローを含んだパイプラインを作成する**。 
     
     このソリューションのパイプラインには、次のアクティビティがあります。
   
-    1. 2 つの**ルックアップ** アクティビティを作成する。 1 つ目のルックアップ アクティビティは、前回の基準値を取得するために使用します。 2 つ目のルックアップ アクティビティは、新しい基準値を取得するために使用します。 これらの基準値は、コピー アクティビティに渡されます。 
-    2. **コピー アクティビティ**を作成する。これは基準値列の値がかつての基準値より大きく、かつ新しい基準値よりも小さい行をソース データ ストアからコピーするアクティビティです。 その差分データが、ソース データ ストアから新しいファイルとして BLOB ストレージにコピーされます。 
-    3. **ストアド プロシージャ アクティビティ**を作成する。これはパイプラインの次回実行に備えて基準値を更新するためのアクティビティです。 
+    * 2 つのルックアップ アクティビティを作成する。 1 つ目のルックアップ アクティビティは、前回の基準値を取得するために使用します。 2 つ目のルックアップ アクティビティは、新しい基準値を取得するために使用します。 これらの基準値は、コピー アクティビティに渡されます。 
+    * コピー アクティビティを作成する。これは基準値列の値がかつての基準値より大きく、かつ新しい基準値よりも小さい行をソース データ ストアからコピーするアクティビティです。 その差分データが、ソース データ ストアから新しいファイルとして BLOB ストレージにコピーされます。 
+    * ストアド プロシージャ― アクティビティを作成する。これはパイプラインの次回実行に備えて基準値を更新するためのアクティビティです。 
 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure SQL データベース**。 **ソース** データ ストアとして使うデータベースです。 Azure SQL データベースがない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に書かれている手順を参照して作成してください。
-* **Azure Storage アカウント**。 **シンク** データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。 **adftutorial** という名前のコンテナーを作成します。 
-* **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。
+* **Azure SQL データベース**。 ソース データ ストアとして使うデータベースです。 SQL データベースがない場合の作成手順については、「[Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を参照してください。
+* **Azure Storage**。 シンク データ ストアとして使用する BLOB ストレージです。 Azure ストレージ アカウントがない場合の作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。 adftutorial という名前のコンテナーを作成します。 
+* **Azure PowerShell**。 「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-azurerm-ps)」に記載されている手順に従います。
 
-### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Azure SQL データベースにデータ ソース テーブルを作成する
-1. **SQL Server Management Studio**を開きます。 **サーバー エクスプローラー**で目的のデータベースを右クリックして **[新しいクエリ]** を選択します。
-2. Azure SQL データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをソース データ ストアとして作成します。  
+### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL データベースにデータ ソース テーブルを作成する
+1. SQL Server Management Studio を開きます。 **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
+
+2. SQL データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをデータ ソース ストアとして作成します。 
     
     ```sql
     create table data_source_table
@@ -86,7 +89,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     (4, 'dddd','9/4/2017 3:21:00 AM'),
     (5, 'eeee','9/5/2017 8:06:00 AM');
     ```
-    このチュートリアルでは、**LastModifytime** を**基準値**列として使用します。  ソース データ ストアに格納されているデータを次の表に示します。
+    このチュートリアルでは、LastModifytime を基準値列として使用します。 データ ソース ストアに格納されているデータを次の表に示します。
 
     ```
     PersonID | Name | LastModifytime
@@ -98,8 +101,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     5 | eeee | 2017-09-05 08:06:00.000
     ```
 
-### <a name="create-another-table-in-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを SQL データベースに作成する
-1. Azure SQL データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。  
+### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを SQL データベースに作成する
+1. SQL データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。  
     
     ```sql
     create table watermarktable
@@ -109,13 +112,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     WatermarkValue datetime,
     );
     ```
-3. ソース データ ストアのテーブル名と組み合わせて高基準値の既定**値**を設定します   (このチュートリアルでは、**data_source_table** をテーブル名とします)。
+2. ソース データ ストアのテーブル名と組み合わせて高基準値の既定値を設定します。 このチュートリアルでは、テーブル名は data_source_table です。
 
     ```sql
     INSERT INTO watermarktable
     VALUES ('data_source_table','1/1/2010 12:00:00 AM')    
     ```
-4. `watermarktable` テーブル内のデータを確認します。
+3. `watermarktable` テーブル内のデータを確認します。
     
     ```sql
     Select * from watermarktable
@@ -128,9 +131,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     data_source_table | 2010-01-01 00:00:00.000
     ```
 
-### <a name="create-a-stored-procedure-in-azure-sql-database"></a>Azure SQL データベースにストアド プロシージャを作成する 
+### <a name="create-a-stored-procedure-in-your-sql-database"></a>SQL データベースにストアド プロシージャを作成する 
 
-次のコマンドを実行して、Azure SQL データベースにストアド プロシージャを作成します。
+次のコマンドを実行して、SQL データベースにストアド プロシージャを作成します。
 
 ```sql
 CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -145,14 +148,15 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
-1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
+## <a name="create-a-data-factory"></a>Data Factory を作成する
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定してコマンドを実行します。 例: `"adfrg"`。 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
-    リソース グループが既に存在する場合、上書きしないようお勧めします。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+    リソース グループが既に存在する場合は、上書きされないようにすることができます。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+
 2. データ ファクトリの場所の変数を定義します。 
 
     ```powershell
@@ -163,11 +167,12 @@ END
     ```powershell
     New-AzureRmResourceGroup $resourceGroupName $location
     ``` 
-    リソース グループが既に存在する場合、上書きしないようお勧めします。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。 
-3. データ ファクトリ名の変数を定義します。 
+    リソース グループが既に存在する場合は、上書きされないようにすることができます。 `$resourceGroupName` 変数に別の値を割り当てて、コマンドをもう一度実行します。
+
+4. データ ファクトリ名の変数を定義します。 
 
     > [!IMPORTANT]
-    >  データ ファクトリ名は、グローバルに一意となるように更新してください。 たとえば、ADFTutorialFactorySP1127 です。 
+    >  データ ファクトリ名は、グローバルに一意になるように更新してください。 たとえば、ADFTutorialFactorySP1127 とします。 
 
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
@@ -180,20 +185,21 @@ END
 
 以下の点に注意してください。
 
-* Azure Data Factory の名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
+* データ ファクトリの名前はグローバルに一意にする必要があります。 次のエラーが発生した場合は、名前を変更してからもう一度実行してください。
 
     ```
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
-* Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**または**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
-* 現在、Data Factory バージョン 2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+
+* Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者または所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
+* 現在、Data Factory バージョン 2 でデータ ファクトリを作成できるリージョンは、米国東部、米国東部 2、および西ヨーロッパだけです。 データ ファクトリで使用するデータ ストア (Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
-データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、Azure ストレージ アカウントと Azure SQL データベースに対するリンクされたサービスを作成します。 
+データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、ストレージ アカウントと SQL データベースに対するリンクされたサービスを作成します。 
 
-### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
-1. 以下の内容を記述した **AzureStorageLinkedService.json** という名前の JSON ファイルを **C:\ADF** フォルダー内に作成します (ADF フォルダーがない場合は作成します)。 ファイルを保存する前に、`<accountName>` と `<accountKey>` を Azure ストレージ アカウントの名前とキーに置き換えます。
+### <a name="create-a-storage-linked-service"></a>ストレージのリンクされたサービスを作成するには
+1. 次の内容を記述した AzureStorageLinkedService.json という名前の JSON ファイルを C:\ADF フォルダーに作成します  (ADF フォルダーが存在しない場合は作成してください)。`<accountName>` と `<accountKey>` を、使用するストレージ アカウントの名前とキーに置き換えてからファイルを保存してください。
 
     ```json
     {
@@ -209,8 +215,9 @@ END
         }
     }
     ```
-2. **Azure PowerShell** で **ADF** フォルダーに切り替えます。
-3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureStorageLinkedService** を作成します。 次の例では、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡しています。 
+2. PowerShell で ADF フォルダーに切り替えます。
+
+3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureStorageLinkedService を作成します。 次の例では、*ResourceGroupName* パラメーターと *DataFactoryName* パラメーターの値を渡しています。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -225,8 +232,8 @@ END
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureStorageLinkedService
     ```
 
-### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
-1. 以下の内容を記述した **AzureSQLDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADF** フォルダー内に作成します (ADF フォルダーがない場合は作成します)。 **&lt;server&gt;、&lt;database&gt;、&lt;user id&gt;、&lt;password&gt;** を実際の Azure SQL サーバーの名前、データベース、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
+### <a name="create-a-sql-database-linked-service"></a>SQL Database のリンクされたサービスを作成する
+1. 次の内容を記述した AzureSQLDatabaseLinkedService.json という名前の JSON ファイルを C:\ADF フォルダーに作成します  (ADF フォルダーが存在しない場合は作成してください)。&lt;server&gt;、&lt;database&gt;、&lt;user id&gt;、&lt;password&gt; を実際のサーバーの名前、データベース、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
 
     ```json
     {
@@ -242,8 +249,9 @@ END
         }
     }
     ```
-1. **Azure PowerShell** で **ADF** フォルダーに切り替えます。
-2. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス **AzureSQLDatabaseLinkedService** を作成します。 
+2. PowerShell で ADF フォルダーに切り替えます。
+
+3. **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを実行して、リンクされたサービス AzureSQLDatabaseLinkedService を作成します。 
 
     ```powershell
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -282,8 +290,9 @@ END
     }
    
     ```
-    このチュートリアルでは、**data_source_table** というテーブル名を使用します。 別の名前のテーブルを使用している場合は、その名前に置き換えてください。 
-2.  Set-AzureRmDataFactoryV2Dataset コマンドレットを実行して SourceDataset というデータセットを作成します。
+    このチュートリアルでは、data_source_table というテーブル名を使用します。 別の名前のテーブルを使用する場合は、その名前に置き換えてください。
+
+2. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット SourceDataset を作成します。
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -324,8 +333,9 @@ END
     ```
 
     > [!IMPORTANT]
-    > このスニペットは、Azure BLOB ストレージに **adftutorial** という名前の BLOB コンテナーがあることを前提としています。 このコンテナーが存在しない場合は作成するか、または既存のコンテナーの名前に設定してください。 出力フォルダー `incrementalcopy` は、コンテナーに存在しない場合に自動的に作成されます。 このチュートリアルでは、`@CONCAT('Incremental-', pipeline().RunId, '.txt')` という式を使ってファイル名が動的に生成されます。
-2.  Set-AzureRmDataFactoryV2Dataset コマンドレットを実行して SinkDataset というデータセットを作成します。
+    > このスニペットは、BLOB ストレージに adftutorial という名前の BLOB コンテナーがあることを前提としています。 このコンテナーが存在しない場合は作成するか、既存のコンテナーの名前を設定してください。 出力フォルダー `incrementalcopy` は、コンテナーに存在しない場合は自動的に作成されます。 このチュートリアルでは、`@CONCAT('Incremental-', pipeline().RunId, '.txt')` という式を使ってファイル名が動的に生成されます。
+
+2. **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット SinkDataset を作成します。
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -341,7 +351,7 @@ END
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureBlobDataset    
     ```
 
-## <a name="create-a-dataset-for-watermark"></a>基準値用のデータセットを作成する
+## <a name="create-a-dataset-for-a-watermark"></a>基準値用のデータセットを作成する
 この手順では、高基準値を格納するためのデータセットを作成します。 
 
 1. 以下の内容を記述した WatermarkDataset.json という名前の JSON ファイルを同じフォルダー内に作成します。 
@@ -361,7 +371,7 @@ END
         }
     }    
     ```
-2.  Set-AzureRmDataFactoryV2Dataset コマンドレットを実行して WatermarkDataset というデータセットを作成します。
+2.  **Set-AzureRmDataFactoryV2Dataset** コマンドレットを実行して、データセット WatermarkDataset を作成します。
     
     ```powershell
     Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -493,7 +503,7 @@ END
     ```
     
 
-2. Set-AzureRmDataFactoryV2Pipeline コマンドレットを実行して、パイプライン IncrementalCopyPipeline を作成します。
+2. **Set-AzureRmDataFactoryV2Pipeline** コマンドレットを実行して、パイプライン IncrementalCopyPipeline を作成します。
     
    ```powershell
    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -511,12 +521,12 @@ END
  
 ## <a name="run-the-pipeline"></a>パイプラインを実行する
 
-1. **Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って **IncrementalCopyPipeline** パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
+1. **Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って IncrementalCopyPipeline パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
 
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ``` 
-2. Get-AzureRmDataFactoryV2ActivityRun コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインのステータスをチェックします。 RunStartedAfter パラメーターと RunStartedBefore パラメーターのプレースホルダーには、実際の時刻を指定してください。  このチュートリアルでは、-RunStartedAfter "2017/09/14" -RunStartedBefore "2017/09/15" を使用します。
+2. **Get-AzureRmDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、*-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
 
     ```powershell
     Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -585,7 +595,7 @@ END
 
 ## <a name="review-the-results"></a>結果の確認
 
-1. Azure BLOB ストレージ (シンク ストア) を見ると、SinkDataset で定義したファイルにデータがコピーされていることを確認できます。  このチュートリアルでは、`Incremental- d4bf3ce2-5d60-43f3-9318-923155f61037.txt` がそのファイル名に該当します。  このファイルを開くと、Azure SQL データベース内のデータと同じレコードがあることを確認できます。
+1. BLOB ストレージ (シンク ストア) で、SinkDataset で定義したファイルにデータがコピーされたことを確認します。 このチュートリアルでは、`Incremental- d4bf3ce2-5d60-43f3-9318-923155f61037.txt` がそのファイル名に該当します。 このファイルを開くと、SQL データベース内のデータと同じレコードがあることを確認できます。
 
     ```
     1,aaaa,2017-09-01 00:56:00.0000000
@@ -594,7 +604,7 @@ END
     4,dddd,2017-09-04 03:21:00.0000000
     5,eeee,2017-09-05 08:06:00.0000000
     ``` 
-2. `watermarktable` 内の最新の値を確認してみましょう。基準値が更新されていることがわかります。
+2. `watermarktable` の最新の値をチェックします。 基準値が更新されたことを確認できます。
 
     ```sql
     Select * from watermarktable
@@ -606,9 +616,9 @@ END
     --------- | --------------
     data_source_table   2017-09-05  8:06:00.000
 
-### <a name="insert-data-into-data-source-store-to-verify-delta-data-loading"></a>ソース データ ストアにデータを挿入して差分データの読み込みを検証する
+### <a name="insert-data-into-the-data-source-store-to-verify-delta-data-loading"></a>データ ソース ストアにデータを挿入して差分データの読み込みを検証する
 
-1. Azure SQL データベース (ソース データ ストア) に新しいデータを挿入します。
+1. SQL データベース (データ ソース ストア) に新しいデータを挿入します。
 
     ```sql
     INSERT INTO data_source_table
@@ -618,7 +628,7 @@ END
     VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
     ``` 
 
-    Azure SQL データベース内の更新されたデータは次のとおりです。
+    SQL データベース内の更新されたデータは次のとおりです。
 
     ```
     PersonID | Name | LastModifytime
@@ -631,12 +641,12 @@ END
     6 | newdata | 2017-09-06 02:23:00.000
     7 | newdata | 2017-09-07 09:01:00.000
     ```
-2. 再度、**Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って **IncrementalCopyPipeline** パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
+2. 再度、**Invoke-AzureRmDataFactoryV2Pipeline** コマンドレットを使って IncrementalCopyPipeline パイプラインを実行します。 プレースホルダーはそれぞれ実際のリソース グループとデータ ファクトリ名に置き換えてください。
 
     ```powershell
     $RunId = Invoke-AzureRmDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. **Get-AzureRmDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 RunStartedAfter パラメーターと RunStartedBefore パラメーターのプレースホルダーには、実際の時刻を指定してください。  このチュートリアルでは、-RunStartedAfter "2017/09/14" -RunStartedBefore "2017/09/15" を使用します。
+3. **Get-AzureRmDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、*-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
 
     ```powershell
     Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -702,8 +712,9 @@ END
     Error             : {errorCode, message, failureType, target}
 
     ```
-4.  Azure BLOB ストレージを見ると、Azure BLOB ストレージに別のファイルが作成されていることがわかります。 このチュートリアルでは、`Incremental-2fc90ab8-d42c-4583-aa64-755dba9925d7.txt` が新しいファイルの名前になります。  このファイルを開くと、2 行のレコードが確認できます。
-5.  `watermarktable` 内の最新の値を確認してみましょう。基準値が再び更新されていることがわかります。
+4. BLOB ストレージで、別のファイルが作成されたことを確認します。 このチュートリアルでは、`Incremental-2fc90ab8-d42c-4583-aa64-755dba9925d7.txt` が新しいファイルの名前になります。 このファイルを開くと、2 行のレコードが確認できます。
+
+5. `watermarktable` の最新の値をチェックします。 基準値が再び更新されたことを確認できます。
 
     ```sql
     Select * from watermarktable
@@ -719,15 +730,15 @@ END
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]
-> * **基準値**列を定義してそれを Azure SQL Database に格納します。  
+> * 基準値を格納するためのデータ ストアを準備します。 
 > * データ ファクトリを作成します。
-> * SQL Database と Blob Storage のリンクされたサービスを作成します。 
-> * ソース データセットとシンク データセットを作成します。
+> * リンクされたサービスを作成します。 
+> * ソース データセット、シンク データセット、および基準値データセットを作成します。
 > * パイプラインを作成します。
 > * パイプラインを実行します。
 > * パイプラインの実行を監視します。 
 
-このチュートリアルでは、パイプラインで Azure SQL Database 内の**単一のテーブル**から Azure Blob Storage にデータをコピーしました。 次のチュートリアルに進んで、オンプレミスの SQL Server データベースにある**複数のテーブル**から Azure SQL Database にデータをコピーする方法について学習しましょう。 
+このチュートリアルでは、パイプラインで SQL データベース内の単一のテーブルから BLOB ストレージにデータをコピーしました。 次のチュートリアルに進んで、オンプレミスの SQL Server データベースにある複数のテーブルから SQL データベースにデータをコピーする方法について学習しましょう。 
 
 > [!div class="nextstepaction"]
 >[SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする](tutorial-incremental-copy-multiple-tables-powershell.md)

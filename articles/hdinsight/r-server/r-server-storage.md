@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: aafcc818af4c6e5d141d3633b31b913802a21752
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 863277294fc0462e9221edffab1dd4e2001d7493
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-storage-solutions-for-r-server-on-hdinsight"></a>HDInsight の R Server 向けの Azure Storage ソリューション
 
@@ -43,19 +43,25 @@ Azure Storage ソリューションの詳細については、「[Microsoft Azur
 
 ## <a name="use-azure-blob-storage-accounts-with-r-server"></a>R Server での Azure BLOB ストレージ アカウントの使用
 
-必要に応じて、HDI クラスターを持つ複数の Azure ストレージ アカウントまたはコンテナーにアクセスすることができます。 そのためには、クラスターの作成時に UI で追加のストレージ アカウントを指定し、次の手順に従ってそのストレージ アカウントを R Server で使用する必要があります。
+次の手順は、Microsoft R Server クラスターを作成するときに複数のストレージ アカウントを指定した場合に、Microsoft R Server でのデータ アクセスと操作に対して、どのようにセカンダリ アカウントを使用するかを説明します。 ここでは、ストレージ アカウント **storage1** と、**container1** と呼ばれる既定のコンテナー、および **storage2** を想定しています。
 
 > [!WARNING]
 > パフォーマンス上の理由から、HDInsight クラスターは、指定したプライマリ ストレージ アカウントと同じデータ センターに作成されます。 HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
 
-1. **storage1** というストレージ アカウント名で、**container1** という名前の既定のコンテナーを持つ HDInsight クラスターを作成します。
-2. **storage2**という名前の追加のストレージ アカウントを指定します。  
-3. mycsv.csv ファイルを /share ディレクトリにコピーし、このファイルに対して分析を実行します。  
+1. SSH クライアントを使用して、クラスターのエッジ ノードに remoteuser として接続します。  
+
+  + Azure Portal > HDI クラスター サービス ページ > [概要] の順にアクセスし、**[Secure Shell (SSH)]** をクリックします。
+  + [ホスト名] で、エッジ ノード (名前に *ed ssh.azurehdinsight.net* を含む) を選択します。
+  + ホスト名をコピーします。
+  + PutTY、SmartTY などの SSH クライアントを開き、ホスト名を入力します。
+  + ユーザー名に remoteuser を入力し、その後にクラスターのパスワードを入力します。
+  
+2. mycsv.csv ファイルを /share ディレクトリにコピーします。 
 
         hadoop fs –mkdir /share
         hadoop fs –copyFromLocal myscsv.scv /share  
 
-4. R コードで、名前ノードを **default** に設定し、処理対象のディレクトリとファイルを設定します。  
+3. R Studio または別の R コンソールに切り替えて、R コードを記述して、名前ノードを**既定**に設定し、アクセスするファイルの場所を設定します。  
 
         myNameNode <- "default"
         myPort <- 0
@@ -64,7 +70,7 @@ Azure Storage ソリューションの詳細については、「[Microsoft Azur
         bigDataDirRoot <- "/share"  
 
         #Define Spark compute context:
-        mySparkCluster <- RxSpark(consoleOutput=TRUE)
+        mySparkCluster <- RxSpark(nameNode=myNameNode, consoleOutput=TRUE)
 
         #Set compute context:
         rxSetComputeContext(mySparkCluster)

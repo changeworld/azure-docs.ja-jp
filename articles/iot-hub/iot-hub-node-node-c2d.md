@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 80f65e8e7fe562030c1e39787b910e2564969882
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 85a68910c6510be870362b51d5b8fa50e4d42328
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -47,7 +47,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 このチュートリアルを完了するには、以下が必要です。
 
 * Node.js バージョン 4.0.x 以降。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>シミュレートされたデバイス アプリでメッセージを受信する
 このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレートされたデバイス アプリを、クラウドからデバイスへのメッセージを IoT ハブから受信するように変更します。
@@ -176,7 +176,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
    > 
    > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
 
 IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、 [Azure IoT Suite]に関するドキュメントをご覧ください。
@@ -192,7 +192,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [IoT Hub の概要]: iot-hub-node-node-getstarted.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
+[Azure IoT デベロッパー センター]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx

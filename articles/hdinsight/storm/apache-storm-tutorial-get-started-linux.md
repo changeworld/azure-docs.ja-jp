@@ -13,14 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2017
+ms.date: 12/05/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: d8b7d5830684b5e19eadd1b145a933527c2aa9fd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19ab428913517e4f3df156c93782fe23f1cd67ec
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/07/2017
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>storm-starter の例を使って HDInsight で Apache Storm の使用を開始する
 
@@ -47,7 +47,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
     ![HDInsight クラスターの作成](./media/apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
-2. **[基本]** ブレードで、次の情報を入力します。
+2. **[基本]** セクションで、次の情報を入力します。
 
     * **[クラスター名]**: HDInsight クラスターの名前。
     * **[サブスクリプション]**: 使用するサブスクリプションを選択します。
@@ -58,7 +58,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
    ![サブスクリプションを選択します。](./media/apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
-3. **[クラスターの種類]** を選択し、**[クラスターの構成]** ブレードで次の値を設定します。
+3. **[クラスターの種類]** を選択し、**[クラスターの構成]** セクションで次の値を設定します。
 
     * **[クラスターの種類]**: Storm
 
@@ -74,11 +74,11 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
 4. クラスターの種類を選択したら、__[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、__[次へ]__ ボタンを使用して、基本的な構成を完了します。
 
-5. **[ストレージ]** ブレードで、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、このブレードの他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
+5. **[ストレージ]** セクションで、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、このセクションの他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
 
     ![HDInsight のストレージ アカウント設定](./media/apache-storm-tutorial-get-started-linux/set-hdinsight-storage-account.png)
 
-6. **[概要]** ブレードで、クラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
+6. **[概要]** セクションで、クラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
 
     ![クラスター構成の概要](./media/apache-storm-tutorial-get-started-linux/hdinsight-configuration-summary.png)
 
@@ -103,10 +103,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
         storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
 
-    > [!NOTE]
-    > 以前のバージョンの HDInsight では、トポロジのクラス名は `org.apache.storm.starter.WordCountTopology` ではなく `storm.starter.WordCountTopology` です。
-
-    このコマンドにより、クラスター上で、"wordcount" というフレンドリ名の WordCount トポロジの例が開始されます。 文はランダムに生成され、文中の各単語の出現回数がカウントされます。
+    このコマンドにより、クラスターで WordCount トポロジの例が開始されます。 このトポロジは、ランダムな文と単語の出現回数を生成するものです。 トポロジの表示名は `wordcount` です。
 
     > [!NOTE]
     > 独自のトポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 `scp` コマンドを使用して、ファイルをコピーします。 たとえば、 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
@@ -199,7 +196,7 @@ HDInsight クラスターの作成で問題が発生した場合は、[アクセ
 
 この Apache Storm チュートリアルでは、HDInsight での Storm の操作の基本ついて説明しました。 次は、 [Maven を使用して Java ベースのトポロジを開発](apache-storm-develop-java-topology.md)する方法について説明します。
 
-既に Java ベースのトポロジの開発経験があり、既存のトポロジを HDInsight にデプロイする方法をお探しの方は、 [HDInsight での Apache Storm トポロジのデプロイと管理](apache-storm-deploy-monitor-topology-linux.md)に関するページを参照してください。
+既に Java ベースのトポロジの開発経験がある方は、[HDInsight での Apache Storm トポロジのデプロイと管理](apache-storm-deploy-monitor-topology-linux.md)に関するドキュメントを参照してください。
 
 .NET 開発者は、Visual Studio を使用して C# トポロジまたは C#/Java ハイブリッド トポロジを作成できます。 詳細については、「[Hadoop Tools for Visual Studio を使用した HDInsight での Apache Storm の C# トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
 

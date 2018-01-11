@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 76ec01c874fceedab7d76b2ef58e4b45b5489f58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b3fc05cfec2b20501a28f3d76f474ccd49e27e8
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Notification Hubs を使用したニュース速報の送信
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -278,7 +278,7 @@ ms.lasthandoff: 10/11/2017
 2. 1 つ以上のカテゴリ切り替えボタンを有効にし、 **[Subscribe]**をクリックします。
    
     アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。 登録されたカテゴリが返され、トースト通知に表示されます。
-3. .NET コンソール アプリケーションを実行して、新しい通知を送信します。  または、 [Azure クラシック ポータル]で通知ハブの [デバッグ] タブを使用して、タグ付けされたテンプレート通知を送信できます。
+3. .NET コンソール アプリケーションを実行して、新しい通知を送信します。  または、[Azure Portal] で通知ハブの [デバッグ] タブを使用して、タグ付けされたテンプレート通知を送信できます。
    
     選択されたカテゴリの通知がトースト通知として表示されます。
 
@@ -302,5 +302,5 @@ ms.lasthandoff: 10/11/2017
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Azure クラシック ポータル]: https://manage.windowsazure.com
+[Azure Portal]: https://portal.azure.com
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591

@@ -3,7 +3,7 @@ title: "Microsoft Azure ストレージ エクスプローラーを使用して 
 description: "Microsoft Azure ストレージ エクスプローラーを使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: tarcher
-ms.openlocfilehash: 502e2536fb0fd2e9dfc4c7b85a6fb4e18202f38f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 25675aae77fbe2610fe416210de9a306c1c09f3d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーを使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 
@@ -120,7 +120,7 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 
         ![ファイルのアップロードの状態][10]  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Portal を使用して VHD ファイルから Azure DevTest Labs にカスタム イメージを作成する](devtest-lab-create-template.md)
 - [PowerShell を使用して VHD ファイルから Azure DevTest Labs にカスタム イメージを作成する](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

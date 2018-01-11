@@ -44,6 +44,8 @@
       href: time-series-insights-send-events.md
     - name: 環境のスケーリング
       href: time-series-insights-how-to-scale-your-environment.md
+    - name: テンプレートを使用したリソースの管理
+      href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
 - name: リファレンス
   items:
     - name: クエリ API

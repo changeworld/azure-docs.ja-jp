@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 03246846484878f7155449ad11b009aeffe8a576
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 3136bccb7724c95c4001e353d7feeecb045f1273
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 この記事では、Microsoft Cloud で提供されている以下のサービスを比較対照しながら説明します。いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。
@@ -41,18 +41,18 @@ Microsoft Flow と Azure Logic Apps はどちらも、"*構成第一*" の統合
 * 同じワークフロー デザイナーがある
 * [コネクタ](../connectors/apis-list.md) は、もう一方でも動作する
 
-Flow を使えば、オフィスの従業員がだれでも、開発者や IT 部門の力を借りることなくシンプルな統合 (重要なメールに関する SMS を受信するなど) を実現できます。 これに対して、Logic Apps では、エンタープライズレベルの DevOps とセキュリティを必要とする高度な統合やミッション クリティカルな統合 (B2B プロセスなど) が可能になります。 ビジネスで使用するワークフローは、時間の経過と共に複雑さを増してくるものです。 このため、最初はフローを使用し、後から必要に応じてロジック アプリに変換することもできます。
+Flow を使えば、オフィスの従業員がだれでも、開発者や IT 部門の力を借りることなくシンプルな統合 (SharePoint ドキュメント ライブラリでの承認プロセスなど) を実現できます。 これに対して、Logic Apps では、エンタープライズレベルの DevOps とセキュリティを必要とする高度な統合 (B2B プロセスなど) が可能になります。 ビジネスで使用するワークフローは、時間の経過と共に複雑さを増してくるものです。 このため、最初はフローを使用し、後から必要に応じてロジック アプリに変換することもできます。
 
 以下の表は、統合に Flow と Logic Apps のどちらが適しているかを判断するうえで役立ちます。
 
 |  | Flow | Logic Apps |
 | --- | --- | --- |
-| オーディエンス |オフィスの従業員、ビジネス ユーザー |IT プロフェッショナル、開発者 |
-| シナリオ |セルフ サービス |ミッション クリティカル |
+| オーディエンス |オフィスの従業員、ビジネス ユーザー、SharePoint 管理者 |インテグレーター、開発者、IT プロフェッショナル |
+| シナリオ |セルフ サービス |高度な統合 |
 | デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
-| DevOps |実稼働環境でのアドホックな開発 |[Azure リソース管理](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| 管理者向けエクスペリエンス |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
-| セキュリティ |標準的な実務慣行: [データの主権性の確保](https://wikipedia.org/wiki/Technological_Sovereignty)、[機密性の高い保存データの暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
+| アプリケーション ライフサイクル管理 (ALM) |非運用環境で設計とテストを行い、準備ができたら運用環境に昇格します。 |DevOps: [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) におけるソース管理、テスト、サポート、自動化、管理 |
+| 管理者向けエクスペリエンス |フロー環境とデータ損失防止 (DLP) ポリシーの管理、ライセンスの追跡 ([https://admin.flow.microsoft.com](https://admin.flow.microsoft.com)) |リソース グループの管理、接続、アクセス管理、ログ ([https://portal.azure.com](https://portal.azure.com)) |
+| セキュリティ |Office 365 セキュリティ/コンプライアンスの監査ログ、データ損失防止 (DLP)、機密データの[保存時の暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
 
 <a name="function"></a>
 
@@ -106,7 +106,7 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 前に述べたとおり、どのサービスが最適であるかは、状況によって異なります。 
 
 * 単純なビジネスの最適化では、Flow を使用します。
-* 統合のシナリオが高度で Flow では対応できない場合、または DevOps 機能やセキュリティ コンプライアンス機能が必要な場合には、Logic Apps を使用します。
+* 統合のシナリオが高度で Flow では対応できない場合、または DevOps 機能が必要な場合には、Logic Apps を使用します。
 * 統合シナリオのどこかのステップで大幅なカスタム変換または特殊なコードの使用が必要になる場合には、関数を作成し、ロジック アプリ内でアクションとして関数をトリガーします。
 
 フローでは、ロジック アプリを呼び出すことができます。 また、ロジック アプリで関数を呼び出したり、関数でロジック アプリを呼び出したりすることもできます。 Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。 このため、これら 3 つのテクノロジに対する投資が無駄になることはありません。

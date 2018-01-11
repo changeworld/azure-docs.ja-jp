@@ -1,0 +1,31 @@
+- name: 管理対象サービス ID (ユーザーによる割り当て)
+  href: msi-overview.md
+  items:
+    - name: Azure VM 用の MSI の構成
+      items:
+        - name: Azure CLI の使用
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: Azure SDK の使用
+          href: msi-qs-configure-sdk-windows-vm.md
+    - name: Resource Manager への MSI アクセスの許可
+      items:
+        - name: Azure CLI の使用
+          href: msi-howto-assign-access-cli.md
+    - name: VM MSI の使用方法
+      items:
+        - name: アクセス トークンの取得
+          href: msi-how-to-use-vm-msi-token.md
+        - name: Azure CLI へのサインイン
+          href: msi-how-to-use-vm-msi-sign-in.md
+        - name: Azure SDK での使用
+          href: msi-how-to-use-vm-msi-sdk.md
+    - name: VM MSI を使用した Azure Resource Manager へのアクセス
+      items:
+        - name: Linux VM から
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: VM MSI を使用した Azure ストレージへのアクセス
+      items:
+        - name: Linux VM から (アクセス キーを使用)
+          href: msi-tutorial-linux-vm-access-storage.md
+    - name: FAQ と既知の問題
+      href: msi-known-issues.md

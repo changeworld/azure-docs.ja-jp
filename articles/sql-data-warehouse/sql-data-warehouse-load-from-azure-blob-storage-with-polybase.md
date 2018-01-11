@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: barbkess
 ms.openlocfilehash: 4221bcd5a50fad680427a500e32837c1e75dd990
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="load-data-from-azure-blob-storage-into-sql-data-warehouse-polybase"></a>Azure Blob Storage ストレージから SQL Data Warehouse へのデータの読み込み (PolyBase)
 > [!div class="op_single_selector"]

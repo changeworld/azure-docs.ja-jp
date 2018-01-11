@@ -128,7 +128,7 @@ Azure Backup がスケジュールされた時刻にバックアップ ジョブ
 
 1.  VM 用の Recovery Services コンテナーを作成する:
 
-    a. [Azure Portal](https://portal.azure.com/) を使用して、**すべてのリソース**を参照し、「**Recovery Services コンテナー**」を検索します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 [Azure Portal](https://portal.azure.com/) を使用して、**すべてのリソース**を参照し、「**Recovery Services コンテナー**」を検索します。
 
     b. **Recovery Services コンテナー** メニューで、**[追加]** をクリックし、VM と同じリージョンで新しいコンテナーを作成する手順に従います。 たとえば、VM が米国西部リージョンにある場合は、コンテナーに米国西部を選択します。
 
@@ -138,7 +138,7 @@ Azure Backup がスケジュールされた時刻にバックアップ ジョブ
 
 4.  Backup エージェントが VM にインストールされていることを確認します。 VM が Azure ギャラリー イメージを使用して作成されている場合、Backup エージェントは既にインストールされています。 それ以外の場合は (つまりカスタム イメージを使用する場合)、[仮想マシンに VM エージェントをインストールする](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine)手順を使用します。
 
-5.  バックアップ サービスが動作するために、ネットワーク接続が VM によって許可されていることを確認します。 [ネットワーク接続](../articles/backup/backup-azure-arm-vms-prepare.md#network-connectivity)に関する手順に従ってください。
+5.  バックアップ サービスが動作するために、ネットワーク接続が VM によって許可されていることを確認します。 [ネットワーク接続](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)に関する手順に従ってください。
 
 6.  上記の手順を完了すると、バックアップ ポリシーで指定されているとおり、バックアップが定期的に実行されます。 必要に応じて、Azure Portal のコンテナー ダッシュボードから、最初のバックアップを手動でトリガーできます。
 

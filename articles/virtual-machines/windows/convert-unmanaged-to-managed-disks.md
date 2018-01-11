@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 3f3075fc5c6f3a47bde13d98d0b705c29b98112b
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 5f6376bb9e7f172df317b2ec857025bf37793799
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクから管理ディスクに変換します
 
@@ -93,6 +93,7 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
      $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
+     Start-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name
   }
   ```
 
@@ -103,7 +104,7 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
 変換前に、すべての VM の拡張機能が "プロビジョニング成功" 状態にあることを確認してください。そのようになっていないとエラー コード 409 で変換に失敗します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Standard 管理ディスクを Premium 管理ディスクに変換する](convert-disk-storage.md)
 

@@ -6,6 +6,7 @@ documentationcenter:
 author: mezmicrosoft
 editor: mezmicrosoft
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
-ms.manager: tihazen
-ms.openlocfilehash: 8edc21fb8f42ee5897c4e938045cc1f42aedb3ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: tihazen
+ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使った Q & A 照合
 自由形式の質問に答えることは難しく、該当領域の専門家 (SME) による対応が必要になることがよくあります。 多くの場合、企業は社内の SME の負荷を減らすために、ユーザーをサポートする手段としてよく寄せられる質問 (FAQ) のリストを作成しています。 この例では、効果の高いさまざまな機械学習手法を使って、自由形式の質問を既存の FAQ の質問と回答のペアと照合する方法を示します。 この例では Azure Machine Learning Workbench を使って、こうしたソリューションを構築するための簡単な開発プロセスを示します。 
@@ -42,8 +43,8 @@ ms.lasthandoff: 10/11/2017
 
 この例を実行するための前提条件は次のとおりです。
 
-1. [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)。
-2. [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md)。[クイックスタート インストール ガイド](./quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
+1. [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
+2. [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](./quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
 3. この例は、任意のコンピューティング コンテキストで実行できます。 ただし、少なくとも 16 GB のメモリと 5 GB のディスク領域を備えたマルチコア マシン上で実行することをお勧めします。
 
 ## <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成
@@ -79,7 +80,7 @@ Posts データの `PostTypeId` フィールドは、投稿が `Question` と `A
 
 次の表に、3 つのデータセットのデータ スキーマとダウンロード リンクを示します。
 
-| Dataset | フィールド | 型 | Description
+| Dataset | フィールド | type | [説明]
 | ----------|------------|------------|--------
 | [questions](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | ID | String | 一意の質問 ID (主キー)
 |  | AnswerId | String | 質問ごとの一意の回答 ID
@@ -93,13 +94,13 @@ Posts データの `PostTypeId` フィールドは、投稿が `Question` と `A
 |  | text0 | String | 回答の未加工のテキスト データ
 
 
-## <a name="scenario-structure"></a>シナリオの構成
+## <a name="scenario-structure"></a>シナリオの構造
 
 Q&A 照合の例では、3 種類のファイルを使用しています。 1 つ目は、ワークフロー全体の詳細な説明を示す一連の Jupyter Notebook です。 2 つ目は、フレーズ学習と特徴抽出に必要なカスタム Python モジュールを含む一連の Python ファイルです。 これらの Python モジュールは汎用的であるため、この例以外のユース ケースにも利用できます。 3 つ目は、Azure Machine Learning Workbench を使って、ハイパー パラメーターをチューニングしてモデルのパフォーマンスを追跡する一連の Python ファイルです。
 
 この例のファイルは、次のように整理されます。
 
-| ファイル名 | 型 | Description
+| ファイル名 | type | [説明]
 | ----------|------------|--------
 | `Image` | フォルダー | README ファイルの画像を保存するためのフォルダー
 | `notebooks` | フォルダー | Jupyter Notebook のフォルダー

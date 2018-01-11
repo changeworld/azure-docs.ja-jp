@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/02/2017
+ms.date: 12/14/2017
 ms.author: jroth
-ms.openlocfilehash: 36fa884b451d41ed7443312cc21b49b0b720a954
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 95a18e4b2437ca628e84f6d6f580e12f2f26e111
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -42,12 +42,19 @@ SQL Server Azure VM では[自動バックアップ](virtual-machines-windows-sq
 
 高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。 そのために、1 つの仮想ネットワークで複数の SQL Server Azure VM を使用します。 高可用性ソリューションは手動で構成できるほか、Azure Portal からテンプレートを使用して自動で構成することもできます。 高可用性を実現する各種方法の概要については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
+## <a name="performance"></a>パフォーマンス
+
+Azure 仮想マシンは、さまざまなワークロードのニーズを満たす複数のマシンのサイズを提供します。 SQL VM は、パフォーマンス要件に合わせて最適化される自動化されたストレージの構成も提供します。 SQL VM のストレージの構成の詳細については、「[SQL Server VM のストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)」を参照してください。 パフォーマンスを微調整するには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
+
 ## <a name="get-started-with-sql-vms"></a>SQL VM を使ってみる
 
 まず、必要なバージョン、エディション、オペレーティング システムの SQL Server 仮想マシン イメージを選んでください。 以下のセクションでは、SQL Server 仮想マシン ギャラリー イメージに関する、Azure Portal へのリンクを記載しています。
 
 > [!TIP]
 > これらのイメージの VM と SQL の料金については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
+
+> [!TIP]
+> SQL Server 仮想マシン ギャラリー イメージの更新とライフ サイクル ポリシーを理解するには、[SQL Server VM の FAQ](virtual-machines-windows-sql-server-iaas-faq.md#images) に関する記事を参照してください。
 
 ### <a id="payasyougo"></a> 従量課金制
 次の表に示したのは、従量課金制で提供されている SQL Server イメージの一覧です。
@@ -103,7 +110,7 @@ SQL Server Azure VM では[自動バックアップ](virtual-machines-windows-sq
 
 Azure Virtual Machines における SQL Server の概要
 
-* [Azure Portal での SQL Server VM の作成](virtual-machines-windows-portal-sql-server-provision.md)
+* [Azure Portal での SQL Server VM の作成](quickstart-sql-vm-create-portal.md)
 
 SQL VM についてよく寄せられる質問とその回答
 

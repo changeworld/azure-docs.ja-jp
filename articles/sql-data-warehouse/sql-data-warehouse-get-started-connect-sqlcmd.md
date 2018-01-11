@@ -16,10 +16,10 @@ ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
 ms.openlocfilehash: 5a3fe1046c3417070ba8ff5bd18a0485e2152eff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>sqlcmd で SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]

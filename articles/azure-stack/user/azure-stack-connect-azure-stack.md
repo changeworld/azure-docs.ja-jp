@@ -3,8 +3,8 @@ title: "Azure Stack への接続 | Microsoft Docs"
 description: "Azure Stack に接続する方法について説明します"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 3cebbfa6-819a-41e3-9f1b-14ca0a2aaba3
 ms.service: azure-stack
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/22/2017
-ms.author: sngun
-ms.openlocfilehash: 914f2e5d10aa341cea5eba8c24c7c37610e6b626
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 7479202a8afabf5a84560691a2bccf849206c077
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
-リソースを管理するには、Azure Stack Development Kit に接続する必要があります。 ここでは、Development Kit に接続するために必要な手順について詳しく説明します。 次の接続方法のうちどちらかを使用できます。
+リソースを管理するには、Azure Stack Development Kit に接続する必要があります。 この記事では、Development Kit に接続するために必要な手順について詳しく説明します。 次の接続方法のうちどちらかを使用できます。
 
 * [リモート デスクトップ](#connect-with-remote-desktop): Development Kit から、1 人の同時実行ユーザーのみがすばやく接続できます。
 * [仮想プライベート ネットワーク (VPN)](#connect-with-vpn): Azure Stack インフラストラクチャ以外のクライアントから、複数の同時実行ユーザーが接続できます (構成が必要です)。

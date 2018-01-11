@@ -6,15 +6,15 @@ manager: douge
 ms.service: multiple
 ms.workload: web
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: ea281e9c83bb37f78c248c6c4011a7da60b45c01
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 0cf24d8db845beb63b1b895f895da761488fd8ec
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Azure Portal から Azure Linux VM に Jenkins サーバーを作成する
 
@@ -95,7 +95,7 @@ Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)
 
 ![Gradle ラッパーを使用したビルド](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-**[Advanced]\(詳細設定\)** を選択し、 **[Root Build script]\(ルート ビルド スクリプト\)** フィールドに「`complete`」と入力します。 [ **保存**] を選択します。
+**[Advanced]\(詳細設定\)** を選択し、 **[Root Build script]\(ルート ビルド スクリプト\)** フィールドに「`complete`」と入力します。 **[保存]** を選択します。
 
 ![Gradle ラッパー ビルド ステップの詳細設定](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 
@@ -107,7 +107,7 @@ Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)
 
 ビルドが成功したことを確かめるために、`complete/build/libs` に移動し、`gs-spring-boot-0.1.0.jar` が存在することを確認します。 Azure 上の Jenkins サーバーで独自のプロジェクトをビルドする準備が整いました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure VM を Jenkins エージェントとして追加する](jenkins-azure-vm-agents.md)

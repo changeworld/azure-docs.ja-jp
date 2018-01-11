@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: ed728011f2cb7b6108e19a916010fd5447c07093
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 609b811705bb6f116db055b756910450f8990528
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性
 
@@ -142,7 +142,7 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
 ### <a name="deploying-linux"></a>Linux のデプロイ
 
 Azure Marketplace には、SUSE Linux Enterprise Server for SAP Applications 12 のイメージが含まれており、新しい仮想マシンのデプロイに使用できます。
-Github にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイすることができます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
+GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
 1. Azure Portal で [SAP ファイル サーバー テンプレート][template-file-server]を開きます   
 1. 次のパラメーターを入力します
@@ -153,7 +153,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
    3. [管理ユーザー名] と[管理パスワード]  
       コンピューターへのログオンで使用できる新しいユーザーが作成されます。
    4. サブネット ID  
-      仮想マシンを接続するサブネットの ID。 新しい仮想ネットワークを作成する場合は空のままにしておきます。または、仮想マシンをオンプレミス ネットワークに接続する場合は、VPN または Express Route 仮想ネットワークのサブネットを選択します。 通常、この ID は /subscriptions/**&lt;サブスクリプション ID&gt;**/resourceGroups/**&lt;リソース グループ名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;仮想ネットワーク名&gt;**/subnets/**&lt;サブネット名&gt;** のようになります。
+      仮想マシンを接続するサブネットの ID。 新しい仮想ネットワークを作成する場合は空のままにしておきます。または、仮想マシンをオンプレミス ネットワークに接続する場合は、VPN または Express Route 仮想ネットワークのサブネットを選択します。 通常、この ID は、/subscriptions/**&lt;サブスクリプション ID&gt;**/resourceGroups/**&lt;リソース グループ名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;仮想ネットワーク名&gt;**/subnets/**&lt;サブネット名&gt;** のようになります。
 
 ### <a name="installation"></a>インストール
 
@@ -254,7 +254,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
    sudo passwd hacluster
    </code></pre>
 
-1. **[A]** 他のトランスポートを使用したり、ノードリストを追加したりするために corosync を構成します。 この作業をしないとクラスターが機能しません。
+1. **[A]** 他のトランスポートを使用したり、ノードリストを追加したりするために corosync を構成します。 これを構成しないと、クラスターは機能しません。
    
    <pre><code> 
    sudo vi /etc/corosync/corosync.conf   
@@ -475,7 +475,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
    sudo crm configure
 
    crm(live)configure# primitive vip_<b>NWS</b>_nfs IPaddr2 \
-     params ip=<b>10.0.0.4</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.4</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_nfs anything \
@@ -495,7 +495,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 1. <https://portal.azure.com> に移動します
 1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリの ID をメモします。これは、**テナント ID** です。
+   [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
 1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost) を入力します。その後、[作成] をクリックします
@@ -503,7 +503,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. アプリケーション ID をメモします。この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。
 
@@ -523,13 +523,13 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 <pre><code>
 sudo crm configure
 
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# primitive rsc_st_azure_2 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
@@ -549,14 +549,14 @@ sudo crm configure property stonith-enabled=true
 
 Azure Marketplace には、SUSE Linux Enterprise Server for SAP Applications 12 のイメージが含まれており、新しい仮想マシンのデプロイに使用できます。 Marketplace のイメージには、SAP NetWeaver のリソース エージェントが含まれています。
 
-Github にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイすることができます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
+GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
 1. Azure Portal で、[ASCS/SCS マルチ SID テンプレート][template-multisid-xscs]または[集約型テンプレート][template-converged]を開きます。ASCS/SCS テンプレートで作成されるのは、SAP NetWeaver ASCS/SCS および ERS (Linux のみ) インスタンスの負荷分散規則のみであるのに対し、集約型テンプレートではデータベース (Microsoft SQL Server や SAP HANA など) の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールする予定があり、同じマシンにデータベースもインストールしたい場合は、[集約型テンプレート][template-converged]を使用してください。
 1. 次のパラメーターを入力します
    1. リソース プレフィックス (ASCS/SCS マルチ SID テンプレートのみ)  
       使用するプレフィックスを入力します。 この値は、デプロイされるリソースのプレフィックスとして使用されます。
    3. SAP システム ID (集約型テンプレートのみ)  
-      インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使用されます。
+      インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。
    4. スタックの種類  
       SAP NetWeaver のスタックの種類を選択します
    5. OS の種類  
@@ -570,7 +570,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
    9. [管理ユーザー名] と[管理パスワード]  
       コンピューターへのログオンで使用できる新しいユーザーが作成されます。
    10. サブネット ID  
-   仮想マシンを接続するサブネットの ID。  新しい仮想ネットワークを作成する場合は空のままにしておきます。または、NFS サーバー デプロイの一部として使用または作成したのと同じサブネットを選択します。 通常、この ID は /subscriptions/**&lt;サブスクリプション ID&gt;**/resourceGroups/**&lt;リソース グループ名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;仮想ネットワーク名&gt;**/subnets/**&lt;サブネット名&gt;** のようになります。
+   仮想マシンを接続するサブネットの ID。  新しい仮想ネットワークを作成する場合は空のままにしておきます。または、NFS サーバー デプロイの一部として使用または作成したのと同じサブネットを選択します。 通常、この ID は、/subscriptions/**&lt;サブスクリプション ID&gt;**/resourceGroups/**&lt;リソース グループ名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;仮想ネットワーク名&gt;**/subnets/**&lt;サブネット名&gt;** のようになります。
 
 ### <a name="installation"></a>インストール
 
@@ -700,7 +700,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
    sudo passwd hacluster
    </code></pre>
 
-1. **[A]** 他のトランスポートを使用したり、ノードリストを追加したりするために corosync を構成します。 この作業をしないとクラスターが機能しません。
+1. **[A]** 他のトランスポートを使用したり、ノードリストを追加したりするために corosync を構成します。 これを構成しないと、クラスターは機能しません。
    
    <pre><code> 
    sudo vi /etc/corosync/corosync.conf   
@@ -967,7 +967,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
      op monitor interval="10s"
 
    crm(live)configure# primitive vip_<b>NWS</b>_ASCS IPaddr2 \
-     params ip=<b>10.0.0.10</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.10</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_ASCS anything \
@@ -1041,7 +1041,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
      op monitor interval="10s"
 
    crm(live)configure# primitive vip_<b>NWS</b>_ERS IPaddr2 \
-     params ip=<b>10.0.0.11</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_ERS anything \
@@ -1101,7 +1101,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
    </code></pre>
 
    > [!NOTE]
-   > SWPM SP 20 PL 05 以降を使用してください。 これより下位のバージョンではアクセス許可が正しく設定されないため、インストールが失敗します。
+   > SWPM SP 20 PL 05 以降を使用します。 これより下位のバージョンではアクセス許可が正しく設定されないため、インストールが失敗します。
    > 
 
 1. **[1]** ASCS/SCS および ERS インスタンス プロファイルを適用します
@@ -1228,7 +1228,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 1. <https://portal.azure.com> に移動します
 1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリの ID をメモします。これは、**テナント ID** です。
+   [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
 1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost) を入力します。その後、[作成] をクリックします
@@ -1236,7 +1236,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. アプリケーション ID をメモします。この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。
 
@@ -1256,13 +1256,13 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 <pre><code>
 sudo crm configure
 
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# primitive rsc_st_azure_2 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
@@ -1280,7 +1280,7 @@ sudo crm configure property stonith-enabled=true
 
 ## <a name="install-database"></a>データベースのインストール
 
-この例では、SAP HANA システム レプリケーションがインストール、構成されます。 SAP HANA は、SAP NetWeaver ASCS/SCS および ERS と同じクラスター内で実行されます。 SAP HANA は専用のクラスターにインストールすることもできます。 詳細については、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。
+この例では、SAP HANA システム レプリケーションがインストールされ、構成されます。 SAP HANA は、SAP NetWeaver ASCS/SCS および ERS と同じクラスター内で実行されます。 SAP HANA は専用のクラスターにインストールすることもできます。 詳細については、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」をご覧ください。
 
 ### <a name="prepare-for-sap-hana-installation"></a>SAP HANA のインストールの準備
 
@@ -1326,7 +1326,7 @@ sudo crm configure property stonith-enabled=true
    sudo chattr +i /hana/data
    sudo chattr +i /hana/log
    sudo chattr +i /hana/shared
-   # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+   # write down the ID of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
    sudo blkid
    </code></pre>
    
@@ -1440,7 +1440,7 @@ sudo crm configure property stonith-enabled=true
    <pre><code>
    sudo crm configure
 
-   # replace the bold string with your instance number and HANA system id
+   # replace the bold string with your instance number and HANA system ID
    
    crm(live)configure# primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b>   ocf:suse:SAPHanaTopology \
      operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1461,7 +1461,7 @@ sudo crm configure property stonith-enabled=true
    <pre><code>
    sudo crm configure
 
-   # replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
+   # replace the bold string with your instance number, HANA system ID and the frontend IP address of the Azure load balancer. 
     
    crm(live)configure# primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
      operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \

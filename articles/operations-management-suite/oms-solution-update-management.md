@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/01/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: e3d605b12a1db2fca1048be15e7b365e5336f663
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 71322c650b2ee464bab91bf8d4b176f3b2d93949
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
 
@@ -142,12 +142,12 @@ Operations Manager 管理グループが OMS と通信していることを確�
 ### <a name="supported-agents"></a>サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続されているソース | サポートの有無 | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
-| Windows エージェント |はい |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |あり |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |はい |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから OMS リポジトリに転送されます。 |
-| Azure ストレージ アカウント |なし |Azure Storage には、システムの更新プログラムに関する情報が含まれていません。 |
+| Windows エージェント |[はい] |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |[はい] |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから OMS リポジトリに転送されます。 |
+| Azure ストレージ アカウント |いいえ  |Azure Storage には、システムの更新プログラムに関する情報が含まれていません。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 Windows API が 15 分ごとに呼び出され、最後の更新時間のクエリによって状態が変更されたかどうかが確認されます。更新されている場合は対応スキャンが開始されます。  管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
@@ -179,18 +179,18 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 各更新プログラムの展開に表示されるプロパティについては、次の表で説明します。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
-| 名前 |更新プログラムの展開の名前。 |
+| Name |更新プログラムの展開の名前。 |
 | スケジュール |スケジュールの種類。  使用できるオプションは、*[1 回限り]*、*[定期的に毎週]*、*[定期的に毎月]* です。 |
 | 開始時刻 |更新プログラムの展開の開始予定日時。 |
-| 時間 |更新プログラムの展開の実行が許可されている時間 (分)。  この時間内にすべての更新プログラムがインストールされない場合、残りの更新プログラムは次の更新プログラムの展開まで待つ必要があります。 |
+| Duration |更新プログラムの展開の実行が許可されている時間 (分)。  この時間内にすべての更新プログラムがインストールされない場合、残りの更新プログラムは次の更新プログラムの展開まで待つ必要があります。 |
 | サーバー |更新プログラムの展開の影響を受けるコンピューターの数。  |
 | 状態 |更新プログラムの展開の現在の状態。<br><br>次のいずれかの値になります。<br>- 開始されていません<br>- 実行中<br>- 完了しました |
 
 完了した更新プログラムの展開を選択すると、その詳細画面が表示されます。この画面には、次の表にある列が含まれます。  更新プログラムの展開がまだ開始されていない場合は、これらの列に値が設定されません。<br><br> ![更新プログラムの展開結果の概要](./media/oms-solution-update-management/update-management-deploymentresults-dashboard.png)
 
-| 分割 | Description |
+| 分割 | [説明] |
 | --- | --- |
 | **コンピューター ビュー** | |
 | Windows コンピューター |更新プログラムの展開に含まれる Windows コンピューターの数を状態別に表示します。  状態をクリックするとログ検索が実行され、更新プログラムの展開でその状態の更新レコードがすべて返されます。 |
@@ -203,13 +203,13 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 ### <a name="creating-an-update-deployment"></a>更新プログラムの展開の作成
 新しい更新プログラムの展開を作成するには、画面上部にある **[追加]** ボタンをクリックして **[New Update Deployment (新しい更新プログラムの展開)]** ページを開きます。  次の表にあるプロパティの値を指定する必要があります。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
-| 名前 |更新プログラムの展開を識別する一意の名前。 |
+| Name |更新プログラムの展開を識別する一意の名前。 |
 | タイム ゾーン |開始時刻に使用するタイム ゾーン。 |
 | スケジュールの種類 | スケジュールの種類。  使用できるオプションは、*[1 回限り]*、*[定期的に毎週]*、*[定期的に毎月]* です。  
 | 開始時刻 |更新プログラムの展開を開始する日時。 **注:** すぐにデプロイする必要がある場合は、最短で現在の時刻から 30 分後にデプロイを実行できます。 |
-| 時間 |更新プログラムの展開の実行が許可されている時間 (分)。  この時間内にすべての更新プログラムがインストールされない場合、残りの更新プログラムは次の更新プログラムの展開まで待つ必要があります。 |
+| Duration |更新プログラムの展開の実行が許可されている時間 (分)。  この時間内にすべての更新プログラムがインストールされない場合、残りの更新プログラムは次の更新プログラムの展開まで待つ必要があります。 |
 | [Computers (コンピューター)] |更新プログラムの展開に含める対象のコンピューターまたはコンピューター グループの名前。  ドロップダウン リストから 1 つ以上のエントリを選択します。 |
 
 <br><br> ![[New Update Deployment (新しい更新プログラムの展開)] ページ](./media/oms-solution-update-management/update-newupdaterun-page.png)
@@ -225,21 +225,21 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 ### <a name="update-records"></a>Update レコード
 **Update** という種類のレコードは、各コンピューターでインストールされるか必要とされる更新プログラムごとに作成されます。 Update レコードには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
-| 型 |*Update* |
+| type |*Update* |
 | SourceSystem |更新プログラムのインストールを承認したソース。<br>次のいずれかの値になります。<br>- Microsoft Update<br>- Windows Update<br>- SCCM<br>- Linux Servers (パッケージ マネージャーから取得) |
 | Approved |更新プログラムのインストールが承認されているかどうかを指定します。<br> Linux サーバーの場合、修正プログラムの適用は OMS で管理されないため、現在、これは省略可能です。 |
 | Classification (Windows の場合) |更新プログラムの分類。<br>次のいずれかの値になります。<br>- アプリケーション<br>- Critical Updates (緊急更新プログラム)<br>- Definition Updates (定義の更新)<br>- Feature Packs (Feature Pack)<br>- Security Updates (セキュリティ更新プログラム)<br>- Service Packs (Service Pack)<br>- Update Rollups (更新プログラムのロールアップ)<br>- 更新プログラム |
 | Classification (Linux の場合) |更新プログラムの分類。<br>次のいずれかの値になります。<br>- Critical Updates (緊急更新プログラム)<br>- Security Updates (セキュリティ更新プログラム)<br>- Other Updates (他の更新プログラム) |
-| コンピューター |コンピューターの名前。 |
+| Computer |コンピューターの名前。 |
 | InstallTimeAvailable |同じ更新プログラムをインストールした他のエージェントからインストール時刻を入手できるかどうかを指定します。 |
 | InstallTimePredictionSeconds |同じ更新プログラムをインストールしたその他のエージェントに基づいた、インストールの推定時間 (秒)。 |
 | KBID |更新プログラムについて説明するサポート技術情報の ID。 |
 | ManagementGroupName |SCOM エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-<workspace ID> です。 |
 | MSRCBulletinID |更新プログラムについて説明するマイクロソフト セキュリティ情報の ID。 |
 | MSRCSeverity |マイクロソフト セキュリティ情報の重大度。<br>次のいずれかの値になります。<br>- Critical (重大)<br>- Important (重要)<br>- Moderate (警告) |
-| 省略可能。 |更新プログラムが省略可能かどうかを指定します。 |
+| 省略可能 |更新プログラムが省略可能かどうかを指定します。 |
 | 製品 |更新プログラムの対象製品の名前。  **[表示]** をクリックすると、ブラウザーで記事が開きます。 |
 | PackageSeverity |Linux ディストリビューションのベンダーによって報告された、この更新プログラムで修正される脆弱性の重大度。 |
 | PublishDate |更新プログラムがインストールされた日時。 |
@@ -266,11 +266,11 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 ### <a name="updatesummary-records"></a>UpdateSummary レコード
 **UpdateSummary** という種類のレコードは、Windows エージェント コンピューターごとに作成されます。 このレコードは、更新プログラムについてコンピューターがスキャンされるたびに更新されます。 **UpdateSummary** レコードには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
-| 型 |UpdateSummary |
+| type |UpdateSummary |
 | SourceSystem |OpsManager |
-| コンピューター |コンピューターの名前。 |
+| Computer |コンピューターの名前。 |
 | CriticalUpdatesMissing |コンピューターに適用されていない緊急更新プログラムの数。 |
 | ManagementGroupName |SCOM エージェントの管理グループの名前。 その他のエージェントの場合、これは AOI-<workspace ID> です。 |
 | NETRuntimeVersion |コンピューターにインストールされている .NET ランタイムのバージョン。 |
@@ -289,7 +289,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
-| クエリ | Description |
+| クエリ | [説明] |
 | --- | --- |
 | Type:Update OSType!=Linux UpdateState=Needed Optional=false Approved!=false &#124; measure count() by Computer |更新プログラムが必要な Windows ベースのサーバー コンピューター |
 | Type:Update OSType=Linux UpdateState!="Not needed" &#124; measure count() by Computer |更新プログラムが必要な Linux サーバー | 
@@ -339,7 +339,7 @@ OMS Update Management ソリューションを Sytem Center Configuration Manage
 
 詳細については、[Automation Runbook の出力とメッセージ](../automation/automation-runbook-output-and-messages.md)に関するページを参照してください。   
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * 管理対象のコンピューターで更新プログラムが準拠しているかどうかを示す[独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)します。
 * 緊急更新プログラムがコンピューターにインストールされていないと検出された場合またはコンピューターで自動更新が無効になっている場合、[アラートを作成](../log-analytics/log-analytics-alerts.md)します。  

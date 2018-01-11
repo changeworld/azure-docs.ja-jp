@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
 ms.openlocfilehash: 6e55e0a70142c81e9543688bf699ef149f3ecff2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli-20"></a>Azure Network Watcher Azure CLI 2.0 を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 

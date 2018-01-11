@@ -4,7 +4,7 @@ description: "Azure Active Directory Domain Services の管理対象ドメイン
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 0235944ef89cab7af152664651711edd5e80e632
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: b09c725609fe866b0c9ba2f5b5789e00f808b1ab
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>管理対象ドメインで Kerberos の制約付き委任 (KCD) を構成する
 多くのアプリケーションは、ユーザーのコンテキストでリソースにアクセスする必要があります。 Active Directory では、このユース ケースを可能にする、Kerberos の委任というメカニズムをサポートしています。 さらに、特定のリソースのみにユーザーのコンテキストでアクセスできるように、委任を制限できます。 Azure AD Domain Services の管理対象ドメインは、従来の Active Directory ドメインとは異なっており、より安全にロックダウンされています。
@@ -37,10 +37,10 @@ Kerberos の制約付き委任 (KCD) は、指定したサーバーがユーザ�
 >
 >
 
-## <a name="resource-based-kerberos-constrained-delegation"></a>リソースベースの Kerberos の制約付き委任
-Windows Server 2012 以降では、サービス管理者はサービスに制約付き委任を構成できるようになりました。 このモデルでは、バックエンド サービス管理者は特定のフロントエンド サービスによる KCD の使用を許可または拒否できます。 このモデルは、**リソースベースの Kerberos の制約付き委任**と呼ばれます。
+## <a name="resource-based-kcd"></a>リソースベースの KCD
+Windows Server 2012 以降では、サービス管理者はサービスに制約付き委任を構成できるようになりました。 このモデルでは、バックエンド サービス管理者は特定のフロントエンド サービスによる KCD の使用を許可または拒否できます。 このモデルは、**リソースベースの KCD**と呼ばれます。
 
-リソースベースの KCD は PowerShell を使用して構成します。 偽装する側のアカウントがコンピューター アカウントであるか、ユーザー アカウント/サービス アカウントであるかによって、Set-ADComputer コマンドレットまたは Set-ADUser コマンドレットを使用します。
+リソースベースの KCD は PowerShell を使用して構成します。 偽装する側のアカウントがコンピューター アカウントであるか、ユーザー アカウント/サービス アカウントであるかによって、`Set-ADComputer` コマンドレットまたは `Set-ADUser` コマンドレットを使います。
 
 ### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>管理対象ドメインでコンピューター アカウントにリソースベースの KCD を構成する
 コンピューター "contoso100-webapp.contoso100.com" で実行されている Web アプリがあるとします。 この Web アプリは、ドメイン ユーザーのコンテキストでリソース ("contoso100-api.contoso100.com" で実行されている Web API) にアクセスする必要があります。 このシナリオでリソースベースの KCD を設定する方法を次に示します。

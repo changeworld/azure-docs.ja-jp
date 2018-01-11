@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: eaee4e1ed213d0834d959d862feffd4bca57cd9f
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 8d82ffa84c3d75ec3acd102a2de2bdce3718a995
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -152,8 +152,8 @@ filter セクションは、個々のフロー タプルとそれに関連付け
 
 最後に、output セクションは、各 Logstash イベントを Graylog サーバーに転送します。 特定のニーズに合わせるために、Logstash 構成ファイルは適宜変更を加えてください。
 
-    > [!NOTE]
-    > The previous config file assumes that the Graylog server has been configured on the local host loopback IP address 127.0.0.1. If not, be sure to change the host parameter in the output section to the correct IP address.
+   > [!NOTE]
+   > 前の構成ファイルでは、Graylog サーバーがローカル ホスト ループバック IP アドレス 127.0.0.1 に 構成されているものと想定しています。 そうでない場合は、出力セクションのホスト パラメーターを正しい IP アドレスに変更してください。
 
 Logstash のインストールの詳細については、Logstash の[ドキュメント](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)を参照してください。
 

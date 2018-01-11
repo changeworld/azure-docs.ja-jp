@@ -13,29 +13,29 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 11/10/2017
+ms.date: 12/14/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: d10d06edfc75594854d8f4da5cf29d6c2fd5ed24
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 3a8edb3806f981ebb6f8c1ca6c994ae198df2ec2
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 以下の表に、Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
 
 ## <a name="workload-management"></a>ワークロード管理
-| カテゴリ | 説明 | 最大値 |
+| カテゴリ | [説明] | 最大値 |
 |:--- |:--- |:--- |
 | [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |1 つの SQL Data Warehouse に対する 最大 DWU | 弾力性[パフォーマンス レベル](performance-tiers.md)のための最適化: DW6000<br></br>コンピューティング [パフォーマンス レベル](performance-tiers.md)のための最適化: DW30000c |
-| [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 [サポート チケットを作成][creating a support ticket]し、要求の種類として *[クォータ]* を選択すれば、クォータを引き上げることができます。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.0 を掛けます。 For example:<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW600c x 9.0 = 54,000 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
+| [Data Warehouse ユニット (DWU)][Data Warehouse Units (DWU)] |サーバーあたりの既定の DTU |54,000<br></br>既定では、各 SQL Server (myserver.database.windows.net など) の DTU クォータは 54,000 に設定されており、最大 DW6000c が許可されます。 このクォータは単に安全上の制限です。 [サポート チケットを作成][creating a support ticket]し、要求の種類として *[クォータ]* を選択すれば、クォータを引き上げることができます。  実際に必要な DTU を計算するには、必要とされる DWU の合計に 7.5 を掛けるか、必要とされる cDWU の合計に 9.0 を掛けます。 例: <br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW600c x 9.0 = 54,000 DTU<br></br>現在の DTU 消費量は、ポータルで SQL Server オプションから確認できます。 DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。 |
 | データベース接続 |同時に開かれるセッション数 |1024<br/><br/>1024 個のアクティブな各セッションが同時に、SQL Data Warehouse データベースに要求を送信できます。 同時に実行できるクエリ数については、制限があるので注意してください。 同時実行の制限を超えると、要求は内部キューに送られ、処理の順番が来るまで待機します。 |
 | データベース接続 |準備されたステートメントに対する最大メモリ容量 |20 MB |
 | [ワークロード管理][Workload management] |同時クエリの最大数 |32<br/><br/> 既定では、SQL Data Warehouse は、最大 32 個の同時実行クエリと、キューに残っているクエリを実行します。<br/><br/>ユーザーが割り当てられているリソース クラスが高いほど、または SQL Data Warehouse の[サービス レベル](performance-tiers.md#service-levels)が低いほど、同時実行クエリの数が減る可能性があります。 DMV クエリなど、クエリの中には必ず実行が許可されるものがあります。 |
 | [tempdb][Tempdb] |最大 GB |DW100 あたり 399 GB です。 そのため、DWU1000 では、tempdb のサイズは 3.99 TB になります。 |
 
 ## <a name="database-objects"></a>データベース オブジェクト
-| カテゴリ | 説明 | 最大値 |
+| カテゴリ | [説明] | 最大値 |
 |:--- |:--- |:--- |
 | データベース |最大サイズ |240 TB (ディスク上の圧縮)<br/><br/>この領域は tempdb またはログ領域から独立しています。そのため、この領域はパーマネント テーブル専用です。  クラスター化列ストアの圧縮率は約 5 倍になります。  このため、すべてのテーブルをクラスター化列ストア (既定のテーブルの種類) にした場合、データベースを約 1 PB まで拡大できるようになります。 |
 | テーブル |最大サイズ |60 TB (ディスク上の圧縮) |
@@ -56,12 +56,12 @@ ms.lasthandoff: 11/13/2017
 | 表示 |ビューあたりの列数 |1,024 |
 
 ## <a name="loads"></a>読み込み
-| カテゴリ | 説明 | 最大値 |
+| カテゴリ | [説明] | 最大値 |
 |:--- |:--- |:--- |
 | Polybase 読み込み |行あたりの MB 数 |1<br/><br/>Polybase は、1 MB 未満の行に対してのみ読み込みを行い、VARCHAR(MAX)、NVARCHAR(MAX)、VARBINARY(MAX) に読み込むことはできません。<br/><br/> |
 
 ## <a name="queries"></a>クエリ
-| カテゴリ | 説明 | 最大値 |
+| カテゴリ | [説明] | 最大値 |
 |:--- |:--- |:--- |
 | クエリ |ユーザー テーブルに対する、キューに置かれるクエリ数 |1,000 |
 | クエリ |システム ビューに対する同時クエリ数 |100 |
@@ -88,7 +88,7 @@ ms.lasthandoff: 11/13/2017
 | sys.dm_pdw_os_event_logs |10,000 |
 | sys.dm_pdw_sql_requests |sys.dm_pdw_exec_requests に格納された最新の 1000 個の SQL 要求 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][SQL Data Warehouse reference overview]に関するページをご覧ください。
 
 <!--Image references-->

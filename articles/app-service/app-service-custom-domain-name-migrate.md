@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: a1fe545e4a341709232cba36c6e3cf3b4ce82e80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd04be2046a23901471cb7bd0da9e0ed2d514d0d
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Azure App Service へのアクティブな DNS 名の移行
 
@@ -50,7 +50,7 @@ DNS 解決のダウンタイムの心配がない場合は、「[既存のカス
 
 ドメインの所有権を確認するには、TXT レコードを追加します。 TXT レコードは、_awverify.&lt;subdomain>_ から _&lt;appname>.azurewebsites.net_ にマップします。 
 
-必要な TXT レコードは、移行する DNS レコードによって異なります。 例については、次の表をご覧ください (通常、`@` はルート ドメインを表します)。  
+必要な TXT レコードは、移行する DNS レコードによって異なります。 例については、次の表をご覧ください (通常、`@` はルート ドメインを表します)。
 
 | DNS レコードの例 | TXT ホスト | TXT 値 |
 | - | - | - |
@@ -122,7 +122,7 @@ A レコードを再マップするには、**[カスタム ドメイン]** ペ�
 
 DNS の伝播が始まるとすぐに、DNS クエリが App Service アプリの解決を開始します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 カスタム SSL 証明書を App Service にバインドする方法を確認します。
 

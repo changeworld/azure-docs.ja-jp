@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 04/25/2017
+ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: 822bed8ffc43459dd053fda5b68f62f839b7d94b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f645890fc5e08dd468002c1ff0af79ba636ccce3
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Microsoft Azure Machine Learning のアルゴリズムの選択方法
 「どのような機械学習アルゴリズムを使用すべきか」という質問への答えは、 常に「場合による」です。 データのサイズ、品質、および性質によって異なります。 得られた回答で何を行うかによって異なります。 アルゴリズムの数値演算が使用しているコンピューターの命令にどのように変換されるかによって異なります。 そして、どれだけ時間があるかによって異なります。 最も経験豊富なデータ科学者であっても、試してみる前にどのアルゴリズムが最適か判断することはできません。
@@ -106,19 +106,19 @@ ms.lasthandoff: 10/11/2017
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Two-class classification** (2 クラス分類) | | | | | |
 | [logistic regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) (ロジスティック回帰) | |● |● |5 | |
-| [decision forest](https://msdn.microsoft.com/library/azure/dn906008.aspx) (デシジョン フォレスト) |● |○ | |6 | |
+| [デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
 | [decision jungle](https://msdn.microsoft.com/library/azure/dn905976.aspx) (デシジョン ジャングル) |● |○ | |6 |低メモリ フットプリント |
-| [boosted decision tree](https://msdn.microsoft.com/library/azure/dn906025.aspx) (ブースト デシジョン ツリー) |● |○ | |6 |メモリ フットプリントが大きい |
+| [ブースト デシジョン ツリー](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |メモリ フットプリントが大きい |
 | [neural network](https://msdn.microsoft.com/library/azure/dn905947.aspx) (ニューラル ネットワーク) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
 | [averaged perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) (平均化パーセプトロン) |○ |○ |● |4 | |
 | [support vector machine](https://msdn.microsoft.com/library/azure/dn905835.aspx) (サポート ベクター マシン) | |○ |● |5 |大きい特徴セットに好適 |
 | [locally deep support vector machine](https://msdn.microsoft.com/library/azure/dn913070.aspx) (ローカル詳細サポート ベクター マシン) |○ | | |8 |大きい特徴セットに好適 |
 | [Bayes’ point machine](https://msdn.microsoft.com/library/azure/dn905930.aspx) (ベイズ ポイント マシン) | |○ |● |3 | |
 | **Multi-class classification** (多クラス分類) | | | | | |
-| [logistic regression](https://msdn.microsoft.com/library/azure/dn905853.aspx) (ロジスティック回帰) | |● |● |5 | |
-| [decision forest](https://msdn.microsoft.com/library/azure/dn906015.aspx) (デシジョン フォレスト) |● |○ | |6 | |
+| [ロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
+| [デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
 | [decision jungle](https://msdn.microsoft.com/library/azure/dn905963.aspx) (デシジョン ジャングル)  |● |○ | |6 |低メモリ フットプリント |
-| [neural network](https://msdn.microsoft.com/library/azure/dn906030.aspx) (ニューラル ネットワーク) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) (一対全) |- |- |- |- |選択した 2 クラス法のプロパティを参照してください |
 | **Regression** (回帰) | | | | | |
 | [linear](https://msdn.microsoft.com/library/azure/dn905978.aspx) (線形) | |● |● |4 | |
@@ -126,7 +126,7 @@ ms.lasthandoff: 10/11/2017
 | [decision forest](https://msdn.microsoft.com/library/azure/dn905862.aspx) (デシジョン フォレスト) |● |○ | |6 | |
 | [boosted decision tree](https://msdn.microsoft.com/library/azure/dn905801.aspx) (ブースト デシジョン ツリー) |● |○ | |5 |メモリ フットプリントが大きい |
 | [fast forest quantile](https://msdn.microsoft.com/library/azure/dn913093.aspx) (高速フォレスト分位) |● |○ | |9 |ポイント予測ではなく分布 |
-| [neural network](https://msdn.microsoft.com/library/azure/dn905924.aspx) (ニューラル ネットワーク) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867) |
 | [Poisson](https://msdn.microsoft.com/library/azure/dn905988.aspx) (ポワソン) | | |● |5 |技術的には対数線形。 カウント予測用 |
 | [ordinal](https://msdn.microsoft.com/library/azure/dn906029.aspx) (序数) | | | |0 |ランク順序予測用 |
 | **Anomaly detection** (異常検出) | | | | | |

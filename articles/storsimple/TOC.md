@@ -38,7 +38,6 @@
 #### [ACR を管理する](storsimple-virtual-array-manage-acrs.md)
 #### [ジョブを管理する](storsimple-virtual-array-manage-jobs.md)
 #### [デバイスのパスワードを変更する](storsimple-virtual-array-change-device-admin-password.md)
-#### [Windows Server ホストで MPIO を構成する](storsimple-virtual-array-configure-mpio-windows-server.md)
 #### [アラートを使用した監視](storsimple-virtual-array-manage-alerts.md)
 #### [診断とトラブルシューティング](storsimple-virtual-array-diagnose-problems.md)
 #### [サポート要求を記録する](storsimple-virtual-array-log-support-ticket.md)
@@ -179,7 +178,7 @@
 #### [5000/7000 シリーズのデバイスから](storsimple-8000-migrate-from-5000-7000.md)
 #### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
-### 更新
+### プライマリの
 #### [Update 5 のインストール - 最新](storsimple-8000-install-update-5.md)
 #### [Update 4 をインストールする](storsimple-8000-install-update-4.md)
 

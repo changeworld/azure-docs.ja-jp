@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: tonguyen
-ms.openlocfilehash: d74f649a8b5f35ffe16479576959e5ebb2857bf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4bbb13f31c42a57815dca176408d5c2e82feb5e0
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -28,6 +28,8 @@ Azure にサインアップしたら、支出を把握するために行える�
 - サブスクリプションが Enterprise Agreement (EA) の場合は、Azure Portal で、コストを表示するパブリック プレビューを使うことができます。 クラウド ソリューション プロバイダー (CSP) または Azure スポンサー プランを介したサブスクリプションの場合は、以下の機能の一部が適用されない場合があります。 詳しくは、「[EA、CSP、およびスポンサー プラン向けのその他のリソース](#other-offers)」をご覧ください。
 
 - サブスクリプションが無料試用版、[Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure イン オープン プラン (AIO)、または BizSpark の場合、クレジットをすべて使うと、サブスクリプションは自動的に無効になります。 サブスクリプションが予期せず無効化されないようにするには、[使用制限](#spending-limit)を確認してください。
+
+- [Azure の無料アカウント](https://azure.microsoft.com/en-us/free/)にサインアップしている場合、[一部の最も一般的な Azure サービスを 12 か月間無料で使用できます](billing-create-free-services-included-free-account.md)。 下記の推奨事項に加えて、[無料アカウントの課金の回避](billing-avoid-charges-free-account.md)に関する記事もご覧ください。
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Azure サービスを追加する前にコストを見積もる
 

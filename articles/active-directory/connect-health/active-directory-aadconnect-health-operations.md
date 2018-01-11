@@ -4,7 +4,7 @@ description: "この記事では、Azure AD Connect Health のデプロイ後に
 services: active-directory
 documentationcenter: 
 author: karavar
-manager: femila
+manager: mtillman
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 06afc6b4149ea1590a2994d1638d6979a89035e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e6910ea52f880e28378c9bf7fde02d080bc2e58
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -57,7 +57,7 @@ Active Directory フェデレーション サービス (AD FS) および Azure A
 1. **[サーバーの一覧]** ブレードから、削除するサーバー名を選択して **[サーバー]** ブレードを開きます。
 2. **[サーバー]** ブレードで、操作バーの **[削除]** をクリックします。
 3. 確認ボックスにサーバー名を入力して確定します。
-4. [ **削除**] をクリックします。
+4. **[削除]** をクリックします。
 
 Azure Active Directory Domain Services の Azure AD Connect Health の場合は、以下の手順に従います。
 
@@ -65,7 +65,7 @@ Azure Active Directory Domain Services の Azure AD Connect Health の場合は�
 2. 削除するドメイン コントローラーを選択します。
 3. 操作バーの **[選択した項目を削除]** をクリックします。
 4. サーバーの削除アクションを確定します。
-5. [ **削除**] をクリックします。
+5. **[削除]** をクリックします。
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Azure AD Connect Health サービスからのサービス インスタンスの削除
 特定のサービス インスタンスを削除しなければならない場合があります。 Azure AD Connect Health サービスから特定のサービス インスタンスを削除する場合に必要な知識をここで説明します。
@@ -81,7 +81,7 @@ Azure Active Directory Domain Services の Azure AD Connect Health の場合は�
 1. **[サービスの一覧]** ブレードから、削除するサービスの ID (ファーム名) を選択して、**[サービス]** ブレードを開きます。
 2. **[サーバー]** ブレードで、操作バーの **[削除]** をクリックします。
 3. 確認ボックスにサービス名 (例: sts.contoso.com) を入力して確定します。
-4. [ **削除**] をクリックします。
+4. **[削除]** をクリックします。
    <br><br>
 
 [//]: # (Start of RBAC section)

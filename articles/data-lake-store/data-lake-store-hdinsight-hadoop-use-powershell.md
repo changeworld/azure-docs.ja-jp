@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 11/01/2017
 ms.author: nitinme
 ms.openlocfilehash: dc46e3987f3710bc73ef13a2c195b68f78bd104d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Azure PowerShell を使用して、Data Lake Store を (追加のストレージとして) 使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]

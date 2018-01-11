@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5ee89d0ae4c3c56d164aff4e321ee99f015ba4fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b5b1d7723b57db2614dc889282f98e9673b4bbd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する
 エンコード ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) に通知を配信するように Media Services を構成し、 この Queue Storage から通知を取得することで、ジョブの進行状況を監視します。 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 Media Services 通知をリッスンする 1 つの一般的なシナリオは、エンコード ジョブの完了後にいくつかの追加タスクを実行する必要があるコンテンツ管理システムを開発している場合です (ワークフローの次の手順のトリガーや、コンテンツの発行など)。
 
-このトピックでは、Queue Storage から通知メッセージを取得する方法について説明します。  
+この記事では、Queue Storage から通知メッセージを取得する方法について説明します。  
 
 ## <a name="considerations"></a>考慮事項
 Queue Storage を使用する Media Services アプリケーションを開発する場合は、次の点を考慮してください。
@@ -64,6 +64,7 @@ Queue Storage を使用する Media Services アプリケーションを開発�
 
 1. 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
 2. 新しいフォルダーをローカル ドライブの任意の場所に作成し、エンコードしてストリーミングするかプログレッシブ ダウンロードする .mp4 ファイルをコピーします。 この例では、"C:\Media" というパスを使用しています。
+3. **System.Runtime.Serialization** ライブラリへの参照を追加します。
 
 ### <a name="code"></a>コード
 
@@ -120,9 +121,14 @@ namespace JobNotification
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
+
         private static readonly string _StorageConnectionString = 
             ConfigurationManager.AppSettings["StorageConnectionString"];
 
@@ -138,11 +144,15 @@ namespace JobNotification
             string endPointAddress = Guid.NewGuid().ToString();
 
             // Create the context.
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
+            
             // Create the queue that will be receiving the notification messages.
             _queue = CreateQueue(_StorageConnectionString, endPointAddress);
 
@@ -326,7 +336,8 @@ namespace JobNotification
     }
 }
 ```
-上記の例では、次の出力が生成されました。 値は異なる場合があります。
+
+上の例では、次の出力が生成されました。値は異なる場合があります。
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

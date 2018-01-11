@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 7b8732a06e54f7828418cba0c0d172e34f1f4ef7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7a8b60e26b42668e505b3d466bfc447d0cfb48b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法
 
-Media Encoder Standard を使用してビデオ入力から 1 つまたは複数の [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)、または [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 画像ファイル形式のサムネイルを生成することができます。 画像のみを生成するタスクを送信するか、またはエンコーディングとサムネイルの生成を組み合わせることができます。 このトピックでは、そのようなシナリオ用のいくつかのサンプル XML および JSON サムネイル プリセットを提供します。 トピックの最後には、エンコーディング タスクを実行するための Media Services .NET SDK の使用方法を示す[サンプル コード](#code_sample)があります。
+Media Encoder Standard を使用してビデオ入力から 1 つまたは複数の [JPEG](https://en.wikipedia.org/wiki/JPEG)、[PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics)、または [BMP](https://en.wikipedia.org/wiki/BMP_file_format) 画像ファイル形式のサムネイルを生成することができます。 画像のみを生成するタスクを送信するか、またはエンコーディングとサムネイルの生成を組み合わせることができます。 この記事では、そのようなシナリオ用のいくつかのサンプル XML および JSON サムネイル プリセットを提供します。 記事の最後には、エンコーディング タスクを実行するための Media Services .NET SDK の使用方法を示す[サンプル コード](#code_sample)があります。
 
 サンプルのプリセットで使用されている要素の詳細については、[Media Encoder Standard スキーマ](media-services-mes-schema.md)を参照してください。
 
@@ -267,7 +267,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 上記の例ではすべて、画像のみを生成するエンコード タスクを送信する方法を説明していますが、ビデオ/オーディオ エンコードをサムネイルの生成と組み合わせることもできます。 次の JSON および XML プリセットは、**Media Encoder Standard** にエンコード中にサムネイルを生成するよう指示します。
 
 ### <a id="json"></a>JSON プリセット
-スキーマの詳細については、 [この](https://msdn.microsoft.com/library/mt269962.aspx) トピックを参照してください。
+スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)の記事をご覧ください。
 
     {
       "Version": 1.0,
@@ -330,7 +330,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
     }
 
 ### <a id="xml"></a>XML プリセット
-スキーマの詳細については、 [この](https://msdn.microsoft.com/library/mt269962.aspx) トピックを参照してください。
+スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)の記事をご覧ください。
     
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
@@ -400,34 +400,43 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 
 開発環境のセットアップ方法については、「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」を参照してください。
 
-        using System;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using System.Threading;
+```
+using System;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Threading;
 
-        namespace EncodeAndGenerateThumbnails
-        {
-        class Program
-        {
-            // Read values from the App.config file.
-            private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
-            private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+namespace EncodeAndGenerateThumbnails
+{
+    class Program
+    {
+        // Read values from the App.config file.
+        private static readonly string _AADTenantDomain =
+        ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+        private static readonly string _RESTAPIEndpoint =
+        ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+        ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+        ConfigurationManager.AppSettings["AMSClientSecret"];
 
-            private static CloudMediaContext _context = null;
+        private static CloudMediaContext _context = null;
 
-            private static readonly string _mediaFiles =
-            Path.GetFullPath(@"../..\Media");
+        private static readonly string _mediaFiles =
+        Path.GetFullPath(@"../..\Media");
 
-            private static readonly string _singleMP4File =
+        private static readonly string _singleMP4File =
             Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
 
-            static void Main(string[] args)
-            {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+        static void Main(string[] args)
+        {
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -439,10 +448,10 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
             EncodeToAdaptiveBitrateMP4Set(asset);
 
             Console.ReadLine();
-            }
+        }
 
-            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-            {
+        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+        {
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Thumbnail Job");
             // Get a media processor reference, and pass to it the name of the 
@@ -454,9 +463,9 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 
             // Create a task
             ITask task = job.Tasks.AddNew("Media Encoder Standard Thumbnail task",
-                processor,
-                configuration,
-                TaskOptions.None);
+                    processor,
+                    configuration,
+                    TaskOptions.None);
 
             // Specify the input asset to be encoded.
             task.InputAssets.Add(asset);
@@ -464,47 +473,47 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
             // This output is specified as AssetCreationOptions.None, which 
             // means the output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset",
-                AssetCreationOptions.None);
+                    AssetCreationOptions.None);
 
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
             job.Submit();
             job.GetExecutionProgressTask(CancellationToken.None).Wait();
 
             return job.OutputMediaAssets[0];
-            }
+        }
 
-            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-            {
+        private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
+        {
             Console.WriteLine("Job state changed event:");
             Console.WriteLine("  Previous state: " + e.PreviousState);
             Console.WriteLine("  Current state: " + e.CurrentState);
             switch (e.CurrentState)
             {
                 case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
+                    Console.WriteLine();
+                    Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                    break;
                 case JobState.Canceling:
                 case JobState.Queued:
                 case JobState.Scheduled:
                 case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
+                    Console.WriteLine("Please wait...\n");
+                    break;
                 case JobState.Canceled:
                 case JobState.Error:
 
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
+                    // Cast sender as a job.
+                    IJob job = (IJob)sender;
 
-                // Display or log error details as needed.
-                break;
+                    // Display or log error details as needed.
+                    break;
                 default:
-                break;
+                    break;
             }
-            }
+        }
 
-            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-            {
+        private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+        {
             var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
             ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
@@ -512,25 +521,26 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
                 throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
             return processor;
-            }
         }
-
+    }
+}
+```
 
 ## <a name="considerations"></a>考慮事項
 次の考慮事項が適用されます。
 
 * 明示的に Start、Step、Range でタイムスタンプを使用する場合、入力ソースは少なくとも 1 分であると仮定しています。
-* Jpg/Png/BmpImage 要素には Start、Step、Range の文字列属性があり、次のように解釈できます。
+* Jpg/Png/BmpImage 要素には、Start、Step、Range の各文字列属性があります。これらは次のように解釈できます。
   
-  * 負ではない整数の場合は、フレーム番号 (例: "Start": "120")
-  * % サフィックス付きで表現される場合は、ソース期間に対する相対値 (例: "Start": "15%")
-  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  ( 例: "Start" : "00:01:00")
+  * 負ではない整数の場合はフレーム番号 (例: "Start": "120")
+  * % サフィックス付きで表現されている場合は、ソース期間に対する相対値 (例: "Start": "15%")
+  * HH:MM:SS… 形式で表現されている場合は、タイムスタンプ  ( 例: "Start": "00:01:00")
     
     必要に応じて、表記法を混在させたり、一致させたりすることができます。
     
     また、Start は特殊なマクロの {Best} もサポートしています。このマクロは、コンテンツの最初の "関連する" フレームを決定しようと試みます。注: (Start が {Best} に設定されている場合、Step と Range は無視されます)
   * 既定: Start:{Best}
-* 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、JpgVideo は JpgFormat に、などと MES によって関連付けられます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
+* 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、MES は JpgVideo を JpgFormat などに対応付けます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

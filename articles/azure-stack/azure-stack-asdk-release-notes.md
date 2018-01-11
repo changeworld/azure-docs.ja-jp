@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2017
+ms.date: 12/11/2017
 ms.author: andredm
-ms.openlocfilehash: 6abbad8a086571702fd2e9d4d5d172189bb3c339
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 49d26defef56e6fc174cda57b24a126cd77227e4
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート
 
@@ -76,6 +76,7 @@ ms.lasthandoff: 12/04/2017
 - **[ネットワーク]** で **[接続]** をクリックして VPN 接続を設定した場合は、可能な接続の種類として **[VNet 対 VNet]** が一覧に表示されます。 このオプションを選択しないでください。 現時点でサポートされているのは、**[サイト対サイト (IPsec)]** オプションのみです。
 - 仮想マシン (VM) を作成して IP アドレスに関連付けた後で、VM からパブリック IP アドレスの関連付けを解除することはできません。 関連付けの解除は機能したように見えますが、以前に割り当てられたパブリック IP アドレスは、元の VM に関連付けられたままになります。 この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。 現時点では、新しい VM の作成には新しいパブリック IP アドレスのみを使用する必要があります。
 - Azure Stack オペレーターが、VNET または ネットワーク セキュリティ グループのデプロイ、削除、変更を行えない場合があります。 この問題は、主に同じパッケージの更新を続けて試行する際に発生します。 これは、更新プログラムのパッケージ化の問題によって引き起こされますが、問題については現在調査中です。
+- 内部負荷分散 (ILB) は、バックエンド VM の MAC アドレスを正しく処理せず、Linux インスタンスを中断します。
  
 #### <a name="sqlmysql"></a>SQL/MySQL 
 - テナントでデータベースを新しい SQL または MySQL SKU で作成する際に、最大で 1 時間かかる場合があります。 

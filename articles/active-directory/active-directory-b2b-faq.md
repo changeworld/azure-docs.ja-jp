@@ -4,7 +4,7 @@ description: "Azure Active Directory B2B コラボレーションに関してよ
 services: active-directory
 documentationcenter: 
 author: sasubram
-manager: femila
+manager: mtillman
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 0e3ae7f176f41b4b0984dbef0748451c7ebff9e7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: fecfb7217434a93fd5d44f1f07709009de7710fb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -115,7 +115,7 @@ B2B コラボレーションを向上させるためのフィードバックは�
 パートナーの Azure AD テナントがオンプレミス認証インフラストラクチャにフェデレーションされている場合、オンプレミスのシングル サインオン (SSO) が自動的に実行されます。 パートナーに Azure AD テナントがない場合、新しいユーザーに対し Azure AD アカウントが作成されます。 
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Azure AD B2B は gmail.com および outlook.com の電子メール アドレスを受け付けず、このようなアカウントに対しては、B2C が使われていたと思います。
-マイクロソフトでは、サポートされる ID に関して、B2B と business-to-company (B2C) のコラボレーションの違いをなくしています。 使用される ID は、B2B と B2C のどちらを使うかを選択する十分な理由になりません。 コラボレーション オプションの選択については、「[Azure Active Directory での B2B コラボレーションと B2C の比較](active-directory-b2b-compare-b2c.md)」をご覧ください。
+マイクロソフトでは、サポートされる ID に関して、B2B と business-to-consumer (B2C) のコラボレーションの違いをなくしています。 使用される ID は、B2B と B2C のどちらを使うかを選択する十分な理由になりません。 コラボレーション オプションの選択については、「[Azure Active Directory での B2B コラボレーションと B2C の比較](active-directory-b2b-compare-b2c.md)」をご覧ください。
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Azure B2B ゲスト ユーザーをサポートするのはどのアプリケーションとサービスですか。
 すべての Azure AD 統合アプリケーションで、Azure B2B ゲスト ユーザーをサポートします。 

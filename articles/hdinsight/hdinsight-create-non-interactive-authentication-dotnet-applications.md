@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 00eb9f6e13035ba5827b70e911be4afeafd442a2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b2b24747ce4ea8499c999c693f00fb09178d52b0
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、Microsoft .NET Azure HDInsight アプリケーションを実行できます。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」をご覧ください。 
@@ -39,7 +39,7 @@ Azure AD アプリケーションに[ロール](../active-directory/role-based-a
 
 **Azure AD アプリケーションに所有者ロールを追加するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[リソース グループ]** を選択します。
 3. このチュートリアルの後半で Hive クエリを実行する HDInsight クラスターを含むリソース グループを選択します。 多数のリソース グループがある場合は、フィルターを使って目的のものを見つけることができます。
 4. リソース グループ メニューで **[アクセス制御 (IAM)]** を選択します。
@@ -124,7 +124,7 @@ Azure AD アプリケーションに[ロール](../active-directory/role-based-a
     ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Portal で Azure Active Directory アプリケーションとサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)。
 * [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)方法を学習する。
 * [Azure のロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) について学習する。

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
 ms.openlocfilehash: 802658b50d8e398451507ad11c76fedd0db697df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Azure REST API を使用して Azure Network Watcher で接続を確認する
 

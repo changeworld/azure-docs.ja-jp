@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: v-masebo
-ms.openlocfilehash: 047dfd35cfef53d323774508121e22fbf47b2acf
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cff0f2fc664e0c09bfa1f8f0e0d488a049a6f448
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/31/2017
 - ファイルのアップロードで Azure BLOB URI を使用してデバイスをセキュリティで保護する。
 - IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
 
-[IoT Hub の概要](iot-hub-node-node-getstarted.md)と [IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-node-node-c2d.md)に関するチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングとクラウドからデバイスへのメッセージングの基本的な機能が示されています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 For example:
+[IoT Hub の概要](iot-hub-node-node-getstarted.md)と [IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-node-node-c2d.md)に関するチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングとクラウドからデバイスへのメッセージングの基本的な機能が示されています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例: 
 
 * イメージを含む大きなファイル
 * ビデオ
@@ -49,7 +49,7 @@ ms.lasthandoff: 10/31/2017
 このチュートリアルを完了するには、以下が必要です。
 
 * Node.js バージョン 4.0.x 以降。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント](http://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](http://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -213,7 +213,7 @@ node SimulatedDevice.js
 
 ![アップロードされたファイル](./media/iot-hub-node-node-file-upload/uploaded-file.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
@@ -222,7 +222,7 @@ node SimulatedDevice.js
 * [Azure IoT SDK][lnk-sdks]
 
 <!-- Links -->
-[Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
+[Azure IoT デベロッパー センター]: http://azure.microsoft.com/develop/iot
 
 [lnk-create-hub]: iot-hub-rm-template-powershell.md
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

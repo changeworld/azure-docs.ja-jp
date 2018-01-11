@@ -4,7 +4,7 @@ description: "仮想マシン スケール セットで管理ディスクを使�
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
-ms.openlocfilehash: 338144eb103c68c7fff407cbeccce11734c1c34b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82fa518e6c0498a13f950ce33c51be8581918f9b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM スケール セットと管理ディスク
 

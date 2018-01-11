@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: cephalin;wesmc
 ms.custom: mvc
-ms.openlocfilehash: 8e7afd89def170ce756aae9e76daf91d78cc20e0
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a95a8435e4ecef201ad0f6d9ecda68e94f06ea80
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>Azure Web App for Containers でカスタム Docker Hub イメージを実行する
 
@@ -38,7 +38,7 @@ App Service は、事前定義済みのアプリケーション スタックを 
 
 ## <a name="create-a-web-app-for-container"></a>Web App for Containers の作成
 
-[az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
+[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name nginx
@@ -75,7 +75,7 @@ http://<app_name>.azurewebsites.net
 
 **お疲れさまでした。** カスタム Docker イメージが Web App for Containers にデプロイされています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [カスタム Docker イメージを使用する](tutorial-custom-docker-image.md)

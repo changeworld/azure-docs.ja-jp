@@ -20,7 +20,7 @@
 #### [PowerShell を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 
 ### 仮想マシン スケール セット
-#### [Azure Portal を使用して仮想マシン スケール セットを作成する](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
+#### [可用性ゾーン内にスケール セットを作成する](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 
 ### Load Balancer
 #### [Load Balancer とは](../load-balancer/load-balancer-standard-overview.md)
@@ -33,7 +33,7 @@
 #### [PowerShell を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-powershell.md)
 #### [CLI を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-cli.md)
 
-# 障害復旧
+# ディザスター リカバリー
 ## [Azure Site Recovery の使用](https://docs.microsoft.com/azure/site-recovery/)
 
 # Azure Backup

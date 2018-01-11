@@ -32,6 +32,7 @@
 ### [ライセンスされたイメージの有効化](devtest-lab-enable-licensed-images.md)
 ### [ラボへのタグの追加](devtest-lab-add-tag.md)
 ### [ラボでのお知らせの投稿](devtest-lab-announcements.md)
+### [ラボへのサポート情報の追加](devtest-lab-internal-support-message.md)
 
 ## [カスタム イメージまたは式の選択](devtest-lab-comparing-vm-base-image-types.md)
 
@@ -60,6 +61,9 @@
 ### [データ ディスクのアタッチとデタッチ](devtest-lab-attach-detach-data-disk.md)
 
 ## [ラボのスケーリング](devtest-lab-scale-lab.md)
+
+## CI/CD との統合
+### [ラボを VSTS CI/CD パイプラインに統合する](devtest-lab-integrate-ci-cd-vsts.md)
 
 # リファレンス
 ## [CLI 2.0](/cli/azure/lab)

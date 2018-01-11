@@ -4,7 +4,7 @@ description: "Azure AD Terms of Use を使うと、Azure AD サービスのユ�
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2017
+ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: cf7b64bd956c236f5c70bb7dcd209ecdcd7176dd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: c01ea7c6a05c77244ab29fe6eec00ed1e49b6f7e
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory Terms of Use 機能 (プレビュー)
 Azure AD Terms of Use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。  これにより、ユーザーは法律またはコンプライアンスの要件に関する免責事項を確認できます。
@@ -52,14 +52,16 @@ Azure AD Terms of Use を構成する手順は次のとおりです。
 ### <a name="to-add-terms-of-use"></a>使用条件を追加するには
 1. ダッシュボード ([https://aka.ms/catou](https://aka.ms/catou)) に移動します
 2. [追加] をクリックします。</br>
-![TOU の追加](media/active-directory-tou/tou2.png)
+![TOU の追加](media/active-directory-tou/tou12.png)
 3. 使用条件の **[名前]** を入力します。
 4. **[表示名]** を入力します。  このヘッダーは、ユーザーがサインインするときに表示されます。
 5. 完成した使用条件の pdf を**参照**して選びます。  推奨フォント サイズは 24 です。
-6. テンプレートまたはカスタム条件付きアクセス ポリシーを使って、アップロードした使用条件を**適用**できます。  カスタム条件付きアクセス ポリシーを使うと、特定のクラウド アプリケーションやユーザー グループまで、きめ細かい使用条件を有効にできます。  詳しくは、[条件付きアクセス ポリシーの構成](active-directory-conditional-access-best-practices.md)に関するページをご覧ください。
-7. **Create** をクリックしてください。
-8. カスタム条件付きアクセス テンプレートを選んだ場合、表示される新しい画面で CA のポリシーをカスタマイズできます。
-7. 新しい使用条件が表示されるようになります。</br>
+6. 使用条件の**言語**を選択します。  言語オプションを使用して、言語が異なる複数の使用条件をアップロードできます。  エンドユーザーに表示される使用条件のバージョンは、ブラウザーの設定に基づきます。
+7. **[ユーザーは使用条件を展開する必要があります]** をオンにするかオフにするかを選択します。  オンに設定された場合、エンド ユーザーは、同意する前に使用条件を表示する必要があります。
+8. **[条件付きアクセス]** セクションで、テンプレートまたはカスタム条件付きアクセス ポリシーを使って、アップロードした使用条件を**適用**できます。  カスタム条件付きアクセス ポリシーを使うと、特定のクラウド アプリケーションやユーザー グループまで、きめ細かい使用条件を有効にできます。  詳しくは、[条件付きアクセス ポリシーの構成](active-directory-conditional-access-best-practices.md)に関するページをご覧ください。
+9. **Create** をクリックしてください。
+10. カスタム条件付きアクセス テンプレートを選んだ場合、表示される新しい画面で CA のポリシーをカスタマイズできます。
+11. 新しい使用条件が表示されるようになります。</br>
 
 ![TOU の追加](media/active-directory-tou/tou3.png)
 
@@ -90,6 +92,19 @@ Azure AD Terms of Use には使いやすい監査機能があり、誰がいつ�
 ![監査イベント](media/active-directory-tou/tou10.png)
 -   モバイル デバイスでは次のように表示されます</br></br>
 ![監査イベント](media/active-directory-tou/tou11.png)
+
+### <a name="review-terms-of-use"></a>使用条件の確認
+ユーザーは、同意した使用条件を確認できます。  これは、次の手順で実行できます。
+
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動してサインインします。
+2. 右上隅に表示される自分の名前をクリックし、ドロップダウンから **[プロファイル]** を選択します。
+![プロファイル](media/active-directory-tou/tou14.png)
+
+3. プロファイルで、**[使用条件の確認]** をクリックします。
+![監査イベント](media/active-directory-tou/tou13a.png)
+
+4.  そこから同意した使用条件を確認できます。 
+
 
 ## <a name="additional-information"></a>追加情報
 使用条件を使うときに知っておくべき情報と役に立つ情報を次に示します。

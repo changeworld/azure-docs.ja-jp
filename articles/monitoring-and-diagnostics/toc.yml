@@ -33,6 +33,10 @@
           href: monitoring-overview-metrics.md
         - name: アラート
           href: monitoring-overview-alerts.md
+        - name: アラート (プレビュー)
+          href: monitoring-overview-unified-alerts.md
+        - name: ログ アラート
+          href: monitor-alerts-unified-log.md
         - name: 自動スケール
           href: monitoring-overview-autoscale.md
         - name: アクティビティ ログ
@@ -74,6 +78,8 @@
           href: monitoring-near-real-time-metric-alerts.md
         - name: Azure Portal でアラートを構成する
           href: insights-alerts-portal.md
+        - name: Azure Portal でアラート (プレビュー) のメトリックまたはログ アラートを構成する
+          href: monitor-alerts-unified-usage.md
         - name: CLI を使用してアラートを構成する
           href: insights-alerts-command-line-interface.md
         - name: Azure PowerShell でアラートを構成する
@@ -84,6 +90,8 @@
           href: monitoring-enable-alerts-using-template.md
     - name: 自動スケールの使用
       items:
+        - name: 自動スケール設定について
+          href: monitoring-understanding-autoscale-settings.md
         - name: ベスト プラクティス
           href: insights-autoscale-best-practices.md
         - name: 一般的なメトリック
@@ -156,6 +164,8 @@
       href: monitoring-metric-charts.md
     - name: Grafana へのメトリックの送信
       href: monitor-send-to-grafana.md
+    - name: イベント ハブへの監視データの送信
+      href: monitor-stream-monitoring-data-event-hubs.md
 - name: リファレンス
   items:
     - name: Azure CLI

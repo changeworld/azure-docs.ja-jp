@@ -12,7 +12,7 @@ F シリーズ VM は、より高速の CPU を必要としつつも、vCPU あ�
 
 Fs シリーズには、Premium Storage に加え、F シリーズのすべての利点が備わっています。
 
-## <a name="fsv2-series"></a>Fsv2 シリーズ*
+## <a name="fsv2-series-sup1sup"></a>Fsv2 シリーズ <sup>1</sup>
 
 ACU: 195 ～ 210
 
@@ -25,9 +25,10 @@ ACU: 195 ～ 210
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 (512)                                                           | 極めて高                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 (1024)                                                         | 極めて高                                 |
 | Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | 極めて高                                 |
-* Fsv2 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています。
 
-## <a name="fs-series"></a>Fs シリーズ*
+<sup>1</sup> Fsv2 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
+
+## <a name="fs-series-sup1sup"></a>Fs シリーズ <sup>1</sup>
 
 ACU: 210 ～ 250
 
@@ -41,7 +42,7 @@ ACU: 210 ～ 250
 
 MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
-* Fs シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)」を参照してください。
+<sup>1</sup> Fs シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)」を参照してください。
 
 
 <br>

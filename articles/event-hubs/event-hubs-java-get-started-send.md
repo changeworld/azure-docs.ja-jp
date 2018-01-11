@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: b31771001989e20b88bc8d7bca1afceb58ec197c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28585a1b6a6c7c642c8bccf4615382d15f89d11c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs にイベントを送信する
 
@@ -32,7 +32,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 このチュートリアルを完了するには、以下が必要です。
 
 * Java 開発環境。 このチュートリアルでは、 [Eclipse](https://www.eclipse.org/)を想定しています。
-* アクティブな Azure アカウント。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>を参照してください。
 
 ## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
 [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) の Maven プロジェクトで Event Hub 用の Java クライアント ライブラリを使用できます。 Maven プロジェクト ファイル内で次の依存関係宣言を使用して、このライブラリを参照できます。    
@@ -86,12 +86,15 @@ public class Send
 
     EventHubClient ehClient = EventHubClient.createFromConnectionStringSync(connStr.toString());
     ehClient.sendSync(sendEvent);
+    
+    // close the client at the end of your program
+    ehClient.closeSync();
     }
 }
 
 ``` 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [EventProcessorHost を使用してイベントを受信する](event-hubs-java-get-started-receive-eph.md)

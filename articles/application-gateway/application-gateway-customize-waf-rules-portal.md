@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: davidmu
 ms.openlocfilehash: 406e491aa54806b3534ef0f500d6aea03434e2c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Azure Portal を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
 
@@ -58,7 +58,7 @@ Azure Application Gateway Web アプリケーション ファイアウォール 
 
    1. 無効にするルールまたはルール グループを検索します。
    2. 無効にするルールのチェック ボックスをオフにしてください。 
-   2. [ **保存**] を選択します。 
+   2. **[保存]** を選択します。 
 
 ![変更を保存する][3]
 

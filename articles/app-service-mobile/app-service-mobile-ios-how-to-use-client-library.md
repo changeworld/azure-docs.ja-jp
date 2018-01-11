@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: yuaxu
-ms.openlocfilehash: bd5e2fce31ae597f8ce48fb8f5492e280cbbf28f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 63dd283605553297a7dc8feab90c8bcbd716d5de
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け iOS クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -546,7 +546,7 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
 3. ターミナルを使用して、プロジェクトを含むディレクトリから `pod install` を実行し、(プロジェクトではなく) 生成された Xcode ワークスペースを開きます。
 4. ご使用の言語に応じて、アプリケーションに次のコードを追加します。 各コードでは、次のように置き換えます。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。この値は、[Azure クラシック ポータル] の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。この値は、[Azure Portal] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。
@@ -853,7 +853,7 @@ Google Sign-In SDK for iOS を使用すると、Google アカウントでユー�
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
-
+[Azure Portal]: https://portal.azure.com/
 [Handling Expired Tokens]: http://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx

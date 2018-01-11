@@ -16,11 +16,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: de0c83e4c99894f98de18eb089ce11cdf5c70f2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f63c20831a2700f1024507bef614a5a7cc87d00e
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB: Visual Studio 接続済みサービス (プレビュー段階)
 
@@ -33,7 +33,7 @@ Visual Studio 接続済みサービスを使用すると、開発者は、簡単
 以下のものがそろっていることを確認してください。
 
 * アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
-* Azure Cosmos DB アカウント。 まだ実行していない場合は、[Cosmos DB の Azure アカウントを作成する](create-documentdb-dotnet.md)手順を実行して、Azure ポータルで作成するか、または [Connected Service ツール Azure Cosmos DB アカウントを作成する](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool) を参照してください。 
+* Azure Cosmos DB アカウント。 まだ実行していない場合は、[Cosmos DB の Azure アカウントを作成する](create-sql-api-dotnet.md)手順を実行して、Azure ポータルで作成するか、または [Connected Service ツール Azure Cosmos DB アカウントを作成する](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool) を参照してください。 
 * 開発にローカル環境を使用する場合は、[Azure Cosmos DB エミュレーター](local-emulator.md) を使用できます。 この環境では、Azure Cosmos DB サービスをエミュレートします。
 * [Visual Studio](http://www.visualstudio.com/)。
 * 最新の Azure Cosmos DB 接続済みサービスのビットです。 次のスクリーン ショットは、Visual Studio Marketplace から Azure Cosmos DB 接続済みサービスをダウンロードする方法を示しています。 コンピューターで **Visual Studio** を開きます。 **[ツール]** メニューの **[拡張機能と更新]** を選択し、**[オンライン]**、 / **[Visual Studio Marketplace]** を選択します。 「**cosmosdb**」と入力してビットを検索します。
@@ -119,8 +119,8 @@ Visual Studio の接続済みサービスの使用方法を説明した次の動
 
 これで、Azure Cosmos DB アカウントを使用して、接続済みサービス を起動し、実行できました。次のチュートリアルのいずれかに進んで、ソリューションの開発を始めてください。
 
-* [NET での DocumentDB API を使用した開発](tutorial-develop-documentdb-dotnet.md)
-* [Azure Cosmos DB: DocumentDB API の使用に関するチュートリアル](documentdb-get-started.md)
+* [.NET での SQL API を使用した開発](tutorial-develop-sql-api-dotnet.md)
+* [Azure Cosmos DB: SQL API の使用に関するチュートリアル](sql-api-get-started.md)
 * Azure Cosmos DB のスケールとパフォーマンスをテストする場合には、 「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 * [Azure Cosmos DB アカウントを監視する](monitor-accounts.md)方法を学習します。
 

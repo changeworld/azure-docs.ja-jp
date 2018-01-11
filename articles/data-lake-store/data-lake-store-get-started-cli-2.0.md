@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 09/28/2017
 ms.author: nitinme
 ms.openlocfilehash: 431c974401c201a76b6d20de9837e44374716417
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]

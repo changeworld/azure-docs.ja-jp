@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 12/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 66748adc49ef921ab8adb5306b2a483234b076ae
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: fae88e44ee763a0c59b4ad2c731d77db379aa1ee
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>環境内でホストされている Linux コンピューターからデータを収集する
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、物理的または仮想的な Linux コンピューターおよびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Linux コンピューターを構成し、データを収集する方法を示します。  Azure Linux VM の場合は、次のトピック「[Collect data about Azure Virtual Machines](log-analytics-quick-collect-azurevm.md)」 (Azure Virtual Machines に関するデータを収集する) を参照してください。  
+
+Linux エージェントをデプロイするためのネットワークとシステムの要件を理解するには、「[Collect data from your environment with Azure Log Analytics](log-analytics-concept-hybrid.md#prerequisites)」(Azure Log Analytics を使用した環境からのデータ収集) を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -30,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
-1. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure ポータル](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. **[作成]** をクリックし、次の項目について選択します。
 
   * 新しい **OMS ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 
@@ -47,7 +49,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 OMS エージェント for Linux をインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、エージェント ラッパー スクリプトがエージェントを適切に構成し、そのエージェントを Log Analytics と正常に通信できるようにするために必要です。  
 
-1. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、前の手順で作成した *DefaultLAWorkspace* を選択します。
 3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. **[接続されたソース]**、**[Linux サーバー]** の順に選択します。   
@@ -118,7 +120,7 @@ Log Analytics は、イベントを Linux Syslog から収集でき、長期分�
 
 ワークスペースを削除するには、作成した Log Analytics ワークスペースを選択し、リソース ページで **[削除]** をクリックします。<br><br> ![Log Analytics リソースを削除する](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これでオンプレミスの Linux コンピューターからオペレーション データとパフォーマンス データが収集されているので、収集したデータの調査と分析、およびデータに対するアクションの実行を*無料*で簡単に開始することができます。  
 
 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。   

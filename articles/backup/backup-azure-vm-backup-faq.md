@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 85d6ec20fb0447165c672ba267569994e3a96e45
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: bc5b97192e0d4ad896d6d74a8745a3866d053a25
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Azure VM バックアップ サービスについての質問
 この記事では、Azure VM バックアップの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -29,14 +29,14 @@ ms.lasthandoff: 11/08/2017
 Recovery Services コンテナーでは両方のモデルがサポートされています。  (クラシック ポータルで作成された) クラシック VM または (Azure Portal で作成された) Resource Manager VM を、Recovery Services コンテナーにバックアップできます。
 
 ### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Azure VM バックアップでサポートされない構成は、どのようなものですか。
-[サポートされるオペレーティング システム](backup-azure-arm-vms-prepare.md#supported-operating-system-for-backup)と [VM のバックアップの制限](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)に関するページをご覧ください。
+[サポートされるオペレーティング システム](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup)と [VM のバックアップの制限](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)に関するページをご覧ください。
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>バックアップ構成ウィザードに VM が表示されません。なぜでしょうか。
 バックアップの構成ウィザードで Azure Backup の対象として表示されるのは、次に該当する VM だけです。
   * まだ保護されていない (VM のバックアップ状態は、VM ブレードに移動し、設定メニューの [バックアップ状態] を見て確認できます。) 詳細については、[VM のバックアップ状態の確認](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade)方法に関するページを参照してください。
   * VM と同じリージョンに属している
 
-## <a name="backup"></a>バックアップ
+## <a name="backup"></a>Backup
 ### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>オンデマンド バックアップ ジョブのリテンション期間スケジュールは、スケジュールされたバックアップと同じでしょうか。
 
 いいえ。 オンデマンド バックアップ ジョブのリテンション期間はご自身で指定する必要があります。 ポータルからトリガーした場合、既定で 30 日間保存されます。 
@@ -53,7 +53,7 @@ Azure Backup サービスに Key Vault へのアクセス許可を与える必�
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>進行中のバックアップ ジョブを取り消すことはできますか。
 はい。 "スナップショットの作成" フェーズの場合は、バックアップ ジョブを取り消すことができます。 **スナップショットからのデータ転送が進行中である場合は、ジョブを取り消すことができません**。 
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>Restore
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>ディスクの復元と完全 VM 復元とは、どのように使い分ければよいでしょうか。
 Azure の完全 VM 復元を簡易的な作成方法の 1 つと考えてください。 [VM の復元] オプションでは、ディスク名、それらのディスクに使用されているコンテナー、パブリック IP アドレス、およびネットワーク インターフェイス名を変更します。 この変更は、VM の作成時に生成されたリソースの一意性を確保するために必要です。 ただし、VM は可用性セットには追加されません。 
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.openlocfilehash: 94a4d5331aa2ed42a81e2e0bf890408f2db98fa7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 98f046a943c1fe33b421b3ab6830d78e6c4304a0
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 Split/Merge サービスを使用するには、セキュリティが正しく構成されていなければなりません。 このサービスは、Microsoft Azure SQL Database の Elastic Scale 機能の一部です。 詳しくは、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」をご覧ください。
@@ -434,8 +434,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 9. すべてのダイアログ ウィンドウで **[OK]** をクリックします。
 
 ## <a name="upload-certificate"></a>証明書のアップロード
-
-            [Azure Portal](https://portal.azure.com/)
+[Azure Portal](https://portal.azure.com/) で次のように実行します
 
 1. **[クラウド サービス]**を選択します。
 2. クラウド サービスを選択します。

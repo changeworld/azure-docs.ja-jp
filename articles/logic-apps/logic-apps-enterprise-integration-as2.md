@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 91b2f16611b88aa4b9395ca301d88042065ad9dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a283d8772e48aa6671d88288c2083d891a220d5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の AS2 メッセージを交換する
 
@@ -45,7 +45,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
     > [!TIP]
     > **[その他のサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
 
-    ![[その他のサービス]、"統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-agreements/overview-1.png)
+    ![[その他のサービス]、"統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
 3. 表示された **[統合アカウント]** ブレードで、契約を作成する統合アカウントを選択します。
 統合アカウントが表示されない場合は、[最初に統合アカウントを 1 つ作成](../logic-apps/logic-apps-enterprise-integration-accounts.md "統合アカウントについて")します。  
@@ -54,25 +54,25 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 4. **[契約]** タイルを選択します。 [契約] タイルが表示されない場合は、まずタイルを追加します。
 
-    ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+    ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
 5. 表示された [契約] ブレードの **[追加]** を選択します。
 
-    ![[追加] の選択](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+    ![[追加] の選択](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
 6. **[追加]** で、契約の**名前**を入力します。 **[契約タイプ]** で、**[AS2]** を選択します。 契約の**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および**ゲスト ID** を選択します。
 
-    ![契約の詳細の指定](./media/logic-apps-enterprise-integration-agreements/agreement-3.png)  
+    ![契約の詳細の指定](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
-    | プロパティ | Description |
+    | プロパティ | [説明] |
     | --- | --- |
-    | 名前 |契約の名前。 |
+    | Name |契約の名前。 |
     | 契約の種類 | AS2 である必要があります |
-    | Host Partner (ホスト パートナー) |契約には、ホストとゲストの両方のパートナーが必要です。 ホスト パートナーは、契約を構成している組織を表します。 |
-    | Host Identity (ホスト ID) |ホスト パートナーの ID。 |
+    | ホスト パートナー |契約には、ホストとゲストの両方のパートナーが必要です。 ホスト パートナーは、契約を構成している組織を表します。 |
+    | ホスト ID |ホスト パートナーの ID。 |
     | Guest Partner (ゲスト パートナー) |契約には、ホストとゲストの両方のパートナーが必要です。 ゲスト パートナーは、ホスト パートナーと取引している組織を表します。 |
     | ゲスト ID |ゲスト パートナーの ID。 |
-    | Receive Settings (受信の設定) |これらのプロパティは、契約によって受信されたすべてのメッセージに適用されます。 |
+    | 受信設定 |これらのプロパティは、契約によって受信されたすべてのメッセージに適用されます。 |
     | Send Settings (送信の設定) |これらのプロパティは、契約によって送信されたすべてのメッセージに適用されます。 |
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>契約で受信したメッセージを処理する方法の構成
@@ -82,7 +82,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 1.  **[追加]** で、**[受信設定]** をクリックします。
 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。 プロパティの説明については、このセクションの表を参照してください。
 
-    ![[受信設定] の構成](./media/logic-apps-enterprise-integration-agreements/agreement-4.png)
+    ![[受信設定] の構成](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
 
 2. 必要に応じて、**[メッセージ プロパティを上書きします]** チェック ボックスをオンにすることで、受信メッセージのプロパティを上書きできます。
 
@@ -102,7 +102,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 これで選択した設定に準拠する受信メッセージを処理する準備ができました。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | メッセージ プロパティを上書きします |受信メッセージのプロパティを上書きできることを示します。 |
 | メッセージに署名してください |メッセージがデジタル署名されることを要求します。 署名を検証するためのゲスト パートナーの公開証明書を構成します。  |
@@ -122,7 +122,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 1.  **[追加]** で、**[送信設定]** をクリックします。
 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。 プロパティの説明については、このセクションの表を参照してください。
 
-    ![[送信設定] プロパティの設定](./media/logic-apps-enterprise-integration-agreements/agreement-51.png)
+    ![[送信設定] プロパティの設定](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
 
 2. パートナーに署名付きメッセージを送信するには、**[メッセージの署名を有効にしてください]** チェック ボックスをオンにします。 **[MIC アルゴリズム]** ボックスの一覧から、メッセージの署名に使用する*ホスト パートナーのプライベート証明書の MIC アルゴリズム*を選択します。 **[証明書]** ボックスの一覧から、既存の[ホスト パートナーのプライベート証明書](../logic-apps/logic-apps-enterprise-integration-certificates.md)を選択します。
 
@@ -147,7 +147,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 これで選択した設定に準拠する送信メッセージを処理する準備ができました。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | メッセージの署名を有効にしてください |この契約から送信されるすべてのメッセージに署名することを要求します。 |
 | MIC アルゴリズム |メッセージの署名に使用するアルゴリズム。 メッセージに署名するための、ホスト パートナーのプライベート証明書の MIC アルゴリズムを構成します。 |
@@ -172,10 +172,10 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 2.  また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント ブレードで、**[概要]**、**[契約]** タイルの順に選択します。 
 
-    ![すべての契約が表示される [契約] タイルの選択](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
+    ![すべての契約が表示される [契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>Swagger の表示
 [Swagger の詳細](/connectors/as2/)を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  

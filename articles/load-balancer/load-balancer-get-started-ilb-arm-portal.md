@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 5b983ca9ff28aac7f0e0501f353c48deeb6adcd5
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>Azure Portal での内部ロード バランサーの作成
 

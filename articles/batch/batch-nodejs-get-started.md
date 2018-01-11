@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
 ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 

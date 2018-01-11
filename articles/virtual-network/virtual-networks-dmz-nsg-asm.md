@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>例 1 – 従来の PowerShell を使用して、NSG を使用する単純な DMZ を作成する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]

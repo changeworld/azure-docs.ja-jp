@@ -3,7 +3,7 @@ title: "DevTest Labs のカスタム イメージと数式の比較 | Microsoft 
 description: "環境に最適なものを判断できるように、VM ベースとして使用するカスタム イメージと数式の違いについて説明します。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: a3cb259a-7d80-40ec-8ee8-45105704d589
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
-ms.author: tarcher
-ms.openlocfilehash: ff771abc26c08f0adb977c29739d2f5c91924b21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 78c0255f142bd3d4b2311ac953541153b72ac12d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>DevTest ラボのカスタム イメージと数式の比較
-[カスタム イメージ](devtest-lab-create-template.md)と[数式](devtest-lab-manage-formulas.md)の両方を、[新しく作成した VM](devtest-lab-add-vm-with-artifacts.md) のベースとして使用することができます。 ただし、カスタム イメージが単に VHD に基づくイメージであるのに対して、数式は VM サイズ、仮想ネットワーク、サブネット、アーティファクトなどの構成済み設定*に加え*、VHD に基づくイメージであるという重要な相違点があります。 これらの構成済みの設定は、VM の作成時にオーバーライド可能な既定値で設定されます。 この記事では、カスタム イメージを使用する場合と数式を使用する場合の利点 (長所) と欠点 (短所) についていくつか説明します。
+[カスタム イメージ](devtest-lab-create-template.md)と[数式](devtest-lab-manage-formulas.md)の両方を、[新しく作成した VM](devtest-lab-add-vm.md) のベースとして使用することができます。 ただし、カスタム イメージが単に VHD に基づくイメージであるのに対して、数式は VM サイズ、仮想ネットワーク、サブネット、アーティファクトなどの構成済み設定*に加え*、VHD に基づくイメージであるという重要な相違点があります。 これらの構成済みの設定は、VM の作成時にオーバーライド可能な既定値で設定されます。 この記事では、カスタム イメージを使用する場合と数式を使用する場合の利点 (長所) と欠点 (短所) についていくつか説明します。
 
 ## <a name="custom-image-pros-and-cons"></a>カスタム イメージの長所と短所
 カスタム イメージでは、必要な環境から VM を作成するための静的で不変の方法が提供されます。 
@@ -53,5 +53,5 @@ ms.lasthandoff: 10/11/2017
 ## <a name="related-blog-posts"></a>関連するブログ記事
 * [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [DevTest Labs に関する FAQ](devtest-lab-faq.md)

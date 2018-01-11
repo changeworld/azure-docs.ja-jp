@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 77ee85db0bcc701514a1a98da9405a79d658d49d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1b1c0661458669dc8f05a49037943320de2ecb3
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
 
@@ -54,11 +54,12 @@ Azure Relay には、次の 2 つの機能があります。
 
 ハイブリッド接続は、Azure Service Bus WCF Relay に基づいて構築された、従来からある "BizTalk Services" の同様の名前の機能に取って代わるものです。 新しいハイブリッド接続機能は、既存の WCF リレーを補完します。Azure リレー サービスには、この 2 つのサービス機能が一緒に存在することになります。 両者は共通のゲートウェイを共有しますが、それ以外の点では実装が異なります。
 
-## <a name="wcf-relays"></a>WCF リレー
+## <a name="wcf-relay"></a>WCF リレー
 
-WCF リレーは、完全な .NET Framework (NETFX) と WCF で使用できます。 オンプレミス サービスとリレー サービス間の接続を開始するには、一連の WCF "リレー" バインディングを使用します。 バックグラウンドで、リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。
+WCF リレーは、完全な .NET Framework (NETFX) と WCF で使用できます。 オンプレミス サービスとリレー サービス間の接続を開始するには、一連の WCF "リレー" バインディングを使用します。 バックグラウンドで、リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。 詳細については、[WCF リレーの概要](relay-wcf-dotnet-get-started.md)に関するページを参照してください。
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>アーキテクチャ: 受信リレー要求の処理
+
 クライアントが [Azure Relay](/azure/service-bus-relay/) サービスに要求を送信すると、その要求が Azure Load Balancer によってゲートウェイ ノードのいずれかにルーティングされます。 要求がリッスン要求である場合は、ゲートウェイ ノードは新しいリレーを作成します。 要求が特定のリレーへの接続要求の場合は、ゲートウェイ ノードはリレーを所有するゲートウェイ ノードに接続要求を転送します。 リレーを所有するゲートウェイ ノードは、リッスンしているクライアントにランデブー要求を送信します。その際、接続要求を受信したゲートウェイ ノードへの一時的なチャネルを作成するようリスナーに求めます。
 
 リレー接続が確立されると、クライアントはランデブーに使用されるゲートウェイ ノードを経由してメッセージを交換できます。

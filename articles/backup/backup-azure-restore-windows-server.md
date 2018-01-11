@@ -14,20 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/16/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 231dd61f95267b3a504ed70e9b3a5abc470b69b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b259009a8d96e81a141e7718c0d54d40d7b67d1
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Resource Manager デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
-> [!div class="op_single_selector"]
-> * [Azure ポータル](backup-azure-restore-windows-server.md)
-> * [クラシック ポータル](backup-azure-restore-windows-server-classic.md)
->
->
 
-この記事では、バックアップ資格情報コンテナーからデータを復元する方法について説明します。 データを復元するには、Microsoft Azure Recovery Services (MARS) エージェントのデータの回復ウィザードを使用します。 データを復元するときには以下を行うことができます。
+この記事では、バックアップ コンテナーからデータを復元する方法について説明します。 データを復元するには、Microsoft Azure Recovery Services (MARS) エージェントのデータの回復ウィザードを使用します。 データを復元するときには以下を行うことができます。
 
 * バックアップが実行されたのと同じマシンにデータを復元する
 * 別のコンピューターにデータを復元する

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 59b58e9d9bdb044c81261fd19338c3f95bd409b3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ab675207094bc8ee317573192c33c20039780fe2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
@@ -76,8 +76,25 @@ HelloWorldApplication/
 ├── settings.gradle
 └── uninstall.sh
 ```
+### <a name="service-registration"></a>サービス登録
+サービスの種類は、Service Fabric ランタイムに登録する必要があります。 サービスの種類は、`ServiceManifest.xml` で定義され、さらにサービス クラスを実装する `StatelessService` で定義されます。 サービスの登録は、プロセスのメイン エントリ ポイントで実行されます。 この例では、プロセスのメイン エントリ ポイントは `HelloWorldServiceHost.java` です。
+
+```java
+public static void main(String[] args) throws Exception {
+    try {
+        ServiceRuntime.registerStatelessServiceAsync("HelloWorldType", (context) -> new HelloWorldService(), Duration.ofSeconds(10));
+        logger.log(Level.INFO, "Registered stateless service type HelloWorldType.");
+        Thread.sleep(Long.MAX_VALUE);
+    }
+    catch (Exception ex) {
+        logger.log(Level.SEVERE, "Exception in registration:", ex);
+        throw ex;
+    }
+}
+```
 
 ## <a name="implement-the-service"></a>サービスの実装
+
 **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java** を開きます。 このクラスは、サービスの種類を定義し、任意のコードを実行することができます。 サービス API には、コードのエントリ ポイントが 2 つあります。
 
 * `runAsync()` という変更可能なエントリ ポイント メソッドでは、実行時間の長いコンピューティング ワークロードなどの任意のワークロードの実行を開始できます。
@@ -116,45 +133,107 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 ワークロードの取り消しは、提供されたキャンセル トークンを使用して協調的に調整されます。 システムはタスクが完了 (正常に完了、キャンセル、または失敗) するまで待機してから、次に進みます。 システムからキャンセルが要求された場合は、キャンセル トークンを利用して作業を完了し、できるだけ早く `runAsync()` を終了することが重要です。 次の例は、キャンセル イベントを処理する方法を示しています。
 
 ```java
-    @Override
-    protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
+@Override
+protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 
-        // TODO: Replace the following sample code with your own logic
-        // or remove this runAsync override if it's not needed in your service.
+    // TODO: Replace the following sample code with your own logic
+    // or remove this runAsync override if it's not needed in your service.
 
-        CompletableFuture.runAsync(() -> {
-          long iterations = 0;
-          while(true)
-          {
-            cancellationToken.throwIfCancellationRequested();
-            logger.log(Level.INFO, "Working-{0}", ++iterations);
+    return CompletableFuture.runAsync(() -> {
+        long iterations = 0;
+        while(true)
+        {
+        cancellationToken.throwIfCancellationRequested();
+        logger.log(Level.INFO, "Working-{0}", ++iterations);
 
-            try
-            {
-              Thread.sleep(1000);
-            }
-            catch (IOException ex) {}
-          }
-        });
-    }
-```
-
-### <a name="service-registration"></a>サービス登録
-サービスの種類は、Service Fabric ランタイムに登録する必要があります。 サービスの種類は、`ServiceManifest.xml` で定義され、さらにサービス クラスを実装する `StatelessService` で定義されます。 サービスの登録は、プロセスのメイン エントリ ポイントで実行されます。 この例では、プロセスのメイン エントリ ポイントは `HelloWorldServiceHost.java` です。
-
-```java
-public static void main(String[] args) throws Exception {
-    try {
-        ServiceRuntime.registerStatelessServiceAsync("HelloWorldType", (context) -> new HelloWorldService(), Duration.ofSeconds(10));
-        logger.log(Level.INFO, "Registered stateless service type HelloWorldType.");
-        Thread.sleep(Long.MAX_VALUE);
-    }
-    catch (Exception ex) {
-        logger.log(Level.SEVERE, "Exception in registration:", ex);
-        throw ex;
-    }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex){}
+        }
+    });
 }
 ```
+
+このステートレス サービスの例では、カウントはローカル変数に格納されます。 これはステートレス サービスであるため、保存される値は、サービス インスタンスの現在のライフサイクルのみで保持されます。 このサービスを移動または再起動すると、値は失われます。
+
+## <a name="create-a-stateful-service"></a>ステートフル サービスの作成
+Service Fabric には、新しい種類のステートフルなサービスが導入されています。 ステートフル サービスは、サービス内に状態を確実に維持でき、それを使用するコードと同じ場所に配置できます。 Service Fabric によって状態の可用性が高まるため、外部ストアに状態を維持する必要がなくなります。
+
+サービスが移動または再起動した場合でも、カウンター値をステートレスから高可用と永続性に変換するには、ステートフル サービスが必要です。
+
+HelloWorld アプリケーションと同じディレクトリで、`yo azuresfjava:AddService` コマンドを実行して、新しいサービスを追加できます。 フレームワークで 「信頼性の高いステートフル サービス」を選択し、サービスに "HelloWorldStateful" という名前を付けます。 
+
+これで、アプリケーションには、ステートレス サービス HelloWorld とステートフル サービス HelloWorldStateful の 2 つのサービスが含まれるようになります。
+
+ステートフル サービスのエントリ ポイントは、ステートレス サービスと同じです。 主な違いは、状態プロバイダーを使用して状態を確実に保存できることです。 Service Fabric には、Reliable Collection という状態プロバイダー実装が用意されています。Reliable Collection では、Reliable State Manager を使用してレプリケートされたデータ構造を作成できます。 ステートフル Reliable Service では、この状態プロバイダーを既定で使用します。
+
+**HelloWorldStateful -> src** で、次の RunAsync メソッドを含む HelloWorldStateful.java を開きます。
+
+```java
+@Override
+protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
+    Transaction tx = stateManager.createTransaction();
+    return this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap").thenCompose((map) -> {
+        return map.computeAsync(tx, "counter", (k, v) -> {
+            if (v == null)
+                return 1L;
+            else
+                return ++v;
+            }, Duration.ofSeconds(4), cancellationToken)
+                .thenCompose((r) -> tx.commitAsync())
+                .whenComplete((r, e) -> {
+            try {
+                tx.close();
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
+            }
+        });
+    });
+}
+```
+
+### <a name="runasync"></a>RunAsync
+`RunAsync()` は、ステートフル サービスとステートレス サービスで同様に動作します。 ただし、ステートフル サービスでは、プラットフォームは、 `RunAsync()`を実行する前に、ユーザーに代わって追加の作業を行います。 この作業には、Reliable State Manager と Reliable Collection が使用できる状態にあることの確認が含まれる場合があります。
+
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Reliable Collection と Reliable State Manager
+```java
+ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
+```
+
+[ReliableHashMap](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable Hashmap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable Hashmap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
+
+Reliable Collection にはカスタム型を含むすべての Java 型を格納できます。ただし次の点にご注意ください。
+
+* Service Fabric がノード全体で状態を*レプリケート*して状態の可用性を高め、Reliable Hashmap が各レプリカでデータをローカル ディスクに保存します。 これは、Reliable Hashmap で保存されるすべてのデータは*シリアル化可能である*必要があることを意味します。 
+* Reliable Hashmap でトランザクションをコミットすると、可用性を高めるためにオブジェクトがレプリケートされます。 Reliable Hashmap に格納されるオブジェクトは、サービスのローカル メモリに保持されます。 これは、オブジェクトへのローカルな参照があることを意味します。
+  
+   トランザクションの Reliable Collection を更新せずに、これらのオブジェクトのローカル インスタンスを変更しないようにしてください。 オブジェクトのローカル インスタンスの変更は自動的にレプリケートされないためです。 オブジェクトをディクショナリに再挿入するか、ディクショナリで *update* メソッドのいずれかを使用する必要があります。
+
+Reliable Hashmap の管理は Reliable State Manager が行います。 サービス内のどの場所でも、Reliable Collection の名前を指定することで、Reliable State Manager に Reliable Collection をいつでも要求できます。 Reliable State Manager により、参照を確実に取得できます。 Reliable Collection インスタンスへの参照をクラス メンバー変数やプロパティに保存することはお勧めしません。 サービスのライフサイクル中、参照が常にインスタンスに設定されていることを保証するために特に注意を払う必要があります。 この作業は Reliable State Manager によって処理され、繰り返されるアクセスのために最適化されます。
+
+
+### <a name="transactional-and-asynchronous-operations"></a>トランザクション処理と非同期処理
+```java
+return map.computeAsync(tx, "counter", (k, v) -> {
+    if (v == null)
+        return 1L;
+    else
+        return ++v;
+    }, Duration.ofSeconds(4), cancellationToken)
+        .thenCompose((r) -> tx.commitAsync())
+        .whenComplete((r, e) -> {
+    try {
+        tx.close();
+    } catch (Exception e) {
+        logger.log(Level.SEVERE, e.getMessage());
+    }
+});
+```
+
+Reliable Hashmap での操作は非同期です。 Reliable Collection での書き込み操作では、データをレプリケートしてディスクに保持するために I/O 操作が実行されるためです。
+
+Reliable Hashmap の操作は *トランザクション*であるため、複数の Reliable Hashmap と操作で状態の整合性を維持できます。 たとえば、1 つのトランザクション内で Reliable Dictionary から作業項目を取得し、その項目の操作を実行してから、結果を Reliable Hashmap に保存できます。 これはアトミック操作として扱われので、操作全体が成功するか、操作全体がロールバックされることが保証されます。 項目をデキューしたが、結果を保存する前にエラーが発生した場合は、トランザクション全体がロールバックされ、項目は処理のためにキューに残ります。
+
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 

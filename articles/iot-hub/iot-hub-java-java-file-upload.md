@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: fb0dad84fc8d35a71bdc2f002d7ea570ea1371bf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: b6e1ef5a5b3f9298134a7c312ac7d1927cf41a7f
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/18/2017
 - ファイルのアップロードで Azure BLOB URI を使用してデバイスをセキュリティで保護する。
 - IoT Hub ファイル アップロード通知を使用して、アプリのバックエンドでのファイルの処理を開始する。
 
-[IoT Hub の概要](iot-hub-java-java-getstarted.md)と [IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-java-java-c2d.md)に関するチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングとクラウドからデバイスへのメッセージングの基本的な機能が示されています。 [デバイスからクラウドへのメッセージを処理する](iot-hub-java-java-process-d2c.md)チュートリアルでは、Azure Blob Storage にデバイスからクラウドへのメッセージを確実に格納する方法を説明しています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 For example:
+[IoT Hub の概要](iot-hub-java-java-getstarted.md)と [IoT Hub を使用したクラウドからデバイスへのメッセージの送信](iot-hub-java-java-c2d.md)に関するチュートリアルには、IoT Hub のデバイスからクラウドへのメッセージングとクラウドからデバイスへのメッセージングの基本的な機能が示されています。 [デバイスからクラウドへのメッセージを処理する](iot-hub-java-java-process-d2c.md)チュートリアルでは、Azure Blob Storage にデバイスからクラウドへのメッセージを確実に格納する方法を説明しています。 ただし、一部のシナリオでは、デバイスから送信されるデータを、IoT Hub が受け取る、クラウドからデバイスへの比較的小さなメッセージにマッピングすることは簡単ではありません。 例: 
 
 * イメージを含む大きなファイル
 * ビデオ
@@ -50,7 +50,7 @@ ms.lasthandoff: 11/18/2017
 
 * 最新の [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
-* アクティブな Azure アカウント  (アカウントがない場合は、[無料アカウント](http://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](http://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます)。
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -260,7 +260,7 @@ mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
 
 ![アップロードされたファイル](media/iot-hub-java-java-upload/uploaded-file.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、IoT Hub のファイル アップロード機能を使用して、デバイスからのファイルのアップロードを簡素化する方法を学習しました。 次の記事で IoT Hub の機能やシナリオをさらに詳しく調べることができます。
 
@@ -283,7 +283,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 
 
 
-[Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
+[Azure IoT デベロッパー センター]: http://azure.microsoft.com/develop/iot
 
 [Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Storage]:../storage/common/storage-create-storage-account.md#create-a-storage-account

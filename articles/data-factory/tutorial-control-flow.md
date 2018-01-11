@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shlo
-ms.openlocfilehash: e1386d055e41d25b84630141b86ef2143f2fc8af
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: bcf3095e8e66ea9b3c49919dadb8f7c342a49006
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合は、成功したコピー操作の詳細 (書き込まれたデータの量など) を成功電子メールで送信します。 コピー アクティビティが失敗した場合は、コピー失敗の詳細 (エラー メッセージなど) を失敗電子メールで送信します。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
@@ -452,7 +452,7 @@ client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, Pi
 
 - sourceBlobContainer - ソース BLOB データセットによって使用されるパイプライン内のパラメーターです。
 - sinkBlobContainer – シンク BLOB データセットによって使用されるパイプライン内のパラメーターです。
-- receiver – 電子メール アドレスが電子メールを受信する 2 つの Web アクティビティによって使用されるパイプライン内のパラメーターです。
+- receiver – このパラメーターは、このパラメーターによって電子メール アドレスが指定されている受信者に成功または失敗の電子メールを送信するパイプライン内の 2 つの Web アクティビティによって使用されます。
 
 
 ```csharp

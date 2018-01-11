@@ -16,10 +16,10 @@ ms.date: 10/15/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: ccc0755385d2f170939e5c19f32b168132b6839b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: db95f3991cfc36e0588f94aa7053bf3f5a794222
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e34d3634b592efe4581135f9dee52bf77d7506cd
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob Storage によってトリガーされる関数の作成
 
@@ -51,19 +51,23 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
     ![Azure Portal での関数のクイック スタート ページ](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
-2. 目的の言語の **BlobTrigger** テンプレートを選び、次の表で指定されている設定を使います。
+2. 検索フィールドに、「`blob`」と入力し、Blob Storage トリガー テンプレート用の目的の言語を選択します。
 
-    ![Blob Storage でトリガーされる関数を作成します。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+    ![Blob Storage トリガー テンプレートを選択します。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+ 
+3. 画像の下の表に指定した設定を使用してください。
+
+    ![Blob Storage でトリガーされる関数を作成します。](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png)
 
     | Setting | 推奨値 | Description |
     |---|---|---|
-    | **パス**   | mycontainer/{name}    | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、_name_ パラメーターとしてバインディングで渡されます。  |
-    | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
-    | **関数名の指定** | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
+    | **名前** | Function App 内で一意 | この BLOB によってトリガーされる関数の名前。 |
+    | **パス**   | samples-workitems/{name}    | 監視されている Blob Storage ストレージ内の位置。 Blob のファイル名は、_name_ パラメーターとしてバインディングで渡されます。  |
+    | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
 
 3. **[作成]** をクリックして関数を作成します。
 
-次に、Azure Storage アカウントに接続し、**mycontainer** コンテナーを作成します。
+次に、Azure Storage アカウントに接続し、**samples-workitems** コンテナーを作成します。
 
 ## <a name="create-the-container"></a>コンテナーの作成
 
@@ -79,7 +83,7 @@ Azure Blob Storage でファイルをアップロードしたり、更新した�
 
     ![ストレージ資格情報を入力し、接続します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. 接続されたストレージ アカウントを展開し、**[Blob containers] \(Blob コンテナー)** を右クリックして、**[Create blob container] \(Blob コンテナーの作成)** をクリックし、「`mycontainer`」と入力して、Enter キーを押します。
+1. 接続されたストレージ アカウントを展開し、**[Blob containers] \(Blob コンテナー)** を右クリックして、**[Create blob container] \(Blob コンテナーの作成)** をクリックし、「`samples-workitems`」と入力して、Enter キーを押します。
 
     ![ストレージ キューを作成します。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -89,7 +93,7 @@ Blob コンテナーが用意されているので、このコンテナーにフ
 
 1. Azure Portal に戻り、関数を参照して、ページ下部の **[ログ]** を展開して、ログ ストリーミングが一時停止していないことを確認します。
 
-1. ストレージ エクスプローラーで、ストレージ アカウント、**[Blob containers] \(Blob コンテナー)**、および **[mycontainer]** の順に展開します。 **[アップロード]**、**[Upload files...] \(ファイルをアップロードしています...)** の順にクリックします。
+1. Storage Explorer で、ストレージ アカウント、**[Blob containers]**\(BLOB コンテナー\)、**[samples-workitems]** の順に展開します。 **[アップロード]**、**[Upload files...] \(ファイルをアップロードしています...)** の順にクリックします。
 
     ![Blob コンテナーにファイルをアップロードします。](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 

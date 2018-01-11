@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2017
 ms.author: bwren
-ms.openlocfilehash: 9fcf23f5ff47bd7457e5afa69eb2b9b33e0bf0fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f12958550738ff465c06d0e5d774d8bffa0b90b
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-is-log-analytics"></a>Log Analytics とは
 Log Analytics は、[Operations Management Suite \(OMS\)](../operations-management-suite/operations-management-suite-overview.md) のサービスであり、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持します。  Log Analytics を使用すると、クラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータや、他の監視ツールのデータを収集し、複数のソースにわたる分析を行えます。  この記事では、Log Analytics によって提供される価値と Log Analytics の動作について概要を説明すると共に、さらにより詳しい内容へのリンクを紹介します。
@@ -60,7 +60,7 @@ Log Analytics の核となる機能は、Azure クラウドでホストされて
 
 ![OMS リポジトリ](media/log-analytics-overview/overview.png)
 
-接続先のソースは、Log Analytics によって収集されたデータを生成するコンピューターとその他のリソースです。  これには、直接接続している [Windows](log-analytics-windows-agents.md) および [Linux](log-analytics-linux-agents.md) のコンピューターにインストールされているエージェント、または[接続されている System Center Operations Manager 管理グループ](log-analytics-om-agents.md)のエージェントを含めることができます。  Azure のリソースについては、[Azure Monitor および Azure Diagnostics](log-analytics-azure-storage.md) のデータがLog Analytics によって収集されます。
+接続先のソースは、Log Analytics によって収集されたデータを生成するコンピューターとその他のリソースです。  これには、直接接続している [Windows](log-analytics-windows-agent.md) および [Linux](log-analytics-linux-agents.md) のコンピューターにインストールされているエージェント、または[接続されている System Center Operations Manager 管理グループ](log-analytics-om-agents.md)のエージェントを含めることができます。  Azure のリソースについては、[Azure Monitor および Azure Diagnostics](log-analytics-azure-storage.md) のデータがLog Analytics によって収集されます。
 
 [データソース](log-analytics-data-sources.md) は接続されている各ソースから収集されたさまざまな種類のデータです。  これには、[IIS ログ](log-analytics-data-sources-iis-logs.md)や[カスタム テキスト ログ](log-analytics-data-sources-custom-logs.md)などのソースに加えて、[Windows](log-analytics-data-sources-windows-events.md) および Linux エージェントからの[イベント](log-analytics-data-sources-windows-events.md)と[パフォーマンス データ](log-analytics-data-sources-performance-counters.md)が含まれます。  収集するデータ ソースをそれぞれ構成すると、構成は接続されているソースごとに自動的に提供されます。
 
@@ -69,7 +69,7 @@ Log Analytics の核となる機能は、Azure クラウドでホストされて
 ## <a name="log-analytics-architecture"></a>Log Analytics アーキテクチャ
 Log Analytics のデプロイ要件は、中央のコンポーネントが Azure クラウドでホストされているため最小限で済みます。  これには、収集されたデータを関連付けおよび分析できるサービスに加えて、リポジトリが含まれます。  クライアント ソフトウェアには要件がないため、ポータルは任意のブラウザーからアクセスできます。
 
-エージェントは [Windows](log-analytics-windows-agents.md) および [Linux](log-analytics-linux-agents.md) コンピューター上にインストールする必要がありますが、[接続されている SCOM 管理グループ](log-analytics-om-agents.md)の既存のメンバーであるコンピューターに必要な追加エージェントはありません。  SCOM エージェントは、データを Log Analytics に転送する管理サーバーと継続的に通信します。  ただし、一部のソリューションには、Log Analytics と直接通信するエージェントが必要です。  各ソリューションのドキュメントでは、その通信要件を指定します。
+エージェントは [Windows](log-analytics-windows-agent.md) および [Linux](log-analytics-linux-agents.md) コンピューター上にインストールする必要がありますが、[接続されている SCOM 管理グループ](log-analytics-om-agents.md)の既存のメンバーであるコンピューターに必要な追加エージェントはありません。  SCOM エージェントは、データを Log Analytics に転送する管理サーバーと継続的に通信します。  ただし、一部のソリューションには、Log Analytics と直接通信するエージェントが必要です。  各ソリューションのドキュメントでは、その通信要件を指定します。
 
 [Log Analytics にサインアップ](log-analytics-get-started.md)する場合は、OMS ワークスペースを作成します。  ワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Log Analytics 環境として考えることができます。 サブスクリプションで複数のワークスペースを作成し、運用およびテストなど複数の環境をサポートできます。
 

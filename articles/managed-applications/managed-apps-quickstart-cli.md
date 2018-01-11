@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 10/20/2017
+ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 062e6b4d9edd9ca9220b8d11336f1a3ff544a1dd
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 35059603096279f7d58da1c1b40dd2ab3f1b5c38
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Azure CLI を使用した Azure マネージ アプリケーションの作成とデプロイ
 
@@ -105,7 +105,7 @@ az managedapp create \
   --resource-group applicationGroup \
   --managedapp-definition-id $appid \
   --managed-rg-id $managedGroupId \
-  --parameters "{\"storageAccountNamePrefix\": {\"value\": \"<your-prefix>\"}, \"storageAccountType\": {\"value\": \"Standard_LRS\"}}"
+  --parameters "{\"storageAccountNamePrefix\": {\"value\": \"storage\"}, \"storageAccountType\": {\"value\": \"Standard_LRS\"}}"
 ```
 
 前の例で使用されているパラメーターは次のとおりです。

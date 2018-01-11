@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 10/06/2017
 ms.author: spelluru
-ms.openlocfilehash: bda2be15cdd4347d726f835ff49bb1a989282269
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 350c7784da1abb24df4ccd292cad28f73f3f8c0c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>SQL Server Integration Services パッケージを Azure にデプロイする
 このチュートリアルでは、Azure-SSIS 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 その後、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイできます。 このチュートリアルでは、次の手順を実行します。
@@ -298,7 +298,7 @@ Azure-SSIS IR の監視と管理の詳細については、次の記事をご覧
 - [Azure-SSIS 統合ランタイムの監視](monitor-integration-runtime.md#azure-ssis-integration-runtime)
 - [Azure-SSIS 統合ランタイムの管理](manage-azure-ssis-integration-runtime.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。 
 
 > [!div class="checklist"]

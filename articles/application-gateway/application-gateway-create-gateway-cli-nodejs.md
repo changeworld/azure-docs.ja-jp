@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
 ms.openlocfilehash: fe50fb3a7434702101dc5ae7a9dd176a33423119
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 

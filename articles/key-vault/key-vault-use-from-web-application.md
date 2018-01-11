@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 1846305e6834145046cf9903714c68e9a6fd4f7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 107be940b4c105056c63f793fb0111b03469bf66
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Web アプリケーションからの Azure Key Vault の使用
 
@@ -36,7 +36,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 * Web アプリケーション。 Web アプリとして Azure にデプロイされた ASP.NET MVC アプリケーションの手順について説明します。
 
 >[!IMPORTANT]
->* このサンプルは、AAD の ID を手動でプロビジョニングする従来の方法に基づいています。 現在では、プレビューに[管理対象サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) と呼ばれる新機能があり、AAD の ID を自動的にプロビジョニングすることができます。 詳細については、[github](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) のサンプルを参照してください。
+>* このサンプルは、AAD の ID を手動でプロビジョニングする従来の方法に基づいています。 現在では、プレビューに[管理対象サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) と呼ばれる新機能があり、AAD の ID を自動的にプロビジョニングすることができます。 詳しくは、[GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) のサンプルをご覧ください。
 
 > [!NOTE]
 >* このチュートリアルでは、 [Azure Key Vault の概要](key-vault-get-started.md)に関するページに記載されている手順を完了している必要があります。これにより、シークレットへの URI と、Web アプリケーションのクライアント ID およびクライアント シークレットを入手できます。
@@ -107,7 +107,7 @@ public static async Task<string> GetToken(string authority, string resource, str
 ```
 
 > [!NOTE]
->* 現在、新しい機能である管理対象サービス ID (MSI) は最も簡単な認証方法です。 詳細については、[.NET のアプリケーションにおいて MSI で Key Vault](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) を使用する例へのリンクと、[App Service と Functions を使って関連する MSI を使用するためのチュートリアル](https://docs.microsoft.com/en-us/azure/app-service/app-service-managed-service-identity)をご覧ください。 
+>* 現在、新しい機能である管理対象サービス ID (MSI) は最も簡単な認証方法です。 詳細については、[.NET のアプリケーションにおいて MSI で Key Vault](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) を使用する例へのリンクと、[App Service と Functions を使って関連する MSI を使用するためのチュートリアル](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)をご覧ください。 
 >* Azure AD アプリケーションを認証するには他に、クライアント ID とクライアント シークレットを使用する方法があります。 また、Web アプリケーションでこれらを使用すると、義務を分離して、キーの管理をさらに制御できます。 ただし、これは構成設定にクライアント シークレットを配置することに依存しています。この配置は、構成設定に保護するシークレットを配置するのと同じくらい危険な可能性があります。 クライアント ID とクライアント シークレットではなく、クライアント ID と証明書を使用して Azure AD アプリケーションを認証する方法については、以下を参照してください。
 
 ## <a id="appstart"></a>アプリケーション起動時のシークレットの取得
@@ -147,11 +147,11 @@ Azure AD アプリケーションを認証する別の方法は、クライア�
 ここでは、テスト証明書を作成します。 開発者コマンド プロンプトで証明書を作成する場合に使用できる、いくつかのコマンドを次に示します。 証明書ファイルの作成先となるディレクトリを変更します。  また、証明書の開始日と終了日は、現在の日付 + 1 年とします。
 
 ```
-makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
+makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018 -r
 pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 ```
 
-終了日と .pfx のパスワードをメモしておいてください (この例では、2016 年 7 月 31 日と test123)。 この情報は以下で必要になります。
+終了日と .pfx のパスワードをメモしておいてください (この例では、2017 年 7 月 31 日と test123)。 この情報は以下で必要になります。
 
 テスト証明書の作成の詳細については、 [独自のテスト証明書を作成する方法](https://msdn.microsoft.com/library/ff699202.aspx)
 

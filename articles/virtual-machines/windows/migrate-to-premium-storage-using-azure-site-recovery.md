@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: ed92255264a155fff5ad1a8d9a3cd1a7bda4e972
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: ca7489b18c53825bad7790ae4718f2c724716856
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/02/2017
 
 Site Recovery は、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび VM のレプリケーションを調整することでビジネス継続性とディザスター リカバリーの戦略を支援する Azure サービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリケーションとワークロードの可用性を維持します。 プライマリ ロケーションが通常の動作に戻ると、その場所にフェールバックします。 
 
-Site Recovery では、運用環境に影響を与えずに障害復旧の練習ができるよう、テスト フェールオーバーの機能が用意されています。 また、予想外の障害が発生した場合にはフェールオーバーを実行し、データの損失を (レプリケーション頻度に応じて) 最小限に抑えることができます。 Premium Storage に移行するシナリオでは、[Site Recovery でのフェールオーバー](../../site-recovery/site-recovery-failover.md)を使用して、ターゲット ディスクを Premium Storage アカウントに移行できます。
+Site Recovery では、運用環境に影響を与えずにディザスター リカバリーの練習ができるよう、テスト フェールオーバーの機能が用意されています。 また、予想外の障害が発生した場合にはフェールオーバーを実行し、データの損失を (レプリケーション頻度に応じて) 最小限に抑えることができます。 Premium Storage に移行するシナリオでは、[Site Recovery でのフェールオーバー](../../site-recovery/site-recovery-failover.md)を使用して、ターゲット ディスクを Premium Storage アカウントに移行できます。
 
 Premium Storage に移行する際は、Site Recovery を使用することをお勧めします。Site Recovery を使えばダウンタイムを最小限に抑えられます。 また、ディスクのコピーや新しい VM の作成を手作業で実施する手間を省くことができます。 Site Recovery では、フェールオーバー時にディスクが体系的にコピーされ、新しい VM が作成されます。 
 
@@ -202,7 +202,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
    * クラシック デプロイ モデルを使用して作成された VM の場合: Azure Portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](../linux/classic/configure-availability.md#addmachine)」を参照してください。
    * Resource Manager デプロイ モデルで作成した VM の場合: VM の構成を保存し、可用性セット内の VM をいったん削除してから再作成します。 これを行うには、[Azure Resource Manager VM 可用性セットの設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)スクリプトを使用します。 このスクリプトを実行する前に、制限を確認し、ダウンタイムを計画します。
 
-2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Resource Manager デプロイ モデルの場合、Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 クラシック デプロイ モデルの場合は、クラシック ポータルまたは Azure Portal で VM とディスクを削除できます。 VM を削除してもディスクが削除されない問題が発生した場合は、[VHD を削除するときに生じるエラーのトラブルシューティング](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)に関するページを参照してください。
+2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、[VHD を削除するときに生じるエラーのトラブルシューティング](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)に関するページを参照してください。
 
 3. **Azure Site Recovery インフラストラクチャをクリーンアップします**。 Site Recovery が不要になったら、インフラストラクチャをクリーンアップすることができます。 レプリケートされた項目、構成サーバー、回復ポリシーを削除してから、Azure Site Recovery コンテナーを削除します。
 

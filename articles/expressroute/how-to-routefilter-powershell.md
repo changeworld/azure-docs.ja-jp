@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
 ms.openlocfilehash: c940d2eab4d8e977b67b3553ab2e3d9110710956
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft ピアリングにルート フィルターを構成する: PowerShell
 > [!div class="op_single_selector"]

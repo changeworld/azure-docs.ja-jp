@@ -6,29 +6,28 @@ documentationcenter:
 author: juliako
 manager: cfowler
 editor: 
-ms.assetid: 63ed95da-1b82-44b0-b8ff-eebd535bc5c7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: b5616aa9f8b15ab576d914fbae89a56f64c27f4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ffced8e11f05d214995f9fc8506dd7c6c7deaa5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 #  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Azure Media Encoder Standard を使用したビットレート ラダーの自動生成
 
 ## <a name="overview"></a>概要
 
-このトピックでは、Media Encoder Standard (MES) を使用して、入力解像度とビットレートに基づいてビットレート ラダー (ビットレートと解像度のペア) を自動生成する方法を説明します。 自動生成されたプリセットが、入力解像度とビットレートを超えることはありません。 たとえば、入力が 3Mbps で 720p の場合、出力は最高でも 720p のままになり、3Mbps よりも低い速度で開始されます。
+この記事では、Media Encoder Standard (MES) を使用して、入力解像度とビットレートに基づいてビットレート ラダー (ビットレートと解像度のペア) を自動生成する方法を説明します。 自動生成されたプリセットが、入力解像度とビットレートを超えることはありません。 たとえば、入力が 3Mbps で 720p の場合、出力は最高でも 720p のままになり、3Mbps よりも低い速度で開始されます。
 
 ### <a name="encoding-for-streaming-only"></a>ストリーミング専用エンコード
 
-ストリーミング配信のみを想定しているソース ビデオをエンコードする場合は、エンコード タスクの作成時に "アダプティブ ストリーミング" プリセットを使用します。 **アダプティブ ストリーミング** プリセットを使用するときは、MES エンコーダーの判断によってビットレート ラダーの上限が設定されます。 ただし、使用されるレイヤーの数と解像度はサービスによって決まるため、ユーザーがエンコード コストを制御することはできません。 このトピックの終わりでは、**アダプティブ ストリーミング**プリセットを使用したエンコードの結果として、MES によって生成された出力レイヤーの例を確認できます。 出力アセットには、オーディオとビデオがインターリーブされていない MP4 ファイルが含まれます。
+ストリーミング配信のみを想定しているソース ビデオをエンコードする場合は、エンコード タスクの作成時に "アダプティブ ストリーミング" プリセットを使用します。 **アダプティブ ストリーミング** プリセットを使用するときは、MES エンコーダーの判断によってビットレート ラダーの上限が設定されます。 ただし、使用されるレイヤーの数と解像度はサービスによって決まるため、ユーザーがエンコード コストを制御することはできません。 この記事の終わりでは、**アダプティブ ストリーミング**プリセットを使用したエンコードの結果として、MES によって生成された出力レイヤーの例を確認できます。 出力アセットには、オーディオとビデオがインターリーブされていない MP4 ファイルが含まれます。
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>ストリーミングとプログレッシブ ダウンロード用のエンコード
 
@@ -51,28 +50,37 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="example"></a>例
 
-    using System;
-    using System.Configuration;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.Threading;
+```
+using System;
+using System.Configuration;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Threading;
 
-    namespace AdaptiveStreamingMESPresest
+namespace AdaptiveStreamingMESPresest
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         // Field for service context.
         private static CloudMediaContext _context = null;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -122,26 +130,26 @@ ms.lasthandoff: 10/11/2017
             Console.WriteLine("  Current state: " + e.CurrentState);
             switch (e.CurrentState)
             {
-            case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-            case JobState.Canceling:
-            case JobState.Queued:
-            case JobState.Scheduled:
-            case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-            case JobState.Canceled:
-            case JobState.Error:
+                case JobState.Finished:
+                    Console.WriteLine();
+                    Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                    break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                    Console.WriteLine("Please wait...\n");
+                    break;
+                case JobState.Canceled:
+                case JobState.Error:
 
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
+                    // Cast sender as a job.
+                    IJob job = (IJob)sender;
 
-                // Display or log error details as needed.
-                break;
-            default:
-                break;
+                    // Display or log error details as needed.
+                    break;
+                default:
+                    break;
             }
         }
         private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
@@ -150,12 +158,13 @@ ms.lasthandoff: 10/11/2017
             ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
             if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
             return processor;
         }
-        }
     }
+}
+```
 
 ## <a id="output"></a>出力
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: kumud
 ms.openlocfilehash: 6f8a462a8de93d75f0555397bea548d2b5122c09
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure DNS のレコードおよびレコード セットを管理する
 

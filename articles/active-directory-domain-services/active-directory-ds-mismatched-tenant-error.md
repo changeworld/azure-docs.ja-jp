@@ -4,7 +4,7 @@ description: "既存の Azure AD Domain Services 管理対象ドメインでの�
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory-ds
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 12/11/2017
 ms.author: maheshu
-ms.openlocfilehash: 9c9a47e9b3050eb7f41202d6a4b9202ba0f379df
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 24e11769e9b403bc00157e3f60869effa6a9633f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>既存の Azure AD Domain Services 管理対象ドメインでのディレクトリの不一致エラーを解決する
-Azure クラシック ポータルを使用して有効化された、既存の管理対象ドメインがあるとします。 新しい Azure Portal にアクセスしてこの管理対象ドメインを表示すると、次のエラー メッセージが表示されます。
+既存の Azure AD Domain Services 管理対象ドメインがあります。 Azure Portal にアクセスしてこの管理対象ドメインを表示すると、次のエラー メッセージが表示されます。
 
 ![ディレクトリの不一致エラー](.\media\getting-started\mismatched-tenant-error.png)
 
@@ -33,7 +33,7 @@ Azure クラシック ポータルを使用して有効化された、既存の�
 
 新しい Azure Portal (および特に Azure AD Domain Services 拡張機能) は、Azure Resource Manager 上に構築されています。 最新の Azure Resource Manager 環境では、より高度なセキュリティを提供し、リソースに対するロールベースのアクセス制御 (RBAC) を実現するため、特定の制限が掛けられています。 Azure AD テナントに対して Azure AD Domain Services を有効化すると、資格情報ハッシュが管理対象ドメインと同期されるようになるため、慎重に行う必要があります。 この操作では、ユーザーはディレクトリのテナント管理者である必要があります。 さらに、管理対象ドメインを有効化する仮想ネットワークに対する管理特権を持っている必要もあります。 RBAC によるチェックが絶えず行われるようにするには、管理対象ドメインと仮想ネットワークが同一の Azure AD テナントに属している必要があります。
 
-つまり、"contoso.com" という Azure AD テナントの管理対象ドメインを、別のAzure AD テナント "fabrikam.com" が所有する Azure サブスクリプションに属する仮想ネットワークで有効化することはできないということです。 Azure クラシック ポータルは Resource Manager プラットフォーム上に構築されていないため、このような制限は適用されません。
+つまり、"contoso.com" という Azure AD テナントの管理対象ドメインを、別のAzure AD テナント "fabrikam.com" が所有する Azure サブスクリプションに属する仮想ネットワークで有効化することはできないということです。 
 
 **有効な構成**: 次のデプロイ シナリオでは、Contoso の管理対象ドメインが Contoso という Azure AD テナントに対して有効化されています。 この管理対象ドメインは、Azure AD テナント Contoso が所有する Azure サブスクリプションに属する仮想ネットワークで公開されています。 このため、管理対象ドメインと仮想ネットワークの両方が同じ Azure AD テナントに属しています。 この構成は有効であり、完全にサポートされます。
 

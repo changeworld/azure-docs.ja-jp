@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
-ms.openlocfilehash: 951150e621d21037b0adde7287b9f985290d8d11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f6ef18e93b8f77162b3524f31cb632e1db38f80
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) 上の SAP HANA の高可用性 | Microsoft Docs
 
@@ -85,12 +85,12 @@ Azure Marketplace には、BYOS (サブスクリプション持ち込み) 付き
 1. ロード バランサー (内部) を作成します  
    上記手順の VNET を選択します
 1. 仮想マシン 1 を作成します  
-   https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   SLES4SAP 12 SP1 以上を使用します。この例では、SLES4SAP 12 SP1 BYOS イメージ (https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1) を使用します  
    SLES For SAP Applications 12 SP1 (BYOS)  
    ストレージ アカウント 1 を選択します  
    可用性セットを選択します  
 1. 仮想マシン 2 を作成します  
-   https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   SLES4SAP 12 SP1 以上を使用します。この例では、SLES4SAP 12 SP1 BYOS イメージ (https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1) を使用します  
    SLES For SAP Applications 12 SP1 (BYOS)  
    ストレージ アカウント 2 を選択します   
    可用性セットを選択します  
@@ -99,7 +99,7 @@ Azure Marketplace には、BYOS (サブスクリプション持ち込み) 付き
     1. フロントエンド IP プールの作成
         1. ロード バランサーを開き、[フロントエンド IP プール] を選択して [追加] をクリックします
         1. 新規のフロントエンド IP プールの名前を入力します (例: hana-frontend)
-       1. [OK] をクリックします
+        1. [OK] をクリックします
         1. 新規のフロントエンド IP プールが作成されたら、その IP アドレスをメモします
     1. バックエンド プールの作成
         1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
@@ -109,7 +109,7 @@ Azure Marketplace には、BYOS (サブスクリプション持ち込み) 付き
         1. SAP HANA クラスターの仮想マシンを選択します
         1. [OK] をクリックします
     1. 正常性プローブの作成
-       1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
+        1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
         1. 新しい正常性プローブの名前を入力します (例: hana-hp)
         1. プロトコルに TCP、ポートに 625**03** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
         1. [OK] をクリックします
@@ -119,12 +119,12 @@ Azure Marketplace には、BYOS (サブスクリプション持ち込み) 付き
         1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: hana-frontend)
         1. プロトコルは TCP のままにし、ポートに「3**03**15」を入力します
         1. アイドル タイムアウトを 30 分に増やします
-       1. **Floating IP を有効にします**
+        1. **Floating IP を有効にします**
         1. [OK] をクリックします
         1. ポート 3**03**17 に対しても上記の手順を繰り返します
 
 ### <a name="deploy-with-template"></a>テンプレートを使用したデプロイ
-Github にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイすることができます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
+GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
 1. Azure Portal で、[データベース テンプレート][template-multisid-db]または[集約型テンプレート][template-converged]を開きます。データベース テンプレートでは、データベースの負荷分散規則しか作成できませんが、集約型テンプレートでは、ASCS/SCS および ERS (Linux のみ) のインスタンスの負荷分散規則も作成できます。 SAP NetWeaver ベースのシステムをインストールして、同じコンピューターに ASCS/SCS インスタンスもインストールする場合は、[集約型テンプレート][template-converged]を使用します。
 1. 次のパラメーターを入力します
@@ -145,7 +145,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
     1. New Or Existing Subnet (新規または既存のサブネット)  
        新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、既存のものを選択します。
     1. サブネット ID  
-    仮想マシンを接続するサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する VPN または Expressroute 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/`<subscription id`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`> のようになります。
+    仮想マシンを接続するサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する VPN または Expressroute 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/`<subscription ID`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`> のようになります。
 
 ## <a name="setting-up-linux-ha"></a>Linux HA のセットアップ
 
@@ -201,7 +201,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
 
 1. [A] ディスク レイアウトをセットアップします
     1. LVM  
-    通常、データおよびログ ファイルを格納するボリュームには、LVM を使用することを推奨しています。 次の例は、仮想マシンに 4 つのデータ ディスクがアタッチされていて、これを使用して 2 つのボリュームを作成するということを前提としています。
+    一般に、データ ファイルとログ ファイルを格納するボリュームには LVM を使用することをお勧めします。 次の例は、仮想マシンに 4 つのデータ ディスクがアタッチされていて、これを使用して 2 つのボリュームを作成するということを前提としています。
         * 使用するすべてのディスクの物理ボリュームを作成します。
     <pre><code>
     sudo pvcreate /dev/sdc
@@ -229,7 +229,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
     sudo mkdir -p /hana/data
     sudo mkdir -p /hana/log
     sudo mkdir -p /hana/shared
-    # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+    # write down the ID of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
     sudo blkid
     </code></pre>
         * 3 つの論理ボリュームの fstab エントリを作成します
@@ -252,7 +252,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
     sudo fdisk /dev/sdc
     sudo mkfs.xfs /dev/sdc1
     
-    # <a name="write-down-the-id-of-devsdc1"></a>/dev/sdc1 の ID をメモしておきます
+    # <a name="write-down-the-id-of-devsdc1"></a>/dev/sdc1 の ID をメモします
     sudo /sbin/blkid  sudo vi /etc/fstab
     ```
 
@@ -450,7 +450,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 1. <https://portal.azure.com> に移動します
 1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリの ID をメモします。これは、**テナント ID** です。
+   [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
 1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost) を入力します。その後、[作成] をクリックします
@@ -458,7 +458,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. アプリケーション ID をメモします。この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。
 
@@ -476,13 +476,13 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 <pre>
 sudo vi crm-fencing.txt
 # enter the following to crm-fencing.txt
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 <code>
 primitive rsc_st_azure_1 stonith:fence_azure_arm \
-    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+    params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 primitive rsc_st_azure_2 stonith:fence_azure_arm \
-    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+    params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 </code>
@@ -496,7 +496,7 @@ sudo crm configure load update crm-fencing.txt
 <pre>
 sudo vi crm-saphanatop.txt
 # enter the following to crm-saphana.txt
-# replace the bold string with your instance number and HANA system id
+# replace the bold string with your instance number and HANA system ID
 <code>
 primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHanaTopology \
     operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -516,7 +516,7 @@ sudo crm configure load update crm-saphanatop.txt
 <pre>
 sudo vi crm-saphana.txt
 # enter the following to crm-saphana.txt
-# replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
+# replace the bold string with your instance number, HANA system ID and the frontend IP address of the Azure load balancer. 
 <code>
 primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
     operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -627,11 +627,11 @@ hdbnsutil -sr_register --remoteHost=<b>saphanavm2</b> --remoteInstance=<b>03</b>
 <pre><code>
 crm configure edited
 
-# delete location contraints that are named like the following contraint. You should have two contraints, one for the SAP HANA resource and one for the IP address group.
+# delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
 location cli-prefer-g_ip_<b>HDB</b>_HDB<b>03</b> g_ip_<b>HDB</b>_HDB<b>03</b> role=Started inf: <b>saphanavm2</b>
 </code></pre>
 
-また、セカンダリ ノードのリソースの状態をクリーンアップする必要もあります
+また、セカンダリ ノードのリソースの状態をクリーンアップする必要があります
 
 <pre><code>
 # switch back to root and cleanup the failed state
@@ -643,4 +643,4 @@ crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
-* SAP HANA on Azure (L インスタンス) の高可用性を確保し、障害の復旧を計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性と障害復旧](hana-overview-high-availability-disaster-recovery.md)」を参照してください。 
+* SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。 

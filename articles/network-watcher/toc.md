@@ -9,53 +9,55 @@
 ## [VPN 接続のトラブルシューティング](network-watcher-troubleshoot-overview.md)
 ## [接続のチェック](network-watcher-connectivity-overview.md)
 ## [サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
+
 # 作業の開始
 ## [Network Watcher の構成](network-watcher-create.md)
 ## パケット キャプチャの管理
-### [Azure ポータル](network-watcher-packet-capture-manage-portal.md)
+### [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 ### [Azure PowerShell](network-watcher-packet-capture-manage-powershell.md)
 ### [Azure CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 ### [Azure CLI](network-watcher-packet-capture-manage-cli.md)
-### [REST ()](network-watcher-packet-capture-manage-rest.md)
+### [REST](network-watcher-packet-capture-manage-rest.md)
 ## VM との間の IP フローの確認
 ### [Azure ポータル](network-watcher-check-ip-flow-verify-portal.md)
 ### [Azure PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 ### [Azure CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 ### [Azure CLI](network-watcher-check-ip-flow-verify-cli.md)
-### [REST ()](network-watcher-check-ip-flow-verify-rest.md)
+### [REST](network-watcher-check-ip-flow-verify-rest.md)
 ## 次ホップの分析
-### [Azure ポータル](network-watcher-check-next-hop-portal.md)
+### [Azure Portal](network-watcher-check-next-hop-portal.md)
 ### [Azure PowerShell](network-watcher-check-next-hop-powershell.md)
 ### [Azure CLI 1.0](network-watcher-check-next-hop-cli-nodejs.md)
 ### [Azure CLI](network-watcher-check-next-hop-cli.md)
-### [REST ()](network-watcher-check-next-hop-rest.md)
+### [REST](network-watcher-check-next-hop-rest.md)
 ## ネットワーク トポロジの表示
 ### [Azure PowerShell](network-watcher-topology-powershell.md)
 ### [Azure CLI 1.0](network-watcher-topology-cli-nodejs.md)
 ### [Azure CLI](network-watcher-topology-cli.md)
-### [REST ()](network-watcher-topology-rest.md)
+### [REST](network-watcher-topology-rest.md)
 ## VPN Gateway と接続のトラブルシューティング
-### [Azure ポータル](network-watcher-troubleshoot-manage-portal.md)
+### [Azure Portal](network-watcher-troubleshoot-manage-portal.md)
 ### [Azure PowerShell](network-watcher-troubleshoot-manage-powershell.md)
 ### [Azure CLI 1.0](network-watcher-troubleshoot-manage-cli-nodejs.md)
 ### [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
-### [REST ()](network-watcher-troubleshoot-manage-rest.md)
+### [REST](network-watcher-troubleshoot-manage-rest.md)
 ## ネットワーク セキュリティ グループ ビューの分析
 ### [Azure PowerShell](network-watcher-security-group-view-powershell.md)
 ### [Azure CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
 ### [Azure CLI](network-watcher-security-group-view-cli.md)
-### [REST ()](network-watcher-security-group-view-rest.md)
+### [REST](network-watcher-security-group-view-rest.md)
 ## 接続をテストする
-### [Azure ポータル](network-watcher-connectivity-portal.md)
+### [Azure Portal](network-watcher-connectivity-portal.md)
 ### [Azure PowerShell](network-watcher-connectivity-powershell.md)
 ### [Azure CLI](network-watcher-connectivity-cli.md)
-### [REST ()](network-watcher-connectivity-rest.md)
+### [REST](network-watcher-connectivity-rest.md)
 ## NSG フロー ログの構成
-### [Azure ポータル](network-watcher-nsg-flow-logging-portal.md)
+### [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 ### [Azure PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 ### [Azure CLI 1.0](network-watcher-nsg-flow-logging-cli-nodejs.md)
 ### [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
-### [REST ()](network-watcher-nsg-flow-logging-rest.md)
+### [REST](network-watcher-nsg-flow-logging-rest.md)
+
 # 方法
 ## [Azure Automation を使用して VPN Gateway を監視する](network-watcher-monitor-with-azure-automation.md)
 ## [VPN Gateway を使用してオンプレミスの接続を診断する](network-watcher-diagnose-on-premises-connectivity.md)
@@ -72,11 +74,17 @@
 ### [Elastic Stack の使用](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [Grafana の使用](network-watcher-nsg-grafana.md)
 ### [Graylog の使用](network-watcher-analyze-nsg-flow-logs-graylog.md)
+## [場所と Azure リージョン間の相対待ち時間の確認](view-relative-latencies.md)
 
 # リファレンス
-## [Azure PowerShell](/powershell/azure/overview)
+## [Azure CLI](/cli/azure/network/watcher)
+## [Azure PowerShell](/powershell/module/azurerm.network/#network_watcher)
+## [Java](/java/api/com.microsoft.azure.management.network)
+## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher) 
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.html#azure.mgmt.network.NetworkManagementClient.network_watchers)
+
 ## [.NET](/dotnet/api)
-## [REST ()](/rest/api/networkwatcher/)
+## [REST](/rest/api/networkwatcher/)
 # 関連項目
 ## [Virtual Network](/azure/virtual-network/)
 ## [仮想マシン](/azure/virtual-machines/)

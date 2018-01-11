@@ -3,7 +3,7 @@ title: "Azure Resource Manager テンプレートと PowerShell を使ってラ�
 description: "Azure Resource Manager テンプレートと PowerShell を使用して DevTest ラボでラボを自動的に作成または変更する方法を学習します"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: dad9944c-0b20-48be-ba80-8f4aa0950903
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
-ms.author: tarcher
-ms.openlocfilehash: c9f293c7c96633cd0116dc3c19189085d24048b4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: v-craic
+ms.openlocfilehash: 0aa55d1bc1f459e6757ecb27de043d4742a77c9f
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Azure Resource Manager テンプレートと PowerShell を使ってラボを自動的に作成または変更する
 
@@ -46,6 +46,6 @@ PowerShell を使用して自動化できる一般的タスクが他にも多数
 * [PowerShell を使用してラボに外部ユーザーを追加する](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell)
 * [PowerShell を使用してラボ カスタム ロールを作成する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 * カスタマイズしたテンプレートまたはスクリプトを保存するための[プライベート Git リポジトリ](devtest-lab-add-artifact-repo.md)を作成する方法を学習します。
 * [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します。

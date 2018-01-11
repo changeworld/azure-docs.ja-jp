@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 12/08/2017
 ms.author: yurid
-ms.openlocfilehash: 3ad22e78693c54c62f9230f7f52460e01e5e0022
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: dd5c874406ec184a2526a9eb0843cd6f3b6b3aa1
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="pen-testing"></a>侵入テスト
 アプリケーションのテストとデプロイに Azure を使用するメリットの 1 つが、環境をすばやく作成できることです。  オンプレミスのハードウェアの要求、取得、および “ラックとスタック” に関して心配する必要はありません。
@@ -29,11 +29,12 @@ Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft
 
 お客様のためにアプリケーションの侵入テストを行うことはありませんが、お客様のアプリケーションに侵入テストを実行する必要があることは理解しています。 お客様のアプリケーションのセキュリティを強化するときに、Azure エコシステム全体のセキュリティ保護を高めることができるため、これは良いことです。
 
-お客様がアプリケーションの侵入テストを行うと、Microsoft に対して攻撃しているように見える可能性があります。 攻撃パターンを [継続的に監視し](http://blogs.msdn.com/b/azuresecurity/archive/2015/07/05/best-practices-to-protect-your-azure-deployment-against-cloud-drive-by-attacks.aspx) 、必要に応じて、インシデントへの対応プロセスを開始することになります。 お客様が適切な注意を払っている侵入テストが原因で、インシデントへの対応プロセスをトリガーした場合、お客様の役に立つことはなく、Microsoft の役にも立ちません。
-
 どうすればよいでしょうか。
 
-Azure でホストされるアプリケーションの侵入テストを行う準備ができたら、[Microsoft に連絡する](https://portal.msrc.microsoft.com/en-us/engage/pentest)ことができます。 一度 Microsoft に通知したら、Microsoft 側が誤ってシャットダウンすることはありません (テストを実行している IP アドレスをブロックするなど)。 テストは、「[Microsoft Cloud Unified Penetration Testing Rules of Engagement (Microsoft Cloud 統合侵入テストの活動規則)](https://technet.microsoft.com/en-us/mt784683)」に記載されている、Azure 侵入テストの契約条件に従っている必要があります。
+2017 年 6 月 15 日時点で、Microsoft は Azure リソースに対する侵入テストを実施する際に事前承認を求めなくなりました。 Microsoft Azure に対する今後の侵入テストの契約を正式に文書化することをご希望のお客様は、[Azure サービス侵入テスト通知フォーム](https://portal.msrc.microsoft.com/engage/pentest)に記入することをお勧めします。 このプロセスは Microsoft Azure にのみ関連するものであり、その他の Microsoft Cloud サービスには適用されません。 
+
+>[!IMPORTANT] 
+>侵入テストのアクティビティを Microsoft に通知する必要はなくなりましたが、お客様は「[Microsoft Cloud Unified Penetration Testing Rules of Engagement (Microsoft Cloud 統合侵入テストの活動規則)](https://technet.microsoft.com/en-us/mt784683)」に引き続き従う必要があります。 
 
 実行できる標準テストは、次のとおりです。
 

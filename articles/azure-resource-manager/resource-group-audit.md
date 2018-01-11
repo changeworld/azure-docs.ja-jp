@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9f90bc80c146c6c2da04aacbc110f7d389c0baa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecfb7f726d5447710948405b2dd83fcd1db3dff2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>リソースのアクションを監査するアクティビティ ログの表示
 アクティビティ ログを使用すると、次の内容を判断することができます。
@@ -38,10 +38,10 @@ ms.lasthandoff: 10/11/2017
    
     ![select activity logs](./media/resource-group-audit/select-monitor.png)
 
-   また、アクティビティ ログに自動的にフィルターを適用して、特定のリソースまたはリソース グループを見つけるには、このリソース ブレードで **[アクティビティ ログ]** を選択します。 アクティビティ ログが選択したリソースで自動的にフィルター処理されることに注意してください。
+   また、アクティビティ ログに自動的にフィルターを適用して、特定のリソースまたはリソース グループを見つけるには、**[アクティビティ ログ]** を選びます。 アクティビティ ログが選択したリソースで自動的にフィルター処理されることに注意してください。
    
     ![リソースによるフィルター](./media/resource-group-audit/filtered-by-resource.png)
-2. **[アクティビティ ログ]** ブレードで、最近の操作の概要を確認します。
+2. **[アクティビティ ログ]** で、最近の操作の概要を確認します。
    
     ![アクションの表示](./media/resource-group-audit/audit-summary.png)
 3. 表示される操作の数を制限するには、異なる条件を選択します。 たとえば次の画像には、ある特定のユーザーまたはアプリケーションによって前月実行された操作を表示するように変更された **[期間]** フィールドと **[イベント開始者]** フィールドが示されています。 **[適用]** を選択してクエリの結果を表示します。
@@ -147,4 +147,5 @@ ms.lasthandoff: 10/11/2017
 * セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 * デプロイ操作を表示するコマンドについては、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関するページをご覧ください。
 * すべてのユーザーのリソースに対する削除を回避する方法については、「 [Azure Resource Manager によるリソースのロック](resource-group-lock-resources.md)」をご覧ください。
+* 各 Microsoft Azure Resource Manager プロバイダーで使用できる操作の一覧については、「[Azure Resource Manager のリソース プロバイダー操作](~/articles/active-directory/role-based-access-control-resource-provider-operations.md)」をご覧ください。
 

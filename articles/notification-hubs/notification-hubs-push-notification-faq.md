@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
-ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d19a1b7c8d50ef0fde3cf65c9fd469bc34a27adc
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs のプッシュ通知: よく寄せられる質問
 ## <a name="general"></a>全般
@@ -179,14 +179,14 @@ Microsoft 側でのメタデータ (Notification Hubs の名前、接続文字�
 開かれていないアプリがあるデバイスが、通知を受信しない期間があります。
 
 ### <a name="is-there-audit-log-capability"></a>監査ログ機能はありますか。
-すべての Notification Hubs 管理操作は、操作ログに記録されます。このログは、[Azure クラシック ポータル]で公開されます。
+すべての Notification Hubs 管理操作は、操作ログに記録されます。このログは、[Azure Portal] で公開されます。
 
 ## <a name="monitoring-and-troubleshooting"></a>監視とトラブルシューティング
 ### <a name="what-troubleshooting-capabilities-are-available"></a>どのようなトラブルシューティングの機能がありますか。
 Azure Notification Hubs には、トラブルシューティングを行うための機能がいくつか用意されています。これらは特に、通知が停止される最も一般的なシナリオで使用します。 詳細については、[Notification Hubs のトラブルシューティング]に関するホワイト ペーパーを参照してください。
 
 ### <a name="what-telemetry-features-are-available"></a>どのようなテレメトリ機能がありますか。
-Azure Notification Hubs では、[Azure クラシック ポータル]でテレメトリ データを表示できます。 使用できるメトリックの詳細については、[Notification Hubs のメトリック]に関するページを参照してください。
+Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示できます。 使用できるメトリックの詳細については、[Notification Hubs のメトリック]に関するページを参照してください。
 
 > [!NOTE]
 > 通知の成功は、単にプッシュ通知が外部の PNS (たとえば Apple の APNS や Google の GCM) に配信されたことを意味します。 ターゲット デバイスに通知を配信するのは、PNS の役目です。 通常、PNS は、配信メトリックを第三者に公開しません。  
@@ -195,7 +195,7 @@ Azure Notification Hubs では、[Azure クラシック ポータル]でテレ�
 
 Microsoft では、プログラムによってテレメトリ データをエクスポートする機能も提供しています (Standard レベル)。 詳細については、[Notification Hubs のメトリックのサンプル]を参照してください。
 
-[Azure クラシック ポータル]: https://manage.windowsazure.com
+[Azure Portal]: https://portal.azure.com
 [Notification Hubs の価格]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
 [ケース スタディ: ソチ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942

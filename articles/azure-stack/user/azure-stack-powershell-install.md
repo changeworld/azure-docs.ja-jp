@@ -3,33 +3,33 @@ title: "PowerShell for Azure Stack のインストール | Microsoft Docs"
 description: "PowerShell for Azure Stack をインストールする方法について説明します。"
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: F8D99A91-15B5-4073-BE07-A43514A6D2CF
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
-ms.author: sngun
-ms.openlocfilehash: 1c4c9aa36836398ad87c3655ff039a9dc8730456
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.author: mabrigg
+ms.openlocfilehash: b5cc53387b6867d776059856b6e7793abbc67c9a
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack のインストール  
 
 Azure Stack を使用するには、Azure Stack と互換性のある Azure PowerShell モジュールが必要です。 このガイドでは、PowerShell for Azure Stack のインストールに必要な手順について説明します。 この記事で説明している手順は、Azure Stack Development Kit で、または VPN 経由で接続している場合は Windows ベースの外部クライアントで使用できます。
 
-この記事では、PowerShell for Azure Stack をインストールする手順について詳しく説明しています。 ただし、PowerShell をすばやくインストールして構成する場合は、「Get up and running with PowerShell」(PowerShell の起動と実行) のトピックにあるスクリプトを使用できます。 
+この記事では、PowerShell for Azure Stack をインストールする手順について詳しく説明しています。 ただし、PowerShell をすばやくインストールして構成する場合は、「PowerShell の稼働」の記事にあるスクリプトを使用できます。 
 
 > [!NOTE]
 > 次の手順では、PowerShell 5.0 が必要です。 バージョンを確認するには、$PSVersionTable.PSVersion を実行して、[Major] (メジャー) のバージョンを比較します。
 
-Azure Stack 用の PowerShell コマンドは、PowerShell ギャラリーを介してインストールされます。 PSGallery レポジトリを登録するには、開発キットから、または VPN 経由で接続している場合は Windows ベースの外部クライアントから、管理者特権の PowerShell セッションを開いて、次のコマンドを実行します。
+Azure Stack 用の PowerShell コマンドは、PowerShell ギャラリーを介してインストールされます。 PSGallery リポジトリを登録するには、開発キットから、または VPN 経由で接続している場合は Windows ベースの外部クライアントから、管理者特権の PowerShell セッションを開いて、次のコマンドを実行します。
 
 ```powershell
 Set-PSRepository `
@@ -78,7 +78,7 @@ Azure Stack と互換性のある AzureRM モジュールは、API バージョ�
   Get-Module `
     -ListAvailable | where-Object {$_.Name -like “Azure*”}
   ```
-  インストールに成功した場合、出力に AzureRM および AzureStack モジュールが表示されます。
+  インストールに成功した場合、出力に AzureRM および Azure Stack モジュールが表示されます。
 
 ## <a name="install-powershell-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>接続が切断されたシナリオまたは部分的に接続されているシナリオでの PowerShell のインストール (制限されたインターネット接続を使用)
 

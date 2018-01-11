@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
 ms.openlocfilehash: 6fdf65ac87273502edb1548ed6c1cf5c7bc25649
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]

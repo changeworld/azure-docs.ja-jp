@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/31/2017
+ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17b157b723b4a4973d9bf95b4acbf7e76e797b8c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 6a0dcb941db5038b7c904c9eaa8599c5a1dc6e83
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 [767598]:https://launchpad.support.sap.com/#/notes/767598

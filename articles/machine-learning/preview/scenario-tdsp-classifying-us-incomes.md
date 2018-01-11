@@ -7,6 +7,7 @@ author: bradsev
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.openlocfilehash: 3e92687657b4e80e75fd869da454970622f7178c
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: dc6279a1bac230146f4f0cebf2fbdbb6333cb7a1
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Team Data Science Process (TDSP) プロジェクトによる収入分類
 
@@ -34,7 +35,7 @@ ms.lasthandoff: 10/27/2017
 ### <a name="purpose"></a>目的
 このサンプルの主な目的は、[Team Data Science Process (TDSP)](https://github.com/Azure/Microsoft-TDSP) 構造と Azure Machine Learning のテンプレートを使用して、機械学習プロジェクトをインスタンス化し実行する方法について説明することです。 このために、よく知られている [UCI Machine Learning Repository から取得された、1994 年の米国の国勢調査データ](https://archive.ics.uci.edu/ml/datasets/adult)を使用します。 モデリングのタスクは、米国国勢調査情報 (年齢、人種、学歴、出身国など) から米国の年間収入分類を予測することです。
 
-### <a name="scope"></a>Scope
+### <a name="scope"></a>Scope (スコープ)
  * ユース ケースの概要で説明されている予測問題に対処する機械学習モデルのデータ探索、トレーニング、および配置。 
  * このプロジェクトのために、Azure Machine Learning から Team Data Science Process (TDSP) テンプレートを使用して Azure Machine Learning でプロジェクトを実行します。 プロジェクトの実行とレポートには、TDSP ライフサイクルを使用します。
  * ソリューションは、Azure Container Services の Azure Machine Learning から直接、運用化します。
@@ -74,7 +75,7 @@ ms.lasthandoff: 10/27/2017
 この例をテンプレートとして使用して新しいプロジェクトを作成します。
 1.  Azure Machine Learning Workbench を開きます
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
-3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します。
+3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに「Classify US incomes - TDSP project」と入力し、テンプレートを選択します。
 5.  **[作成]**
 
@@ -171,7 +172,7 @@ Elastic Net とランダム フォレスト モデルの両方の AUC は 0.85 �
 
 データ サイエンス チーム内での標準化と共同作業を簡単に行うには、Azure Machine Learning のこの機能を使用することをお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 作業を開始する前に以下の資料を参照してください。
 

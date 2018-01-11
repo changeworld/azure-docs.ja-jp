@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1283d3cff4edc0c99d22612c65fda48f9dddfbd3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: d436e7d9046fa9c1bced890c005f98b40b372ef6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
 
@@ -28,21 +28,21 @@ Azure Container Registry (ACR) は、Docker コンテナー イメージ用の A
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[前のチュートリアル](./tutorial-kubernetes-prepare-app.md)では、単純な Azure Voting アプリケーション用のコンテナー イメージを作成しました。 Azure Voting アプリのイメージを作成していない場合、[チュートリアル 1 - コンテナー イメージの作成](./tutorial-kubernetes-prepare-app.md)に関するページに戻ってください。
+[前のチュートリアル][aks-tutorial-prepare-app]では、単純な Azure Voting アプリケーション用のコンテナー イメージを作成しました。 Azure Voting アプリのイメージを作成していない場合、[チュートリアル 1 - コンテナー イメージの作成][aks-tutorial-prepare-app]に関するページに戻ってください。
 
-このチュートリアルでは、Azure CLI バージョン 2.0.21 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+このチュートリアルでは、Azure CLI バージョン 2.0.21 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `eastus` リージョンに作成されます。
+[az group create][az-group-create] コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `eastus` リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-[az acr create](/cli/azure/acr#create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
+[az acr create][az-acr-create] コマンドを使用して Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -52,7 +52,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## <a name="container-registry-login"></a>Container Registry のログイン
 
-[az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login) コマンドで ACR インスタンスにログインします。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
+[az acr login][az-acr-login] コマンドで ACR インスタンスにログインします。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
 
 ```azurecli
 az acr login --name <acrName>
@@ -62,7 +62,7 @@ az acr login --name <acrName>
 
 ## <a name="tag-container-images"></a>コンテナー イメージのタグ付け
 
-現在のイメージの一覧を表示するには、[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使用します。
+現在のイメージの一覧を表示するには、[docker images][docker-images] コマンドを使用します。
 
 ```console
 docker images
@@ -91,7 +91,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v1
 ```
 
-タグ付けしたら、[docker images] (https://docs.docker.com/engine/reference/commandline/images/) を実行して操作を確認します。
+タグを付けた後、[docker images][docker-images] を実行して動作を確認します。
 
 ```console
 docker images
@@ -121,7 +121,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v1
 
 ## <a name="list-images-in-registry"></a>レジストリ内のイメージの一覧表示
 
-Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
+Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list][az-acr-repository-list] コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -135,7 +135,7 @@ Result
 azure-vote-front
 ```
 
-次に特定のイメージのタグを表示するには、[az acr repository show-tags](/cli/azure/acr/repository#show-tags) コマンドを使用します。
+次に特定のイメージのタグを表示するには、[az acr repository show-tags][az-acr-repository-show-tags] コマンドを使用します。
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
@@ -163,4 +163,17 @@ redis-v1
 Azure での Kubernetes クラスターのデプロイについては、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Kubernetes クラスターのデプロイ](./tutorial-kubernetes-deploy-cluster.md)
+> [Kubernetes クラスターのデプロイ][aks-tutorial-deploy-cluster]
+
+<!-- LINKS - external -->
+[docker-images]: https://docs.docker.com/engine/reference/commandline/images/
+
+<!-- LINKS - internal -->
+[az-acr-create]: /cli/azure/acr#create
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login
+[az-acr-repository-list]: /cli/azure/acr/repository#list
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#show-tags
+[az-group-create]: /cli/azure/group#az_group_create
+[azure-cli-install]: /cli/azure/install-azure-cli
+[aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

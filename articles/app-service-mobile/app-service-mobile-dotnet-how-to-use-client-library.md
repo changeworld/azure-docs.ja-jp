@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: glenga
-ms.openlocfilehash: 2b83dfe2f3e2645713ff7e1acfb4d7f26fe0d0cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbd2a53a7ba30915ed95cf6b0cb73b07a4f48a24
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -61,7 +61,7 @@ public class TodoItem
 
 [JsonPropertyAttribute][6] を使用して、クライアントのフィールドとテーブルのフィールド間の *PropertyName* のマッピングが定義されます。
 
-Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Azure ポータル]設定を使用することもできます。
+Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Easy Tables]設定を使用することもできます。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>方法: 管理されたクライアント SDK パッケージをインストールする
 [NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
@@ -85,7 +85,7 @@ Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] �
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Azure ポータル]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
+上記のコードで、`MOBILE_APP_URL` をモバイル アプリ バックエンドの URL に置き換えます。この URL は、[Easy Tables]のモバイル アプリ バックエンドのブレードで確認できます。 MobileServiceClient オブジェクトはシングルトンである必要があります。
 
 ## <a name="work-with-tables"></a>テーブルの操作
 以下のセクションでは、レコードを検索し、取得する方法や、テーブル内のデータを変更する方法について詳しく説明します。  次のトピックについて説明します。
@@ -651,7 +651,7 @@ Active Directory Authentication Library (ADAL) を使うと、クライアント
 2. Visual Studio または Xamarin Studio でプロジェクトを開き、 `Microsoft.IdentityModel.CLients.ActiveDirectory` NuGet パッケージへの参照を追加します。 検索時に、プレリリース版を含めます。
 3. ご使用のプラットフォームに応じて、以下のコードをアプリケーションに追加します。 それぞれで、次の置換を行います。
 
-   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。この値は、[Azure クラシック ポータル]の Azure Active Directory の [ドメイン] タブからコピーできます。
+   * **INSERT-AUTHORITY-HERE** を、アプリケーションをプロビジョニングしたテナントの名前に置き換えます。 形式は、https://login.microsoftonline.com/contoso.onmicrosoft.com のようになります。この値は、[Easy Tables] の Azure Active Directory の [ドメイン] タブからコピーできます。
    * **INSERT-RESOURCE-ID-HERE** を、モバイル アプリ バックエンドのクライアント ID に置き換えます。 クライアント ID は、ポータルの **[Azure Active Directory の設定]** の **[詳細]** タブで入手できます。
    * **INSERT-CLIENT-ID-HERE** を、ネイティブ クライアント アプリケーションからコピーしたクライアント ID に置き換えます。
    * **INSERT-REDIRECT-URI-HERE** を、HTTPS スキームを使用して、サイトの */.auth/login/done* エンドポイントに置き換えます。 この値は、*https://contoso.azurewebsites.net/.auth/login/done* のようにする必要があります。
@@ -1121,8 +1121,7 @@ public class MyHandler : DelegatingHandler
 [UpdateAsync]: https://msdn.microsoft.com/en-us/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [where]: https://msdn.microsoft.com/en-us/library/azure/dn250579(v=azure.10).aspx
-[Azure ポータル]: https://portal.azure.com/
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Easy Tables]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/en-us/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

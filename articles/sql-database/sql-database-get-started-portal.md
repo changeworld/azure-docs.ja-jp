@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: 8ea4f39ced17a7a6de63c544157c5f1793042c0e
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7b84e6f001f9d485c1d92b5d017daa96321eaab6
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 11/08/2017
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -46,7 +46,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | Description | 
+   | 設定       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -59,7 +59,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 4. 次の画像に示されているように、**[サーバー]** の **[Configure required settings]\(必要な設定の構成\)** をクリックし、SQL Server (論理サーバー) フォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | Description | 
+   | 設定       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
@@ -173,7 +173,7 @@ Azure でサンプル データベースを作成できたので、Azure Portal 
 1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、データベースが作成されたので、任意のツールを使用して接続し、クエリを実行できます。 詳細については、以下のツールを選択してください。
 

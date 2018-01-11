@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: f066f0dd0dab0096279c18ded3c024a7cc0cbda0
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bbcb2ea5a7ceeb976f590393608cc29c67d9a49e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
 Visual Studio Tools for AI は、ディープ ラーニングおよび AI ソリューションを構築、テスト、デプロイするための開発拡張機能です。 その重要な特徴として、Azure Machine Learning とのシームレスな統合、特に過去のトレーニングのパフォーマンスとカスタム メトリックの詳細が表示される実行履歴ビューがあります。 サンプル エクスプローラー ビューも用意されています。これを使用すると、[Microsoft Cognitive Toolkit (従来は CNTK と呼ばれていました)](http://www.microsoft.com/en-us/cognitive-toolkit)、[Google TensorFlow](https://www.tensorflow.org)、その他のディープ ラーニング フレームワークで新しいプロジェクトを参照およびブートストラップすることができます。 最後に、コンピューティング ターゲット用のエクスプローラーも用意されています。これにより、Azure Virtual Machines や GPU 搭載の Linux サーバーなどのリモート環境でモデルをトレーニングするためのジョブを送信できます。 また、[Azure Batch AI (プレビュー)](https://docs.microsoft.com/azure/batch-ai/) にも簡単にアクセスできるようになっています。
@@ -76,6 +76,6 @@ Visual Studio Tools for AI には、サンプル エクスプローラーが付�
 ジョブ エクスプローラー ビューを開いた状態で、一覧の先頭にある実行をクリックします。
 [ジョブの概要] パネルおよび [Logs and Outputs]\(ログと出力\) パネルが読み込まれます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [IDE を使用するための Azure Machine Learning の構成方法](./how-to-configure-your-IDE.md)

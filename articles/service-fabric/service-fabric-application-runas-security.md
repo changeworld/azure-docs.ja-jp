@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: mfussell
-ms.openlocfilehash: aae828489b708a5b538df1d63c12be23d0423da7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2ff715d8225bd0a9c7f6108f8804cdfa3189cc8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-security-policies-for-your-application"></a>アプリケーションのセキュリティ ポリシーの構成
 Azure Service Fabric を使用すると、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護することができます。 また、Service Fabric は、そのユーザー アカウントでデプロイするときにアプリケーションによって使用されるリソース (ファイル、ディレクトリ、証明書など) を保護するためにも役立ちます。 これにより、実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより保護されます。
@@ -30,7 +30,7 @@ Azure Service Fabric を使用すると、別のユーザー アカウントを�
 1 人以上のユーザーを各グループに追加してまとめて管理できるように、ユーザー グループを定義して作成することができます。 これは、異なるサービス エントリ ポイントに対して複数のユーザーが存在し、グループ レベルで使用できる特定の共通の特権が必要な場合に便利です。
 
 ## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>エントリ ポイント セットアップ サービスのポリシーを構成する
-[アプリケーション モデル](service-fabric-application-model.md)で説明したように、エントリ ポイント セットアップ **SetupEntryPoint** は、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行する特権を持つエントリ ポイントです (通常は *NetworkService* アカウント)。 **EntryPoint** によって指定された実行可能ファイルは、通常は実行時間の長いサービス ホストです。 別々にセットアップされたエントリ ポイントがあると、長期にわたって高い権限でサービス ホストの実行可能ファイルを実行する必要がなくなります。 **EntryPoint** で指定された実行可能ファイルは、**SetupEntryPoint** が正常に終了した後に実行されます。 結果のプロセスは監視されて再起動され、終了またはクラッシュした場合に、**SetupEntryPoint** でもう一度開始されます。
+「[アプリケーション マニフェストとサービス マニフェスト](service-fabric-application-and-service-manifests.md)」で説明されているように、セットアップ エントリ ポイント **SetupEntryPoint** は、他のエントリ ポイントの前に Service Fabric と同じ資格情報で実行する、特権を持つエントリ ポイントです (通常は *NetworkService* アカウント)。 **EntryPoint** によって指定された実行可能ファイルは、通常は実行時間の長いサービス ホストです。 別々にセットアップされたエントリ ポイントがあると、長期にわたって高い権限でサービス ホストの実行可能ファイルを実行する必要がなくなります。 **EntryPoint** で指定された実行可能ファイルは、**SetupEntryPoint** が正常に終了した後に実行されます。 結果のプロセスは監視されて再起動され、終了またはクラッシュした場合に、**SetupEntryPoint** でもう一度開始されます。
 
 サービスの SetupEntryPoint とメイン EntryPoint を示す簡単なサービス マニフェストの例を次に示します。
 

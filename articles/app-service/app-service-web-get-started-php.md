@@ -12,40 +12,40 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/26/2017
+ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2f5c295468e5bb54d14b81d52b9ad4b41fcafa81
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9a41c08868de853ba82874a63b80316ec834858a
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
-[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に PHP アプリをデプロイする方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、Git を使用して Web アプリに PHP のサンプル コードをデプロイします。
+> [!NOTE]
+> この記事では、Windows 上の App Service にアプリを展開します。 _Linux_ 上の App Service に展開するには、「[App Service on Linux での PHP Web アプリの作成](./containers/quickstart-php.md)」をご覧ください。
+>
+
+[Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に PHP アプリをデプロイする方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、[ZIP ファイル](app-service-deploy-zip.md)を使って Web アプリに PHP のサンプル コードを展開します。
 
 ![Azure で実行されるサンプル アプリ]](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
-以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 前提条件のインストールを終えてから、以降の手順を完了するまでに約 5 分かかります。
+以下の手順は、Mac、Windows、または Linux コンピューターを使って実行できます。 前提条件のインストールを終えてから、以降の手順を完了するまでに約 5 分かかります。
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
 
-* <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
 * <a href="https://php.net" target="_blank">PHP をインストールする</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample-locally"></a>サンプルをローカルでダウンロードする
 
-ターミナル ウィンドウで次のコマンドを実行します。 これにより、ローカル コンピューターにサンプル アプリケーションが複製され、サンプル コードを含むディレクトリに移動します。
+[https://github.com/Azure-Samples/php-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/php-docs-hello-world/archive/master.zip) からサンプルの PHP プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
-```bash
-git clone https://github.com/Azure-Samples/php-docs-hello-world
-cd php-docs-hello-world
-```
+ターミナル ウィンドウで、PHP のサンプル プロジェクトのルート ディレクトリに移動します (_index.php_ が含まれるディレクトリ)。
 
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
@@ -63,9 +63,11 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 ターミナル ウィンドウで **Ctrl + C** キーを押して、Web サーバーを終了します。
 
+[!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
+[!INCLUDE [Upload zip file](../../includes/app-service-web-upload-zip.md)]
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)]
 
@@ -73,7 +75,29 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-php-no-h.md)]
+Cloud Shell で [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使って、`myAppServicePlan` App Service プランに Web アプリを作成します。 
+
+次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) を実行します。 
+
+```azurecli-interactive
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0"
+```
+
+Web アプリが作成されると、Azure CLI によって次の例のような出力が表示されます。
+
+```json
+{
+  "availabilityState": "Normal",
+  "clientAffinityEnabled": true,
+  "clientCertEnabled": false,
+  "cloningInfo": null,
+  "containerSize": 0,
+  "dailyMemoryTimeQuota": 0,
+  "defaultHostName": "<app_name>.azurewebsites.net",
+  "enabled": true,
+  < JSON data removed for brevity. >
+}
+```
 
 新しく作成された Web アプリに移動します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
 
@@ -83,34 +107,9 @@ http://<app name>.azurewebsites.net
 
 ![空の Web アプリ ページ](media/app-service-web-get-started-php/app-service-web-service-created.png)
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Deploy uploaded ZIP file](../../includes/app-service-web-deploy-zip.md)]
 
-```bash
-Counting objects: 2, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (2/2), done.
-Writing objects: 100% (2/2), 352 bytes | 0 bytes/s, done.
-Total 2 (delta 1), reused 0 (delta 0)
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id '25f18051e9'.
-remote: Generating deployment script.
-remote: Running deployment command...
-remote: Handling Basic Web Site deployment.
-remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
-remote: Copying file: '.gitignore'
-remote: Copying file: 'LICENSE'
-remote: Copying file: 'README.md'
-remote: Copying file: 'index.php'
-remote: Ignoring: .git
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
-   cc39b1e..25f1805  master -> master
-```
-
-## <a name="browse-to-the-app-locally"></a>アプリをローカルで参照する
+## <a name="browse-to-the-app"></a>アプリの参照
 
 Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。
 
@@ -132,14 +131,25 @@ PHP のサンプル コードは、Azure App Service の Web アプリで実行�
 echo "Hello Azure!";
 ```
 
-ローカル ターミナル ウィンドウで、変更を Git にコミットし、コード変更を Azure にプッシュします。
+ローカルのターミナル ウィンドウで、アプリケーションのルート ディレクトリに移動し、更新されたプロジェクトの新しい ZIP ファイルを作成します。
 
-```bash
-git commit -am "updated output"
-git push azure master
+```
+# Bash
+zip -r myUpdatedAppFiles.zip .
+
+# PowerShell
+Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
+``` 
+
+「[ZIP ファイルのアップロード](#upload-the-zip-file)」と同じ手順を使って、Cloud Shell にこの新しい ZIP ファイルをアップロードします。
+
+次に、Cloud Shell で、アップロードした ZIP ファイルを再び展開します。
+
+```azurecli-interactive
+az webapp deployment source config-zip --resource-group myResouceGroup --name <app_name> --src clouddrive/myUpdatedAppFiles.zip
 ```
 
-デプロイが完了したら、「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
+「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
 
 ![Azure で実行される更新済みのサンプル アプリ](media/app-service-web-get-started-php/hello-azure-in-browser.png)
 
@@ -153,13 +163,13 @@ git push azure master
 
 Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。
 
-![Azure Portal の App Service ブレード](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+![Azure Portal の [App Service] ページ](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
 左側のメニューは、アプリを構成するためのさまざまなページを示しています。 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [PHP と MySQL](app-service-web-tutorial-php-mysql.md)

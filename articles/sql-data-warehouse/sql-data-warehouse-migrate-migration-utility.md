@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
 ms.openlocfilehash: e8a8a84153a950f2d1bc002b34c83dc5ed8a5eb8
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="data-warehouse-migration-utility-preview"></a>Data Warehouse 移行ユーティリティ (プレビュー)
 > [!div class="op_single_selector"]

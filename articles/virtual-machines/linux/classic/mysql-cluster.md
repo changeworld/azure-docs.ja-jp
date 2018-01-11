@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: be178a59f7c3558cc0fef89e5529893f160c649b
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 8b39da7b96002e14c7d9a567ddc4f1dbc9d45c60
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>負荷分散セットを使用して Linux の MySQL をクラスター化する
 > [!IMPORTANT]
@@ -52,7 +52,7 @@ Microsoft Azure の負荷分散セットを使用すると、ラウンド ロビ
   * Corosync および Pacemaker
 
 ### <a name="affinity-group"></a>アフィニティ グループ
-このソリューション用のアフィニティ グループを作成します。そのためには、Azure クラシック ポータルにサインインし、**[設定]** を選択して、アフィニティ グループを作成します。 後で作成したリソースは、このアフィニティ グループに割り当てられます。
+このソリューション用のアフィニティ グループを作成します。そのためには、Azure Portal にサインインし、**[設定]** を選択して、アフィニティ グループを作成します。 後で作成したリソースは、このアフィニティ グループに割り当てられます。
 
 ### <a name="networks"></a>ネットワーク
 ネットワークを作成し、その中にサブネットを作成します。 この例では、中に /24 のサブネットを 1 つだけ含む 10.10.10.0/24 ネットワークを使用します。

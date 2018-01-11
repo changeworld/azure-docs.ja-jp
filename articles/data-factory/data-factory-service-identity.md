@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: 4b970341f9511a889bfcc288756b1be6a4f4647e
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 350ce0fd9a10d862e811dd1eaa39e0e90076e1ef
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 
@@ -172,3 +172,5 @@ Type                  : ServicePrincipal
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)
 - [管理対象のサービス ID 認証を使用した Azure Data Lake Store 間でのデータのコピーに関するページ](connector-azure-data-lake-store.md)
+
+データ ファクトリ サービス ID の基になっている管理対象サービス ID の背景について詳しくは、[MSI の概要](~/articles/active-directory/msi-overview.md)に関するページをご覧ください。 

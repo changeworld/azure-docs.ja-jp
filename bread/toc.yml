@@ -150,7 +150,7 @@
         - name: Face
           tocHref: /azure/cognitive-services/face/
           topicHref: /azure/cognitive-services/face/
-        - name: Language Understanding Intelligent Service (LUIS)
+        - name: Language Understanding (LUIS)
           tocHref: /azure/cognitive-services/LUIS/
           topicHref: /azure/cognitive-services/LUIS/
         - name: Text Analytics
@@ -313,6 +313,31 @@
     - name: Operations Management Suite
       tocHref: /azure/operations-management-suite/
       topicHref: /azure/operations-management-suite/
+    - name: Policy のドキュメント
+      tocHref: /azure/azure-policy/
+      topicHref: /azure/azure-policy/
+      items:
+        - name: Azure Policy の概要
+          tocHref: /azure/azure-policy/azure-policy-introduction/
+          topicHref: /azureazure-policy/azure-policy-introduction/
+        - name: ポリシーの割り当て - ポータル
+          tocHref: /azure/azure-policy/assign-policy-definition/
+          topicHref: /azureazure-policy/assign-policy-definition/
+        - name: ポリシーの割り当て - PowerShell
+          tocHref: /azure/azure-policy/assign-policy-definition-ps/
+          topicHref: /azureazure-policy/assign-policy-definition-ps/
+        - name: ポリシーの割り当て - Azure CLI
+          tocHref: /azure/azure-policy/assign-policy-definition-cli/
+          topicHref: /azureazure-policy/assign-policy-definition-cli/
+        - name: Azure Policy の作成と管理
+          tocHref: /azure/azure-policy/create-manage-polic/
+          topicHref: /azureazure-policy/create-manage-polic/
+        - name: ポリシー テンプレート
+          tocHref: /azure/azure-policy/json-samples/
+          topicHref: /azureazure-policy/json-samples/
+        - name: Azure Policy の定義の構造
+          tocHref: /azure/azure-policy/policy-definition/
+          topicHref: /azureazure-policy/policy-definition/
     - name: PostgreSQL
       tocHref: /azure/postgresql/
       topicHref: /azure/postgresql/

@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 09/04/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 639f008eea61b973b9d32dc734d42d5c4e93e924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 954afd6d47f9bccdd2512ab92ba0d416231fb623
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 
 Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 管理ディスク VM のサポートの詳細については、[管理ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。 Linux VM バックアップの事前および事後スクリプト フレームワークの詳細については、事前スクリプトおよび事後スクリプトを使用したアプリケーション整合性 Linux VM バックアップ (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) に関するページを参照してください。
 
-バックアップできるデータの可否について詳しくは、[こちら](backup-azure-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)をご覧ください。
+バックアップできるデータの可否について詳しくは、[こちら](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)をご覧ください。
 
 > [!NOTE]
 > このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。

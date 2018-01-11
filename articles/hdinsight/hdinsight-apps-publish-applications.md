@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/21/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: c4db342299e009249ac98a2b58fb882c57c01a0b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 597ea68f063d02541132d275de815c1673369ae0
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
 Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace-publishing/marketplace-publishing-getting-started.md)に関する記事を参照してください。
@@ -51,7 +51,7 @@ Marketplace へのアプリケーションの発行は、2 段階の手順で実
 }
 ```
 
-| フィールド | Description | 指定できる値 |
+| フィールド | [説明] | 指定できる値 |
 | --- | --- | --- |
 | types |アプリケーションと適合するクラスターの種類。 |Hadoop、HBase、Storm、Spark のいずれか (またはその任意の組み合わせ) |
 | versions |アプリケーションと適合する HDInsight クラスターの種類。 |3.4 |
@@ -104,7 +104,7 @@ HDInsight アプリケーションを発行するには:
 8. [アプリケーションのパッケージ化](#package-application)の際に、作成した .zip ファイルをアップロードします。  
 9. **[Request Certification]\(証明書の要求\)** を選択します。 Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * クラスターに [HDInsight アプリケーションをインストール](hdinsight-apps-install-applications.md)する方法を確認します。
 * [カスタム HDInsight アプリケーションをインストール](hdinsight-apps-install-custom-applications.md)し、未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
 * [Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)し、アプリケーションをさらに追加する方法について説明します。 

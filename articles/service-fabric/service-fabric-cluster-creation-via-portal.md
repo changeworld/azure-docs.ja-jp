@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
-ms.openlocfilehash: 874cf647d4b708bbbc64246ac0dff133639ad86c
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: be880efdcf1276252c76f27c2f2fd99edd606caa
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/18/2017
 
 セキュリティで保護されたクラスターとは、管理操作に対する未承認のアクセスを防止するクラスターで、この操作には、アプリケーション、サービス、また格納されたデータのデプロイ、アップグレード、削除が含まれます。 セキュリティで保護されていないクラスターとは、だれでも管理操作にいつでも接続し、実行できるクラスターを指します。 セキュリティで保護されていないクラスターを作成することもできますが、**セキュリティで保護されたクラスターを作成することを強くお勧めします**。 セキュリティで保護されていないクラスターを**後でセキュリティで保護することはできません**。新しいクラスターを作成する必要があります。
 
-セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。 セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、[「セキュリティで保護されたクラスターを Linux 上に作成する」](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters)をご覧ください。 提供されるヘルパー スクリプトから得られるパラメーターは、「 [Azure ポータルでのクラスターの作成](#create-cluster-portal)」セクションの説明に従ってポータルに直接入力できます。
+セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。 セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、[セキュリティで保護されたクラスターの作成](service-fabric-cluster-creation-via-arm.md)に関するページを参照してください。 提供されるヘルパー スクリプトから得られるパラメーターは、「 [Azure ポータルでのクラスターの作成](#create-cluster-portal)」セクションの説明に従ってポータルに直接入力できます。
 
 ## <a name="configure-key-vault"></a>Key Vault を構成する 
 ### <a name="log-in-to-azure"></a>Azure へのログイン
@@ -114,7 +114,15 @@ Service Fabric では X.509 証明書を使用して、クラスターをセキ�
     Tags                             :
 ```
 
-Key Vault が既にある場合は、Azure CLI を使用してそれをデプロイ用に有効にできます。
+Key Vault が既にある場合は、次のいずれかの方法を使用してそれをデプロイ用に有効にできます。
+
+##### <a name="azure-powershell"></a>Azure PowerShell
+
+```powershell
+PS C:\Users\vturecek> Set-AzureRmKeyVaultAccessPolicy -VaultName 'myvault' -EnabledForDeployment
+```
+
+##### <a name="azure-cli"></a>Azure CLI:
 
 ```cli
 > azure login

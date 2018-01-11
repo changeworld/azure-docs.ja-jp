@@ -16,10 +16,10 @@ ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
 ms.openlocfilehash: fbf538383a96fc1789f54994c1c4a1c1d9f96bec
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル: REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]

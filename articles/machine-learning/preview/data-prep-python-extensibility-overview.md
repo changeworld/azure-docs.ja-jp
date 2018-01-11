@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 53771c407fedc53f27a38ec3fe9b381d6b8c0dad
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 4b888facdba2eb5ff48bcbf43c93c1b75183cbad
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="data-preparations-python-extensions"></a>データ準備の Python 拡張機能
 組み込み機能間の機能性ギャップを埋める方法として、Azure Machine Learning データ準備には複数のレベルの拡張機能が含まれています。 このドキュメントでは、Python スクリプトを介して拡張機能を説明します。 

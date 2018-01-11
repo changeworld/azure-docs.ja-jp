@@ -44,6 +44,7 @@
 ### [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
 ### [アカウントの共有](active-directory-sharing-accounts.md)
 ### [管理者ロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
+### [削除済みユーザーの復元](active-directory-users-restore.md)
 ### [別のディレクトリからのゲスト ユーザーの追加 (B2B)](active-directory-b2b-what-is-azure-ad-b2b.md)
 #### [管理者による B2B ユーザーの追加](active-directory-b2b-admin-add-users.md)
 #### [インフォメーション ワーカーによる B2B ユーザーの追加](active-directory-b2b-iw-add-users.md)
@@ -58,6 +59,7 @@
 #### [B2B ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
 #### [動的グループと B2B ユーザー](active-directory-b2b-dynamic-groups.md)
 #### [監査とレポート](active-directory-b2b-auditing-and-reporting.md)
+#### [ハイブリッド組織向けの B2B](active-directory-b2b-hybrid-organizations.md)
 #### [B2B と Office 365 の外部共有](active-directory-b2b-o365-external-user.md)
 #### [B2B ライセンス](active-directory-b2b-licensing.md)
 #### [現時点での制限事項](active-directory-b2b-current-limitations.md)
@@ -92,7 +94,7 @@
 #### [Azure Portal](active-directory-groups-settings-azure-portal.md)
 #### [コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### 高度なルールの作成
-#### [Azure ポータル](active-directory-groups-dynamic-membership-azure-portal.md)
+#### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [セルフサービス グループのセットアップ](active-directory-accessmanagement-self-service-group-management.md)
 ### [トラブルシューティング](active-directory-accessmanagement-troubleshooting.md)
 
@@ -107,7 +109,7 @@
 #### [名前付きの場所の構成](active-directory-named-locations.md)
 #### [アクティビティ レポートの検出](active-directory-reporting-migration.md)
 #### [Azure Active Directory Power BI コンテンツ パックの使用](active-directory-reporting-power-bi-content-pack-how-to.md)
-### リファレンス
+### 参照
 #### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 #### [Notifications](active-directory-reporting-notifications.md)
@@ -139,7 +141,7 @@
 ### [SSPR データ要件](active-directory-passwords-data.md)
 ### [SSPR のレポート](active-directory-passwords-reporting.md)
 ### IT 管理者: パスワードのリセット
-#### [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
+#### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 ### [SSPR のライセンス](active-directory-passwords-licensing.md)
 ### [パスワード ライトバック](active-directory-passwords-writeback.md)
 ### [トラブルシューティング](active-directory-passwords-troubleshoot.md)
@@ -265,6 +267,7 @@
 #### [管理者ロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
+### [緊急アクセス用管理者アカウントを管理する](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## アクセス レビュー
 ### [アクセス レビューの概要](active-directory-azure-ad-controls-access-reviews-overview.md)
@@ -340,7 +343,7 @@
 ### [PoC プレイブック: 構成要素](active-directory-playbook-building-blocks.md)
 
 
-# リファレンス
+# 参照
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Azure PowerShell コマンドレット](/powershell/azure/overview)
 ## [Java API リファレンス](/java/api)

@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 11/23/2017
 ms.author: anoopkv
 ms.openlocfilehash: 035336efa6be0d00c41baba168eaffd80939cc82
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-a-process-server-running-in-azure-resource-manager"></a>Azure で実行されるプロセス サーバーの管理 (Resource Manager)
 > [!div class="op_single_selector"]

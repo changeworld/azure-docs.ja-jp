@@ -1,6 +1,6 @@
 ---
-title: "Azure Relay ノード API の概要 | Microsoft Docs"
-description: "Relay ノード API の概要"
+title: "Azure Relay Node API の概要 | Microsoft Docs"
+description: "Relay Node API の概要"
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
@@ -20,11 +20,11 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>Relay ハイブリッド接続ノード API の概要
+# <a name="relay-hybrid-connections-node-api-overview"></a>Relay ハイブリッド接続 Node API の概要
 
 ## <a name="overview"></a>概要
 
-Azure Relay ハイブリッド接続用の [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) ノード パッケージは、["ws"](https://www.npmjs.com/package/ws) NPM パッケージをベースに拡張を加えたものです。 このパッケージを使用すると、その基本パッケージのすべてのエクスポートをもう一度エクスポートし、Azure Relay サービスのハイブリッド接続機能との統合を可能にする新しいエクスポートを追加できます。 
+Azure Relay ハイブリッド接続用の [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) Node パッケージは、["ws"](https://www.npmjs.com/package/ws) NPM パッケージをベースに拡張を加えたものです。 このパッケージを使用すると、その基本パッケージのすべてのエクスポートをもう一度エクスポートし、Azure Relay サービスのハイブリッド接続機能との統合を可能にする新しいエクスポートを追加できます。 
 
 既存のアプリケーションは、`require('ws')` の代わりに `require('hyco-ws')` を使用して、このパッケージを使用できます。これにより、アプリケーションが "ファイアウォールの内側" からローカルに WebSocket 接続をリッスンすると同時にハイブリッド接続を介して WebSocket 接続をリッスンできるハイブリッド シナリオが可能になります。
   
@@ -47,7 +47,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-これらのヘルパー メソッドはこのパッケージで使用するためのものですが、Web サーバーまたはデバイス クライアントでリスナーまたはセンダーを作成できるようにするためにノード サーバーで使用することもできます。 サーバーは、有効期間の短いトークンが埋め込まれた URI を渡すことによって、これらのメソッドを使用します。 これらの URI は、WebSocket ハンドシェイクの HTTP ヘッダーの設定をサポートしない一般的な WebSocket スタックでも使用できます。 承認トークンを URI に埋め込むことは、主にこれらのライブラリ外の使用シナリオでサポートされています。 
+これらのヘルパー メソッドはこのパッケージで使用するためのものですが、Web サーバーまたはデバイス クライアントでリスナーまたはセンダーを作成できるようにするために Node サーバーで使用することもできます。 サーバーは、有効期間の短いトークンが埋め込まれた URI を渡すことによって、これらのメソッドを使用します。 これらの URI は、WebSocket ハンドシェイクの HTTP ヘッダーの設定をサポートしない一般的な WebSocket スタックでも使用できます。 承認トークンを URI に埋め込むことは、主にこれらのライブラリ外の使用シナリオでサポートされています。 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 

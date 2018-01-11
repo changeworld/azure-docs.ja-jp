@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 76d2721138668d9f0a908af3fa42840309b068ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 98df3b6592ed865fc0eb4b942d298b26e930365f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Azure Media Services REST API を使用したフィルターの作成
 > [!div class="op_single_selector"]
@@ -27,11 +27,11 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-Media Services のリリース 2.11 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は**動的マニフェスト**によってアーカイブされます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
+Media Services のリリース 2.17 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は**動的マニフェスト**によってアーカイブされます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
 フィルターと動的マニフェストに関連する詳細については、「 [動的マニフェストの概要](media-services-dynamic-manifest-overview.md)」をご覧ください。
 
-このトピックでは、REST API を使用してフィルターを作成、更新、削除する方法を説明します。 
+この記事では、REST API を使用してフィルターを作成、更新、削除する方法を説明します。 
 
 ## <a name="types-used-to-create-filters"></a>フィルターの作成に使用する種類
 次の種類の REST API を使用してフィルターを作成します。  
@@ -49,9 +49,6 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
->[!NOTE]
->に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
-
 ## <a name="create-filters"></a>フィルターの作成
 ### <a name="create-global-filters"></a>グローバル フィルターの作成
 グローバル フィルターを作成するには、次の HTTP 要求を使用します。  
@@ -66,7 +63,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host:media.windows.net 
 
@@ -119,7 +116,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net  
 
@@ -169,7 +166,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     Host: media.windows.net 
 
 ### <a name="get-assetfilters-associated-with-an-asset"></a>資産に関連付けられている **AssetFilter**を取得する
@@ -180,7 +177,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -192,14 +189,14 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000
 
 
 ## <a name="update-filters"></a>フィルターの更新
 新しいプロパティ値でフィルターを更新するには、PATCH、PUT、MERGE を使用します。  これらの操作の詳細については、「 [PATCH、PUT、MERGE](http://msdn.microsoft.com/library/dd541276.aspx)」をご覧ください。
 
-フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかります。 このフィルターを使用してコンテンツが処理された場合 (また、プロキシと CDN にキャッシュされている場合)、このフィルターを更新するとプレイヤーでエラーが発生します。 フィルターを更新した後にキャッシュをクリアすることをお勧めします。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。  
+フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかります。 このフィルターを使用してコンテンツが処理された場合 (また、プロキシと CDN にキャッシュされている場合)、このフィルターを更新するとプレイヤーでエラーが発生します。 フィルターを更新した後は、キャッシュをクリアしてください。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。  
 
 ### <a name="update-global-filters"></a>グローバル フィルターの更新
 グローバル フィルターを更新するには、次の HTTP 要求を使用します。 
@@ -214,7 +211,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
     Content-Length: 384
@@ -254,7 +251,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -292,7 +289,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     Host: media.windows.net 
 
 
@@ -306,7 +303,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <token value> 
-    x-ms-version: 2.11 
+    x-ms-version: 2.17 
     Host: media.windows.net 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>フィルターを使用するストリーミング URL の構築

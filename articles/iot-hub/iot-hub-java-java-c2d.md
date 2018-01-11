@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 6a5f14f411c2ec82478fef6d20d22f8b8dc8d7bf
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 0c94b627ad80a1cc32bc0084d3792a917225d9c7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -46,7 +46,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 * [IoT Hub の使用を開始する](iot-hub-java-java-getstarted.md)チュートリアルまたは [IoT Hub のデバイスからクラウドへのメッセージを処理する](iot-hub-java-java-process-d2c.md)チュートリアルの完全に動作するバージョン。
 * 最新の [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>シミュレートされたデバイス アプリでメッセージを受信する
 
@@ -192,7 +192,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
     ![クラウドからデバイスへのメッセージを送信するコマンドを実行する][img-send-command]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
 
@@ -208,7 +208,7 @@ IoT Hub を使用したソリューションの開発に関する詳細につい
 [IoT Hub の概要]: iot-hub-java-java-getstarted.md
 [IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
 [IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
+[Azure IoT デベロッパー センター]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
 [Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx

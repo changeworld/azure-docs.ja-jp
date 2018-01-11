@@ -14,18 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-ms.openlocfilehash: 597d8e12377ca19b0c58eb2fc8bdb7597c1c6c07
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f4613746a427e6987366eeb46605524cd3aacbe2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップの管理
-> [!div class="op_single_selector"]
-> * [Azure VM バックアップの管理](backup-azure-manage-vms.md)
-> * [クラシック VM バックアップの管理](backup-azure-manage-vms-classic.md)
->
->
 
 この記事では、VM のバックアップ管理に関するガイダンスを提供するほか、ポータルのダッシュボードで使用できるバックアップ アラート情報について説明します。 この記事のガイダンスは、Recovery Services コンテナーと組み合わせて VM を使用するケースを想定しています。 この記事で仮想マシンの作成や仮想マシンの保護については取り上げていません。 Azure Resource Manager によって Azure にデプロイされた VM を Recovery Services コンテナーで保護する方法についての基本的な情報については、「 [最初に: ARM VM の Recovery Services コンテナーへのバックアップ](backup-azure-vms-first-look-arm.md)」を参照してください。
 
@@ -224,4 +219,4 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
     バックアップ データが削除されたことを示す通知メッセージが表示されます。
 
 ## <a name="next-steps"></a>次のステップ
-復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-restore-vms.md)に関するページをご覧ください。 仮想マシンの保護については、 [Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 イベントの監視については、「 [Monitor alerts for Azure virtual machine backups (Azure 仮想マシンのバックアップ アラートの監視)](backup-azure-monitor-vms.md)」を参照してください。
+復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-arm-restore-vms.md)に関するページをご覧ください。 仮想マシンの保護については、 [Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 イベントの監視については、「 [Monitor alerts for Azure virtual machine backups (Azure 仮想マシンのバックアップ アラートの監視)](backup-azure-monitor-vms.md)」を参照してください。

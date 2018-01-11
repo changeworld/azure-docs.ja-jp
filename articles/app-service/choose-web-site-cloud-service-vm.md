@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0dba36e5490af56debd3b64b20d39809cd5d5f81
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 ## <a name="overview"></a>概要
@@ -34,7 +34,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 ## <a name="features"></a>機能の比較
 次の表では、最善の選択ができるように、App Service、Cloud Services、Virtual Machines、および Service Fabric の機能を比較しています。 それぞれのホスティング方法に関する最新の SLA 情報については、 [Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)を参照してください。
 
-| 機能 | App Service (Web Apps) | Cloud Services (Web ロール) | Virtual Machines | Service Fabric | メモ |
+| 機能 | App Service (Web Apps) | Cloud Services (Web ロール) | [Virtual Machines] | Service Fabric | メモ |
 | --- | --- | --- | --- | --- | --- |
 | ほぼ即時のデプロイ |○ | | |○ |アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。 |
 | 再デプロイなしでの大型マシンへのスケールアップ |○ | | |○ | |
@@ -111,6 +111,8 @@ Azure App Service は、過去の IIS6 アプリケーションの移行に伴�
 * 必要に応じて、Azure のその他のサービスや機能をアプリケーションに追加できます。
 * Web アプリのセキュリティを HTTPS で保護することができます。
 
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+
 ### <a id="designer"></a> Web デザイナーまたはグラフィック デザイナーです。顧客の Web サイトをデザインおよび構築する必要があります。
 Web 開発者とデザイナーのために、Azure App Service は、Git や FTP でのデプロイに対応するなど、さまざまなフレームワークおよびツールと容易に連係できるようになっているほか、Visual Studio や SQL Database などのツールやサービスと緊密に統合されています。 App Service を使用すると、次のことができます。
 
@@ -163,7 +165,7 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 
 アプリケーションに使用するホスティング方法が決まったら、次のリソースで基本事項を確認してください。
 
-* [Azure App Service](/azure/app-service/)
+* [Mobile Apps](/azure/app-service/)
 * [Azure Cloud Services](/azure/cloud-services/)
 * [Azure Virtual Machines](/azure/virtual-machines/)
 * [Service Fabric](/azure/service-fabric/)

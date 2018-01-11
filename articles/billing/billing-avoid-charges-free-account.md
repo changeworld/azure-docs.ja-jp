@@ -14,37 +14,52 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: e4f7571acb72d8f099898fffc05eb43083aeabfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0efea55d0e1329ddf4ada35aa0dd6164f0951a70
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>Azure 無料アカウントの課金の回避
 
-Azure 無料アカウントは、最初の 30 日以内に使用できる 200 ドルの Azure クレジットと 12 か月の無料サービスを提供します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)と[Azure 無料アカウントを使用した無料サービスの作成](billing-create-free-services-included-free-account.md)に関する記事を参照してください。 クレジットの状態によっては、クレジットを使用できることも、Azure 無料アカウントの特典ではまかなえない使用量に対して課金されることもあります。
+Azure 無料アカウントでは、最初の 30 日間に使用できる 200 ドルの Azure クレジットと 12 か月の無料サービス (数に制限あり) が提供されます。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。 クレジットの状態に応じて、クレジットを使用できる場合もあれば、無料のサービスおよび数量の限度を超えた使用分に対して課金される場合もあります。
 
 ## <a name="you-still-have-active-azure-free-account-credit"></a>Azure 無料アカウントのアクティブなクレジットがまだ残っている場合 
-有効期限が切れていない Azure クレジットがまだ残っている場合は、Azure 無料アカウントに対して課せられる課金の支払いにクレジットを使用します。
+有効期限が切れていない Azure クレジットがまだ残っている場合は、無料のサービスおよび数量の限度を超えた使用分の支払いにクレジットが使用されます。
 
 ## <a name="your-credit-ran-out-or-has-expired"></a>クレジットを使い果たしたか、期限切れになった場合
-クレジットを使い果たしたか、30 日目が来て期限切れになった場合、Azure はサブスクリプションを無効にします。 従量サブスクリプションにアップグレードしてサブスクリプションを有効にしない限りは、課金されません。 詳細については、[無料試用版 Azure サブスクリプションの従量課金制へのアップグレード](billing-upgrade-azure-subscription.md)に関する記事を参照してください。 サブスクリプションをアップグレードした後、Azure 無料アカウントに課せられた課金に対して従量課金レートで課金されます。 
+クレジットを使い果たしたか、30 日目が来て期限切れになった場合、Azure はサブスクリプションを無効にします。 Azure サービスを引き続き使用するには、サブスクリプションを従量課金制サブスクリプションにアップグレードする必要があります。 詳細については、[無料試用版 Azure サブスクリプションの従量課金制へのアップグレード](billing-upgrade-azure-subscription.md)に関する記事を参照してください。 サブスクリプションのアップグレード後も、12 か月間の無料サービスを利用できます。 無料のサービスおよび数量の限度を超えた使用分にのみ課金されます。
 
 
 Azure 無料アカウントに対して課金が課せられる理由のいくつかを見てみましょう。
 
 
-### <a name="your-usage-exceeds-the-limits-of-free-services-included-with-azure-free-account"></a>使用量が、Azure 無料アカウントに付随する無料サービスの限度を超えた場合
+### <a name="your-usage-exceeds-the-limits-of-free-services-included-with-your-azure-free-account"></a>使用量が、Azure 無料アカウントに付随する無料サービスの限度を超えた場合
 
 Azure 無料アカウントには、月ごとの容量が制限された無料サービスが付随します。 無料容量は月末に期限切れになり、翌月に繰り越されません。 たとえば、毎月 5 GB のファイル ストレージが得られるとします。 1 か月で 2 GB だけを使用した場合、残りの 3 GB は翌月に繰り越されません。 課金されないようにするには、使用量を限度内に収めてください。 無料サービスの限度の詳細については、[Azure 無料アカウントとは](https://azure.microsoft.com/free/free-account-faq/)に関する記事を参照してください。 無料サービスの使用量を確認するには、[Azure 無料アカウントに付随する無料サービスの使用量の確認](billing-check-free-service-usage.md)に関する記事を参照してください。 
 
-### <a name="you-are-using-services-not-included-with-azure-free-account"></a>Azure 無料アカウントに付随しないサービスを使用している場合
+### <a name="you-are-using-services-not-included-for-free-with-your-azure-free-account"></a>Azure 無料アカウントに無料で付随していないサービスを使用している場合
 
-Azure 無料アカウントに無料で付随していないサービスを使用している場合、従量課金制で課金されます。 無料アカウントに付随しているサービスの詳細については、[Azure 無料アカウントとは](https://azure.microsoft.com/free/free-account-faq/)に関する記事を参照してください。 Azure ポータル上で、または Azure 使用状況ファイルから使用量を確認できます。 詳細については、[ポータルでの原価計算およびバーンレートの定期的チェック](billing-getting-started.md#costs)と[アカウント センターからの使用状況のダウンロード](billing-download-azure-invoice-daily-usage-date.md)に関する記事を参照してください。 
+Azure 無料アカウントに無料で付随していないサービスを使用している場合、従量課金制で課金されます。 無料アカウントに付随しているサービスの詳細については、[Azure 無料アカウントとは](https://azure.microsoft.com/free/free-account-faq/)に関する記事を参照してください。 Azure Portal または Azure 使用状況ファイルでサービスの使用量を確認できます。 詳細については、[ポータルでの原価計算およびバーンレートの定期的チェック](billing-getting-started.md#costs)と[アカウント センターからの使用状況のダウンロード](billing-download-azure-invoice-daily-usage-date.md)に関する記事を参照してください。 
 
-### <a name="you-have-reached-the-end-of-your-azure-free-account-benefits"></a>Azure 無料アカウントの特典の終了に至った場合
+### <a name="you-have-reached-the-end-of-your-12-months-free-services"></a>12 か月間の無料サービスの終了日に達した場合
 
-Azure 無料アカウントの特典は 12 か月目の月末に期限切れになります。 それ以降は、使用しているサービスに対して従量課金制で支払うように Azure から請求されます。 使用しないサービスのリソースは、Azure ポータルを使用して削除できます。 どの Azure サービスも使用する予定がない場合は、[サブスクリプションを取り消す](billing-how-to-cancel-azure-subscription.md)ことができます。
+無料のサービスおよび数量は、12 か月目の末日に期限切れになります。 有効期限は Azure Portal で確認できます。
+
+1.  [Azure Portal](http://portal.azure.com) にログインします。
+
+2.  左側のナビゲーションの下部で、**[More services]\(その他のサービス\)** を選択します。
+
+3.  **[サブスクリプション]** を選択します。
+
+4.  無料アカウントにサインアップしたときに作成したサブスクリプションを選択します。
+
+5.  下へスクロールして、無料サービス グリッドを表示します。 グリッドの左上にあるヒントをクリックします。
+
+![無料アカウントの特典の有効期限を確認できる場所を示すスクリーンショット](./media/billing-avoid-charges-free-account/freeaccount-benefits-expiration-date.png)
+
+
+無料のサービスおよび数量の有効期限が切れると、使用中のすべてのサービスに対して、従量課金制で課金されます。 使用しないサービスのリソースは、Azure ポータルを使用して削除できます。 どの Azure サービスも使用する予定がない場合は、[サブスクリプションを取り消す](billing-how-to-cancel-azure-subscription.md)ことができます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

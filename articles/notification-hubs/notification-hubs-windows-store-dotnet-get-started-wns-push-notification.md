@@ -3,22 +3,22 @@ title: "ユニバーサル Windows プラットフォーム アプリでの Azur
 description: "このチュートリアルでは、Azure Notification Hubs を使用して Windows ユニバーサル プラットフォーム アプリケーションにプッシュ通知を送信する方法について学習します。"
 services: notification-hubs
 documentationcenter: windows
-author: ysxu
-manager: erikre
-editor: erikre
+author: jwhitedev
+manager: kpiteira
+editor: 
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: e18a810bcdbd97c79418f53c647df8723ecb6076
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/22/2017
+ms.author: jawh
+ms.openlocfilehash: c09621d1152aafbe15039130f6ca24082dc5bd21
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>ユニバーサル Windows プラットフォーム アプリでの Notification Hubs の使用
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 * [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) 以降
 * [UWP アプリ開発ツールがインストールされている](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 * アクティブな Azure アカウント  
-    アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)に関するページを参照してください。
+    アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)に関するページを参照してください。
 * アクティブな Windows ストア アカウント
 
 このチュートリアルを完了することは、UWP アプリに関する他のすべての Notification Hubs チュートリアルを行うための前提条件になっています。
@@ -81,8 +81,8 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 ## <a name="configure-your-notification-hub"></a>通知ハブを構成する
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="5">
-<li><p><b>[Notification Services]</b> > <b>[Windows (WNS)]</b> の順に選択し、アプリケーション シークレット パスワードを <b>[セキュリティ キー]</b> ボックスに入力します。 前のセクションで WNS から取得した値を <b>[パッケージ SID]</b> ボックスに入力し、<b>[保存]</b> を選択します。</p>
+<ol start="6">
+<li><p><b>[Notification Services]</b> の <b>[Windows (WNS)]</b> を選択し、アプリケーション シークレット パスワードを <b>[セキュリティ キー]</b> ボックスに入力します。 前のセクションで WNS から取得した値を <b>[パッケージ SID]</b> ボックスに入力し、<b>[保存]</b> を選択します。</p>
 </li>
 </ol>
 
@@ -162,57 +162,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
     * [Java](notification-hubs-java-push-notification-tutorial.md)
     * [PHP](notification-hubs-php-push-notification-tutorial.md)
 
-## <a name="optional-send-notifications-from-a-console-app"></a>(省略可能) コンソール アプリケーションから通知を送信する
-.NET コンソール アプリケーションを使用して通知を送信するには、以下を実行します。 
-
-1. ソリューションを右クリックして **[追加]** > **[新しいプロジェクト]** の順に選択します。次に、**[Visual C#]** で **[Windows]** と **[コンソール アプリケーション]** を選択してから、**[OK]** を選択します。
-   
-    新しい Visual C# コンソール アプリケーションがソリューションに追加されます。 個別のソリューションでプロジェクトを追加することもできます。
-
-2. Visual Studio で、**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
-   
-    Visual Studio でパッケージ マネージャー コンソールが表示されます。
-
-3. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウで次のコマンドを実行します。
-   
-        Install-Package Microsoft.Azure.NotificationHubs
-   
-    この操作によって、[Microsoft.Azure.Notification Hubs NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を使用して Azure Notification Hubs SDK に参照が追加されます。
-   
-    ![[既定のプロジェクト] の名前](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
-
-4. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
-   
-        using Microsoft.Azure.NotificationHubs;
-
-5. **Program** クラスで、次のメソッドを追加します。
-   
-        private static async void SendNotificationAsync()
-        {
-            NotificationHubClient hub = NotificationHubClient
-                .CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">Hello from a .NET App!</text></binding></visual></toast>";
-            await hub.SendWindowsNativeNotificationAsync(toast);
-        }
-   
-    >[!NOTE]
-    >* **ハブ名**プレースホルダーは、Azure Portal に表示される通知ハブの名前に置き換えてください。 
-    >* また、接続文字列プレースホルダーは、「通知ハブを構成する」セクションで通知ハブの **[アクセス ポリシー]** ページから取得した **DefaultFullSharedAccessSignature** 接続文字列に置き換えてください。
-    >* "*リッスン*" アクセスではなく "*フル*" アクセスを備えた接続文字列を使用してください。 リッスン アクセス文字列には通知を送信するアクセス許可はありません。
-   > 
-   > 
-6. **Main** メソッド内に、次の行を追加します。
-   
-         SendNotificationAsync();
-         Console.ReadLine();
-
-7. Visual Studio でコンソール アプリケーション プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** を選択して、そのプロジェクトをスタートアップ プロジェクトとして設定します。 **F5** キーを押して、アプリケーションを実行します。
-   
-    登録したすべてのデバイスでトースト通知を受信します。 トースト バナーを選択またはタップすると、アプリが読み込まれます。
-
-MSDN の[トースト カタログ]、[タイル カタログ]、[バッジの概要]に関する各トピックに、サポートされるすべてのペイロードが記載されています。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この簡単な例では、ポータルまたはコンソール アプリを使用して、ブロードキャスト通知をすべての Windows デバイスに送信しました。 次のステップとして、[Notification Hubs を使用したユーザーへのプッシュ通知]に関するチュートリアルをお勧めします。 このチュートリアルでは、特定のユーザーに対してタグを使用して ASP.NET バックエンドから通知を送信する方法について説明しています。
 
 対象グループごとにユーザーを区分する場合は、「 [Notification Hubs を使用したニュース速報の送信]」を参照してください。 
@@ -230,7 +180,7 @@ Notification Hubs の全般的な情報については、[Notification Hubs の�
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
-[トースト カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[タイル カタログ]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[バッジの概要]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
+[tile catalog]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
+[badge overview]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
  

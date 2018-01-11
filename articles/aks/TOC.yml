@@ -11,7 +11,7 @@
       href: kubernetes-walkthrough.md
     - name: AKS クラスターの作成 - ポータル
       href: kubernetes-walkthrough-portal.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - AKS 用にアプリケーションを準備する
       href: tutorial-kubernetes-prepare-app.md
@@ -39,14 +39,18 @@
       href: kubernetes-helm.md
     - name: Draft を使用したアプリケーションの開発
       href: kubernetes-draft.md
-    - name: Azure Files によるデータ保持
-      href: azure-files.md
     - name: OSBA を使用した Azure との統合
       href: integrate-azure.md
     - name: Kubernetes ダッシュボードの使用
       href: kubernetes-dashboard.md
     - name: サービス プリンシパルの作成
       href: kubernetes-service-principal.md
+    - name: データ ボリュームの構成
+      items:
+        - name: Azure Files - 永続的なボリューム
+          href: azure-files-dynamic-pv.md
+        - name: Azure Files - ボリューム
+          href: azure-files.md
 - name: リファレンス
   items:
     - name: Azure CLI

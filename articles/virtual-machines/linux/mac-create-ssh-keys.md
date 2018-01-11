@@ -4,7 +4,7 @@ description: "Azure に Linux VM 用の SSH 公開キーと秘密キーのペア
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 34ae9482-da3e-4b2d-9d0d-9d672aa42498
@@ -12,17 +12,17 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/14/2017
+ms.topic: article
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 6fcdcc96c7762e2362aebf909ef25f4a5ab62f99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b677a4063ebef84dbd2fa476b5f633b859f90ed
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法
-Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成でき、ログインするためのパスワードが不要になります。 この記事では、Linux VM 用に SSH プロトコル バージョン 2 RSA の公開キー ファイルと秘密キー ファイルのペアを短時間で生成し、使用する方法について説明します。 詳細な手順と補足的な例については、[SSH キー ペアと証明書を作成するための詳細な手順](create-ssh-keys-detailed.md)に関するページをご覧ください。
+Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成でき、ログインするためのパスワードが不要になります。 この記事では、Linux VM 用に SSH プロトコル バージョン 2 RSA の公開キー ファイルと秘密キー ファイルのペアを短時間で生成し、使用する方法について説明します。 これらの手順を実行するには、Azure Cloud Shell、macOS または Linux ホスト、あるいは Windows Subsystem for Linux を使用することができます。 詳細な手順と補足的な例については、[SSH キー ペアと証明書を作成するための詳細な手順](create-ssh-keys-detailed.md)に関するページをご覧ください。
 
 ## <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 `ssh-keygen` コマンドを使用して、SSH 公開キー ファイルと秘密キー ファイルを作成できます。ファイルは既定で `~/.ssh` ディレクトリに作成されますが、プロンプトが表示されたときに別の場所や追加のパスフレーズ (秘密キー ファイルにアクセスするためのパスワード) を指定できます。 これを行うには、Bash シェルから次のコマンドを実行し、使用したい情報をプロンプトで指定します。
@@ -48,7 +48,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 キー ペアを作成する際にパスフレーズを指定した場合は、ログイン プロセス中に入力を求められたら、そのパスフレーズを入力します  (サーバーは `~/.ssh/known_hosts` フォルダーに追加されます。Azure VM にある公開キーが変更されるかサーバー名が `~/.ssh/known_hosts` から削除されるまで、再度接続を求められることはありません)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 SSH キーを使用して作成された VM は、既定ではパスワードが無効にされます。この措置により、推測によるブルート フォース攻撃はコストが非常に高くつき、実行するのが難しくなります。 このトピックでは、すぐに使えるように単純な SSH キー ペアを作成する方法について説明しました。 SSH キー ペアの作成や追加の証明書の作成に関する詳しい説明については、[SSH キー ペアと証明書を作成するための詳細な手順](create-ssh-keys-detailed.md)に関するページをご覧ください。
 
