@@ -254,6 +254,8 @@
               href: mongodb-mongochef.md
             - name: Robomongo の使用
               href: mongodb-robomongo.md
+            - name: Mongoose の使用
+              href: mongodb-mongoose.md
             - name: MongoDB 機能のサポート
               href: mongodb-feature-support.md
             - name: Angular チュートリアル シリーズ
@@ -380,7 +382,7 @@
           href: odbc-driver.md
         - name: SQL API で Spring Boot Starter を使用する
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
-- name: リファレンス
+- name: 参照
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'

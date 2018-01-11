@@ -64,6 +64,7 @@
 #### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
 #### [トランザクション処理](service-bus-transactions.md)
 #### [ペアの名前空間の実装](service-bus-paired-namespaces.md)
+### [エンド ツー エンドのトレースと診断](service-bus-end-to-end-tracing.md)
 ## [管理]
 ### [Azure 監視による Service Bus の監視](service-bus-metrics-azure-monitor.md)
 ### [Service Bus 管理ライブラリ](service-bus-management-libraries.md)
@@ -78,7 +79,7 @@
 #### 
 ### [Azure PowerShell を使用したエンティティのプロビジョニング](service-bus-manage-with-ps.md)
 
-# リファレンス
+# 参照
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
