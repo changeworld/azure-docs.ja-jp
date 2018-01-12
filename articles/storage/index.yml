@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/08/2017
   ms.author: tamram
-  ms.openlocfilehash: 04198a4f256be34dc0b79413c792f2e979b918ed
-  ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+  ms.openlocfilehash: f19fc44c2d8f4a8af7f757983020eaee6f94b241
+  ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/13/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Microsoft Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたストレージを提供する、Microsoft が管理するクラウド サービスです。 Azure Storage は、Blob Storage、File Storage、Queue Storage で構成されます。  Microsoft が提供するクイック スタートとチュートリアルを使用して、アプリケーションで Azure Storage を活用する方法を確認してください。"
 sections:
@@ -28,6 +28,9 @@ sections:
   - type: table
     style: dataMatrix
     columns:
+    - image:
+        src: media/index/portal.svg
+        text: "ポータル"
     - image:
         src: media/index/logo_powershell.svg
         text: Powershell
@@ -45,14 +48,16 @@ sections:
     rows:
     - title: "[ストレージ アカウントの作成]"
       values:
-      - href: /azure/storage/common/storage-quickstart-create-storage-account-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - href: /azure/storage/common/storage-quickstart-create-storage-account-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
+      - href: /azure/storage/common/storage-quickstart-create-account?tabs=powershell
+      - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
       - href: 
       - href: 
       - href: 
       - href: 
     - title: "BLOB のクイックスタート"
       values:
+      - href: /azure/storage/blobs/storage-quickstart-blobs-portal
       - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
       - href: /azure/storage/blobs/storage-quickstart-blobs-cli
       - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
@@ -111,7 +116,7 @@ sections:
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
-- title: "リファレンス"
+- title: "参照"
   items:
   - type: list
     style: cards
@@ -121,5 +126,5 @@ sections:
       html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
     - title: "言語"
       html: <p><a href="/java/api/">Java</a></p><p><a href="http://azure.github.io/azure-storage-node">Node.js</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
-    - title: REST ()
+    - title: REST
       html: "<p><a href=\"/rest/api/storageservices\">BLOB、キュー、テーブル、ファイル</a></p><p><a href=\"/rest/api/storagerp\">リソース プロバイダー</a></p><p><a href=\"/rest/api/storageimportexport\">Import/Export</a></p>"

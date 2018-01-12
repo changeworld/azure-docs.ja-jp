@@ -19,7 +19,7 @@
       href: app-insights-java-quick-start.md
     - name: モバイル
       href: app-insights-mobile-center-quickstart.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 実行時の例外の特定
       href: app-insights-tutorial-runtime-exceptions.md
@@ -131,7 +131,7 @@
               href: app-insights-java-agent.md
             - name: テレメトリのフィルター処理
               href: app-insights-java-filter-telemetry.md
-        - name: アラート
+        - name: 警告
           items:
             - name: 可用性
               href: app-insights-monitor-web-app-availability.md
@@ -194,7 +194,7 @@
               href: app-insights-usage-retention.md
             - name: ユーザー フロー
               href: app-insights-usage-flows.md
-            - name: Workbooks
+            - name: ブック
               href: app-insights-usage-workbooks.md
         - name: 分析
           items:
@@ -265,7 +265,11 @@
           href: app-insights-analytics-troubleshooting.md
         - name: Java
           href: app-insights-java-troubleshoot.md
-- name: リファレンス
+- name: サンプル
+  items:
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/resources/samples/?service=application-insights&sort=0'
+- name: 参照
   items:
     - name: Analytics クエリ言語
       href: 'https://docs.loganalytics.io/'
@@ -320,7 +324,7 @@
           href: app-insights-release-notes-vsix.md
     - name: FAQ
       href: app-insights-troubleshoot-faq.md
-    - name: '[ヘルプ]'
+    - name: ヘルプ
       items:
         - name: MSDN フォーラム
           href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights'

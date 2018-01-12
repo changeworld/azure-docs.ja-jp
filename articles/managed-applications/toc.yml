@@ -8,10 +8,12 @@
   items:
     - name: マネージ アプリケーションを作成する
       href: managed-apps-quickstart-cli.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: マネージ アプリケーション ファイルを作成する
       href: publish-service-catalog-app.md
+    - name: マーケットプレース アプリケーションの作成
+      href: publish-marketplace-app.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -28,13 +30,13 @@
       href: update-managed-resources.md
     - name: ポータルを使用して発行する
       href: publish-portal.md
-- name: リファレンス
+- name: 参照
   items:
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell
       href: /powershell/module/azurerm.resources
-    - name: REST ()
+    - name: REST
       href: /rest/api/resources/
     - name: ユーザー インターフェイスの関数
       href: create-uidefinition-functions.md
@@ -55,7 +57,7 @@
               href: microsoft-common-section.md
             - name: TextBox
               href: microsoft-common-textbox.md
-        - name: コンピューティング
+        - name: 計算
           items:
             - name: CredentialsCombo
               href: microsoft-compute-credentialscombo.md
@@ -69,7 +71,7 @@
               href: microsoft-network-publicipaddresscombo.md
             - name: VirtualNetworkCombo
               href: microsoft-network-virtualnetworkcombo.md
-        - name: ストレージ
+        - name: Storage
           items:
             - name: MultiStorageAccountCombo
               href: microsoft-storage-multistorageaccountcombo.md

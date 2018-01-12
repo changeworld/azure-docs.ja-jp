@@ -125,7 +125,11 @@
         - name: 'C# の使用'
           href: csharp.md
         - name: 特殊化されたディスクを使用する
-          href: create-vm-specialized.md
+          items:
+            - name: ポータル
+              href: create-vm-specialized-portal.md
+            - name: PowerShell
+              href: create-vm-specialized.md
         - name: 'テンプレートと C# の使用'
           href: csharp-template.md
         - name: Chef を使用した VM の作成
@@ -414,7 +418,7 @@
           href: performance-diagnostics-vm-extension.md
         - name: 入れ子になった仮想化の使用
           href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: リファレンス
+- name: 参照
   items:
     - name: Azure CLI
       href: /cli/azure/vm
