@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags: clicktale
-ms.openlocfilehash: 2591fad9efd9dba2f53101a747bcf79a4d0bad4f
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 56e50d633b29d2a5ce14fb50515407ac9d3bd821
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/11/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -102,7 +102,7 @@ ms.lasthandoff: 01/10/2018
                                     <div class="cardPadding">
                                         <div class="card">
                                             <div class="cardText">
-                                                <h3> セキュリティおよびリソースの管理</h3>
+                                                <h3>リソースの保護と管理</h3>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/security-center/">[Azure Security Center] (Azure Security Center)</a></li>
                                                     <li><a class="barLink" href="/azure/monitoring-and-diagnostics/">Azure Monitor</a></li>
@@ -334,7 +334,7 @@ ms.lasthandoff: 01/10/2018
                                         <li>
                                             <a href="/azure/cloud-services/">
                                                 <img src="media/index/CloudService.svg" alt="" />
-                                                <p>Cloud Services</p>
+                                                <p>クラウド サービス</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -463,7 +463,7 @@ ms.lasthandoff: 01/10/2018
                                         <li>
                                             <a href="/azure/data-catalog/">
                                                 <img src="media/index/data-catalog.svg" alt="" />
-                                                <p>Data Catalog</p>
+                                                <p>データ カタログ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -907,7 +907,7 @@ ms.lasthandoff: 01/10/2018
                                         <li>
                                             <a href="/azure/data-catalog/">
                                                 <img src="media/index/data-catalog.svg" alt="" />
-                                                <p>Data Catalog</p>
+                                                <p>データ カタログ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1454,7 +1454,7 @@ ms.lasthandoff: 01/10/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cloud Services</h3>
+                                                    <h3>クラウド サービス</h3>
                                                     <p>高可用性と無限の拡張性を備えたクラウド アプリケーションと API の作成</p>
                                                 </div>
                                             </div>
@@ -2492,7 +2492,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Catalog</h3>
+                                                    <h3>データ カタログ</h3>
                                                     <p>企業全体でセルフサービスのデータ ソース検出を可能に</p>
                                                 </div>
                                             </div>
@@ -3142,7 +3142,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Catalog</h3>
+                                                    <h3>データ カタログ</h3>
                                                     <p>企業全体でセルフサービスのデータ ソース検出を可能に</p>
                                                 </div>
                                             </div>

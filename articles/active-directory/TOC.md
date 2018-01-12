@@ -8,7 +8,7 @@
 ## [最新情報](whats-new.md)
 
 
-# 作業開始
+# 作業の開始
 ## [Azure AD を使ってみる](get-started-azure-ad.md)
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
 ## [カスタム ドメイン名の追加](add-custom-domain.md)
@@ -178,7 +178,7 @@
 
 
 ### [アプリ プロキシを使用してリモートでアプリにアクセスする](active-directory-application-proxy-get-started.md)
-#### 作業開始
+#### 作業の開始
 ##### [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 ##### [アプリを発行する](application-proxy-publish-azure-portal.md)
 ##### [カスタム ドメイン](active-directory-application-proxy-custom-domains.md)
@@ -217,7 +217,7 @@
 #### [ユーザー アカウントのプロビジョニング管理](active-directory-enterprise-apps-manage-provisioning.md)
 #### [エンタープライズ アプリのシングル サインオンの管理](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML アプリの詳細な証明書署名](active-directory-enterprise-apps-advance-certificate-options.md)
-#### [ユーザーのエクスペリエンスでサードパーティ アプリを非表示にする](active-directory-coreapps-hide-third-party-app.md)
+#### [ユーザーのエクスペリエンスからアプリケーションを非表示にする](active-directory-coreapps-hide-third-party-app.md)
 ### [HRD ポリシーを使用してサインイン自動アクセラレーションを構成する](active-directory-auto-acceleration-using-hrd.md)
 
 ### [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
@@ -283,6 +283,7 @@
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
+#### [場所の条件](active-directory-conditional-access-locations.md)
 #### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)

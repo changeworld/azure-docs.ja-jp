@@ -9,7 +9,7 @@
   items:
     - name: Location Based Services を使用した地図アプリ
       href: quick-demo-map-app.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - 観光名所の検索
       href: tutorial-search-location.md
@@ -31,11 +31,11 @@
       href: how-to-use-map-control.md
     - name: アドレスの検索方法
       href: how-to-search-for-address.md
-- name: リファレンス
+- name: 参照
   items:
-    - name: Functional API - REST
+    - name: Functional API
       href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
-    - name: Management API - REST
+    - name: 管理 API
       href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
     - name: マップ コントロール API - Javascript
       href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'

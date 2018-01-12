@@ -7,7 +7,7 @@
     - name: HDInsight の Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: 作業開始
+- name: 作業の開始
   items:
     - name: HBase & NoSQL を開始する
       href: apache-hbase-tutorial-get-started-linux.md
@@ -121,6 +121,8 @@
         - name: Hadoop ジョブのデータをアップロードする
           href: ../hdinsight-upload-data.md
           maintainContext: true
+        - name: psql を使用して Phoenix にデータを一括で読み込む
+          href: apache-hbase-phoenix-psql.md
         - name: 複数の HDInsight クラスターと Data Lake Store
           href: ../hdinsight-multiple-clusters-data-lake-store.md
           maintainContext: true
@@ -218,7 +220,7 @@
         - name: クラスター パフォーマンスの監視
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: リファレンス
+- name: 参照
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
@@ -230,7 +232,7 @@
       href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
     - name: .NET (Avro)
       href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
-    - name: REST ()
+    - name: REST
       href: /rest/api/hdinsight/
     - name: REST (Spark)
       href: /rest/api/hdinsightspark/

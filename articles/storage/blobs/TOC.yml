@@ -2,16 +2,16 @@
   href: /azure/storage/
 - name: 概要
   items:
-    - name: はじめに
+    - name: 紹介
       href: storage-blobs-introduction.md
     - name: BLOB、ファイル、またはデータ ディスクの選択
       href: ../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: クイック スタート
   items:
-    - name: ストレージ アカウントの作成 - PowerShell
-      href: ../common/storage-quickstart-create-storage-account-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: ストレージ アカウントの作成 - CLI
-      href: ../common/storage-quickstart-create-storage-account-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: ストレージ アカウントの作成
+      href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: BLOB の使用 - Azure Portal
+      href: storage-quickstart-blobs-portal.md
     - name: BLOB の使用 - PowerShell
       href: storage-quickstart-blobs-powershell.md
     - name: BLOB の使用 - CLI
@@ -58,7 +58,7 @@
           href: storage-blob-scalable-app-upload-files.md
         - name: Azure ストレージ アカウントから大きなデータをダウンロードする
           href: storage-blob-scalable-app-download-files.md
-        - name: スループットと待ち時間のメトリックを検証する
+        - name: スループットと待機時間のメトリックの確認
           href: storage-blob-scalable-app-verify-metrics.md
 - name: サンプル
   items:
@@ -70,6 +70,10 @@
       href: storage-samples-blobs-powershell.md
     - name: Azure CLI
       href: storage-samples-blobs-cli.md
+    - name: .NET
+      href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Java
+      href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
 - name: 概念
   items:
     - name: 計画と設計
@@ -94,16 +98,32 @@
           href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Premium Storage
           items:
-            - name: VM ディスク向けの高パフォーマンス Premium Storage
-              href: ../common/storage-premium-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Azure Site Recovery を使用した Premium Storage への移行
-              href: ../common/storage-migrate-to-premium-storage-using-azure-site-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 高パフォーマンス用の設計
-              href: ../common/storage-premium-storage-performance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Linux
+              items:
+                - name: VM ディスク向けの高パフォーマンス Premium Storage
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage'
+                - name: Azure Site Recovery を使用した Premium Storage への移行
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/migrate-to-premium-storage-using-azure-site-recovery'
+                - name: 高パフォーマンス用の設計
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/premium-storage-performance'
+            - name: Windows
+              items:
+                - name: VM ディスク向けの高パフォーマンス Premium Storage
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage'
+                - name: Azure Site Recovery を使用した Premium Storage への移行
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/migrate-to-premium-storage-using-azure-site-recovery'
+                - name: 高パフォーマンス用の設計
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance'
         - name: Standard Storage
           items:
-            - name: コスト効率に優れた Standard Storage および非管理対象と管理対象の VM ディスク
-              href: ../common/storage-standard-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Linux
+              items:
+                - name: VM ディスク用の Standard Storage
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/linux/standard-storage'
+            - name: Windows
+              items:
+                - name: VM ディスク用の Standard Storage
+                  href: 'https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage'
     - name: セキュリティ保護
       items:
         - name: セキュリティ ガイド
@@ -146,6 +166,8 @@
       href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: 開発
       items:
+        - name: REST
+          href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: .NET
           href: storage-dotnet-how-to-use-blobs.md
         - name: Java
@@ -168,12 +190,10 @@
           href: storage-how-to-use-blobs-powershell.md
         - name: Azure CLI 2.0
           href: storage-how-to-use-blobs-cli.md
-        - name: REST ()
+        - name: REST
           href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: '[管理]'
+    - name: 管理
       items:
-        - name: Azure BLOB 用の PowerShell
-          href: storage-how-to-use-blobs-powershell.md
         - name: Azure Storage 用の PowerShell
           href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 中国、政府機関、ドイツのクラウド用の PowerShell
@@ -297,7 +317,7 @@
               href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Storage の移行に関する FAQ
           href: ../common/storage-migration-faq.md
-- name: リファレンス
+- name: 参照
   items:
     - name: PowerShell
       href: /powershell/module/azure.storage
@@ -331,7 +351,7 @@
       href: 'http://azure.github.io/azure-storage-ios/'
     - name: Android
       href: 'http://azure.github.io/azure-storage-android'
-    - name: REST ()
+    - name: REST
       items:
         - name: BLOB、キュー、テーブル、ファイル
           href: /rest/api/storageservices

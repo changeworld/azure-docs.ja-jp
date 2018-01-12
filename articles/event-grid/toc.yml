@@ -38,13 +38,15 @@
       href: event-grid-event-hubs-integration.md
     - name: イベント サブスクリプション用のテンプレート
       href: event-subscription-template.md
-- name: リファレンス
+    - name: イベント配信の監視
+      href: monitor-event-delivery.md
+- name: 参照
   items:
     - name: Azure CLI
       href: /cli/azure/eventgrid
     - name: PowerShell
       href: /powershell/module/azurerm.eventgrid
-    - name: REST ()
+    - name: REST
       href: /rest/api/eventgrid
     - name: サブスクリプション スキーマ
       href: subscription-creation-schema.md

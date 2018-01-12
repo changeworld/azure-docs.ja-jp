@@ -73,7 +73,7 @@
           href: azure-stack-integrate-monitor.md
         - name: セキュリティ
           href: azure-stack-integrate-security.md
-    - name: '[管理]'
+    - name: 管理
       items:
         - name: リージョンの管理
           href: azure-stack-region-management.md
@@ -154,6 +154,8 @@
               href: Azure-stack-create-service-principals.md
             - name: マルチテナントの有効化
               href: azure-stack-enable-multitenancy.md
+        - name: シークレットの切り替え
+          href: azure-stack-rotate-secrets.md
     - name: サービスの提供
       items:
         - name: サービスの提供の概要
@@ -248,9 +250,11 @@
           href: azure-stack-troubleshooting.md
         - name: Azure Stack の診断
           href: azure-stack-diagnostics.md
+        - name: Azure Stack に対する検証
+          href: azure-stack-diagnostic-test.md
         - name: Azure Stack Development Kit の再デプロイ
           href: azure-stack-redeploy.md
-- name: リファレンス
+- name: 参照
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9

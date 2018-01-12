@@ -6,7 +6,7 @@
 ### [テスト環境でのラボの使用](devtest-lab-test-env.md)
 ### [トレーニングでのラボの使用](devtest-lab-training-lab.md)
 
-# 作業開始
+# 作業の開始
 ## [ラボの作成](devtest-lab-create-lab.md)
 ## [最初の VM の作成](devtest-lab-create-first-vm.md)
 ## [開始ポリシーの設定](devtest-lab-get-started-with-lab-policies.md)
@@ -16,6 +16,7 @@
 ### [VM の作成](devtest-lab-add-vm.md)
 ### [クレーム可能 VM の作成と管理](devtest-lab-add-claimable-vm.md)
 ### [Azure CLI を使用した VM の作成と管理](devtest-lab-vmcli.md)
+### [Resource Manager テンプレートを使用した VM の作成](devtest-lab-use-resource-manager-template.md)
 ### [VM の再起動](devtest-lab-restart-vm.md)
 
 ## ラボでの環境の使用
@@ -46,7 +47,6 @@
 
 ## 再利用可能なテンプレートの管理
 ### [アーティファクトとテンプレート用の Git リポジトリの追加](devtest-lab-add-artifact-repo.md)
-### [Resource Manager テンプレートの使用](devtest-lab-use-resource-manager-template.md)
 ### [数式の管理](devtest-lab-manage-formulas.md)
 
 ## アーティファクトの管理
@@ -65,7 +65,7 @@
 ## CI/CD との統合
 ### [ラボを VSTS CI/CD パイプラインに統合する](devtest-lab-integrate-ci-cd-vsts.md)
 
-# リファレンス
+# 参照
 ## [CLI 2.0](/cli/azure/lab)
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [ラボを自動的に作成または変更する](devtest-lab-use-arm-and-powershell-for-lab-resources.md)

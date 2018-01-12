@@ -7,7 +7,7 @@
     - name: HDInsight の Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: 作業開始
+- name: 作業の開始
   items:
     - name: Hadoop を開始する
       href: apache-hadoop-linux-tutorial-get-started.md
@@ -86,10 +86,16 @@
           href: submit-apache-hadoop-jobs-programmatically.md
     - name: 開発
       items:
+        - name: カスタムの MapReduce プログラムを呼び出す
+          href: apache-hadoop-run-custom-programs.md
         - name: 'C# ストリーミング MapReduce プログラムを開発する'
           href: apache-hadoop-dotnet-csharp-mapreduce-streaming.md
         - name: Java MapReduce プログラムを開発する
           href: apache-hadoop-develop-deploy-java-mapreduce-linux.md
+        - name: 抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
+          href: apache-hadoop-using-apache-hive-as-an-etl-tool.md
+        - name: 大規模な抽出、変換、読み込み
+          href: apache-hadoop-etl-at-scale.md
         - name: 空のエッジ ノードを使用する
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true
@@ -145,6 +151,8 @@
         - name: Application Insights Telemetry ログを分析する
           href: ../spark/apache-spark-analyze-application-insight-logs.md
           maintainContext: true
+        - name: HDInsight の高度な分析
+          href: apache-hadoop-deep-dive-advanced-analytics.md
     - name: クラスターを拡張する
       items:
         - name: ブートストラップを使用してクラスターをカスタマイズする
@@ -204,7 +212,7 @@
         - name: Ambari Views のユーザー承認
           href: ../hdinsight-authorize-users-to-ambari.md
           maintainContext: true
-    - name: '[管理]'
+    - name: 管理
       items:
         - name: Linux クラスターを作成する
           href: ../hdinsight-hadoop-provision-linux-clusters.md
@@ -378,7 +386,9 @@
         - name: クラスター パフォーマンスの監視
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: リファレンス
+        - name: Hadoop ログの分析
+          href: apache-hadoop-debug-jobs.md
+- name: 参照
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
@@ -390,7 +400,7 @@
       href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
     - name: .NET (Avro)
       href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
-    - name: REST ()
+    - name: REST
       href: /rest/api/hdinsight/
     - name: REST (Spark)
       href: /rest/api/hdinsightspark/
