@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/03/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 43582ae805d560e72fb8d03ab8e0abee4c4325b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Azure Data Lake Store のアクセス制御
 
@@ -241,15 +241,15 @@ Data Lake Store のファイルまたはフォルダーの ACL がどのよう�
 
 ### <a name="umasks-role-in-creating-the-access-acl-for-new-files-and-folders"></a>新しいファイルとフォルダーのアクセス ACL を作成する際の umask の役割
 
-POSIX 準拠システムの一般概念では、umask は、新しい子ファイルまたはフォルダーのアクセス ACL で**所有ユーザー**、**所有グループ**、**その他**のアクセス許可を変換するために使用される、親フォルダーでの 9 ビット値です。 umask のビットは、子項目のアクセス ACL でどのビットがオフになるかを特定します。 つまり、**所有ユーザー**、**所有グループ**、および**その他**で、アクセス許可の継承を選択的に禁止するために使用されます。
+POSIX に準拠しているシステムの一般概念では、umask は、新しい子ファイルまたはフォルダーのアクセス ACL で**所有ユーザー**、**所有グループ**、**その他**のアクセス許可を変換するために使用される、親フォルダーでの 9 ビット値です。 umask のビットは、子項目のアクセス ACL でどのビットがオフになるかを特定します。 つまり、**所有ユーザー**、**所有グループ**、および**その他**で、アクセス許可の継承を選択的に禁止するために使用されます。
 
 HDFS システムでは、umask は一般的にサイト全体の構成オプションであり、管理者によって制御されます。 Data Lake Store は、変更することができない、 **アカウント全体の umask** を使用します。 次の表に、Data Lake Store の umask を示します。
 
-| ユーザー グループ  | Setting | 新しい子項目のアクセス ACL への効果 |
+| ユーザー グループ  | 設定 | 新しい子項目のアクセス ACL への効果 |
 |------------ |---------|---------------------------------------|
 | 所有ユーザー | ---     | 効果なし                             |
 | 所有グループ| ---     | 効果なし                             |
-| 他の       | RWX     | 読み取り + 書き込み + 実行を削除         |
+| その他       | RWX     | 読み取り + 書き込み + 実行を削除         |
 
 次の図は、この umask の動作を示しています。 実際の効果は、**その他**のユーザーの**読み取り + 書き込み + 実行**の削除です。 umask で**所有ユーザー**と**所有グループ**のビットを指定しなかったため、これらのアクセス許可は変換されません。
 
@@ -273,6 +273,7 @@ HDFS システムでは、umask は一般的にサイト全体の構成オプシ
 Data Lake Store の ACL に関してよくある質問のいくつかを次に示します。
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>ACL のサポートを有効にする必要はありますか
+
 
 いいえ。 ACL によるアクセス制御は、Data Lake Store アカウントでは常に有効になっています。
 
@@ -307,6 +308,7 @@ ACL のエントリは、ユーザーに対応する GUID として Azure AD に
 GUID が表示されるのは、そのユーザーがもう Azure AD に存在しない場合です。 通常、ユーザーが会社を辞めた場合や Azure AD でそのアカウントが削除された場合に、この現象が発生します。
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Data Lake Store は ACL の継承をサポートしていますか
+
 
 いいえ。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 02b1b3f2a567f6073b891a0376eddbc87cd268aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a559c749bc7ba3cabbbb1a171605b8baf601eef
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 Azure Active Directory (Azure AD) パススルー認証を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインすることができるようになります。 この機能により、ユーザー エクスペリエンスが向上します。ユーザーは、覚えておくパスワードが 1 つ少なくなり、ユーザーがサインイン方法を忘れる可能性が低くなるため IT ヘルプデスクのコストが削減します。 この機能により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PyeAC85Gm7w" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
 この機能は、組織にクラウド認証を同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)の代わりです。 ただし、特定の組織のセキュリティとコンプライアンス ポリシーでは、ハッシュされたフォームでも内部から外にユーザー パスワードの送信を許可していません。 そのような組織にはパススルー認証が適しています。
 
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - 複数のエージェントをインストールすることにより、サインイン要求の高可用性が実現されます。
 - これにより、オンプレミス アカウントがクラウドへのブルート フォース パスワード攻撃から[保護](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [**クイック スタート**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を起動および実行します。
 - [**スマート ロックアウト**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) - ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。

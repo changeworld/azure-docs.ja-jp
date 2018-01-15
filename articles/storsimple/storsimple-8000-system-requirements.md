@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 485320e500d71bd85b69cfcd9628e133ad1c417c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4458187999d0795be8637f6f5615e4900ddd94cc
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 シリーズのソフトウェア、高可用性、ネットワークの要件
 
@@ -62,14 +62,14 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 
 | ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | メモ |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |アウト |WAN |いいえ |<ul><li>送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |アウト |WAN |あり |<ul><li>送信ポートは、クラウドのデータへのアクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li><li>このポートは、ガベージ コレクション用のコントローラーでも使用されます。</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |アウト |WAN |いいえ  |<ul><li>送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |アウト |WAN |[はい] |<ul><li>送信ポートは、クラウドのデータへのアクセスに使用します。</li><li>送信 Web プロキシは、ユーザーが構成できます。</li><li>システムの更新を許可するために、コントローラーの固定 IP に対してもこのポートを開く必要があります。</li><li>このポートは、ガベージ コレクション用のコントローラーでも使用されます。</li></ul> |
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
-| TCP 9354 |アウト |WAN |あり |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) |イン |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
-| 5985 |イン |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 |イン |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| TCP 9354 |アウト |WAN |[はい] |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
+| 3260 (iSCSI) |イン |LAN |いいえ  |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| 5985 |イン |LAN |いいえ  |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 |イン |LAN |いいえ  |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -107,7 +107,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 
 | URL パターン | コンポーネント/機能 | デバイスの IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com` |StorSimple デバイス マネージャー サービス<br>Access Control Service<br>Azure Service Bus<br>認証サービス |クラウド対応のネットワーク インターフェイス |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com`<br>`https://login.microsoftonline.us` |StorSimple デバイス マネージャー サービス<br>Access Control Service<br>Azure Service Bus<br>認証サービス |クラウド対応のネットワーク インターフェイス |
 | `https://*.backup.windowsazure.us` |デバイス登録 |DATA 0 のみ |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure ストレージ アカウントと監視 |クラウド対応のネットワーク インターフェイス |
@@ -126,7 +126,7 @@ Update 2 以降のバージョンに使用されるルーティング メトリ�
 * 事前に定義された一連の値が、ネットワーク インターフェイスに割り当てられています。
 * 以下に示す表の例では、さまざまなネットワーク インターフェイスがクラウド対応の場合とクラウド非対応 (ただしゲートウェイが構成済み) の場合に、割り当てられる値を示しています。 ここで割り当てられている値はあくまでも一例です。
 
-    | ネットワーク インターフェイス | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
+    | Linux | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
     |-----|---------------|---------------------------|
     | Data 0  | 1            | -                        |
     | Data 1  | 2            | 20                       |
@@ -241,7 +241,7 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 * [2 ノード ファイル サーバー クラスター構成][1]を使用した StorSimple を構成します。 単一障害点を削除し、ホスト側の冗長性を構築することにより、ソリューション全体の可用性が向上します。
 * ストレージ コントローラーのフェールオーバー中の高可用性を目的として、Windows Server 2012 (SMB 3.0) で利用できる継続的可用性 (CA) 共有を使用します。 ファイル サーバー クラスターと Windows Server 2012 との継続的可用性の共有を構成するための追加情報については、この [ビデオ メモ](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [StorSimple システムの制限の詳細](storsimple-8000-limits.md)
 * [StorSimple ソリューションをデプロイする方法](storsimple-8000-deployment-walkthrough-u2.md)

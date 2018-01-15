@@ -3,8 +3,8 @@ title: "Azure App Service Mobile Apps で Cordova アプリを作成する | Mic
 description: "Apache Cordova 開発向けの Azure モバイル アプリ バックエンドの使用を開始するには、このチュートリアルに従ってください。"
 services: app-service\mobile
 documentationcenter: javascript
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 tags: 
 keywords: "cordova,javascript,モバイル,クライアント"
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 07/07/2017
-ms.author: glenga
-ms.openlocfilehash: b620465cdc3cfa04933dc6e70163fc32aa9a839b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 223e9e35fcab347f9b5b8db01a9fd667b9f5d55d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="create-an-apache-cordova-app"></a>Apache Cordova アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、Azure モバイル アプリ バックエンドを使用してクラウドベースのバックエンド サービスを Apache Cordova モバイル アプリに追加する方法を説明します。  新しいモバイル アプリ バックエンドと、アプリのデータを Azure に格納する簡単な *Todo リスト* Apache Cordova アプリを作成します。
 
 このチュートリアルは、Azure App Service での Mobile Apps 機能の使用に関する他のすべての Apache Cordova チュートリアルを実行する前に完了しておく必要があります。
@@ -50,7 +50,7 @@ Visual Studio をバイパスし、Apache Cordova のコマンド ラインを�
 ## <a name="download-and-run-the-apache-cordova-app"></a>Apache Cordova アプリのダウンロードと実行
 [!INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これでこのクイック スタート チュートリアルは終了です。次のいずれかのチュートリアルに進んでください。
 
 * Apache Cordova アプリに[オフライン データを追加する](app-service-mobile-cordova-get-started-offline-data.md)

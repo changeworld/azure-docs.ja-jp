@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 6f5ca44e08c783fdf22a14d71c56c3019cc2bb52
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory での要求のマッピング (パブリック プレビュー)
 
@@ -140,7 +140,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 |onprem_sam_account_name|
 |onprem_sid|
 |openid2_id|
-|パスワード|
+|password|
 |platf|
 |polids|
 |pop_jwk|
@@ -280,7 +280,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 ID 要素により、ソースのどのプロパティが要求の値を提供するかが特定されます。 次の表は、ソースの各値に対して有効な ID の値を示しています。
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3: ソースごとに有効な ID 値
-|から|ID|Description|
+|ソース|ID|[説明]|
 |-----|-----|-----|
 |User|surname|姓|
 |User|givenname|名|
@@ -315,9 +315,9 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 |User|extensionattribute14|拡張属性 14|
 |User|extensionattribute15|拡張属性 15|
 |User|othermail|その他のメール|
-|User|country|Country (国)|
+|User|country|Country|
 |User|city|City|
-|User|state|状態|
+|User|state|State|
 |User|jobtitle|役職|
 |User|employeeid|従業員 ID|
 |User|facsimiletelephonenumber|ファックスの電話番号|
@@ -353,7 +353,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 選択した方法に基づいて、一連の入力と出力が想定されます。 これは、**InputClaims** 要素、**InputParameters** 要素、**OutputClaims** 要素を使用して定義されます。
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4: 変換方法と想定される入出力
-|TransformationMethod|想定される入力|想定される出力|Description|
+|TransformationMethod|想定される入力|想定される出力|[説明]|
 |-----|-----|-----|-----|
 |Join (結合)|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
 |ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 @ 記号がない場合、元の入力文字列がそのまま返されます。|
@@ -378,7 +378,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 **SAML NameID と UPN:** NameID と UPN の値のソース属性と、許可される要求変換には、制限があります。
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5: SAML NameID のデータ ソースとして許可されている属性
-|から|ID|Description|
+|ソース|ID|[説明]|
 |-----|-----|-----|
 |User|mail|電子メール アドレス|
 |User|userprincipalname|ユーザー プリンシパル名|
@@ -490,7 +490,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
     1. ポリシーを作成するには、このコマンドを実行します。 
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformation":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"Id":"string2","Value":"sandbox"},{"Id":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
     ```
     
     2. 新しいポリシーを表示し、ポリシーの ObjectId を取得するには、次のコマンドを実行します。 

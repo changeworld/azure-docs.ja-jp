@@ -3,8 +3,8 @@ title: "Xamarin Android アプリに Azure Mobile Apps を使用する"
 description: "次のチュートリアルに従って、Xamarin Android 開発用の Azure Mobile Apps を使用します"
 services: app-service\mobile
 documentationcenter: xamarin
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 6b41fd8090dd771fc40769c134bad258b3d4bd36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: abc4fa4129a596c3f3304dc37af3a9b659f45473
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -35,7 +35,7 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
-* アクティブな Azure アカウント。 アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手してください。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手してください。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * Visual Studio と Xamarin。 手順については、「 [セットアップとインストール](https://msdn.microsoft.com/library/mt613162.aspx) 」をご覧ください。
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure モバイル アプリ バックエンドの作成
@@ -64,7 +64,7 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
    >
    >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [アプリへのオフライン同期の追加](app-service-mobile-xamarin-android-get-started-offline-data.md)
 * [アプリへの認証の追加 ](app-service-mobile-xamarin-android-get-started-users.md)
 * [Xamarin.Android アプリへのプッシュ通知の追加](app-service-mobile-xamarin-android-get-started-push.md)

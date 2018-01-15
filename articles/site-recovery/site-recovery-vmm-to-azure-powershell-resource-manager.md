@@ -14,22 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rajanaki
-ms.openlocfilehash: cc832d06611c10901d4370dc7467f0b681d89cbd
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 28f35498593c896a5ad1fe7030c96c38bd4a48a9
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
 > [!div class="op_single_selector"]
 > * [Azure Portal](site-recovery-vmm-to-azure.md)
 > * [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
-> * [クラシック ポータル](site-recovery-vmm-to-azure-classic.md)
 > * [PowerShell - クラシック](site-recovery-deploy-with-powershell.md)
 >
 >
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Site Recovery は、さまざまなデプロイ シナリオでの仮想マシンのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 デプロイ シナリオのすべての一覧については、「 [Azure Site Recovery の概要](site-recovery-overview.md)」を参照してください。
 
 この記事では、System Center VMM クラウドの Hyper-V 仮想マシンを Azure ストレージにレプリケートするように Azure Site Recovery を設定するときに実行する必要がある一般的なタスクを PowerShell を使用して自動化する方法を示します。
@@ -305,5 +304,5 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [詳細を確認](/powershell/module/azurerm.recoveryservices.backup/#recovery) します。

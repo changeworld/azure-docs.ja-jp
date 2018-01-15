@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 232096acb2f79e1c1a7816e4074674b48534c440
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 89c971ae0dd0a519a1b0214e33b5a6ad2bb7fc99
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for MySQL からデータをコピーする
 
@@ -34,7 +34,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ## <a name="getting-started"></a>使用の開始
 
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure Database for MySQL コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -42,11 +42,11 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Azure Database for MySQL のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AzureMySql** に設定する必要があります | あり |
-| connectionString | Azure Database for MySQL インスタンスに接続するために必要な情報を指定します。 このフィールドを SecureString とマークします。 | あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| 型 | type プロパティは **AzureMySql** に設定する必要があります | [はい] |
+| connectionString | Azure Database for MySQL インスタンスに接続するために必要な情報を指定します。 このフィールドを SecureString とマークします。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
 
@@ -58,7 +58,7 @@ Azure Database for MySQL のリンクされたサービスでは、次のプロ�
         "typeProperties": {
             "connectionString": {
                  "type": "SecureString",
-                 "value": "Server=<server>.mysql.database.azure.com;Port=3306;Database=<database>;UID=<username>;PWD=<password>"
+                 "value": "Server=<server>.mysql.database.azure.com;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
             }
         },
         "connectVia": {
@@ -75,9 +75,9 @@ Azure Database for MySQL のリンクされたサービスでは、次のプロ�
 
 Azure Database for MySQL からデータをコピーするには、データセットの type プロパティを **AzureMySqlTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **AzureMySqlTable** に設定する必要があります | あり |
+| 型 | データセットの type プロパティは **AzureMySqlTable** に設定する必要があります | [はい] |
 | tableName | MySQL データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -106,10 +106,10 @@ Azure Database for MySQL からデータをコピーするには、データセ�
 
 Azure Database for MySQL からデータをコピーするには、コピー アクティビティのソースの種類を **AzureMySqlSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **AzureMySqlSource** に設定する必要があります | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
+| 型 | コピー アクティビティのソースの type プロパティは **AzureMySqlSource** に設定する必要があります | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -133,7 +133,7 @@ Azure Database for MySQL からデータをコピーするには、コピー ア
         "typeProperties": {
             "source": {
                 "type": "AzureMySqlSource",
-                "query": "SELECT * FROM MyTable"
+                "query": "<custom query e.g. SELECT * FROM MyTable>"
             },
             "sink": {
                 "type": "<sink type>"
@@ -190,5 +190,5 @@ Azure Database for MySQL からデータをコピーするとき、MySQL のデ�
 | `year` |`Int32` |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

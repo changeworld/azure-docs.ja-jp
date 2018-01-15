@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: ec5463a785c9afe53ebae558d15027e541a60f6a
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4d1a30b046c0c398d934291a907af891e9ac7fdf
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Azure Security Center でのセキュリティ ポリシーの設定
-この記事は、Security Center でのセキュリティ ポリシーを構成する場合に役立ちます。 
+この記事は、Security Center でのセキュリティ ポリシーを構成する場合に役立ちます。
 
 ## <a name="how-security-policies-work"></a>セキュリティ ポリシーのしくみ
-Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 Security Center でポリシーを編集したり、ポリシーのコンプライアンスを監視したりすることができます。 
+Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 Security Center でポリシーを編集したり、ポリシーのコンプライアンスを監視したりすることができます。
 
 > [!NOTE]
 > Azure Policy (限定プレビュー) を使って Security Center のポリシーを拡張できるようになりました。 プレビューに参加するには、「[Sign up for Azure Policy (Azure Policy へのサインアップ)](https://aka.ms/getpolicy)」に移動します。 詳細については、「[Security Center のセキュリティ ポリシーを Azure Policy に統合する](security-center-azure-policy.md)」を参照してください。
@@ -49,10 +49,10 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
 
 既定のセキュリティ ポリシーで利用可能なポリシー定義については、次の表を参照してください。
 
-| [ポリシー] | ポリシーによって実行される内容 |
+| ポリシー | ポリシーによって実行される内容 |
 | --- | --- |
 | システムの更新プログラム |Windows Update または Windows Server Update Services から、利用できる毎日のセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 取得される一覧は、その仮想マシンに対して構成されているサービスによって異なります。この一覧によって、不足している更新プログラムを適用するよう推奨されます。 Linux システムの場合、ポリシーはディストリビューション提供のパッケージ管理システムを利用し、使用できる更新プログラムが含まれているパッケージを特定します。 また、[Azure Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md) 仮想マシンのセキュリティ更新プログラムと重要な更新プログラムについても確認します。 |
-| OS の脆弱性 |オペレーティング システム構成を毎日分析し、攻撃に対する仮想マシンの脆弱性を引き起こすおそれのある問題を特定します。 また、このポリシーによって、これらの脆弱性に対応するための構成の変更が推奨されます。 監視対象の具体的な構成の詳細については、[推奨されるベースラインの一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)を参照してください。 (現時点では、Windows Server 2016 は完全にはサポートされていません。) |
+| セキュリティ構成 |オペレーティング システム構成を毎日分析し、攻撃に対する仮想マシンの脆弱性を引き起こすおそれのある問題を特定します。 また、このポリシーによって、これらの脆弱性に対応するための構成の変更が推奨されます。 監視対象の具体的な構成の詳細については、[推奨されるベースラインの一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)を参照してください。 (現時点では、Windows Server 2016 は完全にはサポートされていません。) |
 | エンドポイント保護 |ウイルス、スパイウェア、およびその他の悪意のあるソフトウェアを特定して削除するため、すべての Windows 仮想マシン (VM) にエンドポイント保護を設定することをお勧めします。 |
 | ディスクの暗号化 |静止データの保護を強化するために、ディスク暗号化はすべての仮想マシンで有効にすることをお勧めします。 |
 | ネットワーク セキュリティ グループ |パブリック エンドポイントがある VM への受信トラフィックと送信トラフィックを制御するように、 [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) を構成することを推奨します。 サブネットで構成されたネットワーク セキュリティ グループは、他に指定しない限り、すべての仮想マシンのネットワーク インターフェイスによって継承されます。 このポリシーは、ネットワーク セキュリティ グループが構成されているかどうかをチェックするほか、受信セキュリティ規則を評価して、受信トラフィックを許可する規則を特定します。 |
@@ -65,7 +65,7 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
 | JIT ネットワーク アクセス |ジャスト イン タイム ネットワーク アクセスが有効になっている場合、Security Center ではネットワーク セキュリティ グループの規則の作成により、Azure VM への受信トラフィックがロックダウンされます。 ユーザーは VM 上の受信トラフィックをロックダウンする必要があるポートを選択します。 詳細については、「[Manage virtual machine access using just in time (ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する)](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)」を参照してください。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Security Center でのセキュリティ ポリシーの構成方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md): Azure Security Center に関する設計上の考慮事項を計画および理解する方法について説明します。

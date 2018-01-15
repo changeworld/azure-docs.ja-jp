@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 79fcbbf5f506858789a6bd1e6ad2e292c72b65a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1256e7f0286d9eb6ea6498b024fba41eb9f6a641
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 
@@ -52,7 +52,7 @@ public static async Task Run(
     DateTime nextCleanup = context.CurrentUtcDateTime.AddHours(1);
     await context.CreateTimer<string>(nextCleanup);
 
-    context.ContinueAsNew();
+    context.ContinueAsNew(null);
 }
 ```
 
@@ -88,9 +88,9 @@ public static async Task Run(
 
 オーケストレーター関数は、最終的に完了する必要がある場合は、`ContinueAsNew` を "*呼び出さない*" でください。呼び出さなければ、関数は終了します。
 
-オーケストレーター関数が無限ループに入っている場合、これを停止する必要がある場合は、[TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) メソッドを使用します。 詳細については、[インスタンス管理](durable-functions-instance-management.md)に関するページをご覧ください。
+オーケストレーター関数が無限ループに入っている場合、これを停止する必要がある場合は、[TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) メソッドを使用します。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [単一のオーケストレーションを実装する方法を確認する](durable-functions-singletons.md)

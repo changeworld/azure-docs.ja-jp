@@ -15,19 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 974d89aa96cba94fedfd1acbaf4f1d30ac8e6257
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 995437f5a4a6fe1bc99bfe7fee555d0ac53101a8
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
 
 Powershell を使用して、OS ディスクとして特殊化された非管理ディスクを接続することにより新しい VM を作成します。 特殊化されたディスクは、元の VM のユーザーアカウント、アプリケーション、その他の状態データを維持する、既存の VM の VHD のコピーです。 
 
 2 つのオプションがあります。
-* [VHD をアップロードする](create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [既存の Azure VM の VHD をコピーする](create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
+* [VHD をアップロードする](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
+* [既存の Azure VM の VHD をコピーする](sa-create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
 
 ## <a name="before-you-begin"></a>開始する前に
 PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
@@ -318,6 +319,6 @@ $vmList = Get-AzureRmVM -ResourceGroupName $rgName
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 新しい仮想マシンにサインインするには、 [ポータル](https://portal.azure.com)で VM を参照し、 **[接続]**をクリックして、リモート デスクトップ RDP ファイルを開きます。 元の仮想マシンのアカウント資格情報を使用して、新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
 

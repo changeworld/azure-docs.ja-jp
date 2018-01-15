@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 8586bc63ad9c1b3896b21f494ebbe14e6d25a439
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 > [!div class="op_single_selector"]
@@ -35,15 +35,15 @@ ms.lasthandoff: 12/21/2017
 
 バインド | 注釈
 ---|---
-Cosmos DB | 該当なし
+Cosmos DB | N/A
 HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
-Mobile Apps | 該当なし
-Notification Hubs | 該当なし
+Mobile Apps | N/A
+Notification Hubs | N/A
 ストレージ BLOB | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
 ストレージ キュー | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
 ストレージ テーブル | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
 Timer | <ul><li>`TimerTrigger`</li></ul>
-Twilio | 該当なし
+Twilio | N/A
 
 トリガーの入力と出力は、アプリケーション用の [function.json](/azure/azure-functions/functions-reference#function-code) に定義することもできます。
 
@@ -270,13 +270,13 @@ public class MyClass {
 
 場合によっては、関数で入力と出力を細かく制御する必要があります。 `azure-functions-java-core` パッケージには、要求情報を操作し、HTTP トリガーの戻り値の状態を調整するための特殊な型が用意されています。
 
-| 特殊な型      |       [ターゲット]        | 一般的な用途                  |
+| 特殊な型      |       ターゲット        | 一般的な用途                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP トリガー     | メソッド、ヘッダー、またはクエリを取得する |
 | `HttpResponseMessage<T>` | HTTP 出力のバインド | 200 以外の状態を返す   |
 
 > [!NOTE] 
-> `@BindingName` 注釈を使用して、HTTP ヘッダーとクエリを取得することもできます。 たとえば、`@Bind("name") String query` は、HTTP 要求ヘッダーとクエリを反復処理し、その値をメソッドに渡します。 たとえば、要求 URL が `http://example.org/api/echo?name=test` の場合、`query` は `"test"` になります。
+> `@BindingName` 注釈を使用して、HTTP ヘッダーとクエリを取得することもできます。 たとえば、`@BindingName("name") String query` は、HTTP 要求ヘッダーとクエリを反復処理し、その値をメソッドに渡します。 たとえば、要求 URL が `http://example.org/api/echo?name=test` の場合、`query` は `"test"` になります。
 
 ### <a name="metadata"></a>Metadata
 
@@ -325,7 +325,7 @@ public class Function {
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)

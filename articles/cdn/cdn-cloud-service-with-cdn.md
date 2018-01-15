@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f2849fe25fd0d5b3dc26598ffba7591cb7433161
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="intro"></a> クラウド サービスと Azure CDN との統合
 クラウド サービスを Azure CDN に統合すると、クラウド サービスの場所からコンテンツを配信できます。 この方法には、次の利点があります。
@@ -76,7 +76,7 @@ ms.lasthandoff: 10/11/2017
    
     ![](media/cdn-cloud-service-with-cdn/cdn-cs-5-publish-signin.png)
 6. サインイン ページで、Azure アカウントをアクティブ化する際に使用した Microsoft アカウントでサインインします。
-7. サインインしたら、[ **次へ**] をクリックします。
+7. サインインしたら、**[次へ]** をクリックします。
    
     ![](media/cdn-cloud-service-with-cdn/cdn-cs-6-publish-signedin.png)
 8. この段階でまだクラウド サービス アカウントまたはストレージ アカウントを作成していない場合は、Visual Studio の指示に従ってこれらのアカウントを作成します。 **[クラウド サービスとアカウントの作成]** ダイアログで、目的のサービスの名前を入力し、目的のリージョンを選択します。 **[作成]**をクリックします。
@@ -111,7 +111,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 ## <a name="create-a-new-cdn-endpoint"></a>[新しい CDN エンドポイントの作成]
 **ストレージ アカウントに対する新しい CDN エンドポイントを作成するには**
 
-1. [Microsoft Azure 管理ポータル](https://portal.azure.com)で CDN プロファイルに移動します。  これは、前の手順でダッシュボードにピン留めしている可能性があります。  ピン留めしていない場合は、**[参照]**、**[CDN プロファイル]** の順にクリックし、エンドポイントの追加先のプロファイルをクリックします。
+1. [Azure Portal](https://portal.azure.com) で、CDN プロファイルに移動します。  これは、前の手順でダッシュボードにピン留めしている可能性があります。  ピン留めしていない場合は、**[参照]**、**[CDN プロファイル]** の順にクリックし、エンドポイントの追加先のプロファイルをクリックします。
    
     CDN プロファイル ブレードが表示されます。
    
@@ -150,7 +150,7 @@ CDN プロファイルは、CDN エンドポイントのコレクションです
 
 ![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
-同様に、CDN エンドポイントから、**http://*&lt;サービス名>*.cloudapp.net/** のパブリックにアクセスできる任意の URL にアクセスできます。 次に例を示します。
+同様に、CDN エンドポイントから、**http://*&lt;サービス名>*.cloudapp.net/** のパブリックにアクセスできる任意の URL にアクセスできます。 例: 
 
 * /Script パスの .js ファイル
 * /Content パスの任意のコンテンツ ファイル
@@ -444,13 +444,13 @@ ASP.NET のバンドルおよび縮小を CDN エンドポイントと統合す�
    
    * この CDN URL のオリジンは、実際にはクラウド サービスのスクリプト バンドルの仮想ディレクトリである `http://<yourCloudService>.cloudapp.net/bundles/jquery?v=<W.X.Y.Z>`です。
    * CDN コンストラクターを使用しているため、バンドルのための CDN スクリプト タグには、レンダリングされた URL 内の自動生成されたバージョン文字列が含まれません。 Azure CDN でキャッシュ ミスを強制的に発生させるには、スクリプト バンドルを変更するたびに一意のバージョン文字列を手動で生成する必要があります。 また、この一意のバージョン文字列は、バンドルがデプロイされた後の Azure CDN でのキャッシュ ヒットを最大化するために、デプロイの有効期間を通じて一定に保たれる必要があります。
-   * クエリ文字列 v=<W.X.Y.Z> は、Web ロール プロジェクトの *Properties\AssemblyInfo.cs* から取得されます。 Azure に発行するたびにアセンブリ バージョンを増分する操作を含むデプロイ ワークフローを導入できます。 また、ワイルドカード文字 * を使って単にプロジェクトの *Properties\AssemblyInfo.cs* を変更して、ビルドするたびに自動的にバージョン文字列を増分するよう設定することもできます。 次に例を示します。
+   * クエリ文字列 v=<W.X.Y.Z> は、Web ロール プロジェクトの *Properties\AssemblyInfo.cs* から取得されます。 Azure に発行するたびにアセンブリ バージョンを増分する操作を含むデプロイ ワークフローを導入できます。 また、ワイルドカード文字 * を使って単にプロジェクトの *Properties\AssemblyInfo.cs* を変更して、ビルドするたびに自動的にバージョン文字列を増分するよう設定することもできます。 例: 
      
         [assembly: AssemblyVersion("1.0.0.*")]
      
      デプロイの有効期間を通じて一意の文字列を生成する操作を合理化するための他の戦略も使用できます。
 2. クラウド サービスを再発行し、ホーム ページにアクセスします。
-3. ページの HTML コードを表示します。 クラウド サービスに変更を再発行するたびに一意のバージョン文字列を付けて CDN URL がレンダリングされているのを確認できます。 次に例を示します。  
+3. ページの HTML コードを表示します。 クラウド サービスに変更を再発行するたびに一意のバージョン文字列を付けて CDN URL がレンダリングされているのを確認できます。 例:   
    
         ...
    

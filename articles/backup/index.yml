@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Backup のドキュメント
+title: "Azure Backup のドキュメント"
 metadata:
-  title: Azure Backup のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: Azure Backup では、オンプレミス サーバー、仮想マシン、仮想化されたワークロード、SQL Server、SharePoint サーバーなどのデータをバックアップできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、データをバックアップおよび復元する方法を確認してください。
+  title: "Azure Backup のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+  description: "Azure Backup では、オンプレミス サーバー、仮想マシン、仮想化されたワークロード、SQL Server、SharePoint サーバーなどのデータをバックアップできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、データをバックアップおよび復元する方法を確認してください。"
   services: backup
   author: czeumault
   manager: carolz
@@ -13,56 +13,61 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/11/2017
   ms.author: carolz
+  ms.openlocfilehash: f2654916ee61a548537c8887ff7d1923fb6f29ac
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/12/2018
 abstract:
-  description: Azure Backup では、オンプレミス サーバー、仮想マシン、仮想化されたワークロード、SQL Server、SharePoint サーバーなどのデータをバックアップできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、データをバックアップおよび復元する方法を確認してください。
+  description: "Azure Backup では、オンプレミス サーバー、仮想マシン、仮想化されたワークロード、SQL Server、SharePoint サーバーなどのデータをバックアップできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、データをバックアップおよび復元する方法を確認してください。"
 sections:
-  - title: 5 分間のクイック スタート
+- title: "5 分間のクイック スタート"
+  items:
+  - type: paragraph
+    text: "Azure で Azure 仮想マシンをバックアップする方法を説明します。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: Azure で Azure 仮想マシンをバックアップする方法を説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
-            text: Azure Portal
-            href: quick-backup-vm-portal
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: quick-backup-vm-powershell
-          - image:
-              src: 'https://docs.microsoft.com/media/common/cli.svg'
-            text: Azure CLI
-            href: quick-backup-vm-cli
-  - title: ステップバイステップのチュートリアル
+    - image:
+        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
+      text: Azure Portal
+      href: quick-backup-vm-portal
+    - image:
+        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: quick-backup-vm-powershell
+    - image:
+        src: https://docs.microsoft.com/media/common/cli.svg
+      text: Azure CLI
+      href: quick-backup-vm-cli
+- title: "ステップバイステップのチュートリアル"
+  items:
+  - type: paragraph
+    text: "Azure または Windows Server から仮想マシンをバックアップおよび回復する方法を説明します。"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: Azure または Windows Server から仮想マシンをバックアップおよび回復する方法を説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-backup-vm-at-scale">複数の Azure VM をバックアップする</a>
-          - html: <a href="tutorial-restore-disk">ディスクを復元し、回復した VM を作成する</a>
-          - html: <a href="tutorial-restore-files">Azure の仮想マシンにファイルを復元する</a>
-          - html: <a href="tutorial-backup-windows-server-to-azure">Windows Server を Azure にバックアップする</a>
-          - html: <a href="tutorial-backup-restore-files-windows-server">Azure から Windows Server にファイルを回復する</a>
-  - title: サンプル
+    - html: "<a href=\"tutorial-backup-vm-at-scale\">複数の Azure VM をバックアップする</a>"
+    - html: "<a href=\"tutorial-restore-disk\">ディスクを復元し、回復した VM を作成する</a>"
+    - html: "<a href=\"tutorial-restore-files\">Azure の仮想マシンにファイルを復元する</a>"
+    - html: "<a href=\"tutorial-backup-windows-server-to-azure\">Azure で Windows Server のバックアップをとる</a>"
+    - html: "<a href=\"tutorial-backup-restore-files-windows-server\">Azure から Windows Server にファイルを復旧する</a>"
+- title: "サンプル"
+  items:
+  - type: paragraph
+    text: "次のサンプルを使用して、Azure のデータを保護します。"
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: 次のサンプルを使用して、Azure のデータを保護します。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
-  - title: リファレンス
+    - html: <a href="/azure/backup/powershell-backup-samples">Azure PowerShell</a>
+- title: "参照"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p>
-          - title: 言語
-            html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>
+    - title: "コマンド ライン"
+      html: <p><a href="/powershell/resourcemanager/azurerm.backup/v2.3.0/azurerm.backup">Azure PowerShell</a></p>
+    - title: "言語"
+      html: <p><a href="/dotnet/api/microsoft.azure.management.backupservices">.NET</a></p>

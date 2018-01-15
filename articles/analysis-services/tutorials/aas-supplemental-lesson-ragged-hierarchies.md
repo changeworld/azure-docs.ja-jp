@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 89a0f388815b3a0e2a6e020690f9a644e73bbcad
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: c5c4a687ffe512b15372d152b517834771e46328
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>補足のレッスン - 不規則階層
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
 この補足のレッスンでは、さまざまなレベルに空白の値 (メンバー) が含まれている階層でピボットするときの一般的な問題を解決します。 たとえば、上級管理者が、部門管理者と管理者以外の両方を直属の部下として持つ組織などがあります。 また、国 - リージョン - 市からなる地理的階層では、ワシントン D.C. やバチカン市など、都市によっては親となる州や県がありません。 階層に空のメンバーがあると、多くの場合、レベル数が異なったり不規則になったりします。
 
@@ -52,11 +50,11 @@ ms.lasthandoff: 11/02/2017
 
     | 表 1           | 分割       | フィルターの方向   | テーブル 2     | 分割      | アクティブ |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
-    | FactResellerSales | OrderDateKey | 既定値            | DimDate     | 日付        | あり    |
-    | FactResellerSales | DueDate      | 既定値            | DimDate     | 日付        | いいえ     |
-    | FactResellerSales | ShipDateKey  | 既定値            | DimDate     | 日付        | いいえ     |
-    | FactResellerSales | ProductKey   | 既定値            | DimProduct  | ProductKey  | あり    |
-    | FactResellerSales | EmployeeKey  | 両方のテーブル | DimEmployee | EmployeeKey | あり    |
+    | FactResellerSales | OrderDateKey | 既定値            | DimDate     | 日付        | [はい]    |
+    | FactResellerSales | DueDate      | 既定値            | DimDate     | 日付        | いいえ      |
+    | FactResellerSales | ShipDateKey  | 既定値            | DimDate     | 日付        | いいえ      |
+    | FactResellerSales | ProductKey   | 既定値            | DimProduct  | ProductKey  | [はい]    |
+    | FactResellerSales | EmployeeKey  | 両方のテーブル | DimEmployee | EmployeeKey | [はい]    |
 
 5. **DimEmployee** テーブルで、次の[集計列](../tutorials/aas-lesson-5-create-calculated-columns.md)を作成します。 
 

@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: d7d2265aa82e54cdbd3b85e09a05e5ea55a7a2c2
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9b491af1e5c9da03f48335f5793ed71ddaf644fb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-5-create-calculated-columns"></a>レッスン 5: 計算列を作成する
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-calculated-columns"></a>計算列を作成する
 
 このレッスンでは､計算列を追加することによってモデルにデータを作成します｡ 計算列 (カスタム列) は､Get Data を使用するとき、またはクエリ エディターを使用して､あるいは､このレッスンで行うように後でモデル デザイナーで作成することができます｡ 詳細は､[計算列](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns)を参照してください｡
   

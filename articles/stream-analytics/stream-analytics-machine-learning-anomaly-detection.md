@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: dubansal
-ms.openlocfilehash: db72b1ca936e69a049d64f939d3399bfd9cdf89c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ff8571c6447f32ef9a435f5200803e76f6013ffa
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="using-the-anomalydetection-operator"></a>ANOMALYDETECTION 演算子を使用する
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 12/14/2017
 - SlowPosTrendScore
 - SlowNegTrendScore
 
-レコードから個々の値を抽出するには、**GetRecordPropertyValue** 関数を使います。 For example:
+レコードから個々の値を抽出するには、**GetRecordPropertyValue** 関数を使います。 例: 
 
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 12/14/2017
 
 **ANOMALYDETECTION** はスライディング ウィンドウ セマンティクスを使います。つまり、関数に入ってくるイベントごとに計算が実行され、そのイベントに対してスコアが生成されます。 計算は Exchangeability Martingales に基づきます。これは、イベント値の分布が変化したかどうかをチェックすることで動作します。 変化した場合は、異常が検出された可能性があります。 返されるスコアは、その異常の信頼レベルを示す値です。 内部の最適化として、**ANOMALYDETECTION** は *d* から *2d* に相当するイベントに基づいてイベントの異常スコアを計算します。*d* は指定された検出ウィンドウ サイズです。
 
-**ANOMALYDETECTION** は、入力時系列が一定であるものと想定します。 イベント ストリームは、タンブリング ウィンドウまたはホッピング ウィンドウについて集計することにより一定にできます。 イベント間のギャップが集計ウィンドウより常に小さいシナリオでは、時系列を一定にするにはタンブリング ウィンドウで十分です。 ギャップが大きくなる可能性がある場合は、ホッピング ウィンドウを使って最後の値を繰り返すことにより、ギャップを埋めることができます。 どちらのシナリオも、後で示す例を使って処理できます。 現時点では、`FillInMissingValuesStep` のステップをスキップすることはできません。 このステップがないと、コンパイル エラーが発生します。
+**ANOMALYDETECTION** は、入力時系列が一定であるものと想定します。 イベント ストリームは、タンブリング ウィンドウまたはホッピング ウィンドウについて集計することにより一定にできます。 イベント間のギャップが集計ウィンドウより常に小さいシナリオでは、時系列を一定にするにはタンブリング ウィンドウで十分です。 ギャップが大きくなる可能性がある場合は、ホッピング ウィンドウを使って最後の値を繰り返すことにより、ギャップを埋めることができます。 どちらのシナリオも、後で示す例を使って処理できます。
 
 ## <a name="performance-guidance"></a>パフォーマンスに関するガイダンス
 
@@ -105,8 +105,6 @@ ms.lasthandoff: 12/14/2017
 
 次のクエリを使うと、異常が検出された場合にアラートを出力できます。
 入力ストリームが一定でないときは、集計手順が時系列を一定にするのに役立ちます。 この例では **AVG** を使いますが、どのような種類の集計を使うかはユーザーのシナリオによって異なります。 さらに、時系列に集計ウィンドウより大きいギャップがある場合は、(スライディング ウィンドウ セマンティクスに従って) 異常検出をトリガーするイベントが時系列に存在しません。 その結果、次のイベントが到着した時点で、一様性の想定が崩れます。 このような場合は、時系列のギャップを埋める手段が必要です。 可能な方法の 1 つは、次に示すように、すべてのホップ ウィンドウで最後のイベントを取得することです。
-
-前述したように、現時点では、`FillInMissingValuesStep` のステップをスキップしないでください。 このステップを省略すると、コンパイル エラーが発生します。
 
     WITH AggregationStep AS 
     (

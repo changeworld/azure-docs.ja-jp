@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 11b141617bea5962c45e1b91cf6629c2edd26c3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c43165e230a00b6a4408637fd2290a21800d07b9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>クラウド内のアプリケーションのデータへのアクセスをセキュリティで保護する
 
@@ -55,7 +55,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 このチュートリアル シリーズの第 1 部では、Web アプリケーションでパブリック コンテナーの画像を表示しました。 シリーズの今回は、[Secure Access Signature (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature) トークンを使用してサムネイル画像を取得します。 SAS トークンを使用すると、IP、プロトコル、間隔、または許可されている権限に基づいて、コンテナーまたは BLOB へのアクセスを制限することができます。
 
-この例では、ソース コード リポジトリが `sasTokens` ブランチを使用します。このブランチには更新されたコード サンプルがあります。 [az webapp deployment source delete](/cli/azure/webapp/deployments/source#delete) を使用して、既存の GitHub デプロイを削除します。 次に、[az webapp deployment source config](/cli/azure/webapp/deployment/source#config) コマンドを使用して、Web アプリへの GitHub デプロイを構成します。  
+この例では、ソース コード リポジトリが `sasTokens` ブランチを使用します。このブランチには更新されたコード サンプルがあります。 [az webapp deployment source delete](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete) を使用して、既存の GitHub デプロイを削除します。 次に、[az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) コマンドを使用して、Web アプリへの GitHub デプロイを構成します。  
 
 次のコマンドの `<web-app>` は、Web アプリの名前です。  
 
@@ -135,7 +135,7 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 
 上のタスクでは、次のクラス、プロパティ、およびメソッドが使用されています。
 
-|クラス  |プロパティ| メソッド  |
+|クラス  |[プロパティ]| メソッド  |
 |---------|---------|---------|
 |[StorageCredentials](/dotnet/api/microsoft.windowsazure.storage.auth.storagecredentials?view=azure-dotnet)    |         |
 |[CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount?view=azure-dotnet)     | |[CreateCloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.createcloudblobclient?view=azure-dotnet#Microsoft_WindowsAzure_Storage_CloudStorageAccount_CreateCloudBlobClient)        |
@@ -194,7 +194,7 @@ Date: Mon, 11 Sep 2017 19:27:46 GMT
 
 ## <a name="enable-https-only"></a>HTTPS のみを有効にする
 
-ストレージ アカウントから送受信されるデータの要求をセキュリティで保護するには、要求を HTTPS のみに制限する方法があります。 [az storage account update](/cli/azure/storage/account#update) コマンドを使用して、ストレージ アカウントが必要なプロトコルを更新します。
+ストレージ アカウントから送受信されるデータの要求をセキュリティで保護するには、要求を HTTPS のみに制限する方法があります。 [az storage account update](/cli/azure/storage/account#az_storage_account_update) コマンドを使用して、ストレージ アカウントが必要なプロトコルを更新します。
 
 ```azurecli-interactive
 az storage account update --resource-group myresourcegroup --name <storage-account-name> --https-only true
@@ -212,7 +212,7 @@ curl http://<storage-account-name>.blob.core.windows.net/<container>/<blob-name>
 HTTP/1.1 400 The account being accessed does not support http.
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 シリーズの第 3 部では、ストレージ アカウントに対するアクセスをセキュリティで保護する方法について学びました。
 

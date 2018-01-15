@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/26/2016
 ms.author: magoedte
-ms.openlocfilehash: 9bbaf7bac013dffb941f15bdccd2ab2996f1576e
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: afe7043e31c05444dded089dc02689a3b0c94659
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Automation のグラフィカル Runbook におけるエラー処理
 
@@ -68,7 +68,7 @@ Runbook の作成者は、エラーが発生する可能性のある各アクテ
 エラー リンクは、これらのアクティビティから単一の**エラー管理**アクティビティ (コード アクティビティ) にリンクされています。 このアクティビティは単純な PowerShell の式で構成されており、*Throw* キーワードで処理を停止し、*$Error.Exception.Message* で現在の例外に関するメッセージを取得するようになっています。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * グラフィカル Runbook でのリンクおよびリンクの種類の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md#links-and-workflow)」を参照してください。
 

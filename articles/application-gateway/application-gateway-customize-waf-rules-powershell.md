@@ -14,11 +14,11 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 97c3fe6f0b7a4d9b967b44bf819a6f25598febc9
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 4595864a7bc624375ba2ff6ace09ebae5b0f843a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="customize-web-application-firewall-rules-through-powershell"></a>PowerShell を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
 
@@ -83,11 +83,12 @@ OWASP (Ver. 2.2.9):
 
 次の例は、アプリケーション ゲートウェイに対するルール `910018` および `910017` を無効にします。
 
-```azurecli
-az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
+```powershell
+$disabledrules=New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-910-IP-REPUTATION -Rules 910018,910017
+Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $gw -Enabled $true -FirewallMode Detection -RuleSetVersion 3.0 -RuleSetType OWASP -DisabledRuleGroups $disabledrules
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 無効にするルールを構成したら、WAF ログを表示する方法を学習できます。 詳細については、[Application Gateway の診断](application-gateway-diagnostics.md#diagnostic-logging)に関するトピックを参照してください。
 

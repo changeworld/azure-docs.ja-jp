@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: c336cda6f3af4e2a4647371458b2db3e97917105
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fb3d3dd518cbe0a603524f1bdc38d122582aa6b0
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-net-sdk"></a>Data Lake Store に対する .NET SDK を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -116,7 +116,7 @@ ms.lasthandoff: 12/21/2017
 
 上記のスニペットでは、ヘルパー関数 `GetCreds_SPI_Cert` を使用しています。 このヘルパー関数のコードは[こちらの Github で](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)入手できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Azure Data Lake Store に対し、.NET SDK からサービス間認証を使って認証を行う方法について説明しました。 これで、.NET SDK を使用して Azure Data Lake Store を使用する方法について説明した次の記事に進めるようになりました。
 
 * [.NET SDK を使用した Data Lake Store に対するアカウント管理操作](data-lake-store-get-started-net-sdk.md)

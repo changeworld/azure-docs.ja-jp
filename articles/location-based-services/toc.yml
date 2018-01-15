@@ -34,11 +34,11 @@
 - name: 参照
   items:
     - name: Functional API
-      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
+      href: 'https://docs.microsoft.com/rest/api/location-based-services/'
     - name: 管理 API
-      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
+      href: 'https://docs.microsoft.com/rest/api/location-based-services-management/'
     - name: マップ コントロール API - Javascript
-      href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'
+      href: 'https://docs.microsoft.com/javascript/api/location-based-services-javascript/'
 - name: リソース
   items:
     - name: Azure IoT デベロッパー センター

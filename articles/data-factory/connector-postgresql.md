@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: jingwang
-ms.openlocfilehash: 0dd2c7aa0f8e845c8aae42575c3e46e3ac17ad63
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 7a16c932aa82eab3083408c2b1d0f94eb788751c
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,11 +40,12 @@ PostgreSQL データベースのデータを、サポートされているシン
 
 この PostgreSQL コネクタを使用するには、次の手順が必要です。
 
-- セルフホステッド統合ランタイムをセットアップします。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
+- セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
 - Integration Runtime のコンピューターに、[Ngpsql data provider for PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) 2.0.12 ～ 3.1.9 をインストールします。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、PostgreSQL コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -52,15 +53,15 @@ PostgreSQL データベースのデータを、サポートされているシン
 
 PostgreSQL のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **PostgreSql** に設定する必要があります | あり |
-| server | PostgreSQL サーバーの名前です。 |はい |
-| database | PostgreSQL データベースの名前です。 |はい |
-| schema | データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ |
-| username | PostgreSQL データベースに接続するユーザー名を指定します。 |あり |
-| パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |あり |
+| 型 | type プロパティを **PostgreSql** に設定する必要があります | [はい] |
+| [サーバー] | PostgreSQL サーバーの名前です。 |[はい] |
+| [データベース] | PostgreSQL データベースの名前です。 |[はい] |
+| schema | データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
+| username | PostgreSQL データベースに接続するユーザー名を指定します。 |[はい] |
+| password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
 
 **例:**
 
@@ -92,9 +93,9 @@ PostgreSQL のリンクされたサービスでは、次のプロパティがサ
 
 PostgreSQL からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
+| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | PostgreSQL データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -122,10 +123,10 @@ PostgreSQL からデータをコピーするには、データセットの type 
 
 PostgreSQL からデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
+| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 > [!NOTE]
 > スキーマ名とテーブル名は、大文字と小文字が区別されます。 クエリ内では、これらを `""` (二重引用符) で囲んでください。
@@ -210,5 +211,5 @@ PostgreSQL からデータをコピーするとき、次の PostgreSQL のデー
 | `text` | |`String` |&nbsp;
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

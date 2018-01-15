@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 1496e4523154ba791bf55a0708a1a77132f5257c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5fb0e2dd56e373ecf723a3672d9538bcc6dc68e3
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-11-create-roles"></a>レッスン 11: ロールを作成する
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-roles"></a>ロールを作成する
 
 このレッスンでは､ロールを作成します｡ ロールは､ロールのメンバーであるユーザーにのみアクセス権を制限することによって、モデル データベース オブジェクトとデータをセキュリティ保護します｡ 各ロールには､1 つの許可 (なし､読み取り､読み取りと処理､処理､管理者のいずれか) のみ定義します｡ ロールは､モデルのオーサリング中に Role Manager を使用して定義できます｡ モデルをデプロイした後は､SQL Server Management Studio (SSMS) を使用してロールを管理できます｡ 詳細は、[ロール](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular) を参照してください。
   

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 641109970865ea915f83d48488f1bdf5cb2d5242
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: c83caae58e73d6f2d0fe086938e0bbc5cfdf80c4
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 シリーズのサポート パッケージの作成と管理
 
@@ -30,7 +30,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
 
 ## <a name="create-a-support-package"></a>サポート パッケージを作成する
 
-場合によっては、StorSimple 用 Windows PowerShell でサポート パッケージを手動で作成する必要があります。 次に例を示します。
+場合によっては、StorSimple 用 Windows PowerShell でサポート パッケージを手動で作成する必要があります。 例: 
 
 * Microsoft サポートにログ ファイルを送信する前に、ログから機密情報を削除する必要がある場合。
 * 接続の問題があり、パッケージをアップロードできない場合。
@@ -71,7 +71,7 @@ StorSimple サポート パッケージは、Microsoft サポートが StorSimpl
 
 Export-HcsSupportPackage コマンドレットには、次のパラメーターを使用できます。
 
-| パラメーター | 必須/省略可能 | Description |
+| パラメーター | 必須/省略可能 | [説明] |
 | --- | --- | --- |
 | `-Path` |必須 |サポート パッケージが配置されるネットワーク共有フォルダーの場所を指定するためにします。 |
 | `-EncryptionPassphrase` |必須 |サポート パッケージの暗号化に使用するパスフレーズを指定するためにします。 |
@@ -144,9 +144,9 @@ Export-HcsSupportPackage コマンドレットには、次のパラメーター�
 
         PS C:\WINDOWS\system32>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [サポート パッケージで収集される情報](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
-* [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)
+* [サポート パッケージとデバイスのログを使用してデバイスのデプロイをトラブルシューティングする方法](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: 95890734a860d29d52616599a5524340834a1e10
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: e0c7bfbffac0fffebe0c054226a5ad30403e4888
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="configure-redirection-on-application-gateway-with-powershell"></a>PowerShell で Application Gateway にリダイレクトを構成する
 
@@ -104,7 +104,8 @@ Add-AzureRmApplicationGatewayHttpListener -Name appgatewayhttplistener2  -Protoc
 # Get the new listener
 $listener = Get-AzureRmApplicationGatewayHttpListener -Name appgatewayhttplistener2 -ApplicationGateway $gw
 
-# Add a redirection configuration using a permanent redirect and targeting the existing listener
+# Add a redirection configuration using a permanent redirect targeting the existing listener and get the redirect configuration
+Add-AzureRmApplicationGatewayRedirectConfiguration -Name redirectpath6 -RedirectType Permanent -TargetListener $httpslistener -IncludePath $true -IncludeQueryString $true -ApplicationGateway $gw
 $redirectconfig = Get-AzureRmApplicationGatewayRedirectConfiguration -Name redirectpath6 -ApplicationGateway $gw
 
 # Retrieve the existing backend http settings to be used
@@ -237,6 +238,6 @@ $sku = New-AzureRmApplicationGatewaySku -Name WAF_Medium -Tier WAF -Capacity 2
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -RedirectConfigurations $redirectconfig -Sku $sku
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [PowerShell を使って Application Gateway にエンド ツー エンド SSL を構成する方法](application-gateway-end-to-end-ssl-powershell.md)に関するページを参照してください。

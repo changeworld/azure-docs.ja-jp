@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: c7ad5f539afc25c7c36712f8af25ce4e4f6d31a7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 56216f16ba3730d1488e45c0e7a81e87dbad6410
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="manage-azure-automation-account"></a>Azure Automation アカウントを管理する
 証明書は、Automation アカウントの有効期限が切れる前のどこかの時点で更新する必要があります。 また、実行アカウントが侵害されたと思われる場合は、実行アカウントを削除して再作成することができます。 このセクションでは、これらの操作を実行する方法について説明します。
@@ -76,11 +76,11 @@ ms.lasthandoff: 12/14/2017
 
 この実行アカウントを選択すると、アカウントの **[プロパティ]** ウィンドウに次のエラー メッセージが表示されます。
 
-![実行構成が不完全であることを示す警告メッセージ](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png)をクリックします。
+![実行構成が不完全であることを示す警告メッセージ](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png)が必要です。
 
 こうした実行アカウントの問題は、アカウントを削除してから再作成すればすぐに解決できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * サービス プリンシパルの詳細については、 [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](../active-directory/active-directory-application-objects.md)に関するページを参照してください。
 * Azure Automation におけるロールベースのアクセス制御の詳細については、「 [Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。
 * 証明書と Azure サービスの詳細については、「[Azure Cloud Services の証明書の概要](../cloud-services/cloud-services-certs-create.md)」を参照してください。

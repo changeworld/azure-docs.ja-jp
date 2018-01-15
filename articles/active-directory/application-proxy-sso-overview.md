@@ -3,7 +3,7 @@ title: "Azure AD アプリケーション プロキシの SSO を管理する | 
 description: "アプリケーション プロキシを使用したシングル サインオンの基本について説明します"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e3f2ed6f019760fd4109c6fc3d8449d95c4959a9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 60422b4c8256df024bbc870fc43ec6b491f674f1
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Azure AD アプリケーション プロキシを使用したシングル サインオンの提供
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/11/2017
 
 シングル サインオン オプションを表示するには、次の手順に従います。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]**  > **[エンタープライズ アプリケーション]**  > **[すべてのアプリケーション]** に移動します。
 3. シングル サインオン オプションを管理するアプリを選択します。
 4. **[シングル サインオン]** を選択します。
@@ -74,7 +74,7 @@ ms.lasthandoff: 12/11/2017
 
 ヘッダーベースのサインオンの設定の詳細については、[アプリケーション プロキシを使用したシングル サインオンでの ヘッダー ベースの認証](application-proxy-ping-access.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [アプリケーション プロキシを使用したシングル サインオンでのパスワードの保管](application-proxy-sso-azure-portal.md)
 - [アプリケーション プロキシを使用したシングル サインオンでの Kerberos の制約付き委任](active-directory-application-proxy-sso-using-kcd.md)

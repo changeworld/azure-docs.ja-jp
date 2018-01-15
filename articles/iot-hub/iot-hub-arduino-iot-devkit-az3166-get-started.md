@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2017
 ms.author: xshi
-ms.openlocfilehash: 7d3f610674d9491f7689cc911ba21de0b6b615d7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1ad9200376bc4959e7572ae8d5be11b278a42cc0
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する
 
@@ -104,7 +104,7 @@ DevKit で実行されている既定のアプリによって、ファームウ�
 > [!NOTE] 
 > バージョン 1.1 以降、DevKit ではブートローダーで ST-SAFE が有効になっています。 バージョン 1.1 よりも前のファームウェアを実行している場合は、確実に機能するようにアップグレードする必要があります。
 
-ファームウェアのアップグレードが必要な場合は、現在のファームウェア バージョンと最新のファームウェア バージョンが画面に表示されます。 アップグレードするには、[ファームウェアのアップグレード](https://microsoft.github.io/azure-iot-developer-kit/docs/upgrading/) ガイドに従ってください。
+ファームウェアのアップグレードが必要な場合は、現在のファームウェア バージョンと最新のファームウェア バージョンが画面に表示されます。 アップグレードするには、[ファームウェアのアップグレード](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) ガイドに従ってください。
 
 ![現在および最新のファームウェア バージョンの表示](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/firmware.jpg)
 
@@ -297,7 +297,7 @@ VS Code で、次の手順を実行し、シリアル モニターを開いて�
 
 問題が発生した場合は、[FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) を検索できます。 このページにコメントを残してフィードバックをお寄せいただくこともできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 MXChip IoT DevKit を IoT ハブに接続し、キャプチャしたセンサー データを IoT ハブに送信しました。
 

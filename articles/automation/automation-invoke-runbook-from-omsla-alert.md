@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 01/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 76d5ab23ef1962733ccb3b36640facdba9ab8acb
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: a10be867965eef9746a0f4cc9b14c4fc429f6e35
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Log Analytics アラートから Azure Automation Runbook を呼び出す
 
@@ -101,7 +101,7 @@ $SearchResult.SvcDisplayName_CF
 >[!NOTE]
 > ご使用のワークスペースが[新しい Log Analytics クエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)にアップグレードされている場合は、webhook ぺイロードが変わります。 形式の詳細については、「[Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Log Analytics のアラートの詳細とアラートの作成方法については、「[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)」を参照してください。
 

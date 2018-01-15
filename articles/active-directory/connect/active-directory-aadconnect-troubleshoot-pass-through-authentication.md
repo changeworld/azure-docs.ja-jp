@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/05/2018
 ms.author: billmath
-ms.openlocfilehash: d25f682d3c42f95752d09454f778c3975f551cca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b842791be74094c87643528c0b4d3a65be6b3cb1
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 12/11/2017
 
 ユーザーがパススルー認証を使用してサインインできない場合、Azure AD のサインイン画面に、次のようなユーザー向けエラーの 1 つが表示されることがあります。 
 
-|エラー|Description|解決策
+|エラー|[説明]|解決策
 | --- | --- | ---
 |AADSTS80001|Unable to connect to Active Directory (Active Directory に接続できません)|エージェント サーバーが、パスワードを検証する必要のあるユーザーと同じ AD フォレストのメンバーであり、Active Directory に接続できることを確認します。  
 |AADSTS8002|A timeout occurred connecting to Active Directory (Active Directory への接続中にタイムアウトが発生しました)|Active Directory が使用可能で、エージェントからの要求に応答していることを確認します。
@@ -165,7 +165,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
     </QueryList>
 ```
 
-### <a name="performance-monitor-counters"></a>パフォーマンス モニター カウンター
+## <a name="performance-monitor-counters"></a>パフォーマンス モニター カウンター
 
 認証エージェントを監視するもう 1 つの方法は、認証エージェントがインストールされている各サーバーで特定のパフォーマンス モニター カウンターを追跡することです。 下記に示すグローバルなカウンター (**# PTA authentications**、**#PTA failed authentications**、**#PTA successful authentications**) とエラー カウンター (**# PTA authentication errors**) を使用します。
 

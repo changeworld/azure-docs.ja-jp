@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jingwang
-ms.openlocfilehash: 2bfc59931bbbb08ad1cd0328cf624b7350f92ec0
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 6f4d958779b709c6fa1c8e632224b073db382ba5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +42,8 @@ Amazon S3 からデータをコピーするには、次のアクセス許可が�
 Amazon S3 のアクセス許可の完全な一覧については、「[ポリシーでのアクセス許可の指定](http://docs.aws.amazon.com/amazons3/latest/dev/using-with-s3-actions.html)」を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。 
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)] 
 
 以下のセクションで、Amazon S3 に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -50,12 +51,12 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 Amazon S3 のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AmazonS3** に設定する必要があります。 | あり |
-| accessKeyId | シークレット アクセス キーの ID。 |あり |
-| secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString とマークします。 |あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| 型 | type プロパティは **AmazonS3** に設定する必要があります。 | [はい] |
+| accessKeyId | シークレット アクセス キーの ID。 |[はい] |
+| secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString とマークします。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 >[!NOTE]
 >IAM アカウントが Amazon S3 からデータをコピーするには、このコネクタにアクセス キーが必要です。 [一時的なセキュリティ資格情報](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)はサポートされていません。
@@ -89,15 +90,15 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 
 Amazon S3 からデータをコピーするには、データセットの type プロパティを **AmazonS3Object** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**AmazonS3Object** を設定する必要があります。 |あり |
-| bucketName | S3 バケットの名前。 |あり |
-| key | S3 オブジェクト キー。 prefix が指定されていないときにのみ適用されます。 |いいえ |
-| prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 key が指定されていない場合にのみ適用されます。 |いいえ |
-| version | S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |いいえ |
+| 型 | データセットの type プロパティは、**AmazonS3Object** を設定する必要があります。 |[はい] |
+| bucketName | S3 バケットの名前。 |[はい] |
+| key | S3 オブジェクト キー。 prefix が指定されていないときにのみ適用されます。 |いいえ  |
+| prefix | S3 オブジェクト キーのプレフィックス。 キーがこのプレフィックスで始まるオブジェクトが選択されます。 key が指定されていない場合にのみ適用されます。 |いいえ  |
+| version | S3 のバージョン管理が有効になっている場合の S3 オブジェクトのバージョン。 |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 > [!NOTE]
 > **bucketName とキーの組み合わせ**によって S3 オブジェクトの場所が指定されます。バケットは S3 オブジェクトのルート コンテナーであり、キーは、S3 オブジェクトへの完全パスです。
@@ -167,10 +168,10 @@ Amazon S3 からデータをコピーするには、データセットの type �
 
 Amazon S3 からデータをコピーするには、コピー アクティビティのソースの種類を **FileSystemSource** (Amazon S3 が含まれます) に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |あり |
-| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ |
+| 型 | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |[はい] |
+| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 
 **例:**
 
@@ -203,5 +204,5 @@ Amazon S3 からデータをコピーするには、コピー アクティビテ
     }
 ]
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

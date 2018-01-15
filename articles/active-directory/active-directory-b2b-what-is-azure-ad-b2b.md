@@ -17,15 +17,15 @@ ms.date: 06/27/2017
 ms.author: curtand
 ms.custom: aaddev
 ms.reviewer: sasubram
-ms.openlocfilehash: eef95f80f8107c13cd057c56eb5219a353acc854
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d3167b0b4b33eee11f388efd1d2088f6bc5cc639
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="what-is-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションとは
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/AhwrweCBdsc" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/AhwrweCBdsc]
 
 Azure AD を利用する組織は、Azure AD B2B (Business-To-Business) コラボレーション機能を通じて、他の任意の組織のユーザーと安全に共同作業を行うことができます。相手となる組織の規模の大小は関係がありません。 これらの組織の Azure AD の有無どころか、IT 組織の有無さえも関係ありません。 
 
@@ -100,7 +100,7 @@ B2B のコラボレーターは、自分が選んだ任意の ID でサインイ
 
 Azure AD B2B コラボレーションを利用すれば、Azure AD の強みをフルに活かしながら、エンド ユーザーにとって簡単かつ直感的な方法でパートナー関係を保護することができます。 Azure AD B2B を使った外部とのコラボレーションは、既に数千の企業によって使用されている実績があります。ぜひご利用ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 管理者の操作は [Azure Portal](https://portal.azure.com) から実行できます。
 

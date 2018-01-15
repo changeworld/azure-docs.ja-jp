@@ -2,8 +2,8 @@
 title: "Mobile Apps でユニバーサル Windows プラットフォーム (UWP) アプリのオフライン同期を有効にする | Microsoft Docs"
 description: "Azure Mobile App を使用して、ユニバーサル Windows プラットフォーム (UWP) アプリでオフライン データをキャッシュおよび同期する方法について説明します。"
 documentationcenter: windows
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 4b0a57c3bab688487eb9a50461b406e1a6e477c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: a16de4cef82c29f9b6becfae1901662ee1936934
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、Azure Mobile App バックエンドを使用して、ユニバーサル Windows プラットフォーム (UWP) アプリにオフライン サポートを追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。 変更は、ローカル データベースに格納されます。 デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
 
 このチュートリアルでは、「[Create a Windows app (Windows アプリの作成)]」チュートリアルからの UWP アプリ プロジェクトを更新し、Azure Mobile Apps のオフライン機能をサポートできるようにします。 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「 [Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。

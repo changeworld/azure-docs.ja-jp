@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/08/2017
 ms.author: sethm
-ms.openlocfilehash: f13c7330c9e828abe6557149b9a31c7170e33dcd
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d564f3974b2bc6355bb5dc5320a5193fe3c196af
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -107,7 +107,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | インプレース更新 |**はい** |**はい** |
 | サーバー側のトランザクション ログ |**はい** |**いいえ** |
 | Storage のメトリック |**はい**<br/><br/>**分単位のメトリック**: 可用性、TPS、API 呼び出し数、エラー数、その他のメトリックをすべてリアルタイムで提供します (分単位で集計され、運用環境での発生から数分以内にレポートされます)。 詳細については、「[Storage Analytics Metrics について](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)」を参照してください。 |**はい**<br/><br/>([GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues) の呼び出しによる一括クエリ) |
-| 状態管理 |**いいえ** |**はい**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus.active)、[Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus.disabled)、[Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus.senddisabled)、[Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus.receivedisabled) |
+| 状態管理 |**いいえ** |**はい**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus)、[Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus)、[Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus)、[Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
 | メッセージの自動転送 |**いいえ** |**はい** |
 | キューの消去機能 |**はい** |**いいえ** |
 | メッセージ グループ |**いいえ** |**はい**<br/><br/>(メッセージング セッションを使用) |
@@ -187,7 +187,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 Service Bus キューには高度な機能が数多く用意されているため (セッション、トランザクション、重複検出、自動的な配信不能レタリング、持続性のある発行/サブスクライブの機能など)、ハイブリッド アプリケーションを作成する場合や、アプリケーションでこれらの機能が必要な場合は、Service Bus キューを選択できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事では、Storage キューや Service Bus キューの使用に関する詳細情報を提供します。
 
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)

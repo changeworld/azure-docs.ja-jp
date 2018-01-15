@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3f4e0c68542cc38e1c0d90c6589e97134c3845f8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: f66ddecd6b999400b05a4b00aa781ffef3f7887d
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 11/02/2017
 この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Blob Storage との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 ## <a name="overview"></a>概要
-サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Database データベースまたは Azure SQL データベース**から** Azure Blob Storage **に**データを移動できます。 また、Azure Blob Storage **から** Azure SQL Data Warehouse または Azure Cosmos DB コレクション**に**データをコピーできます。 
+サポートされる任意のソース データ ストアのデータを、Azure Blob Storage にコピーしたり、Azure Blob Storage のデータを、サポートされる任意のシンク データ ストアにコピーしたりできます。 次の表は、コピー アクティビティによってコピー元またはシンクとしてサポートされているデータ ストアの一覧です。 たとえば、SQL Server データベースまたは Azure SQL データベース**から** Azure Blob Storage **に**データを移動できます。 また、Azure Blob Storage **から** Azure SQL Data Warehouse または Azure Cosmos DB コレクション**に**データをコピーできます。 
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 **Azure Blob Storage から**以下のデータ ストアにデータをコピーできます。
@@ -61,9 +61,9 @@ ms.lasthandoff: 11/02/2017
 1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 
 2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Azure Blob Storage から Azure SQL Database にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Azure ストレージ アカウントと Azure SQL Database をデータ ファクトリにリンクします。 Azure Blob Storage に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。 
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む BLOB コンテナーとフォルダーを指定します。 また、もう 1 つのデータセットを作成して、Blob Storage からコピーされたデータを保持する Azure SQL Database の SQL テーブルを指定します。 Azure Blob Storage に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションを参照してください。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして SqlSink を使います。 同様に、Azure SQL Database から Azure Blob Storage にコピーする場合は、SqlSource と BlobSink をコピー アクティビティで使います。 Azure Blob Storage に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションを参照してください。 ソースまたはシンクとしてデータ ストアを使う方法については、前のセクションのデータ ストアのリンクをクリックしてください。  
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして BlobSource を、シンクとして SqlSink を使います。 同様に、Azure SQL Database から Azure Blob Storage にコピーする場合は、SqlSource と BlobSink をコピー アクティビティで使います。 Azure Blob Storage に固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションを参照してください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。  
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 ツール/API (.NET API を除く) を使う場合、こうした Data Factory エンティティは、JSON 形式で定義します。  Azure Blob Storage との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-to-and-from-blob-storage  )」を参照してください。
+ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  Azure Blob Storage との間でデータをコピーするときに使用する Data Factory エンティティの JSON 定義のサンプルについては、この記事の「[JSON の使用例](#json-examples-for-copying-data-to-and-from-blob-storage  )」を参照してください。
 
 次のセクションでは、Azure Blob Storage に固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -77,17 +77,17 @@ Azure Storage を Azure Data Factory にリンクするときに使用できる�
 
 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
-Data Factory は、Azure BLOB などの読み取りデータ ソースのスキーマに "structure" で型情報を提供するために、Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan などの CLS 準拠の .NET ベースの型値をサポートしています。 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
+Data Factory は、Azure BLOB などの読み取りデータ ソースのスキーマに "structure" で型情報を提供するために、Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan などの CLS に準拠している .NET ベースの型値をサポートしています。 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
 
 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。 **AzureBlob** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
-| folderPath |BLOB ストレージのコンテナーとフォルダーのパス。 例: myblobcontainer\myblobfolder\ |はい |
-| fileName |BLOB の名前です。 fileName は省略可能で、大文字と小文字を区別します。<br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定の BLOB で動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は "Data.<Guid>.txt" という形式になります (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。 |いいえ |
-| partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 詳細と例については、「 [partitionedBy プロパティの使用](#using-partitionedBy-property) 」をご覧ください。 |なし |
-| BlobSink の format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |なし |
+| folderPath |BLOB ストレージのコンテナーとフォルダーのパス。 例: myblobcontainer\myblobfolder\ |[はい] |
+| fileName |BLOB の名前です。 fileName は省略可能で、大文字と小文字を区別します。<br/><br/>fileName を指定すると、アクティビティ (コピーを含む) は特定の BLOB で動作します。<br/><br/>fileName が指定されていない場合、コピーには入力データセットの folderPath のすべての BLOB が含まれます。<br/><br/>出力データセットに **fileName** が指定されておらず、アクティビティ シンクで **preserveHierarchy** が指定されていない場合は、生成されるファイル名は "Data.<Guid>.txt" という形式になります (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt)。 |いいえ  |
+| partitionedBy |partitionedBy は任意のプロパティです。 これを使用し、時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath をパラメーター化できます。 詳細と例については、「 [partitionedBy プロパティの使用](#using-partitionedBy-property) 」をご覧ください。 |いいえ  |
+| format | 次のファイル形式がサポートされます: **TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 <br><br> ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 |いいえ  |
+| compression | データの圧縮の種類とレベルを指定します。 サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。 サポートされるレベルは、**Optimal** と **Fastest** です。 詳細については、「[Azure Data Factory のファイル形式と圧縮形式](data-factory-supported-file-and-compression-formats.md#compression-support)」を参照してください。 |いいえ  |
 
 ### <a name="using-partitionedby-property"></a>partitionedBy プロパティの使用
 前のセクションで説明したように、**partitionedBy** プロパティ、[Data Factory 関数、およびシステム変数](data-factory-functions-variables.md)を使用して、時系列データに動的な folderPath および filename を指定できます。
@@ -123,19 +123,19 @@ Data Factory は、Azure BLOB などの読み取りデータ ソースのスキ�
 この例では、SliceStart の年、月、日、時刻が folderPath プロパティと fileName プロパティで使用される個別の変数に抽出されます。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 プロパティ (名前、説明、入力データセット、出力データセット、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。 Azure BLOB ストレージからデータを移動する場合は、コピー アクティビティのソースの種類を **BlobSource**に設定します。 同様に、Azure BLOB ストレージにデータを移動する場合は、コピー アクティビティのシンクの種類を **BlobSink**に設定します。 このセクションでは、BlobSource と BlobSink でサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 プロパティ (名前、説明、入力データセット、出力データセット、ポリシーなど) は、あらゆる種類のアクティビティで使用できます。 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。 Azure BLOB ストレージからデータを移動する場合は、コピー アクティビティのソースの種類を **BlobSource**に設定します。 同様に、Azure BLOB ストレージにデータを移動する場合は、コピー アクティビティのシンクの種類を **BlobSink**に設定します。 このセクションでは、BlobSource と BlobSink でサポートされるプロパティの一覧を示します。
 
 **BlobSource** の **typeProperties** セクションでは次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 使用できる値 | 必須 |
+| プロパティ | [説明] | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| recursive |データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True (既定値)、False |いいえ |
+| recursive |データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True (既定値)、False |いいえ  |
 
 **BlobSink** の **typeProperties** セクションでは次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 使用できる値 | 必須 |
+| プロパティ | [説明] | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| copyBehavior |ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 |<b>PreserveHierarchy</b>: ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの最初のレベルになります。 ターゲット ファイルは、自動生成された名前になります。 <br/><br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 |いいえ |
+| copyBehavior |ソースが BlobSource または FileSystem である場合のコピー動作を定義します。 |<b>PreserveHierarchy</b>: ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの最初のレベルになります。 ターゲット ファイルは、自動生成された名前になります。 <br/><br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 |いいえ  |
 
 **BlobSource** は、下位互換性のために次の 2 つのプロパティもサポートしています。
 
@@ -183,10 +183,10 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     Jane, Doe
     ```
 ### <a name="create-the-data-factory"></a>Data Factory の作成
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左上隅の **[+ 新規]** をクリックし、**[インテリジェンス + 分析]** をクリックし、**[Data Factory]** をクリックします。
 3. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。   
-    1. **[名前]** に「**ADFBlobConnectorDF**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー `*Data factory name “ADFBlobConnectorDF” is not available` が発生した場合は、データ ファクトリの名前を変更して (yournameADFBlobConnectorDF など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。
+    1. **[名前]** に「**ADFBlobConnectorDF**」と入力します。 Azure Data Factory の名前はグローバルに一意にする必要があります。 エラー `*Data factory name “ADFBlobConnectorDF” is not available` が発生した場合は、データ ファクトリの名前を変更して (yournameADFBlobConnectorDF など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
     2. Azure **サブスクリプション**を選択します。
     3. リソース グループについては、**[Use existing (既存のものを使用)]** を選択して、既存のリソース グループを選択するか、**[新規作成]** を選択して、リソース グループの名前を入力します。
     4. データ ファクトリの**場所**を選択します。
@@ -206,7 +206,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     4. **[再実行のパターン]** の設定はそのままにします。 このタスクは、次の手順で指定する開始時間と終了時間の間に毎日実行されます。
     5. **開始日時**を **04/21/2017** に変更します。 
     6. **終了日時**を **04/25/2017** に変更します。 日付はカレンダーから選択する代わりに、直接入力することもできます。     
-    8. **[次へ]**をクリックします。
+    8. **[次へ]** をクリックします。
       ![コピー ツール - [プロパティ] ページ](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
 3. **[Source data store (ソース データ ストア)]** ページで、**[Azure Blob Storage]** タイルをクリックします。 このページを使用して、コピー タスクのソース データ ストアを指定します。 既存のデータ ストアのリンクされたサービスを使用するか、新しいデータ ストアを指定できます。 既存のリンクされたサービスを使用するには、**[FROM EXISTING LINKED SERVICES (既存のリンクされたサービスから)]** を選択し、適切なリンクされたサービスを選択します。 
     ![コピー ツール - [ソース データ ストア] ページ](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
@@ -215,7 +215,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
    2. **[Account selection method (アカウントの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
    3. 使用している Azure サブスクリプションを選択するか、**[Azure サブスクリプション]** で設定されている **[すべて選択]** をそのまま使用します。   
    4. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント**を選択します。 ストレージ アカウント設定を手動で入力することもできます。その場合は、**[Account selection method (アカウントの選択方法)]** で **[手動で入力]** オプションを選択します。
-   5. **[次へ]**をクリックします。 
+   5. **[次へ]** をクリックします。 
       ![コピー ツール - Azure BLOB ストレージ アカウントの指定](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
    1. **[adfblobcontainer]** をダブルクリックします。
@@ -226,7 +226,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     2. **[Copy file recursively (再帰的にファイルをコピーする)]** は設定しないでください。 このオプションは、フォルダーを再帰的にスキャンして、ファイルをコピーするときに選択します。 
     3. **[バイナリ コピー]** オプションは選択しないでください。 このオプションは、コピー元ファイルをバイナリ コピーするときに選択します。 次のページで他のオプションが表示されるように、このチュートリアルでは選択しません。 
     4. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。 サポートされている形式のいずれかでコピー元ファイルが圧縮されている場合は、このオプションで値を選択します。 
-    5. **[次へ]**をクリックします。
+    5. **[次へ]** をクリックします。
     ![コピー ツール - 入力ファイルまたはフォルダーの選択](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。 
     1. 次のオプションを選択します。a.  **[ファイル形式]** を **[テキスト形式]** に設定します。 ドロップダウン リストには、サポートされているすべての形式が表示されます。 例: JSON、Avro、ORC、Parquet。
@@ -255,7 +255,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     9. **[日]** で、**[dd]** が設定されていることを確認します。
     10. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。
     11. **[コピー動作]** が **[Merge files (ファイルを結合)]** に設定されていることを確認します。 同じ名前の出力ファイルが既に存在する場合は、最後にある同じファイルに新しいコンテンツが追加されます。
-    12. **[次へ]**をクリックします。
+    12. **[次へ]** をクリックします。
     ![コピー ツール - 出力ファイルまたはフォルダーの選択](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. **[File format settings (ファイル形式設定)]** ページで設定を確認し、**[次へ]** をクリックします。 ここで使用できる追加オプションの 1 つが、ヘッダーを出力ファイルに追加するオプションです。 このオプションを選択すると、ヘッダー行が、コピー元のスキーマの列名で追加されます。 既定の列名は、コピー元のスキーマを表示するときに変更できます。 たとえば、最初の列を "名" に、2 番目の列を "姓" に変更できます。 その後、出力ファイルが生成され、そのファイルのヘッダーでは、この名前が列名として使用されます。 
     ![コピー ツール - コピー先のファイル形式の設定](media/data-factory-azure-blob-connector/file-format-destination.png)

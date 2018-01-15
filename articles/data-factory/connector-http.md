@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: jingwang
-ms.openlocfilehash: 54afc7d993058ac2b3d2990ba131d334e9332555
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: cdf4e808045bb649b3a2406e8f7c1ef30e34fe7b
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Azure Data Factory を使用した HTTP エンドポイントからのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +42,8 @@ HTTP ソースから、サポートされている任意のシンク データ �
 このコネクタと [Web テーブル コネクタ](connector-web-table.md)の違いは、後者が Web HTML ページからテーブルの内容を抽出するために使用されることです。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、HTTP コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -50,22 +51,22 @@ HTTP ソースから、サポートされている任意のシンク データ �
 
 HTTP のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **HttpServer** に設定する必要があります。 | あり |
-| url | Web サーバーへのベース URL | あり |
+| 型 | type プロパティを **HttpServer** に設定する必要があります。 | [はい] |
+| url | Web サーバーへのベース URL | [はい] |
 | enableServerCertificateValidation | HTTP エンドポイントに接続するときに、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 | いいえ。既定値は true です。 |
-| authenticationType | 認証の種類を指定します。 使用可能な値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| authenticationType | 認証の種類を指定します。 使用可能な値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>基本、ダイジェスト、または Windows 認証の使用
 
 "authenticationType" プロパティを **Basic**、**Digest**、または **Windows** に設定し、前のセクションに説明されている汎用プロパティと共に次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| userName | HTTP エンドポイントにアクセスするためのユーザー名。 | あり |
-| パスワード | ユーザー (userName) のパスワード。 このフィールドを SecureString とマークします。 | あり |
+| userName | HTTP エンドポイントにアクセスするためのユーザー名。 | [はい] |
+| password | ユーザー (userName) のパスワード。 このフィールドを SecureString とマークします。 | [はい] |
 
 **例**
 
@@ -95,11 +96,11 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 
 ClientCertificate 認証を使用するには、"authenticationType" プロパティを **ClientCertificate** に設定し、前のセクションに説明されている汎用プロパティと共に次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 でエンコードされた証明書データ。 | `embeddedCertData` または `certThumbprint` を指定します。 |
 | certThumbprint | セルフホステッド統合ランタイム コンピューターの証明書ストアにインストールされている証明書の拇印。 セルフホステッド統合ランタイムが connectVia で指定されている場合にのみ適用されます。 | `embeddedCertData` または `certThumbprint` を指定します。 |
-| パスワード | 証明書に関連付けられているパスワード。 このフィールドを SecureString とマークします。 | いいえ |
+| password | 証明書に関連付けられているパスワード。 このフィールドを SecureString とマークします。 | いいえ  |
 
 認証に "certThumbprint" を使用し、証明書がローカル コンピューターの個人用ストアにインストールされている場合は、セルフホステッド統合ランタイムに読み取りアクセス許可を付与する必要があります。
 
@@ -158,15 +159,15 @@ ClientCertificate 認証を使用するには、"authenticationType" プロパ�
 
 HTTP からデータをコピーするには、データセットの type プロパティを **HttpFile** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティを **HttpFile** に設定する必要があります。 | あり |
-| relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていないとき、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ |
-| requestMethod | Http メソッド。<br/>使用できる値は、**Get** (既定値) または **Post** です。 | いいえ |
-| additionalHeaders | 追加の HTTP 要求ヘッダー。 | なし |
-| requestBody | HTTP 要求の本文。 | なし |
-| format | データを解析せずに**データを HTTP エンドポイントからそのまま取得**し、ファイル ベースのストアにコピーする場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>コピー中に HTTP 応答の内容を解析する場合、サポートされているファイル形式は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| 型 | データセットの type プロパティを **HttpFile** に設定する必要があります。 | [はい] |
+| relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていないとき、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ  |
+| requestMethod | Http メソッド。<br/>使用できる値は、**Get** (既定値) または **Post** です。 | いいえ  |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |
+| requestBody | HTTP 要求の本文。 | いいえ  |
+| format | データを解析せずに**データを HTTP エンドポイントからそのまま取得**し、ファイル ベースのストアにコピーする場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>コピー中に HTTP 応答の内容を解析する場合、サポートされているファイル形式は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ  |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 **例 1: Get メソッド (既定値) の使用**
 
@@ -215,10 +216,10 @@ HTTP からデータをコピーするには、データセットの type プロ
 
 HTTP からデータをコピーするは、コピー アクティビティでソースの種類を **HttpSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **HttpSource** に設定する必要があります。 | あり |
-| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。<br/> 既定値は 00:01:40 です。  | いいえ |
+| 型 | コピー アクティビティのソースの type プロパティを **HttpSource** に設定する必要があります。 | [はい] |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。<br/> 既定値は 00:01:40 です。  | いいえ  |
 
 **例:**
 
@@ -253,5 +254,5 @@ HTTP からデータをコピーするは、コピー アクティビティで�
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/29/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 98898675b85d62c97a215f9922f1393001013943
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: dca040fba78d6501bc835fdac402e69149d493b5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用したエンドユーザーの認証
 > [!div class="op_single_selector"]
@@ -116,7 +116,7 @@ Azure Active Directory を使用して Azure Data Lake Store でのエンドユ�
 
 5. 最後の 2 つの手順を繰り返して、**Windows Azure Service Management API** にも、アクセス許可を与えます。
    
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Azure AD ネイティブ アプリケーションを作成し、.NET SDK、Java SDK、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD Web アプリケーションを使用して、最初に Data Lake Store で認証を行ってからストアで他の操作を実行する方法について説明しています。
 
 * [Data Lake Store での Java SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-java-sdk.md)

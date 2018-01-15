@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: ed10eef347d4d93012078456b3a145589e66d30e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88d80271e744d6f00afd1ff1c3df29180565b59e
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Service Fabric のカスタム正常性レポートの追加
 Azure Service Fabric では、特定のエンティティで、問題のあるクラスターおよびアプリケーションの条件にフラグを設定することを目的とする [正常性モデル](service-fabric-health-introduction.md) が導入されています。 正常性モデルは、 **正常性レポーター** (システム コンポーネントとウォッチドッグ) を使用します。 その目標は、簡単かつ迅速な診断および修復です。 サービスの作成者は、正常性に関して事前に検討する必要があります。 正常性に影響する可能性があるすべての条件は、特にルートに近い問題にフラグを設定するために役立つ場合に、レポートする必要があります。 正常性情報があると、デバッグや調査にかかる時間と労力を軽減することができます。 クラウド (プライベートまたは Azure) で大規模なサービスを立ち上げ、運用すると、この情報が役立つことがよくわかります。
@@ -300,7 +300,7 @@ HealthEvents          :
 ### <a name="rest"></a>REST ()
 REST と、目的のエンティティに送られ、本体に正常性レポートの説明が含まれている POST 要求を使用して、正常性レポートを送信します。 たとえば、REST の送信方法については、[クラスターの正常性レポート](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster)または[サービスの正常性レポート](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)に関するページを参照してください。 すべてのエンティティがサポートされています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 正常性データに基づいて、サービスの作成者とクラスター/アプリケーション管理者は、情報の使用方法を検討できます。 たとえば、障害が引き起こされる前に重大な問題を把握するために、正常性状態に基づいてアラートを設定できます。 管理者は、問題を自動的に解決する修復システムを設定することもできます。
 
 [Service Fabric の正常性モニタリングの概要](service-fabric-health-introduction.md)

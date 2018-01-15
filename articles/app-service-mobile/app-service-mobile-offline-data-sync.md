@@ -2,8 +2,8 @@
 title: "Azure モバイル アプリでのオフライン データ同期 | Microsoft Docs"
 description: "Azure モバイル アプリのオフライン データ同期機能の概念リファレンスと概要"
 documentationcenter: windows
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: glenga
-ms.openlocfilehash: 8e2bd755d14319f8c66f7ae7ec64fbd10801b39d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 5ea1d655f50da49be88f7b6ae91231c4d2258fa7
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure モバイル アプリでのオフライン データ同期
 ## <a name="what-is-offline-data-sync"></a>オフライン データ同期について
@@ -88,7 +88,7 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 
   クライアント上の古くなったデータの例として、"todo list" サンプルでデバイス 1 が未完了のアイテムだけを取得するとします。 別のデバイスによって、サーバー上の TodoItem "Buy milk" が完了とマークされたとします。 ただし、デバイス 1 は完了とマークされていないアイテムだけをプルするので、デバイス 1 はローカル ストアに "Buy milk" TodoItem を残しています。 消去により、この古い項目がクリアされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [iOS: オフライン同期を有効にする]
 * [Xamarin iOS: オフライン同期を有効にする]
 * [Xamarin Android: オフライン同期を有効にする]

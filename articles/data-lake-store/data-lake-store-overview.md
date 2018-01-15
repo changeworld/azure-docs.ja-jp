@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/03/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 956c7a4fb91c1b1a45e24128e92d6a6b1213eeb2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88c44f2e47562f9992e7c6e228b9a4c917f806ba
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store の概要
 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Azure Data Lake を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。
@@ -58,11 +58,11 @@ Azure Data Lake Store のデータ コンテナーは本質的にはフォルダ
 ## <a name="DataLakeStoreSecurity"></a>Azure Data Lake Store でのデータのセキュリティ保護
 Azure Data Lake Store では、Azure Active Directory を使用し、認証およびアクセス制御リスト (ACL) によってデータへのアクセスを管理します。
 
-| 機能 | Description |
+| 機能 | [説明] |
 | --- | --- |
 | 認証 |Azure Data Lake Store は、Azure Active Directory (AAD) と統合することで、Azure Data Lake Store に格納されたすべてのデータの ID 管理とアクセス管理を行います。 この統合によって、Azure Data Lake Store は、AAD のあらゆる機能 (たとえば、多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) から恩恵を受けます。Azure Data Lake Store では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルをサポートしています。 [Data Lake Store の認証](data-lakes-store-authentication-using-azure-active-directory.md)に関するページを参照してください。|
-| Access control |Azure Data Lake Store では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御を実現しています。 Data Lake Store パブリック プレビュー (現在のリリース) では、ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Store のコンテキストにおける ACL のしくみの詳細については、[Data Lake Store のアクセス制御](data-lake-store-access-control.md)に関する記事をご覧ください。 |
-| Encryption |Data Lake Store では、アカウントに格納されているデータを暗号化することもできます。 暗号化設定は、Data Lake Store アカウントの作成時に指定します。 データを暗号化するかどうかを選択できます。 詳細については、[Data Lake Store での暗号化](data-lake-store-encryption.md)に関するページを参照してください。 暗号化関連の構成を提供する手順については、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。 |
+| アクセス制御 |Azure Data Lake Store では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御を実現しています。 Data Lake Store パブリック プレビュー (現在のリリース) では、ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Store のコンテキストにおける ACL のしくみの詳細については、[Data Lake Store のアクセス制御](data-lake-store-access-control.md)に関する記事をご覧ください。 |
+| 暗号化 |Data Lake Store では、アカウントに格納されているデータを暗号化することもできます。 暗号化設定は、Data Lake Store アカウントの作成時に指定します。 データを暗号化するかどうかを選択できます。 詳細については、[Data Lake Store での暗号化](data-lake-store-encryption.md)に関するページを参照してください。 暗号化関連の構成を提供する手順については、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。 |
 
 Data Lake Store に格納されているデータのセキュリティ保護の詳細については、 以下のページを参照してください。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: b5497e9d66833ec8bc291c40d71931aff11820c2
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: b0a22815dc0bf0ea31e47efe5152498f9aa45de4
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 
@@ -182,7 +182,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 必須の引数:
 
-|Name|[説明]|
+|名前|[説明]|
 |----|-----------|
 |-s, --src-cluster | ソース HBase クラスターの DNS 名を指定します。 例: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | デスティネーション (レプリカ) HBase クラスターの DNS 名を指定します。 例: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -191,7 +191,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 省略可能な引数:
 
-|Name|[説明]|
+|名前|[説明]|
 |----|-----------|
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
@@ -283,4 +283,4 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 * [HDInsight での Apache HBase の使用](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight HBase の概要](./apache-hbase-overview.md)
 * [Azure Virtual Network での HBase クラスターの作成](./apache-hbase-provision-vnet.md)
-* [Storm と HBase を HDInsight (Hadoop) で使用してセンサー データを分析する](../storm/apache-storm-sensor-data-analysis.md)
+

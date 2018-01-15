@@ -12,14 +12,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/31/2017
 ms.author: magoedte;sngun
-ms.openlocfilehash: 885fe6caaa00bc0caea875d72fe2626f9e6b1863
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 0349b8aae880c39677e05d8ba8ddd6eadd13eea1
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="my-first-powershell-runbook"></a>初めての PowerShell Runbook
 
@@ -145,7 +145,7 @@ PowerShell Runbook のライフサイクル、機能、管理は、PowerShell Wo
 3. PowerShell Workflow Runbook では、並列実行と順次実行がサポートされていますが、PowerShell Runbook では、コマンドを順次実行することしかできません。
 4. PowerShell Workflow Runbook では、アクティビティ、コマンド、またはスクリプト ブロックは独自の実行空間を持つことができますが、PowerShell Runbook では、スクリプトのすべての内容が 1 つの実行空間で実行されます。 さらに、ネイティブの PowerShell Runbook と PowerShell Workflow Runbook には、 [構文の違い](https://technet.microsoft.com/magazine/dn151046.aspx) もあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4c852d07d771a1eef0e6c2e4ef27cd36f31d8ddd
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 8382f6047ae222a01cc0e8d6ca9dcf5593d0dff6
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="low-utilization-of-cloud-resources-preview"></a>使用率が低いクラウド リソース (プレビュー)
 
 Application Insights は、アプリケーションの各ロール インスタンスの CPU 使用量を自動的に分析し、CPU 使用率が低いインスタンスを検出します。 この検出を使用して、各ロールが使用するロール インスタンスの数を減らすか、ロールの数を減らすことで、Azure リソースを減らしてコストを削減できます。
 
-この機能を使用するには、アプリの[パフォーマンス カウンターを構成する](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters)こと以外は、特別な設定は必要ありません。 それは、アプリが十分な CPU パフォーマンス カウンター テレメトリ (% プロセッサ時間) を生成しているときにアクティブになります。
+この機能を使用するには、アプリの[パフォーマンス カウンターを構成する](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters)こと以外は、特別な設定は必要ありません。 それは、アプリが十分な CPU パフォーマンス カウンター テレメトリ (% プロセッサ時間) を生成しているときにアクティブになります。
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に取得されますか。
 一般的な通知は、多数の Web/ワーカー ロール インスタンスで CPU 使用率が低くなった場合に発生します。
@@ -34,5 +34,5 @@ Application Insights は、アプリケーションの各ロール インスタ�
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか
 通知には、診断プロセスでサポートされる診断情報が含まれています。
 1. **トリアージ**。 通知には、CPU 使用率が低くなっているアプリのロールが示されます。 この情報を基に、問題に優先順位を割り当てることができます。
-2. **スコープ**。 いくつのロールで CPU 使用率が低くなり、各ロールのいくつのインスタンスで CPU 使用率が低いのか?  この情報を通知から取得できます。
+2. **範囲**。 いくつのロールで CPU 使用率が低くなり、各ロールのいくつのインスタンスで CPU 使用率が低いのか?  この情報を通知から取得できます。
 3. **診断**。 検出には CPU が使用された割合が含まれ、特定の期間の各インスタンスの CPU 使用率が示されます。 サポート情報 (CPU 使用の割合など) にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることもできます。

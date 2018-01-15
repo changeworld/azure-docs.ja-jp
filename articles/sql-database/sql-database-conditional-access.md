@@ -2,19 +2,19 @@
 title: "条件付きアクセス - Azure SQL Database および Data Warehouse | Microsoft Doc"
 description: "Azure SQL Database と Data Warehouse 用に条件付きアクセスを構成する方法を説明します。"
 services: sql-database
-author: BYHAM
-manager: jhubbard
+author: GithubMirek
+manager: johammer
 ms.custom: security
 ms.service: sql-database
 ms.topic: article
 ms.date: 06/07/2017
-ms.author: rickbyh
+ms.author: mireks
 ms.workload: Inactive
-ms.openlocfilehash: 16bd403fecbd24d7cea774bba8535f102501861f
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: b1c569e414de292b59e0915483d45bf011edb1a6
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)  
 
@@ -42,10 +42,10 @@ SQL Database と SQL Data Warehouse の両方で Microsoft の条件付きアク
 5.  **[アクセス制御]** を選択し、**[許可]** を選択してから適用するポリシーを確認します。 この例では、**[多要素認証が必要です]** を選択します。  
   ![アクセス権の付与を選択する](./media/sql-database-conditional-access/grant-access.png)  
 
-## <a name="summary"></a>概要  
+## <a name="summary"></a>まとめ  
 これで、Azure AD Premium を使用して Azure SQL DB/DW に接続できるようにする選択されたアプリケーション (Azure SQL Database) で、選択された条件付きアクセス ポリシー **[多要素認証が必要です]** が適用されるようになりました。  
 Azure SQL Database と Database and Data Warehouse での多要素認証に関するご質問は、MFAforSQLDB@microsoft.com にお問い合わせください。  
 
-## <a name="next-steps"></a>次のステップ  
+## <a name="next-steps"></a>次の手順  
 
-チュートリアルについては、「[Azure SQL Database のセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。
+チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。

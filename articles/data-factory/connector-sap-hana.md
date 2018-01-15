@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 31fce15ab0c3496e4d74e105134c29373a777c18
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: dc97840e08f29777b56e7cfc9cced699c0eda2ff
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,8 @@ SAP HANA データベースから、サポートされている任意のシン�
 - SAP HANA ODBC ドライバーを統合ランタイム コンピューターにインストールします。 SAP HANA ODBC ドライバーは [SAP ソフトウェアのダウンロード センター](https://support.sap.com/swdc)からダウンロードできます。 "**SAP HANA CLIENT for Windows**" というキーワードで検索してください。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、SAP HANA コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -58,14 +59,14 @@ SAP HANA データベースから、サポートされている任意のシン�
 
 SAP HANA のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **SapHana** に設定する必要があります。 | あり |
-| server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | あり |
-| authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用可能な値: **Basic** および **Windows** | あり |
-| userName | SAP サーバーにアクセスできるユーザーの名前。 | あり |
-| password | ユーザーのパスワード。 このフィールドを SecureString とマークします。 | あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |あり |
+| 型 | type プロパティを **SapHana** に設定する必要があります。 | [はい] |
+| [サーバー] | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | [はい] |
+| authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用可能な値: **Basic** および **Windows** | [はい] |
+| userName | SAP サーバーにアクセスできるユーザーの名前。 | [はい] |
+| password | ユーザーのパスワード。 このフィールドを SecureString とマークします。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
 
 **例:**
 
@@ -121,10 +122,10 @@ SAP HANA からデータをコピーするには、データセットの type �
 
 SAP HANA からデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
-| クエリ | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| クエリ | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | [はい] |
 
 **例:**
 
@@ -169,16 +170,16 @@ SAP HANA からデータをコピーするとき、次の SAP HANAのデータ�
 | BLOB | Byte[] |
 | BOOLEAN | Byte |
 | CLOB | Byte[] |
-| DATE | DateTime |
-| DECIMAL | DECIMAL |
+| DATE | Datetime |
+| DECIMAL | Decimal |
 | DOUBLE | Single |
 | INT | Int32 |
 | NVARCHAR | String |
 | REAL | Single |
-| SECONDDATE | DateTime |
+| SECONDDATE | Datetime |
 | SMALLINT | Int16 |
 | TIME | timespan |
-| TIMESTAMP | DateTime |
+| TIMESTAMP | Datetime |
 | TINYINT | Byte |
 | VARCHAR | String |
 
@@ -192,5 +193,5 @@ SAP HANA からデータをコピーする場合、既知の制限事項がい�
 - 有効な日付は 1899/12/30 ～ 9999/12/31 です
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

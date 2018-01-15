@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 12/18/2017
   ms.author: carolz
-  ms.openlocfilehash: b5945fe76973aba267b529078466c7a97e5e6421
-  ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+  ms.openlocfilehash: 6082601b46ab4b420575fbc4d04b176c96225f72
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/20/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Azure Policy では、リソースに対してルールとアクションを適用するポリシー定義によって IT の問題を管理および防止できます。 Azure Policy を使用すると、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、ポリシー定義の作成、割り当て、管理を行う方法を確認してください。"
 sections:
@@ -29,15 +29,15 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
       text: Azure Portal
       href: /azure/azure-policy/assign-policy-definition
     - image:
-        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
       text: Azure PowerShell
       href: /azure/azure-policy/assign-policy-definition-ps
     - image:
-        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+        src: https://docs.microsoft.com/media/common/cli.svg
       text: Azure CLI
       href: /azure/azure-policy/assign-policy-definition-cli
 - title: "ステップバイステップのチュートリアル"
@@ -57,13 +57,13 @@ sections:
     className: spaced noBullet
     items:
     - html: <a href="/azure/azure-policy/json-samples">Azure PowerShell</a>
-- title: "リファレンス"
+- title: "参照"
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: "コマンド ライン"
-      html: <p><a href="https://docs.microsoft.com/en-us/cli/azure/policy">Azure CLI</a></p>
+      html: <p><a href="https://docs.microsoft.com/cli/azure/policy">Azure CLI</a></p>
     - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>

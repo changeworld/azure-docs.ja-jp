@@ -3,7 +3,7 @@ title: "ネイティブ クライアント アプリの発行 - Azure AD | Micro
 description: "ネイティブ クライアント アプリケーションが Azure AD Application Proxy Connector と通信して、オンプレミス アプリケーションに対して安全なリモート アクセスを提供する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: de49a8343a3db6c8b890050e7791f77105a09a3a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2be62c00d144e47cef8ea4df5aa82554f2bbcc18
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>プロキシ アプリケーションからネイティブ クライアント アプリケーションを操作する方法
 
@@ -39,7 +39,7 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 ## <a name="step-2-configure-your-application"></a>手順 2: アプリケーションの構成
 ネイティブ アプリケーションを次のように構成します。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[Azure Active Directory]** > **[アプリの登録]** に移動します。
 3. **[新しいアプリケーションの登録]** を選択します。
 4. アプリケーションの名前を指定し、アプリケーションの種類として **[ネイティブ]** を選択し、アプリケーションのリダイレクト URI を指定します。 
@@ -93,7 +93,7 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 これらのパラメーターを使用して ADAL を編集すると、企業ネットワークの外部ユーザーであっても、ネイティブ クライアント アプリを認証できるようになります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ネイティブ アプリケーション フローの詳細については、「[ネイティブ アプリケーション対 Web API](develop/active-directory-authentication-scenarios.md#native-application-to-web-api)」をご覧ください。
 

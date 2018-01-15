@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 99f7fcbd3a2d3b6f6fe48c7fb2703d35d3b3a8fd
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a73836b784a5e86d01df51fb83d619890d56502a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-10-create-partitions"></a>レッスン 10: パーティションを作成する
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-partitions"></a>パーティションを作成する
 
 このレッスンでは､FactInternetSales テーブルをより小さな論理部分に分割し､それぞれを独立して処理 (再表示) することを可能にするパーティションを作成します｡ 既定では､モデルに含まれる各表のパーティションはすべて 1 つであり､そのパーティションに､そのテーブルのすべての列と行が含まれます｡ FactInternetSales テーブルの場合は､データを年度別､sなわち､表の 5 年間の年度ごにパーティションを 1 つ作成します｡ 各パーティションはそれぞれ独立して処理できます｡ 詳細は､[Partitions](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular) を参照してください｡ 
   

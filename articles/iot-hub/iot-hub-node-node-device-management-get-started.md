@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: juanpere
-ms.openlocfilehash: edb86f73f637e3e1722c5027e3dcea531b19af53
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0aeba8560de46ae2032304f133b66ad0a70f1354
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="get-started-with-device-management-node"></a>デバイス管理の開始 (Node)
 
@@ -39,13 +39,13 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルを完了するには、以下が必要です。
 
 * Node.js バージョン 4.0.x 以降。 <br/>  「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
+## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
 このセクションでは、次の作業を行います。
 
 * クラウドによって呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。
@@ -84,7 +84,7 @@ ms.lasthandoff: 10/11/2017
    
         // Respond the cloud app for the direct method
         response.send(200, 'Reboot started', function(err) {
-            if (!err) {
+            if (err) {
                 console.error('An error occured when sending a method response:\n' + err.toString());
             } else {
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');

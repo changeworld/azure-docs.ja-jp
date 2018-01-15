@@ -13,18 +13,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/15/2017
+ms.date: 1/5/2018
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 947b985fe242c026e94d78664fa41f666334392a
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 89553ee973e4aebc96b60caef9eefa80178fadfb
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Resource Manager デプロイメント モデルで Windows Server または Windows クライアントを Azure にバックアップする
 この記事では、Resource Manager デプロイメント モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。
-
-[!INCLUDE [learn-about-deployment-models](../../includes/backup-deployment-models.md)]
 
 ![バックアップ プロセスの手順](./media/backup-configure-vault/initial-backup-process.png)
 
@@ -142,7 +140,7 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
   ![コンテナー資格情報のダウンロード](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-  コンテナー資格情報は、ダウンロード フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[保存]**をクリックします。 誤って **[開く]** をクリックすると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報はダウンロード フォルダーにあります。   
+  コンテナー資格情報は、ダウンロード フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[Save]** をクリックします。 誤って **[開く]** をクリックすると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報はダウンロード フォルダーにあります。   
 
   ![コンテナー資格情報のダウンロード完了](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 
@@ -236,11 +234,11 @@ Microsoft Azure Backup エージェントは、ネットワーク調整を提供
     ![[プロパティの変更]](./media/backup-configure-vault/change-properties.png)
 2. **[調整]** タブで、**[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** チェック ボックスをオンにします。
 
-    ![ネットワークのスロットル](./media/backup-configure-vault/throttling-dialog.png)
+    ![Network throttling](./media/backup-configure-vault/throttling-dialog.png)
 3. スロットルを有効にした後、**[作業時間]** と **[作業時間外]** で、バックアップ データ転送のために許可される帯域幅を指定します。
 
     帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。 また、 **[作業時間]**の開始および終了時刻や、作業日と見なされる曜日も指定できます。 指定した作業時間以外の時間は、作業時間外と見なされます。
-4. **[OK]**をクリックします。
+4. Click **OK**.
 
 ### <a name="to-back-up-files-and-folders-for-the-first-time"></a>初回のファイルとフォルダーをバックアップするには
 1. Backup エージェントで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
@@ -256,7 +254,7 @@ Microsoft Azure Backup エージェントは、ネットワーク調整を提供
 ## <a name="questions"></a>疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 VM や他のワークロードのバックアップの詳細については、以下を参照してください。
 
 * ファイルとフォルダーをバックアップしたので、 [コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。

@@ -13,20 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 05/23/2017
+ms.date: 01/08/2018
 ms.author: sasubram
-ms.openlocfilehash: fecfb7217434a93fd5d44f1f07709009de7710fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.reviewer: sasubram
+ms.openlocfilehash: 4c43082281cbc95ae75b65a2aefadbbab6d7cd30
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
 Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーションに関するよく寄せられる質問 (FAQ) は、新しいトピックを追加して定期的に更新されています。
-
-### <a name="is-azure-ad-b2b-collaboration-available-in-the-azure-classic-portal"></a>Azure AD B2B コラボレーションは、Azure クラシック ポータルで使用できますか。
-いいえ。 Azure AD B2B コラボレーション機能は [Azure ポータル](https://portal.azure.com)と[アクセス パネル](https://myapps.microsoft.com/)でのみ使用できます。 
 
 ### <a name="can-we-customize-our-sign-in-page-so-it-is-more-intuitive-for-our-b2b-collaboration-guest-users"></a>B2B コラボレーションのゲスト ユーザー向けに、より直感的にするため、サインイン ページをカスタマイズすることはできますか。
 もちろんあります。 [この機能に関するブログ記事](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)をご覧ください。 組織のサインイン ページをカスタマイズする方法の詳細については、「[サインイン ページとアクセス パネル ページに会社のブランドを追加する](customize-branding.md)」をご覧ください。
@@ -129,7 +127,7 @@ B2B コラボレーションを向上させるためのフィードバックは�
 ### <a name="what-licenses-do-we-need-to-use-azure-ad-b2b"></a>Azure AD B2B を使用する必要があるライセンスは何ですか。
 組織で Azure AD B2B を使用する必要があるライセンスについては、「[Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス](active-directory-b2b-licensing.md)」をご覧ください。
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 
 Azure AD B2B コラボレーションに関する他の記事を参照してください。
 

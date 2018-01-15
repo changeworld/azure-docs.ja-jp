@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: drewm
 ms.openlocfilehash: 4277bc8394c7ba140291e9dc776162e87deab96b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルで作成された Windows VM のサイズ変更
 この記事では、クラシック デプロイメント モデルで作成された Windows VM のサイズを Azure Powershell を使用して変更する方法について説明します。
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 VM のサイズ変更機能について検討する際、仮想マシンのサイズ変更に使用可能なサイズの範囲を制御する 2 つの概念があります。 1 つ目の概念は、VM がデプロイされているリージョンです。 リージョンで使用可能な VM サイズの一覧は、Azure リージョンの Web ページの [サービス] タブにあります。 2 つ目の概念は、現在 VM をホストしている物理ハードウェアです。 VM をホストしている物理サーバーは、一般的な物理ハードウェアのクラスターにグループ化されます。 VM のサイズを変更する方法は、現在 VM をホストしているハードウェア クラスターで、新しく必要なサイズがサポートされているかどうかによって異なります。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイメント モデルで作成された VM のサイズを変更する](../resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager デプロイメント モデルで作成された VM のサイズを変更する](../resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。
 
 ## <a name="add-your-account"></a>アカウントの追加
 Azure クラシック リソースを操作できるように Azure PowerShell を構成する必要があります。 クラシック リソースを管理するよう Azure PowerShell を構成するには、次の手順に従います。
@@ -66,6 +66,6 @@ VM をホストしているハードウェア クラスターで使用できな�
 
 新しい VM サイズを使用したクラウド サービスの削除と再作成のサンプル スクリプトについては、[こちら](https://github.com/Azure/azure-vm-scripts)を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Resource Manager デプロイメント モデルで作成された VM のサイズを変更する](../resize-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 

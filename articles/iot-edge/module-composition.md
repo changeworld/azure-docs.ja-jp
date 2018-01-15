@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6f9ca3d9b0f41210a3f43a8ae505f0a90b130b34
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f3bc2f14b182e502c651ff44ef49b88cd34e1f50
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する - プレビュー
 
@@ -83,7 +83,7 @@ Edge ハブは、モジュール間およびモジュールと IoT Hub の間で
 
 *ソース*は、次のいずれでもかまいません。
 
-| ソース | Description |
+| ソース | [説明] |
 | ------ | ----------- |
 | `/*` | 任意のデバイスまたはモジュールからの、デバイスからクラウドへのすべてのメッセージ |
 | `/messages/*` | 何らかの出力と共に、または出力なしでデバイスまたはモジュールによって送信された、デバイスからクラウドへの任意のメッセージ |
@@ -96,10 +96,10 @@ Edge ハブは、モジュール間およびモジュールと IoT Hub の間で
 
 シンクは、次のいずれかです。
 
-| シンク | Description |
+| シンク | [説明] |
 | ---- | ----------- |
 | `$upstream` | IoT Hub にメッセージを送信する |
-| `BrokeredEndpoint(/modules/{moduleId}/inputs/{input})` | モジュール `{moduleId}` の入力 `{input}` にメッセージを送信する |
+| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | モジュール `{moduleId}` の入力 `{input}` にメッセージを送信する |
 
 Edge ハブが少なくとも 1 つの保証を提供することに注意することが重要です。つまり、ルートがそのシンクにメッセージを配信できない場合 (たとえば、Edge ハブが IoT Hub に接続できない場合や、ターゲット モジュールが接続されていない場合)、メッセージはローカルに格納されます。
 
@@ -193,27 +193,27 @@ Edge エージェントのモジュール ツインは `$edgeAgent` と呼ばれ
 
 ### <a name="edge-agent-twin-desired-properties"></a>Edge エージェント ツインの必要なプロパティ
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" である必要がある | あり |
-| runtime.type | "docker" である必要がある | あり |
-| runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | あり |
-| runtime.settings.loggingOptions | Edge エージェント コンテナーのログ オプションを含む文字列化された JSON。 [Docker のログ オプション][lnk-docker-logging-options] | いいえ |
-| systemModules.edgeAgent.type | "docker" である必要がある | あり |
-| systemModules.edgeAgent.settings.image | Edge エージェントのイメージの URI。 現在、Edge エージェントは自身を更新できません。 | あり |
-| systemModules.edgeAgent.settings.createOptions | Edge エージェント コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ |
+| schemaVersion | "1.0" である必要がある | [はい] |
+| runtime.type | "docker" である必要がある | [はい] |
+| runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | [はい] |
+| runtime.settings.loggingOptions | Edge エージェント コンテナーのログ オプションを含む文字列化された JSON。 [Docker のログ オプション][lnk-docker-logging-options] | いいえ  |
+| systemModules.edgeAgent.type | "docker" である必要がある | [はい] |
+| systemModules.edgeAgent.settings.image | Edge エージェントのイメージの URI。 現在、Edge エージェントは自身を更新できません。 | [はい] |
+| systemModules.edgeAgent.settings.createOptions | Edge エージェント コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |
 | systemModules.edgeAgent.configuration.id | このモジュールをデプロイしたデプロイの ID。 | これは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
-| systemModules.edgeHub.type | "docker" である必要がある | あり |
-| systemModules.edgeHub.status | "running" である必要がある | あり |
-| systemModules.edgeHub.restartPolicy | "always" である必要がある | あり |
-| systemModules.edgeHub.settings.image | Edge ハブのイメージの URI。 | あり |
-| systemModules.edgeHub.settings.createOptions | Edge ハブ コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ |
+| systemModules.edgeHub.type | "docker" である必要がある | [はい] |
+| systemModules.edgeHub.status | "running" である必要がある | [はい] |
+| systemModules.edgeHub.restartPolicy | "always" である必要がある | [はい] |
+| systemModules.edgeHub.settings.image | Edge ハブのイメージの URI。 | [はい] |
+| systemModules.edgeHub.settings.createOptions | Edge ハブ コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |
 | systemModules.edgeHub.configuration.id | このモジュールをデプロイしたデプロイの ID。 | これは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
-| modules.{moduleId}.version | このモジュールのバージョンを表すユーザー定義の文字列。 | あり |
-| modules.{moduleId}.type | "docker" である必要がある | あり |
-| modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | あり |
-| modules.{moduleId}.settings.image | モジュール イメージへの URI。 | あり |
-| modules.{moduleId}.settings.createOptions | モジュール コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ |
+| modules.{moduleId}.version | このモジュールのバージョンを表すユーザー定義の文字列。 | [はい] |
+| modules.{moduleId}.type | "docker" である必要がある | [はい] |
+| modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | [はい] |
+| modules.{moduleId}.settings.image | モジュール イメージへの URI。 | [はい] |
+| modules.{moduleId}.settings.createOptions | モジュール コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |
 | modules.{moduleId}.configuration.id | このモジュールをデプロイしたデプロイの ID。 | これは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
 
 ### <a name="edge-agent-twin-reported-properties"></a>Edge エージェント ツインの報告されるプロパティ
@@ -231,7 +231,7 @@ Edge エージェントの報告されるプロパティには、次の 3 つの
 
 次の表には、必要なプロパティからコピーされる情報は含まれません。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | -------- | ----------- |
 | lastDesiredVersion | この int は、Edge エージェントによって処理された必要なプロパティの最後のバージョンを参照します。 |
 | lastDesiredStatus.code | これは、Edge エージェントによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`412` 無効なスキーマ バージョン、`417` 必要なプロパティが空、`500` 失敗 |
@@ -264,15 +264,15 @@ Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバイ�
 
 ### <a name="edge-hub-twin-desired-properties"></a>Edge ハブ ツインの必要なプロパティ
 
-| プロパティ | Description | デプロイ マニフェストに必要 |
+| プロパティ | [説明] | デプロイ マニフェストに必要 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" である必要がある | あり |
+| schemaVersion | "1.0" である必要がある | [はい] |
 | routes.{routeName} | Edge ハブのルートを表す文字列。 | `routes` 要素は存在できますが、空です。 |
-| storeAndForwardConfiguration.timeToLiveSecs | 切断された (たとえば、IoT Hub またはローカル モジュールから切断された) ルーティング エンドポイントの場合、Edge ハブがメッセージを保持する秒数 | あり |
+| storeAndForwardConfiguration.timeToLiveSecs | 切断された (たとえば、IoT Hub またはローカル モジュールから切断された) ルーティング エンドポイントの場合、Edge ハブがメッセージを保持する秒数 | [はい] |
 
 ### <a name="edge-hub-twin-reported-properties"></a>Edge ハブ ツインの報告されるプロパティ
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | -------- | ----------- |
 | lastDesiredVersion | この int は、Edge ハブによって処理された必要なプロパティの最後のバージョンを参照します。 |
 | lastDesiredStatus.code | これは、Edge ハブによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`500` 失敗 |
@@ -281,7 +281,7 @@ Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバイ�
 | clients.{device or module identity}.lastConnectTime | デバイスまたはモジュールが接続された最後の時間 |
 | clients.{device or module identity}.lastDisconnectTime | デバイスまたはモジュールが切断された最後の時間 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで IoT Edge モジュールがどのように使用されるかがわかったので、「[Understand the requirements and tools for developing IoT Edge modules (IoT Edge モジュールを開発するための要件およびツールを理解する)][lnk-module-dev]」に進みます。
 

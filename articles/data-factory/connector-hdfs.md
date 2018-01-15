@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: jingwang
-ms.openlocfilehash: d423cf7896b66b729faa1e032462277a9283884d
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 501deec6d766cca500a2a6060e147bf69ba6507b
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,8 @@ HDFS から、サポートされている任意のシンク データ ストア�
 パブリックにアクセスできない HDFS をコピー元またはコピー先としてデータをコピーするには、セルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](concepts-integration-runtime.md)に関する記事をご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、HDFS に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -53,14 +54,14 @@ HDFS から、サポートされている任意のシンク データ ストア�
 
 HDFS のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Hdfs** に設定する必要があります。 | あり |
-| url |HDFS への URL |はい |
-| authenticationType | 使用可能な値: **Anonymous** または**Windows**。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
+| 型 | type プロパティは **Hdfs** に設定する必要があります。 | [はい] |
+| url |HDFS への URL |[はい] |
+| authenticationType | 使用可能な値: **Anonymous** または**Windows**。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |[はい] |
 | userName |Windows 認証のユーザー名。 Kerberos 認証の場合は `<username>@<domain>.com` を指定します。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 このフィールドを SecureString とマークします。 |あり (Windows 認証用) |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例: 匿名認証の使用**
 
@@ -112,13 +113,13 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 
 HDFS からデータをコピーするには、データセットの type プロパティを **FileShare** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **FileShare** に設定する必要があります。 |あり |
-| folderPath | フォルダーへのパス。 例: folder/subfolder/ |あり |
-| fileName | 特定のファイルからコピーする場合は、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、データセットはフォルダー内のすべてのファイルをソースとしてポイントします。 |いいえ |
+| 型 | データセットの type プロパティは **FileShare** に設定する必要があります。 |[はい] |
+| folderPath | フォルダーへのパス。 例: folder/subfolder/ |[はい] |
+| fileName | 特定のファイルからコピーする場合は、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、データセットはフォルダー内のすべてのファイルをソースとしてポイントします。 |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 **例:**
 
@@ -156,14 +157,14 @@ HDFS からデータをコピーするには、データセットの type プロ
 
 HDFS からデータをコピーするは、コピー アクティビティのソースの種類を **HdfsSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **HdfsSource** に設定する必要があります。 |あり |
-| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ |
-| distcpSettings | HDFS DistCp を使用する場合の プロパティ グループ。 | いいえ |
+| 型 | コピー アクティビティのソースの type プロパティは **HdfsSource** に設定する必要があります。 |[はい] |
+| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
+| distcpSettings | HDFS DistCp を使用する場合の プロパティ グループ。 | いいえ  |
 | resourceManagerEndpoint | Yarn ResourceManager エンドポイント。 | はい (DistCp を使用する場合) |
 | tempScriptPath | 一時 DistCp コマンド スクリプトを格納するために使用するフォルダー パス。 このスクリプト ファイルは Data Factory によって生成され、コピー ジョブ完了後に削除されます。 | はい (DistCp を使用する場合) |
-| distcpOptions | DistCp コマンドに指定する追加オプション。 | いいえ |
+| distcpOptions | DistCp コマンドに指定する追加オプション。 | いいえ  |
 
 **例: UNLOAD を使用するコピー アクティビティの HDFS ソース**
 
@@ -383,5 +384,5 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 * ドメイン アカウントまたは Kerberos プリンシパルのいずれかを使用して **Windows 認証** を行って HDFS データ ソースに接続するように HDFS コネクタを構成します。 構成の詳細については、「[HDFS のリンクされたサービスのプロパティ](#linked-service-properties)」セクションを参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

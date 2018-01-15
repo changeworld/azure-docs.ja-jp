@@ -7,7 +7,7 @@
     - name: HDInsight の Hadoop コンポーネント
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: 作業の開始
+- name: 作業開始
   items:
     - name: HBase & NoSQL を開始する
       href: apache-hbase-tutorial-get-started-linux.md
@@ -29,6 +29,8 @@
           maintainContext: true
     - name: 開発
       items:
+        - name: HBase .NET SDK を使用する
+          href: apache-hbase-rest-sdk.md
         - name: Java アプリケーションの開発
           href: apache-hbase-build-java-maven-linux.md
         - name: 空のエッジ ノードを使用する
@@ -39,6 +41,8 @@
           maintainContext: true
         - name: Phoenix および SQLLine を使用する
           href: apache-hbase-phoenix-squirrel-linux.md
+        - name: Phoenix Query Server REST SDK を使用する
+          href: apache-hbase-using-phoenix-query-server-rest-sdk.md
     - name: クラスターを拡張する
       items:
         - name: ブートストラップを使用してクラスターをカスタマイズする
@@ -68,7 +72,7 @@
         - name: SSH トンネリングを使用する
           href: ../hdinsight-linux-ambari-ssh-tunnel.md
           maintainContext: true
-    - name: 管理
+    - name: '[管理]'
       items:
         - name: Linux クラスターを作成する
           href: ../hdinsight-hadoop-provision-linux-clusters.md
@@ -112,9 +116,15 @@
           href: ../hdinsight-hadoop-manage-ambari.md
           maintainContext: true
           items:
+            - name: Ambari Web UI を使用してクラスターを最適化する
+              href: ../hdinsight-changing-configs-via-ambari.md
+              maintainContext: true
             - name: Ambari REST API を使用する
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: HDInsight クラスターのログを管理する
+          href: ../hdinsight-log-management.md
+          maintainContext: true
         - name: ストレージ アカウントを追加する
           href: ../hdinsight-hadoop-add-storage.md
           maintainContext: true
@@ -154,6 +164,9 @@
       href: ../hdinsight-troubleshoot-guide.md
       maintainContext: true
       items:
+        - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
+          href: ../hdinsight-troubleshoot-failed-cluster.md
+          maintainContext: true
         - name: HDFS のトラブルシューティング
           href: ../hdinsight-troubleshoot-hdfs.md
           maintainContext: true
@@ -232,7 +245,7 @@
       href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
     - name: .NET (Avro)
       href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
-    - name: REST
+    - name: REST ()
       href: /rest/api/hdinsight/
     - name: REST (Spark)
       href: /rest/api/hdinsightspark/

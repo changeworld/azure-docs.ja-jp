@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 710543b5423d2b651545151eb4a8d426720e28e0
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>ポータルを使用した Azure Search へのデータのインポート
 Azure Portal では、データをインデックスに読み込む**データのインポート** ウィザードが Azure Search ダッシュボードに用意されています。 
@@ -40,7 +40,7 @@ Azure Cosmos DB のサンプル データを使用して、このワークフロ
 ## <a name="data-sources-supported-by-the-import-data-wizard"></a>データのインポート ウィザードでサポートされるデータ ソース
 データのインポート ウィザードでは、次のデータ ソースがサポートされています。 
 
-* Azure SQL Database
+* の接続文字列
 * Azure VM 上の SQL Server のリレーショナル データ
 * Azure Cosmos DB
 * Azure BLOB ストレージ
@@ -109,11 +109,11 @@ Azure Cosmos DB のサンプル データを使用して、このワークフロ
 再構築する必要のない編集には、新しいフィールドの追加、スコアリング プロファイルの変更、サジェスターの変更、言語アナライザーの変更があります。 詳細については、 [インデックスの更新](https://msdn.microsoft.com/library/azure/dn800964.aspx) に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 インデクサーの詳細については、次のリンク先を参照してください。
 
 * [Azure SQL Database のインデックス作成](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB のインデックス作成](search-howto-index-documentdb.md)
+* [Azure Cosmos DB のインデックス作成](search-howto-index-cosmosdb.md)
 * [Blob Storage のインデックス作成](search-howto-indexing-azure-blob-storage.md)
 * [Table Storage のインデックス作成](search-howto-indexing-azure-tables.md)
 

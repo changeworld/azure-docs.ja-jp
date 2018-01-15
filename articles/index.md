@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags: clicktale
-ms.openlocfilehash: 56e50d633b29d2a5ce14fb50515407ac9d3bd821
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 7a707abdb949927e5f3affe208001f245ace51f2
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/12/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -237,11 +237,11 @@ ms.lasthandoff: 01/11/2018
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/jenkins">
-                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_jenkins.svg" alt=""> Jenkins </a>
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_jenkins.svg" alt=""> Jenkins </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/terraform">
-                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_terraform.svg" alt=""> Terraform </a>
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_terraform.svg" alt=""> Terraform </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -334,7 +334,7 @@ ms.lasthandoff: 01/11/2018
                                         <li>
                                             <a href="/azure/cloud-services/">
                                                 <img src="media/index/CloudService.svg" alt="" />
-                                                <p>クラウド サービス</p>
+                                                <p>Cloud Services</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -463,7 +463,7 @@ ms.lasthandoff: 01/11/2018
                                         <li>
                                             <a href="/azure/data-catalog/">
                                                 <img src="media/index/data-catalog.svg" alt="" />
-                                                <p>データ カタログ</p>
+                                                <p>Data Catalog</p>
                                             </a>
                                         </li>
                                         <li>
@@ -893,7 +893,7 @@ ms.lasthandoff: 01/11/2018
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/en-us/azure/sql-data-warehouse/">
+                                            <a href="/azure/sql-data-warehouse/">
                                                 <img src="media/index/sqldatawarehouse.svg" alt="" />
                                                 <p>SQL Data Warehouse</p>
                                             </a>
@@ -907,7 +907,7 @@ ms.lasthandoff: 01/11/2018
                                         <li>
                                             <a href="/azure/data-catalog/">
                                                 <img src="media/index/data-catalog.svg" alt="" />
-                                                <p>データ カタログ</p>
+                                                <p>Data Catalog</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1454,7 +1454,7 @@ ms.lasthandoff: 01/11/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>クラウド サービス</h3>
+                                                    <h3>Cloud Services</h3>
                                                     <p>高可用性と無限の拡張性を備えたクラウド アプリケーションと API の作成</p>
                                                 </div>
                                             </div>
@@ -2406,7 +2406,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                 </a>
                             </li>
                             <li>
-                                <a href="/en-us/azure/event-hubs/">
+                                <a href="/azure/event-hubs/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2444,7 +2444,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                 </a>
                             </li>
                             <li>
-                                <a href="/en-us/azure/sql-data-warehouse/">
+                                <a href="/azure/sql-data-warehouse/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2492,7 +2492,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>データ カタログ</h3>
+                                                    <h3>Data Catalog</h3>
                                                     <p>企業全体でセルフサービスのデータ ソース検出を可能に</p>
                                                 </div>
                                             </div>
@@ -2880,7 +2880,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                 </a>
                             </li>                            
                             <li>
-                                <a href="/en-us/azure/event-hubs/">
+                                <a href="/azure/event-hubs/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3142,7 +3142,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>データ カタログ</h3>
+                                                    <h3>Data Catalog</h3>
                                                     <p>企業全体でセルフサービスのデータ ソース検出を可能に</p>
                                                 </div>
                                             </div>
@@ -4174,7 +4174,7 @@ Azure CLI </h3>
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
-                                                    <img src="https://docs.microsoft.com/en-us/media/common/i_tools.svg" alt="" />
+                                                    <img src="https://docs.microsoft.com/media/common/i_tools.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">

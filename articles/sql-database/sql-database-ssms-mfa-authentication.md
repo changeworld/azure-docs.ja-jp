@@ -3,8 +3,8 @@ title: Multi-Factor Authentication - Azure SQL | Microsoft Docs
 description: "Azure SQL Database と Azure SQL Data Warehouse では、Active Directory ユニバーサル認証を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。"
 services: sql-database
 documentationcenter: 
-author: BYHAM
-manager: jhubbard
+author: GithubMirek
+manager: johammer
 editor: 
 tags: 
 ms.assetid: fbd6e644-0520-439c-8304-2e4fb6d6eb91
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/29/2017
-ms.author: rickbyh
-ms.openlocfilehash: cdf78a3c64933f5f01642d5ef8fe1fca64cb1fbb
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.author: mireks
+ms.openlocfilehash: 3fd6532fb3dc6af9b3ccdac37201552ad0475e7b
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)
 Azure SQL Database と Azure SQL Data Warehouse では、*Active Directory ユニバーサル認証*を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。 
@@ -52,7 +52,7 @@ Multi-Factor Authentication の説明については、 [Multi-Factor Authentica
 - ユニバーサル認証用の Active Directory Authentication Library (ADAL) バージョンは、最新のリリース バージョン ADAL.dll 3.13.9 に更新されました。 「[Active Directory 認証ライブラリ 3.14.1](http://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)」を参照してください。  
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 構成手順については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」をご覧ください。
 - 他のユーザーへのデータベースへのアクセス権の付与: [SQL Database の認証と承認: アクセス権の付与](sql-database-manage-logins.md)  

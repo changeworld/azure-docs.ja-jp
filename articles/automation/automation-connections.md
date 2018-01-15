@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/13/2017
 ms.author: magoedte; bwren
-ms.openlocfilehash: 847a5eca37c80c0cd5cdbad52f39567fa85a355f
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: c1e56f00e46dc3d04f6ac3bb42df6c1935c5c8b0
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
@@ -27,13 +27,13 @@ Automation の接続資産には、Runbook または DSC 構成から外部サ�
 接続を作成するときは、 *接続の種類*を指定する必要があります。 接続の種類は、一連のプロパティを定義しているテンプレートです。 接続では、その接続の種類で定義されている各プロパティの値を定義します。 接続の種類は Azure Automation の統合モジュールに追加されるか、[Azure Automation API](http://msdn.microsoft.com/library/azure/mt163818.aspx) によって作成され (統合モジュールに接続の種類が含まれていない場合)、Automation アカウントにインポートされます。 それ以外の場合は、Automation の接続の種類を指定するメタデータ ファイルを作成する必要があります。  詳細については、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。  
 
 >[!NOTE] 
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。 このキーはマスター証明書によって暗号化され、Azure Automation に保存されます。 セキュリティで保護された資産を格納する前に、Automation アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。 このキーはマスター証明書によって暗号化され、Azure Automation に保存されます。 セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell コマンドレット
 
 Windows PowerShell で Automation 接続を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
 
-|コマンドレット|説明|
+|コマンドレット|[説明]|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|接続を取得します。 接続のフィールドの値のハッシュ テーブルが含まれます。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|新しい接続を作成します。|
@@ -44,7 +44,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 次の表のアクティビティは、Runbook または DSC 構成で接続にアクセスするために使用されます。
 
-|アクティビティ|説明|
+|アクティビティ|[説明]|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|使用する接続を取得します。 接続のプロパティのハッシュ テーブルを返します。|
 
@@ -55,7 +55,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 ## <a name="python2-functions"></a>Python2 関数 
 次の表の関数を使用して、Python2 Runbook の接続にアクセスします。 
 
-| 関数 | 説明 | 
+| 関数 | [説明] | 
 |:---|:---| 
 | automationassets.get_automation_connection | 接続を取得します。 接続のプロパティでディクショナリを返します。 | 
 
@@ -72,23 +72,17 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 4. **[種類]** ドロップダウンで、作成する接続の種類を選択します。 フォームにその特定の種類のプロパティが表示されます。
 5. フォームに入力し、 **[作成]** をクリックして新しい接続を保存します。
 
-### <a name="to-create-a-new-connection-with-the-azure-classic-portal"></a>Azure クラシック ポータルで新しい接続を作成するには
-
-1. Automation アカウントから、ウィンドウの上部にある **[資産]** をクリックします。
-2. ウィンドウの下部にある **[設定の追加]**をクリックします。
-3. **[接続の追加]**をクリックします。
-4. **[接続の種類]** ドロップダウンで、作成する接続の種類を選択します。  ウィザードでその特定の種類のプロパティが表示されます。
-5. ウィザードを完了し、チェック ボックスをクリックして新しい接続を保存します。
-
 ### <a name="to-create-a-new-connection-with-windows-powershell"></a>Windows PowerShell で新しい接続を作成するには
 
 Windows PowerShell の [New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection) コマンドレットを使用して新しい接続を作成します。 このコマンドレットには、接続の種類で定義されている各プロパティの値を定義している **ハッシュ テーブル** を受け取る [ConnectionFieldValues](http://technet.microsoft.com/library/hh847780.aspx) という名前のパラメーターがあります。
 
 Automation の [Run As アカウント](automation-sec-configure-azure-runas-account.md)でサービス プリンシパルを使用した Runbook の認証に慣れている場合は、ポータルから Run As アカウントを作成するための代替方法として用意されている PowerShell スクリプトを使用して、新しい接続資産を作成できます。次のサンプル コマンドを使用できます。  
 
-    $ConnectionAssetName = "AzureRunAsConnection"
-    $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
-    New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
+```powershell
+$ConnectionAssetName = "AzureRunAsConnection"
+$ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Cert.Thumbprint; "SubscriptionId" = $SubscriptionId}
+New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
+```
 
 このスクリプトを使用して接続資産を作成できる理由は、Automation アカウントを作成すると、**AzureRunAsConnection** 接続資産を作成する接続の種類である **AzurServicePrincipal** と一緒に、さまざまなグローバル モジュールが既定で自動的に含まれるためです。  別の認証方法を使用してサービスまたはアプリケーションに接続する新しい接続資産を作成しようとすると、接続の種類が Automation アカウントに定義されていないという理由で操作が失敗するため、このことを覚えておく必要があります。  [PowerShell ギャラリー](https://www.powershellgallery.com)からカスタム モジュール用の独自の接続の種類を作成する方法については、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。
   
@@ -100,8 +94,10 @@ Automation の [Run As アカウント](automation-sec-configure-azure-runas-acc
 
 次のサンプル コマンドは、先に述べた Run As アカウントを使用して Runbook 内の Azure Resource Manager リソースを認証する方法を示しています。  Run As アカウントを表す接続資産を使用しし、資格情報ではなく、証明書ベースのサービス プリンシパルを参照します。  
 
-    $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-    Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint 
+```powershell
+$Conn = Get-AutomationConnection -Name AzureRunAsConnection 
+Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint 
+```
 
 ### <a name="graphical-runbook-samples"></a>グラフィカルな Runbook のサンプル
 
@@ -116,45 +112,45 @@ Automation の [Run As アカウント](automation-sec-configure-azure-runas-acc
 ### <a name="python2-runbook-sample"></a>Python2 Runbook のサンプル
 次のサンプルでは、Python2 Runbook の Run As 接続を使用して認証する方法を示します。
 
-    """ Tutorial to show how to authenticate against Azure resource manager resources """
-    import azure.mgmt.resource
-    import automationassets
+```python
+""" Tutorial to show how to authenticate against Azure resource manager resources """
+import azure.mgmt.resource
+import automationassets
 
+def get_automation_runas_credential(runas_connection):
+  """ Returns credentials to authenticate against Azure resoruce manager """
+  from OpenSSL import crypto
+  from msrestazure import azure_active_directory
+  import adal
 
-    def get_automation_runas_credential(runas_connection):
-        """ Returns credentials to authenticate against Azure resoruce manager """
-        from OpenSSL import crypto
-        from msrestazure import azure_active_directory
-        import adal
+  # Get the Azure Automation Run As service principal certificate
+  cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+  pks12_cert = crypto.load_pkcs12(cert)
+  pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM, pks12_cert.get_privatekey())
 
-        # Get the Azure Automation Run As service principal certificate
-        cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
-        pks12_cert = crypto.load_pkcs12(cert)
-        pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM, pks12_cert.get_privatekey())
+  # Get Run As connection information for the Azure Automation service principal
+  application_id = runas_connection["ApplicationId"]
+  thumbprint = runas_connection["CertificateThumbprint"]
+  tenant_id = runas_connection["TenantId"]
 
-        # Get Run As connection information for the Azure Automation service principal
-        application_id = runas_connection["ApplicationId"]
-        thumbprint = runas_connection["CertificateThumbprint"]
-        tenant_id = runas_connection["TenantId"]
+  # Authenticate with service principal certificate
+  resource = "https://management.core.windows.net/"
+  authority_url = ("https://login.microsoftonline.com/" + tenant_id)
+  context = adal.AuthenticationContext(authority_url)
+  return azure_active_directory.AdalAuthentication(
+    lambda: context.acquire_token_with_client_certificate(
+      resource,
+      application_id,
+      pem_pkey,
+      thumbprint)
+  )
 
-        # Authenticate with service principal certificate
-        resource = "https://management.core.windows.net/"
-        authority_url = ("https://login.microsoftonline.com/" + tenant_id)
-        context = adal.AuthenticationContext(authority_url)
-        return azure_active_directory.AdalAuthentication(
-            lambda: context.acquire_token_with_client_certificate(
-                resource,
-                application_id,
-                pem_pkey,
-                thumbprint)
-        )
+# Authenticate to Azure using the Azure Automation Run As service principal
+runas_connection = automationassets.get_automation_connection("AzureRunAsConnection")
+azure_credential = get_automation_runas_credential(runas_connection)
+```
 
-
-    # Authenticate to Azure using the Azure Automation Run As service principal
-    runas_connection = automationassets.get_automation_connection("AzureRunAsConnection")
-    azure_credential = get_automation_runas_credential(runas_connection)
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [グラフィカル オーサリング内のリンク](automation-graphical-authoring-intro.md#links-and-workflow)に関する記事を参照して、Runbook のロジック フローを制御する方法を理解します。  
 

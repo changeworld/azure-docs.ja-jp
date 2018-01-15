@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: ab675207094bc8ee317573192c33c20039780fe2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: e885a482edcba48c18e425c54f4acc28ee650ddd
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
-> * [Windows での C# ](service-fabric-reliable-services-quick-start.md)
+> * [Windows での C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
 >
 >
@@ -200,7 +200,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable Hashmap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable Hashmap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) は、サービスに状態を確実に格納するために使用できるディクショナリ実装です。 Service Fabric と Reliable Hashmap を使用すると、データをサービスに直接格納できるため、外部の永続ストアが必要ありません。 Reliable Hashmap により、データの可用性が向上します。 Service Fabric では、サービスの複数の *レプリカ* を作成して管理することでこれを実現します。 また、これらのレプリカとその状態遷移の管理の複雑さを取り除く API も提供します。
 
 Reliable Collection にはカスタム型を含むすべての Java 型を格納できます。ただし次の点にご注意ください。
 
@@ -253,6 +253,6 @@ Install.sh スクリプトには、アプリケーション パッケージを�
 $ ./install.sh
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Service Fabric CLI の概要](service-fabric-cli.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 23506804ee41688bfebeb0674d99154ff1c77e61
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c00d324adfc1b71d436cb017214af98ff3002cf
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services
 ## <a name="overview"></a>概要
@@ -37,15 +37,17 @@ Azure にデプロイされたアプリケーションの ID ニーズを満た�
 Azure AD ドメイン サービスは、より簡単に目的を達成できる代替え手段として設計されています。
 
 ### <a name="watch-an-introductory-video"></a>紹介ビデオを見る
-<iframe width="560" height="315" src="https://www.youtube.com/embed/T1Nd9APNceQ" frameborder="0" allowfullscreen></iframe>
 
+>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
 ## <a name="introducing-azure-ad-domain-services"></a>Azure AD ドメイン サービスの概要
+
 Azure AD Domain Services では、Windows Server Active Directory と完全に互換性のある管理対象ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証) を提供します。 クラウドでドメイン コントローラーのデプロイ、管理、および修正プログラムの適用を行わなくても、これらのドメイン サービスを使用することができます。 Azure AD ドメイン サービスは既存の Azure AD テナントと統合されるので、ユーザーは企業の資格情報を使用してログインできるようになります。 さらに、既存のグループおよびユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。このため、'リフト アンド シフト' 方式でオンプレミスのリソースを Azure インフラストラクチャ サービスに滑らかに移行することができます。
 
 Azure AD ドメイン サービスの機能は、Azure AD テナントがクラウド専用であっても、オンプレミスの Active Directory と同期しているとしても、シームレスに動作します。
 
 ### <a name="azure-ad-domain-services-for-cloud-only-organizations"></a>クラウドのみの組織向けの Azure AD ドメイン サービス
+
 クラウド専用 Azure AD テナント ('管理対象テナント' と呼ばれることもあります) には、オンプレミスの ID フットプリントはありません。 言い換えると、ユーザー アカウント、ユーザーのパスワード、およびグループ メンバーシップはすべてクラウドにネイティブです。つまり、Azure AD で作成および管理されます。 クラウド専用の Azure AD テナントである Contoso について少し検討してみましょう。 次の図に示すように、Contoso の管理者が Azure インフラストラクチャ サービスで仮想ネットワークを構成しました。 アプリケーションとサーバー ワークロードは、この仮想ネットワークで Azure 仮想マシンにデプロイされています。 Contoso は、クラウド専用のテナントであるため、ユーザー ID、ユーザーの資格情報、およびグループ メンバーシップはすべて Azure AD で作成および管理されます。
 
 ![Azure AD ドメイン サービスの概要](./media/active-directory-domain-services-overview/aadds-overview.png)
@@ -88,7 +90,7 @@ Azure AD ドメイン サービスを使用することで、次の恩恵を享�
 * **コスト効果** – Azure AD ドメイン サービスを使用すると、従来のディレクトリ対応アプリケーションをサポートする ID インフラストラクチャを管理することに関連して発生するインフラストラクチャおよび管理の負担を回避できます。 これらのアプリケーションを Azure インフラストラクチャ サービスに移行することで、運用コストの大幅節減を実現することができます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ### <a name="learn-more-about-azure-ad-domain-services"></a>Azure AD Domain Services の詳細
 * [機能](active-directory-ds-features.md)
 * [デプロイメント シナリオ](active-directory-ds-scenarios.md)

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/03/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 7b2b6c01de92e3d7375b6cee71e8097799fb6081
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8881d28e1625664d0a124057821192aabfe1180b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Azure Data Lake Store と Azure BLOB ストレージの比較
 この記事の表には、ビッグ データ処理の重要な側面に沿った Azure Data Lake Store と Azure BLOB ストレージの違いがまとめられています。 Azure BLOB ストレージは、さまざまなストレージ シナリオ向けに設計されたスケーラブルな汎用オブジェクト ストアです。 Azure Data Lake Store は、ビッグ データ分析ワークロードに最適化されたハイパースケール リポジトリです。
 
-|  | Azure Data Lake Store | Azure BLOB ストレージ |
+|  | Azure Data Lake Store | Azure Blob Storage |
 | --- | --- | --- |
 | 目的 |ビッグ データ分析ワークロードに最適化されたストレージ |さまざまなストレージ シナリオに対応する汎用オブジェクト ストア |
 | ユース ケース |バッチ、対話型、ストリーミング分析、および機械学習データ (ログ ファイル、IoT データ、クリック ストリーム、大規模なデータセットなど) |あらゆる種類のテキスト データまたはバイナリ データ (アプリケーション バックエンド、バックアップ データ、ストリーミング用メディア ストレージ、汎用データなど) |
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 | Structure |階層型ファイル システム |フラットな名前空間を使用するオブジェクト ストア |
 | API |HTTPS 経由の REST API |HTTP/HTTPS 経由の REST API |
 | サーバー側 API |[WebHDFS 互換の REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure BLOB ストレージ REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
-| Hadoop ファイル システム クライアント |はい |はい |
+| Hadoop ファイル システム クライアント |[はい] |[はい] |
 | データ操作 - 認証 |[Azure Active Directory ID](../active-directory/active-directory-authentication-scenarios.md) |共有シークレット ([アカウント アクセス キー](../storage/common/storage-create-storage-account.md#manage-your-storage-account)と [Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) キー) に基づきます。 |
 | データ操作 - 認証プロトコル |OAuth 2.0。 呼び出しには、Azure Active Directory によって発行された有効な JWT (JSON Web トークン) が含まれている必要があります。 |ハッシュベース メッセージ認証コード (HMAC)。 呼び出しには、HTTP 要求の一部に対する Base64 でエンコードされた SHA-256 ハッシュが含まれている必要があります。 |
 | データ操作 - 承認 |POSIX アクセス制御リスト (ACL)。  Azure Active Directory ID に基づく ACL は、ファイルおよびフォルダー レベルで設定できます。 |アカウントレベルの承認には、[アカウント アクセス キー](../storage/common/storage-create-storage-account.md#manage-your-storage-account)を使用します<br>アカウント、コンテナー、または BLOB の承認には、[Shared Access Signature キー](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用します |
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 | リージョン別の提供状況 |詳細については、 [こちら](https://azure.microsoft.com/regions/#services) |詳細については、 [こちら](https://azure.microsoft.com/regions/#services) |
 | 料金 |詳細については、 [価格](https://azure.microsoft.com/pricing/details/data-lake-store/) |詳細については、 [価格](https://azure.microsoft.com/pricing/details/storage/) |
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
 * [Data Lake Store の使用](data-lake-store-get-started-portal.md)
 

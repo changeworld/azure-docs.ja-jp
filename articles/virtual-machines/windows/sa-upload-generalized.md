@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
-ms.openlocfilehash: e6fc49855b449a7723a7f8a0c1c41516b3a44ee5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ROBOTS: NOINDEX
+ms.openlocfilehash: d8c700d7b23f0e86b4a190e3c1f1143d962a8d63
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>一般化した VHD を Azure にアップロードして新しい VM を作成する
 
@@ -52,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
 3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
 4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
-5. **[OK]**をクリックします。
+5. Click **OK**.
    
     ![Sysprep の開始](./media/upload-generalized-managed/sysprepgeneral.png)
 6. Sysprep は完了時に仮想マシンをシャットダウンします。 
@@ -67,7 +68,7 @@ ms.lasthandoff: 10/11/2017
 
 VHD を Azure ストレージ アカウントにアップロードします。
 
-### <a name="log-in-to-azure"></a>Azure へのログイン
+### <a name="log-in-to-azure"></a>Azure にログインする
 PowerShell バージョン 1.4 以降がまだインストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
 
 1. Azure PowerShell を開き、Azure アカウントにサインインします。 Azure アカウント資格情報を入力するためのポップアップ ウィンドウが開きます。
@@ -288,7 +289,7 @@ $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
     $vmList.Name
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure PowerShell で新しい仮想マシンを管理する方法については、 [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
 
 

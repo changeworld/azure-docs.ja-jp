@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 37957c75fbe18734761ed8b33a27fe566018f4d2
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 5ef8b81b2aa4df802f67b1a9e90b6bd60dcd1168
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,7 +43,8 @@ ODBC ソースのデータをサポートされる任意のシンク データ �
 - データ ストア用の ODBC ドライバーを統合ランタイム コンピューターにインストールする。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、ODBC コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -51,15 +52,15 @@ ODBC ソースのデータをサポートされる任意のシンク データ �
 
 ODBC のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Odbc** に設定します。 | あり |
-| connectionString | 資格情報部分を除外した接続文字列。 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN on IR machine>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。| あり |
-| authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用可能な値は **Basic** および **Anonymous**。 | あり |
-| userName | 基本認証を使用している場合は、ユーザー名を指定します。 | なし |
-| パスワード | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 | いいえ |
-| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドを SecureString とマークします。 | いいえ |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |あり |
+| 型 | type プロパティは **Odbc** に設定します。 | [はい] |
+| connectionString | 資格情報部分を除外した接続文字列。 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN on IR machine>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。| [はい] |
+| authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用可能な値は **Basic** および **Anonymous**。 | [はい] |
+| userName | 基本認証を使用している場合は、ユーザー名を指定します。 | いいえ  |
+| password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 | いいえ  |
+| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドを SecureString とマークします。 | いいえ  |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
 
 **例 1: 基本認証の使用**
 
@@ -120,9 +121,9 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
 
 ODBC 対応データ ストアをコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
+| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | ODBC データ ストア内のテーブルの名前。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、<br/>シンクの場合ははい |
 
 **例**
@@ -151,10 +152,10 @@ ODBC 対応データ ストアをコピー元またはコピー先としてデ�
 
 ODBC 対応データ ストアからデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
+| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -192,12 +193,12 @@ ODBC 対応データ ストアからデータをコピーするには、コピ�
 
 ODBC 対応データ ストアにデータをコピーするには、コピー アクティビティのシンクの種類を **OdbcSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **OdbcSink** に設定する必要があります | あり |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ |
+| 型 | コピー アクティビティのシンクの type プロパティは **OdbcSink** に設定する必要があります | [はい] |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ  |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 0 - 自動検出) |
-| preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
+| preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |
 
 > [!NOTE]
 > "writeBatchSize" が設定されていない場合 (自動検出)、コピー アクティビティは、ドライバーでバッチ操作がサポートされるかどうかを検出した後、サポートされる場合は 10000 を、サポートされない場合は 1 を設定します。 0 以外の値を明示的に設定した場合、コピー アクティビティはその値を尊重します。実行時にドライバーがバッチ操作をサポートしていない場合、操作は失敗します。
@@ -396,5 +397,5 @@ Data Factory ソリューションで SAP HANA シンクを使用する前に、
 4. データ ストアへの接続に使用する **[接続文字列]** を入力し、**[認証]** を選択し、**[ユーザー名]**、**[パスワード]**、**[資格情報]** を入力します。
 5. **[接続テスト]** をクリックして、データ ストアへの接続をテストします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

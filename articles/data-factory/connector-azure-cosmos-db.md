@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: ab9e7b1b287be408f2d53ea005bad3815dc45f83
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a8d0cf5e50fdc31aef110c359713be32fc09c8a7
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする
 
@@ -42,7 +42,8 @@ Azure Cosmos DB のデータをサポートされる任意のシンク データ
 JSON ファイルまたは他の Cosmos DB コレクションをコピー先またはコピー元としてドキュメントをそのままコピーするには、「[JSON ドキュメントのインポート/エクスポート](#importexport-json-documents)」を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションで、Azure Cosmos DB に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -50,11 +51,11 @@ JSON ファイルまたは他の Cosmos DB コレクションをコピー先ま�
 
 Azure Cosmos DB のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **CosmosDb** に設定する必要があります。 | あり |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString とマークします。 |あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| 型 | type プロパティは **CosmosDb** に設定する必要があります。 | [はい] |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString とマークします。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
 
@@ -83,10 +84,10 @@ Azure Cosmos DB のリンクされたサービスでは、次のプロパティ�
 
 Azure Cosmos DB をコピー元またはコピー先としてデータのコピーを行うには、データセットの type プロパティを **DocumentDbCollection** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**DocumentDbCollection** を設定する必要があります。 |あり |
-| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |あり |
+| 型 | データセットの type プロパティは、**DocumentDbCollection** を設定する必要があります。 |[はい] |
+| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |[はい] |
 
 **例:**
 
@@ -121,10 +122,10 @@ Azure Cosmos DB などのスキーマのないデータ ストアの場合、コ
 
 Azure Cosmos DB からデータをコピーするには、コピー アクティビティのソースの種類を **DocumentDbCollectionSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **DocumentDbCollectionSource** を設定する必要があります。 |あり |
-| クエリ |データを読み取る Cosmos DB クエリを指定します。<br/><br/>例: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |なし <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
+| 型 | コピー アクティビティのソースの type プロパティは **DocumentDbCollectionSource** を設定する必要があります。 |[はい] |
+| クエリ |データを読み取る Cosmos DB クエリを指定します。<br/><br/>例: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ  <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |ドキュメントが入れ子になっていることと、結果セットの入れ子を解除する方法を示す特殊文字。<br/><br/>たとえば、Cosmos DB クエリで入れ子になった結果 `"Name": {"First": "John"}` が返された場合、nestedSeparator がドットであるとき、コピー アクティビティは、値が "John" である列名 "Name.First" として識別します。 |いいえ (既定値はドット `.`) |
 
 **例:**
@@ -163,11 +164,11 @@ Azure Cosmos DB からデータをコピーするには、コピー アクティ
 
 Azure Cosmos DB からデータをコピーするには、コピー アクティビティのシンクの種類を **DocumentDbCollectionSink** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **DocumentDbCollectionSink** に設定する必要があります |あり |
+| 型 | コピー アクティビティのシンクの type プロパティは **DocumentDbCollectionSink** に設定する必要があります |[はい] |
 | nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>たとえば、出力データセット構造内の `Name.First` は、nestedSeparator がドットの場合は、次の JSON 構造を Cosmos DB ドキュメント内に生成します。`"Name": {"First": "[value maps to this column from source]"}` |いいえ (既定値はドット `.`) |
-| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。<br/><br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ |
+| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。<br/><br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ  |
 
 **例:**
 
@@ -213,5 +214,5 @@ Azure Cosmos DB からデータをコピーするには、コピー アクティ
 - Cosmos DB データセットに "structure" セクションを指定しません。コピー アクティビティの Cosmos DB のソース/シンクに "nestingSeparator" プロパティを指定しません。
 - JSON ファイルに対するインポート/エクスポートを行うときに、対応するファイル ストア データセットに、形式の種類 "JsonFormat" を指定し、"filePattern" プロパティを構成します (詳細は「[JSON 形式](supported-file-formats-and-compression-codecs.md#json-format)」セクションを参照)。次に、"structure" セクションを指定せず、残りの形式設定セクションをスキップします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

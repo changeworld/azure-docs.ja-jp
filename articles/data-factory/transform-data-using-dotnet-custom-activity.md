@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shengc
-ms.openlocfilehash: 9673c5ad3ae48f9f2b8a47165b739cc2431060ae
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 6300e59d001864c7adc6ba369586dbe848a85edd
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -105,17 +105,17 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。 
 
-| プロパティ              | 説明                              | 必須 |
+| プロパティ              | [説明]                              | 必須 |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | パイプラインのアクティビティの名前     | あり      |
-| 説明           | アクティビティの動作を説明するテキスト。  | いいえ       |
-| type                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | あり      |
-| 既定のコンテナー     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | あり      |
-| コマンド               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | あり      |
-| resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ       |
-| folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。 | いいえ       |
-| referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ       |
-| extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ       |
+| name                  | パイプラインのアクティビティの名前。     | [はい]      |
+| 説明           | アクティビティの動作を説明するテキスト。  | いいえ        |
+| 型                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | [はい]      |
+| 既定のコンテナー     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | [はい]      |
+| コマンド               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | [はい]      |
+| resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ        |
+| folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。 | いいえ        |
+| referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ        |
+| extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ        |
 
 ## <a name="executing-commands"></a>コマンドの実行
 
@@ -331,7 +331,7 @@ namespace SampleApp
    - Microsoft.Azure.Management.DataFactories NuGet パッケージは、もはや必要ありません。 
    - コードをコンパイルし、実行可能ファイルと依存関係を Azure Storage にアップロードし、folderPath プロパティにパスを定義します。 
 
-エンド ツー エンドの DLL とパイプラインの方法の完全なサンプルについては、Data Factory V1 のドキュメント「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-use-custom-activities)」で説明されているサンプルを Data Factory V2 カスタム アクティビティのスタイルに書き直すことができます。 [Data Factory V2 カスタム アクティビティのサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)をご覧ください。 
+エンド ツー エンドの DLL とパイプラインの方法の完全なサンプルについては、Data Factory V1 のドキュメント「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)」で説明されているサンプルを Data Factory V2 カスタム アクティビティのスタイルに書き直すことができます。 [Data Factory V2 カスタム アクティビティのサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)をご覧ください。 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch の自動スケール
 **自動スケール** 機能で、Azure Batch プールを作成することもできます。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。 
@@ -353,7 +353,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 プールで既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。  プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

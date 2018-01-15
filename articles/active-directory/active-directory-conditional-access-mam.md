@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 01/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: aaf2da57d8653371ab0b46e47474442aa4be1d65
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7814b53a69506f81bc6a75387c62766e36d528d8
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory のアプリベースの条件付きアクセス  
 
@@ -114,7 +114,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**デバイス プラットフォーム**と**クライアント アプリ**を構成する必要があります。
 
-    a. **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/03.png)
 
@@ -144,7 +144,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**クライアント アプリ**を構成する必要があります。 
 
-    a. **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/08.png)
 
@@ -195,7 +195,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**デバイス プラットフォーム**と**クライアント アプリ**を構成する必要があります。
 
-    a. **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/03.png)
 
@@ -226,7 +226,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**クライアント アプリ**を構成する必要があります。
 
-    a. **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/08.png)
 
@@ -279,7 +279,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**デバイス プラットフォーム**と**クライアント アプリ**を構成する必要があります。 
  
-    a. **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/03.png)
 
@@ -375,7 +375,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**デバイス プラットフォーム**と**クライアント アプリ**を構成する必要があります。 
  
-    a. **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/03.png)
 
@@ -389,9 +389,9 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
     - **承認されたクライアント アプリが必要です (プレビュー)**
 
-    - **選択したコントロールのいずれかが必要です**   
+    - **選択したコントロールすべてが必要です**   
  
-    ![条件付きアクセス](./media/active-directory-conditional-access-mam/11.png)
+    ![条件付きアクセス](./media/active-directory-conditional-access-mam/13.png)
 
 
 
@@ -440,7 +440,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
 

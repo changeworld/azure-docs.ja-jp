@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 41842806aecfc0ed6ac663262305785a23c5ba5d
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 7316ad5637fbfc11f3da48394874f814dc47be31
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,8 @@ SQL Server データベースにデータをコピーする、SQL Server デー�
 パブリックにアクセスできない SQL Server データベースからコピーしたデータを使用するには、セルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。 統合ランタイムには SQL Server データベース ドライバーが組み込まれているため、SQL Server データベースとの間でデータをコピーするときにドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、SQL Server データベース コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -53,13 +54,13 @@ SQL Server データベースにデータをコピーする、SQL Server デー�
 
 SQL Server のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **SqlServer** に設定する必要があります | あり |
-| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 このフィールドを SecureString とマークします。 |あり |
-| userName |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |なし |
-| パスワード |userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |いいえ |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| 型 | type プロパティを **SqlServer** に設定する必要があります | [はい] |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な connectionString 情報を指定します。 このフィールドを SecureString とマークします。 |[はい] |
+| userName |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
+| password |userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |いいえ  |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例 1: SQL 認証の使用**
 
@@ -114,10 +115,10 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
 
 SQL Server データベースとの間でデータをコピーするには、データセットの type プロパティを **SqlServerTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | あり |
-| tableName |リンクされたサービスが参照する SQL Server Database インスタンスのテーブルまたはビューの名前です。 | あり |
+| 型 | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | [はい] |
+| tableName |リンクされたサービスが参照する SQL Server Database インスタンスのテーブルまたはビューの名前です。 | [はい] |
 
 **例:**
 
@@ -146,12 +147,12 @@ SQL Server データベースとの間でデータをコピーするには、デ
 
 SQL Server からデータをコピーするには、コピー アクティビティのソースの種類を **SqlSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | あり |
-| SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |なし |
-| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |なし |
-| storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
+| 型 | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | [はい] |
+| SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |いいえ  |
+| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ  |
+| storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
 
 **注意する点:**
 
@@ -250,15 +251,15 @@ GO
 
 SQL Server にデータをコピーするには、コピー アクティビティのシンクの種類を **SqlSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **SqlSink** に設定する必要があります | あり |
+| 型 | コピー アクティビティのシンクの type プロパティは **SqlSink** に設定する必要があります | [はい] |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値: 10000) |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ |
-| sqlWriterStoredProcedureName |対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 |いいえ |
-| storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
-| sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |いいえ |
-| preCopyScript |コピー アクティビティの毎回の実行で、データを SQL Server に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ  |
+| sqlWriterStoredProcedureName |対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 |いいえ  |
+| storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
+| sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |いいえ  |
+| preCopyScript |コピー アクティビティの毎回の実行で、データを SQL Server に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ  |
 
 > [!TIP]
 > SQL Server にデータをコピーすると、既定では、コピー アクティビティによりデータがシンク テーブルに付加されます。 UPSERT または追加のビジネス ロジックを実行するには、SqlSink でストアド プロシージャを使用します。 詳細については、「[SQL シンクのストアド プロシージャの呼び出し](#invoking-stored-procedure-for-sql-sink)」を参照してください。
@@ -481,26 +482,26 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | SQL Server のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | bigint |Int64 |
-| バイナリ |Byte[] |
-| ビット |Boolean |
+| binary |Byte[] |
+| ビット |ブール |
 | char |String、Char[] |
-| date |DateTime |
-| DateTime |DateTime |
-| datetime2 |DateTime |
-| Datetimeoffset |Datetimeoffset |
+| date |Datetime |
+| DateTime |Datetime |
+| datetime2 |Datetime |
+| Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM 属性 (varbinary(max)) |Byte[] |
 | Float |Double |
-| イメージ |Byte[] |
+| image |Byte[] |
 | int |Int32 |
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| numeric |Decimal |
+| 数値 |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
@@ -530,8 +531,8 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 3. 同じウィンドウで、**[TCP/IP]** をダブルクリックして、**[TCP/IP のプロパティ]** ウィンドウを起動します。
 4. **[IP アドレス]** タブに切り替えます。下へスクロールして **[IPAll]** セクションを表示します。 **[TCP ポート]** の値をメモしておきます (既定値は **1433** です)。
 5. コンピューターに **Windows Firewall のルール** を作成し、このポート経由の受信トラフィックを許可します。  
-6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のコンピューターから SQL Server Management Studio を使用します。 (例: `"<machine>.<domain>.corp.<company>.com,1433"`)。
+6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のコンピューターから SQL Server Management Studio を使用します。 たとえば、「 `"<machine>.<domain>.corp.<company>.com,1433"`」のように入力します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

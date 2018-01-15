@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 926b1b71ca27ede23e36dcf313ef51d4ea73fc02
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3442de96f346ef211672064584700a7ce183d929
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-13-deploy"></a>レッスン 13: デプロイする
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="deploy"></a>デプロイ
 
 このレッスンでは、デプロイのプロパティを構成します。そのためにまず、デプロイ先となる Azure Analysis Services サーバーとモデルの名前を指定し、 そのインスタンスにモデルをデプロイします｡ モデルをデプロイすると､ユーザーがレポート用クライアント アプリケーションを使用してそのモデルに接続できます｡ 詳しくは、「[Azure Analysis Services にデプロイする](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy)」をご覧ください。  
   
@@ -70,7 +68,7 @@ ms.lasthandoff: 11/02/2017
 3. デプロイが正常に終了したら､**[Close]**をクリックします｡  
   
 ## <a name="conclusion"></a>まとめ  
-ご利用ありがとうございます。 これで､初めての Analysis Services 表形式モデルのオーサリングとデプロイは終了です｡ このチュートリアルでは､表形式モデルの作成で一般的な作業の手順をご案内しました｡ Adventure Works Internet Sales モデルをデプロイしましたから､SQL Server Management Studio を使用してモデルを管理､すなわち､処理スクリプトやバックアップ計画を作成することができます｡ またユーザーはこれで､Microsoft Excel や Power BI などのレポート用クライアント アプリケーションを使用してモデルに接続できます｡  
+お疲れさまでした。 これで､初めての Analysis Services 表形式モデルのオーサリングとデプロイは終了です｡ このチュートリアルでは､表形式モデルの作成で一般的な作業の手順をご案内しました｡ Adventure Works Internet Sales モデルをデプロイしましたから､SQL Server Management Studio を使用してモデルを管理､すなわち､処理スクリプトやバックアップ計画を作成することができます｡ またユーザーはこれで､Microsoft Excel や Power BI などのレポート用クライアント アプリケーションを使用してモデルに接続できます｡  
 
 ![aas-lesson13-ssms](../tutorials/media/aas-lesson13-ssms.png)
   

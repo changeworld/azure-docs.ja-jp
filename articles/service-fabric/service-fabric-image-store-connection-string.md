@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/02/2017
+ms.date: 01/10/2018
 ms.author: alexwun
-ms.openlocfilehash: 723cf7d98022e8bbb4f1e3c8c0836a4c53c6a078
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 4b64331a4f25ce0cc01b2ee9f32633ab035e3131
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>ImageStoreConnectionString 設定を理解する
 
@@ -46,7 +46,7 @@ Service Fabric は、マイクロソフトの社内で数多くの多様なチ�
 
 したがって、ImageStoreConnectionString は構成可能ではありますが、通常は、単純に既定の設定を使用します。 Visual Studio から Azure に発行する場合、パラメーターは、状況に応じて自動的に設定されます。 Azure でホストされるクラスターにプログラムでデプロイする場合、接続文字列は常に "fabric:ImageStore" です。 不確かな場合は、[PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest)、[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)、または[REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) でクラスター マニフェストを取得することで、その値を常に検証できます。 オンプレミス テストと運用クラスターはどちらも、常にイメージ ストア サービス プロバイダーを使用するように構成する必要があります。
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 [PowerShell を使用してアプリケーションのデプロイと削除を実行する][10]
 
 <!--Image references-->

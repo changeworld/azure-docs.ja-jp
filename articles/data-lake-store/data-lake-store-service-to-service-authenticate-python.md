@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 9f23a5e24067dab29a21a44404a912588b46d3b0
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c04b870e72c5d29df95d16b96cc423441af6fd85
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-python"></a>Data Lake Store での Python を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -120,7 +120,7 @@ Use this snippet to authenticate with Azure AD for account management operations
     mgmt_token = context.acquire_token_with_client_certificate(resource_uri, client_id, client_cert, client_cert_thumbprint)
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、サービス間認証を使って、Python を使用して Azure Data Lake Store で認証する方法を説明しました。 これで、Python を使用して Azure Data Lake Store を使用する方法について説明した次の記事に進めるようになりました。
 
 * [Python を使用した Data Lake Store に対するアカウント管理操作](data-lake-store-get-started-python.md)

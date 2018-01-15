@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 2a57b60a2222d6e2ea864410edc6a32a0bf0c76c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 69670d789d75a99d69538821d88427bd8ac397be
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="getting-started-with-azure-automation"></a>Azure Automation の概要
 
@@ -88,10 +88,6 @@ Azure Automation で Azure コマンドレットを使用してリソースに�
 
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではサブスクリプションのすべてのリソースを管理できます。 ポリシーにより、データやリソースを特定のリージョンに分離する必要がある場合は、異なるリージョンで Automation アカウントを作成します。
 
-> [!NOTE]
-> Azure ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。 これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
-> 
-
 Azure Portal で Automation アカウントを作成すると、次の 2 つの認証エンティティが自動的に作成されます。
 
 * 実行アカウント。 Azure Active Directory (Azure AD) のサービス プリンシパルと証明書は、このアカウントで作成します。 また、Runbook を使って Resource Manager リソースを管理する共同作成者の RBAC (ロールベースのアクセス制御) も、このアカウントで割り当てます。
@@ -102,7 +98,7 @@ Azure Portal で Automation アカウントを作成すると、次の 2 つの�
 #### <a name="authentication-methods"></a>認証方法
 次の表は、Azure Automation によってサポートされる各環境のさまざまな認証方法をまとめたものです。
 
-| メソッド | 環境 
+| 方法 | 環境 
 | --- | --- | 
 | Azure 実行アカウントとクラシック実行アカウント |Azure Resource Manager と Azure クラシック デプロイメント |  
 | Azure AD ユーザー アカウント |Azure Resource Manager と Azure クラシック デプロイメント |  
@@ -146,7 +142,7 @@ Automation アカウントが特定のリージョンに対して定義されて
 
 Azure Portal で Automation アカウントを作成する方法は複数あります。  次の表では、各種のデプロイ方法とそれらの違いについて説明しています。  
 
-|メソッド | Description |
+|方法 | [説明] |
 |-------|-------------|
 | Marketplace から [Automation & Control] を選択する | 相互に関連付けられた Automation アカウントと OMS ワークスペースの両方を同じリソース グループとリージョンに作成するサービス。  OMS との統合には、Log Analytics を使用して Runbook のジョブ ステータスとジョブ ストリームを長期にわたって監視および分析したり、問題をエスカレートまたは調査する高度な機能を利用したりするメリットも含まれます。 また、Change Tracking & Update Management ソリューションのデプロイも行います。これらのソリューションは、既定で有効になります。 |
 | Marketplace から [Automation] を選択する | OMS ワークスペースに関連付けられていない Automation アカウントを新規または既存のリソース グループ内に作成します。Automation & Control サービスで利用可能なソリューションは含まれません。 これは、Automation の概要がわかる基本的な構成です。Runbook、DSC 構成を作成し、サービスの機能を使用する方法を学習するのに役立ちます。 |
@@ -187,7 +183,7 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
 
 サービスがオンボードされた後は、Runbook の作成、有効にした管理ソリューションの利用の開始、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) ロールのデプロイ、または [Log Analytics](https://docs.microsoft.com/azure/log-analytics) を使用して、クラウドまたはオンプレミス環境のリソースによって生成されたデータの収集を開始することができます。   
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 新しい Automation アカウントが Azure リソースに対して認証できることを確認するには、「[Azure Automation 実行アカウントの認証をテストする](automation-verify-runas-authentication.md)」を参照してください。
 * Runbook を作成するには、開始する前に、サポートされている [Automation の Runbook の種類](automation-runbook-types.md)と関連する考慮事項を確認してください。
 

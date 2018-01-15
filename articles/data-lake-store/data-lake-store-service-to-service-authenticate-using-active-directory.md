@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 9a4502ecfd5471cc2a968f995e66e595f59384b3
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0b3f19bb92d1eeb214150bf118d546cd1c67cd78
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -69,7 +69,7 @@ Azure Active Directory を使用して Azure Data Lake Store でのサービス�
 5. **[追加]** アイコンをクリックして、**[カスタム アクセスの追加]** ブレードを開きます。 このブレードの **[ユーザーまたはグループの選択]** をクリックし、**[ユーザーまたはグループの選択]** ブレードで、作成しておいた Azure Active Directory アプリケーションを探します。 検索対象のグループが多数存在する場合は、上部にあるテキスト ボックスを使用してグループ名をフィルター処理できます。 追加するグループをクリックして、 **[選択]**をクリックします。
    
     ![グループを追加する](./media/data-lake-store-authenticate-using-active-directory/adl.acl.3.png "グループを追加する")
-6. **[アクセス許可の選択]** をクリックして、アクセス許可を選択するともに、このアクセス許可に既定の ACL、アクセス ACL、またはその両方のいずれを割り当てるか選択します。 **[OK]**をクリックします。
+6. **[アクセス許可の選択]** をクリックして、アクセス許可を選択するともに、このアクセス許可に既定の ACL、アクセス ACL、またはその両方のいずれを割り当てるか選択します。 Click **OK**.
    
     ![グループにアクセス許可を割り当てる](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "グループにアクセス許可を割り当てる")
    
@@ -97,7 +97,7 @@ Azure Active Directory を使用して Azure Data Lake Store でのサービス�
 
     ![OAuth トークン エンドポイント](./media/data-lake-store-authenticate-using-active-directory/oauth-token-endpoint-1.png "OAuth トークン エンドポイント")   
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Azure AD Web アプリケーションを作成し、.NET SDK、Java、Python、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD ネイティブ アプリケーションを使用して、Data Lake Store に対し、まず認証を行ってからその他の操作を実行する方法について説明しています。
 
 * [Data Lake Store に対する Java を使用したサービス間認証](data-lake-store-service-to-service-authenticate-java.md)

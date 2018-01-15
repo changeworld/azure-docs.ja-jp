@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/29/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: e8c7b788061b3eb18b3e6c282339a03d93ab8b1c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: fdae36c3cbdda16f9392a113502c7c6c62b25534
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="filesystem-operations-on-data-lake-store-using-java-sdk"></a>Java SDK を使用した Data Lake Store に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -209,7 +209,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 1. IDE 内から実行するには、**[実行]** ボタンを見つけてクリックします。 Maven から実行するには、[exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) を使用します。
 2. コマンド ラインから実行できるスタンドアロン jar を生成するには、[Maven アセンブリ プラグイン](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html)を使用して、すべての依存関係を含めて jar をビルドします。 [GitHub のサンプル ソース コード](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)の pom.xml に例が含まれています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Java SDK の JavaDoc を確認する](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 

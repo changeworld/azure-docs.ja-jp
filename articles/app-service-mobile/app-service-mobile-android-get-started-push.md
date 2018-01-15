@@ -3,9 +3,9 @@ title: "Mobile Apps を使用した Android アプリへのプッシュ通知の
 description: "Mobile Apps を使用して Android アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile
 documentationcenter: android
-manager: syntaxc4
+manager: crdun
 editor: 
-author: ggailey777
+author: conceptdev
 ms.assetid: 9058ed6d-e871-4179-86af-0092d0ca09d3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 11/17/2017
-ms.author: glenga
-ms.openlocfilehash: 6882a7b1864d511e70495e1d1d782aa0f03beca3
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.author: crdun
+ms.openlocfilehash: 9e9f7aba49c53a1a6fcc611ed771f266eb49c883
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>プッシュ通知を Android アプリに追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -69,7 +69,7 @@ ms.lasthandoff: 11/20/2017
 ## <a name="test-the-app-against-the-published-mobile-service"></a>発行されたモバイル サービスに対してアプリケーションをテストする
 Android フォンを USB ケーブルで直接接続するか、エミュレーターで仮想デバイスを使用する方法により、アプリケーションをテストできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これでこのチュートリアルは終了です。次のいずれかのチュートリアルに進むことを検討してください。
 
 * [Android アプリに認証を追加する](app-service-mobile-android-get-started-users.md)。

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: ad3bc7ba38f5ea20586031bdcc3ae44f03f9da0b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e580c3f36ce19679d3edcf7a8861e4e492dfa9c5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Cloud for Customer (C4C) からデータをコピーする
 
@@ -34,7 +34,7 @@ SAP Cloud for Customer のデータを、サポートされる任意のシンク
 
 ## <a name="getting-started"></a>使用の開始
 
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、SAP Cloud for Customer コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -42,12 +42,12 @@ SAP Cloud for Customer のデータを、サポートされる任意のシンク
 
 SAP Cloud for Customer のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **SapCloudForCustomer** に設定する必要があります。 | あり |
-| url | SAP C4C OData サービスの URL。 | あり |
-| username | SAP C4C に接続するためのユーザー名を指定します。 | あり |
-| パスワード | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 | あり |
+| 型 | type プロパティは **SapCloudForCustomer** に設定する必要があります。 | [はい] |
+| url | SAP C4C OData サービスの URL。 | [はい] |
+| username | SAP C4C に接続するためのユーザー名を指定します。 | [はい] |
+| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 
 >[!IMPORTANT]
@@ -82,10 +82,10 @@ SAP Cloud for Customer のリンクされたサービスでは、次のプロパ
 
 SAP Cloud for Customer からデータをコピーするには、データセットの type プロパティを **SapCloudForCustomerResource** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **SapCloudForCustomerResource** に設定する必要があります。 |あり |
-| path | SAP C4C OData エンティティのパスを指定します。 |あり |
+| 型 | データセットの type プロパティは **SapCloudForCustomerResource** に設定する必要があります。 |[はい] |
+| パス | SAP C4C OData エンティティのパスを指定します。 |[はい] |
 
 **例:**
 
@@ -113,10 +113,10 @@ SAP Cloud for Customer からデータをコピーするには、データセッ
 
 SAP Cloud for Customer からデータをコピーするには、コピー アクティビティのソースの種類を **SapCloudForCustomerSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **SapCloudForCustomerSource** に設定する必要があります。  | あり |
-| クエリ | データを読み取るカスタム OData クエリを指定します。 | いいえ |
+| 型 | type プロパティは **SapCloudForCustomerSource** に設定する必要があります。  | [はい] |
+| クエリ | データを読み取るカスタム OData クエリを指定します。 | いいえ  |
 
 特定の日のデータを取得するサンプル クエリ: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -156,9 +156,9 @@ SAP Cloud for Customer からデータをコピーするには、コピー ア�
 
 SAP Cloud for Customer にデータをコピーするには、コピー アクティビティのシンクの種類を **SapCloudForCustomerSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **SapCloudForCustomerSink** に設定する必要があります。  | あり |
+| 型 | type プロパティは **SapCloudForCustomerSink** に設定する必要があります。  | [はい] |
 | writeBehavior | 操作の書き込み動作。 “Insert” または “Update” を指定できます。 | 
 いいえ。 既定値: "Insert"。 |
 | writeBatchSize | 書き込み操作のバッチ サイズ。 最適なパフォーマンスを得るバッチ サイズは、テーブルまたはサーバーによって異なることがあります。 | 
@@ -212,7 +212,7 @@ SAP Cloud for Customer からデータをコピーするとき、次のSAP Cloud
 | Edm.Binary | Byte[] |
 | Edm.Boolean | ブール値 |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | DateTime |
+| Edm.DateTime | Datetime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |
@@ -223,8 +223,8 @@ SAP Cloud for Customer からデータをコピーするとき、次のSAP Cloud
 | Edm.SByte | Int16 |
 | Edm.String | String |
 | Edm.Time | timespan |
-| Edm.DateTimeOffset | Datetimeoffset |
+| Edm.DateTimeOffset | DateTimeOffset |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

@@ -4,7 +4,7 @@ description: "Azure Active Directory と Box の間にシングル サインオ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: 1c1a03a4d0a2507f99dd0df8a96b949af8a8412d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b465993882563420652ef1ac8c623a1b9b7295ec
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-box"></a>チュートリアル: Azure Active Directory と Box の統合
 
@@ -30,7 +30,7 @@ Box と Azure AD の統合には、次の利点があります。
 - ユーザーが自分の Azure AD アカウントで Box に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,11 +108,9 @@ Box で Azure AD のシングル サインオンを構成してテストする�
 
     ![[Box のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-box-tutorial/url3.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.box.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`https://<subdomain>.box.com` のパターンを使用して URL を入力します。
 
-    b. **[詳細な URL 設定の表示]** をクリックします。
-
-    c. **[識別子]** ボックスに、`https://sso.services.box.net/sp/ACS.saml2` のように URL を入力します。
+    b. **[識別子]** ボックスに次の URL を入力します。`box.net`
      
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Box クライアント サポート チーム](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)にお問い合わせください。 
@@ -128,7 +126,7 @@ Box で Azure AD のシングル サインオンを構成してテストする�
 6. アプリケーション用に構成された SSO を入手するには、[Box Client サポート チーム](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)に連絡して、ダウンロードした XML ファイルを提供してください。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

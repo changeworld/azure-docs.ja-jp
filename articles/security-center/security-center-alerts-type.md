@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 01/04/2018
 ms.author: yurid
-ms.openlocfilehash: f4614ac55cde26e921edfe41160e2766aef6bb2c
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: b304ce8c60aefc417993574a0baa43cfc2298d66
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラートの概要
 この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートと関連する分析情報についてわかりやすく説明します。 アラートとインシデントを管理する方法の詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
@@ -144,7 +144,6 @@ Security Center は高度な分析を使用し、仮想マシンのイベント 
 * **Suspicious document credentials (疑わしいドキュメントの資格情報)**: このアラートは、マルウェアがファイルを実行するために使用している、疑わしい共通の事前計算されたパスワード ハッシュを示します。
 * **Dynamic PS script construction (動的 PS スクリプトの構築)**: このアラートは、PowerShell スクリプトが動的に構築されていることを示します。 攻撃者は、この手法を使用して、IDS システムを回避するためにスクリプトを段階的に構築します。
 * **Metaploit indicators (メタプロット インジケーター)**: このアラートは、さまざまな攻撃者の機能とツールを提供する Metasploit フレームワークに関連付けられたアクティビティを示します。
-* **SENSE tampering (SENSE 改ざん)**: このアラートは、Windows Defender ATP のセキュリティ監視サービスである SENSE の無効化が試行されたことを示します。
 * **Suspicious account activity (疑わしいアカウントアクティビティ)**: このアラートは、最近侵害されたアカウントを使用してコンピューターに接続しようとしたことを示します。
 * **Possible suspicious scheduling tasks access (疑わしいスケジュール タスク アクセスの可能性)**: このアラートは、cron ジョブが実行されたことを示します。cron ジョブは、攻撃者がスケジュールどおりに悪意のあるプログラムを実行するために使用することがあります。
 * **Possible suspicious command history file access (疑わしい可能性があるコマンド履歴ファイルのアクセス)**: このアラートは、コマンド履歴ファイルへの異常なアクセスを示します。
@@ -189,7 +188,7 @@ Security Center のネットワーク脅威検出は、Azure IPFIX (Internet Pro
 
 Security Center のリソース分析は、[Azure SQL Database の脅威の検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)機能との統合など、サービスとしてのプラットフォーム (PaaS) サービスに重点を置いています。 これらの領域の分析結果に基づいて、Security Center はリソースに関連するアラートをトリガーします。
 
-* **Potential SQL injection (SQL インジェクションの可能性)**: SQL インジェクションとは、後で SQL Server のインスタンスに渡して解析と実行の対象とする文字列に、悪意のあるコードが挿入される攻撃です。 SQL Server は受け取った有効な構文のクエリをすべて実行してしまうため、SQL ステートメントを構成するすべてのプロシージャにおいて、挿入に対する脆弱性を確認する必要があります。 SQL 脅威の検出では、機械学習、動作分析、異常検出を使用して、Azure SQL データベースで発生しているおそれのある疑わしいイベントを特定します。 For example: 
+* **Potential SQL injection (SQL インジェクションの可能性)**: SQL インジェクションとは、後で SQL Server のインスタンスに渡して解析と実行の対象とする文字列に、悪意のあるコードが挿入される攻撃です。 SQL Server は受け取った有効な構文のクエリをすべて実行してしまうため、SQL ステートメントを構成するすべてのプロシージャにおいて、挿入に対する脆弱性を確認する必要があります。 SQL 脅威の検出では、機械学習、動作分析、異常検出を使用して、Azure SQL データベースで発生しているおそれのある疑わしいイベントを特定します。 例:  
     * 以前の従業員によるデータベース アクセスの試行
     * SQL インジェクション攻撃
     * 在宅中のユーザーからの運用データベースへの不自然なアクセス
@@ -208,7 +207,7 @@ Security Center のリソース分析は、[Azure SQL Database の脅威の検�
 ![Unusual access alert](./media/security-center-alerts-type/security-center-alerts-type-fig20.png) 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Security Center のさまざまな種類のセキュリティ アラートについて説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure Security Center でのセキュリティ インシデントの処理](security-center-incident.md)

@@ -1,24 +1,20 @@
 ---
 title: "Microsoft Azure Linux VM 用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージについて | Microsoft Docs"
 description: "Azure での Linux 仮想マシン用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージの基本について説明します。"
-services: storage
-documentationcenter: 
-author: robinsh
-manager: timlt
-editor: tysonn
-ms.assetid: 7be8dd52-98f7-4187-9b78-55197915bc9b
-ms.service: storage
+services: virtual-machines
+author: iainfoulds
+manager: jeconnoc
+ms.service: virtual-machines
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: robinsh
-ms.openlocfilehash: fee78c87c1d73f2a0816d6e52ad48a93eef8dfc3
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.author: iainfou
+ms.openlocfilehash: 107e332a0f8c9d5a84a74de685ca458fb29caa8b
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Azure Linux VM 用のディスク ストレージについて
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Linux オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は実際に仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
@@ -45,7 +41,7 @@ Azure による一時ディスクの使用方法については、「 [Understan
 データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各ディスクの最大容量は 4,095 GB です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
 > [!NOTE]
-> 仮想マシンの容量の詳細については、「[Linux 仮想マシンのサイズ](../windows/sizes.md)」をご覧ください。
+> 仮想マシンの容量の詳細については、「[Linux 仮想マシンのサイズ](./sizes.md)」をご覧ください。
 > 
 
 ユーザーがイメージから仮想マシンを作成するときに、Azure はオペレーティング システム ディスクを作成します。 ユーザーがデータ ディスクを含むイメージを使用する場合、Azure は仮想マシンの作成時にデータ ディスクも作成します。 それ以外の場合は、仮想マシンを作成した後にデータ ディスクを追加してください。
@@ -57,7 +53,7 @@ Azure による一時ディスクの使用方法については、「 [Understan
 ## <a name="troubleshooting"></a>トラブルシューティング
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ディスクのアタッチ](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) による VM 用のストレージの追加。
 * [スナップショットの作成](snapshot-copy-managed-disk.md)。
 * [管理ディスクへの変換](convert-unmanaged-to-managed-disks.md)。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 431c974401c201a76b6d20de9837e44374716417
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 976ddf25a57dd1eff66e121c5a66bc31f664a9dc
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]
@@ -232,7 +232,7 @@ az dls account delete --account mydatalakestore
 
 確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、アカウントを削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ビッグ データの要件に対する Azure Data Lake Store の使用](data-lake-store-data-scenarios.md) 
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

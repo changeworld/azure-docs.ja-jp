@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 2b6219dc509b1af8f196f056b489a31fa331acaf
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 844efa74aba8a5dbc3a116456900d59dab3bafab
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをコピーする
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - GA](v1/data-factory-azure-search-connector.md)
+> * [バージョン 1 - 一般公開](v1/data-factory-azure-search-connector.md)
 > * [バージョン 2 - プレビュー](connector-azure-search.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Search インデックスにデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -35,7 +35,8 @@ ms.lasthandoff: 11/15/2017
 サポートされているソース データ ストアから Azure Search インデックスにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure Search コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細を説明します。
 
@@ -43,12 +44,12 @@ ms.lasthandoff: 11/15/2017
 
 Azure Search のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureSearch** に設定する必要があります。 | あり |
-| URL | Azure Search サービスの URL。 | はい |
-| key | Azure Search サービスの管理者キー。 このフィールドを SecureString とマークします。 | あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| 型 | type プロパティを **AzureSearch** に設定する必要があります。 | [はい] |
+| URL | Azure Search サービスの URL。 | [はい] |
+| key | Azure Search サービスの管理者キー。 このフィールドを SecureString とマークします。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 > [!IMPORTANT]
 > Azure Search のリンクされたサービスでクラウド データ ストアのデータを Azure Search インデックスにコピーする場合は、connactVia で明示的なリージョンを指定して Azure 統合ランタイムを参照する必要があります。 Azure Search が存在するリージョンを設定します。 [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)から説明します。
@@ -81,10 +82,10 @@ Azure Search のリンクされたサービスでは、次のプロパティが�
 
 Azure Search にデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**AzureSearchIndex** を設定する必要があります。 | あり |
-| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | あり |
+| 型 | データセットの type プロパティは、**AzureSearchIndex** を設定する必要があります。 | [はい] |
+| indexName | Azure Search インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Search にこのインデックスが存在する必要があります。 | [はい] |
 
 **例:**
 
@@ -112,11 +113,11 @@ Azure Search にデータをコピーするには、データセットの type �
 
 Azure Search にデータをコピーするには、コピー アクティビティのソースの種類を **AzureSearchIndexSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **AzureSearchIndexSink** を設定する必要があります。 | あり |
-| writeBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。<br/><br/>使用可能な値: **マージ** (既定値) および **アップロード**。 | いいえ |
-| writeBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。<br/><br/>使用可能な値: 1 ～ 1,000 の整数。既定値は 1000 です。 | いいえ |
+| 型 | コピー アクティビティのソースの type プロパティは **AzureSearchIndexSink** を設定する必要があります。 | [はい] |
+| writeBehavior | ドキュメントがそのインデックスに既に存在する場合に、マージするか置換するかを指定します。 詳細については、「[WriteBehavior プロパティ](#writebehavior-property)」を参照してください。<br/><br/>使用可能な値: **マージ** (既定値) および **アップロード**。 | いいえ  |
+| writeBatchSize | バッファー サイズが writeBatchSize に達したときに、Azure Search インデックスにデータをアップロードします。 詳細については、「[WriteBatchSize プロパティ](#writebatchsize-property)」を参照してください。<br/><br/>使用可能な値: 1 ～ 1,000 の整数。既定値は 1000 です。 | いいえ  |
 
 ### <a name="writebehavior-property"></a>WriteBehavior プロパティ
 
@@ -180,5 +181,5 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 | 文字列配列 | N |
 | GeographyPoint | N |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

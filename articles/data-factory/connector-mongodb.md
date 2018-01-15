@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 7c1505f93b28008d51ad4a8cd3516ee5c4271071
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 960365d4dc842cf5ce5587599a155861390ebb26
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,8 @@ MongoDB データベースのデータを、サポートされているシンク
 パブリックにアクセスできない MongoDB データベースからデータをコピーするには、セルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。 統合ランタイムには MongoDB ドライバーが組み込まれているため、MongoDB からデータをコピーするときにドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、MongoDB コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -52,18 +53,18 @@ MongoDB データベースのデータを、サポートされているシンク
 
 MongoDB のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティを **MongoDb** に設定する必要があります。 |あり |
-| server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
+| 型 |type プロパティを **MongoDb** に設定する必要があります。 |[はい] |
+| [サーバー] |MongoDB サーバーの IP アドレスまたはホスト名。 |[はい] |
 | ポート |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 27017) |
-| databaseName |アクセスする MongoDB データベースの名前。 |あり |
-| authenticationType | MongoDB データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Anonymous** です。 |あり |
+| databaseName |アクセスする MongoDB データベースの名前。 |[はい] |
+| authenticationType | MongoDB データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Anonymous** です。 |[はい] |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
-| パスワード |ユーザーのパスワード。 このフィールドを SecureString とマークします。 |はい (基本認証が使用される場合)。 |
+| password |ユーザーのパスワード。 このフィールドを SecureString とマークします。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |
 いいえ。 基本認証の場合、既定では管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
 
@@ -96,10 +97,10 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 MongoDB からデータをコピーするには、データセットの type プロパティを **MongoDbCollection** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**MongoDbCollection** に設定する必要があります。 | あり |
-| collectionName |MongoDB データベースのコレクション名前。 |あり |
+| 型 | データセットの type プロパティは、**MongoDbCollection** に設定する必要があります。 | [はい] |
+| collectionName |MongoDB データベースのコレクション名前。 |[はい] |
 
 **例:**
 
@@ -127,9 +128,9 @@ MongoDB からデータをコピーするには、データセットの type プ
 
 MongoDB からデータをコピーするには、コピー アクティビティのソースの種類を **MongoDbSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **MongoDbSource** に設定する必要があります。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティを **MongoDbSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム SQL-92 クエリを使用してデータを読み取ります。 例: Select * from MyTable。 |いいえ (データセットに "collectionName" が指定されている場合) |
 
 **例:**
@@ -178,13 +179,13 @@ MongoDB からデータをコピーするとき、次の MongoDB のデータ型
 | MongoDB のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | Binary |Byte[] |
-| Boolean |Boolean |
-| 日付 |DateTime |
+| ブール |ブール |
+| 日付 |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |文字列 |
-| 文字列 |文字列 |
+| ObjectID |String |
+| String |String |
 | UUID |Guid |
 | オブジェクト |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
 
@@ -242,5 +243,5 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 | 2222 |1 |2 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
-ms.author: nitinme
-ms.openlocfilehash: e9467523da10333f1bb3c888f6e2768c2fdee4c1
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.date: 01/09/2018
+ms.author: maxluk
+ms.openlocfilehash: 55ff40165a1b25949cb202d9a5174e1f52fe4630
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="run-spark-from-the-spark-shell"></a>Spark Shell から Spark を実行する
 
@@ -66,14 +66,14 @@ SparkSession インスタンスにアクセスするには、「`spark`」と入
 
 Spark シェル コマンド (`spark-shell`、`pyspark`、または `sparkR`) は、数多くのコマンドライン パラメーターに対応しています。 パラメーターの完全な一覧を表示するには、スイッチ `--help` を使用して Spark シェルを起動します。 これらのパラメーターの一部は `spark-submit` のみに適用される場合があります (これは、Spark シェルによってラップされます)。
 
-| スイッチ | description | 例 |
+| スイッチ | 説明 | 例 |
 | --- | --- | --- |
 | --master MASTER_URL | マスター URL を指定します。 HDInsight では、この値は常に `yarn` です。 | `--master yarn`|
 | --jars JAR_LIST | ドライバーと Executor のクラスパスに含めるローカル jar のコンマ区切りリスト。 HDInsight では、この一覧は Azure Storage または Data Lake Store の既定のファイルシステムへのパスで構成されます。 | `--jars /path/to/examples.jar` |
 | --packages MAVEN_COORDS | ドライバーと Executor のクラスパスに含める jar の maven コーディネートのコンマ区切りリスト。 ローカルの maven リポジトリ、maven セントラル、`--repositories` で指定された追加のリモート リポジトリの順に検索します。 コーディネートの形式は、*groupId*:*artifactId*:*version* です。 | `--packages "com.microsoft.azure:azure-eventhubs:0.14.0"`|
 | --py-files LIST | Python のみについて、PYTHONPATH に配置する .zip、.egg、.py ファイルのコンマ区切りリストです。 | `--pyfiles "samples.py"` |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 「[Azure HDInsight での Spark の概要](apache-spark-overview.md)」で概要を確認します。
 - Spark クラスターや SparkSQL の操作方法について、「[Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)」を確認します。

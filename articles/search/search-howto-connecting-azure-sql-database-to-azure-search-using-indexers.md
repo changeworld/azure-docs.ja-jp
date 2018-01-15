@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/13/2017
 ms.author: eugenesh
-ms.openlocfilehash: 8b0f3941526214455992ba2f0f6299df24323c9c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2ec1e02ccc8d8916f6d9d50ce787f2562f33fd7d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>インデクサーを使用した Azure Search への Azure SQL Database の接続
 
@@ -26,11 +26,11 @@ ms.lasthandoff: 12/08/2017
 
 この記事では[インデクサー](search-indexer-overview.md)使用のしくみだけでなく、Azure SQL データベースでのみ使用できる機能 (統合された変更追跡など) についても説明します。 
 
-Azure SQL データベースだけでなく、Azure Searchでは [Azure Cosmos DB](search-howto-index-documentdb.md)、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md) 用のインデクサーも用意されています。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
+Azure SQL データベースだけでなく、Azure Searchでは [Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md) 用のインデクサーも用意されています。 その他のデータ ソースについてのサポートを希望する場合は、[Azure Search フィードバック フォーラム](https://feedback.azure.com/forums/263029-azure-search/)でフィードバックをお寄せください。
 
 ## <a name="indexers-and-data-sources"></a>インデクサーとデータ ソース
 
-**データ ソース**では、インデックスを作成するデータ、データにアクセスするための資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは、複数のインデクサーで使用できるように、独立したリソースとして定義します。
+**データ ソース**では、インデックスを作成するデータ、データにアクセスするための資格情報、およびデータの変更 (新しい行、変更された行、削除された行) を効率よく識別するためのポリシーを指定します。 データ ソースは複数のインデクサーで使用できるように独立したリソースとして定義します。
 
 **インデクサー**は、単一のデータ ソースと検索対象のインデックスをつなげるリソースです。 インデクサーは次のように使用されます。
 
@@ -294,15 +294,15 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
 | smalldatetime、datetime、datetime2、date、datetimeoffset |Edm.DateTimeOffset、Edm.String | |
 | uniqueidentifer |Edm.String | |
 | 地理 |Edm.GeographyPoint |型が POINT で SRID が 4326 (既定) の地理インスタンスのみがサポートされます。 |
-| rowversion |該当なし |行バージョン列は検索インデックスに保存できませんが、変更追跡に利用できます。 |
-| time、timespan、binary、varbinary、image、xml、geometry、CLR 型 |該当なし |サポートされていません |
+| rowversion |N/A |行バージョン列は検索インデックスに保存できませんが、変更追跡に利用できます。 |
+| time、timespan、binary、varbinary、image、xml、geometry、CLR 型 |N/A |サポートされていません |
 
 ## <a name="configuration-settings"></a>構成設定
 SQL インデクサーが公開している構成設定をいくつか次に示します。
 
-| Setting | データ型 | 目的 | 既定値 |
+| 設定 | データ型 | 目的 | 既定値 |
 | --- | --- | --- | --- |
-| queryTimeout |string |SQL クエリ実行のタイムアウトを設定します |5 分 ("00:05:00") |
+| queryTimeout |文字列 |SQL クエリ実行のタイムアウトを設定します |5 分 ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |bool |高基準ポリシーが使用する SQL クエリで ORDER BY 句が省略されます。 [高基準値ポリシー](#HighWaterMarkPolicy)に関するセクションをご覧ください |false |
 
 こうした設定は、インデクサー定義の `parameters.configuration` オブジェクトで使用されます。 たとえば、クエリのタイムアウトを 10 分に設定するには、次の構成でインデクサーを作成または更新します。
@@ -324,6 +324,7 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 直接無効にすることはできません。 直接接続は推奨もサポートもされません。これを行うには、インターネット トラフィックに対してデータベースを開く必要があります。 Azure Data Factory などのブリッジ テクノロジを使用してこのシナリオで成功した事例があります。 詳しくは、「[Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector)」を参照してください。
 
 **Q: Azure の IaaS で実行している SQL Server 以外のデータベースで Azure SQL インデクサーを使用できますか?**
+
 
 いいえ。 SQL Server 以外のデータベースではインデクサーをテストしていないので、このシナリオはサポートされません。  
 

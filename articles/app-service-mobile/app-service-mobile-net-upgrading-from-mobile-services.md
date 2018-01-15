@@ -3,8 +3,8 @@ title: "Mobile Services から Azure App Service にアップグレードする"
 description: "簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 81c8ba6245565368eab4cdaca297ff7656180605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: f07b1d6037ff8ca16b673e6a1a235769355a9993
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>既存の .NET Azure Mobile Service を App Service にアップグレードする
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。 詳細については、「 [Mobile Apps とは]」を参照してください。
@@ -63,11 +63,11 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 4. (省略可能) 元の移行されたインスタンスを削除する
 
 ## <a name="mobile-app-version"></a>2 番目のアプリケーション インスタンスを作成する
-アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストする Mobile App リソースを作成することです。 既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。 [Azure Portal] を開き、移行済みのアプリケーションに移動します。 実行されている App Service プランをメモしてをおきます。
+アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストする Mobile App リソースを作成することです。 既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。 [Azure ポータル] を開き、移行済みのアプリケーションに移動します。 実行されている App Service プランをメモしてをおきます。
 
 次に、 [.NET バックエンドの作成手順](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app)に従って、2 番目のアプリケーション インスタンスを作成します。 App Service プランまたは "ホスティング プラン" を選択するよう求められたら、移行済みアプリケーションのプランを選択します。
 
-Mobile Services で使用したのと同じデータベースと通知ハブを使用することもできます。 [Azure Portal] を開き、元のアプリケーションに移動してから、**[設定]** > **[アプリケーションの設定]** の順にクリックして、これらの値をコピーできます。 **[接続文字列]** の `MS_NotificationHubConnectionString` と `MS_TableConnectionString` をコピーします。 新しいアップグレード サイトに移動し、接続文字列を貼り付けて既存の値を上書きします。 アプリに必要な他のアプリケーション設定について、このプロセスを繰り返します。 移行したサービスを使用しない場合は、[Azure クラシック ポータル] の [Mobile Services] セクションにある **構成** タブで接続文字列とアプリ設定を参照できます。
+Mobile Services で使用したのと同じデータベースと通知ハブを使用することもできます。 [Azure ポータル] を開き、元のアプリケーションに移動してから、**[設定]** > **[アプリケーションの設定]** の順にクリックして、これらの値をコピーできます。 **[接続文字列]** の `MS_NotificationHubConnectionString` と `MS_TableConnectionString` をコピーします。 新しいアップグレード サイトに移動し、接続文字列を貼り付けて既存の値を上書きします。 アプリに必要な他のアプリケーション設定について、このプロセスを繰り返します。 移行したサービスを使用しない場合は、[Azure クラシック ポータル] の [Mobile Services] セクションにある **構成** タブで接続文字列とアプリ設定を参照できます。
 
 アプリケーションの ASP.NET プロジェクトのコピーを作成し、新しいサイトに発行します。 新しい URL で更新されたクライアント アプリケーションのコピーを使用して、すべて予期したとおりに機能することを検証します。
 
@@ -150,7 +150,7 @@ Mobile Apps クライアント SDK では新しいシステム プロパティ�
 
 iOS の場合は、データ エンティティのコア データ スキーマを変更し、以下の内容と一致させる必要があります。 `createdAt`、`updatedAt` および `version` では、プレフィックスとして `ms_` を使用しなくなったことに注意してください。
 
-| Attribute | 種類 | 注 |
+| Attribute | type | 注 |
 | --- | --- | --- |
 | id |文字列、必須のマーク |リモート ストア内のプライマリ キー |
 | createdAt |日付 |(省略可能) createdAt システム プロパティにマップします。 |
@@ -257,7 +257,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 
 <!-- URLs. -->
 
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Mobile Apps とは]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services

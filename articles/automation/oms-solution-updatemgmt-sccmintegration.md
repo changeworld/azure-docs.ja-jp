@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 09/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 40e343ab75a2c2508d64ec0aeb293f5154813135
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 4696f3b9602c1da01d9706f15f38cdf5bc0f3372
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>System Center Configuration Manager と OMS Update Management の統合
 

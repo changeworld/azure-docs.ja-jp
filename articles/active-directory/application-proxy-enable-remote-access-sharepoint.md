@@ -3,7 +3,7 @@ title: "Azure AD アプリケーション プロキシによる SharePoint へ�
 description: "オンプレミスの SharePoint サーバーを Azure AD アプリケーション プロキシと統合する方法の基礎について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: edc5602586ae2397bc039f252be09df969b06925
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6a1b82b82dc89378533e375bd8a5d4868ae5308
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化
 
@@ -156,7 +156,7 @@ KCD を構成するには、コネクタ コンピューターごとに以下の
   ![サービス アカウントの SPN の追加](./media/application-proxy-remote-sharepoint/users-computers.png)
 
 6. SPN の一覧で、先ほどサービス アカウント用に作成した SPN を選びます。
-7. **[OK]**をクリックします。 もう一度 **[OK]** をクリックして変更を保存します。
+7. Click **OK**. もう一度 **[OK]** をクリックして変更を保存します。
 
 ## <a name="step-2-enable-remote-access-to-sharepoint"></a>手順 2: SharePoint へのリモート アクセスの有効化
 
@@ -198,11 +198,11 @@ Kerberos 用に SharePoint を有効にして KCD を構成したので、Azure 
 
   ![パスの入力](./media/application-proxy-remote-sharepoint/alternate-access3.png)
 
-7. **[保存]**をクリックします。
+7. **[Save]** をクリックします。
 
 これで、Azure AD アプリケーション プロキシ経由で外部から SharePoint サイトにアクセスできるようになりました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure AD アプリケーション プロキシでのカスタム ドメインの使用](active-directory-application-proxy-custom-domains.md)
 - [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)

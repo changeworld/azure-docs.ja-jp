@@ -4,7 +4,7 @@ description: "Mobile Apps を使用して、AAD、Google、Facebook、Twitter、
 services: app-service\mobile
 documentationcenter: xamarin
 author: panarasi
-manager: syntaxc4
+manager: crdun
 editor: 
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
 ms.service: app-service-mobile
@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: panarasi
-ms.openlocfilehash: 81c731f560ed9cdc56416076cd44cba504fa614d
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: e3e8c843437558c6d5d3a3c39bed1e647f852b18
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Xamarin Forms アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。 このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、Xamarin Forms クイック スタート プロジェクトに認証を追加します。 モバイル アプリによって正常に認証、承認されると、ユーザー ID 値が表示され、制限付きのテーブル データにアクセスできます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -44,9 +44,9 @@ ms.lasthandoff: 11/09/2017
 
 3. **[Allowed External Redirect URLs (許可されている外部リダイレクト URL)]** に `url_scheme_of_your_app://easyauth.callback` を入力します。  この文字列の **url_scheme_of_your_app** は、モバイル アプリケーションの URL スキームです。  プロトコルの通常の URL 仕様 (文字と数字のみを使用し、文字で始まる) に従う必要があります。  数か所で URL スキームに合わせてモバイル アプリケーション コードを調整する必要があるため、選択した文字列をメモしておく必要があります。
 
-4. **[OK]**をクリックします。
+4. Click **OK**.
 
-5. **[ Save]** をクリックします。
+5. **[Save]** をクリックします。
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -332,7 +332,7 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 
 4. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで基本的な認証チュートリアルは完了しましたので、引き続き次のいずれかのチュートリアルのご利用を検討してください。
 
 * [アプリへのプッシュ通知の追加](app-service-mobile-xamarin-forms-get-started-push.md)

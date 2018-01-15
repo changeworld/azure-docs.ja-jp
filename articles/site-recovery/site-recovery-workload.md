@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/15/2017
 ms.author: raynew
-ms.openlocfilehash: 3105eaa9e97f02f2337832bef538959a94263ea4
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 03d311f84a4b9bc5f3a4c3c488ee7c84b1ef49ad
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
@@ -62,7 +62,7 @@ Site Recovery は、サポート対象のマシンで実行されているすべ
 | Dynamics AX |Y |Y |Y |Y |Y|
 | Oracle |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み)|
 | Windows ファイル サーバー |Y |Y |Y |Y |Y|
-| Citrix XenApp と XenDesktop |Y|該当なし |Y |該当なし |Y |
+| Citrix XenApp と XenDesktop |Y|N/A |Y |N/A |Y |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory と DNS のレプリケート
 Active Directory と DNS インフラストラクチャは多くのエンタープライズ アプリにとって不可欠な要素です。 障害復旧の際は、これらのインフラストラクチャ コンポーネントを保護して復旧した後に、ワークロードとアプリケーションを復旧することが必要になります。
@@ -110,11 +110,11 @@ Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューシ�
 
 | **RDS** |**Azure VM を Azure にレプリケートする** | **Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** | **物理サーバーをセカンダリ サイトにレプリケート** | **物理サーバーを Azure にレプリケート** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **プールされた仮想デスクトップ (管理対象外)** |いいえ|あり |なし |あり |なし |あり |なし |
-| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ|あり |なし |あり |なし |あり |なし |
-| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |あり|あり |あり |あり |あり |あり |あり |
+| **プールされた仮想デスクトップ (管理対象外)** |いいえ |[はい] |いいえ  |[はい] |いいえ  |[はい] |いいえ  |
+| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ |[はい] |いいえ  |[はい] |いいえ  |[はい] |いいえ  |
+| **リモート アプリケーションとデスクトップ セッション (UPD なし)** |[はい]|[はい] |[はい] |[はい] |[はい] |[はい] |[はい] |
 
-[Azure Site Recovery を使用して RDS のディザスター リカバリーを設定します](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)。
+[Azure Site Recovery を使用して RDS のディザスター リカバリーを設定します](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)。
 
 [こちら](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) を参照してください。
 
@@ -161,6 +161,6 @@ Azure におけるクライアント/サーバー デスクトップのライセ
 
 Citrix XenApp と XenDesktop のデプロイの保護については、[こちら](site-recovery-citrix-xenapp-and-xendesktop.md)を参照してください。 同じ情報は、[Citrix のホワイトペーパー](https://aka.ms/citrix-xenapp-xendesktop-with-asr)でもご覧いただけます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure VM レプリケーションの[使用を開始します](azure-to-azure-quickstart.md)。

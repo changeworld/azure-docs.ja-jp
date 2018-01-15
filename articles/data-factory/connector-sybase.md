@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: ff008b6fdfe9e248a0588f24a1cb87b39ca8d90c
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: f903b786635213b93769a54ec69964a2fe212172
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -46,7 +46,8 @@ Sybase データベースから、サポートされている任意のシンク 
 - 統合ランタイムのコンピューターに、[Sybase iAnywhere.Data.SQLAnywhere 用データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846) (16 以降) をインストールします。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Sybase コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -54,16 +55,16 @@ Sybase データベースから、サポートされている任意のシンク 
 
 Sybase のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Sybase** に設定する必要があります。 | あり |
-| server | Sybase サーバーの名前です。 |はい |
-| database | Sybase データベースの名前です。 |はい |
-| schema | データベース内のスキーマの名前です。 |いいえ |
-| authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Windows** です。 |あり |
-| username | Sybase データベースに接続するユーザー名を指定します。 |あり |
-| パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |あり |
+| 型 | type プロパティを **Sybase** に設定する必要があります。 | [はい] |
+| [サーバー] | Sybase サーバーの名前です。 |[はい] |
+| [データベース] | Sybase データベースの名前です。 |[はい] |
+| schema | データベース内のスキーマの名前です。 |いいえ  |
+| authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Windows** です。 |[はい] |
+| username | Sybase データベースに接続するユーザー名を指定します。 |[はい] |
+| password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
 
 **例:**
 
@@ -96,9 +97,9 @@ Sybase のリンクされたサービスでは、次のプロパティがサポ�
 
 Sybase からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
+| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Sybase データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -125,10 +126,10 @@ Sybase からデータをコピーするには、データセットの type プ�
 
 Sybase からデータをコピーするには、コピー アクティビティのソース タイプを **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
+| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -169,5 +170,5 @@ Sybase からデータをコピーするとき、Sybase のデータ型から Az
 Sybase では、T-SQL 型をサポートします。 SQL 型から Azure Data Factory 中間データ型へのマッピング テーブルについては、「[Azure SQL Database Connector - data type mapping (Azure SQL Database Connector - データ型マッピング)](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)」セクションを参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

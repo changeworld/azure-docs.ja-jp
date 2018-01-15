@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 3540e58a58f20842979212ba41f11ce2908941f5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ffb691b5c04457e5781934b18304fac7b3c43cbb
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="filesystem-operations-on-azure-data-lake-store-using-rest-api"></a>REST API を使用した Azure Data Lake Store に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ pip install azure-datalake-store
     ## Delete a directory
     adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Python を使用した Data Lake Store に対するアカウント管理操作](data-lake-store-get-started-python.md)。
 
 ## <a name="see-also"></a>関連項目

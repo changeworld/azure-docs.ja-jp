@@ -4,7 +4,7 @@ description: "IoT センサー タグと、Stream Analytics によるデータ �
 keywords: "IoT ソリューション, IoT の概要"
 services: stream-analytics
 documentationcenter: 
-author: samacha
+author: SnehaGunda
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 3146604dd2dbc626d8179d5c91e3cf895b9f67da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: sngun
+ms.openlocfilehash: a4b2fda6c5cc5ea341618ec5fa8638a5c887bf84
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Azure Stream Analytics の使用を開始して IoT デバイスからのデータを処理する
 このチュートリアルでは、モノのインターネット (IoT) デバイスからデータを収集するストリーム処理ロジックの作成方法について学習します。 実際のモノのインターネット (IoT) ユース ケースを使用して、迅速で経済的なソリューションを構築する方法を紹介します。
@@ -31,11 +31,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="scenario"></a>シナリオ
 Contoso は工業オートメーションの領域で活動する会社で、自社の製造工程を完全に自動化しています。 この工場の機械には、リアルタイムでデータのストリームを生成することのできるセンサーがあります。 このシナリオにおいて、生産現場マネージャーは、センサー データからリアルタイムの詳細情報を取得し、パターンを見つけて、それらに対処したいと考えています。 センサー データに対して Stream Analytics クエリ言語 (SAQL) を使用し、データの受信ストリームから興味深いパターンを検出します。
 
-ここに示すデータは、Texas Instruments 社のセンサー タグ デバイスから生成されています。
-
-![Texas Instruments のセンサー タグ](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-01.jpg)
-
-データのペイロードは JSON 形式で、次のようになります。
+ここに示すデータは、Texas Instruments 社のセンサー タグ デバイスから生成されています。 データのペイロードは JSON 形式で、次のようになります。
 
     {
         "time": "2016-01-26T20:47:53.0000000",  
@@ -68,7 +64,7 @@ Contoso は工業オートメーションの領域で活動する会社で、自
    
     ![進行中のジョブの作成](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
-### <a name="create-an-azure-stream-analytics-query"></a>Azure Stream Analytics クエリの作成
+## <a name="create-an-azure-stream-analytics-query"></a>Azure Stream Analytics クエリの作成
 ジョブが作成されたら、それを開いてクエリを作成します。 ジョブには、そのタイルをクリックして簡単にアクセスできます。
 
 ![ジョブ タイル](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)

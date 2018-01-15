@@ -2,8 +2,8 @@
 title: "Azure Mobile App (Android) のオフライン同期の有効化"
 description: "App Service Mobile Apps を使用して、Android アプリケーションのオフライン データをキャッシュおよび同期する方法について説明します。"
 documentationcenter: android
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 services: app-service\mobile
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
 ms.service: app-service-mobile
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 304323c1816302e8c1f68f36a029aee55e02c54e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 152702bed0ea061c3cb86e2ff6f88bf204f9d243
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>Android モバイル アプリのオフライン同期の有効化
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -87,7 +87,7 @@ Azure Mobile Apps を初めて使用する場合は、チュートリアル「 [
    
        + Node.js バックエンドの場合は、[Azure Portal](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]** > **、[TodoItem]** をクリックして、`TodoItem` テーブルの内容を表示します。
        + .NET バックエンドの場合は、*SQL Server Management Studio* などの SQL ツール、または *Fiddler* や *Postman* などの REST クライアントを使用して、テーブルの内容を表示します。
-4. デバイスまたはシミュレーターの WiFi を有効にします。 次に [ **更新** ] ボタンを押します。
+4. デバイスまたはシミュレーターの WiFi を有効にします。 次に **[更新]** ボタンを押します。
 5. Azure ポータルで、もう一度 TodoItem のデータを参照します。 新しく変更した TodoItems が表示されます。
 
 ## <a name="additional-resources"></a>その他のリソース

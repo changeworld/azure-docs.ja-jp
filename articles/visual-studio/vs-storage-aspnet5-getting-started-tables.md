@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: kraigb
-ms.openlocfilehash: 81f0304850a108fc688dd862ff5ab677d6ebc28e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 4693c637597346e5c72bef6ddca9369e67b740f3
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Azure テーブル ストレージと Visual Studio 接続済みサービスの概要
 
@@ -64,7 +64,7 @@ ASP.NET Core プロジェクト内のテーブルにアクセスするには、A
 
     ```cs
     // Get a reference to a table named "peopleTable"
-    CloudTable table = tableClient.GetTableReference("peopleTable");
+    CloudTable peopleTable = tableClient.GetTableReference("peopleTable");
     ```
 
 ## <a name="create-a-table-in-code"></a>コードでテーブルを作成する
@@ -73,7 +73,7 @@ Azure テーブルを作成するには、``CreateIfNotExistsAsync()` を呼び�
 
 ```cs
 // Create the CloudTable if it does not exist
-await table.CreateIfNotExistsAsync();
+await peopleTable.CreateIfNotExistsAsync();
 ```
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
@@ -208,5 +208,5 @@ else
    Console.WriteLine("Couldn't delete the entity.");
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]

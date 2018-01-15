@@ -2,7 +2,7 @@
 title: "Azure モバイル アプリ (Xamarin iOS) のオフライン同期を有効にする"
 description: "App Service Mobile App を使用して、Xamarin iOS アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 documentationcenter: xamarin
-author: ggailey777
+author: conceptdev
 manager: cfowler
 editor: 
 services: app-service\mobile
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: b5878d8a2e18cf08b6e9074ecf40cd732624f0c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 287977d55656a4b2bc42d90730d16f522fae9b9e
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>Xamarin iOS モバイル アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、Xamarin iOS 向けの Azure モバイル アプリのオフライン同期機能について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。 変更は、ローカル データベースに格納されます。 デバイスが再びオンラインになると、これらの変更がリモート サービスと同期されます。
 
 このチュートリアルでは、「[Xamarin iOS アプリの作成]」で作成した Xamarin iOS アプリ プロジェクトを更新し、Azure Mobile Apps のオフライン機能をサポートできるようにします。 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「 [Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。

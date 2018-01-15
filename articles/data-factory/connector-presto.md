@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 80a0b0d1ef23dad55e2c2bb54825a8db3dfbbf1f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 9d272072ce77aca159edb36a6b7a78c94aee476d
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Presto からデータをコピーする
 
@@ -37,7 +37,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ## <a name="getting-started"></a>使用の開始
 
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Presto コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -45,22 +45,22 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Presto のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Presto** に設定する必要があります。 | あり |
-| host | Presto サーバーの IP アドレスまたはホスト名。 (例: 192.168.222.160)  | あり |
-| serverVersion | Presto サーバーのバージョン。 (例: 0.148-t)  | あり |
-| catalog | サーバーに対するすべての要求のカタログ コンテキスト。  | あり |
-| ポート | Presto サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8080 です。  | いいえ |
-| authenticationType | Presto サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**LDAP** | あり |
-| username | Presto サーバーへの接続に使用されるユーザー名。  | いいえ |
-| パスワード | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ |
-| enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ |
-| trustedCertPath | SSL 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR で SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ |
-| useSystemTrustStore | システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 既定値は false です。  | いいえ |
-| allowHostNameCNMismatch | SSL 経由で接続するときに、CA が発光した SSL 証明書名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は false です。  | いいえ |
-| allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ |
-| timeZoneID | 接続で使用されるローカルのタイム ゾーン。 このオプションの有効な値は、IANA タイム ゾーン データベースで指定されます。 既定値は、システムのタイム ゾーンです。  | いいえ |
+| 型 | type プロパティは **Presto** に設定する必要があります。 | [はい] |
+| host | Presto サーバーの IP アドレスまたはホスト名。 (例: 192.168.222.160)  | [はい] |
+| serverVersion | Presto サーバーのバージョン。 (例: 0.148-t)  | [はい] |
+| catalog | サーバーに対するすべての要求のカタログ コンテキスト。  | [はい] |
+| ポート | Presto サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8080 です。  | いいえ  |
+| authenticationType | Presto サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**LDAP** | [はい] |
+| username | Presto サーバーへの接続に使用されるユーザー名。  | いいえ  |
+| password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ  |
+| enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
+| trustedCertPath | SSL 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR で SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ  |
+| useSystemTrustStore | システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 既定値は false です。  | いいえ  |
+| allowHostNameCNMismatch | SSL 経由で接続するときに、CA が発行した SSL 証明書名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は false です。  | いいえ  |
+| allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ  |
+| timeZoneID | 接続で使用されるローカルのタイム ゾーン。 このオプションの有効な値は、IANA タイム ゾーン データベースで指定されます。 既定値は、システムのタイム ゾーンです。  | いいえ  |
 
 **例:**
 
@@ -115,10 +115,10 @@ Presto からデータをコピーするには、データセットの type プ�
 
 Presto からデータをコピーするには、コピー アクティビティのソースの種類を **PrestoSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **PrestoSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティは **PrestoSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
 
 **例:**
 
@@ -152,5 +152,5 @@ Presto からデータをコピーするには、コピー アクティビティ
 ]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

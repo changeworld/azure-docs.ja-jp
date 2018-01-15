@@ -13,23 +13,21 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a80500e806d85d0c1dd01d10fea74f59c92fb50a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: fa47d4ea9aa019464e465c051b016dac7c224dc9
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-6-create-measures"></a>レッスン 6: メジャーを作成する
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-measures"></a>メジャーを作成する
 
 このレッスンでは､モデルに取り込むメジャーを作成します｡ 前のレッスンで作成した計算列同様､メジャーは DAX 数式を使用して作成される計算値です｡ ただし、計算列とは異なり、メジャーはユーザーが選択した "*フィルター*" に基づいて評価されます。 たとえば、ピボットテーブルの行ラベル フィールドに追加された特定の列やスライサーなどです。 フィルター内の各セルの値は､適用されたメジャーによって求められます｡ メジャーは､ほぼあらゆる表形式モデルに含めることが可能で､数値データに対して動的な計算を行うことができる強力で柔軟な計算手段です｡ 詳細は､[Measures](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular) を参照してください｡
   
 メジャーを作成するには､*Measure Grid* を使用します｡ 既定では､各テーブルにはメジャー グリッドが 1 つあります｡しかしながら､通常､必ずしもすべてのテーブルにメジャーを作成することはありません｡ メジャー グリッドは､モデル デザイナーでデータ ビューを表示しているときにテーブルの下に表示されます｡ テーブルのメジャー グリッドを非表示または表示するには､**[テーブル]** メニューをクリックし､**[Show Measure Grid]** をクリックします｡  
   
-メジャーは､メジャー グリッドで空のセルをクリックし､数式バーで DAX 式を入力することによって作成できます｡ ENTER を入力することで式の入力を終えると､そのセルにメジャーが表示されます｡ またメジャーは､標準の集計関数を使用して作成することもできます｡このためには､列をクリックし､ツールバー上の 「AutoSum」 ボタン (**∑**) をクリックします｡ AutoSum 機能で作成されたメジャーは､その列の真下のメジャー グリッド セルに表示され､移動することができます｡  
+メジャーは､メジャー グリッドで空のセルをクリックし､数式バーで DAX 式を入力することによって作成できます｡ ENTER を入力することで式の入力を終えると､そのセルにメジャーが表示されます｡ またメジャーは､標準の集計関数を使用して作成することもできます｡このためには､列をクリックし､ツールバー上の [AutoSum] ボタン (**∑**) をクリックします｡ AutoSum 機能で作成されたメジャーは､その列の真下のメジャー グリッド セルに表示され､移動することができます｡  
   
 このレッスンでは､数式バーで DAX 式を入力する方法と AutoSum 機能を使用する方法の両方の方法でメジャーを作成します｡  
   
@@ -77,7 +75,7 @@ ms.lasthandoff: 11/02/2017
   
 2.  **SalesOrderNumber** 列の見出しをクリックします｡  
   
-3.  ツールバーで 「AutoSum」\ (**∑**) ボタンの下向き矢印をクリックし､**DistinctCount** を選択します｡  
+3.  ツールバーで AutoSum (**∑**) ボタンの下向き矢印をクリックし､**DistinctCount** を選択します｡  
   
     AutoSum 機能により､DistinctCount 標準集計式を使用して選択された列のメジャーが自動的に作成されます｡  
     
@@ -92,7 +90,7 @@ ms.lasthandoff: 11/02/2017
 
     |分割|メジャー名|AutoSum (∑)|数式|  
     |----------------|----------|-----------------|-----------|  
-    |SalesOrderLineNumber|InternetOrderLinesCount|カウント|=COUNTA([SalesOrderLineNumber])|  
+    |SalesOrderLineNumber|InternetOrderLinesCount|Count|=COUNTA([SalesOrderLineNumber])|  
     |OrderQuantity|InternetTotalUnits|合計|=SUM([OrderQuantity])|  
     |DiscountAmount|InternetTotalDiscountAmount|合計|=SUM([DiscountAmount])|  
     |TotalProductCost|InternetTotalProductCost|合計|=SUM([TotalProductCost])|  

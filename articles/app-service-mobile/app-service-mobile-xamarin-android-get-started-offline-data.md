@@ -2,8 +2,8 @@
 title: "Azure モバイル アプリ (Xamarin Android) に対するオフライン同期の有効化"
 description: "App Service モバイル アプリを使用して、Xamarin Android アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 documentationcenter: xamarin
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: 91d59e4b-abaa-41f4-80cf-ee7933b32568
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 471433c7ef2f6f128210ed145f685b42b44eea92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 5c6ff5ac909e2dc6918f85d39beb781952ee6dd0
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Xamarin Android モバイル アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このチュートリアルでは、Xamarin.Android 向けのAzure Mobile Apps のオフライン同期機能について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。 変更は、ローカル データベースに格納されます。
 デバイスが再びオンラインになると、これらの変更がリモート サービスと同期されます。
 
-このチュートリアルでは、「[Create a Xamarin Android app (Xamarin Android アプリの作成)]」チュートリアルからクライアント プロジェクトを更新し、Azure Mobile Apps のオフライン機能をサポートできるようにします。 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「 [Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+このチュートリアルでは、「[Xamarin Android アプリの作成]」チュートリアルからクライアント プロジェクトを更新し、Azure Mobile Apps のオフライン機能をサポートできるようにします。 ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。 サーバーの拡張機能パッケージの詳細については、「 [Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
 オフラインの同期機能の詳細については、トピック「 [増分同期]」をご覧ください。
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>オフライン機能をサポートするようにクライアント アプリを更新する
 Azure モバイル アプリのオフライン機能を使用すると、オフラインになっている状況でも、ローカル データベースとやり取りすることができます。 アプリケーションでこれらの機能を使用するには、[SyncContext] をローカル ストアに初期化します。 その後、[IMobileServiceSyncTable][IMobileServiceSyncTable] インターフェイスを使用してテーブルを参照します。 SQLite は、デバイス上のローカル ストアとして使用されます。
 
-1. Visual Studio で、「[Create a Xamarin Android app (Xamarin Android アプリの作成)]」チュートリアルで完了したプロジェクトの NuGet パッケージ マネージャーを開きます。  **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを検索してインストールします。
+1. Visual Studio で、「[Xamarin Android アプリの作成]」チュートリアルで完了したプロジェクトの NuGet パッケージ マネージャーを開きます。  **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを検索してインストールします。
 2. ToDoActivity.cs ファイルを開き、`#define OFFLINE_SYNC_ENABLED` の定義をコメント解除します。
 3. Visual Studio で、 **F5** キーを押してクライアント アプリをリビルドして実行します。 アプリは、オフライン同期を有効にする前と同じように動作します。ただし今度は、オフライン シナリオで使用できるデータがローカル データベースに格納されます。
 
@@ -63,7 +63,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
    `CheckItem` は `SyncAsync` を呼び出し、完了した各項目をモバイル アプリ バックエンドと同期します。 `SyncAsync` はプッシュとプルの両方を呼び出します。 **クライアントが変更したテーブルに対してプルを実行するたびに、プッシュが常に自動的に実行されます**。 これは、ローカル ストアのすべてのテーブルとリレーションシップの一貫性を確実に保つためです。 この動作によって、予期しないプッシュが行われることがあります。 この動作については、「 [増分同期]」を参照してください。
 
 ## <a name="review-the-client-sync-code"></a>クライアント同期コードの確認
-チュートリアル「 [Create a Xamarin Android app (Xamarin Android アプリの作成)] 」を完了した際にダウンロードした Xamarin クライアント プロジェクトには、ローカルの SQLite データベースを使用したオフライン同期をサポートするコードが既に含まれてます。 チュートリアルのコードにすでに含まれているものの概要を示します。 機能の概念的な概要については、「 [増分同期]」をご覧ください。
+チュートリアル「 [Xamarin Android アプリの作成] 」を完了した際にダウンロードした Xamarin クライアント プロジェクトには、ローカルの SQLite データベースを使用したオフライン同期をサポートするコードが既に含まれてます。 チュートリアルのコードにすでに含まれているものの概要を示します。 機能の概念的な概要については、「 [増分同期]」をご覧ください。
 
 * テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。 `ToDoActivity.OnCreate()` が `ToDoActivity.InitLocalStoreAsync()` を実行すると、ローカル ストアのデータベースが初期化されます。 このメソッドにより、Azure Mobile Apps クライアント SDK で提供される `MobileServiceSQLiteStore` クラスを使用して、ローカルの SQLite データベースが作成されます。
 
@@ -115,7 +115,7 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 * [Azure Mobile Apps .NET SDK HOWTO][8]
 
 <!-- URLs. -->
-[Create a Xamarin Android app (Xamarin Android アプリの作成)]: ../app-service-mobile-xamarin-android-get-started.md
+[Xamarin Android アプリの作成]: ../app-service-mobile-xamarin-android-get-started.md
 [増分同期]: ../app-service-mobile-offline-data-sync.md
 
 <!-- Images -->

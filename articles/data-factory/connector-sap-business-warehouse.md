@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 20d6f463d135028bf272c23de9f34be66e73325a
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 4ab0ddcc3a42ab4ebb7c9555f57bc2533989b071
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -43,14 +43,15 @@ SAP Business Warehouse のデータを、サポートされる任意のシンク
 
 この SAP Business Warehouse コネクタを使用するには、次の作業を行う必要があります。
 
-- セルフホステッド統合ランタイムをセットアップします。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
+- セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
 - **SAP NetWeaver ライブラリ**を統合ランタイム コンピューターにインストールします。 SAP Netweaver ライブラリは SAP 管理者から入手します。また、[SAP ソフトウェアのダウンロード センター](https://support.sap.com/swdc)から直接取得することもできます。 最新のバージョンをダウンロードできる場所は、"**SAP Note #1025361**" を検索して確認してください。 統合ランタイム インストールに一致する **64 ビット** SAP NetWeaver ライブラリが選択されていることを確認します。 SAP Note に従って、SAP NetWeaver RFC SDK に含まれるすべてのファイルをインストールします。 SAP NetWeaver ライブラリは、SAP Client Tools のインストールにも含まれます。
 
 > [!TIP]
 > NetWeaver RFC SDK から抽出した dll を system32 フォルダーに格納します。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、SAP Business Warehouse コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティの詳細を説明します。
 
@@ -58,15 +59,15 @@ SAP Business Warehouse のデータを、サポートされる任意のシンク
 
 SAP Business Warehouse (BW) のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **SapBw** に設定する必要があります。 | あり |
-| server | SAP BW インスタンスが存在するサーバーの名前。 | あり |
-| systemNumber | SAP BW システムのシステムの数。<br/>使用できる値: 文字列として表される 2 桁の 10 進数。 | あり |
-| clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | あり |
-| userName | SAP サーバーにアクセスできるユーザーの名前。 | あり |
-| password | ユーザーのパスワード。 このフィールドを SecureString とマークします。 | あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |あり |
+| 型 | type プロパティを **SapBw** に設定する必要があります。 | [はい] |
+| [サーバー] | SAP BW インスタンスが存在するサーバーの名前。 | [はい] |
+| systemNumber | SAP BW システムのシステムの数。<br/>使用できる値: 文字列として表される 2 桁の 10 進数。 | [はい] |
+| clientId | SAP BW システム内のクライアントのクライアント ID。<br/>使用できる値: 文字列として表される 3 桁の 10 進数。 | [はい] |
+| userName | SAP サーバーにアクセスできるユーザーの名前。 | [はい] |
+| password | ユーザーのパスワード。 このフィールドを SecureString とマークします。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
 
 **例:**
 
@@ -123,10 +124,10 @@ SAP BW からデータをコピーするには、データセットの type プ�
 
 SAP BW からデータをコピーするには、コピー アクティビティのソース タイプを **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
-| クエリ | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| クエリ | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | [はい] |
 
 **例:**
 
@@ -190,5 +191,5 @@ SAP BW からデータをコピーするとき、SAP BW のデータ型から Az
 | TIMS | String |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

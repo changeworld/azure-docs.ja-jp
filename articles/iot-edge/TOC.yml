@@ -6,13 +6,13 @@
       href: how-iot-edge-works.md
 - name: クイック スタート
   items:
-    - name: エッジへのデプロイ - Linux
+    - name: エッジへのデプロイ - Linux/Mac
       href: quickstart-linux.md
     - name: エッジへのデプロイ - Windows
       href: quickstart.md
 - name: チュートリアル
   items:
-    - name: Edge デバイスのシミュレート - Linux
+    - name: Edge デバイスのシミュレート - Linux/Mac
       href: tutorial-simulate-device-linux.md
     - name: Edge デバイスのシミュレート - Windows
       href: tutorial-simulate-device-windows.md

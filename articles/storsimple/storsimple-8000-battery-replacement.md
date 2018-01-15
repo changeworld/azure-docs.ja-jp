@@ -4,7 +4,7 @@ description: "StorSimple デバイスのバックアップ バッテリ モジ�
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/05/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 174a3163082594ea6a49b7f5a78857848f8f0566
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8071cde67017ff031418f0d97da15a618c4969b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>StorSimple デバイスのバックアップ バッテリ モジュールを交換する
 
@@ -46,7 +46,7 @@ StorSimple デバイスのバックアップ バッテリ モジュールは、�
    
     **図 1** PCM およびコントローラー モジュールが示されているプライマリ デバイスの背面
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -59,7 +59,7 @@ StorSimple デバイスのバックアップ バッテリ モジュールは、�
    
     **図 2** モニタリング インジケーター LED が示されている PCM の背面
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    |:--- |:--- |
    | 1 |AC 電源障害 |
    | 2 |ファン障害 |
@@ -67,7 +67,7 @@ StorSimple デバイスのバックアップ バッテリ モジュールは、�
    | 4 |PCM OK |
    | 5 |DC 電源障害 |
    | 6 |バッテリ正常 |
-3. バッテリが故障した PCM を取り外すには、「 [PCM を取り外す](storsimple-power-cooling-module-replacement.md#remove-a-pcm)」の手順に従います。
+3. バッテリが故障した PCM を取り外すには、「 [PCM を取り外す](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm)」の手順に従います。
 4. PCM を取り外したら、次の図に示すように、バッテリ モジュールのハンドルを上へ回転して、引っ張ってバッテリを取り外します。
    
     ![PCM からのバッテリの取り外し](./media/storsimple-battery-replacement/IC741019.png)
@@ -82,7 +82,7 @@ StorSimple デバイスのバックアップ バッテリ モジュールは、�
 #### <a name="to-install-the-battery-module"></a>バッテリ モジュールを取り付けるには
 1. バックアップ バッテリ モジュールを正しい向きで PCM 内に配置します。
 2. バッテリ モジュールのハンドルを押し下げてコネクタに完全に装着します。
-3. 「 [StorSimple デバイスの電源および冷却モジュールを交換する](storsimple-power-cooling-module-replacement.md)」のガイドラインに従って主エンクロージャの PCM を交換します。
+3. 「 [StorSimple デバイスの電源および冷却モジュールを交換する](storsimple-8000-power-cooling-module-replacement.md)」のガイドラインに従って主エンクロージャの PCM を交換します。
 4. 交換が完了したら、対象デバイスに移動し、Azure Portal で **[監視]** > **[ハードウェアの正常性]** に移動します。 バッテリーの状態を確認して、正常に取り付けられていることを確認します。 緑色の状態は、バッテリーが正常な状態であることを示しています。
 
 ## <a name="maintain-the-backup-battery-module"></a>バックアップ バッテリ モジュールを保守する
@@ -105,6 +105,6 @@ Azure Portal の **[監視]** ブレードの **[ハードウェアの正常性]
 > [!IMPORTANT]
 > 国または地域の規定に従って、故障したバッテリを廃棄します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [StorSimple ハードウェア コンポーネントの交換](storsimple-8000-hardware-component-replacement.md)」の説明を参照してください。
 

@@ -3,7 +3,7 @@ title: "Azure AD アプリケーション プロキシへのアップグレー�
 description: "Microsoft Forefront または Unified Access Gateway からアップグレードする場合に最適なプロキシ ソリューションを選択します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b124def6195da93eee61b0ec30698b935111ac4a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5323a9225adb9a9bfca2dccec5c84f288c4fd25d
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="compare-remote-access-solutions"></a>リモート アクセス ソリューションを比較します
 
@@ -32,21 +32,21 @@ Azure Active Directory アプリケーション プロキシは、Microsoft が�
 
 | 機能 | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| 証明書認証 | あり | あり | - | - |
-| ブラウザー アプリの選択的な発行 | あり | あり | あり | あり |
-| 事前認証とシングル サインオン | あり | あり | あり | あり | 
-| レイヤー 2/3 ファイアウォール | あり | あり | - | - |
-| 転送プロキシ機能 | あり | - | - | - |
-| VPN 機能 | あり | あり | - | - |
-| プロトコルの豊富なサポート | - | あり | HTTP 経由で実行される場合はあり | HTTP 経由でまたはリモート デスクトップ ゲートウェイ経由で実行する場合はあり |
-| ADFS プロキシ サーバーとしてのサーバー | - | あり | あり | - |
-| アプリケーションにアクセスするための 1 つのポータル | - | あり | - | あり |
-| 応答本文のリンク変換 | あり | あり | - | あり | 
-| ヘッダーによる認証 | - | あり | - | あり。PingAccess を使用 | 
-| クラウド規模のセキュリティ | - | - | - | あり | 
-| 条件付きアクセス | - | あり | - | あり |
-| 非武装地帯 (DMZ) にコンポーネントが存在しない | - | - | - | あり |
-| 受信接続がない | - | - | - | あり |
+| 証明書認証 | [はい] | [はい] | - | - |
+| ブラウザー アプリの選択的な発行 | [はい] | [はい] | [はい] | [はい] |
+| 事前認証とシングル サインオン | [はい] | [はい] | [はい] | [はい] | 
+| レイヤー 2/3 ファイアウォール | [はい] | [はい] | - | - |
+| 転送プロキシ機能 | [はい] | - | - | - |
+| VPN 機能 | [はい] | [はい] | - | - |
+| プロトコルの豊富なサポート | - | [はい] | HTTP 経由で実行される場合はあり | HTTP 経由でまたはリモート デスクトップ ゲートウェイ経由で実行する場合はあり |
+| ADFS プロキシ サーバーとしてのサーバー | - | [はい] | [はい] | - |
+| アプリケーションにアクセスするための 1 つのポータル | - | [はい] | - | [はい] |
+| 応答本文のリンク変換 | [はい] | [はい] | - | [はい] | 
+| ヘッダーによる認証 | - | [はい] | - | あり。PingAccess を使用 | 
+| クラウド規模のセキュリティ | - | - | - | [はい] | 
+| 条件付きアクセス | - | [はい] | - | [はい] |
+| 非武装地帯 (DMZ) にコンポーネントが存在しない | - | - | - | [はい] |
+| 受信接続がない | - | - | - | [はい] |
 
 ほとんどのシナリオでは、最新のソリューションとして Azure AD アプリケーションをお勧めします。 Web アプリケーション プロキシは AD FS 用のプロキシ サーバーを必要とするシナリオにのみ推奨され、Azure Active Directory のカスタム ドメインを使用することはできません。 
 
@@ -60,7 +60,7 @@ Azure Active Directory アプリケーション プロキシは、Microsoft が�
 - ユーザーがすべてのアプリケーション (O365、Azure AD に統合された SaaS アプリ、オンプレミスの Web アプリなど) に 移動できる 1 つのアクセス パネル 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure AD アプリケーション プロキシを使用してセキュリティで保護されたオンプレミス アプリケーションへのリモート アクセスを提供する](active-directory-application-proxy-get-started.md)
 - [Forefront TMG と UAG からアプリケーション プロキシに移行する](https://blogs.technet.microsoft.com/isablog/2015/06/30/modernizing-microsoft-application-access-with-web-application-proxy-and-azure-active-directory-application-proxy/)

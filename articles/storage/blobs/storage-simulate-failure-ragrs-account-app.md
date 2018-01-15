@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 12/05/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: f709e216f9308c4405776b25ca44b0aaddd3d3f8
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 151e875bd72598b0b788d68eee7fb186fca86f46
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする
 
@@ -88,7 +88,7 @@ Fiddler に移動し、**[Rules]\(ルール\)** -> **[Customize Rules]\(ルー�
 
 アプリケーションを再開するために**任意のキー**を押します。
 
-アプリケーションの実行が再開されると、プライマリ エンドポイントに対する要求は失敗するようになります。 アプリケーションはプライマリ エンドポイントへの再接続を 5 回試行します。 5 回の試行というエラーしきい値を超えると、セカンダリの読み取り専用エンドポイントのイメージを要求します。 セカンダリ エンドポイントからイメージの取得が 20 回正常に完了した後に、アプリケーションはプライマリ エンドポイントへの接続を試行します。 まだプライマリ エンドポイントに到達できない場合、アプリケーションはセカンダリ エンドポイントからの読み取りを再開します。 このパターンは、前のチュートリアルで説明した[ブレーカー](/azure/architecture/patterns/circuit-breaker.md)です。
+アプリケーションの実行が再開されると、プライマリ エンドポイントに対する要求は失敗するようになります。 アプリケーションはプライマリ エンドポイントへの再接続を 5 回試行します。 5 回の試行というエラーしきい値を超えると、セカンダリの読み取り専用エンドポイントのイメージを要求します。 セカンダリ エンドポイントからイメージの取得が 20 回正常に完了した後に、アプリケーションはプライマリ エンドポイントへの接続を試行します。 まだプライマリ エンドポイントに到達できない場合、アプリケーションはセカンダリ エンドポイントからの読み取りを再開します。 このパターンは、前のチュートリアルで説明した[ブレーカー](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)です。
 
 ![カスタマイズしたルールを貼り付ける](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 
@@ -108,7 +108,7 @@ Fiddler に移動し、**[Rules]\(ルール\)**、**[Customize Rules]\(ルール
 
 ![アプリケーションを再開する](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 シリーズの第 2 部では、次のような方法でエラーをシミュレートして、読み取りアクセス geo 冗長ストレージをテストしました。
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
 ms.openlocfilehash: fb6ded1dcba2ac0f78fc6f1f4f7de9238cd752bd
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Azure VM での Ruby on Rails Web アプリケーション
 このチュートリアルでは、Linux 仮想マシンを使用して、Azure で Ruby on Rails Web サイトをホストする方法について説明します。  
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/08/2017
 このチュートリアルは、Ubuntu Server 14.04 LTS を使用して検証されました。 他の Linux ディストリビューションを使用する場合は、Rails のインストール手順が異なる場合があります。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../../../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 >
 
@@ -127,7 +127,7 @@ SSH を使用してログインしている状態で、次のコマンドを実�
 
     ![既定の rails ページ][default-rails-cloud]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、ほとんどの手順を手作業で行いました。 通常、運用環境では、開発用コンピューターで作成したアプリを Azure VM にデプロイします。 また、運用環境では、Apache や NginX などの別のサーバー プロセスと組み合わせて Rails アプリケーションをホストすることがほとんどです。これらのサーバーは、複数の Rails アプリケーション インスタンスへの要求のルーティングを処理すると共に、静的リソースを提供します。 詳細については、http://rubyonrails.org/deploy/ をご覧ください。
 
 Ruby on Rails について詳しくは、[Ruby on Rails のガイド][rails-guides]をご覧ください。

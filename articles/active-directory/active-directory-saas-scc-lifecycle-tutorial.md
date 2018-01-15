@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/23/2017
+ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 0716bc6697b8350ec3f6c890e5fb7a1eb743bdd2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>チュートリアル: Azure Active Directory と SCC LifeCycle の統合
 このチュートリアルでは、Azure と SCC LifeCycle の統合について説明します。  
@@ -103,7 +103,7 @@ Azure AD ユーザーが SCC LifeCycle にログインできるようにする�
 > 
 > 
 
-## <a name="assign-users"></a>[ユーザーの割り当て]
+## <a name="assign-users"></a>ユーザーの割り当て
 構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
 **ユーザーを SCC LifeCycle に割り当てるには、次の手順を実行します。**

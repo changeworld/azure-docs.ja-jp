@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 01/03/2018
 ms.author: billmath
-ms.openlocfilehash: 638e654cb9e7a2454b37beb6067cb5a2fb9a57b5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7d180a83d7b0a8e02ed04d8771d2ad2c6fa386c6
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>簡単設定を使用した Azure AD Connect の開始
 Azure AD Connect の**簡単設定**は、トポロジのフォレストが 1 つであり、認証に[パスワード同期](active-directory-aadconnectsync-implement-password-synchronization.md)を使用する場合に使います。 **簡単設定** は既定のオプションであり、ごく一般的なデプロイ シナリオで使用されます。 数回クリックするだけで、オンプレミスのディレクトリをクラウドに拡張できます。
@@ -36,7 +36,8 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 4. [簡単設定] 画面で、 **[簡単設定を使う]**をクリックします。  
    ![Azure AD Connect へようこそ](./media/active-directory-aadconnect-get-started-express/express.png)
 5. [Azure AD に接続] 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。 **[次へ]** をクリックします。  
-   ![Azure AD への接続](./media/active-directory-aadconnect-get-started-express/connectaad.png) 接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)に関するページに記載されている前提条件の手順を完了してください。
+   ![Connect to Azure AD](./media/active-directory-aadconnect-get-started-express/connectaad.png)  
+   接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
 6. [AD DS に接続] 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。 ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\administrator または fabrikam.com\administrator)。 **[次へ]** をクリックします。  
    ![AD DS に接続](./media/active-directory-aadconnect-get-started-express/connectad.png)
 7. [**[Azure AD サインインの構成]**](active-directory-aadconnect-user-signin.md#azure-ad-sign-in-configuration) ページは、[前提条件](active-directory-aadconnect-prerequisites.md)の[ドメインの検証](../active-directory-domains-add-azure-portal.md)が済んでいない場合にのみ表示されます。
@@ -53,23 +54,23 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 高速インストールの使用方法については、以下のビデオをご覧ください。
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-Express-Settings/player]
-> 
-> 
+>
+>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](active-directory-aadconnect-whats-next.md)ことができます。
 
 インストールの結果有効になった機能については、[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)、[誤った削除操作を防止する機能](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)、[Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md) に関する各ページを参照してください。
 
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](active-directory-aadconnectsync-feature-scheduler.md)に関するページを参照してください。
 
-「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+「 [オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
 ## <a name="related-documentation"></a>関連ドキュメント
-| トピック |
-| --- | --- |
-| Azure AD Connect の概要 |
-| カスタマイズした設定を使用したインストール |
-| DirSync からのアップグレード |
-| インストールで使用するアカウント |
 
+| Topic | リンク |
+| --- | --- |
+| Azure AD Connect の概要 | [オンプレミスのディレクトリと Azure Active Directory の統合](active-directory-aadconnect.md)
+| カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md) |
+| DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](./active-directory-aadconnect-dirsync-upgrade-get-started.md)|
+| インストールで使用するアカウント | [Azure AD Connect の資格情報とアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md) |

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 3f8eeb71027d9bdd5c72570bd07d673136646e6c
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 53a241f12373acdb5d40575915d8d6c2f3c86b9a
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用
 カスタム スクリプト拡張機能は、Azure 仮想マシンでスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージやその他のアクセス可能なインターネットの場所からダウンロードできます。また、実行時に拡張機能に提供することもできます。 カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合されており、Azure CLI、PowerShell、Azure Portal、または Azure 仮想マシン REST API を使用して実行することもできます。
@@ -77,7 +77,7 @@ az vm extension set '
   --vm-name exttest `
   --name customScript `
   --publisher Microsoft.Azure.Extensions `
-  --settings '{"fileUris": ["https://raw.githubusercontent.com/neilpeterson/test-extension/master/test.sh"],"commandToExecute": "./test.sh"}'
+  --settings '{"fileUris": ["https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"],"commandToExecute": "./config-music.sh"}'
 ```
 
 ### <a name="azure-cli-examples"></a>Azure CLI の例
@@ -86,8 +86,8 @@ az vm extension set '
 
 ```json
 {
-  "fileUris": ["https://raw.githubusercontent.com/neilpeterson/test-extension/master/test.sh"],
-  "commandToExecute": "./test.sh"
+  "fileUris": ["https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-linux/scripts/config-music.sh"],
+  "commandToExecute": "./config-music.sh"
 }
 ```
 
@@ -199,7 +199,7 @@ Azure カスタム スクリプト拡張機能は、Resource Manager テンプ�
 }
 ```
 
-完全な例については、 [.Net Core Music Store Demo](https://github.com/neilpeterson/nepeters-azure-templates/tree/master/dotnet-core-music-linux-vm-sql-db)を参照してください。
+完全な例については、 [.Net Core Music Store Demo](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 カスタム スクリプト拡張機能を実行すると、スクリプトが次の例のようなディレクトリに作成されるかダウンロードされます。 コマンドの出力も、このディレクトリの `stdout` および `stderr` ファイルに保存されます。
@@ -232,6 +232,6 @@ data:    Microsoft.OSTCExtensions    Microsoft.Insights.VMDiagnosticsSettings  2
 info:    vm extension get command OK
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 他の VM スクリプト拡張機能については、[Linux 用の Azure スクリプト拡張機能の概要](extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
 

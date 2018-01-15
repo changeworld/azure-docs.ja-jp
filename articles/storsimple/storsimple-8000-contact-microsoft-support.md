@@ -4,7 +4,7 @@ description: "サポート要求をログに記録する方法と StorSimple 800
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: 4b5a14237ce79100f980b2186b2c3c887abaa296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0df86e40d0dc1092ad7ff04f01bbc3e5e3d1c4e
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 
@@ -97,7 +97,7 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 
 #### <a name="to-start-a-support-session"></a>サポート セッションを開始するには
 
-1. シリアル コンソールから直接デバイスにアクセスするか、リモート コンピューターから telnet セッションを使用してデバイスにアクセスします。 そのためには、「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)」の手順を実行します。
+1. シリアル コンソールから直接デバイスにアクセスするか、リモート コンピューターから telnet セッションを使用してデバイスにアクセスします。 そのためには、「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)」の手順を実行します。
 2. 開いたセッションで、 **Enter** キーを押して、コマンド プロンプトを開きます。
 3. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]**を選択します。
 4. プロンプトで、次のパスワードを入力します。
@@ -113,6 +113,6 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 > サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。 また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。 サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[StorSimple 8000 シリーズ デバイスに関連する問題を診断および解決](storsimple-troubleshoot-deployment.md)する方法を確認します
+[StorSimple 8000 シリーズ デバイスに関連する問題を診断および解決](storsimple-8000-troubleshoot-deployment.md)する方法を確認します

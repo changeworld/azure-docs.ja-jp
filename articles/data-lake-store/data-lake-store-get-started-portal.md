@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 4d3a5c0c49b881db69a9d5cccc65406322212a8d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 38a8792588e013a0105ea57b20b2560f0acf02e6
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]
@@ -122,7 +122,7 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 
 ![Data Lake アカウントの削除](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Data Lake アカウントの削除")
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ビッグ データの要件に対する Azure Data Lake Store の使用](data-lake-store-data-scenarios.md) 
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

@@ -3,8 +3,8 @@ title: "App Service Mobile Apps の管理されたクライアント ライブ�
 description: "Windows と Xamarin アプリで Azure App Service Mobile Apps 向け .NET クライアントを使用する方法について説明します。"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
 ms.service: app-service-mobile
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
-ms.author: glenga
-ms.openlocfilehash: cbd2a53a7ba30915ed95cf6b0cb73b07a4f48a24
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.author: crdun
+ms.openlocfilehash: c80265432f4ee3120e3125b45712dc0e7a434708
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Windows および Xamarin アプリで Azure App Service Mobile Apps 用の管理されたクライアント ライブラリを使用する一般的なシナリオの実行方法を示します。 Mobile Apps を初めて使用する場合は、まず、[Azure Mobile Apps のクイックスタート チュートリアル][1]を完了することを検討してください。 このガイドでは、クライアント側の管理された SDK に重点を置いています。 Mobile Apps 用のサーバー側 SDK の詳細については、[.NET Server SDK][2] または [Node.js Server SDK][3] に関するドキュメントを参照してください。
 
 ## <a name="reference-documentation"></a>リファレンス ドキュメント
@@ -374,7 +374,7 @@ await table.DeleteAsync(jo);
 
 Mobile Apps はオプティミスティック同時実行制御をサポートしており、モバイル アプリ バックエンドで各テーブルに定義されている `version` システム プロパティ列を使用して各項目の変更を追跡します。 レコードが更新されるたびに、Mobile Apps はそのレコードの `version` プロパティを新しい値に設定します。 各更新要求の際に、要求に含まれているレコードの `version` プロパティが、サーバー上のレコードの同じプロパティと比較されます。 要求で渡されたバージョンがバックエンドと一致しない場合、クライアント ライブラリは `MobileServicePreconditionFailedException<T>` 例外を生成します。 例外に含まれている型は、レコードのサーバー側のバージョンを含んでいるバックエンドのレコードです。 アプリケーションはこの情報を使用して、バックエンドからの正しい `version` 値で更新要求をもう一度実行して変更をコミットするかどうかを判断できます。
 
-オプティミスティック同時実行制御を有効にするには、テーブル クラスに `version` システム プロパティ用の列を定義します。 次に例を示します。
+オプティミスティック同時実行制御を有効にするには、テーブル クラスに `version` システム プロパティ用の列を定義します。 例: 
 
 ```
 public class TodoItem
@@ -428,7 +428,7 @@ private async void UpdateToDoItem(TodoItem item)
 
 private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 {
-    //Ask user to choose the resoltion between versions
+    //Ask user to choose the resolution between versions
     MessageDialog msgDialog = new MessageDialog(
         String.Format("Server Text: \"{0}\" \nLocal Text: \"{1}\"\n",
         serverItem.Text, localItem.Text),
@@ -612,7 +612,7 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 この形式は型指定されたメソッド呼び出しであり、**MarkAllResult** の戻り値の型が定義されている必要があります。 型指定および型指定のないメソッドの両方がサポートされます。
 
 API が "/" で始まっていない限り、InvokeApiAsync() メソッドは API の先頭に "/api/" を追加します。
-次に例を示します。
+例: 
 
 * `InvokeApiAsync("completeAll",...)` はバックエンドで /api/completeAll を呼び出します
 * `InvokeApiAsync("/.auth/me",...)` はバックエンドで /.auth/me を呼び出します

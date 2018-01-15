@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: c0a6a19cffafb940b13135fb3df4d7bdf57aa7ce
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: f6d1b556a1b9ea806e4738acda99c5aa11c9438a
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする
 
@@ -34,7 +34,7 @@ Azure File Storage のデータをサポートされる任意のシンク デー
 
 ## <a name="getting-started"></a>使用の開始
 
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションでは、Azure File Storage に固有の Data Factory エンティティの定義に使用されるプロパティの詳細を説明します。
 
@@ -42,12 +42,12 @@ Azure File Storage のデータをサポートされる任意のシンク デー
 
 Azure File Storage のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **FileServer** に設定する必要があります。 | あり |
-| host | Azure File Storage のエンドポイントを `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"` として指定します。 | あり |
-| userid | Azure File Storage にアクセスするユーザーを `"userid": "AZURE\\<storage name>"` として指定します。 | あり |
-| パスワード | ストレージ アクセス キーを指定します。 このフィールドを SecureString とマークします。<br/> | あり |
+| 型 | type プロパティは **FileServer** に設定する必要があります。 | [はい] |
+| host | Azure File Storage のエンドポイントを `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"` として指定します。 | [はい] |
+| userid | Azure File Storage にアクセスするユーザーを `"userid": "AZURE\\<storage name>"` として指定します。 | [はい] |
+| password | ストレージ アクセス キーを指定します。 このフィールドを SecureString とマークします。<br/> | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |ソースの場合はいいえ、シンクの場合ははい |
 
 >[!IMPORTANT]
@@ -83,14 +83,14 @@ Azure File Storage のリンクされたサービスでは、次のプロパテ�
 
 Azure File Storage をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **FileShare** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **FileShare** に設定する必要があります。 |あり |
-| folderPath | フォルダーへのパス。 |あり |
-| fileName | 特定のファイルをコピー先またはコピー元としてコピーする場合は、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、データセットはフォルダー内のすべてのファイルをソースとして指定し、ファイル名を自動的に生成します。<br/><br/>**シンクでの fileName の自動生成:** 出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、ファイル名を次の形式で自動的に生成します。 <br/>- `Data_[activity run id]_[GUID].[format].[compression if configured]`. 次に例を示します。`Data_0a405f8a-93ff-4c6f-b3be-f69616f1df7a_0d143eda-d5b8-44df-82ec-95c50895ff80.txt.gz` <br/>- リレーショナル ソースのクエリが指定されていない場合: `[Table name].[format].[compression if configured]`。 例: MySourceTable.orc。 |いいえ |
-| fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 fileName が指定されていない場合にのみ適用されます。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/>- 例 1: `"fileFilter": "*.log"`<br/>- 例 2: `"fileFilter": 2017-09-??.txt"` |いいえ |
+| 型 | データセットの type プロパティは **FileShare** に設定する必要があります。 |[はい] |
+| folderPath | フォルダーへのパス。 |[はい] |
+| fileName | 特定のファイルをコピー先またはコピー元としてコピーする場合は、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、データセットはフォルダー内のすべてのファイルをソースとして指定し、ファイル名を自動的に生成します。<br/><br/>**シンクでの fileName の自動生成:** 出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、ファイル名を次の形式で自動的に生成します。 <br/>- `Data_[activity run id]_[GUID].[format].[compression if configured]`. 次に例を示します。`Data_0a405f8a-93ff-4c6f-b3be-f69616f1df7a_0d143eda-d5b8-44df-82ec-95c50895ff80.txt.gz` <br/>- リレーショナル ソースのクエリが指定されていない場合: `[Table name].[format].[compression if configured]`。 例: MySourceTable.orc。 |いいえ  |
+| fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 fileName が指定されていない場合にのみ適用されます。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/>- 例 1: `"fileFilter": "*.log"`<br/>- 例 2: `"fileFilter": 2017-09-??.txt"` |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 **例:**
 
@@ -128,10 +128,10 @@ Azure File Storage をコピー元またはコピー先としてデータをコ�
 
 Azure File Storage からデータをコピーするには、コピー アクティビティのソースの種類を **FileSystemSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |あり |
-| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ |
+| 型 | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |[はい] |
+| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 
 **例:**
 
@@ -169,10 +169,10 @@ Azure File Storage からデータをコピーするには、コピー アクテ
 
 Azure File Storage にデータをコピーするには、コピー アクティビティのシンクの種類を **FileSystemSink** に設定します。 **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **FileSystemSink** を設定する必要があります。 |あり |
-| copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>PreserveHierarchy (既定値)</b>: ファイル階層をターゲット フォルダー内で保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの第一レベルに配置されます。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 | いいえ |
+| 型 | コピー アクティビティのシンクの type プロパティは **FileSystemSink** を設定する必要があります。 |[はい] |
+| copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>PreserveHierarchy (既定値)</b>: ファイル階層をターゲット フォルダー内で保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの第一レベルに配置されます。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 | いいえ  |
 
 **例:**
 
@@ -219,5 +219,5 @@ Azure File Storage にデータをコピーするには、コピー アクティ
 | false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | ターゲット フォルダー Folder1 は、次の構造で作成されます。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 の自動生成された名前<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。 |
 | false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | ターゲット フォルダー Folder1 は、次の構造で作成されます。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1、File2 の内容は、自動生成されたファイル名を持つ 1 つのファイルにマージされます。 File1 の自動生成された名前<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

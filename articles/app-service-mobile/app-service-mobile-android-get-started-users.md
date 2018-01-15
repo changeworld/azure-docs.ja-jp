@@ -3,8 +3,8 @@ title: "Mobile Apps を使用した Android での認証の追加 | Microsoft Do
 description: "Azure App Service の Mobile Apps 機能を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Android アプリのユーザーを認証する方法について説明します。"
 services: app-service\mobile
 documentationcenter: android
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 1fc8e7c1-6c3c-40f4-9967-9cf5e21fc4e1
 ms.service: app-service-mobile
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
-ms.author: glenga
-ms.openlocfilehash: 3d38482ebca736e4d7d0fe0b1b4b5dd0220de5b4
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.author: crdun
+ms.openlocfilehash: 4ee71e00807fcfe698a7e965979434f338f5b870
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-authentication-to-your-android-app"></a>Android アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 このチュートリアルでは、サポートされている ID プロバイダーを使用して、Android で todolist クイック スタート プロジェクトに認証を追加します。 最初に、このチュートリアルの基になっている [Mobile Apps の使用] チュートリアルを完了しておく必要があります。
 
 ## <a name="register"></a>アプリを認証に登録し、Azure App Services を構成する
@@ -39,9 +39,9 @@ ms.lasthandoff: 11/20/2017
 
 3. **[Allowed External Redirect URLs (許可されている外部リダイレクト URL)]** に `appname://easyauth.callback` を入力します。  この文字列の _appname_ は、モバイル アプリケーションの URL スキームです。  プロトコルの通常の URL 仕様 (文字と数字のみを使用し、文字で始まる) に従う必要があります。  数か所で URL スキームに合わせてモバイル アプリケーション コードを調整する必要があるため、選択した文字列をメモしておく必要があります。
 
-4. **[OK]**をクリックします。
+4. Click **OK**.
 
-5. **[ Save]** をクリックします。
+5. **[Save]** をクリックします。
 
 ## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -60,7 +60,7 @@ ms.lasthandoff: 11/20/2017
 ## <a name="cache-tokens"></a>クライアントに認証トークンをキャッシュする
 [!INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで基本的な認証チュートリアルは完了しましたので、引き続き次のいずれかのチュートリアルのご利用を検討してください。
 
 * [プッシュ通知を Android アプリに追加する](app-service-mobile-android-get-started-push.md)。

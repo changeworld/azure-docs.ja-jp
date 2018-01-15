@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: eb2bdd203bfbd170992358f48cde6f7b5c0bdf16
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5e287cd29fb305e78fe6338782838929007b17fc
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Azure で OpenShift をデプロイする場合の共通の前提条件
 
@@ -94,7 +94,7 @@ Windows の SSH キーの詳細については、「[Azure 上の Windows で SS
 OpenShift のデプロイでは、OpenShift マスターに安全にアクセスするために作成した SSH キーが使用されます。 SSH キーを安全に取得するようにデプロイを有効にするには、次のコマンドを使用してキーを Key Vault に格納します。
 
 ```azurecli
-az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift.rsa
+az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成 
@@ -125,7 +125,7 @@ az ad sp create-for-rbac --name openshiftsp \
 
 サービス プリンシパルの詳細については、「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、次のトピックについて説明しました。
 > [!div class="checklist"]

@@ -2,8 +2,8 @@
 title: "iOS モバイル アプリでオフライン同期を有効にする | Microsoft Docs"
 description: "Azure App Service Mobile Apps を使用して、iOS アプリケーション内のオフライン データをキャッシュし、同期する方法について説明します。"
 documentationcenter: ios
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 44c0d26b2d7d28322d436d4bda319d728c31a635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: b676b51241e4883fb1b4c40caba8e281bfa68a4c
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>iOS モバイル アプリでオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -158,11 +158,11 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 ![MS_TableOperations テーブルの属性][defining-core-data-tableoperations-entity]
 
-| Attribute | 型 |
+| Attribute | type |
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
-| properties | Binary Data |
+| プロパティ | Binary Data |
 | table | String |
 | tableKind | Integer 16 |
 
@@ -171,18 +171,18 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
  ![MS_TableOperationErrors テーブルの属性][defining-core-data-tableoperationerrors-entity]
 
-| Attribute | 型 |
+| Attribute | type |
 | --- | --- |
 | id |String |
 | operationId |Integer 64 |
-| properties |Binary Data |
+| プロパティ |Binary Data |
 | tableKind |Integer 16 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| 属性 | 型 |
+| Attribute | type |
 | --- | --- |
 | id |String |
 | key |String |
@@ -194,11 +194,11 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 **TodoItem**
 
-| 属性 | 種類 | 注 |
+| Attribute | type | 注 |
 | --- | --- | --- |
 | id | String、必須のマーク |リモート ストア内のプライマリ キー |
-| complete | Boolean | To Do 項目フィールド |
-| text |String |To Do 項目フィールド |
+| 完了 | ブール | To Do 項目フィールド |
+| テキスト |String |To Do 項目フィールド |
 | createdAt | 日付 | (省略可能) **createdAt** システム プロパティにマップします。 |
 | updatedAt | 日付 | (省略可能) **updatedAt** システム プロパティにマップします。 |
 | version | String | (省略可能) 競合の検出に使用され、バージョンにマップします。 |
@@ -260,7 +260,7 @@ Core Data オフライン ストアを使用するときは、データ モデ�
 
 7. **TodoItem** データをもう一度表示します。 今回は、新しい To Do 項目と変更された To Do 項目が表示されます。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 オフライン同期機能をサポートするために、`MSSyncTable` インターフェイスを使用し、ローカル ストアで `MSClient.syncContext` を初期化しました。 この例では、ローカル ストアは Core Data に基づいたデータベースでした。
 
 Core Data ローカル ストアを使用するときは、[正しいシステム プロパティ](#review-core-data)を使用して、複数のテーブルを定義する必要があります。

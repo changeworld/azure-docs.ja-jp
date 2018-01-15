@@ -3,8 +3,8 @@ title: "ユニバーサル Windows プラットフォーム (UWP) アプリに�
 description: "Azure App Service Mobile Apps と Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム (UWP) アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile,notification-hubs
 documentationcenter: windows
-author: ysxu
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 6de1b9d4-bd28-43e4-8db4-94cd3b187aa3
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
-ms.author: yuaxu
-ms.openlocfilehash: a14bb0320c1f6a563f766a6a0fad5cf556fe7b70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: d51fa215ace8b33acb5d36b98e9a1a86e3296a65
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -195,7 +195,7 @@ Windows ストアにアプリを送信した後、サーバー プロジェク�
 * [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md)  
   ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
 * [アプリのオフライン同期の有効化](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  モバイル アプリ バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
+  モバイル アプリ バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。
 
 <!-- Anchors. -->
 

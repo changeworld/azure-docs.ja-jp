@@ -173,7 +173,7 @@
         - name: Ambari Views のユーザー承認
           href: ../hdinsight-authorize-users-to-ambari.md
           maintainContext: true
-    - name: 管理
+    - name: '[管理]'
       items:
         - name: クラスターの容量計画
           href: ../hdinsight-capacity-planning.md
@@ -220,9 +220,15 @@
           href: ../hdinsight-hadoop-manage-ambari.md
           maintainContext: true
           items:
+            - name: Ambari Web UI を使用してクラスターを最適化する
+              href: ../hdinsight-changing-configs-via-ambari.md
+              maintainContext: true
             - name: Ambari REST API を使用する
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: HDInsight クラスターのログを管理する
+          href: ../hdinsight-log-management.md
+          maintainContext: true
         - name: ストレージ アカウントを追加する
           href: ../hdinsight-hadoop-add-storage.md
           maintainContext: true
@@ -271,6 +277,9 @@
           maintainContext: true
     - name: トラブルシューティング
       items:
+        - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
+          href: ../hdinsight-troubleshoot-failed-cluster.md
+          maintainContext: true
         - name: Spark のトラブルシューティング
           href: apache-troubleshoot-spark.md
         - name: HDFS のトラブルシューティング
@@ -354,7 +363,7 @@
         - name: クラスター パフォーマンスの監視
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: リファレンス
+- name: 参照
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

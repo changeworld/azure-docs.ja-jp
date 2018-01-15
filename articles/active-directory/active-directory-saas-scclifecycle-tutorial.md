@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 30b3ed453cb67516b49bcf27376a1a0aea43d9b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c7e6cc4a78b3e31b1357671fdb19d8eb9cf927ce
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>チュートリアル: Azure Active Directory と SCC LifeCycle の統合
 
@@ -63,11 +63,11 @@ Azure AD への SCC LifeCycle の統合を構成するには、ギャラリー�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**SCC LifeCycle**」と入力します。
 
@@ -87,11 +87,11 @@ SCC LifeCycle で、Azure AD の **[ユーザー名]** の値を **[Username]** 
 
 SCC LifeCycle で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[SCC LifeCycle テスト ユーザーの作成](#creating-an-scc-lifecycle-test-user)** - Azure AD でのユーザーにリンクされた、SCC LifeCycle での Britta Simon の対応するユーザーを作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -101,19 +101,19 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
 
 1. Azure Portal の **SCC LifeCycle** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_samlbase.png)
 
 3. **[SCC LifeCycle のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
     |--|--|
     | `https://bs1.scc.com/<entity>`|
@@ -124,21 +124,19 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
  
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_general_400.png)
 
 6. **SCC LifeCycle** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [SCC LifeCycle サポート チーム](mailto:lifecycle.support@scc.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
-     >[!NOTE]
-   >SCC LifeCycle サポート チームがシングル サインオンを有効にする必要があります。
-   > 
-   > 
+  >[!NOTE]
+  >SCC LifeCycle サポート チームがシングル サインオンを有効にする必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -164,7 +162,7 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-scclifecycle-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -179,7 +177,7 @@ Azure AD ユーザーが SCC LifeCycle にログインできるようにする�
 割り当て済みユーザーが SCC LifeCycle にログインしようとすると、必要に応じて SCC LifeCycle アカウントが自動的に作成されます。
 
 > [!NOTE]
-    > Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
+> Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -195,7 +193,7 @@ Azure AD ユーザーが SCC LifeCycle にログインできるようにする�
 
 2. アプリケーションの一覧で **[SCC LifeCycle]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-scclifecycle-tutorial/tutorial_scclifecycle_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

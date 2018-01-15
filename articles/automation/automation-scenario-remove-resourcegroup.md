@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: b7b27ca64d9aacabf96fdff8e7dca16f13000d19
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: e1734bdd22ecfc4e54074f02582f5a8eca7d4f59
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation のシナリオ - リソース グループの削除の自動化
 多くのユーザーは、1 つ以上のリソース グループを作成します。 リソース グループは、実稼働アプリケーションの管理に使用することもあれば、開発、テスト、ステージング環境として使用することもあります。 これらのリソースのデプロイを自動化することと、ワンクリックでリソース グループを削除する機能は、まったくの別物です。 Azure Automation を使用することで、この一般的な管理タスクを効率化できます。 これは、MSDN や Microsoft Partner Network Cloud Essentials プログラムなどのメンバー プランを通じて使用制限のある Azure サブスクリプションを使っている場合に役立ちます。
@@ -28,14 +28,14 @@ ms.lasthandoff: 12/14/2017
 ## <a name="getting-the-scenario"></a>シナリオの取得
 このシナリオは、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Remove-ResourceGroup/1.0/DisplayScript)からダウンロードできる PowerShell Runbook で構成されています。 この Runbook は、Azure Portal の [Runbook ギャラリー](automation-runbook-gallery.md)から直接インポートすることもできます。<br><br>
 
-| Runbook | 説明 |
+| Runbook | [説明] |
 | --- | --- |
 | Remove-ResourceGroup |1 つ以上の Azure リソース グループとそれに関連付けられているリソースをサブスクリプションから削除します。 |
 
 <br>
 この Runbook では、次の入力パラメーターを定義します。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | NameFilter (必須) |名前フィルターを指定して、削除するリソース グループを限定します。 コンマ区切りのリストを使用して複数の値を渡すことができます。<br>フィルターでは大文字と小文字が区別されず、文字列を含むすべてのリソース グループが一致します。 |
 | PreviewMode (省略可能) |削除されるリソース グループを確認するために Runbook を実行します。ただし、実際の削除は行われません。<br>Runbook に渡される 1 つ以上のリソース グループが誤って削除されないように、既定では **true** に設定されています。 |
@@ -64,6 +64,6 @@ Azure Portal で **Remove-ResourceGroup** Runbook ジョブの詳細を表示す
 
 **[ジョブの概要]** には、出力、警告、およびエラー ストリームからのメッセージが表示されます。 Runbook 実行の詳細な結果を表示するには、**[出力]** を選択します。<br> ![Remove-ResourceGroup Runbook の出力結果](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-output.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 独自の Runbook の作成を開始するには、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。

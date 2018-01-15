@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a96e52bad725acb70a429c8eaafd6942b13d9b8
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 7d4d680e3460fbeff73c2f334c6461da7967374d
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
@@ -125,7 +125,6 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 * [ジョブの失敗のアラート](#job-failure-alerts)
 * [パフォーマンスのアラート](#performance-alerts)
 * [セキュリティのアラート](#security-alerts)
-* [更新のアラート](#update-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>クラウドの接続のアラート
 
@@ -165,14 +164,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 |:--- |:--- |:--- |
 | <<*デバイス名*>> のパスワードが <<*数*>> 日後に有効期限切れとなります。 |パスワードの警告。 |パスワードは <数> 日後に有効期限切れとなります。 パスワードの変更を検討してください。 詳細については、「[StorSimple Virtual Array デバイス管理者パスワードを変更する](storsimple-virtual-array-change-device-admin-password.md)」を参照してください。 |
 
-### <a name="update-alerts"></a>更新のアラート
-
-| アラートのテキスト | イベント | 追加情報 / 推奨される対処法 |
-|:--- |:--- |:--- |
-| デバイスで新しい更新プログラムが利用できます。 |StorSimple Virtual Array に対する更新プログラムが提供されています。 |新しい更新プログラムは、 **[メンテナンス]** ページからインストールできます。 |
-| <<*デバイス名*>> で新しい更新プログラムをスキャンできませんでした。 |更新エラー。 |新しい更新プログラムのインストール中にエラーが発生しました。 更新プログラムは手動でインストールすることができます。 問題が解決しない場合は、 [Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。 |
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [StorSimple Virtual Array の詳細](storsimple-ova-overview.md)
 

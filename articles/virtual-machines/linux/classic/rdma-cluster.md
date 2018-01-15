@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 52048fb8ccd445b93296d2686ca46785b0c3e726
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: e09b472a53c02b39bcf7ad06d228049b0a392452
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>MPI アプリケーションを実行するように Linux RDMA クラスターを設定する
 Azure で[ハイ パフォーマンス コンピューティング VM サイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行する方法について説明します。 この記事では、クラスターで Intel MPI を実行するために Linux HPC イメージを準備する手順を説明します。 準備ができたら、このイメージと、RDMA 対応の Azure VM サイズのいずれか (現時点では H16r、H16mr、A8、または A9) を使用して、VM のクラスターをデプロイします。 リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく低待機時間で高スループットのネットワークを介して効率的に通信する MPI アプリケーションを実行するには、このクラスターを使用します。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager](../../../resource-manager-deployment-model.md) とクラシックの 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## <a name="cluster-deployment-options"></a>クラスターのデプロイ オプション
 ジョブ スケジューラを使用する場合、または使用しない場合に、Linux の RDMA クラスターの作成に使用できる方法を次に示します。
@@ -304,7 +304,7 @@ cluster12
 次の Intel MPI コマンドでは、pingpong ベンチマークを実行して、クラスターの構成および RDMA ネットワークへの接続を確認します。
 
 ```
-mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 IMB-MPI1 pingpong
+mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=shm:dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 IMB-MPI1 pingpong
 ```
 
 2 つのノードを持つ動作中のクラスターでは、次のような出力が表示されます。 Azure RDMA ネットワークでは、最大 512 バイトのメッセージ サイズに対して、3 マイクロ秒以下の待機時間が予想されます。
@@ -375,7 +375,7 @@ mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAP
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Linux クラスター上で、Linux MPI アプリケーションをデプロイし、実行します。
 * Intel MPI のガイダンスについては、[Intel MPI Library のドキュメント](https://software.intel.com/en-us/articles/intel-mpi-library-documentation/)を参照してください。
 * [クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos) を実行し、CentOS ベースの HPC イメージを使用して Intel Lustre クラスターを作成してみてください。 詳しくは、「[Deploying Intel Cloud Edition for Lustre on Microsoft Azure](https://blogs.msdn.microsoft.com/arsen/2015/10/29/deploying-intel-cloud-edition-for-lustre-on-microsoft-azure/)」(Microsoft Azure 上で Intel Cloud Edition for Lustre を展開する) をご覧ください。

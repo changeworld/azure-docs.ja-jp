@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 3c1b455e6298367dc50f0943b58f6cf1e7f1c5fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94b56fdd1ad350d861b27644c6bedcc59e1cefb0
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs からイベントを受信する
 
@@ -35,7 +35,7 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 * Java 開発環境。 このチュートリアルでは、 [Eclipse](https://www.eclipse.org/)を想定しています。
-* アクティブな Azure アカウント。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
 
 ## <a name="receive-messages-with-eventprocessorhost-in-java"></a>Java の EventProcessorHost を使用したメッセージの受信
 
@@ -68,11 +68,6 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
     <version>{VERSION}</version>
-</dependency>
-<dependency>
-  <groupId>com.microsoft.azure</groupId>
-  <artifactId>azure-eventhubs-eph</artifactId>
-  <version>0.14.0</version>
 </dependency>
 ```
 
@@ -229,7 +224,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

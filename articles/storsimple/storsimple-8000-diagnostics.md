@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 8fae7bb357f8e5e8eff249edfe3a2aaafe04283c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7199009553eb7aae31db3f913fe4de87e03d74ba
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>StorSimple 診断ツールを使用して、8000 シリーズ デバイスに関する問題のトラブルシューティングを行います。
 
@@ -32,15 +32,15 @@ StorSimple の診断ツールは、StorSimple デバイスのシステム、パ�
 
 このツールは、StorSimple デバイスの Windows PowerShell インターフェイスを使用して実行できます。 デバイスのローカル インターフェイスにアクセスするには、次の 2 つの方法があります。
 
-* [PuTTY を使用してデバイスのシリアル コンソールに接続](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)します。
-* [StorSimple 用 Windows PowerShell を使用してリモートでツールにアクセス](storsimple-remote-connect.md)します。
+* [PuTTY を使用してデバイスのシリアル コンソールに接続](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)します。
+* [StorSimple 用 Windows PowerShell を使用してリモートでツールにアクセス](storsimple-8000-remote-connect.md)します。
 
 この記事では、PuTTY を使用してデバイスのシリアル コンソールに接続していることを想定しています。
 
 #### <a name="to-run-the-diagnostics-tool"></a>診断ツールを実行するには
 
 デバイスの Windows PowerShell インターフェイスに接続したら、次の手順に従ってコマンドレットを実行します。
-1. 「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)」の手順に従って、デバイスのシリアル コンソールにログオンします。
+1. 「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)」の手順に従って、デバイスのシリアル コンソールにログオンします。
 
 2. 次のコマンドを入力します。
 
@@ -85,11 +85,11 @@ StorSimple の診断ツールは、StorSimple デバイスのシステム、パ�
 * 報告されるハードウェア コンポーネントは、テストに失敗したコンポーネント、またはシステムに存在しないコンポーネントです。
 * システム内のコントローラー 0、コントローラー 1、および共有コンポーネントについては、USM ファームウェアとディスク ファームウェアのバージョンが報告されます。 ハードウェア コンポーネントの一覧については、次を参照してください。
 
-    * [主エンクロージャのコンポーネント](storsimple-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
-    * [EBOD エンクロージャのコンポーネント](storsimple-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
+    * [主エンクロージャのコンポーネント](storsimple-8000-monitor-hardware-status.md#component-list-for-primary-enclosure-of-storsimple-device)
+    * [EBOD エンクロージャのコンポーネント](storsimple-8000-monitor-hardware-status.md#component-list-for-ebod-enclosure-of-storsimple-device)
 
 > [!NOTE]
-> ハードウェア テストで失敗したコンポーネントが報告された場合は、[Microsoft サポートに対するサービス要求を作成](storsimple-contact-microsoft-support.md)してください。
+> ハードウェア テストで失敗したコンポーネントが報告された場合は、[Microsoft サポートに対するサービス要求を作成](storsimple-8000-contact-microsoft-support.md)してください。
 
 #### <a name="sample-output-of-hardware-test-run-on-an-8100-device"></a>8100 デバイスで実行されたハードウェア テストの出力例
 
@@ -210,7 +210,7 @@ DisksFirmware       : SmrtStor:TXA2D20400GA6XYR:KZ50
 * システム情報には、モデル、デバイスのシリアル番号、タイム ゾーン、コントローラーの状態、およびシステムで実行されているソフトウェアの詳細なバージョンが含まれています。 出力として報告される各種のシステム パラメーターについては、「[システム情報の解釈](#appendix-interpreting-system-information)」をご覧ください。
 
 * 更新プログラムの可用性については、通常モードとメンテナンス モードが使用可能かどうか、および関連するパッケージの名前が報告されます。 `RegularUpdates`と`MaintenanceModeUpdates`が`false`の場合、これは更新プログラムが使用可能でないことを示します。 ご利用のデバイスは最新の状態です。
-* クラスター情報には、すべての HCS クラスター グループのさまざまな論理コンポーネントとそれぞれの状態に関する情報が含まれています。 レポートのこのセクションにオフラインのクラスター グループが表示された場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
+* クラスター情報には、すべての HCS クラスター グループのさまざまな論理コンポーネントとそれぞれの状態に関する情報が含まれています。 レポートのこのセクションにオフラインのクラスター グループが表示された場合は、[Microsoft サポートにお問い合わせ](storsimple-8000-contact-microsoft-support.md)ください。
 * サービス情報には、ご利用のデバイスで実行されているすべての HCS および CIS サービスの名前と状態が含まれています。 この情報は、Microsoft サポートがデバイスに関する問題のトラブルシューティングを行う際に役立ちます。
 
 #### <a name="sample-output-of-system-test-run-on-an-8100-device"></a>8100 デバイスで実行されたシステム テストの出力例
@@ -377,7 +377,7 @@ Web proxy                               Not enabled         Web proxy is not...
 
 1.  最初に、階層化ボリュームとアーカイブ オプションをオンにした階層化ボリュームの組合せを作成します。 このアクションにより、64 KB と 512 KB の両方の BLOB のサイズのテストが実行されます。
 
-2. ボリュームを作成して構成したら、コマンドレットを実行します。 次のコマンドを入力します。
+2. ボリュームを作成して構成したら、コマンドレットを実行します。 次のコマンドを入力します: 
 
     `Invoke-HcsDiagnostics -Scope Performance`
 
@@ -413,7 +413,7 @@ Controller0>
 
 次の表では、システム情報に含まれるさまざまな Windows PowerShell パラメーターが何に対応するかを示します。 
 
-| PowerShell パラメーター    | Description  |
+| PowerShell パラメーター    | [説明]  |
 |-------------------------|------------------|
 | インスタンス ID             | すべてのコントローラーに一意の識別子または GUID が関連付けられています。|
 | 名前                    | Azure ポータルでデバイスのデプロイ中に構成されるデバイスのフレンドリ名。 既定のフレンドリ名は、デバイスのシリアル番号です。 |
@@ -433,11 +433,11 @@ Controller0>
 | CisAgentVersion         | StorSimple デバイスで実行されている CIS エージェントのバージョン。 このエージェントにより、Azure で実行されている StorSimple Manager サービスと通信できるようになります。|
 | MdsAgentVersion         | StorSimple デバイスで実行されている MDS エージェントに対応するバージョン。 このエージェントは、データを監視および診断サービス (MDS) に移動します。|
 | Lsisas2Version          | StorSimple デバイスの LSI ドライバーに対応するバージョン。|
-| 容量                | デバイスの合計容量 (バイト単位)。|
+| Capacity                | デバイスの合計容量 (バイト単位)。|
 | RemoteManagementMode    | Windows PowerShell インターフェイスを使用してデバイスをリモート管理できるかどうかを示します。 |
 | FipsMode                | デバイスで米国連邦情報処理標準 (FIPS) モードが有効になっているかどうかを示します。 FIPS 140 標準には、機密データ保護のために米国連邦政府のコンピューター システムに使用することが承認されている暗号化アルゴリズムが定義されています。 Update 4 以降を実行しているデバイスでは、既定で FIPS モードが有効になっています。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Invoke-HcsDiagnostics コマンドレットの構文](https://technet.microsoft.com/library/mt795371.aspx)を確認します。
 

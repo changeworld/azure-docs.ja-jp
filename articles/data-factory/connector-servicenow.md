@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 28ac55dd21e9496a9e7c480d984a518dd03e4c94
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 6918081600074b05cf357c848778ab4e66e07fff
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して ServiceNow からデータをコピーする
 
@@ -37,7 +37,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ## <a name="getting-started"></a>使用の開始
 
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、ServiceNow コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -45,18 +45,18 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ServiceNow のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **ServiceNow** に設定する必要があります。 | あり |
-| endpoint | ServiceNow サーバーのエンドポイント。 (つまり、http://ServiceNowData.com)  | あり |
-| authenticationType | 使用する認証の種類。 <br/>使用可能な値: **Basic**、**OAuth2** | あり |
-| username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | いいえ |
-| パスワード | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ |
-| clientId | OAuth2 認証のクライアント ID。  | いいえ |
-| clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ |
-| useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ |
-| useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ |
-| usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ |
+| 型 | type プロパティは **ServiceNow** に設定する必要があります。 | [はい] |
+| endpoint | ServiceNow サーバーのエンドポイント。 (つまり、http://ServiceNowData.com)  | [はい] |
+| authenticationType | 使用する認証の種類。 <br/>使用可能な値: **Basic**、**OAuth2** | [はい] |
+| username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | いいえ  |
+| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ  |
+| clientId | OAuth2 認証のクライアント ID。  | いいえ  |
+| clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ  |
+| useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
+| useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
+| usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
 
 **例:**
 
@@ -107,10 +107,10 @@ ServiceNow からデータをコピーするには、データセットの type 
 
 ServiceNow からデータをコピーするには、コピー アクティビティのソースの種類を **ServiceNowSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **ServiceNowSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM alm.asset"`)。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティは **ServiceNowSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM alm.asset"`」のように入力します。 | [はい] |
 
 **例:**
 
@@ -144,5 +144,5 @@ ServiceNow からデータをコピーするには、コピー アクティビ�
 ]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

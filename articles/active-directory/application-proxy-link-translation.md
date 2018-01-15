@@ -3,7 +3,7 @@ title: "リンクと URL の Azure AD アプリ プロキシの変換 | Microsof
 description: "Azure AD アプリケーション プロキシ コネクタの基本について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 877c4491b3ebc2164f7cb2ecb9392d9c71e1667a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4d143b4937a1f6c1c21783ae357dbe617816e73
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -77,7 +77,7 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 2. **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** に移動し、管理するアプリを選び、**[アプリケーション プロキシ]** を選択します。
 3. **[Translate URLs in application body]\(アプリケーション本文の URL を変換する\)** を **[はい]** にします。
 
-   ![[はい] を選択してアプリケーション本文の URL を変換する](./media/application-proxy-link-translation/select_yes.png)に関するページを参照してください。
+   ![[はい] を選択してアプリケーション本文の URL を変換する](./media/application-proxy-link-translation/select_yes.png)が必要です。
 4. **[保存]** を選択して変更を保存します。
 
 これで、ユーザーがこのアプリケーションにアクセスすると、テナントのアプリケーション プロキシ経由で公開されている内部 URL がプロキシによって自動的にスキャンされます。
@@ -86,7 +86,7 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 
 この機能がすべてのアプリで動作するようにするためにご協力ください。 HTML と CSS で 30 を超えるタグを検索し、サポートする JavaScript ケースを検討しています。 変換されていないリンクが生成された例がある場合は、コード スニペットを[アプリケーション プロキシのフィードバック](mailto:aadapfeedback@microsoft.com)に送信してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD アプリケーション プロキシとともにカスタム ドメインを使用](active-directory-application-proxy-custom-domains.md)して、同じ内部および外部 URL を含める
 
 [SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)

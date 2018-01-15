@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 6c43f2b341280731707e486ba6f22f11560102c6
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5fafde870a01a6ceb5e86f7b00b0ca11b748c68a
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-rest-api"></a>REST API を使用した Azure Data Lake Store に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Data Lake Store アカウントを削除するには、次の cURL コマンド�
     ...
     ...
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [REST API を使用した Data Lake Store に対するファイルシステム操作](data-lake-store-data-operations-rest-api.md)。
 
 ## <a name="see-also"></a>関連項目

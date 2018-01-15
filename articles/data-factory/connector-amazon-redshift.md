@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: dc8da80a89024d687a10b1539eeb1d90d218e4fb
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 13b317b05e56554e4f6b74a3ecfd3bc268333db0
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,8 @@ Amazon Redshift から、サポートされている任意のシンク データ
 * Azure データ ストアにデータをコピーする場合、Azure データ センターで使用されるコンピューティング IP アドレスと SQL 範囲については、「[Azure データ センターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)」をご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Amazon Redshift コネクターに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -53,15 +54,15 @@ Amazon Redshift から、サポートされている任意のシンク データ
 
 Amazon Redshift のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AmazonRedshift**に設定する必要があります。 | あり |
-| server |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
+| 型 | type プロパティを **AmazonRedshift**に設定する必要があります。 | [はい] |
+| [サーバー] |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
 | ポート |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439 です) |
-| database |Amazon Redshift データベースの名前。 |はい |
-| username |データベースへのアクセスを持つユーザーの名前。 |はい |
-| パスワード |ユーザー アカウントのパスワード。 このフィールドを SecureString とマークします。 |あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| [データベース] |Amazon Redshift データベースの名前。 |[はい] |
+| username |データベースへのアクセスを持つユーザーの名前。 |[はい] |
+| password |ユーザー アカウントのパスワード。 このフィールドを SecureString とマークします。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
 
@@ -95,9 +96,9 @@ Amazon Redshift のリンクされたサービスでは、次のプロパティ�
 
 Amazon Redshift からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
+| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Amazon Redshift 内のテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -125,11 +126,11 @@ Amazon Redshift からデータをコピーするには、データセットの 
 
 Amazon Redshift からデータをコピーするには、コピー アクティビティでソースの型を **AmazonRedshiftSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **AmazonRedshiftSource** に設定する必要があります。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティを **AmazonRedshiftSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (データセットの "tableName" が指定されている場合) |
-| redshiftUnloadSettings | Amazon Redshift の UNLOAD を使用する場合のプロパティ グループ。 | いいえ |
+| redshiftUnloadSettings | Amazon Redshift の UNLOAD を使用する場合のプロパティ グループ。 | いいえ  |
 | s3LinkedServiceName | リンクされた AmazonS3 型のサービス名を指定することで、中間ストアとして使用される Amazon S3 を参照します。 | アンロードを使用する場合は [はい] |
 | bucketName | 中間データを格納する S3 バケットを指定します。 指定しない場合、Data Factory サービスが自動的に生成します。  | アンロードを使用する場合は [はい] |
 
@@ -214,15 +215,15 @@ Amazon Redshift からデータをコピーするとき、Amazon Redshift のデ
 | BIGINT |Int64 |
 | BOOLEAN |String |
 | CHAR |String |
-| DATE |DateTime |
+| DATE |Datetime |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
 | REAL |Single |
 | SMALLINT |Int16 |
 | TEXT |String |
-| TIMESTAMP |DateTime |
+| TIMESTAMP |Datetime |
 | VARCHAR |String |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/29/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 93bd267adfac0d2dd5c22d2d7ac79b0643f5cded
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b1fbf3c1e0e5715ff7effcdac45ff03f2b55f9ee
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-java"></a>Data Lake Store での Java を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -76,7 +76,7 @@ ms.lasthandoff: 12/21/2017
 
 Data Lake Store SDK には、Data Lake Store アカウントとの対話に必要なセキュリティ トークンを管理できる便利な方法が用意されています。 ただし、使用する方法はこれらに限定されるわけではありません。 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) や独自のカスタム コードの使用など、トークンを取得するその他の方法も使用できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Azure Data Lake Store に対し、Java SDK からエンドユーザー認証を使って認証を行う方法について説明しました。 これで、Java SDK を使用して Azure Data Lake Store を使用する方法について説明した次の記事に進めるようになりました。
 
 * [Java SDK を使用した Data Lake Store に対するデータ操作](data-lake-store-get-started-java-sdk.md)

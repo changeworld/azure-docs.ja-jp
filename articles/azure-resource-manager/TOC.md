@@ -16,7 +16,7 @@
 #### [変数](resource-manager-templates-variables.md)
 #### [リソース](resource-manager-templates-resources.md)
 #### [Outputs](resource-manager-templates-outputs.md)
-### [他のテンプレートにリンクする](resource-group-linked-templates.md)
+### [リンクされたテンプレートと入れ子になったテンプレート](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
 ### [複数のインスタンスの作成](resource-group-create-multiple.md)
 ### [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource)
@@ -40,10 +40,10 @@
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)
 
-## 管理
+## [管理]
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
-### [Azure ポータル](resource-group-portal.md)
+### [Azure Portal](resource-group-portal.md)
 ### [REST API](resource-manager-rest-api.md)
 ### [タグを使用してリソースを整理する](resource-group-using-tags.md)
 ### [リソースを新しいグループまたはサブスクリプションに移動する](resource-group-move-resources.md)
@@ -55,7 +55,7 @@
 ### サービス プリンシパルの作成
 #### [Azure PowerShell](resource-group-authenticate-service-principal.md)
 #### [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Azure ポータル](resource-group-create-service-principal-portal.md)
+#### [Azure Portal](resource-group-create-service-principal-portal.md)
 ### [サブスクリプションにアクセスするための認証 API](resource-manager-api-authentication.md)
 ### [リソースのロック](resource-group-lock-resources.md)
 
@@ -80,7 +80,7 @@
 #### [Windows デプロイの問題](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 ### [デプロイ エラーについて](resource-manager-troubleshoot-tips.md)
 
-# リファレンス
+# 参照
 ## [テンプレートの形式](/azure/templates/)
 ## [テンプレート関数](resource-group-template-functions.md)
 ### [配列とオブジェクトの関数](resource-group-template-functions-array.md)
@@ -95,7 +95,7 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
-## [REST ()](/rest/api/resources/)
+## [REST](/rest/api/resources/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)

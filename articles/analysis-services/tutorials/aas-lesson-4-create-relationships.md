@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 8cff85337ac7f5d1c0e00f09128cbbd4fa79741e
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 57b3a172445047291f0aea5b1616b9dcbf6bf745
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-4-create-relationships"></a>レッスン 4: リレーションシップを作成する
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-relationships"></a>リレーションシップの作成
 
 このレッスンでは、データをインポートしたときに自動的に作成されるリレーションシップを確認し、別のテーブル間に新しいリレーションシップを追加します。 リレーションシップは、テーブル内のデータの関連付け方法を確立する 2 つのテーブル間の接続です。 たとえば、DimProduct テーブルと DimProductSubcategory テーブルは、各製品がサブカテゴリに属しているという事実に基づいてリレーションシップを持っています。 詳細については、[リレーションシップ](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular)を参照してください。
   
@@ -62,11 +60,11 @@ Get Data を使用してデータをインポートすると、AdventureWorksDW2
   
     |アクティブ|テーブル|関連するルックアップ テーブル|  
     |----------|---------|------------------------|  
-    |あり|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
-    |あり|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  
-    |あり|**DimProductSubcategory [ProductCategoryKey]**|**DimProductCategory [ProductCategoryKey]**|  
-    |あり|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
-    |あり|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
+    |[はい]|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
+    |[はい]|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  
+    |[はい]|**DimProductSubcategory [ProductCategoryKey]**|**DimProductCategory [ProductCategoryKey]**|  
+    |[はい]|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
+    |[はい]|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
     リレーションシップのいずれかが存在しない場合は、モデルに DimCustomer、DimDate、DimGeography、DimProduct、DimProductCategory、DimProductSubcategory、FactInternetSales の各表が含まれていることを確認します。 同じデータソース接続のテーブルが別々の時期にインポートされた場合、これらのテーブル間のリレーションシップは作成されないので手動で作成する必要があります。 リレーションシップがまったく表示されない場合、そのデータソースにはリレーションシップが存在しません。 それらをデータ モデルに手動で作成することができます。
 

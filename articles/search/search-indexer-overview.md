@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: 827c0122fafceca369c0350e6846c77e98abc3b5
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: a51aa48a9a2c3c062c374885d45f08ae0b397ce1
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="indexers-in-azure-search"></a>Azure Search のインデクサー
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/13/2017
 > * [概要](search-indexer-overview.md)
 > * [ポータル](search-import-data-portal.md)
 > * [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-> * [Azure Cosmos DB](search-howto-index-documentdb.md)
+> * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 > * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 > * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 >
@@ -57,7 +57,7 @@ Azure Search の *インデクサー* は、検索可能なデータとメタデ
 インデクサーは、接続文字列や場合によっては資格情報などの情報を保持している "*データ ソース*" からデータをプルします。 現在、次のデータ ソースがサポートされています。
 
 * [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * 選択したコンテンツ タイプの [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
@@ -72,11 +72,11 @@ Azure Search の *インデクサー* は、検索可能なデータとメタデ
 ### <a name="step-3-create-and-schedule-the-indexer"></a>手順 3: インデクサーを作成してスケジュールを設定する
 インデクサーの定義とは、インデックスやデータ ソース、スケジュールを指定する構文です。 インデクサーは、データ ソースが同じサブスクリプションに属していれば、他のサービスのデータ ソースであっても参照できます。 インデクサー構築の詳細については、「 [Create Indexer (Azure Search REST API) (インデクサーの作成 (Azure Search REST API))](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 基本的な概念の説明は以上です。次のステップとしてデータ ソースの種類ごとの要件とタスクを確認してください。
 
 * [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)

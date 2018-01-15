@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/21/2017
   ms.author: routlaw
-  ms.openlocfilehash: 000d7d19a6bf897d5c32ec31017f96fe23461b29
-  ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+  ms.openlocfilehash: ee0dc6f351823347b1d0572c0a9fb392bbc6956e
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/11/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Terraform を使用すると、Azure 上で確実にインフラストラクチャのバージョン管理と作成を行うことができます。 Microsoft が提供するクイックスタートとチュートリアルを使用して、リソースの作成、Azure Terraform モジュールの使用、インフラストラクチャの管理をコードで行う方法を確認します。"
   aside:
@@ -35,11 +35,11 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/media/index/azure_dev-9.svg
+        src: https://docs.microsoft.com/azure/media/index/azure_dev-9.svg
       text: "Terraform のインストールと構成"
       href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure
     - image:
-        src: https://docs.microsoft.com/en-us/azure/media/index/VirtualMachine.svg
+        src: https://docs.microsoft.com/azure/media/index/VirtualMachine.svg
       text: "Linux VM の作成"
       href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm
 - title: "ステップバイステップのチュートリアル"
@@ -61,8 +61,8 @@ sections:
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">Github</a>
-- title: "リファレンス"
+    - html: <a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHub</a>
+- title: "参照"
   items:
   - type: list
     style: cards

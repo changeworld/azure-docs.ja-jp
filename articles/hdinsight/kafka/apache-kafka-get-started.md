@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 20b95f16e16c4b42289e1e25def4910fbca70db5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 24133adc6e6b16c69a8b124f13e684fce26b115f
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka の開始
 
@@ -183,7 +183,7 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 2. Kafka に付属のスクリプトを使用して、トピックからレコードを読み取ります。
    
     ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --topic test --from-beginning
+    /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $KAFKABROKERS --zookeeper $KAFKAZKHOSTS --topic test --from-beginning
     ```
    
     このコマンドにより、レコードがトピックから取得され、表示されます。 `--from-beginning` を使用することで、すべてのレコードが取得されるように、コンシューマーにストリームの先頭から開始するように指示しています。
@@ -371,7 +371,7 @@ Kafka データの最高レベルの可用性を確保するには、次のタ�
 
 HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](../hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、HDInsight で Apache Kafka を使用する際の基本事項を学習しました。 次の各ドキュメントを参考に、Kafka の使用の詳細を確認してください。
 

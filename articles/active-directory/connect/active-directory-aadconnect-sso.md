@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: billmath
-ms.openlocfilehash: f259474e8e3ba8b9a3d9d1ad83c8d848e06cff8c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b71a2f19fee370ab1d732becd1c3b644505e2233
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) では、ユーザーが企業ネットワークに接続される会社のデバイスを使用するときに、自動的にサインインを行います。 この機能を有効にすると、ユーザーは Azure AD にサインインするためにパスワードを入力する必要がなくなります。また、通常はユーザー名の入力も不要です。 この機能により、追加のオンプレミス コンポーネントを必要とせずに、ユーザーはクラウド ベースのアプリケーションに簡単にアクセスできるようになります。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PyeAC85Gm7w" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
 シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のどちらとも組み合わせることができます。
 
@@ -57,21 +57,21 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 | OS\ブラウザー |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|あり|なし|あり|はい\*|該当なし
-|Windows 8.1|あり|該当なし|あり|はい\*|該当なし
-|Windows 8|あり|該当なし|あり|はい\*|該当なし
-|Windows 7|あり|該当なし|あり|はい\*|該当なし 
-|Mac OS X|該当なし|該当なし|はい\*|はい\*|はい\*
+|Windows 10|[はい]|いいえ |[はい]|はい\*|N/A
+|Windows 8.1|[はい]|N/A|[はい]|はい\*|N/A
+|Windows 8|[はい]|N/A|[はい]|はい\*|N/A
+|Windows 7|[はい]|N/A|[はい]|はい\*|該当なし 
+|Mac OS X|N/A|N/A|はい\*|はい\*|はい\*
 
 \*[追加の構成](active-directory-aadconnect-sso-quick-start.md#browser-considerations)が必要
 
 >[!NOTE]
 >Windows 10 の場合、Azure AD で最適なシングル サインオン エクスペリエンスを実現するために、[Azure AD Join](../active-directory-azureadjoin-overview.md) を使用することをお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [**クイック スタート**](active-directory-aadconnect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
 - [**技術的な詳細**](active-directory-aadconnect-sso-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](active-directory-aadconnect-sso-faq.md) - よく寄せられる質問と回答です。
-- [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-sso.md) - 機能に関する一般的な問題を解決する方法を確認します。
+- [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。

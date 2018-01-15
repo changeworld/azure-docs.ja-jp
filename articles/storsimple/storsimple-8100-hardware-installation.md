@@ -4,7 +4,7 @@ description: "ソフトウェアのデプロイと構成の前に、StorSimple 8
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: jeconnoc
 editor: 
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 102dffcd73f3d3b9362d7b2853faa060e9c645dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fbc407a9792d033037fdaa2b14f4055d94c15ab
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>StorSimple 8100 デバイスの開梱、ラック取り付け、ケーブル接続
 ## <a name="overview"></a>概要
@@ -38,14 +38,14 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 次に、以下のステップを実行して、デバイスを開梱します。
 
 #### <a name="to-unpack-your-device"></a>デバイスを開梱するには
-1. 箱と梱包材を調べて、つぶれ、切断、水害などの明らかな損傷がないか確認します。 箱または梱包材がひどく破損している場合は、箱を開けないでください。 [Microsoft サポートに問い合わせて](storsimple-contact-microsoft-support.md) 、デバイスが正常に使用できる状態にあるかどうかを評価してください。
+1. 箱と梱包材を調べて、つぶれ、切断、水害などの明らかな損傷がないか確認します。 箱または梱包材がひどく破損している場合は、箱を開けないでください。 [Microsoft サポートに問い合わせて](storsimple-8000-contact-microsoft-support.md) 、デバイスが正常に使用できる状態にあるかどうかを評価してください。
 2. 箱を開梱します。 以下の図は、StorSimple デバイスを開梱したようすを示しています。
    
      ![ストレージ デバイスの開梱](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
    
     **ストレージ デバイスを開梱したようす**
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    | --- | --- |
    |   1 |梱包箱 |
    |   2 |下部梱包材 |
@@ -64,7 +64,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    * ラック取り付けキット 1 式 (取り付け金具付きのサイド レール 2 個)
    * 使用の開始に関するドキュメント
      
-     上記のアイテムの中で足りないものがある場合は、 [Microsoft サポートに連絡してください](storsimple-contact-microsoft-support.md)。
+     上記のアイテムの中で足りないものがある場合は、 [Microsoft サポートに連絡してください](storsimple-8000-contact-microsoft-support.md)。
 
 次のステップでは、デバイスをラックに取り付けます。
 
@@ -107,7 +107,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     **エンクロージャの両側への内部レール スライドの取り付け**
    
-    ラベル | 説明
+    ラベル | [説明]
     ----- | -----------
     1     | M 3x4 丸ねじ
     2     | シャーシ スライド
@@ -121,7 +121,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **ラックへの外部レール アセンブリの取り付け**
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    | --- | --- |
    |   1 |締め付けねじ |
    |   2 |角穴フロント ラック ポストねじ |
@@ -147,7 +147,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **フランジ キャップの取り付け**
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    | --- | --- |
    |   1 |エンクロージャ固定ねじ |
 
@@ -187,7 +187,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
    
     **データ ポートが示されているデバイスの背面**
    
-   | ラベル | Description |
+   | ラベル | [説明] |
    | --- | --- |
    |   0、1、4、5 |1 GbE ネットワーク インターフェイス |
    |   2、3 |10 GbE ネットワーク インターフェイス |
@@ -198,7 +198,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
     **デバイスのネットワーク ケーブル配線**
 
-   |ラベル | 説明 |
+   |ラベル | [説明] |
    |----- | ----------- |
    | A    | インターネット アクセスのある LAN |
    | B    | コントローラー 0 |
@@ -220,7 +220,7 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 * 可能であれば、各コントローラーに、クラウド アクセス用の 2 つのネットワーク インターフェイス (1 GbE) と、iSCSI 用の 2 つのネットワーク インターフェイス (10 GbE 推奨) を構成します。
 * 可能であれば、スイッチ障害の場合の可用性を確保するため、各コントローラーからのネットワーク インターフェイスを 2 つの異なるスイッチに接続します。 図では、各コントローラーからの 2 つの 10 GbE ネットワーク インターフェイス DATA 2 と DATA 3 が、2 つの異なるスイッチに接続されています。
 
-詳細については、「 **StorSimple の高可用性の要件** 」の「 [ネットワーク インターフェイス](storsimple-system-requirements.md#high-availability-requirements-for-storsimple)」を参照してください。
+詳細については、「 **StorSimple の高可用性の要件** 」の「 [ネットワーク インターフェイス](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)」を参照してください。
 
 > [!NOTE]
 > 10 GbE ネットワーク インターフェイスで SFP+ トランシーバーを使用している場合は、提供されている QSFP-SFP+ アダプターを使用します。 詳細については、「 [StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)」をご覧ください。
@@ -245,6 +245,6 @@ Microsoft Azure StorSimple 8100 は、単一のラック取り付け型エンク
 
 これでデバイスに電源、ネットワーク アクセス、およびシリアル接続用のケーブルが接続されました。 次のステップでは、ソフトウェアを構成してデバイスをデプロイします。
 
-## <a name="next-steps"></a>次のステップ
-[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough-u2.md)方法を確認します。
+## <a name="next-steps"></a>次の手順
+[オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-8000-deployment-walkthrough-u2.md)方法を確認します。
 

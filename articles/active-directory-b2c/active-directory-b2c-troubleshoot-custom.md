@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.openlocfilehash: 10b18400e92c5a626cd1e6ce9a6d6bd56df57dc1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 65a39479b4d4b86d569501636e4a0678b052d426
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: ログの収集
 
@@ -74,7 +74,7 @@ Azure AD B2C では、Application Insights にデータを送信するための�
   >
     ...
     <RelyingParty>
-      <DefaultUserJourney ReferenceId="YourPolicyName" />
+      <DefaultUserJourney ReferenceId="UserJourney ID from your extensions policy, or equivalent (for example: SignUpOrSigninWithAzureAD)" />
       <UserJourneyBehaviors>
         <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
       </UserJourneyBehaviors>
@@ -94,7 +94,7 @@ Azure AD B2C では、Application Insights にデータを送信するための�
 1. Application Insights で新しいタブを開きます。
 1. 次に示すのは、ログを確認するために使用できるクエリの一覧です
 
-| クエリ | 説明 |
+| クエリ | [説明] |
 |---------------------|--------------------|
 traces | Azure AD B2C によって生成されたすべてのログを確認します |
 traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された直近 1 日分のすべてのログを確認します
@@ -113,6 +113,6 @@ traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Application Insights でデータを探索すると、B2C の基盤となる Identity Experience Framework が独自の ID エクスペリエンスを提供するためにどのように機能するかを理解できます。

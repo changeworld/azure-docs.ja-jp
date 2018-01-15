@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 28e4e24f5706e88ede25060d5459617befd4aea9
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 041096b1a93fdc671939b6d6715a7836d1977e3c
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-9-create-hierarchies"></a>レッスン 9: 階層を作成する
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-hierarchies"></a>階層を作成する
 
 このレッスンでは、階層を作成します。 階層は、レベルに分類された列のグループです。 たとえば、Geography (地理的な場所) 階層には、Country (国)、State (州)、County (郡)、City (市) などの下位階層があります。 階層は、レポートするクライアント アプリケーションのフィールド リストにある他の列とは別に表示できます。階層を使用すれば、クライアント ユーザーが列をより簡単に探してレポートに含めることができます。 詳細については、「[階層](https://docs.microsoft.com/sql/analysis-services/tabular-models/hierarchies-ssas-tabular)」を参照してください。
   
@@ -32,7 +30,7 @@ ms.lasthandoff: 11/02/2017
 このレッスンの推定所要時間: **20 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 8: パースペクティブを作成する](../tutorials/aas-lesson-8-create-perspectives.md)」を完了している必要があります。  
+このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンの作業を実行する前に、前のレッスン「[レッスン 8: パースペクティブを作成する](../tutorials/aas-lesson-8-create-perspectives.md)」を完了している必要があります。  
   
 ## <a name="create-hierarchies"></a>階層を作成する  
   

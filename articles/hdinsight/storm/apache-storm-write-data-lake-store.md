@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/04/2018
 ms.author: larryfr
-ms.openlocfilehash: efb0a19e0793a93b2bfab93adb747e6f130341df
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5550dc2ffc53c6ccd30ecb4901ec98c4d38e366b
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から HDFS への書き込み
 
@@ -34,7 +34,7 @@ Storm を使用して、HDInsight 上の Apache Storm によって使用され�
 
 このプロジェクトをコンパイルするには、開発環境に次の構成が必要です。
 
-* [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
+* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -140,7 +140,7 @@ Flux フレームワークの詳細については、[https://storm.apache.org/r
 
 既定では、HDInsight 上の Storm には、HdfsBolt が Storm のクラスパス内の Azure Storage または Data Lake Store と通信するために使用するコンポーネントは含まれません。 これらのコンポーネントをクラスター上の Storm 用の `extlib` ディレクトリに追加するには、次のスクリプト アクションを使用します。
 
-* スクリプト URI: `https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh`
+* スクリプト URI: `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`
 * 適用先のノード: Nimbus、Supervisor
 * パラメーター: なし
 
@@ -222,7 +222,7 @@ Storm トポロジは、停止されるか、またはクラスターが削除�
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、Storm を使用して Azure Storage および Azure Data Lake Store に書き込む方法を学習しました。その他の [HDInsight 用の Storm の例](apache-storm-example-topology.md)も参照してください。
 

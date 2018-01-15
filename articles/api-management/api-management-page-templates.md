@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: apimpm
-ms.openlocfilehash: aca44e14ab85fcfeb9d1eb3c3eadfff7831c372f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 882bb27c7692f4eaf628d26f6081b1e1015be81b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API Management のページ テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -32,7 +32,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 -   [ページが見つかりません](#PageNotFound)  
   
 > [!NOTE]
->  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
+>  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
   
 ##  <a name="SignIn"></a> サインイン  
  **サインイン** テンプレートを使用すると、開発者ポータルでサインイン ページをカスタマイズすることができます。  
@@ -108,16 +108,16 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
 ```json  
-{  
-    "Email": null,  
-    "Password": null,  
-    "ReturnUrl": null,  
-    "RememberMe": false,  
-    "RegistrationEnabled": true,  
-    "DelegationEnabled": false,  
-    "DelegationUrl": null,  
-    "SsoSignUpUrl": null,  
-    "AuxServiceUrl": "https://manage.windowsazure.com/#Workspaces/ApiManagementExtension/service/contoso5/dashboard",  
+{
+    "Email": null,
+    "Password": null,
+    "ReturnUrl": null,
+    "RememberMe": false,
+    "RegistrationEnabled": true,
+    "DelegationEnabled": false,
+    "DelegationUrl": null,
+    "SsoSignUpUrl": null,
+    "AuxServiceUrl": "https://portal.azure.com/#resource/subscriptions/{subscription ID}/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/contoso5",
     "Providers": [  
         {  
             "Properties": {  
@@ -127,10 +127,10 @@ Azure API Management には、開発者ポータルの各ページの内容を�
             "AuthenticationType": "Aad",  
             "Caption": "Azure Active Directory"  
         }  
-    ],  
-    "UserRegistrationTerms": null,  
-    "UserRegistrationTermsEnabled": false  
-}  
+        ],
+    "UserRegistrationTerms": null,
+    "UserRegistrationTermsEnabled": false
+}
 ```  
   
 ##  <a name="SignUp"></a> サインアップ  
@@ -223,13 +223,13 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|型|説明|  
+|プロパティ|type|[説明]|  
 |--------------|----------|-----------------|  
-|referenceCode|string|このページが内部エラーの結果として表示された場合に生成されるコード。|  
-|errorCode|string|このページが内部エラーの結果として表示された場合に生成されるコード。|  
-|emailBody|string|このページが内部エラーの結果として表示された場合に生成される電子メール本文。|  
-|requestedUrl|string|ページが見つからなかったときに要求された URL。|  
-|referrerUrl|string|要求された URL の参照元 URL。|  
+|referenceCode|文字列|このページが内部エラーの結果として表示された場合に生成されるコード。|  
+|errorCode|文字列|このページが内部エラーの結果として表示された場合に生成されるコード。|  
+|emailBody|文字列|このページが内部エラーの結果として表示された場合に生成される電子メール本文。|  
+|requestedUrl|文字列|ページが見つからなかったときに要求された URL。|  
+|referrerUrl|文字列|要求された URL の参照元 URL。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -243,5 +243,5 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](api-management-developer-portal-templates.md)に関するページを参照してください。

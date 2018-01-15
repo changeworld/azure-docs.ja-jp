@@ -3,7 +3,7 @@ title: "Azure AD で既存のオンプレミス プロキシ サーバーと連�
 description: "既存のオンプレミス プロキシ サーバーと連携する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d8573ff43d9a2d0a356cb75db3abd7e107557a4e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 85b45a828dbb06325b6a1c9453117849f48a27c8
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -182,7 +182,7 @@ SYN パケットは、TCP 接続を確立するために最初に送信される
 
 他の応答コード (407 や 502 など) が表示される場合は、プロキシが認証を必要としているか、何らかの理由でトラフィックを許可しないことを示しています。 その場合は、プロキシ サーバー サポート チームのサポートを得てください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
 

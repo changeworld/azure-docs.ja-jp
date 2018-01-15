@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 01/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 7640c243495df88d89f61ed613d7fb68cef9a04b
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 67a58c2377af129d8e2bc0c67d2dffe179fe998f
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -273,7 +273,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
     > [!IMPORTANT]
     > 使用している Azure リージョンが一覧にない場合は、手順 1. の 4 つの IP アドレスのみを使用してください。
 
-    | 国 | リージョン | 許可された IP アドレス | 許可されたポート | 方向 |
+    | Country | リージョン | 許可された IP アドレス | 許可されたポート | 方向 |
     | ---- | ---- | ---- | ---- | ----- |
     | アジア | 東アジア | 23.102.235.122</br>52.175.38.134 | 443 | 受信 |
     | &nbsp; | 東南アジア | 13.76.245.160</br>13.76.136.249 | 443 | 受信 |
@@ -424,17 +424,6 @@ $nsg = New-AzureRmNetworkSecurityGroup `
         -Access Allow `
         -Priority 305 `
         -Direction Inbound `
-    | Add-AzureRmNetworkSecurityRuleConfig `
-        -Name "blockeverything" `
-        -Description "Block everything else" `
-        -Protocol "*" `
-        -SourcePortRange "*" `
-        -DestinationPortRange "*" `
-        -SourceAddressPrefix "Internet" `
-        -DestinationAddressPrefix "VirtualNetwork" `
-        -Access Deny `
-        -Priority 500 `
-        -Direction Inbound
 # Set the changes to the security group
 Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
 # Apply the NSG to the subnet
@@ -478,7 +467,6 @@ Set-AzureRmVirtualNetworkSubnetConfig `
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 305 --direction "Inbound"
-    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n block --protocol "*" --source-port-range "*" --destination-port-range "*" --source-address-prefix "Internet" --destination-address-prefix "VirtualNetwork" --access "Deny" --priority 500 --direction "Inbound"
     ```
 
 3. このネットワーク セキュリティ グループの一意識別子を取得するには、次のコマンドを使用します。
@@ -587,7 +575,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
     
     * `192.168.0.1` の値を、オンプレミスの DNS サーバーの IP アドレス と置き換えます。 このエントリにより、その他の DNS 要求はすべて、オンプレミスの DNS サーバーにルーティングされます。
 
-3. 構成を使用するには、バインドを再起動します。 たとえば、「 `sudo service bind9 restart`」のように入力します。
+3. 構成を使用するには、バインドを再起動します。 たとえば、「`sudo service bind9 restart`」のように入力します。
 
 4. オンプレミスの DNS サーバーに、条件付きフォワーダーを追加します。 手順 1 で見つけた DNS サフィックスへの要求をカスタム DNS サーバーに送信するように条件付きフォワーダーを構成します。
 
@@ -668,7 +656,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 
 これらの手順を完了した後には、完全修飾ドメイン名 (FQDN) を使用して、仮想ネットワーク内のリソースに接続できます。 これで、仮想ネットワークに HDInsight をインストールできるようになりました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * HDInsight を オンプレミス ネットワークに接続する構成方法の詳しい例については、 [HDInsight のオンプレミス ネットワークへの接続](./connect-on-premises-network.md)に関するページをご覧ください。
 * Azure 仮想ネットワークでの HBase クラスターの構成については、「[Azure Virtual Network での HDInsight HBase クラスターの作成](hbase/apache-hbase-provision-vnet.md)」を参照してください。

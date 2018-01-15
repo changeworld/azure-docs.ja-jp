@@ -3,9 +3,9 @@ title: "Azure Mobile Apps を使用した、iOS アプリへのプッシュ通�
 description: "Azure Mobile Apps を使用して iOS アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile
 documentationcenter: ios
-manager: syntaxc4
+manager: crdun
 editor: 
-author: ggailey777
+author: conceptdev
 ms.assetid: fa503833-d23e-4925-8d93-341bb3fbab7d
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/10/2016
-ms.author: glenga
-ms.openlocfilehash: 08a8c35b89386bd0dbe7bba406a6985a5a0d7eb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 063926a5a98aeab62e191d372831a00c29b9f6d7
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>iOS アプリへのプッシュ通知の追加
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

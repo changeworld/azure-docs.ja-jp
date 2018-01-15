@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/13/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 2afdb257421b1333f451eb9d0dd4c2af5a12e946
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a0131fdbbf926d59eae06089cde109649a1433b8
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
@@ -35,7 +35,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 * クイック スタートまたは最初のチュートリアルで作成した Azure IoT Edge デバイス。
 * IoT Edge デバイスの接続先 IoT ハブに対する IoT ハブ接続文字列。
 * Azure Machine Learning アカウント。 アカウントを作成するには、[Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-accounts)に関するセクションの手順に従ってください。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
-* お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration)」の手順に従います。
+* お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration)」の手順に従います。
 
 ## <a name="create-the-azure-ml-container"></a>Azure ML コンテナーを作成する
 このセクションでは、トレーニング済みのモデル ファイルをダウンロードして、Azure ML コンテナーに変換します。  
@@ -121,7 +121,7 @@ Visual Studio Code 用の Azure IoT Toolkit の拡張機能を使用して、IoT
 
    ![メッセージ本文の Azure ML の応答](./media/tutorial-deploy-machine-learning/ml-output.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Machine Learning を使用する IoT Edge モジュールを展開しました。 引き続き他のチュートリアルを実行し、Azure IoT Edge が、エッジでデータをビジネス上の洞察に変えるうえで、どのように役立つかを確認できます。
 

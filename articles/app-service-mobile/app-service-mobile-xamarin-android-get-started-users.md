@@ -3,7 +3,7 @@ title: "Xamarin Android での Mobile Apps の認証の使用"
 description: "Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Android アプリのユーザーを認証する方法について説明します。"
 services: app-service\mobile
 documentationcenter: xamarin
-author: ggailey777
+author: conceptdev
 manager: panarasi
 editor: 
 ms.assetid: 570fc12b-46a9-4722-b2e0-0d1c45fb2152
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panarasi
-ms.openlocfilehash: 8f9a1109018c708d52cdcb7b8bce43861cecd31c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 97207b722b65ccf98c57304cd559b0927aacd5a4
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Xamarin.Android アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -40,9 +40,9 @@ ms.lasthandoff: 10/11/2017
 
 3. **[Allowed External Redirect URLs (許可されている外部リダイレクト URL)]** に `url_scheme_of_your_app://easyauth.callback` を入力します。  この文字列の **url_scheme_of_your_app** は、モバイル アプリケーションの URL スキームです。  プロトコルの通常の URL 仕様 (文字と数字のみを使用し、文字で始まる) に従う必要があります。  数か所で URL スキームに合わせてモバイル アプリケーション コードを調整する必要があるため、選択した文字列をメモしておく必要があります。
 
-4. **[OK]**をクリックします。
+4. Click **OK**.
 
-5. [ **Save**] をクリックします。
+5. **[Save]** をクリックします。
 
 ## <a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]

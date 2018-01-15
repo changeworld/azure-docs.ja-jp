@@ -12,14 +12,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 09/29/2017
 ms.author: magoedte
-ms.openlocfilehash: 2064c081da6d72ab15fb6cf72ba9d18a74a67fdd
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 68805a6b28fc9454262cb0503daa23af93c76a7e
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>アマゾン ウェブ サービスによる Runbook の認証
 アマゾン ウェブ サービス (AWS) のリソースに関する一般的なタスクを自動化する処理は、Azure の Automation Runbook で実現することができます。  Automation Runbook を使用すれば、Azure のリソースの場合と同様に、AWS でも多くのタスクを自動化することができます。  必要となるのは次の 2 点だけです。
@@ -37,6 +37,6 @@ AWS セキュリティ キーを作成し、コピーしたら、Azure Automatio
 1. **[名前]** ボックスに「**AWScred**」と入力するか、または、命名規則に従って適切な値を入力します。  
 2. **[ユーザー名]** ボックスに**アクセス ID** を入力し、**[パスワード]** および **[パスワードの確認]** ボックスに**シークレット アクセス キー**を入力します。   
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * AWS のタスクを自動化する Runbook を作成する方法については、[Amazon Web Services の VM デプロイの自動化](automation-scenario-aws-deployment.md)に関する記事をご覧ください。
 

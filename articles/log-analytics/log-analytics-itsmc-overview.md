@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: 991f86c328aba9aa184658c7da748f24ee2d6506
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 6a08f042aad8ad00d712420d8f4d3b17305188e1
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>IT Service Management Connector を使用した ITSM 作業項目の一元管理 (プレビュー)
 
@@ -93,7 +93,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - サービス デスク接続名
 - サービス デスク ID
-- 状態
+- State
 - 緊急度
 - 影響
 - 優先順位
@@ -101,16 +101,16 @@ ServiceDeskWorkItemType_s="Incident"
 - 作成者
 - 解決者
 - 終了者
-- から
+- ソース
 - 割当先
 - カテゴリ
 - タイトル
-- Description
+- [説明]
 - 作成日
 - 終了日
 - 解決日
 - 最終更新日
-- コンピューター
+- Computer
 
 
 **作業項目:** **変更要求**
@@ -122,10 +122,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - サービス デスク ID
 - 作成者
 - 終了者
-- から
+- ソース
 - 割当先
 - タイトル
-- 型
+- type
 - カテゴリ
 - 状態
 - エスカレーション
@@ -143,15 +143,15 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 終了予定日
 - 作業開始日
 - 作業終了日
-- 説明
-- コンピューター
+- [説明]
+- Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow インシデントの出力データ
 
 | OMS のフィールド | ITSM のフィールド |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | 状態 |
+| IncidentState_s | State |
 | Urgency_s |緊急度 |
 | Impact_s |影響|
 | Priority_s | 優先順位 |
@@ -166,7 +166,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | CreatedDate_t|  開始済み |
 | ClosedDate_t| closed|
 | ResolvedDate_t|解決済み|
-| コンピューター  | 構成項目 |
+| Computer  | 構成項目 |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 変更要求の出力データ
 
@@ -177,9 +177,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 終了者 |
 | AssignedTo_s | 割り当て先  |
 | Title_s|  簡単な説明 |
-| Type_s|  型 |
+| Type_s|  type |
 | Category_s|  カテゴリ |
-| CRState_s|  状態|
+| CRState_s|  State|
 | Urgency_s|  緊急度 |
 | Priority_s| 優先順位|
 | Risk_s| リスク|
@@ -190,8 +190,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   終了予定日 |
 | WorkStartDate_t  | 実際の開始日 |
 | WorkEndDate_t | 実際の終了日|
-| Description_s | Description |
-| コンピューター  | 構成項目 |
+| Description_s | [説明] |
+| Computer  | 構成項目 |
 
 **ITSM データに関する Log Analytics 画面 (サンプル):**
 
@@ -281,7 +281,7 @@ ITSMC はアクション グループと統合されています。
 
 6. ドロップダウン メニューから **[作業項目]** の種類を選択します。
    既存のテンプレートを使用するか、ITSM 製品に必要なフィールドに入力します。
-7. **[OK]**をクリックします。
+7. Click **OK**.
 
 Azure のアラート ルールを作成/編集する場合は、ITSM アクションを含むアクション グループを使用します。 アラートがトリガーされると、ITSM ツールで作業項目が作成されます。
 
@@ -292,11 +292,11 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>OMS の ITSM 接続のトラブルシューティング
 1.  接続されているソースの UI からの接続が失敗し、"**接続の保存中にエラーが発生しました**" というメッセージが表示された場合は、次の手順を実行してください。
- - ServiceNow、Cherwell および Provance の接続の場合  
-        - 各接続のユーザー名、パスワード、クライアント ID、およびクライアント シークレットが正しく入力されていることを確認します。  
-        - 対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。  
- - Service Manager 接続の場合  
-        - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。  
+- ServiceNow、Cherwell および Provance の接続の場合  
+       - 各接続のユーザー名、パスワード、クライアント ID、およびクライアント シークレットが正しく入力されていることを確認します。  
+       - 対応する ITSM 製品で接続を作成するための十分な特権があるかどうかを確認します。  
+- Service Manager 接続の場合  
+       - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。  
 
 2.  ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 ServiceNow Dev インスタンスは、長時間アイドル状態になっている場合、スリープ状態になることがあります。 それ以外の場合は、問題を報告してください。
 3.  OMS アラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、以下を確認してください。
@@ -313,5 +313,5 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 IT Service Management Connector に関するご質問やフィードバックは、[omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) にお寄せください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ITSM 製品/サービスを IT Service Management Connector に追加する](log-analytics-itsmc-connections.md)。

@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: dc4bfa4a94eaa2fb4e0e821c4931dcd1963f3109
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 0397b45753ea64d1a33916d5e0dff12d6e1d80aa
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 このトピックでは、Azure Automation の評価および学習を目的として、Azure Portal から Automation アカウントを作成する方法について説明します。Runbook ジョブの高度な監視を実現する管理ソリューションの追加や OMS Log Analytics との統合は含まれていません。  そうした管理ソリューションの追加や Log Analytics との統合は、後からいつでも行うことができます。  Automation アカウントを使うと、Runbook の認証を行い、Azure Resource Manager または Azure クラシック デプロイメントのリソースを管理できます。
@@ -67,7 +67,7 @@ Automation アカウントを作成したり更新したりするには、この
 ### <a name="resources-included"></a>含まれるリソース
 Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。  実行アカウントのリソースを次の表に示します。<br>
 
-| リソース | Description |
+| リソース | [説明] |
 | --- | --- |
 | AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルのグラフィカルな Runbook。 |
 | AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。 |
@@ -77,7 +77,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 
 クラシック実行アカウントのリソースを次の表に示します。<br>
 
-| リソース | Description |
+| リソース | [説明] |
 | --- | --- |
 | AzureClassicAutomationTutorial Runbook |クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルのグラフィカルな Runbook。 |
 | AzureClassicAutomationTutorial Script Runbook |クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルの PowerShell Runbook。 |
@@ -85,7 +85,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 | AzureClassicRunAsConnection |Runbook から Azure のクラシック リソースを管理できるように、Azure を使用した認証に使用される、自動的に作成される接続資産。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 * PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。

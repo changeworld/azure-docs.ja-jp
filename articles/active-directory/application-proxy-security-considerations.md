@@ -3,7 +3,7 @@ title: "Azure AD アプリケーション プロキシのセキュリティに�
 description: "Azure AD アプリケーション プロキシを使用する場合のセキュリティに関する注意事項を説明します"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 5a2ab5c68345deee3a34173d38d529a911c7ff3e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2370c4717e2cff6b4b8113b09624ef873b309647
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -161,7 +161,7 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 
 この要求には、アプリケーションからのアイテム (要求ヘッダー、暗号化された Cookie のデータ、要求を作成したユーザー、要求 ID など) が含まれています。 要求と共に暗号化された cookie のデータが送信されますが、認証 cookie 自体は暗号化されていません。
 
-#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>3.コネクタがキューの要求を処理する 
+#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>手順 3.コネクタがキューの要求を処理する 
 
 アプリケーション プロキシは、要求に基づいて次のいずれかのアクションを実行します。
 
@@ -180,7 +180,7 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 アプリケーションの何らかの処理がここで発生する場合があります。 アプリケーションのヘッダーまたは URL を変換するようにアプリケーション プロキシを構成した場合、その処理は、この手順の中で必要に応じて実行されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure AD アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項](application-proxy-network-topology-considerations.md)
 

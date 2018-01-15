@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3f46d743b85b1133f64309f01074cbc3b430183f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15ea4cbc02a0311b26e75ae7156c42f6bc2b9b82
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
 
@@ -34,7 +34,7 @@ Service Fabric CLI (sfctl) を使用してセキュリティで保護された�
 
 証明書とキーのペアとして、または単一の pem ファイルとして、2 つの異なる方法でクライアント証明書を指定できます。 パスワードで保護された `pem` ファイルの場合、自動的にパスワードの入力が求められます。
 
-クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 For example:
+クライアント証明書を pem ファイルとして指定するには、`--pem` 引数でファイル パスを指定します。 例: 
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -48,7 +48,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-テスト クラスターまたは開発クラスターのセキュリティ保護に使用される証明書では、証明書の検証が失敗することがあります。 証明書の検証をバイパスするには、`--no-verify` オプションを指定します。 For example:
+テスト クラスターまたは開発クラスターのセキュリティ保護に使用される証明書では、証明書の検証が失敗することがあります。 証明書の検証をバイパスするには、`--no-verify` オプションを指定します。 例: 
 
 > [!WARNING]
 > 運用環境の Service Fabric クラスターに接続するときに `no-verify` オプションを使用しないでください。
@@ -57,7 +57,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./cli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-さらに、信頼された CA 証明書のディレクトリ、または個々の証明書へのパスを指定することもできます。 これらのパスを指定するには、`--ca` 引数を使用します。 For example:
+さらに、信頼された CA 証明書のディレクトリ、または個々の証明書へのパスを指定することもできます。 これらのパスを指定するには、`--ca` 引数を使用します。 例: 
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
@@ -350,7 +350,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)

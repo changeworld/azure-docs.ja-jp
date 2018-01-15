@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 75c3b514b8cb7758399efb92cb9e0738c855f022
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 23bc0ba87abbac0f83e3e5ac9d1049bbf42707c9
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - GA](v1/data-factory-onprem-db2-connector.md)
+> * [バージョン 1 - 一般公開](v1/data-factory-onprem-db2-connector.md)
 > * [バージョン 2 - プレビュー](connector-db2.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、DB2 データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/06/2017
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-DB2 データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+DB2 データベースのデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 具体的には、この DB2 コネクタは、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 9、10、および 11 に対応した、次の IBM DB2 のプラットフォームとバージョンをサポートしています。
 
@@ -53,7 +53,8 @@ DB2 データベースのデータを、サポートされているシンク デ
 パブリックにアクセスできない DB2 データベースからコピーしたデータを使用するには、セルフホステッド統合ランタイムを設定する必要があります。 セルフホステッド統合ランタイムの詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事を参照してください。 統合ランタイムには DB2 ドライバーが組み込まれているため、DB2 からデータをコピーするときにドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、DB2 コネクタに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -61,16 +62,16 @@ DB2 データベースのデータを、サポートされているシンク デ
 
 DB2 のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Db2** に設定する必要があります。 | あり |
-| server |DB2 サーバーの名前です。 |はい |
-| database |DB2 データベースの名前です。 |はい |
-| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |なし |
-| authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値: **Basic**。 |あり |
-| username |DB2 データベースに接続するユーザー名を指定します。 |あり |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| 型 | type プロパティは **Db2** に設定する必要があります。 | [はい] |
+| [サーバー] |DB2 サーバーの名前です。 |[はい] |
+| [データベース] |DB2 データベースの名前です。 |[はい] |
+| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
+| authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値: **Basic**。 |[はい] |
+| username |DB2 データベースに接続するユーザー名を指定します。 |[はい] |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
 
@@ -103,9 +104,9 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 
 DB2 からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
+| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | DB2 データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -133,10 +134,10 @@ DB2 からデータをコピーするには、データセットの type プロ�
 
 DB2 からデータをコピーするには、コピー アクティビティのソースの種類を **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
+| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -196,13 +197,13 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | Numeric |Decimal |
 | Real |Single |
 | SmallInt |Int16 |
-| Time |TimeSpan |
-| Timestamp |DateTime |
+| Time |timespan |
+| Timestamp |Datetime |
 | VarBinary |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
 | xml |Byte[] |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

@@ -3,7 +3,7 @@ title: "Data Lake Store で PowerShell を使用するためのパフォーマ�
 description: "Data Lake Store で Azure PowerShell を使用するときにパフォーマンスを改善する方法に関するヒント"
 services: data-lake-store
 documentationcenter: 
-author: nitinme
+author: stewu
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/30/2017
-ms.author: nitinme
-ms.openlocfilehash: 49404c7df6423a20c71347e4a764d5626110310e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/09/2018
+ms.author: stewu
+ms.openlocfilehash: 63e1114d49b7bcb8910e8cd8205f10d1e8587f61
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-store"></a>Azure Data Lake Store で PowerShell を使用するためのパフォーマンス チューニング ガイダンス
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="performance-related-properties"></a>パフォーマンス関連のプロパティ
 
-| プロパティ            | 既定値 | 説明 |
+| プロパティ            | 既定値 | [説明] |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | このパラメーターを使用すると、各ファイルをアップロードまたはダウンロードする場合の並列スレッドの数を選択できます。 この数値は、1 ファイルに割り当てることができる最大スレッド数を表しますが、シナリオに応じてスレッドが少なくなる場合があります (たとえば、1 KB のファイルをアップロードする場合、20 個のスレッドを要求してもスレッドは 1 つになります)。  |
 | ConcurrentFileCount | 10      | このパラメーターは、ファイルのアップロードまたはダウンロード専用です。 このパラメーターによって、同時にアップロードまたはダウンロードできるファイルの数が決まります。 この数値は、一度にアップロードまたはダウンロードできる同時実行ファイルの最大数を表しますが、シナリオに応じて同時実行の数が少なくなる場合があります (たとえば、2 つのファイルをアップロードしている場合、15 を要求しても同時に行われるファイルのアップロードは 2 つになります)。 |
@@ -93,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 
 * **調整エラー**: 同時実行があまりに多くなると、調整エラーが表示される場合があります。 調整エラーが表示される場合は、同時実行を減らすか、Microsoft にお問い合わせください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ビッグ データの要件に対する Azure Data Lake Store の使用](data-lake-store-data-scenarios.md) 
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

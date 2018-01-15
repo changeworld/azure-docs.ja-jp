@@ -3,19 +3,19 @@ title: "Azure Time Series Insights 環境の作成 | Microsoft Docs"
 description: "この記事では、Azure Portal を使用して新しい Time Series Insights 環境を作成する方法について説明します。"
 services: time-series-insights
 ms.service: time-series-insights
-author: op-ravi
-ms.author: omravi
+author: ashannon7
+ms.author: anshan
 manager: jhubbard
 editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 6dba703851161a1eebce0101be8076682f09c76f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 20156432e17d5eca90779271bd18dc49fa988d7c
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal で新しい Time Series Insights 環境を作成する
 この記事では、Azure Portal を使用して新しい Time Series Insights 環境を作成する方法について説明します。
@@ -25,7 +25,7 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
 ## <a name="steps-to-create-the-environment"></a>環境の作成手順
 次の手順に従って、環境を作成します。
 
-1.  [Azure ポータル](https://portal.azure.com)にサインインします。
+1.  [Azure Portal](https://portal.azure.com) にサインインします。
 
 2.  **[+ 新規]** をクリックします。
 
@@ -39,7 +39,7 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
    
    ![Time Series Insights リソース グループの作成](media/time-series-insights-get-started/2-create-tsi.png)
    
-   設定|推奨値|Description
+   設定|推奨値|[説明]
    ---|---|---
    環境名 | 一意の名前 | この名前は、[Time Series エクスプローラー](https://insights.timeseries.azure.com)でその環境を表します。
    [サブスクリプション] | 該当するサブスクリプション | 複数のサブスクリプションがある場合、可能であれば、イベント ソースが含まれているサブスクリプションを選択します。 Time Series Insights では、同じサブスクリプションに存在する Azure IoT Hub とイベント ハブのリソースを自動検出できます。
@@ -60,8 +60,8 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
 
 デプロイが成功したら、**[リソースに移動]** を選択して、他のプロパティの構成、データ アクセス ポリシーによるセキュリティの設定、イベント ソースの追加などの操作を行うことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 環境をセキュリティで保護するために、[データ アクセス ポリシーを定義](time-series-insights-data-access.md)する。
 * Azure Time Series Insights 環境に[イベント ハブ イベント ソースを追加](time-series-insights-how-to-add-an-event-source-eventhub.md)する。 
 * イベント ソースに[イベントを送信する](time-series-insights-send-events.md)。
-* [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示する。
+* [Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)で環境を表示します。

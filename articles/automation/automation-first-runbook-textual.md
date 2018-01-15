@@ -12,14 +12,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/31/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 214163dd0f63bb8e08afdf94dcbfcc93d0279ad1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8c65f91adda6f3329400e0b54594cf839d6eb646
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
 
@@ -154,7 +154,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 6. **[開始]** をクリックして Runbook を開始します。 起動する仮想マシンの **VMName** と **ResourceGroupName** を入力します。<br><br> ![Start Runbook](media/automation-first-runbook-textual/automation-pass-params.png)<br>  
 7. Runbook が完了したら、仮想マシンが開始されたことを確認します。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)

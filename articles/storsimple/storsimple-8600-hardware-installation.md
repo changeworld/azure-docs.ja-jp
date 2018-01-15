@@ -4,7 +4,7 @@ description: "ソフトウェアのデプロイと構成の前に、StorSimple 8
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: carmonm
+manager: jeconnoc
 editor: 
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/24/2016
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 309ceba2d65c0745ba1acac698acb62526ab8078
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a8b460441323cb668a3d9939cce434636afc44d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>StorSimple 8600 デバイスの開梱、ラック取り付け、ケーブル接続
 ## <a name="overview"></a>概要
@@ -38,14 +38,14 @@ ms.lasthandoff: 10/11/2017
 次に、以下のステップを実行して、デバイスを開梱します。
 
 #### <a name="to-unpack-your-device"></a>デバイスを開梱するには
-1. 箱と梱包材を調べて、つぶれ、切断、水害などの明らかな損傷がないか確認します。 箱または梱包材がひどく破損している場合は、箱を開けないでください。 [Microsoft サポートに問い合わせて](storsimple-contact-microsoft-support.md) 、デバイスが正常に使用できる状態にあるかどうかを評価してください。
+1. 箱と梱包材を調べて、つぶれ、切断、水害などの明らかな損傷がないか確認します。 箱または梱包材がひどく破損している場合は、箱を開けないでください。 [Microsoft サポートに問い合わせて](storsimple-8000-contact-microsoft-support.md) 、デバイスが正常に使用できる状態にあるかどうかを評価してください。
 2. 外側の箱を開き、主エンクロージャと EBOD エンクロージャの 2 つの箱を取り出します。 主エンクロージャと EBOD エンクロージャを開梱します。 1 つのエンクロージャを開梱したようすを次の図に示します。
    
     ![ストレージ デバイスの開梱](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
     **ストレージ デバイスを開梱したようす**
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    | --- | --- |
    |   1 |梱包箱 |
    |   2 |SAS ケーブル (アクセサリおよびケーブル トレイ内) |
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/11/2017
    * ラック取り付け用キット 2 セット (取り付けハードウェア付きサイド レールが 4 個、主エンクロージャと EBOD エンクロージャに 2 個ずつ)、各箱に 1 セット
    * 作業の開始に関するドキュメント
      
-     上記のアイテムの中で足りないものがある場合は、 [Microsoft サポートに連絡してください](storsimple-contact-microsoft-support.md)。  
+     上記のアイテムの中で足りないものがある場合は、 [Microsoft サポートに連絡してください](storsimple-8000-contact-microsoft-support.md)。  
 
 次のステップでは、デバイスをラックに取り付けます。
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 10/11/2017
    
     **エンクロージャの両側へのレール スライドの取り付け**
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    | --- | --- |
    |  1 |M 3x4 丸ねじ |
    |  2 |シャーシ スライド |
@@ -122,7 +122,7 @@ ms.lasthandoff: 10/11/2017
    
     **ラックへのレール アセンブリの取り付け**
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    | --- | --- |
    |   1 |締め付けねじ |
    |   2 |角穴フロント ラック ポストねじ |
@@ -148,7 +148,7 @@ ms.lasthandoff: 10/11/2017
    
     **フランジ キャップの取り付け**
    
-   | ラベル | 説明 |
+   | ラベル | [説明] |
    | --- | --- |
    |   1 |エンクロージャ固定ねじ |
 
@@ -201,7 +201,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
    
     **データ ポートが示されているデバイスの背面**
    
-   | ラベル | Description |
+   | ラベル | [説明] |
    | --- | --- |
    |   0、1、4、5 |1 GbE ネットワーク インターフェイス |
    |   2、3 |10 GbE ネットワーク インターフェイス |
@@ -212,7 +212,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 
 **デバイスのネットワーク ケーブル配線**
 
-| ラベル | 説明 |
+| ラベル | [説明] |
 | --- | --- |
 | A |インターネット アクセスのある LAN |
 | B |コントローラー 0 |
@@ -234,7 +234,7 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 高可用性とパフォーマンスのため注意してください。
 
 * 可能であれば、各コントローラーに、クラウド アクセス用の 2 つのネットワーク インターフェイス (1 GbE) と、iSCSI 用の 2 つのネットワーク インターフェイス (10 GbE 推奨) を構成します。
-* 可能であれば、スイッチ障害の場合の可用性を確保するため、各コントローラーからのネットワーク インターフェイスを 2 つの異なるスイッチに接続します。 図では、各コントローラーからの 2 つの 10 GbE ネットワーク インターフェイス DATA 2 と DATA 3 が、2 つの異なるスイッチに接続されています。 詳細については、「 **StorSimple の高可用性の要件** 」の「 [ネットワーク インターフェイス](storsimple-system-requirements.md#high-availability-requirements-for-storsimple)」を参照してください。
+* 可能であれば、スイッチ障害の場合の可用性を確保するため、各コントローラーからのネットワーク インターフェイスを 2 つの異なるスイッチに接続します。 図では、各コントローラーからの 2 つの 10 GbE ネットワーク インターフェイス DATA 2 と DATA 3 が、2 つの異なるスイッチに接続されています。 詳細については、「 **StorSimple の高可用性の要件** 」の「 [ネットワーク インターフェイス](storsimple-8000-system-requirements.md#high-availability-requirements-for-storsimple)」を参照してください。
 
 > [!NOTE]
 > 10 GbE ネットワーク インターフェイスで SFP+ トランシーバーを使用する場合は、提供されている QSFP-SFP+ アダプターを使用します。 詳細については、「 [StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)」をご覧ください。
@@ -265,6 +265,6 @@ EBOD エンクロージャの取り付けが終わったら、同じステップ
 
 デバイスに電源、ネットワーク アクセス、およびシリアル接続用のケーブルを接続する作業が完了しました。次のステップでは、デバイスでソフトウェアを構成します。
 
-## <a name="next-steps"></a>次のステップ
-これで [オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-deployment-walkthrough-u2.md)準備ができました。
+## <a name="next-steps"></a>次の手順
+これで [オンプレミス StorSimple デバイスをデプロイして構成する](storsimple-8000-deployment-walkthrough-u2.md)準備ができました。
 

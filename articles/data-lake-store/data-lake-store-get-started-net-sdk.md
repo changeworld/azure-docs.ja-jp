@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/13/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 018cf772f458bb29712ef9516c3af4e969a94564
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 682e8c9fc9e7f16d6b69cd73535c76e6c53c6b49
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Store に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -146,5 +146,5 @@ ms.lasthandoff: 12/18/2017
 * [.NET SDK を使用した Data Lake Store に対するファイルシステム操作](data-lake-store-data-operations-net-sdk.md)
 * [Data Lake Store .NET SDK リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)

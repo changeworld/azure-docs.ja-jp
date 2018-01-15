@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/13/2017
   ms.author: kfile
-  ms.openlocfilehash: 3c181142dcdb4132964ba5da9582b9f2b1ad817e
-  ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+  ms.openlocfilehash: 8ccc0fe8ca23fabb6d2cb697836e8f402dbaf672
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/14/2017
+  ms.lasthandoff: 01/12/2018
 abstract:
   description: "Time Series Insights 環境を設定し、IoT ソリューションまたは接続されたモノの時系列データを調査および分析する方法について説明します。 ドキュメントには、前提条件、使用方法、API リファレンスのほか、数分で作業を開始するのに役立つ記事が記載されています。"
 sections:
@@ -29,10 +29,10 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/azure/time-series-insights/media/index/time-series-insights.svg
+        src: https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg
       text: "Azure Time Series Insights の探索"
       href: /azure/time-series-insights/time-series-quickstart
-- title: "リファレンス"
+- title: "参照"
   items:
   - type: list
     style: cards

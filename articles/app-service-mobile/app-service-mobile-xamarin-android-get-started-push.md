@@ -3,8 +3,8 @@ title: "Xamarin.Android アプリへのプッシュ通知の追加 | Microsoft D
 description: "Azure App Service と Azure Notification Hubs を使用して、Xamarin.Android アプリにプッシュ通知を送信する方法について説明します。"
 services: app-service\mobile
 documentationcenter: xamarin
-author: ysxu
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 6f7e8517-e532-4559-9b07-874115f4c65b
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
-ms.author: yuaxu
-ms.openlocfilehash: c3757d56fb1792092710740dc5ffbd64f18730cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: c7d2b68d2b523a04c38881d53747adfbb8b295cc
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Xamarin.Android アプリへのプッシュ通知の追加
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

@@ -223,7 +223,7 @@
 - name: 関連項目
   items:
     - name: Microsoft Cognitive Toolkit - CNTK
-      href: 'https://docs.microsoft.com/en-us/cognitive-toolkit/'
+      href: 'https://docs.microsoft.com/cognitive-toolkit/'
       maintainContext: true
     - name: Cortana Intelligence パートナー ソリューション
       items:
@@ -240,7 +240,7 @@
             - name: 異常検出
               href: apps-anomaly-detection-api.md
             - name: Cognitive Services
-              href: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
+              href: 'https://docs.microsoft.com/azure/cognitive-services/'
             - name: 予測的なメンテナンス
               items:
                 - name: 概要
@@ -255,7 +255,7 @@
                   href: cortana-analytics-playbook-vehicle-telemetry.md
                 - name: プレイブック
                   href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
-                - name: '[Setup]'
+                - name: セットアップ
                   href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: リソース
   items:

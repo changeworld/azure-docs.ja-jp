@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 3428c3852f156df850f4b9e8833d15f4ae32729d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 31c98b930ccb8203316e3a3b13c3c0dc7d74dd9c
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 > [!div class="op_single_selector"]
@@ -119,7 +119,7 @@ Data Lake Store アカウントを削除するには、以下のコマンドを�
 
 確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、アカウントを削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Data Lake Store で PowerShell を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-powershell.md)
 * [ビッグ データの要件に対する Azure Data Lake Store の使用](data-lake-store-data-scenarios.md) 
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)

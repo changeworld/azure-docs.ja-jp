@@ -3,7 +3,7 @@ title: "Azure Active Directory アプリケーション プロキシを使用す
 description: "Azure AD アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項について説明しています。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 62b28ba446b4ffb13071b81805767bb34288fe2e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f4ca4856333bf8b10a00952356080ed332dc266b
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 
@@ -170,7 +170,7 @@ ExpressRoute プライベート ピアリング経由で企業ネットワーク
 
 ![ユーザー、プロキシ、コネクタは米国内に、アプリケーションは EU 内に存在することを示す図](./media/application-proxy-network-topologies/application-proxy-pattern5c.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 - [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)

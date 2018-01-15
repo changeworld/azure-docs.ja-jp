@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 72be69b8d48abdcb15f4a89949edc3083ce85eee
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 187673fad2b5984441b93aa5313df31f1e8a3d2d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Azure Automation 実行アカウントの認証をテストする
 Automation アカウントが正常に作成されたら、新しく作成または更新された Automation 実行アカウントを使用して Azure Resource Manager または Azure クラシック デプロイメントで正常に認証できることを確認する簡単なテストを実行できます。    
@@ -108,6 +108,6 @@ Runbook の詳細な結果を表示するには、 **[出力]** タイルをク�
 
 Runbook のコードを再利用する際は、コマンドレット **Get-AzureVM** を忘れずに削除してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
 * グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。

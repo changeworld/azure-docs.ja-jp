@@ -1,5 +1,5 @@
 ---
-title: "Azure ID 管理の基礎 | Microsoft Docs"
+title: "Azure ID 管理の基礎"
 description: "ユーザーが企業のアプリケーションやデータにいつ、どのようにアクセスしたかを制御し可視化する最良の方法は、現時点ではクラウド ベース識別です。"
 keywords: 
 author: jeffgilb
@@ -13,13 +13,14 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: b77fc9e6c9dbb5fde2e2f0d153f348bb553b9f79
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a7eb669aac109ae8cde6d75129004d322c270651
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure ID 管理の基礎
+
 企業のデジタル リソースは、企業ネットワーク外部のクラウドやデバイスに置かれるものがますます増え、クラウド ベースの優れた ID とアクセス管理ソリューションが不可欠になっています。 ユーザーが企業のアプリケーションやデータにいつ、どのようにアクセスしたかを制御し可視化する最良の方法は、現時点ではクラウド ベース識別です。
 
 Microsoft は、10 年以上にわたってクラウド ベースの ID を保護してきました。そして現在、[Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/active-directory-editions) によって、同じ保護システムをお客様にご利用いただけるようになりました。 Azure AD を使用すると、エンタープライズ管理者はこれまでにない優れたセキュリティとガバナンスで、ユーザーと管理者の説明責任を簡単に確保できます。
@@ -27,7 +28,7 @@ Microsoft は、10 年以上にわたってクラウド ベースの ID を保�
 Azure AD Premium は、高度な保護機能を備えた、クラウド ベースの ID およびアクセス管理ソリューションです。これにより、すべてのアプリに対する 1 つの安全な ID、([Microsoft インテリジェンス セキュリティ グラフ](https://www.microsoft.com/en-us/security/intelligence)によって強化された) ID 保護、Privileged Identity Management が実現します。 Azure AD Premium は、よくある監視およびレポート ツールではなく、ユーザーの ID をリアルタイムで保護したり、組織のデータを保護するためにリスク ベースで適応性の高いアクセス ポリシーを作成できるようにしたりできます。
 
 Azure AD の ID 管理および保護の概要については、この簡単なビデオをご覧ください。
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9LGIJ2-FKIM" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
 Microsoft は、どこでも使用できる ID だけでなく、組織の IT の自動化、セキュリティ支援、管理のための一連のツールも提供しています。 クラウド コンピューティングの登場後も、ヘルプデスクへのユーザー パスワードのリセット依頼、ユーザー グループ管理、アプリケーションの要求など、IT タスクの管理と制御の需要はまだ存在します。 さらに事態を複雑にしているのが、従業員による職場への個人用デバイスの持ち込みと、すぐに利用可能な SaaS アプリケーションの使用です。 その結果、企業のデータセンターとパブリック クラウド プラットフォーム全体でアプリケーションの制御を維持することが重要な課題です。
 
@@ -74,5 +75,5 @@ Azure の ID 管理では、次のことが可能です。
 
 -   世界規模でエンタープライズ レベルでクラウド ベースの ID およびアクセス管理ソリューションの[高可用性および信頼性](https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications)の利点を活用する。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure ID ソリューションの詳細を確認する](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)

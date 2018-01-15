@@ -4,7 +4,7 @@ description: "Windows PowerShell for StorSimple を使用して StorSimple デ�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,17 +12,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/03/2017
+ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 89e1054117f19e787da5330932021351fb016209
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイスを管理するために使用できるコマンドライン インターフェイスです。 名前が示すように、これは制約付き実行空間に組み込まれている Windows PowerShell ベースのコマンド ライン インターフェイスです。 コマンド ラインを使用するユーザーの観点から見ると、制約付き実行空間は、Windows PowerShell の制限付きバージョンとして表示されます。 このインターフェイスは、Windows PowerShell の基本機能の一部を維持するとともに、Microsoft Azure StorSimple デバイスの管理に適合するように調整された専用のコマンドレットを持っています。
 
@@ -60,7 +60,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
    | キーボードの項目 | Select |
    | --- | --- |
    | Backspace key |Control-? (127) |
-   | Home and End keys |Standard |
+   | Home and End keys |標準 |
    | Function keys and keypad |ESC[n~ |
    | Initial state of cursor keys |Normal |
    | Initial state of numeric keypad |Normal |
@@ -126,8 +126,8 @@ Windows PowerShell リモート処理を使用して StorSimple デバイスに�
 
 HTTP または HTTPS を使用して Windows PowerShell リモート処理経由で接続できます。 次のチュートリアルの手順を使用してください。
 
-* [HTTP を使用してリモート接続する](storsimple-remote-connect.md#connect-through-http)
-* [HTTPS を使用してリモート接続する](storsimple-remote-connect.md#connect-through-https)
+* [HTTP を使用してリモート接続する](storsimple-8000-remote-connect.md#connect-through-http)
+* [HTTPS を使用してリモート接続する](storsimple-8000-remote-connect.md#connect-through-https)
 
 ## <a name="connection-security-considerations"></a>接続のセキュリティに関する考慮事項
 
@@ -182,7 +182,7 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 > 実行空間で利用できるすべてのコマンドレットの一覧を取得するには、該当するメニュー オプションにログインし、`Get-Command` コマンドレットを実行します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「 [StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
+上記のワークフローのいずれかを実行したときに、StorSimple デバイスで問題が発生した場合は、「 [StorSimple デプロイメントのトラブルシューティング用ツール](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments)」をご覧ください。
 

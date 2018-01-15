@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 343facadfec217adaef9a05426e7ae914f4cfd38
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 8f586c12ce1d24cfccbd6804e80dae51f6adf085
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,11 +42,12 @@ Teradata データベースから、サポートされている任意のシン�
 
 この Teradata コネクタを使用するには、次の手順が必要です。
 
-- セルフホステッド統合ランタイムをセットアップします。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
+- セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
 - 統合ランタイムのコンピューターに、[.NET Data Provider for Teradata](http://go.microsoft.com/fwlink/?LinkId=278886) バージョン 14 以上をインストールします。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Teradata コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -54,14 +55,14 @@ Teradata データベースから、サポートされている任意のシン�
 
 Teradata のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Teradata** に設定する必要があります。 | あり |
-| server | Teradata のサーバーの名前です。 | はい |
-| authenticationType | Teradata データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Windows** です。 | あり |
-| username | Teradata データベースに接続するユーザー名を指定します。 | あり |
-| パスワード | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 | あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |あり |
+| 型 | type プロパティを **Teradata** に設定する必要があります。 | [はい] |
+| [サーバー] | Teradata のサーバーの名前です。 | [はい] |
+| authenticationType | Teradata データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Windows** です。 | [はい] |
+| username | Teradata データベースに接続するユーザー名を指定します。 | [はい] |
+| password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 | [はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
 
 **例:**
 
@@ -93,9 +94,9 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 
 Teradata からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
+| 型 | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | [はい] |
 | tableName | Teradata データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例:**
@@ -122,10 +123,10 @@ Teradata からデータをコピーするには、データセットの type �
 
 Teradata からデータをコピーするには、コピー アクティビティのソース タイプを **RelationalSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
+| 型 | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -171,22 +172,22 @@ Teradata からデータをコピーするとき、Teradata のデータ型か�
 | ByteInt |Int16 |
 | Char |String |
 | Clob |String |
-| 日付 |DateTime |
+| 日付 |Datetime |
 | Decimal |Decimal |
 | Double |Double |
 | Graphic |String |
 | 整数 |Int32 |
-| Interval Day |TimeSpan |
-| Interval Day To Hour |TimeSpan |
-| Interval Day To Minute |TimeSpan |
-| Interval Day To Second |TimeSpan |
-| Interval Hour |TimeSpan |
-| Interval Hour To Minute |TimeSpan |
-| Interval Hour To Second |TimeSpan |
-| Interval Minute |TimeSpan |
+| Interval Day |timespan |
+| Interval Day To Hour |timespan |
+| Interval Day To Minute |timespan |
+| Interval Day To Second |timespan |
+| Interval Hour |timespan |
+| Interval Hour To Minute |timespan |
+| Interval Hour To Second |timespan |
+| Interval Minute |timespan |
 | Interval Minute To Second |timespan |
 | Interval Month |String |
-| Interval Second |TimeSpan |
+| Interval Second |timespan |
 | Interval Year |String |
 | Interval Year To Month |String |
 | Number |Double |
@@ -196,15 +197,15 @@ Teradata からデータをコピーするとき、Teradata のデータ型か�
 | Period(Timestamp) |String |
 | Period(Timestamp With Time Zone) |String |
 | SmallInt |Int16 |
-| Time |TimeSpan |
+| Time |timespan |
 | Time With Time Zone |String |
-| Timestamp |DateTime |
-| Timestamp With Time Zone |Datetimeoffset |
+| Timestamp |Datetime |
+| Timestamp With Time Zone |DateTimeOffset |
 | VarByte |Byte[] |
 | VarChar |String |
 | VarGraphic |String |
-| Xml |String |
+| xml |String |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

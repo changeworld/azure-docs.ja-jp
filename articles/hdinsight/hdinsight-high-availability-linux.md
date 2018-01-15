@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 39894ba73c691ad547d8b5ab67ec9d5786a5229c
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: bf1840f77ebd39761a5ba1fd8fd1f98891dd8eca
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight における Hadoop クラスターの可用性と信頼性
 
@@ -189,7 +189,7 @@ SSH 経由でヘッド ノードに接続している間、ログ ファイル�
 
 SSH ファイル転送プロトコルまたはセキュア ファイル転送プロトコル (SFTP) を使用してヘッド ノードに接続し、ログ ファイルを直接ダウンロードすることもできます。
 
-SSH クライアントを使用するときと同様に、クラスターへの接続時にクラスターの SSH ユーザー アカウント名と SSH アドレスを指定する必要があります。 たとえば、「 `sftp username@mycluster-ssh.azurehdinsight.net`」のように入力します。 メッセージが表示されたらアカウントのパスワードを入力するか、または `-i` パラメーターを使用して公開キーを指定します。
+SSH クライアントを使用するときと同様に、クラスターへの接続時にクラスターの SSH ユーザー アカウント名と SSH アドレスを指定する必要があります。 たとえば、「`sftp username@mycluster-ssh.azurehdinsight.net`」のように入力します。 メッセージが表示されたらアカウントのパスワードを入力するか、または `-i` パラメーターを使用して公開キーを指定します。
 
 接続されると、 `sftp>` プロンプトが表示されます。 このプロンプトでは、ディレクトリの移動、およびファイルのアップロードとダウンロードを行うことができます。 たとえば、次のコマンドでは、 **/var/log/hadoop/hdfs** ディレクトリに移動し、ディレクトリ内のすべてのファイルをダウンロードします。
 
@@ -224,7 +224,7 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 * **Azure PowerShell**: `New-AzureRmHDInsightCluster` コマンドレットを使用するときに、`-HeadNodeVMSize`、`-WorkerNodeSize`、および `-ZookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このドキュメントに記載された事柄の詳細については、次のリンクを参照してください。
 

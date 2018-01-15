@@ -4,7 +4,7 @@ description: "Azure Mobile Apps の認証および承認機能の概念リファ
 services: app-service\mobile
 documentationcenter: 
 author: mattchenderson
-manager: syntaxc4
+manager: cfowler
 editor: 
 ms.assetid: a46dbf70-867d-48f6-8885-7f5207ad102e
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 4105392f58eaf37e88c1d9ffb74f3f4133fa5482
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90c11b09351f019c45f5f1b025d67947b69b3b0a
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="authentication-and-authorization-in-azure-mobile-apps"></a>Azure Mobile Apps での認証および承認
 ## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは

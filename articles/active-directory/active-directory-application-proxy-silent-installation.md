@@ -3,7 +3,7 @@ title: "Azure AD アプリケーション プロキシ コネクタのサイレ�
 description: "Azure AD アプリケーション プロキシ コネクタの無人インストールを実行して、オンプレミスのアプリへの安全なリモート アクセスを実現する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 3aa1c7f2-fb2a-4693-abd5-95bb53700cbb
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: cc837ce4e244f5f80645dcd65e0ee81e892e94a7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a89a64499fba5ad0adf55863d809857f00edb2d5
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Azure AD アプリケーション プロキシ コネクタ用の無人インストール スクリプトを作成します。
 
@@ -126,7 +126,7 @@ ms.lasthandoff: 12/11/2017
 
    `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 * [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
 * [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)

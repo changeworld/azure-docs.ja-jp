@@ -14,11 +14,11 @@ ms.devlang: json
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: richrund
-ms.openlocfilehash: 7fffaf3861feebc0cf3537ca096b1eebb252b7d6
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: cea25429dc6e5f9f12f472d17e8743d272135257
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
@@ -63,7 +63,7 @@ ms.lasthandoff: 12/08/2017
 10. カスタム ログの収集 
 11. Azure 診断によってストレージ アカウントに書き込まれた IIS ログとWindows イベント ログの収集
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -469,10 +469,12 @@ ms.lasthandoff: 12/08/2017
 3. PowerShell またはコマンド ラインを使用して、テンプレートをデプロイします。
 
 #### <a name="powershell"></a>PowerShell
-`New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json`
+```powershell
+New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
+```
 
 #### <a name="command-line"></a>コマンド ライン
-```
+```cmd
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
@@ -489,6 +491,6 @@ Azure クイックスタート テンプレート ギャラリーに、Log Analy
 * [Service Fabric クラスターをデプロイし、既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
 * [Service Fabric クラスターをデプロイし、Log Analytics ワークスペースを作成して監視する](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Resource Manager テンプレートを使用してエージェントと Azure VM にデプロイする](log-analytics-azure-vm-extension.md)
 

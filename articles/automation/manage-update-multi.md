@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 11/30/2017
 ms.author: magoedte;gwallace
-ms.openlocfilehash: 9bd6a290320958e2bc534ceb0abbcb647084920b
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 1763077aa733fc93dd59147405db9942c6c98960
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -110,12 +110,12 @@ Azure 以外の Linux 仮想マシンとコンピューターの更新管理を�
 
 次の表では、このソリューションでサポートされている接続先ソースについて説明します。
 
-| 接続先ソース | サポートされています | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
-| Windows エージェント |あり |更新管理は、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |あり |更新管理は、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |あり |更新管理は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
-| Azure ストレージ アカウント |なし |Azure Storage には、システムの更新プログラムに関する情報が含まれていません。 |
+| Windows エージェント |[はい] |更新管理は、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |[はい] |更新管理は、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |[はい] |更新管理は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
+| Azure ストレージ アカウント |いいえ  |Azure Storage には、システムの更新プログラムに関する情報が含まれていません。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 
@@ -180,7 +180,7 @@ Azure 以外の Linux 仮想マシンとコンピューターの更新管理を�
 
 展開で発生したエラーの詳細情報を確認するには、**[エラー]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * ログ、出力、エラーなど、更新管理の詳細については、「[OMS の更新管理ソリューション](../operations-management-suite/oms-solution-update-management.md)」を参照してください。
 

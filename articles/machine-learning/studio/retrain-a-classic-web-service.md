@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 75b1862f288152fa2ff4619f807b86f94dc00e3f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: ad18d82109e3048625f32d90af9677956350fb84
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="retrain-a-classic-web-service"></a>従来の Web サービスの再トレーニングを行う
 デプロイした予測 Web サービスは、既定のスコア付けエンドポイントです。 既定のエンドポイントは、元のトレーニングおよびスコア付け実験との同期が維持されるため、既定のエンドポイントのトレーニング済みモデルは置き換えることができません。 Web サービスを再トレーニングするには、Web サービスに新しいエンドポイントを追加する必要があります。 
@@ -66,7 +66,7 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
 
 1. URL をコピーし、ブラウザーに貼り付けます。
 2. [リソースの更新] リンクをクリックします。
-3. PATCH 要求の POST URL をコピーします。 次に例を示します。
+3. PATCH 要求の POST URL をコピーします。 例: 
    
      PATCH URL: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
 
@@ -116,7 +116,7 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
 
 *Resources* の *Name* パラメーターは、予測実験で保存したトレーニング済みモデルのリソース名と一致する必要があります。 リソース名を取得するには:
 
-1. [従来の Azure Portal](https://manage.windowsazure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで **[Machine Learning]**をクリックします。
 3. [名前] でワークスペースをクリックし、 **[Web サービス]**をクリックします。
 4. [名前] で **[Census Model [predictive exp.]]**をクリックします。
@@ -128,12 +128,12 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
 
 コードが正常に実行すると、新しいエンドポイントは、約 30 秒後に再トレーニング済みモデルを使用し始めます。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 再トレーニング API を使用して、予測 Web サービスのトレーニング済みモデルを更新すると、次のようなシナリオを有効にできます。
 
 * 新しいデータでの定期的なモデルの再トレーニング。
 * 自身のデータでモデルを再トレーニングすることを目標としている顧客へのモデルの配布。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Troubleshooting the retraining of an Azure Machine Learning classic web service (Azure Machine Learning の従来の Web サービスにおける再トレーニングに関するトラブルシューティング)](troubleshooting-retraining-models.md)
 

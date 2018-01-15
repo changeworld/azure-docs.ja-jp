@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: c5b7d5a5f20a4a70cbbbe43e33fdf65f12cb8e7d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bebfdfdf72014019a49a6da0e512e72932b096ac
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Azure Search インデクサーを使用して Azure SQL データベースをクロールする方法
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-* アクティブな Azure アカウント。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/free/)にサインアップできます。 
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/free/)にサインアップできます。 
 
 * Azure Search サービス。 その設定方法については、[Search サービスの作成](search-create-service-portal.md)に関するページを参照してください。
 
@@ -113,13 +113,13 @@ Search サービスのエンドポイントとキーは、ポータルから入�
 
 この手順では、インデクサーがクロールできる外部データ ソースを作成します。 このチュートリアルのデータ ファイルは、\DotNetHowToIndexers ソリューション フォルダーに格納されている *hotels.sql* です。 
 
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>の接続文字列
 
 Azure Portal とサンプルの *hotels.sql* ファイルを使用して、Azure SQL Database にデータセットを作成することができます。 Azure Search で使用されるのは、ビューやクエリから生成されるようなフラット化された行セットです。 サンプル ソリューションの SQL ファイルでは、単一のテーブルを作成してデータを投入します。
 
 次の演習では、サーバーもデータベースも存在していないことを想定しています。どちらも手順 2. で作成することになります。 既にリソースがある場合には、hotels テーブルをそこに追加して、手順 4. から始めることができます。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。 
+1. [Azure Portal](https://portal.azure.com/) にサインインします。 
 
 2. **[新規]** > **[SQL Database]** の順にクリックしてデータベース、サーバー、リソース グループを作成します。 既定値および一番低い価格レベルを使用してかまいません。 サーバーを作成する利点は、後の手順でテーブルを作成して読み込むために必要な管理者ユーザー名とパスワードを指定できることです。
 
@@ -281,12 +281,12 @@ Azure Portal にアクセスし、Search サービスの [概要] ページで�
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[リソース グループの削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 サポートされているデータ ソースごとのタスクおよび詳細については、次の記事を参照してください。
 
 * [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)

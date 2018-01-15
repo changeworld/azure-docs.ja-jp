@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a8bb8748d4fe39d664055549564d08524cdc80f3
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 190a9c998bceb97f8446265809b8d2c3bdc76abc
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-8-create-perspectives"></a>レッスン 8: パースペクティブを作成する
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-perspectives"></a>パースペクティブを作成する
 
 このレッスンでは、Internet Sales パースペクティブを作成します。 パースペクティブでは、表示可能なモデルのサブセットを定義して、集中的、ビジネス固有またはアプリケーション固有のビューポイントを作成できます。 ユーザーがパースペクティブを使用してモデルに接続すると、そのパースペクティブで定義されているフィールドと同じモデル オブジェクト (テーブル、列、メジャー、階層、KPI) のみ表示されます。 詳細については、「[パースペクティブ](https://docs.microsoft.com/sql/analysis-services/tabular-models/perspectives-ssas-tabular)」を参照してください。
   

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: eba08c38a5502368beda7ca7f84559ecca011133
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 4f83d61ff51b87b0a1dc120c62f3f986b46c6c8c
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory を使用して Cassandra からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,8 @@ Cassandra データベースから、サポートされている任意のシン�
 パブリックにアクセスできない Cassandra データベースからデータをコピーするには、セルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。 統合ランタイムには Cassandra ドライバーが組み込まれているため、Cassandra をコピー元またはコピー先としてデータをコピーするときにドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>使用の開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Cassandra コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -52,15 +53,15 @@ Cassandra データベースから、サポートされている任意のシン�
 
 Cassandra のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは **Cassandra** に設定する必要があります。 |あり |
-| host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |はい |
+| 型 |type プロパティは **Cassandra** に設定する必要があります。 |[はい] |
+| host |Cassandra サーバーの 1 つまたは複数の IP アドレスかホスト名。<br/>IP アドレスまたはホスト名のコンマ区切りのリストを指定して、すべてのサーバーに同時に接続します。 |[はい] |
 | ポート |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 9042) |
-| authenticationType | Cassandra データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Anonymous** です。 |あり |
+| authenticationType | Cassandra データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Anonymous** です。 |[はい] |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
-| パスワード |ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |はい (authenticationType が Basic に設定されている場合)。 |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| password |ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |はい (authenticationType が Basic に設定されている場合)。 |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
 
@@ -92,9 +93,9 @@ Cassandra のリンクされたサービスでは、次のプロパティがサ�
 
 Cassandra からデータをコピーするには、データセットの type プロパティを **RelationalTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**CassandraTable** に設定する必要があります。 | あり |
+| 型 | データセットの type プロパティは、**CassandraTable** に設定する必要があります。 | [はい] |
 | keyspace |Cassandra データベースのkeyspace またはスキーマの名前。 |はい ("CassandraSource" の "クエリ" が指定されている場合)。 |
 | tableName |Cassandra データベースのテーブル名。 |はい ("CassandraSource" の "クエリ" が指定されている場合)。 |
 
@@ -126,9 +127,9 @@ Cassandra からデータをコピーするには、データセットの type �
 
 Cassandra からデータをコピーするには、コピー アクティビティのソース タイプを **CassandraSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **CassandraSource** に設定する必要があります。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティを **CassandraSource** に設定する必要があります。 | [はい] |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの "tableName" と "keyspace" が指定されている場合)。 |
 | consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 詳細については、「 [Configuring data consistency (データ整合性の構成)](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。<br/><br/>使用可能な値は、**ONE**、**TWO**、**THREE**、**QUORUM**、**ALL**、**LOCAL_QUORUM**、**EACH_QUORUM**、および **LOCAL_ONE** です。 |いいえ (既定値は `ONE`) |
 
@@ -174,13 +175,13 @@ Cassandra からデータをコピーするとき、次の Cassandra のデー�
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |BOOLEAN |
-| DECIMAL |DECIMAL |
+| DECIMAL |Decimal |
 | DOUBLE |DOUBLE |
 | FLOAT |Single |
 | INET |String |
 | INT |Int32 |
 | TEXT |String |
-| TIMESTAMP |DateTime |
+| TIMESTAMP |Datetime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |String |
@@ -255,5 +256,5 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 | 3 |A |
 | 3 |E |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

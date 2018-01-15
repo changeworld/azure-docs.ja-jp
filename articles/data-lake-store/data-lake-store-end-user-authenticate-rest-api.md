@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/29/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: bcddb66806cc58b3513c9c157512ac8b96a51ec1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5ee13756e4276055a8c9bdd9642d0766c3ca7e5c
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-rest-api"></a>Data Lake Store での REST API を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ ms.lasthandoff: 12/21/2017
 
 対話型ユーザー認証の詳細については、 [承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
    
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Azure Data Lake Store での認証に REST API を使用してサービス間認証を使用する方法を学習しました。 これで、REST API を使用して Azure Data Lake Store を使用する方法について説明した次の記事に進めるようになりました。
 
 * [REST API を使用した Data Lake Store に対するアカウント管理操作](data-lake-store-get-started-rest-api.md)
