@@ -3,7 +3,7 @@ title: "Spark で Python ライブラリを使用して Web サイト ログを�
 description: "この Notebook では、Azure HDInsight の Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: cgronlun
 editor: cgronlun
 tags: azure-portal
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: 9f733e8b0c21b25b212266bb6047416cfb29d0ad
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.author: jgao
+ms.openlocfilehash: 8a3119b636d69e031ee69a0e4a5c0ef7faf6776f
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-spark-cluster-on-hdinsight"></a>HDInsight でカスタム Python ライブラリと Spark クラスターを使用して Web サイト ログを分析する
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/29/2017
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 ## <a name="save-raw-data-as-an-rdd"></a>生データを RDD として保存する
 このセクションでは、HDInsight の Apache Spark クラスターと関連付けられた [Jupyter](https://jupyter.org) Notebook を使用して、生のサンプル データを処理して Hive テーブルとして保存するジョブを実行します。 サンプル データは、すべてのクラスターにおいて既定で使用できる .csv ファイル (hvac.csv) です。
@@ -210,7 +210,7 @@ ms.lasthandoff: 11/29/2017
 ### <a name="scenarios"></a>シナリオ
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](../hdinsight-apache-spark-eventhub-streaming.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

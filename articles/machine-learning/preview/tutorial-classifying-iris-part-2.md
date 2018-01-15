@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/06/2017
-ms.openlocfilehash: f3b4b41593e0956e98f05c7f8d1c71632a489e56
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 7e489526fd1b6a7d38172d147df1f30d74119e95
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>あやめの分類 (パート 2): モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -345,7 +345,8 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>HDInsight クラスターでスクリプトを実行する
 このスクリプトは、HDInsight Spark クラスターで実行することもできます。 [Azure ML Workbench で使用する HDInsight Spark クラスターを作成する方法](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal)に関するページを参照してください。
 
->![NOTE] HDInsight クラスターは、プライマリ ストレージとして Azure BLOB を使用する必要があります。 Azure Data Lake Storage はまだサポートされていません。
+>[!NOTE] 
+>HDInsight クラスターは、プライマリ ストレージとして Azure BLOB を使用する必要があります。 Azure Data Lake Storage はまだサポートされていません。
 
 1. Spark for Azure HDInsight クラスターにアクセスできる場合は、次に示した HDInsight 実行構成コマンドを生成します。 パラメーターとして HDInsight クラスター名、HDInsight のユーザー名とパスワードを指定してください。 次のコマンドを使用します。
 

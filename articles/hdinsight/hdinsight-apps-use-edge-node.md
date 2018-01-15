@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 01/11/2018
 ms.author: jgao
-ms.openlocfilehash: d529e66c80c6a3e305ffdf9a2df181a976e07127
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7c09b2aefac1248a0bad06b913a8da56e73c0e4d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>HDInsight の Hadoop クラスターで空のエッジ ノードを使用する
 
@@ -64,7 +64,7 @@ HDInsight クラスターに空のエッジ ノードを追加する方法につ
 エッジ ノードを作成した後、SSH を使用してエッジ ノードに接続し、クライアント ツールを実行して HDInsight の Hadoop クラスターにアクセスすることができます。
 
 > [!WARNING] 
-> HDInsight での空のエッジ ノードの使用は、現在プレビュー段階です。 エッジ ノードにインストールされているカスタム コンポーネントは、Microsoft からビジネス上合理的なサポートを受けることができます。 これにより、発生する問題を解決できる場合があります。 または、コミュニティ リソースを利用することで、さらなる支援を受けられる場合もあります。 コミュニティから支援を受けることができる、最もアクティブなサイトの一部を次に示します。
+> エッジ ノードにインストールされているカスタム コンポーネントは、Microsoft からビジネス上合理的なサポートを受けることができます。 これにより、発生する問題を解決できる場合があります。 または、コミュニティ リソースを利用することで、さらなる支援を受けられる場合もあります。 コミュニティから支援を受けることができる、最もアクティブなサイトの一部を次に示します。
 >
 > * [HDInsight の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
 > * [http://stackoverflow.com](http://stackoverflow.com)

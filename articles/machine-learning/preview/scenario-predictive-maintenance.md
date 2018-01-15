@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: d8e34924cb29e2e6469d009e40b04d5cee8930a6
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 0299e73aecca3b3e5714b37c8b0b776ec8561e29
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>予測メンテナンスの実際のシナリオ
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 12/13/2017
 
 資産の量が多い業種の企業が直面する主な問題は、機械的な問題による遅延に関係する重大なコストです。 ほとんどの企業は、このような問題が生じる前に事前に防ぐために、問題が発生するタイミングの予測に関心があります。 目標は、ダウンタイムを短縮してコストを削減し、できる限り安全性を高めることです。 
 
-このシナリオでは、シミュレートされたデータ セット用の予測モデルの構築を示す目的で、[予測メンテナンス プレイブック](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)のアイデアを利用します。 サンプルのデータは、多くの予測メンテナンスのユース ケースで見られる一般的な要素から得られたものです。
+このシナリオでは、シミュレートされたデータ セット用の予測モデルの構築を示す目的で、[予測メンテナンス プレイブック](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance)のアイデアを利用します。 サンプルのデータは、多くの予測メンテナンスのユース ケースで見られる一般的な要素から得られたものです。
 
 このシミュレートされたデータのビジネスの問題は、コンポーネント エラーで発生する問題を予測することです。 そのため、ビジネスの質問は、"*コンポーネント エラーが原因でマシンが停止する可能性はどのくらいか*" です。 この問題は、多クラス分類 (1 つのマシンにつき複数のコンポーネント) の問題として構成され、予測モデルを作成するために機械学習アルゴリズムが使用されます。 モデルは、マシンから収集された履歴データに対してトレーニングされます。 このシナリオでは、Azure Machine Learning Workbench 環境内のこのようなモデルを実装する多様な手順を実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure アカウント](https://azure.microsoft.com/en-us/free/) (無料試用版もご利用いただけます)。
+* [Azure アカウント](https://azure.microsoft.com/en-us/free/) (無料試用版も使用できます)。
 * [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](./quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
 * Azure Machine Learning Operationalization は、ローカル デプロイ環境と[管理アカウント](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview)を必要とします
 
@@ -133,6 +133,6 @@ Jupyter ノートブック シナリオの[データの取り込み](https://git
 * [予測メンテナンス モデリング ガイド Python ノートブック](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
 * [PySpark を使用する予測メンテナンス](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これ以外にも、Azure Machine Learning Workbench 内で利用できる、製品の他の機能を示す多くのサンプル シナリオがあります。 

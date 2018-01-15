@@ -3,8 +3,8 @@ title: "Azure Mobile Apps SDK for Android の使用方法 | Microsoft Docs"
 description: "Azure Mobile Apps SDK for Android の使用方法"
 services: app-service\mobile
 documentationcenter: android
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
-ms.author: glenga
-ms.openlocfilehash: ac5cbb51a5ed340a6cbf2eeefa41feb337d28fb9
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: crdun
+ms.openlocfilehash: f04f3fc7d2ff2e01baa78571b2ba267f8e4905c6
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -99,7 +99,7 @@ MobileServiceClient mClient = new MobileServiceClient(
 
 また、クライアントは、アクティビティまたはコンテキストにアクセスできる必要があります。この例では `this` パラメーターです。  MobileServiceClient の構築が `AndroidManifest.xml` ファイルで参照されるアクティビティの `onCreate()` メソッド内で発生する必要があります。
 
-ベスト プラクティスとして、サーバーの通信を独自の (シングルトン パターン) クラスに要約する必要があります。  この場合、サービスを適切に構成するために、コンストラクター内のアクティビティを渡す必要があります。  次に例を示します。
+ベスト プラクティスとして、サーバーの通信を独自の (シングルトン パターン) クラスに要約する必要があります。  この場合、サービスを適切に構成するために、コンストラクター内のアクティビティを渡す必要があります。  例: 
 
 ```java
 package com.example.appname.services;
@@ -152,7 +152,7 @@ Azure Mobile Apps SDK の核となるのは、モバイル アプリ バック�
 SQL Azure のテーブルからデータにアクセスするには、モバイル アプリ バックエンドのテーブルに対応するクライアント データ クラスを定義します。 このトピックの例では、次の列を含む、**MyDataTable** という名前のテーブルがあるものとします。
 
 * id
-* text
+* テキスト
 * 完了
 
 対応する型指定されたクライアント側オブジェクトは、**MyDataTable.java** という名前のファイル内に存在します。
@@ -198,7 +198,7 @@ Azure Mobile Apps バックエンド テーブルでは 5 つの特別なフィ�
 * `byte[] version`: 通常、文字列として表され、バージョンもサーバーによって設定されます。
 * `boolean deleted`: レコードが削除されたが、まだ消去されていないことを示します。  クラスのプロパティとして `deleted` を使用しないでください。
 
-`id` フィールドは必須です。  `updatedAt` フィールドと `version` フィールドはオフライン同期に使用されます (それぞれ増分同期、競合の解決用)。  `createdAt` フィールドは参照フィールドであり、クライアントによって使用されません。  名前は、プロパティの "ネットワーク経由" の名前であり、調整することはできません。  ただし、[gson][3] ライブラリを使用して、オブジェクトと "ネットワーク経由" の名前との間のマッピングを作成することができます。  次に例を示します。
+`id` フィールドは必須です。  `updatedAt` フィールドと `version` フィールドはオフライン同期に使用されます (それぞれ増分同期、競合の解決用)。  `createdAt` フィールドは参照フィールドであり、クライアントによって使用されません。  名前は、プロパティの "ネットワーク経由" の名前であり、調整することはできません。  ただし、[gson][3] ライブラリを使用して、オブジェクトと "ネットワーク経由" の名前との間のマッピングを作成することができます。  例: 
 
 ```java
 package com.example.zumoappname;
@@ -447,7 +447,7 @@ do {
 
 ### <a name="chaining"></a>方法: クエリ メソッドを連結する
 
-バックエンド テーブルのクエリに使用するメソッドは連結できます。 クエリ メソッドを連結することで、フィルター処理した行を並べ替えてから、それらの行の特定の列を選択してページングを行うことができます。 複雑な論理フィルターも作成できます。  各クエリ メソッドでは、query オブジェクトが返されます。 一連のメソッドを完結させてクエリを実際に実行するには、 **execute** メソッドを呼び出します。 次に例を示します。
+バックエンド テーブルのクエリに使用するメソッドは連結できます。 クエリ メソッドを連結することで、フィルター処理した行を並べ替えてから、それらの行の特定の列を選択してページングを行うことができます。 複雑な論理フィルターも作成できます。  各クエリ メソッドでは、query オブジェクトが返されます。 一連のメソッドを完結させてクエリを実際に実行するには、 **execute** メソッドを呼び出します。 例: 
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -517,7 +517,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-アダプターの **getView** メソッドをオーバーライドします。 次に例を示します。
+アダプターの **getView** メソッドをオーバーライドします。 例: 
 
 ```
     @Override
@@ -821,7 +821,7 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
 オンライン テーブルでは `.getTable()` を使用しますが、  オフライン テーブルでは `.getSyncTable()` を使用します。
 
 ```java
-MobileServiceTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
+MobileServiceSyncTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 ```
 
 オンライン テーブルで使用できるすべてのメソッド (フィルター処理、並べ替え、ページング、データの挿入、データの更新、データの削除など) は、オンライン テーブルでもオフライン テーブルでも同じように正しく動作します。

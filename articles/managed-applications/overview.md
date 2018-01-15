@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7f0f18062bc426508ec98b190fe0b73e41e88aa2
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: a26cfc632dacb41435b3755409d3e91630f5f3eb
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージ アプリケーションの概要
 
@@ -48,6 +48,8 @@ IT チームは、マネージ アプリケーションを使用して、組織�
 
 サービスへの課金を望んでいるベンダーは、Azure Marketplace を介してマネージ アプリケーションを利用できるようにすることができます。 ベンダーがアプリケーションを発行すると、組織外のユーザーがそのアプリケーションを使用できるようになります。 この方法によって、マネージ サービス プロバイダー (MSP)、独立系ソフトウェア ベンダー (ISV)、およびシステム インテグレーター (SI) は、自社のソリューションをすべての Azure ユーザーに提供できます。
 
+マネージ アプリケーションを Azure Marketplace に発行する方法については、[Marketplace アプリケーションの作成](publish-marketplace-app.md)に関する記事をご覧ください。
+
 ## <a name="resource-groups-for-managed-applications"></a>マネージ アプリケーションのリソース グループ
 
 通常、マネージ アプリケーションのリソースは、2 つのリソース グループ内に存在します。 ユーザーが 1 つのリソース グループを管理し、発行元がもう 1 つのリソース グループを管理します。 発行元は、マネージ アプリケーションを定義するときに、アクセス レベルを指定します。 次の図は、発行元がマネージ リソース グループの所有者ロールを要求しているシナリオを示しています。 発行元は、ユーザー用のリソース グループに対して、読み取り専用ロックを設定しています。
@@ -66,8 +68,8 @@ IT チームは、マネージ アプリケーションを使用して、組織�
 
 ユーザーがマネージ アプリケーションを削除すると、マネージ リソース グループも削除されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * マネージ アプリケーションの定義とデプロイの概要については、「[Azure CLI を使用した Azure マネージ アプリケーションの作成とデプロイ](managed-apps-quickstart-cli.md)」を参照してください。
 * 内部アプリケーションの発行の詳細については、[サービス カタログ アプリケーションの作成](publish-service-catalog-app.md)に関する記事を参照してください。
-
+* マネージ アプリケーションを Azure Marketplace に発行する方法については、[Marketplace アプリケーションの作成](publish-marketplace-app.md)に関する記事を参照してください。

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6704db9a722de78d9460703330cf3fdbc238b7d2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8fae46088bad5cbcbdb879f0b5a948fb85b76875
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
@@ -139,16 +139,16 @@ Get-AzureADUser -ObjectID user@domain.com | select TelephoneNumber
 Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,TelephoneNumber | Format-Table
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

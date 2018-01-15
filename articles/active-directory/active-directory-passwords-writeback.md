@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6dfc3246b210b382665eeef2d638945c91d5b62f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b4a14d3c79f93988eeac1525da09cf70dc2de634
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="password-writeback-overview"></a>パスワード ライトバックの概要
 
@@ -217,18 +217,18 @@ SSPR の範囲内に入るには、Azure AD Connect ユーティリティで指�
 
 前に説明した各メッセージのサイズは、通常 1 KB 未満です。 負荷が大きい場合でも、パスワード ライトバック サービス自体で 1 秒間に数キロビットの帯域幅しか消費されないことを意味します。 各メッセージは、パスワードの更新操作で必要になった場合にのみリアルタイムで送信されるため、またメッセージのサイズが非常に小さいため、ライトバック機能の帯域幅は非常に小さく、測定可能な影響を及ぼすには至りません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
 [Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "Azure AD Connect でパスワード ライトバックを有効にする"

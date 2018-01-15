@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c65a49d977f94fc83a6bceec76cdb0d414a78cce
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 2c1e86b0ef3dabdea8220747e3ada98d888a8593
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>PowerShell で仮想マシンを作成する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/13/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1 "Create VM detailed")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-detailed/create-windows-vm-quick.ps1 "Create VM")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -52,7 +52,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループに接続します。 また、このコマンドでは、ポート 80 を開いたり、管理者の資格情報を設定したりします。 |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

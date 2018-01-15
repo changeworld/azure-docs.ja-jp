@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: a16d27902356a7854ce56e4dd276756603fd9f9c
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 3808edd9a8f4224d3bba6bdcfb067b12dec61d02
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Concur からデータをコピーする
 
@@ -40,7 +40,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ## <a name="getting-started"></a>使用の開始
 
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Concur コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -48,15 +48,15 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Concur のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Concur** に設定する必要があります。 | あり |
-| clientId | Concur App Management によって提供されるアプリケーションの client_id。  | あり |
-| username | Concur サービスへのアクセスに使用するユーザー名。  | あり |
-| パスワード | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | あり |
-| useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ |
-| useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ |
-| usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ |
+| 型 | type プロパティは **Concur** に設定する必要があります。 | [はい] |
+| clientId | Concur App Management によって提供されるアプリケーションの client_id。  | [はい] |
+| username | Concur サービスへのアクセスに使用するユーザー名。  | [はい] |
+| password | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | [はい] |
+| useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
+| useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
+| usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
 
 **例:**
 
@@ -106,10 +106,10 @@ Concur からデータをコピーするには、データセットの type プ�
 
 Concur からデータをコピーするには、コピー アクティビティのソースの種類を **ConcurSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **ConcurSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Opportunities where Id = xxx "`)。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティは **ConcurSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Opportunities where Id = xxx "`」のように入力します。 | [はい] |
 
 **例:**
 
@@ -143,5 +143,5 @@ Concur からデータをコピーするには、コピー アクティビティ
 ]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

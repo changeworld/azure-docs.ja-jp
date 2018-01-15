@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2017
+ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: 42dca05c4d7d104ed0e7e21f1e53411e5983cd38
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: cd9a144baf06422b425a0bc6c516600d6fcd4b97
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -124,7 +124,7 @@ Service Fabric Load Balancer は、ノード容量違反を検出すると警告
 ## <a name="application-system-health-reports"></a>アプリケーション システム正常性レポート
 **System.CM**は Cluster Manager サービスを表し、アプリケーションに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.CM は、アプリケーションが作成または更新されたときに OK を報告します。 アプリケーションが削除されると、ストアからアプリケーションを削除できるように、正常性ストアに通知します。
 
 * **SourceId**: System.CM
@@ -157,7 +157,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>サービス システム正常性レポート
 **System.FM**は Failover Manager サービスを表し、サービスに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.FM は、サービスが作成されると OK を報告します。 サービスが削除されたら、正常性ストアからエンティティを削除します。
 
 * **SourceId**: System.FM
@@ -199,7 +199,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>パーティション システム正常性レポート
 **System.FM**は Failover Manager サービスを表し、サービス パーティションに関する情報を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.FM は、パーティションが作成されており、正常な場合に、OK を報告します。 パーティションが削除されると、正常性ストアからエンティティを削除します。
 
 パーティションが最小レプリカ数を下回ると、エラーを報告します。 パーティションが最小レプリカ数を下回っていなくても、ターゲット レプリカ数を下回る場合は、警告を報告します。 パーティションがクォーラム損失の状態にあるとき、System.FM はエラーを報告します。
@@ -376,7 +376,7 @@ HealthEvents          :
 ## <a name="replica-system-health-reports"></a>レプリカ システム正常性レポート
 **System.RA**は、Reconfiguration Agent コンポーネントを表し、レプリカの状態を管理する権限です。
 
-### <a name="state"></a>状態
+### <a name="state"></a>State
 System.RA は、レプリカが作成されていると OK を報告します。
 
 * **SourceId**: System.RA
@@ -632,7 +632,7 @@ HealthEvents          :
 
 - **IStatefulServiceReplica.ChangeRole(P)**: 最も一般的なケースは、`RunAsync` からタスクが戻されないサービスです。
 
-**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 For example:
+**IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 例: 
 
 - **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。これは、パーティションのレプリカのレプリカ状態を確認するか、スタック再構成の System.FM 正常性レポートを確認することで判別できます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 プライマリの `CommittedSequenceNumber` の後ろにある `LastAppliedReplicationSequenceNumber` が含まれるレプリカに問題があります。
 
@@ -743,7 +743,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>ダウンロード
+### <a name="download"></a>[ダウンロード]
 System.Hosting は、アプリケーション パッケージのダウンロードが失敗した場合、エラーを報告します。
 
 * **SourceId**: System.Hosting
@@ -821,7 +821,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>ダウンロード
+### <a name="download"></a>[ダウンロード]
 System.Hosting は、サービス パッケージのダウンロードが失敗すると、エラーを報告します。
 
 * **SourceId**: System.Hosting
@@ -842,7 +842,7 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 * **プロパティ**: ResourceGovernance
 * **次のステップ**: この問題を解決するには、クラスター マニフェストを変更して使用可能なリソースの自動検出を有効にすることをお勧めします。 もう 1 つの方法として、これらのメトリックに対して適切なノード容量を指定してクラスター マニフェストを更新することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
 
 [サービス正常性のレポートとチェックの方法](service-fabric-diagnostics-how-to-report-and-check-service-health.md)

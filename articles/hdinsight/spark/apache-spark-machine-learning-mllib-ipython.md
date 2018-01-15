@@ -4,7 +4,7 @@ description: "Spark MLlib を使用して、ロジスティック回帰による
 keywords: "Spark Machine Learning、Spark Machine Learning の例"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
-ms.author: nitinme
-ms.openlocfilehash: f98659081b991d403b6477196042c6ff3d40bb12
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: jgao
+ms.openlocfilehash: 864d34306dad2915a15b032a27600cefdc632bb9
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 
@@ -69,7 +69,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
 1. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
 
     ![Notebook の名前を指定](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-name-jupyter.png "Notebook の名前を指定")
-1. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark コンテキストと Hive コンテキストが自動的に作成されます。 Machine Learning アプリケーションの作成を始めるには、このシナリオに必要な種類をインポートします。 これを行うには、セルにカーソルを置き、 **SHIFT + ENTER**キーを押します。
+1. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark と Hive コンテキストが自動的に作成されます。 Machine Learning アプリケーションの作成を始めるには、このシナリオに必要な種類をインポートします。 これを行うには、セルにカーソルを置き、 **SHIFT + ENTER**キーを押します。
 
         from pyspark.ml import Pipeline
         from pyspark.ml.classification import LogisticRegression

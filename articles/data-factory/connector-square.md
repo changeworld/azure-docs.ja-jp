@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: 08b931c7c172578191cbc2628d8fabca0984a6e0
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 71c73f034a3c32c9bdf1532106a3aba9521afb17
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Square からデータをコピーする
 
@@ -37,7 +37,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 ## <a name="getting-started"></a>使用の開始
 
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、Square コネクタに固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -45,16 +45,16 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Square のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Square** に設定する必要があります。 | あり |
-| host | Square インスタンスの URL。 (例: mystore.mysquare.com)  | あり |
-| clientId | Square アプリケーションに関連付けられているクライアント ID。  | あり |
-| clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | あり |
-| redirectUri | Square アプリケーションのダッシュボードで割り当てられるリダイレクト URL。 (例: http://localhost:2500)  | あり |
-| useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ |
-| useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ |
-| usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ |
+| 型 | type プロパティは **Square** に設定する必要があります。 | [はい] |
+| host | Square インスタンスの URL。 (例: mystore.mysquare.com)  | [はい] |
+| clientId | Square アプリケーションに関連付けられているクライアント ID。  | [はい] |
+| clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | [はい] |
+| redirectUri | Square アプリケーションのダッシュボードで割り当てられるリダイレクト URL。 (例: http://localhost:2500)  | [はい] |
+| useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
+| useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
+| usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
 
 **例:**
 
@@ -105,10 +105,10 @@ Square からデータをコピーするには、データセットの type プ�
 
 Square からデータをコピーするには、コピー アクティビティのソースの種類を **SquareSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **SquareSource** に設定する必要があります。 | あり |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Business"`)。 | あり |
+| 型 | コピー アクティビティのソースの type プロパティは **SquareSource** に設定する必要があります。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Business"`」のように入力します。 | [はい] |
 
 **例:**
 
@@ -142,5 +142,5 @@ Square からデータをコピーするには、コピー アクティビティ
 ]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

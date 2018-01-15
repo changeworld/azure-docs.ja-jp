@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: genemi
-ms.openlocfilehash: 012acd2b53fc9205511530d3cc30803dceef88a0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a45393804aa5398bc0c40ca3f3cb6c97b106b81c
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>SQL Server の接続ライブラリとフレームワーク
 
@@ -27,19 +27,19 @@ C#、Java、Node.js、PHP、Python などのプログラミング言語を手軽
 
 次の表は、クライアント アプリケーションがさまざまな言語から SQL Server への接続に使用できる接続ライブラリや*ドライバー*を示しています。クライアント アプリケーションはオンプレミスおよびクラウドで実行される SQL Server と共にこれらを使用できます。 Linux、Windows、または Docker でこれらを使用して、Azure SQL Database や Azure SQL Data Warehouse に接続できます。 
 
-| 言語 | Platform | その他のリソース | ダウンロード | 作業開始 |
+| 言語 | プラットフォーム | その他のリソース | [ダウンロード] | 作業開始 |
 | :-- | :-- | :-- | :-- | :-- |
-| C# | Windows、Linux、macOS | [SQL Server 用 Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [開始する](https://www.microsoft.com/en-us/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](http://msdn.microsoft.com/library/mt484311.aspx) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [開始する](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/ubuntu)
-| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](http://msdn.microsoft.com/library/dn865013.aspx) | オペレーティング システム: <br/> \* [Windows](https://www.microsoft.com/download/details.aspx?id=20098) <br/> \* [Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \* [macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [開始する](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu)
-| Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](http://msdn.microsoft.com/library/mt652093.aspx) | [インストール](https://msdn.microsoft.com/library/mt652094.aspx) |  [開始する](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/ubuntu)
-| Python | Windows、Linux、macOS | [Python SQL ドライバー](http://msdn.microsoft.com/library/mt652092.aspx) | インストール オプション:  <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |  [開始する](https://www.microsoft.com/en-us/sql-server/developer-get-started/python/ubuntu)
-| Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](http://msdn.microsoft.com/library/mt691981.aspx) | [インストール](https://msdn.microsoft.com/library/mt711041.aspx) | [開始する](https://www.microsoft.com/en-us/sql-server/developer-get-started/ruby/ubuntu)
+| C# | Windows、Linux、macOS | [SQL Server 用 Microsoft ADO.NET](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [作業開始](https://www.microsoft.com/en-us/sql-server/developer-get-started/csharp/ubuntu)
+| Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](http://msdn.microsoft.com/library/mt484311.aspx) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [作業開始](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/ubuntu)
+| PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](http://msdn.microsoft.com/library/dn865013.aspx) | オペレーティング システム: <br/> \* [Windows](https://www.microsoft.com/download/details.aspx?id=55642) <br/> \* [Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \* [macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [作業開始](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu)
+| Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](http://msdn.microsoft.com/library/mt652093.aspx) | [インストール](https://msdn.microsoft.com/library/mt652094.aspx) |  [作業開始](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/ubuntu)
+| Python | Windows、Linux、macOS | [Python SQL ドライバー](http://msdn.microsoft.com/library/mt652092.aspx) | インストール オプション:  <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |  [作業開始](https://www.microsoft.com/en-us/sql-server/developer-get-started/python/ubuntu)
+| Ruby | Windows、Linux、macOS | [SQL Server 用 Ruby ドライバー](http://msdn.microsoft.com/library/mt691981.aspx) | [インストール](https://msdn.microsoft.com/library/mt711041.aspx) | [作業開始](https://www.microsoft.com/en-us/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows、Linux、macOS | [SQL Server 用 Microsoft ODBC ドライバー](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) | [ダウンロード](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) |  
 
 次の表は、クライアント アプリケーションがオンプレミスまたはクラウドで SQL Server と共に使用できる、オブジェクト リレーショナル マッピング (ORM) フレームワークおよび Web フレームワークの例を示しています。 Linux、Windows、または Docker でフレームワークを使用して SQL Database および SQL Data Warehouse に接続できます。 
 
-| 言語 | Platform | ORM |
+| 言語 | プラットフォーム | ORM |
 | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows、Linux、macOS |[Hibernate ORM](http://hibernate.org/orm)|

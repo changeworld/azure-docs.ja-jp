@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 12/12/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 46b0cf3666088175372b6a2e73b3dd421a4bff8b
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 3842860acb1c0fdd9e07f6d2f678ac5d5304003b
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Azure Storage から大量のランダム データをダウンロードする
 
@@ -63,7 +63,7 @@ public static void Main(string[] args)
         UploadFilesAsync().GetAwaiter().GetResult();
 
         // Uncomment the following line to enable downloading of files from the storage account.  This is commented out
-        // initially to support the tutorial at https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-scaleable-app-download-files.
+        // initially to support the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scaleable-app-download-files.
         // DownloadFilesAsync().GetAwaiter().GetResult();
     }
     catch (Exception ex)
@@ -74,7 +74,7 @@ public static void Main(string[] args)
     finally
     {
         // The following function will delete the container and all files contained in them.  This is commented out initialy
-        // As the tutorial at https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-scaleable-app-download-files has you upload only for one tutorial and download for the other. 
+        // As the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scaleable-app-download-files has you upload only for one tutorial and download for the other. 
         if (!exception)
         {
             // DeleteExistingContainersAsync().GetAwaiter().GetResult();
@@ -104,7 +104,7 @@ dotnet run
 アプリケーションは、**storageconnectionstring** で指定されたストレージ アカウント内にあるコンテナーを読み取ります。 コンテナー内の [ListBlobsSegmented](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmented?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_ListBlobsSegmented_System_String_System_Boolean_Microsoft_WindowsAzure_Storage_Blob_BlobListingDetails_System_Nullable_System_Int32__Microsoft_WindowsAzure_Storage_Blob_BlobContinuationToken_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) メソッドを使用して一度に 10 個の BLOB を反復処理し、[DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadToFileAsync_System_String_System_IO_FileMode_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_) メソッドを使用してローカル コンピューターにダウンロードします。
 次の表に、ダウンロード時に各 BLOB に対して定義される [BlobRequestOptions](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions?view=azure-dotnet) を示します。
 
-|プロパティ|値|説明|
+|プロパティ|値|[説明]|
 |---|---|---|
 |[DisableContentMD5Validation](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.disablecontentmd5validation?view=azure-dotnet)| true| このプロパティは、アップロードされたコンテンツの MD5 ハッシュのチェックを無効にします。 MD5 の検証を無効にすると、転送が高速になります。 ただし、転送されるファイルの有効性や整合性は確認されません。 |
 |[StorBlobContentMD5](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.storeblobcontentmd5?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_StoreBlobContentMD5)| false| このプロパティは、MD5 ハッシュが計算されて格納されるかどうかを示します。   |
@@ -204,7 +204,7 @@ C:\>netstat -a | find /c "blob:https"
 C:\>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 シリーズの第 3 部では、ストレージ アカウントから大量のランダム データをダウンロードする方法について学びました。
 
