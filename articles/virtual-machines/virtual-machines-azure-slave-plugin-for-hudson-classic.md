@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Azure スレーブ プラグインを Hudson 継続的インテグレーションで使用する方法
 Hudson 用 Azure スレーブ プラグインを使用して、分散されたビルドを実行するときにスレーブ ノードを Azure にプロビジョニングできます。
@@ -77,7 +77,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
     ![プロファイルの構成][configure profile]
 5. サブスクリプション プロファイルからサブスクリプションID と管理証明書をコピーし、適切なフィールドに貼り付けます。
    
-    サブスクリプション ID と管理証明書をコピーするときは、 **** 値を囲む引用符を含めないでください。
+    サブスクリプション ID と管理証明書をコピーするときは、 値を囲む引用符を含めないでください。
 6. **[Verify configuration]**をクリックします。
 7. 構成が正しいことが確認されたら、 **[Save]**をクリックします。
 
@@ -147,7 +147,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 1. Hudson ダッシュボードで、 **[New Job]**をクリックします。
 2. 作成するジョブの名前を入力します。
 3. ジョブの種類として、 **[Build a free-style software job]**を選択します。
-4. **[OK]**をクリックします。
+4. Click **OK**.
 5. ジョブを構成するページで、 **[Restrict where this project can be run]**を選択します。
 6. **[Node and label menu (ノードとラベルのメニュー)]** を選択し、**[linux]** を選択します (このラベルは、前のセクションで仮想マシン テンプレートを作成するときに指定したものです)。
 7. **[Build (ビルド)]** セクションで、**[Add build step (ビルド ステップの追加)]** をクリックし、**[Execute shell (シェルの実行)]** を選択します。
@@ -181,7 +181,7 @@ Hudson 用 Azure スレーブ プラグインを使用して、分散された�
 
 Hudson は、前のセクションで作成したテンプレートを使用してスレーブ ノードを作成し、このタスク用のビルド手順に指定されたスクリプトを実行します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター]を参照してください。
 
 <!-- URL List -->
