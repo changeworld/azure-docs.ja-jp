@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3136bccb7724c95c4001e353d7feeecb045f1273
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: e61e664ef5cd9e296016c8fc572d67ec1d62c1f7
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 この記事では、Microsoft Cloud で提供されている以下のサービスを比較対照しながら説明します。いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。
@@ -47,7 +47,7 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 
 |  | Flow | Logic Apps |
 | --- | --- | --- |
-| オーディエンス |オフィスの従業員、ビジネス ユーザー、SharePoint 管理者 |インテグレーター、開発者、IT プロフェッショナル |
+| 対象ユーザー |オフィスの従業員、ビジネス ユーザー、SharePoint 管理者 |インテグレーター、開発者、IT プロフェッショナル |
 | シナリオ |セルフ サービス |高度な統合 |
 | デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | アプリケーション ライフサイクル管理 (ALM) |非運用環境で設計とテストを行い、準備ができたら運用環境に昇格します。 |DevOps: [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) におけるソース管理、テスト、サポート、自動化、管理 |
@@ -81,12 +81,12 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 | スケーリング |構成不要のスケーリング |App Service プランによるスケーリング |
 | 価格 |従量課金または App Service プランの一部 |App Service プランの一部 |
 | 実行の種類 |トリガー、(タイマー トリガーによる) スケジュール |トリガー、継続的、スケジュール |
-| トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure Event Hubs](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Event Hubs](functions-bindings-event-hubs.md)、[Azure Storage キューおよび BLOB](functions-bindings-storage-blob.md)、[Azure Service Bus キューおよびトピック](functions-bindings-service-bus.md) |[Azure Storage キューおよび BLOB](functions-bindings-storage-blob.md)、[Azure Service Bus キューおよびトピック](functions-bindings-service-bus.md) |
+| トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-cosmosdb.md)、[Azure Event Hubs](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Event Hubs](functions-bindings-event-hubs.md)、[Azure Storage キューおよび BLOB](functions-bindings-storage-blob.md)、[Azure Service Bus キューおよびトピック](functions-bindings-service-bus.md) |[Azure Storage キューおよび BLOB](functions-bindings-storage-blob.md)、[Azure Service Bus キューおよびトピック](functions-bindings-service-bus.md) |
 | ブラウザーでの開発 |サポートされています |サポートされていません |
 | C# |サポートされています |サポートされています |
 | F# |サポートされています |サポートされていません |
 | JavaScript |サポートされています |サポートされています |
-| Java |Preview | サポートされていません |
+| Java |プレビュー | サポートされていません |
 | Bash |試験段階 |サポートされています |
 | Windows スクリプト (.cmd、.bat) |試験段階 |サポートされています |
 | PowerShell |試験段階 |サポートされています |
@@ -111,7 +111,7 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 
 フローでは、ロジック アプリを呼び出すことができます。 また、ロジック アプリで関数を呼び出したり、関数でロジック アプリを呼び出したりすることもできます。 Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。 このため、これら 3 つのテクノロジに対する投資が無駄になることはありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 最初のフロー、ロジック アプリ、Function App、または Web ジョブを作成して、それぞれのサービスを使ってみましょう。 以下のリンクのなかから、お好きなものをクリックしてください。
 
 * [Get started with Microsoft Flow (Microsoft Flow の概要)](https://flow.microsoft.com/en-us/documentation/getting-started/)

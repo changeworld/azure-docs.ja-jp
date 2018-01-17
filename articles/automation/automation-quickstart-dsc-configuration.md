@@ -6,14 +6,14 @@ keywords: "dsc, 構成, オートメーション"
 author: KrisBash
 ms.author: krbash
 ms.date: 12/17/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e9e75f1714217f452d55aba49929fec767df3353
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して Linux 仮想マシンを構成する
 
@@ -31,7 +31,7 @@ Desired State Configuration (DSC) を有効にすると、Windows および Linu
 https://portal.azure.com で Azure にログインします
 
 ## <a name="onboard-a-virtual-machine"></a>仮想マシンをオンボードする
-マシンをオンボードし、Desired State Configuration を有効にするには、さまざまな方法があります。 このクイックスタートでは、Automation アカウントを使用してオンボードする方法について説明します。 [オンボード](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-onboarding)の記事を読むと、マシンを Desired State Configuration にオンボードするさまざまな方法を理解できます。
+マシンをオンボードし、Desired State Configuration を有効にするには、さまざまな方法があります。 このクイックスタートでは、Automation アカウントを使用してオンボードする方法について説明します。 [オンボード](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)の記事を読むと、マシンを Desired State Configuration にオンボードするさまざまな方法を理解できます。
 
 1. Azure Portal の左ウィンドウで **[Automation アカウント]** を選択します。 左側のウィンドウに表示されていない場合は、**[すべてのサービス]** をクリックして、結果ビューから探します。
 1. 一覧で Automation アカウントを選択します。
@@ -39,7 +39,7 @@ https://portal.azure.com で Azure にログインします
 1. **[Azure VM の追加]** のメニュー オプションをクリックします
 1. DSC を有効にする仮想マシンを探します。 検索フィールドとフィルター オプションを使用して、特定の仮想マシンを検索することができます。
 1. 仮想マシンをクリックし、**[接続]** を選択します。
-1. 仮想マシンに適した DSC 設定を選択します。 構成を既に準備している場合は、*[ノード構成名]* として指定できます。 [構成モード](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig)を設定して、マシンの構成動作を制御することができます。
+1. 仮想マシンに適した DSC 設定を選択します。 構成を既に準備している場合は、*[ノード構成名]* として指定できます。 [構成モード](https://docs.microsoft.com/powershell/dsc/metaconfig)を設定して、マシンの構成動作を制御することができます。
 1. **[OK]**
 
 ![Azure VM を DSC にオンボードする](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -105,7 +105,7 @@ configuration LAMPServer {
 
 ## <a name="compile-a-configuration"></a>構成をコンパイルする
 
-ノードに割り当てる前に、DSC 構成をノード構成 (MOF ドキュメント) にコンパイルする必要があります。 コンパイルでは構成が検証されます。また、パラメーター値を入力できます。 構成のコンパイルの詳細については、「[Azure Automation DSC での構成のコンパイル](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile)」を参照してください。
+ノードに割り当てる前に、DSC 構成をノード構成 (MOF ドキュメント) にコンパイルする必要があります。 コンパイルでは構成が検証されます。また、パラメーター値を入力できます。 構成のコンパイルの詳細については、「[Azure Automation DSC での構成のコンパイル](https://docs.microsoft.com/azure/automation/automation-dsc-compile)」を参照してください。
 
 構成をコンパイルするには：
 
@@ -141,6 +141,6 @@ Automation アカウントの **[DSC ノード]** ビューで、すべての管
 > [!div class="nextstepaction"]
 > [DSC と Chocolatey を使用した VM への継続的配置](./automation-dsc-cd-chocolatey.md)
 
-* PowerShell Desired State Configuration の詳細については、「[Windows PowerShell Desired State Configuration の概要](https://docs.microsoft.com/en-us/powershell/dsc/overview)」を参照してください。
-* PowerShell から Automation DSC を管理する方法の詳細については、[Azure PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/?view=azurermps-5.0.0) に関するページを参照してください。
-* レポートとアラートのために DSC レポートを Log Analytics に転送する方法については、[DSC レポートを Log Analytics に転送する方法](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-diagnostics)に関するページを参照してください。 
+* PowerShell Desired State Configuration の詳細については、「[Windows PowerShell Desired State Configuration の概要](https://docs.microsoft.com/powershell/dsc/overview)」を参照してください。
+* PowerShell から Automation DSC を管理する方法の詳細については、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0) に関するページを参照してください。
+* レポートとアラートのために DSC レポートを Log Analytics に転送する方法については、[DSC レポートを Log Analytics に転送する方法](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)に関するページを参照してください。 

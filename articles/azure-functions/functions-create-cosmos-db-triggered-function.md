@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: 2a4037d68413fb02ab3fe0c9a82af2ae22d10e68
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ff0c468179ef7b71151b64426bf2e6701d5032fe
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -71,7 +71,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 6. 新しい Cosmos DB アカウントを作成するときは、表で指定されているように **[新しいアカウント]** の設定を使います。
 
-    | 設定      | 推奨値  | Description                                |
+    | 設定      | 推奨値  | [説明]                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | データベースの名前 | Azure Cosmos DB データベースの一意の ID  |
     | **API** | SQL (DocumentDB) | このトピックでは、ドキュメント データベース API を使用します。  |
@@ -107,7 +107,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
  
     ![taskCollection の定義](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
  
-    | 設定|推奨値|説明 |
+    | 設定|推奨値|[説明] |
     | ---|---|--- |
     | **[データベース ID]** | タスク |新しいデータベースの名前。 これは、関数バインドで定義された名前と一致する必要があります。 |
     | **[コレクション ID]** | 項目 | 新しいコレクションの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |
@@ -143,10 +143,10 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Cosmos DB でドキュメントが追加または変更されたときに実行される関数を作成しました。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-Azure Cosmos DBのトリガーの詳細については、「[Azure Functions の Azure Cosmos DB バインド](functions-bindings-documentdb.md)」をご覧ください。
+Azure Cosmos DBのトリガーの詳細については、「[Azure Functions の Azure Cosmos DB バインド](functions-bindings-cosmosdb.md)」をご覧ください。

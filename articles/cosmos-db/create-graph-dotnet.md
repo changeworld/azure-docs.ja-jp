@@ -3,7 +3,7 @@ title: "Graph API を使用して Azure Cosmos DB .NET Framework アプリケー
 description: "Azure Cosmos DB への接続とデータの照会に使用できる .NET Framework/Core コード サンプルについて説明します"
 services: cosmos-db
 documentationcenter: 
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
@@ -13,19 +13,19 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 10/06/2017
-ms.author: denlee
-ms.openlocfilehash: 4c90ead99c513a56f8891b889e2c873952a33ec8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/08/2018
+ms.author: lbosq
+ms.openlocfilehash: c7fff37e1b59fd90952826a1410a8dd8c6931e77
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Graph API を使用して .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このクイック スタートでは、Azure Portal を使用した Azure Cosmos DB アカウント、データベース、およびグラフ (コンテナー) の作成方法を説明します。 続いて、[Graph API](graph-sdk-dotnet.md) (プレビュー) で構築されたコンソール アプリをビルドして実行します。  
+このクイック スタートでは、Azure Portal を使用した Azure Cosmos DB アカウント、データベース、およびグラフ (コンテナー) の作成方法を説明します。 続いて、[Graph API](graph-sdk-dotnet.md) で構築されたコンソール アプリをビルドして実行します。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ Visual Studio 2017 がインストール済みである場合は、[Visual Studi
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>データベース アカウントの作成
 
 [!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
@@ -65,7 +65,7 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 アプリで何が行われているかを簡単に確認してみましょう。 Program.cs ファイルを開くと、以下のコード行によって、Azure Cosmos DB リソースが作成されていることがわかります。 
 
-* DocumentClient が初期化されます。 プレビューでは、Azure Cosmos DB クライアントでグラフ拡張機能 API を追加しました。 Azure Cosmos DB クライアントおよびリソースから切り離されたスタンドアロンのグラフ クライアントで作業しています。
+* DocumentClient が初期化されます。 
 
     ```csharp
     using (DocumentClient client = new DocumentClient(
@@ -104,23 +104,29 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. Visual Studio 2017 で appsettings.json ファイルを開きます。 
+1. [Azure Portal](http://portal.azure.com/) で **[キー]** をクリックします。 
 
-2. Azure Portal で Azure Cosmos DB アカウントにアクセスし、左側のナビゲーションにある **[キー]** をクリックします。 
+    URI の値の最初の部分をコピーします。
 
-    ![Azure Portal の [キー] ページでプライマリ キーを表示してコピー](./media/create-graph-dotnet/keys.png)
+    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-dotnet/keys.png)
 
-3. ポータルから **[URI]** の値をコピーし、appsettings.json の Endpoint キーの値に設定します。 前のスクリーンショットで示されているように、値のコピーにはコピー ボタンを使用できます。
+2. Visual Studio 2017 で appsettings.json ファイルを開き、`endpoint` の `FILLME` に値を貼り付けます。 
 
     `"endpoint": "https://FILLME.documents.azure.com:443/",`
 
-4. ポータルから **[プライマリ キー]** の値をコピーし、App.config の AuthKey キーの値に設定してから、変更を保存します。 
+    endpoint の値は次のようになります。
+
+    `"endpoint": "https://testgraphacct.documents.azure.com:443/",`
+
+3. ポータルから **[プライマリ キー]** の値をコピーし、App.config の AuthKey キーの値に設定してから、変更を保存します。 
 
     `"authkey": "FILLME"`
+
+4. appsettings.json ファイルを保存します。 
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
@@ -163,7 +169,7 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してグラフを作成し、アプリを実行する方法を説明しました。 これで Gremlin を使用して、さらに複雑なクエリを作成し、強力なグラフ トラバーサル ロジックを実装できます。 
 

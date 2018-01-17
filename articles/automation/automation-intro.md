@@ -8,16 +8,17 @@ keywords: "azure automation, DSC, powershell, 望ましい状態の構成, 更�
 ms.assetid: 0cf1f3e8-dd30-4f33-b52a-e148e97802a9
 ms.service: automation
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: eamono
-ms.openlocfilehash: aab15392187a00aebf707f553a097961ce438194
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.custom: mvc
+ms.openlocfilehash: 896bcd9630a6a7c942bd3f1a986832442a474cce
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 

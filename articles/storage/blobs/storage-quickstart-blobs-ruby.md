@@ -10,11 +10,11 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 12/7/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 30cda1997ca93f237dafd34cfffc2a86b86d6c7c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 3b0bc01047b9aa7459cf6cc33f004cf7506e5826
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-ruby"></a>Ruby を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイックスタートでは、Ruby を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 
@@ -23,7 +23,7 @@ ms.lasthandoff: 12/14/2017
 
 このクイック スタートを完了するには、以下が必要です。 
 * [Ruby](https://www.ruby-lang.org/en/downloads/) のインストール
-* rubygem パッケージを使用して、[Ruby 向けの Azure Storage ライブラリ](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-ruby-how-to-use-blob-storage#configure-your-application-to-access-storage)をインストールします。 
+* rubygem パッケージを使用して、[Ruby 向けの Azure Storage ライブラリ](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage#configure-your-application-to-access-storage)をインストールします。 
 
 ```
 gem install azure-storage
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git
 client = Azure::Storage.client(storage_account_name: account_name, storage_access_key: account_key)
 ```
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 このサンプルでは、"ドキュメント" フォルダーにテスト ファイルを作成します。 サンプル プログラムは、Blob Storage にテスト ファイルをアップロードし、コンテナー内の BLOB を一覧表示し、新しい名前を付けてファイルをダウンロードします。 
 
 サンプルを実行します。 次の出力は、アプリケーションを実行するときに返される出力の例です。
@@ -170,7 +170,7 @@ File.delete(full_path_to_file)
 File.delete(full_path_to_file2)    
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  
 このクイックスタートでは、Ruby を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 
