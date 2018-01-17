@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 4a3e7bd851c2b7e082caeeb451c865eab4fe6635
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0209142da5d94e0ed863a07c9ea694232421cfb
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -50,7 +50,7 @@ Azure Multi-Factor Authentication Server をダウンロードする前に、負
 
 Azure Multi-factor Authentication に使用しているサーバーが次の要件を満たしていることを確認します。
 
-| Azure Multi-Factor Authentication Server の要件 | Description |
+| Azure Multi-Factor Authentication Server の要件 | [説明] |
 |:--- |:--- |
 | ハードウェア |<li>200 MB のハード ディスク容量</li><li>x32 または x64 対応のプロセッサ</li><li>1 GB 以上の RAM</li> |
 | ソフトウェア |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1 全エディション</li><li>Windows 8 全エディション</li><li>Windows 7 全エディション</li><li>Windows Vista 全エディション、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 以上 (ユーザー ポータルまたは Web サービス SDK をインストールする場合)</li> |
@@ -94,7 +94,7 @@ Azure MFA Server は、次の 3 つの Web コンポーネントで構成され�
 Azure Portal から Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Active Directory]** > **[Multi-Factor Authentication]** を選択します。
+2. **[Active Directory]** > **[MFA Server]** を選択します。
 3. **[サーバーの設定]** を選択します。
 4. **[ダウンロード]** をクリックし、ダウンロード ページの手順に従ってインストーラーを保存します。 
 
@@ -187,7 +187,7 @@ Azure MFA Server をバックアップするには、**PhoneFactor.pfdata** フ�
 
 新しいサーバーが、あらかじめバックアップしておいた構成とユーザー データで稼働します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - セルフ サービス アクセス用の[ユーザー ポータル](multi-factor-authentication-get-started-portal.md)のセットアップと構成。
 - [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)、[RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)、または [LDAP 認証](multi-factor-authentication-get-started-server-ldap.md)を使用した Azure MFA サーバーのセットアップと構成。

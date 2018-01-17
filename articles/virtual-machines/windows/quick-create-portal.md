@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7ccc9694f74b655d5b9497378632f05defdbcbf0
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 663a850cf46bf002808b9f791d9e8daefb6cc308
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>Azure Portal で Windows 仮想マシンを作成する
 
@@ -28,17 +28,17 @@ Azure 仮想マシンは、Azure Portal で作成できます。 この方法で
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-1. Azure ポータルの左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
 
 2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
 
-3. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 完了したら、**[OK]** をクリックします。
+3. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。 完了したら、**[OK]** をクリックします。
 
     ![ポータルのブレードで VM に関する基本情報を入力する](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)  
 
@@ -48,7 +48,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 5. **[設定]** は既定値のままにして、**[OK]** をクリックします。 
 
-6. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
+6. 概要ページで **[OK]** をクリックして、仮想マシンの展開を開始します。
 
 7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
 
@@ -87,7 +87,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 3. 左側のメニューの設定で、**[受信セキュリティ規則]** をクリックします。
 4. **[追加]** をクリックします。
 5. **[名前]** で「**http**」と入力します。 **[ポート範囲]** が 80 に設定されていることと、**[アクション]** が **[許可]** に設定されていることを確認します。 
-6. **[OK]**をクリックします。
+6. Click **OK**.
 
 
 ## <a name="view-the-iis-welcome-page"></a>IIS のようこそページの表示
@@ -100,7 +100,7 @@ IIS がインストールされ、ご利用の VM に対してポート 80 が�
 
 必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、VM のリソース グループを選択し、**[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、単純な仮想マシンとネットワーク セキュリティ グループの規則をデプロイし、Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Windows VM のチュートリアルを参照してください。
 

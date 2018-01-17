@@ -1,5 +1,5 @@
 ---
-title: "クイック スタート: Azure AD SSPR | Microsoft Docs"
+title: "セルフサービスによるパスワードのリセットのクイック スタート - Azure Active Directory"
 description: "Azure AD のセルフ サービスによるパスワードのリセットを迅速にデプロイする"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/22/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 87e0d96c3bd0e9a488734487b5f39503c28f9b00
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 7b1a8611392b9f7f9648de53a924498631e171f1
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Azure AD のセルフ サービスによるパスワード リセットの迅速なデプロイ
 

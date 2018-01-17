@@ -61,6 +61,6 @@ VPN トンネルのスループットを正確に一定レベルに維持する�
 
 Azure P2S VPN 向けにサポートしているのは、Windows と Mac だけです。
 
-### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enabled-radius-andor-ikev2-vpn-on-it"></a>Azure VPN Gateway を既にデプロイしています。 ここで RADIUS または IKEv2 VPN または両方を有効にできますか。
+### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Azure VPN Gateway を既にデプロイしています。 ここで RADIUS または IKEv2 VPN または両方を有効にできますか。
 
-はい、PowerShell と Azure Portal の両方を通じて、デプロイ済みのゲートウェイでこれらの新機能を有効にできます。
+はい。Powershell または Azure Portal を使用して、既にデプロイされているゲートウェイでこれらの新機能を有効にできます。ただし、ご利用のゲートウェイ SKU が、RADIUS と IKEv2 のいずれかまたは両方をサポートしている必要があります。 たとえば VPN Gateway Basic SKU は、RADIUS と IKEv2 のどちらもサポートしていません。

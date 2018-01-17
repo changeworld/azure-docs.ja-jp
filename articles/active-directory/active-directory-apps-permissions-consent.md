@@ -13,23 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/31/2017
+ms.date: 01/03/2018
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 9f51f46b0dc942bb9749f8e962a2872a8618245a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d3e14c18d5e4cd77f4c68d8a5d9d0b915e896695
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Azure Active Directory のアプリ、アクセス許可、および同意
-Azure Active Directory では、アプリケーションをディレクトリに追加できます。  そのアプリケーションは、アプリケーションの種類に応じて異なります。  クラシック ポータルでアプリケーションを表示するには、ディレクトリを選んで [アプリケーション] を選択します。
-
-![](media/active-directory-apps-permissions-consent/apps1.png)
+Azure Active Directory では、アプリケーションをディレクトリに追加できます。  そのアプリケーションは、アプリケーションの種類に応じて異なります。  ポータルでアプリケーションを表示するには、ディレクトリを選んで [アプリケーション] を選択します。
 
 > [!IMPORTANT]
-> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。
+> Microsoft では、この記事で言及している Azure Portal を使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。
 
 ## <a name="types-of-apps"></a>アプリの種類
 
@@ -73,9 +71,7 @@ Azure Active Directory では、アプリケーションをディレクトリに
 
 ## <a name="controls"></a>コントロール
 
-この動作すべてで使用できる、さまざまな管理者コントロールの一覧を次に示します。 クラシック ポータルでは、ディレクトリの下にある [構成] から管理者コントロールにアクセスできます。
-
-![](media/active-directory-apps-permissions-consent/apps7.png)
+この動作すべてで使用できる、さまざまな管理者コントロールの一覧を次に示します。
 
 Azure Portal では、**[管理]** の下にある **[ユーザー設定]** を選択します。
 
@@ -85,18 +81,14 @@ Azure Portal では、**[管理]** の下にある **[ユーザー設定]** を�
 
 - ユーザーがアプリに同意できるかどうかを制御できます。
 
-クラシック ポータルでは、**[Users may give applications permissions to access their data (ユーザーは自分のデータへのアクセス許可をアプリケーションに付与できる)]** を選択します。
-![](media/active-directory-apps-permissions-consent/apps8.png)
-
 Azure Portal では、**[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** を選択します。
 ![](media/active-directory-apps-permissions-consent/apps12.png)
 
 
 
-- ユーザーが独自のシングルテナント LOB アプリを登録できるかどうかを制御できます。クラシック ポータルでは、**[ユーザーが統合アプリケーションを追加できるようにする]** を選択します。
-![](media/active-directory-apps-permissions-consent/apps9.png)
+- ユーザーが独自のシングルテナント LOB アプリを登録できるかどうかを制御できます。
 
-Azure Portal では、**[ユーザーはアプリが自分のデータにアクセスすることを許可できる]** を選択します。
+Azure Portal で、**[ユーザーはアプリケーションを登録できる]** を選択してください。
 ![](media/active-directory-apps-permissions-consent/apps13.png)
 
 >[!NOTE]
@@ -108,20 +100,6 @@ Azure Portal では、**[ユーザーはアプリが自分のデータにアク�
 >- シングルテナント LOB アプリを登録する場合、委任されたアクセス許可に管理者の同意が必要なときに、ユーザーは他のアプリに対してそのアクセス許可を要求できません。
 >- ユーザーは、所有していないアプリに変更を加えることはできません。
 
-
-
-- パスワード SSO (つまり "パスワード保管") が使用される事前統合アプリをユーザー自身が追加できるかどうかを制御できます。 ![](media/active-directory-apps-permissions-consent/apps10.png)
-
-
-
-- アプリケーションにアクセスできる条件を制御できます (条件付きアクセス)。 この条件はクライアント アプリとリソース アプリの両方に適用されることに注意してください。 準拠しているコンピューターからのみ "Office 365 Exchange Online" アプリにアクセスできるという条件付きアクセス ポリシーを設定するとします。  このポリシーは、Exchange Online へのアクセス許可を要求するクライアント アプリをユーザーが使用するときにも機能します。
-
-
-
-- 同意済みのアプリと使用中のアプリを確認できます。
-
-1.  ユーザーがアプリに同意すると、テナントに ServicePrincipal オブジェクトが作成されます。 ServicePrincipal の作成は監査レポートに記載されます。
-2.  ユーザー サインインのアクティビティ レポートから、ユーザーがサインインしているアプリがわかります。 
 
 ## <a name="example"></a>例
 

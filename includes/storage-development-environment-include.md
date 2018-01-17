@@ -2,15 +2,15 @@
 次に、このガイドのコード例を試すことができるように、Visual Studio で開発環境を設定します。
 
 ### <a name="create-a-windows-console-application-project"></a>Windows コンソール アプリケーション プロジェクトの作成
-Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2017 でコンソール アプリケーションを作成する方法を説明しますが、この手順は Visual Studio の他のバージョンでも同様です。
+Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2017 でコンソール アプリケーションを作成する方法を説明します。 この手順は Visual Studio の他のバージョンでも同様です。
 
-1. **[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
+1. **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
 2. **[インストール済み]** > **[テンプレート]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** の順に選択します。
 3. **[コンソール アプリ (.NET Framework)]** を選択します。
 4. **[名前]** フィールドに、アプリケーションの名前を入力します。
-5. **[OK]** を選択します。
+5. **[OK]**を選択します。
 
-![Visual Studio のプロジェクト作成ダイアログ](./media/storage-development-environment-include/storage-development-environment-include-1.png)
+![Visual Studio の [新しいプロジェクト] ダイアログ ボックスのスクリーンショット](./media/storage-development-environment-include/storage-development-environment-include-1.png)
 
 このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Program.cs` ファイルの `Main()` メソッドに追加できます。
 
@@ -25,8 +25,8 @@ Azure クラウド サービス、Azure Web アプリ、デスクトップ ア�
 NuGet を使って両方のパッケージを取得できます。 次の手順に従います。
 
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-2. "WindowsAzure.Storage" をオンラインで検索し、 **[インストール]** をクリックしてストレージ クライアント ライブラリとその依存関係をインストールします。
-3. "WindowsAzure.ConfigurationManager" をオンラインで検索し、**[インストール]** をクリックして Azure Configuration Manager をインストールします。
+2. "WindowsAzure.Storage" をオンラインで検索し、**[インストール]** を選択してストレージ クライアント ライブラリとその依存関係をインストールします。
+3. "WindowsAzure.ConfigurationManager" をオンラインで検索し、**[インストール]** を選択して Azure Configuration Manager をインストールします。
 
 > [!NOTE]
 > ストレージ クライアント ライブラリ パッケージは、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) にも含まれていますが、 常に最新バージョンのクライアント ライブラリを使用できるように、NuGet からストレージ クライアント ライブラリもインストールすることをお勧めします。
@@ -39,7 +39,7 @@ NuGet を使って両方のパッケージを取得できます。 次の手順�
 このガイドの例を実行するための環境オプションとして次の 2 つがあります。
 
 * クラウド内の Azure ストレージ アカウントに対してコードを実行できます。 
-* Azure ストレージ エミュレーターに対してコードを実行できます。 ストレージ エミュレーターは、クラウド内の Azure ストレージ アカウントをエミュレートするローカル環境です。 エミュレーターを使用すると、アプリケーションの開発中にコードのテストとデバッグを無料で実行できます。 エミュレーターでは既知のアカウントとキーを使用します。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](../articles/storage/common/storage-use-emulator.md)」を参照してください。
+* Azure ストレージ エミュレーターに対してコードを実行できます。 ストレージ エミュレーターは、クラウド内の Azure ストレージ アカウントをエミュレートするローカル環境です。 エミュレーターを使用すると、アプリケーションの開発中にコードのテストとデバッグを無料で実行できます。 エミュレーターでは既知のアカウントとキーを使用します。 詳細については、「[Azure ストレージ エミュレーターを使用した開発とテスト](../articles/storage/common/storage-use-emulator.md)」を参照してください。
 
 クラウドのストレージ アカウントをターゲットにする場合は、Azure Portal からストレージ アカウントのプライマリ アクセス キーをコピーします。 詳細については、「 [ストレージ アクセス キーの表示とコピー](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 
@@ -51,7 +51,7 @@ NuGet を使って両方のパッケージを取得できます。 次の手順�
 ### <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
 Azure .NET 用ストレージ クライアント ライブラリでは、ストレージ接続文字列を使用して、ストレージ サービスにアクセスするためのエンドポイントおよび資格情報を構成できます。 ストレージ接続文字列を管理するには、構成ファイルの中に保持することをお勧めします。 
 
-接続文字列の詳細については、「 [Azure Storage の接続文字列を構成する](../articles/storage/common/storage-configure-connection-string.md)」を参照してください。
+接続文字列の詳細については、[Azure Storage の接続文字列の構成](../articles/storage/common/storage-configure-connection-string.md)に関するページを参照してください。
 
 > [!NOTE]
 > ストレージ アカウント キーは、ストレージ アカウントの root パスワードに似ています。 ストレージ アカウント キーは常に慎重に保護してください。 このキーを他のユーザーに配布したり、ハードコーディングしたり、他のユーザーがアクセスできるプレーン テキスト ファイルに保存したりしないでください。 キーが侵害されたと思われる場合は、Azure Portal を使用してキーを再生成してください。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 0910d5802d64ca637b3ecd1e392a6df8629c7f25
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2985ed0b4bf5d9525bc2274d71b703922524f5a8
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware から Azure 用の Azure Site Recovery Deployment Planner
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -29,7 +29,7 @@ Site Recovery を使用して VMware 仮想マシン (VM) を保護する前に�
 
 また、レプリケーション先となる Azure ストレージ アカウントの種類と数を見極めて作成する必要があります。 レプリケーション元となる運用サーバーの使用量が時間経過に伴って増えることを考慮し、その増加率を見越して、Standard ストレージ アカウントまたは Premium ストレージ アカウントを作成することになります。 ストレージの種類は、読み取り/書き込みの IOPS (I/O Operations Per Second) やデータの変更頻度といったワークロード特性と Site Recovery の制限に基づいて VM ごとに選択します。
 
-Azure Site Recovery Deployment Planner (バージョン 2) は、Hyper-V から Azure へのディザスター リカバリー シナリオと VMware から Azure へのディザスター リカバリー シナリオの両方で使用できるコマンドライン ツールです。 このツールを使用すると、(運用環境には一切影響を与えることなく) リモートから VMware VM をプロファイリングして、レプリケーションとテスト フェールオーバーに必要な帯域幅要件と Azure Storage 要件を把握することができます。 このツールは、Site Recovery のコンポーネントを一切オンプレミスにインストールせずに実行することができます。 ただし、達成スループットの実績値を正確に把握するために、本番デプロイの最初のステップの 1 つとして、最終的にデプロイすることになる Site Recovery 構成サーバーの最低限の要件を満たした Windows Server で Planner を実行することをお勧めします。
+Azure Site Recovery Deployment Planner は、Hyper-V から Azure へのディザスター リカバリー シナリオと VMware から Azure へのディザスター リカバリー シナリオの両方で使用できるコマンドライン ツールです。 このツールを使用すると、(運用環境には一切影響を与えることなく) リモートから VMware VM をプロファイリングして、レプリケーションとテスト フェールオーバーに必要な帯域幅要件と Azure Storage 要件を把握することができます。 このツールは、Site Recovery のコンポーネントを一切オンプレミスにインストールせずに実行することができます。 ただし、達成スループットの実績値を正確に把握するために、本番デプロイの最初のステップの 1 つとして、最終的にデプロイすることになる Site Recovery 構成サーバーの最低限の要件を満たした Windows Server で Planner を実行することをお勧めします。
 
 このツールで把握できる情報は次のとおりです。
 
@@ -71,7 +71,7 @@ Azure Site Recovery Deployment Planner (バージョン 2) は、Hyper-V から 
 
 | | **VMware から Azure** |**Hyper-V から Azure**|**Azure から Azure**|**Hyper-V からセカンダリ サイト**|**VMware からセカンダリ サイト**
 --|--|--|--|--|--
-サポートされるシナリオ |あり|あり|いいえ|はい*|いいえ
+サポートされるシナリオ |[はい]|[はい]|いいえ |はい*|いいえ 
 サポートされているバージョン | vCenter 6.5、6.0、5.5| Windows Server 2016、Windows Server 2012 R2 | 該当なし |Windows Server 2016、Windows Server 2012 R2|該当なし
 サポートされている構成|vCenter、ESXi| Hyper-V クラスター、Hyper-V ホスト|該当なし|Hyper-V クラスター、Hyper-V ホスト|該当なし|
 Azure Site Recovery Deployment Planner の実行中のインスタンスごとにプロファイルできるサーバーの数 |単一 (単一の vCenter Server または ESXi サーバーに含まれている VM を同時にプロファイル可能)|複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| 該当なし |複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| 該当なし
@@ -81,7 +81,7 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 ## <a name="prerequisites"></a>前提条件
 このツールの処理は、プロファイリングとレポート生成という大きく 2 つの段階に分けられます。 加えて第 3 の選択肢として、スループットの計算のみを行うこともできます。 以下の表に示したのは、プロファイリングとスループット測定に使用するサーバーの要件です。
 
-| サーバーの要件 | Description|
+| サーバーの要件 | [説明]|
 |---|---|
 |プロファイリングとスループット測定| <ul><li>オペレーティング システム: Microsoft Windows Server 2016 または Microsoft Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](https://aka.ms/asr-v2a-on-prem-components)を満たしていることが望ましい)</li><li>マシン構成: 8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 2 以上に設定する必要があります</li><li>443 ポートを許可: ASR Deployment Planner は、このポートを使用して vCenter サーバー/ESXi ホストに接続します</ul></ul>|
 | レポートの生成 | Microsoft Excel 2013 以降がインストールされた Windows PC または Windows Server |
@@ -106,9 +106,9 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
 
     例:  
     .zip ファイルを E:\ ドライブにコピーして展開します。
-   E:\ASR Deployment Planner_v2.0zip
+   E:\ASR Deployment Planner_v2.1zip
 
-    E:\ASR Deployment Planner_v2.0\ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>最新バージョンの Deployment Planner への更新
 以前のバージョンの Deployment Planner をお持ちの場合、次のいずれかを行ってください。
@@ -122,5 +122,10 @@ Azure Site Recovery Deployment Planner の実行中のインスタンスごと�
  >
  >Deployment Planner の更新に使われる .zip ファイルには、その都度、累積的な更新が格納されています。 以前のフォルダーに最新のファイルをコピーする必要はありません。 新しいフォルダーを作成して使用できます。
 
-## <a name="next-steps"></a>次のステップ
+
+## <a name="version-history"></a>バージョン履歴
+ASR Deployment Planner ツールの最新バージョンは 2.1 です。
+各更新で追加された修正については、「[ASR Deployment Planner Version History (ASR Deployment Planner のバージョン履歴)](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
 * [Deployment Planner の実行](site-recovery-vmware-deployment-planner-run.md)。

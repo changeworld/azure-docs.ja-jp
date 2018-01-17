@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/08/2017
 ms.author: renash
-ms.openlocfilehash: 712f66ade5709311721e5a4a8416f305f2e16e6b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: f96aa9fe12aba28e1ac3429f012419341bdf92c1
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-azure-files"></a>Azure Files の概要
 Azure Files は、クラウド上で、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (別称 Common Internet File System または CIFS) を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Files は、クラウドまたはオンプレミスにある Windows、macOS、および Linux に同時にマウントできます。 さらに、データが使用されている場所の近くから高速アクセスするため、Azure File Sync (プレビュー) を使用して、Windows サーバーに Azure File 共有をキャッシュできます。
@@ -32,13 +32,13 @@ Azure Files は、クラウド上で、業界標準の[サーバー メッセー
 Azure ファイル共有は、以下の作業に使用できます。
 
 * **オンプレミスのファイル サーバーの置換または補完**:  
-    Azure Files を使用して、従来のオンプレミス ファイル サーバーまたは NAS デバイスを完全に置き換えたり、補完することができます。 Windows、macOS、Linux などの一般的なオペレーティング システムに、世界中のどこからでも、Azure ファイル共有を簡単にマウントできます。 また、Azure File Sync を使用すれば、Azure のファイル共有を、オンプレミスまたはクラウドにある Windows サーバーにレプリケートすることも可能で、使用されているデータを分散キャッシュしてパフォーマンスを向上できます。
+    Azure Files を使用して、従来のオンプレミス ファイル サーバーまたは NAS デバイスを完全に置き換えたり、補完することができます。 Windows、macOS、Linux などの一般的なオペレーティング システムに、世界中のどこからでも、Azure ファイル共有を簡単にマウントできます。 また、Azure File Sync を使用すると、Azure のファイル共有を、オンプレミスまたはクラウドにある Windows サーバーにレプリケートすることも可能で、使用されているデータを分散キャッシュしてパフォーマンスを向上させることができます。
 
 * **アプリケーションの "リフトアンドシフト"**:  
     Azure Files を使用すると、ファイル アプリケーションやユーザー データをファイル共有に保存し、アプリケーションをクラウドに簡単に "リフト アンド シフト" できます。 Azure Files を使用すると、アプリケーションとそのデータの両方が Azure に移動される "従来の" リフト アンド シフト シナリオと、アプリケーション データは Azure Files に移動され、アプリケーションはオンプレミスで実行を継続する、"ハイブリッド" リフト アンド シフト シナリオの両方に対応できます。 
 
 * **クラウド開発の簡略化**:  
-    また、Azure Files は、新しいクラウド開発プロジェクトを簡素化するためにさまざまな方法で使用できます。 For example:
+    また、Azure Files は、新しいクラウド開発プロジェクトを簡素化するためにさまざまな方法で使用できます。 例: 
     * **共有アプリケーションの設定**:  
         分散アプリケーションの一般的なパターンでは、複数のアプリケーション インスタンスからアクセスできる集中管理された場所に構成ファイルが配置されます。 アプリケーション インスタンスは File REST API を介してその構成を読み込むことができ、ユーザーは、必要に応じて、ローカルで SMB 共有をマウントすることでそれにアクセスできます。
 
@@ -55,7 +55,7 @@ Azure ファイル共有は、以下の作業に使用できます。
 * **回復性**。 Azure Files は、当初から、常に使用できることを目的にして構築されています。 オンプレミスのファイル共有を Azure Files に置き換えることで、ローカルの停電またはネットワークの問題に対処するために夜間に起き出す必要がなくなります。 
 * **慣れているプログラミング方法**。 Azure で実行されているアプリケーションは、ファイル [システム I/O API](https://msdn.microsoft.com/library/system.io.file.aspx) を介して共有内のデータにアクセスできます。 そのため、開発者は、既存のコードとスキルを活用して、既存のアプリケーションを移行することができます。 システム IO API の他に、[Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)または [Azure Storage REST API](/rest/api/storageservices/file-service-rest-api) も使用できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure ファイル共有の作成](storage-how-to-create-file-share.md)
 * [Windows での接続とマウント](storage-how-to-use-files-windows.md)
 * [Linux での接続とマウント](storage-how-to-use-files-linux.md)

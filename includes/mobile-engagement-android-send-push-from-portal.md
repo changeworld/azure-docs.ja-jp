@@ -2,7 +2,7 @@
 
 Mobile Engagement にプッシュ通知の送信を許可するには、API キーへのアクセス権限を付与する必要があります。 これは、キーを構成して Mobile Engagement ポータルに入力することで実行します。
 
-1. Azure クラシック ポータルで、このプロジェクトに使用しているアプリを対象としていることを確認し、下部にある **[エンゲージ]** ボタンをクリックします。
+1. Azure Portal で、このプロジェクトに使用しているアプリを対象としていることを確認し、下部にある **[エンゲージ]** ボタンをクリックします。
 
     ![](./media/mobile-engagement-create-app-in-portal-new/engage-button.png)
 
@@ -31,7 +31,7 @@ Mobile Engagement にプッシュ通知の送信を許可するには、API キ�
 
     ![](./media/mobile-engagement-android-send-push/campaign-first-params.png)
 
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 キャンペーンの名前を付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 キャンペーンの名前を付けます。
 
     b. **[配信タイプ]** として *[システム通知] > [簡易]* を選択します。これは、タイトルと数行のテキストを表示する単純な Android のプッシュ通知です。
 

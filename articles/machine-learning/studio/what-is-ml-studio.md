@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 923bf1163e4d27e8c453fc2fcd58ebb80222bd6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a96e80fa3ece14c40159c6937a0e34c1ebc634ff
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
 Microsoft Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 Machine Learning Studio でモデルを Web サービスとして公開すれば、カスタム アプリや BI ツール (Excel など) からそのモデルを簡単に利用することができます。
@@ -64,9 +64,9 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 * **設定** - アカウントとリソースを構成するための各種設定がまとめられています。
 
 ### <a name="gallery"></a>[ギャラリー]
-**[ギャラリー]** をクリックすると、**[Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)**に移動します。 ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用して作成したソリューションを共有する場です。
+**[ギャラリー]** をクリックすると、**[Azure AI ギャラリー](http://gallery.cortanaintelligence.com/)**に移動します。 ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用して作成したソリューションを共有する場です。
 
-ギャラリーの詳細については、「 [Cortana Intelligence ギャラリーでソリューションを共有および発見する](gallery-how-to-use-contribute-publish.md)」を参照してください。
+ギャラリーの詳細については、[Azure AI ギャラリーでのソリューションの共有と発見](gallery-how-to-use-contribute-publish.md)に関するページを参照してください。
 
 ## <a name="components-of-an-experiment"></a>実験の構成要素
 実験にはデータセットが含まれます。データセットからデータが分析モジュールに提供され、分析モジュールを接続することで予測分析モデルが完成します。 有効な実験に求められる具体的な条件を以下に示します。
@@ -83,7 +83,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 
 予測分析ソリューションのより詳しいチュートリアルについては、「 [Azure Machine Learning を使用した予測ソリューションの開発](walkthrough-develop-predictive-solution.md)」をご覧ください。
 
-### <a name="datasets"></a>[データセット]
+### <a name="datasets"></a>データセット
 データセットを Machine Learning Studio にアップロードすることで、これらのデータセットをモデル作成プロセスで使用できるようになります。 Machine Learning Studio には数多くのサンプル データセットが既に含まれているため、これらを実験で試すことができます。また、必要に応じてさらにデータセットをアップロードできます。 提供されるデータセットには以下のようなものがあります。
 
 * **さまざまな自動車の燃費データ** - シリンダー数や馬力などによって分類された、自動車の燃費値 (MPG) です。

@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 7a77efb21d38c7c5ff5ca6e17757cbfa9e845ad7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 25e4475c77a25e4dcdcb90729f8633656bb186ff
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-3-mark-as-date-table"></a>レッスン 3: 日付テーブルとしてマークする
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="mark-as-date-table"></a>日付テーブルとしてマークする
 
 ｢レッスン 2: データを取得する｣では､DimDate というディメンション テーブルをインポートしました｡ モデルでは､このテーブルは DimDate と命名されていますが､このテーブルには日付と時刻データが含まれているため *日付テーブル*とも呼ばれます｡  
   
@@ -51,7 +49,7 @@ ms.lasthandoff: 11/02/2017
   
 2.  **[Table]** メニューをクリックし､**[Date]** をクリックして､**[Mark as Date Table]** をクリックします｡  
   
-3.  **[Mark as Date Table]** ダイアログ ボックスの**[Date]** リストボックスで､一意の識別子として**[Date]** 列を選択します｡ この列は既定で選択されています｡ **[OK]**をクリックします。 
+3.  **[Mark as Date Table]** ダイアログ ボックスの**[Date]** リストボックスで､一意の識別子として**[Date]** 列を選択します｡ この列は既定で選択されています｡ Click **OK**. 
 
     ![aas-lesson3-date-table](../tutorials/media/aas-lesson3-date-table.png)
   

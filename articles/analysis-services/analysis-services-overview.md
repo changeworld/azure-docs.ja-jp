@@ -1,5 +1,5 @@
 ---
-title: "Azure Analysis Services とは | Microsoft Docs"
+title: "Azure Analysis Services の概要 | Microsoft Docs"
 description: "Azure での Analysis Services の概要を説明します。"
 services: analysis-services
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/08/2017
+ms.date: 01/04/2017
 ms.author: owend
-ms.openlocfilehash: 60097a18afc76e09ecd7d69eececea53e9712bec
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: fe46b3c099c4fd4e04a39e2b2f127c1206711e60
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
+# <a name="azure-analysis-services-overview"></a>Azure Analysis Services の概要
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Azure Analysis Services は、クラウドにおけるエンタープライズ レベルのデータ モデリングを実現します。 これは、完全管理型のサービスとしてのプラットフォーム (PaaS) であり、Azure のデータ プラットフォーム サービスと統合されています。 
@@ -140,5 +140,5 @@ Analysis Services には活気のあるユーザー コミュニティがあり�
 
 ドキュメントに関する指摘がある場合は、 各記事の下部にある Livefyre を使ってコメントを追加できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Analysis Services について理解できたら、実際に始めてみてください。 Azure で[サーバーを作成する](analysis-services-create-server.md)方法について説明します。 サーバーの準備ができたら、[Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)を進めて、完全に機能する表形式モデルを作成してサーバーにデプロイする方法を学習してください。

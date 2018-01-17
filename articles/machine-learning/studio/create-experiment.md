@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 4cc8e78e3ce22d70546d8a25da17b56f4b7cc166
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 11496f0ca225baf0e6647a62aae09b8992f825c8
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning のチュートリアル: Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
 
@@ -59,7 +59,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 ![Machine Learning Studio へのサインイン][sign-in-to-studio]
 <br/>
-"***Machine Learning Studio へのサインイン***"
+***Machine Learning Studio へのサインイン***
 
 ## <a name="five-steps-to-create-an-experiment"></a>実験を作成する 5 つの手順
 
@@ -81,7 +81,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 [手順 5: 新しい自動車の価格を予測する]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
-> [Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com)には、次の実験の作業用コピーがあります。 「**[Your first data science experiment - Automobile price prediction (初めてのデータ サイエンス実験 - 自動車価格の予測)](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**」にアクセスし、**[Open in Studio (Studio で開く)]** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
+> [Azure AI ギャラリー](https://gallery.cortanaintelligence.com)には、次の実験の作業コピーがあります。 「**[Your first data science experiment - Automobile price prediction (初めてのデータ サイエンス実験 - 自動車価格の予測)](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**」にアクセスし、**[Open in Studio (Studio で開く)]** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
 
 
 ## <a name="step-1-get-data"></a>手順 1: データを取得する
@@ -108,7 +108,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 ![出力ポートのクリックと [Visualize (視覚化)] の選択][select-visualize]
 <br/>
-"***出力ポートのクリックと [Visualize (視覚化)] の選択***"
+***出力ポートのクリックと [Visualize (視覚化)] の選択***
 
 > [!TIP]
 > データセットとモジュールには、小さな円で表される入力ポートと出力ポートがあります (入力ポートは上部、出力ポートは下部)。
@@ -119,7 +119,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 ![データ視覚化ウィンドウでの自動車データの表示][visualize-auto-data]
 <br/>
-"***データ視覚化ウィンドウでの自動車データの表示***"
+***データ視覚化ウィンドウでの自動車データの表示***
 
 右上隅の "**x**" をクリックして、視覚化ウィンドウを閉じます。
 
@@ -140,7 +140,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
     <br/>
     ***実験キャンバスへの "データセット内の列の選択" モジュールの追加と接続***
 
-3. [データセット内の列の選択][select-columns]モジュールを選択し、**[プロパティ]** ウィンドウの [**Launch column selector (列セレクターの起動)**] をクリックします。
+3. [データセット内の列の選択][select-columns]モジュールを選択し、**[プロパティ]** ウィンドウの **[Launch column selector (列セレクターの起動)]** をクリックします。
 
     - 左側の **[With rules (規則を使用)]**
     - **[Begin With (次で始まる)]** の **[All columns (すべての列)]** をクリックします。 これにより、[データセット内の列の選択][select-columns]では、(これから除外する列を除き) すべての列がフィルターを通過します。
@@ -179,7 +179,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 ![実行後の実験の状態][early-experiment-run]
 <br/>
-"***実行後の実験の状態***"
+***実行後の実験の状態***
 
 > [!TIP]
 > ここで実験を実行したのはなぜでしょうか。 実験を実行することで、[データセット内の列の選択][select-columns]モジュールと[見つからないデータのクリーンアップ][clean-missing-data] モジュールを介して、データセットからデータ パスの列の定義が渡されます。 つまり、[見つからないデータのクリーンアップ][clean-missing-data]に接続するすべてのモジュールに、この同じ情報が設定されることになります。
@@ -273,7 +273,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 ![実行後の実験の状態][second-experiment-run]
 <br/>
-"***実行後の実験の状態***"
+***実行後の実験の状態***
 
 ## <a name="step-5-predict-new-automobile-prices"></a>手順 5: 新しい自動車の価格を予測する
 
@@ -302,7 +302,7 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 ![実験の評価結果][evaluation-results]
 <br/>
-"***実験の評価結果***"
+***実験の評価結果***
 
 作成したモデルに対して、以下の統計値が表示されます。
 
@@ -320,14 +320,14 @@ Studio の使用を開始するには、[https://studio.azureml.net](https://stu
 
 ![最終的な実験][complete-linear-regression-experiment]
 <br/>
-"***最終的な実験***"
+***最終的な実験***
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで初めての機械学習チュートリアルが完了し、実験のセットアップが終わりました。引き続きモデルを改良し、予測 Web サービスとしてデプロイできます。
 
 - **繰り返しによってモデルの改善を試みる** - たとえば、予測で使用する特徴を変更できます。 または、[線形回帰][linear-regression]アルゴリズムのプロパティを変更するか、別のアルゴリズムを一緒に試すことができます。 [モデルの評価][evaluate-model]モジュールを使用すれば、複数の機械学習アルゴリズムを同時に実験に追加して、2 つを比較することもできます。
-単一の実験で複数のモデルを比較する方法の例については、[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com)の「[Compare Regressors (リグレッサーの比較)](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5)」を参照してください。
+単一の実験で複数のモデルを比較する方法の例については、[Azure AI ギャラリー](https://gallery.cortanaintelligence.com)の「[Compare Regressors (リグレッサーの比較)](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5)」を参照してください。
 
     > [!TIP]
     > 繰り返す実験をコピーするには、ページの下部にある **[名前を付けて保存]** ボタンを使用します。 ページの下部にある **[実行履歴を表示]** をクリックすると、繰り返す実験をすべて表示できます。 詳細については、「[Azure Machine Learning Studio での実験イテレーションの管理][runhistory]」をご覧ください。

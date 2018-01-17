@@ -1,7 +1,7 @@
 ---
-title: "機械学習のサンプル実験のコピー - Azure | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーと Microsoft Azure Machine Learning を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。"
-keywords: "機械学習の例, サンプル実験, 機械学習のサンプル"
+title: "機械学習のサンプルから実験を作成する - Azure | Microsoft Docs"
+description: "Azure AI ギャラリーと Azure Machine Learning を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。"
+keywords: "機械学習の例, サンプル実験, 機械学習のサンプル, AI の例"
 services: machine-learning
 documentationcenter: 
 author: cjgronlund
@@ -13,16 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/28/2017
+ms.date: 01/05/2018
 ms.author: cgronlun
-ms.openlocfilehash: f798ac1b46d702dbb96a2384d96f2d14eb3cac0e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ea19f137acb23d3527315aae2624c746e138545
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="copy-example-experiments-to-create-new-machine-learning-experiments"></a>サンプル実験をコピーして新しい機械学習実験を作成する
-機械学習実験を一から作成する代わりに、[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/)にあるサンプル実験をベースとして使う方法について説明します。 サンプルを使って独自の機械学習ソリューションを構築することができます。
+# <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから機械学習の実験を作成する
+
+機械学習実験を一から作成する代わりに、[Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)にあるサンプル実験をベースとして使う方法について説明します。 サンプルを使って独自の機械学習ソリューションを構築することができます。
 
 ギャラリーには、Microsoft Azure Machine Learning チームによるサンプル実験だけでなく、Machine Learning コミュニティで共有されているサンプルもあります。 また、実験について質問したり、コメントを投稿したりすることができます。
 
@@ -30,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="find-an-experiment-to-copy-in-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでコピーする実験を探す
+## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Azure AI ギャラリーでコピーする実験を探す
 どのような実験を利用できるかを確認するには、 [ギャラリー](https://gallery.cortanaintelligence.com/) に移動して、ページの上部の **[Experiments (実験)]** をクリックします。
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>最も新しい実験または最も人気のある実験を探す
@@ -42,8 +43,8 @@ ms.lasthandoff: 10/11/2017
 1. ページの上部にある **[Browse all (すべて参照)]** をクリックします。
 2. 左側の **[Categories]\(カテゴリ\)** セクションの **[Refine by]\(絞り込み条件\)** で **[Experiment]\(実験\)** を選ぶと、ギャラリー内のすべての実験が表示されます。
 3. 自分の要件を満たす実験は、いくつかの方法で探すことができます。
-   * **左側のフィルターを選択する。** たとえば、PCA ベースの異常検出アルゴリズムを使用する実験を参照するには、**[Categories]\(カテゴリ\)** で **[Experiment]\(実験\)** を選択し、**[Show all]\(すべて表示\)** をクリックします。 次に、**[Algorithms Used]\(使用されたアルゴリズム\)** で、**[PCA-Based Anomaly Detection]\(PCA ベースの異常検出\)** を選択します。 <br></br>
-     ![Select filters](./media/sample-experiments/refine-the-view.png)
+   * **左側のフィルターを選択する。** たとえば、PCA ベースの異常検出アルゴリズムを使用する実験を参照するには、**[Categories]\(カテゴリ\)** で **[Experiment]\(実験\)** を選択します。 次に、**[Algorithms Used]\(使用されたアルゴリズム\)** の **[Show all]\(すべて表示\)** をクリックし、ダイアログ ボックスで **[PCA-Based Anomaly Detection]\(PCA ベースの異常検出\)** を選択します。 スクロールしないと見えない場合があります。<br></br>
+     ![フィルターの選択](./media/sample-experiments/choose-an-algorithm.png)
    * **検索ボックスを使う。** たとえば、Microsoft によって投稿された、2 クラス サポート ベクター マシン アルゴリズムを使用する数字認識に関連する実験を検索するには、検索ボックスで「digit recognition」と入力します。 次に、**[Experiment (実験)]**、**[Microsoft content only (Microsoft のコンテンツのみ)]**、**[Two-Class Support Vector Machine (2 クラス サポート ベクター マシン)]** フィルターを選択します。<br></br>
      ![検索ボックスを使う](./media/sample-experiments/search-for-experiments.png)
 4. 実験をクリックして詳細を表示します。
@@ -64,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 
 サンプル実験をテンプレートとして使用して、Machine Learning Studio ワークスペースに新しい実験が作成されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [さまざまなソースからデータをインポートする](import-data.md)
 * [Machine Learning 向け R 言語のクイックスタート チュートリアル](r-quickstart.md)
 * [Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)

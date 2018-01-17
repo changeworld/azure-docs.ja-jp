@@ -13,24 +13,22 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 0bf5eb51d3fea8ff4a62d9e7f6d76c771aaaaf77
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 138f9f6e85d5e206c8b09d5c93822cfef5dd1246
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-2-get-data"></a>レッスン 2: データを取得する
+# <a name="get-data"></a>データを取得する
 
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
-
-このレッスンでは､ SSDT の Get Data を使用して､AdventureWorksDW2014 サンプルデータベースへの接続､データの選択とプレビュー､フィルター､モデル ワークスペースへのデータのインポートを行います｡  
+このレッスンでは､SSDT の Get Data を使用して､Adventure Works サンプル データベースへの接続､データの選択とプレビュー､フィルター､モデル ワークスペースへのデータのインポートを行います｡  
   
 Get Data を使うことで､Azure SQL Database や Oracle､Sybase､OData Feed､Teradata､ファイルなどの広範囲のさまざまなソースからデータをインポートできます｡ Power Query M 数式を使ってデータの照会を行うこともできます｡
 
 > [!NOTE]
-> このチュートリアルのタスクと画像は、オンプレミス サーバー上の AdventureWorksDW2014 データベースへの接続を示しています。 Azure 上の AdventureWorksDW2014 データベースとは異なる場合があります。
+> このチュートリアルのタスクと画像は、オンプレミス サーバー上の AdventureWorksDW2014 データベースへの接続を示しています。 Azure 上の Adventure Works データベースとは異なる場合があります。
   
 このレッスンの推定所要時間: **10 分**  
   

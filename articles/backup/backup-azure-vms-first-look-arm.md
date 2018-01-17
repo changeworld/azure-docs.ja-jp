@@ -13,21 +13,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/04/2017
+ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 954afd6d47f9bccdd2512ab92ba0d416231fb623
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 913cdd7906c5dc4ff48968230ce37c95fb441394
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
-> [!div class="op_single_selector"]
-> * [Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)
-> * [バックアップ コンテナーを使用した VM の保護](backup-azure-vms-first-look.md)
->
->
 
 このチュートリアルでは、Recovery Services コンテナーの作成と Azure 仮想マシン (VM) のバックアップの手順について説明します。 Recovery Services コンテナーは次の VM を保護します。
 
@@ -48,13 +43,11 @@ Premium Storage VM の保護の詳細については、[Premium Storage VM の�
 >
 >
 
-[!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
-
 保護する仮想マシンの数に応じて、さまざまな開始点から開始できます。 1 回の操作で複数の仮想マシンをバックアップする場合は、Recovery Services コンテナーに移動し、[コンテナーのダッシュボードからバックアップ ジョブを開始](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault)します。 バックアップする仮想マシンが 1 台の場合は、VM 管理ブレードからバックアップ ジョブを開始できます。
 
 ## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>VM 管理ブレードからのバックアップ ジョブの構成
 
-次の手順に従って、Azure Portal で仮想マシン管理ブレードからバックアップ ジョブを構成します。 次の手順はクラシック ポータルの仮想マシンには適用されません。
+次の手順に従って、Azure Portal で仮想マシン管理ブレードからバックアップ ジョブを構成します。 次の手順が適用されるのは、Azure Portal の仮想マシンのみです。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ハブ メニューの **[その他のサービス]** をクリックし、[フィルター] ダイアログで「**仮想マシン**」と入力します。 入力中、リソースにフィルターが適用されます。 仮想マシンが表示されたら、それを選択します。
@@ -329,7 +322,7 @@ VM をコンテナーに登録する前に、サブスクリプションに追�
 | --- | --- | --- |
 | VM エージェントのインストール |<li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 <li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |<li> GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent) をインストールします。 インストールを実行するには、管理者特権が必要です。 <li> [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) して、エージェントがインストールされていることを示します。 |
 | VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントの更新 ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する手順に従います。 <br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
-| VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 |該当なし |
+| VM エージェントのインストールの検証 |<li>Azure VM で *C:\WindowsAzure\Packages* フォルダーに移動します。 <li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 |N/A |
 
 ### <a name="backup-extension"></a>バックアップ拡張機能
 VM エージェントが仮想マシンにインストールされると、Azure Backup サービスによって VM エージェントにバックアップ拡張機能がインストールされます。 Azure Backup サービスは、バックアップ拡張機能のアップグレードと修正プログラムの適用をシームレスに自動実行します。
@@ -342,5 +335,5 @@ Backup サービスでは、VM が実行されていない場合でもバック�
 ## <a name="pricing"></a>価格
 Azure VM のバックアップ コストは、保護されているインスタンスの数によって決まります。 保護されているインスタンスの定義については、「[保護されているインスタンスとは](backup-introduction-to-azure-backup.md#what-is-a-protected-instance)」を参照してください。 仮想マシンのバックアップ コストの計算例については、[保護されているインスタンスの計算方法](backup-azure-vms-introduction.md#calculating-the-cost-of-protected-instances)に関する記事を参照してください。 Azure Backup の価格設定については、「[Backup の価格](https://azure.microsoft.com/pricing/details/backup/)」のページを参照してください。
 
-## <a name="questions"></a>疑問がある場合は、
+## <a name="questions"></a>疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。

@@ -13,19 +13,17 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a2bfb714e92986465befd79aaa7b12f90b6490e7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: fbe0784ae133a0b9a54c94b4ba3db317c14b3766
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-1-create-a-tabular-model-project"></a>レッスン 1: 表形式モデル プロジェクトを作成する
+# <a name="create-a-tabular-model-project"></a>表形式モデル プロジェクトを作成する
 
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
-
-このレッスンでは、SQL Server Data Tools (SSDT) を使用して､1400 互換性レベルの新しい表形式モデルのプロジェクトを作成します｡ 新しいプロジェクトを作成すると､データを追加したり､モデルをオーサリングしたりできます｡ このレッスンではまた､SSDT における表形式モデルのオーサリング環境について簡単に紹介します｡  
+このレッスンでは、Visual Studio と SQL Server Data Tools (SSDT) を使用して､1400 互換性レベルの新しい表形式モデルのプロジェクトを作成します｡ 新しいプロジェクトを作成すると､データを追加したり､モデルをオーサリングしたりできます｡ このレッスンではまた､Visual Studio における表形式モデルのオーサリング環境について簡単に紹介します｡  
   
 このレッスンの推定所要時間: **10 分**  
   
@@ -36,7 +34,7 @@ ms.lasthandoff: 11/02/2017
   
 #### <a name="to-create-a-new-tabular-model-project"></a>新しい表形式モデル プロジェクトを作成する  
   
-1.  SSDT の **[ファイル]** メニューで､[**New** > **Project**] をクリックします｡  
+1.  Visual Studio の **[ファイル]** メニューで､**[新規作成]** > **[プロジェクト]** をクリックします｡  
   
 2.  **[New Project]** ダイアログ ボックスで[**Installed** > **Business Intelligence** > **Analysis Services**] を展開し､**[Analysis Services Tabular Project]** をクリックします｡  
   
@@ -44,11 +42,11 @@ ms.lasthandoff: 11/02/2017
   
     既定では､**Solution Name** はプロジェクト名と同じですが､別のソリューション名を指定することができます｡  
   
-4.  **[OK]**をクリックします。  
+4.  Click **OK**.  
   
 5.  **[Tabular model designer]** ダイアログ ボックスで **[Integrated workspace]** を選択します｡  
   
-    モデルのオーサリング中､ワークスペースはプロジェクトと同じ名前を使って表形式モデル データベースをホストします｡ 統合ワークスペースとは､SSDT が組み込みインスタンスを使用することを意味します｡このため､モデルのオーサリングのためだけに､Analysis Services サーバー インスタンスを別途インストールする必要はありません｡
+    モデルのオーサリング中､ワークスペースはプロジェクトと同じ名前を使って表形式モデル データベースをホストします｡ 統合ワークスペースとは､Visual Studio が組み込みインスタンスを使用することを意味します｡このため､モデルのオーサリングのためだけに､Analysis Services サーバー インスタンスを別途インストールする必要はありません｡
       
 6.  **[Compatibility level]** で **[SQL Server 2017 / Azure Analysis Services (1400)]** を選択します｡   
  
@@ -58,9 +56,9 @@ ms.lasthandoff: 11/02/2017
       
   
 ## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>SSDT の表形式モデル オーサリング環境について  
-新しい表形式モデル プロジェクトを作成しましたから､SSDT における表形式モデル オーサリング環境を少し探ってみましょう｡  
+新しい表形式モデル プロジェクトを作成したところで､Visual Studio における表形式モデル オーサリング環境を少し探ってみましょう｡  
   
-プロジェクトを作成すると､SSDT にそのプロジェクトが表示されます｡ **表形式モデル エクスプローラー**の右側には､モデル内の全オブジェクトがツリー表示されます｡ データのインポートはまだのため､フォルダーは空です｡ オブジェクト フォルダを右クリックすると､メニュー バーにあるものに似たアクションを実行できます｡ このチュートリアルを順を追って進めていく過程で､表形式モデル エクスプローラーを使用して､モデル プロジェクト内のさまざまなオブジェクトをナビゲートすることになります｡
+プロジェクトを作成すると､Visual Studio にそのプロジェクトが表示されます｡ **表形式モデル エクスプローラー**の右側には､モデル内の全オブジェクトがツリー表示されます｡ データのインポートはまだのため､フォルダーは空です｡ オブジェクト フォルダを右クリックすると､メニュー バーにあるものに似たアクションを実行できます｡ このチュートリアルを順を追って進めていく過程で､表形式モデル エクスプローラーを使用して､モデル プロジェクト内のさまざまなオブジェクトをナビゲートすることになります｡
 
 ![aas-lesson1-tme](../tutorials/media/aas-lesson1-tme.png)
 

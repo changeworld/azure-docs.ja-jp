@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/29/2017
 ms.author: shlo
-ms.openlocfilehash: fb664b76a948244d96a26b199a4e8e6c83bae0f4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 7961f998b59991b47e1c22d826bf0a50fcd09099
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,9 +44,9 @@ Azure Data Factory は、このようなデータ シナリオを解決するプ
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の概要](v1/data-factory-introduction.md)に関する記事をご覧ください。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
-通常、Azure Data Factory のパイプライン (データ主導型のワークフロー) では次の 4 つのステップが実行されます。
+通常、Azure Data Factory のパイプライン (データドリブン ワークフロー) では次の 4 つのステップが実行されます。
 
-![データ主導型ワークフローの 4 つのステップ](media/introduction/four-steps-of-a-workflow.png)
+![データドリブン ワークフローの 4 つのステップ](media/introduction/four-steps-of-a-workflow.png)
 
 ### <a name="connect-and-collect"></a>接続と収集
 
@@ -96,7 +96,7 @@ Data Factory ではリンクされたサービスは 2 つの目的に使用さ�
 ### <a name="pipeline-runs"></a>パイプライン実行
 パイプライン実行は、パイプラインを実行するインスタンスです。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 引数は、手動で渡すか、トリガー定義内で渡すことができます。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 パラメーターは、読み取り専用の構成のキーと値のペアです。  パラメーターはパイプラインで定義されます。 定義済みパラメーターの引数は、実行時に、トリガーが作成した実行コンテキストか、手動で実行されるパイプラインから渡されます。 パイプライン内のアクティビティは、パラメーターの値を使用します。
 
 データセットとは、厳密に型指定されたパラメーターと、再利用または参照可能なエンティティのことです。 アクティビティは、データセットを参照でき、データセットの定義で定義されたプロパティを使用できます。
@@ -119,12 +119,12 @@ Data Factory の概念について詳しくは、次の記事をご覧くださ�
 
 Azure Data Factory 自体は、データを保存しません。 Azure Data Factory を使用すると、データ主導型のワークフローを作成し、サポートされているデータ ストア間でのデータ移動と、他のリージョンまたはオンプレミスの環境にあるコンピューティング サービスを使用したデータ処理を調整できます。 また、プログラムと UI の両方のメカニズムを使用して、ワークフローを監視および管理することもできます。
 
-Data Factory を利用できるリージョンが米国東部、米国東部 2、西ヨーロッパのみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンでグローバルに利用できます。 データ ストアがファイアウォールの内側にある場合は、オンプレミスの環境にインストールされているデータ管理ゲートウェイがデータを移動します。
+Data Factory を利用できるリージョンが米国東部、米国東部 2、西ヨーロッパのみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンでグローバルに利用できます。 データ ストアがファイアウォールの内側にある場合は、オンプレミスの環境にインストールされているセルフホステッド統合ランタイムがデータを移動します。
 
-たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。 北ヨーロッパに Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。 Data Factory がコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
+たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。 米国東部または米国東部 2 に Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。 Data Factory がコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
 
 ## <a name="compare-with-version-2"></a>バージョン 2 との比較
 Data Factory サービスのバージョン 1 とバージョン 2 の相違点の一覧については、[バージョン 1 との比較](compare-versions.md)に関するページを参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次のクイック スタートの手順 ([PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Portal) に従って、データ ファクトリを作成する方法をご確認ください。 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.openlocfilehash: e3090da9b2c5b8f99545a1f7f9601bfd8d5221f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 707d5db04d66760a12d0c947c8a86347fd0c73d9
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Azure 上の Aspera Server On Demand サービスを使用して Media Services アカウントにファイルをアップロードする
 
@@ -33,7 +33,7 @@ Azure 用 **Aspera Server On Demand** は、[Azure Marketplace](https://azure.mi
 Azure 関数を Aspera および Media Services と共に使用する方法を示す例は、[ここ](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/103-aspera-ingest)にあります。
 
 >[!NOTE]
->Azure Media Services のメディア プロセッサ (MP) での処理についてサポートされる最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)のトピックを参照してください。
+>Azure Media Services のメディア プロセッサ (MP) での処理についてサポートされる最大ファイル サイズには制限があります。 ファイル サイズの制限の詳細については、[こちら](media-services-quotas-and-limitations.md)の記事を参照してください。
 >
 
 ## <a name="prerequisites"></a>前提条件 
@@ -56,7 +56,7 @@ Azure Marketplace にログインしたら、次の基本的な手順に従っ�
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera002.png)
 
-3. Server on Demand サブスクリプションの詳細を入力します。
+3. Server On Demand サブスクリプションの詳細を入力します。
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera003.png)
 
@@ -127,7 +127,7 @@ Azure Marketplace にログインしたら、次の基本的な手順に従っ�
 * [Aspera クライアント](http://downloads.asperasoft.com/en/downloads/2)
 * [クライアント ガイド](http://downloads.asperasoft.com/en/documentation/2)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ストレージ アカウントから AMS アカウントに blob をコピー](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account)できます。
 

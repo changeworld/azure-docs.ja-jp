@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: cgronlun;tedway;olgali
-ms.openlocfilehash: 38c5f722029c80d7e61039ebe05346b345573e34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adbd1badd8053d3c2b53386b0311e120738099f9
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Azure クラウドでの機械学習の概要
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="what-is-machine-learning-in-the-microsoft-azure-cloud"></a>Microsoft Azure クラウドにおける Machine Learning とは
 Azure Machine Learning は、クラウドの予測分析サービスであり、分析ソリューションとして予測モデルを迅速に作成し、デプロイできるようにします。
 
-そのまま使うことのできるアルゴリズムのライブラリを利用して、インターネットに接続した PC でモデルを作成し、予測ソリューションを迅速にデプロイできます。 [Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/)にある、すぐに利用できるサンプルとソリューションで作業を始めてください。
+そのまま使うことのできるアルゴリズムのライブラリを利用して、インターネットに接続した PC でモデルを作成し、予測ソリューションを迅速にデプロイできます。 [Azure AI ギャラリー](https://gallery.cortanaintelligence.com/)にある、すぐに利用できるサンプルとソリューションで作業を始めてください。
 
 ![機械学習とは Azure Machine Learning で予測分析を運用する場合の基本的なワークフローについて説明します。](./media/what-is-machine-learning/machine-learning-service-parts-and-workflow.png)
 
@@ -48,9 +48,9 @@ Azure Machine Learning には、大規模なアルゴリズム ライブラリ�
 ### <a name="machine-learning-studio-create-predictive-models"></a>Machine Learning Studio: 予測モデルの作成
 [Machine Learning Studio](what-is-ml-studio.md)では、モジュールをドラッグ アンド ドロップしたり、接続したりして予測モデルを迅速に作成できます。 さまざまな組み合わせで実験でき、[無料で試すことができます](https://studio.azureml.net/?selectAccess=true&o=2)。
 
-* [Cortana Intelligence ギャラリー](gallery-how-to-use-contribute-publish.md)では、他の開発者が作成した分析ソリューションを試すことも、自分のソリューションを共有することもできます。 また、質問や実験に関するコメントをコミュニティに投稿したり、LinkedIn や Twitter などのソーシャル ネットワークで実験のリンクを共有したりすることができます。
+* [Azure AI ギャラリー](gallery-how-to-use-contribute-publish.md)では、他の開発者が作成した分析ソリューションを試すことも、自分のソリューションを共有することもできます。 また、質問や実験に関するコメントをコミュニティに投稿したり、LinkedIn や Twitter などのソーシャル ネットワークで実験のリンクを共有したりすることができます。
 
-  ![予測実験を試したり、自分の実験を Azure Cortana Intelligence ギャラリーに投稿したりします。](./media/what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
+  ![予測実験を試したり、自分の実験を Azure AI ギャラリーに投稿したりします。](./media/what-is-machine-learning/machine-learning-cortana-intelligence-gallery.png)
 * Machine Learning Studio にある [Machine Learning アルゴリズムとモジュール](https://msdn.microsoft.com/library/azure/f5c746fd-dcea-4929-ba50-2a79c4c067d7) の大規模なライブラリを使用して、予測モデルをすぐに開始します。 サンプル実験、R と Python のパッケージ、Xbox や Bing など Microsoft のビジネスで使われている最高クラスのアルゴリズムを選ぶことができます。 [R](extend-your-experiment-with-r.md) と [Python](execute-python-scripts.md) の独自のカスタム スクリプトで Studio モジュールを拡張できます。
 
   ![予測分析とは: Azure Machine Learning Studio の予測分析実験の例](./media/what-is-machine-learning/azure-machine-learning-studio-predictive-score-experiment.png)
@@ -108,7 +108,7 @@ Azure Machine Learning には、大規模なアルゴリズム ライブラリ�
 * **スコア**: Machine Learning Studio の [スコア モデル モジュール](https://msdn.microsoft.com/library/azure/dn905995.aspx) を使用してトレーニング済みの分類や回帰モデルから生成された予測値です。 分類モデルも、予測された値の確率のスコアを返します。 モデルからスコアを生成したら、 [モデルの評価モジュール](https://msdn.microsoft.com/library/azure/dn905915.aspx)を使用してモデルの精度を評価できます。
 * **サンプル**: 全体を代表するために使用するデータ セットの一部です。 サンプルはランダムに選択したり、データ セットの特定の機能に基づいて選択したりできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ステップ バイ ステップ チュートリアル](create-experiment.md)を使用し、また[サンプル上に構築](sample-experiments.md)することによって予測分析と機械学習の基礎について学習できます。  
 
 <!-- Module References -->

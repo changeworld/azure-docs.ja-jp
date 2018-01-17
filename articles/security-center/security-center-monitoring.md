@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2017
+ms.date: 01/03/2018
 ms.author: yurid
-ms.openlocfilehash: d610a4ae97657013f6bb784790f073c3d986959f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04f2dd3dcaa44a243cb9620ab8192e15aae82a01
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティ ヘルスの監視
 この記事は、Azure Security Center で監視機能を使用してポリシーに対するコンプライアンスを監視するうえで役立ちます。
@@ -45,13 +45,14 @@ ms.lasthandoff: 10/11/2017
 
 ![不足しているシステム更新プログラム (仮想マシン別)](./media/security-center-monitoring/security-center-monitoring-fig1-sep2017.png)
 
-各タブには複数のセクションを表示できます。各セクションでは、個別のオプションを選択して、特定の問題に対処するために推奨される手順の詳細を確認できます。 
+各タブには複数のセクションを表示できます。各セクションでは、個別のオプションを選択して、特定の問題に対処するために推奨される手順の詳細を確認できます。
 
 #### <a name="monitoring-recommendations"></a>監視に関する推奨事項
-このセクションには、自動プロビジョニング用に初期化された仮想マシンとコンピューターの総数と、その現在の状態が表示されます。 このエントリをクリックすると、"**VM エージェントが見つからないか、応答していません**" という画面が表示されます。 
+このセクションには、自動プロビジョニング用に初期化された仮想マシンとコンピューターの総数と、その現在の状態が表示されます。 この例では、**[Monitoring agent health issues]\(エージェントの正常性の問題の監視\)** という推奨事項が 1 つ存在します。  この推奨事項を選択します。
 
-![不足しているシステム更新プログラム (仮想マシン別)](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
+![Monitoring agent health issues (エージェントの正常性の問題の監視)](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
+**[Monitoring agent health issues]\(エージェントの正常性の問題の監視\)** が表示されます。 Security Center で正常に監視できない VM とコンピューターが一覧表示されます。 詳細については、VM またはコンピューターを選択します。 Security Center で監視できない理由が **[監視の状態]** に表示されます。 **[監視の状態]** の値、説明、解決手順を紹介した一覧については、[Security Center トラブルシューティング ガイド](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)を参照してください。
 
 #### <a name="recommendations"></a>Recommendations
 このセクションには、Azure Security Center で監視される[各仮想マシンとコンピューターについての推奨事項](security-center-virtual-machine-recommendations.md)が表示されます。 最初の列には、推奨事項が一覧表示されます。 2 番目の列は、その推奨事項の影響を受ける仮想マシンとコンピューターの合計数を表しています。 3 番目の列は、以下のスクリーンショットに示したように、問題の重大度を表します。
@@ -79,7 +80,7 @@ ms.lasthandoff: 10/11/2017
   * **[中]**: プロセスを完了または脆弱性を排除するために重大ではないまたは追加の手順が必要。
   * **[低]**: 対処する必要はあるものの、直ちに注意する必要はない脆弱性が存在する  (既定では、重要度の低い推奨事項は表示されないが、重要度の低い推奨事項にフィルターを適用すると表示できる)。
 
-推奨事項の詳細を表示するには、不足している更新プログラムの名前を一覧内でクリックします。 
+推奨事項の詳細を表示するには、不足している更新プログラムの名前を一覧内でクリックします。
 
 ![特定の仮想マシンに足りないシステム更新プログラム](./media/security-center-monitoring/security-center-monitoring-fig4-sep2017.png)
 
@@ -121,7 +122,7 @@ ms.lasthandoff: 10/11/2017
 
 ![クラウド サービスの詳細](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
-この推奨事項に関するより正確な説明を確認する場合は、**[説明]** 列の **[OS バージョンの更新]** をクリックしてください。 
+この推奨事項に関するより正確な説明を確認する場合は、**[説明]** 列の **[OS バージョンの更新]** をクリックしてください。
 
 ![クラウド サービスの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 

@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/04/2017
+ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3649cc2800e774f8dca1b88a1704744b4663a68d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4bd20cc9a553952ad86b662fa763e220cb8d8081
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -202,6 +202,30 @@ ApplicationManifest.xml ファイルの `ContainerHostPolicies` 内にある `Po
     </Policies>
    </ServiceManifestImport>
 ``` 
+## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されるのと同様に、コンテナーの正常性状態が変更されるたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 コンテナーの正常性を監視するために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される **dockerfile** 内に存在する必要があります。 
+
+![HealthCheckHealthy][1]
+
+![HealthCheckUnealthyApp][2]
+
+![HealthCheckUnhealthyDsp][3]
+
+各コンテナーに対する **HEALTHCHECK** の動作は、ApplicationManifest の **ContainerHostPolicies** の一部として **HealthConfig** オプションを指定することによって構成できます。
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code">
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+      </ContainerHostPolicies>
+    </Policies>
+</ServiceManifestImport>
+```
+既定では、*IncludeDockerHealthStatusInSystemHealthReport* は **true** に設定され、*RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定されています。 *RestartContainerOnUnhealthyDockerHealthStatus* を **true** に設定すると、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
+
+Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効にする場合は、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
 ## <a name="build-and-package-the-service-fabric-application"></a>Service Fabric アプリケーションのビルドとパッケージ化
 Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、端末からアプリケーションをビルドすることができます。 アプリケーションをビルドしてパッケージ化するには、次のコマンドを実行します。
@@ -231,6 +255,7 @@ sfctl cluster select --endpoint http://localhost:19080
 実行中のコンテナーに接続します。  Web ブラウザーで、ポート 4000 で返された IP アドレスを開きます (たとえば " http://localhost:4000 ")。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ![Hello World!][hello-world]
+
 
 ## <a name="clean-up"></a>クリーンアップ
 ローカル開発クラスターからアプリケーション インスタンスを削除し、その種類のアプリケーションの登録を解除するには、テンプレートに指定されているアンインストール スクリプトを使用します。
@@ -359,7 +384,6 @@ yeoman を使用して作成したアプリケーションに別のコンテナ�
 ```
 既定の期間は 10 秒に設定されています。 この構成は動的であるため、クラスター上の構成のみをアップグレードするだけでタイムアウトが更新されます。 
 
-
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>使用していないコンテナー イメージを削除するようにランタイムを構成する
 
 使用していないコンテナー イメージをノードから削除するように Service Fabric クラスターを構成できます。 この構成により、ノード上に存在するコンテナー イメージが多すぎる場合にディスク領域を再取得できます。  この機能を有効にするには、次のスニペットに示すように、クラスター マニフェストの `Hosting` セクションを更新します。 
@@ -380,8 +404,35 @@ yeoman を使用して作成したアプリケーションに別のコンテナ�
 
 削除してはならないイメージは `ContainerImagesToSkip` パラメーターに指定することができます。 
 
+## <a name="configure-container-image-download-time"></a>コンテナー イメージのダウンロード時間を構成する
 
-## <a name="next-steps"></a>次のステップ
+既定では、Service Fabric ランタイムはコンテナー イメージのダウンロードと抽出に 20 分を割り当てます。ほとんどのコンテナー イメージには、これで十分です。 大きなイメージの場合、またはネットワーク接続の速度が遅い場合、イメージのダウンロードおよび抽出が中止されるまでの待機時間を長くしなければならないことがあります。 そのように設定するには、次のスニペットで示すように、クラスター マニフェストの **Hosting** セクションの **ContainerImageDownloadTimeout** 属性を使用します。
+
+```json
+{
+"name": "Hosting",
+        "parameters": [
+          {
+              "name": " ContainerImageDownloadTimeout ",
+              "value": "1200"
+          }
+]
+}
+```
+
+
+## <a name="set-container-retention-policy"></a>コンテナーの保持ポリシーを設定する
+
+Service Fabric (バージョン 6.1 以降) は、コンテナーのスタートアップ エラーの診断を支援するために、終了したりスタートアップに失敗したりしたコンテナーの保持をサポートしています。 このポリシーは、次のスニペットで示すように、**ApplicationManifest.xml** ファイルで設定できます。
+
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+```
+
+**ContainersRetentionCount** の設定で、エラーが発生したときに保持するコンテナーの数を指定します。 負の値を指定すると、エラーが発生したすべてのコンテナーが保持されます。 **ContainersRetentionCount** 属性が指定されていない場合、コンテナーは保持されません。 **ContainersRetentionCount** 属性はアプリケーション パラメーターもサポートしているため、ユーザーはテスト クラスターと運用環境クラスターで別の値を指定できます。 この機能を使用してコンテナー サービスが他のノードに移動されることを防ぐ場合は、配置制約を使用してコンテナー サービスを特定のノードにターゲティングすることをお勧めします。 この機能を使用して保持されるコンテナーは、手動で削除する必要があります。
+
+
+## <a name="next-steps"></a>次の手順
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
@@ -389,3 +440,7 @@ yeoman を使用して作成したアプリケーションに別のコンテナ�
 
 [hello-world]: ./media/service-fabric-get-started-containers-linux/HelloWorld.png
 [sf-yeoman]: ./media/service-fabric-get-started-containers-linux/YoSF.png
+
+[1]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
+[2]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
+[3]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png

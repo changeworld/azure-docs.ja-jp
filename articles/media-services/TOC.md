@@ -135,8 +135,9 @@
 ### [AES-128 暗号化](media-services-protect-with-aes128.md)
 ### [ストリーミング用 PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 ### [ストリーミング用 FairPlay](media-services-protect-hls-with-fairplay.md)
-### [オフラインの PlayReady](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
-### [オフラインの FairPlay](media-services-protect-hls-with-offline-fairplay.md)
+### [Windows 10 用のオフラインの PlayReady](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
+### [iOS 用のオフラインの FairPlay](media-services-protect-hls-with-offline-fairplay.md)
+### [Android 用のオフラインの Widevine](offline-widevine-for-android.md)
 ### [Azure Portal での構成](media-services-portal-protect-content.md)
 ### [DRM ライセンスの配布](media-services-deliver-keys-and-licenses.md)
 ### ContentKeys を作成する

@@ -13,26 +13,24 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: fbc6187e80a42330c96ebaa1195ea188430894cc
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5a4dc7004245923fa6bda779114166ecf08d075f
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="supplemental-lesson---detail-rows"></a>補足のレッスン - 詳細行
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
 この補足のレッスンでは、DAX エディターを使用して、カスタムの詳細行の式を定義します。 詳細行の式はメジャーに関するプロパティです。エンドユーザーに、メジャーの集計結果についてより詳細な情報を提供します。 
   
 このレッスンの推定所要時間: **10 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-この補足のレッスンのトピックは、表形式モデルのチュートリアルの一部です。 この補足のレッスンの作業を実行する前に、前のレッスンをすべて完了しているか、または Adventure Works Internet Sales のサンプル モデル プロジェクトを完了している必要があります。  
+この補足のレッスンは、表形式モデルのチュートリアルの一部です。 この補足のレッスンの作業を実行する前に、前のレッスンをすべて完了しているか、または Adventure Works Internet Sales のサンプル モデル プロジェクトを完了している必要があります。  
   
-## <a name="what-do-we-need-to-solve"></a>解決するために必要なもの
+## <a name="whats-the-issue"></a>問題点
 詳細行の式を追加する前に、InternetTotalSales メジャーの詳細を見てみましょう。
 
 1.  SSDT で、**[モデル]** メニュー > **[Excel で分析]** をクリックして Excel を開き、空のピボットテーブルを作成します。
@@ -51,7 +49,7 @@ ms.lasthandoff: 11/02/2017
 
 #### <a name="to-create-a-detail-rows-expression"></a>詳細行の式を作成するには 
   
-1. SSDT で、FactInternetSales テーブルのメジャー グリッドの **InternetTotalSales** メジャーをクリックします。 
+1. FactInternetSales テーブルのメジャー グリッドの **InternetTotalSales** メジャーをクリックします。 
 
 2. **[プロパティ]** > **[詳細行の式]** で、エディター ボタンをクリックして DAX エディターを開きます。
 
@@ -82,6 +80,6 @@ ms.lasthandoff: 11/02/2017
 
   
 ## <a name="see-also"></a>関連項目  
-[SELECTCOLUMNS 関数 (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
+[SELECTCOLUMNS 関数 (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)  
 [補足のレッスン - 動的なセキュリティ](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [補足のレッスン - 不規則階層](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  

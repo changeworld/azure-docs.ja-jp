@@ -7,4 +7,5 @@
 3. Firebase コンソールで、プロジェクトの歯車アイコンをクリックし、**[Project Settings (プロジェクト設定)]** をクリックします。
 
     ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
-4. プロジェクト設定の **[Cloud Messaging]** タブをクリックし、**[Server key (サーバー キー)]** と **[Sender ID (送信者 ID)]** の値をコピーします。 これらの値は、後でアプリケーションの通知ハブのアクセス ポリシーと通知ハンドラーを構成するために使用されます。
+4. プロジェクト設定で **[General]\(一般\)** タブをクリックし、サーバーの API キーとクライアント ID が含まれた **google-services.json** ファイルをダウンロードします。
+5. プロジェクト設定の **[Cloud Messaging]\(クラウド メッセージ\)** タブをクリックし、**[Legacy server key]\(レガシ サーバー キー\)** の値をコピーします。 この値は、通知ハブのアクセス ポリシーの構成に使用します。

@@ -19,7 +19,7 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: Azure Stack のデプロイ
+    - name: Azure Stack の評価
       href: azure-stack-deploy-overview.md
 - name: チュートリアル
   items:
@@ -31,8 +31,6 @@
       href: azure-stack-tutorial-app-service.md
 - name: 概念
   items:
-    - name: 計画に関する考慮事項
-      href: azure-stack-planning-considerations.md
     - name: サービス ポリシー
       href: azure-stack-servicing-policy.md
     - name: 主要機能および概念
@@ -43,7 +41,7 @@
       href: azure-stack-manage-basics.md
 - name: ハウツー ガイド
   items:
-    - name: デプロイ
+    - name: ASDK のデプロイ
       items:
         - name: 前提条件
           href: azure-stack-deploy.md
@@ -61,6 +59,23 @@
           href: azure-stack-add-default-image.md
         - name: テスト VM の作成
           href: azure-stack-provision-vm.md
+    - name: Azure Stack 統合システムのデプロイ
+      items:
+        - name: デプロイ計画に関する考慮事項
+          href: azure-stack-deployment-planning.md
+        - name: デプロイ計画に関する決定
+          href: azure-stack-deployment-decisions.md
+        - name: Azure に接続された状態でのデプロイ
+          href: azure-stack-connected-deployment.md
+        - name: Azure から切断された状態でのデプロイ
+          href: azure-stack-disconnected-deployment.md
+        - name: Azure Stack のデプロイの PKI 要件
+          href: azure-stack-pki-certs.md
+          items:
+            - name: Azure Stack のデプロイ用の PKI 証明書の取得
+              href: azure-stack-get-pki-certs.md
+        - name: Azure Stack の登録
+          href: azure-stack-registration.md
     - name: データセンターの統合
       items:
         - name: DNS
@@ -73,7 +88,7 @@
           href: azure-stack-integrate-monitor.md
         - name: セキュリティ
           href: azure-stack-integrate-security.md
-    - name: 管理
+    - name: '[管理]'
       items:
         - name: リージョンの管理
           href: azure-stack-region-management.md
@@ -254,7 +269,7 @@
           href: azure-stack-diagnostic-test.md
         - name: Azure Stack Development Kit の再デプロイ
           href: azure-stack-redeploy.md
-- name: 参照
+- name: リファレンス
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9

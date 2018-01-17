@@ -10,7 +10,7 @@
 ### [Spring Boot アプリケーションのデプロイ](service-fabric-quickstart-java-spring-boot.md)
 ### [Reliable Services アプリケーションのデプロイ](service-fabric-quickstart-java-reliable-services.md)
 
-# Tutorials (チュートリアル)
+# チュートリアル
 ## .NET アプリのデプロイ
 ### [1 - .NET アプリケーションの構築](service-fabric-tutorial-create-dotnet-app.md)
 ### [2 - アプリケーションのデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)
@@ -96,6 +96,7 @@
 ##### [アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)
 ##### [アプリケーション アップグレードでのデータのシリアル化](service-fabric-application-upgrade-data-serialization.md)
 ##### [アプリケーション アップグレードの高度なトピック](service-fabric-application-upgrade-advanced.md)
+#### [複数の環境向けのアプリケーションの管理](service-fabric-manage-multiple-environment-app-configuration.md)
 #### [障害分析によるアプリのテスト](service-fabric-testability-overview.md)
 #### [ImageStoreConnectionString 設定](service-fabric-image-store-connection-string.md)
 
@@ -226,7 +227,6 @@
 ## Windows/VS 開発環境での作業
 ### [Visual Studio でのアプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 ### [Visual Studio でセキュリティ保護された接続を構成する](service-fabric-visualstudio-configure-secure-connections.md)
-### [複数環境向けアプリケーションの構成](service-fabric-manage-multiple-environment-app-configuration.md)
 ### [VS での .NET サービスのデバッグ](service-fabric-debugging-your-application.md)
 ### [一般的なエラーと例外](service-fabric-errors-and-exceptions.md)
 ### [ローカルでの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
@@ -244,10 +244,13 @@
 
 ## アプリケーションのライフサイクルを管理する
 ### [アプリケーションのパッケージ化](service-fabric-package-apps.md)
+### [構成ファイルでのパラメーターの使用](service-fabric-how-to-parameterize-configuration-files.md)
+### [パラメーターを使用したポート番号の指定](service-fabric-how-to-specify-port-number-using-parameters.md)
+### [環境変数の指定](service-fabric-how-to-specify-environment-variables.md)
 
 ### アプリケーションをデプロイまたは削除する
 #### [ローカル クラスターへのアプリケーションのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
-#### [Azure リソース マネージャー](service-fabric-application-arm-resource.md)
+#### [Azure Resource Manager](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
@@ -272,9 +275,9 @@
 
 ## クラスターを作成および管理する
 ### Azure 上のクラスター
-#### 作成
-##### [Azure ポータル](service-fabric-cluster-creation-via-portal.md)
-##### [Azure リソース マネージャー](service-fabric-cluster-creation-via-arm.md)
+#### [作成]
+##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
+##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 #### スケール
 ##### [手動で](service-fabric-cluster-scale-up-down.md)
 ##### [プログラムで](service-fabric-cluster-programmatic-scaling.md)
@@ -286,7 +289,7 @@
 #### [削除](service-fabric-cluster-delete.md)
 
 ### スタンドアロンのクラスター
-#### 作成
+#### [作成]
 ##### [オンプレミスでの作成](service-fabric-cluster-creation-for-windows-server.md)
 ##### [証明書を使用したセキュリティ保護](service-fabric-windows-cluster-x509-security.md)  
 ##### [Windows セキュリティを使用したセキュリティ保護](service-fabric-windows-cluster-windows-security.md)
@@ -326,8 +329,9 @@
 ### [sfctl store](service-fabric-sfctl-store.md)
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
-## [REST ()](/rest/api/servicefabric)
+## [REST](/rest/api/servicefabric)
 ## [サービス モデルの XML スキーマ](service-fabric-service-model-schema.md)
+## [環境変数](service-fabric-environment-variables-reference.md)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

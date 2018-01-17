@@ -285,6 +285,9 @@
               href: apache-hadoop-use-sqoop-dotnet-sdk.md
             - name: Azure PowerShell を使用して実行する
               href: apache-hadoop-use-sqoop-powershell.md
+        - name: データ分析パイプラインを運用化する
+          href: ../hdinsight-operationalize-data-pipeline.md
+          maintainContext: true
         - name: ワークフローの Oozie を使用する
           href: ../hdinsight-use-oozie-linux-mac.md
           maintainContext: true
@@ -397,7 +400,7 @@
           maintainContext: true
         - name: Hadoop ログの分析
           href: apache-hadoop-debug-jobs.md
-- name: 参照
+- name: リファレンス
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

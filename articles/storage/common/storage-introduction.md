@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: tamram
-ms.openlocfilehash: ff0f6446b51c4549e5a367b5b767d4777a1d946d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e0da76d1c99de94762a54f552e49f7ee75eba26f
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
 
@@ -35,9 +35,7 @@ Azure Storage は、Blob Storage、File Storage、Queue Storage の 3 つのデ�
 * ストレージへのデータの転送とストレージからのデータの転送
 * 公開されている各種ストレージ クライアント ライブラリ
 
-Azure Storage を今すぐ立ち上げ、使用を開始するには、次のクイック スタートを参照してください。
-* [PowerShell を使用したストレージ アカウントの作成](storage-quickstart-create-storage-account-powershell.md)
-* [CLl を使用したストレージ アカウントの作成](storage-quickstart-create-storage-account-cli.md)
+Azure Storage を稼働させるには、[ストレージ アカウントの作成](storage-quickstart-create-account.md)に関するページを参照してください。
 
 ## <a name="introducing-the-azure-storage-services"></a>Azure Storage サービスの概要
 
@@ -213,15 +211,13 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [PowerShell 用ストレージ コマンドレット](/powershell/module/azure.storage/?view=azurermps-4.1.0&viewFallbackFrom=azurermps-4.0.0)
 * [CLI 2.0 用ストレージ コマンド](/cli/azure/storage)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Blob Storage の詳細](../blobs/storage-blobs-introduction.md)
 * [File Storage の詳細](../storage-files-introduction.md)
 * [Queue Storage の詳細](../queues/storage-queues-introduction.md)
 
-Azure Storage を今すぐ立ち上げ、使用を開始するには、次のクイック スタートを参照してください。
-* [PowerShell を使用したストレージ アカウントの作成](storage-quickstart-create-storage-account-powershell.md)
-* [CLl を使用したストレージ アカウントの作成](storage-quickstart-create-storage-account-cli.md)
+Azure Storage を稼働させるには、[ストレージ アカウントの作成](storage-quickstart-create-account.md)に関するページを参照してください。
 
 <!-- FIGURE OUT WHAT TO DO WITH ALL THESE LINKS.
 

@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/03/2017
+ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 23e8b1023aebd5381fc89535ce265883d6a8fceb
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ca0817b37b6baaa4ef63dfb76790fb3b3735b55f
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -36,6 +36,14 @@ ms.lasthandoff: 12/18/2017
 Windows Server 2016 上で実行されている 3 つ以上のノードがあり、コンテナーを含む Windows クラスター。[クラスターを作成する](service-fabric-cluster-creation-via-portal.md)か、[無料で Service Fabric を試してください](https://aka.ms/tryservicefabric)。
 
 Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。
+
+> [!NOTE]
+> Windows 10 での Service Fabric クラスターまたは Docker CE がインストールされたクラスターへのコンテナーのデプロイは、サポートされていません。 このチュートリアルでは、Windows 10 で Docker エンジンを使用してローカルでテストし、最後に、Docker EE を実行する Azure で Windows Server クラスターにコンテナー サービスをデプロイします。 
+>   
+
+> [!NOTE]
+> Service Fabric バージョン 6.1 は、Windows Server バージョン 1709 をプレビュー版サポートしています。 Open ネットワークおよび Service Fabric の DNS サービスは、Windows Server バージョン 1709 で機能しません。 
+> 
 
 ## <a name="define-the-docker-container"></a>Docker コンテナーを定義する
 Docker Hub にある [Python イメージ](https://hub.docker.com/_/python/)を基にしてイメージをビルドします。
@@ -294,7 +302,8 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
    > [!NOTE]
-   > hyperv 分離モードは、入れ子の仮想化がサポートされた Azure SKU (Ev3 と Dv3) で利用できます。 ホストには hyperv ロールがインストールされている必要があります。 ホストに接続して確認してください。
+   > hyperv 分離モードは、入れ子の仮想化がサポートされた Azure SKU (Ev3 と Dv3) で利用できます。 
+   >
    >
 
 ## <a name="configure-resource-governance"></a>リソース管理を構成する
@@ -309,6 +318,31 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
   </Policies>
 </ServiceManifestImport>
 ```
+## <a name="configure-docker-healthcheck"></a>Docker HEALTHCHECK を構成する 
+
+Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck) イベントがシステム正常性レポートに自動的に統合されます。 つまり、コンテナーの **HEALTHCHECK** が有効な場合、Service Fabric は Docker によって報告されたとおりにコンテナーの正常性状態が変化するたびに正常性を報告します。 **OK** 正常性レポートは、*health_status* が "*正常*" のときに、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に表示され、**警告**は、*health_status* が "*異常*" のときに表示されます。 コンテナーの正常性の監視のために実行される実際のチェックを指す **HEALTHCHECK** 命令は、コンテナー イメージを生成するときに使用される **dockerfile** に存在する必要があります。 
+
+![HealthCheckHealthy][3]
+
+![HealthCheckUnealthyApp][4]
+
+![HealthCheckUnhealthyDsp][5]
+
+ApplicationManifest の **ContainerHostPolicies** の一部として **HealthConfig** オプションを指定することによって、コンテナーごとに **HEALTHCHECK** の動作を構成できます。
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code">
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+      </ContainerHostPolicies>
+    </Policies>
+</ServiceManifestImport>
+```
+既定では、*IncludeDockerHealthStatusInSystemHealthReport* は、**true** に設定され、*RestartContainerOnUnhealthyDockerHealthStatus* は **false** に設定されています。 *RestartContainerOnUnhealthyDockerHealthStatus* が **true** に設定されている場合、異常を繰り返し報告するコンテナーが (おそらく他のノードで) 再起動されます。
+
+Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する場合、[EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) を **false** に設定する必要があります。
 
 ## <a name="deploy-the-container-application"></a>コンテナー アプリケーションをデプロイする
 変更をすべて保存し、アプリケーションをビルドします。 アプリケーションを発行するために、ソリューション エクスプローラーの **[MyFirstContainer]** を右クリックし、**[発行]** を選択します。
@@ -324,7 +358,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 ブラウザーを開き、http://containercluster.westus2.cloudapp.azure.com:8081 に移動します。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ## <a name="clean-up"></a>クリーンアップ
-クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-tutorial-create-vnet-and-windows-cluster.md#clean-up-resources)を検討してください。  [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
+クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-cluster-delete.md)を検討してください。  [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
 
 コンテナー レジストリにイメージをプッシュした後は、開発コンピューターからローカルのイメージを削除できます。
 
@@ -332,6 +366,34 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 docker rmi helloworldapp
 docker rmi myregistry.azurecr.io/samples/helloworldapp
 ```
+
+## <a name="specify-os-build-version-specific-container-images"></a>OS ビルド バージョン固有のコンテナー イメージを指定する 
+
+Windows Server コンテナー (プロセス分離モード) は、新しいバージョンの OS と互換性がない可能性があります。 たとえば、Windows Server 2016 を使用して構築した Windows Server コンテナーは、Windows Server バージョン 1709 では機能しません。 そのため、クラスター ノードが最新バージョンに更新されていると、以前のバージョンの OS を使用して構築したコンテナー サービスは失敗します。 ランタイムのバージョン 6.1 以降でこれを回避するには、Service Fabric で、コンテナーごとに複数の OS イメージを指定できるようにして、(Windows コマンド プロンプトで `winver` を実行して取得した) OS のビルド バージョンでこれらにタグを付けます。  ノードの OS を更新する前に、まずアプリケーション マニフェストを更新し、OS のバージョンごとにイメージの上書きを指定することをお勧めします。 次のスニペットは、アプリケーション マニフェスト **ApplicationManifest.xml** で複数のコンテナー イメージを指定する方法を示しています。
+
+
+```xml
+<ContainerHostPolicies> 
+         <ImageOverrides> 
+               <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
+               <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
+         </ImageOverrides> 
+     </ContainerHostPolicies> 
+```
+WIndows Server 2016 のビルド バージョンは 14393 であり、Windows Server バージョン 1709 のビルド バージョンは 16299 です。 サービス マニフェストは、引き続き、次に示すようにコンテナー サービスごとに 1 つのイメージのみを指定します。
+
+```xml
+<ContainerHost>
+    <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName> 
+</ContainerHost>
+```
+
+   > [!NOTE]
+   > OS ビルド バージョンのタグ付け機能は、Windows 上の Service Fabric のみで使用可能です。
+   >
+
+VM 上の基になる OS がビルド 16299 (バージョン 1709) である場合、Service Fabric はその Windows Server バージョンに対応するコンテナー イメージを取得します。  アプリケーション マニフェストで、タグが付けられたコンテナー イメージと共にタグなしのコンテナー イメージも指定されている場合、Service Fabric は、タグなしのイメージを複数のバージョン間で動作するものとして扱います。 コンテナー イメージを明示的にタグ付けすることをお勧めします。
+
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェストの完全な例
 この記事で使用される完全なサービス マニフェストとアプリケーション マニフェストは次のとおりです。
@@ -451,7 +513,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 使用していないコンテナー イメージをノードから削除するように Service Fabric クラスターを構成できます。 この構成により、ノード上に存在するコンテナー イメージが多すぎる場合にディスク領域を再取得できます。  この機能を有効にするには、次のスニペットに示すように、クラスター マニフェストの `Hosting` セクションを更新します。 
 
 
-```xml
+```json
 {
         "name": "Hosting",
         "parameters": [
@@ -467,8 +529,35 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 削除してはならないイメージは `ContainerImagesToSkip` パラメーターに指定することができます。 
 
 
+## <a name="configure-container-image-download-time"></a>コンテナー イメージのダウンロード時間を構成する
 
-## <a name="next-steps"></a>次のステップ
+既定では、Service Fabric ランタイムはコンテナー イメージのダウンロードと抽出に 20 分を割り当てており、これは大部分のコンテナー イメージにとって十分な時間です。 大きなイメージの場合、またはネットワーク接続の速度が遅い場合、イメージのダウンロードおよび抽出が中止されるまでの待機時間を長くすることが必要になる場合があります。 これは、次のスニペットに示すように、クラスター マニフェストの **Hosting** セクションの **ContainerImageDownloadTimeout** 属性を使用して設定できます。
+
+```json
+{
+"name": "Hosting",
+        "parameters": [
+          {
+              "name": " ContainerImageDownloadTimeout ",
+              "value": "1200"
+          }
+]
+}
+```
+
+
+## <a name="set-container-retention-policy"></a>コンテナーの保持ポリシーを設定する
+
+コンテナーのスタートアップ エラーの診断を支援するために、Service Fabric (バージョン 6.1 以降) では、終了またはスタートアップに失敗したコンテナーの保持をサポートしています。 このポリシーは、次のスニペットに示すように、**ApplicationManifest.xml** ファイルで設定できます。
+
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+```
+
+**ContainersRetentionCount** の設定で、エラーが発生したときに保持するコンテナーの数を指定します。 負の値が指定されている場合は、エラーが発生したすべてのコンテナーが保持されます。 **ContainersRetentionCount** 属性が指定されていない場合、コンテナーは保存されません。 **ContainersRetentionCount** 属性はアプリケーション パラメーターもサポートしているため、ユーザーはテスト クラスターと運用クラスターで別の値を指定できます。 コンテナー サービスが他のノードに移動することを防ぐためにこの機能を使用する場合は、配置の制約を使用して、コンテナー サービスの対象を特定のノードに制約することをお勧めします。 この機能を使用して保持されるコンテナーは、手動で削除する必要があります。
+
+
+## <a name="next-steps"></a>次の手順
 * [Service Fabric でのコンテナー](service-fabric-containers-overview.md)の実行について確認します。
 * [コンテナー内の .NET アプリケーションをデプロイする方法](service-fabric-host-app-in-a-container.md)に関するチュートリアルをご覧ください。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。
@@ -476,3 +565,6 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 [1]: ./media/service-fabric-get-started-containers/MyFirstContainerError.png
 [2]: ./media/service-fabric-get-started-containers/MyFirstContainerReady.png
+[3]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
+[4]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
+[5]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png

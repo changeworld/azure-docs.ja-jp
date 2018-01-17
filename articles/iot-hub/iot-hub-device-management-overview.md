@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 6d667d42bfef2ec61b055009210d5621f51c17df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 458b316ba76ff7cace56eb21eaf105233e508741
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT Hub を使用したデバイス管理の概要
 ## <a name="introduction"></a>はじめに
@@ -57,7 +57,7 @@ IoT のデバイス管理には特有の課題が伴います。このため、�
     "*参考資料*": [デバイス ツインの使用][lnk-twins-getstarted]、[デバイス ツインについて][lnk-twins-devguide]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]。
 * **プロビジョニング**: IoT Hub に対して新しいデバイスを安全にプロビジョニングし、デバイスの機能をオペレーターがすぐに検出できるようにします。  IoT Hub ID レジストリを使用して、柔軟性に優れたデバイス ID と資格情報を作成し、ジョブを使用してこの操作を一括で実行します。 デバイス ツインのデバイス プロパティを使ってその機能や状態を報告できるように、デバイスを構築します。
   
-    "*参考資料*": [デバイス ID の管理][lnk-identity-registry]、[デバイス ID の一括管理][lnk-bulk-identity]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]。
+    "*参考資料*": [デバイス ID の管理][lnk-identity-registry]、[デバイス ID の一括管理][lnk-bulk-identity]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]、[Azure IoT Hub Device Provisioning Service][lnk-dps]。
 * **構成**: 正常性とセキュリティを維持すると共に、デバイスに対する一括構成変更とファームウェア更新を効率化します。 こうしたデバイス管理操作は、Desired プロパティ、またはダイレクト メソッドとブロードキャスト ジョブを使用して一括で実行します。
   
     "*参考資料*": [ダイレクト メソッドの使用][lnk-c2d-methods]、[デバイスでダイレクト メソッドを呼び出す][lnk-methods-devguide]、[デバイス ツインのプロパティの使用方法][lnk-twin-properties]、[ジョブのスケジュールとブロードキャスト][lnk-jobs]、[複数デバイスでのジョブのスケジュール][lnk-jobs-devguide]。
@@ -87,7 +87,7 @@ IoT のデバイス管理には特有の課題が伴います。このため、�
   
     ![デバイス管理の進行状況とステータスの報告パターンを示す図][img-report_progress_pattern]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 IoT Hub でデバイス管理用に提供される機能、パターン、コード ライブラリを使用することで、デバイスのライフサイクル ステージごとのエンタープライズ IoT オペレーター要件を満たす IoT アプリケーションを作成できます。
 
 IoT Hub のデバイス管理機能についての学習を続けるには、[デバイス管理の概要][lnk-get-started]に関するチュートリアルをご覧ください。
@@ -113,3 +113,4 @@ IoT Hub のデバイス管理機能についての学習を続けるには、[�
 [lnk-methods-devguide]: iot-hub-devguide-direct-methods.md
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
+[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps

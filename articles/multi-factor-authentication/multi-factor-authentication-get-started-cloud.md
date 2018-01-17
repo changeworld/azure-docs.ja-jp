@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: joflore
-ms.openlocfilehash: 9d78bfc8c7872e3a248ee2deb19fa1bc40b8ee5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b7c82dc6f09b147651d999a831c657864fa59134
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-Factor Authentication Server の概要
 この記事では、クラウドで Azure Multi-Factor Authentication の使用を開始する方法について説明します。
 
 > [!NOTE]
-> 次のドキュメントでは、 **Azure クラシック ポータル**を使用してユーザーを有効にする方法について説明しています。 Office 365 ユーザー向けに Azure Multi-Factor Authentication を設定する方法についての情報をお探しの場合は、「[Office 365 ユーザー用の多要素認証を設定する](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)」を参照してください。
+> 次のドキュメントでは、**Azure Portal** を使用してユーザーを有効にする方法について説明しています。 Office 365 ユーザー向けに Azure Multi-Factor Authentication を設定する方法についての情報をお探しの場合は、「[Office 365 ユーザー用の多要素認証を設定する](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6?ui=en-US&rs=en-US&ad=US)」を参照してください。
 
 ![MFA in the Cloud](./media/multi-factor-authentication-get-started-cloud/mfa_in_cloud.png)
 
@@ -43,6 +43,6 @@ ms.lasthandoff: 12/11/2017
 
 [ユーザーまたはグループに 2 段階認証を要求する方法](multi-factor-authentication-get-started-user-states.md)に関するページに記載されているいずれかの手順を使用して、実際に Azure MFA を使ってみましょう。 すべてのサインインに対して 2 段階認証を実施するか、条件付きアクセス ポリシーを作成して必要なときにのみ 2 段階認証を要求するかを選ぶことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クラウド側の Azure Multi-Factor Authentication を設定したら、デプロイ側の構成とセットアップを行います。 詳細については、「[Azure Multi-Factor Authentication の構成](multi-factor-authentication-whats-next.md)」を参照してください。
 

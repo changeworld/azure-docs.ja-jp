@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: fe504d826b6c40099f1f8706ef7e8780eed5cf9a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea5274f6bfd2d6c68509f52d93b6875d3a43a5a0
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する
 
@@ -55,6 +55,6 @@ ms.lasthandoff: 10/11/2017
 6. [Web サービスにアクセスする](walkthrough-6-access-web-service.md)
 
 > [!TIP] 
-> [Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com)には、このチュートリアルで開発する実験の作業用コピーがあります。 「**[Walkthrough - Credit risk prediction (チュートリアル - クレジット リスクの予測)](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)**」にアクセスし、**[Open in Studio (Studio で開く)]** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
+> [Azure AI ギャラリー](https://gallery.cortanaintelligence.com)には、このチュートリアルで開発する実験の作業コピーがあります。 「**[Walkthrough - Credit risk prediction (チュートリアル - クレジット リスクの予測)](https://gallery.cortanaintelligence.com/Experiment/Walkthrough-Credit-risk-prediction-1)**」にアクセスし、**[Open in Studio (Studio で開く)]** をクリックして Machine Learning Studio ワークスペースに実験のコピーをダウンロードしてください。
 > 
 > このチュートリアルは、[ギャラリー](http://gallery.cortanaintelligence.com/)にもある「[Binary Classfication: Credit risk prediction (二項分類: クレジット リスクの予測)](http://go.microsoft.com/fwlink/?LinkID=525270)」のサンプル実験の簡略版に基づいています。

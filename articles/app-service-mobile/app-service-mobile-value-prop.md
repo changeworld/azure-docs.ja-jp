@@ -3,7 +3,7 @@ title: "Azure App Service の Mobile Apps について"
 description: "App Service が企業のモバイル アプリにもたらす利点について説明します。"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
+author: conceptdev
 manager: yochayk
 editor: 
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: f0731237c9376d5f762eea1c7559bc6a70a2025d
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.author: crdun
+ms.openlocfilehash: b55d186aba49e91bab6814da2380a372f61f39cb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="getting-started"> </a>Azure App Service の Mobile Apps について
 Azure App Service は、プロの開発者のための完全に管理された[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 製品であり、 Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。 
@@ -65,7 +65,7 @@ Mobile Apps の機能を使ってできることを次に示します。
 
   [ステージング環境]の詳細を確認してください。
 
-* **継続的なデプロイ**: App Service は一般的なサプライ チェーン管理 (SCM) システムと統合できるため、バックエンドの新しいバージョンを SCM システムのブランチにプッシュすることで自動的にデプロイできます。
+* **継続的なデプロイ**: App Service は一般的なソース コントロール管理 (SCM) システムと統合できるため、バックエンドの新しいバージョンを SCM システムのブランチにプッシュすることで自動的にデプロイできます。
 
   [デプロイ オプション](../app-service/app-service-deploy-local-git.md)の詳細を確認してください。
 
@@ -77,7 +77,7 @@ Mobile Apps の機能を使ってできることを次に示します。
 
   [App Service 環境]の詳細を確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure App Service の Mobile Apps の使用を開始するには、[作業の開始]に関するチュートリアルに従ってください。 このチュートリアルでは、モバイル バックエンドと各種クライアントを作成する方法についての基礎を取り上げています。 また、認証、オフライン同期、プッシュ通知の統合についても取り上げています。 このチュートリアルは、クライアント アプリケーションごとに 1 回ずつ、複数回行うことができます。
 
