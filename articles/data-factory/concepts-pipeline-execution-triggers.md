@@ -11,28 +11,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/10/2017
+ms.date: 01/03/2018
 ms.author: shlo
-ms.openlocfilehash: c472cf080f8138ec6d0210f3ca4a8b3f3c33e7ae
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 88ae5dfbf6246ecf92d6528ad3d9a8e5fb57e4b0
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー 
+# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-scheduling-and-execution.md)
 > * [バージョン 2 - プレビュー](concepts-pipeline-execution-triggers.md)
 
-**パイプライン実行**は、パイプラインの実行のインスタンスを定義する Azure Data Factory バージョン 2 での用語です。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 ここでは、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。それぞれが特定のパイプライン実行を一意に定義する GUID です。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 パイプラインを実行する 2 つの方法があります。**手動で**行う方法と**トリガー**を介して行う方法です。 この記事では、パイプラインを実行する両方の方法の詳細について説明します。 
+**パイプライン実行**は、パイプラインの実行のインスタンスを定義する Azure Data Factory バージョン 2 での用語です。 たとえば、午前 8 時、午前 9 時、午前 10 時に実行するパイプラインがあるとします。 ここでは、パイプラインの 3 つの独立した実行 (パイプライン実行) があることになります。 各パイプライン実行には、一意のパイプライン実行 ID があります。それぞれが特定のパイプライン実行を一意に定義する GUID です。 パイプライン実行は、通常、パイプラインで定義されたパラメーターに引数を渡してインスタンス化されます。 パイプラインを実行する 2 つの方法があります。**手動で**行う方法と**トリガー**を介して行う方法です。 この記事では、パイプラインを実行する両方の方法の詳細について説明します。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory V1 でのスケジュールと実行](v1/data-factory-scheduling-and-execution.md)に関する記事をご覧ください。
 
 ## <a name="run-pipeline-on-demand"></a>オンデマンドでのパイプラインの実行
-この方式では、パイプラインを手動で実行します。 これはパイプラインのオンデマンド実行とも見なされます。 
+この方式では、パイプラインを手動で実行します。 これはパイプラインのオンデマンド実行とも見なされます。
 
-たとえば、**copyPipeline** という名前のパイプラインを実行するとします。 このパイプラインは、Azure Blob Storage 内のソース フォルダーから、同じストレージ内のコピー先フォルダーにコピーするアクティビティを伴う 1 つの単純なパイプラインです。 サンプル パイプラインの定義を次に示します。 
+たとえば、**copyPipeline** という名前のパイプラインを実行するとします。 このパイプラインは、Azure Blob Storage 内のソース フォルダーから、同じストレージ内のコピー先フォルダーにコピーするアクティビティを伴う 1 つの単純なパイプラインです。 サンプル パイプラインの定義を次に示します。
 
 ```json
 {
@@ -76,9 +76,9 @@ ms.lasthandoff: 12/07/2017
 }
 
 ```
-このパイプラインは、JSON 定義に示されている 2 つのパラメーター sourceBlobContainer と sinkBlobContainer を取ります。 実行時に、これらのパラメーターに値を渡します。 
+このパイプラインは、JSON 定義に示されている 2 つのパラメーター sourceBlobContainer と sinkBlobContainer を取ります。 実行時に、これらのパラメーターに値を渡します。
 
-パイプラインを手動で実行するには、次の方法のいずれかを使用できます。.NET、PowerShell、REST、Python です。 
+パイプラインを手動で実行するには、次の方法のいずれかを使用できます。.NET、PowerShell、REST、Python です。
 
 ### <a name="rest-api"></a>REST API
 サンプルの REST コマンドを次に示します。  
@@ -90,7 +90,7 @@ https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGrou
 完全なサンプルについては、「[Quickstart: create a data factory using REST API (クイック スタート: REST API を使用するデータ ファクトリの作成)](quickstart-create-data-factory-rest-api.md)」を参照してください。
 
 ### <a name="powershell"></a>PowerShell
-サンプルの PowerShell コマンドを次に示します。 
+サンプルの PowerShell コマンドを次に示します。
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPipeline" -ParameterFile .\PipelineParameters.json
@@ -116,8 +116,8 @@ Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickSt
 
 完全なサンプルについては、「[Quickstart: create a data factory using PowerShell (クイック スタート: PowerShell を使用するデータ ファクトリの作成)](quickstart-create-data-factory-powershell.md)」を参照してください。
 
-### <a name="net"></a>.NET 
-サンプルの .NET 呼び出しを次に示します。 
+### <a name="net"></a>.NET
+サンプルの .NET 呼び出しを次に示します。
 
 ```csharp
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
@@ -129,11 +129,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 > .NET API を使用すると、Azure Functions や、独自の Web サービスなどから、Data Factory パイプラインを呼び出すことができます。
 
 ## <a name="triggers"></a>トリガー
-トリガーは、パイプライン実行を行う 2 番目の方法を提供します。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現在、Data Factory は、実時間のスケジュールによってパイプラインを起動するトリガーをサポートしています。 それは**スケジューラ トリガー**と呼ばれます。 現在、Data Factory は、ファイル到着のイベント発生時のパイプライン実行のトリガーなど、イベント ベースのトリガーをサポートしていません。
+トリガーは、パイプライン実行を行う 2 番目の方法を提供します。 トリガーは、パイプラインの実行をいつ開始する必要があるかを決定する処理単位を表します。 現在、Data Factory では 2 種類のトリガーがサポートされています。1 つは、実時間のスケジュールでパイプラインを起動する**スケジューラ トリガー**で、もう 1 つは、状態を保持しながら定期的に実行される**タンブリング ウィンドウ トリガー**です。 現在、Data Factory は、ファイル到着のイベント発生時のパイプライン実行のトリガーなど、イベント ベースのトリガーをサポートしていません。
 
 パイプラインとトリガーには多対多の関係があります。 複数のトリガーで 1 つのパイプラインを開始したり、1 つのトリガーで複数のパイプラインを開始したりできます。 次のトリガーの JSON 定義では、**pipelines** プロパティは、特定のトリガーによってトリガーされるパイプラインのリストと、パイプライン パラメーターの値を参照します。
 
-### <a name="basic-trigger-definition"></a>基本的なトリガー定義: 
+### <a name="basic-trigger-definition"></a>基本的なトリガー定義:
 ```json
     "properties": {
         "name": "MyTrigger",
@@ -159,8 +159,14 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
     }
 ```
 
-## <a name="scheduler-trigger"></a>スケジューラ トリガー
-スケジューラ トリガーは、実時間のスケジュールでパイプラインを実行します。 このトリガーは、定期的、および高度な予定表のオプションをサポートしています (毎週、月曜日の午後 5 時と火曜日の午後 9 時)。 時系列データと非時系列データとを区別せず、データセット パターンに依存しないため、柔軟性があります。
+## <a name="schedule-trigger"></a>スケジュール トリガー
+スケジュール トリガーは、実時間のスケジュールでパイプラインを実行します。 このトリガーは、定期的、および高度な予定表のオプションをサポートしています (毎週、月曜日の午後 5 時と火曜日の午後 9 時)。 時系列データと非時系列データとを区別せず、データセット パターンに依存しないため、柔軟性があります。
+
+スケジュール トリガーに関する固有の情報と例について詳しくは、[スケジュール トリガーを作成する方法](how-to-create-schedule-trigger.md)に関するページを参照してください。
+
+## <a name="tumbling-window-trigger"></a>タンブリング ウィンドウ トリガー
+タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。
+タンブリング ウィンドウ トリガーに関する固有の情報と例について詳しくは、[タンブリング ウィンドウ トリガーを作成する方法](how-to-create-tumbling-window-trigger.md)に関するページを参照してください。
 
 ### <a name="scheduler-trigger-json-definition"></a>スケジューラ トリガー JSON 定義
 スケジューラ トリガーを作成するときには、このセクションの例に示されているように、JSON を使用してスケジュールと繰り返しを指定できます。 
@@ -174,7 +180,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
     "typeProperties": {
       "recurrence": {
         "frequency": <<Minute, Hour, Day, Week, Year>>,
-        "interval": <<int>>,             // optional, how often to fire (default to 1)
+        "interval": <<int>>,             // how often to fire
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
         "timeZone": "UTC"
@@ -218,7 +224,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="overview-scheduler-trigger-schema"></a>概要: スケジューラ トリガーのスキーマ
 次の表に、トリガーでの繰り返しとスケジュール設定に関連する主要な要素の概要を示します。
 
-JSON プロパティ |     説明
+JSON プロパティ |     [説明]
 ------------- | -------------
 startTime | startTime は、日付/時刻です。 単純なスケジュールでは、startTime は最初の発生日時です。 複雑なスケジュールでは、トリガーは startTime になるとすぐに起動します。
 endTime | トリガーの終了日付/時刻を指定します。 トリガーはこの時刻より後には実行されません。 過去の日時を endTime に指定するのは無効です。
@@ -228,6 +234,16 @@ frequency | トリガーが繰り返す頻度の単位を表します。 サポ�
 interval | interval は正の整数です。 トリガーを実行する頻度を決定する frequency の間隔を示します。 たとえば、interval が 3 で frequency が "week" の場合は、トリガーは 3 週間ごとに繰り返されます。
 schedule | トリガーに頻度を指定すると、繰り返しのスケジュールに基づいて、そのジョブの繰り返しを変更できます。 schedule には、分、時間、曜日、月の日、週番号に基づいた変更を指定します。
 
+
+## <a name="tumbling-window-trigger-vs-schedule-trigger"></a>タンブリング ウィンドウ トリガーとスケジュール トリガー
+タンブリング ウィンドウ トリガーとスケジュール トリガーの両方が時間のハートビートに対して動作するとして、両者にはどのような違いがあるのでしょうか。
+タンブリング ウィンドウ トリガーの場合:
+* **バックフィル シナリオ**: タンブリング ウィンドウ トリガーではバックフィル シナリオがサポートされており、過去のウィンドウで実行をスケジュールできます。 スケジュール トリガーは、現在から先の期間でのみ実行できます。
+* **信頼性**: タンブリング ウィンドウ トリガーでは、100% の信頼性で、開始日から隙間なくすべてのウィンドウでパイプライン実行がスケジュールされます。
+* **再試行**: タンブリング ウィンドウ トリガーには再試行機能が備わっています。 失敗したパイプライン実行には、0 の既定の再試行ポリシーか、トリガー定義の一環としてユーザーが指定した再試行ポリシーがあります。 さらに、同時実行/サーバー/調整の制限が原因で実行が失敗した場合に、自動的にインスタンスで再試行が行われます。これは例えば、状態コード 400 (ユーザー エラー)、429 (要求が多すぎます)、500 (内部サーバー エラー) などの場合です。
+* **同時実行**: タンブリング ウィンドウ トリガーでは、ユーザーがトリガーの同時実行の制限を明示的に設定できます (同時にトリガーされるパイプライン実行は 1 ～ 50 個)。
+* **ウィンドウの開始および終了の変数**: タンブリング ウィンドウ トリガーでは、ユーザーが、triggerOutputs().windowStartTime と triggerOutputs().windowEndTime をトリガー定義のトリガー システム変数として利用できます。これらはそれぞれ、ウィンドウの開始時刻と終了時刻になります。 たとえば、タンブリング ウィンドウ トリガーが 1 時間ごとに実行される場合、午前 1 時から午前 2 時のウィンドウでは triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z と triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z になります。
+* **パイプラインとトリガーの関係**: スケジュール トリガーとパイプラインの間には n:m の関係があります。 スケジュール トリガーは複数のパイプラインを開始することができます。 タンブリング ウィンドウ トリガーとパイプラインの間には 1:1 の関係があります。 タンブリング ウィンドウ トリガーが開始できるのは、1 つのパイプラインのみです。
 
 ### <a name="schedule-trigger-example"></a>スケジュール トリガーの例
 
@@ -267,11 +283,11 @@ schedule | トリガーに頻度を指定すると、繰り返しのスケジュ
 
 JSON での名前 | 値の型 | 必須 | 既定値 | 有効な値 | 例
 --------- | ---------- | --------- | ------------- | ------------ | -------
-startTime | String | はい | なし | ISO-8601 の日付/時刻 | ```"startTime" : "2013-01-09T09:30:00-08:00"```
-recurrence | オブジェクト | あり | なし | recurrence オブジェクト | ```"recurrence" : { "frequency" : "monthly", "interval" : 1 }```
-interval | Number | なし | 1 | 1 ～ 1000。 | ```"interval":10```
-endTime | String | はい | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"`
-schedule | オブジェクト | なし | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }`
+startTime | String | [はい] | なし | ISO-8601 の日付/時刻 | ```"startTime" : "2013-01-09T09:30:00-08:00"```
+recurrence | オブジェクト | [はい] | なし | recurrence オブジェクト | ```"recurrence" : { "frequency" : "monthly", "interval" : 1 }```
+interval | Number | [はい] | なし | 1 ～ 1000。 | ```"interval":10```
+endTime | String | [はい] | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"`
+schedule | オブジェクト | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }`
 
 ### <a name="deep-dive-starttime"></a>詳細情報: startTime
 次の表では、startTime による、トリガーの実行の制御方法を説明しています。
@@ -299,13 +315,13 @@ schedule の要素を複数指定した場合は、評価の順序は大きい�
 schedule の要素を次の表に詳しく示します。
 
 
-JSON での名前 | 説明 | 有効な値
+JSON での名前 | [説明] | 有効な値
 --------- | ----------- | ------------
-minutes | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
-hours | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul>
-weekDays | トリガーを実行する曜日。 週単位の頻度だけを指定できます。 | <ul><li>Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday</li><li>任意の値の配列 (最大配列サイズは 7)</li></p>大文字/小文字は区別されません</p>
+minutes | トリガーを実行する時刻 (分)。 | <ul><li>整数の配列</li></ul>
+hours | トリガーを実行する時刻 (時)。 | <ul><li>整数の配列</li></ul>
+weekDays | トリガーを実行する曜日。 週単位の頻度だけを指定できます。 | <ul><li>以下の任意の値の配列 (最大配列サイズは 7)<ul><li>月曜日</li><li>火曜日</li><li>水曜日</li><li>木曜日</li><li>金曜日</li><li>土曜日</li><li>土曜日</li></ul></li></p>大文字/小文字は区別されません</p>
 monthlyOccurrences | トリガーを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 | monthlyOccurence オブジェクトの配列: `{ "day": day,  "occurrence": occurence }`。 <p> day はトリガーを実行する曜日です。たとえば、`{Sunday}` は、月の毎週日曜日という意味です。 必須。<p>occurrence は、月の第何週に実行するかを表します。たとえば、`{Sunday, -1}` は月の最終日曜日という意味です。 省略可能。
-monthDays | トリガーが実行される月の日にち。 月単位の頻度だけを指定できます。 | <ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li><li>値の配列。</li>
+monthDays | トリガーが実行される月の日にち。 月単位の頻度だけを指定できます。 | <ul><li>以下の値の配列</li><ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li></ul></ul> |
 
 
 ## <a name="examples-recurrence-schedules"></a>例: 繰り返しのスケジュール
@@ -313,7 +329,7 @@ monthDays | トリガーが実行される月の日にち。 月単位の頻度�
 
 スケジュール例では、間隔が 1 に設定されていると仮定します。 また、schedule の値に合った適切な頻度が指定されていると仮定します。たとえば、frequency に "day" を使用し、schedule に "monthDays" の変更を指定することはできません。 これらの制限は、前のセクションの表で説明されています。 
 
-例 | 説明
+例 | [説明]
 ------- | -----------
 `{"hours":[5]}` | 毎日午前 5 時に実行
 `{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行
@@ -345,7 +361,9 @@ monthDays | トリガーが実行される月の日にち。 月単位の頻度�
 
 
 
-## <a name="next-steps"></a>次のステップ
-次のチュートリアルを参照してください。 
+## <a name="next-steps"></a>次の手順
+次のチュートリアルを参照してください。
 
 - [Quickstart: create a data factory using .NET (クイック スタート: .NET を使用してデータ ファクトリを作成する)](quickstart-create-data-factory-dot-net.md)
+- [スケジュール トリガーを作成する方法](how-to-create-schedule-trigger.md)
+- [タンブリング ウィンドウ トリガーを作成する方法](how-to-create-tumbling-window-trigger.md)
