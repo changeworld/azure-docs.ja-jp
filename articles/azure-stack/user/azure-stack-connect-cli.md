@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: mabrigg
-ms.openlocfilehash: 5d15815e9b1d20ab03b5716de45ad0fa77a11057
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 3ca71abb1b84f619cfafbf4c25b0c0cb95430858
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Azure Stack で使用する CLI をインストールして構成する
 
@@ -76,7 +76,7 @@ $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().
 $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
 $sha1Entry    = [string]::Format("# SHA1 Finterprint: {0}", $sha1Hash)
 $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
-$certText = (Get-Content -Path root.pem -Raw).ToString().Replace("`r`n","`n")
+$certText = (Get-Content -Path $pemFile -Raw).ToString().Replace("`r`n","`n")
 
 $rootCertEntry = "`n" + $issuerEntry + "`n" + $subjectEntry + "`n" + $labelEntry + "`n" + `
 $serialEntry + "`n" + $md5Entry + "`n" + $sha1Entry + "`n" + $sha256Entry + "`n" + $certText
@@ -98,7 +98,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 1. `az cloud register` コマンドを実行して、Azure Stack 環境を登録します。
    
-   a. *クラウド管理*環境を登録するには、次のコマンドを使用します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 *クラウド管理*環境を登録するには、次のコマンドを使用します。
 
       ```azurecli
       az cloud register \ 
@@ -124,7 +124,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 2. 次のコマンドを使用して、アクティブな環境を設定します。
 
-   a. *クラウド管理*環境の場合は、次のコマンドを使用します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 *クラウド管理*環境の場合は、次のコマンドを使用します。
 
       ```azurecli
       az cloud set \
@@ -190,7 +190,7 @@ Azure Stack で CLI を使うときに注意する必要がある既知の問題
 * 既定で、CLI 2.0 は、既定の仮想マシン イメージのサイズとして "Standard_DS1_v2" を使用します。 ただし、このサイズはまだ Azure Stack で使用できないため、仮想マシンを作成するときに `--size` パラメーターを明示的に指定する必要があります。 Azure Stack で使用できる仮想マシンのサイズの一覧を取得するには、`az vm list-sizes --location <locationName>` コマンドを使用します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 

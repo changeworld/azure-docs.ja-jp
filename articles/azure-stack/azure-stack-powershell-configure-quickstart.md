@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: mabrigg
-ms.openlocfilehash: 0a85fc78d31c58ee83721d7dccbcdf46f98b3ddd
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: ca61562607da274f0e0c7f504d1a24723210f2f7
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Azure Stack での PowerShell を使用した準備と実行
 
@@ -49,7 +49,7 @@ Set-ExecutionPolicy RemoteSigned `
   -force
 
 # Uninstall any existing Azure PowerShell modules. To uninstall, close all the active PowerShell sessions, and then run the following command:
-Get-Module -ListAvailable | `
+Get-Module -ListAvailable -Name Azure* | `
   Uninstall-Module
 
 # Install PowerShell for Azure Stack.
@@ -182,7 +182,7 @@ New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 
 リソース グループが作成されると、**[Provisioning state]\(プロビジョニング状態\)** プロパティは **[Succeeded]\(成功\)** に設定されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [CLI のインストールと構成](azure-stack-connect-cli.md)
 
