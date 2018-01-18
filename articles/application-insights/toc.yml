@@ -131,7 +131,7 @@
               href: app-insights-java-agent.md
             - name: テレメトリのフィルター処理
               href: app-insights-java-filter-telemetry.md
-        - name: 警告
+        - name: アラート
           items:
             - name: 可用性
               href: app-insights-monitor-web-app-availability.md
@@ -194,9 +194,9 @@
               href: app-insights-usage-retention.md
             - name: ユーザー フロー
               href: app-insights-usage-flows.md
-            - name: ブック
+            - name: Workbooks
               href: app-insights-usage-workbooks.md
-        - name: 分析
+        - name: '[分析]'
           items:
             - name: 概要
               href: app-insights-analytics.md
@@ -226,7 +226,7 @@
           href: app-insights-api-filtering-sampling.md
         - name: サンプリング
           href: app-insights-sampling.md
-    - name: 管理
+    - name: '[管理]'
       items:
         - name: 価格とデータ ボリュームの管理
           href: app-insights-pricing.md
@@ -261,15 +261,17 @@
           href: app-insights-asp-net-troubleshoot-no-data.md
         - name: スナップショット デバッガー
           href: app-insights-troubleshoot-snapshot-debugger.md
-        - name: 分析
+        - name: '[分析]'
           href: app-insights-analytics-troubleshooting.md
         - name: Java
           href: app-insights-java-troubleshoot.md
+        - name: Usage analytics
+          href: app-insights-usage-troubleshoot.md
 - name: サンプル
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=application-insights&sort=0'
-- name: 参照
+- name: リファレンス
   items:
     - name: Analytics クエリ言語
       href: 'https://docs.loganalytics.io/'
@@ -292,7 +294,7 @@
           href: application-insights-data-model-exception-telemetry.md
         - name: Trace
           href: application-insights-data-model-trace-telemetry.md
-        - name: イベント
+        - name: Event
           href: application-insights-data-model-event-telemetry.md
         - name: メトリック
           href: application-insights-data-model-metric-telemetry.md
@@ -324,7 +326,7 @@
           href: app-insights-release-notes-vsix.md
     - name: FAQ
       href: app-insights-troubleshoot-faq.md
-    - name: ヘルプ
+    - name: '[ヘルプ]'
       items:
         - name: MSDN フォーラム
           href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=ApplicationInsights'

@@ -235,8 +235,6 @@
               items:
                 - name: SQL の文法チート シート
                   href: sql-api-sql-query-cheat-sheet.md
-                - name: スタック オーバーフロー
-                  href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
                 - name: ビデオ
                   href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: サービスの更新情報
@@ -382,7 +380,7 @@
           href: odbc-driver.md
         - name: SQL API で Spring Boot Starter を使用する
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
-- name: 参照
+- name: リファレンス
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
@@ -430,7 +428,5 @@
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
     - name: FAQ
       href: faq.md
-    - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
     - name: 野球で説明するデータ整合性
       href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'

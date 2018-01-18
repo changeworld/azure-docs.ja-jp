@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 639776ddebf59ce3ae7596240b6f17f0b490afdd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 33dc234d4d0ca3ec58e069a928a30bcd8ec41e6d
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの監査アクティビティ レポート 
 
@@ -117,9 +117,9 @@ Azure Active Directory の監査ログは、コンプライアンスのために
 - Directory
 - User
 - アプリケーション
-- [ポリシー]
+- ポリシー
 - デバイス
-- 他の
+- その他
 
 **[アクティビティのリソースの種類]** として **[グループ]** が選択されている場合、次の**ソース**も指定できる追加のフィルター カテゴリが示されます。
 
@@ -182,7 +182,7 @@ Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?
 ![監査ログ](./media/active-directory-reporting-activity-audit-logs/25.png "監査ログ")
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 レポートの概要については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」を参照してください。
 

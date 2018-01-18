@@ -14,6 +14,7 @@
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp"></a>SSTP をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
 
+
 いいえ。 上記のバージョンの Windows オペレーティング システムのみがサポートされています。
 
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。

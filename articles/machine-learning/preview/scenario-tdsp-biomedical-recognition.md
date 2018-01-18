@@ -7,6 +7,7 @@ author: bradsev
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 21f8f66d8b78c2b536792bc96e9233d5739fde81
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 7de3a30e477fcec66ce703b6c3fec7d17d79d3ab
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Team Data Science Process (TDSP) テンプレートを使った生体エンティティ認識
 
@@ -76,7 +77,7 @@ ms.lasthandoff: 10/23/2017
         pubdate: Publication date
         title
 
-### <a name="2-lstm-model-training-data"></a>手順 2.LSTM モデルのトレーニング データ
+### <a name="2-lstm-model-training-data"></a>2.LSTM モデルのトレーニング データ
 
 ニューラル エンティティ抽出モデルは、一般公開されているデータセットでトレーニングおよび評価されています。 これらのデータセットに関する詳しい説明については、次のソースを参照してください。
  * [Bio-Entity Recognition Task at BioNLP/NLPBA 2004](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)
@@ -121,7 +122,7 @@ ms.lasthandoff: 10/23/2017
 * [Jupyter Notebook の使用方法](how-to-use-jupyter-notebooks.md)
 * [GPU の使用方法](how-to-use-gpu.md)
 
-## <a name="scenario-structure"></a>シナリオの構成
+## <a name="scenario-structure"></a>シナリオの構造
 このシナリオでは、TDSP プロジェクト構造とドキュメント テンプレート (図 1) を使用します。これは、[TDSP のライフサイクル](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md)に従ったものです。 プロジェクトは、[こちら](./how-to-use-tdsp-in-azure-ml.md)の手順を基に作成されています。
 
 
@@ -250,7 +251,7 @@ Vanilla RNN では、以前に見たすべての情報を利用することが�
 CNTK は、エポックあたりのトレーニング時間 (CNTK は 60 秒、Tensorflow は 75 秒) と検出したテスト エンティティの数において、Tensorflow と同等のパフォーマンスを記録しました。 評価のため、ここでは一方向の層を使用しています。
 
 
-### <a name="3-deployment"></a>3.デプロイ
+### <a name="3-deployment"></a>手順 3.デプロイ
 
 「[デプロイ](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/03_deployment)」を参照してください。
 
