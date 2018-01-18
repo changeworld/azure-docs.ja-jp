@@ -35,6 +35,7 @@
 ### [Web Apps でのデータ視覚化](iot-hub-live-data-visualization-in-web-apps.md)
 ### [Azure Machine Learning を使用した天気予報](iot-hub-weather-forecast-machine-learning.md)
 ### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
+### [Azure CLI 2.0 の IoT 拡張機能を使用したデバイス管理](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [Logic Apps を使用したリモートの監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 
 # ハウツー ガイド
@@ -73,7 +74,7 @@
 ### メッセージのルーティング
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.js](iot-hub-node-node-process-d2c.md)
+#### [Node.JS](iot-hub-node-node-process-d2c.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
@@ -81,7 +82,7 @@
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
-#### [Node.js](iot-hub-node-node-file-upload.md)
+#### [Node.JS](iot-hub-node-node-file-upload.md)
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)

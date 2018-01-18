@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
+ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: c9e0441ec42e5710f43bbe7fa8af4a9fe7447a69
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 0ac6226b1e5773b1212b70172e2c13a0a5c925a8
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Azure IoT Suite とは
 
@@ -62,7 +62,7 @@ Azure IoT Suite は一連の "*構成済みソリューション*" で、次の�
 | ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
 | [リモート監視](iot-suite-remote-monitoring-explore.md)  |[はい] |[はい] |[はい] |-   |[はい] |[はい] |-   |
 | [予測的なメンテナンス](iot-suite-predictive-overview.md)   |[はい] |[はい] |-   |-   |[はい] |[はい] |[はい] |
-| [コネクテッド ファクトリ](iot-suite-connected-factory-overview.md) |[はい] |[はい] |[はい] |[はい] |[はい] |[はい] |-   |
+| [コネクテッド ファクトリ](iot-suite-connected-factory-overview.md) |[はい] |- |- |[はい] |[はい] |[はい] |-   |
 
 * *データの取り込み*: クラウドへの大規模なデータの取り込み。
 * "*デバイス ID*": 一意のデバイス ID を管理し、ソリューションへのデバイス アクセスを制御します。
@@ -83,11 +83,11 @@ Azure IoT Suite は一連の "*構成済みソリューション*" で、次の�
 | IoT Hub              | [はい]                |                        | [はい]               |
 | Event Hubs           |                    | [はい]                    |                   |
 | Time Series Insights |                    |                        | [はい]               |
-| コンテナー サービス   | [はい]                |                        | [はい]               |
+| コンテナー サービス   | [はい]                |                        |                   |
 | Stream Analytics     |                    | [はい]                    |                   |
 | Web Apps             | [はい]                | [はい]                    | [はい]               |
-| Cosmos DB            | [はい]                | [はい]                    | [はい]               |
-| Azure テーブル         |                    | [はい]                    | [はい]               |
+| Cosmos DB            | [はい]                | [はい]                    |                    |
+| Azure Storage         |                    | [はい]                    | [はい]               |
 
 > [!NOTE]
 > リモート監視構成済みソリューションにデプロイされたリソースの詳細については、こちらの GitHub [記事](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments)を参照してください。

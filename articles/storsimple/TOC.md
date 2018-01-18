@@ -202,7 +202,7 @@
 ### [StorSimple 用 Windows PowerShell のコマンドレット](https://technet.microsoft.com/library/dn688168.aspx)
 
 
-# StorSimple Data Manager (プライベート プレビュー)
+# StorSimple Data Manager
 
 ## 概要
 ### [ソリューションとは](storsimple-data-manager-overview.md)

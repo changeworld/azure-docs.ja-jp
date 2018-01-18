@@ -54,7 +54,10 @@
 ### [.NET での開発](search-howto-dotnet-sdk.md)
 ### [Node.js での開発](search-get-started-nodejs.md)
 ### [Java での開発](search-get-started-java.md)
-### [SDK をアップグレードする](search-dotnet-sdk-migration.md)
+### SDK をアップグレードする
+#### [.NET SDK 3.0](search-dotnet-sdk-migration.md)
+#### [.NET SDK 1.1](search-dotnet-sdk-migration-version-1.md)
+#### [.NET 管理 SDK](search-dotnet-mgmt-sdk-migration.md)
 ### [REST API をアップグレードする](search-api-migration.md)
 ### [複合データ型をモデル化する](search-howto-complex-data-types.md)
 ### [同時更新を処理する](search-howto-concurrency.md)
@@ -94,7 +97,7 @@
 ### [使用状況と統計情報の監視](search-monitor-usage.md)
 ### [検索トラフィックの分析](search-traffic-analytics.md)
 
-# 参照
+# リファレンス
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (管理)](/dotnet/api/?term=microsoft.azure.management.search)

@@ -95,6 +95,9 @@
         - name: Kafka を使った構造化ストリーミング
           href: ../hdinsight-apache-kafka-spark-structured-streaming.md
           maintainContext: true
+        - name: Kafka から CosmosDB への構造化ストリーミング
+          href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
+          maintainContext: true
         - name: Kafka を使った Spark ストリーミング (DStream)
           href: ../hdinsight-apache-spark-with-kafka.md
           maintainContext: true
@@ -363,7 +366,7 @@
         - name: クラスター パフォーマンスの監視
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: 参照
+- name: リファレンス
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

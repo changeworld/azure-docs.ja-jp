@@ -13,7 +13,7 @@
       href: quick-backup-vm-powershell.md
     - name: VM のバックアップ - CLI
       href: quick-backup-vm-cli.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: Azure VM の大規模なバックアップ
       href: tutorial-backup-vm-at-scale.md
@@ -83,7 +83,7 @@
       items:
         - name: VM を準備する
           items:
-            - name: Resource Manager によりデプロイされた仮想マシンの準備
+            - name: Resource Manager でデプロイされた VM の準備
               href: backup-azure-arm-vms-prepare.md
             - name: Linux VM のアプリケーション整合性バックアップ
               href: backup-azure-linux-app-consistent.md
@@ -93,23 +93,23 @@
               href: backup-azure-vms-introduction.md
         - name: VM をバックアップする
           items:
-            - name: Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
+            - name: Recovery Services コンテナーへの Azure VM のバックアップ
               href: backup-azure-arm-vms.md
-            - name: 暗号化された仮想マシンのバックアップ
+            - name: 暗号化された VM のバックアップ
               href: backup-azure-vms-encryption.md
         - name: VM の管理と監視
           items:
             - name: Azure Portal での Azure VM のバックアップの管理
               href: backup-azure-manage-vms.md
-            - name: Azure Portal での Azure VM のバックアップに関するアラートの監視
+            - name: Azure VM のバックアップに関するアラートの監視
               href: backup-azure-monitor-vms.md
         - name: VM からのデータの復元
           items:
             - name: Azure VM のバックアップからのファイルの回復
               href: backup-azure-restore-files-from-vm.md
-            - name: Resource Manager でデプロイされた VM の Azure Portal での復元
+            - name: Azure Portal での VM の復元
               href: backup-azure-arm-restore-vms.md
-            - name: 暗号化された仮想マシンの復元
+            - name: 暗号化された VM の復元
               href: backup-azure-vms-encryption.md
             - name: 暗号化された VM の Key Vault のキーとシークレットの復元
               href: backup-azure-restore-key-secret.md
@@ -125,7 +125,7 @@
       items:
         - name: Azure Portal での DPM ワークロードの準備
           href: backup-azure-dpm-introduction.md
-        - name: System Center DPM を使った Exchange サーバーのバックアップ
+        - name: DPM を使った Exchange Server のバックアップ
           href: backup-azure-backup-exchange-server.md
         - name: 別の DPM サーバーへのデータ復旧
           href: backup-azure-alternate-dpm-server.md
@@ -141,7 +141,7 @@
           href: backup-dpm-automation.md
         - name: Azure Portal での Windows Server
           href: backup-client-automation.md
-    - name: Azure SQL Database
+    - name: の接続文字列
       items:
         - name: 長期のバックアップ リテンション期間の構成
           href: ../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json

@@ -29,6 +29,10 @@
       href: tutorial-kubernetes-monitor.md
     - name: 8 - クラスターをアップグレードする
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: 概念
+  items:
+    - name: クォータと地域の制限
+      href: container-service-quotas.md
 - name: ハウツー ガイド
   items:
     - name: AKS クラスターのスケーリング
@@ -49,11 +53,13 @@
       href: kubernetes-service-principal.md
     - name: データ ボリュームの構成
       items:
+        - name: Azure ディスク - 永続的なボリューム
+          href: azure-disks-dynamic-pv.md
         - name: Azure Files - 永続的なボリューム
           href: azure-files-dynamic-pv.md
         - name: Azure Files - ボリューム
           href: azure-files.md
-- name: 参照
+- name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/aks

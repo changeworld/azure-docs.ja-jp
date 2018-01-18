@@ -8,7 +8,7 @@
 ## [最新情報](whats-new.md)
 
 
-# 作業の開始
+# 作業開始
 ## [Azure AD を使ってみる](get-started-azure-ad.md)
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
 ## [カスタム ドメイン名の追加](add-custom-domain.md)
@@ -109,7 +109,7 @@
 #### [名前付きの場所の構成](active-directory-named-locations.md)
 #### [アクティビティ レポートの検出](active-directory-reporting-migration.md)
 #### [Azure Active Directory Power BI コンテンツ パックの使用](active-directory-reporting-power-bi-content-pack-how-to.md)
-### 参照
+### リファレンス
 #### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 #### [Notifications](active-directory-reporting-notifications.md)
@@ -178,7 +178,7 @@
 
 
 ### [アプリ プロキシを使用してリモートでアプリにアクセスする](active-directory-application-proxy-get-started.md)
-#### 作業の開始
+#### 作業開始
 ##### [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
 ##### [アプリを発行する](application-proxy-publish-azure-portal.md)
 ##### [カスタム ドメイン](active-directory-application-proxy-custom-domains.md)
@@ -284,10 +284,11 @@
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
 #### [場所の条件](active-directory-conditional-access-locations.md)
-#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
+#### [What if ツール](active-directory-conditional-access-whatif.md)
 #### タスク
 ##### [クラシック MFA ポリシーの移行](active-directory-conditional-access-migration-mfa.md)
 ##### [デバイスベースの条件付きアクセスの設定](active-directory-conditional-access-policy-connected-applications.md)
@@ -305,7 +306,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
+#### [作業の開始](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)
@@ -344,7 +345,7 @@
 ### [PoC プレイブック: 構成要素](active-directory-playbook-building-blocks.md)
 
 
-# 参照
+# リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Azure PowerShell コマンドレット](/powershell/azure/overview)
 ## [Java API リファレンス](/java/api)

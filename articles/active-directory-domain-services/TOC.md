@@ -44,7 +44,12 @@
 ## トラブルシューティング
 ### [FAQ](active-directory-ds-faqs.md)
 ### [トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)
+### [アラートのトラブルシューティング](active-directory-ds-troubleshoot-alerts.md)
+#### [壊れた NSG 構成の修正](active-directory-ds-troubleshoot-nsg.md)
+#### [不足しているサービス プリンシパルの復元](active-directory-ds-troubleshoot-service-principals.md)
+#### [Secure LDAP のエラー](active-directory-ds-troubleshoot-ldaps.md)
 ### [一致しないテナントのエラーを解決する](active-directory-ds-mismatched-tenant-error.md)
+
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
