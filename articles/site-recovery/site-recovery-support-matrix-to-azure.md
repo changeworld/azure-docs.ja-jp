@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: 0302b4f8f4171d288a7e7c62de036c6f1cec8212
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 98f3b1fe5a0f1d7518e8f0ef6f2a478f59559139
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>オンプレミスから Azure へのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
@@ -33,9 +33,9 @@ ms.lasthandoff: 11/22/2017
 
 **デプロイ** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)** |
 --- | --- | ---
-**Azure Portal** | Azure Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの VMware VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。 | Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。
+**Azure ポータル** | Azure Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの VMware VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。 | Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。
 **クラシック ポータル** | メンテナンス モードのみ。 新しい資格情報コンテナーを作成することはできません。 | メンテナンス モードのみ。
-**PowerShell** | 現在、サポートされていません。 | サポートされています
+**PowerShell** | サポートされています | サポートされています
 
 
 ## <a name="support-for-datacenter-management-servers"></a>データセンター管理サーバーのサポート
@@ -68,30 +68,30 @@ ms.lasthandoff: 11/22/2017
 
  **VMware/物理サーバー** | **Hyper-V (VMM あり/なし)** |
 --- | --- |
-64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)\*、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3 <br/><br/>CentOS : 5.2 から 5.11、6.1 から 6.9、7.0 から 7.3 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(レプリケートするマシンの SLES 11 SP3 から SLES 11 SP4 へのアップグレードはサポートされていません。 レプリケートされるマシンが SLES 11SP3 から SLES 11 SP4 にアップグレードされた場合は、アップグレード後にレプリケーションを無効にし、再度マシンを保護する必要があります。) | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS
+64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)\*、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.4<br/><br/>CentOS: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.4 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(レプリケートするマシンの SLES 11 SP3 から SLES 11 SP4 へのアップグレードはサポートされていません。 レプリケートされるマシンが SLES 11SP3 から SLES 11 SP4 にアップグレードされた場合は、アップグレード後にレプリケーションを無効にし、再度マシンを保護する必要があります。) | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS
 
 >[!NOTE]
 >
 > \* Windows Server 2016 の Nano Server はサポートされていません。
-
->[!IMPORTANT]
->(Azure にレプリケートする VMware/物理サーバーに適用されます)
 >
-> Red Hat Enterprise Linux Server 7 以降および CentOS 7 以降のサーバーでは、Azure Site Recovery モビリティ サービスのバージョン 9.8 以降、カーネル バージョン 3.10.0-514 がサポートされます。<br/><br/>
-> モビリティ サービスのバージョンが 9.8 より前の 3.10.0-514 カーネルのお客様は、レプリケーションを無効にし、モビリティ サービスのバージョンを 9.8 に更新してから、再度レプリケーションを有効にする必要があります。
+> Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。
+>
+> Azure Site Recovery で保護された VMware 仮想マシンまたは物理サーバーでの Linux ディストリビューションのメジャー バージョン間のアップグレードは、サポートされていません。 オペレーティング システムのメジャー バージョン間のアップグレード (例: CentOS 6.* から CentOS 7.*) を行うときは、マシンのレプリケーションを無効にして、マシンでオペレーティング システムをアップグレードした後、再度レプリケーションを有効にします。
+> 
 
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>VMware/物理サーバー用のサポートされる Ubuntu カーネル バージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-14.04 LTS | 9.9 | 3.13.0-24-generic ～ 3.13.0-117-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-75-generic |
 14.04 LTS | 9.10 | 3.13.0-24-generic ～ 3.13.0-121-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-generic ～ 3.13.0-128-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-91-generic、 |
 14.04 LTS | 9.12 | 3.13.0-24-generic ～ 3.13.0-132-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-96-generic |
+14.04 LTS | 9.13 | 3.13.0-24-generic ～ 3.13.0-137-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-104-generic |
 16.04 LTS | 9.10 | 4.4.0-21-generic ～ 4.4.0-81-generic、<br/>4.8.0-34-generic ～ 4.8.0-56-generic、<br/>4.10.0-14-generic ～ 4.10.0-24-generic |
 16.04 LTS | 9.11 | 4.4.0-21-generic ～ 4.4.0-91-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-32-generic |
 16.04 LTS | 9.12 | 4.4.0-21-generic ～ 4.4.0-96-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-35-generic |
+16.04 LTS | 9.13 | 4.4.0-21-generic ～ 4.4.0-104-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Linux (VMware/物理サーバー) でサポートされるファイル システムおよびゲスト ストレージ構成
 
@@ -105,8 +105,7 @@ VMware または物理サーバーで実行される Linux サーバーでは、
 HP CCISS ストレージ コントローラーを使用する物理サーバーはサポートされていません。<br/>
 
 >[!Note]
-> Linux サーバーでは、/ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じディスク (OS ディスク) 上に存在する必要があります。<br/><br/>
-> メタデータ チェックサムなど、XFS ファイル システム上の XFSv5 機能は、モビリティ サービスのバージョン 9.10 以降でサポートされます。 XFSv5 機能を使用している場合は、モビリティ サービスのバージョン 9.10 以降を実行していることを確認してください。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 ftype が 1 に設定されている場合は、XFSv5 の機能が使用されています。
+> Linux サーバーでは、/ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じディスク (OS ディスク) 上に存在する必要があります。また、/boot は、ディスク パーティション上に存在する必要があり、LVM ボリュームであってはなりません。<br/><br/>
 >
 
 
@@ -117,35 +116,35 @@ HP CCISS ストレージ コントローラーを使用する物理サーバー�
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---
-NIC チーミング | あり<br/><br/>物理マシンがレプリケートされている場合はサポートされません| あり
-VLAN | あり | あり
-IPv4 | はい | はい
-IPv6 | なし | なし
+NIC チーミング | [はい]<br/><br/>物理マシンがレプリケートされている場合はサポートされません| [はい]
+VLAN | [はい] | [はい]
+IPv4 | [はい] | [はい]
+IPv6 | いいえ  | いいえ 
 
 ### <a name="guest-vm-network-configuration"></a>ゲスト VM のネットワーク構成
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---
-NIC チーミング | なし | なし
-IPv4 | はい | はい
-IPv6 | なし | なし
-静的 IP (Windows) | あり | あり
-静的 IP (Linux) | あり <br/><br/>フェールバックで DHCP を使用するように仮想マシンが構成されます  | いいえ
-マルチ NIC | はい | はい
+NIC チーミング | いいえ  | いいえ 
+IPv4 | [はい] | [はい]
+IPv6 | いいえ  | いいえ 
+静的 IP (Windows) | [はい] | [はい]
+静的 IP (Linux) | [はい] <br/><br/>フェールバックで DHCP を使用するように仮想マシンが構成されます  | いいえ 
+マルチ NIC | [はい] | [はい]
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>フェールオーバーされる Azure VM のネットワーク構成
 
 **Azure のネットワーク** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---
-ExpressRoute | あり | あり
-ILB | はい | はい
-ELB | はい | はい
-Traffic Manager | はい | はい
-マルチ NIC | はい | はい
-予約済み IP | あり | あり
-IPv4 | はい | はい
-発信元アドレスを保持 | あり | あり
-Virtual Networks のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク) | いいえ | いいえ
+ExpressRoute | [はい] | [はい]
+ILB | [はい] | [はい]
+ELB | [はい] | [はい]
+Traffic Manager | [はい] | [はい]
+マルチ NIC | [はい] | [はい]
+予約済み IP | [はい] | [はい]
+IPv4 | [はい] | [はい]
+発信元アドレスを保持 | [はい] | [はい]
+Virtual Networks のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク) | いいえ  | いいえ 
 
 
 ## <a name="support-for-storage"></a>ストレージのサポート
@@ -155,54 +154,55 @@ Virtual Networks のサービス エンドポイント (Azure Storage ファイ�
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | --- | ---
-NFS | VMware = はい<br/><br/> 物理サーバー = いいえ | 該当なし
-SMB 3.0 | 該当なし | はい
-SAN (ISCSI) | あり | はい
-マルチパス (MPIO)<br></br>テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | はい | はい
+NFS | VMware = はい<br/><br/> 物理サーバー = いいえ | N/A
+SMB 3.0 | N/A | [はい]
+SAN (ISCSI) | [はい] | [はい]
+マルチパス (MPIO)<br></br>テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | [はい] | [はい]
 
 ### <a name="guest-or-physical-server-storage-configuration"></a>ゲストまたは物理サーバーのストレージ構成
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---
-VMDK | はい | 該当なし
-VHD/VHDX | 該当なし | はい
-第 2 世代 VM | 該当なし | はい
-EFI/UEFI| なし | はい
-共有クラスター ディスク | いいえ | なし
-暗号化されたディスク | いいえ | なし
-NFS | なし | 該当なし
-SMB 3.0 | なし | なし
-RDM | はい<br/><br/> 物理サーバー = 該当なし | 該当なし
-1 TB より大きいディスク | あり<br/><br/>最大 4095 GB | あり<br/><br/>最大 4095 GB
-4K 論理および 4K 物理セクター サイズのディスク | あり | Generation 1 VM の場合はサポートされません<br/><br/>Generation 2 VM の場合はサポートされません
-4K 論理および 512 バイトの物理セクター サイズのディスク | あり |  あり
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM 論理ボリュームの管理 | はい | はい
-記憶域 | なし | あり
-ディスクのホット アド/削除 | なし | いいえ
-ディスクの除外 | はい | はい
-マルチパス (MPIO) | 該当なし | はい
+VMDK | [はい] | N/A
+VHD/VHDX | N/A | [はい]
+第 2 世代 VM | N/A | [はい]
+EFI/UEFI| いいえ  | [はい]
+共有クラスター ディスク | いいえ  | いいえ 
+暗号化されたディスク | いいえ  | いいえ 
+NFS | いいえ  | N/A
+SMB 3.0 | いいえ  | いいえ 
+RDM | [はい]<br/><br/> 物理サーバー = 該当なし | N/A
+1 TB より大きいディスク | [はい]<br/><br/>最大 4095 GB | [はい]<br/><br/>最大 4095 GB
+4K 論理および 4K 物理セクター サイズのディスク | [はい] | Generation 1 VM の場合はサポートされません<br/><br/>Generation 2 VM の場合はサポートされません
+4K 論理および 512 バイトの物理セクター サイズのディスク | [はい] |  [はい]
+ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM 論理ボリュームの管理 | [はい] | [はい]
+記憶域 | いいえ  | [はい]
+ディスクのホット アド/削除 | いいえ  | いいえ 
+ディスクの除外 | [はい] | [はい]
+マルチパス (MPIO) | N/A | [はい]
 
 **Azure Storage** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---
-LRS | はい | はい
-GRS | はい | はい
-RA-GRS | はい | はい
-クール ストレージ | なし | なし
-ホット ストレージ| なし | いいえ
-ブロック BLOB | いいえ | なし
-保存時の暗号化 (SSE)| はい | はい
-Premium Storage | はい | はい
-インポート/エクスポート サービス | なし | いいえ
-レプリケーション データの格納に使用するターゲット ストレージ アカウントまたはキャッシュ ストレージ アカウントで構成された Virtual Network のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク) | いいえ | いいえ
+LRS | [はい] | [はい]
+GRS | [はい] | [はい]
+RA-GRS | [はい] | [はい]
+クール ストレージ | いいえ  | いいえ 
+ホット ストレージ| いいえ  | いいえ 
+ブロック BLOB | いいえ  | いいえ 
+保存時の暗号化 (SSE)| [はい] | [はい]
+Premium Storage | [はい] | [はい]
+インポート/エクスポート サービス | いいえ  | いいえ 
+レプリケーション データの格納に使用するターゲット ストレージ アカウントまたはキャッシュ ストレージ アカウントで構成された Virtual Network のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク) | いいえ  | いいえ 
+汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ  | いいえ 
 
 
 ## <a name="support-for-azure-compute-configuration"></a>Azure コンピューティング構成のサポート
 
 **コンピューティング機能** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---
-可用性セット | はい | はい
-ハブ | あり | あり  
-管理ディスク | あり | あり<br/><br/>管理ディスクのある Azure VM からオンプレミスへのフェールバックは現在サポートされていません。
+可用性セット | [はい] | [はい]
+ハブ | [はい] | [はい]  
+管理ディスク | [はい] | [はい]<br/><br/>管理ディスクのある Azure VM からオンプレミスへのフェールバックは現在サポートされていません。
 
 ## <a name="failed-over-azure-vm-requirements"></a>フェールオーバーされる Azure VM の要件
 
@@ -228,8 +228,8 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 
 **アクション** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager なし)** | **Hyper-V (Virtual Machine Manager あり)**
 --- | --- | --- | ---
-リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | なし | いいえ | いいえ
-リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | なし | いいえ | なし
+リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ  | いいえ 
+リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ  | いいえ  | いいえ 
 
 
 ## <a name="support-for-provider-and-agent"></a>プロバイダーとエージェントのサポート
@@ -246,5 +246,5 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [前提条件を確認する](site-recovery-prereq.md)

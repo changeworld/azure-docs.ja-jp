@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2461e5fbf620fa2651792b47d41e9835d4d6ef8c
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: e48e0e256306707ca7fde3636a4215b235fa2eb7
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
@@ -36,16 +36,18 @@ SAP HANA on Azure (L インスタンス) は、Azure ならではのソリュー
 
 これらのベア メタル サーバー ユニットでは、SAP HANA の実行のみがサポートされます。 SAP アプリケーション レイヤーまたはワークロードのミドルウェア レイヤーは、Microsoft Azure Virtual Machines で実行されます。 SAP HANA on Azure (L インスタンス) のユニットを実行しているインフラストラクチャ スタンプは Azure Network のバックボーンに接続しているので、SAP HANA on Azure (L インスタンス) のユニットと Azure Virtual Machines の間には低レイテンシの接続が提供されます。
 
-このドキュメントは、SAP HANA on Azure (L インスタンス) のトピックについて説明している 5 つのドキュメントのうちの 1 つです。 このドキュメントでは、基本的なアーキテクチャ、責任、提供されるサービス、およびソリューションの機能についての概要を説明します。 ネットワークや接続をはじめとする大部分の領域については、他の 4 つのドキュメントで詳しく説明しています。 SAP NetWeaver インストールや Azure VM 内の SAP NetWeaver のデプロイについては、SAP HANA on Azure (L インスタンス) のドキュメントではなく、 同じドキュメント コンテナーにある別のドキュメントで取り上げています。 
+このドキュメントは、SAP HANA on Azure (L インスタンス) について説明している複数のドキュメントのうちの 1 つです。 このドキュメントでは、基本的なアーキテクチャ、責任、提供されるサービス、およびソリューションの機能についての概要を説明します。 ネットワークや接続をはじめとする大部分の領域については、他の 4 つのドキュメントで詳しく説明しています。 SAP NetWeaver インストールや Azure VM 内の SAP NetWeaver のデプロイについては、SAP HANA on Azure (L インスタンス) のドキュメントではなく、 Azure における SAP NetWeaver については、同じ Azure ドキュメント コンテナーにある別のドキュメントで取り上げています。 
 
 
-このガイドの 5 つのパートで取り上げるトピックは次のとおりです。
+HANA L インスタンス ガイダンスの別のドキュメントでは、次の分野について説明します。
 
 - [SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [SAP HANA on Azure (L インスタンス) のインストールと構成の方法](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [SAP HANA on Azure (L インスタンス) のトラブルシューティングと監視の方法](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [STONITH を使用した SUSE での高可用性のセットアップ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [Type II SKU の OS のバックアップと復元](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 ## <a name="definitions"></a>定義
 
@@ -67,7 +69,7 @@ SAP HANA on Azure (L インスタンス) は、Azure ならではのソリュー
     - **Type II クラス:** S384、S384m、S384xm、S576、S768、S960
 
 
-Microsoft Azure パブリック クラウドでの SAP ワークロードのデプロイに関するトピックでは、その他のさまざまなリソースが紹介されています。 Azure での SAP HANA のデプロイを計画して実行する場合は、Azure IaaS のプリンシパルと Azure IaaS での SAP ワークロードのデプロイに詳しい担当者を起用することを強くお勧めします。 次のリソースで詳細を示します。これらのリソースは作業を続行する前に参照してください。
+Microsoft Azure パブリック クラウドでの SAP ワークロードのデプロイに関しては、その他のさまざまなリソースで紹介されています。 Azure での SAP HANA のデプロイを計画して実行する場合は、Azure IaaS のプリンシパルと Azure IaaS での SAP ワークロードのデプロイに詳しい担当者を起用することを強くお勧めします。 次のリソースで詳細を示します。これらのリソースは作業を続行する前に参照してください。
 
 
 - [Microsoft Azure 仮想マシンにおける SAP ソリューションの使用](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -357,7 +359,7 @@ HANA L インスタンス SKU を分割する場合、考えられる各分割�
 
 ストレージを増やす必要がある場合は、ストレージを追加して 1 TB 単位で追加のストレージを購入できます。 この追加のストレージは、ボリュームとして追加することも、1 つ以上の既存のボリュームを拡張するために使用することもできます。 もともとデプロイされているボリュームのサイズ (上記の表に記載) を減らすことはできません。 また、ボリュームの名前やマウント名を変更することもできません。 上記のストレージ ボリュームは、NFS4 ボリュームとして HANA L インスタンス ユニットに接続されます。
 
-バックアップ/復元やディザスター リカバリーのためにストレージ スナップショットを使用するかどうかは、お客様が選択できます。 この点について詳しくは、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
+バックアップ/復元やディザスター リカバリーのためにストレージ スナップショットを使用するかどうかは、お客様が選択できます。 詳細については、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
 ### <a name="encryption-of-data-at-rest"></a>保存データの暗号化
 HANA L インスタンス用のストレージでは、ディスクに保存されるデータを透過的に暗号化することができます。 HANA L インスタンス ユニットのデプロイ時に、この種の暗号化を有効にするかどうかを選択できます。 また、暗号化の対象ボリュームをデプロイ後に変更することもできます。 非暗号化ボリュームから暗号化ボリュームへの移行は透過的に行われ、ダウンタイムは発生しません。 
@@ -374,7 +376,7 @@ Azure ネットワークのアーキテクチャは、HANA L インスタンス�
 - デプロイされた SAP システム (Azure VM 内)。 Azure (VM) に正常にデプロイ可能な SAP NetWeaver ベースのアプリケーション用の (リソース使用量とメモリの需要に基づく) 開発、テスト、サンドボックス、または実稼働インスタンスです。 また、これらのシステムは、SQL Server (「[SAP Support Note #1928533 – SAP Applications on Azure: Supported Products and Azure VM types (SAP サポート ノート #1928533 – Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)](https://launchpad.support.sap.com/#/notes/1928533/E)」を参照) や SAP HANA (「[SAP HANA Certified IaaS Platforms (SAP HANA 認定 IaaS プラットフォーム)](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)」を参照) などのデータベースに基づく場合もあります。
 - Azure L インスタンス スタンプの SAP HANA on Azure (L インスタンス) を活用する、デプロイされた SAP アプリケーション サーバー (VM 上の Azure 内)。
 
-(4 種類以上のデプロイ シナリオがある) ハイブリッド SAP ランドスケープが一般的ですが、Azure で実行されている完全な SAP ランドスケープの顧客事例が多数あります。 Microsoft Azure VM の強化に伴って、すべての SAP ソリューションを Azure に移行するお客様のの数が増えています。
+(4 種類以上のデプロイ シナリオがある) ハイブリッド SAP ランドスケープが一般的ですが、Azure で実行されている完全な SAP ランドスケープの顧客事例が多数あります。 Microsoft Azure VM の強化に伴って、すべての SAP ソリューションを Azure に移行するお客様の数が増えています。
 
 Azure にデプロイされた SAP システムにおける Azure ネットワークは複雑なものではありません。 このネットワークは次の原則に基づいています。
 
@@ -464,14 +466,18 @@ SAP HANA on Azure (L インスタンス) に接続する複数の SAP システ�
 
 ### <a name="routing-in-azure"></a>Azure でのルーティング
 
-SAP HANA on Azure (L インスタンス) のネットワーク ルーティングに関する重要な考慮事項が 2 つあります。
+SAP HANA on Azure (L インスタンス) のネットワーク ルーティングに関する重要な考慮事項が 3 つあります。
 
-1. SAP HANA on Azure (L インスタンス) には、専用の ExpressRoute 接続の Azure VM からのみアクセスできます。オンプレミスから直接アクセスすることはできません。 そのため、直接アクセスを必要とする管理クライアントやアプリケーション (オンプレミスで実行する SAP Solution Manager など) は SAP HANA データベースに接続できません。
+1. SAP HANA on Azure (L インスタンス) には、専用の ExpressRoute 接続の Azure VM からのみアクセスできます。オンプレミスから直接アクセスすることはできません。 SAP HANA L インスタンスに使用されている現在の Azure ネットワーク アーキテクチャの推移的なルーティングの制限により、オンプレミスから HANA L インスタンス ユニットへの直接アクセスは、Microsoft が提供しているようにはすぐには実現できません。 そのため、直接アクセスを必要とする管理クライアントやアプリケーション (オンプレミスで実行する SAP Solution Manager など) は SAP HANA データベースに接続できません。
 
-2. SAP HANA on Azure (L インスタンス) ユニットには、お客様が提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます (詳しくは「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください)。  この IP アドレスには、Azure VNet を HANA on Azure (L インスタンス) に接続する ExpressRoute と Azure サブスクリプションを使用してアクセスできます。 サーバー IP プールのアドレス範囲から割り当てられる IP アドレスは、このソリューションの最初のデプロイにおけるケースであるため、直接ハードウェア ユニットに割り当てられ、NAT 変換されません。 
+2. ディザスター リカバリーのために 2 つの異なる Azure リージョンにデプロイされている HANA L インスタンス ユニットがある場合は、同じ一時的なルーティングの制限が適用されます。 つまり、あるリージョン (例: 米国西部) での HANA L インスタンス ユニットの IP アドレスが、別のリージョン (例: 米国東部) で展開されている HANA L インスタンス ユニットにルーティングされません。 これは、リージョン間の Azure ネットワーク ピアリングまたは HANA L インスタンス ユニットを Azure Vnet に接続する ExpressRoute 回線の交差接続の使用状況に依存しません。 このドキュメントで、もう少し詳しく説明します。 デプロイ済みのアーキテクチャに伴うこの制限により、HANA システム レプリケーションをディザスター リカバリー機能としてすぐに使用することはできません。
+
+3. SAP HANA on Azure (L インスタンス) ユニットには、お客様が提出したサーバー IP プールのアドレス範囲から IP アドレスが割り当てられます (詳しくは「[Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください)。  この IP アドレスには、Azure VNet を HANA on Azure (L インスタンス) に接続する ExpressRoute と Azure サブスクリプションを使用してアクセスできます。 サーバー IP プールのアドレス範囲から割り当てられる IP アドレスは、このソリューションの最初のデプロイにおけるケースであるため、直接ハードウェア ユニットに割り当てられ、NAT 変換されません。 
 
 > [!NOTE] 
-> "_データ ウェアハウス_" のシナリオ (直接実行されている SAP HANA データベースにアプリケーションまたはエンド ユーザーが接続する必要がある) で SAP HANA on Azure (L インスタンス) に接続する必要がある場合は、別のネットワーク コンポーネントを使用してください (データを相互にルーティングするためのリバース プロキシ)。 たとえば、仮想ファイアウォール/トラフィック ルーティング ソリューションとして Azure にデプロイする F5 BIG-IP や NGINX (および Traffic Manager) などです。
+> 上記の最初の 2 つのリスト項目で説明したように、一時的なルーティングでの制限を克服する必要がある場合は、ルーティングに追加のコンポーネントを使用する必要があります。 制限を克服するために使用できるコンポーネントは、データをルーティングするリバース プロキシです。 たとえば、仮想ファイアウォール/トラフィック ルーティング ソリューションとして Azure にデプロイする F5 BIG-IP や NGINX (および Traffic Manager) などです。
+> Linux VM で [IPTables ルール](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)を使用して、オンプレミスの場所と HANA L インスタンス ユニット間、または別のリージョンにある HANA L インスタンス ユニット間のルーティングを有効にします。
+> サード パーティのネットワーク アプライアンスまたは IPTables を使用するカスタム ソリューションの実装とサポートは、Microsoft では提供されていないことに注意してください。 使用するコンポーネントのベンダーまたはインテグレーターがサポートを提供する必要があります。 
 
 ### <a name="internet-connectivity-of-hana-large-instances"></a>HANA L インスタンスのインターネット接続
 HANA L インスタンスには、インターネットとの間に直接的な接続がありません。 そのため、機能上の制約が生じます (OS イメージを直接 OS ベンダーに登録できないなど)。 ローカル SLES SMT サーバーや RHEL サブスクリプション マネージャーに対する作業が必要となる場合があります。

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 2ea1c217031761e93d393aefa07eedd03f88d9b0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9b00faa06684be353cfcf5f67f182a56511210c5
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
@@ -39,6 +39,10 @@ Azure Storage に対して、REST や SMB などのすべてのネットワー�
 ネットワーク ルールが適用されると、そのルールはすべての要求に対して適用されます。  特定の IP アドレス サービスへのアクセスを許可する SAS トークンは、トークン所有者のアクセスを**制限**する働きをしますが、構成されているネットワーク ルール以上の新しいアクセスを許可しないでください。 
 
 仮想マシン ディスクのトラフィック (マウントとマウント解除、およびディスク IO を含む) はネットワーク ルールによって影響を**受けません**。  ページ BLOB への REST アクセスはネットワーク ルールによって保護されています。
+
+> [!NOTE]
+> ネットワーク ルールが適用されたストレージ アカウントで非管理対象ディスクを使用した仮想マシンのバックアップと復元は、現在サポートされていません。  詳細については、「[VM のバックアップと復元に関する制限](/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)」を参照してください。
+>
 
 従来のストレージ アカウントは、ファイアウォールおよび仮想ネットワークをサポート**していません**。
 
@@ -72,7 +76,7 @@ Azure Storage に対して、REST や SMB などのすべてのネットワー�
 Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
 ```    
 
-4. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
+4. 既定でネットワーク アクセスを許可する既定のルールを設定します。
 ```PowerShell
 Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
 ```    
@@ -89,7 +93,7 @@ az storage account show --resource-group "myresourcegroup" --name "mystorageacco
 az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Deny
 ```
 
-4. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
+4. 既定でネットワーク アクセスを許可する既定のルールを設定します。
 ```azurecli
 az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Allow
 ```
@@ -102,7 +106,7 @@ az storage account update --name "mystorageaccount" --resource-group "myresource
 各ストレージ アカウントは、[IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と合わせて最大 100 個の仮想ネットワーク ルールをサポートできます。
 
 ### <a name="available-virtual-network-regions"></a>使用可能な仮想ネットワークのリージョン
-一般に、サービス エンドポイントは、同じ Azure リージョンの仮想ネットワークとサービス インスタンス間で機能します。  サービス エンドポイントが Azure Storage で使用されている場合、このスコープは[ペアのリージョン](/azure/best-practices-availability-paired-regions)を含めるように拡張されます。  これにより、リージョンのフェールオーバー時の継続性とともに、読み取り専用の geo 冗長ストレージ (RA-GRS) インスタンスへのシームレスなアクセスを実現します。  仮想ネットワークからストレージ アカウントへのアクセスを許可するネットワー ルールでは、任意の RA-GRS インスタンスへのアクセスも許可します。
+一般に、サービス エンドポイントは、同じ Azure リージョンの仮想ネットワークとサービス インスタンス間で機能します。  サービス エンドポイントが Azure Storage で使用されている場合、このスコープは[ペアのリージョン](/azure/best-practices-availability-paired-regions)を含めるように拡張されます。  これにより、リージョンのフェールオーバー時の継続性とともに、読み取り専用の geo 冗長ストレージ (RA-GRS) インスタンスへのシームレスなアクセスを実現します。  仮想ネットワークからストレージ アカウントへのアクセスを許可するネットワーク ルールでは、任意の RA-GRS インスタンスへのアクセスも許可します。
 
 リージョンの障害時にディザスター リカバリーを計画する場合、ペアのリージョンに仮想ネットワークを事前にプロビジョニングしておく必要があります。 Azure Storage のサービス エンドポイントを有効にして、geo 冗長ストレージ アカウントに対して、これらの代替の仮想ネットワークからのアクセスを許可するネットワーク ルールを適用する必要があります。
 
@@ -118,7 +122,7 @@ az storage account update --name "mystorageaccount" --resource-group "myresource
 ### <a name="managing-virtual-network-rules"></a>仮想ネットワーク ルールの管理
 ストレージ アカウント用の仮想ネットワーク ルールは、Azure Portal、PowerShell、または CLIv2 を通じて管理できます。
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure ポータル
 1. セキュリティで保護するストレージ アカウントを表示します。  
 2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
@@ -293,12 +297,11 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 
 |サービス|リソース プロバイダー名|目的|
 |:------|:---------------------|:------|
-|Azure DevTest Labs|Microsoft.DevTestLab|カスタム イメージの作成とアーティファクトのインストール  [詳細情報](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)|
-|Azure Event Grid|Microsoft.EventGrid|Blob Storage イベントの発行を有効にする  [詳細情報](https://docs.microsoft.com/azure/event-grid/overview)|
+|Azure DevTest Labs|Microsoft.DevTestLab|カスタム イメージの作成とアーティファクトのインストール  [詳細情報](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)。|
+|Azure Event Grid|Microsoft.EventGrid|Blob Storage イベントの発行を有効にする  [詳細情報](https://docs.microsoft.com/azure/event-grid/overview)。|
 |Azure Event Hubs|Microsoft.EventHub|Event Hubs Capture を使用したアーカイブ データのキャプチャ  [詳細情報](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
-|Azure HDInsight|Microsoft.HDInsight|クラスターのプロビジョニングおよびインストール  [詳細情報](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage)|
-|Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析  [詳細情報](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)|
-|Azure Backup|Microsoft.RecoveryServices|非管理対象ディスクのバックアップと復元  [詳細情報](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup)|
+|Azure HDInsight|Microsoft.HDInsight|クラスターのプロビジョニングおよびインストール  [詳細情報](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。|
+|Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析  [詳細情報](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)。|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス
@@ -356,7 +359,7 @@ az storage account update --resource-group "myresourcegroup" --name "mystorageac
 > 拒否するように[既定のルールを設定](#change-the-default-network-access-rule)していることを確認します。そうしないと、例外の削除は効力を発揮しません。
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)で Azure ネットワークのサービス エンドポイントについて確認してください。
 
 [Azure Storage セキュリティ ガイド](storage-security-guide.md)で Azure Storage のセキュリティを詳しく調べてください。

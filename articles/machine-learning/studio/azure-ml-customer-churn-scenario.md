@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 12/18/2017
 ms.author: jeannt
-ms.openlocfilehash: b3dca9e75df2d057d7ee1b314faac490e5f10a08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b82fe8e8c8bc4ac9c45370d90fa9330d749878
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>Azure Machine Learning を使用した顧客離れの分析
 ## <a name="overview"></a>概要
@@ -28,23 +28,23 @@ ms.lasthandoff: 10/11/2017
 この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning の前プロダクト マネージャー) によって開発およびテストされました。 Azure ドキュメント チームは、このホワイト ペーパーに情報と知識をご提供いただいたこの 2 人に感謝いたします。
 
 > [!NOTE]
-> この実験のデータは公開されていません。 顧客離れ分析の機械学習モデルを構築する方法の例については、「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」の「[Retail churn model template (小売業の顧客離れモデルのテンプレート)](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)」を参照してください。
+> この実験のデータは公開されていません。 顧客離れ分析の機械学習モデルを構築する方法の例については、「[Azure AI Gallery](http://gallery.cortanaintelligence.com/)」(Azure AI ギャラリー) の「[Retail churn model template](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1)」(小売業の顧客離れモデルのテンプレート) を参照してください
 > 
 > 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-problem-of-customer-churn"></a>顧客離れの問題
-コンシューマー市場とあらゆるエンタープライズ セクターの企業は、顧客離れの問題に対処する必要があります。 この問題がきわめて重くのしかかり、ポリシーの決定に影響を及ぼすこともあります。 従来は、これを防ぐために、離反の可能性が高い顧客を予測し、コンセルジュ サービスやマーケティング キャンペーン、優待によってそのニーズを満たすという方法がとられてきました。 こうしたアプローチは業界によって異なるほか、(電気通信など) 同じ業界内の消費者クラスターによっても異なることがあります。
+コンシューマー市場とあらゆるエンタープライズ セクターの企業は、顧客離れの問題に対処する必要があります。 この問題がきわめて重くのしかかり、ポリシーの決定に影響を及ぼすこともあります。 従来は、これを防ぐために、離反の可能性が高い顧客を予測し、コンセルジュ サービスやマーケティング キャンペーン、優待によってそのニーズを満たすという方法がとられてきました。 こうしたアプローチは、業界によって異なることがあります。 さらには、(電気通信など) 同じ業界内のコンシューマー クラスターによっても異なることがあります。
 
-それでも共通するのは、企業は、顧客維持のための特別な労力をできるだけ小さくする必要があるという点です。 そこで、すべての顧客の離反の可能性を点数化し、その上位の顧客に対応するという方法が採用されることになります。 上位の顧客は、最も収益性の高い顧客である可能性があります。さらに高度なシナリオでは、優待の候補者を選ぶ際に利潤関数が使用されます。 ただし、こうした考慮事項は、顧客離れに対処するための包括的な戦略の一部に過ぎません。 各企業は、リスク (および関連するリスク許容度)、介入のレベルとコスト、妥当な顧客セグメンテーションも考慮する必要があります。  
+それでも共通するのは、企業は、顧客維持のための特別な労力をできるだけ小さくする必要があるという点です。 そこで、すべての顧客の離反の可能性を点数化し、その上位の顧客に対応するという方法が採用されることになります。 上位の顧客は最も収益性の高い顧客の可能性があります。 さらに高度なシナリオでは、優待の候補者を選ぶ際に利潤関数が使用されます。 ただし、こうした考慮事項は、顧客離れに対処するための全体的な戦略の一部に過ぎません。 各企業は、リスク (および関連するリスク許容度)、介入のレベルとコスト、妥当な顧客セグメンテーションも考慮する必要があります。  
 
 ## <a name="industry-outlook-and-approaches"></a>業界の展望とアプローチ
 離反への高度な対処は、業界の成熟の表れです。 その典型例として、電気通信業界が挙げられます。この業界では、利用者は頻繁にプロバイダーを乗り換えることが知られています。 この自発的な離反は、最も大きな懸念事項となっています。 さらに、プロバイダーは "*離反の要因*" に関する知識を大量に蓄積してきました。離反の要因とは、顧客が乗り換えを決める要因のことです。
 
-たとえば、携帯電話ビジネスにおいては、ハンドセットやデバイスの選択が離反の要因としてよく知られており、 新規契約者にはハンドセットの料金を補助し、既存の顧客にはアップグレードの際に全額を請求するという方針が一般的になっています。 歴史的に見ると、この方針が原因で、顧客が新たなディスカウントを求めてプロバイダーを乗り換え、それを受けてプロバイダーが戦略を見直すという流れになっています。
+たとえば、携帯電話ビジネスにおいては、ハンドセットやデバイスの選択が離反の要因としてよく知られており、 新規契約者にはハンドセットの料金を補助し、既存の顧客にはアップグレードの際に全額を請求するという方針が一般的になっています。 歴史的に見ると、この方針が原因で、顧客が新たなディスカウントを求めてプロバイダーを乗り換え、 それを受けてプロバイダーが戦略を見直すという流れになっています。
 
-ハンドセット製品における流動性の高さは、現在のハンドセット モデルに基づく離反モデルが短期間で役に立たなくなる要因となっています。 また、携帯電話は単なる通信デバイスではなく、ファッションを表すものでもあります (iPhone が良い例です)。こうした社会的な予測因子は、通常の電気通信データセットの範囲には含まれません。
+ハンドセット製品における流動性の高さは、現在のハンドセット モデルに基づく離反モデルが短期間で役に立たなくなる要因となっています。 さらに、携帯電話は単なる通信機器ではなく、ファッションを表すものでもあります (iPhone など)。 このような社会的な予測因子は、通常の電気通信データ セットに含まれません。
 
 モデリングから最終的にわかるのは、既知の離反要因を取り除くだけでは適切な方針を定めることはできないということです。 実際に、カテゴリの変数を定量化する従来のモデル (たとえば、ディメンション ツリー) など、継続的なモデリング戦略は **必須**です。
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 10/11/2017
  
 
 > これはプライベート データであるため、モデルとデータを共有することはできません。
-> ただし、パブリックに使用可能なデータを使用する同様のモデルに関しては、「[Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)」(Cortana Intelligence ギャラリー) の「[Telco Customer Churn](http://gallery.cortanaintelligence.com/)」(Telco の顧客離れ) にあるサンプル実験を参照してください。
+> ただし、パブリックに使用可能なデータを使用する同様のモデルについては、「[Azure AI Gallery](http://gallery.cortanaintelligence.com/)」(Azure AI ギャラリー) の「[Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)」(Telco の顧客離れ) にあるサンプル実験を参照してください。
 > 
 > Cortana Intelligence Suite を使用して顧客離れ分析モデルを実装する方法の詳細については、上級プログラム マネージャーの Wee Hyong Tok による [こちらのビデオ](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) をご覧になることをお勧めします。 
 > 
@@ -211,16 +211,6 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 ## <a name="conclusion"></a>まとめ
 このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。 スコア付けモデルのプロトタイプについて検討し、それを Azure Machine Learning を使って実装しました。 最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。  
 
-**詳細:**  
-
-このペーパーはお役に立ちましたか。 フィードバックをお待ちしております。 1 を "役に立たなかった"、5 を "非常に役に立った" としてこのペーパーを評価すると共に、その評価の理由をお聞かせください。 次に例を示します。  
-
-* 適切な例があった、スクリーン ショットがわかりやすかった、文章がわかりやすかったなど、高く評価した理由を教えてください。
-* 例が不適切だった、スクリーン ショットがわかりにくかった、文章がわかりにくかったなど、低く評価した理由を教えてください。  
-
-このフィードバックは、今後発表するホワイト ペーパーの品質向上に利用させていただきます。   
-
-[こちらからフィードバックをお送りください](mailto:sqlfback@microsoft.com)。
  
 
 ## <a name="references"></a>参照
@@ -232,7 +222,7 @@ Azure Machine Learning にはほかにも便利な機能があり、元から利
 
 [4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/) の [Telco の顧客離れモデルのテンプレート](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) 
+[5] [Azure AI ギャラリー](http://gallery.cortanaintelligence.com/)の「[Telco の顧客離れ](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」 
  
 
 ## <a name="appendix"></a>付録

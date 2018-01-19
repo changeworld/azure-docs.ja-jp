@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 57e28215124bc0330517c541e4cb74a66d939ff5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 860099b2634765f3088199c89341f0b48b20b801
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/09/2018
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での R Server とオープン ソース R の機能の概要
 
 Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft R Server を選択できるようになりました。 この新しい機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
+
+[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 クラスターは、現在のプロジェクトやタスクに合わせて適切にサイズを設定し、不要になったら破棄できます。 クラスターは Azure HDInsight の一部であるため、エンタープライズ レベルの 24 時間 365 日のサポートと稼働時間 99.9% の SLA が提供され、Azure エコシステムの他のコンポーネントとも統合できます。
 
@@ -44,7 +46,7 @@ HDInsight クラスターの HDFS ファイル システムの既定のストレ
 エッジ ノードで使用するストレージ オプションとして、 [Azure Files](../../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。 Azure Files では、Azure Storage で作成されたファイル共有を Linux ファイル システムにマウントできます。 HDInsight クラスターの R Server を対象としたこれらのデータ ストレージ オプションについて詳しくは、「[HDInsight の R Server 向けの Azure Storage オプション](r-server-storage.md)」をご覧ください。
 
 ## <a name="access-r-server-on-the-cluster"></a>クラスターでの R Server へのアクセス
-ブラウザーを使用して、エッジ ノードの Microsoft R Server に接続することができます。 これは、クラスターの作成時に既定でインストールされます。 詳しくは、「[HDInsight での R Server の概要](r-server-get-started.md)」をご覧ください。
+ブラウザーを使用して、エッジ ノードの Microsoft R Server に接続することができます。 これは、クラスターの作成時に既定でインストールされます。 詳細については、「[HDInsight での R Server の概要](r-server-get-started.md)」を参照してください。
 
 Microsoft R Server には、コマンドラインから SSH/PuTTY を使用して R コンソールにアクセスすることによって接続することもできます。 
 
@@ -96,9 +98,9 @@ HDInsight クラスターの Linux エッジ ノードは、R ベースの分析
 また、SSH または PuTTY 経由で接続した後、単に Linux コマンド プロンプトで「**R**」と入力して、エッジ ノードの R Server コンソールにアクセスすることもできます。 コンソール インターフェイスを使用しているときは、別のウィンドウで R スクリプト開発用のテキスト エディターを実行し、必要に応じてスクリプトのセクションを切り取って R コンソールに貼り付けると利便性が向上します。
 
 ## <a name="learn-about-pricing"></a>価格について
-R Server を含む HDInsight クラスターに関する料金は、Standard HDInsight クラスターの料金と同様に体系化されています。 料金は、ネーム、データ、エッジの各ノードの基になる VM のサイズに基づきますが、コア時間の割増分が加算されます。 HDInsight の価格の詳細、30 日間無料試用版の提供状況の詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+R Server を含む HDInsight クラスターに関する料金は、Standard HDInsight クラスターの料金と同様に体系化されています。 料金は、ネーム、データ、エッジの各ノードの基になる VM のサイズに基づきますが、コア時間の割増分が加算されます。 HDInsight の価格の詳細については、「[HDInsight 価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 HDInsight クラスターで R Server を使用する方法の詳細については、次のトピックを参照してください。
 
 * [HDInsight での R Server の使用](r-server-get-started.md)

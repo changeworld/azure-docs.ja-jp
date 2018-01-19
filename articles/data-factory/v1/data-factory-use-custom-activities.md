@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 0794952fdfbcc49cc66273be2d46484014ae1677
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c741f995c32bf6fa9ba4e0646573be8cdb67a7c3
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,12 +36,11 @@ Azure Data Factory パイプラインでは、2 種類のアクティビティ�
 
 Data Factory でサポートされていないデータ ストアとの間でデータを移動するには、独自のデータ移動ロジックで**カスタム アクティビティ**を作成し、パイプラインでそのアクティビティを使用します。 同じように、Data Factory でサポートされていない方法でデータを変換/処理するには、独自のデータ変換ロジックでカスタム アクティビティを作成し、パイプラインでそのアクティビティを使用します。 
 
-仮想マシンの **Azure Batch** プールまたは Windows ベースの **Azure HDInsight** クラスターで実行するカスタム アクティビティを構成することができます。 Azure Batch を使用する場合は、既存の Azure Batch プールのみを使用できます。 一方、HDInsight を使用する場合は、既存の HDInsight クラスター、またはランタイムにオンデマンドで自動的に作成されるクラスターを使用できます。  
+仮想マシンの **Azure Batch** プールで実行するカスタム アクティビティを構成することができます。 Azure Batch を使用する場合は、既存の Azure Batch プールのみを使用できます。
 
-以下のチュートリアルでは、カスタム .NET アクティビティを作成し、パイプラインでそのカスタム アクティビティを使用する手順について説明します。 このチュートリアルでは、**Azure Batch** のリンクされたサービスを使用します。 代わりに Azure HDInsight のリンクされたサービスを使用するには、型が **HDInsight** (独自の HDInsight クラスター) または **HDInsightOnDemand** (Data Factory によってオンデマンドで作成される HDInsight クラスター) のリンクされたサービスを作成します。 次に、HDInsight のリンクされたサービスを使用するようにカスタム アクティビティを構成します。 Azure HDInsight を使用してカスタム アクティビティを実行する方法の詳細については、「 [Azure HDInsight のリンクされたサービスの使用](#use-hdinsight-compute-service) 」セクションを参照してください。
+以下のチュートリアルでは、カスタム .NET アクティビティを作成し、パイプラインでそのカスタム アクティビティを使用する手順について説明します。 このチュートリアルでは、**Azure Batch** のリンクされたサービスを使用します。 
 
 > [!IMPORTANT]
-> - カスタム .NET アクティビティは、Windows ベースの HDInsight クラスター上でのみ実行します。 この制限を回避するには、Map Reduce アクティビティを使って、Linux ベースの HDInsight クラスター上でカスタム Java コードを実行します。 もう 1 つの方法は、HDInsight クラスターを使う代わりに仮想マシンの Azure Batch プールを使ってカスタム アクティビティを実行します。
 > - カスタム アクティビティからデータ管理ゲートウェイを使用してオンプレミスのデータ ソースにアクセスすることはできません。 現時点では、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)でサポートされるのは Data Factory でのコピー アクティビティとストアド プロシージャ アクティビティのみです。   
 
 ## <a name="walkthrough-create-a-custom-activity"></a>チュートリアル: カスタム アクティビティの作成
@@ -56,7 +55,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 
 1. **Azure ポータル** を使用して、 [Azure Batch アカウント](http://portal.azure.com)を作成します。 手順については、「[Azure Batch アカウントの作成と管理][batch-create-account]」の記事を参照してください。
 2. Azure Batch のアカウント名とアカウント キー、URI、プール名をメモしておきます。 Azure Batch のリンクされたサービスを作成するためにこれらが必要になります。
-    1. Azure Batch アカウントのホーム ページに、`https://myaccount.westus.batch.azure.com` の形式で **URL** が表示されます。 この例では、**myaccount** が Azure Batch のアカウント名です。 リンクされたサービスの定義で使用する URI は、URL からアカウント名を除いたものです。 (例: `https://<region>.batch.azure.com`)。
+    1. Azure Batch アカウントのホーム ページに、`https://myaccount.westus.batch.azure.com` の形式で **URL** が表示されます。 この例では、**myaccount** が Azure Batch のアカウント名です。 リンクされたサービスの定義で使用する URI は、URL からアカウント名を除いたものです。 たとえば、「 `https://<region>.batch.azure.com`」のように入力します。
     2. 左側のメニューの **[キー]** をクリックして、**プライマリ アクセス キー**をコピーします。
     3. 既存のプールを使用するには、メニューの **[プール]** をクリックして、プールの **ID** をメモしておきます。 既存のプールがない場合は、次の手順に進みます。     
 2. **Azure Batch プール**を作成します。
@@ -109,11 +108,13 @@ public IDictionary<string, string> Execute(
      <li><b>[ファイル]</b> をクリックし、<b>[新規作成]</b> をポイントして、<b>[プロジェクト]</b> をクリックします。</li>
      <li><b>[テンプレート]</b> を展開し、<b>[Visual C#]</b> を選択します。 このチュートリアルでは C# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。</li>
      <li>右側にあるプロジェクトの種類の一覧から <b>[クラス ライブラリ]</b> を選択します。 VS 2017 で、<b>[クラス ライブラリ (.NET Framework)]</b>  を選択します。</li>
-     <li><b>[プロジェクト名]</b> に「<b>MyDotNetActivity</b>」と入力します。</li>
+     <li><b>MyDotNetActivity</b> for the <b>MyDotNetActivity</b>に関する記事を参照してください。</li>
      <li><b>[場所]</b> は <b>[C:\ADFGetStarted]</b> を選択します。</li>
      <li><b>[OK]</b> をクリックしてプロジェクトを作成します。</li>
    </ol>
+   
 2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
+
 3. パッケージ マネージャー コンソールで、次のコマンドを実行して **Microsoft.Azure.Management.DataFactories**をインポートします。
 
     ```PowerShell
@@ -479,8 +480,6 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 
        **poolName** プロパティでは、プール名の代わりにプール ID を指定することもできます。
 
-      > [!IMPORTANT]
-      > Data Factory サービスでは、HDInsight の場合と同様、Azure Batch のオンデマンド オプションはサポートされません。 Azure データ ファクトリでは、独自の Azure Batch プールのみ使用できます。   
     
 
 ### <a name="step-3-create-datasets"></a>手順 3: データセットを作成する
@@ -632,7 +631,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 ### <a name="monitor-the-pipeline"></a>パイプラインの監視
 1. Azure ポータルの [Data Factory] ブレードで、 **[ダイアグラム]**をクリックします。
 
-    ![[ダイアグラム] タイル](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
+    ![Diagram tile](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
 2. [ダイアグラム] ビューで、OutputDataset をクリックします。
 
     ![[ダイアグラム] ビュー](./media/data-factory-use-custom-activities/diagram.png)
@@ -786,115 +785,6 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 プールで既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。  プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
-## <a name="use-hdinsight-compute-service"></a>HDInsight コンピューティング サービスを使用する
-このチュートリアルでは、Azure Batch コンピューティングを使用して、カスタム アクティビティを実行しました。 独自の Windows ベースの HDInsight クラスターを使うか、Data Factory によってオンデマンドの Windows ベースの HDInsight クラスターを作成してから、HDInsight クラスターでカスタム アクティビティを実行することもできます。 ここでは、HDInsight クラスターを使用するための手順の概要を示します。
-
-> [!IMPORTANT]
-> カスタム .NET アクティビティは、Windows ベースの HDInsight クラスター上でのみ実行します。 この制限を回避するには、Map Reduce アクティビティを使って、Linux ベースの HDInsight クラスター上でカスタム Java コードを実行します。 もう 1 つの方法は、HDInsight クラスターを使う代わりに仮想マシンの Azure Batch プールを使ってカスタム アクティビティを実行します。
- 
-
-1. Azure HDInsight のリンクされたサービスを作成します。   
-2. パイプライン JSON 内の **AzureBatchLinkedService** の代わりに HDInsight のリンクされたサービスを使用します。
-
-チュートリアルでこれをテストする場合は、Azure HDInsight サービスを使用してシナリオをテストできるように、パイプラインの**開始**時刻と**終了**時刻を変更できます。
-
-#### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービスを作成する
-Azure Data Factory サービスはオンデマンド クラスターの作成をサポートしており、このクラスターを使用して入力データの処理と出力データの生成を行います。 また、独自のクラスターを使って同じ処理を行うことも可能です。 オンデマンド HDInsight クラスターを使用する場合は、スライスごとにクラスターが作成されます。 一方、独自の HDInsight クラスターを使用する場合、そのクラスターはすぐにスライスを処理できる状態にあります。 そのため、オンデマンド クラスターを使用すると、独自のクラスターを使用するよりデータの出力が遅いと感じる場合があります。
-
-> [!NOTE]
-> 実行時に、.NET アクティビティのインスタンスは HDInsight クラスターの 1 つの worker ノードでのみ実行されます。複数のノードで実行されるように拡張することはできません。 .NET アクティビティの複数のインスタンスは、HDInsight クラスターの別々のノードで並列に実行できます。
->
->
-
-##### <a name="to-use-an-on-demand-hdinsight-cluster"></a>オンデマンド HDInsight クラスターを使用するには
-1. **Azure Batch アカウント**で、左側のメニューの **[作成とデプロイ]** をクリックします。
-2. Data Factory エディターで、コマンド バーの **[新規計算]** をクリックし、メニューの **[オンデマンド HDInsight クラスター]** を選択します。
-3. JSON スクリプトを次のように変更します。
-
-   1. **clusterSize** プロパティには、HDInsight クラスターのサイズを指定します。
-   2. **timeToLive** プロパティには、顧客が削除されるまでの間にアイドル状態でいられる時間を指定します。
-   3. **version** プロパティには、使用する HDInsight のバージョンを指定します。 このプロパティを除外した場合は、最新バージョンが使用されます。  
-   4. **linkedServiceName** には、「**AzureStorageLinkedService**」と指定します。
-
-        ```JSON
-        {
-           "name": "HDInsightOnDemandLinkedService",
-           "properties": {
-               "type": "HDInsightOnDemand",
-               "typeProperties": {
-                   "clusterSize": 4,
-                   "timeToLive": "00:05:00",
-                   "osType": "Windows",
-                   "linkedServiceName": "AzureStorageLinkedService",
-               }
-           }
-        }
-        ```
-
-    > [!IMPORTANT]
-    > カスタム .NET アクティビティは、Windows ベースの HDInsight クラスター上でのみ実行します。 この制限を回避するには、Map Reduce アクティビティを使って、Linux ベースの HDInsight クラスター上でカスタム Java コードを実行します。 もう 1 つの方法は、HDInsight クラスターを使う代わりに仮想マシンの Azure Batch プールを使ってカスタム アクティビティを実行します。
-
-4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
-
-##### <a name="to-use-your-own-hdinsight-cluster"></a>独自の HDInsight クラスターを使用するには
-1. **Azure Batch アカウント**で、左側のメニューの **[作成とデプロイ]** をクリックします。
-2. **Data Factory エディター**で、コマンド バーの **[新規計算]** をクリックし、メニューの **[HDInsight クラスター]** を選択します。
-3. JSON スクリプトを次のように変更します。
-
-   1. **clusterUri** プロパティには、HDInsight の URL を入力します。 たとえば、https://<clustername>.azurehdinsight.net/ などです。     
-   2. **UserName** プロパティには、HDInsight クラスターにアクセスできるユーザー名を入力します。
-   3. **Password** プロパティには、ユーザーのパスワードを入力します。
-   4. **LinkedServiceName** プロパティには、「**AzureStorageLinkedService**」と入力します。
-4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
-
-詳細については、「 [計算のリンクされたサービス](data-factory-compute-linked-services.md) 」を参照してください。
-
-**パイプライン JSON**で、HDInsight (オンデマンドまたは独自) のリンクされたサービスを使用します。
-
-```JSON
-{
-  "name": "ADFTutorialPipelineCustom",
-  "properties": {
-    "description": "Use custom activity",
-    "activities": [
-      {
-        "Name": "MyDotNetActivity",
-        "Type": "DotNetActivity",
-        "Inputs": [
-          {
-            "Name": "InputDataset"
-          }
-        ],
-        "Outputs": [
-          {
-            "Name": "OutputDataset"
-          }
-        ],
-        "LinkedServiceName": "HDInsightOnDemandLinkedService",
-        "typeProperties": {
-          "AssemblyName": "MyDotNetActivity.dll",
-          "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
-          "PackageLinkedService": "AzureStorageLinkedService",
-          "PackageFile": "customactivitycontainer/MyDotNetActivity.zip",
-          "extendedProperties": {
-            "SliceStart": "$$Text.Format('{0:yyyyMMddHH-mm}', Time.AddMinutes(SliceStart, 0))"
-          }
-        },
-        "Policy": {
-          "Concurrency": 2,
-          "ExecutionPriorityOrder": "OldestFirst",
-          "Retry": 3,
-          "Timeout": "00:30:00",
-          "Delay": "00:00:00"
-        }
-      }
-    ],
-    "start": "2016-11-16T00:00:00Z",
-    "end": "2016-11-16T05:00:00Z",
-    "isPaused": false
-  }
-}
-```
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>.NET SDK を使ってカスタム アクティビティを作成する
 この記事のチュートリアルでは、Azure ポータルを使って、カスタム アクティビティを使用するパイプラインを備えたデータ ファクトリを作成します。 次のコードでは、代わりに .NET SDK を使用してデータ ファクトリを作成する方法を示しています。 SDK を使ってプログラムによりパイプラインを作成する方法については、「[コピー アクティビティがあるパイプラインを .NET API で作成する](data-factory-copy-activity-tutorial-using-dotnet-api.md)」をご覧ください。 

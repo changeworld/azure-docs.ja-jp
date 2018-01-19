@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 54038785f513e56b07f5f3fafa3dbd6d4b6e7400
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/12/2018
+ms.openlocfilehash: d1e3a4fd4415afb995f614ac687096f6fb8ece95
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -28,7 +28,7 @@ MSDN フォーラムに質問を投稿できます。 製品チームは、こ�
 ## <a name="gather-diagnostics-information"></a>診断情報を収集する
 サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 ここにログ ファイルが保存されます。
 
-### <a name="installer"></a>インストーラー
+### <a name="installer-log"></a>インストーラー ログ
 インストール中に問題が発生した場合、インストーラーのログ ファイルは以下の場所にあります。
 
 ```
@@ -40,18 +40,7 @@ MSDN フォーラムに質問を投稿できます。 製品チームは、こ�
 ```
 これらのディレクトリの内容を zip で圧縮し、Microsoft に診断を送信してください。
 
-### <a name="app-update"></a>アプリの更新 
-#### <a name="no-update-notification-on-windows-desktop"></a>Windows デスクトップで更新が通知されない 
-この問題は、今後の更新で対処されます。 その間の回避策として、タスク バーにピン留めされたショートカットからはアプリを起動しないようにします。 代わりに、[スタート] メニュー、スタートの検索バー、またはデスクトップ上のショートカット (ある場合) を使用することでアプリを起動します。 
-
-#### <a name="no-update-notification-on-an-ubuntu-data-sciece-virtual-machine-dsvm"></a>Ubuntu データ サイエンス仮想マシン (DSVM) で更新が通知されない
-次の手順を実行して、最新のアプリケーションをダウンロードします。   
-   - フォルダー \Users\AppData\Local\amlworkbench を削除する
-   - スクリプト `c:\dsvm\tools\setup\InstallAMLFromLocal.ps1` を削除する
-   - 上のスクリプトを起動するデスクトップ ショートカットを削除する
-   - [https://aka.ms/azureml-wb-msi](https://aka.ms/azureml-wb-msi) を使用して正常にインストールする
-
-### <a name="workbench-desktop-app"></a>Workbench デスクトップ アプリ
+### <a name="workbench-desktop-app-log"></a>Workbench デスクトップ アプリ ログ
 ログインで問題が発生した場合、または Workbench デスクトップ アプリがクラッシュした場合、ログ ファイルは次の場所にあります。
 ```
 # Windows
@@ -62,7 +51,7 @@ MSDN フォーラムに質問を投稿できます。 製品チームは、こ�
 ``` 
 これらのディレクトリの内容を zip で圧縮し、Microsoft に診断を送信してください。
 
-### <a name="experiment-execution"></a>実験の実行
+### <a name="experiment-execution-log"></a>実験実行ログ
 デスクトップ アプリからの送信中に特定のスクリプトが失敗する場合は、CLI で `az ml experiment submit` コマンドを使用して再送信してください。 その結果、JSON 形式の完全なエラー メッセージが返されます。このメッセージで最も重要な点は、**操作 ID** 値が含まれていることです。 **操作 ID** を含む JSON ファイルを送信していただけると、診断に役立ちます。 
 
 特定のスクリプトが送信に実行し、実行に失敗する場合は、その特定の実行を識別する**実行 ID** が出力されます。 次のコマンドを使用して、関連するログ ファイルをパッケージ化できます。
@@ -96,6 +85,8 @@ Azure ML Workbench での作業中に、アプリケーション シェルの左
 
 - RevoScalePy ライブラリは、Windows または Linux (Docker コンテナー) でのみサポートされています。 macOS ではサポートされていません。
 
+- Workbench アプリから Jupyter Notebook を開くときは、5 MB の最大サイズ制限があります。 大きいノートブックは CLI の "az ml notebook start" コマンドを使って開くことができ、セル出力をクリーンアップしてファイル サイズを小さくできます。
+
 ## <a name="cant-update-workbench"></a>Workbench を更新できない
 新しい更新が使用できる場合、Workbench アプリのホームページには、その新しい更新に関する情報を通知するメッセージが表示されます。 アプリの左下隅にあるベル アイコンに更新バッジが表示されます。 そのバッジをクリックし、インストーラー ウィザードに従って更新をインストールします。 
 
@@ -113,7 +104,7 @@ Azure ML Workbench での作業中に、アプリケーション シェルの左
    - 上のスクリプトを起動するデスクトップ ショートカットを削除する
    - インストーラー https://aka.ms/azureml-wb-msi をダウンロードし、再インストールする。
 
-## <a name="get-stuck-at-checking-experimentation-account-screen-after-logging-in"></a>ログイン後、[Checking experimentation accoun]\(実験アカウントをチェックしています\) 画面から先に進まない
+## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>ログイン後に [Checking experimentation accoun]\(実験アカウントをチェックしています\) 画面でスタックする
 ログイン後、Workbench アプリで回転する歯車が表示され、[Checking experimentation accoun]\(実験アカウントをチェックしています\) というメッセージが表示された空白の画面のままになることがあります。 これを解決するには、次の手順をお試しください。
 1. アプリをシャットダウンする
 2. 次のファイルを削除する
@@ -127,7 +118,7 @@ Azure ML Workbench での作業中に、アプリケーション シェルの左
 3. アプリを再起動します。
 
 ## <a name="cant-delete-experimentation-account"></a>実験アカウントを削除できない
-CLI を使用して実験アカウントを削除できますが、最初に、子ワークスペースとその子ワークスペース内の子プロジェクトを削除する必要があります。 そうしないと、エラーが表示されます。
+CLI を使用して実験アカウントを削除できますが、最初に、子ワークスペースとその子ワークスペース内の子プロジェクトを削除する必要があります。 そうしないと、"入れ子になっているリソースを削除する前にリソースを削除することはできません" というエラーが表示されます。
 
 ```azure-cli
 # delete a project
@@ -147,6 +138,15 @@ Windows 10 Fall Creators Update を使用しており、プロジェクトが On
 
 ## <a name="file-name-too-long-on-windows"></a>Windows では長すぎるファイル名
 Windows で Workbench を使用している場合、既定の最大 260 文字のファイル名の長さ制限に達することがあります。これにより、"指定されたパスが見つかりません" というエラーが表示される可能性があります。 さらに長いファイル パス名が許可されるようにレジストリ キーの設定を変更できます。 _MAX_PATH_ レジストリ キーを設定する方法の詳細については、[この記事](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)を参照してください。
+
+## <a name="interrupt-cli-execution-output"></a>CLI 実行の出力を中断する
+`az ml experiment submit` または `az ml notebook start` を使って実験実行を開始して、出力を中断したい場合: 
+- Windows では、キーボードの Ctrl + Break キーの組み合わせを使います
+- macOS では、Ctrl + C を使います。
+
+これは CLI ウィンドウ内の出力ストリームのみを中断することに注意してください。 実行されているジョブを実際に停止することはありません。 実行中のジョブをキャンセルする場合は、`az ml experiment cancel -r <run_id> -t <target name>` コマンドを使います。
+
+キーボードに Break キーがない Windows コンピューターでは、Fn + B、Ctrl + Fn + B、または Fn + Esc を代わりに使うことができます。特定のキーの組み合わせについては、ハードウェア ベンダーのドキュメントをご覧ください。
 
 ## <a name="docker-error-read-connection-refused"></a>Docker エラー "read: connection refused"
 ローカル Docker コンテナーに対して実行しているときに、次のエラーが表示される場合があります。 
@@ -198,9 +198,20 @@ _username_ は、リモート ホストにログインする際に使用する A
 $ docker system prune -a
 ```
 
-データ ディスクを追加し、そのデータ ディスクをイメージの格納に使用するように Docker エンジンを構成することもできます。 データ ディスクを追加する方法については、[こちら](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk)をご覧ください。 その後、[Docker がイメージを格納する場所を変更](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169)できます。
+データ ディスクを追加し、そのデータ ディスクをイメージの格納に使用するように Docker エンジンを構成することもできます。 データ ディスクを追加する方法については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)をご覧ください。 その後、[Docker がイメージを格納する場所を変更](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169)できます。
 
-または、OS ディスクを拡張することもできます。Docker エンジン構成に手を加える必要はありません。 OS ディスクを拡張する方法については、[こちら](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk)をご覧ください。
+または、OS ディスクを拡張することもできます。Docker エンジン構成に手を加える必要はありません。 OS ディスクを拡張する方法については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks)をご覧ください。
+
+```azure-cli
+#Deallocate VM (stopping will not work)
+$ az vm deallocate --resource-group myResourceGroup  --name myVM
+
+# Update Disc Size
+$ az disk update --resource-group myResourceGroup --name myVM --size-gb 250
+    
+# Start VM    
+$ az vm start --resource-group myResourceGroup  --name myVM
+```
 
 ## <a name="sharing-c-drive-on-windows"></a>Windows の C ドライブを共有する
 Windows のローカル Docker コンテナーで実行している場合、`aml_config` の `docker.compute` ファイルで `sharedVolumes` を `true` に設定すると、実行のパフォーマンスを向上させることができます。 ただし、そのためには、"_Docker for Windows ツール_" で C ドライブを共有する必要があります。 C ドライブを共有できない場合は、次のヒントを試してください。
@@ -213,6 +224,18 @@ Windows のローカル Docker コンテナーで実行している場合、`aml
 * ドメインの資格情報を使用して C ドライブを共有する場合、ドメイン コントローラーにアクセスできないネットワーク (たとえば、ホーム ネットワークやパブリック wifi など) で共有が動作を停止することがあります。 詳細については、[こちらの投稿](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/)をご覧ください。
 
 `docker.compute` ファイルで `sharedVolumne` を `false` に設定することによって、わずかなパフォーマンス コストで共有の問題を回避することもできます。
+
+## <a name="wipe-clean-workbench-installation"></a>Workbench のインストールを消去する
+一般に、これを行う必要はありません。 ただし、インストールを消去する必要がある場合は、以下の手順で行います。
+
+- Windows の場合:
+  - 最初に、_コントロール パネル_の _[プログラムの追加と削除]_ アプレットを使って、_Azure Machine Learning Workbench_ アプリケーションのエントリを削除します。  
+  - その後、次のいずれかのスクリプトをダウンロードして実行します。
+    - [Windows コマンド ライン スクリプト](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd)。
+    - [Windows PowerShell スクリプト](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1)  (スクリプトを実行する前に、管理者特権の PowerShell ウィンドウで `Set-ExecutionPolicy Unrestricted` を実行することが必要な場合があります)。
+- macOS の場合:
+  - [macOS bash シェル スクリプト](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh)をダウンロードして実行します。
+
 
 ## <a name="some-useful-docker-commands"></a>便利な Docker コマンド
 

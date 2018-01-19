@@ -1,5 +1,5 @@
 ---
-title: "ポリシー: Azure AD SSPR | Microsoft Docs"
+title: "セルフサービスによるパスワード リセット ポリシー - Azure Active Directory"
 description: "Azure AD のセルフ サービスによるパスワード リセット ポリシーのオプション"
 services: active-directory
 keywords: "Active Directory パスワード管理, パスワード管理, Azure AD セルフサービスによるパスワードのリセット"
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6b1abd23c6f578a3a776e6174d1ea0f47b3ba27d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 51eb7c594c02310c083b42b6c0d964b4af239d76
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -85,7 +85,7 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 
 | プロパティ | UserPrincipalName の要件 |
 | --- | --- |
-| 使用できる文字 |<ul> <li>A - Z</li> <li>a - z</li><li>0 – 9</li> <li> に関するページを参照してください。 - \_ ! \# ^ \~</li></ul> |
+| 使用できる文字 |<ul> <li>A - Z</li> <li>a - z</li><li>0 – 9</li> <li> が必要です。 - \_ ! \# ^ \~</li></ul> |
 | 使用できない文字 |<ul> <li>ユーザー名とドメインの間以外にある '@' 文字。</li> <li>ピリオド文字 '.' を '@' 記号の直前に含めることはできません</li></ul> |
 | 長さの制限 |<ul> <li>全体の長さは 113 文字以内にする必要があります</li><li>'@' 記号の前に最大 64 文字まで可能</li><li>'@' 記号の後に最大 48 文字まで可能</li></ul> |
 
@@ -146,18 +146,18 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
    > [!WARNING]
    > `-PasswordNeverExpires $true` を設定したパスワードは、引き続き `pwdLastSet` 属性に基づいて使用時間が計測されます。 ユーザーのパスワードを無期限に設定し、90 日以上たつと、パスワードは期限切れになります。 `pwdLastSet` 属性に基づいて、有効期限を `-PasswordNeverExpires $false` に変更すると、90 日より古い `pwdLastSet` を持つすべてのパスワードは、ユーザーが次回サインインで変更する必要があります。 この変更は多数のユーザーに影響を与える可能性があります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

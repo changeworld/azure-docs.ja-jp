@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/03/2017
+ms.date: 01/11/2018
 ms.author: terrylan
-ms.openlocfilehash: e71d407050f210c770bcac30259b9c2f2fb27aa3
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 2bbd0a8be891bd472cdc631a1f8dc79471d66a77
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/06/2017
 >
 
 ## <a name="general-questions"></a>一般的な質問
-### <a name="what-is-azure-security-center"></a>Azure セキュリティ センターとは
+### <a name="what-is-azure-security-center"></a>Azure Security Center とは
 Azure セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 ### <a name="how-do-i-get-azure-security-center"></a>Azure セキュリティ センターはどうしたら取得できますか。
@@ -51,7 +51,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 Security Center のロールと許可されているアクションの詳細については、「[Permissions in Azure Security Center (Azure Security Center のアクセス許可)](security-center-permissions.md)」を参照してください。
 
 ## <a name="data-collection"></a>データ収集
-Security Center では、仮想マシンからデータを収集して、そのセキュリティ状態の評価、セキュリティ推奨事項の提供、脅威についての警告を行います。 最初にセキュリティ センターにアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 Security Center のポリシーでデータ収集を有効にすることもできます。
+Security Center では、仮想マシンからデータを収集して、そのセキュリティ状態の評価、セキュリティ推奨事項の提供、脅威についての警告を行います。 最初に Security Center にアクセスするときは、サブスクリプション内のすべての仮想マシンに対してデータ収集が有効になっています。 Security Center のポリシーでデータ収集を有効にすることもできます。
 
 ### <a name="how-do-i-disable-data-collection"></a>データ収集を無効にするにはどうしたらよいですか。
 Azure Security Center の Free レベルを使用している場合は、仮想マシンからのデータ収集をいつでも無効にすることができます。 データ収集は、Standard レベルのサブスクリプションでは必須の機能です。 サブスクリプションのデータ収集は、セキュリティ ポリシーで無効にできます。 ([Azure Portal にサインイン](https://portal.azure.com)して、**[参照]**、**[セキュリティ センター]**、**[ポリシー]** の順に選択します)。サブスクリプションを選択すると、新しいブレードが開き、**データ収集**をオフにするオプションが表示されます。
@@ -61,6 +61,10 @@ Azure サブスクリプションのデータ収集の有効化は、セキュ�
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>データ収集を有効にするとどうなりますか。
 データ収集を有効にすると、サブスクリプションにデプロイされる既存の仮想マシンと新しくサポートされる仮想マシンすべてで Microsoft Monitoring Agent が自動的にプロビジョニングされます。
+
+エージェントで、プロセス作成イベント 4688 とイベント 4688 内の *CommandLine* フィールドが有効になります。 VM に作成された新しいプロセスは EventLog に記録され、Security Center の検出サービスによって監視されます。 新しいプロセスごとに記録される詳細については、[4688 の説明フィールド](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)を参照してください。 また、エージェントは VM に作成された 4688 イベントも収集し、検索に保存します。
+
+[セキュリティ連絡先の情報](security-center-provide-security-contact-details.md)が指定されている場合、Security Center が VM で疑わしいアクティビティを検出すると、電子メールでユーザーに通知します。 Security Center のセキュリティ アラート ダッシュボードにもアラートが表示されます。
 
 ### <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Monitoring Agent はサーバーのパフォーマンスに影響しますか。
 エージェントは、システム リソースのわずかな量しか消費しないため、パフォーマンスにほとんど影響しません。 パフォーマンスの影響と、エージェントおよび拡張機能の詳細については、[計画および運用ガイド](security-center-planning-and-operations-guide.md#data-collection-and-storage)を参照してください。
@@ -116,7 +120,7 @@ Azure Security Center は、次の Azure リソースを監視します。
 * ([App Service 環境](../app-service/environment/intro.md)にある) Azure Web アプリ
 * Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および App Service Environment 上の Web アプリケーション ファイアウォールなど)
 
-## <a name="virtual-machines"></a>Virtual Machines
+## <a name="virtual-machines"></a>[Virtual Machines]
 ### <a name="what-types-of-virtual-machines-are-supported"></a>サポートされる仮想マシンのタイプは何ですか。
 監視と推奨事項は、[クラシック デプロイメント モデルと Resource Manager デプロイメント モデル](../azure-classic-rm.md)のどちらで作成された仮想マシン (VM) でも利用できます。
 
@@ -131,7 +135,7 @@ Azure Security Center では、Azure 拡張機能によりインストールさ�
 ### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Security Center は、オペレーティング システムの脆弱性、システムの更新、およびエンドポイントの保護の問題をどのくらいの頻度でスキャンしますか。
 脆弱性、更新プログラム、その他の問題を Security Center がスキャンするときの待ち時間は次の通りです。
 
-- (Microsoft の) オペレーティング システムの脆弱性 - 48 時間以内にデータを更新
+- オペレーティング システムのセキュリティ構成 - データは 48 時間以内に更新されます
 - システムの更新プログラム - 24 時間以内にデータを更新
 - Endpoint Protection の問題 - 8 時間以内にデータを更新
 

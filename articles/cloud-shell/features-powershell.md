@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 12/6/2017
+ms.date: 01/09/2018
 ms.author: damaerte
-ms.openlocfilehash: 31ba4b68850e14fc038df0bbe91146b90f8ca4b3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 45a5c474191192975bfd8d6fc1bf3c0e497d369c
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) での PowerShell の機能とツール
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/08/2017
 
 Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` 上で実行されます。
 
-## <a name="features"></a>Features (機能)
+## <a name="features"></a>機能
 
 ### <a name="secure-automatic-authentication"></a>セキュリティで保護された自動認証
 
@@ -48,7 +48,7 @@ Cloud Shell ではそれぞれの要求に応じて一時的なマシンが割�
 Cloud Shell (プレビュー) の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
 Azure ドライブを使うと、ファイル システムのナビゲーションと同じように、Compute、Network、Storage などの Azure リソースを簡単に検出およびナビゲーションできるようになります。
 引き続き、使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使ってこれらのリソースを管理できます。
-Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに即座に反映されます。
+Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレットを使って行われたものも、Azure ドライブにすぐに反映されます。
 
 ![](media/features-powershell/azure-drive.png)
 
@@ -58,19 +58,17 @@ Azure リソースに対するすべての変更は、Azure Portal で直接行�
 
     ![](media/features-powershell/resource-group-autocomplete.png)
 
-- **Get-AzureRmCommand**: このコマンドレットは、Azure ドライブ (`Azure:`) 下のその場所のコンテキストで使用できるコマンドの一覧を返します。 たとえば、ユーザーが `Azure:\<subscription name>\StorageAccounts` にいるときは、ストレージ関連のコマンドのみを表示します。
+- **Get-AzureRmCommand**: このコマンドレットは、Azure ドライブ (`Azure:`) 下の場所のコンテキストで使用できるコマンドの一覧を返します。 たとえば、ユーザーが `Azure:\<subscription name>\StorageAccounts` にいるときは、ストレージ関連のコマンドのみを表示します。
 
     ![](media/features-powershell/get-azurermcommand.png)
 
 ### <a name="rich-powershell-script-editing"></a>リッチな PowerShell スクリプトの編集
 
-PowerShell のファイル (`.ps1,.psm1,.psd1`) の編集に VIM を利用する場合、シンタックス ハイライトと IntelliSense が利用できます。
-
+VIM を使って PowerShell のファイル (`.ps1,.psm1,.psd1`) を編集すると、構文の強調表示と IntelliSense のサポートが自動的に得られます。
 IntelliSense のサポートは、[PowerShell エディター サービス](https://github.com/PowerShell/PowerShellEditorServices)のローカル インスタンスと対話する VIM プラグインを使って実装されています。
 
 > [!TIP]
-> `TAB` キーを使用すると、コマンド名、パラメーター名、およびパラメーター値 (該当する場合) の候補が表示されます (IntelliSense)。
-
+> `TAB` キーを使って、コマンド名、パラメーター名、およびパラメーター値 (該当する場合) の入力候補 (IntelliSense) を取得します。
 
 ![](media/features-powershell/powershell-editing-vim.png)
 
@@ -93,7 +91,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 
 |**カテゴリ**    |**名前**                                 |
 |----------------|-----------------------------------------|
-|Azure ツール     |[Azure PowerShell (5.0.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)<br> [Azure CLI (2.0.22)](https://docs.microsoft.com/cli/azure/overview)|
+|Azure ツール     |[Azure PowerShell (5.1.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.1.1)<br> [Azure CLI (2.0.23)](https://docs.microsoft.com/cli/azure/overview)|
 |テキスト エディター    |vim<br> nano                             |
 |パッケージ マネージャー |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |ソース管理  |git                                      |
@@ -109,7 +107,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 |PowerShell  |5.1 および [6.0 (ベータ)](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Cloud Shell (プレビュー) での PowerShell のクイックスタート](quickstart-powershell.md)
 

@@ -4,7 +4,7 @@ description: "Azure で Linux を実行する N シリーズ VM 用の NVIDIA GP
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/09/2017
+ms.date: 01/12/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59790185c4603eac99032dd77a79bd8315402538
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: de82062f605d060dc388022cdb8ee9d5c09b2b89
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -33,177 +33,7 @@ N シリーズ VM の仕様、ストレージの容量、およびディスク�
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-grid-drivers-for-nv-vms"></a>NV VM 用の GRID ドライバーのインストール
-
-NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM に SSH 接続を作成して、Linux ディストリビューションの手順に従います。 
-
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
-
-1. `lspci` コマンドを実行します。 NVIDIA M60 カードが PCI デバイスとして表示されていることを確認します。
-
-2. 更新プログラムをインストールします。
-
-  ```bash
-  sudo apt-get update
-
-  sudo apt-get upgrade -y
-
-  sudo apt-get dist-upgrade -y
-
-  sudo apt-get install build-essential ubuntu-desktop -y
-  ```
-3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
-
-  ```
-  blacklist nouveau
-
-  blacklist lbm-nouveau
-  ```
-
-
-4. VM を再起動し、再接続します。 X サーバーを終了します。
-
-  ```bash
-  sudo systemctl stop lightdm.service
-  ```
-
-5. GRID ドライバーをダウンロードしてインストールします。
-
-  ```bash
-  wget -O NVIDIA-Linux-x86_64-384.73-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
-
-  chmod +x NVIDIA-Linux-x86_64-384.73-grid.run
-
-  sudo ./NVIDIA-Linux-x86_64-384.73-grid.run
-  ``` 
-
-6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
-
-7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
-
-  ```bash
-  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
-  ```
-
-8. 次を `/etc/nvidia/gridd.conf` に追加します。
- 
-  ```
-  IgnoreSP=TRUE
-  ```
-9. VM を再起動して、インストールの確認に進みます。
-
-
-### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
-
-> [!IMPORTANT]
-> CentOS 7.3 または Red Hat Enterprise Linux 7.3 でカーネル バージョンを更新するために `sudo yum update` を実行しないでください。 現時点では、カーネルが更新された場合、ドライバーのインストールと更新プログラムは機能しません。
->
-
-1. カーネルと DKMS を更新します。
- 
-  ```bash  
-  sudo yum update
- 
-  sudo yum install kernel-devel
- 
-  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
- 
-  sudo yum install dkms
-  ```
-
-2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
-
-  ```
-  blacklist nouveau
-
-  blacklist lbm-nouveau
-  ```
- 
-3. VM を再起動して再接続し、HYPER-V の最新の Linux Integration Services をインストールします。
- 
-  ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3.tar.gz
-
-  tar xvzf lis-rpms-4.2.3.tar.gz
-
-  cd LISISO
-
-  sudo ./install.sh
-
-  sudo reboot
-
-  ```
- 
-4. VM に再接続して、`lspci` コマンドを実行します。 NVIDIA M60 カードが PCI デバイスとして表示されていることを確認します。
- 
-5. GRID ドライバーをダウンロードしてインストールします。
-
-  ```bash
-  wget -O NVIDIA-Linux-x86_64-384.73-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
-
-  chmod +x NVIDIA-Linux-x86_64-384.73-grid.run
-
-  sudo ./NVIDIA-Linux-x86_64-384.73-grid.run
-  ``` 
-6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
-
-7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
-  
-  ```bash
-  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
-  ```
-  
-8. 次を `/etc/nvidia/gridd.conf` に追加します。
- 
-  ```
-  IgnoreSP=TRUE
-  ```
-9. VM を再起動して、インストールの確認に進みます。
-
-### <a name="verify-driver-installation"></a>ドライバーのインストールの確認
-
-
-GPU デバイスの状態を照会するには、VM に SSH 接続し、ドライバーと共にインストールされる [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) コマンド ライン ユーティリティを実行します。 
-
-次のような出力が表示されます。 ドライバーのバージョンと GPU の詳細は、次の表示と異なる場合があります。
-
-![NVIDIA デバイスの状態](./media/n-series-driver-setup/smi-nv.png)
- 
-
-### <a name="x11-server"></a>X11 サーバー
-NV VM へのリモート接続用に X11 サーバーが必要な場合は、グラフィックスのハードウェア アクセラレータを許可している [x11vnc](http://www.karlrunge.com/x11vnc/) をお勧めします。 M60 デバイスの BusID は xconfig ファイルに手動で追加する必要があります (Ubuntu 16.04 LTS では `etc/X11/xorg.conf`、CentOS 7.3 または Red Hat Enterprise Server 7.3 では `/etc/X11/XF86config`)。 次のような `"Device"` セクションを追加します。
- 
-```
-Section "Device"
-    Identifier     "Device0"
-    Driver         "nvidia"
-    VendorName     "NVIDIA Corporation"
-    BoardName      "Tesla M60"
-    BusID          "your-BusID:0:0:0"
-EndSection
-```
- 
-また、このデバイスを使用するように `"Screen"` セクションを更新します。
- 
-BusID は次を実行して見つけることができます。
-
-```bash
-/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
-```
- 
-VM が再割り当てまたは再起動されると、BusID が変更される場合があります。 そのため、スクリプトを使用して、VM が再起動されたときに、X11 の構成で BusID を更新することができます。 For example:
-
-```bash 
-#!/bin/bash
-BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
-
-if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
-```
-
-このファイルは、`/etc/rc.d/rc3.d` でそのファイルのエントリを作成することで、起動時にルートとして呼び出すことができます。
-
-
-## <a name="install-cuda-drivers-for-nc-vms"></a>NC VM 用の CUDA ドライバーのインストール
+## <a name="install-cuda-drivers-for-nc-ncv2-and-nd-vms"></a>NC、NCv2、ND VM 用の CUDA ドライバーのインストール
 
 NVIDIA CUDA Toolkit から NVIDIA ドライバーを Linux NC VM にインストールする手順は次のとおりです。 
 
@@ -229,7 +59,7 @@ lspci | grep -i NVIDIA
 
 1. CUDA ドライバーをダウンロードしてインストールします。
   ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.0.176-1_amd64.deb
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
 
   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
@@ -280,9 +110,9 @@ sudo reboot
   >
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-1.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
  
-  tar xvzf lis-rpms-4.2.3-1.tar.gz
+  tar xvzf lis-rpms-4.2.3-2.tar.gz
  
   cd LISISO
  
@@ -300,7 +130,7 @@ sudo reboot
 
   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-9.0.176-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-9.1.85-1.x86_64.rpm
 
   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
@@ -327,19 +157,19 @@ sudo reboot
 
 GPU デバイスの状態を照会するには、VM に SSH 接続し、ドライバーと共にインストールされる [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) コマンド ライン ユーティリティを実行します。 
 
-次のような出力が表示されます。
+ドライバーがインストールされると、次のような出力が表示されます。 **GPU-Util** は、その時点で VM で GPU ワークロードを実行していない限り、0% と表示されます。 ドライバーのバージョンと GPU の詳細は、次の表示と異なる場合があります。
 
 ![NVIDIA デバイスの状態](./media/n-series-driver-setup/smi.png)
 
 
 
-## <a name="rdma-network-for-nc24r-vms"></a>NC24r VM の RDMA ネットワーク
+## <a name="rdma-network-connectivity"></a>RDMA ネットワーク接続
 
-RDMA ネットワーク接続は、同じ可用性セットにデプロイされた NC24r VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
+RDMA ネットワーク接続は、同じ可用性セットにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
 
 ### <a name="distributions"></a>ディストリビューション
 
-RDMA 接続をサポートする Azure Marketplace で、次のイメージの 1 つから NC24r VM をデプロイします。
+RDMA 接続をサポートする Azure Marketplace で、次のイメージの 1 つから RDMA 対応の N シリーズ VM をデプロイします。
   
 * **Ubuntu** - Ubuntu Server 16.04 LTS。 VM で RDMA ドライバーを構成し、Intel に登録して Intel MPI をダウンロードします。
 
@@ -347,6 +177,170 @@ RDMA 接続をサポートする Azure Marketplace で、次のイメージの 1
 
 * **CentOS-based HPC** - CentOS ベースの 7.3 HPC。 RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。 
 
+## <a name="install-grid-drivers-for-nv-vms"></a>NV VM 用の GRID ドライバーのインストール
+
+NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM に SSH 接続を作成して、Linux ディストリビューションの手順に従います。 
+
+### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+
+1. `lspci` コマンドを実行します。 NVIDIA M60 カードが PCI デバイスとして表示されていることを確認します。
+
+2. 更新プログラムをインストールします。
+
+  ```bash
+  sudo apt-get update
+
+  sudo apt-get upgrade -y
+
+  sudo apt-get dist-upgrade -y
+
+  sudo apt-get install build-essential ubuntu-desktop -y
+  ```
+3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+
+  ```
+  blacklist nouveau
+
+  blacklist lbm-nouveau
+  ```
+
+
+4. VM を再起動し、再接続します。 X サーバーを終了します。
+
+  ```bash
+  sudo systemctl stop lightdm.service
+  ```
+
+5. GRID ドライバーをダウンロードしてインストールします。
+
+  ```bash
+  wget -O NVIDIA-Linux-x86_64-384.111-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+
+  chmod +x NVIDIA-Linux-x86_64-384.111-grid.run
+
+  sudo ./NVIDIA-Linux-x86_64-384.111-grid.run
+  ``` 
+
+6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
+
+7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
+
+  ```bash
+  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+  ```
+
+8. 次を `/etc/nvidia/gridd.conf` に追加します。
+ 
+  ```
+  IgnoreSP=TRUE
+  ```
+9. VM を再起動して、インストールの確認に進みます。
+
+
+### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
+
+1. カーネルと DKMS を更新します。
+ 
+  ```bash  
+  sudo yum update
+ 
+  sudo yum install kernel-devel
+ 
+  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+ 
+  sudo yum install dkms
+  ```
+
+2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+
+  ```
+  blacklist nouveau
+
+  blacklist lbm-nouveau
+  ```
+ 
+3. VM を再起動して再接続し、HYPER-V の最新の Linux Integration Services をインストールします。
+ 
+  ```bash
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
+
+  tar xvzf lis-rpms-4.2.3-2.tar.gz
+
+  cd LISISO
+
+  sudo ./install.sh
+
+  sudo reboot
+
+  ```
+ 
+4. VM に再接続して、`lspci` コマンドを実行します。 NVIDIA M60 カードが PCI デバイスとして表示されていることを確認します。
+ 
+5. GRID ドライバーをダウンロードしてインストールします。
+
+  ```bash
+  wget -O NVIDIA-Linux-x86_64-384.111-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+
+  chmod +x NVIDIA-Linux-x86_64-384.111-grid.run
+
+  sudo ./NVIDIA-Linux-x86_64-384.111-grid.run
+  ``` 
+6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
+
+7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
+  
+  ```bash
+  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+  ```
+  
+8. 次を `/etc/nvidia/gridd.conf` に追加します。
+ 
+  ```
+  IgnoreSP=TRUE
+  ```
+9. VM を再起動して、インストールの確認に進みます。
+
+### <a name="verify-driver-installation"></a>ドライバーのインストールの確認
+
+
+GPU デバイスの状態を照会するには、VM に SSH 接続し、ドライバーと共にインストールされる [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) コマンド ライン ユーティリティを実行します。 
+
+ドライバーがインストールされると、次のような出力が表示されます。 **GPU-Util** は、その時点で VM で GPU ワークロードを実行していない限り、0% と表示されます。 ドライバーのバージョンと GPU の詳細は、次の表示と異なる場合があります。
+
+![NVIDIA デバイスの状態](./media/n-series-driver-setup/smi-nv.png)
+ 
+
+### <a name="x11-server"></a>X11 サーバー
+NV VM へのリモート接続用に X11 サーバーが必要な場合は、グラフィックスのハードウェア アクセラレータを許可している [x11vnc](http://www.karlrunge.com/x11vnc/) をお勧めします。 M60 デバイスの BusID は xconfig ファイルに手動で追加する必要があります (Ubuntu 16.04 LTS では `etc/X11/xorg.conf`、CentOS 7.3 または Red Hat Enterprise Server 7.3 では `/etc/X11/XF86config`)。 次のような `"Device"` セクションを追加します。
+ 
+```
+Section "Device"
+    Identifier     "Device0"
+    Driver         "nvidia"
+    VendorName     "NVIDIA Corporation"
+    BoardName      "Tesla M60"
+    BusID          "your-BusID:0:0:0"
+EndSection
+```
+ 
+また、このデバイスを使用するように `"Screen"` セクションを更新します。
+ 
+BusID は次を実行して見つけることができます。
+
+```bash
+/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
+```
+ 
+VM が再割り当てまたは再起動されると、BusID が変更される場合があります。 そのため、スクリプトを使用して、VM が再起動されたときに、X11 の構成で BusID を更新することができます。 例: 
+
+```bash 
+#!/bin/bash
+BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
+
+if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
+```
+
+このファイルは、`/etc/rc.d/rc3.d` でそのファイルのエントリを作成することで、起動時にルートとして呼び出すことができます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -355,10 +349,6 @@ RDMA 接続をサポートする Azure Marketplace で、次のイメージの 1
 * カードを照会する必要があるときにコマンドがより高速に出力されるように、`nvidia-smi` を使って永続化モードを設定できます。 永続化モードを設定するには、`nvidia-smi -pm 1` を実行します。 VM を再起動すると、モード設定は消失することに注意してください。 常にスタートアップ時に実行するように、モード設定をスクリプト処理できます。
 
 
-## <a name="next-steps"></a>次のステップ
-
-* N シリーズ VM の NVIDIA GPU の詳細については、次のサイトをご覧ください。
-    * [NVIDIA Tesla K80](http://www.nvidia.com/object/tesla-k80.html) (Azure NC VM 用)
-    * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html) (Azure NV VM 用)
+## <a name="next-steps"></a>次の手順
 
 * NVIDIA ドライバーがインストールされている Linux VM のイメージをキャプチャするには、「[Linux 仮想マシンを一般化してキャプチャする方法](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。

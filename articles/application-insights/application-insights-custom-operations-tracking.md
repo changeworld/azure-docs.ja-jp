@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 18712b1c19fc81e290ead62f73a177874ebe86cd
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 5c6f7521614d7c8337ef31fb8102c5715f83a58d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
@@ -40,14 +40,14 @@ Application Insights Web SDK は、IIS パイプラインで実行される ASP.
 
 キューからアイテムを受け取る worker も、独自の追跡が必要なケースです。 キューによっては、そのキューにメッセージを追加する呼び出しが、依存関係として追跡されます。 ただし、メッセージの処理を記述する上位の操作については、自動的には収集されません。
 
-そのような操作を追跡するには、どうすればよいのでしょうか。
+そのような操作がどのように追跡されるかを見てみましょう。
 
 簡潔に言うと、このタスクとは、`RequestTelemetry` を作成して既知のプロパティを設定することです。 操作が完了したら、このテレメトリを追跡します。 次の例は、このタスクを示しています。
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>Owin 自己ホスト型アプリにおける HTTP 要求
-この例では、[関連付け用の HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)を追跡します。 ここに記載されているヘッダーが受信されることを予期してください。
+この例では、トレース コンテキストは、[関連付け用の HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)に従って反映されます。 ここに記載されているヘッダーが受信されることを予期してください。
 
-``` C#
+```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
 {
     private readonly TelemetryClient telemetryClient = new TelemetryClient(TelemetryConfiguration.Active);
@@ -121,16 +121,18 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 この関連付け用の HTTP プロトコルも、`Correlation-Context` ヘッダーを宣言しますが、 ここでは、簡潔にするために省略されています。
 
 ## <a name="queue-instrumentation"></a>キューのインストルメンテーション
-HTTP 通信では、関連付けの詳細を渡すためのプロトコルが作成されています。 メッセージと共に補足的なメタデータを渡すことができるかどうかは、キューのプロトコルによって異なります。
+関連付けの詳細を HTTP 要求で渡す[関連付け用の HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)はありますが、各キュー プロトコルで、同じ詳細をキュー メッセージに沿って渡す方法を定義する必要があります。 一部のキュー プロトコル (AMQP など) は、追加のメタデータを渡すことを許可しています。また、コンテキストをメッセージ ペイロードにエンコードする必要があるキュー プロトコルもあります (Azure Storage Queue など)。
 
 ### <a name="service-bus-queue"></a>Service Bus キュー
-Azure [Service Bus キュー](../service-bus-messaging/index.md)では、メッセージと共にプロパティ バッグを渡すことができます。 それを使用して関連付け ID が渡されます。
+Application Insights は、新しい [Microsoft Azure ServiceBus Client for .NET](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) バージョン 3.0.0 以降で Service Bus Messaging の呼び出しを追跡します。
+[メッセージ ハンドラー パターン](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)を使用してメッセージを処理すると完了です。サービスによって実行されたすべての Service Bus の呼び出しは自動的に追跡され、他のテレメトリ項目と関連付けられます。 手動でメッセージを処理する場合は、[Microsoft Application Insights による Service Bus クライアントのトレース](../service-bus-messaging/service-bus-end-to-end-tracing.md)に関するページを参照してください。
 
-Service Bus キューでは、TCP ベースのプロトコルが使用されます。 キューの操作は、Application Insights で自動的には追跡されないので、独自に追跡することになります。 デキュー操作はプッシュ型の API であり、追跡することはできません。
+[WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) パッケージを使用している場合は以下を参照してください。Service Bus キューは AMQP プロトコルを使用し、Application Insights はキュー操作を自動的に追跡しないため、次の例では、Service Bus の呼び出しを追跡する (そして関連付ける) 方法を示します。
+相関 ID はメッセージ プロパティで渡されます。
 
 #### <a name="enqueue"></a>Enqueue
 
-```C#
+```csharp
 public async Task Enqueue(string payload)
 {
     // StartOperation is a helper method that initializes the telemetry item
@@ -168,7 +170,7 @@ public async Task Enqueue(string payload)
 ```
 
 #### <a name="process"></a>Process
-```C#
+```csharp
 public async Task Process(BrokeredMessage message)
 {
     // After the message is taken from the queue, create RequestTelemetry to track its processing.
@@ -208,7 +210,7 @@ Storage キューには HTTP API があります。 キューに対するすべ�
 
 ApplicationInsights を手動で構成する場合は、次のように `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule` を作成して初期化する必要があります。
  
-``` C#
+```csharp
 DependencyTrackingTelemetryModule module = new DependencyTrackingTelemetryModule();
 
 // You can prevent correlation header injection to some domains by adding it to the excluded list.
@@ -224,14 +226,14 @@ Application Insights の操作 ID を Storage の要求 ID に関連付けるこ
 #### <a name="enqueue"></a>Enqueue
 Storage キューは HTTP API をサポートしているため、キューを使ったすべての操作は自動的に ApplicationInsights によって追跡されます。 多くのケースには、このインストルメンテーションで対応することができます。 ただし、コンシューマー側のトレースとプロデューサー側のトレースを相互に関連付けるには、関連付け用の HTTP プロトコルでの実行方法に似た関連付けコンテキストを渡す必要があります。 
 
-この例では、省略可能な `Enqueue` 操作を追跡します。 次のことが行えます。
+この例は、`Enqueue` 操作を追跡する方法を示しています。 次のようにすることができます。
 
  - **再試行を関連付ける (存在する場合)**: すべての再試行には、`Enqueue` 操作という共通の親が 1 つ存在します。 また、受信要求の子として追跡されます。 キューに対する論理要求が複数存在する場合、どの呼び出しが再試行されたかを見極めることは難しいことがあります。
  - **Storage ログを関連付ける (存在する場合に必要に応じて)**: Storage ログは Application Insights のテレメトリに関連付けられます。
 
 `Enqueue` 操作は、親操作 (受信 HTTP 要求など) の子です。 HTTP の依存関係呼び出しは、`Enqueue` 操作の子であり、受信要求の孫でもあります。
 
-```C#
+```csharp
 public async Task Enqueue(CloudQueue queue, string message)
 {
     var operation = telemetryClient.StartOperation<DependencyTelemetry>("enqueue " + queue.Name);
@@ -285,7 +287,7 @@ public async Task Enqueue(CloudQueue queue, string message)
 
 多くの場合、他の追跡と同じように、HTTP 要求をキューに関連付けると有用である可能性があります。 これを行う方法を次の例に示します。
 
-``` C#
+```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
 {
     var telemetry = new DependencyTelemetry
@@ -334,9 +336,9 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
 
 #### <a name="process"></a>Process
 
-次の例では、受信 HTTP 要求を追跡するための方法に似た方法で、受信メッセージを追跡します。
+次の例では、受信メッセージは受信 HTTP 要求と同様の方法で追跡されます。
 
-```C#
+```csharp
 public async Task Process(MessagePayload message)
 {
     // After the message is dequeued from the queue, create RequestTelemetry to track its processing.
@@ -366,7 +368,7 @@ public async Task Process(MessagePayload message)
 
 他のキュー操作も、同じようにインストルメント化できます。 Peek 操作をインストルメント化する場合は、デキューと同様の方法を使用する必要があります。 キューの管理操作をインストルメント化する必要はありません。 HTTP などの操作は Application Insights によって追跡されます。ほとんどの場合はそれで十分です。
 
-メッセージの削除をインストルメント化するときは、必ず操作 (関連付け) ID を設定してください。 別の方法として、`Activity` API を使用することもできます。 その場合は、テレメトリ項目に対する操作 ID を自分で設定する必要はありません。それは Application Insights によって自動的に行われます。
+メッセージの削除をインストルメント化するときは、必ず操作 (関連付け) ID を設定してください。 別の方法として、`Activity` API を使用することもできます。 その場合は、テレメトリ項目に対する操作 ID を自分で設定する必要はありません。それは Application Insights SDK によって自動的に行われます。
 
 - キューから項目を取得した後、新しい `Activity` を作成します。
 - `Activity.SetParentId(message.ParentId)` を使用して、コンシューマーとプロデューサーのログを相互に関連付けます。
@@ -383,7 +385,7 @@ public async Task Process(MessagePayload message)
 ## <a name="long-running-background-tasks"></a>長時間実行されるバックグラウンド タスク
 アプリケーションの中には、ユーザーの要求によって発生する、長時間実行される操作を開始するものがあります。 トレース/インストルメンテーションの観点から見ると、これは要求や依存関係のインストルメンテーションと変わりません。 
 
-``` C#
+```csharp
 async Task BackgroundTask()
 {
     var operation = telemetryClient.StartOperation<RequestTelemetry>(taskName);
@@ -411,7 +413,7 @@ async Task BackgroundTask()
 }
 ```
 
-この例では、`telemetryClient.StartOperation` を使用して `RequestTelemetry` を作成し、関連付けのコンテキストを設定しています。 操作のスケジュールが設定された受信要求によって作成された親操作があるとします。 `BackgroundTask` が受信要求と同じ非同期制御フローで開始されていれば、受信要求はその親操作と関連付けられます。 `BackgroundTask` と、入れ子になっているすべてのテレメトリ項目は、(要求の終了後も) それを発生させた要求と自動的に関連付けられます。
+この例では、`telemetryClient.StartOperation` で `RequestTelemetry` を作成し、関連付けのコンテキストを設定しています。 操作のスケジュールが設定された受信要求によって作成された親操作があるとします。 `BackgroundTask` が受信要求と同じ非同期制御フローで開始されていれば、受信要求はその親操作と関連付けられます。 `BackgroundTask` と、入れ子になっているすべてのテレメトリ項目は、(要求の終了後も) それを発生させた要求と自動的に関連付けられます。
 
 いずれの操作 (`Activity`) も関連付けられていないバックグラウンド スレッドからタスクが開始された場合、`BackgroundTask` には親が存在しません。 ただし、入れ子になった操作が存在する可能性があります。 そのタスクから報告されるすべてのテレメトリ項目は、`BackgroundTask` で作成された `RequestTelemetry` に関連付けられます。
 
@@ -428,9 +430,33 @@ Application Insights がサポートしていない独自の依存関係や操�
 - 操作が完了したら、`StopOperation` を使用して操作を停止します。
 - 例外を処理します。
 
+```csharp
+public async Task RunMyTaskAsync()
+{
+    using (var operation = telemetryClient.StartOperation<DependencyTelemetry>("task 1"))
+    {
+        try 
+        {
+            var myTask = await StartMyTaskAsync();
+            // Update status code and success as appropriate.
+        }
+        catch(...) 
+        {
+            // Update status code and success as appropriate.
+        }
+    }
+}
+```
+
+操作を破棄すると操作が停止されるため、`StopOperation` を呼び出す代わりに実行することもできます。
+
+*警告*: 場合によっては、未処理の例外で `finally` が[呼び出されなくなる](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-finally)ことがあるため、操作が追跡されない可能性があります。
+
+### <a name="parallel-operations-processing-and-tracking"></a>並列操作の処理と追跡
+
 `StopOperation` だけが開始された操作を停止できます。 現在実行中の操作が停止する操作と一致しない場合、`StopOperation` は何も行いません。 この状況は、同じ実行コンテキストで複数の操作を並行して開始した場合に起こることがあります。
 
-```C#
+```csharp
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstOperation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
 var firstTask = RunMyTaskAsync();
@@ -440,35 +466,35 @@ var secondTask = RunMyTaskAsync();
 
 await firstTask;
 
-// This will do nothing and will not report telemetry for the first operation
+// FAILURE!!! This will do nothing and will not report telemetry for the first operation
 // as currently secondOperation is active.
 telemetryClient.StopOperation(firstOperation); 
 
 await secondTask;
 ```
 
-`StartOperation` の呼び出しとタスクの実行は、常に独自のコンテキストで行ってください。
-```C#
-public async Task RunMyTaskAsync()
+並行して実行されている操作を分離するには、常に同じ **async** メソッドで `StartOperation` を呼び出して操作を処理する必要があります。 操作が同期の場合 (つまり非同期ではない場合) は、プロセスをラップし、`Task.Run` を使用して追跡します。
+
+```csharp
+public void RunMyTask(string name)
 {
-    var operation = telemetryClient.StartOperation<DependencyTelemetry>("task 1");
-    try 
+    using (var operation = telemetryClient.StartOperation<DependencyTelemetry>(name))
     {
-        var myTask = await StartMyTaskAsync();
+        Process();
         // Update status code and success as appropriate.
     }
-    catch(...) 
-    {
-        // Update status code and success as appropriate.
-    }
-    finally 
-    {
-        telemetryClient.StopOperation(operation);
-    }
+}
+
+public async Task RunAllTasks()
+{
+    var task1 = Task.Run(() => RunMyTask("task 1"));
+    var task2 = Task.Run(() => RunMyTask("task 2"));
+    
+    await Task.WhenAll(task1, task2);
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Application Insights における[テレメトリの相関付け](application-insights-correlation.md)について基本的な知識を身に付けます。
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。

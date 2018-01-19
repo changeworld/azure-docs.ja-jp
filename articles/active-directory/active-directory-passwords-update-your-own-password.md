@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/11/2018
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 89ddbaff88584d83a109b68707f9a9b3accb8e70
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a2ba6c6b59ba4decdfd621a62ec07ae04bfb98cb
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="reset-your-work-or-school-password"></a>職場または学校のパスワードをリセットする
 
@@ -127,7 +127,7 @@ Azure AD のセルフサービスによるパスワードのリセット (SSPR) 
 | ユーザー ID の入力後に [アカウントは、パスワード リセットが有効になっていません。] というエラーが表示されます | アカウントは、パスワード リセットが有効になっていません。 <br> <br> 申し訳ありませんが、IT スタッフはお客様のアカウントでこのサービスを使用できるように設定していません。 <br> <br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。 | これは IT スタッフが [アカウントにアクセスできません] というリンクからのパスワードのリセットを有効にしていないため、またはその機能を使用するライセンスを付与していないために表示されます。 <br> <br> 自分のパスワードをリセットするには、[contact an administrator]\(管理者に連絡\) を選択して会社の IT スタッフにメールを送信し、パスワードをリセットしたいことを伝え、この機能を有効にしてもらう必要があります。 |
 | ユーザー ID の入力後に [お客様のアカウントを確認できませんでした] というエラーが表示されます | お客様のアカウントを確認できませんでした。 <br> <br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。 | このメッセージは、パスワードのリセットは有効になっていても、サービスを使用するための登録を行っていない場合に表示されます。 パスワードのリセットを登録するには、アカウントに再アクセスできるようになった後に http://aka.ms/ssprsetup に進みます。 <br> <br> 自分のパスワードをリセットするには、[contact an administrator]\(管理者に連絡\) を選択し、会社の IT スタッフにメールを送信します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [セルフサービスによるパスワードのリセットを使用するための登録方法](active-directory-passwords-reset-register.md)
 * [パスワードのリセット登録ページ](http://aka.ms/ssprsetup)
@@ -141,4 +141,3 @@ Azure AD のセルフサービスによるパスワードのリセット (SSPR) 
 [LoginScreen]: ./media/active-directory-passwords-update-your-own-password/login-screen.png "Windows 10 Fall Creators Update のログイン画面の [パスワードのリセット] リンク"
 [ContactMethod]: ./media/active-directory-passwords-update-your-own-password/reset-contact-method-screen.png "認証データを確認する"
 [ResetPassword]: ./media/active-directory-passwords-update-your-own-password/reset-password-screen.png "パスワードを変更する"
-

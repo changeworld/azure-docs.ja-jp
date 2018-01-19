@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/27/2017
 ms.author: robinsh
-ms.openlocfilehash: 73921f7fd4de65513f647db92b737a79f1043182
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/28/2017
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-* 汎用ストレージ アカウント。 ストレージ アカウントがない場合は、[Azure Portal](https://portal.azure.com)、[PowerShell](storage-quickstart-create-storage-account-powershell.md)、または [Azure CLI](storage-quickstart-create-storage-account-cli.md) を使って作成できます。
+* 汎用ストレージ アカウント。 ストレージ アカウントがまだない場合は、[ストレージ アカウントの作成](storage-quickstart-create-account.md)に関するページを参照してください。
 
 * この記事の例では、ストレージ アカウント内のコンテナーの一覧を表示する方法を示します。 出力を表示するには、始める前に、ストレージ アカウントの BLOB ストレージにコンテナーをいくつか追加してください。
 
@@ -562,11 +562,11 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 この記事では、Blob Storage REST API に対して要求を行って、コンテナーの一覧またはコンテナー内の BLOB の一覧を取得する方法を学習しました。 また、REST API 呼び出しの承認シグネチャを作成する方法、それを REST 要求で使う方法、および応答を調べる方法についても学習しました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Blob service の REST API](/rest/api/storageservices/blob-service-rest-api)
 * [ファイル サービスの REST API](/rest/api/storageservices/file-service-rest-api)
