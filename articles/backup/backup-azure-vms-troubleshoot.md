@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.openlocfilehash: d09208596de4609faace67e11926ad30f68cd901
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
@@ -64,7 +64,7 @@ ms.lasthandoff: 12/21/2017
 | Azure Backup サービスには、暗号化された仮想マシンのバックアップ用 Key Vault に対する十分な権限がありません。 |[PowerShell ドキュメント](backup-azure-vms-automation.md)の「**バックアップの有効化**」セクションの手順に従い、PowerShell を使って Backup サービスに適切なアクセス許可を付与する必要があります。 |
 |"COM+ が Microsoft 分散トランザクション コーディネーターと通信できませんでした" というエラーでスナップショット拡張機能のインストールが失敗しました | Windows サービス "COM+ システム アプリケーション" を起動してみてください (管理者特権のコマンド プロンプトで _net start COMSysApp_ を実行します)。 <br>起動中に失敗した場合は、以下の手順に従ってください。<ol><li> サービスのログオン アカウントが "分散トランザクション コーディネーター" または "ネットワーク サービス" であることを確認します。 そうでない場合は、"ネットワーク サービス" に変更してサービスを再度起動し、"COM+ システム アプリケーション" サービスを起動してみてください。<li>それでも起動できない場合は、以下の手順に従って、"分散トランザクション コーディネーター" サービスのアンインストールとインストールを行ってください。<br> - MSDTC サービスを停止します<br> - コマンド プロンプト (cmd) を開きます <br> - コマンド “msdtc -uninstall” を実行します <br> - コマンド “msdtc -install” を実行します <br> - MSDTC サービスを起動します<li>Windows サービスの "COM + システム アプリケーション" を起動し、サービスが起動されたら、ポータルからバックアップをトリガーします。</ol> |
 |  COM+ エラーが発生したため、スナップショット操作に失敗しました | 推奨される操作は、Windows サービス "COM+ System Application" を再起動 (管理者特権でのコマンド プロンプトから _net start COMSysApp_ を実行) することです。 問題が解決しない場合は、VM を再起動します。 VM を再起動しても問題が解決しない場合は、[VMSnapshot 拡張機能を削除](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#cause-3-the-backup-extension-fails-to-update-or-load)してバックアップを手動でトリガーしてみてください。 |
-| ファイル システムの一貫性のあるスナップショットの取得で VM の 1 つまたは複数のマウント ポイントをフリーズできませんでした | 次の手順に従います。 <ol><li>_'tune2fs'_ コマンドを使用して、マウントされているすべてのデバイスのファイル システムの状態を確認します。<br> 例: tune2fs -l /dev/sdb1 \| grep "Filesystem state" <li>ファイル システムの状態がクリーンではないデバイスを、_'umount'_ コマンドを使用してマウント解除します。 <li> これらのデバイスで、_'fsck'_ コマンドを使用して FileSystemConsistency チェックを実行します。 <li> デバイスを再度マウントして、バックアップをやり直します。</ol> |
+| ファイル システムの一貫性のあるスナップショットの取得で VM の 1 つまたは複数のマウント ポイントをフリーズできませんでした | 次の手順に従います。 <ol><li>_'tune2fs'_ コマンドを使用して、マウントされているすべてのデバイスのファイル システムの状態を確認します。<br> Eg: tune2fs -l /dev/sdb1 \| grep "Filesystem state" <li>ファイル システムの状態がクリーンではないデバイスを、_'umount'_ コマンドを使用してマウント解除します。 <li> これらのデバイスで、_'fsck'_ コマンドを使用して FileSystemConsistency チェックを実行します。 <li> デバイスを再度マウントして、バックアップをやり直します。</ol> |
 | セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました | <ol><Li> 管理者特権モードで regedit.exe を実行してレジストリ エディターを開きます。 <li> システムに存在するすべてのバージョンの .NetFramework を識別します。 それらは、レジストリ キーの階層 "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft" の下にあります。 <li> レジストリ キー内に存在する各 .NetFramework に対して、次のキーを追加します。 <br> "SchUseStrongCrypto"=dword:00000001 </ol>|
 | Visual Studio 2012 用の Visual C++ 再配布可能プログラムをインストールできないため、スナップショット操作が失敗しました | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2012_x64 をインストールします。 このサービスのインストールを許可するレジストリ キー値が正しい値に設定されていることを確認します。つまり、_HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver_ は  4 ではなく 3 に設定されている必要があります。 インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから _MSIEXEC /UNREGISTER_ と _MSIEXEC /REGISTER_ を続けて実行して、インストール サービスを再起動します。  |
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 12/21/2017
 | 進行中ではないためジョブを取り消すことができません - 取り消しがサポートされているのは、進行中のジョブだけです。 進行中のジョブの取り消しを試してください。 |これは一時的な状態が原因で発生しています。 しばらく待ってから取り消し操作をやり直してください。 |
 | ジョブを取り消すことができませんでした - ジョブが終了するまでお待ちください。 |なし |
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>Restore
 | エラーの詳細 | 対処法 |
 | --- | --- |
 | クラウドの内部エラーの復元に失敗しました |<ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。 次の内容をチェックすることができます。 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings<br>構成済みのアドレスがある場合は、DNS 設定が構成済みです。<br> <li>復元を試みているクラウド サービスが ReservedIP で構成されていて、クラウド サービスの既存の VM が停止状態になっています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。 <br>- ロード バランサー構成 (内部および外部の) での仮想マシン<br>- 複数の予約済み IP を持つ仮想マシン<br>- 複数の NIC を持つ仮想マシン<br>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)を参照してください。</ol> |

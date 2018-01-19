@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: b5160aec6504dfa924279286d9676a97716f5a6c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 68cc1a3b69e3e2d59a791a9241a1a8b4b3062673
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Python と Azure Portal を使用してグラフ データベースを作成する
 
@@ -135,28 +135,30 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
         password="<YOUR_PASSWORD>")
     ```
 
-3. `client` オブジェクトの 2 番目のパラメーターを、`<YOUR_DATABASE>` と `<YOUR_COLLECTION_OR_GRAPH>` の文字列に置き換えます。 提案された値を使った場合、パラメーターは次のコードのようになります。
+3. クライアント名の `graphs.azure.com` を `gremlin.cosmosdb.azure.com` に変更します。 (2017 年 12 月 20 日より前に作成したグラフ データベース アカウントの場合は、変更を行わずに次の手順に進んでください。)
+
+4. `client` オブジェクトの 2 番目のパラメーターを、`<YOUR_DATABASE>` と `<YOUR_COLLECTION_OR_GRAPH>` の文字列に置き換えます。 提案された値を使った場合、パラメーターは次のコードのようになります。
 
     `username="/dbs/sample-database/colls/sample-graph"`
 
     `client` オブジェクト全体は、次のコードのようになります。
 
     ```python
-    client = client.Client('wss://test.graphs.azure.com:443/','g', 
+    client = client.Client('wss://test.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/sample-database/colls/sample-graph", 
         password="<YOUR_PASSWORD>")
     ```
 
-4. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、`password=<YOUR_PASSWORD>` パラメーターの `<YOUR_PASSWORD>` に貼り付けます。
+5. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、`password=<YOUR_PASSWORD>` パラメーターの `<YOUR_PASSWORD>` に貼り付けます。
 
     `client` オブジェクトの定義全体は、次のコードのようになります。
     ```python
-    client = client.Client('wss://test.graphs.azure.com:443/','g', 
+    client = client.Client('wss://test.gremlin.cosmosdb.azure.com:443/','g', 
         username="/dbs/sample-database/colls/sample-graph", 
         password="asdb13Fadsf14FASc22Ggkr662ifxz2Mg==")
     ```
 
-5. `connect.py` ファイルを保存します。
+6. `connect.py` ファイルを保存します。
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 12/15/2017
 ms.author: JeffGo
-ms.openlocfilehash: e1752bfe40fb53568b79e2b7eec56ca9f3139d4c
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 71abceb1afe315a09ea88b593f9806e9e8b31f16
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
 
@@ -56,9 +56,13 @@ Azure Stack に MySQL リソース プロバイダーをデプロイできます
 
 2. 特権エンドポイント VM にアクセスできるホストにサインインします。
 
-    a. Azure Stack Development Kit (ASDK) のインストールで、物理ホストにサインインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 Azure Stack Development Kit (ASDK) のインストールで、物理ホストにサインインします。
 
     b. マルチノードのシステムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。
+    
+    >[!NOTE]
+    > スクリプトが実行されるシステムは、最新バージョンの .NET ランタイムがインストールされている Windows 10 または Windows Server 2016 システムである*必要があります*。 そうでない場合は、インストールが失敗します。 ASDK ホストは、この条件を満たします。
+    
 
 3. MySQL リソース プロバイダー バイナリをダウンロードし、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。
 
@@ -67,15 +71,19 @@ Azure Stack に MySQL リソース プロバイダーをデプロイできます
 
     | Azure Stack ビルド | MySQL RP インストーラー |
     | --- | --- |
-    | 1.0.171122.1 | [MySQL RP バージョン 1.1.10.0](https://aka.ms/azurestackmysqlrp) |
+    | 1.0.171122.1 | [MySQL RP バージョン 1.1.12.0](https://aka.ms/azurestackmysqlrp) |
     | 1.0.171028.1 | [MySQL RP バージョン 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
     | 1.0.170928.3 | [MySQL RP バージョン 1.1.3.0](https://aka.ms/azurestackmysqlrp1709) |
 
 4.  Azure Stack のルート証明書は、特権エンドポイントから取得されます。 ASDK には、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 
-    独自の証明書を提供する必要がある場合は、次の証明書が必要です。
+    独自の証明書を提供する必要がある場合は、次のように **DependencyFilesLocalPath** に配置された PFX ファイルが必要になります (下を参照)。
 
-    \*.dbadapter.\<region\>.\<external fqdn\> のワイルドカード証明書。 この証明書は、証明機関によって発行されるなど、信頼済みのものである必要があります。 つまり、信頼チェーンが中間証明書の必要なしに存在する必要があります。 1 つのサイト証明書は、インストール時に使用される明示的な VM 名 [mysqladapter] で使用できます。
+    - \*.dbadapter.\<region\>.\<external fqdn\> のワイルドカード証明書、または mysqladapter.dbadapter.\<region\>.\<external fqdn\> の一般名を持つ 1 つのサイト証明書のどちらか
+    - この証明書は、証明機関によって発行されるなど、信頼済みのものである必要があります。 つまり、信頼チェーンが中間証明書の必要なしに存在する必要があります。
+    - DependencyFilesLocalPath には 1 つの証明書ファイルしか存在しません。
+    - このファイル名に特殊文字を含めることはできません。
+
 
 
 5. **新しい**管理者特権の (管理の) PowerShell コンソールを開き、ファイルを抽出したディレクトリに変更します。 新しいウィンドウを使用すると、システムに不適切な PowerShell モジュールが既に読み込まれている場合に発生する可能性のある問題を回避できます。
@@ -150,7 +158,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 ### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 パラメーター
 これらのパラメーターはコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
 
-| パラメーター名 | 説明 | コメントまたは既定値 |
+| パラメーター名 | [説明] | コメントまたは既定値 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報です。 | _必須_ |
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報を指定します。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
@@ -160,8 +168,8 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード | _必須_ |
 | **MaxRetryCount** | 障害がある場合は、各操作を再試行する回数を定義します。| 2 |
 | **RetryDuration** | 再試行間のタイムアウトを秒単位で定義します。 | 120 |
-| **アンインストール** | リソース プロバイダーおよび関連付けられているすべてのリソース (以下のメモを参照) を削除します | いいえ |
-| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします | いいえ |
+| **アンインストール** | リソース プロバイダーおよび関連付けられているすべてのリソース (以下のメモを参照) を削除します | いいえ  |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします | いいえ  |
 | **AcceptLicense** | プロンプトをスキップして、GPL ライセンス (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) に同意します | |
 
 
@@ -257,6 +265,73 @@ SKU 名は、テナントが各自のデータベースを適切に配置でき�
 
 ![管理パスワードの更新](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
+## <a name="update-the-mysql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>MySQL リソース プロバイダー アダプターを更新する (マルチノードのみ、ビルド 1710 以降)
+Azure Stack ビルドが更新された場合は常に、新しい MySQL リソース プロバイダー アダプターがリリースされます。 既存のアダプターが引き続き機能する可能性はありますが、Azure Stack が更新されたら、できるだけ早く最新のビルドに更新することをお勧めします。 更新プロセスは、上で説明したインストール プロセスとほぼ同様です。 最新の RP コードを持つ新しい VM が作成され、データベースおよびホスティング サーバー情報や必要な DNS レコードを含む設定はこの新しいインスタンスに移行されます。
+
+上と同じ引数で UpdateMySQLProvider.ps1 スクリプトを使用します。 ここでも証明書を指定する必要があります。
+
+> [!NOTE]
+> 更新はマルチノード システムでのみサポートされています。
+
+```
+# Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules
+Install-Module -Name AzureRm.BootStrapper -Force
+Use-AzureRmProfile -Profile 2017-03-09-profile
+Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
+
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
+$domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
+# Point to the directory where the RP installation files were extracted
+$tempDir = 'C:\TEMP\SQLRP'
+
+# The service admin account (can be AAD or ADFS)
+$serviceAdmin = "admin@mydomain.onmicrosoft.com"
+$AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
+
+# Set credentials for the new Resource Provider VM
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
+
+# and the cloudadmin credential required for Privileged Endpoint access
+$CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
+
+# change the following as appropriate
+$PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# Change directory to the folder where you extracted the installation files
+# and adjust the endpoints
+. $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert `
+  -AcceptLicense
+ ```
+
+### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 パラメーター
+これらのパラメーターをコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
+
+| パラメーター名 | [説明] | コメントまたは既定値 |
+| --- | --- | --- |
+| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報です。 | _必須_ |
+| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報を指定します。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
+| **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報を定義します。 | _必須_ |
+| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名を指定します。 |  _必須_ |
+| **DependencyFilesLocalPath** | 証明書 PFX ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードには_必須_) |
+| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード | _必須_ |
+| **MaxRetryCount** | 障害がある場合は、各操作を再試行する回数を定義します。| 2 |
+| **RetryDuration** | 再試行間のタイムアウトを秒単位で定義します。 | 120 |
+| **アンインストール** | リソース プロバイダーおよび関連付けられているすべてのリソース (以下のメモを参照) を削除します | いいえ  |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします | いいえ  |
+| **AcceptLicense** | プロンプトをスキップして、GPL ライセンス (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) に同意します | |
+
 ## <a name="remove-the-mysql-resource-provider-adapter"></a>MySQL リソースプロバイダーのアダプターの削除
 
 リソース プロバイダーを削除するには、最初にすべての依存関係を削除する必要があります。
@@ -278,6 +353,6 @@ SKU 名は、テナントが各自のデータベースを適切に配置でき�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [SQL Server リソース プロバイダー](azure-stack-sql-resource-provider-deploy.md)や [App Services リソース プロバイダー](azure-stack-app-service-overview.md)のような他の [PaaS サービス](azure-stack-tools-paas-services.md)を試します。

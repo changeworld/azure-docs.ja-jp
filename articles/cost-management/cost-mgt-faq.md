@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2017
+ms.date: 12/14/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 67ec6489a6aeed946d41ac8b297d3d99b86e4169
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: f62e5a224c2fb33714a80bc47b98238208b787e5
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
 
@@ -46,6 +46,29 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 
 また、部門管理者、アカウント所有者、およびエンタープライズ管理者に、Billing API による "_請求を確認する_" アクセス許可を付与する必要がある場合もあります。
 
+## <a name="why-dont-i-see-optimizer-recommendations"></a>オプティマイザの推奨事項が表示されない理由
+
+推奨事項の情報は、アクティブ化されているアカウントでのみ使用できます。 *アクティブ化されていない*アカウントの**オプティマイザ** レポート カテゴリに推奨事項の情報は表示されません。これには次のものが含まれます。
+
+- 最適化マネージャー
+- サイズ設定の最適化
+- 非効率性
+
+オプティマイザの推奨事項データを表示できない場合は、たいてい、アクティブ化されていないアカウントを使用しています。 アカウントをアクティブ化するには、それを Azure の資格情報に登録する必要があります。
+
+アカウントをアクティブ化するには:
+
+1.  Cloudyn ポータルで、右上にある **[設定]** をクリックして **[クラウド アカウント]** を選択します。
+2.  [Microsoft Azure Accounts] (Microsoft Azure アカウント) タブで、**アクティブ化されていない**サブスクリプションを持つアカウントを探します。
+3.  アクティブ化されていないアカウントの右にある、鉛筆に似た **[編集]** 記号をクリックします。
+4.  テナント ID とレート ID が自動的に検出されます。 **[次へ]** をクリックします。
+5.  Azure Portal にリダイレクトされます。 ポータルにサインインし、Cloudyn Collector が Azure データにアクセスすることを承認します。
+6.  次に、[Cloudyn Accounts] (Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが**アクティブな**アカウント状態に更新されます。 そこには緑色のチェックマーク記号が表示されます。
+7.  1 つ以上のサブスクリプションに緑色のチェックマーク記号が表示されていない場合は、そのサブスクリプションのリーダー アプリ (CloudynCollector) を作成するためのアクセス許可がないことを示しています。 そのサブスクリプションのより高いアクセス許可を持つユーザーが手順 3 と 4 を繰り返す必要があります。  
+
+前の手順を完了すると、1 ～ 2 日以内にオプティマイザの推奨事項を表示できます。 ただし、完全な最適化データが入手可能になるまでに最大 5 日かかる場合があります。
+
+
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>中断またはロックアウトされたユーザーを有効にするにはどうすればよいですか
 
 ユーザーのアクセスの許可を要求するアラートを受け取った場合、そのユーザーのアカウントをアクティブにする必要があります。
@@ -66,10 +89,7 @@ Cloudyn の電子メール アドレスを Azure の既定のアドレスから�
 
 一方のアカウントがロックアウトされた場合を考慮して、Cloudyn の管理者アカウントを 2 つ以上作成することをお勧めします。
 
-Cloudyn ポータルにサインインできない場合は、Azure Cost Management の正しい URL を使用して Cloudyn にサインインしていることを確認します。 次のいずれかの URL を使用します。
-
-- https://azure.cloudyn.com
-- https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade
+Cloudyn ポータルにサインインできない場合は、Azure Cost Management の正しい URL を使用して Cloudyn にサインインしていることを確認します。 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade) を使用します。
 
 Cloudyn のダイレクト URL https://app.cloudyn.com は使用しないでください。
 

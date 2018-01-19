@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 01/04/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 60e90fbce525f4328671ecded9ad96583c4c3c9e
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5ce4e530dde0f7a050e3b43f469154d679f25a34
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Azure Virtual Machines に関するデータの収集
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、Azure Virtual Machines およびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  
@@ -30,7 +30,7 @@ ms.lasthandoff: 11/29/2017
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
-1. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br> ![Azure ポータル](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
+1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
 2. **[作成]** をクリックし、次の項目について選択します。
 
   * 新しい **OMS ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 
@@ -50,10 +50,10 @@ Azure に既にデプロイされている Windows および Linux の仮想マ�
 >[!NOTE]
 >Linux 用 OMS エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。 
 
-ポータルの Log Analytics リソース ページの上部に、アップグレードを促すバナーが表示されているのがわかります。  このクイック スタートの目的上、アップグレードは必要ありません。<br>
+Azure Government クラウドでワークスペースを作成した場合は、ポータルの Log Analytics リソース ページの上部に、アップグレードを促すバナーが表示されているのがわかります。  このクイック スタートの目的上、アップグレードは必要ありません。<br>
 
 ![Azure Portal に表示されている Log Analytics のアップグレード通知](media/log-analytics-quick-collect-azurevm/log-analytics-portal-upgradebanner.png)が必要です。    
-1. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、前の手順で作成した *DefaultLAWorkspace* を選択します。
 3. 左側のメニューの [ワークスペースのデータ ソース] で **[仮想マシン]** をクリックします。  
 4. **[仮想マシン]** の一覧で、エージェントをインストールする仮想マシンを選択します。 VM の **OMS 接続の状態**が **[未接続]** になっていることに注意してください。
@@ -87,12 +87,18 @@ Log Analytics は、イベントを Windows イベント ログまたは Linux S
 これでデータ収集は有効になりました。次は、簡単なログ検索の例を実行して、ターゲット VM のデータを表示してみましょう。  
 
 1. Azure Portal で Log Analytics に移動し、前の手順で作成したワークスペースを選択します。
-2. **[ログ検索]** タイルをクリックし、[ログ検索] ウィンドウのクエリ フィールドに「`Type=Perf`」と入力してから Enter キーを押すか、クエリ フィールドの右側にある検索ボタンをクリックします。<br> ![Log Analytics のログ検索クエリの例](./media/log-analytics-quick-collect-azurevm/log-analytics-portal-queryexample.png)<br> たとえば、次の画像のクエリでは、78,000 個のパフォーマンス レコードが返されています。  実際の結果はかなり少なくなります。<br> ![Log Analytics のログ検索の結果](media/log-analytics-quick-collect-azurevm/log-analytics-search-perf.png)
+2. **[ログ検索]** タイルをクリックし、[ログ検索] ウィンドウのクエリ フィールドに「`Perf`」と入力してから Enter キーを押すか、クエリ フィールドの右側にある検索ボタンをクリックします。<br> ![Log Analytics のログ検索クエリの例](./media/log-analytics-quick-collect-azurevm/log-analytics-portal-perf-query.png)<br> 
+
+   >[!NOTE]
+   >ワークスペースを Azure Government クラウドで作成した場合は、クエリ `Type=Perf` を使用します。  
+   >
+
+たとえば、次の画像のクエリでは、78,000 個のパフォーマンス レコードが返されています。  実際の結果はかなり少なくなります。<br> ![Log Analytics のログ検索の結果](media/log-analytics-quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 不要になった場合は、Log Analytics ワークスペースを削除します。 そのためには、作成した Log Analytics ワークスペースを選択し、リソース ページで **[削除]** をクリックします。<br> ![Log Analytics リソースを削除する](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次は Windows または Linux の仮想マシンからオペレーションおよびパフォーマンス データを収集し、*無料*で収集するデータの調査と分析、およびデータに対するアクションの実行を簡単に開始することができます。  
 
 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。   

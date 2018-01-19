@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3762a6e267540ef79577c3bf94ce27b648bd3534
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c0984075cd8e372cce09ea100378dcd4e8cddabe
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
 
@@ -88,12 +88,29 @@ Maven は、_artifactId_ という名前の新しいフォルダーに、プロ�
 
 ```java
 public class Function {
+    /**
+     * This function listens at endpoint "/api/hello". Two ways to invoke it using "curl" command in bash:
+     * 1. curl -d "HTTP Body" {your host}/api/hello
+     * 2. curl {your host}/api/hello?name=HTTP%20Query
+     */
     @FunctionName("hello")
-    public String hello(@HttpTrigger(name = "req", methods = {"get", "post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req,
-                        ExecutionContext context) {
-        return String.format("Hello, %s!", req);
+    public HttpResponseMessage<String> hello(
+            @HttpTrigger(name = "req", methods = {"get", "post"}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            final ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+
+        // Parse query parameter
+        String query = request.getQueryParameters().get("name");
+        String name = request.getBody().orElse(query);
+
+        if (name == null) {
+            return request.createResponse(400, "Please pass a name on the query string or in the request body");
+        } else {
+            return request.createResponse(200, "Hello, " + name);
+        }
     }
 }
+
 ```
 
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
@@ -105,6 +122,9 @@ cd fabrikam-function
 mvn clean package 
 mvn azure-functions:run
 ```
+
+> [!NOTE]
+> Java 9 でこの例外、`javax.xml.bind.JAXBException` が発生している場合は、[GitHub](https://github.com/jOOQ/jOOQ/issues/6477) で回避策を参照してください。
 
 関数を実行すると次のような出力が表示されます。
 
@@ -158,7 +178,7 @@ curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/h
 Hello AzureFunctions!
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 簡単な HTTP トリガーを使って Java 関数アプリを作成し、Azure Functions にデプロイしました。
 

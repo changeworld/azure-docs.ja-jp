@@ -1,6 +1,6 @@
 ---
-title: "Azure Search を使用したセキュリティによるトリミング"
-description: "Azure Search のフィルターを使用してセキュリティによるトリミングを実装します。"
+title: "Azure Search の結果をトリミングするためのセキュリティ フィルター | Microsoft Docs"
+description: "セキュリティ フィルターとユーザー ID を使用した Azure Search コンテンツに対するアクセス制御。"
 ms.custom: 
 ms.date: 08/07/2017
 ms.service: search
@@ -11,15 +11,15 @@ caps.latest.revision: "26"
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: 7ca5502efa281dcc0f374312d8f36f8c64d9c6c9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c829399f9c21846d8ee5b43945e2565565279820
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="security-trimming-with-azure-search"></a>Azure Search を使用したセキュリティによるトリミング
+# <a name="security-filters-for-trimming-results-in-azure-search"></a>Azure Search の結果をトリミングするためのセキュリティ フィルター
 
-検索結果にセキュリティ フィルターを適用して、ユーザー ID に基づいてドキュメントのアクセスを制限できます。 一般的に、このような検索エクスペリエンスでは、検索を実行したユーザーの ID と、ドキュメントにアクセス許可を持つユーザーに関する原則を含むフィールドを比較する必要があります。 一致が見つかった場合、ユーザーまたはプリンシパル (グループ、ロールなど) はそのドキュメントへのアクセス権を持っています。
+ユーザー ID に基づいて Azure Search の検索結果をトリミングするためのセキュリティ フィルターを適用できます。 一般的に、このような検索エクスペリエンスでは、検索を実行したユーザーの ID と、ドキュメントにアクセス許可を持つユーザーに関する原則を含むフィールドを比較する必要があります。 一致が見つかった場合、ユーザーまたはプリンシパル (グループ、ロールなど) はそのドキュメントへのアクセス権を持っています。
 
 セキュリティ フィルター処理を実現するには、`Id eq 'id1' or Id eq 'id2'` など、等値式の複雑な論理和演算を使用する方法があります。 この方法は誤りが発生しやすく、保守が困難です。また、一覧の値の数が数百、数千単位の場合、クエリの応答時間が何秒も遅くなります。 
 
@@ -155,3 +155,8 @@ api-key: [admin or query key]
 
 ここでは、ユーザー ID と Azure Search の `search.in()` 関数に基づいて結果をフィルターする方法について説明しました。 この関数を使用して、各ターゲット ドキュメントに関連付けられたプリンシパルの識別子と一致する要求元のユーザーについて、プリンシパルの識別子を渡すことができます。 検索要求が処理されると、`search.in` 関数によって、ユーザーのプリンシパルが読み取りアクセス権を持っていない検索結果は除外されます。 プリンシパルの識別子は、セキュリティ グループ、ロール、さらにはユーザー自身の ID を表す場合があります。
  
+## <a name="see-also"></a>関連項目
+
++ [Azure Search フィルターを使用した Active Directory の ID ベースのアクセス制御](search-security-trimming-for-azure-search-with-aad.md)
++ [Azure Search のフィルター](search-filters.md)
++ [Azure Search 操作でのデータ セキュリティとアクセス制御](search-security-overview.md)

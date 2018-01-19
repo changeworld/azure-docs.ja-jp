@@ -15,17 +15,17 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/02/2017
+ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 7f85d569fee4e13c28a09347159f16fc4b4ae626
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 131a1f77fa9c8d8e7b9ac5b01dee655b1aa1c3df
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal：SQL クエリ エディターを使用した接続とデータの照会
 
-SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。 
+SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +33,7 @@ SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL D
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -44,17 +44,15 @@ SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL D
 
 1. 左側のメニューの **[SQL データベース]** をクリックし、照会するデータベースをクリックします。
 
-2. データベースの SQL Database ページで、ツール バーの **[ツール]** をクリックします。 [ツール] ページが表示されます。
+2. データベースの SQL Database ページで、左側のメニューで **[Data explorer (プレビュー)]** を見つけてクリックします。
 
-    ![[ツール] メニュー](./media/sql-database-connect-query-portal/tools-menu.png)
+    ![クエリ エディターの検索](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. **[クエリ エディター (プレビュー)]** をクリックし、**[プレビューの使用条件]** チェック ボックスをオンにしてから **[OK]** をクリックします。 [クエリ エディター] ページが開きます。
+3. **[ログイン]** をクリックし、メッセージが表示されたら **[SQL Server 認証]** を選択して、データベースの作成時に指定したサーバー管理者ログインとパスワードを入力します。
 
-4. **[ログイン]** をクリックし、メッセージが表示されたら **[SQL Server 認証]** を選択して、データベースの作成時に指定したサーバー管理者ログインとパスワードを入力します。
+    ![login](./media/sql-database-connect-query-portal/login-menu.png)
 
-    ![login](./media/sql-database-connect-query-portal/login-menu.png) 
-
-5. **[OK]** をクリックしてログインします。
+4. **[OK]** をクリックしてログインします。
 
 
 ## <a name="connect-using-azure-ad"></a>Azure AD を使用して接続する
@@ -70,11 +68,11 @@ Active Directory 管理者を構成すると、1 つの ID で Azure Portal と 
 
 3. Active Directory 管理者ブレードで、**[管理者の設定]** をクリックし、Active Directory 管理者になるユーザーまたはグループを選択します。
 
-    ![Active Directory を選択する](./media/sql-database-connect-query-portal/select-active-directory.png) 
+    ![Active Directory を選択する](./media/sql-database-connect-query-portal/select-active-directory.png)
 
 4. Active Directory 管理者ブレードの上部にある **[保存]** をクリックして、Active Directory 管理者を設定します。
 
-照会する SQL Database に移動し、ツール バーの **[ツール]** をクリックして、**[クエリ エディター (プレビュー)]** を選択します。 クエリ エディター ページが開き、データベースに自動的に接続されます。
+クエリを実行する SQL データベースに移動し、左側のメニューから **[Data explorer (プレビュー)]** をクリックします。 Data explorer ページが開き、データベースに自動的に接続されます。
 
 
 ## <a name="run-query-using-query-editor"></a>クエリ エディターを使用してクエリを実行する
@@ -154,17 +152,17 @@ Active Directory 管理者を構成すると、1 つの ID で Azure Portal と 
 
 1. Azure SQL Server のファイアウォール設定で、[Azure サービスへのアクセスを許可する] が [オン] に設定されていることを確認します。 このオプションにより、SQL クエリ エディターは SQL データベースおよびデータ ウェアハウスにアクセスできるようになります。
 
-2. Azure Active Directory 管理者ログインは、2 要素認証が有効になっているアカウントでは機能しません。 
+2. Azure Active Directory 管理者ログインは、2 要素認証が有効になっているアカウントでは機能しません。
 
 3. 電子メール アカウント (outlook.com、hotmail.com、live.com、gmail.com、yahoo.com など) は、Active Directory 管理者としてまだサポートされていません。 Azure Active Directory でネイティブに作成されたユーザー、または Azure Active Directory にフェデレーションされたユーザーを必ず選択してください。
 
 4. クエリ エディタでは、空間データ型のクエリはまだサポートされていません。 空間列を照会すると、"System.IO.FileNotFoundException" エラーが発生します。
 
-5. データベース テーブルおよびビューでは、IntelliSense はサポートされていません。 ただし、エディターでは、既に入力されている名前のオート コンプリートをサポートしています。 
+5. データベース テーブルおよびビューでは、IntelliSense はサポートされていません。 ただし、エディターでは、既に入力されている名前のオート コンプリートをサポートしています。
 
 6. F5 キーを押すと、クエリ エディター ページが更新され、作業中のクエリが失われます。 クエリを実行するには、ツール バーの [実行] ボタンを使用します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Azure SQL Database でサポートされる Transact-SQL については、[SQL Database の Transact-SQL の相違点](sql-database-transact-sql-information.md)に関する記事をご覧ください。

@@ -13,16 +13,16 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 09/15/2017
+ms.date: 12/14/2017
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 4c3ca2a26fe47a8f0831a1ce4edf2c35911f3fc1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a2a7d15eb51374b828d1d641e0e6754115f7aaf6
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
-このドキュメントでは、PolyBase を使用して Azure Data Lake Store (ADLS) から SQL Data Warehouse にデータを読み込むために必要な手順を 1 つずつ説明します。
+このドキュメントでは、PolyBase を使用して Azure Data Lake Store (ADLS) から SQL Data Warehouse にデータを読み込むために必要なすべての手順について説明します。
 外部テーブルを使用すると、ADLS に格納されているデータに対してアドホック クエリを実行できます。ただし、ベスト プラクティスとしては、SQL Data Warehouse にデータをインポートすることをお勧めします。
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -44,13 +44,7 @@ ms.lasthandoff: 12/08/2017
 
 * Azure SQL Data Warehouse。作成方法については、https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision を参照してください。
 
-* 暗号化を有効または無効にした Azure Data Lake Store。 作成方法については、https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal を参照してください。
-
-
-
-
-## <a name="configure-the-data-source"></a>データ ソースの構成
-PolyBase では T-SQL 外部オブジェクトを使用して、外部データの場所と属性を定義します。 外部オブジェクトは、SQL Data Warehouse に格納され、外部に格納されているデータを参照します。
+* Azure Data Lake Store。作成方法については、https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal を参照してください。
 
 
 ###  <a name="create-a-credential"></a>資格情報を作成する
@@ -88,7 +82,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>外部データ ソースを作成する
-この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使って、データの場所とデータ型を格納します。 Azure Portal で ADL URI を見つけるには、Azure Data Lake Store に移動し、[基本] パネルを確認します。
+データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使用します。 Azure Portal で ADL URI を見つけるには、Azure Data Lake Store に移動し、[基本] パネルを確認します。
 
 ```sql
 -- C: Create an external data source
@@ -104,11 +98,8 @@ WITH (
 );
 ```
 
-
-
 ## <a name="configure-data-format"></a>データ形式の構成
 ADLS からデータをインポートするには、外部ファイル形式を指定する必要があります。 このコマンドには、ファイルの形式ごとにデータの記述に関するオプションが用意されています。
-一般的に使用されるファイル形式、つまりパイプで区切られたテキスト ファイルの例を次に示します。
 [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] の完全な一覧については、T-SQL のドキュメントを参照してください。
 
 ```sql
@@ -116,7 +107,7 @@ ADLS からデータをインポートするには、外部ファイル形式を
 -- FIELD_TERMINATOR: Marks the end of each field (column) in a delimited text file
 -- STRING_DELIMITER: Specifies the field terminator for data of type string in the text-delimited file.
 -- DATE_FORMAT: Specifies a custom format for all date and time data that might appear in a delimited text file.
--- Use_Type_Default: Store all Missing values as NULL
+-- Use_Type_Default: Store missing values as default for datatype.
 
 CREATE EXTERNAL FILE FORMAT TextFileFormat
 WITH
@@ -129,8 +120,8 @@ WITH
 );
 ```
 
-## <a name="create-the-external-tables"></a>外部テーブルの作成
-データ ソースとファイル形式を指定したら、外部テーブルを作成できます。 外部テーブルは、外部データを処理する方法を示したものです。 PolyBase は、再帰的なディレクトリ スキャンを使用して、location パラメーターで指定されたディレクトリのすべてのサブディレクトリを対象に、ファイルをすべて読み取ります。 また、次の例では、オブジェクトを作成する方法も紹介しています。 このステートメントは、ADLS 内のデータに合わせてカスタマイズする必要があります。
+## <a name="create-the-external-tables"></a>外部テーブルを作成する
+データ ソースとファイル形式を指定したら、外部テーブルを作成できます。 外部テーブルは、外部データを処理する方法を示したものです。 場所のパラメーターは、ファイルまたはディレクトリを指定できます。 ディレクトリを指定すると、そのディレクトリ内のすべてのファイルが読み込まれます。
 
 ```sql
 -- D: Create an External Table
@@ -161,18 +152,15 @@ WITH
 ## <a name="external-table-considerations"></a>外部テーブルに関する考慮事項
 外部テーブルを作成するのは簡単ですが、いくつかの点について説明しておく必要があります。
 
-PolyBase によるデータの読み込みは、厳密に型指定されます。 これは、取り込むデータの各行がテーブルのスキーマ定義を満たす必要があることを意味します。
-特定の行がスキーマの定義と一致しない場合、その行の読み込みは拒否されます。
+外部テーブルは厳密に型指定されます。 これは、取り込むデータの各行がテーブルのスキーマ定義を満たす必要があることを意味します。
+ある行がスキーマ定義に一致しない場合、その行の読み込みは拒否されます。
 
-REJECT_TYPE および REJECT_VALUE オプションでは､最終のテーブルに存在する必要がある行数またはデータの割合を定義することができます｡ 
-読み込み中に値が定義した数または割合に達すると、読み込み操作が失敗します。 行が拒否される最も一般的な原因は、スキーマ定義との不一致です。
-たとえば、ファイルに含まれるデータが文字列の場合に、列に int 型のスキーマが指定されていると、すべての行の読み込みが失敗します。
+REJECT_TYPE および REJECT_VALUE オプションでは、最終的なテーブルに存在する必要がある行数またはデータの割合を定義できます。読み込み中に、拒否される値に達した場合、その読み込みは失敗します。 行が拒否される最も一般的な原因は、スキーマ定義との不一致です。 たとえば、ファイルに含まれるデータが文字列の場合に、列に int 型のスキーマが指定されていると、すべての行の読み込みが失敗します。
 
-Location は、データの読み取りを開始する最上位のディレクトリを指定します。
-この場合、/DimProduct/ の下にサブディレクトリがあると、PolyBase はサブディレクトリ内のすべてのデータをインポートします。 Azure Data Lake Store は、ロール ベースのアクセス制御 (RBAC) を使って、データへのアクセスを制御します。 つまり、サービス プリンシパルは、Location パラメーターで定義されているディレクトリと、最終的なディレクトリとファイルの子に対する、読み取りアクセス許可を持っている必要があります。 これにより、PolyBase は認証を行って、そのデータを読み込むことができます。 
+ Azure Data Lake Store は、ロール ベースのアクセス制御 (RBAC) を使って、データへのアクセスを制御します。 つまり、サービス プリンシパルは、Location パラメーターで定義されているディレクトリと、最終的なディレクトリとファイルの子に対する、読み取りアクセス許可を持っている必要があります。 これにより、PolyBase は認証を行って、そのデータを読み込むことができます。 
 
 ## <a name="load-the-data"></a>データを読み込む
-Azure Data Lake Store からデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使用します。 CTAS による読み込みでは、自分で作成した厳密に型指定された外部テーブルを使用します。
+Azure Data Lake Store からデータを読み込むには、[CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] ステートメントを使用します。 
 
 CTAS により新しいテーブルが作成され、select ステートメントの結果が設定されます。 CTAS では、select ステートメントの結果と同じ列とデータ型が保持されるように、新しいテーブルが定義されます。 外部テーブルからすべての列を選択すると、新しいテーブルは、外部テーブルの列とデータ型のレプリカになります。
 
@@ -212,7 +200,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ## <a name="achievement-unlocked"></a>結果
 データが Azure SQL Data Warehouse に正常に読み込まれました。 すばらしい結果です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 データの読み込みは、SQL Data Warehouse を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 [テーブル](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)と [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops.md) に関する開発リソースを確認してください。
 
 

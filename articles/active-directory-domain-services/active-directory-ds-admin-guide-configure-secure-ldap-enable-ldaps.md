@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 12/15/2017
 ms.author: maheshu
-ms.openlocfilehash: e070dfad6ca51b941f1af60f85463f4534493dff
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d55abe651f69e3539e7584b40a7aedf419bccda1
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure Active Directory Domain Services の管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 
@@ -117,6 +117,7 @@ Secure LDAP を使用した管理対象ドメインへの接続に問題があ�
 * LDAP クライアント (ldp.exe など) が、IP アドレスではなく、DNS 名を使用して Secure LDAP エンドポイントに接続していることを確認します。
 * 管理対象ドメインで Secure LDAP のパブリック IP アドレスに解決される、LDAP クライアントの接続先の DNS 名を確認します。
 * 管理対象ドメインの Secure LDAP 証明書の "サブジェクト" 属性または "サブジェクトの別名" 属性に、上記の DNS 名が含まれていることを確認します。
+* インターネット上のセキュリティ保護された LDAP 経由で接続している場合は、仮想ネットワークの NSG 設定によってインターネットからポート 636 へのトラフィックが許可されていることを確認してください。
 
 Secure LDAP を使用した管理対象ドメインへの接続の問題が解決しない場合は、支援を得るために[製品チームに連絡](active-directory-ds-contact-us.md)してください。 問題を適切に診断できるように、次の情報を含めます。
 * ldp.exe が接続に失敗したことを示しているスクリーンショット。

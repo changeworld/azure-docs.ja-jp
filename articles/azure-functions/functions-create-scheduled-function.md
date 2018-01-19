@@ -13,18 +13,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/07/2017
+ms.date: 01/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b1c5ef3868a14f42d75720984ea19bb495b887e4
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 33f6cd9e10782bb8ff1b0ddf6d047aebc83f8008
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
-Azure Functions を使用して、定義したスケジュールに基づいて実行する関数を作成する方法について説明します。
+Azure Functions を使用して、定義したスケジュールに基づいて実行する[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数を作成する方法について説明します。
 
 ![Azure Portal での Function App の作成](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -71,13 +71,13 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
     ![Azure Portal の関数ログ ビューアー。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
-ここで、1 時間ごとなど、少ない頻度で実行するように、関数のスケジュールを変更できます。 
+ここで、1 分ごとではなく 1 時間ごとに実行するように、関数のスケジュールを変更します。 
 
 ## <a name="update-the-timer-schedule"></a>タイマー スケジュールの更新
 
 1. 関数を展開し、**[統合]** をクリックします。 ここでは、関数の入力および出力バインドを定義し、スケジュールも設定します。 
 
-2. 「`0 0 */1 * * *`」の新しい **[スケジュール]** 値を入力し、**[保存]** をクリックします。  
+2. `0 0 */1 * * *` の新しい 1 時間ごとの **[スケジュール]** 値を入力し、**[保存]** をクリックします。  
 
 ![関数が、Azure Portal のタイマー スケジュールを更新します。](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
@@ -87,7 +87,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 スケジュールに基づいて実行する関数を作成しました。
 

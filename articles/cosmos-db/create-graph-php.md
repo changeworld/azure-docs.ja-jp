@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 75be5be0bef4dd07c8560076f47055105a70ee05
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f80e682a89dcf6b5d3d5d6f2f15c4eeab2046e7
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを PHP と Azure Portal で作成する
 
@@ -137,7 +137,9 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     ]);
     ```
 
-3. 接続オブジェクトの `username` パラメーターを、お使いのデータベースとグラフの名前で変更します。 `sample-database` と `sample-graph` の推奨値を使った場合は、次のようになります。
+3. 2017 年 12 月 20 日以降に作成したグラフ データベース アカウントの場合は、ホスト名の `graphs.azure.com` を `gremlin.cosmosdb.azure.com` に変更します。
+
+4. 接続オブジェクトの `username` パラメーターを、お使いのデータベースとグラフの名前で変更します。 `sample-database` と `sample-graph` の推奨値を使った場合は、次のようになります。
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -155,7 +157,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     ]);
     ```
 
-4. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、パスワード パラメーターの `your_primary_key` に貼り付けます。
+5. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、パスワード パラメーターの `your_primary_key` に貼り付けます。
 
     Connection オブジェクトの初期化は次のようになります。
 
@@ -171,7 +173,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     ]);
     ```
 
-5. `connect.php` ファイルを保存します。
+6. `connect.php` ファイルを保存します。
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 

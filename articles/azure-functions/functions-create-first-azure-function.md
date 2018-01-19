@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/17/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 16680aaf2f49ae8ece440d0e44b49d6cd1f8fad7
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 754ca6e5297c3be9166efa7a40a5ba3714911c99
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
@@ -52,21 +52,25 @@ Azure Portal を開きます。 これを行うには、Azure アカウントで
    
     ![Azure Portal での関数のクイック スタート。](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-HTTP によってトリガーされる関数のテンプレートを使用して、選択した言語で関数が作成されます。 HTTP 要求を送信することによって、新しい関数を実行できます。
+HTTP によってトリガーされる関数のテンプレートを使用して、選択した言語で関数が作成されます。 このトピックでは Portal での C# スクリプト関数を示していますが、[サポートされている言語](supported-languages.md)で関数を作成することもできます。 
+
+ここで、HTTP 要求を送信することで、新しい関数を実行できます。
 
 ## <a name="test-the-function"></a>関数をテストする
 
-1. 新しい関数で、**[</> 関数の URL の取得]** をクリックし、**[default (Function key)\(既定 (関数キー)\)]** を選択して、**[コピー]** をクリックします。 
+1. 新しい関数で、右上の **[</> 関数の URL の取得]** をクリックし、**[既定値 (関数キー)]** を選択して、**[コピー]** をクリックします。 
 
     ![Azure Portal からの関数 URL のコピー](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. 関数 URL をブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `&name=<yourname>` を追加し、`Enter` キーを押して、要求を実行します。 次に、Edge ブラウザーで関数によって返された応答の例を示します。
+2. 関数 URL をブラウザーのアドレス バーに貼り付けます。 この URL の末尾にクエリ文字列 `&name=<yourname>` を追加し、キーボードで`Enter` キーを押して要求を実行します。 ブラウザーに表示される関数によって返される応答が表示されます。  
+
+    次に、Edge ブラウザーでの応答の例を示します (その他のブラウザーには表示されている XML が含まれることがあります)。
 
     ![ブラウザーでの関数の応答。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
     要求 URL には、既定では HTTP 経由で関数にアクセスするために必要なキーが含まれています。   
 
-3. 関数が実行されると、ログにトレース情報が書き込まれます。 前の実行からのトレース出力を表示するには、ポータルで関数に戻り、画面の下部にある上矢印をクリックして **[ログ]** を展開します。 
+3. 関数が実行されると、ログにトレース情報が書き込まれます。 前の実行からのトレース出力を表示するには、ポータルで関数に戻り、画面の下部にある矢印をクリックして **[ログ]** を展開します。 
 
    ![Azure Portal の関数ログ ビューアー。](./media/functions-create-first-azure-function/function-view-logs.png)
 
@@ -74,7 +78,7 @@ HTTP によってトリガーされる関数のテンプレートを使用して
 
 [!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 HTTP によってトリガーされる単純な関数を含む Function App を作成しました。  
 

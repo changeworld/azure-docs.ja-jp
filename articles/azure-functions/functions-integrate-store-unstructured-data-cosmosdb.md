@@ -17,15 +17,18 @@ ms.workload: na
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b64d994dbc8f53418981e33a1dcd3cf513838b92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9bb71adf85490fe68bf6b73133017c5e9c377e1
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure Functions と Azure Cosmos DB を使用して非構造化データを格納する
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、非構造化 JSON データを格納するうえで最適な手段です。 Cosmos DB は、Azure Functions と連携させると、リレーショナル データベースにデータを格納する場合よりもはるかに少ないコードですばやく簡単にデータを格納することができます。
+
+> [!NOTE]
+> 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、SQL API アカウントと Graph API アカウントにのみ使用できます。
 
 Azure Functions では、入力および出力バインディングによって、関数から外部サービス データに接続する宣言方法が提供されます。 このトピックでは、Cosmos DB ドキュメント内に非構造化データを格納する出力バインディングを追加するように既存の C# 関数を更新する方法について説明します。 
 
@@ -49,7 +52,7 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![Cosmos DB の出力バインディングの構成](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-configure-cosmosdb-binding.png)
 
-    | 設定      | 推奨値  | Description                                |
+    | 設定      | 推奨値  | [説明]                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **[ドキュメント パラメーター名]** | taskDocument | コード内で Cosmos DB オブジェクトを指す名前。 |
     | **[データベース名]** | taskDatabase | ドキュメントを保存するデータベースの名前。 |
@@ -62,10 +65,10 @@ Azure Functions では、入力および出力バインディングによって�
 
     ![Cosmos DB 接続の構成](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-create-CosmosDB.png)
 
-    | 設定      | 推奨値  | Description                                |
+    | 設定      | 推奨値  | [説明]                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | データベースの名前 | Azure Cosmos DB データベースの一意の ID  |
-    | **API** | SQL (DocumentDB) | ドキュメント データベース API を選択します。  |
+    | **API** | SQL | SQL API を選択します。 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、SQL API アカウントと Graph API アカウントにのみ使用できます。 |
     | **サブスクリプション** | Azure サブスクリプション | Azure サブスクリプション  |
     | **リソース グループ** | myResourceGroup |  関数アプリが含まれる既存のリソース グループを使用します。 |
     | **場所**  | 西ヨーロッパ | 関数アプリ、または格納されたドキュメントを使用するその他のアプリに近い場所を選択します。  |
@@ -138,8 +141,8 @@ Azure Cosmos DB に非構造化データを格納するバインディングを 
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
 
-Cosmos DB データベースへのバインドの詳細については、「[Azure Functions における Cosmos DB のバインド](functions-bindings-documentdb.md)」を参照してください。
+Cosmos DB データベースへのバインドの詳細については、「[Azure Functions における Cosmos DB のバインド](functions-bindings-cosmosdb.md)」を参照してください。

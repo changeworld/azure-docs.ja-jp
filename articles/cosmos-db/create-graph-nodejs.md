@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: faec967c1f5405cd9a5b49c16fed575f6675478c
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 95c0ac43e468d3655cfddc7ae0de6cefb649131d
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
 
@@ -129,9 +129,9 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-graph-nodejs/gremlin-uri.png)
 
-   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。 そのためには、**[URI]** の値を使用し、https:// を削除し、documents を graphs に変更してください。
+   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。 そのためには、**[URI]** の値を使用し、https:// を削除し、documents を gremlin.cosmosdb に変更してください。 2017 年 12 月 20 日より前に作成したグラフ アカウントの場合は、documents を graphs に変更します。 
 
-   Gremlin エンドポイントは、`mygraphdb.graphs.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.graphs.azure.com` や `mygraphdb.graphs.azure.com:433` は不可)。
+   Gremlin エンドポイントは、`mygraphdb.gremlin.cosmosdb.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.gremlin.cosmosdb.azure.com` や `mygraphdb.gremlin.cosmosdb.azure.com:433` は不可)。
 
 3. config.js の config.primaryKey の値に、Azure Portal の **[キー]** ページに表示される **[Primary Key]\(主キー\)** の値を設定します。 
 
@@ -147,7 +147,7 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 var config = {}
 
 // Note that this must not have HTTPS or the port number
-config.endpoint = "testgraphacct.graphs.azure.com";
+config.endpoint = "testgraphacct.gremlin.cosmosdb.azure.com";
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
 config.collection = "Persons"

@@ -2,24 +2,24 @@
 title: "Linux 上で Azure Service Fabric コンテナー アプリケーションを作成する | Microsoft Docs"
 description: "Azure Service Fabric で初めての Linux コンテナー アプリケーションを作成します。  アプリケーションの Docker イメージをビルドして、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。"
 services: service-fabric
-documentationcenter: .net
-author: rwike77
+documentationcenter: linux
+author: suhuruli
 manager: timlt
 editor: 
 ms.assetid: 
 ms.service: service-fabric
-ms.devlang: dotNet
+ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
-ms.author: ryanwi
+ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a3fa592e08ab05dfc56cf0c0c13eb6a64a7e2052
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 23cc9ce855eeba9e9a365e42beeee01b09f0fee3
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Azure Service Fabric Linux コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -66,23 +66,34 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
 > Web フロントエンド サービスは、ポート 80 で受信トラフィックをリッスンする構成になっています。 このポートがクラスターで開放されていることを確認してください。 パーティ クラスターを使用した場合、このポートは開放されています。
 >
 
-### <a name="deploy-the-application-manifests"></a>アプリケーション マニフェストのデプロイ 
+### <a name="install-service-fabric-command-line-interface-and-connect-to-your-cluster"></a>Service Fabric コマンド ライン インターフェイスをインストールしてクラスターに接続する
 CLI 環境内に [Service Fabric CLI (sfctl)](service-fabric-cli.md) をインストールする
 
 ```azurecli-interactive
 pip3 install --user sfctl 
 export PATH=$PATH:~/.local/bin
 ```
+
 Azure CLI を使用して Azure の Service Fabric クラスターに接続します。 エンドポイントはクラスターの管理エンドポイントです (`http://linh1x87d1d.westus.cloudapp.azure.com:19080` など)。
 
 ```azurecli-interactive
 sfctl cluster select --endpoint http://linh1x87d1d.westus.cloudapp.azure.com:19080
 ```
 
+### <a name="deploy-the-service-fabric-application"></a>Service Fabric アプリケーションをデプロイする 
+Service Fabric コンテナー アプリケーションは、記載されている Service Fabric アプリケーション パッケージまたは Docker Compose を使用してデプロイできます。 
+
+#### <a name="deploy-using-service-fabric-application-package"></a>Service Fabric アプリケーション パッケージを使用してデプロイする
 用意されているインストール スクリプトを使用してクラスターに投票アプリケーション定義をコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
 ```azurecli-interactive
 ./install.sh
+```
+
+#### <a name="deploy-the-application-using-docker-compose"></a>Docker Compose を使用してアプリケーションをデプロイする
+Docker Compose と次のコマンドを使用して、Service Fabric クラスターにアプリケーションをデプロイし、インストールします。
+```azurecli-interactive
+sfctl compose create --deployment-name TestApp --file-path docker-compose.yml
 ```
 
 ブラウザーを開いて、http://\<my-azure-service-fabric-cluster-url>:19080/Explorer (`http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer` など) で Service Fabric Explorer に移動します。 アプリケーション ノードを展開し、投票アプリケーションの種類と作成したインスタンスのエントリがあることを確認します。
@@ -133,7 +144,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 ./uninstall.sh
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、次の方法について説明しました。
 > [!div class="checklist"]
 > * Linux コンテナー アプリケーションの Azure へのデプロイ
