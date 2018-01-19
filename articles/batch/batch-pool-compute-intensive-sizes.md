@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: danlep
 ms.openlocfilehash: 26cab5ba892d892e035bd94c52cacabd23eebd0c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Batch プールでの RDMA 対応または GPU 対応インスタンスの使用
 

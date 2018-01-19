@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: ponatara
 ms.openlocfilehash: 2943d33744a29da7ffd1f1544fc81696195ecce1
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して Azure に移行した後、Azure VM を他のリージョンにレプリケートする
 
@@ -100,6 +100,6 @@ Windows Server コンピューターでモビリティ サービスをアンイ�
 モビリティ サービスをアンインストールしたら、他の Azure リージョンへのレプリケーションをセットアップする前に VM を再起動します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure 仮想マシンをレプリケート](../azure-to-azure-quickstart.md)してワークロードの保護を開始する。
 - [Azure 仮想マシンのレプリケートに関するネットワーク ガイダンス](../site-recovery-azure-to-azure-networking-guidance.md)の詳細を確認する。

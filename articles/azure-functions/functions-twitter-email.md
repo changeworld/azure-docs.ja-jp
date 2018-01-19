@@ -17,10 +17,10 @@ ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -51,7 +51,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 
 Cognitive Services APIs は、個々のリソースとして Azure で使用できます。 Text Analytics API を使用して、監視されているツイートのセンチメントを検出します。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 2. Azure Portal の左上にある **[新規]** ボタンをクリックします。
 
@@ -63,7 +63,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
     | --- | --- | --- |
     | **名前** | MyCognitiveServicesAccnt | 一意のアカウント名を選択します。 |
     | **場所** | 米国西部 | お近くの場所を使用します。 |
-    | **[価格レベル]** | F0 | まずは低いレベルを選んでください。 呼び出し回数が不足する場合は、高いレベルにスケーリングします。|
+    | **価格レベル** | F0 | まずは低いレベルを選んでください。 呼び出し回数が不足する場合は、高いレベルにスケーリングします。|
     | **[リソース グループ]** | myResourceGroup | このチュートリアルでは、すべてのサービスで同じリソース グループを使用します。|
 
 4. **[作成]** をクリックして、リソースを作成します。 作成されたら、ダッシュボードにピン留めされた新しい Cognitive Services リソースを選択します。 
@@ -141,7 +141,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     ![Azure Portal でロジック アプリを作成する](./media/functions-twitter-email/new_logic_app.png)
 
-    | Setting      |  推奨値   | Description                                        |
+    | 設定      |  推奨値   | Description                                        |
     | ----------------- | ------------ | ------------- |
     | **名前** | TweetSentiment | アプリの適切な名前を選択します。 |
     | **[リソース グループ]** | myResourceGroup | 以前と同じ既存のリソース グループを選択します。 |
@@ -165,7 +165,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     ![Twitter コネクタの設定](media/functions-twitter-email/azure_tweet.png)
 
-    | Setting      |  推奨値   | Description                                        |
+    | 設定      |  推奨値   | [説明]                                        |
     | ----------------- | ------------ | ------------- |
     | **[検索テキスト]** | #Azure | 選択した間隔で新しいツイートが十分に投稿される程度に一般的なハッシュタグを使用します。 Free レベルを使用している状態で、使用頻度の高すぎるハッシュタグを使用すると、Cognitive Services API でのトランザクションのクォータがすぐに上限に達してしまう場合があります。 |
     | **頻度** | [分] | Twitter のポーリングに使用する頻度の単位です。  |
@@ -228,7 +228,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     ![[電子メールの送信] アクション用に電子メールを構成する](media/functions-twitter-email/send_email.png)
 
-    | Setting      |  推奨値   | Description  |
+    | 設定      |  推奨値   | [説明]  |
     | ----------------- | ------------ | ------------- |
     | **To** | メール アドレスを入力します。 | 通知を受け取る電子メール アドレス。 |
     | **[件名]** | "ネガティブなツイートのセンチメントを検出しました"  | 電子メール通知の件名。  |
@@ -271,7 +271,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
 ![関数のログ](media/functions-twitter-email/disable-logic-app.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

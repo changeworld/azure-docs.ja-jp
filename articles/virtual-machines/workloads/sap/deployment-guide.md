@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.openlocfilehash: 4c06b1c8265a12af6764124e3c753e9456a2be20
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1005,7 +1005,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 2.  Azure Enhanced Monitoring Extension の出力を確認します。
 
-  a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters` を実行します。
+  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `more /var/lib/AzureEnhancedMonitor/PerfCounters` を実行します。
 
    **予想される結果**: パフォーマンス カウンターのリストが返されます。 ファイルを空にすることはできません。
 
@@ -1021,7 +1021,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 1.  waagent がインストールされ、有効になっていることを確認します。
 
-  a.  `sudo ls -al /var/lib/waagent/` を実行します。
+  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `sudo ls -al /var/lib/waagent/` を実行します。
 
       **予想される結果**: waagent ディレクトリの内容が表示されます。
 
@@ -1031,7 +1031,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 3.   Azure Enhanced Monitoring Extension がインストールされ、実行されていることを確認します。
 
-  a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` を実行します。
+  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` を実行します。
 
     **予想される結果**: Azure Enhanced Monitoring Extension ディレクトリの内容が表示されます。
 
@@ -1041,7 +1041,7 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 3. SAP Note [1031096] の説明に従って SAP Host Agent をインストールし、`saposcol` の出力を確認します。
 
-  a.  `/usr/sap/hostctrl/exe/saposcol -d` を実行します。
+  a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `/usr/sap/hostctrl/exe/saposcol -d` を実行します。
 
   b.  `dump ccm` を実行します。
 

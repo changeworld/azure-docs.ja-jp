@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
 ms.openlocfilehash: d2436ad639c53360f4d1afde99d668285b606aa9
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用して Azure Cosmos DB アカウントを作成する
 
