@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/16/2017
 ms.author: pratshar
-ms.openlocfilehash: 9902af83125f596f6dd5a1a6c955d00e9b5a87bc
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 1e85db7ce866943696979f61c0aa5104217acc62
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="test--failover-to-azure-in-site-recovery"></a>Site Recovery での Azure へのフェールオーバーをテストする
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/18/2017
 
     - Site Recovery は、VM の **[コンピューティングとネットワーク]** の設定で提供されたものと同じ名前と同じ IP アドレスのサブネットに、テスト VM の作成を試みます。
     - テスト フェールオーバーに使用される Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト VM が作成されます。
-    - サブネットで同じ IP アドレスを使用できない場合、VM はサブネットで使用できる別の IP アドレスを受け取ります。 [詳細情報](#creating-a-network-for-test-failover)
+    - サブネットで同じ IP アドレスを使用できない場合、VM はサブネットで使用できる別の IP アドレスを受け取ります。 [詳細情報](#creating-a-network-for-test-failover)。
 4. Azure にフェールオーバーしていて、データ暗号化が有効になっている場合は、**[暗号化キー]** で、プロバイダーのインストール中に暗号化を有効にしたときに発行された証明書を選びます。 暗号化が有効にされていない場合は、この手順を無視できます。
 5. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡します。テスト レプリカ マシンも Azure ポータルで確認できます。
 6. Azure VM への RDP 接続を開始するには、フェールオーバーされる VM のネットワーク インターフェイスで、[パブリック IP アドレスを追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)する必要があります。 
@@ -112,12 +112,12 @@ ms.lasthandoff: 10/18/2017
 
 **フェールオーバー** | **場所** | **アクション**
 --- | --- | ---
-**Windows で実行中の Azure VM** | フェールオーバー前のオンプレミスのコンピューター | インターネット経由で Azure VM にアクセスするには、RDP を有効にし、TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、**[Windows ファイアウォール]** > **[許可されたアプリ]** のすべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間接続で Azure VM にアクセスするには、コンピューターで RDP を有効にし、**[Windows ファイアウォール]** -> **[許可されたアプリおよび機能]** の **[ドメイン] と [プライベート]** ネットワークで RDP が許可されていることを確認します。<br/><br/>  オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)<br/><br/> フェールオーバーを開始する際は、実行待ちの Windows Update が VM にないことを確認してください。 フェールオーバーの実行時に Windows Update が開始された場合、更新が完了するまで VM にログインできなくなります。 
+**Windows で実行中の Azure VM** | フェールオーバー前のオンプレミスのコンピューター | インターネット経由で Azure VM にアクセスするには、RDP を有効にし、TCP と UDP の規則が **[パブリック]** に追加されていることを確認し、**[Windows ファイアウォール]** > **[許可されたアプリ]** のすべてのプロファイルで RDP が許可されていることを確認します。<br/><br/> サイト間接続で Azure VM にアクセスするには、コンピューターで RDP を有効にし、**[Windows ファイアウォール]** -> **[許可されたアプリおよび機能]** の **[ドメイン] と [プライベート]** ネットワークで RDP が許可されていることを確認します。<br/><br/>  オペレーティング システムの SAN ポリシーが **[OnlineAll]** に設定されていることを確認します。 [詳細情報](https://support.microsoft.com/kb/3031135)。<br/><br/> フェールオーバーを開始する際は、実行待ちの Windows Update が VM にないことを確認してください。 フェールオーバーの実行時に Windows Update が開始された場合、更新が完了するまで VM にログインできなくなります。 
 **Windows で実行中の Azure VM** | フェールオーバー後に Azure VM で |  VM の[パブリック IP アドレスを追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)します。<br/><br/> フェールオーバーされる VM (およびその接続先となる Azure サブネット) は、そのネットワーク セキュリティ グループの規則で、RDP ポートへの受信接続を許可する必要があります。<br/><br/> **[ブート診断]** をオンにして、VM のスクリーンショットを確認します。<br/><br/> 接続できない場合は、VM が実行中であることを確認したうえで、[トラブルシューティングのヒント](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)を確認してください。
 **Linux で実行中の Azure VM** | フェールオーバー前のオンプレミスのコンピューター | VM 上の Secure Shell サービスがシステム起動時に自動的に開始されるよう設定されていることを確認します。<br/><br/> ファイアウォール規則で SSH 接続が許可されていることを確認します。
 **Linux で実行中の Azure VM** | フェールオーバー後に Azure VM で | フェールオーバーされた VM (および接続先の Azure サブネット) のネットワーク セキュリティ グループの規則で、SSH ポートへの着信接続を許可する必要があります。<br/><br/> VM の[パブリック IP アドレスを追加](site-recovery-monitoring-and-troubleshooting.md#adding-a-public-ip-on-a-resource-manager-virtual-machine)します。<br/><br/> VM のスクリーンショットを得るために、**[ブート診断]** をオンにします。<br/><br/>
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ディザスター リカバリー ドリルが完了したら、他の種類の[フェールオーバー](site-recovery-failover.md)について学習します。

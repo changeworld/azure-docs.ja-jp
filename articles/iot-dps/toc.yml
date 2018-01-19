@@ -45,7 +45,7 @@
               href: quick-enroll-device-x509-java.md
             - name: Node.js
               href: quick-enroll-device-x509-node.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - クラウド リソースを設定する
       href: tutorial-set-up-cloud.md
@@ -77,6 +77,8 @@
       href: use-hsm-with-sdk.md
     - name: Provisioning Service へのアクセスの制御
       href: how-to-control-access.md
+    - name: Azure CLI を使用して Device Provisioning Service を管理する
+      href: how-to-manage-dps-with-cli.md
 - name: リファレンス
   items:
     - name: REST ()

@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/04/2018
 ms.author: larryfr
-ms.openlocfilehash: 250fb1dfed5cdab5308c2d91744e0cf051c32ccc
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a0a63c414bc68f5125b65e288d78fb546c376c04
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight の Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -95,7 +95,7 @@ GO
 
     ```sql
     SET ROWCOUNT 50;
-    SELECT * FROM mobiledata;"
+    SELECT * FROM mobiledata;
     ```
 
     このコマンドは、テーブルにインポートされた 50 行を一覧表示します。
@@ -105,7 +105,7 @@ GO
 1. 次のコマンドを使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
     データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
@@ -150,10 +150,10 @@ Sqoop を使用して、SQL Server からデータのインポートとエクス
     [sessionpagevieworder] [bigint])
     ```
 
-* HDInsight から SQL Server に接続するときに、SQL Server の IP アドレスの使用が必要な場合があります。 次に例を示します。
+* HDInsight から SQL Server に接続するときに、SQL Server の IP アドレスの使用が必要な場合があります。 例: 
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> -P <adminPassword> -table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> -P -table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
 ## <a name="limitations"></a>制限事項
@@ -162,7 +162,7 @@ Sqoop を使用して、SQL Server からデータのインポートとエクス
 
 * バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を行います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 

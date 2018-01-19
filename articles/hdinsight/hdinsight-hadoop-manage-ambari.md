@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/04/2018
 ms.author: larryfr
-ms.openlocfilehash: ec6e6d07b0933504ffee17912aac9ee3ef937688
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: dc1265c7af011b92a9f862cf2e91b47c3998b2e4
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -32,7 +32,7 @@ Apache Ambari には使いやすい Web UI と REST API が用意されている
 
 ## <a id="whatis"></a>Ambari とは
 
-[Apache Ambari](http://ambari.apache.org) は使いやすい Web UI を提供することにより、Hadoop の管理を簡略化します。 Ambari を使用して、Hadoop クラスターを作成、管理、および監視できます。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
+[Apache Ambari](http://ambari.apache.org) は使いやすい Web UI を提供することにより、Hadoop の管理を簡略化します。 Ambari を使って、Hadoop クラスターを管理および監視できます。 開発者は、 [Ambari REST API](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を使用して、これらの機能をアプリケーションに統合することができます。
 
 Ambari Web UI は、Linux オペレーティング システムを使用する HDInsight クラスターに既定で付属しています。
 
@@ -246,6 +246,6 @@ Ambari の次の操作は、HDInsight ではサポートされていません。
 
 * __メトリック コレクター サービスの移動__。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 HDInsight では、このアクションはサポートされていません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 HDInsight で [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) を使う方法を学習します。

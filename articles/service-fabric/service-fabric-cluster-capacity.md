@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: cf690b7e5b0a2b19282c1655b6dc32e9eec6884c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8e2fceaf7e8a0d6c177d3122bd07de5b8c11f295
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -69,7 +69,7 @@ ms.lasthandoff: 12/11/2017
 
 この特権は次のプランで表されます。
 
-* Gold - 1 つの更新ドメインにつき 2 時間、インフラストラクチャ ジョブを一時停止させることができます。 Gold の持続性は、D15_V2 や G5 などのフル ノードの VM SKU でのみ有効にできます。
+* Gold - 1 つの更新ドメインにつき 2 時間、インフラストラクチャ ジョブを一時停止させることができます。 Gold の持続性は、L32s、GS5、G5、DS15_v2、D15_v2 などのフル ノードの VM SKU でのみ有効にできます (一般に、http://aka.ms/vmspecs に列記されている VM サイズのうち、"インスタンスは、単一の顧客専用のハードウェアに分離されます" と指定されているものはすべて、フル ノード VM です)。
 * Silver - 1 つの更新ドメインにつき 10 分、インフラストラクチャ ジョブを一時停止させることができ、単一コア以上のすべての Standard VM で使用できます。
 * Bronze - 特権はありません。 既定のプランです。 この持続性レベルは、ステートレス ワークロード "_のみ_" を実行するノード タイプに対してのみ使用します。 
 
@@ -214,7 +214,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 容量計画が完了し、クラスターをセットアップしたら、以下のドキュメントをお読みください。
 
 * [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)

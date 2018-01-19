@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2016
 ms.author: inqiu;yijichen;ilanr9
-ms.openlocfilehash: ccad7e41921c2fecbac113f3b950f654c62b1c8e
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: bb3520d36e4c34c752fe388f3126da285e2161cd
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>エネルギーの需要予測のための Cortana Intelligence ソリューション テンプレートに関する技術ガイド
 ## <a name="overview"></a>**概要**
@@ -150,7 +150,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
     いずれかの Stream Analytics ジョブが、未加工の受信データを Blob Storage に書き込みます。 ソリューションが正常にデプロイされた画面からソリューションの **Azure Blob Storage** コンポーネントをクリックし、右側のパネルの **[開く]** をクリックすると、[Azure Portal](https://portal.azure.com) に移動します。 管理ポータルで、**[BLOB]** をクリックします。 次のパネルに、コンテナーの一覧が表示されます。 **[energysadata]** をクリックします。 次のパネルに、**demandongoing** フォルダーが表示されます。 rawdata フォルダーの中に、date=2016-01-28 などの名前の付いたフォルダーが表示されます。これらのフォルダーの表示は、生データがコンピューター上に正常に生成され、BLOB ストレージに格納されたことを示します。 これらのフォルダーの中には、有限サイズ (MB 単位) が設定されたファイルがあります。
 2. Azure SQL Database からデータを確認します。
 
-    パイプラインの最後の手順は、データ (Machine Learning からの予測など) を SQL Database に書き込むことです。 データが SQL Database に表示されるまで、最大 2 時間の待機が必要な場合があります。 SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure Portal](https://manage.windowsazure.com/) を使用することです。 左側のパネルで、[SQL データベース]![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) を見つけてそれをクリックします。 次に、データベース (例: demo123456db) を見つけてそれをクリックします。 次のページの **[データベースに接続する]** セクションで、**[SQL データベースに対して Transact-SQL クエリを実行する]** をクリックします。
+    パイプラインの最後の手順は、データ (Machine Learning からの予測など) を SQL Database に書き込むことです。 データが SQL Database に表示されるまで、最大 2 時間の待機が必要な場合があります。 SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure Portal](https://portal.azure.com/) を使用することです。 左側のパネルで、[SQL データベース] ![](media/cortana-analytics-technical-guide-demand-forecast/SQLicon2.png) を見つけてそれをクリックします。 次に、データベース (例: demo123456db) を見つけてそれをクリックします。 次のページの **[データベースに接続する]** セクションで、**[SQL データベースに対して Transact-SQL クエリを実行する]** をクリックします。
 
     ここで、[新しいクエリ] をクリックし、行数を照会できます (例: select count(*) from DemandRealHourly)。データベースが大きくなるにつれ、テーブル内の行数も増加します。
 3. Power BI ダッシュボードからデータを確認します。
@@ -167,7 +167,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 1. Azure Stream Analytics (ASA) に Power BI 出力を追加します。
 
    * Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、[Azure Stream Analytics と Power BI のストリーミング データをリアルタイムで表示するリアルタイム分析ダッシュボード](stream-analytics/stream-analytics-power-bi-dashboard.md)に関する記事の手順に従う必要があります。
-   * [Azure Portal](https://manage.windowsazure.com) で Stream Analytics ジョブを見つけます。 ジョブの名前は、<ソリューション名> + "streamingjob" + <ランダムな数字> + "asapbi" となっています (例: demostreamingjob123456asapbi)。
+   * [Azure Portal](https://portal.azure.com) で Stream Analytics ジョブを見つけます。 ジョブの名前は、<ソリューション名> + "streamingjob" + <ランダムな数字> + "asapbi" となっています (例: demostreamingjob123456asapbi)。
    * ASA ジョブに PowerBI 出力を追加します。 **[出力のエイリアス]** を「**PBIoutput**」に設定します。 **[データセット名]** と **[テーブル名]** を「**EnergyStreamData**」に設定します。 出力を追加したら、ページの下部にある **[開始]** をクリックして Stream Analytics ジョブを開始します。 確認メッセージが表示されます (例: "Stream Analytics ジョブ 'myteststreamingjob12345asablob' が正常に開始されました")。
 2. [Power BI オンライン](http://www.powerbi.com)
 
