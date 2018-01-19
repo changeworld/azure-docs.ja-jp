@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 06e8d99aa2ad4eb11e594a729c6dab39d5cd1eb6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac57894e4f180f42f80479d2031f4dd5ddfdb1be
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="move-storsimple-device-manager-service-from-classic-to-azure-portal-frequently-asked-questions-faq"></a>クラシック ポータルから Azure Portal への StorSimple デバイス マネージャー サービスの移行: よく寄せられる質問 (FAQ)
 
@@ -38,18 +38,22 @@ Azure クラシック ポータルで実行されている StorSimple デバイ�
 
 ### <a name="once-i-have-moved-to-azure-portal-can-i-still-create-a-storsimple-manager-service-in-the-classic-portal"></a>Azure Portal への移行後、StorSimple Manager サービスをクラシック ポータルで作成することはできますか?
 
-いいえ。 StorSimple Manager サービスを Azure Portal に移行した後は、クラシック ポータルで新しいサービスを作成できません。 また、クラシック ポータルでデバイスを管理することもできません。 詳しくは、「[サービスを Azure Portal に移動する](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)」をご覧ください。
+
+いいえ。 StorSimple Manager サービスを Azure Portal に移行した後は、クラシック ポータルで新しいサービスを作成できません。 また、[クラシック ポータルは 2018 年 1 月 8 日から使用できなくなります](https://azure.microsoft.com/updates/azure-portal-updates-for-classic-portal-users)。 
 
 ### <a name="i-have-multiple-storsimple-managers-running-in-the-classic-portal-can-i-choose-which-ones-to-move-to-the-azure-portal"></a>クラシック ポータルで複数の StorSimple Manager を実行しています。 Azure Portal に移行するものを選択できますか?
+
 
 いいえ。 Azure Portal に移行する StorSimple Manager を選択することはできません。 サブスクリプションのすべての StorSimple Manager が移行されます。
 
 
 ### <a name="i-initiated-the-migration-of-my-service-to-the-new-azure-portal-should-i-delete-the-storsimple-manager-from-the-classic-portal"></a>新しい Azure Portal へのサービスの移行を開始しました。 クラシック ポータルから StorSimple Manager を削除する必要がありますか? 
 
+
 いいえ。 クラシック ポータルから移行したサービスは削除しないでください。 移行が完了するまで待ち、すべての StorSimple Manager が新しいポータルに移行された後、クラシック ポータルからサービスを削除する必要はありません。 最終的に、クラシック ポータルは使用されなくなります。
 
 ### <a name="can-i-rename-my-storsimple-device-manager-service-in-the-azure-portal"></a>Azure Portal で StorSimple デバイス マネージャー サービスの名前を変更できますか?
+
 
 いいえ。 サービス名は、Azure Portal でサービスを作成した後に変更することはできません。 これは、他のエンティティ (デバイス、ボリューム、ボリューム コンテナー、バックアップ ポリシーなど) でも同様です。
 
@@ -67,22 +71,24 @@ StorSimple サービスの移行は、StorSimple Cloud Appliance の VM の管�
 
 Update 3.0 以上を実行している StorSimple Cloud Appliances モデル 8010/8020 を作成した場合は、新しい Azure Portal に移行するサービスの影響を受けません。 クラウド アプライアンスを問題なく完全に管理することができます。 
 
-クラシック ポータルで Update 3.0 より前のバージョンを実行しているクラウド アプライアンスがある場合は、制限された機能のみを使用できます。 詳しくは、[Update 3 より前のバージョンを実行しているデバイスでサポートされていない操作の一覧](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)に関するページをご覧ください。
+クラシック ポータルで Update 3.0 より前のバージョンを実行しているクラウド アプライアンスがある場合は、制限された機能のみを使用できます。 詳しくは、[Update 3 より前のバージョンを実行しているデバイスでサポートされていない操作の一覧](storsimple-8000-manage-service.md##supported-operations-on-devices-running-versions-prior-to-update-50)に関するページをご覧ください。
 
 クラウド アプライアンスは更新できません。 最新バージョンのソフトウェアを使用して新しいクラウド アプライアンスを作成してから、既存のボリューム コンテナーを新しく作成したクラウド アプライアンスにフェールオーバーします。 詳しくは、「[クラウド アプライアンスへのフェールオーバー](storsimple-8000-cloud-appliance-u2.md#fail-over-to-the-cloud-appliance)」をご覧ください
 
 
 ### <a name="my-storsimple-8000-series-device-is-running-update-20-i-migrated-my-service-to-new-azure-portal-my-device-connected-successfully-but-it-seems-that-i-am-not-able-to-fully-manage-my-device-how-do-i-resolve-this-behavior"></a>StorSimple 8000 シリーズ デバイスで Update 2.0 を実行しています。 サービスを新しい Azure Portal に移行しました。 デバイスは正常に接続されましたが、自分のデバイスを完全には管理できないように見えます。 解決するにはどうすればよいですか?
 
-新しい Azure Portal では、Update 3.0 以降を実行している StorSimple デバイスのみがサポートされます。 デバイスで Update 2.0 を実行していた場合、このデバイスで使用できる機能が制限されます。 詳しくは、[Update 3 より前のバージョンを実行しているデバイスでサポートされていない操作の一覧](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)に関するページをご覧ください。
+新しい Azure Portal では、Update 3.0 以降を実行している StorSimple デバイスのみがサポートされます。 デバイスで Update 2.0 を実行していた場合、このデバイスで使用できる機能が制限されます。 詳しくは、[Update 3 より前のバージョンを実行しているデバイスでサポートされていない操作の一覧](storsimple-8000-manage-service.md##supported-operations-on-devices-running-versions-prior-to-update-50)に関するページをご覧ください。
 
 デバイスを完全に管理するには、デバイスに最新の更新プログラムをインストールします。 詳しくは、[Update 5 のインストール](storsimple-8000-install-update-5.md)に関するページをご覧ください。
 
 ### <a name="i-just-moved-my-storsimple-manager-service-to-the-azure-portal-i-am-seeing-some-alerts-related-to-my-device-is-this-behavior-related-to-the-move"></a>Azure Portal に StorSimple Manager サービスを移行しました。 デバイスに関連するアラートがいくつか表示されます。 この動作は移行に関連するものですか?
 
+
 いいえ。 移行自体はエラーや警告の原因になりません。 アラートを解決するには、アラートの推奨事項に従ってください。
 
 ### <a name="i-am-using-a-storsimple-50007000-series-device-are-these-also-supported-in-the-azure-portal"></a>StorSimple 5000/7000 シリーズ デバイスを使用しています。 これらも Azure Portal でサポートされますか?
+
 
 いいえ。 StorSimple 5000/7000 シリーズ デバイスは Azure Portal ではサポートされていません。
 
@@ -95,6 +101,7 @@ StorSimple 5000/7000 シリーズ デバイスから、Azure Portal で実行し
 
 ### <a name="can-i-move-storsimple-device-manager-from-one-subscription-to-another-subscription-in-the-azure-portal"></a>StorSimple デバイス マネージャーをあるサブスクリプションから Azure Portal の別のサブスクリプションに移行できますか?
 
+
 いいえ。 StorSimple デバイス マネージャー サービスをサブスクリプション間で移動することはサポートされていません。 次の手順で構成される手動プロセスを実行することができます。
 
 * StorSimple デバイスからデータを移行します。
@@ -104,6 +111,7 @@ StorSimple 5000/7000 シリーズ デバイスから、Azure Portal で実行し
 
 ### <a name="do-i-have-to-migrate-the-storage-account-to-azure-resource-manager-deployment-model"></a>ストレージ アカウントを Azure Resource Manager デプロイメント モデルに移行する必要がありますか?
 
+
 いいえ。 従来のストレージ アカウントは、Azure Portal から完全に管理することができます。 StorSimple サービスを Azure Portal に移行すると、ストレージ アカウントは以前と同様に動作し続けます。
 
 ### <a name="what-happens-to-the-storage-account-after-the-service-is-migrated-to-the-azure-portal"></a>サービスが Azure Portal に移行された後、ストレージ アカウントはどうなりますか?
@@ -111,6 +119,7 @@ StorSimple 5000/7000 シリーズ デバイスから、Azure Portal で実行し
 サービスの移行は、ストレージ アカウントの管理とは無関係です。 クラシックと Azure Resource Manager の両方のストレージ アカウントを Azure Portal 内で完全に管理することができます。 Azure Portal にサービスを移行した後、デバイスはこのストレージ アカウントで実行を続け、データへの影響はありません。
 
 ### <a name="can-i-migrate-storsimple-device-manager-from-one-resource-group-to-another"></a>StorSimple デバイス マネージャーをリソース グループ間で移行することはできますか?
+
 
 いいえ。 あるリソース グループで作成された StorSimple デバイス マネージャーを別のリソース グループに移行することはできません。
 
@@ -126,29 +135,30 @@ Azure Portal には、サービス データ暗号化キーをロール オー�
 
 ### <a name="i-am-using-windows-powershell-for-storsimple-cmdlets-on-the-storsimple-device-to-perform-operations-such-extract-a-support-package-are-these-cmdlets-affected-when-i-move-to-the-new-azure-portal"></a>StorSimple 用 Windows PowerShell コマンドレットを StorSimple デバイスで使用して、サポート パッケージの抽出などの操作を実行しています。 新しい Azure Portal に移行すると、これらのコマンドレットは影響を受けますか?
 
+
 いいえ。 新しい Azure Portal に移行するサービスで、オンプレミスの StorSimple デバイス (これ自体は移行の影響を受けません) に関連付けられている StorSimple 用 Windows PowerShell コマンドレットに影響はありません。 引き続きこれらのコマンドレットを使用して、Azure Portal 上でも問題なくサポート パッケージを作成できます。 Azure クラシック デプロイメント モデルの PowerShell コマンドレットだけが、この移行の影響を受けます。
 
 ## <a name="moving-storsimple-data-manager-service"></a>StorSimple Data Manager サービスの移行
 
-### <a name="i-am-using-storsimple-data-manager-service-how-should-i-proceed-with-this-move"></a>StorSimple Data Manager サービスを使用しています。 この移行を進めるにはどうすればよいですか?
+### <a name="i-am-using-storsimple-data-manager-service-in-classic-azure-portal-how-should-i-proceed-with-this-move"></a>StorSimple Data Manager サービスをクラシック Azure ポータルで使用しています。 この移行を進めるにはどうすればよいですか?
 
-StorSimple Data Manager サービスを使用している場合は、まず StorSimple デバイス マネージャーを Azure Portal に移行する必要があります。 移行の完了後に、Azure Portal で新しい StorSimple Data Manager を作成します。 移行前に作成された StorSimple Data Manager は機能しません。
-
-StorSimple デバイス マネージャー サービスの移行について詳しくは、「[サービスを Azure Portal に移動する](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)」をご覧ください。 StorSimple Data Manager の作成について詳しくは、「[StorSimple データ マネージャー サービスを作成する](storsimple-data-manager-ui.md)」をご覧ください。
+StorSimple Data Manager サービスを使用している場合は、自動的に Azure Portal に移行されています。
 
 ## <a name="miscellaneous"></a>その他
 
 ### <a name="i-am-running-storsimple-snapshot-manager-for-my-8000-series-device-is-there-any-impact-on-storsimple-snapshot-manager-when-i-move-to-azure-portal"></a>8000 シリーズ デバイスの StorSimple Snapshot Manager を実行しています。 Azure Portal に移行すると、StorSimple Snapshot Manager に影響がありますか?
 
+
 いいえ。 Azure Portal にサービスを移行するときに、StorSimple Snapshot Manager への影響はありません。 デバイスと StorSimple Snapshot Manager は、以前と同様に動作し続けます。
 
 ### <a name="can-i-rename-my-storsimple-device-volume-containers-or-volumes"></a>StorSimple デバイス、ボリューム コンテナー、またはボリュームの名前を変更することはできますか?
 
+
 いいえ。 Azure Portal でデバイス、ボリューム、ボリューム コンテナーまたはバックアップ ポリシーの名前を変更することはできません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[StorSimple デバイス マネージャー サービスを Azure Portal に移行](storsimple-8000-manage-service.md#move-a-service-to-azure-portal)する方法の手順を確認します。
+[Update 5.0 より前のバージョンを実行しているデバイスでサポートされている操作](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-50)について参照します。
 
 
 

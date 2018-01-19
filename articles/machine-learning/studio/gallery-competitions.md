@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence ギャラリー コンペティション | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーでコンペティションを発見します。"
+title: "Azure AI ギャラリー コンペティション | Microsoft Docs"
+description: "Azure AI ギャラリーでコンペティションを発見します。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: e9c1ae9448ad7179c33bbbafa34a4643a4840d0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e39d636b3322201465700a4c9de83dda1bbefcc
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-competitions-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでコンペティションを発見する
+# <a name="discover-competitions-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでコンペティションを発見する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="cortana-intelligence-competitions"></a>Cortana Intelligence コンペティション
@@ -29,12 +29,12 @@ ms.lasthandoff: 10/11/2017
 コンペティションについてよく寄せられる質問とその回答については、「[Microsoft Cortana Intelligence コンペティションの FAQ](competition-faq.md)」をご覧ください。
 
 ## <a name="discover"></a>発見
-  ギャラリーでコンペティションを閲覧するには、[[ギャラリー]](http://gallery.cortanaintelligence.com) を開き、ギャラリー ホーム ページの上部にある **[詳細]** をマウスでポイントし、**[コンペティション]** を選択します。
+**[[コンペティション]](https://gallery.cortanaintelligence.com/competitions)** ページ ([aka.ms/CIComp](http://aka.ms/CIComp)) には、人気のある上位のコンペティションの一覧が表示されます。
 
 ![ギャラリー ホーム ページからコンペティションを選択する](./media/gallery-competitions/select-competitions-in-gallery.png)
 
- **[[コンペティション]](https://gallery.cortanaintelligence.com/competitions)** ページには、人気のある上位のコンペティションの一覧が表示されます。
-**[すべて表示]** をクリックし、すべてのコンペティションを表示します。
+ 
+ **[すべて表示]** をクリックし、すべてのコンペティションを表示します。
 このページで、ギャラリー内のすべてのコンペティションを見ることができます。 ページの左側にあるフィルター条件を選択し、上部に検索語句を入力して、検索することもできます。
 
  任意のコンペティションをクリックし、コンペティションの詳細ページを開いて詳細情報を参照します。 このページで、コメント セクションから、意見を述べたり、フィードバックを提供したり、質問したりできます。 LinkedIn や Twitter アカウントの共有機能を使用して、友人や同僚とを共有することもできます。 コンペティションへのリンクを電子メールで送信し、他のユーザーを招待してそのページを表示することもできます。

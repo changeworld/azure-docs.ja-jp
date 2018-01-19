@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence ギャラリー カスタム モジュール | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーでカスタム機械学習モジュールを発見します。"
+title: "Azure AI ギャラリー カスタム モジュール | Microsoft Docs"
+description: "Azure AI ギャラリーでカスタム機械学習モジュールを発見します。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 4bab94c04f09261eaa88b9e6a225c05f57992ab0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 278a24c44b76e6df097355b91d94a146be4aa9a9
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-custom-machine-learning-modules-in-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでカスタム機械学習モジュールを発見する
+# <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Azure AI ギャラリーでカスタム機械学習モジュールを発見する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="custom-modules-for-machine-learning-studio"></a>Machine Learning Studio 向けカスタムモジュール
-Cortana Intelligence ギャラリーには、Azure Machine Learning Studio の機能を拡張するいくつかの[カスタム モジュール](https://gallery.cortanaintelligence.com/customModules)が用意されています。 これらのモジュールをインポートして実験で使用し、さらに高度な予測分析ソリューションを開発することができます。
+Azure AI ギャラリーには、Azure Machine Learning Studio の機能を拡張するいくつかの[カスタム モジュール](https://gallery.cortanaintelligence.com/customModules)が用意されています。 これらのモジュールをインポートして実験で使用し、さらに高度な予測分析ソリューションを開発することができます。
 
 現在、ギャラリーには、*時系列分析*、*関連付けルール*、*クラスタリング アルゴリズム* (k-means 法以降)、*視覚化*、およびその他の役立つユーティリティ モジュールが用意されています。
 
@@ -49,10 +49,10 @@ Cortana Intelligence ギャラリーには、Azure Machine Learning Studio の�
 
 ![独自のコメントを追加する](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="import"></a>インポート
+## <a name="import"></a>[インポート]
 任意のカスタム モジュールをギャラリーから独自の実験にインポートできます。
 
-Cortana Intelligence ギャラリーには、モジュールのコピーをインポートする方法が 2 つ用意されています。
+Azure AI ギャラリーには、モジュールのコピーをインポートする方法が 2 つ用意されています。
 
 * **ギャラリーから**。 ギャラリーからカスタム モジュールをインポートするときに、モジュールの使用方法の例を示すサンプル実験も取得します。
 * **Machine Learning Studio 内から**。 Machine Learning Studio で作業しているときに、任意のカスタム モジュールをインポートできます (その場合、サンプル実験は取得しません)。

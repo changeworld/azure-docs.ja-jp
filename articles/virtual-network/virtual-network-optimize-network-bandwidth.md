@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 2f7a65d32f662d7e265e58c5fe7d9dea81a4e63c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 998956d00ae6d3be605163b566f5667a3bb95f38
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化
 
@@ -26,16 +26,16 @@ Azure 仮想マシン (VM) には既定のネットワーク設定がありま�
 
 ## <a name="windows-vm"></a>Windows VM
 
-Windows VM が[高速ネットワーク](virtual-network-create-vm-accelerated-networking.md)でサポートされている場合、その機能を有効にすると、スループットにとって最適な構成になります。 他のすべての Windows VM では、Receive Side Scaling (RSS) を使うと、RSS を使わない VM より高い最大スループットを実現できます。 Windows VM では、RSS が既定で無効になっている場合があります。 次の手順を実行して、RSS が有効かどうかを確認し、無効になっている場合は有効にします。
+Windows VM で[高速ネットワーク](create-vm-accelerated-networking-powershell.md)がサポートされている場合、その機能を有効にすると、スループットにとって最適な構成になります。 他のすべての Windows VM では、Receive Side Scaling (RSS) を使うと、RSS を使わない VM より高い最大スループットを実現できます。 Windows VM では、RSS が既定で無効になっている場合があります。 RSS が有効かどうかを判断し、現在無効になっている場合は有効にするには、次の手順を実行します。
 
-1. `Get-NetAdapterRss` PowerShell コマンドを入力して、ネットワーク アダプターに対して RSS が有効になっているかどうかを確認します。 `Get-NetAdapterRss` からの次の出力例では、RSS は有効になっていません。
+1. ネットワーク アダプターに対して RSS が有効になっているかどうかを、`Get-NetAdapterRss` PowerShell コマンドで確認します。 `Get-NetAdapterRss` からの次の出力例では、RSS は有効になっていません。
 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                 : False
     ```
-2. 次のコマンドを入力して、RSS を有効にします。
+2. RSS を有効にするには、次のコマンドを入力します。
 
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
@@ -46,7 +46,7 @@ Windows VM が[高速ネットワーク](virtual-network-create-vm-accelerated-n
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled              : True
+    Enabled                  : True
     ```
 
 ## <a name="linux-vm"></a>Linux VM
@@ -56,12 +56,14 @@ Azure Linux VM では、RSS は既定で常に有効になっています。 201
 ### <a name="ubuntu-for-new-deployments"></a>新規デプロイ用の Ubuntu
 
 Ubuntu Azure カーネルは、Azure 上で最適なネットワーク パフォーマンスを提供し、2017 年 9 月 21 日以降、既定のカーネルになっています。 このカーネルを入手するには、まず以下のように、サポートされている最新バージョンの 16.04-LTS をインストールします。
+
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
 "Sku": "16.04-LTS",
 "Version": "latest"
 ```
+
 作成が完了したら、次のコマンドを入力して、最新の更新プログラムを入手します。 次の手順は、Ubuntu Azure カーネルを現在実行している VM にも使用できます。
 
 ```bash
@@ -96,7 +98,8 @@ uname -r
 #4.11.0-1014-azure
 ```
 
-VM に Azure カーネルがない場合は、通常、バージョン番号は「4.4」で始まります。 この場合、次のコマンドを root として実行します。
+VM に Azure カーネルがない場合は、通常、バージョン番号は "4.4" で始まります。 VM に Azure カーネルがない場合は、ルートとして次のコマンドを実行します。
+
 ```bash
 #run as root or preface with sudo
 apt-get update
@@ -109,14 +112,15 @@ reboot
 ### <a name="centos"></a>CentOS
 
 最新の最適化を得るには、次のパラメーターを指定して、サポートされている最新バージョンを使用して VM を作成することをお勧めします。
+
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
 "Sku": "7.4",
 "Version": "latest"
 ```
-新規および既存の VM は、最新の Linux Integration Services (LIS) のインストールによりメリットを得られます。
-スループットの最適化は LIS の 4.2.2-2 以降に含まれていますが、新しいバージョンほどさらなる向上が含まれています。 次のコマンドを入力して、最新の LIS をインストールします。
+
+新規および既存の VM は、最新の Linux Integration Services (LIS) のインストールによりメリットを得られます。 スループットの最適化は LIS の 4.2.2-2 以降に含まれていますが、新しいバージョンほどさらなる向上が含まれています。 次のコマンドを入力して、最新の LIS をインストールします。
 
 ```bash
 sudo yum update
@@ -127,14 +131,15 @@ sudo yum install microsoft-hyper-v
 ### <a name="red-hat"></a>Red Hat
 
 最適化を得るには、次のパラメーターを指定して、サポートされている最新バージョンを使用して VM を作成することをお勧めします。
+
 ```json
 "Publisher": "RedHat"
 "Offer": "RHEL"
 "Sku": "7-RAW"
 "Version": "latest"
 ```
-新規および既存の VM は、最新の Linux Integration Services (LIS) のインストールによりメリットを得られます。
-スループットの最適化は、LIS の 4.2 以降に含まれています。 次のコマンドを実行して、LIS をダウンロードしてインストールします。
+
+新規および既存の VM は、最新の Linux Integration Services (LIS) のインストールによりメリットを得られます。 スループットの最適化は、LIS の 4.2 以降に含まれています。 次のコマンドを実行して、LIS をダウンロードしてインストールします。
 
 ```bash
 mkdir lis4.2.3-1
@@ -147,6 +152,7 @@ install.sh #or upgrade.sh if prior LIS was previously installed
 
 Linux Integration Services Version 4.2 for Hyper-V の詳細については、[ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=55106)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
-* これで、VM が最適化されました。使用中のシナリオについては、「[Azure VM の帯域幅とスループットのテスト](virtual-network-bandwidth-testing.md)」で結果を確認してください。
+## <a name="next-steps"></a>次の手順
+* 自分のシナリオで [Azure VM をテストする帯域幅/スループット](virtual-network-bandwidth-testing.md)の最適化された結果を確認します。
+* [仮想マシンに帯域幅が割り当てられる](virtual-machine-network-throughput.md)方法について確認します。
 * 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照してください。

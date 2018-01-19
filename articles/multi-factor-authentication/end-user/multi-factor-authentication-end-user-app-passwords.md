@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/05/2018
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 166a04fa18a57b239c195cbdd7b53a3baafbad65
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 55ca5ada0db30440e4599c77b7a6834ef671c7a4
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のアプリ パスワードとは
 現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。 多要素認証はユーザーごとに有効にします。 これは、ユーザーで多要素認証が有効になると、非ブラウザー アプリを使用しようとしても、操作を実行できないことを意味します。 アプリ パスワードによってこれが発生します。 ユーザーごとの MFA ではなく条件付きアクセス ポリシーを使用して Multi-Factor Authentication を適用する場合は、アプリ パスワードを作成できません。 条件付きアクセス ポリシーを使用してアクセスを制御するアプリケーションにはアプリ パスワードは不要です。
@@ -55,30 +55,12 @@ ms.lasthandoff: 12/13/2017
 ## <a name="manage-app-passwords-in-the-azure-portal"></a>Azure Portal でアプリ パスワードを管理する
 Azure で 2 段階認証を使用している場合は、Azure Portal でアプリ パスワードを作成できます。
 
-### <a name="to-create-app-passwords-in-the-azure-portal"></a>Azure ポータルでアプリ パスワードを作成するには
-1. Azure クラシック ポータルにサインインします。
-2. 上部のユーザー名を右クリックし、[追加のセキュリティ確認] を選択します。
-3. 確認ページの上部の [アプリ パスワード] を選択します。
-4. **Create** をクリックしてください。
-5. アプリ パスワードの名前を入力し、 **[次へ]**
-6. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
-
-   ![クラウド](./media/multi-factor-authentication-end-user-app-passwords/app2.png)
-
-
-### <a name="to-delete-app-passwords-in-the-azure-portal"></a>Azure ポータルでアプリ パスワードを削除するには
-1. Azure クラシック ポータルにサインインします。
-2. 上部のユーザー名を右クリックし、[追加のセキュリティ確認] を選択します。
-3. 上部で、追加のセキュリティ確認の隣にある **[アプリ パスワード]** を選択します。
-4. 削除するアプリ パスワードの横にある **[削除]** をクリックします。
-5. **[はい]**をクリックし、削除を確定します。
-6. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。
 
 
 ## <a name="manage-app-passwords-with-the-myapps-portal"></a>MyApps ポータルでアプリ パスワードを管理する
 多要素認証をどこで使用しているかわからない場合は、いつでも Myapps ポータルでアプリ パスワードの作成や削除ができます。
 
-### <a name="to-create-an-app-password-using-the-myapps-portal"></a>Myapps ポータルでアプリ パスワードを作成するには
+### <a name="to-create-an-app-password-using-the-myapps-portal"></a>MyApps ポータルでアプリ パスワードを作成するには
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 2. 右上にある名前をクリックし、**[プロファイル]** を選択します。
 3. **[追加のセキュリティ確認]** を選択します。
@@ -92,7 +74,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 7. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
    ![アプリケーション パスワードの作成](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
-### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>Myapps ポータルでアプリ パスワードを削除するには
+### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>MyApps ポータルでアプリ パスワードを削除するには
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 2. 上部にある [プロファイル] を選択します。
 3. **[追加のセキュリティ確認]** を選択します。
@@ -110,7 +92,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 6. **[はい]** をクリックして、そのパスワードを削除することを確定します。
 7. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 

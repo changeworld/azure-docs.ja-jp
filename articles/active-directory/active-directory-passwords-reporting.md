@@ -1,5 +1,5 @@
 ---
-title: "レポート: Azure AD SSPR | Microsoft Docs"
+title: "セルフサービスによるパスワード リセット レポート - Azure Active Directory"
 description: "Azure AD のセルフサービスによるパスワード リセット イベントのレポート"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 1d27dd77547c62a3c2f77aeba214f05326c9cab4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c1f8beaf73bfa424c9a5c86df430822b5626282b
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -64,6 +64,12 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 
 Azure AD レポートおよびイベント API では、パスワード リセットとパスワード リセット登録のレポートに含まれるすべての情報の取得がサポートされています。 この API を使用すると、パスワード リセットとパスワード リセット登録の個々のイベントをダウンロードして任意のレポート テクノロジと統合できます。
 
+> [!IMPORTANT]
+> 現時点では、Azure AD レポートおよびイベント API で取得できるのは、[SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) タイプと [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) タイプの最大 *75,000 個のイベント*です。 この API は、過去 30 日間が対象となります。
+> 
+> この期間を超えてデータを取得および保存する必要がある場合は、この API を使用してデータを外部データベースに保存し、クエリを実行して差分を得ることをお勧めします。 ご自分の組織で初めて SSPR を使用するときに、このデータの取得を開始することをお勧めします。 それを外部に保存したら、その時点から差分を追跡します。
+>
+
 ### <a name="how-to-get-started-with-the-reporting-api"></a>レポート API の使用を開始する方法
 
 このデータにアクセスするには、Microsoft のサーバーからそのデータを取得するための、小規模なアプリケーションまたはスクリプトを作成する必要があります。 詳細については、[Azure AD レポート API の概要](active-directory-reporting-api-getting-started.md)に関する記事をご覧ください。
@@ -72,12 +78,6 @@ Azure AD レポートおよびイベント API では、パスワード リセ�
 
 * [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): パスワード リセット イベントで利用可能な列を一覧表示します。
 * [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): パスワード リセット登録イベントで利用可能な列を一覧表示します。
-
-### <a name="reporting-api-data-retrieval-limitations"></a>レポート API によるデータ取得の制限事項
-
-現時点では、Azure AD レポートおよびイベント API で取得できるのは、[SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) タイプと [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) タイプの最大 *75,000 個のイベント*です。 この API は、*過去 30 日間*が対象となります。
-
-この期間を超えてデータを取得および保存する必要がある場合は、この API を使用してデータを外部データベースに保存し、クエリを実行して差分を得ることをお勧めします。 ご自分の組織で初めて SSPR を使用するときに、このデータの取得を開始することをお勧めします。 それを外部に保存したら、その時点から差分を追跡します。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure Portal でのレポートの列の説明
 
@@ -194,18 +194,18 @@ Azure AD レポートおよびイベント API では、パスワード リセ�
      >失敗は、ユーザーが自分のパスワードをリセットできないことを意味するわけではありません。 登録プロセスを完了していないことを意味します。 ユーザーのアカウントに未確認の正しいデータ (未確認の電話番号など) がある場合、そのデータを確認していなくても、パスワードのリセットに使用できます。 詳細については、[ユーザーの登録時に発生すること](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers)に関するページをご覧ください。
      >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/active-directory-passwords-reporting/sspr-reporting.png "Azure AD の SSPR アクティビティ監査ログの例"

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: ryanwi
-ms.openlocfilehash: 486a27d7ca576c8fe1552c02eb24ece6b8bb2ba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93c86f4805257aee8e04ef80e33b3cec0fd3c67d
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="package-an-application"></a>アプリケーションをパッケージ化する
 この記事では、Service Fabric アプリケーションをパッケージ化し、デプロイの準備をする方法について説明します。
@@ -48,7 +48,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 フォルダーには、それぞれの対応する要素の **Name** 属性と一致する名前が付けられます。 たとえば、**MyCodeA** と **MyCodeB** という名前の付いた 2 つのコード パッケージがサービス マニフェストに含まれている場合、各コード パッケージと同じ名前のフォルダーにそれぞれのコード パッケージに必要なバイナリが含まれます。
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint の使用
-**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する必要がある場合や、昇格した特権で操作を実行する必要がある場合になります。 次に例を示します。
+**SetupEntryPoint** を使用する際の一般的なシナリオは、サービス開始前に実行可能ファイルを実行する必要がある場合や、昇格した特権で操作を実行する必要がある場合になります。 例: 
 
 * サービス実行可能ファイルが使用する可能性がある環境変数の設定と初期化などです。 これは、Service Fabric のプログラミング モデルによって記述された実行可能ファイルだけに限定されません。 たとえば、npm.exe は node.js アプリケーションのデプロイに構成されているいくつかの環境変数が必要です。
 * セキュリティ証明書のインストールによるアクセス制御の設定
@@ -115,11 +115,11 @@ PS D:\temp>
 
 アプリケーションがデプロイされるクラスターが明らかな場合は、`ImageStoreConnectionString` パラメーターを渡すことをお勧めします。 この場合、パッケージは、既にクラスターで実行されている以前のバージョンのアプリケーションに対しても検証されます。 たとえば、この検証によって、バージョンは同じでコンテンツが異なるパッケージが既にデプロイされているかどうかを検出できます。  
 
-アプリケーションが正しくパッケージ化されて、検証に合格すると、圧縮が必要な場合は、サイズとファイルの数に基づいて評価が行われます。
+アプリケーションが正常にパッケージ化され、検証に合格したら、デプロイ操作を迅速化するためにパッケージを圧縮することを検討してください。
 
 ## <a name="compress-a-package"></a>パッケージを圧縮する
 パッケージが大きい場合や多数のファイルを含む場合は、短時間でデプロイできるようにこのパッケージを圧縮できます。 圧縮により、ファイル数を減らし、ファイルのサイズを小さくすることができます。
-圧縮されたアプリケーション パッケージの場合は、圧縮されていないパッケージと比較して、[パッケージのアップロード](service-fabric-deploy-remove-applications.md#upload-the-application-package)に時間がかかる場合があります (圧縮時間を含めた場合は特に) が、[アプリケーションの種類の登録](service-fabric-deploy-remove-applications.md#register-the-application-package)と[登録解除](service-fabric-deploy-remove-applications.md#unregister-an-application-type)は、圧縮されているパッケージの方が速くなります。
+圧縮されたアプリケーション パッケージの場合は、圧縮されていないパッケージと比較して、(圧縮がコピーの一部として実行される場合は特に) [パッケージのアップロード](service-fabric-deploy-remove-applications.md#upload-the-application-package)に時間がかかる場合があります。 圧縮されたパッケージの場合、アプリケーションの種類の[登録](service-fabric-deploy-remove-applications.md#register-the-application-package)と[登録解除](service-fabric-deploy-remove-applications.md#unregister-an-application-type)が高速になります。
 
 デプロイのメカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 パッケージが圧縮されている場合、パッケージはクラスター イメージ ストアに格納され、アプリケーションが実行される前にノード上で圧縮が解除されます。
 圧縮によって、有効な Service Fabric パッケージが、圧縮されたバージョンで置き換えられます。 フォルダーへの書き込みのアクセス許可を与える必要があります。 既に圧縮済みのパッケージの圧縮を実行しても、変化はありません。
@@ -127,8 +127,7 @@ PS D:\temp>
 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) Powershell コマンドを `CompressPackage` スイッチで実行して、パッケージを圧縮することができます。 `UncompressPackage` スイッチを使用して同じコマンドを実行すると、パッケージの圧縮を解除することができます。
 
 次のコマンドでは、パッケージをイメージ ストアにコピーせずに圧縮しています。 必要に応じて、[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) を `SkipCopy` フラグを指定せずに実行して、圧縮されたパッケージを 1 つまたは複数の Service Fabric クラスターにコピーすることができます。
-このパッケージには、`code`、`config`、`data` の各パッケージの zip 圧縮されたファイルが含まれています。 アプリケーション マニフェストとサービス マニフェストは、多くの内部操作 (パッケージ共有、特定の検証のためのアプリケーションの種類名とバージョンの抽出など) に必要なため、圧縮されません。
-マニフェストを zip 圧縮すると、これらの操作が非効率的になります。
+このパッケージには、`code`、`config`、`data` の各パッケージの zip 圧縮されたファイルが含まれています。 アプリケーション マニフェストとサービス マニフェストは、多くの内部操作に必要なため、圧縮されません。 たとえば、パッケージ共有、特定の検証のためのアプリケーションの種類名とバージョンの抽出では、必ずマニフェストへのアクセスが必要になります。 マニフェストを zip 圧縮すると、これらの操作が非効率的になります。
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -169,10 +168,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
-内部的に、Service Fabric がアプリケーション パッケージのチェックサムを計算して検証を行います。 圧縮を使用すると、各パッケージの zip 圧縮バージョンでチェックサムが計算されます。
-圧縮されていないアプリケーション パッケージのバージョンをコピーし、同じパッケージに圧縮を使用する場合は、チェックサムの不一致を避けるために、`code`、`config`、`data` の各パッケージのバージョンを変更する必要があります。 パッケージが変更されていない場合は、バージョンを変更する代わりに、[diff プロビジョニング](service-fabric-application-upgrade-advanced.md)を使用します。 このオプションでは、変更されていないパッケージは含めず、代わりにサービス マニフェストから参照します。
+内部的に、Service Fabric がアプリケーション パッケージのチェックサムを計算して検証を行います。 圧縮を使用すると、各パッケージの zip 圧縮バージョンでチェックサムが計算されます。 同じアプリケーション パッケージから新しい zip を生成すると、異なるチェックサムが作成されます。 検証エラーを防ぐには、[diff プロビジョニング](service-fabric-application-upgrade-advanced.md)を使用します。 このオプションを使用する場合は、変更されていないパッケージを新しいバージョンに含めないでください。 代わりに、新しいサービス マニフェストから直接参照してください。
 
-同様に、パッケージの圧縮バージョンをアップロードし、圧縮されていないパッケージを使用する場合は、チェックサムの不一致を避けるために、バージョンを更新する必要があります。
+diff プロビジョニングが選択肢とならず、パッケージを含める必要がある場合は、チェックサムの不一致を避けるために `code`、`config`、および `data` の各パッケージの新しいバージョンを生成してください。 圧縮されたパッケージを使用する場合は、以前のバージョンで圧縮が使用されているかどうかを問わず、変更されていないパッケージの新しいバージョンを生成する必要があります。
 
 これでパッケージは正しくパッケージ化、検証、および (必要に応じて) 圧縮されたため、1 つまたは複数の Service Fabric クラスターに[デプロイ](service-fabric-deploy-remove-applications.md)する準備ができました。
 
@@ -187,7 +185,27 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
     </PublishProfile>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="create-an-sfpkg"></a>sfpkg の作成
+バージョン 6.1 より、Service Fabric では外部ストアからのプロビジョニングが可能になりました。
+この場合、アプリケーション パッケージをイメージ ストアにコピーする必要はありません。 代わりに、`sfpkg` を作成して外部ストアにアップロードし、プロビジョニング時にダウンロード URI を Service Fabric に提供することができます。 同じパッケージを複数のクラスターにプロビジョニングできます。 外部ストアからプロビジョニングすることにより、パッケージを各クラスターにコピーするのに要する時間を節約できます。
+
+`sfpkg` ファイルは、初期アプリケーション パッケージを含む、拡張子が ".sfpkg" の zip です。
+zip には、圧縮されているアプリケーション パッケージと圧縮されていないアプリケーション パッケージのどちらも含めることができます。 zip 内のアプリケーション パッケージの圧縮は、[前述のように](service-fabric-package-apps.md#compress-a-package)、コード、構成、およびデータ パッケージ レベルで行われます。
+
+`sfpkg` を作成するには、圧縮されているかどうかにかかわらず、元のアプリケーション パッケージを含むフォルダーから開始します。 その後、任意のユーティリティを使用してフォルダーを圧縮して、拡張子 ".sfpkg" を付けます。 たとえば、[ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx) を使用します。
+
+```csharp
+ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
+```
+
+`sfpkg` は、Service Fabric の外部の帯域外の外部ストアにアップロードする必要があります。 外部ストアには、REST http または https エンドポイントを公開している任意のストアを指定できます。 プロビジョニング中、Service Fabric は、GET 操作を実行して `sfpkg` アプリケーション パッケージをダウンロードします。そのため、ストアではパッケージの READ アクセスを許可する必要があります。
+
+パッケージをプロビジョニングするには、ダウンロード URI とアプリケーションの種類の情報を必要とする外部プロビジョニングを使用します。
+
+>[!NOTE]
+> 現在、イメージ ストアの相対パスに基づくプロビジョニングでは、`sfpkg` ファイルはサポートされていません。 したがって、`sfpkg` をイメージ ストアにコピーしてはいけません。
+
+## <a name="next-steps"></a>次の手順
 「[アプリケーションのデプロイと削除][10]」では、PowerShell を使用してアプリケーション インスタンスを管理する方法について説明しています
 
 「[複数の環境のアプリケーション パラメーターの管理][11]」では、複数のアプリケーション インスタンスに対してパラメーターと環境変数を構成する方法について説明しています。

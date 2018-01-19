@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence ギャラリー、業界に特化したソリューション | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーで業界のソリューションを発見します。"
+title: "Azure AI ギャラリーの業界に特化したソリューション | Microsoft Docs"
+description: "Azure AI ギャラリーで業界に特化したソリューションを発見します。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 0dec0f47eced45c496399bc6b84169116dcc551d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b9f835620153d0e68e8c5504eab00d7b6e0f1e8
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-industry-specific-solutions-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーで業界に特化したソリューションを発見する
+# <a name="discover-industry-specific-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで業界に特化したソリューションを発見する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="industry-specific-cortana-intelligence-solutions"></a>業界に特化した Cortana Intelligence ソリューション

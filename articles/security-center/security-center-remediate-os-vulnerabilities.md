@@ -1,6 +1,6 @@
 ---
-title: "Azure Security Center での OS の脆弱性の修復 | Microsoft Docs"
-description: "このドキュメントでは、\"OS の脆弱性の修復\" という Azure Security Center の推奨事項を実装する方法について説明します。"
+title: "Azure Security Center でのセキュリティ構成の修復 | Microsoft Docs"
+description: "このドキュメントでは、**セキュリティ構成の修復**という Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,33 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 39879c22278a55f841e294cda5a89bec2bdf6988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 412234b1486fa15cbc399bcf43be8ce90aac252a
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>Azure Security Center での OS の脆弱性の修復
-Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨される構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。
+# <a name="remediate-security-configurations-in-azure-security-center"></a>Azure Security Center でのセキュリティ構成の修復
+Azure Security Center では、仮想マシン (VM) とコンピューターのオペレーティング システム (OS) を日々分析して、VM とコンピューターの攻撃に対する脆弱性を高める可能性のある構成を特定します。 Security Center では、OS 構成が推奨されるセキュリティ構成規則に適合していない場合に脆弱性を解決するよう推奨し、これらの脆弱性に対処するための構成変更を推奨します。
 
-> [!NOTE]
-> 監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。
->
->
+監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。 Security Center でセキュリティの構成の評価をカスタマイズする方法を学習するには、[OS セキュリティ構成のカスタマイズ](security-center-customize-os-security-config.md)に関する記事をご覧ください。
 
 ## <a name="implement-the-recommendation"></a>推奨事項の実装
-OS の脆弱性の修復は、Security Center に推奨事項として表示されます。 この推奨事項は、**[推奨事項]** と **[コンピューティング]** に表示されます。
+セキュリティ構成の不一致の修復は、Security Center に推奨事項として表示されます。 この推奨事項は、**[推奨事項]** と **[コンピューティング]** に表示されます。
 
-この例では、**[コンピューティング]** の **[OS の脆弱性の修復 (Microsoft による)]** を確認します。
+この例では、**[コンピューティング]** の **[セキュリティ構成の修復]** の推奨事項を確認します。
 1. Security Center のメイン メニューの **[コンピューティング]** を選択します。
 
-   ![OS の脆弱性の修復][1]
+   ![セキュリティ構成の修復][1]
 
-2. **[コンピューティング]** で、**[OS の脆弱性の修復 (Microsoft による)]** を選択します。 **[OS の脆弱性 (Microsoft による) の不一致]** ダッシュボードが開きます。
+2. **[コンピューティング]** で **[セキュリティ構成の修復]** を選択します。 **[セキュリティ構成]** が開きます。
 
-   ![OS の脆弱性の修復][2]
+   ![セキュリティ構成][2]
 
   ダッシュボードの上部には、次の情報が表示されます。
 
@@ -77,11 +74,11 @@ OS の脆弱性の修復は、Security Center に推奨事項として表示さ�
   - [実際の値] -- 規則と照らし合わせた VM の OS 構成の分析後に返された値
   - [規則の操作] -- 規則と照らし合わせた VM の OS 構成の分析中に Security Center で使用された規則の操作
 
-4. 上部のリボンの **[検索]** アイコンをクリックします。 [検索] が開き、選択した OS の脆弱性を持つ VM とコンピューターがあるワークスペースが一覧表示されます。 このワークスペース選択ブレードは、選択した規則が、異なるワークスペースに接続された複数の VM に適用されている場合にのみ表示されます。
+4. 上部のリボンの **[検索]** アイコンをクリックします。 [検索] が開き、選択したセキュリティ構成の不一致が存在する VM とコンピューターがあるワークスペースが一覧表示されます。 このワークスペース選択ブレードは、選択した規則が、異なるワークスペースに接続された複数の VM に適用されている場合にのみ表示されます。
 
   ![一覧表示されたワークスペース][4]
 
-5. ワークスペースを選択します。 Log Analytics 検索クエリが開き、OS の脆弱性が存在するワークスペースでフィルター処理されます。
+5. ワークスペースを選択します。 Log Analytics 検索クエリが開き、セキュリティ構成の不一致が存在するワークスペースでフィルター処理されます。
 
   ![OS の脆弱性が存在するワークスペース][5]
 
@@ -89,8 +86,10 @@ OS の脆弱性の修復は、Security Center に推奨事項として表示さ�
 
   ![対象のコンピューター用にフィルター処理された情報][6]
 
-## <a name="next-steps"></a>次のステップ
-この記事では、"OS の脆弱性の修復" という Security Center の推奨事項を実装する方法について説明しました。 構成規則のセットは [こちら](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)で確認できます。 Security Center では、CCE (Common Configuration Enumeration) を使用して構成規則に一意の識別子を割り当てます。 詳細については、 [CCE](https://nvd.nist.gov/cce/index.cfm) サイトをご覧ください。
+## <a name="next-steps"></a>次の手順
+この記事では、"セキュリティ構成の修復" という Security Center の推奨事項を実装する方法について説明しました。 Security Center でセキュリティの構成の評価をカスタマイズする方法を学習するには、[OS セキュリティ構成のカスタマイズ](security-center-customize-os-security-config.md)に関する記事をご覧ください。
+
+構成規則のセットは [こちら](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)で確認できます。 Security Center では、CCE (Common Configuration Enumeration) を使用して構成規則に一意の識別子を割り当てます。 詳細については、 [CCE](https://nvd.nist.gov/cce/index.cfm) サイトをご覧ください。
 
 Security Center の詳細については、次のリソースを参照してください。
 

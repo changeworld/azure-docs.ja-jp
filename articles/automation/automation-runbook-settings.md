@@ -1,6 +1,6 @@
 ---
 title: "Runbook の設定 | Microsoft Docs"
-description: "Azure Automation の Runbook の構成設定について説明し、Azure 管理ポータルと Windows PowerShell のそれぞれで設定を変更する方法について取り上げます。"
+description: "Azure Automation の Runbook の構成設定と、Azure Portal と Windows PowerShell を使用して設定を変更する方法について説明します。"
 services: automation
 documentationcenter: 
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-ms.openlocfilehash: 8d626465bcfdb4efa9cf85c41a2ee679e30eadaf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 527c40c4a0c5c9a0eb4745f542a8afcc63281416
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="runbook-settings"></a>Runbook の設定
 Azure Automation 内の各 Runbook には、それぞれを識別し、ログ記録の動作を変更するのに役立つ設定が複数あります。 これらの各設定を以下に示し、その後にそれらの変更方法手順を記します。
@@ -55,7 +55,7 @@ Runbook の設定変更は、Azure Portal で対象 Runbook の **[設定]** ブ
     Set-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName $automationAccountName –Name $runbookName –LogVerbose $true –Tags $tags
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Runbook の出力とメッセージ](automation-runbook-output-and-messages.md)に関するページで、Runbook の出力とエラー メッセージを作成および取得する方法について確認します 
 * [Runbook の作成またはインポート](automation-creating-importing-runbook.md)に関するページで、コミュニティまたはその他のソースによって開発された Runbook を追加する方法、または独自の Runbook を作成する方法を確認します 
 

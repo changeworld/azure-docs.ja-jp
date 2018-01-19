@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 4/20/2017
+ms.date: 12/18/2017
 ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 074d21269206b243f8b0e8747811544132805229
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32a48a34711a7f053a74e103deb6853150de3903
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 Azure Backup では、初回バックアップが圧縮されます。 オフライン シード処理プロセスによって、Azure Backup でディスクを使用し、圧縮済みの初回バックアップ データをオフラインで Azure にアップロードすることができます。  
 
 Azure Backup のオフライン シード処理プロセスは [Azure Import/Export サービス](../storage/common/storage-import-export-service.md) と緊密に統合されており、ディスクを使用してデータを Azure に転送できます。 待ち時間が長く、低帯域幅のネットワークで転送する必要がある初回バックアップ データが数 TB (テラバイト) ある場合は、オフライン シード処理ワークフローを使用して、1 台以上のハード ドライブ上にある初回バックアップ コピーを Azure データセンターに発送できます。 この記事では、このワークフローを完了するための手順の概要について説明します。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure Backup のオフライン シード処理機能と Azure Import/Export を使用すると、ディスクを使ってオフラインで Azure にデータを簡単にアップロードできます。 ネットワーク経由で完全な初期コピーを転送する代わりに、 *ステージング場所*にバックアップ データを書き込みます。 Azure Import/Export ツールを使用したステージング場所へのコピーが完了すると、このデータは、データの量に応じて 1 台以上の SATA ドライブに書き込まれます。 最終的に、これらのドライブは最も近くにある Azure データセンターに発送されます。
 
 [Azure Backup の更新プログラム 2016 年 8 月 (以降)](http://go.microsoft.com/fwlink/?LinkID=229525) には、AzureOfflineBackupDiskPrep という名前の "*Azure Disk Preparation ツール*" が付属しています。このツールでは、次の操作を行うことができます。
 
 * Azure Import/Export ツールを使用して、Azure Import 用のドライブの準備を容易にする。
-* [Azure クラシック ポータル](https://manage.windowsazure.com)で、Azure Import/Export サービスの Azure インポート ジョブを自動的に作成する。以前の Azure Backup では手動で作成する必要がありました。
+* [Azure Portal](https://ms.portal.azure.com) で、Azure Import/Export サービスの Azure Import ジョブを自動的に作成する。
 
 Azure へのバックアップ データのアップロードが完了した後、Azure Backup は、バックアップ データをバックアップ コンテナーにコピーし、増分バックアップをスケジュールします。
 
@@ -46,7 +46,7 @@ Azure へのバックアップ データのアップロードが完了した後�
   * Azure Backup コンテナーが作成されている。
   * コンテナー資格情報がダウンロードされている。
   * Windows Server、Windows クライアント、または System Center Data Protection Manager サーバーに Azure Backup エージェントがインストール済みであり、Azure Backup コンテナーにコンピューターが登録されている。
-* [Azure 発行ファイル設定をダウンロード](https://manage.windowsazure.com/publishsettings) します。
+* [Azure 発行ファイル設定をダウンロード](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) します。
 * ステージング場所を準備します。 これには、コンピューター上のネットワーク共有や追加ドライブを使用できます。 ステージング場所は一時ストレージであり、このワークフロー中に一時的に使用されます。 ステージング場所には、初期コピーを保持するのに十分なディスク領域があることを確認します。 たとえば、500 GB のファイル サーバーをバックアップする場合は、ステージング領域が 500 GB 以上あることを確認します (圧縮処理により、使用量はこれよりも少なくなります)。
 * サポートされているドライブを使用していることを確認します。 Import/Export サービスで使用できるのは、2.5 インチ SSD か、2.5 または 3.5 インチ SATA II/III の内部ハード ドライブだけです。 最大 10 TB のハード ドライブを使用できます。 サービスでサポートされている最新のドライブについては、[Azure Import/Export サービスのドキュメント](../storage/common/storage-import-export-service.md#hard-disk-drives)をご覧ください。
 * SATA ドライブ ライターが接続されているコンピューターで BitLocker を有効にします。
@@ -67,13 +67,13 @@ Azure へのバックアップ データのアップロードが完了した後�
 
     * **ステージングの場所**: 初回バックアップ コピーが書き込まれる一時的なストレージの場所。 これには、ネットワーク共有またはローカル コンピューター上の場所を使用できます。 コピー用コンピューターとソース コンピューターが異なる場合は、ステージング場所の完全なネットワーク パスを指定することをお勧めします。
     * **Azure インポート ジョブ名**: ディスクを使用して Azure に送信されたデータを、Azure インポート サービスと Azure Backup が追跡するときに使用する一意の名前。
-    * **Azure 発行設定**: サブスクリプション プロファイルに関する情報が含まれる XML ファイル。 サブスクリプションに関連付けられている、セキュリティで保護された資格情報も含まれています。 [ファイルをダウンロード](https://manage.windowsazure.com/publishsettings)することができます。 発行設定ファイルへのローカル パスを指定します。
+    * **Azure 発行設定**: サブスクリプション プロファイルに関する情報が含まれる XML ファイル。 サブスクリプションに関連付けられている、セキュリティで保護された資格情報も含まれています。 [ファイルをダウンロード](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)することができます。 発行設定ファイルへのローカル パスを指定します。
     * **Azure サブスクリプション ID**: Azure インポート ジョブを開始するサブスクリプションの Azure サブスクリプション ID。 複数の Azure サブスクリプションを使用している場合は、インポート ジョブに関連付けるサブスクリプションの ID を使用します。
-    * **Azure Storage アカウント**: 指定された Azure サブスクリプションのクラシック タイプのストレージ アカウント。Azure インポート ジョブに関連付けられます。
+    * **Azure Storage アカウント**: Azure インポート ジョブに関連付けられる Azure サブスクリプションのストレージ アカウント。
     * **Azure ストレージ コンテナー**: このジョブのデータをインポートする先の Azure ストレージ アカウントのストレージ BLOB の名前。
 
     > [!NOTE]
-    > バックアップの [Azure Portal](https://portal.azure.com) から Azure Recovery Services コンテナーにサーバーを登録していて、クラウド ソリューション プロバイダー (CSP) サブスクリプションがない場合は、引き続き Azure Portal からクラシック タイプのストレージ アカウントを作成して、オフライン バックアップ ワークフローで使用できます。
+    > バックアップの [Azure Portal](https://portal.azure.com) から Azure Recovery Services コンテナーにサーバーを登録していて、クラウド ソリューション プロバイダー (CSP) サブスクリプションがない場合は、引き続き Azure Portal からストレージ アカウントを作成して、オフライン バックアップ ワークフローで使用できます。
     >
     >
 
@@ -106,7 +106,7 @@ Azure Disk Preparation ツールは、次のパスにある Recovery Services �
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to PublishSettingsFile*>]`
 
-    | パラメーター | 説明 |
+    | パラメーター | [説明] |
     | --- | --- |
     | s:&lt;*ステージング場所のパス*&gt; |必須。**オフライン バックアップの開始**ワークフローで入力したステージング場所へのパスを指定します。 |
     | p:&lt;*PublishSettingsFile へのパス*&gt; |オプション。**オフライン バックアップの開始**ワークフローで入力した **Azure 発行設定**ファイルへのパスを指定します。 |
@@ -123,7 +123,7 @@ Azure Disk Preparation ツールは、次のパスにある Recovery Services �
 
     これにより、バックアップ データでのディスクの準備が開始されます。 指定したディスクにバックアップ データを格納するための領域が十分にない場合は、メッセージが表示されます。その場合は、追加のディスクを接続する必要があります。 <br/>
 
-    ツールが適切に実行されたら、指定した 1 つ以上のディスクを Azure に発送する準備は完了です。 さらに、 **オフライン バックアップの開始** ワークフローで指定した名前のインポート ジョブが Azure クラシック ポータルに作成されます。 最後に、ディスクの送付先である Azure データセンターの住所と、Azure クラシック ポータルでインポート ジョブを特定するためのリンクが表示されます。
+    ツールが適切に実行されたら、指定した 1 つ以上のディスクを Azure に発送する準備は完了です。 さらに、**オフライン バックアップの開始**ワークフローで指定した名前のインポート ジョブが Azure Portal に作成されます。 最後に、ディスクの送付先である Azure データセンターの住所と、Azure Portal でインポート ジョブを特定するためのリンクが表示されます。
 
     ![Azure disk preparation complete](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
 
@@ -161,7 +161,7 @@ Azure Disk Preparation ツールは、次のパスにある Recovery Services �
     >
     >
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | /j:<*ジャーナル ファイル*> |ジャーナル ファイルへのパス。 各ドライブには、ジャーナル ファイルが必ず 1 つあります。 ターゲット ドライブには、ジャーナル ファイルは存在しません。 ジャーナル ファイルの拡張子は .jrn で、このコマンドの実行の一部として作成されます。 |
 | /id:<*セッション ID*> |セッション ID はコピー セッションを識別します。 中断されたコピー セッションを正しく復元するために使用されます。 コピー セッションでコピーされるファイルは、ターゲット ドライブ上のセッション ID の名前が付いたディレクトリに格納されます。 |
@@ -181,7 +181,7 @@ Azure Disk Preparation ツールは、次のパスにある Recovery Services �
   ![PowerShell の出力](./media/backup-azure-backup-import-export/psoutput.png)
 
 ### <a name="create-an-import-job-in-the-azure-portal"></a>Azure Portal でインポート ジョブを作成する
-1. [Azure クラシック ポータル](https://manage.windowsazure.com/)でストレージ アカウントに移動し、作業ウィンドウで **[インポート/エクスポート]**、**[インポート ジョブの作成]** の順にクリックします。
+1. [Azure Portal](https://ms.portal.azure.com/) でストレージ アカウントに移動し、作業ウィンドウで **[インポート/エクスポート]**、**[インポート ジョブの作成]** の順にクリックします。
 
     ![Import/export tab in the Azure portal](./media/backup-azure-backup-import-export/azureportal.png)
 
@@ -206,6 +206,6 @@ Azure Disk Preparation ツールは、次のパスにある Recovery Services �
 ### <a name="complete-the-workflow"></a>ワークフローを完了する
 ストレージ アカウントで初回バックアップ データが使用可能になると、Microsoft Azure Recovery Services エージェントは、データの内容を、このアカウントから、使用可能なバックアップ コンテナーまたは Recovery Services コンテナーにコピーします。 次回のスケジュール バックアップで、Azure Backup エージェントは初期バックアップ コピーの上に増分バックアップを実行します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Import/Export ワークフローについて質問がある場合は、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage/common/storage-import-export-service.md)」を参照してください。
 * ワークフローについて質問がある場合は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションを参照してください。

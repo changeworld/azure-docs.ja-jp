@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: c958bc149cc617b5c9e99a2d3fc6fb2d425b2772
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 29362ea94fb86f86f7ff85be81cbf33fef6accce
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure Automation の一般的な問題のトラブルシューティング 
 この記事では、Azure Automation で発生することがある一般的なエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
@@ -51,17 +51,17 @@ ms.lasthandoff: 12/14/2017
 **トラブルシューティングのヒント:** Azure で正しく認証され、選択しようとしているサブスクリプションにアクセスできることを次の手順で確認します。  
 
 1. **Select-AzureSubscription** コマンドレットを実行する前に必ず **Add-AzureAccount** を実行してください。  
-2. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後ろに **Get-AzureSubscription** コマンドレットを追加するというコードの変更を行った後、そのコードを実行します。  Get-AzureSubscription の出力にサブスクリプション詳細が含まれることを確認します。  
+2. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後ろに **Get-AzureSubscription** コマンドレットを追加するというコードの変更を行った後、そのコードを実行します。 Get-AzureSubscription の出力にサブスクリプション詳細が含まれることを確認します。  
 
    * 出力にサブスクリプション詳細が含まれない場合、サブスクリプションが初期化されていません。  
    * 出力にサブスクリプション詳細が含まれる場合は、 **Select-AzureSubscription** コマンドレットで正しいサブスクリプション名または ID を使用していることを確認します。   
 
 ### <a name="scenario-authentication-to-azure-failed-because-multi-factor-authentication-is-enabled"></a>シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した
-**エラー:** Azure のユーザー名とパスワードで Azure に対して認証するとき、「Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required (強力な認証記録 (確認) が必要です)」というエラーが発生します。
+**エラー:** Azure のユーザー名とパスワードを使用して Azure に認証するとき、「Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required (強力な認証記録 (確認) が必要です)」というエラーが発生します。
 
-**エラーの理由:** Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。  代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
+**エラーの理由:** Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。 代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
 
-**トラブルシューティングのヒント:** Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
+**トラブルシューティングのヒント:** Azure クラシック デプロイメント モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
 ### <a name="scenario-the-runbook-job-start-was-attempted-three-times-but-it-failed-to-start-each-time"></a>シナリオ: Runbook ジョブの開始を 3 回試行したが、開始できない
@@ -69,35 +69,34 @@ ms.lasthandoff: 12/14/2017
 
 **エラーの理由:** このエラーは次の理由で発生する可能性があります。  
 
-1. メモリの制限。  サンドボックスに割り当てられるメモリの制限については、「[Automation の制限](../azure-subscription-service-limits.md#automation-limits)」で説明されています。400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。 
+1. メモリの制限。 サンドボックスに割り当てられるメモリの制限については、「[Automation の制限](../azure-subscription-service-limits.md#automation-limits)」で説明されています。400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。 
 
-2. モジュールに互換性がない。  これは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「コマンドが見つかりません」または「パラメーターをバインドできません」というメッセージが Runbook から返されます。 
+2. モジュールに互換性がない。 これは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。 
 
-**トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。  
+**トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。
 
 * メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータと同量のデータを処理しない、Runbook からの不要な出力を書き込まない、PowerShell ワークフロー Runbook に書き込むチェックポイントの数を検討する、などがあります。  
 
-* 「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新する必要があります。  
+* 「[Azure Automation の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新します。  
 
 
 ### <a name="scenario-runbook-fails-because-of-deserialized-object"></a>シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 **エラー:** Runbook が失敗し、「Cannot bind parameter ``<ParameterName>``. Cannot convert the ``<ParameterType>`` value of type Deserialized ``<ParameterType>`` to type ``<ParameterType>`` (パラメーター <パラメーター名> をバインドできません。逆シリアル化型 <パラメーター型> の値 <パラメーター値> を型 <パラメーター型> に変換できません)」というエラーが発生します。
 
-**エラーの理由:** Runbook が PowerShell ワークフローの場合、ワークフローが中断された場合に Runbook の状態を維持できるように、複雑なオブジェクトが逆シリアル化形式で保存されます。  
+**エラーの理由:** Runbook が PowerShell ワークフローの場合、ワークフローが中断された場合に Runbook の状態を維持できるように、複雑なオブジェクトが逆シリアル化形式で保存されます。
 
-**トラブルシューティングのヒント:**  
-次の 3 つの解決策のいずれでもこの問題は解決されます。
+**トラブルシューティングのヒント:** 次の 3 つの解決策のいずれでもこの問題は解決されます。
 
-1. コマンドレット間で複雑なオブジェクトをパイプ処理する場合、これらのコマンドレットを InlineScript でラップします。  
-2. オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。  
-3. PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。  
+1. コマンドレット間で複雑なオブジェクトをパイプ処理する場合、これらのコマンドレットを InlineScript でラップします。
+2. オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。
+3. PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
 
 ### <a name="scenario-runbook-job-failed-because-the-allocated-quota-exceeded"></a>シナリオ: 割り当てられたクォータを超えているために Runbook ジョブが失敗した
 **エラー:** Runbook ジョブが失敗し、「The quota for the monthly total job run time has been reached for this subscription (このサブスクリプションの毎月の合計ジョブ実行時間のクォータに到達しました)」というエラーが発生します。
 
-**エラーの理由:** ジョブの実行がアカウントの 500 分の無料クォータを超えるとこのエラーが発生します。 このクォータは、ジョブをテストする、ポータルからジョブを開始する、Webhook でジョブを実行する、Azure ポータルまたはデータセンターを利用して実行するジョブをスケジュールするなど、あらゆる種類のジョブ実行タスクに適用されます。 Automation の料金については、「 [Automation の料金](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
+**エラーの理由:** ジョブの実行がアカウントの 500 分の無料クォータを超えるとこのエラーが発生します。 このクォータは、ジョブをテストする、ポータルからジョブを開始する、Webhook でジョブを実行する、Azure ポータルまたはデータセンターを利用して実行するジョブをスケジュールするなど、あらゆる種類のジョブ実行タスクに適用されます。 Automation の料金については、「[Automation の料金](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
 
-**トラブルシューティングのヒント:** 毎月 500 分以上処理する場合、サブスクリプション レベルを Free から Basic に変更する必要があります。 次の手順で Basic レベルにアップグレードできます。  
+**トラブルシューティングのヒント:** 毎月 500 分以上の処理を使用する場合、サブスクリプションを Free レベルから Basic レベルに変更する必要があります。 次の手順で Basic レベルにアップグレードできます。  
 
 1. Azure サブスクリプションにサインインします。  
 2. アップグレードする Automation アカウントを選択します。  
@@ -107,81 +106,93 @@ ms.lasthandoff: 12/14/2017
 ### <a name="scenario-cmdlet-not-recognized-when-executing-a-runbook"></a>シナリオ: Runbook の実行時にコマンドレットが認識されない
 **エラー:** Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program (<コマンドレット名> という用語はコマンドレット、関数、スクリプト ファイル、操作可能プログラムとして認識されません)」というエラーが発生します。
 
-**エラーの理由:** このエラーは、Runbook で使用しているコマンドレットを PowerShell エンジンが見つけられないときに発生します。  この原因としては、コマンドレットが含まれるモジュールがアカウントにない、Runbook 名に名前の競合がある、コマンドレットが別のモジュールにも存在し、Automation が名前を解決できないなどが考えられます。
+**エラーの理由:** このエラーは、Runbook で使用しているコマンドレットを PowerShell エンジンが見つけられないときに発生します。 この原因としては、コマンドレットが含まれるモジュールがアカウントにない、Runbook 名に名前の競合がある、コマンドレットが別のモジュールにも存在し、Automation が名前を解決できないなどが考えられます。
 
 **トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。  
 
 * コマンドレット名を正しく入力していることを確認します。  
-* Automation アカウントにコマンドレットが存在し、競合がないことを確認します。 コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、**Get-Command ``<CommandName>``** を実行します。  コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。  
+* Automation アカウントにコマンドレットが存在し、競合がないことを確認します。 コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、**Get-Command ``<CommandName>``** を実行します。 コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。  
 * 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。 たとえば、**ModuleName\CmdletName** を使用できます。  
 * ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているコンピューターにインストールされていることを確認します。
 
 ### <a name="scenario-a-long-running-runbook-consistently-fails-with-the-exception-the-job-cannot-continue-running-because-it-was-repeatedly-evicted-from-the-same-checkpoint"></a>シナリオ: Runbook を長時間実行するといつも次の例外で失敗する: ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません。
-**エラーの理由:** これは Azure Automation 内のプロセスの "フェア シェア" 監視のための設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。 ただし、返されるエラー メッセージでは "次" のオプションは提供されません。 さまざまな理由から Runbook は中断されることがあります。 ほとんどの場合、中断はエラーのために発生します。 たとえば、Runbook のキャッチされない例外、ネットワーク障害、Runbook を実行している Runbook Worker でのクラッシュなどはすべて、Runbook が中断する原因になり、再開時には最後のチェックポイントから開始します。
+**エラーの理由:** これは Azure Automation 内のプロセスの "フェア シェア" 監視のための設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。 ただし、返されるエラー メッセージでは "次" のオプションは提供されません。 さまざまな理由から Runbook は中断されることがあります。 ほとんどの場合、中断はエラーのために発生します。 たとえば、Runbook のキャッチされない例外、ネットワーク障害、Runbook を実行している Runbook Worker でのクラッシュなどは、すべて Runbook が中断される原因になり、再開時には最後のチェックポイントから開始されます。
 
-**トラブルシューティングのヒント:** この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。  詳細については、「[PowerShell ワークフローについての説明](automation-powershell-workflow.md#checkpoints)」をご覧ください。  "フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks](https://azure.microsoft.com/en-us/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」(Runbook でのチェックポイントの使用) を参照してください。
+**トラブルシューティングのヒント:** この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。 詳細については、「[PowerShell ワークフローについての説明](automation-powershell-workflow.md#checkpoints)」をご覧ください。 "フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks](https://azure.microsoft.com/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」(Runbook でのチェックポイントの使用) を参照してください。
 
 ## <a name="common-errors-when-importing-modules"></a>モジュールのインポート時に発生する一般的なエラー
 ### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a>シナリオ: モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
 **エラー:** モジュールがインポートに失敗するか、成功してもコマンドレットが抽出されません。
 
-**エラーの理由:** モジュールが正常に Azure Automation にインポートできない一般的な理由には次が考えられます。  
+**エラーの理由:** モジュールが正常に Azure Automation にインポートできない一般的な理由には次が考えられます。
 
-* 構造が Automation で必要とされる構造と一致しません。  
-* Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。  
-* モジュールのフォルダーにその依存関係がありません。  
-* モジュールのアップロードに **New-AzureRmAutomationModule** コマンドレットを使用していますが、完全なストレージ パスを与えていないか、公共でアクセスできる URL でモジュールを読み込んでいません。  
+* 構造が Automation で必要とされる構造と一致しません。
+* Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
+* モジュールのフォルダーにその依存関係がありません。
+* モジュールのアップロードに **New-AzureRmAutomationModule** コマンドレットを使用していますが、完全なストレージ パスを与えていないか、公共でアクセスできる URL でモジュールを読み込んでいません。
 
-**トラブルシューティングのヒント:**  
-次の解決策のいずれでもこの問題は解決されます。  
+**トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。
 
-* モジュールの形式が次のようになっていることを確認します。  
-  ModuleName.Zip **->** モジュール名またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
-* .psd1 ファイルを開き、モジュールに依存関係があるかどうかを確認します。  依存関係がある場合、それらのモジュールを Automation アカウントにアップロードします。  
-* 参照される .dll がモジュール フォルダーにあることを確認します。  
+* モジュールの形式が次のようになっていることを確認します: ModuleName.Zip **->** ModuleName またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
+* .psd1 ファイルを開き、モジュールに依存関係があるかどうかを確認します。 依存関係がある場合、それらのモジュールを Automation アカウントにアップロードします。
+* 参照される .dll がモジュール フォルダーにあることを確認します。
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) の使用時に発生する一般的なエラー
-### <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a>シナリオ: ノードが "失敗" 状態になり、"見つかりませんでした" というエラーが表示される
-**エラー:** "有効な構成 ``<guid>`` が見つからないため、サーバー https://``<url>``//accounts/``<account-id>``/Nodes(AgentId=``<agent-id>``)/GetDscAction から操作を取得できませんでした" というエラーが記載された "**失敗**" 状態のレポートがノードで生成されます。
+### <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a>シナリオ: ノードが失敗状態になり、「見つかりません」というエラーが表示される
+**エラー:** 「有効な構成 ``<guid>`` が見つからないため、サーバー https://``<url>``//accounts/``<account-id>``/Nodes(AgentId=``<agent-id>``)/GetDscAction から操作を取得できませんでした」 というエラーが記載された "**失敗**" 状態のレポートがノードで生成されます。
 
-**エラーの理由:** 通常、このエラーは、ノードがノード構成の名前 (ABC.WebServer など) ではなく構成名 (ABC など) に割り当てられている場合に発生します。  
+**エラーの理由:** 通常、このエラーは、ノードがノード構成の名前 (ABC.WebServer など) ではなく構成名 (ABC など) に割り当てられている場合に発生します。
 
-**トラブルシューティングのヒント:**  
+**トラブルシューティングのヒント:**
 
-* ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。  
+* ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。
 * ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
 
   * Azure Portal を使用してノードにノード構成を割り当てるには、**[DSC ノード]** ページを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。  
   * PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、 **Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
-### <a name="scenario--no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a>シナリオ: 構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
+### <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a>シナリオ: 構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
 **エラー:** DSC のコンパイル ジョブが中断され、「Compilation completed successfully, but no node configuration .mofs were generated (コンパイルは正常に完了しましたが、ノード構成 .mof は生成されませんでした)」というエラーが表示されます。
 
-**エラーの理由:** DSC 構成の **Node** キーワードに続く式の評価結果が $null の場合、ノード構成は生成されません。    
+**エラーの理由:** DSC 構成の **Node** キーワードに続く式の評価結果が `$null` の場合、ノード構成は生成されません。
 
-**トラブルシューティングのヒント:**  
-次の解決策のいずれでもこの問題は解決されます。  
+**トラブルシューティングのヒント:** 次の解決策のいずれでもこの問題は解決されます。
 
-* 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。  
+* 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。
 * 構成のコンパイル時に ConfigurationData を渡す場合は、 [ConfigurationData](automation-dsc-compile.md#configurationdata)から、構成に必要な期待値を渡すようにしてください。
 
-### <a name="scenario--the-dsc-node-report-becomes-stuck-in-progress-state"></a>シナリオ: DSC ノードのレポートが "処理中" の状態で停止する
+### <a name="scenario-the-dsc-node-report-becomes-stuck-in-progress-state"></a>シナリオ: DSC ノードのレポートが "処理中" の状態で停止する
 **エラー:** DSC エージェントによって、「指定されたプロパティ値のインスタンスが見つかりません」と出力されます。
 
-**エラーの理由:** WMF のバージョンをアップグレードした結果、WMI が破損しています。  
+**エラーの理由:** WMF のバージョンをアップグレードした結果、WMI が破損しています。
 
 **トラブルシューティングのヒント:** この問題を解決するには、[DSC の既知の問題と制限](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) に関する記事にある手順に従ってください。
 
-### <a name="scenario--unable-to-use-a-credential-in-a-dsc-configuration"></a>シナリオ: DSC 構成で資格情報が使用できない
+### <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a>シナリオ: DSC 構成で資格情報が使用できない
 **エラー:** DSC コンパイル ジョブが中断され、「型 ``<some resource name>`` のプロパティ 'Credential' の処理中に System.InvalidOperationException エラーが発生しました: 暗号化されたパスワードを変換してプレーンテキストとして格納することが許可されるのは、PSDscAllowPlainTextPassword が true に設定されている場合だけです」というエラーが表示されます。
 
-**エラーの理由:** 構成に資格情報を使用したが、ノード構成ごとに **PSDscAllowPlainTextPassword** を true に設定するための適切な **ConfigurationData** を指定していませんでした。  
+**エラーの理由:** 構成に資格情報を使用したが、ノード構成ごとに **PSDscAllowPlainTextPassword** を true に設定するための適切な **ConfigurationData** を指定していませんでした。
 
-**トラブルシューティングのヒント:**  
+**トラブルシューティングのヒント:**
 
-* 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。 詳細については、 [Azure Automation DSC の資産](automation-dsc-compile.md#assets)に関するページをご覧ください。
+* 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。 詳細については、[Azure Automation DSC の資産](automation-dsc-compile.md#assets)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="common-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際の一般的なエラー
+
+ソリューションをオンボードする際にエラーが発生する場合があります。 発生する可能性がある一般的なエラーの一覧を次に示します。
+
+### <a name="computergroupqueryformaterror"></a>ComputerGroupQueryFormatError
+
+**エラーの理由:**
+
+このエラー コードは、ソリューションを選択するために使用された、コンピューター グループを検索する保存済みクエリの形式が正しくなかったことを意味します。 クエリを変更したか、システムによってクエリが変更された可能性があります。
+
+**トラブルシューティングのヒント:**
+
+そのソリューションに対するクエリを削除し、ソリューションを再オンボードすることができます。その際にクエリが再生成されます。 クエリはワークスペース内の、**[保存された検索条件]** にあります。 クエリの名前は **MicrosoftDefaultComputerGroup** です。また、クエリのカテゴリは、このクエリに関連付けられたソリューションの名前です。 複数のソリューションが有効な場合は、**MicrosoftDefaultComputerGroup** が複数回 **[保存された検索条件]** に表示されます。
+
+## <a name="next-steps"></a>次の手順
+
 上記のトラブルシューティング手順を実行しても解決しない場合は、以下の他のサポート オプションを確認してください。
 
 * Azure エキスパートに支援を要請する。 [MSDN の Azure フォーラムまたは Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)に問題を投稿してください。

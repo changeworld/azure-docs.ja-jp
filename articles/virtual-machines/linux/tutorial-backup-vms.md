@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0e659c1906c99415ab1b53785a606330ef9068c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2eb0958169b175813b0dca775e9250da1cb364d4
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="back-up-linux--virtual-machines-in-azure"></a>Azure での Linux 仮想マシンのバックアップ
 
@@ -45,7 +45,7 @@ Azure Backup サービスによってバックアップが開始されると、�
 ## <a name="create-a-backup"></a>バックアップの作成
 Recovery Services コンテナーに対するバックアップを 1 日 1 回の単純なスケジュールで作成します。 
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューから **[仮想マシン]** を選択します。 
 3. バックアップする VM を一覧から選択します。
 4. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
@@ -157,10 +157,10 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
     ![nginx の既定の Web ページ](./media/tutorial-backup-vms/nginx-working.png)
 
-18. ローカル コンピューターで Azure Portal のブラウザー タブに移動し、**[ステップ 3: 回復後にディスクのマウントを解除する]** の **[ディスクのマウント解除]** ボタンをクリックします。 この手順を実行するのを忘れた場合、12 時間後にマウントポイントへの接続が自動的に解除されます。 12 時間が経過した後、新しいマウント ポイントを作成するには、新しいスクリプトをダウンロードする必要があります。
+18. ローカル コンピューターで Azure Portal のブラウザー タブに移動し、**[ステップ 3: 回復後にディスクのマウントを解除する]** の **[ディスクのマウント解除]** ボタンをクリックします。 この手順を実行するのを忘れた場合、12 時間後にマウント ポイントへの接続が自動的に解除されます。 12 時間が経過した後、新しいマウント ポイントを作成するには、新しいスクリプトをダウンロードする必要があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

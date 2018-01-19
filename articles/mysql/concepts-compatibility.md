@@ -9,11 +9,11 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 10/27/2017
-ms.openlocfilehash: 1042f7919b8761bdbc23ae19871703c53dff28f0
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 7578ae710a3d6c81fdfa2952c53a20c2cdccb6d0
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。
@@ -24,8 +24,8 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 | **ドライバー** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **メモ** |
 | :-------- | :------------------------ | :----------- | :---------------------- | :--------------------------------------- |
 | PHP | http://php.net/downloads.php | 5.5 5.6 7.x | 5.3 | SSL MySQLi との PHP 7.0 接続では、接続文字列に MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT を追加します。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO の設定: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` オプションを false に設定します。|
-| .NET | [Github 上の MySqlConnector]: https://github.com/mysql-net/MySqlConnector/releases <br> [Nuget のインストール パッケージ]:<br> https://www.nuget.org/packages/MySqlConnector/ | 0.27 以降 | 0.26.5 以前 | |
-| Nodejs |  [Github 上の MySQLjs]:<br> https://github.com/mysqljs/mysql/releases <br> [NPM のインストール パッケージ]:<br> NPM から “npm install mysql” を実行 | 2.15 | 2.14.1 以前 | |
+| .NET | [GitHub 上の MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget のインストール パッケージ](https://www.nuget.org/packages/MySqlConnector/) | 0.27 以降 | 0.26.5 以前 | |
+| Nodejs |  [GitHub 上の MySQLjs](https://github.com/mysqljs/mysql/releases) <br> NPM のインストール パッケージ:<br> NPM から `npm install mysql` を実行 | 2.15 | 2.14.1 以前 | |
 | GO | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2 以前 | 接続文字列で allowNativePasswords=true を使用 |
 | Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3、2.0、2.1、2.2 | 1.2.2 以前 | |
 | Java | https://downloads.mariadb.org/connector-java/ | 2.1 2.0 1.6 | 1.5.5 以前 | |
@@ -35,11 +35,11 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 
 |                                     | **MySQL Workbench 6.x 以降** | **Navicat 12** | **PHPMyAdmin 4.x 以降** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| 作成、更新、読み取り、書き込み、削除 | ○ | ○ | ○ |
-| SSL 接続 | ○ | ○ | ○ |
-| SQL クエリのオート コンプリート | ○ | ○ |  |
-| データのインポートとエクスポート | ○ | ○ | ○ |
-| 複数の形式へのエクスポート | ○ | ○ | ○ |
-| バックアップと復元 |  | ○ |  |
-| サーバー パラメーターの表示 | ○ | ○ | ○ |
-| クライアント接続の表示 | ○ | ○ | ○ |
+| 作成、更新、読み取り、書き込み、削除 | X | X | X |
+| SSL 接続 | X | X | X |
+| SQL クエリのオート コンプリート | X | X |  |
+| データのインポートとエクスポート | X | X | X |
+| 複数の形式へのエクスポート | X | X | X |
+| バックアップと復元 |  | X |  |
+| サーバー パラメーターの表示 | X | X | X |
+| クライアント接続の表示 | X | X | X |

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: d7cd31dcb2278284ada6e7ac1d8beab9e1b5b1df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 95dbd80e740210c3800a0af10071875a6d6f0939
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple デバイスの技術的仕様とコンプライアンス
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 Microsoft Azure StorSimple デバイスのハードウェア コンポーネントは、この記事で説明されている技術的仕様と規制標準に準拠します。 技術的仕様では、電源と冷却モジュール (PCM)、ディスク ドライブ、記憶域容量、エンクロージャについて説明します。 対応情報では、国際標準、安全性と排出量、ケーブルなどについて説明します。
 
@@ -43,7 +43,7 @@ EBOD エンクロージャは 580 W PCM を使用し、主エンクロージャ�
 | 出力 |5V スタンバイ電圧 @ 2.0 A |5V スタンバイ電圧 @ 2.7 A |
 | +5V @ 42 A |+5V @ 40 A | |
 | +12V @ 38 A |+12V @ 38 A | |
-| ホット プラグ可能 |はい |はい |
+| ホット プラグ可能 |[はい] |[はい] |
 | スイッチと LED |AC オン/オフ スイッチと 4 つのステータス インジケーター LED |AC オン/オフ スイッチと 6 つのステータス インジケーター LED |
 | エンクロージャの冷却 |軸流冷却ファン (可変ファン速度制御) |軸流冷却ファン (可変ファン速度制御) |
 
@@ -80,7 +80,7 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | 合計の使用可能な容量* |～ 15 TB |～ 38 TB |
 | ソリューションの最大容量 (クラウドを含む) |200 TB |500 TB |
 
-<sup>*  </sup>- *使用可能な容量の合計には、データ、メタデータ、バッファーに使用できる容量が含まれています。*
+<sup>* </sup>- *使用可能な容量の合計には、データ、メタデータ、およびバッファーに使用できる容量が含まれています。8100 デバイスには最大 8.5 TB、より大きな 8600 デバイスには最大 22.5 TB のローカル固定ボリュームをプロビジョニングできます。詳細については、[StorSimple のローカル固定ボリューム](storsimple-8000-local-volume-faq.md)に関するページを参照してください。*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>エンクロージャの寸法と重量
 
@@ -94,7 +94,7 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | --- | --- | --- |
 | 高さ |87.9 |3.46 |
 | 取り付け用フランジを含む幅 |483 |19.02 |
-| エンクロージャ本体の幅 |使用します |17.44 |
+| エンクロージャ本体の幅 |443 |17.44 |
 | 前面の取り付け用フランジからエンクロージャ本体末端までの奥行 |577 |22.72 |
 | 操作パネルからエンクロージャ最遠端までの奥行 |630.5 |24.82 |
 | 取り付け用フランジからエンクロージャ最遠端までの奥行 |603 |23.74 |
@@ -132,7 +132,7 @@ StorSimple デバイスには、8100 と 8600 のどちらにもハード ディ
 | 振動 (非運用時) |1.04 g RMS 2 ～ 200 Hz ランダム |
 | 振動 (移動時) |3 g 2 ～ 200 Hz サイン (正弦) |
 | 定位と取り付け |19 インチ ラックに取り付け (EIA ユニット x 2) |
-| ラック レール |IEC 297 に準拠した奥行が最低 700 mm (31.50 インチ) のラックに対応 |
+| ラック レール |IEC 297 に準拠している奥行が最低 700 mm (31.50 インチ) のラックに対応 |
 | 安全性と認可 |CE および UL EN 61000-3、IEC 61000-3、UL 61000-3 |
 | EMC |EN55022 (CISPR - A)、FCC A |
 
@@ -193,7 +193,7 @@ Microsoft Azure StorSimple デバイスは次の EMC 規格を満たしていま
 
 10 GbE ネットワーク インターフェイス、DATA 2、DATA 3 については、 [サポートされるネットワーク ケーブルとモジュールの一覧](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 StorSimple デバイスをデータセンターにデプロイする準備ができました。 詳細については、「 [オンプレミスの StorSimple デバイス (Update 2) のデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」を参照してください。
 

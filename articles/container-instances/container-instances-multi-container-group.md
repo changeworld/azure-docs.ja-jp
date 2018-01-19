@@ -6,190 +6,207 @@ author: neilpeterson
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 01/10/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5e1f23e20b001404d3f781e7e6deac87ede12684
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 41a47adb1f1da417038757934f0a6cf7e11555da
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="deploy-a-container-group"></a>コンテナー グループのデプロイ
 
-Azure Container Instances では、"*コンテナー グループ*" を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 これは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
+Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 これは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
-このドキュメントでは、Azure Resource Manager テンプレートを使用して、シンプルな複数コンテナー サイドカー構成を実行します。
+このドキュメントでは、Azure Resource Manager テンプレートをデプロイして、シンプルな複数コンテナー サイドカー構成を実行します。
+
+> [!NOTE]
+> 複数コンテナー グループは、現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances (Azure Container Instances のクォータとリージョンの可用性)](container-instances-quotas.md)」で確認できます。
 
 ## <a name="configure-the-template"></a>テンプレートの構成
 
-`azuredeploy.json` という名前のファイルを作成し、次の json をそのファイルにコピーします。
+`azuredeploy.json` という名前のファイルを作成し、次の JSON をそのファイルにコピーします。
 
-このサンプルでは、2 つのコンテナーを含むコンテナー グループと、パブリック IP アドレスが定義されています。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
-
-このサイドカーの例は、200 OK 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
+このサンプルでは、2 つのコンテナー、パブリック IP アドレス、および公開された 2 つのポートを備えるコンテナー グループが定義されています。 グループの最初のコンテナーでは、インターネットに接続するアプリケーションが実行されます。 2 番目のコンテナーであるサイドカーは、グループのローカル ネットワーク経由でメインの Web アプリケーションに HTTP 要求を実行します。
 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {
-  },
+  "parameters": {},
   "variables": {
     "container1name": "aci-tutorial-app",
     "container1image": "microsoft/aci-helloworld:latest",
     "container2name": "aci-tutorial-sidecar",
     "container2image": "microsoft/aci-tutorial-sidecar"
   },
-    "resources": [
-      {
-        "name": "myContainerGroup",
-        "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2017-08-01-preview",
-        "location": "[resourceGroup().location]",
-        "properties": {
-          "containers": [
-            {
-              "name": "[variables('container1name')]",
-              "properties": {
-                "image": "[variables('container1image')]",
-                "resources": {
-                  "requests": {
-                    "cpu": 1,
-                    "memoryInGb": 1.5
-                    }
+  "resources": [
+    {
+      "name": "myContainerGroup",
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2017-10-01-preview",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "containers": [
+          {
+            "name": "[variables('container1name')]",
+            "properties": {
+              "image": "[variables('container1image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
+                }
+              },
+              "ports": [
+                {
+                  "port": 80
                 },
-                "ports": [
-                  {
-                    "port": 80
-                  }
-                ]
-              }
-            },
-            {
-              "name": "[variables('container2name')]",
-              "properties": {
-                "image": "[variables('container2image')]",
-                "resources": {
-                  "requests": {
-                    "cpu": 1,
-                    "memoryInGb": 1.5
-                    }
+                {
+                  "port": 8080
+                }
+              ]
+            }
+          },
+          {
+            "name": "[variables('container2name')]",
+            "properties": {
+              "image": "[variables('container2image')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGb": 1.5
                 }
               }
             }
-          ],
-          "osType": "Linux",
-          "ipAddress": {
-            "type": "Public",
-            "ports": [
-              {
-                "protocol": "tcp",
-                "port": "80"
-              }
-            ]
           }
+        ],
+        "osType": "Linux",
+        "ipAddress": {
+          "type": "Public",
+          "ports": [
+            {
+              "protocol": "tcp",
+              "port": "80"
+            },
+            {
+                "protocol": "tcp",
+                "port": "8080"
+            }
+          ]
         }
       }
-    ],
-    "outputs": {
-      "containerIPv4Address": {
-        "type": "string",
-        "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', 'myContainerGroup')).ipAddress.ip]"
-      }
+    }
+  ],
+  "outputs": {
+    "containerIPv4Address": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerInstance/containerGroups/', 'myContainerGroup')).ipAddress.ip]"
     }
   }
+}
 ```
 
-プライベート コンテナー イメージ レジストリを使用するのには、次の形式でオブジェクトを json ドキュメントに追加します。
+プライベート コンテナー イメージ レジストリを使用するには、次の形式でオブジェクトを JSON ドキュメントに追加します。
 
 ```json
 "imageRegistryCredentials": [
-    {
+  {
     "server": "[parameters('imageRegistryLoginServer')]",
     "username": "[parameters('imageRegistryUsername')]",
     "password": "[parameters('imageRegistryPassword')]"
-    }
+  }
 ]
 ```
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。
+[az group create][az-group-create] コマンドでリソース グループを作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location westus
+az group create --name myResourceGroup --location eastus
 ```
 
-[az group deployment create](/cli/azure/group/deployment#create) コマンドで、テンプレートをデプロイします。
+[az group deployment create][az-group-deployment-create] コマンドで、テンプレートをデプロイします。
 
 ```azurecli-interactive
-az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
+az group deployment create --resource-group myResourceGroup --name myContainerGroup --template-file azuredeploy.json
 ```
 
 数秒以内に、Azure から最初の応答を受信します。
 
 ## <a name="view-deployment-state"></a>デプロイ状態の表示
 
-デプロイの状態を表示するには、`az container show` コマンドを使用します。 このコマンドは、プロビジョニングされたパブリック IP アドレスを返します。このアドレスを使用して、アプリケーションにアクセスできます。
+デプロイの状態を表示するには、[az container show][az-container-show] コマンドを使用します。 これにより、プロビジョニングされたパブリック IP アドレスが返されます。このアドレスを使用して、アプリケーションにアクセスできます。
 
 ```azurecli-interactive
-az container show --name myContainerGroup --resource-group myResourceGroup -o table
-```
-
-出力:
-
-```azurecli
-Name              ResourceGroup    ProvisioningState    Image                                                             IP:ports           CPU/Memory    OsType    Location
-----------------  ---------------  -------------------  ----------------------------------------------------------------  -----------------  ------------  --------  ----------
-myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-sidecar,microsoft/aci-tutorial-app:v1      40.118.253.154:80  1.0 core/1.5 gb   Linux     westus
-```
-
-## <a name="view-logs"></a>ログを表示する。
-
-コンテナーのログ出力を表示するには、`az container logs` コマンドを使用します。 `--container-name` 引数は、プルするログが含まれるコンテナーを指定します。 この例では、最初のコンテナーが指定されています。
-
-```azurecli-interactive
-az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup
+az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
 出力:
 
 ```bash
-istening on port 80
-::1 - - [27/Jul/2017:17:35:29 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [27/Jul/2017:17:35:32 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [27/Jul/2017:17:35:35 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [27/Jul/2017:17:35:38 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+Name              ResourceGroup    ProvisioningState    Image                                                           IP:ports               CPU/Memory       OsType    Location
+----------------  ---------------  -------------------  --------------------------------------------------------------  ---------------------  ---------------  --------  ----------
+myContainerGroup  myResourceGroup  Succeeded            microsoft/aci-helloworld:latest,microsoft/aci-tutorial-sidecar  52.168.26.124:80,8080  1.0 core/1.5 gb  Linux     westus
+```
+
+## <a name="view-logs"></a>ログを表示する。
+
+コンテナーのログ出力を表示するには、[az container logs][az-container-logs] コマンドを使用します。 `--container-name` 引数は、プルするログが含まれるコンテナーを指定します。 この例では、最初のコンテナーが指定されています。
+
+```azurecli-interactive
+az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
+```
+
+出力:
+
+```bash
+listening on port 80
+::1 - - [09/Jan/2018:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [09/Jan/2018:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [09/Jan/2018:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
 サイドカー コンテナーのログを表示するには、2 番目のコンテナー名を指定して、同じコマンドを実行します。
 
 ```azurecli-interactive
-az container logs --name myContainerGroup --container-name aci-tutorial-sidecar --resource-group myResourceGroup
+az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
 ```
 
 出力:
 
 ```bash
-Every 3.0s: curl -I http://localhost                                                                                                                       Mon Jul 17 11:27:36 2017
+Every 3s: curl -I http://localhost                          2018-01-09 23:25:11
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0  1663    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
 HTTP/1.1 200 OK
+X-Powered-By: Express
 Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Wed, 29 Nov 2017 06:40:40 GMT
+ETag: W/"67f-16006818640"
+Content-Type: text/html; charset=UTF-8
 Content-Length: 1663
-Content-Type: text/html; charset=utf-8
-Last-Modified: Sun, 16 Jul 2017 02:08:22 GMT
-Date: Mon, 17 Jul 2017 18:27:36 GMT
+Date: Tue, 09 Jan 2018 23:25:11 GMT
+Connection: keep-alive
 ```
 
-このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。
+このように、サイドカーは、グループのローカル ネットワーク経由で、メインの Web アプリケーションに定期的に HTTP 要求を実行して、アプリケーションが実行中であることを確認します。 このサイドカーの例は、200 OK 以外の HTTP 応答コードを受け取ったときに、アラートをトリガーするように拡張できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、複数コンテナーの Azure コンテナー インスタンスのデプロイに必要な手順について説明します。 エンド ツー エンドの Azure Container Instances の操作については、Azure Container Instances チュートリアルを参照してください。
+この記事では、複数コンテナーの Azure コンテナー インスタンスのデプロイに必要な手順について説明しました。 エンド ツー エンドの Azure Container Instances の操作については、Azure Container Instances チュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Container Instances チュートリアル]: ./container-instances-tutorial-prepare-app.md
+> [Azure Container Instances のチュートリアル][aci-tutorial]
+
+<!-- LINKS - Internal -->
+[aci-tutorial]: ./container-instances-tutorial-prepare-app.md
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-create]: /cli/azure/group#az_group_create
+[az-group-deployment-create]: /cli/azure/group/deployment#az_group_deployment_create

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: roastala
-ms.openlocfilehash: 5f45a500c7cc28b6d6ad3fcac780791d43067ff3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a43dc7162be4b2f3cfd122c6a87921caf2e3e418
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でテキスト分析モデルを作成する
 Azure Machine Learning を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
@@ -33,7 +33,7 @@ Azure Machine Learning を使用して、テキスト分析モデルを構築し
 
 このチュートリアルでは、Amazon の書評のデータセットを使用したセンチメント分析モデルを使ってこれらの手順について説明します (John Blitzer、Mark Dredze、Fernando Pereira による次の研究論文を参照してください: 「Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification (伝記、ボリウッド、ラジオカセットレコーダ、ミキサー: 感想の分類に対する領域適応)」、コンピューター言語学会 (ACL)、2007 年)。このデータセットは、レビュー スコア (1-2 または 4-5) と自由形式のテキストから構成されています。 目標は、レビュー スコアが低 (1-2) であるか高 (4-5) であるかを予測することです。
 
-Cortana Intelligence Gallery で、このチュートリアルで取り上げた実験をご覧になれます。
+Azure AI ギャラリーで、このチュートリアルで取り上げた実験をご覧になれます。
 
 [Predict Book Reviews (書評の予測)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
 
@@ -88,6 +88,6 @@ N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハ�
 
 これで、Web サービスとして発行し、要求応答またはバッチ実行 API を使用して呼び出すことができる実験が完成しました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [MSDN ドキュメント](https://msdn.microsoft.com/library/azure/dn905886.aspx)でテキスト分析モジュールの詳細を確認してください。
 

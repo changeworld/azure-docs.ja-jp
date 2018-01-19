@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: mbullwin
-ms.openlocfilehash: 384f875702f2dee3bf0e806675a7df9f190d93bd
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: afdef7898ef68930ef702ddf67baaadae9360236
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights および Log Analytics によって使用される IP アドレス
 [Azure Application Insights](app-insights-overview.md) サービスは、多くの IP アドレスを使用します。 監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
@@ -135,6 +135,7 @@ SE : Stockholm
 94.245.78.41
 94.245.78.42
 94.245.78.45
+GB : United Kingdom
 51.141.25.219
 51.141.32.101
 51.141.35.167
@@ -262,7 +263,7 @@ US : VA-Ashburn
 
 | 目的 | URI | IP | ポート |
 | --- | --- | --- | --- |
-| エージェント | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 動的 | 443
+| エージェント | agent.azureserviceprofiler.net<br/>*.agent.azureserviceprofiler.net | 51.143.96.206<br/>51.143.98.157<br/>52.161.8.88<br/>52.161.29.225<br/>52.178.149.106<br/>52.178.147.66<br/>40.68.32.221<br/>104.40.217.71 | 443
 | ポータル | gateway.azureserviceprofiler.net | 動的 | 443
 | Storage | *.core.windows.net | 動的 | 443
 
@@ -270,6 +271,6 @@ US : VA-Ashburn
 
 | 目的 | URI | IP | ポート |
 | --- | --- | --- | --- |
-| エージェント | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 動的 | 443
+| エージェント | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 23.101.68.84<br/>52.174.44.101<br/>52.250.121.195<br/>51.143.88.187<br/> | 443
 | ポータル | ppe.gateway.azureserviceprofiler.net | 動的 | 443
 | Storage | *.core.windows.net | 動的 | 443

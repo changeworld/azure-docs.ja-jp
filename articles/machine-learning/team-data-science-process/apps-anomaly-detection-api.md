@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.openlocfilehash: 519ac38c484b9631a3fc096a17be026e9378a178
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2adfffa00a726fe2c452c25dd777ef054319b04
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/08/2017
 >
 
 ## <a name="api-deployment"></a>API のデプロイ
-API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは、[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出のある異常検出と季節性検出のない異常検出という、2 つの AzureML Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[AzureML Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
+API を使用するには、Azure Machine Learning Web サービスとしてホストされる Azure サブスクリプションに API をデプロイする必要があります。  これは [Azure AI ギャラリー](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)から実行できます。  季節性検出のある異常検出と季節性検出のない異常検出という、2 つの AzureML Web サービス (およびその関連リソース) が Azure サブスクリプションにデプロイされます。  デプロイが完了したら、[AzureML Web サービス](https://services.azureml.net/webservices/) ページから API を管理できます。  このページから、エンドポイントの場所、API キー、API を呼び出すためのサンプル コードを検索できます。  詳細な手順については、[こちら](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice)を参照してください。
 
 ## <a name="scaling-the-api"></a>API のスケーリング
 既定では、デプロイは、1,000 件のトランザクション/月と 2 時間のコンピューティング時間/月が含まれる開発/テスト無料プランで実行されます。  ニーズに応じて別のプランにアップグレードできます。  さまざまなプランの料金の詳細については、[こちらの](https://azure.microsoft.com/en-us/pricing/details/machine-learning/)「実稼働 Web API の価格」を参照してください。
@@ -108,7 +108,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 ### <a name="detectors"></a>検出機能
 異常検出 API がサポートしている検出機能 (ディテクター) は大きく 3 つのカテゴリに分けられます。 検出機能ごとの具体的な入力パラメーターと出力について詳しくは、次の表を参照してください。
 
-| 検出機能のカテゴリ | 検出機能 | Description | 入力パラメーター | 出力 |
+| 検出機能のカテゴリ | 検出機能 | [説明] | 入力パラメーター | 出力 |
 | --- | --- | --- | --- | --- |
 | スパイク検出機能 |T スパイク検出機能 |第 1 四分位数および第 3 四分位数から値までの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります。 |TSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ |
 | スパイク検出機能 | Z スパイク検出機能 |平均値からデータポイントまでの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 ～ 10 の範囲の整数値を受け取ります (既定値は 3)。値が高いほど極端な値を取得するため、感度が低くなります |ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ | |
@@ -118,20 +118,20 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 ### <a name="parameters"></a>parameters
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | Description | 既定の設定 | 型 | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | [説明] | 既定の設定 | type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |integer |10 ～ 2000 |時系列に依存 |
-| detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |Both |enumerated |Both、Spikes、Dips |Both |
+| detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |Both |enumerated |Both、Spikes、Dips |両方 |
 | bileveldetector.sensitivity |双方向のレベル変化検出機能の感度。 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
 | trenddetector.sensitivity |正傾向検出機能に使用する感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
 | tspikedetector.sensitivity |T スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
 | zspikedetector.sensitivity |Z スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
-| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
+| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |N/A |
 
 ### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。 
 
-| 出力 | Description |
+| 出力 | [説明] |
 | --- | --- |
 | Time |生データのタイムスタンプ。または、集計/欠損データ補完が適用された場合は集計/補完データのタイムスタンプ。 |
 | データ |生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。 |
@@ -150,31 +150,31 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 ### <a name="detectors"></a>検出機能
 季節性エンドポイントの検出機能は、非季節性エンドポイントの検出機能に似ていますが、パラメーター名が少し異なります (下記参照)。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。
 
-| 入力パラメーター | Description | 既定の設定 | 型 | 有効範囲 | 推奨範囲 |
+| 入力パラメーター | [説明] | 既定の設定 | type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |入力時系列の集計間隔 (秒単位) |0 (集計は実行されません) |integer |集計をスキップする場合は 0、それ以外の場合は 0 より大きい値 |5 分 ～ 1 日 (時系列に依存) |
-| preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |該当なし |
-| preprocess.replaceMissing |欠損データの補完に使用する値 |lkv (last known value) |enumerated |zero、lkv、mean |該当なし |
+| preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |N/A |
+| preprocess.replaceMissing |欠損データの補完に使用する値 |lkv (last known value) |enumerated |zero、lkv、mean |N/A |
 | detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |integer |10 ～ 2000 |時系列に依存 |
-| detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |Both |enumerated |Both、Spikes、Dips |Both |
+| detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |Both |enumerated |Both、Spikes、Dips |両方 |
 | bileveldetector.sensitivity |双方向のレベル変化検出機能の感度。 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
 | postrenddetector.sensitivity |正傾向検出機能に使用する感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
 | negtrenddetector.sensitivity |負傾向検出機能に使用する感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
 | tspikedetector.sensitivity |T スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
 | zspikedetector.sensitivity |Z スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
-| seasonality.enable |季節性分析を実行するかどうか |true |boolean |true、false |時系列に依存 |
+| seasonality.enable |季節性分析を実行するかどうか |true |ブール値 |true、false |時系列に依存 |
 | seasonality.numSeasonality |検出する周期的サイクルの最大数 |1 |integer |1、2 |1 ～ 2 |
-| seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか |deseason |enumerated |none、deseason、deseasontrend |該当なし |
-| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
+| seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか |deseason |enumerated |none、deseason、deseasontrend |N/A |
+| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |N/A |
 
 ### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。 
 
-| 出力 | Description |
+| 出力 | [説明] |
 | --- | --- |
 | Time |生データのタイムスタンプ。または、集計/欠損データ補完が適用された場合は集計/補完データのタイムスタンプ。 |
 | OriginalData |生データの値。または、集計/欠損データ補完が適用された場合は集計/補完データの値。 |

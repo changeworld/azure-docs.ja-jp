@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
-ms.openlocfilehash: 6785bfcefb09fa6135ba451fafa76efc8c2e6c76
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7acf0cbd4f4cba885e6cc91dfe3cb68306a3649a
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 System Center Configuration Manager を OMS の Log Analytics に接続して、デバイス コレクション データを同期することができます。 そうすることで、Configuration Manager 階層からのデータを OMS で使用できます。
@@ -30,8 +30,8 @@ Log Analytics では、System Center Configuration Manager の現在のブラン
 ## <a name="configuration-overview"></a>構成の概要
 次の手順は、Configuration Manager を Log Analytics に接続するプロセスをまとめたものです。  
 
-1. Azure 管理ポータルで Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、Azure Active Directory への登録によるクライアント ID およびクライアント秘密鍵を持っていることを確認します。 この手順の詳細については、「[リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)」を参照してください。
-2. Azure 管理ポータルで、[Configuration Manager (登録した Web アプリ) に OMS へのアクセス許可を付与](#provide-configuration-manager-with-permissions-to-oms)します。
+1. Azure Portal で Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、Azure Active Directory への登録によるクライアント ID およびクライアント秘密鍵を持っていることを確認します。 この手順の詳細については、「[リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)」を参照してください。
+2. Azure Portal で、[Configuration Manager (登録した Web アプリ) に OMS へのアクセス許可を付与](#provide-configuration-manager-with-permissions-to-oms)します。
 3. Configuration Manager で、[OMS 接続の追加ウィザードを使用して接続を追加](#add-an-oms-connection-to-configuration-manager)します。
 4. パスワードまたはクライアント秘密鍵が期限切れになるか、それらを紛失した場合は、Configuration Manager で、[接続プロパティを更新](#update-oms-connection-properties)します。
 5. OMS ポータルからの情報を使用して、Configuration Manager サービス接続ポイントのサイト システムの役割を実行しているコンピューターに、[Microsoft Monitoring Agent をダウンロードおよびインストール](#download-and-install-the-agent)します。 エージェントは、Configuration Manager のデータを OMS に送信します。
@@ -41,7 +41,7 @@ Log Analytics では、System Center Configuration Manager の現在のブラン
 Configuration Manager と OMS の接続の詳細については、「[Sync data from Configuration Manager to the Microsoft Operations Management Suite (Configuration Manager のデータを Microsoft Operations Management Suite に同期する)](https://technet.microsoft.com/library/mt757374.aspx)」を参照してください。
 
 ## <a name="provide-configuration-manager-with-permissions-to-oms"></a>Configuration Manager に OMS へのアクセス許可を付与する
-次の手順では、Azure 管理ポータルに OMS へのアクセス許可を付与します。 具体的には、Azure 管理ポータルでConfiguration Manager を OMS に接続できるようにするために、リソース グループ内のユーザーに "*共同作業者ロール*" を付与する必要があります。
+次の手順では、Azure Portal に OMS へのアクセス許可を付与します。 具体的には、Azure Portal で System Center Configuration Manager を OMS に接続できるようにするために、リソース グループ内のユーザーに "*共同作業者ロール*" を付与する必要があります。
 
 > [!NOTE]
 > OMS へのアクセス許可を Configuration Manager に指定する必要があります。 そうしないと、Configuration Manager で構成ウィザードを使用するときにエラー メッセージが表示されます。
@@ -57,7 +57,7 @@ Configuration Manager と OMS の接続の詳細については、「[Sync data 
    * **サブスクリプション**
    * **[リソース グループ]**
    * **場所**
-   * **[価格レベル]**  
+   * **価格レベル**  
      ![OMS](./media/log-analytics-sccm/sccm-azure02.png)  
 
      > [!NOTE]
@@ -81,9 +81,9 @@ OMS 接続を追加するには、Configuration Manager 環境に[サービス�
 1. Configuration Manager の **[管理]** ワークスペースで、**[OMS コネクタ]** を選択します。 これで、**OMS 接続の追加ウィザード**が開かれます。 **[次へ]**を選択します。
 2. **[全般]** 画面で、以下の操作が完了していることと、各項目の詳細を把握していることを確認し、**[次へ]** を選択します。
 
-   1. Azure 管理ポータルで、Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、[登録からクライアント ID](../active-directory/active-directory-integrating-applications.md) を取得した。
-   2. Azure 管理ポータルで、Azure Active Directory に登録したアプリのアプリ秘密鍵を作成した。  
-   3. Azure 管理ポータルで、登録した Web アプリに OMS へのアクセス許可を付与した。  
+   1. Azure Portal で、Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、[登録からクライアント ID](../active-directory/active-directory-integrating-applications.md) を取得した。
+   2. Azure Portal で、Azure Active Directory に登録したアプリのアプリ秘密鍵を作成した。  
+   3. Azure Portal で、登録した Web アプリに OMS へのアクセス許可を付与した。  
       ![OMS への接続ウィザードの [全般] ページ](./media/log-analytics-sccm/sccm-console-general01.png)
 3. **[Azure Active Directory]** 画面で、OMS への接続設定を構成します。**[テナント]**、**[クライアント ID]**、および **[クライアントの秘密鍵]** を指定してから、**[次へ]** を選択します。  
    ![OMS への接続ウィザードの [Azure Active Directory] ページ](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
@@ -132,5 +132,5 @@ OMS 接続を Configuration Manager に追加し、Configuration Manager サー�
 
 いずれかをクリックすると、[検索] が開き、インポートされたすべてのグループか、各グループに属しているすべてのコンピューターが表示されます。 [ログの検索](log-analytics-log-searches.md)を使用して、Configuration Manager のデータの詳細な分析を開始することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ログの検索](log-analytics-log-searches.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。

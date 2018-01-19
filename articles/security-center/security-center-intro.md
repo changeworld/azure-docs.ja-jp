@@ -1,5 +1,5 @@
 ---
-title: "Azure Security Center 入門 | Microsoft Docs"
+title: "Azure Security Center とは | Microsoft Docs"
 description: "Azure Security Center の主な機能とそのしくみについて説明します。"
 services: security-center
 documentationcenter: na
@@ -12,65 +12,105 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 01/08/2018
 ms.author: terrylan
-ms.openlocfilehash: 21415af0d449d639d000e07afdb4de3680a64774
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50a54b8d2a73807aa9a0217f7ccf971b8c516494
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="introduction-to-azure-security-center"></a>Azure Security Center 入門
-Azure Security Center の主な機能とそのしくみについて説明します。
+# <a name="what-is-azure-security-center"></a>Azure Security Center とは
+Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Security Center を使用して、ワークロード全体へのセキュリティ ポリシーの適用、脅威にさらされる状態の軽減、攻撃の検出とその対応を行うことができます。
 
-## <a name="what-is-azure-security-center"></a>Azure Security Center とは
-Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。  ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。
+Security Center を使う意義
 
-Security Center の [概要] では、Azure と Azure 以外のワークロードのセキュリティ対策を簡単に確認できるので、ワークロードのセキュリティを検出して評価したり、リスクを特定して軽減したりできます。
+- **一元化されたポリシー管理** - すべてのハイブリッド クラウド ワークロードのセキュリティ ポリシーを一元的に管理して、会社や規制のセキュリティ要件に確実に準拠できます。
+- **継続的なセキュリティ評価** - マシン、ネットワーク、ストレージおよびデータ サービス、アプリケーションのセキュリティを監視して、潜在的なセキュリティの問題を検出します。
+- **実行可能な推奨事項** - 優先順位が付けられた実行可能なセキュリティの推奨事項により、攻撃者が悪用する前にセキュリティの脆弱性を修復します。
+- **高度なクラウド防御** - 管理ポートとホワイトリストへの Just In Time アクセスで、VM で実行されているアプリケーションをコントロールして、脅威を軽減します。
+- **優先順位が付けられたアラートとインシデント** - 優先順位が付けられたセキュリティ アラートとインシデントにより、最も重大な脅威にまず重点を置きます。
+- **統合されたセキュリティ ソリューション** - 接続されたパートナー ソリューションなどのさまざまなソースからセキュリティ データを収集、検索、分析します。
 
-![概要](./media/security-center-intro/security-center-intro-fig1.png)
+**[Security Center - 概要]** では、Azure と Azure 以外のワークロードのセキュリティ対策を簡単に確認できるので、ワークロードのセキュリティを検出して評価したり、リスクを特定して軽減したりできます。 組み込みのダッシュボードでは、セキュリティ アラートと注意が必要な脆弱性を即時に把握できます。
 
-## <a name="why-use-security-center"></a>Security Center を使う意義
+![概要][1]
 
-**統一された可視性と制御**
+## <a name="centralized-policy-management"></a>一元化されたポリシー管理
+セキュリティ ポリシーは、ワークロードの必要な構成を定義し、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Security Center では、ポリシーを定義し、ワークロードの種類やデータの機密性に合わせて調整します。
 
-- **ハイブリッド ワークロード全体のセキュリティ状態を把握**します。 すべてのハイブリッド クラウド ワークロード (オンプレミス、Azure、および他のクラウド プラットフォーム) のセキュリティを 1 つのコンソールで管理できます。 組み込みのダッシュボードにより、注意が必要なセキュリティの問題に関するインサイトが即座に得られます。
-- **クラウド ワークロードの可視性**。 急速に変化するクラウド ワークロードを正確に把握します。 Azure サブスクリプションで作成された新しいリソースを自動的に検出し、追加します。
-- **一元化されたポリシー管理**:  すべてのハイブリッド クラウド ワークロードのセキュリティ ポリシーを一元的に管理することで、会社や規制のセキュリティ要件に確実に準拠できます。
-- **さまざまなソースのセキュリティ データ**:  接続されたパートナー ソリューション (ネットワーク ファイアウォールなど) や他の Microsoft サービスなど、さまざまなソースからセキュリティ データを収集、検索、分析できます。 
-- **既存のセキュリティ ワークフローとの統合**:  REST API を使用して既存のツールやプロセスに接続することで、セキュリティ情報にアクセスし、情報を統合、分析できます。
-- **コンプライアンス レポート**:  セキュリティ データとインサイトを使用して、監査担当者に対してコンプライアンスを実証し、証拠を簡単に生成できます。
+Security Center のポリシーには、次のコンポーネントが含まれています。
 
-**アダプティブ脅威に対する防護**
+- **データ収集**: エージェントのプロビジョニングとセキュリティ [データ収集](security-center-enable-data-collection.md)の設定を決定します。
+- **セキュリティ ポリシー**: [セキュリティ ポリシー](security-center-policies.md)を編集して、Security Center がどのコントロールを監視し、推奨するかを決定します。
+- **電子メール通知**: セキュリティ連絡先と[電子メール通知](security-center-provide-security-contact-details.md)の設定を決定します。
+- **価格レベル**: Free または Standard [価格選択](security-center-pricing.md)を定義します。 選択したレベルでは、スコープ内のリソースに使用できる Security Center の機能を決定します。
 
-- **継続的なセキュリティ評価**:  数百もの組み込みのセキュリティ評価を使用するか、独自のセキュリティ評価を作成して、マシン、ネットワーク、Azure サービスのセキュリティを監視できます。 攻撃に対して脆弱なソフトウェアと構成を特定できます。
-- **実行可能な推奨事項**:  優先順位が付けられた実行可能なセキュリティの推奨事項と組み込みの自動プレイブックにより、攻撃者が悪用する前にセキュリティの脆弱性を修復できます。
-- **アダプティブ アプリケーション制御**:  特定の Azure ワークロードに適応し、機械学習を活用したホワイトリスト登録の推奨事項を適用することで、マルウェアや他の望ましくないアプリケーションをブロックします。 
-- **ネットワーク アクセスのセキュリティ**:  Azure VM の管理ポートへの Just-In-Time で制御されたアクセスによってネットワーク攻撃対象領域を縮小することで、ブルート フォース攻撃などのネットワーク攻撃にさらされる機会を大幅に減らします。
+![セキュリティ ポリシー][2]
 
-**インテリジェントな脅威検出と対応**
+詳しくは、「[セキュリティ ポリシーの概要](security-center-policies-overview.md)」をご覧ください。
 
-- **業界で最も広範な脅威インテリジェンス**:  Microsoft サービスや世界中のシステムからの膨大な数の信号を使用して新しい脅威や進化する脅威を特定する、Microsoft インテリジェント セキュリティ グラフを活用できます。
-- **高度な脅威検出**:  組み込みの行動分析と機械学習を使用して、各種攻撃やゼロデイ攻撃を特定します。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。
-- **優先順位が付けられたアラートとインシデント**。 優先順位が付けられたセキュリティ アラートと、各種アラートを 1 つの攻撃キャンペーンにマップするセキュリティ インシデントにより、最も重大な脅威にまず重点を置きます。 独自のカスタム セキュリティ アラートも作成できます。
-- **調査の合理化**:  視覚的な対話型エクスペリエンスにより、攻撃の範囲と影響をすばやく評価できます。 定義済みのクエリやアドホック クエリを使用して、セキュリティ データをさらに詳しく調べことができます。 
-- **状況に応じた脅威インテリジェンス**:  対話型の世界地図上で攻撃元を視覚化します。 組み込みの脅威インテリジェンス レポートを使用することで、既知の悪意のあるアクターの手法と目的に関する貴重なインサイトが得られます。
+## <a name="continuous-security-assessment"></a>継続的なセキュリティ評価
+Security Center は、コンピューティング リソース、仮想ネットワーク、ストレージおよびデータ サービス、アプリケーションのセキュリティの状態を分析します。 継続的な評価を使用して、セキュリティ更新プログラムが不足しているシステムや公開されているネットワーク ポートなど、潜在的なセキュリティの問題を検出できます。 [防止] セクションのタイルを選択して、リソースの一覧と特定済みの脆弱性など、詳しい情報を表示します。
 
-## <a name="get-started"></a>作業開始
-Security Center を使用するには、Microsoft Azure のサブスクリプションが必要です。 Security Center は、Azure サブスクリプションがある場合に有効です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。 
+![セキュリティ正常性の監視][3]
 
-[Azure Security Center の概要](https://docs.microsoft.com/azure/security-center/security-center-get-started) に関する記事では、Security Center のセキュリティ監視とポリシー管理のコンポーネントについて簡単に説明しています。 
+詳しくは、[セキュリティ正常性の監視](security-center-monitoring.md)に関するページをご覧ください。
+
+## <a name="actionable-recommendations"></a>実行可能な推奨事項
+Security Center は Azure リソースと Azure 以外のリソースのセキュリティの状態を分析して、潜在的なセキュリティ脆弱性を特定します。 優先順位が設定されたセキュリティに関する推奨事項の一覧では、セキュリティの問題に対処するプロセスが説明されます。
+
+![Recommendations][4]
+
+詳しくは、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)に関する記事をご覧ください。
+
+## <a name="just-in-time-vm-access"></a>Just In Time VM アクセス
+Azure VM の管理ポートへの制御された Just In Time アクセスによってネットワーク攻撃対象領域を縮小することで、ブルート フォース攻撃などのネットワーク攻撃にさらされる機会を大幅に減らします。
+
+![Just In Time VM アクセス][5]
+
+ユーザーが仮想マシンに接続する方法についての規則を指定します。 必要な場合は、Security Center から、または PowerShell を使用してアクセスを要求することができます。 要求が規則に準拠している限り、要求された時間に対してアクセス権が自動的に付与されます。
+
+詳しくは、[Just In Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)に関する記事をご覧ください。
+
+## <a name="adaptive-application-controls"></a>アダプティブ アプリケーション制御
+特定の Azure ワークロードに適応し、機械学習を活用したホワイトリスト登録の推奨事項を適用することで、マルウェアや他の望ましくないアプリケーションをブロックします。
+
+![アダプティブ アプリケーション制御][6]
+
+Security Center によって生成された推奨されるアプリケーション ホワイトリスト規則を確認し、クリックして適用するか、既に構成されている規則を編集します。
+
+詳しくは、[アダプティブ アプリケーション制御](security-center-adaptive-application.md)に関する記事をご覧ください。
+
+## <a name="prioritized-alerts-and-incidents"></a>優先順位が付けられたアラートとインシデント
+Security Center は、高度な分析とグローバル脅威インテリジェンスを使用して攻撃や侵害後のアクティビティを検出します。 アラートは優先順位が付けられてインシデントにグループ化されるので、最も重大な脅威にまず重点を置くことができます。 独自のカスタム セキュリティ アラートも作成できます。
+
+![優先順位が付けられたアラートとインシデント][7]
+
+ビジュアルな対話形式の調査エクスペリエンスで攻撃のスコープと影響を迅速に評価し、定義済みまたはアドホック クエリを使用してセキュリティ データを詳しく調査できます。
+
+詳しくは、[セキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)に関するページをご覧ください。
+
+## <a name="integrate-your-security-solutions"></a>セキュリティ ソリューションの統合
+Security Center で、接続されたパートナー ソリューション (ネットワーク ファイアウォールなど) や他の Microsoft サービスなど、さまざまなソースからセキュリティ データを収集、検索、分析できます。
+
+![セキュリティ ソリューションの統合][8]
+
+詳しくは、[セキュリティ ソリューションの統合](security-center-partner-integration.md)に関する記事をご覧ください。
+
+## <a name="next-steps"></a>次の手順
+
+- Security Center を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
+- Security Center の Free 価格レベルは、Azure サブスクリプションがある場合に有効です。 高度なセキュリティ管理と脅威検出の機能を利用するには、Standard 価格レベルにアップグレードする必要があります。 Standard レベルは、最初の 60 日間は無料です。 詳しくは、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」ページをご覧ください。
+- Security Center Standard を有効にする準備ができている場合は、「[Azure Security Center クイック スタート ガイド](security-center-get-started.md)」で手順をご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Security Center の概略のほか、その主な機能と使用を開始する方法を紹介しました。 詳細については、次のリソースを参照してください。
-
-* [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md) — 組織のセキュリティ要件とクラウド管理モデルに基づいて、Security Center の利用を最適化する方法について説明します。
-* [セキュリティ ポリシーの設定](https://docs.microsoft.com/azure/security-center/security-center-policies)  — Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
-* [セキュリティに関する推奨事項の管理](https://docs.microsoft.com/azure/security-center/security-center-recommendations) — 推奨事項に従って Azure および Azure 以外のリソースを保護する方法について説明します。
-* [セキュリティ正常性の監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring) — Azure および Azure 以外のリソースの正常性を監視する方法について説明します。
-* [セキュリティの警告の管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) -- セキュリティの警告の管理と対応の方法について説明します。
-* [パートナー ソリューションの監視](https://docs.microsoft.com/azure/security-center/security-center-partner-solutions) -- パートナー ソリューションの正常性状態を監視する方法について説明します。
-* [Security Center のよくあるご質問 (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq) — Security Center の使用に関してよく寄せられる質問が記載されています。
-
-
+<!--Image references-->
+[1]: ./media/security-center-intro/overview.png
+[2]: ./media/security-center-intro/security-policy.png
+[3]: ./media/security-center-intro/compute.png
+[4]: ./media/security-center-intro/recommendations.png
+[5]: ./media/security-center-intro/just-in-time-vm-access.png
+[6]: ./media/security-center-intro/adaptive-app-controls.png
+[7]: ./media/security-center-intro/security-alerts.png
+[8]: ./media/security-center-intro/security-solutions.png

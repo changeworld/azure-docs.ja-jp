@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 27ce6325773ba1f9fd9cd9ab9e07ea9f5e2488ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be0fc51574950cad0558a85b3f20f8b14eafda13
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
 ## <a name="overview"></a>概要
 MPEG DASH は、高品質なアダプティブ ビデオ ストリーミング出力を配信する必要があるユーザーに多くのメリットを提供するビデオ コンテンツのアダプティブ ストリーミングの ISO 標準です。 MPEG DASH では、ネットワークが混雑すると自動的にビデオ ストリームが低解像度に変更されます。 これにより、プレーヤーが次に再生する数秒分をダウンロードする間 (バッファリング)、視聴者に「一時停止された」状態のビデオが表示される可能性が減少します。 ネットワークの混雑が緩和されると、ビデオ プレーヤーは高品質ストリームに戻ります。 この機能は必要な帯域幅に対応するもので、結果的にビデオの開始時間が高速化されます。 つまり、最初の数秒は高速にダウンロードされる低品質のセグメントで再生され、十分なコンテンツがバッファリングされると、より高い品質にステップアップします。
 
@@ -73,13 +73,13 @@ dash.js プレーヤーをアプリケーションを追加するには、basicP
     }
     </script>
 
-この関数では、まず DashContext が作成されます。 これは、特定のランタイム環境でのアプリケーションの構成に使用されます。 技術的な観点では、この関数はアプリケーションの構築時に依存関係挿入フレームワークが使用するクラスを定義します。 ほとんどの場合、Dash.di.DashContext を使用することになります。
+この関数では、まず DashContext が作成されます。 これは、特定のランタイム環境でのアプリケーションの構成に使用されます。 技術的な観点では、この関数はアプリケーションの構築時に依存関係挿入フレームワークが使用するクラスを定義します。 ほとんどの場合、Dash.di.DashContext を使用します。
 
 次に、dash.js フレームワークの MediaPlayer のプライマリ クラスをインスタンス化します。 このクラスには、再生や一時停止などの必要なコア メソッドが含まれ、ビデオ要素との関係の管理や再生するビデオを示す Media Presentation Description (MPD) ファイルの解釈が管理されます。
 
 プレーヤーがビデオを再生する準備ができていることを確認するため、MediaPlayer クラスの startup() 関数が呼び出されます。 特に、この関数では、すべての必要な (コンテキストで定義されたとおりの) クラスが正常に読み込まれたことを確認できます。 プレイヤーの準備が整ったら、attachView() 関数を使用して、ビデオ要素をアタッチします。 これにより、MediaPlayer がビデオ ストリームを要素に挿入し、必要に応じて再生をコントロールできるようになります。
 
-MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオについて通知します。作成した setupVideo() 関数は、ページを完全に読み込んだ後に実行する必要があります。 この操作は、Body 要素の OnLoad イベントを使用して行います。 <body> 要素を次に変更します。
+MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオについて通知します。 作成した setupVideo() 関数は、ページを完全に読み込んだ後に実行する必要があります。 この操作は、Body 要素の OnLoad イベントを使用して行います。 <body> 要素を次に変更します。
 
     <body onload="setupVideo()">
 

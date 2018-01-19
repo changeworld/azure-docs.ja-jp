@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: c07290a5003189b0b773bd9b9c995400b424c7f4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 993dff7657a73803ca21677e19b08946fb89bfa2
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Operations Management Suite の Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -49,7 +49,7 @@ Service Map は、Operations Management Suite のシステム更新評価の使�
 
 ![サービス マップの概要](media/oms-service-map/service-map-overview.png)
 
-マシンはマップ上で展開表示することができ、選択した期間内にアクティブなネットワーク接続で実行しているプロセスを表示することができます。 Service Map エージェントがインストールされているリモート マシンを展開してプロセスの詳細を表示すると、対象のマシンと通信するプロセスのみが表示されます。 対象のマシンに接続するエージェントなしのフロントエンド マシンの数が、その接続先となるプロセスの左側に示されます。 対象のマシンがエージェントのないバックエンド マシンに接続している場合、そのバックエンド サーバーは、同じポート番号への他の接続と共に、サーバー ポート グループに含められます。
+マシンはマップ上で展開表示することができ、選択した時間の範囲内にアクティブなネットワーク接続で実行しているプロセス グループとプロセスを表示することができます。 Service Map エージェントがインストールされているリモート マシンを展開してプロセスの詳細を表示すると、対象のマシンと通信するプロセスのみが表示されます。 対象のマシンに接続するエージェントなしのフロントエンド マシンの数が、その接続先となるプロセスの左側に示されます。 対象のマシンがエージェントのないバックエンド マシンに接続している場合、そのバックエンド サーバーは、同じポート番号への他の接続と共に、サーバー ポート グループに含められます。
 
 既定では、サービス マップは、直近 30 分間の依存関係情報を表示します。 左上にある時間コントロールを使用すると、過去の時間範囲 (最長 1 時間まで) のマップを照会し、過去における依存関係を表示することができます (例: インシデントの発生中や変更が発生する前)。 サービス マップのデータは、有料のワークスペースで 30 日間、無料のワークスペースでは 7 日間のあいだ保存されます。
 
@@ -59,6 +59,9 @@ Service Map は、Operations Management Suite のシステム更新評価の使�
 状態バッジの重大度に応じて、マシン ノードの枠線を赤 (重大)、黄 (警告)、青 (情報) に色分けすることができます。 この色は、状態バッジの中で最も重大な状態を表します。 灰色の枠線は、ノードに状態インジケーターがないことを示します。
 
 ![状態バッジ](media/oms-service-map/status-badges.png)
+
+## <a name="process-groups"></a>プロセス グループ
+プロセス グループを使用すると、共通の製品またはサービスに関連付けられているプロセスをプロセス グループに結合できます。  マシン ノードを展開すると、プロセス グループと共にスタンドアロン プロセスが表示されます。  プロセス グループ内のプロセスへの受信接続と送信接続が失敗した場合、その接続はプロセス グループ全体に対して失敗として表示されます。
 
 ## <a name="machine-groups"></a>マシン グループ
 マシン グループを使用すると、単独のサーバーではなく一連のサーバーを中心としたマップを表示できます。これにより、多層アプリケーションまたはサーバー クラスターのすべてのメンバーを 1 つのマップに表示できます。
@@ -121,7 +124,7 @@ Service Map は、Operations Management Suite のシステム更新評価の使�
 ## <a name="role-icons"></a>ロール アイコン
 特定のプロセスは、マシンで特定のロール (Web サーバー、アプリケーション サーバー、データベースなど) を担います。 サービス マップでは、プロセスとマシン ボックスにロール アイコンで注釈を付け、プロセスまたはサーバーが担っているロールがひとめでわかるようにします。
 
-| ロール アイコン | Description |
+| ロール アイコン | [説明] |
 |:--|:--|
 | ![Web サーバー](media/oms-service-map/role-web-server.png) | Web サーバー |
 | ![アプリ サーバー](media/oms-service-map/role-application-server.png) | アプリケーション サーバー |
@@ -277,9 +280,9 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL レコード
 *ServiceMapComputer_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーのインベントリ データが含まれます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
-| 型 | *ServiceMapComputer_CL* |
+| type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | ワークスペース内のマシンに対する一意識別子 |
 | ResourceName_s | ワークスペース内のマシンに対する一意識別子 |
@@ -304,9 +307,9 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 型のレコード
 *ServiceMapProcess_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーの TCP 接続プロセスのインベントリ データが含まれています。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
-| 型 | *ServiceMapProcess_CL* |
+| type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | ワークスペース内のプロセスに対する一意識別子 |
 | ResourceName_s | 実行中のマシン内のプロセスに対する一意識別子|
@@ -330,34 +333,34 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 
 ### <a name="list-all-known-machines"></a>既知のコンピューターを一覧表示
-Type=ServiceMapComputer_CL | dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>すべての管理されたコンピューターの物理メモリ容量を一覧表示。
-Type=ServiceMapComputer_CL | select PhysicalMemory_d, ComputerName_s | Dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>コンピューター名、DNS、IP、および OS を一覧表示。
-Type=ServiceMapComputer_CL | select ComputerName_s, OperatingSystemFullName_s, DnsNames_s, IPv4Addresses_s  | dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>"sql" でコマンドラインのすべてのプロセスを検索
-Type=ServiceMapProcess_CL CommandLine_s = \*sql\* | dedup ResourceId
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>リソース名でコンピューター (最新のレコード) を検索
-Type=ServiceMapComputer_CL "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | dedup ResourceId
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>IP アドレスでマシン (最新のレコード) を検索
-Type=ServiceMapComputer_CL "10.229.243.232" | dedup ResourceId
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>指定のマシンにある既知のプロセスすべてを一覧表示
-Type=ServiceMapProcess_CL MachineResourceName_s="m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | dedup ResourceId
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-all-computers-running-sql"></a>SQL を実行しているすべてのコンピューターを一覧表示
-Type=ServiceMapComputer_CL ResourceName_s IN {Type=ServiceMapProcess_CL \*sql\* | Distinct MachineResourceName_s} | dedup ResourceId | Distinct ComputerName_s
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>データセンター内にあるすべての製品バージョンの curl を一覧表示
-Type=ServiceMapProcess_CL ExecutableName_s=curl | Distinct ProductVersion_s
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS を実行しているすべてのコンピューターのコンピューター グループを作成
-Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct ComputerName_s
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
 
 ## <a name="rest-api"></a>REST API
@@ -370,7 +373,7 @@ Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct Com
 データの収集と使用の詳細については、「[Microsoft オンライン サービスのプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=512132)」を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Log Analytics の[ログ検索](../log-analytics/log-analytics-log-searches.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
 
 

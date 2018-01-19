@@ -4,21 +4,21 @@ description: "このトピックでは、リスク イベントの詳細な概�
 services: active-directory
 keywords: "azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5ff0bcf9bdf9eaf1b4f0084acf9e5ee6ccfeba19
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 59c8932f7676a5388413baf2edb5d9e259769f93
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -31,9 +31,13 @@ ms.lasthandoff: 12/06/2017
 - [特殊な場所へのあり得ない移動](#impossible-travel-to-atypical-locations) 
 - [感染しているデバイスからのサインイン](#sign-ins-from-infected-devices) 
 - [不審なアクティビティのある IP アドレスからのサインイン](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-- [不明な場所からのサインイン](#sign-in-from-unfamiliar-locations) (**Azure Active Directory Premium P2** エディション専用)
+- [未知の場所からのサインイン](#sign-in-from-unfamiliar-locations) 
+
 
 ![リスク イベント](./media/active-directory-reporting-risk-events/91.png)
+
+検出されたリスク イベントに対して取得する洞察は、Azure AD サブスクリプションに関連付けられています。 Azure AD Premium P2 エディションでは、基になるすべての検出に関する最も詳細な情報を取得できます。 Azure AD Premium P1 エディションでは、ライセンスに含まれない検出は**追加のリスクが検出されたサインイン**というリスク イベントとして表示されます。
+
 
 このトピックでは、リスク イベントの概要と、リスク イベントを使用して Azure AD の ID を保護する方法について説明します。
 
@@ -90,7 +94,7 @@ Microsoft は引き続き検出プロセスに投資して、次を実現して�
 | 検出の種類 | レポートされるまでの時間 |
 | --- | --- |
 | リアルタイム | 5 ～ 10 分 |
-| オフライン | 2 ～ 4 分 |
+| オフライン | 2 ～ 4 時間 |
 
 
 Azure Active Directory で検出されるリスク イベントの種類と、対応する検出の種類を次に示します。
@@ -158,7 +162,7 @@ Azure Active Directory で検出されるリスク イベントの種類と、�
 
 
  
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 リスク イベントは、Azure AD の ID を保護するための基礎となります。 現在、Azure AD では 6 種類のリスク イベントを検出できます。 
 

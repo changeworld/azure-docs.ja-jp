@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2017
 ms.author: elioda
-ms.openlocfilehash: fd047b8618f6e6814e0656ac2ab19e30016016fa
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 450f2d38f7b641bcf6b8be061969404a1b582b4c
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語
 
@@ -35,6 +35,17 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
 {
     "deviceId": "myDeviceId",
     "etag": "AAAAAAAAAAc=",
+    "status": "enabled",
+    "statusUpdateTime": "0001-01-01T00:00:00",    
+    "connectionState": "Disconnected",    
+    "lastActivityTime": "0001-01-01T00:00:00",
+    "cloudToDeviceMessageCount": 0,
+    "authenticationType": "sas",    
+    "x509Thumbprint": {    
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+    },
+    "version": 2,
     "tags": {
         "location": {
             "region": "US",
@@ -137,6 +148,12 @@ GROUP BY properties.reported.telemetryConfig.status
         "status": "Error"
     }
 ]
+```
+
+プロジェクション クエリを使用すると、開発者は必要なプロパティのみを返すことができます。 たとえば、すべての切断されているデバイスの最後のアクティビティ時間を取得するには、次のクエリを使用します。
+
+```sql
+SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
 ### <a name="c-example"></a>C# の例
@@ -466,16 +483,16 @@ GROUP BY <group_by_element>
 | 論理 |AND、OR、NOT |
 | 比較 |=、!=、<、>、<=、>=、<> |
 
-### <a name="functions"></a>関数
+### <a name="functions"></a>Functions
 ツインとジョブのクエリにおいて、サポートされている唯一の関数は次のとおりです。
 
-| 関数 | Description |
+| 関数 | [説明] |
 | -------- | ----------- |
 | IS_DEFINED(property) | プロパティに値が代入されているかどうかを示すブール値を返します (`null` を含む)。 |
 
 ルートの条件では、次の計算関数がサポートされています。
 
-| 関数 | Description |
+| 関数 | [説明] |
 | -------- | ----------- |
 | ABS(x) | 指定された数値式の絶対値 (正の値) を返します。 |
 | EXP(x) | 指定された数値式の指数値を返します (e^x)。 |
@@ -488,7 +505,7 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の型の確認とキャスト関数がサポートされています。
 
-| 関数 | Description |
+| 関数 | [説明] |
 | -------- | ----------- |
 | AS_NUMBER | 入力文字列を数値に変換します。 入力が数値の場合は `noop`、文字列が数値を表していない場合は `Undefined` です。|
 | IS_ARRAY | 指定した式の型が配列であるかどうかを示すブール値を返します。 |
@@ -502,7 +519,7 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の文字列関数がサポートされています。
 
-| 関数 | Description |
+| 関数 | [説明] |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 2 つ以上の文字列値を連結した結果である文字列を返します。 |
 | LENGTH(x) | 指定された文字列式の文字数を返します。|
@@ -514,7 +531,7 @@ GROUP BY <group_by_element>
 | ENDS_WITH(x, y) | 1 つ目の文字列式が 2 つ目の文字列で終了しているかどうかを示すブール値を返します。 |
 | CONTAINS(x,y) | 1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure IoT Hub SDK][lnk-hub-sdks] を使用して、アプリでクエリを実行する方法を説明します。
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause

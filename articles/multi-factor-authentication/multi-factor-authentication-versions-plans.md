@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: c7e880b6632e3a1456cf2fa535e6218d3bb31e4a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: af86434e1205d67829fc7079d97a37f013c0f2d8
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 12/11/2017
 
 以下の表は、Multi-Factor Authentication の 3 つのバージョンの違いについて説明したものです。
 
-| バージョン | Description |
+| バージョン | [説明] |
 | --- | --- |
 | Office 365 の多要素認証 |このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。 管理者は [2 段階認証を使用して Office 365 リソースを保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)することができます。 このバージョンは、Office 365 サブスクリプションの一部です。 |
-| Azure 管理者用の多要素認証 | Azure テナントの全体管理者は、追加費用なしで、その全体管理者アカウントに 2 段階認証を適用できます。|
-| Azure Multi-Factor Authentication | "完全" バージョンとも呼ばれる Azure Multi-Factor Authentication は、最も豊富な機能を備えています。 [Azure クラシック ポータル](https://manage.windowsazure.com)を介した追加の構成オプション、高度なレポート、および一連のオンプレミスおよびクラウド アプリケーションのサポートを提供します。 Azure Multi-Factor Authentication は、[Azure Active Directory Premium プラン](https://www.microsoft.com/cloud-platform/azure-active-directory-features)と [Enterprise Mobility + Security プラン](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing)に含まれており、クラウドとオンプレミスのどちらにでもデプロイできます。 |
+| Azure AD 管理者用の Multi-Factor Authentication | Azure AD テナントのグローバル管理者ロールを割り当てられているユーザーは、追加費用なしで、その Azure AD グローバル管理者アカウントに 2 段階認証を適用できます。|
+| Azure Multi-Factor Authentication | "完全" バージョンとも呼ばれる Azure Multi-Factor Authentication は、最も豊富な機能を備えています。 [Azure Portal](https://portal.azure.com) を介した追加の構成オプション、高度なレポート、および一連のオンプレミスおよびクラウド アプリケーションのサポートを提供します。 Azure Multi-Factor Authentication は、[Azure Active Directory Premium プラン](https://www.microsoft.com/cloud-platform/azure-active-directory-features)と [Enterprise Mobility + Security プラン](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing)に含まれており、クラウドとオンプレミスのどちらにでもデプロイできます。 |
 
 ## <a name="feature-comparison-of-versions"></a>バージョンごとの機能の比較
 次の表に、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を示します。
@@ -48,9 +48,9 @@ ms.lasthandoff: 12/11/2017
 > この比較表では、各バージョンの Multi-Factor Authentication に含まれる機能について説明します。 完全な Azure Multi-Factor Authentication サービスを使用している場合、[クラウドの MFA とオンプレミスの MFA](multi-factor-authentication-get-started.md) のどちらを使用するかによって、一部の機能を利用できない可能性があります。
 
 
-| 機能 | Office 365 の多要素認証 | Azure 管理者用の多要素認証 | Azure Multi-Factor Authentication |
+| 機能 | Office 365 の多要素認証 | Azure AD 管理者用の Multi-Factor Authentication | Azure Multi-Factor Authentication |
 | --- |:---:|:---:|:---:|
-| MFA で管理者アカウントを保護する |● |● (全体管理者アカウントの場合のみ) |● |
+| MFA で Azure AD 管理者アカウントを保護する |● |● (Azure AD グローバル管理者アカウントの場合のみ) |● |
 | モバイル アプリを 2 番目の要素にする |● |● |● |
 | 音声通話を 2 番目の要素にする |● |● |● |
 | SMS を 2 番目の要素にする |● |● |● |
@@ -103,7 +103,7 @@ Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用�
 
 使用量ベースの構成に関しては、Azure MFA ライセンスを所有しているかどうかに関係なく別途料金が発生することに注意してください。 "認証ごと" の Azure MFA プロバイダーをセットアップした場合、2 段階認証の要求者であるユーザーがライセンスを有しているかどうかに関係なく、要求ごとに課金されます。 "ユーザーごと" の Azure MFA プロバイダーを、Azure AD テナントにリンクされていないドメインでセットアップした場合、Azure AD 上におけるライセンスの有無に関係なく、2 段階認証が有効にされているユーザーごとに料金が発生します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 価格の詳細については、[Azure MFA の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)に関するページをご覧ください。
 

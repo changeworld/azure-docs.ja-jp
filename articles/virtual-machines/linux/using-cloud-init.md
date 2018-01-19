@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: ce238a3093e29c3091f979bbd9e80f28495307da
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 88133aff36aaef544d555cb121e23ff23fcc3367
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セット (VMSS) を構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -33,21 +33,21 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 | 発行元 | プラン | SKU | バージョン | cloud-init 対応
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |16.04 LTS |最新 |○ | 
-|Canonical |UbuntuServer |14.04.5-LTS |最新 |○ |
-|CoreOS |CoreOS |安定版 |最新 |○ |
+|Canonical |UbuntuServer |16.04 LTS |最新 |はい | 
+|Canonical |UbuntuServer |14.04.5-LTS |最新 |はい |
+|CoreOS |CoreOS |安定版 |最新 |はい |
 |OpenLogic |CentOS |7-CI |最新 |preview |
 |RedHat |RHEL |7-RAW-CI |最新 |preview |
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init と Linux エージェント (WALA) の相違点
 WALA は、VM のプロビジョニングと構成および Azure 拡張機能の処理に使われる、Azure プラットフォーム固有のエージェントです。 既存の cloud-init のお客様が現在の cloud-init スクリプトを使用できるよう、Linux エージェントではなく cloud-init を使うように VM 構成タスクの拡張を行っています。  Linux システム構成用の cloud-init スリプトが既にある場合、それを有効にするために**追加の設定は必要ありません**。 
 
-プロビジョニング時に AzureCLI コマンド ライン スイッチ `--custom-data`を指定しないと、WALA は、VM をプロビジョニングして既定値でデプロイを完了するために必要な最低限の VM プロビジョニング パラメーターを取得します。  cloud-init の `--custom-data` スイッチを指定すると、カスタム データに含まれるすべてのもので (個別の設定または完全なスクリプト)、WALA によって定義されている既定値が上書きされます。 
+プロビジョニング時に Azure CLI `--custom-data` スイッチを指定しないと、WALA は、VM をプロビジョニングして既定値でデプロイを完了するために必要な最低限の VM プロビジョニング パラメーターを取得します。  cloud-init の `--custom-data` スイッチを指定すると、カスタム データに含まれるすべてのもので (個別の設定または完全なスクリプト)、WALA の既定値が上書きされます。 
 
 VM の WALA による構成は、VM の最大プロビジョニング時間内で行われるように期間が制限されています。  VM に適用される cloud-init の構成には時間制限がなく、タイムアウトによってデプロイが失敗することはありません。 
 
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>cloud-init 対応の仮想マシンのデプロイ
-cloud-init 対応の仮想マシンのデプロイは簡単であり、デプロイの間に cloud-init が有効なディストリビューションを参照するだけです。  Linux ディストリビューションのメンテナンス担当者は、cloud-init を有効にし、Azure で発行された基本イメージに cloud-init を統合する必要があります。 デプロイするイメージが cloud-init 対応であることを確認した後は、AzureCLI を使ってイメージをデプロイできます。 
+cloud-init 対応の仮想マシンのデプロイは簡単であり、デプロイの間に cloud-init が有効なディストリビューションを参照するだけです。  Linux ディストリビューションのメンテナンス担当者は、cloud-init を有効にし、Azure で発行された基本イメージに cloud-init を統合する必要があります。 デプロイするイメージが cloud-init 対応であることを確認した後は、Azure CLI を使ってイメージをデプロイできます。 
 
 このイメージをデプロイする最初のステップは、[az group create](/cli/azure/group#create) コマンドでリソース グループを作成することです。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
@@ -56,7 +56,7 @@ cloud-init 対応の仮想マシンのデプロイは簡単であり、デプロ
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
-次に、現在のシェルで *cloud-init.txt* という名前のファイルを作成し、次の構成を貼り付けます。 この例では、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloud-init.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 **nano** エディターを使うには #1 を選びます。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
+次に、現在のシェルで *cloud-init.txt* という名前のファイルを作成し、次の構成を貼り付けます。 この例では、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloud-init.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 **nano** エディターを使用するには #1 を選びます。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -89,7 +89,7 @@ VM のプロビジョニングが済むと、cloud-init は `--custom-data` で�
 
 cloud-init のログについて詳しくは、[cloud-init のドキュメント](http://cloudinit.readthedocs.io/en/latest/topics/logging.html)をご覧ください 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 構成変更の cloud-init の例については、以下のドキュメントをご覧ください。
  
 - [VM に他の Linux ユーザーを追加する](cloudinit-add-user.md)

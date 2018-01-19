@@ -4,7 +4,7 @@ description: "Apache Spark ストリーミング サンプルを作成して、A
 keywords: "apache spark ストリーミング,spark ストリーミング,spark サンプル,apache spark ストリーミング例,event hub azure サンプル,spark サンプル"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: a542295e91a641289fa4261920a08eddbad6a217
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.author: jgao
+ms.openlocfilehash: e0486d2c5f78da1d1e4a12703f120eccef43c305
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="apache-spark-structured-streaming-on-hdinsight-to-process-events-from-event-hubs"></a>HDInsight の Apache Spark 構造化ストリーミングで Event Hubs からのイベントを処理する
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/01/2017
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 * Azure Event Hubs 名前空間。 詳細については、[Azure Event Hubs の名前空間の作成](apache-spark-eventhub-streaming.md#create-an-azure-event-hub)に関するページを参照してください。
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 12/01/2017
 
 5. 作成するアプリケーションには、Spark Streaming Event Hubs パッケージが必要です。 この依存関係を [Maven Central](https://search.maven.org) から自動的に取得するように Spark シェルを実行するには、packages スイッチに Maven コーディネートを指定してください。その例を次に示します。
 
-        spark-shell --packages "com.microsoft.azure:spark-streaming-eventhubs_2.11:2.1.0"
+        spark-shell --packages "com.microsoft.azure:spark-streaming-eventhubs_2.11:2.1.5"
 
 6. Spark シェルの読み込みが完了すると、次の画面が表示されます。
 
@@ -92,10 +92,10 @@ ms.lasthandoff: 12/01/2017
             ____              __
             / __/__  ___ _____/ /__
             _\ \/ _ \/ _ `/ __/  '_/
-        /___/ .__/\_,_/_/ /_/\_\   version 2.1.0.2.6.0.10-29
+        /___/ .__/\_,_/_/ /_/\_\   version 2.1.1.2.6.2.3-1
             /_/
                 
-        Using Scala version 2.11.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_131)
+        Using Scala version 2.11.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_151)
         Type in expressions to have them evaluated.
         Type :help for more information.
 
@@ -113,8 +113,12 @@ ms.lasthandoff: 12/01/2017
             "eventhubs.progressTrackingDir" -> "/eventhubs/progress",
             "eventhubs.sql.containsProperties" -> "true"
             )
+            
+8. 次の形式の EventHub 互換エンドポイントを見ると、`iothub-xxxxxxxxxx` という部分は EventHub 互換の名前空間名であり、`eventhubs.namespace` に使用できます。 フィールド `SharedAccessKeyName` は `eventhubs.policyname` に使用でき、`SharedAccessKey` は `eventhubs.policykey` に使用できます。 
 
-8. 待機中の scala> プロンプトに変更後のスニペットを貼り付けて Enter キーを押します。 次のような出力が表示されます。
+        Endpoint=sb://iothub-xxxxxxxxxx.servicebus.windows.net/;SharedAccessKeyName=xxxxx;SharedAccessKey=xxxxxxxxxx 
+
+9. 待機中の scala> プロンプトに変更後のスニペットを貼り付けて Enter キーを押します。 次のような出力が表示されます。
 
         scala> val eventhubParameters = Map[String, String] (
             |       "eventhubs.policyname" -> "RootManageSharedAccessKey",
@@ -128,31 +132,31 @@ ms.lasthandoff: 12/01/2017
             |     )
         eventhubParameters: scala.collection.immutable.Map[String,String] = Map(eventhubs.sql.containsProperties -> true, eventhubs.name -> hub1, eventhubs.consumergroup -> $Default, eventhubs.partition.count -> 2, eventhubs.progressTrackingDir -> /eventhubs/progress, eventhubs.policykey -> 2P1Q17Wd1rdLP1OZQYn6dD2S13Bb3nF3h2XZD9hvyyU, eventhubs.namespace -> hdiz-docs-eventhubs, eventhubs.policyname -> RootManageSharedAccessKey)
 
-9. 次に、Spark 構造化ストリーミング クエリを作成し、ソースを指定します。 Spark シェルに次のコードを貼り付けて Enter キーを押します。
+10. 次に、Spark 構造化ストリーミング クエリを作成し、ソースを指定します。 Spark シェルに次のコードを貼り付けて Enter キーを押します。
 
         val inputStream = spark.readStream.
         format("eventhubs").
         options(eventhubParameters).
         load()
 
-10. 次のような出力が表示されます。
+11. 次のような出力が表示されます。
 
         inputStream: org.apache.spark.sql.DataFrame = [body: binary, offset: bigint ... 5 more fields]
 
-11. 次に、出力先がコンソールとなるようにクエリを記述します。 Spark シェルに次のコードを貼り付けて Enter キーを押してください。
+12. 次に、出力先がコンソールとなるようにクエリを記述します。 Spark シェルに次のコードを貼り付けて Enter キーを押してください。
 
         val streamingQuery1 = inputStream.writeStream.
         outputMode("append").
         format("console").start().awaitTermination()
 
-12. 次のような出力内容で始まるいくつかのバッチが表示されます。
+13. 次のような出力内容で始まるいくつかのバッチが表示されます。
 
         -------------------------------------------
         Batch: 0
         -------------------------------------------
         [Stage 0:>                                                          (0 + 2) / 2]
 
-13. その後に、イベントの小さなバッチごとの処理から得られた出力結果が表示されます。 
+14. その後に、イベントの小さなバッチごとの処理から得られた出力結果が表示されます。 
 
         -------------------------------------------
         Batch: 0
@@ -184,8 +188,8 @@ ms.lasthandoff: 12/01/2017
         +--------------------+------+---------+------------+---------+------------+----------+
         only showing top 20 rows
 
-14. 新しいイベントがイベント プロデューサーから届くと、それらのイベントがこの構造化ストリーミング クエリによって処理されます。
-15. このサンプルの実行を終えたら必ず、HDInsight クラスターを削除してください。
+15. 新しいイベントがイベント プロデューサーから届くと、それらのイベントがこの構造化ストリーミング クエリによって処理されます。
+16. このサンプルの実行を終えたら必ず、HDInsight クラスターを削除してください。
 
 
 

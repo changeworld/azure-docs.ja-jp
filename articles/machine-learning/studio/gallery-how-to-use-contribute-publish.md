@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence ギャラリー | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーの分析リソースなどを共有して検出します。 他のユーザーを参考にしてコミュニティに投稿を行います。"
+title: "Azure AI ギャラリー | Microsoft Docs"
+description: "Azure AI ギャラリーで分析リソースなどを共有し、発見します。 他のユーザーを参考にしてコミュニティに投稿を行います。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 9da6cc9d306930fbec33ecebc85784d0d1e1532d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d60815e848277637e3d692a676dbde838b249754
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="share-and-discover-resources-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでリソースを共有および発見する
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 [!INCLUDE [gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 <!-- separating these 2 includes -->
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-can-i-find-in-the-gallery"></a>ギャラリーではどのようなものが見つかるのですか。
-Cortana Intelligence ギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
+Azure AI ギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
 
 * **[実験](gallery-experiments.md)**: ギャラリーには、Azure Machine Learning Studio で開発されたさまざまな実験が含まれています。 特定の機械学習手法を示す簡単な概念実証の実験から、複雑な機械学習の問題用の熟成されたソリューションまで広範囲に渡ります。
 * **[Jupyter Notebook](gallery-jupyter-notebooks.md)**: Jupyter Notebook には、単一の対話型のキャンバスに、コード、データの視覚化、およびドキュメントが含まれています。
@@ -48,7 +48,7 @@ Cortana Intelligence ギャラリーには、独自の分析ソリューショ�
 
 最後に、**[コンペティション](gallery-competitions.md)**では、Cortana Intelligence Suite を使用して複雑な問題を解決するためにデータ サイエンティストのコミュニティと競う絶好の機会を提供します。
 
-![Cortana Intelligence ギャラリーのホーム ページ](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
+![Azure AI ギャラリーのホーム ページ](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
 
 ## <a name="discover-and-learn"></a>検出して学ぶ
 Microsoft と高度な分析のコミュニティから投稿されているギャラリー内のさまざまな種類のリソースは、すべての人が検索して閲覧できます。

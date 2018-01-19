@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence ギャラリー コレクション | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーでコレクションを共有および発見します。"
+title: "Azure AI ギャラリー コレクション | Microsoft Docs"
+description: "Azure AI ギャラリーでコレクションを発見および共有します。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 9ca9b45bf977a562982535feb4093fcee0f10a05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a90686d42aa3187e358d9ba3c8c5c3fb579a1d5e
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-and-share-collections-in-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでコレクションを共有および発見する
+# <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Azure AI ギャラリーでコレクションを発見および共有する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="collections"></a>コレクション
@@ -71,7 +71,7 @@ ms.lasthandoff: 10/11/2017
     ![[Public (公開)] または [Unlisted (非公開)] を選択する](./media/gallery-collections/create-collection-page-3.png)
 7. **[作成]**を選択します。
 
-これで、コレクションが Cortana Intelligence ギャラリーに含まれました。 コレクションは、アカウント ページの **[Collection (コレクション)]** タブに一覧表示されます。
+これで、コレクションが Azure AI ギャラリーに追加されます。 コレクションは、アカウント ページの **[Collection (コレクション)]** タブに一覧表示されます。
 
 ### <a name="add-items-to-a-collection"></a>項目をコレクションに追加する
 項目をコレクションに追加するには、コレクションを開き、**[Edit (編集)]** を選択して、**[Add Item (項目の追加)]** を選択します。

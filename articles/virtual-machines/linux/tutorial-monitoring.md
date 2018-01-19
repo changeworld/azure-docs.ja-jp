@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: 70c17d9a8f7bf6d9106efcb56eee7cd996460c18
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cde484dd59ec6e2821678766726c02362222d496
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンを監視および更新する方法
 
@@ -200,7 +200,7 @@ Log Analytics ワークスペースは、Update Management のような機能お
 ソリューションを有効にするは最大 15 分かかります。このとき、ブラウザー ウィンドウを閉じないでください。 ソリューションが有効になると、VM 上のパッケージ マネージャーからの不足している更新プログラムの情報が Log Analytics に送られます。
 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
-### <a name="view-update-assessment"></a>更新の評価を確認する
+### <a name="view-update-assessment"></a>更新の評価を表示する
 
 **Update Management** ソリューションが有効になると、**[更新の管理]** 画面が表示されます。 **[不足している更新プログラム]** タブに、不足している更新プログラムのリストが表示されます。
 
@@ -233,7 +233,7 @@ Update Management では、パッケージをインストールするのに、�
 スケジュールされたデプロイの開始後、**[更新管理]** 画面の **[更新プログラムの展開]** タブに、デプロイの状態が表示されます。
 実行中の場合、状態は **[処理中]** と表示されます。 正常に完了すると、ステータスは **[成功]** に変わります。
 デプロイ時に 1 つ以上の更新プログラムでエラーが発生した場合、ステータスは **[失敗]** になります。
-完了した更新プログラムのデプロイをクリックし、その更新プログラムのデプロイのダッシュボードを確認します。
+完了した更新プログラムのデプロイをクリックすると、その更新プログラムのデプロイ用のダッシュボードが表示されます。
 
 ![特定のデプロイに関する更新プログラムのデプロイ ステータスのダッシュボード](./media/tutorial-monitoring/manage-updates-view-results.png)
 
@@ -271,7 +271,7 @@ OMS ポータルの [ログ検索] ブレードに *myVM* が表示されます 
 
 ![OMS ブレード](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、VM 向けに更新プログラムを構成、確認、管理しました。 以下の方法について学習しました。
 

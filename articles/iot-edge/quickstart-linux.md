@@ -6,16 +6,16 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/16/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bfa6652eac34f88baf09f55353cf58227a20e4cf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-linux-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Linux デバイスに展開する - プレビュー
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Linux または Mac デバイスにデプロイする - プレビュー
 
 Azure IoT Edge は、クラウドの機能をご使用のモノのインターネット (IoT) デバイスでも利用できるようにします。 このトピックでは、クラウド インターフェイスを使用して、事前作成されたコードを IoT Edge デバイスにリモートで展開する方法について説明します。
 
@@ -23,10 +23,14 @@ Azure IoT Edge は、クラウドの機能をご使用のモノのインター�
 
 ## <a name="prerequisites"></a>前提条件
 
-この作業を完了するには、コンピューターまたは仮想マシンを使用してモノのインターネット デバイスをシミュレートします。 IoT Edge デバイスを正しく展開するには、以下のサービスが必要です。
+このクイック スタートでは、自分のコンピューターまたは仮想マシンをモノのインターネット デバイスのように使用します。 マシンを IoT Edge デバイスにするには、次のサービスが必要です。
 
-- [Docker を Linux にインストールし][lnk-docker-ubuntu]、稼働していることを確認します。 
-- Ubuntu を含め、多くの Linux ディストリビューションには既に Python 2.7 がインストールされています。 次のコマンドを使用して、pip がインストールされていることを確認してください: `sudo apt-get install python-pip`
+* Python pip (IoT Edge ランタイムをインストールするため)。
+   * Linux: `sudo apt-get install python-pip`。
+   * MacOS: `sudo easy_install pip`。
+* Docker (IoT Edge モジュールを実行するため)
+   * [Docker を Linux にインストールし][lnk-docker-ubuntu]、稼働していることを確認します。 
+   * [Docker を Mac にインストールし][lnk-docker-mac]、稼働していることを確認します。 
 
 ## <a name="create-an-iot-hub-with-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
@@ -121,7 +125,7 @@ sudo docker logs -f tempSensor
 az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Edge モジュールを IoT Edge デバイスに展開する方法について学習しました。 エッジでデータを分析できるように、さまざまな種類の Azure サービスをモジュールとして展開してみてください。 
 
@@ -135,6 +139,7 @@ IoT Edge モジュールを IoT Edge デバイスに展開する方法につい�
 
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
+[lnk-docker-mac]: https://docs.docker.com/docker-for-mac/install/
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-account]: https://azure.microsoft.com/free
 [lnk-portal]: https://portal.azure.com

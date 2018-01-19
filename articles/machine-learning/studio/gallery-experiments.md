@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence ギャラリー 実験 | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーで実験を共有および発見します。"
+title: "Azure AI ギャラリー実験 | Microsoft Docs"
+description: "Azure AI ギャラリーで実験を発見および共有します。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 472ecac4ac1d9a86f0a3ad8271dd96257c331e5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad41d431b78a69e54bb5e4df3aaea1ec7c858b7f
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-experiments-in-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーで実験を発見する
+# <a name="discover-experiments-in-azure-ai-gallery"></a>Azure AI ギャラリーで実験を発見する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="experiments-for-machine-learning-studio"></a>Machine Learning Studio 向け実験
@@ -42,10 +42,10 @@ ms.lasthandoff: 10/11/2017
 
 ![独自のコメントを追加する](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 Machine Learning Studio ワークスペースに、ギャラリーにある任意の実験のコピーをダウンロードできます。 その後、コピーに変更を加えて独自のソリューションを作成できます。
 
-Cortana Intelligence ギャラリーには、実験のコピーをインポートする方法が 2 つ用意されています。
+Azure AI ギャラリーには、実験のコピーをインポートする方法が 2 つ用意されています。
 
 * **ギャラリーから**。 ギャラリーで目的の実験を見つけた場合は、コピーをダウンロードしてから、Machine Learning Studio ワークスペースで開くことができます。
 * **Machine Learning Studio 内から**。 Machine Learning Studio で、ギャラリー内の任意の実験をテンプレートとして使用し、新しい実験を作成することができます。

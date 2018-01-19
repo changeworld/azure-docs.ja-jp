@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence ギャラリー Jupyter Notebooks | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーで Jupyter Notebooks を発見します。"
+title: "Azure AI ギャラリー Jupyter Notebooks | Microsoft Docs"
+description: "Azure AI ギャラリーで Jupyter Notebooks を発見します。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 10828d78f6e16b57c21f4d05b6d6116428ea4039
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59092514705d998fcf9ff835b3fde8a04f81aac5
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-jupyter-notebooks-in-the-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーで Jupyter Notebooks を発見する
+# <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Azure AI ギャラリーで Jupyter Notebooks を発見する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="jupyter-notebooks"></a>Jupyter Notebooks
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
 ![独自のコメントを追加する](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 Machine Learning Studio ワークスペースに、ギャラリーから任意の Notebook のコピーをダウンロードできます。
 
 ### <a name="download-from-the-gallery"></a>ギャラリーからのダウンロード

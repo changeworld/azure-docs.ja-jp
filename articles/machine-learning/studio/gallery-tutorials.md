@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence ギャラリー チュートリアル | Microsoft Docs"
-description: "Cortana Intelligence ギャラリーでチュートリアルを共有および発見する"
+title: "Azure AI ギャラリー チュートリアル| Microsoft Docs"
+description: "Azure AI ギャラリーでチュートリアルを発見し、共有します。"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: eee86899c14905655c4217d5fcf3865ca594366f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be5ecf81c71dbf39593b2afb46ac0ae09ede466a
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-and-share-tutorials-in-cortana-intelligence-gallery"></a>Cortana Intelligence ギャラリーでチュートリアルを共有および発見する
+# <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Azure AI ギャラリーでチュートリアルを発見し、共有する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
-## <a name="tutorials"></a>Tutorials (チュートリアル)
-Cortana Intelligence ギャラリーでは、機械学習のテクノロジと概念を学ぶことができるいくつかの[チュートリアル](https://gallery.cortanaintelligence.com/tutorials)を提供しています。 またチュートリアルは、機械学習の問題を解決するための高度な方法を説明している場合もあります。
+## <a name="tutorials"></a>チュートリアル
+Azure AI ギャラリーでは、機械学習のテクノロジと概念を学ぶことができるいくつかの[チュートリアル](https://gallery.cortanaintelligence.com/tutorials)が用意されています。 またチュートリアルは、機械学習の問題を解決するための高度な方法を説明している場合もあります。
 
 ## <a name="discover"></a>発見
 [ギャラリーで](http://gallery.cortanaintelligence.com)チュートリアルを参照するには、**[More (詳細)]** の下の **[Tutorials (チュートリアル)]** を選択します。
@@ -72,7 +72,7 @@ Cortana Intelligence ギャラリーでは、機械学習のテクノロジと�
 
 7. **[作成]**を選択します。
 
-これで、チュートリアルが Cortana Intelligence ギャラリーに含まれました。 チュートリアルは、アカウント ページの **[Items (項目)]** タブの下に表示されます。
+これでチュートリアルが Azure AI ギャラリーに追加されます。 チュートリアルは、アカウント ページの **[Items (項目)]** タブの下に表示されます。
 
 **[ギャラリーに移動する](http://gallery.cortanaintelligence.com)**
 

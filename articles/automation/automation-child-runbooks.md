@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: c136016ba885ec9ba999cb72ee6c1d4fc8770a0b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 5c18444b5a2767ccdd9a61a3bc9218fa4c0aac04
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation での子 Runbook
 Azure Automation では、他の Runbook でも使用できる個別の関数で再利用可能なモジュールの Runbook を作成することをお勧めします。 親 Runbook は多くの場合、必要な機能を実行する 1 つまたは複数の子 Runbook を呼び出します。 子 Runbook を呼び出すには 2 つの方法があります。それぞれの特徴的な相違点を理解しておくと、さまざまな状況でどちらが適しているかを判断できるようになります。
@@ -30,7 +30,7 @@ Runbook をインラインで呼び出すと、親 Runbook と同じジョブで
 
 Runbook を発行する場合、呼び出される子 Runbook はすべて発行済みでなければなりません。 これは、Runbook のコンパイル時に、Azure Automation によってすべての子 Runbook と関連付けが行われるためです。 関連付けられていないと、親 Runbook は正常に発行されたかのように見えますが、起動時に例外が発生します。 例外が発生した場合、親 Runbook を再発行して、子 Runbook が正しく参照されるようにします。 子 Runbook が変更されても、関連付けは作成済みになっているため、親 Runbook を再発行する必要はありません。
 
-インラインで呼び出された子 Runbook のパラメーターは、複雑なオブジェクトを含め任意のデータ型を使用できるほか、Microsoft Azure 管理ポータルや Start-AzureRmAutomationRunbook コマンドレットを使用して Runbook が起動されるため、 [JSON のシリアル化](automation-starting-a-runbook.md#runbook-parameters) は行われません。
+インラインで呼び出された子 Runbook のパラメーターには、複雑なオブジェクトを含む任意のデータ型を使用できます。また、Azure Portal や Start-AzureRmAutomationRunbook コマンドレットを使用して Runbook を起動したときのような、[JSON のシリアル化](automation-starting-a-runbook.md#runbook-parameters)は行われません。
 
 ### <a name="runbook-types"></a>Runbook の種類
 相互に呼び出すことができる種類:
@@ -79,11 +79,11 @@ Runbook を発行する場合、呼び出される子 Runbook はすべて発行
 | ジョブ |子 Runbook は、親と同じジョブで実行されます。 |子 Runbook 用に別のジョブが作成されます。 |
 | 実行 |親 Runbook は、子 Runbook の完了を待ってから続行します。 |親 Runbook は、子 Runbook が開始されたらすぐに続行するか、 *または* 、子ジョブの完了を待ちます。 |
 | 出力 |親 Runbook は、子 Runbook から出力を直接取得できます。 |親 Runbook は、子 Runbook ジョブから出力を取得する必要があるか、 *または* 、子 Runbook から出力を直接取得できます。 |
-| パラメーター |子 Runbook のパラメーター値は個別に指定され、任意のデータ型を使用できます。 |子 Runbook のパラメーターの値は、1 つのハッシュテーブルに結合する必要があり、JSON のシリアル化を利用する、単純、配列、およびオブジェクトの各データ型のみを含めることができます。 |
+| parameters |子 Runbook のパラメーター値は個別に指定され、任意のデータ型を使用できます。 |子 Runbook のパラメーターの値は、1 つのハッシュテーブルに結合する必要があり、JSON のシリアル化を利用する、単純、配列、およびオブジェクトの各データ型のみを含めることができます。 |
 | Automation アカウント |親 Runbook は、同じ Automation アカウントの子 Runbook のみを使用できます。 |親 Runbook は、同じ Azure サブスクリプションの Automation アカウントの子 Runbook のほか、接続されていれば別のサブスクリプションの Automation アカウントの子 Runbook も使用できます。 |
 | 発行 |親 Runbook を発行する前に、子 Runbook を発行する必要があります。 |親 Runbook を開始する前のある時点で、子 Runbook をパブリッシュする必要があります。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 * [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5d30a0a6e293bd6659c8d39f94f11b0bb448e166
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5e7b0aa1fc555f0fe4773b6bd67db87a55d85bcf
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Windows Azure Active Directory Sync と Azure Active Directory Sync のアップグレード
 Azure AD Connect は、オンプレミス ディレクトリと Azure AD および Office 365 を接続するための最適な方法です。 Windows Azure Active Directory Sync (DirSync) および Azure AD Sync は廃止となり、2017 年 4 月 13 日以降はサポートされなくなるので、Azure AD Connect へアップグレードする絶好の機会です。
@@ -28,11 +28,11 @@ Azure AD Connect は、オンプレミス ディレクトリと Azure AD およ�
 
 DirSync の最終リリースは 2014 年 7 月、Azure AD Sync の最新リリースは 2015 年 5 月にリリースされています。
 
-## <a name="what-is-azure-ad-connect"></a>Azure AD Connect とは
+## <a name="what-is-azure-ad-connect"></a>What is Azure AD Connect
 Azure AD Connect は DirSync と Azure AD Sync の後継となります。Azure AD Connect は、この 2 つがサポートされるすべてのシナリオを結合します。 詳細については、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
 ## <a name="deprecation-schedule"></a>廃止のスケジュール
-| Date | コメント |
+| 日付 | Comment (コメント) |
 | --- | --- |
 | 2016 年 4 月13 日 |Windows Azure Active Directory Sync (“DirSync”) と Azure Active Directory Sync (“Azure AD Sync”) の廃止が発表されます。 |
 | 2017 年 4 月 13 日 |サポートが終了します。 Azure AD Connect にアップグレードしていないと、サポート ケースを開くことができなくなります。 |
@@ -62,7 +62,7 @@ DirSync から Azure AD Connect へのインプレース アップグレード�
 ビルド番号が 1.0.\*.0 (1.1 リリースより前) の Azure AD Connect を使用しているお客様にも通知が送信されています。 Microsoft ではお客様に、常に最新の Azure AD Connect リリースを使用することをお勧めしています。 1.1 には[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能が搭載されているため、常に最新バージョンの Azure AD Connect がインストールされている状態を簡単に維持できます。
 
 **Q: DirSync と Azure AD Sync は、2017 年 4 月 13 日に動作しなくなりますか。**  
-DirSync/Azure AD Sync は、2017 年 4 月 13 日の時点では引き続き機能します。  ただし、Azure AD は 2017 年 12 月 31 日以降は DirSync/Azure AD Sync からの通信を受け入れなくなります。
+DirSync/Azure AD Sync は、2017 年 4 月 13 日の時点では引き続き機能します。  ただし、2017 年 12 月 31 日を過ぎると、Azure AD は DirSync/Azure AD Sync からの通信を受け入れなくなる予定です。
 
 **Q: DirSync のどのバージョンからアップグレードできますか。**  
 現在使用されているどの DirSync リリースからでもアップグレードできます。 2017 年 12 月 31 日を過ぎると、DirSync から Azure AD Connect へのインプレース アップグレードはサポートされないことに注意してください。 DirSync を使用しているお客様が、この日より後に Azure AD Connect に移行する場合は、代わりに Azure AD Connect の新規インストールを実行する必要があります。

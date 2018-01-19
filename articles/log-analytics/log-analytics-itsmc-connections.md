@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.openlocfilehash: d1f6d3af5fc414d06f4a6d3aeda660b759a88353
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: ee5d8d118234ca0335922be1a29c6ce1e68eb7b6
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>ITSM 製品/サービスを IT Service Management Connector に追加する (プレビュー)
 この記事では、お使いの ITSM 製品/サービスを OMS の IT Service Management Connector (ITSMC) に接続し、作業項目を一元管理する方法について説明します。 ITSMC の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事を参照してください。
@@ -171,17 +171,21 @@ Service Manager インスタンスを OMS の ITSMC に接続するハイブリ�
 以降のセクションでは、ServiceNow 製品を OMS の ITSMC に接続する方法について詳細に説明します。
 
 ### <a name="prerequisites"></a>前提条件
-
 次の前提条件が満たされていることを確認してください。
-
 - ITSMC がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
-- ServiceNow のバージョンがサポートされている ( Fuji、Geneva、Helsinki)。
+- ServiceNow でサポートされているバージョン: Jakarta、Istanbul、Helsinki、Geneva
 
-ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。
-- ServiceNow 製品のクライアント ID とクライアント シークレットを生成します。 クライアント ID とシークレットを生成する方法については、「[OAuth Setup (OAuth のセットアップ)](http://wiki.servicenow.com/index.php?title=OAuth_Setup)」をご覧ください。
-- Microsoft OMS 統合のユーザー アプリ (ServiceNow アプリ) をインストールします。 [詳細情報](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0 )
+**ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。**
+- ServiceNow 製品のクライアント ID とクライアント シークレットを生成します。 クライアント ID とシークレットを生成する方法については、必要に応じて以下の情報をご覧ください。
+
+    - [Jakarta の OAuth の設定](https://docs.servicenow.com/bundle/jakarta-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [Istanbul の OAuth の設定](https://docs.servicenow.com/bundle/istanbul-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [Helsinki の OAuth の設定](https://docs.servicenow.com/bundle/helsinki-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [Geneva の OAuth の設定](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+
+
+- Microsoft OMS 統合のユーザー アプリ (ServiceNow アプリ) をインストールします。 [詳細情報](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1)。
 - インストールしたユーザー アプリの統合ユーザー ロールを作成します。 統合ユーザー ロールを作成する方法については、[こちら](#create-integration-user-role-in-servicenow-app)をご覧ください。
-
 
 ### <a name="connection-procedure"></a>**接続手順**
 ServiceNow 接続を作成するには、次の手順に従います。
@@ -361,7 +365,7 @@ Cherwell のクライアント ID とキーを生成するには、次の手順�
     ![Cherwell ユーザー ID](./media/log-analytics-itsmc/itsmc-cherwell-client-id.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  - [OMS アラートの ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-for-oms-alerts)
  - [OMS ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)
  - [Azure アラートから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

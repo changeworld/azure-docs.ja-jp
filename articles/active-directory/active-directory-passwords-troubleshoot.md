@@ -1,5 +1,5 @@
 ---
-title: "トラブルシューティング: Azure AD SSPR | Microsoft Docs"
+title: "セルフサービスによるパスワードのリセットのトラブルシューティング - Azure Active Directory"
 description: "Azure AD のセルフサービスのパスワード リセットのトラブルシューティング"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 73c8ea046a5bdbeaca1b3f357fc41f0a6938db1e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c489cf13574c49161b2dde22500f4ab7478a928b
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>イベントのソースが ADSync の場合
 
-| コード | 名前またはメッセージ | 説明 |
+| コード | 名前またはメッセージ | [説明] |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0x80230619: “A restriction prevents the password from being changed to the current one specified” (制限によりパスワードを現在指定されているパスワードに変更することができません) | このイベントは、パスワード ライトバック サービスが、パスワードの有効期間、履歴、複雑さ、またはフィルタリングに関するドメインの要件を満たしていないローカル ディレクトリにパスワードを設定しようとすると発生します。 <br> <br> パスワードの最小有効期間が残っていて、最近その期間内にパスワードを変更した場合は、そのドメインで指定された期限に達するまで、もう一度パスワードを変更することはできません。 テストのために、最小有効期間は 0 に設定する必要があります。 <br> <br> パスワードの履歴の要件が有効になっている場合は、最後の *N* 回で使用されていないパスワードを選択する必要があります。*N* はパスワードの履歴で設定します。 最後の *N* 回で使用されているパスワードを選択した場合は、エラーが表示されます。 テストのために、パスワードの履歴は 0 に設定する必要があります。 <br> <br> パスワードの複雑さの要件を指定する場合は、ユーザーがパスワードを変更またはリセットしようとすると、すべての要件が適用されます。 <br> <br> パスワード フィルターが有効になっている場合に、ユーザーがフィルター条件を満たしていないパスワードを選択すると、リセットまたは変更の操作に失敗します。 |
 | 6329 | MMS(3040): admaexport.cpp(2837): サーバーに LDAP のパスワード ポリシー コントロールが含まれていません。 | この問題は、DC で LDAP_SERVER_POLICY_HINTS_OID コントロール (1.2.840.113556.1.4.2066) が有効になっていない場合に発生します。 パスワード ライトバック機能を使用するのには、コントロールを有効にする必要があります。 これを行うには、DC が (最新の SP が適用された) Windows Server 2008 以降にインストールされている必要があります。 ドメイン コントローラーが 2008 (R2 より前のバージョン) にインストールされている場合は、修正プログラム [KB2386717](http://support.microsoft.com/kb/2386717) も適用する必要があります。 |
@@ -107,7 +107,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>イベントのソースが PasswordResetService の場合
 
-| コード | 名前またはメッセージ | 説明 |
+| コード | 名前またはメッセージ | [説明] |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | このイベントは、オンプレミスのサービスが、クラウドから送信されたフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーへのパスワードのリセット要求を検出したことを示します。 このイベントは、すべてのパスワード リセットのライトバック操作における最初のイベントです。 |
 | 31002 | PasswordResetSuccess | このイベントは、パスワードのリセット操作中に、ユーザーが新しいパスワードを選択したことを示します。 このパスワードが企業のパスワード要件を満たしていると判断されました。 パスワードがローカルの Active Directory 環境に正常にライトバックされました。 |
@@ -165,7 +165,18 @@ Azure AD Connect のパスワード ライトバック コンポーネントで�
 
 ### <a name="confirm-network-connectivity"></a>ネットワーク接続を確認する
 
-最も一般的な障害点は、ファイアウォール、プロキシ ポート、アイドル タイムアウトなどが正しく構成されていないことです。 詳細については、「[Azure AD Connect の前提条件](./connect/active-directory-aadconnect-prerequisites.md)」で接続の前提条件をご確認ください。
+最も一般的な障害点は、ファイアウォール、プロキシ ポート、アイドル タイムアウトなどが正しく構成されていないことです。 
+
+Azure AD Connect バージョン 1.1.443.0 以上の場合は、次の URL への送信 HTTPS アクセスが必要です。
+
+   - passwordreset.microsoftonline.com
+   - servicebus.windows.net
+
+アクセスをより細かく設定するために、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)の更新された一覧を参照することができます。この一覧は、毎週水曜日に更新され、次の月曜日に有効になります。
+
+詳細については、「[Azure AD Connect の前提条件](./connect/active-directory-aadconnect-prerequisites.md)」で接続の前提条件をご確認ください。
+
+
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Azure AD Connect 同期サービスを再起動する
 
@@ -282,18 +293,18 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Azure AD Sync サービスを再起動する"
 [Support code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "サポート コードはウィンドウの右下にあります"
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)

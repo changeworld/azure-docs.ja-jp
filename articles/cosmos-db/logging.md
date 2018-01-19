@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: mimig
-ms.openlocfilehash: 407a9a3be4ae8a9b00a953914e6b4414d8dac8b6
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 835f6ffce9b2e1bb4b6cfd7476bb3fdb24a4f092
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/14/2017
 
 ## <a name="what-is-logged"></a>ログに記録される内容
 
-* 認証されたすべての REST DocumentDB (SQL) API 要求がログ記録されます。これには、アクセス許可がないため、システム エラーのため、または不正な要求の結果として、失敗した要求が含まれます。 MongoDB、Graph、および Table API は現在サポートされていません。
+* 認証されたすべての REST SQL API 要求がログ記録されます。これには、アクセス許可がないため、システム エラーのため、または不正な要求の結果として、失敗した要求が含まれます。 MongoDB、Graph、および Table API は現在サポートされていません。
 * データベース自体に対する操作。すべてのドキュメント、コンテナー、およびデータベースに対する CRUD 操作が含まれます。
 * アカウント キーに対する操作。これらのキーの作成、変更、または削除が含まれます。
 * 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/14/2017
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下のリソースが必要です。
 
-* 既存の Azure Cosmos DB アカウント、データベース、およびコンテナー。 これらのリソースの作成手順については、[Azure Portal を使用したデータベース アカウントの作成](create-documentdb-dotnet.md#create-a-database-account)、[CLI サンプル](cli-samples.md)、または [PowerShell サンプル](powershell-samples.md)に関するページを参照してください。
+* 既存の Azure Cosmos DB アカウント、データベース、およびコンテナー。 これらのリソースの作成手順については、[Azure Portal を使用したデータベース アカウントの作成](create-sql-api-dotnet.md#create-a-database-account)、[CLI サンプル](cli-samples.md)、または [PowerShell サンプル](powershell-samples.md)に関するページを参照してください。
 
 <a id="#turn-on"></a>
 ## <a name="turn-on-logging-in-the-azure-portal"></a>Azure Portal でログを有効にする
@@ -54,13 +54,13 @@ ms.lasthandoff: 10/14/2017
     * **[ストレージ アカウントへのアーカイブ]**。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 Portal で新しいストレージ アカウントを作成するには、[ストレージ アカウントの作成に関するページ](../storage/common/storage-create-storage-account.md)を参照し、Resource Manager の汎用アカウントの作成手順を実行します。 Portal でこのページに戻り、ストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
     * **イベント ハブにストリーミングします**。 このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 Event Hubs 名前空間を作成するには、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」を参照してください。 Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
     * **[Log Analytics への送信]**。     このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 Log Analytics でログを表示する方法については、「[Azure Cosmos DB 診断ログ](#view-in-loganalytics)」を参照してください。
-    * **DataPlaneRequests をログに記録します**。 DocumentDB、Graph、Table API アカウントの診断をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **DataPlaneRequests をログに記録します**。 SQL、Graph、Table API アカウントの診断をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
     * **[Log MongoRequests]\(MongoRequests をログに記録する\)**。 MongoDB API アカウントの診断をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **[Metric Requests]\(メトリック要求\)**。 [Azure メトリックス](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftdocumentdbdatabaseaccounts-cosmosdb)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **[Metric Requests]\(メトリック要求\)**。 [Azure メトリックス](../monitoring-and-diagnostics/monitoring-supported-metrics.md)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
-3. [ **Save**] をクリックします。
+3. **[Save]** をクリックします。
 
-    "\<ワークスペース名> の診断を更新できませんでした。 サブスクリプション \<サブスクリプション ID> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure 診断のトラブルシューティング](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
+    "\<ワークスペース名> の診断を更新できませんでした。 サブスクリプション \<サブスクリプション ID> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure 診断のトラブルシューティング](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
 
     今後、診断ログを保存する方法を変更する場合は、いつでもこのページに戻ってアカウントの診断ログの設定を変更できます。
 
@@ -239,7 +239,7 @@ Name              : resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/C
 
 同じストレージ アカウントを使用して複数のリソースのログを収集することができるので、必要な BLOB のみにアクセスしたり、ダウンロードしたりする場合には、BLOB 名の完全修飾リソース ID を使用すると便利です。 その前に、すべての BLOB をダウンロードする方法を説明します。
 
-まず、フォルダーを作成して BLOB をダウンロードします。 For example:
+まず、フォルダーを作成して BLOB をダウンロードします。 例: 
 
 ```powershell
 New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
@@ -261,7 +261,7 @@ $blobs | Get-AzureStorageBlobContent `
 
 この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。 このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
 
-BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 For example:
+BLOB を選択的にダウンロードするには、ワイルドカードを使用します。 例: 
 
 * 複数のデータベースを持っている場合に、CONTOSOCOSMOSDB3 という名前のデータベースのみについてログをダウンロードするには、次のようにします。
 
@@ -383,7 +383,7 @@ Log Analytics で診断データを表示するには、次の図のように左
 * 実行時間が 3 ミリ秒を超えている操作。
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 3000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * 操作を実行しているエージェント。
@@ -406,13 +406,13 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 
 次の表は、各ログ エントリの内容をまとめた一覧です。
 
-| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | Description |
+| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | [説明] |
 | --- | --- | --- |
 | time | TimeGenerated | 操作が発生した日時 (UTC)。 |
-| resourceId | リソース | ログが有効になっている Azure Cosmos DB アカウント。|
+| ResourceId | リソース | ログが有効になっている Azure Cosmos DB アカウント。|
 | カテゴリ | カテゴリ | Azure Cosmos DB ログの場合、使用できる値は DataPlaneRequests のみです。 |
 | operationName | OperationName | 操作の名前。 この値は、Create、Update、Read、ReadFeed、Delete、Replace、Execute、SqlQuery、Query、JSQuery、Head、HeadFeed、または Upsert 操作のいずれかです。   |
-| properties | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
+| プロパティ | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
 | activityId | activityId_g | ログに記録された操作の一意の GUID。 |
 | userAgent | userAgent_s | 要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
 | resourceType | ResourceType | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Collection、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
@@ -426,7 +426,7 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 | responseLength | responseLength_s | 応答の長さ (バイト単位)。|
 | resourceTokenUserRid | resourceTokenUserRid_s | 認証に[リソース トークン](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)が使用され、ユーザーのリソース ID を示す場合、この値は空ではありません。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - ロギングを有効にする方法だけでなく、各種 Azure サービスでサポートされるメトリックとログのカテゴリーについて理解を深めるには、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」と「[Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」の両方を参照してください。
 - Event Hubs については次の記事をご覧ください。

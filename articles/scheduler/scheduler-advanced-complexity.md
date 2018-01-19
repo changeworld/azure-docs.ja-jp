@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1e45d394a4c442a4fb255ed6d838a589e98860e
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法
 ## <a name="overview"></a>概要
@@ -59,7 +59,7 @@ Azure Scheduler ジョブにおける日付/時刻の参照は、 [ISO 8601 仕�
         "recurrence":                     // optional
         {
             "frequency": "week",     // can be "year" "month" "day" "week" "hour" "minute"
-            "interval": 1,                // optional, how often to fire (default to 1)
+            "interval": 1,                // how often to fire
             "schedule":                   // optional (advanced scheduling specifics)
             {
                 "weekDays": ["monday", "wednesday", "friday"],
@@ -89,13 +89,13 @@ Azure Scheduler ジョブにおける日付/時刻の参照は、 [ISO 8601 仕�
 
 | **JSON での名前** | **値の型** | **必須** | **既定値** | **有効な値** | **例** |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| ***startTime*** |String |なし |なし |ISO-8601 の日付/時刻 |<code>"startTime" : "2013-01-09T09:30:00-08:00"</code> |
-| ***recurrence*** |オブジェクト |なし |なし |recurrence オブジェクト |<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code> |
-| ***frequency*** |String |はい |なし |"minute"、"hour"、"day"、"week"、"month" |<code>"frequency" : "hour"</code> |
-| ***interval*** |Number |なし |1 |1 ～ 1000。 |<code>"interval":10</code> |
-| ***endTime*** |String |なし |なし |将来の時刻を表す日付/時刻の値 |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
-| ***count*** |Number |なし |なし |>= 1 |<code>"count": 5</code> |
-| ***schedule*** |オブジェクト |なし |なし |schedule オブジェクト |<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code> |
+| ***startTime*** |String |いいえ  |なし |ISO-8601 の日付/時刻 |<code>"startTime" : "2013-01-09T09:30:00-08:00"</code> |
+| ***recurrence*** |オブジェクト |いいえ  |なし |recurrence オブジェクト |<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code> |
+| ***frequency*** |String |[はい] |なし |"minute"、"hour"、"day"、"week"、"month" |<code>"frequency" : "hour"</code> |
+| ***interval*** |Number |[はい] |なし |1 ～ 1000。 |<code>"interval":10</code> |
+| ***endTime*** |String |いいえ  |なし |将来の時刻を表す日付/時刻の値 |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
+| ***count*** |Number |いいえ  |なし |>= 1 |<code>"count": 5</code> |
+| ***schedule*** |オブジェクト |いいえ  |なし |schedule オブジェクト |<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code> |
 
 ## <a name="deep-dive-starttime"></a>詳細: *startTime*
 次の表では、*startTime* による、ジョブの実行の制御方法を説明しています。
@@ -125,11 +125,11 @@ schedule の要素を複数指定した場合は、評価の順序は大きい�
 
 | **JSON での名前** | **説明** | **有効な値** |
 |:--- |:--- |:--- |
-| **分** |ジョブを実行する時刻 (分) |<ul><li>整数、または</li><li>整数の配列</li></ul> |
-| **hours** |ジョブを実行する時刻 (時) |<ul><li>整数、または</li><li>整数の配列</li></ul> |
-| **weekDays** |ジョブを実行する曜日。 週単位の頻度だけを指定できます。 |<ul><li>"Monday"、"Tuesday"、"Wednesday"、"Thursday"、"Friday"、"Saturday"、"Sunday"</li><li>上記の任意の値の配列 (最大配列サイズは 7)</li></ul>大文字/小文字は "*区別されません*" |
+| **分** |ジョブを実行する時刻 (分) |<ul><li>整数の配列</li></ul> |
+| **hours** |ジョブを実行する時刻 (時) |<ul><li>整数の配列</li></ul> |
+| **weekDays** |ジョブを実行する曜日。 週単位の頻度だけを指定できます。 |<ul><li>以下の任意の値の配列 (最大配列サイズは 7)<ul><li>"月曜日"</li><li>"火曜日"</li><li>"水曜日"</li><li>"木曜日"</li><li>"金曜日"</li><li>"土曜日"</li><li>"日曜日"</li></ul></li></ul>大文字/小文字は "*区別されません*" |
 | **monthlyOccurrences** |ジョブを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 |<ul><li>monthlyOccurrence オブジェクトの配列:</li></ul> <pre>{ "day": *day*,<br />  "occurrence": *occurrence*<br />}</pre><p> *day* は、ジョブを実行する曜日です。たとえば、{Sunday} は、月の毎週日曜日という意味です。 必須。</p><p>*occurrence* は、月の第何週目に実行するかを表します。たとえば、{Sunday, -1} は月の最終日曜日という意味です。 省略可能。</p> |
-| **monthDays** |ジョブが実行される月の日にち。 月単位の頻度だけを指定できます。 |<ul><li>-1 以下かつ -31 以上の任意の値。</li><li>1 以上かつ 31 以下の任意の値。</li><li>上記の値の配列</li></ul> |
+| **monthDays** |ジョブが実行される月の日にち。 月単位の頻度だけを指定できます。 |<ul><li>以下の値の配列</li><ul><li>-1 以下かつ -31 以上の任意の値。</li><li>1 以上かつ 31 以下の任意の値。</li></ul></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>例: 繰り返しのスケジュール
 次に、schedule オブジェクトとそのサブ要素に注目して、さまざまな繰り返しの例を示します。
