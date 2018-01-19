@@ -1,12 +1,11 @@
 ---
-title: "Azure AD の署名キーのロールオーバー | Microsoft Docs"
+title: "Azure AD の署名キーのロールオーバー"
 description: "この記事では、Azure Active Directory の署名キーのロール オーバーのベスト プラクティスについて説明します"
 services: active-directory
 documentationcenter: .net
 author: dstrockis
 manager: mtillman
 editor: 
-ms.assetid: ed964056-0723-42fe-bb69-e57323b9407f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,17 +14,17 @@ ms.topic: article
 ms.date: 07/18/2016
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: ac68839795dfd69daba16a0f7a01fc9ff16f616e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5396baa57fe0b49809d9fe06eb2b2feda2ed9ba8
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory の署名キーのロールオーバー
-このトピックでは、Azure Active Directory (Azure AD) でセキュリティ トークンに署名するために使用される公開キーについて説明します。 これらのキーは定期的にロールオーバー (交換) されるほか、緊急時にはその場ですぐロールオーバーすることもできます。 Azure AD を使用するすべてのアプリケーションには、プログラムからキーのロールオーバー プロセスを処理できる機能、または定期的な手動ロールオーバー プロセスを確立できる機能が必要です。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
+この記事では、Azure Active Directory (Azure AD) でセキュリティ トークンに署名するために使用される公開キーについて説明します。 これらのキーは定期的にロールオーバー (交換) されるほか、緊急時にはその場ですぐロールオーバーすることもできます。 Azure AD を使用するすべてのアプリケーションには、プログラムからキーのロールオーバー プロセスを処理できる機能、または定期的な手動ロールオーバー プロセスを確立できる機能が必要です。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Azure AD での署名キーの概要
-Azure AD では、業界標準に基づいて構築された公開キー暗号化を使って、キーと、キーを使用するアプリケーションの間の信頼を確立しています。 具体的には、次のように機能します。Azure AD は、公開キーと秘密キーの組み合わせから構成される署名キーを使用します。 認証に Azure AD を使用するアプリケーションにユーザーが署名すると、Azure AD はユーザーに関する情報を含むセキュリティ トークンを作成します。 このトークンは、Azure AD によって秘密キーを使って署名されてから、アプリケーションに送り返されます。 トークンが有効であり、実際に Azure AD から発行されたことを確認するには、アプリケーションは、テナントの [OpenID Connect Discovery ドキュメント](http://openid.net/specs/openid-connect-discovery-1_0.html)または SAML/WS-Fed の[フェデレーション メタデータ ドキュメント](active-directory-federation-metadata.md)に含まれる Azure AD によって公開された公開キーを使用して、トークンの署名を検証する必要があります。
+Azure AD では、業界標準に基づいて構築された公開キー暗号化を使って、キーと、キーを使用するアプリケーションの間の信頼を確立しています。 具体的には、次のように機能します。Azure AD は、公開キーと秘密キーの組み合わせから構成される署名キーを使用します。 認証に Azure AD を使用するアプリケーションにユーザーが署名すると、Azure AD はユーザーに関する情報を含むセキュリティ トークンを作成します。 このトークンは、Azure AD によって秘密キーを使って署名されてから、アプリケーションに送り返されます。 トークンが有効であり、Azure AD から発行されたことを確認するには、アプリケーションは、テナントの [OpenID Connect Discovery ドキュメント](http://openid.net/specs/openid-connect-discovery-1_0.html)または SAML/WS-Fed の[フェデレーション メタデータ ドキュメント](active-directory-federation-metadata.md)に含まれる Azure AD によって公開された公開キーを使って、トークンの署名を検証する必要があります。
 
 Azure AD の署名キーは、セキュリティ上の理由から定期的に交換されるほか、緊急時にはその場ですぐにロールオーバーすることもできます。 Azure AD を組み込むすべてのアプリケーションは、発生頻度に関係なくキーのロールオーバー イベントを処理できるようになっている必要があります。 このロジックを備えていないアプリケーションが期限切れのキーを使ってトークンの署名の検証を試みると、サインイン要求が失敗します。
 
@@ -128,7 +127,7 @@ passport.use(new OIDCStrategy({
 ### <a name="vs2015"></a>Visual Studio 2015 または Visual Studio 2017 を使用して作成された、リソースを保護する Web アプリケーション/API
 アプリケーションが Visual Studio 2015 または Visual Studio 2017 の Web アプリケーション テンプレートを使用して作成されており、**[認証の変更]** メニューで **[会社用および学校用のアカウント]** を選択した場合は、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。 このロジックは OpenID Connect Discovery ドキュメントからキーを取得してキャッシュし、定期的にそれらを更新するもので、OWIN OpenID Connect ミドルウェアに組み込まれています。
 
-認証を手動でソリューションに追加した場合は、キーのロールオーバーに対応するうえで必要なロジックがアプリケーションに備わっていない可能性があります。 必要なロジックを独自に作成するか、 [その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された Web アプリケーション/API](#other)に関するセクションの手順に従ってください。
+認証を手動でソリューションに追加した場合は、キーのロールオーバーに対応するうえで必要なロジックがアプリケーションに備わっていない可能性があります。 必要なロジックを独自に作成するか、[その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された Web アプリケーション/API](#other) に関するセクションの手順に従ってください。
 
 ### <a name="vs2013"></a>Visual Studio 2013 を使用して作成された、リソースを保護する Web アプリケーション
 アプリケーションが Visual Studio 2013 の Web アプリケーション テンプレートを使用して作成されており、**[認証の変更]** メニューで **[組織アカウント]** を選択した場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。 このロジックにより、プロジェクトに関連付けられた 2 つのデータベース テーブルに組織の一意識別子と署名キー情報が保存されます。 このデータベースの接続文字列は、プロジェクトの Web.config ファイル内に格納されています。
@@ -183,7 +182,7 @@ namespace JWTValidation
 
             TokenValidationParameters validationParams = new TokenValidationParameters()
             {
-                AllowedAudience = "[Your App ID URI goes here, as registered in the Azure Classic Portal]",
+                AllowedAudience = "[Your App ID URI goes here, as registered in the Azure Portal]",
                 ValidIssuer = "[The issuer for the token goes here, such as https://sts.windows.net/68b98905-130e-4d7c-b6e1-a158a9ed8449/]",
                 SigningTokens = GetSigningCertificates(MetadataAddress)
 
@@ -284,7 +283,7 @@ Microsoft から提供されたコード サンプルまたはチュートリア
           </keys>
    ```
 2. **<add thumbprint=””>** 設定で、どれか 1 文字を別の文字に置き換えて拇印の値を変更します。 **Web.config** ファイルを保存します。
-3. アプリケーションをビルドし、実行します。 サインイン プロセスを完了できる場合、アプリケーションではディレクトリのフェデレーション メタデータ ドキュメントから必要な情報をダウンロードすることによってキーが正しく更新されています。 サインインで問題が発生する場合は、[Azure AD を使用した Web アプリケーションへのサインオンの追加](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)に関するトピックを読むか、コード サンプル ([Multi-Tenant Cloud Application for Azure Active Directory (Azure Active Directory 向けのマルチテナント クラウド アプリケーション)](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)) をダウンロードして調べることによって、アプリケーションの変更が正しいことを確認します。
+3. アプリケーションをビルドし、実行します。 サインイン プロセスを完了できる場合、アプリケーションではディレクトリのフェデレーション メタデータ ドキュメントから必要な情報をダウンロードすることによってキーが正しく更新されています。 サインインで問題が発生する場合は、[Azure AD を使用した Web アプリケーションへのサインオンの追加](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)に関する記事を読むか、コード サンプル ([Multi-Tenant Cloud Application for Azure Active Directory (Azure Active Directory 向けのマルチテナント クラウド アプリケーション)](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)) をダウンロードして調べることによって、アプリケーションの変更が正しいことを確認します。
 
 ### <a name="vs2010"></a>Visual Studio 2008/2010 および .NET 3.5 用 Windows Identity Foundation (WIF) v1.0 で作成された、リソースを保護する Web アプリケーション
 WIF v1.0 でアプリケーションを作成した場合、新しいキーを使用するようにアプリケーションの構成を自動的に更新するメカニズムは用意されていません。
@@ -303,11 +302,11 @@ FedUtil を使用して構成を更新する手順は、次のようになりま
 ### <a name="other"></a>その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された、リソースを保護する Web アプリケーション/API
 その他何らかのライブラリを使用している場合またはサポートされているプロトコルを手動で実装した場合、OpenID Connect Discovery ドキュメントまたはフェデレーション メタデータ ドキュメントから確実にキーが取得されるようそのライブラリまたは実装内容を再確認する必要があります。 この点はたとえば、自分が記述したコードやライブラリのコードから、OpenID のディスカバリー ドキュメントまたはフェデレーション メタデータ ドキュメントの呼び出しを検索することによって確認できます。
 
-キーがどこかに格納されている場合、またはアプリケーション内でハードコーディングされている場合は、キーを手動で取得し、このガイダンスの末尾にある手順に従って手動ロールオーバーを実行することで、適宜キーを更新できます。 **自動ロールオーバーをアプリケーションでサポートするよう強くお勧めします** 。
+キーがどこかに格納されている場合、またはアプリケーション内でハードコーディングされている場合は、キーを手動で取得し、このガイダンスの末尾にある手順に従って手動ロールオーバーを実行することで、適宜キーを更新できます。 将来、Azure AD でロールオーバー周期が長くなったり、緊急のアウトオブバンド (IP ネットワークを使わない) ロールオーバーが発生した場合に、中断やオーバーヘッドを避けるため、この記事で説明されているいずれかのアプローチを使って、**自動ロールオーバーをアプリケーションでサポートするよう強くお勧めします**。
 
 ## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>アプリケーションをテストして、影響を受けるかどうかを判別する
 [この GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
-## <a name="how-to-perform-a-manual-rollover-if-you-application-does-not-support-automatic-rollover"></a>アプリケーションで自動ロールオーバーがサポートされていない場合に手動ロールオーバーを実行する方法
+## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>アプリケーションで自動ロールオーバーがサポートされていない場合に手動ロールオーバーを実行する方法
 アプリケーションで自動ロールオーバーがサポートされて **いない** 場合、Azure AD の署名キーを定期的に監視し、適宜手動ロールオーバーを実行するプロセスを確立する必要があります。 [こちらの GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) には、これを実行する方法についてのスクリプトと手順が含まれています。
 

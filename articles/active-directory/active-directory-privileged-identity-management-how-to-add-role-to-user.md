@@ -6,23 +6,21 @@ documentationcenter:
 author: billmath
 manager: mtillman
 editor: 
-ms.assetid: 6a47ced8-cf34-4ce8-bea2-e4fc548cfe22
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/06/2017
+ms.date: 01/03/2018
 ms.author: billmath
-ms.custom: pim;oldportal;it-pro;
-ms.openlocfilehash: 5a2150b67fb4926ac9bb04c74a281ba78692c5f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 53deb04a33a5f878c5e3f765099c54d30e6ac005
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法
-Azure Active Directory (AD) では、全体管理者 (または会社の管理者) は、Azure AD でどのユーザーにロールを**永続的に**割り当てるかを変更できます。 これを行うには、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用するか、 「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」に記載されているように、Azure クラシック ポータルを使用できます。
+Azure Active Directory (AD) では、全体管理者 (または会社の管理者) は、Azure AD でどのユーザーにロールを**永続的に**割り当てるかを変更できます。 これを行うには、`Add-MsolRoleMember` や `Remove-MsolRoleMember` などの PowerShell コマンドレットを使用するか、 「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」に記載されているように、Azure Portal を使うことができます。
 
 Azure AD Privileged Identity Management (PIM) アプリケーションを使用すると、特権ロール管理者も、永続的なロールの割り当てを行うことができます。 さらに、特権ロール管理者は、ユーザーを管理者ロールの**候補**にすることもできます。 管理者候補は必要なときにロールをアクティブ化できます。作業が完了すると、そのアクセス許可は期限切れになります。
 
@@ -63,6 +61,6 @@ PIM 自体へのユーザー アクセス権を追加で付与する必要があ
 
 どのユーザーに引き続きロールの割り当てが必要であるかわからない場合は、 [ロールのアクセス レビューを開始](active-directory-privileged-identity-management-how-to-start-security-review.md)してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

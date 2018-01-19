@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 01/02/2018
 ms.author: billmath
-ms.openlocfilehash: 9c0ff3394dac12bdcac9d618832566ef0d3a6609
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fddbbeda50764ade149e8a8f370bf7341da01736
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
 > [!NOTE]
 > デバイスの書き戻しには、Azure AD Premium に対するサブスクリプションが必要です。
-> 
-> 
+>
+>
 
-ここでは、Azure AD Connect においてデバイスの書き戻し機能を有効にする方法について説明します。 デバイスの書き戻しは、次のシナリオで使用されます。
+ここでは、Azure AD Connect においてデバイスの書き戻し機能を有効にする方法について説明します。 デバイス ライトバックは、次のシナリオで使用されます。
 
 * AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利用者の信頼) へのデバイスに基づく条件付きアクセスを有効にします。
 
@@ -34,7 +34,8 @@ ms.lasthandoff: 12/11/2017
 
 > [!IMPORTANT]
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
-> <li>オンプレミスの Active Directory フォレストに追加できるのは、1 つのデバイス登録構成オブジェクトのみです。 この機能は、オンプレミスの Active Directory が複数の Azure AD ディレクトリに同期されるトポロジと互換性がありません。</li>> 
+> <li>オンプレミスの Active Directory フォレストに追加できるのは、1 つのデバイス登録構成オブジェクトのみです。 この機能は、オンプレミスの Active Directory が複数の Azure AD テナントに同期されるトポロジと互換性がありません。</li>
+>
 
 ## <a name="part-1-install-azure-ad-connect"></a>パート 1: Azure AD Connect のインストール
 1. カスタム設定または簡単設定を使用して Azure AD Connect をインストールします。 すべてのユーザーとグループの同期に成功してから、デバイスの書き戻しを有効にすることをお勧めします。
@@ -43,15 +44,15 @@ ms.lasthandoff: 12/11/2017
 デバイスの書き戻しの使用を準備するには、次の手順を使用します。
 
 1. Azure AD Connect がインストールされているコンピューターから、管理者特権モードで PowerShell を起動します。
-2. Active Directory PowerShell モジュールがインストールされていない場合は、スクリプトの実行に必要な dsacls.exe と AD PowerShell モジュールを含むリモート サーバー管理ツールをインストールします。  次のコマンドを実行します。
-  
+2. Active Directory PowerShell モジュールがインストールされていない場合は、スクリプトの実行に必要な dsacls.exe と AD PowerShell モジュールを含むリモート サーバー管理ツールをインストールします。 次のコマンドを実行します。
+
    ``` powershell
    Add-WindowsFeature RSAT-AD-Tools
    ```
 
 3. Azure Active Directory PowerShell モジュールがインストールされていない場合、 [Windows PowerShell 用 Azure Active Directory モジュール (64 ビット版)](http://go.microsoft.com/fwlink/p/?linkid=236297)からそれをダウンロードしてインストールします。 このコンポーネントには、Azure AD Connect と一緒にインストールされるサインイン アシスタントへの依存関係があります。  
 4. エンタープライズ管理者の資格情報で次のコマンドを実行した後、PowerShell を終了します。
-   
+
    ``` powershell
    Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'
    ```
@@ -62,8 +63,7 @@ ms.lasthandoff: 12/11/2017
 
 構成名前空間の変更が必要なため、エンタープライズ管理者の資格情報が必要です。 ドメイン管理者には、十分なアクセス許可がありません。
 
-![デバイスの書き戻しを有効にするための Powershell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)
-
+![デバイスの書き戻しを有効にするための Powershell](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)  
 
 説明:
 
@@ -87,18 +87,22 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
 3. [書き戻し] ページでは、指定したドメインが既定の [デバイスの書き戻しフォレスト] として表示されます。
    ![カスタム インストール デバイスの書き戻し先フォレスト](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
 4. その他の構成は変更しないで、ウィザードのインストールを完了します。 必要に応じて、「[Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)」をご覧ください。
+5. Azure AD Connect で[フィルター](active-directory-aadconnectsync-configure-filtering.md)を有効にしてある場合は、新しく作成されたコンテナー CN=RegisteredDevices がスコープに含まれることを確認します。
 
-## <a name="enable-conditional-access"></a>条件付きアクセスを有効にする
-このシナリオを有効にする詳細な手順については、「 [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
-
-## <a name="verify-devices-are-synchronized-to-active-directory"></a>デバイスが Active Directory に同期されていることを確認する
-デバイスの書き戻しは正常に動作するようになっています。 デバイス オブジェクトを AD に書き戻すには、最大 3 時間かかる可能性があります。  デバイスが正しく同期されていることを確認するには、同期規則が完了した後で次のようにします。
+## <a name="part-4-verify-devices-are-synchronized-to-active-directory"></a>パート 4: デバイスが Active Directory に同期されていることを確認する
+デバイスの書き戻しは正常に動作するようになっています。 デバイス オブジェクトを AD に書き戻すには、最大 3 時間かかる可能性があります。 デバイスが正しく同期されていることを確認するには、同期が完了した後で次のようにします。
 
 1. Active Directory 管理センターを起動します。
-2. フェデレーションされているドメイン内の RegisteredDevices を展開します。
-   ![Active Directory 管理センター登録済みのデバイス](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
-3. 現在登録されているデバイスが一覧表示されます。
-   ![Active Directory 管理センター登録済みのデバイス一覧](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
+2. 「[パート 2](#part-2-prepare-active-directory)」で構成したドメイン内の RegisteredDevices を展開します。  
+
+   ![Active Directory 管理センター登録済みのデバイス](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)  
+   
+3. 現在登録されているデバイスが一覧表示されます。  
+
+   ![Active Directory 管理センター登録済みのデバイス一覧](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)  
+
+## <a name="enable-conditional-access"></a>条件付きアクセスを有効にする
+   このシナリオを有効にする詳細な手順については、「 [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>書き戻しのチェックボックスがオフのままです。
@@ -113,7 +117,8 @@ Azure AD Connect でデバイスの書き戻しを有効にするには、次の
   * **[コネクタ]** タブを開きます。
   * 種類が Active Directory Domain Services のコネクタを探して選択します。
   * **[アクション]** の **[プロパティ]** を選択します。
-  * **[Active Directory フォレストに接続]**を選択します。 この画面で指定されているドメインとユーザー名と、スクリプトに指定したアカウントが一致することを確認します。
+  * **[Active Directory フォレストに接続]**を選択します。 この画面で指定されているドメインとユーザー名と、スクリプトに指定したアカウントが一致することを確認します。  
+  
     ![Synchronization Service Manager のコネクタ アカウント](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
 
 Active Directory の構成を確認します。
@@ -144,6 +149,5 @@ Active Directory の構成を確認します。
 * [条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)
 * [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-device-registration-on-premises-setup.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

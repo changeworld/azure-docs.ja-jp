@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/16/2017
+ms.date: 1/4/2018
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 7b259009a8d96e81a141e7718c0d54d40d7b67d1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3444b13972ab9e5c435fc009e8ddb51bcafb1a41
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Resource Manager デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/21/2017
 > インスタント リストアを使用してデータを復元する場合は、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/en-us/help/3216528?preview)が必要です。 また、バックアップ データは、サポート記事に掲載されているロケールの資格情報コンテナーで保護されている必要があります。 インスタント リストアをサポートするロケールの最新リストについては、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/en-us/help/3216528?preview)をご覧ください。 現時点では、インスタント リストアを**使用できない**ロケールがあります。
 >
 
-インスタント リストアは、Azure Portal のRecovery Services コンテナーとクラシック ポータルのバックアップ コンテナーで使用できます。 インスタント リストアを使用する場合は、MARS 更新プログラムをダウンロードして、インスタント リストアを説明する手順に従います。
+Azure Portal の Recovery Services コンテナーでインスタント リストアを使います。 Backup コンテナーにデータを格納した場合は、Recovery Services コンテナーに変換されています。 インスタント リストアを使用する場合は、MARS 更新プログラムをダウンロードして、インスタント リストアを説明する手順に従います。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 12/21/2017
 
 7. **[回復モードの選択]** ウィンドウで、**[個々のファイルおよびフォルダー]** を選択して、**[次へ]** をクリックします。
 
-    ![Search](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
+    ![検索](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
 8. **[ボリュームと日付の選択]** ウィンドウで、復元するファイルやフォルダーが格納されているボリュームを選択します。
 
@@ -135,11 +135,11 @@ ms.lasthandoff: 12/21/2017
 
 10. **[ファイルの参照と回復]** ウィンドウで、**[参照]** をクリックして Windows エクスプローラーを開き、ファイルとフォルダーを検索します。
 
-    ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
+    ![暗号化](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
 11. Windows エクスプローラーで、回復ボリュームからファイルやフォルダーをコピーして、*ターゲット コンピューター*の保存先に貼り付けます。 または回復ボリュームから直接ファイルを開くかストリーミングし、正しいバージョンが回復されていることを確認します。
 
-    ![Encryption](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
+    ![暗号化](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
 12. ファイルやフォルダーの復元が完了したら、**[ファイルの参照と回復]** ウィンドウで、**[マウント解除]** をクリックします。 ボリュームのマウントを解除するかどうかを確認するメッセージが表示されたら **[はい]** をクリックします。
 
@@ -176,5 +176,5 @@ Azure Backup が、**[マウント]** のクリック後数分経過しても回
 
 それでも回復が失敗する場合は、サーバーまたはクライアントを再起動します。 再起動が望ましくない場合、またはサーバーの再起動後も回復が失敗する場合は、別のコンピューターから回復を試してください。[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) に移動し、サポート要求を送信することにより、Azure サポートにお問い合わせください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。

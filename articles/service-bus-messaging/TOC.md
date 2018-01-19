@@ -21,7 +21,6 @@
 ### [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
 ### [Python](service-bus-python-how-to-use-topics-subscriptions.md)
 ### [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)
-## [多層 Service Bus アプリケーションを構築する](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
 # 方法
 ## 計画と設計
@@ -29,6 +28,7 @@
 ### [ロールベースのアクセス制御 (プレビュー)](service-bus-role-based-access-control.md)
 ### [Premium メッセージング](service-bus-premium-messaging.md)
 ### [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+### [多層 Service Bus アプリケーションを構築する](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### [パフォーマンスを最適化する](service-bus-performance-improvements.md)
 ### [geo ディザスター リカバリーと geo レプリケーション](service-bus-geo-dr.md)
 ### [非同期メッセージングと高可用性](service-bus-async-messaging.md)
@@ -79,7 +79,7 @@
 #### 
 ### [Azure PowerShell を使用したエンティティのプロビジョニング](service-bus-manage-with-ps.md)
 
-# 参照
+# リファレンス
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)

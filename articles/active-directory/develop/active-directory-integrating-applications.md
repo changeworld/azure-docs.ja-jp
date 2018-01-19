@@ -3,10 +3,9 @@ title: "Azure Active Directory とアプリケーションの統合"
 description: "Azure Active Directory (Azure AD) でアプリケーションを追加、更新、または削除する方法。"
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: PatAltimore
 manager: mtillman
 editor: mbaldwin
-ms.assetid: ae637be5-0b71-4b1e-b1fe-b83df3eb4845
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -16,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: b4e2ff19cb14ac0abdea1d76ee965b542f6fa7ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e398536ff6f660c75e4e063040eab33a831d65c6
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Azure Active Directory とアプリケーションの統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -35,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 Azure AD の機能を使用するアプリケーションは、まず Azure AD テナントに登録する必要があります。 この登録プロセスでは、アプリケーションが配置されている URL、ユーザーの認証後の応答の送信先となる URL、アプリケーションを識別する URI など、アプリケーションの詳細を Azure AD に提供します。
 
 ### <a name="to-register-a-new-application-using-the-azure-portal"></a>Azure Portal を使用して新しいアプリケーションを登録するには
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]**、**[新しいアプリケーションの登録]** の順にクリックします。
 
@@ -111,10 +110,10 @@ Web/confidential クライアント アプリケーションが認証を必要�
 - 委任されたアクセス許可: クライアント アプリケーションは、サインインしているユーザーとして Web API にアクセスする必要がありますが、選択したアクセス許可によってアクセスが制限されます。 この種類のアクセス許可は、管理者の同意が要求されない限り、ユーザーが付与できます。 
 
   > [!NOTE]
-  > 委任されたアクセス許可をアプリケーションに追加しても、テナント内のユーザーに同意が自動的に付与されるわけではありません。この点が Azure クラシック ポータルと異なります。 委任されたアクセス許可が追加されたら、ユーザーは引き続き実行時に手動で同意する必要があります。ただし、管理者が Azure Portal のアプリケーション ページで **[必要なアクセス許可]** セクションの **[アクセス許可の付与]** をクリックした場合は、同意ダイアログが表示されなくなります。 
+  > 委任されたアクセス許可をアプリケーションに追加しても、テナント内のユーザーに同意が自動的に付与されるわけではありません。 委任されたアクセス許可が追加されたら、ユーザーは引き続き実行時に手動で同意する必要があります。ただし、管理者が Azure Portal のアプリケーション ページで **[必要なアクセス許可]** セクションの **[アクセス許可の付与]** をクリックした場合は、同意ダイアログが表示されなくなります。 
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>Web API にアクセスするためのアプリケーションの資格情報またはアクセス許可を追加するには
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。
 
@@ -154,7 +153,7 @@ Web API を開発し、アクセス [スコープ](active-directory-dev-glossary
 
 #### <a name="adding-access-scopes-to-your-resource-application"></a>リソース アプリケーションへのアクセス スコープの追加
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
 
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。
@@ -239,7 +238,7 @@ Azure AD でアプリケーションを登録するときに、組織のユー�
 
 外部ユーザーがアプリケーションにアクセスできるようにするには: 
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメインの登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. **[設定]** ページで、**[プロパティ]** をクリックし、**[マルチテナント]** スイッチを **[はい]** に変更します。
@@ -276,7 +275,7 @@ Web アプリケーションによって、以下が提供される場合もあ�
 > アプリケーション マニフェストを編集する方法の詳細については、前の「[Web API を公開するためのリソース アプリケーションの構成](#configuring-a-resource-application-to-expose-web-apis)」を参照してください。
 >
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメインの登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. アプリケーションの登録ページで **[マニフェスト]** をクリックして、**[マニフェストの編集]** ページに切り替えます。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを**編集**できます。 "oauth2AllowImplicitFlow" を見つけて、値を "true" に設定します。 既定値は "false" です。
@@ -293,14 +292,14 @@ Web アプリケーションによって、以下が提供される場合もあ�
 組織によって登録されたアプリケーションは、テナントの "アプリの登録" メイン ページで、"マイアプリ" フィルターの下に表示されます。 こうしたアプリケーションは、Azure Portal を使用して手動で登録されているか、PowerShell または Graph API を使用してプログラムで登録されています。 具体的には、テナント内ではアプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方によって表されます。 詳細については、「 [アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)」をご覧ください。
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>ディレクトリからシングルテナント アプリケーションを削除するには
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメインの登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. アプリケーションのメインの登録ページで **[削除]** をクリックします。
 5. 確認メッセージが表示されたら、 **[はい]** をクリックします。
 
 #### <a name="to-remove-a-multi-tenant-application-from-its-home-directory"></a>ホーム ディレクトリからマルチテナント アプリケーションを削除するには
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメインの登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. **[設定]** ページで **[プロパティ]** を選択して、**[マルチテナント]** を **[いいえ]** に切り替えてまずアプリケーションをシングルテナントに変更してから、**[保存]** をクリックします。 アプリケーションのサービス プリンシパル オブジェクトは、既に同意しているすべての組織のテナントで保持されます。
@@ -312,7 +311,7 @@ Web アプリケーションによって、以下が提供される場合もあ�
 
 (同意後に) ディレクトリへのマルチテナント アプリケーションのアクセス権を削除するには、会社の管理者がそのサービス プリンシパルを削除する必要があります。 管理者には全体管理者アクセス権が必要で、Azure Portal または [Azure AD PowerShell コマンドレット](http://go.microsoft.com/fwlink/?LinkId=294151)を使用して、アクセス権を削除できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Azure AD での認証のしくみの詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
 - アプリの視覚的なガイダンスに関するヒントについては、[統合アプリケーションのブランド化に関するガイドライン](active-directory-branding-guidelines.md)を参照してください。
 - アプリケーションのアプリケーション オブジェクトとサービス プリンシパル オブジェクトの関係の詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページをご覧ください。

@@ -12,7 +12,7 @@
 
 # 方法
 ## データの読み込みと移動
-### [Azure Data Factory の使用](../data-factory/connector-azure-data-lake-store.md)
+### [Azure Data Factory の使用](../data-factory/load-azure-data-lake-store.md)
 ### [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
@@ -66,7 +66,7 @@
 ### [Azure VNET 内の VM からアクセスする](data-lake-store-connectivity-from-vnets.md)
 ### [Data Lake Analytics で使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [Azure Event Hubs で使用する](data-lake-store-archive-eventhub-capture.md)
-### [Data Factory で使用する](../data-factory/connector-azure-data-lake-store.md)
+### [Data Factory で使用する](../data-factory/load-azure-data-lake-store.md)
 ### [Stream Analytics で使用する](data-lake-store-stream-analytics.md)
 ### [Power BI で使用する](data-lake-store-power-bi.md)
 ### [Data Catalog で使用する](data-lake-store-with-data-catalog.md)
@@ -83,7 +83,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
-## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
+## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-store)
 ## [Python (アカウント管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python (ファイルシステム管理)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)

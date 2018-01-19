@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2B コラボレーションの招待メールの要素 | Microsoft Docs"
+title: "B2B コラボレーションの招待メールの要素 - Azure Active Directory | Microsoft Docs"
 description: "Azure Active Directory B2B コラボレーションの招待メール テンプレート"
 services: active-directory
 documentationcenter: 
@@ -7,21 +7,19 @@ author: sasubram
 manager: mtillman
 editor: 
 tags: 
-ms.assetid: 
+ms.custom: seohack1
 ms.service: active-directory
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: ae8f96caaaeb9f3dad9f9f122b56fe264a5d7aec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7b82565a337f331b8b0eda723ccd58c3beaebdd9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>B2B コラボレーションの招待メールの要素
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
 招待メールは、パートナーを B2B コラボレーション ユーザーとして Azure AD に参加させるための重要なコンポーネントです。 それらを使用して、受信者の信頼を高めることができます。 電子メールに正当性と社会的証明を加えることによって、受信者が安心して **[開始]** ボタンを選択して招待に応じることができるようにします。 この信頼は、共有時の摩擦を軽減するための重要な手段です。 さらに、電子メールの見栄えを良くすることができます。
 
@@ -71,7 +69,7 @@ ms.lasthandoff: 12/11/2017
   ![受信者が招待を利用する必要がない場合](media/active-directory-b2b-invitation-email/when-recipient-doesnt-redeem.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure AD B2B コラボレーションに関する他の記事を参照してください。
 

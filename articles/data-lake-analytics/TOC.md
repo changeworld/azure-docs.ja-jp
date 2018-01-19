@@ -2,7 +2,7 @@
 ## [Data Lake Analytics とは](data-lake-analytics-overview.md)
 
 # 作業開始
-## [Azure ポータル](data-lake-analytics-get-started-portal.md)
+## [Azure Portal](data-lake-analytics-get-started-portal.md)
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 ## [Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 ## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
@@ -11,13 +11,13 @@
 # 方法
 
 ## Data Lake Analytics の管理
-### [Azure ポータル](data-lake-analytics-manage-use-portal.md)
+### [Azure Portal](data-lake-analytics-manage-use-portal.md)
 ### [Azure CLI](data-lake-analytics-manage-use-cli.md)
 ### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 ### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
 ### [Python SDK](data-lake-analytics-manage-use-python-sdk.md)
 ### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
-### [Node.js](data-lake-analytics-manage-use-nodejs.md)
+### [Node.JS](data-lake-analytics-manage-use-nodejs.md)
 ### [診断ログにアクセスする](data-lake-analytics-diagnostic-logs.md)
 ### [クォータ制限を調整する](data-lake-analytics-quota-limits.md)
 
@@ -49,7 +49,7 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)
-## [REST ()](/rest/api/datalakeanalytics/)
+## [REST](/rest/api/datalakeanalytics/)
 ## [CLI](https://docs.microsoft.com/cli/azure/dla)
 
 # リソース
@@ -61,3 +61,4 @@
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-analytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)

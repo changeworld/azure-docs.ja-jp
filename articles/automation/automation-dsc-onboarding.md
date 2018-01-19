@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: gwallace
-ms.openlocfilehash: 0c399a24962efc1263ed35361a96c98bc60633ee
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: bfdec6d3982bb7744374a8026a41c3d548aca612
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC による管理のためのマシンのオンボード
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/14/2017
 また、クラウドからコンピューター構成を管理する準備ができていない場合は、Azure Automation DSC をレポートのみのエンドポイントとして使用することもできます。 この場合、オンプレミスの DSC で目的の構成を設定 (プッシュ) し、Azure Automation の目的の状態へのノード コンプライアンスに関する詳細なレポートを表示できます。
 
 > [!NOTE]
-> インストールされている仮想マシン DSC 拡張機能が 2.7 より新しい場合は、追加料金なしでこの DSC で Azure VM を管理できるようになっています。  詳細については、「[**Automation の価格**](https://azure.microsoft.com/en-us/pricing/details/automation/)」を参照してください。
+> インストールされている仮想マシン DSC 拡張機能が 2.70 より新しい場合は、追加料金なしでこの DSC で Azure VM を管理できるようになっています。 詳細については、「[**Automation の価格**](https://azure.microsoft.com/en-us/pricing/details/automation/)」を参照してください。
 
 
 次のセクションでは、各種類のマシンを Azure Automation DSC にオンボードできる方法の概要を示します。
@@ -133,7 +133,7 @@ Azure Automation DSC では、Azure ポータル、Azure リソース マネー�
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
-### <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
+### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
 Azure Virtual Machines は、Azure リソース マネージャーのテンプレートを使用して Azure Automation DSC にデプロイおよびオンボードできます。 Azure Automation DSC に既存の VM をオンボードする例のテンプレートについては、「 [DSC 拡張機能と Azure Automation DSC を使用して VM を構成する](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) 」を参照してください。 このテンプレートに入力する際に使用する登録キーと登録 URL を見つける場合は、後述の「 [**セキュリティで保護された登録**](#secure-registration) 」を参照してください。
 

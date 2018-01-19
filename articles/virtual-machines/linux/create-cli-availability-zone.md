@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
-ms.openlocfilehash: 986cc450302a04720dc92e55eb8d1248cd3b8f26
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5e742187295d0bd6dbc0767ee164335fc0cf9f02
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
@@ -29,6 +29,35 @@ ms.lasthandoff: 01/03/2018
 [!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
 
 [Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/#login) で Azure アカウントにログインしていることを確認します。
+
+
+## <a name="check-vm-sku-availability"></a>提供されている VM SKU の確認
+提供されている VM サイズ (SKU) は、リージョンやゾーンによって異なる場合があります。 可用性ゾーンの使用計画を立てやすくするために、提供されている VM SKU を Azure リージョンとゾーンごとに一覧表示することができます。 そうすることで適切な VM サイズを選び、必要な回復性をすべてのゾーンにわたって確保することができます。 さまざまな VM の種類とサイズについて詳しくは、[VM サイズの概要](sizes.md)に関するページを参照してください。
+
+[az vm list-skus](/cli/azure/vm#az_vm_list_skus) コマンドで、利用可能な VM SKU を表示することができます。 次の例では、*eastus2* リージョンで提供されている VM SKU を一覧表示しています。
+
+```azurecli
+az vm list-skus --location eastus2 --output table
+```
+
+次に示したのは、その出力例の抜粋です。これは各 VM サイズが提供されている可用性ゾーンを確認できます。
+
+```azurecli
+ResourceType      Locations  Name               Tier       Size     Zones
+----------------  ---------  -----------------  ---------  -------  -------
+virtualMachines   eastus2    Standard_DS1_v2    Standard   DS1_v2   1,2,3
+virtualMachines   eastus2    Standard_DS2_v2    Standard   DS2_v2   1,2,3
+[...]
+virtualMachines   eastus2    Standard_F1s       Standard   F1s      1,2,3
+virtualMachines   eastus2    Standard_F2s       Standard   F2s      1,2,3
+[...]
+virtualMachines   eastus2    Standard_D2s_v3    Standard   D2_v3    1,2,3
+virtualMachines   eastus2    Standard_D4s_v3    Standard   D4_v3    1,2,3
+[...]
+virtualMachines   eastus2    Standard_E2_v3     Standard   E2_v3    1,2,3
+virtualMachines   eastus2    Standard_E4_v3     Standard   E4_v3    1,2,3
+```
+
 
 ## <a name="create-resource-group"></a>Create resource group
 

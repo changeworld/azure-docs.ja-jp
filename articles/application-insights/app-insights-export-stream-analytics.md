@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 978af1a57a5fc3d9c95d517288a074c636874984
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ddaf7bf12854aa5f80c1d292613c3049850ca3ff
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](app-insights-export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -76,28 +76,27 @@ ms.lasthandoff: 11/01/2017
 イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
+[Azure Portal](https://portal.azure.com/) で、Azure Stream Analytics サービスを選び、新しい Stream Analytics ジョブを作成します。
 
-            [従来の Azure Portal](https://manage.windowsazure.com/) で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
+![](./media/app-insights-export-stream-analytics/SA001.png)
 
-![](./media/app-insights-export-stream-analytics/090.png)
+![](./media/app-insights-export-stream-analytics/SA002.png)
 
-![](./media/app-insights-export-stream-analytics/100.png)
+新しいジョブが作成されたら、**[リソースに移動]** を選びます。
 
-新しいジョブが作成された後、その詳細を展開します。
+![](./media/app-insights-export-stream-analytics/SA003.png)
 
-![](./media/app-insights-export-stream-analytics/110.png)
+### <a name="add-a-new-input"></a>新しい入力を追加する
 
-### <a name="set-blob-location"></a>BLOB の場所の設定
+![](./media/app-insights-export-stream-analytics/SA004.png)
+
 連続エクスポート BLOB から入力を取るよう設定します。
 
-![](./media/app-insights-export-stream-analytics/120.png)
+![](./media/app-insights-export-stream-analytics/SA005.png)
 
 ここで、ストレージ アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。 ストレージ アカウント キーとしてこれを設定します。
 
-![](./media/app-insights-export-stream-analytics/130.png)
-
 ### <a name="set-path-prefix-pattern"></a>パスのプレフィックス パターンの設定
-![](./media/app-insights-export-stream-analytics/140.png)
 
 **日付の書式は YYYY-MM-DD (ダッシュ付き) に設定してください。**
 
@@ -115,33 +114,19 @@ ms.lasthandoff: 11/01/2017
 > [!NOTE]
 > ストレージを検査して、正しいパスを取得されることを確認してください。
 > 
-> 
 
-### <a name="finish-initial-setup"></a>初期セットアップの完了
-シリアル化の書式を確認します。
+## <a name="add-new-output"></a>新しい出力を追加する
+ジョブを選んでから、**[出力]** > **[追加]** の順に選びます。
 
-![[確認]をクリックしてウィザードをして閉じます](./media/app-insights-export-stream-analytics/150.png)
+![](./media/app-insights-export-stream-analytics/SA006.png)
 
-ウィザードを閉じ、セットアップが完了するまで待機します。
 
-> [!TIP]
-> サンプルのコマンドを使用し、データをダウンロードします。 クエリをデバッグするために、それをテスト サンプルとして保存します。
-> 
-> 
-
-## <a name="set-the-output"></a>出力の設定
-では、ジョブを選択し、出力を設定しましょう。
-
-![新しいチャネルを選択して、[出力]、[追加]、[Power BI] をクリックします。](./media/app-insights-export-stream-analytics/160.png)
+![新しいチャネルを選択して、[出力]、[追加]、[Power BI] をクリックします。](./media/app-insights-export-stream-analytics/SA010.png)
 
 **作業または学校のアカウント** を指定し、Power BI リソースにアクセスする許可を Stream Analytics に与えます。 次に、出力に名前を付け、ターゲット Power BI データセットと表に名前を付けます。
 
-![3 つの名前を作成します。](./media/app-insights-export-stream-analytics/170.png)
-
 ## <a name="set-the-query"></a>クエリの設定
 クエリでは、入力から出力への変換を制御します。
-
-![ジョブを選択し、[クエリ] をクリックします。 以下のサンプルを貼り付けます。](./media/app-insights-export-stream-analytics/180.png)
 
 テスト機能を使用し、出力が正しいことを確認します。 入力ページから取得したサンプル データを指定します。 
 
@@ -163,7 +148,7 @@ ms.lasthandoff: 11/01/2017
 
 * export-input は、ストリーム入力に付けたエイリアスです。
 * pbi-output は、定義した出力エイリアスです。
-* イベントの名前は JSON 配列にネストされているため、 [OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) を使用します。 Select でイベント名と、期間内にその名前を持つインスタンスの個数を取得します。 [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) 句では、1 分という期間内に要素をグループ化します。
+* イベントの名前は JSON 配列にネストされているため、[OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) を使います。 Select でイベント名と、期間内にその名前を持つインスタンスの個数を取得します。 [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) 句では、1 分の期間内に要素をグループ化します。
 
 ### <a name="query-to-display-metric-values"></a>メトリックの値を表示するためのクエリ
 ```SQL
@@ -207,7 +192,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="run-the-job"></a>ジョブを実行する
 ジョブを開始する過去の日付を選択できます。 
 
-![ジョブを選択し、[クエリ] をクリックします。 以下のサンプルを貼り付けます。](./media/app-insights-export-stream-analytics/190.png)
+![ジョブを選択し、[クエリ] をクリックします。 以下のサンプルを貼り付けます。](./media/app-insights-export-stream-analytics/SA008.png)
 
 ジョブが実行されるまで待ちます。
 
@@ -235,7 +220,7 @@ Noam Ben Zeev が、Stream Analytics を使ってエクスポートされたデ�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [連続エクスポート](app-insights-export-telemetry.md)
 * [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](app-insights-export-data-model.md)
 * [Application Insights](app-insights-overview.md)

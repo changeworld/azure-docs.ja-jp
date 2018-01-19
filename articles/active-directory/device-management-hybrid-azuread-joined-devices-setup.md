@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 01/04/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f503f373ec32ffcdd9be3ca03da6ec5e1b10e35a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ec6489f796dab0fa24bbadf542429d4cf853c414
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
@@ -32,11 +32,12 @@ Azure Active Directory (Azure AD) のデバイス管理を使用して、ユー�
 
 環境内でハイブリッド Azure AD 参加済みデバイスの構成を開始する前に、サポートされるシナリオと制約を理解しておく必要があります。  
 
+[システム準備ツール (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)) を利用している場合は、必ず Azure AD にまだ登録されていない Windows のインストールからイメージを作成してください。
+
 説明を読みやすくするために、このトピックでは以下の用語を使用します。 
 
 - **最新の Windows デバイス** - この用語は、Windows 10 または Windows Server 2016 が実行されているドメイン参加済みデバイスを指します。
 - **ダウンレベルの Windows デバイス** - この用語は、Windows 10 も Windows Server 2016 も実行されていない、**サポートされていて**ドメインに参加している全 Windows デバイスを指します。  
-
 
 ### <a name="windows-current-devices"></a>最新の Windows デバイス
 
@@ -66,6 +67,15 @@ Azure AD Connect:
 - オンプレミス Active Directory (AD) のコンピューター アカウントと Azure AD のデバイス オブジェクトの間の関連付けを維持します。 
 - Windows Hello for Business のような、その他のデバイス関連機能を利用できるようにします。
 
+Azure AD にコンピューターを登録するため、組織ネットワーク内のコンピューターから次の URL にアクセスできることを確認してください。
+
+- https://enterpriseregistration.windows.net
+
+- https://login.microsoftonline.com
+
+- https://device.login.microsoftonline.com
+
+送信プロキシ経由でインターネットにアクセスする必要がある組織の場合は、Windows 10 コンピューターを Azure AD に登録できるように、Web プロキシ自動発見 (WPAD) を実装する必要があります。
 
 
 ## <a name="configuration-steps"></a>構成の手順
@@ -548,7 +558,7 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 2. 最新の Windows コンピューターの自動登録を有効にするドメインに対応するドメイン ノードに移動します。
 3. **[グループ ポリシー オブジェクト]** を右クリックし、**[新規]** を選択します。
 4. グループ ポリシー オブジェクトの名前を入力します。 例: *Hybrid Azure AD join。 
-5. **[OK]**をクリックします。
+5. Click **OK**.
 6. 新しいグループ ポリシー オブジェクトを右クリックし、**[編集]**を選択します。
 7. **[コンピューターの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[デバイスの登録]** に移動します。 
 8. **[ドメインに参加しているコンピューターをデバイスとして登録する]** を右クリックし、**[編集]** を選択します。
@@ -557,7 +567,7 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
    > このグループ ポリシー テンプレートは、以前のバージョンのグループ ポリシー管理コンソールから変更されています。 以前のバージョンのコンソールを使用している場合は、`Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers` の順に移動します。 
 
 7. **[有効]** を選択し、**[適用]** をクリックします。
-8. **[OK]**をクリックします。
+8. Click **OK**.
 9. グループ ポリシー オブジェクトを選択した場所にリンクします。 たとえば、特定の組織単位に関連付けることができます。 また、Azure AD に自動的に参加するコンピューターの特定のセキュリティ グループに関連付けることもできます。 組織内のすべてのドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターに対してこのポリシーを設定するには、このグループ ポリシー オブジェクトをドメインに関連付けてください。
 
 ### <a name="windows-installer-packages-for-non-windows-10-computers"></a>非 Windows 10 コンピューター用の Windows インストーラー パッケージ
@@ -574,7 +584,7 @@ System Center Configuration Manager などのソフトウェア ディストリ�
 
 このコマンドレットの出力は、Azure AD への登録と参加が行われているデバイスを表示します。 すべてのデバイスを取得するには、**-All** パラメーターを使用し、その後で **deviceTrustType** プロパティを使用してフィルター処理します。 ドメイン参加済みデバイスの値は、**Domain Joined** です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Active Directory のデバイス管理の概要](device-management-introduction.md)
 
