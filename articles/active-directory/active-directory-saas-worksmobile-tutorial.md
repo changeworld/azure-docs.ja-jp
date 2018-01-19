@@ -113,6 +113,9 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
     a. **[サインオン URL]** ボックスに、`https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、値として「`worksmobile.com`」と入力します。
+    
+    > [!NOTE] 
+    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[LINE WORKS クライアント サポート チーム](mailto:dl_ssoinfo@worksmobile.com)に問い合わせてください。 
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Raw)]\(証明書 (Raw)\)** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -128,6 +131,13 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
 
 7. アプリケーション用に構成された SSO を入手するには、LINE WORKS Developers (https://developers.worksmobile.com/) を確認してください。
 
+ • ダウンロードした**証明書ファイル**
+
+ • **SAML シングル サインオン サービス URL**
+
+ • **SAML エンティティ ID**
+
+ • **サインアウト URL**
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -165,7 +175,7 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
  
 ### <a name="creating-a-works-mobile-test-user"></a>LINE WORKS のテスト ユーザーの作成
 
- このセクションでは、LINE WORKS で Britta Simon というユーザーを作成します。 
+ このセクションでは、LINE WORKS で Britta Simon というユーザーを作成します。 [LINE WORKS サポート チーム](mailto:dl_ssoinfo@worksmobile.com)と連携して、LINE WORKS プラットフォームにユーザーを追加してください。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
