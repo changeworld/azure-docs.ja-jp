@@ -86,7 +86,7 @@
     - name: Azure China 21Vianet
       tocHref: /azure/china/
       topicHref: /azure/china/
-    - name: Azure Portal
+    - name: Azure ポータル
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/
     - name: リソース マネージャー
@@ -101,7 +101,7 @@
     - name: サポート
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
-    - name: バックアップ
+    - name: Backup
       tocHref: /azure/backup/
       topicHref: /azure/backup/
     - name: Batch
@@ -218,7 +218,7 @@
         - name: Hadoop
           tocHref: /azure/hdinsight/hadoop
           topicHref: /azure/hdinsight/hadoop/apache-hadoop-introduction
-        - name: HBase
+        - name: hbase
           tocHref: /azure/hdinsight/hbase
           topicHref: /azure/hdinsight/hbase/apache-hbase-overview
         - name: Interactive Query
@@ -239,6 +239,9 @@
         - name: Storm
           tocHref: /azure/hdinsight/storm
           topicHref: /azure/hdinsight/storm/apache-storm-overview
+    - name: IoT Edge
+      tocHref: /azure/iot-edge/
+      topicHref: /azure/iot-edge/
     - name: IoT Hub
       tocHref: /azure/iot-hub/
       topicHref: /azure/iot-hub/
@@ -257,7 +260,7 @@
     - name: Logic Apps
       tocHref: /azure/logic-apps/
       topicHref: /azure/logic-apps/
-    - name: Machine Learning
+    - name: 機械学習
       tocHref: /azure/machine-learning/
       topicHref: /azure/machine-learning/
       items:
@@ -362,13 +365,13 @@
     - name: Scheduler
       tocHref: /azure/scheduler/
       topicHref: /azure/scheduler/
-    - name: Search
+    - name: 検索
       tocHref: /azure/search/
       topicHref: /azure/search/
     - name: セキュリティ
       tocHref: /azure/security/
       topicHref: /azure/security/
-    - name: セキュリティ センター
+    - name: Security Center
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/
     - name: Service Bus
@@ -395,7 +398,7 @@
     - name: SQL Server Stretch Database
       tocHref: /azure/sql-server-stretch-database/
       topicHref: /azure/sql-server-stretch-database/
-    - name: ストレージ
+    - name: Storage
       tocHref: /azure/storage/
       topicHref: /azure/storage/
       items:
@@ -420,10 +423,10 @@
     - name: Traffic Manager
       tocHref: /azure/traffic-manager/
       topicHref: /azure/traffic-manager/
-    - name: 仮想マシン スケール セット
+    - name: Virtual Machine Scale Sets
       tocHref: /azure/virtual-machine-scale-sets/
       topicHref: /azure/virtual-machine-scale-sets/
-    - name: Virtual Machines
+    - name: '[Virtual Machines]'
       tocHref: /azure/virtual-machines/
       topicHref: /azure/virtual-machines/
       items:
@@ -448,7 +451,7 @@
             - name: Windows クラシック デプロイ
               tocHref: /azure/virtual-machines/windows/classic/
               topicHref: /azure/virtual-machines/windows/classic/
-    - name: Virtual Network
+    - name: 仮想ネットワーク
       tocHref: /azure/virtual-network/
       topicHref: /azure/virtual-network/
     - name: VPN Gateway
