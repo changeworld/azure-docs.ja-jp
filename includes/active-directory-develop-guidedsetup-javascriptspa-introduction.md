@@ -18,7 +18,7 @@
 
 このガイドでは、次のライブラリを使用します。
 
-|ライブラリ|Description|
+|ライブラリ|[説明]|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript プレビュー用の Microsoft Authentication Library|
 
