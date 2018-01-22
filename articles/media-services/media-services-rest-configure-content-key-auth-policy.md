@@ -14,45 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: d3388643a3d7c38104a4c61f94a8b68a86168846
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3f3972232a4342bfb7d8579d747d0cc4250963bc
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
+# <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>Overview
-Microsoft Azure Media Services では、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と PlayReady または Widevine DRM を使用して (動的に) 暗号化されたコンテンツを配信できます。 Media Services では、承認されたクライアントにキーと PlayReady/Widevine ライセンスを配信するためのサービスも提供しています。
+## <a name="overview"></a>概要
+ Azure Media Services を使用して、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) と PlayReady または Widevine DRM (デジタル著作権管理) を使用して (動的に) 暗号化されたコンテンツを配信できます。 Media Services では、承認されたクライアントにキーと PlayReady/Widevine ライセンスを配信するためのサービスも提供しています。
 
-Media Services で資産を暗号化する場合は、[こちら](media-services-rest-create-contentkey.md)の説明に従って暗号化キー (**CommonEncryption** か **EnvelopeEncryption**) を資産に関連付ける必要があります。また、このトピックでの説明に従って、キーの承認ポリシーを構成する必要があります。
+Media Services で資産を暗号化する場合は、暗号化キー (CommonEncryption か EnvelopeEncryption) を資産に関連付ける必要があります。 詳細については、[REST を使用したコンテンツ キーの作成](media-services-rest-create-contentkey.md)に関するページを参照してください。 また、キーの承認ポリシーを構成する必要があります (この記事で説明します)。
 
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、AES か PlayReady でコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
-Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (**オープン**または**トークン**制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、**Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web Token** (JWT) 形式のトークンがサポートされます。
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。 コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープンまたはトークン制限を使用) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、[単純 Web トークン](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) 形式と JSON Web トークン (JWT) 形式のトークンがサポートされます。
 
-Media Services では、Secure Token Services は提供されません。 カスタム STS を作成するか、Azure Active Directory (AAD) を使用して、トークンを発行できます。 STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定した要求を発行するよう構成する必要があります (この記事の説明を参照)。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
+Media Services は STS を提供しません。 カスタム STS を作成するか、Azure Active Directory (Azure AD) を使用して、トークンを発行できます。 STS は、指定されたキーで署名されたトークンを作成し、トークン制限構成で指定した要求を発行するよう構成する必要があります (この記事の説明を参照)。 Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。
 
 詳細については、次の記事を参照してください。
 - [JWT トークンの承認](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-- [Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT 要求に基づいてコンテンツ キーの配信を制限する](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)。
+- [Azure Media Services OWIN MVC ベースのアプリを Azure Active Directory と統合し、JWT 要求に基づいてコンテンツ キーの配信を制限する](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
-### <a name="some-considerations-apply"></a>いくつかの考慮事項が適用されます。
-* ダイナミック パッケージと動的暗号化を使用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態であることを確認してください。
-* 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート Smooth Streaming ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
-* **AssetCreationOptions.StorageEncrypted** オプションを使用して、資産をアップロードしてエンコードします。
+### <a name="some-considerations-apply"></a>適用される考慮事項
+* ダイナミック パッケージと動的暗号化を使用するには、コンテンツのストリーミング元のストリーミング エンドポイントが "実行中" 状態であることを確認してください。
+* 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。 詳細については、「 [資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
+* AssetCreationOptions.StorageEncrypted オプションを使用して、資産をアップロードしてエンコードします。
 * 複数のコンテンツ キーで同じポリシー構成を必要とする場合は、1 つの承認ポリシーを作成して、複数のコンテンツ キーに利用することをお勧めします。
-* キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。  ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
-* 資産の配信ポリシーを追加または更新する場合は、既存のロケーターを削除し (存在する場合)、新しいロケーターを作成する必要があります。
+* キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。 ContentKeyAuthorizationPolicy を作成し、トークン制限を使用するように指定してテストし、ポリシーをオープン制限に更新することができます。 このプロセスは、ポリシーがオープン バージョンに切り替わるまでに約 15 分かかります。
+* 資産の配信ポリシーを追加または更新する場合は、既存のすべてのロケーターを削除し、新しいロケーターを作成する必要があります。
 * 現時点では、プログレッシブ ダウンロードは暗号化できません。
-* AMS ストリーミング エンドポイントは、プレフライト応答の CORS "Access-Control-Allow-Origin" ヘッダーをワイルドカード "\*" に設定します。 これは、Azure Media Player、Roku、JW など、ほとんどのプレーヤーでうまく機能します。 ただし、dashjs を利用する一部のプレーヤーでは、資格情報モードを "include" に設定すると、dashjs 内の XMLHttpRequest が "Access-Control-Allow-Originin" の値としてワイルドカード "\*" を許可しないため、機能しません。 dashjs でのこの制限の回避策としては、単一のドメインからクライアントをホストしている場合は、Azure Media Services はそのドメインをプレフライト応答ヘッダー内で指定できます。 Azure Portal でサポート チケットを開くことで連絡できます。
+* Media Services ストリーミング エンドポイントは、プレフライト応答の CORS Access-Control-Allow-Origin ヘッダーをワイルドカード "\*" に設定します。 この値は、Azure Media Player、Roku、JWPlayer など、ほとんどのプレーヤーでうまく機能します。 ただし、dashjs を利用する一部のプレーヤーでは、資格情報モードを "include" に設定すると、dashjs 内の XMLHttpRequest が Access-Control-Allow-Originin の値としてワイルドカード "\*" を許可しないため、機能しません。 dashjs でのこの制限の回避策としては、単一のドメインからクライアントをホストしている場合は、Media Services はそのドメインをプレフライト応答ヘッダー内で指定できます。 サポートが必要な場合は、Azure Portal からサポート チケットを開きます。
 
 ## <a name="aes-128-dynamic-encryption"></a>AES-128 動的暗号化
 > [!NOTE]
 > Media Services REST API を使用する場合は、次のことに考慮します。
 > 
-> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 > 
 > 
 > 
@@ -177,7 +177,7 @@ Media Services では、Secure Token Services は提供されません。 カス
     HTTP/1.1 204 No Content
 
 ### <a name="token-restriction"></a>トークン制限
-このセクションでは、コンテンツ キー承認ポリシーを作成し、それをコンテンツ キーに関連付ける方法について説明します。 承認ポリシーには、ユーザーがキーを受け取ることを承認されているかどうかを判断するために、承認要求が満たす必要がある内容について記載されています (トークンの署名に使用されたキーが「検証キー」リストに含まれているなど)。
+このセクションでは、コンテンツ キー承認ポリシーを作成し、それをコンテンツ キーに関連付ける方法について説明します。 承認ポリシーには、ユーザーがキーを受け取ることを承認されているかどうかを判断するために、承認要求が満たす必要がある内容について記載されています。 たとえば、トークンの署名に使用されたキーが検証キー一覧に含まれているかどうかなどです。
 
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、次の XML スキーマに準拠する必要があります。
 
@@ -230,12 +230,12 @@ Media Services では、Secure Token Services は提供されません。 カス
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-**トークン**制限ポリシーを構成するときは、プライマリ**検証キー**、**発行者**、**対象ユーザー**の各パラメーターを指定する必要があります。 プライマリ**検証キー**には、トークンの署名に使用されたキーが含まれ、**発行者**は、トークンを発行するセキュリティ トークン サービスです。 **対象ユーザー** (**スコープ**とも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
+トークン制限ポリシーを構成する際には、プライマリ検証キー、発行者、および対象ユーザーの各パラメーターを指定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれています。 発行元はトークンを発行する STS です。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 次の例では、トークン制限を含む承認ポリシーを作成します。 この例では、クライアントが署名キー (VerificationKey)、トークン発行者、必要な要求を含むトークンを提示する必要があります。
 
 ### <a name="create-contentkeyauthorizationpolicies"></a>ContentKeyAuthorizationPolicies を作成する
-[ここ](#ContentKeyAuthorizationPolicies)を参照して "トークン制限ポリシー" を作成します。
+「[ContentKeyAuthorizationPolicies を作成する](#ContentKeyAuthorizationPolicies)」セクションの説明に従い、トークン制限ポリシーを作成します。
 
 ### <a name="create-contentkeyauthorizationpolicyoptions"></a>ContentKeyAuthorizationPolicyOptions を作成する
 要求:
@@ -274,15 +274,15 @@ Media Services では、Secure Token Services は提供されません。 カス
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:e1ef6145-46e8-4ee6-9756-b1cf96328c23","Name":"Token option for HLS","KeyDeliveryType":2,"KeyDeliveryConfiguration":null,"Restrictions":[{"Name":"Token Authorization Policy","KeyRestrictionType":1,"Requirements":"<TokenRestrictionTemplate xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1\"><AlternateVerificationKeys><TokenVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>BklyAFiPTQsuJNKriQJBZHYaKM2CkCTDQX2bw9sMYuvEC9sjW0W7GUIBygQL/+POEeUqCYPnmEU2g0o1GW2Oqg==</KeyValue></TokenVerificationKey></AlternateVerificationKeys><Audience>urn:test</Audience><Issuer>http://testacs.com/</Issuer><PrimaryVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>E5BUHiN4vBdzUzdP0IWaHFMMU3D1uRZgF16TOhSfwwHGSw+Kbf0XqsHzEIYk11M372viB9vbiacsdcQksA0ftw==</KeyValue></PrimaryVerificationKey><RequiredClaims><TokenClaim><ClaimType>urn:microsoft:azure:mediaservices:contentkeyidentifier</ClaimType><ClaimValue i:nil=\"true\" /></TokenClaim></RequiredClaims><TokenType>SWT</TokenType></TokenRestrictionTemplate>"}]}
 
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>ContentKeyAuthorizationPolicies を Options にリンクする
-[ここ](#ContentKeyAuthorizationPolicies)を参照して ContentKeyAuthorizationPolicies を Options にリンクします。
+「[ContentKeyAuthorizationPolicies を作成する](#ContentKeyAuthorizationPolicies)」セクションの説明に従い、ContentKeyAuthorizationPolicies を Options にリンクします。
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>承認ポリシーをコンテンツ キーに追加する
-[ここ](#AddAuthorizationPolicyToKey)を参照して AuthorizationPolicy を ContentKey に追加します。
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>承認ポリシーをコンテンツ キーに追加する
+「[承認ポリシーをコンテンツ キーに追加する](#AddAuthorizationPolicyToKey)」セクションの説明に従い、AuthorizationPolicy を ContentKey に追加します。
 
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動的暗号化
 Media Services により、ユーザーが保護されたコンテンツを再生する際に、PlayReady DRM ランタイムに適用される権限と制限を構成できます。 
 
-PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、 [PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 
+PlayReady を使用してコンテンツを保護する場合、承認ポリシーの指定の 1 つとして、[PlayReady ライセンス テンプレート](media-services-playready-license-template-overview.md)を定義する XML 文字列を指定する必要があります。 
 
 ### <a name="open-restriction"></a>オープン制限
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。 この制限は、テストに便利です。
@@ -363,16 +363,16 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:1052308c-4df7-4fdb-8d21-4d2141fc2be0","Name":"","KeyDeliveryType":1,"KeyDeliveryConfiguration":"<PlayReadyLicenseResponseTemplate xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1\"><LicenseTemplates><PlayReadyLicenseTemplate><AllowTestDevices>false</AllowTestDevices><ContentKey i:type=\"ContentEncryptionKeyFromHeader\" /><LicenseType>Nonpersistent</LicenseType><PlayRight /></PlayReadyLicenseTemplate></LicenseTemplates></PlayReadyLicenseResponseTemplate>","Restrictions":[{"Name":"Open","KeyRestrictionType":0,"Requirements":null}]}
 
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>ContentKeyAuthorizationPolicies を Options にリンクする
-[ここ](#ContentKeyAuthorizationPolicies)を参照して ContentKeyAuthorizationPolicies を Options にリンクします。
+「[ContentKeyAuthorizationPolicies を作成する](#ContentKeyAuthorizationPolicies)」セクションの説明に従い、ContentKeyAuthorizationPolicies を Options にリンクします。
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>承認ポリシーをコンテンツ キーに追加する
-[ここ](#AddAuthorizationPolicyToKey)を参照して AuthorizationPolicy を ContentKey に追加します。
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>承認ポリシーをコンテンツ キーに追加する
+「[承認ポリシーをコンテンツ キーに追加する](#AddAuthorizationPolicyToKey)」セクションの説明に従い、AuthorizationPolicy を ContentKey に追加します。
 
 ### <a name="token-restriction"></a>トークン制限
-トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、 [この](#schema) セクションで表示される XML スキーマに一致する必要があります。
+トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、「[トークン制限スキーマ](#schema)」セクションで表示される XML スキーマに一致する必要があります。
 
 #### <a name="create-contentkeyauthorizationpolicies"></a>ContentKeyAuthorizationPolicies を作成する
-[ここ](#ContentKeyAuthorizationPolicies2)を参照して ContentKeyAuthorizationPolicies を作成します。
+「[ContentKeyAuthorizationPolicies を作成する](#ContentKeyAuthorizationPolicies2)」セクションの説明に従い、ContentKeyAuthorizationPolicies を作成します。
 
 #### <a name="create-contentkeyauthorizationpolicyoptions"></a>ContentKeyAuthorizationPolicyOptions を作成する
 要求:
@@ -411,10 +411,10 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:e42bbeae-de42-4077-90e9-a844f297ef70","Name":"Token option","KeyDeliveryType":1,"KeyDeliveryConfiguration":"<PlayReadyLicenseResponseTemplate xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1\"><LicenseTemplates><PlayReadyLicenseTemplate><AllowTestDevices>false</AllowTestDevices><ContentKey i:type=\"ContentEncryptionKeyFromHeader\" /><LicenseType>Nonpersistent</LicenseType><PlayRight /></PlayReadyLicenseTemplate></LicenseTemplates></PlayReadyLicenseResponseTemplate>","Restrictions":[{"Name":"Token Authorization Policy","KeyRestrictionType":1,"Requirements":"<TokenRestrictionTemplate xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns=\"http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1\"><AlternateVerificationKeys><TokenVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>w52OyHVqXT8aaupGxuJ3NGt8M6opHDOtx132p4r6q4hLI6ffnLusgEGie1kedUewVoIe1tqDkVE6xsIV7O91KA==</KeyValue></TokenVerificationKey></AlternateVerificationKeys><Audience>urn:test</Audience><Issuer>http://testacs.com/</Issuer><PrimaryVerificationKey i:type=\"SymmetricVerificationKey\"><KeyValue>dYwLKIEMBljLeY9VM7vWdlhps31Fbt0XXhqP5VyjQa33bJXleBtkzQ6dF5AtwI9gDcdM2dV2TvYNhCilBKjMCg==</KeyValue></PrimaryVerificationKey><RequiredClaims><TokenClaim><ClaimType>urn:microsoft:azure:mediaservices:contentkeyidentifier</ClaimType><ClaimValue i:nil=\"true\" /></TokenClaim></RequiredClaims><TokenType>SWT</TokenType></TokenRestrictionTemplate>"}]}
 
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>ContentKeyAuthorizationPolicies を Options にリンクする
-[ここ](#ContentKeyAuthorizationPolicies)を参照して ContentKeyAuthorizationPolicies を Options にリンクします。
+「[ContentKeyAuthorizationPolicies を作成する](#ContentKeyAuthorizationPolicies)」セクションの説明に従い、ContentKeyAuthorizationPolicies を Options にリンクします。
 
-#### <a name="add-authorization-policy-to-the-content-key"></a>承認ポリシーをコンテンツ キーに追加する
-[ここ](#AddAuthorizationPolicyToKey)を参照して AuthorizationPolicy を ContentKey に追加します。
+#### <a name="add-an-authorization-policy-to-the-content-key"></a>承認ポリシーをコンテンツ キーに追加する
+「[承認ポリシーをコンテンツ キーに追加する](#AddAuthorizationPolicyToKey)」セクションの説明に従い、AuthorizationPolicy を ContentKey に追加します。
 
 ## <a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
@@ -446,6 +446,6 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>次のステップ
-これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、[資産の配信ポリシーの構成方法](media-services-rest-configure-asset-delivery-policy.md)に関する記事をご覧ください。
+## <a name="next-steps"></a>次の手順
+これで、コンテンツ キーの承認ポリシーの構成が完了しました。次は、「[資産配信ポリシーの構成](media-services-rest-configure-asset-delivery-policy.md)」をご覧ください。
 

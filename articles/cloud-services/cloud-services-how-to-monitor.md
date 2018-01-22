@@ -1,178 +1,98 @@
 ---
-title: "クラウド サービスの監視方法 | Microsoft Docs"
-description: "Azure クラシック ポータルを使用して、クラウド サービスを監視する方法について説明します。"
+title: "Azure クラウド サービスの監視 | Microsoft Docs"
+description: "Azure クラウド サービスの監視に関する情報やいくつかのオプションについて説明します。"
 services: cloud-services
 documentationcenter: 
 author: thraka
 manager: timlt
 editor: 
-ms.assetid: 5c48d2fb-b8ea-420f-80df-7aebe2b66b1b
+ms.assetid: 
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2015
+ms.date: 12/22/2017
 ms.author: adegeo
-ms.openlocfilehash: c369b22cf068a473343b006eb1b06fdd350d31db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c63a49c65f2d8261caa534308477888c752a89da
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="how-to-monitor-cloud-services"></a>クラウド サービスの監視方法
-[!INCLUDE [disclaimer](../../includes/disclaimer.md)]
+# <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
 
-Azure クラシック ポータルで、クラウド サービスの `key` パフォーマンス メトリックを監視できます。 監視レベルは、サービス ロールごとに最小および詳細に設定でき、監視画面をカスタマイズできます。 詳細監視データはストレージ アカウントに保存され、ポータル外からもアクセスできます。 
+どのクラウド サービスでも主要なパフォーマンス メトリックを監視することができます。 各クラウド サービス ロールは最小限のデータ (CPU 使用率、ネットワーク使用状況、ディスク使用率) を収集します。 クラウド サービスにより `Microsoft.Azure.Diagnostics` 拡張機能がロールに適用されている場合、そのロールはその他のデータ ポイントを収集できます。 この記事では、クラウド サービス対応の Azure 診断の概要について説明します。
 
-Azure クラシック ポータルの監視画面は自由に構成できます。 **[監視]** ページでメトリック一覧から監視するメトリックを選択でき、**[監視]** ページとダッシュボードのメトリック チャートにプロットするメトリックを選択できます。 
+ベーシックな監視機能では、ロール インスタンスのパフォーマンス カウンター データは、3 分間隔でサンプリングされて収集されます。 このベーシックな監視のデータはストレージ アカウントには格納されないため、追加のコストが伴うことはありません。
 
-## <a name="concepts"></a>概念
-既定では、新しいクラウド サービス用に最小監視が用意されており、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。 最小メトリックは、CPU 使用率、受信データ、送信データ、ディスク読み取りのスループット、およびディスク書き込みのスループットに限定されます。 詳細監視を構成することで、仮想マシン (ロール インスタンス) 内のパフォーマンス データに基づいた追加のメトリックが使用できます。 詳細メトリックを使用すると、アプリケーションの操作中に発生する問題を詳しく分析できます。
+高度な監視機能では、5 分、1 時間、12 時間の間隔で追加のメトリックがサンプリングされて収集されます。 集計されたデータはストレージ アカウントにテーブルとして格納され、10 日後に消去されます。 使用されるストレージ アカウントはロールごとに構成されます。ロールによって異なるストレージ アカウントを使用できます。 これは、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイルと [.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) ファイルで接続文字列を使用して構成されます。
 
-既定では、ロール インスタンスから得られるパフォーマンス カウンター データは、3 分間隔でサンプリングされてロール インスタンスから転送されます。 詳細監視を有効にすると、生のパフォーマンス カウンター データが、5 分、1 時間、および 12 時間間隔で、ロール インスタンスごとに、および各ロールのロール インスタンス全体で集計されます。 集計されたデータは 10 日後に消去されます。
 
-詳細監視を有効にすると、集計された監視データはストレージ アカウントのテーブルに保存されます。 ロールの詳細監視を有効にするには、ストレージ アカウントにリンクする診断接続文字列を構成する必要があります。 異なるロールには異なるストレージ アカウントを使用できます。
+## <a name="basic-monitoring"></a>ベーシックな監視機能
 
-詳細監視を有効にすると、データ ストレージ、データ転送、およびストレージ トランザクションに関連したストレージ コストが増加します。 最小監視の場合、ストレージ アカウントは不要です。 最小監視レベルで公開されるメトリック用のデータは、監視レベルを詳細に設定した場合でも、ストレージ アカウントには保存されません。
+最初のセクションで説明したように、クラウド サービスはベーシックな監視データをホスト仮想マシンから自動的に収集します。 このデータには、CPU 使用率、ネットワーク入出力、ディスクの読み取り/書き込みが含まれています。 収集された監視データは、Azure ポータルで、クラウド サービスの概要ページとメトリック ページに自動的に表示されます。 
 
-## <a name="how-to-configure-monitoring-for-cloud-services"></a>How to: クラウド サービスの監視の構成
-以下の手順を使用して、Azure クラシック ポータルで詳細監視または最小監視を構成します。 
+ベーシックな監視機能では、ストレージ アカウントは不要です。 
 
-### <a name="before-you-begin"></a>開始する前に
-* 監視データを保存する "*従来の*" ストレージ アカウントを作成します。 異なるロールには異なるストレージ アカウントを使用できます。 詳細については、[ストレージ アカウントの作成方法](../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するページをご覧ください。
-* クラウド サービス ロールの Azure 診断を有効にします。 「 [デプロイ前にクラウド サービス プロジェクトで診断を有効にする](cloud-services-dotnet-diagnostics.md)」を参照してください。
+![ベーシックなクラウド サービス監視のタイル](media/cloud-services-how-to-monitor/basic-tiles.png)
 
-診断接続文字列がロール構成にあることを確認します。 Azure 診断を有効にして、ロール構成に診断接続文字列を含めるまで、詳細監視を有効にすることはできません。   
+## <a name="advanced-monitoring"></a>高度な監視
 
-> [!NOTE]
-> Azure SDK 2.5 を対象とするプロジェクトでは、診断接続文字列はプロジェクト テンプレートに自動的に組み込まれませんでした。 これらのプロジェクトでは、ロール構成に診断接続文字列を手動で追加する必要があります。
-> 
-> 
+高度な監視では、監視対象のロールで Azure 診断拡張機能 (および必要に応じて Application Insights SDK) が使用されます。 診断拡張機能は、(ロールごとに) 構成ファイル **diagnostics.wadcfgx** を使用して、監視する診断メトリックを構成します。 Azure 診断拡張機能が収集するデータは、**.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)、[.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) の各ファイルに構成された Azure ストレージ アカウントに格納されます。 つまり、高度な監視機能には追加のコストが伴います。
 
-**ロール構成に診断接続文字列を手動で追加するには**
+ロールが作成されるたびに、Visual Studio が Azure 診断拡張機能をロールに追加します。 この拡張機能は、次の種類の情報を収集できます。
 
-1. Visual Studio でクラウド サービス プロジェクトを開きます。
-2. **[ロール]** をダブルクリックしてロール デザイナーを開き、**[設定]** タブを選択します
-3. **Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString**という名前の設定を探します。 
-4. この設定が存在しない場合は、**[設定の追加]** ボタンをクリックして設定を構成に追加し、新しい設定の種類を **ConnectionString** に変更します
-5. [ **...** ] ボタンをクリックして、接続文字列の値を設定します。 表示されるダイアログ ボックスで、ストレージ アカウントを選択できます。
-   
-    ![Visual Studio の設定](./media/cloud-services-how-to-monitor/CloudServices_Monitor_VisualStudioDiagnosticsConnectionString.png)
+* カスタム パフォーマンス カウンター
+* アプリケーション ログ
+* Windows イベント ログ
+* .NET イベント ソース
+* IIS ログ
+* マニフェスト ベースの ETW
+* クラッシュ ダンプ
+* カスタム エラー ログ
 
-### <a name="to-change-the-monitoring-level-to-verbose-or-minimal"></a>監視レベルを詳細または最小に変更するには
-1. [Azure クラシック ポータル](https://manage.windowsazure.com/)で、クラウド サービス デプロイの **[構成]** ページを開きます。
-2. **[レベル]** で、**[詳細]** または **[最小]** をクリックします。 
-3. **[保存]**をクリックします。
+これらすべてのデータがストレージ アカウントに集計されますが、データのグラフを作成するポータル固有の方法は用意されていません。 Application Insights など他のサービスを使用すると、データを関連付けて表示することができます。
 
-詳細監視を有効にした後、1 時間以内に Azure クラシック ポータルに監視データが表示され始めます。
+### <a name="use-application-insights"></a>Application Insights を使用する
 
-生のパフォーマンス カウンター データと集計した監視データは、ストレージ アカウントのテーブルに保存され、テーブル名はロールのデプロイ ID で修飾されます。 
+Visual Studio からクラウド サービスを発行するときに、診断データを Application Insights に送信するオプションが提供されます。 その時点で Application Insights のリソースを作成したり、データを既存のリソースに送信したりすることができます。 クラウド サービスの可用性、パフォーマンス、障害、および使用状況を Application Insights で監視できます。 カスタム グラフを Application Insights に追加して、自分にとって最も重要なデータを確認できます。 ロール インスタンス データは、クラウド サービス プロジェクトで Application Insights SDK を使用して収集できます。 Application Insights を統合する方法について詳しくは、[クラウド サービス向けの Application Insights](../application-insights/app-insights-cloudservices.md) に関する記事をご覧ください。
 
-## <a name="how-to-receive-alerts-for-cloud-service-metrics"></a>How to: クラウド サービスのメトリックに関するアラートの受信
-クラウド サービスの監視メトリックに基づいてアラートを受け取ることができます。 Azure クラシック ポータルの **[管理サービス]** ページで、選択したメトリックが指定した値に達したときにアラートをトリガーするルールを作成できます。 アラートがトリガーされたときに電子メールが送信されるように指定することもできます。 詳細については、「 [方法: Azure でアラート通知を受け取り、アラート ルールを管理する](http://go.microsoft.com/fwlink/?LinkId=309356)」を参照してください。
+Application Insights を使用すると、Windows Azure 診断拡張機能で指定したパフォーマンス カウンター (および他の設定) を表示できますが、さらに高度な機能は worker ロールおよび web ロールに Application Insights SDK を統合した場合のみ得られます。
 
-## <a name="how-to-add-metrics-to-the-metrics-table"></a>How to: メトリック テーブルへのメトリックの追加
-1. [Azure クラシック ポータル](http://manage.windowsazure.com/)で、クラウド サービスの **[監視]** ページを開きます。
-   
-    既定で、メトリック テーブルには使用可能なメトリックのサブセットが表示されます。 図はクラウド サービス用の既定の詳細メトリックを示しています。これは "メモリ/利用可能な MB" パフォーマンス カウンターに限定されており、データはロール レベルで集計されます。 **[メトリックの追加]** を使用して、Azure クラシック ポータルで監視する追加の集計とロール レベル メトリックを選択します。
-   
-    ![詳細表示](./media/cloud-services-how-to-monitor/CloudServices_DefaultVerboseDisplay.png)
-2. メトリック テーブルにメトリックを追加するには、以下の手順を実行します。
-   
-   1. **[メトリックの追加]** をクリックすると、下図のような **[メトリックの選択]** ダイアログ ボックスが開きます。
-      
-       最初に利用可能なメトリックはデプロイされ、利用可能なオプションが表示されています。 メトリックごとに、一番上のオプションはすべてのロールの集計監視データを表示します。 さらに、データを表示する個々のロールを選択することもできます。
-      
-       ![メトリックの追加](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics.png)
-   2. 表示するメトリックを選択するには、以下を実行します。
-      
-      * メトリックの横にある下向き矢印をクリックして、監視オプションをデプロイします。
-      * 表示する各監視オプションのチェック ボックスをオンにします。
-        
-        メトリック テーブルには最大 50 個のメトリックを表示できます。
-        
-        > [!TIP]
-        > 詳細監視の場合、メトリック一覧に数十個のメトリックが表示されることがあります。 スクロールバーを表示するには、ダイアログ ボックスの右側をポイントします。 一覧を絞り込むには、検索アイコンをクリックして、下図の検索ボックスにテキストを入力します。
-        > 
-        > 
-        
-        ![[メトリックの追加] の検索](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png)
-3. メトリックの選択が終了したら [OK] (チェックマーク) をクリックします。
-   
-    下図のように、選択したメトリックがメトリック テーブルに追加されます。
-   
-    ![監視メトリック](./media/cloud-services-how-to-monitor/CloudServices_Monitor_UpdatedMetrics.png)
-4. メトリック テーブルからメトリックを削除するには、メトリックをクリックして選択し、**[メトリックの削除]** をクリックします  (**[メトリックの削除]** が表示されるのは、メトリックを選択しているときだけです)。
 
-### <a name="to-add-custom-metrics-to-the-metrics-table"></a>メトリック テーブルにカスタム メトリックを追加するには
-**詳細** 監視レベルは、ポータルで監視可能な既定のメトリックのリストを提供します。 これらに加えて、ポータルを使用してアプリケーションで定義されているカスタム メトリックまたはパフォーマンス カウンターを監視できます。
+## <a name="add-advanced-monitoring"></a>高度な監視機能を追加する
 
-以下の手順では、**詳細**監視レベルを有効にしてあり、カスタム パフォーマンス カウンターを収集して転送するようにアプリケーションを構成しているものとします。 
+まず、**クラシック** ストレージ アカウントがない場合は、[作成します](../storage/common/storage-create-storage-account.md#create-a-storage-account)。 ストレージ アカウントが**クラシック デプロイメント モデル**を指定して作成されたことを確認します。
 
-ポータルでカスタム パフォーマンス カウンターを表示するには、wad-control-container の構成を更新する必要があります。
+次は、**ストレージ アカウント (クラシック)** リソースに移動します。 **[設定]** > **[アクセス キー]** を選択し、**[プライマリ接続文字列]** の値をコピーします。 クラウド サービスではこの値が必要です。 
 
-1. 診断ストレージ アカウントで wad-control-container BLOB を開きます。 これを行うには、Visual Studio または他の記憶域エクスプローラーを使用できます。
-   
-    ![Visual Studio のサーバー エクスプローラー](./media/cloud-services-how-to-monitor/CloudServices_Monitor_VisualStudioBlobExplorer.png)
-2. **DeploymentId/RoleName/RoleInstance** のパターンを使用して BLOB のパス内を移動し、ロール インスタンスの構成を検索します。 
-   
-    ![Visual Studio のストレージ エクスプローラー](./media/cloud-services-how-to-monitor/CloudServices_Monitor_VisualStudioStorage.png)
-3. ロール インスタンスの構成ファイルをダウンロードし、更新してカスタム パフォーマンス カウンターを追加します。 たとえば、"*C ドライブ*" の *Disk Write Bytes/sec* を監視するには、**PerformanceCounters\Subscriptions** ノードの下に次のコードを追加します。
-   
-    ```xml
-    <PerformanceCounterConfiguration>
-    <CounterSpecifier>\LogicalDisk(C:)\Disk Write Bytes/sec</CounterSpecifier>
-    <SampleRateInSeconds>180</SampleRateInSeconds>
-    </PerformanceCounterConfiguration>
-    ```
-4. 変更を保存し、同じ場所に構成ファイルをアップロードして、BLOB 内の既存のファイルを上書きします。
-5. Azure クラシック ポータルの構成で詳細モードに切り替えます。 既に詳細モードにしてあった場合は、いったん最小に切り替えてから詳細に戻す必要があります。
-6. [ **メトリックの追加** ] ダイアログ ボックスでカスタム パフォーマンス カウンターを使用できるようになります。 
+高度な診断機能を有効にするには、**ServiceDefinition.csdef** と **ServiceConfiguration.cscfg** の 2 つの構成ファイルを変更する必要があります。 通常、**.cscfg** ファイルは 2 つあります。Azure へのデプロイのための **ServiceConfiguration.cloud.cscfg** と、ローカル デバッグ デプロイに使用される **ServiceConfiguration.local.cscfg** です。 これらの両方を変更します。
 
-## <a name="how-to-customize-the-metrics-chart"></a>How to: メトリック チャートのカスタマイズ
-1. メトリック テーブルで、メトリック チャートにプロットするメトリックを最大 6 個選択します。 メトリックを選択するには、メトリックの左側にあるチェック ボックスをオンにします。 メトリック チャートからメトリックを削除するには、メトリック テーブルのチェック ボックスをオフにします。
-   
-    メトリック テーブルでメトリックを選択すると、そのメトリックがメトリック チャートに追加されます。 幅の狭い画面では、 **[残り n 項目]** ドロップダウン リストに、画面におさまりきらなかったメトリックのヘッダーが表示されます。
-2. 相対値 (最終値は各メトリックにだけ) と絶対値 (Y 軸を表示) の表示を切り替えるには、チャートの上部で [相対] または [絶対] をクリックします。
-   
-    ![相対または絶対](./media/cloud-services-how-to-monitor/CloudServices_Monitor_RelativeAbsolute.png)
-3. メトリック チャートに表示する期間を変更するには、チャートの上部で 1 時間、24 時間、または 7 日を選択します。
-   
-    ![監視の表示期間](./media/cloud-services-how-to-monitor/CloudServices_Monitor_DisplayPeriod.png)
-   
-    ダッシュボードのメトリック チャートでは、メトリックのプロット方法が異なります。 メトリックの標準セットが使用でき、メトリックのヘッダーを選択することでメトリックを追加または削除できます。
+**ServiceDefinition.csdef** ファイルでは、高度な診断機能を使用する各ロールに `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` という新しい設定を追加します。 この値は新しいプロジェクトを作成したときに Visual Studio によってファイルに追加されます。 この値がない場合はここで追加することができます。 
 
-### <a name="to-customize-the-metrics-chart-on-the-dashboard"></a>ダッシュボードでメトリック チャートをカスタマイズするには
-1. クラウド サービスのダッシュボードを開きます。
-2. チャートのメトリックを追加または削除します。
-   
-   * 新しいメトリックをプロットするには、チャートのヘッダー部でメトリックのチェック ボックスをオンにします。 幅の狭い画面では、**[ *n* ??metrics]\(n 個のメトリック\)** ボックスの横にある下向き矢印をクリックして、チャートのヘッダー部に表示できないメトリックをプロットします。
-   * チャートにプロットされているメトリックを削除するには、そのヘッダーにあるチェック ボックスをオフにします。
-   
-3. **[相対]** 表示と **[絶対]** 表示を切り替えます。
-4. 表示するデータの期間を 1 時間、24 時間、または 7 日に設定します。
-
-## <a name="how-to-access-verbose-monitoring-data-outside-the-azure-classic-portal"></a>方法: Azure クラシック ポータルの外部で詳細監視データにアクセスする
-詳細監視データは、各ロールに指定したストレージ アカウントのテーブルに保存されます。 クラウド サービス デプロイごとに、ロールに対して 6 つのテーブルが作成されます。 間隔 (5 分、1 時間、および 12 時間) のそれぞれにテーブルが 2 つ作成されます。 片方のテーブルはロール レベルの集計を保存し、もう片方のテーブルはロール インスタンスごとの集計を保存します。 
-
-テーブル名は次の形式です。
-
-```
-WAD*deploymentID*PT*aggregation_interval*[R|RI]Table
+```xml
+<ServiceDefinition name="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
+  <WorkerRole name="WorkerRoleWithSBQueue1" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
 
-各値の説明:
+これにより、すべての **ServiceConfiguration.cscfg** ファイルに追加する必要がある新しい設定が定義されます。 各 **.cscfg** ファイルを開いて変更します。 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` という設定を追加します。 値は、クラシック ストレージ アカウントの**プライマリ接続文字列**または`UseDevelopmentStorage=true` (開発用コンピューターのローカル ストレージを使用する場合) に設定します。
 
-* *deploymentID* は、クラウド サービス デプロイに割り当てた GUID です。
-* *aggregation_interval* = 5M、1H、または 12H
-* ロール レベルの集計 = R
-* ロール インスタンスの集計 = RI
+```xml
+<ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="WorkerRoleWithSBQueue1">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mystorage;AccountKey=KWwkdfmskOIS240jnBOeeXVGHT9QgKS4kIQ3wWVKzOYkfjdsjfkjdsaf+sddfwwfw+sdffsdafda/w==" />
 
-たとえば、次のテーブルには 1 時間間隔で集計された詳細監視データが保存されます。
-
+<!-- or use the local development machine for storage
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+-->
 ```
-WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRTable (hourly aggregations for the role)
 
-WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
-```
+## <a name="next-steps"></a>次の手順
+
+- [クラウド サービスでの Application Insights について学ぶ](../application-insights/app-insights-cloudservices.md)
+

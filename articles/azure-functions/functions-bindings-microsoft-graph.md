@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions における Microsoft Graph のバインド | Microsoft Docs"
+title: "Azure Functions における Microsoft Graph のバインド"
 description: "Azure Functions で Microsoft Graph のトリガーとバインドを使用する方法について説明します。"
 services: functions
 author: mattchenderson
@@ -9,48 +9,45 @@ ms.service: functions
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: dd7bcd57260b9763eabb9b4c915d9ff46e79e931
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 63b94c0a9b77a3f3a6fd394a130bf8f132d51369
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/04/2018
 ---
-# <a name="azure-functions-microsoft-graph-bindings"></a>Azure Functions における Microsoft Graph のバインド
+# <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
-この記事では、Azure Functions で Microsoft Graph のトリガーとバインドを構成および操作する方法について説明します。
-これらと Azure Functions を使用して、[Microsoft Graph](https://graph.microsoft.io) からのデータ、分析情報、およびイベントを処理できます。
+この記事では、Azure Functions で Microsoft Graph のトリガーとバインドを構成および操作する方法について説明します。 これらと Azure Functions を使用して、[Microsoft Graph](https://graph.microsoft.io) からのデータ、分析情報、およびイベントを処理できます。
 
 Microsoft Graph の拡張機能には、次のバインドが用意されています。
 - [認証トークンの入力バインド](#token-input)では、任意の Microsoft Graph API とやり取りできます。
 - [Excel テーブルの入力バインド](#excel-input)では、Excel からデータを読み取れます。
 - [Excel テーブルの出力バインド](#excel-output)では、Excel データを変更できます。
-- [OneDrive ファイルの入力バインド](#onedrive-input)では、OneDrive からファイルを読み取れます。
+- [OneDrive ファイルの入力バインド](#onedrive-input)では、OneDrive からファイルを読み取ることができます。
 - [OneDrive ファイルの出力バインド](#onedrive-output)では、OneDrive のファイルに書き込むことができます。
 - [Outlook メッセージの出力バインド](#outlook-output)では、Outlook で電子メールを送信できます。
 - [Microsoft Graph の webhook トリガーとバインド](#webhooks)のコレクションを使用すると、Microsoft Graph からのイベントに応答できます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-> [!Note] 
+> [!Note]
 > Microsoft Graph のバインドは、現在プレビューの段階です。
 
 ## <a name="setting-up-the-extensions"></a>拡張機能の設定
 
-Microsoft Graph のバインドは、_バインド拡張機能_から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法について説明します。
+Microsoft Graph のバインドは、_バインド拡張機能_から入手できます。 バインド拡張機能は、Azure Functions ランタイム向けのオプション コンポーネントです。 このセクションでは、Microsoft Graph と認証トークンの拡張機能を設定する方法を示します。
 
 ### <a name="enabling-functions-20-preview"></a>Functions 2.0 プレビューを有効にする
 
 バインド拡張機能は、Azure Functions 2.0 プレビューでのみ使用できます。 
 
-[!INCLUDE [functions-set-runtime-version](../../includes/functions-set-runtime-version.md)]
-
-詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](functions-versions.md)」を参照してください。
+Functions ランタイムのプレビュー版の 2.0 バージョンを使用するように関数アプリを設定する方法については、「[バージョン 2.0 ランタイムをターゲットにする](functions-versions.md#target-the-version-20-runtime)」をご覧ください。
 
 ### <a name="installing-the-extension"></a>拡張機能のインストール
 
-Azure Portal から拡張機能をインストールするには、それを参照するテンプレートまたはバインドのいずれかに移動する必要があります。 新しい関数を作成し、[テンプレートの選択] 画面で、"Microsoft Graph" のシナリオを選択します。 このシナリオからテンプレートを 1 つ選択します。 または、既存の関数の [統合] タブに移動して、このトピックで説明するバインドを 1 つ選択できます。
+Azure Portal から拡張機能をインストールするには、それを参照するテンプレートまたはバインドのいずれかに移動します。 新しい関数を作成し、[テンプレートの選択] 画面で、"Microsoft Graph" のシナリオを選択します。 このシナリオからテンプレートを 1 つ選択します。 または、既存の関数の [統合] タブに移動して、この記事で説明するバインドを 1 つ選択できます。
 
 どちらの場合も、インストールする拡張機能の指定に関する警告が表示されます。 **[インストール]** をクリックして拡張機能を取得します。
 
@@ -61,49 +58,41 @@ Visual Studio を使用している場合は、次の NuGet パッケージを�
 - [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/)
 - [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/)
 
-### <a name="configuring-app-service-authentication--authorization"></a>App Service の認証および承認の構成
+### <a name="configuring-authentication--authorization"></a>認証と承認の構成
 
-このトピックで説明するバインドでは、ID を使用する必要があります。 これにより、Microsoft Graph でアクセス許可と監査の相互作用を適用できます。 ID には、アプリケーションにアクセスするユーザー、またはアプリケーションそのものを指定できます。 この ID を構成するには、Azure Active Directory で [App Service の認証および承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)を設定する必要があります。 また、関数で必要なリソースのアクセス許可を要求する必要があります。
+この記事で説明するバインドでは、ID を使用する必要があります。 これにより、Microsoft Graph でアクセス許可と監査の相互作用を適用できます。 ID には、アプリケーションにアクセスするユーザー、またはアプリケーションそのものを指定できます。 この ID を構成するには、Azure Active Directory で [App Service の認証と承認](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview)を設定します。 また、関数で必要なリソースのアクセス許可を要求する必要があります。
 
 > [!Note] 
-> Microsoft Graph の拡張機能は、AAD 認証のみをサポートします。 ユーザーは、職場または学校のアカウントでログインする必要があります。
+> Microsoft Graph の拡張機能は、Azure AD 認証のみをサポートします。 ユーザーは、職場または学校のアカウントでログインする必要があります。
 
-Azure Portal を使用している場合、拡張機能のインストールを求めるメッセージの下に、App Service の認証および承認の構成と、テンプレートまたはバインドで必要なアクセス許可の要求を求める警告が表示されます。 必要に応じて、**[AAD を今すぐ構成]** または **[アクセス許可を今すぐ追加]** をクリックします。
-
-
-
+Azure Portal を使用している場合は、拡張機能のインストールを求めるプロンプトの下に警告が表示されます。 この警告では、App Service の認証および承認の構成と、テンプレートまたはバインドで必要なアクセス許可の要求が求められます。 必要に応じて、**[Configure Azure AD now]\(Azure AD を今すぐ構成\)** または **[アクセス許可を今すぐ追加]** をクリックします。
 
 
 
 <a name="token-input"></a>
-## <a name="auth-token-input-binding"></a>認証トークンの入力バインド
+## <a name="auth-token"></a>認証トークン
 
-このバインドは、特定のリソースに対する AAD トークンを取得し、コードに文字列として表示します。 アプリケーションがアクセス許可を持つ任意のリソースを指定できます。 
+認証トークンの入力バインドは、特定のリソースに対する Azure AD トークンを取得し、コードに文字列として表示します。 アプリケーションがアクセス許可を持つ任意のリソースを指定できます。 
 
-### <a name="configuring-an-auth-token-input-binding"></a>認証トークンの入力バインドの構成
+このセクションには、次のようにいくつかのサブセクションがあります。
 
-バインド自体には AAD のアクセス許可は必要ありませんが、トークンの使用方法によっては、追加のアクセス許可を要求する必要がある場合があります。 トークンを使用してアクセスするリソースの要件を確認してください。
+* [例](#auth-token---example)
+* [属性](#auth-token---attributes)
+* [構成](#auth-token---configuration)
+* [使用方法](#auth-token---usage)
 
-バインドでは以下のプロパティがサポートされています。
+### <a name="auth-token---example"></a>認証トークン - 例
 
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - 認証トークンの関数コードで使用される変数名。 「[コードから認証トークンの入力バインドを使用する](#token-input-code)」をご覧ください。|
-|**type**|必須 - `token` に設定する必要があります。|
-|**direction**|必須 - `in` に設定する必要があります。|
-|**identity**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
-|**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
-|**userToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**resource**|必須 - トークンが要求される AAD リソース URL です。|
+言語固有の例をご覧ください。
 
-<a name="token-input-code"></a>
-### <a name="using-an-auth-token-input-binding-from-code"></a>コードから認証トークンの入力バインドを使用する
+* [C# スクリプト (.csx)](#auth-token---c-script-example)
+* [JavaScript](#auth-token---javascript-example)
 
-トークンは、常に文字列としてコードに表示されます。
+#### <a name="auth-token---c-script-example"></a>認証トークン - C# スクリプトの例
 
-#### <a name="sample-getting-user-profile-information"></a>例: ユーザー プロファイル情報の取得
+次の例では、ユーザー プロファイル情報を取得します。
 
-トークンの入力バインドを使用して HTTP トリガーを定義する、次の function.json があるとします。
+*function.json* ファイルは、トークンの入力バインドを使用して HTTP トリガーを定義します。
 
 ```json
 {
@@ -130,7 +119,7 @@ Azure Portal を使用している場合、拡張機能のインストールを�
 }
 ```
 
-次の C# のサンプルでは、トークンを使用して Microsoft Graph への HTTP 呼び出しを行い、結果を返します。
+C# スクリプト コードは、トークンを使用して Microsoft Graph への HTTP 呼び出しを行い、結果を返します。
 
 ```csharp
 using System.Net; 
@@ -145,7 +134,38 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 }
 ```
 
-次の JS サンプルでは、トークンを使用して Microsoft Graph への HTTP 呼び出しを行い、結果を返します。 上記の `function.json` で、まず `$return` を `res` に変更します。
+#### <a name="auth-token---javascript-example"></a>認証トークン - JavaScript の例
+
+次の例では、ユーザー プロファイル情報を取得します。
+
+*function.json* ファイルは、トークンの入力バインドを使用して HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "token",
+      "direction": "in",
+      "name": "graphToken",
+      "resource": "https://graph.microsoft.com",
+      "identity": "userFromRequest"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript スクリプト コードは、トークンを使用して Microsoft Graph への HTTP 呼び出しを行い、結果を返します。
 
 ```js
 const rp = require('request-promise');
@@ -177,47 +197,56 @@ module.exports = function (context, req) {
 };
 ```
 
+### <a name="auth-token---attributes"></a>認証トークン - 属性
+
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) で定義されている [Token](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) 属性を使用します。
+
+### <a name="auth-token---configuration"></a>認証トークン - 構成
+
+次の表は、*function.json* ファイルと `Token` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - 認証トークンの関数コードで使用される変数名。 「[コードから認証トークンの入力バインドを使用する](#token-input-code)」をご覧ください。|
+|**type**||必須 - `token` に設定する必要があります。|
+|**direction**||必須 - `in` に設定する必要があります。|
+|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
+|**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
+|**リソース**|**resource**|必須 - トークンが要求される Azure AD リソース URL です。|
+
+<a name="token-input-code"></a>
+### <a name="auth-token---usage"></a>認証トークン - 使用方法
+
+バインド自体には Azure AD のアクセス許可は必要ありませんが、トークンの使用方法によっては、追加のアクセス許可を要求する必要がある場合があります。 トークンを使用してアクセスするリソースの要件を確認してください。
+
+トークンは、常に文字列としてコードに表示されます。
 
 
 
 
 <a name="excel-input"></a>
-## <a name="excel-table-input-binding"></a>Excel テーブルの入力バインド
+## <a name="excel-input"></a>Excel の入力
 
-このバインドは、OneDrive に格納されている Excel テーブルの内容を読み取ります。
+Excel テーブルの入力バインドは、OneDrive に格納されている Excel テーブルの内容を読み取ります。
 
-### <a name="configuring-an-excel-table-input-binding"></a>Excel テーブルの入力バインドの構成
+このセクションには、次のようにいくつかのサブセクションがあります。
 
-このバインドには、AAD の次のアクセス許可が必要です。
-|リソース|アクセス許可|
-|--------|--------|
-|Microsoft Graph|ユーザー ファイルの読み取り|
+* [例](#excel-input---example)
+* [属性](#excel-input---attributes)
+* [構成](#excel-input---configuration)
+* [使用方法](#excel-input---usage)
 
-バインドでは以下のプロパティがサポートされています。
+### <a name="excel-input---example"></a>Excel の入力 - example
 
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - Excel テーブルの関数コードで使用される変数名。 「[コードから Excel テーブルの入力バインドを使用する](#excel-input-code)」をご覧ください。|
-|**type**|必須 - `excel` に設定する必要があります。|
-|**direction**|必須 - `in` に設定する必要があります。|
-|**identity**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
-|**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
-|**userToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|必須 - OneDrive での Excel ブックへのパスです。|
-|**worksheetName**|テーブルが検出されたワークシートです。|
-|**tableName**|テーブルの名前。 指定しないと、ワークシートの内容が使用されます。|
+言語固有の例をご覧ください。
 
-<a name="excel-input-code"></a>
-### <a name="using-an-excel-table-input-binding-from-code"></a>コードから Excel テーブルの入力バインドを使用する
+* [C# スクリプト (.csx)](#excel-input---c-script-example)
+* [JavaScript](#excel-input---javascript-example)
 
-バインドは、.NET 関数に次の種類を公開します。
-- string[][]
-- Microsoft.Graph.WorkbookTable
-- カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
+#### <a name="excel-input---c-script-example"></a>Excel の入力 - C# スクリプトの例
 
-#### <a name="sample-reading-an-excel-table"></a>例: Excel テーブルの読み取り
-
-Excel の入力バインドを使用して HTTP トリガーを定義する、次の function.json があるとします。
+次の *function.json* ファイルは、Excel の入力バインドを使用して HTTP トリガーを定義します。
 
 ```json
 {
@@ -246,7 +275,7 @@ Excel の入力バインドを使用して HTTP トリガーを定義する、�
 }
 ```
 
-次の C# のサンプルでは、指定したテーブルの内容を読み取って、ユーザーに返します。
+次の C# スクリプト コードは、指定したテーブルの内容を読み取って、ユーザーに返します。
 
 ```csharp
 using System.Net;
@@ -259,7 +288,38 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, Trac
 }
 ```
 
-次の JS のサンプルでは、指定したテーブルの内容を読み取って、ユーザーに返します。 上記の `function.json` で、まず `$return` を `res` に変更します。
+#### <a name="excel-input---javascript-example"></a>Excel の入力 - JavaScript の例
+
+次の *function.json* ファイルは、Excel の入力バインドを使用して HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "excel",
+      "direction": "in",
+      "name": "excelTableData",
+      "path": "{query.workbook}",
+      "identity": "UserFromRequest",
+      "tableName": "{query.table}"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+次の JavaScript スクリプト コードは、指定したテーブルの内容を読み取って、ユーザーに返します。
 
 ```js
 module.exports = function (context, req) {
@@ -270,45 +330,72 @@ module.exports = function (context, req) {
 };
 ```
 
-<a name="excel-output"></a>
-## <a name="excel-table-output-binding"></a>Excel テーブルの出力バインド
+### <a name="excel-input---attributes"></a>Excel の入力 - 属性
 
-このバインドは、OneDrive に格納されている Excel テーブルの内容を変更します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) で定義されている [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) 属性を使用します。
 
-### <a name="configuring-an-excel-table-output-binding"></a>Excel テーブルの出力バインドの構成
+### <a name="excel-input---configuration"></a>Excel の入力 - 構成
 
-このバインドには、AAD の次のアクセス許可が必要です。
+次の表は、*function.json* ファイルと `Excel` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - Excel テーブルの関数コードで使用される変数名。 「[コードから Excel テーブルの入力バインドを使用する](#excel-input-code)」をご覧ください。|
+|**type**||必須 - `excel` に設定する必要があります。|
+|**direction**||必須 - `in` に設定する必要があります。|
+|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
+|**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
+|**path**|**パス**|必須 - OneDrive での Excel ブックへのパスです。|
+|**worksheetName**|**WorksheetName**|テーブルが検出されたワークシートです。|
+|**tableName**|**TableName**|テーブルの名前。 指定しないと、ワークシートの内容が使用されます。|
+
+<a name="excel-input-code"></a>
+### <a name="excel-input---usage"></a>Excel の入力 - 使用方法
+
+このバインドには、Azure AD の次のアクセス許可が必要です。
 |リソース|アクセス許可|
 |--------|--------|
-|Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
-
-バインドでは以下のプロパティがサポートされています。
-
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - 認証トークンの関数コードで使用される変数名。 「[コードから Excel テーブルの出力バインドを使用する](#excel-output-code)」をご覧ください。|
-|**type**|必須 - `excel` に設定する必要があります。|
-|**direction**|必須 - `out` に設定する必要があります。|
-|**identity**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
-|**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
-|**userToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|必須 - OneDrive での Excel ブックへのパスです。|
-|**worksheetName**|テーブルが検出されたワークシートです。|
-|**tableName**|テーブルの名前。 指定しないと、ワークシートの内容が使用されます。|
-|**updateType**|必須 - テーブルに対して行われる変更の種類です。 次のいずれかの値を指定できます。<ul><li><code>update</code> - OneDrive 内のテーブルの内容を置き換えます。</li><li><code>append</code> - 新しい行を作成することで、OneDrive 内のテーブルの末尾にペイロードを追加します。</li></ul>|
-
-<a name="excel-output-code"></a>
-### <a name="using-an-excel-table-output-binding-from-code"></a>コードから Excel テーブルの出力バインドを使用する
+|Microsoft Graph|ユーザー ファイルの読み取り|
 
 バインドは、.NET 関数に次の種類を公開します。
 - string[][]
-- Newtonsoft.Json.Linq.JObject
 - Microsoft.Graph.WorkbookTable
 - カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
 
-#### <a name="sample-adding-rows-to-an-excel-table"></a>例: Excel テーブルへの行の追加
 
-Excel の出力バインドを使用して HTTP トリガーを定義する、次の function.json があるとします。
+
+
+
+
+
+
+
+
+<a name="excel-output"></a>
+## <a name="excel-output"></a>Excel の出力
+
+Excel の出力バインドは、OneDrive に格納されている Excel テーブルの内容を変更します。
+
+このセクションには、次のようにいくつかのサブセクションがあります。
+
+* [例](#excel-output---example)
+* [属性](#excel-output---attributes)
+* [構成](#excel-output---configuration)
+* [使用方法](#excel-output---usage)
+
+### <a name="excel-output---example"></a>Excel の出力 - 例
+
+言語固有の例をご覧ください。
+
+* [C# スクリプト (.csx)](#excel-output---c-script-example)
+* [JavaScript](#excel-output---javascript-example)
+
+#### <a name="excel-output---c-script-example"></a>Excel の出力 - C# スクリプトの例
+
+次の例では、Excel テーブルに行を追加します。
+
+*function.json* ファイルは、Excel の出力バインドを使用して HTTP トリガーを定義します。
 
 ```json
 {
@@ -338,8 +425,7 @@ Excel の出力バインドを使用して HTTP トリガーを定義する、�
 }
 ```
 
-
-次の C# のサンプルでは、クエリ文字列からの入力に基づいて、テーブル (列が 1 つであると仮定) に新しい行を追加します。
+C# スクリプト コードは、クエリ文字列からの入力に基づいて、テーブル (列が 1 つであると仮定) に新しい行を追加します。
 
 ```csharp
 using System.Net;
@@ -358,7 +444,41 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 }
 ```
 
-次の JS のサンプルでは、クエリ文字列からの入力に基づいて、テーブル (列が 1 つであると仮定) に新しい行を追加します。 上記の `function.json` で、まず `$return` を `res` に変更します。
+#### <a name="excel-output---javascript-example"></a>Excel の出力 - JavaScript の例
+
+次の例では、Excel テーブルに行を追加します。
+
+*function.json* ファイルは、Excel の出力バインドを使用して HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "newExcelRow",
+      "type": "excel",
+      "direction": "out",
+      "identity": "userFromRequest",
+      "updateType": "append",
+      "path": "{query.workbook}",
+      "tableName": "{query.table}"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+次の JavaScript スクリプト コードは、クエリ文字列からの入力に基づいて、テーブル (列が 1 つであると仮定) に新しい行を追加します。
 
 ```js
 module.exports = function (context, req) {
@@ -370,45 +490,69 @@ module.exports = function (context, req) {
 };
 ```
 
+### <a name="excel-output---attributes"></a>Excel の出力 - 属性
+
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) で定義されている [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) 属性を使用します。
+
+### <a name="excel-output---configuration"></a>Excel の出力 - 構成
+
+次の表は、*function.json* ファイルと `Excel` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - 認証トークンの関数コードで使用される変数名。 「[コードから Excel テーブルの出力バインドを使用する](#excel-output-code)」をご覧ください。|
+|**type**||必須 - `excel` に設定する必要があります。|
+|**direction**||必須 - `out` に設定する必要があります。|
+|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**UserId** |**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
+|**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
+|**path**|**パス**|必須 - OneDrive での Excel ブックへのパスです。|
+|**worksheetName**|**WorksheetName**|テーブルが検出されたワークシートです。|
+|**tableName**|**TableName**|テーブルの名前。 指定しないと、ワークシートの内容が使用されます。|
+|**updateType**|**UpdateType**|必須 - テーブルに対して行われる変更の種類です。 次のいずれかの値を指定できます。<ul><li><code>update</code> - OneDrive 内のテーブルの内容を置き換えます。</li><li><code>append</code> - 新しい行を作成することで、OneDrive 内のテーブルの末尾にペイロードを追加します。</li></ul>|
+
+<a name="excel-output-code"></a>
+### <a name="excel-output---usage"></a>Excel の出力 - 使用方法
+
+このバインドには、Azure AD の次のアクセス許可が必要です。
+|リソース|アクセス許可|
+|--------|--------|
+|Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
+
+バインドは、.NET 関数に次の種類を公開します。
+- string[][]
+- Newtonsoft.Json.Linq.JObject
+- Microsoft.Graph.WorkbookTable
+- カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
+
+
 
 
 
 <a name="onedrive-input"></a>
-## <a name="onedrive-file-input-binding"></a>OneDrive ファイルの入力バインド
+## <a name="file-input"></a>ファイルの入力
 
-このバインドは、OneDrive に格納されているファイルの内容を読み取ります。
+OneDrive ファイルの入力バインドは、OneDrive に格納されているファイルの内容を読み取ります。
 
-### <a name="configuring-a-onedrive-file-input-binding"></a>OneDrive ファイルの入力バインドの構成
+このセクションには、次のようにいくつかのサブセクションがあります。
 
-このバインドには、AAD の次のアクセス許可が必要です。
-|リソース|アクセス許可|
-|--------|--------|
-|Microsoft Graph|ユーザー ファイルの読み取り|
+* [例](#file-input---example)
+* [属性](#file-input---attributes)
+* [構成](#file-input---configuration)
+* [使用方法](#file-input---usage)
 
-バインドでは以下のプロパティがサポートされています。
+### <a name="file-input---example"></a>ファイルの入力 - 例
 
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの入力バインドを使用する](#onedrive-input-code)」をご覧ください。|
-|**type**|必須 - `onedrive` に設定する必要があります。|
-|**direction**|必須 - `in` に設定する必要があります。|
-|**identity**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
-|**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
-|**userToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|必須 - OneDrive でのファイルへのパスです。|
+言語固有の例をご覧ください。
 
-<a name="onedrive-input-code"></a>
-### <a name="using-a-onedrive-file-input-binding-from-code"></a>コードから OneDrive ファイルの入力バインドを使用する
+* [C# スクリプト (.csx)](#file-input---c-script-example)
+* [JavaScript](#file-input---javascript-example)
 
-バインドは、.NET 関数に次の種類を公開します。
-- byte[]
-- ストリーム
-- string
-- Microsoft.Graph.DriveItem
+#### <a name="file-input---c-script-example"></a>ファイルの入力 - C# スクリプトの例
 
-#### <a name="sample-reading-a-file-from-onedrive"></a>例: OneDrive からのファイルの読み取り
+次の例では、OneDrive に格納されているファイルを読み取ります。
 
-OneDrive の入力バインドを使用して HTTP トリガーを定義する、次の function.json があるとします。
+*function.json* ファイルは、OneDrive ファイルの入力バインドを使用して HTTP トリガーを定義します。
 
 ```json
 {
@@ -436,7 +580,7 @@ OneDrive の入力バインドを使用して HTTP トリガーを定義する�
 }
 ```
 
-次の C# のサンプルでは、クエリ文字列で指定されたファイルを読み取って、その長さをログに記録します。
+C# スクリプト コードは、クエリ文字列で指定されたファイルを読み取って、その長さをログに記録します。
 
 ```csharp
 using System.Net;
@@ -447,7 +591,39 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, TraceWrite
 }
 ```
 
-次の JS のサンプルでは、クエリ文字列で指定されたファイルを読み取って、その長さを返します。 上記の `function.json` で、まず `$return` を `res` に変更します。
+#### <a name="file-input---javascript-example"></a>ファイルの入力 - JavaScript の例
+
+次の例では、OneDrive に格納されているファイルを読み取ります。
+
+*function.json* ファイルは、OneDrive ファイルの入力バインドを使用して HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myOneDriveFile",
+      "type": "onedrive",
+      "direction": "in",
+      "path": "{query.filename}",
+      "identity": "userFromRequest"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+次の JavaScript コードは、クエリ文字列で指定されたファイルを読み取って、その長さを返します。
 
 ```js
 module.exports = function (context, req) {
@@ -458,43 +634,67 @@ module.exports = function (context, req) {
 };
 ```
 
+### <a name="file-input---attributes"></a>ファイルの入力 - 属性
 
-<a name="onedrive-output"></a>
-## <a name="onedrive-file-output-binding"></a>OneDrive ファイルの出力バインド
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) で定義されている [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) 属性を使用します。
 
-このバインドは、OneDrive に格納されているファイルの内容を変更します。
+### <a name="file-input---configuration"></a>ファイルの入力 - 構成
 
-### <a name="configuring-a-onedrive-file-output-binding"></a>OneDrive ファイルの出力バインドの構成
+次の表は、*function.json* ファイルと `OneDrive` 属性で設定したバインド構成のプロパティを説明しています。
 
-このバインドには、AAD の次のアクセス許可が必要です。
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの入力バインドを使用する](#onedrive-input-code)」をご覧ください。|
+|**type**||必須 - `onedrive` に設定する必要があります。|
+|**direction**||必須 - `in` に設定する必要があります。|
+|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
+|**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
+|**path**|**パス**|必須 - OneDrive でのファイルへのパスです。|
+
+<a name="onedrive-input-code"></a>
+### <a name="file-input---usage"></a>ファイルの入力 - 使用方法
+
+このバインドには、Azure AD の次のアクセス許可が必要です。
 |リソース|アクセス許可|
 |--------|--------|
-|Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
-
-バインドでは以下のプロパティがサポートされています。
-
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの出力バインドを使用する](#onedrive-output-code)」をご覧ください。|
-|**type**|必須 - `onedrive` に設定する必要があります。|
-|**direction**|必須 - `out` に設定する必要があります。|
-|**identity**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
-|**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
-|**userToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**path**|必須 - OneDrive でのファイルへのパスです。|
-
-<a name="onedrive-output-code"></a>
-### <a name="using-a-onedrive-file-output-binding-from-code"></a>コードから OneDrive ファイルの出力バインドを使用する
+|Microsoft Graph|ユーザー ファイルの読み取り|
 
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- string
+- 文字列
 - Microsoft.Graph.DriveItem
 
-#### <a name="sample-writing-to-a-file-in-onedrive"></a>例: OneDrive 内のファイルへの書き込み
 
-OneDrive の出力バインドを使用して HTTP トリガーを定義する、次の function.json があるとします。
+
+
+
+
+<a name="onedrive-output"></a>
+## <a name="file-output"></a>ファイルの出力
+
+OneDrive ファイルの出力バインドは、OneDrive に格納されているファイルの内容を読み取ります。
+
+このセクションには、次のようにいくつかのサブセクションがあります。
+
+* [例](#file-output---example)
+* [属性](#file-output---attributes)
+* [構成](#file-output---configuration)
+* [使用方法](#file-output---usage)
+
+### <a name="file-output---example"></a>ファイルの出力 - 例
+
+言語固有の例をご覧ください。
+
+* [C# スクリプト (.csx)](#file-output---c-script-example)
+* [JavaScript](#file-output---javascript-example)
+
+#### <a name="file-output---c-script-example"></a>ファイルの出力 - C# スクリプトの例
+
+次の例では、OneDrive に格納されているファイルに書き込みます。
+
+*function.json* ファイルは、OneDrive の出力バインドを使用して HTTP トリガーを定義します。
 
 ```json
 {
@@ -522,7 +722,7 @@ OneDrive の出力バインドを使用して HTTP トリガーを定義する�
 }
 ```
 
-次の C# のサンプルでは、クエリ文字列からテキストを取得し、呼び出し元の OneDrive のルートにあるテキスト ファイル (上記の構成で FunctionsTest.txt と定義されている) にそれを書き込みます。
+C# スクリプト コードは、クエリ文字列からテキストを取得し、呼び出し元の OneDrive のルートにあるテキスト ファイル (前の例で FunctionsTest.txt と定義されている) にそれを書き込みます。
 
 ```csharp
 using System.Net;
@@ -537,7 +737,40 @@ public static async Task Run(HttpRequest req, TraceWriter log, Stream myOneDrive
     return;
 }
 ```
-次の JS のサンプルでは、クエリ文字列からテキストを取得し、呼び出し元の OneDrive のルートにあるテキスト ファイル (上記の構成で FunctionsTest.txt と定義されている) にそれを書き込みます。 上記の `function.json` で、まず `$return` を `res` に変更します。
+
+#### <a name="file-output---javascript-example"></a>ファイルの出力 - JavaScript の例
+
+次の例では、OneDrive に格納されているファイルに書き込みます。
+
+*function.json* ファイルは、OneDrive の出力バインドを使用して HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myOneDriveFile",
+      "type": "onedrive",
+      "direction": "out",
+      "path": "FunctionsTest.txt",
+      "identity": "userFromRequest"
+    },
+    {
+      "name": "res",
+      "type": "http",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードは、クエリ文字列からテキストを取得し、呼び出し元の OneDrive のルートにあるテキスト ファイル (上記の構成で FunctionsTest.txt と定義されている) にそれを書き込みます。
 
 ```js
 module.exports = function (context, req) {
@@ -546,43 +779,66 @@ module.exports = function (context, req) {
 };
 ```
 
+### <a name="file-output---attributes"></a>ファイルの出力 - 属性
+
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) で定義されている [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) 属性を使用します。
+
+### <a name="file-output---configuration"></a>ファイルの出力 - 構成
+
+次の表は、*function.json* ファイルと `OneDrive` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの出力バインドを使用する](#onedrive-output-code)」をご覧ください。|
+|**type**||必須 - `onedrive` に設定する必要があります。|
+|**direction**||必須 - `out` に設定する必要があります。|
+|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**UserId** |**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
+|**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
+|**path**|**パス**|必須 - OneDrive でのファイルへのパスです。|
+
+<a name="onedrive-output-code"></a>
+#### <a name="file-output---usage"></a>ファイルの出力 - 使用方法
+
+このバインドには、Azure AD の次のアクセス許可が必要です。
+|リソース|アクセス許可|
+|--------|--------|
+|Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
+
+バインドは、.NET 関数に次の種類を公開します。
+- byte[]
+- ストリーム
+- 文字列
+- Microsoft.Graph.DriveItem
+
+
+
 
 
 <a name="outlook-output"></a>
-## <a name="outlook-message-output-binding"></a>Outlook メッセージの出力バインド
+## <a name="outlook-output"></a>Outlook の出力
 
-Outlook でメール メッセージを送信します。
+Outlook メッセージの出力バインドは、Outlook でメール メッセージを送信します。
 
-### <a name="configuring-an-outlook-message-output-binding"></a>Outlook メッセージの出力バインドの構成
+このセクションには、次のようにいくつかのサブセクションがあります。
 
-このバインドには、AAD の次のアクセス許可が必要です。
-|リソース|アクセス許可|
-|--------|--------|
-|Microsoft Graph|ユーザーとしてのメールの送信|
+* [例](#outlook-output---example)
+* [属性](#outlook-output---attributes)
+* [構成](#outlook-output---configuration)
+* [使用方法](#outlook-outnput---usage)
 
-バインドでは以下のプロパティがサポートされています。
+### <a name="outlook-output---example"></a>Outlook の出力 - 例
 
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
-|**type**|必須 - `outlook` に設定する必要があります。|
-|**direction**|必須 - `out` に設定する必要があります。|
-|**identity**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
-|**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
-|**userToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
+言語固有の例をご覧ください。
 
-<a name="outlook-output-code"></a>
-### <a name="using-an-outlook-message-output-binding-from-code"></a>コードから Outlook メッセージの出力バインドを使用する
+* [C# スクリプト (.csx)](#outlook-output---c-script-example)
+* [JavaScript](#outlook-output---javascript-example)
 
-バインドは、.NET 関数に次の種類を公開します。
-- Microsoft.Graph.Message
-- Newtonsoft.Json.Linq.JObject
-- string
-- カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
+#### <a name="outlook-output---c-script-example"></a>Outlook の出力 - C# スクリプトの例
 
-#### <a name="sample-sending-an-email-through-outlook"></a>例: Outlook で電子メールを送信する
+次の例では、Outlook で電子メールを送信します。
 
-Outlook メッセージの出力バインドを使用して HTTP トリガーを定義する、次の function.json があるとします。
+*function.json* ファイルは、Outlook メッセージの出力バインドを使用して HTTP トリガーを定義します。
 
 ```json
 {
@@ -603,7 +859,7 @@ Outlook メッセージの出力バインドを使用して HTTP トリガーを
 }
 ```
 
-次の C# のサンプルでは、クエリ文字列で指定された受信者に、呼び出し元からメールが送信されます。
+C# スクリプト コードでは、クエリ文字列で指定された受信者に、呼び出し元からメールが送信されます。
 
 ```csharp
 using System.Net;
@@ -632,7 +888,32 @@ public class Recipient {
 }
 ```
 
-次の JS のサンプルでは、クエリ文字列で指定された受信者に、呼び出し元からメールが送信されます。
+#### <a name="outlook-output---javascript-example"></a>Outlook の出力 - JavaScript の例
+
+次の例では、Outlook で電子メールを送信します。
+
+*function.json* ファイルは、Outlook メッセージの出力バインドを使用して HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "message",
+      "type": "outlook",
+      "direction": "out",
+      "identity": "userFromRequest"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードでは、クエリ文字列で指定された受信者に、呼び出し元からメールが送信されます。
 
 ```js
 module.exports = function (context, req) {
@@ -647,175 +928,80 @@ module.exports = function (context, req) {
 };
 ```
 
+### <a name="outlook-output---attributes"></a>Outlook の出力 - 属性
+
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) で定義されている [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) 属性を使用します。
+
+### <a name="outlook-output---configuration"></a>Outlook の出力 - 構成
+
+次の表は、*function.json* ファイルと `Outlook` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
+|**type**||必須 - `outlook` に設定する必要があります。|
+|**direction**||必須 - `out` に設定する必要があります。|
+|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
+|**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
+
+<a name="outlook-output-code"></a>
+### <a name="outlook-output---usage"></a>Outlook の出力 - 使用方法
+
+このバインドには、Azure AD の次のアクセス許可が必要です。
+|リソース|アクセス許可|
+|--------|--------|
+|Microsoft Graph|ユーザーとしてのメールの送信|
+
+バインドは、.NET 関数に次の種類を公開します。
+- Microsoft.Graph.Message
+- Newtonsoft.Json.Linq.JObject
+- 文字列
+- カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
 
 
 
 
-<a name="webhooks"></a>
-## <a name="microsoft-graph-webhook-bindings"></a>Microsoft Graph の webhook バインド
 
-Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_の作成、更新、および対応のための関数が必要です。 Webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
+
+## <a name="webhooks"></a>Webhook
+
+Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_の作成、更新、および対応のための関数が必要です。 webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
 - [Microsoft Graph の webhook トリガー](#webhook-trigger)を使用すると、受信した webhook に応答できます。
 - [Microsoft Graph webhook サブスクリプションの入力バインド](#webhook-input)を使用すると、既存のサブスクリプションを一覧表示し、必要に応じて更新できます。
 - [Microsoft Graph webhook サブスクリプションの出力バインド](#webhook-output)を使用すると、webhook サブスクリプションを作成または削除できます。
 
-バインド自体には AAD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions#permissions)をご覧ください。
+バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions#permissions)をご覧ください。
 
-Webhook について詳しくは、「[Microsoft Graph の Webhooks での作業]」をご覧ください。
-
-
+webhook について詳しくは、「[Microsoft Graph の Webhooks での作業]」をご覧ください。
 
 
 
-<a name="webhook-trigger"></a>
-### <a name="microsoft-graph-webhook-trigger"></a>Microsoft Graph の webhook トリガー
-
-このトリガーを使用すると、関数は、Microsoft Graph から受信した webhook に応答できます。 このトリガーの各インスタンスは、それぞれ Microsoft Graph リソースの 1 つの種類に応答できます。
-
-#### <a name="configuring-a-microsoft-graph-webhook-trigger"></a>Microsoft Graph webhook トリガーの構成
-
-バインドでは以下のプロパティがサポートされています。
-
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
-|**type**|必須 - `graphWebhook` に設定する必要があります。|
-|**direction**|必須 - `trigger` に設定する必要があります。|
-|**resourceType**|必須 - この関数が webhook に応答する必要がある、グラフ リソースです。 次のいずれかの値を指定できます。<ul><li><code>#Microsoft.Graph.Message</code> - Outlook メッセージに行われた変更です。</li><li><code>#Microsoft.Graph.DriveItem</code> - OneDrive ルート項目に行われた変更です。</li><li><code>#Microsoft.Graph.Contact - changes made to personal contacts in Outlook.</code></li><li><code>#Microsoft.Graph.Event - changes made to Outlook calendar items.</code></li></ul>|
-
-> [!Note]
-> 関数アプリは、指定された `resourceType` 値に対して登録されている関数を、1 つだけ持つことができます。
-
-#### <a name="using-a-microsoft-graph-webhook-trigger-from-code"></a>コードから Microsoft Graph webhook トリガーを使用する
-
-バインドは、.NET 関数に次の種類を公開します。
-- リソースの種類に関連がある、Microsoft Graph の SDK の種類 (例: Microsoft.Graph.Message、Microsoft.Graph.DriveItem)
-- カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
-
-このバインドのコードでの使用例については、「[Microsoft Graph の webhook サンプル](#webhook-samples)」をご覧ください。
 
 
+## <a name="webhook-trigger"></a>webhook トリガー
 
-<a name="webhook-input"></a>
-### <a name="microsoft-graph-webhook-subscription-input-binding"></a>Microsoft Graph webhook サブスクリプションの入力バインド
+Microsoft Graph webhook トリガーを使用すると、関数は、Microsoft Graph から受信した webhook に応答できます。 このトリガーの各インスタンスは、それぞれ Microsoft Graph リソースの 1 つの種類に応答できます。
 
-このバインドを使用すると、この関数アプリで管理されているサブスクリプションの一覧を取得できます。 バインドは関数アプリの記憶域から読み取りを行いますが、アプリの外部から作成されたその他のサブスクリプションは反映されません。
+このセクションには、次のようにいくつかのサブセクションがあります。
 
-#### <a name="configuring-a-microsoft-graph-webhook-subscription-input-binding"></a>Microsoft Graph webhook サブスクリプションの入力バインドの構成
+* [例](#webhook-trigger---example)
+* [属性](#webhook-trigger---attributes)
+* [構成](#webhook-trigger---configuration)
+* [使用方法](#webhook-trigger---usage)
 
-バインドでは以下のプロパティがサポートされています。
+### <a name="webhook-trigger---example"></a>webhook トリガー - 例
 
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
-|**type**|必須 - `graphWebhookSubscription` に設定する必要があります。|
-|**direction**|必須 - `in` に設定する必要があります。|
-|**filter**| `userFromRequest` に設定すると、バインドは呼び出し元のユーザーが所有するサブスクリプションのみを取得します ([HTTP トリガー]でのみ有効)。| 
+言語固有の例をご覧ください。
 
-#### <a name="using-a-microsoft-graph-webhook-subscription-input-binding-from-code"></a>コードから Microsoft Graph webhook サブスクリプションの入力バインドを使用する
+* [C# スクリプト (.csx)](#webhook-trigger---c-script-example)
+* [JavaScript](#webhook-trigger---javascript-example)
 
-バインドは、.NET 関数に次の種類を公開します。
-- string[]
-- カスタム オブジェクトの種類の配列
-- Newtonsoft.Json.Linq.JObject[]
-- Microsoft.Graph.Subscription[]
+#### <a name="webhook-trigger---c-script-example"></a>webhook トリガー - C# スクリプトの例
 
-このバインドのコードでの使用例については、「[Microsoft Graph の webhook サンプル](#webhook-samples)」をご覧ください。
+次の例では、Outlook の受信メッセージの webhook を処理します。 webhook トリガーを使用するには、[サブスクリプションを作成](#webhook-output---example)し、期限切れにならないように[サブスクリプションを更新](#webhook-subscription-refresh)します。
 
-
-<a name="webhook-output"></a>
-### <a name="microsoft-graph-webhook-subscription-output-binding"></a>Microsoft Graph webhook サブスクリプションの出力バインド
-
-このバインドを使用すると、Microsoft Graph で webhook サブスクリプションを作成、削除、および更新できます。
-
-#### <a name="configuring-a-microsoft-graph-webhook-subscription-output-binding"></a>Microsoft Graph webhook サブスクリプションの出力バインドの構成
-
-バインドでは以下のプロパティがサポートされています。
-
-|プロパティ|説明|
-|--------|--------|
-|**name**|必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
-|**type**|必須 - `graphWebhookSubscription` に設定する必要があります。|
-|**direction**|必須 - `out` に設定する必要があります。|
-|**identity**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
-|**userId** |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
-|**userToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
-|**action**|必須 - バインドが実行する必要があるアクションを指定します。 次のいずれかの値を指定できます。<ul><li><code>create</code> - 新しいサブスクリプションを登録します。</li><li><code>delete</code> - 指定したサブスクリプションを削除します。</li><li><code>refresh</code> - 指定したサブスクリプションが期限切れにならないように更新します。</li></ul>|
-|**subscriptionResource**|_action_ が `create` に設定された場合にのみ必要です。 変更を監視する Microsoft Graph リソースを指定します。 「[Microsoft Graph の Webhooks での作業]」をご覧ください。 |
-|**changeType**|_action_ が `create` に設定された場合にのみ必要です。 サブスクライブしているリソースで、通知が表示される変更の種類を表します。 サポートされる値は `created`、`updated`、`deleted` です。 コンマ区切りのリストを使用して複数の値を組み合わせることができます。|
-
-#### <a name="using-a-microsoft-graph-webhook-subscription-output-binding-from-code"></a>コードから Microsoft Graph webhook サブスクリプションの出力バインドを使用する
-
-バインドは、.NET 関数に次の種類を公開します。
-- string
-- Microsoft.Graph.Subscription
-
-このバインドのコードでの使用例については、「[Microsoft Graph の webhook サンプル](#webhook-samples)」をご覧ください。
- 
-<a name="webhook-samples"></a>
-### <a name="microsoft-graph-webhook-samples"></a>Microsoft Graph の webhook サンプル
-
-#### <a name="sample-creating-a-subscription"></a>例: サブスクリプションの作成
-
-作成アクションを使用し、サブスクリプションの出力バインドで HTTP トリガーを定義する、次の function.json があるとします。
-
-```json
-{
-  "bindings": [
-    {
-      "name": "req",
-      "type": "httpTrigger",
-      "direction": "in"
-    },
-    {
-      "type": "graphwebhook",
-      "name": "clientState",
-      "direction": "out",
-      "action": "create",
-      "listen": "me/mailFolders('Inbox')/messages",
-      "changeTypes": [
-        "created"
-      ],
-      "identity": "userFromRequest"
-    },
-    {
-      "type": "http",
-      "name": "$return",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-次の C# のサンプルでは、呼び出し元のユーザーが Outlook メッセージを受信するとこの関数アプリに通知する、webhook を登録します。
-
-```csharp
-using System;
-using System.Net;
-
-public static HttpResponseMessage run(HttpRequestMessage req, out string clientState, TraceWriter log)
-{
-  log.Info("C# HTTP trigger function processed a request.");
-    clientState = Guid.NewGuid().ToString();
-    return new HttpResponseMessage(HttpStatusCode.OK);
-}
-```
-
-次の JS のサンプルでは、呼び出し元のユーザーが Outlook メッセージを受信するとこの関数アプリに通知する、webhook を登録します。
-
-```js
-const uuidv4 = require('uuid/v4');
-
-module.exports = function (context, req) {
-    context.bindings.clientState = uuidv4();
-    context.done();
-};
-```
-
-#### <a name="sample-handling-notifications"></a>例: 通知の処理
-
-Outlook メッセージを処理するための、Graph の webhook トリガーを定義する、次の function.json があるとします。
+*function.json* ファイルは、webhook トリガーを定義します。
 
 ```json
 {
@@ -831,7 +1017,7 @@ Outlook メッセージを処理するための、Graph の webhook トリガー
 }
 ```
 
-次の C# のサンプルでは、受信メール メッセージに応答し、受信者によって送信された、件名に "Azure Functions" が含まれるメール メッセージの本文がログに記録されます。
+C# スクリプト コードでは、受信メール メッセージに応答し、受信者によって送信された、件名に "Azure Functions" が含まれるメール メッセージの本文がログに記録されます。
 
 ```csharp
 #r "Microsoft.Graph"
@@ -849,7 +1035,27 @@ public static async Task Run(Message msg, TraceWriter log)
 }
 ```
 
-次の JS のサンプルでは、受信メール メッセージに応答し、受信者によって送信された、件名に "Azure Functions" が含まれるメール メッセージの本文がログに記録されます。
+#### <a name="webhook-trigger---javascript-example"></a>webhook トリガー - JavaScript の例
+
+次の例では、Outlook の受信メッセージの webhook を処理します。 webhook トリガーを使用するには、[サブスクリプションを作成](#webhook-output---example)して、期限切れにならないように[サブスクリプションを更新](#webhook-subscription-refresh)します。
+
+*function.json* ファイルは、webhook トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "GraphWebhookTrigger",
+      "direction": "in",
+      "resourceType": "#Microsoft.Graph.Message"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードでは、受信メール メッセージに応答し、受信者によって送信された、件名に "Azure Functions" が含まれるメール メッセージの本文がログに記録されます。
 
 ```js
 module.exports = function (context) {
@@ -863,9 +1069,57 @@ module.exports = function (context) {
 };
 ```
 
-#### <a name="sample-deleting-subscriptions"></a>例: サブスクリプションの削除
+### <a name="webhook-trigger---attributes"></a>webhook トリガー - 属性
 
-削除アクションを使用し、サブスクリプションの入力バインドおよびサブスクリプションの出力バインドで HTTP トリガーを定義する、次の function.json があるとします。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) で定義されている [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) 属性を使用します。
+
+### <a name="webhook-trigger---configuration"></a>webhook トリガー - 構成
+
+次の表は、*function.json* ファイルと `GraphWebHookTrigger` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
+|**type**||必須 - `graphWebhook` に設定する必要があります。|
+|**direction**||必須 - `trigger` に設定する必要があります。|
+|**resourceType**|**ResourceType**|必須 - この関数が webhook に応答する必要がある、グラフ リソースです。 次のいずれかの値を指定できます。<ul><li><code>#Microsoft.Graph.Message</code> - Outlook メッセージに行われた変更です。</li><li><code>#Microsoft.Graph.DriveItem</code> - OneDrive ルート項目に行われた変更です。</li><li><code>#Microsoft.Graph.Contact</code> - Outlook の個人用連絡先に行われた変更です。</li><li><code>#Microsoft.Graph.Event</code> - Outlook の予定表アイテムに行われた変更です。</li></ul>|
+
+> [!Note]
+> 関数アプリは、指定された `resourceType` 値に対して登録されている関数を、1 つだけ持つことができます。
+
+### <a name="webhook-trigger---usage"></a>webhook トリガー - 使用方法
+
+バインドは、.NET 関数に次の種類を公開します。
+- リソースの種類に関連がある、Microsoft Graph の SDK の種類 (`Microsoft.Graph.Message`、`Microsoft.Graph.DriveItem` など)
+- カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
+
+
+
+
+<a name="webhook-input"></a>
+## <a name="webhook-input"></a>webhook の入力
+
+Microsoft Graph webhook の入力バインドを使用すると、この関数アプリで管理されているサブスクリプションの一覧を取得できます。 バインドは関数アプリの記憶域から読み取りを行うため、アプリの外部から作成されたその他のサブスクリプションは反映されません。
+
+このセクションには、次のようにいくつかのサブセクションがあります。
+
+* [例](#webhook-input---example)
+* [属性](#webhook-input---attributes)
+* [構成](#webhook-input---configuration)
+* [使用方法](#webhook-input---usage)
+
+### <a name="webhook-input---example"></a>webhook の入力 - 例
+
+言語固有の例をご覧ください。
+
+* [C# スクリプト (.csx)](#webhook-input---c-script-example)
+* [JavaScript](#webhook-input---javascript-example)
+
+#### <a name="webhook-input---c-script-example"></a>webhook の入力 - C# スクリプトの例
+
+次の例では、呼び出し元のユーザーのすべてのサブスクリプションを取得し、それらを削除します。
+
+*function.json* ファイルは、サブスクリプションの入力バインドと、削除アクションを使用するサブスクリプションの出力バインドを使用して、HTTP トリガーを定義します。
 
 ```json
 {
@@ -898,7 +1152,7 @@ module.exports = function (context) {
 }
 ```
 
-次の C# のサンプルでは、呼び出し元のユーザーのすべてのサブスクリプションを取得した後に、それらを削除します。
+C# スクリプト コードは、サブスクリプションを取得し、それらを削除します。
 
 ```csharp
 using System.Net;
@@ -914,7 +1168,44 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 }
 ```
 
-次の JS のサンプルでは、呼び出し元のユーザーのすべてのサブスクリプションを取得した後に、それらを削除します。
+#### <a name="webhook-input---javascript-example"></a>webhook の入力 - JavaScript の例
+
+次の例では、呼び出し元のユーザーのすべてのサブスクリプションを取得し、それらを削除します。
+
+*function.json* ファイルは、サブスクリプションの入力バインドと、削除アクションを使用するサブスクリプションの出力バインドを使用して、HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "graphWebhookSubscription",
+      "name": "existingSubscriptions",
+      "direction": "in",
+      "filter": "userFromRequest"
+    },
+    {
+      "type": "graphWebhookSubscription",
+      "name": "subscriptionsToDelete",
+      "direction": "out",
+      "action": "delete",
+      "identity": "userFromRequest"
+    },
+    {
+      "type": "http",
+      "name": "res",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードは、サブスクリプションを取得した後に、それらを削除します。
 
 ```js
 module.exports = function (context, req) {
@@ -929,17 +1220,200 @@ module.exports = function (context, req) {
 };
 ```
 
-#### <a name="sample-refreshing-subscriptions"></a>例: サブスクリプションの更新
+### <a name="webhook-input---attributes"></a>webhook の入力 - 属性
+
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) で定義されている [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) 属性を使用します。
+
+### <a name="webhook-input---configuration"></a>webhook の入力 - 構成
+
+次の表は、*function.json* ファイルと `GraphWebHookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
+|**type**||必須 - `graphWebhookSubscription` に設定する必要があります。|
+|**direction**||必須 - `in` に設定する必要があります。|
+|**filter**|**Filter**| `userFromRequest` に設定すると、バインドは呼び出し元のユーザーが所有するサブスクリプションのみを取得します ([HTTP トリガー]でのみ有効)。| 
+
+### <a name="webhook-input---usage"></a>webhook の入力 - 使用方法
+
+バインドは、.NET 関数に次の種類を公開します。
+- string[]
+- カスタム オブジェクトの種類の配列
+- Newtonsoft.Json.Linq.JObject[]
+- Microsoft.Graph.Subscription[]
+
+
+
+
+
+## <a name="webhook-output"></a>webhook の出力
+
+webhook サブスクリプションの出力バインドを使用すると、Microsoft Graph で webhook サブスクリプションを作成、削除、および更新できます。
+
+このセクションには、次のようにいくつかのサブセクションがあります。
+
+* [例](#webhook-output---example)
+* [属性](#webhook-output---attributes)
+* [構成](#webhook-output---configuration)
+* [使用方法](#webhook-output---usage)
+
+### <a name="webhook-output---example"></a>webhook の出力 - 例
+
+言語固有の例をご覧ください。
+
+* [C# スクリプト (.csx)](#webhook-output---c-script-example)
+* [JavaScript](#webhook-output---javascript-example)
+
+#### <a name="webhook-output---c-script-example"></a>webhook の出力 - C# スクリプトの例
+
+次の例では、サブスクリプションを作成します。 期限切れにならないように[サブスクリプションを更新](#webhook-subscription-refresh)できます。
+
+*function.json* ファイルは、作成アクションを使用するサブスクリプションの出力バインドを使用して、HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "graphwebhook",
+      "name": "clientState",
+      "direction": "out",
+      "action": "create",
+      "listen": "me/mailFolders('Inbox')/messages",
+      "changeTypes": [
+        "created"
+      ],
+      "identity": "userFromRequest"
+    },
+    {
+      "type": "http",
+      "name": "$return",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+C# スクリプト コードは、呼び出し元のユーザーが Outlook メッセージを受信するとこの関数アプリに通知する、webhook を登録します。
+
+```csharp
+using System;
+using System.Net;
+
+public static HttpResponseMessage run(HttpRequestMessage req, out string clientState, TraceWriter log)
+{
+  log.Info("C# HTTP trigger function processed a request.");
+    clientState = Guid.NewGuid().ToString();
+    return new HttpResponseMessage(HttpStatusCode.OK);
+}
+```
+
+#### <a name="webhook-output---javascript-example"></a>webhook の出力 - JavaScript の例
+
+次の例では、サブスクリプションを作成します。 期限切れにならないように[サブスクリプションを更新](#webhook-subscription-refresh)できます。
+
+*function.json* ファイルは、作成アクションを使用するサブスクリプションの出力バインドを使用して、HTTP トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in"
+    },
+    {
+      "type": "graphwebhook",
+      "name": "clientState",
+      "direction": "out",
+      "action": "create",
+      "listen": "me/mailFolders('Inbox')/messages",
+      "changeTypes": [
+        "created"
+      ],
+      "identity": "userFromRequest"
+    },
+    {
+      "type": "http",
+      "name": "$return",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードは、呼び出し元のユーザーが Outlook メッセージを受信するとこの関数アプリに通知する、webhook を登録します。
+
+```js
+const uuidv4 = require('uuid/v4');
+
+module.exports = function (context, req) {
+    context.bindings.clientState = uuidv4();
+    context.done();
+};
+```
+
+### <a name="webhook-output---attributes"></a>webhook の出力 - 属性
+
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) で定義されている [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) 属性を使用します。
+
+### <a name="webhook-output---configuration"></a>webhook の出力 - 構成
+
+次の表は、*function.json* ファイルと `GraphWebHookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**name**||必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
+|**type**||必須 - `graphWebhookSubscription` に設定する必要があります。|
+|**direction**||必須 - `out` に設定する必要があります。|
+|**identity**|**ID**|必須 - 操作を実行するために使用する ID です。 次のいずれかの値を指定できます。<ul><li><code>userFromRequest</code> - [HTTP トリガー]でのみ有効です。 呼び出し元ユーザーの ID を使用します。</li><li><code>userFromId</code> - 指定された ID を使用して以前ログインしたユーザーの ID を使用します。 <code>userId</code> プロパティをご覧ください。</li><li><code>userFromToken</code> - 指定したトークンによって表される ID を使用します。 <code>userToken</code> プロパティをご覧ください。</li><li><code>clientCredentials</code> - 関数アプリの ID を使用します。</li></ul>|
+|**userId**|**UserId**  |_identity_ が `userFromId` に設定された場合にのみ必要です。 以前ログインしたユーザーに関連付けられたユーザー プリンシパル ID です。|
+|**userToken**|**UserToken**|_identity_ が `userFromToken` に設定された場合にのみ必要です。 関数アプリの有効なトークンです。 |
+|**action**|**アクション**|必須 - バインドが実行する必要があるアクションを指定します。 次のいずれかの値を指定できます。<ul><li><code>create</code> - 新しいサブスクリプションを登録します。</li><li><code>delete</code> - 指定したサブスクリプションを削除します。</li><li><code>refresh</code> - 指定したサブスクリプションが期限切れにならないように更新します。</li></ul>|
+|**subscriptionResource**|**SubscriptionResource**|_action_ が `create` に設定された場合にのみ必要です。 変更を監視する Microsoft Graph リソースを指定します。 「[Microsoft Graph の Webhooks での作業]」をご覧ください。 |
+|**changeType**|**ChangeType**|_action_ が `create` に設定された場合にのみ必要です。 サブスクライブしているリソースで、通知が表示される変更の種類を表します。 サポートされる値は `created`、`updated`、`deleted` です。 コンマ区切りのリストを使用して複数の値を組み合わせることができます。|
+
+### <a name="webhook-output---usage"></a>webhook の出力 - 使用方法
+
+バインドは、.NET 関数に次の種類を公開します。
+- 文字列
+- Microsoft.Graph.Subscription
+
+
+
+
+<a name="webhook-examples"></a>
+## <a name="webhook-subscription-refresh"></a>webhook サブスクリプションの更新
 
 サブスクリプションを更新するには、次の 2 つの方法があります。
+
 - アプリケーション ID を使用して、すべてのアプリケーションを処理します。 この場合、Azure Active Directory 管理者から同意を得る必要があります。この方法は、Azure Functions でサポートされているすべての言語で使用できます。
 - 各ユーザー ID を手動でバインドすることで、各サブスクリプションに関連付けられている ID を使用します。 この場合、バインドを実行するためにカスタム コードが必要になります。 この方法は、.NET 関数でのみ使用できます。
 
-次に両方の方法について説明します。
+このセクションでは、それぞれの方法の例を示します。
 
-**アプリケーション ID を使用する**
+* [アプリケーション ID の例](#webhook-subscription-refresh---app-identity-example)
+* [ユーザー ID の例](#webhook-subscription-refresh---user-identity-example)
 
-アプリケーション ID を使用して、サブスクリプションの入力バインドおよびサブスクリプションの出力バインドでタイマー トリガーを定義する、次の function.json があるとします。
+### <a name="webhook-subscription-refresh---app-identity-example"></a>webhook サブスクリプションの更新 - アプリケーション ID の例
+
+言語固有の例をご覧ください。
+
+* [C# スクリプト (.csx)](#app-identity-refresh---c-script-example)
+* [JavaScript](#app-identity-refresh---javascript-example)
+
+### <a name="app-identity-refresh---c-script-example"></a>アプリケーション ID の更新 - C# スクリプトの例
+
+次の例では、アプリケーション ID を使用してサブスクリプションを更新します。
+
+*function.json* ファイルは、サブスクリプションの入力バインドとサブスクリプションの出力バインドを使用して、タイマー トリガーを定義します。
 
 ```json
 {
@@ -967,7 +1441,7 @@ module.exports = function (context, req) {
 }
 ```
 
-次の C# のサンプルでは、アプリケーション ID を使用して、タイマー上のサブスクリプションを更新します。
+C# スクリプト コードは、サブスクリプションを更新します。
 
 ```csharp
 using System;
@@ -985,7 +1459,39 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 }
 ```
 
-次の JS のサンプルでは、アプリケーション ID を使用して、タイマー上のサブスクリプションを更新します。
+### <a name="app-identity-refresh---c-script-example"></a>アプリケーション ID の更新 - C# スクリプトの例
+
+次の例では、アプリケーション ID を使用してサブスクリプションを更新します。
+
+*function.json* ファイルは、サブスクリプションの入力バインドとサブスクリプションの出力バインドを使用して、タイマー トリガーを定義します。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 * * */2 * *"
+    },
+    {
+      "type": "graphWebhookSubscription",
+      "name": "existingSubscriptions",
+      "direction": "in"
+    },
+    {
+      "type": "graphWebhookSubscription",
+      "name": "subscriptionsToRefresh",
+      "direction": "out",
+      "action": "refresh",
+      "identity": "clientCredentials"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript コードは、サブスクリプションを更新します。
 
 ```js
 // This template uses application permissions and requires consent from an Azure Active Directory admin.
@@ -1003,9 +1509,11 @@ module.exports = function (context) {
 };
 ```
 
-**動的なユーザー ID を使用する**
+### <a name="webhook-subscription-refresh---user-identity-example"></a>webhook サブスクリプションの更新 - ユーザー ID の例
 
-代替オプションとしては、関数コードに対するサブスクリプションの入力バインドへのバインドを延期して、タイマー トリガーを定義する、次の function.json があるとします。
+次の例では、ユーザー ID を使用してサブスクリプションを更新します。
+
+*function.json* ファイルは、タイマー トリガーを定義し、関数コードへのサブスクリプションの入力バインドを延期します。
 
 ```json
 {
@@ -1026,7 +1534,8 @@ module.exports = function (context) {
 }
 ```
 
-次の C# のサンプルでは、出力バインドをコードで作成することで、各ユーザーの ID を使用して、タイマー上のサブスクリプションを更新します。
+C# スクリプト コードは、各ユーザーの ID を使用してサブスクリプションを更新し、出力バインドをコードで作成します。
+
 ```csharp
 using System;
 
@@ -1057,12 +1566,10 @@ public class UserSubscription {
 }
 ```
 
-
-
-[HTTP トリガー]: functions-bindings-http-webhook.md
-[Microsoft Graph の Webhooks での作業]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
+
+[HTTP トリガー]: functions-bindings-http-webhook.md
+[Microsoft Graph の Webhooks での作業]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks

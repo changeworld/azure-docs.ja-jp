@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: 7d5252cab8c6238126c802b8c6a5293bb448e65e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -135,6 +135,10 @@ storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウ�
 mdsdHttpProxy | (省略可能) 指定されたストレージ アカウントとエンドポイントに拡張機能が接続するために必要な HTTP プロキシ情報。
 sinksConfig | (省略可能) メトリックとイベントの配信が可能な代替宛先の詳細。 拡張機能でサポートされている各データ シンクの詳細については、以降のセクションで説明します。
 
+
+> [!NOTE]
+> Azure 展開テンプレートを使用して拡張機能を展開する場合は、事前にストレージ アカウントと SAS トークンを作成し、テンプレートに渡す必要があります。 VM、ストレージ アカウントの展開と拡張機能の構成を、1 つのテンプレート内で行うことはできません。 現時点では、テンプレート内での SAS トークンの作成はサポートされていません。
+
 必要な SAS トークンを Azure ポータルで簡単に構築できます。
 
 1. 拡張機能の書き込み先となる汎用ストレージ アカウントを選択します
@@ -142,7 +146,7 @@ sinksConfig | (省略可能) メトリックとイベントの配信が可能な
 1. 前述のように、適切なセクションを作成します
 1. [SAS の生成] ボタンをクリックします。
 
-![イメージ](./media/diagnostic-extension/make_sas.png)
+![image](./media/diagnostic-extension/make_sas.png)
 
 生成された SAS を storageAccountSasToken フィールドにコピーします。先頭の疑問符 ("?") を削除します。
 
@@ -166,7 +170,7 @@ sinksConfig | (省略可能) メトリックとイベントの配信が可能な
 要素 | 値
 ------- | -----
 name | このシンクを拡張機能構成の他の場所で参照するために使用される文字列。
-type | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
+型 | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
 
 Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob という 2 つのシンク型がサポートされています。
 
@@ -267,7 +271,7 @@ sampleRateInSeconds | (省略可能) 生の (未集計) メトリックを収集
 
 要素 | 値
 ------- | -----
-resourceId | VM または VM が所属する仮想マシン スケール セットの Azure Resource Manager リソース ID。 この設定は、JsonBlob シンクが構成で使用されている場合にも指定する必要があります。
+ResourceId | VM または VM が所属する仮想マシン スケール セットの Azure Resource Manager リソース ID。 この設定は、JsonBlob シンクが構成で使用されている場合にも指定する必要があります。
 scheduledTransferPeriod | 集計メトリックが計算され、Azure Metrics に転送される頻度。これは、IS 8601 の時間間隔として表されます。 最小の転送間隔は 60 秒、つまり、PT1M です。 少なくとも 1 つの scheduledTransferPeriod を指定する必要があります。
 
 performanceCounters セクションで指定されたメトリックのサンプルは、15 秒ごと、またはカウンターに明示的に定義されたサンプル レートで収集されます。 複数の scheduledTransferPeriod 頻度が表示されている場合 (この例のように)、各集計は独立して計算されます。
@@ -308,7 +312,7 @@ performanceCounters セクションで指定されたメトリックのサンプ
 要素 | 値
 ------- | -----
 sinks | (省略可能) LAD が集計したメトリック結果を送信するシンクの名前をコンマで区切ったリスト。 集計されたすべてのメトリックは、一覧表示された各シンクに発行されます。 [sinksConfig](#sinksconfig) を参照してください。 例: `"EHsink1, myjsonsink"`.
-type | メトリックの実際のプロバイダーを識別します。
+型 | メトリックの実際のプロバイダーを識別します。
 class | "counter" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counter | "class" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counterSpecifier | Azure Metrics 名前空間内で特定のメトリックを識別します。
@@ -383,7 +387,7 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 要素 | 値
 ------- | -----
 namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)によって実装されます。
-query | 実行される OMI クエリ。
+クエリ | 実行される OMI クエリ。
 table | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
 frequency | (省略可能) クエリの実行間隔 (秒) 。 既定値は 300 (5 分) です。最小値は 15 秒です。
 sinks | (省略可能) メトリック結果の生のサンプルが発行される追加のシンクの名前をコンマで区切ったリスト。 これらの生のサンプルの集計は、拡張機能または Azure メトリックスによって計算されません。
@@ -444,7 +448,7 @@ PercentPrivilegedTime | 非アイドル時間のうち、特権 (カーネル) �
 
 "メモリ" クラスのメトリックは、メモリの使用率、ページング、スワップに関する情報を提供します。
 
-カウンター | 意味
+counter | 意味
 ------- | -------
 AvailableMemory | 使用可能な物理メモリ (MiB)
 PercentAvailableMemory | 合計メモリに対する使用可能な物理メモリの割合
@@ -464,7 +468,7 @@ PercentUsedSwap | 合計スワップに対する使用中のスワップ領域�
 
 "ネットワーク" クラスのメトリックは、起動後の個々のネットワーク インターフェイス上のネットワーク アクティビティに関する情報を提供します。 LAD は、ホスト メトリックから取得できる帯域幅メトリックを公開しません。
 
-カウンター | 意味
+counter | 意味
 ------- | -------
 BytesTransmitted | 起動後に送信された合計バイト数
 BytesReceived | 起動後に受信した合計バイト数
@@ -502,7 +506,7 @@ TransfersPerSecond | 1 秒あたりの読み取りまたは書き込み操作
 
 "ディスク" クラスのメトリックは、ディスク デバイスの使用状況に関する情報を提供します。 これらの統計情報は、ドライブ全体に適用されます。 デバイス上に複数のファイル システムが存在する場合、そのデバイスのカウンターは、実際にはファイル システム全体で集計されます。
 
-カウンター | 意味
+counter | 意味
 ------- | -------
 ReadsPerSecond | 1 秒あたりの読み取り操作
 WritesPerSecond | 1 秒あたりの書き込み操作
@@ -682,7 +686,7 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 
 Azure ポータルを使用して、パフォーマンス データを表示したり、アラートを設定したりします。
 
-![イメージ](./media/diagnostic-extension/graph_metrics.png)
+![image](./media/diagnostic-extension/graph_metrics.png)
 
 `performanceCounters` データは常に Azure Storage テーブルに格納されます。 Azure Storage API は、さまざまな言語とプラットフォームで利用できます。
 
@@ -695,11 +699,11 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 
 この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-30-configuration)と正確には一致しません。
 
-![イメージ](./media/diagnostic-extension/stg_explorer.png)
+![image](./media/diagnostic-extension/stg_explorer.png)
 
 EventHubs エンドポイントに発行されたメッセージを使用する方法については、関連する [EventHubs ドキュメント](../../event-hubs/event-hubs-what-is-event-hubs.md)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 収集するメトリックのメトリック アラートを [Azure Monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) で作成します。
 * メトリックの[監視グラフ](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)を作成します。

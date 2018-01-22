@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f31e32bb7cbd747af2e03699cfb2c6418828f8d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -28,7 +28,10 @@ StorSimple デバイス マネージャー サービスは Microsoft Azure で�
 
 このチュートリアルでは、サービスの作成、削除、および移行と、サービス登録キーの管理のために必要な手順について説明します。 この記事に記載されている内容は、StorSimple 8000 デバイスにのみ適用されます。 StorSimple Virtual Array の詳細については、「[StorSimple Virtual Array の StorSimple デバイス マネージャー サービスをデプロイする](storsimple-virtual-array-manage-service.md)」を参照してください。
 
-## <a name="create-a-service"></a>サービスを作成する
+> [!NOTE]
+> 従来の StorSimple デバイス マネージャーはすべて、自動的に新しい Azure Portal に移行されました。 ご質問があれば、「[FAQ - Azure ポータルに移行する](storsimple-8000-move-azure-portal-faq.md)」をご覧ください。 新しい Azure Portal に移行した後、Azure サービス管理 (ASM) の PowerShell コマンドレットはサポートされません。 デバイスを管理するためのスクリプトを更新する必要があります。詳しくは、「[Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する](storsimple-8000-automation-azurerm-scripts.md)」をご覧ください。 新しい Azure Portal では、Update 5.0 以降を実行しているデバイスがサポートされます。 デバイスが最新の状態でない場合は、すぐに Update 5 をインストールしてください。 詳細については、「[Update 5 のインストール](storsimple-8000-install-update-5.md)」をご覧ください。 StorSimple Cloud Appliance (8010/8020) を使っている場合は、クラウド アプライアンスを更新できません。 最新バージョンのソフトウェアを使って、Update 5.0 で新しいクラウド アプライアンスを作成してから、作成した新しいクラウド アプライアンスにフェールオーバーします。 Update 4.0 以前を実行しているすべてのデバイスでは、[管理機能が制限](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0)されます。 
+
+## <a name="create-a-service"></a>サービスの作成
 StorSimple デバイス マネージャー サービスを作成するには、以下が必要です。
 
 * エンタープライズ契約によるサブスクリプション
@@ -57,86 +60,6 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 * **[状態]** – サービスの状態。**アクティブ**、**作成中**、または**オンライン**のいずれか。
 * **[場所]** – StorSimple デバイスがデプロイされる地理的な場所。
 * **[サブスクリプション]** – サービスに関連付けられている課金サブスクリプション。
-
-## <a name="move-a-service-to-azure-portal"></a>サービスを Azure Portal に移動する
-StorSimple 8000 シリーズは、Azure Portal で管理できるようになりました。 既存のサービスで StorSimple デバイスを管理している場合は、ご利用のサービスを Azure Portal に移行することをお勧めします。 StorSimple Manager サービスの Azure クラシック ポータルは、2017 年 9 月 30 日以降はサポートされません。 新しい Azure ポータルに移行する場合は、「[移行に関する考慮事項](#considerations-for-transition)」をご覧ください。 
-
-> [!NOTE]
-> 2017 年 10 月 5 日以降は、従来の StorSimple デバイス マネージャーは自動的に新しい Azure ポータルに移行されます。 これは段階的なロールアウトです。移行に関する更新情報は、電子メールおよびポータル通知を使用してお届けする予定です。 ご質問があれば、「[FAQ - Azure ポータルに移行する](storsimple-8000-move-azure-portal-faq.md)」をご覧ください。
-
-### <a name="considerations-for-transition"></a>移行に関する考慮事項
-
-サービスを移動する前に、新しい Azure Portal に移行する影響を調査してください。
-
-> [!NOTE]
-> 新しい Azure ポータルに移行した後は、既存の Azure サービス管理 (ASM) の PowerShell コマンドレットはサポートされません。 Azure Resource Manager SDK からデバイスを管理するには、スクリプトを更新します。 詳細については、「[Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する](storsimple-8000-automation-azurerm-scripts.md)」をご覧ください。
-> 新しい Azure ポータルでは、3.0 以降の更新プログラムを実行しているデバイスがサポートされます。 デバイスが最新でない場合は、できるだけ早く Update 5 を適用することを強くお勧めします。
-
-#### <a name="before-you-transition"></a>移行前
-
-* デバイスが Update 3.0 以降を実行している必要があります。 デバイスが古いバージョンを実行している場合は、修正プログラムによる方法を使用して Update 5 をインストールすることを強くお勧めします。 詳細については、「[Update 5 のインストール](storsimple-8000-install-update-5.md)」をご覧ください。 StorSimple Cloud Appliance (8010/8020) を使用している場合は、クラウド アプライアンスを更新できません。 最新バージョンのソフトウェアを使用して、Update 5.0 で新しいクラウド アプライアンスを作成してから、作成した新しいクラウド アプライアンスにフェールオーバーします。
-
-* いったん新しい Azure Portal に移行したら、Azure クラシック ポータルを使用して StorSimple デバイスを管理することはできません。
-
-* この移行では中断が生じないためデバイスのダウンタイムはありません。
-
-* 指定さしたサブスクリプションのもとにあるすべての StorSimple デバイス マネージャーが移行されます。
-
-#### <a name="during-the-transition"></a>移行中
-
-* ポータルからデバイスを管理することはできません。
-* 階層化やスケジュールされたバックアップなどの操作は引き続き行われます。
-* 移行が進んでいる間は、古い StorSimple デバイス マネージャーを削除しないでください。
-
-#### <a name="after-the-transition"></a>移行後
-
-* クラシック ポータルからはデバイスを管理できなくなります。
-
-* 既存の Azure サービス管理 (ASM) の PowerShell コマンドレットはサポートされません。 Azure Resource Manager からデバイスを管理するには、スクリプトを更新します。 Resource Manager SDK を使用したサンプル スクリプトについては、[storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools) を参照してください。
-
-* サービスとデバイスの設定は保持されます。 ボリュームとバックアップもすべて Azure Portal に移行されます。
-
-### <a name="begin-transition"></a>移行を開始する
-
-Azure Portal にサービスを移行するには、次の手順を実行します。
-
-1. 新しい Azure ポータルで既存の StorSimple Manager サービスに移動します。
-    ![[More services]\(その他のサービス\)](./media/storsimple-8000-manage-service/service-browse01.png) ![[Select device manager]\(デバイス マネージャーの選択\)](./media/storsimple-8000-manage-service/service-browse02.png)
-
-2. Azure Portal で StorSimple デバイス マネージャー サービスを使用できるようになったことを伝える通知が表示されます。 Azure Portal では、このサービスは StorSimple デバイス マネージャー サービスと呼ばれます。
-    ![移行の通知](./media/storsimple-8000-manage-service/service-transition1.jpg)
-    
-    1. 移行の影響をすべて調査したことを確認します。
-    2. クラシック ポータルから移動される StorSimple デバイス マネージャーの一覧を確認します。
-
-3. **[移行]** をクリックします。 移行が開始されます。この処理は数分かかります。
-
-移行が完了すると、Azure Portal で、StorSimple デバイス マネージャー サービスからデバイスを管理できます。 Azure ポータルに移行するオプションが表示されていなくても移行したい場合は、[要求を送信](https://aka.ms/ss8000-cx-signup)することができます。
-
-## <a name="supported-operations-on-devices-running-versions-prior-to-update-30"></a>Update 3.0 より前のバージョンを実行しているデバイスでサポートされる操作
-Azure Portal では、Update 3.0 以降を実行している StorSimple デバイスのみがサポートされます。 古いバージョンを実行しているデバイスのサポートは限定的です。 Azure Portal に移行した後は、次の表を使用して、Update 3.0 以前のバージョンを実行しているデバイス上でどの操作がサポートされているかを把握してください。
-
-| 操作                                                                                                                       | サポートされています      |
-|---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| デバイスの登録                                                                                                               | あり            |
-| 全般、ネットワーク、セキュリティなどのデバイス設定の指定                                                                | あり            |
-| 更新プログラムのスキャン、ダウンロード、およびインストール                                                                                             | あり            |
-| デバイスの非アクティブ化                                                                                                               | あり            |
-| デバイスの削除                                                                                                                   | あり            |
-| ボリューム コンテナーの作成、変更、および削除                                                                                   | いいえ             |
-| ボリュームの作成、変更、および削除                                                                                             | いいえ             |
-| バックアップ ポリシーの作成、変更、および削除                                                                                      | いいえ             |
-| 手動バックアップの取得                                                                                                            | いいえ             |
-| スケジュールされたバックアップの作成                                                                                                         | 適用不可 |
-| バックアップセットからの復元                                                                                                        | いいえ             |
-| Update 3.0 以降を実行しているデバイスへの複製 <br> ソース デバイスは Update 3.0 より前のバージョンを実行しています。                                | あり            |
-| Update 3.0 より前のバージョンを実行しているデバイスへの複製                                                                          | いいえ             |
-| ソース デバイスとしてのフェールオーバー <br> (Update 3.0 より前のバージョンを実行しているデバイスから、Update 3.0 以降を実行しているデバイスに)                                                               | あり            |
-| ターゲット デバイスとしてのフェールオーバー <br> (Update 3.0 より前のソフトウェア バージョンを実行しているデバイスに)                                                                                   | いいえ             |
-| アラートのクリア                                                                                                                  | あり            |
-| バックアップ ポリシー、バックアップ カタログ、ボリューム、ボリューム コンテナー、監視チャート、ジョブ、およびクラシック ポータルで作成されたアラートの表示 | あり            |
-| デバイス コントローラーのオンとオフ                                                                                              | あり            |
-
 
 ## <a name="delete-a-service"></a>サービスの削除
 
@@ -196,7 +119,7 @@ Azure Portal では、Update 3.0 以降を実行している StorSimple デバ�
 
 
 
-## <a name="change-the-service-data-encryption-key"></a>サービス データ暗号化キーを変更する
+## <a name="change-the-service-data-encryption-key"></a>サービス データ暗号化キーの変更
 サービス データ暗号化キーを使用して、StorSimple Manager サービスから StorSimple デバイスに送信される、顧客の機密データ (ストレージ アカウントの資格情報など) を暗号化します。 IT 組織にストレージ デバイスに関するキー ローテーション ポリシーがある場合は、これらのキーを定期的に変更する必要があります。 キーの変更プロセスは、StorSimple Manager サービスが 1 つのデバイスを管理しているか、または複数のデバイスを管理しているかによって多少異なります。 詳細については、「[StorSimple のセキュリティとデータの保護](storsimple-8000-security.md)」を参照してください。
 
 サービス データ暗号化キーの変更は、次の 3 つの手順からなるプロセスです。
@@ -219,7 +142,7 @@ Azure Portal では、Update 3.0 以降を実行している StorSimple デバ�
 * キーの変更が開始されなかった場合は、30 分経過後にもう一度同じデバイスを承認できます。
 * 別のデバイスを承認するには、既に承認済みのデバイスによってキーの変更が開始されていないことが条件となります。 新しいデバイスが承認された後に、以前のデバイスが変更を開始することはできません。
 * サービス データ暗号化キーのロールオーバーの実行中に、デバイスを承認することはできません。
-* サービスに登録されているデバイスの中に、暗号化をロールオーバーしたデバイスと、ロールオーバーしていないデバイスがある場合、デバイスを承認できます。 
+* サービスに登録されているデバイスの中に、暗号化をロールオーバーしたデバイスと、ロールオーバしていないデバイスがある場合、デバイスを承認できます。 
 
 ### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>手順 2. StorSimple 用 Windows PowerShell を使用してサービス データ暗号化キーの変更を開始する
 この手順は、承認済みの StorSimple デバイスの StorSimple 用 Windows PowerShell インターフェイスで実行されます。
@@ -263,7 +186,32 @@ StorSimple Manager サービスに登録されているデバイスが複数あ�
 
 このスクリプトは、デバイス マネージャーにあるすべての 8010/8020 クラウド アプライアンスで、サービス データ暗号化キーが設定されていることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Update 5.0 より前のバージョンを実行しているデバイスでサポートされる操作
+Azure Portal では、Update 5.0 以降を実行している StorSimple デバイスのみがサポートされます。 古いバージョンを実行しているデバイスのサポートは限定的です。 Azure Portal に移行した後は、次の表を使用して、Update 5.0 以前のバージョンを実行しているデバイス上でどの操作がサポートされているかを把握してください。
+
+| 操作                                                                                                                       | サポートされています      |
+|---------------------------------------------------------------------------------------------------------------------------------|----------------|
+| デバイスの登録                                                                                                               | [はい]            |
+| 全般、ネットワーク、セキュリティなどのデバイス設定の指定                                                                | [はい]            |
+| 更新プログラムのスキャン、ダウンロード、およびインストール                                                                                             | [はい]            |
+| デバイスの非アクティブ化                                                                                                               | [はい]            |
+| デバイスの削除                                                                                                                   | [はい]            |
+| ボリューム コンテナーの作成、変更、および削除                                                                                   | いいえ              |
+| ボリュームの作成、変更、および削除                                                                                             | いいえ              |
+| バックアップ ポリシーの作成、変更、および削除                                                                                      | いいえ              |
+| 手動バックアップの取得                                                                                                            | いいえ              |
+| スケジュールされたバックアップの作成                                                                                                         | 適用不可 |
+| バックアップセットからの復元                                                                                                        | いいえ              |
+| Update 3.0 以降を実行しているデバイスへの複製 <br> ソース デバイスは Update 3.0 より前のバージョンを実行しています。                                | [はい]            |
+| Update 3.0 より前のバージョンを実行しているデバイスへの複製                                                                          | いいえ              |
+| ソース デバイスとしてのフェールオーバー <br> (Update 3.0 より前のバージョンを実行しているデバイスから、Update 3.0 以降を実行しているデバイスに)                                                               | [はい]            |
+| ターゲット デバイスとしてのフェールオーバー <br> (Update 3.0 より前のソフトウェア バージョンを実行しているデバイスに)                                                                                   | いいえ              |
+| アラートのクリア                                                                                                                  | [はい]            |
+| バックアップ ポリシー、バックアップ カタログ、ボリューム、ボリューム コンテナー、監視チャート、ジョブ、およびクラシック ポータルで作成されたアラートの表示 | [はい]            |
+| デバイス コントローラーのオンとオフ                                                                                              | [はい]            |
+
+
+## <a name="next-steps"></a>次の手順
 * [StorSimple デプロイのプロセスの詳細](storsimple-8000-deployment-walkthrough-u2.md)
 * [StorSimple ストレージ アカウントの管理の詳細](storsimple-8000-manage-storage-accounts.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)

@@ -1,32 +1,32 @@
 ---
-title: "Function App の作成と Visual Studio Team Services からの関数コードのデプロイ | Microsoft Docs"
+title: "Visual Studio Team Services からデプロイされる関数を Azure で作成する | Microsoft Docs"
 description: "Function App の作成と Visual Studio Team Services からの関数コードのデプロイ"
 services: functions
 keywords: 
 author: syntaxc4
 ms.author: cfowler
-ms.date: 04/28/2017
+ms.date: 01/09/2018
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: 5851b5219b6e25a5a2b005fc3d3c3b44d98ed746
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf9428f23e851bae3485ec3d724dfb9ccd2af4c1
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="create-an-app-service"></a>App Service の作成
+# <a name="create-a-function-in-azure-that-is-deployed-from-visual-studio-team-services"></a>Visual Studio Team Services からデプロイされる関数を Azure で作成する
 
-このシナリオでは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して関連リソースと共に Function App を作成する方法と Visual Studio Team Services (VSTS) レポジトリから関数コードを継続的にデプロイする方法について説明します。 このサンプルでは、次のものが必要になります。
+このトピックでは、Azure Functions を使用して、[消費プラン](../functions-scale.md#consumption-plan)を使用する[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数アプリを作成する方法を説明します。 関数アプリは、関数のコンテナーであり、Visual Studio Team Services (VSTS) リポジトリから継続的にデプロイされます。 このトピックを完了するには、以下が必要です。
 
-* 管理アクセス許可があり、関数コードを含む VSTS レポジトリ。
-* GitHub アカウントの[個人用アクセス トークン (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use)。
+* ユーザーの関数アプリ プロジェクトが含まれ、ユーザーが管理アクセス許可を持っている VSTS リポジトリ。
+* VSTS リポジトリにアクセスするための[個人用アクセス トークン (PAT)](https://docs.microsoft.com/vsts/accounts/use-personal-access-tokens-to-authenticate)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+Azure CLI をローカルで使用する場合は、バージョン 2.0 以降をインストールして使用する必要があります。 Azure CLI のバージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -38,7 +38,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用して、リソース グループ、Web アプリ、DocumentDB、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、次のコマンドを使用して、リソース グループ、ストレージ アカウント、関数アプリ、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | コマンド | メモ |
 |---|---|
@@ -47,7 +47,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 | [az functionapp create](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_delete) |
 | [az appservice web source-control config](https://docs.microsoft.com/cli/azure/appservice/web/source-control#az_appservice_web_source_control_config) | Function App を Git または Mercurial レポジトリと関連付けます。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 

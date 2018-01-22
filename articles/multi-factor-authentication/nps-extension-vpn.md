@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 1879fc3d45e1a79fe5edd1ae1cf0d7060fd327ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1141245739f86a482bb0b5f550fd3b89d1213ce1
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -171,8 +171,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 4. **[ダイヤルアップまたは VPN サーバーの指定]** ウィンドウで、**[追加]** を選択します。
 
-5. **[新しい RADIUS クライアント]** ウィンドウで、フレンドリ名を指定し、VPN サーバーの解決可能な名前または IP アドレスを入力してから、共有シークレットのパスワードも入力します。  
-    この共有シークレットのパスワードは、長い複雑なものにします。 このパスワードは次のセクションで必要になるので、メモしておきます。
+5. **[新しい RADIUS クライアント]** ウィンドウで、フレンドリ名を指定し、VPN サーバーの解決可能な名前または IP アドレスを入力してから、共有シークレットのパスワードも入力します。 この共有シークレットのパスワードは、長い複雑なものにします。 このパスワードは次のセクションで必要になるので、メモしておきます。
 
     ![新しい RADIUS クライアント](./media/nps-extension-vpn/image5.png)
 
@@ -183,8 +182,7 @@ NPS ロールがメンバー サーバーにインストールされている場
     > [!NOTE]
     > 拡張認証プロトコル (EAP) を構成する場合は、Microsoft チャレンジ ハンドシェイク認証プロトコル (CHAPv2) または Protected Extensible Authentication Protocol (PEAP) を使用する必要があります。 他の EAP はサポートされていません。
  
-8. **[ユーザー グループの指定]** ウィンドウで **[追加]** を選択し、適切なグループを選択します。  
-    グループが存在しない場合は、すべてのユーザーにアクセスを許可するために、選択フィールドを空白のままにしておきます。
+8. **[ユーザー グループの指定]** ウィンドウで **[追加]** を選択し、適切なグループを選択します。 グループが存在しない場合は、すべてのユーザーにアクセスを許可するために、選択フィールドを空白のままにしておきます。
 
     ![[ユーザー グループの指定] ウィンドウ](./media/nps-extension-vpn/image7.png)
 
@@ -209,20 +207,17 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 1. ネットワーク ポリシー サーバーで、[NPS (ローカル)] コンソールの **[RADIUS クライアント]** を展開し、**[RADIUS クライアント]** を選択します。
 
-2. 詳細ウィンドウで、作成した RADIUS クライアントを右クリックし、**[プロパティ]** を選択します。  
-    RADIUS クライアント (VPN サーバー) のプロパティが次のように表示されます。
+2. 詳細ウィンドウで、作成した RADIUS クライアントを右クリックし、**[プロパティ]** を選択します。 RADIUS クライアント (VPN サーバー) のプロパティが次のように表示されます。
 
     ![VPN のプロパティ](./media/nps-extension-vpn/image11.png)
 
 3. **[キャンセル]** を選択します。
 
-4. ネットワーク ポリシー サーバーで、[NPS (ローカル)] コンソールの **[ポリシー]** を展開し、**[接続要求ポリシー]** を選択します。  
-    次の図のように VPN 接続ポリシーが表示されます。
+4. ネットワーク ポリシー サーバーで、[NPS (ローカル)] コンソールの **[ポリシー]** を展開し、**[接続要求ポリシー]** を選択します。 次の図のように VPN 接続ポリシーが表示されます。
 
     ![接続要求](./media/nps-extension-vpn/image12.png)
 
-5. **[ポリシー]** の **[ネットワーク ポリシー]** を選択します。  
-    次の画像のような仮想プライベート ネットワーク (VPN) 接続ポリシーが表示されます。
+5. **[ポリシー]** の **[ネットワーク ポリシー]** を選択します。 次の画像のような仮想プライベート ネットワーク (VPN) 接続ポリシーが表示されます。
 
     ![ネットワーク ポリシー](./media/nps-extension-vpn/image13.png)
 
@@ -252,7 +247,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 7. **[RADIUS サーバーの追加]** ウィンドウで、次の手順を実行します。
 
-    a. **[サーバー名]** ボックスに、前のセクションで構成した RADIUS サーバーの名前または IP アドレスを入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サーバー名]** ボックスに、前のセクションで構成した RADIUS サーバーの名前または IP アドレスを入力します。
 
     b. **[共有シークレット]** で **[変更]** を選択し、先ほど作成してメモしておいた共有シークレットのパスワードを入力します。
 
@@ -305,7 +300,8 @@ NPS ロールがメンバー サーバーにインストールされている場
 
     ![[イベントのプロパティ] ウィンドウ](./media/nps-extension-vpn/image21.png)
 
-## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+## <a name="troubleshooting-radius"></a>RADIUS のトラブルシューティング
+
 認証と承認に一元化された RADIUS サーバーを使用するように VPN サーバーを構成するまでは VPN 構成が動作していたとします。 構成が動作していた場合、RADIUS サーバーの構成に誤りがあるか、無効なユーザー名またはパスワードを使用したことが原因で問題が発生している可能性があります。 たとえば、ユーザー名に代替 UPN サフィックスを使用している場合、サインイン試行が失敗する可能性があります。 同じアカウント名を使用することをお勧めします。 
 
 これらの問題のトラブルシューティングを行うときは、まず、RADIUS サーバーのセキュリティ イベント ログを調べることをお勧めします。 イベントの検索時間を節約するには、次に示すように、イベント ビューアーのロールベースの [ネットワーク ポリシーとアクセス サービス] カスタム ビューを使用します。 "イベント ID 6273" は、NPS がユーザーに対してアクセスを拒否したイベントを示しています。 
@@ -313,96 +309,8 @@ NPS ロールがメンバー サーバーにインストールされている場
 ![イベント ビューアー](./media/nps-extension-vpn/image22.png)
  
 ## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication の構成
-このセクションでは、ユーザーの MFA を有効にし、アカウントに 2 段階認証を設定する手順について説明します。 
 
-### <a name="enable-multi-factor-authentication"></a>Multi-Factor Authentication を有効にする
-ここでは、Azure AD アカウントの MFA を有効にします。 Azure クラシック ポータルを使用して、ユーザーの MFA を有効にします。 
-
-1. [Microsoft Azure](https://manage.windowsazure.com) Web サイトにアクセスします。 
-
-2. 管理者としてサインインします。
-
-3. 左ウィンドウで、**[Active Directory]** を選択します。
-
-    ![既定のディレクトリ](./media/nps-extension-vpn/image23.png)
-
-4. **[名前]** 列で、**[既定のディレクトリ]** (または、該当する場合は別のディレクトリ) を選択します。
-
-5. **[既定のディレクトリ]** ウィンドウで **[構成]** を選択します。
-
-    ![既定のディレクトリの構成](./media/nps-extension-vpn/image24.png)
-
-6. **[構成]** ウィンドウの **[多要素認証]** で **[サービス設定の管理]** を選択します。
-
-    ![多要素認証設定の管理](./media/nps-extension-vpn/image25.png)
- 
-7. **[多要素認証]** ウィンドウで既定のサービス設定を確認し、**[ユーザー]** タブを選択します。 
-
-    ![多要素認証の [ユーザー] タブ](./media/nps-extension-vpn/image26.png)
- 
-8. **[ユーザー]** タブで、MFA を有効するユーザーを選択し、**[有効化]** を選択します。
-
-    ![プロパティ](./media/nps-extension-vpn/image27.png)
- 
-9. メッセージが表示されたら、**[多要素認証を有効にする]** を選択します。
-
-    ![Multi-Factor Authentication を有効にする](./media/nps-extension-vpn/image28.png)
- 
-10. **[閉じる]**を選択します。 
-
-11. ページを更新します。  
-    多要素認証の状態が *[有効]* に変わります。
-
-ユーザーの MFA を有効にする方法については、[クラウドでの Azure Multi-Factor Authentication の概要](multi-factor-authentication-get-started-cloud.md)に関する記事を参照してください。 
-
-### <a name="configure-accounts-for-two-step-verification"></a>2 段階認証用にアカウントを構成する
-アカウントの MFA を有効にすると、ユーザーは 2 つ目の認証要素に使用する信頼済みデバイスの構成を正常に完了するまで、MFA ポリシーによって管理されたリソースにはサインインできません。
-
-このセクションでは、2 段階認証で使用する信頼済みデバイスを構成します。 次のように、デバイスの選択肢がいくつかあります。
-
-* **モバイル アプリ**: Windows Phone、Android、または iOS デバイスに Microsoft Authenticator アプリをインストールします。 組織のポリシーによっては、次のいずれかのモードを使用する必要があります。 
-    * 確認の通知を受信する (通知はデバイスにプッシュされます)。
-    * 確認コードを使用する (30 秒ごとに更新される確認コードを入力する必要があります) 
-
-* **携帯電話の呼び出しまたはテキスト**: 電話の自動呼び出しに応答するか、テキスト メッセージを受信することができます。 電話の呼び出し方法では、呼び出しに応答し、# 記号を選択して認証を行います。 テキストの方法では、テキスト メッセージに返信するか、サインイン インターフェイスに確認コードを入力します。
-
-* **会社電話の呼び出し**: このプロセスは、前項の電話の自動呼び出しで説明したプロセスと同じです。
-
-モバイル アプリを使用して確認のためのプッシュ通知を受け取るようにデバイスを設定するには、次の手順を実行します。
-
-1. [Microsoft Azure](https://aka.ms/mfasetup) または、MFA 対応の資格情報を使用して認証を受ける必要がある任意のサイト ([Azure Portal](https://portal.azure.com) など) にサインインします。  
-    次のように、追加のセキュリティ確認のためにアカウントを設定するように求められます。
-
-    ![追加のセキュリティ](./media/nps-extension-vpn/image29.png)
-
-2. **[今すぐセットアップ]** を選択します。
-
-3. **[追加のセキュリティ確認]** ウィンドウで、連絡先の種類 (**認証用電話**、**会社電話**、または**モバイル アプリ**) を選択し、国または地域を選択し、方法を選択します。 まだ **[連絡してください]** は選択しないでください。  
-    方法は、連絡先の種類によって変わります。 たとえば、**モバイル アプリ**を選択した場合は、確認のための通知を受け取るか、確認コードを使用するかを選択できます。 
-
-    ![[追加のセキュリティ確認] ウィンドウ](./media/nps-extension-vpn/image30.png)
-
-    以下の手順では、連絡先の種類として **[モバイル アプリ]** を選択したものとします。
-
-4. **[モバイル アプリ]** を選択し、**[確認のため通知を受け取る]** を選択し、**[セットアップ]** を選択します。 
-
-    ![[追加のセキュリティ確認] ウィンドウ](./media/nps-extension-vpn/image31.png)
- 
-5. Microsoft Authenticator モバイル アプリをデバイスにインストールします (まだインストールしていない場合)。 
-
-6. モバイル アプリで、表示されたバー コードをスキャンするか、手動で情報を入力し、**[完了]** をクリックします。
-
-    ![Microsoft Authenticator モバイル アプリの構成](./media/nps-extension-vpn/image32.png)
-
-7. **[追加のセキュリティ確認]** ウィンドウで、**[連絡してください]** を選択し、デバイスに送信された通知に返信します。
-
-8. **[追加のセキュリティ確認]** ウィンドウの **[手順 3: モバイル アプリにアクセスできなくなった場合]** に、モバイル アプリにアクセスできなくなった場合に発信する連絡先番号を入力し、**[次へ]** を選択します。
-
-    ![[追加のセキュリティ確認] ウィンドウ](./media/nps-extension-vpn/image33.png)
- 
-9. **[追加のセキュリティ確認]** ウィンドウで **[完了]** を選択します。
-
-これで、2 つ目の確認方法を提供するようにデバイスが構成されました。 アカウントに 2 段階認証を設定する方法については、「[アカウントへの 2 段階認証の設定](./end-user/multi-factor-authentication-end-user-first-time.md)」を参照してください。
+ユーザーに Multi-Factor Authentication を構成する方法については、「[ユーザーまたはグループに 2 段階認証を要求する方法](multi-factor-authentication-get-started-user-states.md)」および「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」をご覧ください。
 
 ## <a name="install-and-configure-the-nps-extension"></a>NPS 拡張機能のインストールと構成
 
@@ -470,8 +378,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 2. PowerShell コマンド プロンプトで、「**cd c:\Program Files\Microsoft\AzureMfa\Config**」と入力し、Enter キーを押します。
 
-3. 次のコマンド プロンプトで「**.\AzureMfsNpsExtnConfigSetup.ps1**」と入力し、Enter キーを押します。  
-    このスクリプトで、Azure AD PowerShell モジュールがインストールされているかどうかがチェックされます。 インストールされていない場合は、スクリプトによってモジュールがインストールされます。
+3. 次のコマンド プロンプトで「**.\AzureMfsNpsExtnConfigSetup.ps1**」と入力し、Enter キーを押します。 このスクリプトで、Azure AD PowerShell モジュールがインストールされているかどうかがチェックされます。 インストールされていない場合は、スクリプトによってモジュールがインストールされます。
  
     ![PowerShell](./media/nps-extension-vpn/image38.png)
  
@@ -546,7 +453,7 @@ Azure Multi-Factor Authentication ログの関連するイベントを次に示�
 
 詳細については、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](multi-factor-authentication-nps-extension.md)」をご覧ください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)
 
 [RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server](multi-factor-authentication-get-started-server-rdg.md)

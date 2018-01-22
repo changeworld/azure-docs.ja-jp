@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 01/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 78e5749369de1dd9865f61baefd70e6ce4bde31d
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 7f88cd2a9e23ec1b142fc754ada49a8562e774bc
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="using-linked-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートの使用
+# <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
-ソリューションをデプロイする場合、単一テンプレートか、複数のテンプレートがリンクされたメイン テンプレートのいずれかを使用できます。 中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割し、テンプレートを再利用できます。
+ソリューションをデプロイするには、1 つのテンプレートを使用するか、複数の関連するテンプレートがあるメイン テンプレートのいずれかを使用できます。 関連するテンプレートは、メイン テンプレートからリンクされる個別のファイルの場合も、メイン テンプレート内で入れ子になっているテンプレートの場合もあります。
+
+中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割し、テンプレートを再利用できます。
 
 リンクされたテンプレートを使用する場合は、配置時にパラメーター値を受け取るメインのテンプレートを作成します。 メインのテンプレートには、すべてのリンクされたテンプレートが含まれていて、必要に応じて、これらのテンプレートに値を渡します。
 
 ![リンク済みテンプレート](./media/resource-group-linked-templates/nestedTemplateDesign.png)
 
-## <a name="link-to-a-template"></a>テンプレートにリンクする
+## <a name="link-or-nest-a-template"></a>テンプレートをリンクするか入れ子にする
 
 別のテンプレートにリンクするには、メイン テンプレートに**展開**リソースを追加します。
 
@@ -40,17 +42,17 @@ ms.lasthandoff: 12/13/2017
       "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
-          <inline-template-or-external-template>
+          <nested-template-or-external-template>
       }
   }
 ]
 ```
 
-展開リソースに指定するプロパティは、外部のテンプレートにリンクしているか、メインのテンプレートでインライン テンプレートを埋め込んでいるかによって異なります。
+展開リソースに指定するプロパティは、外部テンプレートにリンクするか、インライン テンプレートをメイン テンプレートに入れ子にするかによって異なります。
 
-### <a name="inline-template"></a>インライン テンプレート
+### <a name="nested-template"></a>入れ子になったテンプレート
 
-リンク済みテンプレートを埋め込むには、**テンプレート** プロパティを使用してテンプレートを含めます。
+テンプレートをメイン テンプレート内に入れ子にするには、**template** プロパティを使用してテンプレートの構文を指定します。
 
 ```json
 "resources": [
@@ -63,8 +65,6 @@ ms.lasthandoff: 12/13/2017
       "template": {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
-        "parameters": {},
-        "variables": {},
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
@@ -76,12 +76,13 @@ ms.lasthandoff: 12/13/2017
             }
           }
         ]
-      },
-      "parameters": {}
+      }
     }
   }
 ]
 ```
+
+入れ子になったテンプレートの場合、入れ子になったテンプレート内に定義されている変数またはパラメーターは使用できません。 パラメーターと変数は、メイン テンプレートから使用できます。 上の例では、`[variables('storageName')]` は、入れ子になったテンプレートではなく、メイン テンプレートから値を取得します。 この制限は、外部テンプレートには適用されません。
 
 ### <a name="external-template-and-external-parameters"></a>外部テンプレートと外部パラメーター
 
@@ -176,7 +177,7 @@ ms.lasthandoff: 12/13/2017
 }
 ```
 
-親テンプレートは、リンクされたテンプレートを展開し、返される値を取得します。 展開リソースを名前で参照し、リンクされたテンプレートによって返されるプロパティの名前を使用していることに注意してください。
+メイン テンプレートは、リンクされたテンプレートを展開し、返される値を取得します。 展開リソースを名前で参照し、リンクされたテンプレートによって返されるプロパティの名前を使用していることに注意してください。
 
 ```json
 {
@@ -309,9 +310,9 @@ ms.lasthandoff: 12/13/2017
 }
 ```
 
-## <a name="linked-templates-in-deployment-history"></a>デプロイメント履歴の中のリンク済みテンプレート
+## <a name="linked-and-nested-templates-in-deployment-history"></a>デプロイ履歴内のリンクされたテンプレートと入れ子になったテンプレート
 
-Resource Manager では、各リンク済みテンプレートは個別のデプロイメントとして処理されます。 したがって、3 つのリンク済みテンプレートのある親テンプレートは、デプロイ履歴で次のように表示されます。
+Resource Manager では、各テンプレートはデプロイ履歴内で個別のデプロイとして処理されます。 したがって、3 つのリンクされたテンプレートまたは入れ子になったテンプレートがあるメイン テンプレートは、デプロイ履歴に次のように表示されます。
 
 ![デプロイ履歴](./media/resource-group-linked-templates/deployment-history.png)
 
@@ -480,13 +481,13 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 次の例は、リンク済みテンプレートの一般的な使い方を示します。
 
-|Main template  |リンク済みテンプレート |説明  |
+|Main template  |リンク済みテンプレート |[説明]  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | リンク済みテンプレートから文字列を返します。 |
 |[パブリック IP アドレスを使用する Azure Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |リンク済みテンプレートからパブリック IP アドレスを返し、ロード バランサーでその値を設定します。 |
 |[複数の IP アドレス](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |リンク済みテンプレートに複数のパブリック IP アドレスを作成します。  |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。
 * リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

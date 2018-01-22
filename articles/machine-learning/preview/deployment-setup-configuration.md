@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 08/29/2017
-ms.openlocfilehash: 61ecea71874b05c2c5f7572aa6128fc320422b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/6/2017
+ms.openlocfilehash: c8949e4f66623951ef66005b3acc2b2279486b4d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 
@@ -25,8 +25,8 @@ Azure ML モデル管理を使用すると、SparkML、Keras、TensorFlow、Micr
 このドキュメントの最後までには、モデル管理の環境をセットアップし、Machine Learning モデルをデプロイする準備ができるようになります。
 
 ## <a name="what-you-need-to-get-started"></a>はじめにやるべきこと
-このガイドを最大限に活用するには、モデルをデプロイできる Azure サブスクリプションに対する所有者アクセス権が必要です。
-Azure Machine Learning Workbench および [Azure DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) には CLI がプレインストールされています。
+このガイドを最大限に活用するには、モデルをデプロイできる Azure サブスクリプションまたはリソース グループに対する共同作成者アクセス権が必要です。
+Azure Machine Learning Workbench および [Azure DSVM](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) には CLI がプレインストールされています。
 
 ## <a name="using-the-cli"></a>CLI の使用
 ワークベンチからコマンド ライン インターフェイス (CLI) を使用するには、**[ファイル]** -> **[Open Command Prompt] \(コマンド プロンプトを開く)** をクリックします。 
@@ -81,13 +81,15 @@ root 以外のユーザーが使用する Linux 上の Docker を構成するに
 
 環境のセットアップを完了した場合:
 - Azure にサインインするよう求められます。 サインインするには、Web ブラウザーを使用してページ https://aka.ms/devicelogin を開き、認証のための提供されたコードを入力します。
-- 認証プロセス中に、認証するためのアカウントを入力するよう求められます。 重要: 有効な Azure サブスクリプションと、リソースを作成するための十分なアクセス許可を持つアカウントを選択してください。ログインが完了したら、サブスクリプション情報が表示され、選択されたアカウントで続行するかどうかを確認するメッセージが表示されます。
+- 認証プロセス中に、認証するためのアカウントを入力するよう求められます。 重要: 有効な Azure サブスクリプションと、アカウントにリソースを作成するための十分なアクセス許可を持つアカウントを選択してください。 ログインが完了したら、サブスクリプション情報が表示され、選択されたアカウントで続行するかどうかを確認するメッセージが表示されます。
 
 ### <a name="environment-setup"></a>環境のセットアップ
-セットアップ プロセスを開始するには、次のコマンドを入力して環境プロバイダーを登録する必要があります。
+セットアップ プロセスを開始するには、次のコマンドを入力していくつかの環境プロバイダーを登録する必要があります。
 
 ```azurecli
 az provider register -n Microsoft.MachineLearningCompute
+az provider register -n Microsoft.ContainerRegistry
+az provider register -n Microsoft.ContainerService
 ```
 #### <a name="local-deployment"></a>ローカル デプロイ
 ローカル コンピューター上で Web サービスをデプロイおよびテストするには、次のコマンドを使用してローカル環境をセットアップします。 リソース グループ名は省略可能です。
@@ -128,7 +130,7 @@ az ml env setup --cluster -n [your environment name] -l [Azure region e.g. eastu
 - Application Insights アカウント
 
 >[!IMPORTANT]
-> クラスター環境を正常に作成するには、Azure サブスクリプション上の所有者になる必要があり、またサービス プリンシパルも作成できる必要があります。 十分な権限があるかどうかを確認するには、「[Creating a Service Principal in Azure (Azure でのサービス プリンシパルの作成)](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)」ページの手順に従います。
+> クラスター環境を正常に作成するには、Azure サブスクリプションまたはリソース グループに対する共同作成者アクセス権を持っている必要があります。
 
 リソース グループ、ストレージ アカウント、および ACR はすぐに作成されます。 ACS のデプロイには、最大 20 分かかる場合があります。 
 
@@ -169,5 +171,5 @@ az ml account modelmanagement set -n [your account name] -g [resource group it w
 az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ギャラリーにある多数のサンプルのうちの 1 つを試してください。

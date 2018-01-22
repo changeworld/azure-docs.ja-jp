@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte
-ms.openlocfilehash: c651ab70977367d0e41364120c89561a04a45cf4
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6ad70d736cd0a267ace3ade0a1ecfea38128ac72
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Azure Automation の Runbook をスケジュール設定する
-指定の時刻に開始するように Azure Automation の Runbook をスケジュール設定するには、Runbook を 1 つ以上のスケジュールにリンクします。 スケジュールは、1 回だけ実行するようにも、複数回実行するようにも構成できます。Azure クラシック ポータルの Runbook では、時間または日単位で繰り返すスケジュールを指定でき、Azure Portal の Runbook ではさらに週単位、月単位、特定の曜日や日にち、または月の特定の日のスケジュールも指定できます。  1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。
+指定の時刻に開始するように Azure Automation の Runbook をスケジュール設定するには、Runbook を 1 つ以上のスケジュールにリンクします。 Azure Portal の Runbook では、1 回だけ実行するようにスケジュールを構成することも、時間または日単位で繰り返すスケジュールを指定することもできます。 さらに、週単位、月単位、特定の曜日や日にち、または月の特定の日のスケジュールも指定できます。  1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。
 
 > [!NOTE]
 > スケジュールは、現時点では Azure Automation DSC 構成をサポートしていません。
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/14/2017
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell コマンドレット
 Azure Automation から Windows PowerShell を使用してスケジュールを作成したり管理したりするには、以下の表に示したコマンドレットを使用します。 これらは、 [Azure PowerShell モジュール](/powershell/azure/overview)の一部として出荷されます。
 
-| コマンドレット | 説明 |
+| コマンドレット | [説明] |
 |:--- |:--- |
 | **Azure Resource Manager コマンドレット** | |
 | [Get AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |スケジュールを取得します。 |
@@ -51,7 +51,7 @@ Azure Automation から Windows PowerShell を使用してスケジュールを�
 | [Unregister-AzureAutomationScheduledRunbook](/powershell/module/azure/unregister-azureautomationscheduledrunbook?view=azuresmps-3.7.0) |Runbook とスケジュールの関連付けを解除します。 |
 
 ## <a name="creating-a-schedule"></a>スケジュールを作成する
-Runbook の新しいスケジュールは、Azure ポータル、クラシック ポータル、または Windows PowerShell で作成することができます。 Azure クラシック ポータルまたは Azure ポータルを使用して Runbook をスケジュールにリンクするときに新しいスケジュールを作成するというオプションもあります。
+Runbook の新しいスケジュールは、Azure Portal または Windows PowerShell で作成できます。 Azure クラシック ポータルまたは Azure ポータルを使用して Runbook をスケジュールにリンクするときに新しいスケジュールを作成するというオプションもあります。
 
 > [!NOTE]
 > Azure Automation は、スケジュール済みの新しいジョブの実行時に Automation アカウントの最新のモジュールを使用します。  Runbook およびそれらが自動化するプロセスに影響が及ばないようにするには、テスト専用の Automation アカウントを使用して、スケジュールがリンクされている Runbook を最初にテストする必要があります。  これにより、スケジュール済みの Runbook が引き続き正しく動作するかが検証されます。動作しない場合は、更新された Runbook バージョンを運用環境に移行する前に、トラブルシューティングを実行して必要な変更を適用できます。  
@@ -63,14 +63,6 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 2. ページ上部の **[スケジュールの追加]** をクリックします。
 4. **[新しいスケジュール]** ウィンドウで、新しいスケジュールの**名前**と、必要に応じて**説明**を入力します。
 5. スケジュールを 1 回だけ実行するか、繰り返し実行するかを、**[1 回]** または **[繰り返し]** から選択します。  **[1 回]** を選択した場合は、**[開始時刻]** を指定し、**[作成]** をクリックします。  **[繰り返し]** を選択した場合は、**[開始時刻]** を指定し、Runbook を繰り返す頻度を **[時間]**、**[日]**、**[週]**、または **[月]** から選択します。  ドロップダウン リストで **[週]** または **[月]** を選択した場合は、ウィンドウに **[Recurrence option]\(繰り返しのオプション\)** が表示されます。選択すると **[Recurrence option]\(繰り返しのオプション\)** ウィンドウが表示され、**[週]** を選択した場合は曜日を選択できます。  **[月]** を選択した場合は、**[平日]** を選択するか、カレンダーで月の特定の日を選択できます。最後に、月の最終日に実行するかどうかを選択し、**[OK]** をクリックします。   
-
-### <a name="to-create-a-new-schedule-in-the-azure-classic-portal"></a>Azure クラシック ポータルで新しいスケジュールを作成するには
-1. Azure クラシック ポータルで、[Automation] を選択し、次に Automation アカウントの名前を選択します。
-2. **[資産]** タブを選択します。
-3. ウィンドウの下部にある **[設定の追加]**をクリックします。
-4. **[スケジュールの追加]**をクリックします。
-5. 新しいスケジュールの**名前**と、必要に応じて**説明**を入力します。 スケジュールは、**1 回限り**、**時間単位**、**日単位**、**週単位**、**月単位**のいずれかで実行できます。
-6. **[開始時刻]** やその他のオプションを、選択したスケジュールの種類に応じて指定します。
 
 ### <a name="to-create-a-new-schedule-with-windows-powershell"></a>Windows PowerShell で新しいスケジュールを作成するには
 クラシック Runbook 用に Azure Automation の新しいスケジュールを作成するには、[New-AzureAutomationSchedule](/powershell/module/azure/new-azureautomationschedule?view=azuresmps-3.7.0) コマンドレットを使用します。Azure ポータルの Runbook 用には、[New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) コマンドレットを使用します。 スケジュールの開始時刻と実行の頻度を指定する必要があります。
@@ -98,14 +90,6 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 2. Runbook の名前をクリックして、スケジュールを設定します。
 3. 現在、Runbook がスケジュールにリンクされていない場合は、新しいスケジュールを作成するオプション、または既存のスケジュールにリンクするオプションが表示されます。  
 4. Runbook にパラメーターがある場合は、**[実行設定を変更する (既定: Azure)]** オプションを選択すると **[パラメーター]** ウィンドウが表示されるので、必要に応じて情報を入力することができます。  
-
-### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-classic-portal"></a>Azure クラシック ポータルで Runbook にスケジュールをリンクするには
-1. Azure クラシック ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
-2. **[Runbook]** タブを選択します。
-3. Runbook の名前をクリックして、スケジュールを設定します。
-4. **[スケジュール]** タブをクリックします。
-5. 現在、Runbook がスケジュールにリンクされていない場合は、**新しいスケジュールにリンク**するオプション、または**既存のスケジュールにリンク**するオプションが表示されます。  現在、Runbook がスケジュールにリンクされている場合、ウィンドウの下部にある **[リンク]** をクリックし、これらのオプションにアクセスします。
-6. Runbook にパラメーターがある場合は、その値を入力するように求められます。  
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Windows PowerShell で Runbook にスケジュールをリンクするには
 クラシック Runbook にスケジュールをリンクするには [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx) を使用します。Azure ポータルの Runbook の場合は、[Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) コマンドレットを使用します。  Parameters パラメーターを使用して、Runbook のパラメーターに値を指定できます。 パラメーター値を指定する方法の詳細については、「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」をご覧ください。
@@ -136,14 +120,6 @@ Runbook の新しいスケジュールは、Azure ポータル、クラシック
 2. スケジュールの名前をクリックして、その詳細ウィンドウを開きます。
 3. **有効** を **いいえ** に変更します
 
-### <a name="to-disable-a-schedule-from-the-azure-classic-portal"></a>Azure クラシック ポータルからスケジュールを無効にするには
-Azure クラシック ポータルで、スケジュール用の [スケジュールの詳細] ページからスケジュールを無効にすることができます。
-
-1. Azure クラシック ポータルで、[Automation] を選択し、次に Automation アカウントの名前をクリックします。
-2. 資産 タブを選択します。
-3. スケジュールの名前をクリックして、その詳細ページを開きます。
-4. **有効** を **いいえ** に変更します
-
 ### <a name="to-disable-a-schedule-with-windows-powershell"></a>Windows PowerShell でスケジュールを無効にするには
 クラシック Runbook 用の既存のスケジュールのプロパティを変更するには、[Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx) コマンドレットを使用します。Azure ポータルの Runbook 用には、[Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) コマンドレットを使用します。 To disable the schedule, specify **false** for the **IsEnabled** parameter.
 
@@ -161,6 +137,6 @@ Azure クラシック ポータルで、スケジュール用の [スケジュ�
     Set-AzureAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Automation の Runbook の使用を開始するには、「 [Azure Automation での Runbook の開始](automation-starting-a-runbook.md) 
 

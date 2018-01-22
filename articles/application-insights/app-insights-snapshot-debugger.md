@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2f1f9f306d7759cbd1202c985da27a2a3b879ebd
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f3cdcaf49999d2d5d1ee639cb41916a2584b84f2
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 
@@ -62,8 +62,6 @@ ms.lasthandoff: 12/08/2017
         <MaximumCollectionPlanSize>50</MaximumCollectionPlanSize>
         <!-- How often to reset problem counters. -->
         <ProblemCounterResetInterval>06:00:00</ProblemCounterResetInterval>
-        <!-- The maximum number of snapshots allowed in one minute. -->
-        <SnapshotsPerMinuteLimit>2</SnapshotsPerMinuteLimit>
         <!-- The maximum number of snapshots allowed per day. -->
         <SnapshotsPerDayLimit>50</SnapshotsPerDayLimit>
         </Add>
@@ -77,8 +75,8 @@ ms.lasthandoff: 12/08/2017
 
 1. まだ有効にしていない場合は、[ASP.NET Core Web アプリで Application Insights を有効](app-insights-asp-net-core.md)にします。
 
-> [!NOTE]
-> お使いのアプリケーションが、2.1.1 以降のバージョンの Microsoft.ApplicationInsights.AspNetCore パッケージを参照していることを確認します。
+    > [!NOTE]
+    > お使いのアプリケーションが、2.1.1 以降のバージョンの Microsoft.ApplicationInsights.AspNetCore パッケージを参照していることを確認します。
 
 2. [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに含めます。
 
@@ -122,7 +120,7 @@ ms.lasthandoff: 12/08/2017
    }
    ```
 
-4. スナップショット コレクターを構成するには、appsettings.json に SnapshotCollectorConfiguration セクションを追加します。 For example:
+4. スナップショット コレクターを構成するには、appsettings.json に SnapshotCollectorConfiguration セクションを追加します。 例: 
 
    ```json
    {
@@ -174,8 +172,8 @@ Azure サブスクリプションの所有者は、スナップショットを�
 1. [保存] ボタンをクリックして、ユーザーをロールに追加します。
 
 
-[!IMPORTANT]
-    スナップショットは、変数とパラメーターの値に個人情報などの機密情報を含んでいる可能性があります。
+> [!IMPORTANT]
+> スナップショットは、変数とパラメーターの値に個人情報などの機密情報を含んでいる可能性があります。
 
 ## <a name="debug-snapshots-in-the-application-insights-portal"></a>Application Insights ポータルのデバッグ スナップショット
 
@@ -277,6 +275,41 @@ MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dump
 
 App Service にホストされて_いない_アプリケーションでは、アップローダー ログは、ミニダンプと同じフォルダー `%TEMP%\Dumps\<ikey>` にあります (`<ikey>` はインストルメンテーション キー)。
 
+### <a name="troubleshooting-cloud-services"></a>クラウド サービスのトラブルシューティング
+クラウド サービスのロールでは、既定の一時フォルダーが minidump ファイルを保持するためには小さすぎる場合があり、スナップショットが失われる可能性があります。
+必要な領域は、アプリケーションの合計ワーキング セットと同時実行スナップショット数によって異なります。
+32 ビット ASP.NET web ロールのワーキング セットは、通常は 200 MB から 500 MB です。
+少なくとも 2 つの同時実行スナップショットを許可する必要があります。
+たとえば、アプリケーションが 1 GB の合計ワーキング セットを使用する場合は、スナップショットを格納するために少なくとも 2 GB のディスク領域があることを確認する必要があります。
+次の手順に従って、スナップショット専用のローカル リソースを持つクラウド サービス ロールを構成します。
+
+1. クラウド サービス定義ファイル (.csdf) を編集して、新しいローカル リソースをクラウド サービスに追加します。 次の例では、サイズが 5 GB の `SnapshotStore` というリソースを定義します。
+```xml
+   <LocalResources>
+     <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
+   </LocalResources>
+```
+
+2. ロールの `OnStart` メソッドを変更して、`SnapshotStore` ローカル リソースを指す環境変数を追加します。
+```C#
+   public override bool OnStart()
+   {
+       Environment.SetEnvironmentVariable("SNAPSHOTSTORE", RoleEnvironment.GetLocalResource("SnapshotStore").RootPath);
+       return base.OnStart();
+   }
+```
+
+3. ロールの ApplicationInsights.config ファイルを更新して、`SnapshotCollector` によって使用される一時フォルダーの場所を上書きします。
+```xml
+  <TelemetryProcessors>
+    <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
+      <!-- Use the SnapshotStore local resource for snapshots -->
+      <TempFolder>%SNAPSHOTSTORE%</TempFolder>
+      <!-- Other SnapshotCollector configuration options -->
+    </Add>
+  </TelemetryProcessors>
+```
+
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Application Insights 検索を使用してスナップショット付きの例外を検索する
 
 スナップショットが作成されている場合、例外がスローされるとスナップショット ID がタグ付けされます。 Application Insights に例外テレメトリがレポートされると、そのスナップショット ID はカスタム プロパティとして含まれます。 Application Insights の [検索] ブレードを使用すると、`ai.snapshot.id` カスタム プロパティを使用してすべてのテレメトリを見つけることができます。
@@ -297,7 +330,7 @@ App Service にホストされて_いない_アプリケーションでは、ア
 
 それでもそのスナップショット ID を持つ例外が表示されない場合、その例外テレメトリが Application Insights にレポートされなかったということです。 このような状況は、スナップショットを取得した後かつ例外テレメトリにレポートする前にアプリケーションがクラッシュした場合に発生する可能性があります。 この場合、`Diagnose and solve problems` で App Service を確認し、予期しない再起動またはハンドルされない例外があったかどうかを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [コードでスナップポイントを設定](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications)し、例外を待たずにスナップショットを取得します。
 * [Web アプリの例外の診断](app-insights-asp-net-exceptions.md)に関する記事では、Application Insights に表示される例外を増やす方法を説明しています。 

@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 01/08/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 3b914bb72d9d0d6b6021c221c6019aea69a964a6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0f18f377f194e78c05e63e9b6cbc31c1b945335
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="quickstart-add-new-users-to-azure-active-directory"></a>クイック スタート: Azure Active Directory に新しいユーザーを追加する
-この記事では、Azure ポータルを使用して組織の新しいユーザーを Azure Active Directory (Azure AD) に 1 度に追加するか、オンプレミスの Windows Server AD ユーザー アカウントのデータを同期することによって追加する方法を説明します。 
+この記事では、組織のユーザーを組織の Azure Active Directory (Azure AD) テナントで削除または追加する場合に、Azure Portal を使用する方法や、オンプレミスの Windows Server AD ユーザー アカウントのデータを同期する方法を説明します。 
 
 ## <a name="add-cloud-based-users"></a>クラウドベースのユーザーを追加する
 1. [Azure Active Directory 管理センター](https://aad.portal.azure.com)に、ディレクトリの全体管理者のアカウントでサインインします。
@@ -48,10 +48,13 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="learn-more"></a>詳細情報 
 * [別のディレクトリからのゲスト ユーザーの追加](active-directory-b2b-what-is-azure-ad-b2b.md) 
-
 * [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
+* [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
+* [削除済みユーザーの復元](active-directory-users-restore.md)
 
-## <a name="next-steps"></a>次のステップ
+
+
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、Azure AD Premium に新しいユーザーを追加する方法について説明しました。 
 
 次のリンクを使用して、Azure ポータルから Azure AD 内に新しいユーザーを作成できます。

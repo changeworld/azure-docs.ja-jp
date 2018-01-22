@@ -7,6 +7,7 @@ author: daden
 manager: mithal
 editor: daden
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: c7ed8e695097d0cf2f5c99f8ccf3378c4e553c3b
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f2482c7a47c72d192f26f3d8d9b9249af53da25d
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>数テラバイトのデータを活用したサーバー ワークロードの予測
 
@@ -45,10 +46,12 @@ Machine Learning Workbench の次の主な機能について説明します。
 
 この例を実行するための前提条件は次のとおりです。
 
-* [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)。
-* [Machine Learning Workbench](./overview-what-is-azure-ml.md) のインストール済みコピー。 プログラムをインストールし、ワークスペースを作成するには、[クイックスタート インストール ガイド](./quickstart-installation.md)を参照してください。
+* [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
+* [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のインストール済みコピー。 プログラムをインストールし、ワークスペースを作成するには、[クイックスタート インストール ガイド](./quickstart-installation.md)を参照してください。 複数のサブスクリプションをお持ちの場合は、[使うサブスクリプションを現在アクティブなサブスクリプションに設定する](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set)ことができます。
 * Windows 10 (この例の手順は、macOS システムでもほぼ同じです)。
-* Linux (Ubuntu) 用データ サイエンス仮想マシン (DSVM)。 [こちらの手順](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)に従って、Ubuntu DSVM をプロビジョニングできます。 [こちらのクイックスタート](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)も参照してください。 少なくとも 8 個のコアと 32 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 この例を試すには、DSVM IP アドレス、ユーザー名、およびパスワードが必要です。 後の手順で参照できるように、次の表に DSVM の情報を記入して保存します。
+* Linux (Ubuntu) 用のデータ サイエンス仮想マシン (DSVM)。できれば、データが存在する米国東部リージョンにします。 [こちらの手順](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に従って、Ubuntu DSVM をプロビジョニングできます。 [こちらのクイックスタート](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)も参照してください。 少なくとも 8 個のコアと 32 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 
+
+[こちらの手順](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present)に従って、AML Workbench の VM でパスワードのない sudoer アクセスを有効にします。  [AML Workbench の VM の作成と使用に SSH キーに基づく認証](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)を使うこともできますです。 この例では、パスワードを使って VM にアクセスします。  後の手順で参照できるように、次の表に DSVM の情報を記入して保存します。
 
  フィールド名| 値 |  
  |------------|------|
@@ -56,9 +59,10 @@ DSVM の IP アドレス | xxx|
  ユーザー名  | xxx|
  パスワード   | xxx|
 
+
  [Docker エンジン](https://docs.docker.com/engine/)がインストールされている VM を使用できます。
 
-* Hortonworks Data Platform バージョン 3.6 および Spark バージョン 2.1.x がインストールされた HDInsight Spark クラスター。 HDInsight クラスターの作成方法の詳細については、「[Azure HDInsight での Apache Spark クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)」をご覧ください。 各 worker に 16 コアと 112 GB のメモリを割り当てた 3 worker クラスターを使用することをお勧めします。 または、VM の種類としてヘッド ノードに `D12 V2`、ワーカー ノードに `D14 V2` を選択することもできます。 クラスターのデプロイには約 20 分かかります。 この例を試すには、クラスター名、SSH ユーザー名、およびパスワードが必要です。 後の手順で参照できるように、次の表に Azure HDInsight クラスターの情報を記入して保存します。
+* Hortonworks Data Platform バージョン 3.6 および Spark バージョン 2.1.x がインストールされた HDInsight Spark クラスター。できれば、データが存在する米国東部リージョンのもの。 HDInsight クラスターの作成方法の詳細については、「[Azure HDInsight での Apache Spark クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)」をご覧ください。 各 worker に 16 コアと 112 GB のメモリを割り当てた 3 worker クラスターを使用することをお勧めします。 または、VM の種類としてヘッド ノードに `D12 V2`、ワーカー ノードに `D14 V2` を選択することもできます。 クラスターのデプロイには約 20 分かかります。 この例を試すには、クラスター名、SSH ユーザー名、およびパスワードが必要です。 後の手順で参照できるように、次の表に Azure HDInsight クラスターの情報を記入して保存します。
 
  フィールド名| 値 |  
  |------------|------|
@@ -91,11 +95,11 @@ DSVM の IP アドレス | xxx|
 
 ## <a name="data-description"></a>データの説明
 
-この例で使用するデータは、合成されたサーバー ワークロード データです。 パブリックにアクセス可能な Azure Blob ストレージ アカウント内でホストされています。 具体的なストレージ アカウントの情報は、[`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) の `dataFile` フィールドで確認できます。 Blob Storage から直接データを使用できます。 多数のユーザーが同時にストレージを使用する場合は、[azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) を使用してデータを自分のストレージにダウンロードできます。 
+この例で使用するデータは、合成されたサーバー ワークロード データです。 米国東部リージョンでパブリックにアクセス可能な Azure Blob ストレージ アカウント内でホストされています。 具体的なストレージ アカウント情報は、[`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldata_storageconfig.json) の `dataFile` フィールドに "wasb://<BlobStorageContainerName>@<StorageAccountName>.blob.core.windows.net/<path>" の形式で記述されています。 Blob Storage から直接データを使用できます。 多数のユーザーが同時にストレージを使用する場合は、よりよい実験エクスペリエンスのため、[azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) を使ってデータを自分のストレージにダウンロードできます。 
 
 合計データ サイズは約 1 TB です。 各ファイルは約 1 ～ 3 GB であり、ヘッダーなしの CSV ファイル形式です。 データの各行は、特定のサーバーで発生したトランザクションの負荷を示しています。 データ スキーマの詳細情報は次のとおりです。
 
-列番号 | フィールド名| 型 | 説明 |  
+列番号 | フィールド名| type | [説明] |  
 |------------|------|-------------|---------------|
 1  | `SessionStart` | DateTime |    セッションの開始時間
 2  |`SessionEnd`    | DateTime | セッションの終了時間
@@ -105,10 +109,10 @@ DSVM の IP アドレス | xxx|
 6 | `HTTP1` | 整数|  セッションで HTTP1 と HTTP2 のどちらを使用するか
 7 |`ServerType` | 整数   |サーバーの種類
 8 |`SubService_1_Load` | Double |   サブサービス 1 の負荷
-9 | `SubService_1_Load` | Double |  サブサービス 2 の負荷
-10 | `SubService_1_Load` | Double |     サブサービス 3 の負荷
-11 |`SubService_1_Load` | Double |  サブサービス 4 の負荷
-12 | `SubService_1_Load`| Double |      サブサービス 5 の負荷
+9 | `SubService_2_Load` | Double |  サブサービス 2 の負荷
+10 | `SubService_3_Load` | Double |     サブサービス 3 の負荷
+11 |`SubService_4_Load` | Double |  サブサービス 4 の負荷
+12 | `SubService_5_Load`| Double |      サブサービス 5 の負荷
 13 |`SecureBytes_Load`  | Double | セキュリティで保護されたバイトの読み込み
 14 |`TotalLoad` | Double | サーバー上の合計読み込み
 15 |`ClientIP` | String|    クライアント IP アドレス
@@ -123,7 +127,7 @@ DSVM の IP アドレス | xxx|
 
 この例のファイルは、次のように整理されます。
 
-| ファイル名 | 型 | 説明 |
+| ファイル名 | type | [説明] |
 |-----------|------|-------------|
 | `Code` | フォルダー | このフォルダーには、この例のすべてのコードが含まれています。 |
 | `Config` | フォルダー | このフォルダーには、構成ファイルが含まれています。 |
@@ -154,7 +158,7 @@ DSVM の IP アドレス | xxx|
 
 1 か月のデータセットでの実験用に 1 つのコンテナーを使用し、完全なデータセットでの実験用に別のコンテナーを使用することをお勧めします。 データとモデルは Parquet ファイルとして保存されるので、各ファイルは実際には複数の BLOB を含むコンテナー内の 1 つのフォルダーです。 結果のコンテナーは次のようになります。
 
-| BLOB のプレフィックス名 | 型 | 説明 |
+| BLOB のプレフィックス名 | type | [説明] |
 |-----------|------|-------------|
 | featureScaleModel | Parquet | 数値特徴の標準スケーラー モデル。 |
 | stringIndexModel | Parquet | 数値特徴以外の文字列インデクサー モデル。|
@@ -180,7 +184,7 @@ DSVM の IP アドレス | xxx|
 
 最初の引数である `configFilename` は、Blob Storage 情報を格納し、データを読み込む場所を指定するローカル構成ファイルです。 既定では、[`Config/storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/storageconfig.json) であり、1 か月のデータ実行で使用されます。 また、[`Config/fulldata_storageconfig.json`](https://github.com/Azure/MachineLearningSamples-BigData/blob/master/Config/fulldatastorageconfig.json) も含まれています。これは、完全なデータセット実行で使用する必要があります。 構成の内容は次のとおりです。 
 
-| フィールド | 型 | 説明 |
+| フィールド | type | [説明] |
 |-----------|------|-------------|
 | storageAccount | String | Azure ストレージ アカウント名 |
 | storageContainer | String | 中間の結果を格納する Azure ストレージ アカウントのコンテナー |
@@ -252,7 +256,7 @@ attach_storage_container(spark, storageAccount, storageKey)
 サイド パネルに移動し、**[実行]** をクリックすると、`etl.py` の実行履歴が表示されます。 実行時間は約 4 分です。 この手順の処理結果はコンテナーに保存され、トレーニングのために train.py に読み込まれます。 また、文字列インデクサー、エンコーダー パイプライン、標準スケーラーもプライベート コンテナーに保存されます。 これらは運用化で使用されます。 
 
 
-##### <a name="3-model-training-on-dsvm-docker"></a>3.DSVM Docker でのモデルのトレーニング
+##### <a name="3-model-training-on-dsvm-docker"></a>手順 3.DSVM Docker でのモデルのトレーニング
 
 DSVM Docker 上でスクリプト `train.py` を実行します。
 
@@ -270,7 +274,7 @@ DSVM Docker 上でスクリプト `train.py` を実行します。
 
 aml_config フォルダーに、次の 2 つのファイルが作成されます。
     
--  myhdo.compute: このファイルには、リモートの実行ターゲットの接続および構成情報が含まれています。
+-  myhdi.compute: このファイルには、リモートの実行ターゲットの接続および構成情報が含まれています。
 -  myhdi.runconfig: このファイルは、Workbench アプリケーション内で使用される一連の実行オプションです。
 
 
@@ -286,7 +290,7 @@ myhdi.runconfig を参照し、フィールドの構成を次のように変更�
 
 この手順の実行時間は最長 7 分です。
 
-##### <a name="2-data-preparation-and-feature-engineering-on-hdinsight-cluster"></a>手順 2.HDInsight クラスター上のデータの準備と特徴エンジニアリング
+##### <a name="2-data-preparation-and-feature-engineering-on-hdinsight-cluster"></a>2.HDInsight クラスター上のデータの準備と特徴エンジニアリング
 
 HDInsight クラスター上で完全なデータを使用して `etl.py` スクリプトを実行します。
 
@@ -295,7 +299,7 @@ HDInsight クラスター上で完全なデータを使用して `etl.py` スク
 このジョブの実行時間は比較的長いので (約 2 時間)、`-a` を使用して出力ストリーミングを無効にすることができます。 ジョブが完了したら、**[実行履歴]** でドライバー ログとコントローラー ログを確認できます。 大規模なクラスターがある場合は、より多くのインスタンスまたはコアを使用するように、`Config/hdi_spark_dependencies.yml` で構成をいつでも変更できます。 たとえば、4 ワーカー ノードのクラスターがある場合は、`spark.executor.instances` の値を 5 から 7 に増やすことができます。 ストレージ アカウントの **fullmodel** コンテナーでこの手順の出力を確認できます。 
 
 
-##### <a name="3-model-training-on-hdinsight-cluster"></a>3.HDInsight クラスター上のモデルのトレーニング
+##### <a name="3-model-training-on-hdinsight-cluster"></a>手順 3.HDInsight クラスター上のモデルのトレーニング
 
 HDInsight クラスター上でスクリプト `train.py` を実行します。
 
@@ -324,7 +328,7 @@ Workbench の右側のサイドバーで **[実行]** に移動すると、各 P
 
 ### <a name="operationalize-the-model"></a>モデルの運用化
 
-このセクションでは、前の手順で Web サービスとして作成したモデルを運用化します。 また、Web サービスを使用してワークロードを予測する方法についても説明します。 Machine Language Operationalization コマンド ライン インターフェイス (CLI) を使用して、コードと依存関係を Docker イメージとしてパッケージ化し、コンテナー化された Web サービスとしてモデルを公開します。 詳細については、[こちらの概要](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/operationalization-overview.md)をご覧ください。
+このセクションでは、前の手順で Web サービスとして作成したモデルを運用化します。 また、Web サービスを使用してワークロードを予測する方法についても説明します。 Machine Language Operationalization コマンド ライン インターフェイス (CLI) を使用して、コードと依存関係を Docker イメージとしてパッケージ化し、コンテナー化された Web サービスとしてモデルを公開します。
 
 Machine Learning Workbench のコマンド ライン プロンプトを使用して CLI を実行できます。  また、[インストール ガイド](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/install-on-ubuntu-linux.md)に従って、Ubuntu Linux 上で CLI を実行することもできます。 
 
@@ -415,7 +419,7 @@ Machine Learning Workbench のコマンド ライン プロンプトを使用し
    詳細については、[Azure Container Service クラスターで運用化をスケールする方法](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/how-to-scale.md)に関するページをご覧ください。
  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この例では、Machine Learning Workbench を使用してビッグ データで機械学習モデルをトレーニングし、トレーニングしたモデルを運用化する方法を説明しました。 具体的には、さまざまなコンピューティング ターゲットを構成して使用する方法と、メトリックの追跡履歴を実行し、さまざまな実行を使用する方法について説明しました。
 

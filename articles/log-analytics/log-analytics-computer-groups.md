@@ -1,5 +1,5 @@
 ---
-title: "Log Analytics のログ検索におけるコンピューター グループ | Microsoft Docs"
+title: "Azure Log Analytics のログ検索におけるコンピューター グループ | Microsoft Docs"
 description: "Log Analytics では、コンピューター グループを使用して、ログ検索の範囲を特定のコンピューターの集合に限定することができます。  この記事では、コンピューター グループを作成する各種の方法とそれらをログ検索で使用する方法について説明します。"
 services: log-analytics
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 17a59a38b6a445a7f42df171a711669f95fc84c2
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4d6a80082711f09e9c189d53fb4fda00a7d73c29
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -27,7 +27,7 @@ Log Analytics では、コンピューター グループを使用して、[ロ�
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Log Analytics のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
 
-| 方法 | 説明 |
+| 方法 | [説明] |
 |:--- |:--- |
 | ログ検索 |コンピューターの一覧を返すログ検索を作成します。 |
 | Log Search API |ログ検索の結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
@@ -44,7 +44,7 @@ Log Analytics のコンピューター グループは、以下の表に示し�
 
 次の表では、コンピューター グループを定義するプロパティについて説明しています。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:---|:---|
 | 表示名   | ポータルに表示する検索の名前。 |
 | カテゴリ       | ポータル内で検索を整理するためのカテゴリ。 |
@@ -83,7 +83,7 @@ Azure Portal の Log Analytics の **[詳細設定]** から Active Directory �
 グループがインポートされると、検出されたグループ メンバーシップを持つコンピューターの数とインポートされたグループの数がメニューに表示されます。  そのいずれかのリンクをクリックすると、**ComputerGroup** のレコードがこの情報と共に返されます。
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-WSUS グループのメンバーシップをインポートするように Log Analytics を構成した場合、OMS エージェントがインストールされているすべてのコンピューターについて、WSUS の対象グループのメンバーシップが分析されます。  クライアント側のターゲット指定方式を使用している場合、OMS に接続されていて、かつ WSUS の対象グループに属しているすべてのコンピューターのグループ メンバーシップが Log Analytics にインポートされます。 サーバー側のターゲット指定方式を使用している場合、グループ メンバーシップ情報を OMS にインポートするためには、WSUS サーバーに OMS エージェントがインストールされている必要があります。  このメンバーシップは絶えず 4 時間おきに更新されます。 
+WSUS グループのメンバーシップをインポートするように Log Analytics を構成した場合、OMS エージェントがインストールされているすべてのコンピューターについて、WSUS の対象グループのメンバーシップが分析されます。  クライアント側のターゲット指定方式を使用している場合、Log Analytics に接続されていて、かつ WSUS の対象グループに属しているすべてのコンピューターのグループ メンバーシップが Log Analytics にインポートされます。 サーバー側のターゲット指定方式を使用している場合、グループ メンバーシップ情報を Log Analytics にインポートするためには、WSUS サーバーに OMS エージェントがインストールされている必要があります。  このメンバーシップは絶えず 4 時間おきに更新されます。 
 
 Azure Portal の Log Analytics の **[詳細設定]** から WSUS グループをインポートするように Log Analytics を構成します。  **[コンピューター グループ]**、**[WSUS]** の順に選択し、**[WSUS のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
 
@@ -145,20 +145,20 @@ Configuration Manager のコレクションをインポートするには、[Log
 
 
 ## <a name="computer-group-records"></a>コンピューター グループのレコード
-Active Directory または WSUS から作成されたコンピューター グループでは、そのメンバーシップごとのレコードが OMS リポジトリに作成されます。  これらは **ComputerGroup** タイプのレコードとして、次の表に示すプロパティを持ちます。  ログ検索に基づくコンピューター グループにはレコードが作成されません。
+Active Directory または WSUS から作成されたコンピューター グループでは、そのメンバーシップごとのレコードが Log Analytics ワークスペースに作成されます。  これらは **ComputerGroup** タイプのレコードとして、次の表に示すプロパティを持ちます。  ログ検索に基づくコンピューター グループにはレコードが作成されません。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 型 |*ComputerGroup* |
+| type |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
 | Computer |メンバー コンピューターの名前。 |
-| Group |グループの名前。 |
+| グループ |グループの名前。 |
 | GroupFullName |ソースとソース名を含んだグループの完全パス。 |
 | GroupSource |グループの収集元となったソース。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | GroupSourceName |グループの収集元となったソースの名前。  Active Directory の場合はドメイン名になります。 |
 | ManagementGroupName |SCOM エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
 | TimeGenerated |コンピューター グループが作成または更新された日時。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 

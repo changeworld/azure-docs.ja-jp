@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: bc0913568be13aa348a6750f4304086aeec66b04
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 74d363be48972b40ba6a50b845acea78e1b5cc20
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation アカウントの認証を実行アカウントで更新する 
 次の条件に該当する場合は、Azure Portal または PowerShell を使用して既存の Automation アカウントを更新できます。
@@ -225,7 +225,7 @@ Automation アカウントを更新するには、このトピックの作業で
               $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
               $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
               $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
-                      "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
+                      "Log in to the Microsoft Azure portal (https://portal.azure.com) and select Subscriptions -> Management Certificates." + [Environment]::NewLine +
                       "Then click Upload and upload the .cer format of #CERT#"
 
                if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
@@ -277,7 +277,7 @@ Automation アカウントを更新するには、このトピックの作業で
 
 スクリプトが正常に実行されたら、次のことを確認してください。
 * 自己署名公開証明書 (.cer ファイル) を使ってクラシック実行アカウントを作成した場合、コンピューターの一時ファイル フォルダーに証明書が作成されて保存されます。PowerShell セッションの実行に使用したユーザー プロファイル下の *%USERPROFILE%\AppData\Local\Temp* を探してください。
-* エンタープライズ公開証明書 (.cer ファイル) を使ってクラシック実行アカウントを作成した場合は、その証明書を使用します。 [Management API 証明書を Azure クラシック ポータルにアップロード](../azure-api-management-certs.md)する手順を実行した後、[Azure クラシック デプロイメント リソースで認証を行うサンプル コード](automation-verify-runas-authentication.md#classic-run-as-authentication)を使用して、クラシック デプロイメント リソースに対する資格情報の構成を確認します。 
+* エンタープライズ公開証明書 (.cer ファイル) を使ってクラシック実行アカウントを作成した場合は、その証明書を使用します。 [Management API 証明書を Azure Portal にアップロード](../azure-api-management-certs.md)する手順を実行した後、[Azure クラシック デプロイメント リソースで認証を行うサンプル コード](automation-verify-runas-authentication.md#classic-run-as-authentication)を使用して、クラシック デプロイメント リソースに対する資格情報の構成を確認します。 
 * クラシック実行アカウントを "*作成しなかった場合*" は、「[サービス管理リソースで認証を行うサンプル コード](automation-verify-runas-authentication.md#automation-run-as-authentication)」を参照して、Resource Manager リソースに対する認証を行い、資格情報の構成を確認します。
 
 ## <a name="next-steps"></a>次の手順

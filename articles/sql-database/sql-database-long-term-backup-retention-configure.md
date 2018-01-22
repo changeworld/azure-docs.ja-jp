@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 9b218756277e52a4d582b1e8e42200f78d38580e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e75facfd77fc1cb3c23aa4e1f6f7f799620fef39
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database を構成して長期のバックアップ リテンション期間から復元する | Microsoft Docs
 
@@ -82,6 +82,9 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 12. **[構成]** ページで、新しい保持ポリシーに有効な名前を指定し、必要に応じて既定の保持ポリシーを変更して、**[OK]** をクリックします。
 
    ![保持ポリシーの定義](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
+   
+   >[!NOTE]
+   >保持ポリシーの名前には、一部の文字 (スペースなど) を使用できません。
 
 13. 指定のデータベースの **[長期的なバックアップ保有期間]** ページで、**[保存]** をクリックし、**[OK]** をクリックして、選択したすべてのデータベースに長期的なバックアップ保持ポリシーを適用します。
 
@@ -147,7 +150,7 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 
 次のセクションでは、PowerShell で Azure Recovery Services コンテナーを構成する方法、コンテナー内のバックアップを確認する方法、およびそのコンテナーから復元する方法について説明します。
 
-### <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
+### <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
 
 [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) を使用して Recovery Services コンテナーを作成します。
 
@@ -263,7 +266,7 @@ $restoredDb
 > [!NOTE]
 > ここから、SQL Server Management Studio を使用して、復元されたデータベースに接続し、必要なタスクを実行できます。たとえば、復元されたデータベースからデータを少し抽出して既存のデータベースにコピーしたり、既存のデータベースを削除し、復元されたデータベースの名前を既存のデータベース名に変更したりできます。 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - サービスによって生成された自動バックアップについては、[自動バックアップ](sql-database-automated-backups.md)に関する記事を参照してください。
 - バックアップの長期保存については、[バックアップの長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。

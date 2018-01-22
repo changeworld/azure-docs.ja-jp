@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/05/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 5875cf4cc0938607fa1ff6adf840d513d1fb85bd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d0ad06fc7eec07f8e1e0ba47121b6eec01c87df
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="find-unmanaged-cloud-applications-with-cloud-app-discovery"></a>管理されていないクラウド アプリケーションを Cloud App Discovery で検出する
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
-Cloud App Discovery は、組織内のユーザーによって使用されている管理されていないクラウド アプリケーションを検出できるようにする Azure Active Directory Premium の機能です。 現代の企業では、IT 部門が、組織のメンバーが作業のために使用しているクラウド アプリケーションを部分的にしか認識できていないことがよくあります。 管理者が企業データへの不正アクセスを心配している理由は容易に理解できます。データの漏洩やその他のセキュリティ リスクが発生するおそれがあるからです。 このような認識不足は、セキュリティ リスクに対処するための計画策定が困難であるように思わせる可能性があります。
+現在、Azure Active Directory の Cloud App Discovery によって提供されるエージェントレス検出エクスペリエンスは、Microsoft Cloud App Security を利用して強化されています。 Cloud App Discovery を使用するには、Azure AD Premium P1 資格情報を使用してサインインします。 この更新プログラムは Azure AD Premium P1 のすべてのお客様に追加費用なしで提供されます。 まず、[Azure AD の Cloud App Discovery のセットアップ](https://docs.microsoft.com/azure/active-directory/cloudappdiscovery-get-started)に関する記事を読んでから、[Microsoft Cloud App Security](https://portal.cloudappsecurity.com/) を試用してください。
 
-> [!TIP] 
-> [Microsoft Cloud App Security との統合](https://portal.cloudappsecurity.com)によって拡張される、Azure Active Directory (Azure AD) の Cloud App Discovery の機能強化を確認してください。
-
+> [!IMPORTANT] 
+> エージェントベースの検出機能を備えた現在の Azure AD Cloud App Discovery エクスペリエンスは 2018 年 3 月 5 日に終了します。その後、エージェントは無効になりデータは削除されます。 サービスの中断を回避するために、新しいエクスペリエンスを準備して実行できるように 3 月 5 日までに行動してください。  
+ 
 **Cloud App Discovery を使用すると次のことができます。**
 
 * 使用されているクラウド アプリケーションを検出し、ユーザー数、トラフィック量、アプリケーションに対する Web 要求数別に使用状況を測定する
@@ -44,7 +44,7 @@ Cloud App Discovery は、組織内のユーザーによって使用されてい
 ![Cloud App Discovery の図](./media/active-directory-cloudappdiscovery/cad01.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Cloud App Discovery のセキュリティとプライバシーの考慮事項](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)  
 * [Cloud App Discovery のカスタム ポートを使用するプロキシ サービス用レジストリ設定](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 * [Cloud App Discovery エージェントの変更ログ ](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)

@@ -1,6 +1,6 @@
 ---
-title: "OMS Log Analytics のアラートへの応答 | Microsoft Docs"
-description: "Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、アラート ルールを作成する方法と、実行できるさまざまなアクションの詳細について説明します。"
+title: "Azure Log Analytics のアラートへの応答 | Microsoft Docs"
+description: "Log Analytics のアラートは、Azure ワークスペース内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、アラート ルールを作成する方法と、実行できるさまざまなアクションの詳細について説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2017
+ms.date: 01/08/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d936cf467ee7043b171cfc845f247f891f52f599
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: e80481f074bc196caae7c03f54134eaef0fb46d5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Log Analytics のアラート ルールへのアクションの追加
 [Log Analytics でアラートを作成する](log-analytics-alerts.md)際に、1 つまたは複数の操作を実行[アラート ルールを構成する](log-analytics-alerts.md)ことができます。  この記事では、使用できるさまざまなアクションと、それぞれの構成に関する詳細を示します。
 
-| アクション | Description |
+| アクションを表示します。 | [説明] |
 |:--|:--|
 | [電子メール](#email-actions) | アラートの詳細を記載した電子メールを 1 人以上の受信者に送信します。 |
 | [webhook](#webhook-actions) | 1 つの HTTP POST 要求を使用して外部プロセスを呼び出します。 |
@@ -36,9 +36,9 @@ ms.lasthandoff: 10/24/2017
 
 電子メール アクションには、次の表に示すプロパティが必要です。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| [件名] |電子メールの件名。  電子メールの本文を変更することはできません。 |
+| 件名 |電子メールの件名。  電子メールの本文を変更することはできません。 |
 | Recipients |電子メールのすべての受信者のアドレス。  複数のアドレスを指定する場合は、アドレスをセミコロン (;) で区切ります。 |
 
 
@@ -48,7 +48,7 @@ Webhook アクションは、1 つの HTTP POST 要求を使用して外部の�
 
 webhook アクションには、次の表に示すプロパティが必要です。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | Webhook URL |Webhook の URL。 |
 | Custom JSON payload (カスタム JSON ペイロード) |Webhook と共に送信するカスタム ペイロードです。  詳細については、以下をご覧ください。 |
@@ -59,7 +59,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 >[!NOTE]
 > ご使用のワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、webhook ぺイロードが変わります。  フォーマットの詳細については、「[Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse)」をご覧ください。  以下の[サンプル](#sample-payload)のセクションで例をご覧いただけます。
 
-| パラメーター | 変数 | 説明 |
+| パラメーター | 変数 | [説明] |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |アラート ルールの名前。 |
 | AlertThresholdOperator |#thresholdoperator |アラート ルールのしきい値演算子。  "*Greater than*" または "*Less than*" を使用できます。 |
@@ -71,7 +71,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | SearchIntervalStartTimeUtc |#searchintervalstarttimeutc |UTC 形式で記述したクエリの開始時刻。 |
 | SearchQuery |#searchquery |アラート ルールで使用されるログ検索クエリ。 |
 | SearchResults |以下を参照 |クエリによって返される JSON 形式のレコード。  最初の 5,000 レコードに制限されます。 |
-| WorkspaceID |#workspaceid |OMS ワークスペースの ID。 |
+| WorkspaceID |#workspaceid |Log Analytics ワークスペースの ID |
 
 たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。  この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
 
@@ -97,15 +97,15 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     }
 
 
-Webhook で外部サービスを開始するアラート ルールを作成する例の詳細については、[OMS Log Analytics で アラート webhook アクションを作成して、メッセージを Slack に送信する](log-analytics-alerts-webhooks.md)方法に関する記事を参照してください。
+Webhook で外部サービスを開始するアラート ルールを作成する例の詳細については、[Log Analytics で アラート webhook アクションを作成して、メッセージを Slack に送信する](log-analytics-alerts-webhooks.md)方法に関する記事を参照してください。
 
 
 ## <a name="runbook-actions"></a>Runbook アクション
-Runbook アクションは、Azure Automation で Runbook を開始します。  この種類のアクションを使用するためには、OMS ワークスペースに [Automation ソリューション](log-analytics-add-solutions.md) がインストールされ、構成されている必要があります。  Automation ソリューションで構成されているオートメーション アカウントの Runbook から選択できます。
+Runbook アクションは、Azure Automation で Runbook を開始します。  この種類のアクションを使用するためには、Log Analytics ワークスペースに [Automation ソリューション](log-analytics-add-solutions.md) がインストールされ、構成されている必要があります。  Automation ソリューションで構成されているオートメーション アカウントの Runbook から選択できます。
 
 Runbook アクションには、次の表に示すプロパティが必要です。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:---|
 | Runbook | アラートの作成時に開始する Runbook。 |
 | Run on (実行先) | Runbook をクラウドで実行する場合は、**[Azure]** を指定します。  **Hybrid Runbook Worker** がインストールされたエージェントで Runbook を実行する場合は、[[ハイブリッド worker]](../automation/automation-hybrid-runbook-worker.md ) を指定します。  |
@@ -117,11 +117,11 @@ Runbook のパラメーターを直接設定することはできませんが、
 >[!NOTE]
 > ご使用のワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、runbook ペイロードが変わります。  フォーマットの詳細については、「[Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse)」をご覧ください。  以下の[サンプル](#sample-payload)のセクションで例をご覧いただけます。  
 
-| ノード | 説明 |
+| ノード | [説明] |
 |:--- |:--- |
 | id |検索のパスと GUID。 |
 | __metadata |アラートに関する情報 (レコードの件数、検索結果の状態を含む)。 |
-| 値 |検索結果のレコードごとのエントリ。  エントリの詳細は、レコードのプロパティおよび値と対応します。 |
+| value |検索結果のレコードごとのエントリ。  エントリの詳細は、レコードのプロパティおよび値と対応します。 |
 
 たとえば、以下の Runbook では、ログ検索から返されたレコードを抽出し、レコードの種類ごとに異なるプロパティを割り当てています。  Runbook ではまず、JSON 形式の **RequestBody** を PowerShell からオブジェクトとして扱うことができるように変換していることに注目してください。
 
@@ -425,7 +425,7 @@ Runbook のパラメーターを直接設定することはできませんが、
     }
 
 
-### <a name="runbooks"></a>Runbook
+### <a name="runbooks"></a>Runbooks
 
 #### <a name="legacy-workspace"></a>レガシ ワークスペース
 レガシ ワークスペースでの、runbook アクション用サンプル ペイロードを次に示します。
@@ -620,6 +620,6 @@ Runbook のパラメーターを直接設定することはできませんが、
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - アラート ルールに関する [Webhook を構成する](log-analytics-alerts-webhooks.md) チュートリアルを完了します。  
 - アラートで識別された問題を修復するために [Azure Automation の Runbook](https://azure.microsoft.com/documentation/services/automation) を作成する方法について学習します。

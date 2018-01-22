@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 70286104db1b70aebd2f8b0feb4a0854b3cc2bb9
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: b8e245f13af1dd011a92bbf0584b1689a1a0399f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -161,6 +161,9 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
    出力の 3 行目に **"registrationState": "Registering"** と表示されます。 出力に **"registrationState": "Registered"** と表示されるまで、しばらく待ってから **show** コマンドを繰り返します。
 
+   >[!NOTE] 
+   ACS クラスターにデプロイする場合は、まったく同じ方法を使って、**Microsoft.ContainerService** リソース プロバイダーも登録する必要があります。
+
 3. 環境を作成します。 この手順は、環境ごとに 1 回実行する必要があります。 たとえば開発環境で 1 回、運用環境で 1 回実行します。 この最初の環境には "_ローカル モード_" を使います  後から "_クラスター モード_" で環境を設定してみる場合は、次のコマンドで `-c` スイッチまたは `--cluster` スイッチを指定してください。
 
    次の setup コマンドを実行するには、サブスクリプションの共同作成者のアクセス権が必要です。 このアクセス権がない場合、最低でも、デプロイ先のリソース グループに対する共同作成者のアクセス権が必要となります。 後者の場合、setup コマンドで `-g` フラグを使用し、リソース グループの名前を指定する必要があります。 
@@ -206,7 +209,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 1. リアルタイム Web サービスを作成するには、次のコマンドを使用します。
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c amlconfig\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
    このコマンドにより、後で使用できる Web サービス ID が生成されます。
 
@@ -298,7 +301,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 ## <a name="view-the-collected-data-in-azure-blob-storage"></a>Azure Blob Storage に収集されたデータを確認する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. 自分のストレージ アカウントを探します。 これを行うには、**[その他のサービス]** を選択します。
 
@@ -336,7 +339,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
       ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 3 部構成のチュートリアル シリーズのパート 3 では、Azure Machine Learning サービスを使って次の作業を行う方法について説明しました。
 > [!div class="checklist"]
 > * モデル ファイルを探す

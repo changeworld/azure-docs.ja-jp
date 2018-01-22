@@ -3,25 +3,32 @@ title: "Azure Time Series Insights とは | Microsoft Docs"
 description: "時系列データ分析と IoT ソリューション向けの新しいサービスである Azure Time Series Insights の概要を説明します。"
 services: time-series-insights
 ms.service: time-series-insights
-author: op-ravi
-ms.author: omravi
+author: ashannon7
+ms.author: anshan
 manager: jhubbard
 editor: MarkMcGeeAtAquent
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 95cb26ada6f8ea39bc1a437a755f80ee7ddb7698
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2a0d3e829ed28912b56a022aa6aa82ade1718e35
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
 Time Series Insights は、IoT デバイスによって生成されるデータなど、大量の時系列データの保存、視覚化、照会を目的としています。  クラウドの時系列データを保存、管理、照会、または視覚化する場合は、Time Series Insights が適しています。  
 
-社内向けまたは外部顧客向けのアプリケーションを作成する場合、時系列データのインデックス作成、保存、集計用のバックエンドとして Time Series Insights を使用できます。  Time Series Insights 上で、カスタムの視覚化機能やユーザー エクスペリエンスを構築できます。  Time Series Insights では、このシナリオを実現するために、REST Query API を公開しています。  
+Time Series Insights には 4 つの主要な仕事があります。
+
+- 1 番目として、Azure IoT Hub や Azure Event Hubs などのクラウド ゲートウェイと完全に統合します。 Time Series Insights はこれらのイベント ソースに簡単に接続して、メッセージや、クリーンな行と列でデータを保持する構造から、JSON を解析します。 メタデータとテレメトリを結合し、単票形式のストア内のデータにインデックスを作成します。
+- 2 番目として、Time Series Insights はデータのストレージを管理します。 いつでもデータに簡単にアクセスできるように、最大 400 日間、メモリと SSD にデータを格納します。 必要に応じて、何十億ものイベントに対する対話形式の照会を数秒で行うことができます。
+- 3 番目として、Time Series Insights では、TSI エクスプローラーによる視覚化をすぐに利用できます。  
+- 4 番目として、Time Series Insights のクエリ サービスは、TSI エクスプローラーと API の両方で提供されます。簡単に統合できる API を使うと、時系列データをカスタム アプリケーションに埋め込むことができます。  
+
+社内向けまたは外部顧客向けのアプリケーションを作成する場合、時系列データのインデックス作成、保存、集計用のバックエンドとして Time Series Insights を使用できます。 Time Series Insights 上で、カスタムの視覚化機能やユーザー エクスペリエンスを構築できます。  Time Series Insights では、このシナリオを実現するために、Query API が公開されています。  
 
 データが時系列かどうかわからない場合は、知っておくべきことがあります。  時系列データは、資産やプロセスの経時的な変化を表します。  時系列データには、タイムスタンプを含み、軸として時間が最も重要であるという、他のデータにはない特徴があります。  一般に、時系列データは時間順に到着し、通常はデータベースに対する更新ではなく挿入として扱われます。  Time Series Insights では、すべての新しいイベントをキャプチャし、行として保存するため、変化が経時的に測定されます。これにより、過去に遡ったり、将来の変化を予測したりできます。  大量の時系列データの保存、インデックス作成、照会、分析、視覚化は困難な場合があります。  
 
@@ -62,7 +69,7 @@ Time Series Insights は、IoT デバイスによって生成されるデータ�
 次の図は、エクスプローラーを使用して表示された Time Series Insights のデータの例を示しています。![Time Series Insights エクスプローラー] (media/time-series-insights-explorer/explorer4.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  - [デモ環境で Time Series Insights エクスプローラーを使用して探索する](./time-series-quickstart.md)
  - [独自の Time Series Insights 環境を計画する](time-series-insights-environment-planning.md)
 

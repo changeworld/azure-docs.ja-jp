@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 70bbc131f153efd88816450c239920c79665fdff
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: d6a950d69e5279c3cc19d8e457bfa23c2b40f515
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているさまざまなシナリオにアクセスできます。  これらのシナリオを変更しないでそのまま使用することも、特定の要件に合うように編集することもできます。
@@ -26,23 +26,14 @@ Azure Automation で独自の Runbook およびモジュールを作成するの
 Runbook は [Runbook](#runbooks-in-runbook-gallery) ギャラリーから、モジュールは [PowerShell ギャラリー](#modules-in-powerShell-gallery)から入手できます。  開発したシナリオを共有することにより、コミュニティに貢献することもできます。
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbook ギャラリーでの Runbook
-[Runbook ギャラリー](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)では、Microsoft やコミュニティからさまざまな Runbook が提供されており、それを Azure Automation にインポートできます。 [TechNet スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/site/upload)でホストされているギャラリーから Runbook をダウンロードすることも、Azure クラシック ポータルまたは Azure Portal でギャラリーから Runbook を直接インポートすることもできます。
+[Runbook ギャラリー](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation)では、Microsoft やコミュニティからさまざまな Runbook が提供されており、それを Azure Automation にインポートできます。 [TechNet スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/site/upload)でホストされているギャラリーから Runbook をダウンロードすることも、Azure Portal でギャラリーから Runbook を直接インポートすることもできます。
 
-Runbook ギャラリーから直接インポートできるのは、Azure クラシック ポータルまたは Azure ポータルを使用した場合のみです。 Windows PowerShell を使用してこの機能を実行することはできません。
+Runbook ギャラリーから直接インポートできるのは、Azure ポータルを使用した場合のみです。 Windows PowerShell を使用してこの機能を実行することはできません。
 
 > [!NOTE]
 > Runbook ギャラリーから取得した Runbook は、内容を検証し、運用環境でインストールおよび実行するときは細心の注意を払う必要があります。
 > 
 > 
-
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-classic-portal"></a>Azure クラシック ポータルで Runbook ギャラリーから Runbook をインポートするには
-1. Azure Portal で、**[新規]**、**[App Services]**、**[Automation]**、**[Runbook]**、**[ギャラリーから]** の順にクリックします。
-2. カテゴリを選択して関連する Runbook を表示し、Runbook を選択して詳細を表示します。 目的の Runbook を選択するときは、右矢印ボタンをクリックします。
-   
-    ![Runbook ギャラリー](media/automation-runbook-gallery/runbook-gallery.png)
-3. Runbook の内容を確認し、説明の要件に注意します。 終了したら右矢印ボタンをクリックします。
-4. Runbook の詳細を入力し、チェック マーク ボタンをクリックします。 Runbook の名前は既に設定されています。
-5. Runbook が、Automation アカウントの **[Runbook]** タブに表示されます。
 
 ### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Azure ポータルで Runbook ギャラリーから Runbook をインポートするには
 1. Azure ポータルで、Automation アカウントを開きます。
@@ -84,7 +75,7 @@ Runbook ギャラリーから直接インポートできるのは、Azure クラ
 * Automation はギャラリーを 1 時間に 1 回更新するので、投稿物がすぐに表示されないことがあります。
 
 ## <a name="modules-in-powershell-gallery"></a>PowerShell ギャラリーのモジュール
-PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](http://www.powershellgallery.com)から入手できます。  このギャラリーは Azure ポータルから起動でき、Azure Automation に直接インストールするか、ダウンロードして手動でインストールすることができます。  Azure クラシック ポータルからは直接モジュールをインストールすることはできませんが、他のモジュールと同じように、ダウンロードしてインストールすることはできます。
+PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](http://www.powershellgallery.com)から入手できます。  このギャラリーは Azure ポータルから起動でき、Azure Automation に直接インストールするか、ダウンロードして手動でインストールすることができます。  
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Azure ポータルで Automation モジュール ギャラリーからモジュールをインポートするには
 1. Azure ポータルで、Automation アカウントを開きます。
@@ -117,7 +108,7 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 ## <a name="requesting-a-runbook-or-module"></a>Runbook またはモジュールの要求
 [ユーザーの声](https://feedback.azure.com/forums/246290-azure-automation/)に要求を送信できます。  Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、 [フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Runbookの使用を開始するには、「 [Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)
 * Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「 [PowerShell ワークフローについて](automation-powershell-workflow.md)
 

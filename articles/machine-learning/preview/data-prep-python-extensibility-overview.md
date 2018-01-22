@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 4b888facdba2eb5ff48bcbf43c93c1b75183cbad
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3c3864480d2fcba4f6d388d4e0d00b917cb62d2b
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="data-preparations-python-extensions"></a>データ準備の Python 拡張機能
 組み込み機能間の機能性ギャップを埋める方法として、Azure Machine Learning データ準備には複数のレベルの拡張機能が含まれています。 このドキュメントでは、Python スクリプトを介して拡張機能を説明します。 
@@ -123,6 +123,31 @@ Mac で場所を探すには、Python のアプリ固有インストールとそ
 or 
 
 `./pip install <libraryname>`
+
+## <a name="use-custom-modules"></a>カスタム モジュールの使用
+データ フローの変換 (スクリプト) で、次のような python コードを記述します。
+
+```python
+import sys
+sys.path.append(*<absolute path to the directory containing UserModule.py>*)
+
+from UserModule import ExtensionFunction1
+df = ExtensionFunction1(df)
+```
+
+列の追加 (スクリプト) で、コード ブロックの種類をモジュールに設定し、次の python コードを記述します。
+
+```python 
+import sys
+sys.path.append(*<absolute path to the directory containing UserModule.py>*)
+
+from UserModule import ExtensionFunction2
+
+def newvalue(row):
+    return ExtensionFunction2(row)
+```
+異なる実行コンテキスト (ローカル、docker spark など) の場合は、適切な場所への絶対パスをポイントします。 このパスは、“os.getcwd() + relativePath” を使用して調べることができます。
+
 
 ## <a name="column-data"></a>列のデータ 
 ドット表記またはキー/値表記を使用して、行から列のデータにアクセスできます。 スペースや特殊文字が含まれている列名は、ドット表記を使用してアクセスできません。 Python 拡張機能の両方のモード (モジュールおよび式) で、`row` 変数が常に定義されている必要があります。 

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d8688ab2daefd400e9c0948853459dd238fa0d43
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0fb8c55937c1f4c29c542204673a2f41e3ae29db
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>1 台のデバイスまたは一群のデバイスを対象とした IoT Edge デプロイについて - プレビュー
 
@@ -49,7 +49,7 @@ Azure IoT Edge では、IoT Edge デバイスで実行するモジュールを�
 
 各モジュールの構成メタデータには、次のものが含まれます。 
 * バージョン 
-* 型 
+* type 
 * ステータス (例: 実行中または停止中) 
 * 再起動ポリシー 
 * イメージおよびコンテナー リポジトリ 
@@ -57,7 +57,23 @@ Azure IoT Edge では、IoT Edge デバイスで実行するモジュールを�
 
 ### <a name="target-condition"></a>ターゲット条件
 
-ターゲット条件では、IoT Edge デバイスをデプロイのスコープ下に置くかどうかを指定します。 ターゲット条件は、デバイス ツイン タグに基づいて指定されます。 
+ターゲット条件は、デプロイの有効期間をとおして、要求を満たす新しいデバイスを含めたり、要求を満たさなくなったデバイスを削除したりするために、継続的に評価されます。 サービスがターゲット条件の変化を検出した場合、デプロイが再アクティブ化されます。 たとえば、ターゲット条件が tags.environment = 'prod' であるデプロイ A があるものとします。 デプロイを開始するときは、10 個の prod デバイスが存在します。 モジュールは、これら 10 個のデバイスに正常にインストールされます。 IoT Edge エージェントの状態には、合計デバイス数 10、正常応答数 10、異常応答数 0、保留中応答数 0 と表示されます。 そして、tags.environment = 'prod' を設定したデバイスを 5 個追加します。 サービスは変更を検出し、5 個の新しいデバイスのデプロイを試みるときに、IoT Edge エージェントの状態は、合計デバイス数 15、正常応答数 10、異常応答数 0、保留中応答数 5 と表示されます。
+
+ターゲット デバイスを選ぶには、デバイス ツイン タグまたは deviceId に対する任意のブール条件を使います。 タグで条件を使う場合は、デバイス ツインのプロパティと同じレベルに "タグ":{} セクションを追加する必要があります。 [デバイス ツインのタグに関する詳細](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
+
+ターゲット条件の例:
+* deviceId ='linuxprod1'
+* tags.environment ='prod'
+* tags.environment = 'prod' AND tags.location = 'westus'
+* tags.environment = 'prod' OR tags.location = 'westus'
+* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+
+ターゲット条件を作成するときは、次のような制約があります。
+
+* デバイス ツインでは、ターゲット条件を作成するときに使うことができるのはタグまたは deviceId だけです。
+* ターゲット条件のどの部分でも、二重引用符を使うことはできません。 単一引用符を使ってください。
+* 単一引用符は、ターゲット条件の値を表します。 そのため、デバイス名に単一引用符が含まれる場合は、別の単一引用符でエスケープする必要があります。 たとえば、operator'sDevice に対するターゲット条件は、deviceId='operator''sDevice' と記述する必要があります。
+* ターゲット条件の値では、数字、文字、および -:.+%_#*?!(),=@;$ の各文字を使うことができます。
 
 ### <a name="priority"></a>優先順位
 
@@ -100,7 +116,7 @@ Azure IoT Edge では、IoT Edge デバイスで実行するモジュールを�
    * 2 番目のデプロイに、ロールバックされたデバイスのデプロイ ステータスが表示されるようになります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 「[Deploy and monitor IoT Edge modules at scale (IoT Edge モジュールを大規模にデプロイして監視する)][lnk-howto]」で、デプロイを作成、更新、または削除するための手順を学習してください。
 * [IoT Edge ランタイム][lnk-runtime]や [IoT Edge モジュール][lnk-modules]など、IoT Edge のその他の概念について学習してください。

@@ -11,23 +11,23 @@ ms.service: automation
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 01/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 589043f45a87595c9356cd8143beca23a4f83517
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 4eddce9d355a4b709e266129935766376d352045
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation 統合モジュール
 PowerShell は、Azure Automation の基盤となるテクノロジです。 Azure Automation は PowerShell を基盤として構築されているため、PowerShell モジュールが Azure Automation の拡張性の鍵となります。 この記事では、"統合モジュール" と呼ばれる Azure Automation での PowerShell モジュールの使用の詳細と、独自の PowerShell モジュールを作成して、Azure Automation 内で統合モジュールとして確実に動作させるためのベスト プラクティスを紹介します。 
 
 ## <a name="what-is-a-powershell-module"></a>PowerShell モジュールとは
-PowerShell モジュールは、**Get-Date** や **Copy-Item** などの PowerShell コマンドレットの集まりで、PowerShell コンソール、スクリプト、ワークフロー、Runbook、PowerShell DSC リソース (PowerShell DSC 構成から使用できる WindowsFeature や File など) から使用できます。 PowerShell のすべての機能は、コマンドレットと DSC リソースによって公開されています。すべてのコマンドレットと DSC リソースは PowerShell モジュールでサポートされており、その多くが PowerShell 自体に付属しています。 たとえば、**Get-Date** コマンドレットは Microsoft.PowerShell.Utility PowerShell モジュールに、**Copy-Item** コマンドレットは Microsoft.PowerShell.Management PowerShell モジュールに、Package DSC リソースは PSDesiredStateConfiguration PowerShell モジュールに含まれています。 これらのモジュールはどれも PowerShell に付属しています。 ただし、多くの PowerShell モジュールは PowerShell の一部として出荷されません。代わりに、System Center 2012 Configuration Manager などの Microsoft やサードパーティの製品と一緒に配布されたり、PowerShell ギャラリーなどの大規模な PowerShell コミュニティから配布されたりします。  モジュールは、カプセル化された機能によって複雑なタスクを簡素化するため、便利です。  PowerShell モジュールの詳細については、[MSDN](https://msdn.microsoft.com/library/dd878324%28v=vs.85%29.aspx) を参照してください。 
+PowerShell モジュールは、**Get-Date** や **Copy-Item** などの PowerShell コマンドレットの集まりで、PowerShell コンソール、スクリプト、ワークフロー、Runbook、PowerShell DSC リソース (PowerShell DSC 構成から使用できる WindowsFeature や File など) から使用できます。 PowerShell のすべての機能は、コマンドレットと DSC リソースによって公開されています。すべてのコマンドレットと DSC リソースは PowerShell モジュールでサポートされており、その多くが PowerShell 自体に付属しています。 たとえば、**Get-Date** コマンドレットは Microsoft.PowerShell.Utility PowerShell モジュールに、**Copy-Item** コマンドレットは Microsoft.PowerShell.Management PowerShell モジュールに、Package DSC リソースは PSDesiredStateConfiguration PowerShell モジュールに含まれています。 これらのモジュールはどれも PowerShell に付属しています。 ただし、多くの PowerShell モジュールは PowerShell の一部として出荷されません。代わりに、System Center 2012 Configuration Manager などの Microsoft やサードパーティの製品と一緒に配布されたり、PowerShell ギャラリーなどの大規模な PowerShell コミュニティから配布されたりします。 モジュールは、カプセル化された機能によって複雑なタスクを簡素化するため、便利です。  PowerShell モジュールの詳細については、[MSDN](https://msdn.microsoft.com/library/dd878324%28v=vs.85%29.aspx) を参照してください。 
 
 ## <a name="what-is-an-azure-automation-integration-module"></a>Azure Automation 統合モジュールとは
-統合モジュールは、PowerShell モジュールとあまり変わりません。 必要に応じて 1 つのファイル (Runbook 内のモジュールのコマンドレットで使用する Azure Automation の接続の種類を指定するメタデータ ファイル) を追加できる単なる PowerShell モジュールです。 そのファイルの有無に関係なく、これらの PowerShell モジュールを Azure Automation にインポートして、そのコマンドレットを Runbook 内で使用できるようにすることや、その DSC リソースを DSC 構成内で使用できるようにすることができます。 Azure Automation は、バックグラウンドでこれらのモジュールを格納し、Runbook ジョブと DSC コンパイル ジョブの実行時に Azure Automation のサンドボックスに読み込みます。そこで、Runbook が実行され、DSC 構成がコンパイルされます。  また、モジュール内のすべての DSC リソースは、Automation DSC プル サーバーに自動的に配置されます。そのため、DSC 構成の適用を試みるコンピューターがそれらのリソースをプルできます。  
+統合モジュールは、PowerShell モジュールと変わりません。 必要に応じて 1 つのファイル (Runbook 内のモジュールのコマンドレットで使用する Azure Automation の接続の種類を指定するメタデータ ファイル) を追加できる単なる PowerShell モジュールです。 そのファイルの有無に関係なく、これらの PowerShell モジュールを Azure Automation にインポートして、そのコマンドレットを Runbook 内で使用できるようにすることや、その DSC リソースを DSC 構成内で使用できるようにすることができます。 Azure Automation は、バックグラウンドでこれらのモジュールを格納し、Runbook ジョブと DSC コンパイル ジョブの実行時に Azure Automation のサンドボックスに読み込みます。そこで、Runbook が実行され、DSC 構成がコンパイルされます。 また、モジュール内のすべての DSC リソースは、Automation DSC プル サーバーに自動的に配置されます。そのため、DSC 構成の適用を試みるコンピューターがそれらのリソースをプルできます。  
 
 Azure Automation には、Azure の管理の自動化をすぐに開始できるように追加設定なしで使用できる Azure PowerShell モジュールが数多く用意されていますが、統合するシステム、サービス、ツールがどのようなものでもその PowerShell モジュールをインポートすることができます。 
 
@@ -64,7 +64,7 @@ Azure Automation には、Azure の管理の自動化をすぐに開始できる
 }
 ```
 
-Service Management Automation をデプロイし、Automation Runbook の統合モジュール パッケージを作成したことがある場合は、このようなコードは非常に見覚えがあると思います。 
+Service Management Automation をデプロイし、Automation Runbook の統合モジュール パッケージを作成したことがある場合は、このようなコードに見覚えがあると思います。 
 
 ## <a name="authoring-best-practices"></a>作成のベスト プラクティス
 統合モジュールは実質的に PowerShell モジュールですが、PowerShell モジュールを Azure Automation での使用に最も適したものにするためには、作成時にお勧めしているさまざまな考慮事項があります。 考慮事項には、Azure Automation に固有のものもあれば、Automation を使用するかどうかに関係なく、モジュールを PowerShell ワークフローで正常に動作させるために役立つものもあります。 
@@ -108,7 +108,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
    <br> この情報を指定すると、PowerShell コンソールで **Get-Help** コマンドレットを使用したときにこのヘルプが表示されるだけでなく、Azure Automation 内でもこのヘルプ機能が公開されます。  たとえば、Runbook の作成中にアクティビティを挿入するときです。 [詳細なヘルプの表示] をクリックすると、Azure Automation へのアクセスに使用している Web ブラウザーの別のタブでヘルプ URI が開きます。<br>![Integration Module Help](media/automation-integration-modules/automation-integration-module-activitydesc.png)
 2. リモート システムに対してモジュールが実行される場合は、
 
-    a. そのリモート システムに接続するために必要な情報 (つまり、接続の種類) を定義する統合モジュール メタデータ ファイルをモジュールに含める。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 そのリモート システムに接続するために必要な情報 (つまり、接続の種類) を定義する統合モジュール メタデータ ファイルをモジュールに含める。  
     b. モジュール内の各コマンドレットが接続オブジェクト (その接続の種類のインスタンス) をパラメーターとして受け取ることができるようにする。  
 
     接続の種類のフィールドを含むオブジェクトをパラメーターとしてコマンドレットに渡すことができるようにすると、モジュール内のコマンドレットが Azure Automation で使いやすくなります。 この方法では、ユーザーがコマンドレットを呼び出すときに毎回接続資産のパラメーターをコマンドレットの対応するパラメーターにマッピングする必要がありません。 上記の Runbook の例では、CorpTwilio という Twilio 接続資産を使用して、Twilio にアクセスし、アカウントのすべての電話番号を返します。  接続のフィールドをコマンドレットのパラメーターにマッピングする方法を次に示します。<br>
@@ -207,7 +207,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
    <br>
 6. Xcopy できるパッケージにモジュールを完全に含める。 Azure Automation のモジュールは、Runbook を実行する必要があるときに Automation の Sandbox に配布されます。そのため、実行されているホストから独立して動作する必要があります。 つまり、モジュール パッケージを zip 形式で圧縮し、PowerShell のバージョンが同じかそれ以降の他のホストに移動でき、そのホストの PowerShell 環境にインポートされたときに通常どおり機能する必要があります。 そのためには、モジュールがモジュール フォルダー (Azure Automation にインポートするときに zip 形式で圧縮されるフォルダー) 以外のファイルや、ホストに固有のレジストリ設定 (製品のインストールによって設定される設定など) に依存しないようにする必要があります。 このベスト プラクティスに従わないと、モジュールを Azure Automation で使用できません。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 * PowerShell モジュールの作成の詳細については、「 [Writing a Windows PowerShell Module (Windows PowerShell モジュールの作成)](https://msdn.microsoft.com/library/dd878310%28v=vs.85%29.aspx)

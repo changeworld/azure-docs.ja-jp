@@ -13,248 +13,207 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/02/2016
+ms.date: 01/10/2018
 ms.author: saurinsh
-ms.openlocfilehash: 649d138a85ca47440e43c00637ee92b86f4eb03e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 4921e329c2ec8ce3d5bbf8a0851146e13d5f6cd3
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="configure-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターの構成
+# <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>ドメイン参加済み HDInsight サンドボックス環境を構成する
 
-Azure HDInsight クラスターと Azure Active Directory (Azure AD) および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップし、強力な認証機能と豊富なロールベースのアクセス制御 (RBAC) ポリシーを活用する方法について説明します。  ドメイン参加済み HDInsight は、Linux ベースのクラスターのみで構成できます。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](apache-domain-joined-introduction.md)に関するページを参照してください。
+Azure HDInsight クラスターとスタンドアロンの Active Directory および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップし、強力な認証機能と豊富なロールベースのアクセス制御 (RBAC) ポリシーを活用する方法について説明します。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](apache-domain-joined-introduction.md)に関するページを参照してください。
+
+ドメイン参加済み HDInsight クラスターではない場合は、各クラスターで使うことができるのは Hadoop HTTP ユーザー アカウントと SSH ユーザー アカウントだけです。  マルチユーザー認証は次のものを使って実現できます。
+
+-   Azure IaaS 上で実行しているスタンドアロンの Active Directory。
+-   Azure Active Directory。
+-   お客様のオンプレミス環境で実行している Active Directory。
+
+この記事では、Azure IaaS 上で実行しているスタンドアロンの Active Directory を使う方法について説明します。 これは、HDInsight 上でのマルチユーザー サポートを実現するためにお客様が利用できる最も簡単なアーキテクチャです。 この記事では、この構成の 2 つの方法を説明します。
+
+- オプション 1: 1 つの Azure リソース管理テンプレートを使って、スタンドアロンの Active Directory と HDInsight クラスターの両方を作成します。
+- オプション 2: プロセス全体は次の手順に分かれます。
+    - テンプレートを使って Active Directory を作成する
+    - LDAPS をセットアップする
+    - AD のユーザーとグループを作成する
+    - HDInsight クラスターの作成
 
 > [!IMPORTANT]
 > ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
 
-この記事は、以下のシリーズの最初のチュートリアルです。
+## <a name="prerequisite"></a>前提条件
+* Azure サブスクリプション
 
-* Azure Directory Domain Services 機能を通じて Azure AD に接続される HDInsight クラスターを、Apache Ranger を有効にして作成する。
-* Apache Ranger を通じて Hive ポリシーを作成および適用して、ユーザー (たとえばデータ サイエンティスト) が ODBC ベースのツール (Excel、Tableau など) を使用して Hive に接続できるようにする。マイクロソフトでは、HBase や Storm などの他のワークロードもできるだけ早くドメイン参加済み HDInsight に追加できるように作業を進めています。
+## <a name="option-1-one-step-approach"></a>オプション 1: ワンステップ アプローチ
+このセクションでは、Azure Portal から Azure リソース管理テンプレートを開きます。 このテンプレートを使って、スタンドアロンの Active Directory と HDInsight クラスターを作成します。 現在は、ドメイン参加済み Hadoop クラスター、Spark クラスター、Interactive Query クラスターを作成できます。
 
-Azure サービス名は、グローバルに一意である必要があります。 このチュートリアルでは、次の名前を使用しています。 Contoso は架空の名前です。 チュートリアルを進めるときには、*contoso* を別の名前に置き換える必要があります。 
+1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。 テンプレートは「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」にあります。
+   
+    Spark クラスターを作成するには:
 
-**名前:**
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Fspark%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-| プロパティ | 値 |
-| --- | --- |
-| Azure AD ディレクトリ |contosoaaddirectory |
-| Azure AD ドメイン名 |contoso (contoso.onmicrosoft.com) |
-| HDInsight VNet |contosohdivnet |
-| HDInsight VNet のリソース グループ |contosohdirg |
-| HDInsight クラスター |contosohdicluster |
+    Interactive Query クラスターを作成するには:
 
-このチュートリアルでは、ドメイン参加済み HDInsight クラスターを構成するための手順を説明します。 各セクションには、詳細な背景情報が記載されている他の記事へのリンクがあります。
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Finteractivequery%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-## <a name="prerequisite"></a>前提条件:
-* [Azure AD ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)とその[料金](https://azure.microsoft.com/pricing/details/active-directory-ds/)体系を理解している。
-* サブスクリプションが、このパブリック プレビューのホワイトリストに登録されている。 登録するには、サブスクリプション ID を明記して、hdipreview@microsoft.com に電子メールを送信します。
-* ドメインの署名機関によって署名された SSL 証明書または自己署名証明書。 セキュリティで保護された LDAP を構成するために、証明書が必要です。
+    Hadoop クラスターを作成するには:
 
-## <a name="procedures"></a>プロシージャ
-1. Azure リソース管理モードで HDInsight VNet を作成します。
-2. Azure AD と Azure AD DS を作成および構成します。
-3. HDInsight クラスターを作成します。
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/http%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fdomain-joined%2Fhadoop%2Ftemplate.json" target="_blank"><img src="../hbase/media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-> [!NOTE]
-> このチュートリアルでは、Azure AD がないことを前提としています。 ある場合は、その部分を省略できます。
-> 
-> 
+2. 値を入力し、**[上記の使用条件に同意する]**、**[ダッシュボードにピン留めする]** の順に選んで、**[購入]** をクリックします。 説明を表示するには、フィールドの横にある説明記号をマウス カーソルでポイントします。 ほとんどの値が設定されています。 既定値を使っても、独自の値を使ってもかまいません。
 
-## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>HDInsight クラスターの Resource Manager VNet の作成
-このセクションでは、HDInsight クラスターに使用される Azure Resource Manager VNet を作成します。 他の方法による Azure VNet の作成の詳細については、[仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)に関するページを参照してください。
+    - **[リソース グループ]**: Azure リソース グループの名前を入力します。
+    - **[場所]**: 近くの場所を選びます。
+    - **[新しいストレージ アカウント名]**: Azure ストレージ アカウントの名前を入力します。 この新しいストレージ アカウントは、PDC、BDC、HDInsight クラスターによって既定のストレージ アカウントとして使われます。
+    - **[管理ユーザー名]**: ドメイン管理者のユーザー名を入力します。
+    - **[管理パスワード]**: ドメイン管理者のパスワードを入力します。
+    - **[ドメイン名]**: 既定の名前は *contoso.com* です。ドメイン名を変更する場合は、**[セキュリティで保護された LDAP 証明書]** フィールドと **[Organizational Unit DN]\(組織単位 DN\)** フィールドも更新する必要があります。
+    - **[クラスター名]**: HDInsight クラスターの名前を入力します。
+    - **[クラスターの種類]**: この値は変更しないでください。 クラスターの種類を変更する場合は、最後のステップで対応するテンプレートを使います。
 
-VNet を作成した後、その VNet を使用する Azure AD DS を構成します。
+    一部の値は、テンプレートにハードコーディングされています (たとえば、worker ノードのインスタンス数は 2)。  ハード コーディングされた値を変更するには、**[テンプレートの編集]** をクリックします。
 
-**Resource Manager VNet を作成するには**
+    ![HDInsight のドメイン参加済みクラスターのテンプレートの編集](./media/apache-domain-joined-configure/hdinsight-domain-joined-edit-template.png)
+
+テンプレートの処理が正常に完了すると、リソース グループに 23 個のリソースが作成されます。
+
+## <a name="option-2-multi-step-approach"></a>オプション 2: マルチステップ アプローチ
+
+このセクションには、次の 4 つのステップがあります。
+
+1. テンプレートを使って Active Directory を作成する
+2. LDAPS をセットアップする
+3. AD のユーザーとグループを作成する
+4. HDInsight クラスターの作成
+
+### <a name="create-an-active-directory"></a>Active Directory を作成する
+
+Azure Resource Manager テンプレートを使うと、Azure リソースを簡単に作成できます。 このセクションでは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/active-directory-new-domain-ha-2-dc/)を使って、2 つの仮想マシンで新しいフォレストとドメインを作成します。 2 つの仮想マシンは、プライマリ ドメイン コントローラーおよびバックアップ ドメイン コントローラーとして機能します。
+
+**2 つのドメイン コントローラーを使うドメインを作成するには**
+
+1. 次の画像をクリックして Azure ポータルでテンプレートを開きます。
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="./media/apache-domain-joined-configure/deploy-to-azure.png" alt="Deploy to Azure"></a>
+
+    テンプレートは次のような内容です。
+
+    ![HDInsight ドメイン参加済み、フォレストの作成、ドメイン仮想マシン](./media/apache-domain-joined-configure/hdinsight-domain-joined-create-arm-template.png)
+
+2. 次の値を入力します。
+
+    - **[サブスクリプション]**: Azure サブスクリプションを選択します。
+    - **[リソース グループ名]**: リソース グループの名前を入力します。  リソース グループは、プロジェクトに関連のある Azure リソースを管理するために使われます。
+    - **[場所]**: 近くの Azure の場所を選びます。
+    - **[管理ユーザー名]**: ドメイン管理者のユーザー名です。 このユーザーは、HDInsight クラスターの HTTP ユーザー アカウントではありません。 これは、チュートリアルをとおして使うアカウントです。
+    - **[管理パスワード]**: ドメイン管理者のパスワードを入力します。
+    - **[ドメイン名]**: ドメイン名は 2 部構成の名前である必要があります。 例: contoso.com、contoso.local、hdinsight.test。
+    - **[DNS プレフィックス]**: DNS プレフィックスを入力します。
+    - **[PDC RDP Port]\(PDC RDP ポート\)**: (このチュートリアルでは既定値を使います)
+    - **[BDC RDP Port]\(BDC RDP ポート\)**: (このチュートリアルでは既定値を使います)
+    - **[artifacts location]\(アーティファクトの場所\)**: (このチュートリアルでは既定値を使います)
+    - **[artifacts location SAS token]\(アーティファクトの場所の SAS トークン\)**: (このチュートリアルでは空白のままにします)
+
+リソースの作成には約 20 分かかります。
+
+### <a name="setup-ldaps"></a>LDAPS をセットアップする
+
+AD に対する読み書きには、ライトウェイト ディレクトリ アクセス プロトコル (LDAP) が使用されます。
+
+**リモート デスクトップを使って PDC に接続するには**
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. リソース グループを開き、プライマリ ドメイン コントローラー (PDC) の仮想マシンを開きます。 PDC の既定の名前は adPDC です。 
+3. リモート デスクトップを使って PDC に接続するには、**[接続]** をクリックします。
+
+    ![HDInsight ドメイン参加済み、PDC への接続、リモート デスクトップ](./media/apache-domain-joined-configure/hdinsight-domain-joined-remote-desktop-pdc.png)
+
+
+**Active Directory 証明書サービスを追加するには**
+
+4. 開いていない場合は、**[サーバー マネージャー]** を開きます。
+5. **[管理]** をクリックし、**[役割と機能の追加]** をクリックします。
+
+    ![HDInsight ドメイン参加済み、役割と機能の追加](./media/apache-domain-joined-configure/hdinsight-domain-joined-add-roles.png)
+5. [開始する前に] で **[次へ]** をクリックします。
+6. **[役割ベースまたは機能ベースのインストール]** を選択し、**[次へ]** をクリックします。
+7. PDC を選び、**[次へ]** をクリックします。  PDC の既定の名前は adPDC です。
+8. **[Active Directory 証明書サービス]** を選びます。
+9. ポップアップ ダイアログで **[機能の追加]** をクリックします。
+10. ウィザードの指示に従い、残りの手順では既定の設定を使います。
+11. **[閉じる]** をクリックしてウィザードを閉じます。
+
+**AD FS 証明書を構成するには**
+
+1. サーバー マネージャーで黄色の通知アイコンをクリックして、**[Active Directory 証明書サービスの構成]** をクリックします。
+
+    ![HDInsight ドメイン参加済み、構成、AD 証明書](./media/apache-domain-joined-configure/hdinsight-domain-joined-configure-ad-certificate.png)
+
+2. 左側の **[役割サービス]** をクリックし、**[証明機関]** を選んで、**[次へ]** をクリックします。
+3. ウィザードの指示に従い、残りの手順では既定の設定を使います (最後のステップで **[構成]** をクリックします)。
+4. **[閉じる]** をクリックしてウィザードを閉じます。
+
+### <a name="optional-create-ad-users-and-groups"></a>(省略可能) AD のユーザーとグループを作成する
+
+**AD でユーザーとグループを作成するには**
+1. リモート デスクトップを使って PDC に接続します
+1. **[Active Directory ユーザーとコンピューター]** を開きます。
+2. 左側のウィンドウでドメイン名を選びます。
+3. 上部メニューの **[現在のコンテナーに新しいユーザーを作成]** アイコンをクリックします。
+
+    ![HDInsight ドメイン参加済み、ユーザーの作成](./media/apache-domain-joined-configure/hdinsight-domain-joined-create-ad-user.png)
+4. 手順に従ってユーザーを何人か作成します。 たとえば、hiveuser1 と hiveuser2 を作成します。
+5. 上部メニューの **[現在のコンテナーに新しいグループを作成]** アイコンをクリックします。
+6. 手順に従って、**HDInsightUsers** という名前のグループを作成します。  このグループは、後で HDInsight クラスターを作成するときに使います。
+
+> [!IMPORTANT]
+> ドメイン参加済み HDInsight クラスターを作成する前に、PDC 仮想マシンを再起動する必要があります。
+
+### <a name="create-an-hdinsight-cluster-in-the-vnet"></a>VNet に HDInsight クラスターを作成する
+
+このセクションでは、前に Resource Manager テンプレートを使って作成した仮想ネットワークに、Azure Portal を使って HDInsight クラスターを追加します。 この記事では、ドメイン参加済みクラスターの構成に固有の情報についてのみ説明します。  一般的な情報については、「[Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)」をご覧ください。  
+
+**ドメイン参加済み HDInsight クラスターを作成するには**
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. **[新規]**、**[ネットワーキング]**、**[仮想ネットワーク]** の順にクリックします。 
-3. **[デプロイ モデルの選択]** で **[リソース マネージャー]** を選択し、**[作成]** をクリックします。
-4. 次の値を入力または選択します。
-   
-   * **名前**: contosohdivnet
-   * **アドレス空間**: 10.0.0.0/16
-   * **サブネット名**: Subnet1
-   * **サブネットのアドレス範囲**: 10.0.0.0/24
-   * **サブスクリプション**: (Azure サブスクリプションを選択します。)
-   * **リソース グループ**: contosohdirg
-   * **場所**: (Azure AD VNet と同じ場所を選択します。 例: contosoaadvnet)
-5. **Create** をクリックしてください。
+2. このチュートリアルで前に Resource Manager テンプレートを使って作成したリソース グループを開きます。
+3. HDInsight クラスターをリソース グループに追加します。
+4. **[カスタム]** オプションを選びます。
 
-**Resource Manager VNet の DNS を構成するには**
+    ![HDInsight ドメイン参加済み、カスタム作成オプション](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-custom-configuration-option.png)
 
-1. [Azure Portal](https://portal.azure.com) で、**[その他のサービス]** > **[仮想ネットワーク]** の順にクリックします。 **[仮想ネットワーク (クラシック)]** をクリックしないようにしてください。
-2. **[contosohdivnet]** をクリックします。
-3. 新しいブレードの左側で、**[DNS サーバー]** をクリックします。
-4. **[カスタム]** をクリックし、次の値を入力します。
-   
-   * 10.0.0.4
-   * 10.0.0.5     
-     
-5. **[Save]** をクリックします。
+    カスタム構成オプションには、[基本]、[ストレージ]、[アプリケーション]、[クラスター サイズ]、[詳細設定]、[概要] の 6 つのセクションがあります。
+5. **[基本]** セクションでの設定:
 
-## <a name="create-and-configure-azure-ad-ds-for-your-azure-ad"></a>Azure AD 用の Azure AD DS の作成と構成
-このセクションでは、次の作業を行います。
+    - [クラスターの種類]: **[Enterprise セキュリティ パッケージ]** を選びます。 現在、Enterprise セキュリティ パッケージは、クラスターの種類が Hadoop、Interactive Query、Spark の場合にのみ有効にできます。
 
-1. Azure AD を作成します。
-2. Azure AD ユーザーを作成します。 これらのユーザーは、ドメイン ユーザーです。 最初のユーザーを使用して、HDInsight クラスターと Azure AD を構成します。  その他の 2 種類のユーザーは、このチュートリアルではオプションです。 これらのユーザーは、Apache Ranger ポリシーを構成するときに、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](apache-domain-joined-run-hive.md)で使用されます。
-3. AAD DC 管理者グループを作成し、Azure AD ユーザーをグループに追加します。 このユーザーを使用して、組織単位を作成します。
-4. Azure AD の Azure AD ドメイン サービス (Azure AD DS) を有効にします。
-5. Azure AD の LDAPS を構成します。 Azure AD に対する読み書きには、ライトウェイト ディレクトリ アクセス プロトコル (LDAP) が使用されます。
+        ![HDInsight ドメイン参加済み、Enterprise セキュリティ パッケージ](./media/apache-domain-joined-configure/hdinsight-creation-enterprise-security-package.png)
+    - [クラスター ログイン ユーザー名]: これは Hadoop HTTP ユーザーです。 このアカウントは、ドメイン管理者アカウントとは異なります。
+    - [リソース グループ]: 前に Resource Manager テンプレートを使って作成したリソース グループを選びます。
+    - [場所]: Resource Manager テンプレートを使って VNet と DC を作成するときに使ったものと同じ場所にする必要があります。
 
-既存の Azure AD を使用する場合は、手順 1. と 2. を省略できます。
+6. **[詳細設定]** セクションでの設定:
 
-**Azure AD を作成するには**
+    - ドメインの設定:
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、**[新規]** > **[App Services]** > **[Active Directory]** > **[ディレクトリ]** > **[カスタム作成]** の順にクリックします。 
-2. 次の値を入力または選択します。
-   
-   * **名前**: contosoaaddirectory
-   * **ドメイン名**: contoso。  この名前はグローバルに一意である必要があります。
-   * **国またはリージョン**: 国またはリージョンを選択します。
-3. **[完了]** をクリックします。
+        ![HDInsight ドメイン参加済み、詳細設定、ドメイン](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-advanced-domain-settings.png)
+        
+        - [ドメイン名]: [Active Directory の作成](#create-an-active-directory)で使ったドメイン名を入力します。
+        - [ドメイン ユーザー名]: [Active Directory の作成](#create-an-active-directory)で使った AD 管理者のユーザー名を入力します。
+        - [組織単位]: スクリーンショットの例をご覧ください。
+        - [LDAPS の URL]: スクリーンショットの例をご覧ください
+        - [アクセス ユーザー グループ]: [AD のユーザーとグループの作成](#optionally-createad-users-and-groups)で作成したユーザー グループ名を入力します
+    - [仮想ネットワーク]: [Active Directory の作成](#create-an-active-directory)で作成した仮想ネットワークを選びます。 テンプレートで使われる既定の名前は **adVNET** です。
+    - [サブネット]: テンプレートで使われる既定の名前は **adSubnet** です。
 
-**Azure AD ユーザーの作成**
 
-1. [Azure ポータル](https://portal.azure.com)で、**[Azure Active Directory]** > **[contosoaaddirectory]** > **[ユーザーとグループ]** をクリックします。 
-2. メニューから **[すべてのユーザー]** をクリックします。
-3. **[新しいユーザー]**をクリックします。
-4. **[名前]** と **[ユーザー名]** を入力し、**[次へ]** をクリックします。 
-5. ユーザー プロファイルを構成します。**[ロール]** で **[全体管理者]** を選択し、**[次へ]** をクリックします。  組織単位を作成するには、全体管理者ロールが必要です。
-6. 一時パスワードのコピーを作成します。
-7. **Create** をクリックしてください。 このチュートリアルの後半で、この全体管理者ユーザーを使用して HDInsight クラスターを作成します。
-
-同じ手順で、**ユーザー** ロールのユーザーをさらに 2 つ作成します (hiveuser1 と hiveuser2)。 これらのユーザーは、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](apache-domain-joined-run-hive.md)で使用されます。
-
-**AAD DC 管理者グループを作成し、Azure AD ユーザーを追加するには**
-
-1. [Azure ポータル](https://portal.azure.com)で、**[Azure Active Directory]** > **[contosoaaddirectory]** > **[ユーザーとグループ]** をクリックします。 
-2. 上部のメニューで **[すべてのグループ]** をクリックします。
-3. **[新しいグループ]** をクリックします。
-4. 次の値を入力または選択します。
-   
-   * **名前**: AAD DC Administrators。  グループ名は変更しないでください。
-   * **メンバーシップの種類**: 割り当てられています。
-5. **[選択]**をクリックします。
-6. **[メンバー]** をクリックします。
-7. 前の手順で作成した最初のユーザーを選択し、**[選択]** をクリックします。
-8. 同じ手順を繰り返して、**HiveUsers** という名前のもう 1 つのグループを作成し、そのグループに 2 つの Hive ユーザーを追加します。
-
-詳細については、[Azure AD ドメイン サービス (プレビュー) に関するページにある、"AAD DC 管理者" グループの作成](../../active-directory-domain-services/active-directory-ds-getting-started.md)についてのセクションを参照してください。
-
-**Azure AD 用の Azure AD DS を有効化するには**
-
-1. [Azure ポータル](https://portal.azure.com)で、**[リソースの作成]** > **[セキュリティ + ID]** > **[Azure AD Domain Services]** > **[追加]** をクリックします。 
-2. 次の値を入力または選択します。
-   * **ディレクトリ名**: contosoaaddirectory
-   * **[DNS ドメイン名]**: ここには、Azure ディレクトリの既定の DNS 名が表示されます。 たとえば、contoso.onmicrosoft.com です。
-   * **場所**: リージョンを選択します。
-   * **ネットワーク**: 先ほど作成した仮想ネットワークとサブネットを選択します。 例: **contosohdivnet**
-3. [概要] ページで **[OK]** をクリックします。 通知の下に **[デプロイを実行しています...]** が表示されます。
-4. **[デプロイを実行しています...]** が消えるまで待つと、**[IP アドレス]** に値が設定されます。 2 つの IP アドレスに、値が設定されます。 これらは、ドメイン サービスによってプロビジョニングされるドメイン コントローラーの IP アドレスです。 該当するドメイン コントローラーがプロビジョニングされ、準備が完了した後で、各 IP アドレスが表示されます。 2 つの IP アドレスを書き留めておきます。 この情報は後で必要になります。
-
-詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started.md)」を参照してください。
-
-**パスワードを同期するには**
-
-独自のドメインを使用する場合は、パスワードを同期する必要があります。 [クラウド専用 Azure AD ディレクトリでの Azure AD Domain Services に対するパスワード同期の有効化](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md)に関するページを参照してください。
-
-**Azure AD の LDAPS を構成するには**
-
-1. ドメインの署名機関によって署名された SSL 証明書を取得します。
-2. [Azure ポータル](https://portal.azure.com)で、**[Azure AD Domain Services]** > **[contoso.onmicrosoft.com]** をクリックします。 
-3. **[セキュリティで保護された LDAP]** を有効にします。
-6. 指示に従って、証明書ファイルとパスワードを指定します。  
-7. **[Secure LDAP 証明書]** に値が設定されるまで待ちます。 10 分以上かかる場合があります。
-
-> [!NOTE]
-> Azure AD DS でいくつかのバックグラウンド タスクが実行中の場合、証明書のアップロード中に、<i>"There is an operation being performed for this tenant.Please try again later (このテナントに対して実行中の操作があります。後でやり直してください)"</i> というエラーが表示されることがあります。  このエラーが発生した場合は、しばらくしてからやり直してください。 2 番目のドメイン コントローラーの IP は、プロビジョニングされるまでに最大で 3 時間かかる場合があります。
-> 
-> 
-
-詳細については、「[Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md)」を参照してください。
-
-## <a name="create-hdinsight-cluster"></a>HDInsight クラスターの作成
-このセクションでは、Azure Portal または [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-template-deploy.md)を利用して、HDInsight で Linux ベースの Hadoop クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 Resource Manager テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、[Resource Manager テンプレートを使用した HDInsight での Hadoop クラスターの作成](../hdinsight-hadoop-create-windows-clusters-arm-templates.md)に関するページを参照してください。
-
-**Azure Portal を使用して、ドメイン参加済み HDInsight クラスターを作成するには**
-
-1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. **[新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順にクリックします。
-3. **[新しい HDInsight クラスター]** ブレードで、次の値を入力または選択します。
-   
-   * **クラスター名**: ドメイン参加済み HDInsight クラスターの新しいクラスター名を入力します。
-   * **サブスクリプション**: このクラスターの作成に使用する Azure サブスクリプションを選択します。
-   * **クラスター構成**:
-     
-     * **クラスターの種類**: Hadoop。 ドメイン参加済み HDInsight は、現在 Hadoop, Spark、および Interactive Query クラスターのみでサポートされています。
-     * **オペレーティング システム**: Linux。  ドメイン参加済み HDInsight は、Linux ベースの HDInsight クラスターのみでサポートされています。
-     * **バージョン**: HDI 3.6。 ドメイン参加済み HDInsight は、HDInsight クラスター バージョン 3.6 のみでサポートされています。
-     * **クラスターの種類**: PREMIUM
-       
-       **[選択]** をクリックして変更を保存します。
-   * **資格情報**: クラスター ユーザーと SSH ユーザーの両方の資格情報を構成します。
-   * **データ ソース**: HDInsight クラスターの既定のストレージ アカウントとして、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 場所は、2 つの VNet と同じである必要があります。  また、場所は HDInsight クラスターの場所でもあります。
-   * **価格**: クラスターのワーカー ノードの数を選択します。
-   * **Advanced configurations (詳細な構成)**: 
-     
-     * **Domain-joining & Vnet/Subnet (ドメイン参加と Vnet/サブネット)**: 
-       
-       * **ドメイン設定**: 
-         
-         * **ドメイン名**: contoso.onmicrosoft.com
-         * **ドメイン ユーザー名**: ドメイン ユーザー名を入力します。 このドメインは、次の特権を持つ必要があります。コンピューターをドメインに参加させ、クラスター作成時に指定した組織単位に配置する特権。クラスター作成時に指定した組織単位内でサービス プリンシパルを作成する特権。および、逆引き DNS エントリを作成する特権です。 このドメイン ユーザーは、このドメイン参加済み HDInsight クラスターの管理者になります。
-         * **ドメイン パスワード**: ドメイン ユーザーのパスワードを入力します。
-         * **組織単位**: HDInsight クラスターで使用する OU の識別名を入力します。 例: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。この OU が存在しない場合は、HDInsight クラスターがこの OU を作成しようとします。 OU が既に存在するか、ドメイン アカウントが新しい OU を作成するアクセス許可を持っていることを確認してください。 AADDC 管理者の一部であるドメイン アカウントを使用する場合は、OU を作成するために必要なアクセス許可を持っています。
-         * **LDAPS URL**: ldaps://contoso.onmicrosoft.com:636
-         * **アクセス ユーザー グループ**: クラスターに同期させるユーザーが属しているセキュリティ グループを指定します。 たとえば、HiveUsers です。
-           
-           **[選択]** をクリックして変更を保存します。
-           
-           ![ドメイン参加済み HDInsight のポータルでのドメイン設定の構成](./media/apache-domain-joined-configure/hdinsight-domain-joined-portal-domain-setting.png)
-       * **仮想ネットワーク**: contosohdivnet
-       * **サブネット**: Subnet1
-         
-         **[選択]** をクリックして変更を保存します。        
-         **[選択]** をクリックして変更を保存します。
-   * **リソース グループ**: HDInsight VNet (contosohdirg) 用に使用されるリソース グループを選択します。
-4. **Create** をクリックしてください。  
-
-ドメイン参加済み HDInsight クラスターを作成するためのもう 1 つのオプションは、Azure Resource Manager テンプレートを使用する方法です。 次の手順は、その方法を示しています。
-
-**Resource Manager テンプレートを使用してドメイン参加済み HDInsight クラスターを作成するには**
-
-1. 次の画像をクリックして、Azure Portal で Resource Manager テンプレートを開きます。 Resource Manager テンプレートは、パブリック BLOB コンテナー内にあります。 
-   
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-domain-joined-hdinsight-cluster.json" target="_blank"><img src="./media/apache-domain-joined-configure/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. **[パラメーター]** ブレードで、次の各項目を入力します。
-   
-   * **サブスクリプション**: (Azure サブスクリプションを選択します)。
-   * **リソース グループ**: **[既存のものを使用]** をクリックして、使用してきた同じリソース グループを指定します。  たとえば contosohdirg です。 
-   * **場所**: リソース グループの場所を指定します。
-   * **クラスター名**: 作成する Hadoop クラスターの名前を入力します。 たとえば contosohdicluster です。
-   * **クラスターの種類**: クラスターの種類を選択します。  既定値は **hadoop** です。
-   * **場所**: クラスターの場所を選択します。  既定のストレージ アカウントは、同じ場所を使用します。
-   * **Cluster Worker Node count (クラスターのワーカー ノードの数)**: ワーカー ノードの数を選択します。
-   * **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
-   * **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。  この名前は変更できます。 
-   * **仮想ネットワーク ID**: /subscriptions/&lt;SubscriptionID>/resourceGroups/&lt;ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/&lt;VNetName>
-   * **Virtual Network Subnet (仮想ネットワークのサブネット)**: /subscriptions/&lt;SubscriptionID>/resourceGroups/&lt;ResourceGroupName>/providers/Microsoft.Network/virtualNetworks/&lt;VNetName>/subnets/Subnet1
-   * **ドメイン名**: contoso.onmicrosoft.com
-   * **Organization Unit DN (組織単位 DN)**: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com
-   * **クラスター ユーザー グループ DN**: [\"HiveUsers\"]
-   * **LDAPUrls**: ["ldaps://contoso.onmicrosoft.com:636"]
-   * **DomainAdminUserName**: (ドメイン管理者のユーザー名を入力します)
-   * **DomainAdminPassword**: (ドメイン管理者のユーザー パスワードを入力します)
-   * **上記の使用条件に同意する**: (オン)
-   * **ダッシュボードにピン留めする**: (オン)
-3. **[購入]** をクリックします。 " **テンプレートのデプロイのデプロイ中**" という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。 クラスターが作成されたら、ポータルのクラスター ブレードをクリックして開きます。
 
 チュートリアルを完了したら、必要に応じてクラスターを削除できます。 HDInsight を使用すると、データは Azure Storage に格納されるため、クラスターは、使用されていない場合に安全に削除できます。 また、HDInsight クラスターは、使用していない場合でも課金されます。 クラスターの料金は Storage の料金の何倍にもなるため、クラスターを使用しない場合は削除するのが経済的にも合理的です。 クラスターの削除手順については、「[Azure Portal を使用した HDInsight での Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md#delete-clusters)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関する記事をご覧ください。
 * SSH を使用してドメイン参加済み HDInsight クラスターに接続する方法については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)」を参照してください。
 
