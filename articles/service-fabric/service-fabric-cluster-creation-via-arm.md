@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 0065874c2f992ad9c18f68303878fb580ee8b391
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e5dd1ebd290c950c7f2bda3dae088f3ee7f836fd
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Azure Resource Manager を使用して Service Fabric クラスターを作成する 
 > [!div class="op_single_selector"]
-> * [Azure リソース マネージャー](service-fabric-cluster-creation-via-arm.md)
-> * [Azure ポータル](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -316,7 +316,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 #### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-keyvault"></a>Key Vault に既にアップロードしてあるシークレットへのポインターを使用します。
 
-既存の Key Vault を使用するには、コンピューティング リソース プロバイダーがそこから証明書を取得し、クラスター ノードにインストールできるように、その Key Vault をデプロイ用に有効にする必要があります__。
+既存の Key Vault を使用するには、コンピューティング リソース プロバイダーがそこから証明書を取得し、クラスター ノードにインストールできるように、_その Key Vault をデプロイ用に有効にする必要があります_。
 
 ```powershell
 
@@ -362,7 +362,7 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 1. コンピューターに[スクリプトをダウンロード][sf-aad-ps-script-download]します。
 2. zip ファイルを右クリックし、**[プロパティ]** を選択して **[ブロック解除]** チェックボックスをオンにし、**[適用]** をクリックします。
 3. zip ファイルを解凍します。
-4. `SetupApplications.ps1` を実行します。パラメーターとして、TenantId、ClusterName、WebApplicationReplyUrl を指定します。 For example:
+4. `SetupApplications.ps1` を実行します。パラメーターとして、TenantId、ClusterName、WebApplicationReplyUrl を指定します。 例: 
 
 ```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
@@ -377,7 +377,7 @@ WebApplicationReplyUrl は、サインインの完了後に Azure AD がユー�
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
-Azure AD テナント用の管理特権を持っているアカウントにサインインすることを求められます。 サインインすると、スクリプトは、Service Fabric クラスターを表す Web アプリケーションとネイティブ アプリケーションを作成します。 [Azure クラシック ポータル][azure-classic-portal]でテナントのアプリケーションを調べると、次の 2 つの新しいエントリがあることがわかります。
+Azure AD テナント用の管理特権を持っているアカウントにサインインすることを求められます。 サインインすると、スクリプトは、Service Fabric クラスターを表す Web アプリケーションとネイティブ アプリケーションを作成します。 [Azure Portal][azure-portal] でテナントのアプリケーションを調べると、次の 2 つの新しいエントリがあることがわかります。
 
    * *ClusterName*\_Cluster
    * *ClusterName*\_Client
@@ -615,17 +615,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 <a name="assign-roles"></a>
 
 ## <a name="assign-users-to-roles"></a>ユーザーをロールに割り当てる
-クラスターを表すアプリケーションを作成したら、Service Fabric によってサポートされるロール (read-only と admin) にユーザーを割り当てます。[Azure クラシック ポータル][azure-classic-portal]を使用してロールを割り当てることができます。
+クラスターを表すアプリケーションを作成したら、Service Fabric によってサポートされるロール (read-only と admin) にユーザーを割り当てます。[Azure Portal][azure-portal] を使って、ロールを割り当てることができます。
 
-1. Azure Portal で、テナントに移動し、**[アプリケーション]** を選択します。
-2. `myTestCluster_Cluster`のような名前を持つ Web アプリケーションを選択します。
-3. **[ユーザー]** タブをクリックします。
-4. 割り当てるユーザーを選択し、画面の下部にある **[割り当て]** ボタンをクリックします。
+1. Azure Portal の右上隅でテナントを選びます。
 
-    ![ユーザーをロールに割り当てるためのボタン][assign-users-to-roles-button]
-5. ユーザーに割り当てるロールを選択します。
+    ![テナント ボタンを選ぶ][select-tenant-button]
+2. 左のタブで **[Azure Active Directory]** を選び、[エンタープライズ アプリケーション] を選びます。
+3. [すべてのアプリケーション] を選び、`myTestCluster_Cluster` のような名前を持つ Web アプリケーションを探して選びます。
+4. **[ユーザーとグループ]** タブをクリックします。
 
-    ![[ユーザーの割り当て] ダイアログ ボックス][assign-users-to-roles-dialog]
+    ![[ユーザーとグループ] タブ][users-and-groups-tab]
+5. 新しいページの **[ユーザーの追加]** ボタンをクリックして、ユーザーと割り当てるロールを選び、ページの下部にある **[選択]** ボタンをクリックします。
+
+    ![ロールへのユーザーの割り当てページ][assign-users-to-roles-page]
+6. ページの下部にある **[割り当て]** ボタンをクリックします。
+
+    ![割り当ての追加の確認][assign-users-to-roles-confirm]
 
 > [!NOTE]
 > Service Fabric でのロールの詳細については、「 [ロール ベースのアクセス制御 (Service Fabric クライアント用)](service-fabric-cluster-security-roles.md)」を参照してください。
@@ -665,7 +670,7 @@ Service Fabric Explorer で Azure AD へのサインインを試行すると、"
 Service Fabric Explorer に相当するクラスター (Web) アプリケーションは Azure AD に対する認証を試み、要求の一部として、戻り先のリダイレクト URL を指定しています。 しかし、その URL が Azure AD アプリケーションの **[応答 URL]** のリストに表示されません。
 
 #### <a name="solution"></a>解決策
-Service Fabric Explorer の URL をクラスター (Web) アプリケーションの **[構成]** タブの **[応答 URL]** のリストに追加するか、リスト内の項目のいずれかを置換します。 完了したら、変更を保存します。
+AAD ページで [アプリの登録] を選び、クラスター アプリケーションを選んで、**[応答 URL]** ボタンを選びます。 [応答 URL] ページで、Service Fabric Explorer の URL をリストに追加するか、リスト内の項目のいずれかと置き換えます。 完了したら、変更を保存します。
 
 ![Web アプリケーションの応答 URL][web-application-reply-url]
 
@@ -684,16 +689,16 @@ Connect-ServiceFabricCluster コマンドレットについて詳しくは、「
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Azure AD が有効になっているときもサーバーの証明書が必要なのはどうしてですか?
 FabricClient と FabricGateway では、相互認証が実行されます。 Azure AD 認証中、Azure AD 統合がクライアント ID をサーバーに提供し、サーバー証明書を使用してサーバー ID の確認が行われます。 Service Fabric の証明書について詳しくは、「[X.509 証明書と Service Fabric][x509-certificates-and-service-fabric]」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この時点で、管理認証を提供する Azure Active Directory で、セキュリティで保護されたクラスターの準備ができています。 次に、[クラスターに接続](service-fabric-connect-to-secure-cluster.md)して、[アプリケーション シークレットを管理](service-fabric-application-secret-management.md)する方法を説明します。
 
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
-[azure-CLI]:https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [key-vault-get-started]:../key-vault/key-vault-get-started.md
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
-[azure-classic-portal]: https://portal.azure.com/
+[azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
@@ -703,13 +708,15 @@ FabricClient と FabricGateway では、相互認証が実行されます。 Azu
 [service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
 [resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
-[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#Create-a-Service-Fabric-cluster- Resource-Manager-template
+[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-arm-dependency-map.png
 [cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
-[assign-users-to-roles-button]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-button.png
-[assign-users-to-roles-dialog]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles.png
+[select-tenant-button]: ./media/service-fabric-cluster-creation-via-arm/select-tenant-button.png
+[users-and-groups-tab]: ./media/service-fabric-cluster-creation-via-arm/users-and-groups-tab.png
+[assign-users-to-roles-page]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-page.png
+[assign-users-to-roles-confirm]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-confirm.png
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
