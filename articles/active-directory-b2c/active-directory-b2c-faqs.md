@@ -1,12 +1,11 @@
 ---
-title: "よく寄せられる質問 (FAQ) - Azure AD B2C | Microsoft Docs"
-description: "Azure Active Directory B2C についてよく寄せられる質問"
+title: "よく寄せられる質問 - Azure Active Directory B2C"
+description: "Azure Active Directory B2C についてよく寄せられる質問 (FAQ)"
 services: active-directory-b2c
-documentationcenter: 
-author: saeeda
+author: PatAltimore
 manager: mtillman
-editor: bryanla
-ms.assetid: ed33c2ca-76d0-442a-abb1-8b7b7bb92d6a
+editor: saeeda
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 8bc487bdcc33f70d39d884830bfaf9187828694e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 38f33f2a5d0bba4686cfeef121f2087326e1897d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -64,9 +63,9 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 
     ![カスタマイズされた検証電子メールのスクリーンショット](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-電子メールの署名には、最初に B2C テナントを作成したときに指定した B2C テナントの名前が含まれます。 名前は次の手順を使用して変更できます。
+電子メールの署名には、最初に Azure AD B2C テナントを作成したときに指定した Azure AD B2C テナントの名前が含まれます。 名前は次の手順を使用して変更できます。
 
-1. サブスクリプション管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にグローバル管理者としてサインインします。
 1. **[Azure Active Directory]** ブレードを開きます。
 1. **[プロパティ]** タブをクリックします。
 1. **[名前]** フィールドを変更します。
@@ -106,22 +105,22 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 はい。  [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md) (パブリック プレビュー中) に関する記事を確認してください。  Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列を上書きすることができます。
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を login.microsoftonline.com から login.contoso.com に変更できますか。
-現時点では連携しません。 この機能は検討中です。 Azure クラシック ポータルの **[ドメイン]** タブでドメインを確認しても、この目的は達成できません。
+現時点では連携しません。 この機能は検討中です。 Azure Portal の **[ドメイン]** タブでドメインを確認しても、この目的は達成できません。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを削除する方法はありますか。
 Azure AD B2C テナントを削除するには、次の手順に従います。
 
 1. Azure ポータルで、[Azure AD B2C の設定に移動する](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)ための手順に従います。
 1. **[アプリケーション]**、**[ID プロバイダー]**、**[すべてのポリシー]** の順に移動しますが、それぞれですべてのエントリを削除します。
-1. 次に、サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします  (Azure へのサインアップに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントを使用します)。
-1. 左側の Active Directory 拡張機能に移動し、B2C テナントをクリックします。
-1. **[Users]** タブをクリックします。
-1. 各ユーザーを順に選択します (ただし、現在サインインに使用しているサブスクリプション管理者ユーザーは除きます)。 ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
-1. **[アプリケーション]** タブをクリックします。
-1. **[表示]** ドロップダウン フィールドで **[自分の会社が所有するアプリケーション]** を選択し、チェック マークをクリックします。
-1. **b2c-extensions-app** というアプリケーションが表示されます。 ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
-1. Active Directory 拡張機能にもう一度移動し、B2C テナントをクリックします。
-1. ページの下部にある **[削除]** をクリックします。 プロセスを完了するには、画面に表示される指示に従ってください。
+1. ここで、サブスクリプション管理者として [Azure Portal](https://portal.azure.com/) にサインインします。 (Azure へのサインアップに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントを使用します)。
+1. 削除する Azure AD B2C テナントに切り替えます。
+2. 左側の Active Directory メニューに移動します。
+3. **[ユーザーとグループ]** を選択します。
+4. 各ユーザーを順に選択します (ただし、現在サインインに使用しているサブスクリプション管理者ユーザーは除きます)。 ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
+5. **[アプリの登録]** をクリックします。
+6. **b2c-extensions-app** というアプリケーションを選択します。 **[削除]** をクリックし、確認を求めるメッセージが表示されたら、**[はい]** をクリックします。
+7. **[概要]** を選択します。
+8. **[ディレクトリの削除]** をクリックします。 プロセスを完了するには、画面に表示される指示に従ってください。
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Enterprise Mobility Suite の一部として Azure AD B2C を取得できますか。
 いいえ。Azure AD B2C は従量課金の Azure サービスであり、Enterprise Mobility Suite には含まれていません。

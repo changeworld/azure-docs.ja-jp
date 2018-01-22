@@ -14,12 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: fa00f176ff56c13033907e134fc236c291308028
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/12/2018
 ---
+> [!NOTE]
+> このドキュメントは最新ではなく、情報は正確ではありません。 代わりに Azure Marketplace の[販売者ガイド](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide)にアクセスして、Azure Marketplace へのプランの発行についてのガイダンスをご覧ください。
+
 # <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Azure Marketplace にプランを発行して管理する
 この記事では、Azure Marketplace に掲載されるソリューションを開発者が作成、デプロイ、管理し、Azure の他の顧客やパートナーに有償で提供するための方法を紹介しています。
 
@@ -56,7 +59,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 ソリューションを Marketplace に公開するには、次の手順に従います。
 1. 技術面以外の前提条件を満たします。
 
-    a. [技術面以外の前提条件](marketplace-publishing-pre-requisites.md)を満たします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 [技術面以外の前提条件](marketplace-publishing-pre-requisites.md)を満たします。
 
     b. [VM の技術面の前提条件](marketplace-publishing-vm-image-creation-prerequisites.md)を満たします。
 
@@ -64,7 +67,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 2. プランを作成します。
 
-    a. [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
 
     b. [ソリューション テンプレート](marketplace-publishing-solution-template-creation.md) プランを作成します。
 
@@ -72,7 +75,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 4. ステージング環境でプランをテストします。
 
-    a. VM プランを[ステージング環境](marketplace-publishing-vm-image-test-in-staging.md)でテストします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 VM プランを[ステージング環境](marketplace-publishing-vm-image-test-in-staging.md)でテストします。
 
     b. ソリューション テンプレート プランを[ステージング環境](marketplace-publishing-solution-template-test-in-staging.md)でテストします。
 
@@ -93,9 +96,9 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 * [プランまたは SKU の技術面の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
 * [表示されているプランに新しい SKU を追加する](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
 * [表示されている SKU のデータ ディスク数を変更する](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
-* [表示されているプランを Azure Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md)
-* [表示されている SKU を Azure Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
-* [表示されている SKU の現在のバージョンを Azure Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
+* [表示されているプランを Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md)
+* [表示されている SKU を Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
+* [表示されている SKU の現在のバージョンを Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
 * [表示価格を運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
 * [課金モデルを運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
 * [表示されている SKU の可視性の設定を運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)

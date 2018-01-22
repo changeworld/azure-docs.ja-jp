@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 2ab14183a0ca4ade7873dbdece407937a746b663
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Azure File Sync (プレビュー) サーバー エンドポイントの追加/削除
 Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -32,7 +32,7 @@ Azure ファイル同期をエンドツーエンドでデプロイする方法�
 - サーバーに Azure ファイル同期エージェントがインストールされ、登録されていること。 Azure ファイル同期エージェントをインストールする手順については、「[Register/unregister a server with Azure File Sync (preview)](storage-sync-files-server-registration.md)」(Azure ファイル同期 (プレビュー) へのサーバーの登録/登録解除) の記事を参照してください。 
 - ストレージ同期サービスがデプロイされていること。 ストレージ同期サービスのデプロイ方法の詳細については、「[How to deploy Azure File Sync (preview)](storage-sync-files-deployment-guide.md)」(Azure ファイル同期 (プレビュー) をデプロイする方法) を参照してください。 
 - 同期グループがデプロイされていること。 [同期グループの作成方法](storage-sync-files-deployment-guide.md#create-a-sync-group)に関するセクションをご覧ください。
-- サーバーがインターネットに接続され、Azure にアクセスできること。
+- サーバーがインターネットに接続され、Azure にアクセスできること。 サーバーと Microsoft サービスとの間で行われるすべての通信にポート 443 を使用します。
 
 ## <a name="add-a-server-endpoint"></a>サーバー エンドポイントを追加する
 サーバー エンドポイントを追加するには、目的の同期グループに移動し、[サーバー エンドポイントの追加] を選択します。
@@ -69,6 +69,6 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 
     ![同期グループからサーバー エンドポイントを削除する](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure ファイル同期 (プレビュー) へのサーバーの登録/登録解除](storage-sync-files-server-registration.md)
 - [Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)

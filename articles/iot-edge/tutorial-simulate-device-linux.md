@@ -7,16 +7,16 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: elioda
-ms.date: 10/16/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 327a959ad97897fd19f45a0599f37492938df104
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 55770c92f5d5959e83066b425bc6ccf2b9dcc62e
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux---preview"></a>Linux のシミュレートされたデバイスに Azure IoT Edge をデプロイする - プレビュー
+# <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Linux または MacOS のシミュレートされたデバイスへの Azure IoT Edge のデプロイ - プレビュー
 
 Azure IoT Edge を使用すると、すべてのデータをクラウドにプッシュしなくても、デバイスで分析とデータ処理を実行することができます。 IoT Edge チュートリアルでは、Azure サービスまたはカスタム コードからビルドされたさまざまな種類の モジュールをデプロイする方法について説明しますが、まずテストするデバイスが必要になります。 
 
@@ -33,10 +33,14 @@ Azure IoT Edge を使用すると、すべてのデータをクラウドにプ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Linux を実行しているコンピューターまたは仮想マシンを使用して、モノのインターネット デバイスがシミュレートされていることを前提としています。 IoT Edge デバイスを正しくデプロイするには、以下のサービスが必要です。
+このチュートリアルでは、自分のコンピューターまたは仮想マシンをモノのインターネット デバイスのように使用します。 マシンを IoT Edge デバイスにするには、次のサービスが必要です。
 
-- [Docker を Linux にインストールし][lnk-docker-ubuntu]、稼働していることを確認します。 
-- Ubuntu を含め、ほとんどの Linux ディストリビューションには既に Python 2.7 がインストールされています。 次のコマンドを使用して、pip がインストールされていることを確認してください: `sudo apt-get install python-pip`
+* Python pip (IoT Edge ランタイムをインストールするため)
+   * Linux: `sudo apt-get install python-pip`.
+   * MacOS: `sudo easy_install pip`.
+* Docker (IoT Edge モジュールを実行するため)
+   * [Docker for Linux をインストール][lnk-docker-ubuntu]し、稼働していることを確認します。 
+   * [Docker for Mac をインストール][lnk-docker-mac]し、稼働していることを確認します。 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -110,7 +114,7 @@ sudo docker logs -f tempSensor
 
 また、[IoT Hub エクスプローラー ツール][lnk-iothub-explorer]を使用して、デバイスが送信しているテレメトリを表示することもできます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、新しい IoT Edge デバイスを作成し、Azure IoT Edge クラウド インターフェイスを使用してコードをデバイスにデプロイしました。 その環境に関する生データを生成するシミュレートされたデバイスができあがりました。 
 
@@ -130,4 +134,5 @@ sudo docker logs -f tempSensor
 
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
+[lnk-docker-mac]: https://docs.docker.com/docker-for-mac/install/
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer

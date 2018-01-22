@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 9ceb299b3ee521aeefb45c21920bd3b6e0049d26
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6f9786b75f5160ceaa4dd269a91d7f3a4b6700d5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>データ収集を使用してモデル データを収集する
 
-Azure Machine Learning Workbench でモデル データ収集機能を使用すると、モデルの入力と Web サービスからの予測をアーカイブできます。
+Azure Machine Learning でモデル データ収集機能を使用すると、モデルの入力と Web サービスからの予測をアーカイブできます。
 
 ## <a name="install-the-data-collection-package"></a>データ収集パッケージをインストールする
 データ収集ライブラリは、Linux および Windows にネイティブにインストールできます。
@@ -37,6 +37,12 @@ Linux では、まず libxml++ ライブラリをインストールします。 
 次に、次のコマンドを実行します。
 
     pip install azureml.datacollector
+
+## <a name="set-environment-variables"></a>環境変数の設定
+
+モデル データの収集は、2 つの環境変数に依存します。 AML_MODEL_DC_STORAGE_ENABLED は、**true** (すべて小文字) に設定する必要があります。AML_MODEL_DC_STORAGE には、データを格納する Azure Storage のアカウントへの接続文字列を設定する必要があります。
+
+これらの環境変数は、Web サービスが Azure のクラスターで実行されるときに、前もって設定されます。 ローカルで実行する場合は、自分で設定する必要があります。 Docker を使用する場合は、docker run コマンドの -e パラメーターを使用して、環境変数を渡します。
 
 ## <a name="collect-data"></a>データを収集する
 
@@ -81,12 +87,12 @@ Linux では、まず libxml++ ライブラリをインストールします。 
 ## <a name="view-the-collected-data"></a>収集したデータを表示する
 収集したデータを BLOB ストレージに表示するには、次の手順に従います。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択します。
 3. 検索ボックスに「**ストレージ アカウント**」と入力し、Enter キーを選択します。
 4. **[ストレージ アカウント]** 検索ブレードで、**[ストレージ アカウント]** リソースを選択します。 目的のストレージ アカウントを特定するには、次の手順に従います。
 
-    a. Azure Machine Learning Workbench に移動して作業中のプロジェクトを選択し、**[ファイル]** メニューからコマンド プロンプトを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 Azure Machine Learning Workbench に移動して作業中のプロジェクトを選択し、**[ファイル]** メニューからコマンド プロンプトを開きます。
     
     b. 「`az ml env show -v`」と入力し、*storage_account* の値を調べます。 それがストレージ アカウントの名前です。
 

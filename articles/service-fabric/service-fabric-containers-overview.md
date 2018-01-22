@@ -14,16 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/20/2017
 ms.author: msfussell
-ms.openlocfilehash: 9389ab5c3c67525703538cee644af9399417ffd5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 412107db2dc446eb5a6a433bfb7fc3bc5e760c27
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 > [!NOTE]
-> Windows 10 での Service Fabric クラスターへのコンテナーのデプロイは、まだサポートされていません。 
+> Windows 10 内の、または Docker CE がインストールされている Service Fabric クラスターへのコンテナーのデプロイはサポートされていません。 
 >   
+
+> [!NOTE]
+> Service Fabric バージョン 6.1 は、Windows Server バージョン 1709 をプレビュー版サポートしています。 Open ネットワークおよび Service Fabric の DNS サービスは、Windows Server バージョン 1709 で機能しません。 
+> 
 
 ## <a name="introduction"></a>はじめに
 Azure Service Fabric は、マシンのクラスター全体にわたるサービスの[オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)であり、Microsoft の大規模なサービスで長年にわたって使用され、最適化されてきました。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)の使用や[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)のデプロイなどの多くの方法で、サービスを開発することができます。 既定では、Service Fabric はこれらのサービスをプロセスとしてデプロイし、アクティブ化します。 プロセスとしてこれらを実施することで、これまでになくアクティブ化が高速になり、クラスターにおけるリソースの使用に無駄もなくなります。 さらに、Service Fabric では、コンテナー イメージ内のサービスもデプロイできます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。   
@@ -83,7 +87,7 @@ Service Fabric には、コンテナー化されたマイクロサービスで�
 * コンテナーにセキュリティ資格情報を設定する機能
 * コンテナーに対する異なるネットワーク モードの選択
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Service Fabric がコンテナー オーケストレーターとなるコンテナーについて説明したほか、Service Fabric にはコンテナーをサポートする機能があることについても説明しました。 次のステップとして、各機能の例の紹介と、その使用方法の解説に進みます。
 
 [Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)

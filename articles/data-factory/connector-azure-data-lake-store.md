@@ -10,17 +10,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 69707931402de597c9d6a329da349723da2a782a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: e3f15f043f6299592f4ece627f342d2ee324f467
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Store をコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - GA](v1/data-factory-azure-datalake-connector.md)
+> * [バージョン 1 - 一般公開](v1/data-factory-azure-datalake-connector.md)
 > * [バージョン 2 - プレビュー](connector-azure-data-lake-store.md)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Data Lake Store をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -38,7 +38,8 @@ ms.lasthandoff: 12/04/2017
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析/生成します。
 
 ## <a name="get-started"></a>作業開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。 
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 以下のセクションで、Azure Data lake Store に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
 
@@ -46,14 +47,14 @@ ms.lasthandoff: 12/04/2017
 
 Azure Data Lake Store のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AzureDataLakeStore** に設定する必要があります。 | あり |
-| dataLakeStoreUri | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | あり |
-| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | あり |
+| 型 | type プロパティは **AzureDataLakeStore** に設定する必要があります。 | [はい] |
+| dataLakeStoreUri | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | [はい] |
+| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
 | subscriptionId | Data Lake Store アカウントが属している Azure サブスクリプション ID です。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store アカウントが属している Azure リソース グループ名です。 | シンクでは必須 |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 さまざまな認証の種類それぞれのプロパティと JSON の使用例については、以下のセクションを参照してください。
 
@@ -68,17 +69,17 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 - アプリケーション キー
 - テナント ID
 
->[!TIP]
+>[!IMPORTANT]
 > Azure Data Lake Store でサービス プリンシパルに適切なアクセス許可を付与してください。
->- ソースでは、少なくともデータの**読み取り + 実行**アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または**読み取り**アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
->- シンクでは、少なくともデータの**書き込み + 実行**アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
+>- **ソースでは**、少なくともデータの**読み取り + 実行**アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または**読み取り**アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
+>- **シンクでは**、少なくともデータの**書き込み + 実行**アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
 
 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString とマークします。 | あり |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString とマークします。 | [はい] |
 
 **例:**
 
@@ -115,10 +116,10 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
 2. サービス プリンシパルの場合と同じように、Data Lake Store へのアクセス権をサービス ID に付与します。 詳しい手順については、[サービス間認証 - Azure Data Lake Store アカウントのファイルまたはフォルダーへの Azure AD アプリケーションの割り当て](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder)に関するページをご覧ください。
 
->[!TIP]
+>[!IMPORTANT]
 > Azure Data Lake Store でデータ ファクトリ サービス ID に適切なアクセス許可を付与してください。
->- ソースでは、少なくともデータの**読み取り + 実行**アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または**読み取り**アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
->- シンクでは、少なくともデータの**書き込み + 実行**アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
+>- **ソースでは**、少なくともデータの**読み取り + 実行**アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または**読み取り**アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
+>- **シンクでは**、少なくともデータの**書き込み + 実行**アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
 
 Azure Data Factory では、リンクされたサービスの Data Lake Store の一般的な情報以外にプロパティを指定する必要はありません。
 
@@ -149,13 +150,13 @@ Azure Data Factory では、リンクされたサービスの Data Lake Store �
 
 Azure Data Lake Store をコピー先またはコピー元としてデータをコピーするには、データセットの type プロパティを **AzureDataLakeStoreFile** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**AzureDataLakeStoreFile** を設定する必要があります。 |あり |
-| folderPath | ファイル ストレージのコンテナーとフォルダーのパス。 例: rootfolder/subfolder/ |あり |
-| fileName | 特定のファイルをコピー先またはコピー元としてコピーする場合は、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、ファイル名を次の形式で自動的に生成します`Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`。 (例: `Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz`)。 |いいえ |
+| 型 | データセットの type プロパティは、**AzureDataLakeStoreFile** を設定する必要があります。 |[はい] |
+| folderPath | ファイル ストレージのコンテナーとフォルダーのパス。 例: rootfolder/subfolder/ |[はい] |
+| fileName | 特定のファイルをコピー先またはコピー元としてコピーする場合は、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、データセットはフォルダー内のすべてのファイルをポイントします。<br/><br/>出力データセットに fileName の指定がなく、アクティビティ シンクに **preserveHierarchy** の指定がない場合、コピー アクティビティは、ファイル名を次の形式で自動的に生成します`Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`。 たとえば、「 `Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz`」のように入力します。 |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析するか生成する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 **例:**
 
@@ -193,10 +194,10 @@ Azure Data Lake Store をコピー先またはコピー元としてデータを�
 
 Azure Data Lake Store からデータをコピーするには、コピー アクティビティのソースの種類を **AzureDataLakeStoreSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **AzureDataLakeStoreSource** を設定する必要があります。 |あり |
-| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ |
+| 型 | コピー アクティビティのソースの type プロパティは **AzureDataLakeStoreSource** を設定する必要があります。 |[はい] |
+| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 
 **例:**
 
@@ -232,12 +233,12 @@ Azure Data Lake Store からデータをコピーするには、コピー アク
 
 ### <a name="azure-data-lake-store-as-sink"></a>シンクとしての Azure Data Lake Store
 
-データを Azure Blob にコピーするには、コピー アクティビティのシンクの種類を **AzureDataLakeStoreSink** に設定します。 **sink** セクションでは、次のプロパティがサポートされます。
+データを Azure Data Lake Store にコピーするには、コピー アクティビティのシンクの種類を **AzureDataLakeStoreSink** に設定します。 **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは **AzureDataLakeStoreSink** を設定する必要があります。 |あり |
-| copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>PreserveHierarchy (既定値)</b>: ファイル階層をターゲット フォルダー内で保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの第一レベルに配置されます。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 | いいえ |
+| 型 | コピー アクティビティのシンクの type プロパティは **AzureDataLakeStoreSink** を設定する必要があります。 |[はい] |
+| copyBehavior | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>PreserveHierarchy (既定値)</b>: ファイル階層をターゲット フォルダー内で保持します。 ソース フォルダーに対するソース ファイルの相対パスと、ターゲット フォルダーに対するターゲット ファイルの相対パスが一致します。<br/><b>FlattenHierarchy</b>: ソース フォルダーのすべてのファイルがターゲット フォルダーの第一レベルに配置されます。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>MergeFiles</b>: ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル/Blob の名前を指定した場合、マージされたファイル名は指定した名前になります。それ以外は自動生成されたファイル名になります。 | いいえ  |
 
 **例:**
 
@@ -284,5 +285,5 @@ Azure Data Lake Store からデータをコピーするには、コピー アク
 | false |flattenHierarchy | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | ターゲット フォルダー Folder1 は、次の構造で作成されます。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 の自動生成された名前<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2 の自動生成された名前<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。 |
 | false |mergeFiles | Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 | ターゲット フォルダー Folder1 は、次の構造で作成されます。<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1、File2 の内容は、自動生成されたファイル名を持つ 1 つのファイルにマージされます。 File1 の自動生成された名前<br/><br/>Subfolder1 と File3、File4、File5 は取得されません。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

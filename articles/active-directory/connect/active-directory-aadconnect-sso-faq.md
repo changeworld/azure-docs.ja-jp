@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 8eb575d6647b123119ceff9452ee8fc4a489f1ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bbaed9ee5db895810fac476ea5bf560800b0bdec
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
@@ -30,15 +30,26 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="is-seamless-sso-a-free-feature"></a>シームレス SSO は無料の機能ですか。
 
-シームレス SSO は無料の機能です。この機能を使用するために Azure AD の有料エディションは不要です。 機能が一般公開されても、無料のままです。
+シームレス SSO は無料の機能です。この機能を使用するために Azure AD の有料エディションは不要です。
+
+## <a name="is-seamless-sso-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>シームレス SSO は [Microsoft Azure Germany クラウド](http://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
+
+
+いいえ。 シームレス SSO は、Azure AD のワールドワイド インスタンスでのみご利用いただけます。
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>どのアプリケーションがシームレス SSO の `domain_hint` または `login_hint` 機能を利用していますか。
 
-これらのパラメーターを送信するおよび送信しないアプリケーションの一覧を現在作成中です。 ご自分のアプリケーション用にご興味がある場合、コメント セクションからお伝えください。
+これらのパラメーターを送信するおよび送信しないアプリケーションの一覧を現在作成中です。 関心のあるアプリケーションがある場合は、コメント セクションからお知らせください。
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>シームレス SSO で、ユーザー名として `userPrincipalName` の代わりに `Alternate ID` をサポートしていますか。
 
 はい。 [こちら](active-directory-aadconnect-get-started-custom.md)で示されているように、Azure AD Connect で構成されている場合、シームレス SSO はユーザー名として `Alternate ID` をサポートしています。 すべての Office 365 アプリケーションで `Alternate ID` をサポートしているわけではありません。 サポートの説明については、それぞれのアプリケーションのドキュメントを参照してください。
+
+## <a name="what-is-the-difference-between-the-single-sign-on-experience-provided-by-azure-ad-joinactive-directory-azureadjoin-overviewmd-and-seamless-sso"></a>[Azure AD Join](../active-directory-azureadjoin-overview.md) とシームレス SSO のシングル サインオン エクスペリエンスの違いは何ですか。
+
+[Azure AD Join](../active-directory-azureadjoin-overview.md) の場合、SSO は、デバイスが Azure AD に登録されているユーザーに提供されます。 そのデバイスは、必ずしもドメインに参加する必要があるとは限りません。 SSO は、Kerberos ではなく、"*プライマリ更新トークン*" (*PRT*) を使用して提供されます。 Windows 10 デバイスで、最適なユーザー エクスペリエンスが実現します。 SSO は、Edge ブラウザーで自動的に実行されます。 ブラウザー拡張機能を使用することで Chrome でも動作します。
+
+テナントでは、Azure AD Join とシームレス SSO の両方をご利用いただけます。 この 2 つは補完的な機能です。 両方の機能が有効な場合は、Azure AD Join がシームレス SSO に優先します。
 
 ## <a name="i-want-to-register-non-windows-10-devices-with-azure-ad-without-using-ad-fs-can-i-use-seamless-sso-instead"></a>Azure AD に、AD FS を使用せず非 Windows 10 デバイスを登録したいです。 代わりにシームレス SSO を使用できますか。
 
@@ -94,9 +105,9 @@ Azure AD Connect を実行し、[Change user sign-in page] \(ユーザー サイ
 
 ### <a name="step-2-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>手順 2. 表示されている各 AD フォレストから `AZUREADSSOACCT` コンピューター アカウントを手動で削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [**クイック スタート**](active-directory-aadconnect-sso-quick-start.md) - Azure AD シームレス SSO を動作させます。
 - [**技術的な詳細**](active-directory-aadconnect-sso-how-it-works.md) - この機能のしくみを確認します。
-- [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-sso.md) - 機能に関する一般的な問題を解決する方法を確認します。
+- [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-sso.md) - この機能に関する一般的な問題を解決する方法を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。

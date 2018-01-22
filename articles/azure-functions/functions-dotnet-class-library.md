@@ -1,467 +1,338 @@
 ---
-title: "Azure Functions での .NET クラス ライブラリの使用 |Microsoft Docs"
-description: "Azure Functions で使用するために .NET クラス ライブラリを作成する方法について説明します。"
+title: "Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)"
+description: "C# を使用して Azure Functions を開発する方法について説明します。"
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
 editor: 
 tags: 
-keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
-ms.assetid: 9f5db0c2-a88e-4fa8-9b59-37a7096fc828
+keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
 ms.service: functions
-ms.devlang: multiple
+ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/10/2017
+ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 6f6f89d62f1442198f80247cc5c433aa0c54030b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 3de1e9b042a7a356c3c88e604e1e26c256d85657
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/18/2018
 ---
-# <a name="using-net-class-libraries-with-azure-functions"></a>Azure Functions での .NET クラス ライブラリの使用
+# <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
-Azure Functions は、スクリプト ファイルに加えて、1 つまたは複数の関数の実装としてのクラス ライブラリの公開をサポートします。 [Azure Functions Visual Studio 2017 Tools](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) を使用することをお勧めします。
+<!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
-## <a name="prerequisites"></a>前提条件 
+この記事では、.NET クラス ライブラリの C# を使用した Azure Functions 開発の概要を示します。
 
-この記事の前提条件は次のとおりです。
+Azure Functions では、C# および C# スクリプト プログラミング言語をサポートします。 [Azure Portal での C# の使用](functions-create-function-app-portal.md)に関するガイダンスを探している場合は、[C# スクリプト (.csx) 開発者向けリファレンス](functions-reference-csharp.md)をご覧ください。
 
-- [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/) 以降のバージョン。
-- **Azure 開発**のワークロードをインストールします。
+この記事では、既に次の記事に目を通していることを前提とします。
+
+* [Azure Functions の開発者向けガイド](functions-reference.md)
+* [Azure Functions 向けの Visual Studio 2017 Tools](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
-Visual Studio で新しい Azure Functions プロジェクトを作成します。 新しいプロジェクト テンプレートによって、*host.json* ファイルと *local.settings.json* ファイルが作成されます。 [host.json で Azure Functions のランタイム設定をカスタマイズする](functions-host-json.md)ことができます。 
+Visual Studio では、**Azure Functions** プロジェクト テンプレートは、次のファイルを含む C# クラス ライブラリ プロジェクトを作成します。
 
-*local.settings.json* ファイルには、アプリの設定、接続文字列、および Azure Functions Core Tools の設定が格納されます。 構造の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md#local-settings-file)」を参照してください。
+* [host.json](functions-host-json.md) - ローカルまたは Azure 内で実行される場合に、プロジェクト内のすべての関数に影響を及ぼす構成設定を格納します。
+* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。
 
-### <a name="functionname-attribute"></a>FunctionName 属性
+### <a name="functionname-and-trigger-attributes"></a>FunctionName およびトリガー属性
 
-[ `FunctionNameAttribute` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/FunctionNameAttribute.cs) 属性は、関数のエントリ ポイントとしてメソッドをマークします。 これは、正確に 1 つのトリガーと、0 以上の入力および出力のバインドで使用する必要があります。
-
-### <a name="conversion-to-functionjson"></a>function.json への変換
-
-Azure Functions プロジェクトをビルドすると、関数のディレクトリに *function.json* ファイルが作成されます。 ディレクトリ名は、`[FunctionName]` 属性に指定されている関数名と同じです。 *function.json* ファイルには、トリガーとバインドが含まれ、プロジェクトのアセンブリ ファイルをポイントします。
-
-この変換は、NuGet パッケージ [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) によって実行されます。 ソースは、GitHub リポジトリ [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) で利用できます。
-
-## <a name="triggers-and-bindings"></a>トリガーとバインド 
-
-次の表は、Azure Functions クラス ライブラリ プロジェクトで使用できるトリガーとバインドの一覧を示しています。 すべての属性は、名前空間 `Microsoft.Azure.WebJobs` に含まれています。
-
-| バインド | Attribute | NuGet パッケージ |
-|------   | ------    | ------        |
-| [Blob ストレージのトリガー、入力、出力](#blob-storage) | [BlobAttribute]、[StorageAccountAttribute] | [Microsoft.Azure.WebJobs] | [Blob ストレージ] |
-| [Cosmos DB トリガー](#cosmos-db) | [CosmosDBTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] | 
-| [Cosmos DB の入力および出力](#cosmos-db) | [DocumentDBAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] |
-| [イベント ハブのトリガーと出力](#event-hub) | [EventHubTriggerAttribute]、[EventHubAttribute] | [Microsoft.Azure.WebJobs.ServiceBus] |
-| [外部ファイルの入力と出力](#api-hub) | [ApiHubFileAttribute] | [Microsoft.Azure.WebJobs.Extensions.ApiHub] |
-| [HTTP と webhook のトリガー](#http) | [HttpTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions.Http] |
-| [Mobile Apps の入力と出力](#mobile-apps) | [MobileTableAttribute] | [Microsoft.Azure.WebJobs.Extensions.MobileApps] | 
-| [Notification Hubs output](#nh) | [NotificationHubAttribute] | [Microsoft.Azure.WebJobs.Extensions.NotificationHubs] | 
-| [Queue Storage トリガーと出力](#queue) | [QueueAttribute]、[StorageAccountAttribute] | [Microsoft.Azure.WebJobs] | 
-| [SendGrid の出力](#sendgrid) | [SendGridAttribute] | [Microsoft.Azure.WebJobs.Extensions.SendGrid] | 
-| [Service Bus トリガー と出力](#service-bus) | [ServiceBusAttribute]、[ServiceBusAccountAttribute] | [Microsoft.Azure.WebJobs.ServiceBus]
-| [Table ストレージの入力と出力](#table) | [TableAttribute]、[StorageAccountAttribute] | [Microsoft.Azure.WebJobs] | 
-| [タイマー トリガー](#timer) | [TimerTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions] | 
-| [Twilio 出力](#twilio) | [TwilioSmsAttribute] | [Microsoft.Azure.WebJobs.Extensions.Twilio] | 
-
-<a name="blob-storage"></a>
-
-### <a name="blob-storage-trigger-input-bindings-and-output-bindings"></a>Blob Storage トリガー、入力バインド、および出力バインド
-
-Azure Functions は、Azure BLOB Storage のトリガー、入力、出力のバインドをサポートしています。 バインドの式とメタデータの詳細については、「[Azure Functions における Blob Storage のバインディング](functions-bindings-storage-blob.md)」を参照してください。
-
-Blob のトリガーは、`[BlobTrigger]` 属性を使用して定義されます。 `[StorageAccount]` 属性を使用して、関数またはクラス全体で使用されるストレージ アカウントへの接続文字列を含むアプリ設定名を定義することができます。
+クラス ライブラリでは、次の例に示すように 関数は `FunctionName` を使用した静的メソッドです。
 
 ```csharp
-[StorageAccount("AzureWebJobsStorage")]
-[FunctionName("BlobTriggerCSharp")]        
-public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, string name, TraceWriter log)
+public static class SimpleExample
 {
-    log.Info($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
-}
-```
-
-Blob の入力と出力は、`[Blob]` 属性と、読み取りまたは書き込みを示す `FileAccess` パラメーターを使用して定義します。 次の例は、blob トリガーと blob 出力バインドを使用します。
-
-```csharp
-[FunctionName("ResizeImage")]
-[StorageAccount("AzureWebJobsStorage")]
-public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image, 
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
-    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
-{
-    var imageBuilder = ImageResizer.ImageBuilder.Current;
-    var size = imageDimensionsTable[ImageSize.Small];
-
-    imageBuilder.Build(image, imageSmall,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
-
-    image.Position = 0;
-    size = imageDimensionsTable[ImageSize.Medium];
-
-    imageBuilder.Build(image, imageMedium,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
-}
-
-public enum ImageSize { ExtraSmall, Small, Medium }
-
-private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
-    { ImageSize.ExtraSmall, (320, 200) },
-    { ImageSize.Small,      (640, 400) },
-    { ImageSize.Medium,     (800, 600) }
-};
-```        
-
-<a name="cosmos-db"></a>
-
-### <a name="cosmos-db-trigger-input-bindings-and-output-bindings"></a>Cosmos DB トリガー、入力バインド、および出力バインド
-
-Azure Functions は、Cosmos DB トリガーと入力および出力バインドをサポートしています。 Cosmos DB バインディングの機能の詳細については、「[Azure Functions における Cosmos DB のバインド](functions-bindings-documentdb.md)」を参照してください。
-
-Cosmos DB のドキュメントからトリガーするには、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DocumentDB] で `[CosmosDBTrigger]` 属性を使用します。 次の例は、特定の `database` および `collection`からトリガーします。 `myCosmosDB` 設定には、Cosmos DB インスタンスへの接続が含まれます。 
-
-```csharp
-[FunctionName("DocumentUpdates")]
-public static void Run(
-    [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
-IReadOnlyList<Document> documents, TraceWriter log)
-{
-        log.Info("Documents modified " + documents.Count);
-        log.Info("First document Id " + documents[0].Id);
-}
-```
-
-Cosmos DB のドキュメントにバインドするには、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DocumentDB] で `[DocumentDB]` 属性を使用します。 次の例には、キューのトリガーと DocumentDB API 出力インドがあります。
-
-```csharp
-[FunctionName("QueueToDocDB")]        
-public static void Run(
-    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem, 
-    [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
-{
-    document = new { Text = myQueueItem, id = Guid.NewGuid() };
-}
-
-```
-
-<a name="event-hub"></a>
-
-### <a name="event-hubs-trigger-and-output"></a>イベント ハブのトリガーと出力
-
-Azure Functions は、イベント ハブのトリガーおよび出力バインドをサポートしています。 詳細については、「[Azure Functions における Event Hub のバインド](functions-bindings-event-hubs.md)」を参照してください。
-
-型 `[Microsoft.Azure.WebJobs.ServiceBus.EventHubTriggerAttribute]` と `[Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.ServiceBus] で定義されます。 
-
-次の例では、イベント ハブ トリガーを使用します。
-
-```csharp
-[FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnection")] string myEventHubMessage, TraceWriter log)
-{
-    log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
-}
-```
-
-次の例には、メソッドの戻り値を出力として使用するイベント ハブ出力があります。
-
-```csharp
-[FunctionName("EventHubOutput")]
-[return: EventHub("outputEventHubMessage", Connection = "EventHubConnection")]
-public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, TraceWriter log)
-{
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
-    return $"{DateTime.Now}";
-}
-```
-
-<a name="api-hub"></a>
-
-### <a name="external-file-input-and-output"></a>外部ファイルの入力と出力
-
-Azure Functions は、Google Drive、Dropbox、OneDrive などの外部ファイルのトリガー、入力、および出力のバインドをサポートしています。 詳細については、「[Azure Functions 外部ファイル バインディング](functions-bindings-external-file.md)」を参照してください。 属性 `[ExternalFileTrigger]` と `[ExternalFile]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.ApiHub] で定義されます。
-
-次の C# の例は、外部ファイルの入力と出力のバインドを示しています。 コードは、入力ファイルを出力ファイルにコピーします。
-
-```csharp
-[StorageAccount("MyStorageConnection")]
-[FunctionName("ExternalFile")]
-[return: ApiHubFile("MyFileConnection", "samples-workitems/{queueTrigger}-Copy", FileAccess.Write)]
-public static string Run([QueueTrigger("myqueue-items")] string myQueueItem, 
-    [ApiHubFile("MyFileConnection", "samples-workitems/{queueTrigger}", FileAccess.Read)] string myInputFile, 
-    TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {myQueueItem}");
-    return myInputFile;
-}
-```
-
-<a name="http"></a>
-
-### <a name="http-and-webhooks"></a>HTTP と webhook
-
-`HttpTrigger` 属性を使用して、HTTP トリガーまたは webhook を定義します。 この属性は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.Http] で定義されます。 承認レベル、webhook の種類、ルート、およびメソッドをカスタマイズすることができます。 次の例は、匿名認証および webhook の種類 _genericJson_ を使用して HTTP トリガーを定義します。
-
-```csharp
-[FunctionName("HttpTriggerCSharp")]
-public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
-{
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-<a name="mobile-apps"></a>
-
-### <a name="mobile-apps-input-and-output"></a>Mobile Apps の入力と出力
-
-Azure Functions は、Mobile Apps の入力および出力バインドをサポートしています。 詳細については、「[Azure Functions における Mobile Apps のバインド](functions-bindings-mobile-apps.md)」を参照してください。 属性 `[MobileTable]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps] で定義されます。
-
-次の例は、Mobile Apps の出力のバインドを示しています。
-
-```csharp
-[FunctionName("MobileAppsOutput")]        
-[return: MobileTable(ApiKeySetting = "MyMobileAppKey", TableName = "MyTable", MobileAppUriSetting = "MyMobileAppUri")]
-public static object Run([QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem, TraceWriter log)
-{
-    return new { Text = $"I'm running in a C# function! {myQueueItem}" };
-}
-```
-
-<a name="nh"></a>
-
-### <a name="notification-hubs-output"></a>Notification Hubs の出力
-
-Azure Functions は、Notification Hubs の出力バインドをサポートします。 詳細については、「[Azure Functions における通知ハブの出力バインド](functions-bindings-notification-hubs.md)」を参照してください。 属性 `[NotificationHub]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.NotificationHubs] で定義されます。
-
-<a name="queue"></a>
-
-### <a name="queue-storage-trigger-and-output"></a>Queue Storage トリガーと出力
-
-Azure Functions は、Azure キューのトリガーおよび出力バインドをサポートしています。 詳細については、「[Azure Functions における Storage キュー バインド](functions-bindings-storage-queue.md)」を参照してください。
-
-次の例は、`[Queue]` 属性を使用し、関数の戻り値の型とキューの出力バインドを使用する方法を示しています。 
-
-```csharp
-[StorageAccount("AzureWebJobsStorage")]
-public static class QueueFunctions
-{
-    // HTTP trigger with queue output binding
-    [FunctionName("QueueOutput")]
-    [return: Queue("myqueue-items")]
-    public static string QueueOutput([HttpTrigger] dynamic input,  TraceWriter log)
-    {
-        log.Info($"C# function processed: {input.Text}");
-        return input.Text;
-    }
-}
-
-```
-
-キュー トリガーを定義するには、`[QueueTrigger]` 属性を使用します。
-```csharp
-[StorageAccount("AzureWebJobsStorage")]
-public static class QueueFunctions
-{
-    // Queue trigger
     [FunctionName("QueueTrigger")]
-    [StorageAccount("AzureWebJobsStorage")]
-    public static void QueueTrigger([QueueTrigger("myqueue-items")] string myQueueItem, TraceWriter log)
+    public static void Run(
+        [QueueTrigger("myqueue-items")] string myQueueItem, 
+        TraceWriter log)
     {
         log.Info($"C# function processed: {myQueueItem}");
     }
-}
-
+} 
 ```
 
+`FunctionName` 属性は、関数のエントリ ポイントとしてメソッドをマークします。 名前は、プロジェクト内で一意にする必要があります。
 
-<a name="sendgrid"></a>
+トリガー属性は、トリガーの種類を指定し、メソッド パラメーターに入力データをバインドします。 例の関数は 1 つのクエリ メッセージによってトリガーされ、そのクエリ メッセージは `myQueueItem` パラメーターでメソッドに渡されます。
 
-### <a name="sendgrid-output"></a>SendGrid の出力
+### <a name="additional-binding-attributes"></a>追加のバインド属性
 
-Azure Functions は、プログラムによって電子メールを送信するための SendGrid 出力バインドをサポートしています。 詳細については、「[Azure Functions における SendGrid のバインディング](functions-bindings-sendgrid.md)」を参照してください。
-
-属性 `[SendGrid]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.SendGrid] で定義されます。 SendGrid バインディングには、お使いの SendGrid API キーが含まれる、`AzureWebJobsSendGridApiKey` という名前のアプリケーション設定が必要です。 これは、お使いの SendGrid API キーの既定の設定名です。 2 つ以上の SendGrid キーを保持するか、または別の設定名を選択する必要がある場合、次の例のように `SendGrid`バインディング属性の `ApiKey` プロパティを使用してこの名前を設定できます。
-
-    [SendGrid(ApiKey = "MyCustomSendGridKeyName")]
-
-Service Bus キュー トリガーの使用と、`SendGridMessage` を使用した SendGrid 出力バインドの例を次に示します。
+追加の入力および出力バインド属性が使用される場合があります。 次の例では、出力キュー バインドを追加することで、前の属性を変更しています。 関数では、入力キュー メッセージを別のキューの新しいキュー メッセージに書き込んでいます。
 
 ```csharp
-[FunctionName("SendEmail")]
-public static void Run(
-    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] OutgoingEmail email,
-    [SendGrid] out SendGridMessage message)
+public static class SimpleExampleWithOutput
 {
-    message = new SendGridMessage();
-    message.AddTo(email.To);
-    message.AddContent("text/html", email.Body);
-    message.SetFrom(new EmailAddress(email.From));
-    message.SetSubject(email.Subject);
-}
-
-public class OutgoingEmail
-{
-    public string To { get; set; }
-    public string From { get; set; }
-    public string Subject { get; set; }
-    public string Body { get; set; }
-}
-```
-この例では、`AzureWebJobsSendGridApiKey` という名前のアプリケーション設定のストレージにするために、SendGrid API キーが必要であることに注意してください。
-
-<a name="service-bus"></a>
-
-### <a name="service-bus-trigger-and-output"></a>Service Bus トリガー と出力
-
-Azure Functions は、Service Bus のキューおよびトピックのトリガーおよび出力バインドをサポートしています。 バインドの構成の詳細については、「[Azure Functions における Service Bus のバインド](functions-bindings-service-bus.md)」を参照してください。
-
-属性 `[ServiceBusTrigger]` と `[ServiceBus]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.ServiceBus] で定義されます。 
-
-Service Bus キュー トリガーの例を次に示します。
-
-```csharp
-[FunctionName("ServiceBusQueueTriggerCSharp")]                    
-public static void Run([ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] string myQueueItem, TraceWriter log)
-{
-    log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-}
-```
-
-メソッドの戻り値の型を出力として使用する Service Bus 出力バインドの例を次に示します。
-
-```csharp
-[FunctionName("ServiceBusOutput")]
-[return: ServiceBus("myqueue", Connection = "ServiceBusConnection")]
-public static string ServiceBusOutput([HttpTrigger] dynamic input, TraceWriter log)
-{
-    log.Info($"C# function processed: {input.Text}");
-    return input.Text;
-}
-```        
-
-<a name="table"></a>
-
-### <a name="table-storage-input-and-output"></a>Table ストレージの入力と出力
-
-Azure Functions は、Azure Table ストレージの入力および出力のバインドをサポートしています。 詳細については、「[Azure Functions における Storage テーブルのバインド](functions-bindings-storage-table.md)」を参照してください。
-
-次の例は、Table ストレージの出力および入力バインディングを示す 2 つの関数を含むクラスです。 
-
-```csharp
-[StorageAccount("AzureWebJobsStorage")]
-public class TableStorage
-{
-    public class MyPoco
+    [FunctionName("CopyQueueMessage")]
+    public static void Run(
+        [QueueTrigger("myqueue-items-source")] string myQueueItem, 
+        [Queue("myqueue-items-destination")] out string myQueueItemCopy,
+        TraceWriter log)
     {
-        public string PartitionKey { get; set; }
-        public string RowKey { get; set; }
-        public string Text { get; set; }
-    }
-
-    [FunctionName("TableOutput")]
-    [return: Table("MyTable")]
-    public static MyPoco TableOutput([HttpTrigger] dynamic input, TraceWriter log)
-    {
-        log.Info($"C# http trigger function processed: {input.Text}");
-        return new MyPoco { PartitionKey = "Http", RowKey = Guid.NewGuid().ToString(), Text = input.Text };
-    }
-
-    // use the metadata parameter "queueTrigger" to bind the queue payload
-    [FunctionName("TableInput")]
-    public static void TableInput([QueueTrigger("table-items")] string input, [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, TraceWriter log)
-    {
-        log.Info($"C# function processed: {poco.Text}");
+        log.Info($"CopyQueueMessage function processed: {myQueueItem}");
+        myQueueItemCopy = myQueueItem;
     }
 }
-
 ```
 
-<a name="timer"></a>
+### <a name="conversion-to-functionjson"></a>function.json への変換
 
-### <a name="timer-trigger"></a>タイマー トリガー
+ビルド処理では、ビルド フォルダー内の関数フォルダーに *function.json*ファイルを作成します。 このファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 
 
-Azure Functions には、定義したスケジュールに基づいて関数コードを実行することができるタイマー トリガー バインディングがあります。 バインドの機能の詳細については、「[Azure Functions におけるタイマー トリガー](functions-bindings-timer.md)」を参照してください。
+このファイルの目的は、[従量課金プランに関する決定事項を評価](functions-scale.md#how-the-consumption-plan-works)する際に使用するスケール コントローラーに、情報を提供することです。 このため、ファイルはトリガー情報だけを含み、入力または出力バインドは含まれません。
 
-従量課金プランでは、[CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)を使用してスケジュールを定義することができます。 App Service プランを使用している場合は、TimeSpan 文字列も使用できます。 
+生成された *function.json* ファイルには、*function.json* 構成ではなく、バインドの .NET 属性を使用するようにランタイムに指示する `configurationSource` プロパティが含まれます。 次に例を示します。
 
-次の例では、5 分ごとに実行されるタイマー トリガーを定義します。
-
-```csharp
-[FunctionName("TimerTriggerCSharp")]
-public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+```json
 {
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
-}
-```
-
-<a name="twilio"></a>
-
-### <a name="twilio-output"></a>Twilio 出力
-
-Azure Functions は、関数で SMS テキスト メッセージを送信できるようにする Twilio 出力バインドをサポートしています。 詳細については、「[Twilio 出力バインディングを使用した Azure Functions からの SMS メッセージの送信](functions-bindings-twilio.md)」を参照してください。 
-
-属性 `[TwilioSms]` は、パッケージ [Microsoft.Azure.WebJobs.Extensions.Twilio] で定義されます。
-
-次の C# の例では、キュー トリガーと Twilio 出力のバインドを使用します。
-
-```csharp
-[FunctionName("QueueTwilio")]
-[return: TwilioSms(AccountSidSetting = "TwilioAccountSid", AuthTokenSetting = "TwilioAuthToken", From = "+1425XXXXXXX" )]
-public static SMSMessage Run([QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] JObject order, TraceWriter log)
-{
-    log.Info($"C# Queue trigger function processed: {order}");
-
-    var message = new SMSMessage()
+  "generatedBy": "Microsoft.NET.Sdk.Functions-1.0.0.0",
+  "configurationSource": "attributes",
+  "bindings": [
     {
-        Body = $"Hello {order["name"]}, thanks for your order!",
-        To = order["mobileNumber"].ToString()
-    };
-
-    return message;
+      "type": "queueTrigger",
+      "queueName": "%input-queue-name%",
+      "name": "myQueueItem"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "..\\bin\\FunctionApp1.dll",
+  "entryPoint": "FunctionApp1.QueueTrigger.Run"
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+*function.json* ファイルの生成は、NuGet パッケージ ([Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)) によって実行されます。 ソース コードは、GitHub リポジトリ ([azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk)) で利用できます。
+
+## <a name="supported-types-for-bindings"></a>バインドでサポートされる型
+
+各バインドには独自にサポートされる型があります。たとえば、BLOB トリガー属性は文字列パラメーター、POCO パラメーター、`CloudBlockBlob` パラメーター、またはサポートされるその他の複数の型のいずれかに適用できます。 [BLOB バインディングのバインド リファレンス](functions-bindings-storage-blob.md#trigger---usage)に関する記事に、サポートされるすべてのパラメーター型の一覧が示されています。 詳細については、[トリガーとバインド](functions-triggers-bindings.md)に関する記事と、[各バインドの種類に対応するバインド リファレンス ドキュメント](functions-triggers-bindings.md#next-steps)をご覧ください。
+
+[!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+## <a name="binding-to-method-return-value"></a>メソッドの戻り値へのバインド
+
+次の例に示すように、出力バインドにはメソッドの戻り値を使用できます。
+
+```csharp
+public static class ReturnValueOutputBinding
+{
+    [FunctionName("CopyQueueMessageUsingReturnValue")]
+    [return: Queue("myqueue-items-destination")]
+    public static string Run(
+        [QueueTrigger("myqueue-items-source-2")] string myQueueItem,
+        TraceWriter log)
+    {
+        log.Info($"C# function processed: {myQueueItem}");
+        return myQueueItem;
+    }
+}
+```
+
+## <a name="writing-multiple-output-values"></a>複数の出力値の書き込み
+
+出力バインドに複数の値を書き込むには、[`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 型または [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) 型を使用します。 これらの型は、メソッド完了時に出力バインドに書き込まれる、書き込み専用接続です。
+
+この例では、`ICollector` を使用して複数のキュー メッセージを同じキューに書き込みます。
+
+```csharp
+public static class ICollectorExample
+{
+    [FunctionName("CopyQueueMessageICollector")]
+    public static void Run(
+        [QueueTrigger("myqueue-items-source-3")] string myQueueItem,
+        [Queue("myqueue-items-destination")] ICollector<string> myQueueItemCopy,
+        TraceWriter log)
+    {
+        log.Info($"C# function processed: {myQueueItem}");
+        myQueueItemCopy.Add($"Copy 1: {myQueueItem}");
+        myQueueItemCopy.Add($"Copy 2: {myQueueItem}");
+    }
+}
+```
+
+## <a name="logging"></a>ログの記録
+
+出力を C# のストリーミング ログにログ記録するために、`TraceWriter` 型の引数を含めます。 これの名前を `log`にすることをお勧めします。 Azure Functions では `Console.Write` を使用しないでください。 
+
+`TraceWriter` は [Azure Web ジョブ SDK](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs) で定義されます。 `TraceWriter` のログ レベルは、[host.json](functions-host-json.md) で構成できます。
+
+```csharp
+public static class SimpleExample
+{
+    [FunctionName("QueueTrigger")]
+    public static void Run(
+        [QueueTrigger("myqueue-items")] string myQueueItem, 
+        TraceWriter log)
+    {
+        log.Info($"C# function processed: {myQueueItem}");
+    }
+} 
+```
+
+> [!NOTE]
+> `TraceWriter` の代わりに使用できる新しいログ記録フレームワークについては、**Azure Functions の監視**に関する記事にある、[C# 関数でのログの書き込み](functions-monitoring.md#write-logs-in-c-functions)についての説明をご覧ください。
+
+## <a name="async"></a>非同期
+
+関数を非同期にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
+
+```csharp
+public static class AsyncExample
+{
+    [FunctionName("BlobCopy")]
+    public static async Task RunAsync(
+        [BlobTrigger("sample-images/{blobName}")] Stream blobInput,
+        [Blob("sample-images-copies/{blobName}", FileAccess.Write)] Stream blobOutput,
+        CancellationToken token,
+        TraceWriter log)
+    {
+        log.Info($"BlobCopy function processed.");
+        await blobInput.CopyToAsync(blobOutput, 4096, token);
+    }
+}
+```
+
+## <a name="cancellation-tokens"></a>キャンセル トークン
+
+一部の操作では、グレースフル シャットダウンが必要です。 クラッシュに対応できるコードを記述するのが最善の方法ですが、シャットダウンの要求を処理する場合は、[CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 型の引数を定義します。  `CancellationToken` は、ホストのシャット ダウンがトリガーされることを通知するために用意されています。
+
+```csharp
+public static class CancellationTokenExample
+{
+    [FunctionName("BlobCopy")]
+    public static async Task RunAsync(
+        [BlobTrigger("sample-images/{blobName}")] Stream blobInput,
+        [Blob("sample-images-copies/{blobName}", FileAccess.Write)] Stream blobOutput,
+        CancellationToken token)
+    {
+        await blobInput.CopyToAsync(blobOutput, 4096, token);
+    }
+}
+```
+
+## <a name="environment-variables"></a>環境変数
+
+環境変数またはアプリ設定値を取得するには、次のコード例のように、 `System.Environment.GetEnvironmentVariable`を使用します。
+
+```csharp
+public static class EnvironmentVariablesExample
+{
+    [FunctionName("GetEnvironmentVariables")]
+    public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWriter log)
+    {
+        log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+        log.Info(GetEnvironmentVariable("AzureWebJobsStorage"));
+        log.Info(GetEnvironmentVariable("WEBSITE_SITE_NAME"));
+    }
+
+    public static string GetEnvironmentVariable(string name)
+    {
+        return name + ": " +
+            System.Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
+    }
+}
+```
+
+## <a name="binding-at-runtime"></a>実行時のバインド
+
+C# および他の .NET 言語では、属性の[*宣言型*](https://en.wikipedia.org/wiki/Declarative_programming)のバインドではなく[命令型](https://en.wikipedia.org/wiki/Imperative_programming)のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 このパターンを使用すると、サポートされている入力バインドと出力バインドに関数コード内でバインドできます。
+
+次のように命令型のバインドを定義します。
+
+- 必要な命令型のバインドの関数署名に属性を含め**ないでください。**
+- 入力パラメーター [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) または [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs) を渡します。
+- 次の C# パターンを使用してデータ バインドを実行します。
+
+  ```cs
+  using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
+  {
+      ...
+  }
+  ```
+
+  `BindingTypeAttribute` はバインドを定義する .NET 属性、`T` はそのバインドの種類でサポートされている入力または出力の型です。 `T` を `out` パラメーター型 (`out JObject` など) にすることはできません。 たとえば、Mobile Apps テーブルの出力バインドは [6 種類の出力](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)をサポートしますが、強制バインドに使用できるのは [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) または [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) のみです。
+
+### <a name="single-attribute-example"></a>単一属性の例
+
+次のコード例は、実行時に BLOB パスが定義された [Storage Blob の出力バインド](functions-bindings-storage-blob.md#output)を作成し、この BLOB に文字列を書き込みます。
+
+```cs
+public static class IBinderExample
+{
+    [FunctionName("CreateBlobUsingBinder")]
+    public static void Run(
+        [QueueTrigger("myqueue-items-source-4")] string myQueueItem,
+        IBinder binder,
+        TraceWriter log)
+    {
+        log.Info($"CreateBlobUsingBinder function processed: {myQueueItem}");
+        using (var writer = binder.Bind<TextWriter>(new BlobAttribute(
+                    $"samples-output/{myQueueItem}", FileAccess.Write)))
+        {
+            writer.Write("Hello World!");
+        };
+    }
+}
+```
+
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) はサポートされている出力バインドの種類です。
+
+### <a name="multiple-attribute-example"></a>複数属性の例
+
+前の例では、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリ設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 `IBinder`ではなく、`Binder` パラメーターを使用します。  例: 
+
+```cs
+public static class IBinderExampleMultipleAttributes
+{
+    [FunctionName("CreateBlobInDifferentStorageAccount")]
+    public async static Task RunAsync(
+            [QueueTrigger("myqueue-items-source-binder2")] string myQueueItem,
+            Binder binder,
+            TraceWriter log)
+    {
+        log.Info($"CreateBlobInDifferentStorageAccount function processed: {myQueueItem}");
+        var attributes = new Attribute[]
+        {
+        new BlobAttribute($"samples-output/{myQueueItem}", FileAccess.Write),
+        new StorageAccountAttribute("MyStorageAccount")
+        };
+        using (var writer = await binder.BindAsync<TextWriter>(attributes))
+        {
+            await writer.WriteAsync("Hello World!!");
+        }
+    }
+}
+```
+
+## <a name="triggers-and-bindings"></a>トリガーとバインド 
+
+次の表は、Azure Functions クラス ライブラリ プロジェクトで使用できるトリガーとバインド属性の一覧を示しています。 すべての属性は、名前空間 `Microsoft.Azure.WebJobs` に含まれています。
+
+| トリガー | 入力 | 出力|
+|------   | ------    | ------  |
+| [BlobTrigger](functions-bindings-storage-blob.md#trigger---attributes)。| [BLOB](functions-bindings-storage-blob.md#input---attributes)| [BLOB](functions-bindings-storage-blob.md#output---attributes)|
+| [CosmosDBTrigger](functions-bindings-cosmosdb.md#trigger---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#input---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#output---attributes) |
+| [EventHubTrigger](functions-bindings-event-hubs.md#trigger---attributes)|| [EventHub](functions-bindings-event-hubs.md#output---attributes) |
+| [HTTPTrigger](functions-bindings-http-webhook.md#trigger---attributes)|||
+| [QueueTrigger](functions-bindings-storage-queue.md#trigger---attributes)|| [キュー](functions-bindings-storage-queue.md#output---attributes) |
+| [ServiceBusTrigger](functions-bindings-service-bus.md#trigger---attributes)|| [ServiceBus](functions-bindings-service-bus.md#output---attributes) |
+| [TimerTrigger](functions-bindings-timer.md#attributes) | ||
+| |[ApiHubFile](functions-bindings-external-file.md)| [ApiHubFile](functions-bindings-external-file.md)|
+| |[MobileTable](functions-bindings-mobile-apps.md#input---attributes)| [MobileTable](functions-bindings-mobile-apps.md#output---attributes) | 
+| |[テーブル](functions-bindings-storage-table.md#input---attributes)| [テーブル](functions-bindings-storage-table.md#output---attributes)  | 
+| ||[NotificationHub](functions-bindings-notification-hubs.md#attributes) |
+| ||[SendGrid](functions-bindings-sendgrid.md#attributes) |
+| ||[Twilio](functions-bindings-twilio.md#attributes)| 
+
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
+> [トリガーとバインドの詳細を確認する](functions-triggers-bindings.md)
 
-<!-- NuGet packages --> 
-[Microsoft.Azure.WebJobs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.DocumentDB]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB/1.1.0-beta4
-[Microsoft.Azure.WebJobs.ServiceBus]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.MobileApps]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps/1.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs/1.1.0-beta1
-[Microsoft.Azure.WebJobs.ServiceBus]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.SendGrid]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.Http]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http/1.0.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.BotFramework]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.BotFramework/1.0.15-beta
-[Microsoft.Azure.WebJobs.Extensions.ApiHub]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApiHub/1.0.0-beta4
-[Microsoft.Azure.WebJobs.Extensions.Twilio]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio/1.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/2.1.0-beta1
-
-
-<!-- Links to source --> 
-[DocumentDBAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs
-[CosmosDBTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs
-[EventHubAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs
-[EventHubTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs
-[MobileTableAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs
-[NotificationHubAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs 
-[ServiceBusAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs
-[ServiceBusAccountAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs
-[QueueAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs
-[StorageAccountAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs
-[BlobAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs
-[TableAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs
-[TwilioSmsAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs
-[SendGridAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs
-[HttpTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs
-[ApiHubFileAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.ApiHub/ApiHubFileAttribute.cs
-[TimerTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs
+> [!div class="nextstepaction"]
+> [Azure Functions のベスト プラクティスを確認する](functions-best-practices.md)

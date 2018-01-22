@@ -1,5 +1,5 @@
 ---
-title: "Azure AD: SSPR 登録 | Microsoft Docs"
+title: "セルフサービスによるパスワードのリセットの登録 - Azure Active Directory"
 description: "Azure AD セルフサービスによるパスワードのリセット用の認証データを登録する"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 01/11/2018
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: bae62762decf530521ba10ce684d5db9afa0b86c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 976eb5e710b0ffca48dae268b394b3d31fe2e938
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="register-for-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを登録する
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/11/2017
 | ユーザー ID の入力後、「アカウントは、パスワード リセットが有効になっていません。」エラーが表示されます | アカウントは、パスワード リセットが有効になっていません。 <br> <br> 申し訳ありませんが、IT スタッフはこのサービスで使用できるアカウントを設定していません。 <br> <br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。 | これは IT スタッフが **[アカウントにアクセスできません]** というリンクからのパスワードのリセットを有効にしていないため、またはその機能を使用するライセンスを付与していないために表示されます。 <br> <br> パスワードをリセットするには、**[contact an administrator]\(管理者に連絡\)** リンクを選択します。 会社の IT スタッフに電子メールが送信されます。 この電子メールでパスワードをリセットしたいことを知らせ、この機能を有効にしてもらいます。 |
 | ユーザー ID の入力後に「お客様のアカウントを確認できませんでした」エラーが表示されます | お客様のアカウントを確認できませんでした。 <br> <br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。 | このメッセージは、パスワードのリセットは有効になっていても、サービスを使用するための登録が行われていない場合に表示されます。 パスワードのリセットを登録するには、アカウントに再アクセスできるようになった後、[パスワードのリセット登録ページ](http://aka.ms/ssprsetup)に移動します。 <br> <br> パスワードをリセットするには、**[contact an administrator]\(管理者に連絡\)** リンクを選択し、会社の IT スタッフにメールを送信します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [セルフサービスのパスワード リセットを使用したパスワードの変更](active-directory-passwords-update-your-own-password.md)
 * [パスワードのリセット登録ページ](http://aka.ms/ssprsetup)

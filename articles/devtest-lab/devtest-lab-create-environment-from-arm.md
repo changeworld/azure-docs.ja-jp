@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: v-craic
-ms.openlocfilehash: 3fd0f15c695bcd22a51233846ace8711a4fcd635
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 55a6c5cd5a0544b297bb68841c5ff0314f48dcc9
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 
 [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を使用すると、簡単に [VM を作成してラボに追加する](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm)ことができます。 この方法は、一度に 1 つの VM を作成する場合に適してします。 ところが、環境に複数の VM が含まれる場合は、各 VM を個別に作成する必要があります。 多層 Web アプリや SharePoint ファームのようなシナリオでは、シングル ステップで複数の VM を作成できるメカニズムが必要です。 Azure Resource Manager テンプレートを使用することで、Azure のソリューションのインフラストラクチャと構成を定義して、複数の VM を一貫した状態で繰り返しデプロイできるようになりました。 この機能には次のような利点があります。
 
 - Azure Resource Manager テンプレートが、ソース管理リポジトリ (GitHub や Team Services Git) から直接読み込まれます。
-- 構成したら、ユーザーは、他の種類の [VM ベース](./devtest-lab-comparing-vm-base-image-types.md)を使用してできることとして Azure Portal から Azure Resource Manager テンプレートを選択して環境を作成できます。
+- 構成したら、ユーザーは、他の種類の [VM ベース](./devtest-lab-comparing-vm-base-image-types.md)を使用する場合と同様に、Azure Portal から Azure Resource Manager テンプレートを選択して環境を作成できます。
 - Azure PaaS のリソースを、IaaS VM だけでなく Azure Resource Manager テンプレートから環境にプロビジョニングできます。
 - 環境のコストを、他の種類のベースによって作成された個々の VM だけでなくラボで追跡できます。
 - PaaS のリソースが作成され、コスト管理に表示されます。ただし、VM の自動シャットダウンは PaaS リソースに適用されません。
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/02/2018
 Resource Manager テンプレートを使用してラボのすべてのリソースを単一の操作でデプロイ、更新、または削除することには多くの利点があります。詳細については、[こちらで](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager)ご確認ください。
 
 > [!NOTE]
-> より多くのラボの VM を作成するためのベースとして Resource Manager テンプレートを使用する場合、マルチ VM を作成するか、単一 VM を作成するかでいくつかの違いがあることに注意してください。 その違いについては、「Use a virtual machine's Azure Resource Manager template」(仮想マシンの Azure Resource Manager テンプレートを使用する) で詳しく説明しています。
+> より多くのラボの VM を作成するためのベースとして Resource Manager テンプレートを使用する場合、マルチ VM を作成するか、単一 VM を作成するかでいくつかの違いがあることに注意してください。 その違いについては、[仮想マシンの Azure Resource Manager テンプレートの使用](devtest-lab-use-resource-manager-template.md)に関するページで詳しく説明しています。
 >
 >
 
@@ -67,16 +67,16 @@ Resource Manager テンプレートを使用してラボのすべてのリソー
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。   
-1. ラボのブレードで、**[Configuration and Policies (構成とポリシー)]** を選択します。
+1. ラボの **[概要]** ウィンドウで、**[構成とポリシー]** を選択します。
 
     ![構成とポリシー](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
 
-1. **[Configuration and Policies (構成とポリシー)]** の設定一覧で、**[リポジトリ]** を選択します。 **[リポジトリ]** ブレードには、ラボに追加されたリポジトリが一覧表示されます。 `Public Repo` という名前のリポジトリがすべてのラボに自動的に生成され、複数の VM アーティファクトを格納する [DevTest ラボ GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)に接続され、使用されます。
+1. **[Configuration and Policies (構成とポリシー)]** の設定一覧で、**[リポジトリ]** を選択します。 **[リポジトリ]** ウィンドウには、ラボに追加されたリポジトリが一覧表示されます。 `Public Repo` という名前のリポジトリがすべてのラボに自動的に生成され、複数の VM アーティファクトを格納する [DevTest ラボ GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)に接続され、使用されます。
 
     ![Public Repo](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 
 1. **[追加+]** を選択し、Azure Resource Manager テンプレートのリポジトリを追加します。
-1. 2 つ目の **[リポジトリ]** ブレードが開いたら、必要な情報を次のように入力します。
+1. 2 つ目の **[リポジトリ]** ウィンドウが開いたら、必要な情報を次のように入力します。
     - **名前** - ラボで使用するリポジトリ名を入力します。
     - **Git クローン URL** - GitHub または Visual Studio Team Services の GIT HTTPS クローン URL を入力します。  
     - **分岐** - Azure Resource Manager テンプレートの定義にアクセスするための分岐名を入力します。 
@@ -85,28 +85,29 @@ Resource Manager テンプレートを使用してラボのすべてのリソー
     
         ![Public Repo](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 
+
 1. すべての必須フィールドを入力し、検証に合格したら、**[保存]** を選択します。
 
 次のセクションでは、Azure Resource Manager テンプレートから環境を作成する手順を説明します。
 
-## <a name="create-an-environment-from-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートから環境を作成する
+## <a name="create-an-environment-from-a-resource-manager-template-using-the-azure-portal"></a>Azure Portal を使用して Resource Manager テンプレートから環境を作成する
 
 ラボで Azure Resource Manager テンプレート リポジトリが構成されると、ラボのユーザーは Azure Portal で次の手順を使用して環境を作成できます。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。   
-1. ラボのブレードで、**[追加+]** を選択します。
-1. **[ベースの選択]** ブレードに、使用できるベース イメージが表示されます。Azure Resource Manager テンプレートがその先頭に表示されます。 目的の Azure Resource Manager テンプレートを選択します。
+1. ラボのウィンドウで、**[追加+]** を選択します。
+1. **[ベースの選択]** ウィンドウに、使用できるベース イメージが表示されます。Azure Resource Manager テンプレートがその先頭に表示されます。 目的の Azure Resource Manager テンプレートを選択します。
 
     ![ベースの選択](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
   
-1. **[追加]** ブレードで、**[環境名]** に値を入力します。 環境名は、ラボでユーザーに表示される内容です。 その他の入力フィールドは、Azure Resource Manager テンプレートで定義します。 既定値がテンプレートで定義されている場合、または `azuredeploy.parameter.json` ファイルが存在する場合は、これらの入力フィールドに既定値が表示されます。 "*セキュリティで保護された文字列*" 型のパラメーターの場合、ラボの[個人のシークレット ストア](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)に格納されたシークレットを使用することができます。
+1. **[追加]** ウィンドウで、**[環境名]** に値を入力します。 環境名は、ラボでユーザーに表示される内容です。 その他の入力フィールドは、Azure Resource Manager テンプレートで定義します。 既定値がテンプレートで定義されている場合、または `azuredeploy.parameter.json` ファイルが存在する場合は、これらの入力フィールドに既定値が表示されます。 "*セキュリティで保護された文字列*" 型のパラメーターの場合、ラボの[個人のシークレット ストア](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store)に格納されたシークレットを使用することができます。
 
-    ![[追加] ブレード](./media/devtest-lab-create-environment-from-arm/add.png)
+    ![[追加] ウィンドウ](./media/devtest-lab-create-environment-from-arm/add.png)
 
     > [!NOTE]
-    > 値を指定した場合でも、空の値として表示されるパラメーター値がいくつかあります。 そのため、ユーザーが Azure Resource Manager テンプレートでこれらの値をパラメーターに割り当てた場合でも、DevTest Labs で値が表示されません。代わりに、環境の作成時にラボのユーザーが値を入力する必要がある場所には、入力フィールドが空白で示されます。
+    > 値を指定した場合でも、空の値として表示されるパラメーター値がいくつかあります。 そのため、ユーザーが Azure Resource Manager テンプレートのパラメーターにそれらの値を割り当てた場合、DevTest Labs に値は表示されません。 代わりに、空白の入力フィールドが表示され、ラボ ユーザーは環境を作成するときに、ここに値に入力する必要があります。
     > 
     > - GEN-UNIQUE
     > - GEN-UNIQUE-[N]
@@ -114,7 +115,7 @@ Resource Manager テンプレートを使用してラボのすべてのリソー
     > - GEN-PASSWORD 
  
 1. **[追加]** を選択して環境を作成します。 環境でプロビジョニングが開始され、**[仮想マシン]** の一覧に状態が即座に表示されます。 Azure Resource Manager テンプレートで定義されているすべてのリソースをプロビジョニングするために、新しいリソース グループがラボによって自動的に作成されます。
-1. 環境が作成されたら、**[仮想マシン]** の一覧で環境を選択してリソース グループ ブレードを開き、環境内にプロビジョニングされたすべてのリソースを参照します。
+1. 環境が作成されたら、**[仮想マシン]** の一覧で環境を選択してリソース グループ ウィンドウを開き、環境内にプロビジョニングされたすべてのリソースを参照します。
     
     ![[仮想マシン] の一覧](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
    
@@ -126,7 +127,51 @@ Resource Manager テンプレートを使用してラボのすべてのリソー
 
     ![環境のアクション](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
 
+## <a name="deploy-a-resource-manager-template-to-create-a-vm"></a>Resource Manager テンプレートをデプロイして VM を作成する
+Resource Manager テンプレートを保存して必要に応じてカスタマイズしたら、VM の作成を自動化するのに使用できます。 
+- 「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)」では、Azure PowerShell と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法を説明しています。 
+- 「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)」では、Azure CLI と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明しています。
+
+> [!NOTE]
+> ラボ所有者権限を持つユーザーだけが、Azure PowerShell を使用して Resource Manager テンプレートから VM を作成できます。 Resource Manager テンプレートを使用して VM の作成を自動化する場合でユーザー権限しか持っていない場合は、[CLI で **az lab vm create** コマンド](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create) を使用します。
+
+### <a name="general-limitations"></a>一般的な制限事項 
+
+DevTest Labs で Resource Manager テンプレートを使用する場合は、次の制限事項を考慮してください。
+
+- 作成した Resource Manager テンプレートから既存のリソースは参照できません。新しいリソースのみを参照できます。 さらに、通常 DevTest Labs の外部にデプロイする既存の Resource Manager テンプレートがあり、これに既存のリソースへの参照が含まれている場合は、ラボで使用できません。
+
+   唯一の例外は、既存の仮想ネットワークを参照**できる**ことです。 
+
+- Resource Manager テンプレートから作成されたラボ VM からは、数式を作成できません。 
+
+- Resource Manager テンプレートから作成されたラボ VM からは、カスタム イメージを作成できません。 
+
+- Resource Manager テンプレートをデプロイするときに、ほとんどのポリシーは評価されません。
+
+   たとえば、ユーザーは 5 つの VM しか作成できないことを指定するラボ ポリシーがあるとします。 それでも、ユーザーが数十の VM を作成する Resource Manager テンプレートをデプロイすると、できてしまいます。 次のようなポリシーは評価されません。
+
+   - ユーザーあたりの VM 数
+   - ラボ ユーザーあたりの Premium VM 数
+   - ラボ ユーザーあたりの Premium ディスク数
+
+
+### <a name="configure-environment-resource-group-access-rights-for-lab-users"></a>ラボ ユーザーの環境リソース グループへのアクセス権を構成する
+
+ラボ ユーザーは、Resource Manager テンプレートをデプロイできます。 しかし既定では、ラボ ユーザーは閲覧者のアクセス権を持ちます。つまり、環境リソース グループのリソースを変更できません。 たとえば、リソースを停止または開始できません。
+
+ラボ ユーザーに共同作成者のアクセス権を付与するには、次の手順に従います。 すると、ラボ ユーザーが Resource Manager テンプレートをデプロイするときに、その環境のリソースを編集できるようになります。 
+
+
+1. ラボの **[概要]** ウィンドウで、**[構成とポリシー]** を選択します。
+1. **[ラボの設定]** を選択します。
+1. [ラボの設定] ウィンドウで、**[共同作成者]** を選択してラボ ユーザーに書き込み権限を付与します。
+
+    ![ラボ ユーザーのアクセス権の構成](./media/devtest-lab-create-environment-from-arm/configure-access-rights.png)
+
+1. **[保存]** を選択します。
+
 ## <a name="next-steps"></a>次の手順
-* VM が作成されたら、その VM のブレードで **[接続]** を選択して VM に接続できます。
+* VM が作成されたら、その VM の管理ウィンドウで **[接続]** を選択して VM に接続できます。
 * ラボの **[仮想マシン]** 一覧で環境を選択して、環境内のリソースを表示および管理します。 
-* [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します
+* [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します。

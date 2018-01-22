@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 3faa6c1867808436a66a2b33ea1a9d79ede2c8fb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 45c8632f4e03c86cf4e32c6d1151977792f32add
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/13/2018
 ---
 > [!WARNING]
-> Azure Active Directory の統合では、[Developer および Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) レベルのみで使用できます。
+> Azure Active Directory 統合は、[Developer、Standard、および Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) の各レベルでのみ使用可能です。
 
 # <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法
 ## <a name="overview"></a>概要
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/04/2017
 ## <a name="how-to-authorize-developer-accounts-using-azure-active-directory"></a>Azure Active Directory を使用して開発者アカウントを認証する方法
 まず、ご利用の API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックします。 API Management パブリッシャー ポータルが表示されます。
 
-![パブリッシャー ポータル][api-management-management-console]
+![発行者ポータル][api-management-management-console]
 
 > まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の概要][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 > 

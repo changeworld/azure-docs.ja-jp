@@ -4,7 +4,7 @@ description: "Azure Active Directory と GoToMeeting の間でシングル サ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 1c3ea5175b02e35e7c624ce936d59fd82163b0fc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4826dee82e62ffac70d7ca3d6dcfe005129de764
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>チュートリアル: Azure Active Directory と GoToMeeting の統合
 
@@ -104,24 +104,11 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_samlbase.png)
 
-3. **[GoToMeeting Domain and URLs]\(GoToMeeting のドメインと URL\)** セクションで、**[詳細な URL 設定の表示]** をクリックして、次のアクションを実行します。
+3. **[GoToMeeting のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[GoToMeeting Domain and URLs]\(GoToMeeting のドメインと URL\) のシングル サインオン情報](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_ssourl.png)
+    ![[GoToMeeting Domain and URLs]\(GoToMeeting のドメインと URL\) のシングル サインオン情報](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    a. **[識別子]** ボックスに次の URL を入力します。`https://authentication.logmeininc.com/saml/sp`
-
-    b. **[応答 URL]** ボックスに次の URL を入力します。`https://authentication.logmeininc.com/saml/acs`
-
-    c. **[リレー状態]** ボックスに、次の URL のいずれかを入力します。
-
-    **GoToMeeting の場合**: `https://global.gotomeeting.com`
-    
-    **GoToTraining の場合**: `https://global.gototraining.com`
-
-    **GoToWebinar の場合**: `https://global.gotowebinar.com`
-
-    **GoToAssist の場合**: `https://app.gotoassist.com`
-
+    **[識別子]** ボックスに次の URL を入力します。`https://login.citrixonline.com/saml/sp`
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -135,19 +122,19 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
 
     a. **[アプリの登録]** をクリックします。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
    
     b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
 
     c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
      
     d. ここで、**GoToMeeting** のプロパティ ページに移動し、**[コピー]** ボタンを使用して**アプリケーション ID** をコピーしてノートパッドに貼り付けます。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
 
     e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
 
@@ -155,7 +142,7 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
 
     ![GoToMeeting の構成](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_configure.png) 
 
-8. 別のブラウザー ウィンドウで、[GoToMeeting Organization Center](https://account.citrixonline.com/organization/administration/) にログインします。
+8. 別のブラウザー ウィンドウで、[GoToMeeting Organization Center](https://organization.logmeininc.com/) にログインします。
 
 9. **[identity provider]\(ID プロバイダー\)** タブで、生成された**メタデータ URL**、ダウンロードした**メタデータ ファイル**または**手動**を指定して、Azure 設定を構成できます。
 
@@ -194,7 +181,7 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
     e. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

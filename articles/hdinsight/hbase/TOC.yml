@@ -43,6 +43,11 @@
           href: apache-hbase-phoenix-squirrel-linux.md
         - name: Phoenix Query Server REST SDK を使用する
           href: apache-hbase-using-phoenix-query-server-rest-sdk.md
+    - name: ビッグ データの分析
+      items:
+        - name: Spark を使用して HBase データを読み取る/書き込む
+          href: ../hdinsight-using-spark-query-hbase.md
+          maintainContext: true
     - name: クラスターを拡張する
       items:
         - name: ブートストラップを使用してクラスターをカスタマイズする
@@ -233,7 +238,7 @@
         - name: クラスター パフォーマンスの監視
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: 参照
+- name: リファレンス
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

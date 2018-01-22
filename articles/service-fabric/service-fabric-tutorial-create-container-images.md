@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: ecb70b88f6548e4730bcc1578de2f748cda33b0a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 9ea5be818cfc104c243ce31cc0e2d0f10135259f
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-container-images-for-service-fabric"></a>Service Fabric のコンテナー イメージを作成する
 
@@ -58,44 +58,40 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-"container-tutorial" ディレクトリの下には、"azure-vote" という名前のフォルダーがあります。 "azure-vote" フォルダーには、フロントエンドのソース コードと、フロントエンドをビルドするための Dockerfile が含まれています。 "container-tutorial" ディレクトリには "redis" ディレクトリも含まれ、このディレクトリには redis イメージをビルドするための Dockerfile があります。 これらのディレクトリには、このチュートリアル セットに必要な資産が含まれています。 
+ソリューションには 2 つのフォルダーと ' docker-compse.yml' ファイルが含まれています。 'azure-vote'フォルダーには、イメージのビルドに使用される Dockerfile と共に Python フロントエンド サービスが格納されています。 'Voting' ディレクトリには、クラスターにデプロイされる Service Fabric アプリケーション パッケージが含まれています。 これらのディレクトリには、このチュートリアルに必要な資産が含まれています。  
 
 ## <a name="create-container-images"></a>コンテナー イメージを作成する
 
-"azure-vote" ディレクトリ内で次のコマンドを実行して、フロントエンド Web コンポーネントのイメージをビルドします。 このコマンドは、このディレクトリ内の Dockerfile を使ってイメージをビルドします。 
+**azure-vote** ディレクトリ内で次のコマンドを実行して、フロントエンド Web コンポーネントのイメージをビルドします。 このコマンドは、このディレクトリ内の Dockerfile を使ってイメージをビルドします。 
 
 ```bash
 docker build -t azure-vote-front .
 ```
 
-"redis" ディレクトリ内で次のコマンドを実行して、redis バックエンドのイメージをビルドします。 このコマンドは、ディレクトリ内の Dockerfile を使ってイメージをビルドします。 
-
-```bash
-docker build -t azure-vote-back .
-```
-
-完了したら、[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使って、作成されたイメージを確認します。
+このコマンドは、必要なすべての依存関係を Docker Hub からプルする必要があるため、時間がかかる場合があります。 完了したら、[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使って、作成されたイメージを確認します。
 
 ```bash
 docker images
 ```
 
-4 つのイメージがダウンロードまたは作成されたことに注目してください。 *azure-vote-front* イメージにアプリケーションが含まれています。 これは、Docker Hub の *python* イメージから派生されたものです。 Redis イメージは、Docker Hub からダウンロードされました。
+2 つのイメージがダウンロードまたは作成されたことに注目してください。 *azure-vote-front* イメージにアプリケーションが含まれています。 これは、Docker Hub の *python* イメージから派生されたものです。
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-back              latest              bf9a858a9269        3 seconds ago        107MB
 azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-redis                        latest              9813a7e8fcc0        2 days ago           107MB
 tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
 
 ```
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
-最初に、[az login](/cli/azure/login) コマンドを実行して Azure アカウントにログインします。 
+最初に、**az login** コマンドを実行して Azure アカウントにログインします。 
 
-次に、[az account](/cli/azure/account#set) コマンドを使って、Azure Container Registry を作成するためのサブスクリプションを選びます。 
+```bash
+az login
+```
+
+次に、**az account** コマンドを使って、Azure Container Registry を作成するためのサブスクリプションを選びます。 <subscription_id> には、お使いの Azure サブスクリプションのサブスクリプション ID を入力する必要があります。 
 
 ```bash
 az account set --subscription <subscription_id>
@@ -103,23 +99,23 @@ az account set --subscription <subscription_id>
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *westus* リージョンに作成されます。 ユーザーの近くにあるリージョンのリソース グループを選んでください。 
+**az group create** コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *westus* リージョンに作成されます。
 
 ```bash
-az group create --name myResourceGroup --location westus
+az group create --name <myResourceGroup> --location westus
 ```
 
-[az acr create](/cli/azure/acr#create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
+**az acr create** コマンドで Azure Container Registry を作成します。 \<acrName> は、お使いのサブスクリプション下に作成するコンテナー レジストリの名前に置き換える必要があります。 この名前は、英数字を使用して一意にする必要があります。 
 
 ```bash
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
+az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
-このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして「acrname」を使用します。
+このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして「acrName」を使用します。 この値をメモしておいてください。 
 
 ## <a name="log-in-to-your-container-registry"></a>コンテナー レジストリにログインする
 
-イメージをプッシュする前に、ACR のインスタンスにログインします。 [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
+イメージをプッシュする前に、ACR のインスタンスにログインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
 
 ```bash
 az acr login --name <acrName>
@@ -141,9 +137,7 @@ docker images
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-back              latest              bf9a858a9269        3 seconds ago        107MB
 azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-redis                        latest              9813a7e8fcc0        2 days ago           107MB
 tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
 ```
 
@@ -153,16 +147,18 @@ loginServer 名を取得するには、次のコマンドを実行します。
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-ここで、*azure-vote-front* イメージにコンテナー レジストリの loginServer をタグ付けします。 また、イメージ名の末尾に `:v1` を付加します。 このタグは、イメージのバージョンを示します。
+これにより、以下のような結果がテーブルに出力されます。 この結果は、次の手順でコンテナー レジストリにプッシュする前に、**azure-vote-front** イメージのタグ付けに使用されます。
 
 ```bash
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
+Result
+------------------
+<acrName>.azurecr.io
 ```
 
-次に、*azure-vote-back* イメージにコンテナー レジストリの loginServer でタグを付けます。 また、イメージ名の末尾に `:v1` を付加します。 このタグは、イメージのバージョンを示します。
+ここでは、*azure-vote-front* イメージにお使いのコンテナー レジストリの loginServer をタグ付けします。 また、イメージ名の末尾に `:v1` を付加します。 このタグは、イメージのバージョンを示します。
 
 ```bash
-docker tag azure-vote-back <acrLoginServer>/azure-vote-back:v1
+docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
 タグを付けた後、"docker images" を実行して動作を確認します。
@@ -172,11 +168,8 @@ docker tag azure-vote-back <acrLoginServer>/azure-vote-back:v1
 
 ```bash
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-back                        latest              bf9a858a9269        22 minutes ago      107MB
-<acrName>.azurecr.io/azure-vote-back    v1                  bf9a858a9269        22 minutes ago      107MB
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
-<acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf        23 minutes ago      708MB
-redis                                  latest              9813a7e8fcc0        2 days ago          107MB
+<acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
 tiangolo/uwsgi-nginx-flask             python3.6           590e17342131        5 days ago          707MB
 
 ```
@@ -188,15 +181,7 @@ tiangolo/uwsgi-nginx-flask             python3.6           590e17342131        5
 次の例を使用して、ACR loginServer 名を環境の loginServer に置き換えます。
 
 ```bash
-docker push <acrLoginServer>/azure-vote-front:v1
-```
-
-*azure-vote-back* イメージをレジストリにプッシュします。 
-
-次の例を使用して、ACR loginServer 名を環境の loginServer に置き換えます。
-
-```bash
-docker push <acrLoginServer>/azure-vote-back:v1
+docker push <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
 docker push コマンドが完了までに数分かかります。
@@ -214,13 +199,12 @@ az acr repository list --name <acrName> --output table
 ```bash
 Result
 ----------------
-azure-vote-back
 azure-vote-front
 ```
 
 チュートリアル完了時には、コンテナー イメージがプライベートの Azure Container Registry インスタンスに格納されています。 このイメージは、以降のチュートリアルで、ACR から Service Fabric クラスターにデプロイされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、アプリケーションを Github から取得し、コンテナー イメージを作成して、レジストリにプッシュしました。 次の手順を完了しました。
 

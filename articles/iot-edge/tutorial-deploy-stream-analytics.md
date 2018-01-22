@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5c9231f400b00f455f30692c58f007bd63d3cc76
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f40fb81fc03e796b906db12bf3bf6904b27b46eb
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Azure Stream Analytics を IoT Edge モジュールとしてデプロイする - プレビュー
 
@@ -73,7 +73,7 @@ Azure Stream Analytics ジョブの出力として使うエンドポイントを
 
 2. **[新しい Stream Analytics ジョブ]** ウィンドウで、次のようにします。
 
-    a. **[ジョブ名]** ボックスに、ジョブの名前を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[ジョブ名]** ボックスに、ジョブの名前を入力します。
     
     b. **[ホスティング環境]** で **[Edge]** を選びます。
     
@@ -88,7 +88,7 @@ Azure Stream Analytics ジョブの出力として使うエンドポイントを
 
 5. **[新しい入力]** ウィンドウで、次のようにします。
 
-    a. **[入力のエイリアス]** ボックスに、「**temperature**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[入力のエイリアス]** ボックスに、「**temperature**」と入力します。
     
     b. **[ソースの種類]** ボックスで、**[データ ストリーム]** を選びます。
     
@@ -102,7 +102,7 @@ Azure Stream Analytics ジョブの出力として使うエンドポイントを
 
 8. **[新しい出力]** ウィンドウで、次のようにします。
 
-    a. **[出力のエイリアス]** ボックスに、「**alert**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[出力のエイリアス]** ボックスに、「**alert**」と入力します。
     
     b. 残りのフィールドについては既定値を使います。 
     
@@ -135,7 +135,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
 2. **[Set modules]\(モジュールの設定\)** を選びます。  
     以前、このデバイスに tempSensor モジュールをデプロイしたことがある場合は、自動入力されている可能性があります。 そうでない場合は、次のようにしてモジュールを追加します。
 
-   a. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
 
    b. 名前に「**tempSensor**」と入力します。
     
@@ -153,7 +153,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
 
     ![モジュールの設定][6]
 
-6. 自動的に生成された Azure Stream Analytics モジュールの名前をコピーします。 
+6. Azure Stream Analytics モジュールの名前をコピーします。 
 
     ![Temperature モジュール][11]
 
@@ -204,7 +204,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
    ![Docker のログ][9]
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Storage コンテナーおよび Streaming Analytics ジョブを構成して IoT Edge デバイスのデータを分析しました。 その後、カスタム Azure Stream Analytics モジュールを読み込み、ストリームを介して、データをデバイスからダウンロード用の BLOB に移動しました。 Azure IoT Edge がビジネス ソリューションを作成する方法をさらに確認するには、他のチュートリアルに進んでください。
 

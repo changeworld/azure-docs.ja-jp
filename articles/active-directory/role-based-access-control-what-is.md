@@ -3,7 +3,7 @@ title: "RBAC を使用したアクセスとアクセス許可の管理 - Azure R
 description: "Azure Portal で Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。 ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: curtand
 manager: mtillman
 ms.assetid: 8f8aadeb-45c9-4d0e-af87-f1f79373e039
 ms.service: active-directory
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2017
-ms.author: andredm
+ms.date: 01/02/2018
+ms.author: curtand
 ms.reviewer: rqureshi
-ms.openlocfilehash: 7df1ebcc65998a2078f5f215277eef351e48ca1b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ce9a9c95664a818919df756917180e102a5f1e0a
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="get-started-with-role-based-access-control-in-the-azure-portal"></a>Azure Portal でのロールベースの Access Control の基礎を確認する
 セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 Azure のロールベースのアクセス制御 (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
@@ -56,14 +56,14 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 * 共同作成者ロールをリソース グループ スコープでアプリケーションに割り当てると、 そのアプリケーションでは、そのリソース グループ内のすべてのタイプのリソースを管理できるようになりますが、サブスクリプション内の他のリソース グループは管理できません。
 
 ## <a name="azure-rbac-vs-classic-subscription-administrators"></a>Azure RBAC と従来のサブスクリプションの管理者の比較
-従来のサブスクリプションの管理者と共同管理者には、Azure サブスクリプションへのフル アクセス権があります。 リソースの管理には、[Azure Portal](https://portal.azure.com)と Azure Resource Manager API の組み合わせ、または [Azure クラシック ポータル](https://manage.windowsazure.com)と Azure クラシック デプロイメント モデルの組み合わせを使用できます。 RBAC モデルで、従来の管理者は、サブスクリプション スコープで所有者ロールを割り当てられます。
+[従来のサブスクリプションの管理者と共同管理者](../billing/billing-add-change-azure-subscription-administrator.md)には、Azure サブスクリプションへのフル アクセス権があります。 リソースの管理には、[Azure Portal](https://portal.azure.com)、Azure Resource Manager API、およびクラシック デプロイメント モデル API を使用できます。 RBAC モデルで、従来の管理者は、サブスクリプション スコープで所有者ロールを割り当てられます。
 
-Azure RBAC は Azure ポータルと新しい Azure Resource Manager API の組み合わせのみでサポートされています。 RBAC ロールを割り当てられているユーザーとアプリケーションは、クラシック管理ポータルと Azure クラシック デプロイメント モデルを使用できません。
+Azure RBAC は Azure ポータルと新しい Azure Resource Manager API の組み合わせのみでサポートされています。 RBAC ロールを割り当てられているユーザーとアプリケーションは、Azure クラシック デプロイメント モデル API を使用できません。
 
 ## <a name="authorization-for-management-vs-data-operations"></a>管理操作とデータ操作の許可
 Azure RBAC は、Azure ポータルと Azure Resource Manager API での Azure リソースの管理操作のみに対応しています。 Azure リソースのデータ レベルの操作の中には、許可されていないものもあります。 たとえば、同じユーザーにストレージ アカウントを管理することを承認できますが、ストレージ アカウントでの BLOB またはテーブルの操作を許可することはできません。 同様に、SQL データベースは管理できますが、その中のテーブルは管理できません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure ポータルでのロールベースの Access Control](role-based-access-control-configure.md)の基礎を確認する
 * [RBAC: 組み込みのロール](role-based-access-built-in-roles.md)
 * 独自の [Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)

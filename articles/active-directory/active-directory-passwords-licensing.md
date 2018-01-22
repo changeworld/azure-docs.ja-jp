@@ -1,5 +1,5 @@
 ---
-title: "ライセンス: Azure AD SSPR | Microsoft Docs"
+title: "ライセンスのセルフサービスによるパスワードのリセット - Azure Active Directory"
 description: "Azure AD のセルフ サービスによるパスワード リセットのライセンス要件"
 services: active-directory
 keywords: 
@@ -13,21 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 45cecbf1334d4d708f1578d1512627bc0ead3a04
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2ff9f80cfe9991000fdee45421fc74e662a4dfd1
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 
 Azure Active Directory (Azure AD) のパスワード リセットが機能するには、*組織で少なくとも 1 つのライセンスが割り当てられている必要があります*。 パスワード リセット エクスペリエンスでユーザーごとのライセンスを適用することはありません。 Microsoft ライセンス契約とのコンプライアンスを維持するには、プレミアム機能を使用するすべてのユーザーにライセンスを割り当てる必要があります。
 
 * **クラウド ユーザーのみ**: Office 365 のすべての有料 SKU、または Azure AD Basic
-* **クラウド**または**オンプレミス ユーザー**: Azure AD Premium P1 または P2、Enterprise Mobility + Security (EMS)、または Secure Productive Enterprise (SPE)
+* **クラウド**または**オンプレミス ユーザー**: Azure AD Premium P1 または P2、Enterprise Mobility + Security (EMS)、または Microsoft 365
 
 ## <a name="licenses-required-for-password-writeback"></a>パスワード ライトバックで必要なライセンス
 
@@ -42,6 +42,7 @@ Azure Active Directory (Azure AD) のパスワード リセットが機能する
 
 > [!WARNING]
 > スタンドアロンの Office 365 ライセンス プランは、*パスワード ライトバックをサポートしていません*。この機能を動作させるには、上記プランのいずれかが必要になります。
+>
 
 追加のライセンス情報(コストを含む)については、以下のページをご覧ください。
 
@@ -56,17 +57,16 @@ Azure Active Directory (Azure AD) のパスワード リセットが機能する
 
 一部の Microsoft サービスは、すべての場所で利用できないことがあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの **[利用場所]** プロパティを指定しておく必要があります。 ライセンスの割り当ては、Azure Portal の **[ユーザー]** > **[プロファイル]** > **[設定]** セクションで行います。 *グループ ライセンス割り当てを使用する場合に、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。*
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
-

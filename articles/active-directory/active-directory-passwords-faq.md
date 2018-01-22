@@ -1,5 +1,5 @@
 ---
-title: 'FAQ: Azure AD SSPR | Microsoft Docs'
+title: "セルフサービスによるパスワード リセットについての FAQ - Azure Active Directory"
 description: "Azure AD セルフサービスのパスワード リセットについてよく寄せられる質問"
 services: active-directory
 keywords: "Active Directory パスワード管理, パスワード管理, Azure AD セルフサービスによるパスワードのリセット"
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4216c417d137c00587bf65b39410eca6f4cef8bc
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 697b82c8197a9a7ff4c60ce6fa60e098396c2bca
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -245,7 +245,7 @@ ms.lasthandoff: 12/14/2017
   >
   >
 
-## <a name="password-writeback"></a>パスワードの書き戻し
+## <a name="password-writeback"></a>パスワード ライトバック
 
 * **Q: パスワード ライトバックは、バックグラウンドでどのように動作しますか。**
 
@@ -283,16 +283,16 @@ ms.lasthandoff: 12/14/2017
   >
   >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)

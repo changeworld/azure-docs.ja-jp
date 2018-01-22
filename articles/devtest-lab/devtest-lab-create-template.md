@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2017
+ms.date: 01/10/2018
 ms.author: v-craic
-ms.openlocfilehash: 7605a65d784a9586a4d88625996f4a1c8f154e9d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: d1f1b9948fb591484c107818a01e141932effbba
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>VHD ファイルからカスタム イメージを作成する
 
@@ -34,15 +34,15 @@ ms.lasthandoff: 01/02/2018
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
 1. ラボの一覧で目的のラボを選択します。  
 
-1. ラボのブレードで、 **[構成]**を選択します。 
+1. ラボのメイン ウィンドウで、**[構成とポリシー]** を選択します。 
 
-1. ラボの **[構成]** ブレードで、**[カスタム イメージ (VHD)]** を選択します。
+1. **[構成とポリシー]** ウィンドウで **[カスタム イメージ]** を選択します。
 
-1. **[カスタム イメージ]** ブレードで、**[+追加]** を選択します。
+1. **[カスタム イメージ]** ウィンドウで、**[+追加]** を選択します。
 
     ![カスタム イメージの追加](./media/devtest-lab-create-template/add-custom-image.png)
 
@@ -50,21 +50,21 @@ ms.lasthandoff: 01/02/2018
 
 1. カスタム イメージの説明を入力します。 この説明は、VM を作成するときにベース イメージの一覧に表示されます。
 
-1. **VHD** を選択します。
+1. **[OS の種類]** では、**[Windows]** または **[Linux]** を選択します。
 
-1. **[VHD]** ブレードで、目的の VHD ファイルを選択します。
+    - **[Windows]** を選択した場合は、チェック ボックスを使用して、コンピューターで *Sysprep* が実行されたかどうかを指定します。 
+    - **[Linux]** を選択した場合は、チェック ボックスを使用して、コンピューターで*プロビジョニング解除*が実行されたかどうかを指定します。 
 
-1. **[OK]** を選択して、**[VHD]** ブレードを閉じます。
+1. ドロップダウン メニューから **[VHD]** を選択します。 これは、新しいカスタム イメージの作成に使用される VHD です。 必要な場合は、**[PowerShell を使用して VHD ファイルをアップロード]** を選択します。
 
-1. **[OS 構成]** を選択します。
-
-1. **[OS 構成]** タブで、**[Windows]** または **[Linux]** を選択します。
-
-1. **[Windows]** を選択した場合は、チェック ボックスを使用して、コンピューターで *Sysprep* が実行されたかどうかを指定します。 
-
-1. **[OK]** を選択して、**[OS 構成]** ブレードを閉じます。
+1. カスタム イメージの作成に使用されるイメージが Microsoft によって公開されていない場合にも、プラン名、プランの内容、およびプランの発行元を入力できます。
 
 1. **[OK]** を選択して、カスタム イメージを作成します。
+
+数分後にカスタム イメージが作成され、ラボのストレージ アカウント内に保存されます。 ラボのユーザーが新しい VM を作成する場合、基本イメージの一覧からそのイメージを使用できます。
+
+![基本イメージの一覧で使用できるカスタム イメージ](./media/devtest-lab-create-template/custom-image-available-as-base.png)
+
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
@@ -73,6 +73,6 @@ ms.lasthandoff: 01/02/2018
 - [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-##<a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 - [VM をラボに追加する](./devtest-lab-add-vm.md)

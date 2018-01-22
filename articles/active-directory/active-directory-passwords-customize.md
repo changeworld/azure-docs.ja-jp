@@ -1,5 +1,5 @@
 ---
-title: "カスタマイズ: Azure AD SSPR | Microsoft Docs"
+title: "セルフサービスによるパスワードのリセットのカスタマイズ - Azure Active Directory"
 description: "Azure AD のセルフサービスによるパスワード リセットのカスタマイズ オプション"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 36fc674ffcb8167a918f928d8821707d81198423
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6d8a2f2106e57bdf84bc3bead70d379691b79742
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 
@@ -107,19 +107,19 @@ SharePoint Online と Office 2010 の一部の機能は、ユーザーのこの�
 * メールのフレンドリ名 (例: "Microsoft on behalf of CONTOSO demo")
 * メールの件名行 (例: "CONTOSO demo account email verification code")
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
 [Contact]: ./media/active-directory-passwords-customize/sspr-contact-admin.png "管理者に連絡してパスワードのリセットを依頼するメールの例"

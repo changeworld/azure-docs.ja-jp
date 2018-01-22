@@ -115,6 +115,9 @@
           href: apache-spark-microsoft-cognitive-toolkit.md
     - name: ビッグ データの分析
       items:
+        - name: Spark を使用して HBase データを読み取る/書き込む
+          href: ../hdinsight-using-spark-query-hbase.md
+          maintainContext: true
         - name: Application Insights Telemetry ログを分析する
           href: apache-spark-analyze-application-insight-logs.md
     - name: クラスターを拡張する
@@ -178,6 +181,8 @@
           maintainContext: true
     - name: '[管理]'
       items:
+        - name: Spark ジョブの最適化
+          href: apache-spark-perf.md
         - name: クラスターの容量計画
           href: ../hdinsight-capacity-planning.md
           maintainContext: true

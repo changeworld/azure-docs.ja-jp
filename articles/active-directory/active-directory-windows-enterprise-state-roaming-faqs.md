@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問"
 documentationcenter: 
 author: tanning
-manager: swadhwa
+manager: mtillman
 editor: curtand
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2017
+ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 9968d9fa1ebbc92b5647a23c75e75fb819f5d5ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 054705e802867fda666c80217396db197c60f50e
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 このトピックでは、設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。
@@ -72,7 +72,7 @@ November 2015 以降のリリースの Windows 10 では、Enterprise State Roam
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>複数テナントの Azure AD アカウントが存在する場合、設定は同期されますか
 異なる Azure AD テナントに属している複数の Azure AD アカウントが同じデバイスに存在する場合、その各 Azure AD テナントについて、Azure Rights Management Service (Azure RMS) と通信するようにデバイスのレジストリを更新する必要があります。  
 
-1. 各 Azure AD テナントの GUID を見つけます。 Azure クラシック ポータルを開いて Azure AD テナントを選択します。 テナントの GUID は、お使いのブラウザーのアドレス バーに表示される URL で確認できます。 次に例を示します。`https://manage.windowsazure.com/YourAccount.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/Tenant GUID/directoryQuickStart`
+1. 各 Azure AD テナントの GUID を見つけます。 Azure Portal を開いて Azure AD テナントを選択します。 テナントの GUID は、選択したテナントの [プロパティ] ページ (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) にあり、**ディレクトリ ID** のラベルが付いています。 
 2. GUID を特定したら、レジストリ キー **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>** を追加する必要があります。
    **テナント ID の GUID** キーから、**AllowedRMSServerUrls** という名前の新しい複数行文字列値 (REG-MULTI-SZ) を作成します。 そのデータに対して、デバイスがアクセスする他の Azure テナントのライセンス配布ポイントの URL を指定します。
 3. ライセンス配布ポイントの URL は、 **Get-AadrmConfiguration** コマンドレットを実行して確認できます。 **LicensingIntranetDistributionPointUrl** の値と **LicensingExtranetDistributionPointUrl** の値とが異なる場合は、両方の値を指定します。 同じ値である場合は、その値を一度だけ指定してください。

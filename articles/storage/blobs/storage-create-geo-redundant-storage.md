@@ -4,25 +4,25 @@ description: "読み取りアクセス geo 冗長ストレージを使用して�
 services: storage
 documentationcenter: 
 author: georgewallace
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 10/12/2017
+ms.date: 11/15/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 547ca7843f53bd11fdb922af8e0ae77e38f813d9
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 63ca91c2eadf7b003427e9716d99621fca1b1a19
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Azure Storage を使用してアプリケーション データを高可用にする
 
-このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Azure でアプリケーション データを高可用にする方法について説明します。 完了すると、BLOB を[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントにアップロードし、取得するコンソール アプリケーションが作成されます。 RA-GRS は、プライマリ リージョンからセカンダリ リージョンにトランザクションをレプリケートすることによって機能します。 このレプリケーション プロセスにより、セカンダリ リージョンのデータの結果整合性が保証されます。 このアプリケーションで[ブレーカー](/azure/architecture/patterns/circuit-breaker.md) パターンを使用して、接続先のエンドポイントを判断します。 エラーをシミュレートすると、アプリケーションはセカンダリ エンドポイントに切り替えます。
+このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Azure でアプリケーション データを高可用にする方法について説明します。 完了すると、BLOB を[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントにアップロードし、取得する .NET Core コンソール アプリケーションが作成されます。 RA-GRS は、プライマリ リージョンからセカンダリ リージョンにトランザクションをレプリケートすることによって機能します。 このレプリケーション プロセスにより、セカンダリ リージョンのデータの結果整合性が保証されます。 このアプリケーションで[ブレーカー](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker) パターンを使用して、接続先のエンドポイントを判断します。 エラーをシミュレートすると、アプリケーションはセカンダリ エンドポイントに切り替えます。
 
 シリーズの第 1 部で学習する内容は次のとおりです。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/17/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/17/2017
    | 設定       | 推奨値 | Description |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **名前** | mystorageaccount | ストレージ アカウント用の一意の値 |
-   | **デプロイ モデル** | リソース マネージャー  | Resource Manager には最新の機能が含まれています。  |
+   | **デプロイ モデル** | リソース マネージャー  | Resource Manager には最新の機能が含まれています。|
    | **アカウントの種類** | 汎用 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
    | **パフォーマンス** | 標準 | このサンプル シナリオでは、標準で十分です。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
@@ -83,28 +83,40 @@ storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs.zip ファイルを�
 
 ## <a name="set-the-connection-string"></a>接続文字列の設定
 
-Visual Studio で *storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs* コンソール アプリケーションを開きます。
+アプリケーションでは、ストレージ アカウントの接続文字列を指定する必要があります。 アプリケーションを実行しているローカル コンピューター上の環境変数内にこの接続文字列を格納することをお勧めします。 環境変数を作成するオペレーティング システムに応じて、以下の例のいずれかに従います。
 
-**App.config** ファイルの **appSettings** ノードで、_StorageConnectionString_ の値を実際のストレージ アカウントの接続文字列で置き換えます。 この値を取得するには、Azure Portal のストレージ アカウントで **[設定]** の **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーし、**App.config** ファイルに貼り付けます。 完了したら、**[保存]** を選択してファイルを保存します。
+Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 オペレーティング システムに基づいて次のコマンドのいずれかを実行して、\<yourconnectionstring\> を実際の接続文字列に置き換えます。 このコマンドで、環境変数をローカル コンピューターに保存します。 Windows では、環境変数は、使用している**コマンド プロンプト**またはシェルを再度読み込むまで使用できません。 次のサンプルの **\<storageConnectionString\>** を置き換えます。
+
+### <a name="linux"></a>Linux
+
+```bash
+export storageconnectionstring=<yourconnectionstring>
+```
+
+### <a name="windows"></a>Windows
+
+```cmd
+setx storageconnectionstring "<yourconnectionstring>"
+```
 
 ![アプリの構成ファイル](media/storage-create-geo-redundant-storage/figure2.png)
 
 ## <a name="run-the-console-application"></a>コンソール アプリケーションを実行する
 
-Visual Studio で **F5** キーを押すか **[スタート]** を選択してアプリケーションのデバッグを開始します。 構成に応じて、不足している NuGet パッケージが Visual Studio で自動的に復元されます。詳細については、[パッケージの復元によるパッケージのインストールと再インストール](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)に関するセクションを参照してください。 
+Visual Studio で **F5** キーを押すか **[スタート]** を選択してアプリケーションのデバッグを開始します。 構成に応じて、不足している NuGet パッケージが Visual Studio で自動的に復元されます。詳細については、[パッケージの復元によるパッケージのインストールと再インストール](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview)に関するセクションを参照してください。
 
 コンソール ウィンドウが起動し、アプリケーションの実行が開始されます。 アプリケーションは、ソリューションの **HelloWorld.png** イメージをストレージ アカウントにアップロードします。 アプリケーションは、イメージがセカンダリ RA-GRS エンドポイントにレプリケートされたことを確認します。 次に、イメージのダウンロードを開始し、最大 999 回試行します。 各読み取りは **P** または **S** で表されます。この **P** はプライマリ エンドポイント、**S** はセカンダリ エンドポイントを示します。
 
 ![コンソール アプリの実行](media/storage-create-geo-redundant-storage/figure3.png)
 
-このサンプル コードで、`Program.cs` ファイルの `RunCircuitBreakerAsync` タスクは、[DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.downloadtofileasync?view=azure-dotnet) メソッドを使用してストレージ アカウントからイメージをダウンロードするために使用されます。 ダウンロード前に、[OperationContext](/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet) は定義されています。 操作コンテキストにイベント ハンドラーが定義され、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
+このサンプル コードで、`Program.cs` ファイルの `RunCircuitBreakerAsync` タスクは、[DownloadToFileAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync?view=azure-dotnet) メソッドを使用してストレージ アカウントからイメージをダウンロードするために使用されます。 ダウンロード前に、[OperationContext](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.operationcontext?view=azure-dotnet) は定義されています。 操作コンテキストにイベント ハンドラーが定義され、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
-`Operation_context_Retrying` イベント ハンドラーは、イメージのダウンロードが失敗し、再試行するように設定されたときに呼び出されます。 アプリケーションに定義されている最大試行回数に達すると、要求の [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) は `SecondaryOnly` に変わります。 この設定で、アプリケーションはセカンダリ エンドポイントからイメージをダウンロードを試行するように強制されます。 この構成では、プライマリ エンドポイントは永続的に再試行されないので、イメージの要求にかかる時間が短縮されます。
+`OperationContextRetrying` イベント ハンドラーは、イメージのダウンロードが失敗し、再試行するように設定されたときに呼び出されます。 アプリケーションに定義されている最大試行回数に達すると、要求の [LocationMode](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) は `SecondaryOnly` に変わります。 この設定で、アプリケーションはセカンダリ エンドポイントからイメージのダウンロードを試行するように強制されます。 この構成では、プライマリ エンドポイントは永続的に再試行されないので、イメージの要求にかかる時間が短縮されます。
 
 ```csharp
-private static void Operation_context_Retrying(object sender, RequestEventArgs e)
+private static void OperationContextRetrying(object sender, RequestEventArgs e)
 {
     retryCount++;
     Console.WriteLine("Retrying event because of failure reading the primary. RetryCount = " + retryCount);
@@ -129,10 +141,10 @@ private static void Operation_context_Retrying(object sender, RequestEventArgs e
 
 ### <a name="request-completed-event-handler"></a>要求が完了したイベント ハンドラー
 
-`Operation_context_RequestCompleted` イベント ハンドラーは、イメージのダウンロードが成功したときに呼び出されます。 アプリケーションがセカンダリ エンドポイントを使用している場合、アプリケーションはセカンダリ エンドポイントを最大 20 回継続して使用します。 20 回の後、アプリケーションは [LocationMode](/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) を `PrimaryThenSecondary` に戻し、プライマリ エンドポイントを再試行します。 要求が成功した場合、アプリケーションはプライマリ エンドポイントからの読み取りを継続します。
+`OperationContextRequestCompleted` イベント ハンドラーは、イメージのダウンロードが成功したときに呼び出されます。 アプリケーションがセカンダリ エンドポイントを使用している場合、アプリケーションはセカンダリ エンドポイントを最大 20 回継続して使用します。 20 回の後、アプリケーションは [LocationMode](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobrequestoptions.locationmode?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_LocationMode) を `PrimaryThenSecondary` に戻し、プライマリ エンドポイントを再試行します。 要求が成功した場合、アプリケーションはプライマリ エンドポイントからの読み取りを継続します。
 
 ```csharp
-private static void Operation_context_RequestCompleted(object sender, RequestEventArgs e)
+private static void OperationContextRequestCompleted(object sender, RequestEventArgs e)
 {
     if (blobClient.DefaultRequestOptions.LocationMode == LocationMode.SecondaryOnly)
     {
@@ -148,7 +160,7 @@ private static void Operation_context_RequestCompleted(object sender, RequestEve
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 シリーズの第 1 部では、次のように RA-GRS ストレージ アカウントでアプリケーションを高可用にする方法について説明しました。
 

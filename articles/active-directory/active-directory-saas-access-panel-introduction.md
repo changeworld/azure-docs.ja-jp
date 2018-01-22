@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d40f67c354e29f3a58c9d0f1967e0154b5b998d0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b5c139766af9e166b12e8833c2ced8be08e743a
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="what-is-the-access-panel"></a>アクセス パネルの概要
 
@@ -70,7 +70,33 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 
 アクセス パネルには、少なくとも、JavaScript をサポートする CSS 対応のブラウザーが必要です。 ユーザーがパスワード ベースのシングル サインオン (SSO) を使ってアプリケーションにサインインするためには、ブラウザーにアクセス パネルの拡張機能をインストールする必要があります。 この拡張機能は、パスワード ベースの SSO 用に構成されているアプリケーションを選ぶと、自動的にダウンロードされます。
 
-現時点では、アクセス パネルの拡張機能は、Internet Explorer 8 以上、Edge、Chrome、および Firefox ブラウザーで使用できます。
+現在、アクセス パネルの拡張機能は次で使用できます。
+-   Edge - Windows 10 Anniversary Edition 以降 
+
+-   Chrome - Windows 7 以降、MacOS X 以降
+
+-   Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
+
+-   Internet Explorer 8、9、10、11 - Windows 7 以降 (制限付きサポート)
+
+## <a name="my-apps-secure-sign-in-extension"></a>マイ アプリによるセキュリティで保護されたサインイン拡張機能
+拡張機能は、ユーザーがパスワード ベースのシングル サインオンにサインインするときに必要です。 インストールしたら、ユーザーは、**[開始するにはサインインしてください]** をクリックして拡張機能にサインインすることで、追加の機能を有効にすることもできます。 
+
+- ユーザーがアプリに直接サインインするには、そのアプリの**サインオン URL** にアクセスします。 ユーザーがアプリのサインオン URL に移動すると、そのことが拡張機能によって検出され、拡張機能からサインインするためのオプションがユーザーに提供されます。
+- ユーザーが拡張機能の**クイック検索**を使用して、アクセス パネルから任意のアプリを起動することもできます。 
+- また、**[最近の使用]** セクションには、拡張機能によって、ユーザーが起動した直近のアプリケーションが 3 つ表示されます。
+
+> [!NOTE]
+> その他の機能は、Edge、Chrome、および Firefox でのみ使用できます。
+>
+>
+
+https://myapps.microsoft.com 以外のマイ アプリの URL を使用している場合は、次の手順に従って既定の URL を構成する必要があります。
+1. 拡張機能にサインインしていないときに、拡張機能のアイコンを**右クリック**します。
+2. メニューから **[Select My Apps URL]/(マイ アプリの URL の選択/)** を選択します。
+3. 既定の URL を**選択**します。
+4. 拡張機能のアイコンをクリックします。
+5. **[開始するにはサインインしてください]** を選択して拡張機能にサインインします。
 
 ## <a name="mobile-app-support"></a>モバイル アプリのサポート
 
@@ -176,7 +202,7 @@ Azure Portal でアプリケーションの SSO を構成する場合、第 3 �
 たとえば、AD FS 2.0 を使ってユーザーを認証するように構成されたアプリケーションがある場合、管理者は、**[既存のシングル サインオン]** オプションを使って、アクセス パネルにそのアプリケーションへのリンクを作成することができます。 ユーザーがこのリンクにアクセスすると、ユーザーは AD FS 2.0 またはアプリケーションによって提供された任意の既存の SSO ソリューションを使って認証されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - アプリケーション管理に関するすべてのトピックの一覧を見るには、[Azure Active Directory でのアプリケーション管理に関する記事の索引](active-directory-apps-index.md)をご覧ください。
  

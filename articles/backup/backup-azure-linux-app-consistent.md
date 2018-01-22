@@ -1,6 +1,6 @@
 ---
 title: "Azure Backup: Linux VM のアプリケーション整合性バックアップ | Microsoft Docs"
-description: "スクリプトを使用して、Linux 仮想マシンの Azure へのアプリケーション整合性バックアップを確実にできるようにします。 スクリプトは Resource Manager デプロイ内の Linux VM にのみ適用されます。スクリプトは、Windows VM または Service Manager のデプロイには適用されません。 この記事では、トラブルシューティングを含むスクリプトを構成する手順について説明します。"
+description: "Linux 仮想マシンのアプリケーション整合性バックアップを Azure に作成します。 この記事では、Azure にデプロイされた Linux VM をバックアップするためのスクリプト フレームワークの構成について説明します。 この記事にはトラブルシューティング情報も含まれています。"
 services: backup
 documentationcenter: dev-center-name
 author: anuragmehrotra
@@ -12,35 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 4/12/2017
+ms.date: 1/12/2018
 ms.author: anuragm;markgal
-ms.openlocfilehash: 378c65bec8fd1f880ed459e76f5e4b5d85e49d2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c2437b4cd90deda3e7239d87837a47a072f52835
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="application-consistent-backup-of-azure-linux-vms-preview"></a>Azure Linux VM のアプリケーション整合性バックアップ (プレビュー)
+# <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM のアプリケーション整合性バックアップ
 
-この記事では、Linux の事前/事後スクリプト フレームワークと、それらを使用して Azure Linux VM のアプリケーション整合性バックアップを作成する方法について説明します。
-
-> [!Note]
-> 事前/事後スクリプト フレームワークは、Azure Resource Manager がデプロイされている Linux 仮想マシンについてのみサポートしています。 アプリケーション整合性スクリプトは、Service Manager がデプロイされた仮想マシンまたは Windows 仮想マシンについてサポートしていません。
->
+VM のバックアップ スナップショットを作成すると、アプリケーション整合性により、復元後の VM ブート時にアプリケーションが開始されます。 ご想像どおり、アプリケーション整合性はきわめて重要です。 Linux VM にアプリケーション整合性を持たせるために、Linux 事前/事後スクリプト フレームワークを使用して、アプリケーション整合性バックアップを行うことができます。 事前/事後スクリプト フレームワークは、Azure Resource Manager でデプロイされた Linux 仮想マシンをサポートしています。 アプリケーション整合性のスクリプトは、Service Manager でデプロイされた仮想マシンも Windows 仮想マシンもサポートしていません。
 
 ## <a name="how-the-framework-works"></a>フレームワークの動作
 
-このフレームワークは、VM スナップショットの作成中にカスタム事前/事後スクリプトを実行する機能が備わっています。 事前スクリプトは VM スナップショットの作成直前に実行され、事後スクリプトは VM スナップショットの作成直後に実行されます。 この機能を利用することで、VM スナップショットの作成中にアプリケーションと環境を柔軟に制御することができます。
+このフレームワークは、VM スナップショットの作成中にカスタム事前/事後スクリプトを実行する機能が備わっています。 事前スクリプトは VM スナップショットの作成直前に実行され、事後スクリプトは VM スナップショットの作成直後に実行されます。 事前/事後スクリプトにより、VM スナップショットの作成中にアプリケーションと環境を柔軟に制御することができます。
 
-このシナリオでは、アプリケーションと整合性が取れた VM バックアップを作成することが重要です。 事前スクリプトでは、アプリケーションのネイティブ API を呼び出して、入出力を休止し、メモリ内のコンテンツをディスクにフラッシュすることができます。 この処理によって、アプリケーションと整合性のあるスナップショットを作成できます (つまり、復元後に VM を起動したときに、アプリケーションも起動されます)。 事後スクリプトを使用して入出力を再開できます。 入出力を再開するには、VM のスナップショット作成後にアプリケーションが通常の処理を再開できるようにアプリケーションのネイティブ API を使用します。
+事前スクリプトは、ネイティブ アプリケーション API を呼び出します。これにより IO が休止し、メモリ内のコンテンツがディスクにフラッシュされます。 これらのアクションにより、スナップショットのアプリケーション整合性が確保されます。 事後スクリプトは、ネイティブ アプリケーション API を使用して IO を解放します。これにより、VM スナップショット後にアプリケーションは通常操作を再開できます。
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>事前スクリプトと事後スクリプトを構成する手順
 
 1. バックアップを作成する Linux VM にルート ユーザーとしてサインインします。
 
-2. **VMSnapshotScriptPluginConfig.json** を [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) からダウンロードし、バックアップするすべての VM の **/etc/azure** フォルダーにコピーします。 **/etc/azure** ディレクトリを作成します (まだ存在しない場合)。
+2. [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) から、**VMSnapshotScriptPluginConfig.json** をダウンロードし、バックアップするすべての VM の **/etc/azure** フォルダーにコピーします。 **/etc/azure** フォルダーが存在しない場合は、作成します。
 
-3. バックアップする予定のすべての VM にアプリケーションの事前スクリプトと事後スクリプトをコピーします。 スクリプトは、VM の任意の場所にコピーできます。 必ず **VMSnapshotScriptPluginConfig.json** に記載されているスクリプト ファイルの完全パスを更新してください。
+3. バックアップする予定のすべての VM にアプリケーションの事前/事後スクリプトをコピーします。 スクリプトは、VM の任意の場所にコピーできます。 必ず **VMSnapshotScriptPluginConfig.json** に記載されているスクリプト ファイルの完全パスを更新してください。
 
 4. ファイルのアクセス許可が次のようになっていることを確認します。
 
@@ -51,8 +47,8 @@ ms.lasthandoff: 10/11/2017
    - **事後スクリプト ファイル**: アクセス許可 "700" を指定します。 たとえば、"root" ユーザーにのみ、このファイルに対する "読み取り"、"書き込み"、"実行" のすべてのアクセス許可を付与します。
 
    > [!Important]
-   > このフレームワークを使用すると、ユーザーはさまざまな機能を利用できるようになります。 セキュリティで保護すること、重要な JSON ファイルとスクリプト ファイルには "ルート" ユーザーのみがアクセスできるようにすることが重要です。
-   > 上記の要件を満たしていない場合、スクリプトは実行されません。 その結果、ファイル システム/クラッシュの整合性が取れたバックアップを作成できます。
+   > このフレームワークを使用すると、ユーザーはさまざまな機能を利用できるようになります。 フレームワークを保護し、“root” ユーザーのみが重要な JSON ファイルおよびスクリプト ファイルにアクセスできるようにしてください。
+   > 要件が満たされない場合、スクリプトは実行されず、その結果ファイル システムのクラッシュやバックアップの不整合が発生します。
    >
 
 5. **VMSnapshotScriptPluginConfig.json** を以下のように構成します。
@@ -62,9 +58,9 @@ ms.lasthandoff: 10/11/2017
 
     - **postScriptLocation**: バックアップする VM 上の事後スクリプトの完全パスを指定します。
 
-    - **preScriptParams**: 事前スクリプトに渡す必要があるパラメーターを指定します (省略可能)。 すべてのパラメーターは引用符で囲む必要があります。また、複数のパラメーターを指定する場合はコンマ区切りにする必要があります。
+    - **preScriptParams**: 事前スクリプトに渡す必要があるパラメーターを指定します (省略可能)。 パラメーターはすべて引用符で囲んでください。 複数のパラメーターを使用する場合は、パラメーターをコンマで区切ります。
 
-    - **postScriptParams**: 事後スクリプトに渡す必要があるパラメーターを指定します (省略可能)。 すべてのパラメーターは引用符で囲む必要があります。また、複数のパラメーターを指定する場合はコンマ区切りにする必要があります。
+    - **postScriptParams**: 事後スクリプトに渡す必要があるパラメーターを指定します (省略可能)。 パラメーターはすべて引用符で囲んでください。 複数のパラメーターを使用する場合は、パラメーターをコンマで区切ります。
 
     - **preScriptNoOfRetries**: 事前スクリプトでエラーが発生した場合の再試行回数を指定します。 0 (ゼロ) を指定すると、試行回数は 1 回のみでエラーが発生しても再試行は実行されません。
 
@@ -95,5 +91,5 @@ ms.lasthandoff: 10/11/2017
 | Pre-ScriptTimeout | The execution of the application-consistent backup pre-script timed-out. (アプリケーション整合性バックアップの事前スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、**/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
 | Post-ScriptTimeout | The execution of the application-consistent backup post-script timed out. (アプリケーション整合性バックアップの事後スクリプトの実行がタイムアウトしました。) | スクリプトをチェックし、**/etc/azure** にある **VMSnapshotScriptPluginConfig.json** ファイルでタイムアウト値を増やしてください。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Recovery Services コンテナーへの VM バックアップの構成](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

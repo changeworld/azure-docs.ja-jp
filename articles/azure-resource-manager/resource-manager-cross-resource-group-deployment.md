@@ -11,23 +11,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2017
+ms.date: 12/18/2017
 ms.author: tomfitz
-ms.openlocfilehash: 763f46b9b5be7edf06ee0604bfc51a2482405b60
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 48ba938db992ce192d8afb51365d87fba4422590
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする
 
-テンプレートに含まれているリソースはすべて 1 つのリソース グループにデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで、複数のリソース グループまたはサブスクリプションにデプロイしたい状況もあります。 たとえば Azure Site Recovery に使うバックアップ仮想マシンは、別のリソース グループと場所にデプロイした方がよい場合があります。 Resource Manager では、入れ子になったテンプレートを使用することで、親テンプレートに使われているサブスクリプションおよびリソース グループとは異なる、サブスクリプションとリソース グループを対象にすることができます。
-
-アプリケーションとその一連のリソースにとって、リソース グループはライフサイクルのコンテナーと言えます。 リソース グループはテンプレートの外で作成し、デプロイ時にその対象として、そのリソース グループを指定することになります。 リソース グループの概要については、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
+テンプレートに含まれているリソースはすべて 1 つの[リソース グループ](resource-group-overview.md)にデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで、複数のリソース グループまたはサブスクリプションにデプロイしたい状況もあります。 たとえば Azure Site Recovery に使うバックアップ仮想マシンは、別のリソース グループと場所にデプロイした方がよい場合があります。 Resource Manager では、入れ子になったテンプレートを使用することで、親テンプレートに使われているサブスクリプションおよびリソース グループとは異なる、サブスクリプションとリソース グループを対象にすることができます。
 
 ## <a name="specify-a-subscription-and-resource-group"></a>サブスクリプションとリソース グループの指定
 
-異なるリソースをデプロイ対象とするには、入れ子になった (リンクされた) テンプレートをデプロイ時に使う必要があります。 `Microsoft.Resources/deployments` リソース タイプは、`subscriptionId` および `resourceGroup` にパラメーターを提供します。 こうしたプロパティを使用すると、入れ子になったデプロイ用に異なるサブスクリプションとリソース グループを指定することができます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。 サブスクリプション ID またはリソース グループを指定しない場合は、親テンプレートのサブスクリプションおよびリソース グループが使用されます。
+異なるリソースを対象とするには、入れ子になった、またはリンクされたテンプレートを使用します。 `Microsoft.Resources/deployments` リソース タイプは、`subscriptionId` および `resourceGroup` にパラメーターを提供します。 こうしたプロパティを使用すると、入れ子になったデプロイ用に異なるサブスクリプションとリソース グループを指定することができます。 すべてのリソース グループは、デプロイの実行前に存在している必要があります。 サブスクリプション ID またはリソース グループを指定しない場合は、親テンプレートのサブスクリプションおよびリソース グループが使用されます。
+
+別のリソース グループとサブスクリプションを指定するには、以下を使用します。
+
+```json
+"resources": [
+    {
+        "apiVersion": "2017-05-10",
+        "name": "nestedTemplate",
+        "type": "Microsoft.Resources/deployments",
+        "resourceGroup": "[parameters('secondResourceGroup')]",
+        "subscriptionId": "[parameters('secondSubscriptionID')]",
+        ...
+    }
+]
+```
+
+リソース グループが同じサブスクリプションにある場合は、**subscriptionId** 値を削除できます。
 
 次の例では、2 つのストレージ アカウントをデプロイしています。1 つは、デプロイ時に指定されるリソース グループのストレージ アカウントで、もう 1 つは、`secondResourceGroup` パラメーターで指定されるリソース グループのストレージ アカウントです。
 
@@ -106,93 +121,7 @@ ms.lasthandoff: 12/05/2017
 
 存在しないリソース グループの名前を `resourceGroup` に設定した場合、デプロイは失敗します。
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
-
-テンプレートの例をデプロイするには、2017 年 5 月以降のリリースの Azure PowerShell または Azure CLI を使用します。 この例では、GitHub の[クロス サブスクリプション テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json)を使用してください。
-
-### <a name="two-resource-groups-in-the-same-subscription"></a>同じサブスクリプションの 2 つのリソース グループ
-
-PowerShell の場合、2 つのストレージ アカウントを、同じサブスクリプションの 2 つのリソース グループにデプロイするには、次を使用します。
-
-```powershell
-$firstRG = "primarygroup"
-$secondRG = "secondarygroup"
-
-New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
-New-AzureRmResourceGroup -Name $secondRG -Location eastus
-
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName $firstRG `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
-  -storagePrefix storage `
-  -secondResourceGroup $secondRG `
-  -secondStorageLocation eastus
-```
-
-Azure CLI の場合、2 つのストレージ アカウントを、同じサブスクリプションの 2 つのリソース グループにデプロイするには、次を使用します。
-
-```azurecli-interactive
-firstRG="primarygroup"
-secondRG="secondarygroup"
-
-az group create --name $firstRG --location southcentralus
-az group create --name $secondRG --location eastus
-az group deployment create \
-  --name ExampleDeployment \
-  --resource-group $firstRG \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
-  --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
-```
-
-デプロイが完了すると、2 つのリソース グループが確認できます。 それぞれのリソース グループにストレージ アカウントが存在します。
-
-### <a name="two-resource-groups-in-different-subscriptions"></a>異なるサブスクリプションの 2 つのリソース グループ
-
-PowerShell の場合、2 つのストレージ アカウントを、2 つのサブスクリプションにデプロイするには、次を使用します。
-
-```powershell
-$firstRG = "primarygroup"
-$secondRG = "secondarygroup"
-
-$firstSub = "<first-subscription-id>"
-$secondSub = "<second-subscription-id>"
-
-Select-AzureRmSubscription -Subscription $secondSub
-New-AzureRmResourceGroup -Name $secondRG -Location eastus
-
-Select-AzureRmSubscription -Subscription $firstSub
-New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
-
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName $firstRG `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
-  -storagePrefix storage `
-  -secondResourceGroup $secondRG `
-  -secondStorageLocation eastus `
-  -secondSubscriptionID $secondSub
-```
-
-Azure CLI の場合、2 つのストレージ アカウントを、2 つのサブスクリプションにデプロイするには、次を使用します。
-
-```azurecli-interactive
-firstRG="primarygroup"
-secondRG="secondarygroup"
-
-firstSub="<first-subscription-id>"
-secondSub="<second-subscription-id>"
-
-az account set --subscription $secondSub
-az group create --name $secondRG --location eastus
-
-az account set --subscription $firstSub
-az group create --name $firstRG --location southcentralus
-
-az group deployment create \
-  --name ExampleDeployment \
-  --resource-group $firstRG \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
-  --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
-```
+テンプレート例をデプロイするには、Azure PowerShell 4.0.0 以降、または Azure CLI 2.0.0 以降を使用します。
 
 ## <a name="use-the-resourcegroup-function"></a>resourceGroup() 関数の使用
 
@@ -230,9 +159,59 @@ az group deployment create \
 }
 ```
 
-`resourceGroup()` によるさまざまな解決方法をテストするには、親テンプレート、インライン テンプレート、およびリンクされたテンプレートのリソース グループ オブジェクトを返す[サンプル テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)をデプロイします。 親テンプレートとインライン テンプレートの両方が、同じリソース グループに解決されます。 リンクされたテンプレートは、リンクされたリソース グループに解決されます。
+## <a name="example-templates"></a>サンプル テンプレート
 
-PowerShell では、次を使用します。
+以下のテンプレートは、複数のリソース グループのデプロイを示しています。 テンプレートをデプロイするスクリプトは、表の後に示されています。
+
+|テンプレート  |[説明]  |
+|---------|---------|
+|[クロス サブスクリプション テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |1 つのストレージ アカウントを 1 つのリソース グループに、また 1 つのストレージ アカウントを 2 番目のリソース グループにデプロイします。 2 番目のリソース グループが別のサブスクリプションにある場合は、サブスクリプション ID の値が含まれます。 |
+|[クロス リソース グループ プロパティ テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |`resourceGroup()` 関数の解決方法を示します。 このテンプレートではリソースはデプロイされません。 |
+
+### <a name="powershell"></a>PowerShell
+
+PowerShell の場合、2 つのストレージ アカウントを、**同じサブスクリプション**内の 2 つのリソース グループにデプロイするには、次を使用します。
+
+```powershell
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
+
+New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+New-AzureRmResourceGroup -Name $secondRG -Location eastus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus
+```
+
+PowerShell の場合、2 つのストレージ アカウントを **2 つのサブスクリプション**にデプロイするには、次を使用します。
+
+```powershell
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
+
+$firstSub = "<first-subscription-id>"
+$secondSub = "<second-subscription-id>"
+
+Select-AzureRmSubscription -Subscription $secondSub
+New-AzureRmResourceGroup -Name $secondRG -Location eastus
+
+Select-AzureRmSubscription -Subscription $firstSub
+New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus `
+  -secondSubscriptionID $secondSub
+```
+
+PowerShell の場合、**リソース グループ オブジェクト**が親テンプレート、インライン テンプレート、およびリンクされたテンプレートに対してどのように解決されるかをテストするには、次を使用します。
 
 ```powershell
 New-AzureRmResourceGroup -Name parentGroup -Location southcentralus
@@ -244,7 +223,46 @@ New-AzureRmResourceGroupDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-Azure CLI では、次を使用します。
+### <a name="azure-cli"></a>Azure CLI
+
+Azure CLI の場合、2 つのストレージ アカウントを、**同じサブスクリプション**の 2 つのリソース グループにデプロイするには、次を使用します。
+
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
+
+az group create --name $firstRG --location southcentralus
+az group create --name $secondRG --location eastus
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
+```
+
+Azure CLI の場合、2 つのストレージ アカウントを、**2 つのサブスクリプション**にデプロイするには、次を使用します。
+
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
+
+firstSub="<first-subscription-id>"
+secondSub="<second-subscription-id>"
+
+az account set --subscription $secondSub
+az group create --name $secondRG --location eastus
+
+az account set --subscription $firstSub
+az group create --name $firstRG --location southcentralus
+
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
+```
+
+Azure CLI の場合、**リソース グループ オブジェクト**が親テンプレート、インライン テンプレート、およびリンクされたテンプレートに対してどのように解決されるかをテストするには、次を使用します。
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -257,7 +275,7 @@ az group deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」を参照してください。
 * 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。

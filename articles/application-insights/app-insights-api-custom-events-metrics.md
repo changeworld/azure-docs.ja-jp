@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4cbc423555abfe6beee2c89d9df0760ce7c2fd6e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: a94a7da29d9f3c6f745df7e91ec9e19b66435eae
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -414,32 +414,34 @@ Web サービス モジュールが実行されていない状況で要求をシ
 ただし、要求テレメトリを送信するための推奨される方法は、要求が<a href="#operation-context">操作コンテキスト</a>として機能しているところです。
 
 ## <a name="operation-context"></a>操作コンテキスト
-テレメトリ項目に共通の操作 ID を割り当てることで、これらの項目をまとめて関連付けることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [Search](app-insights-diagnostic-search.md) および [Analytics](app-insights-analytics.md) では、ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
+テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [Search](app-insights-diagnostic-search.md) および [Analytics](app-insights-analytics.md) では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
 
-ID を設定する最も簡単な方法は、次のパターンを使用して操作コンテキストを設定することです。
+相関の詳細については、「[Application Insights におけるテレメトリの相関付け](application-insights-correlation.md)」を参照してください。
+
+手動でテレメトリを追跡している場合、テレメトリの相関付けを確実に行うための最も簡単な方法として、次のパターンを使用できます。
 
 *C#*
 
 ```C#
 // Establish an operation context and associated telemetry item:
-using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
+using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operationName"))
 {
     // Telemetry sent in here will use the same operation ID.
     ...
-    telemetry.TrackTrace(...); // or other Track* calls
+    telemetryClient.TrackTrace(...); // or other Track* calls
     ...
     // Set properties of containing telemetry item--for example:
     operation.Telemetry.ResponseCode = "200";
 
     // Optional: explicitly send telemetry item:
-    telemetry.StopOperation(operation);
+    telemetryClient.StopOperation(operation);
 
 } // When operation is disposed, telemetry item is sent.
 ```
 
 操作コンテキストの設定に合わせて、指定した種類のテレメトリ項目を `StartOperation` で作成します。 テレメトリ項目は、操作を破棄するか `StopOperation` を明示的に呼び出すと送信されます。 テレメトリの種類として `RequestTelemetry` を使用する場合、その継続時間は開始から停止までの間の一定の間隔に設定されます。
 
-操作コンテキストを入れ子にすることはできません。 操作コンテキストが既にある場合は、含まれるすべての項目 (`StartOperation` で作成された項目を含む) に、その操作コンテキストの ID が関連付けられます。
+操作のスコープ内にあるテレメトリ項目は、その操作の「子」になります。 操作コンテキストは入れ子にできます。 
 
 検索では、操作コンテキストを使用して**関連項目**の一覧が作成されます。
 
@@ -488,7 +490,7 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
        appInsights.trackException(ex);
     }
     
-*Node.js*
+*Node.JS*
 
     try
     {
@@ -545,7 +547,7 @@ TrackTrace を使用すると、Application Insights に "階層リンクの追�
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
     
-*Node.js*
+*Node.JS*
 
     telemetry.trackTrace({message: message, severity:applicationInsights.Contracts.SeverityLevel.Warning, properties:properties});
 
@@ -880,7 +882,7 @@ requests
 
     gameTelemetry.TrackEvent("WinGame");
     
-*Node.js*
+*Node.JS*
 
     var gameTelemetry = new applicationInsights.TelemetryClient();
     gameTelemetry.commonProperties["Game"] = currentGame.Name;
@@ -900,7 +902,7 @@ requests
 
 テレメトリに[プロパティを追加する](app-insights-api-filtering-sampling.md#add-properties)には、`ITelemetryInitializer` を実装します。 たとえば、バージョン番号や、他のプロパティから算出された値を追加できます。
 
-`ITelemetryProcessor` を実装すると、テレメトリが SDK から送信される前に[フィルタリング](app-insights-api-filtering-sampling.md#filtering)によってテレメトリを変更または破棄することができます。 送信対象や破棄対象を指定できますが、メトリックへの影響を考慮する必要があります。 項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
+`ITelemetryProcesor` を実装すると、テレメトリが SDK から送信される前に[フィルタリング](app-insights-api-filtering-sampling.md#filtering)によってテレメトリを変更または破棄することができます。 送信対象や破棄対象を指定できますが、メトリックへの影響を考慮する必要があります。 項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
 
 [サンプリング](app-insights-api-filtering-sampling.md)は、アプリからポータルに送信されるデータの量を減らすためのパッケージ化ソリューションです。 これにより、表示されるメトリックに影響をあたえることなくデータ量を削減できます。 また、サンプリングを行った場合でも、変わらずに例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断できます。
 
@@ -920,7 +922,7 @@ requests
 
 *選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
-*Node.js*
+*Node.JS*
 
 ```Javascript
 

@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: bryanla
-ms.openlocfilehash: 9d80e0e4dbaa010aabd0e7aad91ac79cf2d433d5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6a02b52e7103c9b6e60b09617026fbf6010e76c8
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>トークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法 
 
-[!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]この記事では、トークンの取得に使用する各種コードとスクリプトの例を提供するほか、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスも提供します。
+[!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]  
+この記事では、トークンの取得に使用する各種コードとスクリプトの例を提供するほか、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスも提供します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -263,8 +264,8 @@ MSI エンドポイントは、HTTP 応答メッセージのヘッダーに含�
 
 | 状態コード | エラー | エラーの説明 | 解決策 |
 | ----------- | ----- | ----------------- | -------- |
-| 400 無効な要求です | invalid_resource | AADSTS50001: *\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
-| 400 無効な要求です | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。|
+| 400 Bad Request | invalid_resource | AADSTS50001: *\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
+| 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。|
 | 401 権限がありません | unknown_source | 不明なソース *\<URI\>* | HTTP GET 要求の URI の形式が正しいことを確認します。 `scheme:host/resource-path` 部分は、`http://localhost:50342/oauth2/token` として指定する必要があります。 例については、[上記の「REST」セクション](#rest)の「要求のサンプル」を参照してください。|
 |           | invalid_request | 要求に必要なパラメーターが含まれていないか、要求に無効なパラメーター値が含まれているか、要求に複数回パラメーターが含まれているか、要求の形式が正しくないかのいずれかです。 |  |
 |           | unauthorized_client | クライアントには、このメソッドを使用してアクセス トークンを要求する権限がありません。 | 拡張機能の呼び出しにローカル ループバックを使用しなかった要求や、MSI が正しく構成されていない VM が原因です。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して、VM 管理対象サービス ID (MSI) を構成する](msi-qs-configure-portal-windows-vm.md)」をご覧ください。 |

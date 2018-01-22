@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1a8158dd60b6e2eb15a16bf3efb60ef30d602fd6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 6f38fe1e99c734bf09a403ea93b6487a71110cac
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -37,7 +37,7 @@ Functions には、Application Insights を使用しないビルトイン監視�
 
 * [関数アプリの作成時に、接続された Application Insights インスタンスを作成する](#new-function-app)。
 * [Application Insights インスタンスを既存の関数アプリに接続する](#existing-function-app)。
- 
+
 ### <a name="new-function-app"></a>新しい関数アプリ
 
 次のようにして、Function App の **[作成]** ページで Application Insights を有効にします。
@@ -66,6 +66,14 @@ Functions には、Application Insights を使用しないビルトイン監視�
 
 1. **[Save]** をクリックします。
 
+## <a name="disable-built-in-logging"></a>組み込みログを無効にする
+
+Application Insights を有効にする場合は、[Azure Storage を使用する組み込みログ](#logging-to-storage)を無効にすることをお勧めします。 組み込みログは軽量のワークロードには便利ですが、高負荷の実稼働環境での使用には向きません。 実稼働環境の監視には、Application Insights をお勧めします。 組み込みログを実稼働環境で使用すると、Azure Storage での調整のためにログ レコードが不完全になる場合があります。
+
+組み込みログを無効にするには、`AzureWebJobsDashboard` アプリ設定を削除します。 Azure Portal でアプリ設定を削除する方法については、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md#settings)に関するページで「**アプリケーションの設定**」セクションを参照してください。
+
+Application Insights を有効にし、組み込みログを無効にすると、Azure Portal の関数用の**[モニター]** タブに Application Insights が表示されます。
+
 ## <a name="view-telemetry-data"></a>テレメトリ データを表示する
 
 ポータルで関数アプリから接続された Application Insights インスタンスに移動するには、関数アプリの **[概要]** ページで **[Application Insights]** リンクを選びます。
@@ -82,7 +90,7 @@ Application Insights の使用方法については、「[Application Insights �
 
 [[パフォーマンス]](../application-insights/app-insights-performance-counters.md) タブでは、パフォーマンスの問題を分析できます。
 
-![パフォーマンス](media/functions-monitoring/performance.png)
+![[パフォーマンス]](media/functions-monitoring/performance.png)
 
 **[サーバー]** タブには、リソース使用率とサーバーあたりのスループットが表示されます。 このデータは、関数が原因で基本リソースの処理が遅延している場合のデバッグで役立つことがあります。 サーバーは、**クラウド ロール インスタンス**と呼ばれます。
 
@@ -464,58 +472,41 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ## <a name="monitoring-without-application-insights"></a>Application Insights を使用しない監視
 
-関数の監視には Application Insights の使用をお勧めします。Application Insights ではより多くのデータと優れたデータ分析方法が提供されるためです。 ただし、テレメトリ データやログ データは Azure Portal の Function App のページで確認することもできます。 
+関数の監視には Application Insights の使用をお勧めします。Application Insights ではより多くのデータと優れたデータ分析方法が提供されるためです。 ただし、ログやテレメトリ データは、Azure Portal の Function App のページで確認することもできます。
 
-関数の **[監視]** タブを選択すると、関数実行のリストが表示されます。 関数実行を選択して、時間、入力データ、エラー、および関連するログ ファイルを確認します。
+### <a name="logging-to-storage"></a>ストレージへのログ記録
 
-> [!IMPORTANT]
-> Azure Functions で[従量課金ホスティング プラン](functions-overview.md#pricing)を使用する場合、Function App の **[監視]** タイルにはデータが表示されません。 これは、プラットフォームがコンピューティング インスタンスを動的にスケーリングおよび管理するためです。 これらのメトリックは、従量課金プランでは意味がありません。
+組み込みログは、`AzureWebJobsDashboard` アプリ設定の接続文字列で指定されたストレージ アカウントを使用します。 そのアプリ設定が構成済みの場合は、Azure Portal でログ データを確認できます。 Function App ページで、関数を選択し、次に**[モニター]** タブを選択すると、関数実行のリストが表示されます。 関数実行を選択して、時間、入力データ、エラー、および関連するログ ファイルを確認します。
+
+Application Insights を使用し、[組み込みログを無効化](#disable-built-in-logging)すると、**[モニター]** タブに Application Insights が表示されます。
 
 ### <a name="real-time-monitoring"></a>リアルタイム監視
 
-リアルタイム監視を行うには、関数の **[監視]** タブで **[ライブ イベント ストリーム]** をクリックします。ライブ イベント ストリームが、新しいブラウザー タブにグラフで表示されます。
+[Azure コマンド ライン インターフェイス (CLI) 2.0](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用して、ローカル ワークステーションのコマンド ライン セッションにログ ファイルをストリーミングできます。  
 
-> [!NOTE]
-> データの取り込みに失敗する可能性がある、既知の問題があります。 イベント ストリーム データを正しく取り込むためには、ライブ イベント ストリームが表示されているブラウザー タブを閉じて、**[ライブ イベント ストリーム]** を再度クリックすることが必要な場合があります。 
-
-これらの統計はリアルタイムですが、実行データの実際のグラフには 10 秒程度の遅延がある場合があります。
-
-### <a name="monitor-log-files-from-a-command-line"></a>コマンド ラインからログ ファイルを監視する
-
-Azure コマンド ライン インターフェイス (CLI) 1.0 または PowerShell を使用して、ローカル ワークステーションのコマンド ライン セッションにログ ファイルをストリーミングできます。
-
-### <a name="monitor-function-app-log-files-with-the-azure-cli-10"></a>Azure CLI 1.0 で関数アプリのログ ファイルを監視する
-
-開始するには、[Azure CLI 1.0 をインストールして](../cli-install-nodejs.md)、[Azure にサインインします](/cli/azure/authenticate-azure-cli)。
-
-次のコマンドを使用して、クラシック サービス管理モードを有効にし、ご使用のサブスクリプションを選択して、ログ ファイルをストリーミングします。
+Azure CLI 2.0 では、次のコマンドを使用して、サインイン、ご使用のサブスクリプションの選択、ログ ファイルのストリーミングを行います。
 
 ```
-azure config mode asm
-azure account list
-azure account set <subscriptionNameOrId>
-azure site log tail -v <function app name>
+az login
+az account list
+az account set <subscriptionNameOrId>
+az appservice web log tail --resource-group <resource group name> --name <function app name>
 ```
 
-### <a name="monitor-function-app-log-files-with-powershell"></a>PowerShell で関数アプリのログ ファイルを監視する
-
-開始するには、[Azure PowerShell をインストールおよび構成](/powershell/azure/overview)します。
-
-次のコマンドを使用して、ご使用の Azure アカウントを追加し、ご使用のサブスクリプションを選択して、ログ ファイルをストリーミングします。
+Azure PowerShell では、次のコマンドを使用して、ご使用の Azure アカウントの追加、サブスクリプションの選択、ログ ファイルのストリーミングを行います。
 
 ```
 PS C:\> Add-AzureAccount
 PS C:\> Get-AzureSubscription
-PS C:\> Get-AzureSubscription -SubscriptionName "MyFunctionAppSubscription" | Select-AzureSubscription
-PS C:\> Get-AzureWebSiteLog -Name MyFunctionApp -Tail
+PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-AzureSubscription
+PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-詳細については、[Web アプリのログをストリーミングする方法](../app-service/web-sites-enable-diagnostic-log.md#streamlogs)に関するページをご覧ください。 
+詳細については、[Azure App Service の Web アプリの診断ログの有効化](../app-service/web-sites-enable-diagnostic-log.md#streamlogs)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Application Insights の詳細を知る](https://docs.microsoft.com/azure/application-insights/)
+詳細については、次のリソースを参照してください。
 
-> [!div class="nextstepaction"]
-> [Functions で使用されるログ記録フレームワークの詳細を知る](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
+* [Application Insights](/azure/application-insights/)
+* [ASP.NET Core のログ記録](/aspnet/core/fundamentals/logging/)

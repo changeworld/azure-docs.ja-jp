@@ -3,7 +3,7 @@ title: "Azure 仮想マシン スケール セットを使用した OS の自動
 description: "スケール セット内の VM インスタンス上の OS を自動的にアップグレードする方法について説明します"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
+author: gatneil
 manager: jeconnoc
 editor: 
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
-ms.author: guybo
-ms.openlocfilehash: 32358b23bb0a0a878e986150dd992513579d61c4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 12/07/2017
+ms.author: negat
+ms.openlocfilehash: 145f4ec92b142a1585ba17bf6e49c7824cc32529
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure 仮想マシン スケール セットによる OS の自動アップグレード
 
@@ -39,7 +39,7 @@ OS の自動アップグレードには、次の特徴があります。
 ## <a name="preview-notes"></a>プレビューに関するメモ 
 プレビュー段階では次の制限と制約が適用されます。
 
-- OS の自動アップグレードでは、[3 つの OS SKU](#supported-os-images) のみをサポートします。 SLA または保証はありません。 プレビュー段階の自動アップグレードは、実稼働環境のクリティカルなワークロードでは使用しないことをお勧めします。
+- OS の自動アップグレードでは、[4 つの OS SKU](#supported-os-images) のみをサポートします。 SLA または保証はありません。 プレビュー段階の自動アップグレードは、実稼働環境のクリティカルなワークロードでは使用しないことをお勧めします。
 - Service Fabric クラスターのスケール セットに対するサポートは、近日対応予定です。
 - 仮想マシン スケール セットの OS の自動アップグレードでは、Azure ディスクの暗号化 (現在プレビュー段階です) は、現時点では**サポートされていません**。
 - ポータル エクスペリエンスは近日対応予定です。
@@ -78,9 +78,11 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
     
 | 発行元               | プラン         |  SKU               | バージョン  |
 |-------------------------|---------------|--------------------|----------|
-| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter | latest   |
-| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    | latest   |
-| Canonical               | UbuntuServer  | 16.04 LTS          | latest   |
+| Canonical               | UbuntuServer  | 16.04 LTS          | 最新   |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter | 最新   |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    | 最新   |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Smalldisk | 最新   |
+
 
 
 ## <a name="application-health"></a>アプリケーションの正常性
@@ -90,6 +92,15 @@ OS のアップグレード中は、スケール セット内の VM インスタ
 
 スケール セットが複数の配置グループを使用するように構成されている場合は、[Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) を使用するプローブを使用する必要があります。
 
+### <a name="important-keep-credentials-up-to-date"></a>重要: 資格情報を最新に保つ
+スケール セットが外部のリソースにアクセスするときに資格情報を使用する場合、たとえば、VM 拡張機能がストレージ アカウントの SAS トークンを使用するように構成されている場合などは、資格情報が最新に保たれているか確認する必要があります。 証明書やトークンなどの資格情報の期限が切れている場合は、アップグレードは失敗し、VM の最初のバッチは障害が発生した状態になります。
+
+リソースの認証エラーが発生した場合に、VM を復旧し、OS の自動アップグレードを再度有効にするための推奨手順は次のとおりです。
+
+* 拡張機能に渡されたトークン (またはその他の資格情報) を再生成します。
+* 外部エンティティと対話する VM 内から使用されるすべての資格情報が最新であることを確認します。
+* 新しいトークンで、スケール セット モデルの拡張機能を更新します。
+* 障害が発生したものを含むすべての VM インスタンスを更新する、更新されたスケール セットをデプロイします。 
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>スケール セットに関するアプリケーション正常性プローブとしてのカスタム ロード バランサー プローブの構成
 ベスト プラクティスとして、スケール セットの正常性のためのロード バランサー プローブを明示的に作成します。 既存の HTTP プローブまたは TCP プローブと同じエンドポイントを使用できますが、この正常性プローブでは、従来のロード バランサー プローブとは異なる動作が必要になる可能性があります。 たとえば、従来のロード バランサー プローブは、インスタンスの負荷が高すぎる場合に異常を返すことがありますが、OS の自動 アップグレード中にインスタンスの正常性を決定するには、その動作は適切ではない可能性があります。 2 分未満のプローブ率が高いプローブを構成してします。
@@ -141,7 +152,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Virtual
 
 次の例では、Azure CLI (2.0.20 以降) を使用して、*myResourceGroup* という名前のリソース グループ内の *myVMSS* という名前のスケール セットのための自動アップグレードを構成します。
 
-```azure-cli
+```azurecli
 rgname="myResourceGroup"
 vmssname="myVMSS"
 az vmss update --name $vmssname --resource-group $rgname --set upgradePolicy.AutomaticOSUpgrade=true
@@ -161,7 +172,7 @@ Get-AzureRmVmssRollingUpgrade -ResourceGroupName myResourceGroup -VMScaleSetName
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 次の例では、Azure CLI (2.0.20 以降) を使用して、*myResourceGroup* という名前のリソース グループ内の *myVMSS* という名前のスケール セットの状態をチェックします。
 
-```azure-cli
+```azurecli
 az vmss rolling-upgrade get-latest --resource-group myResourceGroup --name myVMSS
 ```
 
@@ -223,5 +234,5 @@ GET 呼び出しは、次の例の出力に似たプロパティを返します�
 </a>
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 スケール セットを使用して OS の自動アップグレードを使用する方法の例については、[プレビュー機能の GitHub リポジトリ](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade)を参照してください。

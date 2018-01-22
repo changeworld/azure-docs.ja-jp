@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: f3fbccdbd00fb64348e2132ca6adc3a06ad18535
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: d2a6660b93fee1e1fc24269eb7075e5243ce88ed
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID を一括で管理する
 
@@ -27,6 +27,8 @@ ms.lasthandoff: 11/18/2017
 インポートおよびエクスポート操作は、IoT Hub に対する一括サービス操作を実行するのを可能にする "*ジョブ*" のコンテキストで行われます。
 
 **RegistryManager** クラスには、**ジョブ** フレームワークを使用する **ExportDevicesAsync** および **ImportDevicesAsync** メソッドが含まれています。 これらのメソッドを使用すると、IoT Hub ID レジストリ全体のエクスポート、インポート、および同期化を行うことができます。
+
+このトピックでは、**RegistryManager** クラスと**ジョブ** システムを使用して、デバイスの一括インポートおよびエクスポートを IoT Hub の ID レジストリとの間で実行する方法について説明します。 また、Azure IoT Hub Device Provisioning サービスを使用して、1 つまたは複数の IoT ハブに対してノータッチの Just-In-Time プロビジョニングを実現できるため、人の手を介する必要がなくなります。 詳細については、[Provisioning Service のドキュメント][lnk-dps]をご覧ください。
 
 ## <a name="what-are-jobs"></a>ジョブとは
 
@@ -234,7 +236,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 
 デバイスごとにインポート プロセスを制御するには、デバイスごとのインポート シリアル化データにオプションの **importMode** プロパティを使用します。 **importMode** プロパティには、次のオプションが用意されています。
 
-| importMode | 説明 |
+| importMode | [説明] |
 | --- | --- |
 | **createOrUpdate** |指定した **ID**を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合、既存の情報は、 **ETag** 値に関係なく、指定した入力データで上書きされます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
 | **create** |指定した **ID**を持つデバイスが存在しない場合は、新たに登録されます。 <br/>該当するデバイスが既に存在する場合は、エラーがログ ファイルに書き込まれます。 <br> 必要に応じて、デバイス データと共にツイン データを指定できます。 ツインの etag が指定された場合は、デバイスの etag とは別に処理されます。 既存のツインの etag と一致しない場合は、ログ ファイルにエラーが書き込まれます。 |
@@ -395,7 +397,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
@@ -407,8 +409,14 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 * [IoT Hub 開発者ガイド][lnk-devguide]
 * [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
 
+IoT Hub Device Provisioning サービスを使用してノータッチの Just-In-Time プロビジョニングを実現する方法については、次をご覧ください。 
+
+* [Azure IoT Hub Device Provisioning Service][lnk-dps]
+
+
 [lnk-metrics]: iot-hub-metrics.md
 [lnk-monitor]: iot-hub-operations-monitoring.md
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps

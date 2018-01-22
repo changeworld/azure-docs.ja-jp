@@ -13,15 +13,17 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/07/2017
 ms.author: heidist
-ms.openlocfilehash: eaf317b42026298cc42edcc907bc48169f869460
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: b31844dd0dad1168b12d91ce536589099ab16a7e
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
-ポータルで Azure Search サービスを作成またはプロビジョニングする方法について説明します。 PowerShell での手順については、[PowerShell での Azure Search の管理](search-manage-powershell.md)に関するページをご覧ください。
+ポータルで Azure Search サービスを作成またはプロビジョニングする方法について説明します。 
+
+PowerShell をお好みですか? Azure Resource Manager [サービス テンプレート](https://azure.microsoft.com/resources/templates/101-azure-search-create/)をご使用ください。 作業の開始にあたっては、背景について「[PowerShell を使用して Azure Search サービスを管理する](search-manage-powershell.md)」を参照してください。
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
@@ -107,7 +109,7 @@ Azure サービスの 1 つである Azure Search は、世界中のデータ �
 
 高可用性のために 2 番目のサービスを作成する必要はありません。 クエリの高可用性は、同じサービスで 2 つ以上のレプリカを使用することにより実現されます。 レプリカの更新はシーケンシャルです。つまり、サービスの更新が展開されているとき、少なくとも 1 つのレプリカが動作しています。アップタイムについて詳しくは、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Search サービスをプロビジョニングしたら、データをアップロードし、検索できるように、 [インデックスを定義する](search-what-is-an-index.md)ことができます。 
 
 > [!div class="nextstepaction"]

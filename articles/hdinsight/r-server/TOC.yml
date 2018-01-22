@@ -44,6 +44,8 @@
         - name: Tools for VSCode
           href: ../hdinsight-for-vscode.md
           maintainContext: true
+        - name: R Tools for Visual Studio からのジョブの送信
+          href: r-server-submit-jobs-r-tools-vs.md
     - name: クラスターを拡張する
       items:
         - name: ブートストラップを使用してクラスターをカスタマイズする
@@ -269,7 +271,7 @@
         - name: クラスター パフォーマンスの監視
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: 参照
+- name: リファレンス
   items:
     - name: コード サンプル
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'

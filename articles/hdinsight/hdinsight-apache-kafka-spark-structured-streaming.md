@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: df767617842d5f331b5c4dda6d87d6a999ee1d1b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 39734153a757d4665f2a15d3af244d2fab9ad9d7
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>HDInsight 上で Kafka を用いて Spark 構造化ストリーミングを使用する
 
@@ -127,7 +127,7 @@ curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUST
 
 プロジェクトから HDInsight クラスター上の Spark へノートブックをアップロードするには、以下の手順を使用します。
 
-1. Web ブラウザーで、Spark クラスターの Jupyter Notebook に接続します。 次の URL の`CLUSTERNAME` をお使いの Kafka クラスターの名前に置き換えます。
+1. Web ブラウザーで、Spark クラスターの Jupyter Notebook に接続します。 次の URL の`CLUSTERNAME` をお使いの __Spark__ クラスターの名前に置き換えます。
 
         https://CLUSTERNAME.azurehdinsight.net/jupyter
 
@@ -153,7 +153,7 @@ curl -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUST
 
 Jupyter Notebook のホーム ページから、__Spark-Structured-Streaming-From-Kafka.ipynb__ エントリを選択します。 ノートブックの手順に従い、Spark 構造化ストリーミングを使って Kafka からツイートを読み込みます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Spark 構造化ストリームの使用方法を説明しました。Spark および Kafka の操作に関する詳細については、以下のドキュメントをご覧ください。
 

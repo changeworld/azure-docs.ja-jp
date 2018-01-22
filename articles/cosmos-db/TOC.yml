@@ -352,6 +352,8 @@
               href: secure-access-to-data.md
     - name: 統合
       items:
+        - name: HDInsight でラムダ アーキテクチャを実装する
+          href: lambda-architecture.md
         - name: Spark に接続する
           href: spark-connector.md
         - name: Spark GraphX に接続する

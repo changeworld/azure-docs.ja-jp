@@ -8,40 +8,39 @@ ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: v-rogara
 ms.custom: mvc
-ms.openlocfilehash: ea57fa35f09299f95cdfd3c11b44657d35972295
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: a80ae99c2ada00885019ee93e4ef36821340d3a5
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="search-semi-structured-data-in-cloud-storage"></a>クラウド ストレージで半構造化データを検索する
+# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>パート 2: クラウド ストレージで半構造化データを検索する
 
-この 2 部構成のチュートリアル シリーズでは、Azure Search を使用して半構造化データと非構造化データを検索する方法について説明します。 このチュートリアルでは、Azure BLOB に格納されている JSON などの半構造化データを検索する方法を示します。 半構造化データには、データ内のコンテンツを区別するタグやマーキングが含まれます。 このデータはリレーショナル データベース スキーマなどのデータ モデルに従って正式に構造化されていないため、構造化データとは異なります。
+2 部構成のチュートリアル シリーズでは、Azure Search を使用して半構造化データと非構造化データを検索する方法について説明します。 [パート 1](../storage/blobs/storage-unstructured-search.md) では非構造化データの検索について説明しましたが、ストレージ アカウントの作成など、このチュートリアルを行うための重要な前提条件も含まれています。 
 
-このパートでは、次の方法について説明します。
+パート 2 では、Azure BLOB に格納されている JSON などの半構造化データに焦点を移します。 半構造化データには、データ内のコンテンツを区別するタグやマーキングが含まれます。 このデータは、非構造化データ (全体にインデックスを付ける必要がある) と正式に構造化されたデータ (フィールドごとにクロール可能な、リレーショナル データベース スキーマなどのデータ モデルに準拠) を折衷するものです。
+
+パート 2 では、以下を行う方法について説明します。
 
 > [!div class="checklist"]
-> * Azure Search Service 内のインデックスを作成して、データを設定する
-> * Azure Search Service を使用してインデックスを検索する
+> * Azure BLOB コンテナー用に Azure Search データ ソースを構成する
+> * コンテナーをクロールし、検索可能コンテンツを抽出するために、Azure Search のインデックスとインデクサーを作成および設定する
+> * 作成したインデックスを検索する
 
 > [!NOTE]
-> JSON 配列のサポートは、Azure Search のプレビュー機能です。 これは、現在 Portal では使用できません。 そのため、この機能を提供するプレビュー版の REST API および REST クライアント ツールを使用して API を呼び出します。
+> このチュートリアルは、現在 Azure Search のプレビュー機能である JSON 配列サポートに依存します。 ポータルでは使用できません。 そのため、この機能を提供するプレビュー版の REST API、および REST クライアント ツールを使用して、API を呼び出します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
-* [前のチュートリアル](../storage/blobs/storage-unstructured-search.md)を完了しておく
-    * このチュートリアルでは、前のチュートリアルで作成されたストレージ アカウントと検索サービスを使用します。
-* REST クライアントをインストールし、HTTP 要求を作成する方法について理解する
+* [前のチュートリアル](../storage/blobs/storage-unstructured-search.md)を完了していること。これにより、前のチュートリアルで作成されたストレージ アカウントと検索サービスが提供されます。
 
+* REST クライアントがインストールされており、HTTP 要求の作成方法を理解していること。 このチュートリアルでは、[Postman](https://www.getpostman.com/) を使用しています。 別の REST クライアントを使い慣れている場合は、そのクライアントを使用してもかまいません。
 
-## <a name="set-up-the-rest-client"></a>REST クライアントの設定
+## <a name="set-up-postman"></a>Postman の設定
 
-このチュートリアルを完了するには、REST クライアントが必要です。 このチュートリアルでは、[Postman](https://www.getpostman.com/) を使用しています。 別の REST クライアントを使い慣れている場合は、そのクライアントを使用してもかまいません。
+Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、詳細について「[Fiddler または Postman を使用して Azure Search REST API を探索する](search-fiddler.md)」を参照してください。
 
-Postman をインストールして起動します。
-
-Azure の REST 呼び出しを初めて行う場合に役立つ、このチュートリアルの重要なコンポーネントの概要を次に示します。このチュートリアルで使用される各呼び出しの要求メソッドは "POST" です。 ヘッダー キーは "Content-type" と "api-key" です。 ヘッダー キーの値は、それぞれ "application/json" と "管理者キー" (管理者キーは、検索の主キーを表すプレースホルダー) です。 本文は、呼び出しの実際のコンテンツを配置する場所です。 使用するクライアントによっては、クエリの作成方法にいくつかのバリエーションがありますが、それらは基本的な機能です。
+このチュートリアルでの各呼び出しの要求メソッドは "POST" です。 ヘッダー キーは "Content-type" と "api-key" です。 ヘッダー キーの値は、それぞれ "application/json" と "管理者キー" (管理者キーは、検索の主キーを表すプレースホルダー) です。 本文は、呼び出しの実際のコンテンツを配置する場所です。 使用するクライアントによっては、クエリの作成方法にいくつかのバリエーションがありますが、それらは基本的な機能です。
 
   ![半構造化検索](media/search-semi-structured-data/postmanoverview.png)
 
@@ -55,7 +54,7 @@ Azure の REST 呼び出しを初めて行う場合に役立つ、このチュ�
 
 このサンプルに含まれているのは JSON ファイルであり、元は [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) から取得したテキスト ファイルです。 便宜上、それらのテキスト ファイルを JSON に変換しました。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 [Azure Portal](http://portal.azure.com) にログインします。
 
@@ -277,7 +276,7 @@ Azure Portal を開き、検索サービスに戻ります。 これは前のチ
 
 `$filter` パラメーターは、インデックスの作成時にフィルター可能としてマークされたメタデータでのみ使用できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の方法など、Azure Search を使用して半構造化データを検索することについて説明しました。
 

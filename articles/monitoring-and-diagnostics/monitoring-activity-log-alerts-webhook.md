@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: b0e301f58ec0b5a14254935d6c269cc8006f4eff
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 7816efd44c01c3ed60c95d8699042f89cf6de5ec
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
@@ -131,7 +131,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 
 その他のすべてのアクティビティ ログ アラートの特定のスキーマについて詳しくは、[Azure アクティビティ ログの概要](monitoring-overview-activity-logs.md)に関するページをご覧ください。
 
-| 要素名 | Description |
+| 要素名 | [説明] |
 | --- | --- |
 | status |メトリック アラートで使用されます。 アクティビティ ログ アラートでは常に "activated" に設定されます。 |
 | context |イベントのコンテキスト。 |
@@ -139,12 +139,12 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | conditionType |常に "Event" です。 |
 | name |アラート ルールの名前。 |
 | id |アラートのリソース ID。 |
-| description |アラートの作成時に設定したアラートの説明。 |
+| 説明 |アラートの作成時に設定したアラートの説明。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 | timestamp |要求を処理した Azure サービスによってイベントが生成された時刻。 |
-| resourceId |影響を受けるリソースのリソース ID。 |
+| ResourceId |影響を受けるリソースのリソース ID。 |
 | resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
-| properties |イベントの詳細を含む `<Key, Value>` ペア (つまり、`Dictionary<String, String>`) のセット。 |
+| プロパティ |イベントの詳細を含む `<Key, Value>` ペア (つまり、`Dictionary<String, String>`) のセット。 |
 | event |イベントに関するメタデータを含む要素。 |
 | authorization |イベントのロールベースのアクセス制御プロパティ。 これらのプロパティには通常、action、role、scope が含まれます。 |
 | カテゴリ |イベントのカテゴリ。 サポートされる値は Administrative、Alert、Security、ServiceHealth、Recommendation です。 |
@@ -154,14 +154,14 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | eventDataId |イベントの一意識別子。 |
 | eventSource |イベントを生成した Azure サービスまたはインフラストラクチャの名前。 |
 | httpRequest |要求には通常、clientRequestId、clientIpAddress、および HTTP メソッド (たとえば PUT) が含まれます。 |
-| level |Critical、Error、Warning、Informational、Verbose のいずれかの値。 |
+| level |Critical、Error、Warning、または Informational のいずれかの値。 |
 | operationId |通常、単一の操作に対応する複数のイベントで共有される GUID。 |
 | operationName |操作の名前。 |
-| properties |イベントのプロパティ。 |
+| プロパティ |イベントのプロパティ。 |
 | status |文字列 をオンにします。 操作の状態。 一般的な値は Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | subStatus |通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。 また、subStatus を説明する他の文字列を含めることもできます。 一般的な subStatus の値は、OK (HTTP 状態コード: 200)、Created (HTTP 状態コード: 201)、Accepted (HTTP 状態コード: 202)、No Content (HTTP 状態コード: 204)、Bad Request (HTTP 状態コード: 400)、Not Found (HTTP 状態コード: 404)、Conflict (HTTP 状態コード: 409)、Internal Server Error (HTTP 状態コード: 500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504) です。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [アクティビティ ログについて詳しく学習します](monitoring-overview-activity-logs.md)。
 * [Azure アラートで Azure Automation スクリプト (Runbook) を実行します](http://go.microsoft.com/fwlink/?LinkId=627081)。
 * [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS を送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。

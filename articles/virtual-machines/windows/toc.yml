@@ -286,6 +286,8 @@
           href: convert-disk-storage.md
         - name: Azure Site Recovery を使用した Premium Storage への移行
           href: migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: アタッチされていないディスクの検出
+          href: find-unattached-disks.md
         - name: File Storage を使用する
           href: mount-azure-file-storage.md
         - name: テンプレートによるディスクのデプロイ
@@ -418,7 +420,7 @@
           href: performance-diagnostics-vm-extension.md
         - name: 入れ子になった仮想化の使用
           href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: 参照
+- name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/vm

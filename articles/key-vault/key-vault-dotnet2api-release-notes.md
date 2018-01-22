@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
 ms.author: bruceper
-ms.openlocfilehash: c5b5fd7f16faf17d16ecc82269fb1264adf4dd06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b03f5092ee4236ca3e7b12db37dc47bd6d3a309
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - リリース ノートおよび移行ガイド
 Azure Key Vault .NET / C# ライブラリを使用する開発者のための注意事項とガイダンスを次に説明します。 バージョン 1.0 からバージョン 2.0 への移行においていくつもの更新が行われており、**Key Vault 証明書**のサポートなど、機能の改善や追加の恩恵を受けるためにはコードの移行作業が必要になります。
@@ -36,8 +36,9 @@ Key Vault 証明書のサポートにより、x509 証明書が管理される�
 
 ## <a name="net-support"></a>.NET のサポート
 
-* **.NET 4.0** は、Azure Key Vault .NET/C# ライブラリのバージョン 2.0 ではサポートされません。
-* **.NET Core** は、Azure Key Vault .NET/C# ライブラリのバージョン 2.0 ではサポートされません。
+* **.NET 4.0** は、Azure Key Vault .NET ライブラリのバージョン 2.0 ではサポートされません
+* **.NET Framework 4.5.2** は、Azure Key Vault .NET ライブラリのバージョン 2.0 ではサポートされません
+* **.NET Standard 1.4** は、Azure Key Vault .NET ライブラリのバージョン 2.0 ではサポートされません
 
 ## <a name="namespaces"></a>名前空間
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 01/03/2018
 ms.author: billmath
-ms.openlocfilehash: 3dc6be73abafb99772ed428bd4f22c1797c9b1bc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1fd07d506b2edc789d71001ac520b9ebddc3e1d9
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更する方法
 このトピックの目的は、Azure AD Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -171,11 +171,27 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 
 必要なときには、同じ **PrecedenceBefore** 値を使用する多くのカスタム同期規則を設定できます。
 
-
 ## <a name="enable-synchronization-of-preferreddatalocation"></a>PreferredDataLocation の同期の有効化
+既定では、ユーザーの Office 365 リソースは、Azure AD テナントと同じリージョンにあります。 たとえば、テナントが北米にある場合、ユーザーの Exchange メールボックスも北米にあります。 多国籍組織にとっては、これが最適でないことがあります。 preferredDataLocation 属性 を設定すると、ユーザーのリージョンを定義できます。
+
+Office 365 のリージョンは次のとおりです。
+
+| リージョン | [説明] |
+| --- | --- |
+| NAM | 北米 |
+| EUR | ヨーロッパ |
+| APC | アジア太平洋 |
+| JPN | 日本 |
+| AUS | オーストラリア |
+| CAN | カナダ |
+| GBR | 英国 |
+| LAM | ラテン アメリカ |
+
+すべての Office 365 ワークロードで、ユーザーのリージョン設定の使用がサポートされているわけではありません。
+
 バージョン 1.1.524.0 以降の Azure AD Connect には、**ユーザー** オブジェクトの **PreferredDataLocation** 属性を同期する機能が備わっています。 具体的には、以下の変更が行われています。
 
-* Azure AD コネクタで、**User** オブジェクト タイプのスキーマが拡張され、PreferredDataLocation 属性 (文字列型、単一値) が追加されました。
+* Azure AD コネクタで、**User** オブジェクト タイプのスキーマが拡張され、PreferredDataLocation 属性 (単一値の文字列型) が追加されました。
 
 * メタバースで、**Person** オブジェクト タイプのスキーマが拡張され、PreferredDataLocation 属性 (文字列型、単一値) が追加されました。
 
@@ -185,33 +201,27 @@ Fabrikam では、クラウドと同期する属性の一部が不要である�
 > 現在、Azure AD では、同期されたユーザー オブジェクトとクラウドのユーザー オブジェクトの両方の PreferredDataLocation 属性を、Azure AD PowerShell を使って直接構成できるようになっています。 いったん PreferredDataLocation 属性の同期を有効にしたら、**同期されたユーザー オブジェクト**の属性を Azure AD PowerShell で構成することはやめてください。Azure AD PowerShell で構成した属性の値は、Azure AD Connect での同期元となるオンプレミス Active Directory の属性の値に基づいて上書きされます。
 
 > [!IMPORTANT]
-> 2017 年 9 月 1 日以降、**同期されたユーザー オブジェクト**の PreferredDataLocation 属性を直接 Azure AD PowerShell で構成することはできなくなります。 同期されたユーザー オブジェクトの PreferredLocation 属性を構成する場合は、必ず Azure AD Connect を使用する必要があります。
+> 2017 年 9 月 1 日以降、**同期されたユーザー オブジェクト**の PreferredDataLocation 属性を、Azure AD PowerShell で直接構成することはできません。 同期されたユーザー オブジェクトの PreferredLocation 属性を構成する場合は、Azure AD Connect を使用する必要があります。
 
 PreferredDataLocation 属性の同期を有効にする前に、以下を行う必要があります。
 
- * まず、ソース属性として使用するオンプレミス Active Directory 属性を決めます。 この属性は**文字列**型で、かつ**単一値**であることが必要です。
+ * まず、ソース属性として使用するオンプレミス Active Directory 属性を決めます。 これは、**単一値の文字列**型である必要があります。 以下の手順では、extensionAttributes のいずれかが使用されます。
 
  * Azure AD に既に存在する同期されているユーザー オブジェクトに対し、Azure AD PowerShell を使って PreferredDataLocation 属性を構成したことがある場合、その属性値を、オンプレミス Active Directory 内の対応するユーザー オブジェクトに**バックポート**する必要があります。
- 
+
     > [!IMPORTANT]
     > オンプレミス Active Directory 内の対応するユーザー オブジェクトに属性値をバックポートしなかった場合、PreferredDataLocation 属性の同期を有効にした時点で、Azure AD Connect によって既存の属性値が Azure AD から削除されます。
 
  * ソース属性は、少なくとも 2 ～ 3 個のオンプレミス AD ユーザー オブジェクトに対して構成することをお勧めします。これらのユーザー オブジェクトを後で検証に使用することができます。
- 
+
 PreferredDataLocation 属性の同期を有効にする大まかな手順は次のとおりです。
 
 1. 同期スケジューラを無効にし、進行中の同期がないことを確認する
-
 2. オンプレミス AD コネクタのスキーマにソース属性を追加する
-
 3. Azure AD コネクタのスキーマに PreferredDataLocation を追加する
-
 4. オンプレミス Active Directory から属性値を誘導する受信方向の同期規則を作成する
-
 5. Azure AD に属性値を誘導する送信方向の同期規則を作成する
-
 6. 完全同期サイクルを実行する
-
 7. 同期スケジューラを有効にする
 
 > [!NOTE]
@@ -220,80 +230,59 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 ### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>手順 1: 同期スケジューラを無効にし、進行中の同期がないことを確認する
 意図しない変更が Azure AD にエクスポートされるのを防ぐために、同期規則の更新中は、同期が実行されないように注意してください。 組み込みスケジューラを無効にするには、以下のようにします。
 
- 1. Azure AD Connect サーバーで PowerShell セッションを開始します。
-
- 2. 以下のコマンドレットを実行して、スケジュールされた同期を無効にします。`Set-ADSyncScheduler -SyncCycleEnabled $false`
- 
- 3. [スタート]、[Synchronization Service] の順に移動して、**Synchronization Service Manager** を起動します。
- 
- 4. **[操作]** タブに進み、状態が*「進行中」*になっている操作がないことを確認します。
+1. Azure AD Connect サーバーで PowerShell セッションを開始します。
+2. `Set-ADSyncScheduler -SyncCycleEnabled $false` コマンドレットを実行して、スケジュールされた同期を無効にします。
+3. **[スタート]** > **[Synchronization Service]** の順に移動して、**Sychronization Service Manager** を起動します。
+4. **[操作]** タブに移動し、状態が "*進行中*" になっている操作がないことを確認します。
 
 ![Synchronization Service Manager - 進行中の処理がないことを確認](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step1.png)
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>手順 2: オンプレミス AD コネクタのスキーマにソース属性を追加する
-オンプレミス AD のコネクタ スペースには、一部の AD 属性がインポートされません。 インポート対象の属性のリストにソース属性を追加するには、次の手順を実行します。
+オンプレミス AD のコネクタ スペースには、一部の AD 属性がインポートされません。 既定で同期されない属性を使用するように選択した場合、その属性はインポートする必要があります。 インポート対象の属性のリストにソース属性を追加するには、次の手順を実行します。
 
- 1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
- 
- 2. **オンプレミス AD コネクタ**で右クリックし、**[プロパティ]** を選択します。
- 
- 3. ポップアップ ダイアログで **[属性の選択]** タブに移動します。
- 
- 4. 属性の一覧でソース属性のチェック ボックスがオンになっていることを確認します。
- 
- 5. **[OK]** をクリックして保存します。
+1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
+2. **オンプレミス AD コネクタ**を右クリックし、**[プロパティ]** を選択します。
+3. ポップアップ ダイアログで **[属性の選択]** タブに移動します。
+4. 属性の一覧で、使用することを選択したソース属性のチェック ボックスがオンになっていることを確認します。
+5. **[OK]** をクリックして保存します。
 
 ![オンプレミス AD コネクタのスキーマへのソース属性の追加](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step2.png)
 
 ### <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>手順 3: Azure AD コネクタのスキーマに PreferredDataLocation を追加する
 既定では、Azure AD のコネクタ スペースに PreferredDataLocation 属性がインポートされません。 インポート対象の属性のリストに PreferredDataLocation 属性を追加するには、次の手順を実行します。
 
- 1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
-
- 2. **Azure AD コネクタ**で右クリックし、**[プロパティ]** を選択します。
-
- 3. ポップアップ ダイアログで **[属性の選択]** タブに移動します。
-
- 4. 属性の一覧で PreferredDataLocation 属性のチェック ボックスがオンになっていることを確認します。
-
- 5. **[OK]** をクリックして保存します。
+1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
+2. **Azure AD コネクタ**を右クリックし、**[プロパティ]** を選択します。
+3. ポップアップ ダイアログで **[属性の選択]** タブに移動します。
+4. 属性の一覧で PreferredDataLocation 属性を選択します。
+5. **[OK]** をクリックして保存します。
 
 ![Azure AD コネクタのスキーマへのソース属性の追加](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step3.png)
 
 ### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>手順 4: オンプレミス Active Directory から属性値を誘導する受信方向の同期規則を作成する
 受信方向の同期規則によって、属性値をオンプレミス Active Directory のソース属性からメタバースに誘導することができます。
 
-1. [スタート]、[Synchronization Rules Editor] の順に移動して、**Synchronization Rules Editor** を起動します。
-
+1. **[スタート]** > **[Synchronization Rules Editor]** の順に移動して、**Synchronization Rules Editor** を起動します。
 2. 検索フィルターの **[方向]** を **[受信]** に設定します。
-
 3. **[新しいルールの追加]** ボタンをクリックして受信方向の規則を新規作成します。
-
 4. **[説明]** タブで次の構成を指定します。
- 
+
     | Attribute | 値 | 詳細 |
     | --- | --- | --- |
     | 名前 | *名前を入力します* | 例: "*In from AD - User PreferredDataLocation*" |
-    | Description | *説明を入力します* |  |
+    | [説明] | "*ユーザー設定の説明を入力します*" |  |
     | 接続先システム | "*オンプレミス AD コネクタを選択します*" |  |
     | 接続先システム オブジェクトの種類 | **User** |  |
     | メタバース オブジェクトの種類 | **Person** |  |
     | リンクの種類 | **Join** |  |
     | 優先順位 | "*1 ～ 99 の範囲の数値を選択します*" | 1 ～ 99 は、カスタム同期規則用に予約されています。 他の同期規則で使用されている値は選択しないでください。 |
 
-5. **[Scoping filter]\(スコープ フィルター\)** タブに移動し、**次の句を使って単一のスコープ フィルター グループ**を追加します。
- 
-    | Attribute | 演算子 | 値 |
-    | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | ユーザー\_ | 
- 
-    この受信方向の同期規則がどのオンプレミス AD オブジェクトに適用されるかは、スコープ フィルターによって決まります。 この例で使用しているスコープ フィルターは、標準の同期規則 "*In from AD - User Common*" と同じもので、Azure AD のユーザーの書き戻し機能によって作成されたユーザー オブジェクトに同期規則が適用されるのを防ぎます。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
-
+5. **[Scoping filter]\(スコープ フィルター\)** は空のままにして、すべてのオブジェクトを含めます。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
 6. **[変換]** タブに移動し、次の変換規則を実装します。
- 
-    | フローの種類 | ターゲット属性 | から | 1 度だけ適用する | マージの種類 |
+
+    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | PreferredDataLocation | ソース属性を選択します | オフ | 更新 |
+    |直接 | PreferredDataLocation | ソース属性を選択します | オフ | プライマリの |
 
 7. **[追加]** をクリックして受信方向の規則を作成します。
 
@@ -303,53 +292,50 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 送信方向の同期規則によって、属性値をメタバースから Azure AD の PreferredDataLocation 属性に誘導することができます。
 
 1. **同期規則**エディターに移動します。
-
 2. 検索フィルターの **[方向]** を **[送信]** に設定します。
-
 3. **[新しいルールの追加]** ボタンをクリックします。
-
 4. **[説明]** タブで次の構成を指定します。
 
     | Attribute | 値 | 詳細 |
-    | --- | --- | --- |
+    | ----- | ------ | --- |
     | 名前 | *名前を入力します* | 例: "Out to AAD - User PreferredDataLocation" |
-    | Description | *説明を入力します* |
-    | 接続先システム | "*AAD コネクタを選択します*" |
+    | [説明] | *説明を入力します* ||
+    | 接続先システム | "*AAD コネクタを選択します*" ||
     | 接続先システム オブジェクトの種類 | User ||
     | メタバース オブジェクトの種類 | **Person** ||
     | リンクの種類 | **Join** ||
     | 優先順位 | "*1 ～ 99 の範囲の数値を選択します*" | 1 ～ 99 は、カスタム同期規則用に予約されています。 他の同期規則で使用されている値は選択しないでください。 |
 
 5. **[Scoping filter]\(スコープ フィルター\)** タブに移動し、**次の 2 つの句を使って単一のスコープ フィルター グループ**を追加します。
- 
+
     | Attribute | 演算子 | 値 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
     この送信方向の同期規則がどの Azure AD オブジェクトに適用されるかは、スコープ フィルターによって決まります。 この例で使用しているスコープ フィルターは、標準の同期規則 "Out to AD - User Identity" と同じものです。 こうすることで、オンプレミス Active Directory との間で同期されていないユーザー オブジェクトに、この同期規則が適用されるのを防いでいます。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
-    
+
 6. **[変換]** タブに移動し、次の変換規則を実装します。
 
-    | フローの種類 | ターゲット属性 | から | 1 度だけ適用する | マージの種類 |
+    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | PreferredDataLocation | PreferredDataLocation | オフ | 更新 |
+    | 直接 | PreferredDataLocation | PreferredDataLocation | オフ | プライマリの |
 
 7. **[追加]** をクリックして送信方向の規則を作成します。
 
 ![送信方向の同期規則の作成](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step5.png)
 
 ### <a name="step-6-run-full-synchronization-cycle"></a>手順 6: 完全同期サイクルを実行する
-AD のスキーマと Azure AD コネクタのスキーマに新しい属性を追加し、カスタム同期規則を導入したので、一般に完全同期サイクルが必要です。 これらの変更を検証したうえで Azure AD にエクスポートすることをお勧めします。 完全同期サイクルの手順を手動で実行する過程で、次の手順に従って変更を検証できます。 
+AD のスキーマと Azure AD コネクタのスキーマに新しい属性を追加し、カスタム同期規則を導入したので、一般に完全同期サイクルが必要です。 これらの変更を検証したうえで Azure AD にエクスポートすることをお勧めします。 完全同期サイクルの手順を手動で実行する過程で、次の手順に従って変更を検証できます。
 
 1. **オンプレミス AD コネクタ**で**フル インポート**の手順を実行します。
 
    1. Synchronization Service Manager の **[操作]** タブに進みます。
 
-   2. **オンプレミス AD コネクタ**で右クリックし、**[実行]** を選択します。
+   2. **オンプレミス AD コネクタ**を右クリックし、**[実行]** を選択します。
 
    3. ポップアップ ダイアログで **[フル インポート]** を選択し、**[OK]** をクリックします。
-    
+
    4. 操作の完了を待ちます。
 
     > [!NOTE]
@@ -357,10 +343,10 @@ AD のスキーマと Azure AD コネクタのスキーマに新しい属性を�
 
 2. **Azure AD コネクタ**で**フル インポート**の手順を実行します。
 
-   1. **Azure AD コネクタ**で右クリックし、**[実行]** を選択します。
+   1. **Azure AD コネクタ**を右クリックし、**[実行]** を選択します。
 
    2. ポップアップ ダイアログで **[フル インポート]** を選択し、**[OK]** をクリックします。
-   
+
    3. 操作の完了を待ちます。
 
 3. 既存のユーザー オブジェクトで同期規則の変更を検証します。
@@ -369,10 +355,211 @@ AD のスキーマと Azure AD コネクタのスキーマに新しい属性を�
 
 4. **オンプレミス AD コネクタ**で**完全同期**の手順を実行します。
 
-   1. **オンプレミス AD コネクタ**で右クリックし、**[実行]** を選択します。
-  
+   1. **オンプレミス AD コネクタ**を右クリックし、**[実行]** を選択します。
+
    2. ポップアップ ダイアログで **[完全同期]** を選択し、**[OK]** をクリックします。
-   
+
+   3. 操作の完了を待ちます。
+
+5. Azure AD に対する**保留中のエクスポート**を確認します。
+
+   1. **Azure AD コネクタ**を右クリックし、**[コネクタ スペースの検索]** を選択します。
+
+   2. [Search Connector Space]\(コネクタ スペースの検索\) ポップアップ ダイアログで次の手順を実行します。
+
+      1. **[スコープ]** を **[Pending Export]\(保留中のエクスポート\)** に設定します。
+
+      2. **[追加]、[変更]、[削除]** を含む、3 つすべてのチェック ボックスをオンにします。
+
+      3. **[検索]** ボタンをクリックすると、変更がエクスポート待ちになっているオブジェクトが一覧表示されます。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。
+
+      4. 変更が正しいことを確認します。
+
+6. **Azure AD コネクタ**で**エクスポート**の手順を実行します。
+
+   1. **Azure AD コネクタ**を右クリックし、**[実行]** を選択します。
+
+   2. [Run Connector]\(コネクタの実行\) ポップアップ ダイアログで、**[エクスポート]** を選択し、**[OK]** をクリックします。
+
+   3. Azure AD へのエクスポートが完了するまで待ちます。
+
+> [!NOTE]
+> 以上の手順には、Azure AD コネクタでの完全同期の手順と AD コネクタでのエクスポートが含まれていないことにお気付きでしょうか。 属性値の流れはオンプレミス Active Directory から Azure AD への一方向であるため、これらの手順は必要ありません。
+
+### <a name="step-7-re-enable-sync-scheduler"></a>手順 7: 同期スケジューラを再度有効にする
+次の手順で組み込みの同期スケジューラを再度有効にします。
+
+1. PowerShell セッションを開始します。
+2. 以下のコマンドレットを実行して、スケジュールされた同期を再度有効にします。`Set-ADSyncScheduler -SyncCycleEnabled $true`
+
+## <a name="enable-synchronization-of-usertype"></a>UserType の同期の有効化
+バージョン 1.1.524.0 以降の Azure AD Connect には、**ユーザー** オブジェクトの **UserType** 属性を同期する機能が備わっています。 具体的には、以下の変更が行われています。
+
+- Azure AD コネクタで、**User** オブジェクト タイプのスキーマが拡張され、UserType 属性 (文字列型、単一値) が追加されました。
+- メタバースで、**Person** オブジェクト タイプのスキーマが拡張され、UserType 属性 (文字列型、単一値) が追加されました。
+
+既定では、UserType 属性が同期の対象として有効になっていません。これは、対応する UserType 属性がオンプレミス Active Directory に存在しないためです。 同期を手動で有効にする必要があります。 UserType 属性の同期を有効にする場合は、Azure AD によって強制される次の動作に留意してください。
+
+- Azure AD が受け入れる UserType 属性の値は **Member** と **Guest** の 2 つのみです。
+- Azure AD Connect で同期に対して UserType 属性が有効になっていない場合、ディレクトリの同期によって作成された Azure AD ユーザーの UserType 属性は **Member** に設定されます。
+- Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されていません。 これは、Azure AD ユーザーの作成中にのみ設定できます。
+
+UserType 属性の同期を有効にする前に、まず、UserType 属性をオンプレミス AD からどのように派生させるかを決める必要があります。 一般的な 2 つのアプローチを次に示します。
+
+- 未使用のオンプレミス AD 属性 (extensionAttribute1 など) が、ソース属性として使用されるように指定します。 指定したオンプレミス AD 属性は**文字列**型、単一値である必要があります。また、**Member** または **Guest** 値が含まれます。 このアプローチを選択した場合は、UserType 属性の同期を有効にする前に、Azure AD に同期されているオンプレミス Active Directory の既存のユーザー オブジェクトすべてについて、指定した属性に正しい値が設定されていることを確認する必要があります。
+- 別の方法として、UserType 属性の値を他のプロパティから派生させることができます。 たとえば、オンプレミス AD UserPrincipalName 属性の末尾のドメイン部分が "@partners.fabrikam123.org" である場合、すべてのユーザーをゲストとして同期する必要があるとします。 前に説明したように、Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されていません。 したがって、決定したロジックは、テナントの既存の Azure AD ユーザーすべてに対して UserType 属性が既に構成されている方法と一致している必要があります。
+
+UserType 属性の同期を有効にする大まかな手順は次のとおりです。
+
+>[!NOTE]
+> 以降このセクションでは、この手順について説明します。 これらの説明では、単一フォレスト トポロジの Azure AD デプロイを想定しており、また、カスタム同期規則は使用しません。 複数フォレスト トポロジを使用していて、カスタム同期規則が構成されているか、またはステージング サーバーが存在する場合は、適宜これらの手順を調整する必要があります。
+
+1.  **同期スケジューラ**を無効にし、進行中の同期がないことを確認する
+2.  オンプレミス AD コネクタのスキーマに**ソース属性**を追加する
+3.  Azure AD コネクタのスキーマに **UserType** を追加する
+4.  オンプレミス Active Directory から属性値を誘導する受信方向の同期規則を作成する
+5.  Azure AD に属性値を誘導する送信方向の同期規則を作成する
+6.  **完全同期**サイクルを実行する
+7.  **同期スケジューラ**を有効にする
+
+
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>手順 1: 同期スケジューラを無効にし、進行中の同期がないことを確認する
+意図しない変更が Azure AD にエクスポートされるのを防ぐために、同期規則の更新中は、同期が実行されないように注意してください。 組み込みスケジューラを無効にするには、以下のようにします。
+
+ 1. Azure AD Connect サーバーで PowerShell セッションを開始します。
+ 2. 以下のコマンドレットを実行して、スケジュールされた同期を無効にします。`Set-ADSyncScheduler -SyncCycleEnabled $false`
+ 3. [スタート]、[Synchronization Service] の順に移動して、**Synchronization Service Manager** を起動します。
+ 4. **[操作]** タブに進み、状態が*「進行中」*になっている操作がないことを確認します。
+
+![Synchronization Service Manager - 進行中の処理がないことを確認](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step1.png)
+
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>手順 2: オンプレミス AD コネクタのスキーマにソース属性を追加する
+オンプレミス AD のコネクタ スペースには、一部の AD 属性がインポートされません。 インポート対象の属性のリストにソース属性を追加するには、次の手順を実行します。
+
+ 1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
+ 2. **オンプレミス AD コネクタ**で右クリックし、**[プロパティ]** を選択します。
+ 3. ポップアップ ダイアログで **[属性の選択]** タブに移動します。
+ 4. 属性の一覧でソース属性のチェック ボックスがオンになっていることを確認します。
+ 5. **[OK]** をクリックして保存します。
+![オンプレミス AD コネクタのスキーマへのソース属性の追加](./media/active-directory-aadconnectsync-change-the-configuration/usertype1.png)
+
+### <a name="step-3-add-usertype-to-the-azure-ad-connector-schema"></a>手順3 : Azure AD コネクタのスキーマに UserType を追加する
+既定では、Azure AD のコネクタ スペースに UserType 属性がインポートされません。 インポート対象の属性のリストに UserType 属性を追加するには、次の手順を実行します。
+
+ 1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
+ 2. **Azure AD コネクタ**で右クリックし、**[プロパティ]** を選択します。
+ 3. ポップアップ ダイアログで **[属性の選択]** タブに移動します。
+ 4. 属性の一覧で PreferredDataLocation 属性のチェック ボックスがオンになっていることを確認します。
+ 5. **[OK]** をクリックして保存します。
+
+![Azure AD コネクタのスキーマへのソース属性の追加](./media/active-directory-aadconnectsync-change-the-configuration/usertype2.png)
+
+### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>手順 4: オンプレミス Active Directory から属性値を誘導する受信方向の同期規則を作成する
+受信方向の同期規則によって、属性値をオンプレミス Active Directory のソース属性からメタバースに誘導することができます。
+
+1. [スタート]、[Synchronization Rules Editor] の順に移動して、**Synchronization Rules Editor** を起動します。
+2. 検索フィルターの **[方向]** を **[受信]** に設定します。
+3. **[新しいルールの追加]** ボタンをクリックして受信方向の規則を新規作成します。
+4. **[説明]** タブで次の構成を指定します。
+
+    | Attribute | 値 | 詳細 |
+    | --- | --- | --- |
+    | 名前 | *名前を入力します* | 例: "*In from AD – User UserType*" |
+    | [説明] | *説明を入力します* |  |
+    | 接続先システム | "*オンプレミス AD コネクタを選択します*" |  |
+    | 接続先システム オブジェクトの種類 | **User** |  |
+    | メタバース オブジェクトの種類 | **Person** |  |
+    | リンクの種類 | **Join** |  |
+    | 優先順位 | "*1 ～ 99 の範囲の数値を選択します*" | 1 ～ 99 は、カスタム同期規則用に予約されています。 他の同期規則で使用されている値は選択しないでください。 |
+
+5. **[Scoping filter]\(スコープ フィルター\)** タブに移動し、**次の句を使って単一のスコープ フィルター グループ**を追加します。
+
+    | Attribute | 演算子 | 値 |
+    | --- | --- | --- |
+    | adminDescription | NOTSTARTWITH | ユーザー\_ |
+
+    この受信方向の同期規則がどのオンプレミス AD オブジェクトに適用されるかは、スコープ フィルターによって決まります。 この例で使用しているスコープ フィルターは、標準の同期規則 "In from AD - User Common" と同じもので、Azure AD のユーザーの書き戻し機能によって作成されたユーザー オブジェクトに同期規則が適用されるのを防ぎます。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
+
+6. **[変換] タブ**に移動し、必要な変換規則を実装します。 たとえば、未使用のオンプレミス AD 属性 (extensionAttribute1 など) を UserType のソース属性として指定した場合は、直接属性フローを実装できます。
+
+    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | --- | --- | --- | --- | --- |
+    | 直接 | UserType | extensionAttribute1 | オフ | プライマリの |
+
+    他の例 - 他のプロパティから UserType 属性の値を派生させる必要があります。 たとえば、オンプレミス AD UserPrincipalName 属性の末尾のドメイン部分が "@partners.fabrikam123.org" である場合、すべてのユーザーをゲストとして同期する必要があるとします。 式を実装することができます。
+
+    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | --- | --- | --- | --- | --- |
+    | 直接 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | オフ | プライマリの |
+
+7. **[追加]** をクリックして受信方向の規則を作成します。
+
+![受信方向の同期規則の作成](./media/active-directory-aadconnectsync-change-the-configuration/usertype3.png)
+
+### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>手順 5: Azure AD に属性値を誘導する送信方向の同期規則を作成する
+送信方向の同期規則によって、属性値をメタバースから Azure AD の PreferredDataLocation 属性に誘導することができます。
+
+1. **同期規則**エディターに移動します。
+2. 検索フィルターの **[方向]** を **[送信]** に設定します。
+3. **[新しいルールの追加]** ボタンをクリックします。
+4. **[説明]** タブで次の構成を指定します。
+
+    | Attribute | 値 | 詳細 |
+    | ----- | ------ | --- |
+    | 名前 | *名前を入力します* | 例: "Out to AAD – User UserType" |
+    | [説明] | *説明を入力します* ||
+    | 接続先システム | "*AAD コネクタを選択します*" ||
+    | 接続先システム オブジェクトの種類 | User ||
+    | メタバース オブジェクトの種類 | **Person** ||
+    | リンクの種類 | **Join** ||
+    | 優先順位 | "*1 ～ 99 の範囲の数値を選択します*" | 1 ～ 99 は、カスタム同期規則用に予約されています。 他の同期規則で使用されている値は選択しないでください。 |
+
+5. **[Scoping filter]\(スコープ フィルター\)** タブに移動し、**次の 2 つの句を使って単一のスコープ フィルター グループ**を追加します。
+
+    | Attribute | 演算子 | 値 |
+    | --- | --- | --- |
+    | sourceObjectType | EQUAL | User |
+    | cloudMastered | NOTEQUAL | True |
+
+    この送信方向の同期規則がどの Azure AD オブジェクトに適用されるかは、スコープ フィルターによって決まります。 この例で使用しているスコープ フィルターは、標準の同期規則 "Out to AD - User Identity" と同じものです。 こうすることで、オンプレミス Active Directory との間で同期されていないユーザー オブジェクトに、この同期規則が適用されるのを防いでいます。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
+
+6. **[変換]** タブに移動し、次の変換規則を実装します。
+
+    | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
+    | --- | --- | --- | --- | --- |
+    | 直接 | UserType | UserType | オフ | プライマリの |
+
+7. **[追加]** をクリックして送信方向の規則を作成します。
+
+![送信方向の同期規則の作成](./media/active-directory-aadconnectsync-change-the-configuration/usertype4.png)
+
+### <a name="step-6-run-full-synchronization-cycle"></a>手順 6: 完全同期サイクルを実行する
+AD のスキーマと Azure AD コネクタのスキーマに新しい属性を追加し、カスタム同期規則を導入したので、一般に完全同期サイクルが必要です。 これらの変更を検証したうえで Azure AD にエクスポートすることをお勧めします。 完全同期サイクルの手順を手動で実行する過程で、次の手順に従って変更を検証できます。
+
+1. **オンプレミス AD コネクタ**で**フル インポート**の手順を実行します。
+
+   1. Synchronization Service Manager の **[操作]** タブに進みます。
+   2. **オンプレミス AD コネクタ**で右クリックし、**[実行]** を選択します。
+   3. ポップアップ ダイアログで **[フル インポート]** を選択し、**[OK]** をクリックします。
+   4. 操作の完了を待ちます。
+
+    > [!NOTE]
+    > インポート対象の属性のリストにソース属性が既に追加されている場合、オンプレミス AD コネクタでのフル インポートはスキップしてかまいません。 つまり、「[手順 2: オンプレミス AD コネクタのスキーマにソース属性を追加する](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema)」で何も変更する必要がなかったケースが該当します。
+
+2. **Azure AD コネクタ**で**フル インポート**の手順を実行します。
+
+   1. **Azure AD コネクタ**で右クリックし、**[実行]** を選択します。
+   2. ポップアップ ダイアログで **[フル インポート]** を選択し、**[OK]** をクリックします。
+   3. 操作の完了を待ちます。
+
+3. 既存のユーザー オブジェクトで同期規則の変更を検証します。
+
+    オンプレミス Active Directory からのソース属性と Azure AD からの UserType がそれぞれのコネクタ スペースにインポートされています。 完全同期の手順に進む前に、オンプレミス AD のコネクタ スペースに既に存在しているユーザー オブジェクトで**プレビュー**を実行することをお勧めします。 選択したオブジェクトのソース属性に値が設定されている必要があります。 メタバースの UserType に値が設定されていることを**プレビュー**で確認できれば、同期規則が正しく構成されていると考えられます。 **プレビュー**の方法については、「[変更を確認する](#verify-the-change)」セクションを参照してください。
+
+4. **オンプレミス AD コネクタ**で**完全同期**の手順を実行します。
+
+   1. **オンプレミス AD コネクタ**で右クリックし、**[実行]** を選択します。
+   2. ポップアップ ダイアログで **[完全同期]** を選択し、**[OK]** をクリックします。
    3. 操作の完了を待ちます。
 
 5. Azure AD に対する**保留中のエクスポート**を確認します。
@@ -382,19 +569,14 @@ AD のスキーマと Azure AD コネクタのスキーマに新しい属性を�
    2. [Search Connector Space]\(コネクタ スペースの検索\) ポップアップ ダイアログで次の手順を実行します。
 
       1. **[スコープ]** を **[Pending Export]\(保留中のエクスポート\)** に設定します。
-      
       2. **[追加]、[変更]、[削除]** を含む、3 つすべてのチェック ボックスをオンにします。
-      
       3. **[検索]** ボタンをクリックすると、変更がエクスポート待ちになっているオブジェクトが一覧表示されます。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。
-      
       4. 変更が正しいことを確認します。
 
 6. **Azure AD コネクタ**で**エクスポート**の手順を実行します。
-      
+
    1. **Azure AD コネクタ**を右クリックし、**[実行]** を選択します。
-   
    2. [Run Connector]\(コネクタの実行\) ポップアップ ダイアログで、**[エクスポート]** を選択し、**[OK]** をクリックします。
-   
    3. Azure AD へのエクスポートが完了するまで待ちます。
 
 > [!NOTE]
@@ -404,12 +586,10 @@ AD のスキーマと Azure AD コネクタのスキーマに新しい属性を�
 次の手順で組み込みの同期スケジューラを再度有効にします。
 
 1. PowerShell セッションを開始します。
-
 2. 以下のコマンドレットを実行して、スケジュールされた同期を再度有効にします。`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * この構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
 * 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
 

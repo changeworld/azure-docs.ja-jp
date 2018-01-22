@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: 099ff4c9748244ddaf9c12f5eb39657bf59c063b
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: ed1d8298123597fe8330b54f89fd580095f21ec7
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools for Visual Studio  
 
@@ -46,7 +46,8 @@ Azure Functions Tools は、[Visual Studio 2017 バージョン 15.4](https://ww
 
 * 有効な Azure サブスクリプション Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を利用できます。
 
-* Azure Storage のアカウント ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。  
+* Azure Storage のアカウント ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+
 ## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する 
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
@@ -68,7 +69,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
 1. Visual Studio で **Cloud Explorer** を開き、**[ストレージ アカウント]** > **[Your Storage Account]\(ストレージ アカウント\)** を展開し、**[プロパティ]** を選択し、**[プライマリ接続文字列]** 値をコピーします。   
 
-2. プロジェクトで、local.settings.json プロジェクト ファイルを開き、コピーした接続文字列に **AzureWebJobsStorage** キーの値を設定します。
+2. プロジェクトで、local.settings.json ファイルを開き、コピーした接続文字列に **AzureWebJobsStorage** キーの値を設定します。
 
 3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、**Values** 配列に一意のキーを追加します。  
 
@@ -106,7 +107,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
     } 
     ````
  
-    バインド固有の属性は、エントリ ポイント メソッドに指定された各バインド パラメーターに適用されます。 属性ではパラメーターとしてバインド情報を取ります。 前の例では、最初のパラメーターに **QueueTrigger** 属性が適用されています。これは、キューによってトリガーされる関数を意味します。 キュー名および接続文字列の設定名は、パラメーターとして渡されます。  
+    バインド固有の属性は、エントリ ポイント メソッドに指定された各バインド パラメーターに適用されます。 属性ではパラメーターとしてバインド情報を取ります。 前の例では、最初のパラメーターに **QueueTrigger** 属性が適用されています。これは、キューによってトリガーされる関数を意味します。 キュー名および接続文字列の設定名は、パラメーターとして **QueueTrigger** 属性に渡されます。
 
 ## <a name="testing-functions"></a>関数のテスト
 
@@ -131,9 +132,9 @@ Azure Functions Core Tools の使用の詳細については、「[Azure Functio
 >* [Azure Functions Core ツールでの `--publish-local-settings` 発行オプションの使用](functions-run-local.md#publish)。
 >* [Azure CLI の使用](/cli/azure/functionapp/config/appsettings#set)。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Functions Tools の詳細については、[Visual Studio 2017 Tools for Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) ブログ投稿のよく寄せられる質問を参照してください。
 
 Azure Functions Core Tools の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。  
-.NET クラス ライブラリとしての関数の開発の詳細については、「[Azure Functions での .NET クラス ライブラリの使用](functions-dotnet-class-library.md)」を参照してください。 このトピックでは、Azure Functions でサポートされるバインディングのさまざまな型の宣言に使用する属性の使用例についても説明します。    
+.NET クラス ライブラリとしての関数の開発の詳細については、「[Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-dotnet-class-library.md)」を参照してください。 このトピックは、Azure Functions でサポートされる各種バインディングを宣言するための属性の使用例にもリンクしています。    

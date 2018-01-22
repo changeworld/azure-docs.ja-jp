@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2017
+ms.date: 01/03/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: ba425e938f81ffb37a2c8bc2a764a4db074e9106
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 882cf3cde71f5154efcd88f055984e72463b3099
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -51,7 +51,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 6. ポリシー割り当ての表示用の **[名前]** を入力します。 この例では、"*SQL Server バージョン 12.0 が必要*" を名前として使用してみましょう。 必要に応じて、**説明**を追加することもできます。 この説明には、このポリシー割り当てで、この環境内に作成されるすべての SQL Server をバージョン 12.0 にする方法について詳しく入力します。
 7. このポリシーを確実に既存のリソースに適用するには、価格レベルを **Standard** に変更します。
 
-   Azure Policy 内には、*Free* と *Standard* という 2 つの価格レベルがあります。 Free レベルでは、今後のリソースにのみポリシーを強制することができます。Standard では、既存のリソースにも強制して、コンプライアンスの状態に対する理解を深めることができます。 制限付きプレビュー段階なので、価格モデルはまだリリースされていないません。したがって、*[Standard]* を選択しても、請求が発生することはありません。 価格の詳細については、[Azure Policy の価格](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/)に関するページをご覧ください。
+   Azure Policy 内には、*Free* と *Standard* という 2 つの価格レベルがあります。 Free レベルでは、今後のリソースにのみポリシーを強制することができます。Standard では、既存のリソースにも強制して、コンプライアンスの状態に対する理解を深めることができます。 制限付きプレビュー段階なので、価格モデルはまだリリースされていないません。したがって、*[Standard]* を選択しても、請求が発生することはありません。 価格の詳細については、[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy)に関するページをご覧ください。
 
 8. **[スコープ]** を選びます。スコープは、以前に登録したサブスクリプション (またはリソース グループ) です。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループの範囲が含まれる可能性があります。
 
@@ -73,12 +73,12 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
    - ポリシー定義の名前 - *G シリーズよりも小さい VM SKU を必須にする*
    - そのポリシー定義の目的の説明 - このポリシー定義では、コストを削減するために、このスコープ内で作成するすべての VM が、G シリーズよりも小さい SKU を使用することを強制しています。
    - このポリシー定義を有効にするサブスクリプション - この例では、**Advisor Analytics Capacity Dev** サブスクリプションでこのポリシー定義を使用します。 お客様によってサブスクリプション一覧は異なります。
-   - 次の内容の JSON コードを作成します。
+   - 次の JSON コードをコピーし、必要に応じて以下のものを使用して更新します。
       - ポリシー パラメーター。
       - ポリシー ルール/条件。この例では、VM SKU サイズが G シリーズと同じサイズです。
       - ポリシーの効果。この例では、**Deny** です。
 
-    JSON の作成例は次のとおりです。
+    JSON の作成例は次のとおりです。 変更後のコードを Azure Portal に貼り付けます。
 
     ```json
 {
@@ -390,7 +390,7 @@ az policy definition list
 2. 作成した新しいイニシアチブまたはポリシー定義 (または割り当て) を検索します。
 3. 定義または割り当ての末尾に表示される省略記号 ([...]) を選択し、**[Delete Definition]\(定義の削除\)** (または**[Delete Assignment]\(割り当ての削除\)**) を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の操作を完了しました。
 

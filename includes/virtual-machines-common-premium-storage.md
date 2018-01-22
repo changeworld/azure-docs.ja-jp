@@ -29,7 +29,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 > Premium Storage は、ほとんどのリージョンで使用できます。 利用可能なリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/regions/#services)に関するページの **Disk Storage** の行を参照してください。
 > 
 
-## <a name="features"></a>Features (機能)
+## <a name="features"></a>機能
 
 ここでは、Premium Storage の機能のいくつかを紹介します。
 
@@ -60,7 +60,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
     Azure では、ストレージ アカウントを非管理対象ディスクのコンテナーとして使用します。 非管理対象ディスクを使用する Azure DS シリーズ、DSv2 シリーズ、GS シリーズ、または Fs シリーズの VM を作成し、Premium Storage アカウントを選択すると、オペレーティング システム ディスクとデータ ディスクがそのストレージ アカウントに格納されます。
 
 ## <a name="supported-vms"></a>サポート対象の VM
-Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、および Fs シリーズの VM をサポートしています。 これらの VM の種類では、Standard Storage ディスクと Premium Storage ディスクを使用できます。 Premium Storage に互換性のない VM シリーズで Premium Storage ディスクを使用することはできません。
+Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、Fs シリーズ、および B シリーズの VM をサポートしています。 これらの VM の種類では、Standard Storage ディスクと Premium Storage ディスクを使用できます。 Premium Storage に互換性のない VM シリーズで Premium Storage ディスクを使用することはできません。
 
 Windows 向けの Azure の VM の種類とサイズについては、[Windows VM のサイズ](../articles/virtual-machines/windows/sizes.md)に関する記事を参照してください。 Linux 向けの Azure の VM の種類とサイズについては、[Linux VM のサイズ](../articles/virtual-machines/linux/sizes.md)に関する記事を参照してください。
 
@@ -293,7 +293,7 @@ Premium Storage、Premium Storage でサポートされる VM、管理ディス�
 
 時間ベースのバックアップ、VM の簡易復元、バックアップの保持ポリシーを使用してバックアップ ジョブを作成するには、Azure Backup を使用します。 Backup は、非管理対象ディスクと管理ディスクの両方で使用できます。 詳細については、[非管理対象ディスクを使用した VM に対する Azure Backup](../articles/backup/backup-azure-vms-first-look-arm.md) に関する記事と[管理ディスクを使用した VM に対する Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup) に関する記事を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Premium Storage の詳細については、次の記事を参照してください。
 
 ### <a name="design-and-implement-with-premium-storage"></a>Premium Storage での設計と実装

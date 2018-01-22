@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/30/2017
+ms.date: 12/22/2017
 ms.author: johnkem
-ms.openlocfilehash: 2f764bc14e882f71957299b833d5bc1a6765622a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6355433dab7bac910dd89a50b74df13d6cf1b8fc
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してリソースの作成時に診断設定を自動的に有効にする
 この記事では、 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md) を使用して、リソースの作成時にリソースの診断設定を構成する方法について説明します。 これにより、リソースの作成時に、診断ログとメトリックの Event Hubs へのストリーミング、ストレージ アカウントへのアーカイブ、または Log Analytics への送信を自動的に開始できます。
@@ -40,19 +40,31 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 ## <a name="non-compute-resource-template"></a>非コンピューティング リソース テンプレート
 非コンピューティング リソースの場合、次の 2 つの手順を実行する必要があります。
 
-1. (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Log Analytics へのログの送信を有効にするために) パラメーター BLOB に、ストレージ アカウント名、Service Bus 規則 ID、OMS Log Analytics ワークスペース ID のパラメーターを追加します。
+1. パラメーター BLOB に、ストレージ アカウント名、イベント ハブ承認規則 ID、OMS Log Analytics ワークスペース ID のパラメーターを追加します (ストレージ アカウントへの診断ログのアーカイブ、Event Hubs へのログのストリーミング、Log Analytics へのログの送信を有効にするため)。
    
     ```json
+    "settingName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the setting."
+      }
+    },
     "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
       }
     },
-    "serviceBusRuleId": {
+    "eventHubAuthorizationRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Resource ID of the Service Bus Rule for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Resource ID of the event hub authorization rule for the Event Hubs namespace in which the event hub should be created or streamed to."
+      }
+    },
+    "eventHubName": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Name of the event hub within the namespace to which logs are streamed. Without this, an event hub is created for each log category."
       }
     },
     "workspaceId":{
@@ -72,10 +84,12 @@ Resource Manager テンプレートを使用して診断ログを有効にする
         "dependsOn": [
           "[/*resource Id for which Diagnostic Logs will be enabled>*/]"
         ],
-        "apiVersion": "2015-07-01",
+        "apiVersion": "2017-05-01-preview",
         "properties": {
+          "name": "[parameters('settingName')]",
           "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-          "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
+          "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
+          "eventHubName": "[parameters('eventHubName')]",
           "workspaceId": "[parameters('workspaceId')]",
           "logs": [ 
             {
@@ -89,7 +103,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
           ],
           "metrics": [
             {
-              "timeGrain": "PT1M",
+              "category": "AllMetrics",
               "enabled": true,
               "retentionPolicy": {
                 "enabled": false,
@@ -102,7 +116,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
     ]
     ```
 
-診断設定のプロパティ BLOB は、 [こちらの記事で説明する形式](https://msdn.microsoft.com/library/azure/dn931931.aspx)に従います。 [リソースが Azure Monitor メトリックをサポートしてる](monitoring-supported-metrics.md)場合、`metrics` プロパティを追加して、リソース メトリックをこれらの同じ出力に送信することもできます。
+診断設定のプロパティ BLOB は、 [こちらの記事で説明する形式](https://docs.microsoft.com/rest/api/monitor/ServiceDiagnosticSettings/CreateOrUpdate)に従います。 [リソースが Azure Monitor メトリックをサポートしてる](monitoring-supported-metrics.md)場合、`metrics` プロパティを追加して、リソース メトリックをこれらの同じ出力に送信することもできます。
 
 ロジック アプリを作成し、Event Hubs およびストレージ アカウント内のストレージへのストリーミングを有効にする例を次に示します。
 
@@ -122,16 +136,28 @@ Resource Manager テンプレートを使用して診断ログを有効にする
       "type": "string",
       "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
     },
+    "settingName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the setting."
+      }
+    },
     "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
       }
     },
-    "serviceBusRuleId": {
+    "eventHubAuthorizationRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Resource ID of the event hub authorization rule for the Event Hubs namespace in which the event hub should be created or streamed to."
+      }
+    },
+    "eventHubName": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Name of the event hub within the namespace to which logs are streamed. Without this, an event hub is created for each log category."
       }
     },
     "workspaceId": {
@@ -188,10 +214,12 @@ Resource Manager テンプレートを使用して診断ログを有効にする
           "dependsOn": [
             "[resourceId('Microsoft.Logic/workflows', parameters('logicAppName'))]"
           ],
-          "apiVersion": "2015-07-01",
+          "apiVersion": "2017-05-01-preview",
           "properties": {
+            "name": "[parameters('settingName')]",
             "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-            "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
+            "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
+            "eventHubName": "[parameters('eventHubName')]",
             "workspaceId": "[parameters('workspaceId')]",
             "logs": [
               {
@@ -237,7 +265,7 @@ Resource Manager テンプレートを使用して診断ログを有効にする
 
 このプロセス全体とサンプルについては、 [こちらのドキュメント](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
 * [Azure 診断ログを Event Hubs にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

@@ -6,13 +6,13 @@ author: djrosanova
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 01/10/2018
 ms.author: darosa
-ms.openlocfilehash: e0f8afdfd84ea3c0c061459c27da285f6ae8957e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe9089334deceb38186add56ce3fb1d6ecc20363
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行 
 
@@ -62,9 +62,10 @@ Event Grid は、すべての再試行間隔に小さなランダム化を追加
 
 ## <a name="retry-duration"></a>再試行期間
 
-プレビュー中の Azure Event Grid では、2 時間内に配信されないすべてのイベントは有効期限切れになっています。 一般公開の前に、この時間は 24 時間に延長される予定です。 
+プレビュー中の Azure Event Grid では、2 時間内に配信されないすべてのイベントは有効期限切れになっています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
+* イベント配信のステータスを表示するには、[Event Grid によるメッセージの配信の監視](monitor-event-delivery.md) に関する記事をご覧ください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Event Grid の使用をすぐに開始するには、[Azure Event Grid でのカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関する記事を参照してください。

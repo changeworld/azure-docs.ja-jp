@@ -4,8 +4,8 @@ description: "Azure App Service Mobile Apps 用の .NET バックエンド サ�
 keywords: "App Service, Azure App Service, モバイル アプリ, スケール, スケーラブル, アプリのデプロイ, Azure App のデプロイ"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
 ms.service: app-service-mobile
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 1728e1d76f075eae8f5500afa34674785f8e3848
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -54,7 +54,7 @@ Visual Studio で Azure Mobile Apps プロジェクトを作成するには、[A
 3. **[ASP.NET Web アプリケーション]**を選択します。
 4. プロジェクト名を入力します。 次に、 **[OK]**をクリックします
 5. *ASP.NET 4.5.2 テンプレート*の **[Azure Mobile App]**を選択します。 このプロジェクトの発行先となるクラウドにモバイル バックエンドを作成するために、 **[Host in the cloud (クラウドにホストする)]** チェック ボックスをオンにします。
-6. **[OK]**をクリックします。
+6. Click **OK**.
 
 ## <a name="install-sdk"></a>方法: SDK をダウンロードして初期化する
 SDK は [NuGet.org]で入手できます。このパッケージには、SDK の使用を開始するために必要な基礎機能が含まれています。 SDK を初期化するには、 **HttpConfiguration** オブジェクトに対して操作を実行する必要があります。
@@ -151,7 +151,7 @@ SQL テーブルをモバイル クライアントに公開するためのテー
 2. Mobile DbContext クラスにテーブル参照を構成する。
 3. テーブル コントローラーを作成する。
 
-データ転送オブジェクト (DTO) は、 `EntityData`から継承するプレーンな C# オブジェクトです。  次に例を示します。
+データ転送オブジェクト (DTO) は、 `EntityData`から継承するプレーンな C# オブジェクトです。  例: 
 
     public class TodoItem : EntityData
     {
@@ -244,6 +244,10 @@ Azure Mobile Apps は、App Service 認証/承認を使用してモバイル バ
 Mobile Apps バックエンドに対してクライアントを認証する方法については、「 [アプリケーションに認証を追加する](app-service-mobile-ios-get-started-users.md)」をご覧ください。
 
 ### <a name="custom-auth"></a>方法: アプリケーションにカスタム認証を使用する
+> [!IMPORTANT]
+> カスタム認証を有効にするには、まず、Azure Portal で App Service のプロバイダーを選択せずに App Service 認証を有効にする必要があります。 ホストされている場合は、これにより WEBSITE_AUTH_SIGNING_KEY 環境変数が有効になります。
+> 
+> 
 App Service 認証/承認プロバイダーの中に使用したいものがない場合は、独自のログイン システムを実装できます。 認証トークンの生成に役立つ [Microsoft.Azure.Mobile.Server.Login] パッケージをインストールします。  ユーザー資格情報を検証するための独自のコードを指定します。 たとえば、データベース内のソルトを使用してハッシュ化されたパスワードと照合することができます。 次の例では、(他の場所に定義されている) `isValidAssertion()` メソッドがこれらの照合を実行します。
 
 カスタム認証を公開するには、ApiController を作成し、`register` アクションと `login` アクションを公開します。 クライアントは、カスタム UI を使用してユーザーから情報を収集する必要があります。  その後、この情報は、標準の HTTP POST 呼び出しで API に送信されます。 サーバーでアサーションを検証したら、 `AppServiceLoginHandler.CreateToken()` メソッドを使用してトークンを発行します。  ApiController で `[MobileAppController]` 属性を使用することは**できません**。
@@ -342,7 +346,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 `Query()` メソッドは、フィルター処理を行うために LINQ で操作できる `IQueryable` を返します。
 
-## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプロジェクトを追加する
+## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプッシュ通知を追加する
 **MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成して、サーバー プロジェクトにプッシュ通知を追加します。
 
 1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Server.Notifications` を見つけ、**[インストール]** をクリックします。

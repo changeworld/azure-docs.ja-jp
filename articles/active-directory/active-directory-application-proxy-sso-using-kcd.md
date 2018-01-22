@@ -3,7 +3,7 @@ title: "アプリケーション プロキシを使用したシングル サイ�
 description: "Azure AD アプリケーション プロキシを使用してシングル サインオンを提供する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: ded0d9c9-45f6-47d7-bd0f-3f7fd99ab621
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: d93dcdd1d6ae8de262c08ba095ca773795f0dec3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 170498b2876947a45128377fa6cecb3931784237
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオンの Kerberos の制約付き委任
 
@@ -121,11 +121,11 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 SSO プロセスにエラーがある場合は、「[トラブルシューティング](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)」で説明するように、コネクタ コンピューターのイベント ログに表示されます。
 ただし、場合によっては、バックエンド アプリケーションが他のさまざまな HTTP 応答に応答している間に、要求が正常に送信されることがあります。 このような場合のトラブルシューティングは、アプリケーション プロキシ セッションのイベント ログで、コネクタ コンピューターのイベント番号 24029 を調べることから始める必要があります。 委任のために使用されたユーザー ID は、イベント詳細の [ユーザー] フィールドに表示されます。 セッション ログを有効にするには、イベント ビューアーで [表示] メニューの **[分析およびデバッグ ログの表示]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Kerberos の制約付き委任を使用するようにアプリケーション プロキシ アプリケーションを構成する方法](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
 
 
-最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
+最新のニュースと更新プログラムについては、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
 

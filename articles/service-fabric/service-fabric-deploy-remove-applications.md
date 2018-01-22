@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: f19141919b3c61123e0e94c4513f872e095620c1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 49f26a6195713a5bcdd8ab5711f3bf715f3e033f
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
-> * [リソース マネージャー](service-fabric-application-arm-resource.md)
+> * [Resource Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
@@ -31,17 +31,29 @@ ms.lasthandoff: 12/21/2017
 
 [アプリケーションの種類をパッケージ化][10]した後は、Azure Service Fabric クラスターにデプロイできる状態になっています。 デプロイには、次の 3 つの手順が含まれます。
 
-1. アプリケーション パッケージのイメージ ストアへのアップロード
-2. アプリケーションの種類を登録する
-3. アプリケーション インスタンスを作成する
+1. アプリケーション パッケージをイメージ ストアにアップロードします。
+2. イメージ ストアの相対パスを使用してアプリケーションの種類を登録します。
+3. アプリケーション インスタンスを作成します。
 
-アプリケーションのデプロイ後、インスタンスがクラスターで実行されているときに、アプリケーションのインスタンスとそのアプリケーションの種類を削除することができます。 クラスターからアプリケーションを完全に削除するには、次の手順が必要です。
+デプロイしたアプリケーションが不要になったら、アプリケーション インスタンスとそのアプリケーションの種類を削除できます。 クラスターからアプリケーションを完全に削除するには、次の手順が必要です。
 
-1. 実行中のアプリケーションのインスタンスを削除する
-2. アプリケーションの種類が不要になったら、その登録を解除する
-3. イメージ ストアからのアプリケーション パッケージの削除
+1. 実行中のアプリケーションのインスタンスを削除します。
+2. アプリケーションの種類が不要になったら、その登録を解除します。
+3. イメージ ストアからアプリケーション パッケージを削除します。
 
 Visual Studio を使ってローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う場合、前述のすべての手順は、PowerShell スクリプトによって自動的に処理されます。  このスクリプトは、アプリケーション プロジェクトの *Scripts* フォルダーにあります。 この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。 
+
+アプリケーションをデプロイするもう 1 つの方法は、外部のプロビジョニングを使用する方法です。 アプリケーション パッケージは、[`sfpkg` としてパッケージ化](service-fabric-package-apps.md#create-an-sfpkg)して、外部ストアにアップロードできます。 この場合、イメージ ストアへのアップロードは必要ありません。 デプロイには、次の手順が必要です。
+
+1. `sfpkg` を外部ストアにアップロードします。 外部ストアには、REST http または https エンドポイントを公開している任意のストアを指定できます。
+2. 外部のダウンロード URI と、アプリケーションの種類の情報を使用してアプリケーションの種類を登録します。
+2. アプリケーション インスタンスを作成します。
+
+クリーンアップでは、アプリケーション インスタンスを削除して、アプリケーションの種類の登録を解除します。 パッケージはイメージ ストアにコピーされないため、クリーンアップが必要な一時保存先はありません。 外部ストアからのプロビジョニングは、Service Fabric バージョン 6.1 以降で使用できます。
+
+>[!NOTE]
+> Visual Studio は、外部プロビジョニングを現在サポートしていません。
+
  
 ## <a name="connect-to-the-cluster"></a>クラスターへの接続
 この記事の PowerShell コマンドを実行する前に、必ず最初に [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) で Service Fabric クラスターに接続してください。 ローカル開発クラスターに接続するには、次の手順を実行します。
@@ -123,7 +135,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 |2048|1,000|00:01:04.3775554|1,231|
 |5,012|100|00:02:45.2951288|3,074|
 
-圧縮したパッケージは、必要に応じて 1 つまたは複数の Service Fabric クラスターにアップロードできます。 デプロイのメカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 パッケージが圧縮されている場合、パッケージはクラスター イメージ ストアに格納され、アプリケーションが実行される前にノード上で圧縮が解除されます。
+圧縮したパッケージは、必要に応じて 1 つまたは複数の Service Fabric クラスターにアップロードできます。 デプロイのメカニズムは、圧縮されているパッケージでも圧縮されていないパッケージでも変わりません。 圧縮したパッケージは、クラスターのイメージ ストアなどに格納されます。 パッケージは、アプリケーションの実行前に、ノードで圧縮解除されます。
 
 
 以下の例では、先ほどのパッケージをイメージ ストアの "MyApplicationV1" という名前のフォルダーにアップロードしています。
@@ -162,17 +174,27 @@ PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -Appl
 
 アプリケーションの種類をクラスターに登録し、デプロイできる状態にするには、[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドレットを実行します。
 
+### <a name="register-the-application-package-copied-to-image-store"></a>イメージ ストアにコピーされたアプリケーション パッケージを登録する
+パッケージが事前にイメージ ストアにコピーされていた場合は、登録操作でイメージ ストアの相対パスを指定します。
+
 ```powershell
-PS C:\> Register-ServiceFabricApplicationType MyApplicationV1
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPackagePathInImageStore MyApplicationV1
 Register application type succeeded
 ```
 
 "MyApplicationV1" は、アプリケーション パッケージが格納されるイメージ ストア内のフォルダーです。 アプリケーション タイプ名 "MyApplicationType"、バージョン "1.0.0" (どちらもアプリケーション マニフェストに記述されます) としてアプリケーションの種類がクラスターに登録されます。
 
+### <a name="register-the-application-package-copied-to-an-external-store"></a>外部ストアにコピーされたアプリケーション パッケージを登録する
+Service Fabric バージョン 6.1 以降では、プロビジョニングで外部ストアからのパッケージのダウンロードがサポートされます。 ダウンロード URI は、[`sfpkg` アプリケーション パッケージ](service-fabric-package-apps.md#create-an-sfpkg)のパスを表し、ここから HTTP または HTTPS プロトコルを使用してアプリケーション パッケージをダウンロードできます。 パッケージは、この外部の場所に事前にアップロードしておく必要があります。 この URI では、Service Fabric がファイルをダウンロードできるように、読み取りアクセスを許可する必要があります。 `sfpkg` ファイルには拡張子 ".sfpkg" が必要です。 プロビジョニング操作には、アプリケーション マニフェストにあるのと同じアプリケーションの種類の情報を含める必要があります。
+
+```
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
+```
+
 [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、アプリケーション パッケージがシステムによって正常に登録された場合にのみ戻ります。 登録の所要時間は、アプリケーション パッケージのサイズと内容によって異なります。 必要に応じて、**-TimeoutSec** パラメーターを使用して、より長いタイムアウトを指定できます (既定のタイムアウトは 60 秒)。
 
-アプリケーション パッケージが大規模な場合やタイムアウトが発生する場合は、**-Async** パラメーターを使用します。 このコマンドを実行すると、クラスターが登録コマンドを受け入れたときに制御が返されます。処理は必要に応じて続行されます。
-[Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、正常に登録されたアプリケーションの種類の全バージョンとその登録状態を一覧表示します。 このコマンドを使用して、登録がいつ完了したかを判断できます。
+アプリケーション パッケージが大規模な場合やタイムアウトが発生する場合は、**-Async** パラメーターを使用します。 このコマンドを実行すると、クラスターが登録コマンドを受け入れたときに制御が返されます。 登録操作は必要に応じて続行されます。
+[Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) コマンドは、アプリケーションの種類の全バージョンとその登録状態を一覧表示します。 このコマンドを使用して、登録がいつ完了したかを判断できます。
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationType
@@ -184,7 +206,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ## <a name="remove-an-application-package-from-the-image-store"></a>イメージ ストアからのアプリケーション パッケージの削除
-アプリケーションが正常に登録されたら、アプリケーション パッケージを削除することをお勧めします。  イメージ ストアからアプリケーション パッケージを削除すると、システム リソースが解放されます。  使用されていないアプリケーション パッケージを保持すると、ディスク ストレージが消費され、アプリケーションのパフォーマンスの問題につながります。
+イメージ ストアにパッケージがコピーされていた場合は、アプリケーションが正常に登録された後、一時保存先から削除する必要があります。 イメージ ストアからアプリケーション パッケージを削除すると、システム リソースが解放されます。 使用されていないアプリケーション パッケージを保持すると、ディスク ストレージが消費され、アプリケーションのパフォーマンスの問題につながります。
 
 ```powershell
 PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1
@@ -244,7 +266,7 @@ PS C:\> Get-ServiceFabricApplication
 ```
 
 ## <a name="unregister-an-application-type"></a>アプリケーションの種類の登録解除
-特定のバージョンのアプリケーションの種類が不要になった場合は、[Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) コマンドレットを使用してアプリケーションの種類の登録を解除する必要があります。 使用していないアプリケーションの種類について、その登録を解除すると、アプリケーション バイナリを削除することで、イメージ ストアによって使用されているストレージ領域が解放されます。 アプリケーションの種類の登録を解除しても、アプリケーション パッケージは削除されません。 あるアプリケーションの種類に対してインスタンス化されたアプリケーションがなく、それを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類の登録を解除できます。
+特定のバージョンのアプリケーションの種類が不要になった場合は、[Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) コマンドレットを使用してアプリケーションの種類の登録を解除する必要があります。 使用していないアプリケーションの種類について、その登録を解除すると、アプリケーションの種類ファイルを削除することで、イメージ ストアによって使用されているストレージ領域が解放されます。 イメージ ストアにコピーされたバージョンが使用された場合、アプリケーションの種類の登録を解除しても、イメージ ストアの一時保存先にコピーされたアプリケーション パッケージは削除されません。 あるアプリケーションの種類に対してインスタンス化されたアプリケーションがなく、それを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類の登録を解除できます。
 
 現在クラスターに登録されているアプリケーションの種類を確認するには、[Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) を実行します。
 
@@ -333,7 +355,9 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
+[アプリケーションのパッケージ化](service-fabric-package-apps.md)
+
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 [Service Fabric の正常性の概要](service-fabric-health-introduction.md)

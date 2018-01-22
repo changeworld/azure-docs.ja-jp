@@ -4,7 +4,7 @@ description: "Log Analytics のアラートは、OMS リポジトリ内の重要
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 6cfd2a46-b6a2-4f79-a67b-08ce488f9a91
 ms.service: log-analytics
@@ -12,23 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: ee11f64484a66fad06b6536a18f9b3e239fa40d5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Log Analytics のアラートについて
 
-Log Analytics のアラートは、Log Analytics リポジトリ内の重要な情報を特定します。  この記事では、Log Analytics のアラート ルールのしくみを詳しく紹介します。また、アラート ルールの種類ごとの違いについても説明します。
+Log Analytics のアラートは、Log Analytics リポジトリ内の重要な情報を特定します。  この記事では、クエリ対象のデータの収集頻度に基づいて行う必要があるいくつかの設計上の決定、ネットワーク待ち時間や処理能力が原因として考えられるデータ インジェストを伴うランダムな遅延、および Log Analytics リポジトリへのデータのコミットについて説明します。  また、Log Analytics のアラート ルールのしくみを詳しく紹介するほか、アラート ルールの種類ごとの違いについても説明します。
 
 警告ルール作成のプロセスについては、以下の記事を参照してください。
 
 - [Azure Portal](log-analytics-alerts-creating.md) を使ってアラート ルールを作成する
 - [Resource Manager テンプレート](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)を使ってアラート ルールを作成する
 - [REST API](log-analytics-api-alerts.md) を使ってアラート ルールを作成する
+
+## <a name="considerations"></a>考慮事項
+
+さまざまなソリューションおよびデータ型のデータ収集の頻度に関する詳細は、ソリューションの概要に関する記事の「[データ収集の詳細](log-analytics-add-solutions.md#data-collection-details)」で確認できます。 この記事で説明したように、収集の頻度は 7 日に 1 回のように少なくすることも、"*通知時*" に収集するように指定することもできます。 重要なのは、アラートを設定する前に、データ収集の頻度について理解し、検討することです。 
+
+- 収集の頻度によって、マシン上の OMS エージェントが Log Analytics にデータを送信する頻度が決まります。 たとえば、収集の頻度が 10 分で、システムに他の遅延がない場合は、送信されたデータのタイム スタンプは、リポジトリに追加される前の 0 ～ 10 分になり、Log Analytics で検索できます。
+
+- アラートをトリガーするには、データをリポジトリに書き込み、クエリの実行時に使用可能にしておく必要があります。 上記で説明した待ち時間のため、収集の頻度と、クエリでデータを使用できる時間は同じではありません。 たとえば、データが正確に 10 分ごとに収集されていても、データ リポジトリでデータが使用可能になる間隔は不規則です。 0、10、および 20 分間隔で収集されたデータが、それぞれ 25、28、および 35 分の検索に対して、またはインジェスト待ち時間の影響による他の不規則な間隔で使用可能になる可能性があります。 こうした遅延の最悪のケースは、「[Log Analytics の SLA](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1)」で文書化されていますが、これには、収集の頻度や、コンピューターと Log Analytics サービスの間のネットワーク待ち時間による遅延は含まれていません。
 
 
 ## <a name="alert-rules"></a>アラート ルール
@@ -37,11 +45,27 @@ Log Analytics のアラートは、Log Analytics リポジトリ内の重要な�
 
 ![Log Analytics alerts](media/log-analytics-alerts/overview.png)
 
+ログ データのインジェストにより待ち時間が発生することが予想されるため、データのインデックスが作成されてから、そのデータを検索で使用できるようになるまでの絶対時間は予測できません。  アラート ルールを定義しながら、収集したデータのほぼリアルタイムの可用性を考慮する必要があります。    
+
+アラートの信頼性とアラートの応答性の間にはトレードオフがあります。 アラートが誤っている、アラートが発生しない、などの状況は、アラート パラメーターの構成によって最小限に抑えることができます。また、監視対象の状況に迅速に対応するアラート パラメーターを選択することもできます。しかし、誤ったアラートが生成されたり、アラートが発生しなかったりすることはあります。
+
 警告ルールは次の内容で定義されます。
 
 - **ログ検索**:   警告ルールが実行されるたびに実行されるクエリ。  このクエリによって返されるレコードを使用して、警告を作成するかどうかが判断されます。
-- **時間枠**:   クエリの時間範囲を指定します。  クエリでは、現在の時刻に先立つ指定の時間範囲の間に作成されたレコードだけを返します。  5 分から 24 時間までの値を指定できます。 たとえば、時間枠が 60 分に設定されていて、クエリが午後 1 時 15 分に実行された場合は、午後 12 時 15 分から午後 1 時 15 分までの間に作成されたレコードだけが返されます。
-- **[頻度]**:   クエリの実行頻度を指定します。 5 分から 24 時間までの値を指定できます。 この値は、時間枠の値以下にする必要があります。  この値が時間枠の値よりも大きい場合、レコードを見落とすおそれがあります。<br>たとえば、時間枠が 30 分、頻度が 60 分であるとします。  クエリが午後 1 時に実行された場合、午後 12 時 30 分から午後 1 時までの間のレコードが返されます。  次回クエリが実行されるのは午後 2 時であり、このときには午後 1 時 30 分から午後 2 時までの間のレコードが返されます。  つまり、午後 1 時から午後 1 時 30 分までの間に作成されたレコードは評価されないことになります。
+- **時間枠**:   クエリの時間範囲を指定します。  クエリでは、現在の時刻に先立つ指定の時間範囲の間に作成されたレコードだけを返します。  5 分から 24 時間までの値を指定できます。 この範囲には、インジェストによる妥当な遅延に対応できるだけの長さを確保してください。 処理できるようにしたい遅延の 2 倍の長さを時間枠として確保する必要があります。<br> たとえば、30 分の遅延について信頼できるアラートが必要な場合、範囲は 1 時間にする必要があります。  
+
+    時間の範囲が短すぎるときに発生する可能性がある症状は 2 つあります。
+
+    - **アラートが発生しない**。 たとえば、インジェストの遅延がたまに 60 分になるとします。しかし、ほとんどの場合、この遅延は 15 分です。  時間枠が 30 分に設定されていると、遅延が 60 分のときにアラートが発生しません。これは、アラート クエリの実行時、検索でデータを使用できないためです。 
+   
+        >[!NOTE]
+        >アラートが発生しなかった理由を診断することはできません。 たとえば、上記の例では、アラート クエリが実行されてから 60 分後に、データがリポジトリに書き込まれます。 翌日にアラートが実行されなかったことに気が付き、その翌日のクエリを正しい時間範囲で実行した場合、ログ検索条件は結果と一致します。 アラートは確かにトリガーされていたように見えるでしょう。 実際は、アラート クエリが実行されたとき、データは使用可能な状態でなかったため、アラートはトリガーされていません。 
+        >
+ 
+    - **誤ったアラート**。 イベントがないことを特定するようにアラート クエリが設計されていることがあります。 たとえば、ハートビートが存在しないことを検索して、仮想マシンがオフラインであることを検出するのは、その一例です。 上記のように、アラート時間枠で検索にハートビートを使用できないと、アラートが生成されます。ハートビート データがまだ検索できず、存在しないと判断されたためです。 これは、VM が本当にオフラインで、ハートビート データが生成されなかった場合と同じ結果です。 正しい時間枠で次の日にクエリを実行すると、ハートビートが存在すること、そしてアラートが失敗したことが示されます。 実際は、アラート時間枠が短すぎたため、ハートビートを検索に使用できなかった、ということです。  
+
+- **[頻度]**:   クエリの実行頻度を指定します。また、通常の場合のアラートの応答性を高めるためにも使用できます。 5 分から 24 時間までの値を指定でき、アラートの時間枠以下にする必要があります。  この値が時間枠の値よりも大きい場合、レコードを見落とすおそれがあります。<br>最大遅延 30 分、通常の遅延 10 分に対して信頼性を確保することが目的の場合、時間枠は 1 時間、頻度の値は 10 分にします。 これにより、アラート データが生成されたときの 10 ～ 20 分の間に、インジェストの遅延が 10 分のデータに対してアラートが生成されます。<br>時間枠が大きすぎることが原因で、同じデータに対して複数のアラートが作成されるのを回避するには、[[アラートを表示しない]](log-analytics-tutorial-response.md#create-alerts) オプションを使用します。これにより、少なくとも時間枠の間はアラートが表示されないようにできます。
+  
 - **しきい値**:   ログ検索の結果を評価し、アラートの生成が必要であるかどうかを判定するための値です。  しきい値は、アラート ルールの種類によって異なります。
 
 Log Analytics の警告ルールはいずれも、2 種類のどちらかに該当します。  どちらについても、後のセクションで詳しく説明します。
@@ -76,18 +100,15 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 
 たとえば、プロセッサが 90% を超える割合で実行されたときにアラートを生成させるには、次のようにクエリにアラート ルールのしきい値 **greater than 0** を含めます。
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90
-
-    
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
 プロセッサが一定の時間内に平均 90% を超える割合で実行されたときにアラートを生成させるには、次のようにクエリで [measure コマンド](log-analytics-search-reference.md#commands)を使用し、アラート ルールのしきい値 **greater than 0** を含めます。
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
-    
 >[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にまだアップグレードされていない場合、上記のクエリは次のように変更されます: `Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90`
-> `Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90`
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます: `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
+> `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
 
 
 ## <a name="metric-measurement-alert-rules"></a>メトリック測定のアラート ルール
@@ -102,7 +123,7 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 
 - **集計関数**。  実行する計算と、集計の対象になる可能性がある数値フィールドを決める要素です。  たとえば、**count()** であれば、クエリで指定したレコードの件数が返されます。**avg(CounterValue)** であれば、一定期間内の CounterValue フィールドの平均値が返されます。
 - **グループ フィールド**。  このフィールドのインスタンスごとに値を集計したレコードが作成されます。警告は、それぞれのインスタンスについて生成されます。  たとえば、コンピューターごとにアラートを生成する場合には、**by Computer** を使用します。   
-- **[間隔]**:   データを集計する間隔を定義する要素です。  たとえば、**5minutes** を指定した場合には、アラートに対して指定した期間にわたり、グループ フィールドの各インスタンスについて、5 分間隔でレコードが作成されます。
+- **[間隔]**:   データを集計する間隔を定義する要素です。  たとえば、**5 分**を指定した場合には、アラートに対して指定した期間にわたり、グループ フィールドの各インスタンスについて、5 分間隔でレコードが作成されます。
 
 #### <a name="threshold"></a>しきい値
 メトリック測定のアラート ルールのしきい値は、集計値と "抵触" の発生回数の 2 つの要素によって決まります。  ログ検索でいずれかのデータ ポイントが一定の値を超えると、抵触が 1 回発生したと判定されます。  そして、結果に含まれるオブジェクトの抵触の発生回数が指定された値を超えたときに、そのオブジェクトについて警告が生成されます。
@@ -110,11 +131,11 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 #### <a name="example"></a>例
 いずれかのコンピューターでプロセッサの使用率が 90% を超える状態が 30 分間に 3 回発生した場合にアラートを生成するシナリオを考えてみましょう。  この場合、以下のようなアラート ルールを作成します。  
 
-**[クエリ]:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
-**[時間枠]: 30 分**<br>
-**[アラートの頻度]:** 5 分<br>
-**[集計値]:** 90 よりも大きい<br>
-**[アラートをトリガーする基準]:** 抵触の発生総数が 5 件より多い<br>
+**[クエリ]:** Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer Interval 5minute<br>
+**時間枠:** 30 分<br>
+**アラートの頻度:** 5 分<br>
+**集計値:** 90 よりも大きい<br>
+**アラートをトリガーする基準**: 違反総数が 5 件より多い<br>
 
 上のクエリは、5 分間隔で各コンピューターの平均値を計算するものです。  このクエリは過去 30 分間に収集されたデータを対象に、5 分ごとに実行されます。  コンピューターが 3 台の場合、サンプル データは以下のようになります。
 
@@ -125,9 +146,9 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 ## <a name="alert-records"></a>アラート レコード
 Log Analytics のアラート ルールで作成されるアラート レコードは、**[Type]** が **[Alert]**、**[SourceSystem]** が **[OMS]** に設定されています。  これらのレコードには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 型 |*アラート:* |
+| type |*アラート:* |
 | SourceSystem |*OMS* |
 | *Object*  | [メトリック測定のアラート](#metric-measurement-alert-rules)には、グループ フィールドのプロパティがあります。  たとえば、ログ検索のグループ分けがコンピューターごとの場合には、アラートのレコードに Computer フィールドが存在します。また、そのフィールドの値はコンピューター名となります。
 | AlertName |アラートの名前。 |
@@ -143,8 +164,8 @@ Log Analytics のアラート ルールで作成されるアラート レコー�
 [Alert Management ソリューション](log-analytics-solution-alert-management.md)および [Power BI エクスポート](log-analytics-powerbi.md)では、他の種類のアラート レコードも作成されます。  これらはすべて、**[Type]** が **[Alert]** ですが、それぞれ **[SourceSystem]** によって区別されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Alert Management ソリューション](log-analytics-solution-alert-management.md) をインストールして、Log Analytics で作成された警告および System Center Operations Manager から収集された警告を分析します。
 * アラートを生成する [ログ検索](log-analytics-log-searches.md) の詳細を確認します。
-* アラート ルールを使用して [webhook を構成する](log-analytics-alerts-webhooks.md)チュートリアルを完了します。  
+* アラート ルールに関する [Webhook を構成する](log-analytics-alerts-webhooks.md) チュートリアルを完了します。  
 * アラートで識別された問題を修復するために [Azure Automation の Runbook](https://azure.microsoft.com/documentation/services/automation) を作成する方法について学習します。

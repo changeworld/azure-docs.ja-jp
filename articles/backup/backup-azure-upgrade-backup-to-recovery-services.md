@@ -1,5 +1,5 @@
 ---
-title: "Backup コンテナーを Recovery Services コンテナーにアップグレードする (プレビュー) | Microsoft Docs"
+title: "Backup コンテナーを Recovery Services コンテナーにアップグレードする | Microsoft Docs"
 description: "Azure Backup コンテナーを Recovery Services コンテナーにアップグレードするための手順とサポート情報です。"
 services: backup
 documentationcenter: dev-center-name
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/09/2017
+ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 4867a43aab1357cb8e01c2ddcef74cdebb41a84a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
 
@@ -34,7 +34,7 @@ Backup コンテナーを Recovery Services コンテナーにアップグレー
 ## <a name="changes-to-your-automation-and-tool-after-upgrading"></a>アップグレード後のオートメーションおよびツールの変更
 
 コンテナーをアップグレードするためにインフラストラクチャーを準備するときに、既存のオートメーションまたはツールがアップグレード後も引き続き動作できるように、それらをアップグレードする必要があります。
-[Service Manager デプロイメント モデル](backup-client-automation-classic.md)と [Resource Manager デプロイメント モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
+[Resource Manager デプロイメント モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
 
 
 ## <a name="before-you-upgrade"></a>アップグレードする前に
@@ -117,10 +117,11 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **アップグレード プランは進行中のバックアップに影響を与えますか?**</br>
+
 いいえ。 進行中のバックアップは、アップグレード中もアップグレード後も、中断なく続行されます。
 
 **近日中にアップグレードする予定がない場合、コンテナーはどうなりますか?**</br>
-すべての新機能は Recovery Services コンテナーにのみ適用されるので、コンテナーをアップグレードすることをお勧めします。 Microsoft は、最終的にクラシック ポータルを廃止する予定です。 2017 年 9 月 1 日から、Microsoft は Recovery Services コンテナーへのバックアップ コンテナーの自動アップグレードを開始します。 2017 年 11 月 30 日以降、PowerShell を使用してバックアップ コンテナーを作成できなくなります。 コンテナーは、その間いつでも自動的にアップグレードできます。 できるだけ早急にコンテナーをアップグレードすることをお勧めします。
+すべての新機能は Recovery Services コンテナーにのみ適用されるので、コンテナーをアップグレードすることをお勧めします。 2017 年 9 月 1 日から、Microsoft は Recovery Services コンテナーへのバックアップ コンテナーの自動アップグレードを開始します。 2017 年 11 月 30 日以降、PowerShell を使用してバックアップ コンテナーを作成できなくなります。 コンテナーは、その間いつでも自動的にアップグレードできます。 できるだけ早急にコンテナーをアップグレードすることをお勧めします。
 
 **このアップグレードは、既存のツールにとってどのような意味がありますか?**</br>
 ツールを Resource Manager デプロイメント モデルに更新します。 Recovery Services コンテナーは、Resource Manager デプロイメント モデルで使用するように作成されています。 Resource Manager デプロイメント モデルの計画を立て、コンテナーの違いを考慮することが重要です。 
@@ -129,18 +130,18 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 アップグレードされるリソースの数によって異なります。 小規模なデプロイ (保護されたインスタンスが数十) では、アップグレード全体は 20 分未満で実行されます。 大規模なデプロイでは、最大 1 時間かかります。
 
 **アップグレード後にロールバックすることはできますか?**</br>
+
 いいえ。 リソースが正常にアップグレードされた後のロールバックはサポートされていません。
 
 **サブスクリプションまたはリソースがアップグレードが可能かどうかを確認できますか?**</br>
 はい。 アップグレードの最初の手順は、リソースがアップグレード可能であることを検証することです。 前提条件の検証が失敗した場合は、アップグレードを完了できない理由をすべて通知するメッセージが表示されます。
 
-**コンテナーのアップグレードを開始するために必要なアクセス許可は何ですか?**</br>
-コンテナーのアップグレードを実行するには、Azure クラシック ポータルにサブスクリプションの共同管理者として追加されている必要があります。 これは、Azure ポータルに所有者として既に表示されている場合でも必要です。 試しに、Azure クラシック ポータルでサブスクリプションの共同管理者の追加を実行して、自分がサブスクリプションの共同管理者になっているかどうかを確認してください。 共同管理者を追加できない場合は、サブスクリプションのサービス管理者または共同管理者に連絡して、共同管理者として追加してもらってください。
-
 **CSP ベースの Backup コンテナーはアップグレードできますか?**</br>
+
 いいえ。 現時点では、CSP ベースのバックアップ コンテナーはアップグレードできません。 次のリリースで、CSP ベースのバックアップ コンテナーのアップグレードのサポートが追加される予定です。
 
 **アップグレード後に、従来のコンテナーを表示できますか?**</br>
+
 いいえ。 アップグレード後は、従来のコンテナーは、表示することも管理することもできません。 コンテナーのすべての管理操作は、新しい Azure ポータルを使用してのみ実行できます。
 
 **アップグレードに失敗しましたが、更新する必要があるエージェントを保持するコンピューターがもう存在しません。このような場合はどうすればよいでしょうか?**</br>
@@ -154,8 +155,8 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 コンテナーのアップグレードの一部が失敗した場合は、エラーに示されている OperationId を書き留めます。 Microsoft サポートが問題の解決に積極的に取り組みます。 サポートを受けるには、サブスクリプション ID、コンテナー名、OperationId を記載した電子メールを rsvaultupgrade@service.microsoft.com にお送りください。 Microsoft は、問題をできるだけ速やかに解決するよう努力します。 Microsoft による明確な指示がない限り、操作をやり直さないでください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次に関する記事を参照してください。</br>
 [IaaS VM のバックアップ](backup-azure-arm-vms-prepare.md)</br>
 [Azure Backup Server のバックアップ](backup-azure-microsoft-azure-backup.md)</br>
-[Windows Server のバックアップ](backup-configure-vault.md).
+[Windows Server のバックアップ](backup-configure-vault.md)

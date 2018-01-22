@@ -1,25 +1,25 @@
 ---
 title: "Azure Container Instances とコンテナーのオーケストレーション"
-description: "Azure Container Instances とコンテナー オーケストレーターがどのように対話するかを理解します"
+description: "Azure Container Instances とコンテナー オーケストレーターがどのように対話するかを理解します。"
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 01/09/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a51e746c501cca0521972b09d145439348d1d22d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4954dcb4cb03407b85ad35aec94920e39644844b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances とコンテナー オーケストレーター
 
 コンテナーはサイズが小さく、アプリケーション向きであるため、アジャイル配信環境およびマイクロサービス ベースのアーキテクチャに適しています。 多数のコンテナーを自動化して管理するタスクと、こうしたコンテナーの対話は "*オーケストレーション*" と呼ばれます。 Kubernetes、DC/OS、Docker Swarm などが、よく利用されているコンテナー オーケストレーターで、これはすべて [Azure Container Service](https://docs.microsoft.com/azure/container-service/) から入手できます。
 
-Azure Container Instances には、オーケストレーション プラットフォームの基本的なスケジュール設定機能がいくつか用意されていますが、こうしたプラットフォームが提供する高価値サービスは含まれておらず、実際は、こうしたサービスを補完することができます。 この記事では、Azure Container Instances の処理範囲と、完全なコンテナー オーケストレーターとの対話について説明します。
+Azure Container Instances には、オーケストレーション プラットフォームの基本的なスケジュール設定機能がいくつか用意されていますが、こうしたプラットフォームが提供する高価値サービスは含まれておらず、実際にはこうしたサービスを補完することができます。 この記事では、Azure Container Instances の処理範囲と、完全なコンテナー オーケストレーターとの対話について説明します。
 
 ## <a name="traditional-orchestration"></a>従来のオーケストレーション
 
@@ -40,8 +40,6 @@ Azure Container Instances を使用すると、オーケストレーションへ
 
 Container Instances の基になるインフラストラクチャはすべて Azure で管理されるため、オーケストレーター プラットフォームが、1 つのコンテナーの実行に適したホスト コンピューターを自身で見つけることを心配する必要はありません。 クラウドの柔軟性により、ホスト コンピューターはいつでも確実に使用できます。 代わりに、オーケストレーターは、拡大縮小、アップグレード調整など、複数コンテナー アーキテクチャの開発を簡略化するタスクに集中することができます。
 
-
-
 ## <a name="potential-scenarios"></a>潜在的なシナリオ
 
 Azure Container Instances とのオーケストレーターの統合はまだ発展途上にありますが、その環境はこれからいくつか登場すると予測しています。
@@ -52,7 +50,7 @@ Azure Container Instances 専用の環境は、すばやく起動し、秒単位
 
 ### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Container Instances と仮想マシンのコンテナーの組み合わせ
 
-ワークロードの実行時間が長く、安定している場合は、専用仮想マシンのクラスターでコンテナーを調整した方が、通常は、Container Instances で同じコンテナーを実行するよりもコストがかかりません。 ただし、Container Instances が提供する優れたソリューションでは、全体的な容量をすばやく拡張および縮小し、使用中に発生する予期しない、または短時間のスパイクに対応できます。 クラスター内の仮想マシン数をスケールアウトして、追加コンテナーをこうしたマシンにデプロイするのではなく、オーケストレーターは単純に Container Instances を使用して、追加コンテナーのスケジュールを設定し、不要になったときに削除できます。
+ワークロードの実行時間が長く、安定している場合は、専用仮想マシンのクラスターでコンテナーを調整した方が、通常は、Container Instances で同じコンテナーを実行するよりもコストがかかりません。 ただし、Container Instances が提供する優れたソリューションでは、全体的な容量をすばやく拡張および縮小し、使用中に発生する予期しない、または短時間のスパイクに対応できます。 オーケストレーターは、クラスター内の仮想マシン数をスケールアウトして、追加コンテナーをこうしたマシンにデプロイするのではなく、単に Container Instances を使用して追加コンテナーのスケジュールを設定し、不要になったときに削除できます。
 
 ## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>サンプル実装: Kubernetes 用の Azure Container Instances コネクタ
 
@@ -67,7 +65,7 @@ Kubernetes 用コネクタは、無制限の容量を持つノードとして登
 > [!WARNING]
 > Kubernetes ACI コネクタは "*試験段階*" です。運用環境では使用しないでください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [クイック スタート ガイド](container-instances-quickstart.md)を使用して Azure Container Instances で最初のコンテナーを作成します。
 
@@ -75,6 +73,6 @@ Kubernetes 用コネクタは、無制限の容量を持つノードとして登
 [aci-connector-k8s-gif]: ./media/container-instances-orchestrator-relationship/aci-connector-k8s.gif
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/azure/aci-connector-k8s
+[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

@@ -4,7 +4,7 @@ description: "Resource Manager デプロイメント モデルで、特殊化さ
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
@@ -13,23 +13,26 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 01/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 39cbd30102813a4502cd25811589d04a9adb0aa5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 578d31aef5ddeafbd806d0bae4231c135968f78a
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
-# <a name="create-a-windows-vm-from-a-specialized-disk"></a>特殊化されたディスクからの Windows VM の作成
+# <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
-Powershell を使用して、OS ディスクとして特殊化された管理ディスクを接続することにより新しい VM を作成します。 特殊化されたディスクは、元の VM のユーザーアカウント、アプリケーション、その他の状態データを維持する、既存の VM の仮想ハードディスク (VHD) のコピーです。 
+OS ディスクとして特殊化された管理ディスクを接続することにより新しい VM を作成します。 特殊化されたディスクは、元の VM のユーザーアカウント、アプリケーション、その他の状態データを維持する、既存の VM の仮想ハードディスク (VHD) のコピーです。 
 
 特殊化された VHD を使用して新しい VM を作成すると、新しい VM は、元の VM のコンピューター名を保持します。 その他のコンピューター固有の情報も保持します。場合によっては、この重複情報によって問題が発生する可能性があります。 VM をコピーするとき、アプリケーションが依存するコンピューター固有の情報の種類を把握しておいてください。
 
-2 つのオプションがあります。
-* [VHD をアップロードする](#option-1-upload-a-specialized-vhd)
-* [既存の Azure VM をコピーする](#option-2-copy-an-existing-azure-vm)
+いくつかのオプションがあります。
+* [既存の管理ディスクを使用する](#option-1-use-an-existing-disk) これは、正しく機能していない VM がある場合に便利です。 VM を削除し、管理ディスクを再利用して新しい VM を作成できます。 
+* [VHD をアップロードする](#option-2-upload-a-specialized-vhd) 
+* [スナップショットを使用して既存の Azure VM をコピーする](#option-3-copy-an-existing-azure-vm)
+
+Azure Portal を使用して、[特殊化された VHD から新しい VM を作成する](create-vm-specialized-portal.md)こともできます。
 
 このトピックでは、管理ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](sa-create-vm-specialized.md)に関するページを参照してください。
 
@@ -39,10 +42,22 @@ PowerShell を使用する場合は、AzureRM.Compute PowerShell モジュール
 ```powershell
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
-詳しくは、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
+詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 
+## <a name="option-1-use-an-existing-disk"></a>オプション 1: 既存のディスクを使用する
 
-## <a name="option-1-upload-a-specialized-vhd"></a>オプション 1: 特殊化された VHD をアップロードする
+削除した VM があり、OS ディスクを再利用して新しい VM を作成したい場合、[Get-AzureRmDisk](/azure/powershell/get-azurermdisk)を使用します。
+
+```powershell
+$resourceGroupName = 'myResourceGroup'
+$osDiskName = 'myOsDisk'
+$osDisk = Get-AzureRmDisk `
+-ResourceGroupName $resourceGroupName `
+-DiskName $osDiskName
+```
+このディスクは OS ディスクとして[新しい VM](#create-the-new-vm) に接続できるようになりました。
+
+## <a name="option-2-upload-a-specialized-vhd"></a>オプション 2: 特殊化された VHD をアップロードする
 
 Hyper-V などのオンプレミスの仮想化ツールを使用して作成された特殊化された VM、または別のクラウドからエクスポートされた VM から VHD をアップロードできます。
 
@@ -76,14 +91,20 @@ Get-AzureRmStorageAccount
     *myResourceGroup* という名前のリソース グループを*米国西部*リージョンで作成するには、次のように入力します。
 
     ```powershell
-    New-AzureRmResourceGroup -Name myResourceGroup -Location "West US"
+    New-AzureRmResourceGroup `
+       -Name myResourceGroup `
+       -Location "West US"
     ```
 
 2. [New-AzureStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、このリソース グループに *mystorageaccount* というストレージ アカウントを作成します。
    
     ```powershell
-    New-AzureRmStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
-        -SkuName "Standard_LRS" -Kind "Storage"
+    New-AzureRmStorageAccount `
+       -ResourceGroupName myResourceGroup `
+       -Name mystorageaccount `
+       -Location "West US" `
+       -SkuName "Standard_LRS" `
+       -Kind "Storage"
     ```
 
 ### <a name="upload-the-vhd-to-your-storage-account"></a>ストレージ アカウントに VHD をアップロードする 
@@ -92,8 +113,9 @@ Get-AzureRmStorageAccount
 ```powershell
 $resourceGroupName = "myResourceGroup"
 $urlOfUploadedVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzureRmVhd -ResourceGroupName $resourceGroupName -Destination $urlOfUploadedVhd `
-    -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
+Add-AzureRmVhd -ResourceGroupName $resourceGroupName `
+   -Destination $urlOfUploadedVhd `
+   -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
 ```
 
 
@@ -121,7 +143,8 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ```powershell
 $destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzureRmResourceGroup -Location $location -Name $destinationResourceGroup
+New-AzureRmResourceGroup -Location $location `
+   -Name $destinationResourceGroup
 ```
 
 アップロードした VHD から新しい OS ディスクを作成します。 
@@ -130,12 +153,13 @@ New-AzureRmResourceGroup -Location $location -Name $destinationResourceGroup
 $sourceUri = (https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
 $osDiskName = 'myOsDisk'
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
-    (New-AzureRmDiskConfig -AccountType StandardLRS  -Location $location -CreateOption Import `
+    (New-AzureRmDiskConfig -AccountType StandardLRS  `
+    -Location $location -CreateOption Import `
     -SourceUri $sourceUri) `
     -ResourceGroupName $destinationResourceGroup
 ```
 
-## <a name="option-2-copy-an-existing-azure-vm"></a>オプション 2: 既存の Azure VM をコピーする
+## <a name="option-3-copy-an-existing-azure-vm"></a>オプション 3: 既存の Azure VM をコピーする
 
 VM のスナップショットを取得して管理ディスクを使用する VM のコピーを作成し、そのスナップショットを使用して新しい管理ディスクおよび新しい VM を作成できます。
 
@@ -156,24 +180,33 @@ $snapshotName = 'mySnapshot'
 VM オブジェクトを作成します。
 
 ```powershell
-$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $resourceGroupName
+$vm = Get-AzureRmVM -Name $vmName `
+   -ResourceGroupName $resourceGroupName
 ```
 OS ディスク名を取得します。
 
  ```powershell
-$disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName -DiskName $vm.StorageProfile.OsDisk.Name
+$disk = Get-AzureRmDisk -ResourceGroupName $resourceGroupName `
+   -DiskName $vm.StorageProfile.OsDisk.Name
 ```
 
 スナップショットの構成を作成します。 
 
  ```powershell
-$snapshotConfig =  New-AzureRmSnapshotConfig -SourceUri $disk.Id -OsType Windows -CreateOption Copy -Location $location 
+$snapshotConfig =  New-AzureRmSnapshotConfig `
+   -SourceUri $disk.Id `
+   -OsType Windows `
+   -CreateOption Copy `
+   -Location $location 
 ```
 
 スナップショットを取得する。
 
 ```powershell
-$snapShot = New-AzureRmSnapshot -Snapshot $snapshotConfig -SnapshotName $snapshotName -ResourceGroupName $resourceGroupName
+$snapShot = New-AzureRmSnapshot `
+   -Snapshot $snapshotConfig `
+   -SnapshotName $snapshotName `
+   -ResourceGroupName $resourceGroupName
 ```
 
 
@@ -187,7 +220,8 @@ $snapShot = New-AzureRmSnapshot -Snapshot $snapshotConfig -SnapshotName $snapsho
 
 ```powershell
 $destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzureRmResourceGroup -Location $location -Name $destinationResourceGroup
+New-AzureRmResourceGroup -Location $location `
+   -Name $destinationResourceGroup
 ```
 
 OS ディスク名を設定します。 
@@ -218,15 +252,20 @@ $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
    
 ```powershell
 $subnetName = 'mySubNet'
-$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+$singleSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+   -Name $subnetName `
+   -AddressPrefix 10.0.0.0/24
 ```
 
 vNet を作成します。 この例では、仮想ネットワーク名を **myVnetName**、場所を **米国西部**、仮想ネットワークのアドレス プレフィックスを **10.0.0.0/16** に設定します。 
    
 ```powershell
 $vnetName = "myVnetName"
-$vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $destinationResourceGroup -Location $location `
-    -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
+$vnet = New-AzureRmVirtualNetwork `
+   -Name $vnetName -ResourceGroupName $destinationResourceGroup `
+   -Location $location `
+   -AddressPrefix 10.0.0.0/16 `
+   -Subnet $singleSubnet
 ```    
 
 
@@ -242,8 +281,10 @@ $rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name myRdpRule -Description "Al
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 `
     -SourceAddressPrefix Internet -SourcePortRange * `
     -DestinationAddressPrefix * -DestinationPortRange 3389
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $destinationResourceGroup -Location $location `
-    -Name $nsgName -SecurityRules $rdpRule
+$nsg = New-AzureRmNetworkSecurityGroup `
+   -ResourceGroupName $destinationResourceGroup `
+   -Location $location `
+   -Name $nsgName -SecurityRules $rdpRule
     
 ```
 
@@ -256,7 +297,9 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $destinationResourceGr
    
 ```powershell
 $ipName = "myIP"
-$pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $destinationResourceGroup -Location $location `
+$pip = New-AzureRmPublicIpAddress `
+   -Name $ipName -ResourceGroupName $destinationResourceGroup `
+   -Location $location `
    -AllocationMethod Dynamic
 ```       
 
@@ -264,8 +307,11 @@ NIC を作成します。 この例では、NIC 名を **myNicName** に設定�
    
 ```powershell
 $nicName = "myNicName"
-$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $destinationResourceGroup `
-    -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+$nic = New-AzureRmNetworkInterface -Name $nicName `
+   -ResourceGroupName $destinationResourceGroup `
+   -Location $location -SubnetId $vnet.Subnets[0].Id `
+   -PublicIpAddressId $pip.Id `
+   -NetworkSecurityGroupId $nsg.Id
 ```
 
 
@@ -320,6 +366,6 @@ $vmList = Get-AzureRmVM -ResourceGroupName $destinationResourceGroup
 $vmList.Name
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 新しい仮想マシンにサインインするには、 [ポータル](https://portal.azure.com)で VM を参照し、 **[接続]**をクリックして、リモート デスクトップ RDP ファイルを開きます。 元の仮想マシンのアカウント資格情報を使用して、新しい仮想マシンにサインインします。 詳しくは、「[Windows が実行されている Azure 仮想マシンに接続してログオンする方法](connect-logon.md)」をご覧ください。
 

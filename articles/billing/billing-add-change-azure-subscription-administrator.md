@@ -13,42 +13,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/30/2017
+ms.date: 01/04/2018
 ms.author: genli
-ms.openlocfilehash: d78174cd968c0f918a07027daf1e59665d6b6c1e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: dc09f29fec78d408e1560bfa0a943f16ab50c760
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/04/2018
 ---
-# <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する
+# <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
-Azure サブスクリプションまたはサブスクリプションで使われる Azure サービスを管理する Azure 管理者を変更できます。 Azure 課金情報の確認およびサブスクリプションの管理を行うには、アカウント センターにアカウント管理者としてサインインする必要があります。 
+従来の Azure サブスクリプション管理と Azure [ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-what-is.md) が、Azure リソースへのアクセスを管理する 2 つのシステムです。
+
+* 従来のサブスクリプション管理者ロールは、基本的なアクセス管理を提供しており、アカウント管理者、サービス管理者、および共同管理者が含まれます。
+    * 新しい Azure サブスクリプションにサインアップすると、既定では、アカウント管理者およびサービス管理者の両方としてアカウントが設定されます。
+    * 共同管理者はサインアップした後に追加できます。
+* RBAC はさらに新しいシステムで、多数の組み込みロール、スコープの柔軟性、およびカスタム ロールによってきめ細かなアクセス管理を提供します。
+    * ただし、従来のサブスクリプション管理者ロールがなく、RBAC ロールだけを持つユーザーが、Azure クラシック デプロイメントを管理することはできません。
+
+アクセス管理を確実かつ適切に制御し、簡略化するには、すべてのアクセス管理のニーズに対応する RBAC を使用することをお勧めします。 可能な場合は、RBAC を使用して既存のアクセス ポリシーを再構成することをお勧めします。 
 
 <a name="add-an-admin-for-a-subscription"></a>
 
 ## <a name="add-an-rbac-owner-admin-for-a-subscription-in-azure-portal"></a>Azure ポータルでサブスクリプションの所有者の RBAC 管理者を追加します。 
 
-Azure ポータルでユーザーをサブスクリプションの管理者として追加するには、そのユーザーに [RBAC](../active-directory/role-based-access-control-configure.md) 所有者ロールを付与することをお勧めします。 所有者ロールでは、管理者が割り当て、他のサブスクリプションにアクセス権がないサブスクリプションのリソースを管理できます。 [Azure ポータル](https://portal.azure.com)で追加した所有者は、[Azure クラシック ポータル](https://manage.windowsazure.com)でリソースを管理できません。
+Azure サブスクリプション サービス管理の管理者としてユーザーを追加するには、そのユーザーに、サブスクリプションの RBAC 所有者ロールを付与します。 所有者ロールでは、管理者が割り当て、他のサブスクリプションにアクセス権がないサブスクリプションのリソースを管理できます。
 
-1. Azure ポータルの[サブスクリプション ビュー](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
-1. この管理者がアクセスするサブスクリプションを選択します。
-1. メニューから **[アクセス制御 (IAM)]** を選択します。
-1. **[追加]** > **[ロール]** > **[所有者]** の順に選択します。 所有者として追加するユーザーの電子メール アドレスを入力し、ユーザーを選択し、**[保存]** を選択します。
+1. [Azure Portal の**サブスクリプション**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
+2. アクセス権を付与するサブスクリプションを選択します。
+3. メニューから **[アクセス制御 (IAM)]** を選択します。
+4. **[ロール]** ボックスで、**[所有者]** を選択します。 
+5. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。 
+6. **[選択]** ボックスに、所有者として追加するユーザーのメール アドレスを入力します。 ユーザーを選択し、**[保存]** を選択します。
 
     ![選択された所有者ロールを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-role.png)
+
+これにより、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセスがユーザーに付与されます。 リソース グループなど、異なるスコープでアクセスを付与するには、そのスコープの IAM メニューにアクセスしてください。 
 
 ## <a name="add-or-change-co-administrator"></a>共同管理者を追加または変更する
 
 共同管理者として追加できるのは所有者のみです。 共同作成者や閲覧者などのロールの他のユーザーは、共同管理者として追加できません。
 
+> [!TIP]
+> ユーザーが Azure クラシック デプロイメントを管理する必要がある場合は、"所有者" アカウントを共同管理者として追加するだけです。 他の目的についてはすべて、RBAC を使用することをお勧めします。
+
 1. 既に実行していない場合は、上記の手順に従って、所有者として他のユーザーを追加します。
 2. 追加した所有者ユーザーを**右クリック**し、**[共同管理者として追加]** を選択します。 **[共同管理者として追加]** オプションが表示されない場合は、ページを更新するか、別のインターネット ブラウザーを試してください。 
 
-     ![共同管理者追加のスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
-
-    >[!TIP]
-    >ユーザーが [Azure クラシック ポータル](https://manage.windowsazure.com/)で Azure サービスを管理する必要がある場合は、"所有者" アカウントを共同管理者として追加する必要があります。
+    ![共同管理者追加のスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 
     共同管理者のアクセス許可を削除するには、"共同管理者" を**右クリック**し、**[共同管理者を削除する]** を選択します。
 
@@ -58,7 +70,7 @@ Azure ポータルでユーザーをサブスクリプションの管理者と�
 
 ## <a name="change-the-service-administrator-for-an-azure-subscription"></a>Azure サブスクリプションのサービス管理者を変更する
 
-サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 サインアップ時の既定設定では、サービス管理者はアカウント管理者でもあります。
+サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。 サインアップ時の既定設定では、サービス管理者はアカウント管理者でもあります。 サービス管理者が別のユーザーに変更されると、アカウント管理者は、Azure Portal にアクセスできなくなります。 ただし、アカウント管理者はいつでもアカウント センターを使用して、サービス管理者を自身に戻すことができます。
 
 1. 「[サービス管理者を変更するための制限事項](#limits)」を参照して、使用するシナリオがサポートされていることを確認してください。
 1. アカウント管理者として [Azure センター](https://account.windowsazure.com/subscriptions)にサインインします。
@@ -74,38 +86,38 @@ Azure ポータルでユーザーをサブスクリプションの管理者と�
 
 ### <a name="limitations-for-changing-service-administrators"></a>サービス管理者を変更するための制限事項
 
-* すべてのサブスクリプションは Azure AD ディレクトリと関連付けられています。 サブスクリプションが関連付けられているディレクトリを検索するには、[Azure クラシック ポータル](https://manage.windowsazure.com/)にアクセスし、**[設定]** > **[サブスクリプション]** の順に選択します。 サブスクリプション ID を確認してディレクトリを検索します。
+* すべてのサブスクリプションは Azure AD ディレクトリと関連付けられています。 サブスクリプションが関連付けられているディレクトリを検索するには、[**サブスクリプション**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、サブスクリプションを選択して、ディレクトリを表示します。
 * 職場または学校アカウントを使用してサインインした場合、組織内の他のアカウントをサービス管理者として追加することができます。 たとえば、abby@contoso.com はサービス管理者として bob@contoso.com を追加できますが、john@notcontoso.com が contoso.com ディレクトリ内にない限り john@notcontoso.com は追加できません。 職場または学校アカウントでサインインしているユーザーは、Microsoft アカウント ユーザーをサービス管理者として引き続き追加できます。
 
   | サインイン方法 | SA として Microsoft アカウント ユーザーを追加しますか。 | SA と同じ組織内に、職場または学校のアカウントを追加しますか。 | SA と異なる組織内に、職場または学校のアカウントを追加しますか。 |
   | --- | --- | --- | --- |
-  |  Microsoft アカウント |はい |なし |いいえ |
-  |  職場または学校のアカウント |あり |あり |いいえ |
+  |  Microsoft アカウント |[はい] |いいえ  |いいえ  |
+  |  職場または学校のアカウント |[はい] |[はい] |いいえ  |
 
 ## <a name="change-the-account-administrator-for-an-azure-subscription"></a>Azure サブスクリプションのアカウント管理者を変更する
 
-サブスクリプションのアカウント管理者を変更する方法の詳細については、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](billing-subscription-transfer.md)」を参照してください。
+アカウント管理者とは、Azure サブスクリプションに最初にサインアップしたユーザーで、サブスクリプションの請求先の所有者としての責任を負います。 サブスクリプションのアカウント管理者を変更する方法の詳細については、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](billing-subscription-transfer.md)」を参照してください。
 
 <a name="check-the-account-administrator-of-the-subscription"></a>
 
 「**サブスクリプションのアカウント管理者を確認する**」 次の手順に従います。
 
-1. Azure Portal の[サブスクリプション ビュー](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
+1. [Azure Portal の**サブスクリプション**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 1. 確認するサブスクリプションを選択し、**[設定]** を調べます。
-1. **[プロパティ]**を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。  
+1. **[プロパティ]**を選択します。 サブスクリプションのアカウント管理者が、**[アカウント管理者]** ボックスに表示されます。  
 
-## <a name="types-of-azure-admin-accounts"></a>Azure 管理者アカウントの種類
+## <a name="types-of-classic-subscription-admins"></a>従来のサブスクリプション管理者の種類
 
- Microsoft Azure の管理者ロールには、アカウント管理者、サービス管理者、共同管理者の 3 種類があります。 次の表では、これら 3 つの管理ロールの違いについて説明します。
+ Azure の従来のサブスクリプション管理者ロールには、アカウント管理者、サービス管理者、共同管理者の 3 種類があります。 Azure へのサインアップに使用されたアカウントは、自動的にアカウント管理者とサービス管理者の両方として設定されます。 その後、共同管理者を追加できます。 次の表では、この 3 つの管理ロールの厳密な違いについて説明します。 
 
-| 管理ロール | 制限 | Description |
+> [!TIP]
+> 制御を強化し、きめ細かなアクセス管理を実現するために、Azure ロールベースのアクセス制御 (RBAC) を使用することをお勧めします。これにより、ユーザーを複数のロールに追加することができます。 詳細については、[Azure Active Directory のロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)に関するページをご覧ください。
+
+| 従来のサブスクリプション管理者 | 制限 | [説明] |
 | --- | --- | --- |
-| アカウント管理者 (AA) |1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、 [アカウント センター](https://account.azure.com/Subscriptions) にアクセスして多様な管理タスクを実行する権限を持っている個人。 管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 |
-| サービス管理者 (SA) |1 Azure サブスクリプションに 1 人 |このロールには、 [Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 |
-| [Azure クラシック ポータル](https://manage.windowsazure.com) |サブスクリプションあたり 200 人 |サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
-
-Azure Active Directory のロールベースのアクセス制御 (RBAC) では、ユーザーを複数のロールに追加できます。 詳細については、「 [Azure Active Directory のロールベースの Access Control](../active-directory/role-based-access-control-configure.md)」を参照してください。
-
+| アカウント管理者 (AA) |1 Azure アカウントに 1 人 |Azure サブスクリプションにサインアップしたユーザーです。[アカウント センター](https://account.azure.com/Subscriptions)にアクセスし、さまざまな管理タスクを実行する権限が付与されています。 管理タスクには、新しいサブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 概念的には、アカウント管理者は、サブスクリプションの請求先の所有者です。 RBAC で、アカウント管理者にロールが割り当てられることはありません。|
+| サービス管理者 (SA) |1 Azure サブスクリプションに 1 人 |このロールには、 [Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 RBAC では、所有者ロールは、サブスクリプション スコープでサービス管理者に付与されます。|
+| 共同管理者 (CA) |サブスクリプションあたり 200 人 |サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 RBAC では、所有者ロールは、サブスクリプション スコープで共同管理者に付与されます。|
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>リソースのアクセス制御と Active Directory の詳細
 

@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/15/2017
+ms.date: 1/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 986aa2a3254374f77c5e21b7d7b7562ced660744
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 2e609b205c32d2ea5ca58586e9f8ba9623ef7580
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
-このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定とアップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
+このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
 
 > [!NOTE]
 > ポータルで利用できるのは一部の設定のみです。 次に示す設定がポータルで利用できない場合は、Azure Resource Manager テンプレートを使用してカスタマイズします。
@@ -686,6 +686,7 @@ PropertyGroup|X509NameMap、既定値は None|動的| |
 |RunAsPolicyEnabled| ブール値、既定値は FALSE|静的| ローカル ユーザーとしてのコード パッケージの実行を有効にします。ただし、ファブリック プロセスが実行されているユーザーを除きます。 このポリシーを有効にするには、Fabric が、システムとして、または SeAssignPrimaryTokenPrivilege を持つユーザーとして実行されている必要があります。 |
 |ServiceFactoryRegistrationTimeout| TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的|timespan を秒単位で指定します。 同期 Register(Stateless/Stateful)ServiceFactory 呼び出しのタイムアウト値 |
 |ServiceTypeDisableGraceInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(30)|動的|timespan を秒単位で指定します。 この時間が経過した後、サービスの種類を無効にできます |
+|EnableDockerHealthCheckIntegration|ブール値、既定値は TRUE|静的|Docker HEALTHCHECK イベントと Service Fabric システム正常性レポートの統合を有効にする |
 
 ### <a name="section-name-federation"></a>セクション名: Federation
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
@@ -772,8 +773,8 @@ PropertyGroup|X509NameMap、既定値は None|動的| |
 |MaxPrimaryReplicationQueueMemorySize|uint、既定値は 0|静的|プライマリ レプリケーション キューの最大値 (バイト単位)。|
 |MaxSecondaryReplicationQueueSize|uint、既定値は 2048|静的|セカンダリ レプリケーション キューに存在する可能性がある操作の最大数。 この値は 2 の累乗にする必要があります。|
 |MaxSecondaryReplicationQueueMemorySize|uint、既定値は 0|静的|セカンダリ レプリケーション キューの最大値 (バイト単位)。|
-|QueueHealthMonitoringInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(30)|静的|timespan を秒単位で指定します。 この値は、レプリケーターが、レプリケーション操作キューで警告/エラーの正常性イベントを監視するときに使用する時間を決定します。 値 "0" の場合、正常性の監視は無効になります。 |
-|QueueHealthWarningAtUsagePercent|uint、既定値は 80|静的|この値は、レプリケーション キューの使用率の基準を決定します。このパーセンテージを上回ると、キューの使用率が高いことが警告されます。 警告は、QueueHealthMonitoringInterval の猶予期間の後にレポートされます。 キューの使用率が猶予期間にこのパーセンテージを下回った場合、警告はレポートされません。|
+|QueueHealthMonitoringInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(30)|静的|timespan を秒単位で指定します。 この値は、レプリケーターが、レプリケーション操作キューで警告/エラーの正常性イベントを監視するときに使用する時間を決定します。 値 "0" の場合、正常性の監視は無効になります |
+|QueueHealthWarningAtUsagePercent|uint、既定値は 80|静的|この値は、レプリケーション キューの使用率の基準を決定します。このパーセンテージを上回ると、キューの使用率が高いことが警告されます。 警告は、QueueHealthMonitoringInterval の猶予期間の後にレポートされます。 キューの使用率が猶予期間にこのパーセンテージを下回った場合|
 |RetryInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(5)|静的|timespan を秒単位で指定します。 このタイマーは、操作が失われた場合、または拒否された場合に、レプリケーターが操作の送信の再試行をどのくらいの頻度で行うかを決定します。|
 
 ### <a name="section-name-transport"></a>セクション名: Transport
@@ -782,7 +783,7 @@ PropertyGroup|X509NameMap、既定値は None|動的| |
 |ResolveOption|string、既定値は L"unspecified"|静的|FQDN の解決方法を決定します。  有効な値は "未指定/ipv4/ipv6" です。 |
 |ConnectionOpenTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60)|静的|timespan を秒単位で指定します。 受信および受け入れ側の両方における接続設定のタイムアウト (セキュア モードでのセキュリティ ネゴシエーションを含む) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クラスター管理の詳細については、次の記事を参照してください。
 
 [Azure クラスターの証明書の追加、ロール オーバー、削除 ](service-fabric-cluster-security-update-certs-azure.md) 

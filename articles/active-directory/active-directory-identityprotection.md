@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d9a83c1f1adb0a3dedaf7f8f0665de8bb809c4e8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e66d033d95efccf53ea2de889b5811fe2eafb76a
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -79,7 +79,7 @@ Identity Protection 実装の管理アクティビティの負荷を分散する
 
 | 役割                         | できること                          | できないこと
 | :--                          | ---                                |  ---   |
-| グローバル管理者         | Identity Protection へのフル アクセス、Identity Protection の配布準備| |
+| 全体管理者         | Identity Protection へのフル アクセス、Identity Protection の配布準備| |
 | セキュリティ管理者       | Identity Protection へのフル アクセス | Identity Protection の配布準備、ユーザーのパスワードのリセット |
 | セキュリティ閲覧者              | Identity Protection への読み取り専用アクセス | Identity Protection の配布準備、ユーザーの修復、ポリシーの構成、パスワードのリセット |
 
@@ -396,7 +396,7 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
 
     ![MFA ポリシー](./media/active-directory-identityprotection/1019.png "MFA policy")
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 * [Azure Active Directory Identity Protection の有効化](active-directory-identityprotection-enable.md)

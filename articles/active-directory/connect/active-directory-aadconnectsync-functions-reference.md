@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 07b681f8721c7c5627eb6809d4fc2cb9536d65eb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d84a31e72d3e97ebb12f1747259fcb6e6b8fdcdc
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: 関数リファレンス
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  
@@ -155,12 +155,6 @@ CDate 関数は、文字列から UTC DateTime を返します。 DateTime は S
 
 `CDate("2013-01-10 4:00 PM -8")`  
 "2013-01-11 12:00 AM" を表す DateTime を返します。
-
-
-
-
-
-
 
 
 - - -
@@ -453,7 +447,7 @@ ConvertToUTF8Hex 関数は、文字列を UTF8 の 16 進数でエンコード�
 48656C6C6F20776F726C6421 を返します。
 
 - - -
-### <a name="count"></a>カウント
+### <a name="count"></a>Count
 **説明:**  
 Count 関数は、複数値の属性内の要素数を返します。
 
@@ -546,7 +540,7 @@ DNComponent 関数は、指定した DN コンポーネントの値を左から�
 * ComponentNumber: 返される DN のコンポーネント
 
 **例:**  
-`DNComponent([dn],1)`  
+`DNComponent(CRef([dn]),1)`  
 dn が "cn=Joe,ou=…," の場合は、Joe が返されます。
 
 - - -
@@ -564,8 +558,8 @@ DNComponentRev 関数は、指定した DN コンポーネントの値を右 (�
 
 **例:**  
 dn が "cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com" の場合、  
-`DNComponentRev([dn],3)`  
-`DNComponentRev([dn],1,"DC")`  
+`DNComponentRev(CRef([dn]),3)`  
+`DNComponentRev(CRef([dn]),1,"DC")`  
 両方が US を返します。
 
 - - -
@@ -848,7 +842,7 @@ ItemOrNull 関数は複数値の属性内の項目に対するインデックス
 インデックスが範囲外にある場合は、Null 値を返します。
 
 - - -
-### <a name="join"></a>Join
+### <a name="join"></a>Join (結合)
 **説明:**  
 Join 関数は、複数値の文字列を受け取り、指定した区切り記号が項目間に挿入された、単一値の文字列を返します。
 
@@ -1168,7 +1162,7 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 " Test" を返します。
 
 - - -
-### <a name="select"></a>Select
+### <a name="select"></a>elect
 **説明:**  
 指定された関数に基づいて、複数値の属性 (または式の出力) 内のすべての値を処理します。
 
@@ -1219,7 +1213,7 @@ StringFromSid 関数は、セキュリティ識別子が含まれるバイト配
 `str StringFromSid(bin ObjectSID)`  
 
 - - -
-### <a name="switch"></a>Switch
+### <a name="switch"></a>スイッチ
 **説明:**  
 Switch 関数は、条件の評価結果に基づいて 1 つの値を返すために使用します。
 

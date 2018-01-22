@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.openlocfilehash: a6cfcd939cb0f21d01fe849ef04619ec9c1c972a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: f174766d4ab909fea0feea517a17b9d648722c2a
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -70,7 +70,7 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 | | |
 |-|-|
-| ![関数アプリのアプリケーションの設定。](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | App Service の **[アプリケーションの設定]** ブレードでは、フレームワーク バージョン、リモート デバッグ、アプリ設定、および接続文字列を構成して管理します。 関数アプリとその他の Azure およびサードパーティのサービスを統合する場合、その設定をここで変更できます。 |
+| ![関数アプリのアプリケーションの設定。](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | App Service の **[アプリケーションの設定]** ブレードでは、フレームワーク バージョン、リモート デバッグ、アプリ設定、および接続文字列を構成して管理します。 関数アプリとその他の Azure およびサードパーティのサービスを統合する場合、その設定をここで変更できます。 設定を削除するには、右にスクロールして、行の右端にある **X** アイコン (下図には示されていません) を選択します。
 
 ![アプリケーション設定の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 
@@ -125,7 +125,7 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 + [Azure App Service の設定の構成](../app-service/web-sites-configure.md)
 + [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)

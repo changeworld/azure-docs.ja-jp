@@ -369,6 +369,8 @@
           href: copy-files-to-linux-vm-using-scp.md
         - name: Azure Site Recovery を使用した Premium Storage への移行
           href: migrate-to-premium-storage-using-azure-site-recovery.md
+        - name: アタッチされていないディスクの検出
+          href: find-unattached-disks.md
         - name: File Storage を使用する
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: テンプレートによるディスクのデプロイ

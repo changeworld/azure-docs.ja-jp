@@ -1,6 +1,6 @@
 ---
-title: "コネクテッド ファクトリ ゲートウェイをデプロイする - Azure | Microsoft Docs"
-description: "Windows または Linux 上にゲートウェイをデプロイして、構成済みのコネクテッド ファクトリ ソリューションに接続できるようにする方法。"
+title: "コネクテッド ファクトリ ゲートウェイのデプロイ - Azure | Microsoft Docs"
+description: "Windows または Linux 上にゲートウェイをデプロイして、コネクテッド ファクトリ事前構成済みソリューションに接続できるようにする方法。"
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -12,163 +12,173 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 12/11/2017
 ms.author: dobett
-ms.openlocfilehash: 32a62be9578ac802ee8fff1b0aa48e2d39362e63
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: c9854c68a95c2c1cc584503eb2f0b0dba6091016
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>コネクテッド ファクトリ事前構成済みソリューション用のエッジ ゲートウェイを Windows または Linux 上にデプロイします
 
-構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイをデプロイするために必要なソフトウェアには、次の 2 つのコンポーネントがあります。
+"*コネクテッド ファクトリ*" 事前構成済みソリューション用のエッジ ゲートウェイをデプロイするには、次の 2 つのソフトウェア コンポーネントが必要です。
 
-* *OPC Proxy* は、IoT Hub との接続を確立し、 コネクテッド ファクトリ ソリューション ポータルで動作する統合された *OPC* ブラウザーからのコマンドと制御のメッセージを待機します。
-* *OPC Publisher* は、既存のオンプレミス OPC UA サーバーに接続し、そこから IoT Hub にテレメトリ メッセージを転送します。
+- *OPC Proxy* は、コネクテッド ファクトリとの接続を確立します。 OPC Proxy は、コネクテッド ファクトリ ソリューション ポータルで動作する統合された OPC ブラウザーからのコマンドと制御メッセージを待機します。
 
-どちらのコンポーネントもオープン ソースであり、GitHub 上のソースとして、または Docker コンテナーとして利用することができます。
+- *OPC Publisher* は、既存のオンプレミス OPC UA サーバーに接続し、そこからコネクテッド ファクトリにテレメトリ メッセージを転送します。 [OPC UA 用の OPC クラシック アダプター](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md)を使用して、OPC クラシック デバイスに接続できます。
+
+どちらのコンポーネントもオープン ソースであり、GitHub 上のソースとして、または DockerHub 上の Docker コンテナーとして利用できます。
 
 | GitHub | DockerHub |
 | ------ | --------- |
-| [OPC Publisher][lnk-publisher-github] | [OPC Publisher][lnk-publisher-docker] |
-| [OPC Proxy][lnk-proxy-github] | [OPC Proxy][lnk-proxy-docker] |
+| [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) | [OPC Publisher](https://hub.docker.com/r/microsoft/iot-edge-opc-publisher/)   |
+| [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy)         | [OPC Proxy](https://hub.docker.com/r/microsoft/iot-edge-opc-proxy/) |
 
-どちらのコンポーネントも、公開 IP アドレスまたはゲートウェイ ファイアウォールの開放ポートは必要ありません。 OPC Proxy と OPC Publisher で使用されるのは、送信ポート 443、5671、8883 だけです。
+どちらのコンポーネントも、公開 IP アドレスまたはゲートウェイ ファイアウォールの受信ポートの開放は必要ありません。 OPC Proxy コンポーネントと OPC Publisher コンポーネントでは、送信ポート 443 のみが使用されます。
 
-この記事では、Docker を使用して [Windows](#windows-deployment) または [Linux](#linux-deployment) 上にゲートウェイをデプロイする手順について説明します。 ゲートウェイにより、構成済みのコネクテッド ファクトリ ソリューションに接続できるようになります。
-
-> [!NOTE]
-> Docker コンテナーで実行されるゲートウェイ ソフトウェアは、[Azure IoT Edge]です。
-
-## <a name="windows-deployment"></a>Windows デプロイ
+この記事では、Docker を使用して Windows または Linux 上にエッジ ゲートウェイをデプロイする手順について説明します。 ゲートウェイにより、コネクテッド ファクトリ事前構成済みソリューションに接続できるようになります。 コンポーネントは、コネクテッド ファクトリなしで使用することもできます。
 
 > [!NOTE]
-> ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 コネクテッド ファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、[Azure IoT デバイス カタログ]をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。 また、以下の手順に従って、既存のゲートウェイのいずれかを手動で設定することもできます。
+> どちらのコンポーネントも、[Azure IoT Edge](https://github.com/Azure/iot-edge) 内でモジュールとして使用できます。
 
-### <a name="install-docker"></a>Docker をインストールする
+## <a name="choose-a-gateway-device"></a>ゲートウェイ デバイスを選択する
 
-Windows ベースのゲートウェイ デバイスに [Docker for Windows] をインストールします。 Windows Docker のセットアップ時に、Docker と共有するホスト コンピューターのドライブを選択します。 次のスクリーンショットは、Windows システムの D ドライブの共有を示しています。
+ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 コネクテッド ファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、[Azure IoT デバイス カタログ](https://catalog.azureiotsuite.com/?q=opc)をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。
 
-![Docker をインストールする][img-install-docker]
+または、以下の手順に従って、既存のゲートウェイ デバイスを手動で設定します。
 
-次に、共有ドライブのルートに **docker** というフォルダーを作成します。
-この手順は、Docker のインストール後に **[設定]** メニューから実行することもできます。
+## <a name="install-and-configure-docker"></a>Docker をインストールして構成する
 
-### <a name="configure-the-gateway"></a>ゲートウェイの構成
+[Docker for Windows](https://www.docker.com/docker-windows) を Windows ベースのゲートウェイ デバイスにインストールするか、パッケージ マネージャーを使用して Linux ベースのゲートウェイ デバイスに Docker をインストールします。
 
-1. ゲートウェイのデプロイを実行するには、Azure IoT Suite コネクテッド ファクトリ デプロイの **iothubowner** 接続文字列が必要です。 [Azure Portal] で、コネクテッド ファクトリ ソリューションをデプロイしたときに作成したリソース グループの IoT Hub に移動します。 **[共有アクセス ポリシー]** をクリックして、**iothubowner** 接続文字列にアクセスします。
+Docker for Windows のセットアップ時に、Docker と共有するホスト コンピューターのドライブを選択します。 次のスクリーンショットは、Docker コンテナーの内部からホスト ドライブへのアクセスを許可するために Windows システムの **D** ドライブを共有することを示しています。
 
-    ![IoT Hub 接続文字列を見つける][img-hub-connection]
+![Docker for Windows のインストール](./media/iot-suite-connected-factory-gateway-deployment/image1.png)
+
+> [!NOTE]
+> この手順は、Docker のインストール後に **[設定]** ダイアログから実行することもできます。 Windows システム トレイの **[Docker]** アイコンを右クリックし、**[設定]** を選択します。
+
+Linux を使用している場合は、ファイル システムへのアクセスを有効にするために必要な追加構成はありません。
+
+Windows では Docker と共有したドライブにフォルダーを作成し、Linux ではルート ファイル システムの下にフォルダーを作成します。 このチュートリアルでは、このフォルダーを `<SharedFolder>` と呼びます。
+
+Docker コマンドで `<SharedFolder>` を参照するときは、必ずオペレーティング システムの正しい構文を使用してください。 Windows 用と Linux 用の 2 つの例を次に示します。
+
+- Windows で `D:\shared` フォルダーを `<SharedFolder>` として使用する場合、Docker コマンドの構文は `//d/shared` になります。
+
+- Linux で `/shared` フォルダーを `<SharedFolder>` として使用する場合、Docker コマンドの構文は `/shared` になります。
+
+詳細については、Docker エンジン リファレンスの[ボリュームの使用](https://docs.docker.com/engine/admin/volumes/volumes/)に関する記事を参照してください。
+
+## <a name="configure-the-opc-components"></a>OPC コンポーネントを構成する
+
+OPC コンポーネントをインストールする前に、次の手順を完了して環境を準備してください。
+
+1. ゲートウェイのデプロイを完了するには、コネクテッド ファクトリのデプロイに IoT Hub の**iothubowner** 接続文字列が必要です。 [Azure Portal](http://portal.azure.com/) で、コネクテッド ファクトリ ソリューションのデプロイ時に作成したリソース グループの IoT Hub に移動します。 **[共有アクセス ポリシー]** をクリックして、**iothubowner** 接続文字列にアクセスします。
+
+    ![IoT Hub 接続文字列を見つける](./media/iot-suite-connected-factory-gateway-deployment/image2.png)
 
     **[接続文字列 -- 主キー]** の値をコピーします。
 
-1. コマンド プロンプトで次のコマンドを使用して、2 つのゲートウェイ モジュールを **1 回**実行し、IoT Hub のゲートウェイを構成します。
+1. Docker コンテナー間の通信を許可するのには、ユーザー定義のブリッジ ネットワークが必要です。 コンテナー用のブリッジ ネットワークを作成するには、コマンド プロンプトで次のコマンドを実行します。
 
-    `docker run -it --rm -h <ApplicationName> -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName> "<IoTHubOwnerConnectionString>"`
+    ```cmd/sh
+    docker network create -d bridge iot_edge
+    ```
 
-    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
+    **iot_edge** ブリッジ ネットワークが作成されたことを確認するには、次のコマンドを実行します。
 
-    * **&lt;ApplicationName&gt;** は、OPC UA Publisher に付ける名前です。**publisher.&lt;完全修飾ドメイン名&gt;** の形式になります。 たとえば、ファクトリ ネットワークの名称が **myfactorynetwork.com** である場合、**ApplicationName** の値は **publisher.myfactorynetwork.com** になります。
-    * **&lt;IoTHubOwnerConnectionString&gt;** は、前の手順でコピーした **iothubowner** 接続文字列です。 この接続文字列はこの手順でのみ使用します。以降の手順では不要です。
+    ```cmd/sh
+    docker network ls
+    ```
 
-    マップされた D:\\docker フォルダー (`-v` 引数) は、ゲートウェイ モジュールで使用する 2 つの X.509 証明書を保持するために後で使用します。
+    ネットワークの一覧に **Iot_edge** ブリッジ ネットワークが含まれます。
 
-### <a name="run-the-gateway"></a>ゲートウェイを実行する
+OPC Publisher を実行するには、コマンド プロンプトで次のコマンドを実行します。
 
-1. 次のコマンドを使用して、ゲートウェイを再起動します。
+```cmd/sh
+docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/corefx/cryptography/x509stores --network iot_edge --name publisher -h publisher -p 62222:62222 --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-publisher:2.1.3 publisher "<IoTHubOwnerConnectionString>" --lf /docker/publisher.log.txt --as true --si 1 --ms 0 --tm true --vc true --di 30
+```
 
-    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName>`
+- [OPC Publisher GitHub](https://github.com/Azure/iot-edge-opc-publisher) と [Docker 実行リファレンス](https://docs.docker.com/engine/reference/run/)で、以下の項目の詳細を参照できます。
 
-    `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -D /mapped/cs.db`
+  - コンテナー名の前に指定される Docker コマンド ライン オプション (`microsoft/iot-edge-opc-publisher:2.1.3`)。
+  - コンテナー名の後ろに指定される OPC Publisher コマンド ライン パラメーターの意味 (`microsoft/iot-edge-opc-publisher:2.1.3`)。
 
-1. セキュリティ上の理由から、D:\\docker フォルダーに保持される 2 つの X.509 証明書には秘密キーが含まれます。 このフォルダーへのアクセスは、Docker コンテナーを実行する際に使用する資格情報 (通常は **Administrators**) に制限してください。 D:\\docker フォルダーを右クリックし、**[プロパティ]**、**[セキュリティ]**、**[編集]** の順に選択します。 **Administrators** にフル コントロールを付与し、他のすべてのユーザーを削除します。
+- `<IoTHubOwnerConnectionString>` は、Azure Portal の **iothubowner** 共有アクセス ポリシーの接続文字列です。 この接続文字列は、前の手順でコピーしています。 この接続文字列は、OPC Publisher の初回の実行時にのみ必要です。 セキュリティ リスクがあるため、以降の実行時は省略する必要があります。
 
-    ![Docker 共有にアクセス許可を付与する][img-docker-share]
+- 使用する `<SharedFolder>`とその構文については、「[Docker をインストールして構成する](#install-and-configure-docker)」セクションで説明されています。 OPC Publisherは、`<SharedFolder>` を使用して OPC Publisher 構成ファイルを読み取り、ログ ファイルに書き込み、コンテナーの外部から両方のファイルを使用できるようにします。
 
-1. ネットワーク接続を確認します。 コマンド プロンプトで `ping publisher.<your fully qualified domain name>` コマンドを入力し、ゲートウェイに ping を送信します。 接続先に到達できない場合は、ゲートウェイの hosts ファイルにゲートウェイの IP アドレスと名前を追加します。 hosts ファイルは、**Windows\\System32\\drivers\\etc** フォルダーにあります。
+- OPC Publisher は、その構成を **publishednodes.json** ファイルから読み取ります。このファイルは `<SharedFolder>/docker` フォルダーに置く必要があります。 この構成ファイルは、OPC Publisher がサブスクライブする必要がある OPC UA サーバー上の OPC UA ノード データを定義します。
 
-1. 次に、ゲートウェイで実行されているローカル OPC UA クライアントを使用して、パブリッシャーに接続してみます。 OPC UA エンドポイントの URL は、`opc.tcp://publisher.<your fully qualified domain name>:62222` です。 OPC UA クライアントがない場合は、[オープンソースの OPC UA クライアント]をダウンロードして使用できます。
+- OPC UA サーバーが OPC Publisher にデータの変更を通知するたびに、新しい値が IoT Hub に送信されます。 バッチ処理の設定によっては、OPC Publisher は、データを蓄積した後で IoT Hub にデータをバッチ送信する場合があります。
 
-1. これらのローカル テストが正常に完了したら、コネクテッド ファクトリ ソリューション ポータルの **[Connect your own OPC UA Server (独自の OPC UA サーバーの接続)]** ページを参照します。 パブリッシャー エンドポイントの URL (`tcp://publisher.<your fully qualified domain name>:62222`) を入力し、**[接続]** をクリックします。 証明書の警告が表示されたら、**[続行]** をクリックします。 次に、パブリッシャーが UA Web クライアントを信頼していないことを示すエラーが表示されます。 このエラーを解決するには、**UA Web クライアント**の証明書を、**D:\\docker\\Rejected Certificates\\certs** フォルダーからゲートウェイの **D:\\docker\\UA Applications\\certs** フォルダーにコピーします。 ゲートウェイを再起動する必要はありません。 この手順を繰り返します。 これでクラウドからゲートウェイに接続できるようになりました。OPC UA サーバーをソリューションに追加する準備ができました。
+- **publishednodes.json** ファイルの完全な構文については、GitHub の [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) ページで説明されています。
 
-### <a name="add-your-opc-ua-servers"></a>OPC UA サーバーを追加する
+    次のスニペットは、**publishednodes.json** ファイルの簡単な例を示しています。 この例は、ホスト名 **win10pc** の OPC UA サーバーから **CurrentTime** 値を公開する方法を示しています。
 
-1. コネクテッド ファクトリ ソリューション ポータルの **[Connect your own OPC UA Server (独自の OPC UA サーバーの接続)]** ページを参照します。 前のセクションの手順に従って、コネクテッド ファクトリ ポータルと OPC UA サーバー間の信頼を確立します。 この手順により、コネクテッド ファクトリ ポータルと OPC UA サーバーから証明書の相互の信頼が確立され、接続が作成されます。
+    ```json
+    [
+      {
+        "EndpointUrl": "opc.tcp://win10pc:48010",
+        "OpcNodes": [
+          {
+            "ExpandedNodeId": "nsu=http://opcfoundation.org/UA/;i=2258"
+          }
+        ]
+      }
+    ]
+    ```
 
-1. OPC UA サーバーの OPC UA ノード ツリーを参照し、OPC ノードを右クリックして **[発行]** をクリックします。 発行をこのように実行するには、OPC UA サーバーとパブリッシャーが同じネットワーク上に存在する必要があります。 つまり、パブリッシャーの完全修飾ドメイン名が **publisher.mydomain.com** の場合、OPC UA サーバーの完全修飾ドメイン名は、たとえば **myopcuaserver.mydomain.com** である必要があります。現在のセットアップが異なる場合は、**D:\\docker** フォルダーにある publishesnodes.json ファイルにノードを手動で追加できます。 publishesnodes.json ファイルは、OPC ノードが最初に正常に発行されたときに自動的に生成されます。
+    **Publishednodes.json** ファイルでは、OPC UA サーバーはエンドポイント URL によって指定されます。 前の例のように、IP アドレスの代わりにホスト名ラベル (**win10pc** など) を使用してホスト名を指定する場合は、コンテナーでのネットワーク アドレスの解決で、このホスト名ラベルが IP アドレスに解決できるようにする必要があります。
 
-1. これでテレメトリがゲートウェイ デバイスから送られてくるようになります。 テレメトリは、コネクテッド ファクトリ ポータルの **[Factory Locations (ファクトリの場所)]** ビューにある **[New Factory (新しいファクトリ)]** で確認できます。
+- Docker は、NetBIOS 名の解決はサポートしません。DNS 名の解決のみをサポートします。 ネットワークに DNS サーバーがない場合は、前のコマンド ラインの例に示されている回避策を使用できます。 前のコマンド ラインの例では、`--add-host` パラメーターを使用して、コンテナーのホスト ファイルにエントリを追加します。 このエントリによって、特定の `<OpcServerHostname>` のホスト名検索が可能になり、IP アドレス `<IpAddressOfOpcServerHostname>` に解決されます。
 
-## <a name="linux-deployment"></a>Linux デプロイ
+- OPC UA は、認証と暗号化で X.509 証明書を使用します。 OPC Publisher 証明書を接続先の OPC UA サーバーに配置して、OPC Publisher を信頼できるようにしておく必要があります。 OPC Publisher 証明書ストアは、`<SharedFolder>/CertificateStores` フォルダーに配置されます。 OPC Publisher 証明書は、`CertificateStores` フォルダー内の `trusted/certs` フォルダーで見つけることができます。
 
-> [!NOTE]
-> ゲートウェイ デバイスがまだない場合は、Microsoft のパートナーのいずれかから商用ゲートウェイを購入することをお勧めします。 コネクテッド ファクトリ ソリューションと互換性のあるゲートウェイ デバイスの一覧については、[Azure IoT デバイス カタログ]をご覧ください。 デバイスに付属する手順書に従って、ゲートウェイを設定します。 また、以下の手順に従って、既存のゲートウェイのいずれかを手動で設定することもできます。
+  OPC UA サーバーを構成する手順は、使用しているデバイスによって異なります。 これらの手順は、通常は OPC UA サーバーのユーザー マニュアルに記載されています。
 
-Linux ゲートウェイ デバイスに [Docker をインストール]します。
+OPC Proxy をインストールするには、コマンド プロンプトで次のコマンドを実行します。
 
-### <a name="configure-the-gateway"></a>ゲートウェイの構成
+```cmd/sh
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
+```
 
-1. ゲートウェイのデプロイを実行するには、Azure IoT Suite コネクテッド ファクトリ デプロイの **iothubowner** 接続文字列が必要です。 [Azure Portal] で、コネクテッド ファクトリ ソリューションをデプロイしたときに作成したリソース グループの IoT Hub に移動します。 **[共有アクセス ポリシー]** をクリックして、**iothubowner** 接続文字列にアクセスします。
+インストールは、システムで 1 回のみ実行する必要があります。
 
-    ![IoT Hub 接続文字列を見つける][img-hub-connection]
+次のコマンドを使用して OPC Proxy を実行します。
 
-    **[接続文字列 -- 主キー]** の値をコピーします。
+```cmd/sh
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -D /mapped/cs.db
+```
 
-1. シェルで次のコマンドを使用して、2 つのゲートウェイ モジュールを **1 回**実行し、IoT Hub のゲートウェイを構成します。
+OPC Proxy は、インストール中に接続文字列を保存します。 セキュリティ リスクがあるため、以降の実行では接続文字列を省略する必要があります。
 
-    `sudo docker run -it --rm -h <ApplicationName> -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/ -v /shared:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName> "<IoTHubOwnerConnectionString>"`
+## <a name="enable-your-gateway"></a>ゲートウェイを有効にする
 
-    `sudo docker run --rm -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
+次の手順を完了して、コネクテッド ファクトリ構成済みソリューションで、ゲートウェイを有効にします。
 
-    * **&lt;ApplicationName&gt;** は、ゲートウェイによって作成された OPC UA アプリケーションの名前です。**publisher.&lt;完全修飾ドメイン名&gt;** の形式になります  (例: **publisher.microsoft.com**)。
-    * **&lt;IoTHubOwnerConnectionString&gt;** は、前の手順でコピーした **iothubowner** 接続文字列です。 この接続文字列はこの手順でのみ使用します。以降の手順では不要です。
+1. 両方のコンポーネントが実行されているときに、コネクテッド ファクトリ ソリューション ポータルの **[独自の OPC UA サーバーを接続する]** ページに移動します。 このページは、ソリューションの管理者のみが使用できます。 パブリッシャー エンドポイント URL (opc.tcp://publisher:62222) を入力し、**[接続]** をクリックします。
 
-    **/shared** フォルダー (`-v` 引数) は、ゲートウェイ モジュールで使用する 2 つの X.509 証明書を保持するために後で使用します。
+1. コネクテッド ファクトリ ポータルと OPC Publisher の間に信頼関係を確立します。 証明書の警告が表示されたら、**[続行]** をクリックします。 次に、OPC Publisher が UA Web クライアントを信頼していないことを示すエラーが表示されます。 このエラーを解決するには、**UA Web クライアント**証明書を `<SharedFolder>/CertificateStores/rejected/certs` フォルダーからゲートウェイの `<SharedFolder>/CertificateStores/trusted/certs` フォルダーにコピーします。 ゲートウェイを再起動する必要はありません。
 
-### <a name="run-the-gateway"></a>ゲートウェイを実行する
+これでクラウドからゲートウェイに接続できるようになりました。OPC UA サーバーをソリューションに追加する準備ができました。
 
-1. 次のコマンドを使用して、ゲートウェイを再起動します。
+## <a name="add-your-own-opc-ua-servers"></a>独自の OPC UA サーバーを追加する
 
-    `sudo docker run -it -h <ApplicationName> --expose 62222 -p 62222:62222 --rm -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v /shared:/shared -v /shared:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:2.1.1 <ApplicationName>`
+独自の OPC UA サーバーをコネクテッド ファクトリの事前構成済みソリューションに追加するには:
 
-    `sudo docker run -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:1.0.2 -D /mapped/cs.db`
+1. コネクテッド ファクトリ ソリューション ポータルの **[独自の OPC UA サーバーを接続する]** ページに移動します。 前のセクションの手順に従って、コネクテッド ファクトリ ポータルと OPC UA サーバーの間の信頼関係を確立します。
 
-1. セキュリティ上の理由から、**/shared** フォルダーに保持される 2 つの X.509 証明書には秘密キーが含まれます。 このフォルダーへのアクセスは、Docker コンテナーを実行する際に使用する資格情報に制限してください。 **root** のアクセス許可だけを設定するには、フォルダーに対して `chmod` シェル コマンドを使用します。
+    ![ソリューション ポータル](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
 
-1. ネットワーク接続を確認します。 シェルで `ping publisher.<your fully qualified domain name>` コマンドを入力し、ゲートウェイに ping を送信します。 接続先に到達できない場合は、ゲートウェイの hosts ファイルにゲートウェイの IP アドレスと名前を追加します。 hosts ファイルは **/etc** フォルダーにあります。
+1. OPC UA サーバーの OPC UA ノード ツリーに移動します。コネクテッド ファクトリに送信する OPC ノードを右クリックし、**[発行]** をクリックします。
 
-1. 次に、ゲートウェイで実行されているローカル OPC UA クライアントを使用して、パブリッシャーに接続してみます。 OPC UA エンドポイントの URL は、`opc.tcp://publisher.<your fully qualified domain name>:62222` です。 OPC UA クライアントがない場合は、[オープンソースの OPC UA クライアント]をダウンロードして使用できます。
+1. これでテレメトリがゲートウェイ デバイスから送られてくるようになります。 テレメトリは、コネクテッド ファクトリ ポータルの **[ファクトリの場所]** ビューにある **[新しいファクトリ]** で確認できます。
 
-1. これらのローカル テストが正常に完了したら、コネクテッド ファクトリ ソリューション ポータルの **[Connect your own OPC UA Server (独自の OPC UA サーバーの接続)]** ページを参照します。 パブリッシャー エンドポイントの URL (`tcp://publisher.<your fully qualified domain name>:62222`) を入力し、**[接続]** をクリックします。 証明書の警告が表示されたら、**[続行]** をクリックします。 次に、パブリッシャーが UA Web クライアントを信頼していないことを示すエラーが表示されます。 このエラーを解決するには、**UA Web クライアント**の証明書を、**/shared/Rejected Certificates/certs** フォルダーからゲートウェイの **/shared/UA Applications/certs** フォルダーにコピーします。 ゲートウェイを再起動する必要はありません。 この手順を繰り返します。 これでクラウドからゲートウェイに接続できるようになりました。OPC UA サーバーをソリューションに追加する準備ができました。
+## <a name="next-steps"></a>次の手順
 
-### <a name="add-your-opc-ua-servers"></a>OPC UA サーバーを追加する
+コネクテッド ファクトリ事前構成済みソリューションのアーキテクチャの詳細については、「[コネクテッド ファクトリ事前構成済みソリューションのチュートリアル](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough)」をご覧ください。
 
-1. コネクテッド ファクトリ ソリューション ポータルの **[Connect your own OPC UA Server (独自の OPC UA サーバーの接続)]** ページを参照します。 前のセクションの手順に従って、コネクテッド ファクトリ ポータルと OPC UA サーバー間の信頼を確立します。 この手順により、コネクテッド ファクトリ ポータルと OPC UA サーバーから証明書の相互の信頼が確立され、接続が作成されます。
-
-1. OPC UA サーバーの OPC UA ノード ツリーを参照し、OPC ノードを右クリックして **[発行]** をクリックします。 発行をこのように実行するには、OPC UA サーバーとパブリッシャーが同じネットワーク上に存在する必要があります。 つまり、パブリッシャーの完全修飾ドメイン名が **publisher.mydomain.com** の場合、OPC UA サーバーの完全修飾ドメイン名は、たとえば **myopcuaserver.mydomain.com** である必要があります。現在のセットアップが異なる場合は、**/shared** フォルダーにある publishesnodes.json ファイルにノードを手動で追加できます。 publishesnodes.json は、OPC ノードが最初に正常に発行されたときに自動的に生成されます。
-
-1. これでテレメトリがゲートウェイ デバイスから送られてくるようになります。 テレメトリは、コネクテッド ファクトリ ポータルの **[Factory Locations (ファクトリの場所)]** ビューにある **[New Factory (新しいファクトリ)]** で確認できます。
-
-## <a name="next-steps"></a>次のステップ
-
-構成済みの コネクテッド ファクトリ ソリューションのアーキテクチャの詳細については、[構成済みのコネクテッド ファクトリ ソリューションのチュートリアル][lnk-walkthrough]をご覧ください。
-
-[OPC Publisher のリファレンス実装](iot-suite-connected-factory-publisher.md)をご覧ください。
-
-[img-install-docker]: ./media/iot-suite-connected-factory-gateway-deployment/image1.png
-[img-hub-connection]: ./media/iot-suite-connected-factory-gateway-deployment/image2.png
-[img-docker-share]: ./media/iot-suite-connected-factory-gateway-deployment/image3.png
-
-[Docker for Windows]: https://www.docker.com/docker-windows
-[Azure IoT デバイス カタログ]: https://catalog.azureiotsuite.com/?q=opc
-[Azure Portal]: http://portal.azure.com/
-[オープンソースの OPC UA クライアント]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
-[Docker をインストール]: https://www.docker.com/community-edition#/download
-[lnk-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
-[Azure IoT Edge]: https://github.com/Azure/iot-edge
-
-[lnk-publisher-github]: https://github.com/Azure/iot-edge-opc-publisher
-[lnk-publisher-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua
-[lnk-proxy-github]: https://github.com/Azure/iot-edge-opc-proxy
-[lnk-proxy-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua-proxy
+[OPC Publisher のリファレンス実装](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher)をご覧ください。

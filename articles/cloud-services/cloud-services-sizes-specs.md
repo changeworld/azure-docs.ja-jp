@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 1ba56eb9539a4295fdaaab523cfd2a7e1587ef54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bef7643a989caee846f8235e024deb482f4b0a0
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services のサイズ
 このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。 それぞれのサイズには、[サービス定義ファイル](cloud-services-model-and-package.md#csdef)に配置する ID があります。 サイズごとの価格は「[Cloud Services の価格](https://azure.microsoft.com/pricing/details/cloud-services/)」ページで表示されています。
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 Azure では複数の標準的なサイズを選択できます。 これらのサイズに関する考慮事項は次のとおりです。
 
 * D シリーズ VM は、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。 D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。 詳細については、Azure ブログの投稿「 [新しい D シリーズ仮想マシンのサイズ](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。
-* オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。 Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。 これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.1 GHz まで実現できます。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
+* オリジナルの D シリーズに続く Dv3 シリーズと Dv2 シリーズには、より強力な CPU が備わっています。 Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。 これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.1 GHz まで実現できます。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 * G シリーズ VM は、最も多くのメモリを提供し、Intel Xeon E5 V3 ファミリのプロセッサが搭載されたホスト上で実行されます。
 * A シリーズ VM は、多様なハードウェアの種類とプロセッサにデプロイできます。 デプロイされるハードウェアに関係なく、実行中のインスタンスに対して一貫したプロセッサ パフォーマンスを提供するため、ハードウェアに基づいてサイズが調整されます。 このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。
 * A0 サイズは、物理ハードウェアでオーバーサブスクライブされます。 この特定のサイズの場合のみ、他の顧客デプロイメントは、実行中のワークロードのパフォーマンスに影響することがあります。 下に、予想される基準として相対パフォーマンスを示していますが、約 15% の変動の可能性があります。
@@ -42,7 +42,7 @@ Azure では複数の標準的なサイズを選択できます。 これらの�
 サイズを決定する際に役立つ考慮事項は次のとおりです。
 
 * A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。 これらのサイズの使用に関する詳細な情報と考慮事項については、「[ハイ パフォーマンス コンピューティング VM のサイズ](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
-* Dv2 シリーズ、D シリーズ、G シリーズは、より高速の CPU やより高いローカル ディスク パフォーマンスが必要なアプリケーション、またはメモリー要求がより高いアプリケーションに最適です。 多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
+* Dv3 シリーズ、Dv2 シリーズ、D シリーズ、G シリーズは、より高速の CPU やより高いローカル ディスク パフォーマンスが必要なアプリケーション、またはメモリ要求がより高いアプリケーションに最適です。 多数のエンタープライズ レベルのアプリケーションに、強力な組み合わせで対処します。
 * Azure データ センターの物理ホストの一部では、A5 ～ A11 などの大きな仮想マシンのサイズをサポートしていない場合があります。 その結果、既存の仮想マシンのサイズを新しいサイズに変更した場合、2013 年 4 月 16 日よりも前に作成された仮想ネットワーク内に新しい仮想マシンを作成した場合、または既存のクラウド サービスに新しい仮想マシンを追加した場合に、**"仮想マシン {マシン名} を構成できませんでした"** または **"仮想マシン {マシン名} を作成できませんでした"** というエラー メッセージが表示されることがあります。 各デプロイ シナリオの回避策については、サポート フォーラムで、 [エラー: "仮想マシンを構成できませんでした"](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) というトピックを参照してください。
 * お客様のサブスクリプションによっては、特定のサイズ ファミリにデプロイできるコア数が制限されることがあります。 コア クォータを増やすには、Azure サポートにお問い合わせください。
 
@@ -61,15 +61,16 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | [ExtraSmall](#a-series) |50 |
 | [Small-ExtraLarge](#a-series) |100 |
 | [A5-7](#a-series) |100 |
-| [Standard_A1 ～ 8v2](#av2-series) |100 |
-| [Standard_A2m ～ 8mv2](#av2-series) |100 |
 | [A8 ～ A11](#a-series) |225* |
-| [D1 ～ 14](#d-series) |160 |
-| [D1 ～ 15v2](#dv2-series) |210 ～ 250* |
-| [G1 ～ 5](#g-series) |180 ～ 240* |
+| [A v2](#av2-series) |100 |
+| [D](#d-series) |160 |
+| [D v2](#dv2-series) |160 - 190* |
+| [D v3](#dv3-series) |160 - 190* |
+| [E v3](#ev3-series) |160 - 190* |
+| [G](#g-series) |180 ～ 240* |
 | [H](#h-series) |290 ～ 300* |
 
-* が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。 増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
+\* が付いている ACU は、Intel® Turbo テクノロジを使用して CPU 周波数を上げ、パフォーマンスを増強します。 増強量は、VM のサイズ、ワークロード、および同じホストで実行されている他のワークロードによって変化します。
 
 ## <a name="size-tables"></a>サイズ一覧表
 次の表に、サイズとそのサイズで提供される容量を示します。
@@ -85,7 +86,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | ExtraSmall      | 1         | 0.768        | 20                   | 1/低 |
 | Small           | 1         | 1.75         | 225                  | 1/中 |
 | 中          | 2         | 3.5 GB       | 490                  | 1/中 |
-| Large           | 4         | 7            | 1,000                 | 2/高 |
+| 大規模           | 4         | 7            | 1,000                 | 2/高 |
 | ExtraLarge      | 8         | 14           | 2040                 | 4/高 |
 | A5              | 2         | 14           | 490                  | 1/中 |
 | A6              | 4         | 28           | 1,000                 | 2/高 |
@@ -142,6 +143,29 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 | Standard_D14_v2 | 16        | 112          | 800                  | 8/極めて高 |
 | Standard_D15_v2 | 20        | 140          | 1,000                | 8/極めて高 |
 
+## <a name="dv3-series"></a>Dv3 シリーズ
+
+| サイズ            | CPU コア数 | メモリ: GiB   | ローカル SSD: GiB       | 最大 NIC/ネットワーク帯域幅 |
+|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
+| Standard_D2_v3  | 2         | 8             | 16                   | 2/中 |
+| Standard_D4_v3  | 4         | 16            | 32                   | 2/高 |
+| Standard_D8_v3  | 8         | 32            | 64                   | 4/高 |
+| Standard_D16_v3 | 16        | 64            | 128                  | 8/極めて高 |
+| Standard_D32_v3 | 32        | 128           | 256                  | 8/極めて高 |
+| Standard_D64_v3 | 64        | 256           | 512                  | 8/極めて高 |
+
+## <a name="ev3-series"></a>Ev3 シリーズ
+
+| サイズ            | CPU コア数 | メモリ: GiB   | ローカル SSD: GiB       | 最大 NIC/ネットワーク帯域幅 |
+|---------------- | --------- | ------------- | -------------------- | ---------------------------- |
+| Standard_E2_v3  | 2         | 16            | 32                   | 2/中 |
+| Standard_E4_v3  | 4         | 32            | 64                   | 2/高 |
+| Standard_E8_v3  | 8         | 64            | 128                  | 4/高 |
+| Standard_E16_v3 | 16        | 128           | 256                  | 8/極めて高 |
+| Standard_E32_v3 | 32        | 256           | 512                  | 8/極めて高 |
+| Standard_E64_v3 | 64        | 432           | 864                  | 8/極めて高 |
+
+
 ## <a name="g-series"></a>G シリーズ
 | サイズ            | CPU コア数 | メモリ: GiB  | ローカル SSD: GiB       | 最大 NIC/ネットワーク帯域幅 |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
@@ -188,12 +212,12 @@ Web ロール インスタンスのロール サイズを [Standard_D2](#general
 >
 
 ## <a name="get-a-list-of-sizes"></a>サイズの一覧を取得する
-PowerShell または REST API を使用して、サイズの一覧を取得できます。 REST API については、[こちら](https://msdn.microsoft.com/library/azure/dn469422.aspx)を参照してください。 次のコードは、クラウド サービスで現在利用可能なすべてのサイズを一覧表示する PowerShell コマンドです。
+PowerShell または REST API を使用して、サイズの一覧を取得できます。 REST API については、[こちら](https://msdn.microsoft.com/library/azure/dn469422.aspx)を参照してください。 次のコードは、Cloud Services で利用可能なすべてのサイズを一覧表示する PowerShell コマンドです。 
 
 ```powershell
-Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize
+Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)について学習してください。
 * HPC ワークロードのためのハイ パフォーマンス コンピューティング VM のサイズについては[こちら](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。

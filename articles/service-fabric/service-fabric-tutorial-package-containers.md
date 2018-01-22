@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0631b621c01eb880393d07323cdeb815e564a2e3
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: caa7f58860c4540fa6914b1c0f0cfcba437468fa
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Service Fabric アプリケーションとしてのコンテナーのパッケージ化とデプロイ
 
@@ -65,10 +65,11 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
     ```bash
     yo azuresfcontainer
     ```
-2. アプリケーションには "TestContainer" という名前を、アプリケーション サービスには "azurevotefront" という名前を付けます。
-3. フロントエンド リポジトリの ACR にコンテナー イメージ パスを指定します (例: test.azurecr.io/azure-vote-front:v1)。 
-4. Enter を押して、Commands セクションを空のままにします。
-5. インスタンス数を 1 に指定します。
+2. アプリケーション名に「TestContainer」と入力してください。
+3. アプリケーション サービス名に「azurevotefront」と入力してください。
+4. フロントエンド リポジトリの ACR にコンテナー イメージ パスを指定します (例: '\<acrName>.azurecr.io/azure-vote-front:v1')。 \<AcrName > フィールドは、前のチュートリアルで使用された値と同じ値にする必要があります。
+5. Enter を押して、Commands セクションを空のままにします。
+6. インスタンス数を 1 に指定します。
 
 yo コマンドを実行するときの入力と出力を次に示します。
 
@@ -86,12 +87,12 @@ yo コマンドを実行するときの入力と出力を次に示します。
    create TestContainer/uninstall.sh
 ```
 
-yeoman を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。
+Yeoman を使用して作成したアプリケーションに別のコンテナー サービスを追加するには、次の手順を実行します。
 
-1. ディレクトリを **TestContainer** に変更します。
+1. *./TestContainer* のように、ディレクトリのレベルを **TestContainer** ディレクトリに変更します。
 2. `yo azuresfcontainer:AddService` を実行します。 
 3. サービスに 'aazurevoteback'a という名前を付けます。
-4. バックエンド リポジトリの ACR にコンテナー イメージ パスを指定します (例: test.azurecr.io/azure-vote-back:v1)。
+4. Redis のコンテナー イメージ パス ('alpine:redis') を指定します。
 5. Enter を押して、Commands セクションを空のままにします。
 6. インスタンス数を "1" に指定します。
 
@@ -99,7 +100,7 @@ yeoman を使用して作成したアプリケーションに別のコンテナ�
 
 ```bash
 ? Name of the application service: azurevoteback
-? Input the Image Name: <acrName>.azurecr.io/azure-vote-back:v1
+? Input the Image Name: alpine:redis
 ? Commands: 
 ? Number of instances of guest container application: 1
    create TestContainer/azurevotebackPkg/ServiceManifest.xml
@@ -107,13 +108,16 @@ yeoman を使用して作成したアプリケーションに別のコンテナ�
    create TestContainer/azurevotebackPkg/code/Dummy.txt
 ```
 
-このチュートリアルの後の手順で、**TestContainer** ディレクトリを使用します。
+このチュートリアルの後の手順で、**TestContainer** ディレクトリを使用します。 たとえば、*./TestContainer/TestContainer* です。 このディレクトリの内容は、次のようになります。
+```bash
+$ ls
+ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
+```
 
 ## <a name="configure-the-application-manifest-with-credentials-for-azure-container-registry"></a>Azure Container Registry の資格情報を使用してアプリケーション マニフェストを構成する
 Service Fabric が Azure Container Registry からコンテナー イメージをプルするには、**ApplicationManifest.xml** に資格情報を入力する必要があります。 
 
-
-ACR インスタンスへログインします。 [az acr login](/cli/azure/acr#az_acr_login) コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
+ACR インスタンスへログインします。 **az acr login** コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
 
 ```bash
 az acr login --name <acrName>
@@ -127,7 +131,7 @@ az acr login --name <acrName>
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
-**ApplicationManifest.xml** 内の、各サービスの **ServiceManifestImport** 要素の下にコード スニペットを追加します。 **AccountName** フィールドに **acrName** を挿入すると、前のコマンドから返されたパスワードが **Password** フィールドで使用されます。 **ApplicationManifest.xml** の完全なサンプル ファイルは、このドキュメントの最後にあります。 
+**ApplicationManifest.xml** 内の、フロント エンド サービスの **ServiceManifestImport** 要素の下にコード スニペットを追加します。 **AccountName** フィールドに **acrName** を挿入すると、前のコマンドから返されたパスワードが **Password** フィールドで使用されます。 **ApplicationManifest.xml** の完全なサンプル ファイルは、このドキュメントの最後にあります。 
 
 ```xml
 <Policies>
@@ -140,7 +144,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ### <a name="configure-communication-port"></a>通信ポートを構成する
 
-クライアントがサービスと通信できるように HTTP エンドポイントを構成しましょう。  *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* ファイルを開いて、**ServiceManifest** 要素にエンドポイント リソースを宣言します。  プロトコル、ポート、名前を追加します。 このチュートリアルでは、サービスがポート 80 でリッスンします。 
+クライアントがサービスと通信できるように HTTP エンドポイントを構成しましょう。 *./TestContainer/azurevotefrontPkg/ServiceManifest.xml* ファイルを開いて、**ServiceManifest** 要素にエンドポイント リソースを宣言します。  プロトコル、ポート、名前を追加します。 このチュートリアルでは、サービスがポート 80 でリッスンします。 次のスニペットが、リソース内の *ServiceManifest* タグ下に配置されています。
   
 ```xml
 <Resources>
@@ -154,21 +158,21 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 ```
   
-同様に、バックエンド サービスのサービス マニフェストを変更します。 このチュートリアルでは、Redis の既定値である 6379 を使用します。
+同様に、バックエンド サービスのサービス マニフェストを変更します。 *./TestContainer/azurevotebackPkg/ServiceManifest.xml* を開いて、**ServiceManifest** 要素にエンドポイント リソースを宣言します。 このチュートリアルでは、Redis の既定値である 6379 を使用します。 次のスニペットが、リソース内の *ServiceManifest* タグ下に配置されています。
+
 ```xml
 <Resources>
   <Endpoints>
     <!-- This endpoint is used by the communication listener to obtain the port on which to 
             listen. Please note that if your service is partitioned, this port is shared with 
             replicas of different partitions that are placed in your code. -->
-    <Endpoint Name="azurevotebackTypeEndpoint" UriScheme="http" Port="6379" Protocol="http"/>
+    <Endpoint Name="azurevotebackTypeEndpoint" Port="6379" Protocol="tcp"/>
   </Endpoints>
 </Resources>
 ```
 **UriScheme** を指定すると、Service Fabric ネーム サービスを使用したコンテナー エンドポイントが自動的に登録され、検出可能性が確保されます。 バックエンド サービスの ServiceManifest.xml の完全なサンプル ファイルは、この記事の最後に示されています。 
 
 ### <a name="map-container-ports-to-a-service"></a>サービスにコンテナー ポートをマップする
-    
 クラスター内のコンテナーを公開するには applicationmanifest.xml にポートのバインドも作成する必要があります。 **PortBinding** ポリシーは、**ServiceManifest.xml** で定義した**エンドポイント**を参照します。 これらのエンドポイントへの受信要求は、ここで開いてバインドされたコンテナー ポートにマップされます。 **ApplicationManifest.xml** ファイルに次のコードを追加して、ポート 80 およびポート 6379 をエンドポイントにバインドします。 **ApplicationManifest.xml** の完全なサンプル ファイルは、このドキュメントの最後にあります。 
   
 ```xml
@@ -195,13 +199,13 @@ Service Fabric がこの DNS 名をバックエンド サービスに割り当�
 </Service>
 ```
 
-フロントエンド サービスは環境変数を読み取り、Redis インスタンスの DNS 名を認識します。 環境変数は、Dockerfile で次のように定義されます。
+フロントエンド サービスは環境変数を読み取り、Redis インスタンスの DNS 名を認識します。 この環境変数は、Docker イメージの生成に使用された Dockerfile で既に定義されており、ここでは操作を実行する必要はありません。
   
 ```Dockerfile
 ENV REDIS redisbackend.testapp
 ```
   
-フロントエンドをレンダリングする Python スクリプトは、次のように DNS 名を使用して解決し、バックエンド Redis ストアへの接続を行います。
+次のコード スニペットは、Dockerfile で説明されている環境変数がフロント エンドの Python コードで取得される方法を示しています。 ここでは、操作を実行する必要はありません。 
 
 ```python
 # Get DNS Name
@@ -223,10 +227,10 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>アプリケーションをクラスターにビルドおよびデプロイする
 Service Fabric CLI を使用して、アプリケーションを Azure クラスターにデプロイできます。 Service Fabric CLI がマシンにインストールされていない場合は、[こちら](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli)の指示に従ってインストールしてください。 
 
-Azure の Service Fabric クラスターに接続します。
+Azure の Service Fabric クラスターに接続します。 プレースホルダー エンドポイントは独自のエンドポイントに置き換えてください。 エンドポイントは、次のような完全な URL にする必要があります。
 
 ```bash
-sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:19080
+sfctl cluster select --endpoint <http://lin4hjim3l4.westus.cloudapp.azure.com:19080>
 ```
 
 **TestContainer** ディレクトリに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
@@ -269,7 +273,6 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
     <ServiceManifestRef ServiceManifestName="azurevotebackPkg" ServiceManifestVersion="1.0.0"/>
       <Policies> 
         <ContainerHostPolicies CodePackageRef="Code">
-          <RepositoryCredentials AccountName="myaccountname" Password="<password>" PasswordEncrypted="false"/>
           <PortBinding ContainerPort="6379" EndpointRef="azurevotebackTypeEndpoint"/>
         </ContainerHostPolicies>
       </Policies>
@@ -303,7 +306,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
    <CodePackage Name="code" Version="1.0.0">
       <EntryPoint>
          <ContainerHost>
-            <ImageName>my.azurecr.io/azure-vote-front:v1</ImageName>
+            <ImageName>acrName.azurecr.io/azure-vote-front:v1</ImageName>
             <Commands></Commands>
          </ContainerHost>
       </EntryPoint>
@@ -316,7 +319,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="azurevotefrontTypeEndpoint" UriScheme="http" Port="8080" Protocol="http"/>
+      <Endpoint Name="azurevotefrontTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
     </Endpoints>
   </Resources>
 
@@ -337,7 +340,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
    <CodePackage Name="code" Version="1.0.0">
       <EntryPoint>
          <ContainerHost>
-            <ImageName>my.azurecr.io/azure-vote-back:v1</ImageName>
+            <ImageName>alpine:redis</ImageName>
             <Commands></Commands>
          </ContainerHost>
       </EntryPoint>
@@ -349,12 +352,12 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
       <!-- This endpoint is used by the communication listener to obtain the port on which to 
            listen. Please note that if your service is partitioned, this port is shared with 
            replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="azurevotebackTypeEndpoint" UriScheme="http" Port="6379" Protocol="http"/>
+      <Endpoint Name="azurevotebackTypeEndpoint" Port="6379" Protocol="tcp"/>
     </Endpoints>
   </Resources>
  </ServiceManifest>
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Yeoman を使用して、複数のコンテナーを Service Fabric アプリケーションにパッケージ化しました。 その後、アプリケーションがデプロイされ、Service Fabric クラスターで実行されました。 次の手順を完了しました。
 

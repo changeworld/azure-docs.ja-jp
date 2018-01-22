@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: f6496fb62670c480ce543a51225856f0fb5d89b5
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 5e1c3df24b0fc3e733981ab3f8814a9e6641f5f1
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Azure Data Lake Store の診断ログへのアクセス
 Data Lake Store アカウントの診断ログを有効にする方法と、アカウント用に収集されたログを表示する方法について説明します。
 
-データにアクセスするユーザーの一覧、データにアクセスする頻度、アカウントに格納されているデータの量などの情報を提供するデータ アクセスの監査証跡を収集するには、組織で Azure Data Lake Store アカウントの診断ログを有効にします。
+データにアクセスするユーザーの一覧、データにアクセスする頻度、アカウントに格納されているデータの量などの情報を提供するデータ アクセスの監査証跡を収集するには、組織で Azure Data Lake Store アカウントの診断ログを有効にします。有効にすると、診断および/または要求が、ベストエフォートでログに記録されます。 要求と診断の両方のログ エントリが作成されるのは、サービス エンドポイントに対して行われた要求がある場合に限られます。
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
@@ -47,11 +47,11 @@ Data Lake Store アカウントの診断ログを有効にする方法と、ア�
         
         * **[Stream to an event hub (イベント ハブへのストリーム)]** オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合は、ほとんどの場合、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Log Analytics サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Operations Management Suite ワークスペースの詳細情報を指定する必要があります。
+        * **[Send to Log Analytics (Log Analytics に送信)]** オプションを選択して、Azure Log Analytics サービスを使用して、生成されたログ データを分析します。 このオプションを選択する場合は、ログ分析を実行する際に使用する Operations Management Suite ワークスペースの詳細情報を指定する必要があります。 Log Analytics の使用についての詳細は、「[Log Analytics のログ検索で収集されたデータの表示または分析](../log-analytics/log-analytics-tutorial-viewdata.md)」をご覧ください。
      
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
    * データを保持する日数を指定します。 リテンション期間は、Azure ストレージ アカウントを使用してログ データをアーカイブする場合のみ適用されます。
-   * **[保存]**をクリックします。
+   * **[Save]** をクリックします。
 
 診断設定を有効にしたら、 **[診断ログ]** タブでログを確認できます。
 
@@ -114,27 +114,27 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
     }
 
 #### <a name="request-log-schema"></a>要求ログのスキーマ
-| Name | 型 | Description |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| time |文字列 |ログのタイムスタンプ (UTC) |
-| resourceId |文字列 |操作が行われたリソースの ID |
-| カテゴリ |文字列 |ログのカテゴリ。 **Requests**など。 |
-| operationName |文字列 |ログに記録される操作の名前。 getfilestatus など。 |
-| resultType |文字列 |操作の状態。200 など。 |
-| callerIpAddress |文字列 |要求を行うクライアントの IP アドレス |
-| correlationId |文字列 |関連するログ エントリのセットをグループ化するために使用できるログの ID |
+| time |String |ログのタイムスタンプ (UTC) |
+| ResourceId |String |操作が行われたリソースの ID |
+| カテゴリ |String |ログのカテゴリ。 **Requests**など。 |
+| operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
+| resultType |String |操作の状態。200 など。 |
+| callerIpAddress |String |要求を行うクライアントの IP アドレス |
+| correlationId |String |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
 | ID |オブジェクト |ログを生成した ID |
 | プロパティ |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
-| Name | 型 | Description |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| HttpMethod |文字列 |操作に使用される HTTP メソッド。 GET など。 |
-| パス |文字列 |操作が実行されたパス |
+| HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
+| パス |String |操作が実行されたパス |
 | RequestContentLength |int |HTTP 要求のコンテンツの長さ |
-| ClientRequestId |文字列 |この要求を一意に識別する ID |
-| StartTime |文字列 |サーバーが要求を受信した時刻 |
-| EndTime |文字列 |サーバーが応答を送信した時間 |
+| ClientRequestId |String |この要求を一意に識別する ID |
+| StartTime |String |サーバーが要求を受信した時刻 |
+| EndTime |String |サーバーが応答を送信した時間 |
 
 ### <a name="audit-logs"></a>監査ログ
 JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB には、ログ オブジェクトの配列を含む、 **レコード** と呼ばれるルート オブジェクトが 1 つあります。
@@ -160,23 +160,32 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
     }
 
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
-| Name | 型 | Description |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| time |文字列 |ログのタイムスタンプ (UTC) |
-| resourceId |文字列 |操作が行われたリソースの ID |
-| カテゴリ |文字列 |ログのカテゴリ。 **Audit**など。 |
-| operationName |文字列 |ログに記録される操作の名前。 getfilestatus など。 |
-| resultType |文字列 |操作の状態。200 など。 |
-| correlationId |文字列 |関連するログ エントリのセットをグループ化するために使用できるログの ID |
+| time |String |ログのタイムスタンプ (UTC) |
+| ResourceId |String |操作が行われたリソースの ID |
+| カテゴリ |String |ログのカテゴリ。 **Audit**など。 |
+| operationName |String |ログに記録される操作の名前。 getfilestatus など。 |
+| resultType |String |操作の状態。200 など。 |
+| correlationId |String |関連するログ エントリのセットをグループ化するために使用できる、ログの ID |
 | ID |オブジェクト |ログを生成した ID |
 | プロパティ |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
-| Name | 型 | Description |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| StreamName |文字列 |操作が実行されたパス |
+| StreamName |String |操作が実行されたパス |
 
 ## <a name="samples-to-process-the-log-data"></a>ログ データ処理のサンプル
+Azure Data Lake Store から Azure Log Analytics にログを送信すると (Log Analytics の使用についての詳細は「[Log Analytics のログ検索で収集されたデータの表示または分析](../log-analytics/log-analytics-tutorial-viewdata.md)」をご覧ください)、次のクエリによってユーザーの表示名、イベントの時刻、およびイベント発生時のイベントの回数を格納したテーブルが返され、グラフとして表示されます。 これに変更を加えて、ユーザーの GUID などの属性を簡単に表示できます。
+
+```
+search *
+| where ( Type == "AzureDiagnostics" )
+| summarize count(TimeGenerated) by identity_s, TimeGenerated
+```
+
+
 Azure Data Lake Store では、ログ データの処理と分析方法のサンプルを提供しています。 サンプルについては [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)をご覧ください。 
 
 ## <a name="see-also"></a>関連項目

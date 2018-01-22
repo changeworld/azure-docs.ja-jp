@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2017
+ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee3462c13101d18921dc488b08c79e1e4e02ff3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ace3042cc00cedd005955cdfb82c557fd4a8fb2
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -69,12 +69,12 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 次の表で、パラメーターの属性について説明します。
 
-| Attribute | Description |
+| Attribute | [説明] |
 |:--- |:--- |
-| type |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
+| 型 |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
 | カテゴリ |パラメーターの任意のカテゴリ。  同じカテゴリのパラメーターはグループ化されます。 |
 | control |文字列パラメーターの追加の機能。<br><br>datetime - Datetime コントロールが表示されます。<br>guid - GUID 値が自動的に生成され、パラメーターは表示されません。 |
-| description |パラメーターの説明です (省略可能)。  パラメーターの横の情報バルーンに表示されます。 |
+| 説明 |パラメーターの説明です (省略可能)。  パラメーターの横の情報バルーンに表示されます。 |
 
 ### <a name="standard-parameters"></a>標準パラメーター
 次の表に、すべての管理ソリューションの標準パラメーターを一覧表示します。  Azure Marketplace や クイック スタート テンプレートからソリューションをインストールすると、ユーザーに設定が求められることはなく、これらの値が設定されます。  ソリューションを別の方法でインストールした場合、ユーザーは値を入力する必要があります。
@@ -84,14 +84,14 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 >
 >
 
-| パラメーター | 型 | 説明 |
+| パラメーター | type | [説明] |
 |:--- |:--- |:--- |
-| accountName |string |Azure automation アカウント名。 |
-| pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
-| regionId |string |Azure Automation アカウントのリージョン。 |
-| solutionName |string |ソリューションの名前。  クイックスタート テンプレートを使用してソリューションをデプロイする場合は、solutionName をパラメーターとして定義し、ユーザーに指定を求める代わりに文字列を定義できるようにする必要があります。 |
-| workspaceName |string |Log Analytics ワークスペース名。 |
-| workspaceRegionId |string |Log Analytics ワークスペースのリージョン。 |
+| .<リージョン名 |文字列 |Azure automation アカウント名。 |
+| pricingTier |文字列 |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
+| regionId |文字列 |Azure Automation アカウントのリージョン。 |
+| solutionName |文字列 |ソリューションの名前。  クイックスタート テンプレートを使用してソリューションをデプロイする場合は、solutionName をパラメーターとして定義し、ユーザーに指定を求める代わりに文字列を定義できるようにする必要があります。 |
+| workspaceName |文字列 |Log Analytics ワークスペース名。 |
+| workspaceRegionId |文字列 |Log Analytics ワークスペースのリージョン。 |
 
 
 次に、コピーして、ソリューション ファイルに貼り付けることができる標準パラメーターの構造を示します。  
@@ -176,7 +176,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 
     {
-      "name": "[concat(variables('Solution').Name, '[' ,parameters('workspacename'), ']')]",
+      "name": "[concat(variables('Solution').Name, '[' ,parameters('workspaceName'), ']')]",
       "location": "[parameters('workspaceRegionId')]",
       "tags": { },
       "type": "Microsoft.OperationsManagement/solutions",
@@ -185,7 +185,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
         <list-of-resources>
       ],
       "properties": {
-        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspacename'))]",
+        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]",
         "referencedResources": [
             <list-of-referenced-resources>
         ],
@@ -208,10 +208,10 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 ### <a name="dependencies"></a>依存関係
 ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
 
-### <a name="properties"></a>プロパティ
+### <a name="properties"></a>[プロパティ]
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 形式での、Log Analytics ワークスペースの ID。 |
 | referencedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
@@ -222,7 +222,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 ### <a name="plan"></a>プラン
 ソリューション リソースの**プラン** エンティティには、次の表のプロパティがあります。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | name |ソリューションの名前。 |
 | version |作成者によって決定されるソリューションのバージョン。 |
@@ -238,7 +238,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 - [検索とアラート リソース](operations-management-suite-solutions-resources-searches-alerts.md#sample)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 管理ソリューションに、[保存した検索とアラートを追加する](operations-management-suite-solutions-resources-searches-alerts.md)。
 * 管理ソリューションに[ビューを追加する](operations-management-suite-solutions-resources-views.md)。
 * 管理ソリューションに [Runbook とその他の Automation リソースを追加する](operations-management-suite-solutions-resources-automation.md)。

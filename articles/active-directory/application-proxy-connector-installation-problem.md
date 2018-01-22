@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a02f6cf0923bbe7083ba29fac5f59bcce9f5ab44
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
 
@@ -37,9 +37,9 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 **目的:** コネクタ コンピューターが AAD アプリケーション プロキシの登録エンドポイントと Microsoft のログイン ページに接続できることを確認します。
 
-1.  ブラウザーを開き、Web ページ <https://aadap-portcheck.connectorporttest.msappproxy.net> に移動し、ポート 9090 と 9091 で米国中部と米国東部のデータ センターへの接続が機能していることを確認します。
+1.  ブラウザーを開き、Web ページ <https://aadap-portcheck.connectorporttest.msappproxy.net> に移動し、ポート 80 と 443 で米国中部と米国東部のデータ センターへの接続が機能していることを確認します。
 
-2.  どちらかのポートが機能していない (緑色のチェックマークが表示されない) 場合は、ファイアウォールまたはバックエンド プロキシで \*.msappproxy.net およびポート 9090 と 9091 が正しく定義されていることを確認します。
+2.  どちらかのポートが機能していない (緑色のチェックマークが表示されない) 場合は、ファイアウォールまたはバックエンド プロキシで \*.msappproxy.net およびポート 80 と 443 が正しく定義されていることを確認します。
 
 3.  ブラウザー (別のタブ) を開き、Web ページ <https://login.microsoftonline.com> に移動し、そのページにログインできることを確認します。
 
@@ -68,5 +68,5 @@ Microsoft AAD アプリケーション プロキシ コネクタは、発信接�
 
 ユーザー アカウントを選択し、表示されたメニューの [ディレクトリ ロール] を選択します。 選択されているロールが "グローバル管理者" であることを確認します。 これらの手順に従っても、どのページにもアクセスできない場合は、グローバル管理者ではありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)

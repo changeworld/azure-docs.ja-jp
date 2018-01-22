@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: owend
-ms.openlocfilehash: 5f3ad1c4df2c21a8d52a8a3c4d7d311af32720a9
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: ea1094d0ce858cd7df9c49f18fb81b07e31fca53
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="connect-with-power-bi"></a>Power BI を使用した接続
 
@@ -34,13 +34,11 @@ Azure でサーバーを作成して、表形式モデルを展開すると、�
 
 1. Power BI Desktop で、**[データの取得]** > **[Azure]** > **[Azure Analysis Services データベース]** の順にクリックします。
 
-2. **[サーバー]** にサーバー名を入力します。 
-    
-    必ず URL 全体を指定してください。 たとえば、「asazure://westcentralus.asazure.windows.net/advworks」のように入力します。
+2. **[サーバー]** にサーバー名を入力します。 必ず URL 全体を指定してください。たとえば、「asazure://westcentralus.asazure.windows.net/advworks」のように入力します。
 
 3. **[データベース]** には、接続先の表形式モデル データベースまたはパースペクティブの名前がわかっている場合はその名前を貼り付けます。 それ以外の場合は、このフィールドを空のままにし、後からデータベースまたはパースペクティブを選択することができます。
 
-4. 既定の **[ライブ接続]** オプションをそのままにし、**[接続]** をクリックします。 
+4. 既定の **[ライブ接続]** オプションをそのままにし、**[接続]** をクリックします。 インポート接続は現在はサポートされていません。
 
 5. メッセージが表示されたら、ログイン資格情報を入力します。 
 
@@ -51,7 +49,7 @@ Azure でサーバーを作成して、表形式モデルを展開すると、�
 ## <a name="connect-in-power-bi-service"></a>Power BI (サービス) での接続
 
 1. サーバー上のモデルにライブ接続できる Power BI Desktop ファイルを作成します。
-2. [Power BI](https://powerbi.microsoft.com) で、**[データの取得]** > **[ファイル]** をクリックします。 ファイルを検索して選択します。
+2. [Power BI](https://powerbi.microsoft.com) で、**[データの取得]** > **[ファイル]** をクリックしてから、.pbix ファイルを検索して選択します。
 
 
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: bfe4ab71bb7311d1bbca27f8de196b2297c2a994
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 0d293d3874b0cb43cee9f85c6c575e87c48ad291
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーからデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,8 @@ SFTP サーバーから、サポートされている任意のシンク デー�
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用したファイルの解析。
 
 ## <a name="get-started"></a>作業開始
-コピー アクティビティを含むパイプラインは、.NET SDK、Python SDK、Azure PowerShell、REST API、または Azure Resource Manager テンプレートを使用して作成できます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](quickstart-create-data-factory-dot-net.md)をご覧ください。
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 次のセクションでは、SFTP に固有の Data Factory エンティティの定義に使用されるプロパティについて詳しく説明します。
 
@@ -47,24 +48,24 @@ SFTP サーバーから、サポートされている任意のシンク デー�
 
 SFTP のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **Sftp** に設定する必要があります。 |あり |
-| host | SFTP サーバーの名前または IP アドレス。 |はい |
-| ポート | SFTP サーバーがリッスンしているポート。<br/>使用可能な値: 整数。既定値は **22**。 |いいえ |
-| skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。<br/>使用可能な値: **true**、**false** (既定値)。  | いいえ |
+| 型 | type プロパティを **Sftp** に設定する必要があります。 |[はい] |
+| host | SFTP サーバーの名前または IP アドレス。 |[はい] |
+| ポート | SFTP サーバーがリッスンしているポート。<br/>使用可能な値: 整数。既定値は **22**。 |いいえ  |
+| skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。<br/>使用可能な値: **true**、**false** (既定値)。  | いいえ  |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい ("SkipHostKeyValidation" が false に設定されている場合)。  |
-| authenticationType | 認証の種類を指定します。<br/>使用可能な値: **Basic** および **SshPublicKey**。 プロパティと JSON サンプルの詳細については、「[基本認証を使用する](#using-basic-authentication)」および「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」をそれぞれ参照してください。 |あり |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| authenticationType | 認証の種類を指定します。<br/>使用可能な値: **Basic** および **SshPublicKey**。 プロパティと JSON サンプルの詳細については、「[基本認証を使用する](#using-basic-authentication)」および「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」をそれぞれ参照してください。 |[はい] |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 ### <a name="using-basic-authentication"></a>基本認証を使用する
 
 基本認証を使用するには、"authenticationType" を **Basic** に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| userName | SFTP サーバーにアクセスできるユーザー。 |はい |
-| パスワード | ユーザー (userName) のパスワード。 このフィールドを SecureString とマークします。 | あり |
+| userName | SFTP サーバーにアクセスできるユーザー。 |[はい] |
+| password | ユーザー (userName) のパスワード。 このフィールドを SecureString とマークします。 | [はい] |
 
 **例:**
 
@@ -97,9 +98,9 @@ SFTP のリンクされたサービスでは、次のプロパティがサポー
 
 SSH 公開キー認証を使用するには、"authenticationType" を **SshPublicKey** に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| userName | SFTP サーバーにアクセスできるユーザー |はい |
+| userName | SFTP サーバーにアクセスできるユーザー |[はい] |
 | privateKeyPath | 統合ランタイムがアクセスできる秘密キー ファイルへの絶対パスを指定します。 セルフホステッド統合ランタイムが "connectVia" で指定されている場合にのみ適用されます。 | `privateKeyPath` または `privateKeyContent` を指定します。  |
 | privateKeyContent | Base64 にエンコードされた SSH 秘密キーのコンテンツ。 SSH 秘密キーは、OpenSSH 形式にする必要があります。 このフィールドを SecureString とマークします。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
 | passPhrase | キー ファイルがパス フレーズで保護されている場合は、パス フレーズ/パスワードを指定して、秘密キーを復号化します。 このフィールドを SecureString とマークします。 | はい (秘密キー ファイルがパス フレーズで保護されている場合)。 |
@@ -170,14 +171,14 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
 
 SFTP からデータをコピーするには、データセットの type プロパティを **FileShare** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **FileShare** に設定する必要があります。 |あり |
-| folderPath | フォルダーへのパス。 例: folder/subfolder/ |あり |
-| fileName | 特定のファイルからコピーする場合は、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、データセットはフォルダー内のすべてのファイルをソースとしてポイントします。 |いいえ |
-| fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 fileName が指定されていない場合にのみ適用されます。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/>- 例 1: `"fileFilter": "*.log"`<br/>- 例 2: `"fileFilter": 2017-09-??.txt"` |いいえ |
+| 型 | データセットの type プロパティは **FileShare** に設定する必要があります。 |[はい] |
+| folderPath | フォルダーへのパス。 例: folder/subfolder/ |[はい] |
+| fileName | 特定のファイルからコピーする場合は、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、データセットはフォルダー内のすべてのファイルをソースとしてポイントします。 |いいえ  |
+| fileFilter | すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 fileName が指定されていない場合にのみ適用されます。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/>- 例 1: `"fileFilter": "*.log"`<br/>- 例 2: `"fileFilter": 2017-09-??.txt"` |いいえ  |
 | format | ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>ファイルを特定の形式で解析する場合、次のファイル形式がサポートされます。**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 形式の **type** プロパティをいずれかの値に設定します。 詳細については、[Text Format](supported-file-formats-and-compression-codecs.md#text-format)、[Json Format](supported-file-formats-and-compression-codecs.md#json-format)、[Avro Format](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc Format](supported-file-formats-and-compression-codecs.md#orc-format)、[Parquet Format](supported-file-formats-and-compression-codecs.md#parquet-format) の各セクションを参照してください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ  |
 
 **例:**
 
@@ -215,10 +216,10 @@ SFTP からデータをコピーするには、データセットの type プロ
 
 SFTP からデータをコピーするには、コピー アクティビティのソース タイプを **FileSystemSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |あり |
-| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ |
+| 型 | コピー アクティビティのソースの type プロパティを **FileSystemSource** に設定する必要があります。 |[はい] |
+| recursive | データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。<br/>使用可能な値: **true** (既定値)、**false** | いいえ  |
 
 **例:**
 
@@ -253,5 +254,5 @@ SFTP からデータをコピーするには、コピー アクティビティ�
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

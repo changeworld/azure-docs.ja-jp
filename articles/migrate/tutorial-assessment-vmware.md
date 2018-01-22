@@ -1,24 +1,16 @@
 ---
 title: "Azure Migrate で Azure に移行するためにオンプレミスの VMware VM を検出して評価する | Microsoft Docs"
 description: "Azure Migrate サービスを使って Azure に移行するためにオンプレミスの VMware VM を検出して評価する方法について説明します。"
-services: migration-planner
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: a2521630-730f-4d8b-b298-e459abdced46
-ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/22/2017
+ms.service: azure-migrate
+ms.topic: tutorial
+ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: b0818fbc1d227093fcc1b9b925d0859b8580f9c1
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: a5019d3f729f2efbd01fca021b0089c7f99b0014
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -46,16 +38,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - **アクセス許可**: vCenter Server 上で、.OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。 
 - **統計情報の設定**: デプロイを始める前に、vCenter Server の統計設定をレベル 3 に設定する必要があります。 レベル 3 より低い場合は、評価は機能しますが、ストレージとネットワークのパフォーマンス データが収集されません。 この場合のサイズは、CPU とメモリのパフォーマンス データと、ディスクおよびネットワーク アダプターの構成データに基づいて勧められます。 
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 [Azure Portal](https://portal.azure.com) にログインします。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
 1. Azure Portal で、**[リソースの作成]** をクリックします。
-2. 「**Azure Migrate**」を検索し、検索結果でサービス (**Azure Migrate (プレビュー)**) を選びます。 **[Create]**をクリックします。
+2. 「**Azure Migrate**」を検索し、検索結果で **Azure Migrate (プレビュー)** サービスを選択します。 **[Create]**をクリックします。
 3. プロジェクト名およびプロジェクトの Azure サブスクリプションを指定します。
 4. 新しいリソース グループを作成します。
-5. プロジェクトを作成するリージョンを指定して、**[作成]** をクリックします。 オンプレミスの VM から収集されたメタデータが、このリージョンに保存されます。 このプレビューで Azure Migrate プロジェクトを作成できるのは、米国中西部リージョンだけです。 ただし、対象となる任意の Azure の場所について移行を計画することもできます。 
+5. プロジェクトを作成する場所を指定して、**[作成]** をクリックします。 このプレビューで Azure Migrate プロジェクトを作成できるのは、米国中西部リージョンだけです。 ただし、対象となる任意の Azure の場所について移行を計画することもできます。 プロジェクト用に指定された場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用します。 
 
     ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
     
@@ -75,23 +67,24 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 
 .OVA ファイルをデプロイする前に、それが安全であることを確認します。
 
-1. ファイルをダウンロードしたマシンで、管理者のコマンド ウィンドウを開きます。
+1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. 生成されたハッシュは、次の設定と一致する必要があります。
     
-    OVA バージョン 1.0.8.38 の場合
+    OVA バージョン 1.0.8.49 の場合
     **アルゴリズム** | **ハッシュ値**
     --- | ---
-    MD5 | dd27dd6ace28f9195a2b5d52a4003067 
-    SHA1 | d2349e06a5d4693fc2a1c0619591b9e45c36d695
-    SHA256 | 1492a0c6d6ef76e79269d5cd6f6a22f336341e1accbc9e3dfa5dad3049be6798
+    MD5 | 8779eea842a1ac465942295c988ac0c7 
+    SHA1 | c136c52a0f785e1fd98865e16479dd103704887d
+    SHA256 | 5143b1144836f01dd4eaf84ff94bc1d2c53f51ad04b1ca43ade0d14a527ac3f9
 
-    OVA バージョン 1.0.8.40 の場合
+    OVA バージョン 1.0.8.40 の場合:
+
     **アルゴリズム** | **ハッシュ値**
     --- | ---
-    MD5 | afbae5a2e7142829659c21fd8a9def3f
+    MD5 |afbae5a2e7142829659c21fd8a9def3f
     SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
     SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
 
@@ -108,27 +101,32 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 5. **[Host/Cluster]\(ホスト/クラスター\)** で、コレクター VM が実行するホストまたはクラスターを指定します。
 7. ストレージで、コレクター VM の保存先を指定します。
 8. **[Disk Format]\(ディスク フォーマット\)** で、ディスクの種類とサイズを指定します。
-9. **[Network Mapping]\(ネットワーク マッピング\)** で、コレクター VM の接続先のネットワークを指定します。 このネットワークには、Azure にメタデータを送信するためのインターネット接続が必要です。 
+9. **[Network Mapping]\(ネットワーク マッピング\)** で、コレクター VM の接続先となるネットワークを指定します。 このネットワークには、Azure にメタデータを送信するためのインターネット接続が必要です。 
 10. 設定を再確認したら、**[Finish]\(完了\)** をクリックします。
 
 ## <a name="run-the-collector-to-discover-vms"></a>コレクターを実行して VM を検出する
 
 1. vSphere Client コンソールで、VM を右クリックして **[Open Console]\(コンソールを開く\)** を選びます。
 2. アプライアンスの設定で、言語、タイム ゾーン、パスワードを指定します。
-3. デスクトップにある **[コレクターの実行]** ショートカットをクリックします。
+3. デスクトップにある **[Run collector]\(コレクターの実行\)** ショートカットをクリックします。
 4. Azure Migrate Collector で、**[Set Up Prerequisites]\(前提条件の設定\)** を開きます。
-    - ライセンス条項に同意し、サード パーティーの情報を確認します。
+    - ライセンス条項に同意し、サード パーティの情報を確認します。
     - VM がインターネットにアクセスできることをコレクターがチェックします。
     - VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]\(プロキシの設定\)** をクリックし、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。
-    - Windows プロファイラー サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
+
+    > [!NOTE]
+    > プロキシのアドレスを、http://ProxyIPAddress または http://ProxyFQDN の形式で入力する必要があります。 サポートされるのは HTTP プロキシのみです。
+
+    - コレクター サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
     - VMware PowerCLI をダウンロードしてインストールします。
-が必要です。 **[マシンの検出]** で、次の操作を行います。
+
+5. **[Specify vCenter Server details]\(vCenter Server の詳細の指定\)** で、次の操作を行います。
     - vCenter サーバーの名前 (FQDN) または IP アドレスを指定します。
     - **[ユーザー名]** と **[パスワード]** で、コレクターが vCenter サーバーの VM を検出するために使用する読み取り専用の資格情報を指定します。
-    - **[コレクション スコープ]** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、特定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1000 個を超えないようにします。 
-    - **[Tag category for grouping]\(グループ化のためのタグ カテゴリ\)** で、**[None]\(なし\)** を選択します。
-1. **[Select Project]\(プロジェクトの選択\)** で、ポータルからコピーした Azure Migrate プロジェクトの ID とキーを指定します。 ID とキーをコピーしなかった場合は、コレクター VM から Azure Portal を開きます。 プロジェクトの **[概要]** ページで、**[マシンの検出]** をクリックして値をコピーします。  
-2. **[Complete Discovery]\(検出の完了\)** で検出を監視し、VM から収集されたメタデータがスコープ内にあることを確認します。 コレクターがおおよその検出時間を表示します。
+    - **[コレクション スコープ]** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、指定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1000 台を超えないようにします。 
+
+6. **[Specify migration project]\(移行プロジェクトの指定\)** で、ポータルからコピーした Azure Migrate プロジェクトの ID とキーを指定します。 ID とキーをコピーしなかった場合は、コレクター VM から Azure Portal を開きます。 プロジェクトの **[概要]** ページで、**[マシンの検出]** をクリックして値をコピーします。  
+7. **[View collection progress]\(収集の進行状況の表示\)** で検出を監視し、VM から収集されたメタデータがスコープ内にあることを確認します。 コレクターがおおよその検出時間を表示します。
 
 > [!NOTE]
 > コレクターは、オペレーティング システムの言語およびコレクター インターフェイスの言語として、"英語 (米国)" のみをサポートしています。 他の言語は将来サポートされるようになります。
@@ -136,9 +134,9 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 
 ### <a name="verify-vms-in-the-portal"></a>ポータル内の VM を確認する
 
-検出時間は検出している VM の数によって異なります。 通常、VM が 100 個の場合、コレクターが実行を終了したあと検出が完了するまで約 1 時間かかります。 
+検出時間は検出している VM の数によって異なります。 通常、VM が 100 台の場合、コレクターが実行を終了した後、検出が完了するまで約 1 時間かかります。 
 
-1. Migration Planner プロジェクト内で、**[管理]** > **[マシン]** の順にクリックします。
+1. Azure Migrate プロジェクト内で、**[管理]** > **[マシン]** の順にクリックします。
 2. 検出対象の VM がポータルに表示されていることを確認します。
 
 
@@ -175,7 +173,7 @@ VM が検出された後、それらをグループ化して、評価を作成�
 このビューには、Azure で VM を実行する合計計算コストとストレージ コストと、各マシンの詳細が表示されます。 コストの見積もりは、マシンのパフォーマンスに基づく推奨サイズとそのディスク数、および評価のプロパティを使って計算されます。 
 
 > [!NOTE]
-> Azure Migrate に提供されているコスト見積もりは、サービスとしての Azure インフラストラクチャ (IaaS) VM としてオンプレミスの VM を実行するために用意されています。 サービス (PaaS) またはサービスとしてのソフトウェア (SaaS) のコストとしてプラットフォームは考慮されていません。 
+> Azure Migrate に提供されているコスト見積もりは、サービスとしての Azure インフラストラクチャ (IaaS) VM としてオンプレミスの VM を実行するために用意されています。 Azure Migrate では、サービスとしてのプラットホーム (PaaS) のコスト、またはサービスとしてのソフトウェア (SaaS) のコストは考慮されません。 
 
 コンピューティングとストレージの見積もり月額コストが、グループ内の全 VM について集計されます。 
 
@@ -185,8 +183,8 @@ VM が検出された後、それらをグループ化して、評価を作成�
 
 ![評価の VM コスト](./media/tutorial-assessment-vmware/assessment-vm-drill.png) 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- 多数のオンプレミスのマシンの評価をセットアップする方法を[学習](how-to-scale-assessment.md)します。
-- [マシンの依存関係マッピング](how-to-create-group-machine-dependencies.md)を使って、より詳細な評価グループを作成する方法を学習します。
-- 評価の計算方法の[詳細を学習](concepts-assessment-calculation.md)します。
+- 大規模な VMware 環境の検出と評価の方法を[確認](how-to-scale-assessment.md)します。
+- [マシンの依存関係マッピング](how-to-create-group-machine-dependencies.md)を使って、信頼度の高い評価グループを作成する方法を確認します。
+- 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。

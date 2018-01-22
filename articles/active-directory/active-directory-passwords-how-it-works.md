@@ -1,5 +1,5 @@
 ---
-title: "Azure AD SSPR のしくみ | Microsoft Docs"
+title: "セルフサービスによるパスワードのリセットの仕組み - Azure Active Directory"
 description: "Azure AD のセルフ サービスによるパスワードのリセットの詳細"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ad1735d618856fb13ec2846f1da4fdaec1c4e614
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 56a57960fc4804c7a1711d8c47b37ec28798357d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -246,21 +246,21 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 > [!NOTE]
 > Azure AD テナントへのゲスト アクセスを許可されている Microsoft アカウント (Hotmail.com、Outlook.com、他の個人メール アドレスからなど) は、Azure AD SSPR を使うことができません。 このようなユーザーは、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)」の情報を使って、パスワードをリセットする必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
-* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "Azure AD の使用できる認証方法と必要な数量"

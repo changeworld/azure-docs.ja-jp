@@ -1,6 +1,6 @@
 ---
 title: "Azure AD ユーザー アカウントを作成する | Microsoft Docs"
-description: "この記事では、Azure Automation の Runbook が Azure およびクラシック Azure で認証を受ける際に使用する Azure AD ユーザー アカウントを作成する方法について説明します。"
+description: "この記事では、Azure Automation の Runbook が Azure で認証を受ける際に使用する Azure AD ユーザー アカウントを作成する方法について説明します。"
 services: automation
 documentationcenter: 
 author: georgewallace
@@ -10,61 +10,35 @@ keywords: "Azure Active Directory ユーザー, Azure サービス管理, Azure 
 ms.assetid: fcfe266d-b22e-4dfb-8272-adcab09fc0cf
 ms.service: automation
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 700c4419821934daac89025c889b21d8e2ef46b6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: f0a9664898cd27529daf73d130dd25fd296a9b48
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Azure クラシック デプロイメントと Resource Manager による Runbook の認証
 この記事では、Azure クラシック デプロイメント モデルまたは Azure Resource Manager のリソースに対して実行する Azure Automation Runbook 用に Azure AD ユーザー アカウントを構成するための手順を説明します。  Azure Resource Manager ベースの Runbook では、このアカウントを引き続き認証 ID として使用できますが、Azure 実行アカウントを使用することが推奨されます。       
 
 ## <a name="create-a-new-azure-active-directory-user"></a>新しい Azure Active Directory ユーザーを作成する
-1. 管理する Azure サブスクリプションのサービス管理者として Azure クラシック ポータルにログインします。
-2. **[Active Directory]**を選択し、組織のディレクトリの名前を選択します。
-3. **[ユーザー]** タブをクリックし、コマンド領域の **[ユーザーの追加]** を選択します。
-4. **[このユーザーに関する情報の入力]** ページの **[ユーザーの種類]** から **[組織内の新しいユーザー]** を選択します。
-5. ユーザー名を入力します。  
-6. Active Directory ページの Azure サブスクリプションに関連付けられているディレクトリ名を選択します。
-7. **[ユーザー プロファイル]** ページで、姓と名、わかりやすい名前を入力し、**[ロール]** ボックスの一覧からユーザーを選択します。  **Multi-Factor Authentication を有効**にしないでください。
-8. ユーザーの完全な名前と一時的なパスワードを書き留めておきます。
-9. Select **Settings > Administrators > Add**.
-10. 作成したユーザーの完全なユーザー名を入力します。
-11. このユーザーで管理するサブスクリプションを選択してください。
-12. ログアウトして、先ほど作成したアカウントで再度 Azure にログインする。 ユーザーのパスワードを変更するように促されます。
-
-## <a name="create-an-automation-account-in-azure-classic-portal"></a>Azure クラシック ポータルで Automation アカウントを作成する
-このセクションでは、以下の手順を実行して、Azure クラシック デプロイメントでリソースを管理する Runbook で使用される Azure Automation アカウントを Azure Portal で作成します。  
-
-> [!NOTE]
-> Azure クラシック ポータルで作成した Automation アカウントは、Azure クラシック ポータルおよび Azure Portal の両方で、どちらのコマンドレット セットでも管理できます。 アカウントを作成してしまえば、そのアカウントのリソースの作り方や管理方法に違いはありません。 引き続き Azure クラシック ポータルを使用する場合、Automation アカウントの作成には Azure ポータルではなく、Azure クラシック ポータルを使用することをお勧めします。
-> 
-> 
-
-1. 管理する Azure サブスクリプションのサービス管理者として Azure クラシック ポータルにログインします。
-2. **[Automation]**を選択します。
-3. **[Automation]** ページで、**[Automation アカウントの作成]** を選択します。
-4. **[Automation アカウントの作成]** ボックスで、新しい Automation アカウントの名前を入力し、ドロップダウン リストから **[リージョン]** を選択します。  
-5. **[OK]** をクリックして設定を受け入れて、アカウントを作成します。
-6. アカウントが作成され、 **[Automation]** ページに表示されます。
-7. アカウントをクリックします。ダッシュボード ページが表示されます。  
-8. Automation のダッシュボード ページで、 **[資産]**を選択します。
-9. **[資産]** ページで、ページの下部にある **[設定の追加]** を選択します。
-10. **[設定の追加]** ページで、**[資格情報の追加]** を選択します。
-11. **[資格情報の定義]** ページで、**[資格情報の種類]** ボックスの一覧の **[Windows PowerShell 資格情報]** を選択し、資格情報の名前を指定します。
-12. 次の **[資格情報の定義]** ページで、前に作成した AD ユーザー アカウントのユーザー名を **[ユーザー名]** フィールドに入力し、**[パスワード]** および **[パスワードの確認]** フィールドにパスワードを入力します。 **[OK]** をクリックして変更を保存します。
+1. 管理する Azure サブスクリプションのサービス管理者として Azure Portal にログインします。
+2. **[Azure Active Directory]** > **[ユーザーとグループ]** > **[すべてのユーザー]** > **[新しいユーザー]** を選択します。
+3. **名前**や**ユーザー名**など、ユーザーの詳細を入力します。  
+4. ユーザーの完全な名前と一時的なパスワードを書き留めておきます。
+5. **[ディレクトリ ロール]** を選択します。
+6. グローバル管理者または制限付き管理者のロールを割り当てます。
+7. ログアウトして、先ほど作成したアカウントで再度 Azure にログインする。 ユーザーのパスワードを変更するように促されます。
 
 ## <a name="create-an-automation-account-in-the-azure-portal"></a>Azure Portal で Automation アカウントを作成する
 このセクションでは、以下の手順を実行して、Azure Resource Manager モードでリソースを管理する Runbook で使用される Azure Automation アカウントを Azure Portal で作成します。  
 
 1. 管理する Azure サブスクリプションのサービス管理者として Azure Portal にログインします。
 2. **[Automation アカウント]**を選択します。
-3. [Automation アカウント] ブレードで **[追加]** をクリックします。<br><br>![[Automation アカウントの追加]](media/automation-create-aduser-account/add-automation-acct-properties.png)
+3. **[追加]**を選択します。<br><br>![[Automation アカウントの追加]](media/automation-create-aduser-account/add-automation-acct-properties.png)
 4. **[Automation アカウントの追加]** ブレードの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
 5. 複数のサブスクリプションがある場合は、新しいアカウントに対していずれかを指定し、新規または既存の**リソース グループ**と、Azure データ センターの**場所**も指定します。
 6. **[Azure 実行アカウントの作成]** オプションで **[はい]** を選択し、**[作成]** ボタンをクリックします。  
@@ -88,6 +62,6 @@ ms.lasthandoff: 12/14/2017
 
 Runbook のすべての [チェックポイント](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints) の後で、これらの行を繰り返す必要があります。 Runbook が中断された後、別のワーカーで再開した場合は、もう一度認証を実行する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Runbook のさまざまな種類について、また、独自の Runbook を作成する手順について確認します。記事「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください
 

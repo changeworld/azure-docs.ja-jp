@@ -13,7 +13,7 @@
       href: automation-quickstart-create-runbook.md
     - name: DSC 構成を作成する
       href: automation-quickstart-dsc-configuration.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 監視タスクによる更新されたファイルの追跡
       href: automation-watchers-tutorial.md
@@ -131,10 +131,10 @@
       items:
         - name: Runbook ギャラリー
           href: automation-runbook-gallery.md
+        - name: Azure アラートから Runbook を開始する
+          href: automation-create-alert-triggered-runbook.md
         - name: Amazon Web Service VM を作成する
           href: automation-scenario-aws-deployment.md
-        - name: Azure VM アラートを修復する
-          href: automation-azure-vm-alert-integration.md
         - name: JSON タグを使用して VM を起動/停止する
           href: automation-scenario-start-stop-vm-wjson-tags.md
         - name: リソース グループを削除する

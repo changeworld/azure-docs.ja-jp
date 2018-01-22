@@ -1,5 +1,5 @@
 ---
-title: "Azure で PHP と MySQL Web アプリを構築する | Microsoft Docs"
+title: "Azure App Service on Linux で PHP と MySQL Web アプリを構築する | Microsoft Docs"
 description: "Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。"
 services: app-service\web
 documentationcenter: nodejs
@@ -12,13 +12,17 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3496b00960ad1fe1213f2005d2173543988b4ff9
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: cf398d18091a008afc24cbe583001fd538039db2
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/04/2018
 ---
-# <a name="build-a-php-and-mysql-web-app-in-azure"></a>Azure で PHP と MySQL Web アプリを構築する
+# <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL Web アプリを構築する
+
+> [!NOTE]
+> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure で PHP と MySQL Web アプリを構築する](../app-service-web-tutorial-php-mysql.md)」を参照してください。
+>
 
 [App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、PHP Web アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Laravel](https://laravel.com/) アプリが完成します。
 
@@ -155,12 +159,12 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 ### <a name="create-a-mysql-server"></a>MySQL サーバーを作成する
 
-[az mysql server create](/cli/azure/mysql/server#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL (Preview) にサーバーを作成します。
+[az mysql server create](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL (Preview) にサーバーを作成します。
 
 次のコマンドで、_&lt;mysql_server_name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password MySQLAzure2017 --ssl-enforcement Disabled
+az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --ssl-enforcement Disabled
 ```
 
 MySQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
@@ -180,7 +184,7 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
-[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーのクライアントへの接続を許可するファイアウォール ルールを作成します。
+[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーのクライアントへの接続を許可するファイアウォール ルールを作成します。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -198,7 +202,7 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 mysql -u adminuser@<mysql_server_name> -h <mysql_server_name>.database.windows.net -P 3306 -p
 ```
 
-パスワードの入力を求められたら、データベースの作成時に指定した _$tr0ngPa$w0rd!_ を使用します。
+パスワードの入力を求められたら、データベース サーバーの作成時に指定した _$tr0ngPa$w0rd!_ を使用します。
 
 ### <a name="create-a-production-database"></a>運用データベースを作成する
 
@@ -239,7 +243,7 @@ APP_DEBUG=true
 APP_KEY=SomeRandomString
 
 DB_CONNECTION=mysql
-DB_HOST=<mysql_server_name>.database.windows.net
+DB_HOST=<mysql_server_name>.mysql.database.azure.com
 DB_DATABASE=sampledb
 DB_USERNAME=phpappuser@<mysql_server_name>
 DB_PASSWORD=MySQLAzure2017
@@ -313,7 +317,7 @@ git commit -m "database.php updates"
 
 アプリをデプロイする準備ができました。
 
-## <a name="deploy-to-azure"></a>Azure へのデプロイ
+## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
 
 この手順では、MySQL に接続される PHP アプリケーションを Azure App Service にデプロイします。
 
@@ -331,7 +335,7 @@ git commit -m "database.php updates"
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service では、[az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service では、[az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
 次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;mysql_server_name>_ を置き換えます。
 
@@ -363,7 +367,7 @@ Laravel には App Service のアプリケーション キーが必要です。 
 php artisan key:generate --show
 ```
 
-[az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、App Service Web アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;appname>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
+[az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用して、App Service Web アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;appname>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
@@ -375,7 +379,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 Web アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく_パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
 
-[az resource update](/cli/azure/resource#az_resource_update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;appname>_ プレースホルダーを置き換えます。
+[az resource update](/cli/azure/resource?view=azure-cli-latest#az_resource_update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;appname>_ プレースホルダーを置き換えます。
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -424,7 +428,7 @@ remote: Running deployment command...
 > この方法を使用して、App Service に対する Git ベースのデプロイに対して任意の手順を追加できます。 詳細については、「[Custom Deployment Script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
 >
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリを参照する
+### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
 
 `http://<app_name>.azurewebsites.net` を参照し、一覧にいくつかのタスクを追加します。
 
@@ -592,7 +596,7 @@ Web アプリの [概要] ページを確認します。 ここでは、停止�
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

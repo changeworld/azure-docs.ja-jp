@@ -8,19 +8,19 @@ manager: carmonm
 editor: 
 tags: 
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2017
+ms.date: 11/16/2017
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 53c5c340dc4e91db29fbbb45893fabe6eec2bc5d
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c3a1758ab965d22eabfe44a410e9f72420e0148b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="overview-of-availability-zones-in-azure-preview"></a>Azure の可用性ゾーン (プレビュー) の概要
 
@@ -32,6 +32,7 @@ ms.lasthandoff: 11/17/2017
 
 - 米国東部 2
 - 西ヨーロッパ
+- フランス中部
 
 ## <a name="services-that-support-availability-zones"></a>可用性ゾーンをサポートしているサービス
 
@@ -42,26 +43,20 @@ ms.lasthandoff: 11/17/2017
 - Zonal Virtual Machine Scale Sets
 - Managed Disks
 - Load Balancer
-
-## <a name="supported-virtual-machine-size-families"></a>サポートされる仮想マシン サイズ ファミリ
-
-- Av2
-- Dv2
-- DSv2
-
+- パブリック IP アドレス
 
 ## <a name="get-started-with-the-availability-zones-preview"></a>可用性ゾーン (プレビュー) の使用を開始する
 
-可用性ゾーン (プレビュー) は、米国東部 2 と西ヨーロッパのリージョンの特定の Azure サービスでのみ利用できます。 
+可用性ゾーン (プレビュー) は、米国東部 2、西ヨーロッパ、フランス中部のリージョンの特定の Azure サービスでのみ利用できます。 
 
 1. [可用性ゾーン (プレビュー) にサインアップします](http://aka.ms/azenroll) 
 2. Azure サブスクリプションにサインインします。
 3. 可用性ゾーンをサポートしているリージョンを選択します。
 4. 以下のいずれかのリンクを使って、利用中のサービスで可用性ゾーンの使用を開始します。 
     - [仮想マシンの作成](../virtual-machines/windows/create-portal-availability-zone.md)
-    - [ゾーン仮想マシン スケール セットの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
+    - [仮想マシン スケール セットを作成する](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
     - [PowerShell を使った管理ディスクの追加](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
     - [Load Balancer](../load-balancer/load-balancer-standard-overview.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [クイック スタート テンプレート](http://aka.ms/azqs)

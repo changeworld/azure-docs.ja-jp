@@ -15,15 +15,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: 576167502fdb77c98c449dc5a448323dc5b23f35
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 6985d631bdac7114a72f105716c9483d0c5733ba
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
-この記事では、Azure Functions で Azure Blob Storage のバインディングを操作する方法について説明します。 Azure Functions は、BLOB のトリガー、入力、出力のバインディングをサポートしています。
+この記事では、Azure Functions で Azure Blob Storage のバインディングを操作する方法について説明します。 Azure Functions は、BLOB のトリガー、入力、出力のバインディングをサポートしています。 この記事には、以下の各バインディングのセクションがあります。
+
+* [BLOB トリガー](#trigger)
+* [BLOB 入力バインディング](#input)
+* [BLOB 出力バインディング](#output)
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -37,19 +41,19 @@ Blob Storage のトリガーを使用して、新しいまたは更新された 
 > [!NOTE]
 > 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 この初期段階の遅延を避けるために、次のオプションのいずれかを検討してください。
 > - 常時接続が有効な App Service プランを使用する。
-> - BLOB 名を含むキュー メッセージなど、別のメカニズムを使用して BLOB 処理をトリガーする。 例については、[この記事で後述する BLOB 入力/出力バインディングの例](#input--output---example)をご覧ください。
+> - BLOB 名を含むキュー メッセージなど、別のメカニズムを使用して BLOB 処理をトリガーする。 例については、[この記事で後述する BLOB 入力バインディングの例](#input---example)をご覧ください。
 
 ## <a name="trigger---example"></a>トリガー - 例
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#trigger---c-example)
-* [C# スクリプト](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# スクリプト (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
-次の例は、BLOB が `samples-workitems` コンテナーで追加または更新されたときにログを書き込む[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示しています。
+次の例は、`samples-workitems` コンテナーで BLOB が追加または更新されたときにログを書き込む [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```csharp
 [FunctionName("BlobTriggerCSharp")]        
@@ -59,11 +63,11 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-`BlobTrigger` 属性について詳しくは、[トリガー - 属性](#trigger---attributes-for-precompiled-c) に関する記事をご覧ください。
+`BlobTrigger` 属性について詳しくは、[トリガー - 属性](#trigger---attributes) に関する記事をご覧ください。
 
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
-次の例は、*function.json* ファイルの BLOB トリガー バインディングと、バインディングを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 関数は、`samples-workitems` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
+次の例は、*function.json* ファイルの BLOB トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 関数は、`samples-workitems` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -140,7 +144,7 @@ module.exports = function(context) {
 
 ## <a name="trigger---attributes"></a>トリガー - 属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、次の属性を使用して BLOB トリガーを構成します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)で、次の属性を使用して BLOB トリガーを構成します。
 
 * NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義された [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobTriggerAttribute.cs)
 
@@ -168,7 +172,7 @@ module.exports = function(context) {
   }
   ```
 
-  完全な例については、[トリガー - プリコンパイル済み C# の例](#trigger---c-example)に関する記事をご覧ください。
+  完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
 
 * NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義された [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -198,7 +202,7 @@ module.exports = function(context) {
 
 次の表は、*function.json* ファイルと `BlobTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | `blobTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 例外は、[使用方法](#trigger---usage)のセクションに記載しています。 |
@@ -210,10 +214,12 @@ module.exports = function(context) {
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
-C# および C# スクリプトでは、`Stream paramName` のようなメソッド パラメーターを使用して BLOB データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+C# および C# スクリプトでは、`T paramName` のようなメソッド パラメーターを使用して BLOB データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
 
-* `TextReader`
 * `Stream`
+* `TextReader`
+* `Byte[]`
+* `string`
 * `ICloudBlob` (*function.json* に "inout" バインド方向が必要)
 * `CloudBlockBlob` (*function.json* に "inout" バインド方向が必要)
 * `CloudPageBlob` (*function.json* に "inout" バインド方向が必要)
@@ -271,7 +277,7 @@ BLOB の名前が *original-Blob1.txt* の場合、関数コード内の `blobna
 BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
 
 
-|プロパティ  |型  |説明  |
+|プロパティ  |type  |[説明]  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|トリガーする BLOB のパス。|
 |`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|
@@ -308,54 +314,39 @@ BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテ�
 
 監視対象の BLOB コンテナーに 10,000 を超える BLOB が含まれる場合は、Functions ランタイムによりログ ファイルがスキャンされ、新規または変更された BLOB が監視されます。 このプロセスによって遅延が発生することがあります。 関数は、BLOB が作成されてから数分以上経過しないとトリガーされない可能性があります。 また、[ ストレージ ログは "ベスト エフォート"](/rest/api/storageservices/About-Storage-Analytics-Logging) ベースで作成されます。 すべてのイベントがキャプチャされる保証はありません。 ある条件下では、ログが欠落する可能性があります。 より高速で信頼性の高い BLOB 処理が必要な場合は、BLOB 作成時に[キュー メッセージ](../storage/queues/storage-dotnet-how-to-use-queues.md)を作成することを検討してください。 次に、BLOB トリガーの代わりに[キュー トリガー](functions-bindings-storage-queue.md)を使用して BLOB を処理します。 別のオプションは、Event Grid の使用です。「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)」のチュートリアルをご覧ください。
 
-## <a name="input--output"></a>入力と出力
+## <a name="input"></a>入力
 
-Blob Storage の入力および出力バインディングを使用して、BLOB の読み取りと書き込みを行います。
+Blob Storage 入力バインディングを使用して BLOB を読み取ります。
 
-## <a name="input--output---example"></a>入力と出力 - 例
+## <a name="input---example"></a>入力 - 例
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#input--output---c-example)
-* [C# スクリプト](#input--output---c-script-example)
-* [JavaScript](#input--output---javascript-example)
+* [C#](#input---c-example)
+* [C# スクリプト (.csx)](#input---c-script-example)
+* [JavaScript](#input---javascript-example)
 
-### <a name="input--output---c-example"></a>入力と出力 - C# の例
+### <a name="input---c-example"></a>入力 - C# の例
 
-次の例は、1 つの BLOB トリガーと 2 つの出力の BLOB バインディングを使用する[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数です。 関数は、*sample-images* コンテナーのイメージ BLOB の作成によってトリガーされます。 イメージ BLOB の小規模および中規模サイズのコピーを作成します。 
+次の例は、キュー トリガーと入力 BLOB バインディングを使用する [C# 関数](functions-dotnet-class-library.md)です。 キュー メッセージには BLOB の名前が含まれ、関数は BLOB のサイズをログに記録します。
 
 ```csharp
-[FunctionName("ResizeImage")]
+[FunctionName("BlobInput")]
 public static void Run(
-    [BlobTrigger("sample-images/{name}")] Stream image, 
-    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
-    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
+    TraceWriter log)
 {
-    var imageBuilder = ImageResizer.ImageBuilder.Current;
-    var size = imageDimensionsTable[ImageSize.Small];
+    log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 
-    imageBuilder.Build(image, imageSmall,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
-
-    image.Position = 0;
-    size = imageDimensionsTable[ImageSize.Medium];
-
-    imageBuilder.Build(image, imageMedium,
-        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
 }
-
-public enum ImageSize { ExtraSmall, Small, Medium }
-
-private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
-    { ImageSize.ExtraSmall, (320, 200) },
-    { ImageSize.Small,      (640, 400) },
-    { ImageSize.Medium,     (800, 600) }
-};
 ```        
 
-### <a name="input--output---c-script-example"></a>入力と出力 - C# のスクリプトの例
+### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
 
-次の例は、*function.json* ファイルの BLOB 入出力バインドと、バインドを使用する [C# スクリプト](functions-reference-csharp.md) コードを示しています。 関数は、テキスト BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
+<!--Same example for input and output. -->
+
+次の例は、*function.json* ファイルの BLOB 入出力バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 関数は、テキスト BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
 
 *function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
 
@@ -388,7 +379,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 }
 ``` 
 
-[構成](#input--output---configuration)のセクションで、これらのプロパティについて説明します。
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
 
 C# スクリプト コードを次に示します。
 
@@ -400,7 +391,9 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="input--output---javascript-example"></a>入力と出力 - JavaScript の例
+### <a name="input---javascript-example"></a>入力 - JavaScript の例
+
+<!--Same example for input and output. -->
 
 次の例は、*function.json* ファイルの BLOB 入出力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
 
@@ -435,7 +428,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ``` 
 
-[構成](#input--output---configuration)のセクションで、これらのプロパティについて説明します。
+これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
 
 JavaScript コードを次に示します。
 
@@ -447,9 +440,221 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="input--output---attributes"></a>入力と出力 - 属性
+## <a name="input---attributes"></a>入力 - 属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されている [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) を使用します。これは NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されています。
+
+次の例で示すように、属性のコンストラクターは、BLOB へのパスと、読み取りまたは書き込みを示す `FileAccess` パラメーターを受け取ります。
+
+```csharp
+[FunctionName("BlobInput")]
+public static void Run(
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
+    TraceWriter log)
+{
+    log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
+}
+
+```
+
+次の例で示すように、`Connection` プロパティを設定して、使用するストレージ アカウントを指定できます。
+
+```csharp
+[FunctionName("BlobInput")]
+public static void Run(
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read, Connection = "StorageConnectionAppSetting")] Stream myBlob,
+    TraceWriter log)
+{
+    log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
+}
+```
+
+`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[トリガー - 属性](#trigger---attributes)をご覧ください。
+
+## <a name="input---configuration"></a>入力 - 構成
+
+次の表は、*function.json* ファイルと `Blob` 属性で設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
+|---------|---------|----------------------|
+|**type** | 該当なし | `blob` に設定する必要があります。 |
+|**direction** | 該当なし | `in` に設定する必要があります。 例外は、[使用方法](#input---usage)のセクションに記載しています。 |
+|**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。|
+|**path** |**BlobPath** | BLOB へのパス。 | 
+|**connection** |**Connection**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="input---usage"></a>入力 - 使用方法
+
+C# クラス ライブラリと C# スクリプトでは、`Stream paramName` などのメソッド パラメーターを使用して BLOB にアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+
+* `TextReader`
+* `string`
+* `Byte[]`
+* `Stream`
+* `CloudBlobContainer`
+* `CloudBlobDirectory`
+* `ICloudBlob` (*function.json* に "inout" バインド方向が必要)
+* `CloudBlockBlob` (*function.json* に "inout" バインド方向が必要)
+* `CloudPageBlob` (*function.json* に "inout" バインド方向が必要)
+* `CloudAppendBlob` (*function.json* に "inout" バインド方向が必要)
+
+前述のように、これらの型の一部は、*function.json* に `inout` バインド方向を必要とします。 この方向は Azure Portal の標準のエディターではサポートされていないため、詳細エディターを使用する必要があります。
+
+テキスト BLOB を読み取る場合は、`string` 型にバインドすることができます。 BLOB 全体のコンテンツがメモリに読み込まれるため、この型が推奨されるのは、BLOB のサイズが小さい場合のみです。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。
+
+JavaScript では、`context.bindings.<name>` を使用して BLOB データにアクセスします。
+
+## <a name="output"></a>出力
+
+Blob Storage 出力バインディングを使用して BLOB を書き込みます。
+
+## <a name="output---example"></a>出力 - 例
+
+言語固有の例をご覧ください。
+
+* [C#](#output---c-example)
+* [C# スクリプト (.csx)](#output---c-script-example)
+* [JavaScript](#output---javascript-example)
+
+### <a name="output---c-example"></a>出力 - C# の例
+
+次の例は、1 つの BLOB トリガーと 2 つの出力 BLOB バインディングを使用する[C# 関数](functions-dotnet-class-library.md)です。 関数は、*sample-images* コンテナーのイメージ BLOB の作成によってトリガーされます。 イメージ BLOB の小規模および中規模サイズのコピーを作成します。 
+
+```csharp
+[FunctionName("ResizeImage")]
+public static void Run(
+    [BlobTrigger("sample-images/{name}")] Stream image, 
+    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
+    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
+{
+    var imageBuilder = ImageResizer.ImageBuilder.Current;
+    var size = imageDimensionsTable[ImageSize.Small];
+
+    imageBuilder.Build(image, imageSmall,
+        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
+
+    image.Position = 0;
+    size = imageDimensionsTable[ImageSize.Medium];
+
+    imageBuilder.Build(image, imageMedium,
+        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
+}
+
+public enum ImageSize { ExtraSmall, Small, Medium }
+
+private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
+    { ImageSize.ExtraSmall, (320, 200) },
+    { ImageSize.Small,      (640, 400) },
+    { ImageSize.Medium,     (800, 600) }
+};
+```        
+
+### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
+
+<!--Same example for input and output. -->
+
+次の例は、*function.json* ファイルの BLOB 入出力バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 関数は、テキスト BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
+
+*function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+``` 
+
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
+
+C# スクリプト コードを次に示します。
+
+```cs
+public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
+{
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+    myOutputBlob = myInputBlob;
+}
+```
+
+### <a name="output---javascript-example"></a>出力 - JavaScript の例
+
+<!--Same example for input and output. -->
+
+次の例は、*function.json* ファイルの BLOB 入出力バインドと、バインドを使用する [JavaScript コード](functions-reference-node.md)を示しています。 関数は、BLOB のコピーを作成します。 関数は、コピーする BLOB の名前を含むキュー メッセージによってトリガーされます。 新しい BLOB の名前は *{originalblobname}-Copy* です。
+
+*function.json* ファイルでは、`queueTrigger` メタデータ プロパティは `path` プロパティ内の BLOB 名の指定に使用されます。
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+``` 
+
+これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
+
+JavaScript コードを次に示します。
+
+```javascript
+module.exports = function(context) {
+    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
+    context.bindings.myOutputBlob = context.bindings.myInputBlob;
+    context.done();
+};
+```
+
+## <a name="output---attributes"></a>出力 - 属性
+
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) を使用します。これは NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されています。
 
 次の例で示すように、属性のコンストラクターは、BLOB へのパスと、読み取りまたは書き込みを示す `FileAccess` パラメーターを受け取ります。
 
@@ -475,18 +680,18 @@ public static void Run(
 }
 ```
 
-完全な例については、[入力と出力 - プリコンパイル済み C# の例](#input--output---c-example)に関する記事をご覧ください。
+完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
 
-`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[トリガー - 属性](#trigger---attributes-for-precompiled-c)をご覧ください。
+`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[トリガー - 属性](#trigger---attributes)をご覧ください。
 
-## <a name="input--output---configuration"></a>入力と出力 - 構成
+## <a name="output---configuration"></a>出力 - 構成
 
-次の表は、*function.json* ファイルと `Blob` 属性で設定したバインディング構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `Blob` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | `blob` に設定する必要があります。 |
-|**direction** | 該当なし | 入力バインディングの場合は `in` に、出力バインディングの場合は out に設定する必要があります。 例外は、[使用方法](#input--output---usage)のセクションに記載しています。 |
+|**direction** | 該当なし | 出力バインディングの場合は `out` に設定する必要があります。 例外は、[使用方法](#output---usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。  `$return` に設定して、関数の戻り値を参照します。|
 |**path** |**BlobPath** | BLOB へのパス。 | 
 |**connection** |**Connection**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
@@ -494,14 +699,17 @@ public static void Run(
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="input--output---usage"></a>入力と出力 - 使用方法
+## <a name="output---usage"></a>出力 - 使用方法
 
-プリコンパイル済みの C# および C# スクリプトでは、`Stream paramName` のようなメソッド パラメーターを使用して BLOB にアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+C# クラス ライブラリと C# スクリプトでは、`Stream paramName` などのメソッド パラメーターを使用して BLOB にアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
 
+* `TextWriter`
 * `out string`
-* `TextWriter` 
-* `TextReader`
+* `out Byte[]`
+* `CloudBlobStream`
 * `Stream`
+* `CloudBlobContainer`
+* `CloudBlobDirectory`
 * `ICloudBlob` (*function.json* に "inout" バインド方向が必要)
 * `CloudBlockBlob` (*function.json* に "inout" バインド方向が必要)
 * `CloudPageBlob` (*function.json* に "inout" バインド方向が必要)
@@ -513,7 +721,7 @@ public static void Run(
 
 JavaScript では、`context.bindings.<name>` を使用して BLOB データにアクセスします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Blob Storage のトリガーを使用するクイック スタートに進む](functions-create-storage-blob-triggered-function.md)

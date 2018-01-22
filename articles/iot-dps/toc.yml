@@ -52,9 +52,15 @@
     - name: 2 - デバイスを設定する
       href: tutorial-set-up-device.md
     - name: 3 - デバイスを IoT ハブにプロビジョニングする
-      href: tutorial-provision-device-to-hub.md
+      items:
+        - name: C
+          href: tutorial-provision-device-to-hub.md
+        - name: 'C#'
+          href: tutorial-net-provision-device-to-hub.md
     - name: 4 - デバイスを複数のハブにプロビジョニングする
       href: tutorial-provision-multiple-hubs.md
+    - name: 5 - グループ登録をプロビジョニングする
+      href: tutorial-group-enrollments.md
 - name: 概念
   items:
     - name: デバイスの概念
@@ -73,6 +79,8 @@
           href: how-to-manage-enrollments-sdks.md
     - name: デバイス アクセスの取り消し
       href: how-to-revoke-device-access-portal.md
+    - name: デバイスのプロビジョニング解除
+      href: how-to-unprovision-devices.md
     - name: SDK での HSM の使用
       href: use-hsm-with-sdk.md
     - name: Provisioning Service へのアクセスの制御

@@ -128,6 +128,8 @@
           href: azure-stack-manage-storage-shares.md
         - name: Windows Azure Pack VM の管理
           href: azure-stack-manage-windows-azure-pack.md
+        - name: Azure Stack の開始および停止
+          href: azure-stack-start-and-stop.md
         - name: ハードウェアの交換
           items:
             - name: ノード アクション

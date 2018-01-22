@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: b37c9d9de171e69e38a4bae58f9fbac99eae2091
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 81634b366f5b66444d1e5474b4ab517208b50375
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
@@ -111,13 +111,11 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 3443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|Azure Portal と Powershell 用の管理エンドポイント |内部 |
 | * / 80, 443 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|Azure Storage、Azure Service Bus、Azure Active Directory への依存関係 (該当する場合)。|外部 / 内部 | 
 | * / 1433 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure SQL エンドポイントへのアクセス** |外部 / 内部 |
-| * / 11000 - 11999 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure SQL V12 へのアクセス** |外部 / 内部 |
-| * / 14000 - 14999 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure SQL V12 へのアクセス** |外部 / 内部 |
 | * / 5671, 5672 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |外部 / 内部 |
 | * / 445 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|GIT のための Azure ファイル共有への依存関係 |外部 / 内部 |
 | * / 25028 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|電子メールを送信するために SMTP リレーに接続する |外部 / 内部 |
 | * / 6381 - 6383 |受信および送信 |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Role インスタンス間での Redis Cache インスタンスへのアクセス |外部 / 内部 |
-| * / *  | 受信 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure インフラストラクチャの Load Balancer |外部 / 内部 |
+| * / * | 受信 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure インフラストラクチャの Load Balancer |外部 / 内部 |
 
 >[!IMPORTANT]
 > * "*目的*" が**太字**になっているポートは、API Management サービスの正常なデプロイを必要とします。 ただし、その他のポートをブロックすると、実行中のサービスの使用と監視を行う能力が低下します。
@@ -140,10 +138,10 @@ API Management サービス インスタンスが VNET でホストされてい�
 >Azure API Management は、**パブリック ピアリング パスからプライベート ピアリング パスにルートを正しくクロスアドバタイズしていない** ExpressRoute 構成ではサポートされません。 パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。 これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure API Management インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。 このネットワーク フローでは、Azure API Management が機能しません。 この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
 
 
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="troubleshooting"> </a>トラブルシューティング
 * **初回のセットアップ**: API Management サービスのサブネットへの初回のデプロイが成功しなかった場合は、同じサブネットに仮想マシンを先にデプロイすることをお勧めします。 次に、リモート デスクトップを仮想マシンにデプロイし、Azure サブスクリプション内の次のリソースのいずれかに接続できることを確認します。 
     * Azure Storage BLOB
-    * Azure SQL Database
+    * の接続文字列
 
  > [!IMPORTANT]
  > 接続を確認したら、サブネットにデプロイされているすべてのリソースを必ず削除してから、サブネットに API Management をデプロイしてください。
