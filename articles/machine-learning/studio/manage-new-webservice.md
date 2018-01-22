@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 9024bc82c0de5b8058a848cc809a2571baa7ce83
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 2e71fa46f88ce219bee96a223a034078a037b4d3
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
@@ -110,7 +110,7 @@ Web サービスの [クイック スタート] ページで、 **[プラン]** 
 
 ## <a name="manage-classic-web-services"></a>クラシック Web サービスを管理する
 > [!NOTE]
-> このセクションの手順は、Azure Machine Learning Web サービス ポータルでのクラシック Web サービスの管理に関連しています。 Machine Learning Studio および Azure クラシック ポータルでのクラシック Web サービスの管理については、「[Azure Machine Learning ワークスペースを管理する](manage-workspace.md)」をご覧ください。
+> このセクションの手順は、Azure Machine Learning Web サービス ポータルでのクラシック Web サービスの管理に関連しています。 Machine Learning Studio および Azure Portal でのクラシック Web サービスの管理については、「[Azure Machine Learning ワークスペースを管理する](manage-workspace.md)」を参照してください。
 > 
 > 
 

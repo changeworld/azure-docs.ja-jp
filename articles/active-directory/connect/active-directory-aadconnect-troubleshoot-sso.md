@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/05/2018
 ms.author: billmath
-ms.openlocfilehash: d5f47bd780de692a5e641fc49ea0c433809068bc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aa28431c5926656ae97ded3f23b83f2a91c60487
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -27,6 +27,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="known-problems"></a>既知の問題
 
 - 場合によっては、シームレス SSO の有効化に最大 30 分かかることがあります。
+- テナントでシームレス SSO を無効にして再度有効にすると、キャッシュされた Kerberos チケットが期限切れになるまで (通常は 10 時間有効)、シングル サインオン機能は利用できません。
 - Edge ブラウザーのサポートは使用できません。
 - Office クライアントを起動すると (特に、共有コンピューターのシナリオの場合)、追加のサインイン プロンプトがユーザーに表示されます。 ユーザーはユーザー名を頻繁に入力する必要がありますが、パスワードを頻繁に入力する必要はありません。
 - シームレス SSO が成功すると、ユーザーは **[サインインしたままにする]** を選択できません。 この動作により、SharePoint および OneDrive のマッピングのシナリオは機能しません。
@@ -68,13 +69,15 @@ ms.lasthandoff: 12/11/2017
 シームレス SSO の問題のトラブルシューティングを行うには、次のチェックリストを使用します。
 
 - Azure AD Connect でシームレス SSO 機能が有効になっていることを確認します。 (ポートのブロックなどが原因で) この機能を有効にできない場合は、すべての[前提条件](active-directory-aadconnect-sso-quick-start.md#step-1-check-the-prerequisites)が満たされていることを確認します。
+- [Azure AD Join](../active-directory-azureadjoin-overview.md) とシームレス SSO の両方をテナントで有効にしている場合は、Azure AD Join で問題が発生していないことを確認してください。 デバイスが Azure AD に登録され、ドメインに参加している場合は、Azure AD Join の SSO がシームレス SSO よりも優先されます。 Azure AD の SSO を使用している場合、"Windows に接続済み" というサインイン タイルが表示されます。
 - 両方の Azure AD URL (https://autologon.microsoftazuread-sso.com と https://aadg.windows.net.nsatc.net) がユーザーのイントラネット ゾーン設定の一部になっていることを確認します。
 - 会社のデバイスが Active Directory ドメインに参加していることを確認します。
 - ユーザーが Active Directory ドメイン アカウントでデバイスにログオンしていることを確認します。
 - ユーザーのアカウントが、シームレス SSO が設定されている Active Directory フォレストからのものであることを確認します。
 - デバイスが企業ネットワークに接続されていることを確認します。
 - デバイスの時刻が、Active Directory とドメイン コントローラーの両方の時刻と同期されており、時刻のずれが 5 分以内であることを確認します。
-- コマンド プロンプトから `klist` コマンド使用して、デバイス上の既存の Kerberos チケットを一覧表示します。 `AZUREADSSOACCT` コンピューター アカウントに対して発行されたチケットが存在することを確認します。 ユーザーの Kerberos チケットは、通常は 12 時間有効です。 Active Directory で別の設定が行われていることがあります。
+- コマンド プロンプトから `klist` コマンド使用して、デバイス上の既存の Kerberos チケットを一覧表示します。 `AZUREADSSOACCT` コンピューター アカウントに対して発行されたチケットが存在することを確認します。 ユーザーの Kerberos チケットは、通常は 10 時間有効です。 Active Directory で別の設定が行われていることがあります。
+- テナントでシームレス SSO を無効にして再度有効にすると、キャッシュされた Kerberos チケットが期限切れになるまでシングル サインオン機能は利用できません。
 - `klist purge` コマンドを使用してデバイスから既存の Kerberos チケットを消去し、やり直します。
 - JavaScript に関連する問題があるかどうかを確認するために、ブラウザーのコンソール ログ (**[開発者ツール]** の下) を確認します。
 - [ドメイン コントローラーのログ](#domain-controller-logs)を確認します。

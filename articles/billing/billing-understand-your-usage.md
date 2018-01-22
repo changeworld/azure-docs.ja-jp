@@ -1,5 +1,5 @@
 ---
-title: "Azure の詳細な使用状況を理解する | Microsoft Docs"
+title: "Azure の詳細な使用状況を理解する"
 description: "Azure サブスクリプションの詳細な使用状況 CSV の各セクションを読み、理解する方法について説明します"
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: a99e0dfea16f9fe9776d24fc94eac9ee18c7b2b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 999f24b5a5c1bd5d259b785f9107697d2928b4eb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Microsoft Azure の詳細な利用料金の用語を理解する 
+
 詳細な利用料金 CSV ファイルには、現在の請求期間を対象に毎日測定された利用料金が含まれています。 
 
 詳細な使用状況ファイルを取得するには、「[Azure の請求書と毎日の使用状況データを取得する方法](billing-download-azure-invoice-daily-usage-date.md)」をご覧ください。
@@ -28,18 +29,17 @@ ms.lasthandoff: 10/11/2017
 
 利用料金は、サブスクリプションの**月額**料金の合計です。 利用料金では、クレジットや割引は考慮されません。
 
-
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/p13S350M2Vk" frameborder="0" allowfullscreen></iframe>
-</div>
+>[!VIDEO https://www.youtube.com/embed/p13S350M2Vk]
 
 ## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>詳細な使用状況ファイルの用語と説明 (詳細)
+
 次のセクションでは、バージョン 2 の詳細な使用状況ファイルに表示される重要な用語について説明します。
 
 ### <a name="statement"></a>ステートメント
+
 詳細な使用状況 CSV ファイルの最上部のセクションには、月の請求期間で使用したサービスが表示されます。 次の表では、このセクションに表示される用語と説明の一覧を示します。
 
-| 用語 | 説明 |
+| 用語 | [説明] |
 | --- | --- |
 |請求期間 |メーターが使用された請求期間 |
 |測定カテゴリ |使用状況の最上位レベルのサービスを示します |
@@ -62,7 +62,7 @@ ms.lasthandoff: 10/11/2017
 
 CSV ファイルの毎日の使用状況セクションには、請求金額に影響する使用状況の詳細が表示されます。 次の表では、このセクションに表示される用語と説明の一覧を示します。
 
-| 用語 | 説明 |
+| 用語 | [説明] |
 | --- | --- |
 |使用日 |メーターが使用された日付 |
 |測定カテゴリ |この使用量の対象となる最上位レベルのサービスを示します |

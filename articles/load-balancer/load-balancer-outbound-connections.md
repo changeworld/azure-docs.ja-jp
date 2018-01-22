@@ -3,8 +3,8 @@ title: "Azure の送信用接続の詳細 | Microsoft Docs"
 description: "この記事では、Azure によって、パブリック インターネット サービスと VM がどのように通信するかを説明します。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: 
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d02960017b8793eccc2990a17e3d854991e877b6
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: b8e225ba4374c73dbabac3dddab9ba37fa798a5a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>Azure の送信用接続の詳細
 
@@ -28,7 +28,7 @@ Azure の仮想マシン (VM) は、パブリック IP アドレス空間で Azu
 
 Azure では、送信接続を実現するために 3 つの異なる方法が提供されます。 それぞれの方法には独自の機能と制約があります。 各方法をよく調べて、ニーズに合う方法を選択してください。
 
-| シナリオ | メソッド | 注 |
+| シナリオ | 方法 | 注 |
 | --- | --- | --- |
 | スタンドアロン VM (ロード バランサーなし、インスタンス レベルのパブリック IP アドレスなし) |既定の SNAT |Azure は SNAT のパブリック IP アドレスを関連付けます。 |
 | 負荷分散 VM (VM にインスタンス レベルのパブリック IP アドレスなし) |ロード バランサーを使用する SNAT |Azure は SNAT でロード バランサーのパブリック IP を使用します。 |
@@ -46,7 +46,7 @@ SNAT ポートは有限のリソースであり、不足する可能性があり
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>インスタンス レベルのパブリック IP アドレスなしの負荷分散 VM
 
-このシナリオでは、VM は Azure Load Balancer プールに含まれます。  VM にパブリック IP アドレスは割り当てられていません。 パブリック IP フロントエンドとバックエンド プールをリンクするには、ロード バランサー リソースをルールで構成する必要があります。  この構成を完了しないと、前述の「[インスタンス レベルのパブリック IP アドレスなしのスタンドアロン VM](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address)」セクションのような動作になります。
+このシナリオでは、VM は Azure Load Balancer プールに含まれます。  VM にパブリック IP アドレスは割り当てられていません。 パブリック IP フロントエンドとバックエンド プール間にリンクを作成するには、ロード バランサー リソースをロード バランサー規則で構成する必要があります。 この構成を完了しないと、前述の「[インスタンス レベルのパブリック IP アドレスなしのスタンドアロン VM](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address)」セクションのような動作になります。
 
 負荷分散 VM が送信フローを作成すると、Azure が、送信フローのプライベート ソース IP アドレスをパブリック ロード バランサー フロントエンドのパブリック IP アドレスに変換します。 Azure は Source Network Address Translation (SNAT) を使用してこの機能を実行します。 ロード バランサーのパブリック IP アドレスの一時ポートを使用して、VM から送信される個々のフローが区別されます。 送信フローが作成されると、SNAT は一時ポートを動的に割り当てます。 ここでは、SNAT で使用される一時ポートを SNAT ポートと呼びます。
 

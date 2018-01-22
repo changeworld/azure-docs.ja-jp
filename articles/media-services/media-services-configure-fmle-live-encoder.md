@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: e831048f34ecf6e89595adc4bfd58b5977e04bdb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: be84225eca9cbaa25b9a0dfb8e74e0981b283096
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.lasthandoff: 12/21/2017
 >
 >
 
-このトピックでは、 [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。 詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+この記事では、[Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。 詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。 このツールは、Windows PC でのみ実行されます。 Mac または Linux の場合は、Azure Portal を使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)と[プログラム](media-services-portal-creating-live-encoder-enabled-channel.md)を作成します。
 
-このチュートリアルでは、AAC の使用方法について説明することに注意してください。 ただし、FMLE は、既定では AAC をサポートしません。 MainConcept [の AAC プラグイン](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+このチュートリアルでは、AAC の使用方法について説明します。 ただし、FMLE は、既定では AAC をサポートしません。 MainConcept [の AAC プラグイン](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>前提条件
 * [Azure Media Services アカウントを作成します](media-services-portal-create-account.md)
@@ -47,7 +47,7 @@ ms.lasthandoff: 12/21/2017
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
+1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
 
     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 12/21/2017
 >
 >
 
-チャネルを開始している間に、 [エンコーダーを構成する](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp)ことができます。
+チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp)ことができます。
 
 > [!IMPORTANT]
 > チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。 詳細については、「 [チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
@@ -91,7 +91,7 @@ ms.lasthandoff: 12/21/2017
 ### <a name="configuration-steps"></a>構成の手順
 1. 使用中のコンピューターで、Flash Media Live Encoder (FMLE) のインターフェイスに移動します。
 
-    インターフェイスは、設定のメイン ページの 1 つです。 FMLE を使用するストリーミングを開始するには、次の推奨設定に注意してください。
+    インターフェイスは、設定のメイン ページの 1 つです。 FMLE を使用するストリーミングを開始するには、次の推奨設定にご注意ください。
 
    * 形式: H.264 フレーム レート: 30.00
    * 入力サイズ: 1280 x 720
@@ -106,14 +106,14 @@ ms.lasthandoff: 12/21/2017
    * レベル: 4.0
    * キーフレームの頻度: 2 秒
 
-     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
+     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
 3. 次の重要なオーディオの設定を行います。
 
    * 形式: AAC
    * サンプル レート: 44100 Hz
    * ビットレート: 192 kbps
 
-     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
+     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
 4. FMLE の **RTMP エンドポイント**に割り当てるために、チャネルの入力 URL を取得します。
 
     AMSE ツールに戻り、チャネルの完了状態を確認します。 状態が **[開始中]** から **[実行中]** に変わったら、入力 URL を取得することができます。
@@ -123,7 +123,7 @@ ms.lasthandoff: 12/21/2017
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
 5. 出力セクションの **[FMS URL]** フィールドにこの情報を貼り付け、ストリーム名を割り当てます。
 
-    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
+    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
 
     冗長性をさらに高めるには、セカンダリ入力 URL に対して次の手順を繰り返します。
 6. **[接続]**を選択します。
@@ -142,7 +142,7 @@ AMSE ツールに移動し、テストするチャネルを右クリックしま
 
 ストリームがプレーヤーに表示されている場合は、エンコーダーが AMS に接続するように正しく構成されています。
 
-エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。 ガイダンスについては、 [トラブルシューティング](media-services-troubleshooting-live-streaming.md) に関するトピックをご覧ください。  
+エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。 ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関する記事をご覧ください。  
 
 ## <a name="create-a-program"></a>プログラムを作成する
 1. チャネルの再生が確認されたら、プログラムを作成します。 AMSE ツールの **[Live]** タブで、プログラム領域内を右クリックし、**[新しいプログラムの作成]** を選択します。  
@@ -156,12 +156,12 @@ AMSE ツールに移動し、テストするチャネルを右クリックしま
     >プログラムの作成は、チャネルの作成ほど時間はかかりません。
         
 5. プログラムが実行されたら、再生を確認するために、プログラムを右クリックして **[プログラムの再生]** に移動し、**[Azure Media Player を使用]** を選択します。  
-6. 確認したら、プログラムをもう一度クリックし、**[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
+6. 確認したら、プログラムをもう一度右クリックし、**[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
 
 これで、ストリームをプレーヤーに埋め込んだり、ライブ表示のために対象ユーザーに配信したりできるようになりました。  
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-ガイダンスについては、 [トラブルシューティング](media-services-troubleshooting-live-streaming.md) に関するトピックをご覧ください。
+ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関する記事をご覧ください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

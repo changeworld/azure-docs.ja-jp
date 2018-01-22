@@ -1,6 +1,6 @@
 ---
-title: "Azure Security Center クイック スタート ガイド | Microsoft Docs"
-description: "この記事では、Azure Security Center のセキュリティ監視およびポリシー管理コンポーネントと、次のステップへの展開を説明することで、この Azure Security Center をすぐに開始できるようにします。"
+title: "Azure Security Center クイックスタート - Azure サブスクリプションでの Security Center Standard の利用開始 | Microsoft Docs"
+description: "このクイックスタートでは、セキュリティを強化するために Security Center の Standard 価格レベルにアップグレードする方法を示します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,125 +12,109 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 01/07/2018
 ms.author: terrylan
-ms.openlocfilehash: c28f92af96f31d1c386cf072f83fc142b9a7f588
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac4e3b36b08223f7e3b54850ed53a8185e85f0d2
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="azure-security-center-quick-start-guide"></a>Azure Security Center クイック スタート ガイド
-この記事では、Azure Security Center のセキュリティ監視およびポリシー管理コンポーネントについて説明することで、この Azure Security Center をすぐに開始できるようにします。
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始
+Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。
+
+この記事では、セキュリティを強化するために Standard レベルにアップグレードし、仮想マシンに Microsoft Monitoring Agent をインストールしてセキュリティの脆弱性と脅威を監視します。
 
 ## <a name="prerequisites"></a>前提条件
 セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
-Security Center の Free レベルは、すべての Azure サブスクリプションで自動的に有効にされ、セキュリティ ポリシー、継続的なセキュリティ評価、および Azure リソースを保護するための実践的なセキュリティに関する推奨事項を提供します。
+サブスクリプションを Standard レベルにアップグレードするには、サブスクリプションの所有者、サブスクリプションの共同作成者、またはセキュリティ管理者の役割が割り当てられている必要があります。
 
-Security Center には [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。 Azure Portal の詳細については、[ポータルに関するドキュメント](https://azure.microsoft.com/documentation/services/azure-portal/)をご覧ください。
+## <a name="enable-your-azure-subscription"></a>Azure サブスクリプションの有効化
 
-## <a name="permissions"></a>アクセス許可
-Security Center では、リソースが属するサブスクリプションまたはリソース グループの所有者、共同作業者、閲覧者のいずれかのロールが割り当てられているときにリソースに関連した情報のみが表示されます。 Security Center のロールと許可されているアクションの詳細については、「[Permissions in Azure Security Center (Azure Security Center のアクセス許可)](security-center-permissions.md)」を参照してください。
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
+2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
-## <a name="data-collection"></a>データ収集
-Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM) と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 Security Center は、サポートされている既存の Azure VM と新しく作成される VM すべてに対して Microsoft Monitoring Agent をプロビジョニングします。 データ収集のしくみの詳細については、[データ収集の有効化](security-center-enable-data-collection.md)に関するページを参照してください。
+ ![Security Center の概要][2]
 
-自動プロビジョニングを使用することを強くお勧めします。自動プロビジョニングは、Security Center の Standard レベルのサブスクリプションでは必須です。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
+**[セキュリティ センター - 概要]** では、ハイブリッド クラウド ワークロードのセキュリティ対策の統合ビューが表示されるので、ワークロードのセキュリティを検出して評価したり、リスクを特定して軽減したりできます。 Security Center は、ユーザーまたは別のサブスクリプション ユーザーによって以前に Free レベルにオンボードされていない Azure サブスクリプションを自動的に有効にします。
 
-Free 価格レベルと Standard 価格レベルの詳細については、[Security Center の価格](security-center-pricing.md)に関するページを参照してください。
+**[サブスクリプション]** メニュー項目をクリックして、サブスクリプションの一覧を表示およびフィルター処理できます。 Security Center は、これらのサブスクリプションのセキュリティの評価を開始して、セキュリティの脆弱性を識別します。 評価の種類をカスタマイズするには、セキュリティ ポリシーを変更します。 セキュリティ ポリシーは、ワークロードの必要な構成を定義し、会社や規制のセキュリティ要件に確実に準拠できるようにします。
 
-次の手順では、Security Center のコンポーネントにアクセスする方法と、そのコンポーネントの使用方法について説明します。
+Security Center を初めて起動してから数分以内に、以下の項目が表示されます。
 
-> [!NOTE]
-> この記事では、サンプル デプロイを使用してサービスについて紹介します。 この記事はステップ バイ ステップ ガイドではありません。
->
->
+- Azure サブスクリプションのセキュリティを向上させる方法についての**推奨事項**。 **[推奨事項]** タイルをクリックすると優先順位が付けられた一覧が起動します。
+- Security Center によって現在評価されている**[計算]**、**[ネットワーク]**、**[ストレージおよびデータ]**、**[アプリケーション]** の各リソースとそれぞれのセキュリティ対策のインベントリ。
 
-## <a name="access-security-center"></a>セキュリティ センターへのアクセス
-セキュリティ センターにアクセスするには、ポータルで次の手順を実行します。
+Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Microsoft Monitoring Agent をインストールする必要があります。
 
-1. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。
+## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
+Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 最初の 60 日間は無料で、いつでも Free レベルに戻すことができます。
 
-   ![Azure メニュー][1]
-2. Security Center に初めてアクセスする場合は、**[ようこそ]** ブレードが開きます。 **[Security Center の起動]** を選択して、**Security Center** を開きます。
-   ![[ようこそ] 画面][10]
-3. [ようこそ] ブレードから Security Center を起動するか、Microsoft Azure のメニューから Security Center を選択すると、**Security Center** が開きます。 後で **[セキュリティ センター]** ブレードにアクセスしやすいように、右上にある **[ダッシュボードにブレードをピン留め]** オプションを選択します。
-   ![Pin blade to dashboard option][2]
+1. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
 
-## <a name="use-security-center"></a>セキュリティ センターの使用
-Azure サブスクリプションとリソース グループのセキュリティ ポリシーを構成できます。 サブスクリプションのセキュリティ ポリシー を構成してみましょう。
+2. Security Center の **[高度なセキュリティへのオンボード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 一覧からサブスクリプションを選択します。
+
+  ![サブスクリプションの選択][4]
+
+3. **[セキュリティ ポリシー]** に、そのサブスクリプションに含まれるリソース グループの情報が表示されます。 **[価格]** も開きます。
+4. **[価格]** で **[Standard]** を選択して、Free から Standard にアップグレードし、**[保存]** をクリックします。
+
+  ![[Standard] の選択][5]
+
+これで Standard レベルにアップグレードされました。**適応型アプリケーション制御**、**Just In Time VM アクセス**、**セキュリティの警告**、**脅威インテリジェンス**、**自動プレイブック**などの追加の Security Center 機能にアクセスできます。 セキュリティの警告は、Security Center が悪意のあるアクティビティを検出した場合にのみ表示されます。
+
+  ![セキュリティのアラート][7]
+
+## <a name="automate-data-collection"></a>自動データ収集
+Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure VM と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 既定では、Security Center によって新しいワークスペースが作成されます。
+
+自動プロビジョニングを有効にすると、Security Center は、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent をインストールします。 自動プロビジョニングを強くお勧めします。
+
+Microsoft Monitoring Agent の自動プロビジョニングを有効にするには、次の手順に従います。
 
 1. Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
-2. **[Security Center - Security policy]\(Security Center - セキュリティ ポリシー\)** で、サブスクリプションを選択します。
-3. **[Security policy - Data Collection ]\(セキュリティ ポリシー - データ収集\)** で**自動プロビジョニング**を有効にします。 Security Center は、サポートされている既存の Azure VM と新しく作成される VM すべてに対して Microsoft Monitoring Agent をプロビジョニングします。
+2. サブスクリプションを選択します。
+3. **[セキュリティ ポリシー]** で **[データ収集]** を選択します。
+4. **[データ収集]** の **[オン]** を選択して、自動プロビジョニングを有効にします。
+5. **[保存]** を選択します。
 
-    ![セキュリティ ポリシー][12]
+  ![自動プロビジョニングを有効にする][6]
 
-4. **[セキュリティ ポリシー]** ブレードで、**[セキュリティ ポリシー]** ポリシー コンポーネントを選択します。
+Azure VM のこの新たな洞察により、Security Center は、システムの更新状態、OS セキュリティ構成、エンドポイント保護に関連する追加の推奨事項を提供し、追加のセキュリティ警告を生成できます。
 
-     ![セキュリティ ポリシー][11]
+  ![Recommendations][8]
 
-5. **[推奨事項を表示:]** で、セキュリティ ポリシーの一部として表示する推奨事項をオンにします。 次に例を示します。
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
 
-   * **[システムの更新プログラム]** を **[オン]** に設定すると、サポートされているすべての VM で不足している OS の更新プログラムがスキャンされます。
-   * **[OS の脆弱性]** を **[オン]** に設定すると、サポートされているすべての VM がスキャンされ、攻撃に対する VM の脆弱性を高める可能性がある OS の構成が特定されます。
+1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
+2. Free に戻したいサブスクリプションまたはポリシーを選択します。 **[セキュリティ ポリシー]** が開きます。
+3. **[ポリシー コンポーネント]** で、**[価格レベル]** を選択します。
+4. **[Free]** を選択して、Standard レベルから Free レベルにサブスクリプションを変更します。
+5. **[保存]** を選択します。
 
-6. [ **保存**] を選択します。
+自動プロビジョニングを無効にする場合:
 
-### <a name="view-recommendations"></a>推奨事項の表示
-1. **[セキュリティ センター]** ブレードに戻り、**[推奨事項]** タイルを選択します。 セキュリティ センターは、Azure リソースのセキュリティの状態を定期的に分析します。 Security Center では、潜在的なセキュリティの脆弱性が特定されると、推奨事項が **[推奨事項]** ブレードに表示されます。
-   ![Azure Security Center の推奨事項][5]
-2. **[推奨事項]** ブレードで推奨事項を選択すると、詳細な情報を表示したり、問題を解決するためのアクションを実行したりできます。
+1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
+2. 自動プロビジョニングを無効にするサブスクリプションを選択します。
+3. **[セキュリティ ポリシー - データ収集]** で、**[オンボード]** の **[オフ]** を選択して、自動プロビジョニングを無効にします。
+4. **[保存]** を選択します。
 
-### <a name="view-the-security-state-of-your-resources"></a>リソースのセキュリティの状態を表示する
-1. **[セキュリティ センター]** ブレードに戻ります。 ダッシュボードの **[防止策]** セクションには、VM、ネットワーク、データ、アプリケーションのセキュリティ状態インジケーターが表示されます。
-2. **[Compute (コンピューティング)]** を選択して、詳細を表示します。 **[Compute (コンピューティング)]** ブレードが開き、3 つのタブが表示されます。
+>[!NOTE]
+> 自動プロビジョニングを無効しても、Microsoft Monitoring Agent がプロビジョニングされている Azure VM からエージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。
+>
 
-  - **[概要]** - 監視と VM の推奨事項が表示されます。
-  - **[VM およびコンピューター]** - すべての VM とコンピューターに関する現在のセキュリティ状態が一覧表示されます。
-  - **[クラウド サービス]** - Security Center で監視されている Web ロールと worker ロールの一覧が表示されます。
+## <a name="next-steps"></a>次の手順
+このクイック スタートでは、Standard レベルにアップグレードし、ハイブリッド クラウド ワークロード全体での統合セキュリティの管理と脅威保護のために Microsoft Monitoring Agent をプロビジョニングしました。 Security Center の詳しい使用方法を学習するには、オンプレミスおよび他のクラウドの Windows コンピューターのオンボードに関するクイックスタートに進みます。
 
-    ![コンピューティングのセキュリティ正常性][6]
-
-3. **[概要]** タブの推奨事項を選択して、詳細情報を表示したり、必要な制御を構成するためのアクションを実行したりします。
-4. **[VM およびコンピューター]** タブで、リソースを選択して詳細を表示します。
-
-### <a name="view-security-alerts"></a>セキュリティの警告の表示
-1. **[セキュリティ センター]** ブレードに戻り、**[セキュリティ通知]** タイルを選択します。 **[セキュリティ通知]** ブレードが開き、警告の一覧が表示されます。 こうした警告は、Security Center によるセキュリティ ログとネットワーク アクティビティの分析によって生成されます。 これには、統合されているパートナー ソリューションの警告も含まれます。
-   ![Security alerts in Azure Security Center][7]
-
-2. アラートを選択すると詳細な情報が表示されます。 この例では、**[Modified system binary discovered in dump filter]\(ダンプ ファイルにおけるシステム バイナリの改変の検出\)** を選択します。 これによりブレードが開き、警告の詳細情報が表示されます。
-   ![Azure Security Center のセキュリティ警告の詳細][8]
-
-### <a name="view-the-health-of-your-partner-solutions"></a>パートナー ソリューションの正常性の表示
-1. **[セキュリティ センター]** ブレードに戻ります。 **[セキュリティ ソリューション]** タイルでは、Azure サブスクリプションと統合されたパートナー ソリューションの正常性状態をひとめで監視できます。
-2. **[セキュリティ ソリューション]** タイルを選択します。 ブレードが開き、Security Center に接続されているパートナー ソリューションの一覧が表示されます。
-   ![[パートナー ソリューション]][9]
-3. パートナー ソリューションを選択します。 ブレードが開き、パートナー ソリューションとそのソリューションの関連リソースの状態が表示されます。 **[ソリューション コンソール]** を選択して、このソリューションのパートナー管理エクスペリエンスを開きます。
-
-   ![パートナー ソリューション][13]
-
-## <a name="next-steps"></a>次のステップ
-この記事では、Security Center のセキュリティ監視とポリシー管理のコンポーネントについて説明しました。 Security Center について理解したら、次の手順をお試しください。
-
-* Azure サブスクリプションのセキュリティ ポリシーを構成するには、[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)に関するページを参照してください。
-* Azure リソースを保護するのに役立つ Security Center の推奨事項を使用するには、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。
-* 現在のセキュリティ アラートを確認して管理するには、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
-- パートナーと統合してセキュリティを全体的に向上させる方法を学習するには、[パートナーとソリューションの統合](security-center-partner-integration.md)に関するページを参照してください。
-- Security Center でデータがどのように管理および保護されているかを学習するには、「[Azure Security Center のデータ セキュリティ](security-center-data-security.md)」を参照してください。
-* Security Center の [Standard レベル](security-center-pricing.md)で利用できる[高度な脅威検出機能](security-center-detection-capabilities.md)について確認します。 Standard レベルは、最初の 60 日間は無料です。
-* Security Center に関する質問がある場合は、[Azure Security Center の FAQ](security-center-faq.md) をご覧ください。
+> [!div class="nextstepaction"]
+> [クイックスタート: Windows コンピューターでの Azure Security Center の利用開始](quick-onboard-windows-computer.md)
 
 <!--Image references-->
-[1]: ./media/security-center-get-started/azure-menu.png
-[2]: ./media/security-center-get-started/security-center-pin.png
-[5]: ./media/security-center-get-started/recommendations.png
-[6]: ./media/security-center-get-started/resources-health.png
-[7]: ./media/security-center-get-started/security-alert.png
-[8]: ./media/security-center-get-started/security-alert-detail.png
-[9]: ./media/security-center-get-started/partner-solutions.png
-[10]: ./media/security-center-get-started/welcome.png
-[11]: ./media/security-center-get-started/show-recommendations-for.png
-[12]: ./media/security-center-get-started/automatic-provisioning.png
-[13]: ./media/security-center-get-started/partner-solutions-detail.png
+[2]: ./media/security-center-get-started/overview.png
+[4]: ./media/security-center-get-started/onboarding.png
+[5]: ./media/security-center-get-started/pricing.png
+[6]: ./media/security-center-get-started/enable-automatic-provisioning.png
+[7]: ./media/security-center-get-started/security-alerts.png
+[8]: ./media/security-center-get-started/recommendations.png

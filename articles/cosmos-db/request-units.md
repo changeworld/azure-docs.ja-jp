@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: 57e8274d67bff86832d9cd070b781ade6575dee7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: c7aadb4e535ed221f882f251324b6d4e633c2d5e
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 Azure Cosmos DB の [要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が新たに公開されました。 詳細については、「 [スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照してください。
@@ -55,7 +55,7 @@ Azure Cosmos DB では、1 秒で処理する要求ユニットで、予約済�
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB での要求ユニット量の指定
 新しいコレクション、テーブル、またはグラフを開始するときに、予約する 1 秒あたりの要求ユニット数 (RU/秒) を指定します。 プロビジョニング済みのスループットに基づいて、Azure Cosmos DB はコレクションをホストする物理パーティションを割り当て、データの増加に応じてパーティション間でデータの分割やバランスの再調整を行います。
 
-Azure Cosmos DB では、2,500 以上の要求ユニットでコレクションがプロビジョニングされるとき、パーティション キーを指定する必要があります。 パーティション キーは、今後 2,500 要求ユニットを超えてコレクションのスループットをスケーリングするためにも必要です。 したがって、初期のスループットに関係なく、コンテナーの作成時に[パーティション キー](partition-data.md)を構成しておくことを強くお勧めします。 データが複数のパーティションに分割される場合があるため、高基数 (100 ～数百万の個別の値) のパーティション キーを選択する必要があります。 多数の異なる値を持つパーティション キーを選択すると、コレクション/テーブル/グラフおよび要求を、Azure Cosmos DB で確実かつ一様に拡大縮小できるようになります。 
+Azure Cosmos DB コンテナーは、固定または無制限として作成することができます。 固定サイズのコンテナーの上限は、容量が 10 GB で、スループットが毎秒 10,000 RU となります。 無制限のコンテナーを作成する場合は、最低でも 1,000 RU/秒のスループットと[パーティション キー](partition-data.md)を指定する必要があります。 データが複数のパーティションに分割される場合があるため、高基数 (100 ～数百万の個別の値) のパーティション キーを選択する必要があります。 多数の異なる値を持つパーティション キーを選択すると、コレクション/テーブル/グラフおよび要求を、Azure Cosmos DB で確実かつ一様に拡大縮小できるようになります。 
 
 > [!NOTE]
 > パーティション キーは論理境界であり、物理的な境界ではありません。 したがって、個別のパーティション キー値の数を制限する必要はありません。 Azure Cosmos DB には他にも負荷分散のオプションがあるので、個別のパーティション キー値は多くしておくことをお勧めします。
@@ -201,7 +201,7 @@ Azure Cosmos DB サービスからの各応答には、要求で使用される�
 > 
 > 
 
-For example:
+例: 
 
 1. 典型的なアイテム作成 (挿入) の要求ユニット使用量を記録します。 
 2. 典型的なアイテム読み取りの要求ユニット使用量を記録します。
@@ -210,7 +210,7 @@ For example:
 5. アプリケーションが利用するカスタム スクリプト (ストアド プロシージャ、トリガー、ユーザー定義関数) の要求ユニット使用量を記録します。
 6. 予想される 1 秒あたりの操作実行数の推定値に基づいて、必要な要求ユニットを計算します。
 
-### <a id="GetLastRequestStatistics"></a> MongoDB 用 API の GetLastRequestStatistics コマンドを使用する
+## <a id="GetLastRequestStatistics"></a> MongoDB 用 API の GetLastRequestStatistics コマンドを使用する
 MongoDB 用 API は、指定した操作の要求の使用量を取得するためのカスタム コマンド*getLastRequestStatistics* をサポートしています。
 
 たとえば、Mongo シェルで、要求の使用量を確認する操作を実行します。
@@ -348,7 +348,7 @@ MongoDB データベース用 API の要求ユニットの適切な推定使用�
 ## <a id="RequestRateTooLargeAPIforMongoDB"></a> MongoDB 用 API での予約されたスループット上限の超過
 コレクションに対してプロビジョニングされた要求単位を超過したアプリケーションは、そのレートが予約されたレベルを下回るまで調整されます。 調整が発生すると、バックエンドは、エラー コード *16500* ("*要求が多すぎます*") で機先を制して要求を終了します。 既定では、MongoDB 用 API は、"*要求が多すぎる*" ことを示すエラー コードを返す前に、最大 10 回の再試行を自動的に実行します。 "*要求が多すぎる*" ことを示すエラー コードが多数発生する場合は、アプリケーションのエラー処理ルーチンに再試行動作を追加するか、[コレクションの予約済みスループットを増やす](set-throughput.md)ことを検討することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Cosmos DB データベースの予約済みスループットの詳細については、以下のリソースを参照してください。
 
 * [Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 1115408443e11c8b0d26b83217c5f63e4b6ba819
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 036c192c5f52a1943bc2799ad6c7e6db7bbffcc4
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
 このドキュメントでは、Media Encoder Standard で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。
@@ -26,31 +26,31 @@ ms.lasthandoff: 10/11/2017
 ## <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 | ファイル形式 (ファイル拡張子) | サポートされています |
 | --- | --- | --- | --- |
-| (H.264 および AAC コーデックでの) FLV (.flv) |はい |
-| MXF    (.mxf) |はい |
-| GXF    (.gxf) |はい |
-| MPEG2-PS、MPEG2-TS、3GP (.ts、.ps、.3gp、.3gpp、.mpg) |あり |
-| Windows Media Video (WMV)/ASF (.wmv、.asf) |あり |
-| AVI (非圧縮 8-bit/10-bit) (.avi) |あり |
-| MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv) |あり |
-| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |あり |
-| Matroska/WebM (.mkv) |あり |
-| WAVE/WAV (.wav) |あり |
-| QuickTime (.mov) |あり |
+| (H.264 および AAC コーデックでの) FLV (.flv) |[はい] |
+| MXF    (.mxf) |[はい] |
+| GXF    (.gxf) |[はい] |
+| MPEG2-PS、MPEG2-TS、3GP (.ts、.ps、.3gp、.3gpp、.mpg) |[はい] |
+| Windows Media Video (WMV)/ASF (.wmv、.asf) |[はい] |
+| AVI (非圧縮 8-bit/10-bit) (.avi) |[はい] |
+| MP4 (.mp4、.m4a、.m4v)/ISMV (.isma、.ismv) |[はい] |
+| [Microsoft Digital Video Recording (DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |[はい] |
+| Matroska/WebM (.mkv) |[はい] |
+| WAVE/WAV (.wav) |[はい] |
+| QuickTime (.mov) |[はい] |
 
 > [!NOTE]
-> 上に記載したのは、ごく一般的なファイル拡張子の一覧です。 Media Encoder Standard は他にもさまざまな拡張子をサポートしています (例: .m2ts、.mpeg2video、.qt)。 ファイルをエンコードしたときに、ファイル形式がサポートされていないことに関するエラー メッセージが表示された場合は、 [こちら](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)からフィードバックをお寄せください。
+> 上に記載したのは、ごく一般的なファイル拡張子の一覧です。 Media Encoder Standard は他にもさまざまな拡張子をサポートしています (例: .m2ts、.mpeg2video、.qt)。 ファイルをエンコードしようとしたときに、ファイル形式がサポートされていないことに関するエラー メッセージが表示された場合は、[こちら](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)からフィードバックをお寄せください。
 > 
 > 
 
 ### <a name="audio-formats-in-input-containers"></a>入力コンテナーのオーディオ形式
 Media Encoder Standard の入力コンテナーは次のオーディオ形式に対応しています。
 
-* オーディオ トラックにインターリーブ ステレオまたは 5.1 サンプルが含まれる MXF、GXF、QuickTime ファイル。
+* オーディオ トラックにインターリーブ ステレオまたは 5.1 サンプルが含まれる MXF、GXF、QuickTime ファイル
 
-または
+or
 
-* オーディオが個別 PCM トラックとして送信されるが、(ステレオまたは 5.1 への) チャネル マッピングをファイル メタデータから推測できる MXF、GXF、QuickTime ファイル。
+* オーディオが個別 PCM トラックとして送信されるが、(ステレオまたは 5.1 への) チャネル マッピングをファイル メタデータから推測できる MXF、GXF、QuickTime ファイル
 
 明示的/ユーザー指定のチャネル マッピングが近い将来にサポートされる予定です。
 
@@ -58,40 +58,40 @@ Media Encoder Standard の入力コンテナーは次のオーディオ形式に
 | 入力ビデオ コーデック | サポートされています |
 | --- | --- | --- | --- |
 | AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む) |8 ビット 4:2:0 および 4:2:2 |
-| Avid DNxHD (MXF) |あり |
-| DVCPro/DVCProHD (MXF) |あり |
-| デジタル ビデオ (DV) (AVI ファイルで) |あり |
-| JPEG 2000 |あり |
+| Avid DNxHD (MXF) |[はい] |
+| DVCPro/DVCProHD (MXF) |[はい] |
+| デジタル ビデオ (DV) (AVI ファイルで) |[はい] |
+| JPEG 2000 |[はい] |
 | MPEG-2 (XDCAM、XDCAM HD、XDCAM IMX、CableLabs®、D10 など、最大 422 プロファイルおよびハイ レベル) |最大 422 プロファイル |
-| MPEG-1 |あり |
-| VC-1/WMV9 |あり |
-| Canopus HQ/HQX |いいえ |
-| MPEG-4 Part 2 |あり |
-| [Theora](https://en.wikipedia.org/wiki/Theora) |あり |
-| YUV420 非圧縮または中間 |あり |
-| Apple ProRes 422 |あり |
-| Apple ProRes 422 LT |あり |
-| Apple ProRes 422 HQ |あり |
-| Apple ProRes プロキシ |あり |
-| Apple ProRes 4444 |あり |
-| Apple ProRes 4444 XQ |あり |
+| MPEG-1 |[はい] |
+| VC-1/WMV9 |[はい] |
+| Canopus HQ/HQX |いいえ  |
+| MPEG-4 Part 2 |[はい] |
+| [Theora](https://en.wikipedia.org/wiki/Theora) |[はい] |
+| YUV420 非圧縮または中間 |[はい] |
+| Apple ProRes 422 |[はい] |
+| Apple ProRes 422 LT |[はい] |
+| Apple ProRes 422 HQ |[はい] |
+| Apple ProRes プロキシ |[はい] |
+| Apple ProRes 4444 |[はい] |
+| Apple ProRes 4444 XQ |[はい] |
 
 ## <a name="input-audio-codecs"></a>入力オーディオ コーデック
 | 入力オーディオ コーデック | サポートされています |
 | --- | --- | --- | --- |
-| AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1) |はい |
-| MPEG Layer 2 |あり |
-| MP3 (MPEG-1 Audio Layer 3) |あり |
-| Windows Media オーディオ |あり |
-| WAV/PCM |はい |
-| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |はい |
-| [Opus](http://go.microsoft.com/fwlink/?LinkId=822667) |はい |
-| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |はい |
-| AMR (アダプティブ マルチ レート) |あり |
-| AES (SMPTE 331M および 302M、AES3-2003) |いいえ |
-| Dolby® E |いいえ |
-| Dolby® Digital (AC3) |いいえ |
-| Dolby® Digital Plus (E-AC3) |いいえ |
+| AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1) |[はい] |
+| MPEG Layer 2 |[はい] |
+| MP3 (MPEG-1 Audio Layer 3) |[はい] |
+| Windows Media オーディオ |[はい] |
+| WAV/PCM |[はい] |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |[はい] |
+| [Opus](http://go.microsoft.com/fwlink/?LinkId=822667) |[はい] |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |[はい] |
+| AMR (アダプティブ マルチ レート) |[はい] |
+| AES (SMPTE 331M および 302M、AES3-2003) |いいえ  |
+| Dolby® E |いいえ  |
+| Dolby® Digital (AC3) |いいえ  |
+| Dolby® Digital Plus (E-AC3) |いいえ  |
 
 ## <a name="output-formats-and-codecs"></a>出力形式とコーデック
 次の表では、エクスポートでサポートされるコーデックおよびファイル形式の一覧を示します。

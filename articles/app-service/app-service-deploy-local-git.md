@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: ed0239df7bf1e4d37987aaa929d0c67bec595b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19681564ef48649d4d44da1d0a2a65044f494ce4
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 このチュートリアルでは、ローカル コンピューター上の Git リポジトリから [Azure Web Apps](app-service-web-overview.md) にアプリをデプロイする方法を説明します。 この方法は、App Service により、**Azure Portal** の [ローカル Git]デプロイ オプションでサポートされています。  
@@ -72,7 +72,7 @@ git commit -m "Hello Azure App Service"
 2. App Service アプリのブレードで、**[設定]、[展開元]** の順にクリックします。 **[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** をクリックして **[OK]** をクリックします。  
    
     ![ローカルの Git リポジトリ](./media/app-service-deploy-local-git/local_git_selection.png)
-3. Azure で初めてリポジトリを設定した場合、そのログイン資格情報を作成する必要があります。 それらを使用して、Azure リポジトリにログインし、ローカル Git リポジトリから変更をプッシュします。 アプリのブレードで **[設定]、[デプロイ資格情報]** の順にクリックし、デプロイ用のユーザー名とパスワードを構成します。 終了したら **[保存]**をクリックします。
+3. Azure で初めてリポジトリを設定した場合、そのログイン資格情報を作成する必要があります。 それらを使用して、Azure リポジトリにログインし、ローカル Git リポジトリから変更をプッシュします。 アプリのブレードで **[デプロイ] > [デプロイ資格情報]** の順にクリックし、デプロイ用のユーザー名とパスワードを構成します。 終了したら **[保存]**をクリックします。
    
     ![](./media/app-service-deploy-local-git/deployment_credentials.png)
 
@@ -121,11 +121,11 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 **解決策**: `git remote -v` コマンドを使用して、すべてのリモートおよび関連付けられている URL を一覧表示します。 "azure" リモートの URL が正しいことを確認します。 必要に応じて、このリモートを削除し、正しい URL を使用して再作成します。
 
 - - -
-**症状**: 参照が共通していないか、指定されていません。未対応です。 『master』 などの分岐を指定する必要があります。
+**症状**: 参照が共通していないか、指定されていません。未対応です。 'master' などのブランチを指定する必要があります。
 
-**原因**: このエラーは、git push 操作を実行するときに分岐を指定せず、Git で使用される push.default 値を設定していない場合に発生します。
+**原因**: このエラーは、git push 操作を実行するときにブランチを指定せず、Git で使用される push.default 値を設定していない場合に発生します。
 
-**解決策**: master 分岐を指定して、もう一度 push 操作を実行します。 次に例を示します。
+**解決策**: master ブランチを指定して、もう一度 push 操作を実行します。 例: 
 
 ```bash  
 git push azure master
@@ -133,9 +133,9 @@ git push azure master
 - - -
 **症状**: src refspec [branchname] does not match any.
 
-**原因**: このエラーは、"azure" リモートの master 以外の分岐にプッシュしようとした場合に発生します。
+**原因**: このエラーは、"azure" リモートの master 以外のブランチにプッシュしようとした場合に発生します。
 
-**解決策**: master 分岐を指定して、もう一度 push 操作を実行します。 For example:
+**解決策**: master ブランチを指定して、もう一度 push 操作を実行します。 例: 
 
 ```bash  
 git push azure master

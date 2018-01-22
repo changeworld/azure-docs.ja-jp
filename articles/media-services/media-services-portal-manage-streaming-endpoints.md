@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: juliako
-ms.openlocfilehash: 89b4f7cee6d00b5bbbca4799eeca74a280147fc7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6f551a7970f226ba40753009b24bd4c5eeb67fb
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理
 
-このトピックでは、Azure ポータルを使用してストリーミング エンドポイントを管理する方法について説明します。 
+この記事では、Azure Portal を使用してストリーミング エンドポイントを管理する方法について説明します。 
 
 >[!NOTE]
->必ず、[概要](media-services-streaming-endpoints-overview.md)トピックをお読みください。 
+>必ず、[概要](media-services-streaming-endpoints-overview.md)記事をお読みください。 
 
-ストリーミング エンドポイントのスケールを設定する方法については、 [こちらの](media-services-portal-scale-streaming-endpoints.md) トピックを参照してください。
+ストリーミング エンドポイントのスケールを設定する方法については、[こちら](media-services-portal-scale-streaming-endpoints.md)の記事をご覧ください。
 
 ## <a name="start-managing-streaming-endpoints"></a>ストリーミング エンドポイントの管理を開始する 
 
@@ -62,8 +62,8 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 ## <a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
 ストリーミング エンドポイントでは、次のプロパティを構成できます。
 
-* Access control
-* Cache control
+* アクセス制御
+* キャッシュ制御
 * Cross site access policies
 
 これらのプロパティの詳細については、「 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)」をご覧ください。
@@ -74,7 +74,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 ストリーミング エンドポイントを構成するには、以下の操作を行います。
 
 1. 構成するストリーミング エンドポイントを選択します。
-2. **[Settings]**をクリックします。
+2. **[設定]**をクリックします。
 
 以下で、その各フィールドについて簡単に説明します。
 
@@ -86,27 +86,27 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>Premium ストリーミング エンドポイントを拡張する
 
-詳細については、 [こちらの](media-services-portal-scale-streaming-endpoints.md) トピックを参照してください。
+詳細については、[こちらの記事](media-services-portal-scale-streaming-endpoints.md)を参照してください。
 
 ## <a id="enable_cdn"></a>Azure CDN 統合を有効にする
 
 新しいアカウントを作成すると、既定のストリーミング エンドポイント Azure CDN 統合が既定で有効になります。
 
-後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを**停止**状態にする必要があります。 Azure CDN 統合が有効になり、すべての CDN POP 間で変更がアクティブになるまでに、最大で 2 時間かかる場合があります。 ただし、ストリーミング エンドポイントを起動は可能で、ストリーミング エンドポイントから中断なくストリーミングを行うことができます。統合が完了すると、CDN からストリーミングが提供されます。 プロビジョニング中は、ストリーミング エンドポイントが**開始中**の状態になり、パフォーマンスが低下します。
+後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを**停止**状態にする必要があります。 Azure CDN 統合が有効になり、すべての CDN POP で変更がアクティブになるまでに、最大で 2 時間かかる場合があります。 ただし、ストリーミング エンドポイントの起動は可能で、ストリーミング エンドポイントから中断なくストリーミングを行うことができます。統合が完了すると、CDN からストリーミングが提供されます。 プロビジョニング中は、ストリーミング エンドポイントが**開始中**の状態になり、パフォーマンスが低下します。
 
 CDN 統合は、中国および連邦政府地域を除くすべての Azure データ センターで有効になります。
 
-これが有効になると、**Access Control**、**カスタム ホスト名**、および **Akamai 署名認証**構成は無効になります。
+これが有効になると、**Access Control**、**カスタム ホスト名、および **Akamai 署名認証**構成は無効になります。
  
 > [!IMPORTANT]
-> Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー**を使用して構成できます。 Azure CDN 機能の詳細については、 [CDN の概要](../cdn/cdn-overview.md)に関するページをご覧ください。
+> Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー**を使用して構成できます。 Azure CDN 機能の詳細については、「 [CDN の概要](../cdn/cdn-overview.md)」を参照してください。
  
 ### <a name="additional-considerations"></a>追加の考慮事項
 
 * CDN がストリーミング エンドポイントで有効になっている場合、クライアントは配信元から直接コンテンツを要求することはできません。 CDN の有無にかかわらずコンテンツをテストする必要がある場合は、CDN が有効になっていない別のストリーミング エンドポイントを作成できます。
 * ストリーミング エンドポイントのホスト名は、CDN を有効にした後も変化しません。 CDN を有効にした後、Media Services のワークフローを変更する必要はありません。 たとえば、ストリーミング エンドポイントのホスト名が strasbourg.streaming.mediaservices.windows.net の場合、CDN を有効にした後も同じホスト名が使用されます。
 * 新しいストリーミング エンドポイントの場合は、新しいエンドポイントを作成するだけで CDN を有効にできます。既存のストリーミング エンドポイントの場合は、最初にエンドポイントを停止してから CDN を有効/無効にする必要があります。
-* Standard ストリーミング エンドポイントは、Azure 管理ポータルを使用して、**Verizon Standard CDN プロバイダー**でのみ構成でき ます。 ただし、REST API を使用して、他の Azure CDN プロバイダーを有効にすることは可能です。
+* Standard ストリーミング エンドポイントは、Azure クラシック ポータルを使用して、**Verizon Standard CDN プロバイダー**でのみ構成できます。 ただし、REST API を使用して、他の Azure CDN プロバイダーを有効にすることは可能です。
 
 ## <a name="configure-cdn-profile"></a>CDN プロファイルを構成する
 
@@ -114,7 +114,7 @@ CDN プロファイルは、上部にある **[CDN の管理]** ボタンを選�
 
 ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

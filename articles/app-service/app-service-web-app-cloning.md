@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-ms.openlocfilehash: dc252903571857b5fc89d1d9a2c63cd6b44e9021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f58464ac212b84623d2287205271301dbaa0ffb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新しいオプションが New-AzureRMWebApp に追加され、異なるリージョンまたは同じリージョンで新たに作成されたアプリに既存の Web アプリを複製できるようになりました。 これにより、お客様は、リージョンをまたいでさまざまなアプリを迅速かつ簡単にデプロイできるようになります。
@@ -102,6 +102,7 @@ Traffic Manager ID を構成した後で、ソース Web アプリの複製を�
 * Kudu 拡張機能は複製されない
 * TiP ルールは複製されない
 * データベースの内容は複製されない
+* 異なるスケール ユニットにクローニングした場合に送信 IP アドレスは変更されない
 
 ### <a name="references"></a>参照
 * [Web アプリの複製](app-service-web-app-cloning.md)

@@ -9,11 +9,11 @@ ms.date: 10/31/2017
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: 1b8fd12e071bfbd01567803370e510e7e07ccb99
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c4cb8acd12cbda5784d0ea48f7782e47f57db8b5
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -22,7 +22,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
 * モード
-* パラメーター
+* parameters
 * 表示名
 * 説明
 * ポリシー規則
@@ -64,7 +64,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 すべての Azure Policy テンプレートのサンプルについては、「[Templates for Azure Policy (Azure Policy のテンプレート)](json-samples.md)」をご覧ください。
 
-## <a name="mode"></a>モード
+## <a name="mode"></a>Mode
 
 `mode` を `all` に設定して、ポリシーの割り当てですべてのリソース グループと種類を評価できるようにすることをお勧めします。 「[Allow custom VM image from a Resource Group (リソース グループからのカスタムの VM イメージを許可する)](scripts/allow-custom-vm-image.md)」で、リソース グループにタグを適用するポリシー定義の例を確認できます。
 
@@ -75,7 +75,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 モードを `indexed` に設定した場合、タグと位置をサポートするリソースの種類のみで、ポリシーの割り当てが評価されます。
 
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
 
 パラメーターによって、ポリシー定義の数を減らし、ポリシーの管理を単純化できます。 1 つのフォームにあるフィールドのようなパラメーター `name`、`address``city``state` を考えてみてください。 これらのパラメーターは常に同じままですが、その値はフォームの個々の入力に基づいて変わります。 パラメーターは、ポリシーの作成時と同じように機能します。 ポリシー定義にパラメーターを含めることで、別の値を使用してさまざまなシナリオについてポリシーを再利用できます。
 
@@ -200,7 +200,6 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 * **append** は定義済みのフィールド セットを要求に追加します。
 * **AuditIfNotExists** は、リソースが存在しない場合に監査を有効にします。
 * **DeployIfNotExists** は、リソースが存在しない場合にリソースをデプロイします。 現在この効果は、組み込みポリシーを通じてのみサポートされます。
-* **DenyIfNotExists** は、存在しない場合に既存の作成を拒否します。
 
 **append** の場合、次のように詳細を指定する必要があります。
 
@@ -216,7 +215,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 値には文字列または JSON 形式オブジェクトを指定できます。
 
-**AuditIfNotExists**、**DeployIfNotExists**、および **DenyIfNotExists** を使用すると、子リソースの存在を評価したうえで、そのリソースが存在しない場合に、ルールと該当する効果を適用することができます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。
+**AuditIfNotExists** および **DeployIfNotExists** を使用すると、子リソースの存在を評価したうえで、そのリソースが存在しない場合に、ルールと該当する効果を適用することができます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。
 仮想マシン拡張機能がデプロイされていない場合の監査の例については、[拡張機能が存在しない場合の監査](scripts/audit-ext-not-exist.md)に関するページを参照してください。
 
 
@@ -226,7 +225,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 **Microsoft.Cache/Redis**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Cache/Redis/enableNonSslPort | 非 ssl Redis サーバー ポート (6379) が有効かどうかを設定します。 |
 | Microsoft.Cache/Redis/shardCount | Premium クラスター キャッシュに作成するシャードの数を設定します。  |
@@ -236,13 +235,13 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 **Microsoft.Cdn/profiles**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.CDN/profiles/sku.name | 価格レベルの名前を設定します。 |
 
 **Microsoft.Compute/disks**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Compute/imageOffer | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージを設定します。 |
 | Microsoft.Compute/imagePublisher | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージの発行元を設定します。 |
@@ -252,7 +251,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 **Microsoft.Compute/virtualMachines**
 
-| エイリアス | Description |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Compute/imageId | 仮想マシンの作成に使用されるイメージの識別子を設定します。 |
 | Microsoft.Compute/imageOffer | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージを設定します。 |
@@ -269,7 +268,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 **Microsoft.Compute/virtualMachines/extensions**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Compute/virtualMachines/extensions/publisher | 拡張機能の発行元の名前を設定します。 |
 | Microsoft.Compute/virtualMachines/extensions/type | 拡張機能の種類を設定します。 |
@@ -277,7 +276,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 **Microsoft.Compute/virtualMachineScaleSets**
 
-| エイリアス | Description |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Compute/imageId | 仮想マシンの作成に使用されるイメージの識別子を設定します。 |
 | Microsoft.Compute/imageOffer | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージを設定します。 |
@@ -293,26 +292,26 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 **Microsoft.Network/applicationGateways**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Network/applicationGateways/sku.name | ゲートウェイのサイズを設定します。 |
 
 **Microsoft.Network/virtualNetworkGateways**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Network/virtualNetworkGateways/gatewayType | この仮想ネットワーク ゲートウェイの種類を設定します。 |
 | Microsoft.Network/virtualNetworkGateways/sku.name | ゲートウェイの SKU 名を設定します。 |
 
 **Microsoft.Sql/servers**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Sql/servers/version | サーバーのバージョンを設定します。 |
 
 **Microsoft.Sql/databases**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Sql/servers/databases/edition | データベースのエディションを設定します。 |
 | Microsoft.Sql/servers/databases/elasticPoolName | データベースが所属するエラスティック プールの名前を設定します。 |
@@ -321,14 +320,14 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 **Microsoft.Sql/elasticpools**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | データベースのエラスティック プールの共有 DTU の合計を設定します。 |
 | servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | エラスティック プールのエディションを設定します。 |
 
 **Microsoft.Storage/storageAccounts**
 
-| エイリアス | 説明 |
+| エイリアス | [説明] |
 | ----- | ----------- |
 | Microsoft.Storage/storageAccounts/accessTier | 課金のために使用されるアクセス レベルを設定します。 |
 | Microsoft.Storage/storageAccounts/accountType | SKU 名を設定します。 |
@@ -417,6 +416,6 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 「[Templates for Azure Policy (Azure Policy のテンプレート)](json-samples.md)」で、Azure Policy テンプレートのサンプルを確認する

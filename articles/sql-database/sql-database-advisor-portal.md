@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 3c621fc557ed466ddf2b514136a32d98be454325
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 2b725c60dbcb9737b00ffd5fb43273b26dda1ea8
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -31,7 +31,7 @@ Azure Portal を使って、Azure SQL Database のパフォーマンスを最適
 
 Azure Portal でパフォーマンスに関する推奨事項を調べるには、次の手順のようにします。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[その他のサービス]** > **[SQL Database]** の順に移動し、データベースを選択します。
 3. **[パフォーマンスの推奨事項]** に移動し、選択したデータベースで使用できる推奨事項を表示します。
 
@@ -41,7 +41,7 @@ Azure Portal でパフォーマンスに関する推奨事項を調べるには�
 
 推奨事項は、パフォーマンスへの潜在的な影響ごとに、次のカテゴリの順に表示されます。
 
-| 影響 | 説明 |
+| 影響 | [説明] |
 |:--- |:--- |
 | 高 |高い影響を及ぼすお勧め候補は、パフォーマンスに最も重要な影響を与えます。 |
 | 中 |中程度の影響を及ぼすおすすめ候補は、パフォーマンスを向上しますが、それほど著しい向上ではありません。 |
@@ -91,6 +91,10 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 2. 破棄した項目を一覧から選択し、その詳細を表示します。
 3. 必要に応じて、**[破棄を元に戻す]** をクリックして、インデックスを **[推奨事項]** の主な一覧に戻します。
 
+> [!NOTE]
+> SQL Database の[自動チューニング](sql-database-automatic-tuning.md)が有効で、一覧から推奨事項を手動で破棄した場合、このような推奨事項は自動的に適用されません。 推奨事項の破棄は、特定の推奨事項を適用しない必要がある場合にユーザーが自動チューニングを有効にできる便利な方法です。
+> この動作は、[破棄を元に戻す] オプションを選択して、破棄した推奨事項を推奨事項の一覧に再び追加すれば元に戻すことができます。
+> 
 
 ### <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 推奨事項を自動的に実装するように Azure SQL Database を設定できます。 推奨インデックスは、利用可能になると自動的に適用されます。 サービスによって管理されるすべての推奨事項と同様に、パフォーマンスに悪影響が生じる場合は、推奨事項は元に戻されます。
@@ -116,7 +120,7 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 ## <a name="monitoring-operations"></a>操作の監視
 推奨インデックスの適用は、瞬時に行われない場合があります。 ポータルには、推奨事項の状態に関する詳細情報が表示されます。 インデックスは次のいずれかの状態になります。
 
-| 状態 | 説明 |
+| 状態 | [説明] |
 |:--- |:--- |
 | Pending |推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
 | 実行中 |推奨インデックスは適用中です。 |
@@ -143,10 +147,10 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 
 ![Monitor performance impact](./media/sql-database-advisor-portal/query-insights.png)
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 Azure SQL Database は、データベースのパフォーマンス向上のための推奨事項を提供します。 T-SQL スクリプトが備わっているため、データベースを最適化して最終的にクエリのパフォーマンスを向上させるのに役立ちます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 推奨事項を監視し、引き続きパフォーマンスの調整対象とします。 データベースのワークロードは動的であり、継続的に変化します。 Azure SQL Database は、お使いのデータベースのパフォーマンスを向上させる可能性がある推奨事項の監視と提供を継続します。 
 
 * Azure SQL Database での自動チューニングについて詳しくは、「[Automatic tuning](sql-database-automatic-tuning.md)」(自動チューニング) をご覧ください。

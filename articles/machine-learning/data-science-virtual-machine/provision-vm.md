@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: d0a9926f49e2be66a9d51a1bb0e4e19342205880
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: d71d8e44d0327515ed302c5c902ce87587e36c7d
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows データ サイエンス仮想マシンのプロビジョニング
 Microsoft データ サイエンス用仮想マシンは、プレインストールの Windows Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。 含まれているツールは、次のとおりです。
@@ -192,7 +192,7 @@ VM には複数の Azure ツールがインストールされます。
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 引き続き学習や調査に役立つ手順をいくつか紹介します。 
 
 * [スタート] メニューをクリックし、メニューに一覧表示されたツールを確認して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを検討できます。
@@ -200,5 +200,5 @@ VM には複数の Azure ツールがインストールされます。
 * **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** に移動し、エンタープライズ規模でのデータ分析をサポートする R で RevoScaleR ライブラリを使用するサンプルを入手します。  
 * 「 [データ サイエンス仮想マシンでできる 10 のこと](http://aka.ms/dsvmtenthings)
 * [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
-* Azure Machine Learning および関連する Azure 上のデータ サービスを使用した機械学習およびデータ分析については、[Azure Machine Learning のギャラリー](http://gallery.cortanaintelligence.com)をご覧ください。 このギャラリーへは、 **[スタート]** メニューや仮想マシンのデスクトップにもアイコンが用意されています。
+* Azure Machine Learning および関連する Azure 上のデータ サービスを使用した機械学習およびデータ分析については、[Azure AI Gallery](http://gallery.cortanaintelligence.com) をご覧ください。 このギャラリーへは、 **[スタート]** メニューや仮想マシンのデスクトップにもアイコンが用意されています。
 

@@ -1,5 +1,5 @@
 ---
-title: "異常な定期的ジョブをトラブルシューティングする方法 | Microsoft Docs"
+title: "異常な定期的ジョブのトラブルシューティングを行う | Microsoft Docs"
 description: "Azure Data Lake Tools for Visual Studio Code を使って異常な定期的ジョブをデバッグする方法について説明します。"
 services: data-lake-analytics
 documentationcenter: 
@@ -14,60 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2017
 ms.author: yanacai
-ms.openlocfilehash: a358f94b117c12511028a875e56b5c9dba8d3382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b60c861810d6577b33aa0cdf14f26dc2cfc0e4d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="how-to-troubleshoot-an-abnormal-recurring-job"></a>異常な定期的ジョブをトラブルシューティングする方法
+# <a name="troubleshoot-an-abnormal-recurring-job"></a>異常な定期的ジョブのトラブルシューティング
 
-このドキュメントでは、[Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) を使って定期的なジョブの問題をトラブルシューティングする方法について説明します。 パイプラインおよび定期的なジョブについて詳しくは、[こちら](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)をご覧ください。
-通常、定期的なジョブは同じクエリ ロジックと似た入力データを共有します。 たとえば、毎週月曜日の午前 8 時に実行して 前週のアクティブなユーザーをカウントする定期的なジョブがあり、これらのジョブのスクリプトはクエリ ロジックを含む 1 つのスクリプト テンプレートを共有し、これらのジョブの入力は過去 1 週間の使用状況データであるような場合です。 同じクエリ ロジックを共有して入力が似ていると、通常はこれらのジョブのパフォーマンスは似ていて安定しています。定期的なジョブのいずれかで突然異常な実行、障害、速度低下が大量に発生した場合、次のことを行います。
+この記事では、[Azure Data Lake Tools for Visual Studio](http://aka.ms/adltoolsvs) を使って定期的なジョブの問題のトラブルシューティングを行う方法を示します。 パイプラインと定期的なジョブについて詳しくは、[Azure Data Lake と Azure HDInsight のブログ](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/)をご覧ください。
 
-1.  定期的なジョブのプレビュー実行の統計情報レポートを見て、何が起きたかを確認します。
-2.  異常なジョブと正常なジョブを比較して、何が変化したかを明らかにします。
+通常、定期的なジョブは同じクエリ ロジックと似た入力データを共有します。 たとえば、毎週月曜日の午前 8 時に実行して 前週のアクティブなユーザーをカウントする定期的なジョブがあるとします。 これらのジョブのスクリプトはクエリ ロジックを含む 1 つのスクリプト テンプレートを共有します。 これらのジョブの入力は過去 1 週間の使用状況データです。 同じクエリ ロジックを共有して入力が似ていると、通常はこれらのジョブのパフォーマンスは似ていて安定しています。 定期的なジョブのいずれかで突然異常な実行、障害、速度低下が大量に発生した場合は、次のことを行います。
+
+- 定期的なジョブのプレビュー実行の統計情報レポートを見て、何が起きたかを確認します。
+- 異常なジョブと正常なジョブを比較して、何が変化したかを明らかにします。
 
 Azure Data Lake Tools for Visual Studio の**関連ジョブ ビュー**を使うと、どちらの場合についてもトラブルシューティングがはかどります。
 
 ## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>ステップ 1: 定期的なジョブを探して関連ジョブ ビューを開く
 
-関連ジョブ ビューを使って定期的なジョブの問題をトラブルシューティングするには、最初に Visual Studio で定期的なジョブを探してから、関連ジョブ ビューを開く必要があります。
+関連ジョブ ビューを使って定期的なジョブの問題のトラブルシューティングを行うには、最初に Visual Studio で定期的なジョブを探してから、関連ジョブ ビューを開く必要があります。
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>ケース 1: 定期的なジョブの URL がわかっている
 
-**[ツール] > [Data Lake] > [ジョブ ビュー]** の順に選び、ジョブの URL を貼り付けて Visual Studio でジョブ ビューを開き、[関連ジョブの表示] を選んで関連ジョブ ビューを開きます。
+**[ツール]** > **[Data Lake]** > **[ジョブ ビュー]** の順に選択し、ジョブの URL を貼り付けて Visual Studio でジョブ ビューを開きます。 **[関連ジョブの表示]** を選択して関連ジョブ ビューを開きます。
 
-![Data Lake Analytics Tools の関連ジョブの表示](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
+![Data Lake Analytics Tools の [関連ジョブの表示] リンク](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
 ### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>ケース 2: 定期的なジョブのパイプラインはあるが、URL はわからない
 
-Visual Studio で、**[サーバー エクスプローラー] > Data Lake Analytics のアカウント > [パイプライン]** の順に選んで、パイプライン ブラウザーを開くことができます ([サーバー エクスプローラー] でこのノードが見つからない場合は、[こちら](http://aka.ms/adltoolsvs)で最新のツールを入手してください)。 パイプライン ブラウザーでは、ADLA アカウントのすべてのパイプラインが左側に表示されます。パイプラインを展開してすべての定期的なジョブを表示し、問題があるジョブをクリックすると、右側に関連ジョブ ビューが開きます。
+Visual Studio で、[サーバー エクスプローラー] > Azure Data Lake Analytics のアカウント > **[パイプライン]** の順に選んで、パイプライン ブラウザーを開くことができます。 ([サーバー エクスプローラー] でこのノードが見つからない場合は、[最新のプラグインをダウンロード](http://aka.ms/adltoolsvs)してください。) 
 
-![Data Lake Analytics Tools の関連ジョブの表示](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
+![[パイプライン] ノードの選択](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 
-![Data Lake Analytics Tools の関連ジョブの表示](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
+パイプライン ブラウザーでは、Data Lake Analytics アカウントのすべてのパイプラインが左側に表示されます。 パイプラインを展開してすべての定期的なジョブを表示し、問題があるジョブを選択できます。 右側に関連ジョブ ビューが開きます。
 
-## <a name="step-2-analyze-statistics-report"></a>ステップ 2: 統計レポートを分析する
+![パイプラインを選択して関連ジョブ ビューを開く](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
 
-概要および統計レポートは関連ジョブ ビューの上部に表示され、そこから異常の可能性のある根本原因を発見できます。 
+## <a name="step-2-analyze-a-statistics-report"></a>ステップ 2: 統計レポートを分析する
 
-1.  最初に、レポートで異常なジョブを探す必要があります。 X 軸はジョブの送信時刻を示し、そこから異常なジョブを見つけることができます。
-2.  以下の手順で統計を確認し、異常の詳細情報と考えられる解決策を取得します。
+概要および統計レポートは関連ジョブ ビューの上部に表示されます。 そこで、問題の根本原因を発見できます。 
 
-![Data Lake Analytics Tools の関連ジョブの表示](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
+1.  レポートでは、X 軸はジョブの送信時刻を示します。 これを使用して異常なジョブを見つけます。
+2.  次の図のプロセスを使用して、統計情報を確認し、問題および考えられる解決策に関する洞察を得ます。
 
-## <a name="step-3-compare-the-abnormal-recurring-job-to-a-normal-job"></a>ステップ 3: 異常な定期的ジョブと正常なジョブを比較する
+![統計の確認のプロセス図](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
 
-関連ジョブ ビューの下部にあるジョブの一覧で、すべての送信された定期的なジョブを見つけることができます。 右クリックし、ジョブの相違点ビューで異常なジョブと以前の正常なジョブを比較して、詳細情報と可能性のある解決策を発見できます。
+## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>ステップ 3: 異常なジョブと正常なジョブを比較する
 
-![Data Lake Analytics Tools の関連ジョブの表示](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/compare-job.png)
+関連ジョブ ビューの下部にあるジョブの一覧で、すべての送信された定期的なジョブを見つけることができます。 詳細情報および考えられる解決策を見つけるには、異常なジョブを右クリックします。 ジョブの相違点ビューを使用して、異常なジョブと以前の正常なジョブを比較します。
 
-通常、これら 2 つのジョブの大きな違いに注意を払う必要があります。パフォーマンスの問題を引き起こした理由と思われます。以下の手順でさらに確認することができます。
+![ジョブを比較するためのショートカット メニュー](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/compare-job.png)
 
-![Data Lake Analytics Tools の関連ジョブの表示](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
+この 2 つのジョブの大きな違いに注目してください。 これらの違いがおそらくパフォーマンスの問題の原因です。 さらに確認するには、次の図の手順を使用します。
 
-## <a name="next-steps"></a>次のステップ
+![ジョブ間の相違点を確認するためのプロセス図](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
 
-* [データ スキューの問題をデバッグして解決する方法](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
-* [U-SQL ジョブの障害でユーザー定義コードのエラーをデバッグする方法](data-lake-analytics-debug-u-sql-jobs.md)
+## <a name="next-steps"></a>次の手順
+
+* [データ スキュー問題を解決する](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
+* [失敗した U-SQL ジョブに対するユーザー定義の C# コードをデバッグする](data-lake-analytics-debug-u-sql-jobs.md)

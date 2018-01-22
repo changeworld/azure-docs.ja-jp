@@ -1,5 +1,5 @@
 ---
-title: "Azure 仮想マシンのセキュリティに関するベスト プラクティス | Microsoft Docs"
+title: "Azure 仮想マシンのセキュリティに関するベスト プラクティス"
 description: "この記事では、Azure 内の仮想マシンのセキュリティに適用されるさまざまなベスト プラクティスについて取り上げます。"
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: db8b0cc58738308116da84f2a45d6507c87f3cde
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 6541d09d7f1a7e85333f54797dba7db79328e9de
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Azure VM のセキュリティのベスト プラクティス
 
@@ -114,7 +114,7 @@ Security Center は脅威を積極的に監視でき、脅威のリスクは**�
 
 Security Center を使って Azure に存在する VM 内の脅威のリスクを特定する方法については、次の動画をご覧ください。
 
-<iframe src="https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response/player]
 
 許可のないユーザーがセキュリティ機構をかいくぐろうとして行う試みは、VM に対して強固なセキュリティ体制を設けなければ認識できません。
 

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: haining;garye
-ms.openlocfilehash: 848d0a0882d538cadadf3172a20e628799488042
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: f7c839a8471dc54daebc47d0bb5a450358f5250d
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence コンペティションの FAQ
 **Microsoft Cortana Intelligence コンペティションとは何ですか。**
 
-Microsoft Cortana Intelligence コンペティションは、世界の最も複雑なデータ サイエンスの問題のいくつかを集団で解決することにより、データ研究者のグローバル コミュニティを統合できるようにします。 Cortana Intelligence コンペティションでは、世界中のデータ研究者が競い合って、高度に正確で合理的なデータ サイエンス モデルを構築できます。 このコンペティションは、初めて一般に使用可能になった固有のデータ セットに基づいています。 参加者は、報酬を得たり、トップ 10 パブリック スコアボードを通じて知名度を高めたりすることができます。 [ここ](http://aka.ms/CIComp) からコンペティションのホーム ページにアクセスしてください。
+Microsoft Cortana Intelligence コンペティションは、世界の最も複雑なデータ サイエンスの問題のいくつかを集団で解決することにより、データ研究者のグローバル コミュニティを統合します。 Cortana Intelligence コンペティションでは、世界中のデータ研究者が競い合って、高度に正確で合理的なデータ サイエンス モデルを構築できます。 これらのコンペティションは、初めて一般に使用可能になった固有のデータ セットに基づいています。 参加者は、報酬を得たり、トップ 10 パブリック ランキングを通じて知名度を高めたりすることができます。 [aka.ms/CIComp](http://aka.ms/CIComp) でコンペティションのホーム ページにアクセスすることができます。
 
 **Microsoft は新しいコンペティションをどのくらいの頻度でリリースしますか。**
 
@@ -31,25 +31,25 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 
 **データ サイエンスに関する一般的な質問はどこで聞くことができますか?**
 
-[Microsoft Azure Machine Learning フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)を利用してください。
+一般的な質問については、[Microsoft Azure Machine Learning フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)をご利用いただけます。
 
 **コンペティションに参加するにはどうすればよいですか?**
 
-[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/)で、[コンペティション](https://gallery.cortanaintelligence.com/competitions)のホーム ページにアクセスするか、[http://aka.ms/CIComp](http://aka.ms/CIComp) に移動してください。 ホーム ページには、現在実行されているすべてのコンペティションが一覧表示します。 各コンペティションのサインアップ ページに、詳細な指示と参加ルール、賞品、および期間が記載されています。
+[Azure AI Gallery](https://gallery.cortanaintelligence.com/) で[コンペティション](https://gallery.cortanaintelligence.com/competitions)のホーム ページにアクセスするか、[http://aka.ms/CIComp](http://aka.ms/CIComp) に移動してください。 ホーム ページには、現在実行されているすべてのコンペティションが一覧表示します。 各コンペティションのサインアップ ページに、詳細な指示と参加ルール、賞品、および期間が記載されています。
 
-1. 参加を希望するコンペティションを探し、すべての指示を読み、チュートリアル ビデオを見てください。その後、**[Enter Competition]** ボタンをクリックして、Starter Experiment を既存の Azure Machine Learning ワークスペースにコピーします。 ワークスペースにアクセスしたことがない場合は、事前に作成しておく必要があります。 Starter Experiment を実行し、パフォーマンス メトリックを観察してから、クリエイティビティを発揮してモデルのパフォーマンスを向上させてください。 通常は、この段階に時間の大半を費やします。   
+1. 参加を希望するコンペティションを探し、すべての指示を読み、チュートリアル ビデオをご覧ください。 その後、**[Enter Competition]** ボタンをクリックし、Starter Experiment を既存の Azure Machine Learning ワークスペースにコピーします。 ワークスペースにアクセスしたことがない場合は、事前に作成しておく必要があります。 Starter Experiment を実行し、パフォーマンス メトリックを観察してから、クリエイティビティを発揮してモデルのパフォーマンスを向上させてください。 通常は、この段階に時間の大半を費やします。   
 
 2. Starter Experiment を基にしてトレーニングしたモデルで、Predictive Experiment を作成します。 次に、Web サービスの入力および出力スキーマを、コンペティションのドキュメントに指定された要件を満たすように、慎重に調整します。 その方法の詳細は、通常、チュートリアル ドキュメントに記載されています。 チュートリアル ビデオが用意されている場合は、それも視聴できます。   
 
 3. Predictive Experiment から Web サービスをデプロイします。 **[Test]** ボタンか、正常に動作することを確認するために自動的に作成される Excel テンプレートを使用して、Web サービスをテストします。   
 
-4. Web サービスをコンペティション エントリとして送信し、Cortana Intelligence ギャラリーのコンペティション ページでパブリック スコアを確認します。 高得点であれば、ランキングに表示されます。  
+4. Web サービスをコンペティション エントリとして送信し、Azure AI Gallery のコンペティション ページでパブリック スコアを確認します。 高得点であれば、ランキングに表示されます。  
 
-エントリが正常に送信されたら、コピーした Starter Experiment に戻り、作業を繰り返して Predictive Experiment を更新し、Web サービスを更新して新しいエントリを送信できます。   
+エントリが正常に送信されたら、コピーした Starter Experiment に戻ります。 作業を繰り返して Predictive Experiment を更新し、Web サービスを更新して新しいエントリを送信できます。   
 
 **オープン ソース ツールを使用して、コンペティションに参加することはできますか。**
 
-コンペティション参加者は、データ サイエンス モデルの開発に、Cortana Intelligence Suite 内のクラウドベースのサービスである Azure Machine Learning Studio を利用して、送信用のコンペティション エントリを作成します。 Machine Learning Studio は、機械学習の実験を構築するための GUI インターフェイスを提供するだけでなく、R や Python の独自のスクリプトをネイティブで実行できるようにします。 Machine Learning Studio の R と Python のランタイムには、オープン ソースの R/Python パッケージの豊富なセットが付属しており、独自のパッケージも実験の一部としてインポートできます。 Machine Learning Studio には、フリー スタイルのデータ探索を行うための、組み込みの Jupyter Notebook サービスも用意されています。 もちろん、コンペティションで使用されるデータセットをいつでもダウンロードして、Machine Learning Studio 以外の任意のツールで探索することもできます。 
+コンペティション参加者は、データ サイエンス モデルの開発に、Cortana Intelligence Suite 内のクラウドベースのサービスである Azure Machine Learning Studio を使用して、送信用のコンペティション エントリを作成します。 Machine Learning Studio は、機械学習の実験を構築するための GUI インターフェイスを提供するだけでなく、R や Python の独自のスクリプトをネイティブで実行できるようにします。 Studio の R と Python のランタイムには、オープン ソースの R/Python パッケージの豊富なセットが付属しています。 独自のパッケージも実験の一部としてインポートできます。 Machine Learning Studio には、フリー スタイルのデータ探索を行うための、組み込みの Jupyter Notebook サービスも用意されています。 もちろん、コンペティションで使用されるデータセットをいつでもダウンロードして、Machine Learning Studio 以外の任意のツールで探索することもできます。 
 
 **参加するには、データ サイエンティストである必要はありますか?**
 
@@ -66,7 +66,7 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 
 **コンペティションに参加するには、費用がかかりますか。**
 
-コンペティションには、無料で参加できます。 ただし、参加するには、Azure Machine Learning ワークスペースへのアクセスが必要です。 クレジット カードなしで、単に有効な Microsoft アカウントまたは Office 365 アカウントでログインするだけで、Free ワークスペースを作成することができます。 既に Azure または Cortana Intelligence Suite ユーザーである場合は、同じ Azure サブスクリプションで Standard ワークスペースを作成して使用できます。 Azure サブスクリプションを購入する場合は、「[Azure の価格](https://azure.microsoft.com/pricing)」ページに移動します。 実験を構築するために Standard ワークスペースを使用する場合は、標準料金が適用されることに注意してください。 詳細については、「[Azure Machine Learning の価格](https://azure.microsoft.com/pricing/details/machine-learning/)」を参照してください。 
+コンペティションには、無料で参加できます。 ただし、参加するには、Azure Machine Learning ワークスペースへのアクセスが必要です。 クレジット カードなしで、単に有効な Microsoft アカウントまたは Office 365 アカウントでログインするだけで、Free ワークスペースを作成することができます。 既に Azure または Cortana Intelligence Suite ユーザーである場合は、同じ Azure サブスクリプションで Standard ワークスペースを作成して使用できます。 Azure サブスクリプションを購入する場合は、「[Azure の価格](https://azure.microsoft.com/pricing)」ページに移動します。 実験を構築するために Standard ワークスペースを使用する場合は、標準料金が適用されることに注意してください。 詳しくは、[Azure Machine Learning の価格情報](https://azure.microsoft.com/pricing/details/machine-learning/)に関するページをご覧ください。 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -79,7 +79,7 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 * コンペティションで使用されたデータセット全体が、ランダムにトレーニング データとテスト データ (残りの部分) の階層に分けられます。 ランダムな分割は、トレーニング データとテスト データの両方のラベル分布が一貫するように、階層化されます。
 * トレーニング データは、データのインポート モジュール構成の Starter Experiment の一部としてアップロードされ、提供されます。
 * テスト データは、同じ階層を使用して、さらにパブリックとプライベートに分割されます。
-* パブリック テスト データは、初回ラウンドのスコア付けに使用されます。 結果はパブリック スコアと呼ばれ、エントリを送信すると、送信履歴に表示されます。 このスコアは、送信するエントリごとに計算されます。 このパブリック スコアは、パブリック スコアボードのランク付けに使用されます。
+* パブリック テスト データは、初回ラウンドのスコア付けに使用されます。 結果はパブリック スコアと呼ばれます。 エントリを送信すると、送信履歴に表示されます。 このスコアは、送信するエントリごとに計算されます。 このパブリック スコアは、パブリック スコアボードのランク付けに使用されます。
 * プライベート テスト データは、コンペティションの完了後、最終ラウンドのスコア付けに使用されます。 これは、プライベート スコアと呼ばれます。 
 * 参加者ごとに、上位のパブリック スコアを持つ一定数 (コンペティションごとに異なります) のエントリが自動的に選択され、プライベート スコア付けラウンドに含められます。 最終的なランク付けに含めるために、最も高いプライベート スコアのエントリが選択されます。これによって最終的な入賞者が決定されます。  
 
@@ -93,7 +93,7 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 
 **コンペティションで受賞すると、どうなりますか。**
 
-Microsoft は、プライベート スコアボードの結果を確認し、お客様に連絡します。 ユーザー プロファイルの電子メール アドレスが最新であることを確認してください。
+Microsoft は、プライベート スコアボードの結果を確認し、お客様に連絡します。 ユーザー プロファイルの電子メール アドレスが最新であることをご確認ください。
 
 **コンペティションで受賞した場合、賞金を入手するにはどうすればよいですか。**
 

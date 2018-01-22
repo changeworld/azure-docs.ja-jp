@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Power BI Embedded とは何ですか? | Microsoft Docs"
+title: "Azure Power BI Embedded の概要 | Microsoft Docs"
 description: "Power BI Embedded は、ISV や開発者が Power BI の機能を簡単に使えるようにするサービスです。魅力的なビジュアル、レポート、ダッシュ ボードをアプリケーションにすばやく追加できるようになります。"
 services: power-bi-embedded
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/04/2018
 ms.author: asaxton
-ms.openlocfilehash: 03ac36b2b3f3e26770f681b101824ddeca29b61f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e96575e74e20c80a79803ea56cdcbd4542e54a2
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="what-is-power-bi-embedded"></a>Power BI Embedded とは
+# <a name="about-power-bi-embedded"></a>Power BI Embedded の概要
 
 Power BI Embedded は、ISV や開発者が Power BI の機能を簡単に使えるようにするサービスです。 Power BI Embedded により、魅力的なビジュアル、レポート、ダッシュ ボードをアプリケーションにすばやく追加できるようになります。 Microsoft Azure 上にビルドされたアプリケーションと同様に、Machine Learning や IoT などのサービスを使用できます。 アプリケーションでのデータ探索を容易にすることで、ISV の顧客は情報に基づく的確な意思決定をすばやく行えるようになります。
 
@@ -52,7 +52,7 @@ Power BI Embedded では、REST API を使って任意の言語で開発でき�
 * [Power BI Ideas](https://ideas.powerbi.com): 機能のリクエストや投票ができます。
 * [Reddit](https://www.reddit.com/r/PowerBI/): Power BI に関するディスカッションの場です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [価格に関するページ](https://azure.microsoft.com/pricing/details/power-bi-embedded/)で容量ノードの詳細をご確認ください。
 

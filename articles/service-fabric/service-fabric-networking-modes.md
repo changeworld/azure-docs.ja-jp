@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: 1dacbbef915580b0095ef588f3dafad35daf1bde
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d541e5a1af5e57cd5956a026d7772076509c8514
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -183,7 +183,7 @@ ms.lasthandoff: 12/08/2017
    |ソース |VirtualNetwork | |
    |変換先 | VirtualNetwork | |
    |サービス | DNS (UDP/53) | |
-   |[操作] | ALLOW  | |
+   |アクションを表示します。 | ALLOW  | |
    | | |
 
 4. 各サービスのアプリケーション マニフェストでネットワーク モードを指定します。`<NetworkConfig NetworkType="Open">` **Open** ネットワーク モードにすると、サービスに専用 IP アドレスが割り当てられます。 モードを指定しないと、サービスは既定で **nat** モードになります。 次のマニフェストの例では、`NodeContainerServicePackage1` サービスと `NodeContainerServicePackage2` サービスはそれぞれ同じポートでリッスンできます (どちらのサービスも `Endpoint1` でリッスンしています)。 Open ネットワーク モードを指定するときは、`PortBinding` 構成を指定できません。
@@ -221,7 +221,17 @@ ms.lasthandoff: 12/08/2017
     >Linux クラスターでは、複数のサービスについてネットワーク モードを混在させることはサポートされていません。 
     >
 
-## <a name="next-steps"></a>次のステップ
+5. **Open** モードが選択されている場合、サービス マニフェストの **Endpoint** 定義は、サービス パッケージにコード パッケージが 1 つしかない場合でも、エンドポイントに対応するコード パッケージを明示的に指す必要があります。 
+   
+   ```xml
+   <Resources>
+     <Endpoints>
+       <Endpoint Name="ServiceEndpoint" Protocol="http" Port="80" CodePackageRef="Code"/>
+     </Endpoints>
+   </Resources>
+   ```
+
+## <a name="next-steps"></a>次の手順
 * [Service Fabric アプリケーション モデルを理解する](service-fabric-application-model.md)
 * [Service Fabric サービス マニフェスト リソースについて詳しく学習する](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
 * [Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)

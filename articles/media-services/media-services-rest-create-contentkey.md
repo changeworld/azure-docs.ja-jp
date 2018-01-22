@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 6ff8e5ccdc7e14ed39466b4525fdbae86fdc4e9a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b9673376d0b2d2fab9254ab4e9f20484a46adc4b
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="create-content-keys-with-rest"></a>REST でコンテンツ キーを作成する
 > [!div class="op_single_selector"]
-> * [REST ()](media-services-rest-create-contentkey.md)
+> * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
 
-Media Services では、暗号化されたアセットを新しく作成して送信できます。 **ContentKey** により、**アセット**に安全にアクセスすることができます。 
+Media Services では、暗号化されたアセットを送信できます。 **ContentKey** により、**アセット**に安全にアクセスすることができます。 
 
 新しいアセットを作成するときは ([ファイルをアップロード](media-services-rest-upload-files.md)する前など)、次の暗号化オプションを指定できます: **StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。 
 
@@ -35,11 +35,11 @@ Media Services では、暗号化されたアセットを新しく作成して�
 
 暗号化されたアセットには、 **ContentKey**を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
 
-暗号化するアセットに関連付けるコンテンツ キーを生成する一般的な手順を次に示します。 
+暗号化する資産に関連付けるコンテンツ キーを生成する一般的な手順を次に示します。 
 
 1. 16 バイトの AES キー (CommonEncryption と EnvelopeEncryption 向け) か 32 バイトの AES キー (StorageEncryption 向け) をランダムに生成します。 
    
-    これがアセットのコンテンツ キーになります。つまり、このアセットに関連付けるすべてのファイルは、暗号化の際に同じコンテンツ キーを使う必要があります。 
+    これが資産のコンテンツ キーになります。つまり、この資産に関連付けるすべてのファイルは、暗号化の際に同じコンテンツ キーを使う必要があります。 
 2. [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) メソッドと [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) メソッドをコールして、コンテンツ キーを暗号化するために必要な適切な X.509 証明書を取得します。
 3. X.509 証明書の公開キーでコンテンツ キーを暗号化します。 
    

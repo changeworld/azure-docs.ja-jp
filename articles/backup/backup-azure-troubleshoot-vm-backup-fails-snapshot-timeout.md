@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
-ms.author: genli;markgal;
-ms.openlocfilehash: a07fb9388f1e83bd167cf7c65cd3cd1e4f51ecd1
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.date: 01/09/2018
+ms.author: genli;markgal;sogup;
+ms.openlocfilehash: 5eb326dfd89d9cc64eb0e05286e64c87e090e0a1
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
@@ -28,12 +28,20 @@ ms.lasthandoff: 11/09/2017
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM エージェントが Azure Backup と通信できない
+
+> [!NOTE]
+> Azure Linux VM バックアップで 2018 年 1 月 4 日以降にエラーが発生した場合、影響を受けた VM で次のコマンドを実行し、バックアップを再試行してください
+
+    sudo rm -f /var/lib/waagent/*.[0-9]*.xml
+
 Azure Backup サービスに VM を登録してスケジュール設定すると、Backup サービスは、VM エージェントと通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできず、バックアップ エラーにつながる場合があります。 以下のトラブルシューティングの手順を指定の順序で実行してから、操作を再試行してください。
+
 ##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>原因 1: [VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)
 ##### <a name="cause-2-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>原因 2: [エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 ##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>原因 3: [VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
 ##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 4: [スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
 ##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>原因 5: [バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)
+##### <a name="cause-6-azure-classic-vms-may-require-additional-step-to-complete-registrationazure-classic-vms-may-require-additional-step-to-complete-registration"></a>原因 6: [Azure クラシック VM で登録を完了するために追加の手順が必要な可能性がある](#azure-classic-vms-may-require-additional-step-to-complete-registration)
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>仮想マシンがネットワークに接続していないためにスナップショット操作が失敗した
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできず、バックアップ エラーにつながる場合があります。 以下のトラブルシューティングの手順を指定の順序で実行してから、操作を再試行してください。
@@ -65,11 +73,12 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 ##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>原因 3: [VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
 ##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>原因 4: [スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
 ##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>原因 5: [バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)
+##### <a name="cause-6-backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lockbackup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>原因 6: [リソース グループのロックが原因で、Backup サービスに古い復元ポイントを削除するためのアクセス許可がない](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)
 
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>指定されたディスク構成がサポートされていません
 
 > [!NOTE]
-> 1 TB を超える非管理対象ディスクがある VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください
+> 1 TB を超える非管理対象ディスクがある VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください。
 >
 >
 
@@ -99,7 +108,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 1. ネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。
 2. HTTP プロキシからインターネットへのアクセスを許可するには、規則をネットワーク セキュリティ グループに追加しましす (ネットワーク セキュリティ グループがある場合)。
 
-VM バックアップの HTTP プロキシを設定する方法については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups)」を参照してください。
+VM バックアップの HTTP プロキシを設定する方法については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
 
 Managed Disks を使用している場合、ファイアウォールに追加のポート (8443) が開かれている必要がある場合があります。
 
@@ -115,7 +124,7 @@ VM エージェントが破損しているまたはサービスが停止して�
 6. これでサービスに Windows ゲスト エージェント サービスが表示されます。
 7. ポータルで「今すぐバックアップ」をクリックして、オンデマンド/アドホック バックアップをお試しください。
 
-また、仮想マシンの**[システム内に .NET 4.5 がインストールされている](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)**ことを確認します。 これは、VM エージェントがサービスと通信するために必要です。
+また、仮想マシンの**[システム内に .NET 4.5 がインストールされている](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)**ことを確認します。 これは、VM エージェントがサービスと通信するために必要です。
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM にインストールされているエージェントが古くなっている (Linux VM の場合)
 
@@ -183,4 +192,49 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 6. **[アンインストール]** をクリックします。
 
 この手順により、次回のバックアップ時に拡張機能が再インストールされます。
+
+### <a name="azure-classic-vms-may-require-additional-step-to-complete-registration"></a>Azure クラシック VM で登録を完了するために追加の手順が必要な可能性がある
+バックアップ サービスへの接続を確立し、バックアップを開始するには、エージェントを Azure クラシック VM に登録する必要があります
+
+#### <a name="solution"></a>解決策
+
+VM ゲスト エージェントのインストール後に、Azure PowerShell を起動します <br>
+1. 次のコマンドを使用して Azure アカウントにログインします <br>
+       `Login-AzureAsAccount`<br>
+2. 次のコマンドで、VM の ProvisionGuestAgent プロパティが True に設定されているかどうかを確認します <br>
+        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
+        `$vm.VM.ProvisionGuestAgent`<br>
+3. プロパティが FALSE に設定されている場合は、次のコマンドで TRUE に設定します<br>
+        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
+        `$vm.VM.ProvisionGuestAgent = $true`<br>
+4. 次のコマンドを実行して VM を更新します <br>
+        `Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>` <br>
+5. バックアップを開始してみます。 <br>
+
+### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>リソース グループのロックが原因で、Backup サービスに古い復元ポイントを削除するためのアクセス許可がない
+この問題は、ユーザーがリソース グループをロックし、Backup サービスが古い復元ポイントを削除でない管理対象 VM に固有です。 バックエンドから最大 18 個の復元ポイントの制限が課されているため、これにより新しいバックアップの開始が失敗します。
+
+#### <a name="solution"></a>解決策
+
+この問題を解決するには、次の手順を使用して復元ポイント コレクションを削除します。 <br>
+ 
+1. VM が存在するリソース グループのロックを削除します 
+     
+2. Chocolatey を使用して ARMClient をインストールします <br>
+   https://github.com/projectkudu/ARMClient
+     
+3. ARMClient にログインします <br>
+             `.\armclient.exe login`
+         
+4. VM に対応する復元ポイント コレクションを取得します <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
+
+    例: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+             
+5. 復元ポイント コレクションを削除します <br>
+            `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+ 
+6. 次のスケジュールされたバックアップで、復元ポイント コレクションと新しい復元ポイントが自動的に作成されます 
+ 
+7. 復元ポイントの上限は 18 個であり、これに達するとバックアップの開始に失敗するため、リソース グループをもう一度ロックすると問題が再現します 
 

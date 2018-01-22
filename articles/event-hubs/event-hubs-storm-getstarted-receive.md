@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: cabfbda3ea31a81248e7f87b79a5637063091be0
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5a120cc38b8ecfc6ec29be35eda12978ca8b035e
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Apache Storm を使用して Azure Event Hubs からイベントを受信する
 
@@ -130,7 +130,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
     }
     ```
     
-    この Storm ボルトは、受信したイベントの内容を記録します。 これを容易に拡張して、ストレージ サービスにタプルを格納できます。 [HDInsight センサー分析のチュートリアル] は同じ方法を使用して、データを HBase に格納します。
+    この Storm ボルトは、受信したイベントの内容を記録します。 これを容易に拡張して、ストレージ サービスにタプルを格納できます。 [イベント ハブでの HDInsight Storm の例]に関するページでは、これと同じアプローチを使用して、Azure Storage と Power BI にデータを格納します。
 11. 次のコードで **LogTopology** という新しいクラスを作成します。
     
     ```java
@@ -237,7 +237,7 @@ Event Hub の受信パターンの詳細については、「[Event Hub の概�
 
     このクラスは、新しい Event Hub スパウトを作成して、これをインスタンス化するために構成ファイルのプロパティを使用します。 この例では、Event Hub で許可されている最大の数の並列処理を使用するために、その Event Hub のパーティションの数と同数のスパウト タスクを作成することが重要です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要][Event Hubs overview]
@@ -247,7 +247,7 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[HDInsight センサー分析のチュートリアル]:../hdinsight/storm/apache-storm-sensor-data-analysis.md
+[イベント ハブでの HDInsight Storm の例]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
 
 <!-- Images -->
 

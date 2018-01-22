@@ -2,7 +2,7 @@
 title: "Azure Cosmos DB Graph API の概要 | Microsoft Docs"
 description: "Azure Cosmos DB を使用し、Apache TinkerPop の Gremlin グラフ クエリ言語を使って待ち時間の短い大規模なグラフの格納、クエリの実行、トラバースを行う方法について説明します。"
 services: cosmos-db
-author: dennyglee
+author: luisbosquez
 documentationcenter: 
 ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/15/2017
-ms.author: denlee
-ms.openlocfilehash: 71d9d03b45d8c4fcf8acb41871dcf3f1304955aa
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 01/05/2017
+ms.author: lbosq
+ms.openlocfilehash: 14921dbeb0b670e4ec29a224caca07da12bfb82b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB の概要: Graph API
 
@@ -98,24 +98,24 @@ Azure Cosmos DB は、市場の他のグラフ データベースと比較した
 
 * 調整可能な整合性レベル
 
- 整合性とパフォーマンスの最適なトレードオフを実現するために、明確に定義された 5 つの整合性レベルの中から選択できます。 Azure Cosmos DB では、クエリと読み取り操作に関して、厳密、有界整合性制約、セッション、一貫性のあるプレフィックス、結果の 5 種類の整合性レベルを提供します。 明確に定義されたきめ細かな整合性レベルにより、整合性、可用性、待機時間の適切なトレードオフを行うことができます。 詳細については、「 [一貫性レベルを使用した DocumentDB の可用性とパフォーマンスの最大化](consistency-levels.md)」を参照してください。
+ 整合性とパフォーマンスの最適なトレードオフを実現するために、明確に定義された 5 つの整合性レベルの中から選択できます。 Azure Cosmos DB では、クエリと読み取り操作に関して、厳密、有界整合性制約、セッション、一貫性のあるプレフィックス、結果の 5 種類の整合性レベルを提供します。 明確に定義されたきめ細かな整合性レベルにより、整合性、可用性、待機時間の適切なトレードオフを行うことができます。 詳しくは、「[Azure Cosmos DB の調整可能なデータの一貫性レベル](consistency-levels.md)」をご覧ください。
 
 Azure Cosmos DB では、同じコンテナーやデータベース内でドキュメントやグラフなどの複数のモデルを使用することもできます。 ドキュメント コレクションを使用してグラフ データをドキュメントと共に格納できます。 JSON に対する SQL クエリと Gremlin クエリの両方を使用して、同じデータをグラフとして照会できます。
 
 ## <a name="get-started"></a>作業開始
-Graph API をサポートする Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell、または Azure Portal を使用して、Azure Cosmos DB アカウントを作成できます。 アカウントを作成すると、Gremlin の WebSocket フロントエンドを提供する `https://<youraccount>.graphs.azure.com` などのサービス エンドポイントが Azure Portal で提供されます。 [Gremin コンソール](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)などの TinkerPop 互換ツールを構成してこのエンドポイントに接続し、Java、Node.js、または任意の Gremlin クライアント ドライバーでアプリケーションを構築できます。
+Graph API をサポートする Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell、または Azure Portal を使用して、Azure Cosmos DB アカウントを作成できます。 アカウントを作成すると、Gremlin の WebSocket フロントエンドを提供する `https://<youraccount>.gremlin.cosmosdb.azure.com` などのサービス エンドポイントが Azure Portal で提供されます。 [Gremin コンソール](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)などの TinkerPop 互換ツールを構成してこのエンドポイントに接続し、Java、Node.js、または任意の Gremlin クライアント ドライバーでアプリケーションを構築できます。
 
 次の表に、Azure Cosmos DB に対して使用できる一般的な Gremlin ドライバーを示します。
 
-| ダウンロード | ドキュメント |
+| [ダウンロード] | ドキュメント |
 | --- | --- |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) |[Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) |
-| [Node.JS](https://www.npmjs.com/package/gremlin) |[Github の Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) |
+| [Node.js](https://www.npmjs.com/package/gremlin) |[Github の Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) |
 | [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) |[TinkerPop ドキュメント](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |
 
-Azure Cosmos DB では、NuGet を使用して、[Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) 上で Gremlin 拡張メソッドに .NET ライブラリも提供します。 このライブラリは、DocumentDB データ パーティションに直接接続する際に使用できる "インプロセス" Gremlin サーバーを提供します。
+Azure Cosmos DB では、NuGet を使用して、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 上で Gremlin 拡張メソッドに .NET ライブラリも提供します。 このライブラリは、データ パーティションに直接接続する際に使用できる "インプロセス" Gremlin サーバーを提供します。
 
-| ダウンロード | ドキュメント |
+| [ダウンロード] | ドキュメント |
 | --- | --- |
 | [.NET](https://www.nuget.org/packages/Microsoft.Azure.Graphs/) |[Microsoft.Azure.Graphs](https://msdn.microsoft.com/library/azure/dn948556.aspx) |
 
@@ -143,7 +143,7 @@ Azure Cosmos DB のグラフ サポートを使用できるシナリオを以下
 
  ネットワークと、グラフとしてモデル化された IoT デバイス間の接続により、デバイスと資産の状態について理解を深めることができます。 さらに、ネットワークのある部分の変更が別の部分に及ぼす可能性のある影響についても学習できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Cosmos DB のグラフ サポートの詳細については、以下をご覧ください。
 
 * [Azure Cosmos DB グラフ チュートリアル](create-graph-dotnet.md)を開始する

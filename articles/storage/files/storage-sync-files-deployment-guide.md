@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 7d6cb91f97020ad60bd2ea74b24df76511956f38
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d5864b8df85a5b3cec086d4cb2edc6d288f1639a
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="deploy-azure-file-sync-preview"></a>Azure File Sync (プレビュー) をデプロイする
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -26,7 +26,7 @@ Azure File Sync (プレビュー) を使用して、オンプレミスのファ�
 この記事に記載されている手順を完了する前に、「[Azure Files のデプロイの計画](storage-files-planning.md)」と「[Azure File Sync のデプロイの計画](storage-sync-files-planning.md)」を読むことを強くお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
-* Azure File Sync をデプロイするリージョンに Azure Storage アカウントと Azure ファイル共有があること。詳細については、次を参照してください。
+* Azure File Sync をデプロイするリージョンに Azure Storage アカウントと Azure ファイル共有があること。詳細については、「
     - Azure File Sync の「[リージョンの可用性](storage-sync-files-planning.md#region-availability)」
     - ストレージ アカウントを作成する方法の詳細な手順を示す「[ストレージ アカウントの作成](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」
     - ファイル共有を作成する方法の詳細な手順を示す「[ファイル共有の作成](storage-how-to-create-file-share.md)」
@@ -71,6 +71,7 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 
 > [!Important]  
 > フェールオーバー クラスターで Azure File Sync を使用する場合は、クラスターのすべてのノードに Azure File Sync エージェントをインストールする必要があります。
+
 
 Azure File Sync エージェントのインストール パッケージは、追加のプロンプトがあまり多くないため、比較的簡単にインストールできます。 次を実行することをお勧めします。
 - トラブルシューティングとサーバーのメンテナンスを簡素化するために、既定のインストール パス (C:\Program Files\Azure\StorageSyncAgent) をそのまま使用します。
@@ -119,6 +120,36 @@ Windows Server をストレージ同期サービスに登録すると、サー�
 > [!Important]  
 > 同期グループ内の任意のクラウド エンドポイントまたはサーバー エンドポイントで変更を行うことにより、ファイルを同期グループ内の他のエンドポイントに同期できます。 クラウド エンドポイント (Azure ファイル共有) を直接変更した場合、その変更は、Azure File Sync の変更検出ジョブによって最初に認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
 
+## <a name="onboarding-with-azure-file-sync"></a>Azure File Sync でのオンボード
+Azure File Sync での最初のオンボードで完全なファイル忠実性とアクセス制御リスト (ACL) を維持しながらダウンタイムをゼロにするための推奨手順を以下に示します。
+ 
+1.  ストレージ同期サービスをデプロイします。
+2.  同期グループを作成します。
+3.  完全なデータ セットがあるサーバーに Azure File Sync エージェントをインストールします。
+4.  そのサーバーを登録し、共有にサーバー エンドポイントを作成します。 
+5.  同期で、Azure ファイル共有 (クラウド エンドポイント) への完全アップロードを行います。  
+6.  初期アップロードが完了したら、残りの各サーバーに Azure File Sync エージェントをインストールします。
+7.  残りの各サーバーに新しいファイル共有を作成します。
+8.  必要に応じて、クラウドの階層化ポリシーを使用して新しいファイル共有にサーバー エンドポイントを作成します。 (この手順では、初期セットアップに使用できる追加のストレージが必要です。)
+9.  Azure File Sync エージェントで、実際にデータ転送を行わずに完全な名前空間の迅速な復元を行います。 完全な名前空間の同期後、同期エンジンは、サーバー エンドポイントのクラウドの階層化ポリシーに基づいてローカル ディスク領域を満たします。 
+10. 同期の完了を確認した後、必要に応じてトポロジをテストします。 
+11. ユーザーとアプリケーションをこの新しい共有にリダイレクトします。
+12. 必要に応じて、サーバー上の重複する共有を削除できます。
+ 
+初期オンボード用の余分なストレージがなく、既存の共有に接続する場合は、Azure ファイル共有内のデータを事前シードすることができます。 このアプローチが推奨されるのは、ダウンタイムを受け入れることができ、初期のオンボード プロセス中にサーバー共有上のデータが変更されないことを確実に保証できる場合のみです。 
+ 
+1.  オンボード プロセス中にいずれのサーバー上のデータも変更されないようにします。
+2.  Robocopy や直接 SMB コピーなど、SMB 経由で任意のデータ転送ツールを使用してサーバー データを Azure ファイル共有に事前シードします。 AzCopy は SMB 経由でデータをアップロードしないため、事前シード処理には使用できません。
+3.  既存の共有を指している目的のサーバー エンドポイントで Azure File Sync トポロジを作成します。
+4.  同期によるすべてのエンドポイントでの調整プロセスを完了します。 
+5.  調整が完了したら、変更のために共有を開くことができます。
+ 
+現時点では、事前シード処理のアプローチにはいくつかの制限があります。 
+- ファイルの完全忠実性は維持されません。 たとえば、ファイルの ACL やタイムスタンプは失われます。
+- 同期トポロジが完全に稼働する前にサーバー上のデータを変更すると、サーバー エンドポイントで競合が発生することがあります。  
+- クラウド エンドポイントを作成した後、Azure File Sync は、最初の同期を開始する前にクラウド内のファイルを検出するプロセスを実行します。このプロセスの完了にかかる時間は、ネットワークの速度、使用可能な帯域幅、ファイルとフォルダーの数など、さまざまな要因によって異なります。 プレビュー リリースでの大まかな見積もりでは、検出プロセスは約 10 ファイル/秒で実行されます。そのため、データがクラウドに事前シードされる場合は、事前シード処理の実行が高速であっても、システムが完全に稼働するまでの全体的な時間が大幅に長くなることがあります。
+
+
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>DFS レプリケーション (DFS-R) のデプロイを Azure File Sync に移行する
 DFS-R のデプロイを Azure File Sync に移行するには:
 
@@ -135,6 +166,6 @@ DFS-R のデプロイを Azure File Sync に移行するには:
 
 詳しくは、[Azure File Sync と分散ファイル システム (DFS) の相互運用](storage-sync-files-planning.md#distributed-file-system-dfs)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure File Sync のサーバー エンドポイントの追加/削除](storage-sync-files-server-endpoint.md)
 - [Azure File Sync (プレビュー) へのサーバーの登録/登録解除](storage-sync-files-server-registration.md)

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 9aea299738eb5cac6fe6d3b633707862d978fff0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ac9a1a8c59a26393d32f9c543e630c302b7ced9d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>ネットワークおよびアプリケーション セキュリティ グループ (プレビュー) によるネットワーク トラフィックのフィルター処理
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 11/04/2017
 この記事では、Resource Manager デプロイメント モデルを使用してネットワーク セキュリティ グループを作成する手順を示します。ネットワーク セキュリティ グループを作成するときは、このデプロイメント モデルを使用することをお勧めします。 ネットワーク セキュリティ グループ (クラシック) を作成する必要がある場合は、「[Create a network security group (classic) (ネットワーク セキュリティ グループ (クラシック) の作成)](virtual-networks-create-nsg-classic-ps.md)」を参照してください。 Azure 展開モデルの知識がない場合は、[Azure 展開モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
 
 > [!NOTE]
-> このチュートリアルでは、現在プレビュー リリース段階にあるネットワーク セキュリティ グループ機能を利用します。 プレビュー リリース段階にある機能には、一般リリースにある機能と同じ可用性と信頼性はありません。 プレビュー段階にある間、これらの機能は米国中西部の地域でのみ使用できます。 一般リリースにある機能のみを使用してネットワーク セキュリティ グループを実装する場合は、「[Create a network security group (ネットワーク セキュリティ グループの作成)](virtual-networks-create-nsg-arm-pportal.md)」を参照してください。 
+> このチュートリアルでは、現在プレビュー リリース段階にあるネットワーク セキュリティ グループ機能を利用します。 プレビュー リリース段階にある機能には、一般リリースにある機能と同じ可用性と信頼性はありません。 一般リリースにある機能のみを使用してネットワーク セキュリティ グループを実装する場合は、「[Create a network security group (ネットワーク セキュリティ グループの作成)](virtual-networks-create-nsg-arm-pportal.md)」を参照してください。 
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -42,14 +42,14 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 3. `az login` コマンドを使用して Azure にログインします。
 4. 次のコマンドを入力して、プレビューに登録します。
     
-    ```azurecli-interactive
+    ```azurecli
     az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     az provider register --namespace Microsoft.Network
     ``` 
 
 5. 次のコマンドを入力して、プレビューに登録されていることを確認します。
 
-    ```azurecli-interactive
+    ```azurecli
     az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     ```
 
@@ -58,7 +58,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 
 6. 次の bash スクリプトを実行して、リソース グループを作成します。
 
-    ```azurecli-interactive
+    ```azurecli
     #!/bin/bash
     
     az group create \
@@ -68,7 +68,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 
 7. 3 つのアプリケーション セキュリティ グループ (サーバーの種類ごとに 1 つ) を作成します。
 
-    ```azurecli-interactive
+    ```azurecli
     az network asg create \
       --resource-group myResourceGroup \
       --name WebServers \
@@ -87,7 +87,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 
 8. ネットワーク セキュリティ グループを作成します。
 
-    ```azurecli-interactive
+    ```azurecli
     az network nsg create \
       --resource-group myResourceGroup \
       --name myNsg \
@@ -96,7 +96,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 
 9. NSG 内にセキュリティ規則を作成し、アプリケーション セキュリティ グループを宛先として設定します。
     
-    ```azurecli-interactive    
+    ```azurecli    
     az network nsg rule create \
       --resource-group myResourceGroup \
       --nsg-name myNsg \
@@ -136,7 +136,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 
 10. 仮想ネットワークを作成します。 
     
-    ```azurecli-interactive
+    ```azurecli
     az network vnet create \
       --name myVnet \
       --resource-group myResourceGroup \
@@ -147,7 +147,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 
 11. 仮想ネットワークのサブネットにネットワーク セキュリティ グループを関連付けます。
 
-    ```azurecli-interactive
+    ```azurecli
     az network vnet subnet update \
       --name mySubnet \
       --resource-group myResourceGroup \
@@ -157,7 +157,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
     
 12. 3 つのネットワーク インターフェイス (サーバーの種類ごとに 1 つ) を作成します。 
 
-    ```azurecli-interactive
+    ```azurecli
     az network nic create \
       --resource-group myResourceGroup \
       --name myNic1 \
@@ -183,11 +183,11 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --application-security-groups "DatabaseServers"
     ```
 
-    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 9. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *WebServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *WebServers* アプリケーション セキュリティ グループを指定しているため、*myNic1* には *WebRule* だけが有効です。 ネットワーク インターフェイスが *AppServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*AppRule* および *DatabaseRule* 規則は *myNic1* に適用されません。
+    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 9. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *AppServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *AppServers* アプリケーション セキュリティ グループを指定しているため、*myNic2* には *AppRule* 規則だけが有効です。 ネットワーク インターフェイスが *WebServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*WebRule* および *DatabaseRule* 規則は *myNic2* に適用されません。 ただし、*myNic1* ネットワーク インターフェイスは *WebServers* と *AppServers* の両方のアプリケーション セキュリティ グループのメンバーであり、規則では *WebServers* および *AppServers* アプリケーション セキュリティ グループが宛先として指定されているため、*WebRule* と *AppRule* の両方の規則が *myNic1* に対して有効です。 
 
 13. サーバーの種類ごとに 1 つの仮想マシンを作成し、対応するネットワーク インターフェイスを各仮想マシンに接続します。 この例では Windows 仮想マシンを作成しますが、代わりに Linux 仮想マシンを作成するには、*win2016datacenter* を *UbuntuLTS* に変更できます。
 
-    ```azurecli-interactive
+    ```azurecli
     # Update for your admin password
     AdminPassword=ChangeYourAdminPassword1
 
@@ -198,7 +198,8 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --nics myNic1 \
       --image win2016datacenter \
       --admin-username azureuser \
-      --admin-password $AdminPassword
+      --admin-password $AdminPassword \
+      --no-wait
 
     az vm create \
       --resource-group myResourceGroup \
@@ -207,7 +208,8 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --nics myNic2 \
       --image win2016datacenter \
       --admin-username azureuser \
-      --admin-password $AdminPassword
+      --admin-password $AdminPassword \
+      --no-wait
 
     az vm create \
       --resource-group myResourceGroup \
@@ -281,8 +283,8 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       -SourceAddressPrefix Internet `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $webAsg.id `
-      -DestinationPortRange 80  
-
+      -DestinationPortRange 80
+    
     $appRule = New-AzureRmNetworkSecurityRuleConfig `
       -Name "AppRule" `
       -Access Allow `
@@ -292,8 +294,8 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       -SourceApplicationSecurityGroupId $webAsg.id `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $appAsg.id `
-      -DestinationPortRange 443 
-
+      -DestinationPortRange 443
+      
     $databaseRule = New-AzureRmNetworkSecurityRuleConfig `
       -Name "DatabaseRule" `
       -Access Allow `
@@ -303,7 +305,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       -SourceApplicationSecurityGroupId $appAsg.id `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $databaseAsg.id `
-      -DestinationPortRange 1336    
+      -DestinationPortRange 1336
     ``` 
 
 9. ネットワーク セキュリティ グループを作成します。
@@ -361,7 +363,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       -ApplicationSecurityGroup $databaseAsg
     ```
 
-    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 8. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *WebServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *WebServers* アプリケーション セキュリティ グループを指定しているため、*myNic1* には *WebRule* だけが有効です。 ネットワーク インターフェイスが *AppServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*AppRule* および *DatabaseRule* 規則は *myNic1* に適用されません。
+    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 8. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *AppServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *AppServers* アプリケーション セキュリティ グループを指定しているため、*myNic2* には *AppRule* 規則だけが有効です。 ネットワーク インターフェイスが *WebServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*WebRule* および *DatabaseRule* 規則は *myNic2* に適用されません。 ただし、*myNic1* ネットワーク インターフェイスは *WebServers* と *AppServers* の両方のアプリケーション セキュリティ グループのメンバーであり、規則では *WebServers* および *AppServers* アプリケーション セキュリティ グループが宛先として指定されているため、*WebRule* と *AppRule* の両方の規則が *myNic1* に対して有効です。 
 
 13. サーバーの種類ごとに 1 つの仮想マシンを作成し、対応するネットワーク インターフェイスを各仮想マシンに接続します。 この例では Windows 仮想マシンを作成しますが、代わりに Linux 仮想マシンを作成するには、スクリプトを実行する前に *-Windows* を *-Linux* に、*MicrosoftWindowsServer* を *Canonical* に、*WindowsServer* を *UbuntuServer* に、さらに *2016-Datacenter* を *14.04.2-LTS* に変更できます。
 
@@ -429,6 +431,33 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 
 14. **省略可:** 「[リソースの削除](#delete-cli)」の手順を実行して、このチュートリアルで作成したリソースを削除します。
 
+## <a name="remove-a-nic-from-an-asg"></a>NIC を ASG から削除する
+アプリケーション セキュリティ グループからネットワーク インターフェイスを削除すると、アプリケーション セキュリティ グループを指定する規則はいずれも削除したネットワーク インターフェイスに適用されません。
+
+### <a name="azure-cli"></a>Azure CLI
+
+*myNic3* をすべてのアプリケーション セキュリティ グループから削除するには、次のコマンドを入力します。
+
+```azurecli
+az network nic update \
+  --name myNic3 \
+  --resource-group myResourceGroup \
+  --remove ipConfigurations[0].applicationSecurityGroups
+```
+
+### <a name="powershell"></a>PowerShell
+
+*myNic3* をすべてのアプリケーション セキュリティ グループから削除するには、次のコマンドを入力します。
+
+```powershell
+$nic=Get-AzureRmNetworkInterface `
+  -Name myNic3 `
+  -ResourceGroupName myResourceGroup
+
+$nic.IpConfigurations[0].ApplicationSecurityGroups = $null
+$nic | Set-AzureRmNetworkInterface 
+```
+
 ## <a name="delete"></a>リソースの削除
 
 このチュートリアルが完了したら、使用料がかからないように、作成したリソースを削除することをお勧めします。 リソース グループを削除すると、リソース グループ内にあるリソースもすべて削除されます。
@@ -443,7 +472,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
 
 CLI セッションで次のコマンドを入力します。
 
-```azurecli-interactive
+```azurecli
 az group delete --name myResourceGroup --yes
 ```
 

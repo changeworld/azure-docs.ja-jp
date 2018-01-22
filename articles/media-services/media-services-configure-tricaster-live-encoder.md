@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkd;anilmur
-ms.openlocfilehash: 42b012fb98bd0504c931ce391d63aecca8c3d311
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: eecb17b0e93e1717c5b79701c69e5263e73add9a
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>NewTek TriCaster エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 >
 >
 
-このトピックでは、 [NewTek TriCaster](http://newtek.com/products/tricaster-40.html) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。 詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+この記事では、[NewTek TriCaster](http://newtek.com/products/tricaster-40.html) ライブ エンコーダーを構成して、ライブ エンコードが有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。 詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
 このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。 このツールは、Windows PC でのみ実行されます。 Mac または Linux の場合は、Azure Portal を使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)と[プログラム](media-services-portal-creating-live-encoder-enabled-channel.md)を作成します。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/21/2017
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="create-a-channel"></a>チャネルの作成
-1. AMSE ツールで、 **[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
+1. AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。 メニューから **[チャネルの作成]** を選択します。
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
@@ -67,10 +67,10 @@ ms.lasthandoff: 12/21/2017
 >
 >
 
-チャネルを開始している間に、 [エンコーダーを構成する](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp)ことができます。
+チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp)ことができます。
 
 > [!IMPORTANT]
-> チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。 詳細については、「 [チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
+> チャネルが準備完了の状態になるとすぐに課金が開始されます。 詳細については、「 [チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
 >
 >
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 12/21/2017
 3. メニューが開いたら、[接続] という見出しの下で **[新規]** をクリックします。 接続の種類をたずねられたら、 **[Adobe Flash]**を選択します。
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
-4. **[OK]**をクリックします。
+4. Click **OK**.
 5. **[ストリーミング プロファイル]** の下のドロップダウンの矢印をクリックし、**[参照]** に移動することで、FMLE プロファイルをインポートできるようになりました。
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)
@@ -136,13 +136,13 @@ AMSE ツールに移動し、テストするチャネルを右クリックしま
 
 ストリームがプレーヤーに表示されている場合は、エンコーダーが AMS に接続するように正しく構成されています。
 
-エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。 ガイダンスについては、 [トラブルシューティング](media-services-troubleshooting-live-streaming.md) に関するトピックをご覧ください。  
+エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。 ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関する記事をご覧ください。  
 
 ## <a name="create-a-program"></a>プログラムを作成する
 1. チャネルの再生が確認されたら、プログラムを作成します。 AMSE ツールの **[Live]** タブで、プログラム領域内を右クリックし、**[新しいプログラムの作成]** を選択します。  
 
     ![Tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
-2. 必要に応じてプログラムに名前を付け、 **[アーカイブ ウィンドウの長さ]** (既定では 4 時間) を調整します。 ストレージの場所を指定することも、既定値のままにすることもできます。  
+2. 必要に応じてプログラムに名前を付け、**[アーカイブ ウィンドウの長さ]** (既定では 4 時間) を調整します。 ストレージの場所を指定することも、既定値のままにすることもできます。  
 3. **[プログラムを今すぐ開始]** ボックスを選択します。
 4. **[プログラムの作成]**をクリックします。  
 
@@ -150,12 +150,12 @@ AMSE ツールに移動し、テストするチャネルを右クリックしま
     >プログラムの作成は、チャネルの作成ほど時間はかかりません。
         
 5. プログラムが実行されたら、再生を確認するために、プログラムを右クリックして **[プログラムの再生]** に移動し、**[Azure Media Player を使用]** を選択します。  
-6. 確認したら、プログラムをもう一度クリックし、**[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
+6. 確認したら、プログラムをもう一度右クリックし、**[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
 
 これで、ストリームをプレーヤーに埋め込んだり、ライブ表示のために対象ユーザーに配信したりできるようになりました。  
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-ガイダンスについては、 [トラブルシューティング](media-services-troubleshooting-live-streaming.md) に関するトピックをご覧ください。
+ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関する記事をご覧ください。
 
 ## <a name="next-step"></a>次のステップ
 Media Services のラーニング パスを確認します。

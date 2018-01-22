@@ -1,6 +1,6 @@
 ---
 title: "Media Encoder Standard スキーマ | Microsoft Docs"
-description: "このトピックでは、Media Encoder Standard スキーマの概要を示します。"
+description: "この記事では、Media Encoder Standard スキーマの概要を示します。"
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.openlocfilehash: 0d034e2c3827b297173262d294a2e566a6b45fac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e936f5c47abe5bb5531f9af3be48662ea2f48c97
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard スキーマ
-このトピックでは、[Media Encoder Standard プリセット](media-services-mes-presets-overview.md)のベースとなっている XML スキーマの要素と型をいくつか取り上げます。 ここでは要素とその有効な値について説明します。 完全なスキーマは今後追加される予定です。  
+この記事では、[Media Encoder Standard プリセット](media-services-mes-presets-overview.md)のベースとなっている XML スキーマの要素と型をいくつか取り上げます。 ここでは要素とその有効な値について説明します。  
 
 ## <a name="Preset"></a> プリセット (ルート要素)
 エンコード プリセットを定義します。  
 
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **Encoding** |[Encoding](media-services-mes-schema.md#Encoding) |ルート要素。入力ソースがエンコードされることを示します。 |
 | **Outputs** |[Outputs](media-services-mes-schema.md#Output) |目的の出力ファイルのコレクション。 |
 
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| **バージョン**<br/><br/> 必須 |**xs:decimal** |プリセット バージョン。 xs:fractionDigits value="1" と xs:minInclusive value="1" という制限が適用されます。たとえば、**version="1.0"** という制限です。 |
+| **バージョン**<br/><br/> 必須 |**xs: decimal** |プリセット バージョン。 xs:fractionDigits value="1" と xs:minInclusive value="1" という制限が適用されます。たとえば、**version="1.0"** という制限です。 |
 
 ## <a name="Encoding"></a> エンコード
 次の要素のシーケンスが含まれます。  
 
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |ビデオの H.264 エンコードの設定。 |
 | **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |オーディオの AAC エンコードの設定。 |
@@ -51,26 +51,26 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="H264Video"></a> H264Video
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |現在サポートされているのは 1 パス エンコードだけです。 |
-| **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |IDR フレーム間の固定の間隔を秒単位で決定します。 これは GOP 期間とも呼ばれます。 エンコーダーがこの値を逸脱できるかどうかの制御については、(次の) **SceneChangeDetection** を参照してください。 |
-| **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default=”false” |**xs:boolean** |true に設定すると、エンコーダーはビデオ内でシーン変更の検出を試行し、IDR フレームを挿入します。 |
+| **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |IDR フレーム間の固定の間隔を秒単位で決定します。 これは GOP 期間とも呼ばれます。 エンコーダーがこの値を逸脱できるかどうかの制御については、**SceneChangeDetection** をご覧ください。 |
+| **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default=”false” |**xs: boolean** |true に設定すると、エンコーダーはビデオ内でシーン変更の検出を試行し、IDR フレームを挿入します。 |
 | **Complexity**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:string** |エンコード速度とビデオ品質の間のトレードオフを制御します。 **Speed**、**Balanced**、**Quality** のいずれかの値を指定できます<br/><br/> 既定値: **Balanced** |
 | **SyncMode**<br/><br/> minOccurs="0" | |機能は今後のリリースで公開されます。 |
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |出力ビデオ レイヤーのコレクション。 |
 
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| **Condition** |**xs:string** | 入力に映像が含まれていない場合、モノクロのビデオ トラックを挿入するようエンコーダーに強制できます。これを実行するには、Condition="InsertBlackIfNoVideoBottomLayerOnly" (最も低いビットレートでのみビデオを挿入) または Condition="InsertBlackIfNoVideo" (すべてのビットレートでビデオを挿入) を使用します。 詳細については、 [こちらの](media-services-advanced-encoding-with-mes.md#no_video) トピックを参照してください。|
+| **Condition** |**xs:string** | 入力に映像が含まれていない場合、モノクロのビデオ トラックを挿入するようエンコーダーに強制できます。これを実行するには、Condition="InsertBlackIfNoVideoBottomLayerOnly" (最も低いビットレートでのみビデオを挿入) または Condition="InsertBlackIfNoVideo" (すべてのビットレートでビデオを挿入) を使用します。 詳細については、[こちらの記事](media-services-advanced-encoding-with-mes.md#no_video)を参照してください。|
 
 ## <a name="H264Layers"></a> H264Layers
 
-既定では、音声のみで映像の入っていない入力をエンコーダーに送信すると、音声データのみが含まれたファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 その場合、H264Video の **InsertBlackIfNoVideo** 属性設定を使用することで、ビデオ トラックを出力に追加するようエンコーダーに強制できます。 詳細については、 [こちらの](media-services-advanced-encoding-with-mes.md#no_video) トピックを参照してください。
+既定では、音声のみで映像の入っていない入力をエンコーダーに送信すると、音声データのみが含まれたファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 その場合、H264Video の **InsertBlackIfNoVideo** 属性設定を使用することで、ビデオ トラックを出力に追加するようエンコーダーに強制できます。 詳細については、[こちらの記事](media-services-advanced-encoding-with-mes.md#no_video)を参照してください。
               
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 レイヤーのコレクション。 |
 
@@ -81,20 +81,20 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| **プロファイル**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs:string** |**Auto**、**Baseline**、**Main**、**High** のいずれかの **xs:string** 値を指定できます。 |
-| **Level**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs:string** | |
+| **プロファイル**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: string** |**Auto**、**Baseline**、**Main**、**High** のいずれかの **xs:string** 値を指定できます。 |
+| **Level**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: string** | |
 | **Bitrate**<br/><br/> minOccurs="0" |**xs:int** |このビデオ レイヤーに使用されるビットレート。kbps 単位で指定します。 |
-| **MaxBitrate**<br/><br/> minOccurs="0" |**xs:int** |このビデオ レイヤーに使用される最大ビットレート。kbps 単位で指定します。 |
-| **BufferWindow**<br/><br/> minOccurs="0"<br/><br/> default="00:00:05" |**xs:time** |ビデオ バッファーの長さ。 |
-| **Width**<br/><br/> minOccurs="0" |**xs:int** |出力ビデオ フレームの幅 (ピクセル単位)。<br/><br/> 現時点では、幅と高さの両方を指定する必要があります。 この幅と高さは、偶数にする必要があります。 |
+| **MaxBitrate**<br/><br/> minOccurs="0" |**xs: int** |このビデオ レイヤーに使用される最大ビットレート。kbps 単位で指定します。 |
+| **BufferWindow**<br/><br/> minOccurs="0"<br/><br/> default="00:00:05" |**xs: time** |ビデオ バッファーの長さ。 |
+| **Width**<br/><br/> minOccurs="0" |**xs: int** |出力ビデオ フレームの幅 (ピクセル単位)。<br/><br/> 現時点では、幅と高さの両方を指定する必要があります。 この幅と高さは、偶数にする必要があります。 |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** |出力ビデオ フレームの高さ (ピクセル単位)。<br/><br/> 現時点では、幅と高さの両方を指定する必要があります。 この幅と高さは、偶数にする必要があります。|
-| **BFrames**<br/><br/> minOccurs="0" |**xs:int** |参照フレーム間の B フレームの数。 |
+| **BFrames**<br/><br/> minOccurs="0" |**xs: int** |参照フレーム間の B フレームの数。 |
 | **ReferenceFrames**<br/><br/> minOccurs="0"<br/><br/> default=”3” |**xs:int** |GOP の参照フレームの数。 |
-| **EntropyMode**<br/><br/> minOccurs="0"<br/><br/> default=”Cabac” |**xs:string** |**Cabac** または **Cavlc** のいずれかの値を指定できます。 |
-| **FrameRate**<br/><br/> minOccurs="0" |有理数 |出力ビデオのフレーム レートを決定します。 既定値 "0/1" を使用すると、エンコーダーが、入力ビデオと同じフレーム レートを使用できます。 以下に示すように、使用できる値は、共通のビデオ フレーム レートになります。 ただし、すべての有理数が許可されます。 たとえば、1/1 は 1 fps で、有効です。<br/><br/> - 12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> - 24/1 (24 fps)<br/><br/> - 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> - 30000/1001 (29.97 fps) <br/> <br/>**注** マルチビットレート エンコードのカスタム プリセットを作成する場合、プリセットのすべてのレイヤーで同じ FrameRate 値を使用する**必要があります**。|
-| **AdaptiveBFrame**<br/><br/> minOccurs="0" |**xs:boolean** |Azure Media Encoder からコピー |
+| **EntropyMode**<br/><br/> minOccurs="0"<br/><br/> default=”Cabac” |**xs: string** |**Cabac** または **Cavlc** のいずれかの値を指定できます。 |
+| **FrameRate**<br/><br/> minOccurs="0" |有理数 |出力ビデオのフレーム レートを決定します。 既定値 "0/1" を使用すると、エンコーダーが、入力ビデオと同じフレーム レートを使用できます。 使用できる値は、共通のビデオ フレーム レートになります。 ただし、すべての有理数が許可されます。 たとえば、1/1 は 1 fps で、有効です。<br/><br/> - 12/1 (12 fps)<br/><br/> - 15/1 (15 fps)<br/><br/> - 24/1 (24 fps)<br/><br/> - 24000/1001 (23.976 fps)<br/><br/> - 25/1 (25 fps)<br/><br/>  - 30/1 (30 fps)<br/><br/> - 30000/1001 (29.97 fps) <br/> <br/>**注** マルチビットレート エンコードのカスタム プリセットを作成する場合、プリセットのすべてのレイヤーで同じ FrameRate 値を使用する**必要があります**。|
+| **AdaptiveBFrame**<br/><br/> minOccurs="0" |**xs: boolean** |Azure Media Encoder からコピー |
 | **Slices**<br/><br/> minOccurs="0"<br/><br/> default="0" |**xs:int** |フレームがいくつのスライスに分割されるかを決定します。 既定値を使用することをお勧めします。 |
 
 ## <a name="AACAudio"></a> AACAudio
@@ -103,17 +103,17 @@ ms.lasthandoff: 10/11/2017
  AAC の詳細については、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) に関するページをご覧ください。  
 
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| **プロファイル**<br/><br/> minOccurs="0 "<br/><br/> default="AACLC" |**xs:string** |**AACLC**、**HEAACV1**、**HEAACV2** のいずれかの値を指定できます。 |
+| **プロファイル**<br/><br/> minOccurs="0 "<br/><br/> default="AACLC" |**xs: string** |**AACLC**、**HEAACV1**、**HEAACV2** のいずれかの値を指定できます。 |
 
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| **Condition** |**xs:string** |入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。<br/><br/> 既定では、映像のみで音声の入っていないエンコーダーに入力を送信すると、映像データのみが含まれるファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。 |
+| **Condition** |**xs: string** |入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。<br/><br/> 既定では、映像のみで音声の入っていない入力をエンコーダーに送信すると、映像データのみが含まれたファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。 |
 
 ### <a name="groups"></a>グループ
-| リファレンス | 説明 |
+| 参照 | [説明] |
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs="0" |各プロファイルに設定できる適切なチャネル数、サンプリング レート、およびビットレートについては、「[AudioGroup](media-services-mes-schema.md#AudioGroup)」の説明を参照してください。 |
 
@@ -121,11 +121,11 @@ ms.lasthandoff: 10/11/2017
 各プロファイルの有効な値の詳細については、以下の「オーディオ コーデックの詳細」の表を参照してください。  
 
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| **Channels**<br/><br/> minOccurs="0" |**xs:int** |エンコードされたオーディオ チャネルの数。 有効なオプションは 1、2、5、6、8 です。<br/><br/> 既定値: 2。 |
-| **SamplingRate**<br/><br/> minOccurs="0" |**xs:int** |オーディオ サンプリング レート。Hz で指定します。 |
-| **Bitrate**<br/><br/> minOccurs="0" |**xs:int** |オーディオをエンコードするときに使用されるビットレート。kbps で指定します。 |
+| **Channels**<br/><br/> minOccurs="0" |**xs: int** |エンコードされたオーディオ チャネルの数。 有効なオプションは 1、2、5、6、8 です。<br/><br/> 既定値: 2。 |
+| **SamplingRate**<br/><br/> minOccurs="0" |**xs: int** |オーディオ サンプリング レート。Hz で指定します。 |
+| **Bitrate**<br/><br/> minOccurs="0" |**xs: int** |オーディオをエンコードするときに使用されるビットレート。kbps で指定します。 |
 
 ### <a name="audio-codec-details"></a>オーディオ コーデックの詳細
 オーディオ コーデック|詳細  
@@ -137,19 +137,19 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="Clip"></a> クリップ
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |プレゼンテーションの開始時刻を指定します。 StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。 たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。 |
 | **Duration** |**xs:duration** |プレゼンテーションの期間 (ビデオのオーバーレイの外観など) を指定します。 |
 
 ## <a name="Output"></a> 出力
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
-| **FileName** |**xs:string** |出力ファイルの名前。<br/><br/> 次の表で説明するマクロを使用すると、出力ファイルの名前を作成できます。 次に例を示します。<br/><br/> **"Outputs": [      {       "FileName": "{Basename}*{Resolution}*{Bitrate}.mp4",       "Format": {         "Type": "MP4Format"       }     }   ]** |
+| **FileName** |**xs:string** |出力ファイルの名前。<br/><br/> 次の表で説明するマクロを使用すると、出力ファイルの名前を作成できます。 例: <br/><br/> **"Outputs": [      {       "FileName": "{Basename}*{Resolution}*{Bitrate}.mp4",       "Format": {         "Type": "MP4Format"       }     }   ]** |
 
 ### <a name="macros"></a>マクロ
-| マクロ | 説明 |
+| マクロ | [説明] |
 | --- | --- |
 | **{Basename}** |VoD エンコードを実行する場合、{Basename} は、入力資産におけるプライマリ ファイルの AssetFile.Name プロパティに含まれる最初の 32 文字です。<br/><br/> 入力資産がライブ アーカイブの場合、{Basename} は、サーバー マニフェストの trackName 属性から派生します。 TopBitrate を使用してサブクリップ ジョブを送信する場合 (例: "< VideoStream\>TopBitrate </VideoStream\>")、出力ファイルにビデオが含まれていると、{Basename} は、最高ビットレートを持つビデオ レイヤーの trackName に含まれる最初の 32 文字です。<br/><br/> すべての入力ビットレートを使用してサブクリップ ジョブを送信する場合 (例: "<VideoStream\>*</VideoStream\>")、出力ファイルにビデオが含まれていると、{Basename} は、対応するビデオ レイヤーの trackName に含まれる最初の 32 文字です。 |
 | **{Codec}** |ビデオの場合は "H264" に、オーディオの場合は "AAC" にマップします。 |
@@ -162,7 +162,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="Video"></a> ビデオ (複合型はコーデックから継承)
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **Start** |**xs:string** | |
 | **Step** |**xs:string** | |
@@ -170,23 +170,23 @@ ms.lasthandoff: 10/11/2017
 | **PreserveResolutionAfterRotation** |**xs:boolean** |詳細については、「[PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation)」セクションを参照してください |
 
 ### <a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
-PreserveResolutionAfterRotation フラグは、パーセントで表される解像度の値 (Width = "100%" , Height = "100%") と組み合わせて使用することをお勧めします。  
+**PreserveResolutionAfterRotation** フラグは、パーセントで表される解像度の値 (Width="100%" , Height="100%") と組み合わせて使用することをお勧めします。  
 
-既定では、Media Encoder Standard (MES) プリセットのエンコード解像度設定 (幅、高さ) の対象は、回転が 0 度のビデオです。 たとえば、入力ビデオの解像度が 1280 x 720 で、回転が 0 度の場合、既定のプリセットでは出力の解像度が必ず同じになります。 次の図を参照してください。  
+既定では、Media Encoder Standard (MES) プリセットのエンコード解像度設定 (幅、高さ) の対象は、回転が 0 度のビデオです。 たとえば、入力ビデオの解像度が 1280 x 720 で、回転が 0 度の場合、既定のプリセットでは出力の解像度が必ず同じになります。  
 
 ![MESRoation1](./media/media-services-shemas/media-services-mes-roation1.png) 
 
-ただし、入力ビデオが、0 度以外の回転でキャプチャされている場合 (たとえば、 スマートフォンやタブレットが垂直になっている場合)、既定では、エンコード解像度設定 (幅、高さ) は入力ビデオに適用され、回転が補正されます。 たとえば、次の図を参照してください。 プリセットでは Width = "100%", Height = "100%" が使用されるため、MES は、出力の幅が 1280 ピクセル、高さが 720 ピクセルになるように解釈します。 ビデオを回転すると、画像はそのウィンドウに合わせて縮小され、画面の左右にピラー ボックス領域が表示されます。  
+入力ビデオが、0 度以外の回転でキャプチャされている場合 (たとえば、スマートフォンやタブレットが垂直になっている場合)、既定では、エンコード解像度設定 (幅、高さ) は入力ビデオに適用され、回転が補正されます。 たとえば、次の図をご覧ください。 プリセットでは Width = "100%", Height = "100%" が使用されるため、MES は、出力の幅が 1280 ピクセル、高さが 720 ピクセルになるように解釈します。 ビデオを回転すると、画像はそのウィンドウに合わせて縮小され、画面の左右にピラー ボックス領域が表示されます。  
 
 ![MESRoation2](./media/media-services-shemas/media-services-mes-roation2.png) 
 
-上記のように動作させたくない場合は、PreserveResolutionAfterRotation フラグを "true" に設定します (既定値は"false")。 プリセットが Width = "100%", Height = "100%" で、PreserveResolutionAfterRotation が "true" に設定されている場合、幅が 1280 ピクセル、高さが 720 ピクセルの入力ビデオを 90 度回転させると、出力の回転は 0 度ですが、幅が 720 ピクセル、高さが 1280 ピクセルになります。 次の図を参照してください。  
+または、**PreserveResolutionAfterRotation** フラグを "true" に設定できます (既定値は "false")。 プリセットが Width = "100%", Height = "100%" で、PreserveResolutionAfterRotation が "true" に設定されている場合、幅が 1280 ピクセル、高さが 720 ピクセルの入力ビデオを 90 度回転させると、出力の回転は 0 度ですが、幅が 720 ピクセル、高さが 1280 ピクセルになります。 次の図を参照してください。  
 
 ![MESRoation3](./media/media-services-shemas/media-services-mes-roation3.png) 
 
 ## <a name="FormatGroup"></a> FormatGroup (グループ)
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
@@ -194,81 +194,81 @@ PreserveResolutionAfterRotation フラグは、パーセントで表される解
 
 ## <a name="BmpLayer"></a> BmpLayer
 ### <a name="element"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="PngLayer"></a> PngLayer
 ### <a name="element"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="JpgLayer"></a> JpgLayer
 ### <a name="element"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Quality**<br/><br/> minOccurs="0" |**xs:int** |有効な値: 1(worst)-100(best) |
 
 ### <a name="attributes"></a>属性
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="PngLayers"></a> PngLayers
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
 ## <a name="BmpLayers"></a> BmpLayers
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
 ## <a name="JpgLayers"></a> JpgLayers
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
 ## <a name="BmpImage"></a> BmpImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png レイヤー |
 
 ## <a name="JpgImage"></a> JpgImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png レイヤー |
 
 ## <a name="PngImage"></a> PngImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
-| 名前 | 型 | 説明 |
+| 名前 | type | [説明] |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png レイヤー |
 
 ## <a name="examples"></a>例
 このスキーマに基づいて作成された XML プリセットの例については、「[Task Presets for MES (Media Encoder Standard) (MES (Media Encoder Standard) のタスク プリセット)](media-services-mes-presets-overview.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供

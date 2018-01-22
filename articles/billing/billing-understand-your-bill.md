@@ -1,5 +1,5 @@
 ---
-title: "Azure の課金内容を確認する | Microsoft Docs"
+title: "Azure の課金内容の確認"
 description: "Azure サブスクリプションの使用状況と課金内容を確認して理解する方法について説明します"
 services: 
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: ade40f8937d56cc561741e251095c4f14b4bb304
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: be15c74456b0cec64455f03dd72b8b64eef2bd5d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
@@ -34,9 +34,8 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 コスト管理レポートの詳細については、[Azure ポータルのコスト管理](https://docs.microsoft.com/azure/billing/billing-getting-started)に関する記事をご覧ください。
 
 ## <a name="charges"></a>請求書の料金が正しいことを確認する方法
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/3YegFD769Pk" frameborder="0" allowfullscreen></iframe>
-</div>
+
+>[!VIDEO https://www.youtube.com/embed/3YegFD769Pk]
 
 請求書上に詳細を知りたい料金がある場合は、次の 2 つの選択肢があります。
 
@@ -50,7 +49,7 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
  | --- | --- |
 |請求サイクル | 請求期間 |
  |名前 |測定カテゴリ |
- |型 |測定サブカテゴリ |
+ |type |測定サブカテゴリ |
  |リソース |測定名 |
  |リージョン |測定リージョン |
  |消費量 |消費量 |

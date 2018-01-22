@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 2b274244cc7b7fd0fc3eee22a57a51db77370370
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: b8075f0e1149a6fc5194347fc34e2a16d5eb2ffc
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="assessment-calculations"></a>評価の計算
 
@@ -47,10 +47,11 @@ Azure に移行するマシンは、Azure の要件と制限を満たす必要�
 
 マシンが Azure に適合とマークされると、Azure Migrate は次の基準を使用して Azure の VM サイズにマップします。
 
-- **ストレージ チェック**: Azure Migrate は、マシンに接続されている各ディスクを Azure のディスクにマップすることを試みます。1 秒あたりの I/O (IOPS) に快適性係数が乗算されます。 また、各ディスクのスループット (Mbps) にも快適性係数が乗算されます。 これにより、有効なディスク IOPS とスループットが得られます。 これに基づいて、Azure Migrate はディスクを Azureの Standard または Premium ディスクにマップします。
-    - 必要な IOPS とスループットのディスクが見つからない場合、そのマシンは Azure に不適合とマークされます。
-    - 一連の適切なディスクが見つかった場合は、ストレージ冗長化と、アセスメント設定で指定された場所をサポートするディスクが選択されます。
-    - 対象となるディスクが複数ある場合は、最も低コストのディスクが選択されます。
+- **ストレージ チェック**: Azure Migrate は、マシンに接続されているすべてのディスクを Azure のディスクにマップしようとします。
+    - Azure Migrate で、1 秒あたりの I/O (IOPS) に快適性係数が乗算されます。 また、各ディスクのスループット (Mbps) にも快適性係数が乗算されます。 これにより、有効なディスク IOPS とスループットが得られます。 これに基づいて、Azure Migrate はディスクを Azureの Standard または Premium ディスクにマップします。
+      - 必要な IOPS とスループットのディスクが見つからない場合、そのマシンは Azure に不適合とマークされます。
+      - 一連の適切なディスクが見つかった場合は、ストレージ冗長化と、アセスメント設定で指定された場所をサポートするディスクが選択されます。
+      - 対象となるディスクが複数ある場合は、最も低コストのディスクが選択されます。
 - **ストレージ ディスク スループット**: ディスクおよび VM あたりの Azure の制限の詳細については、[こちら](../azure-subscription-service-limits.md#storage-limits)をご覧ください。
 - **ディスクの種類**: Azure Migrate では、管理ディスクのみをサポートします。
 - **ネットワーク チェック**: Azure Migrate は、オンプレミスのマシンの NIC の数をサポートできる Azure VM を見つけることを試みます。
@@ -73,6 +74,6 @@ Azure に移行するマシンは、Azure の要件と制限を満たす必要�
 コストは、アセスメント設定で指定された通貨で表示されます。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [オンプレミスの VMware VM のアセスメントを設定する](tutorial-assessment-vmware.md)

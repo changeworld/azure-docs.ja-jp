@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions 外部テーブル バインディング (プレビュー) | Microsoft Docs"
+title: "Azure Functions の外部テーブル バインディング (試験段階)"
 description: "Azure Functions での外部テーブル バインディングの使用"
 services: functions
 documentationcenter: 
@@ -14,14 +14,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 1d983a6924a939a8eb89355fab0c90596dbf2ed3
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 8a4358fa67e45d0b7a2df1519d649099b5ef5850
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="azure-functions-external-table-binding-preview"></a>Azure Functions 外部テーブル バインディング (プレビュー)
-この記事では、関数内から組み込みバインディングを使って SaaS プロバイダー (SharePoint、Dynamics など) 上にある表形式データを操作する方法について説明します。 Azure Functions は、外部テーブルの入力バインディングと出力バインディングをサポートしています。
+# <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions の外部テーブル バインディング (試験段階)
+
+この記事では、Azure Functions で Sharepoint や Dynamics など SaaS プロバイダーの表形式データを操作する方法について説明します。 Azure Functions は、外部テーブルの入力バインディングと出力バインディングをサポートしています。
+
+> [!IMPORTANT]
+> 外部テーブル バインディングは試験段階であり、一般公開 (GA) されない可能性があります。 外部テーブル バインディングは Azure Functions 1.x にのみ含まれており、Azure Functions 2.x に追加される予定はありません。 SaaS プロバイダーのデータにアクセスする必要があるシナリオでは、[関数を呼び出すロジック アプリケーション](functions-twitter-email.md)の使用を検討してください。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -31,7 +35,7 @@ ms.lasthandoff: 12/22/2017
 
 バインディングを割り当てるときに、新しい API 接続を作成するか、または同じリソース グループ内の既存の API 接続を使うことができます。
 
-### <a name="supported-api-connections-tables"></a>サポートされている API 接続 (テーブル)
+### <a name="available-api-connections-tables"></a>使用できる API 接続 (テーブル)
 
 |コネクタ|トリガー|入力|出力|
 |:-----|:---:|:---:|:---:|
@@ -52,26 +56,35 @@ ms.lasthandoff: 12/22/2017
 |UserVoice||○|○
 |Zendesk||○|○
 
-
 > [!NOTE]
-> 外部テーブル接続を [Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list) で使用することもできます
+> 外部テーブル接続を [Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list) で使用することもできます。
 
-### <a name="creating-an-api-connection-step-by-step"></a>API 接続の作成手順
+## <a name="creating-an-api-connection-step-by-step"></a>API 接続の作成手順
 
-1. 関数の作成画面で [カスタム関数] を選択します。![カスタム関数の作成](./media/functions-bindings-storage-table/create-custom-function.jpg)
-1. [シナリオ] から [`Experimental`]  >  [`ExternalTable-CSharp` テンプレート] > [新しい `External Table connection` の作成] を選択します。
-![テーブル入力テンプレートの選択](./media/functions-bindings-storage-table/create-template-table.jpg)
-1. SaaS プロバイダーを選択し、接続を選択または作成します。![SaaS 接続の構成](./media/functions-bindings-storage-table/authorize-API-connection.jpg)
-1. API 接続を選択し、関数を作成します。![テーブル関数の作成](./media/functions-bindings-storage-table/table-template-options.jpg)
-1. [`Integrate`]  >  [`External Table`] を選択します。
-    1. ターゲット テーブルを使用するための接続を構成します。 これらの設定は SaaS プロバイダーごとに異なります。 以下の図は、「[データ ソースの設定](#datasourcesettings)」で作成するテーブルの例です。
-![テーブルの構成](./media/functions-bindings-storage-table/configure-API-connection.jpg)
+1. 関数アプリケーションの Azure Portal ページで、プラス記号 (**+**) を選択して関数を作成します。
 
-## <a name="usage"></a>使用法
+1. **[シナリオ]** ボックスで、**[試験段階]** を選択します。
+
+1. **[外部テーブル]** を選択します。
+
+1. 言語を選択します。
+
+2. **[外部テーブル接続]** で既存の接続を選択するか、**[新規]** を選択します。
+
+1. 新しい接続の場合は、設定を構成し、**[承認]** を選択します。
+
+1. **[作成]** を選択すると、関数が作成されます。
+
+1. **[統合]、[外部テーブル]** の順に選択します。
+
+1. ターゲット テーブルを使用するための接続を構成します。 これらの設定は SaaS プロバイダーごとに異なります。 例については、次のセクションを参照してください。
+
+## <a name="example"></a>例
 
 この例では、Id、LastName、FirstName の各列で構成された "Contact" という名前のテーブルに接続します。 以下のコードは、Contact テーブル内のエンティティを列挙し、ファースト ネームとラスト ネームをログに記録するものです。
 
-### <a name="bindings"></a>バインド
+*function.json* ファイルを次に示します。
+
 ```json
 {
   "bindings": [
@@ -93,29 +106,8 @@ ms.lasthandoff: 12/22/2017
   "disabled": false
 }
 ```
-テーブル バインディングの場合、`entityId` は空にする必要があります。
 
-API 接続文字列が格納されるアプリ設定は、`ConnectionAppSettingsKey` で指定します。 このアプリ設定は、[統合] の UI で API 接続を追加すると自動的に作成されます。
-
-テーブル コネクタによってデータセットが得られ、それぞれのデータセットにテーブルが格納されます。 既定のデータセットの名前は "default" です。 以下の表は、各種 SaaS プロバイダーにおけるデータセットとテーブルのタイトルを一覧にしたものです。
-
-|コネクタ|Dataset|テーブル|
-|:-----|:---|:---| 
-|**SharePoint**|サイト|SharePoint リスト
-|**SQL**|データベース|テーブル 
-|**Google シート**|スプレッドシート|ワークシート 
-|**Excel**|Excel ファイル|シート 
-
-<!--
-See the language-specific sample that copies the input file to the output file.
-
-* [C#](#incsharp)
-* [Node.js](#innodejs)
-
--->
-<a name="incsharp"></a>
-
-### <a name="usage-in-c"></a>C# での使用方法 #
+C# スクリプト コードを次に示します。
 
 ```cs
 #r "Microsoft.Azure.ApiHub.Sdk"
@@ -154,25 +146,9 @@ public static async Task Run(string input, ITable<Contact> table, TraceWriter lo
 }
 ```
 
-<!--
-<a name="innodejs"></a>
+### <a name="sql-server-data-source"></a>SQL Server データ ソース
 
-### Usage in Node.js
-
-```javascript
-module.exports = function(context) {
-    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
-    context.bindings.myOutputFile = context.bindings.myInputFile;
-    context.done();
-};
-```
--->
-<a name="datasourcesettings"></a>
-## データ ソースの設定
-
-### <a name="sql-server"></a>SQL Server
-
-以下に示したのは、Contact テーブルを作成してデータを投入するためのスクリプトです。 dataSetName は "default" です。
+SQL Server でこの例で使用するテーブルを作成するには、このスクリプトを使用します。 `dataSetName` は "既定値" です。
 
 ```sql
 CREATE TABLE Contact
@@ -191,11 +167,36 @@ INSERT INTO Contact(Id, LastName, FirstName)
 GO
 ```
 
-### <a name="google-sheets"></a>Google シート
-Google Docs に対し、`Contact` という名前のワークシートを含んだスプレッドシートを作成します。 コネクタでスプレッドシートの表示名を使用することはできません。 内部的な名前 (太字部分) を dataSetName として使う必要があります (例: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**)。先頭行に列名として `Id`、`LastName`、`FirstName` を追加し、それ以降の行にデータを投入しましょう。
+### <a name="google-sheets-data-source"></a>Google スプレッドシート データ ソース
+
+Google ドキュメントでこの例で使用する表を作成するには、`Contact` というワークシートを含むスプレッドシートを作成します。 コネクタでスプレッドシートの表示名を使用することはできません。 内部的な名前 (太字部分) を dataSetName として使う必要があります (例: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**)。先頭行に列名として `Id`、`LastName`、`FirstName` を追加し、それ以降の行にデータを投入しましょう。
 
 ### <a name="salesforce"></a>Salesforce
-dataSetName は "default" です。
+
+この例を Salesforce で使用する場合は、`dataSetName` が "既定値" です。
+
+## <a name="configuration"></a>構成
+
+次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。
+
+|function.json のプロパティ | [説明]|
+|---------|----------------------|
+|**type** | `apiHubTable` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
+|**direction** | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
+|**name** | 関数コード内のイベント項目を表す変数の名前。 | 
+|**connection**| API 接続文字列が格納されるアプリ設定を指定します。 このアプリ設定は、[統合] の UI で API 接続を追加すると自動的に作成されます。|
+|**dataSetName**|読み込むテーブルを含むデータ セットの名前。|
+|**tableName**|テーブルの名前|
+|**entityId**|テーブル バインディングの場合は空にする必要があります。
+
+テーブル コネクタによってデータセットが得られ、それぞれのデータセットにテーブルが格納されます。 既定のデータセットの名前は "default" です。 以下の表は、各種 SaaS プロバイダーにおけるデータセットとテーブルのタイトルを一覧にしたものです。
+
+|コネクタ|Dataset|テーブル|
+|:-----|:---|:---| 
+|**SharePoint**|サイト|SharePoint リスト
+|**SQL**|データベース|テーブル 
+|**Google シート**|スプレッドシート|ワークシート 
+|**Excel**|Excel ファイル|シート 
 
 ## <a name="next-steps"></a>次の手順
 

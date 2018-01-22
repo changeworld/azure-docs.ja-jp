@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
 ms.author: bradsev;ankarlof;garye
-ms.openlocfilehash: 1cd2bbb6adecaba908252bd42fce292654a5cf5a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 16442a30f130e7cc9b60d2d9ae9c86d7282471ff
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Azure Machine Learning でカスタム R モジュールを作成する
 このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/01/2017
 ## <a name="what-is-a-custom-r-module"></a>カスタム R モジュールとは
 **カスタム モジュール** とは、ユーザーのワークスペースにアップロードし、Azure Machine Learning の実験の一部として実行できるユーザー定義モジュールです。 **カスタム R モジュール** とは、ユーザー定義の R 関数を実行するカスタム モジュールです。 **R** とは、アルゴリズムを実装するために統計学者やデータ科学者によって広く使用されている統計コンピューティングおよびグラフィックス用のプログラミング言語です。 現在、カスタム モジュールでサポートされている言語は R だけですが、今後のリリースで他の言語のサポートが追加される予定です。
 
-カスタム モジュールには、他のモジュールと同様に使用できるという意味で、Azure Machine Learning の **ファースト クラス ステータス** があります。 これは、公開された実験や視覚化に含まれる他のモジュールとともに実行できます。 制御できるのは、モジュールによって実装されたアルゴリズム、使用される入出力ポート、モデリング パラメーターなど、さまざまな実行時の動作です。 また、カスタム モジュールが含まれる実験を Cortana Intelligence ギャラリーに公開して簡単に共有することもできます。
+カスタム モジュールには、他のモジュールと同様に使用できるという意味で、Azure Machine Learning の **ファースト クラス ステータス** があります。 これは、公開された実験や視覚化に含まれる他のモジュールとともに実行できます。 制御できるのは、モジュールによって実装されたアルゴリズム、使用される入出力ポート、モデリング パラメーターなど、さまざまな実行時の動作です。 また、カスタム モジュールが含まれる実験を Azure AI Gallery に公開して簡単に共有することもできます。
 
 ## <a name="files-in-a-custom-r-module"></a>カスタム R モジュールのファイル
 カスタム R モジュールは、少なくとも以下の 2 つのファイルが含まれる .zip ファイルによって定義されます。
@@ -286,9 +286,9 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
   * **allowedTypes** - 選択できる列の型をフィルター処理します。 有効な値は、次のとおりです。 
     
     * Numeric
-    * Boolean
+    * ブール
     * カテゴリ
-    * string
+    * String
     * ラベル
     * 機能
     * Score

@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics の IIS ログ | Microsoft Docs"
-description: "インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。  この記事では、IIS ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
+title: "Azure Log Analytics の IIS ログ | Microsoft Docs"
+description: "インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。  この記事では、IIS ログの収集を構成する方法と Log Analytics ワークスペースに作成されるレコードの詳細について説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 01/07/2018
 ms.author: bwren
-ms.openlocfilehash: 20155e7f0ad817993b5926a1a83b8683ab124075
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: b8ce4e6fe6e12aa3edb81abad1589924e3e121e4
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics の IIS ログ
 インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。  
@@ -41,7 +41,7 @@ Log Analytics は約 15 分おきに接続されたソースから IIS ログの
 ## <a name="iis-log-record-properties"></a>IIS ログ レコードのプロパティ
 IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | Computer |イベント収集元のコンピューターの名前。 |
 | cIP |クライアントの IP アドレス。 |
@@ -68,7 +68,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 ## <a name="log-searches-with-iis-logs"></a>IIS ログのログ検索
 次の表は、IIS ログ レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | Description |
+| クエリ | [説明] |
 |:--- |:--- |
 | W3CIISLog |IIS ログのすべてのレコード。 |
 | W3CIISLog &#124; where scStatus==500 |戻り状態が 500 であるすべての IIS ログ レコード。 |
@@ -76,7 +76,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 | W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |ホスト www.contoso.com の URL 別の IIS ログ エントリの数。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |各 IIS コンピューターによって受信された合計バイト数。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 分析のために別の [データ ソース](log-analytics-data-sources.md) を収集するように Log Analytics を構成します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
 * IIS ログで検出された重要な状態を事前に通知するように、Log Analytics のアラートを構成します。

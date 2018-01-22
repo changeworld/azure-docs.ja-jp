@@ -1,50 +1,57 @@
 ---
-title: "Azure Container Registry リポジトリ"
-description: "Docker イメージ用に Azure Container Registry リポジトリを使用する方法"
+title: "Azure Portal の Azure Container Registry リポジトリ"
+description: "Azure Portal で Azure Container Registry リポジトリを表示する方法"
 services: container-registry
 author: cristy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 3321dd1d8bbd1b8232c26491edd8c374df16b813
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 593972e972207a27d1232fcb0c1bf220ac3a8def
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="azure-container-registry-repositories"></a>Azure Container Registry リポジトリ
+# <a name="view-container-registry-repositories-in-the-azure-portal"></a>Azure Portal でコンテナー レジストリ リポジトリを表示する
 
-Azure Container Registry を使用すると、リポジトリにコンテナー イメージを保存できます。 リポジトリにイメージを保存することで、別々の環境にイメージ (またはイメージのバージョン) のグループを配置できます。 これらのリポジトリをは、レジストリにイメージをプッシュするときに指定できます。
-
+Azure Container Registry を使用すると、リポジトリに Docker コンテナー イメージを保存できます。 リポジトリにイメージを保存することで、別々の環境にイメージ (またはイメージのバージョン) のグループを配置できます。 これらのリポジトリは、レジストリにイメージをプッシュするときに指定できます。また、Azure Portal でそのコンテンツを確認できます。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure コンテナー レジストリ** - コンテナー レジストリは、Azure サブスクリプションに作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI 2.0](container-registry-get-started-azure-cli.md) を使用します。
-* **Docker CLI** - ローカル コンピューターを Docker ホストとして設定し、Docker CLI コマンドにアクセスするには、[Docker エンジン](https://docs.docker.com/engine/installation/)をインストールします。
-* **イメージのプル** - イメージを公開 Docker Hub レジストリからプルし、タグ付けして、レジストリにプッシュします。 イメージをプッシュおよびプルする方法のガイダンスについては、[Azure プライベート レジストリへの Docker イメージのプッシュ](container-registry-get-started-docker-cli.md)に関する記事をご覧ください。
 
+* **コンテナー レジストリ**: コンテナー レジストリを Azure サブスクリプションで作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
+* **Docker CLI**: [Docker][docker-install] をローカル コンピューターにインストールします。これで、Docker コマンド ライン インターフェイスを使用できるようになります。
+* **コンテナー イメージ**: コンテナー レジストリにイメージをプッシュします。 イメージのプッシュ方法とプル方法については、[イメージのプッシュとプル](container-registry-get-started-docker-cli.md)に関するページを参照してください。
 
-## <a name="viewing-repositories-in-the-portal"></a>Portal でのリポジトリの表示
+## <a name="view-repositories-in-azure-portal"></a>Azure Portal でリポジトリを表示する
 
-コンテナー レジストリにイメージをプッシュすると、イメージをホストしているリポジトリの一覧を Azure Portal に表示できます。
+Azure Portal には、イメージをホストするリポジトリの一覧とイメージ タグが表示されます。
 
-[Azure プライベート レジストリへの Docker イメージのプッシュ](container-registry-get-started-docker-cli.md)に関する記事の手順に従う場合、ここで Nginx イメージをコンテナー レジストリに配置する必要があります。 この手順の一環として、イメージの名前空間を指定しておく必要があります。 次の例のコマンドは、"samples" リポジトリに Nginx イメージをプッシュします。
+[イメージのプッシュとプル](container-registry-get-started-docker-cli.md)に関するページの手順を実行し、その後にイメージを削除しなかった場合は、コンテナー レジストリに Nginx イメージが残っています。 その記事の手順では、イメージに名前空間 (`/samples/nginx` では "sample") のタグを付けるように指定されていました。 その記事で指定した [docker push][docker-push] コマンドを念のため紹介します。
 
-```
+```Bash
 docker push myregistry.azurecr.io/samples/nginx
 ```
- Azure Container Registry では、複数レベルのリポジトリ名前空間をサポートしています。 この機能により、特定のアプリに関連するイメージのコレクション (つまり、アプリのコレクション) を特定の開発チームや運用チーム別にグループ化できます。 コンテナー レジストリ内のリポジトリの詳細については、[Azure でのプライベート Docker コンテナー レジストリ](container-registry-intro.md)に関する記事をご覧ください。
 
-コンテナー レジストリ リポジトリを表示するには
+ Azure Container Registry はこのようなマルチレベル リポジトリ名前空間をサポートしているため、特定のアプリまたはアプリのコレクションに関連するイメージのコレクションにスコープを指定して、さまざまな開発チームや運用チームに提供できます。 コンテナー レジストリ内のリポジトリの詳細については、[Azure でのプライベート Docker コンテナー レジストリ](container-registry-intro.md)に関する記事をご覧ください。
 
-1. Azure ポータルにログインする
-2. **[Azure Container Registry]** ブレードで、調べるレジストリを選択します。
-3. レジストリ ブレードで、**[リポジトリ]** をクリックして、すべてのリポジトリの一覧とそのイメージを表示します。
-4. (省略可能) タグを表示するには、特定のイメージを選択します。
+リポジトリを表示するには:
+
+1. [Azure Portal][portal] にサインインします
+1. Nginx イメージをプッシュした **Azure Container Registry** を選択します
+1. **[リポジトリ]** を選択し、レジストリ内のイメージを含むリポジトリの一覧を表示します
+1. リポジトリを選択し、リポジトリ内のイメージ タグを表示します
+
+たとえば、[イメージのプッシュとプル](container-registry-get-started-docker-cli.md)に関するページの手順に従って Nginx イメージをプッシュした場合は、次のように表示されます。
 
 ![Portal でのリポジトリ](./media/container-registry-repositories/container-registry-repositories.png)
 
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
-基本を理解したので、レジストリの使用を開始する準備ができました。 たとえば、[Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) クラスターへのコンテナー イメージのデプロイを開始できます。
+ここでは、ポータルでリポジトリを表示し、使用する方法の基本を学んだので、[Azure Container Registry と Azure Container Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md) クラスターを使用してみてください。
+
+<!-- LINKS - External -->
+[docker-install]: https://docs.docker.com/engine/installation/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[portal]: https://portal.azure.com

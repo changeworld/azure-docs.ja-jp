@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 01/05/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: d485d2e7d22ea79a87dc52dbc063a811f4a1a2ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b454ed7257e8d3f91e585cee2b559c54371fb15
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="configure-expiration-for-office-365-groups-preview"></a>Office 365 グループの有効期限の構成 (プレビュー)
 
@@ -30,9 +30,7 @@ Office 365 グループの有効期限機能を設定して、そのライフサ
 -   削除された Office 365 グループは、30 日以内であればグループの所有者または管理者が復元できます
 
 > [!NOTE]
-> Office 365 グループの有効期限を設定するには、有効期限の設定が適用されるグループの全メンバーに、Azure AD Premium ライセンスまたは Azure AD Basic EDU ライセンスが必要です。
-> 
-> Azure AD Basic EDU ライセンスのお客様の場合: このポリシーを初めて構成する際は、Azure Active Directory PowerShell コマンドレットを使用してください。 その後、Azure AD テナント内のユーザー アカウント管理者またはグローバル管理者であるアカウントを使用して、PowerShell と Azure AD ポータルのいずれかで有効期限の設定を更新できます。
+> Office 365 グループの有効期限を設定するには、有効期限の設定が適用されるグループの全メンバーに、Azure AD Premium ライセンスが必要です。
 
 Azure AD PowerShell コマンドレットをダウンロードしてインストールする方法については、「[Azure Active Directory PowerShell for Graph - Public Preview Release 2.0.0.137 (Azure Active Directory PowerShell for Graph - パブリック プレビュー リリース 2.0.0.137)](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)」を参照してください。
 
@@ -73,7 +71,7 @@ Azure AD PowerShell コマンドレットをダウンロードしてインスト
 >   たとえば、グループ A は 400 日前に作成され、有効期限の間隔は 180 日に設定されているとします。 有効期限の設定を適用すると、グループ A は所有者が更新しないかぎりは削除まで 30 日に設定されます。
 > * 動的なグループを削除し復元する場合、そのグループは新しいグループとみなされ、規則に従って再度追加されます。 このプロセスには最大で 24 時間かかることがあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事では、Azure AD グループに関する追加情報が提供されています。
 
 * [既存のグループの表示](active-directory-groups-view-azure-portal.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 64e8d4a88ea78e0de065e5a2c12dba4885e08bad
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9a3aa1680ada03e4472db3a198a3b806511671ed
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom を使用して Azure Media Services に Widevine ライセンスを配信する
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ Media Services .NET SDK バージョン 3.5.2 以降、Media Services を使用�
 1. トークンの承認制限を設定できる MS Edge および IE11 用の PlayReady 保護。 トークン制限ポリシーには、Azure Active Directory などの Secure Token Service (STS) によって発行されたトークンを含める必要があります。
 2. Chrome 用 Widevine 保護。別の STS によって発行されたトークンを使用したトークンの認証を要求する場合があります。 
 
-Axinom の Widevine ライセンス サーバーの STS として Azure Active Directory を使用できない理由については、「 [JWT トークンの生成](media-services-axinom-integration.md#jwt-token-generation) 」セクションを参照してください。
+Axinom の Widevine ライセンス サーバーの STS として Azure Active Directory を使用できない理由については、「[JWT トークンの生成](media-services-axinom-integration.md#jwt-token-generation)」セクションをご覧ください。
 
 ### <a name="considerations"></a>考慮事項
 1. キー配信サービスを構成するためのコンテンツ キーを生成するには、Axinom によって指定されたキー シード (8888000000000000000000000000000000000000) と、自分で生成または選択したキー ID を使用する必要があります。 Axinom ライセンス サーバーは、テストと運用の両方に有効な同じキー シードに基づくコンテンツ キーを含むライセンスをすべて発行します。
@@ -65,14 +65,14 @@ Axinom が提供する Widevine ライセンス サーバーでは、JWT トー�
 
 AMP コードの残りの部分は、 [こちら](http://amp.azure.net/libs/amp/latest/docs/)の AMP ドキュメントで示されるように標準の AMP API です。
 
-カスタム承認ヘッダーを設定するための上記の JavaScript は、AMP の公式な長期的なアプローチがリリースされるまでの短期的なアプローチであることに注意してください。
+カスタム Authorization ヘッダーを設定するための上記の JavaScript は、AMP の公式な長期的なアプローチがリリースされるまでの短期的なアプローチです。
 
 ## <a name="jwt-token-generation"></a>JWT トークンの生成
 テスト用の Widevine ライセンス サーバーでは、JWT トークン認証が必要です。 さらに、JWT トークンの要求の 1 つは、プリミティブ データ型ではなく複合オブジェクト型です。
 
 残念ながら、Azure AD が発行できるのは、プリミティブ型を持つ JWT トークンのみです。 同様に、.NET Framework API (System.IdentityModel.Tokens.SecurityTokenHandler と JwtPayload) では、複合オブジェクト型のみを要求として入力できます。 ただし、要求は、現在も文字列としてシリアル化されます。 したがって、Widevine ライセンス要求用の JWT トークンを生成するためにこの 2 つのどちらも使用できません。
 
-ここでは、このニーズを満たしている John Sheehan の [JWT Nuget パッケージ](https://www.nuget.org/packages/JWT) を使用します。
+ここでは、このニーズを満たしている John Sheehan の [JWT NuGet パッケージ](https://www.nuget.org/packages/JWT) を使用します。
 
 テスト用の Axinom Widevine ライセンス サーバーで求められる必要な要求を含む JWT トークンを生成するためのコードを次に示します。
 
@@ -136,7 +136,7 @@ Axinom Widevine ライセンス サーバー
 
 ### <a name="considerations"></a>考慮事項
 1. AMS PlayReady ライセンス配信サービスでは認証トークンの前に "Bearer=" が必要になりますが、Axinom Widevine ライセンス サーバーではこれを使用しません。
-2. Axinom 通信キーは、署名キーとして使用されます。 キーは 16 進文字列ですが、エンコードする際に文字列ではなく一連のバイトとして処理する必要があることに注意してください。 これは、ConvertHexStringToByteArray メソッドによって実現されます。
+2. Axinom 通信キーは、署名キーとして使用されます。 キーは 16 進文字列ですが、エンコードする際に文字列ではなく一連のバイトとして処理する必要があります。 これは、ConvertHexStringToByteArray メソッドによって実現されます。
 
 ## <a name="retrieving-key-id"></a>キー ID の取得
 JWT トークンを生成するためのコードでは、キー ID が必要です。 JWT トークンは、AMP プレーヤーを読み込む前に準備が整っている必要があるため、JWT トークンを生成するためにキー ID を取得する必要があります。
@@ -174,7 +174,7 @@ JWT トークンを生成するためのコードでは、キー ID が必要で
         return key_id;
     }
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 Azure Media Services Content Protection と Azure Media Player の両方で Widevine のサポートが新しく追加されました。これにより、次の最新のブラウザーで、AMS の PlayReady ライセンス サービスと Axinom の Widevine ライセンス サーバーの両方を使用して DASH とマルチネイティブ DRM (PlayReady + Widevine) のストリーミングを実装できます。
 
 * Chrome
@@ -189,7 +189,7 @@ Axinom Widevine ライセンス サーバーを利用する解決策では、次
 | 通信キー ID |JWT トークンの要求 "com_key_id" の値として含める必要があります ([この](media-services-axinom-integration.md#jwt-token-generation)セクションを参照してください)。 |
 | 通信キー |JWT トークンの署名キーとして使用する必要があります ( [この](media-services-axinom-integration.md#jwt-token-generation) セクションを参照してください)。 |
 | キー シード |任意のコンテンツ キー ID でコンテンツ キーを生成するために使用する必要があります ([この](media-services-axinom-integration.md#content-protection) セクションを参照してください)。 |
-| Widevine ライセンス取得 URL |DASH ストリーミングの資産配信ポリシーの構成で使用する必要があります ([この](media-services-axinom-integration.md#content-protection) セクションを参照してください)。 |
+| Widevine ライセンス取得 URL |DASH ストリーミングの資産配信ポリシーの構成で使用する必要があります ([この](media-services-axinom-integration.md#content-protection)セクションをご覧ください)。 |
 | コンテンツ キー ID |JWT トークンの権利メッセージ 要求の値の一部として含める必要があります ( [この](media-services-axinom-integration.md#jwt-token-generation) セクションを参照してください)。 |
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

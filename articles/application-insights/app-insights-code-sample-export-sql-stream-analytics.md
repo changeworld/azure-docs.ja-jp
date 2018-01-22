@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
 ms.author: mbullwin
-ms.openlocfilehash: e935350fbcdeb7a3192778b3dafb288aac281886
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8d008727d964df56d128265b632dafa4ab776f98
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法を示します。 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/01/2017
    
     ![ストレージで、[設定]、[キー] の順に開き、プライマリ アクセス キーのコピーを取ります](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
 
-## <a name="start-continuous-export-to-azure-storage"></a>Azure ストレージへの連続エクスポートの開始
+## <a name="start-continuous-export-to-azure-storage"></a>Azure Storage への連続エクスポートの開始
 1. Azure ポータルで、アプリケーション用に作成した Application Insights リソースを参照します。
    
     ![[参照]、[Application Insights]、アプリケーションの順に選択します](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
@@ -141,29 +141,29 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 このサンプルでは、ページ ビューからデータを使用します。 使用可能なその他のデータを確認するには、JSON 出力を検査し、「 [Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」を参照してください。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
-[従来の Azure Portal](https://manage.windowsazure.com/) で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
+[Azure Portal](https://portal.azure.com/) で、Azure Stream Analytics サービスを選び、新しい Stream Analytics ジョブを作成します。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/37-create-stream-analytics.png)
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/38-create-stream-analytics-form.png)
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA002.png)
 
-新しいジョブが作成された後、その詳細を展開します。
+新しいジョブが作成されたら、**[リソースに移動]** を選びます。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/41-sa-job.png)
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
 
-#### <a name="set-blob-location"></a>BLOB の場所の設定
+#### <a name="add-a-new-input"></a>新しい入力を追加する
+
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
+
 連続エクスポート BLOB から入力を取るよう設定します。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/42-sa-wizard1.png)
+![](./media/app-insights-code-sample-export-sql-stream-analytics/SA005.png)
 
 ここで、ストレージ アカウントからのプライマリ アクセス キーが必要になります。これは前にメモしておいたものです。 ストレージ アカウント キーとしてこれを設定します。
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/46-sa-wizard2.png)
-
 #### <a name="set-path-prefix-pattern"></a>パスのプレフィックス パターンの設定
-![](./media/app-insights-code-sample-export-sql-stream-analytics/47-sa-wizard3.png)
 
-日付の書式は **YYYY-MM-DD** (**ダッシュ**付き) に設定してください。
+**日付の書式は YYYY-MM-DD (ダッシュ付き) に設定してください。**
 
 パスのプレフィックス パターンは、Stream Analytics がストレージ内の入力ファイルを検索する方法を指定します。 連続エクスポートによるデータ格納方法と一致するように設定する必要があります。 次のように設定します。
 
@@ -178,22 +178,12 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
 
-#### <a name="finish-initial-setup"></a>初期セットアップの完了
-シリアル化の書式を確認します。
-
-![[確認]をクリックしてウィザードをして閉じます](./media/app-insights-code-sample-export-sql-stream-analytics/48-sa-wizard4.png)
-
-ウィザードを閉じ、セットアップが完了するまで待機します。
-
 > [!TIP]
 > 入力パスが正しく設定されていることを確認するには、Sample 関数を使用します。 失敗した場合: 選択したサンプルの時間範囲でストレージにデータがあることを確認します。 入力定義を編集し、ストレージ アカウント、パスのプレフィックス、日付形式が正しく設定されていることを確認します。
 > 
 > 
-
 ## <a name="set-query"></a>クエリの設定
 クエリ セクションを開きます。
-
-![ストリーム分析で、[クエリ] を選択します](./media/app-insights-code-sample-export-sql-stream-analytics/51-query.png)
 
 既定のクエリを次のもので置き換えます。
 
@@ -238,22 +228,20 @@ Application Insights リソースの名前と iKey を取得するには、概�
 ## <a name="set-up-output-to-database"></a>データベースへの出力のセットアップ
 SQL を出力として選択します。
 
-![ストリーム分析で、[出力] を選択します](./media/app-insights-code-sample-export-sql-stream-analytics/53-store.png)
+![ストリーム分析で、[出力] を選択します](./media/app-insights-code-sample-export-sql-stream-analytics/SA006.png)
 
 SQL データベースを指定します。
 
-![データベースの詳細を入力します](./media/app-insights-code-sample-export-sql-stream-analytics/55-output.png)
+![データベースの詳細を入力します](./media/app-insights-code-sample-export-sql-stream-analytics/SA007.png)
 
 ウィザードを閉じ、出力がセットアップされたことを示す通知を待機します。
 
 ## <a name="start-processing"></a>処理の開始
 ジョブを操作バーから開始します。
 
-![Stream Analytics で、[開始] をクリックします](./media/app-insights-code-sample-export-sql-stream-analytics/61-start.png)
+![Stream Analytics で、[開始] をクリックします](./media/app-insights-code-sample-export-sql-stream-analytics/SA008.png)
 
 データの処理を今から開始するか、以前のデータを使って開始するかを選択できます。 連続エクスポートの実行を開始してから既に時間が経過している場合は、後者がお勧めです。
-
-![Stream Analytics で、[開始] をクリックします](./media/app-insights-code-sample-export-sql-stream-analytics/63-start.png)
 
 数分後、SQL Server Management Tools に戻り、流れているデータを監視します。 たとえば、次のようなクエリを使用します。
 

@@ -1,5 +1,5 @@
 ---
-title: "Azure 請求書の確認 | Microsoft Docs"
+title: "Azure 請求書の確認"
 description: "Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法について説明します。"
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: edd4702ccab9162329bf83993d236eec9ec40b3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54de5e123dbb51948eb62d90b444ebd78f9879cb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の用語を確認します。
+
 請求書は、料金の概要と支払いの手順を提示しています。 請求書は、[Azure Portal](https://portal.azure.com/) から Portable Document Format (.pdf) のダウンロードで入手するか、電子メール経由で受信することができます。 詳しくは、「[Azure の請求書と毎日の使用状況データを取得する方法](billing-download-azure-invoice-daily-usage-date.md)」をご覧ください。
 
 注意点を次に示します。
@@ -31,9 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 -   米国以外のお客様向けの課金明細書に記載されている料金は、見積もりとしての使用を目的として提供されています。 銀行ではさまざまな費用に通貨換算率を適用している場合があります。
 
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/jWG1lyJe3Mg" frameborder="0" allowfullscreen></iframe>
-</div>
+>[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>請求書の用語と説明の詳細
 次のセクションでは、請求書に表示される主要な用語と、各用語の説明を一覧に示します。
@@ -44,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
 ![請求書のアカウント情報セクション](./media/billing-understand-your-invoice/1.png)
 
-| 用語 | Description |
+| 用語 | [説明] |
 | --- | --- |
 | 顧客発注番号 |追跡のために割り当てられる、省略可能な発注書番号 |
 | 請求書番号 |追跡のために使用される、Microsoft で生成した一意の請求書番号 |
@@ -65,7 +64,7 @@ ms.lasthandoff: 10/11/2017
 #### <a name="understand-the-previous-charges"></a>繰越した料金について
 請求書の繰越残高、入金額、および未払い残高のセクションでは、直近の請求書期間以降の取引が要約されています。
 
-| 用語 | 説明 |
+| 用語 | [説明] |
 | --- | --- |
 | 繰越残高 |直近の請求期間以降の合計請求額 |
 | 入金額 |直近の請求期間に適用した支払いおよびクレジットの合計金額 |
@@ -74,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 #### <a name="understand-the-current-charges"></a>現在の料金について
 請求書の現在の料金セクションは、現在の請求期間の月額料金に関する詳細を示しています。
 
-| 用語 | Description |
+| 用語 | [説明] |
 | --- | --- |
 | 利用料金 |利用料金は、現在の請求期間のサブスクリプションに対する合計月額料金です。|
 | 割引 |現在の請求期間に適用されるサービス割引|
@@ -84,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 
 次の表では、請求書の 2 ページ目に示される販売先と支払い指示について説明します。
 
-| 用語 |Description |
+| 用語 |[説明] |
 | --- | --- |
 | 販売先 |アカウントにあるプロファイルの住所。 <br/><br/>住所を変更する必要がある場合は、「[Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法](billing-how-to-change-azure-account-profile.md)」を参照してください。|
 | 支払い指示 |支払い方法 (クレジット カードや請求書など) に応じた支払い方法に関する指示 |
@@ -97,10 +96,10 @@ ms.lasthandoff: 10/11/2017
 
 次の表では、請求書に表示される利用料金の列のヘッダーについて説明します。
 
-| 用語 |Description |
+| 用語 |[説明] |
 | --- | --- |
 | 名前 |使用状況の最上位レベルのサービスを示します。 |
-| 種類 |料金に影響する Azure サービスの種類を定義します。 |
+| type |料金に影響する Azure サービスの種類を定義します。 |
 | リソース |消費しているメーターの測定単位を示します。 |
 | リージョン |データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 |
 | 消費量 |請求期間中に使用されたメーターの量 |

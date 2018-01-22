@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート | Microsoft Docs"
+title: "Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート"
 description: "Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート"
 services: storage
 documentationcenter: na
@@ -14,25 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: b5cd022c87a6a7a9e18f33b869db04e72be5cef7
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 6268cff5f6c87d269f431dcdf5e6a1ee2e2bcf1f
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート
 
-この記事には、Azure Storage Explorer 0.9.2 (プレビュー) のリリース ノート、および以前のバージョンのリリース ノートが含まれています。
+この記事には、Azure Storage Explorer 0.9.3 (プレビュー) のリリース ノート、および以前のバージョンのリリース ノートが含まれています。
 
 [Microsoft Azure ストレージ エクスプローラー (プレビュー)](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
+
+## <a name="version-093"></a>バージョン 0.9.3
+12/08/2017
+
+### <a name="download-azure-storage-explorer-093-preview"></a>Azure Storage Explorer 0.9.3 (プレビュー) をダウンロードする
+- [Windows 用 Azure Storage Explorer 0.9.3 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 0.9.3 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 0.9.3 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新規
+* 既存の Storage Explorer ウィンドウは以下の場合に再利用されます。
+    * Storage Explorer で生成された直接リンクを開く。
+    * Storage Explorer をポータルから開く。
+    * Storage Explorer を Azure Storage VS Code 拡張機能 (近日公開予定) から開く。
+* Storage Explorer 内から新しい Storage Explorer ウィンドウを開く機能が追加されました。
+    * Windows の場合は、[ファイル] メニューとタスク バーのコンテキスト メニューに [新しいウィンドウ] オプションがあります。
+    * Mac の場合は、アプリケーション メニューに [新規ウィンドウ] オプションがあります。
+
+### <a name="fixes"></a>修正
+* 古いアクティビティが適切にクリーンアップされませんでした。 これは長時間実行ジョブのパフォーマンスに影響していました。 現在は適切にクリーンアップされるようになっています。
+* 大量のファイルとディレクトリに関連するアクションによって、Storage Explorer がフリーズすることがありました。 Azure へのファイル共有の要求は、システム リソースの使用を制限するように調節されるようになりました。
+
+### <a name="known-issues"></a>既知の問題
+* Storage Explorer では ADFS アカウントがサポートされません。
+* "Explorer の表示" と "アカウント管理の表示" のショートカット キーはそれぞれ、Ctrl/Cmd + Shift + E キーと Ctrl/Cmd + Shift + A キーです。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、ここで説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* サブスクリプションをフィルターするために資格情報の再入力が必要であると、アカウント設定パネルに表示されることがあります。
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+```
+./StorageExplorer --disable-gpu
+```
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-092"></a>バージョン 0.9.2
 11/01/2017
 
 ### <a name="download-azure-storage-explorer-092-preview"></a>Azure Storage Explorer 0.9.2 (プレビュー) をダウンロードする
-- [Windows 用 Azure Storage Explorer 0.9.2 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure Storage Explorer 0.9.2 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure Storage Explorer 0.9.2 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [Windows 用 Azure Storage Explorer 0.9.2 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [Mac 用 Azure Storage Explorer 0.9.2 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [Linux 用 Azure Storage Explorer 0.9.2 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809308)
+
+
 
 ### <a name="hotfixes"></a>修正プログラム
 * ローカル タイム ゾーンによっては、テーブル エンティティの Edm.DateTime 値を編集する時に、予期しないデータの変更が発生する可能性がありました。 エディターは現在プレーンテキスト ボックスを使用しており、Edm.DateTime 値の制御は正確で一貫性があります。
@@ -95,13 +146,32 @@ ms.lasthandoff: 12/05/2017
 
 
 
+
+
+
+## <a name="previous-releases"></a>以前のリリース
+
+* [バージョン 0.9.1 / 0.9.0](#version-091)
+* [バージョン 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [バージョン 0.8.13](#version-0813)
+* [バージョン 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
+* [バージョン 0.8.9 / 0.8.8](#version-089--088)
+* [バージョン 0.8.7](#version-087)
+* [バージョン 0.8.6](#version-086)
+* [バージョン 0.8.5](#version-085)
+* [バージョン 0.8.4](#version-084)
+* [バージョン 0.8.3](#version-083)
+* [バージョン 0.8.2](#version-082)
+* [バージョン 0.8.0](#version-080)
+* [バージョン 0.7.20160509.0](#version-07201605090)
+* [バージョン 0.7.20160325.0](#version-07201603250)
+* [バージョン 0.7.20160129.1](#version-07201601291)
+* [バージョン 0.7.20160105.0](#version-07201601050)
+* [バージョン 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-091--090-preview"></a>バージョン 0.9.1/0.9.0 (プレビュー)
 10/20/2017
-### <a name="download-azure-storage-explorer-091-preview"></a>Azure Storage Explorer 0.9.1 (プレビュー) をダウンロードする
-* [Windows 用 Azure Storage Explorer 0.9.1 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Mac 用 Azure Storage Explorer 0.9.1 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Linux 用 Azure Storage Explorer 0.9.1 (プレビュー) のダウンロード](https://go.microsoft.com/fwlink/?LinkId=809308)
-
 ### <a name="new"></a>新規
 * Azure Cosmos DB のプレビューのサポート:
     * [オンライン ドキュメント](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
@@ -153,28 +223,6 @@ ms.lasthandoff: 12/05/2017
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-
-
-## <a name="previous-releases"></a>以前のリリース
-
-* [バージョン 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [バージョン 0.8.13](#version-0813)
-* [バージョン 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
-* [バージョン 0.8.9 / 0.8.8](#version-089--088)
-* [バージョン 0.8.7](#version-087)
-* [バージョン 0.8.6](#version-086)
-* [バージョン 0.8.5](#version-085)
-* [バージョン 0.8.4](#version-084)
-* [バージョン 0.8.3](#version-083)
-* [バージョン 0.8.2](#version-082)
-* [バージョン 0.8.0](#version-080)
-* [バージョン 0.7.20160509.0](#version-07201605090)
-* [バージョン 0.7.20160325.0](#version-07201603250)
-* [バージョン 0.7.20160129.1](#version-07201601291)
-* [バージョン 0.7.20160105.0](#version-07201601050)
-* [バージョン 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-0816"></a>バージョン 0.8.16
 8/21/2017
@@ -324,9 +372,9 @@ ms.lasthandoff: 12/05/2017
 ### <a name="version-089--088"></a>バージョン 0.8.9 / 0.8.8
 02/23/2017
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/R6gonK3cYAc?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/R6gonK3cYAc?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SrRPCm94mfE?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/SrRPCm94mfE?ecver=1]
 
 
 #### <a name="new"></a>新規
@@ -357,7 +405,7 @@ ms.lasthandoff: 12/05/2017
 12/16/2016
 ### <a name="version-087"></a>バージョン 0.8.7
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
 
 #### <a name="new"></a>新規
 
@@ -445,7 +493,7 @@ ms.lasthandoff: 12/05/2017
 09/12/2016
 ### <a name="version-084"></a>バージョン 0.8.4
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
 
 #### <a name="new"></a>新規
 
@@ -466,7 +514,7 @@ ms.lasthandoff: 12/05/2017
 08/03/2016
 ### <a name="version-083"></a>バージョン 0.8.3
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1]
 
 #### <a name="new"></a>新規
 
@@ -492,7 +540,7 @@ ms.lasthandoff: 12/05/2017
 07/07/2016
 ### <a name="version-082"></a>バージョン 0.8.2
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
 
 #### <a name="new"></a>新規
 
@@ -515,11 +563,11 @@ ms.lasthandoff: 12/05/2017
 06/15/2016
 ### <a name="version-080"></a>バージョン 0.8.0
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ycfQhKztSIY?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/ycfQhKztSIY?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k4_kOUCZ0WA?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/k4_kOUCZ0WA?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1]
 
 #### <a name="new"></a>新規
 
@@ -560,10 +608,9 @@ ms.lasthandoff: 12/05/2017
 
 ### <a name="version-07201603250"></a>バージョン 0.7.20160325.0
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/imbgBRHX65A?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/imbgBRHX65A?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1" frameborder="0" allowfullscreen></iframe>
-
+>[!VIDEO https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1]
 
 #### <a name="new"></a>新規
 

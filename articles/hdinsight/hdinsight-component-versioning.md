@@ -15,17 +15,17 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: d1098ea7f7ab7765f9769dd2e398eb3b62c5557b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 009b909f9d92c6a21babffae3984be36a7682476
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
 
-Microsoft Azure HDInsight の Apache Hadoop エコシステムのコンポーネントおよびバージョンと、Standard と Premium の各サービス レベルについて説明します。 また、HDInsight で Hadoop コンポーネントのバージョンを確認する方法についても説明します。 
+Microsoft Azure HDInsight の Apache Hadoop エコシステムのコンポーネントおよびバージョンと、Enterprise セキュリティ パッケージについて説明します。 また、HDInsight で Hadoop コンポーネントのバージョンを確認する方法についても説明します。 
 
 HDInsight の各バージョンは、あるバージョンの Hortonworks Data Platform (HDP) のクラウド ディストリビューションです。
 
@@ -74,25 +74,79 @@ Windows 向けのクラスターでは、コンポーネントのバージョン
 HDInsight の最新バージョンに関する追加のリリース ノートは、 [HDInsight リリース ノート](hdinsight-release-notes.md) を参照してください。
 
 ## <a name="supported-hdinsight-versions"></a>サポートされる HDInsight のバージョン
-次の表は、現在 Azure Portal で使用できる HDInsight のバージョンをまとめたものです。 各 HDInsight バージョンに対応する HDP バージョンを製品のリリース日とともにまとめています。 サポート有効期限と提供終了日も記載されます (これらが既知の場合)。
+次の表は、HDInsight のバージョンの一覧を示しています。 各 HDInsight バージョンに対応する HDP バージョンを製品のリリース日とともにまとめています。 サポート有効期限と提供終了日も記載されます (これらが既知の場合)。
+
+### <a name="available-versions"></a>使用可能なバージョン
+
+次の表は、Azure Portal と、PowerShell や .NET SDK などの他のデプロイ方法で使用可能な HDInsight のバージョンをまとめたものです。
+
+| HDInsight のバージョン | HDP のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure Portal での可用性 | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | | |[はい] |[はい] |
+| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2017 年 9 月 5 日 |2018 5 月 31 日 |[はい] |[はい] |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2018 年 7 月 31日 |[はい] |いいえ  |
 
 > [!NOTE]
-> バージョンのサポートが期限切れになると、Microsoft Azure クラシック ポータルで使用できなくなります。 ただし、クラスター バージョンは、Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) コマンドの `Version` パラメーターと .NET SDK を使用することで、バージョンの提供終了日まで利用できます。
-> 
+> バージョンのサポートが期限切れになると、Microsoft Azure Portal で使用できなくなります。 ただし、クラスター バージョンは、Windows PowerShell [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) コマンドの `Version` パラメーターと .NET SDK を使用することで、バージョンの提供終了日まで利用できます。
+>
+
+### <a name="retired-versions"></a>廃止されたバージョン
+
+次の表は、Azure Portal で使用**できない** HDInsight のバージョンをまとめたものです。
+
+| HDInsight のバージョン | HDP のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure Portal での可用性 | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016 年 3 月 29 日 |2016 年 12 月 29 日 |2018 年 1 月 9 日 |[はい] |いいえ  |
+| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2017 年 7 月 31 日 |[はい] |いいえ  |
+| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012 R2 |2015 年 2 月 18 日 |2016 年 3 月 1 日 |2017 年 4 月 1 日 |[はい] |いいえ  |
+| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |2014 年 6 月 24 日 |2015 年 5 月 18 日 |2016 年 6 月 30 日 |[はい] |いいえ  |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |2014 年 2 月 11 日 |2014 年 9 月 17 日 |2015 年 6 月 30 日 |[はい] |いいえ  |
+| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |2013 年 10 月 28 日 |2014 年 5 月 12 日 |2015 年 5 月 31 日 |[はい] |いいえ  |
+| HDInsight 1.6 |HDP 1.1 | |2013 年 10 月 28 日 |2014 年 4 月 26 日 |2015 年 5 月 31 日 |いいえ  |いいえ  |
+
+> [!NOTE]
 > ヘッド ノードを 2 つ備えた可用性の高いクラスターは、HDInsight バージョン 2.1 以降では既定でデプロイされています。 HDInsight バージョン 1.6 クラスターでは利用できません。
 
-| HDInsight のバージョン | HDP のバージョン | VM の OS | 高可用性 | リリース日 | Azure Portal での可用性 | サポート有効期限 | 提供終了日 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16 |あり |2017 年 4 月 4 日 |あり | | |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16 |あり |2016 年 9 月 30 日 |あり |2017 年 9 月 5 日 |2018 5 月 31 日 |
-| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年 3 月 29 日 |あり |2016 年 12 月 29 日 |2018 年 1 月 9 日 |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |2018 年 7 月 31日 |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |2017 年 7 月 31 日 |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012 R2 |あり |2015 年 2 月 18 日 |いいえ |2016 年 3 月 1 日 |2017 年 4 月 1 日 |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |あり |2014 年 6 月 24 日 |いいえ |2015 年 5 月 18 日 |2016 年 6 月 30 日 |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |あり |2014 年 2 月 11 日 |いいえ |2014 年 9 月 17 日 |2015 年 6 月 30 日 |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |あり |2013 年 10 月 28 日 |いいえ |2014 年 5 月 12 日 |2015 年 5 月 31 日 |
-| HDInsight 1.6 |HDP 1.1 | |いいえ |2013 年 10 月 28 日 |いいえ |2014 年 4 月 26 日 |2015 年 5 月 31 日 |
+## <a name="enterprise-security-package-for-hdinsight"></a>HDInsight 用の Enterprise セキュリティ パッケージ
+
+Azure HDInsight は、クラスターの作成のワークフローの一部として HDInsight クラスターに追加できるオプションのパッケージです。 Enterprise セキュリティ パッケージでは以下の機能がサポートされます。
+
+- 認証のための Active Directory との統合。
+
+    以前は、ローカル管理者ユーザーとローカル SSH ユーザーのみが HDInsight クラスターを作成できました。 ローカル管理者ユーザーは、すべてのファイル、フォルダー、テーブル、列にアクセスできます。  Enterprise セキュリティ パッケージを使用すると、オンプレミスの Active Directory、Azure Active Directory Domain Services、または IaaS 仮想マシン上の Active Directory を含む独自の Active Directory に HDInsight クラスターを統合することで、ロールベースのアクセス制御を有効にすることができます。 クラスターのドメイン管理者は、クラスターにアクセスするための自社の (ドメイン) ユーザー名とパスワードを使用する権限をユーザーに付与することができます。 
+
+    詳細については、「
+
+    - [ドメイン参加済み HDInsight クラスターでの Hadoop セキュリティの概要](./domain-joined/apache-domain-joined-introduction.md)
+    - [HDInsight で Azure のドメイン参加済み Hadoop クラスターを計画する](./domain-joined/apache-domain-joined-architecture.md)
+    - [ドメイン参加済みサンドボックス環境の構成](./domain-joined/apache-domain-joined-configure.md)
+    - [Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
+
+- データの承認
+
+    - Hive、Spark SQL、Yarn Queues の承認のための Apache Ranger との統合。
+    - ファイルとフォルダーのアクセスの制御を設定できます。
+
+    詳細については、「
+
+    - [ドメイン参加済み HDInsight での Hive ポリシーの構成](./domain-joined/apache-domain-joined-run-hive.md)
+
+- アクセスや構成済みポリシーを監視するための監査ログの表示。 
+
+### <a name="supported-cluster-types"></a>サポートされているクラスターの種類
+
+現時点では、次のクラスターの種類のみが Enterprise セキュリティ パッケージをサポートしています。
+
+- Hadoop (HDInsight 3.6 のみ)
+- Spark
+- Interactive Query
+
+### <a name="support-for-azure-data-lake-store"></a>Azure Data Lake Store のサポート
+
+Enterprise セキュリティ パッケージでは、プライマリ ストレージとアドオン ストレージの両方として Azure Data Lake Store の使用がサポートされます。
+
+### <a name="pricing-and-sla"></a>料金と SLA
+Enterprise セキュリティ パッケージの価格と SLA について詳しくは、[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)に関するページをご覧ください。
 
 ## <a name="hdinsight-windows-retirement"></a>Windows での HDInsight の提供終了
 Microsoft Azure HDInsight バージョン 3.3 が Windows 向け HDInsight の最終バージョンでした。 Windows 向けの HDInsight の提供終了日は 2018 年 7 月 31 日です。 Windows 向けの HDInsight クラスター バージョン 3.3 以前をお持ちの場合、2018 年 7 月 31 日までに Linux 向けの HDInsight (HDInsight バージョン 3.5 以降) に移行する必要があります。 Linux OS に移行しても、HDInsight クラスターの作成やサイズ変更の機能を保持できます。 Windows での HDInsight バージョン 3.3 のサポートは 2016 年 6 月 27 日で有効期限が切れました。
@@ -165,36 +219,10 @@ _提供終了日_とは、その日を過ぎると HDInsight でクラスター 
 * HDInsight クラスター Version 2.1 は、[Hortonworks Data Platform 1.3][hdp-1-3-0] を基盤とする Hadoop ディストリビューションを使用します。
 * HDInsight クラスター Version 1.6 は、[Hortonworks Data Platform 1.1][hdp-1-1-0] を基盤とする Hadoop ディストリビューションを使用します。
 
-## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard と HDInsight Premium
 
-Azure HDInsight では、_Standard_ と _Premium_ の 2 つのカテゴリでビッグ データ クラウド サービスを提供します。 次の表は、HDInsight Premium で_のみ_利用できる機能の一覧です。 表で明示的に記述していない機能は、HDInsight Standard と Premium の両方で利用できます。
 
-> [!NOTE]
-> HDInsight Premium は現在プレビューの段階で、Linux クラスターでのみ利用できます。
 
-| HDInsight Premium の機能 | Description |
-| --- | --- |
-| ドメイン参加済み HDInsight クラスター |HDInsight クラスターを Azure Active Directory (Azure AD) のドメインに参加させることで、エンタープライズ レベルのセキュリティを実現します。 HDInsight Premium では、Azure AD を使って 企業からHDInsight クラスターへのログオンを認証できる従業員の一覧を構成できるようになりました。 エンタープライズ管理者は、[Apache Ranger](http://hortonworks.com/apache/ranger/) を使用して Hive のセキュリティを確保するためのロールベースのアクセス制御を構成できるため、データへのアクセスを必要な分だけに制限できます。 また、管理者は、従業員によるデータ アクセスとアクセス制御ポリシーに対して行われた変更を監査できるため、企業リソースの高度なガバナンスを実現できます。 詳しくは、[ドメイン参加済み HDInsight クラスターの構成](./domain-joined/apache-domain-joined-configure.md)に関するページをご覧ください。 |
 
-### <a name="cluster-types-supported-in-hdinsight-premium"></a>HDInsight Premium でサポートされるクラスターの種類
-次の表は、HDInsight Premium でサポートされるクラスターの種類の一覧です。
-
-| クラスターの種類 | Standard | Premium (プレビュー) |
-| --- | --- | --- |
-| Hadoop |はい |はい (HDInsight 3.6 のみ) |
-| Spark |はい |いいえ |
-| HBase |はい |いいえ |
-| Storm |はい |いいえ |
-| R Server |はい |いいえ |
-| Interactive Query |あり |なし |
-| Kafka (プレビュー) |はい |いいえ | 
-
-### <a name="support-for-azure-data-lake-store-in-hdinsight-premium"></a>HDInsight Premium での Azure Data Lake Store のサポート
-
-HDInsight Premium クラスターは、プライマリ ストレージとして Azure Data Lake Store の使用をサポートしません。 ただし、HDInsight Premium クラスターで Azure Data Lake Store をアドオン ストレージとして使用することはできます。
-
-### <a name="pricing-and-sla"></a>料金と SLA
-HDInsight Premium の料金と SLA の詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>クラスターの既定のノード構成と仮想マシン サイズ
 次の表に、HDInsight クラスターの既定の仮想マシン (VM) サイズを示します。
@@ -206,35 +234,35 @@ HDInsight Premium の料金と SLA の詳細については、「 [HDInsight の
 
 * ブラジル南部と西日本を除くすべてのサポートされているリージョン:
 
-  | クラスターの種類 | Hadoop | HBase | Storm | Spark | R Server |
-  | --- | --- | --- | --- | --- | --- |
-  | ヘッド: 既定の VM サイズ |D3 v2 |D3 v2 |A3 |D12 v2 |D12 v2 |
-  | ヘッド: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
-  | worker: 既定の VM サイズ |D3 v2 |D3 v2 |D3 v2 |Windows: D12 v2、Linux: D4 v2 |Windows: D12 v2、Linux: D4 v2 |
-  | worker: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
-  | ZooKeeper: 既定の VM サイズ | |A3 |A2 | | |
-  | ZooKeeper: 推奨される VM サイズ | |A3、A4、A5 |A2、A3、A4 | | |
-  | エッジ: 既定の VM サイズ | | | | |Windows: D12 v2、Linux: D4 v2 |
-  | エッジ: 推奨される VM サイズ | | | | |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
+  | クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark | R Server |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | ヘッド: 既定の VM サイズ |D3 v2 |D3 v2 | D13、D14 |A3 |D12 v2 |D12 v2 |
+  | ヘッド: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2  | D13、D14 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
+  | worker: 既定の VM サイズ |D3 v2 |D3 v2  | D13、D14 |D3 v2 |Windows: D12 v2、Linux: D4 v2 |Windows: D12 v2、Linux: D4 v2 |
+  | worker: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2  | D13、D14 |D3 v2、D4 v2、D12 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
+  | ZooKeeper: 既定の VM サイズ | |A3 | |A2 | | |
+  | ZooKeeper: 推奨される VM サイズ | |A3、A4、A5 | | A2、A3、A4 | | |
+  | エッジ: 既定の VM サイズ | | | | | |Windows: D12 v2、Linux: D4 v2 |
+  | エッジ: 推奨される VM サイズ | | | | | |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
 * ブラジル南部と西日本のみ (v2 サイズはありません):
 
-  | クラスターの種類 | Hadoop | HBase | Storm | Spark | R Server |
-  | --- | --- | --- | --- | --- | --- |
-  | ヘッド: 既定の VM サイズ |D3 |D3 |A3 |D12 |D12 |
-  | ヘッド: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |
-  | worker: 既定の VM サイズ |D3 |D3 |D3 |Windows: D12、Linux: D4 |Windows: D12、Linux: D4 |
-  | worker: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |D3、D4、D12 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |
-  | ZooKeeper: 既定の VM サイズ | |A2 |A2 | | |
-  | ZooKeeper: 推奨される VM サイズ | |A2、A3、A4 |A2、A3、A4 | | |
-  | エッジ: 既定の VM サイズ | | | | |Windows: D12、Linux: D4 |
-  | エッジ: 推推奨される VM サイズ | | | | |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |
+  | クラスターの種類 | Hadoop | hbase | Interactive Query |Storm | Spark | R Server |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | ヘッド: 既定の VM サイズ |D3 |D3  | D13、D14 |A3 |D12 |D12 |
+  | ヘッド: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12  | D13、D14 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |
+  | worker: 既定の VM サイズ |D3 |D3  | D13、D14 |D3 |Windows: D12、Linux: D4 |Windows: D12、Linux: D4 |
+  | worker: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12  | D13、D14 |D3、D4、D12 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |
+  | ZooKeeper: 既定の VM サイズ | |A2 | | A2 | | |
+  | ZooKeeper: 推奨される VM サイズ | |A2、A3、A4 | |A2、A3、A4 | | |
+  | エッジ: 既定の VM サイズ | | | | | |Windows: D12、Linux: D4 |
+  | エッジ: 推推奨される VM サイズ | | | | | |Windows: D12、D13、D14、Linux: D4、D12、D13、D14 |
 
 > [!NOTE]
 > - ヘッドは、Storm クラスター タイプでは *Nimbus* と呼ばれます。
 > - Worker は、Storm クラスター タイプでは *Supervisor* と呼ばれます。
 > - Worker は、HBase クラスター タイプでは *Region* と呼ばれます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [HDInsight で Hadoop、Spark、その他のクラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)
 - [Windows PC から HDInsight の Hadoop で作業する](hdinsight-hadoop-windows-tools.md)
 

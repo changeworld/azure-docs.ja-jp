@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/13/2017
 ms.author: rachelap
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2170ac7df3b894c8d19b432abdcfef5c7fd75ff4
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 81d08e047a3689d110195f2325b52c6c0457e644
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Node.js RESTful API をビルドして Azure で API アプリにデプロイする
 
@@ -84,7 +84,7 @@ Swaggerize からプロジェクト名を求められたら、*ContactList* を�
 1. *lib* フォルダーを `yo swaggerize` によって作成された *ContactList*フォルダーにコピーして、ディレクトリを *ContactList* に変更します。
 
     ```bash
-    cp -r lib/ ContactList/
+    cp -r lib ContactList/
     cd ContactList
     ```
 
@@ -246,14 +246,22 @@ Swaggerize からプロジェクト名を求められたら、*ContactList* を�
     node_modules/
     ```
     `node_modules` フォルダーが、`git status` では無視されていることを確認します。
+    
+4. 次の行を `package.json` に追加します。 Swaggerize によって生成されるコードでは、Node.js エンジンのバージョンは指定されません。 バージョンが指定されていない場合、Azure では `0.10.18` の既定のバージョンが使用されます。これは、生成されるコードと互換性がありません。
 
-4. レポジトリへの変更をコミットします。
+    ```javascript
+    "engines": {
+        "node": "~0.10.22"
+    },
+    ```
+
+5. レポジトリへの変更をコミットします。
     ```bash
     git add .
     git commit -m "initial version"
     ```
 
-5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
+6. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
  
 ## <a name="test-the-api--in-azure"></a>Azure で API をテストする
 

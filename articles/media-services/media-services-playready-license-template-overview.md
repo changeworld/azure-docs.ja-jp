@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: b8d691d9a25847c4ab0b99d1fe5b889f314c404f
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 2b21765c53c9f9f37efb71924f12a5135170f788
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady ライセンス テンプレートの概要
-Azure Media Services では、Microsoft PlayReady ライセンスの配信サービスが提供されるようになりました。 エンド ユーザーのプレーヤー (Silverlight など) は、PlayReady で保護されたコンテンツを再生しようとする際に、ライセンス配信サービスにライセンス取得要求を送信します。 ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
+Azure Media Services では、PlayReady ライセンスの配信サービスが提供されるようになりました。 プレーヤー (Silverlight など) は、PlayReady で保護されたコンテンツを再生しようとする際に、ライセンス配信サービスにライセンス取得要求を送信します。 ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
 
-Media Services では、PlayReady ライセンス設定用の API も提供されます。 ライセンスには、保護されたコンテンツをユーザーが再生しようとしたときに PlayReady DRM ランタイムが適用する権限や制限が含まれます。
+Media Services では、PlayReady ライセンス設定用の API も提供されます。 ライセンスには、保護されたコンテンツをユーザーが再生しようとしたときに PlayReady デジタル著作権管理 (DRM) ランタイムが適用する権限や制限が含まれます。
 指定可能な PlayReady ライセンス制限の例の一部を以下に示します。
 
 * ライセンスが有効になる日時。
@@ -31,10 +31,10 @@ Media Services では、PlayReady ライセンス設定用の API も提供さ�
 * クライアントの永続的なストレージに保存されるライセンスの場合。 永続的なライセンスは、通常、コンテンツのオフライン再生を可能にするために使用します。
 * コンテンツを再生するためにプレーヤーが満たす必要のある最低限のセキュリティ レベル。 
 * 音声/ビデオ コンテンツの出力を制御する出力保護レベル。 
-* 詳細については、『 [PlayReady Compliance Rules](https://www.microsoft.com/playready/licensing/compliance/) 』(PlayReady のコンプライアンス ルール) ドキュメントの「Output Controls」(出力制御) セクション (3.5) を参照してください。
+* 詳細については、『[PlayReady Compliance Rules](https://www.microsoft.com/playready/licensing/compliance/)』(PlayReady のコンプライアンス ルール) ドキュメントの「Output Controls」(出力制御) セクション (3.5) を参照してください。
 
 > [!NOTE]
-> 現時点では、PlayReady ライセンスの PlayRight のみを設定することができます (このライセンスは必須です)。 PlayRight を使用すると、クライアントはコンテンツを再生できるようになります。 PlayRight により、再生に固有の制限を設定することもできます。 詳細については、「 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)」を参照してください。
+> 現時点では、PlayReady ライセンスの PlayRight のみを設定することができます。 このライセンスは必須です。 PlayRight を使用すると、クライアントはコンテンツを再生できるようになります。 PlayRight を使用して再生に固有の制限を構成することもできます。 詳細については、「 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)」を参照してください。
 > 
 > 
 
@@ -53,34 +53,34 @@ Media Services を使用して PlayReady ライセンスを設定するには、
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-XML は、PlayReady ライセンス テンプレートの XML スキーマのセクションで定義されたPlayReady ライセンス テンプレート XML スキーマに準拠しています。
+XML は、「PlayReady ライセンス テンプレート XML スキーマ」セクションで定義された PlayReady ライセンス テンプレート XML スキーマに準拠しています。
 
 Media Services は、XML へのシリアル化および XML からの逆シリアル化に使用できる一連の .NET クラスも定義します。 主要なクラスの説明については、「[ライセンス テンプレートの構成に使用する Media Services の .NET クラス](media-services-playready-license-template-overview.md#classes)」をご覧ください。
 
 エンドツーエンドでの .NET クラスを使用した PlayReady ライセンス テンプレートの構成例については、「 [PlayReady 動的暗号化とライセンス提供サービスの使用](media-services-protect-with-playready-widevine.md)」を参照してください。
 
 ## <a id="classes"></a>ライセンス テンプレートの構成に使用する Media Services の .NET クラス
-Media Services PlayReady ライセンス テンプレートの設定に使用する主な .NET クラスを以下に示します。 これらのクラスは、 [PlayReady ライセンス テンプレート XML スキーマ](media-services-playready-license-template-overview.md#schema)で定義された型にマップされます。
+次のクラスは、Media Services PlayReady ライセンス テンプレートの設定に使用される主な .NET クラスです。 これらのクラスは、 [PlayReady ライセンス テンプレート XML スキーマ](media-services-playready-license-template-overview.md#schema)で定義された型にマップされます。
 
 [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) クラスは、Media Services ライセンス テンプレート XML へのシリアル化およびこの XML からの逆シリアル化に使用します。
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) - このクラスは、エンド ユーザーに送信される応答用のテンプレートを表します。 このクラスには、ライセンス サーバーとアプリケーションの間のカスタム データ文字列のフィールド (カスタムのアプリケーション ロジックに役立ちます) と、1 つ以上のテンプレートのリストが含まれています。
+[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) - このクラスは、ユーザーに送信される応答用のテンプレートを表します。 このクラスには、ライセンス サーバーとアプリケーションの間のカスタム データ文字列のフィールド (カスタムのアプリケーション ロジックに役立ちます) が含まれています。 また、1 つ以上のテンプレートのリストが含まれています。
 
-これは、テンプレートの階層内の「最上位レベル」クラスです。 つまり、この応答用テンプレートにはライセンス テンプレートの一覧が含まれていて、これらのライセンス テンプレートに、シリアル化されるテンプレート データを構成するその他のすべてのクラスが (直接的または間接的に) 含まれているということです。
+テンプレート階層で "最上位" のクラスとして、応答用テンプレートにはライセンス テンプレートのリストが含まれています。 ライセンス テンプレートには、シリアル化されるテンプレート データを構成する他のすべてのクラスが (直接的または間接的に) 含まれています。
 
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
-[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) - このクラスは、エンド ユーザーに返される PlayReady ライセンスを作成するためのライセンス テンプレートを表します。 このクラスには、ライセンス内のコンテンツ キーに関するデータ、およびコンテンツ キーの使用時に PlayReady DRM によって適用される権限または制限が含まれています。
+[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx): このクラスは、ユーザーに返される PlayReady ライセンスを作成するために使用されるライセンス テンプレートを表します。 これにはライセンスのコンテンツ キーのデータが含まれています。 また、コンテンツ キーの使用時に PlayReady DRM ランタイムが適用する必要がある権限または制限も含まれます。
 
 ### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) - このクラスは、PlayReady ライセンスの PlayRight を表します。 このクラスにより、ユーザーは、ライセンスおよび PlayRight 自体で設定された 0 個以上の (再生固有ポリシーに関する) 制限の対象となるコンテンツを再生できるようになります。 ほとんどの PlayRight のポリシーでは、コンテンツを再生可能な出力の種類を制御する出力制限、および指定した出力の使用時に適用される必要があるすべての制限を処理する必要があります。 たとえば、DigitalVideoOnlyContentRestriction が有効にされると、DRM ランタイムはビデオがデジタル出力だけで表示されることを許可します (アナログ ビデオ出力ではこのコンテンツを配信できなくなります)。
+[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx): このクラスは、PlayReady ライセンスの PlayRight を表します。 このクラスにより、ユーザーは、ライセンスおよび PlayRight 自体で設定された任意の (再生固有ポリシーに関する) 制限の対象となるコンテンツを再生できるようになります。 PlayRight に関するポリシーの多くは、コンテンツを再生できる出力の種類を制御する出力制限に関係しています。 また、特定の出力が使用されたときに適用する必要がある制限も含まれます。 たとえば、DigitalVideoOnlyContentRestriction が有効な場合、DRM ランタイムはデジタル出力でのみビデオを表示できます (アナログ ビデオ出力はコンテンツを渡すことができません)。
 
 > [!IMPORTANT]
-> こうした種類の制限は強力ですが、コンシューマー エクスペリエンスに影響を及ぼす可能性があります。 出力保護を極端に限定的に設定すると、一部のクライアントでコンテンツを再生できなくなる可能性があります。 詳細については、 [PlayReady のコンプライアンス ルール](https://www.microsoft.com/playready/licensing/compliance/) に関するドキュメントを参照してください。
+> こうした種類の制限は強力ですが、コンシューマー エクスペリエンスに影響を及ぼす可能性があります。 出力保護が極端に限定的な場合、一部のクライアントでコンテンツを再生できなくなる可能性があります。 詳細については、[PlayReady のコンプライアンス ルール](https://www.microsoft.com/playready/licensing/compliance/)に関するドキュメントを参照してください。
 > 
 > 
 
-Silverlight でサポートされる保護レベルの例については、「 [Silverlight での出力保護のサポート](http://go.microsoft.com/fwlink/?LinkId=617318)」を参照してください。
+Silverlight でサポートされる保護レベルの例については、「[Silverlight での出力保護のサポート](http://go.microsoft.com/fwlink/?LinkId=617318)」を参照してください。
 
 ## <a id="schema"></a>PlayReady ライセンス テンプレート XML スキーマ
     <?xml version="1.0" encoding="utf-8"?>

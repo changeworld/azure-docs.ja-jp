@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: e8eb95649d9af1c8bf801df82f0f78aae0656d9e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cd42278048b8162a06af21de04397a959be33586
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory パススルー認証: 技術的な詳細
 この記事は、Azure Active Directory (Azure AD) パススルー認証のしくみの概要です。 技術とセキュリティの詳細情報については、[セキュリティの詳細](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)に関する記事をご覧ください。
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/11/2017
 2. まだサインインしていない場合、ユーザーは Azure AD の**ユーザー サインイン** ページにリダイレクトされます。
 3. ユーザーが Azure AD サインイン ページにユーザー名とパスワードを入力し、**[サインイン]** ボタンを選択します。
 4. サインインの要求を受け取った Azure AD が、(公開キーを使用して暗号化された) ユーザー名とパスワードをキューに入れます。
-5. オンプレミス認証エージェントが、ユーザー名と暗号化されたパスワードをキューから取得します。
+5. オンプレミス認証エージェントが、ユーザー名と暗号化されたパスワードをキューから取得します。 エージェントはキューの要求のために頻繁にポーリングしませんが、事前に確立された永続的な接続を介して要求を取得します。
 6. エージェントがその秘密キーを使用してパスワードの暗号化を解除します。
 7. エージェントは、標準の Windows API を使用して Active Directory に対してユーザー名とパスワードを検証しますが、これは Active Directory フェデレーション サービス (AD FS) が使用しているのと同様のメカニズムです。 ユーザー名には、オンプレミスの既定のユーザー名 (通常は `userPrincipalName`) か、Azure AD Connect (`Alternate ID` とも呼ばれる) で構成された別の属性を指定できます。
 8. オンプレミスの Active Directory ドメイン コントローラー (DC) が要求を評価し、適切な応答をエージェントに返します (成功、失敗、パスワードの期限切れ、またはユーザーがロックアウト)。
@@ -43,7 +43,7 @@ ms.lasthandoff: 12/11/2017
 
 ![パススルー認証](./media/active-directory-aadconnect-pass-through-authentication/pta2.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md): サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md): Azure AD パススルー認証を起動および実行します。
 - [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
