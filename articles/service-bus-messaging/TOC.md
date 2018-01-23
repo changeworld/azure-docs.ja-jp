@@ -28,13 +28,13 @@
 ### [ロールベースのアクセス制御 (プレビュー)](service-bus-role-based-access-control.md)
 ### [Premium メッセージング](service-bus-premium-messaging.md)
 ### [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-### [多層 Service Bus アプリケーションを構築する](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### [パフォーマンスを最適化する](service-bus-performance-improvements.md)
 ### [geo ディザスター リカバリーと geo レプリケーション](service-bus-geo-dr.md)
 ### [非同期メッセージングと高可用性](service-bus-async-messaging.md)
 ### [故障と障害の扱い](service-bus-outages-disasters.md)
 
 ## 開発
+### [多層 Service Bus アプリケーションを構築する](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### メッセージの処理
 #### [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 #### [メッセージ、ペイロード、シリアル化](service-bus-messages-payloads.md)
