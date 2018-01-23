@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: 323c1e7bb4703833cfc3047db9e6116eb7237162
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 6cfc9891af9de88dddca717711148cbb53276e84
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -41,9 +41,10 @@ ms.lasthandoff: 12/18/2017
 * Windows 10
 
 > [!NOTE]
-> Windows 7 には、既定では Windows PowerShell 2.0 のみが含まれます。 Service Fabric PowerShell のコマンドレットには PowerShell 3.0 以降が必要です。 Microsoft ダウンロード センターから [Windows PowerShell 5.0 をダウンロード][powershell5-download]できます。
-> 
-> 
+> Windows 7 のサポート:
+> - Windows 7 には、既定では Windows PowerShell 2.0 のみが含まれます。 Service Fabric PowerShell のコマンドレットには PowerShell 3.0 以降が必要です。 Microsoft ダウンロード センターから [Windows PowerShell 5.0 をダウンロード][powershell5-download]できます。
+> - Service Fabric リバース プロキシは、Windows 7 で使用できません。
+>
 
 ## <a name="install-the-sdk-and-tools"></a>SDK とツールのインストール
 ### <a name="to-use-visual-studio-2017"></a>Visual Studio 2017 を使用するには
@@ -77,7 +78,7 @@ Service Fabric は、ローカル開発クラスターの作成、および Visu
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 開発環境のセットアップが完了したので、アプリのビルドと実行を開始してください。
 
 * [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)

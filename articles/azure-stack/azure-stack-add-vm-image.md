@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/25/2017
+ms.date: 01/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 6c18debd022f0f233b52d81899e8edd7cf1e0456
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 3b228452d416bbb2c54243b95292f7e1198af14f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="make-a-custom-virtual-machine-image-available-in-azure-stack"></a>Azure Stack でカスタム仮想マシン イメージを提供する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Stack では、オペレーターがカスタム仮想マシン イメージをユーザーに提供できます。 それらのイメージを Azure Resource Manager テンプレートで参照したり、Marketplace 項目として Azure Marketplace UI に追加したりすることができます。 
+Azure Stack では、オペレーターがカスタム仮想マシン イメージをユーザーに提供できます。 それらのイメージを Azure Resource Manager テンプレートで参照したり、Marketplace 項目として Azure Marketplace UI に追加したりすることができます。
 
 ## <a name="add-a-vm-image-to-marketplace-by-using-powershell"></a>PowerShell を使用して VM イメージを Marketplace に追加する
 
@@ -35,21 +35,27 @@ Azure Stack では、オペレーターがカスタム仮想マシン イメー�
 2. [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。  
 
 3. Windows または Linux オペレーティング システム仮想ハード ディスク イメージを (VHDX 形式ではなく) VHD 形式で準備します。
-   
+
    * Windows イメージに関して、その準備に伴う手順については、[Resource Manager デプロイのために Windows VM イメージを Azure にアップロードする方法](../virtual-machines/windows/upload-generalized-managed.md)に関するページを参照してください。
-   * Linux イメージについては、[Azure Stack への Linux 仮想マシンのデプロイ](azure-stack-linux.md)に関するページを参照してください。 記事に説明されている手順に従って、イメージを準備するか既存の Azure Stack Linux イメージを使用します。  
+
+   * Linux イメージについては、[Azure Stack への Linux 仮想マシンのデプロイ](azure-stack-linux.md)に関するページを参照してください。 記事に説明されている手順に従って、イメージを準備するか既存の Azure Stack Linux イメージを使用します。    
+
+   Azure Stack は VHD フォーマットの固定ディスクをサポートしています。 固定フォーマットの場合、ファイル内で論理ディスクがリニアに構成されるため、ディスク オフセット X は BLOB オフセット X に格納されます。BLOB 末尾の小さなフッターに、VHD のプロパティが記述されます。 ディスクが固定フォーマットであるかどうかを確認するには、[Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell コマンドを使用します。  
+
+   > [!IMPORTANT]
+   >  Azure Stack では、ダイナミック ディスク VHD はサポートされていません。 VM に接続されているダイナミック ディスクのサイズを変更すると、VM はエラー状態になります。 この問題を軽減するには、VM のディスク、つまりストレージ アカウントの VHD BLOB を削除せずに VM を削除します。 次に、VHD をダイナミック ディスクから固定ディスクに変換した後、仮想マシンを再作成します。
 
 Azure Stack Marketplace にイメージを追加するには、以下の手順を実行します。
 
 1. Connect モジュールと ComputeAdmin モジュールをインポートします。
-   
+
    ```powershell
    Set-ExecutionPolicy RemoteSigned
 
    # Import the Connect and ComputeAdmin modules.
    Import-Module .\Connect\AzureStack.Connect.psm1
    Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
-   ``` 
+   ```
 
 2. Azure Stack 環境にサインインします。 Azure Stack 環境のデプロイに Azure Active Directory (Azure AD) を使用したか、Active Directory フェデレーション サービス (AD FS) を使用したかに応じて、以下のいずれかのスクリプトを実行してください。 Azure AD の `tenantName`、`GraphAudience` エンドポイント、`ArmEndpoint` の値は、実際の環境の構成に合わせて置き換えてください。
 
@@ -61,7 +67,7 @@ Azure Stack Marketplace にイメージを追加するには、以下の手順�
 
       # For Azure Stack Development Kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
       $GraphAudience = "<GraphAuidence endpoint for your environment>"
-      
+
       # Create the Azure Stack operator's Azure Resource Manager environment by using the following cmdlet:
       Add-AzureRMEnvironment `
         -Name "AzureStackAdmin" `
@@ -77,11 +83,11 @@ Azure Stack Marketplace にイメージを追加するには、以下の手順�
 
       Login-AzureRmAccount `
         -EnvironmentName "AzureStackAdmin" `
-        -TenantId $TenantID 
+        -TenantId $TenantID
       ```
 
    * **Active Directory フェデレーション サービス (AD FS)**。 次のコマンドレットを使用します。
-    
+
         ```PowerShell
         # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
         $ArmEndpoint = "<Resource Manager endpoint for your environment>"
@@ -101,15 +107,15 @@ Azure Stack Marketplace にイメージを追加するには、以下の手順�
 
         $TenantID = Get-AzsDirectoryTenantId `
           -ADFS `
-          -EnvironmentName AzureStackAdmin 
+          -EnvironmentName AzureStackAdmin
 
         Login-AzureRmAccount `
           -EnvironmentName "AzureStackAdmin" `
-          -TenantId $TenantID 
+          -TenantId $TenantID
         ```
-    
+
 3. `Add-AzsVMImage` コマンドレットを呼び出して、VM イメージを追加します。 `Add-AzsVMImage` コマンドレットには、`osType` として Windows または Linux を指定します。 VM イメージについて、publisher、offer、SKU、version も指定してください。 指定できるパラメーターについては、「[パラメーター](#parameters)」を参照してください。 これらのパラメーターは、Azure Resource Manager テンプレートが VM イメージを参照するために使用されます。 スクリプトを呼び出す例を次に示します。
-     
+
   ```powershell
   Add-AzsVMImage `
     -publisher "Canonical" `
@@ -129,7 +135,7 @@ Azure Stack Marketplace にイメージを追加するには、以下の手順�
 
 コマンドが正常に実行されたことを確認するには、ポータルから Marketplace に移動します。 **[Virtual Machines]** カテゴリで VM イメージが利用できることを確認します。
 
-![VM イメージが正常に追加](./media/azure-stack-add-vm-image/image5.PNG) 
+![VM イメージが正常に追加](./media/azure-stack-add-vm-image/image5.PNG)
 
 ## <a name="remove-a-vm-image-by-using-powershell"></a>PowerShell を使用して VM イメージを削除する
 
@@ -143,9 +149,9 @@ Remove-AzsVMImage `
   -version "1.0.0" `
 ```
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | **publisher** |イメージをデプロイするときにユーザーが使用する VM イメージの発行元名のセグメント。 たとえば、**Microsoft** です。 このフィールドではスペースや他の特殊文字は使用できません。 |
 | **offer** |VM イメージをデプロイするときにユーザーが使用する VM イメージのプラン名のセグメント。 たとえば、**WindowsServer** です。 このフィールドではスペースや他の特殊文字は使用できません。 |
@@ -170,8 +176,13 @@ Remove-AzsVMImage `
 
 1. [Resource Manager のデプロイのために Windows VM イメージを Azure にアップロードする](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)か、Linux イメージの場合は、「[Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md)」(Azure Stack への Linux 仮想マシンのデプロイ) の説明に従います。 イメージをアップロードする前に、次の事実を考慮する必要があります。
 
-   * Azure BLOB Storage よりも Azure Stack BLOB Storage の方がイメージを効率よくアップロードできます。イメージを Azure Stack イメージ リポジトリにプッシュする方が時間がかからないためです。 
-   
+   * Azure Stack は VHD フォーマットの固定ディスクをサポートしています。 固定フォーマットの場合、ファイル内で論理ディスクがリニアに構成されるため、ディスク オフセット X は BLOB オフセット X に格納されます。BLOB 末尾の小さなフッターに、VHD のプロパティが記述されます。 ディスクが固定フォーマットであるかどうかを確認するには、[Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell コマンドを使用します。  
+
+    > [!IMPORTANT]
+   >  Azure Stack では、ダイナミック ディスク VHD はサポートされていません。 VM に接続されているダイナミック ディスクのサイズを変更すると、VM はエラー状態になります。 この問題を軽減するには、VM のディスク、つまりストレージ アカウントの VHD BLOB を削除せずに VM を削除します。 次に、VHD をダイナミック ディスクから固定ディスクに変換した後、仮想マシンを再作成します。
+
+   * Azure BLOB Storage よりも Azure Stack BLOB Storage の方がイメージを効率よくアップロードできます。イメージを Azure Stack イメージ リポジトリにプッシュする方が時間がかからないためです。
+
    * [Windows VM イメージ](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/)をアップロードするときは、**Azure へのログイン**の手順の代わりに [Azure Stack オペレーターの PowerShell 環境を構成](azure-stack-powershell-configure-admin.md)する手順を実行してください。  
 
    * イメージのアップロード先の Blob Storage URI をメモしておきます。 Blob Storage URI の形式は *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd です
@@ -185,13 +196,13 @@ Remove-AzsVMImage `
 2. Azure Stack にオペレーターとしてサインインします。 メニューから **[その他のサービス]** > **[リソース プロバイダー]** を選択します。 次に、**[Compute]** > **[VM イメージ]** > **[追加]** を選択します。
 
 3. **[Add a VM Image]\(VM イメージの追加\)** で、パブリッシャー、プラン、SKU、および仮想マシン イメージのバージョンを入力します。 これらの名前セグメントによって、Resource Manager テンプレートで VM イメージが参照されます。 正しい **osType** の値を選択してください。 **[OS Disk Blob URI]\(OS ディスク BLOB URI\)** には、イメージがアップロードされた BLOB URI を入力します。 その後 **[作成]** をクリックすると VM イメージの作成が開始されます。
-   
+
    ![イメージの作成を開始](./media/azure-stack-add-vm-image/image4.png)
 
    イメージが正常に作成されると、VM イメージの状態が **[成功]** に変わります。
 
 4. 仮想マシン イメージをユーザーが UI ですぐに使用できるようにするには、[Marketplace 項目の作成](azure-stack-create-and-publish-marketplace-item.md)が最適です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [仮想マシンのプロビジョニング](azure-stack-provision-vm.md)

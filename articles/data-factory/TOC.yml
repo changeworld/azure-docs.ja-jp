@@ -64,6 +64,8 @@
               href: tutorial-incremental-copy-powershell.md
         - name: 5.2 - 複数のテーブルからコピーする
           items:
+            - name: ユーザー インターフェイス (UI)
+              href: tutorial-incremental-copy-multiple-tables-portal.md
             - name: Azure PowerShell
               href: tutorial-incremental-copy-multiple-tables-powershell.md
         - name: 5.3 - 変更追跡機能を使用する

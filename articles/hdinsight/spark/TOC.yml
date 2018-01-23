@@ -113,6 +113,8 @@
           href: apache-spark-deep-learning-caffe.md
         - name: Microsoft Cognitive Toolkit を使用する
           href: apache-spark-microsoft-cognitive-toolkit.md
+        - name: Spark 機械学習パイプラインの作成
+          href: apache-spark-creating-ml-pipelines.md
     - name: ビッグ データの分析
       items:
         - name: Spark を使用して HBase データを読み取る/書き込む

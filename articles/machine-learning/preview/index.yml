@@ -13,13 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/06/2017
   ms.author: garye
-  ms.openlocfilehash: c5873c1a9f5a73f700a07fe1050180750bf59cd4
-  ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+  ms.openlocfilehash: 98d106418472f66b8e5fe5d887eb8e75f5ce4a1b
+  ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/09/2017
+  ms.lasthandoff: 01/23/2018
 abstract:
-  description: "Microsoft が提供するクイック スタートとチュートリアルを使用して、データを準備し、モデルをビルドおよびデプロイする方法を確認してください。 Azure Machine Learning のプレビュー機能では、Python ツールと Python ライブラリを使用して、ML および AI モデルをビルド、デプロイ、管理できます。 データを保存および処理するために、さまざまなデータや Azure の Compute Services を使用できます。"
+  description: "Microsoft が提供するクイック スタートとチュートリアルを使用して、データを準備し、モデルをビルドおよびデプロイする方法を確認してください。 Azure Machine Learning のプレビュー機能では、Python ツールと Python ライブラリを使用して、機械学習モデルおよび AI モデルをビルド、デプロイ、管理できます。 データを保存および処理するために、さまざまなデータや Azure の Compute Services を使用できます。"
 sections:
 - title: "5 分間のクイック スタート"
   items:

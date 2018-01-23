@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/29/2017
+ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 7961f998b59991b47e1c22d826bf0a50fcd09099
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: ac1ecf8ef9f1e30eb5bdd2fe86433a4981d73d8d
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -127,4 +127,13 @@ Data Factory を利用できるリージョンが米国東部、米国東部 2�
 Data Factory サービスのバージョン 1 とバージョン 2 の相違点の一覧については、[バージョン 1 との比較](compare-versions.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次の手順
-次のクイック スタートの手順 ([PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Portal) に従って、データ ファクトリを作成する方法をご確認ください。 
+次のツールおよび SDK のいずれかを使用して、Data Factory パイプラインの作成を開始します。 
+
+- [Azure Portal の Data Factory UI](quickstart-create-data-factory-portal.md)
+- [Azure Portal の [データのコピー] ツール](quickstart-create-data-factory-copy-data-tool.md)
+- [PowerShell](quickstart-create-data-factory-powershell.md)
+- [.NET](quickstart-create-data-factory-dot-net.md)
+- [Python](quickstart-create-data-factory-python.md)
+- [REST](quickstart-create-data-factory-rest-api.md)
+- [Azure Resource Manager テンプレート](quickstart-create-data-factory-resource-manager-template.md)
+ 

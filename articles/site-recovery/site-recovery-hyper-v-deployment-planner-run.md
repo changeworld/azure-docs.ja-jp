@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 5c7ff99c2f67f82f9a7d605d9960960f84e96900
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 34f0b641abcf4231655d74da46f1bdcadc5642f6
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (Hyper-V から Azure)
 
@@ -97,7 +97,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Virtualization|仮想化の種類を指定します (VMware または Hyper-V)。|
 |-Directory|(省略可) プロファイリング中に生成されたプロファイリング データの格納先となる UNC (汎用名前付け規則) パスまたはローカル ディレクトリ パス。 指定しなかった場合、現在のパス下の "ProfiledData" という名前のディレクトリが既定のディレクトリとして使用されます。|
 |-Password|(省略可) Hyper-V ホストに接続するためのパスワード。 ここで指定しなかった場合は、後でコマンドの実行時に入力を求められます。|
-|-StorageAccountName|(省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。|
+|-StorageAccountName|(省略可) オンプレミスから Azure へのデータのレプリケーションに関して達成可能なスループットの調査対象となるストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされてスループットが計算されます。 ストレージ アカウントは、汎用 v1 または storageV2 (汎用 v2) のいずれかである必要があります|
 |-StorageAccountKey|(省略可) ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<Storage account name>]、[設定]、[アクセス キー]、[Key1] (クラシック ストレージ アカウントの場合は [プライマリ アクセス キー]) の順に移動します。|
 |-Environment|(省略可) レプリケーション先となる Azure Storage アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。|
 
@@ -274,7 +274,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -Operation | GetThroughtput |
 |-Virtualization|仮想化の種類を指定します (VMware または Hyper-V)。|
 |-Directory|(省略可) プロファイリング データ (プロファイリング中に生成されたファイル) の格納先となる汎用名前付け規則 (UNC) パスまたはローカル ディレクトリ パス。 レポートを生成するには、このデータが必要となります。 名前を指定しなかった場合、現在のパス下の "ProfiledData" という名前のディレクトリが既定のディレクトリとして使用されます。|
-| -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 |
+| -StorageAccountName | オンプレミスから Azure へのデータのレプリケーションに関して、使用帯域幅の調査に使うストレージ アカウントの名前。 このストレージ アカウントにテスト データがアップロードされて使用帯域幅が計算されます。 ストレージ アカウントは、汎用 v1 または storageV2 (汎用 v2) のいずれかである必要があります |
 | -StorageAccountKey | ストレージ アカウントにアクセスするためのストレージ アカウント キー。 Azure Portal の [ストレージ アカウント]、[<*ストレージ アカウント名*>]、[設定]、[アクセス キー]、[Key1] の順に移動します。|
 | -VMListFile | 使用帯域幅の計算に関して、プロファイリングの対象となる VM のリストを含んだファイル。 ファイルは、絶対パスまたは相対パスで指定できます。 Hyper-V の場合、このファイルが GetVMList 操作の出力ファイルとして得られます。 このファイルを手動で作成する場合、サーバー名 (または IP アドレス) + 区切り文字 (\) + VM 名を 1 行につき 1 つ記述する必要があります。 このファイルに指定する VM 名は、Hyper-V ホスト上の VM 名と同じであることが必要です。<ul>たとえば "VMList.txt" ファイルに、次のように VM を記述することができます。<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Environment|(省略可) レプリケーション先となる Azure Storage アカウント環境。 AzureCloud、AzureUSGovernment、AzureChinaCloud の 3 つのうち、いずれかの値を指定できます。 既定値は AzureCloud です。 このパラメーターは、レプリケーション先の Azure リージョンが Azure 米国政府機関または Azure China クラウドであるときに使用します。|

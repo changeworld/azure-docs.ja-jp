@@ -170,6 +170,8 @@
               href: app-insights-live-stream.md
             - name: アプリケーション マップ
               href: app-insights-app-map.md
+            - name: トランザクションの診断
+              href: app-insights-transaction-diagnostics.md
             - name: HockeyApp データ
               href: app-insights-hockeyapp-bridge-app.md
         - name: Visual Studio

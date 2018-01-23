@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: b8f0f899dff0f9e238017cb77126b3ca1275f3cd
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: be84f68a044a73673e991f04c7fe36a7787b9c3c
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -113,7 +113,7 @@ GB 単位の月額料金に加え、クール層 (GPv2 アカウントのみ) �
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 または Blob Storage アカウントの既定のアクセス層を変更する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. ストレージ アカウントに移動するには、[すべてのリソース] を選択し、ストレージ アカウントを選択します。
 
@@ -125,7 +125,7 @@ GB 単位の月額料金に加え、クール層 (GPv2 アカウントのみ) �
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 または Blob Storage アカウントの BLOB のアクセス層を変更する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. ストレージ アカウントの BLOB に移動するには、[すべてのリソース]、ストレージ アカウント、コンテナー、BLOB を順に選択します。
 
@@ -188,9 +188,9 @@ BLOB レベルの階層制御とアーカイブ ストレージは、Azure Porta
 
 データ ストレージの上限は、ストレージ層ごとに設定されるのではなく、その他の制限と共にアカウント レベルで設定されます。 そのため、すべての制限を 1 つの階層で使用するか、3 つすべての階層で使用するかは、ユーザーが選択できます。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-### <a name="evaluate-hot-cool-and-archvie-in-gpv2-blob-storage-accounts"></a>GPv2 アカウントと Blob Storage アカウントにおけるホット、クール、アーカイブの評価
+### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>GPv2 Blob Storage アカウントにおけるホット、クール、アーカイブの評価
 
 [ホット、クール、アーカイブのリージョンごとの提供状況を確認する](https://azure.microsoft.com/regions/#services)
 

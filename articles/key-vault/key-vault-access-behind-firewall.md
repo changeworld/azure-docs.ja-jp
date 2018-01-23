@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: d00c6e0acf437d2bfc3c27e948f4646a6685b08f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad31e869d998d29d403ff97c17150c5078ce856d
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault へのアクセス
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>Q: Key Vault クライアント アプリケーションをファイアウォールの内側に配置する必要があります。 キー コンテナーへのアクセスを有効にするために開く必要があるポート、ホスト、IP アドレスを教えてください。
@@ -38,8 +38,8 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 
 | プリンシパルの種類 | エンドポイント:ポート |
 | --- | --- |
-| Microsoft アカウントを使用しているユーザー<br> (例: user@hotmail.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> と <br>login.live.com:443 |
-| Azure AD と共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
+| Microsoft アカウントを使用しているユーザー<br> (例: user@hotmail.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> と <br>login.live.com:443 |
+| Azure AD と共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
 | Active Directory フェデレーション サービス (AD FS) または他のフェデレーション エンドポイントと共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |職場または学校のアカウント用のすべてのエンドポイントと AD FS またはその他のフェデレーション エンドポイント |
 
 ほかにも複雑なシナリオが存在する場合があります。 詳細については、[Azure Active Directory の認証フロー](/documentation/articles/active-directory-authentication-scenarios/)に関するページ、「[Azure Active Directory とアプリケーションの統合](/documentation/articles/active-directory-integrating-applications/)」、[Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)に関するページを参照してください。  
@@ -62,6 +62,6 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 ## <a name="ip-address-ranges"></a>IP アドレス範囲
 Key Vault サービスでは、PaaS インフラストラクチャなどの他の Azure リソースを使用します。 そのため、Key Vault サービス エンドポイントが常に持つことになる、特定の範囲の IP アドレスは提供されません。 ファイアウォールで IP アドレス範囲のみがサポートされている場合は、「[Microsoft Azure Datacenter IP Ranges (Microsoft Azure データセンターの IP 範囲)](https://www.microsoft.com/download/details.aspx?id=41653)」のドキュメントを参照してください。 認証と ID (Azure Active Directory) については、アプリケーションは、[認証と ID のアドレス](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)に関する記事に記載されているエンドポイントに接続できる必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Key Vault に関する質問がある場合は、[Azure Key Vault フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
 

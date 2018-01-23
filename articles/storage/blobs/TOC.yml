@@ -234,6 +234,8 @@
           href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: AzCopy on Linux
           href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Linux 上でファイル システムとして BLOB ストレージをマウントする
+          href: storage-how-to-mount-container-linux.md
         - name: Import/Export サービスの使用
           href: ../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Import/Export ツールの使用

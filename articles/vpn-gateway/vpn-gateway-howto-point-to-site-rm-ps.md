@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 367288e313ae5517b126b17c905ae291b5b37975
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: bbaa5a6bbc01af4529c657aee3b2916942b4269f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成: PowerShell
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 12/18/2017
   $besub = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName -AddressPrefix $BESubPrefix
   $gwsub = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName -AddressPrefix $GWSubPrefix
   ```
-3. 仮想ネットワークを作成する。
+3. 仮想ネットワークを作成します。
 
   この例では、-DnsServer サーバー パラメーターはオプションです。 値を指定しても新しい DNS サーバーは作成されません。 指定する DNS サーバーの IP アドレスは、VNet から接続するリソースの名前を解決できる DNS サーバーの IP アドレスである必要があります。 この例ではプライベート IP アドレスを使用していますが、これはおそらく実際の DNS サーバーの IP アドレスと一致しません。 実際には独自の値を使用してください。 指定された値は、P2S 接続や VPN のクライアントではなく、VNet にデプロイするリソースが使用します。
 
@@ -165,7 +165,7 @@ VNet の仮想ネットワーク ゲートウェイを構成、作成します�
 
 * -GatewayType は **Vpn**、-VpnType は **RouteBased** にする必要があります。
 * -VpnClientProtocol は、有効にするトンネルの種類を指定する際に使用します。 トンネルのオプションは、**SSTP** と **IKEv2** の 2 つがあります。 どちらか一方を有効にすることも、両方を有効にすることもできます。 両方を有効にする場合は、両方の名前をコンマで区切って指定します。 Android と Linux の Strongswan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。
-* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。 この例では、現在プレビュー版が提供されている IKEv2 が使用されています。
+* 選択する[ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md) によっては、VPN ゲートウェイで処理が完了するまでに最大で 45 分かかる場合があります。 この例では、IKEv2 を使用します。
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
@@ -426,5 +426,5 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。

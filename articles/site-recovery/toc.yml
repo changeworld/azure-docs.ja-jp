@@ -265,7 +265,7 @@
           href: site-recovery-manage-registration-and-protection.md
         - name: コンテナーの削除
           href: delete-vault.md
-    - name: トラブルシューティング
+    - name: 監視とトラブルシューティング
       items:
         - name: Azure から Azure へのレプリケーションの問題
           href: site-recovery-azure-to-azure-troubleshoot-errors.md
@@ -275,8 +275,8 @@
           href: site-recovery-vmware-to-azure-push-install-error-codes.md
         - name: Azure へのフェールオーバーの問題
           href: site-recovery-failover-to-azure-troubleshoot.md
-        - name: ログの収集とオンプレミスの問題のトラブルシューティング
-          href: site-recovery-monitoring-and-troubleshooting.md
+        - name: Azure Site Recovery の監視
+          href: site-recovery-monitor-and-troubleshoot.md
 - name: リファレンス
   items:
     - name: Azure PowerShell

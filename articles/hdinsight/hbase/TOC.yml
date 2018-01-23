@@ -29,7 +29,7 @@
           maintainContext: true
     - name: 開発
       items:
-        - name: HBase .NET SDK を使用する
+        - name: HBase .NET SDK の使用
           href: apache-hbase-rest-sdk.md
         - name: Java アプリケーションの開発
           href: apache-hbase-build-java-maven-linux.md
@@ -38,6 +38,9 @@
           maintainContext: true
         - name: 非対話型認証 .NET HDInsight アプリケーションを作成する
           href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
+          maintainContext: true
+        - name: HDInsight の Apache Phoenix
+          href: ../hdinsight-phoenix-in-hdinsight.md
           maintainContext: true
         - name: Phoenix および SQLLine を使用する
           href: apache-hbase-phoenix-squirrel-linux.md

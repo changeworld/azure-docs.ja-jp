@@ -11,11 +11,11 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a23835f341bf02f8e662782984d95bfe194030b
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 1a979bde37d247da5c630547924cadbd79c4a6a4
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="compare-azure-iot-options"></a>Azure IoT オプションの比較
 
@@ -27,13 +27,13 @@ ms.lasthandoff: 11/29/2017
 
 このアーキテクチャを実装するために、Azure IoT には複数のオプションが用意されており、さまざまな顧客要件のセットに対応しています。
 
-* [Azure IoT Suite](index.md) は、Azure の提供する "サービスとしてのプラットフォーム" 上に構築された、エンタープライズ グレードの[構成済みソリューション](iot-suite-what-are-preconfigured-solutions.md) コレクションであり、これを使用するとカスタム IoT ソリューションの開発を加速できます。
+* [Azure IoT Suite](index.md) は、Azure の提供するサービスとしてのプラットフォーム (PaaS) 上に構築された、エンタープライズ グレードの[構成済みソリューション](iot-suite-what-are-preconfigured-solutions.md)のコレクションであり、これを使用するとカスタム IoT ソリューションの開発を加速できます。
 
-* [Microsoft IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) は、モデル ベースのアプローチを使用する SaaS ソリューションです。これを使用すると、クラウド ソリューション開発に関する専門知識がなくても、エンタープライズ グレードの IoT ソリューションを構築できます。
+* [Microsoft IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) は、モデル ベースのアプローチを使用するサービスとしてのソフトウェア (SaaS) ソリューションです。これを使用すると、クラウド ソリューション開発に関する専門知識がなくても、エンタープライズ グレードの IoT ソリューションを構築できます。
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 
-Azure IoT Hub は、Azure の提供する中核的な "サービスとしてのプラットフォーム" であり、Microsoft IoT Central と Azure IoT Suite の両方によって使用されます。 IoT Hub によって、何百万もの IoT デバイスとクラウド ソリューションの間で、安全かつ信頼性の高い双方向通信が実現します。 IoT Hub は、以下の IoT 実装の課題に対応するうえで役立ちます。
+Azure IoT Hub は、Microsoft IoT Central と Azure IoT Suite の両方によって使用されるコア Azure PaaS です。 IoT Hub によって、何百万もの IoT デバイスとクラウド ソリューションの間で、安全かつ信頼性の高い双方向通信が実現します。 IoT Hub は、以下の IoT 実装の課題に対応するうえで役立ちます。
 
 * 大量のデバイスの接続と管理。
 * 大量のテレメトリ インジェスト。
@@ -59,7 +59,7 @@ IoT ソリューションを計画するうえで、Azure IoT 製品の選択は
 * 構築するソリューションの種類。
 * ソリューションを構築し長期にわたって保守管理するための組織のスキル セット。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 選択した製品とアプローチに基づいて、以下の手順を推奨します。
 

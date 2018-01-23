@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: jirwin
-ms.openlocfilehash: 7f07734433694999d38429ca264c58c5f3c619e1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 1b1770e25b4b423466120cb74c08edacf2de3977
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-storage-account-options"></a>Azure Storage アカウントの種類
 
@@ -31,7 +31,7 @@ Azure Storage は、3 種類のアカウントから選択できるようにな�
 * **GPv1 (General Purpose v1)** アカウントには、すべての Azure Storage サービスが備わっていますが、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 たとえば GPv1 では、クール ストレージとアーカイブ ストレージがサポートされません。  このタイプのアカウントは、トランザクションの料金が比較的低いため、変更頻度が高いワークロードや読み取り速度が速いワークロードでメリットが得られることがあります。
 
 ### <a name="changing-account-kind"></a>アカウントの種類の変更
-GPv1 アカウントまたは Blob Storage アカウントは、ポータル、CLI、PowerShell からいつでも GPv2 アカウントにアップグレードすることができます。 この変更は元に戻せません。また、その他の変更は許可されません。
+ユーザーは、いつでもポータル、CLI、または PowerShell を通じて、GPv1 アカウントを GPv2 アカウントにアップグレードすることができます。 この変更は元に戻せません。また、その他の変更は許可されません。 Blob Storage アカウントを GPv2 にアップグレードする機能は、近日中に利用できるようになる予定です。
 
 ## <a name="general-purpose-v2"></a>General Purpose v2
 **GPv2 (General Purpose v2)** は、BLOB、ファイル、キュー、テーブルをはじめとする全ストレージ サービスに関して、すべての機能をサポートするストレージ アカウントです。 ブロック BLOB では、アクセス パターンに基づいて、アカウント レベルでホット ストレージ層とクール ストレージ層を選択でき、BLOB レベルでホット層、クール層、およびアーカイブ層を選択することができます。 頻繁にアクセスするデータ、アクセス頻度の低いデータ、ほとんどアクセスしないデータのそれぞれを、ホット、クール、アーカイブの各ストレージ層に格納してコストを最適化します。 GPv1 アカウントは、ポータル、CLI、PowerShell のいずれかから、GPv2 アカウントにアップグレードすることができます。 GPv2 アカウントは、Blob Storage と GPv1 アカウントでサポートされるすべての API と機能に対応し、それらのタイプのアカウントで利用できる優れた持続性、可用性、スケーラビリティ、パフォーマンスの機能がすべて実現されます。
@@ -96,7 +96,7 @@ Blob Storage アカウントは、**アクセス層**属性をアカウント �
 
 ### <a name="create-a-gpv2-storage-account-using-the-azure-portal"></a>Azure Portal を使用して GPv2 ストレージ アカウントを作成する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. ハブ メニューで、**[新規]** > **[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。
 
@@ -130,9 +130,9 @@ Blob Storage アカウントは、**アクセス層**属性をアカウント �
 
 11. **[作成]** をクリックしてストレージ アカウントを作成します。
 
-### <a name="convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Azure Portal を使用して GPv1 または Blob Storage アカウントを GPv2 ストレージ アカウントに変換する
+### <a name="convert-a-gpv1-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Azure Portal を使用して GPv1 アカウントを GPv2 ストレージ アカウントに変換する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. ストレージ アカウントに移動するには、[すべてのリソース] を選択し、ストレージ アカウントを選択します。
 
@@ -146,7 +146,7 @@ Blob Storage アカウントは、**アクセス層**属性をアカウント �
 
 ### <a name="change-the-storage-tier-of-a-gpv2-storage-account-using-the-azure-portal"></a>Azure Portal を使用して GPv2 ストレージ アカウントのストレージ層を変更する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. ストレージ アカウントに移動するには、[すべてのリソース] を選択し、ストレージ アカウントを選択します。
 
@@ -158,7 +158,7 @@ Blob Storage アカウントは、**アクセス層**属性をアカウント �
 
 ### <a name="change-the-storage-tier-of-a-blob-using-the-azure-portal"></a>Azure Portal を使用した BLOB のストレージ層の変更
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. ストレージ アカウントの BLOB に移動するには、[すべてのリソース]、ストレージ アカウント、コンテナー、BLOB を順に選択します。
 
@@ -212,7 +212,7 @@ Blob Storage サービスのデータ アクセス パターンを監視する�
 
 ### <a name="utilizing-usage-metrics-to-estimate-costs"></a>コストを見積もるための使用状況メトリックの利用
 
-### <a name="storage-costs"></a>ストレージ コスト
+### <a name="storage-costs"></a>ストレージのコスト
 
 行キー *"data"* がある容量メトリック テーブル *$MetricsCapacityBlob* の最新のエントリは、ユーザー データによって使用されたストレージ容量を示します。 行キー *"analytics"* がある容量メトリック テーブル *$MetricsCapacityBlob* の最新のエントリは、分析ログによって使用されたストレージ容量を示します。
 
@@ -247,7 +247,7 @@ Blob Storage アカウントのデータ アクセス コストを見積もる�
 
 ## <a name="migrating-existing-data"></a>既存のデータの移行
 
-GPv1 または Blob Storage アカウントは、GPv2 に簡単にアップグレードできます。ダウンタイムや API の変更は不要で、データの引っ越し作業も必要ありません。 これは、Blob Storage アカウントにはない、GPv2 の大きな利点の 1 つです。
+GPv1 アカウントは、GPv2 に簡単にアップグレードできます。ダウンタイムや API の変更は不要で、データの移動作業も必要ありません。 これは、Blob Storage アカウントにはない、GPv2 の大きな利点の 1 つです。
 
 それでも Blob Storage アカウントに移行する必要がある場合は、以下の手順に従ってください。
 
@@ -280,15 +280,19 @@ Azure クライアント ライブラリのいずれかまたは Azure Storage �
 
 **既存のストレージ アカウントを引き続き使用できますか。**
 
-はい。既存のストレージ アカウントはまだ使用可能であり、料金や機能も変更されていません。  それらにはストレージ層を選択する機能がなく、今後も階層化機能は導入されません。
+はい。既存のストレージ アカウント (GPv1) はまだ使用可能であり、料金や機能も変更されていません。  GPv1 アカウントにはストレージ層を選択する機能がなく、今後も階層化機能は導入されません。
 
 **GPv2 ストレージ アカウントは、いつ、どのようなときに使用し始めればよいですか。**
 
 GPv2 ストレージ アカウントは、GB 単価の最安値を提供しつつ、業界的に競争力の高いトランザクション コストとデータ アクセス コストを実現することに特化されています。 今後、変更通知をはじめとする新たな機能は GPv2 ストレージ アカウントに基づいて導入されるため、BLOB の格納にも、GPv2 タイプのアカウントが推奨されます。 ただし、いつアップグレードするかは、ビジネス要件に応じてお客様が判断する必要があります。  たとえば、アップグレードよりもまず、トランザクション パターンを最適化するという選択肢も考えられます。
 
+GPv2 からのダウングレードはサポートされていないため、アカウントを GPv2 にアップグレードする前に、料金に関するすべての影響を考慮してください。
+
 **既存のストレージ アカウントを GPv2 ストレージ アカウントにアップグレードできますか。**
 
-はい。 GPv1 アカウントも Blob Storage アカウントもポータルから簡単に GPv2 にアップグレードできます。
+はい。 GPv1 アカウントは、ポータルで、または PowerShell か CLI を使用して、簡単に GPv2 にアップグレードすることができます。 Blob Storage アカウントは、PowerShell または CLI を使用して、GPv2 にアップグレードすることができます。 ポータルで Blob Storage アカウントを GPv2 にアップグレードする機能は、近日中に利用できるようになる予定です。
+
+GPv2 からのダウングレードはサポートされていないため、アカウントを GPv2 にアップグレードする前に、料金に関するすべての影響を考慮してください。
 
 **同じアカウントの両方のストレージ層にオブジェクトを格納することはできますか。**
 
@@ -317,11 +321,13 @@ GPv2 アカウントと Blob Storage アカウントのホット ストレージ
 
 GPv2 ストレージ アカウントは、GPv1 ストレージ アカウントおよび Blob Storage アカウントとの間で、100% の API 整合性を備えています。 アプリケーションでブロック BLOB または追加 BLOB が使用されており、[Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) の 2014-02-14 バージョン以降を使用している限り、アプリケーションは機能します。 プロトコルの古いバージョンを使用している場合は、新しいバージョンを使用して両方の種類のストレージ アカウントとシームレスに動作するように、アプリケーションを更新する必要があります。 一般に、どの種類のストレージ アカウントを使用するかにかかわらず、常に最新バージョンを使用することをお勧めしています。
 
+GPv2 の料金は、通常、トランザクションと帯域幅に対して GPv1 よりも高くなります。 そのため、アップグレードする前に、請求の合計額が増加しないようにトランザクション パターンを最適化しなければならない場合があります。
+
 **ユーザー エクスペリエンスに変更はありますか。**
 
 GPv2 ストレージ アカウントは GPv1 ストレージ アカウントとよく似ており、高い持続性、可用性、スケーラビリティ、パフォーマンス、セキュリティなどの Azure Storage のすべての主要機能をサポートしています。 GPv2 または Blob Storage にアップグレードしても、これまでに指摘してきた Blob Storage アカウントとそのストレージ層に固有の機能および制限以外は、まったく変わりません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ### <a name="evaluate-blob-storage-accounts"></a>Blob Storage アカウントを評価する
 
