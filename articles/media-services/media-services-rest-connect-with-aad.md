@@ -11,130 +11,181 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: e5d7a5ec1c28a552420aba5e2cd6c8c7bbf4213d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>REST で Azure AD 認証を使用して Azure Media Services API にアクセスする
 
-Azure Media Services チームは、Azure Media Services にアクセスするために Azure Active Directory (Azure AD) 認証をサポートすることを発表しています。 さらに、Media Services にアクセスするための Azure Access Control サービス認証を廃止する予定であることを公表しています。 すべての Azure サブスクリプションとすべての Media Services アカウントは Azure AD テナントに割り当てられるため、Azure AD 認証のサポートによって、多数のセキュリティ上のメリットがもたらされます。 この変更と移行の詳細については、次のブログの投稿と記事を参照してください (アプリで Media Services .NET SDK を使用する場合)。
+Azure Media Services で Azure AD Authentication を使用する場合は、次の 2 つの方法のいずれかで認証できます。
 
-- [Azure Media Services announces support for Azure AD and deprecation of Access Control authentication](https://azure.microsoft.com/blog/azure%20media%20service%20aad%20auth%20and%20acs%20deprecation) (Azure Media Services による Azure AD のサポートと Access Control 認証の廃止の発表)
-- [Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-use-aad-auth-to-access-ams-api.md)
-- [Microsoft .NET で Azure AD 認証を使用して Azure Media Services API にアクセスする](media-services-dotnet-get-started-with-aad.md)
-- [Azure ポータルで Azure AD 認証を開始する](media-services-portal-get-started-with-aad.md)
+- **ユーザー認証**: Azure Media Services リソースを操作するアプリを使用しているユーザーが認証を受けます。 ユーザーは最初にその操作アプリケーションから資格情報の入力を求められます。 たとえば、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリなどです。 
+- **サービス プリンシパルの認証**: サービスを認証します。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
 
-Media Services ソリューションの開発を次の制約の下で行わなければならない場合があります。
+    このチュートリアルでは、Azure AD サービス **プリンシパル認証**を使用して、REST で AMS API にアクセスする方法を説明します。 
 
-*   使用するプログラミング言語が Microsoft .NET または C# ではない、またはランタイム環境が Windows ではない。
-*   Azure AD Authentication Library などの Azure AD ライブラリをプログラミング言語で使用できない、またはランタイム環境で使用できない。
+    > [!NOTE]
+    > Azure Media Services に接続するほとんどのアプリケーションでは、**サービス プリンシパル**が推奨されるベスト プラクティスです。 
 
-アプリケーションの開発が、Access Control 認証と Azure Media Services へのアクセスの両方で REST API を使用して行われている場合があります。 このような場合は、Azure AD 認証と Azure Media Services へのアクセスで REST API のみを使用する方法が必要です。 Azure AD ライブラリまたは Media Services .NET SDK に依存しないようにする必要があります。 この記事では、このようなシナリオに適合するソリューションを説明し、サンプル コードを示します。 コードはすべて REST API 呼び出しであり、Azure AD または Azure Media Services ライブラリに依存していないため、他のプログラミング言語に簡単に変換できます。
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * Azure Portal から認証情報を取得する
+> * Postman を使用してアクセス トークンを取得する
+> * アクセス トークンを使用して **Assets** API をテストする
+
 
 > [!IMPORTANT]
 > 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 認証は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
 
+## <a name="prerequisites"></a>前提条件
 
-## <a name="design"></a>設計
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
+- [Azure Portal を使用して Azure Media Services アカウントを作成](media-services-portal-create-account.md)します。
+- [AAD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
+- [Postman](https://www.getpostman.com/) REST クライアントをインストールして、この記事に記載されている REST API を実行します。 
 
-この記事では、次の認証および承認の設計を使用しています。
+    このチュートリアルでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
 
-*  承認プロトコル: OAuth 2.0。 OAuth 2.0 は、認証と承認の両方をカバーする Web セキュリティ標準です。 Google、Microsoft、Facebook、および PayPal でサポートされています。 OAuth 2.0 は、2012 年 10 月に発行されています。 Microsoft は、OAuth 2.0 と OpenID Connect を完全サポートしています。 Azure Active Directory、Open Web Interface for .NET (OWIN) Katana、Azure AD ライブラリを含むさまざまなサービスとクライアント ライブラリで、これらの標準の両方がサポートされています。
-*  付与タイプ: クライアント資格情報。 クライアント資格情報は、OAuth 2.0 における 4 つの付与タイプの 1 つです。 Azure AD Microsoft Graph API アクセスでよく使用されています。
-*  認証モード: サービス プリンシパル。 もう 1 つの認証モードは、ユーザー (対話型) 認証です。
+## <a name="get-the-authentication-information-from-the-azure-portal"></a>Azure Portal から認証情報を取得する
 
-Media Services を使用するための Azure AD の認証および承認フローには、4 つのアプリケーションまたはサービスが関係しています。 これらのアプリケーション、サービス、およびフローを次の表に示します。
+### <a name="overview"></a>概要
 
-|アプリケーションの種類 |アプリケーション |フロー|
-|---|---|---|
-|クライアント | ユーザーのアプリまたはソリューション | Azure サブスクリプションと Media Services アカウントが存在する Azure AD テナントにこのアプリ (実際にはそのプロキシ) が登録されます。 登録されたアプリのサービス プリンシパルに、Media Services アカウントの Access Control (IAM) の所有者または共同作成者ロールが付与されます。 サービス プリンシパルは、アプリのクライアント ID とクライアント シークレットによって表されます。 |
-|ID プロバイダー (IDP) | IDP としての Azure AD | 登録されたアプリのサービス プリンシパル (クライアント ID とクライアント シークレット) が、IDP としての Azure AD によって認証されます。 この認証は、内部的かつ暗黙的に実行されます。 クライアント資格情報フローのように、ユーザーの代わりにクライアントが認証されます。 |
-|Secure Token Service (STS)/OAuth サーバー | STS としての Azure AD | IDP (OAuth 2.0 の用語では OAuth サーバー) によって認証された後、STS としての Azure AD/OAuth サーバーによって、中間層のリソース (ここでは Media Services REST API エンドポイント) にアクセスするためのアクセス トークンまたは JSON Web トークン (JWT) が発行されます。 |
-|リソース | Media Services REST API | STS としての Azure AD または OAuth サーバーが発行するアクセス トークンによって、すべての Media Services REST API 呼び出しが承認されます。 |
+Media Services API にアクセスするには、以下のデータ ポイントを収集する必要があります。
 
-サンプル コードを実行して JWT トークンまたはアクセス トークンをキャプチャした場合、JWT には次の属性があります。
+|設定|例|説明|
+|---|-------|-----|
+|Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュア トークン サービス (STS) エンドポイントとしての Azure AD は、https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
+|REST API エンドポイント|https://amshelloworld.restv2.westus.media.azure.net/api/|これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。|
+|クライアント ID (アプリケーション ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD アプリケーション (クライアント) ID。 アクセス トークンを取得するには、クライアント ID が必要です。 |
+|クライアント シークレット|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD アプリケーション キー (クライアント シークレット)。 アクセス トークンを取得するには、クライアント シークレットが必要です。|
 
-    aud: "https://rest.media.azure.net",
+### <a name="get-aad-auth-info-from-the-azure-portal"></a>Azure Portal から AAD 認証情報を取得する
 
-    iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+情報を取得するには、次の手順を実行します。
 
-    iat: 1497146280,
+1. [Azure Portal](http://portal.azure.com) にログインします。
+2. AMS インスタンスに移動します。
+3. **[API アクセス]** を選択します。
+4. **[サービス プリンシパルを使って Azure Media Services API に接続する]** をクリックします。
 
-    nbf: 1497146280,
-    exp: 1497150180,
+    ![API アクセス](./media/connect-with-rest/connect-with-rest01.png)
 
-    aio: "Y2ZgYDjuy7SptPzO/muf+uRu1B+ZDQA=",
+5. 既存の **Azure AD アプリケーション**を選択するか、新しいアプリケーションを作成します (後述します)。
 
-    appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6",
+    > [!NOTE]
+    > Azure Media REST 要求を成功させるには、呼び出すユーザーに、アクセスしたい Media Services アカウントの**共同作成者**ロールまたは**所有者**ロールが付与されている必要があります。 "リモート サーバーがエラーを返しました: (401) Unauthorized" という例外を受け取る場合は、「[アクセス制御](media-services-use-aad-auth-to-access-ams-api.md#access-control)」を参照してください。
 
-    appidacr: "1",
+    新しい AD アプリケーションを作成する場合は、次の手順を実行します。
+    
+    1. **[新規作成]** をクリックします。
+    2. 名前を入力します。
+    3. **[新規作成]** をもう一度クリックします。
+    4. **[保存]**をクリックします。
 
-    idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+    ![API アクセス](./media/connect-with-rest/new-app.png)
 
-    oid: "a938cfcc-d3de-479c-b0dd-d4ffe6f50f7c",
+    ページに新しいアプリケーションが表示されます。
 
-    sub: "a938cfcc-d3de-479c-b0dd-d4ffe6f50f7c",
+6. **クライアント ID** (アプリケーション ID) を取得します。
+    
+    1. アプリケーションを選択します。
+    2. 右側のウィンドウから**クライアント ID** を取得します。 
 
-    tid: "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    ![API アクセス](./media/connect-with-rest/existing-client-id.png)が必要です。
 
-JWT の属性と、前の表に示した 4 つのアプリケーションまたはサービスとのマッピングを次に示します。
+7.  アプリケーションの**キー** (クライアント シークレット) を取得します。 
 
-|アプリケーションの種類 |アプリケーション |JWT 属性 |
-|---|---|---|
-|クライアント |ユーザーのアプリまたはソリューション |appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6". 次のセクションで Azure AD に登録するアプリケーションのクライアント ID。 |
-|ID プロバイダー (IDP) | IDP としての Azure AD |idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/"  GUID は Microsoft テナント (microsoft.onmicrosoft.com) の ID です。 各テナントには、独自の一意の ID があります。 |
-|Secure Token Service (STS)/OAuth サーバー |STS としての Azure AD | iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/". GUID は、Microsoft テナント の ID です (microsoft.onmicrosoft.com)。 |
-|リソース | Media Services REST API |aud: "https://rest.media.azure.net". アクセス トークンの受信者また対象者。 |
+    1. **[アプリケーションの管理]** ボタンをクリックします (クライアント ID の情報は **[アプリケーション ID]** の下に表示されます)。 
+    2. **[キー]** をクリックします。
+    
+        ![API アクセス](./media/connect-with-rest/manage-app.png)
+    3. **[説明]** と **[有効期限]** に入力し、**[保存]** をクリックしてアプリケーション キー (クライアント シークレット) を生成します。
+    
+        **[保存]** ボタンをクリックすると、キー値が表示されます。 ブレードから離れる前に、キー値をコピーします。
 
-## <a name="steps-for-setup"></a>セットアップ手順
+    ![API アクセス](./media/connect-with-rest/connect-with-rest03.png)
 
-Azure Active Directory (AAD) アプリケーションの登録と設定、および Azure Media Services REST API エンドポイントを呼び出すためのキーの取得については、「[Azure ポータルで Azure AD 認証を開始する](media-services-portal-get-started-with-aad.md)」の記事をご覧ください。
+AD 接続パラメーターの値を web.config ファイルまたは app.config ファイルに追加して、後でコードに使用することができます。
 
+> [!IMPORTANT]
+> **クライアント キー**は重要なシークレットであり、キー コンテナーで適切に保護するか、実稼働環境で暗号化する必要があります。
 
-## <a name="info-to-collect"></a>収集する情報
+## <a name="get-the-access-token-using-postman"></a>Postman を使用してアクセス トークンを取得する
 
-REST でのコーディングを準備するために、コードに含める次のデータ ポイントを収集します。
+このセクションでは、**Postman** を使用して JWT ベアラー トークン (アクセス トークン) を返す REST API を実行する方法を示します。 Media Services REST API を呼び出すには、呼び出しに "Authorization" ヘッダーを追加し、各呼び出しに "Bearer *your_access_token*" という値を追加する必要があります (このチュートリアルの次のセクションを参照してください)。 
 
-*   STS としての Azure AD エンドポイント: https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token。 このエンドポイントから JWT アクセス トークンが要求されます。 IDP として機能することに加えて、Azure AD は STS としても機能します。 リソースにアクセスするための JWT (アクセス トークン) は Azure AD が発行します。 JWT トークンにはさまざまな要求が含まれます。
-*   リソースまたは対象としての Azure Media Services REST API: https://rest.media.azure.net。
-*   クライアント ID: [セットアップ手順](#steps-for-setup)の手順 2 を参照してください。
-*   クライアント シークレット: [セットアップ手順](#steps-for-setup)の手順 2 を参照してください。
-*   次の形式の Media Services アカウントの REST API エンドポイント: 
+1. **Postman** を開きます。
+2. **[POST]**を選択します。
+3. 次のようにテナント名の末尾に **.onmicrosoft.com** を指定し、URL の末尾に **oauth2/token** を指定して、テナント名を含む URL を入力します。 
 
-    https://[media_service_account_name].restv2.[data_center].media.azure.net/API 
+    https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
 
-    これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。 例: https://willzhanmswjapan.restv2.japanwest.media.azure.net/API。
+4. **[Headers]\(ヘッダー\)** タブを選択します。
+5. "Key/Value"(キー/値) データ グリッドを使用して **[Headers]\(ヘッダー\)** 情報を入力します。 
 
-これら 5 つのパラメーターを web.config または app.config ファイルに入力して、コードで使用できます。
+    ![データ グリッド](./media/connect-with-rest/headers-data-grid.png)
 
-## <a name="sample-code"></a>サンプル コード
+    または、Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックし、次のコードを貼り付けます。
 
-サンプル コードは、[Azure AD Authentication for Azure Media Services Access: Both via REST API](https://github.com/willzhan/WAMSRESTSoln) (Azure Media Services にアクセスするための Azure AD Authentication: 両方で REST API を使用) で見つけることができます。
+        Content-Type:application/x-www-form-urlencoded
+        Keep-Alive:true
 
-サンプル コードには、次の 2 つの部分があります。
+6. **[Body]\(本文\)** タブをクリックします。
+7. "Key/Value"(キー/値) データ グリッドを使用して本文情報を入力します (クライアント ID とシークレット値を置き換えます)。 
 
-*   DLL ライブラリ プロジェクト。Azure AD の認証および承認を行うためのすべての REST API コードが含まれます。 Media Services REST API エンドポイントへの REST API 呼び出しをアクセス トークンを使用して行うためのメソッドも含まれています。
-*   コンソール テスト クライアント。Azure AD 認証を開始し、別の Media Services REST API を呼び出します。
+    ![データ グリッド](./media/connect-with-rest/data-grid.png)
 
-サンプル プロジェクトには、次の 3 つの機能があります。
+    または、Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックし、次の本文を貼り付けます (クライアント ID とシークレット値を置き換えます)。
 
-*   REST API のみを使用する、クライアント資格情報の付与による azure AD 認証。
-*   REST API のみを使用する Azure Media Services へのアクセス。
-*   REST API のみを使用する Azure Storage へのアクセス (REST API による Media Services アカウントの作成で使用)。
+        grant_type:client_credentials
+        client_id:{Your Client ID that you got from your AAD Application}
+        client_secret:{Your client secret that you got from your AAD Application's Keys}
+        resource:https://rest.media.azure.net
 
+8. **[送信]** をクリックします。
 
-## <a name="where-is-the-refresh-token"></a>更新トークンの行方
+    ![トークンを取得する](./media/connect-with-rest/connect-with-rest04.png)
 
-一部の読者は、更新トークンはどこに行ったのかと疑問に思うかもしれません。 ここで更新トークンが使用されないのなぜでしょうか。
+返される応答には、すべての AMS API にアクセスするために必要な**アクセス トークン**が含まれています。
 
-更新トークンの目的は、アクセス トークンを更新することではありません。 以前のトークンの有効期限が切れた場合に、エンドユーザー認証をバイパスして、引き続き有効なアクセス トークンを取得するように設計されています。 更新トークンの名前は、「ユーザーの再度のサインインをバイパスするトークン」のほうが意味として適しています。
+## <a name="test-the-assets-api-using-the-access-token"></a>アクセス トークンを使用して **Assets** API をテストする
 
-OAuth 2.0 承認付与フローを使用する場合 (ユーザー名とパスワードがユーザーの代理として機能します)、更新トークンによって、ユーザーの介入を要求せずに、更新されたアクセス トークンを取得できます。 ただし、この記事で説明されている OAuth 2.0 クライアント資格情報付与フローでは、クライアント自身が代理として機能します。 ユーザーの介入はまったく必要がなく、承認サーバーは更新トークンを提供する必要はありません。 **GetUrlEncodedJWT** メソッドをデバッグすれば、トークン エンドポイントからの応答にアクセス トークンはあるが、更新トークンはないことがわかります。
+このセクションでは、**Postman** を使用して **Assets** API にアクセスする方法について説明します。
 
-## <a name="next-steps"></a>次のステップ
+1. **Postman** を開きます。
+2. **[GET]**を選択します。
+3. REST API エンドポイントを貼り付けます (例: https://amshelloworld.restv2.westus.media.azure.net/api/Assets)。
+4. **[Authorization]\(承認\)** タブを選択します。 
+5. **[Bearer Token]\(ベアラー トークン\)** を選択します。
+6. 前のセクションで作成したトークンを貼り付けます。
 
-[アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)を開始します。
+    ![トークンを取得する](./media/connect-with-rest/connect-with-rest05.png)
+
+    > [!NOTE]
+    > Postman UX は Mac と PC で異なる可能性があります。 Mac バージョンの **[Authentication]\(認証\)** セクション ドロップダウンに [Bearer Token]\(ベアラー トークン\) オプションがない場合は、Mac クライアントで **Authorization** ヘッダーを手動で追加する必要があります。
+
+   ![Auth ヘッダー](./media/connect-with-rest/auth-header.png)
+
+7. **[Headers]\(ヘッダー\)** を選択します。
+5. Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックします。
+6. 次のヘッダーを貼り付けます。
+
+        x-ms-version:2.15
+        Accept:application/json
+        Content-Type:application/json
+        DataServiceVersion:3.0
+        MaxDataServiceVersion:3.0
+
+7. **[送信]** をクリックします。
+
+返される応答には、アカウント内の資産が含まれています。
+
+## <a name="next-steps"></a>次の手順
+
+* [Azure AD Authentication for Azure Media Services Access: Both via REST API](https://github.com/willzhan/WAMSRESTSoln) (Azure Media Services にアクセスするための Azure AD Authentication: 両方で REST API を使用) のサンプル コードを試してください。
+* [.NET を使用したファイルのアップロード](media-services-dotnet-upload-files.md)

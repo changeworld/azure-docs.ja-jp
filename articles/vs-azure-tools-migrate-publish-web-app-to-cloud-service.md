@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
 ms.author: kraigb
-ms.openlocfilehash: d5d41ab47c17a024900efc88ba0a006da63ab246
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1ced364bed821a9391f8ffd049f61ac236d98309
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行
 
@@ -29,7 +29,7 @@ Azure のホスティング サービスとスケーラビリティを利用す�
 
 ## <a name="migrate-a-project-to-cloud-services"></a>クラウド サービスにプロジェクトを移行する
 
-1. Web アプリケーション プロジェクトを右クリックし、**[変換] > [Microsoft Azure クラウド サービス プロジェクトに変換]** の順に選択します。 (ソリューションに既に Web ロール プロジェクトがある場合は、このコマンドは表示されないことがあります。)
+1. Web アプリケーション プロジェクトを右クリックし、**[変換] > [Microsoft Azure クラウド サービス プロジェクトに変換]** の順に選択します。 (ソリューションに既に Web ロール プロジェクトがある場合は、このコマンドは表示されないことがあるために注意してください。)
 1. Visual Studio は、必要な Web ロールが含まれるソリューションにクラウド サービス プロジェクトを作成します。 お使いのアプリケーション プロジェクトと同じ名前にサフィックス `.Azure` を付加したものが、このプロジェクトの名前になります。
 1. Visual Studio は MVC 2、MVC 3、MVC 4、Silverlight の各ビジネス アプリケーションに必要なアセンブリの **[ローカルにコピー]** プロパティも true に設定します。 このプロパティにより、デプロイに使用されるサービス パッケージにこれらのアセンブリが追加されます。
 
@@ -124,7 +124,7 @@ Azure のホスティング サービスとスケーラビリティを利用す�
 | WCF | WCF ワークフロー サービス アプリケーション |
 | ワークフロー | WCF ワークフロー サービス アプリケーション |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)
 - [名前付き認証資格情報の設定](vs-azure-tools-setting-up-named-authentication-credentials.md)

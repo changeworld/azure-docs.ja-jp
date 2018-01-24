@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: alkarche
-ms.openlocfilehash: 24bc439b6167d335a0862aa93debb9efe5aeae48
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: dd022b189783f2d8c6209a6cd656704ff144bfd6
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -50,17 +50,17 @@ ms.lasthandoff: 11/15/2017
 
 既定では、バックエンドへの要求は、元の要求のコピーとして初期化されます。 バックエンドの URL を設定することに加え、HTTP メソッドやヘッダー、クエリ文字列のパラメーターに変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することが可能です。
 
-現時点では、ポータルからバックエンドへの要求に変更を加えることはできません。 この機能を proxies.json から利用する方法については、「[requestOverrides オブジェクトの定義]」をご覧ください。
+現時点では、ポータルからバックエンドへの要求に変更を加えることはできません。 この機能を *proxies.json* から利用する方法については、「[requestOverrides オブジェクトの定義]」をご覧ください。
 
 ### <a name="modify-response"></a>応答を変更する
 
 既定では、クライアントへの応答は、バックエンドからの応答のコピーとして初期化されます。 応答の状態コード、理由の文字列、ヘッダー、本文には、変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]、[バックエンドからの応答のパラメーター]を参照することが可能です。
 
-現時点では、ポータルから応答に変更を加えることはできません。 この機能を proxies.json から利用する方法については、「[responseOverrides オブジェクトの定義]」をご覧ください。
+現時点では、ポータルから応答に変更を加えることはできません。 この機能を *proxies.json* から利用する方法については、「[responseOverrides オブジェクトの定義]」をご覧ください。
 
 ## <a name="using-variables"></a>変数を使用する
 
-プロキシの構成は必ずしも静的である必要はありません。 条件に応じて元の要求やバックエンドからの応答、アプリケーション設定から得られる変数を使うことができます。
+プロキシの構成は必ずしも静的である必要はありません。 条件に応じて元のクライアント要求やバックエンドからの応答、アプリケーション設定から得られる変数を使うことができます。
 
 ### <a name="request-parameters"></a>要求のパラメーターを参照する
 
@@ -84,7 +84,7 @@ ms.lasthandoff: 11/15/2017
 
 * **{backend.response.statusCode}**: バックエンドからの応答で返される HTTP 状態コード。
 * **{backend.response.statusReason}**: バックエンドからの応答で返される HTTP 理由文字列。
-* **{backend.response.headers.\<HeaderName\>}**: バックエンドの応答から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが要求に含まれていない場合、この値は空の文字列になります。
+* **{backend.response.headers.\<HeaderName\>}**: バックエンドの応答から読み取り可能なヘッダー。 *\<HeaderName\>* は、読み取るヘッダーの名前に置き換えます。 該当するヘッダーが応答に含まれていない場合、この値は空の文字列になります。
 
 ### <a name="use-appsettings"></a>アプリケーション設定を参照する
 
@@ -97,12 +97,12 @@ ms.lasthandoff: 11/15/2017
 
 ## <a name="advanced-configuration"></a>詳細な構成
 
-構成するプロキシは、関数アプリ ディレクトリのルートにある proxies.json ファイルに格納されます。 このファイルを手動で編集し、Functions でサポートされているいずれかの[デプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)を使用するときにアプリの一部としてデプロイできます。 ファイルが処理されるようにするには、この機能を[有効](#enable)にしておく必要があります。 
+構成するプロキシは、関数アプリ ディレクトリのルートにある *proxies.json* ファイルに格納されます。 このファイルを手動で編集し、Functions でサポートされているいずれかの[デプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)を使用するときにアプリの一部としてデプロイできます。 ファイルが処理されるようにするには、Azure Functions プロキシ機能を[有効](#enable)にしておく必要があります。 
 
 > [!TIP] 
-> いずれのデプロイ方法もまだ設定していない場合は、ポータルから proxies.json ファイルを編集することもできます。 目的の関数アプリに移動して **[プラットフォーム機能]** を選択し、**[App Service エディター]** を選択します。 これにより、関数アプリのファイル構造全体が表示され、変更を加えることができます。
+> いずれのデプロイ方法もまだ設定していない場合は、ポータルで *proxies.json* ファイルを編集することもできます。 目的の関数アプリに移動して **[プラットフォーム機能]** を選択し、**[App Service エディター]** を選択します。 これにより、関数アプリのファイル構造全体が表示され、変更を加えることができます。
 
-Proxies.json は、名前付きプロキシとその定義から成るプロキシ オブジェクトによって定義されます。 エディターがサポートしていれば、必要に応じて [JSON スキーマ](http://json.schemastore.org/proxies)を参照してコード補完を行うことができます。 サンプル ファイルは、次のようになります。
+*Proxies.json* は、名前付きプロキシとその定義から構成されるプロキシ オブジェクトによって定義されます。 エディターがサポートしていれば、必要に応じて [JSON スキーマ](http://json.schemastore.org/proxies)を参照してコード補完を行うことができます。 サンプル ファイルは、次のようになります。
 
 ```json
 {
@@ -129,15 +129,15 @@ Proxies.json は、名前付きプロキシとその定義から成るプロキ�
 * **responseOverrides**: クライアントへの応答に対する変換を定義するオブジェクト。 「[responseOverrides オブジェクトの定義]」をご覧ください。
 
 > [!NOTE] 
-> ルート プロパティ Azure Functions Proxies では、Functions ホスト構成の routePrefix プロパティは考慮されません。 /api のようなプレフィックスを含める場合は、ルート プロパティに含める必要があります。
+> Azure Functions プロキシの *route* プロパティ では、Function App ホスト構成の *routePrefix* プロパティは考慮されません。 `/api` のようなプレフィックスを含める場合は、*route* プロパティに含める必要があります。
 
 ### <a name="requestOverrides"></a>requestOverrides オブジェクトの定義
 
 バックエンド リソースが呼び出されたときに要求に対して行う変更は、requestOverrides オブジェクトで定義します。 このオブジェクトは、次のプロパティによって定義されます。
 
 * **backend.request.method**: バックエンドを呼び出す際に使用される HTTP メソッドです。
-* **backend.request.querystring.\<ParameterName\>**: バックエンドの呼び出し時に設定できるクエリ文字列パラメーター。 *\<ParameterName\>* は、設定するパラメーターの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドへの要求に反映されません。
-* **backend.request.headers.\<HeaderName\>**: バックエンドの呼び出し時に設定可能なヘッダー。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーはバックエンドへの要求に反映されません。
+* **backend.request.querystring.\<ParameterName\>**: バックエンドの呼び出し時に設定できるクエリ文字列パラメーターです。 *\<ParameterName\>* は、設定するパラメーターの名前に置き換えます。 空の文字列を指定した場合、このパラメーターはバックエンドへの要求に反映されません。
+* **backend.request.headers.\<HeaderName\>**: バックエンドの呼び出し時に設定できるヘッダーです。 *\<HeaderName\>* は、設定するヘッダーの名前に置き換えます。 空の文字列を指定した場合、このヘッダーはバックエンドへの要求に反映されません。
 
 アプリケーション設定や元のクライアント要求のパラメーターを値から参照することができます。
 
@@ -193,7 +193,7 @@ Proxies.json は、名前付きプロキシとその定義から成るプロキ�
 }
 ```
 > [!NOTE] 
-> この例では本文を直接設定しているため、`backendUri` プロパティは必要ありません。 この例では、Azure Functions プロキシを使って API のモッキングを行う方法を説明しています。
+> この例では、応答の本文が直接設定されているため、`backendUri` プロパティは必要ありません。 この例では、Azure Functions プロキシを使って API のモッキングを行う方法を説明しています。
 
 ## <a name="enable"></a>Azure Functions プロキシを有効にする
 

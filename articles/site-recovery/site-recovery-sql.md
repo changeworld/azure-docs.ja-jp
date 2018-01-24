@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: pratshar
-ms.openlocfilehash: 04fb9ebc8a235dd15817fbb5efd08922ae287aa1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server ディザスター リカバリーおよび Azure Site Recovery を使用した SQL Server の保護
 
@@ -47,10 +47,10 @@ Site Recovery は、次の表のように SQL Server を保護できます。
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | はい | はい
-**VMware** | はい | はい
-**物理サーバー** | はい | あり
-**Azure**|該当なし| あり
+**Hyper-V** | [はい] | [はい]
+**VMware** | [はい] | [はい]
+**物理サーバー** | [はい] | [はい]
+**Azure**|該当なし| [はい]
 
 ### <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 これらの SQL Server バージョンは、サポートされるシナリオに対応しています。
@@ -66,7 +66,7 @@ Site Recovery は、次の表に要約したネイティブの SQL Server の BC
 
 **機能** | **詳細** | **SQL Server** |
 --- | --- | ---
-**Always On 可用性グループ** | SQL Server の複数のスタンドアロン インスタンスであり、複数のノードを持つフェールオーバー クラスターでそれぞれが実行されます。<br/><br/>データベースは、SQL Server インスタンス上でコピー (ミラー化) が可能なフェールオーバー グループにグループ化できるため、共有記憶域は必要ありません<br/><br/>プライマリ サイトと 1 つまたは複数のセカンダリ サイトの間でディザスター リカバリーを実現します。 2 つのノードをシェアード ナッシング クラスターに設定できます。このクラスターでは、同期レプリケーションと自動フェールオーバーを設定した可用性グループに SQL Server データベースを構成しておきます。 | SQL Server 2014 および 2012 Enterprise エディション
+**Always On 可用性グループ** | SQL Server の複数のスタンドアロン インスタンスであり、複数のノードを持つフェールオーバー クラスターでそれぞれが実行されます。<br/><br/>データベースは、SQL Server インスタンス上でコピー (ミラー化) が可能なフェールオーバー グループにグループ化できるため、共有記憶域は必要ありません<br/><br/>プライマリ サイトと 1 つまたは複数のセカンダリ サイトの間でディザスター リカバリーを実現します。 2 つのノードをシェアード ナッシング クラスターに設定できます。このクラスターでは、同期レプリケーションと自動フェールオーバーを設定した可用性グループに SQL Server データベースを構成しておきます。 | SQL Server 2016、SQL Server 2014 および SQL Server 2012 Enterprise Edition
 **フェールオーバー クラスタリング (Always On FCI)** | SQL Server は、Windows フェールオーバー クラスタリングを利用して、オンプレミスの SQL Server ワークロードの高可用性を実現しています。<br/><br/>共有ディスクを備えた、SQL Server のインスタンスを実行しているノードは、フェールオーバー クラスター内に構成されます。 インスタンスがダウンした場合、クラスターは別のクラスターにフェールオーバーします。<br/><br/>クラスターは、共有ストレージのエラーまたは障害からは保護しません。 共有ディスクは、iSCSI、ファイバー チャネル、または共有 VHDX を使用して実装できます。 | SQL Server Enterprise エディション<br/><br/>SQL Server Standard エディション (2 つのノードのみに制限)
 **データベース ミラーリング (高い安全性モード)** | 1 つのセカンダリ コピーで 1 つのデータベースを保護します。 高い安全性 (同期) と高パフォーマンス (非同期) の両方のレプリケーション モードで使用できます。 フェールオーバー クラスターは必要はありません。 | SQL Server 2008 R2<br/><br/>SQL Server Enterprise のすべてのエディション
 **スタンドアロンの SQL Server** | SQL Server とデータベースは、単一のサーバー (物理または仮想) でホストされます。 サーバーが仮想である場合、ホスト クラスタリングが高可用性のために使用されます。 ゲストレベルの高可用性はありません。 | Enterprise または Standard エディション
@@ -79,13 +79,13 @@ Site Recovery は、次の表に要約したネイティブの SQL Server の BC
 | --- | --- | --- | --- | --- |
 | SQL Server 2014 または 2012 |Enterprise |フェールオーバー クラスター インスタンス |Always On 可用性グループ |Always On 可用性グループ |
 || Enterprise |高可用性のための Always On 可用性グループ |Always On 可用性グループ |Always On 可用性グループ | |
-|| Standard |フェールオーバー クラスター インスタンス (FCI) |ローカルのミラーを使用した Site Recovery レプリケーション |ローカルのミラーを使用した Site Recovery レプリケーション | |
+|| 標準 |フェールオーバー クラスター インスタンス (FCI) |ローカルのミラーを使用した Site Recovery レプリケーション |ローカルのミラーを使用した Site Recovery レプリケーション | |
 || Enterprise または Standard |スタンドアロン |Site Recovery レプリケーション |Site Recovery レプリケーション | |
 | SQL Server 2008 R2 または 2008 |Enterprise または Standard |フェールオーバー クラスター インスタンス (FCI) |ローカルのミラーを使用した Site Recovery レプリケーション |ローカルのミラーを使用した Site Recovery レプリケーション |
 || Enterprise または Standard |スタンドアロン |Site Recovery レプリケーション |Site Recovery レプリケーション | |
 | SQL Server (全バージョン) |Enterprise または Standard |フェールオーバー クラスター インスタンス - DTC アプリケーション |Site Recovery レプリケーション |サポートされていません |
 
-## <a name="deployment-prerequisites"></a>デプロイメントの前提条件
+## <a name="deployment-prerequisites"></a>デプロイの前提条件
 
 * サポートされている SQL Server のバージョンを実行しているオンプレミスの SQL Server デプロイメント。 通常、SQL Server には Active Directory も必要です。
 * デプロイするシナリオの要件。 [Azure](site-recovery-support-matrix-to-azure.md) や [オンプレミス](site-recovery-support-matrix.md)へのレプリケーションのサポート要件と、[デプロイメントの前提条件](site-recovery-prereq.md)をよく理解します。
@@ -118,7 +118,7 @@ SQL Server を正常に実行するために、セカンダリ復旧サイトに
 
 SQL Always On は、テスト フェールオーバーをネイティブでサポートしていません。 そこで、次の方法をお勧めします。
 
-1. Azure で可用性グループ レプリカをホストする仮想マシンに [Azure Backup](../backup/backup-azure-vms.md) をセットアップします。
+1. Azure で可用性グループ レプリカをホストする仮想マシンに [Azure Backup](../backup/backup-azure-arm-vms.md) をセットアップします。
 
 1. 復旧計画のテスト フェールオーバーをトリガーする前に、前の手順で作成したバックアップから仮想マシンを復元します。
 
@@ -201,5 +201,5 @@ Site Recovery は、Azure にレプリケートするときに、ゲスト ク�
 
 SQL Server Standard のクラスターの場合、計画されていないフェールオーバー後のフェールバックでは、ミラーを再確立して、SQL Server のバックアップと復元 (ミラー インスタンスから元のクラスターへ) が必要になります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Site Recovery のアーキテクチャについて[こちら](site-recovery-components.md)をご覧ください。

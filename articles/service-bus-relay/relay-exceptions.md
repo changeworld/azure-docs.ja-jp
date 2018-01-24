@@ -1,6 +1,6 @@
 ---
 title: "Azure Relay の例外とその解決方法 | Microsoft Docs"
-description: "Azure Relay の例外と、それを解決するための推奨されるアクションの一覧を確認できます。"
+description: "Azure Relay の例外と、それを解決するための推奨されるアクションの一覧。"
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 83ff97b59e428e7b617a7f5d1011ca5ddf3060b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1dbe73dac0d09db96ab902909125869959963e6f
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-relay-exceptions"></a>Azure Relay の例外
 
@@ -89,7 +89,7 @@ The time allotted to this operation may have been a portion of a longer timeout.
 
     場合によっては、Relay サービスで要求の処理が遅れることがあります。 これは、トラフィックの多い時間帯などに発生することがあります。 これが発生した場合は、遅延の後、操作が成功するまで操作を再試行できます。 複数回試行しても同じ操作が失敗する場合は、[Azure のサービス状態のサイト](https://azure.microsoft.com/status/)を確認し、既知のサービス停止がないかどうかを確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Relay に関する FAQ](relay-faq.md)
 * [Relay 名前空間の作成](relay-create-namespace-portal.md)
 * [Azure Relay と .NET の使用](relay-hybrid-connections-dotnet-get-started.md)

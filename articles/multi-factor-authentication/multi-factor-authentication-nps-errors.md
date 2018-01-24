@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 53c9bde37215e4b7e315b6bc28f0e638816a48f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7960a398ac25ad0192300632dd6d5add94fd4a7c
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
@@ -96,7 +96,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | **VersionNotSupported** |  |
 | **MFAPinNotSetup** |  |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ### <a name="troubleshoot-user-accounts"></a>ユーザー アカウントをトラブルシューティングする
 
@@ -106,9 +106,10 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 さらにサポートが必要な場合は、[Azure Multi-Factor Authentication Server サポート](https://support.microsoft.com/oas/default.aspx?prid=14947)を通して、サポートのプロフェッショナルにお問い合わせください。 お問い合わせの際は、問題に関する情報をできるだけお知らせいただくと役に立ちます。 エラーが表示されたページ、具体的なエラー コード、具体的なセッション ID、エラーが表示されたユーザーの ID、デバッグ ログなどの情報をご提供ください。
 
-サポート診断用のデバッグ ログを収集するには、次の手順に従います。 
+サポート診断用のデバッグ ログを収集するには、NPS サーバー上で次の手順に従います。
 
-1. 管理者のコマンド プロンプトを開き、次のコマンドを実行します。
+1. レジストリ エディターを開き、[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa] を参照して、**[VERBOSE_LOG]** を **[TRUE]** に設定します。
+2. 管理者のコマンド プロンプトを開き、次のコマンドを実行します。
 
    ```
    Mkdir c:\NPS
@@ -118,9 +119,9 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
    logman update trace "NPSExtension" -p {EC2E6D3A-C958-4C76-8EA4-0262520886FF} 0xffffffffffffffff 0xff -ets
    ```
 
-2. 問題を再現します
+3. 問題を再現します
 
-3. 次のコマンドでトレースを停止します。
+4. 次のコマンドでトレースを停止します。
 
    ```
    logman stop "NPSExtension" -ets
@@ -131,6 +132,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
    Start .
    ```
 
-4. C:\NPS フォルダーの内容を zip 形式で圧縮し、zip ファイルをサポート ケースに添付します。
+5. レジストリ エディターを開き、[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa] を参照して、**[VERBOSE_LOG]** を **[FALSE]** に設定します。
+6. C:\NPS フォルダーの内容を zip 形式で圧縮し、zip ファイルをサポート ケースに添付します。
 
 

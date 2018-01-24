@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: 72ff0c13319218f8ef91aff9208772fcb0fd9459
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
 このドキュメントでは、Azure App Service の仮想ネットワーク統合機能について説明し、この機能を [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) でアプリと共にセットアップする方法を示します。 Azure 仮想ネットワーク (VNet) とは、Azure リソースの多くをインターネット以外のルーティング可能なネットワークに配置できる機能です。配置先のネットワークへのアクセスは制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要][VNETOverview]に関するページに記載されている情報をご覧ください。 
@@ -39,7 +39,7 @@ VNet 統合を使用する一般的なシナリオは、Azure 仮想ネットワ
 * Standard、Premium または Isolated いずれかの価格プランが必要 
 * Classic VNet または Resource Manager VNet に対応 
 * TCP と UDP をサポート
-* Web アプリ、モバイル アプリ、API アプリに対応
+* Web、モバイル、API アプリおよび関数アプリと連携可能
 * アプリが一度に接続できるのは 1 つの VNet のみ
 * App Service プランでは、最大 5 つの VNet と統合可能 
 * App Service プランでは、複数のアプリで同じ VNet を使用可能
@@ -258,18 +258,22 @@ VNet でホストされている VM はオンプレミス システムに到達�
 * オンプレミスのファイアウォールが、ポイント対サイト IP 範囲からのトラフィックをブロックしている。
 * VNet 内のユーザー定義ルート (UDR) により、ポイント対サイト ベースのトラフィックがオンプレミス ネットワークに到達できなくなっている。
 
+## <a name="powershell-automation"></a>PowerShell オートメーション
+
+App Service は、PowerShell を使用して Azure 仮想ネットワークと統合できます。 すぐに使用できるスクリプトについては、「[Connect an app in Azure App Service to an Azure Virtual Network (Azure App Service のアプリを Azure 仮想ネットワークに接続する)](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)」をご覧ください。
+
 ## <a name="hybrid-connections-and-app-service-environments"></a>ハイブリッド接続と App Service Environment
 VNet にホストされているリソースへのアクセスを実現する、3 つの機能があります。 次に例を示します。
 
 * VNet 統合
-* Hybrid Connections
+* ハイブリッド接続と
 * App Service Environment
 
 ハイブリッド接続を利用する場合は、ハイブリッド接続マネージャー (HCM) と呼ばれるリレー エージェントをネットワークにインストールする必要があります。 HCM は、Azure のほか、アプリケーションにも接続できなければなりません。 このソリューションは、インターネットにアクセス可能なエンドポイントが必要ないことから、オンプレミスのネットワークのほか、ホストされたクラウド ネットワークなどのリモート ネットワークで特に効果を発揮します。 HCM は、Windows 上でのみ動作し、最大 5 つのインスタンスを実行して高可用性を実現できます。 ただし、ハイブリッド接続でサポートされるのは TCP だけです。各エンドポイントは、特定のホスト:ポートの組み合わせと一致している必要があります。 
 
 App Service Environment 機能を使用すると、VNet で Azure App Service のインスタンスを実行できます。 そのため、追加の作業を行わなくても、アプリは VNet 内のリソースにアクセスできます。 App Service Environment のその他のメリットとして、最大 14 GB の RAM を備えた Dv2 ベースのワーカーを使用できることなどが挙げられます。 また、ニーズを満たすためにシステムのスケールを変更できるというメリットもあります。 ASP が 20 インスタンスまでに制限されるマルチテナント環境とは異なり、ASE では 100 個まで ASP インスタンスをスケールアップできます。 VNet 統合にはない ASE の特長の 1 つに、App Service Environment が ExpressRoute VPN と共に使用できることがあります。 
 
-共通する利用例はあるものの、これらの機能はいずれも互いに置き換え可能ではありません。 どの機能を使用するかは、ご自分のニーズと結び付いています。 For example:
+共通する利用例はあるものの、これらの機能はいずれも互いに置き換え可能ではありません。 どの機能を使用するかは、ご自分のニーズと結び付いています。 例: 
 
 * 開発者が Azure でサイトを実行して、机の下にあるワークステーション上のデータベースにそのサイトからアクセスできるようにするだけであれば、ハイブリッド接続を使用するのが最も簡単な方法です。 
 * 大規模な組織がパブリック クラウドに多数の Web プロパティを配置し、独自のネットワークで管理する必要がある場合は、App Service Environment を使用できます。 

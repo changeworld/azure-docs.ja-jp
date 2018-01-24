@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 9fcfca3de6204581936a2bacfd86e84fd373190a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: edb70bd38611aad7e34bc5dbac8b1fd24c5e9b1d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 - [Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事で、ピアリングの制限について確認します。
 - Azure アカウントを使用して、Azure Portal、Azure コマンド ライン インターフェイス (CLI)、または Azure PowerShell にログインします。 まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure PowerShell をインストールして構成します](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
-- Azure コマンド ライン インターフェイス (CLI) のコマンドを使用してこの記事のタスクを実行する場合は、[Azure CLI をインストールして構成します](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure CLI がインストールされていることを確認してください。 CLI コマンドのヘルプを表示するには、「`az <command> --help`」と入力します。 CLI とその前提条件をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Cloud Shell には Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 Cloud Shell を使うには、[ポータル](https://portal.azure.com)の上部にある [Cloud Shell**> _**] ボタンをクリックします。 
+- Azure コマンド ライン インターフェイス (CLI) のコマンドを使用してこの記事のタスクを実行する場合は、[Azure CLI をインストールして構成します](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure CLI がインストールされていることを確認してください。 CLI コマンドのヘルプを表示するには、「`az <command> --help`」と入力します。 CLI とその前提条件をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Cloud Shell には Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 Cloud Shell を使うには、[ポータル](https://portal.azure.com)の上部にある [Cloud Shell**>_**] ボタンをクリックします。 
 
 ## <a name="create-a-peering"></a>ピアリングの作成
 
@@ -58,14 +58,18 @@ ms.lasthandoff: 10/11/2017
     - **[サブスクリプション]:** ピアリングする仮想ネットワークの[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を選択します。 アカウントに読み取りアクセス権があるサブスクリプションの数に応じて、1 つ以上のサブスクリプションが表示されます。 **[リソース ID]** チェック ボックスをオンにした場合、この設定は使用できません。 どちらの仮想ネットワークも Resource Manager を使用して作成されていれば、異なるサブスクリプションの仮想ネットワークをピアリングできます。 プレビュー リリースでは、異なるデプロイ モデルを使用して作成されたサブスクリプション間でピアリングできます。 異なるサブスクリプションに存在する、異なるデプロイ モデルを使用してデプロイされた仮想ネットワークのピアリングを作成する前に、プレビューに登録してください。 プレビューに登録し、[異なるサブスクリプションに存在する、異なるデプロイ モデルを使用して作成された仮想ネットワークをピアリングする](create-peering-different-deployment-models-subscriptions.md)方法の詳細をご覧ください。
     - **[仮想ネットワーク]:** ピアリングする仮想ネットワークを選択します。 いずれかの Azure デプロイ モデルで作成された仮想ネットワークを選択できます。 別のリージョンにある仮想ネットワークを選択する場合、サブスクリプション登録し、[プレビュー版](virtual-network-create-peering.md)をご利用ください。 仮想ネットワークを一覧に表示するには、その仮想ネットワークへの読み取りアクセス権が必要です。 仮想ネットワークが一覧に表示されていても、淡色表示されている場合、仮想ネットワークのアドレス空間がこの仮想ネットワークのアドレス空間と重複している可能性があります。 仮想ネットワークのアドレス空間が重複している場合、それらの仮想ネットワークをピアリングをすることはできません。 **[リソース ID]** チェック ボックスをオンにした場合、この設定は使用できません。
     - **[仮想ネットワーク アクセスを許可する]:** 2 つの仮想ネットワーク間の通信を有効にする場合は、**[有効]** (既定値) を選択します。 仮想ネットワーク間の通信を有効にすると、各仮想ネットワークに接続されているリソースは、同じ仮想ネットワークに接続されている場合と同様に、同じ帯域幅と待機時間で相互に通信できます。 2 つの仮想ネットワーク内のリソース間のすべての通信は、Azure プライベート ネットワーク経由で行われます。 ネットワーク セキュリティ グループの既定の **VirtualNetwork** タグには、仮想ネットワークとピアリングされた仮想ネットワークが含まれます。 ネットワーク セキュリティ グループの既定のタグの詳細については、[ネットワーク セキュリティ グループの概要](virtual-networks-nsg.md#default-tags)に関する記事をご覧ください。  ピアリングされた仮想ネットワークにトラフィックが流れないようにする場合は、**[無効]** を選択します。 仮想ネットワークを別の仮想ネットワークとピアリングしていても、2 つの仮想ネットワーク間のトラフィック フローを無効にする必要がある場合は、**[無効]** を選択できます。 ピアリングを削除し、再作成するよりも、有効化/無効化する方が便利な場合があります。 この設定を無効にすると、ピアリングされた仮想ネットワーク間でトラフィックが流れなくなります。
-    - **[転送されたトラフィックを許可する]:** このボックスをオンにすると、ピアリングされた仮想ネットワークに転送されたトラフィック (ピアリングされた仮想ネットワークで発生したものではないトラフィック) をこの仮想ネットワークに流すことができます。 ピアリング先の仮想ネットワークにネットワーク仮想アプライアンスをデプロイし、ネットワーク仮想アプライアンスを介してトラフィックを転送するためのユーザー定義ルートを作成した場合、一般にトラフィックの転送が行われます。 このボックスをオフ (既定値) のままにした場合、ピアリグされた仮想ネットワークの転送されたトラフィックは、この仮想ネットワークに流れることはできません。 この機能を有効にすると、ピアリングを介して転送されたトラフィックが許可されますが、ユーザー定義ルートやネットワーク仮想アプライアンスが作成されるわけではありません。 ユーザー定義ルートとネットワーク仮想アプライアンスは個別に作成されます。 ユーザー定義ルートについては、[こちら](virtual-networks-udr-overview.md)をご覧ください。
-    - **[ゲートウェイ転送を許可する]:** この仮想ネットワークに仮想ネットワーク ゲートウェイが接続されており、ピアリングされた仮想ネットワークからのトラフィックがゲートウェイ経由で流れることを許可する場合は、このボックスをオンにします。 たとえば、仮想ネットワーク ゲートウェイを介して、この仮想ネットワークをオンプレミス ネットワークに接続できます。 このボックスをオンにすると、ピアリングされた仮想ネットワークからのトラフィックを、この仮想ネットワークに接続されたゲートウェイ経由で流すことができます。 このボックスをオンにしても、ピアリングされた仮想ネットワークでゲートウェイを構成することはできません。 もう一方の仮想ネットワークからこの仮想ネットワークへのピアリングを設定するときに、ピアリングされた仮想ネットワークで **[リモート ゲートウェイを使用する]** チェック ボックスをオンにしておく必要があります。 このボックスをオフ (既定値) のままにしても、ピアリングされた仮想ネットワークからのトラフィックはこの仮想ネットワークに流れますが、この仮想ネットワークに接続された仮想ネットワーク ゲートウェイ経由で流れることはできません。 仮想ネットワーク ゲートウェイの詳細については、[こちら](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti)をご覧ください。 
+    - **[転送されたトラフィックを許可する]:** このボックスをオンにすると、仮想ネットワークから*転送*されたトラフィック (仮想ネットワークから発生したものではないもの) を、ピアリングを通じてこの仮想ネットワークに流すことができます。 たとえば、Spoke1、Spoke2、およびハブという 3 つの仮想ネットワークがあるとします。 各スポーク仮想ネットワークとハブ仮想ネットワークの間にはピアリングが存在しますが、スポーク仮想ネットワーク間にはピアリングが存在しません。 ハブ仮想ネットワークにはネットワーク仮想アプライアンスがデプロイされており、ユーザー定義ルートは、ネットワーク仮想アプライアンスを通じてサブネット間のトラフィックをルーティングする、各スポーク仮想ネットワークに適用されます。 各スポーク仮想ネットワークとハブ仮想ネットワーク間のピアリングに対してこのチェック ボックスをオフにした場合、仮想ネットワーク間のトラフィックをハブが転送するため、スポーク仮想ネットワーク間ではトラフィックは流れません。 この機能を有効にすると、ピアリングを介して転送されたトラフィックが許可されますが、ユーザー定義ルートやネットワーク仮想アプライアンスが作成されるわけではありません。 ユーザー定義ルートとネットワーク仮想アプライアンスは個別に作成されます。 ユーザー定義ルートについては、[こちら](virtual-networks-udr-overview.md#user-defined)をご覧ください。
+    - **[ゲートウェイ転送を許可する]:** この仮想ネットワークに仮想ネットワーク ゲートウェイが接続されており、ピアリングされた仮想ネットワークからのトラフィックがゲートウェイ経由で流れることを許可する場合は、このボックスをオンにします。 たとえば、仮想ネットワーク ゲートウェイを介して、この仮想ネットワークをオンプレミス ネットワークに接続できます。 ゲートウェイは、ExpressRoute または VPN ゲートウェイを指定できます。 このボックスをオンにすると、ピアリングされた仮想ネットワークからのトラフィックを、この仮想ネットワークに接続されたゲートウェイ経由でオンプレミス ネットワークに流すことができます。 このボックスをオンにしても、ピアリングされた仮想ネットワークでゲートウェイを構成することはできません。 もう一方の仮想ネットワークからこの仮想ネットワークへのピアリングを設定するときに、ピアリングされた仮想ネットワークで **[リモート ゲートウェイを使用する]** チェック ボックスをオンにしておく必要があります。 このボックスをオフ (既定値) のままにしても、ピアリングされた仮想ネットワークからのトラフィックはこの仮想ネットワークに流れますが、この仮想ネットワークに接続された仮想ネットワーク ゲートウェイ経由で流れることはできません。 
     
-        仮想ネットワーク (Resource Manager) を仮想ネットワーク (クラシック) とピアリングしている場合、このオプションを有効にすることはできません。 トラフィックは 2 つの仮想ネットワーク間で流れますが、仮想ネットワーク (クラシック) のトラフィックは、仮想ネットワーク (Resource Manager) に接続されたネットワーク ゲートウェイ経由で流れることはできません。
+    VPN ゲートウェイでは、トラフィックをオンプレミス ネットワークに転送するだけでなく、自身が置かれている仮想ネットワークとピアリングされた仮想ネットワーク間のネットワーク トラフィックを、それらの仮想ネットワークを相互にピアリングすることなく転送できます。 これは、ハブ内の VPN ゲートウェイを使用して、相互にピアリングされていないスポーク仮想ネットワーク間のトラフィックをルーティングする場合に便利です (**[転送されたトラフィックを許可する]** について説明したハブとスポークの例を参照してください)。 仮想ネットワーク ゲートウェイの詳細については、[こちら](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti)をご覧ください。 このシナリオを実行するには、次ホップの種類として仮想ネットワーク ゲートウェイを指定したユーザー定義ルートを実装する必要があります。 ユーザー定義ルートについては、[こちら](virtual-networks-udr-overview.md#user-defined)をご覧ください。 ユーザー定義ルートで次ホップの種類として指定できるのは、VPN ゲートウェイだけです。ユーザー定義ルートで、次ホップの種類として ExpressRoute ゲートウェイを指定することはできません。
+
+        You cannot enable this option if you're peering a virtual network (Resource Manager) with a virtual network (classic). Though the traffic flows between the two virtual networks, the virtual network (classic) traffic cannot flow through a network gateway attached to the virtual network (Resource Manager). 
 
     - **[リモート ゲートウェイを使用する]:** この仮想ネットワークからのトラフィックが、ピアリングされた仮想ネットワークに接続された仮想ネットワーク ゲートウェイ経由で流れることを許可する場合は、このボックスをオンにします。 たとえば、ピアリングされた仮想ネットワークに、オンプレミス ネットワークとの通信を可能にする VPN Gateway が接続されているとします。  このボックスをオンにすると、この仮想ネットワークからのトラフィックを、ピアリングされた仮想ネットワークに接続された VPN Gateway 経由で流すことができます。 このボックスをオンにする場合、ピアリングされた仮想ネットワークに仮想ネットワーク ゲートウェイが接続されている必要があります。また、ピアリングされた仮想ネットワークで **[ゲートウェイ転送を許可する]** チェック ボックスがオンになっている必要があります。 このボックスをオフ (既定値) のままにしても、ピアリングされた仮想ネットワークからのトラフィックはこの仮想ネットワークに流れますが、この仮想ネットワークに接続された仮想ネットワーク ゲートウェイ経由で流れることはできません。 
-    
+この設定は、この仮想ネットワークの 1 つのピアリングに対してのみ有効にすることができます。
+仮想ネットワーク内で既にゲートウェイが構成されている場合は、この設定を使用することはできません。
         仮想ネットワーク (Resource Manager) を仮想ネットワーク (クラシック) とピアリングしている場合、このオプションを有効にすることはできません。 トラフィックは 2 つの仮想ネットワーク間で流れますが、仮想ネットワーク (Resource Manager) のトラフィックは、仮想ネットワーク (クラシック) に接続されたネットワーク ゲートウェイ経由で流れることはできません。
+
 7. **[OK]** をクリックすると、選択した仮想ネットワークにサブネットが追加されます。
 
 ### <a name="commands"></a>コマンド
@@ -100,7 +104,7 @@ ms.lasthandoff: 10/11/2017
     >ピアリングを作成する前に、[要件と制約](#requirements-and-constraints)、[必要なアクセス許可](#permissions)を十分に理解しておいてください。
     >
 
-7. [ **Save**] をクリックします。
+7. **[Save]** をクリックします。
 
 **コマンド**
 
@@ -157,12 +161,12 @@ ms.lasthandoff: 10/11/2017
     
 |Virtual Network|デプロイメント モデル|役割|アクセス許可|
 |---|---|---|---|
-|myVnetA|リソース マネージャー|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |クラシック|[従来のネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
-|myVnetB|リソース マネージャー|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
+|myVnetA|リソース マネージャー|[Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+| |クラシック|[Classic Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
+|myVnetB|リソース マネージャー|[Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||クラシック|[従来のネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
-[組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)と、特定のアクセス許可を[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法 (Resource Manager のみ) の詳細をご覧ください。
+[組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)と、特定のアクセス許可を[カスタム ロール](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる方法 (Resource Manager のみ) の詳細を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

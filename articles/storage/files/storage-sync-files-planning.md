@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: f2e7f93d2d2914399f3fc7b24a00540f1c045b58
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 0aac388f4499af018a4603bcad835ab41d6b6642
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Azure ファイル同期 (プレビュー) のデプロイの計画
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -46,19 +46,21 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>サーバー エンドポイント
-サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーや、ボリュームのルートなどです。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在できます (たとえば F:\sync1 と F:\sync2)。 各サーバー エンドポイントについて、クラウドの階層化ポリシーを個別に構成することができます。 既存の一連のファイルを含むサーバーの場所をサーバー エンドポイントとして同期グループに追加すると、それらのファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
+サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーなどです。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在できます (たとえば `F:\sync1` と `F:\sync2`)。 各サーバー エンドポイントについて、クラウドの階層化ポリシーを個別に構成することができます。 現在、ボリュームのルートに対してサーバー エンドポイントを作成することはできません (たとえば、ボリュームがマウント ポイントとしてマウントされている場合は、`F:\` または `C:\myvolume`)。
 
 > [!Note]  
 > サーバー エンドポイントは、Windows システム ボリューム上に存在できます。 システム ボリュームでは、クラウドの階層化はサポートされていません。
+
+既存の一連のファイルを含むサーバーの場所をサーバー エンドポイントとして同期グループに追加すると、それらのファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
 
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
 クラウド エンドポイントは、同期グループに含まれる Azure ファイル共有です。 Azure ファイル共有の同期全体と 1 つの Azure ファイル共有は、1 つのクラウド エンドポイントのみのメンバーになることができます。 したがって、Azure ファイル共有は、1 つの同期グループのみのメンバーになることができます。 既存の一連のファイルを含む Azure ファイル共有をクラウド エンドポイントとして同期グループに追加すると、既存のファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
 
 > [!Important]  
-> Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
+> Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
 
 ### <a name="cloud-tiering"></a>クラウドの階層化 
-クラウドの階層化は、使用頻度やアクセス頻度が低いファイルを Azure Files に階層化できる、Azure File Sync のオプション機能です。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルは NTFS 内に "オフライン" 属性が設定されるため、サード パーティ アプリケーションは階層化されたファイルを特定できます。 ユーザーが階層化されたファイルを開くと、Azure File Sync がファイル データを Azure Files からシームレスに再呼び出しします。ユーザーは、ファイルがシステムにローカルに保存されていないことを知る必要はありません。 この機能は、階層型ストレージ管理 (HSM) とも呼ばれます。
+クラウドの階層化は、サイズが 64 KiB より大きく、使用頻度やアクセス頻度が低いファイルを Azure Files に階層化できる、Azure File Sync のオプション機能です。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルは NTFS 内に "オフライン" 属性が設定されるため、サード パーティ アプリケーションは階層化されたファイルを特定できます。 ユーザーが階層化されたファイルを開くと、Azure File Sync がファイル データを Azure Files からシームレスに再呼び出しします。ユーザーは、ファイルがシステムにローカルに保存されていないことを知る必要はありません。 この機能は、階層型ストレージ管理 (HSM) とも呼ばれます。
 
 > [!Important]  
 > クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。
@@ -156,6 +158,7 @@ Azure File Sync のプレビューは、次のリージョンでのみ利用で�
 
 | リージョン | データ センターの場所 |
 |--------|---------------------|
+| 米国東部 | バージニア州 (米国) |
 | 米国西部 | カリフォルニア州 (米国) |
 | 西ヨーロッパ | オランダ |
 | 東南アジア | シンガポール |
@@ -166,7 +169,7 @@ Azure File Sync のプレビューは、次のリージョンでのみ利用で�
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Files のデプロイの計画](storage-files-planning.md)
 * [Azure Files をデプロイする](storage-files-deployment-guide.md)
 * [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)

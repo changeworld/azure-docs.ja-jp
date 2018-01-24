@@ -4,7 +4,7 @@ description: "列方向のパーティションでデータベース間クエリ
 services: sql-database
 documentationcenter: 
 manager: jhubbard
-author: torsteng
+author: MladjoA
 ms.assetid: 84c261f2-9edc-42f4-988c-cf2f251f5eff
 ms.service: sql-database
 ms.custom: scale out apps
@@ -12,13 +12,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: d57f45066387f451463a38d76d3fe6adab77e41f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 12/12/2017
+ms.author: mlandzic
+ms.openlocfilehash: f3bf919aa4aab8d37a5a97b90138b1f5434eb6ea
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 ![異なるデータベースのテーブルにまたがるクエリ][1]
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/31/2017
 ## <a name="create-database-scoped-master-key-and-credentials"></a>データベース スコープのマスター キーと資格情報の作成
 この資格情報は、リモート データベースに接続するために、エラスティック クエリによって使用されます。  
 
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
     SECRET = '<password>'
     [;]
@@ -155,14 +155,14 @@ SCHEMA_NAME 句と OBJECT_NAME 句は、外部テーブル定義をリモート 
 
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>T-SQL リモート実行のストアド プロシージャ: sp\_execute_remote
-エラスティック クエリには、シャードへの直接アクセスを提供するストアド プロシージャも導入されています。 このストアド プロシージャは [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。 使用できるパラメーターは次のとおりです。 
+エラスティック クエリには、リモート データベースへの直接アクセスを提供するストアド プロシージャも導入されています。 このストアド プロシージャは [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。 使用できるパラメーターは次のとおりです。 
 
 * データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前。 
-* クエリ (nvarchar): 各シャードで実行する T-SQL クエリ。 
+* クエリ (nvarchar): リモート データベースで実行する T-SQL クエリ。 
 * パラメーター宣言 (nvarchar) (省略可能): (sp_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列。 
 * パラメーター値のリスト (省略可能): (sp_executesql などの) パラメーター値のコンマ区切りリスト。
 
-sp\_execute\_remote では、起動パラメーターで指定された外部データ ソースを使用して、指定された T-SQL ステートメントをリモート データベースで実行します。 shardmap マネージャー データベースとリモート データベースへの接続には、外部データ ソースの資格情報を使用します。  
+sp\_execute\_remote では、起動パラメーターで指定された外部データ ソースを使用して、指定された T-SQL ステートメントをリモート データベースで実行します。 リモート データベースへの接続には、外部データ ソースの資格情報を使用します。  
 
 例: 
 
@@ -173,13 +173,13 @@ sp\_execute\_remote では、起動パラメーターで指定された外部デ
 
 
 ## <a name="connectivity-for-tools"></a>ツールの接続性
-通常の SQL Server 接続文字列を使用して、BI およびデータ統合ツールを、エラスティック クエリが有効でかつ外部テーブルが定義されている SQL DB サーバー上のデータベースに接続できます。 ご使用のツールのデータ ソースとして SQL Server がサポートされていることを確認してください。 次に、ツールを使用して接続する他の SQL Server データベースと同様に、エラスティック クエリ データベースと外部テーブルを参照します。 
+通常の SQL Server 接続文字列を使用して、BI およびデータ統合ツールを、エラスティック クエリが有効でかつ外部テーブルが定義されている SQL DB サーバー上のデータベースに接続できます。 使用しているツールのデータ ソースとして SQL Server がサポートされていることを確認してください。 次に、ツールを使用して接続する他の SQL Server データベースと同様に、エラスティック クエリ データベースと外部テーブルを参照します。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
 * SQL DB のファイアウォール構成で Azure Services のアクセスを有効にすることで、エラスティック クエリ エンドポイント データベースにリモート データベースへのアクセスが許可されていることを確認します。 さらに、外部データ ソース定義に指定された資格情報を使ってリモート データベースに正常にログインでき、リモート テーブルへのアクセス許可を取得できることを確認します。  
 * エラスティック クエリは、計算の大部分をリモート データベース上で実行できるクエリに最適です。 通常、最適なクエリ パフォーマンスが得られるのは、リモート データベース上で評価可能な選択的なフィルター述語を使用した場合、またはリモート データベース上で完全に実行できる結合を使用した場合となります。 その他のクエリ パターンでは、リモート データベースから大量のデータを読み込むことが必要になる場合があり、パフォーマンスが低下する可能性があります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * エラスティック クエリの概要については、「[Azure SQL Database エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md)」をご覧ください。
 * 列方向のパーティション分割のチュートリアルについては、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](sql-database-elastic-query-getting-started-vertical.md)」をご覧ください。

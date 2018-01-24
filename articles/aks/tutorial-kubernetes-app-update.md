@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 95c609ab49fe478eda48b2a2eca6a772d1356d18
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 6de5173aedc836f7a2d56370ea8e54ad6e77ab5e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="update-an-application-in-azure-container-service-aks"></a>Azure Container Service (AKS) でのアプリケーションの更新
 
@@ -33,9 +33,9 @@ Kubernetes でアプリケーションをデプロイした後で、新しいコ
 
 これまでのチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 その後、Kubernetes クラスターでアプリケーションを実行しました。 
 
-アプリケーション リポジトリも複製しましたが、それにはアプリケーションのソース コードと、このチュートリアルで使用する事前作成された Docker Compose ファイルが含まれています。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。 内部には、`azure-vote` という名前のディレクトリと `docker-compose.yml` という名前のファイルがあります。
+アプリケーション リポジトリも複製しましたが、それにはアプリケーションのソース コードと、このチュートリアルで使用する事前作成された Docker Compose ファイルが含まれています。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。 内部には、`azure-vote` という名前のディレクトリと `docker-compose.yaml` という名前のファイルがあります。
 
-これらの手順を実行していない場合で、順番に進めたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./tutorial-kubernetes-prepare-app.md)」に戻ってください。 
+これらの手順を実行していない場合で、順番に進めたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。 
 
 ## <a name="update-application"></a>アプリケーションを更新する
 
@@ -61,7 +61,7 @@ SHOWHOST = 'false'
 
 ## <a name="update-container-image"></a>コンテナー イメージの更新
 
-[docker-compose](https://docs.docker.com/compose/) を使用してフロントエンド イメージを再作成し、更新したアプリケーションを実行します。 引数 `--build` は、Docker Compose にアプリケーション イメージの再作成を指示するために使用されます。
+[docker-compose][docker-compose] を使用してフロントエンド イメージを再作成し、更新したアプリケーションを実行します。 引数 `--build` は、Docker Compose にアプリケーション イメージの再作成を指示するために使用されます。
 
 ```console
 docker-compose up --build -d
@@ -83,13 +83,13 @@ docker-compose up --build -d
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-[docker tag](https://docs.docker.com/engine/reference/commandline/tag/) を使用してイメージにタグを付けます。 `<acrLoginServer>` を、Azure Container Registry のログイン サーバー名またはパブリック レジストリのホスト名で置き換えます。 また、イメージのバージョンは `redis-v2` に更新されます。
+[docker tag][docker-tag] を使用してイメージにタグを付けます。 `<acrLoginServer>` を、Azure Container Registry のログイン サーバー名またはパブリック レジストリのホスト名で置き換えます。 また、イメージのバージョンは `redis-v2` に更新されます。
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用してレジストリにイメージをアップロードします。 `<acrLoginServer>` を Azure Container Registry のログイン サーバー名に置き換えます。
+[docker push][docker-push] を使用してレジストリにイメージをアップロードします。 `<acrLoginServer>` を Azure Container Registry のログイン サーバー名に置き換えます。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -97,7 +97,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>更新したアプリケーションをデプロイする
 
-最大限のアップタイムを保証するには、アプリケーション ポッドの複数のインスタンスを実行する必要があります。 [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドでこの構成を確認します。
+最大限のアップタイムを保証するには、アプリケーション ポッドの複数のインスタンスを実行する必要があります。 [kubectl get pod][kubectl-get] コマンドでこの構成を確認します。
 
 ```
 kubectl get pod
@@ -120,13 +120,13 @@ azure-vote-front イメージを複数のポッドで実行していない場合
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-アプリケーションを更新するには、[kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set) コマンドを使用します。 コンテナー レジストリのログイン サーバー名またはホスト名で、`<acrLoginServer>` を更新します。
+アプリケーションを更新するには、[kubectl set][kubectl-set] コマンドを使用します。 コンテナー レジストリのログイン サーバー名またはホスト名で、`<acrLoginServer>` を更新します。
 
 ```azurecli
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-デプロイを監視するには、[kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを使います。 更新されたアプリケーションがデプロイされると、ポッドが終了されて、新しいコンテナー イメージで再作成されます。
+デプロイを監視するには、[kubectl get pod][kubectl-get] コマンドを使います。 更新されたアプリケーションがデプロイされると、ポッドが終了されて、新しいコンテナー イメージで再作成されます。
 
 ```azurecli
 kubectl get pod
@@ -154,7 +154,7 @@ kubectl get service azure-vote-front
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、アプリケーションを更新し、この更新を Kubernetes クラスターにロールアウトしました。 次のタスクを完了しました。
 
@@ -167,4 +167,15 @@ kubectl get service azure-vote-front
 次のチュートリアルに進み、Operations Management Suite で Kubernetes を監視する方法について学習してください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics で Kubernetes を監視する](./tutorial-kubernetes-monitor.md)
+> [Log Analytics で Kubernetes を監視する][aks-tutorial-monitor]
+
+<!-- LINKS - external -->
+[docker-compose]: https://docs.docker.com/compose/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-set]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md

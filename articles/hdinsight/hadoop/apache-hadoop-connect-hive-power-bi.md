@@ -14,21 +14,21 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 390342eb08ae970fa760b414674b1a6783404d80
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 8b4347fde274d0d7520ef3acbd081fdb83d7dc7d
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/04/2018
 ---
-# <a name="visualize-hive-data-with-microsoft-power-bi-in-azure-hdinsight"></a>Azure HDInsight の Microsoft Power BI で Hive データを視覚化する
+# <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight の Microsoft Power BI で ODBC を使用して Hive データを視覚化する
 
-Microsoft Power BI を Azure HDInsight に接続し、Hive データを視覚化する方法について説明します。 現在のところ、Power BI は、HDInsight への ODBC 接続にのみ対応しています。 このチュートリアルでは、hivesampletable Hive テーブルから Power BI にデータを読み込みます。 Hive テーブルには、携帯電話の使用データが含まれます。 その使用データを世界地図に示します。
+ODBC を使用して Microsoft Power BI を Azure HDInsight に接続し、Hive データを視覚化する方法について説明します。 このチュートリアルでは、hivesampletable Hive テーブルから Power BI にデータを読み込みます。 Hive テーブルには、携帯電話の使用データが含まれます。 その使用データを世界地図に示します。
 
 ![HDInsight Power BI の地図レポート](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
-この情報は、新しい[対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスター タイプにも適用されます。
+この情報は、新しい[対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスター タイプにも適用されます。 直接クエリを使用して HDInsight 対話型クエリに接続する方法については、「[Azure HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
@@ -52,7 +52,7 @@ hivesampletable Hive テーブルはすべての HDInsight クラスターに付
 4. **[ODBC から]** ウィンドウで、前のセクションで作成したデータ ソース名を選択して **[OK]** をクリックします。
 5. **[ナビゲーター]** ウィンドウで **[ODBC]、[HIVE]、[既定]** の順に展開し、**[hivesampletable]** を選択し、**[読み込み]** をクリックします。
 
-## <a name="visualize-date"></a>データを視覚化する
+## <a name="visualize-data"></a>データの視覚化
 
 前の手順の続きです。
 
@@ -62,7 +62,7 @@ hivesampletable Hive テーブルはすべての HDInsight クラスターに付
 2. [フィールド] ウィンドウで **[country]** と **[devicemake]** を選択します。 データが地図に描かれます。
 3. 地図を広げます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Power BI を使用して HDInsight からデータを視覚化する方法について学習しました。  詳細については、次の記事を参照してください。
 
 * [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./../hdinsight-connect-hive-zeppelin.md)。

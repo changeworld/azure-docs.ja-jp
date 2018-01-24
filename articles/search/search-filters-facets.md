@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 5b4d88cb9c9662fe45de8c11534232a2905cf5a4
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 02a027845e56407bc8cc95f54a46d9534cb6de92
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Azure Search でファセット フィルターを作成する方法 
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/25/2017
 
 ファセットは動的であり、クエリで返されます。 検索の応答で、結果のナビゲートに使用されるファセット カテゴリが提供されます。 ファセットの知識がない場合、次の例はファセット ナビゲーション構造を示しています。
 
-  ![](./media/search-filters/facet-nav.png)
+  ![](./media/search-filters-facets/facet-nav.png)
 
 ファセット ナビゲーションを初めて使用する場合、詳細については、 「[Azure Search でファセット ナビゲーションを実装する方法](search-faceted-navigation.md)」をご覧ください。
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/25/2017
 + Edm.String
 + Edm.DateTimeOffset
 + Edm.Boolean
-+ Edm.Collections (この記事で後述する[複雑なデータ型をファセットする方法](#facet-complex-fields)に関するセクションをご覧ください)。
++ Edm.Collections
 + 数値フィールド タイプ: Edm.Int32、Edm.Int64、Edm.Double
 
 ファセット ナビゲーションで Edm.GeographyPoint を使用することはできません。 ファセットは、人間が判読できるテキストまたは数字で構成されます。 そのため、ファセットは地理座標ではサポートされていません。 場所でファセットするには、都市フィールドまたは地域フィールドが必要です。

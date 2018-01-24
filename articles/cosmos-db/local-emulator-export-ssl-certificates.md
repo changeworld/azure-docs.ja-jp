@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bafbd43d65a0f46f87a13cea4a2a6299d3bf43ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d3811a9d59e388a1ceaacdefebc17afeda5b07d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Java、Python、および Node.js で使用する Azure Cosmos DB Emulator 証明書のエクスポート
 
@@ -87,13 +87,13 @@ X.509 証明書を既定の Java 証明書ストアにインポートする場�
 
 ## <a name="how-to-use-the-certificate-in-python"></a>Python で証明書を使用する方法
 
-[Python SDK (バージョン 2.0.0 以降)](documentdb-sdk-python.md) for DocumentDB API の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用したい場合は、[Python ソケット ラッパー](https://docs.python.org/2/library/ssl.html)に関するドキュメントの例に従ってください。
+[Python SDK (バージョン 2.0.0 以降)](sql-api-sdk-python.md) for SQL API の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用したい場合は、[Python ソケット ラッパー](https://docs.python.org/2/library/ssl.html)に関するドキュメントの例に従ってください。
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>Node.js で証明書を使用する方法
 
-[Node.js SDK (バージョン 1.10.1 以降)](documentdb-sdk-node.md) for DocumentDB API の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用する場合は、[Node.js のドキュメント](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)の例に従ってください。
+[Node.js SDK (バージョン 1.10.1 以降)](sql-api-sdk-node.md) for SQL API の場合、既定ではローカル エミュレーターに接続する際に SSL 証明書を使用しません。 SSL 検証を使用する場合は、[Node.js のドキュメント](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)の例に従ってください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の手順を行いました。
 

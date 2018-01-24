@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: e18645667cfb126ae2f2f9c8074fdcff5a6ade1b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 1988bc7ab5b498db32d7bb40623f1194d7290b94
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 
 
@@ -45,6 +45,10 @@ Azure SQL サーバーにある 1 つのデータベースにのみ選択的に�
 * **データベース レベルのファイアウォール規則:** これらの規則により、クライアントは、同じ論理サーバー内の特定の (セキュリティで保護された) データベースにアクセスできるようになります。 これらの規則は、データベースごと (**master** データベースを含む) に作成することができ、個々のデータベースに格納されます。 master データベースとユーザー データベースのデータベースレベルのファイアウォール規則は、Transact-SQL ステートメントを使うことによって、最初のサーバーレベルのファイアウォール規則を構成した後でのみ、作成および管理できます。 サーバー レベルのファイアウォール規則で指定された範囲外にあるデータベース レベルのファイアウォール規則で IP アドレスの範囲を指定した場合、データベース レベルの範囲の IP アドレスを持つクライアントのみがデータベースにアクセスできます。 データベースに対し、最大 128 のデータベース レベルのファイアウォール規則を持つことができます。 データベース レベルのファイアウォール規則の構成の詳細については、この記事で後述する例と、「[sp_set_database_firewall_rule (Azure SQL データベース)](https://msdn.microsoft.com/library/dn270010.aspx)」を参照してください。
 
 **推奨事項:** セキュリティとデータベースの移植性を高めるため、可能な限り、データベース レベルのファイアウォール規則を使用することをお勧めします。 アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの設定に時間を費やしたくない場合は、管理者向けのサーバー レベルのファイアウォール規則を使用します。
+
+> [!Important]
+> Windows Azure SQL Database は、最大 128 個のファイアウォール規則をサポートしています。
+>
 
 > [!Note]
 > ビジネス継続性のコンテキストにおける移植可能なデータベースについては、[障害復旧の認証要件](sql-database-geo-replication-security-config.md)に関する記事を参照してください。
@@ -109,7 +113,7 @@ Azure ポータルでサーバー レベルのファイアウォール規則を�
 2. ツールバーの **[クライアント IP の追加]** をクリックし、現在使用しているコンピューターの IP アドレスを追加したら、**[保存]** をクリックします。 現在の IP アドレスに対してサーバーレベルのファイアウォール規則が作成されます。
 
 ## <a name="manage-firewall-rules-using-transact-sql"></a>Transact-SQL を使ってファイアウォール規則を管理する
-| カタログ ビューまたはストアド プロシージャ | Level | 説明 |
+| カタログ ビューまたはストアド プロシージャ | Level | [説明] |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |サーバー |現在のサーバー レベルのファイアウォール規則を表示 |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |サーバー |サーバー レベルのファイアウォール規則を作成または更新 |
@@ -139,7 +143,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```   
 
 ## <a name="manage-firewall-rules-using-azure-powershell"></a>Azure PowerShell を使ってファイアウォール規則を管理する
-| コマンドレット | Level | Description |
+| コマンドレット | Level | [説明] |
 | --- | --- | --- |
 | [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |サーバー |現在のサーバー レベルのファイアウォール規則を返す |
 | [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |サーバー |新しいサーバー レベルのファイアウォール規則を作成 |
@@ -160,7 +164,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 >
 
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Azure CLI を使ってファイアウォール規則を管理する
-| コマンドレット | Level | Description |
+| コマンドレット | Level | [説明] |
 | --- | --- | --- |
 |[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|サーバー|サーバーのファイアウォール規則を作成します。|
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|サーバー|サーバーのファイアウォール規則を一覧表示します。|
@@ -180,7 +184,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 >
 
 ## <a name="manage-firewall-rules-using-rest-api"></a>REST API を使ってファイアウォール規則を管理する
-| API | Level | Description |
+| API | Level | [説明] |
 | --- | --- | --- |
 | [ファイアウォール規則の一覧表示](https://docs.microsoft.com/rest/api/sql/FirewallRules/ListByServer) |サーバー |現在のサーバー レベルのファイアウォール規則を表示 |
 | [ファイアウォール規則の作成または更新](https://docs.microsoft.com/rest/api/sql/FirewallRules/CreateOrUpdate) |サーバー |サーバー レベルのファイアウォール規則を作成または更新 |
@@ -217,7 +221,7 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
   * Azure SQL Database サーバーへアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせ、ファイアウォール規則として、IP アドレス範囲を追加してください。
   * 動的 IP アドレスの代わりに、静的 IP アドレスを取得し、ファイアウォール規則として、IP アドレス範囲を追加してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - データベース レベルおよびサーバー レベルのファイアウォール規則の作成に関するクイック スタートについては、「[Azure SQL データベースの作成](sql-database-get-started-portal.md)」を参照してください。
 - オープン ソースまたはサードパーティ製のアプリケーションから Azure SQL Database に接続する方法の詳細については、 [SQL Database のクライアント クイック スタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関する記事をご覧ください。

@@ -12,23 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
+ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8e6d68612be4b7d4e1d6cea13e0f29636931abd8
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: e19833cb58f37f5f8b83d5558d74255583137684
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする
-このトピックでは、Azure Resource Manager テンプレートで反復処理して、リソースの複数のインスタンス、またはリソース上のプロパティの複数のインスタンスを作成する方法について説明します。
+この記事では、リソースを条件付きでデプロイする方法と、Azure Resource Manager テンプレートで反復処理して、リソースのインスタンスを複数作成する方法について説明します。
 
-テンプレートにロジックを追加してリソースをデプロイするかどうかを指定できるようにする必要がある場合、「[Conditionally deploy resource](#conditionally-deploy-resource) (リソースを条件付きでデプロイする)」を参照してください。
+## <a name="conditionally-deploy-resource"></a>条件付きでリソースをデプロイする
 
-配列変数に複数の要素を作成する例については、「[変数](resource-group-authoring-templates.md#variables)」を参照してください。
+デプロイ時にリソースのインスタンスを 1 つ作成するか、それとも 1 つも作成しないかを決定する必要がある場合は、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースはデプロイされます。 値が false の場合、リソースはデプロイされません。 たとえば、新しいストレージ アカウントをデプロイするか、既存のストレージ アカウントを使用するかを指定するには、次のようにします。
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
 
 ## <a name="resource-iteration"></a>リソースの反復
-あるリソース タイプのインスタンスを複数作成するには、そのリソース タイプに `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 数値は正の整数で、800 を超えることはできません。 リソース マネージャーは、並列でリソースを作成します。 そのため、作成される順序は保証されません。 反復処理されるリソースを順番に作成する場合は、「[シリアル コピー](#serial-copy)」を参照してください。 
+デプロイ時に、リソースのインスタンスを 1 つまたは複数作成することを決定する必要がある場合は、リソースの種類に `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。 数値は正の整数で、800 を超えることはできません。 
 
 複数回作成されるリソースは、次の形式を取ります。
 
@@ -112,151 +127,40 @@ ms.lasthandoff: 11/09/2017
 * storagefabrikam
 * storagecoho
 
-## <a name="serial-copy"></a>シリアル コピー
+既定では、リソース マネージャーは並列でリソースを作成します。 そのため、作成される順序は保証されません。 しかし、リソースが順番にデプロイされるように指定したい場合もあります。 たとえば、運用環境を更新するとき、一度に特定の数だけ更新されるように更新時間をずらす必要がある場合があります。
 
-copy 要素を使用して、あるリソース タイプのインスタンスを複数作成する場合、Resource Manager によって既定でそれらのインスタンスが並列的にデプロイされます。 しかし、リソースが順番にデプロイされるように指定したい場合もあります。 たとえば、運用環境を更新するとき、一度に特定の数だけ更新されるように更新時間をずらす必要がある場合があります。
+リソースの複数のインスタンスを逐次的にデプロイするには、`mode` を **serial** に設定し、`batchSize` を、一度にデプロイするインスタンスの数に設定します。 シリアル モードでは、Resource Manager はループ内で前のインスタンスへの依存関係を作成するので、前のバッチが完了するまで次のバッチは実行されません。
 
-Resource Manager では、複数のインスタンスを順番にデプロイできるようにするプロパティを copy 要素に指定できます。 copy 要素で `mode` を **serial** に設定し、`batchSize` を一度にデプロイするインスタンスの数に設定します。 シリアル モードでは、Resource Manager はループ内で前のインスタンスへの依存関係を作成するので、前のバッチが完了するまで次のバッチは実行されません。
-
-```json
-"copy": {
-    "name": "iterator",
-    "count": "[parameters('numberToDeploy')]",
-    "mode": "serial",
-    "batchSize": 2
-},
-```
-
-mode プロパティでも **parallel** が既定値として使用されます。
-
-実際のリソースを作成せずにシリアル コピーをテストするには、空の入れ子になったテンプレートをデプロイする次のテンプレートを使用します。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "numberToDeploy": {
-      "type": "int",
-      "minValue": 2,
-      "defaultValue": 5
-    }
-  },
-  "resources": [
-    {
-      "apiVersion": "2015-01-01",
-      "type": "Microsoft.Resources/deployments",
-      "name": "[concat('loop-', copyIndex())]",
-      "copy": {
-        "name": "iterator",
-        "count": "[parameters('numberToDeploy')]",
-        "mode": "serial",
-        "batchSize": 1
-      },
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [],
-          "outputs": {
-          }
-        }
-      }
-    }
-  ],
-  "outputs": {
-  }
-}
-```
-
-デプロイ履歴で、入れ子になったデプロイが順番に処理されていることに注意してください。
-
-![シリアル デプロイ](./media/resource-group-create-multiple/serial-copy.png)
-
-より現実に即したシナリオでは、次の例のように、Linux VM の 2 つのインスタンスを、入れ子になったテンプレートから一度にデプロイします。
+たとえば、ストレージ アカウントを一度に 2 つずつ、逐次的にデプロイするには、次のコマンドを使用します。
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "User name for the Virtual Machine."
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Password for the Virtual Machine."
-            }
-        },
-        "dnsLabelPrefix": {
-            "type": "string",
-            "metadata": {
-                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
-            }
-        },
-        "ubuntuOSVersion": {
-            "type": "string",
-            "defaultValue": "16.04.0-LTS",
-            "allowedValues": [
-                "12.04.5-LTS",
-                "14.04.5-LTS",
-                "15.10",
-                "16.04.0-LTS"
-            ],
-            "metadata": {
-                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
-            }
-        }
-    },
-    "variables": {
-        "templatelink": "https://raw.githubusercontent.com/rjmax/Build2017/master/Act1.TemplateEnhancements/Chapter03.LinuxVM.json"
-    },
     "resources": [
         {
-            "apiVersion": "2015-01-01",
-            "name": "[concat('nestedDeployment',copyIndex())]",
-            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-01-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {},
             "copy": {
-                "name": "myCopySet",
+                "name": "storagecopy",
                 "count": 4,
                 "mode": "serial",
                 "batchSize": 2
-            },
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('templatelink')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "adminUsername": {
-                        "value": "[parameters('adminUsername')]"
-                    },
-                    "adminPassword": {
-                        "value": "[parameters('adminPassword')]"
-                    },
-                    "dnsLabelPrefix": {
-                        "value": "[parameters('dnsLabelPrefix')]"
-                    },
-                    "ubuntuOSVersion": {
-                        "value": "[parameters('ubuntuOSVersion')]"
-                    },
-                    "index":{
-                        "value": "[copyIndex()]"
-                    }
-                }
             }
         }
-    ]
+    ],
+    "outputs": {}
 }
-```
+``` 
+
+mode プロパティでも **parallel** が既定値として使用されます。
 
 ## <a name="property-iteration"></a>プロパティの反復処理
 
@@ -352,50 +256,56 @@ Resource Manager はデプロイ中に `copy` 配列を展開します。 配列
 }
 ```
 
-各リソースのプロパティには copy 要素を 1 つのみ含めることができます。 1 つの反復ループを複数のプロパティに指定するには、copy 配列内の複数のオブジェクトを定義します。 各オブジェクトは個別に反復処理されます。 たとえば、ロード バランサーで `frontendIPConfigurations` プロパティと `loadBalancingRules` プロパティの両方の複数インスタンスを作成するには、1 つの copy 要素に両方のオブジェクトを定義します。 
+## <a name="variable-iteration"></a>変数の反復処理
+
+変数のインスタンスを複数作成するには、variables セクションで `copy` 要素を使用します。 関連する値を持ったオブジェクトのインスタンスを複数作成し、その後、それらの値をリソースのインスタンスに割り当てることがことができます。 copy を使用することで、array プロパティを持ったオブジェクトか、配列を作成できます。 次の例では、両方の方法を示します。
 
 ```json
 {
-    "name": "[variables('loadBalancerName')]",
-    "type": "Microsoft.Network/loadBalancers",
-    "properties": {
-        "copy": [
-          {
-              "name": "frontendIPConfigurations",
-              "count": 2,
-              "input": {
-                  "name": "[concat('loadBalancerFrontEnd', copyIndex('frontendIPConfigurations', 1))]",
-                  "properties": {
-                      "publicIPAddress": {
-                          "id": "[variables(concat('publicIPAddressID', copyIndex('frontendIPConfigurations', 1)))]"
-                      }
-                  }
-              }
-          },
-          {
-              "name": "loadBalancingRules",
-              "count": 2,
-              "input": {
-                  "name": "[concat('LBRuleForVIP', copyIndex('loadBalancingRules', 1))]",
-                  "properties": {
-                      "frontendIPConfiguration": {
-                          "id": "[variables(concat('frontEndIPConfigID', copyIndex('loadBalancingRules', 1)))]"
-                      },
-                      "backendAddressPool": {
-                          "id": "[variables('lbBackendPoolID')]"
-                      },
-                      "protocol": "tcp",
-                      "frontendPort": "[variables(concat('frontEndPort' copyIndex('loadBalancingRules', 1))]",
-                      "backendPort": "[variables(concat('backEndPort' copyIndex('loadBalancingRules', 1))]",
-                      "probe": {
-                          "id": "[variables('lbProbeID')]"
-                      }
-                  }
-              }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "disk-array-on-object": {
+      "copy": [
+        {
+          "name": "disks",
+          "count": 5,
+          "input": {
+            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+            "diskSizeGB": "1",
+            "diskIndex": "[copyIndex('disks')]"
           }
-        ],
-        ...
+        }
+      ]
+    },
+    "copy": [
+      {
+        "name": "disks-top-level-array",
+        "count": 5,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks-top-level-array')]"
+        }
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "exampleObject": {
+      "value": "[variables('disk-array-on-object')]",
+      "type": "object"
+    },
+    "exampleArrayOnObject": {
+      "value": "[variables('disk-array-on-object').disks]",
+      "type" : "array"
+    },
+    "exampleArray": {
+      "value": "[variables('disks-top-level-array')]",
+      "type" : "array"
     }
+  }
 }
 ```
 
@@ -435,7 +345,7 @@ Resource Manager はデプロイ中に `copy` 配列を展開します。 配列
 }
 ```
 
-## <a name="create-multiple-instances-of-a-child-resource"></a>子リソースの複数のインスタンスの作成
+## <a name="iteration-for-a-child-resource"></a>子リソースの反復処理
 子リソースにコピー ループを使用することはできません。 通常他のリソース内の入れ子として定義されるリソースの複数のインスタンスを作成するには、代わりにそのリソースを最上位のリソースとして作成する必要があります。 type および name の各プロパティを使用して、親リソースとの関係を定義します。
 
 たとえば、通常はデータ ファクトリ内の子リソースとしてデータセットを定義するとします。
@@ -485,30 +395,21 @@ Resource Manager はデプロイ中に `copy` 配列を展開します。 配列
 }]
 ```
 
-## <a name="conditionally-deploy-resource"></a>条件付きでリソースをデプロイする
+## <a name="example-templates"></a>サンプル テンプレート
 
-リソースをデプロイするかどうかを指定するには、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースはデプロイされます。 値が false の場合、リソースはデプロイされません。 たとえば、新しいストレージ アカウントをデプロイするか、既存のストレージ アカウントを使用するかを指定するには、次のようにします。
+次の例は、複数のリソースやプロパティを作成する場合の一般的なシナリオを示したものです。
 
-```json
-{
-    "condition": "[equals(parameters('newOrExisting'),'new')]",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageAccountName')]",
-    "apiVersion": "2017-06-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "[variables('storageAccountType')]"
-    },
-    "kind": "Storage",
-    "properties": {}
-}
-```
+|テンプレート  |[説明]  |
+|---------|---------|
+|[Copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |名前にインデックス番号を使用した、複数のストレージ アカウントをデプロイします。 |
+|[Serial copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |
+|[Copy storage with array](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |複数のストレージ アカウントをデプロイします。 名前には、配列からの値が含まれます。 |
+|[VM with a new or existing Virtual Network, Storage, and Public IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) |仮想マシンを使用した新規または既存のリソースを、条件付きでデプロイします。 |
+|[VM deployment with a variable number of data disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |仮想マシンを使用したデータ ディスクを複数デプロイします。 |
+|[Copy variables](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |変数を反復処理する各種の方法を示します。 |
+|[Multiple security rules](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |ネットワーク セキュリティ グループに複数のセキュリティ規則をデプロイします。 セキュリティ規則はパラメーターから構築されます。 |
 
-新しいリソースを使用するか、既存のリソースを使用するかの例は、「[新規または既存の条件テンプレート](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json)」の例を参照してください。
-
-仮想マシンのデプロイにパスワードを使用するか、SSH キーを使用するかの例は、「[ユーザー名または SSH 条件テンプレート](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json)」の例を参照してください。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 * テンプレートをデプロイする方法については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 

@@ -15,37 +15,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 019d4ba9124173a7de555c46d32881ecf639a34c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 958533079c0e0864ff0e561ad865114ef2a415a8
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
-分散型サービス拒否 (DDoS) Protection の有効と無効を切り替える方法と、Azure DDoS Protection Standard を使用して DDoS 攻撃を緩和するためにテレメトリを使用する方法について説明します。 DDoS Protection Standard は、Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられた Azure リソース (仮想マシン、ロード バランサー、アプリケーション ゲートウェイなど) を保護します。 DDoS Protection Standard とその機能の詳細については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 
+分散型サービス拒否 (DDoS) Protection の有効と無効を切り替える方法と、テレメトリを使用して Azure DDoS Protection Standard で DDoS 攻撃を軽減する方法について説明します。 DDoS Protection Standard は、Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられた Azure リソース (仮想マシン、ロード バランサー、アプリケーション ゲートウェイなど) を保護します。 DDoS Protection Standard とその機能の詳細については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 
 
 >[!IMPORTANT]
->Azure DDoS Protection Standard (DDoS Protection) は、現在プレビュー段階にあります。 DDoS Protection がサポートされる Azure リソース数と使用可能なリージョンは限られています。 使用可能なリージョンの一覧については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 サブスクリプション用に DDoS Protection を有効にするには、制限されたプレビュー中に[このサービスに登録する](http://aka.ms/ddosprotection)必要があります。 登録すると、Azure DDoS チームから連絡があり、有効化プロセスが案内されます。 
+>Azure DDoS Protection Standard (DDoS Protection) は、現在プレビュー段階にあります。 DDoS Protection がサポートされる Azure リソースの数と使用可能なリージョンは限られています。 使用可能なリージョンの一覧については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 サブスクリプション用に DDoS Protection を有効にするには、制限されたプレビュー中に[このサービスに登録する](http://aka.ms/ddosprotection)必要があります。 登録すると、Azure DDoS チームから連絡があり、有効化プロセスが案内されます。 
 
 ## <a name="enable-ddos-protection-standard---new-virtual-network"></a>DDoS Protection Standard を有効にする - 新しい仮想ネットワーク
 
 1. Azure Portal (http://portal.azure.com) にログインします。Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-2. Azure Portal の左上にある **[新規]** ボタンをクリックします。
+2. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 3. **[ネットワーク]** を選択してから、**[仮想ネットワーク]** を選択します。
-4. 任意に選択した設定で、仮想ネットワークを作成します。 仮想ネットワークの作成の詳細については、「[複数のサブネットを含んだ仮想ネットワークを作成する](virtual-networks-create-vnet-arm-pportal.md)」を参照してください。 *[DDoS 保護]* で、**[有効]** をクリックしてから、**[作成]** をクリックします。
+4. 任意に選択した設定で、仮想ネットワークを作成します。 仮想ネットワークの作成の詳細については、「[複数のサブネットを含んだ仮想ネットワークを作成する](virtual-networks-create-vnet-arm-pportal.md)」を参照してください。 **[DDoS 保護]** で、**[有効]** をクリックしてから、**[作成]** をクリックします。 **DDoS protection** が表示されない場合、お使いのサブスクリプションがその機能に登録されていない可能性があります。 **DDoS protection** が表示されるには、事前に[登録](http://aka.ms/ddosprotection)を完了し、サブスクリプションがその機能で有効になったという通知を受信している必要があります。
 
     ![Create virtual network](./media/ddos-protection-manage-portal/ddos-create-vnet.png)   
 
     > [!WARNING]
-    > リージョンを選択する場合は、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」に記載された、サポートされているリージョンの一覧から選択してください。
+    > リージョンを選択する場合は、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」に記載された、サポートされているリージョンの一覧から選択してください。 サポートされている地域を選択しないと、仮想ネットワークの作成に失敗します。
 
     DDoS Protection を有効にすると課金が発生するという警告が表示されます。 プレビュー中、DDoS Protection に対する課金は発生しません。 一般公開の時点から課金が発生します。 お客様は、課金と一般公開の開始 30 日前に通知を受け取ります。
 
 ## <a name="enable-ddos-protection-standard---existing-virtual-network"></a>DDoS Protection Standard を有効にする - 既存仮想ネットワーク 
 
 1. Azure Portal メニューの **[仮想ネットワーク]** をクリックしてから、仮想ネットワークを選択します。
-2. **}[DDoS Protection]** をクリックし、*}[DDoS Protection]* 画面で **[有効]** をクリックしてから、**[保存]** をクリックします。 
+2. **}[DDoS Protection]** をクリックし、*}[DDoS Protection]* 画面で **[有効]** をクリックしてから、**[保存]** をクリックします。 **DDoS protection** が表示されない場合、お使いのサブスクリプションがその機能に登録されていない可能性があります。 **DDoS protection** が表示されるには、事前に[登録](http://aka.ms/ddosprotection)を完了し、サブスクリプションがその機能で有効になったという通知を受信している必要があります。 
 
     > [!WARNING]
     > 仮想ネットワークは、サポートされているリージョン内に存在している必要があります。 サポートされているリージョンの一覧については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。
@@ -99,7 +99,7 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
 - **転送された "タグ名" (たとえば、転送された受信パケット DDoS):** DDoS システムによって宛先 VIP に転送されたパケットの数 (フィルター処理されなかったトラフィック)。
 - **タグ名なし (たとえば、受信パケット DDoS):** 除去システムに入力されたパケットの総数 (削除および転送されたパケットの総数を表します)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure 診断ログの詳細を確認する](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Log Analytics を使用した、Azure ストレージからのログの分析](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

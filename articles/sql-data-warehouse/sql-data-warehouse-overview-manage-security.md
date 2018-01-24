@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: security
-ms.date: 10/31/2016
+ms.date: 12/14/2017
 ms.author: rortloff;barbkess
-ms.openlocfilehash: 36f990dd16a3c6b65d16bab4b945ec56a1bb1000
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aa0d6cb03196167ec077b0ed4bbbb9d118951219
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL Data Warehouse でのデータベース保護
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="connection-security"></a>接続のセキュリティ
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。 ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。  詳細については、[Azure SQL Database ファイアウォール][Azure SQL Database firewall]に関する記事、[sp_set_firewall_rule][sp_set_firewall_rule] に関するページ、[sp_set_database_firewall_rule][sp_set_database_firewall_rule] に関するページをご覧ください。
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。 ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。  詳しくは、[Azure SQL Database ファイアウォール][Azure SQL Database firewall] に関するページや [sp_set_firewall_rule][sp_set_firewall_rule] に関するページをご覧ください。
 
 SQL Data Warehouse への接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
@@ -73,11 +73,17 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 接続しているサーバー管理者のアカウントは db_owner のメンバーであり、データベース内ですべての操作を実行する権限を持ちます。 スキーマのアップグレードやその他の管理操作をデプロイするために、このアカウントを保存します。 アクセス許可が限定された "ApplicationUser" アカウントを使用して、アプリケーションで必要な最小限の特権により、アプリケーションをデータベースに接続します。
 
-ユーザーが Azure SQL Database で実行できる操作をさらに制限する方法がいくつかあります。
+ユーザーが Azure SQL Data Warehouse で実行できる操作をさらに制限する方法がいくつかあります。
 
-* 詳細な[アクセス許可][Permissions]により、個々の列、テーブル、ビュー、プロシージャ、データベース内のその他のオブジェクトで実行できる操作を制御できます。 詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。 詳細なアクセス許可システムは、多少複雑なため、効率的に使用するには調査が必要になります。
+* 詳細な[アクセス許可][Permissions]により、個々の列、テーブル、ビュー、スキーマ、プロシージャ、その他のデータベース内のオブジェクトで実行できる操作を制御できます。 詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。 詳細なアクセス許可システムは、多少複雑なため、効率的に使用するには調査が必要になります。
 * db_datareader と db_datawriter 以外の[データベース ロール][Database roles]を使用して、権限の高いアプリケーション ユーザー アカウントや権限の低い管理アカウントを作成できます。 組み込みの固定データベース ロールを使用すると、簡単にアクセス許可を付与できますが、その結果、必要以上のアクセス許可を付与することになる可能性があります。
 * [ストアド プロシージャ][Stored procedures]を使用すると、データベースで実行できるアクションを制限できます。
+
+ユーザー定義スキーマに対する読み取りアクセスを付与する例を次に示します。
+```sql
+--CREATE SCHEMA Test
+GRANT SELECT ON SCHEMA::Test to ApplicationUser
+```
 
 Azure Portal または Azure Resource Manager API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 このトピックの詳細については、[Azure Portal でのロール ベースのアクセス制御][Role-based access control in Azure Portal]に関する記事をご覧ください。
 
@@ -86,7 +92,7 @@ Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用する�
 
 データベースは、[Azure Portal][Encryption with Portal] または [T-SQL][Encryption with TSQL] を使用して暗号化できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 さまざまなプロトコルでの SQL Data Warehouse への接続の詳細と例については、[SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関する記事をご覧ください。
 
 <!--Image references-->

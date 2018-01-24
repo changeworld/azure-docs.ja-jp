@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: jgao
-ms.openlocfilehash: 1a2bb4c56484540f8b5de5fb61ca5b5f611e99c4
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1f5139f3fdb1cc73bb40828021256bed4290e1a2
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>Power Query を使用した Excel から Hadoop への接続
 マイクロソフトのビッグ データ ソリューションの重要な特徴の 1 つに、Microsoft ビジネス インテリジェンス (BI) コンポーネントと Azure HDInsight の Hadoop クラスターとの統合があります。 主な例は、Microsoft Power Query for Excel アドインを使用して Hadoop クラスターと関連付けられたデータを格納する Azure Storage アカウントに Excel を接続する機能です。 この記事では、Power Query をセットアップして、HDInsight で管理される Hadoop クラスターに関連付けられたデータの照会に使用する方法を説明します。
@@ -71,10 +71,11 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
    
     ![HDI.PowerQuery.ImportedTable][image-hdi-powerquery-imported-table]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Power Query を使用して HDInsight から Excel にデータを取得する方法を学習しました。 同様に、Azure SQL Database に HDInsight からデータを取得することもできます。 また、HDInsight にデータをアップロードすることもできます。 詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](apache-hadoop-connect-hive-power-bi.md)。
+* [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 * [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./../hdinsight-connect-hive-zeppelin.md)。
 * [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](apache-hadoop-connect-excel-hive-odbc-driver.md)。
 * [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](apache-hadoop-visual-studio-tools-get-started.md)。

@@ -58,7 +58,7 @@ Windows 仮想マシンまたは Linux VM 用の Secure Shell (SSH) に対する
 
 Windows VM の場合は、次のオプションもあります。
 
-* Azure クラシック ポータルで VM を検索し、コマンド バーで **[リモート アクセスのリセット]** をクリックする。
+* Azure Portal で VM を検索し、コマンド バーで **[リモート アクセスのリセット]** をクリックする。
 * [「Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine (Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング)」](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を参照する。
 * Windows PowerShell リモート処理を使用して VM に接続するか、その他のリソースに対する追加のエンドポイントを作成して VM に接続する。 詳細については、[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
 
@@ -85,7 +85,7 @@ Azure によって提供されるイメージには、事前に構成された�
 
 追加情報:
 
-* Linux イメージの場合、Azure クラシック ポータルを使用すると既定のユーザー名として「azureuser」が指定されますが、仮想マシンの作成に [簡易作成] ではなく [ギャラリーから] を使用すれば、ユーザー名をを変更できます。 また [ギャラリーから] では、ログインにパスワードを使用するか、SSH キーを使用するか、それとも両方を使用するかを指定することもできます。 既定のユーザー アカウントは、特権のあるコマンドを実行するための "sudo" アクセス権を付与された、特権のないユーザーです。 "root" アカウントは無効化されます。
+* Linux イメージの場合、Azure Portal を使用すると既定のユーザー名として「azureuser」が指定されますが、仮想マシンの作成に [簡易作成] ではなく [ギャラリーから] を使用すれば、ユーザー名をを変更できます。 また [ギャラリーから] では、ログインにパスワードを使用するか、SSH キーを使用するか、それとも両方を使用するかを指定することもできます。 既定のユーザー アカウントは、特権のあるコマンドを実行するための "sudo" アクセス権を付与された、特権のないユーザーです。 "root" アカウントは無効化されます。
 * Windows イメージの場合は、VM の作成時にユーザー名とパスワードを指定する必要があります。 アカウントは Administrators グループに追加されます。
 
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Azure では、仮想マシン上でウイルス対策を実行できますか。
@@ -96,7 +96,7 @@ Azure ではウイルス対策ソリューションとしていくつかのオ�
 * [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>バックアップと回復についてはどのようなオプションがありますか。
-Azure Backup は、特定の地域でプレビューとして提供されています。 詳細については、「 [Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../articles/backup/backup-azure-vms.md)」を参照してください。 その他のソリューションは認定パートナーから利用できます。 利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
+Azure Backup は、特定の地域でプレビューとして提供されています。 詳細については、「 [Back up Azure virtual machines (Azure 仮想マシンのバックアップ)](../articles/backup/backup-azure-arm-vms.md)」を参照してください。 その他のソリューションは認定パートナーから利用できます。 利用可能なソリューションについては、Azure Marketplace を検索して確認してください。
 
 追加オプションとして、BLOB ストレージのスナップショット機能を使用することもできます。 これを使用する場合は、BLOB スナップショットに依存する操作を実行する前に、VM を停止する必要があります。 これにより、保留中のデータの書き込みが回避され、ファイル システムが一貫性のある状態に維持されます。
 
@@ -105,7 +105,7 @@ Azure では、VM のサイズおよびオペレーティング システムに�
 
 VM が実行中または停止状態のときには料金が発生しますが、VM が停止 (割り当て解除) 状態のときには料金は課金されません。 VM を停止 (割り当て解除) 状態にするには、次のいずれかを行います。
 
-* Azure クラシック ポータルから VM をシャット ダウンまたは削除する。
+* Azure Portal から VM をシャット ダウンまたは削除する。
 * Stop-AzureVM コマンドレットを使用する (Azure PowerShell モジュールで利用可能)。
 * サービス管理 REST API でロールのシャット ダウン操作を使用し、PostShutdownAction 要素に StoppedDeallocated を指定する。
 
@@ -118,7 +118,7 @@ Azure では、Azure データ センターでの定期的な計画メンテナ�
 
 スタンドアロン VM (可用性セットに含まれない VM) については、計画メンテナンスの 1 週間前までに Azure からサブスクリプションのサービス管理者に電子メールが送られ、更新中に VM  が再起動される可能性がある旨が通知されます。 その場合、VM 上で実行されているアプリケーションにダウンタイムが発生する可能性があります。
 
-計画メンテナンスのために再起動が発生した場合、利用者は Azure クラシック ポータルまたは Azure PowerShell を使用して再起動のログを確認できます。 詳細については、「 [Viewing VM Reboot Logs (VM の再起動ログの確認)](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)」を参照してください。
+計画メンテナンスのために再起動が発生した場合、利用者は Azure Portal または Azure PowerShell を使用して再起動のログを確認できます。 詳細については、「 [Viewing VM Reboot Logs (VM の再起動ログの確認)](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/)」を参照してください。
 
 冗長性を確保する必要がある場合は、同様に構成された VM を同じ可用性セット内に 2 つ以上配置してください。 そうすることで、計画メンテナンスや計画外メンテナンスの際にも、最低 1 つの VM を利用できるようになります。 Azure では、この構成について一定レベルの VM 可用性を保証しています。 詳細については、「[仮想マシンの可用性管理](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 

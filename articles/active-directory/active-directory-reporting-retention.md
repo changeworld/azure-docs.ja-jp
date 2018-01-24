@@ -4,22 +4,22 @@ description: "Azure Active Directory でのレポート データの保持ポリ
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/17/2017
+ms.date: 12/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 933d251903f4ca74902e984e7a1581a75345ee7f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 61d3e8fbe26ab24ba0b551e52be0769228f09a11
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory レポートの保持ポリシー
 
@@ -40,8 +40,8 @@ ms.lasthandoff: 10/26/2017
 
 **A:**
 
-- **すぐに** - Azure クラシック ポータルで既にレポートを操作している場合
-- **2 時間以内** - Azure クラシック ポータルでレポートを有効にしていない場合
+- **すぐに** - Azure Portal で既にレポートを操作している場合
+- **2 時間以内** - Azure Portal でレポートを有効にしていない場合
 
 ---
 **Q: セキュリティ シグナルの収集を開始するにはどうすればよいか**  
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/26/2017
 | :--                    | :--           | :--                 | :--                 |
 | ディレクトリ監査        | 7 日        | 30 日             | 30 日             |
 | サインイン アクティビティ       | 該当なし           | 30 日             | 30 日             |
-| Azure MFA の使用状況        | 90 日間       | 90 日間             | 90 日間             |
+| Azure MFA の使用状況        | 30 日       | 30 日             | 30 日             |
 
 **セキュリティ シグナル**
 

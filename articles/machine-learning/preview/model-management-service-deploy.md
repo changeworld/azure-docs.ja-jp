@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 0d59dccec4532ff0903972f2b15ed9dd8429a2ed
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/03/2018
+ms.openlocfilehash: 965e33f3c7d050dca8f6c4e92d75cb7c7a8fa60d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Machine Learning モデルを Web サービスとしてデプロイする
 
@@ -43,6 +43,7 @@ import pickle
 from sklearn import datasets
 iris = datasets.load_iris()
 X, y = iris.data, iris.target
+clf = linear_model.LogisticRegression()
 clf.fit(X, y)  
 saved_model = pickle.dumps(clf)
 ```
@@ -79,16 +80,16 @@ inputs = {"input_df": SampleDefinition(DataTypes.PANDAS, yourinputdataframe)}
 generate_schema(run_func=run, inputs=inputs, filepath='service_schema.json')
 ```
 
-### <a name="3-create-a-scorepy-file"></a>3.score.py ファイルを作成する
+### <a name="3-create-a-scorepy-file"></a>手順 3.score.py ファイルを作成する
 score.py ファイルを提供します。このファイルは、モデルを読み込み、モデルを使った予測の結果を返します。
 
 このファイルには、2 つの関数 init と run が含まれる必要があります。
 
 モデル入力と予測データの収集に役立つデータ収集機能を有効にするには、score.py ファイルの先頭に次のコードを追加します。
 
-    ```
-    from azureml.datacollector import ModelDataCollector
-    ```
+```python
+from azureml.datacollector import ModelDataCollector
+```
 
 この機能を使う方法について詳しくは、[モデル データの収集](how-to-use-model-data-collection.md)に関するセクションをご覧ください。
 
@@ -185,5 +186,5 @@ az ml service run realtime -i <service id> -d "{\"input_df\": [INPUT DATA]}"
 az ml service run realtime -i <service id> -d "{\"input_df\": [{\"sepal length\": 3.0, \"sepal width\": 3.6, \"petal width\": 1.3, \"petal length\":0.25}]}"
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Web サービスをローカルに実行してテストしたので、クラスターにデプロイして大規模に使うことができます。 Web サービスのデプロイ用にクラスターをセットアップする方法について詳しくは、「[モデル管理のセットアップ](deployment-setup-configuration.md)」をご覧ください。 

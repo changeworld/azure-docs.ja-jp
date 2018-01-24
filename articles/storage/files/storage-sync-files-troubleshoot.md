@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: f12ee39f900373fcab80e59bc20de59fa039f0ff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 23f111bef6a68115e4474f3c13e91d69d7e89e1c
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -42,6 +42,9 @@ installer.log をレビューして、インストールが失敗した原因を
 
 > [!Note]  
 > コンピューターが Microsoft Update を使用するように設定されているときに Windows Update サービスが実行されていない場合、エージェントのインストールは失敗します。
+
+<a id="agent-installation-websitename-failure"></a>**エージェントのインストールが "Storage Sync Agent Wizard ended prematurely"(Storage Sync Agent ウィザードが中断されました) というエラーで失敗する**  
+この問題は、IIS Web サイトの既定の名前が変更された場合に発生する可能性があります。 この問題を回避するには、IIS の既定の Web サイト名を "既定の Web サイト" に変更して、インストールを再試行してください。 この問題は、エージェントの今後の更新プログラムで修正される予定です。 
 
 <a id="server-registration-missing"></a>**Azure Portal の [登録済みサーバー] にサーバーが表示されない**  
 サーバーがストレージ同期サービスの **[登録済みサーバー]** に表示されない場合:
@@ -91,8 +94,8 @@ Reset-StorageSyncServer
 * 書き込み: ロール割り当ての作成
 
 次の組み込みロールには、必要な Microsoft 承認アクセス許可が付与されています。  
-* 所有者
-* ユーザーアクセスの管理者
+* Owner
+* User Access Administrator
 
 現在のユーザー アカウントのロールに必要なアクセス許可が付与されているかどうかを確認するには:  
 1. Azure ポータルで、**[リソース グループ]** を選択します。
@@ -102,10 +105,11 @@ Reset-StorageSyncServer
     * **[ロールの割り当て]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
     * **[ロール定義]** のアクセス許可が **[読み取り]** と **[書き込み]** になっている必要があります。
 
-<a id="cloud-endpoint-deleteinternalerror"></a>**クラウド エンドポイントの削除が "MgmtInternalError" エラーで失敗する**  
-この問題は、クラウド エンドポイントを削除する前に、Azure ファイル共有アカウントまたはストレージ アカウントが削除された場合に発生することがあります。 この問題は今後の更新で修正される予定です。 その時点で、Azure のファイル共有またはストレージ アカウントを削除した後でクラウド エンドポイントを削除できるようになります。
+<a id="server-endpoint-createjobfailed"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134375898) というエラーで失敗する**                                                                                                                           
+この問題は、サーバー エンドポイントのパスがシステム ボリューム上にあり、クラウドの階層化が有効な場合に発生します。 システム ボリュームでは、クラウドの階層化はサポートされていません。 システム ボリュームにサーバー エンドポイントを作成するには、サーバー エンドポイントを作成するときにクラウドの階層化を無効にします。
 
-現時点でこの問題の発生を防ぐには、Azure のファイル共有またはストレージ アカウントを削除する前に、クラウド エンドポイントを削除します。
+<a id="server-endpoint-deletejobexpired"></a>**サーバー エンドポイントの削除が "MgmtServerJobExpired" エラーで失敗する**                
+この問題は、サーバーがオフラインの場合、またはネットワークに接続できない場合に発生します。 サーバーを使用できなくなったら、ポータルでサーバーの登録を解除します。これで、サーバー エンドポイントが削除されます。 サーバー エンドポイントを削除するには、[Azure File Sync 使用したサーバーの登録解除](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)に関するセクションで説明されている手順を実行します。
 
 ## <a name="sync"></a>同期
 <a id="afs-change-detection"></a>**SMB またはポータルを使用して Azure ファイル共有内にファイルを直接作成した場合、ファイルが同期グループ内のサーバーと同期されるまでどのくらい時間がかかりますか?**  

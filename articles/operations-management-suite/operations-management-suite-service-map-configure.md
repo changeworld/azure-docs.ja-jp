@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 0823cc54731ac1cd7f39de256a899696683375a8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f5ffbb6c2d699da143e12c51c38cba602f5a8526
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Operations Management Suite の Service Map の構成
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -28,19 +28,19 @@ ms.lasthandoff: 11/22/2017
 ## <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
 | ファイル | OS | バージョン | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.2.1 | CBF050BFEA78B56A138CB1313DE0E75ABC30187C1B96EF9B4CBDEDD9EDFF6A17 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.2.1 | F4560E951F6C57A7466C82052BAFBF9515DC80DDA794ED8FB4DB02CEBA743277 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.3.0 | 1F5261CAAF6C8DF4E03E4927DA918B3461B40B41C6BF5845803878D7CF975693 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.3.0 | 7BADFF2411899114F0214766160E4E871A2462DC137141CEEDEFAF528F428ADD  |
 
 
 ## <a name="connected-sources"></a>接続先ソース
 サービス マップは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Operations Management Suite への接続に関して OMS エージェントに依存しています。 つまり、サーバーには OMS エージェントを先にインストールして構成する必要があり、Dependency Agent はその操作の後でインストールできます。 次の表では、Service Map ソリューションでサポートされている接続先ソースについて説明します。
 
-| 接続先ソース | サポートされています | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 |:--|:--|:--|
-| Windows エージェント | はい | サービス マップは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br>[OMS エージェント](../log-analytics/log-analytics-windows-agents.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
-| Linux エージェント | はい | サービス マップは、Linux エージェント コンピューターからのデータを分析して収集します。 <br><br>[OMS エージェント](../log-analytics/log-analytics-linux-agents.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
-| System Center Operations Manager 管理グループ | あり | Service Map は、接続された [System Center Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br>System Center Operations Manager エージェント コンピューターから Operations Management Suite への直接接続が必要です。 データは管理グループから Operations Management Suite レポジトリに転送されます。|
-| Azure ストレージ アカウント | いいえ | Service Map はエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
+| Windows エージェント | [はい] | サービス マップは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br>[OMS エージェント](../log-analytics/log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
+| Linux エージェント | [はい] | サービス マップは、Linux エージェント コンピューターからのデータを分析して収集します。 <br><br>[OMS エージェント](../log-analytics/log-analytics-linux-agents.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
+| System Center Operations Manager 管理グループ | [はい] | Service Map は、接続された [System Center Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br>System Center Operations Manager エージェント コンピューターから Operations Management Suite への直接接続が必要です。 データは管理グループから Operations Management Suite レポジトリに転送されます。|
+| Azure ストレージ アカウント | いいえ  | Service Map はエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
 Service Map でサポートされるのは 64 ビット プラットフォームのみです。
 
@@ -74,7 +74,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
 各 Windows コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1.  「[Windows コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-windows-agents.md)」の手順に従って、OMS エージェントをインストールします。
+1.  「[Windows コンピューターを Log Analytics に接続する](../log-analytics/log-analytics-windows-agent.md)」の手順に従って、OMS エージェントをインストールします。
 2.  Windows エージェントをダウンロードし、次のコマンドを使用して実行します。 <br>`InstallDependencyAgent-Windows.exe`
 3.  ウィザードに従ってエージェントをインストールします。
 4.  Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントのログ ディレクトリは、%Programfiles%\Microsoft Dependency Agent\logs にあります。 
@@ -84,7 +84,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
     InstallDependencyAgent-Windows.exe /?
 
-| フラグ | Description |
+| フラグ | [説明] |
 |:--|:--|
 | /? | コマンド ライン オプションの一覧を取得します。 |
 | /S | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
@@ -106,7 +106,7 @@ Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナ
 
     InstallDependencyAgent-Linux64.bin -help
 
-| フラグ | Description |
+| フラグ | [説明] |
 |:--|:--|
 | -help | コマンド ライン オプションの一覧を取得します。 |
 | -s | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
@@ -254,7 +254,7 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 次の表に、コード番号と推奨される解決策を示します。
 
-| コード | 説明 | 解決策 |
+| コード | [説明] | 解決策 |
 |:--|:--|:--|
 | 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>"Windows8.1-KB2999226-x64.msu" の次の行に "Error 0x80240017: Failed to execute MSU package (エラー 0x80240017: MSU パッケージを実行できませんでした)" と表示される場合は、KB2999226 のインストールに必要な前提条件が満たされていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関するページの前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 
@@ -262,8 +262,8 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 #### <a name="server-doesnt-appear-in-service-map"></a>サーバーが Service Map に表示されない
 Dependency Agent のインストールに成功しても、サービス マップ ソリューションにはサーバーが表示されません。
 * Dependency Agent は正しくインストールされているのでしょうか?  これについては、サービスがインストールされているか、実行中かを確認することで検証できます。<br><br>
-**Windows**: "Microsoft Dependency Agent" という名前のサービスを探してください。<br>
-**Linux**: "microsoft-dependency-agent" という名前の実行中のプロセスを探してください。
+**Windows**: "Microsoft Dependency Agent" というサービスを探します。<br>
+**Linux**: "microsoft-dependency-agent" という実行中のプロセスを探します。
 
 * 現在ご利用されているのは、[無料の価格レベルの Operations Management Suite または Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers) ですか。 無料のプランでは、一意のサービス マップ サーバーを最大 5 台まで使用できます。 以前使用していた 5 台がデータを送信していない場合でも、6 台目以降のサーバーはサービス マップに表示されません。
 
@@ -350,8 +350,8 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 16.04 | 4.4.0-98 |
-| 14.04 | 3.13.0-135<br>4.4.0-98 |
+| 16.04 | 4.4.0-103<br>4.11.0-1016 |
+| 14.04 | 3.13.0-137<br>4.4.0-103 |
 
 ### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Unbreakable Enterprise Kernel を搭載した Oracle Enterprise Linux
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
@@ -367,8 +367,6 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 
 | OS バージョン | カーネル バージョン
 |:--|:--|
-| 5.8 | Oracle 2.6.32-300 (UEK R1) |
-| 5.9 | Oracle 2.6.39-300 (UEK R2) |
 | 5.10 | Oracle 2.6.39-400 (UEK R2) |
 | 5.11 | Oracle 2.6.39-400 (UEK R2) |
 
@@ -377,16 +375,10 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 #### <a name="suse-linux-11"></a>SUSE Linux 11
 | OS バージョン | カーネル バージョン
 |:--|:--|
-| 11 | 2.6.27 |
-| 11 SP1 | 2.6.32 |
-| 11 SP2 | 3.0.13 |
-| 11 SP3 | 3.0.76 |
-| 11 SP4 | 3.0.101 |
+| 11 SP2 | 3.0.101-0.7 |
+| 11 SP3 | 3.0.101-0.47 |
+| 11 SP4 | 3.0.101-65 |
 
-#### <a name="suse-linux-10"></a>SUSE Linux 10
-| OS バージョン | カーネル バージョン
-|:--|:--|
-| 10 SP4 | 2.6.16.60 |
 
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 マイクロソフトは、お客様によるサービス マップ サービスの使用を通して、使用状況とパフォーマンス データを自動的に収集します。 Microsoft はこのデータを使用して、提供する Service Map サービスの品質、セキュリティ、整合性の向上に努めています。 データには、オペレーティング システムやバージョンなど、ソフトウェアの構成に関する情報が含まれています。 また、正確で効果的なトラブルシューティングの機能を提供するために、IP アドレス、DNS 名、ワークステーション名も含まれています。 名前や住所などの連絡先情報は収集されません。
@@ -395,5 +387,5 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Map をデプロイして構成したら、[Service Map を使用する](operations-management-suite-service-map.md)方法を確認します。

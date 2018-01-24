@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b507b9108dca2fd3aee4acdac231acad9c9154e8
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: cc7d1e290465d9254cbd7fe9e8ba71cc740b0368
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>大規模な IoT Edge モジュールの展開と監視 - プレビュー
 
@@ -40,7 +40,7 @@ Azure IoT Edge を使用することにより、分析をエッジに移動し�
 
 ## <a name="create-a-deployment"></a>デプロイの作成
 
-1. [Azure Portal][lnk-portal] にサインインし、IoT ハブに移動します。 
+1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
 1. **[IoT Edge (preview)]\(IoT Edge (プレビュー)\)** を選択します。
 1. **[Add IoT Edge Deployment]\(IoT Edge の展開の追加\)** を選びます。
 
@@ -61,26 +61,25 @@ Azure IoT Edge を使用することにより、分析をエッジに移動し�
 >[!NOTE]
 >Azure Machine Learning および Azure Functions では、自動化された Azure サービスの展開はまだサポートされていません。 デプロイにそれらのサービスを手動で追加するには、カスタム モジュールの展開を使用します。 
 
-Azure サービスからモジュールを追加するには、次の手順を実行します。
-1. **[Add Azure service IoT Edge module]\(IoT Edge モジュールに Azure サービスを追加\)** を選択します。
+Azure Stream Analytics からモジュールを追加するには、次の手順を実行します。
+1. **[Import Azure Stream Analytics IoT Edge module]\(Azure Stream Analytics IoT Edge モジュールのインポート\)** を選択します。
 1. ドロップダウン メニューを使用して、展開する Azure サービスのインスタンスを選択します。
 1. **[保存]** を選択してデプロイにモジュールを追加します。 
 
 モジュールとしてカスタム コードを追加する、または Azure のサービス モジュールを手動で追加するには、次の手順を実行します。
-1. **[Add custom IoT Edge module]\(IoT Edge モジュールに カスタム コードを追加\)** を選択します。
+1. **[Add IoT Edge module]\(IoT Edge モジュールの追加\)** を選択します。
 1. モジュールに **[名前]** を付けます。
-1. **[イメージ]** フィールドに、このモジュールの Docker コンテナー イメージを入力します。`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`
-1. **[OS]** と **[アーキテクチャ]** の下にあるドロップダウン メニューを使用して、このモジュールを表す Docker コンテナーのプロパティを識別します。 
-1. コンテナーに渡す **[Create options]\(作成オプション\)** を指定します。 詳細については、[Docker の作成][lnk-docker-create]に関するページを参照してください。
+1. **[イメージの URL]** フィールドに、モジュールの Docker コンテナー イメージを入力します。 
+1. コンテナーに渡す **[Container Create Options]\(コンテナー作成オプション\)** を指定します。 詳細については、[Docker の作成][lnk-docker-create]に関するページを参照してください。
 1. ドロップダウン メニューを使用して、**[再起動ポリシー]** を選択します。 次のオプションから選択します。 
    * **[Always]\(常時\)** - 何らかの理由でシャット ダウンした場合に必ずモジュールを再起動します。
    * **[Never]\(再起動しない\)** - 何らかの理由でシャット ダウンした場合でも、モジュールは再起動されません。
    * **[On-failed]\(障害時\)** - クリーンなシャットダウンではなく、クラッシュした場合に、モジュールを再起動します。 
    * **[On-unhealthy]\(異常時\)**-モジュールがクラッシュまたは異常な状態を返したときに再起動します。 正常性ステータス関数を実装するかどうかは、各モジュールによって異なります。 
-1. ドロップダウン メニューを使用してモジュールの起動 **[状態]** を選択します。 次のオプションから選択します。
+1. ドロップダウン メニューを使用してモジュールの **[Desired Status]\(目的の状態\)** を選択します。 次のオプションから選択します。
    * **[実行中]** - これが既定のオプションです。 モジュールは、展開された後すぐに実行が開始されます。
    * **[停止]** - 展開された後、ユーザーまたは別のモジュールによって開始されるまで、モジュールはアイドル状態になります。
-1. モジュールにタグまたは必要なプロパティを追加する場合は、**[Edit module twin]\(モジュール ツインの編集\)** を選択します。 
+1. モジュール ツインにタグまたは必要なプロパティを追加する場合は、**[有効化]** を選択します。 
 1. **[保存]** を選択してデプロイにモジュールを追加します。 
 
 展開するすべてのモジュールを構成したら、**[次へ]** を選択して手順 3 に進みます。
@@ -96,7 +95,7 @@ Azure サービスからモジュールを追加するには、次の手順を�
 同じデバイスが複数のデプロイの対象となっている場合があるため、各デプロイに優先順位番号を付ける必要があります。 競合した場合は、優先度が高いデプロイが優先されます。 2 つのデプロイの優先度が同じ場合は、作成された時期が最近のデプロイが優先されます。 
 
 1. デプロイの**[優先度]** を正の整数で入力します。
-1. どのデバイスがこのデプロイの対象となるかを指定する **[Target condition]\(対象の条件\)**を入力します。 条件はデバイス ツイン タグに基づいており、式の形式に一致する必要があります。 たとえば、「 `tags.environment='test'`」のように入力します。 
+1. どのデバイスがこのデプロイの対象となるかを指定する **[Target condition]\(対象の条件\)**を入力します。 条件はデバイス ツイン タグに基づいており、式の形式に一致する必要があります。 たとえば、「`tags.environment='test'`」のように入力します。 
 1. **[次へ]** を選択して最後の手順に進みます。
 
 ### <a name="step-5-review-template"></a>手順 5: テンプレートのレビュー
@@ -147,7 +146,7 @@ Azure サービスからモジュールを追加するには、次の手順を�
 
 1. 変更するデプロイを選択します。 
 1. 次のフィールドに変更を加えます。 
-   * 対象の条件 
+   * ターゲット条件 
    * ラベル 
    * 優先順位 
 1. **[保存]** を選択します。
@@ -167,12 +166,12 @@ Azure サービスからモジュールを追加するには、次の手順を�
 1. **[削除]**を選択します。
 1. この操作によりこのデプロイが削除され、すべてのデバイスが以前の状態に戻されることを警告する、プロンプトが表示されます。  これにより、優先度の低いデプロイが適用されます。  対象となっているデプロイがない場合は、モジュールは削除されません。 お客様がモジュールの削除を希望する場合は、モジュールがないデプロイを作成し、同じデバイスに展開する必要があります。 先に進むには、**[はい]** を選択します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 詳細については [Edge デバイスへのモジュールの展開][lnk-deployments]を参照してください。
 
 <!-- Images -->
-[1]: ./media/how-to-deploy-monitor/view-deployments.png
+[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
 
 <!-- Links -->
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md

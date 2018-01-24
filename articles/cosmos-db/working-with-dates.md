@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: arramac
-ms.openlocfilehash: b6a77e33eea24000037ffb31d7aae3cb1d345ce9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1a54884196e5b4ff5b16425e902abeb8d82aa8f1
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
 Azure Cosmos DB は、ネイティブの [JSON](http://www.json.org) データ モデルにより、スキーマの柔軟性と豊富なインデックス機能を提供します。 データベース、コレクション、ドキュメント、ストアド プロシージャを含むすべての Azure Cosmos DB リソースは、JSON ドキュメントとしてモデル化されて保存されます。 ポータブルであることが求められる JSON (および Azure Cosmos DB) では、少数の基本的な型 (String、Number、Boolean、Array、Object、Null) しかサポートされません。 ただし、JSON は柔軟性が高いため、開発者およびフレームワークは、これらのプリミティブ型を使用したり、オブジェクトまたは配列として作成したりすることにより、複雑な型を表現できます。 
@@ -26,7 +26,7 @@ Azure Cosmos DB は、ネイティブの [JSON](http://www.json.org) データ �
 基本の型の他に、多くのアプリケーションでは日付やタイムスタンプを表す [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) 型が必要です。 この記事では、開発者が、.NET SDK を使用して Azure Cosmos DB で日付の格納、取得、クエリを行う方法を説明します。
 
 ## <a name="storing-datetimes"></a>DateTimes の格納
-既定では、[Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) は DateTime 値を [ISO 8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874) 文字列としてシリアル化します。 ほとんどのアプリケーションは、次に示す理由から、DateTime の既定の文字列表現を使用できます。
+既定では、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) は DateTime 値を [ISO 8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874) 文字列としてシリアル化します。 ほとんどのアプリケーションは、次に示す理由から、DateTime の既定の文字列表現を使用できます。
 
 * 文字列は比較することができます。DateTime 値が文字列に変換されるとき、値の相対的な順序は維持されます。 
 * この方法では、JSON 変換のためのカスタム コードまたは属性は必要ありません。
@@ -75,7 +75,7 @@ Azure Cosmos DB は、ネイティブの [JSON](http://www.json.org) データ �
 インデックス作成ポリシーを構成する方法の詳細については、「[Azure Cosmos DB のインデックス作成ポリシー](indexing-policies.md)」を参照してください。
 
 ## <a name="querying-datetimes-in-linq"></a>LINQ での DateTime のクエリ
-DocumentDB .NET SDK は、LINQ 経由で Azure Cosmos DB に格納されたデータのクエリを自動的にサポートします。 たとえば、次のスニペットは、3 日以内に出荷された注文をフィルター処理する LINQ クエリです。
+SQL .NET SDK は、LINQ 経由で Azure Cosmos DB に格納されたデータのクエリを自動的にサポートします。 たとえば、次のスニペットは、3 日以内に出荷された注文をフィルター処理する LINQ クエリです。
 
     IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
         .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
@@ -83,11 +83,11 @@ DocumentDB .NET SDK は、LINQ 経由で Azure Cosmos DB に格納されたデ�
     // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-Azure Cosmos DB の SQL クエリ言語と LINQ プロバイダーについては、[Cosmos DB のクエリ](documentdb-sql-query.md)に関する記事を参照してください。
+Azure Cosmos DB の SQL クエリ言語と LINQ プロバイダーについては、[Cosmos DB のクエリ](sql-api-sql-query.md)に関する記事を参照してください。
 
 この記事では、Azure Cosmos DB での DateTime の格納、インデックス作成、クエリの方法について説明しました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [GitHub のコード サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)のダウンロードと実行
-* [DocumentDB API クエリ](documentdb-sql-query.md)の詳細を確認する
+* [SQL クエリ](sql-api-sql-query.md)の詳細を確認する
 * [Azure Cosmos DB のインデックス作成ポリシー](indexing-policies.md)の詳細を確認する

@@ -3,16 +3,18 @@ title: "航空画像の分類 | Microsoft Docs"
 description: "航空画像の分類に関する実際のシナリオの手順について説明します。"
 author: mawah
 ms.author: mawah
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
 services: machine-learning
-ms.date: 10/27/2017
-ms.openlocfilehash: cb66514f40bd37f0495eca5037740d318fd5ea09
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.workload: data-services
+ms.date: 12/13/2017
+ms.openlocfilehash: 76c706496b3bcdbc1604661be85dc31000873ad3
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="aerial-image-classification"></a>航空画像の分類
 
@@ -44,7 +46,7 @@ ms.lasthandoff: 12/08/2017
 
 ![航空画像分類の実際のシナリオに関する概略図](media/scenario-aerial-image-classification/scenario-schematic.PNG)
 
-この[手順](https://github.com/MicrosoftDocs/azure-docs-pr/tree/release-ignite-aml-v2/articles/machine-learning/)は、データ転送と依存関係のインストールなど、Azure ストレージ アカウントと Spark クラスターの作成と準備の説明から始まります。 次に、トレーニング ジョブの開始方法と、結果のモデルのパフォーマンスを比較する方法について説明します。 最後に、Spark クラスターに設定されている大規模な画像に選択したモデルを適用し、ローカルで予測結果を分析する方法について説明します。
+これらの手順は、データ転送と依存関係のインストールなど、Azure ストレージ アカウントと Spark クラスターの作成と準備の説明から始まります。 次に、トレーニング ジョブの開始方法と、結果のモデルのパフォーマンスを比較する方法について説明します。 最後に、Spark クラスターに設定されている大規模な画像に選択したモデルを適用し、ローカルで予測結果を分析する方法について説明します。
 
 
 ## <a name="set-up-the-execution-environment"></a>実行環境を設定する
@@ -52,7 +54,7 @@ ms.lasthandoff: 12/08/2017
 次の手順では、この例の実行環境を設定するプロセスを説明します。
 
 ### <a name="prerequisites"></a>前提条件
-- [Azure アカウント](https://azure.microsoft.com/en-us/free/) (無料試用版もご利用いただけます)
+- [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)
     - worker ノード数が 40 個の HDInsight Spark クラスターを作成します (合計 168 コア)。 Azure Portal のサブスクリプションの [使用量 + クォータ] タブで、アカウントで使用できるコアが十分にあることを確認します。
        - 使用可能なコアがあまりない場合は、HDInsight クラスター テンプレートを変更して、プロビジョニングする worker 数を減らすことができます。 この手順については、「HDInsight Spark クラスターの作成」セクションを参照してください。
     - このサンプルでは、2 つの NC6 (1 GPU、6 vCPU) VM から成る Batch AI トレーニング クラスターを作成します。 Azure Portal のサブスクリプションの [使用量 + クォータ] タブで、米国東部リージョンにアカウントで使用できるコアが十分にあることを確認します。
@@ -68,7 +70,7 @@ ms.lasthandoff: 12/08/2017
     - 作成するよう指示された Azure Active Directory アプリケーションのクライアント ID、シークレット、テナント ID をメモしておきます。 これらの資格情報は、このチュートリアルで後ほど使用します。
     - このドキュメントの作成時点では、Azure Machine Learning Workbench と Azure Batch AI は Azure CLI 2.0 の別々の分岐を使用しています。 はっきりさせるため、Workbench の CLI バージョンを "Azure Machine Learning Workbench から起動された CLI" と呼び、一般公開バージョン (Batch AI を含むもの) を "Azure CLI 2.0" と呼びます。
 - [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)。Azure ストレージ アカウント間のファイル転送を調整する無料のユーティリティです。
-    - AzCopy の実行可能ファイルを含むフォルダーが、システム PATH 環境変数にあることを確認します (環境変数の変更手順については、[こちら](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp)をご覧ください)。
+    - AzCopy の実行可能ファイルを含むフォルダーが、システム PATH 環境変数にあることを確認します (環境変数の変更手順については、[こちら](https://support.microsoft.com/help/310519/how-to-manage-environment-variables-in-windows-xp)をご覧ください)。
 - SSH クライアント。[PuTTY](http://www.putty.org/) をお勧めします。
 
 この例は、Windows 10 PC でテストされましたが、Azure Data Science Virtual Machines など、任意の Windows マシンから実行することができます。 Azure CLI 2.0 は、[こちらの説明](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)に従って MSI からインストールされました。 この例を macOS 上で実行するには、若干の変更が必要になる可能性があります (ファイルパスの変更など)。
@@ -77,7 +79,7 @@ ms.lasthandoff: 12/08/2017
 
 この例では、関連するファイルをホストするために HDInsight Spark クラスターと Azure ストレージ アカウントが必要です。 これらの手順に従って、新しい Azure リソース グループに以下のリソースを作成します。
 
-#### <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成
+#### <a name="create-a-new-workbench-project"></a>新しい Workbench プロジェクトの作成
 
 この例をテンプレートとして使用して新しいプロジェクトを作成します。
 1.  Azure Machine Learning Workbench を開きます
@@ -157,14 +159,14 @@ ms.lasthandoff: 12/08/2017
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/scripts /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.file.core.windows.net/baitshare/scripts /DestKey:%STORAGE_ACCOUNT_KEY% /S
     ```
 
-    ファイル転送には、最大で 20 分かかります。 待っている間に、以下のセクションに進んでもかまいません。Workbench から別のコマンド ライン インターフェイスを開き、そこで一時変数を再定義する必要が生じる場合があります。
+    ファイル転送には約 1 時間かかります。 待っている間に、以下のセクションに進んでもかまいません。Workbench から別のコマンド ライン インターフェイスを開き、そこで一時変数を再定義する必要が生じる場合があります。
 
 #### <a name="create-the-hdinsight-spark-cluster"></a>HDInsight Spark クラスターの作成
 
 お勧めする HDInsight クラスターの作成方法では、このプロジェクトの "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" サブフォルダーに含まれる HDInsight Spark クラスター Resource Manager テンプレートを使います。
 
 1. HDInsight Spark クラスター テンプレートは、このプロジェクトの "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" サブフォルダーにある "template.json" ファイルです。 テンプレートでは既定で、40 ワーカー ノードの Spark クラスターを作成します。 この数値を調整する必要がある場合は、使い慣れたテキスト エディターでテンプレートを開き、すべてのインスタンスの "40" を指定したいワーカー ノード数に置き換えます。
-    - 指定したワーカー ノード数が少ないと、メモリ不足エラーが発生する可能性があります。 メモリ エラーに対処するために、このドキュメントで後から説明する手順に従って、利用可能なデータのサブセット上でトレーニング スクリプトおよび運用化スクリプトを実行できます。
+    - 指定したワーカー ノード数が少ないと、後でメモリ不足エラーが発生する可能性があります。 メモリ エラーに対処するために、このドキュメントで後から説明する手順に従って、利用可能なデータのサブセット上でトレーニング スクリプトおよび運用化スクリプトを実行できます。
 2. HDInsight クラスターの一意名とパスワードを選び、次のコマンドの指示された場所に記述します。その後、コマンドを実行してクラスターを作成します。
 
     ```
@@ -251,9 +253,7 @@ Batch AI クラスターは、ネットワーク ファイル サーバー上の
 1. 次のコマンドを実行してクラスターを作成します。
 
     ```
-    set AZURE_BATCHAI_STORAGE_ACCOUNT=%STORAGE_ACCOUNT_NAME%
-    set AZURE_BATCHAI_STORAGE_KEY=%STORAGE_ACCOUNT_KEY%
-    az batchai cluster create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 
+    az batchai cluster create -n landuseclassifier2 -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
     ```
 
 1. クラスターのプロビジョニング状態を確認するには、次のコマンドを使います。
@@ -304,7 +304,7 @@ HDInsight クラスターの作成が完了したら、次の手順に従って�
 1.  Azure Machine Learning コマンド ライン インターフェイスから次のコマンドを発行します。
 
     ```
-    az ml computetarget attach --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD% -t cluster
+    az ml computetarget attach cluster --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD%
     ```
 
     このコマンドでは、`myhdi.runconfig` および `myhdi.compute` という 2 つのファイルをお使いのプロジェクトの `aml_config` フォルダーに追加します。
@@ -418,7 +418,7 @@ Workbench プロジェクトの "Code\04_Result_Analysis" サブフォルダー�
 
 Azure Machine Learning Workbench を使用すると、データ サイエンティストはリモート コンピューティングのターゲットに簡単にコードをデプロイできます。 この例では、HDInsight クラスターでのリモート実行用にローカル MMLSpark トレーニング コードがデプロイされており、ローカル スクリプトが Azure Batch AI GPU クラスターでトレーニング ジョブを開始しました。 Azure Machine Learning Workbench の実行履歴機能では、複数のモデルのパフォーマンスを追跡し、最も精度の高いモデルを特定しました。 Workbench の Jupyter ノートブック機能では、インタラクティブなグラフィック環境でモデルの予測を視覚化しました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この例をさらに詳しく確認するには、次の操作を実行してください。
 - Azure Machine Learning Workbench 実行履歴機能で、歯車の記号をクリックして、表示するグラフィックおよびメトリックを選択します。
 - `run_logger` を呼び出すステートメントのサンプル スクリプトを検証します。 各メトリックが記録される方法を理解していることを確認してください。

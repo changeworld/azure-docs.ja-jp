@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/21/2017
 ms.author: sujayt
-ms.openlocfilehash: 726c12d3c91a6e4fdc77397a736aaa161f0e830c
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 02d68d091cbbe02e1b5b628924ded1c2155f7119
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -131,6 +131,20 @@ VM に接続された新しいディスクを初期化する必要がありま�
 
 [古い ASR 構成を削除するスクリプト](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)を使用して、Azure VM で古い Site Recovery 構成を削除できます。 古い構成を削除してから、レプリケーションを有効にすると、VM が表示されます。
 
+## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>VM のプロビジョニングの状態が正しくありません (エラー コード 150019)
 
-## <a name="next-steps"></a>次のステップ
+VM でレプリケーションを有効にするには、プロビジョニングの状態が **[成功]**になっている必要があります。 次の手順に従って、VM の状態を確認できます。
+
+1.  Azure Portal の **[All Services]\(すべてのサービス\)** から **[リソース エクスプローラー]** を選択します。
+2.  **[サブスクリプション]** 一覧を展開して、自分のサブスクリプションを選択します。
+3.  **[ResourceGroups]** 一覧を展開して、VM のリソース グループを選択します。
+4.  **[リソース]** 一覧を展開して、お使いの仮想マシンを選択します。
+5.  右側にあるインスタンス ビューで、**[provisioningState]** フィールドを確認します。
+
+### <a name="fix-the-problem"></a>問題の解決
+
+- **[provisioningState]** が **[失敗]** になっている場合は、サポートに詳細を問い合わせてトラブルシューティングします。
+- **[provisioningState]** が **[更新中]** になっている場合は、別の拡張機能がデプロイされている可能性があります。 VM 上に何らかの進行中の操作があるかを確認し、それらの操作が完了するまで待機してから、失敗した Site Recovery の **[レプリケーションを有効にする]** ジョブを再試行します。
+
+## <a name="next-steps"></a>次の手順
 [Azure 仮想マシンのレプリケート](azure-to-azure-quickstart.md)

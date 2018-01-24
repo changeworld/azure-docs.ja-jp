@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 96d6d707d69f80a866f6ac17addabc0db076b079
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e2f4601daf9aa3537f9170c3516d62ab1bd602e5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Sqoop の使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -47,14 +47,14 @@ HDInsight クラスターにはサンプル データがいくつか付属して
   
   | フィールド | データ型 |
   | --- | --- |
-  | clientid |string |
-  | querytime |string |
-  | market |string |
-  | deviceplatform |string |
-  | devicemake |string |
-  | devicemodel |string |
-  | state |string |
-  | country |string |
+  | clientid |文字列 |
+  | querytime |文字列 |
+  | market |文字列 |
+  | deviceplatform |文字列 |
+  | devicemake |文字列 |
+  | devicemodel |文字列 |
+  | state |文字列 |
+  | country |文字列 |
   | querydwelltime |double |
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
@@ -94,7 +94,7 @@ Azure PowerShell を使用してクラスターと SQL Database を作成する�
      
         次の値は、変数セクションにハードコードされています。
         
-        |名前|値|
+        |Name|値|
         |----|-----|
         | 既定のストレージ アカウント名 | &lt;CluterName>store |
         | Azure SQL データベース サーバー名 | &lt;ClusterName > dbserver |
@@ -161,7 +161,7 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 * 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 * バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
 * [HDInsight での Hive の使用](../hdinsight-use-hive.md)
@@ -221,7 +221,7 @@ PowerShell のサンプルでは、次の手順を実行します。
    > 接続文字列情報を除き、このセクションの手順は、Azure SQL データベースまたは SQL Server で動作します。 これらの手順は次の構成を使用してテスト済みです。
    > 
    > * **Azure Virtual Network ポイント対サイト構成**: HDInsight クラスターをプライベート データセンター内の SQL Server に接続する仮想ネットワーク。 詳細については、「 [管理ポータルでのポイント対サイト VPN の構成](../../vpn-gateway/vpn-gateway-point-to-site-create.md) 」を参照してください。
-   > * **Azure HDInsight 3.1**: 仮想ネットワークでのクラスターの作成については、 [カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md) に関するページをご覧ください。
+   > * **Azure HDInsight**: 仮想ネットワークでのクラスターの作成については、[カスタム オプションを使用した HDInsight での Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページをご覧ください。
    > * **SQL Server 2014**: 仮想ネットワークに安全に接続するために、認証と、VPN クライアント構成パッケージの実行を許可する構成。
    > 
    > 

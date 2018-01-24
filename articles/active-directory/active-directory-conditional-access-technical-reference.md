@@ -1,28 +1,28 @@
 ---
-title: "Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス | Microsoft Docs"
-description: "Azure Active Directory の条件付きアクセス制御の利用方法について学習します。 ユーザーを認証し、アプリケーションへのアクセスを制御するための条件を指定します。 指定した条件が満たされると、ユーザーは認証され、アプリケーションへのアクセス許可が与えられます。"
+title: "Azure Active Directory の条件付きアクセス設定に関するリファレンス | Microsoft Docs"
+description: "Azure Active Directory の条件付きアクセス ポリシーでサポートされる設定の概要を説明します。"
 services: active-directory.
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/12/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 5fad793bcf9ac86c2a1bc67e74dfb62af9876100
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 1ce1fc4c03130dfea4e79c89c25cf5a9004e4dc8
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/23/2017
 ---
-# <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
+# <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を利用し、許可されたユーザーがリソースにアクセスする方法を微調整できます。   
+[Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を利用し、許可されたユーザーがリソースにアクセスする方法を制御できます。   
 
 この記事では、条件付きアクセス ポリシーの次の構成オプションに対するサポート情報が提供されます。 
 
@@ -35,6 +35,7 @@ ms.lasthandoff: 12/06/2017
 - 承認されたクライアント アプリケーションの要件
 
 
+これらが探している情報でない場合には、この記事の最後にコメントを入力してください。
 
 ## <a name="cloud-apps-assignments"></a>クラウド アプリの割り当て
 
@@ -57,7 +58,7 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 
 - Microsoft Office 365 Exchange Online
 
-- Microsoft Office 365 SharePoint Online (OneDrive for Business を含む)
+- Microsoft Office 365 SharePoint Online (OneDrive for Business および Project Online を含む)
 
 - Microsoft Power BI 
 
@@ -211,7 +212,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
     - [クライアント アプリの条件](#supported-mobile-apps-and-desktop-clients)の **[モバイル アプリとデスクトップ クライアント]** オプションが選択されている場合、それに取って代わります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 条件付きアクセスの概要については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」をご覧ください。
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、[Azure Active Directory の条件付きアクセスの推奨プラクティス](active-directory-conditional-access-best-practices.md)に関するページをご覧ください。

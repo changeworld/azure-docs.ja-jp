@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: c6441d2119518e89a869ee52e5f0b80450ae2bbe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16f641c7b6fdd1d6730d2ae229c93ce4a33b9492
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="message-sessions--first-in-first-out-fifo"></a>メッセージ セッション/先入れ先出し (FIFO) 
+# <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
-Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 Service Bus の FIFO 処理 を保証するには、セッションを使用する必要があります。 Service Bus では、メッセージ間の関係の性質に関する規範はなく、またメッセージのシーケンスの開始または終了位置を既定するモデルは特に定義されていません。
+Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 Service Bus の FIFO 処理を保証するには、セッションを使用します。 Service Bus では、メッセージ間の関係の性質に関する規範はなく、またメッセージのシーケンスの開始または終了位置を既定するモデルは特に定義されていません。
 
-送信プロセスは、トピックまたはキューにメッセージを送信するときに、アプリケーションで定義されたセッションに固有の ID に、[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) ブローカー プロパティを設定することで、セッションを作成できます AMQP 1.0 プロトコル レベルでは、この値は *group-id* プロパティに相当します。
+送信プロセスは、トピックまたはキューにメッセージを送信するときに、アプリケーションで定義されたセッションに固有の ID に、[SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) プロパティを設定することで、セッションを作成できます AMQP 1.0 プロトコル レベルでは、この値は *group-id* プロパティに相当します。
 
 セッション対応のキューまたはサブスクリプションでは、セッションの [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) を持つメッセージが 1 つ以上ある場合にセッションが生成されます。 1 度生成されたセッションの有効期限または表示期間や API は定義されていません。 理論上は、メッセージを今日のセッションで受信して、次のメッセージを 1 年後に受信したとしても、**SessionId** が一致する限り、Service Bus の観点からすると同じセッションになります。
 
-通常、アプリケーションでは関連するメッセージの開始および終了は明確に認識されますが、Service Bus では、特定の規則は設定されていません。
+通常、アプリケーションでは関連するメッセージの開始および終了は明確に認識されます。 Service Bus では、特定の規則は設定されていません。
 
 ファイルの転送シーケンスを説明する例として、最初のメッセージの **start** に **Label** プロパティを設定し、中間メッセージに **content**、最後のメッセージに **end** を設定します。 コンテンツ メッセージの相対位置は、現在のメッセージの *SequenceNumber* と **start** メッセージの *SequenceNumber* との差分として計算できます。
 
@@ -45,17 +45,17 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 ![][1]
 
-[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) の受信プロセスは、セッションを受け入れたクライアントによって作成されます。 クライアントは [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) または C# の場合は [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) を強制的に呼び出します。 リアクティブなコールバック モデルでは、後で説明するように、セッション ハンドラーが登録されます。
+[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) の受信プロセスは、セッションを受け入れたクライアントによって作成されます。 クライアントは [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) (C# の場合は [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)) を呼び出します。 リアクティブなコールバック モデルでは、後で説明するように、セッション ハンドラーが登録されます。
 
-[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) が受け入れられクライアントに保持されている間 、そのクライアントはそのセッションの [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) が付いたキューまたはサブスクリプションに存在するすべてのメッセージと、その **SessionId** が付けられ、セッションが保持されている間も着信し続けるメッセージに対する排他的ロックを保持します。
+[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) オブジェクトが受け入れられクライアントに保持されている間、そのクライアントはそのセッションの [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) が付いたキューまたはサブスクリプションに存在するすべてのメッセージと、その **SessionId** が付けられ、セッションが保持されている間も着信し続けるメッセージに対する排他的ロックを保持します。
 
-ロックは、**Close** または **CloseAsync** が呼び出されたとき、またはロックの有効期限が切れ、アプリケーションがロックを解放できないときに解放されます。 セッション ロックは、ファイルの排他的ロックと同様に処理する必要があり、アプリケーションは、セッションが不要になったらただちにセッションを閉じ、それ以上のメッセージを期待しない必要があります。
+ロックが解除されるのは、**Close** または **CloseAsync** が呼び出されたとき、またはロックの有効期限が切れ、アプリケーションが終了操作を実行できないときです。 セッション ロックは、ファイルの排他的ロックと同様に処理する必要があり、アプリケーションは、セッションが不要になったらただちにセッションを閉じ、それ以上のメッセージを期待しない必要があります。
 
 複数の同時受信プロセスがキューからプルする場合、特定のセッションに属するメッセージは、そのセッションに対するロックを現在保持している特定の受信プロセスに送信されます。 この操作により、1 つのキューまたはサブスクリプションに存在するインターリーブされたメッセージ ストリームは別の受信プロセスに対しクリーンに逆多重化され、ロック管理は Service Bus 内のサーバー側で行われるため、それらの受信プロセスはクライアント マシン上でアクティブな状態を維持できます。
 
 ただし、キューはキューのままであり、ランダム アクセスはありません。 複数の同時受信プロセスが特定のセッションの受け入れを待機している、または特定のセッションからのメッセージを待機しており、まだ受信プロセスが要求していないセッションに属するキューの一番上にメッセージがある場合、セッション受信プロセスがそのセッションを要求するまで、配信は保留されます。
 
-前の図は、処理を進めるためにすべての受信側のキューからメッセージを積極的に受け取る必要がある 3 つの同時セッション受信プロセスすべてを示しています。 *SessionId*= 4 の以前のセッションは、有効な所有クライアントがなく、そのメッセージが、新しく作成された所有セッション受信クラインとによってメッセージが取得されるまで、メッセージはどこにも配達されません。
+前の図は、処理を進めるためにすべての受信側のキューからメッセージを積極的に受け取る必要がある 3 つの同時セッション受信プロセスすべてを示しています。 `SessionId` = 4 の以前のセッションは、有効な所有クライアントがなく、そのメッセージが、新しく作成された所有セッション受信クライアントによってメッセージが取得されるまで、メッセージはどこにも配達されません。
 
 これは制限のように見えるかも知れませんが、非同期コードのみで書かれている場合は特に、単一の受信プロセスは多数の同時セッションを簡単に処理できます。コールバック モデルでは何十個もの同時セッションを効果的に自動的に処理できます。
 
@@ -77,9 +77,9 @@ Service Bus の観点からは、メッセージ セッションの状態は、S
 
 キューに保持されたセッション状態またはサブスクリプション数は、そのエンティティのストレージ クォータがいっぱいになるまで計算されます。 このため、セッションで、アプリケーションが終了したら、外部管理コストを回避するために、アプリケーションで保持された状態をクリーンアップすることをを推奨します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- .NET 標準ライブラリを使用して Service Bus キューからのセッション ベースのメッセージを送受信する[詳細な例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/BasicSessionSendReceiveUsingQueueClient)。
+- .NET 標準ライブラリを使用して Service Bus キューからのセッション ベースのメッセージを送受信する[詳細な例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient)。
 - .NET Framework クライアントを使用してセッション対応メッセージを処理する[例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions)。 
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。

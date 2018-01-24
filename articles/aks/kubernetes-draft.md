@@ -9,29 +9,29 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: df5614d8a708b49ee1368c4d7983f45d29920fd8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: a77e214c1138ce936b2ec6c521950704e5beb3ff
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Draft の使用
 
-Draft は、Kubernetes クラスターでコードをパッケージ化し、実行する際に役立つオープン ソース ツールです。 Draft は、コードの開発時にバージョン管理にコミットする前の開発の反復サイクルを対象としています。 Draft を使用すると、コードの変更が発生したときに、アプリケーションを Kubernetes にすばやく再デプロイできます。 Draft の詳細については、[Github の Draft のドキュメント](https://github.com/Azure/draft/tree/master/docs)をご覧ください。
+Draft は、Kubernetes クラスターでコードをパッケージ化し、実行する際に役立つオープン ソース ツールです。 Draft は、コードの開発時にバージョン管理にコミットする前の開発の反復サイクルを対象としています。 Draft を使用すると、コードの変更が発生したときに、アプリケーションを Kubernetes にすばやく再デプロイできます。 Draft の詳細については、[Github の Draft のドキュメント][draft-documentation]をご覧ください。
 
 このドキュメントでは、AKS の Kubernetes クラスターで Draft を使用する方法について詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイックスタート](./kubernetes-walkthrough.md)をご覧ください。
+このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイック スタート][aks-quickstart]を参照してください。
 
-Azure Container Registry (ACR) のプライベート Docker レジストリも必要です。 ACR インスタンスをデプロイする手順については、[Azure Container Registry のクイックスタート](../container-registry/container-registry-get-started-azure-cli.md)をご覧ください。
+Azure Container Registry (ACR) のプライベート Docker レジストリも必要です。 ACR インスタンスをデプロイする手順については、[Azure Container Registry のクイックスタート][acr-quickstart]をご覧ください。
 
 ## <a name="install-helm"></a>Helm のインストール
 
 Helm CLI は、開発システムで実行されるクライアントです。Helm CLI では、Helm チャートを使用してアプリケーションを起動、停止、管理することができます。
 
-Helm CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、「[Installing Helm (Helm のインストール)](https://github.com/kubernetes/helm/blob/master/docs/install.md)」をご覧ください。
+Helm CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、「[Installing Helm (Helm のインストール)][install-helm]」をご覧ください。
 
 ```console
 brew install kubernetes-helm
@@ -54,7 +54,7 @@ Bash completion has been installed to:
 
 Draft CLI は、開発システムで実行され、Kubernetes クラスターへのコードの迅速なデプロイを可能にするクライアントです。
 
-Draft CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、[Draft のインストール ガイド](https://github.com/Azure/draft/blob/master/docs/install.md)をご覧ください。
+Draft CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、[Draft のインストール ガイド][install-draft]をご覧ください。
 
 ```console
 brew install draft
@@ -178,7 +178,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 
 ## <a name="expose-application"></a>アプリケーションを公開する
 
-Kubernetes でアプリケーションをテストするときに、アプリケーションをインターネットで使用できるようにすることもできます。 そのためには、種類が [LoadBalancer](https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer) または[イングレス コントローラー](https://kubernetes.io/docs/concepts/services-networking/ingress/)の Kubernetes サービスを使用します。 このドキュメントでは、Kubernetes サービスの使用方法を詳しく説明します。
+Kubernetes でアプリケーションをテストするときに、アプリケーションをインターネットで使用できるようにすることもできます。 そのためには、種類が [LoadBalancer][kubernetes-service-loadbalancer] または[イングレス コントローラー][kubernetes-ingress]の Kubernetes サービスを使用します。 このドキュメントでは、Kubernetes サービスの使用方法を詳しく説明します。
 
 
 まず、Draft パックを更新して、種類が `LoadBalancer` のサービスを作成することを指定する必要があります。 これを行うには、`values.yaml` ファイルでサービスの種類を更新します。
@@ -297,9 +297,20 @@ curl 52.175.224.118
 Hello World, I'm Java - Draft Rocks!
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Draft の使用方法の詳細については、GitHub の Draft のドキュメントをご覧ください。
 
 > [!div class="nextstepaction"]
-> [Draft のドキュメント](https://github.com/Azure/draft/tree/master/docs)
+> [Draft のドキュメント][draft-documentation]
+
+<!-- LINKS - external -->
+[draft-documentation]: https://github.com/Azure/draft/tree/master/docs
+[install-draft]: https://github.com/Azure/draft/blob/master/docs/install.md
+[install-helm]: https://github.com/kubernetes/helm/blob/master/docs/install.md
+[kubernetes-ingress]: https://kubernetes.io/docs/concepts/services-networking/ingress/
+[kubernetes-service-loadbalancer]: https://kubernetes.io/docs/concepts/services-networking/service/#type-loadbalancer
+
+<!-- LINKS - internal -->
+[acr-quickstart]: ../container-registry/container-registry-get-started-azure-cli.md
+[aks-quickstart]: ./kubernetes-walkthrough.md

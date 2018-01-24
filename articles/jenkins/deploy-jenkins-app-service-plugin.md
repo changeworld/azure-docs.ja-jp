@@ -15,21 +15,21 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: e38c69ec55d894053792fbf284d07944d7f44dc0
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 9b79e3b498e51e626e7e9a87d2bb1a66366acff5
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
 
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](/azure/jenkins/execute-cli-jenkins-pipeline)で Azure CLI を使用するか、[Azure App Service Jenkins プラグイン](https://plugins.jenkins.io/azure-app-service)を使用します。 Jenkins プラグイン バージョン 1.0 では、次のツールを介して Azure App Service の Web Apps 機能を使用することで継続的なデプロイをサポートします。
-* Git および FTP
+* Git または FTP
 * Web Apps on Linux 用 Docker
 
 このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * Git および FTP を介して Web Apps をデプロイするように Jenkins を構成する
+> * Git または FTP を介して Web Apps をデプロイするように Jenkins を構成する
 > * Web App for Containers をデプロイするように Jenkins を構成する
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>Jenkins インスタンスを作成して構成する
@@ -64,7 +64,7 @@ Azure にデプロイするには、Azure サービス プリンシパルが必�
 3. Microsoft Azure サービス プリンシパルを追加するには、**[Add Credentials]\(資格情報の追加\)** を選択します。 **[Subscription ID]\(サブスクリプション ID\)**、**[Client ID]\(クライアント ID\)**、**[Client Secret]\(クライアント シークレット\)**、**[OAuth 2.0 Token Endpoint]\(OAuth 2.0 トークン エンドポイント\)** の各フィールドに値を入力します。 **[ID]** フィールドを **[mySp]** に設定します。 この ID は、この記事の以降の手順で使用します。
 
 
-## <a name="configure-jenkins-to-deploy-web-apps-through-git-and-ftp"></a>Git および FTP を介して Web Apps をデプロイするように Jenkins を構成する
+## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>ファイルのアップロードによって Web Apps をデプロイするように Jenkins を構成する
 
 プロジェクトを Web Apps にデプロイする場合、Git または FTP を使用してビルド成果物 (Java の WAR ファイルなど) をアップロードできます。
 
@@ -104,7 +104,7 @@ Jenkins でジョブを設定する前に、Java アプリを実行するため�
 8. 運用環境以外のスロットにデプロイする場合は、**スロット**名を設定することもできます。
 9. プロジェクトを保存してビルドします。 ビルドが完了すると、Web アプリが Azure にデプロイされます。
 
-### <a name="deploy-web-apps-through-ftp-by-using-jenkins-pipeline"></a>Jenkins パイプラインを使用して FTP を介して Web Apps をデプロイする
+### <a name="deploy-web-apps-by-uploading-files-using-jenkins-pipeline"></a>Jenkins パイプラインを使用したファイルのアップロードによって Web Apps for Containers をデプロイする
 
 Azure App Service Jenkins プラグインは、パイプラインに対応しています。 GitHub リポジトリの次のサンプルを参照できます。
 
@@ -227,7 +227,7 @@ Azure Container Registry を使用している場合は、**[Docker registry URL
 
 3. http://&lt;アプリ名>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> に移動します。 &lt;x> と &lt;y> を任意の数値に置き換えて、x と y の合計を取得します。
     
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure App Service Jenkins プラグインを使用して Azure にデプロイしました。
 

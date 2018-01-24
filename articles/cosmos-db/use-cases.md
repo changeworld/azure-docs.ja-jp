@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: cd10147047a7d5d8b0a15be08fbba24a07adffad
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bcafc999c30d1e72971c8e26e951169ea6b56416
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -33,9 +33,7 @@ ms.lasthandoff: 11/15/2017
 ## <a name="introduction"></a>はじめに
 [Azure Cosmos DB](../cosmos-db/introduction.md) は、Microsoft のグローバルに分散されたデータベース サービスです。 このサービスは、顧客が任意の数の地理的リージョン間でスループットとストレージを弾力的に (かつ独立して) スケーリングできるように設計されています。 Azure Cosmos DB は、スループット、待機時間、可用性、整合性を含む包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/)を提供するための、今日の市場で最初のグローバルに分散されたデータベース サービスです。 
 
-Azure Cosmos DB プロジェクトは、Microsoft 社内の大規模なインターネット規模のアプリケーションに直面する開発者の問題に対処するために、"Project Florence" として 2011 年に開始されました。 これらの問題が Microsoft のアプリケーションに固有のものではないことを観察した結果、2015 年に Azure Cosmos DB を [Azure DocumentDB](https://azure.microsoft.com/blog/documentdb-moving-to-general-availability/) の形で外部の開発者に一般公開することにしました。 このサービスは Microsoft 内部のあらゆる場所で使用され、外部の Azure 開発者にも使用されている最も成長著しいサービスの 1 つとなりました。 
-
-Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](http://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [MongoDB API](mongodb-introduction.md)、[DocumentDB API (SQL)](documentdb-introduction.md)、[Graph API (Gremlin)](graph-introduction.md)、[Tables API](table-introduction.md) を含むデータ アクセス用の多数の API を、ネイティブおよび拡張可能な方法でサポートします。 
+Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](http://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [MongoDB API](mongodb-introduction.md)、[SQL API](documentdb-introduction.md)、[Graph API (Gremlin)](graph-introduction.md)、[Tables API](table-introduction.md) を含むデータ アクセス用の多数の API を、ネイティブおよび拡張可能な方法でサポートします。 
 
 Azure Cosmos DB を、グローバルな展開を視野に入れた高性能アプリケーションに最適なものにしている属性のいくつかを次に示します。
 
@@ -106,8 +104,8 @@ Cosmos DB でサポートされる形式である JSON は、軽量なうえに 
 
 ![Azure Cosmos DB Web アプリ リファレンス アーキテクチャ](./media/use-cases/personalization.png)
 
-## <a name="next-steps"></a>次のステップ
-Azure Cosmos DB の使用を開始するには、[クイック スタート](create-documentdb-dotnet.md)をご覧ください。このクイック スタートでは、アカウントを作成して Cosmos DB を実際に使用する方法を説明しています。 
+## <a name="next-steps"></a>次の手順
+Azure Cosmos DB の使用を開始するには、[クイック スタート](create-sql-api-dotnet.md)をご覧ください。このクイック スタートでは、アカウントを作成して Cosmos DB を実際に使用する方法を説明しています。 
 
 または、Cosmos DB を使用しているお客様の詳細情報を確認したい場合は、次の顧客事例が提供されています。
 

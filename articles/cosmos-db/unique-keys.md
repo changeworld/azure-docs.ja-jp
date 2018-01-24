@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: rafats
-ms.openlocfilehash: 127b42b67a3e29022ac5d9535751a1b2a3be250e
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: c530b34edf9bfa0651b7b114dcf7e8add0d906ed
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB における一意なキー
 
 一意なキーを使用すると、開発者はデータベースにデータ整合性のレイヤーを追加できます。 コンテナーの作成時に一意キー ポリシーを作成すると、1 つまたは複数の値の一意性を[パーティション キー](partition-data.md)ごとに保証できます。 一意キー ポリシーを使用したコンテナーが作成されると、一意キー制約で指定されている値と重複する値を含む項目を新たに作成したり更新したりすることができなくなります。   
 
 > [!NOTE]
-> 一意なキーは、[.NET](documentdb-sdk-dotnet.md)、[.NET Core](documentdb-sdk-dotnet-core.md) DocumentDB (SQL) SDK、および [MongoDB API](mongodb-feature-support.md#unique-indexes) の最新バージョンでサポートされています。 現時点では、Table API および Graph API で一意なキーはサポートされていません。 
+> 一意なキーは、[.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md) SQL SDK、および [MongoDB API](mongodb-feature-support.md#unique-indexes) の最新バージョンでサポートされています。 現時点では、Table API および Graph API で一意なキーはサポートされていません。 
 > 
 >
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 12/04/2017
 
 一意なキーを使用するために既存のコンテナーを更新することはできません。
 
-一意キー ポリシーを持つコンテナーを作成してしまうと、コンテナーを再作成しない限りはポリシーを変更できません。 既存のデータに一意なキーを実装したい場合は、新しいコンテナーを作成してから適切な移行ツールを使用し、そのデータを新しいコンテナーに移動します。 DocumentDB (SQL) コンテナーの場合は、[データ移行ツール](import-data.md)を使用します。 MongoDB コンテナーの場合は、[mongoimport.exe または mongorestore.exe](mongodb-migrate.md) を使用します。
+一意キー ポリシーを持つコンテナーを作成してしまうと、コンテナーを再作成しない限りはポリシーを変更できません。 既存のデータに一意なキーを実装したい場合は、新しいコンテナーを作成してから適切な移行ツールを使用し、そのデータを新しいコンテナーに移動します。 SQL コンテナーの場合は、[データ移行ツール](import-data.md)を使用します。 MongoDB コンテナーの場合は、[mongoimport.exe または mongorestore.exe](mongodb-migrate.md) を使用します。
 
 一意なキーには、それぞれ最大 16 個のパス値 (たとえば /firstName、/lastName、/address/zipCode など) を含めることができます。 
 
@@ -64,9 +64,9 @@ ms.lasthandoff: 12/04/2017
 
 スパースな一意キーはサポートされていません。 一意なパスに不足している値がある場合、それらの値は一意性制約に含まれる特別な null 値として扱われます。
 
-## <a name="documentdb-sql-api-sample"></a>DocumentDB (SQL) API のサンプル
+## <a name="sql-api-sample"></a>SQL API サンプル
 
-次のコード サンプルでは、2 つの一意キー制約を持つ DocumentDB (SQL) コンテナーを新たに作成する方法を示します。 最初の制約は、先述の例で説明した firstName、lastName、email の制約です。 2 つめの制約は users address/zipCode です。 このパスを、次の一意キー ポリシーに使用する JSON ファイルのサンプルが、コード サンプルの後にあります。 
+次のコード サンプルでは、2 つの一意キー制約を持つ SQL コンテナーを新たに作成する方法を示します。 最初の制約は、先述の例で説明した firstName、lastName、email の制約です。 2 つめの制約は users address/zipCode です。 このパスを、次の一意キー ポリシーに使用する JSON ファイルのサンプルが、コード サンプルの後にあります。 
 
 ```csharp
 // Create a collection with two separate UniqueKeys, one compound key for /firstName, /lastName,
@@ -133,7 +133,7 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、データベース内の項目に一意なキーを作成する方法について学習しました。 初めてコンテナーを作成する場合、一意なキーとパーティション キーは依存関係にあるため、[Azure Cosmos DB でのデータのパーティション分割](partition-data.md)に関する記事をご確認ください。 
 

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 08503a7f6f32125c324173636dbda0548f3ccb8c
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 2580c2109ce33b1ce99aa491f7d0002edf060693
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
@@ -192,7 +192,7 @@ Azure Web Apps を使用して、クラウドにネイティブの Linux アプ�
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
-Cloud Shell で [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan` App Service プランに [Web アプリ](app-service-linux-intro.md)を作成します。 必ず `<app_name>` を一意のアプリ名に、<docker-ID> をお使いの Docker ID に置き換えてください。
+Cloud Shell で [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使って、`myAppServicePlan` App Service プランに [Web アプリ](app-service-linux-intro.md)を作成します。 必ず `<app_name>` を一意のアプリ名に、<docker-ID> をお使いの Docker ID に置き換えてください。
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --deployment-container-image-name <docker-ID>/mydockerimage:v1.0.0
@@ -219,7 +219,7 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 
 ほとんどの Docker イメージには、構成する必要がある環境変数があります。 他のユーザーによって作成された既存の Docker イメージを使用する場合、イメージは 80 以外のポートを使用する場合があります。 イメージが使用するポートを Azure に指示するには、`WEBSITES_PORT` アプリケーション設定を使用します。 [このチュートリアルに含まれる Python サンプル](https://github.com/Azure-Samples/docker-django-webapp-linux)の GitHub ページは、`WEBSITES_PORT` を _8000_ に設定する必要があることを示しています。
 
-アプリ設定を設定するには、Cloud Shell で [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
+アプリ設定を設定するには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITES_PORT=8000
@@ -294,10 +294,15 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
     ```docker
     EXPOSE 8000 2222
-
-    RUN service ssh start
     ```
 
+* /bin ディレクトリ内のシェル スクリプトを使用して [ssh サービスを開始](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)してください。
+ 
+    ```bash
+    #!/bin/bash
+    service ssh start
+    ```
+     
 ### <a name="open-ssh-connection-to-container"></a>コンテナーへの SSH 接続 を開く
 
 Web App for Containers では、コンテナーへの外部接続は許可されません。 SSH は Kudu サイトを通してのみ利用できます。Kudo サイトには `https://<app_name>.scm.azurewebsites.net` からアクセスできます。
@@ -329,13 +334,13 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-ご利用ありがとうございます。 Web App for Containers のカスタム Docker イメージの構成が完了しました。
+お疲れさまでした。 Web App for Containers のカスタム Docker イメージの構成が完了しました。
 
 ## <a name="use-a-private-image-from-docker-hub-optional"></a>(省略可能) Docker Hub からプライベート イメージを使用する
 
 「[Web アプリを作成する](#create-a-web-app)」では、`az webapp create` コマンドで Docker Hub のイメージを指定しました。 パブリック イメージの場合はこれで十分です。 プライベート イメージを使用するには、Azure Web アプリで Docker アカウント ID とパスワードを構成する必要があります。
 
-Cloud Shell で、`az webapp create` コマンドのあとに [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) を続けます。 *\<app_name>* を置き換え、さらに _<docker id>_ と _<password>_ も Docker ID とパスワードに置き換えます。
+Cloud Shell で、`az webapp create` コマンドのあとに [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) を続けます。 *\<app_name>* を置き換え、さらに _<docker id>_ と _<password>_ も Docker ID とパスワードに置き換えます。
 
 ```azurecli-interactive
 az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-registry-server-user <docker-id> --docker-registry-server-password <password>
@@ -375,7 +380,7 @@ Azure Container Registry は、プライベート イメージをホスティン
 
 ### <a name="create-an-azure-container-registry"></a>Azure Container Registry を作成する
 
-Cloud Shell で、[az acr create](https://docs.microsoft.com/cli/azure/acr#az_acr_create) コマンドを使用して Azure Container Registry を作成します。 名前、リソース グループ、SKU として `Basic` を渡します。 利用可能な SKU は `Classic`、`Basic`、`Standard`、`Premium` です。
+Cloud Shell で、[az acr create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) コマンドを使用して Azure Container Registry を作成します。 名前、リソース グループ、SKU として `Basic` を渡します。 利用可能な SKU は `Classic`、`Basic`、`Standard`、`Premium` です。
 
 ```azurecli-interactive
 az acr create --name <azure-container-registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
@@ -413,7 +418,7 @@ Use an existing service principal and assign access:
 
 ### <a name="log-in-to-azure-container-registry"></a>Azure Container Registry にログインする
 
-レジストリにイメージをプッシュするには、レジストリがプッシュを受け入れるように資格情報を指定する必要があります。 これらの資格情報は、Cloud Shell で [az acr show](https://docs.microsoft.com/cli/azure/acr/credential#az_acr_credential_show) コマンドを使用して取得することができます。 
+レジストリにイメージをプッシュするには、レジストリがプッシュを受け入れるように資格情報を指定する必要があります。 これらの資格情報は、Cloud Shell で [az acr show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) コマンドを使用して取得することができます。 
 
 ```azurecli-interactive
 az acr credential show --name <azure-container-registry-name>
@@ -477,7 +482,7 @@ az acr repository list -n <azure-container-registry-name>
 
 Azure Container Registry に格納されているコンテナーを実行するように、Web App for Containers を構成できます。 Azure Container Registry の使用はプライベート レジストリの使用と同様であるため、独自のプライベート レジストリを使用する必要がある場合、このタスクを完了する手順も同様です。
 
-Cloud Shell で [az acr credential show](/cli/azure/acr/credential#az_acr_credential_show) を実行し、Azure Container Registry のユーザー名とパスワードを表示します。 次の手順で Web アプリの構成に使用できるように、ユーザー名とパスワードの 1 つをコピーします。
+Cloud Shell で [az acr credential show](/cli/azure/acr/credential?view=azure-cli-latest#az_acr_credential_show) を実行し、Azure Container Registry のユーザー名とパスワードを表示します。 次の手順で Web アプリの構成に使用できるように、ユーザー名とパスワードの 1 つをコピーします。
 
 ```bash
 az acr credential show --name <azure-container-registry-name>
@@ -499,7 +504,7 @@ az acr credential show --name <azure-container-registry-name>
 }
 ```
 
-Cloud Shell で [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) コマンドを実行し、カスタム Docker イメージを Web アプリに割り当てます。 *\<app_name>*、*\<docker-registry-server-url>*、_\<registry-username>_、_\<password>_ を置き換えます。 Azure Container Registry では、*\<docker-registry-server-url>* は `https://<azure-container-registry-name>.azurecr.io` の形式になります。 
+Cloud Shell で [az webapp config container set](/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set) コマンドを実行し、カスタム Docker イメージを Web アプリに割り当てます。 *\<app_name>*、*\<docker-registry-server-url>*、_\<registry-username>_、_\<password>_ を置き換えます。 Azure Container Registry では、*\<docker-registry-server-url>* は `https://<azure-container-registry-name>.azurecr.io` の形式になります。 
 
 ```azurecli-interactive
 az webapp config container set --name <app_name> --resource-group myResourceGroup --docker-custom-image-name mydockerimage --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -538,7 +543,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure で Docker Python と PostgreSQL Web アプリを作成する](tutorial-docker-python-postgresql-app.md)

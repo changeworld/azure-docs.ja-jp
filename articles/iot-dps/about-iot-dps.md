@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4a2ac24442c425e1c2f2e81badef5dbd3a8dcf5e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 108ae4a66d2c13906cd0892b6c8ee5b20c3ca605
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service-preview"></a>Azure IoT Hub Device Provisioning Service (プレビュー) を使用したデバイスのプロビジョニング
+# <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。
 
 ## <a name="when-to-use-device-provisioning-service"></a>Device Provisioning Service を使用する場合
@@ -99,7 +99,7 @@ Device Provisioning Service は、他のすべての Azure IoT サービスと�
 
 Device Provisioning Service は、サービス操作の HTTPS 接続のみをサポートしています。
 
-## <a name="regions"></a>地域
+## <a name="regions"></a>リージョン
 Device Provisioning Service は、多くのリージョンで利用可能です。 すべてのサービスの既存リージョンと新規発表リージョンの一覧は、「[Azure リージョン](https://azure.microsoft.com/regions/)」で最新の状態に維持されています。 Device Provisioning Service を利用できるリージョンについては、「[Azure の状態](https://azure.microsoft.com/status/)」ページをご覧ください。
 
 > [!NOTE]
@@ -118,7 +118,7 @@ Device Provisioning Service では、99.9% のサービス レベル アグリ�
 ## <a name="related-azure-components"></a>関連する Azure のコンポーネント
 Device Provisioning Service は Azure IoT Hub を使用してデバイスのプロビジョニングを自動化しています。 詳細については、「[IoT Hub のドキュメント](https://docs.microsoft.com/azure/iot-hub/)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここでは、Azure で IoT デバイスをプロビジョニングする方法の概要について説明しました。 次の手順では、エンドツーエンドの IoT シナリオを試します。
 > [!div class="nextstepaction"]
 > [Azure Portal を使用した IoT Hub Device Provisioning Service のセットアップ](quick-setup-auto-provision.md)

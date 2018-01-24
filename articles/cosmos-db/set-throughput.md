@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: d541bb19ba7e5ecb44c9fe91b1e232d4d9c2170e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf6eadbae328b1551da861fb5a11930ee830d415
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Azure Cosmos DB コンテナーのスループットの設定
 
@@ -36,7 +36,7 @@ Azure Portal またはクライアントの SDK を使用して、Azure Cosmos D
         <tr>
             <td valign="top"><p>最小スループット</p></td>
             <td valign="top"><p>400 要求ユニット/秒</p></td>
-            <td valign="top"><p>2,500 要求ユニット/秒</p></td>
+            <td valign="top"><p>1,000 要求ユニット/秒</p></td>
         </tr>
         <tr>
             <td valign="top"><p>最大スループット</p></td>
@@ -51,16 +51,16 @@ Azure Portal またはクライアントの SDK を使用して、Azure Cosmos D
 1. 新しいウィンドウで、[Azure Portal](https://portal.azure.com) を開きます。
 2. 左側のバーで **[Azure Cosmos DB]** をクリックします。または、下部の **[その他のサービス]** をクリックし、**[データベース]** までスクロールして、**[Azure Cosmos DB]** をクリックします。
 3. Azure Cosmos DB アカウントを選択します。
-4. 新しいウィンドウで、ナビゲーション メニューの **[データ エクスプローラー (プレビュー)]** をクリックします。
+4. 新しいウィンドウで、ナビゲーション メニューの **[データ エクスプローラー]** をクリックします。
 5. 新しいウィンドウで、データベースとコンテナーを展開し、**[Scale & Settings]\(スケールと設定\)** をクリックします。
 6. 新しいウィンドウで、**[スループット]** ボックスに新しいスループット値を入力し、**[保存]** をクリックします。
 
 <a id="set-throughput-sdk"></a>
 
-## <a name="to-set-the-throughput-by-using-the-documentdb-api-for-net"></a>DocumentDB API for .NET を使用してスループットを設定するには
+## <a name="to-set-the-throughput-by-using-the-sql-api-for-net"></a>SQL API for .NET を使用してスループットを設定するには
 
 ```C#
-//Fetch the resource to be updated
+// Fetch the offer of the collection whose throughput needs to be updated
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
@@ -69,20 +69,42 @@ Offer offer = client.CreateOfferQuery()
 // Set the throughput to the new value, for example 12,000 request units per second
 offer = new OfferV2(offer, 12000);
 
-//Now persist these changes to the database by replacing the original resource
+// Now persist these changes to the collection by replacing the original offer resource
 await client.ReplaceOfferAsync(offer);
+```
+
+<a id="set-throughput-java"></a>
+
+## <a name="to-set-the-throughput-by-using-the-sql-api-for-java"></a>SQL API for Java を使用してスループットを設定するには
+
+このスニペットは、[azure-documentdb-java](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) リポジトリの OfferCrudSamples.java ファイルに含まれています。 
+
+```Java
+// find offer associated with this collection
+Iterator < Offer > it = client.queryOffers(
+    String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
+assertThat(it.hasNext(), equalTo(true));
+
+Offer offer = it.next();
+assertThat(offer.getString("offerResourceId"), equalTo(collectionResourceId));
+assertThat(offer.getContent().getInt("offerThroughput"), equalTo(throughput));
+
+// update the offer
+int newThroughput = 10300;
+offer.getContent().put("offerThroughput", newThroughput);
+client.replaceOffer(offer);
 ```
 
 ## <a name="throughput-faq"></a>スループットについてよく寄せられる質問
 
 **スループットを 400 RU/秒未満に設定することはできますか?**
 
-Cosmos DB のシングル パーティション コレクションで使用できる最小スループットは 400 RU/秒です (パーティション分割コレクションの最小スループットは 2,500 RU/秒)。 要求ユニットは 100 RU/秒の間隔で設定されますが、スループットを 100 RU/秒または 400 RU/秒未満の値に設定することはできません。 コストを抑えて Cosmos DB の開発とテストを行いたい場合は、無料の [Azure Cosmos DB Emulator](local-emulator.md) を利用して無償でローカルにデプロイすることができます。 
+Cosmos DB のシングル パーティション コンテナーで使用できる最小スループットは 400 RU/秒です (パーティション分割コンテナーの最小スループットは 1,000 RU/秒)。 要求ユニットは 100 RU/秒の間隔で設定されますが、スループットを 100 RU/秒または 400 RU/秒未満の値に設定することはできません。 コストを抑えて Cosmos DB の開発とテストを行いたい場合は、無料の [Azure Cosmos DB Emulator](local-emulator.md) を利用して無償でローカルにデプロイすることができます。 
 
 **MongoDB API を使用してスループットを設定する方法**
 
-スループットを設定するための MongoDB API 拡張機能はありません。 「[DocumentDB API for .NET を使用してスループットを設定するには](#set-throughput-sdk)」で示すように、DocumentDB API を使用することをお勧めします。
+スループットを設定するための MongoDB API 拡張機能はありません。 「[SQL API for .NET を使用してスループットを設定するには](#set-throughput-sdk)」で示すように、SQL API を使用することをお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Cosmos DB を使用したプロビジョニングと地球規模での使用の詳細については、[Cosmos DB でのパーティション分割とスケーリング](partition-data.md)に関するページをご覧ください。

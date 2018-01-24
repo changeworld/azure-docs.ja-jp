@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/06/2017
 ms.author: jgao
-ms.openlocfilehash: 7d775da82cb2dcdc02337cd19f0ef02e6562e41a
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d169645b9b701e611d27e0d984bf44b7ca85d2ad
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
 
@@ -60,11 +60,11 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 4. **[Microsoft Hive ODBC ドライバー]** を選択し、**[完了]** をクリックします。 **[Microsoft Hive ODBC ドライバーの DNS セットアップ]** ダイアログが開きます。
 5. 次の値を入力または選択します。
    
-   | プロパティ | Description |
+   | プロパティ | [説明] |
    | --- | --- |
    |  データ ソース名 |データ ソースに名前を付けます。 |
    |  Host |「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
-   |  ポート |<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。 |
+   |  Port |<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。 |
    |  データベース |<strong>既定値</strong>を使用します。 |
    |  メカニズム |<strong>Azure HDInsight サービス</strong>を選択します。 |
    |  ユーザー名 |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は <strong>admin</strong>です。 |
@@ -74,7 +74,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
    
     **[詳細オプション]**をクリックするときに、注意する必要のある重要なパラメーターがいくつかあります。
    
-   | パラメーター | Description |
+   | パラメーター | [説明] |
    | --- | --- |
    |  ネイティブ クエリの使用 |これを選択すると、ODBC ドライバーは TSQL を HiveQL に変換しません。 純粋な HiveQL ステートメントを送信していることを確認している場合にのみ使用します。 SQL Server または Azure SQL Database に接続している場合は、オフのままにします。 |
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
@@ -100,10 +100,11 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
     ![HDInsight Hive ODBC ナビゲーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight.hive.odbc.navigator.png "データ接続ウィザードを開く")
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Microsoft Hive ODBC ドライバーを使用して HDInsight サービスから Excel にデータを取得する方法を学習しました。 同様に、SQL Database に HDInsight サービスからデータを取得することもできます。 また、HDInsight サービスにデータをアップロードすることもできます。 詳細については、次を参照してください。
 
 * [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](apache-hadoop-connect-hive-power-bi.md)。
+* [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 * [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./../hdinsight-connect-hive-zeppelin.md)。
 * [Power Query を使用して Excel を Hadoop に接続する](apache-hadoop-connect-excel-power-query.md)。
 * [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](apache-hadoop-visual-studio-tools-get-started.md)。

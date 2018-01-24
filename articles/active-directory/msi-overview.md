@@ -4,7 +4,7 @@ description: "Azure リソースの管理対象サービス ID の概要。"
 services: active-directory
 documentationcenter: 
 author: skwan
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/31/2017
-ms.author: skwan
-ms.openlocfilehash: 5444e9d54bd9a2f7250ce590c3b6ced6b8b7bc51
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 12/19/2017
+ms.author: bryanla
+ms.openlocfilehash: a2a42f13c81a6f6bb34a8e6aafabf380f3d220e1
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/22/2017
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure リソースの管理対象サービス ID (MSI)
 
@@ -74,9 +74,10 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 
 | サービス | 状態 | 日付 | 構成 | トークンを取得する |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure Virtual Machines | Preview | 2017 年 9 月 | [Azure ポータル](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Azure リソース マネージャーのテンプレート](msi-qs-configure-template-windows-vm.md) | [REST ()](msi-how-to-use-vm-msi-token.md#get-a-token-using-http)<br>[.NET](msi-how-to-use-vm-msi-token.md#get-a-token-using-c)<br>[Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[Go](msi-how-to-use-vm-msi-token.md#get-a-token-using-go)<br>[PowerShell](msi-how-to-use-vm-msi-token.md#get-a-token-using-azure-powershell) |
-| Azure App Service | Preview | 2017 年 9 月 | [Azure ポータル](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST ()](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure Functions | Preview | 2017 年 9 月 | [Azure ポータル](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST ()](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Virtual Machines | プレビュー | 2017 年 9 月 | [Azure Portal](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure CLI](msi-qs-configure-cli-windows-vm.md)<br>[Azure リソース マネージャーのテンプレート](msi-qs-configure-template-windows-vm.md) | [REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http)<br>[.NET](msi-how-to-use-vm-msi-token.md#get-a-token-using-c)<br>[Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[Go](msi-how-to-use-vm-msi-token.md#get-a-token-using-go)<br>[PowerShell](msi-how-to-use-vm-msi-token.md#get-a-token-using-azure-powershell) |
+| Azure App Service | プレビュー | 2017 年 9 月 | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Functions | プレビュー | 2017 年 9 月 | [Azure Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager テンプレート](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Data Factory V2 | プレビュー | 2017 年 11 月 | [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD 認証をサポートしている Azure サービス
 
@@ -84,10 +85,12 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 
 | サービス | Resource ID | 状態 | 日付 | アクセス権を割り当てる |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com/ | 使用可能 | 2017 年 9 月 | [Azure ポータル](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
+| Azure Resource Manager | https://management.azure.com/ | 使用可能 | 2017 年 9 月 | [Azure Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
 | Azure Key Vault | https://vault.azure.net/ | 使用可能 | 2017 年 9 月 | |
 | Azure Data Lake | https://datalake.azure.net/ | 使用可能 | 2017 年 9 月 | |
 | Azure SQL | https://database.windows.net/ | 使用可能 | 2017 年 10 月 | |
+| Azure Event Hubs | https://eventhubs.azure.net/ | 使用可能 | 2017 年 12 月 | |
+| Azure Service Bus | https://servicebus.azure.net/ | 使用可能 | 2017 年 12 月 | |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>管理対象サービス ID にはどれくらいのコストがかかりますか。
 

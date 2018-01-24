@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: aa0c762d883b5860d7ac088cc143fb7e9e9028b6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 13390c2db203332433e7e3c39c8d9ed5f688448c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terraform によって Azure に完全な Linux 仮想マシンのインフラストラクチャを作成する
 
@@ -132,7 +132,7 @@ resource "azurerm_network_security_group" "temyterraformpublicipnsg" {
 
 
 ## <a name="create-virtual-network-interface-card"></a>仮想ネットワーク インターフェイス カードの作成
-仮想ネットワーク インターフェイス カード (NIC) は、VM を特定の仮想ネットワーク、パブリック IP アドレス、およびネットワーク セキュリティ グループに接続します。 Ansible プレイブックの次のセクションでは、作成した仮想ネットワーク リソースに接続された *myNIC* という名前の仮想 NIC を作成しています。
+仮想ネットワーク インターフェイス カード (NIC) は、VM を特定の仮想ネットワーク、パブリック IP アドレス、およびネットワーク セキュリティ グループに接続します。 Terraform テンプレートの次のセクションでは、作成した仮想ネットワーク リソースに接続された *myNIC* という名前の仮想 NIC を作成しています。
 
 ```tf
 resource "azurerm_network_interface" "myterraformnic" {
@@ -468,5 +468,5 @@ VM に SSH 接続できます。
 ssh azureuser@<publicIps>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Terraform を使用して、Azure に基本的なインフラストラクチャを作成しました。 さらに複雑なシナリオ (ロード バランサーや仮想マシン スケール セットを使用する例など) については、[Azure を対象とした Terraform の例](https://github.com/hashicorp/terraform/tree/master/examples)を参照してください。 サポートされている Azure プロバイダーの最新の一覧については、[Terraform のドキュメント](https://www.terraform.io/docs/providers/azurerm/index.html)を参照してください。

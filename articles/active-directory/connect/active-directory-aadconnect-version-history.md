@@ -4,7 +4,7 @@ description: "この記事では、Azure AD Connect と Azure AD Sync のすべ�
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
@@ -12,28 +12,95 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2017
+ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: 51cdb60d1967f2a4a4ebadbd2717fd580a79da6b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: ff43edc9799670fd90beaef1dbe4db48b2e762e5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
-
 この記事は、リリースされたバージョンを追跡し、最新バージョンに更新する必要があるかどうかを判断できるようにするためのものです。
 
 以下は、関連トピックの一覧です。
 
 
-トピック |  詳細
+
+Topic |  詳細
 --------- | --------- |
 Azure AD Connect からのアップグレード手順 | Azure AD Connect の [以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md) するさまざまな方法を説明しています。
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](./active-directory-aadconnect-accounts-permissions.md#upgrade)に関するページを参照してください。
-ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)。
 
+ダウンロード | [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)します。
+
+## <a name="116540"></a>1.1.654.0
+状態: 2017 年 12 月 12 日
+
+>[!NOTE]
+>これは、Azure AD Connect のセキュリティに関連する修正プログラムです
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+Azure AD Connect バージョン 1.1.654.0 (以降) が強化され、Azure AD Connect が AD DS アカウントを作成するときに「[AD DS アカウントへのアクセスのロックダウン](#lock)」のセクションで説明されている推奨されるアクセス許可の変更が自動的に適用されます。 
+
+- Azure AD Connect をセットアップするときにインストールを実行する管理者は、既存の AD DS アカウントを指定するか、Azure AD Connect でアカウントを自動的に作成できます。 アクセス許可の変更は、セットアップ中に Azure AD Connect によって作成される AD DS アカウントに自動的に適用されます。 インストールを実行する管理者が指定した既存の AD DS アカウントには適用されません。
+- 以前のバージョンの Azure AD Connect から 1.1.654.0 (またはそれ以降) にアップグレードしたお客様の場合、アクセス許可の変更は、アップグレードの前に作成された既存の AD DS アカウントにさかのぼって適用されません。 アップグレード後に作成された新しい AD DS アカウントにのみ適用されます。 これは、Azure AD に同期する新しい AD フォレストを追加するときに行われます。
+
+>[!NOTE]
+>このリリースでは、サービス アカウントがインストール プロセスによって作成される Azure AD Connect の新規インストールに対してのみ脆弱性が除去されます。 既存のインストールの場合、または自分でアカウントを指定する場合は、この脆弱性が存在しないことを確認する必要があります。
+
+#### <a name="lock"></a> AD DS アカウントへのアクセスのロックダウン
+オンプレミスの AD で次のアクセス許可の変更を実装して、AD DS アカウントへのアクセスをロックダウンします。  
+
+*   指定したオブジェクトの継承を無効にします
+*   SELF に固有の ACE を除き、特定のオブジェクトのすべての ACE を削除します。 SELF については、既定のアクセス許可を維持します。
+*   以下の特定のアクセス許可を割り当てます。
+
+type     | Name                          | Access               | 適用対象
+---------|-------------------------------|----------------------|--------------|
+ALLOW    | SYSTEM                        | フル コントロール         | このオブジェクト  |
+ALLOW    | Enterprise Admins             | フル コントロール         | このオブジェクト  |
+ALLOW    | Domain Admins                 | フル コントロール         | このオブジェクト  |
+ALLOW    | 管理者                | フル コントロール         | このオブジェクト  |
+ALLOW    | Enterprise Domain Controllers | コンテンツの一覧        | このオブジェクト  |
+ALLOW    | Enterprise Domain Controllers | すべてのプロパティの読み取り  | このオブジェクト  |
+ALLOW    | Enterprise Domain Controllers | 読み取りのアクセス許可     | このオブジェクト  |
+ALLOW    | Authenticated Users           | コンテンツの一覧        | このオブジェクト  |
+ALLOW    | Authenticated Users           | すべてのプロパティの読み取り  | このオブジェクト  |
+ALLOW    | Authenticated Users           | 読み取りのアクセス許可     | このオブジェクト  |
+
+AD DS アカウントの設定を強化するために、[この PowerShell スクリプト](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978)を実行できます。 PowerShell スクリプトでは、AD DS アカウントに上記のアクセス許可が割り当てられます。
+
+#### <a name="powershell-script-to-tighten-a-pre-existing-service-account"></a>既存のサービス アカウントを強化する PowerShell スクリプト
+
+PowerShell スクリプトを使用して、(組織で指定した、または Azure AD Connect の以前のインストールによって作成された) 既存の AD DS アカウントにこれらの設定を適用するには、上記のリンクからスクリプトをダウンロードしてください。
+
+##### <a name="usage"></a>用途:
+
+```powershell
+Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
+```
+
+Where 
+
+**$ObjectDN** = アクセス許可のセキュリティを強化する必要がある Active Directory アカウント。
+
+**$Credential** = $ObjectDN アカウントに対するアクセス許可を制限するために必要な権限を持つ管理者資格情報。 これは通常、企業またはドメインの管理者です。 アカウント参照の失敗を回避するには、管理者アカウントの完全修飾ドメイン名を使用します。 例: contoso.com\admin。
+
+>[!NOTE] 
+>$credential.UserName は FQDN\username 形式である必要があります。 例: contoso.com\admin 
+
+##### <a name="example"></a>例:
+
+```powershell
+Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbackdc,DC=com" -Credential $credential 
+```
+### <a name="was-this-vulnerability-used-to-gain-unauthorized-access"></a>この脆弱性が未承認のアクセスに使用されたか
+
+この脆弱性が Azure AD Connect 構成の侵害に使用されたかどうかを確認するには、サービス アカウントのパスワードが最後にリセットされた日付を確認する必要があります。  予期しないタイムスタンプがある場合は、イベント ログでそのパスワードのリセット イベントをさらに調査する必要があります。
+
+詳しくは、[マイクロソフト セキュリティ アドバイザリ 4056318](https://technet.microsoft.com/library/security/4056318) をご覧ください
 
 ## <a name="116490"></a>1.1.649.0
 リリース: 2017 年 10 月 27 日
@@ -333,7 +400,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|Select|
+    |CertVersion|CertSignatureAlgorithmOid|elect|
     |CertKeyAlgorithmParams|CertHashString|Where|
     |||With|
 
@@ -599,7 +666,7 @@ AD FS の管理
 
 **修正された問題と機能強化:**
 
-* Azure AD Connect を FIPS 準拠のサーバーにインストールできるようになりました。
+* Azure AD Connect を FIPS に準拠しているサーバーにインストールできるようになりました。
   * パスワードの同期については、「[パスワード同期と FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips)」を参照してください。
 * Active Directory コネクタで、NetBIOS を FQDN に名前解決できないという問題が修正されました。
 
@@ -852,5 +919,5 @@ Active Directory アカウントには、Active Directory からのパスワー�
 
 **Azure AD Sync の最初のリリースです。**
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

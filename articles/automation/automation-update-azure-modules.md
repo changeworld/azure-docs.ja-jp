@@ -3,7 +3,7 @@ title: "Azure Automation の Azure モジュールの更新 | Microsoft Docs"
 description: "この記事では、Azure Automation で既定で提供される一般的な Azure PowerShell モジュールを更新する方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 6bd259f3da1005228b8137415c30660221507909
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5e7c66cfd26bd6927d48ffd8bc0f82e9a3e2d13
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Automation の Azure PowerShell モジュールを更新する方法
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="updating-azure-modules"></a>Azure モジュールの更新
 
-1. Automation アカウントの [モジュール] ブレードに、**Update Azure Modules (Azure モジュールの更新)** オプションが追加されました。  このオプションは常に有効です。<br><br> ![[モジュール] ブレードの [Update Azure Modules] (Azure モジュールの更新) オプション](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+1. Automation アカウントの [モジュール] ページに、**Update Azure Modules (Azure モジュールの更新)** オプションが追加されました。 このオプションは常に有効です。<br><br> ![[モジュール] ページの [Update Azure Modules] (Azure モジュールの更新) オプション](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
 2. **Update Azure Modules (Azure モジュールの更新)** をクリックすると、操作を続けるかどうかを尋ねる確認通知が表示されます。<br><br> ![Azure モジュールの更新通知](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
-3. **[はい]** をクリックすると、モジュールの更新プロセスが開始されます。  更新プロセスの所要時間は約 15 分から 20 分であり、以下のモジュールが更新されます。
+3. **[はい]** をクリックすると、モジュールの更新プロセスが開始されます。 更新プロセスの所要時間は約 15 分から 20 分であり、以下のモジュールが更新されます。
 
   * Azure
   * Azure.Storage
@@ -43,14 +43,14 @@ ms.lasthandoff: 10/11/2017
   * AzureRm.Sql
   * AzureRm.Storage
 
-    モジュールが既に最新の状態である場合、プロセスは数秒で完了します。  更新プロセスが完了すると通知が表示されます。<br><br> ![Azure モジュールの更新の更新状態](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+    モジュールが既に最新の状態である場合、プロセスは数秒で完了します。 更新プロセスが完了すると通知が表示されます。<br><br> ![Azure モジュールの更新の更新状態](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
 > [!NOTE]
 > Azure Automation は、スケジュール済みの新しいジョブの実行時に Automation アカウントの最新のモジュールを使用します。    
 
 runbook で Azure PowerShell モジュールのコマンドレットを使用して Azure リソースを管理する場合、モジュールを最新に保つために 1 か月に 1 回程度この更新プロセスを実行する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 統合モジュールの詳細、およびカスタム モジュールを作成して Automation をさらに別のシステム、サービス、またはソリューションと統合する方法については、[統合モジュール](automation-integration-modules.md)に関するページを参照してください。
 

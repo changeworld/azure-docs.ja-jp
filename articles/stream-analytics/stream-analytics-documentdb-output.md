@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeanb
-ms.openlocfilehash: ca7102f5fd4a5038cee983b5fdd588d41d1b2725
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 29be0f5100aabe8374a26e6548effe20ccb9ac86
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="target-azure-cosmos-db-for-json-output-from-stream-analytics"></a>Stream Analytics からの JSON 出力に Azure Cosmos DB をターゲットにする
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -27,7 +27,7 @@ Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](ht
 Cosmos DB を詳しく理解していない場合は、開始する前に [Azure Cosmos DB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)に関するページをご覧ください。 
 
 > [!Note]
-> 現時点では、Azure Stream Analytics は、**DocumentDB (SQL) API** を使用した CosmosDB への接続のみをサポートしています。
+> 現時点では、Azure Stream Analytics は、**SQL API** を使用した CosmosDB への接続のみをサポートしています。
 > その他の Azure Cosmos DB API は、まだサポートされていません。 Azure Stream Analytics を、その他のAPI で作成した Azure Cosmos DB アカウントへ接続する場合は、データが正しく格納されない可能性があります。 
 
 ## <a name="basics-of-cosmos-db-as-an-output-target"></a>出力ターゲットとしての Cosmos DB の基礎
@@ -36,7 +36,7 @@ Stream Analytics で Azure Cosmos DB 出力を使用すると、ストリーム�
 Cosmos DB コレクションの一部のオプションの詳細を以下に示します。
 
 ## <a name="tune-consistency-availability-and-latency"></a>調整の整合性、可用性、および待機時間
-Cosmos DB では、アプリケーション要件を満たすために、データベースやコレクションを微調整し、整合性、可用性、待機時間の間で妥協点を見つけることができます。 読み取りおよび書き込みの待機時間に対してシナリオで求められる読み取りの一貫性レベルに応じて、データベース アカウントでの一貫性レベルを選択することができます。 また Cosmos DB では、コレクションへの各 CRUD 操作に対する同期インデックス作成も、既定で有効になっています。 この機能も、Cosmos DB で書き込みと読み取りのパフォーマンスを制御するための便利なオプションの 1 つです。 このトピックの詳細については、 [データベースとクエリの一貫性レベルの変更](../documentdb/documentdb-consistency-levels.md) に関する記事を参照してください。
+Cosmos DB では、アプリケーション要件を満たすために、データベースやコレクションを微調整し、整合性、可用性、待機時間の間で妥協点を見つけることができます。 読み取りおよび書き込みの待機時間に対してシナリオで求められる読み取りの一貫性レベルに応じて、データベース アカウントでの一貫性レベルを選択することができます。 また Cosmos DB では、コレクションへの各 CRUD 操作に対する同期インデックス作成も、既定で有効になっています。 この機能も、Cosmos DB で書き込みと読み取りのパフォーマンスを制御するための便利なオプションの 1 つです。 このトピックの詳細については、 [データベースとクエリの一貫性レベルの変更](../cosmos-db/consistency-levels.md) に関する記事を参照してください。
 
 ## <a name="upserts-from-stream-analytics"></a>Stream Analytics からのアップサート
 Stream Analytics を Cosmos DB と統合することで、特定のドキュメント ID 列に基づき、Cosmos DB コレクションでレコードを挿入または更新できるようになります。 この機能は、 *アップサート*とも呼ばれています。
@@ -48,7 +48,7 @@ Cosmos DB [パーティション分割コレクション](../cosmos-db/partition
 
 単一の Cosmos DB コレクションの場合、Stream Analytics では引き続き、クエリ パターンとアプリケーションのパフォーマンス ニーズの両方に応じてデータをパーティション分割できます。 各コレクションに格納できるデータは最大 10 GB で、現時点ではコレクションをスケールアップ (またはオーバーフロー) する方法はありません。 スケールアウトの場合、Stream Analytics では、特定のプレフィックスを持つ複数のコレクションに書き込むことができます (使用方法の詳細については以下を参照)。 Stream Analytics では、ユーザー指定の PartitionKey 列に基づく一貫性のある [ハッシュ パーティション リゾルバー](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.partitioning.hashpartitionresolver.aspx) 方式を使用し、出力レコードをパーティションに分割します。 ストリーミング ジョブの開始時における特定のプレフィックスを持つコレクションの数が出力パーティションの数として使用され、ジョブはその出力パーティションに並行して書き込みを行います (Cosmos DB コレクション = 出力パーティション)。 1 つのコレクションと遅延インデックス作成で挿入のみを実行する場合、予想される書き込みスループットは約 0.4 MB/秒です。 複数のコレクションを使用することで、スループットの向上と容量の増加が実現できます。
 
-将来パーティション数を増やす予定がある場合は、ジョブを停止し、既存のコレクションから新しいコレクションへとデータの再パーティション分割を行った後、Stream Analytics ジョブを再開することが必要になる場合があります。 PartitionResolver の使用方法、再パーティション分割、サンプル コードなどの詳細は、フォローアップ記事に含まれる予定です。 この詳細については、[Cosmos DB でのパーティション分割とスケーリング](../documentdb/documentdb-partition-data.md)に関する記事でも説明しています。
+将来パーティション数を増やす予定がある場合は、ジョブを停止し、既存のコレクションから新しいコレクションへとデータの再パーティション分割を行った後、Stream Analytics ジョブを再開することが必要になる場合があります。 PartitionResolver の使用方法、再パーティション分割、サンプル コードなどの詳細は、フォローアップ記事に含まれる予定です。 この詳細については、[Cosmos DB でのパーティション分割とスケーリング](../cosmos-db/sql-api-partition-data.md)に関する記事でも説明しています。
 
 ## <a name="cosmos-db-settings-for-json-output"></a>JSON 出力の Cosmos DB 設定
 Stream Analytics で Cosmos DB を出力として作成すると、情報の入力を求めるプロンプトが以下のように表示されます。 このセクションでは、各プロパティの定義について説明します。

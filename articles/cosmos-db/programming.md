@@ -1,7 +1,7 @@
 ---
 title: "Azure Cosmos DB のサーバー側 JavaScript プログラミング | Microsoft Docs"
 description: "Azure Cosmos DB を使用して、ストアド プロシージャ、データベース トリガー、ユーザー定義関数 (UDF) を JavaScript で記述する方法について説明します。 データベース プログラミングのヒントなどが得られます。"
-keywords: "データベース トリガー, ストアド プロシージャ, ストアド プロシージャ, データベース プログラム, sproc, documentdb, azure, Microsoft azure"
+keywords: "データベース トリガー, ストアド プロシージャ, ストアド プロシージャ, データベース プログラム, sproc, azure, Microsoft azure"
 services: cosmos-db
 documentationcenter: 
 author: aliuy
@@ -13,15 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2016
+ms.date: 12/07/2017
 ms.author: andrl
-ms.openlocfilehash: ef191c3c8d85afa389859956d30b5ac0275053d2
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d8438d126c1f994e51871e80bb11610ec95b0814
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
 Azure Cosmos DB の統合された JavaScript 言語によるトランザクション実行によって、開発者が、**ストアド プロシージャ**、**トリガー**、**ユーザー定義関数 (UDF)** を [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) JavaScript でネイティブに記述できるしくみを説明します。 これにより、データベース ストレージ パーティションに直接配置して実行できるデータベース プログラム アプリケーション ロジックを記述できます。 
 
 まずは、次のビデオを視聴することをお勧めします。このビデオでは、Andrew Liu が、Cosmos DB のサーバー側のデータベース プログラミング モデルについて簡単に紹介しています。 
@@ -53,7 +56,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
   * 生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。 これは、データがスキーマを持たない場合に特に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
   * この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
 
-データベース トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[REST API](/rest/api/documentdb/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および .NET、Node.js、JavaScript を含む多くのプラットフォームにある[クライアント SDK](documentdb-sdk-dotnet.md) 経由でサポートされます。
+データベース トリガー、ストアド プロシージャ、およびカスタム クエリ演算子の作成と実行は、[Azure Portal](https://portal.azure.com)、[REST API](/rest/api/documentdb/)、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)、および .NET、Node.js、JavaScript を含む多くのプラットフォームにある[クライアント SDK](sql-api-sdk-dotnet.md) 経由でサポートされます。
 
 このチュートリアルでは、[Node.js SDK と Q Promises](http://azure.github.io/azure-documentdb-node-q/) を使用して、ストアド プロシージャ、トリガー、UDF の構文と使用法を示します。   
 
@@ -437,7 +440,7 @@ Cosmos DB には、ドキュメントの操作によって実行またはトリ�
 ここで重要なのは、Cosmos DB でのトリガーの**トランザクション**実行です。 このポストトリガーは、元のドキュメントの作成に使用されたのと同じトランザクションの一部として実行されます。 したがって、(たとえば、メタデータ ドキュメントを更新できないという理由で) ポストトリガーから例外をスローすると、トランザクション全体が失敗し、ロール バックされます。 その結果、ドキュメントは作成されず、例外が返されます。  
 
 ## <a id="udf"></a>ユーザー定義関数
-ユーザー定義関数 (UDF) は、DocumentDB API SQL クエリ言語の文法を拡張してカスタム ビジネス ロジックを実装するために使用します。 ユーザー定義関数は、クエリ内からのみ呼び出すことができます。 ユーザー定義関数は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF は、Cosmos DB サービスのセカンダリ レプリカで実行できます。  
+ユーザー定義関数 (UDF) は、Azure Cosmos DB SQL クエリ言語の文法を拡張してカスタム ビジネス ロジックを実装するために使用します。 ユーザー定義関数は、クエリ内からのみ呼び出すことができます。 ユーザー定義関数は、コンテキスト オブジェクトにアクセスできず、計算のみの JavaScript として使用する必要があります。 したがって、UDF は、Cosmos DB サービスのセカンダリ レプリカで実行できます。  
 
 次のサンプルでは、さまざまな所得階層の税率に基づいて所得税を計算する UDF を作成し、クエリ内でこの UDF を使用して、支払った税金が $20,000 を超える人々を検索しています。
 
@@ -479,7 +482,7 @@ Cosmos DB には、ドキュメントの操作によって実行またはトリ�
     });
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript 統合言語クエリ API
-DocumentDB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。 JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB のインデックスで効率的に実行されます。
+Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。 JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB のインデックスで効率的に実行されます。
 
 > [!NOTE]
 > `__` (二重下線) は `getContext().getCollection()` のエイリアスです。
@@ -642,7 +645,7 @@ SQL クエリと同様に、ドキュメント プロパティ キー ( `doc.id`
 
 
 ## <a name="runtime-support"></a>ランタイム サポート
-[DocumentDB JavaScript サーバー側 API](http://azure.github.io/azure-documentdb-js-server/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
+Azure Cosmos DB [JavaScript サーバー側 API](http://azure.github.io/azure-documentdb-js-server/) では、[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) によって標準化されたメインストリーム JavaScript 言語機能のほとんどをサポートしています。
 
 ### <a name="security"></a>セキュリティ
 JavaScript のストアド プロシージャとトリガーはサンドボックス化されているため、データベース レベルのスナップショット トランザクション分離性が適用されなくても 1 つのスクリプトの効果が他のスクリプトに作用しません。 ランタイム環境はプーリングされますが、実行ごとにコンテキストがクリーンアップされます。 このため、互いの意図していない副作用に対する安全性が保証されています。
@@ -651,7 +654,7 @@ JavaScript のストアド プロシージャとトリガーはサンドボッ�
 ストアド プロシージャ、トリガー、および UDF は、それぞれのスクリプトの呼び出し時のコンパイル コストを回避するために、暗黙的にバイト コード形式にプリコンパイルされます。 これにより、高速なストアド プロシージャの呼び出しと小さなフットプリントが保証されます。
 
 ## <a name="client-sdk-support"></a>クライアント SDK のサポート
-Azure Cosmos DB には、[Node.js](documentdb-sdk-node.md) クライアント用の DocumentDB API だけでなく、DocumentDB API 用の [.NET](documentdb-sdk-dotnet.md)、[.NET Core](documentdb-sdk-dotnet-core.md)、[Java](documentdb-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/)、および [Python Sdk](documentdb-sdk-python.md) が用意されています。 ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。 次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。 .NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
+Azure Cosmos DB には、Azure Cosmos DB [Node.js](sql-api-sdk-node.md) API だけでなく、SQL API 用の [.NET](sql-api-sdk-dotnet.md)、[.NET Core](sql-api-sdk-dotnet-core.md)、[Java](sql-api-sdk-java.md)、[JavaScript](http://azure.github.io/azure-documentdb-js/)、および [Python Sdk](sql-api-sdk-python.md) も用意されています。 ストアド プロシージャ、トリガー、および UDF は、これらの SDK を使用して作成および実行することもできます。 次の例に、.NET クライアントを使用してストアド プロシージャを作成および実行する方法を示します。 .NET の型がどのように JSON としてストアド プロシージャに渡され、読み取られるかに注目してください。
 
     var markAntiquesSproc = new StoredProcedure
     {
@@ -684,7 +687,7 @@ Azure Cosmos DB には、[Node.js](documentdb-sdk-node.md) クライアント用
     Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "ValidateDocumentAge"), document, 1920);
 
 
-このサンプルは、[DocumentDB .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。 
+このサンプルは、[SQL .NET API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) を使用してプリトリガーを作成し、このトリガーが有効なドキュメントを作成する方法を示しています。 
 
     Trigger preTrigger = new Trigger()
     {
@@ -705,7 +708,7 @@ Azure Cosmos DB には、[Node.js](documentdb-sdk-node.md) クライアント用
         });
 
 
-次の例では、ユーザー定義関数 (UDF) を作成し、これを [DocumentDB API SQL クエリ](documentdb-sql-query.md)で使用しています。
+次の例では、ユーザー定義関数 (UDF) を作成し、これを [SQL クエリ](sql-api-sql-query.md)で使用しています。
 
     UserDefinedFunction function = new UserDefinedFunction()
     {
@@ -797,12 +800,12 @@ Azure Cosmos DB には、[Node.js](documentdb-sdk-node.md) クライアント用
 
 あなたのストアド プロシージャも共有しませんか? プル要求をお送りください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ストアド プロシージャ、トリガー、およびユーザー定義関数を作成したら、それらを読み込み、データ エクスプローラーを使用して Azure Portal で表示できます。
 
 次のようなリファレンスとリソースでも、Azure Cosmos DB のサーバー側プログラミングについて詳しく学ぶことができます。
 
-* [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md)
+* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
 * [JSON](http://www.json.org/) 
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)

@@ -4,7 +4,7 @@ description: "Azure Active Directory の管理対象サービス ID の既知の
 services: active-directory
 documentationcenter: 
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/20/2017
+ms.date: 12/12/2017
 ms.author: bryanla
-ms.openlocfilehash: 859cfbeae6701336699b4f3f7a96d6b08c599340
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 2c29e93c0978250281fa489e53dcdf25f890a0a7
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題
 
@@ -26,13 +26,17 @@ ms.lasthandoff: 10/21/2017
 
 ## <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 
+### <a name="is-there-a-private-preview-available-for-additional-features"></a>追加の機能では、プライベート プレビューは使用可能ですか。
+
+はい。 プライベート プレビューへの登録をご希望の場合は、[サインアップ ページにアクセス](https://aka.ms/azuremsiprivatepreview)してください。
+
 ### <a name="does-msi-work-with-azure-cloud-services"></a>MSI は Azure Cloud Services で動作しますか。
 
 いいえ、Azure Cloud Services で MSI をサポートする予定はありません。
 
 ### <a name="does-msi-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>MSI は Active Directory Authentication Library (ADAL) または Microsoft Authentication Library (MSAL) で動作しますか。
 
-いいえ、MSI はまだ ADAL または MSAL と統合されていません。
+いいえ、MSI はまだ ADAL または MSAL と統合されていません。 MSI REST エンドポイントを使用した MSI トークンの取得の詳細については、「[トークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法](msi-how-to-use-vm-msi-token.md)」をご覧ください。
 
 ### <a name="what-are-the-supported-linux-distributions"></a>どのような Linux ディストリビューションがサポートされていますか。
 

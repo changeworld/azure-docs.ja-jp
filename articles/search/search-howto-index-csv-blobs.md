@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/15/2016
+ms.date: 12/28/2017
 ms.author: eugenesh
-ms.openlocfilehash: 60ca696a6fa8f277a13875c39b44577c4b38c92a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 40b7f1f4f75d389a64329e7d8fd3c7feb79d5e55
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Azure Search BLOB インデクサーを使用した CSV BLOB のインデックス作成
 既定では、 [Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md) は区切りテキスト BLOB を 1 つのテキスト チャンクとして解析します。 ただし、CSV データを含む BLOB では、BLOB の各行を個別のドキュメントとして処理することがよくあります。 たとえば、次のような区切りテキストがあるとします。 
@@ -52,7 +52,12 @@ BLOB に最初のヘッダー行が含まれていない場合は、インデク
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-現在サポートされているのは、UTF-8 エンコードだけです。 また、区切り文字としてコンマ文字 ( `','` ) だけがサポートされています。 他のエンコードまたは区切り文字のサポートが必要な場合は、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
+`delimitedTextDelimiter` 構成設定を使用して区切り記号をカスタマイズできます。 例: 
+
+    "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
+
+> [!NOTE]
+> 現在サポートされているのは、UTF-8 エンコードだけです。 他のエンコードのサポートが必要な場合は、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
 
 > [!IMPORTANT]
 > 区切りテキスト解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が CSV になると見なされます。 CSV と CSV 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、 [UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。

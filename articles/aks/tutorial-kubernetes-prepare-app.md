@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ef0395a9c666732ba117822f46e8d2a7540aee14
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 60e0feb1e45ac5d9f35eac9667eaf9004d77e86a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="prepare-application-for-azure-container-service-aks"></a>Azure Container Service (AKS) 用のアプリケーションの準備
 
@@ -32,9 +32,9 @@ ms.lasthandoff: 12/06/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルの前提として、コンテナー、コンテナー イメージ、基本 Docker コマンドなど、Docker のコア概念を基本的に理解している必要があります。 必要な場合は、[Docker の入門]( https://docs.docker.com/get-started/)に関するドキュメントでコンテナーの基礎を参照してください。 
+このチュートリアルの前提として、コンテナー、コンテナー イメージ、基本 Docker コマンドなど、Docker のコア概念を基本的に理解している必要があります。 必要な場合は、[Docker の入門][docker-get-started]に関するドキュメントでコンテナーの基礎を参照してください。 
 
-このチュートリアルを完了するには、Docker 開発環境が必要です。 Docker では、[Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、または [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システムで Docker を簡単に構成できるパッケージが提供されています。
+このチュートリアルを完了するには、Docker 開発環境が必要です。 Docker では、[Mac][docker-for-mac]、[Windows][docker-for-windows]、または [Linux][docker-for-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
 Azure Cloud Shell には、このチュートリアルの各ステップを完了するのに必要な Docker コンポーネントがすべて含まれているわけではありません。 そのため、完全な Docker 開発環境の使用をお勧めします。
 
@@ -58,15 +58,15 @@ cd azure-voting-app-redis
 
 ## <a name="create-container-images"></a>コンテナー イメージを作成する
 
-[Docker Compose](https://docs.docker.com/compose/) は、コンテナー イメージと複数のコンテナー アプリケーションのデプロイからのビルドを自動化するために使用できます。
+[Docker Compose][docker-compose] は、コンテナー イメージと複数のコンテナー アプリケーションのデプロイからのビルドを自動化するために使用できます。
 
-コンテナー イメージの作成、Redis イメージのダウンロード、およびアプリケーションの起動を行うために、`docker-compose.yml` ファイルを実行します。
+コンテナー イメージの作成、Redis イメージのダウンロード、およびアプリケーションの起動を行うために、`docker-compose.yaml` ファイルを実行します。
 
 ```console
 docker-compose up -d
 ```
 
-完了したら、[docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使って、作成されたイメージを確認します。
+完了したら、[docker images][docker-images] コマンドを使って、作成されたイメージを確認します。
 
 ```console
 docker images
@@ -81,7 +81,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-[docker ps](https://docs.docker.com/engine/reference/commandline/ps/) コマンドを実行して、実行中のコンテナーを確認します。
+[docker ps][docker-ps] コマンドを実行して、実行中のコンテナーを確認します。
 
 ```console
 docker ps
@@ -119,7 +119,7 @@ docker-compose down
 
 完了すると、Azure Vote アプリケーションを含むコンテナー イメージが完成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、アプリケーションをテストし、アプリケーション用のコンテナー イメージを作成しました。 次の手順を完了しました。
 
@@ -131,4 +131,16 @@ docker-compose down
 次のチュートリアルでは、Azure Container Registry にコンテナー イメージを格納する方法について学習します。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry にイメージをプッシュする](./tutorial-kubernetes-prepare-acr.md)
+> [Azure Container Registry にイメージをプッシュする][aks-tutorial-prepare-acr]
+
+<!-- LINKS - external -->
+[docker-compose]: https://docs.docker.com/compose/
+[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-for-mac]: https://docs.docker.com/docker-for-mac/
+[docker-for-windows]: https://docs.docker.com/docker-for-windows/
+[docker-get-started]: https://docs.docker.com/get-started/
+[docker-images]: https://docs.docker.com/engine/reference/commandline/images/
+[docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

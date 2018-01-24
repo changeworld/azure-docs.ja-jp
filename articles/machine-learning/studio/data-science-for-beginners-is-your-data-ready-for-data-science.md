@@ -1,6 +1,6 @@
 ---
 title: "データ サイエンス用のデータの準備はお済みですか? データの分析 - Azure Machine Learning | Microsoft Docs"
-description: "データ サイエンス用にデータを準備するための 4 つの条件について説明します。 初心者向けデータ サイエンス ビデオ 2 では、基本的なデータの評価を支援する具体的な例を説明しています。"
+description: "データ サイエンスを準備するためにデータが満たす必要のある 4 つの条件。 このビデオでは、基本的なデータの評価を支援する具体的な例を説明しています。"
 keywords: "関連性のあるデータ,データの評価,データの準備,データの条件,データの準備"
 services: machine-learning
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 01/03/2018
 ms.author: cgronlun
-ms.openlocfilehash: 9b5cf776981af0dff57195d5c7f1923b8d9a3862
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ab9462c4cc4573717450ce48028807960cecee9
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ
@@ -108,6 +108,6 @@ ms.lasthandoff: 10/11/2017
 
 Microsoft Azure Machine Learning の "*初心者向けデータ サイエンス*" の他の 4 つのビデオも必ずご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](what-is-machine-learning.md)

@@ -4,15 +4,17 @@ description: "このシナリオでは、Azure Machine Learning Workbench を使
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f0c466c433701c295bde00258d9ff7fd267b71f7
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用したハイパーパラメーターの分散チューニング
 
@@ -26,24 +28,26 @@ ms.lasthandoff: 12/08/2017
 ## <a name="use-case-overview"></a>ユース ケースの概要
 
 多くの機械学習アルゴリズムには、ハイパーパラメーターという 1 つまたは複数のノブがあります。 これらのノブを使用すると、アルゴリズムをチューニングして、ユーザーが指定したメトリック (精度、AUC、RMSE など) に従って測定される今後のデータについてパフォーマンスを最適化することができます。 データ サイエンティストは、トレーニング データのモデルを構築する場合、将来のテスト データを表示する前に、ハイパーパラメーターの値を用意する必要があります。 既知のトレーニング データに基づいて、モデルが未知のテスト データでも効率的なパフォーマンスになるように、ハイパーパラメーターの値を設定するにはどうすればよいでしょうか。 
-
+    
 ハイパーパラメーターのチューニングで一般的な手法は、*グリッド検索*と*クロス検証*を組み合わせる方法です。 クロス検証は、トレーニング セットに対してトレーニングされたモデルを使用して、テスト セットに対して予測する方法を評価する手法です。 この手法を使い、最初にデータセットを K フォールドに分割してから、ラウンドロビン方式でアルゴリズムを K 回トレーニングします。 "ヘルドアウト フォールド" と呼ばれる 1 つのフォールドを除くすべてのフォールドに対してこれを行います。 ここでは、K ヘルドアウト フォールドに対して、K モデルのメトリックの平均値を計算します。 この平均値は、*クロス検証パフォーマンス推定値*と呼ばれ、K モデルを作成するときに使用されるハイパーパラメーターの値に依存します。 ハイパーパラメーターのチューニング時に、ハイパーパラメーター値候補の領域を検索し、クロス検証パフォーマンスの推定値を最適化する値を見つけます。 グリッド検索は一般的な検索手法です。 グリッド検索では、複数のハイパーパラメーターの候補値の領域は、個々のハイパーパラメーターの候補値セットのクロス積です。 
 
 クロス検証を使用するグリッド検索は時間がかかることがあります。 アルゴリズムに 5 つのハイパーパラメーターがあり、それぞれに 5 つの候補値が含まれる場合は、K = 5 フォールドを使います。 そして、5<sup>6</sup>=15625 モデルをトレーニングすることでグリッド検索を完了します。 幸いなことに、クロス検証を使用するグリッド検索は並列プロシージャであり、これらすべてのモデルを並列してトレーニングできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)。
+* [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
 * Workbench をインストールしてアカウントを作成するために、[インストールと作成のクイックスタート](./quickstart-installation.md)に関するページに従ってインストールした [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のコピー。
 * このシナリオでは、Docker エンジンをローカルにインストールした Windows 10 または MacOS で Azure ML Workbench を実行していることを前提とします。 
 * リモート Docker コンテナーを使用するシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)に従って Ubuntu データ サイエンス仮想マシン (DSVM) をプロビジョニングします。 少なくとも 8 個のコアと 28 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 D4 インスタンスの仮想マシンにはこのような容量があります。 
-* Spark クラスターでこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って Azure HDInsight クラスターをプロビジョニングします。 クラスターには少なくとも次のものを用意することをお勧めします。 
-- 6 個の worker ノード
-- 8 個のコア
-- ヘッド ノードと worker ノードの両方に 28 GB のメモリ。 D4 インスタンスの仮想マシンにはこのような容量があります。 クラスターのパフォーマンスを最大化するために、次のパラメーターを変更することをお勧めします。
-- spark.executor.instances
-- spark.executor.cores
-- spark.executor.memory 
+* Spark クラスターでこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って Azure HDInsight クラスターをプロビジョニングします。   
+クラスターには少なくとも次のものを用意することをお勧めします。
+    - 6 個の worker ノード
+    - 8 個のコア
+    - ヘッド ノードと worker ノードの両方に 28 GB のメモリ。 D4 インスタンスの仮想マシンにはこのような容量があります。       
+    - クラスターのパフォーマンスを最大化するために、次のパラメーターを変更することをお勧めします。
+        - spark.executor.instances
+        - spark.executor.cores
+        - spark.executor.memory 
 
 [こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager)に従って、[Custom spark-defaults]\(カスタム Spark 既定値\) セクションの定義を編集できます。
 

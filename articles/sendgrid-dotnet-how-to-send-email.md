@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-ms.openlocfilehash: 14161a0747add43a99e301eacf700ab79c77c767
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法
 ## <a name="overview"></a>概要
@@ -108,7 +108,7 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
     var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
     var client = new SendGridClient(apiKey);
 
-次の例に、Web API でメッセージを送信する方法を示します。
+次の例は、コンソール アプリケーションで SendGrid Web API を使用して電子メール メッセージを送信する方法を示しています。
 
     using System;
     using System.Threading.Tasks;
@@ -140,7 +140,83 @@ SendGrid の .NET クラス ライブラリは、**SendGrid** という名前で
             }
         }
     }
+    
+## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>方法: MailHelper クラスを使用して ASP .NET Core API から電子メールを送信する
 
+以下の例は、`SendGrid.Helpers.Mail` 名前空間の `MailHelper` クラスを使用して、ASP .NET Core API から複数の受信者に単一の電子メールを送信する際に使用できます。 この例では、ASP .NET Core 1.0 を使用しています。 
+
+この例では、API キーは `appsettings.json` ファイルに格納済みです。このファイルは、以下の例に示すように、Azure Portal から上書きできます。
+
+`appsettings.json` ファイルのコンテンツは、次のようになっています。
+
+    {
+       "Logging": {
+       "IncludeScopes": false,
+       "LogLevel": {
+       "Default": "Debug",
+       "System": "Information",
+       "Microsoft": "Information"
+         }
+       },
+     "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    }
+
+最初に、.NET Core API プロジェクトの `Startup.cs` ファイルに、以下のコードを追加する必要があります。 API コントローラーの依存関係の挿入を使用して、`appsettings.json` ファイルから `SENDGRID_API_KEY` にアクセスできるように、この作業が必要になります。 `IConfiguration` インターフェイスは、以下の `ConfigureServices` メソッドに追加した後、コントローラーのコンストラクターで挿入できます。 `Startup.cs` ファイルのコンテンツは、必要なコードを追加した後は次のようになります。
+
+        public IConfigurationRoot Configuration { get; }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            // Add mvc here
+            services.AddMvc();
+            services.AddSingleton<IConfiguration>(Configuration);
+        }
+
+コントローラーでは、`IConfiguration` インターフェイスを挿入した後、`MailHelper` クラスの `CreateSingleEmailToMultipleRecipients` メソッドを使用して、単一の電子メールを複数の受信者に送信することができます。 メソッドでは、`showAllRecipients` という追加のブール型パラメーターを 1 つ受け取ります。 このパラメーターは、電子メールの受信者が電子メール ヘッダーの「宛先」セクションで互いの電子メール アドレスを確認できるかどうかを制御するために使用できます。 コントローラーのサンプル コードは、次のようになります。 
+
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using SendGrid;
+    using SendGrid.Helpers.Mail;
+    using Microsoft.Extensions.Configuration;
+
+    namespace SendgridMailApp.Controllers
+    {
+        [Route("api/[controller]")]
+        public class NotificationController : Controller
+        {
+           private readonly IConfiguration _configuration;
+
+           public NotificationController(IConfiguration configuration)
+           {
+             _configuration = configuration;
+           }      
+        
+           [Route("SendNotification")]
+           public async Task PostMessage()
+           {
+              var apiKey = _configuration.GetSection("SENDGRID_API_KEY").Value;
+              var client = new SendGridClient(apiKey);
+              var from = new EmailAddress("test1@example.com", "Example User 1");
+              List<EmailAddress> tos = new List<EmailAddress>
+              {
+                  new EmailAddress("test2@example.com", "Example User 2"),
+                  new EmailAddress("test3@example.com", "Example User 3"),
+                  new EmailAddress("test4@example.com","Example User 4")
+              };
+            
+              var subject = "Hello world email from Sendgrid ";
+              var htmlContent = "<strong>Hello world with HTML content</strong>";
+              var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
+              var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
+              var response = await client.SendEmailAsync(msg);
+          }
+       }
+    }
+    
 ## <a name="how-to-add-an-attachment"></a>方法: 添付ファイルを追加する
 添付ファイルをメッセージに追加するには、**AddAttachment** メソッドを呼び出し、少なくとも添付するファイル名と Base64 でエンコードされた内容を指定します。 複数のファイルを添付するには、添付する各ファイルにつき 1 回このメソッドを呼び出すか、**AddAttachments** メソッドを使用します。 次の例に、メッセージに添付ファイルを追加する方法を示します。
 
@@ -173,7 +249,7 @@ SendGrid では、電子メール設定と追跡設定を使用することで�
 ## <a name="how-to-use-additional-sendgrid-services"></a>方法: その他の SendGrid サービスを使用する
 SendGrid のいくつかの API と webhook を使用して、Azure アプリケーション内でその他の機能を利用することができます。 詳細については、[SendGrid API のリファレンス][SendGrid API documentation]を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * SendGrid C\# ライブラリ レポート: [sendgrid-csharp][sendgrid-csharp]

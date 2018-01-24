@@ -3,8 +3,8 @@ title: "Azure 仮想マシン スケール セットをアップグレードす�
 description: "Azure 仮想マシン スケール セットをアップグレードします"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: guybo
-ms.openlocfilehash: aef243e34f1d5fc8240576a9803bb8b08693a7b7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: gunegatybo
+ms.openlocfilehash: fbdc9d40173a40f35eee60cadfdd258293509d53
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>仮想マシン スケール セットのアップグレード
 この記事では、ダウンタイムなしで Azure 仮想マシン スケール セットに OS の更新を展開する方法について説明します。 ここでは、OS の更新により、OS のバージョン、OS の SKU、またはカスタム イメージの URI が変更されます。 ダウンタイムのない更新とは、すべての仮想マシンを一度に更新するのではなく、一度に 1 つずつ、またはグループごとに更新する (一度に 1 つの障害ドメインなど) ということです。 そうすることで、アップグレード中ではない仮想マシンを実行し続けることができます。
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/08/2017
 * Azure Managed Disks を使用して作成されたスケール セットのイメージ参照を変更します。
 * 仮想マシン内から OS を更新します (この例には、セキュリティ更新プログラムのインストールと Windows Update の実行が含まれます)。 このシナリオはサポートされますが、この記事では説明されていません。
 
-[Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) クラスターの一部としてデプロイされる仮想マシン スケール セットについては、ここでは説明しません。 Service Fabric の更新プログラムの詳細については、[Service Fabric クラスター内の Windows OS へのパッチの適用](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)に関するページをご覧ください。
+[Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) クラスターの一部としてデプロイされる仮想マシン スケール セットについては、ここでは説明しません。 Service Fabric の更新プログラムの詳細については、「[Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)」をご覧ください。
 
 プラットフォーム イメージの OS バージョンまたは SKU、あるいはカスタム イメージの URI を変更するための基本的なシーケンスは次のようになります。
 
@@ -71,7 +71,7 @@ Update-AzureRmVmssInstance -ResourceGroupName $rgname -VMScaleSetName $vmssname 
 $vmss.virtualMachineProfile.storageProfile.osDisk.image.uri= $newURI
 ```
 
-カスタムのイメージ ベースのスケール セットが Azure Managed Disks を使用して作成された場合、イメージ参照が更新されます。 For example:
+カスタムのイメージ ベースのスケール セットが Azure Managed Disks を使用して作成された場合、イメージ参照が更新されます。 例: 
 
 ```powershell
 # set the new version in the model data

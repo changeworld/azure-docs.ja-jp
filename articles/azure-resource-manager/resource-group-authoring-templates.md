@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2017
+ms.date: 12/14/2017
 ms.author: tomfitz
-ms.openlocfilehash: b8d1988a8705e0708e412c24fb5b49f5ece31429
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: b0bc5abd768be0fa5876aaef108cd71a15d94510
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 テンプレートの作成方法を詳しく解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
@@ -37,14 +37,14 @@ ms.lasthandoff: 11/17/2017
 }
 ```
 
-| 要素名 | 必須 | 説明 |
+| 要素名 | 必須 | [説明] |
 |:--- |:--- |:--- |
-| $schema |はい |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。 前の例に示されている URL を使用します。 |
-| contentVersion |はい |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
-| parameters |いいえ |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
-| variables |いいえ |テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。 |
-| resources |はい |リソース グループ内でデプロイまたは更新されるリソースの種類。 |
-| outputs |いいえ |デプロイ後に返される値。 |
+| $schema |[はい] |テンプレート言語のバージョンが記述されている JSON スキーマ ファイルの場所。 前の例に示されている URL を使用します。 |
+| contentVersion |[はい] |テンプレートのバージョン (1.0.0.0 など)。 この要素には任意の値を指定できます。 テンプレートを使用してリソースをデプロイする場合は、この値を使用して、適切なテンプレートが使用されていることを確認できます。 |
+| parameters |いいえ  |リソースのデプロイをカスタマイズするのにはデプロイを実行すると、提供されている値です。 |
+| variables |いいえ  |テンプレート言語式を簡略化するためにテンプレート内で JSON フラグメントとして使用される値。 |
+| resources |[はい] |リソース グループ内でデプロイまたは更新されるリソースの種類。 |
+| outputs |いいえ  |デプロイ後に返される値。 |
 
 各要素には、設定できるプロパティが含まれています。 次の例には、テンプレートの完全な構文が含まれています。
 
@@ -139,7 +139,7 @@ ms.lasthandoff: 11/17/2017
 
 この記事では、テンプレートのセクションについて詳しく説明します。
 
-## <a name="expressions-and-functions"></a>式と関数
+## <a name="syntax"></a>構文
 テンプレートの基本的な構文は JSON です。 ただし、式や関数により、テンプレートで使用できる JSON 値が拡張されます。  式は、最初と最後の文字が角かっこ (`[` および `]`) の JSON 文字列リテラル内に記述されます。 式の値は、テンプレートのデプロイ時に評価されます。 文字列リテラルとして記述される一方で、式の評価の結果は、実際の式に応じて、配列、整数など、さまざまな JSON 型にすることができます。  角かっこ `[` で始まるリテラル文字列を使用するが、式として解釈されないようにするには、文字列が `[[` で始まるように追加の角かっこを追加します。
 
 通常、関数と式を使用してデプロイを構成する操作を実行します。 JavaScript の場合と同様に、関数呼び出しは `functionName(arg1,arg2,arg3)` という形式になります。 プロパティの参照には、ドットと [index] 演算子を使用します。
@@ -148,9 +148,7 @@ ms.lasthandoff: 11/17/2017
 
 ```json
 "variables": {
-    "location": "[resourceGroup().location]",
-    "usernameAndPassword": "[concat(parameters('username'), ':', parameters('password'))]",
-    "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
 }
 ```
 
@@ -159,408 +157,66 @@ ms.lasthandoff: 11/17/2017
 ## <a name="parameters"></a>parameters
 テンプレートの parameters セクションでは、リソースをデプロイするときにどのような値を入力できるかを指定します。 特定の環境 (開発、テスト、運用など) に合った値をパラメーターに渡すことで、デプロイをカスタマイズすることができます。 テンプレートでは必ずしもパラメーターを使用する必要はありませんが、パラメーターを使わなかった場合、常に同じリソースが同じ名前、同じ場所、同じプロパティでデプロイされます。
 
-次の構造でパラメーターを定義します。
+単純なパラメーター定義の例を次に示します。
 
 ```json
 "parameters": {
-    "<parameter-name>" : {
-        "type" : "<type-of-parameter-value>",
-        "defaultValue": "<default-value-of-parameter>",
-        "allowedValues": [ "<array-of-allowed-values>" ],
-        "minValue": <minimum-value-for-int>,
-        "maxValue": <maximum-value-for-int>,
-        "minLength": <minimum-length-for-string-or-array>,
-        "maxLength": <maximum-length-for-string-or-array-parameters>,
-        "metadata": {
-            "description": "<description-of-the parameter>" 
-        }
+  "siteNamePrefix": {
+    "type": "string",
+    "metadata": {
+      "description": "The name prefix of the web app that you wish to create."
     }
-}
+  },
+},
 ```
 
-| 要素名 | 必須 | Description |
-|:--- |:--- |:--- |
-| parameterName |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| type |はい |パラメーター値の型。 この表の後に示す使用できる型を参照してください。 |
-| defaultValue |いいえ |パラメーターに値が指定されない場合のパラメーターの既定値。 |
-| allowedValues |いいえ |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
-| minValue |いいえ |int 型パラメーターの最小値。 |
-| maxValue |いいえ |int 型パラメーターの最大値。 |
-| minLength |いいえ |文字列型、secureString 型、配列型パラメーターの長さの最小値。 |
-| maxLength |いいえ |文字列型、secureString 型、配列型パラメーターの長さの最大値。 |
-| description |いいえ |ポータルを通じてユーザーに表示されるパラメーターの説明。 |
-
-使用できる型と値は次のとおりです。
-
-* **string**
-* **secureString**
-* **int**
-* **bool**
-* **object** 
-* **secureObject**
-* **array**
-
-パラメーターを省略可能に指定するには、defaultValue を設定します (空の文字列を指定できます)。 
-
-コマンドのパラメーターと同じ名前のパラメーターをテンプレートで指定して、そのテンプレートをデプロイすると、指定する値があいまいになる可能性があります。 Resource Manager では、接尾辞 **FromTemplate** をテンプレート パラメーターに追加することで、このような混乱を防ぎます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、このパラメーターは、[New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合するため、 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。 一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
-
-> [!NOTE]
-> すべてのパスワード、キー、およびその他のシークレットでは、 **secureString** 型を使用する必要があります。 JSON オブジェクトに機密データを渡す場合は、**secureObject** 型を使用します。 secureString 型または secureObject 型を含むテンプレート パラメーターをリソースのデプロイ後に読み取ることはできません。 
-> 
-> たとえば、デプロイ履歴の次のエントリには文字列とオブジェクトの値が表示されますが、secureString と secureObject の値は表示されません。
->
-> ![デプロイの値の表示](./media/resource-group-authoring-templates/show-parameters.png)  
->
-
-次の例では、パラメーターを定義する方法を示します。
-
-```json
-"parameters": {
-    "siteName": {
-        "type": "string",
-        "defaultValue": "[concat('site', uniqueString(resourceGroup().id))]"
-    },
-    "hostingPlanName": {
-        "type": "string",
-        "defaultValue": "[concat(parameters('siteName'),'-plan')]"
-    },
-    "skuName": {
-        "type": "string",
-        "defaultValue": "F1",
-        "allowedValues": [
-          "F1",
-          "D1",
-          "B1",
-          "B2",
-          "B3",
-          "S1",
-          "S2",
-          "S3",
-          "P1",
-          "P2",
-          "P3",
-          "P4"
-        ]
-    },
-    "skuCapacity": {
-        "type": "int",
-        "defaultValue": 1,
-        "minValue": 1
-    }
-}
-```
-
-デプロイ時にパラメーター値を入力する方法については、 [Azure Resource Manager テンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md)に関するページをご覧ください。 
+パラメーター定義の詳細については、「[Azure Resource Manager テンプレートの parameters セクション](resource-manager-templates-parameters.md)」をご覧ください。
 
 ## <a name="variables"></a>variables
 テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。
 
-変数は、次の構造で定義します。
+単純な変数定義の例を次に示します。
 
 ```json
 "variables": {
-    "<variable-name>": "<variable-value>",
-    "<variable-name>": { 
-        <variable-complex-type-value> 
-    }
-}
-```
-
-次の例では、2 つのパラメーター値で構成される変数の定義方法を示しています。
-
-```json
-"variables": {
-    "connectionString": "[concat('Name=', parameters('username'), ';Password=', parameters('password'))]"
-}
-```
-
-次の例では、複雑な JSON 型である変数と、その他の変数で構成される変数を示します。
-
-```json
-"parameters": {
-    "environmentName": {
-        "type": "string",
-        "allowedValues": [
-          "test",
-          "prod"
-        ]
-    }
-},
-"variables": {
-    "environmentSettings": {
-        "test": {
-            "instancesSize": "Small",
-            "instancesCount": 1
-        },
-        "prod": {
-            "instancesSize": "Large",
-            "instancesCount": 4
-        }
-    },
-    "currentEnvironmentSettings": "[variables('environmentSettings')[parameters('environmentName')]]",
-    "instancesSize": "[variables('currentEnvironmentSettings').instancesSize]",
-    "instancesCount": "[variables('currentEnvironmentSettings').instancesCount]"
-}
-```
-
-**copy** 構文を使用して、複数の要素の配列で変数を作成できます。 要素の数を表すカウントを指定します。 各要素には、**input** オブジェクト内にプロパティが含まれます。 コピーは変数内で使用することも、変数の作成に使用することもできます。 次の例では、両方の方法を示します。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {
-    "disk-array-on-object": {
-      "copy": [
-        {
-          "name": "disks",
-          "count": 5,
-          "input": {
-            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-            "diskSizeGB": "1",
-            "diskIndex": "[copyIndex('disks')]"
-          }
-        }
-      ]
-    },
-    "copy": [
-      {
-        "name": "disks-top-level-array",
-        "count": 5,
-        "input": {
-          "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
-          "diskSizeGB": "1",
-          "diskIndex": "[copyIndex('disks-top-level-array')]"
-        }
-      }
-    ]
-  },
-  "resources": [],
-  "outputs": {
-    "exampleObject": {
-      "value": "[variables('disk-array-on-object')]",
-      "type": "object"
-    },
-    "exampleArrayOnObject": {
-      "value": "[variables('disk-array-on-object').disks]",
-      "type" : "array"
-    },
-    "exampleArray": {
-      "value": "[variables('disks-top-level-array')]",
-      "type" : "array"
-    }
-  }
-}
-```
-
-コピーを使用して変数を作成するときに、複数のオブジェクトを指定することもできます。 次の例では、変数として 2 つの配列を定義しています。 1 つは **disks-top-level-array** という名前で 5 個の要素があります。 もう 1 つは **a-different-array** という名前で 3 つの要素があります。
-
-```json
-"variables": {
-    "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 5,
-            "input": {
-                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
-        },
-        {
-            "name": "a-different-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('a-different-array')]"
-            }
-        }
-    ]
+  "webSiteName": "[concat(parameters('siteNamePrefix'), uniqueString(resourceGroup().id))]",
 },
 ```
+
+変数定義の詳細については、「[Azure Resource Manager テンプレートの変数セクション](resource-manager-templates-variables.md)」をご覧ください。
 
 ## <a name="resources"></a>リソース
-resources セクションでは、デプロイまたは更新されるリソースを定義します。 このセクションは、複雑になりやすい部分です。適切な値を指定するためには、デプロイするリソースの種類を理解している必要があるためです。 設定が必要なリソース固有の値 (apiVersion、種類、プロパティ) については、「[Define resources in Azure Resource Manager templates (Azure Resource Manager テンプレートのリソースを定義する)](/azure/templates/)」を参照してください。 
-
-リソースは、次の構造で定義します。
+resources セクションでは、デプロイまたは更新されるリソースを定義します。 このセクションは、複雑になりやすい部分です。適切な値を指定するためには、デプロイするリソースの種類を理解している必要があるためです。
 
 ```json
 "resources": [
   {
-      "condition": "<boolean-value-whether-to-deploy>",
-      "apiVersion": "<api-version-of-resource>",
-      "type": "<resource-provider-namespace/resource-type-name>",
-      "name": "<name-of-the-resource>",
-      "location": "<location-of-resource>",
-      "tags": {
-          "<tag-name1>": "<tag-value1>",
-          "<tag-name2>": "<tag-value2>"
-      },
-      "comments": "<your-reference-notes>",
-      "copy": {
-          "name": "<name-of-copy-loop>",
-          "count": "<number-of-iterations>",
-          "mode": "<serial-or-parallel>",
-          "batchSize": "<number-to-deploy-serially>"
-      },
-      "dependsOn": [
-          "<array-of-related-resource-names>"
-      ],
-      "properties": {
-          "<settings-for-the-resource>",
-          "copy": [
-              {
-                  "name": ,
-                  "count": ,
-                  "input": {}
-              }
-          ]
-      },
-      "resources": [
-          "<array-of-child-resources>"
-      ]
-  }
-]
-```
-
-| 要素名 | 必須 | Description |
-|:--- |:--- |:--- |
-| condition | いいえ | リソースをデプロイするかどうかを示すブール値。 |
-| apiVersion |はい |リソースの作成に使用する REST API バージョン。 |
-| type |はい |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 |
-| name |はい |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスは、名前が別の ID になりすますことがないように、その名前を検証します。 |
-| location |多様 |指定されたリソースのサポートされている地理的な場所。 利用可能な任意の場所を選択できますが、一般的に、ユーザーに近い場所を選択します。 また、通常、相互に対話するリソースを同じリージョンに配置します。 ほとんどのリソースの種類では場所が必要となりますが、場所を必要としない種類 (ロールの割り当てなど) もあります。 「[Azure Resource Manager テンプレートでリソースの場所を設定する](resource-manager-template-location.md)」を参照してください。 |
-| tags |いいえ |リソースに関連付けられたタグ。 ｢[Azure Resource Manager テンプレートのリソースにタグを付ける](resource-manager-template-tags.md)」を参照してください。 |
-| コメント |いいえ |テンプレート内にドキュメント化するリソースについてのメモ。 |
-| copy |いいえ |複数のインスタンスが必要な場合に作成するリソースの数。 既定のモードはパラレルです。 すべてのリソースを同時にデプロイする必要がない場合は、シリアル モードを指定します。 詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。 |
-| dependsOn |なし |このリソースが配置される前に配置される必要があるリソース。 Resource Manager により、リソース間の依存関係が評価され、リソースが正しい順序でデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 値には、リソース名またはリソースの一意識別子のコンマ区切りリストを指定できます。 このテンプレートに配置されたリソースのみをリストします。 このテンプレートで定義されていないリソースは、既に存在している必要があります。 不要な依存関係は追加しないでください。こうした依存関係によりデプロイの速度が遅くなり、循環依存関係を作成されることがあります。 詳細については、[Azure Resource Manager テンプレートの依存関係の定義](resource-group-define-dependencies.md)に関するページをご覧ください。 |
-| properties |いいえ |リソース固有の構成設定。 properties の値は、リソースを作成するために REST API 操作 (PUT メソッド) の要求本文に指定した値と同じです。 コピー配列を指定して、1 つのプロパティの複数のインスタンスを作成することもできます。 詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。 |
-| resources |いいえ |定義されているリソースに依存する子リソース。 親リソースのスキーマで許可されているリソースの種類のみを指定します。 子リソースの完全修飾型には親リソースの種類が含まれます (例: **Microsoft.Web/sites/extensions**)。 親リソースへの依存関係は示されません。 この依存関係は明示的に定義する必要があります。 |
-
-resources セクションには、デプロイの対象となる一連のリソースが記述されます。 また、リソースごとに子リソースを複数定義することができます。 その場合、resources セクションは次のような構造となります。
-
-```json
-"resources": [
-  {
-      "name": "resourceA",
-  },
-  {
-      "name": "resourceB",
-      "resources": [
-        {
-            "name": "firstChildResourceB",
-        },
-        {   
-            "name": "secondChildResourceB",
-        }
-      ]
-  },
-  {
-      "name": "resourceC",
-  }
-]
-```      
-
-子リソースの定義の詳細については、「[Resource Manager テンプレートの子リソースに関する名前と種類の設定](resource-manager-template-child-resource.md)」を参照してください。
-
-**condition** 要素は、リソースがデプロイされているかどうかを指定します。 この要素の値は、true または false に解決されます。 たとえば、新しいストレージ アカウントをデプロイするかどうかを指定するには、次のコードを使用します。
-
-```json
-{
-    "condition": "[equals(parameters('newOrExisting'),'new')]",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageAccountName')]",
-    "apiVersion": "2017-06-01",
+    "apiVersion": "2016-08-01",
+    "name": "[variables('webSiteName')]",
+    "type": "Microsoft.Web/sites",
     "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "[variables('storageAccountType')]"
-    },
-    "kind": "Storage",
-    "properties": {}
-}
+    "properties": {
+      "serverFarmId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Web/serverFarms/<plan-name>"
+    }
+  }
+],
 ```
 
-新規または既存のリソースの使用例については、[新規または既存の condition テンプレート](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json)を参照してください。
-
-パスワードと SSH キーのどちらを使って仮想マシンをデプロイするかを指定するには、テンプレートで 2 つのバージョンの仮想マシンを定義し、**condition** を使用して使用法を区別します。 デプロイするシナリオを指定するパラメーターを渡します。
-
-```json
-{
-    "condition": "[equals(parameters('passwordOrSshKey'),'password')]",
-    "apiVersion": "2016-03-30",
-    "type": "Microsoft.Compute/virtualMachines",
-    "name": "[concat(variables('vmName'),'password')]",
-    "properties": {
-        "osProfile": {
-            "computerName": "[variables('vmName')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
-        },
-        ...
-    },
-    ...
-},
-{
-    "condition": "[equals(parameters('passwordOrSshKey'),'sshKey')]",
-    "apiVersion": "2016-03-30",
-    "type": "Microsoft.Compute/virtualMachines",
-    "name": "[concat(variables('vmName'),'ssh')]",
-    "properties": {
-        "osProfile": {
-            "linuxConfiguration": {
-                "disablePasswordAuthentication": "true",
-                "ssh": {
-                    "publicKeys": [
-                        {
-                            "path": "[variables('sshKeyPath')]",
-                            "keyData": "[parameters('adminSshKey')]"
-                        }
-                    ]
-                }
-            }
-        },
-        ...
-    },
-    ...
-}
-``` 
-
-パスワードまたは SSH キーを使用して仮想マシンをデプロイする例については、[ユーザー名または SSH condition テンプレート](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json)を参照してください。
+詳細については、「[Resources section of Azure Resource Manager templates (Azure Resource Manager テンプレートの resources セクション)](resource-manager-templates-resources.md)」をご覧ください。
 
 ## <a name="outputs"></a>出力
 [出力] セクションではデプロイから返される値を指定します。 たとえば、デプロイされたリソースにアクセスするための URI を返すことができます。
 
-次の例では、出力の定義の構造を示します。
-
 ```json
 "outputs": {
-    "<outputName>" : {
-        "type" : "<type-of-output-value>",
-        "value": "<output-value-expression>"
-    }
+  "newHostName": {
+    "type": "string",
+    "value": "[reference(variables('webSiteName')).defaultHostName]"
+  }
 }
 ```
 
-| 要素名 | 必須 | 説明 |
-|:--- |:--- |:--- |
-| outputName |はい |出力値の名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 |
-| 値 |はい |評価され、出力値として返されるテンプレート言語式。 |
-
-次の例では、outputs セクションで返される値を示します。
-
-```json
-"outputs": {
-    "siteUri" : {
-        "type" : "string",
-        "value": "[concat('http://',reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
-    }
-}
-```
-
-出力を操作する方法の詳細については、「 [Azure Resource Manager のテンプレートでの状態の共有](best-practices-resource-manager-state.md)」をご覧ください。
+詳細については、「[Outputs section of Azure Resource Manager templates (Azure Resource Manager テンプレートの outputs セクション)](resource-manager-templates-outputs.md)」をご覧ください。
 
 ## <a name="template-limits"></a>テンプレートの制限
 
@@ -576,7 +232,7 @@ resources セクションには、デプロイの対象となる一連のリソ�
 
 入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](resource-manager-objects-as-parameters.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
 * テンプレート内から使用できる関数の詳細については、「 [Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」を参照してください。
 * デプロイ中に複数のテンプレートを結合するには、「 [Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」をご覧ください。

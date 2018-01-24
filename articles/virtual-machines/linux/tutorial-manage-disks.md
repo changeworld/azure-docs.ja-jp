@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 41b122cdb4dcb836b431004fc162ebe06d0c8b17
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 16cc0c5e38eb273fc2504a39497d00c76d666316
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Azure CLI を使用した Azure ディスクの管理
 
@@ -50,7 +50,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 
-| 型 | VM サイズ | 一時ディスクの最大サイズ (GB) |
+| type | VM サイズ | 一時ディスクの最大サイズ (GB) |
 |----|----|----|
 | [汎用](sizes-general.md) | A および D シリーズ | 800 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 800 |
@@ -65,7 +65,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
 
-| 型 | VM サイズ | VM あたりの最大データ ディスク数 |
+| type | VM サイズ | VM あたりの最大データ ディスク数 |
 |----|----|----|
 | [汎用](sizes-general.md) | A および D シリーズ | 32 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 32 |
@@ -283,7 +283,7 @@ datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')]
 az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、VM ディスクについて、次のようなトピックを学習しました。
 

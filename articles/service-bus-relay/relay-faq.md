@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: e8c146f4b6d02449be6ad9e991e52db8dfd58e04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89042badbfefc69582e7979a8379260a7b08d7da
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 [名前空間](relay-create-namespace-portal.md)とは、アプリケーション内で Relay リソースをアドレス指定するために使用できるスコープ コンテナーです。 Relay を使用するには、名前空間を作成する必要があります。 これは、最初に実行する手順の 1 つです。
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Service Bus Relay サービスはどうなりましたか?
-以前は Service Bus Relay サービスという名称でしたが、現在では "WCF リレー" と呼ばれています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続機能は、Azure BizTalk Services から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらもサポートが継続されます。
+以前は Service Bus Relay サービスという名称でしたが、現在では [WCF リレー](relay-wcf-dotnet-get-started.md)と呼ばれています。 このサービスは、これまでと同じように引き続き使用できます。 ハイブリッド接続機能は、Azure BizTalk Services から移植されたサービスの更新バージョンです。 WCF リレーとハイブリッド接続はどちらもサポートが継続されます。
 
 ## <a name="pricing"></a>価格
 このセクションでは、Relay の価格体系についてよく寄せられる質問とその回答を紹介します。 Azure の価格に関する一般的な情報については、「[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)」も参照してください。 Relay の価格の詳細については、[Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。
@@ -76,7 +76,7 @@ Service Bus リレーへのメッセージ送信は、そのメッセージを�
 **netTCPRelay** WCF バインドを使って開いたリレーでは、メッセージは個別のメッセージではなく、システムを流れるデータ ストリームとして扱われます。 このバインドを使用すると、センダーとリスナーだけが、送受信された個々のメッセージを 1 つのまとまりとして認識できます。 **netTCPRelay** バインドを使ったリレーの場合、課金対象のメッセージ数を計算するために、すべてのデータがストリームとして扱われます。 この場合、Service Bus は、個々のリレーを介して送受信されたデータ量の合計を 5 分ごとに計算します。 次に、データ量の合計を 64 KB で除算して、その期間内でのリレーについて、課金対象のメッセージ数を決定します。
 
 ## <a name="quotas"></a>クォータ
-| クォータ名 | Scope | 型 | 超過したときの動作 | 値 |
+| クォータ名 | Scope (スコープ) | type | 超過したときの動作 | 値 |
 | --- | --- | --- | --- | --- |
 | リレーの同時リスナー |エンティティ |静的 |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
 | 同時リレー リスナー |システム全体 |静的 |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |2,000 |
@@ -130,7 +130,7 @@ Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは U
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Relay エンドポイントをホワイトリストに登録することはできますか?
 はい。 リレー クライアントは、完全修飾ドメイン名を使用して Azure Relay サービスへの接続を確立します。 お客様は、DNS ホワイトリスト登録をサポートするファイアウォールで、`*.servicebus.windows.net` のエントリを追加できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [名前空間を作成する](relay-create-namespace-portal.md)
 * [.NET を使って作業を開始する](relay-hybrid-connections-dotnet-get-started.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)

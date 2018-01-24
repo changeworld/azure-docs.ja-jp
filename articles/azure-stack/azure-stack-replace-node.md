@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: f3d6215b672be0d8de8ba0d94320b1a2413eadf1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4e5b1269e2bee31316cba99d69ea2a6d702faf05
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="replace-a-scale-unit-node-on-an-azure-stack-integrated-system"></a>Azure Stack 統合システムのスケール ユニット ノードを交換する
 
@@ -51,6 +51,10 @@ ms.lasthandoff: 12/11/2017
 次の手順は、スケール ユニット ノード交換プロセスの概略を示しています。 お使いのシステムに特化した詳しい手順については、OEM ハードウェア ベンダーの FRU ドキュメントをご覧ください。 OEM 提供のマニュアルを参照せずにこれらの手順を実行しないでください。
 
 1. [ドレイン](azure-stack-node-actions.md#scale-unit-node-actions) アクションを使用して、スケール ユニット ノードをメンテナンス モードにします。 このアクションは、ハードウェアの物理的な状態によっては必須でありません。
+
+   > [!NOTE]
+   > いずれの場合も、SSD (記憶域スペース ダイレクト) を中断せずに一度にドレインして電源をオフにできるノードは 1 つだけです。
+
 2. ノードの電源がまだオンになっている場合は、[電源オフ](azure-stack-node-actions.md#scale-unit-node-actions) アクションを使用します。 このアクションは、ハードウェアの物理的な状態によっては必須でありません。
  
    > [!NOTE]
@@ -61,7 +65,7 @@ ms.lasthandoff: 12/11/2017
 3. 特権エンドポイントを使用して、[仮想ディスクの修復の状態を確認します](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair)。 新しいデータ ドライブを使用するストレージ修復ジョブ全体は、システムの負荷と消費される領域に応じて、数時間かかる可能性があります。
 4. 修復アクションが完了したら、すべてのアクティブなアラートが自動的に閉じていることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - ホットスワップ可能物理ディスクの交換については、[ディスクの交換](azure-stack-replace-disk.md)に関する記事を参照してください。 
 - ホットスワップが可能でないハードウェア コンポーネントの交換の詳細については、[ハードウェア コンポーネントの交換](azure-stack-replace-component.md)に関する記事を参照してください。 

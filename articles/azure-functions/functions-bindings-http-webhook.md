@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 6b3da498a613d63515ecb624b87496cf536c0ebf
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 080712e0a6c05348e7163f3c8e2055e6ff2806b2
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
 
@@ -41,14 +41,14 @@ HTTP トリガーでは、HTTP 要求で関数を呼び出すことができま�
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#trigger---c-example)
-* [C# スクリプト](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
-次の例は、クエリ文字列または HTTP 要求の本文で `name`パラメーターを探す[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、クエリ文字列または HTTP 要求の本文で `name`パラメーターを探す [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -235,14 +235,14 @@ module.exports = function(context, req) {
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#webhook---c-example)
-* [C# スクリプト](#webhook---c-script-example)
+* [C#](#webhook---c-example)
+* [C# スクリプト (.csx)](#webhook---c-script-example)
 * [F#](#webhook---f-example)
 * [JavaScript](#webhook---javascript-example)
 
 ### <a name="webhook---c-example"></a>webhook - C# の例
 
-次の例は、一般的な JSON 要求への応答で HTTP 200 を送信する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、一般的な JSON 要求への応答で HTTP 200 を送信する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -364,7 +364,7 @@ module.exports = function (context, data) {
 
 ## <a name="trigger---attributes"></a>トリガー - 属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) で定義されている [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) で定義されている [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs) 属性を使用します。
 
 属性のコンストラクターのパラメーターに承認レベルと許容される HTTP メソッドを設定できます。また、webhook の種類とルートのテンプレートに対応するプロパティがあります。 これらの設定の詳細については、「[トリガー - 構成](#trigger---configuration)」を参照してください。 メソッド シグネチャでの `HttpTrigger` 属性を次に示します。
 
@@ -377,18 +377,19 @@ public static HttpResponseMessage Run(
 }
  ```
 
-完全な例については、[トリガー - プリコンパイル済み C# の例](#trigger---c-example)に関する記事をご覧ください。
+完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
 
 ## <a name="trigger---configuration"></a>トリガー - 構成
 
 次の表は、*function.json* ファイルと `HttpTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 | **type** | 該当なし| 必須 - `httpTrigger` に設定する必要があります。 |
 | **direction** | 該当なし| 必須 - `in` に設定する必要があります。 |
 | **name** | 該当なし| 必須 - 要求または要求本文の関数コードで使用される変数名。 |
-| **authLevel** |  **AuthLevel** |関数を呼び出すために、要求にどのキーが存在する必要があるかを決定します。 承認レベルは、次のいずれかの値になります。 <ul><li><code>anonymous</code>&mdash;API キーは必要ありません。</li><li><code>function</code>&mdash;関数固有の API キーが必要です。 何も指定されなかった場合は、これが既定値になります。</li><li><code>admin</code>&mdash;マスター キーが必要です。</li></ul> 詳しくは、[承認キー](#authorization-keys)に関するセクションをご覧ください。 |
+| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |関数を呼び出すために、要求にどのキーが存在する必要があるかを決定します。 承認レベルは、次のいずれかの値になります。 <ul><li><code>anonymous</code>&mdash;API キーは必要ありません。</li><li><code>function</code>&mdash;関数固有の API キーが必要です。 何も指定されなかった場合は、これが既定値になります。</li><li><code>admin</code>&mdash;マスター キーが必要です。</li></ul> 詳しくは、[承認キー](#authorization-keys)に関するセクションをご覧ください。 |
 | **methods** |**メソッド** | 関数が応答する HTTP メソッドの配列。 指定しない場合、関数はすべての HTTP メソッドに応答します。 「[HTTP エンドポイントのカスタマイズ](#trigger---customize-the-http-endpoint)」をご覧ください。 |
 | **route** | **Route** | 関数がどの要求 URL に応答するかを制御するルート テンプレートを定義します。 何も指定しなかった場合の既定値は `<functionname>` です。 詳しくは、「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
 | **webHookType** | **WebHookType** |指定したプロバイダーの [webhook](https://en.wikipedia.org/wiki/Webhook) レシーバーとして機能する HTTP トリガーを構成します。 このプロパティを設定する場合は、`methods` プロパティを設定しないでください。 webhook の種類は、次のいずれかの値になります。<ul><li><code>genericJson</code>&mdash;特定のプロバイダー用のロジックを持たない汎用 webhook エンドポイントです。 この設定では、要求が、HTTP POST を使用していてコンテンツの種類が `application/json` であるものだけに制限されます。</li><li><code>github</code>&mdash;関数は [GitHub webhook](https://developer.github.com/webhooks/) に応答します。 GitHub webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「GitHub webhook」セクションをご覧ください。</li><li><code>slack</code>&mdash;関数は [Slack webhook](https://api.slack.com/outgoing-webhooks) に応答します。 Slack webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「Slack webhook」セクションをご覧ください。</li></ul>|
@@ -539,7 +540,7 @@ HTTP 要求送信者に応答するには、HTTP 出力バインドを使用し�
 
 ## <a name="output---configuration"></a>出力 - 構成
 
-プリコンパイル済み C# の場合、出力固有のバインド構成プロパティはありません。 HTTP 応答を送信するには、関数が型 `HttpResponseMessage` または `Task<HttpResponseMessage>` を戻すようにします。
+C# クラス ライブラリの場合、出力固有のバインド構成プロパティはありません。 HTTP 応答を送信するには、関数が型 `HttpResponseMessage` または `Task<HttpResponseMessage>` を戻すようにします。
 
 他の言語では、HTTP 出力バインドは、次の例に示すように、function.json の `bindings` 配列の JSON オブジェクトとして定義されます。
 
@@ -553,7 +554,7 @@ HTTP 要求送信者に応答するには、HTTP 出力バインドを使用し�
 
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 | **type** |`http` に設定する必要があります。 |
 | **direction** | `out` に設定する必要があります。 |
@@ -563,7 +564,7 @@ HTTP 要求送信者に応答するには、HTTP 出力バインドを使用し�
 
 HTTP または webhook の呼び出し元に応答するために、出力パラメーターを使用できます。 また、言語標準の応答パターンを使用することもできます。 応答の例については、[トリガーの例](#trigger---example)および[webhook の例](#trigger---webhook-example)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

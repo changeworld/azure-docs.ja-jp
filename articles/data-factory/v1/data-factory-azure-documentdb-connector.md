@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 32b72577002962f049f446d6f3c2353189867e92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0338fb386fc4da3f34cb4e810dbd57d50b5d5329
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,12 +29,12 @@ ms.lasthandoff: 10/11/2017
 > [!NOTE]
 > この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[V2 での Azure Cosmos DB のコネクタ](../connector-azure-cosmos-db.md)を参照してください。
 
-この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Cosmos DB (DocumentDB API) との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
+この記事では、Azure Data Factory のコピー アクティビティを使って、Azure Cosmos DB (SQL API) との間でデータを移動する方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。 
 
 サポートされる任意のソース データ ストアのデータを、Azure Cosmos DB にコピーしたり、Azure Cosmos DB のデータを、サポートされる任意のシンク データ ストアにコピーすることができます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するページの表をご覧ください。 
 
 > [!IMPORTANT]
-> Azure Cosmos DB コネクタは DocumentDB API のみをサポートします。
+> Azure Cosmos DB コネクタは SQL API のみをサポートします。
 
 JSON ファイルまたは他の Cosmos DB コレクションとの間でデータをそのままコピーするには、「[JSON ドキュメントのインポート/エクスポート](#importexport-json-documents)」を参照してください。
 
@@ -60,8 +60,8 @@ JSON ファイルまたは他の Cosmos DB コレクションとの間でデー�
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
-| type |type プロパティを **DocumentDB** |はい |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 |あり |
+| 型 |type プロパティを **DocumentDB** |[はい] |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 |[はい] |
 
 例:
 
@@ -84,7 +84,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
-| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |あり |
+| collectionName |Cosmos DB ドキュメント コレクションの名前です。 |[はい] |
 
 例:
 
@@ -125,16 +125,16 @@ Azure Cosmos DB などのスキーマのないデータ ストアの場合、Dat
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
-| query |データを読み取るためのクエリを指定します。 |Azure Cosmos DB でサポートされているクエリ文字列。 <br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |なし <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
-| nestingSeparator |ドキュメントが入れ子であることを示す特殊文字 |任意の文字。 <br/><br/>Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、nestingSeparator で階層を示すことができます。 上記の例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 |なし |
+| クエリ |データを読み取るためのクエリを指定します。 |Azure Cosmos DB でサポートされているクエリ文字列。 <br/><br/>例: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ  <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
+| nestingSeparator |ドキュメントが入れ子であることを示す特殊文字 |任意の文字。 <br/><br/>Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ子構造が許可されます。 Azure Data Factory を利用すると、nestingSeparator で階層を示すことができます。 上記の例では「.」です。 区切り記号により、コピー アクティビティで「Name」オブジェクトが 3 つの子要素 (First、Middle、Last) で生成されます。これはテーブル定義の「Name.First」、「Name.Middle」、「Name.Last」に基づきます。 |いいえ  |
 
 **DocumentDbCollectionSink** では次のプロパティがサポートされます。
 
 | **プロパティ** | **説明** | **使用できる値** | **必須** |
 | --- | --- | --- | --- |
 | nestingSeparator |入れ子になった文書が必要であることを示すソース列名の特殊文字。 <br/><br/>上記の例の場合: 出力テーブルの `Name.First` は、Cosmos DB ドキュメントで次の JSON 構造を生成します。<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |入れ子レベルの分割に使用される文字。<br/><br/>既定値は `.` (ドット) です。 |入れ子レベルの分割に使用される文字。 <br/><br/>既定値は `.` (ドット) です。 |
-| writeBatchSize |Azure Cosmos DB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使って、Cosmos DB との間でデータをコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすと、Cosmos DB に送信される並列要求の数が増えるため、パフォーマンスを向上させることができます。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 |Integer |いいえ (既定値: 5) |
-| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |なし |
+| writeBatchSize |Azure Cosmos DB サービスにドキュメントの作成を要求する並列要求の数。<br/><br/>このプロパティを使って、Cosmos DB との間でデータをコピーするときのパフォーマンスを微調整できます。 writeBatchSize を増やすと、Cosmos DB に送信される並列要求の数が増えるため、パフォーマンスを向上させることができます。 ただし、スロットルは回避する必要があります。「Request rate is large」というエラー メッセージをスローする可能性があります。<br/><br/>スロットルは、ドキュメントのサイズ、ドキュメント内の語句の数、ターゲット コレクションの索引作成ポリシーなど、さまざまな要因により決定されます。コピー操作の場合、もっとよいコレクションを利用し (S3 など)、最大のスループットを得ることができます (毎秒 2,500 要求単位)。 |整数 |いいえ (既定値: 5) |
+| writeBatchTimeout |タイムアウトする前に操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ  |
 
 ## <a name="importexport-json-documents"></a>JSON ドキュメントのインポート/エクスポート
 この Cosmos DB コネクタを使って、次の作業を簡単に実行できます。
@@ -489,7 +489,7 @@ Azure Cosmos DB は JSON ドキュメントの NoSQL ストアであり、入れ
 2. **質問:** Azure Cosmos DB へのコピーを再試行すると、既にコピーしたレコードはどのように扱われますか?
 
     **回答:** レコードに "ID" フィールドがあり、コピー操作で同じ ID のレコードが挿入される場合、そのコピー操作はエラーをスローします。  
-3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](../../cosmos-db/documentdb-partition-data.md)をサポートしていますか?
+3. **質問:** Data Factory は、[範囲またはハッシュ ベースのデータのパーティション分割](../../cosmos-db/sql-api-partition-data.md)をサポートしていますか?
 
     **回答:** いいえ。
 4. **質問:** 1 つのテーブルに複数の Azure Cosmos DB コレクションを指定できますか?

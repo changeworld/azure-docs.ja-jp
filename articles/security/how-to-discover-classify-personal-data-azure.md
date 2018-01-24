@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 39dea03ef9f42a3ff06dadd94c8d70541cbdc06c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 0d99df534da4575f3c34ec6b3475cdd1bdc3308a
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Microsoft Azure で個人データを検出、特定、分類する
 
@@ -183,11 +183,11 @@ Azure Information Protection でラベルが組織に適合するかどうかを
 
 基本から始めるには、「[Azure Cosmos DB: SQL を使用してクエリを実行する方法](../cosmos-db/tutorial-query-documentdb.md)」チュートリアルにアクセスしてください。 このチュートリアルには、1 つのサンプル ドキュメントと 2 つのサンプル SQL クエリおよび結果が含まれます。
 
-SQL クエリの作成に関する詳細なガイダンスについては、「[Azure Cosmos DB DocumentDB API の SQL クエリ](../cosmos-db/documentdb-sql-query.md)」を参照してください。
+SQL クエリの作成に関する詳細なガイダンスについては、「[Azure Cosmos DB DocumentDB API の SQL クエリ](../cosmos-db/sql-api-sql-query.md)」を参照してください。
 
-Azure Cosmos DB を初めてご利用になる場合、データベースの作成方法、コレクションやデータの追加方法を確認するには、[Azure Cosmos DB: DocumentDB API Web アプリの構築](../cosmos-db/create-documentdb-dotnet.md)クイックスタート チュートリアルにアクセスしてください。 Java、Python など、.NET 以外の言語でこれを行う必要がある場合は、サイトにアクセスして、目的の言語を選択するだけです。
+Azure Cosmos DB を初めてご利用になる場合、データベースの作成方法、コレクションやデータの追加方法を確認するには、[Azure Cosmos DB: SQL API Web アプリの構築](../cosmos-db/create-sql-api-dotnet.md)クイックスタート チュートリアルにアクセスしてください。 Java、Python など、.NET 以外の言語でこれを行う必要がある場合は、サイトにアクセスして、目的の言語を選択するだけです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/?v=16.50)
 

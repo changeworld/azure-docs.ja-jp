@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 956f44068db8fe9c8c7a839a0ce80c19e2b2f11c
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 58c8ba2682cc9cc8f2089d2a70cc95a03079832e
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="manage-azure-disks-with-powershell"></a>PowerShell を使用した Azure ディスクの管理
 
@@ -47,7 +47,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="temporary-disk-sizes"></a>一時ディスクのサイズ
 
-| 型 | VM サイズ | 一時ディスクの最大サイズ (GB) |
+| type | VM サイズ | 一時ディスクの最大サイズ (GB) |
 |----|----|----|
 | [汎用](sizes-general.md) | A および D シリーズ | 800 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 800 |
@@ -62,7 +62,7 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ### <a name="max-data-disks-per-vm"></a>VM あたりの最大データ ディスク数
 
-| 型 | VM サイズ | VM あたりの最大データ ディスク数 |
+| type | VM サイズ | VM あたりの最大データ ディスク数 |
 |----|----|----|
 | [汎用](sizes-general.md) | A および D シリーズ | 32 |
 | [コンピューティングの最適化](sizes-compute.md) | F シリーズ | 32 |
@@ -81,7 +81,7 @@ Standard Storage では、HDD が使用されており、高パフォーマン�
 
 ### <a name="premium-disk"></a>Premium ディスク
 
-Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、FS シリーズの VM をサポートしています。 Premium ディスクは、3 種類 (P10、P20、P30、P40、P50) に分類され、ディスク サイズによってディスクの種類が決まります。 ディスク サイズを選択するときは、値を切り上げて 1 つ上の種類にします。 たとえば、サイズが 128 GB 未満の場合はディスクの種類が P10 になり、129 ～ 512 GB の場合は P20、512 GB ～ 2 TB の場合は P30、2 TB ～ 4 TB の場合は P40、4TB からは P50 になります。 
+Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、FS シリーズの VM をサポートしています。 Premium ディスクは、5 種類 (P10、P20、P30、P40、P50) に分類され、ディスク サイズによってディスクの種類が決まります。 ディスク サイズを選択するときは、値を切り上げて 1 つ上の種類にします。 たとえば、サイズが 128 GB 未満の場合はディスクの種類が P10 になり、129 ～ 512 GB の場合は P20、512 GB ～ 2 TB の場合は P30、2 TB ～ 4 TB の場合は P40、4TB からは P50 になります。 
 
 ### <a name="premium-disk-performance"></a>Premium ディスクのパフォーマンス
 
@@ -142,7 +142,7 @@ New-Partition -AssignDriveLetter -UseMaximumSize | `
 Format-Volume -FileSystem NTFS -NewFileSystemLabel "myDataDisk" -Confirm:$false
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、VM ディスクについて、次のようなトピックを学習しました。
 

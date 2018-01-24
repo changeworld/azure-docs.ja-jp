@@ -4,7 +4,7 @@ description: "Azure Active Directory で SaaS アプリ オブジェクトを自
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi
-ms.openlocfilehash: 2811b4d57f69425ef119c88f80b32d24c6c32195
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: b916d71cfed55c9e904caa07e8f2167d684639aa
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -27,7 +27,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 * 式全体は、関数の形式で定義する必要があります。名前の後にかっこで囲んだ引数を続けます。 <br>
   *FunctionName(<<引数 1>>,<<argument N>>)*
-* 各関数内で他の関数を入れ子にすることができます。 次に例を示します。 <br> *FunctionOne (FunctionTwo(<<argument1>>))*
+* 各関数内で他の関数を入れ子にすることができます。 例:  <br> *FunctionOne (FunctionTwo(<<argument1>>))*
 * 関数には、次の 3 つの異なる種類の引数を渡すことができます。
   
   1. 属性。角かっこで囲む必要があります。 例: [attributeName]
@@ -36,7 +36,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 * 文字列定数では、文字列に円記号 (\) または引用符 (") を含める必要がある場合は、円記号 (\) でエスケープする必要があります。 例: "Company name: \"Contoso\""
 
 ## <a name="list-of-functions"></a>関数の一覧
-[追加](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [*Views\\Home\\AllDates.cshtml*](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>追加
@@ -46,7 +46,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 型 | メモ |
+| Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **suffix** |必須 |String |source 値の末尾に追加する文字列。 |
@@ -59,14 +59,14 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 型 | メモ |
+| Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
 | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、 [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)を参照してください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
 - - -
-### <a name="join"></a>Join
+### <a name="join"></a>Join (結合)
 **関数:**<br> Join(separator, source1, source2, …)
 
 **説明:**<br> Join() は Append() によく似ていますが、Join() では複数の **source** 文字列値を 1 つの文字列に結合できます。文字列値は **separator** で区切って指定します。
@@ -75,7 +75,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 型 | メモ |
+| Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **separator** |必須 |String |source 値を 1 つの文字列に連結するときに、各値を区切るのに使用する文字列。 区切り記号が必要ない場合は、“” とすることができます。 |
 | **source1  … sourceN ** |必須、回数は可変 |String |結合する文字列値。 |
@@ -88,7 +88,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 型 | メモ |
+| Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常、属性の名前。 |
 | **start** |必須 |integer |部分文字列が始まる **source** 文字列のインデックス。 文字列内の最初の文字のインデックスは 1、2 番目の文字のインデックスは 2です (以降同様)。 |
@@ -102,12 +102,12 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 型 | メモ |
+| Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |Boolean String |有効な **source** 値は "True" または "False" です。 |
 
 - - -
-### <a name="replace"></a>Replace
+### <a name="replace"></a>*Views\\Home\\AllDates.cshtml*
 **関数:**<br> ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **説明:**<br>
@@ -129,15 +129,27 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 型 | メモ |
+| Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **oldValue** |省略可能。 |String |**source** または **template** に含まれる置換前の値。 |
-| **regexPattern** |省略可能。 |String |**source**に含まれる置換前の値の正規表現パターン。 または、replacementPropertyName を使用するときは、置換プロパティから値を抽出するパターン。 |
-| **regexGroupName** |省略可能。 |String |**regexPattern**内のグループの名前。 ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
-| **replacementValue** |省略可能。 |String |古い値を置き換える新しい値。 |
-| **replacementAttributeName** |省略可能。 |String |source に値を指定しないときに、置換値に使用する属性の名前。 |
+| **oldValue** |省略可能 |String |**source** または **template** に含まれる置換前の値。 |
+| **regexPattern** |省略可能 |String |**source**に含まれる置換前の値の正規表現パターン。 または、replacementPropertyName を使用するときは、置換プロパティから値を抽出するパターン。 |
+| **regexGroupName** |省略可能 |String |**regexPattern**内のグループの名前。 ReplacementPropertyName を使用した場合にのみ、置換プロパティから replacementValue としてこのグループの値を抽出します。 |
+| **replacementValue** |省略可能 |String |古い値を置き換える新しい値。 |
+| **replacementAttributeName** |省略可能 |String |source に値を指定しないときに、置換値に使用する属性の名前。 |
 | **template** |省略可能。 |String |**template** 値が指定されている場合は、template 内の **oldValue** を検索し、source 値で置換します。 |
+
+- - -
+### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
+**関数:**<br> SingleAppRoleAssignment([appRoleAssignments])
+
+**説明:**<br> 指定したアプリケーションで 1 人のユーザーに割り当てられた appRoleAssignments の全一覧から、単一の appRoleAssignment を返します。 appRoleAssignments オブジェクトを単一のロール名文字列に変換するために、この関数が必要になります。 ベスト プラクティスは、確実に 1 つの appRoleAssignment だけが一度に 1 人のユーザーに割り当てられるようにすることです。複数のロールが割り当てられると、返されるロール文字列を予測できません。
+
+**パラメーター:**<br> 
+
+| Name | 必須/繰り返し | type | メモ |
+| --- | --- | --- | --- |
+| **[appRoleAssignments]** |必須 |String |**[appRoleAssignments]** オブジェクト |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -147,7 +159,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 型 | メモ |
+| Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |**source セクション セクション** 値。 |
 
@@ -159,10 +171,10 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 **パラメーター:**<br> 
 
-| 名前 | 必須/繰り返し | 型 | メモ |
+| Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |**Source** 値。 |
-| **defaultValue** |省略可能。 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
+| **defaultValue** |省略可能 |String |source がどの key とも一致しないときに使用される既定値。 空の文字列 ("") を指定できます。 |
 | **key** |必須 |String |**source** 値と比較する **key**。 |
 | **値** |必須 |String |key と一致する **source** の置換値。 |
 

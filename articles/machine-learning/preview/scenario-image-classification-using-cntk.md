@@ -5,15 +5,17 @@ services: machine-learning
 documentationcenter: 
 author: PatrickBue
 ms.author: pabuehle
-ms.reviewer: mawah, marhamil, mldocs
+manager: mwinkle
+ms.reviewer: mawah, marhamil, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 2f8b2d9d2396c1f9c9e509257f3cd031a816729f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 53d182d84c8f28c7b4055780a5b41df00fdc8583
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用した画像分類
 
@@ -46,12 +48,12 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 
 この例を実行するための前提条件は次のとおりです。
 
-1. [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)。
+1. [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
 2. [クイック スタート インストール ガイド](./quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成するための [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md)。  
 3. Windows マシン。 Workbench は Windows と MacOS のみをサポートしており、Microsoft の Cognitive Toolkit (ディープ ラーニング ライブラリとして使用する) は Windows と Linux のみをサポートしているため、Windows OS が必要です。
 4. 専用 GPU は、パート 1 で SVM トレーニングを実行するためには必要ありませんが、パート 2 で説明されている DNN の調整に必要です。 強力な GPU がないか、複数の GPU でトレーニングする必要があるか、または Windows マシンがない場合は、Windows オペレーティング システムで Azure のディープ ラーニング仮想マシンを使用することを検討してください。 ワンクリック デプロイ ガイドについては、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)を参照してください。 デプロイ後、リモート デスクトップ接続経由で VM に接続し、そこで Workbench をインストールして、VM からローカルでコードを実行します。
 5. OpenCV などのさまざまな Python ライブラリをインストールする必要があります。 Workbench の *[ファイル]* メニューから *[コマンド プロンプトを開く]* をクリックし、次のコマンドを実行してこれらの依存関係をインストールします。  
-    - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-win_amd64.whl`  
+    - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.2-cp35-cp35m-win_amd64.whl`  
     - http://www.lfd.uci.edu/~gohlke/pythonlibs/ から OpenCV ホイールをダウンロードした後の `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` (正確なファイル名とバージョンは変更されていることがあります)
     - `conda install pillow`
     - `pip install -U numpy`
@@ -61,10 +63,11 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 ### <a name="troubleshooting--known-bugs"></a>トラブルシューティング/既知のバグ
 - パート 2 では GPU が必要ですが、それが存在しない場合に、DNN を調整しようとすると、エラー "Batch normalization training on CPU is not yet implemented (CPU のバッチ正規化トレーニングはまだ実装されていません)" がスローされます。
 - ミニバッチ サイズ (`PARAMETERS.py` 内の変数 `cntk_mb_size`) を減らすことで DNN トレーニング中のメモリ不足エラーを回避できます。
-- このコードは、CNTK 2.0 および 2.1 を使用してテストされましたが、新しいバージョンでも変更なし (または小さな変更のみ) で実行できるはずです。
+- このコードは、CNTK 2.2 を使用してテストされましたが、旧バージョン (最大 v2.0) および新しいバージョンでも変更なし (または小さな変更のみ) で実行できるはずです。
 - 執筆時に、Azure Machine Learning Workbench には 5 MB を超えるノートブックの表示の問題がありました。 この大きなサイズのノートブックは、すべてのセル出力が表示された状態でノートブックが保存された場合に発生する可能性があります。 このエラーが発生した場合は、Workbench 内の [ファイル] メニューからコマンド プロンプトを開き、`jupyter notebook` を実行して、ノートブックを開き、すべての出力をクリアして、ノートブックを保存します。 この手順を実行すると、Azure Machine Learning Workbench 内で、再度ノートブックが正しく開きます。
+- このサンプルで提供されているすべてのスクリプトは、ローカルで実行する必要があります。docker などのリモート環境では実行しないでください。 すべてのノートブックは、カーネルを "PROJECTNAME local" (例: "myImgClassUsingCNTK local") という名前のローカル プロジェクト カーネルに設定して実行する必要があります。
 
-
+    
 ## <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成
 
 この例をテンプレートとして使用して新しいプロジェクトを作成するには
@@ -76,7 +79,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 
 この手順を実行すると、下に示すプロジェクト構造が作成されます。 プロジェクト ディレクトリは、Azure Machine Learning Workbench が実行のたびにこのフォルダーのコピーを作成するため (実行履歴を有効にするため)、25 MB 未満になるように制限されます。 したがって、すべての画像および一時ファイルがディレクトリ *~/Desktop/imgClassificationUsingCntk_data* (このドキュメントでは *DATA_DIR* と呼ばれる) に保存されます。
 
-  フォルダー| Description
+  フォルダー| [説明]
   ---|---
   aml_config/|                           Azure Machine Learning Workbench 構成ファイルを格納するディレクトリ
   libraries/|                              すべての Python および Jupyter ヘルパー関数を格納するディレクトリ
@@ -91,7 +94,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 
 このチュートリアルでは、現行サンプルとして、最大 428 画像から構成される上衣のテクスチャ データセットを使用しています。 各画像は、3 つの異なるテクスチャ (ドット、ストライプ、ヒョウ柄) のいずれかとして注釈が付けられています。 このチュートリアルを迅速に実行できるように、画像数を少なくしています。 ただし、コードは十分にテストされているため、数万件以上の画像でも動作します。 すべての画像は Bing Image Search を使用してスクラップされ、[パート 3](#using-a-custom-dataset) で説明するように、手動で注釈が付けられています。 各属性と共に画像の URL が、*/resources/fashionTextureUrls.tsv* ファイルに一覧表示されています。
 
-スクリプト `0_downloadData.py` はすべての画像を *DATA_DIR/images/fashionTexture/* ディレクトリにダウンロードします。 428 個の URL の一部は、切断されている可能性があります。 これは問題ではなく、単にトレーニングとテストに使用する画像がやや少ないことを意味しています。
+スクリプト `0_downloadData.py` はすべての画像を *DATA_DIR/images/fashionTexture/* ディレクトリにダウンロードします。 428 個の URL の一部は、切断されている可能性があります。 これは問題ではなく、単にトレーニングとテストに使用する画像がやや少ないことを意味しています。 このサンプルで提供されているすべてのスクリプトは、ローカルで実行する必要があります。docker などのリモート環境では実行しないでください。
 
 次の図は、ドット (左側)、ストライプ (中間 2 )、およびヒョウ柄 (右側) の属性の例を示しています。 注釈は上衣に従って付けられました。
 
@@ -114,7 +117,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 ### <a name="step-1-data-preparation"></a>手順 1: データの準備
 `Script: 1_prepareData.py. Notebook: showImages.ipynb`
 
-ノートブック `showImages.ipynb` を使用して、画像を視覚化し、必要に応じて、それらの注釈を修正できます。 ノートブックを実行するには、Azure Machine Learning Workbench でそれを開き、[Start Notebook Server] (ノートブック サーバーの起動) オプションが表示されている場合はこれをクリックして、ノートブックのすべてのセルを実行します。 ノートブックが大きすぎて、表示できないことを示すエラーが発生した場合は、このドキュメントのトラブルシューティングのセクションを参照してください。
+ノートブック `showImages.ipynb` を使用して、画像を視覚化し、必要に応じて、それらの注釈を修正できます。 ノートブックを実行するには、Azure Machine Learning Workbench でそれを開き、[Start Notebook Server] (ノートブック サーバーの起動) オプションが表示されている場合はこれをクリックして、ローカル プロジェクト カーネルを "PROJECTNAME local" (例: "myImgClassUsingCNTK local") という名前に変更した後、ノートブックのすべてのセルを実行します。 ノートブックが大きすぎて、表示できないことを示すエラーが発生した場合は、このドキュメントのトラブルシューティングのセクションを参照してください。
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showImages.jpg" alt="alt text" width="700"/>
 </p>
@@ -178,7 +181,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 <img src="media/scenario-image-classification-using-cntk/roc_confMat.jpg" alt="alt text" width="700"/>
 </p>
 
-最後に、テスト 画像をスクロールし、それらの各分類スコアを視覚化するノートブック `showResults.py` が提供されます。
+最後に、テスト 画像をスクロールし、それらの各分類スコアを視覚化するノートブック `showResults.py` が提供されます。 手順 1 で説明したように、このサンプルにあるすべてのノートブックでは、"PROJECTNAME local" という名前のローカル プロジェクト カーネルを使用する必要があります。
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/notebook_showResults.jpg" alt="alt text" width="700"/>
 </p>
@@ -190,7 +193,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 ### <a name="step-6-deployment"></a>手順 6: デプロイ
 `Scripts: 6_callWebservice.py, deploymain.py. Notebook: deploy.ipynb`
 
-これで、トレーニング済みシステムを REST API として公開できます。 デプロイはノートブック `deploy.ipynb` で説明され、Azure Machine Learning Workbench 内の機能に基づきます。 [IRIS チュートリアル](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3)の優れたデプロイに関するセクションも参照してください。
+これで、トレーニング済みシステムを REST API として公開できます。 デプロイはノートブック `deploy.ipynb` で説明されており、Azure Machine Learning Workbench 内の機能に基づいています (必ず、"PROJECTNAME local" という名前のローカル プロジェクト カーネルをカーネルとして設定してください)。 デプロイの詳細については、[IRIS チュートリアル](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3)の優れたデプロイに関するセクションも参照してください。
 
 デプロイすると、スクリプト `6_callWebservice.py` を使用して、Web サービスを呼び出すことができます。 Web サービスの IP アドレス (ローカルまたはクラウド上のいずれか) をスクリプトの最初に設定する必要があります。 ノートブック `deploy.ipynb` にこの IP アドレスを見つける方法を説明しています。
 

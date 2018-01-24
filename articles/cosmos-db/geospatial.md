@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB で地理空間データを扱う | Microsoft Docs"
-description: "Azure Cosmos DB と DocumentDB API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。"
+description: "Azure Cosmos DB と SQL API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。"
 services: cosmos-db
 documentationcenter: 
 author: arramac
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.date: 10/20/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c2213f663f539e123f70028fd70bedb1cb6511d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 3e778f4a9b7ec4935d53eb335462f3c414ff99cd
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
 この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。
@@ -28,10 +28,10 @@ ms.lasthandoff: 10/21/2017
 * Azure Cosmos DB 内の地理空間データを SQL や LINQ で照会する方法
 * Azure Cosmos DB の空間インデックスを有効または無効にする方法
 
-この記事では、DocumentDB API を使用して地理空間データを扱う方法について説明します。 コード サンプルについては、こちらの [GitHub プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) を参照してください。
+この記事では、SQL API を使用して地理空間データを扱う方法について説明します。 コード サンプルについては、こちらの [GitHub プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)を参照してください。
 
 ## <a name="introduction-to-spatial-data"></a>空間データの概要
-空間データは、物体の空間における位置と形状を表現します。 ほとんどのアプリケーションにおける空間データは、地球上の物体、つまり地理空間データに対応します。 空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。 代表的な使用例に近接検索クエリがあります (例: "現在地付近に存在するコーヒー ショップをすべて検索")。 
+空間データは、物体の空間における位置と形状を表現します。 ほとんどのアプリケーションにおける空間データは、地球上の物体、および地理空間データに対応します。 空間データを使用することで、人物の位置や、関心のある場所、都市や湖の境界を表現することができます。 代表的な使用例に近接検索クエリがあります (例: "現在地付近に存在するコーヒー ショップをすべて検索")。 
 
 ### <a name="geojson"></a>GeoJSON
 Azure Cosmos DB は、[GeoJSON 仕様](https://tools.ietf.org/html/rfc7946)を使用して表現された地理空間ポイント データのインデックスとクエリをサポートしています。 GeoJSON データの構造は常に有効な JSON オブジェクトであるため、特殊なツールやライブラリがなくても、Azure Cosmos DB を使って保存とクエリを実行できます。 Azure Cosmos DB SDK には、空間データを簡単に扱うことができるヘルパー クラスとヘルパー メソッドが用意されています。 
@@ -61,7 +61,7 @@ Azure Cosmos DB は、[GeoJSON 仕様](https://tools.ietf.org/html/rfc7946)を�
 
 ```json
 {
-    "id":"documentdb-profile",
+    "id":"cosmosdb-profile",
     "screen_name":"@CosmosDB",
     "city":"Redmond",
     "topics":[ "global", "distributed" ],
@@ -110,7 +110,7 @@ GeoJSON の値を含んだドキュメントを作成すると、対応するコ
 
 ```json
 var userProfileDocument = {
-    "name":"documentdb",
+    "name":"cosmosdb",
     "location":{
         "type":"Point",
         "coordinates":[ -122.12, 47.66 ]
@@ -122,7 +122,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-DocumentDB API の場合は、`Microsoft.Azure.Documents.Spatial` 名前空間の `Point` クラスと `Polygon` クラスを使って、アプリケーションのオブジェクト内に位置情報を埋め込むことができます。 これらのクラスを使用して簡単に、空間データを GeoJSON にシリアル化したり、逆シリアル化したりすることができます。
+SQL API の場合は、`Microsoft.Azure.Documents.Spatial` 名前空間の `Point` クラスと `Polygon` クラスを使って、アプリケーションのオブジェクト内に位置情報を埋め込むことができます。 これらのクラスを使用して簡単に、空間データを GeoJSON にシリアル化したり、逆シリアル化したりすることができます。
 
 **地理空間データを含んだドキュメントの作成 (.NET)**
 
@@ -144,7 +144,7 @@ await client.CreateDocumentAsync(
     UriFactory.CreateDocumentCollectionUri("db", "profiles"), 
     new UserProfile 
     { 
-        Name = "documentdb", 
+        Name = "cosmosdb", 
         Location = new Point (-122.12, 47.66) 
     });
 ```
@@ -155,7 +155,7 @@ await client.CreateDocumentAsync(
 地理空間データの挿入方法がわかったら、SQL と LINQ で Azure Cosmos DB のデータを検索してみましょう。
 
 ### <a name="spatial-sql-built-in-functions"></a>空間 SQL 組み込み関数
-Azure Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を使った地理空間検索をサポートしています。 SQL 言語の全組み込み関数の詳細については、[Azure Cosmos DB のクエリ](documentdb-sql-query.md)に関する記事をご覧ください。
+Azure Cosmos DB は、以下の Open Geospatial Consortium (OGC) 組み込み関数を使った地理空間検索をサポートしています。 SQL 言語の全組み込み関数の詳細については、[Azure Cosmos DB のクエリ](sql-api-sql-query.md)に関する記事をご覧ください。
 
 <table>
 <tr>
@@ -273,7 +273,7 @@ Azure Cosmos DB は逆クエリの実行もサポートします。つまり、A
     }]
 
 ### <a name="linq-querying-in-the-net-sdk"></a>.NET SDK での LINQ クエリ
-DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance()` と `Within()` というスタブ メソッドも用意されています。 これらのメソッド呼び出しは、DocumentDB LINQ プロバイダーによって等価な SQL 組み込み関数呼び出し (それぞれ ST_DISTANCE と ST_WITHIN) に変換されます。 
+SQL .NET SDK には、LINQ 式の中で使用するための、`Distance()` と `Within()` というスタブ メソッドも用意されています。 これらのメソッド呼び出しは、SQL LINQ プロバイダーによって等価な SQL 組み込み関数呼び出し (それぞれ ST_DISTANCE と ST_WITHIN) に変換されます。 
 
 以下は LINQ クエリの一例で、LINQ を使用して、Azure Cosmos DB コレクションのドキュメントのうち、指定されたポイントから半径 30 km 圏内に "location" 値があるものをすべて検索しています。
 
@@ -322,7 +322,7 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 > 
 > 
 
-以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。 Azure Portal を使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
+以下の JSON スニペットは、空間インデックスを有効にしたインデックス作成ポリシーを示したものです。つまり、ドキュメント内に見つかったすべての GeoJSON ポイントのインデックスが作成され、空間クエリに使用されます。 Azure Portal を使用してインデックス作成ポリシーを変更する場合、インデックス作成ポリシーで以下の JSON を指定するとコレクションの空間インデックスを有効にすることができます。
 
 **インデックス作成ポリシーの JSON でコレクションの空間インデックスを Point と Polygon に有効にする**
 
@@ -391,11 +391,11 @@ DocumentDB .NET SDK には、LINQ 式の中で使用するための、`Distance(
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Cosmos DB の地理空間機能の基本的な使い方を身に付けたら、次の段階に進みましょう。
 
 * [GitHub の地理空間 .NET コード サンプル](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial) で地理空間のクエリを実際に体験する
-* [Azure Cosmos DB のクエリ](documentdb-sql-query.md)の詳細を確認する
+* [Azure Cosmos DB のクエリ](sql-api-sql-query.md)の詳細を確認する
 * [Azure Cosmos DB のインデックス作成ポリシー](indexing-policies.md)の詳細を確認する
 

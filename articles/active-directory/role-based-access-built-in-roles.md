@@ -4,7 +4,7 @@ description: "このトピックでは、ロール ベースのアクセス制�
 services: active-directory
 documentationcenter: 
 author: andredm7
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e7c563547f04a16a1059ed709d9ded25d60792f
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure ロールベースのアクセス制御の組み込みロール
 Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。 組み込みのロールの定義は変更できません。 ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md) を作成することができます。
@@ -28,7 +28,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 ## <a name="roles-in-azure"></a>Azure におけるロール
 次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、そのロールの **actions** と **notactions** の詳細な一覧を確認できます。 **actions** プロパティは、Azure リソースに対して許可するアクションを指定します。 アクションの文字列にワイルドカード文字を使用できます。 **notactions** プロパティは、許可するアクションから除外されるアクションを指定します。
 
-アクションは、指定したリソースの種類で実行できる操作の種類を定義します。 次に例を示します。
+アクションは、指定したリソースの種類で実行できる操作の種類を定義します。 例: 
 - **Write** を使用すると、PUT、POST、PATCH、および DELETE 操作を実行できます。
 - **Read** を使用すると、GET 操作を実行できます。
 
@@ -38,7 +38,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 > Azure のロール定義は常に進化しています。 この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。 現在のロールの一覧を表示するには、[Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) コマンドレットを使用します。 特定のロールの詳細を確認するには、適宜 `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) を使用すると、特定の Azure リソース プロバイダーの操作が一覧表示されます。
 
 
-| ロール名 | 説明 |
+| ロール名 | [説明] |
 | --- | --- |
 | [API Management Service Contributor](#api-management-service-contributor) |API Management サービスと API を管理できます |
 | [API Management Service Operator Role](#api-management-service-operator-role) | API Management サービスを管理できます。ただし、API 自体を管理することはできません |
@@ -55,7 +55,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [Data Factory Contributor](#data-factory-contributor) |Data Factory と Data Factory に含まれる子リソースを作成および管理できます。 |
 | [DevTest Labs User](#devtest-labs-user) |すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
 | [DNS Zone Contributor](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
-| [Azure Cosmos DB Account Contributor](#documentdb-account-contributor) |Azure Cosmos DB アカウントを管理できます |
+| [Document DB アカウントの共同作業者](#documentdb-account-contributor) |Azure Cosmos DB アカウントを管理できます |
 | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) |Intelligent Systems アカウントを管理できます |
 | Logic App Contributor | ロジック アプリのあらゆる側面を管理できますが、新規作成はできません。 |
 | Logic App Operator |ロジック アプリ内で定義されたワークフローを開始および停止できます。 |
@@ -371,13 +371,13 @@ DNS ゾーンとレコードを保護できます。
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/\* |サポート チケットの作成と管理 |
 
-### <a name="azure-cosmos-db-account-contributor"></a>Azure Cosmos DB Account Contributor
-Azure Cosmos DB アカウントを管理できます
+### <a name="documentdb-account-contributor"></a>Document DB アカウントの共同作業者
+Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。
 
 | **アクション** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |ロールとロール割り当ての読み取り |
-| Microsoft.DocumentDb/databaseAccounts/* |DocumentDB アカウントの作成と管理 |
+| Microsoft.DocumentDb/databaseAccounts/* |Azure Cosmos DB アカウントの作成と管理 |
 | Microsoft.Insights/alertRules/* |アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read |リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
@@ -703,7 +703,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 
 | **アクション** |  |
 | --- | --- |
-| Microsoft.Authorization/*/read |承認の読み取り |
+| Microsoft.Authorization/*/read |ロールとロール割り当ての読み取り |
 | Microsoft.Insights/alertRules/* |Insights アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read |リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |

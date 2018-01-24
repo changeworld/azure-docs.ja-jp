@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/17/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93a9bf568b1047e1af4e7825c3ca99bf11945560
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 3a8b32440ce3ec6cd2da7aaccf218a94e0ee3e77
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Azure Cosmos DB でのビジネス継続性のためのリージョン内自動フェールオーバー
 Azure Cosmos DB はデータのグローバル分散を容易にします。そのために、対応する保証と共に一貫性、可用性、パフォーマンスの間の明確なトレードオフを提供する、完全に管理された[複数リージョンのデータベース アカウント](distribute-data-globally.md)が用意されています。 Cosmos DB アカウントには、高可用性、10 ミリ秒未満の遅延、[明確に定義された整合性レベル](consistency-levels.md)、マルチホーム API による透過的なリージョン内フェールオーバー、世界規模でスループットとストレージを柔軟にスケーリングする機能が備わっています。 
@@ -46,7 +46,7 @@ Cosmos DB では、明示的なフェールオーバーおよびポリシーに�
 * 低待機時間読み取りの最初の優先リージョンとして `West US` を指定している
 * 2 番目の優先リージョン (リージョン内障害時の高可用性のため) として `North Europe` を指定している
 
-DocumentDB API では、この構成は次のスニペットのようになります。
+SQL API では、この構成は次のスニペットのようになります。
 
 ```cs
 ConnectionPolicy usConnectionPolicy = new ConnectionPolicy 
@@ -141,6 +141,6 @@ do
 ## <a id="NextSteps"></a>次のステップ
 * Cosmos DB の[グローバル配布](distribute-data-globally.md)サポートについて確認する
 * [Azure Cosmos DB とのグローバルな整合性](consistency-levels.md)について確認する
-* Azure Cosmos DB の [DocumentDB API](../cosmos-db/tutorial-global-distribution-documentdb.md) を使用して複数のリージョンで開発する
-* Azure DocumentDB を使用して[複数リージョン ライター アーキテクチャ](multi-region-writers.md)を作成する方法を確認する
+* Azure Cosmos DB の [SQL API](tutorial-global-distribution-sql-api.md) を使用して複数のリージョンで開発する
+* Azure Cosmos DB を使用して[複数リージョン ライター アーキテクチャ](multi-region-writers.md)を作成する方法を確認する
 

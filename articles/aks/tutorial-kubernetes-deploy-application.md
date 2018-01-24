@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3a6a75a324987b82a08219217407ad7ad14db9f8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 4468424a96b4949161218d495dd21f24285430fd
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>Azure Container Service (AKS) でのアプリケーションの実行
 
@@ -26,21 +26,21 @@ ms.lasthandoff: 12/06/2017
 
 後のチュートリアルでは、このアプリケーションをスケールアウトおよび更新し、Kubernetes クラスターを監視するように Operations Management Suite を構成します。
 
-このチュートリアルは、Kubernetes の概念についての基礎知識があることを前提としています。Kubernetes の詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/home/)を参照してください。
+このチュートリアルは、Kubernetes の概念についての基礎知識があることを前提としています。Kubernetes の詳細については、[Kubernetes のドキュメント][kubernetes-documentation]をご覧ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、このイメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。 
 
-このチュートリアルを完了するには、事前に作成した `azure-vote-all-in-one-redis.yml` Kubernetes マニフェスト ファイルが必要です。 このファイルは、前のチュートリアルでは、アプリケーションのソース コードと共にダウンロードされました。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。
+このチュートリアルを完了するには、事前に作成した `azure-vote-all-in-one-redis.yaml` Kubernetes マニフェスト ファイルが必要です。 このファイルは、前のチュートリアルでは、アプリケーションのソース コードと共にダウンロードされました。 リポジトリの複製が作成されていること、およびディレクトリが複製されたディレクトリに変更されていることを確認します。
 
-これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./tutorial-kubernetes-prepare-app.md)」に戻ってください。 
+これらの手順を完了しておらず、手順を実行する場合は、「[チュートリアル 1 - コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。
 
 ## <a name="update-manifest-file"></a>マニフェスト ファイルを更新する
 
 このチュートリアルでは、Azure Container Registry (ACR) を使用してコンテナー イメージを保存しています。 アプリケーションを実行する前に、Kubernetes マニフェスト ファイルの ACR ログイン サーバー名を更新する必要があります。
 
-ACR ログイン サーバー名を取得するには、[az acr list](/cli/azure/acr#list) コマンドを使います。
+ACR ログイン サーバー名を取得するには、[az acr list][az-acr-list] コマンドを使います。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -49,7 +49,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 マニフェスト ファイルは、ログイン サーバー名 `microsoft` で事前作成されています。 任意のテキスト エディターでファイルを開きます。 この例では、ファイルは `vi` で開きます。
 
 ```console
-vi azure-vote-all-in-one-redis.yml
+vi azure-vote-all-in-one-redis.yaml
 ```
 
 `microsoft` を ACR ログイン サーバー名に置き換えます。 この値は、マニフェスト ファイルの **47** 行にあります。
@@ -64,10 +64,10 @@ containers:
 
 ## <a name="deploy-application"></a>アプリケーションをデプロイする
 
-[kubectl create](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#create) コマンドを使用してアプリケーションを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
+[kubectl create][kubectl-create] コマンドを使ってアプリケーションを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。
 
 ```azurecli
-kubectl create -f azure-vote-all-in-one-redis.yml
+kubectl create -f azure-vote-all-in-one-redis.yaml
 ```
 
 出力:
@@ -81,9 +81,9 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>アプリケーションをテストする
 
-アプリケーションをインターネットに公開する [Kubernetes サービス](https://kubernetes.io/docs/concepts/services-networking/service/)が作成されます。 このプロセスには数分かかることがあります。 
+アプリケーションをインターネットに公開する [Kubernetes サービス][kubernetes-service]が作成されます。 このプロセスには数分かかることがあります。 
 
-進行状況を監視するには、[kubectl get service](https://kubernetes.io/docs/user-guide/kubectl/v1.7/#get) コマンドを `--watch` 引数と一緒に使用します。
+進行状況を監視するには、[kubectl get service][kubectl-get] コマンドと `--watch` 引数を使います。
 
 ```azurecli
 kubectl get service azure-vote-front --watch
@@ -105,7 +105,7 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure vote アプリケーションを AKS の Kubernetes クラスターにデプロイしました。 次のタスクを行います。  
 
@@ -117,4 +117,15 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 次のチュートリアルに進んで、Kubernetes アプリケーションとその基になっている Kubernetes インフラストラクチャ両方のスケーリングに関して学習してください。 
 
 > [!div class="nextstepaction"]
-> [Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする](./tutorial-kubernetes-scale.md)
+> [Kubernetes アプリケーションと Kubernetes インフラストラクチャをスケーリングする][aks-tutorial-scale]
+
+<!-- LINKS - external -->
+[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubernetes-documentation]: https://kubernetes.io/docs/home/
+[kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-scale]: ./tutorial-kubernetes-scale.md
+[az-acr-list]: /cli/azure/acr#list

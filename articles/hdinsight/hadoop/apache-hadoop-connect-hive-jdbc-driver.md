@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: larryfr
-ms.openlocfilehash: da6ea4bff5a45125f11776f161fef38e39a74cdd
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 7da4a7e0a60fd1e5c78f53b0a8e7ab333c5d2465
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight で JDBC ドライバーを使用して Hive のクエリを実行する
 
@@ -69,7 +69,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
     * **Linux ベースの HDInsight** クラスター バージョン 3.5 または 3.6 の場合、次の手順を使用して、必要な jar ファイルをダウンロードします。
 
-        1. ファイルを含むディレクトリを作成します。 たとえば、「 `mkdir hivedriver`」のように入力します。
+        1. ファイルを含むディレクトリを作成します。 たとえば、「`mkdir hivedriver`」のように入力します。
 
         2. コマンドラインで次のコマンドを使用して、HDInsight クラスターからファイルをコピーします。
 
@@ -192,11 +192,12 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 3. SQuirreL を再起動します。 これで、HDInsight の Hive に接続するときにエラーが発生しなくなります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、JDBC を使用して Hive を操作する方法に関する説明は終わりです。次のリンクを使用して、Azure HDInsight を操作するその他の方法について調べることもできます。
 
 * [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](apache-hadoop-connect-hive-power-bi.md)。
+* [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 * [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./../hdinsight-connect-hive-zeppelin.md)。
 * [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](apache-hadoop-connect-excel-hive-odbc-driver.md)。
 * [Power Query を使用して Excel を Hadoop に接続する](apache-hadoop-connect-excel-power-query.md)。

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/10/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 722a3f0f428bb972b2835df65a67707bf4d8e7d7
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: c685e5250943098f43f232b2b09d3ae55c0380d0
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>Service Fabric を使用して API Management をデプロイする
 このチュートリアルは、シリーズの第 4 部です。  Service Fabric での Azure API Management のデプロイは高度なシナリオです。  API Management は、バックエンドの Service Fabric サービスのルーティング規則を豊富に備えた API を公開する必要があるときに便利です。 通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 Service Fabric では、ASP.NET Core アプリケーション、Event Hubs、IoT Hub、Azure API Management など、トラフィック イングレス用に設計された任意のステートレス サービスをゲートウェイとして使用できます。 
@@ -328,7 +328,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]

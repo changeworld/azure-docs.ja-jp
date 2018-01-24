@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: zachal
-ms.openlocfilehash: c05c2d541a5f526f362f9cd72fe6d878374112b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: deb360e36b68f7ddb13b00946c700d0c83890ca6
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,11 +37,9 @@ Azure VM エージェントとそれに関連付けられた拡張機能は、Mi
 ## <a name="terms-and-concepts"></a>用語と概念
 このガイドでは、読者が次の概念を理解していることを想定しています。
 
-構成 - DSC 構成ドキュメント。 
-
-ノード - DSC 構成のターゲット。 このドキュメントでは、"ノード" は常に Azure VM を指します。
-
-構成データ - 構成に関する環境データが格納されている .psd1 ファイル。
+* **構成** - DSC 構成ドキュメント。 
+* **ノード** - DSC 構成のターゲット。 このドキュメントでは、"ノード" は常に Azure VM を指します。
+* **構成データ** - 構成に関する環境データが格納されている .psd1 ファイル。
 
 ## <a name="architectural-overview"></a>アーキテクチャの概要
 Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 DSC 拡張機能では、1 つ以上の構成ドキュメントを含む .zip ファイルと、Azure PowerShell SDK または Azure ポータルで提供される一連のパラメーターが必要です。
@@ -146,9 +144,11 @@ Set-AzureRmVmDscExtension -Version 2.21 -ResourceGroupName $resourceGroup -VMNam
 ## <a name="logging"></a>ログの記録
 ログは次の場所に記録されます。
 
-C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\[バージョン番号]
+```
+C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\[Version Number]
+```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 PowerShell DSC の詳細については、 [PowerShell ドキュメント センター](https://msdn.microsoft.com/powershell/dsc/overview)を参照してください。 
 
 [DSC 拡張機能用の Azure Resource Manager テンプレート](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。 

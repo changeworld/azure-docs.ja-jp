@@ -2,18 +2,19 @@
 title: "ドキュメント コレクション分析 - Azure | Microsoft Docs"
 description: "Azure ML Workbench を使用したフレーズ学習、トピック モデリング、トピック モデル分析など、大量のドキュメント コレクションをまとめ、分析する方法。"
 services: machine-learning
-documentationcenter: 
 author: kehuan
 ms.author: kehuan
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: mwinkle
+ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 5ef1589e28c01d750641873d3c8482f61d90a887
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a6034652f27765bb20db4dbbb4c25741b261e50a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="document-collection-analysis"></a>ドキュメント コレクションの分析
 
@@ -61,7 +62,7 @@ ms.lasthandoff: 10/27/2017
 
 * この例は、人気のコンピューティング コンテキストで実行できます。 ただし、少なくとも 16 GB のメモリと 5 GB のディスク容量を備えたマルチコア マシン上で実行することをお勧めします。
 
-## <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成
+## <a name="create-a-new-workbench-project"></a>新しい Workbench プロジェクトの作成
 
 この例をテンプレートとして使用して新しいプロジェクトを作成します。
 1.  Azure Machine Learning Workbench を開きます
@@ -82,17 +83,17 @@ ms.lasthandoff: 10/27/2017
 
 データ ファイルには、9 個のデータ フィールドがあります。 データ フィールドの名前と説明は以下のとおりです。
 
-| フィールド名 | 型 | 説明 | 欠損値を含む |
+| フィールド名 | type | [説明] | 欠損値を含む |
 |------------|------|-------------|---------------|
-| `ID` | String | 法案/決議の ID。 このフィールドの形式は、[法案の種類][番号]-[会議] です。 たとえば、"hconres1-93" は、法案の種類は "hconres" (両院一致決議を表します。詳細については[こちらのドキュメント](https://github.com/unitedstates/congress/wiki/bills#basic-information)を参照してください)、法案番号は "1"、会議番号は "93" です。 | いいえ |
-| `Text` | String | 法案/決議の内容。 | いいえ |
-| `Date` | String | 法案/決議が最初に提案された日付。 'yyyy-mm-dd' の形式です。 | いいえ |
-| `SponsorName` | String | 法案/決議を提案した主要起草者の名前。 | はい |
-| `Type` | String | 主要起草者の肩書きの種類。'rep' (下院議員) または 'sen' (上院議員) です。 | はい |
-| `State` | String | 主要起草者の状態。 | はい |
-| `District` | 整数 | 起草者の肩書きが下院議員の場合は、主要起草者の地域番号。 | はい |
-| `Party` | String | 主要起草者の党。 | はい |
-| `Subjects` | String | 米国議会図書館が法案に累積的に追加している主題語。 主題語はコンマ区切りで連結されています。 主題語は、米国議会図書館の人員が記入しており、法案に関する情報が最初に公開されるときは、通常存在しません。 また、主題語は常に追加される可能性があります。 そのため、法案の有効期間が終了するまでに、一部の主題語は関連しなくなることがあります。 | はい |
+| `ID` | String | 法案/決議の ID。 このフィールドの形式は、[法案の種類][番号]-[会議] です。 たとえば、"hconres1-93" は、法案の種類は "hconres" (両院一致決議を表します。詳細については[こちらのドキュメント](https://github.com/unitedstates/congress/wiki/bills#basic-information)を参照してください)、法案番号は "1"、会議番号は "93" です。 | いいえ  |
+| `Text` | String | 法案/決議の内容。 | いいえ  |
+| `Date` | String | 法案/決議が最初に提案された日付。 'yyyy-mm-dd' の形式です。 | いいえ  |
+| `SponsorName` | String | 法案/決議を提案した主要起草者の名前。 | [はい] |
+| `Type` | String | 主要起草者の肩書きの種類。'rep' (下院議員) または 'sen' (上院議員) です。 | [はい] |
+| `State` | String | 主要起草者の状態。 | [はい] |
+| `District` | 整数 | 起草者の肩書きが下院議員の場合は、主要起草者の地域番号。 | [はい] |
+| `Party` | String | 主要起草者の党。 | [はい] |
+| `Subjects` | String | 米国議会図書館が法案に累積的に追加している主題語。 主題語はコンマ区切りで連結されています。 主題語は、米国議会図書館の人員が記入しており、法案に関する情報が最初に公開されるときは、通常存在しません。 また、主題語は常に追加される可能性があります。 そのため、法案の有効期間が終了するまでに、一部の主題語は関連しなくなることがあります。 | [はい] |
 
 ## <a name="scenario-structure"></a>シナリオの構造
 
@@ -100,7 +101,7 @@ ms.lasthandoff: 10/27/2017
 
 この例のファイルは、次のように整理されます。
 
-| ファイル名 | 型 | 説明 |
+| ファイル名 | type | [説明] |
 |-----------|------|-------------|
 | `aml_config` | フォルダー | Azure Machine Learning Workbench 構成フォルダー。詳細な実験の実行構成については、[こちらのドキュメント](./experimentation-service-configuration-reference.md)を参照してください |
 | `Code` | フォルダー | Python スクリプトと Python パッケージを保存するために使用されるコード フォルダー |

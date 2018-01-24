@@ -5,7 +5,7 @@ keywords: "拒否されたSSH 接続,SSH エラー,Azure SSH,失敗した SSH �
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: support-article
-ms.date: 07/06/2017
+ms.topic: article
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 264fe2acbdd393a2f9d349e1522263f1728c5d48
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 82b2bcf5b05288888714339af15ff2796d9660bd
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
 SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
@@ -39,14 +39,14 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 2. エンドポイント、IP アドレス、ネットワーク セキュリティ グループなどの設定を確認するには、**[設定]** を選択します。
 
-   VM には、**[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/virtual-networks-nsg.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることも確認します。
+   VM には、**[エンドポイント]** または **[[ネットワーク セキュリティ グループ]](../../virtual-network/virtual-networks-nsg.md)** で確認できる SSH トラフィック用に定義されたエンドポイントが必要です。 Resource Manager を使用して作成された VM のエンドポイントは、ネットワーク セキュリティ グループに格納されています。 ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることを確認します。
 
-ネットワーク接続を確認するには、構成されているエンドポイントを確認します。また、HTTP などの別のプロトコルや他のサービスを使用して、VM に到達できるかどうかを確認します。
+ネットワーク接続を確認するには、構成されているエンドポイントを確認します。また、HTTP などの別のプロトコルや他のサービスを使用して、VM に接続できるかどうかを確認します。
 
 以上の手順を完了したら、SSH 接続を再試行してください。
 
 ## <a name="find-the-source-of-the-issue"></a>問題のソースを見つける
-お使いのコンピューター上の SSH クライアントは、以下の領域に問題または誤構成があるために Azure VM の SSH サービスに到達できないことがあります。
+お使いのコンピューター上の SSH クライアントは、以下の領域に問題または誤構成があるために Azure VM の SSH サービスに接続できないことがあります。
 
 * [SSH クライアント コンピューター](#source-1-ssh-client-computer)
 * [組織の境界デバイス](#source-2-organization-edge-device)
@@ -80,7 +80,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 
 ![組織の境界デバイスを示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-インターネットに直接接続されているコンピューターがない場合は、新しい Azure VM を独自のリソース グループまたはクラウド サービスに作成して使用します。 詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](quick-create-cli.md)」を参照してください。 テストの完了後に、そのリソース グループまたは VM と、クラウド サービスを削除します。
+インターネットに直接接続されているコンピューターがない場合は、新しい Azure VM を独自のリソース グループまたはクラウド サービスに作成し、その新しい VM を使用します。 詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](quick-create-cli.md)」を参照してください。 テストの完了後に、そのリソース グループまたは VM と、クラウド サービスを削除します。
 
 インターネットに直接接続されているコンピューターとの SSH 接続を作成できる場合は、組織のエッジ デバイスで以下を確認してください。
 
@@ -94,7 +94,7 @@ SSH クライアントは、さまざまな理由で VM 上の SSH サービス�
 > [!NOTE]
 > このソースは、クラシック デプロイ モデルを使用して作成された VM にのみ適用されます。 Resource Manager を使用して作成された VM については、「 [ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
 
-エラーのソースであるクラウド サービス エンドポイントと ACL を排除するには、同じ仮想ネットワーク内の別の Azure VM からご使用の VM に SSH 接続できることを確認します。
+エラーのソースであるクラウド サービス エンドポイントと ACL を排除するには、同じ仮想ネットワーク内の別の Azure VM から SSH を使用して接続できることを確認します。
 
 ![クラウド サービス エンドポイントと ACL を示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 

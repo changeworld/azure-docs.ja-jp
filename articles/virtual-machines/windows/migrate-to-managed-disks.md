@@ -13,22 +13,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 01/03/2018
 ms.author: cynthn
-ms.openlocfilehash: b389151b8a1dd0c7a367f83db968bac7b832897a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3471792bba92879e446837434cbdba667cf679ad
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure VM を Azure Managed Disks に移行する
 
-Azure Managed Disks を使用すると、ストレージ アカウントを個別に管理する必要がなくなり、ストレージ管理が簡略化されます。  また、既存の Azure VM を Managed Disks に移行して、可用性セット内の VM の信頼性を向上させることもできます。 可用性セット内の各 VM のディスクは、単一障害点となるのを避けるために、相互に十分に分離されます。 可用性セット内の異なる VM のディスクは異なるストレージ スケール ユニット (スタンプ) に自動的に配置されるため、ハードウェアとソフトウェアの障害を原因とする単一のストレージ スケール ユニット障害の影響が限定されます。
+Azure Managed Disks を使用すると、ストレージ アカウントを個別に管理する必要がなくなり、ストレージ管理が簡略化されます。  また、既存の Azure VM を Managed Disks に移行して、可用性セット内の VM の信頼性を向上させることもできます。 単一障害点を避けるために、可用性セット内の異なる VM のディスクは相互に十分に分離されます。 可用性セット内の異なる VM のディスクは異なるストレージ スケール ユニット (スタンプ) に自動的に配置されるため、ハードウェアとソフトウェアの障害を原因とする単一のストレージ スケール ユニット障害の影響が限定されます。
 ニーズに基づいて、2 種類のストレージ オプションから選ぶことができます。
 
 - [Premium Managed Disks](premium-storage.md) は、ソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、I/O を集中的に行うワークロードを実行している仮想マシンに、高パフォーマンスで待ち時間の短いディスク サポートを提供します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に高めることができます。
 
-- [Standard Managed Disks](standard-storage.md) は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発/テスト ワークロードやアクセス頻度の少ないワークロードに最適です。
+- [Standard Managed Disks](standard-storage.md) はハード ディスク ドライブ (HDD) ベースのストレージ メディアを使用し、パフォーマンス変動の影響を受けにくい開発テストやアクセス頻度の少ないワークロードに最適です。
 
 次のようなシナリオが、Managed Disks への移行に適しています。
 
@@ -48,7 +48,7 @@ Azure Managed Disks を使用すると、ストレージ アカウントを個�
 このセクションの情報を使用して、自社環境に最適な VM とディスクの種類を判断できます。
 
 
-## <a name="location"></a>Location (場所)
+## <a name="location"></a>場所
 
 Azure Managed Disks を使用できる場所を選びます。 Premium Managed Disks に移行する場合は、移行を計画しているリージョンで Premium Storage が利用可能であることも確認します。 使用できる場所に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/#services)」をご覧ください。
 
@@ -63,21 +63,21 @@ Premium Storage で動作する仮想マシンのパフォーマンス特性を�
 
 VM で使える Premium 管理ディスクには 7 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM のディスクの種類として Premium を選択する場合は、容量、パフォーマンス、スケーラビリティ、ピーク負荷に関するアプリケーションのニーズを踏まえると共に、これらの制限も考慮してください。
 
-| Premium ディスクの種類  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| ディスク サイズ           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| ディスクあたりの IOPS       | 120   | 240   | 500   | 2300              | 5000              | 7500              | 7500              | 
-| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
+| Premium ディスクの種類  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| ディスク サイズ           | 128 GB| 512 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| ディスクあたりの IOPS       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
+| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 |150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
 
 **Standard Managed Disks**
 
 VM で使用できる Standard Managed Disks は 7 種類あります。 それぞれ容量は異なりますが、IOPS とスループットの制限は同じです。 アプリケーションの容量のニーズに基づいて Standard Managed Disks の種類を選択してください。
 
-| Standard ディスクの種類  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
-|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| ディスク サイズ           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
-| ディスクあたりの IOPS       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
-| ディスクあたりのスループット | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 
+| Standard ディスクの種類  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
+| ディスク サイズ           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| ディスクあたりの IOPS       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| ディスクあたりのスループット | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 |60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 60 MB/秒 | 
 
 ## <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー
 
@@ -87,10 +87,10 @@ VM で使用できる Standard Managed Disks は 7 種類あります。 それ�
 
 ## <a name="pricing"></a>価格
 
-[Managed Disks の価格](https://azure.microsoft.com/en-us/pricing/details/managed-disks/)をご確認ください。 Premium Managed Disks の価格は、Premium 非管理対象ディスクと同じです。 一方、Standard Managed Disks の価格は、Standard 非管理対象ディスクとは異なります。
+[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks/)をご確認ください。 Premium Managed Disks の価格は、Premium 非管理対象ディスクと同じです。 一方、Standard Managed Disks の価格は、Standard 非管理対象ディスクとは異なります。
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Managed Disks](managed-disks-overview.md) の概要をご覧ください。

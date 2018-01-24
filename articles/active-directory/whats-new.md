@@ -4,7 +4,7 @@ description: "最新のリリース ノート、既知の問題、バグの修�
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 featureFlags: clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
@@ -13,21 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/19/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1538e1c26cfe658c7f42ccdd57d8bf5aca0b1fb
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 6e1cf6e2ee717ef7629e1388d7bca2090eed46fa
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
 
 
 
-> お気に入りの RSS フィード リーダーでこの[フィード](https://docs.microsoft.com/api/search/rss?search=%22what%27s%20new%20in%20azure%20active%20directory%3F%22&locale=en-us)をサブスクライブして、Azure Active Directory の新着情報を常に把握するようにしてください。
+> [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us) [フィード](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)をサブスクライブして、Azure Active Directory の新着情報を常に把握するようにしてください。
 
 
 
@@ -41,6 +41,163 @@ ms.lasthandoff: 11/29/2017
 
 このページは月単位で更新されるため、定期的にご確認ください。
 
+
+## <a name="december-2017"></a>2017 年 12 月
+ 
+
+### <a name="terms-of-use-in-the-access-panel-for-end-users"></a>エンド ユーザー向けのアクセス パネルでの使用条件
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス/コンプライアンス
+ 
+エンド ユーザーは、アクセス パネルに移動し、以前に承諾した使用条件を表示できるようになりました。
+
+ユーザーは、同意した使用条件を確認できます。 これは、次の手順で実行できます。
+
+1. [MyApps ポータル](https://myapps.microsoft.com)に移動してサインインします。
+
+2. 右上隅に表示される自分の名前をクリックし、ドロップダウンから **[プロファイル]** を選択します。 
+
+3. プロファイルで、**[使用条件の確認]** をクリックします。 
+
+4. そこから同意した使用条件を確認できます。 
+
+詳しくは、「[Azure Active Directory Terms of Use 機能 (プレビュー)](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」をご覧ください
+ 
+---
+ 
+
+### <a name="new-azure-ad-sign-in-experience"></a>新しい Azure AD サインイン エクスペリエンス
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Azure AD  
+**製品の機能:** ユーザー認証
+ 
+Azure AD と Microsoft アカウント ID システムの統合への道のりの一貫として、両方のシステムで UI を再設計し、一貫したルック アンド フィールを持つようにしました。 さらに、ユーザー名を最初に収集してから 2 番目の画面で資格情報を収集するように、Azure AD サインイン ページを改ページしました。
+
+詳しくは、「[The new Azure AD Signin Experience is now in Public Preview](https://cloudblogs.microsoft.com/enterprisemobility/2017/08/02/the-new-azure-ad-signin-experience-is-now-in-public-preview/)」(新しい Azure AD サインイン エクスペリエンスのパブリック プレビューを開始) をご覧ください
+ 
+---
+ 
+
+### <a name="fewer-login-prompts-a-new-keep-me-signed-in-experience-for-azure-ad-login"></a>より少数のログイン プロンプト: Azure AD ログインの新しい "サインインしたままにする" エクスペリエンス
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Azure AD  
+**製品の機能:** ユーザー認証
+ 
+Azure AD ログイン ページの **[サインインしたままにする]** チェックボックスを、ユーザーが正常に認証された後に表示される新しいプロンプトに置き換えました。 
+
+ユーザーがこのプロンプトに **[はい]** と応答した場合、サービスにより永続的な更新トークンが付与されます。 これは、ユーザーが以前のエクスペリエンスで **[サインインしたままにする]** チェック ボックスをオンした場合と同じ動作です。 フェデレーション テナントの場合、このプロンプトは、ユーザーがフェデレーション サービスで正常に認証された後に表示されます。
+
+詳しくは、「[Fewer login prompts: The new "Keep me signed in" experience for Azure AD is in preview](https://cloudblogs.microsoft.com/enterprisemobility/2017/09/19/fewer-login-prompts-the-new-keep-me-signed-in-experience-for-azure-ad-is-in-preview/)」(より少数のログイン プロンプト: Azure AD の新しい "サインインしたままにする" エクスペリエンスがプレビュー段階に) をご覧ください 
+
+---
+ 
+
+### <a name="add-configuration-to-require-the-tou-to-be-expanded-prior-to-accepting"></a>同意する前に TOU の展開を要求する構成の追加。
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス
+ 
+条項に同意する前に使用条件を展開することをエンド ユーザーに要求する管理者向けオプションを追加しました。
+
+[ユーザーは使用条件を展開する必要があります] をオンにするかオフにするかを選択します。 オンに設定された場合、エンド ユーザーは、同意する前に使用条件を表示する必要があります。
+
+詳しくは、「[Azure Active Directory Terms of Use 機能 (プレビュー)](active-directory-tou.md)」をご覧ください
+ 
+---
+ 
+
+### <a name="scoped-activation-for-eligible-role-assignments"></a>対象となるロール割り当ての範囲指定されたアクティブ化
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Privileged Identity Management  
+**製品の機能:** Privileged Identity Management
+ 
+範囲指定されたアクティブ化により、元の割り当ての既定値よりも低い自律性で対象となる Azure リソースのロール割り当てをアクティブ化できます。 たとえば、テナントでサブスクリプションの所有者を割り当てられているとします。 範囲指定されたアクティブ化では、サブスクリプションに含まれる最大 5 つのリソース (リソース グループ、Virtual Machines など) に対して所有者をアクティブにできます。アクティブ化を範囲指定すると、重要な Azure リソースに対して望ましくない変更が実行される可能性を低減できます。
+
+詳しくは、「[Azure AD Privileged Identity Management とは](active-directory-privileged-identity-management-configure.md)」をご覧ください。
+ 
+---
+ 
+
+### <a name="new-federated-apps-in-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの新しいフェデレーション アプリ
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** サード パーティ統合
+ 
+2017 年 12 月に、フェデレーションをサポートする次の新しいアプリをアプリ ギャラリーに追加しました。
+
+|Name|統合の種類|[説明]|
+|:-- |----------------|:----------|
+|EFI Digital StoreFront|SAML 2.0|[Web 2 Print アプリケーション](https://go.microsoft.com/fwlink/?linkid=861685)|
+|Vodeclic|SAML 2.0|[Azure AD を使用して、ユーザー アクセスを管理し、Vodeclic によるシングル サインオンを有効にします](https://go.microsoft.com/fwlink/?linkid=863522)。  既存の Vodeclic アカウントが必要です。|
+|Accredible|SAML 2.0|[証明書、バッジ、ブロックチェーン資格情報を作成、管理、配信します](https://go.microsoft.com/fwlink/?linkid=863523)|
+|FactSet|SAML 2.0|[FactSet の FDSWeb アプリケーションにシングル サインオンできます](https://go.microsoft.com/fwlink/?linkid=863525)|
+|MobileIron Azure AD の統合|SAML 2.0|[MobileIron](https://go.microsoft.com/fwlink/?linkid=858027) の目的は、現代の企業がエンドユーザーのプライバシーと信頼を維持しながら、モバイルやクラウドに移行するときに情報をセキュリティで保護し、管理できるようにすることです。|
+|IMAGE WORKS|SAML 2.0|Azure AD を使用して、ユーザー アクセスを管理し、ユーザー アカウントをプロビジョニングし、[IMAGE WORKS](https://go.microsoft.com/fwlink/?linkid=863517) によるシングル サインオンを有効にします。 既存の IMAGE WORKS サブスクリプションが必要です。|
+|SAML SSO for Bitbucket by resolution GmbH|SAML 2.0|[SSO Bitbucket](https://go.microsoft.com/fwlink/?linkid=863519) は Azure AD に認証を委任し、Azure AD に既にログインしているユーザーは Bitbucket に直接アクセスできます。 ユーザーは、SAML 属性のデータを即座に作成および更新できます。|
+|SAML SSO for Bamboo by resolution GmbH|SAML 2.0|[SSO Bamboo](https://go.microsoft.com/fwlink/?linkid=863520) は、Azure AD に認証を委任し、Azure AD に既にログインしているユーザーは Bamboo に直接アクセスできます。|
+|Communifire|SAML 2.0|[Communifire](https://go.microsoft.com/fwlink/?linkid=861676) は、従業員とビジネスをサポートする、完全な機能を備えた最新のソーシャル イントラネット ソフトウェアです。|
+|MOBI|SAML 2.0|[デバイス エコシステム全体を集中化、把握、制御します](https://go.microsoft.com/fwlink/?linkid=863521)。|
+|Reflektive|SAML 2.0|[Reflektive](https://go.microsoft.com/fwlink/?linkid=863518) は、パフォーマンス管理、リアルタイム フィードバック、目標設定のための最新のプラットフォームです。 従業員が自身の開発を推進できるので、より戦略的に取り組むことができます。|
+|CybSafe|OpenID Connect と OAuth|CybSafe は GCHQ 認定を受けたサイバー対応プラットフォームです。 高度なテクノロジとデータ分析を使用して、サイバー セキュリティとデータ保護のリスクの人間的な側面を確実に低減します。|
+|WebHR|OpenID Connect と OAuth|すべてのユーザーのお気に入りのオール イン ワン ソーシャル HR ソフトウェア。 197 か国の 20,000 を超える企業によって信頼されています|
+ |Zenegy Azure AD Integration|OpenID Connect と OAuth|このアプリでは、Zenegy へのログインに自社の Azure Active Directory 資格情報を使用できます。|
+|Adobe Experience Manager|SAML 2.0|Adobe Experience Manager (AEM) は、Web サイト、モバイル アプリ、フォームをビルドするための包括的なコンテンツ管理プラットフォーム ソリューションで、マーケティングのコンテンツと資産を簡単に管理できるようにします。|
+
+ 
+---
+ 
+
+### <a name="approval-workflows-for-azure-ad-directory-roles"></a>Azure AD ディレクトリ ロールに対する承認ワークフロー
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** Privileged Identity Management  
+**製品の機能:** Privileged Identity Management
+ 
+Azure AD ディレクトリ ロールの承認ワークフローが一般公開されました。
+
+承認ワークフローでは、特権ロール管理者が、特権ロールを使用する前に、対象となるロール メンバーにロールのアクティブ化要求を要求できます。
+複数のユーザーとグループに承認責任を委任でき、対象となるロール メンバーは、承認が完了し、ロールがアクティブになると通知を受け取ります
+
+---
+ 
+
+### <a name="pass-through-authentication---skype-for-business-support"></a>パススルー認証 - Skype for Business のサポート
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+
+
+パススルー認証では、先進認証 (オンライン トポロジとハイブリッド トポロジを含む) をサポートする Skype for Business クライアント アプリケーションへのユーザー サインインがサポートされるようになりました。 
+
+詳しくは、「[先進認証でサポートされる Skype for Business トポロジ](https://technet.microsoft.com/library/mt803262.aspx)」をご覧ください。
+ 
+---
+ 
+
+### <a name="updates-to-azure-active-directory-privileged-identity-management-pim-for-azure-rbac-preview"></a>Azure RBAC 用の Azure Active Directory Privileged Identity Management (PIM) に対する更新 (プレビュー)
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** PIM  
+**製品の機能:** Privileged Identity Management
+ 
+Azure RBAC 用の Azure Active Directory Privileged Identity Management (PIM) のパブリック プレビューの更新により、次のことが可能になりました。
+
+Just Enough Administration Require 承認を使用して、リソース ロールをアクティブにします。AAD と Azure RBAC の両方のロールの承認を要求するロールの将来のアクティブ化をスケジュールします
+
+ 
+詳しくは、「[Azure リソース向けの PIM (プレビュー)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)」をご覧ください
+
+ 
+---
+ 
 ## <a name="november-2017"></a>2017 年 11 月
  
 ### <a name="retiring-acs"></a>ACS の廃止
@@ -100,7 +257,7 @@ Microsoft Azure Active Directory Access Control (Access Control Service また�
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
 
 
-詳細については、次を参照してください。
+詳細については、「
 
 - [承認されたクライアント アプリケーションの要件](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
 
@@ -237,7 +394,7 @@ Azure AD 条件付きアクセス ポリシーのデバイス プラットフォ
   
 - **Azure AD 内のアプリケーションへのアクセスを準拠 macOS デバイスのみに制限する** - 条件付きアクセス ポリシーの作成で、macOS が個別のデバイス プラットフォーム オプションとして追加されました。 このオプションを使用すると、Azure で設定済みのターゲット アプリケーション向けに macOS 固有の条件付きアクセス ポリシーを作成できます。
 
-詳細については、次を参照してください。
+詳細については、「
 
 - [Intune で macOS デバイス用のデバイス コンプライアンス ポリシーを作成する](https://aka.ms/macoscompliancepolicy)
 - [Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)
@@ -307,7 +464,7 @@ Azure AD 管理センターで以下の操作が可能になりました。
 - Microsoft Azure Information Protection 
 
 
-詳細については、次を参照してください。
+詳細については、「
 
 - [承認されたクライアント アプリケーションの要件](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
 
@@ -513,6 +670,6 @@ Azure のロール ベースのアクセス制御 (RBAC) 機能を利用する A
 - Microsoft Identity Manager 2016 のビルド 4.4.1459.0 までのすべての MIM 2016 SP1 更新プログラムに代わる累積的な更新プログラムです。 
 - **Microsoft Identity Manager 2016 ビルド 4.4.1302.0** がインストールされている必要があります。 
 
-詳細については、「[Hotfix rollup package (build 4.4.1642.0) is available for Microsoft Identity Manager 2016 SP1](https://support.microsoft.com/en-us/help/4021562)」(Microsoft Identity Manager 2016 SP1 の修正プログラム ロールアップ パッケージ (ビルド 4.4.1642.0) の提供開始) をご覧ください。 
+詳細については、「[Hotfix rollup package (build 4.4.1642.0) is available for Microsoft Identity Manager 2016 SP1](https://support.microsoft.com/help/4021562)」(Microsoft Identity Manager 2016 SP1 の修正プログラム ロールアップ パッケージ (ビルド 4.4.1642.0) の提供開始) をご覧ください。 
 
 ---

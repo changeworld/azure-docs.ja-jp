@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: arramac
-ms.openlocfilehash: 8ca4c7fb1ccfe1eb026de80e519894c0ff23028a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d1968e9fea0fb08edfdbf9e09acca9c4af00b048
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
 
@@ -34,7 +34,7 @@ Azure Cosmos DB の **Change Feed サポート**により、次の図のよう�
 ![Azure Cosmos DB の Change Feed を使用してリアルタイム分析とイベント ドリブンのコンピューティング シナリオを強化](./media/change-feed/changefeedoverview.png)
 
 > [!NOTE]
-> 変更フィードのサポートは、Azure Cosmos DB のすべてのデータ モデルとコンテナーに提供されています。 ただし、変更フィードは DocumentDB クライアントを使用して読み取られ、項目は JSON 形式でシリアル化されます。 JSON 形式なので、MongoDB クライアントでは BSON 形式のドキュメントと JSON 形式の変更フィード間で不一致が発生します。 
+> 変更フィードのサポートは、Azure Cosmos DB のすべてのデータ モデルとコンテナーに提供されています。 ただし、変更フィードは SQL クライアントを使用して読み取られ、項目は JSON 形式でシリアル化されます。 JSON 形式なので、MongoDB クライアントでは BSON 形式のドキュメントと JSON 形式の変更フィード間で不一致が発生します。 
 
 ## <a name="how-does-change-feed-work"></a>変更フィードのしくみ
 
@@ -90,11 +90,11 @@ Azure Functions を使用してインストール場合、Azure Cosmos DB の変
 <a id="rest-apis"></a>
 ## <a name="using-the-sdk"></a>SDK を使用する
 
-Azure Cosmos DB 用の [DocumentDB SDK](documentdb-sdk-dotnet.md) は、変更フィードの読み取りと管理に必要な機能がすべてそろっています。 ただし、強力な機能には多くの責任も伴います。 チェックポイントを管理し、ドキュメントのシーケンス番号を扱い、パーティション キーを細かく制御する場合、SDK の使用が推奨される方法の可能性があります。
+Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィードの読み取りと管理に必要な機能がすべてそろっています。 ただし、強力な機能には多くの責任も伴います。 チェックポイントを管理し、ドキュメントのシーケンス番号を扱い、パーティション キーを細かく制御する場合、SDK の使用が推奨される方法の可能性があります。
 
-このセクションでは、DocumentDB SDK を使用して変更フィードを操作する手順について説明します。
+このセクションでは、SQL SDK を使用して変更フィードを操作する手順について説明します。
 
-1. まず appconfig から次のリソースを読み取ります。 エンドポイントと承認キーの取得手順については、「[接続文字列を更新する](create-documentdb-dotnet.md#update-your-connection-string)」を参照してください。
+1. まず appconfig から次のリソースを読み取ります。 エンドポイントと承認キーの取得手順については、「[接続文字列を更新する](create-sql-api-dotnet.md#update-your-connection-string)」を参照してください。
 
     ``` csharp
     DocumentClient client;
@@ -166,7 +166,7 @@ Azure Cosmos DB 用の [DocumentDB SDK](documentdb-sdk-dotnet.md) は、変更�
 <a id="change-feed-processor"></a>
 ## <a name="using-the-change-feed-processor-library"></a>Change Feed Processor ライブラリの使用 
 
-[Azure Cosmos DB Change Feed Processor ライブラリ](https://docs.microsoft.com/azure/cosmos-db/documentdb-sdk-dotnet-changefeed)を使用すると、複数のコンシューマーにイベント処理を簡単に分散させることができます。 このライブラリで、並列で実行されている複数のパーティションと複数のスレッド全体の変更の読み取りが簡単になります。
+[Azure Cosmos DB Change Feed Processor ライブラリ](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed)を使用すると、複数のコンシューマーにイベント処理を簡単に分散させることができます。 このライブラリで、並列で実行されている複数のパーティションと複数のスレッド全体の変更の読み取りが簡単になります。
 
 Change Feed Processor ライブラリの主な利点は、各パーティションと継続トークンを管理する必要がないことと、各コレクションを手動でポーリングする必要がないことです。
 
@@ -270,17 +270,17 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 
 これで完了です。 これらのいくつかの手順の後に、**DocumentFeedObserver ProcessChangesAsync** メソッドが実行されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Cosmos DB と Azure Functions の使用方法については、「[Azure Cosmos DB: Azure Functions を使用したサーバーなしのデータベースのコンピューティング](serverless-computing-database.md)」を参照してください。
 
 Change Feed Processor ライブラリの使用方法については、次のリソースを参照してください。
 
-* [情報ページ](documentdb-sdk-dotnet-changefeed.md) 
+* [情報ページ](sql-api-sdk-dotnet-changefeed.md) 
 * [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)
 * [前述の手順 1 ～ 6 を示すサンプル コード](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
 * [GitHub のその他のサンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedProcessor)
 
 SDK で変更フィードを使用する方法については、次のリソースを参照してください。
 
-* [SDK の情報ページ](documentdb-sdk-dotnet.md)
+* [SDK の情報ページ](sql-api-sdk-dotnet.md)

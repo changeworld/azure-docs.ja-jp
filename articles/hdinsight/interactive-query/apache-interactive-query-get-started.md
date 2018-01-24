@@ -17,14 +17,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: jgao
-ms.openlocfilehash: f53234ddd8362e74c421c18c8d500308f5a232a7
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 80e96e6bb727e6d5c1331580fad328d570b21494
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight での対話型クエリの使用
-対話型クエリ (別名 Hive LLAP または [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの種類](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Hive クエリの速度と対話性が向上します。 
+対話型クエリ (別名 Hive LLAP または [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの種類](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Hive クエリの速度と対話性が向上します。
+
+[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)] 
 
 対話型クエリ クラスターは、Hadoop クラスターとは異なり、 Hive サービスのみが含まれます。 
 
@@ -41,8 +43,8 @@ Hive クエリを実行するには、次のオプションがあります。
 
 * Power BI を使用する
 
-    [Azure HDInsight の Power BI を使用したビッグ データの視覚化](../hadoop/apache-hadoop-connect-hive-power-bi.md)に関するページをご覧ください。
-
+    「[Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](./apache-hadoop-connect-hive-power-bi-directquery.md)」をご覧ください。「[Azure HDInsight の Power BI でビッグ データを視覚化する](../hadoop/apache-hadoop-connect-hive-power-bi.md)」をご覧ください。
+ 
 * Zeppelin を使用する
 
     「[Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](../hdinsight-connect-hive-zeppelin.md)」をご覧ください。
@@ -74,7 +76,7 @@ Java Database Connectivity (JDBC) 接続文字列は次の方法で調べるこ�
    
    ![HDInsight Hadoop 対話型クエリ LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [HDInsight で対話型クエリ クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)方法を学ぶ。
 * [Azure HDInsight の Power BI でビッグ データを視覚化する](../hadoop/apache-hadoop-connect-hive-power-bi.md)方法を学ぶ。

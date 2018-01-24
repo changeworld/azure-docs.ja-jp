@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 084c6bf3855bdc757c3f2926b35eaf7bba0ef389
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: b01aa01df198ce75b2f8b66d28a2db68b1c30b87
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="monitor-azure-container-service-aks"></a>Azure Container Service (AKS) の監視
 
 Kubernetes クラスターとコンテナーの監視は重要なことであり、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
-このチュートリアルでは、[Log Analytics のコンテナー監視ソリューション](../log-analytics/log-analytics-containers.md)を使用して AKS クラスターの監視を構成します。
+このチュートリアルでは、[Log Analytics のコンテナー監視ソリューション][log-analytics-containers]を使用して AKS クラスターの監視を構成します。
 
 この 8 部構成の 7 番目のチュートリアルでは、次のタスクについて説明します。
 
@@ -32,7 +32,7 @@ Kubernetes クラスターとコンテナーの監視は重要なことであり
 
 前のチュートリアルでは、アプリケーションをコンテナー イメージにパッケージ化し、イメージを Azure Container Registry にアップロードして、Kubernetes クラスターを作成しました。
 
-これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./tutorial-kubernetes-prepare-app.md)」に戻ってください。
+これらの手順を完了しておらず、手順を実行する場合は、「[チュートリアル 1 - コンテナー イメージを作成する][aks-tutorial-prepare-app]」に戻ってください。
 
 ## <a name="configure-the-monitoring-solution"></a>監視ソリューションの構成
 
@@ -58,7 +58,7 @@ Kubernetes ノードにソリューション エージェントを構成する�
 
 ## <a name="configure-monitoring-agents"></a>監視エージェントの構成
 
-次の Kubernetes マニフェスト ファイルを使用して、Kubernetes クラスター上にコンテナー監視エージェントを構成できます。 このファイルでは、各クラスター ノードで単一のポッドを実行する Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) が作成されます。
+次の Kubernetes マニフェスト ファイルを使用して、Kubernetes クラスター上にコンテナー監視エージェントを構成できます。 このファイルでは、各クラスター ノードで単一のポッドを実行する Kubernetes [DaemonSet][kubernetes-daemonset] が作成されます。
 
 次のテキストを `oms-daemonset.yaml` という名前のファイルに保存し、`WSID` と `KEY` のプレースホルダー値を実際の Log Analytics ワークスペースの ID とキーに置き換えます。
 
@@ -98,6 +98,8 @@ spec:
           name: container-hostname
         - mountPath: /var/log
           name: host-log
+        - mountPath: /var/lib/docker/containers/
+          name: container-log
        livenessProbe:
         exec:
          command:
@@ -124,6 +126,9 @@ spec:
     - name: host-log
       hostPath:
        path: /var/log
+    - name: container-log
+      hostPath:
+       path: /var/lib/docker/containers/
 ```
 
 次のコマンドを使って DaemonSet を作成します。
@@ -153,9 +158,9 @@ Azure ポータルで、ポータル ダッシュボードにピン留めされ�
 
 ![ダッシュボード](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
-監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../log-analytics/index.yml)をご覧ください。
+監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント][log-analytics-docs]をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、OMS で クラスターを監視しました。 次のタスクを行いました。
 
@@ -167,4 +172,14 @@ Azure ポータルで、ポータル ダッシュボードにピン留めされ�
 次のチュートリアルに進んで、Kubernetes の新しいバージョンへのアップグレードについて学習してください。
 
 > [!div class="nextstepaction"]
-> [Kubernetes のアップグレード](./tutorial-kubernetes-upgrade-cluster.md)
+> [Kubernetes のアップグレード][aks-tutorial-upgrade]
+
+<!-- LINKS - external -->
+[kubernetes-daemonset]: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+
+<!-- LINKS - internal -->
+[aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
+[log-analytics-containers]: ../log-analytics/log-analytics-containers.md
+[log-analytics-docs]: ../log-analytics/index.yml

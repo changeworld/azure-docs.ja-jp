@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 12/15/2017
 ms.author: mahender; mblythe
-ms.openlocfilehash: efa5a50564d94dbecd4bc7fcb4082b01d16f680d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7482ca27c2edcb281180fb8fbbfb1884a515d379
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
@@ -34,7 +34,7 @@ API をエクスポートする前に、OpenAPI 定義 (以前は [Swagger](http
 
 API 定義をエクスポートするには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com) で、Azure Functions または App Service アプリケーションに移動します。
+1. [Azure Portal](https://portal.azure.com) で、Azure Functions または別の App Service アプリケーションに移動します。
 
     Azure Functions を使用している場合、関数アプリを選択して、**[プラットフォーム機能]**、**[API 定義]** の順に選択します。
 
@@ -50,9 +50,9 @@ API 定義をエクスポートするには、次の手順を実行します。
 
 3. **[エクスポート モード]** を選択します。
 
-    **[簡易]** では Azure Portal 内でカスタム コネクタを作成できます。 PowerApps または Microsoft Flow にサインインし、ターゲット環境でコネクタを作成する権限を持っていることが要件です。 これは、その要件が満たされる場合に推奨される方法です。 このモードを使用する場合は、以下に示す「[簡易エクスポートを使用する](#express)」の手順に従ってください。
+    **[簡易]** では Azure Portal 内でカスタム コネクタを作成できます。 PowerApps または Microsoft Flow にサインインし、ターゲット環境でコネクタを作成する権限を持っていることが要件です。 これは、これら 2 つの要件が満たされる場合に推奨される方法です。 このモードを使用する場合は、以下に示す「[簡易エクスポートを使用する](#express)」の手順に従ってください。
 
-    **手動** では、PowerApps または Microsoft Flow のポータルを使用してインポートする API 定義をエクスポートできます。 これは、Azure ユーザーとコネクタを作成するためのアクセス許可を持つユーザーが異なる場合や、コネクタを別のテナントで作成する必要がある場合に推奨される方法です。 このモードを使用する場合は、以下に示す「[手動エクスポートを使用する](#manual)」の手順に従ってください。
+    **手動** では、PowerApps または Microsoft Flow のポータルを使用してインポートする API 定義をエクスポートできます。 これは、Azure ユーザーとコネクタを作成するためのアクセス許可を持つユーザーが異なる場合や、コネクタを別の Azure テナントで作成する必要がある場合に推奨される方法です。 このモードを使用する場合は、以下に示す「[手動エクスポートを使用する](#manual)」の手順に従ってください。
 
     ![エクスポート モード](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 
@@ -68,7 +68,7 @@ API 定義をエクスポートするには、次の手順を実行します。
 
 2. 次の表で指定されている設定を使用してください。
 
-    |設定|Description|
+    |設定|[説明]|
     |--------|------------|
     |**Environment**|カスタム コネクタの保存先の環境を選択します。 詳細については、「[環境の概要](https://powerapps.microsoft.com/tutorials/environments-overview/)」を参照してください。|
     |**カスタム API 名**|名前を入力すると、PowerApps および Microsoft Flow ビルダーがコネクタ一覧に表示されます。|
@@ -76,7 +76,7 @@ API 定義をエクスポートするには、次の手順を実行します。
  
     ![PowerApps および Microsoft Flow への簡易エクスポート](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. **[OK]**をクリックします。 カスタム コネクタがビルドされ、指定した環境に追加されました。
+3. Click **OK**. カスタム コネクタがビルドされ、指定した環境に追加されました。
 
 Azure Functions を使って**簡易**モードを使用する例については、「[PowerApps から関数を呼び出す](functions-powerapps-scenario.md)」と「[Microsoft Flow から関数を呼び出す](functions-flow-scenario.md)」をご覧ください。
 
@@ -95,21 +95,25 @@ Azure Functions を使って**簡易**モードを使用する例については
 
     この例では、OpenAPI 定義に含まれた API キーのセキュリティ定義を示します。
 
-API 定義をエクスポートしたので、この定義をインポートして PowerApps および Microsoft Flow にカスタム コネクタを作成します。 以下の例では PowerApps を使用していますが、カスタム コネクタは 2 つのサービスの間で共有されるので、定義をインポートする必要があるのは 1 回だけです。
+API 定義をエクスポートしたので、この定義をインポートして PowerApps および Microsoft Flow にカスタム コネクタを作成します。 カスタム コネクタは 2 つのサービスの間で共有されるので、定義をインポートする必要があるのは 1 回だけです。
 
 PowerApps と Microsoft Flow に API 定義をインポートするには、次の手順に従います。
 
-1. [web.powerapps.com](https://web.powerapps.com)または[flow.microsoft.com](https://flow.microsoft.com/)にサインインします。 
+1. [powerapps.com](https://web.powerapps.com) または [flow.microsoft.com](https://flow.microsoft.com) に移動します。
 
-2. ページの右上にある **[設定]** ボタン (歯車アイコン) をクリックし、**[カスタム コネクタ]** を選びます。
+2. 右上にある歯車アイコンをクリックし、**[カスタム コネクタ]** をクリックします。
 
-    ![カスタム コネクタ](media/app-service-export-api-to-powerapps-and-flow/custom-connectors.png)
+   ![サービスの歯車アイコン](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
 
-3. **[Create custom connector]**\(カスタム コネクタの作成\) をクリックします。
+3. **[カスタム コネクタの作成]**、**[Import an OpenAPI definition]\(OpenAPI 定義のインポート\)** の順にクリックします。
 
-4. **[全般]** タブで API の名前を指定し、OpenAPI 定義をアップロードするか、メタデータの URL に貼り付けます。 **[アップロード]**、**[続行]** の順にクリックします。
+   ![カスタム コネクタの作成](media/app-service-export-api-to-powerapps-and-flow/flow-apps-create-connector.png)
 
-    ![[全般] タブ](media/app-service-export-api-to-powerapps-and-flow/tab-general.png)
+4. カスタム コネクタの名前を入力し、エクスポートした OpenAPI 定義に移動して、**[続行]** をクリックします。
+
+   ![OpenAPI 定義のアップロード](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
+
+4. **[全般]** タブで、OpenAPI 定義から取得される情報を確認します。
 
 5. **[セキュリティ]** タブで、認証の種類に適した値を入力します。 **[続行]**をクリックします。
 

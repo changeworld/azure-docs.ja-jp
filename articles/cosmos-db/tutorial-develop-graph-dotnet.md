@@ -1,9 +1,9 @@
 ---
 title: "Azure Cosmos DB: .NET での Graph API を使用した開発 | Microsoft Docs"
-description: ".NET を使用した Azure Cosmos DB の DocumentDB API による開発方法について"
+description: ".NET を使用した Azure Cosmos DB の SQL API による開発方法について"
 services: cosmos-db
 documentationcenter: 
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: 
 ms.assetid: cc8df0be-672b-493e-95a4-26dd52632261
@@ -12,19 +12,19 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 05/10/2017
-ms.author: denlee
+ms.date: 01/02/2018
+ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 613956416d35687c5f2fe0123a9a59182390b440
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ddbfe11e4415e1c240914142f4daf54b3032f5d8
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: .NET での Graph API を使用した開発
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このチュートリアルでは、Azure Portal を使用した Azure Cosmos DB アカウントの作成方法とグラフ データベースおよびコンテナーの作成方法を説明します。 その後、アプリケーションで、[Graph API](graph-sdk-dotnet.md) (プレビュー) を使用して 4 名のユーザーからなる単純なソーシャル ネットワークを作成し、Gremlin を使用してグラフのトラバーサルとクエリを行います。
+このチュートリアルでは、Azure Portal を使用した Azure Cosmos DB アカウントの作成方法とグラフ データベースおよびコンテナーの作成方法を説明します。 その後、アプリケーションで、[Graph API](graph-sdk-dotnet.md) を使用して 4 名のユーザーからなる単純なソーシャル ネットワークを作成し、Gremlin を使用してグラフのトラバーサルとクエリを行います。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -43,8 +43,8 @@ Gremlin は、書き込み操作 (DML)、クエリ操作、およびトラバー
 ## <a name="prerequisites"></a>前提条件
 以下のものがそろっていることを確認してください。
 
-* アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
-    * また、このチュートリアルには、[Azure DocumentDB Emulator](local-emulator.md) を使用することもできます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
+    * また、このチュートリアルには、[ローカル エミュレーター](local-emulator.md)を使用することもできます。
 * [Visual Studio](http://www.visualstudio.com/)。
 
 ## <a name="create-database-account"></a>データベース アカウントを作成する
@@ -96,7 +96,7 @@ DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
 
 ## <a id="create-database"></a>データベースを作成する 
 
-ここで、Azure Cosmos DB [データベース](documentdb-resources.md#databases)を作成します。これには、[DocumentDB .NET SDK](documentdb-sdk-dotnet.md)に含まれる **DocumentClient** クラスの [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) メソッドまたは [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) メソッドを使用します。  
+次は、Azure Cosmos DB [データベース](sql-api-resources.md#databases)を作成します。これには、[SQL .NET SDK](sql-api-sdk-dotnet.md) に含まれる **DocumentClient** クラスの [CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) メソッドまたは [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) メソッドを使用します。  
 
 ```csharp 
 Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "graphdb" }); 
@@ -270,7 +270,7 @@ Gremlin を使用すると、さらに複雑なクエリを作成したり、強
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の手順を行いました。
 

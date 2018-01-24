@@ -4,7 +4,7 @@ description: "コード コミットのたびに GitHub から新しい Docker �
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 52408184c8cff53f8bb7006fa940b0db4b900db4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1426b7331b320397184805a6642fe6a57ca6ccb1
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Jenkins、GitHub、Docker を使って Azure 内の Linux VM に開発インフラストラクチャを作成する方法
 アプリケーション開発のビルドおよびテスト フェーズを自動化する場合は、継続的インテグレーション/デプロイ (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -36,12 +36,12 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.22 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="create-jenkins-instance"></a>Jenkins インスタンスを作成する
 [Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 このチュートリアルでは、cloud-init ファイルを使用して、Jenkins と Docker を VM にインストールします。 Jenkins は、広く普及しているオープンソースのオートメーション サーバーで、Azure とシームレスに統合することで、継続的インテグレーション (CI) と継続的配信 (CD) が可能になります。 Jenkins の使用方法に関する詳しいチュートリアルについては、[Azure ハブでの Jenkins](https://docs.microsoft.com/azure/jenkins/) に関する記事をご覧ください。
 
-現在のシェルで、*cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 `sensible-editor cloud-init-jenkins.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
+現在のシェルで、*cloud-init-jenkins.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 `sensible-editor cloud-init-jenkins.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -117,11 +117,10 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 Web ブラウザーを開いて､`http://<publicIps>:8080` に移動します｡ 次のようにして Jenkins の初期設定を行います｡
 
-- 前の手順で VM から入手した *initialAdminPassword* を入力します｡
-- **[Select plugins to install]** を選択します。
-- 最上部にあるテキスト ボックスで *GitHub* を検索し、*GitHub プラグイン* を選択して、**[インストール]** を選択します。
-- 必要に応じてフォームに必要事項を入力して､Jenkins ユーザー アカウントを作成します｡ セキュリティの観点からは､既定の管理者アカウントを使い続けずに､ここで最初の Jenkins ユーザーを作成します｡
-- 完了したら、**[Start using Jenkins]** を選択します。
+- ユーザー名 **admin** を入力し、前の手順で VM から入手した *initialAdminPassword* を入力します。
+- **[Jenkins の管理]**、**[プラグインの管理]** の順に選択します。
+- **[使用可能]** を選択し、上部のテキスト ボックスで *GitHub* を検索します。 "*GitHub プラグイン*" のボックスをオンにし、**[Download now and install after restart]\(ダウンロードして再起動後にインストール\)** を選択します。
+- **[Restart Jenkins when installation is complete and no jobs are running]\(インストールが完了してジョブが実行されていないときに Jenkins を再起動\)** のチェック ボックスをオンにし、プラグインのインストール プロセスが完了するまで待ちます。
 
 
 ## <a name="create-github-webhook"></a>GitHub webhook を作成する
@@ -144,10 +143,10 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 Jenkins Web サイトのホームページから **[Create new jobs]** を選択します。
 
 - ジョブ名として *HelloWorld* を入力します｡ **Freestyle プロジェクト**を選択し､**[OK]** をクリックします｡
-- [**General**] セクションから **GitHub** プロジェクトを選択し､フォークしたレポジトリの URL (例: *https://github.com/iainfoulds/nodejs-docs-hello-world*) を入力します｡
-- [**Source code management**] セクションから**Git** を選択し､フォークしたレポジトリ *.git* の URL を入力します(例: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*)｡
-- [**Build Triggers**] セクションから **GitHub hook trigger for GITscm polling** を選択します｡
-- **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **Execute shell** を選択し､コマンド ウィンドウに `echo "Testing"` を入力します｡
+- **[General]** セクションから **GitHub** プロジェクトを選択し､フォークしたレポジトリの URL (例: *https://github.com/iainfoulds/nodejs-docs-hello-world*) を入力します｡
+- **[Source code management]** セクションから**Git** を選択し､フォークしたレポジトリ *.git* の URL を入力します(例: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*)｡
+- **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します｡
+- **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **[Execute shell]** を選択し、コマンド ウィンドウに `echo "Testing"` を入力します。
 - ジョブ ウィンドウの下部にある **[保存]** を選択します。
 
 
@@ -162,19 +161,19 @@ response.end("Hello World!");
 
 変更をコミットするには、下部にある **[変更をコミット]** ボタンを選択します。
 
-Jenkins ジョブ ページ左下隅の [**Build history**] セクションで新しいビルドが開始されます｡ ビルド番号のリンクを選択し、左側の **[Console output]** を選択します。 GitHub からコードが取り込まれ､ビルド アクションによってコンソールにメッセージ `Testing` が出力されるなどの Jenkins が行った処理を確認できます｡ このように GitHub でコミットが行われるたびに､webhook は Jenkins にアクセスし､新しいビルドをトリガーします｡
+Jenkins ジョブ ページ左下隅の **[Build history]** セクションで新しいビルドが開始されます｡ ビルド番号のリンクを選択し、左側の **[Console output]** を選択します。 GitHub からコードが取り込まれ､ビルド アクションによってコンソールにメッセージ `Testing` が出力されるなどの Jenkins が行った処理を確認できます｡ このように GitHub でコミットが行われるたびに、webhook は Jenkins にアクセスし、新しいビルドをトリガーします。
 
 
 ## <a name="define-docker-build-image"></a>Docker ビルド イメージを定義する
 GitHub のコミットに基づいて Node.js アプリが実行されていることを確認するには､アプリを実行するための Docker イメージをビルドします｡ イメージは､アプリを実行するコンテナーの構成方法を定義した Dockerfile からビルドされます｡ 
 
-VM への SSH 接続から､前の手順で作成したジョブにちなんだ名前の Jenkins ワークスペーディレクトリに切り替えます｡ この例では､名前は *HelloWorld* でした｡
+VM への SSH 接続から､前の手順で作成したジョブにちなんだ名前の Jenkins ワークスペーディレクトリに切り替えます｡ この例では、名前は *HelloWorld* でした。
 
 ```bash
 cd /var/lib/jenkins/workspace/HelloWorld
 ```
 
-このワークスペース ディレクトリに `sudo sensible-editor Dockerfile` という名前のファイルを作成し､次の内容を貼り付けます｡ Dockerfile 全体 (特に最初の行) が正しくコピーされたことを確認してください。
+このワークスペース ディレクトリに `sudo sensible-editor Dockerfile` という名前のファイルを作成し、次の内容を貼り付けます。 Dockerfile 全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 FROM node:alpine
@@ -226,7 +225,7 @@ GitHub 内の *index.js* ファイルをもう一度編集し､変更をコミ�
 ![実行中の Node.js アプリ - GitHub への再コミット後](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、コードのコミットのたびに Jenkins ビルド ジョブを実行し、 Docker コンテナーをデプロイしてアプリを実行するように GitHub を構成しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]

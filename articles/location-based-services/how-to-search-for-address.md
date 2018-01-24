@@ -6,13 +6,13 @@ keywords: "SEO チャンプを確認せずに、キーワードを追加また�
 author: philmea
 ms.author: philmea
 ms.date: 11/29/2017
-ms.topic: how-to
+ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: d928e4ff7c6e35291bcc1e6a1359d54542968278
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 31011dfddaa99881b58ee447502d55acad5ec940
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Azure Location Based Services (プレビュー) Search サービスを使用して住所を見つける方法
 Search サービスは、開発者が住所、場所、関心地点、事業所一覧、およびその他の地理情報を検索するために設計した RESTful API のセットです。 Search サービスでは、特定の住所、交差点、地理的特徴、関心地点に対して緯度/経度を割り当てます。 Search サービスの API から返される緯度と経度の値は、経路および交通量に関する API など、他の Azure Location Based Services のパラメーターとして使用できます。
@@ -44,7 +44,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     | 要求 URL | https://atlas.microsoft.com/search/fuzzy/json? |
     | 承認 | No Auth |
 
-    URL パスの **json** 属性で、応答形式が決定まります。 使いやすく、かつ読みやすいように、この記事では json を使用しています。 使用可能な応答形式については、Location Based Services Functional API のリファレンス「**Get Search Fuzzy (あいまいな検索の取得)**」 (https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchfuzzy) で確認できます。
+    URL パスの **json** 属性で、応答形式が決定まります。 使いやすく、かつ読みやすいように、この記事では json を使用しています。 使用可能な応答形式については、Location Based Services Functional API のリファレンス「**Get Search Fuzzy (あいまいな検索の取得)**」(https://docs.microsoft.com/rest/api/location-based-services/search/getsearchfuzzy) で確認できます。
 
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
 
@@ -156,7 +156,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     |-----|------------|
     | number | true |
 
-    [number](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが要求と共に送信された場合、通りの側 (左/右) とその数値からのオフセット位置を応答に含めることができます。
+    [number](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが要求と共に送信された場合、通りの側 (左/右) とその数値からのオフセット位置を応答に含めることができます。
     
 5. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
@@ -164,7 +164,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     |-----|------------|
     | spatialKeys | true |
 
-    [spatialKeys](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には指定された場所の所有地理空間キーの情報が含まれます。
+    [spatialKeys](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には指定された場所の所有地理空間キーの情報が含まれます。
 
 6. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
@@ -172,7 +172,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     |-----|------------|
     | returnSpeedLimit | true |
     
-    [returnSpeedLimit](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には公示されている速度制限が返されます。
+    [returnSpeedLimit](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には公示されている速度制限が返されます。
 
 7. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
@@ -180,7 +180,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     |-----|------------|
     | returnRoadUse | true |
 
-    [returnRoadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には番地レベルで逆引き地理コードの道路用途の配列が返されます。
+    [returnRoadUse](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターが設定された場合、応答には番地レベルで逆引き地理コードの道路用途の配列が返されます。
 
 8. 次のキー/値のペアを **Params** セクションに追加し、**[送信]** をクリックします。
 
@@ -188,7 +188,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     |-----|------------|
     | roadUse | true |
 
-    [roadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターを使用して、逆引き地理コードのクエリを特定の種類の道路用途に制限できます。
+    [roadUse](https://docs.microsoft.com/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) クエリ パラメーターを使用して、逆引き地理コードのクエリを特定の種類の道路用途に制限できます。
     
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>交差点住所の逆引き検索を使用して交差点を検索する
 
@@ -214,5 +214,5 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     
 4. **[送信]** をクリックして、応答の本体を確認します。 
 
-## <a name="next-steps"></a>次のステップ
-- [Azure Location Based Serices の Search サービス](https://docs.microsoft.com/en-us/rest/api/location-based-services/search) API ドキュメントを確認する 
+## <a name="next-steps"></a>次の手順
+- [Azure Location Based Serices の Search サービス](https://docs.microsoft.com/rest/api/location-based-services/search) API ドキュメントを確認する 

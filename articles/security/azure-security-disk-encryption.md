@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: kakhan
-ms.openlocfilehash: 15ed35ab3a082db3376890992be3a29b6e042a2f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 0ed575283807137f60eca005262cff27388c140f
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows および Linux IaaS VM の Azure ディスク暗号化
 Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。 そのため、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 このドキュメントでは、"Windows および Linux IaaS VM の Azure Disk Encryption" という新しいテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。 ここでは、サポートされているシナリオやユーザー エクスペリエンスを含む、Azure Disk Encryption 機能の使用方法に関する詳細なガイダンスを提供します。
@@ -199,7 +199,7 @@ OS ドライブが暗号化されている場合、Linux のデータ ディス�
   > [!NOTE]
   > セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。
   >
-  >ファイアウォールの内側にある Azure Key Vault を構成してアクセスするには (https://docs.microsoft.com/en-us/azure/key-vault/key-vault-access-behind-firewall)
+  >ファイアウォールの内側にある Azure Key Vault を構成してアクセスするには (https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)
 
 * Azure PowerShell SDK の最新バージョンを使用して、Azure Disk Encryption を構成します。 [Azure PowerShell リリース](https://github.com/Azure/azure-powershell/releases)の最新バージョンをダウンロードしてください。
 
@@ -218,9 +218,9 @@ OS ドライブが暗号化されている場合、Linux のデータ ディス�
 * カスタム グループ ポリシーを使用した、ドメインに参加している仮想マシン上の BitLocker ポリシーには、次の設定を含める必要があります。`Configure user storage of bitlocker recovery information -> Allow 256-bit recovery key`  BitLocker のカスタム グループ ポリシー設定に互換性がない場合、Azure Disk Encryption は失敗します。 正しいポリシー設定がないコンピューターでは、新しいポリシーを適用し、新しいポリシーを強制的に適用して更新し (gpupdate.exe /force)、再起動する処理が必要になる可能性があります。  
 * Azure AD アプリケーションを作成するか、Key Vault を作成するか、または既存の Key Vault をセットアップして暗号化を有効にする場合は、「[Azure Disk Encryption prerequisite PowerShell script](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)」(Azure Disk Encryption の前提条件となる PowerShell スクリプト) をご覧ください。
 * Azure CLI を使用してディスク暗号化の前提条件を構成する場合は、[こちらの Bash スクリプト](https://github.com/ejarvi/ade-cli-getting-started)をご覧ください。
-* Azure Disk Encryption で暗号化が有効になっている場合、暗号化された VM を Azure バックアップ サービスでバックアップおよび復元するには、Azure Disk Encryption のキー構成を使用して VM を暗号化する必要があります。 Backup サービスでは、KEK なしまたは KEK ありの構成を使用して暗号化された VM がサポートされます。 「[暗号化された仮想マシンを Azure Backup 暗号化でバックアップおよび復元する方法](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)」をご覧ください。
+* Azure Disk Encryption で暗号化が有効になっている場合、暗号化された VM を Azure バックアップ サービスでバックアップおよび復元するには、Azure Disk Encryption のキー構成を使用して VM を暗号化する必要があります。 Backup サービスでは、KEK なしまたは KEK ありの構成を使用して暗号化された VM がサポートされます。 「[暗号化された仮想マシンを Azure Backup 暗号化でバックアップおよび復元する方法](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)」をご覧ください。
 
-* Linux OS ボリュームを暗号化する場合、現在、プロセスの終了時には VM の再起動が必要な点に注意してください。 この処理は、ポータル、PowerShell、または CLI で実行できます。   暗号化の進行状況を追跡するには、Get-AzureRmVMDiskEncryptionStatus から返されたステータス メッセージが定期的にポーリングされます (https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus)。  暗号化が完了すると、このコマンドで返されるステータス メッセージで示されます。  たとえば、"ProgressMessage: OS disk successfully encrypted, please reboot the VM" (ProgressMessage: OS ディスクの暗号化が完了しました。VM を再起動してください) と表示されます。このときに、VM を再起動して使用することができます。  
+* Linux OS ボリュームを暗号化する場合、現在、プロセスの終了時には VM の再起動が必要な点に注意してください。 この処理は、ポータル、PowerShell、または CLI で実行できます。   暗号化の進行状況を追跡するには、Get-AzureRmVMDiskEncryptionStatus から返されたステータス メッセージが定期的にポーリングされます (https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus)。  暗号化が完了すると、このコマンドで返されるステータス メッセージで示されます。  たとえば、"ProgressMessage: OS disk successfully encrypted, please reboot the VM" (ProgressMessage: OS ディスクの暗号化が完了しました。VM を再起動してください) と表示されます。このときに、VM を再起動して使用することができます。  
 
 * Linux 用 Azure Disk Encryption の場合、暗号化前に、Linux にマウントされているファイル システムがあるデータ ディスクを用意する必要があります。
 
@@ -379,7 +379,7 @@ Azure AD アプリケーションには、Vault 内のキーまたはシーク�
 | --- | --- |
 | Azure AD | Azure AD とは [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) のことです。 Azure AD アカウントは、Key Vault のシークレットの認証、格納、および取得を行うための前提条件です。 |
 | Azure Key Vault | Key Vault は、Federal Information Processing Standards (FIPS) に照らして検証されたハードウェア セキュリティ モジュールに基づく、暗号化キー管理サービスです。Key Vault は暗号化キーと機密性の高い情報を保護するために役立ちます。 詳しくは、「[Key Vault](https://azure.microsoft.com/services/key-vault/)」のドキュメントをご覧ください。 |
-| ARM | Azure リソース マネージャー |
+| ARM | Azure Resource Manager |
 | BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) は、Windows IaaS VM でディスク暗号化を有効にするために使用される業界公認の Windows ボリューム暗号化テクノロジです。 |
 | BEK | BitLocker 暗号化キーは、OS ブート ボリュームとデータ ボリュームの暗号化に使用されます。 BitLocker キーは、Key Vault でシークレットとして保護されます。 |
 | CLI | [Azure コマンド ライン インターフェイス](../cli-install-nodejs.md)に関する記事をご覧ください。 |
@@ -395,8 +395,8 @@ Key Vault を作成するには、次のオプションのいずれかを使用�
 
 * ["101-Key-Vault-Create" Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 * [Azure PowerShell の Key Vault コマンドレット](/powershell/module/azurerm.keyvault/#key_vault)
-* Azure リソース マネージャー
-* [キー コンテナーをセキュリティで保護する](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-secure-your-key-vault)方法
+* Azure Resource Manager
+* [キー コンテナーをセキュリティで保護する](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)方法
 
 > [!NOTE]
 > サブスクリプションの Key Vault を既にセットアップしている場合は、次のセクションに進んでください。
@@ -448,7 +448,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
 
 次の表は、Azure AD のクライアント ID を使用して Marketplace シナリオから作成された新しい VM に対する、Resource Manager テンプレートのパラメーターをまとめたものです。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | adminUserName | 仮想マシンの管理者ユーザー名。 |
 | adminPassword | 仮想マシンの管理者ユーザー パスワード。 |
@@ -483,7 +483,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
 
 次の表は、暗号化された VHD に対する Resource Manager テンプレートのパラメーターをまとめたものです。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | newStorageAccountName | 暗号化された OS VHD を格納するためのストレージ アカウントの名前。 このストレージ アカウントは、VM と同じリソース グループおよび同じ場所に既に作成されている必要があります。 |
 | osVhdUri | ストレージ アカウントからの OS VHD の URI。 |
@@ -540,7 +540,7 @@ Azure 内にある既存または実行中の IaaS Windows VM でのディスク
 
 次の表は、Azure AD のクライアント ID を使用する既存または実行中の VM に対する、Resource Manager テンプレートのパラメーターをまとめたものです。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | AADClientID | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント ID。 |
 | AADClientSecret | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント シークレット。 |
@@ -590,7 +590,7 @@ Azure 内にある既存または実行中の IaaS Linux VM でのディスク�
 
 次の表は、Azure AD のクライアント ID を使用する既存または実行中の VM に対する、Resource Manager テンプレートのパラメーターをまとめたものです。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 | --- | --- |
 | AADClientID | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント ID。 |
 | AADClientSecret | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント シークレット。 |
@@ -709,7 +709,7 @@ Linux VM の場合は、[Disable encryption on a running Linux VM](https://aka.m
 
 次の表は、実行中の IaaS VM での暗号化を無効にするための、Resource Manager テンプレートのパラメーターをまとめたものです。
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | vmName | 暗号化操作が実行される VM の名前。
 | volumeType | 暗号化解除操作が実行されるボリュームの種類。 有効な値は _OS_、_Data_、および _All_ です。 _Data_ ボリュームの暗号化を無効にせずに、実行中の Windows IaaS VM の OS (ブート) ボリュームの暗号化を無効にすることはできません。 また、Linux VM では、OS ディスクの暗号化を無効にすることは許可されていません。 |
@@ -851,7 +851,7 @@ OS のパーティションを圧縮して、BitLocker のコンピューター�
     OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
     ProgressMessage            : OS disk successfully encrypted, reboot the VM
     ```
-再起動する前に、VM の[ブート診断](https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/)を保存することをお勧めします。
+再起動する前に、VM の[ブート診断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)を保存することをお勧めします。
 
 #### <a name="monitoring-os-encryption-progress"></a>OS 暗号化の進行状況の監視
 OS 暗号化の進行状況を監視するには、次の 3 つの方法があります。
@@ -885,7 +885,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
  ![VM インスタンス ビュー](./media/azure-security-disk-encryption/vm-instanceview.png)
 
-* [ブート診断](https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/)を調べる。 ADE 拡張機能のメッセージには、頭に `[AzureDiskEncryption]` が付きます。
+* [ブート診断](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/)を調べる。 ADE 拡張機能のメッセージには、頭に `[AzureDiskEncryption]` が付きます。
 
 * SSH を使用して VM にサインインし、拡張機能ログを取得する。
 
@@ -917,7 +917,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
  ![Ubuntu 16.04 のセットアップ](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. [こちらの手順](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+6. [こちらの手順](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 次の手順に従って、暗号化に関する Azure との連携を構成します。
 
@@ -995,7 +995,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
  ![openSUSE 13.2 のセットアップ](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
-3. 「[Azure 用の SLES または openSUSE 仮想マシンの準備](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+3. 「[Azure 用の SLES または openSUSE 仮想マシンの準備](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 暗号化に関する Azure との連携を構成するには、次の操作を行います。
 1. /etc/dracut.conf を編集し、次の行を追加します。
@@ -1071,7 +1071,7 @@ OS 暗号化の進行状況を監視するには、次の 3 つの方法があ�
 
  ![CentOS 7 のセットアップ](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
-5. 「[Azure 用の CentOS ベースの仮想マシンの準備](https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)」の「CentOS 7.0+」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
+5. 「[Azure 用の CentOS ベースの仮想マシンの準備](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)」の「CentOS 7.0+」の手順に従って、VM を Azure にアップロードするための準備をします。 最後の手順 (VM のプロビジョニング解除) はまだ実行しないでください。
 
 6. これで、VM をプロビジョニング解除し、Azure に [VHD をアップロード](#upload-encrypted-vhd-to-an-azure-storage-account)できるようになります。
 

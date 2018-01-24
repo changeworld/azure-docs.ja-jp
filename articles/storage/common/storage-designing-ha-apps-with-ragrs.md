@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 9/06/2017
+ms.date: 12/11/2017
 ms.author: tamram
-ms.openlocfilehash: 4100e8b90e37d6f4ab5123dfd682452c21c77998
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe7c6d1f2530b43ac7b10c5b6b0723452452a97a
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
@@ -26,7 +26,7 @@ Azure Storage のようなクラウドベースのインフラストラクチャ
 
 Azure Storage では、ストレージ アカウントのデータの冗長性に対して次の 4 つの選択肢が提供されています。
 
-– LRS (ローカル冗長ストレージ)
+- LRS (ローカル冗長ストレージ)
 - ZRS (ゾーン冗長ストレージ) 
 - GRS (geo 冗長ストレージ)
 - RA-GRS (読み取りアクセス geo 冗長ストレージ)。 
@@ -208,8 +208,8 @@ RA-GRS は、プライマリ リージョンからセカンダリ リージョ�
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | トランザクション A: <br> 従業員エンティティを <br> プライマリに挿入する |                                   |                    | トランザクション A はプライマリに挿入されていますが、<br> まだレプリケートされていません。 |
 | T1       |                                                            | トランザクション A が <br> セカンダリに<br> レプリケートされる | T1 | トランザクション A がセカンダリにレプリケートされ、 <br>最後の同期時刻が更新されます。    |
-| T2       | トランザクション B:<br>更新<br> プライマリの<br> 従業員エンティティ  |                                | T1                 | トランザクション B はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
-| T3       | トランザクション C:<br> プライマリの <br>管理者<br>ロール エンティティの<br>更新 |                    | T1                 | トランザクション C はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
+| T2       | トランザクション B:<br>プライマリの<br> プライマリの<br> 従業員エンティティ  |                                | T1                 | トランザクション B はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
+| T3       | トランザクション C:<br> プライマリの <br>administrator<br>ロール エンティティの<br>更新 |                    | T1                 | トランザクション C はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
 | *T4*     |                                                       | トランザクション C が <br>セカンダリに<br> レプリケートされる | T1         | トランザクション C はセカンダリにレプリケートされています。<br>トランザクション B がレプリケートされていないため、 <br>最後の同期時刻はまだ更新されていません。|
 | *T5*     | セカンダリからの <br>エンティティの読み取り                           |                                  | T1                 | トランザクション B がまだレプリケート <br> されていないので、従業員エンティティは <br> 古い値になります。 トランザクション C が既にレプリケートされているため、<br> 管理者ロール エンティティは<br> 新しい値になります。 トランザクション B がレプリケートされていないので、<br> 最後の同期時刻は<br> まだ更新されていません。 管理者ロール エンティティの日時が<br>最後の同期時刻よりも新しいことから、 <br>このエンティティが不整合な状態である <br>ことがわかります。 |
 | *T6*     |                                                      | トランザクション B が<br> セカンダリに<br> レプリケートされる | T6                 | *T6* – C までのすべてのトランザクションが <br>レプリケートされ、最後の同期時刻が<br> 更新されます。 |
@@ -238,7 +238,7 @@ static function OnBeforeResponse(oSession: Session) {
 
 アプリケーションを読み取り専用モードに切り替えるためのしきい値を構成可能にしている場合は、運用環境以外のトランザクション ボリュームを使って動作をテストしやすくなります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 読み取りアクセス geo 冗長性に関する詳細と、LastSyncTime の設定方法のその他の例については、「[Windows Azure Storage Redundancy Options and Read Access Geo-Redundant Storage (Windows Azure Storage の冗長オプションと読み取りアクセス geo 冗長ストレージ)](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)」をご覧ください。
 

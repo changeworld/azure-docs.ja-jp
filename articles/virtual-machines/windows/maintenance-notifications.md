@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: zivr
-ms.openlocfilehash: b0103acf1e407a6a198159fad227b7ccc25052d2
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: d6d8507508ef1946c1dfa41c47ae81f51c0ad4ef
+ms.sourcegitcommit: 8fc9b78a2a3625de2cecca0189d6ee6c4d598be3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 12/29/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Windows 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -32,8 +32,8 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 再起動が必要な計画済みメンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
 
-- 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 通知の受信者、および電子メール、SMS、webhook などのメッセージング オプションを、Azure [アクティビティ ログ アラート](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)を使用して通知に追加できます。  
-- 通知の時点で、"*セルフサービス期間*" が使用できるようになります。 この期間中は、このウェーブに含まれている仮想マシンを確認し、自身のスケジュールのニーズに従って、プロアクティブにメンテナンスを開始できます。
+- 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 Azure [アクティビティ ログ アラート](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)を使用して、通知の受信者、および電子メール、SMS、webhook などのメッセージング オプションを通知に追加できます。  
+- 通知の時点で、"*セルフサービス期間*" が使用できるようになります。 この期間中は、この段階に含まれている仮想マシンを確認し、自身のスケジュールのニーズに従って、プロアクティブにメンテナンスを開始できます。
 - セルフサービス期間が過ぎると、"*予定メンテナンス期間*" が始まります。 この期間のある時点で、Azure は、仮想マシンに対して必要なメンテナンスをスケジュールし、適用します。 
 
 2 つの期間を用意した目的は、Azure によってメンテナンスが自動的に開始される時期を把握した上で、メンテナンスを開始して仮想マシンを再起動するのに必要な時間を十分に確保できるようにすることにあります。
@@ -56,9 +56,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 セルフサービス メンテナンスは、**可用性セット**を使用したデプロイにはお勧めしません。可用性セットは高可用性セットアップであるため、常に 1 つの更新ドメインしか影響を受けないためです。 
     - Azure によってメンテナンスがトリガーされるようにしますが、更新ドメインへの影響が必ずしも順番に生じるわけではないこと、また、更新ドメインと更新ドメインの間に 30 分間の一時停止が発生することに注意してください。
-    - 一部の容量の一時的な損失 (1/更新ドメイン数) が問題になる場合は、メンテナンス期間中に追加インスタンスを割り当てることで簡単に補正できます。 
-
-セルフサービス メンテナンスは、次のシナリオでは使用**しない**でください。 
+    - 一部の容量の一時的な損失 (1/更新ドメイン数) が問題になる場合は、メンテナンス期間中に追加インスタンスを割り当てることで簡単に補正できます。セルフサービス メンテナンスは、次のシナリオでは使用**しない**でください。 
     - 手動で、DevTest ラボを使用して、自動シャットダウンを使用して、またはスケジュールに従って、VM を頻繁にシャットダウンする場合。これにより、メンテナンス状態が元に戻り、追加のダウンタイムが発生する可能性があります。
     - VM の有効期間が短く、メンテナンス段階の終了前に削除されることがわかっている場合。 
     - ワークロードの状態の多くが、更新時に保持する必要があるローカル (一時) ディスクに格納されている場合。 
@@ -71,7 +69,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
     - 正確なメンテナンス期間を、管理担当またはエンド ユーザーのお客様に伝える必要がある。 
     - 日時を指定して、メンテナンスを完了する必要がある。 
     - メンテナンスのシーケンスを制御する必要がある (安全な復旧を保証する多層アプリケーションなど)。
-    - 2 つの更新ドメイン (UD) の間に30 分を超える VM 復旧時間が必要である。 更新ドメイン間の時間を制御するには、一度に 1 つの更新ドメイン (UD) に対して、VM でメンテナンスをトリガーする必要があります。
+    - 2 つの更新ドメイン (UD) の間に30 分を超える VM 復旧時間が必要である。 更新ドメイン間の時間を制御するには、一度に 1 つの更新ドメイン (UD) で、VM に対してメンテナンスをトリガーする必要があります。
 
  
 
@@ -81,20 +79,20 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 Azure Powershell を使用して、VM のメンテナンスの予定を確認することもできます。 計画済みメンテナンスに関する情報は、[Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
  
-計画済みメンテナンスがある場合にのみ、メンテナンス情報が返されます。 VM に影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
+計画メンテナンスがある場合にのみ、メンテナンス情報が返されます。 VM に影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
 
 ```powershell
 Get-AzureRmVM -ResourceGroupName rgName -Name vmName -Status
 ```
 
 MaintenanceRedeployStatus では、次のプロパティが返されます。 
-| 値 | 説明   |
+| 値 | [説明]   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 ||
 | PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 ||
 | PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 ||
-| MaintenanceWindowStartTime            | VM に対してメンテナンスを開始できる場合、予定メンテナンス期間の始まりです。 ||
-| MaintenanceWindowEndTime              | VM に対してメンテナンスを開始できる場合、予定メンテナンス期間の終わりです。 ||
+| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンスの始まりです。 ||
+| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 ||
 | LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 ||
 
 
@@ -117,7 +115,8 @@ function MaintenanceIterator
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
-        $rg = $rgList[$rgIdx]        $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+        $rg = $rgList[$rgIdx]        
+    $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
@@ -184,7 +183,7 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 **Q: 仮想マシンの再起動にはどれくらいの時間がかかりますか?**
 
-**A:** VM のサイズによっては、再起動に最大数分かかることがあります。 Cloud Services (Web/worker ロール)、VM Scale Sets、または可用性セットを使用している場合、VM の各グループ (UD) 間に 30 分の間隔が空けられます。 
+**A:** セルフサービス メンテナンス期間中、VM のサイズによっては、再起動に最大数分かかることがあります。 予定メンテナンス期間中の Azure によって開始される再起動の場合は、再起動に通常約 25 分かかります。 Cloud Services (Web/worker ロール)、VM Scale Sets、または可用性セットを使用している場合、予定メンテナンス期間中は VM の各グループ (UD) 間に 30 分の間隔が空けられます。 
 
 **Q: Cloud Services (Web/worker ロール)、Service Fabric、および VM Scale Sets ではどのように動作しますか?**
 
@@ -215,6 +214,6 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 **A:** 可用性セット内の複数のインスタンスを更新するために、短時間に連続してクリックすると、Azure は、こうした要求をキューに登録し、一度に 1 つの更新ドメイン (UD) でのみ VM の更新を開始します。 ただし、更新ドメイン間では一時停止が発生する可能性があるため、更新は時間がかかっているように見えます。 更新キューの時間が 60 分を超える場合、インスタンスの中には、適切に更新されていても、**スキップ済み**状態が表示されるものがあります。 この正しくない状態を回避するには、可用性セットを更新するときに、1 つの可用性セット内のインスタンスのみをクリックし、その VM で更新が完了するのを待ってから、別の更新ドメインで次の VM をクリックします。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [スケジュールされたイベント](scheduled-events.md) を使用して VM でメンテナンス イベントを登録する方法を説明します。

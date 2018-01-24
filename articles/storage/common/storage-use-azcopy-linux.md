@@ -12,16 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 28/9/2017
+ms.date: 12/11/2017
 ms.author: seguler
-ms.openlocfilehash: e73a2424d3eb633f6bec63189786a67161750d4f
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 2fd89684176cd832b656dae8c8f94a6f1ccbbbe8
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
-AzCopy on Linux は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure の Blob Storage および File Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。
+
+AzCopy は、最適なパフォーマンスのシンプルなコマンドを使用して Microsoft Azure BLOB、ファイル、およびテーブルの各ストレージとの間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
 
 ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Linux は .NET Core Framework を使って構築されています。その対象プラットフォームは Linux で、POSIX スタイルのコマンド ライン オプションが備わっています。 [AzCopy on Windows](../storage-use-azcopy.md) は .NET Framework を使って構築され、Windows スタイルのコマンド ライン オプションが備わっています。 この記事では AzCopy on Linux について説明します。
 
@@ -30,7 +31,7 @@ AzCopy on Linux は、最適なパフォーマンスの単純なコマンドを�
 
 この記事には、Ubuntu のさまざまなリリース用のコマンドが含まれています。  `lsb_release -a` コマンドを使用して、配布リリースおよびコードネームをご確認ください。 
 
-AzCopy on Linux では、.NET Core Framework (バージョン 1.1.x) がプラットフォームに存在している必要があります。 [.NET Core](https://www.microsoft.com/net/download/linux) ページのインストール手順を参照してください。
+AzCopy on Linux では、.NET Core Framework (バージョン 2.0) がプラットフォームに存在している必要があります。 [.NET Core](https://www.microsoft.com/net/download/linux) ページのインストール手順を参照してください。
 
 例として、.NET Core を Ubuntu 16.04 にインストールしてみましょう。 最新のインストール ガイドについては、[.NET Core on Linux](https://www.microsoft.com/net/download/linux) のインストール ページを参照してください。
 
@@ -40,7 +41,7 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 sudo apt-get update
-sudo apt-get install dotnet-dev-1.1.4
+sudo apt-get install dotnet-sdk-2.0.2
 ```
 
 .NET Core をインストールしたら、AzCopy をダウンロードしてインストールします。
@@ -68,22 +69,20 @@ azcopy --source <source> --destination <destination> [Options]
 
 ```azcopy
 azcopy \
-    --source https://myaccount.blob.core.windows.net/mycontainer \
-    --destination /mnt/myfiles \
-    --source-key <key> \
-    --include "abc.txt"
+    --source https://myaccount.blob.core.windows.net/mycontainer/abc.txt \
+    --destination /mnt/myfiles/abc.txt \
+    --source-key <key> 
 ```
 
-フォルダー `/mnt/myfiles` が存在しない場合、AzCopy によってフォルダーが作成され、この新しいフォルダーに `abc.txt ` がダウンロードされます。
+フォルダー `/mnt/myfiles` が存在しない場合、AzCopy によってフォルダーが作成され、この新しいフォルダーに `abc.txt ` がダウンロードされます。 
 
 ### <a name="download-single-blob-from-secondary-region"></a>セカンダリ リージョンから 1 つの BLOB をダウンロードする
 
 ```azcopy
 azcopy \
-    --source https://myaccount-secondary.blob.core.windows.net/mynewcontainer \
-    --destination /mnt/myfiles \
-    --source-key <key> \
-    --include "abc.txt"
+    --source https://myaccount-secondary.blob.core.windows.net/mynewcontainer/abc.txt \
+    --destination /mnt/myfiles/abc.txt \
+    --source-key <key>
 ```
 
 地理冗長ストレージに対応する読み取りアクセス権を持っている必要があります。
@@ -189,10 +188,9 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source /mnt/myfiles \
-    --destination https://myaccount.blob.core.windows.net/mycontainer \
-    --dest-key <key> \
-    --include "abc.txt"
+    --source /mnt/myfiles/abc.txt \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/abc.txt \
+    --dest-key <key>
 ```
 
 存在しない宛先コンテナーを指定すると、AzCopy によってコンテナーが作成され、そのコンテナーにファイルがアップロードされます。
@@ -201,10 +199,9 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source /mnt/myfiles \
-    --destination https://myaccount.blob.core.windows.net/mycontainer \
-    --dest-key <key> \
-    --include "abc.txt"
+    --source /mnt/myfiles/abc.txt \
+    --destination https://myaccount.blob.core.windows.net/mycontainer/vd/abc.txt \
+    --dest-key <key>
 ```
 
 存在しない仮想ディレクトリを指定すると、アップロードされるファイルの BLOB 名に仮想ディレクトリが含められます (*例* `vd/abc.txt` 例: 上記の例の)。
@@ -315,11 +312,10 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source https://myaccount.blob.core.windows.net/mycontainer1 \
-    --destination https://myaccount.blob.core.windows.net/mycontainer2 \
+    --source https://myaccount.blob.core.windows.net/mycontainer1/abc.txt \
+    --destination https://myaccount.blob.core.windows.net/mycontainer2/abc.txt \
     --source-key <key> \
-    --dest-key <key> \
-    --include "abc.txt"
+    --dest-key <key>
 ```
 
 --sync-copy オプションを指定せずに 1 つの BLOB をコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
@@ -328,11 +324,10 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source https://sourceaccount.blob.core.windows.net/mycontainer1 \
-    --destination https://destaccount.blob.core.windows.net/mycontainer2 \
+    --source https://sourceaccount.blob.core.windows.net/mycontainer1/abc.txt \
+    --destination https://destaccount.blob.core.windows.net/mycontainer2/abc.txt \
     --source-key <key1> \
-    --dest-key <key2> \
-    --include "abc.txt"
+    --dest-key <key2>
 ```
 
 --sync-copy オプションを指定せずに 1 つの BLOB をコピーすると、[サーバー側でコピー](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-asynchronous-cross-account-copy-blob.aspx)操作が実行されます。
@@ -341,11 +336,10 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1 \
-    --destination https://myaccount2.blob.core.windows.net/mynewcontainer2 \
+    --source https://myaccount1-secondary.blob.core.windows.net/mynewcontainer1/abc.txt \
+    --destination https://myaccount2.blob.core.windows.net/mynewcontainer2/abc.txt \
     --source-key <key1> \
-    --dest-key <key2> \
-    --include "abc.txt"
+    --dest-key <key2>
 ```
 
 地理冗長ストレージに対応する読み取りアクセス権を持っている必要があります。
@@ -354,8 +348,8 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source https://sourceaccount.blob.core.windows.net/mycontainer1 \
-    --destination https://destaccount.blob.core.windows.net/mycontainer2 \
+    --source https://sourceaccount.blob.core.windows.net/mycontainer1/ \
+    --destination https://destaccount.blob.core.windows.net/mycontainer2/ \
     --source-key <key1> \
     --dest-key <key2> \
     --include "abc.txt" \
@@ -392,10 +386,9 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source https://myaccount.file.core.windows.net/myfileshare/myfolder1/ \
-    --destination /mnt/myfiles \
-    --source-key <key> \
-    --include "abc.txt"
+    --source https://myaccount.file.core.windows.net/myfileshare/myfolder1/abc.txt \
+    --destination /mnt/myfiles/abc.txt \
+    --source-key <key>
 ```
 
 指定されたソースが Azure ファイル共有の場合は、厳密なファイル名 (*例*: `abc.txt`) を指定して単一ファイルをダウンロードするか、オプション `--recursive` を指定して共有内の全ファイルを再帰的にダウンロードする必要があります。 ファイル パターンとオプション `--recursive` の両方を同時に指定しようとすると、エラーになります。
@@ -417,10 +410,9 @@ azcopy \
 
 ```azcopy
 azcopy \
-    --source /mnt/myfiles \
-    --destination https://myaccount.file.core.windows.net/myfileshare/ \
-    --dest-key <key> \
-    --include abc.txt
+    --source /mnt/myfiles/abc.txt \
+    --destination https://myaccount.file.core.windows.net/myfileshare/abc.txt \
+    --dest-key <key>
 ```
 
 ### <a name="upload-all-files"></a>すべてのファイルをアップロードする
@@ -543,11 +535,10 @@ azcopy --config-file "azcopy-config.ini"
 
 ```azcopy
 azcopy \
-    --source https://myaccount.blob.core.windows.net/mycontainer1 \
-    --destination https://myaccount.blob.core.windows.net/mycontainer2 \
+    --source https://myaccount.blob.core.windows.net/mycontainer1/abc.txt \
+    --destination https://myaccount.blob.core.windows.net/mycontainer2/abc.txt \
     --source-sas <SAS1> \
-    --dest-sas <SAS2> \
-    --include abc.txt
+    --dest-sas <SAS2>
 ```
 
 コンテナー URI に対して SAS を指定することもできます。
@@ -558,8 +549,6 @@ azcopy \
     --destination /mnt/myfiles \
     --recursive
 ```
-
-現在 AzCopy でサポートされるのは[アカウント SAS](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) だけであることに注意してください。
 
 ### <a name="journal-file-folder"></a>ジャーナル ファイル フォルダー
 AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォルダーまたはこのオプションで指定されたフォルダーにジャーナル ファイルが存在するかどうかを確認します。 どちらの場所にもジャーナル ファイルがない場合は、AzCopy は新しい操作であると認識し、新しいジャーナル ファイルを作成します。
@@ -609,47 +598,12 @@ azcopy \
 ### <a name="specify-the-number-of-concurrent-operations-to-start"></a>開始する同時操作の数の指定
 オプション `--parallel-level` を使用して同時コピー操作の数を指定します。 既定では、AzCopy はデータ転送のスループットを向上するために一定数の同時操作を開始します。 同時実行操作の数は、所有するプロセッサ数の 8 倍になります。 低帯域幅のネットワークで AzCopy を実行している場合は、--parallel-level に少ない数を指定することで、リソースの競合で生じる失敗を回避できます。
 
-[!TIP]
+>[!TIP]
 >AzCopy の全パラメーターを一覧表示するには、"azcopy --help" メニューを確認してください。
 
 ## <a name="known-issues-and-best-practices"></a>既知の問題とベスト プラクティス
-### <a name="error-net-core-is-not-found-in-the-system"></a>エラー: .NET Core がシステムに見つからない
-.NET Core がシステムにインストールされていないことを示すエラーが表示される場合、.NET Core のバイナリ `dotnet` の PATH が欠落している可能性があります。
-
-この問題を解決するには、次のコマンドを使用して、該当する .NET Core バイナリをシステム内で検索します。
-```bash
-sudo find / -name dotnet
-```
-
-このコマンドを実行すると、dotnet バイナリのパスが返されます。 
-
-    /opt/rh/rh-dotnetcore11/root/usr/bin/dotnet
-    /opt/rh/rh-dotnetcore11/root/usr/lib64/dotnetcore/dotnet
-    /opt/rh/rh-dotnetcore11/root/usr/lib64/dotnetcore/shared/Microsoft.NETCore.App/1.1.2/dotnet
-
-次に、そのパスを PATH 変数に追加します。 sudo の場合、secure_path を編集して dotnet バイナリのパスを追加します。
-```bash 
-sudo visudo
-### Append the path found in the preceding example to 'secure_path' variable
-```
-
-この例では、secure_path 変数は次のようになります。
-
-```
-secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/rh/rh-dotnetcore11/root/usr/bin/
-```
-
-現在のユーザーの場合、.bash_profile/.profile を編集して、dotnet バイナリのパスを PATH 変数に追加します。 
-```bash
-vi ~/.bash_profile
-### Append the path found in the preceding example to 'PATH' variable
-```
-
-.NET Core が PATH に追加されていることを確認します。
-```bash
-which dotnet
-sudo which dotnet
-```
+### <a name="error-net-sdk-20-is-not-found-in-the-system"></a>エラー: .NET SDK 2.0 がシステムに見つかりません。
+AzCopy は、バージョン AzCopy 7.0 以降では .NET SDK 2.0 に依存します。 これよりも前のバージョンの AzCopy では .NET Core 1.1 が使用されていました。 .NET Core 2.0 がシステムにインストールされていないというエラーが発生した場合は、[.NET Core のインストール手順](https://www.microsoft.com/net/learn/get-started/linuxredhat)に従ってインストールまたはアップグレードする必要があります。
 
 ### <a name="error-installing-azcopy"></a>AzCopy のインストール中のエラー
 AzCopy のインストールで問題が発生した場合は、抽出した `azcopy` フォルダーにある bash スクリプトを使って AzCopy を実行してみてください。
@@ -667,7 +621,7 @@ AzCopy を使用して BLOB またはファイルをコピーする場合は、�
 ### <a name="run-one-azcopy-instance-on-one-machine"></a>1 つのマシンでは 1 つの AzCopy インスタンスを実行します。
 AzCopy はマシン リソースの利用率を最大限に高めてデータ転送を高速化する設計になっています。1 つのマシンで実行する AzCopy インスタンスは 1 つのみとすること、同時実行操作の数を増やす必要がある場合はオプション `--parallel-level` を指定することをお勧めします。 詳細については、コマンド ラインに「 `AzCopy --help parallel-level` 」と入力してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Storage および AzCopy の詳細については、以下のリソースを参照してください。
 
 ### <a name="azure-storage-documentation"></a>Azure Storage のドキュメント:

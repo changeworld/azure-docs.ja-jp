@@ -3,7 +3,7 @@ title: "Azure Automation での Runbook の出力および メッセージ | Mic
 description: "Azure Automation で Runbook から出力とエラー メッセージを作成および取得する方法を説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 13a414f5-0e2c-4be2-9558-a3e3ec84b6b2
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: d0948f25cbb4f661cee4611fb5f7d4d22c9eeec1
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 415eddaec9702a42ceee51858a39840fcd6a202b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
 
-以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の両方の場合の、Azure 管理ポータルでの各ストリームとその動作の簡単な説明を示します。 各ストリームの詳細については、後続のセクションで説明します。
+以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の両方の場合の、Azure Portal での各ストリームとその動作の簡単な説明を示します。 各ストリームの詳細については、後続のセクションで説明します。
 
-| ストリーム | Description | 公開先 | テスト |
+| ストリーム | [説明] | 公開先 | テスト |
 |:--- |:--- |:--- |:--- |
 | 出力 |他の Runbook によって使用されることを目的とするオブジェクト。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 警告 |ユーザー向けの警告メッセージ。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
@@ -95,15 +95,15 @@ Runbook を発行したら、それを開始する前に、詳細ストリーム
        Write-Output $output
     }
 
-グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook で出力の種類を宣言するには、**[入力と出力]** メニュー オプションを選択し、出力の種類の名前を入力します。  親 Runbook から参照するときに簡単に識別できるように、完全な .NET クラス名を使用することをお勧めします。  これにより、そのクラスのすべてのプロパティが Runbook のデータ バスに公開され、そのプロパティを条件付きロジックやログ記録に使用したり、Runbook 内の他のアクティビティの値として参照したりする際に柔軟性が高まります。<br> ![Runbook Input and Output option](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook で出力の種類を宣言するには、**[入力と出力]** メニュー オプションを選択し、出力の種類の名前を入力します。 親 Runbook から参照するときに簡単に識別できるように、完全な .NET クラス名を使用することをお勧めします。 これにより、そのクラスのすべてのプロパティが Runbook のデータ バスに公開され、そのプロパティを条件付きロジックやログ記録に使用したり、Runbook 内の他のアクティビティの値として参照したりする際に柔軟性が高まります。<br> ![Runbook Input and Output option](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
-次の例には、この機能を説明するために 2 つのグラフィカル Runbook があります。  モジュール式の Runbook デザイン モデルを適用する場合は、" *認証 Runbook テンプレート* " として機能する 1 つの Runbook で、実行アカウントを使用した Azure での認証を管理します。  通常は特定のシナリオを自動化するためのコア ロジックを実行する 2 つ目の Runbook は、ここでは " *認証 Runbook テンプレート* " を実行し、結果を **[テスト]** 出力ウィンドウに表示します。  通常の状況では、この Runbook で子 Runbook からの出力を利用して、リソースに対する操作を行います。    
+次の例には、この機能を説明するために 2 つのグラフィカル Runbook があります。 モジュール式の Runbook デザイン モデルを適用する場合は、"*認証 Runbook テンプレート*" として機能する 1 つの Runbook で、実行アカウントを使用した Azure での認証を管理します。 通常は特定のシナリオを自動化するためのコア ロジックを実行する 2 つ目の Runbook は、ここでは " *認証 Runbook テンプレート* " を実行し、結果を **[テスト]** 出力ウィンドウに表示します。  通常の状況では、この Runbook で子 Runbook からの出力を利用して、リソースに対する操作を行います。    
 
 **AuthenticateTo-Azure** Runbook の基本的なロジックは、次のとおりです。<br> ![Authenticate Runbook Template Example](media/automation-runbook-output-and-messages/runbook-authentication-template.png)時の両方の場合の、Azure 管理ポータルでの各ストリームとその動作の簡単な説明を示します。  
 
 出力の種類は *Microsoft.Azure.Commands.Profile.Models.PSAzureContext* で、認証プロファイルのプロパティが返されます。<br> ![Runbook Output Type Example](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png) 
 
-この Runbook は非常に単純ですが、ここで呼び出す構成項目が 1 つあります。  最後のアクティビティは **Write-Output** コマンドレットを実行し、**Inputobject** パラメーターの PowerShell 式を使用してプロファイル データを $_ 変数に書き込みます。これは、そのコマンドレットに必要です。  
+この Runbook は単純ですが、ここで呼び出す構成項目が 1 つあります。 最後のアクティビティは **Write-Output** コマンドレットを実行し、**Inputobject** パラメーターの PowerShell 式を使用してプロファイル データを $_ 変数に書き込みます。これは、そのコマンドレットに必要です。  
 
 この例の *Test-ChildOutputType* という 2 番目の Runbook には、2 つのアクティビティだけがあります。<br> ![Example Child Output Type Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png) 
 
@@ -111,13 +111,13 @@ Runbook を発行したら、それを開始する前に、詳細ストリーム
 
 結果の出力は、サブスクリプションの名前です。<br> ![Test-ChildOutputType Runbook Results](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
-[出力の種類] コントロールの動作に関して注意が 1 つあります。  入力と出力のプロパティ ブレードで [出力の種類] フィールドに値を入力する場合は、入力後にコントロールの外側をクリックし、入力内容をコントロールに認識させる必要があります。  
+[出力の種類] コントロールの動作に関して注意が 1 つあります。 入力と出力のプロパティ ブレードで [出力の種類] フィールドに値を入力する場合は、入力後にコントロールの外側をクリックし、入力内容をコントロールに認識させる必要があります。  
 
 ## <a name="message-streams"></a>メッセージ ストリーム
 出力ストリームとは異なり、メッセージ ストリームはユーザーに情報を伝えるためのものです。 さまざまな種類の情報向けに複数のメッセージ ストリームがあり、それぞれが異なる方法で Azure Automation で処理されます。
 
 ### <a name="warning-and-error-streams"></a>警告およびエラー ストリーム
-警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。 それらは、Runbook が実行されたときにジョブ履歴に書き込まれ、Runbook がテストされたときに Microsoft Azure 管理ポータルの [テスト出力] ウィンドウに表示されます。 既定では、Runbook は警告またはエラーの後も引き続き実行されます。 警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#PreferenceVariables)を設定します。 たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、**$ErrorActionPreference** を Stop に設定します。
+警告およびエラー ストリームは、Runbook で発生する問題をログ記録するためのものです。 それらは、Runbook が実行されたときにジョブ履歴に書き込まれ、Runbook がテストされたときに Azure Portal の [テスト出力] ウィンドウに表示されます。 既定では、Runbook は警告またはエラーの後も引き続き実行されます。 警告またはエラー時に Runbook を中断するように指定することができます。これを行うには、メッセージを作成する前に、Runbook の[ユーザー設定変数](#PreferenceVariables)を設定します。 たとえば、Runbook を例外の場合と同様、エラーで中断するようにするには、**$ErrorActionPreference** を Stop に設定します。
 
 警告またはエラー メッセージを作成するには、[Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) または [Write-Error](http://technet.microsoft.com/library/hh849962.aspx) コマンドレットを使用します。 アクティビティによってストリームに書き込むことができる場合もあります。
 
@@ -128,9 +128,9 @@ Runbook を発行したら、それを開始する前に、詳細ストリーム
     Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
 
 ### <a name="verbose-stream"></a>詳細ストリーム
-詳細メッセージ ストリームは、Runbook の操作に関する一般情報用です。 Runbook では [デバッグ ストリーム](#Debug) を使用できないため、デバッグ情報には詳細メッセージを使用します。 既定では、公開された Runbook の詳細メッセージはジョブ履歴に格納されません。 詳細メッセージを格納するには、Microsoft Azure 管理ポータルの Runbook の [構成] タブで、公開された Runbook を詳細レコードを記録するように構成します。 ほとんどの場合、パフォーマンス上の理由から、詳細レコードを記録しないというRunbook の既定の設定を保持する必要があります。 このオプションを有効にするのは、Runbook のトラブルシューティングやデバッグをする場合のみです。
+詳細メッセージ ストリームは、Runbook の操作に関する一般情報用です。 Runbook では [デバッグ ストリーム](#Debug) を使用できないため、デバッグ情報には詳細メッセージを使用します。 既定では、公開された Runbook の詳細メッセージはジョブ履歴に格納されません。 詳細メッセージを格納するには、Azure Portal の Runbook の [構成] タブで、公開された Runbook を詳細レコードを記録するように構成します。 ほとんどの場合、パフォーマンス上の理由から、詳細レコードを記録しないというRunbook の既定の設定を保持する必要があります。 このオプションを有効にするのは、Runbook のトラブルシューティングやデバッグをする場合のみです。
 
-[Runbook のテスト時](automation-testing-runbook.md)には、Runbook が詳細レコードを記録するように構成されている場合でも、詳細メッセージは表示されません。 [Runbook のテスト時](automation-testing-runbook.md)に詳細メッセージを表示するには、$VerbosePreference 変数を Continue に設定する必要があります。 この変数が設定されると、Azure ポータルの [テスト出力] ペインに詳細メッセージが表示されます。
+[Runbook のテスト時](automation-testing-runbook.md)には、Runbook が詳細レコードを記録するように構成されている場合でも、詳細メッセージは表示されません。 [Runbook のテスト時](automation-testing-runbook.md)に詳細メッセージを表示するには、$VerbosePreference 変数を Continue に設定する必要があります。 この変数が設定されると、Azure Portal の [テスト出力] ウィンドウに詳細メッセージが表示されます。
 
 詳細メッセージを作成するには、 [Write-Verbose](http://technet.microsoft.com/library/hh849951.aspx) コマンドレットを使用します。
 
@@ -167,7 +167,7 @@ Windows PowerShell では [ユーザー設定変数](http://technet.microsoft.co
 
 ## <a name="retrieving-runbook-output-and-messages"></a>Runbook の出力とメッセージの取得
 ### <a name="azure-portal"></a>Azure ポータル
-Runbook ジョブの詳細は、Azure ポータルの Runbook の [ジョブ] タブで参照できます。 ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと [出力ストリーム](#Output) も表示されます。 詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#Verbose)と[進捗状況レコード](#Progress)だけでなく、[出力ストリーム](#Output)と[警告およびエラー ストリーム](#WarningError)からのメッセージも含まれます。
+Runbook ジョブの詳細は、Azure ポータルの Runbook の [ジョブ] タブで参照できます。 ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと[出力ストリーム](#Output)も表示されます。 詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#Verbose)と[進捗状況レコード](#Progress)だけでなく、[出力ストリーム](#Output)と[警告およびエラー ストリーム](#WarningError)からのメッセージも含まれます。
 
 ### <a name="windows-powershell"></a>Windows PowerShell
 Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。 このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。 [Any] を指定して、ジョブのすべてのストリームを返すことができます。
@@ -198,8 +198,7 @@ Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microso
 
 ![グラフィカル作成のジョブ ストリーム ビュー](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-グラフィカル Runbook で詳細ログとトレースを有効にすると、より多くの情報が運用環境のジョブ ストリーム ビューで利用できることが上記のスクリーンショットから確認できます。  この追加情報は Runbook での運用環境の問題のトラブルシューティングに不可欠であるため、一般的なプラクティスではなく、その目的に合わせて有効にする必要があります。    
-トレース レコードは、特に多数存在させることができます。  グラフィカル Runbook のトレースで、Basic または Detailed トレースを構成したかどうかに応じてアクティビティごとに 2 個から 4 個のレコードを取得できます。  トラブルシューティングのための Runbook の進捗状況を追跡するためにこの情報が必要な場合を除き、トレースのオフを保持することが必要な場合があります。
+グラフィカル Runbook で詳細ログとトレースを有効にすると、より多くの情報が運用環境のジョブ ストリーム ビューで利用できることが上記のスクリーンショットから確認できます。  この追加情報は Runbook での運用環境の問題のトラブルシューティングに不可欠であるため、一般的なプラクティスではなく、その目的に合わせて有効にする必要があります。 トレース レコードは、特に多数存在させることができます。  グラフィカル Runbook のトレースで、Basic または Detailed トレースを構成したかどうかに応じてアクティビティごとに 2 個から 4 個のレコードを取得できます。  トラブルシューティングのための Runbook の進捗状況を追跡するためにこの情報が必要な場合を除き、トレースのオフを保持することが必要な場合があります。
 
 **アクティビティ レベルのトレースを有効にするには、次の手順に従います。**
 
@@ -222,7 +221,7 @@ Automation からは、Runbook ジョブの状態とジョブ ストリームを
 
 Log Analytics との統合を構成して、ジョブ データを収集、操作したり、関連付けたりする方法の詳細については、「[Automation から Log Analytics (OMS) へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)
 * 子 Runbook を設計および使用する方法については、「 [Azure Automation での子 Runbook](automation-child-runbooks.md)
 

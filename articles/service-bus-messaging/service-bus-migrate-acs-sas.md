@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 52015dc2f8450bb1af1587df8c0ccc3bda3c9db8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2a55a6ad6a721a39c9f064aad817f841dd3235
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
 
-Service Bus アプリケーションではこれまで、2 つの承認モデルが存在していました。Service Bus により直接提供される [Shared Access Signature (SAS)](service-bus-sas.md) トークン モデルと、承認ルールの管理が [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) によって内部管理される統合モデルです。この統合モデルでは、ACS から取得したトークンが、目的の機能へのアクセスを承認するために Service Bus に渡されます。
+Service Bus アプリケーションでは、以前は 2 つの承認モデルが存在していました。Service Bus により直接提供される [Shared Access Signature (SAS)](service-bus-sas.md) トークン モデルと、承認ルールの管理が [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) によって内部管理される統合モデルです。この統合モデルでは、ACS から取得したトークンが、目的の機能へのアクセスを承認するために Service Bus に渡されます。
 
 長い間、ACS 承認モデルよりも [SAS 承認](service-bus-authentication-and-authorization.md) のほうが推奨モデルとして優勢で、現在あらゆるドキュメント、ガイダンス、サンプルで SAS のみが扱われています。 さらに、ACS とペアになる新しい Service Bus 名前空間を作成することはできません。
 
@@ -59,7 +59,7 @@ ACS と Service Bus は、共有知識である*署名キー*を通して統合�
 
 SAS ルールをアカウントにすることは想定されていませんが、権限に関連付けられた署名キーの名前が付けられています。 アプリケーションにより多くのサービス ID が作成され、複数のエンティティや名前空間全体に対してアクセス権限が付与されるようなシナリオでは、引き続きトークンを発行する仲介役が必要となります。 このような仲介機能のガイダンスを入手するには、[サポートにお問い合わせください](https://azure.microsoft.com/support/options/)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus 認証の詳細については、次のトピックをご覧ください。
 

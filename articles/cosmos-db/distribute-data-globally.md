@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: arramac
-ms.openlocfilehash: f09c96aabe637582ef43b863f8381a6ecfbebbf5
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0be81802996f27a4c063e4e728a3c95ad757bea0
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる方法
 Azure はユビキタスです。30 か所以上の地理的リージョンでグローバル展開されており、継続的に拡大しています。 その世界的なプレゼンスにより、Azure が開発者に提供する差別化機能の 1 つは、グローバル分散アプリケーションを簡単に構築し、デプロイ、管理できることです。 
@@ -51,7 +51,7 @@ Azure Cosmos DB では、Azure Cosmos DB データベース アカウントに A
 ### <a id="PolicyBasedGeoFencing"></a>ポリシー ベースのジオフェンス
 Azure Cosmos DB は、ポリシー ベースのジオフェンス機能を備えるように設計されています。 ジオフェンスは、データ ガバナンスとコンプライアンスの制限を保証し、アカウントへの特定のリージョンの関連付けを防ぐことができる重要なコンポーネントです。 ジオフェンスの例として、グローバル配布の範囲を主権のあるクラウド内 (中国、ドイツなど) または政府の課税境界内 (オーストラリアなど) のリージョンに設定することが挙げられます。 ポリシーは、Azure サブスクリプションのメタデータを使用して制御されます。
 
-### <a id="DynamicallyAddRegions"></a>リージョンを動的に追加および削除する
+### <a id="DynamicallyAddRegions"></a>リージョンを動的に追加おおよび削除する
 Azure Cosmos DB では、データベース アカウントへのリージョンの追加 (関連付け) とリージョンの削除 (関連付け解除) をいつでも行うことができます ([前の図を参照](#UnlimitedRegionsPerAccount))。 Azure Cosmos DB は、パーティション間でのデータの並列レプリケーションにより、新しいリージョンがオンラインになったときに、最大 100 TB で世界中のどこでも 30 分以内に利用できます。 
 
 ### <a id="FailoverPriorities"></a>フェールオーバーの優先順位
@@ -88,7 +88,7 @@ Azure Cosmos DB では、1 つ以上のリージョンで障害が発生した�
 ### <a id="MultiHomingAPIs"></a>Azure Cosmos DB のマルチホーム API
 Azure Cosmos DB では、論理 (リージョンに依存しない) エンドポイントまたは物理 (リージョン固有の) エンドポイントを使用してデータベースを操作できます。 論理エンドポイントを使用すると、フェールオーバーが発生した場合にアプリケーションを透過的にマルチホームにすることができます。 後者の物理エンドポイントは、読み取りと書き込みを特定のリージョンにリダイレクトするために、アプリケーションにきめ細かい制御を提供します。
 
-[DocumentDB API](../cosmos-db/tutorial-global-distribution-documentdb.md)、[Graph API](../cosmos-db/tutorial-global-distribution-graph.md)、[Table API](../cosmos-db/tutorial-global-distribution-table.md)、[MongoDB API](../cosmos-db/tutorial-global-distribution-mongodb.md) の各 API の読み取り設定を構成する方法については、それぞれのリンク先の記事をご覧ください。
+[SQL API](../cosmos-db/tutorial-global-distribution-sql-api.md)、[Graph API](../cosmos-db/tutorial-global-distribution-graph.md)、[Table API](../cosmos-db/tutorial-global-distribution-table.md)、[MongoDB API](../cosmos-db/tutorial-global-distribution-mongodb.md) の各 API の読み取り設定を構成する方法については、それぞれのリンク先の記事をご覧ください。
 
 ### <a id="TransparentSchemaMigration"></a>データベース スキーマとインデックスの透過的で一貫性のある移行 
 Azure Cosmos DB は完全に[スキーマ非依存](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)です。 データベース エンジンの独自の設計により、スキーマやセカンダリ インデックスを必要とせずに、取り込んだすべてのデータのインデックスを自動的かつ同期的に作成できます。 これにより、データベース スキーマとインデックスの移行を気にしたり、スキーマの変更の複数フェーズのアプリケーション ロールアウトを調整したりしなくても、グローバル分散アプリケーションを迅速に反復処理できます。 Azure Cosmos DB では、ユーザーによるインデックス作成ポリシーの明示的な変更によって、パフォーマンスや可用性が低下しないことが保証されます。  
@@ -219,7 +219,7 @@ Azure Cosmos DB では、スループット、待機時間、整合性、可用�
 ![Azure Cosmos DB の顧客が表示できる SLA メトリック](./media/distribute-data-globally/customer-slas.png)
 
 ## <a id="Next Steps"></a>次のステップ
-* Azure Portal を使用して Azure Cosmos DB アカウントにグローバル レプリケーションを実装する方法については、[Azure Portal を使用して Azure Cosmos DB グローバル データベース レプリケーションを実行する方法](tutorial-global-distribution-documentdb.md)に関する記事をご覧ください。
+* Azure Portal を使用して Azure Cosmos DB アカウントにグローバル レプリケーションを実装する方法については、[Azure Portal を使用して Azure Cosmos DB グローバル データベース レプリケーションを実行する方法](tutorial-global-distribution-sql-api.md)に関する記事をご覧ください。
 * Azure Cosmos DB を使用してマルチマスター アーキテクチャを実装する方法については、[Azure Cosmos DB を使用したマルチマスター データベース アーキテクチャ](multi-region-writers.md)に関する記事をご覧ください。
 * Azure Cosmos DB の自動および手動フェールオーバーのしくみの詳細については、[Azure Cosmos DB のリージョン内フェールオーバー](regional-failover.md)に関する記事をご覧ください。
 

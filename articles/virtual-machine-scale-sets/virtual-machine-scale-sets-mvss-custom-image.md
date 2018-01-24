@@ -4,7 +4,7 @@ description: "カスタム イメージを既存の Azure Virtual Machine Scale 
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/10/2017
 ms.author: negat
-ms.openlocfilehash: cf52fc9e95267c4bc5c0106aadf626685ddd5c24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28d2c080048a7f82e83ad9c1794c9757b330a8c7
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Azure スケール セット テンプレートにカスタム イメージを追加する
 
@@ -114,6 +114,6 @@ ms.lasthandoff: 10/11/2017
 この例では、`resourceId` 関数を使用して、同じテンプレートで作成したイメージのリソース ID を取得します。 管理ディスク イメージを事前に作成している場合は、代わりにそのイメージの ID を指定する必要があります。 この ID は、`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>` の形式で指定する必要があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

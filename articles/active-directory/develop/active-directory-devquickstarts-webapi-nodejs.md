@@ -1,26 +1,26 @@
 ---
-title: "Azure Active Directory Node.js の概要 | Microsoft Docs"
+title: "Azure AD Node.js Web API の概要 | Microsoft Docs"
 description: "認証のために Azure AD と連携する Node.js REST Web API を構築する方法。"
 services: active-directory
 documentationcenter: nodejs
 author: craigshoemaker
-manager: routlaw
+manager: mtillman
 ms.assetid: 7654ab4c-4489-4ea5-aba9-d7cdc256e42a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 11/30/2017
 ms.author: cshoe
 ms.custom: aaddev
-ms.openlocfilehash: 6f67a2cf2baabfa10c6a8e81b085ca6991b981dd
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 411f646574af2f86621cbb3cd7175b6a9478972a
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="secure-nodejs-web-api-with-azure-active-directory"></a>Azure Active Directory による Node.JS Web API のセキュリティ保護
+# <a name="azure-ad-nodejs-web-api-getting-started"></a>Azure AD Node.js Web API の概要
 
 この記事では、Azure Active Directory (AAD) との通信を処理する [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) モジュールを使用して、[Restify](http://restify.com/) API エンドポイントを [Passport](http://passportjs.org/) でセキュリティ保護する方法について説明します。 
 
@@ -65,7 +65,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 `create` コマンドの[引数](/cli/azure/ad/app?view=azure-cli-latest#az_ad_app_create)には、次が含まれます。
 
-| 引数  | 説明 |
+| 引数  | [説明] |
 |---------|---------|
 |`display-name` | 登録のフレンドリ名 |
 |`homepage` | ユーザーがサインインしてアプリケーションを使用する URL |
@@ -73,7 +73,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 Azure Active Directory に接続する前に、次の情報が必要です。
 
-| 名前  | 説明 | 構成ファイルの変数名 |
+| Name  | [説明] | 構成ファイルの変数名 |
 | ------------- | ------------- | ------------- |
 | テナント名  | 認証に使用する[テナント名](active-directory-howto-tenant.md) | `tenantName`  |
 | クライアント ID  | クライアント ID は、AAD の_アプリケーション ID_ に使用される OAuth の用語です。 |  `clientID`  |
@@ -187,7 +187,7 @@ server.get('/api', passport.authenticate('oauth-bearer', { session: false }), (r
 server.listen(serverPort);
 ```
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 
 サーバーが実装されたので、コマンド プロンプトを開き、以下を入力してサーバーを起動します。
 
@@ -234,7 +234,7 @@ Unauthorized
 ```
 セキュリティで保護された API が作成されたので、API に認証トークンを渡すことができるクライアントを実装できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 概要で説明したように、サーバーに接続するためにサインイン、サインアウト、およびトークンの管理を処理するクライアント側の実装を行う必要があります。 コードに基づく例については、[iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) と [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android) のクライアント アプリケーションをご覧ください。 詳細な手順を説明したチュートリアルについては、次の記事をご覧ください。
 
 > [!div class="nextstepaction"]
