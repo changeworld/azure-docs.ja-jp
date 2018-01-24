@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2017
 ms.author: seguler
-ms.openlocfilehash: 1a4c52babe76e59eacb30e8be91ed934cdbe305b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d4a7ceabc8cdb97fc8a0f29756d7648d253fe21
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
-AzCopy は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure BLOB、ファイル、テーブルのストレージ間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。
+AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
 
 ダウンロードできる AzCopy には、2 つのバージョンがあります。 AzCopy on Windows は .NET Framework を使って構築され、Windows スタイルのコマンド ライン オプションが備わっています。 [AzCopy on Linux](storage-use-azcopy-linux.md) は .NET Core Framework を使って構築されています。その対象プラットフォームは Linux で、POSIX スタイルのコマンド ライン オプションが備わっています。 この記事では、AzCopy on Windows を取り上げます。
 
@@ -947,9 +947,9 @@ AzCopy を使用して BLOB またはファイルをコピーする場合は、�
 
 AzCopy はマシン リソースの利用率を最大限に高めてデータ転送を高速化する設計になっています。1 つのマシンで実行する AzCopy インスタンスは 1 つのみとすること、同時実行操作の数を増やす必要がある場合はオプション `/NC` を指定することをお勧めします。 詳細については、コマンド ラインに「 `AzCopy /?:NC` 」と入力してください。
 
-### <a name="enable-fips-compliant-md5-algorithms-for-azcopy-when-you-use-fips-compliant-algorithms-for-encryption-hashing-and-signing"></a>[暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う] を有効にする場合、AzCopy に対して FIPS 準拠の MD5 アルゴリズムを有効にします。
+### <a name="enable-fips-compliant-md5-algorithms-for-azcopy-when-you-use-fips-compliant-algorithms-for-encryption-hashing-and-signing"></a>[暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う] を有効にする場合、AzCopy に対して FIPS に準拠している MD5 アルゴリズムを有効にします。
 
-AzCopy はオブジェクトをコピーするときに、既定で .NET MD5 実装を使用して MD5 を計算しますが、AzCopy で FIPS 準拠の MD5 設定を有効にするために必要ないくつかのセキュリティ要件があります。
+AzCopy はオブジェクトをコピーするときに、既定で .NET MD5 実装を使用して MD5 を計算しますが、AzCopy で FIPS に準拠している MD5 設定を有効にするために必要ないくつかのセキュリティ要件があります。
 
 プロパティ `AzureStorageUseV1MD5` を含む App.config ファイル `AzCopy.exe.config` を作成し、それを AzCopy.exe と共に取っておくことができます。
 
@@ -963,11 +963,11 @@ AzCopy はオブジェクトをコピーするときに、既定で .NET MD5 実
 プロパティ "AzureStorageUseV1MD5" の場合:
 
 * True - 既定値。AzCopy は .NET MD5 実装を使用します。
-* False – AzCopy は FIPS 準拠の MD5 アルゴリズムを使用します。
+* False – AzCopy は FIPS に準拠している MD5 アルゴリズムを使用します。
 
-Windows では FIPS 準拠のアルゴリズムが既定で無効になります。 マシンでこのポリシー設定を変更することができます。 [実行] ウィンドウ (Windows+R) で、「secpol.msc」と入力して **[ローカル セキュリティ ポリシー]** ウィンドウを開きます。 **[セキュリティの設定]** ウィンドウで **[セキュリティの設定]**  >  **[ローカル ポリシー]**  >  **[セキュリティ オプション]** に移動します。 **[システム暗号化: 暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う]** ポリシーを探します。 ポリシーをダブルクリックして、**[セキュリティの設定]** 列に表示された値を確認します。
+Windows では FIPS に準拠しているアルゴリズムが既定で無効になります。 マシンでこのポリシー設定を変更することができます。 [実行] ウィンドウ (Windows+R) で、「secpol.msc」と入力して **[ローカル セキュリティ ポリシー]** ウィンドウを開きます。 **[セキュリティの設定]** ウィンドウで **[セキュリティの設定]**  >  **[ローカル ポリシー]**  >  **[セキュリティ オプション]** に移動します。 **[システム暗号化: 暗号化、ハッシュ、署名のための FIPS 準拠アルゴリズムを使う]** ポリシーを探します。 ポリシーをダブルクリックして、**[セキュリティの設定]** 列に表示された値を確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Storage および AzCopy の詳細については、以下のリソースを参照してください。
 

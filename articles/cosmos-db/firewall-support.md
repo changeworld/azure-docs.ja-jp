@@ -14,21 +14,61 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/02/2018
 ms.author: ankshah
-ms.openlocfilehash: 1ceaa834ff68d5dca4abce561f9185e89af582af
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 85f5e0e076f92afc79ed8f4ce652bb0f31923113
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB のファイアウォール サポート
 Azure Cosmos DB データベース アカウントに格納されているデータを保護するために、Azure Cosmos DB は、強力なハッシュベースのメッセージ認証コード (HMAC) を利用したシークレット ベースの[承認モデル](https://msdn.microsoft.com/library/azure/dn783368.aspx)を備えています。 シークレット ベースの承認モデルに加え、Azure Cosmos DB は現在、ポリシーに基づく IP ベースのアクセス制御を使った受信ファイアウォールにも対応しています。 このモデルは、従来型データベース システムのファイアウォール規則に似ていますが、Azure Cosmos DB データベース アカウントのセキュリティ水準がさらに高くなっています。 このモデルによって今後は、承認されているコンピューターのグループやクラウド サービスからのみアクセスできるように Azure Cosmos DB データベース アカウントを構成することができます。 ただし承認されているコンピューターのグループやサービスから Azure Cosmos DB リソースにアクセスするためには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。
 
 ## <a name="ip-access-control-overview"></a>IP アクセス制御の概要
-既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos DB データベース アカウントにパブリック インターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式でユーザーが指定する必要があります。 この構成を適用すると、その許可リストに該当しないコンピューターを発信元とする要求はすべて、サーバーによってブロックされます。  以下の図は、IP ベースのアクセス制御における接続処理フローを表したものです。
+既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos DB データベース アカウントにパブリック インターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とする要求はすべて、サーバーによってブロックされます。  以下の図は、IP ベースのアクセス制御における接続処理フローを表したものです。
 
 ![IP ベースのアクセス制御における接続プロセスの図](./media/firewall-support/firewall-support-flow.png)
+
+## <a id="configure-ip-policy"></a> IP アクセス制御ポリシーの構成
+IP アクセス制御ポリシーは、Azure Portal で設定するか、[Azure CLI](cli-samples.md)、[Azure Powershell](powershell-samples.md)、または [REST API](/rest/api/documentdb/) を使用して **ipRangeFilter** プロパティを更新することでプログラムによって設定できます。 
+
+Azure Portal で IP アクセス制御ポリシーを設定するには、Azure Cosmos DB アカウント ページに移動し、ナビゲーション メニューの **[ファイアウォール]** をクリックして、**[IP アクセス制御を有効にする]** の値を **[オン]** に変更します。 
+
+![Azure Portal で [ファイアウォール] ページを開く方法を示すスクリーンショット](./media/firewall-support/azure-portal-firewall.png)
+
+IP アクセス制御をオンにすると、ポータルには、Azure Portal、他の Azure サービス、および現在の IP へのアクセスを有効にするスイッチが表示されます。 これらのスイッチの詳細については、次のセクションを参照してください。
+
+![Azure Portal でファイアウォール設定を構成する方法を示しているスクリーンショット](./media/firewall-support/azure-portal-firewall-configure.png)
+
+> [!NOTE]
+> Azure Cosmos DB データベース アカウントの IP アクセス制御ポリシーを有効にすると、構成されている許可リストの IP アドレス範囲に該当しないコンピューターからのアクセスがすべてブロックされます。 このモデルにより、ポータルからのデータ プレーン操作の閲覧もブロックされ、アクセス制御の整合性が確保されます。
+
+## <a name="connections-from-the-azure-portal"></a>Azure Portal からの接続 
+
+IP アクセス制御ポリシーをプログラムで有効にする場合は、アクセスを維持するために、Azure Portal の IP アドレスを **ipRangeFilter** プロパティに追加する必要があります。 ポータルの IP アドレスは次のとおりです。
+
+|リージョン|IP アドレス|
+|------|----------|
+|以下を除くすべてのリージョン|104.42.195.92、40.76.54.131、52.176.6.30、52.169.50.45、52.187.184.26|
+|ドイツ|51.4.229.218|
+|中国|139.217.8.252|
+|米国政府|52.244.48.71|
+
+Azure Portal にアクセスできるようにするには、Azure Portal で **[Azure Portal へのアクセスを許可する]** の値を **[オン]** に設定します (**[Azure Portal へのアクセスを許可する]** 値を表示および変更するには、**[IP アクセス制御を有効にする]** の値を **[オン]** に設定する必要があります)。
+
+![Azure Portal へのアクセスを有効にする方法を示すスクリーンショット](./media/firewall-support/enable-azure-portal.png)
+
+## <a name="connections-from-other-azure-paas-services"></a>他の Azure PaaS サービスからの接続 
+Azure では、Azure Stream Analytics、Azure Functions、Azure App Service などの PaaS サービスが、Azure Cosmos DB と組み合わせて使用されます。 IP アドレスがすぐに入手できないこれらのサービスから Azure Cosmos DB データベース アカウントにアクセスできるようにするには、IP アドレス 0.0.0.0 を、プログラムによって Azure Cosmos DB データベース アカウントに関連付けられた IP アドレスの許可リストに追加するか、Azure Portal で **[Azure サービスへのアクセスを許可する]** の値を [オン] に設定します (**[Azure サービスへのアクセスを許可する]** の値を表示および変更するには、**[IP アクセス制御を有効にする]** の値を **[オン]** に設定する必要があります)。 これにより、Azure PaaS サービスが Azure Cosmos DB アカウントにアクセスできるようになります。 
+
+![Azure Portal で [ファイアウォール] ページを開く方法を示すスクリーンショット](./media/firewall-support/enable-azure-services.png)
+
+## <a name="connections-from-your-current-ip"></a>現在の IP からの接続
+
+開発をシンプルにするために、Azure Portal では、クライアント コンピューターの IP アドレスを識別して許可リストに追加することができます。これにより、コンピューターで実行中のアプリが Azure Cosmos DB アカウントにアクセスすることができます。 ここでは、クライアント IP アドレスは、ポータルから見た IP アドレスとして検出されます。 コンピューターのクライアント IP アドレスである可能性がありますが、ネットワーク ゲートウェイの IP アドレスである可能性もあります。 運用環境にそれを移行する前に削除することを忘れないでください。
+
+![現在の IP のファイアウォール設定を構成する方法を示すスクリーンショット](./media/firewall-support/enable-current-ip.png)
 
 ## <a name="connections-from-cloud-services"></a>クラウド サービスからの接続
 Azure では、Azure Cosmos DB を使用して中間層のサービス ロジックをホストする手段としてクラウド サービスがよく利用されます。 クラウド サービスから Azure Cosmos DB データベース アカウントにアクセスできるようにするには、[IP アクセス制御ポリシーを構成する](#configure-ip-policy)ことで、ご使用の Azure Cosmos DB データベース アカウントに関連付けられている IP アドレスの許可リストにクラウド サービスのパブリック IP アドレスを追加する必要があります。  これにより、クラウド サービスのすべてのロール インスタンスからその Azure Cosmos DB データベース アカウントにアクセスできるようになります。 クラウド サービスの IP アドレスは Azure Portal で確認できます。次のスクリーンショットをご覧ください。
@@ -47,44 +87,15 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 ## <a name="connections-from-the-internet"></a>インターネットからの接続
 インターネット上のコンピューターから Azure Cosmos DB データベース アカウントにアクセスするときは、そのコンピューターのクライアント IP アドレスまたは IP アドレス範囲を Azure Cosmos DB データベース アカウントの IP アドレスの許可リストに追加する必要があります。 
 
-## <a name="connections-from-azure-paas-service"></a>Azure PaaS サービスからの接続 
-Azure では、Azure Functions、Azure Stream Analytics のような PaaS サービスが、Azure Cosmos DB と組み合わせて使用されます。 IP アドレスが簡単に利用できないこの種のサービスから Azure Cosmos DB データベース アカウントにアクセスできるようにするには、[IP アクセス制御ポリシーを構成する](#configure-ip-policy)ことで、お客様の Azure Cosmos DB データベース アカウントに関連付けられた IP アドレスの許可リストに、IP アドレス 0.0.0.0 を追加する必要があります。  これにより、この規則が設定された Azure Cosmos DB アカウントに Azure PaaS サービスからアクセスできるようになります。 
-
- ## <a id="configure-ip-policy"></a> IP アクセス制御ポリシーの構成
-IP アクセス制御ポリシーは、Azure Portal で設定するか、[Azure CLI](cli-samples.md)、[Azure Powershell](powershell-samples.md)、または [REST API](/rest/api/documentdb/) を使用して `ipRangeFilter` プロパティを更新することでプログラムによって設定できます。 IP アドレス/範囲は、コンマで区切る必要があり、スペースを含めることはできません。 (例: "13.91.6.132,13.91.6.1/24")。 これらの方法でデータベース アカウントを更新するときは、既定の設定にリセットされないように、必ずすべてのプロパティを設定してください。
-
-> [!NOTE]
-> Azure Cosmos DB データベース アカウントの IP アクセス制御ポリシーを有効にすると、構成されている許可リストの IP アドレス範囲に該当しないコンピューターからのアクセスがすべてブロックされます。 このモデルにより、ポータルからのデータ プレーン操作の閲覧もブロックされ、アクセス制御の整合性が確保されます。
-
-開発をシンプルにするために、Azure Portal では、クライアント コンピューターの IP アドレスを識別して許可リストに追加することができます。これにより、コンピューターで実行中のアプリが Azure Cosmos DB アカウントにアクセスすることができます。 ここでは、クライアント IP アドレスは、ポータルから見た IP アドレスとして検出されます。 コンピューターのクライアント IP アドレスである可能性がありますが、ネットワーク ゲートウェイの IP アドレスである可能性もあります。 運用環境にそれを移行する前に削除することを忘れないでください。
-
-Azure Portal で IP アクセス制御ポリシーを設定するには、Azure Cosmos DB アカウント ブレードに移動し、ナビゲーション メニューの **[ファイアウォール]** をクリックした後、**[ON] \(オン)** をクリックします。 
-
-![Azure Portal で [ファイアウォール] ブレードを開く方法を示しているスクリーンショット](./media/firewall-support/azure-portal-firewall.png)
-
-新しいウィンドウで、Azure Portal がアカウントにアクセスできるかどうかを指定し、必要に応じてその他のアドレスと範囲を追加した後、**[保存]** をクリックします。  
-
-> [!NOTE]
-> IP アクセス制御ポリシーを有効にする場合は、アクセスを維持するために Azure Portal の IP アドレスを追加する必要があります。 ポータルの IP アドレスは次のとおりです。
-> |リージョン|IP アドレス|
-> |------|----------|
-> |以下を除くすべてのリージョン|104.42.195.92、40.76.54.131、52.176.6.30、52.169.50.45、52.187.184.26|
-> |ドイツ|51.4.229.218|
-> |中国|139.217.8.252|
-> |米国政府|52.244.48.71|
->
-
-![Azure Portal でファイアウォール設定を構成する方法を示しているスクリーンショット](./media/firewall-support/azure-portal-firewall-configure.png)
-
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>IP アクセス制御ポリシーのトラブルシューティング
 ### <a name="portal-operations"></a>ポータルの操作
-Azure Cosmos DB データベース アカウントの IP アクセス制御ポリシーを有効にすると、構成されている許可リストの IP アドレス範囲に該当しないコンピューターからのアクセスがすべてブロックされます。 したがって、ポータルのデータ ウィンドウでコレクションの参照やドキュメントのクエリなどの操作を有効にする場合は、ポータルの **[ファイアウォール]** ブレードを使用して、Azure Portal へのアクセスを明示的に許可する必要があります。 
+Azure Cosmos DB データベース アカウントの IP アクセス制御ポリシーを有効にすると、構成されている許可リストの IP アドレス範囲に該当しないコンピューターからのアクセスがすべてブロックされます。 そのため、コレクションの参照やドキュメントのクエリなどのポータルのデータ プレーン操作を有効にする場合は、ポータルの **[ファイアウォール]** ページを使用して Azure Portal へのアクセスを明示的に許可する必要があります。 
 
-![Azure Portal へのアクセスを有効にする方法を示しているスクリーンショット](./media/firewall-support/azure-portal-access-firewall.png)
+![Azure Portal へのアクセスを有効にする方法を示しているスクリーンショット](./media/firewall-support/enable-azure-portal.png)
 
 ### <a name="sdk--rest-api"></a>SDK と Rest API
 許可リストに追加されていないコンピューターから SDK または REST API 経由でアクセスした場合、セキュリティ上の理由から、詳しい情報を含まない汎用的な 404 Not Found 応答が返されます。 お客様の Azure Cosmos DB データベース アカウント用に構成されている IP 許可リストを確認して、そのアカウントに適切なポリシー構成が適用されていることを確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ネットワークに関連したパフォーマンス上のヒントについては、[パフォーマンスに関するヒント](performance-tips.md)のページを参照してください。
 

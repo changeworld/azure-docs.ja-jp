@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 096beac3a1acae312ccddc6cbd88378370feed39
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c6c0aeba2eaa7709bbe55ecadd82a4f22d57c25e
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="help-protect-a-web-api-by-using-bearer-tokens-from-azure-ad"></a>Azure AD からのベアラー トークンを使用して Web API の保護を支援する
+# <a name="azure-ad-net-web-api-getting-started"></a>Azure AD .NET Web API の概要
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 保護されているリソースにアクセスするアプリケーションを構築する場合、不正なアクセスからこれらのリソースを保護する方法を習得する必要があります。
@@ -147,7 +147,7 @@ To Do List Service の動作を確認できるようにするには、AAD から
   * `ida:ClientId` には、Azure Portal からコピーしたアプリ ID を指定します。
   * `todo:TodoListResourceId` には、Azure Portal で入力した To Do List Service のアプリ ID URI を指定します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 最後に、各プロジェクトをクリーンアップし、ビルドして実行します。 *.onmicrosoft.com ドメインを使用して、テナントに新しいユーザーを作成します (作成していない場合)。 そのユーザーとして To Do List クライアントにサインインし、いくつかのタスクを To-Do リストに追加します。
 
 参考用に、完全なサンプル (環境に応じた構成値を除く) が [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip) で提供されています。 ここからは、さらに詳細な ID シナリオに進むことができます。

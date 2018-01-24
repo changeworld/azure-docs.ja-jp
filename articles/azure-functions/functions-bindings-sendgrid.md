@@ -12,11 +12,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
-ms.openlocfilehash: f24c2aecf44dd44fec05dc9a4d156ff408b0c953
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: aa64bbc764fe96d7c15d62660114222458e5acf4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -28,13 +28,13 @@ ms.lasthandoff: 11/30/2017
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#c-example)
-* [C# スクリプト](#c-script-example)
+* [C#](#c-example)
+* [C# スクリプト (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C# の例
 
-次の例は、Service Bus キュー トリガーと SendGrid 出力バインディングを使用する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、Service Bus キュー トリガーと SendGrid 出力バインディングを使用する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("SendEmail")]
@@ -155,7 +155,7 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) で定義されている [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) で定義されている [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) 属性を使用します。
 
 構成可能な属性プロパティについては、[構成](#configuration)を参照してください。 メソッド シグネチャでの `SendGrid` 属性の例を次に示します。
 
@@ -169,13 +169,13 @@ public static void Run(
 }
 ```
 
-完全な例については、[プリコンパイル済み C# の例](#c-example)をご覧ください。
+完全な例については、「[C# の例](#c-example)」を参照してください。
 
 ## <a name="configuration"></a>構成
 
 次の表は、*function.json* ファイルと `SendGrid` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type**|| 必須 - `sendGrid` に設定する必要があります。|
 |**direction**|| 必須 - `out` に設定する必要があります。|
@@ -188,7 +188,7 @@ public static void Run(
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

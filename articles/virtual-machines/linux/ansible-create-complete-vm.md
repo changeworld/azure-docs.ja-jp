@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 8f0e2fff8ea32874729cf9c4645d547df2449089
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 88e1f17184be07ec8499ad3049f7210b56fdfc15
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Ansible によって Azure に完全な Linux 仮想マシンの環境を作成する
 Ansible を使用すると、環境内のリソースのデプロイと構成を自動化することができます。 Ansible を使用すると、他のリソースと同じように、Azure で仮想マシン (VM) を管理できます。 この記事では、Ansible を使用して、完全な Linux 環境とサポート リソースを作成する方法を示します。 [Ansible を使用して基本的な VM を作成する](ansible-create-vm.md)方法も説明します。
@@ -105,7 +105,7 @@ Ansible プレイブックの次のセクションでは、*10.0.0.0/16* アド�
 
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-最後の手順は、VM を作成し、作成したすべてのリソースを使用することです。 Ansible プレイブックの次のセクションでは、*myVM* という名前の VM を作成し、*myNIC* という名前の仮想 NIC を接続しています。 次のように、*key_data* ペアに独自の公開キー データを入力します。
+最後の手順は、VM を作成し、作成したすべてのリソースを使用することです。 Ansible プレイブックの次のセクションでは、*myVM* という名前の VM を作成し、*myNIC* という名前の仮想 NIC を接続しています。 次のように、*key_data* ペアに独自の完全な公開キー データを入力します。
 
 ```yaml
 - name: Create VM
@@ -127,7 +127,7 @@ Ansible プレイブックの次のセクションでは、*10.0.0.0/16* アド�
 ```
 
 ## <a name="complete-ansible-playbook"></a>完全な Ansible プレイブック
-これらのすべてのセクションをまとめるには、*azure_create_complete_vm.yml* という名前で Ansible プレイブックを作成し、次のコンテンツを貼り付けます。
+これらのすべてのセクションをまとめるには、*azure_create_complete_vm.yml* という名前で Ansible プレイブックを作成し、次のコンテンツを貼り付けます。 *key_data* ペアに独自の完全な公開キー データを入力します。
 
 ```yaml
 - name: Create Azure VM
@@ -229,5 +229,5 @@ PLAY RECAP ****************************************************************
 localhost                  : ok=7    changed=6    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この例では、必要な仮想ネットワーク リソースを含む完全な VM 環境を作成しています。 既定のオプションで既存のネットワーク リソースに VM を作成する直接的な例については、[VM の作成](ansible-create-vm.md)に関するページをご覧ください。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 5f760ae0cc33e138fc3d484711b8747b984977d4
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4937b7725c8f39314ccc41584a8646b7197f6bdf
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Azure Stack スケール ユニット ノードのハードウェア コンポーネントを交換する
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 
 次のフロー図は、ホットスワップが可能でないハードウェア コンポーネントを交換するための一般的な FRU プロセスを示しています。
 
-![コンポーネント交換フローを示すフロー図](media/azure-stack-replace-component/ReplaceComponentFlow.PNG)
+![コンポーネント交換フローを示すフロー図](media/azure-stack-replace-component/replacecomponentflow.PNG)
 
 * このアクションは、ハードウェアの物理的な状態によっては必須でありません。
 
@@ -48,13 +48,17 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="review-alert-information"></a>アラート情報を見直す
 
-Azure Stack の 正常性および監視システムは、記憶域スペース ダイレクトによって制御されているネットワーク アダプターとデータ ドライブの正常性を監視します。 その他のハードウェア コンポーネントは監視しません。 その他のすべてのハードウェア コンポーネントでは、ハードウェア ライフサイクル ホスト上で実行されているベンダー固有のハードウェア監視ソリューションでアラートが発生します。
+Azure Stack の正常性および監視システムは、記憶域スペース ダイレクトによって制御されているネットワーク アダプターとデータ ドライブの正常性を追跡します。 その他のハードウェア コンポーネントは追跡しません。 その他のすべてのハードウェア コンポーネントでは、ハードウェア ライフサイクル ホスト上で実行されているベンダー固有のハードウェア監視ソリューションでアラートが発生します。
 
 ## <a name="component-replacement-process"></a>コンポーネント交換プロセス
 
-次の手順は、コンポーネント交換プロセスの概略を示しています。 OEM 提供の FRU マニュアルを参照せずにこれらの手順を実行しないでください。
+次の手順は、コンポーネント交換プロセスの概要を示しています。 OEM 提供の FRU マニュアルを参照せずにこれらの手順を実行しないでください。
 
 1. [ドレイン](azure-stack-node-actions.md#scale-unit-node-actions) アクションを使用して、スケール ユニット ノードをメンテナンス モードにします。 このアクションは、ハードウェアの物理的な状態によっては必須でありません。
+
+   > [!NOTE]
+   > いずれの場合も、S2D (記憶域スペース ダイレクト) を中断せずに一度にドレインして電源をオフにできるノードは 1 つだけです。
+
 2. スケール ユニット ノードがメンテナンス モードに入ったら、[電源オフ](azure-stack-node-actions.md#scale-unit-node-actions) アクションを使用します。 このアクションは、ハードウェアの物理的な状態によっては必須でありません。
  
    > [!NOTE]
@@ -66,7 +70,8 @@ Azure Stack の 正常性および監視システムは、記憶域スペース 
 6. 特権エンドポイントを使用して、[仮想ディスクの修復の状態を確認します](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair)。 新しいデータ ドライブを使用するストレージ修復ジョブ全体は、システムの負荷と消費される領域に応じて、数時間かかる可能性があります。
 7. 修復アクションが完了したら、すべてのアクティブなアラートが自動的に閉じていることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - ホットスワップ可能物理ディスクの交換については、[ディスクの交換](azure-stack-replace-disk.md)に関する記事を参照してください。
-- 物理ノードを交換する方法については、[スケール ユニット ノードの交換](azure-stack-replace-node.md)に関する記事を参照してください。 
+- 物理ノードを交換する方法については、[スケール ユニット ノードの交換](azure-stack-replace-node.md)に関する記事を参照してください。
+- 

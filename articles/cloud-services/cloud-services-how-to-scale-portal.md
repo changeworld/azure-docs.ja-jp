@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 708b35252429e30b44226030d3d83b928f2a9520
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: c2164d36c234309dcd855247cd1c1067de36284c
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 
@@ -39,6 +39,8 @@ ms.lasthandoff: 11/16/2017
 * サブスクリプションに関連付けられているその他のリソースについてもスケールを行うことができます。
 
 * アプリケーションの高可用性を可能にするには、アプリケーションを 2 つ以上のロール インスタンスと共にデプロイする必要があります。 詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
+
+* 自動スケールは、すべてのロールが**準備完了**状態の場合にのみ発生します。  
 
 
 ## <a name="where-scale-is-located"></a>スケールの設定

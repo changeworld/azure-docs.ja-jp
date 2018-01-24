@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4117414f4605b73d8aab8acc2e788720deff8b99
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c4b8364f88548cfc4595261302248cc2840c233
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -101,19 +101,13 @@ Multi-Factor Authentication に関するいくつかのオプションのいず�
 | ユーザーがデバイスを登録できるようになったので、AD FS で登録済みデバイスのみを許可するアプリケーション アクセス ポリシーを作成できます。 このタスクでは、アプリケーション アクセス ルールと、カスタム アクセス拒否メッセージを作成します。 |[アプリケーションのアクセス ポリシーとカスタム アクセス拒否メッセージを作成する](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 ## <a name="integrate-azure-active-directory-with-on-premises-active-directory"></a>Azure Active Directory をオンプレミスの Active Directory と統合する
-この手順で、Azure AD Connect を使用して Azure AD テナントをオンプレミスの Active Directory と統合できます。 これらの手順は Azure クラシック ポータルで使用できますが、このセクションに記載されている特別な指示に留意してください。
 
-1. Azure AD でグローバル管理者であるアカウントを使用して Azure クラシック ポータルにサインインします。
-2. 左ウィンドウで、 **[Active Directory]**を選択します。
-3. **[ディレクトリ]** タブでディレクトリを選択します。
-4. **[ディレクトリの統合]** タブを選択します。
-5. **デプロイと管理**に関するセクションで、手順 1. ～ 3. に従って、Azure Active Directory をオンプレミスのディレクトリと統合します。
-   
-   1. ドメインを追加します。
-   2. 「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールし、実行します。
-   3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
-   
-   さらに、「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」で概説されているように、AD FS とのフェデレーションを構成します。
+**以下を参照してください。**
+
+- 概念的な説明については、「[オンプレミスのディレクトリと Azure Active Directory の統合](./connect/active-directory-aadconnect.md)」を参照してください。
+
+- インストールの手順については、「[Azure AD Connect のカスタム インストール](./connect/active-directory-aadconnect-get-started-custom.md)」を参照してください。
+
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Active Directory Domain Services スキーマをアップグレードする
 > [!NOTE]

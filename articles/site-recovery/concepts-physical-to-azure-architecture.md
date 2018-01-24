@@ -1,24 +1,16 @@
 ---
-title: "Azure に物理サーバーをレプリケートするためのアーキテクチャを確認する | Microsoft Docs"
+title: "Azure Site Recovery での物理サーバーから Azure へのレプリケーション アーキテクチャ | Microsoft Docs"
 description: "この記事では、Azure Site Recovery サービスを使用してオンプレミスの物理サーバー を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します"
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: aac3450e-dfac-4e20-b377-1a6cd39d04ca
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 02dafa60f19df88123358446ac72d9be85577554
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bae8688e322efd0a0556cf01e319252d42fc31d
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>物理サーバーから Azure へのレプリケーション アーキテクチャ
 
@@ -64,21 +56,17 @@ ms.lasthandoff: 10/11/2017
 
 - 計画フェールオーバーはサポートされていません。
 - オンプレミスの VMware VM にフェールバックする必要があります。 これは、オンプレミスの物理サーバーを Azure にレプリケートする場合でも、オンプレミスの VMware インフラストラクチャを作成する必要があることを意味します。
-
-
-1. 単一のマシンをフェールオーバーするか、復旧計画を作成して複数のマシンをまとめてフェールオーバーします。
-2. フェールオーバーを実行すると、Azure Storage のレプリケートされたデータから Azure VM が作成されます。
-3. 最初のフェールオーバーをトリガーするには、Azure VM から、ワークロードへのアクセスを開始するようコミットします。
-
-プライマリ オンプレミス サイトが再度使用可能になると、フェールバックできます。
-
-1. 次のものを含むフェールバック インフラストラクチャを設定する必要があります。
+- 単一のマシンをフェールオーバーするか、復旧計画を作成して複数のマシンをまとめてフェールオーバーします。
+- フェールオーバーを実行すると、Azure Storage のレプリケートされたデータから Azure VM が作成されます。
+- 最初のフェールオーバーをトリガーするには、Azure VM から、ワークロードへのアクセスを開始するようコミットします。
+- プライマリ オンプレミス サイトが再度使用可能になると、フェールバックできます。
+- 次のものを含むフェールバック インフラストラクチャを設定する必要があります。
     - **Azure 内の一時的なプロセス サーバー**: Azure からフェールバックするために、プロセス サーバーとして機能する Azure VM をセットアップする必要があります。 この VM は、フェールバックの完了後に削除できます。
     - **VPN 接続**: フェールバックするには、Azure ネットワークからオンプレミス サイトへの VPN 接続 (または Azure ExpressRoute) が必要です。
     - **独立したマスター ターゲット サーバー**: オンプレミスの VMware VM のマスター ターゲット サーバー (構成サーバーに既定でインストールされます) によって、フェールバックが処理されます。 ただし、大量のトラフィックをフェールバックする必要がある場合は、その目的を果たすための独立したオンプレミスのマスター ターゲット サーバーをセットアップする必要があります。
     - **フェールバック ポリシー**: オンプレミスにもう一度レプリケートするには、フェールバック ポリシーが必要です。 これは、オンプレミスから Azure にレプリケーション ポリシーを作成したときに自動的に作成されます。
     - **VMware インフラストラクチャ**: フェールバック用の VMware インフラストラクチャが必要です。 物理サーバーにはフェールバックできません。
-2. コンポーネントが配置されたら、フェールバックが 3 段階で発生します。
+- コンポーネントが配置されたら、フェールバックが 3 段階で発生します。
     - 第 1 段階: Azure VM が Azure からオンプレミスの VMware VM へのレプリケートを開始するように、Azure VM を再保護します。
     - 第 2 段階: オンプレミス サイトでフェールオーバーを実行します。
     - 第 3 段階: ワークロードがフェールバックしたら、オンプレミス VM のレプリケートを再び有効にします。
@@ -88,7 +76,6 @@ ms.lasthandoff: 10/11/2017
 ![フェールバック](./media/concepts-physical-to-azure-architecture/enhanced-failback.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-サポート マトリックスを確認します。VMware から Azure へのレプリケーションを有効にするチュートリアルに従ってください。
-フェールオーバーとフェールバックを実行します。
+物理サーバーから Azure へのレプリケーションを有効にするには、[このチュートリアル](tutorial-physical-to-azure.md)に従ってください。

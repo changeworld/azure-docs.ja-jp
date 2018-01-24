@@ -6,13 +6,13 @@
 
 * Azure Portal を使用して N シリーズ VM を作成する場合は、**[基本]** ブレードの **[VM ディスクの種類]** で **[HDD]** を選択します。 利用可能な N シリーズ サイズを選択するには、**[サイズ]** ブレードで **[すべて表示]** をクリックします。
 
-* N シリーズ VM では、Azure Premium Storage で提供される VM ディスクはサポートされていません。
+* NC および NV の VM では、Azure Premium Storage で提供される VM ディスクはサポートされていません。
 
 * 多数の N シリーズ VM をデプロイする場合は、従量課金のサブスクリプションまたは他の購入オプションを検討してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
 
-* Azure サブスクリプションの (リージョンごとの) コア クォータと NC または NV のコアの個別のクォータを増やす必要が生じる場合があります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../articles/azure-supportability/how-to-create-azure-support-request.md) (無料) してください。 既定の制限は、サブスクリプション カテゴリによって異なる場合があります。
+* Azure サブスクリプションの (リージョンごとの) コア クォータと NC、NCv2、ND、または NV のコアの個別のクォータを増やす必要が生じる場合があります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../articles/azure-supportability/how-to-create-azure-support-request.md) (無料) してください。 既定の制限は、サブスクリプション カテゴリによって異なる場合があります。
 
-* N シリーズ VM にデプロイできる VM イメージの 1 つに、[Azure データ サイエンス仮想マシン](../articles/machine-learning/data-science-virtual-machine/overview.md)があります。 データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが事前にインストールされ、構成されています。 NC インスタンス用の NVIDIA Tesla GPU ドライバーも事前にインストールされています。
+* N シリーズ VM にデプロイできる VM イメージの 1 つに、[Azure データ サイエンス仮想マシン](../articles/machine-learning/data-science-virtual-machine/overview.md)があります。 データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが事前にインストールされ、構成されています。 NVIDIA Tesla GPU ドライバーも事前にインストールされています。
 
 
 

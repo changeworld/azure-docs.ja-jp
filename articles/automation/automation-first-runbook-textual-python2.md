@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: gwallace
-ms.openlocfilehash: 8a7c03f10d4310bcdb13ef76b598c22912707c08
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0cf0b1829c7e1f9b0b8be90983a705d82784c062
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -29,14 +29,14 @@ ms.lasthandoff: 12/21/2017
 > 
 > 
 
-このチュートリアルでは、Azure Automation で [Python Runbook](automation-runbook-types.md#python-runbooks) を作成する手順について説明します。 簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。 その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure 仮想マシンを開始します。 最後に Runbook のパラメーターを追加することによって、Runbook をいっそう堅牢にします。
+このチュートリアルでは、Azure Automation で [Python Runbook](automation-runbook-types.md#python-runbooks) を作成する手順について説明します。 最初に、簡単な Runbook をテストおよび発行します。 次に、実際に Azure リソースを管理するように Runbook を変更します。ここでは Azure 仮想マシンを開始します。 最後に Runbook のパラメーターを追加して、Runbook をさらに堅牢にします。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
 * として機能します。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* [Automation アカウント](automation-offering-get-started.md)。Runbook の保存と Azure リソースの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
+* [Automation アカウント](automation-offering-get-started.md)。Runbook の保存と Azure リソースの認証に使用します。 このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
 * Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
 
 ## <a name="create-a-new-runbook"></a>新しい Runbook の作成
@@ -44,17 +44,18 @@ ms.lasthandoff: 12/21/2017
 最初に、*Hello World* というテキストを出力する簡単な Runbook を作成します。
 
 1. Azure ポータルで、Automation アカウントを開きます。
-   Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。 既に資産がいくつかあります。 これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。 [前提条件](#prerequisites)で説明されている資格情報資産も必要です。
-1. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
-   ![RunbooksControl](media/automation-first-runbook-textual-python/runbooks-control-tiles.png)
-1. **[Runbook の追加]** ボタンをクリックし、**[新しい Runbook の作成]** をクリックして新しい Runbook を作成します。
-1. Runbook に *MyFirstRunbook-Python* という名前を付けます。
-1. ここでは、[Python Runbook](automation-runbook-types.md#python-runbooks) を作成するため、**[Runbook の種類]** では **[Python 2]** を選択します。
-1. **[作成]** をクリックして Runbook を作成し、テキスト エディターを開きます。
+
+    Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。 既に資産がいくつかあります。 これらの資産のほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。 [前提条件](#prerequisites)で説明されている資格情報資産も必要です。<br>
+
+1. **[プロセス管理]** の **[Runbook]** を選択し、Runbook の一覧を開きます。
+2. **[+ Runbook の追加]** を選択して、新しい Runbook を作成します。
+3. Runbook に *MyFirstRunbook-Python* という名前を付けます。
+4. ここでは、[Python Runbook](automation-runbook-types.md#python-runbooks) を作成するため、**[Runbook の種類]** では **[Python 2]** を選択します。
+5. **[作成]** をクリックして Runbook を作成し、テキスト エディターを開きます。
 
 ## <a name="add-code-to-the-runbook"></a>Runbook にコードを追加する
 
-ここでは、”Hello World” というテキストを表示する簡単なコマンドを追加します。
+ここでは、"Hello World" というテキストを表示する簡単なコマンドを追加します。
 
 ```python
 print("Hello World!")
@@ -70,34 +71,34 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
    ![Test Pane](media/automation-first-runbook-textual-python/automation-runbook-edit-controls-test.png)
 1. **[開始]** をクリックしてテストを開始します。 有効なオプションはこれだけです。
 1. [Runbook ジョブ](automation-runbook-execution.md) が作成され、その状態が表示されます。
-   最初のジョブの状態は "*キューに設定*" であり、クラウドの runbook worker が使用できるようになるのを待っていることを示します。 その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。
-1. Runbook ジョブが完了すると、その出力が表示されます。 この例では、*Hello World* と表示されます。
+   最初のジョブの状態は "*キューに設定*" であり、クラウドの runbook worker が使用できるようになるのを待っていることを示します。 ワーカーがジョブを要求すると "*開始中*" になり、Runbook が実際に実行を開始すると "*実行中*" になります。
+1. Runbook ジョブが完了すると、その出力が表示されます。 この場合は、*Hello World* です。
 1. テスト ウィンドウを閉じてキャンバスに戻ります。
 
 ## <a name="publish-and-start-the-runbook"></a>Runbook を発行して開始する
 
-前の手順で作成した Runbook はまだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。
+作成した Runbook は、まだドラフト モードです。 運用環境で実行できるようにするには、発行する必要があります。
 Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。
 この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
 
 1. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
    ![[発行] ボタン](media/automation-first-runbook-textual-python/automation-runbook-edit-controls-publish.png)
-1. **[Runbook]** ウィンドウで左にスクロールして Runbook を表示すると、**[作成状態]** は **[発行済み]** になっています。
+1. ここで **[Runbook]** ウィンドウで左へスクロールして Runbook を表示すると、**[編集状態]** は **[発行済み]** になっています。
 1. 右にスクロールして戻り、**MyFirstRunbook-Python** のウィンドウを表示します。
    上部のオプションを使用すると、Runbook の開始、Runbook の表示、将来の開始スケジュールの設定を行ったり、HTTP 呼び出しで開始できるように [webhook](automation-webhooks.md) を作成したりすることができます。
 1. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。
-1. 作成した Runbook ジョブのジョブ ウィンドウが開かれます。 このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
+1. 作成した Runbook ジョブのジョブ ウィンドウが開きます。 このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
 1. ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。
-1. Runbook の状態が *[完了]*になったら、 **[出力]**をクリックします。 [出力] ウィンドウが開き、「 *Hello World*」と表示されます。
+1. Runbook の状態が *[完了]*になったら、 **[出力]**をクリックします。 [出力] ウィンドウが開き、*Hello World* と表示されます。
 1. [出力] ウィンドウを閉じます。
-1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームでは *Hello World* だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。
+1. **[すべてのログ]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。 出力ストリームでは "*Hello World*" だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。
 1. ストリーム ウィンドウとジョブ ウィンドウを閉じると、MyFirstRunbook-Python のウィンドウに戻ります。
 1. **[ジョブ]** をクリックして、この Runbook のジョブ ウィンドウを開きます。 この Runbook によって作成されたジョブの一覧が表示されます。 ジョブを 1 回実行しただけであるため、一覧に表示されるジョブは 1 つだけです。
 1. このジョブをクリックすると、Runbook を開始したときに表示されたのと同じジョブ ウィンドウが開きます。 これにより前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
 
 ## <a name="add-authentication-to-manage-azure-resources"></a>Azure リソースを管理するための認証を追加する
 
-Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 ここでは、Runbook で Azure リソースを管理します。
+Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。
 Azure リソースを管理するには、スクリプトがご利用の [Automation アカウント](automation-offering-get-started.md)の資格情報を使用して認証する必要があります。
 
 > [!NOTE]
@@ -147,7 +148,7 @@ Azure リソースを管理するには、スクリプトがご利用の [Automa
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>コードを追加して、Python Compute クライアントを作成し、VM を起動する
 
-Azure VM で作業するには、[Azure Compute client for Python](https://docs.microsoft.com/python/api/azure.mgmt.compute.compute.computemanagementclient?view=azure-python) (Python 用の Azure Compute クライアント) のインスタンスを作成します。
+Azure VM で作業するには、[Azure Compute client for Python](https://docs.microsoft.com/python/api/azure.mgmt.compute.computemanagementclient?view=azure-python) (Python 用の Azure Compute クライアント) のインスタンスを作成します。
 
 Compute クライアントを使用して、VM を起動します。 Runbook に次のコードを追加します。
 
@@ -186,7 +187,7 @@ vm_name = str(sys.argv[2])
 これにより `sys` モジュールがインポートされ、リソース グループと VM の名前を保持する 2 つの変数が作成されます。
 引数リストの要素である `sys.argv[0]` はスクリプトの名前であり、ユーザーが入力したものではありませんので注意してください。
 
-ここでは Runbook の最後の 2 行を変更し、ハード コードされた値を使用する代わりに入力パラメーターの値を使用できます。
+ここでは Runbook の最後の 2 行を変更し、ハード コードされた値を使用する代わりに入力パラメーターの値をご利用いただけます。
 
 ```python
 async_vm_start = compute_client.virtual_machines.start(resource_group_name, vm_name)
@@ -207,7 +208,7 @@ Python Runbook を開始 (**[テスト]** ブレード上で、または発行�
 
 **[OK]** をクリックして Runbook を開始します。 Runbook が実行され、指定した VM を起動します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)

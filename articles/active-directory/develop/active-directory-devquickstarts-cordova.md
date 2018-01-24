@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: vittorib
 ms.custom: aaddev
-ms.openlocfilehash: eceeccc0d6225613fdd75a92b894290665168fc6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b489add83a462d1d3902831d63be0b70e2443718
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-an-apache-cordova-app"></a>Azure AD と Apache Cordova アプリとの統合
+# <a name="azure-ad-cordova-getting-started"></a>Azure AD Cordova の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -56,7 +56,7 @@ Azure AD テナントがない場合は、[取得方法の手順](active-directo
 Apache Cordova がコンピューターにセットアップされていない場合は、以下をインストールしてください。
 
 * [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [Node.JS](https://nodejs.org/download/)
+* [Node.js](https://nodejs.org/download/)
 * [Cordova CLI](https://cordova.apache.org/) (NPM パッケージ マネージャー `npm install -g cordova` を使用して簡単にインストールできます)
 
 前述のインストールは、PC と Mac のどちらでも動作します。
@@ -86,7 +86,7 @@ Apache Cordova がコンピューターにセットアップされていない�
 
 Azure AD では、既知のアプリケーションにのみトークンを発行します。 アプリケーションから Azure AD を使用するには、アプリケーション用のエントリをテナントで事前に作成しておく必要があります。 新しいアプリケーションをテナントに登録するには、次の手順を実行します。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Azure AD テナントを選択します。
 3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
@@ -285,7 +285,7 @@ var authority = "https://login.microsoftonline.com/common",
 
     Use `cordova run --help` to see additional build and run options.
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 完全なサンプル (構成値を除く) については、[GitHub](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova/tree/complete/DirSearchClient) で入手できます。
 
 ここからは上級のさらに興味深いシナリオに移動することができます。 「[Azure AD による Node.js Web API のセキュリティ保護](active-directory-devquickstarts-webapi-nodejs.md)」も試してみてください。

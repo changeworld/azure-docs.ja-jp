@@ -1,6 +1,6 @@
 ---
-title: "OMS Log Analytics での Windows イベント ログの収集と分析 | Microsoft Docs"
-description: "Windows イベント ログは、Log Analytics で使用される最も一般的なデータ ソースの 1 つです。  この記事では、Windows イベント ログの収集を構成する方法と OMS リポジトリに作成されるレコードの詳細について説明します。"
+title: "Azure Log Analytics での Windows イベント ログの収集と分析 | Microsoft Docs"
+description: "Windows イベント ログは、Log Analytics で使用される最も一般的なデータ ソースの 1 つです。  この記事では、Windows イベント ログの収集を構成する方法と、Log Analytics ワークスペースに作成されるレコードの詳細について説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 12/11/2017
 ms.author: bwren
-ms.openlocfilehash: ddead0903c7c5f29bc996e305699ced596d0a4f5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 7a7deb4d7a287b2e9613e6035a7ffd7bb6f14f9c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](log-analytics-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -44,7 +44,7 @@ Log Analytics は、監視対象のイベントが作成された時点で、選
 ## <a name="windows-event-records-properties"></a>Windows イベント レコードのプロパティ
 Windows イベント レコードの型は **Event** になり、次の表に示すプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | Computer |イベント収集元のコンピューターの名前。 |
 | EventCategory |イベントのカテゴリ。 |
@@ -64,7 +64,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 ## <a name="log-searches-with-windows-events"></a>Windows イベントのログ検索
 次の表は、Windows イベント レコードを取得するログ検索のさまざまな例をまとめたものです。
 
-| クエリ | Description |
+| クエリ | [説明] |
 |:---|:---|
 | イベント |すべての Windows イベント。 |
 | Event &#124; where EventLevelName == "error" |重大度が「エラー」のすべての Windows イベント。 |
@@ -72,7 +72,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |ソース別の Windows エラー イベントの数。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 分析のために別の [データ ソース](log-analytics-data-sources.md) を収集するように Log Analytics を構成します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用し、イベント レコードを個別のフィールドに解析します。

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: ae9fbd97a1747d8f14c561f247a0973bb11fd039
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0af3f6bc6e074fae4d830f163419d6437d04e2df
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-samples"></a>Event Hubs サンプル 
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 - [MSDN デベロッパー コード サンプル](https://code.msdn.microsoft.com/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
 - [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
-.NET Framework のバージョンの詳細については、「[フレームワークとターゲット](/dotnet/articles/standard/frameworks)」を参照してください。
+.NET Framework のバージョンの詳細については、「[フレームワークとターゲット](/dotnet/articles/standard/frameworks)」をご覧ください。
 
 サンプルは今後さらに追加される予定です。頻繁にここに戻り更新情報を確認してください。
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 10/11/2017
 
 [Web からのデータ インポート](https://github.com/Azure-Samples/event-hubs-dotnet-importfromweb) サンプルは、パブリック フィード (定時運航データのトラフィック情報フィードなど) からデータをプルし、それをイベント ハブにプッシュする方法を示しています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 .NET Framework バージョンの詳細については、次のリンク先を参照してください。
 

@@ -3,7 +3,7 @@ title: "Azure DevTest Labs で仮想ネットワークを構成する | Microsof
 description: "既存の仮想ネットワークとサブネットを構成し、それらを VM で Azure DevTest Labs と共に使用する方法について説明します"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 6cda99c2-b87e-4047-90a0-5df10d8e9e14
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
-ms.author: tarcher
-ms.openlocfilehash: 7048d5d1054906d712ac0422dacfe1ccca97fcc0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.author: v-craic
+ms.openlocfilehash: 21daa8ff756ee30c6d454d49af7db20afe488c47
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs で仮想ネットワークを構成する
 [ラボへの VM の追加](devtest-lab-add-vm.md)に関する記事で説明しているように、ラボで VM を作成する際に、構成されている仮想ネットワークを指定できます。 たとえば、ExpressRoute またはサイト間 VPN で構成されている仮想ネットワークを使用して、VM から企業ネットワーク リソースにアクセスしなければならない場合があります。
@@ -58,12 +58,12 @@ ms.lasthandoff: 11/22/2017
 1. **[OK]** を選択して、[ラボ サブネット] ウィンドウを閉じます。
 1. **[保存]** を選択して、[仮想ネットワーク] ウィンドウを閉じます。
 
-仮想ネットワークが構成されたので、VM の作成時にそれを選択できます。 VM の作成方法および仮想ネットワークの指定方法については、「 [アーティファクトを含む VM をラボに追加する](devtest-lab-add-vm-with-artifacts.md)」を参照してください。 
+仮想ネットワークが構成されたので、VM の作成時にそれを選択できます。 VM の作成方法および仮想ネットワークの指定方法については、[ラボへの VM の追加](devtest-lab-add-vm.md)に関する記事を参照してください。 
 
 Azure の [Virtual Network ドキュメント](https://docs.microsoft.com/azure/virtual-network)では、VNet を設定および管理して、オンプレミスの ネットワークに接続する方法など、VNet を使用する方法について詳しく説明しています。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次のステップ
-ラボに目的の仮想ネットワークを追加したら、次は [ラボに VM を追加](devtest-lab-add-vm-with-artifacts.md)します。
+## <a name="next-steps"></a>次の手順
+ラボに目的の仮想ネットワークを追加したら、次は [ラボに VM を追加](devtest-lab-add-vm.md)します。
 

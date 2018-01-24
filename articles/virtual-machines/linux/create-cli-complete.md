@@ -4,7 +4,7 @@ description: "Azure CLI 2.0 を使用して、ストレージ、Linux VM、仮�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
@@ -13,13 +13,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/06/2017
+ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: e5c4785428b2150e951923e98079e00808a82d87
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd470144dc0fcbbfab662125b57d414c6ee1ccdd
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した完全な Linux 仮想マシンの作成
 必要なサポート リソースすべてを既定値で作成する単一の Azure CLI コマンドを使用すると、Azure で仮想マシン (VM) を短時間で作成することができます。 仮想ネットワーク、パブリック IP アドレス、ネットワーク セキュリティ グループの規則などのリソースが自動的に作成されます。 実稼働用に環境をより細かく制御する場合は、こうしたリソースを先に作成してから、作成したリソースに VM を追加します。 この記事では、VM の作成方法、および各サポート リソースを 1 つずつ作成する方法を説明します。
@@ -102,7 +102,7 @@ az network vnet create \
 
 
 ## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-次に、[az network public-ip create](/cli/azure/network/public-ip#create) を使用してパブリック IP アドレスを作成します。 インターネットからは、このパブリック IP アドレスで VM に接続することができます。 既定のアドレスは動的であるため、`--domain-name-label` オプションを指定して名前付きの DNS エントリも作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します  DNS 名は一意である必要があるので、独自の DNS 名を指定します。
+次に、[az network public-ip create](/cli/azure/network/public-ip#create) を使用してパブリック IP アドレスを作成します。 インターネットからは、このパブリック IP アドレスで VM に接続することができます。 既定のアドレスは動的であるため、`--domain-name-label` パラメーターを指定して名前付きの DNS エントリを作成します。 次の例では、DNS 名が *mypublicdns* で *myPublicIP* という名前のパブリック IP を作成します  DNS 名は一意である必要があるので、独自の DNS 名を指定します。
 
 ```azurecli
 az network public-ip create \
@@ -141,7 +141,7 @@ az network public-ip create \
 
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
-VM で送受信されるトラフィック フローを制御するために、ネットワーク セキュリティ グループを作成します。 ネットワーク セキュリティ グループは、NIC またはサブネットに適用できます。 次の例では [az network nsg create](/cli/azure/network/nsg#create) を使用して、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
+VM で送受信されるトラフィック フローを制御するために、仮想 NIC またはサブネットにネットワーク セキュリティ グループを適用します。 次の例では [az network nsg create](/cli/azure/network/nsg#create) を使用して、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli
 az network nsg create \
@@ -149,7 +149,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-特定のトラフィックを許可または拒否する規則を定義します。 ポート 22 での受信接続を許可するために (SSH のサポートため)、[az network nsg rule create](/cli/azure/network/nsg/rule#create) を使用してネットワーク セキュリティ グループの受信規則を作成します。 次の例では、*myNetworkSecurityGroupRuleSSH* という名前の規則を作成します。
+特定のトラフィックを許可または拒否する規則を定義します。 ポート 22 での受信接続を許可するために (SSH アクセスを有効にするため)、[az network nsg rule create](/cli/azure/network/nsg/rule#create) を使用して、受信規則を作成します。 次の例では、*myNetworkSecurityGroupRuleSSH* という名前の規則を作成します。
 
 ```azurecli
 az network nsg rule create \
@@ -162,7 +162,7 @@ az network nsg rule create \
     --access allow
 ```
 
-ポート 80 での受信接続を許可するために (Web トラフィックのサポートのため)、別のネットワーク セキュリティ グループ規則を追加します。 次の例では、*myNetworkSecurityGroupRuleHTTP* という名前の規則を作成します。
+ポート 80 での受信接続を許可するために (Web トラフィックのため)、別のネットワーク セキュリティ グループ規則を追加します。 次の例では、*myNetworkSecurityGroupRuleHTTP* という名前の規則を作成します。
 
 ```azurecli
 az network nsg rule create \
@@ -332,7 +332,7 @@ az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGro
 ```
 
 ## <a name="create-a-virtual-nic"></a>仮想 NIC の作成
-仮想ネットワーク インターフェイス カード (NIC) は使用時に規則を適用可能なため、プログラム上で使用できます。 複数でも可能になります。 次の [az network nic create](/cli/azure/network/nic#create) コマンドでは、*myNic* という名前の NIC を作成し、ネットワーク セキュリティ グループに関連付けています。 また、この仮想 NIC に *myPublicIP* というパブリック IP アドレスも関連付けています。
+仮想ネットワーク インターフェイス カード (NIC) は使用時に規則を適用可能なため、プログラム上で使用できます。 [VM サイズ](sizes.md)に応じて、複数の仮想 NIC を VM にアタッチできます。 次の [az network nic create](/cli/azure/network/nic#create) コマンドでは、*myNic* という名前の NIC を作成し、ネットワーク セキュリティ グループに関連付けます。 また、この仮想 NIC に *myPublicIP* というパブリック IP アドレスも関連付けています。
 
 ```azurecli
 az network nic create \
@@ -476,10 +476,10 @@ az vm availability-set create \
 ```
 
 
-## <a name="create-the-linux-vms"></a>Linux VM の作成
-これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 次に、VM を作成し SSH キーを使用して保護します。 この場合は、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](cli-ps-findimage.md) に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image#list) を使用すると他のイメージを検索できます。
+## <a name="create-a-vm"></a>VM の作成
+これで、インターネットにアクセス可能な VM をサポートするためのネットワーク リソースが作成されました。 次に、VM を作成し SSH キーを使用して保護します。 この例では、最新の LTS に基づいて Ubuntu VM を作成します。 [Azure VM イメージの検索](cli-ps-findimage.md) に関する記事で説明されているように、[az vm image list](/cli/azure/vm/image#list) を使用すると他のイメージを検索できます。
 
-認証に使う SSH キーも指定します。 SSH 公開キーのペアが無い場合は、[自分で作成する](mac-create-ssh-keys.md)か、`--generate-ssh-keys` パラメーターを使用して自動で作成できます。 このパラメーターでは、キーのペアがすでにある場合は `~/.ssh` にある既存のキーが使用されます。
+認証に使用する SSH キーを指定します。 SSH 公開キーのペアが無い場合は、[自分で作成する](mac-create-ssh-keys.md)か、`--generate-ssh-keys` パラメーターを使用して自動で作成できます。 このパラメーターでは、キーのペアが既にある場合は `~/.ssh` にある既存のキーが使用されます。
 
 [az vm create](/cli/azure/vm#create) コマンドですべてのリソースと情報を指定して、VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
 
@@ -521,7 +521,7 @@ The authenticity of host 'mypublicdns.eastus.cloudapp.azure.com (13.90.94.252)' 
 ECDSA key fingerprint is SHA256:SylINP80Um6XRTvWiFaNz+H+1jcrKB1IiNgCDDJRj6A.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added 'mypublicdns.eastus.cloudapp.azure.com,13.90.94.252' (ECDSA) to the list of known hosts.
-Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.4.0-81-generic x86_64)
+Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.11.0-1016-azure x86_64)
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
@@ -576,5 +576,5 @@ az group deployment create \
 
 [テンプレートからデプロイする方法に関する詳細](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご確認ください。 段階的な環境の更新、パラメーター ファイルの使用、単一の保存場所からテンプレートにアクセスする方法を確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、複数のネットワーク コンポーネントと VM の操作を開始する準備が整いました。 ここで紹介した主要なコンポーネントを使用して、アプリケーションを構築するためにこのサンプル環境を使用できます。

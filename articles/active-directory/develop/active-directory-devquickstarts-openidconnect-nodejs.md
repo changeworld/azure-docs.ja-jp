@@ -1,5 +1,5 @@
 ---
-title: "Node.js を使用する Azure AD へのサインインおよびサインアウトの概要 | Microsoft Docs"
+title: "Azure AD Node.js Web アプリの概要 | Microsoft Docs"
 description: "サインインのために Azure AD と連携する Node.js Express MVC Web アプリを構築する方法を説明します。"
 services: active-directory
 documentationcenter: nodejs
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 3a9bc44ec9fc5a7c5e18139070bac837421efff5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a0079c1f4265e1c2564b85247cf5f5e0289799db
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a>Azure AD を使用した Node.js Web アプリへのサインインおよびサインアウト
+# <a name="azure-ad-nodejs-web-app-getting-started"></a>Azure AD Node.js Web アプリの概要
 ここでは、Passport を使用して次の操作を行います。
 
 * Azure Active Directory (Azure AD) を使用してユーザーをアプリにサインインします。
@@ -44,7 +44,7 @@ Passport は Node.js 用の認証ミドルウェアです。 Passport は、柔�
 完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
 ## <a name="step-1-register-an-app"></a>手順 1: アプリを登録する
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. ページ上部のメニューから、自分のアカウントを選択します。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Active Directory テナントを選択します。
 
@@ -402,7 +402,7 @@ OpenID Connect 認証プロトコルを使用してエンドポイントと通�
     </html>
     ```
 
-##<a name="next-steps"></a>次のステップ
+##<a name="next-steps"></a>次の手順
 最後に、アプリをビルドして実行します。 `node app.js` を実行し、`http://localhost:3000` に移動します。
 
 Microsoft の個人または職場/学校アカウントのいずれかでサインインすると、ユーザーの ID が /account リストにどのように反映されるかがわかります。 これで、Web アプリが業界標準のプロトコルで保護され、個人および職場/学校アカウントの両方でユーザーを認証できるようになりました。

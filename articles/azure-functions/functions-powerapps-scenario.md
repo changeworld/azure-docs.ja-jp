@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 12/14/2017
 ms.author: mblythe
 ms.custom: 
-ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28c2fc8246851807e1f65911d6a5d56322c5ea16
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="call-a-function-from-powerapps"></a>PowerApps から関数を呼び出す
 [PowerApps](https://powerapps.microsoft.com) プラットフォームは、ビジネス エキスパート向けに設計されており、従来のアプリケーション コードを使用せずにアプリを作成することができます。 プロフェッショナルの開発者は Azure Functions を使用して PowerApps の機能を拡張できます。PowerApps アプリ ビルダーが技術詳細を把握している必要はありません。
@@ -45,34 +45,8 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="prerequisites"></a>前提条件
 
 + Azure アカウントと同じサインイン資格情報を使用しているアクティブな [PowerApps アカウント](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md)。 
-+ Excel (アプリのデータ ソースとして Excel を使用するため)。
++ Excel と、アプリのデータ ソースとして使用する [Excel サンプル ファイル](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx)。
 + 「[関数の OpenAPI 定義の作成](functions-openapi-definition.md)」を完了している。
-
-
-## <a name="prepare-sample-data-in-excel"></a>Excel でサンプル データを準備する
-まず、アプリで使用するサンプル データを準備します。 次の表を Excel にコピーします。 
-
-| タイトル      | Latitude  | Longtitude  | LastServiceDate | MaxOutput | ServiceRequired | EstimatedEffort | InspectionNotes                            |
-|------------|-----------|-------------|-----------------|-----------|-----------------|-----------------|--------------------------------------------|
-| タービン 1  | 47.438401 | -121.383767 | 2/23/2017       | 2850      | あり             | 6               | この月の 2 回目の問題。       |
-| タービン 4  | 47.433385 | -121.383767 | 5/8/2017        | 5400      | あり             | 6               |                                            |
-| タービン 33 | 47.428229 | -121.404641 | 6/20/2017       | 2800      |                 |                 |                                            |
-| タービン 34 | 47.463637 | -121.358824 | 2/19/2017       | 2800      | あり             | 7               |                                            |
-| タービン 46 | 47.471993 | -121.298949 | 3/2/2017        | 1200      |                 |                 |                                            |
-| タービン 47 | 47.484059 | -121.311171 | 8/2/2016        | 3350      |                 |                 |                                            |
-| タービン 55 | 47.438403 | -121.383767 | 10/2/2016       | 2400      | あり             | 40               | この部品がいくつか届く予定。 |
-
-1. Excel でデータを選択し、**[ホーム]** タブで、**[テーブルとして書式設定]** をクリックします。
-
-    ![テーブルとして書式設定](media/functions-powerapps-scenario/format-table.png)
-
-1. スタイルを選択し、**[OK]**をクリックします。
-
-1. テーブルを選択したまま、**[デザイン]** タブで、**[テーブル名]** に「`Turbines`」と入力します。
-
-    ![テーブル名](media/functions-powerapps-scenario/table-name.png)
-
-1. Excel ブックを保存します。
 
 [!INCLUDE [Export an API definition](../../includes/functions-export-api-definition.md)]
 
@@ -97,35 +71,35 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 ## <a name="create-an-app-and-add-data-sources"></a>アプリを作成し、データ ソースを追加する
 これで PowerApps でアプリを作成し、Excel データとカスタム API を、アプリのデータ ソースとして追加することができます。
 
-1. [web.powerapps.com](https://web.powerapps.com) の左側のウィンドウで、**[新しいアプリ]** をクリックします。
+1. [web.powerapps.com](https://web.powerapps.com) で、**[空白から開始]** > ![電話アプリ アイコン](media/functions-powerapps-scenario/icon-phone-app.png) (電話) > **[このアプリの作成]** の順に選択します。
 
-1. **[空のアプリ]** で **[携帯電話レイアウト]** をクリックします。
+    ![[空白から開始] - 電話アプリ](media/functions-powerapps-scenario/create-phone-app.png)
 
-    ![タブレット アプリを作成する](media/functions-powerapps-scenario/create-phone-app.png)
-
-    Web 用 PowerApps Studio でアプリが開きます。 次のイメージは、PowerApps Studio のさまざまな部分を示しています。 このイメージは完成アプリで、最初に空の画面が中央のウィンドウに表示されます。
+    Web 用 PowerApps Studio でアプリが開きます。 次のイメージは、PowerApps Studio のさまざまな部分を示しています。
 
     ![PowerApps Studio](media/functions-powerapps-scenario/powerapps-studio.png)
 
-    **(1) 左側のナビゲーション バー**。各画面のコントロールがすべて階層表示されます
+    **(A) 左側のナビゲーション バー**。各画面のコントロールがすべて階層表示されます
 
-    **(2) 中央のウィンドウ**。作業画面です
+    **(B) 中央のウィンドウ**。作業画面です
 
-    **(3) 右側のウィンドウ**。レイアウト、データ ソースなどのオプションを設定します
+    **(C) 右側のウィンドウ**。レイアウト、データ ソースなどのオプションを設定します
 
-    **(4) プロパティ** ドロップダウン リスト。数式を適用するプロパティを選択します
+    **(D) プロパティ** ドロップダウン リスト。数式を適用するプロパティを選択します
 
-    **(5) 数式バー**。(Excel などと同じように) アプリの動作を定義する数式を追加します
+    **(E) 数式バー**。(Excel などと同じように) アプリの動作を定義する数式を追加します
     
-    **(6) リボン**。コントロールを追加し、デザイン要素をカスタマイズします
+    **(F) リボン**。コントロールを追加し、デザイン要素をカスタマイズします
 
 1. Excel ファイルをデータ ソースとして追加します。
 
-    1. 右側のウィンドウの **[データ]** タブで、**[データ ソースの追加]** をクリックします。
+    インポートするデータは次のようになります。
 
-        ![データ ソースを追加する](media/functions-powerapps-scenario/add-data-source.png)
+    ![インポートする Excel データ](media/functions-powerapps-scenario/excel-table.png)
 
-    1. **[静的データをアプリに追加します]** をクリックします。
+    1. アプリ キャンバスで、**[データに接続]** を選択します。
+
+    1. **[データ]** パネルで、**[静的データをアプリに追加します]** をクリックします。
 
         ![データ ソースを追加する](media/functions-powerapps-scenario/add-static-data.png)
 
@@ -135,9 +109,10 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
         ![データ ソースを追加する](media/functions-powerapps-scenario/choose-table.png)
 
+
 1. カスタム API をデータ ソースとして追加します。
 
-    1. **[データ]** タブで、**[データ ソースの追加]** をクリックします。
+    1. **[データ]** パネルで、**[データ ソースの追加]** をクリックします。
 
     1. **[Turbine Repair]\(タービン修復\)** をクリックします。
 
@@ -156,17 +131,21 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
     ![タイトルとギャラリーのサイズを変更する](media/functions-powerapps-scenario/gallery-title.png)
 
-1. ギャラリーを選択したまま、右側のウィンドウの **[データ]** タブで、データ ソースを **CustomGallerySample** から "**タービン**" に変更します。
+1. ギャラリーを選択して、右ウィンドウの **[プロパティ]** で **CustomGallerySample** をクリックします。
 
     ![データ ソースを変更する](media/functions-powerapps-scenario/change-data-source.png)
 
+1. **[データ]** パネルで、一覧から **Turbines** を選択します。
+
+    ![データ ソースの選択](media/functions-powerapps-scenario/select-data-source.png)
+
     データ セットにはイメージが含まれていないため、次は、データに合わせてレイアウトを変更します。 
 
-1. 引き続き右側のウィンドウで、**レイアウト**を **[タイトル、サブタイトル、本文]** に変更します。
+1. 引き続き **[データ]** パネルで、**[レイアウト]** を **[タイトル、サブタイトル、本文]** に変更します。
 
     ![ギャラリーのレイアウトを変更する](media/functions-powerapps-scenario/change-layout.png)
 
-1. 右側のウィンドウでの最後の手順として、ギャラリーに表示されるフィールドを変更します。
+1. **[データ]** パネルでの最後の手順として、ギャラリーに表示されるフィールドを変更します。
 
     ![ギャラリーのフィールドを変更する](media/functions-powerapps-scenario/change-fields.png)
     
@@ -178,13 +157,15 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
     ![テンプレート入力数式](media/functions-powerapps-scenario/formula-fill.png)
 
-    どのギャラリー項目が選択されているかが確認しやすくなりました。
+    どのギャラリー アイテムが選択されているかが確認しやすくなりました。
 
     ![選択されている項目](media/functions-powerapps-scenario/selected-item.png)
 
 1. アプリの元の画面は必要ありません。 左側のウィンドウで、**[Screen1]** をポイントし、**[...]**、**[削除]** の順にクリックします。
 
     ![画面を削除する](media/functions-powerapps-scenario/delete-screen.png)
+
+1. **[ファイル]** をクリックし、アプリに名前を付けます。 左側のメニューで **[保存]** をクリックし、右下隅にある **[保存]** をクリックします。
 
 運用アプリでは、通常、他にもたくさんの書式設定を行いますが、ここで、このシナリオの重要な操作 "関数の呼び出し" に進みます。
 
@@ -206,7 +187,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
     ```
     If (BrowseGallery1.Selected.ServiceRequired="Yes", ClearCollect(DetermineRepair, TurbineRepair.CalculateCosts({hours: BrowseGallery1.Selected.EstimatedEffort, capacity: BrowseGallery1.Selected.MaxOutput})))
     ```
-    この数式は、ボタンがクリックされたときに実行され、選択したギャラリー項目の **ServiceRequired** 値が `Yes` の場合に次の処理を実行します。
+    この数式は、ボタンがクリックされたときに実行され、選択したギャラリー アイテムの **ServiceRequired** 値が `Yes` の場合に次の処理を実行します。
 
     + *collection* `DetermineRepair` をクリアして、以前の呼び出しからデータを削除する。 コレクションは表形式の変数です。
 
@@ -237,7 +218,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
 1. 他のタービンで、関数によって返される内容を確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このトピックで学習した内容は次のとおりです。
 
 > [!div class="checklist"]

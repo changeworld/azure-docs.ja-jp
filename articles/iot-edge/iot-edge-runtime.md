@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7b37f9e103644d2492f69f4a4cc80d3fd57d4aa4
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4727560df897f6c1a0aaa6d7f5d4e1c76fc02a46
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Azure IoT Edge ランタイムとそのアーキテクチャについて - プレビュー
 
@@ -92,21 +92,29 @@ Edge エージェントの実行を開始するには、azure-iot-edge-runtime-c
    * ダウンロード中
    * 実行中
    * 異常
-   * Failed
+   * 失敗
    * 停止済み
 * **restartPolicy** – Edge エージェントが、モジュールを再起動する方法です。 指定できる値は、次のとおりです。
    * Never – Edge エージェントが、モジュールを再起動することはありません。
    * onFailure - モジュールがクラッシュした場合、Edge エージェントがモジュールを再起動します。 モジュールがクリーンにシャット ダウンした場合、Edge エージェントはモジュールを再起動しません。
    * Unhealthy - モジュールがクラッシュしたか、異常と判断された場合は、Edge エージェントによって再起動されます。
    * Always - モジュールがクラッシュしたか、異常と判断された場合、あるいは方法に関係なくシャットダウンされた場合は、Edge エージェントによって再起動されます。 
-   
+
+IoT Edge エージェントは、ランタイム応答を IoT ハブに送信します。 考えられる応答の一覧を以下に示します。
+  * 200 - OK
+  * 400 - デプロイ構成が正しくない形式であるか、無効です。
+  * 417 - デバイスにデプロイ構成セットがありません。
+  * 412 - デプロイ構成にあるスキーマ バージョンが無効です。
+  * 406 - エッジ デバイスがオフラインであるか、状態レポートを送信していません。
+  * 500 - エッジ ランタイムでエラーが発生しました。
+
 ### <a name="security"></a>セキュリティ
 
 IoT Edge エージェントは、IoT Edge デバイスのセキュリティ上、重要な役割を果たします。 たとえば、起動前のモジュール イメージの検証などの操作を実行します。 これらの機能は、V2 機能の一般提供時に追加されます。 
 
 <!-- For more information about the Azure IoT Edge security framework, see []. -->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure IoT Edge モジュールについて][lnk モジュール]
 

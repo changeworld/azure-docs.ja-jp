@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: d8a5f3c915b1e3b6e11cec9c5540fa192f5f85dd
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: b1bca62e256c1ede5df6888dd7c47ce2aa816bb9
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions でのチェックポイントと再生 - (Azure Functions)
 
@@ -63,7 +63,7 @@ Durable Task Framework は、`await` ステートメントごとに、関数の�
 
 完了すると、Azure Table Storage の上記の関数の履歴は次のようになります (わかりやすくするために一部省略されています)。
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | 名前             | 結果                                                    | 状態 | 
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | 入力 | Name             | 結果                                                    | 状態 | 
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     | 
@@ -90,7 +90,7 @@ Durable Task Framework は、`await` ステートメントごとに、関数の�
     * **TaskScheduled**: アクティビティ関数がスケジュールされました。 アクティビティ関数の名前は `Name` 列でキャプチャされます。
     * **TaskCompleted**: アクティビティ関数が完了しました。 関数の結果は `Result` 列に含まれます。
     * **TimerCreated**: 持続的タイマーが作成されました。 `FireAt` 列には、タイマーが期限切れになるスケジュールされた UTC 時間が含まれます。
-    * **TimerFired**: 持続的タイマーの有効期限が切れています。
+    * **TimerFired**: 持続的タイマーが開始されました。
     * **EventRaised**: 外部イベントがオーケストレーション インスタンスに送信されました。 `Name` 列は、イベントの名前をキャプチャし、`Input` 列は、イベントのペイロードをキャプチャします。
     * **OrchestratorCompleted**: オーケストレーター関数が待機状態になりました。
     * **ContinueAsNew**: オーケストレーター関数が完了し、新しい状態で再実行されました。 `Result` 列には、再起動されたインスタンスで入力として使用される値が含まれます。
@@ -98,7 +98,7 @@ Durable Task Framework は、`await` ステートメントごとに、関数の�
 * **Timestamp**: 履歴イベントの UTC タイムスタンプ。
 * **Name**: 呼び出された関数の名前。
 * **Input**: 関数の JSON 形式の入力。
-* **Output**: 関数の出力、つまり戻り値。
+* **Result**: 関数の出力、つまり、戻り値。
 
 > [!WARNING]
 > これはデバッグ ツールとしては便利ですが、このテーブルにあまり依存しないようにしてください。 Durable Functions 拡張機能が今後改善されると、これは変更される可能性があります。
@@ -141,7 +141,7 @@ Durable Task Framework は、`await` ステートメントごとに、関数の�
 
 Durable Task Framework がオーケストレーター関数を実行する方法に関する詳細情報が必要な場合は、[GitHub の持続的なタスクのソース コード](https://github.com/Azure/durabletask)を確認することをお勧めします。 特に、[TaskOrchestrationExecutor.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationExecutor.cs) と [TaskOrchestrationContext.cs](https://github.com/Azure/durabletask/blob/master/src/DurableTask.Core/TaskOrchestrationContext.cs) を参照してください
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [インスタンス管理について確認する](durable-functions-instance-management.md)

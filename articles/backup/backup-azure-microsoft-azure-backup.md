@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/20/2017
-ms.author: masaran;trinadhk;pullabhk;markgal
-ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: masaran;trinadhk;pullabhk;markgal;adigan
+ms.openlocfilehash: addb4312ce1eb57ce86afae449eb3d31d0037418
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Azure Backup Server を使用してワークロードをバックアップするための準備
 > [!div class="op_single_selector"]
@@ -57,6 +57,7 @@ Azure Backup Server を使用したワークロードの保護には、数多く
 
 | オペレーティング システム | プラットフォーム | SKU |
 |:--- | --- |:--- |
+| Windows Server 2016 と最新 SP |64 ビット |Standard、Datacenter、Essentials (MABS v2 以降) |
 | Windows Server 2012 R2 と最新 SP |64 ビット |Standard、Datacenter、Foundation |
 | Windows Server 2012 と最新 SP |64 ビット |Datacenter、Foundation、Standard |
 | Windows Storage Server 2012 R2 と最新 SP |64 ビット |Standard、Workgroup |
@@ -79,7 +80,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
 Recovery Services コンテナーを作成するには、次の手順に従います。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**をクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
@@ -111,9 +112,9 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
-## <a name="3-software-package"></a>3.ソフトウェア パッケージ
+## <a name="3-software-package"></a>手順 3.ソフトウェア パッケージ
 ### <a name="downloading-the-software-package"></a>ソフトウェア パッケージのダウンロード
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 既に Recovery Services コンテナーが開かれている場合は、手順 3. に進みます。 Recovery Services コンテナーが開かれていない場合は、Azure Portal でハブ メニューの **[参照]** をクリックします。
 
    * リソース ボックスに「 **Recovery Services**」と入力します。
@@ -127,7 +128,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
      選択したコンテナーのダッシュボードが開きます。
 
      ![Open vault blade](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
-3. 既定では、**[設定]** ブレードが開きます。 設定ブレードが閉じている場合は、 **[設定]** をクリックし、設定ブレードを開きます。
+3. 既定では、**[設定]** ブレードが開きます。 設定ブレードが閉じている場合は、 **[設定]** をクリックして設定ブレードを開きます。
 
     ![Open vault blade](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
 4. **[バックアップ]** をクリックして、作業の開始ウィザードを開きます。
@@ -267,7 +268,7 @@ Azure サブスクリプションの状態が "*有効期限切れ*" または "
 Microsoft Azure Backup Server がセットアップ段階 (またはバックアップや復元) でエラーのため失敗した場合、詳細については、この[エラー コードのドキュメント](https://support.microsoft.com/kb/3041338)を参照してください。
 [Azure Backup 関連の FAQ](backup-azure-backup-faq.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [DPM 用の環境の準備](https://technet.microsoft.com/library/hh758176.aspx) について、Microsoft TechNet サイトのページで詳細を確認してください。 このページには、Azure Backup Server のデプロイと使用が可能なサポートされる構成も記載されています。
 
 以下の記事により、Microsoft Azure Backup Server を使用したワークロードの保護について理解を深めてください。

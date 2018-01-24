@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.openlocfilehash: 70a1ad070e812951fca3d2b19da12c67f0725dd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08f4f4aca20efad8f51ebc9ca8c6df8de8d0d4c7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>逆引き DNS と Azure でのサポートの概要
 
@@ -106,7 +106,7 @@ IPv4 と IPv6 の両方で、Azure DNS を使って、[逆引き参照ゾーン�
 
 **Azure サービスに割り当てられた IP アドレスの逆引き DNS レコードを構成する。** Azure を使うと、[Azure サービスに割り当てられた IP アドレスの逆引き参照を構成する](dns-reverse-dns-for-azure-services.md)ことができます。  この逆引き参照は、対応する ARPA ゾーン内の PTR レコードとして Azure によって構成されます。  これらの ARPA ゾーンは、Azure によって使われるすべての IP 範囲に対応しており、Microsoft によってホストされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>

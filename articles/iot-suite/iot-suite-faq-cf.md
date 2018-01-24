@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: corywink
-ms.openlocfilehash: d4cb452b34ddefc70dc1adcff0e5fead072aa16a
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.date: 12/12/2017
+ms.author: dobett
+ms.openlocfilehash: 16685787b04d26f09e2b8778faac257571162aac
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Azure IoT Suite コネクテッド ファクトリ事前構成済みソリューションに関してよく寄せられる質問
 
@@ -82,7 +82,7 @@ www.azureiotsuite.com からソリューションをデプロイした場合は�
 1. アクティブなコンテナーを確認するには、`docker ps` を実行します。
 1. すべてのシミュレーション コンテナーを停止するには、`./stopsimulation` を実行します。
 1. すべてのシミュレーション コンテナーを開始するには、次のようにします。
-    * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 `<name of your deployment>.config.user` ファイルの **IotHubOwnerConnectionString** 設定の値を使用します。 For example:
+    * シェル変数を **IOTHUB_CONNECTIONSTRING** という名前でエクスポートします。 `<name of your deployment>.config.user` ファイルの **IotHubOwnerConnectionString** 設定の値を使用します。 例: 
 
         ```
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -144,7 +144,65 @@ www.azureiotsuite.com からソリューションをデプロイした場合は�
 
 IoT Hub に送信されるデータが表示されない場合は、シミュレーションに問題があります。 分析の最初の手順として、シミュレーション コンポーネントのログ ファイルを分析する必要があります。 「[シミュレーション コンポーネントからログ データを取得するにはどうすればいいですか](#how-can-i-get-log-data-from-the-simulation-components)」をご覧ください。 次にシミュレーションの停止と開始を試行して、送信データが存在しない状態から変わらない場合は、シミュレーションをすべて更新します。 「[VM のシミュレーションを更新するにはどうすればいいですか](#how-do-i-update-the-simulation-in-the-vm)」をご覧ください。
 
-### <a name="next-steps"></a>次のステップ
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>コネクテッド ファクトリ ソリューションでインタラクティブ マップを有効にするにはどうすればいいですか
+
+コネクテッド ファクトリ ソリューションでインタラクティブ マップを有効にするには、事前に Bing Maps API for Enterprise プランを取得する必要があります。 既に Bing Maps API for Enterprise プランがある場合は、www.azureiotsuite.com からコネクテッド ファクトリ ソリューションをデプロイすると、インタラクティブ マップが自動的に有効化されます。
+
+### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか
+
+*Internal Website Transactions Level 1 の Bing Maps API for Enterprise* プランを無料で取得できます。 ただし、Azure サブスクリプションにこのプランを追加できるのは、最大 2 つです。 Bing Maps API for Enterprise アカウントをお持ちでない場合は、Azure Portal で **[+ リソースの作成]** をクリックすると、リソースが 1 つ作成されます。 その後で、「**Bing Maps API for Enterprise**」を検索して、画面の指示に従ってアカウントを作成してください。
+
+![Bing キー](media/iot-suite-faq-cf/bing.png)
+
+### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか
+
+Bing Maps API for Enterprise プランを作成したら、Azure Portal でコネクテッド ファクトリ ソリューションのリソース グループに Bing Maps for Enterprise リソースを追加します。
+
+1. Azure Portal で、Bing Maps API for Enterprise プランが含まれるリソース グループに移動します。
+
+1. **[すべての設定]**、**[キーの管理]** の順にクリックします。
+
+1. **MasterKey** と **QueryKey** という 2 つのキーが表示されます。 **QueryKey** の値をコピーします。
+
+1. `build.ps1` スクリプトで取得されたキーを保持するために、PowerShell 環境の環境変数 `$env:MapApiQueryKey` をプランの **QueryKey** に設定します。 この build スクリプトによって、App Service の設定に値が自動的に追加されます。
+
+1. `build.ps1` スクリプトを使用して、ローカル デプロイまたはクラウド デプロイを実行します。
+
+### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>ローカルでのデバッグ中にインタラクティブ マップを有効にするにはどうすればいいですか
+
+ローカルでのデバッグ中にインタラクティブ マップを有効にするには、デプロイのルートにあるファイル `local.user.config` と `<yourdeploymentname>.user.config` で設定 `MapApiQueryKey` の値を、事前にコピーしておいた **QueryKey** の値に設定します。
+
+### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>ダッシュボードのホーム ページに別のイメージを使用するにはどうすればいいですか
+
+ダッシュボードのホーム ページに表示される静的イメージを変更するには、イメージ `WebApp\Content\img\world.jpg` を置き換えます。 その後で、Web アプリをリビルドして再デプロイします。
+
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>OPC UA 非対応デバイスをコネクテッド ファクトリと共に使用するにはどうすればいいですか
+
+OPC UA 非対応デバイスからコネクテッド ファクトリに利用統計情報を送信するには、次の手順に従います。
+
+1. ファイル `ContosoTopologyDescription.json` で[コネクテッド ファクトリ トポロジ](iot-suite-connected-factory-configure.md)に新しいステーションを構成します。
+
+1. コネクテッド ファクトリが対応している次のような JSON 形式で利用統計情報を取り込みます。
+
+    ```json
+    [
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
+    ]
+    ```
+
+1. `<timestamp>` の書式は `2017-12-08T19:24:51.886753Z` です。
+
+1. コネクテッド ファクトリ App Service を再起動します。
+
+### <a name="next-steps"></a>次の手順
 
 IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
 

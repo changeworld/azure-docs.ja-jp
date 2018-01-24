@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6886d1239fa074a6316b243e574833f5554ac298
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 3310239b5569ca5b63bd39acb4d192a4e54780e4
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -85,7 +85,8 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。
 * *これにより、[メトリック アラート](app-insights-alerts.md)が置き換えられるのですか。*
-  * いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
+  * 
+いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
 
 
 * *通知に対して何もしない場合、リマインダーが送信されますか。*
@@ -179,7 +180,7 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 時間の範囲とフィルターを変更して、テレメトリを調べます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
 * [プロファイラー](app-insights-profiler.md) 

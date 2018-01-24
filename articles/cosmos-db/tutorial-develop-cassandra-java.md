@@ -16,17 +16,17 @@ ms.workload:
 ms.date: 11/15/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7e1a17517890f8ed738b6afdcbe073a2bf1ebc6f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 53987e5863d9fc11b4fa377295d198293819269c
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB: Java での Cassandra API を使用した開発
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このチュートリアルでは、Azure Portal を使用して Azure Cosmos DB アカウントを作成する方法と、[Cassandra API](cassandra-introduction.md) を使用して Cassandra テーブル (documentdb-partition-data.md#partition-keys) を作成する方法を説明します。 テーブルの作成時に主キーを定義することで、データの増加に合わせて、労力をかけずにアプリケーションをスケールする準備ができます。 
+このチュートリアルでは、Azure Portal を使用して Azure Cosmos DB アカウントを作成する方法と、[Cassandra API](cassandra-introduction.md) を使用して Cassandra テーブル (sql-api-partition-data.md#partition-keys) を作成する方法を説明します。 テーブルの作成時に主キーを定義することで、データの増加に合わせて、労力をかけずにアプリケーションをスケールする準備ができます。 
 
 このチュートリアルでは、Cassandra API を使用して、次のタスクを説明します。
 
@@ -53,7 +53,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 * [Git](https://www.git-scm.com/)
     * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
 
-## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>データベース アカウントの作成
 
 ドキュメント データベースを作成するには、Azure Cosmos DB を含んだ Cassandra アカウントを事前に作成しておく必要があります。
 
@@ -151,7 +151,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
     }
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。
 
@@ -159,7 +159,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
     ![Azure Portal の [接続文字列] ページからユーザー名を表示してコピー](./media/tutorial-develop-cassandra-java/keys.png)
 
-2. 画面右側の ![[コピー] ボタン](./media/tutorial-develop-cassandra-java/copy.png) ボタンを使用して [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
+2. 画面右側の ![コピー ボタン](./media/tutorial-develop-cassandra-java/copy.png) ボタンを使用して [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
 
 3. C:\git-samples\azure-cosmosdb-cassandra-java-getting-started\java-examples\src\main\resources フォルダーから `config.properties` ファイルを開きます。 
 
@@ -207,7 +207,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
     java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.examples.UserProfile
     ```
 
-    ターミナル ウィンドウに、キースペースとテーブルが作成されたという通知が表示されます。 その後、テーブル内のすべてのユーザーが選択されて返され、出力が表示され、ID で行が選択されて値が表示されます。  
+    ターミナル ウィンドウに、キースペースとテーブルが作成されたという通知が表示されます。 その後、テーブル内のすべてのユーザーが選択されて戻されます。次に、出力が表示され、ID で行が選択されて値が表示されます。  
     
     これで、データ エクスプローラーに戻って、この新しいデータの表示、クエリ、変更、操作を行うことができます。 
 
@@ -219,7 +219,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、以下の方法を説明しました。
 

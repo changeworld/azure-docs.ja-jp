@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae97045c27f3ad8b62e7798b2060ea59ccd66ac5
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 52a45f1b67e3194739fe97daad56de2d3515dee3
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions の Twilio バインド
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 11/30/2017
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#c-example)
-* [C# スクリプト](#c-script-example)
+* [C#](#c-example)
+* [C# スクリプト (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C# の例
 
-次の例は、キュー メッセージによってトリガーされたときにテキスト メッセージを送信する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、キュー メッセージによってトリガーされたときにテキスト メッセージを送信する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("QueueTwilio")]
@@ -195,7 +195,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="attributes"></a>属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) で定義されている [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) で定義されている [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 属性を使用します。
 
 構成可能な属性プロパティについては、[構成](#configuration)を参照してください。 メソッド シグネチャでの `TwilioSms` 属性の例を次に示します。
 
@@ -213,13 +213,13 @@ public static SMSMessage Run(
 }
  ```
 
-完全な例については、[プリコンパイル済み C# の例](#c-example)をご覧ください。
+完全な例については、「[C# の例](#c-example)」を参照してください。
 
 ## <a name="configuration"></a>構成
 
 次の表は、*function.json* ファイルと `TwilioSms` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type**|| `twilioSms` に設定する必要があります。|
 |**direction**|| `out` に設定する必要があります。|
@@ -232,7 +232,7 @@ public static SMSMessage Run(
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

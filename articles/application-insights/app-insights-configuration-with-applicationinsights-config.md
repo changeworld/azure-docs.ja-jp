@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: e59df358f25663c742b0da09cf27b974787536dc
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 87eed377528db60724ba2f37bc22d916dfd7c0eb
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](http://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかのモジュールのパラメーターを設定したりできます。
 
-アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。 構成ファイルは、[SDK のほとんどのバージョンのインストール][start]時にプロジェクトに自動的に追加されます。 また、[IIS サーバー上の Status Monitor][redfield] によって Web アプリにも追加されます。Web アプリには、[Azure Web サイトまたは VM の Appplication Insights 拡張機能](app-insights-azure-web-apps.md)を選択したときにも追加されます。
+アプリケーションの種類に応じて、構成ファイルの名前は `ApplicationInsights.config` または `ApplicationInsights.xml` になります。 構成ファイルは、[SDK のほとんどのバージョンのインストール][start]時にプロジェクトに自動的に追加されます。 また、[IIS サーバー上の Status Monitor][redfield] によって Web アプリにも追加されます。Web アプリには、[Azure Web サイトまたは VM の Application Insights 拡張機能](app-insights-azure-web-apps.md)を選択したときにも追加されます。
 
 [Web ページの SDK][client] を制御するための同等のファイルはありません。
 
@@ -125,7 +125,6 @@ Microsoft.ApplicationInsights パッケージには、SDK の[コア API](https:
 * `SyntheticTelemetryInitializer` または `SyntheticUserAgentTelemetryInitializer` は、可用性テストや検索エンジン ボットなど、合成ソースからの要求の処理時に追跡されるすべてのテレメトリ項目の `User`、`Session`、および `Operation` コンテキスト プロパティを更新します。 既定では、 [メトリックス エクスプローラー](app-insights-metrics-explorer.md) には合成テレメトリは表示されません。
 
     `<Filters>` は、要求の識別プロパティを設定します。
-* `UserAgentTelemetryInitializer` は、要求の `User-Agent` HTTP ヘッダーに基づいて、すべてのテレメトリ項目の `User` コンテキストの `UserAgent` プロパティを更新します。
 * `UserTelemetryInitializer` は、ユーザーのブラウザーで実行する Application Insights JavaScript インストルメンテーション コードが生成する `ai_user` Cookie から抽出された値を使用して、すべてのテレメトリ項目の `User` コンテキストの `Id` および `AcquisitionDate` プロパティを更新します。
 * `WebTestTelemetryInitializer` は、 [可用性テスト](app-insights-monitor-web-app-availability.md)からの HTTP 要求のユーザー ID、セッション ID および合成ソース プロパティを設定します。
   `<Filters>` は、要求の識別プロパティを設定します。
@@ -262,7 +261,7 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 
 新しいキーを取得するには、[Application Insights ポータルで新しいリソースを作成][new]します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 API の詳細については、[こちら][api]をご覧ください。
 
 <!--Link references-->

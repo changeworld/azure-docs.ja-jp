@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 064b1b10f2bd776e4ae88d8460e106a0318476c7
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: eca3cddf3677aad440378e4071f080a588397cf9
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析
 Application Insights Trends ツールを使用すると、Web アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。 より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。
@@ -57,7 +57,7 @@ Application Insights Trends では、アプリのテレメトリが時系列で�
 
 ウィンドウの上部にあるコントロールを使用して、表示するテレメトリの種類を調整します。 まず、関心のあるテレメトリの種類を選択します。
 
-* **テレメトリの種類** - サーバー要求、例外、依存関係、またはカスタム イベント。
+* **テレメトリの種類** - サーバー要求、例外、依存関係、またはカスタム イベント
 * **時間範囲** - 過去 3 日前から 30 分前までの任意の範囲。
 * **グループ化** - 例外の種類、問題 ID、国/地域など。
 
@@ -74,7 +74,7 @@ Application Insights Trends では、アプリのテレメトリが時系列で�
 > 
 > 
 
-## <a name="filter"></a>フィルター
+## <a name="filter"></a>filter
 ウィンドウの下部にあるフィルター コントロールを使用して、より具体的な傾向を特定します。 フィルターを適用するには、その名前をクリックします。 各種フィルターをすばやく切り替えて、テレメトリの特定のディメンションに隠れている可能性のある傾向を突き止めることができます。 例外の種類など、いずれかのディメンションのフィルターを適用すると、それ以外のディメンションのフィルターは淡色表示されますが、クリックできます。フィルターの適用を解除するには、もう一度クリックします。 Ctrl キーを押しながらクリックして、同じディメンションの複数のフィルターを選択します。
 
 ![Trend filters](./media/app-insights-visual-studio-trends/TrendsFiltering-750.png)

@@ -15,11 +15,11 @@ ms.date: 07/20/2017
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 763007f004ab82ef5a6b2cac6dbef1ab221a060f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cedba7397e29cb397560c65a2408cd27442ec01c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成
 この記事では、管理者が *コードを記述せずに*Azure Active Directory アプリケーション ギャラリーに存在しないアプリケーションへのシングル サインオンを構成できるようにする機能について説明します。 この機能は、2015 年 11 月 18 日に技術プレビューでリリースされ、 [Azure Active Directory Premium](active-directory-editions.md)に含まれています。 コードを使用してカスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、「 [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。

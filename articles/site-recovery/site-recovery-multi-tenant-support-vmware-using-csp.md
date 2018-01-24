@@ -12,17 +12,17 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 12/14/2017
 ms.author: manayar
-ms.openlocfilehash: 9db7e276fbbc064abe16cab2d2df668d2b1c8f7d
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 273efe0bdef421d753ea51e01060d48351cbe6fc
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>CSP を使用して VMware 仮想マシンを Azure にレプリケートするための Azure Site Recovery でのマルチテナントのサポート
 
-Azure Site Recovery では、テナント サブスクリプションのマルチテナント環境をサポートします。 また、マイクロソフト クラウド ソリューション プロバイダー (CSP) プログラムを使用して作成され、管理されているテナント サブスクリプションのマルチテナントもサポートします。 この記事では、VMware と Azure 間のマルチテナント シナリオの実装と管理に関する詳細なガイダンスを示します。 また、CSP を使用したテナント サブスクリプションの作成と管理についても説明します。
+Azure Site Recovery では、テナント サブスクリプションのマルチテナント環境をサポートします。 また、マイクロソフト クラウド ソリューション プロバイダー (CSP) プログラムを使用して作成され、管理されているテナント サブスクリプションのマルチテナントもサポートします。 この記事では、VMware と Azure 間のマルチテナント シナリオの実装と管理に関する詳細なガイダンスを示します。 テナント サブスクリプションの作成と管理の詳細については、[CSP によるマルチテナントの管理](site-recovery-manage-multi-tenancy-with-csp.md)に関するページを参照してください。
 
 このガイダンスでは、Azure への VMware 仮想マシンのレプリケーションに関する既存のドキュメントを活用しています。 詳細については、「[Site Recovery を使用して VMware 仮想マシンを Azure にレプリケートする](site-recovery-vmware-to-azure.md)」を参照してください。
 
@@ -45,7 +45,7 @@ Azure Site Recovery では、テナント サブスクリプションのマル�
 ![1 つ の vCenter を使用する共有 HSP](./media/site-recovery-multi-tenant-support-vmware-using-csp/shared-hosting-scenario.png)  
 **1 つの vCenter を使用する共有ホスティング シナリオ**
 
-上の図に示すように、各顧客は個別の管理サーバーを所有します。 この構成により、テナントによるアクセスをテナント固有の VM に制限し、テナントを分離できます。 VMware 仮想マシンのレプリケーション シナリオでは、構成サーバーを使用して、VM の検出とエージェントのインストールに使用するアカウントを管理します。 vCenter アクセス制御による VM の検出の制限を追加することによって、マルチテナント環境でも同じ原則に従います。
+上の図に示すように、各顧客は個別の管理サーバーを所有します。 この構成により、テナントによるアクセスをテナント固有の VM に制限し、テナントを分離できます。 VMware 仮想マシンのレプリケーション シナリオでは、構成サーバーを使用して、VM の検出とエージェントのインストールに使用するアカウントを管理します。 vCenter アクセス制御による VM の検出の制限を追加することによって、マルチテナント環境にも同じ原則が適用されます。
 
 データ分離要件では、機密性の高いすべてのインフラストラクチャ情報 (アクセス資格情報など) がテナントに非公開のままであることが必要です。 そのため、管理サーバーのすべてのコンポーネントをパートナーの排他的制御下に置くことをお勧めします。 管理サーバーのコンポーネントは、次のとおりです。
 * 構成サーバー (CS)
@@ -100,7 +100,7 @@ vCenter アカウントのアクセス手順は次のとおりです。
 >| ホストとホスト クラスター | Azure_Site_Recovery | フェールオーバー前とフェールバック後にアクセス可能なホストだけがテナントの VM を保持するように、アクセスがオブジェクト レベルであることを再確認します。 |
 >| データストアとデータストア クラスター | Azure_Site_Recovery | 同上 |
 >| ネットワーク | Azure_Site_Recovery |  |
->| 管理サーバー | Azure_Site_Recovery | すべてのコンポーネント (CS、PS、MT) へのアクセスが含まれます (いずれかが CS コンピューターの外部にある場合)。 |
+>| 管理サーバー | Azure_Site_Recovery | CS マシンの外部にあるすべてのコンポーネント (CS、PS、MT) へのアクセスが含まれます。 |
 >| テナント VM | Azure_Site_Recovery | 特定のテナントのすべての新しいテナント VM もこのアクセスを確実に取得します。そうしないと、Azure Portal から検出できなくなります。 |
 
 これで vCenter アカウントのアクセスが完了しました。 この手順は、フェールバック操作を完了するための最小限のアクセス許可要件を満たしています。 これらのアクセス許可を既存のポリシーで使用することもできます。 既存のアクセス許可セットを変更して、手順 2. で説明したロールのアクセス許可を追加するだけです。
@@ -125,98 +125,7 @@ vCenter アカウントのアクセス手順は次のとおりです。
 ![architecture-shared-hsp](./media/site-recovery-multi-tenant-support-vmware-using-csp/managed-service-scenario.png)  
 **複数の vCenter を使用する管理されたサービス シナリオ**
 
-## <a name="csp-program-overview"></a>CSP プログラムの概要
-[CSP プログラム](https://partner.microsoft.com/en-US/cloud-solution-provider)は、Office 365、Enterprise Mobility Suite、Microsoft Azure など、すべての Microsoft クラウド サービスを提供する、連携による優れた成果の事例を促進します。 CSP により、パートナーは顧客とのエンド ツー エンドの関係を築き、顧客にとって最も重要な担当者になることができます。 パートナーは顧客の Azure サブスクリプションをデプロイし、サブスクリプションをカスタマイズされた独自の付加価値サービスと組み合わせることができます。
+## <a name="next-steps"></a>次の手順
+Azure Site Recovery デプロイを管理するためのロールベースのアクセス制御に関する[詳細を確認します](site-recovery-role-based-linked-access-control.md)。
 
-Azure Site Recovery を使用すると、パートナーは直接 CSP を介して顧客の完全なディザスター リカバリー ソリューションを管理できます。 また、CSP を使用して Site Recovery 環境をセットアップし、顧客がセルフサービス方式で独自のディザスター リカバリーのニーズを管理できるようにすることも可能です。 どちらのシナリオでも、パートナーは Site Recovery と顧客の間の連絡役となります。 パートナーは顧客関係にサービスを提供し、Site Recovery の利用料金を顧客に請求します。
-
-## <a name="create-and-manage-tenant-accounts"></a>テナント アカウントの作成と管理
-
-### <a name="step-0-prerequisite-check"></a>手順 0: 前提条件を確認する
-
-VM の前提条件は、[Azure Site Recovery のドキュメント](site-recovery-vmware-to-azure.md)に記載されているものと同じです。 これらの前提条件に加え、CSP によるテナント管理を進める前に前述のアクセス制御を設定する必要があります。 テナントごとに、テナントの VM やパートナーの vCenter と通信できる個別の管理サーバーを作成します。 パートナーだけがこのサーバーへのアクセス権を持ちます。
-
-### <a name="step-1-create-a-tenant-account"></a>手順 1: テナント アカウントを作成する
-
-1. [Microsoft パートナー センター](https://partnercenter.microsoft.com/)から CSP アカウントにサインインします。
-
-2. **[ダッシュボード]** メニューで **[顧客]** を選択します。
-
-    ![Microsoft パートナー センターの [顧客] のリンク](./media/site-recovery-multi-tenant-support-vmware-using-csp/csp-dashboard-display.png)
-
-3. 表示されたページで、**[顧客の追加]** ボタンをクリックします。
-
-    ![[顧客の追加] ボタン](./media/site-recovery-multi-tenant-support-vmware-using-csp/add-new-customer.png)
-
-4. **[新しい顧客]** ページで、テナントのアカウント情報の詳細をすべて入力してから、**[次へ: サブスクリプション]** をクリックします。
-
-    ![[アカウント情報] ページ](./media/site-recovery-multi-tenant-support-vmware-using-csp/customer-add-filled.png)
-
-5. サブスクリプションの選択ページで、**[Microsoft Azure]** チェック ボックスを選択します。 他のサブスクリプションは、今すぐ追加することもできますが、後でいつでも追加できます。
-
-    ![Microsoft Azure サブスクリプションのチェック ボックス](./media/site-recovery-multi-tenant-support-vmware-using-csp/azure-subscription-selection.png)
-
-6. **[レビュー]** ページで、テナントの詳細を確認し、**[送信]** をクリックします。
-
-    ![[レビュー] ページ](./media/site-recovery-multi-tenant-support-vmware-using-csp/customer-summary-page.png)  
-
-    テナント アカウントを作成すると確認ページが開き、そのサブスクリプションの既定のアカウントとパスワードの詳細が表示されます。
-
-7. 情報を保存し、必要に応じて、後で Azure Portal のサインイン ページでパスワードを変更します。  
-
-    この情報はテナントと現状のまま共有できます。また、必要に応じて個別のアカウントを作成し、共有することもできます。
-
-### <a name="step-2-access-the-tenant-account"></a>手順 2: テナント アカウントにアクセスする
-
-テナントのサブスクリプションには、"手順 1: テナント アカウントを作成する" で説明した、Microsoft パートナー センターのダッシュボードからアクセスできます。
-
-1. **[顧客]** ページに移動し、テナント アカウントの名前をクリックします。
-
-2. テナント アカウントの **[サブスクリプション]** ページで、既存のアカウント サブスクリプションを監視したり、必要に応じてサブスクリプションをさらに追加したりできます。 テナントのディザスター リカバリー操作を管理するには、**[すべてのリソース (Azure Portal)]** を選択します。
-
-    ![[すべてのリソース] のリンク](./media/site-recovery-multi-tenant-support-vmware-using-csp/all-resources-select.png)  
-
-    **[すべてのリソース]** をクリックすると、テナントの Azure サブスクリプションへのアクセスが許可されます。 Azure Portal の右上にある Azure Active Directory のリンクをクリックすると、アクセスを確認できます。
-
-    ![Azure Active Directory のリンク](./media/site-recovery-multi-tenant-support-vmware-using-csp/aad-admin-display.png)
-
-これで、Azure Portal からテナントに対してサイトの回復のすべての操作を実行し、ディザスター リカバリー操作を管理できるようになりました。 管理されたディザスター リカバリーを行うために CSP を使用してテナント サブスクリプションにアクセスするには、上記のプロセスに従います。
-
-### <a name="step-3-deploy-resources-to-the-tenant-subscription"></a>手順 3: テナント サブスクリプションにリソースをデプロイする
-1. Azure Portal でリソース グループを作成してから、通常のプロセスごとに Recovery Services コンテナーをデプロイします。
-
-2. コンテナー登録キーをダウンロードします。
-
-3. コンテナー登録キーを使用して、テナントの CS を登録します。
-
-4. vCenter アクセス アカウントと VM アクセス アカウントの 2 つのアカウントの資格情報を入力します。
-
-    ![マネージャー構成サーバー アカウント](./media/site-recovery-multi-tenant-support-vmware-using-csp/config-server-account-display.png)
-
-### <a name="step-4-register-site-recovery-infrastructure-to-the-recovery-services-vault"></a>手順 4: Site Recovery インフラストラクチャを Recovery Services コンテナーに登録する
-1. Azure Portal で、前に作成したコンテナーで、"手順 3: テナント サブスクリプションにリソースをデプロイする" で登録した CS に vCenter サーバーを登録します。 この操作には、vCenter アクセス アカウントを使用します。
-2. 通常のプロセスごとに、Site Recovery の "インフラストラクチャの準備" プロセスを完了します。
-3. これで VM をレプリケートする準備ができました。 **[仮想マシンの選択]** ブレードの **[レプリケート]** オプションに、目的のテナントの VM だけが表示されていることを確認します。
-
-    ![[仮想マシンの選択] ブレードのテナントの VM のリスト](./media/site-recovery-multi-tenant-support-vmware-using-csp/tenant-vm-display.png)
-
-### <a name="step-5-assign-tenant-access-to-the-subscription"></a>手順 5: サブスクリプションにテナント アクセスを割り当てる
-
-セルフサービスのディザスター リカバリーの場合、"手順 1: テナント アカウントを作成する" セクションの手順 6. で説明したアカウントの詳細をテナントに提供します。 パートナーがディザスター リカバリーのインフラストラクチャをセットアップした後にこのアクションを実行します。 ディザスター リカバリーの種類 (管理またはセルフサービス) に関係なく、パートナーは CSP ポータルからテナント サブスクリプションにアクセスする必要があります。 パートナーは自身が所有するコンテナーをセットアップし、インフラストラクチャをテナント サブスクリプションに登録します。
-
-パートナーは、次の内容を実行して CSP ポータルで新しいユーザーをテナント サブスクリプションに追加することもできます。
-
-1. テナントの CSP サブスクリプション ページに移動し、**[Users and licenses]\(ユーザーとライセンス\)** を選択します。
-
-    ![テナントの CSP サブスクリプション ページ](./media/site-recovery-multi-tenant-support-vmware-using-csp/users-and-licences.png)
-
-    適切な詳細を入力し、アクセス許可を選択するか、CSV ファイルでユーザーのリストをアップロードすることで、新しいユーザーを作成できます。
-
-2. 新しいユーザーを作成したら、Azure Portal に戻ってから、**[サブスクリプション]** ブレードで該当するサブスクリプションを選択します。
-
-3. 表示されたブレードで、**[アクセス制御 (IAM)]** を選択し、**[追加]** をクリックして適切なアクセス レベルを持つユーザーを追加します。      
-    CSP ポータルで作成されたユーザーは、アクセス レベルをクリックした後に表示されるブレードに自動的に表示されます。
-
-    ![ユーザーの追加](./media/site-recovery-multi-tenant-support-vmware-using-csp/add-user-subscription.png)
-
-    ほとんどの管理操作には、"*共同作成者*" ロールで十分です。 このアクセス レベルのユーザーは、サブスクリプションに対して、アクセス レベルの変更 ("*所有者*" レベルのアクセス権が必要) を除くすべての操作を実行できます。 必要に応じて、アクセス レベルを微調整することもできます。
+[CSP によるマルチテナントの管理](site-recovery-manage-multi-tenancy-with-csp.md)

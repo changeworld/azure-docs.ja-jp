@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0e849f99edfc80f7f175c0829552f39da456a204
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 21dfd8cc79c83b2c091249c7f214d394ad119c4c
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>Azure AD を使用した Java Web アプリへのサインインおよびサインアウト
+# <a name="azure-ad-java-web-app-getting-started"></a>Azure AD Java Web アプリの概要
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 Azure Active Directory (Azure AD) では、数行のコードを追加するだけでシングル サインイン/サインアウトを提供できるため、Web アプリの ID 管理の外部委託を簡単に実現できます。 Java Web アプリへのサインインおよびサインアウトは、コミュニティ主導型の Azure Active Directory Authentication Library for Java (ADAL4J) の Microsoft 実装を使用して実現できます。
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) では、数行のコードを追加するだ�
 ## <a name="step-1-register-the-new-app-with-azure-ad"></a>手順 1: Azure AD に新しいアプリを登録する
 ユーザー認証を行うようにアプリを設定するには、まず次の手順でテナントにアプリを登録する必要があります。
 
-1. [Azure Portal](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 上部のバーで、自分のアカウント名をクリックします。 **[ディレクトリ]** リストから、アプリを登録する Active Directory テナントを選択します。
 3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
@@ -1713,7 +1713,7 @@ public class BasicFilter implements Filter {
 > .war ファイルは最新の Tomcat サーバーで簡単にデプロイできます。 http://localhost:8080/manager/ に移動し、adal4jsample.war ファイルのアップロードに関する指示に従います。 ファイルは適切なエンドポイントに自動的にデプロイされます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーについての基本情報の取得を行うことができる実用的な Java ストア アプリが完成しました。 まだテナントにユーザーを設定していない場合は、ここで設定するとよいでしょう。
 
 さらに詳細を知りたい場合は、以下のいずれかの方法で完全なサンプル (構成値を除く) を入手できます。

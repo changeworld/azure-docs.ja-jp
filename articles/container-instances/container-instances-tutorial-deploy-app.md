@@ -1,23 +1,25 @@
 ---
 title: "Azure Container Instances チュートリアル - アプリのデプロイ"
-description: "Azure Container Instances チュートリアル - アプリのデプロイ"
+description: "Azure Container Instances チュートリアル 3 / 3 - アプリケーションのデプロイ"
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 11/20/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a6b36349c7fae09e70178ae7e7c2b6c15c0c26d4
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 471caa1b24dc7017c70782c072b2068f9635244b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>コンテナーを Azure Container Instances にデプロイする
 
-これは 3 つのパートで構成されるチュートリアルの最後のタスクです。 前のセクションでは、[コンテナー イメージを作成](container-instances-tutorial-prepare-app.md)して、[Azure Container Registry にプッシュ](container-instances-tutorial-prepare-acr.md)しました。 このセクションで Azure Container Instances にコンテナーをデプロイして、このチュートリアルは完了です。 手順は次のとおりです。
+これは、3 部構成のシリーズの最後のチュートリアルです。 シリーズではこれまで、[コンテナー イメージを作成](container-instances-tutorial-prepare-app.md)して、[Azure Container Registry にプッシュ](container-instances-tutorial-prepare-acr.md)しました。 この記事で Azure Container Instances にコンテナーをデプロイして、このチュートリアルのシリーズは完了です。
+
+このチュートリアルでは、次のことを行いました。
 
 > [!div class="checklist"]
 > * Azure CLI を使用した Azure Container Registry からのコンテナーのデプロイ
@@ -26,15 +28,15 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルでは、Azure CLI バージョン 2.0.21 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
+このチュートリアルでは、Azure CLI バージョン 2.0.23 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli-install]」を参照してください。
 
-このチュートリアルを完了するには、Docker 開発環境が必要です。 Docker では、[Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、または [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システムで Docker を簡単に構成できるパッケージが提供されています。
+このチュートリアルを完了するには、Docker 開発環境がローカルにインストールされている必要があります。 Docker では、[Mac][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
-Azure Cloud Shell には、このチュートリアルの各ステップを完了するのに必要な Docker コンポーネントがすべて含まれているわけではありません。 そのため、Azure CLI および Docker 開発環境のローカル インストールをお勧めします。
+Azure Cloud Shell には、このチュートリアルの各ステップを完了するのに必要な Docker コンポーネントがすべて含まれているわけではありません。 このチュートリアルを完了するには、ローカル コンピューターに Azure CLI と Docker 開発環境をインストールする必要があります。
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>Azure CLI を使用して、コンテナーをデプロイする
 
-Azure CLI を使用すると、コンテナーを 1 つのコマンドで Azure Container Instances にデプロイできます。 コンテナー イメージはプライベートの Azure Container Registry でホストされているため、アクセスに必要な資格情報を含める必要があります。 必要に応じて、次のようにクエリを実行できます。
+Azure CLI を使用すると、コンテナーを 1 つのコマンドで Azure Container Instances にデプロイできます。 コンテナー イメージはプライベートの Azure Container Registry でホストされているため、アクセスに必要な資格情報を含める必要があります。 次の Azure CLI コマンドを使用して資格情報を取得します。
 
 コンテナー レジストリ ログイン サーバー (レジストリ名で更新):
 
@@ -51,23 +53,23 @@ az acr credential show --name <acrName> --query "passwords[0].value"
 1 CPU コアおよび 1 GB メモリのリソース要求で、コンテナー レジストリからコンテナー イメージをデプロイするには、次のコマンドを実行します。 `<acrLoginServer>` および `<acrPassword>` を、前の 2 つのコマンドから取得した値に置き換えます。
 
 ```azurecli
-az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public --ports 80 -g myResourceGroup
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public --ports 80
 ```
 
-数秒以内に、Azure Resource Manager から最初の応答を受信します。 デプロイの状態を表示するには、[az container show](/cli/azure/container#az_container_show) を使用します。
+数秒以内に、Azure Resource Manager から最初の応答を受信します。 デプロイの状態を表示するには、[az container show][az-container-show] を使用します。
 
 ```azurecli
-az container show --name aci-tutorial-app --resource-group myResourceGroup --query instanceView.state
+az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-状態が *Pending* から *Running* に変わるまで、`az container show` コマンドを繰り返します。これには 1 分もかかりません。 コンテナーが *Running* になったら、次の手順に進みます。
+状態が *Pending* から *Running* に変わるまで、[az container show][az-container-show] コマンドを繰り返します。これには 1 分もかかりません。 コンテナーが *Running* になったら、次の手順に進みます。
 
 ## <a name="view-the-application-and-container-logs"></a>アプリケーションとコンテナー ログを表示する
 
-デプロイが成功したら、[az container show](/cli/azure/container#az_container_show) コマンドでコンテナーのパブリック IP アドレスを表示します。
+デプロイが成功したら、[az container show][az-container-show] コマンドでコンテナーのパブリック IP アドレスを表示します。
 
 ```bash
-az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
+az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.ip
 ```
 
 出力例: `"13.88.176.27"`
@@ -79,7 +81,7 @@ az container show --name aci-tutorial-app --resource-group myResourceGroup --que
 コンテナーのログ出力を表示することもできます。
 
 ```azurecli
-az container logs --name aci-tutorial-app -g myResourceGroup
+az container logs --resource-group myResourceGroup --name aci-tutorial-app
 ```
 
 出力:
@@ -92,13 +94,13 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアル シリーズで作成したリソースのいずれかが不要になった場合は、[az group delete](/cli/azure/group#delete) コマンドを実行して、リソース グループとそこに含まれているすべてのリソースを削除できます。 このコマンドは、作成したコンテナー レジストリだけでなく、実行中のコンテナーと関連するすべてのリソースを削除します。
+このチュートリアル シリーズで作成したリソースのいずれかが不要になった場合は、[az group delete][az-group-delete] コマンドを実行して、リソース グループとそこに含まれているすべてのリソースを削除できます。 このコマンドは、作成したコンテナー レジストリだけでなく、実行中のコンテナーと関連するすべてのリソースを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルの、Azure Container Instances インスタンスへのコンテナーのデプロイ プロセスは完了です。 次の手順を完了しました。
 
@@ -107,8 +109,19 @@ az group delete --name myResourceGroup
 > * ブラウザーでのアプリケーションの表示
 > * コンテナー ログの表示
 
-<!-- LINKS -->
-[prepare-app]: ./container-instances-tutorial-prepare-app.md
-
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+
+<!-- LINKS - external -->
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[docker-windows]: https://docs.docker.com/docker-for-windows/
+
+<!-- LINKS - internal -->
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-delete]: /cli/azure/group#az_group_delete
+[azure-cli-install]: /cli/azure/install-azure-cli
+[prepare-app]: ./container-instances-tutorial-prepare-app.md

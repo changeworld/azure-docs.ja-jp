@@ -3,7 +3,7 @@ title: "Azure Stack の仮想マシンに関する相違点と考慮事項 | Mic
 description: "Azure Stack で仮想マシンを操作する際の相違点と考慮事項について説明します。"
 services: azure-stack
 documentationcenter: 
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: 
 ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
-ms.author: mabrigg
-ms.openlocfilehash: fe655facf4da99d951a430db8ce603cc0ec7f224
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 11/17/2018
+ms.author: brenduns
+ms.openlocfilehash: 6eafa2a5058ef1309cbf50be069ea1bb12f7e5b9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure Stack の仮想マシンに関する考慮事項
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>チート シート: 仮想マシンの相違点
 
-| 機能 | Azure (グローバル) | Azure Stack |
+| Feature | Azure (グローバル) | Azure Stack |
 | --- | --- | --- |
 | 仮想マシン イメージ | Azure Marketplace には、仮想マシンの作成に使用できるイメージが含まれています。 Azure Marketplace で入手できるイメージの一覧を参照するには、[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) のページを参照してください。 | 既定では、Azure Stack Marketplace に使用可能なイメージはありません。 Azure Stack のクラウド管理者は、ユーザーがイメージを使用する前に、Azure Stack Marketplace に対してイメージの発行またはダウンロードを行う必要があります。 |
 | 仮想マシン サイズ | Azure では、幅広いサイズの仮想マシンがサポートされます。 提供されているサイズとオプションの詳細については、[Windows 仮想マシンのサイズ](../../virtual-machines/virtual-machines-windows-sizes.md)と [Linux 仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)に関するトピックを参照してください。 | Azure Stack は、Azure で使用できる仮想マシンのサイズのサブセットをサポートしています。 サポートされているサイズの一覧を参照するには、この記事の[仮想マシンのサイズ](#virtual-machine-sizes)についてのセクションを参照してください。 |
@@ -40,11 +40,11 @@ ms.lasthandoff: 12/11/2017
 |仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン<br>管理ディスクのサポート|単一の障害ドメイン<br>単一の更新ドメイン<br>管理ディスクのサポートなし|
 |仮想マシン スケール セット|自動スケールがサポートされる|自動スケールはサポートされない。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。
 
-## <a name="virtual-machine-sizes"></a>仮想マシン サイズ 
+## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
 
-Azure Stack Development Kit は以下のサイズをサポートしています。 
+Azure Stack は、次のサイズをサポートしています。
 
-| 型 | サイズ | サポートされるサイズの範囲 |
+| type | サイズ | サポートされるサイズの範囲 |
 | --- | --- | --- |
 |汎用 |Basic A|A0 - A4|
 |汎用 |Standard A|A0 - A7|
@@ -55,33 +55,33 @@ Azure Stack Development Kit は以下のサイズをサポートしています�
 |メモリ最適化|DS シリーズ|DS11 - DS14|
 |メモリ最適化 |DSv2 シリーズ|DS11_v2 - DS14_v2|
 
-仮想マシンのサイズと、それに関連付けられるリソースの量は、Azure Stack と Azure の間で一貫しています。 たとえば、そのようなリソースには、作成できるメモリの量、コアの数、データ ディスクの数やサイズが含まれます。 ただし、Azure Stack 内で VM サイズが同じ場合のパフォーマンスは、基になっている特定の Azure Stack 環境の特性によって異なります。
+仮想マシンのサイズと、それに関連付けられるリソースの量は、Azure Stack と Azure の間で一貫しています。 たとえば、この一貫性には、作成できるメモリの量、コアの数、データ ディスクの数やサイズが含まれます。 ただし、Azure Stack 内で VM サイズが同じ場合のパフォーマンスは、基になっている特定の Azure Stack 環境の特性によって異なります。
 
-## <a name="virtual-machine-extensions"></a>仮想マシン拡張機能 
+## <a name="virtual-machine-extensions"></a>仮想マシン拡張機能
 
- Azure Stack Development Kit では、仮想マシン拡張機能の以下のバージョンがサポートされています。
+ Azure Stack は、仮想マシン拡張機能の次のバージョンをサポートしています。
 
 ![VM 拡張機能](media/azure-stack-vm-considerations/vm-extensions.png)
 
 実際の Azure Stack 環境で利用できる仮想マシン拡張機能の一覧を取得するには、次の PowerShell スクリプトを使用します。
 
-```powershell 
+```powershell
 Get-AzureRmVmImagePublisher -Location local | `
   Get-AzureRmVMExtensionImageType | `
   Get-AzureRmVMExtensionImage | `
   Select Type, Version | `
-  Format-Table -Property * -AutoSize 
+  Format-Table -Property * -AutoSize
 ```
 
-## <a name="api-versions"></a>API のバージョン 
+## <a name="api-versions"></a>API のバージョン
 
-Azure Stack Development Kit の仮想マシン機能では、以下の API バージョンがサポートされています。
+Azure Stack の仮想マシン機能は、次の API バージョンをサポートしています。
 
 ![VM リソースの種類](media/azure-stack-vm-considerations/vm-resoource-types.png)
 
 次の PowerShell スクリプトを使用して、実際の Azure Stack 環境で利用できる仮想マシン機能の API バージョンを取得することができます。
 
-```powershell 
+```powershell
 Get-AzureRmResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
   Select * -Expand ApiVersions | `
@@ -90,6 +90,6 @@ Get-AzureRmResourceProvider | `
 ```
 サポートされるリソースの種類と API バージョンの一覧は、クラウド オペレーターが Azure Stack 環境を新しいバージョンに更新した場合は異なっている可能性があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Stack で PowerShell を使用して Windows 仮想マシンを作成する](azure-stack-quick-create-vm-windows-powershell.md)

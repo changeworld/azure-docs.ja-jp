@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/22/2017
+ms.date: 12/28/2017
 ms.author: eugenesh
-ms.openlocfilehash: 97c1fc602ba27472fed2f11fd634e617ae9c636f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 286e2b8eddc87a5132fa13468b0cef1b499c3993
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
@@ -31,7 +31,7 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 ## <a name="setting-up-blob-indexing"></a>BLOB インデックスの設定
 Azure Blob Storage インデクサーを設定するには、以下を使用します。
 
-* [Azure Portal](https://ms.portal.azure.com)
+* [Azure ポータル](https://ms.portal.azure.com)
 * Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
@@ -225,28 +225,6 @@ Azure Search では、ドキュメントがそのキーによって一意に識�
 
 `indexedFileNameExtensions` と `excludedFileNameExtensions` の両方のパラメーターがある場合、Azure Search では最初に `indexedFileNameExtensions` を調べ、次に `excludedFileNameExtensions` を調べます。 つまり、同じファイル拡張子が両方の一覧に存在する場合、インデックス作成から除外されます。
 
-### <a name="dealing-with-unsupported-content-types"></a>サポートされていないコンテンツの種類の処理
-
-既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 もちろん、`excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップすることもできますが、 存在する可能性のあるすべてのコンテンツの種類が事前にわからないまま BLOB のインデックスを作成する必要がある場合もあります。 サポートされていないコンテンツの種類が検出されたときにインデックス作成を続行するには、`failOnUnsupportedContentType` 構成パラメーターを `false` に設定します。
-
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
-    }
-
-### <a name="ignoring-parsing-errors"></a>解析エラーの無視
-
-Azure Search のドキュメント抽出ロジックは完璧ではないため、.DOCX や .PDF などのサポートされているコンテンツの種類のドキュメントの解析に失敗する場合があります。 そのような場合にインデックス作成が中断されないようにするために、`maxFailedItems` と `maxFailedItemsPerBatch` の各構成パラメーターを妥当な値に設定します。 次に例を示します。
-
-    {
-      ... other parts of indexer definition
-      "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
-    }
-
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>インデックスが作成される BLOB の部分の制御
 
@@ -275,6 +253,31 @@ BLOB のどの部分にインデックスを作成するかは、`dataToExtract`
 | --- | --- | --- |
 | AzureSearch_Skip |"true" |BLOB を完全にスキップするように BLOB インデクサーに指示します。 メタデータとコンテンツのどちらの抽出も行われません。 特定の BLOB で何度もエラーが発生し、インデックス作成プロセスが中断されるときに利用できます。 |
 | AzureSearch_SkipContent |"true" |これは、[前](#PartsOfBlobToIndex)に説明した、特定の BLOB を対象とする `"dataToExtract" : "allMetadata"` 設定と同じです。 |
+
+<a name="DealingWithErrors"></a>
+## <a name="dealing-with-errors"></a>エラーへの対処
+
+既定では、BLOB インデクサーは、サポートされていないコンテンツの種類 (画像など) が含まれる BLOB を検出するとすぐに停止されます。 もちろん、`excludedFileNameExtensions` パラメーターを使用して特定のコンテンツの種類をスキップすることもできますが、 存在する可能性のあるすべてのコンテンツの種類が事前にわからないまま BLOB のインデックスを作成する必要がある場合もあります。 サポートされていないコンテンツの種類が検出されたときにインデックス作成を続行するには、`failOnUnsupportedContentType` 構成パラメーターを `false` に設定します。
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
+    }
+
+一部の BLOB では、Azure Search はコンテンツの種類を判別できないか、他の種類ではサポートされているコンテンツの種類のドキュメントを処理できない場合があります。 この障害モードを無視するには、`failOnUnprocessableDocument` 構成パラメーターを false に設定します。
+
+      "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+
+BLOB の解析中またはインデックスへのドキュメントの追加中、処理のどこかの時点でエラーが発生した場合に、インデックス付けを続行することもできます。 特定数のエラーを無視するには、構成パラメーター `maxFailedItems` と `maxFailedItemsPerBatch` を望ましい値に設定します。 例: 
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
+    }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>インデックスの増分作成と削除の検出
 スケジュールに従って実行するように BLOB のインデクサーを設定すると、その BLOB の `LastModified` タイムスタンプから判断された変更済みの BLOB のみインデックスが再構築されます。

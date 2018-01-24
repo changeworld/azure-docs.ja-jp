@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: mabrigg
-ms.openlocfilehash: 55688ad4959d59e41dca9be2d00011e1d41ebd8c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 96eebf340f13f2f5e9e922fee8032d04fce1d130
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 
 *適用対象: Azure Stack 統合システム*
 
-特権エンドポイントを使用して、Azure Stack 更新プログラムの実行の進行状況をモニターし、障害が発生した更新プログラムの実行を、前回成功した手順から再開することができます。 
+特権エンドポイントを使用すると、Azure Stack 更新プログラムの実行の進行状況を監視し、Azure Stack ポータルが使用できなくなった場合は、失敗した更新プログラムの実行を成功した最後の手順から再開することができます。  Azure Stack ポータルの使用は、Azure Stack で更新プログラムを管理するための推奨される方法です。
 
 更新管理用の次の新しい PowerShell コマンドレットは、Azure Stack 統合システムの 1710 更新プログラムに含まれています。
 
-| コマンドレット  | 説明  |
+| コマンドレット  | [説明]  |
 |---------|---------|
 | `Get-AzureStackUpdateStatus` | 現在実行中、完了済み、または失敗した更新プログラムの状態を返します。 更新操作の状態の詳細と、現在のステップと対応する状態の両方について説明する XML ドキュメントを提供します。 |
 | `Get-AzureStackUpdateVerboseLog` | 更新プログラムによって生成される詳細ログを返します。 |
@@ -70,7 +70,7 @@ ms.lasthandoff: 12/11/2017
    ```powershell
    $commands | ? Source -eq $updateManagementModuleName 
    ```
-   For example:
+   例: 
    ```powershell
    $commands | ? Source -eq $updateManagementModuleName
    
@@ -111,7 +111,7 @@ $statusString.Value
 
 - 実行中
 - 完了
-- Failed 
+- 失敗 
 - Canceled
 
 これらのコマンドを繰り返し実行することで、最新の状態を表示することができます。 チェックする接続を再確立する必要はありません。
@@ -194,7 +194,7 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 特権エンドポイントは、Azure Stack 環境内のすべての ERCS 仮想マシンで使用できます。 高可用性エンドポイントへの接続は確立されないため、中断したり、警告またはエラー メッセージが表示されたりすることがあります。 これらのメッセージは、セッションが切断されたか、または ECE サービスとの通信エラーがあったことを示している場合があります。 これは期待される動作です。 しばらく待ってから操作を再試行するか、他の ERCS 仮想マシンのいずれかで新しい特権エンドポイント セッションを作成できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Stack で更新を管理する](azure-stack-updates.md) 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 597ea863275a5603e093307ce4334ae68e5ea5cf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: db4cfe91b8d27b5336763eff7c6f22f0f345caf2
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -29,11 +29,11 @@ ms.lasthandoff: 12/11/2017
 単一のドメインと Azure AD のフェデレーションを行う場合は、Azure でそのドメインに関する複数のプロパティが設定されます。  重要なプロパティの 1 つは IssuerUri です。  これは、トークンが関連付けられているドメインを識別するために Azure AD で使われる URI です。  この URI は解決される必要はありませんが、有効な URI である必要があります。  既定では、Azure AD により、このプロパティにオンプレミス AD FS 構成内のフェデレーション サービス識別子の値が設定されます。
 
 > [!NOTE]
-> フェデレーション サービス識別子は、フェデレーション サービスを一意に識別する URI です。  フェデレーション サービスは、セキュリティ トークン サービスとして機能する AD FS のインスタンスです。 
-> 
-> 
+> フェデレーション サービス識別子は、フェデレーション サービスを一意に識別する URI です。  フェデレーション サービスは、セキュリティ トークン サービスとして機能する AD FS のインスタンスです。
+>
+>
 
-PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your domain>`を使用して、IssuerUri を表示することができます。
+IssuerUri を表示するには、PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your domain>` を使用します。
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
@@ -62,9 +62,9 @@ bmfabrikam.com ドメインを変換してフェデレーションしようと�
 
 留意点として、 `-SupportMultipleDomain` は、adfs.bmcontoso.com 上のフェデレーション サービスをポイントするように構成されている他のエンドポイントを変更しません。
 
-また、 `-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な Issuer (発行者) の値を確実に含めることができます。 これは、ユーザーの UPN のドメイン部分を取得し、その値を IssuerUri でドメインとして設定することで達成されます (つまり、https://{upn suffix}/adfs/services/trust)。 
+また、 `-SupportMultipleDomain` を使用すると、AD FS システムが Azure AD 用に発行するトークンに、適切な Issuer (発行者) の値を確実に含めることができます。 これは、ユーザーの UPN のドメイン部分を取得し、その値を IssuerUri でドメインとして設定することで達成されます (つまり、https://{upn suffix}/adfs/services/trust)。
 
-そのため、Azure AD または Office 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。  一致するものが見つからなければ、認証は失敗します。 
+そのため、Azure AD または Office 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。  一致するものが見つからなければ、認証は失敗します。
 
 たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、AD FS が発行するトークンの IssuerUri 要素は http://bmcontoso.com/adfs/services/trust に設定されます。 これは Azure AD の構成と一致し、認証は成功します。
 
@@ -75,8 +75,8 @@ bmfabrikam.com ドメインを変換してフェデレーションしようと�
 
 > [!IMPORTANT]
 > 新しいドメインを追加する際や既存のドメインを変換する際に -SupportMultipleDomain スイッチを使用するには、あらかじめそれらのドメインをサポートするフェデレーションによる信頼を設定しておく必要があります。  
-> 
-> 
+>
+>
 
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>AD FS と Azure AD の間の信頼を更新するには
 AD FS と Azure AD インスタンスとの間でフェデレーションによる信頼を設定していない場合は、改めてこの信頼の作成が必要になることがあります。  というのも、 `-SupportMultipleDomain` パラメーターを使用せずに設定すると、IssuerUri が既定値で設定されるからです。  下のスクリーンショットでは、IssuerUri に https://adfs.bmcontoso.com/adfs/services/trust が設定されています。
@@ -97,7 +97,7 @@ AD FS と Azure AD インスタンスとの間でフェデレーションによ�
 
 以下の手順で、Microsoft Online の信頼を削除し、元のドメインを更新します。
 
-1. AD FS フェデレーション サーバーで、 **AD FS 管理** 
+1. AD FS フェデレーション サーバーで、 **AD FS 管理**
 2. 左側で、**[信頼関係]**、**[証明書利用者信頼]** の順に展開します。
 3. 右側で、 **[Microsoft Office 365 ID プラットフォーム]** エントリを削除します。
    ![Remove Microsoft Online](./media/active-directory-multiple-domains/trust4.png)
@@ -137,7 +137,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、**http://bmcontoso.com/adfs/services/trust** とする必要があります。  しかし、上で Azure AD に適用した標準ルールでは、発行者を **http://corp.bmcontoso.com/adfs/services/trust** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
 
 ### <a name="how-to-enable-support-for-sub-domains"></a>サブドメインのサポートを有効にする方法
-この問題を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。  そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。 
+この問題を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。  そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。
 
 次の要求で実行します。
 
@@ -152,14 +152,13 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 2. [Microsoft Online RP 信頼] を右クリックして、[要求規則の編集] を選択します。
 3. 3 番目の要求規則を選択し、置き換えます。![Edit claim](./media/active-directory-multiple-domains/sub1.png)
 4. 現在の要求:
-   
+
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
-   
+
        with
-   
+
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
     ![Replace claim](./media/active-directory-multiple-domains/sub2.png)
 
 5. [OK] をクリックします。  [適用] をクリックします。  [OK] をクリックします。  AD FS 管理を閉じます。
-

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5f2bf857d2618a8cfe7094c7f3124be20db3ff39
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d46f04a3e9fdb1beaf11c769ecdd7b807c5f817f
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="help-secure-angularjs-single-page-apps-by-using-azure-ad"></a>Azure AD を使用して AngularJS シングルページ アプリの保護をサポートする
+# <a name="azure-ad-angularjs-getting-started"></a>Azure AD AngularJS の概要
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 ## <a name="step-1-register-the-directorysearcher-application"></a>手順 1: DirectorySearcher アプリケーションを登録する
 アプリがユーザーを認証し、トークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 複数のディレクトリにサインインしている場合は、適切なディレクトリを表示していることを確認する必要があります。 これを行うには、上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧で、アプリケーションを登録する Azure AD テナントを選択します。
 3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
@@ -117,7 +117,7 @@ adal.js には AngularJS ルートと HTTP プロバイダーが組み込まれ�
     ...
     ```
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 これで、ユーザーのサインインを処理し、ベアラー トークンで保護された要求をバックエンド API に送信できる安全なシングルページ アプリが完成しました。 ユーザーが **TodoList** リンクをクリックしたとき、サインインの処理が必要な場合は、adal.js によって Azure AD に自動的にリダイレクトされます。 さらに、アプリのバックエンドに送信されるすべての Ajax 要求に対して、アクセス トークンが adal.js により自動的にアタッチされます。  
 
 上記の手順は、adal.js を使用してシングルページ アプリを構築するのに最低限必要な操作です。 シングルページ アプリには、他にも役立つ機能がいくつかあります。
@@ -154,9 +154,9 @@ Azure AD と統合されたシングルページ アプリは、ユーザーの�
 
 adal.js を使用すると、共通 ID 機能を容易にアプリケーションに組み込むことができます。 キャッシュ管理、OAuth プロトコル サポート、サインイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。
 
-完全なサンプル (構成値を除く) については、[GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip) で入手できます。
+参考用に、完全なサンプル (環境に応じた構成値を除く) が [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip) で提供されています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここからは、さらなるシナリオに進むことができます。 [シングルページ アプリからの CORS Web API の呼び出し](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet)を試してみてください。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

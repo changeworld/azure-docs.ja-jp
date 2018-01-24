@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/27/2017
+ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: 46cc2737c23b02c6542320e355607f83042bd058
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2750b652b7de3c7a41ac5712071999c97d435db
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -70,40 +70,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
    Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するコンピューターに目的のコンポーネントが存在しない場合は、コンポーネントをインストールするためのアクセス許可をスクリプトから求められます。 同意して、必要なコンポーネントをインストールします。  
          
-   バックアップされた VM と同じ (または互換性のある) オペレーティング システムを使用する任意のマシンでスクリプトを実行できます。 互換性のあるオペレーティング システムについては、「[互換性のある OS](backup-azure-restore-files-from-vm.md#compatible-os)」の表を参照してください。 保護されている Azure 仮想マシンで Windows 記憶域スペース (Windows Azure VM の場合) または LVM/RAID アレイ (Linux VM の場合) を使用している場合、その仮想マシンで実行可能ファイルまたはスクリプトを実行することはできません。 代わりに、互換性のあるオペレーティング システムを使用する他のマシンで実行可能ファイルまたはスクリプトを実行します。
-
-### <a name="compatible-os"></a>互換性のある OS
-
-#### <a name="for-windows"></a>Windows の場合
-
-次の表は、サーバーとコンピューターのオペレーティング システムの互換性を示しています。 ファイルを回復する場合、オペレーティング システムの以前のバージョンまたは以降のバージョンにファイルを復元することはできません。 たとえば、Windows Server 2016 VM から Windows Server 2012 または Windows 8 コンピューターにファイルを復元することはできません。 VM からは、同じサーバー オペレーティング システムへ、または互換性のあるクライアント オペレーティング システムへファイルを復元できます。   
-
-|サーバー OS | 互換性のあるクライアント OS  |
-| --------------- | ---- |
-| Windows Server 2016    | Windows 10 |
-| Windows Server 2012 R2 | Windows 8.1 |
-| Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
-
-#### <a name="for-linux"></a>Linux の場合
-
-Linux では、ファイルの復元に使用するコンピューターの OS が、保護された仮想マシンのファイル システムをサポートしている必要があります。 スクリプトを実行するコンピューターを選択する場合は、コンピューターに互換性のある OS がインストールされていること、かつ、次の表に示すバージョンのいずれかが使用されていることを確認します。
-
-|Linux OS | バージョン  |
-| --------------- | ---- |
-| Ubuntu | 12.04 以降 |
-| CentOS | 6.5 以降  |
-| RHEL | 6.7 以降 |
-| Debian | 7 以降 |
-| Oracle Linux | 6.4 以降 |
-
-スクリプトを実行し、復旧ポイントに安全に接続するには、Python および Bash コンポーネントも必要となります。
-
-|コンポーネント | バージョン  |
-| --------------- | ---- |
-| Bash | 4 以降 |
-| Python | 2.6.6 以降  |
-
+   バックアップされた VM と同じ (または互換性のある) オペレーティング システムを使用する任意のマシンでスクリプトを実行できます。 互換性のあるオペレーティング システムについては、「[互換性のある OS](backup-azure-restore-files-from-vm.md#system-requirements)」の表を参照してください。 保護されている Azure 仮想マシンで Windows 記憶域スペース (Windows Azure VM の場合) または LVM/RAID アレイ (Linux VM の場合) を使用している場合、その仮想マシンで実行可能ファイルまたはスクリプトを実行することはできません。 代わりに、互換性のあるオペレーティング システムを使用する他のマシンで実行可能ファイルまたはスクリプトを実行します。
 
 ### <a name="identifying-volumes"></a>ボリュームの識別
 
@@ -192,6 +159,41 @@ $ mount [RAID Disk Path] [/mountpath]
 ```
 
 RAID ディスクに別の LVM が構成されている場合は、前に説明した手順を LVM パーティションにも使用します。ただし、RAID ディスク名の代わりに、ボリューム名を使用します。
+
+## <a name="system-requirements"></a>システム要件
+
+### <a name="for-windows"></a>Windows の場合
+
+次の表は、サーバーとコンピューターのオペレーティング システムの互換性を示しています。 ファイルを回復する場合、オペレーティング システムの以前のバージョンまたは以降のバージョンにファイルを復元することはできません。 たとえば、Windows Server 2016 VM から Windows Server 2012 または Windows 8 コンピューターにファイルを復元することはできません。 VM からは、同じサーバー オペレーティング システムへ、または互換性のあるクライアント オペレーティング システムへファイルを復元できます。   
+
+|サーバー OS | 互換性のあるクライアント OS  |
+| --------------- | ---- |
+| Windows Server 2016    | Windows 10 |
+| Windows Server 2012 R2 | Windows 8.1 |
+| Windows Server 2012    | Windows 8  |
+| Windows Server 2008 R2 | Windows 7   |
+
+### <a name="for-linux"></a>Linux の場合
+
+Linux では、ファイルの復元に使用するコンピューターの OS が、保護された仮想マシンのファイル システムをサポートしている必要があります。 スクリプトを実行するコンピューターを選択する場合は、コンピューターに互換性のある OS がインストールされていること、かつ、次の表に示すバージョンのいずれかが使用されていることを確認します。
+
+|Linux OS | バージョン  |
+| --------------- | ---- |
+| Ubuntu | 12.04 以降 |
+| CentOS | 6.5 以降  |
+| RHEL | 6.7 以降 |
+| Debian | 7 以降 |
+| Oracle Linux | 6.4 以降 |
+| SLES | 12 以降 |
+| openSUSE | 42.2 以降 |
+
+スクリプトを実行し、復旧ポイントに安全に接続するには、Python および Bash コンポーネントも必要となります。
+
+|コンポーネント | バージョン  |
+| --------------- | ---- |
+| Bash | 4 以降 |
+| Python | 2.6.6 以降  |
+| TLS | 1.2 がサポートされている必要があります。  |
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

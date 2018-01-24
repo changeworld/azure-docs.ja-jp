@@ -15,13 +15,17 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a9b321fcf8a8d1234989a9433da227142d954cb4
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: c2087af14ad456c679479334c9391055f6b2e45e
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Node.js および MongoDB の Web アプリを構築する
+
+> [!NOTE]
+> この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、「[Azure で Node.js とMongoDB Web アプリを構築する](../app-service-web-tutorial-nodejs-mongodb-app.md)」を参照してください。
+>
 
 [App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、Node.js Web アプリを作成して MongoDB データベースにローカルで接続し、MongoDB API を使用して CosmosDB データベースに接続された Azure にデプロイする方法を示します。 完了すると、MEAN アプリケーション (MongoDB、Express、AngularJS、および Node.js) が App Service on Linux で実行されます。 単純化するために、サンプル アプリケーションでは [MEAN.js Web フレームワーク](http://meanjs.org/)を使用します。
 
@@ -126,7 +130,7 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 ### <a name="create-a-cosmos-db-account"></a>Cosmos DB アカウントを作成する
 
-Cloud Shell で、[az cosmosdb create](/cli/azure/cosmosdb#create) コマンドを使用して Cosmos DB アカウントを作成します。
+Cloud Shell で、[az cosmosdb create](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) コマンドを使用して Cosmos DB アカウントを作成します。
 
 次のコマンドで、*\<cosmosdb_name>* プレースホルダーを一意の Cosmos DB 名に置き換えます。 この名前は、Cosmos DB エンドポイント (`https://<cosmosdb_name>.documents.azure.com/`) の一部として使用されるため、Azure のすべての Cosmos DB アカウントで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。
 
@@ -160,7 +164,7 @@ Cosmos DB アカウントが作成されると、Azure CLI によって次の例
 
 ### <a name="retrieve-the-database-key"></a>データベース キーの取得
 
-Cosmos DB データベースに接続するには、データベース キーが必要です。 Cloud Shell で、[az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) コマンドを使用して主キーを取得します。
+Cosmos DB データベースに接続するには、データベース キーが必要です。 Cloud Shell で、[az cosmosdb list-keys](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) コマンドを使用して主キーを取得します。
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -236,7 +240,7 @@ MEAN.JS version: 0.5.0
 
 この手順では、MongoDB に接続している Node.js アプリケーションを Azure App Service にデプロイします。
 
-### <a name="configure-local-git-deployment"></a>ローカル Git デプロイの構成
+### <a name="configure-local-git-deployment"></a>ローカル Git デプロイを構成する
 
 [!INCLUDE [Configure a deployment user](../../../includes/configure-deployment-user-no-h.md)]
 
@@ -252,7 +256,7 @@ MEAN.JS version: 0.5.0
 
 既定では、MEAN.js プロジェクトは _config/env/local-production.js_ を Git リポジトリ外で保持します。 したがって、Azure Web アプリでは、アプリ設定を使用して MongoDB 接続文字列を定義します。
 
-アプリ設定を設定するには、Cloud Shell で [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update) コマンドを使用します。
+アプリ設定を設定するには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。
 
 次の例では、Azure Web アプリの `MONGODB_URI` アプリ設定を構成します。 *\<app_name>*、*\<cosmosdb_name>*、および *\<primary_master_key>* プレースホルダーを置き換えます。
 
@@ -262,7 +266,7 @@ az webapp config appsettings set --name <app_name> --resource-group myResourceGr
 
 Node.js コードでは、任意の環境変数にアクセスする場合と同じように、`process.env.MONGODB_URI` を使用して、このアプリ設定にアクセスします。 
 
-ローカル MEAN.js リポジトリで、運用環境固有の構成を含む _config/env/production.js_ を開きます (_config/env/local-production.js_ ではなく)。 既定の MEAN.js アプリは、作成した `MONGODB_URI` 環境変数を使用するように既に構成されています。
+ローカル MEAN.js リポジトリで、運用環境固有の構成を含む _config/env/production.js_ を開きます (_config/env/local-production.js_ ではありません)。 既定の MEAN.js アプリは、作成した `MONGODB_URI` 環境変数を使用するように既に構成されています。
 
 ```javascript
 db: {
@@ -302,7 +306,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 この方法を使用して、Git ベースのデプロイに任意の手順を追加できます。 任意の時点で Azure Web アプリを再起動しても、これらの自動タスクが App Service によって再び実行されることはありません。
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリを参照する
+### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
 
 Web ブラウザーを使用して、デプロイされた Web アプリを参照します。
 
@@ -465,7 +469,7 @@ git push azure master
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここで学習した内容は次のとおりです。
 
@@ -475,7 +479,7 @@ git push azure master
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure からターミナルにログをストリーミングする
-> * Azure ポータルでアプリを管理する
+> * Azure Portal でアプリを管理する
 
 次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
 

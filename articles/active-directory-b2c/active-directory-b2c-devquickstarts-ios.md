@@ -1,24 +1,24 @@
 ---
-title: "iOS アプリケーションを使用してトークンを取得する - Azure AD B2C | Microsoft Docs"
+title: "iOS アプリケーションでの AppAuth の使用 - Azure Active Directory B2C"
 description: "この記事では、Azure Active Directory B2C と AppAuth を使用してユーザー ID の管理とユーザーの認証を行う iOS アプリを作成する方法を説明します。"
 services: active-directory-b2c
 documentationcenter: ios
-author: saeedakhter-msft
+author: PatAltimore
 manager: mtillman
 editor: parakhj
-ms.assetid: d818a634-42c2-4cbd-bf73-32fa0c8c69d3
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objectivec
 ms.topic: article
 ms.date: 03/07/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: cc26d4d2209564fc5c994c2bc73f6a572fe87d28
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: saeeda
+ms.openlocfilehash: b4f46129a7a18e4653d714599630d6cdddfff4ed
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: iOS アプリケーションを使用してサインインする
 
@@ -40,8 +40,6 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリケーションに**ネイティブ クライアント**を含めます。
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この GUID は後で必要になります。
 * カスタム スキーマを使用する**リダイレクト URI** を設定します (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)。 この URI は後で必要になります。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>ポリシーの作成
 Azure AD B2C では、すべてのユーザー エクスペリエンスが [ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 [ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)で説明されているように、このポリシーを作成します。 ポリシーを作成するときは、以下の操作を必ず実行してください。
@@ -131,8 +129,8 @@ appDelegate.currentAuthorizationFlow =
 * 'Item 0' の左側にある矢印をクリックしてツリーを開きます。
 * Item 0 の下の最初の項目の名前を 'URL Schemes' に変更します。
 * 'URL Schemes' の左側にある矢印をクリックしてツリーを開きます。
-* 'Value' 列には、 'URL Schemes' の下の 'Item 0' の左側に空のフィールドがあります。  アプリケーションの一意のスキームの値を設定します。  値は、OIDAuthorizationRequest オブジェクトの作成時に redirectURL で使用するスキームと一致させる必要があります。  この例では、''com.onmicrosoft.fabrikamb2c.exampleapp' スキームを使用しています。
+* 'Value' 列には、 'URL Schemes' の下の 'Item 0' の左側に空のフィールドがあります。  アプリケーションの一意のスキームの値を設定します。  値は、OIDAuthorizationRequest オブジェクトの作成時に redirectURL で使用するスキームと一致させる必要があります。  この例では、"com.onmicrosoft.fabrikamb2c.exampleapp" スキームを使用しています。
 
-残りのプロセスを完了する方法については、[AppAuth ガイド](https://openid.github.io/AppAuth-iOS/)を参照してください。 動作するアプリをすぐに開始する必要がある場合は、[用意されているサンプル](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)をチェックしてください。 [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の手順に従って、独自の Azure AD B2C 構成を入力してください。
+残りのプロセスを完了する方法については、[AppAuth ガイド](https://openid.github.io/AppAuth-iOS/)を参照してください。 動作するアプリをすぐに開始する必要がある場合は、[サンプル](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c)をチェックしてください。 [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md) の手順に従って、独自の Azure AD B2C 構成を入力してください。
 
-ご意見とご提案をお待ちしております。 このトピックに問題がある場合、またはこのコンテンツを改善するためのご提案がある場合には、ページの下部でフィードバックを送信できます。 機能についてのご要望は、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) までお寄せください。
+ご意見とご提案をお待ちしております。 この記事に問題がある場合、またはこのコンテンツを改善するためのご提案がある場合には、ページの下部でフィードバックを送信できます。 機能についてのご要望は、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) までお寄せください。

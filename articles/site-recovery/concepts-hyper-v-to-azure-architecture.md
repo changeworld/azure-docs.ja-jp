@@ -1,24 +1,16 @@
 ---
-title: "Azure Site Recovery を使用した Azure への Hyper-V レプリケーションのアーキテクチャを確認する | Microsoft Docs"
+title: "Azure Site Recovery での Hyper-V から Azure へのレプリケーション アーキテクチャ | Microsoft Docs"
 description: "この記事では、(VMM を使用せずに) Azure Site Recovery サービスを使用してオンプレミスの Hyper-V VM を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します。"
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 737cd30b-3994-4b18-9bd4-78c723601310
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 991c72352eaa4c3b12fcdc1e4112063fb698e772
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa27d75c5a1efe3971cabfe2b6a39433c772a40a
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V から Azure へのレプリケーション アーキテクチャ
 
@@ -147,8 +139,9 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-サポート マトリックスを確認します。Hyper-V から Azure へのレプリケーションを有効にするチュートリアルに従ってください。
-フェールオーバーとフェールバックを実行します。
+
+Hyper-V から Azure へのレプリケーションの使用を開始するには、[このチュートリアル](tutorial-prepare-azure.md)に従ってください。
+
 

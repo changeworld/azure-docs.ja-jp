@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/15/2017
 ms.author: jingwang
-ms.openlocfilehash: a2f370998ea219f9d36a6cda26405b6023666f92
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 7786fc785afa745da28b1da644ec58568d0cf424
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -130,25 +130,25 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 ### <a name="syntax-details"></a>構文の詳細
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティの type プロパティは、**Copy** に設定する必要があります。 | あり |
-| inputs | ソース データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | あり |
-| outputs | シンク データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | あり |
-| typeProperties | コピー アクティビティを構成するためのプロパティのグループ。 | あり |
-| source セクション | コピー ソースの型と、データを取得する方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | あり |
-| sink | コピー シンクの型と、データを書き込む方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | あり |
-| translator | ソースからシンクへの明示的な列マッピングを指定します。 既定のコピー動作が要求を満足できない場合に適用されます。<br/><br/>「[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)」で詳細を学習してください。 | いいえ |
-| cloudDataMovementUnits | データ コピーを機能強化するために、[Azure 統合ランタイム](concepts-integration-runtime.md)の強力な機能を指定します。<br/><br/>「[クラウド データ移動単位](copy-activity-performance.md)」で詳細を学習してください。 | いいえ |
-| parallelCopies | ソースからのデータの読み取り時やシンクへのデータの書き込み時にコピー アクティビティで使用する並列処理を指定します。<br/><br/>「[並列コピー](copy-activity-performance.md#parallel-copy)」で詳細を学習してください。 | いいえ |
-| enableStaging<br/>stagingSettings | ソースからシンクに直接データをコピーするのではなく、中間データを BLOB ストレージにステージングすることを選択します。<br/><br/>役立つシナリオや構成の詳細を「[ステージング コピー](copy-activity-performance.md#staged-copy)」で学習してください。 | いいえ |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| ソースからシンクにデータをコピーするときに互換性のない行を処理する方法を選択します。<br/><br/>「[フォールト トレランス](copy-activity-fault-tolerance.md)」で詳細を学習してください。 | いいえ |
+| 型 | コピー アクティビティの type プロパティは、**Copy** に設定する必要があります。 | [はい] |
+| inputs | ソース データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | [はい] |
+| outputs | シンク データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | [はい] |
+| typeProperties | コピー アクティビティを構成するためのプロパティのグループ。 | [はい] |
+| source | コピー ソースの型と、データを取得する方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | [はい] |
+| sink | コピー シンクの型と、データを書き込む方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | [はい] |
+| translator | ソースからシンクへの明示的な列マッピングを指定します。 既定のコピー動作が要求を満足できない場合に適用されます。<br/><br/>「[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)」で詳細を学習してください。 | いいえ  |
+| cloudDataMovementUnits | データ コピーを機能強化するために、[Azure 統合ランタイム](concepts-integration-runtime.md)の強力な機能を指定します。<br/><br/>「[クラウド データ移動単位](copy-activity-performance.md)」で詳細を学習してください。 | いいえ  |
+| parallelCopies | ソースからのデータの読み取り時やシンクへのデータの書き込み時にコピー アクティビティで使用する並列処理を指定します。<br/><br/>「[並列コピー](copy-activity-performance.md#parallel-copy)」で詳細を学習してください。 | いいえ  |
+| enableStaging<br/>stagingSettings | ソースからシンクに直接データをコピーするのではなく、中間データを BLOB ストレージにステージングすることを選択します。<br/><br/>役立つシナリオや構成の詳細を「[ステージング コピー](copy-activity-performance.md#staged-copy)」で学習してください。 | いいえ  |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| ソースからシンクにデータをコピーするときに互換性のない行を処理する方法を選択します。<br/><br/>「[フォールト トレランス](copy-activity-fault-tolerance.md)」で詳細を学習してください。 | いいえ  |
 
 ## <a name="monitoring"></a>監視
 
 コピー アクティビティの実行の詳細とパフォーマンス特性は、コピー アクティビティの実行結果の [出力] セクションで返されます。 すべての一覧を次に示します。 アクティビティの実行を監視する方法は、[クイック スタートの監視セクション](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)で学習してください。 お客様のシナリオのパフォーマンスと構成を、社内テストから得られたコピー アクティビティの[パフォーマンス リファレンス](copy-activity-performance.md#performance-reference)と比較できます。
 
-| プロパティ名  | 説明 | 単位 |
+| プロパティ名  | [説明] | 単位 |
 |:--- |:--- |:--- |
 | dataRead | ソースから読み取られたデータ サイズ | Int64 値 (バイト数) |
 | dataWritten | シンクに書き込まれたデータ サイズ | Int64 値 (バイト数) |
@@ -156,9 +156,9 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 | rowsSkipped | スキップされた互換性のない行の数。 この機能は、"enableSkipIncompatibleRow" を true に設定することによって有効にできます。 | Int64 値 (単位なし) |
 | throughput | データが転送された速度 | 浮動小数点数 (KB/秒) |
 | copyDuration | コピーの持続期間 | Int32 値 (秒数) |
-| sqlDwPolyBase | SQL Data Warehouse にデータをコピーするときに PolyBase が使用される場合。 | Boolean |
-| redshiftUnload | Redshift からデータをコピーするときに UNLOAD が使用される場合。 | Boolean |
-| hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | Boolean |
+| sqlDwPolyBase | SQL Data Warehouse にデータをコピーするときに PolyBase が使用される場合。 | ブール |
+| redshiftUnload | Redshift からデータをコピーするときに UNLOAD が使用される場合。 | ブール |
+| hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | ブール |
 | effectiveIntegrationRuntime | アクティビティの実行を機能強化するために、どの統合ランタイムが使用されるかを `<IR name> (<region if it's Azure IR>)` の形式で示します。 | Text (文字列) |
 | usedCloudDataMovementUnits | コピー中の効率的なクラウド データ移動単位。 | Int32 値 |
 | redirectRowPath | "redirectIncompatibleRowSettings" で構成した、BLOB ストレージ内のスキップされた互換性のない行のログのパス。 下の例を参照してください。 | Text (文字列) |
@@ -193,7 +193,13 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="incremental-copy"></a>増分コピー 
+Data Factory バージョン 2 では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。 
+
+## <a name="read-and-write-partitioned-data"></a>パーティション分割されたデータの読み取りおよび書き込み
+Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 バージョン 2 では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 詳しくは、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関するページをご覧ください。
+
+## <a name="next-steps"></a>次の手順
 次のクイック スタート、チュートリアル、およびサンプルを参照してください。
 
 - [Copy data from one location to another location in the same Azure Blob Storage (同じ Azure Blob Storage 内のある場所から別の場所にデータをコピーする)](quickstart-create-data-factory-dot-net.md)

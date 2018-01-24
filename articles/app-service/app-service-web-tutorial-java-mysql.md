@@ -15,13 +15,17 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 8b8d7b026973de9dee6c834404f2ed80b2c9ad21
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ad53575b655ebec5a134c8d76b963708caf14334
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>Azure で Java と MySQL Web アプリを構築する
+
+> [!NOTE]
+> この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、[コンテナー化された Spring Boot アプリを Azure にデプロイする方法](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin)に関するページを参照してください。
+>
 
 このチュートリアルでは、Azure で Java Web アプリを作成し、MySQL データベースに接続する方法について説明します。 完了すると、[Azure App Service Web Apps](app-service-web-overview.md) で実行中の [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) にデータを格納する [Spring Boot](https://projects.spring.io/spring-boot/) アプリケーションが完成します。
 
@@ -434,7 +438,7 @@ az group delete --name myResourceGroup
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="checklist"]
 > * Azure で MySQL データベースを作成する
@@ -442,7 +446,7 @@ az group delete --name myResourceGroup
 > * Azure にアプリケーションをデプロイする
 > * アプリを更新して再デプロイする
 > * Azure から診断ログをストリーミングする
-> * Azure ポータルでアプリを管理する
+> * Azure Portal でアプリを管理する
 
 次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
 

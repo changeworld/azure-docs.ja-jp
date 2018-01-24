@@ -5,13 +5,13 @@ author: rayne-wiselman
 ms.service: azure-migrate
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 429a9150d1fbf50c0e3fa2046eb64affc8db8e5d
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: f42b184cddb3274d7ee0163c10cac002ccfbef62
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="group-machines-for-assessment"></a>アセスメントためのマシンのグループ化
 
@@ -20,7 +20,7 @@ ms.lasthandoff: 12/12/2017
 
 ## <a name="create-a-group"></a>グループの作成
 
-1. Azure Migrate プロジェクトの**ダッシュボード**で、 **[グループ]** > **[+グループ]** をクリックし、グループ名を指定します。
+1. Azure Migrate プロジェクトの**概要**で、[管理] の  **[グループ]** > **[+グループ]** をクリックし、グループ名を指定します。
 2. グループに 1 つ以上のマシンを追加し、 **[作成]** をクリックします。 
 3. 必要に応じて、グループの新しいアセスメントの実行を選択することもできます。 
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/12/2017
 
 グループが作成されたら、**[グループ]** ページでグループを選択し、マシンを追加または削除してグループを変更できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [マシンの依存関係マッピング](how-to-create-group-machine-dependencies.md)を使用して、より詳細なグループを作成する方法を確認します。
-- アセスメントの計算方法の[詳細を確認](concepts-assessment-calculation.md)します。
+- [マシンの依存関係マッピング](how-to-create-group-machine-dependencies.md)を使用して、信頼度の高いグループを作成する方法を確認します。
+- 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。

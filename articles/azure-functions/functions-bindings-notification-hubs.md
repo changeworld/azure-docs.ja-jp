@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: fd5ff8878e6afe95bd620bd9d1910add6dd92f3f
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: cbc22721bbe06fdc5a8a9026b113071e1616bcb8
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 
@@ -266,7 +266,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 ## <a name="attributes"></a>属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) で定義されている [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) で定義されている [NotificationHub](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) 属性を使用します。
 
 この属性のコンストラクター パラメーターとプロパティについては、「[構成](#configuration)」セクションをご覧ください。
 
@@ -274,7 +274,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 次の表は、*function.json* ファイルと `NotificationHub` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** |該当なし| "notificationHub" に設定する必要があります。 |
 |**direction** |該当なし| "out" に設定する必要があります。 | 
@@ -321,7 +321,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: f75b90aa23068abcd6e3727d7b9cd1b0f71f396c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5869120350ccfeacabaa79037ae57c1ee0fd8e5d
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="troubleshoot-azure-active-directory-application-management-and-development"></a>Azure Active Directory のアプリケーションの管理と開発のトラブルシューティングを行う
 この記事は、**エンタープライズ アプリケーション**の管理と、**アプリケーション レジストリ**で新しいアプリケーションの開発に関する最も一般的な問題のいくつかをトラブルシューティングするためのドキュメントの検索に役立ちます。
 
 ## <a name="problems-with-application-development"></a>アプリケーションの開発に関する問題
-次のリンクをクリックすると、Azure Active Directory の**アプリケーション レジストリ**でアプリケーションを開発するときに発生する、最も一般的な問題のいくつかを解決するうえで役に立つコンテンツ マップが表示されます。
+次のリンクをクリックすると、Azure Active Directory の**アプリケーション レジストリ**でアプリケーションを開発するときに発生する、最も一般的な問題を解決するうえで役に立つコンテンツ マップが表示されます。
 
 * [アプリケーションの構成と登録に関する問題](active-directory-application-dev-config-content-map.md)
 * [アプリケーションの開発に関する問題](active-directory-application-dev-development-content-map.md)

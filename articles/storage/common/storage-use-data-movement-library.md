@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.openlocfilehash: 7890159574de0db58dd2e7d1b6a19305381d29d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb96f3697d5369ba96a1b0c491e3eacf09e7aac4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Microsoft Azure Storage Data Movement Library を使用してデータを転送する
 
@@ -27,7 +27,7 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 
 また、.NET Core が採用されているため、Windows、Linux、macOS 向け .NET アプリを構築するときにも、このライブラリを使用できます。 .NET Core の詳細については、[.NET Core のドキュメント](https://dotnet.github.io/)を参照してください。 このライブラリは、Windows 用の従来の .NET Framework アプリにも利用できます。 
 
-このドキュメントでは、Windows、Linux、macOS で実行される .NET Core コンソール アプリケーションを作成する方法を説明し、次のシナリオを実行します。
+このドキュメントでは、Windows、Linux、および macOS で実行される .NET Core コンソール アプリケーションの作成方法について説明し、以下のシナリオを実行します。
 
 - ファイルとディレクトリを Blob Storage にアップロードする。
 - データを転送するときに、並列操作の数を定義する。
@@ -46,7 +46,7 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 > 
 > 
 
-## <a name="setup"></a>[Setup]  
+## <a name="setup"></a>セットアップ  
 
 1. 「[.NET Core Installation Guide (.NET Core インストール ガイド)](https://www.microsoft.com/net/core)」にアクセスして、.NET Core をインストールします。 環境を選択するときは、コマンド ライン オプションを選択します。 
 2. コマンド ラインで、プロジェクトのディレクトリを作成します。 このディレクトリに移動し、「`dotnet new console -o <sample-project-name>`」と入力して、C# コンソール プロジェクトを作成します。
@@ -565,7 +565,7 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 ## <a name="conclusion"></a>まとめ
 これでデータ移動アプリケーションが完成しました。 [完全なコード サンプルは GitHub で入手できます](https://github.com/azure-samples/storage-dotnet-data-movement-library-app)。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この入門では、Azure Storage とやり取りし、Windows、Linux、macOS で実行されるアプリケーションを作成しました。 この入門では、Blob Storage を重点的に取り上げていますが、 これと同じ情報は File Storage にも適用できます。 詳細については、[Azure Storage Data Movement Library のリファレンス ドキュメント](https://azure.github.io/azure-storage-net-data-movement)を参照してください。
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

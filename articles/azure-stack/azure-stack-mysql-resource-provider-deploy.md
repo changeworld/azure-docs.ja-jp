@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 01/10/2018
 ms.author: JeffGo
-ms.openlocfilehash: 71abceb1afe315a09ea88b593f9806e9e8b31f16
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d0394fd1edf21cdbb863a88a1d3ecef118a7d886
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/18/2017
 
 Azure Stack に MySQL リソース プロバイダーをデプロイできます。 リソース プロバイダーをデプロイしたら、Azure Resource Manager デプロイ テンプレートを使用して MySQL サーバーおよびデータベースを作成し、MySQL データベースをサービスとして提供できます。 MySQL データベースは、Web サイトで一般的であり、多くの Web サイト プラットフォームをサポートしています。 たとえば、リソース プロバイダーをデプロイした後に、Azure Stack のサービスとしての Azure Web Apps プラットフォーム (PaaS) アドオンから WordPress Web サイトを作成できます。
 
-インターネットにアクセスできないシステムに MySQL プロバイダーをデプロイするには、[mysql-connector-net-6.9.9.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.9.9.msi) ファイルをローカル共有にコピーします。 そして、プロンプトが表示されたら、その共有名を指定します。 Azure および Azure Stack PowerShell モジュールもインストールする必要があります。
+インターネットにアクセスできないシステムに MySQL プロバイダーをデプロイするには、[mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Download/sConnector-Net/mysql-connector-net-6.10.5.msi) ファイルをローカル共有にコピーします。 そして、プロンプトが表示されたら、その共有名を指定します。 Azure および Azure Stack PowerShell モジュールもインストールする必要があります。
 
 
 ## <a name="mysql-server-resource-provider-adapter-architecture"></a>MySQL サーバー リソース プロバイダー アダプターのアーキテクチャ
@@ -56,7 +56,7 @@ Azure Stack に MySQL リソース プロバイダーをデプロイできます
 
 2. 特権エンドポイント VM にアクセスできるホストにサインインします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 Azure Stack Development Kit (ASDK) のインストールで、物理ホストにサインインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Stack Development Kit (ASDK) のインストールで、物理ホストにサインインします。
 
     b. マルチノードのシステムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。
     
@@ -71,9 +71,9 @@ Azure Stack に MySQL リソース プロバイダーをデプロイできます
 
     | Azure Stack ビルド | MySQL RP インストーラー |
     | --- | --- |
-    | 1.0.171122.1 | [MySQL RP バージョン 1.1.12.0](https://aka.ms/azurestackmysqlrp) |
+    | 1.0.180102.3 または 1.0.180106.1 (マルチノード) | [MySQL RP バージョン 1.1.14.0](https://aka.ms/azurestackmysqlrp1712) |
+    | 1.0.171122.1 | [MySQL RP バージョン 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
     | 1.0.171028.1 | [MySQL RP バージョン 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
-    | 1.0.170928.3 | [MySQL RP バージョン 1.1.3.0](https://aka.ms/azurestackmysqlrp1709) |
 
 4.  Azure Stack のルート証明書は、特権エンドポイントから取得されます。 ASDK には、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 
@@ -164,7 +164,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報を指定します。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
 | **VMLocalCredential** | MySQL リソースプロバイダー VM のローカル管理者アカウントの資格情報を定義します。 | _必須_ |
 | **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名を指定します。 |  _必須_ |
-| **DependencyFilesLocalPath** | [mysql-connector-net-6.9.9.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.9.9.msi) を格納するローカル共有のパス。 これを提供する場合は、証明書ファイルもこのディレクトリに配置する必要があります。 | _省略可能_ (マルチノードには_必須_) |
+| **DependencyFilesLocalPath** | [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) を格納するローカル共有のパス。 これを提供する場合は、証明書ファイルもこのディレクトリに配置する必要があります。 | _省略可能_ (マルチノードには_必須_) |
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード | _必須_ |
 | **MaxRetryCount** | 障害がある場合は、各操作を再試行する回数を定義します。| 2 |
 | **RetryDuration** | 再試行間のタイムアウトを秒単位で定義します。 | 120 |

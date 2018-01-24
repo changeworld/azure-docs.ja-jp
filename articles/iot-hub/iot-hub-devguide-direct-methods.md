@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d23bf20e4483b102fe5d946cb017dce1769b39a1
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: f0520e97a8b4f218b87683464d342bf7a08b2383
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 IoT Hub には、クラウドからデバイス上のダイレクト メソッドを呼び出す機能が備わっています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 このアプローチは、デバイスがオフラインの場合に SMS ウェイクアップを送信するような、デバイスが応答できるかによって、一連の即時のアクションが異なってくるシナリオで便利です (SMS はメソッドの呼び出しよりもコストがかかります)。
@@ -30,10 +30,10 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 ダイレクト メソッドは要求/応答型パターンに従うメソッドであり、すぐに確認する必要がある通信向けであり、通常はデバイスを対話式で制御する (例: ファンをオンにする) ときに使用されます。
 
-必要なプロパティ、ダイレクト メソッド、または cloud-to-device メッセージの使用方法の詳細については、「[cloud-to-device 通信に関するガイダンス][lnk-c2d-guidance]」を参照してください。
+必要とされるプロパティ、ダイレクト メソッド、または C2D メッセージの使用方法の詳細については、「[Cloud-to-device communication guidance][lnk-c2d-guidance]」 (C2D 通信のガイダンス) を参照してください。
 
 ## <a name="method-lifecycle"></a>メソッドのライフサイクル
-ダイレクト メソッドはデバイス上に実装され、正しくインスタンス化するには、メソッドのペイロードに 0 個以上の入力が必要になります。 ダイレクト メソッドは、サービス向け URI (`{iot hub}/twins/{device id}/methods/`) を通じて呼び出します。 デバイスは、デバイス固有の MQTT トピック (`$iothub/methods/POST/{method name}/`) からダイレクト メソッドを受け取ります。 今後、ダイレクト メソッドに対応するデバイス側のネットワーク プロトコルが追加される予定です。
+ダイレクト メソッドはデバイス上に実装され、正しくインスタンス化するには、メソッドのペイロードに 0 個以上の入力が必要になります。 ダイレクト メソッドは、サービス向け URI (`{iot hub}/twins/{device id}/methods/`) を通じて呼び出します。 デバイスは、デバイス固有の MQTT トピック (`$iothub/methods/POST/{method name}/`) または AMQP リンク (`IoThub-methodname` および `IoThub-status` アプリケーション プロパティ) を通じてダイレクト メソッドを受け取ります。 
 
 > [!NOTE]
 > デバイス上のダイレクト メソッドを呼び出す場合、プロパティ名と値には ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}`` を除く US-ASCII 印刷可能英数字のみを使用できます。
@@ -68,15 +68,14 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 タイムアウトは秒単位です。 タイムアウトが設定されていない場合の既定値は 30 秒です。
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 バックエンド アプリは次の項目で構成される応答を受け取ります。
 
 * *HTTP 状態コード*。接続されていないデバイスの 404 エラーを含む、IoT Hub からのエラーに使用される
 * *ヘッダー*。ETag、要求 ID、コンテンツの種類、コンテンツのエンコーディングを含む
 * JSON *本文*。次の形式になります。
 
-   ```
-   {
+   ```   {
        "status" : 201,
        "payload" : {...}
    }
@@ -85,7 +84,8 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
    `status` と `body` の両方ともデバイスによって提供され、デバイス自身の状態コードまたは説明とともに応答する場合に使用されます。
 
 ## <a name="handle-a-direct-method-on-a-device"></a>デバイスでダイレクト メソッドを処理する
-### <a name="method-invocation"></a>メソッドの呼び出し
+### <a name="mqtt"></a>MQTT
+#### <a name="method-invocation"></a>メソッドの呼び出し
 デバイスは MQTT トピックに関するダイレクト メソッド要求を受け取ります。`$iothub/methods/POST/{method name}/?$rid={request id}`
 
 デバイスが受け取る本文は次の形式になります。
@@ -99,13 +99,30 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 メソッドの要求は QoS 0 です。
 
-### <a name="response"></a>Response
+#### <a name="response"></a>Response
 デバイスは応答を `$iothub/methods/res/{status}/?$rid={request id}` に送信します。この場合、
 
 * `status` プロパティは、デバイスから提供される、メソッド実行の状態です。
 * `$rid` プロパティは、IoT Hub から受け取るメソッド呼び出しの要求 ID です。
 
 本文はデバイスごとに設定され、任意の状態を設定できます。
+
+### <a name="amqp"></a>AMQP
+#### <a name="method-invocation"></a>メソッドの呼び出し
+デバイスは、アドレス `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` に受信リンクを作成することによってダイレクト メソッド要求を受け取ります。
+
+AMQP メッセージは、メソッド要求を表す受信リンクに到着します。 これには以下が含まれます。
+* 関連付け ID プロパティ。対応するメソッド応答で戻される要求 ID が含まれています。
+* `IoThub-methodname` という名前のアプリケーション プロパティ。呼び出されるメソッドの名前が含まれています。
+* AMQP メッセージ本文。JSON としてメソッド ペイロードが含まれています。
+
+#### <a name="response"></a>Response
+デバイスは、メソッド応答を返す送信リンクをアドレス `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` に作成します。
+
+メソッドの応答は送信リンクで返され、以下から構成されています。
+* 関連付け ID プロパティ。メソッドの要求メッセージで渡される要求 ID が含まれています。
+* `IoThub-status` という名前のアプリケーション プロパティ。ユーザーが指定したメソッド状態が含まれています。
+* AMQP メッセージ本文。JSON としてメソッド応答が含まれています。
 
 ## <a name="additional-reference-material"></a>参考資料
 IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
@@ -116,7 +133,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語][lnk-query]: デバイス ツインとジョブに関する情報を IoT Hub から取得するために使用できる IoT Hub クエリ言語について説明します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ダイレクト メソッドの使用方法を理解できたら、次の IoT Hub 開発者ガイドの記事も参考にしてください。
 
 * [複数デバイスでのジョブをスケジュール設定する][lnk-devguide-jobs]

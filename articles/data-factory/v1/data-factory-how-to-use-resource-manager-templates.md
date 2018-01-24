@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c80281a520159965066c6cd166f47ecac66e552b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: e0f4a284a46ba56ba4e3229a72e99efef0cf9dc2
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/02/2017
 ## <a name="templating-with-azure-resource-manager"></a>Azure Resource Manager でのテンプレート
 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md#template-deployment)は、Azure Data Factory でテンプレートを実現するための優れた方法です。 Resource Manager テンプレートでは、JSON ファイルを使用して Azure ソリューションのインフラストラクチャと構成を定義します。 Azure Resource Manager テンプレートはほぼすべての Azure サービスと連携するため、広範に使用して Azure アセットのあらゆるリソースを簡単に管理できます。 Resource Manager テンプレート全般については、「[Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
 
-## <a name="tutorials"></a>Tutorials (チュートリアル)
+## <a name="tutorials"></a>チュートリアル
 Resource Manager テンプレートを使用して Data Factory エンティティを作成する詳細な手順については、次のチュートリアルをご覧ください。
 
 * [チュートリアル: Azure Resource Manager テンプレートを使用してデータをコピーするパイプラインを作成する](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -231,7 +231,7 @@ dataFactoryName は以下のように "変数" で定義します。
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Data Factory テンプレートのパラメーター化
-パラメーター化のベスト プラクティスについては、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/resource-manager-template-best-practices.md#parameters)」を参照してください。 通常は、特に代わりに変数を使用できる場合には、パラメーターの使用を最小限にすることをお勧めします。 次のシナリオではパラメーターのみを指定します。
+パラメーター化のベスト プラクティスについては、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](../../azure-resource-manager/resource-manager-template-best-practices.md)」を参照してください。 通常は、特に代わりに変数を使用できる場合には、パラメーターの使用を最小限にすることをお勧めします。 次のシナリオではパラメーターのみを指定します。
 
 * 設定は環境によって異なります (例: 開発、テスト、運用)
 * シークレット情報 (パスワードなど)

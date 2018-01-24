@@ -16,11 +16,11 @@ ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: 9ddb5f7e6c5dbeb742002dfcdfb981fae699130b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c00f382546a0e5f1e9da9dc90777dcf9622ec94
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>複数の Azure Active Directory テナントが対話する方法を理解する
 
@@ -50,5 +50,5 @@ Azure Portal で Azure AD テナントを追加するには、Azure AD グロー
 > 他の Azure リソースとは異なり、テナントは Azure サブスクリプションの子リソースではありません。 Azure サブスクリプションが取り消されたり、期限切れになったりした場合でも、Azure PowerShell、Azure Graph API、または Office 365 管理センターを使用してテナント データに引き続きアクセスできます。 また、[テナントに別のサブスクリプションを関連付ける](active-directory-how-subscriptions-associated-directory.md)こともできます。
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure AD のライセンスに関する問題およびベスト プラクティスの広範囲にわたる概要については、[Azure Active Directory のテナントのライセンス](active-directory-licensing-whatis-azure-portal.md)に関するページをご覧ください。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: mabrigg
-ms.openlocfilehash: b44129400e878e9032623e4d0962153d50303660
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 25b89571277e393fbad7cdd6e193d9b3f02f3ee5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack をインストールする  
 
@@ -29,9 +29,9 @@ Azure Stack を使用するには、Azure Stack と互換性のある Azure Powe
 この記事では、PowerShell for Azure Stack をインストールする手順について詳しく説明しています。 ただし、PowerShell をすばやくインストールして構成する場合は、「[Get up and running with PowerShell](azure-stack-powershell-configure-quickstart.md)」(PowerShell の起動と実行) のトピックにあるスクリプトを使用できます。 
 
 > [!NOTE]
-> 次の手順では、PowerShell 5.0 が必要です。 バージョンを確認するには、$PSVersionTable.PSVersion を実行して、[Major] (メジャー) のバージョンを比較します。
+> 次の手順では、PowerShell 5.0 が必要です。 バージョンを確認するには、$PSVersionTable.PSVersion を実行して、[Major] \(メジャー) のバージョンを比較します。
 
-Azure Stack 用の PowerShell コマンドは、PowerShell ギャラリーを介してインストールされます。 PSGallery レポジトリを登録するには、開発キットから、または VPN 経由で接続している場合は Windows ベースの外部クライアントから、管理者特権の PowerShell セッションを開いて、次のコマンドを実行します。
+Azure Stack 用の PowerShell コマンドは、PowerShell ギャラリーを介してインストールされます。 PSGallery リポジトリを登録するには、開発キットから、または VPN 経由で接続している場合は Windows ベースの外部クライアントから、管理者特権の PowerShell セッションを開いて、次のコマンドを実行します。
 
 ```powershell
 Set-PSRepository `
@@ -49,7 +49,7 @@ Set-PSRepository `
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* 開発キットにサインインするか、または VPN 接続を確立する予定の場合は Windows ベースの外部クライアントにサインインします。 `C:\Program Files (x86)\WindowsPowerShell\Modules` および `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` フォルダーから、「Azure」で始まるすべてのフォルダーを削除します。 これらのフォルダーを削除すると、「AzureStackAdmin」および「global」ユーザー スコープから既存の PowerShell モジュールがすべて削除されます。 
+* 開発キットにサインインするか、または VPN 接続を確立する予定の場合は Windows ベースの外部クライアントにサインインします。 `C:\Program Files\WindowsPowerShell\Modules` および `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` フォルダーから、「Azure」で始まるすべてのフォルダーを削除します。 これらのフォルダーを削除すると、「AzureStackAdmin」および「global」ユーザー スコープから既存の PowerShell モジュールがすべて削除されます。 
 
 以下のセクションでは、PowerShell for Azure Stack のインストールに必要な手順について説明します。 PowerShell は、接続されているシナリオ、部分的に接続されているシナリオ、または接続が切断されたシナリオで運用される Azure Stack にインストールできます。 
 
@@ -126,7 +126,6 @@ Azure Stack と互換性のある AzureRM モジュールは、API バージョ�
      -SourceLocation $SourceLocation `
      -InstallationPolicy Trusted
 
-   ```powershell
    Install-Module AzureRM `
      -Repository $RepoName
 
@@ -134,7 +133,7 @@ Azure Stack と互換性のある AzureRM モジュールは、API バージョ�
      -Repository $RepoName 
    ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [GitHub からの Azure Stack ツールのダウンロード](azure-stack-powershell-download.md)
 * [Azure Stack ユーザーの PowerShell 環境の構成](user/azure-stack-powershell-configure-user.md)  

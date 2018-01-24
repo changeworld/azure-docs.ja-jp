@@ -6,34 +6,34 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 9667a5b840d6c1fab5087cfcf3ede34a732fbe01
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4205b47dc67920021812c1e573a98de64ad198ec
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="deploy-to-azure-container-instances-from-the-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
 Azure Container Registry は、Docker コンテナー イメージ用の Azure ベースのプライベート レジストリです。 この記事では、Azure Container Registry に格納されているコンテナー イメージを Azure Container Instances にデプロイする方法について説明します。
 
-## <a name="using-the-azure-cli"></a>Azure CLI の使用
+## <a name="deploy-with-azure-cli"></a>Azure CLI でのデプロイ
 
-Azure CLI には、Azure Container Instances でコンテナーを作成および管理するためのコマンドが含まれています。 `create` コマンドでプライベート イメージを指定する場合は、コンテナー レジストリでの認証に必要なイメージ レジストリ パスワードも指定できます。
+Azure CLI には、Azure Container Instances でコンテナーを作成および管理するためのコマンドが含まれています。 [az container create][az-container-create] コマンドでプライベート イメージを指定する場合は、コンテナー レジストリでの認証に必要なイメージ レジストリ パスワードも指定できます。
 
 ```azurecli-interactive
-az container create --name myprivatecontainer --image mycontainerregistry.azurecr.io/mycontainerimage:v1 --registry-password myRegistryPassword --resource-group myresourcegroup
+az container create --resource-group myResourceGroup --name myprivatecontainer --image mycontainerregistry.azurecr.io/mycontainerimage:v1 --registry-password myRegistryPassword
 ```
 
-`create` コマンドでは、`registry-login-server` と `registry-username` の指定もサポートされます。 ただし、Azure Container Registry のログイン サーバーは常に *registryname*.azurecr.io であり、既定のユーザー名は *registryname* であるため、これらの値が明示的に指定されていない場合はイメージ名から推測されます。
+[az container create][az-container-create] コマンドで、`--registry-login-server` と `--registry-username` を指定することもできます。 ただし、Azure Container Registry のログイン サーバーは常に *registryname*.azurecr.io であり、既定のユーザー名は *registryname* であるため、これらの値が明示的に指定されていない場合はイメージ名から推測されます。
 
-## <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+## <a name="deploy-with-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したデプロイ
 
 `imageRegistryCredentials` プロパティをコンテナー グループに含めることで、Azure Resource Manager テンプレート内に Azure Container Registry のプロパティを指定できます。
 
-```json
+```JSON
 "imageRegistryCredentials": [
   {
     "server": "imageRegistryLoginServer",
@@ -45,39 +45,32 @@ az container create --name myprivatecontainer --image mycontainerregistry.azurec
 
 コンテナー レジストリのパスワードをテンプレートに直接保存することを避けるため、パスワードを [Azure Key Vault](../key-vault/key-vault-manage-with-cli2.md) にシークレットとして保存し、[Azure Resource Manager と Key Vault のネイティブ統合](../azure-resource-manager/resource-manager-keyvault-parameter.md)を使用してテンプレート内で参照することをお勧めします。
 
-## <a name="using-the-azure-portal"></a>Azure ポータルの使用
+## <a name="deploy-with-azure-portal"></a>Azure Portal でのデプロイ
 
 Azure Container Registry にコンテナー イメージを保持している場合は、Azure ポータルを使用して Azure Container Instances 内にコンテナーを簡単に作成できます。
 
 1. Azure ポータルで、自分のコンテナー レジストリに移動します。
 
-2. [リポジトリ] を選択します。
+2. **[リポジトリ]** を選択し、次にデプロイ元のリポジトリを選択して、デプロイするコンテナー イメージのタグを右クリックし、**[実行インスタンス]** を選択します。
 
-    ![Azure ポータルの Azure Container Registry メニュー][acr-menu]
+    ![Azure Portal の Azure Container Registry の "実行インスタンス"][acr-runinstance-contextmenu]
 
-3. デプロイ元となるリポジトリを選択します。
-
-4. デプロイするコンテナー イメージのタグを右クリックします。
-
-    ![Azure Container Instances でコンテナーを起動するためのコンテキスト メニュー][acr-runinstance-contextmenu]
-
-5. コンテナーの名前とリソース グループの名前を入力します。 必要に応じて既定の値を変更することもできます。
+3. コンテナーの名前とリソース グループの名前を入力します。 必要に応じて既定の値を変更することもできます。
 
     ![Azure Container Instances の [作成] メニュー][acr-create-deeplink]
 
-6. デプロイが完了したら、通知ウィンドウからコンテナー グループに移動して、その IP アドレスとその他のプロパティを確認できます。
+4. デプロイが完了したら、通知ウィンドウからコンテナー グループに移動して、その IP アドレスとその他のプロパティを確認できます。
 
     ![Azure Container Instances のコンテナー グループの詳細ビュー][aci-detailsview]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [チュートリアルを完了](container-instances-tutorial-prepare-app.md)することで、コンテナーを作成し、そのコンテナーをプライベート コンテナー レジストリにプッシュして、Azure Container Instances にデプロイします。
 
 <!-- IMAGES -->
-[acr-menu]: ./media/container-instances-using-azure-container-registry/acr-menu.png
-
+[acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png
+[aci-detailsview]: ./media/container-instances-using-azure-container-registry/aci-detailsview.png
 [acr-runinstance-contextmenu]: ./media/container-instances-using-azure-container-registry/acr-runinstance-contextmenu.png
 
-[acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png
-
-[aci-detailsview]: ./media/container-instances-using-azure-container-registry/aci-detailsview.png
+<!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create

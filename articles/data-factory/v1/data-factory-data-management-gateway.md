@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a1b5346b590081c703ccdc5197e08f35bcaf76e3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: af05f407661c2606719e733e373d0dad7bff3230
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -137,7 +137,7 @@ ms.lasthandoff: 11/03/2017
 
 企業ファイアウォール レベルで、次のドメインと送信ポートを構成する必要があります。
 
-| ドメイン名 | ポート | 説明 |
+| ドメイン名 | ポート | [説明] |
 | --- | --- | --- |
 | *.servicebus.windows.net |443、80 |Data Movement Service のバックエンドとの通信に使用 |
 | *.core.windows.net |443 |Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)|
@@ -246,7 +246,7 @@ Azure ポータルでオンプレミスのリンクされたサービスを設�
 
 ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、 [New-AzureRmDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、 [資格情報とセキュリティの設定](#set-credentials-and-securityy) に関するセクションを参照してください。
 
-## <a name="update"></a>更新
+## <a name="update"></a>プライマリの
 既定では、データ管理ゲートウェイの新しいバージョンが利用可能になると、自動的に更新されます。 ゲートウェイは、すべてのスケジュールされたタスクが完了するまで、更新されません。 更新操作が完了するまで、ゲートウェイは追加のタスクを処理しません。 更新が失敗した場合、ゲートウェイは古いバージョンにロールバックします。
 
 更新時刻のスケジュールは次の場所に表示されます。
@@ -323,6 +323,9 @@ Data Management Gateway 構成マネージャーの [ホーム] タブには、�
 * **状態** 
 * **SSL 証明書**を表示する。この証明書は、データ ソースの資格情報を設定するためにポータルとゲートウェイ間の SSL 通信に使用されます。  
 
+### <a name="remote-access-from-intranet"></a>イントラネットからのリモート アクセス  
+この機能は今後有効になります。 今後の更新プログラム (v3.4 以降) で、資格情報を暗号化するために PowerShell または資格情報マネージャー アプリケーションを使用しながら、ポート 8050 (前のセクションを参照) を使用して現在発生しているすべてのリモート接続を有効または無効にできます。 
+
 ### <a name="diagnostics-page"></a>[診断] ページ
 [診断] ページでは、次の操作を行うことができます。
 
@@ -354,9 +357,9 @@ Azure Portal では、ゲートウェイ コンピューターでのリソース
 
 次の表に、**ゲートウェイ ノード**一覧の列の説明を示します。  
 
-監視のプロパティ | 説明
+監視のプロパティ | [説明]
 :------------------ | :---------- 
-名前 | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。    
+Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。 ノードとは、ゲートウェイがインストールされているオンプレミスの Windows コンピューターです。 1 つの論理ゲートウェイ内に複数のノード (最大 4 つのノード) を含める方法の詳細については、「[Data Management Gateway - 高可用性とスケーラビリティ](data-factory-data-management-gateway-high-availability-scalability.md)」をご覧ください。    
 [Status] | 論理ゲートウェイとゲートウェイ ノードの状態です  (たとえば、オンライン/オフライン/制限/ など)。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
 バージョン | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。 
@@ -504,7 +507,7 @@ Data Factory エディターを使用して資格情報を設定するもう 1 �
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell で、**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\** フォルダーに移動します。 次のコマンドに示すように、ローカル変数 **$Key** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
+1. Azure PowerShell で、**C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\** フォルダーに移動します。 次のコマンドに示すように、ローカル変数 **$Key*** に関連付けられた **RegisterGateway.ps1** スクリプトを実行します。 このスクリプトは、コンピューターにインストールされているクライアント エージェントを、前に作成した論理ゲートウェイに登録します。
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -537,5 +540,5 @@ Remove-AzureRmDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName A
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [オンプレミスとクラウド データ ストアの間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md) に関するページを参照してください。 チュートリアルでは、ゲートウェイを使用して、オンプレミスの SQL Server データベースから Azure BLOB にデータを移動するパイプラインを作成します。  

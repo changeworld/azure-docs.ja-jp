@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 9b236ab8dd80b0c34501e0d60ba74dee3043d262
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 3737a240d92d9420bac7d42475622182fb425a2b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする
 アプリケーションで膨大なデータを生成し、格納することができます。 このデータの一部 (コンピューターによって生成されるイベント データ、ログ、およびユーザー セッション情報など) は、一定期間でのみ有効です。 アプリケーションで必要以上のデータがある場合は、そのデータを消去し、アプリケーションでのストレージの必要性を減らすのが安全です。
@@ -149,8 +149,11 @@ TTL が設定されているドキュメントを期限切れにする必要が�
     
     await client.ReplaceDocumentCollectionAsync(collection);
 
+<a id="ttl-and-index-interaction"></a> 
 ## <a name="ttl-and-index-interaction"></a>TTL とインデックスの相互作用
-TTL を追加または変更すると、基になるインデックスが変更されます。 TTL がないときに、有効な TTL 値を指定すると、インデックス再作成操作が発生します。 同期インデックスの場合は、ユーザーがインデックスの状態の変化を目にすることはありません。 非同期インデックスの場合は、最初のインデックスが常に TTL での変更を検出して、インデックスが最初から再作成されます。 後者の場合の影響として、インデックス再構築中に実行されたクエリは、完全な結果または正しい結果を返しません。 インデックス作成モード自体が非同期のときに正確なデータ数などが必要な場合は、非同期インデックスの TTL を変更しないでください。  常に同期インデックスを選ぶのが理想的です。 
+コレクションで TTL の設定が追加される、または変更されると、基になるインデックスが変更されます。 TTL の値がオフからオンに変更されると、コレクションのインデックスが再作成されます。 インデックス作成モードに一貫性がある場合に、インデックス作成ポリシーが変更されると、ユーザーはインデックスの変更に気付きません。 インデックス作成モードが遅延に設定されている場合、インデックスは常にキャッチ アップし、TTL の値が変更されると、インデックスが一から再作成されます。 インデックス作成モードが遅延に設定されている場合に、TTL の値が変更されると、インデックスの再構築中に実行されたクエリから完全な結果または正しい結果が返されません。
+
+正確なデータを返す必要があるときには、インデックス作成モードが遅延に設定されている場合に、TTL の値を変更しないでください。 一貫性のあるクエリ結果を得るには、一貫性のあるインデックスを選択するのが理想的です。 
 
 ## <a name="faq"></a>FAQ
 **TTL にコストはかかりますか?**
@@ -173,6 +176,6 @@ TTL はドキュメント全体に適用されます。 ドキュメントの一
 
 はい。 コレクションでは、Consistent または Lazy に[インデックス作成ポリシーを設定](indexing-policies.md)する必要があります。 インデックス作成が None に設定されているコレクションに対して DefaultTTL を設定しようとすると、エラーになります。DefaultTTL が既に設定されているコレクションのインデックス作成を無効にしようとする場合も同様です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Cosmos DB の詳細については、サービスの "[*ドキュメント*](https://azure.microsoft.com/documentation/services/cosmos-db/)" のページを参照してください。
 

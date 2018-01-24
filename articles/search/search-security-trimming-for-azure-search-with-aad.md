@@ -1,6 +1,6 @@
 ---
-title: "Azure Search と Azure Active Directory でのセキュリティによるトリミング | Microsoft Docs"
-description: "Azure Search のフィルターと Azure Active Directory を使って、セキュリティによるトリミングを実装します。"
+title: "Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター | Microsoft Docs"
+description: "セキュリティ フィルターと Active Directory ID を使用した Azure Search コンテンツに対するアクセス制御。"
 services: search
 author: revitalbarletz
 manager: jlembicz
@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 8d277ff43aa0d5d14471426632b5aa369df0e316
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="security-trimming-in-azure-search-with-azure-active-directory"></a>Azure Search と Azure Active Directory でのセキュリティによるトリミング
+# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター
 
-この記事では、Azure Active Directory (AAD) と共に Azure Search を使って、ユーザー グループのメンバーシップに基づいてドキュメントへのアクセスを制限する方法を説明します。
+この記事では、Azure Active Directory (AAD) セキュリティ ID と共に Azure Search のフィルターを使用し、ユーザー グループのメンバーシップに基づいて検索結果をトリミングする方法について説明します。
 
 この記事に含まれるタスクは次のとおりです。
 > [!div class="checklist"]
@@ -187,5 +187,6 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 
 ## <a name="see-also"></a>関連項目
 
-+ [Azure Search を使用したセキュリティによるトリミング](search-security-trimming-for-azure-search.md)
++ [Azure Search フィルターを使用した ID ベースのアクセス制御](search-security-trimming-for-azure-search.md)
 + [Azure Search のフィルター](search-filters.md)
++ [Azure Search 操作でのデータ セキュリティとアクセス制御](search-security-overview.md)

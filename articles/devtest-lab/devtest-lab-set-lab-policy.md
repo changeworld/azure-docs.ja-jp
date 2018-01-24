@@ -3,7 +3,7 @@ title: "Azure DevTest Labs でのラボのポリシーの管理 | Microsoft Docs
 description: "VM サイズ、ユーザーごとの VM の最大数、シャットダウンの自動化など、ラボのポリシーを定義する方法について説明します。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 7756aa64-49ca-45a0-9f90-0fd101c7be85
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.author: tarcher
+ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f42baa1ac37f425f915b6949e018f6e7397d3ae
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: c2b71fa5ec2935a25b5fb37770dfb5163a286ded
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのすべてのポリシーを管理
 
@@ -107,7 +107,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ラボに対して各種の VM ポリシー設定を定義および適用した後は、次に示すいくつかの操作を試してみてください。
 
 * [共有 IP アドレスについて](devtest-lab-shared-ip.md) - DevTest Labs で共有 IP アドレスを使用して、ラボの VM への接続に必要なパブリック IP アドレスの数を最小限に抑える方法について説明します。
@@ -115,5 +115,5 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
   現在のカレンダー月の現時点までの推定コストと月末の予測コストを表示する方法を示します。
 * [カスタム イメージを作成する](devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。 この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
 * [Marketplace イメージを構成する](devtest-lab-configure-marketplace-images.md) - Azure DevTest Labs では、Azure Marketplace イメージを基にした VM を作成することができます。 この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
-* [ラボで VM を作成する](devtest-lab-add-vm-with-artifacts.md) - 基本イメージ (カスタムまたは Marketplace) から VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
+* [ラボで VM を作成する](devtest-lab-add-vm.md) - 基本イメージ (カスタムまたは Marketplace) から VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
 

@@ -12,19 +12,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 01/09/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4b94092f1284abfa2462ddef04b6e84136e54dde
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 55cc0eb3cc187d87e0d2ae96e2433cb9682ab370
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
 *適用対象: Azure Stack 統合システム*
 
 この記事では、スケール ユニットとそれに関連するノードの状態を表示し、使用可能なノード操作を行う方法について説明します。 ノード操作には、電源オン、電源オフ、ドレイン、再開、および修復が含まれます。 通常、これらのノード操作は、パーツのフィールド交換中や、ノード復旧において使用されます。
+
+> [!Important]  
+> この記事で説明されているすべてのノード操作は、一度に 1 つのノードだけを対象にするようにしてください。
+
 
 ## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>スケール ユニットとそのノードの状態の表示
 
@@ -75,13 +79,17 @@ ms.lasthandoff: 12/11/2017
 
 **電源オフ**操作は、ノードをオフにします。 これは、電源ボタンを押した場合と同じです。 オペレーティング システムにシャット ダウンの信号を送ることは**しません**。 計画された電源オフ操作では、まず最初にスケール ユニットのノードをドレインしてください。
 
-この操作は通常、ノードが停止状態であり要求に応答しないときに使用されます。  
+この操作は通常、ノードが停止状態であり要求に応答しないときに使用されます。
+
+> [!Important] 
+> この機能は、PowerShell 経由でのみ使用できます。 これは、後で Azure Stack 管理者ポータルで再び使用可能になります。
+
 
 PowerShell で電源オフ操作を実行するには、以下のようにします。
 
-  ````PowerShell
+````PowerShell
   Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
-  ```` 
+```` 
 
 可能性は低いですが、電源オフ操作が動作しない場合には、代わりに BMC Web インターフェイスを使用します。
 
@@ -89,11 +97,14 @@ PowerShell で電源オフ操作を実行するには、以下のようにしま
 
 **電源オン**操作は、ノードをオンにします。 これは、電源ボタンを押した場合と同じです。 
 
+> [!Important] 
+> この機能は、PowerShell 経由でのみ使用できます。 これは、後で Azure Stack 管理者ポータルで再び使用可能になります。
+
 PowerShell で電源オン操作を実行するには、以下のようにします。
 
-  ````PowerShell
+````PowerShell
   Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
-  ````
+````
 
 可能性は低いですが、電源オン操作が動作しない場合には、代わりに BMC Web インターフェイスを使用します。
 

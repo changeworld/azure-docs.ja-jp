@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 68ada2da62958948dbf232b5f83f69d7942b9c10
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 01e4395d5b2baaaf130f7a0fa7aaa29d611559b7
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>チュートリアル: Azure Active Directory と Lesson.ly の統合
 
@@ -63,11 +63,11 @@ Azure AD への Lesson.ly の統合を構成するには、ギャラリーから
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Lesson.ly**」と入力します。
 
@@ -86,11 +86,11 @@ Lesson.ly で、Azure AD の **[ユーザー名]** の値に **[ユーザー名]
 
 Lesson.ly で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Lesson.ly テスト ユーザーの作成](#creating-a-lessonly-test-user)** - Lesson.ly で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,17 +100,17 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
 1. Azure Portal の **Lesson.ly** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_samlbase.png)
 
 3. **[Lesson.ly Domain and URLs]\(Lesson.ly のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_url.png)
 
-    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<companyname>.lesson.ly/signin`|
@@ -119,7 +119,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
     >[!NOTE]
     >一般名を参照するときは、この **companyname** を実際の名前に置き換える必要があります。
     
-    b. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    b. **[識別子]** ボックスに、次の形式で URL を入力します。
     | |
     |--|
     | `https://<companyname>.lesson.ly/auth/saml/metadata`|
@@ -130,11 +130,11 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_certificate.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_certificate.png)
 
 5. Lesson.ly アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットにその例を示します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lessonly_06.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_lessonly_06.png)
            
 6. **[Single sign-on]\(シングル サインオン\)** ダイアログの **[User Attributes]\(ユーザー属性\)** セクションで、上記の図に示すように SAML トークン属性を構成し、次の手順を実行します。
 
@@ -142,13 +142,14 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
     | ---------------  | ----------------|
     | urn:oid:2.5.4.42 |User.givenname |
     | urn:oid:2.5.4.4  |User.surname |
-    | urn:oid:0.9.2342.19200300.1001.3 |User.mail |
+    | urn:oid:0.9.2342.19200300.100.1.3 |User.mail |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 |user.objectid |
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_attribute_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-lessonly-tutorial/tutorial_attribute_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -158,16 +159,16 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_general_400.png)
 
 8. **[Lesson.ly Configuration]\(Lesson.ly 構成\)** セクションで、**[Configure Lesson.ly]\(Lesson.ly を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_configure.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_configure.png)
 
 9. **Lesson.ly** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (Base64)**、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [Lesson.ly サポート チーム](mailto:dev@lessonly.com)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -192,7 +193,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-lessonly-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -223,7 +224,7 @@ Lesson.ly で Azure AD のシングル サインオンを構成してテスト�
 
 2. アプリケーションの一覧で **[Lesson.ly]**を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-lessonly-tutorial/tutorial_lesson.ly_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

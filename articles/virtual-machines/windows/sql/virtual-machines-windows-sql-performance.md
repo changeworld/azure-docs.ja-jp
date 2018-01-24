@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: jroth
-ms.openlocfilehash: 6386678bdac3630f3e003187ff3d12c0ce053b90
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 03580952800e595125fc48d169f7d4aa7846dd3f
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
 このトピックでは、Microsoft Azure Virtual Machine で SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。 Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用することをお勧めします。 ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
 
-SQL Server イメージを作成するときは、[VM を Azure Portal にプロビジョニングすることを検討してください](virtual-machines-windows-portal-sql-server-provision.md)。 Resource Manager を使用してポータルにプロビジョニングされた SQL Server VM は、ストレージの構成を含むすべてのベスト プラクティスを実装します。
+SQL Server イメージを作成するときは、[VM を Azure Portal にプロビジョニングすることを検討してください](virtual-machines-windows-portal-sql-server-provision.md)。 ポータルから Resource Manager でプロビジョニングされる SQL Server VM は、ベスト プラクティスに準拠しています。
 
 この記事は、Azure VM で SQL Server の *最適な* パフォーマンスを得ることに重点を置いています。 ワークロードの要求が厳しくない場合は、以下に示す最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。
 
@@ -90,6 +90,9 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
 ### <a name="data-disks"></a>データ ディスク
 
 * **データ ファイルとログ ファイル用のデータ ディスクの使用**: 少なくとも、2 つの Premium Storage [P30 ディスク](../premium-storage.md#scalability-and-performance-targets) を使用し、一方のディスクにログ ファイル、もう一方にデータと TempDB ファイルを格納します。 [ディスクでの Premium Storage の使用](../premium-storage.md)に関する記事で説明しているように、各 Premium Storage ディスクでは、サイズに応じた IOPS 数と帯域幅 (MB/s) が提供されます。
+
+   > [!NOTE]
+   > SQL Server VM をポータルからプロビジョニングするとき、必要に応じてストレージの構成を編集することができます。 Azure では、実際の構成に応じて 1 つまたは複数のディスクが構成されます。 複数のディスクは、ストライピングを使用して 1 つの記憶域プールにまとめられます。 この構成では、データ ファイルとログ ファイルが (2 つの別個のディスクにではなく) 一緒に格納されます。 詳細については、「[SQL Server VM のストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)」を参照してください。
 
 * **ディスク ストライピング**: スループットを向上させるには、データ ディスクをさらに追加して、ディスク ストライピングを使用します。 データ ディスク数を決定するには、ログ ファイルおよびデータと TempDB ファイルのために必要な IOPS 数と帯域幅を分析する必要があります。 VM サイズが異なると、サポートされる IOPS 数と帯域幅の制限も変わります。[VM サイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ごとの IOPS ついて表を参照してください。 次のガイドラインに従ってください。
 
@@ -162,8 +165,8 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
 
 * **Azure 内の SQL Server データ ファイル**: [Azure 内の SQL Server データ ファイル](https://msdn.microsoft.com/library/dn385720.aspx)は、SQL Server 2014 以降で使用できる新機能です。 Azure 内のデータ ファイルを使用して SQL Server を実行すると、Azure データ ディスクを使用する場合と同等のパフォーマンス特性が得られます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 セキュリティのベスト プラクティスについては、[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)に関するページをご覧ください。
 
-SQL Server Virtual Machines に関する他のトピックについては、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
+SQL Server Virtual Machines に関する他のトピックについては、 [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページを参照してください。

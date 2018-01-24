@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 11/15/2017
+ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: f95a0abcd50b94714a76b36a0b5f9c73da909879
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 59d926f54c8dfc2991929f2eb42b20056e3a09c3
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
 Azure Cosmos DB では、[Apache Tinkerpop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) をサポートしています。これは、グラフ エンティティを作成し、グラフ クエリ操作を実行するための Graph API です。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
 
 Azure Cosmos DB は、グラフ データベースにエンタープライズ対応の機能を提供します。 これには、グローバル配布、ストレージとスループットの個別スケーリング、1 桁ミリ秒の予測可能な待機時間、自動インデックス作成、SLA、2 つ以上の Azure リージョンにまたがるデータベース アカウントの読み取り可用性などがあります。 Azure Cosmos DB は TinkerPop/Gremlin をサポートしているため、コードを変更しなくても、別のグラフ データベースを使用して作成されたアプリケーションを簡単に移行できます。 さらに、Gremlin のサポートにより、Azure Cosmos DB は [Apache Spark GraphX](http://spark.apache.org/graphx/) などの TinkerPop 対応分析フレームワークとシームレスに統合されます。 
 
-この記事では、Gremlin の簡単なチュートリアルを提供し、Graph API サポートのプレビューでサポートされている Gremlin の機能とステップを紹介します。
+この記事では、Gremlin の簡単なチュートリアルを提供し、Graph API でサポートされている Gremlin の機能とステップを紹介します。
 
 ## <a name="gremlin-by-example"></a>Gremlin の例
 サンプル グラフを使用して、Gremlin でクエリを表現する方法を理解しましょう。 次の図は、ユーザー、関心事、デバイスに関するデータを管理するビジネス アプリケーションをグラフの形で示しています。  
@@ -80,7 +80,7 @@ TinkerPop は、さまざまなグラフ テクノロジに対応する標準で
 
 | カテゴリ | Azure Cosmos DB 実装 |  メモ | 
 | --- | --- | --- |
-| グラフ機能 | プレビューでは永続化と同時アクセスが提供されます。 トランザクションをサポートするように設計されています。 | コンピューターのメソッドは、Spark コネクタを介して実装できます。 |
+| グラフ機能 | 永続化と同時アクセスが提供されます。 トランザクションをサポートするように設計されています。 | コンピューターのメソッドは、Spark コネクタを介して実装できます。 |
 | 変数機能 | ブール値、整数、Byte、Double、Float、Long、文字列をサポートしています。 | プリミティブ型をサポートしています。データ モデルを介して複雑な型と互換性があります。 |
 | 頂点機能 | RemoveVertices、MetaProperties、AddVertices、MultiProperties、StringIds、UserSuppliedIds、AddProperty、RemoveProperty をサポートしています。  | 頂点の作成、変更、削除をサポートしています。 |
 | 頂点プロパティ機能 | StringIds、UserSuppliedIds、AddProperty、RemoveProperty、BooleanValues、ByteValues、DoubleValues、FloatValues、IntegerValues、LongValues、StringValues | 頂点プロパティの作成、変更、削除をサポートしています。 |
@@ -132,18 +132,18 @@ Azure Cosmos DB では、Gremlin の操作から結果を返すときに [GraphS
 
 GraphSON で使用される頂点のプロパティは次のとおりです。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | id | 頂点の ID。 一意である必要があります (該当する場合は、_partition の値との組み合わせにおいて一意である必要があります)。 |
 | label | 頂点のラベル。 これは省略可能です。エンティティの種類を示すために使用します。 |
-| type | 頂点とグラフ以外のドキュメントを区別するために使用します。 |
+| 型 | 頂点とグラフ以外のドキュメントを区別するために使用します。 |
 | プロパティ | 頂点に関連付けられているユーザー定義プロパティのバッグ。 各プロパティには複数の値を指定できます。 |
 | _partition (構成可能) | 頂点のパーティション キー。 パーティション キーを使用して、グラフを複数のサーバーにスケールアウトできます。 |
 | outE | これには、頂点からの外向きの辺のリストが含まれます。 頂点と共に隣接情報を格納することで、トラバーサルの高速実行が可能になります。 辺はラベルに基づいてグループ化されます。 |
 
 辺には、グラフの他の部分へのナビゲーションに役立つ次の情報が含まれています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | id | 辺の ID。 一意である必要があります (該当する場合は、_partition の値との組み合わせにおいて一意である必要があります)。 |
 | label | 辺のラベル。 このプロパティは省略可能です。関係の種類を示すために使用します。 |
@@ -152,9 +152,9 @@ GraphSON で使用される頂点のプロパティは次のとおりです。
 
 各プロパティでは、配列内に複数の値を格納できます。 
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
-| 値 | プロパティの値。
+| value | プロパティの値。
 
 ## <a name="gremlin-partitioning"></a>Gremlin のパーティション分割
 
@@ -165,7 +165,7 @@ Gremlin の操作は、Azure Cosmos DB の複数のパーティションにま�
 ## <a name="gremlin-steps"></a>Gremlin のステップ
 次に、Azure Cosmos DB でサポートされている Gremlin のステップを見てみましょう。 Gremlin の完全なリファレンスについては、[TinkerPop リファレンス](http://tinkerpop.apache.org/docs/current/reference)をご覧ください。
 
-| ステップ | Description | TinkerPop 3.2 ドキュメント | メモ |
+| ステップ | [説明] | TinkerPop 3.2 ドキュメント | メモ |
 | --- | --- | --- | --- |
 | `addE` | 2 つの頂点の間に辺を追加します。 | [addE ステップ](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) | |
 | `addV` | グラフに頂点を追加します。 | [addV ステップ](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |
@@ -204,6 +204,6 @@ Gremlin の操作は、Azure Cosmos DB の複数のパーティションにま�
 
 Azure Cosmos DB の書き込みに最適化されたエンジンは、頂点および辺内のすべてのプロパティの自動インデックス作成を既定でサポートしています。 そのため、任意のプロパティでのフィルターを使用するクエリ、範囲クエリ、並べ替え、または集計は、インデックスに基づいて処理され、効率的に提供されます。 Azure Cosmos DB におけるインデックス作成のしくみの詳細については、[スキーマに依存しないインデックス作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)に関する論文をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [SDK を使用](create-graph-dotnet.md)してグラフ アプリケーションの構築を開始する 
 * [Azure Cosmos DB のグラフ サポート](graph-introduction.md)の詳細を確認する

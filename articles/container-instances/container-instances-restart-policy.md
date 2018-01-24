@@ -8,11 +8,11 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: marsma
-ms.openlocfilehash: 3c7c57b05220d1e82c3baa8bc266e02d961a84be
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: a922525970eac9af6657e58daae971912183b369
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="run-a-containerized-task-in-azure-container-instances"></a>Azure Container Instances でコンテナー化タスクを実行する
 
@@ -20,13 +20,13 @@ Azure Container Instances ではコンテナー デプロイを簡単にすば�
 
 構成可能な再起動ポリシーを使用して、プロセスが完了したらコンテナーが停止するように指定できます。 コンテナーのインスタンスは秒単位で課金されるため、タスクを実行するコンテナーの実行中に使用されるコンピューティング リソースのみが課金されます。
 
-この記事にある例では、Azure CLI を使用します。 Azure CLI バージョン 2.0.21 以上が[ローカルにインストール](/cli/azure/install-azure-cli)されているか、[Azure Cloud Shell](../cloud-shell/overview.md) で CLI を使用する必要があります。
+この記事にある例では、Azure CLI を使用します。 Azure CLI バージョン 2.0.21 以上が[ローカルにインストールされている][azure-cli-install]か、[Azure Cloud Shell](../cloud-shell/overview.md) で CLI を使用する必要があります。
 
 ## <a name="container-restart-policy"></a>コンテナー再起動ポリシー
 
 Azure Container Instances でコンテナーを作成する場合、3 つの再起動ポリシー設定のいずれかを指定できます。
 
-| 再起動ポリシー   | 説明 |
+| 再起動ポリシー   | [説明] |
 | ---------------- | :---------- |
 | `Always` | コンテナー グループ内のコンテナーを常に再起動する。 これは**既定**の設定で、コンテナー作成時に再起動ポリシーが指定されていない場合に適用されます。 |
 | `Never` | コンテナー グループ内のコンテナーを再起動しない。 コンテナーは最大で 1 回実行されます。 |
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>完了まで実行の例
 
-再起動ポリシーが動作しているのを確認するには、[microsoft/aci-wordcount](https://hub.docker.com/r/microsoft/aci-wordcount/) イメージからコンテナー インスタンスを作成し、`OnFailure` 再起動ポリシーを指定します。 このコンテナー例では、既定でシェイクスピアの[ハムレット](http://shakespeare.mit.edu/hamlet/full.html)のテキストを解析し、最もよく使われる単語 10 個を STDOUT に書き込んで終了する Python スクリプトを実行します。
+再起動ポリシーが動作しているのを確認するには、[microsoft/aci-wordcount][aci-wordcount-image] イメージからコンテナー インスタンスを作成し、`OnFailure` 再起動ポリシーを指定します。 このコンテナー例では、既定でシェイクスピアの[ハムレット](http://shakespeare.mit.edu/hamlet/full.html)のテキストを解析し、最もよく使われる単語 10 個を STDOUT に書き込んで終了する Python スクリプトを実行します。
 
 このコンテナー例を次の [az container create][az-container-create] コマンドで実行します。
 
@@ -162,13 +162,17 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ### <a name="persist-task-output"></a>タスク出力を保持する
 
 完了まで実行するコンテナーの出力を保存する方法の詳細については、「[Azure Container Instances での Azure ファイル共有のマウント](container-instances-mounting-azure-files-volume.md)」をご覧ください。
 
-<!-- LINKS -->
+<!-- LINKS - External -->
+[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+
+<!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+[azure-cli-install]: /cli/azure/install-azure-cli

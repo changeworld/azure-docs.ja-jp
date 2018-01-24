@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: f7d2fd61dce93e8100ec33f82cd648b77efc1c0f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb02aaf541d2d2f4b1206136847af2b46621501d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
 
-## <a id="assets"></a>資産とストレージ
+## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>資産とストレージ
 ### <a name="assets"></a>資産
 [資産](https://docs.microsoft.com/rest/api/media/operations/asset) には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。 デジタル ファイルが資産にアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
 
@@ -71,7 +71,7 @@ BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB �
 > 
 > 
 
-### <a id="locators"></a>ロケーター
+### <a name="a-idlocatorslocators"></a><a id="locators"/>ロケーター
 [ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対 1 の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
 
 Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、Smooth Streamingなど) またはメディアのプログレッシブ ダウンロードに使用し、SAS URL ロケーターは Azure Storage へのメディア ファイルのアップロードまたは Azure Storage からのダウンロードに使用します。 
@@ -127,7 +127,7 @@ Media Services においてライブ ストリーミング コンテンツの処
 
 チャネルは、最大 3 つの同時実行プログラムをサポートするため、同じ受信ストリームのアーカイブを複数作成できます。 これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。 たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。 これを実現するには、2 つの同時実行プログラムを作成する必要があります。 1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。 もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
 
-詳細については、次を参照してください。
+詳細については、「
 
 * [Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)
 * [オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)
@@ -156,7 +156,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 - [PlayReady/Widevine による保護](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>配信
-### <a id="dynamic_packaging"></a>動的パッケージ
+### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>ダイナミック パッケージ
 Media Services を使用する際、中間ファイルをアダプティブ ビットレート MP4 セットにエンコードして、その後、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
 ### <a name="streaming-endpoint"></a>ストリーミング エンドポイント
@@ -186,7 +186,7 @@ Media Services におけるコンテンツ配信ワークフローの手順の 1
 >[!NOTE]
 >プログレッシブ ダウンロードで使用したい場合は、暗号化された資産の暗号化を解除する必要があります。
 
-ユーザーにプログレッシブ ダウンロード URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、資産への基本パスが提供されます。 それに MP4 ファイルの名前を付加する必要があります。 次に例を示します。
+ユーザーにプログレッシブ ダウンロード URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、資産への基本パスが提供されます。 それに MP4 ファイルの名前を付加する必要があります。 例: 
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 

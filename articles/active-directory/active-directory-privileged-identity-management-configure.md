@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 09/18/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: 9a013820689742faa732971c00b82c7ad8638a95
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c35b0c4171d411bd0c0483866f88780757cb3ee8
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
 組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。 その対象には、Azure AD や Azure リソース (プレビュー) をはじめとする各種 Microsoft Online Services (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 > [!NOTE]
-> Azure Active Directory の Premium P2 版のライセンスを管理者に与えると、Privileged Identity Management を組織全体で利用できます。 詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> Azure Active Directory の Premium P2 版のライセンスを管理者に与えると、Privileged Identity Management を組織全体で利用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 組織では、セキュリティで保護された情報またはリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。こうすることで、悪意のあるユーザーがこのようなアクセス権を手にしたり、権限のあるユーザーの不注意で機微なリソースのセキュリティが損なわれたりする可能性が抑えられるためです。  しかし一方で、ユーザーは Azure AD、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。 組織は、サブスクリプションや Azure AD など、各種 Azure リソースへの特権アクセスをユーザーに付与する場合があります。 そこで、そうしたユーザーが管理特権で何をしているかについて監視することが必要となります。 Azure AD Privileged Identity Management は、アクセス権の過剰、無駄、乱用に伴うリスクを軽減するうえで役に立ちます。
 
@@ -148,7 +148,7 @@ Azure リソース ロール (プレビュー) のロール設定では、ジャ
 Azure AD PIM を使用するためには、あらかじめテナントに、Azure AD Premium P2 (または EMS E5) 試用版サブスクリプションまたは有料サブスクリプションが必要です。  また、テナントの管理者にライセンスが割り当てられている必要があります。  具体的には、Azure AD PIM で管理される Azure AD ロールの管理者、Azure AD PIM で管理される Azure RBAC ロールの管理者、アクセス レビューを実行する非管理者ユーザーにライセンスの割り当てが必要となります。
 Azure AD Premium P2 を更新していない場合や試用版の有効期限が切れている場合、ご利用のテナントでは、Azure AD PIM 機能は利用できなくなります。資格のあるロールの割り当ては削除され、ユーザーがロールをアクティブにすることもできません。 詳しくは、[Azure AD PIM サブスクリプションの要件](./privileged-identity-management/subscription-requirements.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

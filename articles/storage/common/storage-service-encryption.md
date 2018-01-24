@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: tamram
-ms.openlocfilehash: 772c36c8310a4bf30c62def507382fe74427e0d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32f622c39583a25a7bc53ffcb6d9be779459badc
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
 Azure Storage Service Encryption (SSE) for Data at Rest は、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たすのに役立ちます。 この機能を使用すると、Azure Storage はストレージに保存する前にデータを自動的に暗号化し、取得する前に復号化します。 暗号化、復号化、キーの管理は、ユーザーにはまったく意識されずに行われます。
@@ -159,7 +159,7 @@ A: 現時点ではできません。キーは、Microsoft によって完全に�
 
 **Q: 新しいストレージ アカウントを作成すると、SSE は既定で有効になりますか?**
 
-A: SSE は既定では有効になりません。Azure Portal を使用して有効にできます。 Storage Resource Provider REST API を使用してプログラムでこの機能を有効にすることもできます。
+A: Azure Storage (Blob Storage、File Storage、Table Storage、Queue Storage) に書き込まれるすべてのデータ、およびすべてのストレージ アカウント (Azure Resource Manager アカウントおよびクラシック ストレージ アカウント) に関して、どちらも新旧を問わず、暗号化を既定で有効にする作業を Azure Storage チームが現在、Microsoft Managed Keys を使用して進めています。
 
 **Q: この機能は Azure Disk Encryption とどのように違うのですか?**
 
@@ -185,6 +185,6 @@ A: Blob Storage では SSE をすべてのリージョンで使用できます�
 
 A: Storage Service Encryption に関する問題は、 [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com) にご連絡ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 詳細については、 [Storage セキュリティ ガイド](../storage-security-guide.md)に関する記事を参照してください。
 

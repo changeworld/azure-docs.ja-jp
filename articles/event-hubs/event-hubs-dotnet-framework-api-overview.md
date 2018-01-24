@@ -12,23 +12,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: bc525e7ca8b21e9e5f1e36b3152d71420b041700
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a51d4552df2643a25ce492b8525b9aa7fa36e21c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API の概要
+
 この記事は主要な Event Hubs .NET Framework クライアント API についてまとめてあります。 2 つのカテゴリがあります。管理 API とランタイム API です。 ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。 管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。
 
-監視シナリオは管理とランタイムの両方にまたがります。 .NET API に関する詳細なリファレンス ドキュメントについては、[Service Bus .NET](/dotnet/api/microsoft.servicebus.messaging) と [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) に関するリファレンスを参照してください。
+[監視シナリオ](event-hubs-metrics-azure-monitor.md)は管理とランタイムの両方にまたがります。 .NET API に関する詳細なリファレンス ドキュメントについては、[Service Bus .NET](/dotnet/api/microsoft.servicebus.messaging) と [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) に関するリファレンスを参照してください。
 
 ## <a name="management-apis"></a>管理 API
+
 次の管理操作を実行するには、Event Hubs 名前空間の **管理** 権限が必要になります。
 
-### <a name="create"></a>作成
+### <a name="create"></a>[作成]
+
 ```csharp
 // Create the event hub
 var ehd = new EventHubDescription(eventHubName);
@@ -36,7 +39,8 @@ ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
-### <a name="update"></a>更新
+### <a name="update"></a>プライマリの
+
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);
 
@@ -49,18 +53,21 @@ await namespaceManager.UpdateEventHubAsync(ehd);
 ```
 
 ### <a name="delete"></a>削除
+
 ```csharp
-await namespaceManager.DeleteEventHubAsync("Event Hub name");
+await namespaceManager.DeleteEventHubAsync("event hub name");
 ```
 
 ## <a name="run-time-apis"></a>ランタイム API
 ### <a name="create-publisher"></a>発行元の作成
+
 ```csharp
 // EventHubClient model (uses implicit factory instance, so all links on same connection)
-var eventHubClient = EventHubClient.Create("Event Hub name");
+var eventHubClient = EventHubClient.Create("event hub name");
 ```
 
 ### <a name="publish-message"></a>メッセージの発行
+
 ```csharp
 // Create the device/temperature metric
 var info = new MetricEvent() { DeviceId = random.Next(SampleManager.NumDevices), Temperature = random.Next(100) };
@@ -79,6 +86,7 @@ await client.SendAsync(data);
 ```
 
 ### <a name="create-consumer"></a>コンシューマーの作成
+
 ```csharp
 // Create the Event Hubs client
 var eventHubClient = EventHubClient.Create(EventHubName);
@@ -97,6 +105,7 @@ var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index
 ```
 
 ### <a name="consume-message"></a>メッセージの使用
+
 ```csharp
 var message = await consumer.ReceiveAsync();
 
@@ -109,6 +118,7 @@ msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
 ## <a name="event-processor-host-apis"></a>イベント プロセッサ ホスト API
+
 この API は、利用可能な worker にパーティションを分散することによって、利用不可になる可能性がある worker プロセスに回復性を与えます。
 
 ```csharp
@@ -168,7 +178,7 @@ public class SimpleEventProcessor : IEventProcessor
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs シナリオに関する詳細については、次のリンク先を参照してください。
 
 * [Azure Event Hubs とは](event-hubs-what-is-event-hubs.md)

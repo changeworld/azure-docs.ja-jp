@@ -3,7 +3,7 @@ title: "Azure Event Hubs geo ディザスター リカバリー | Microsoft Docs
 description: "Azure Event Hubs でリージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法"
 services: event-hubs
 documentationcenter: 
-author: ShubhaVijayasarathy
+author: sethmanheim
 manager: timlt
 editor: 
 ms.service: event-hubs
@@ -11,107 +11,99 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2017
+ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 94c2782b3166fbc65ae755291a82a2a14556b96f
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 237b0639be75e12cff56f40ac76426aba7a8a701
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 12/16/2017
 ---
-# <a name="azure-event-hubs-geo-disaster-recovery-preview"></a>Azure Event Hubs geo ディザスター リカバリー (プレビュー)
+# <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure Event Hubs geo ディザスター リカバリー
 
-地域のデータ センターにダウンタイムが発生した場合に、別の地域またはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー*と *geo レプリケーション*は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
+Azure リージョン全体または ([可用性ゾーン](../availability-zones/az-overview.md)が使用されていない) データ センター全体にダウンタイムが発生した場合に、別の地域またはデータ センターでデータ処理が続行されることが重要です。 そのため、*geo ディザスター リカバリー*と *geo レプリケーション*は、どの企業にとっても重要な機能です。 Azure Event Hubs では、geo ディザスター リカバリーと geo レプリケーションの両方が名前空間レベルでサポートされています。 
 
-Azure Event Hubs の geo ディザスター リカバリー機能はディザスター リカバリー ソリューションです。 この記事で説明する概念とワークフローは、一時的な故障ではなく、災害のシナリオに適用されます。
+Event Hubs Standard SKU では、geo ディザスター リカバリー機能がグローバルに使用できます。
 
-Microsoft Azure でのディザスター リカバリーの詳細については、[こちらの記事](/azure/architecture/resiliency/disaster-recovery-azure-applications)をご覧ください。 
+## <a name="outages-and-disasters"></a>故障と災害
 
-## <a name="terminology"></a>用語集
+"故障" と "災害" の違いに注意してください。 "*故障*" とは、Azure Event Hubs が一時的に使用不可能になっていることです。メッセージング ストアなどサービスの一部のコンポーネントや、場合によってはデータセンター全体に影響を与えることがあります。 しかし、問題が解決されると、Event Hubs は再び使用可能になります。 通常、故障によってメッセージなどのデータが失われることはありません。 故障の例として、データセンターでの電源障害があります。 一時的な問題やネットワークの問題から短時間、接続が失われるだけの故障もあります。 
 
-**ペアリング**: プライマリ名前空間は*アクティブ*と見なされ、メッセージを受け取ります。 フェールオーバー名前空間は*パッシブ*で、メッセージを受け取りません。 両者間のメタデータは同期しているため、どちらでもアプリケーション コードを変更せずにメッセージをシームレスに受信できます。 アクティブなリージョンとパッシブなリージョン間でディザスター リカバリー構成を確立することを、リージョンの*ペアリング*といいます。
+"*災害*" は、Event Hubs クラスター、Azure リージョン、またはデータ センターの永久または長期間損失として定義されています。 リージョンまたはデータセンターは、再び利用可能になる場合も、ならない場合もあります。また、数時間や数日間の停止になる場合もあります。 このような災害の例としては、火災、洪水、地震があります。 永続的な災害により、メッセージやイベントなどのデータが失われる可能性があります。 ただし、ほとんどの場合、データ センターがバックアップされていればデータが失われることはなく、メッセージを復元できます。
 
-**エイリアス**: 設定したディザスター リカバリー構成の名前です。 エイリアスは、1 つの不変の完全修飾ドメイン名 (FQDN) の接続文字列を示します。 アプリケーションでは、このエイリアスの接続文字列を使用して名前空間に接続します。
+Azure Event Hubs の geo ディザスター リカバリー機能はディザスター リカバリー ソリューションです。 この記事で説明する概念とワークフローは、一時的な故障ではなく、災害のシナリオに適用されます。 Microsoft Azure でのディザスター リカバリーの詳細については、[こちらの記事](/azure/architecture/resiliency/disaster-recovery-azure-applications)をご覧ください。
 
-**メタデータ**: 名前空間に関連付けられたイベント ハブ名、コンシューマー グループ、パーティション、スループット ユニット、エンティティ、およびプロパティを参照します。
+## <a name="basic-concepts-and-terms"></a>基本的な概念と用語
 
-## <a name="enable-geo-disaster-recovery"></a>geo ディザスター リカバリーを有効にする
+ディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。 geo ディザスター リカバリー機能は、[Standard SKU](https://azure.microsoft.com/pricing/details/event-hubs/) でのみ使用可能です。 別名を使用して接続を確立するので、接続文字列に変更を加える必要はありません。
 
-Event Hubs geo ディザスター リカバリーは、次の 3 つの手順で有効にできます。 
+この記事では、次の用語を使用します。
 
-1. geo ペアリングを作成して、エイリアス接続文字列を作成し、ライブ メタデータ レプリケーションを提供する。 
-2. 既存のクライアント接続文字列を、手順 1 で作成したエイリアスに変更する。
-3. フェールオーバーを開始する: geo ペアリングが解消され、エイリアスはセカンダリ名前空間を新しいプライマリ名前空間として示します。
+-  *エイリアス*: 設定したディザスター リカバリー構成の名前です。 エイリアスは、1 つの不変の完全修飾ドメイン名 (FQDN) の接続文字列を示します。 アプリケーションでは、このエイリアスの接続文字列を使用して名前空間に接続します。 
 
-次の図はこのワークフローを示しています。
+-  *プライマリ/セカンダリ名前空間*: エイリアスに対応する名前空間です。 プライマリ名前空間が "アクティブ" となり、メッセージを受け取ります (既存の名前空間の場合もあれば、新しい名前空間の場合もあります)。 セカンダリ名前空間は "パッシブ" で、メッセージを受け取りません。 両者間のメタデータは同期しているため、どちらでもアプリケーション コードや接続文字列を変更せずにメッセージをシームレスに受信できます。 確実にアクティブな名前空間にだけメッセージを送信するためには、エイリアスを使用する必要があります。 
 
-![geo ペアリングのフロー][1] 
+-  *メタデータ*: 名前空間に関連付けられているサービスのエンティティ (イベント ハブ、コンシューマー グループなど) とそのプロパティです。 自動的にレプリケートされるのはエンティティとその設定だけであることに注意してください。 メッセージやイベントはレプリケートされません。 
 
-### <a name="step-1-create-a-geo-pairing"></a>手順 1: geo ペアリングの作成
+-  *フェールオーバー*: セカンダリの名前空間をアクティブ化するプロセスです。
 
-2 つのリージョン間でペアリングを作成するには、プライマリ名前空間とセカンダリ名前空間が必要です。 その後、エイリアスを作成して geo ペアを形成します。 名前空間とエイリアスのペアリングが完了すると、両方の名前空間でメタデータが定期的にレプリケートされます。 
+## <a name="setup-and-failover-flow"></a>セットアップとフェールオーバーの流れ
 
-この処理方法を、次のコードで示します。
+次のセクションでは、フェールオーバー プロセスの概要を示したうえで、最初のフェールオーバーを設定する方法について説明します。 
 
-```csharp
-ArmDisasterRecovery adr = await client.DisasterRecoveryConfigs.CreateOrUpdateAsync(
-                                    config.PrimaryResourceGroupName,
-                                    config.PrimaryNamespace,
-                                    config.Alias,
-                                    new ArmDisasterRecovery(){ PartnerNamespace = config.SecondaryNamespace});
-```
+![1][]
 
-### <a name="step-2-update-existing-client-connection-strings"></a>手順 2: 既存のクライアント接続文字列の変更
+### <a name="setup"></a>セットアップ
 
-geo ペアリングが完了したら、プライマリ名前空間を指す接続文字列を、エイリアスの接続文字列を指すように変更する必要があります。 次の例で示すように、接続文字列を取得します。
+まず (新規作成または既存の) プライマリ名前空間と新しいセカンダリ名前空間をペアリングします。 このペアリングによって、接続に使用できる別名が決定されます。 別名を使用するので、接続文字列を変更する必要はありません。 フェールオーバーのペアリングに追加できるのは、新しい名前空間だけです。 最後に、フェールオーバーが必要であるかどうかを検出する監視機構を追加する必要があります。 ほとんどの場合、このサービスは大きなエコシステムの一部分であるため、自動フェールオーバーが実行できることはまれです。フェールオーバーは、他のサブシステムやインフラストラクチャと同調して実行しなければならないケースが多いためです。
 
-```csharp
-var accessKeys = await client.Namespaces.ListKeysAsync(config.PrimaryResourceGroupName,
-                                                       config.PrimaryNamespace, "RootManageSharedAccessKey");
-var aliasPrimaryConnectionString = accessKeys.AliasPrimaryConnectionString;
-var aliasSecondaryConnectionString = accessKeys.AliasSecondaryConnectionString;
-```
+### <a name="example"></a>例
 
-### <a name="step-3-initiate-a-failover"></a>手順 3: フェールオーバーの開始
+このシナリオの一例として、メッセージまたはイベントを出力する販売時点管理 (POS) ソリューションを考えてみましょう。 Event Hubs は、何らかのマッピング (または再フォーマット) ソリューションにそれらのイベントを渡します。マッピングされたデータは、後続の処理のために、そこから別のシステムに転送されます。 このとき、これらすべてのシステムが、同じ Azure リージョン内でホストされている可能性があります。 いつ、どの部分をフェールオーバーするかの判断は、実際のインフラストラクチャにおけるデータのフローによって異なります。 
 
-災害が発生した場合、またはセカンダリ名前空間へのフェールオーバーを開始することにした場合は、メタデータとデータはセカンダリ名前空間へのフローを開始します。 アプリケーションはエイリアスの接続文字列を使用するため、これ以上の対応は必要ありません。セカンダリ名前空間でイベント ハブに対する読み取りと書き込みが自動的に開始されます。 
+フェールオーバーは、監視システムを使用して自動化できるほか、独自に構築した監視ソリューションを使用して自動化することもできます。 ただしそのような自動化は、特別な計画と作業が伴い、この記事で取り上げる範囲を超えています。
 
-次のコードは、フェールオーバーの開始方法を示しています。
+### <a name="failover-flow"></a>フェールオーバーの流れ
 
-```csharp
-await client.DisasterRecoveryConfigs.FailOverAsync(config.SecondaryResourceGroupName,
-                                                   config.SecondaryNamespace, config.Alias);
-```
+フェールオーバーを開始する場合、次の 2 つのステップが必要となります。
 
-フェールオーバーが完了した後でプライマリ名前空間にあるデータが必要になった場合、データを抽出するために、プライマリ名前空間内のイベント ハブへの明示的な接続文字列を使用する必要があります。
+1. 別の故障が発生した場合は、もう一度フェールオーバーしたいと考えます。 そのために、別のパッシブな名前空間を設定して、ペアリングを更新します。 
 
-### <a name="other-operations-optional"></a>その他の操作 (省略可能)
+2. 以前のプライマリ名前空間が再び利用可能になったら、以前のプライマリ名前空間からメッセージをプルします。 以後、通常のメッセージングにその名前空間を geo リカバリーのセットアップ外で使用するか、または、以前のプライマリ名前空間を削除します。
 
-次のコードに示すように、geo ペアリングを解消したり、エイリアスを削除したりすることもできます。 エイリアス接続文字列を削除するには、次のように最初に geo ペアリングを解消する必要があります。
+> [!NOTE]
+> サポートされるのは、フェール フォワードのセマンティクスだけです。 このシナリオでは、フェールオーバー後、新しい名前空間との間で再度ペアリングを行います。 フェールバックはサポートされません (SQL クラスターでのフェールバックなど)。 
 
-```csharp
-// Break pairing
-await client.DisasterRecoveryConfigs.BreakPairingAsync(config.PrimaryResourceGroupName,
-                                                       config.PrimaryNamespace, config.Alias);
+![2][]
 
-// Delete alias connection string
-// Before the alias is deleted, pairing must be broken
-await client.DisasterRecoveryConfigs.DeleteAsync(config.PrimaryResourceGroupName,
-                                                 config.PrimaryNamespace, config.Alias);
-```
+## <a name="management"></a>管理
 
-## <a name="considerations-for-public-preview"></a>パブリック プレビューに関する考慮事項
+間違ったリージョンをペアリングしたなど、初期設定にミスがあった場合、2 つの名前空間のペアリングはいつでも解除することができます。 ペアリングした名前空間を通常の名前空間として使用する必要がある場合、エイリアスは削除してください。
+
+## <a name="samples"></a>サンプル
+
+[GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)には、フェールオーバーの設定と開始の方法が紹介されています。 このサンプルで紹介されている概念は次のとおりです。
+
+- Azure Resource Manager を Event Hubs で使用するために Azure Active Directory に必要な設定。 
+- サンプル コードを実行するために必要な手順。 
+- 現在のプライマリ名前空間との間で行う送受信。 
+
+## <a name="considerations"></a>考慮事項
 
 このリリースでは次の考慮事項にご注意ください。
 
-1. geo ディザスター リカバリー機能は、米国中北部リージョンと米国中南部リージョンでのみ利用可能です。 
-2. この機能は、新しく作成された名前空間でのみサポートされます。
-3. プレビュー リリースでは、メタデータ レプリケーションのみが有効になっています。 実際のデータはレプリケートされません。
-4. プレビュー リリースでは、この機能を有効にするための料金はかかりません。 ただし、予約されたスループット ユニットに対しては、プライマリとセカンダリ両方の名前空間で料金が発生します。
+1. フェールオーバー計画では、時間的要因も考慮する必要があります。 たとえば、接続の喪失時間が 15 ～ 20 分を超えた場合にフェールオーバー開始の判断を下すことが考えられます。 
+ 
+2. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされたメッセージ、新しい重複については正しく機能します。 
 
-## <a name="next-steps"></a>次のステップ
+3. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation)を行うようお勧めします。 
 
-* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)で、geo ペアリングを作成して災害復旧シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
+4. エンティティの同期には、ある程度時間がかかる場合があります (1 分あたり約 50 ～ 100 エンティティ)。
+
+## <a name="next-steps"></a>次の手順
+
+* 
+            [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
 * [REST API リファレンス](/rest/api/eventhub/disasterrecoveryconfigs)で、geo ディザスター リカバリーの構成を実行するための API について説明します。
 
 Event Hubs の詳細については、次のリンクを参照してください。
@@ -120,5 +112,5 @@ Event Hubs の詳細については、次のリンクを参照してください
 * [Event Hubs の FAQ](event-hubs-faq.md)
 * [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
-[1]: ./media/event-hubs-geo-dr/eh-geodr1.png
-
+[1]: ./media/event-hubs-geo-dr/geo1.png
+[2]: ./media/event-hubs-geo-dr/geo2.png

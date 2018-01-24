@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: 
-ms.openlocfilehash: fd9c1d40ba1398c7ca3f48f0423457482da9a483
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: eeb8833470b2ba003ba74b1db57bbd2bbbb7f65d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -33,14 +33,14 @@ ms.lasthandoff: 11/29/2017
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#trigger---c-example)
-* [C# スクリプト](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="c-example"></a>C# の例
 
-次の例は、5 分ごとに実行される[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示します。
+次の例は、5 分ごとに実行される [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -136,7 +136,7 @@ module.exports = function (context, myTimer) {
 
 ## <a name="attributes"></a>属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) で定義されている [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs) を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) で定義されている [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs) を使用します。
 
 次の例に示すように、属性のコンストラクターは CRON 式を受け取ります。
 
@@ -150,13 +150,13 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 
 関数アプリが (従量課金プランではなく) App Service プランで実行されている場合、CRON 式の代わりに `TimeSpan` を指定できます。
 
-完全な例については、[プリコンパイル済み C# の例](#c-example)をご覧ください。
+完全な例については、「[C# の例](#c-example)」を参照してください。
 
 ## <a name="configuration"></a>構成
 
 次の表は、*function.json* ファイルと `TimerTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | "timerTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -251,7 +251,7 @@ Azure Functions のタイマー トリガーに使用できる CRON 式の例を
 
 タイマー トリガーでは、複数インスタンスのスケールアウトがサポートされます。特定のタイマー関数の 1 つのインスタンスが、すべてのインスタンスにわたって実行されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [タイマー トリガーを使用するクイックスタートに進む](functions-create-scheduled-function.md)

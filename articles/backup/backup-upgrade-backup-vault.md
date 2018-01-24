@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: cfc2fde552b029412042474e31a1b28dd80b3021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>バックアップ コンテナーを Recovery Services コンテナーにアップグレードする
 この記事では、Recovery Services コンテナーの機能や、既にあるバックアップ コンテナーを Recovery Services コンテナーにアップグレードすることに関してよく寄せられる質問、アップグレード後の手順について取り上げます。 Recovery Services コンテナーは、バックアップ データを格納するバックアップ コンテナーの Azure Resource Manager 版に相当します。 オンプレミスにあるか、Azure 内にあるかに関係なく、データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。
@@ -68,15 +68,18 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **アップグレード プランは進行中のバックアップに影響を与えますか?**</br>
+
 いいえ。 進行中のバックアップは、アップグレード中もアップグレード後も、中断なく続行されます。
 
 **このアップグレードは、既存のツールにとってどのような意味がありますか?**</br>
-既存のオートメーションまたはツールがアップグレード後も正常に機能するためには、Resource Manager デプロイメント モデルへの更新が必要となります。 [Service Manager デプロイメント モデル](backup-client-automation-classic.md)と [Resource Manager デプロイメント モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
+既存のオートメーションまたはツールがアップグレード後も正常に機能するためには、Resource Manager デプロイメント モデルへの更新が必要となります。 [Resource Manager デプロイメント モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
 
 **アップグレード後にロールバックすることはできますか。**</br>
+
 いいえ。 リソースが正常にアップグレードされた後のロールバックはサポートされていません。
 
 **アップグレード後に、従来のコンテナーを表示できますか?**</br>
+
 いいえ。 アップグレード後は、従来のコンテナーは、表示することも管理することもできません。 コンテナーのすべての管理操作は、新しい Azure ポータルを使用してのみ実行できます。
 
 **アップグレード後のコンテナーに、MARS エージェントによって保護されているサーバーが見つかりません。**</br>
@@ -99,7 +102,7 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 **問題はどのようにレポートすればよいですか?**</br>
 コンテナーのアップグレードの一部が失敗した場合は、エラーに示されている OperationId を書き留めます。 Microsoft サポートが問題の解決に積極的に取り組みます。 サポートを受けるには、サブスクリプション ID、コンテナー名、OperationId を記載した電子メールを rsvaultupgrade@service.microsoft.com にお送りください。 Microsoft は、問題をできるだけ速やかに解決するよう努力します。 Microsoft による明確な指示がない限り、操作をやり直さないでください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事を参照してください。</br>
 [IaaS VM のバックアップ](backup-azure-arm-vms-prepare.md)</br>
 [Azure Backup Server のバックアップ](backup-azure-microsoft-azure-backup.md)</br>

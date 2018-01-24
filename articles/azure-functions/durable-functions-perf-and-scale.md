@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 10ce74097388a0283797e4692126c5039e8d4dd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc4c643b8d0e8de1b5c38ca7bb1b0193d6b0f05b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -59,13 +59,13 @@ Durable Functions では、タスク ハブあたり 1 つの作業項目のキ�
 オーケストレーション インスタンスは、オーケストレーションのインスタンス ID に対して内部ハッシュ関数を実行することによって、コントロール キュー インスタンスに配分されます。 インスタンス ID は既定によりランダムに自動生成されます。これにより、使用可能なすべてのコントロール キューにインスタンスがバランスよく配分されることが保証されます。 現時点でサポートされるコントロール キューの既定のパーティション数は **4** です。
 
 > [!NOTE]
-> 現時点では、Azure Functions にパーティションの数を構成することはできません。 [この構成オプションの実現にご協力ください](https://github.com/Azure/azure-functions-durable-extension/issues/73)。
+> 現時点では、Azure Functions にコントロール キューのパーティションの数を構成することはできません。 [この構成オプションの実現にご協力ください](https://github.com/Azure/azure-functions-durable-extension/issues/73)。
 
 一般に、オーケストレーター関数は、軽量であることを目的としているため、多くのコンピューティング能力を要求すべきではありません。 このため、スループットを向上させるためにコントロール キューの多数のパーティションを作成する必要はありません。 代わりに、重労働の大部分をステートレスなアクティビティ関数で実行することで、無限にスケールアウトできます。
 
 ## <a name="auto-scale"></a>自動スケール
 
-従量課金プランで実行されるすべての Azure Functions と同じように、Durable Functions は、[Azure Functions のスケール コントローラー](https://docs.microsoft.com/azure/azure-functions/functions-scale#runtime-scaling)による自動スケールをサポートします。 スケール コントローラーは、作業項目キューと各コントロール キューの長さを監視し、それに従って VM リソースを追加または削除します。 時間の経過と共にコントロール キューの長さが増加した場合、スケール コントローラーは、コントロール キューのパーティション数に達するまでインスタンスの追加を続行します。 時間の経過と共に作業項目キューの長さが増加した場合、スケール コントローラーは、コントロール キューのパーティション数に関係なく、負荷と釣り合うまで VM リソースの追加を続行します。
+従量課金プランで実行されるすべての Azure Functions と同じように、Durable Functions は、[Azure Functions のスケール コントローラー](https://docs.microsoft.com/azure/azure-functions/functions-scale#runtime-scaling)による自動スケールをサポートします。 スケール コントローラーは、作業項目キューと各コントロール キューの長さを監視し、それに従って VM インスタンスを追加または削除します。 時間の経過と共にコントロール キューの長さが増加した場合、スケール コントローラーは、コントロール キューのパーティション数に達するまで VM インスタンスの追加を続行します。 時間の経過と共に作業項目キューの長さが増加した場合、スケール コントローラーは、コントロール キューのパーティション数に関係なく、負荷と釣り合うまで VM インスタンスの追加を続行します。
 
 ## <a name="thread-usage"></a>スレッドの使用
 
@@ -73,7 +73,7 @@ Durable Functions では、タスク ハブあたり 1 つの作業項目のキ�
 
 アクティビティ関数は、通常のキューによってトリガーされる関数とまったく同じように動作します。 つまり、それらは、I/O を安全に実行し、CPU 集約型操作を実行し、複数のスレッドを使用できます。 アクティビティ トリガーはステートレスであるため、無制限の VM に対して自由にスケールアウトできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Durable Functions 拡張機能のインストールとサンプル](durable-functions-install.md)

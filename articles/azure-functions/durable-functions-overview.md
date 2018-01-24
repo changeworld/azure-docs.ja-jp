@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: fa0d5cf7469a1a36fe0ab9a712cd4f8c963ceb48
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: f1def2a43edee58bc8b5a33880e206130a1b4687
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="durable-functions-overview-preview"></a>Durable Functions の概要 (プレビュー)
 
@@ -215,7 +215,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
         if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
         {
             timeoutCts.Cancel();
-            await ctx.CallActivityAsync("HandleApproval", approvalEvent.Result);
+            await ctx.CallActivityAsync("ProcessApproval", approvalEvent.Result);
         }
         else
         {
@@ -235,7 +235,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 オーケストレーター関数は、[Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) として知られるクラウド デザイン パターンを使用して、この関数の実行状態を安定的に維持します。 オーケストレーションの *"現在の"* 状態を直接格納する代わりに、この永続的な拡張機能は追加専用のストアを使用して、関数オーケストレーションがとる *"アクションのすべて"* を記録します。 これには、ランタイムの完全な状態を "ダンプする" のと比べて、パフォーマンス、スケーラビリティ、応答時間の改善など多くのメリットがあります。 他にも、トランザクション データに最終的な一貫性を提供する、完全な監査証跡や監査履歴を維持するなどのメリットもあります。 監査証跡のみで、信頼性の高い補正アクションが可能です。
 
-この拡張機能による Event Sourcing の使用は透過的です。 背後では、オーケストレーター関数内の `await` 演算子が、Durable Task Framework のディスパッチャーにオーケストレーター スレッドのコントロールを引き渡します。 次に、このディスパッチャーは、オーケストレーター関数がスケジュールした新しいアクション (1 つ以上の子関数を呼び出す、永続タイマーをスケジュールする、など) をストレージにコミットします。 この透過的なコミット アクションは、オーケストレーション インスタンスの *"実行履歴"* に追加されます。 この履歴は永続ストレージに格納されます。 次に、このコミット アクションはキューにメッセージを追加して実際の作業をスケジュールします。 この時点では、メモリからオーケストレーター関数をアンロードできます。 それに対する課金は Azure Functions の従量課金プランを使用している場合は停止します。  処理すべき作業がさらにある場合は、関数は再起動され、関数の状態は再構築されます。
+この拡張機能による Event Sourcing の使用は透過的です。 背後では、オーケストレーター関数内の `await` 演算子が、Durable Task Framework のディスパッチャーにオーケストレーター スレッドのコントロールを引き渡します。 次に、このディスパッチャーは、オーケストレーター関数がスケジュールした新しいアクション (1 つ以上の子関数を呼び出す、永続タイマーをスケジュールする、など) をストレージにコミットします。 この透過的なコミット アクションは、オーケストレーション インスタンスの *"実行履歴"* に追加されます。 この履歴はストレージ テーブルに格納されます。 次に、このコミット アクションはキューにメッセージを追加して実際の作業をスケジュールします。 この時点では、メモリからオーケストレーター関数をアンロードできます。 それに対する課金は Azure Functions の従量課金プランを使用している場合は停止します。  処理すべき作業がさらにある場合は、関数は再起動され、関数の状態は再構築されます。
 
 オーケストレーション関数にさらに処理すべき作業が与えられる (たとえば、応答メッセージを受け取る、または永続タイマーが期限切れになる) と、ローカルの状態を再構築するためにオーケストレーターがもう一度起動して始めからその関数全体を再実行します。 このリプレイ中にコードが関数を呼び出そうとする (または他の非同期作業を行おうとする) と、Durable Task Framework は現在のオーケストレーションの*実行履歴*を照会します。 アクティビティ関数が既に実行されいくつかの結果を生成していることが確認されると、その関数の結果をリプレイしてオーケストレーター コードが実行を継続します。 この動作は、関数コードが完了する、または新しい非同期作業をスケジュールする時点まで継続して行われます。
 
@@ -249,7 +249,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
 
 ## <a name="monitoring-and-diagnostics"></a>監視と診断
 
-Durable Functions 拡張機能は、Application Insights キーで関数アプリが構成されるときに、構造化された追跡データを [Application Insights](functions-monitoring.md) に自動で出力します。 この追跡データは、オーケストレーションの動作や進行状況を監視するために使用できます。
+Durable Functions 拡張機能は、Application Insights インストルメンテーション キーで関数アプリが構成されるときに、構造化された追跡データを [Application Insights](functions-monitoring.md) に自動で出力します。 この追跡データは、オーケストレーションの動作や進行状況を監視するために使用できます。
 
 [Application Insights Analytics](https://docs.microsoft.com/azure/application-insights/app-insights-analytics) を使用すると Application Insights ポータル内で Durable Functions の追跡イベントがどのように表示されるか、その例を次に示します。
 
@@ -278,7 +278,7 @@ Table Storage は、オーケストレーター アカウントの実行履歴�
 
 通常、すべての既知の問題は、[GitHub の Issue](https://github.com/Azure/azure-functions-durable-extension/issues) 一覧で追跡されています。 問題が発生してその問題が GitHub で見つからない場合は、新しい Issue を開き、その問題の詳細な説明を記載してお知らせください。 質問のみの場合でも、お気軽に GitHub の Issue を開き、質問のタグを付けてご連絡ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [続けて Durable Functions のドキュメントを読む](durable-functions-bindings.md)

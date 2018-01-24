@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成 | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して Service Bus 名前空間を作成します。"
+title: "Azure Resource Manager テンプレートを使用した Service Bus メッセージング名前空間の作成 | Microsoft Docs"
+description: "Azure Resource Manager テンプレートを使用して Service Bus メッセージング名前空間を作成します。"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 12/21/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: c8a42638c79a8a53f80102fc344eccb521e4c1c5
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f184cc9418e4af95423c0ede65bca312dfca7393
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 
@@ -41,18 +41,21 @@ ms.lasthandoff: 11/11/2017
 > 
 
 ## <a name="what-will-you-deploy"></a>デプロイの対象
+
 このテンプレートでは、[Standard または Premium](https://azure.microsoft.com/pricing/details/service-bus/) の SKU で Service Bus 名前空間をデプロイします。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
 [![Azure へのデプロイ](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
+
 Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
 このテンプレートでは、次のパラメーターを定義します。
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 作成する Service Bus 名前空間の名前。
 
 ```json
@@ -65,6 +68,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 ```
 
 ### <a name="servicebussku"></a>serviceBusSKU
+
 作成する Service Bus [SKU](https://azure.microsoft.com/pricing/details/service-bus/) の名前。
 
 ```json
@@ -86,6 +90,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 Service Bus の価格について詳しくは、「[Service Bus の料金と課金][Service Bus pricing and billing]」をご覧ください。
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 テンプレートの Service Bus API バージョン。
 
 ```json
@@ -98,7 +103,9 @@ Service Bus の価格について詳しくは、「[Service Bus の料金と課�
 ```
 
 ## <a name="resources-to-deploy"></a>デプロイ対象のリソース
+
 ### <a name="service-bus-namespace"></a>Service Bus 名前空間
+
 **Messaging**タイプの標準的な Service Bus 名前空間を作成します。
 
 ```json
@@ -120,21 +127,24 @@ Service Bus の価格について詳しくは、「[Service Bus の料金と課�
 ```
 
 ## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create <my-resource-group> <my-deployment-name> --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Resource Manager を使ってリソースを作成し、デプロイしたら、それらのリソースの管理方法を次の記事で確認してください。
 
 * [PowerShell で Service Bus を管理する](service-bus-manage-with-ps.md)

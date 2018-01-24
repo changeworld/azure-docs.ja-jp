@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 1a5922506a0db4277b205ba3390c9c30034c177d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 964475ba8b42ac41707fa78468bfe551677c595f
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Event Hubs メッセージングの例外
-この記事では、Event Hubs を含む、Azure Service Bus のメッセージング API によって生成されるいくつかの例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
+
+この記事では、Event Hubs API を含む、Azure Service Bus のメッセージング API ライブラリによって生成されるいくつかの例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
 
 ## <a name="exception-categories"></a>例外のカテゴリ
+
 Event Hubs API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。
 
 1. ユーザー コードのエラー: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)。 一般アクション: 処理を実行する前にコードの修正を試みます。
@@ -78,20 +80,20 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 
 このエラーが発生する原因は次の 2 ついずれかです。
 
-1. Event Hub 上のパーティション間で負荷が均等に分散されていません。パーティションの 1 つがローカルのスループット単位制限に達しています。
+1. イベント ハブ上のパーティション間で負荷が均等に分散されていません。パーティションの 1 つがローカルのスループット単位制限に達しています。
     
     解決策: パーティション分散戦略を変更するか、[EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) を実行すると、問題の解決に役立つ場合があります。
 
-2. Event Hubs 名前空間に十分なスループット単位がありません ([Azure Portal](https://portal.azure.com) の Event Hubs 名前空間で **[メトリック]** ブレードを確認します)。 ポータルに集計 (1 分) 情報が表示されていますが、スループットはリアルタイムで測定しているため、これは単なる推定値であることに注意してください。
+2. Event Hubs 名前空間に十分なスループット単位がありません ([Azure Portal](https://portal.azure.com) の Event Hubs 名前空間ウィンドウで **[メトリック]** 画面を確認します)。 ポータルに集計 (1 分) 情報が表示されていますが、スループットはリアルタイムで測定しているため、これは単なる推定値であることに注意してください。
 
-    解決策: 名前空間のスループット単位数を増やすと、問題の解決に役立つ場合があります。 この操作は、ポータルの Event Hubs 名前空間ブレードの**[スケール]** ブレードで実行できます。
+    解決策: 名前空間のスループット単位数を増やすと、問題の解決に役立つ場合があります。 この操作は、ポータルの Event Hubs 名前空間画面の **[スケール]** ウィンドウで実行できます。
 
 ### <a name="error-code-50001"></a>エラー コード 50001
 
 このエラーはあまり発生しません。 名前空間に対してコードを実行しているコンテナーの CPU が不足している場合、つまり、Event Hubs ロード バランサーの開始前の時間が数秒もないときに発生します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

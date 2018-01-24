@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 36ebffb41211e443cc1619df46f50247945cc57c
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 363a7e8a5b5be2175cb2f6d3539878673a2b469a
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="review-usage-and-costs"></a>使用状況とコストを確認する
 
@@ -29,7 +29,7 @@ Cloudyn の Azure Cost Management では使用状況とコストが表示され�
 
 ## <a name="open-the-cloudyn-portal"></a>Cloudyn ポータルを開く
 
-Cloudyn ポータルですべての使用状況とコストを確認します。 Azure Portal から Cloudyn ポータルを開くか、https://app.cloudyn.com に移動してログインします。
+Cloudyn ポータルですべての使用状況とコストを確認します。 Azure Portal から Cloudyn ポータルを開くか、https://azure.cloudyn.com に移動してログインします。
 
 ## <a name="track-usage-and-cost-trends"></a>使用状況とコストの傾向を追跡する
 
@@ -88,7 +88,7 @@ Cloudyn ポータルですべての使用状況とコストを確認します。
 原価率対予算のしきい値メトリックを選択して、アラートを作成することもできます。 そのメトリックを使用すると、通貨値の代わりに、予算のパーセンテージを使用できます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

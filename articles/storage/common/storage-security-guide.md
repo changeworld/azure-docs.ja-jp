@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: c3973c7e529cd1d0ecd98ae17d4d979d0d458ef3
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 9cb109dd9ce5a14bb80be61577c10d7191ec5ce6
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 ## <a name="overview"></a>概要
@@ -295,7 +295,7 @@ SSE を使用すると、ストレージ サービスが Azure Storage にデー
 
 現時点で、暗号化に使用されるキーは Microsoft が管理しています。 Microsoft 社内ポリシーの定義に従って、キーを生成し、キーの安全な保存と定期的な循環を管理しています。 将来的には、ユーザーが独自の暗号化キーを管理し、Microsoft が管理するキーからユーザーが管理するキーに移行する機能を追加する予定です。
 
-この機能は、Resource Manager デプロイメント モデルを使用して作成された Standard および Premium Storage アカウントで使用できます。 SSE は、ブロック BLOB、ページ BLOB、および追加 BLOB にのみ適用されます。 テーブル、キュー、ファイルなど、他の種類のデータは暗号化されません。
+この機能は、Resource Manager デプロイメント モデルを使用して作成された Standard および Premium Storage アカウントで使用できます。 SSE は、あらゆる種類のデータ (ブロック BLOB、ページ BLOB、追加 BLOB、テーブル、キュー、およびファイル) に適用されます。
 
 データが暗号化されるのは、SSE が有効で、データが Blob Storage に書き込まれるときのみです。 SSE の有効/無効を切り替えても、既存のデータに影響はありません。 つまり、この暗号化を有効にしても、既存のデータがさかのぼって暗号化されることはありません。また、SSE を無効にしても、既存のデータは復号化されません。
 
@@ -380,7 +380,7 @@ Azure Marketplace のイメージを使用して VM を作成する場合、Azur
 #### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 SSE は Azure Storage で管理されます。 SSE を使用しても、転送中のデータはセキュリティで保護されませんが、Azure Storage に書き込まれるときのデータは暗号化されます。 この機能を使用してもパフォーマンスに影響はありません。
 
-SSE を使用して、ブロック BLOB、追加 BLOB、ページ BLOB のみを暗号化できます。 テーブル データまたはキュー データを暗号化する必要がある場合、クライアント側の暗号化の使用を検討してください。
+SSE を使用して、ストレージ アカウントのあらゆる種類のデータ (ブロック BLOB、追加 BLOB、ページ BLOB、テーブル データ、キュー データ、およびファイル) を暗号化できます。
 
 新しい仮想マシンを作成する際の基礎として使用する VHD ファイルのアーカイブまたはライブラリがある場合、新しいストレージ アカウントを作成し、SSE を有効にしてから、VHD ファイルをそのアカウントにアップロードします。 これらの VHD ファイルは Azure Storage によって暗号化されます。
 

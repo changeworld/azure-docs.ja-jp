@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 9313f3bd09b24db8e33b1f89eb5aebea871605b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d222300a591bcba556be5813ada2de555d25a1f0
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
 
@@ -48,8 +48,10 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 1. [アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 1. サブスクリプションを選択します。
-1. 使用制限に達したためにサブスクリプションが無効にされている場合は、"サブスクリプションの使用制限に達したので、課金されないように無効にされました。" という通知をクリックします。 それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
+が必要です。 使用制限に達したためにサブスクリプションが無効にされている場合は、"サブスクリプションの使用制限に達したので、課金されないように無効にされました。" という通知をクリックします。 それ以外の場合は、**[サブスクリプションの状態]** 領域の **[使用制限の削除]** をクリックします。
 1. 適切なオプションを選択します。
+
+![使用制限を削除するためのオプションを選択](./media/billing-spending-limit/remove-spending-limit.PNG)
 
 |オプション|効果|
 |-------|-----|
@@ -80,8 +82,10 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>使用制限は、Azure からのすべての料金を防止しますか。
 
-一部の [Microsoft サービスとサードパーティ ブランド サービス](billing-understand-your-azure-marketplace-charges.md)では、使用制限が設定されている場合でも、支払い方法 (CC) の下、料金が発生する可能性があります。 Visual Studio のライセンス、Azure Active Directory Premium、[Azure Marketplace](https://azure.microsoft.com/marketplace/) を通じて販売されたサポート プランとほとんどのサード パーティ ブランド サービスなどがその例として挙げられます。
+[Azure Marketplace で公開されている一部の外部サービス](billing-understand-your-azure-marketplace-charges.md)には、サブスクリプション クレジットを使用できません。また、使用制限が設定されている場合でも、別に料金を請求される場合があります。 Visual Studio のライセンス、Azure Active Directory Premium、サポート プランとほとんどのサード パーティ ブランド サービスなどがその例として挙げられます。 新しい外部サービスをプロビジョニングすると、警告が表示され、サービス料が別に請求されることをお知らせします。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+![Marketplace 購入警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

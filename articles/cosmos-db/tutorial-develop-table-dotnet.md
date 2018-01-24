@@ -12,18 +12,18 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/20/2017
+ms.date: 12/18/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 29e6187c59f34122e98819b5775af261494995ca
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 41d7e42f203170e4fa3b8e3a8c973e23808f941b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
 このチュートリアルに含まれるタスクは次のとおりです。 
 
@@ -69,7 +69,7 @@ Azure Table Storage の複雑なタスクについては、次を参照してく
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>データベース アカウントの作成
 
 まず最初に、Azure Portal で Azure Cosmos DB アカウントを作成します。  
  
@@ -105,7 +105,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
     画面の右側にある [コピー] ボタンを使ってプライマリ接続文字列をコピーします。
 
-    ![[接続文字列] ウィンドウで接続文字列を確認してコピーする](./media/create-table-dotnet/connection-string.png)
+    ![[接続文字列] ウィンドウで [接続文字列] を確認してコピーする](./media/create-table-dotnet/connection-string.png)
 
 2. Visual Studio で app.config ファイルを開きます。 
 
@@ -137,7 +137,7 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
 
 特定の機能には、接続ポリシーと一貫性レベルを指定できる CreateCloudTableClient の新しいオーバーロードを使ってアクセスします。
 
-| テーブル接続の設定 | 説明 |
+| テーブル接続の設定 | [説明] |
 | --- | --- |
 | 接続モード  | Azure Cosmos DB では 2 つの接続モードがサポートされます。 `Gateway` モードでは、要求は常に Azure Cosmos DB ゲートウェイに対して行われ、そこから対応するデータ パーティションに転送されます。 `Direct` 接続モードでは、クライアントがテーブルとパーティションのマッピングをフェッチし、要求がデータ パーティションに直接行われます。 既定値の `Direct` をお勧めします。  |
 | 接続プロトコル | Azure Cosmos DB では 2 つの接続プロトコル、`Https` と `Tcp` がサポートされます。 軽量であるため、既定の `Tcp` をお勧めします。 |
@@ -146,10 +146,8 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
 
 他の機能は、次の `appSettings` 構成値で有効にすることができます。
 
-| キー | 説明 |
+| キー | [説明] |
 | --- | --- |
-| TableThroughput | テーブルの予約スループット。1 秒あたりの要求ユニット数 (RU) で表されます。 1 つのテーブルで 1 秒あたり数億の RU をサポートすることができます。 [要求ユニット](request-units.md)に関する記事をご覧ください。 既定値は `400` です。 |
-| TableIndexingPolicy | インデックス作成ポリシーの仕様に準拠する JSON 文字列。 インデックス作成ポリシーを変更して特定の列を含めたり除外したりするには、[インデックス作成ポリシー](indexing-policies.md)に関する記事をご覧ください。 |
 | TableQueryMaxItemCount | 1 回のラウンド トリップでテーブル クエリごとに返される最大項目数を構成します。 既定値の `-1` では、Azure Cosmos DB が実行時に値を動的に決定できます。 |
 | TableQueryEnableScan | クエリがすべてのフィルターでインデックスを使用できない場合、スキャンを使用して実行します。 既定値は `false`です。|
 | TableQueryMaxDegreeOfParallelism | クロス パーティション クエリを実行するための並列処理の次数。 `0` は、プリフェッチなしの直列処理、`1` はプリフェッチありの直列処理です。これより値が大きくなるにつれて、並列処理の速度が向上します。 既定値の `-1` では、Azure Cosmos DB が実行時に値を動的に決定できます。 |
@@ -164,10 +162,6 @@ Azure Cosmos DB では、Azure Table Storage API に含まれないいくつも�
       <add key="CosmosDBStorageConnectionString" 
         value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.azure.com" />
       <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key; TableEndpoint=https://account-name.documents.azure.com" />
-
-      <!--Table creation options -->
-      <add key="TableThroughput" value="700"/>
-      <add key="TableIndexingPolicy" value="{""indexingMode"": ""Consistent""}"/>
 
       <!-- Table query options -->
       <add key="TableQueryMaxItemCount" value="-1"/>
@@ -194,13 +188,13 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");
-
-table.CreateIfNotExists();
+400
+table.CreateIfNotExists(throughput: 800);
 ```
 
 テーブルの作成方法に大きな違いがあります。 Azure Cosmos DB ではスループットが予約されます。これはトランザクションの使用量に基づく Azure Storage のモデルとは異なります。 スループットは専用として予約されるため、要求レートがプロビジョニングされたスループット以下である場合にもスロットルされることはありません。
 
-既定のスループットを構成するには、`TableThroughput` の設定で 1 秒あたりの RU (要求ユニット数) を構成します。 
+CreateIfNotExists のパラメーターとして組み込むことで、既定のスループットを構成できます。
 
 1 KB のエンティティの読み取りは 1 RU に正規化され、他の操作は、CPU、メモリ、IOPS の消費量に基づく固定 RU 値に正規化されます。 詳しくは、「[Azure Cosmos DB の要求ユニット](request-units.md)」および特に[キー値ストア](key-value-store-cost.md)に関するページをご覧ください。
 
@@ -301,7 +295,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-Azure Cosmos DB は、Table API について Azure Table Storage と同じクエリの機能をサポートします。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 将来のサービス更新プログラムで Table API に追加機能が提供される予定です。 このような機能の概要については、[Azure Cosmos DB のクエリ](documentdb-sql-query.md)に関する記事をご覧ください。 
+Azure Cosmos DB は、Table API について Azure Table Storage と同じクエリの機能をサポートします。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 将来のサービス更新プログラムで Table API に追加機能が提供される予定です。 このような機能の概要については、[Azure Cosmos DB のクエリ](sql-api-sql-query.md)に関する記事をご覧ください。 
 
 ## <a name="replace-an-entity"></a>エンティティを置換する
 エンティティを更新するには、そのエンティティを Table service から取得し、エンティティ オブジェクトを変更して、変更を Table service に戻して保存します。 次のコードは、既存のユーザーの電話番号を変更します。 
@@ -332,7 +326,7 @@ table.DeleteIfExists();
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Cosmos DB で Table API の使用を開始する方法について説明し、次のタスクを実行しました。 
 

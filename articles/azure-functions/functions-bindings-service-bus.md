@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: 6d59b26fa4ab17c17827a8e3450e808e40e5c2dd
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 2df003d47291570b31e1091f34994e4023000981
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -36,14 +36,14 @@ Service Bus トリガーを使用して、Service Bus キューまたはトピ�
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#trigger---c-example)
-* [C# スクリプト](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
-次の例は、Service Bus キュー メッセージを記録する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、Service Bus キュー メッセージを記録する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -146,7 +146,7 @@ module.exports = function(context, myQueueItem) {
 
 ## <a name="trigger---attributes"></a>トリガー - 属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、次の属性を使用して Service Bus トリガーを構成します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、以下の属性を使用して Service Bus トリガーを構成します。
 
 * NuGet パッケージ [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) で定義された [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusTriggerAttribute.cs)
 
@@ -173,7 +173,7 @@ module.exports = function(context, myQueueItem) {
   }
   ```
 
-  完全な例については、[トリガー - プリコンパイル済み C# の例](#trigger---c-example)に関する記事をご覧ください。
+  完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
 
 * NuGet パッケージ [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) で定義された [ServiceBusAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -205,7 +205,7 @@ module.exports = function(context, myQueueItem) {
 
 次の表は、*function.json* ファイルと `ServiceBusTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | "serviceBusTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -250,14 +250,14 @@ Functions ランタイムは、メッセージを [PeekLock モード](../servic
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#output---c-example)
-* [C# スクリプト](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# スクリプト (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
 
-次の例は、Service Bus キュー メッセージを送信する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、Service Bus キュー メッセージを送信する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```cs
 [FunctionName("ServiceBusOutput")]
@@ -411,7 +411,7 @@ module.exports = function (context, myTimer) {
 
 ## <a name="output---attributes"></a>出力 - 属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) で定義されている [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) で定義されている [ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs) を使用します。
 
 属性のコンストラクターは、キューの名前、またはトピックとサブスクリプションを受け取ります。 接続のアクセス権を指定することもできます。 アクセス権の設定を選択する方法については、「[出力 - 構成](#output---configuration)」セクションで説明されています。 関数の戻り値に適用される属性に適用される属性を示す例は次のとおりです。
 
@@ -435,15 +435,15 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 }
 ```
 
-完全な例については、[出力 - プリコンパイル済み C# の例](#output---c-example)に関する記事をご覧ください。
+完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
 
-`ServiceBusAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルで使用する Service Bus アカウントを指定できます。  詳細については、[トリガー - 属性](#trigger---attributes-for-precompiled-c)をご覧ください。
+`ServiceBusAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルで使用する Service Bus アカウントを指定できます。  詳細については、[トリガー - 属性](#trigger---attributes)をご覧ください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
 次の表は、*function.json* ファイルと `ServiceBus` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | "serviceBus" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "out" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -469,7 +469,7 @@ C# または C# スクリプト関数で複数のメッセージを作成する�
 
 JavaScript で、`context.bindings.<name>` を使用して、キューまたはトピックにアクセスします。 `<name>` は *function.json* の `name` プロパティで指定された値です。 文字列、バイト配列、または (JSON に逆シリアル化された) Javascript オブジェクトを `context.binding.<name>` に割り当てることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

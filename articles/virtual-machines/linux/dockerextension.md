@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/26/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 0cef78edaeec9d45aa733b1912d82d5a058ba289
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce44a5e4db080822aaec0b50a265b863059bd45a
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Docker VM 拡張機能を使用して Azure に Docker 環境を作成する
 Docker は一般的なコンテナー管理とイメージング プラットフォームで、Linux 上のコンテナーを簡単に操作できます。 Azure では、ニーズに応じた様々な方法で Docker をデプロイできます。 この記事では、Azure CLI 2.0 での Docker VM 拡張機能と Azure Resource Manager テンプレートの使用について説明します。 これらの手順は、[Azure CLI 1.0](dockerextension-nodejs.md) を使用して実行することもできます。
@@ -29,7 +29,8 @@ Azure Docker VM 拡張機能では、Linux 仮想マシン (VM) に Docker デ�
 Docker マシンや Azure Container Service などの他のデプロイ方法について詳しくは、以下の記事をご覧ください。
 
 * アプリのプロトタイプを短時間で作成するには、[Docker マシン](docker-machine.md)を使って単一の Docker ホストを作成できます。
-* 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成するには、[Azure Container Service に Docker Swarm クラスター](../../container-service/dcos-swarm/container-service-deployment.md)をデプロイできます。
+* 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成するには、Azure Container Service に [Kubernetes](../../container-service/kubernetes/index.yml) または [Docker Swarm](../../container-service/dcos-swarm/index.yml) クラスターをデプロイできます。
+
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Azure Docker VM 拡張機能を使ってテンプレートをデプロイする
 Azure Docker VM 拡張機能を使って Docker ホストをインストールして構成する Ubuntu VM を、既存のクイックスタート テンプレートを使って作成します。 テンプレートは、「[Simple deployment of an Ubuntu VM with Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)」(Docker を使用した Ubuntu VM の簡単なデプロイ) で確認できます。 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。
@@ -40,32 +41,15 @@ Azure Docker VM 拡張機能を使って Docker ホストをインストール�
 az group create --name myResourceGroup --location eastus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 次のように *newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の一意の値を指定します。
+次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 メッセージが表示されたら、*newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の一意の値を指定します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"}}' \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
+    --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/docker-simple-on-ubuntu/azuredeploy.json
 ```
 
-デプロイが完了するには数分かかります。 デプロイが完了したら、[次の手順に進み](#deploy-your-first-nginx-container)、VM に SSH 接続します。 
+デプロイが完了するには数分かかります。
 
-プロンプトに制御を戻してバックグラウンドでデプロイを続行するには、上記のコマンドにオプションで `--no-wait` フラグを追加します。 この処理によって、デプロイが継続している数分の間に、CLI でその他の作業を実行できます。 
-
-[az vm show](/cli/azure/vm#show) で Docker ホストの詳細な状態を確認できます。 次の例では、*myResourceGroup* という名前のリソース グループ内にある *myDockerVM* という名前 (テンプレートによる既定の名前 - この名前は変更しないでください) の VM の状態を確認します。
-
-```azurecli
-az vm show \
-    --resource-group myResourceGroup \
-    --name myDockerVM \
-    --query [provisioningState] \
-    --output tsv
-```
-
-このコマンドが *Succeeded* を返すと、デプロイは完了しており、次の手順で VM に SSH 接続できます。
 
 ## <a name="deploy-your-first-nginx-container"></a>最初の NGINX コンテナーのデプロイ
 DNS 名など、VM の詳細を表示するには、[az vm show](/cli/azure/vm#show) を使用します。
@@ -79,7 +63,7 @@ az vm show \
     --output tsv
 ```
 
-新しい Docker ホストに SSH 接続します。 独自の DNS 名を次のように指定します。
+新しい Docker ホストに SSH 接続します。 上記の手順から、自分のユーザー名と DNS 名を指定します。
 
 ```bash
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
@@ -147,7 +131,7 @@ b6ed109fb743        nginx               "nginx -g 'daemon off"   About a minute 
 
 Resource Manager テンプレートの詳しい使い方は、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Docker デーモン TCP ポートを構成](https://docs.docker.com/engine/reference/commandline/dockerd/#/bind-docker-to-another-hostport-or-a-unix-socket)したり、[Docker セキュリティ](https://docs.docker.com/engine/security/security/)について理解したり、[Docker Compose](https://docs.docker.com/compose/overview/) を使ってコンテナーをデプロイすることができます。 Azure Docker VM 拡張機能自体の詳細については、「[GitHub プロジェクト](https://github.com/Azure/azure-docker-extension/)」をご覧ください。
 
 Azure での Docker のデプロイの他のオプションについて詳しくは、以下をご覧ください。

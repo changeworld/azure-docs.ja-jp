@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 3c29c43f88608760cc6d5f19f27f692c8448ebd9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: a1e4f15747031ba75ba5ae589557750919a71853
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 
@@ -37,8 +37,7 @@ Mobile Apps 入力バインドは、モバイル テーブル エンドポイン
 
 言語固有の例をご覧ください。
 
-<!-- * [Precompiled C#](#input---c-example)-->
-* [C# スクリプト](#input---c-script-example)
+* [C# スクリプト (.csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
@@ -129,7 +128,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>入力 - 属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) で定義されている [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) で定義されている [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
 
 属性のプロパティについて詳しくは、[この後の構成に関するセクション](#input---configuration)をご覧ください。
 
@@ -137,7 +136,7 @@ module.exports = function (context, myQueueItem) {
 
 次の表は、*function.json* ファイルと `MobileTable` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 | **type**|| "mobileTable" に設定する必要があります。|
 | **direction**||"in" に設定する必要があります。|
@@ -168,13 +167,13 @@ Mobile Apps 出力バインドを使用して、Mobile Apps テーブルにレ�
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#output---c-example)
-* [C# スクリプト](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# スクリプト (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
 
-次の例は、キュー メッセージによってトリガーされ、モバイル アプリ テーブルにレコードを作成する[プリコンパイル済み C# 関数](functions-dotnet-class-library.md)を示しています。
+次の例は、キュー メッセージによってトリガーされ、モバイル アプリ テーブルにレコードを作成する [C# 関数](functions-dotnet-class-library.md)を示しています。
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -275,7 +274,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="output---attributes"></a>出力 - 属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) で定義されている [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) で定義されている [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
 
 構成可能な属性プロパティについては、「[出力 - 構成](#output---configuration)」を参照してください。 メソッド シグネチャでの `MobileTable` 属性の例を次に示します。
 
@@ -290,13 +289,13 @@ public static object Run(
 }
 ```
 
-完全な例については、[出力 - プリコンパイル済み C# の例](#output---c-example)に関する記事をご覧ください。
+完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
 次の表は、*function.json* ファイルと `MobileTable` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 | **type**|| "mobileTable" に設定する必要があります。|
 | **direction**||"out" に設定する必要があります。|
@@ -312,7 +311,7 @@ public static object Run(
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-C# スクリプト関数では、`out object` 型の名前付き出力パラメーターを使用して出力レコードにアクセスします。 プリコンパイル済み C# 関数では、`MobileTable` 属性は次のどの型に対しても使用できます。
+C# スクリプト関数では、`out object` 型の名前付き出力パラメーターを使用して出力レコードにアクセスします。 C# クラス ライブラリでは、`MobileTable` 属性を次のどの型に対しても使用できます。
 
 * `ICollector<T>` または `IAsyncCollector<T>`。このとき、`T` は `JObject` か、`public string Id` プロパティを持つ任意の型です。
 * `out JObject`
@@ -320,7 +319,7 @@ C# スクリプト関数では、`out object` 型の名前付き出力パラメ�
 
 Node.js 関数では、`context.bindings.<name>` を使用して出力レコードにアクセスします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

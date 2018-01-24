@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: ecb6dd0343c36a0f1571b416817aad5e7a52fccb
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 95c5195ac2ea832586211cce37eb2094e06eaf03
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Application Insights での価格とデータ ボリュームの管理
 
@@ -90,7 +90,7 @@ Basic プランは新しい Application Insights リソースを作成する場�
  
 ## <a name="review-pricing-plans-and-estimate-costs"></a>価格プランを確認してコストを見積もる
 
-Applicaition Insights では、利用可能な価格プランと最近の使用パターンに基づくコストを簡単に理解できるようになっています。 Azure ポータルで Application Insights リソースの **[Features + Pricing (機能と価格設定)]** ブレードを開きます。
+Application Insights では、利用可能な価格プランと最近の使用パターンに基づくコストを簡単に理解できるようになっています。 Azure ポータルで Application Insights リソースの **[Features + Pricing (機能と価格設定)]** ブレードを開きます。
 
 ![[Pricing (価格設定)] を選択します。](./media/app-insights-pricing/01-pricing.png)
 
@@ -136,7 +136,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 日次ボリューム上限を使用して、収集されるデータを制限できますが、上限に達した場合、アプリケーションから送信されるその日の残りのすべてのテレメトリが失われます。 アプリケーションが日次上限に達すると、その後のアプリケーションの正常性とパフォーマンスを追跡できなくなるため、上限に達しないようにすることを**お勧めします**。 
 
-代わりに、[サンプリング](app-insights-sampling.md) を使用してデータ ボリュームを調整し、日次上限は、アプリケーションが予想以上に大量のテレメトリを送信し始めた場合の「最後の手段」としてのみ使用するようにします。 
+代わりに、[サンプリング](app-insights-sampling.md) を使用してデータ ボリュームを調整し、日次上限は、アプリケーションが予想以上に大量のテレメトリを送信し始めた場合の "最後の手段" としてのみ使用するようにします。 
 
 日次上限を変更するには、Application Insights リソースの [構成] セクションで **[データ ボリュームの管理]** と **[日次上限]** を順にクリックします。
 
@@ -176,7 +176,7 @@ Azure Resource 管理を使用して、価格プランを設定するスクリ�
 ## <a name="limits-summary"></a>制限の概要
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [サンプリング](app-insights-sampling.md)
 

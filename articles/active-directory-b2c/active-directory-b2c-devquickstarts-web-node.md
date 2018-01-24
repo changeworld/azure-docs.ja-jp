@@ -1,32 +1,31 @@
 ---
-title: "Azure B2C 用の Node.js Web アプリにサインインを追加する | Microsoft Docs"
-description: "B2C テナントを使用してユーザーをサインインさせる Node.js Web アプリを作成する方法。"
+title: "Node.js Web アプリへのサインインの追加 - Azure Active Directory B2C"
+description: "Azure Active Directory B2C を使用してユーザーをサインインさせる Node.js Web アプリを作成する方法。"
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+author: PatAltimore
 manager: mtillman
-editor: 
-ms.assetid: db97f84a-1f24-447b-b6d2-0265c6896b27
+editor: dstrockis
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: hero-article
+ms.topic: article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.openlocfilehash: b306a79d0daa1c6d51557b6abad617182c76e9ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b4a5db7e6769d7ebb0bcf0287b3a1bfb7932984a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Node.js Web アプリにサインインを追加する
 
-**Passport** は Node.js 用の認証ミドルウェアです。 Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Restify Web アプリケーションに、支障をきたすことなくインストールされます。 包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。
+**Passport** は Node.js 用の認証ミドルウェアです。 Passport は、柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Restify Web アプリケーションに、支障をきたすことなくインストールされます。 包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。
 
-Azure Active Directory (Azure AD) 用の認証手法を開発しました。 このモジュールをインストールし、Azure AD `passport-azure-ad` プラグインを追加します。
+Azure Active Directory (Azure AD) 用にこのモジュールをインストールし、Azure AD `passport-azure-ad` プラグインを追加することができます。
 
-そのためには、次の手順を実行する必要があります。
+以下を実行する必要があります。
 
 1. Azure AD を使用してアプリケーションを登録する
 2. `passport-azure-ad` プラグインを使用するようにアプリをセットアップする
@@ -51,8 +50,6 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 - **[応答 URL]** に「`http://localhost:3000/auth/openid/return`」と入力します。 これはこのサンプル コードで使用する既定の URL です。
 - アプリケーション用の **アプリケーション シークレット** を作成し、それをメモしておきます。 この情報は後で必要になります。 この値は、使用する前に [XML エスケープ](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) する必要があることに注意してください。
 - アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この情報も後で必要になります。
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>ポリシーの作成
 
@@ -104,7 +101,7 @@ OpenID Connect 認証プロトコルを使用するように、Express ミドル
 プロジェクトのルートにある `app.js` ファイルを開きます。 `passport-azure-ad` に付属する `OIDCStrategy` 戦略を呼び出す次の呼び出しを追加します。
 
 
-```JavaScript
+```javascript
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 // Add some logging
@@ -115,7 +112,7 @@ var log = bunyan.createLogger({
 
 今参照した戦略を使用してサインイン要求を処理します。
 
-```JavaScript
+```javascript
 // Use the OIDCStrategy in Passport (Section 2).
 //
 //   Strategies in Passport require a "validate" function that accepts
@@ -158,7 +155,7 @@ Passport は、Twitter や Facebook などのすべての戦略に、同様の�
 
 Passport で必要な、サインインしているユーザーの追跡を可能にするメソッドを追加します。 これには、ユーザー情報のシリアル化と逆シリアル化が含まれます。
 
-```JavaScript
+```javascript
 
 // Passport session setup. (Section 2)
 
@@ -194,7 +191,7 @@ var findByEmail = function(email, fn) {
 
 Express エンジンを読み込むコードを追加します。 以下では、Express が提供する既定の `/views` と `/routes` のパターンを使用していることがわかります。
 
-```JavaScript
+```javascript
 
 // configure Express (Section 2)
 
@@ -221,7 +218,7 @@ app.configure(function() {
 
 実際のサインイン要求を `passport-azure-ad` エンジンに渡す `POST` ルートを追加します。
 
-```JavaScript
+```javascript
 
 // Our Auth routes (Section 3)
 
@@ -271,7 +268,7 @@ app.post('/auth/openid/return',
 
 まず、既定のメソッド、sign-in メソッド、account メソッド、sign-out メソッドを `app.js` ファイルに追加します。
 
-```JavaScript
+```javascript
 
 //Routes (Section 4)
 
@@ -306,7 +303,7 @@ app.get('/logout', function(req, res){
 
 `app.js` の最後の部分に、`/account` ルートで使用される `EnsureAuthenticated` メソッドを追加します。
 
-```JavaScript
+```javascript
 
 // Simple route middleware to ensure that the user is authenticated. (Section 4)
 
@@ -323,7 +320,7 @@ function ensureAuthenticated(req, res, next) {
 
 最後に、`app.js` でサーバー自体を作成します。
 
-```JavaScript
+```javascript
 
 app.listen(3000);
 
@@ -336,7 +333,7 @@ app.listen(3000);
 
 ルート ディレクトリの下に `/routes/index.js` ルートを作成します。
 
-```JavaScript
+```javascript
 
 /*
  * GET home page.
@@ -349,7 +346,7 @@ exports.index = function(req, res){
 
 ルート ディレクトリの下に `/routes/user.js` ルートを作成します。
 
-```JavaScript
+```javascript
 
 /*
  * GET users listing.
@@ -364,7 +361,7 @@ exports.list = function(req, res){
 
 ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。 これは、サインイン ポリシーとサインアウト ポリシーを呼び出す単純なページです。また、アカウント情報を取得するためにも使用できます。 ユーザーがサインインしている証拠を示すために要求でユーザーを渡す際に、条件付きの `if (!user)` を使用できることに注目してください。
 
-```JavaScript
+```javascript
 <% if (!user) { %>
     <h2>Welcome! Please sign in.</h2>
     <a href="/login/?p=your facebook policy">Sign in with Facebook</a>
@@ -379,7 +376,7 @@ exports.list = function(req, res){
 
 ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azure-ad` によってユーザー要求の中に配置された追加情報を表示できるようにします。
 
-```Javascript
+```javascript
 <% if (!user) { %>
     <h2>Welcome! Please sign in.</h2>
     <a href="/login">Sign in</a>
@@ -403,7 +400,7 @@ exports.list = function(req, res){
 
 電子メールまたは Facebook を使用してアプリにサインアップまたはサインインします。 サインアウトし、別のユーザーとしてサインインします。
 
-##<a name="next-steps"></a>次のステップ
+##<a name="next-steps"></a>次の手順
 
 参考のため、完成済みサンプル (構成値を除く) が [.zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip)。 GitHub から複製することもできます。
 

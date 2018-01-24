@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 03764377b3ea0e17d4a192a7e05bb495ec56f331
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9cab81b6072c6f096f6f1a419cebcca9630ebde3
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Azure のクレジット カードまたはデビット カードを追加、更新、または削除する
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
     ![支払い方法の横にある [編集] オプションを示すスクリーン ショット。](./media/billing-how-to-change-credit-card/editcard_new.png)
 1. クレジット カードまたはデビット カードの詳細を入力します。
-1. [ **保存**] を選択します。 
+1. **[保存]** を選択します。 
 
 クレジット カードを追加したあとでエラーが発生する場合は、「[Azure へのサインアップ時にクレジット カード拒否される](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 1. **[支払い方法の管理]** を選択します。
 1. 更新するカードの横にある **[編集]** を選択します。
 1. クレジット カードまたはデビット カードの詳細を更新します。
-1. [ **保存**] を選択します。
+1. **[保存]** を選択します。
 
 ## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>Azure サブスクリプションに別のクレジット カードを使用する
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 10/11/2017
 
 お客様のサブスクリプションが無効化または取り消された後、サブスクリプションを完全に削除するまで 90 日間待機します。 サブスクリプションを再アクティブ化する場合に備えて、保有期間中はファイル上に支払い方法を保持しています。 その後、サブスクリプションは完全に削除されます。
 
-90 日間の保有期間が終了する前に、クレジット カードやデビット カードを削除する必要がある場合は、[Azure サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+90 日間の保有期間が終了する前に、クレジット カードやデビット カードを削除する必要がある場合は、[サブスクリプションを再アクティブ化してください](billing-subscription-become-disable.md)。 再アクティブ化することはできない場合は、[Azure サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>"ログイン セッションの期限が切れています。 ここをクリックして、ログインし直してください。" という表示が消えないのはなぜですか。
 
@@ -96,6 +96,10 @@ ms.lasthandoff: 10/11/2017
 ### <a name="how-do-i-make-a-one-time-payment"></a>一括での支払い方法を教えてください。
 
 残念ながら、Azure では現在、クレジット カードまたはデビット カードの一括支払いはサポートされていません。 
+
+### <a name="how-do-i-change-the-tax-id"></a>税 ID を変更する方法を教えてください。
+
+税 ID を追加または更新するには、[Azure アカウント センターの **[プロファイル]**](https://account.azure.com/Profile) にアクセスし、**[納税記録]** を選択してください。 この税 ID は、免税の計算に使用され、請求書に表示されます。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 

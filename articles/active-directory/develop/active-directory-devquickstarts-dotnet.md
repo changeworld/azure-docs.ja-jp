@@ -1,5 +1,5 @@
 ---
-title: "Azure AD .NET の概要 | Microsoft Docs"
+title: "Azure AD .NET Desktop (WPF) の概要 | Microsoft Docs"
 description: "サインインし、OAuth を使用して Azure AD で保護されている API を呼び出すために Azure AD と連携する .NET Windows デスクトップ アプリケーションを構築する方法を説明します。"
 services: active-directory
 documentationcenter: .net
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 41abe20d778a8c51c6b19733ddf5426d12d8751e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e1ca92b1d1ae015add539ef03a358f7a53bc3a6d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="integrate-azure-ad-into-a-windows-desktop-wpf-app"></a>Windows デスクトップ WPF アプリの Azure AD への統合
+# <a name="azure-ad-net-desktop-wpf-getting-started"></a>Azure AD .NET Desktop (WPF) の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="1-register-the-directorysearcher-application"></a>1.DirectorySearcher アプリケーションを登録する
 アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 上部のバーにある自分のアカウントをクリックし、**[ディレクトリ]** の一覧から、アプリケーションを登録する Active Directory テナントを選択します。
 3. 左側のナビゲーションで **[More Services (その他のサービス)]**をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックして、**[追加]** を選択します。
@@ -69,7 +69,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
   * `ida:ClientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
   * `ida:RedirectUri` は、ポータルに登録したリダイレクト URL です。
 
-## <a name="3----use-adal-to-get-tokens-from-aad"></a>3.  DAL を使用して AAD からトークンを取得する
+## <a name="3----use-adal-to-get-tokens-from-aad"></a>手順 3.  DAL を使用して AAD からトークンを取得する
 ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireTokenAsync(...)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。  
 
 * `DirectorySearcher` プロジェクトで、`MainWindow.xaml.cs` を開き、`MainWindow()` メソッドを見つけます。  最初の手順は、アプリの `AuthenticationContext` (ADAL のプライマリ クラス) を初期化することです。  ここでは、ADAL が Azure AD と通信し、トークンをキャッシュする方法を通知するために必要な調整項目を ADAL に渡します。
@@ -119,7 +119,7 @@ private async void Search(object sender, RoutedEventArgs e)
 ```
 * アプリが `AcquireTokenAsync(...)`を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。  ADAL は、トークンを取得するにはユーザーのサインインが必要であると判断した場合、ログイン ダイアログを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。  また、何らかの理由によりトークンを返せない場合、 `AdalException`をスローします。
 * `AuthenticationResult` オブジェクトには、アプリが必要とする可能性のある情報を収集するために使用される `UserInfo` オブジェクトが含まれていることに注意してください。  DirectorySearcher で、 `UserInfo` は、ユーザーの ID を使用してアプリの UI をカスタマイズするために使用されます。
-* ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` への呼び出しでは、ユーザーにサインインするように要求する必要があります。  ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じぐらい容易に達成できます。
+* ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` への呼び出しでは、ユーザーにサインインするように要求する必要があります。  ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じくらい容易に達成できます。
 
 ```C#
 private void SignOut(object sender = null, RoutedEventArgs args = null)
@@ -162,7 +162,7 @@ public async void CheckForCachedToken()
 
 お疲れさまでした。 これで、ユーザー認証を処理でき、OAuth 2.0 を使用して Web API を安全に呼び出すことができ、ユーザーについての基本情報を取得できる、動作する . WPF アプリケーションが完成しました。  テナントに一連のユーザーを設定します (設定していない場合)。  DirectorySearcher アプリを実行し、それらのユーザーの一人としてサインインします。  UPN に基づいて、他のユーザーを検索します。  アプリを閉じて、再び実行します。  ユーザーのセッションがそのままに維持されていることに注意します。  サインアウトし、別のユーザーとしてサインインします。
 
-ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。  キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。  習得する必要があるのは、単一の API 呼び出し、 `authContext.AcquireTokenAsync(...)`のみです。
+ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。  キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、煩わしい操作を容易に実装できます。  習得する必要があるのは、単一の API 呼び出し、 `authContext.AcquireTokenAsync(...)`のみです。
 
 完全なサンプル (構成値を除く) を取得するには、 [ここ](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)をクリックしてください。  ここからは、さらなるシナリオに進むことができます。  次のチュートリアルを試してみてください。
 

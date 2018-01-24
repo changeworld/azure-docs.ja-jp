@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: a1305432d98c2e9f9f8bc30cacc62d49b1a8ba36
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5cfb968b201f49d5b7029a0b677e3ce2a8aa6cb9
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -35,8 +35,8 @@ Azure Table Storage の入力バインドを使用して、Azure Storage アカ�
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C# による単一エンティティの読み取り](#input---c-example-1)
-* [プリコンパイル済み C# による複数エンティティの読み取り](#input---c-example-2)
+* [C# 単一エンティティの読み取り](#input---c-example-1)
+* [C# 複数エンティティの読み取り](#input---c-example-2)
 * [C# スクリプト - 単一エンティティの読み取り](#input---c-script-example-1)
 * [C# スクリプト - 複数エンティティの読み取り](#input---c-script-example-2)
 * [F#](#input---f-example-2)
@@ -44,7 +44,7 @@ Azure Table Storage の入力バインドを使用して、Azure Storage アカ�
 
 ### <a name="input---c-example-1"></a>入力 - C# の例 1
 
-次の例は、単一のテーブル行を読み取る[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示します。 
+次の例は、1 つのテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 
 
 行キー値 "{queueTrigger}" は、行キーがキュー メッセージ文字列から取得されることを示します。
 
@@ -71,7 +71,7 @@ public class TableStorage
 
 ### <a name="input---c-example-2"></a>入力 - C# の例 2
 
-次の例は、複数のテーブル行を読み取る[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示します。 `MyPoco` クラスは、`TableEntity` から派生しています。
+次の例は、複数のテーブル行を読み取る [C# 関数](functions-dotnet-class-library.md)を示しています。 `MyPoco` クラスは、`TableEntity` から派生しています。
 
 ```csharp
 public class TableStorage
@@ -286,7 +286,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>入力 - 属性
  
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、次の属性を使用してテーブル入力バインドを構成します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、以下の属性を使用してテーブル入力バインディングを構成します。
 
 * [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs)。NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されています。
 
@@ -316,7 +316,7 @@ module.exports = function (context, myQueueItem) {
   }
   ```
 
-  完全な例については、[入力 - プリコンパイル済み C# の例](#input---c-example)に関する記事をご覧ください。
+  完全な例については、「[入力 - C# の例](#input---c-example)」を参照してください。
 
 * NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義された [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -346,7 +346,7 @@ module.exports = function (context, myQueueItem) {
 
 次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
@@ -389,14 +389,14 @@ Azure Table Storage の出力バインドを使用して、Azure Storage アカ�
 
 言語固有の例をご覧ください。
 
-* [プリコンパイル済み C#](#output---c-example)
-* [C# スクリプト](#output---c-script-example)
+* [C#](#output---c-example)
+* [C# スクリプト (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
 
-次の例は、HTTP トリガーを使用して単一のテーブル行を書き込む[プリコンパイル済み C#](functions-dotnet-class-library.md) コードを示します。 
+次の例は、HTTP トリガーを使用して 1 つのテーブル行を書き込む [C# 関数](functions-dotnet-class-library.md)を示しています。 
 
 ```csharp
 public class TableStorage
@@ -569,7 +569,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>出力 - 属性
 
-[プリコンパイル済み C#](functions-dotnet-class-library.md) 関数では、NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されている [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs) を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) で定義されている [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs) を使用します。
 
 この属性のコンストラクターは、テーブル名を受け取ります。 次の例のように、`out` パラメーターまたは関数の戻り値で使用できます。
 
@@ -597,15 +597,15 @@ public static MyPoco TableOutput(
 }
 ```
 
-完全な例については、[出力 - プリコンパイル済み C# の例](#output---c-example)に関する記事をご覧ください。
+完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
 
-`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[入力 - 属性](#input---attributes-for-precompiled-c)を参照してください。
+`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[入力 - 属性](#input---attributes)を参照してください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
 次の表は、*function.json* ファイルと `Table` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |説明|
+|function.json のプロパティ | 属性のプロパティ |[説明]|
 |---------|---------|----------------------|
 |**type** | 該当なし | `table` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `out` に設定する必要があります。 このプロパティは、Azure Portal でバインドを作成するときに自動で設定されます。 |
@@ -635,7 +635,7 @@ Table Storage の出力バインドは、次のシナリオをサポートして
 
   JavaScript 関数の場合、`context.bindings.<name>` を使用してテーブルの出力にアクセスします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: abnarain
-ms.openlocfilehash: 0fcc245369d90042066cbfc516a8c32db7272bd3
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 2c7df5c0a976aae8e3e0b99b083bbde942493bfa
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。
@@ -110,7 +110,20 @@ ms.lasthandoff: 11/10/2017
 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から自己ホスト型統合ランタイム ソフトウェアをインストールして、新しい AzureRmDataFactoryV2IntegrationRuntimeKey コマンドレットのいずれかによって登録するだけで、複数のノードを関連付けることができます。[チュートリアル](tutorial-hybrid-copy-powershell.md)に説明があります。
 
 > [!NOTE]
-> 各ノードを関連付けるために新しい自己ホスト型統合ランタイムを作成する必要はありません。
+> 各ノードを関連付けるために新しい自己ホスト型統合ランタイムを作成する必要はありません。 自己ホスト型の統合ランタイムを別のコンピューターにインストールし、同じ認証キーを使用してそれを登録できます。 
+
+> [!NOTE]
+> **高可用性とスケーラビリティ**用の別のノードを追加する前に、最初のノードで **[Remote access to intranet]\(イントラネットへのリモート アクセス\)** オプションが**有効**であることを確認してください ([Microsoft Integration Runtime Configuration Manager] -> [設定] -> [Remote access to intranet]\(イントラネットへのリモート アクセス\))。 
+
+### <a name="tlsssl-certificate-requirements"></a>TLS/SSL 証明書の要件
+統合ランタイム ノード間の通信を保護するために使用される TLS/SSL 証明書の要件を次に示します。
+
+- 証明書は必ず、公的に信頼されている X509 v3 証明書とします。 公的 (第三者) 証明機関 (CA) によって発行された証明書を使用することを推奨します。
+- 統合ランタイムの各ノードで、この証明書を信頼する必要があります。
+- ワイルドカード証明書がサポートされます。 FQDN 名が **node1.domain.contoso.com** の場合、証明書のサブジェクト名として ***.domain.contoso.com** を使用できます。
+- サブジェクトの別名の最後の項目のみが使用され、現行の制限に起因してその他はすべて無視されるため、SAN 証明書は推奨されません。 例:  SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、FQDN が **node2.domain.contoso.com** のマシンでのみこの証明書を使用できます。
+- SSL 証明書のために、Windows Server 2012 R2 でサポートされている任意のキー サイズをサポートします。
+- CNG キーを使用する証明書はサポートされていません。 Doesrted DoesDoes では、CNG キーを使用する証明書はサポートされません。
 
 ## <a name="system-tray-icons-notifications"></a>システム トレイ アイコン/通知
 システム トレイ アイコン/通知メッセージの上にカーソルを移動すると、自己ホスト型統合ランタイムの状態の詳細が表示されます。
@@ -124,7 +137,7 @@ ms.lasthandoff: 11/10/2017
 
 **企業ファイアウォール**レベルで、次のドメインと送信ポートを構成する必要があります。
 
-ドメイン名 | ポート | 説明
+ドメイン名 | ポート | [説明]
 ------------ | ----- | ------------
 *.servicebus.windows.net | 443、80 | Data Movement Service のバックエンドとの通信に使用
 *.core.windows.net | 443 | Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)
@@ -225,17 +238,23 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
-### <a name="open-port-8060-for-credential-encryption"></a>資格情報の暗号化のためにポート 8060 を開く
-Azure ポータルでオンプレミスのリンクされたサービスを設定するとき、**資格情報の設定**アプリケーション (現在サポートされていません) では、受信ポート 8060 を使って、資格情報が自己ホスト型統合ランタイムにリレーされます。 自己ホスト型統合ランタイムのセットアップ中に、既定では、自己ホスト型統合ランタイムのインストールが、自己ホスト型統合ランタイム コンピューター上でこのポートを開きます。
+### <a name="enable-remote-access-from-intranet"></a>イントラネットからのリモート アクセスを有効にする  
+**PowerShell** または **資格情報マネージャー アプリケーション**を使用して、自己ホスト型統合ランタイムがインストールされているのとは別の (ネットワーク内の) コンピューターから資格情報を暗号化する場合、**[イントラネットからのリモート アクセス]** オプションを有効にする必要があります。 **PowerShell** または **資格情報マネージャー アプリケーション**を使用して、自己ホスト型統合ランタイムがインストールされているのと同じコンピューターで資格情報を暗号化する場合、**[イントラネットからのリモート アクセス]** オプションを有効にすることはできません。
 
-サードパーティ製のファイアウォールを使用する場合は、ポート 8050 を手動で開くことができます。 自己ホスト型統合ランタイムの設定中にファイアウォールの問題が発生した場合は、次のコマンドを使用すると、ファイアウォールを構成せずに自己ホスト型統合ランタイムをインストールできます。
+**高可用性とスケーラビリティ**用の別のノードを追加する前に、イントラネットからのリモート アクセスを**有効**にする必要があります。  
+
+既定では、自己ホスト型統合ランタイム (v 3.3.xxxx.x 以降) のセットアップ中に、自己ホスト型統合ランタイムのインストールにより、自己ホスト型統合ランタイム コンピューター上の **[イントラネットからのリモート アクセス]** が無効にされます。
+
+サードパーティ製のファイアウォールを使用している場合は、ポート 8060 (またはユーザー構成ポート) を手動で開くことができます。 自己ホスト型統合ランタイムの設定中にファイアウォールの問題が発生した場合は、次のコマンドを使用すると、ファイアウォールを構成せずに自己ホスト型統合ランタイムをインストールできます。
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
+> [!NOTE]
+> ADFv2 での資格情報の暗号化では、**資格情報マネージャー アプリケーション**はまだ使用できません。 今後、このサポートが追加される予定です。  
 
 自己ホスト型統合ランタイム コンピューター上でポート 8060 を開かない場合は、「資格情報の設定」アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、 New-AzureRmDataFactoryV2LinkedServiceEncryptCredential PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、「資格情報とセキュリティの設定」に関するセクションを参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細な手順については、[チュートリアル: オンプレミスのデータをクラウドにコピー](tutorial-hybrid-copy-powershell.md)のチュートリアルを参照してください。

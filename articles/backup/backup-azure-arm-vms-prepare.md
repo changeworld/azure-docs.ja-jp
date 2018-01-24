@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
-ms.author: markgal;trinadhk;
-ms.openlocfilehash: 686cc45f219a10259c1b5cc0f0793c4ee392ee74
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: markgal;trinadhk;sogup;
+ms.openlocfilehash: 3c2ea9e5872454b0bac67c39362a1f94b6fa47b8
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
 
@@ -63,6 +63,7 @@ Resource Manager でデプロイされた仮想マシンの保護またはバッ
 * バックアップ データには、ネットワーク経由でマウントされて VM に接続されているドライブは含まれません。
 * 復元中に既存の仮想マシンを置き換えることはサポートされません。 VM が存在している場合に VM の復元を試みると、復元操作は失敗します。
 * リージョン間のバックアップと復元はサポートされません。
+* 現時点では、ストレージが ACL に登録されている VM のバックアップおよび復元はサポートされていません。 特定の VNET/サブネット、IP アドレス、またはその両方からのみストレージ アカウントへのアクセスを許可している VNET 機能上のストレージを有効にしている場合、VM のバックアップはサポートされていません。
 * Azure のすべてのパブリック リージョンに仮想マシンをバックアップすることができます (サポートされているリージョンの[チェックリスト](https://azure.microsoft.com/regions/#services)を参照してください)。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
 * マルチ DC 構成の一部であるドメイン コントローラー (DC) VM の復元は、PowerShell を通じてのみサポートされます。 詳細については、[マルチ DC ドメイン コントローラーの復元](backup-azure-arm-restore-vms.md#restore-domain-controller-vms)に関するページを参照してください。
 * 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。 復元操作の完了後、UI の復元ワークフローを使用して作成された VM には、これらのネットワーク構成は含まれません。 詳細については、「 [特別なネットワーク構成を持つ VM の復元](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations)」を参照してください。
@@ -75,7 +76,7 @@ Recovery Services コンテナーは、経時的に作成されたバックア�
 
 Recovery Services コンテナーを作成するには、次の手順に従います。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[ハブ]** メニューの **[参照]** をクリックし、「**Recovery Services**」と入力します。 入力を開始すると、リソースのリストが絞り込まれます。 **[Recovery Services コンテナー]** を選択します。
 
     ![ボックスに入力し、結果の [Recovery Services コンテナー] を選択します](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -131,7 +132,7 @@ Azure Portal の*シナリオ*は、Recovery Services コンテナーに何を�
 
 1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。 Recovery Services コンテナーを開いていない場合は、[Azure Portal](https://portal.azure.com/) を開きます。 **[ハブ]** メニューで **[その他のサービス]** を選択します。
 
-   a. リソース ボックスに「 **Recovery Services**」と入力します。 入力を開始すると、リストが絞り込まれます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 リソース ボックスに「 **Recovery Services**」と入力します。 入力を開始すると、リストが絞り込まれます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
 
       ![ボックスに入力し、結果の [Recovery Services コンテナー] を選択します](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
@@ -190,7 +191,7 @@ Azure VM のバックアップで問題が発生する場合は、次の表を�
 | --- | --- | --- |
 | VM エージェントのインストール |[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |最新の [Linux エージェント](../virtual-machines/linux/agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることは "*お勧めしません*"。  |
 | VM エージェントの更新 |VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。 <br><br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |[Linux VM エージェントを更新](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する手順に従います。 ディストリビューション リポジトリからエージェントを更新することをお勧めします。 GitHub から直接 Linux VM エージェントを更新することは*お勧めしません*。<br><br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
-| VM エージェントのインストールの検証 |1.Azure VM で C:\WindowsAzure\Packages フォルダーに移動します。 <br><br>手順 2.WaAppAgent.exe ファイルを見つけます。 <br><br>手順 3.このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。**製品バージョン**が 2.6.1198.718 以上であることを確認します。 |該当なし |
+| VM エージェントのインストールの検証 |1.Azure VM で C:\WindowsAzure\Packages フォルダーに移動します。 <br><br>2.WaAppAgent.exe ファイルを見つけます。 <br><br>手順 3.このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。**製品バージョン**が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 ### <a name="backup-extension"></a>バックアップ拡張機能
 VM エージェントが仮想マシンにインストールされると、Azure Backup サービスによって VM エージェントにバックアップ拡張機能がインストールされます。 Backup サービスは、バックアップ拡張機能のアップグレードとパッチの適用をシームレスに実行します。
@@ -309,7 +310,7 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ## <a name="questions"></a>疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで VM をバックアップするために環境の準備が整いました。次のステップとして、バックアップの作成を行ってください。 計画に関する記事で、VM のバックアップについて詳細を説明します。
 
 * [仮想マシンのバックアップ](backup-azure-arm-vms.md)

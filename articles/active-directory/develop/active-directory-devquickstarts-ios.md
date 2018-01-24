@@ -1,5 +1,5 @@
 ---
-title: "Azure AD の iOS アプリへの統合 | Microsoft Docs"
+title: "Azure AD iOS の概要 | Microsoft Docs"
 description: "サインインし、OAuth を使用して Azure AD で保護されている API を呼び出すために Azure AD と統合する iOS アプリケーションを構築する方法を説明します。"
 services: active-directory
 documentationcenter: ios
@@ -12,22 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e497b9e02e21967e71fc9b4fef8dfe0e63e682c3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 36c6f6d2449d1e137f85e0f657f0399f9df8ee55
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="integrate-azure-ad-into-an-ios-app"></a>Azure AD の iOS アプリへの統合
+# <a name="azure-ad-ios-getting-started"></a>Azure AD iOS の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
-
-> [!TIP]
-> Azure Active Directory をほんの数分で稼働するために役立つ、新しい[開発者ポータル](https://identity.microsoft.com/Docs/iOS)のプレビュー版をお試しください。  開発者ポータルでは、アプリを登録して、コードに Azure AD を統合するプロセスが説明されています。  完了すると、テナント内のユーザーを認証できる簡単なアプリケーションと、トークンを受け取って検証を実行できるバックエンドを手に入れることになります。 
-> 
-> 
 
 Azure Active Directory (Azure AD) には、保護されたリソースにアクセスする必要がある iOS クライアント向けに、Active Directory 認証ライブラリ (ADAL) が用意されています。 ADAL は、アプリがアクセス トークンを取得する際のプロセスを簡略化します。 それがどれほど簡単であるかを示すために、この記事で、次のような Objective C To-Do List アプリケーションを構築します。
 
@@ -59,14 +54,14 @@ iOS のリダイレクト URI の形式は次のとおりです。
 ```
 
 * **aap-scheme** - これは XCode プロジェクトに登録されています。 他のアプリケーションから呼び出す方法を示します。 これは、Info.plist、URL types、URL ID の順に探すと見つかります。 まだ 1 つも構成していない場合は作成する必要があります。
-* **bundle-id** : XCode プロジェクトの設定の "identity" の下にある Bundle Identifier です。
+* **bundle-id** - XCode プロジェクトの設定の "identity" の下にある Bundle Identifier です。
 
 この QuickStart コードの例は次のようになります。 ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
 ## <a name="2-register-the-directorysearcher-application"></a>2.DirectorySearcher アプリケーションを登録する
 アプリでトークンを取得するようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Active Directory テナントを選択します。
 3. 一番左のナビゲーション ウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
@@ -76,7 +71,7 @@ iOS のリダイレクト URI の形式は次のとおりです。
 6. 登録が完了すると、Azure AD によって、一意のアプリケーション ID がアプリに割り当てられます。  この値は次のセクションで必要になるので、[アプリケーション] タブからコピーします。
 7. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。 API として **[Microsoft Graph]** を選択し、**[委任されたされたアクセス許可]** の下に **[ディレクトリ データの読み取り]** アクセス許可を追加します。  これにより、アプリケーションが Azure AD Graph API を使用してユーザーをクエリするようになります。
 
-## <a name="3-install-and-configure-adal"></a>3.ADAL をインストールして構成する
+## <a name="3-install-and-configure-adal"></a>手順 3.ADAL をインストールして構成する
 アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。  ADAL が Azure AD と通信するには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
 
 1. CocoaPods を使用して DirectorySearcher プロジェクトに ADAL を追加することから始めます。
@@ -231,13 +226,13 @@ ADAL の背後にある基本的な原理として、アプリはアクセス �
 >
 
 ## <a name="5-build-and-run-the-application"></a>5.アプリケーションの構築と実行
-ご利用ありがとうございます。 これで、作業中の iOS アプリケーションでは、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。  テナントに一連のユーザーを設定します (設定していない場合)。  QuickStart アプリを起動し、そのユーザーの 1 人としてサインインします。  UPN に基づいて、他のユーザーを検索します。  アプリを閉じて再起動します。  ユーザーのセッションがそのままに維持されています。
+お疲れさまでした。 これで、作業中の iOS アプリケーションでは、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。  テナントに一連のユーザーを設定します (設定していない場合)。  QuickStart アプリを起動し、そのユーザーの 1 人としてサインインします。  UPN に基づいて、他のユーザーを検索します。  アプリを閉じて再起動します。  ユーザーのセッションがそのままに維持されています。
 
 ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。  キャッシュ管理、OAuth プロトコル サポート、ユーザーへのサインイン UI の表示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。  習得する必要があるのは、単一の API 呼び出し、 `getToken`のみです。
 
 参考のため、完成済みサンプル (構成値を除く) が [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip) で提供されています。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここからは、さらなるシナリオに進むことができます。  次のチュートリアルを試してみてください。
 
 * [Azure AD による Node.JS Web API のセキュリティ保護](active-directory-devquickstarts-webapi-nodejs.md)

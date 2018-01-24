@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 58a37c0dd24d54996f517961f3a7f1ec36639cfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eb68c97ca26a862a79de9ffb83b1fc630ba2af4
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="using-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
+# <a name="use-service-bus-from-net-with-amqp-10"></a>AMQP 1.0 で .NET から Service Bus を使用する
 
-## <a name="downloading-the-service-bus-sdk"></a>Service Bus SDK のダウンロード
+AMQP 1.0 は、Service Bus パッケージ バージョン 2.1 以降でサポートされています。 [NuGet][NuGet] から Service Bus ビットをダウンロードすることによって確実に最新バージョンを入手できます。
 
-AMQP 1.0 は、Service Bus SDK Version 2.1 以降でサポートされています。 [NuGet][NuGet] から Service Bus ビットをダウンロードすることによって確実に最新バージョンを入手できます。
-
-## <a name="configuring-net-applications-to-use-amqp-10"></a>AMQP 1.0 を使用するように .NET アプリケーションを構成する
+## <a name="configure-net-applications-to-use-amqp-10"></a>AMQP 1.0 を使用するように .NET アプリケーションを構成する
 
 既定では、Service Bus .NET クライアント ライブラリは SOAP ベースの専用プロトコルを使ってサービス バス サービスと通信します。 既定のプロトコルの代わりに AMQP 1.0 を使用するには、次のセクションの説明に従って、Service Bus 接続文字列を明示的に構成する必要があります。 AMQP 1.0 を使用する場合、アプリケーション コードはこの変更以外は変更されません。
 
@@ -64,7 +62,7 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 
 | .NET 本文のオブジェクト型 | 対応する AMQP の型 | AMQP 本文セクションの型 |
 | --- | --- | --- |
-| bool |boolean |AMQP 値 |
+| bool |ブール値 |AMQP 値 |
 | byte |ubyte |AMQP 値 |
 | ushort |ushort |AMQP 値 |
 | uint |uint |AMQP 値 |
@@ -77,10 +75,10 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 | double |double |AMQP 値 |
 | 小数点 |decimal128 |AMQP 値 |
 | char |char |AMQP 値 |
-| DateTime |timestamp |AMQP 値 |
+| Datetime |timestamp |AMQP 値 |
 | Guid |uuid |AMQP 値 |
 | byte[] |バイナリ |AMQP 値 |
-| string |string |AMQP 値 |
+| 文字列 |文字列 |AMQP 値 |
 | System.Collections.IList |list |AMQP 値: コレクションに含まれるアイテムとして指定できるのは、この表で定義されているアイテムのみです。 |
 | System.Array |array |AMQP 値: コレクションに含まれるアイテムとして指定できるのは、この表で定義されているアイテムのみです。 |
 | System.Collections.IDictionary |map |AMQP 値: コレクションに含まれるアイテムとして指定できるのは、この表で定義されている項目のみです。注: String キーのみがサポートされます。 |
@@ -93,8 +91,8 @@ AMQP を使用する場合は、接続文字列に `;TransportType=Amqp` を付�
 | .NET 型 | 対応する AMQP の記述子付き型 | メモ |
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
-| Datetimeoffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
+| timespan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
 ## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>サポートされていない機能、制限、および動作の違い
 
@@ -109,7 +107,7 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 * `MessageReceiver.Receive(TimeSpan.Zero)` は `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` として実装されます。
 * ロック トークンによるメッセージの完了は、最初にメッセージを受信したメッセージ レシーバーでのみ実行できます。
 
-## <a name="controlling-amqp-protocol-settings"></a>AMQP プロトコル設定を制御する
+## <a name="control-amqp-protocol-settings"></a>AMQP プロトコル設定を制御する
 
 [.NET API](/dotnet/api/) では、AMQP プロトコルの動作を制御するいくつかの設定が公開されています。
 
@@ -118,13 +116,12 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: 転送がバッチ可能である場合、この値でディスポジションを送信する場合の最大遅延が決まります。 既定では、送信側/受信側によって継承されます。 個々の送信側/受信側は、既定値 (20 ミリ秒) を上書きできます。
 * **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: AMQP 接続を SSL 接続で確立するかどうかを制御します。 既定値は **true** です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 さらに詳しい情報については、 次のリンク先を参照してください。
 
 * [Service Bus AMQP の概要]
 * [AMQP 1.0 プロトコル ガイド]
-* [Windows Server 用 Service Bus の AMQP]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
@@ -135,4 +132,4 @@ AMQP を使用する場合、Service Bus .NET API の次の機能は、現在サ
 [Azure portal]: https://portal.azure.com
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [AMQP 1.0 プロトコル ガイド]: service-bus-amqp-protocol-guide.md
-[Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+

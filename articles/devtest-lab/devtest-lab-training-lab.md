@@ -3,7 +3,7 @@ title: "トレーニングでの Azure DevTest Labs の使用 | Microsoft Docs"
 description: "トレーニングの各種シナリオを実現するために Azure DevTest Labs を使用する方法について説明します。"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: steved0x
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 57ff4e30-7e33-453f-9867-e19b3fdb9fe2
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2016
-ms.author: sdanie
-ms.openlocfilehash: 3bad7538121e1049af953e3937fc679b1d9184d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 96f7ed2084fbfc14c6bac09819ce3724b4168995
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>トレーニングでの Azure DevTest Labs の使用
 Azure DevTest Labs を使用すると、開発とテストのみならず、さまざまな主要シナリオを実現できます。 そのようなシナリオの 1 つが、トレーニング用のラボのセットアップです。 Azure DevTest Labs を使用すると、ラボを作成し、各受講者がトレーニング用に同じ分離環境を作成するために使用できるカスタム テンプレートを提供できます。 各受講者が必要としている場合にのみトレーニング環境を利用できるようにし、トレーニング環境にトレーニングに必要なリソース (仮想マシンなど) が十分に含まれるようにするポリシーを適用できます。 さらに、ワンクリックでアクセスできるラボを受講者と簡単に共有することもできます。
@@ -54,7 +54,7 @@ Azure DevTest Labs は、任意の仮想環境でトレーニングを実施す�
    
    | タスク | 学習内容 |
    | --- | --- |
-   | [Azure Marketplace のイメージの構成](devtest-lab-configure-marketplace-images.md) |Azure Marketplace イメージをホワイトリストに登録し、トレーニングに必要なイメージのみを利用できるようにする方法について学びます。 |
+   | [Azure Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md) |Azure Marketplace イメージをホワイトリストに登録し、トレーニングに必要なイメージのみを利用できるようにする方法について学びます。 |
    | [カスタム イメージの作成](devtest-lab-create-template.md) |トレーニングに必要なソフトウェアを事前にインストールしてカスタム イメージを作成し、受講者がそのカスタム イメージを使用して VM を迅速に作成できるようにします。 |
 3. **トレーニング マシン用に、再利用可能なテンプレートを作成する** 
    

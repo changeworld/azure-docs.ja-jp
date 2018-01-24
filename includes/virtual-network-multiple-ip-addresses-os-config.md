@@ -22,6 +22,7 @@
     * **[OK]** をクリックして TCP/IP 設定を閉じ、もう一度 **[OK]** をクリックしてアダプター設定を閉じます。 これで RDP 接続が再確立されます。
 
 6. コマンド プロンプトで、「 *ipconfig /all*」と入力します。 追加したすべての IP アドレスが表示され、DHCP が無効になります。
+7. Azure のプライマリ IP 構成のプライベート IP アドレスが、Windows 用プライマリ IP アドレスとして使用されるように Windows を構成します。 詳細については、「[No Internet access from Azure Windows VM that has multiple IP addresses (複数の IP アドレスを持つ Azure Windows VM からインターネット アクセスできない)](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse)」を参照してください。 
 
 
 ### <a name="validation-windows"></a>検証 (Windows)

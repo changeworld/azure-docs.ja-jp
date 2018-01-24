@@ -7,14 +7,14 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 16b56c71e2c81bead7c578a973840391996e845b
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: fdbf9b1b77c2c64b3ebfcdbc5463916f317e4881
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack の診断ツール
 
@@ -29,11 +29,11 @@ Microsoft の診断ツールは、ログ収集のメカニズムを簡単で効�
  
 ## <a name="trace-collector"></a>トレース コレクター
  
-トレース コレクターは既定で有効になり、Azure Stack コンポーネント サービスからすべての Windows イベント トレーシング (ETW) ログを収集するためにバック グラウンドで継続的に実行されます。 ETW ログは、一般的なローカル共有に 5 日間を上限として格納されます。 この制限に達した場合、新しいファイルが作成されると最も古いファイルは削除されます。 各ファイルで許容される既定の最大サイズは 200 MB です。 サイズ チェックは定期的に行われ (2 分間隔)、現在のファイルが 200 MB 以上であれば保存され、新しいファイルが生成されます。 また、イベント セッションごとに生成されるファイルの合計サイズには、8 GB の制限が設定されています。 
+トレース コレクターは既定で有効になり、Azure Stack コンポーネント サービスからすべての Windows イベント トレーシング (ETW) ログを収集するためにバック グラウンドで継続的に実行されます。 ETW ログは、一般的なローカル共有に 5 日間を上限として格納されます。 この制限に達した場合、新しいファイルが作成されると最も古いファイルは削除されます。 各ファイルで許容される既定の最大サイズは 200 MB です。 サイズ チェックは 2 分間隔で行われ、現在のファイルが 200 MB 以上であれば保存され、新しいファイルが生成されます。 また、イベント セッションごとに生成されるファイルの合計サイズには、8 GB の制限が設定されています。 
 
 ## <a name="log-collection-tool"></a>ログ収集ツール
  
-PowerShell コマンドレット **Get-AzureStackLog** を使用して、Azure Stack 環境のすべてのコンポーネントからログを収集できます。 これらは、ユーザーの定義した場所に zip ファイルで保存されます。 テクニカル サポート チームが問題を解決するためにお客様のログを必要とする場合は、このツールを実行するようにお願いすることがあります。
+PowerShell コマンドレット **Get-AzureStackLog** を使用して、Azure Stack 環境のすべてのコンポーネントからログを収集できます。 これらは、ユーザーの定義した場所に zip ファイルで保存されます。 Azure Stack テクニカル サポート チームが問題を解決するためにお客様のログを必要とする場合は、このツールを実行するようにお願いすることがあります。
 
 > [!CAUTION]
 > これらのログ ファイルには個人を特定できる情報 (PII) が含まれている可能性があります。 ログ ファイルを公開する前に、この点を考慮してください。
@@ -123,9 +123,9 @@ if($s)
    | ADFS                    | ASAppGateway           | BareMetal          |
    | BRP                     | CA                     | CPI                |
    | CRP                     | DeploymentMachine      | DHCP               |
-   | Domain                  | ECE                    | ECESeedRing        | 
+   | ドメイン                  | ECE                    | ECESeedRing        | 
    | FabricRing              | FabricRingServices     | FRP                |
-   | Gateway                 | HealthMonitoring       | HRP                |   
+   | ゲートウェイ                 | HealthMonitoring       | HRP                |   
    | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
    | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
    | NonPrivilegedAppGateway | NRP                    | SeedRing           |
@@ -136,11 +136,11 @@ if($s)
 
 
 ### <a name="collect-logs-using-a-graphical-user-interface"></a>グラフィカル ユーザー インターフェイスを使用してログを収集する
-Get-AzureStackLog コマンドレットのパラメーターを指定して Azure Stack ログを取得する代わりに、主要な Azure Stack ツールの GitHub リポジトリ (http://aka.ms/AzureStackTools) にあるオープン ソースの Azure Stack ツールを使用することもできます。
+Get-AzureStackLog コマンドレットのパラメーターを指定して Azure Stack ログを取得する代わりに、主要な Azure Stack ツールの GitHub ツール リポジトリ (http://aka.ms/AzureStackTools) にあるオープン ソースの Azure Stack ツールを使用することもできます。
 
-**ERCS_AzureStackLogs.ps1** PowerShell スクリプトは GitHub ツール リポジトリに格納され、定期的に更新されています。 管理 PowerShell セッションから開始されるこのスクリプトは、特権エンドポイントに接続し、指定されたパラメーターで Get-AzureStackLog を実行します。 パラメーターが指定されていない場合、スクリプトは、既定でグラフィカル ユーザー インターフェイスを使用して、パラメーターを入力するように求めます。
+**ERCS_AzureStackLogs.ps1** PowerShell スクリプトは GitHub ツール リポジトリに格納され、定期的に更新されています。 最新バージョンを入手するために、http://aka.ms/ERCS から直接ダウンロードすることをお勧めします。 管理 PowerShell セッションから開始されるこのスクリプトは、特権エンドポイントに接続し、指定されたパラメーターで Get-AzureStackLog を実行します。 パラメーターが指定されていない場合、スクリプトは、既定でグラフィカル ユーザー インターフェイスを使用して、パラメーターを入力するように求めます。
 
-ERCS_AzureStackLogs.ps1 PowerShell スクリプトの詳細については、[短いビデオ](https://www.youtube.com/watch?v=Utt7pLsXEBc)を視聴するか、Azure Stack ツールのGitHub リポジトリにある [Readme ファイル](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) を参照します。 
+ERCS_AzureStackLogs.ps1 PowerShell スクリプトの詳細については、[短いビデオ](https://www.youtube.com/watch?v=Utt7pLsXEBc)を視聴するか、Azure Stack ツールの GitHub リポジトリにある [Readme ファイル](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) を参照します。 
 
 ### <a name="additional-considerations"></a>追加の考慮事項
 
@@ -157,5 +157,5 @@ ERCS_AzureStackLogs.ps1 PowerShell スクリプトの詳細については、[�
 > [!NOTE]
 > 記憶域スペースを効率的に使用し、ログで占領されないようにすることは極めて重要であるため、収集されるログにはサイズと有効期間の制限が強制されます。 ただし、問題を診断する場合に、こうした制限のためにもう存在していない可能性のあるログが必要となることがあります。 このため、外部の記憶域スペース (Azure のストレージ アカウント、オンプレミスの追加の記憶装置など) に 8 ～ 12 時間ごとにログをオフロードし、要件に応じて 1 ～ 3 か月間そこに保存しておくことを**強くお勧めします**。 また、この記憶域の場所が暗号化されていることを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Microsoft Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)

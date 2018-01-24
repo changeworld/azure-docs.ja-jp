@@ -4,7 +4,7 @@ description: "セキュリティを強化するために、Azure CLI 2.0 を使�
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 2a23b6fa-6941-4998-9804-8efe93b647b3
@@ -13,16 +13,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/05/2017
+ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 172b4c8f5c098d776cb689543f5d8f163b8895b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2489d4bfda5d9a08b35e8d80b6cc9d00bf69117b
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Linux VM の仮想ディスクを暗号化する方法
-仮想マシン (VM) のセキュリティとコンプライアンスを強化するために、Azure の仮想ディスクを暗号化できます。 ディスクは、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure CLI 2.0 を使用して Linux VM の仮想ディスクを暗号化する方法について詳しく説明します。 これらの手順は、[Azure CLI 1.0](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
+仮想マシン (VM) のセキュリティとコンプライアンスを強化するために、仮想ディスクと VM 自体を暗号化できます。 VM は、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure CLI 2.0 を使用して Linux VM の仮想ディスクを暗号化する方法について詳しく説明します。 これらの手順は、[Azure CLI 1.0](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VM の仮想ディスクを暗号化するための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#overview-of-disk-encryption)。
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location eastus
 [az keyvault create](/cli/azure/keyvault#create) を使用して Azure Key Vault を作成し、ディスクの暗号化で使用するために Key Vault を有効にします。 次のように、*keyvault_name* の一意の Key Vault 名を指定します。
 
 ```azurecli
-keyvault_name=mykeyvaultikf
+keyvault_name=myuniquekeyvaultname
 az keyvault create \
     --name $keyvault_name \
     --resource-group myResourceGroup \
@@ -69,7 +69,7 @@ az keyvault set-policy --name $keyvault_name --spn $sp_id \
     --secret-permissions set
 ```
 
-[az vm create](/cli/azure/vm#create) を使用して VM を作成し、5 GB のデータ ディスクを接続します。 ディスクの暗号化をサポートしているのは、一部の Marketplace イメージだけです。 次の例では、**CentOS 7.2n** イメージを使用して、`myVM` という名前の VM を作成します。
+[az vm create](/cli/azure/vm#create) を使用して VM を作成し、5 GB のデータ ディスクを接続します。 ディスクの暗号化をサポートしているのは、一部の Marketplace イメージだけです。 次の例では、*CentOS 7.2n* イメージを使用して、*myVM* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -81,9 +81,9 @@ az vm create \
     --data-disk-sizes-gb 5
 ```
 
-前のコマンドからの出力で示されている `publicIpAddress` を使用した SSH に対するVM です。 パーティションとファイル システムを作成し、データ ディスクをマウントします。 詳細については、「[Linux VM を接続して新しいディスクをマウントする](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)」をご覧ください。 SSH セッションを閉じます。
+前のコマンドからの出力で示されている *publicIpAddress* を使用して VM に SSH 接続します。 パーティションとファイル システムを作成し、データ ディスクをマウントします。 詳細については、「[Linux VM を接続して新しいディスクをマウントする](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)」をご覧ください。 SSH セッションを閉じます。
 
-[az vm encryption enable](/cli/azure/vm/encryption#enable) を使用して VM を暗号化します。 次の例では、前の `ad sp create-for-rbac` コマンドの `$sp_id` 変数と `$sp_password` 変数を使用しています。
+[az vm encryption enable](/cli/azure/vm/encryption#enable) を使用して VM を暗号化します。 次の例では、前の `ad sp create-for-rbac` コマンドの *$sp_id* 変数と *$sp_password* 変数を使用しています。
 
 ```azurecli
 az vm encryption enable \
@@ -108,13 +108,14 @@ az vm encryption show --resource-group myResourceGroup --name myVM
 az vm restart --resource-group myResourceGroup --name myVM
 ```
 
-ディスク暗号化プロセスは起動プロセス中に最終処理が行われるので、数分待ってから **az vm encryption show** を使用して暗号化の状態をもう一度確認します。
+ディスク暗号化プロセスは起動プロセス中に最終処理が行われるので、数分待ってから [az vm encryption show](/cli/azure/vm/encryption#show) を使用して暗号化の状態をもう一度確認します。
 
 ```azurecli
 az vm encryption show --resource-group myResourceGroup --name myVM
 ```
 
 OS ディスクとデータ ディスクの状態がどちらも **Encrypted** になっています。
+
 
 ## <a name="overview-of-disk-encryption"></a>ディスク暗号化の概要
 Linux VM の仮想ディスクは、[dm-crypt](https://wikipedia.org/wiki/Dm-crypt) を使って暗号化します。 Azure の仮想ディスクを暗号化するための料金はかかりません。 暗号化キーは、ソフトウェア保護を使って Azure Key Vault に格納されます。または、FIPS 140-2 レベル 2 標準に認定された Hardware Security Module (HSM) でキーをインポートまたは生成することもできます。 これらの暗号化キーの制御を維持し、その使用を監査することができます。 これらの暗号化キーは、VM に接続された仮想ディスクの暗号化/暗号化解除に使われます。 Azure Active Directory サービス プリンシパルは、VM の電源がオンまたはオフになったときにこれらの暗号化キーを発行するためのセキュリティで保護されたメカニズムを提供します。
@@ -143,14 +144,18 @@ VM 暗号化のプロセスは次のとおりです。
 
 * 次の Linux サーバー SKU - Ubuntu、CentOS、SUSE と SUSE Linux Enterprise Server (SLES)、Red Hat Enterprise Linux。
 * すべてのリソース (Key Vault、ストレージ アカウント、VM など) は、同じ Azure リージョンとサブスクリプションに存在している必要があります。
-* Standard A、D、DS、G、GS シリーズの VM。
+* Standard A、D、DS、G、GS などの VM シリーズ。
+* 既に暗号化されている Linux VM での暗号化キーの更新。
 
 現在、ディスクの暗号化は次のシナリオではサポートされていません。
 
 * Basic レベルの VM。
 * クラシック デプロイメント モデルで作成された VM。
 * Linux VM での OS ディスク暗号化の無効化。
-* 既に暗号化されている Linux VM での暗号化キーの更新。
+* カスタム Linux イメージの使用。
+
+サポートされているシナリオと制限事項の詳細については、[IaaS VM の Azure Disk Encryption](../../security/azure-security-disk-encryption.md) に関するページをご覧ください。
+
 
 ## <a name="create-azure-key-vault-and-keys"></a>Azure Key Vault とキーを作成する
 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要があります。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myKey*、*myVM* といったパラメーター名にします。
@@ -167,7 +172,7 @@ az group create --name myResourceGroup --location eastus
 暗号化キーおよびストレージや VM 自体などの関連するコンピューティング リソースを格納する Azure Key Vault は、同じリージョンに存在する必要があります。 [az keyvault create](/cli/azure/keyvault#create) を使用して Azure Key Vault を作成し、ディスクの暗号化で使用するために Key Vault を有効にします。 次のように、*keyvault_name* の一意の Key Vault 名を指定します。
 
 ```azurecli
-keyvault_name=myUniqueKeyVaultName
+keyvault_name=myuniquekeyvaultname
 az keyvault create \
     --name $keyvault_name \
     --resource-group myResourceGroup \
@@ -205,7 +210,7 @@ az keyvault set-policy --name $keyvault_name --spn $sp_id \
 
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-実際に仮想ディスクを暗号化するために、VM を作成し、データ ディスクを追加します。 [az vm create](/cli/azure/vm#create) を使用して、暗号化する VM を作成し、5 GB のデータ ディスクを接続します。 ディスクの暗号化をサポートしているのは、一部の Marketplace イメージだけです。 次の例では、**CentOS 7.2n** イメージを使用して、*myVM* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#create) を使用して、暗号化する VM を作成し、5 GB のデータ ディスクを接続します。 ディスクの暗号化をサポートしているのは、一部の Marketplace イメージだけです。 次の例では、*CentOS 7.2n* イメージを使用して、*myVM* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -217,7 +222,7 @@ az vm create \
     --data-disk-sizes-gb 5
 ```
 
-前のコマンドからの出力で示されている `publicIpAddress` を使用した SSH に対するVM です。 パーティションとファイル システムを作成し、データ ディスクをマウントします。 詳細については、「[Linux VM を接続して新しいディスクをマウントする](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)」をご覧ください。 SSH セッションを閉じます。
+前のコマンドからの出力で示されている *publicIpAddress* を使用して VM に SSH 接続します。 パーティションとファイル システムを作成し、データ ディスクをマウントします。 詳細については、「[Linux VM を接続して新しいディスクをマウントする](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk)」をご覧ください。 SSH セッションを閉じます。
 
 
 ## <a name="encrypt-virtual-machine"></a>仮想マシンを暗号化する
@@ -228,7 +233,7 @@ az vm create \
 3. 実際の暗号化と暗号化解除に使う暗号化キーを指定します。
 4. OS ディスク、データ ディスク、またはすべてのディスクのいずれを暗号化するかを指定します。
 
-[az vm encryption enable](/cli/azure/vm/encryption#enable) を使用して VM を暗号化します。 次の例では、前の `ad sp create-for-rbac` コマンドの `$sp_id` 変数と `$sp_password` 変数を使用しています。
+[az vm encryption enable](/cli/azure/vm/encryption#enable) を使用して VM を暗号化します。 次の例では、前の [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) コマンドの *$sp_id* 変数と *$sp_password* 変数を使用しています。
 
 ```azurecli
 az vm encryption enable \
@@ -292,6 +297,6 @@ az vm encryption enable \
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 暗号化キーや Vault の削除など、Azure Key Vault の管理について詳しくは、「[CLI を使用した Key Vault の管理](../../key-vault/key-vault-manage-with-cli2.md)」をご覧ください。
 * 暗号化されたカスタム VM を Azure にアップロードするための準備など、ディスクの暗号化について詳しくは、「[Azure Disk Encryption](../../security/azure-security-disk-encryption.md)」をご覧ください。

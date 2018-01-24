@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 11/13/2017
 ms.author: genemi
-ms.openlocfilehash: 66dbc9c2c3ba9b9f0c7eb405dbafbd002ce50fbc
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: ce223fbd6a69bc789f902f9478b5255edfd44844
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 11/17/2017
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>仮想ネットワーク規則の利点
 
-操作を実行するまで、サブネット上の VM は SQL Database と通信できません。 通信を許可する方法として仮想ネットワーク規則を選択する根拠については、ファイアウォールが提供している競合するセキュリティ オプションと比較対照して議論する必要があります。
+操作を実行するまで、サブネット上の VM は SQL Database と通信できません。 通信を確立するアクションの 1 つは、仮想ネットワーク ルールの作成です。 VNet ルールの方法を選択する根拠については、ファイアウォールで提供される競合するセキュリティ オプションと比較対照して考察する必要があります。
 
 #### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
 
@@ -81,7 +81,7 @@ SQL Database のファイアウォールでは、SQL Database への通信が許
 
 #### <a name="c-cannot-yet-have-sql-database-on-a-subnet"></a>C. サブネット上に SQL Database を保持することは、まだできません。
 
-Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク規則や IP 規則がなくても、お使いの VM は SQL Database と通信できます。
+Azure SQL Database サーバーが仮想ネットワーク内のサブネット上のノードになった場合、仮想ネットワークはお使いの SQL Database と通信できます。 この場合、仮想ネットワーク ルールや IP ルールがなくても、VM は SQL Database と通信できます。
 
 しかし、2017 年 9 月時点ではまだ、Azure SQL Database サービスは、サブネットに割り当て可能なサービスの範囲には含まれていません。
 
@@ -115,16 +115,16 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 - **ネットワーク管理:** &nbsp; エンドポイントをオンにする。
 - **データベース管理:** &nbsp; アクセス制御リスト (ACL) を更新して、指定されたサブネットを SQL Database サーバーに追加する。
 
-*RBAC による代替:* 
+*RBAC による代替:*
 
 ネットワーク管理およびデータベース管理のロールには、仮想ネットワーク規則の管理に必要とされる機能以外もあります。 それらの機能のうち 1 つのサブネットだけが必要になります。
 
 必要な機能のサブネットのみを保持する単一のカスタム ロールを作成するために、Azure には[ロールベースのアクセス制御 (RBAC)][rbac-what-is-813s] を使用するオプションがあります。 ネットワーク管理またはデータベース管理に関連付ける代わりに、カスタム ロールを使用できます。カスタム ロールにユーザーを追加する場合と、他の 2 つの主要な管理者ロールにユーザーを追加する場合では、前者の方がセキュリティ脅威にさらされる領域が少なくなります。
 
-
-
-
-
+> [!NOTE]
+> Azure SQL Database と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
+> - 両方のサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
+> - ユーザーに操作 (サービス エンドポイントの有効化や、特定のサーバーへの VNet サブネットの追加など) を開始するために必要な権限がある。
 
 ## <a name="limitations"></a>制限事項
 
@@ -158,8 +158,32 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
+## <a name="impact-of-removing-allow-all-azure-services"></a>[Allow all Azure Services]\(すべての Azure サービスを許可\) を削除した場合の影響
+
+多くのユーザーが、Azure SQL Server から **[Allow all Azure Services]\(すべての Azure サービスを許可\)** を削除し、VNet ファイアウォール規則に置き換えることを望んでいます。
+ただし、これを削除すると、Azure SQLDB の次の機能に影響します。
+
+#### <a name="import-export-service"></a>Import Export Service
+Azure SQLDB Import Export Service は、Azure の VM 上で実行されます。 これらの VM は VNet に存在しないため、データベースに接続するときに Azure IP を取得します。 **[Allow all Azure Services]\(すべての Azure サービスを許可\)** を削除すると、これらの VM はデータベースにアクセスできなくなります。
+この問題は回避することができます。 DACFx API を使用して、BACPAC インポート/エクスポートをコードで直接実行します。 ファイアウォール規則を設定した VNet サブネット内の VM にこれがデプロイされていることを確認してください。
+
+#### <a name="sql-database-query-editor"></a>SQL Database クエリ エディター
+Azure SQL Database クエリ エディターは、Azure の VM にデプロイされます。 これらの VM は VNet に存在しません。 そのため、VM はデータベースに接続するときに Azure IP を取得します。 **[Allow all Azure Services]\(すべての Azure サービスを許可\)** を削除すると、これらの VM はデータベースにアクセスできなくなります。
+
+#### <a name="table-auditing"></a>テーブル監査
+現在、SQL Database で監査を有効にする方法が 2 つあります。 Azure SQL Server でサービス エンドポイントを有効にすると、テーブル監査は失敗します。 この問題を軽減するには、BLOB 監査に移行します。
 
 
+## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Azure Storage で VNet サービス エンドポイントを使用した場合の影響
+
+Azure Storage は、ストレージ アカウントへの接続を制限できる同じ機能を実装しています。
+Azure SQL Server で使用されているストレージ アカウントでこの機能を使用すると、問題が発生する可能性があります。 この影響を受ける Azure SQLDB の機能について以下に説明します。
+
+#### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
+PolyBase は、ストレージ アカウントから Azure SQLDW にデータを読み込むときによく使用されます。 データの読み込み元のストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。
+
+#### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB の BLOB 監査
+BLOB 監査では、監査ログをユーザー独自のストレージ アカウントにプッシュします。 このストレージ アカウントが VENT サービス エンドポイント機能を使用している場合、Azure SQLDB からストレージ アカウントへの接続は切断されます。
 
 
 ## <a name="errors-40914-and-40615"></a>エラー 40914 および 40615
@@ -217,16 +241,17 @@ PowerShell スクリプトでも、仮想ネットワーク規則を作成でき
 3. **[Azure サービスへのアクセスを許可]** の制御を [オフ] に設定します。
 
     > [!IMPORTANT]
-    > 制御を [オン] に設定したままの場合、お使いの Azure SQL Database サーバーでは任意のサブネットからの通信を許可するため、セキュリティの観点でアクセス過多になる恐れがあります。 Microsoft Azure Virtual Network サービス エンドポイント機能は、SQL Database の仮想ネットワーク規則機能と共に使用することで、セキュリティ脅威にさらされる領域を減少させることができます。
+    > 制御を [オン] に設定したままにすると、Azure SQL Database サーバーはすべてのサブネットからの通信を受け入れます。 制御を [オン] に設定したままにすると、セキュリティの観点からアクセス過多になる可能性があります。 Microsoft Azure Virtual Network サービス エンドポイント機能は、SQL Database の仮想ネットワーク規則機能と共に使用することで、セキュリティ脅威にさらされる領域を減少させることができます。
 
 4. **[仮想ネットワーク]** セクションにある **[既存の追加]** コントロールをクリックします。
 
     ![[既存の追加] (SQL 規則としてのサブネット エンドポイント) をクリックします。][image-portal-firewall-vnet-add-existing-10-png]
 
 5. 新しい **[作成/更新]** ペインで、お使いの Azure リソース名をコントロールに入力します。
- 
+
     > [!TIP]
-    > お使いのサブネットの正しい**アドレス プレフィックス**を含める必要があります。 ポータルで値を確認できます。 **[All resources]\(すべてのリソース\)** &gt; **[All types]\(すべての種類\)** &gt; **[仮想ネットワーク]** の順に移動します。 フィルターにお使いの仮想ネットワークが表示されます。 お使いの仮想ネットワークをクリックし、**[サブネット]** をクリックします。 **ADDRESS RANGE** 列に、必要なアドレス プレフィックスが含まれています。
+    > お使いのサブネットの正しい**アドレス プレフィックス**を含める必要があります。 ポータルで値を確認できます。
+    > **[All resources]\(すべてのリソース\)** &gt; **[All types]\(すべての種類\)** &gt; **[仮想ネットワーク]** の順に移動します。 フィルターにお使いの仮想ネットワークが表示されます。 お使いの仮想ネットワークをクリックし、**[サブネット]** をクリックします。 **ADDRESS RANGE** 列に、必要なアドレス プレフィックスが含まれています。
 
     ![新しい規則のフィールドを入力します。][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -237,22 +262,26 @@ PowerShell スクリプトでも、仮想ネットワーク規則を作成でき
     ![ファイアウォール ペインで新しい規則を確認する][image-portal-firewall-vnet-result-rule-30-png]
 
 
-
-
+> [!NOTE]
+> 規則には次の状態が適用されます。
+> - **準備完了:** 開始した操作が成功したことを示します。
+> - **失敗:** 開始した操作が失敗したことを示します。
+> - **削除済み:** 削除操作にのみ適用されます。規則が削除され、適用されなくなったことを示します。
+> - **進行中:** 操作が進行中であることを示します。 操作がこの状態にある間は、古い規則が適用されます。
 
 
 <a name="anchor-how-to-links-60h" />
 
 ## <a name="related-articles"></a>関連記事
 
-- [PowerShell を使用して Virtual Network サービス エンドポイントと、Azure SQL Database 用の仮想ネットワークを順に作成する][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Azure 仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]
 - [Azure SQL Database サーバー レベルとデータベース レベルのファイアウォール規則][sql-db-firewall-rules-config-715d]
 
-Microsoft Azure Virtual Network サービス エンドポイント機能、および Azure SQL Database の仮想ネットワーク規則機能は、両方とも 2017 年 9 月末に利用可能になります。
+Azure SQL Database の仮想ネットワーク ルール機能は、2017 年 9 月下旬に利用可能になりました。
 
+## <a name="next-steps"></a>次の手順
 
-
+- [PowerShell を使用して、仮想ネットワーク サービス エンドポイントと、Azure SQL Database の仮想ネットワーク ルールを作成する][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 
 
 <!-- Link references, to images. -->
@@ -304,4 +333,3 @@ Microsoft Azure Virtual Network サービス エンドポイント機能、お�
 
 - ARM templates
 -->
-

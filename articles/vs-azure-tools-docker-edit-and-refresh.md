@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7df8bb2dd61466fd9af6492277d54cf0ffdfeb0b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>ローカルの Docker コンテナーでアプリをデバッグする
 ## <a name="overview"></a>概要
@@ -49,7 +49,7 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 ## <a name="2-add-docker-support"></a>2.Docker サポートの追加
 [!INCLUDE [Add docker support](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
-## <a name="3-edit-your-code-and-refresh"></a>3.コードを編集して更新する
+## <a name="3-edit-your-code-and-refresh"></a>手順 3.コードを編集して更新する
 変更をすばやく反復処理するには、コンテナー内でアプリケーションを起動して変更を行うと、IIS Express を使用する場合のように表示できます。
 
 1. ソリューション構成を `Debug` に設定して **Ctrl + F5** キーを押すと、Docker イメージが作成され、ローカルで実行されます。
@@ -88,7 +88,7 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 
    ![][2]
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 [Visual Studio 2015 Tools for Docker](https://aka.ms/DockerToolsForVS)により、Docker コンテナー内での開発の生産性が実際に向上するため、ローカル作業の生産性が上がります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

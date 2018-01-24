@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 358f2650f767057f4a220d3b3b8507de4ce14e6f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5a635abfa9fa10cd8c8498e3c95a17af997cea3e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api-preview"></a>Azure Cosmos DB: Graph API (プレビュー) を使用してクエリを実行する方法
+# <a name="azure-cosmos-db-how-to-query-with-the-graph-api"></a>Azure Cosmos DB: Graph API を使用してクエリを実行する方法
 
-Azure Cosmos DB [Graph API](graph-introduction.md) (プレビュー) では [Gremlin](https://github.com/tinkerpop/gremlin/wiki) クエリがサポートされます。 この記事では、使用を開始できるようにサンプル ドキュメントとクエリを提供します。 詳しい Gremlin のリファレンスについては、[Gremlin のサポート](gremlin-support.md)に関する記事を参照してください。
+Azure Cosmos DB [Graph API](graph-introduction.md) は [Gremlin](https://github.com/tinkerpop/gremlin/wiki) クエリをサポートしています。 この記事では、使用を開始できるようにサンプル ドキュメントとクエリを提供します。 詳しい Gremlin のリファレンスについては、[Gremlin のサポート](gremlin-support.md)に関する記事を参照してください。
 
 この記事に含まれるタスクは次のとおりです。 
 
@@ -75,7 +75,7 @@ g.V('thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabe
 
 Gremlin を使用すると、さらに複雑なクエリを作成したり、強力なグラフ トラバーサル ロジックを実装したりできます。これには、フィルター式の組み合わせ、`loop` ステップを使用したループの実行、`choose` ステップを使用した条件付きナビゲーションの実装などが含まれます。 他にどのようなことができるかについて詳しくは、[Gremlin のサポート](gremlin-support.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の手順を行いました。
 
@@ -85,4 +85,4 @@ Gremlin を使用すると、さらに複雑なクエリを作成したり、強
 次のチュートリアルに進んで、データをグローバルに分散する方法について学習できます。
 
 > [!div class="nextstepaction"]
-> [データをグローバルに分散する](tutorial-global-distribution-documentdb.md)
+> [データをグローバルに分散する](tutorial-global-distribution-sql-api.md)

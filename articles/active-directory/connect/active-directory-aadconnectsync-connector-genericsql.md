@@ -3,8 +3,8 @@ title: "Generic SQL コネクタ | Microsoft Docs"
 description: "この記事では、Microsoft の Generic SQL コネクタを構成する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
-manager: mtillman
+author: fimguy
+manager: bhu
 editor: 
 ms.assetid: fd8ccef3-6605-47ba-9219-e0c74ffc0ec9
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
-ms.author: billmath
-ms.openlocfilehash: 04a6b7290c4a17d60145355ef1374960a8b6c5ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 12/19/2017
+ms.author: davidste
+ms.openlocfilehash: a365219e433f4876401a9c35b8a656060508efbd
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Generic SQL コネクタに関するテクニカル リファレンス
 この記事では Generic SQL コネクタについて説明します。 この記事は次の製品に適用されます。
@@ -40,7 +40,7 @@ Generic SQL コネクタを使用すると、ODBC 接続を提供するデータ
 | --- | --- |
 | 接続先のデータ ソース |コネクタは、すべての 64 ビット ODBC ドライバーでサポートされています。 次のデータ ソースでテスト済みです。 <li>Microsoft SQL Server および SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 および 11 g</li><li>MySQL 5.x</li> |
 | シナリオ |<li>オブジェクトのライフサイクル管理</li><li>パスワード管理</li> |
-| 操作 |<li>フル インポートと差分インポート、エクスポート</li><li>エクスポートの場合: 追加、削除、更新、および置換</li><li>パスワードの設定、パスワードの変更</li> |
+| [操作] |<li>フル インポートと差分インポート、エクスポート</li><li>エクスポートの場合: 追加、削除、更新、および置換</li><li>パスワードの設定、パスワードの変更</li> |
 | スキーマ |<li>オブジェクトと属性の動的な検出</li> |
 
 ### <a name="prerequisites"></a>前提条件
@@ -231,7 +231,11 @@ Generic SQL コネクタでは、次の方法を使用したフル インポー�
 ![実行手順1](./media/active-directory-aadconnectsync-connector-genericsql/runstep1.png)
 
 **テーブル/ビュー**  
-オブジェクトの複数値の属性をインポートするには、**[Name of Multi-Valued table/views (複数値のテーブル/ビューの名前)]** にコンマ区切りのテーブル/ビュー名を指定し、**[結合条件]** に親テーブルとのそれぞれの結合条件を指定します。
+オブジェクトの複数値の属性をインポートするには、**[複数値のテーブル/ビューの名前]** にテーブル/ビュー名を指定し、**[結合条件]** に親テーブルとのそれぞれの結合条件を指定します。 データ ソースに複数値テーブルが複数ある場合は、union を使用して 1 つのビューにできます。
+
+>[!IMPORTANT]
+Generic SQL 管理エージェントは、1 つの複数値テーブルでのみ動作します。 [複数値のテーブル/ビューの名前] には、複数のテーブル名を入力しないでください。 これは Generic SQL の制限です。
+
 
 例: Employee オブジェクトとそのすべての複数値属性をインポートします。 Employee という名前のテーブル (メイン テーブル) と Department という名前のテーブル (複数値テーブル) があります。
 以下の手順を実行します。

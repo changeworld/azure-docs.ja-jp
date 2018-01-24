@@ -3,7 +3,7 @@ title: "VM を作成するための Azure DevTest Labs 数式の管理 | Microso
 description: "Azure DevTest Labs 数式を更新および削除する方法について説明します"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 841dd95a-657f-4d80-ba26-59a9b5104fe4
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
-ms.author: tarcher
+ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfdab5def50158f9b764bbb1e50c2624cc6d5fb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dcd285761774c3cd1050976894f1f15db61b52c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
 
@@ -64,7 +64,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
     * **パスワード** - 指定されたユーザーに使用するシークレット (パスワード) に関連付けられている値を入力、またはドロップダウン リストから選択します。 シークレットの詳細については、「[Azure DevTest Labs: Personal secret store (Azure DevTest Labs: 個人のシークレット ストア)](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store/)」を参照してください。
     * **仮想マシンのディスクの種類** - 基本イメージを使用してプロビジョニングされた仮想マシンのストレージ ディスクの種類として、HDD (ハード ディスク ドライブ) または SSD (ソリッドステート ドライブ) のどちらが許可されているかを指定します。
     * **仮想マシン サイズ** - 定義済みの項目のいずれかを選択して、作成する VM のプロセッサ コア、RAM サイズ、ハード ドライブ サイズを指定します。 
-    * **アーティファクト** - これを選択すると、**[成果物の追加]** ブレードが開きます。このブレードで、基本イメージに追加するアーティファクトを選択して構成します。 アーティファクトの詳細については、「[Azure DevTest Labs での VM アーティファクトの管理](./devtest-lab-add-vm-with-artifacts.md)」を参照してください。
+    * **アーティファクト** - これを選択すると、**[成果物の追加]** ブレードが開きます。このブレードで、基本イメージに追加するアーティファクトを選択して構成します。 アーティファクトの詳細については、「[Azure DevTest Labs 仮想マシンのカスタム アーティファクトの作成](devtest-lab-artifact-author.md)」をご覧ください。
     * **詳細設定** - これを選択すると、**[詳細設定]** ブレードが開きます。このブレードで次の設定を構成します。
         * **仮想ネットワーク** - 目的の仮想ネットワークを選んでタップします。
         * **サブネット** - 目的のサブネットを指定します。    
@@ -134,6 +134,6 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 ## <a name="related-blog-posts"></a>関連するブログ記事
 * [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-## <a name="next-steps"></a>次のステップ
-VM の作成時に使用する数式を作成したら、次は [VM をラボに追加](devtest-lab-add-vm-with-artifacts.md)します。
+## <a name="next-steps"></a>次の手順
+VM の作成時に使用する数式を作成したら、次は [VM をラボに追加](devtest-lab-add-vm.md)します。
 

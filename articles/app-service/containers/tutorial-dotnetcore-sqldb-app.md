@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ef68f64437935f08f76c29ecf15d574279cca7f1
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: d6c679518bfc712e6a08ffae722b0cc5d2b038aa
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成
 
@@ -93,7 +93,7 @@ SQL Database については、このチュートリアルでは [Azure SQL Data
 
 ### <a name="create-a-sql-database-logical-server"></a>SQL Database 論理サーバーを作成する
 
-Cloud Shell で、[az sql server create](/cli/azure/sql/server#create) コマンドを使用して SQL Database 論理サーバーを作成します。
+Cloud Shell で、[az sql server create](/cli/azure/sql/server?view=azure-cli-latest#az_sql_server_create) コマンドを使用して SQL Database 論理サーバーを作成します。
 
 "*\<server_name >*" プレースホルダーを一意の SQL Database 名で置換します。 この名前は、SQL Database エンドポイント (`<server_name>.database.windows.net`) の一部として使用されるため、名前は Azure のすべての論理サーバーで一意である必要があります。 この名前に含めることができるのは英小文字、数字、およびハイフン (-) 文字のみで、文字数は 3 ～ 50 文字にする必要があります。 また、"*\<db_username >*" と "*db_password >\<*" を選択したユーザー名とパスワードで置換します。 
 
@@ -124,15 +124,15 @@ SQL Database 論理サーバーが作成されると、Azure CLI によって、
 
 ### <a name="configure-a-server-firewall-rule"></a>サーバーのファイアウォール規則の構成
 
-[az sql server firewall create](/cli/azure/sql/server#create) コマンドで [Azure SQL Database サーバーレベルのファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
+[az sql server firewall create](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az_sql_server_firewall_rule_create) コマンドで [Azure SQL Database サーバーレベルのファイアウォール規則](../../sql-database/sql-database-firewall-configure.md)を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server_name> --name AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
-### <a name="create-a-database"></a>データベースの作成
+### <a name="create-a-database"></a>データベースを作成する
 
-[az sql db create](/cli/azure/sql/db#create) コマンドで [S0 パフォーマンス レベル](../../sql-database/sql-database-service-tiers.md)のデータベースをサーバーに作成します。
+[az sql db create](/cli/azure/sql/db?view=azure-cli-latest#az_sql_db_create) コマンドで [S0 パフォーマンス レベル](../../sql-database/sql-database-service-tiers.md)のデータベースをサーバーに作成します。
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
@@ -152,7 +152,7 @@ Server=tcp:<server_name>.database.windows.net,1433;Initial Catalog=coreDB;Persis
 
 この手順では、SQL Database に接続された .NET Core アプリケーションを App Service on Linux にデプロイします。
 
-### <a name="configure-local-git-deployment"></a>ローカル Git デプロイの構成
+### <a name="configure-local-git-deployment"></a>ローカル Git デプロイを構成する
 
 [!INCLUDE [Configure a deployment user](../../../includes/configure-deployment-user-no-h.md)]
 
@@ -166,7 +166,7 @@ Server=tcp:<server_name>.database.windows.net,1433;Initial Catalog=coreDB;Persis
 
 ### <a name="configure-an-environment-variable"></a>環境変数の構成
 
-Azure アプリの接続文字列を設定するには、Cloud Shell で [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update) コマンドを使用します。 次のコマンドで、"*\<app name>*" および "*\<connection_string>*" パラメーターを先ほど作成した接続文字列で置換します。
+Azure アプリの接続文字列を設定するには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用します。 次のコマンドで、"*\<app name>*" および "*\<connection_string>*" パラメーターを先ほど作成した接続文字列で置換します。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
@@ -240,7 +240,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリを参照する
+### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリの参照
 
 Web ブラウザーを使用して、デプロイされた Web アプリを参照します。
 
@@ -365,7 +365,7 @@ git push azure master
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここで学習した内容は次のとおりです。
 
@@ -375,7 +375,7 @@ git push azure master
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure からターミナルにログをストリーミングする
-> * Azure ポータルでアプリを管理する
+> * Azure Portal でアプリを管理する
 
 次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
 

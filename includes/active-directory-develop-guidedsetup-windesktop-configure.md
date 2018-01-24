@@ -1,19 +1,35 @@
 
-## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
-次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
-1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure)でアプリケーションを登録します。
-2.  アプリケーションの名前とお使いのメール アドレスを入力します
-3.  ガイド付きセットアップのオプションがオンになっていることを確認します。
-4.  手順に従ってアプリケーション ID を取得し、それをコードに貼り付けます。
+## <a name="register-your-application"></a>アプリケーションの登録
+2 つのどちらかの方法でアプリケーションを登録できます。
 
-### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>ソリューションへのアプリケーション登録情報の追加 (上級)
-次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
-1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します
-2. アプリケーションの名前とお使いのメール アドレスを入力します 
-3. ガイド付きセットアップのオプションがオフになっていることを確認します。
-4. [`Add Platform`] \(プラットフォームの追加) をクリックしてから [`Native Application`] \(ネイティブ アプリケーション) を選択し、[保存] をクリックします。
-5. アプリケーション ID の GUID をコピーし、Visual Studio に戻って `App.xaml.cs` を開き、`your_client_id_here` を登録したアプリケーション ID に置き換えます。
+### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
+次の操作を実行して、アプリケーションをすばやく登録できます。
+1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure)に移動します。
 
-```csharp
-private static string ClientId = "your_application_id_here";
-```
+2. **[アプリの追加]** を選択します。
+
+3. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。
+
+4. **[Guided Setup]\(ガイド付きセットアップ\)** チェック ボックスがオンになっていることを確認し、**[作成]** を選択します。
+
+5. 手順に従ってアプリケーション ID を取得し、それをコードに貼り付けます。
+
+### <a name="option-2-advanced-mode"></a>オプション 2: 詳細モード
+アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
+1. アプリケーションをまだ登録していない場合は、[Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動します。
+
+2. **[アプリの追加]** を選択します。
+
+3. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。 
+
+4. **[Guided Setup]\(ガイド付きセットアップ\)** チェック ボックスがオフになっていることを確認し、**[作成]** を選択します。
+
+5. **[プラットフォームの追加]**、**[ネイティブ アプリケーション]**、**[保存]** の順に選択します。
+
+6. **[アプリケーション ID]** ボックスで、GUID をコピーします。
+
+7. Visual Studio に移動し、*App.xaml.cs* ファイルを開き、`your_client_id_here` を登録してコピーしたアプリケーション ID に置き換えます。
+
+    ```csharp
+    private static string ClientId = "your_application_id_here";
+    ```

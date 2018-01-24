@@ -10,17 +10,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 12/14/2017
 ms.author: jingwang
-ms.openlocfilehash: f7604e251bd62ec382ac9ace3de058e345abb863
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 145c2bc0556010389e78e523fde6fd4b9063f930
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
-[Azure Key Vault](../key-vault/key-vault-whatis.md) 内のデータ ストアに資格情報を格納することができます。 Azure Data Factory は、データ ストアを使用するアクティビティの実行時に、資格情報を取得します。 現時点では、[Dynamics コネクタ](connector-dynamics-crm-office-365.md)と [Salesforce コネクタ](connector-salesforce.md)でのみこの機能がサポートされます。
+[Azure Key Vault](../key-vault/key-vault-whatis.md) 内のデータ ストアに資格情報を格納することができます。 Azure Data Factory は、データ ストアを使用するアクティビティの実行時に、資格情報を取得します。
+
+現時点では、[Dynamics コネクタ](connector-dynamics-crm-office-365.md)、[Salesforce コネクタ](connector-salesforce.md)、および新しく有効になったいくつかのコネクタで、この機能がサポートされます。 今後、さらに追加される予定です。 詳細については、各コネクタのトピックを確認してください。 この機能をサポートするシークレット フィールドでは、次のような注意事項が説明に表示されます。"*このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、「Azure Key Vault への資格情報の格納」をご覧ください。*"
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
@@ -42,10 +44,10 @@ Azure Key Vault に格納されている資格情報を参照するには、次�
 
 Azure Key Vault のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **AzureKeyVault** に設定する必要があります。 | あり |
-| baseUrl | Azure Key Vault の URL を指定します。 | あり |
+| 型 | type プロパティは **AzureKeyVault** に設定する必要があります。 | [はい] |
+| baseUrl | Azure Key Vault の URL を指定します。 | [はい] |
 
 **例:**
 
@@ -65,12 +67,12 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 
 キー コンテナーのシークレットを参照するリンクされたサービスのフィールドを構成する場合は、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | フィールドの type プロパティは **AzureKeyVaultSecret** に設定する必要があります。 | あり |
-| secretName | Azure Key Vault のシークレットの名前。 | あり |
-| secretVersion | Azure Key Vault のシークレットのバージョン。<br/>指定しない場合は、常に最新バージョンのシークレットが使用されます。<br/>指定した場合は、その特定のバージョンに固定されます。| いいえ |
-| store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | あり |
+| 型 | フィールドの type プロパティは **AzureKeyVaultSecret** に設定する必要があります。 | [はい] |
+| secretName | Azure Key Vault のシークレットの名前。 | [はい] |
+| secretVersion | Azure Key Vault のシークレットのバージョン。<br/>指定しない場合は、常に最新バージョンのシークレットが使用されます。<br/>指定した場合は、その特定のバージョンに固定されます。| いいえ  |
+| store | 資格情報の格納に使用する Azure Key Vault のリンクされたサービスを表します。 | [はい] |
 
 **例: ("password" のセクションをご覧ください)**
 
@@ -97,5 +99,5 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

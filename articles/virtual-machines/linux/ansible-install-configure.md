@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: c5257ef5c635080f5eaca371e1882b13cc37e0fd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 13b043f3d6154852647f6bb738d3717be6802fa9
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Azure の仮想マシンを管理するための Ansible のインストールと構成
 この記事では、最も一般的な Linux ディストリビューションに Ansible と必須の Azure Python SDK モジュールをインストールする方法について説明します。 インストールしたパッケージを特定のプラットフォーム用に合わせることで、他のディストリビューションに Ansible をインストールできます。 Azure リソースを安全に作成するため、Ansible で使用する資格情報を作成し定義する方法についても説明します。 
@@ -34,7 +34,7 @@ ms.lasthandoff: 11/18/2017
 az group create --name myResourceGroupAnsible --location eastus
 ```
 
-ここで VM を作成し、次のディストリビューションのいずれかに Ansible をインストールします。
+ここで VM を作成し、次のディストリビューションのいずれかを選択し、Ansible をインストールします。
 
 - [Ubuntu 16.04 LTS](#ubuntu1604-lts)
 - [CentOS 7.3](#centos-73)
@@ -43,7 +43,7 @@ az group create --name myResourceGroupAnsible --location eastus
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -74,7 +74,7 @@ pip install ansible[azure]
 ### <a name="centos-73"></a>CentOS 7.3
 [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -106,7 +106,7 @@ sudo pip install ansible[azure]
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
 [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -125,11 +125,14 @@ VM で、Azure Python SDK モジュールに必要なパッケージと Ansible 
 
 ```bash
 ## Install pre-requisite packages
-sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 python-devel \
-    libopenssl-devel libtool python-pip python-setuptools
+sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make \
+    python-devel libopenssl-devel libtool python-pip python-setuptools
 
 ## Install Ansible and Azure SDKs via pip
 sudo pip install ansible[azure]
+
+# Remove conflicting Python cryptography package
+sudo pip uninstall -y cryptography
 ```
 
 次に、[Azure 資格情報の作成](#create-azure-credentials)に進みます。
@@ -138,26 +141,26 @@ sudo pip install ansible[azure]
 ## <a name="create-azure-credentials"></a>Azure 資格情報の作成
 Ansible は、ユーザー名とパスワード、またはサービス プリンシパルを使用して Azure と通信します。 Azure のサービス プリンシパルは、アプリケーション、サービス、Ansible などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。 この例では、ユーザー名とパスワードを提供するだけでなく、セキュリティを強化するために、基本的なサービス プリンシパルを作成します。
 
-[az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) を使用してサービス プリンシパルを作成し、Ansible に必要な資格情報を出力します。
+[az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) を使用してホスト コンピューターにサービス プリンシパルを作成し、Ansible に必要な資格情報を出力します。
 
 ```azurecli
-az ad sp create-for-rbac --query [appId,password,tenant]
+az ad sp create-for-rbac --query [client_id: appId, secret: password, tenant: tenant]
 ```
 
 上記のコマンドの出力例は、次のとおりです。
 
 ```json
-[
-  "eec5624a-90f8-4386-8a87-02730b5410d5",
-  "531dcffa-3aff-4488-99bb-4816c395ea3f",
-  "72f988bf-86f1-41af-91ab-2d7cd011db47"
-]
+{
+  "client_id": "eec5624a-90f8-4386-8a87-02730b5410d5",
+  "secret": "531dcffa-3aff-4488-99bb-4816c395ea3f",
+  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}
 ```
 
 Azure に対して認証するには、[az account show](/cli/azure/account#show) で Azure サブスクリプション ID を取得する必要もあります。
 
 ```azurecli
-az account show --query [id] --output tsv
+az account show --query "{ subscription_id: id }"
 ```
 
 次の手順で、これら 2 つのコマンドからの出力を使用します。
@@ -173,7 +176,7 @@ mkdir ~/.azure
 vi ~/.azure/credentials
 ```
 
-*資格情報*ファイル自体では、サービス プリンシパル作成時の出力とサブスクリプション ID を組み合わせます。 前述の [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) コマンドからの出力は、*client_id*、*secret*、*tenant* に必要な順序と同じになっています。 次の*資格情報*ファイル例は、これらの値が前述の出力と一致することを示しています。 実際の値を次のように入力します。
+*資格情報*ファイル自体では、サービス プリンシパル作成時の出力とサブスクリプション ID を組み合わせます。 前述の [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) コマンドからの出力は、*client_id*、*secret*、*tenant* に必要なものと同じです。 次の*資格情報*ファイル例は、これらの値が前述の出力と一致することを示しています。 実際の値を次のように入力します。
 
 ```bash
 [default]
@@ -194,5 +197,5 @@ export AZURE_SECRET=531dcffa-3aff-4488-99bb-4816c395ea3f
 export AZURE_TENANT=72f988bf-86f1-41af-91ab-2d7cd011db47
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Ansible と必須の Azure Python SDK モジュールがインストールされ、Ansible 用に定義された資格情報を取得できました。 [Ansible を使用して VM を作成する](ansible-create-vm.md)方法を説明します。 また、[完全な Azure VM を作成し、Ansible でリソースをサポートする](ansible-create-complete-vm.md)方法についても説明します。

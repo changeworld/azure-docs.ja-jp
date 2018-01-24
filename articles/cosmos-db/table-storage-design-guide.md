@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: eaa9d2208406afece5c77859546e888c1e49e902
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d93b6a25c1781c7d4f1f0534eda146963f439dd5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド: スケーラブルな設計とハイパフォーマンスなテーブル
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -39,8 +39,8 @@ Table service とは 名前が示すとおり、Table service ではデータの
 
 <table>
 <tr>
-<th>PartitionKey</th>
-<th>RowKey</th>
+<th>パーティション キー</th>
+<th>行キー</th>
 <th>Timestamp</th>
 <th></th>
 </tr>
@@ -86,7 +86,7 @@ Table service とは 名前が示すとおり、Table service ではデータの
 </tr>
 <tr>
 <td>Marketing</td>
-<td>学科</td>
+<td>部署</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
 <table>
@@ -251,7 +251,7 @@ Table service は 1 つのクラスター化インデックス内の **Partition
 多くの設計は、複数の条件に基づいてエンティティをルックアップできるようにするという要件を満たす必要があります。 たとえば、電子メール、従業員 ID、姓に基づいて従業員エンティティを特定する場合などです。 セクションの次のパターン [テーブルの設計パターン](#table-design-patterns) ではこれらの要件の種類について説明し、また、Table service がセカンダリ インデックスを提供しないことへの対処方法について説明します。  
 
 * [パーティション内のセカンダリ インデックス パターン](#intra-partition-secondary-index-pattern) -異なる **RowKey** 値 (同じパーティション) を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用して効果的な検索と代替的な並べ替え順序を可能にします。  
-* [パーティション内のセカンダリ インデックス パターン](#inter-partition-secondary-index-pattern) - 異なる別個のテーブルの別個のパーティションの RowKey 値を使用して複数のコピーを格納し、高速で効率的な参照とを使用して、 異なる **RowKey** 値による代替の並べ替え順序を可能にします。  
+* [パーティション内のセカンダリ インデックス パターン](#inter-partition-secondary-index-pattern) - 別個のパーティションまたは別個のテーブルの異なる **RowKey** 値を使用して各エンティティの複数のコピーを格納し、異なる **RowKey** 値を使用して高速で効率的な検索と代替的な並べ替え順序を可能にします。  
 * [インデックス エンティティのパターン](#index-entities-pattern) -をエンティティ一覧を返す、効率的な検索を有効にするインデックスのエンティティを管理します。  
 
 ### <a name="sorting-data-in-the-table-service"></a>Table service でデータを並べ替える
@@ -651,7 +651,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 ![][16]
 
 #### <a name="solution"></a>解決策
-データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 For example:  
+データを 2 つのエンティティに格納する代わりに、データを非正規化し、部署エンティティにマネージャーの詳細のコピーを保持します。 例:   
 
 ![][17]
 
@@ -1105,9 +1105,9 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 
 <table>
 <tr>
-<th>PartitionKey</th>
-<th>RowKey</th>
-<th>タイムスタンプ</th>
+<th>パーティション キー</th>
+<th>行キー</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -1197,9 +1197,9 @@ Table service とは、*スキーマのない* テーブル ストアを 1 つ�
 
 <table>
 <tr>
-<th>PartitionKey</th>
-<th>RowKey</th>
-<th>タイムスタンプ</th>
+<th>パーティション キー</th>
+<th>行キー</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ea959f1e95ea46c07eec3afa9d46bfeb72ca3e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a17c73393ecbdff693e9b200d1506887e0f1d71e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューションの設計と構築 (プレビュー)
 > [!NOTE]
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="design-your-solution"></a>ソリューションの設計
 管理ソリューションの最も一般的なパターンを次の図に示します。  このパターンのさまざまなコンポーネントについては、以下で説明します。
 
-![OMS ソリューションの概要](media/operations-management-suite-solutions/solution-overview.png)
+![OMS ソリューションの概要](media/operations-management-suite-solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>データ ソース
@@ -80,7 +80,7 @@ Log Analytics のビューは、Log Analytics リポジトリのデータを視�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 管理ソリューションの[ソリューション ファイルの作成](operations-management-suite-solutions-solution-file.md)方法について
 * [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)の詳細について
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。

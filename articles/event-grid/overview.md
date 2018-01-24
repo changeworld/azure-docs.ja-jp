@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 12/14/2017
 ms.author: babanisa
-ms.openlocfilehash: 5b522b40b136e354c6ca83a56ac7ad690151ad7d
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: e6665b3b0c6e92ed462f18dbd41d62ccd9304928
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
@@ -20,9 +20,18 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 フィルターを使用することで、特定のイベントをさまざまなエンドポイントにルーティングしたり、複数のエンドポイントにマルチキャストしたり、イベントを確実に配信したりできます。 Event Grid には、カスタムおよびサード パーティのイベントに対するサポートも組み込まれています。
 
-プレビュー リリースの Event Grid では、**westus2** と **westcentralus** の場所がサポートされます。 他のリージョンも追加される予定です。
+現在、Event Grid では次のリージョンをサポートしています。
 
-この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。
+* 米国中央部
+*   米国東部
+*   米国東部 2
+*   米国中西部
+*   米国西部
+*   米国西部 2
+
+他のリージョンも追加される予定です。
+
+この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 次の図は、Event Grid がパブリッシャーとハンドラーをどのように接続するかを示しています。これは、サポートされているオプションの包括的なリストではありません。
 
 ![Event Grid 機能モデル](./media/overview/event-grid-functional-model.png)
 
@@ -30,11 +39,11 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 現時点で、次の Azure サービスで、イベント グリッドの組み込み発行元がサポートされています。
 
-* リソース グループ (管理操作)
 * Azure サブスクリプション (管理操作)
-* Event Hubs
-* ストレージ BLOB
 * カスタム トピック
+* Event Hubs
+* リソース グループ (管理操作)
+* ストレージ BLOB
 
 今年は、他の Azure サービスが追加される予定です。
 
@@ -42,11 +51,12 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 現時点で、次の Azure サービスで、Event Grid の組み込みハンドラーがサポートされています。 
 
-* Azure Functions
-* Logic Apps
 * Azure Automation
-* WebHook
+* Azure Functions
+* Event Hubs
+* Logic Apps
 * Microsoft Flow
+* WebHook
 
 今年は、他の Azure サービスが追加される予定です。
 
@@ -105,7 +115,7 @@ Azure Event Grid では、イベントごとに課金される価格モデルを
 
 Event Grid のコストは 100万回の処理ごとに 0.60 ドル (プレビュー期間中は 0.30 ドル) で、毎月最初の 100,000 回の処理は無料です。 操作は、イベントの受信、詳細一致、配信試行、管理呼び出しとして定義されています。  詳細については、[価格](https://azure.microsoft.com/pricing/details/event-grid/)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Storage Blob のイベントをルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Event Grid を使用して Storage Blob のイベントに応答します。

@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 4dd24e4dddfedf58f1016511dfad087f91a0dbf8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3ca9157823a52bd0e4e8dd3b2656fc2724c8b4b6
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
 
@@ -210,7 +210,10 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 
 多数の Intune ユーザーは、条件付きアクセスを使用して、信頼済みデバイスのみが Office 365 サービスにアクセスできるようにしています。 これは、モバイル デバイスが Intune に登録されていること、コンプライアンス ポリシーの要件を満たしていること、および Windows PC がオンプレミス ドメインに参加していることを意味します。 重要な機能強化は、Office 365 サービスごとに同じポリシーを設定する必要がないことです。  新しいポリシーを作成するときは、条件付きアクセスによって保護する O365 アプリが含まれるようにクラウド アプリを構成します。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="switching-a-device-from-corporate-owned-to-bring-your-own-device-byod"></a>会社所有のデバイスから Bring Your Own Device (BYOD) デバイスへの切り替え
+デバイスの所有権を企業から個人に変更して登録済みデバイスをブロックする必要がある場合、これを行うには、Azure Active Directory (AAD) の条件付きアクセスを使用します。 最初に、条件付きアクセス ポリシーを作成する必要があります。ここで、アクセス制御の **[許可]** ブレードから **[アクセスのブロック]** を選択します。 次に、**deviceOwnership** プロパティを **Personal** に設定して、**[動的デバイス]** を作成します。 次に、上記のポリシーの対象を新しいグループにします。
+
+## <a name="next-steps"></a>次の手順
 
 - 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
 

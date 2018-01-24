@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 739e820a44194af984750932d6023c90fcd11e42
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: c3ef75a2a157190b24c171309c4d5c39596b5045
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
@@ -44,7 +44,7 @@ Azure Functions を使用して、サーバーレス ソリューションを構
 
 複数の関数と統合する際に Durable Functions も Logic Apps も使用しない場合、ベスト プラクティスとして、関数間通信にストレージ キューを使用するのが一般的です。  その主な理由は、ストレージ キューの方が安価であり、プロビジョニングがはるかに容易なためです。 
 
-ストレージ キュー内では、個々のメッセージのサイズが 64 KB に制限されます。 関数間でこれよりも大きなメッセージを渡す必要がある場合は、Azure Service Bus キューを使用して最大 256 KB のメッセージ サイズをサポートできます。
+ストレージ キュー内では、個々のメッセージのサイズが 64 KB に制限されます。 関数間でこれよりも大きなメッセージを渡す必要がある場合は、Azure Service Bus キューを使用して、Standard レベルで最大 256 KB、Premium レベルで最大 1 MB のメッセージ サイズをサポートできます。
 
 メッセージの処理の前にフィルター処理を必要とする場合は、Service Bus のトピックが役立ちます。
 
@@ -115,7 +115,7 @@ hosts ファイルの設定は、アプリ内のすべての関数 (関数の "*
 
 他のホスト構成オプションについては、[ホスト構成に関するドキュメント](functions-host-json.md)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
 Azure Functions は Azure App Service を使用するため、App Service のガイドラインも認識しておく必要があります。

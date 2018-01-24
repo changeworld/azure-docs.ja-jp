@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: b6bc12c407a32388b7155a815b099b3b285fef18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 081da55bb956db2879d7f2c5c91d25f5c36d5507
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -126,13 +126,13 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
   }
 }
 ```
-| 設定      | Description                            |
+| 設定      | [説明]                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
 | **Values** | ローカルで実行するときに使用されるアプリケーション設定のコレクションです。 **AzureWebJobsStorage** と **AzureWebJobsDashboard** は例です。完全な一覧については、[アプリの設定リファレンス](functions-app-settings.md)に関するページを参照してください。  |
 | **Host** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 | 
 | **LocalHttpPort** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
-| **CORS** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (**\***) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
+| **CORS** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
 | **ConnectionStrings** | 関数のデータベース接続文字列が含まれています。 このオブジェクト内の接続文字列は、**System.Data.SqlClient** のプロバイダーの種類と共に、環境に追加されます。  | 
 
 トリガーとバインディングのほとんどには、環境変数またはアプリ設定の名前にマップされた **Connection** プロパティが含まれています。 各接続プロパティについては、local.settings.json ファイルに定義されたアプリ設定である必要があります。 
@@ -171,7 +171,7 @@ func new
 ``` 
 `func new` では、次の省略可能な引数がサポートされています。
 
-| 引数     | Description                            |
+| 引数     | [説明]                            |
 | ------------ | -------------------------------------- |
 | **`--language -l`** | テンプレート プログラミング言語。C#、F#、JavaScript など。 |
 | **`--template -t`** | テンプレート名。 |
@@ -199,7 +199,7 @@ func host start
 
 `func host start` では、次のオプションがサポートされています。
 
-| オプション     | Description                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
 |**`--port -p`** | ローカル ポート。このポートでリッスンします。 既定値: 7071。 |
 | **`--debug <type>`** | オプションは `VSCode` と `VS` です。 |
@@ -295,7 +295,7 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 
 `func run` では、次のオプションがサポートされています。
 
-| オプション     | Description                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | インライン コンテンツ。 |
 | **`--debug -d`** | 関数を実行する前に、デバッガーを、ホスト プロセスにアタッチします。|
@@ -319,7 +319,7 @@ func azure functionapp publish <FunctionAppName>
 
 以下のオプションを使用できます。
 
-| オプション     | Description                            |
+| オプション     | [説明]                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  local.settings.json の設定を Azure に発行し、設定が既に存在する場合は上書きを促します。|
 | **`--overwrite-settings -y`** | `-i` で使用する必要があります。 値が異なる場合は、Azure の AppSettings をローカル値で上書きします。 既定値は prompt です。|
@@ -337,7 +337,7 @@ az functionapp config appsettings set --name <function_app> \
 --settings FUNCTIONS_EXTENSION_VERSION=beta   
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Functions Core Tools は[オープン ソースであり、GitHub でホストされています](https://github.com/azure/azure-functions-cli)。  
 バグまたは機能要求を提出するには、[GitHub の問題をオープン](https://github.com/azure/azure-functions-cli/issues)してください。 

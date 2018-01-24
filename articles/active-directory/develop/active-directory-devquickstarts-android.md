@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Android の概要 | Microsoft Docs"
-description: "OAuth を使用して、Azure AD と連携してサインインし、Azure AD で保護されている API を呼び出す Android アプリケーションを構築する方法を説明します。"
+description: "サインインと、OAuth 2.0 を使用して Azure AD で保護されている API を呼び出しのために Azure AD と統合する、Android アプリケーションを構築する方法を説明します。"
 services: active-directory
 documentationcenter: android
 author: danieldobalian
@@ -12,22 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 1ea39854766332a87eae4f44f52a4853848d2120
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 619334b3ca65654fd845a62c2fc068156d94d6fc
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-into-an-android-app"></a>Azure AD の Android アプリへの統合
+# <a name="azure-ad-android-getting-started"></a>Azure AD Android の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
-
-> [!TIP]
-> Azure AD をほんの数分で稼働するために役立つ、新しい[開発者ポータル](https://identity.microsoft.com/Docs/Android)のプレビュー版をお試しください。 開発者ポータルでは、アプリを登録して、コードに Azure AD を統合するプロセスを説明してあります。 完了すると、テナント内のユーザーを認証できる単純なアプリケーションと、トークンを受け取って検証を実行できるバックエンドを手に入れることになります。
->
->
 
 デスクトップ アプリケーションを開発する場合、Azure Active Directory (Azure AD) を使用すると、オンプレミスの Active Directory アカウントを使ってユーザーの認証処理を容易に行うことができます。 また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
 
@@ -55,7 +50,7 @@ Active Directory は、2 種類のアプリケーションの追加をサポー�
 
 ここでは、前述の TODO REST API を登録していると仮定します。 ただし、この方法は、Azure Active Directory で保護するあらゆる Web API に対して機能します。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Azure AD テナントを選択します。
 3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
@@ -73,7 +68,7 @@ Active Directory は、2 種類のアプリケーションの追加をサポー�
 > [!NOTE]
 > アプリケーションと Web API の両方を 1 テナントに配置しているのはなぜなのか不思議に思われるかもしれません。 ご想像のとおり、別のテナントから Azure AD に登録されている外部 API にアクセスするアプリを構築することができます。 そのようにすると、お客様に対してアプリケーションでの API の使用に同意が求められることになります。 iOS 向け Active Directory 認証ライブラリはユーザーに代わって同意に対応します。 より高度な機能を知るにつれて、これが、Azure、Office、および他のすべてのサービス プロバイダーから一連の Microsoft API にアクセスするために必要な処理の重要な部分であることがわかるようになります。 この時点では、同じテナントに Web API とアプリケーションの両方を登録しているので、同意のプロンプトは表示されません。 これは、通常、自社のみで使用するアプリケーションを開発している場合に当てはまります。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Azure AD テナントを選択します。
 3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。

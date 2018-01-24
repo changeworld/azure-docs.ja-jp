@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Windows ストアの概要 | Microsoft Docs"
+title: "Azure AD Windows ユニバーサル プラットフォーム (UWP/XAML) の概要 | Microsoft Docs"
 description: "サインインのために Azure AD と統合され、OAuth を用いて Azure AD の保護対象 API を呼び出す Windows ストア アプリを構築します。"
 services: active-directory
 documentationcenter: windows
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-windows-store
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f76324e4415dcc300a0c2e21a89d30301c17ebab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2282a59c9dd5d5d76a5b3e19f602e9d3dcc0b4ef
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-windows-store-apps"></a>Azure AD と Windows ストア アプリの統合
+# <a name="azure-ad-windows-universal-platform-uwpxaml-getting-started"></a>Azure AD Windows ユニバーサル プラットフォーム (UWP/XAML) の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

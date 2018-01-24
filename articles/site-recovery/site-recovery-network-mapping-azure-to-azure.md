@@ -4,7 +4,7 @@ description: "Azure Site Recovery は、仮想マシンと物理サーバーの�
 services: site-recovery
 documentationcenter: 
 author: mayanknayar
-manager: gauravd
+manager: rochakm
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/22/2017
+ms.date: 12/15/2017
 ms.author: manayar
-ms.openlocfilehash: 85baa829020529b628dfaa5578e5d76724834b33
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: bf3d557c77e3cb6ade6f1bb3773c807f9c8b43f6
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>2 つの Azure リージョン間でのネットワーク マッピング
 
@@ -42,7 +42,8 @@ Azure リージョンの Azure 仮想ネットワークを、別のリージョ�
 ![ネットワーク マッピング](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 
 
-同じ操作を行って、東南アジアから東アジアへのネットワーク マッピングを作成します。  
+上記の手順を繰り返して、東南アジアから東アジアへのネットワーク マッピングを作成します。
+
 ![ネットワーク マッピング](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
 
@@ -87,14 +88,14 @@ Azure リージョン間で仮想マシンを初めてレプリケートする�
 
 #### <a name="same-address-space"></a>同じアドレス空間
 
-ソース サブネットとターゲット サブネットのアドレス空間が同じ場合、ターゲット IP は、ソース仮想マシンのネットワーク インターフェイスと同じ IP に設定されます。 同じ IP が使用できない場合は、他の使用できる IP がいくつか、ターゲット IP として設定されます。
+ソース サブネットとターゲット サブネットのアドレス空間が同じ場合、ソース仮想マシンのネットワーク インターフェイスの IP アドレスがターゲット IP アドレスとして設定されます。 同じ IP アドレスが使用できない場合は、次に使用可能な IP アドレスがターゲット IP アドレスとして設定されます。
 
 #### <a name="different-address-space"></a>異なるアドレス空間
 
-ソース サブネットとターゲット サブネットのアドレス空間が異なる場合、ターゲット IP は、ターゲット サブネット内の使用可能な任意の IP として設定されます。
+ソース サブネットとターゲット サブネットのアドレス空間が異なる場合、ターゲット サブネット内の次に使用可能な IP アドレスがターゲット IP アドレスとして設定されます。
 
 各ネットワーク インターフェイスのターゲット IP を変更するには、仮想マシンの [コンピューティングとネットワーク] 設定に移動します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [Azure VM のレプリケートに関するネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)の詳細を確認する。
+[Azure VM のレプリケートに関するネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)の詳細を確認する。

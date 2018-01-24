@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.openlocfilehash: 7347be8520e643cd166851d3f525a9a0726b40c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05775415e210333cf63565e7b5b554d014f6ba23
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 アクション グループには、最大 10 個のアクションの種類を設定できます。 各アクションは次のプロパティで構成されます。
 
 * **名前**: アクション グループ内の一意識別子。  
-* **アクションの種類**: SMS の送信、メールの送信、webhook の呼び出し、または ITSM ツールへのデータの送信。
+* **アクションの種類**: SMS の送信、メールの送信、webhook の呼び出し、ITSM ツールへのデータの送信、Azure アプリの呼び出し、または Automation Runbook の実行。
 * **詳細**: 対応する電話番号、メール アドレス、webhook の URI、または ITSM 接続の詳細。
 
 Azure Resource Manager テンプレートを使用したアクション グループの構成に関する詳細については、「[アクション グループの Resource Manager テンプレート](monitoring-create-action-group-with-resource-manager-template.md)」を参照してください。
@@ -38,7 +38,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 1. [ポータル](https://portal.azure.com)で、**[モニター]** を選択します。 **[モニター]** ブレードでは、すべての監視設定とデータが 1 つのビューにまとめられています。
 
     ![[モニター] サービス](./media/monitoring-action-groups/home-monitor.png)
-2. **[アクティビティ ログ]** セクションで、**[アクション グループ]** を選択します。
+2. **[設定]** セクションで **[アクション グループ]** を選択します。
 
     ![[アクション グループ] タブ](./media/monitoring-action-groups/action-groups-blade.png)
 3. **[アクション グループの追加]** を選択し、フィールドに入力します。
@@ -54,16 +54,14 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 7. 次に、各アクションを指定して、アクションの一覧を定義します。
 
-    a. **[名前]**: このアクションの一意識別子を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[名前]**: このアクションの一意識別子を入力します。
 
-    b. **[アクションの種類]**: SMS、メール、webhook、または ITSM を選びます。
+    b. **[アクションの種類]**: SMS、メール、webhook、Azure アプリ、ITSM、または Automation Runbook を選択します。
 
-    c. **[詳細]**: アクションの種類に基づいて、電話番号、メール アドレス、webhook の URI、または ITSM 接続の詳細を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。 
+    c. **[詳細]**: アクションの種類に基づいて、電話番号、メール アドレス、webhook の URI、Azure アプリ、ITSM 接続、Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。 
 
-> [!NOTE]
-> ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../log-analytics/log-analytics-itsmc-overview.md)の作成方法を確認してください。 現在、ITSM アクションはアクティビティ ログ アラートに対してのみ機能します。 他のアラートの種類では動作しません。
->
->
+   > [!NOTE]
+   > ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../log-analytics/log-analytics-itsmc-overview.md)の作成方法を確認してください。 現在、ITSM アクションはアクティビティ ログ アラートに対してのみ機能します。 他のアラートの種類では動作しません。
 
 8. **[OK]** を選択して、アクション グループを作成します。
 
@@ -73,7 +71,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 * アクションの追加、編集、または削除。
 * アクション グループの削除。
 
-## <a name="next-steps"></a>次のステップ ##
+## <a name="next-steps"></a>次の手順 ##
 * 詳細については、「[SMS アラート動作](monitoring-sms-alert-behavior.md)」を参照してください。  
 * [アクティビティ ログ アラートに対する webhook スキーマについて理解](monitoring-activity-log-alerts-webhook.md)します。  
 * [ITSM コネクタ](../log-analytics/log-analytics-itsmc-overview.md)について学習します。

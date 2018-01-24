@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a49b4c2d4ddd6d686675cee53d46cd4dd6ad3811
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 0e7f4308290a14e592cf1739fa5b0b3360d7c68b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Azure CLI を使用した Azure 仮想ネットワークと Linux 仮想マシンの管理
 
@@ -33,17 +33,17 @@ Azure 仮想マシンでは、内部と外部のネットワーク通信に Azur
 > * ネットワーク トラフィックのセキュリティ保護
 > * バックエンド VM の作成
 
-このチュートリアルを実行すると、次のようなリソースが作成されます。
+このチュートリアルを実行していく中で、次のようなリソースが作成されます。
 
 ![2 つのサブネットのある仮想ネットワーク](./media/tutorial-virtual-network/networktutorial.png)
 
-- *myVNet* - 各 VM が相互間、またインターネットと通信するために使用する仮想ネットワーク。
-- *myFrontendSubnet* - フロントエンド リソースが使用する、*myVNet* 内のサブネット。
+- *myVNet* - VM 間、およびインターネットと通信するために VM によって使用される仮想ネットワーク。
+- *myFrontendSubnet* - フロントエンド リソースによって使用される、*myVNet* 内のサブネット。
 - *myPublicIPAddress* - インターネットから *myFrontendVM* にアクセスするために使用するパブリック IP アドレス。
 - *myFrontentNic* - *myFrontendVM* が *myBackendVM* と通信するために使用するネットワーク インターフェイス。
 - *myFrontendVM* -インターネットと *myBackendVM* との間の通信に使用する VM。
 - *myBackendNSG* - *myFrontendVM* と *myBackendVM* 間の通信を制御するネットワーク セキュリティ グループ。
-- *myBackendSubnet* - *myBackendNSG* に関連付けられ、バックエンド リソースが使用するサブネット。
+- *myBackendSubnet* - *myBackendNSG* に関連付けられ、バックエンド リソースによって使用されるサブネット。
 - *myBackendNic* - *myBackendVM* が *myFrontendVM* と通信するために使用するネットワーク インターフェイス。
 - *myBackendVM* - ポート 22 とポート 3306 を使用して *myFrontendVM* と通信する VM。
 
@@ -58,7 +58,7 @@ Azure 仮想ネットワークを使用すると、仮想マシン、インタ�
 
 ## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
 
-このチュートリアルでは、2 つのサブネットから成る単一の仮想ネットワークを作成します。 Web アプリケーションのホストとなるフロントエンド サブネットと、データベース サーバーのホストとなるバックエンド サブネットです。
+このチュートリアルでは、2 つのサブネットと共に単一の仮想ネットワークが作成されます。 Web アプリケーションのホストとなるフロントエンド サブネットと、データベース サーバーのホストとなるバックエンド サブネットです。
 
 仮想ネットワークを作成する前に、[az group create](/cli/azure/group#create) でリソース グループを作成します。 次の例では、*myRGNetwork* という名前のリソース グループを場所 eastus に作成します。
 
@@ -157,6 +157,8 @@ NSG ルールは、トラフィックが許可または拒否されるネット�
 
 すべての NSG に既定のルール一式が含まれています。 既定のルールは削除できませんが、これには最も低い優先順位が割り当てられているため、ルールを作成することで上書きできます。
 
+NSG の既定ルールは以下のとおりです。
+
 - **仮想ネットワーク** - 仮想ネットワーク内で発信および着信するトラフィックについては、受信方向と送信方向の両方で許可されます。
 - **インターネット** - 送信トラフィックは許可されますが、受信トラフィックはブロックされます。
 - **ロード バランサー** - Azure のロード バランサーによる VM とロール インスタンスの正常性プローブが許可されます。 負荷分散セットを使用していない場合は、このルールを上書きできます。
@@ -185,9 +187,9 @@ az network vnet subnet update \
   --network-security-group myBackendNSG
 ```
 
-### <a name="secure-incoming-traffic"></a>着信トラフィックの保護
+### <a name="secure-incoming-traffic"></a>受信トラフィックの保護
 
-フロントエンド VM を作成したときに、ポート 22 に対する着信トラフィックを許可する NSG ルールを作成しました。 このルールによって、VM に対する SSH 接続が許可されます。 この例では、ポート *80* に対するトラフィックも許可する必要があります。 次の構成によって、VM 上の Web アプリケーションへのアクセスが許可されます。
+フロントエンド VM を作成したときに、ポート 22 に対する受信トラフィックを許可する NSG ルールを作成しました。 このルールによって、VM に対する SSH 接続が許可されます。 この例では、ポート *80* に対するトラフィックも許可する必要があります。 次の構成によって、VM 上の Web アプリケーションへのアクセスが許可されます。
 
 [az network nsg rule create](/cli/azure/network/nsg/rule#create) コマンドを使用して、ポート *80* に対するルールを作成します。
 
@@ -206,7 +208,7 @@ az network nsg rule create \
   --destination-port-range 80
 ```
 
-このフロントエンド VM には、ポート *22* とポート *80* でのみアクセスできます。 その他すべての着信トラフィックは、このネットワーク セキュリティ グループでブロックされます。 NSG ルールの構成を視覚化すると役に立つ場合があります。 [az network rule list](/cli/azure/network/nsg/rule#list) コマンドを実行すると、NSG ルールの構成が返されます。 
+このフロントエンド VM には、ポート *22* とポート *80* でのみアクセスできます。 その他すべての受信トラフィックは、このネットワーク セキュリティ グループでブロックされます。 NSG ルールの構成を視覚化すると役に立つ場合があります。 [az network rule list](/cli/azure/network/nsg/rule#list) コマンドを実行すると、NSG ルールの構成が返されます。 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myFrontendNSG --output table
@@ -283,7 +285,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-このバックエンド VM には、フロントエンド サブネットからポート *22* とポート *3306* でのみアクセスできます。 その他すべての着信トラフィックは、このネットワーク セキュリティ グループでブロックされます。 NSG ルールの構成を視覚化すると役に立つ場合があります。 [az network rule list](/cli/azure/network/nsg/rule#list) コマンドを実行すると、NSG ルールの構成が返されます。 
+このバックエンド VM には、フロントエンド サブネットからポート *22* とポート *3306* でのみアクセスできます。 その他すべての受信トラフィックは、このネットワーク セキュリティ グループでブロックされます。 NSG ルールの構成を視覚化すると役に立つ場合があります。 [az network rule list](/cli/azure/network/nsg/rule#list) コマンドを実行すると、NSG ルールの構成が返されます。 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table

@@ -3,7 +3,7 @@ title: "webhook を使用した Azure Automation の Runbook の開始 | Microso
 description: "HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。  この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。"
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
-ms.openlocfilehash: d384a1f6e0f6bf49cf94020265fe5675ffc0029d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03d1617eb64c48b6a90925ae76e1ab3ce0312ff1
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 *Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure Automation API を使用した完全なソリューションを実装しなくても、Visual Studio Team Services、GitHub、Microsoft Operations Management Suite Log Analytics などの外部サービスやカスタム アプリケーションで Runbook を開始できます。  
@@ -29,14 +29,14 @@ ms.lasthandoff: 10/11/2017
 ## <a name="details-of-a-webhook"></a>Webhook の詳細
 次のテーブルは、Webhook 用に構成する必要があるプロパティについて説明しています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 名前 |Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。  これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。 <br>  ベスト プラクティスとして、Webhook を使用するクライアントに関連した名前を Webhook に付ける必要があります。 |
+| Name |Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。  これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。 <br>  ベスト プラクティスとして、Webhook を使用するクライアントに関連した名前を Webhook に付ける必要があります。 |
 | URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。  これは、Webhook を作成するときに自動的に生成されます。  カスタム URL を指定することはできません。 <br> <br>  この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。 その理由で、これはパスワードと同じように扱う必要があります。  セキュリティ上の理由から、Webhook の作成時に Azure ポータルで表示できるのは URL だけです。 将来の使用に備えて、URL を安全な場所にメモしてください。 |
 | 有効期限 |証明書のように、各 Webhook には有効期限があり、それ以降は使用できなくなります。  この有効期限は、webhook の作成後に変更できます。 |
 | 有効 |既定では、Webhook は作成時に有効になります。  Disabled に設定した場合、クライアントはそれを使用できなくなります。  **Enabled** プロパティは、Webhook の作成時、または作成後はいつでも設定できます。 |
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 Webhook は、Runbook がその Webhook によって開始されたときに使用される Runbook のパラメーターの値を定義できます。 Webhook には、Runbook の任意の必須パラメーターの値を含める必要があり、省略可能なパラメーターの値を含めることもできます。 Webhook に対して構成されているパラメーター値は、Webhook の作成後であっても変更できます。 1 つの Runbook にリンクされている複数の Webhook は、それぞれ異なるパラメーター値を使用することができます。
 
 Webhook を使用して Runbook を開始した場合、クライアントは Webhook で定義されているパラメーターの値を上書きできません。  クライアントからのデータを受け取るために、Runbook は、[object] 型の **$WebhookData** という 1 つのパラメーターを取ることができます。クライアントが POST 要求に含めたデータは、このパラメーターに入れられます。
@@ -45,7 +45,7 @@ Webhook を使用して Runbook を開始した場合、クライアントは We
 
 **$WebhookData** オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | WebhookName |Webhook の名前。 |
 | RequestHeader |受信 POST 要求のヘッダーを含むハッシュ テーブル。 |
@@ -85,10 +85,10 @@ Runbook 内にロジックを含め、$WebhookData パラメーターの **Webho
 ## <a name="creating-a-webhook"></a>Webhook の作成
 次の手順を使用して、Runbook にリンクされた新しい Webhook を Azure ポータルに作成します。
 
-1. Azure ポータルの **[Runbook] ブレード** から、Webhook がその詳細ブレードの表示を開始する Runbook をクリックします。
-2. ブレードの上部にある **Webhook** をクリックして、**[Webhook の追加]** ブレードを開きます。 <br>
+1. Azure Portal の **[Runbook] ページ** から、Webhook がその詳細ページの表示を開始する Runbook をクリックします。
+2. ページの上部にある **Webhook** をクリックして、**[Webhook の追加]** ページを開きます。 <br>
    ![Webhook ボタン](media/automation-webhooks/webhooks-button.png)
-3. **[新しい Webhook の作成]** をクリックして、**[Webhook ブレードの作成]** を開きます。
+3. **[新しい Webhook の作成]** をクリックして、**[webhook の作成] ページ**を開きます。
 4. Webhook の**名前**、**有効期限**、およびそれを有効にする必要があるかどうかを指定します。 これらのプロパティの詳細については、「 [Webhook の詳細](#details-of-a-webhook) 」を参照してください。
 5. コピー アイコンをクリックし、Ctrl + C キーを押して Webhook の URL をコピーします。  次に、それを安全な場所に記録します。  **Webhook を作成したら、再度 URL を取得することはできません。** <br>
    ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
@@ -102,7 +102,7 @@ Webhook を作成後に使用する場合、クライアント アプリケー�
 
 クライアントは、POST 要求から次のリターン コードのいずれかを受け取ります。  
 
-| コード | テキスト | 説明 |
+| コード | テキスト | [説明] |
 |:--- |:--- |:--- |
 | 202 |承認済み |要求が承認され、Runbook が正常にキューに入れられました。 |
 | 400 |正しくない要求 |次のいずれかの理由で要求が受け入れられませんでした。 <ul> <li>webhook の有効期限が切れている。</li> <li>webhook が無効になっている。</li> <li>URL 内のトークンが無効になっている。</li>  </ul> |
@@ -262,7 +262,7 @@ Azure アラートを通知システムとして使用するだけでなく、�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Runbook を開始するさまざまな方法の詳細については、[Runbook の開始](automation-starting-a-runbook.md)に関する記事をご覧ください。
 * Runbook ジョブの状態の表示については、「[Azure Automation での Runbook の実行](automation-runbook-execution.md)」をご覧ください。
 * Azure Automation を使用して Azure アラートに対処する方法については、[Automation Runbook での Azure VM アラートの修復](automation-azure-vm-alert-integration.md)に関する記事をご覧ください。

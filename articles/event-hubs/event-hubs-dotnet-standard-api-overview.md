@@ -12,25 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: eea682c40cd415b383a8b2f0004a5f3648e2f01f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 855f6e7f401621d7f923d68215ca880c05d38629
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API の概要
+
 この記事は主要な Event Hubs .NET Standard クライアント API についてまとめてあります。 現在 2 つの .NET Standard クライアント ライブラリがあります。
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
-  *  このライブラリは、基本的なランタイム操作がすべて用意されています。
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
-  * このライブラリは、処理済みイベントを追跡するための機能を追加します。これにより、最も簡単に Event Hub から読み取ることができます。
+
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): 基本的なランタイム操作がすべて用意されています。
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): 処理済みイベントを追跡するための機能を追加します。これにより、最も簡単に Event Hub から読み取ることができます。
 
 ## <a name="event-hubs-client"></a>Event Hubs クライアント
+
 [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) は、イベントの送信、受信側の作成、ランタイム情報の取得に使用する主要オブジェクトです。 このクライアントは、特定の Event Hub にリンクされ、Event Hubs エンドポイントへの新しい接続を作成します。
 
 ### <a name="create-an-event-hubs-client"></a>Event Hub クライアントの作成
+
 [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) オブジェクトは接続文字列から作成されます。 新しいクライアントを最も簡単にインスタンス化する方法を次の例に示します。
 
 ```csharp
@@ -49,6 +51,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 ```
 
 ### <a name="send-events"></a>送信イベント
+
 Event Hub にイベントを送信するには、[EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata) クラスを使用します。 本文は `byte` 配列または `byte` 配列セグメントにする必要があります。
 
 ```csharp
@@ -61,17 +64,19 @@ await eventHubClient.SendAsync(data);
 ```
 
 ### <a name="receive-events"></a>受信イベント
-Event Hubs からイベントを受信する場合は、[イベント プロセッサ ホスト](#event-processor-host-apis)を使用することをお勧めします。これにより、オフセットとパーティション情報を自動的に追跡する機能を利用できます。 ただし、主要 Event Hubs ライブラリを使用して、柔軟にイベントを受信することもできます。
+
+Event Hubs からイベントを受信する場合は、[イベント プロセッサ ホスト](#event-processor-host-apis)を使用することをお勧めします。これにより、イベント ハブのオフセットとパーティション情報を自動的に追跡する機能を利用できます。 ただし、主要 Event Hubs ライブラリを使用して、柔軟にイベントを受信することもできます。
 
 #### <a name="create-a-receiver"></a>受信側の作成
-受信側は特定のパーティションに関連付けられています。したがって、Event Hub のすべてのイベントを受信するには、複数のインスタンスを作成する必要があります。 一般に、パーティション情報は、パーティション ID をハード コーディングするのではなく、プログラムによって取得することをお勧めします。 それには、[GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) メソッドを使用します。
+
+受信側は特定のパーティションに関連付けられています。したがって、Event Hub のすべてのイベントを受信するには、複数のインスタンスを作成する必要があります。 パーティション情報は、パーティション ID をハード コーディングするのではなく、プログラムによって取得することをお勧めします。 それには、[GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync) メソッドを使用します。
 
 ```csharp
 // Create a list to keep track of the receivers
 var receivers = new List<PartitionReceiver>();
 // Use the eventHubClient created above to get the runtime information
 var runTimeInformation = await eventHubClient.GetRuntimeInformationAsync();
-// Loop over the resulting partition ids
+// Loop over the resulting partition IDs
 foreach (var partitionId in runTimeInformation.PartitionIds)
 {
     // Create the receiver
@@ -97,6 +102,7 @@ var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGr
 ```
 
 #### <a name="consume-an-event"></a>イベントの使用
+
 ```csharp
 // Receive a maximum of 100 messages in this call to ReceiveAsync
 var ehEvents = await receiver.ReceiveAsync(100);
@@ -116,6 +122,7 @@ if (ehEvents != null)
 ```
 
 ## <a name="event-processor-host-apis"></a>イベント プロセッサ ホスト API
+
 この API は、利用可能な worker にパーティションを分散することによって、利用不可になる可能性がある worker プロセスに回復性を与えます。
 
 ```csharp
@@ -137,7 +144,7 @@ var eventProcessorHost = new EventProcessorHost(
 // Start/register an EventProcessorHost
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
-// Disposes of the Event Processor Host
+// Disposes the Event Processor Host
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 
@@ -177,7 +184,7 @@ public class SimpleEventProcessor : IEventProcessor
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs シナリオに関する詳細については、次のリンク先を参照してください。
 
 * [Azure Event Hubs とは](event-hubs-what-is-event-hubs.md)

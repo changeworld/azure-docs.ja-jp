@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/08/2017
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5464eea75c89a95e6bf74b3f24fe92f3652f5db9
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 3db1ead1f1a8b83cc47f53b915ed54bb78db7ab3
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)
 
@@ -107,7 +107,7 @@ Azure Site Recovery には、Site Recovery の管理操作を制御するため�
 
 [Azure RBAC の組み込みのロール](../active-directory/role-based-access-built-in-roles.md)について説明します。
 
-## <a name="enable-replication"></a>Enable replication
+## <a name="enable-replication"></a>レプリケーションを有効にする
 
 ### <a name="select-the-source"></a>ソースを選択する
 
@@ -123,16 +123,16 @@ Azure Site Recovery には、Site Recovery の管理操作を制御するため�
 Site Recovery は、サブスクリプションとリソース グループ/クラウド サービスに関連付けられている VM の一覧を取得します。
 
 1. **[仮想マシン]** で、レプリケートする VM を選択します。
-2. **[OK]**をクリックします。
+2. Click **OK**.
 
 ### <a name="configure-replication-settings"></a>レプリケーションの設定を構成する
 
 Site Recovery では、ターゲット リージョンの既定の設定とレプリケーション ポリシーが作成されます。 設定は、要件に基づいて変更できます。
 
-1. **[設定]** をクリックしてターゲット設定を表示します。
-2. 既定のターゲット設定を上書きするには、**[カスタマイズ]** をクリックします。 
+1. **[設定]** をクリックしてターゲットおよびレプリケーションの設定を表示します。
+2. 既定のターゲット設定を上書きするには、**[リソース グループ、ネットワーク、ストレージ、可用性セット]** の横にある **[カスタマイズ]** をクリックします。
 
-![設定を構成する](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+  ![設定を構成する](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
 - **ターゲットの場所**: ディザスター リカバリーに使用するターゲット リージョン。 ターゲットの場所が Site Recovery コンテナーの場所と一致していることをお勧めします。
@@ -148,11 +148,23 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
 
 - **ターゲットの可用性セット:** 既定では、Site Recovery は "asr" サフィックスを付けて、新しい可用性セットをターゲット リージョンに作成します。 VM がソース リージョンにあるセットの一部である場合、可用性セットのみを追加できます。
 
+既定のレプリケーション ポリシー設定を上書きするには、**[レプリケーション ポリシー]** の横にある **[カスタマイズ]** をクリックします。  
+
 - **レプリケーション ポリシー名** : ポリシーの名前。
 
 - **復旧ポイントのリテンション期間**: 既定では、Site Recovery は 24 時間の復旧ポイントを保持します。 1 ～ 72 時間の値を構成できます。
 
 - **アプリ整合性スナップショットの頻度**: 既定では、Site Recovery はアプリ整合性スナップショットを 4 時間ごとに取得します。 1 ～ 12 時間の任意の値を構成できます。 アプリ整合性スナップショットは、VM 内のアプリケーション データのポイントインタイム スナップショットです。 ボリューム シャドウ コピー サービス (VSS) によって、スナップショットの作成時、VM 上のアプリの整合性が維持されます。
+
+- **レプリケーション グループ**: VM 間のマルチ VM 整合性がアプリケーションで必要な場合は、それらの VM のレプリケーション グループを作成できます。 既定では、選択された VM は、どのレプリケーション グループにも属していません。
+
+  **[レプリケーション ポリシー]** の横にある **[カスタマイズ]** をクリックし、マルチ VM 整合性について **[はい]** を選択して、複数の VM をレプリケーション グループに含めます。 新しいレプリケーション グループを作成することも、既存のレプリケーション グループを使用することもできます。 レプリケーション グループに含める VM を選択して **[OK]** をクリックします。
+
+> [!IMPORTANT]
+  レプリケーション グループのすべてのマシンが、フェールオーバー時に共有のクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを持ちます。 マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響を及ぼす可能性があるので、複数のマシンが同じワークロードを実行しており、複数のマシン間の整合性が必要な場合にのみ使用します。
+
+> [!IMPORTANT]
+  マルチ VM 整合性を有効にすると、レプリケーション グループ内のマシンは、ポート 20004 を介して相互に通信します。 ポート 20004 経由での VM 間の内部通信をブロックするファイアウォール アプライアンスがないことを確認します。 Linux VM をレプリケーション グループに含めるには、ポート 20004 の送信トラフィックが、特定の Linux バージョンのガイダンスに従って手動で開かれていることを確認します。
 
 ### <a name="track-replication-status"></a>レプリケーションの状態を追跡する
 
@@ -162,9 +174,9 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
 
 3. **[設定]** > **[レプリケートされたアイテム]** では、VM の状態と初期レプリケーションの進行状況を確認できます。 VM の設定をドリルダウンするには、その VM をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure VM のディザスター リカバリーを構成しました。 次の手順では、構成をテストします。
 
 > [!div class="nextstepaction"]
-> [ディザスター リカバリー訓練を実行する](azure-to-azure-tutorial-dr-drill.md)
+> [ディザスター リカバリーのテストを実行する](azure-to-azure-tutorial-dr-drill.md)

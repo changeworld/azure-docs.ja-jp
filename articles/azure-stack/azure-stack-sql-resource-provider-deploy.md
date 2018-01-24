@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 01/09/2018
 ms.author: JeffGo
-ms.openlocfilehash: 80b693420768d574b2371211298562ba35e7ed97
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e2f29a1686d0f4baa88b9d37bac0261952f4caa6
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 
@@ -45,7 +45,7 @@ SQL Server リソースプロバイダー アダプターを使用して、SQL �
 
 2. 特権エンドポイント VM にアクセスできるホストにサインインします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 Azure Stack Development Kit (ASDK) のインストールで、物理ホストにサインインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Stack Development Kit (ASDK) のインストールで、物理ホストにサインインします。
 
     b. マルチノードのシステムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。 
     
@@ -60,10 +60,10 @@ SQL Server リソースプロバイダー アダプターを使用して、SQL �
 
     | Azure Stack ビルド | SQL RP インストーラー |
     | --- | --- |
-    | 1.0.171122.1 | [SQL RP バージョン 1.1.12.0](https://aka.ms/azurestacksqlrp) |
+    |1.0.180102.3 または 1.0.180106.1 (マルチノード) | [SQL RP バージョン 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
+    | 1.0.171122.1 | [SQL RP バージョン 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
     | 1.0.171028.1 | [SQL RP バージョン 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
-    | 1.0.170928.3 | [SQL RP バージョン 1.1.3.0](https://aka.ms/azurestacksqlrp1709) |
-   
+  
 
 4. Azure Stack のルート証明書は、特権エンドポイントから取得されます。 ASDK には、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 

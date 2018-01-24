@@ -4,7 +4,7 @@ description: "Azure CLI 2.0 を使用して Linux 仮想マシンに MongoDB を
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/23/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: e19c09558285497f29eb78b4f4ae5b15d7f1a191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a9797e1fe3d03840e3a20589a50c90968ea5de0
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM に MongoDB をインストールして構成する方法
 [MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure CLI 2.0 を使用して Linux VM に MongoDB をインストールして構成する方法を説明します。 これらの手順は、[Azure CLI 1.0](install-mongodb-nodejs.md) を使用して実行することもできます。 次の方法が詳しくわかる例を示します。
@@ -57,18 +57,18 @@ ssh azureuser@<publicIpAddress>
 MongoDB のインストール ソースを追加するには、次のように **yum** リポジトリ ファイルを作成します。
 
 ```bash
-sudo touch /etc/yum.repos.d/mongodb-org-3.4.repo
+sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-編集のために MongoDB リポジトリ ファイルを開きます。 次の行を追加します。
+`vi` や `nano` などを使用して、編集のために MongoDB リポジトリ ファイルを開きます。 次の行を追加します。
 
 ```sh
-[mongodb-org-3.4]
+[mongodb-org-3.6]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 ```
 
 次のように **yum** を使って MongoDB をインストールします。
@@ -125,26 +125,17 @@ GitHub にある次の Azure クイックスタート テンプレートを使�
 az group create --name myResourceGroup --location eastus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment#create) を実行して MongoDB テンプレートをデプロイします。 *newStorageAccountName*、*virtualNetworkName*、*vmSize* など、必要な箇所で独自のリソース名とサイズを定義します。
+次に、[az group deployment create](/cli/azure/group/deployment#create) を実行して MongoDB テンプレートをデプロイします。 メッセージが表示されたら、*newStorageAccountName*、*dnsNameForPublicIP*、管理者ユーザーとパスワードに独自の一意の値を入力します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"},
-    "virtualNetworkName": {"value": "myVnet"},
-    "vmSize": {"value": "Standard_DS2_v2"},
-    "vmName": {"value": "myVM"},
-    "publicIPAddressName": {"value": "myPublicIP"},
-    "nicName": {"value": "myNic"}}' \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
 VM のパブリック DNS アドレスを使用して VM にログオンします。 パブリック DNS アドレスを確認するには、[az vm show](/cli/azure/vm#show) を実行します。
 
 ```azurecli
-az vm show -g myResourceGroup -n myVM -d --query [fqdns] -o tsv
+az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
 ```
 
 独自のユーザー名とパブリック DNS アドレスを使用して、VM に SSH でアクセスします。
@@ -217,7 +208,7 @@ az group deployment show \
     --output tsv
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事の例では、VM からローカルに MongoDB インスタンスに接続しました。 別の VM またはネットワークから MongoDB インスタンスに接続する場合は、適切な[ネットワーク セキュリティ グループ規則を作成する](nsg-quickstart.md)必要があります。
 
 これらの例では、開発用のコア MongoDB 環境をデプロイします。 環境に必要なセキュリティ構成オプションを適用します。 詳細については、[MongoDB のセキュリティ ドキュメント](https://docs.mongodb.com/manual/security/)を参照してください。

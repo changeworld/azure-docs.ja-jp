@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: 4355e7a8c220dea03df5eda54ed4e94d6ebc5c94
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 23b05909bda7785b45aeaeed0bd75a90de9ffe50
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack での更新プログラムの管理概要
 
 *適用対象: Azure Stack 統合システム*
 
-Microsoft では、Azure Stack 統合システムの更新プログラム パッケージを一般公開の時点から定期的 (通常、毎月第 4 火曜日) にリリースします。 組織に更新通知が必ず届くようにするには、具体的な通知プロセスについて OEM に質問するか、このページから、[概念]、[リリース ノート]、[統合システムのリリース ノート] の順に移動して、個別のリリースの詳細を確認してください。
+Microsoft では、Azure Stack 統合システムの更新プログラム パッケージを一般公開の時点から定期的 (通常、毎月第 4 火曜日) にリリースします。 組織に更新通知が必ず届くようにするには、具体的な通知プロセスについて OEM に質問するか、このページから、[概要]、[リリース ノート]、[統合システムのリリース ノート] の順に移動して、個別のリリースの詳細を確認してください。
 
 Microsoft ソフトウェア更新プログラムの各リリースは、1 つの更新プログラム パッケージとしてバンドルされます。 Azure Stack のオペレーターは、これらの更新プログラム パッケージのインポート、インストール、そのインストール状況の監視を、管理者ポータルから簡単に行うことができます。 
 
@@ -62,7 +62,7 @@ Azure Stack には、Microsoft ソフトウェア更新プログラムの適用�
  
 - **[リージョンの管理]** タイルで、リージョン名をクリックします。 **[更新]** タイルで現在のバージョンを表示します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Stack サービス ポリシー](azure-stack-servicing-policy.md) 
 - [Azure Stack でのリージョンの管理](azure-stack-region-management.md)     

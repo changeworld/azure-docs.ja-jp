@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: jgao
-ms.openlocfilehash: 4b2ca9dd60187904d9d22e8308e31ed46b1213e6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 39f99bef252e93db55e0493ee284ef78b7d087a1
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Zeppelin を使用して Azure HDInsight で Hive クエリを実行する 
 
@@ -73,10 +73,11 @@ HDInsight 対話型クエリ クラスターには、Zeppelin ノートブック
     従来の Hive と比較すると、クエリ結果が返されるまでの時間が短くなりました。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Power BI を使用して HDInsight からデータを視覚化する方法について学習しました。  詳細については、次の記事を参照してください。
 
 * [Azure HDInsight の Microsoft Power BI で Hive データを視覚化する](hadoop/apache-hadoop-connect-hive-power-bi.md)。
+* [Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 * [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。
 * [Power Query を使用して Excel を Hadoop に接続する](hadoop/apache-hadoop-connect-excel-power-query.md)。
 * [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](hadoop/apache-hadoop-visual-studio-tools-get-started.md)。

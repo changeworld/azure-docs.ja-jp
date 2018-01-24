@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 01/03/2018
 ms.author: dobett
-ms.openlocfilehash: cec5d9c2e81e6311514536f7605777d48d1f1c46
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7cfa6dd93c6db7477e03ff966b2ac8af15de3614
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>Raspberry Pi デバイスをリモート監視構成済みソリューションに接続する (C)
 
@@ -47,9 +47,11 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 
 ### <a name="required-raspberry-pi-software"></a>必要な Raspberry Pi ソフトウェア
 
+この記事では、ユーザーが最新バージョンの [Raspbian OS を Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/) にインストール済みであることを前提としています。
+
 次の手順では、構成済みのソリューションに接続するための C アプリケーションを構築するため、Raspberry Pi を準備する方法を示しています。
 
-1. `ssh` を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/)の [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) のセクションを参照してください。
+1. **ssh** を使用して Raspberry Pi に接続します。 詳細については、[Raspberry Pi の Web サイト](https://www.raspberrypi.org/)の [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md) のセクションを参照してください。
 
 1. 次のコマンドを使用して Raspberry Pi を更新します。
 
@@ -60,31 +62,27 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
 1. Raspberry Pi に、必要な開発ツールとライブラリを追加するには、次のコマンドを使用します。
 
     ```sh
-    sudo apt-get install g++ make cmake gcc git
+    sudo apt-get purge libssl-dev
+    sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
     ```
 
-1. IoT Hub クライアント ライブラリをインストールするには、次のコマンドを使用します。
-
-    ```sh
-    grep -q -F 'deb http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' /etc/apt/sources.list || sudo sh -c "echo 'deb http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' >> /etc/apt/sources.list"
-    grep -q -F 'deb-src http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' /etc/apt/sources.list || sudo sh -c "echo 'deb-src http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' >> /etc/apt/sources.list"
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA6A393E4C2257F
-    sudo apt-get update
-    sudo apt-get install -y azure-iot-sdk-c-dev cmake libcurl4-openssl-dev git-core
-    ```
-
-1. 次のコマンドを使用して、Raspberry Pi に Parson JSON パーサーを複製します。
+1. Raspberry Pi に IoT Hub クライアント ライブラリをダウンロード、ビルド、インストールするには、次のコマンドを使用します。
 
     ```sh
     cd ~
-    git clone https://github.com/kgabis/parson.git
+    git clone --recursive https://github.com/azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c/build_all/linux
+    ./build.sh --no-make
+    cd ../../cmake/iotsdk_linux
+    make
+    sudo make install
     ```
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
-Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します。
+Raspberry Pi への **ssh** 接続を使用して、次の手順を実行します。
 
-1. `remote_monitoring` という名前のフォルダーを Raspberry Pi のホーム フォルダーで作成します。 コマンド ラインでこのフォルダーに移動します。
+1. `remote_monitoring` という名前のフォルダーを Raspberry Pi のホーム フォルダーで作成します。 シェル内でこのフォルダーに移動します。
 
     ```sh
     cd ~
@@ -92,13 +90,9 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
     cd remote_monitoring
     ```
 
-1. `remote_monitoring` フォルダーで `main.c`、`remote_monitoring.c`、`remote_monitoring.h`、および `CMakeLists.txt` の 4 つのファイルを作成します。
+1. `remote_monitoring` フォルダーに、**main.c**、**remote_monitoring.c**、**remote_monitoring.h**、**CMakeLists.txt** の 4 ファイルを作成します。
 
-1. `remote_monitoring` フォルダーで `parson` という名前のフォルダーを作成します。
-
-1. `parson.c` とおよび `parson.h` ファイルを Parson リポジトリのローカル コピーから、`remote_monitoring/parson` フォルダーにコピーします。
-
-1. テキスト エディターで、`remote_monitoring.c` ファイルを開きます。 Raspberry Pi では、`nano` または `vi` テキスト エディターを使用できます。 次の `#include` ステートメントを追加します。
+1. テキスト エディターで、**remote_monitoring.c** ファイルを開きます。 Raspberry Pi では、**nano** または **vi** テキスト エディターを使用できます。 次の `#include` ステートメントを追加します。
 
     ```c
     #include "iothubtransportmqtt.h"
@@ -113,15 +107,19 @@ Raspberry Pi への `ssh` 接続を使用して、次の手順を実行します
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
+**remote_monitoring.c** ファイルを保存し、エディターを終了します。
+
 ## <a name="add-code-to-run-the-app"></a>アプリを実行するコードを追加する
 
-テキスト エディターで、`remote_monitoring.h` ファイルを開きます。 次のコードを追加します。
+テキスト エディターで、**remote_monitoring.h** ファイルを開きます。 次のコードを追加します。
 
 ```c
 void remote_monitoring_run(void);
 ```
 
-テキスト エディターで、`main.c` ファイルを開きます。 次のコードを追加します。
+**remote_monitoring.h** ファイルを保存し、エディターを終了します。
+
+テキスト エディターで、 **main.c** ファイルを開きます。 次のコードを追加します。
 
 ```c
 #include "remote_monitoring.h"
@@ -133,6 +131,8 @@ int main(void)
   return 0;
 }
 ```
+
+**main.c** ファイルを保存し、エディターを終了します。
 
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
@@ -158,18 +158,16 @@ int main(void)
     cmake_minimum_required(VERSION 2.8.11)
     compileAsC99()
 
-    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "${CMAKE_SOURCE_DIR}/parson" "/usr/include/azureiot" "/usr/include/azureiot/inc")
+    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "/usr/local/include/azureiot")
 
     include_directories(${AZUREIOT_INC_FOLDER})
 
     set(sample_application_c_files
-        ./parson/parson.c
         ./remote_monitoring.c
         ./main.c
     )
 
     set(sample_application_h_files
-        ./parson/parson.h
         ./remote_monitoring.h
     )
 
@@ -188,6 +186,8 @@ int main(void)
         m
     )
     ```
+
+1. **CMakeLists.txt** ファイルを保存し、エディターを終了します。
 
 1. `remote_monitoring` フォルダーで、CMake が生成する *make* ファイルを格納するフォルダーを作成します。 続いて、**cmake** と **make** コマンドを次のように実行します。
 

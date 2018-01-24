@@ -4,7 +4,7 @@ description: "リモート デスクトップ (xrdp) をインストールして
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: d8d6130a270285c84c1dd057a3512cdeb39287f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdd8c5e932815c5741b1091a743d235de882c5b1
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
 Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイメント モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](http://www.xrdp.org)) をインストールして構成する方法を詳しく説明します。
@@ -85,16 +85,10 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>リモート デスクトップ トラフィックにネットワーク セキュリティ グループ ルールを作成する
 リモート デスクトップのトラフィックを Linux VM に接続できるようにするには、ポート 3389 で VM への TCP の接続を許可するネットワーク セキュリティ グループ ルールを作成する必要があります。 ネットワーク セキュリティ グループ ルールの詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。 また、[Azure Portal を使用してネットワーク セキュリティ グループ ルールを作成することもできます](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-次の例では、*tcp* ポート *3389* に対するトラフィックを "*許可*" する *myNetworkSecurityGroupRule* という名前のネットワーク セキュリティ グループ ルールを [az network nsg rule create](/cli/azure/network/nsg/rule#create) で作成します。
+次の例では、[az vm open-port](/cli/azure/vm#open-port) で、ネットワーク セキュリティ グループの規則をポート *3389* に作成しています。
 
 ```azurecli
-az network nsg rule create \
-    --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup \
-    --name myNetworkSecurityGroupRule \
-    --protocol tcp \
-    --priority 1010 \
-    --destination-port-range 3389
+az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 ```
 
 
@@ -122,13 +116,13 @@ tcp     0     0      127.0.0.1:3350     0.0.0.0:*     LISTEN     53192/xrdp-sesm
 tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 ```
 
-xrdp サービスがリッスンしていない場合は、次のように Ubuntu VM でサービスを再開させます。
+*xrdp-sesman* サービスがリッスンしていない場合は、次のように Ubuntu VM でサービスを再開させます。
 
 ```bash
 sudo service xrdp restart
 ```
 
-サービスが応答していない理由を確認するには、Ubuntu VM の */var/log*Thug  のログを確認します。 また、リモート デスクトップ接続の試行中に syslog を監視すれば、エラーを確認できます。
+サービスが応答していない理由を確認するには、Ubuntu VM の */var/log* のログを確認します。 また、リモート デスクトップ接続の試行中に syslog を監視すれば、エラーを確認できます。
 
 ```bash
 tail -f /var/log/syslog
@@ -139,7 +133,7 @@ Red Hat Enterprise Linux SUSE など他の Linux ディストリビューショ�
 リモート デスクトップ クライアントから応答がなく、システム ログにもイベントが表示されない場合は、リモート デスクトップ トラフィックが VM に到達できないことを示しています。 ネットワーク セキュリティ グループ ルールを確認し、ポート 3389 で TCP を許可するルールが設定されていることをご確認ください。 詳細については、[アプリケーションの接続の問題のトラブルシューティング](../windows/troubleshoot-app-connection.md)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Linux VM で SSH キーを作成、使用する方法の詳細については、[Azure での Linux VM の SSH キーの作成](mac-create-ssh-keys.md)に関するページをご覧ください。
 
 Windows から SSH を使用する方法の詳細については、[Windows での SSH キーの使用方法](ssh-from-windows.md)に関するページをご覧ください。

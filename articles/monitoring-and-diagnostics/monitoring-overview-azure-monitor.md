@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 8de1eca5a3e52533e05d93cfe30de612e3d0c648
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="overview-of-azure-monitor"></a>Azure Monitor の概要
 この記事では、Microsoft Azure の Azure Monitor サービスの概要を説明します。 Azure Monitor の動作について説明し、Azure Monitor の使用方法に関するその他の情報の参照先を紹介します。  概要ビデオをご希望の場合は、この記事の最後にある「次のステップ」のリンクを参照してください。 
@@ -43,7 +43,7 @@ Azure Monitor サービスがリリースされていますが、概要ランデ
 
 ページを開くときに、読み取りアクセス権があるサブスクリプションから選択できます。 選択したサブスクリプションの次の情報を確認できます。
 
-- **トリガーされたアラートとアラートのソース**: このテーブルは、集計数、アラートのソース、および選択した期間中のアラートの発生数を示します。 これは、メトリック アラートとアクティビティ ログ アラートの両方に適用されます。
+- **トリガーされたアラートとアラートのソース**: このテーブルは、集計数、アラートのソース、および選択した期間中のアラートの発生数を示します。 これは、メトリック アラートとアクティビティ ログ アラートの両方に適用されます。 *< 編集: イベント、メトリック、ログなどのすべてのアラートにも表示される統合されたエクスペリエンスを使用したアラート (プレビュー) >*
 - **アクティビティ ログ エラー**: いずれかの Azure リソースによって、重大度がエラー レベルであるイベントが記録された場合は、全体の数を表示し、アクティビティ ログ ページに移動して各イベントを調べることができます。
 - **Azure Service Health**: Service Health サービスの問題の数、計画メンテナンス イベント、および正常性の勧告を確認できます。 Azure Service Health は、Azure インストラクチャの問題が利用中のサービスにいつ影響を及ぼすかに関するパーソナライズされた情報を提供します。  詳細については、「[Azure Service Health](../service-health/service-health-overview.md)」を参照してください。  
 - **Application Insights**: 現在のサブスクリプション内の各 AppInsights リソースの KPI を表示します。 KPI は、ASP.NET Web アプリ、Java、Node、および全般の種類のアプリケーションで、サーバー側のアプリケーションの監視用に最適化されています。 KPI には、要求率、応答時間、エラー率、および可用性 % のメトリックが含まれます。 
@@ -56,9 +56,10 @@ Log Analytics または Application Insights を使用していない場合、�
 
 ![非コンピューティング リソースに対する監視と診断のモデル](./media/monitoring-overview-azure-monitor/Monitoring_Azure_Resources-compute_v6.png)
 
+
 ここに示した Compute Services には、以下が含まれます。 
 - Cloud Services 
-- Virtual Machines 
+- [Virtual Machines] 
 - 仮想マシン スケール セット 
 - Service Fabric
 
@@ -141,7 +142,10 @@ Azure Monitor REST API、クロス プラットフォーム コマンド ライ�
 
 
 ### <a name="automate"></a>自動化
-アラートはもとより、プロセス全体をトリガーする場合にも、監視データを利用できます。 たとえば、次のようになります。
+> [!NOTE]
+> Microsoft Azure アラートの継続的な展開の一部として、アラートの統合されたエクスペリエンスはプレビュー中です。 [Azure アラート (プレビュー)](monitoring-overview-unified-alerts.md) の詳細
+
+標準的な Azure アラートでは、アラートはもとより、プロセス全体をトリガーする場合にも、監視データを利用できます。 たとえば、次のようになります。
 
 * データを使用し、アプリケーションの負荷に応じてコンピューティング インスタンスを自動でスケールアップまたはスケールダウンする
 * メトリックが事前に定義されているしきい値に達したときにメールを送信する
@@ -157,7 +161,7 @@ Azure Monitor REST API、クロス プラットフォーム コマンド ライ�
 * [REST API](https://docs.microsoft.com/rest/api/monitor/)
 * [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 項目ごとに詳しい情報を確認できます。
 - Azure Monitor のビデオ チュートリアルは、  
 「[Get Started with Azure Monitor](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor)」 (Azure Monitor を使ってみる) をご覧ください。 

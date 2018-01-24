@@ -14,42 +14,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 08/15/2017
+ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9beef44b3fbaf26d49757544f32b97c7ef2cf425
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f061197cbe9fd52594d9fb000d8f3bcbd2d5285
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
 
-アカウント センターで、サブスクリプションを別のユーザーに譲渡できます。 サブスクリプションの課金の所有権を他のユーザーに譲渡する、サインイン アカウントを変更する、またはサブスクリプションを別のディレクトリに移動する場合に、この機能を使用します。 サブスクリプションの別のプランへの変更については、「[別のプランへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」で詳細を参照してください。
+アカウント センターでサブスクリプションを別のユーザーに転送し、アカウント管理者を変更してサブスクリプションの課金所有権を譲渡します。 サブスクリプションの別のプランへの変更については、「[別のプランへの Azure サブスクリプションの切り替え](billing-how-to-switch-azure-offer.md)」で詳細を参照してください。
 
 > [!IMPORTANT]
 > 
 > 現在、無料試用版または [Azure イン オープン プラン (AIO)](https://azure.microsoft.com/offers/ms-azr-0111p/) サブスクリプションについては、サブスクリプションの譲渡はサポートされていません。 対処法ついては、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
-
-<a id="supported"></a>
-
-## <a name="whats-supported"></a>サポート対象:
-
-以下の表に示したプランまたはサブスクリプションの種類では、セルフ サービス サブスクリプションの譲渡を使用できます。 [スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/)やサポート プランなどの他のサブスクリプションの譲渡については、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-
-| プラン名                                                                             | プラン番号 |
-|----------------------------------------------------------------------------------------|--------------|
-| [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
-| [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
-| [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
-| [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
-| [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
-| [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
-| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
-| [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
-| [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
-
-\*[EA ポータル経由](#EA)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Azure サブスクリプションの所有権を譲渡する
 
@@ -57,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 >
 >
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。 サブスクリプションのアカウント管理者を確認する方法については、[よく寄せられる質問](#faq)を参照してください。
+1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。サブスクリプションのアカウント管理者を確認する方法については、[よく寄せられる質問](#faq)をご覧ください。
 
 1. 譲渡するサブスクリプションを選択します。
 
@@ -88,14 +68,33 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>サブスクリプションの所有権を受け取った後の次のステップ
 
-1. アカウント管理者になったら、 サービス管理者と共同管理者を見直して更新します。 管理者の管理は、[Azure クラシック ポータルで](https://manage.windowsazure.com) [設定] に移動して実行します。 [管理者の役割の詳細についてはこちらを参照してください](billing-add-change-azure-subscription-administrator.md)。
-1. サブスクリプションとサービスに対して、ロールベースのアクセス制御 (RBAC) を使用することもできます。 [Azure Portal](https://portal.azure.com) にアクセスします。 [RBAC の詳細についてはこちらを参照してください](../active-directory/role-based-access-control-configure.md)。
+1. これで、アカウント管理者になりました。サービス管理者、共同管理者、その他の RBAC ロールを見直して更新します。 詳細については、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](billing-add-change-azure-subscription-administrator.md)」をご覧ください。
 1. このサブスクリプションのサービスに関連付けられている以下の資格情報を更新します。
    1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Create and upload a management certificate for Azure](../cloud-services/cloud-services-certs-create.md)
    1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
    1. Azure Virtual Machines などのサービス用のリモート アクセス資格情報。 
 1. [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で、[このサブスクリプション用の課金アラートを更新します](billing-set-up-alerts.md)。 
-1. パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。 パートナー ID は、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で更新できます。
+1. パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。 パートナー ID は、[Azure Portal](https://portal.azure.com) で更新できます。
+
+<a id="supported"></a>
+
+## <a name="whats-supported"></a>サポート対象:
+
+以下の表に示したプランまたはサブスクリプションの種類では、セルフ サービス サブスクリプションの譲渡を使用できます。 [スポンサー プラン](https://azure.microsoft.com/offers/ms-azr-0036p/)やサポート プランなどの他のサブスクリプションの譲渡については、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+
+| プラン名                                                                             | プラン番号 |
+|----------------------------------------------------------------------------------------|--------------|
+| [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
+| [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
+| [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
+| [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
+| [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
+| [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
+| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
+| [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
+| [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
+
+\*[EA ポータル経由](#EA)
 
 <a id="faq"></a>
 
@@ -111,7 +110,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>あらゆるものが譲渡されるのでしょうか。 リソース グループ、VM、ディスク、他の実行中のサービスは含まれますか?
 
-はい。VM、ディスク、Web サイトなどのすべてのリソースが、新しい所有者に譲渡されます。 ただし、自分で設定した[管理者の役割](billing-add-change-azure-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) ポリシーは、異なるディレクトリ間で譲渡されません。
+VM、ディスク、Web サイトなどのすべてのリソースが、新しい所有者に譲渡されます。 ただし、自分で設定した[管理者の役割](billing-add-change-azure-subscription-administrator.md)と[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) ポリシーは、異なるディレクトリ間で譲渡されません。 また、[アプリの登録](../active-directory//develop/active-directory-integrating-applications.md)と、その他のテナント固有のサービスについても譲渡されません。
 
 ### <a id="no-button"></a>[サブスクリプションの譲渡] ボタンが表示されないのはなぜですか。
 

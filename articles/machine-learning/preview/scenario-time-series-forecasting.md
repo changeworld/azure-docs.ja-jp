@@ -7,6 +7,7 @@ author: anta
 manager: ireiter
 editor: anta
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: bd0ddfcffdb6f946f9a3786f3d0add1740be861b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17903df93e11b8d1a5b9c6fbe5fd8e53302f45f4
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="energy-demand-time-series-forecasting"></a>エネルギー需要の時系列予測
 
@@ -53,16 +54,14 @@ Azure Machine Learning Workbench は、各手順で、モデリング プロセ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)。
+- [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
 - [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](./quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
 - このサンプルは、[Docker エンジン](https://www.docker.com/)をローカルにインストールした Windows 10 で Azure Machine Learning Workbench を実行していることを前提とします。 macOS を使用している場合も、手順の多くは変わりません。
-- ローカル デプロイメント環境セットアップでインストールされた Azure Machine Learning Operationalization および、この[ガイド](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/getting-started.md)の説明に従って作成されたモデル管理アカウント。
+- ローカル デプロイメント環境セットアップでインストールされた Azure Machine Learning Operationalization および、この[ガイド](./model-management-configuration.md)の説明に従って作成されたモデル管理アカウント。
 - このサンプルでは、Pandas をバージョン 0.20.3 以上にアップデートし、matplotlib をインストールする必要があります。 Workbench の *[ファイル]* メニューから *[コマンド プロンプトを開く]* をクリックし、次のコマンドを実行してこれらの依存関係をインストールします。
 
     ```
-    conda install "pandas>=0.20.3"
-
-    conda install matplotlib
+    conda install "pandas>=0.21.1"
     ```
     
 ## <a name="create-a-new-workbench-project"></a>新しい Workbench プロジェクトの作成
@@ -70,14 +69,14 @@ Azure Machine Learning Workbench は、各手順で、モデリング プロセ�
 この例をテンプレートとして使用して新しいプロジェクトを作成します。
 1.  Azure Machine Learning Workbench を開きます
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
-3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します。
+3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに、「Energy Demand Time Series Forecasting」と入力し、テンプレートを選択します
 5.  **[作成]**
 
 
 ## <a name="data-description"></a>データの説明
 
-`nyc_demand.csv` と `nyc_weather.csv` の2 つのデータセットがあります。
+このサンプルでは、`nyc_demand.csv` と `nyc_weather.csv` という 2 つのデータセットが提供されます。これらは `1-data-preparation.ipynb` ノートブックを使用してダウンロードされます。
 
 **nyc_demand.csv** には、2012 ～ 2017 年のニューヨーク市における 1 時間ごとのエネルギー需要値が含まれています。 データは、次のような単純な構造です。
 
@@ -145,7 +144,7 @@ Azure Machine Learning Workbench は、各手順で、モデリング プロセ�
 
 ノートブック 2 ～ 7 に 6 つの異なるモデルが付属しています。 各ノートブックは、それぞれ別のモデルをトレーニングし、`AZUREML_NATIVE_SHARE_DIRECTORY` に格納します。 このシナリオ用に開発されたすべてのモデルをトレーニングすると、次のセクションで説明ているように、評価したり比較したりできます。
 
-### <a name="3-model-evaluation-and-comparison"></a>3.モデルの評価と比較
+### <a name="3-model-evaluation-and-comparison"></a>手順 3.モデルの評価と比較
 
 トレーニング済みモデルを使用して、将来の期間を予測できます。 保持されているテスト データセットでこれらのモデルを評価することをお勧めします。 隠された同じデータセットで異なるモデルを評価することで、パフォーマンスを公平に比較し、最適なモデルを特定できます。 このシナリオでは、トレーニング済みモデルを再帰的に適用して、将来の複数の時間ステップを予測します。 具体的には、最大 6 時間、現在の時間 *t* から *t+6* 時間先を予測します。 これらの予測は、各期間観察された実際の要求に対して評価されます。
 
