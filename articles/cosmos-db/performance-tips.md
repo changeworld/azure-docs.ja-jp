@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: mimig
 ms.openlocfilehash: 84a1913bd218d512f7f2818291f59d98628a7272
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/18/2018
 ---
 > [!div class="op_single_selector"]
 > * [Java](performance-tips-java.md)
