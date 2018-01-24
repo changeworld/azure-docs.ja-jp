@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs"
-description: "Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、OMS リポジトリに格納されたそれらの詳細、および OMS ポータルでのそれらの分析方法について説明します。"
+description: "Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。"
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: d0345155b2c13bd0b4341ce53272e7d84cd233fb
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Log Analytics は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -26,13 +26,13 @@ Windows および Linux のパフォーマンス カウンターから、ハー�
 ![パフォーマンス カウンター](media/log-analytics-data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
-OMS ポータルのパフォーマンス カウンターは、[Log Analytics の [設定] の [データ] メニュー](log-analytics-data-sources.md#configuring-data-sources)から構成します。
+パフォーマンス カウンターは、[Log Analytics の [設定] の [データ] メニュー](log-analytics-data-sources.md#configuring-data-sources)から構成します。
 
-新しい OMS ワークスペースの Windows または Linux のパフォーマンス カウンターを初めて構成する場合、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。  それぞれのオプションの横には、チェック ボックスが表示されます。  最初に作成するカウンターがオンになっていることを確認し、 **[Add the selected performance counters (選択されたパフォーマンス カウンターを追加する)]**をクリックします。
+新しい Log Analytics ワークスペースの Windows または Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。  それぞれのオプションの横には、チェック ボックスが表示されます。  最初に作成するカウンターがオンになっていることを確認し、 **[Add the selected performance counters (選択されたパフォーマンス カウンターを追加する)]**をクリックします。
 
 Windows のパフォーマンス カウンターの場合、パフォーマンス カウンターごとに特定のインスタンスを選択できます。 Linux のパフォーマンス カウンターの場合、各カウンターに対して選択したインスタンスが、そのすべての子カウンターに適用されます。 次の表は、Linux と Windows の両方のパフォーマンス カウンターで利用できる共通のインスタンスを示しています。
 
-| インスタンス名 | Description |
+| インスタンス名 | 説明 |
 | --- | --- |
 | \_Total |すべてのインスタンスの合計 |
 | \* |すべてのインスタンス |
@@ -65,7 +65,7 @@ Windows のパフォーマンス カウンターの場合、パフォーマン�
 5. カウンターの追加を完了したら、画面の上部にある **[保存]** ボタンをクリックして、構成を保存します。
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>構成ファイルで Linux のパフォーマンス カウンターを構成する
-OMS ポータルを使用して Linux のパフォーマンス カウンターを構成する代わりに、Linux エージェントで構成ファイルを編集することもできます。  収集するパフォーマンス メトリックは、**/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** の構成によって制御されます。
+Azure Portal を使用して Linux のパフォーマンス カウンターを構成する代わりに、Linux エージェントで構成ファイルを編集することもできます。  収集するパフォーマンス メトリックは、**/etc/opt/microsoft/omsagent/\<workspace id\>/conf/omsagent.conf** の構成によって制御されます。
 
 収集するパフォーマンス メトリックの各オブジェクト (カテゴリ) は、構成ファイルの中で単一の `<source>` 要素として定義する必要があります。 次の構文形式に従って記述してください。
 
@@ -80,7 +80,7 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
 
 この要素のパラメーターを次の表に示します。
 
-| parameters | Description |
+| parameters | 説明 |
 |:--|:--|
 | object\_name | コレクションのオブジェクト名。 |
 | instance\_regex |  収集するインスタンスを定義する*正規表現*。 すべてのインスタンスは、 `.*` という値で指定します。 \_Total インスタンスのみを対象にプロセッサ メトリックを収集するには、`_Total` を指定します。 crond または sshd のインスタンスのみを対象にプロセス メトリックを収集するには、(crond\|sshd)` と指定します。 |
@@ -126,10 +126,10 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
 | 物理ディスク | Avg.Disk sec/Transfer |
 | 物理ディスク | Avg.Disk sec/Write |
 | 物理ディスク | Physical Disk Bytes/sec |
-| Process | Pct Privileged Time |
-| Process | Pct User Time |
-| Process | Used Memory kBytes |
-| Process | Virtual Shared Memory |
+| プロセス | Pct Privileged Time |
+| プロセス | Pct User Time |
+| プロセス | Used Memory kBytes |
+| プロセス | Virtual Shared Memory |
 | プロセッサ | % DPC Time |
 | プロセッサ | % Idle Time |
 | プロセッサ | % Interrupt Time |
@@ -141,10 +141,10 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
 | システム | Free Physical Memory |
 | システム | Free Space in Paging Files |
 | システム | Free Virtual Memory |
-| システム | 処理 |
+| システム | Processes |
 | システム | Size Stored In Paging Files |
 | システム | Uptime |
-| システム | ユーザー |
+| システム | Users |
 
 
 パフォーマンス メトリックの既定の構成を次に示します。
@@ -182,14 +182,14 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
     </source>
 
 ## <a name="data-collection"></a>データ収集
-Log Analytics は、カウンターがインストールされているすべてのエージェントについて、指定されたサンプル間隔ですべての指定されたパフォーマンス カウンターを収集します。  データは集計されず、生データが、OMS サブスクリプションで指定した期間、すべてのログ検索ビューで利用可能です。
+Log Analytics は、カウンターがインストールされているすべてのエージェントについて、指定されたサンプル間隔ですべての指定されたパフォーマンス カウンターを収集します。  データは集計されず、サブスクリプションで指定した期間、すべてのログ検索ビューで生データを利用できます。
 
 ## <a name="performance-record-properties"></a>パフォーマンス レコードのプロパティ
 パフォーマンス レコードには、 **Perf** の型と、次の表に示すプロパティがあります。
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| コンピューター |イベントが収集されたコンピューター。 |
+| Computer |イベントが収集されたコンピューター。 |
 | CounterName |パフォーマンス カウンターの名前 |
 | CounterPath |\\\\\<コンピューター>\\オブジェクト(インスタンス)\\カウンターの形式のカウンターの完全パス。 |
 | CounterValue |カウンターの数値。 |
@@ -206,7 +206,7 @@ Log Analytics は、カウンターがインストールされているすべて
 ## <a name="log-searches-with-performance-records"></a>パフォーマンス レコードでのログ検索
 次の表は、パフォーマンス レコードを取得するログ検索のさまざまな例をまとめたものです。
 
-| クエリ | Description |
+| クエリ | 説明 |
 |:--- |:--- |
 | Perf |すべてのパフォーマンス データ |
 | Perf &#124; where Computer == "MyComputer" |特定のコンピューターからのすべてのパフォーマンス データ |
@@ -220,15 +220,10 @@ Log Analytics は、カウンターがインストールされているすべて
 | Perf &#124; where CounterName == "% Processor Time" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |特定のコンピューターの CPU 使用率の平均、最小、最大、75 パーセンタイル (1 時間ごと) |
 | Perf &#124; where ObjectName == "MSSQL$INST2:Databases" and InstanceName == "master" | 名前付き SQL インスタンス INST2 のマスター データベースのデータベース パフォーマンス オブジェクトのすべてのパフォーマンス データ。  
 
-## <a name="viewing-performance-data"></a>パフォーマンス データの表示
-パフォーマンス データのログ検索を実行すると、既定で **[リスト]** ビューが表示されます。  グラフィカルな形式でデータを表示するには、 **[メトリック]**をクリックします。  詳細なグラフィック表示については、カウンターの横にある **+** をクリックします。  
-
-![折りたたまれた [メトリック] ビュー](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
-
-ログ検索でパフォーマンス データを集計する方法については、「[On-demand metric aggregation and visualization in OMS (OMS におけるオンデマンドのメトリック集計と視覚化)](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/)」を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+
+## <a name="next-steps"></a>次の手順
 * MySQL および Apache HTTP Server を含む [Linux アプリケーションからパフォーマンス カウンターを収集します](log-analytics-data-sources-linux-applications.md)。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](log-analytics-powerbi.md) にエクスポートします。

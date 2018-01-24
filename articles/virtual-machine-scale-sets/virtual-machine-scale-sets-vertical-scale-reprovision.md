@@ -3,8 +3,8 @@ title: "Azure 仮想マシン スケール セットの垂直方向のスケー�
 description: "Azure Automation によるアラートの監視に応じて仮想マシンを垂直方向にスケーリングする方法"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: madhana
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: guybo
-ms.openlocfilehash: 9159a5a9041864fe06785829121233379c46bb03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: negat
+ms.openlocfilehash: 6e4733e023d1dc27fb099216f9afea07fe07446c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの使用を開始する
-この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 スケール セットにない仮想マシンの垂直方向のスケーリングについては、「 [Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+# <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
+この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 スケール セットにない VM の垂直方向のスケーリングについては、「[Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
-*スケール アップ*および*スケール ダウン*とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 これを、*スケール アウト*および*スケール イン*とも呼ばれる、仮想マシンの数がワークロードに応じて変更される[水平方向のスケーリング](virtual-machine-scale-sets-autoscale-overview.md)と比較してください。
+*スケール アップ*および*スケール ダウン*とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 この動作を、*スケール アウト*および*スケール イン*とも呼ばれる、VM の数がワークロードに応じて変更される[水平方向のスケーリング](virtual-machine-scale-sets-autoscale-overview.md)と比較してください。
 
-再プロビジョニングとは、既存の仮想マシンを削除して、新しい仮想マシンで置き換えることを意味します。 仮想マシン スケール セットの仮想マシンのサイズを増減する場合、既存の仮想マシンのサイズを変更してデータを保持することも、新しいサイズの新しい仮想マシンをデプロイする必要があることもあります。 このドキュメントでは、どちらの場合についても説明します。
+再プロビジョニングとは、既存の仮想マシンを削除して、新しい仮想マシンで置き換えることを意味します。 仮想マシン スケール セットの VM のサイズを増減する場合、既存の VM のサイズを変更してデータを保持することも、新しいサイズの新しい VM をデプロイする必要があることもあります。 このドキュメントでは、どちらの場合についても説明します。
 
 垂直スケーリングは、次のような場合に便利です。
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 1. 実行機能を持つ Azure Automation アカウントを作成します。
 2. サブスクリプションに、仮想マシン スケール セット向けの Azure Automation の垂直スケールの Runbook をインポートします。
 3. Webhook を Runbook に追加します。
-4. Webhook 通知を使用して、VM スケール セットにアラートを追加します。
+4. Webhook 通知を使用して、仮想マシン スケール セットにアラートを追加します。
 
 > [!NOTE]
 > 垂直方向の自動スケールは、特定の VM のサイズ範囲内でのみ実行できます。 スケールを決める前に各サイズの仕様を比較してください (大きな数値が必ずしも大きな VM サイズを示すとは限りません)。 次のようなサイズのペアの間でスケールの設定を選択できます。
@@ -55,12 +55,12 @@ ms.lasthandoff: 10/11/2017
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>実行機能を持つ Azure Automation アカウントを作成する
-最初に、VM スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。 最近、 [Azure Automation](https://azure.microsoft.com/services/automation/) では、ユーザーの代わりに非常に簡単に Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能が導入されました。 詳しくは、次の記事を参照してください。
+最初に、仮想マシン スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。 最近、[Azure Automation](https://azure.microsoft.com/services/automation/) では、ユーザーの代わりに Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能が導入されました。 詳細については、「
 
 * [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>サブスクリプションに Azure Automation の垂直スケールの Runbook をインポートする
-VM スケール セットの垂直方向へのスケーリングに必要な Runbook は、Azure Automation Runbook ギャラリーに既に公開されています。 Runbook をサブスクリプションにインポートするには、次の記事の手順に従ってください。
+仮想マシン スケール セットの垂直方向へのスケーリングに必要な Runbook は、Azure Automation Runbook ギャラリーに既に公開されています。 Runbook をサブスクリプションにインポートするには、次の記事の手順に従ってください。
 
 * [Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](../automation/automation-runbook-gallery.md)
 
@@ -73,17 +73,17 @@ Runbook のメニューから、[ギャラリーの参照] オプションを選
 ![Runbook ギャラリー][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Webhook を Runbook に追加する
-Runbook をインポートしたら、VM スケール セットからのアラートによって Webhook がトリガーされるように、Runbook に追加する必要があります。 Runbook で Webhook を作成する方法の詳細は、次の記事を参照してください。
+Runbook をインポートしたら、仮想マシン スケール セットからのアラートによって Webhook がトリガーされるように、Runbook に追加します。 Runbook で Webhook を作成する方法の詳細は、次の記事を参照してください。
 
 * [Azure Automation Webhook](../automation/automation-webhooks.md)
 
 > [!NOTE]
-> Webhook のダイアログを閉じる前に、Webhook の URL をコピーしてください。これは次のセクションで必要になります。
+> Webhook のダイアログを閉じる前に、Webhook の URL をコピーしてください。このアドレスは次のセクションで必要になります。
 > 
 > 
 
-## <a name="add-an-alert-to-your-vm-scale-set"></a>VM スケール セットにアラートを追加する
-VM スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Insights の自動スケールの一般的なメトリック](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)」をご覧ください。
+## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>仮想マシン スケール セットにアラートを追加する
+仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Insights の自動スケールの一般的なメトリック](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)」をご覧ください。
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -116,12 +116,12 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 > 
 > 
 
-警告を作成する方法について詳しくは、次の記事を参照してください。
+アラートを作成する方法について詳しくは、次の記事を参照してください。
 
-* [Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
-* [Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
+* [Azure Monitor の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)
+* [Azure Monitor クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 この記事では、簡単な垂直スケーリングの例を示しました。 これらの構成要素 (Automation アカウント、Runbook、Webhook、アラート) を使用して、さまざまなイベントを、カスタマイズされた一連のアクションで接続できます。
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png

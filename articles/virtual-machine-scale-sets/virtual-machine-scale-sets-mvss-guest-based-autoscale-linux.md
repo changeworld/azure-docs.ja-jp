@@ -4,7 +4,7 @@ description: "Linux 仮想マシン スケール セット テンプレートの
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
-ms.openlocfilehash: 98635ea6695fdb1e55456b5b6a293a3b4ad9d839
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e822d83dd3bafabfea60ad50224c87df226bdc6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux スケール セット テンプレートのゲスト メトリックを使用した自動スケール
 
@@ -31,7 +31,7 @@ VM とスケール セットから収集される Azure のメトリックには
 
 実行可能な最小のスケール セット テンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)で確認できます。また、ゲストベースの自動スケールを使用して Linux スケール セットをデプロイするためのテンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json)で確認できます。 このテンプレートを作成する際に使用する diff (`git diff minimum-viable-scale-set existing-vnet`) を項目ごとに確認しましょう。
 
-まず、`storageAccountName` と `storageAccountSasToken` のパラメーターを追加します。 この診断エージェントが、メトリック データをこのストレージ アカウントの[テーブル](../cosmos-db/table-storage-how-to-use-dotnet.md)に格納します。 Linux 診断エージェント バージョン 3.0 の時点で、ストレージ アクセス キーの使用はサポートされなくなりました。 そのため、[SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用する必要があります。
+まず、`storageAccountName` と `storageAccountSasToken` のパラメーターを追加します。 この診断エージェントが、メトリック データをこのストレージ アカウントの[テーブル](../cosmos-db/table-storage-how-to-use-dotnet.md)に格納します。 Linux 診断エージェント バージョン 3.0 の時点で、ストレージ アクセス キーの使用はサポートされなくなりました。 代わりに、[SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md)を使用します。
 
 ```diff
      },
@@ -47,7 +47,7 @@ VM とスケール セットから収集される Azure のメトリックには
    },
 ```
 
-次に、診断の拡張機能を含めるようにスケール セット `extensionProfile` を変更します。 この構成では、メトリックの保存に使用するストレージ アカウントと SAS トークンに加え、メトリックを収集するスケール セットのリソース ID を指定します。 また、メトリックを集計する頻度 (ここでは 1 分ごと) と、追跡するメトリック (ここではメモリ使用率) を指定します。 この構成に関する詳細情報と、メモリ使用率以外のメトリックについては、[このドキュメント](../virtual-machines/linux/diagnostic-extension.md)を参照してください。
+次に、診断の拡張機能を含めるようにスケール セット `extensionProfile` を変更します。 この構成では、メトリックの保存に使用するストレージ アカウントと SAS トークンに加え、メトリックを収集するスケール セットのリソース ID を指定します。 メトリックを集計する頻度 (ここでは 1 分ごと) と、追跡するメトリック (ここではメモリ使用率) を指定します。 この構成に関する詳細情報と、メモリ使用率以外のメトリックについては、[このドキュメント](../virtual-machines/linux/diagnostic-extension.md)を参照してください。
 
 ```diff
                  }
@@ -186,6 +186,6 @@ VM とスケール セットから収集される Azure のメトリックには
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

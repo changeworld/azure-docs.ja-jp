@@ -4,7 +4,7 @@ description: "仮想マシン スケール セットについてよく寄せら�
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/8/2017
+ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: bcbf536390786b61544d3e09638d89e6b3b5c004
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -73,7 +73,7 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>仮想マシン スケール セットに対するアラート ルールの設定方法を教えてください。
 
-仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイック スタート サンプル](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)」と「[Azure Monitor クロスプラットフォーム CLI のクイック スタート サンプル](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)」を参照してください。
+仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)」を参照してください。
 
 仮想マシン スケール セットの TargetResourceId は次のような形式になっています。 
 
@@ -185,7 +185,7 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 }
 ```
  
-この JSON ブロックは、[GitHub の 101-vm-sshkey クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)で使用されています。
+この JSON ブロックは、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)で使用されています。
  
 この OS プロファイルは、[GitHub の grelayhost.json クイック スタート テンプレート](https://github.com/ExchMaster/gadgetron/blob/master/Gadgetron/Templates/grelayhost.json)でも使用されています。
 
@@ -216,13 +216,13 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
     }
 ```
  
-linuxConfiguration の要素名 | 必須 | 型 | Description
+linuxConfiguration の要素名 | 必須 | type | [説明]
 --- | --- | --- | --- |  ---
-ssh | いいえ | コレクション | Linux OS の SSH キーの構成を指定します。
-path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
-keyData | はい | String | Base64 でエンコードされた SSH 公開キーを指定します。
+ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
+パス | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
+keyData | [はい] | String | Base64 でエンコードされた SSH 公開キーを指定します。
 
-実際の例については、[GitHub の 101-vm-sshkey クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
+実際の例については、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
 
  
 ### <a name="when-i-run-update-azurermvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>同じキー コンテナーから複数の証明書を追加した後に `Update-AzureRmVmss` を実行すると、次のメッセージが表示されます。
@@ -281,7 +281,7 @@ VM を再イメージ化した場合、証明書は削除されます。 再イ�
  
 ### <a name="what-happens-if-you-delete-a-certificate-from-the-key-vault"></a>Key Vault から証明書を削除するとどうなりますか?
 
-キー コンテナーからシークレットを削除し、すべての VM に対して `stop deallocate` を実行した後に、VM を再度起動すると、エラーが発生します。 CRP はキー コンテナーからシークレットを取得する必要がありますが、それができないためにこのエラーが発生します。 この場合、仮想マシン スケール セット モデルから証明書を削除してください。 
+キー コンテナーからシークレットを削除し、すべての VM に対して `stop deallocate` を実行した後で VM を再度起動すると、エラーが発生します。 CRP はキー コンテナーからシークレットを取得する必要がありますが、それができないためにこのエラーが発生します。 この場合、仮想マシン スケール セット モデルから証明書を削除してください。 
 
 CRP コンポーネントは、ユーザーのシークレットを保持しません。 仮想マシン スケール セットのすべての VM に対して `stop deallocate` を実行すると、キャッシュが削除されます。 この場合、シークレットがキー コンテナーから取得されます。
 
@@ -337,7 +337,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/Compliance/PCI)を参照してください。
 
-### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-vm-scale-sets"></a>[Azure 管理対象サービス ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は VM スケール セットでも機能しますか。
+### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>[Azure 管理対象サービス ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットでも機能しますか。
 
 はい。 Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。 Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux)。 Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)。
 
@@ -369,24 +369,30 @@ Operations Management Suite と統合する仮想マシン スケール セッ�
  
 ### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>仮想マシン スケール セットの VM のパスワードをリセットするにはどうすればよいですか。
 
-仮想マシン スケール セットの VM のパスワードをリセットするには、VM アクセス拡張機能を使用します。 
+スケール セット内の VM のパスワードを変更する主な方法は 2 つあります。
 
-次の PowerShell サンプルを使用します。
+- 仮想マシン スケール セット モデルを直接変更する。 Compute API 2017-12-01 以降で実行できます。
 
-```powershell
-$vmssName = "myvmss"
-$vmssResourceGroup = "myvmssrg"
-$publicConfig = @{"UserName" = "newuser"}
-$privateConfig = @{"Password" = "********"}
- 
-$extName = "VMAccessAgent"
-$publisher = "Microsoft.Compute"
-$vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
-$vmss = Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
-Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
-```
- 
- 
+    スケール セット モデルの管理者資格情報を直接更新します (たとえば Azure Resource Explorer、PowerShell、CLI を使用します)。 スケール セットが更新されると、すべての新しい VM では新しい資格情報が使用されます。 既存の VM では、新しい資格情報は、それらが再イメージ化された場合のみ使用されます。 
+
+- VM アクセス拡張機能を使用してパスワードをリセットする。
+
+    次の PowerShell サンプルを使用します。
+    
+    ```powershell
+    $vmssName = "myvmss"
+    $vmssResourceGroup = "myvmssrg"
+    $publicConfig = @{"UserName" = "newuser"}
+    $privateConfig = @{"Password" = "********"}
+     
+    $extName = "VMAccessAgent"
+    $publisher = "Microsoft.Compute"
+    $vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
+    $vmss = Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
+    Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
+    ```
+
+
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>仮想マシン スケール セットのすべての VM に拡張機能を追加するにはどうすればよいですか。
 
 更新ポリシーが**自動**に設定されている場合は、拡張機能の新しいプロパティが含まれたテンプレートを再デプロイすると、すべての VM が更新されます。
@@ -461,7 +467,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 ## <a name="networking"></a>ネットワーク
  
-### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-will-apply-to-all-the-vm-nics-in-the-set"></a>ネットワーク セキュリティ グループ (NSG) をスケール セットに割り当てることで、セット内のすべての VM NIC に適用できますか?
+### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>ネットワーク セキュリティ グループ (NSG) をスケール セットに割り当てることで、セット内のすべての VM NIC に適用できますか?
 
 はい。 ネットワーク プロファイルの networkInterfaceConfigurations セクションで参照することで、ネットワーク セキュリティ グループをスケール セットに直接適用できます。 例:
 
@@ -509,7 +515,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 IP アドレスは指定したサブネットから選択されます。 
 
-仮想マシン スケール セットに対する IP アドレスの割り当て方法は常に "動的" ですが、これらの IP アドレスは変わることがあります。 この場合の "動的" とは、あくまで PUT 要求での IP アドレスの指定が手動ではないということです。 サブネットを使用して静的なセットを指定してください。 
+仮想マシン スケール セットに対する IP アドレスの割り当て方法は常に "動的" ですが、これらの IP アドレスが変わるわけではありません。 この場合の "動的" とは、あくまで PUT 要求での IP アドレスの指定が手動ではないということです。 サブネットを使用して静的なセットを指定してください。 
     
 ### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>既存の Azure 仮想ネットワークに仮想マシン スケール セットをデプロイするにはどうすればよいですか。 
 
@@ -517,11 +523,11 @@ IP アドレスは指定したサブネットから選択されます。
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加するにはどうすればよいですか。
 
-仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加する方法については、「[ARM: Get VMSS's private IPs (ARM: VMSS のプライベート IP を取得する)](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)」を参照してください。
+仮想マシン スケール セットの最初の VM の IP アドレスをテンプレートの出力に追加する方法については、「[Azure Resource Manager: Get VMSS's private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips)」(Azure Resource Manager: VMSS のプライベート IP を取得する) を参照してください。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>高速ネットワークでスケール セットを使用できますか?
 
-はい。 高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を true に設定します。 例: 
+はい。 高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を true に設定します。 たとえば、次のように入力します。
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -543,7 +549,7 @@ IP アドレスは指定したサブネットから選択されます。
 
 ### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>スケール セットによって使用される DNS サーバーは、どのように構成すればよいですか?
 
-カスタム DNS 構成を持つ VM スケール セットを作成するには、スケール セットの networkInterfaceConfigurations セクションに dnsSettings JSON パケットを追加します。 例:
+カスタム DNS 構成を持つ仮想マシン スケール セットを作成するには、スケール セットの networkInterfaceConfigurations セクションに dnsSettings JSON パケットを追加します。 例:
 ```json
     "dnsSettings":{
         "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -552,7 +558,7 @@ IP アドレスは指定したサブネットから選択されます。
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>各 VM にパブリック IP アドレスを割り当てるには、スケール セットをどのように構成すればよいですか?
 
-各 VM にパブリック IP アドレスを割り当てる VM スケール セットを作成するには、Microsoft.Compute/virtualMAchineScaleSets リソースの API バージョンが 2017-03-30 であることを確認してから、スケール セットの ipConfigurations セクションに _publicipaddressconfiguration_ JSON パケットを追加します。 例:
+各 VM にパブリック IP アドレスを割り当てる仮想マシンスケール セットを作成するには、Microsoft.Compute/virtualMAchineScaleSets リソースの API バージョンが 2017-03-30 であることを確認してから、スケール セットの ipConfigurations セクションに _publicipaddressconfiguration_ JSON パケットを追加します。 例:
 
 ```json
     "publicipaddressconfiguration": {
@@ -577,7 +583,7 @@ VM 数が 2 台未満の仮想マシン スケール セットを作成する理
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの VM の数を変更するにはどうすればよいですか。
 
-Azure Portal で仮想マシン スケール セットの VM 数を変更するには、VM スケール セットのプロパティ セクションで、[スケーリング] ブレードをクリックし、スライダー バーを使用します。 インスタンス数を変更する他の方法については、「[Change the instance count of a virtual machine scale set (仮想マシン スケール セットのインスタンス数を変更する)](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/)」をご覧ください。
+Azure Portal で仮想マシン スケール セットの VM 数を変更するには、仮想マシン スケール セットのプロパティ セクションで、[スケーリング] ブレードをクリックし、スライダー バーを使用します。 インスタンス数を変更する他の方法については、「[Change the instance count of a virtual machine scale set (仮想マシン スケール セットのインスタンス数を変更する)](https://msftstack.wordpress.com/2016/05/13/change-the-instance-count-of-an-azure-vm-scale-set/)」をご覧ください。
 
 ### <a name="how-do-i-define-custom-alerts-for-when-certain-thresholds-are-reached"></a>特定のしきい値に達したときのカスタム アラートを定義するにはどうすればよいですか。
 

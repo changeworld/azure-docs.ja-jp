@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: saysa
-ms.openlocfilehash: 89b356c3959b7cb63a746805d60535e07f0d6898
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 80c52cfeab007030203b6af4bb220f1a847e9426
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
 
 ## <a name="general-prerequisites"></a>一般的な前提条件
 - Git をローカルにインストールしておきます。 [Git のダウンロード ページ](https://git-scm.com/downloads)から、お使いのオペレーティング システムに応じて適切な Git バージョンをインストールできます。 Git を使用するのが初めての場合、[Git に関するドキュメント](https://git-scm.com/docs)で詳細を確認してください。
-- Service Fabric Jenkins プラグインを用意します。 これは、[Service Fabric のダウンロード](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)で入手できます。 エッジ ブラウザーを使用している場合は、ダウンロードしたファイルの拡張子を.zip から .hpi に変更します。
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>Service Fabric クラスター内での Jenkins のセットアップ
 
@@ -129,8 +128,8 @@ Docker がインストールされている必要があります。 ターミナ
 ターミナルで ``docker info`` を実行すると、Docker サービスが実行されていることが出力に表示されます。
 
 ### <a name="steps"></a>手順
-  1. Service Fabric Jenkins コンテナー イメージを取得します。``docker pull rapatchi/jenkins:v9``
-  2. コンテナー イメージを実行します。``docker run -itd -p 8080:8080 rapatchi/jenkins:v9``
+  1. Service Fabric Jenkins コンテナー イメージを取得します``docker pull rapatchi/jenkins:v10``。 このイメージは、プリインストールされた Service Fabric Jenkins プラグインから取得されます。
+  2. コンテナー イメージを実行します。``docker run -itd -p 8080:8080 rapatchi/jenkins:v10``
   3. コンテナー イメージ インスタンスの ID を取得します。 ``docker ps –a`` コマンドを使用して、すべての Docker コンテナーの一覧を取得できます。
   4. 次の手順を使用して Jenkins ポータルにサインインします。
 
@@ -151,11 +150,6 @@ Docker がインストールされている必要があります。 ターミナ
 
 Jenkins コンテナー イメージがホストされているクラスターまたはマシンに公開 IP があることを確認します。 この公開 IP を使用することで、Jenkins インスタンスは GitHub から通知を受け取ることができます。
 
-## <a name="install-the-service-fabric-jenkins-plug-in-from-the-portal"></a>ポータルからの Service Fabric Jenkins プラグインのインストール
-
-1. ``http://PublicIPorFQDN:8081`` に移動します
-2. Jenkins ダッシュボードで、**[Manage Jenkins (Jenkins の管理)]** > **[Manage Plugins (プラグインの管理)]** > **[Advanced (詳細設定)]** の順に選択します。
-ここでは、プラグインをアップロードできます。 **[Choose file]\(ファイルの選択\)** を選択し、前提条件に従ってダウンロードした **serviceFabric.hpi** ファイルを選択します。[こちら](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi)からもダウンロードできます。 **[Upload (アップロード)]** を選択すると、Jenkins によってプラグインが自動的にインストールされます。 要求された場合は再起動を許可します。
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Jenkins ジョブの作成と構成
 
@@ -163,12 +157,12 @@ Jenkins コンテナー イメージがホストされているクラスター�
 2. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、**[OK]** をクリックします。
 3. ジョブ ページに移動し、**[Configure (構成)]** をクリックします。
 
-   a. 全般セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/sayantancs/SFJenkins``)。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 全般セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/sayantancs/SFJenkins``)。
 
    b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: ``https://github.com/sayantancs/SFJenkins.git``)。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
 4. Jenkins と対話できるように (リポジトリをホストする) *GitHub* を構成します。 次の手順に従います。
 
-   a. GitHub リポジトリ ページに移動します。 次に、**[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 GitHub リポジトリ ページに移動します。 次に、**[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
 
    b. **[Add Service (サービスの追加)]** を選択して「**Jenkins**」と入力し、**[Jenkins-GitHub plugin (Jenkins-GitHub プラグイン)]** を選択します。
 
@@ -178,7 +172,7 @@ Jenkins コンテナー イメージがホストされているクラスター�
 
    e. **[Build Triggers (ビルド トリガー)]** セクションで、目的のビルド オプションを選択します。 この例では、リポジトリにプッシュが行われるたびにビルドがトリガーされるようにします。 そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します  (以前、このオプションの名前は **[Build when a change is pushed to GitHub (変更が GitHub にプッシュされたときにビルド)]** でした)。
 
-   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **Java アプリケーションの [ビルド] セクション:** **[ビルド] セクション**で、**[ビルド ステップの追加]** ドロップダウンから **[Gradle スクリプトの呼び出し]** オプションを選択します。 表示されたウィジェットで詳細メニューを開き、**[Root build script]\(ルート ビルド スクリプト\)** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。 (Eclipse プラグインまたは Yeoman ジェネレーターを使用して) ``MyActor`` という名前のプロジェクトを作成した場合は、ルート ビルド スクリプトに ``${WORKSPACE}/MyActor`` を含める必要があります。 次のスクリーンショットで、この手順の例を確認してください。
+   f. **Java アプリケーションの [ビルド] セクション:** **[ビルド] セクション**で、**[ビルド ステップの追加]** ドロップダウンから **[Gradle スクリプトの呼び出し]** オプションを選択します。 表示されたウィジェットで詳細メニューを開き、**[Root build script]\(ルート ビルド スクリプト\)** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。 (Eclipse プラグインまたは Yeoman ジェネレーターを使用して) ``MyActor`` という名前のプロジェクトを作成した場合は、ルート ビルド スクリプトに ``${WORKSPACE}/MyActor`` を含める必要があります。 次のスクリーンショットで、この手順の例を確認してください。
 
     ![Service Fabric Jenkins のビルド アクション][build-step]
 
@@ -207,7 +201,7 @@ Jenkins コンテナー イメージがホストされているクラスター�
       > このクラスターは、Service Fabric を使用して Jenkins コンテナー イメージをデプロイする場合に、Jenkins コンテナー アプリケーションをホストするクラスターと同じにすることもできます。
       >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 GitHub と Jenkins の構成が完了しました。 リポジトリ (https://github.com/sayantancs/SFJenkins など) の ``MyActor`` プロジェクトにサンプルの変更を加えてみましょう。 リモートの ``master`` 分岐 (または動作するように構成したいずれかの分岐) に変更をプッシュすると、 構成した Jenkins ジョブ ``MyJob`` がトリガーされます。 GitHub から変更内容がフェッチされてビルドが行われ、ビルド後のアクションで指定したクラスター エンドポイントにアプリケーションがデプロイされます。  
 
   <!-- Images -->

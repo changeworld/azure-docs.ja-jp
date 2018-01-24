@@ -15,17 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 508b3755556bcae6aa2c7d17a2d86a1430a8109a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 68855e0070916dc672914fbc8ca3587a5d3c25f6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Windows 用 Network Watcher Agent 仮想マシン拡張機能
 
 ## <a name="overview"></a>概要
 
-[Azure Network Watcher](https://review.docs.microsoft.com/azure/network-watcher/) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン拡張機能は、Azure 仮想マシンの一部の Network Watcher 機能に必要です。 これには、ネットワーク トラフィックのオンデマンドでのキャプチャなどの高度な機能が含まれます。
+[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) は、Azure ネットワークの監視に使用できる、ネットワーク パフォーマンスの監視、診断、および分析サービスです。 Network Watcher Agent 仮想マシン拡張機能は、オンデマンドでネットワーク トラフィックをキャプチャするためと、Azure 仮想マシンに関するその他の高度な機能を使用するための要件です。
+
 
 このドキュメントでは、Windows 用 Network Watcher Agent 仮想マシン拡張機能でサポートされているプラットフォームとデプロイ オプションについて詳しく説明します。
 
@@ -33,15 +34,15 @@ ms.lasthandoff: 12/08/2017
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Windows 用の Network Watcher Agent 拡張機能は、Windows Server 2008 R2、2012、2012 R2、2016 の各リリースで実行できます。 現時点では、Nano Server はサポートされていません。
+Windows 用の Network Watcher Agent 拡張機能は、Windows Server 2008 R2、2012、2012 R2、2016 の各リリースで実行できます。 Nano Server はサポートされていません。
 
 ### <a name="internet-connectivity"></a>インターネット接続
 
-一部の Network Watcher Agent 機能では、ターゲット仮想マシンがインターネットに接続されている必要があります。 送信接続を確立できない場合、一部の Network Watcher Agent 機能が正しく動作しなかったり、使用できなくなったりすることがあります。 詳細については、[Network Watcher のドキュメント](../../network-watcher/network-watcher-monitoring-overview.md)をご覧ください。
+一部の Network Watcher Agent 機能では、ターゲット仮想マシンがインターネットに接続されている必要があります。 発信接続を確立できなければ、Network Watcher Agent はパケット キャプチャをストレージ アカウントにアップロードできません。 詳細については、[Network Watcher のドキュメント](../../network-watcher/network-watcher-monitoring-overview.md)をご覧ください。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Network Watcher Agent 拡張機能のスキーマを示しています。 現時点では、この拡張機能はユーザーが指定した設定を必要とせず、サポートもしていません。既定の構成が使用されます。
+次の JSON は、Network Watcher Agent 拡張機能のスキーマを示しています。 この拡張機能はユーザーが指定した設定を必要とせず、サポートもしていません。既定の構成が使用されます。
 
 ```json
 {
@@ -73,27 +74,28 @@ Windows 用の Network Watcher Agent 拡張機能は、Windows Server 2008 R2、
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Network Watcher Agent 拡張機能を実行できます。
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用して、Azure Resource Manager テンプレートのデプロイ時に Network Watcher Agent 拡張機能を実行できます。
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-`Set-AzureRmVMExtension` コマンドを使用して、Network Watcher Agent 仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。
+`Set-AzureRmVMExtension` コマンドを使用して、Network Watcher Agent 仮想マシン拡張機能を既存の仮想マシンにデプロイします。
 
 ```powershell
-Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup1" `
-                       -Location "WestUS" `
-                       -VMName "myVM1" `
-                       -Name "networkWatcherAgent" `
-                       -Publisher "Microsoft.Azure.NetworkWatcher" `
-                       -Type "NetworkWatcherAgentWindows" `
-                       -TypeHandlerVersion "1.4"
+Set-AzureRmVMExtension `
+  -ResourceGroupName "myResourceGroup1" `
+  -Location "WestUS" `
+  -VMName "myVM1" `
+  -Name "networkWatcherAgent" `
+  -Publisher "Microsoft.Azure.NetworkWatcher" `
+  -Type "NetworkWatcherAgentWindows" `
+  -TypeHandlerVersion "1.4"
 ```
 
 ## <a name="troubleshooting-and-support"></a>トラブルシューティングとサポート
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal または Azure PowerShell モジュールを使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure PowerShell モジュールを使用して次のコマンドを実行します。
+Azure Portal と PowerShell を使用して、拡張機能のデプロイ状態に関するデータを取得できます。 特定の VM での拡張機能のデプロイ状態を確認するには、Azure PowerShell モジュールを使用して次のコマンドを実行します。
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent

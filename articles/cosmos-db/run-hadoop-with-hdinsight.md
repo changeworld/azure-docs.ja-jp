@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8789f08a37466862120dda88a0bce7da3e9a91
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e69edcae53b9e6614cb02932abd1e2022c558a14
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Azure Cosmos DB と HDInsight を使用した Apache Hive、Pig、または Hadoop ジョブの実行
 このチュートリアルでは、Azure Cosmos DB の Hadoop コネクタを使用して、[Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。 Cosmos DB の Hadoop コネクタを使用すると、Cosmos DB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。 このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に Cosmos DB を使用します。
@@ -89,7 +89,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
         <tr><td>サブスクリプション名</td>
             <td>複数の Azure サブスクリプションがある場合は、HDInsight クラスターをホストするサブスクリプションを選択します。 </td></tr>
     </table>
-5. **[クラスターの種類の選択]** をクリックし、以下のプロパティを、指定された値に設定します。
+5. [クラスターの種類の選択] ** をクリックし、以下のプロパティを、指定された値に設定します。
 
     <table border='1'>
         <tr><td>クラスターの種類</td><td><strong>Hadoop</strong></td></tr>
@@ -118,7 +118,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
      <table border='1'>
          <tr><th>プロパティ</th><th>値</th></tr>
-         <tr><td>名前</td>
+         <tr><td>Name</td>
              <td>スクリプト アクションの名前を指定します。</td></tr>
          <tr><td>スクリプト URI</td>
              <td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</br></br>
@@ -133,7 +133,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
              <td>チェック ボックスをオンにして、Zookeeper に対して PowerShell スクリプトを実行します。</br></br>
              <strong>不要です</strong>。
              </td></tr>
-         <tr><td>パラメーター</td>
+         <tr><td>parameters</td>
              <td>スクリプトで必要な場合は、パラメーターを指定します。</br></br>
              <strong>パラメーターは不要です</strong>。</td></tr>
      </table>
@@ -161,7 +161,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
     ![図: Azure PowerShell][azure-powershell-diagram]
 
-## <a name="RunHive"></a>手順 3: Cosmos DB と HDInsight を使用して Hive ジョブを実行する
+## <a name="RunHive"></a>手順 3: Azure Cosmos DB と HDInsight を使用して Hive ジョブを実行する
 > [!IMPORTANT]
 > < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
 >
@@ -178,7 +178,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
         $clusterName = "<HDInsightClusterName>"
 2. <p>クエリ文字列の作成から始めましょう。 作成する Hive クエリでは、Azure Cosmos DB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい Azure Cosmos DB コレクションに格納します。</p>
 
-    <p>まず、Azure Cosmos DB コレクションから Hive テーブルを作成します。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid だけにドキュメントをトリミングするためのオプションである DocumentDB.query パラメーターが含まれていることを確認してください。</p>
+    <p>まず、Azure Cosmos DB コレクションから Hive テーブルを作成します。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid だけにドキュメントをトリミングするためのオプションである query パラメーターが含まれていることを確認してください。</p>
 
    > [!NOTE]
    > **DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
@@ -187,7 +187,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
         '*DocumentDB.inputCollections*' = '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*' A1A</br> The collection names are separated without spaces, using only a single comma.
 
-        # Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
+        # Create a Hive table using data from Azure Cosmos DB. Pass Azure Cosmos DB the query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "drop table DocumentDB_timestamps; "  +
                             "create external table DocumentDB_timestamps(id string, ts BIGINT) "  +
                             "stored by 'com.microsoft.azure.documentdb.hive.DocumentDBStorageHandler' "  +
@@ -207,7 +207,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
    >
    >
 
-       # Create a Hive table for the output data to DocumentDB.
+       # Create a Hive table for the output data to Azure Cosmos DB.
        $queryStringPart2 = "drop table DocumentDB_analytics; " +
                              "create external table DocumentDB_analytics(Month INT, Day INT, Hour INT, Minute INT, Total INT) " +
                              "stored by 'com.microsoft.azure.documentdb.hive.DocumentDBStorageHandler' " +
@@ -276,7 +276,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
         # Provide HDInsight cluster name where you want to run the Pig job.
         $clusterName = "Azure HDInsight Cluster Name"
 2. <p>クエリ文字列の作成から始めましょう。 作成する Pig クエリでは、Azure Cosmos DB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい Azure Cosmos DB コレクションに格納します。</p>
-    <p>まず、Cosmos DB から HDInsight にドキュメントを読み込みます。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
+    <p>まず、Cosmos DB から HDInsight にドキュメントを読み込みます。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid だけにドキュメントをトリミングするためのオプションである DocumentDB.query パラメーターに、クエリが追加されていることを確認してください。</p>
 
    > [!NOTE]
    > 次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
@@ -286,7 +286,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
     ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。 ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
 
-        # Load data from Cosmos DB. Pass DocumentDB query to filter transferred data to _rid and _ts.
+        # Load data from Cosmos DB. Pass the Azure Cosmos DB query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "DocumentDB_timestamps = LOAD '<DocumentDB Endpoint>' USING com.microsoft.azure.documentdb.pig.DocumentDBLoader( " +
                                                         "'<DocumentDB Primary Key>', " +
                                                         "'<DocumentDB Database Name>', " +
@@ -391,13 +391,13 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
       ![MapReduce クエリの結果][image-mapreduce-query-results]
 
 ## <a name="NextSteps"></a>次のステップ
-ご利用ありがとうございます。 Azure Cosmos DB および HDInsight を使用して最初の Hive、Pig、および MapReduce ジョブを実行しました。
+お疲れさまでした。 Azure Cosmos DB および HDInsight を使用して最初の Hive、Pig、および MapReduce ジョブを実行しました。
 
 Microsoft では Hadoop コネクタをオープン ソース化しています。 関心がある場合は、[GitHub][github] に投稿できます。
 
 詳細については、次の記事を参照してください。
 
-* [DocumentDB を使用した Java アプリケーションの開発][documentdb-java-application]
+* [Azure Cosmos DB を使用した Java アプリケーションの開発][sql-api-java-application]
 * [HDInsight での Hadoop 用 Java MapReduce プログラムの開発][hdinsight-develop-deploy-java-mapreduce]
 * [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
 * [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
@@ -409,14 +409,14 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 [apache-hadoop-doc]: http://hadoop.apache.org/docs/current/
 [apache-hive]: http://hive.apache.org/
 [apache-pig]: http://pig.apache.org/
-[getting-started]: documentdb-get-started.md
+[getting-started]: sql-api-get-started.md
 
 [azure-portal]: https://portal.azure.com/
 [azure-powershell-diagram]: ./media/run-hadoop-with-hdinsight/azurepowershell-diagram-med.png
 
 [hdinsight-samples]: http://portalcontent.blob.core.windows.net/samples/documentdb-hdinsight-samples.zip
 [github]: https://github.com/Azure/azure-documentdb-hadoop
-[documentdb-java-application]: documentdb-java-application.md
+[sql-api-java-application]: sql-api-java-application.md
 [import-data]: import-data.md
 
 [hdinsight-custom-provision]: ../hdinsight/hdinsight-provision-clusters.md
