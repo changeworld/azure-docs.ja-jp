@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2017
+ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: b4a01752cf2658bcc8dea663462336ca5c610d70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4037fc869d3e26d52f33baa62c626f4621cd11f5
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="replicas-and-instances"></a>レプリカとインスタンス 
 この記事では、ステートフル サービスのレプリカとステートレス サービスのインスタンスのライフサイクルの概要を示します。
@@ -140,7 +140,7 @@ Service Fabric がレプリカをバックアップに戻す必要がある場�
 > [Reliable Actors](service-fabric-reliable-actors-introduction.md) や [Reliable Services](service-fabric-reliable-services-introduction.md) など、抽象度の高いプログラミング モデルの場合、レプリカ ロールの概念は開発者には隠されています。 Actors では、ロールの概念は不要です。 Services では、ほとんどのシナリオで大幅に簡略化されます。
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Service Fabric の概念について詳しくは、次の記事をご覧ください。
 
 [Reliable Services のライフサイクル - C#](service-fabric-reliable-services-lifecycle.md)

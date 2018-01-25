@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: ec28a9873b6a1d60ee3c13a18a0c68a24e8a067c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: cced7b8253a45d990371d8f95fe36b580c2debbf
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Azure Data Catalog での検索条件の保存とデータ資産のピン留め
 ## <a name="introduction"></a>はじめに
@@ -82,5 +82,5 @@ Data Catalog ポータルのホーム ページには **[マイ アセット]** 
 
 ![ホーム ページの [マイ アセット] セクション](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 Azure Data Catalog には、必要なデータ ソースをより簡単に検出できるようにする機能が用意されています。これによりあなたや組織のその他のメンバーは、データの検索にかかる時間を短縮し、データの処理により多くの時間を費やすことができます。 保存した検索条件とピン留めされたデータ資産は、このような中核となる機能に基づいているため、ユーザーは繰り返し使用するデータ ソースを簡単に特定できます。

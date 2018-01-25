@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/06/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: bcf3095e8e66ea9b3c49919dadb8f7c342a49006
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 8259c1bd52cfd0641148dc09404debaf59640b45
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合は、成功したコピー操作の詳細 (書き込まれたデータの量など) を成功電子メールで送信します。 コピー アクティビティが失敗した場合は、コピー失敗の詳細 (エラー メッセージなど) を失敗電子メールで送信します。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
@@ -292,7 +292,7 @@ C# プロジェクトで、**EmailRequest** という名前のクラスを作成
     }
 ```
 ## <a name="create-email-workflow-endpoints"></a>電子メール ワークフロー エンドポイントを作成する
-電子メール送信をトリガーするには、[Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) を使用してワークフローを定義します。 ロジック アプリ ワークフローの作成の詳細については、[ロジック アプリを作成する方法](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。 
+電子メール送信をトリガーするには、[Logic Apps](../logic-apps/logic-apps-overview.md) を使用してワークフローを定義します。 ロジック アプリ ワークフローの作成の詳細については、[ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 
 
 ### <a name="success-email-workflow"></a>成功電子メールのワークフロー 
 `CopySuccessEmail` という名前のロジック アプリ ワークフローを作成します。 ワークフロー トリガーを `When an HTTP request is received` として定義し、`Office 365 Outlook – Send an email` のアクションを追加します。
@@ -363,7 +363,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 このパイプラインでは、次の機能を使用します。
 
-- パラメーター
+- parameters
 - Web アクティビティ
 - アクティビティの依存関係
 - アクティビティからの出力を後続のアクティビティへの入力として使用する
@@ -447,7 +447,7 @@ static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
 ```
 client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
 ```
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 パイプラインの最初のセクションでは、パラメーターを定義します。 
 
 - sourceBlobContainer - ソース BLOB データセットによって使用されるパイプライン内のパラメーターです。
@@ -735,7 +735,7 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]

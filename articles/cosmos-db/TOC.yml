@@ -248,7 +248,7 @@
           items:
             - name: MongoDB アカウントへの接続
               href: connect-mongodb-account.md
-            - name: MongoChef の使用
+            - name: Studio 3T の使用
               href: mongodb-mongochef.md
             - name: Robomongo の使用
               href: mongodb-robomongo.md

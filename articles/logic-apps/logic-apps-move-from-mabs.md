@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: df26e4669158e5aa9e3b9a7af888d0dbbba273dd
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 01c5376ac5ba9125eede9deb5ee0a7a006a91bb4
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="move-from-biztalk-services-to-logic-apps"></a>BizTalk Services から Logic Apps に移動する
 
@@ -123,9 +123,9 @@ BizTalk Services とは異なり、これらのアクションはトランスポ
 Logic Apps は、[Azure Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md) および [Operations Management Suite B2B ソリューション](../logic-apps/logic-apps-monitor-b2b-message.md)でより豊富な追跡および監視機能 (移動中に監視するためのモバイル アプリを含む) を提供します。
 
 ## <a name="high-availability"></a>高可用性
-BizTalk Services で高可用性 (HA) を実現するには、処理の負荷を共有するために、特定のリージョンで複数のインスタンスを使用します。 ロジック アプリにはリージョン内 HA が組み込まれており、追加コストなしで使用できます。 BizTalk Services の B2B 処理のためのリージョン外障害復旧には、バックアップおよび復元プロセスが必要です。 Logic Apps では、リージョン間アクティブ/パッシブ [DR 機能](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md)が提供されます。これにより、ビジネス継続性のための異なるリージョン内の統合アカウントにわたる B2B データの同期が可能になります。
+BizTalk Services で高可用性 (HA) を実現するには、処理の負荷を共有するために、特定のリージョンで複数のインスタンスを使用します。 ロジック アプリにはリージョン内 HA が組み込まれており、追加コストなしで使用できます。 BizTalk Services の B2B 処理のためのリージョン外ディザスター リカバリーには、バックアップおよび復元プロセスが必要です。 Logic Apps では、リージョン間アクティブ/パッシブ [DR 機能](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md)が提供されます。これにより、ビジネス継続性のための異なるリージョン内の統合アカウントにわたる B2B データの同期が可能になります。
 
 ## <a name="next"></a>次へ
-* [Logic Apps とは](logic-apps-what-are-logic-apps.md)
-* [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)または[既製のテンプレート](logic-apps-create-logic-apps-from-templates.md)の使い方に関するページ  
+* [Logic Apps とは](logic-apps-overview.md)
+* [初めてのロジック アプリの作成](quickstart-create-first-logic-app-workflow.md)または[既製のテンプレート](logic-apps-create-logic-apps-from-templates.md)の使い方に関するページ  
 * ロジック アプリで[利用できるすべてのコネクタの一覧](../connectors/apis-list.md)

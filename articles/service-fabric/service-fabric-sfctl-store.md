@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2af6dff4ffcdf295731f2d61b5f9e35af40615e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d4ca3c35c34736c3b4824f956a6a72002c891877
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-store"></a>sfctl store
 クラスター イメージ ストアで基本的なファイル レベルの操作を実行します。
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|Description|
+|コマンド|[説明]|
 | --- | --- |
 |    削除| 既存のイメージ ストアのコンテンツを削除します。|
 |    root-info| イメージ ストアのルートにあるコンテンツ情報を取得します。|
@@ -39,20 +39,20 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --content-path [必須]| イメージ ストア内のファイルまたはフォルダーへのルートからの相対パス。|
 | --timeout -t          | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
 | --output -o           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose             | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-store-stat"></a>sfctl store stat
 イメージ ストアのコンテンツ情報を取得します。
@@ -61,21 +61,21 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --content-path [必須]| イメージ ストア内のファイルまたはフォルダーへのルートからの相対パス。|
 | --timeout -t          | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
 | --output -o           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose             | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

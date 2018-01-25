@@ -3,7 +3,7 @@ title: "Azure AD Connect 同期: アーキテクチャの概要 | Microsoft Docs
 description: "このトピックでは、Azure AD Connect 同期のアーキテクチャと使用される用語について説明します。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 465bcbe9-3bdd-4769-a8ca-f8905abf426d
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: cc6c772f8f5cc86f8b975ac7835ffff85ef3435c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6a6150dca80a137e9787d943bfe9abb4224e6fe6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect sync: アーキテクチャの概要
 このトピックでは、Azure AD Connect 同期の基本的なアーキテクチャについて説明します。多くの点で、前身の MIIS 2003、ILM 2007、FIM 2010 と似ています。 Azure AD Connect sync は、これらのテクノロジが進化したものです。 これらの以前のテクノロジのいずれかに慣れていれば、このトピックの内容も既によくご存知のことと思われます。 同期テクノロジについて初めて学ぶ場合は、このトピックを読むことをお勧めします。 ただし、このトピックの内容を隅々まで理解しなくても、(このトピックでは同期エンジンと呼んでいる) Azure AD Connect 同期を問題なくカスタマイズできます。
@@ -142,7 +142,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="sync-engine-identity-management-process"></a>同期エンジンの ID 管理プロセス
 ID 管理プロセスは、異なる接続されたデータ ソース間で ID 情報を更新する方法を制御します。 ID 管理は 3 つのプロセスで行われます。
 
-* インポート
+* [インポート]
 * 同期
 * エクスポート
 
@@ -253,7 +253,7 @@ ID 管理プロセスは、異なる接続されたデータ ソース間で ID 
 
 たとえば、同期エンジンが接続されたデータ ソースに対して属性 C をエクスポートし、その値が 5 である場合、同期エンジンはエクスポート ステータス メモリに C = 5 を格納します。 同期エンジンはこの値が永続的にオブジェクトに適用されていないものとみなすので (つまり、接続されたデータ ソースから最近別の値がインポートされていない限り)、このオブジェクトに対する追加の各エクスポートでは、接続されたデータ ソースへの C = 5 のエクスポートが再度試みられます。 オブジェクトのインポート操作で C = 5 を受信すると、エクスポート メモリはクリアされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 59f718e0e547ed9374152985e706acad4421b35b
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 30e606154830b867382ea1ea439b97749370a1f6
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
-Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストール、ウイルス対策保護、または Docker 構成が必要な場合、VM 拡張機能を使用して、これらのタスクを実行できます。 Azure VM 拡張機能は、Azure CLI、PowerShell、Azure Resource Manager テンプレート、および Azure Portal を使用して実行できます。 拡張機能は、新しい仮想マシン デプロイにバンドルすることも、既存の任意のシステムに対して実行することもできます。
+Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストール、ウイルス対策保護、または Docker 構成が必要な場合、VM 拡張機能を使用して、これらのタスクを実行できます。 Azure VM 拡張機能は、Azure CLI、PowerShell、Azure Resource Manager テンプレート、および Azure Portal を使用して実行できます。 拡張機能は、新しい仮想マシンの展開にバンドルすることも、既存の任意のシステムに対して実行することもできます。
 
 このドキュメントでは、VM 拡張機能の概要と Azure VM 拡張機能を使用する場合の前提条件を示し、VM 拡張機能を検出、管理、および削除する方法についてのガイダンスを提供します。 構成がそれぞれ固有の VM 拡張機能が多数あるため、このドキュメントでは一般的な情報を示します。 拡張機能に固有の詳細情報については、それぞれの拡張機能のドキュメントをご覧ください。
 
@@ -33,7 +33,7 @@ Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ
 
 - Linux 用の DSC 拡張機能を使用して、仮想マシンに PowerShell Desired State Configuration を適用します。 詳細については、「[Azure Desired State configuration extension](https://github.com/Azure/azure-linux-extensions/tree/master/DSC)」(Azure Desired State Configuration 拡張機能) を参照してください。
 - Microsoft Monitoring Agent の VM 拡張機能を使用して仮想マシンの監視を構成します。 詳細については、[Linux VM の監視方法](tutorial-monitoring.md)に関する記事を参照してください。
-- Datadog 拡張機能を使用して Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
+- Datadog 拡張機能を使って Azure インフラストラクチャの監視を構成します。 詳細については、[Datadog のブログ](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)を参照してください。
 - Docker VM 拡張機能を使用して Azure 仮想マシンで Docker ホストを構成します。 詳細については、[Docker VM 拡張機能](dockerextension.md)に関するページを参照してください。
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、仮想マシンで実行する任意の Bash スクリプトを使用できます。 カスタム スクリプトは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](extensions-customscript.md)に関するページを参照してください。
@@ -47,7 +47,7 @@ Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ
 
 Azure VM エージェントは、Azure 仮想マシンと Azure ファブリック コントローラーとの相互動作を管理します。 VM エージェントは、Azure Virtual Machines のデプロイと管理の多くの機能面を担当します (VM 拡張機能の実行など)。 Azure VM エージェントは、Azure Marketplace イメージにプレインストールされており、サポートされているオペレーティング システムに手動でインストールすることができます。
 
-サポートされているオペレーティング システムおよびインストール手順については、「[仮想マシンのエージェントおよび拡張機能について](../windows/classic/agents-and-extensions.md)」を参照してください。
+サポートされているオペレーティング システムおよびインストール手順については、「[仮想マシンのエージェントおよび拡張機能について](agent-user-guide.md)」を参照してください。
 
 ## <a name="discover-vm-extensions"></a>VM 拡張機能の検出
 
@@ -93,7 +93,7 @@ VM 拡張機能は、Azure Portal から既存の仮想マシンに適用でき�
 
 ![カスタム スクリプト拡張機能のインストール](./media/extensions-features/installscriptextensionlinux.png)
 
-### <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
+### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
 VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 テンプレートを使用して拡張機能をデプロイする場合は、完全に構成された Azure デプロイを作成できます。 たとえば、次の JSON は Resource Manager テンプレートからの抜粋です。 このテンプレートは負荷分散された一連の仮想マシンと Azure SQL データベースをデプロイし、各 VM に .NET Core アプリケーションをインストールします。 VM 拡張機能はソフトウェアのインストールに対応します。
 
@@ -235,7 +235,7 @@ Azure Portal で次の手順を使用して拡張機能を削除できます。
 4. **[アンインストール]** を選択します。
 
 ## <a name="common-vm-extension-reference"></a>一般的な VM 拡張機能のリファレンス
-| 拡張機能の名前 | 説明 | 詳細情報 |
+| 拡張機能の名前 | [説明] | 詳細情報 |
 | --- | --- | --- |
 | Linux 用カスタム スクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します。 |[Linux 用カスタム スクリプト拡張機能](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |
 | Docker 拡張機能 |リモートの Docker コマンドをサポートする Docker デーモンをインストールします。 |[Docker VM 拡張機能](dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) |

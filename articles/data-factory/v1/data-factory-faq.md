@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 35b8a443f9105fd2c39445c48b6ddf02cf357022
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2806a65c55f019da5842f29c6ef99dec63ae1bd0
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -58,6 +58,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 * **Azure Resource Manager テンプレート** : 詳細については、「 [チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-arm.md) 」を参照してください。
 
 ### <a name="can-i-rename-a-data-factory"></a>Data Factory の名前を変更できますか。
+
 いいえ。 他の Azure のリソースと同様に、Azure Data Factory の名前は変更できません。
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Azure サブスクリプション間でデータ ファクトリを移動できますか。
@@ -68,7 +69,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 ### <a name="what-are-the-compute-environments-supported-by-data-factory"></a>Data Factory ではどのようなコンピューティング環境がサポートされますか。
 次の表は、Data Factory でサポートされているコンピューティング環境と、その環境で実行できるアクティビティの一覧です。
 
-| Compute 環境 | アクティビティ |
+| Compute 環境 | activities |
 | --- | --- |
 | [On-demand HDInsight クラスター](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)または[独自の HDInsight クラスター](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md)、[Hive](data-factory-hive-activity.md)、[Pig](data-factory-pig-activity.md)、[MapReduce](data-factory-map-reduce.md)、[Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |

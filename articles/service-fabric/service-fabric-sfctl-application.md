@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 82d2024f567768e784d9d8697784d06b56bc08ed
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9008a29a5ca94b92669277ab3a2f68b3f129396b
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-application"></a>sfctl application
 アプリケーションおよびアプリケーションの種類を作成、削除、および管理します。
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|説明|
+|コマンド|[説明]|
 | --- | --- |
 | create       | 指定された説明を使用して、Service Fabric アプリケーションを作成します。|
 | 削除       | 既存の Service Fabric アプリケーションを削除します。|
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/03/2017
 | manifest     | アプリケーションの種類を記述するマニフェストを取得します。|
 | provision    | Service Fabric アプリケーションの種類をプロビジョニングするか、クラスターに登録します。|
 | report-health| Service Fabric アプリケーションの正常性レポートを送信します。|
-| type         | 指定した名前と完全に一致する Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。|
+| 型         | 指定した名前と完全に一致する Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。|
 | type-list    | Service Fabric クラスター内のアプリケーションの種類の一覧を取得します。|
 | unprovision  | Service Fabric アプリケーションの種類をクラスターから削除または登録解除します。|
 | upgrade      | Service Fabric クラスターで、アプリケーションのアップグレードを開始します。|
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/03/2017
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --app-name    [必須]| 'fabric:' URI スキームを含むアプリケーションの名前。|
 | --app-type    [必須]| アプリケーション マニフェストで検出されたアプリケーションの種類名。|
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/03/2017
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug              | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h            | このヘルプ メッセージを表示して終了します。|
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/03/2017
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-id [必須]| アプリケーションの ID。 これは通常、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、アプリケーション名が 'fabric://myapp/app1' の場合、6.0 以降ではアプリケーション ID は 'myapp~app1' になり、前のバージョンでは 'myapp/app1' になります。|
 | --force-remove          | 正常なシャットダウン シーケンスを経由せずに、Service Fabric アプリケーションまたはサービスを強制的に削除します。 このパラメーターを使用して、レプリカの正常な終了を妨げるサービス コードでの問題により、削除がタイムアウトしたアプリケーションまたはサービスを強制的に削除することができます。|
@@ -89,20 +89,20 @@ ms.lasthandoff: 11/03/2017
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                 | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h               | このヘルプ メッセージを表示して終了します。|
 | --output -o             | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query                 | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose               | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose               | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-application-deployed"></a>sfctl application deployed
 Service Fabric ノードにデプロイされたアプリケーションに関する情報を取得します。
      
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-id [必須]| アプリケーションの ID。 これは通常、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、アプリケーション名が 'fabric://myapp/app1' の場合、6.0 以降ではアプリケーション ID は 'myapp~app1' になり、前のバージョンでは 'myapp/app1' になります。|
 | --node-name    [必須]| ノード名。|
@@ -110,13 +110,13 @@ Service Fabric ノードにデプロイされたアプリケーションに関�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                 | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h               | このヘルプ メッセージを表示して終了します。|
 | --output -o             | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query                 | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose               | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose               | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-application-health"></a>sfctl application health
 Service Fabric アプリケーションの正常性を取得します。
@@ -125,7 +125,7 @@ Service Fabric アプリケーションの正常性の状態を返します。 �
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-id                 [必須]| アプリケーションの ID。 これは通常、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、アプリケーション名が 'fabric://myapp/app1' の場合、6.0 以降ではアプリケーション ID は 'myapp~app1' になり、前のバージョンでは 'myapp/app1' になります。|
 | --deployed-applications-health-state-filter| 正常性の状態に基づくアプリケーションの正常性クエリの結果で返されるデプロイされたアプリケーションの正常性の状態オブジェクトをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するデプロイ済みアプリケーションのみが返されます。 すべてのデプロイ済みアプリケーションは、集計された正常性の状態を評価するために使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のデプロイ済みアプリケーションの正常性の状態が返されます。 - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。 - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。 - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。 - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。 - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。 - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。|
@@ -136,13 +136,13 @@ Service Fabric アプリケーションの正常性の状態を返します。 �
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                                 | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                               | このヘルプ メッセージを表示して終了します。|
 | --output -o                             | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query                                 | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose                               | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose                               | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-application-info"></a>sfctl application info
 Service Fabric アプリケーションの情報を取得します。
@@ -151,7 +151,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-id      [必須]| アプリケーションの ID。 これは通常、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、アプリケーション名が 'fabric://myapp/app1' の場合、6.0 以降ではアプリケーション ID は 'myapp~app1' になり、前のバージョンでは 'myapp/app1' になります。|
 | --exclude-application-parameters| アプリケーションのパラメーターを結果から除外するかどうかを指定するフラグ。|
@@ -159,13 +159,13 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                      | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                    | このヘルプ メッセージを表示して終了します。|
 | --output -o                  | 出力形式。  使用できる値は、json、jsonc、table、tsv です。             既定値は json です。|
 | --query                      | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose                    | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose                    | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-application-list"></a>sfctl application list
 パラメーターとして指定されたフィルターに一致する Service Fabric クラスターで作成されたアプリケーションの一覧を取得します。
@@ -174,7 +174,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 |--application-definition-kind-filter| アプリケーションのクエリ操作のために ApplicationDefinitionKind でフィルター処理するために使用されます。 - Default - 既定値。 ApplicationDefinitionKind 値の入力と一致するフィルター。 値は 0 です。 - All - ApplicationDefinitionKind 値の入力と一致するフィルター。 値は 65535 です。 - ServiceFabricApplicationDescription - ApplicationDefinitionKind 値 ServiceFabricApplicationDescription の入力と一致するフィルター。 値は 1 です。 - Compose - ApplicationDefinitionKind 値 Compose の入力と一致するフィルター。 値は 2 です。 既定値: 65535。|
 | --application-type-name      | クエリを実行するアプリケーションをフィルター処理するために使用されるアプリケーションの種類名。 この値にアプリケーションの種類のバージョンを含めることはできません。|
@@ -184,13 +184,13 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                      | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                    | このヘルプ メッセージを表示して終了します。|
 | --output -o                  | 出力形式。  使用できる値は、json、jsonc、table、tsv です。             既定値は json です。|
 | --query                      | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose                    | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose                    | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-application-load"></a>sfctl application load
 Service Fabric アプリケーションの負荷情報を取得します。
@@ -198,19 +198,19 @@ Service Fabric アプリケーションの負荷情報を取得します。
 Service Fabric クラスターで作成された、または作成中の、パラメーターとして指定されているものと同じ名前のアプリケーションの負荷情報を返します。 応答には、名前、最小ノード数、最大ノード数、アプリが現在使用しているノードの数、およびアプリケーションの負荷メトリック情報が含まれます。
 
 ### <a name="arguments"></a>引数
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 |--application-id [必須]| アプリケーションの ID。 これは通常、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、アプリケーション名が 'fabric://myapp/app1' の場合、6.0 以降ではアプリケーション ID は 'myapp~app1' になり、前のバージョンでは 'myapp/app1' になります。 |
 | --timeout -t               | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 |--debug                    | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
     --help -h                  | このヘルプ メッセージを表示して終了します。|
     --output -o                | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
     --query                    | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-    --verbose                  | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+    --verbose                  | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-application-manifest"></a>sfctl application manifest
 アプリケーションの種類を記述するマニフェストを取得します。
@@ -219,7 +219,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-type-name    [必須]| アプリケーションの種類名。|
 | --application-type-version [必須]| アプリケーションの種類のバージョン。|
@@ -227,7 +227,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                           | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                         | このヘルプ メッセージを表示して終了します。|
@@ -242,14 +242,14 @@ Service Fabric アプリケーションの種類をプロビジョニングす�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-type-build-path [必須]| アプリケーション パッケージへのイメージ ストアの相対パス。|
 | --timeout -t                         | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                              | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                            | このヘルプ メッセージを表示して終了します。|
@@ -265,7 +265,7 @@ Service Fabric クラスターでプロビジョニングされた、または�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-type-name [必須]| アプリケーションの種類名。|
 | --continuation-token           | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。|
@@ -275,13 +275,13 @@ Service Fabric クラスターでプロビジョニングされた、または�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                        | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                      | このヘルプ メッセージを表示して終了します。|
 | --output -o                    | 出力形式。  使用できる値は、json、jsonc、table、tsv です。               既定値は json です。|
 | --query                        | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose                      | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose                      | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-application-unprovision"></a>sfctl application unprovision
 Service Fabric アプリケーションの種類をクラスターから削除または登録解除します。
@@ -290,7 +290,7 @@ Service Fabric アプリケーションの種類をクラスターから削除�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --application-type-name    [必須]| アプリケーションの種類名。|
 | --application-type-version [必須]| アプリケーションの種類のバージョン。|
@@ -298,7 +298,7 @@ Service Fabric アプリケーションの種類をクラスターから削除�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                           | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                         | このヘルプ メッセージを表示して終了します。|
@@ -313,7 +313,7 @@ Service Fabric クラスターで、アプリケーションのアップグレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --app-id             [必須]| アプリケーションの ID。 これは通常、'fabric:' URI スキームのないアプリケーションの完全な名前です。 バージョン 6.0 以降では、階層名は '~' 文字で区切られます。 たとえば、アプリケーション名が 'fabric://myapp/app1' の場合、6.0 以降ではアプリケーション ID は 'myapp~app1' になり、前のバージョンでは 'myapp/app1' になります。|
 | --app-version [必須]| ターゲットとするアプリケーションのバージョン。|
@@ -335,13 +335,13 @@ Service Fabric クラスターで、アプリケーションのアップグレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                     | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                   | このヘルプ メッセージを表示して終了します。|
 | --output -o                 | 出力形式。  使用できる値は、json、jsonc、table、tsv です。            既定値は json です。|
 | --query                     | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose                   | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose                   | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-application-upload"></a>sfctl application upload
 Service Fabric アプリケーション パッケージをイメージ ストアにコピーします。
@@ -350,7 +350,7 @@ Service Fabric アプリケーション パッケージをイメージ ストア
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --path [必須]| ローカル アプリケーション パッケージへのパス。|
 |--imagestore-string| アプリケーション パッケージのアップロード先のイメージ ストア。  既定値: fabric:ImageStore。|
@@ -358,14 +358,14 @@ Service Fabric アプリケーション パッケージをイメージ ストア
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug       | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h     | このヘルプ メッセージを表示して終了します。|
 | --output -o   | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query       | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose     | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose     | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

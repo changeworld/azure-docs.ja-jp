@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 39e283e4b0bb5e50d1268e1b2cac53bf9ee71028
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: e326a512bdb9c30068845b51e86795a410e6c9b3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -184,7 +184,7 @@ ms.lasthandoff: 11/02/2017
 3. Azure ストレージ アカウントのキーを **[アカウント キー]**に入力します。
 4. **[デプロイ]** をクリックして **AzureStorageLinkedService** をデプロイします。
 
-## <a name="create-datasets"></a>データセットを作成します
+## <a name="create-datasets"></a>データセットを作成する
 このステップでは、コピー操作 (オンプレミスの SQL Server Database => Azure BLOB ストレージ) の入力および出力データを表す入出力データ セットを作成します。 データセットを作成する前に、以下の手順を実行します (詳細な手順はリストの後にあります)。
 
 * リンクされたサービスとしてデータ ファクトリに追加した SQL Server Database 内に "**emp**" という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。
@@ -239,7 +239,7 @@ ms.lasthandoff: 11/02/2017
         }
     }     
     ```     
-   次の点に注意してください。
+   以下の点に注意してください。
 
    * **type** は **SqlServerTable** に設定されています。
    * **tablename** は **emp** に設定されています。
@@ -274,7 +274,7 @@ ms.lasthandoff: 11/02/2017
         }
      }
     ```   
-   次の点に注意してください。
+   以下の点に注意してください。
 
    * **type** は **AzureBlob** に設定されています。
    * **linkedServiceName** を **AzureStorageLinkedService** (手順 2. で作成したリンクされたサービス) に設定します。
@@ -356,14 +356,14 @@ ms.lasthandoff: 11/02/2017
    >
    >
 
-   次の点に注意してください。
+   以下の点に注意してください。
 
    * activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。
    * アクティビティの**入力**を **EmpOnPremSQLTable** に設定し、**出力**を **OutputBlobTable** に設定します。
    * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink ** が指定されています。
    * **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ `select * from emp` を指定します。
 
-   start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります  (例: 2014-10-14T16:32:41Z)。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
+   start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 (例: 2014-10-14T16:32:41Z)。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 
    **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 無期限でパイプラインを実行するには、**end** プロパティの値として **9/9/9999** を指定します。
 
@@ -412,6 +412,6 @@ ms.lasthandoff: 11/02/2017
 
    ![Azure ストレージ エクスプローラー](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Data Management Gateway の詳細については、「 [Data Management Gateway](data-factory-data-management-gateway.md) 」をご覧ください。
 * コピー アクティビティを使用して、ソース データ ストアからシンク データ ストアにデータを移動する方法については、 [Azure BLOB から Azure SQL へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) に関する記事をご覧ください。

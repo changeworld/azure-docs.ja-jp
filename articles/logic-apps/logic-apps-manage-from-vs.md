@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 12/19/2016
 ms.author: LADocs; klam
-ms.openlocfilehash: a5bf24de1a7a2b6d4c1ae6416c95d83ef7506da3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34ce65ec272c9fe5be8f95371179de092c5df2f3
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-your-logic-apps-with-visual-studio-cloud-explorer"></a>Visual Studio Cloud Explorer でロジック アプリを管理する
 
@@ -83,9 +83,9 @@ Cloud Explorer から、現在デプロイされているロジック アプリ�
 
 ![実行履歴の結果 (ステップの入力と出力)](./media/logic-apps-manage-from-vs/history.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)
+* [初めてのロジック アプリの作成](quickstart-create-first-logic-app-workflow.md)
 * [Visual Studio で Azure Logic Apps を作成してデプロイする](logic-apps-deploy-from-vs.md)
 * [一般的な例とシナリオを確認する](logic-apps-examples-and-scenarios.md)
 * [ビデオ: Azure Logic Apps を使用してビジネス プロセスを自動化する](http://channel9.msdn.com/Events/Build/2016/T694)

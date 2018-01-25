@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2af214a9aa3c67818e8ce64f204ebda32c35abc7
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5eeff271fea67cd859dff598cae0010cf3b8e13f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Service Fabric クラスターの選択、管理、および操作を行います。
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|説明|
+|コマンド|[説明]|
 | --- | --- |
 |    code-versions| Service Fabric クラスターでプロビジョニングされたファブリック コードのバージョンの一覧を取得します。|
 |    config-versions | Service Fabric クラスターでプロビジョニングされた Fabric Config のバージョンの一覧を取得します。|
@@ -52,7 +52,7 @@ Service Fabric クラスターの正常性を取得します。 正常性状態�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --applications-health-state-filter| 正常性状態に基づくクラスター正常性クエリの結果で返される、アプリケーション正常性状態オブジェクトをフィルター処理できます。 このパラメーターに指定可能な値には、HealthStateFilter 列挙型のメンバーまたはメンバーのビットごとの演算から取得した整数値が含まれます。 フィルターに一致するアプリケーションのみが返されます。  すべてのアプリケーションは、集計された正常性の状態を評価するために使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のアプリケーションの正常性の状態が返されます。 - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。 - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。 - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。 - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。 - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。 - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。|
 | --events-health-state-filter   | 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 集計された正常性の状態を評価するために、すべてのイベントが使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。 - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。 - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。 - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。 - Warning - HealthState 値が Warning の入力に一致するフィルター。  値は 4 です。 - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。 - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。|
@@ -63,13 +63,13 @@ Service Fabric クラスターの正常性を取得します。 正常性状態�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug                        | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                      | このヘルプ メッセージを表示して終了します。|
 | --output -o                    | 出力形式。  使用できる値は、json、jsonc、table、tsv です。                    既定値は json です。|
 | --query                        | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose                      | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose                      | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-cluster-manifest"></a>sfctl cluster manifest
 Service Fabric クラスター マニフェストを取得します。
@@ -78,19 +78,19 @@ Service Fabric クラスター マニフェストを取得します。 クラス
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --timeout -t| サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h| このヘルプ メッセージを表示して終了します。|
 | --output -o | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose| ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose| ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-cluster-provision"></a>sfctl cluster provision
 Service Fabric クラスターのコードまたは構成パッケージをプロビジョニングします。
@@ -98,7 +98,7 @@ Service Fabric クラスターのコードまたは構成パッケージを評�
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 |--cluster-manifest-file-path| クラスター マニフェスト ファイルのパス。|
 |    --code-file-path            | クラスター コード パッケージ ファイルのパス。|
@@ -106,13 +106,13 @@ Service Fabric クラスターのコードまたは構成パッケージを評�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h  | このヘルプ メッセージを表示して終了します。|
 | --output -o| 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose  | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose  | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-cluster-select"></a>sfctl cluster select
 Service Fabric クラスターのエンドポイントに接続します。
@@ -121,7 +121,7 @@ Service Fabric クラスターのエンドポイントに接続します。
 
 ### <a name="arguments"></a>引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --endpoint [必須]| ポートと HTTP または HTTPS プレフィックスを含むクラスター エンドポイント URL。|
 | --aad             | 認証に Azure Active Directory を使用します。|
@@ -133,13 +133,13 @@ Service Fabric クラスターのエンドポイントに接続します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 | --debug           | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h         | このヘルプ メッセージを表示して終了します。|
 | --output -o       | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query           | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose         | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose         | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-cluster-unprovision"></a>sfctl cluster unprovision
 Service Fabric クラスターのコードまたは構成パッケージをプロビジョニング解除します。
@@ -147,20 +147,20 @@ Service Fabric クラスターのコードまたは構成パッケージをプ�
 Service Fabric クラスターのコードまたは構成パッケージをプロビジョニング解除します。
 
 ### <a name="arguments"></a>引数
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 |--code-version  | クラスター コード パッケージのバージョン。|
 |    --config-version| クラスター マニフェストのバージョン。|
 |    --timeout -t    | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 |--debug         | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
  |   --help -h       | このヘルプ メッセージを表示して終了します。|
  |   --output -o     | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
  |   --query         | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
- |   --verbose       | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+ |   --verbose       | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 
 ## <a name="sfctl-cluster-upgrade"></a>sfctl cluster upgrade
@@ -168,7 +168,7 @@ Service Fabric クラスターのコードまたは構成バージョンのア�
 指定されたアップグレード パラメーターを検証し、パラメーターが有効であれば、Service Fabric クラスターのコードまたは構成バージョンのアップグレードを開始します。
 
 ### <a name="arguments"></a>引数
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 |    --app-health-map                      | アプリケーション名と異常の最大パーセンテージのペアの JSON でエンコードされたディクショナリ。この異常のパーセンテージを超えるとエラーが発生します。|
  |   --app-type-health-map                 | アプリケーションの種類名と異常の最大パーセンテージのペアの JSON でエンコードされたディクショナリ。このパーセンテージを超えるとエラーが発生します。|
@@ -192,14 +192,14 @@ Service Fabric クラスターのコードまたは構成バージョンのア�
  |   --warning-as-error                    | Warnings は Error と同じ重大度で扱われます。|
 
 ### <a name="global-arguments"></a>グローバル引数
-|引数|説明|
+|引数|[説明]|
 | --- | --- |
 |--debug                               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 |    --help -h                             | このヘルプ メッセージを表示して終了します。|
 |    --output -o                           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。 既定値は json です。|
 |    --query                               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-|    --verbose                             | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+|    --verbose                             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

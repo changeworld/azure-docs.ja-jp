@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: a3b8bb53c467ad6f595a52e2a2e8f805a8f062f6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1a1855cc3f83d7fcba749ce94167039feb5bebe1
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Azure Poral を使用して仮想マシンを復元する
 定義された間隔でデータのスナップショットを取得してデータを保護します。 こうしたスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。 仮想マシン (VM) を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元できます。 復旧ポイントを復元すると、次のことが可能です。
@@ -42,7 +42,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 * 復元の種類を選択し、新しい VM を作成するかディスクを復元して、必要なパラメーターを指定します。 
 
 ## <a name="select-a-restore-point-for-restore"></a>復元を行うための復元ポイントを選択する
-1. [Azure ポータル](http://portal.azure.com/)にサインインします。
+1. [Azure Portal](http://portal.azure.com/) にサインインします。
 
 2. Azure メニューで **[参照]** を選択します。 サービスの一覧に「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
 
@@ -109,7 +109,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 ## <a name="create-a-new-vm-from-a-restore-point"></a>復元ポイントから新しい VM を作成する
 1. 復元ポイントから新しい VM を作成する前に、[復元ポイントを選択](#restore-a vm-with-special-network-configurations)しておきます (まだ選択していない場合)。 復元ポイントを作成したら、**[復元の構成]** ブレードで、次の各フィールドの値を入力または選択します。
 
-    a. **復元の種類**。 仮想マシンを作成します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **復元の種類**。 仮想マシンを作成します。
 
     b. **仮想マシン名**。 VM の名前を指定します。 この名前は、リソース グループ (Azure Resource Manager でデプロイされた VM の場合) またはクラウド サービス (クラシック VM の場合) に対して一意である必要があります。 VM が既にサブスクリプションに存在する場合、それを置き換えることはできません。
 
@@ -119,7 +119,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 
     e. **サブネット**。 仮想ネットワークにサブネットがある場合は、最初のサブネットが既定で選択されています。 追加のサブネットがある場合は、必要なサブネットを選択します。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **ストレージ アカウント**。 このメニューには、Recovery Services コンテナーと同じ場所にあるストレージ アカウントが表示されます。 ゾーン冗長であるストレージ アカウントはサポートされていません。 Recovery Services コンテナーと同じ場所を共有するストレージ アカウントがない場合は、復元操作を開始する前にアカウントを作成する必要があります。 ストレージ アカウントのレプリケーションの種類がかっこ内に表示されます。
+    f. **ストレージ アカウント**。 このメニューには、Recovery Services コンテナーと同じ場所にあるストレージ アカウントが表示されます。 ゾーン冗長であるストレージ アカウントはサポートされていません。 Recovery Services コンテナーと同じ場所を共有するストレージ アカウントがない場合は、復元操作を開始する前にアカウントを作成する必要があります。 ストレージ アカウントのレプリケーションの種類がかっこ内に表示されます。
 
     ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
 
@@ -196,7 +196,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
    ![サンプル テンプレートの送信](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
 ## <a name="post-restore-steps"></a>復元後の手順
-* Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM で VMAccess 拡張機能を使用して、[パスワードをリセット](../virtual-machines/linux/classic/reset-access.md)してください。 これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
+* Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM で VMAccess 拡張機能を使用して、[パスワードをリセット](../virtual-machines/linux/reset-password.md)してください。 これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
 * バックアップの構成の間に存在した拡張機能はインストールされますが、有効にはされません。 問題がある場合は、拡張機能を再インストールしてください。 
 * バックアップされる VM に静的 IP がある場合は、復元後、復元された VM を作成するときの競合を避けるため、復元される VM には動的 IP が設定されます。 [復元された VM に静的 IP を追加する](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)方法を参照してください。
 * 復元された VM には可用性の値が設定されていません。 復元されたディスクを使用して PowerShell またはテンプレートから VM を作成する場合は、復元ディスク オプションを使って[可用性セットを追加する](../virtual-machines/windows/tutorial-availability-sets.md)ことをお勧めします。 
@@ -240,7 +240,7 @@ VM は (他の VM と同様に) Azure Portal または PowerShell を使用し�
 
 2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成します。 その構成を使用して、目的の構成で VM を作成します。
 
-   a. [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用して、クラウド サービスで VM を作成します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用して、クラウド サービスで VM を作成します。
 
    b. [インターネットに接続されているロード バランサー](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成します。
 
@@ -248,7 +248,7 @@ VM は (他の VM と同様に) Azure Portal または PowerShell を使用し�
 
    d. [複数の予約済み IP](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/) を持つ VM を作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、VM を復元することができます。VM で発生する一般的なエラーについては、トラブルシューティングの記事を参照してください。 また、VM を使用したタスク管理に関する記事もご覧ください。
 
 * [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)

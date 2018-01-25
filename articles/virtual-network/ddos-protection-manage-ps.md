@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: baac97db61b84000557e7150a64ffb64d81ce00c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 33ff6cfcacd1632dc49b448e70361e1cb2ce1176
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>Azure PowerShell を使用した Azure DDoS Protection Standard の管理
 
-分散型サービス拒否 (DDoS) Protection の有効と無効を切り替える方法と、テレメトリを使用して Azure DDoS Protection Standard で DDoS 攻撃を軽減する方法について説明します。 DDoS Protection Standard は、Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられた Azure リソース (仮想マシン、ロード バランサー、アプリケーション ゲートウェイなど) を保護します。 DDoS Protection Standard とその機能の詳細については、[DDoS Protection Standard の概要](ddos-protection-overview.md)に関するページを参照してください。 
+分散型サービス拒否 (DDoS) Protection の有効と無効を切り替える方法と、テレメトリを使用して Azure DDoS Protection Standard で DDoS 攻撃を軽減する方法について説明します。 DDoS Protection Standard は、Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)が割り当てられた Azure リソース (仮想マシン、ロード バランサー、アプリケーション ゲートウェイなど) を保護します。 DDoS Protection Standard とその機能の詳細については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 
 
 >[!IMPORTANT]
->Azure DDoS Protection Standard (DDoS Protection) は、現在プレビュー段階にあります。 DDoS Protection がサポートされる Azure リソースの数と使用可能なリージョンは限られています。 使用可能なリージョンの一覧については、[DDoS Protection Standard の概要](ddos-protection-overview.md)に関するページを参照してください。 サブスクリプション用に DDoS Protection を有効にするには、制限されたプレビュー中に[このサービスに登録する](http://aka.ms/ddosprotection)必要があります。 登録すると、Azure DDoS チームから連絡があり、有効化プロセスが案内されます。
+>Azure DDoS Protection Standard (DDoS Protection) は、現在プレビュー段階にあります。 DDoS Protection がサポートされる Azure リソースの数と使用可能なリージョンは限られています。 使用可能なリージョンの一覧については、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」を参照してください。 サブスクリプション用に DDoS Protection を有効にするには、制限されたプレビュー中に[このサービスに登録する](http://aka.ms/ddosprotection)必要があります。 登録すると、Azure DDoS チームから連絡があり、有効化プロセスが案内されます。
 
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 `Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 Azure PowerShell をインストールまたはアップグレードする必要がある場合は、「[Install Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/install-azurerm-ps)」を参照してください。
 
@@ -51,7 +51,7 @@ New-AzureRmVirtualNetwork -Name <MyVirtualNetwork> -ResourceGroupName <ResourceG
 この例では、2 つのサブネットと 2 つの DNS サーバーを含む仮想ネットワークを作成します。 仮想ネットワーク上の DNS サーバーを指定する効果は、この仮想ネットワークにデプロイされる NIC/VM が既定値としてこれらの DNS サーバーを継承する点にあります。 仮想ネットワーク内のすべての保護されたリソースに対して DDoS 保護が有効になります。
 
 > [!WARNING]
-> リージョンを選択する場合は、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」に記載されたサポートされているリージョンの一覧から選択してください。
+> リージョンを選択する場合は、「[Azure DDoS Protection Standard の概要](ddos-protection-overview.md)」に記載された、サポートされているリージョンの一覧から選択してください。
 
 ## <a name="enable-ddos-protection-on-an-existing-virtual-network"></a>既存の仮想ネットワーク上で DDoS Protection を有効にする
 
@@ -127,13 +127,13 @@ Azure Monitor のアラート構成を利用すると、攻撃中にアクティ
     Get-AzureRmAlertRule -Name myMetricRuleWithEmail -ResourceGroup myresourcegroup -DetailedOutput 
     ```
 
-また、[webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json)や、アラートを作成するための[ロジック アプリ](../logic-apps/logic-apps-what-are-logic-apps.md)の詳細についても学習できます。
+また、[webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json)や、アラートを作成するための[ロジック アプリ](../logic-apps/logic-apps-overview.md)の詳細についても学習できます。
 
 ## <a name="configure-logging-on-ddos-protection-metrics"></a>DDoS Protection メトリックへのログ記録を構成する
 
 PowerShell 経由で Azure の診断ログにアクセスしたり、この診断ログを構成したりするには、[PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure 診断ログの詳細を確認する](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Log Analytics を使用した、Azure ストレージからのログの分析](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

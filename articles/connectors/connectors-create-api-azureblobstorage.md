@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/02/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: bc7908868828bd1628633cf9e57f8c44f8000827
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e12669abd41f09d161fab786af29955da54a1633
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-the-azure-blob-storage-connector-in-a-logic-app"></a>ロジック アプリで Azure Blob Storage コネクタを使用する
 Azure Blob Storage コネクタを使用して、ロジック アプリ内で、ストレージ アカウントの BLOB をアップロード、更新、取得、および削除します。  
@@ -31,9 +31,7 @@ Azure Blob Storage では、次の操作を実行できます。
 
 このトピックでは、ロジック アプリで Blob Storage コネクタを使用する方法について説明します。
 
-Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-what-are-logic-apps.md)」と[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
-
-Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-what-are-logic-apps.md)」と[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
+Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 ## <a name="connect-to-azure-blob-storage"></a>Azure Blob Storage に接続する
 ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。 接続により、ロジック アプリと別のサービスとの接続が実現します。 たとえば、ストレージ アカウントに接続するには、最初に Blob Storage の "*接続*" を作成します。 接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。 そのため、Azure Storage の場合は、ストレージ アカウントの資格情報を入力して接続を作成します。 
@@ -42,7 +40,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 > [!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
 
 ## <a name="use-a-trigger"></a>トリガーを使用する
-このコネクタにはトリガーがありません。 定期実行のトリガー、HTTP Webhook トリガー、他のコネクタで使用可能なトリガーなど、他のトリガーを使用してロジック アプリを起動します。 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事に例が記載されています。
+このコネクタにはトリガーがありません。 定期実行のトリガー、HTTP Webhook トリガー、他のコネクタで使用可能なトリガーなど、他のトリガーを使用してロジック アプリを起動します。 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事に例が記載されています。
 
 ## <a name="use-an-action"></a>アクションを使用する
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。
@@ -73,6 +71,6 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 
 [コネクタの詳細](/connectors/azureblobconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
-## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+## <a name="next-steps"></a>次の手順
+[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 

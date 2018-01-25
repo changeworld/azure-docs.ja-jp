@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/05/2017
+ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 5c78f61074258c734cefade28d6aca1055519758
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 5285cddcb64e44cb61c99cc18f8a66d60cd1c0fc
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 統合ランタイム (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -91,7 +91,7 @@ Azure IR の作成と構成については、ハウツー ガイドで Azure IR 
 既存の SSIS ワークロードをリフトアンドシフトするには、Azure-SSIS IR を作成して SSIS パッケージをネイティブに実行できます。
 
 ### <a name="network-environment"></a>ネットワーク環境
-Azure-SSIS IR は、パブリック ネットワークかプライベート ネットワーク内でプロビジョニングできます。  オンプレミスのデータ アクセスは、オンプレミスのネットワークに接続している仮想ネットワーク (VNet) と Azure-SSIS IR を結合することでサポートされます。 現時点では、クラシック VNet のみがサポートされています。 
+Azure-SSIS IR は、パブリック ネットワークかプライベート ネットワーク内でプロビジョニングできます。  オンプレミスのデータ アクセスは、オンプレミスのネットワークに接続している仮想ネットワーク (VNet) と Azure-SSIS IR を結合することでサポートされます。  
 
 ### <a name="compute-resource-and-scaling"></a>コンピューティング リソースとスケーリング
 Azure-SSIS IR は、SSIS パッケージ実行専用の、Azure VM の完全に管理されたクラスターです。 それに接続する SSIS プロジェクト/パッケージ (SSISDB) のカタログをホストするため、独自の Azure SQL Database またはマネージ インスタンス (プライベート プレビュー) サーバーを持ち込むことができます。 ノードのサイズを指定してコンピューティング能力をスケールアップしたり、クラスター内のノードの数を指定してスケール アウトしたりできます。 必要に応じて Azure-SSIS 統合ランタイムを停止したり開始したりして、その実行のコストを管理できます。
@@ -183,7 +183,7 @@ Azure IR の場所を自動解決に設定することもできます。この�
 - SSISDB をホストする既存の Azure SQL Database/マネージ インスタンス (プライベート プレビュー) サーバーの場所と、オンプレミスのネットワークに接続している VNet の場所が違う場合、まず既存の Azure SQL Database/マネージ インスタンス (プライベート プレビュー) サーバーを使用し、同じ場所の別の VNet を結合して Azure-SSIS IR を作成し、次に異なる場所の間の VNet 間接続を構成します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事を参照してください。
 
 - [Create self-hosted integration runtime (セルフホステッド統合ランタイムの作成)](create-self-hosted-integration-runtime.md)

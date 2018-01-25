@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: LADocs
-ms.openlocfilehash: 7ce0860272901f3b4e4cf3d63f7361d539f64741
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f939c626be11a358b0f8bece8840992a4362e1f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="partner-agreements-for-b2b-communication-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps および Enterprise Integration PackPartner を使用する B2B 通信用のパートナー契約
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="how-to-use-an-agreement"></a>契約の使用方法
 
-作成した契約を使用して、B2B 機能を備えた[ロジック アプリ](logic-apps-what-are-logic-apps.md "ロジック アプリの詳細")を作成できます。
+作成した契約を使用して、B2B 機能を備えた[ロジック アプリ](logic-apps-overview.md "ロジック アプリの詳細")を作成できます。
 
 ## <a name="how-to-edit-an-agreement"></a>契約の編集方法
 
@@ -74,5 +74,5 @@ ms.lasthandoff: 10/11/2017
 
     削除した契約は [契約] ブレードに表示されなくなります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [AS2 契約の作成](logic-apps-enterprise-integration-as2.md)

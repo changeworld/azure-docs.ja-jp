@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 59c7a65ff4eb35b3ea462962163b7b6ee94f521f
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 8e65c946d2cfcc830a1b9fa59b3f7886857f4f7d
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="run-custom-mapreduce-programs"></a>カスタムの MapReduce プログラムを呼び出す
 
@@ -77,7 +77,7 @@ HDInsight で処理する場合のほとんどのシナリオでは、Pig や Hi
 
     このコマンドにより、MapReduce ジョブが YARN に送信されます。 入力ファイルは `/example/data/sample.log`、出力ディレクトリは `/example/data/logoutput` です。 この入力ファイルとすべての出力ファイルは、クラスターの既定のストレージに格納されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 * [HDInsight の Hadoop において MapReduce ストリーミングで C# を使用する](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 * [HDInsight での Hadoop 用 Java MapReduce プログラムの開発](apache-hadoop-develop-deploy-java-mapreduce-linux.md)

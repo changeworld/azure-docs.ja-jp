@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 9605fc3a1096d053bfeffb2544499935601b2c0f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bc2e5c2b351fb87cb763459a9e24368a422ada1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の X12 メッセージをデコードする
 
@@ -35,7 +35,7 @@ Decode X12 メッセージ コネクタを使用すると、取引先契約に�
 
 ## <a name="decode-x12-messages"></a>X12 メッセージをデコードする
 
-1. [ロジック アプリを作成](logic-apps-create-a-logic-app.md)します。
+1. [ロジック アプリを作成](quickstart-create-first-logic-app-workflow.md)します。
 
 2. Decode X12 Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
 
@@ -62,7 +62,7 @@ Decode X12 メッセージ コネクタを使用すると、取引先契約に�
 
     ![integration account connection created](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
-    次に例を示します。
+    例: 
 
     ![デコードする X12 フラット ファイル メッセージの選択](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
 
@@ -107,6 +107,6 @@ X12 Decode コネクタは次のタスクを実行します。
 ## <a name="view-the-swagger"></a>Swagger の表示
 [Swagger の詳細](/connectors/x12/)を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
 

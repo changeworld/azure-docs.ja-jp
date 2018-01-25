@@ -29,7 +29,7 @@ VM からディスクを切断するには、まず切断するディスクの�
 3. 切断するディスクの LUN ( **論理ユニット番号** ) を記録しておきます。
 
 ## <a name="remove-operating-system-references-to-the-disk"></a>ディスクへのオペレーティング システム参照の削除
-Linux ゲストからディスクを切断する前に、ディスク上に使用されているパーティションがないことを確認します。 また、再起動後にオペレーティング システムがパーティションを再マウントしないようにします。 次の手順により、ディスクの[接続](../articles/virtual-machines/linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)時に作成された可能性がある構成が元に戻ります。
+Linux ゲストからディスクを切断する前に、ディスク上に使用されているパーティションがないことを確認します。 また、再起動後にオペレーティング システムがパーティションを再マウントしないようにします。 次の手順により、ディスクの[接続](../articles/virtual-machines/linux/classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)時に作成された可能性がある構成が元に戻ります。
 
 1. `lsscsi` コマンドを使用してディスク識別子を検出します。 `lsscsi` は、`yum install lsscsi` (Red Hat ベースのディストリビューション) または `apt-get install lsscsi` (Debian ベースのディストリビューション) のいずれかでインストールできます。 目的のディスク識別子を見つけるには、LUN 番号を使用します。 各行の組にある最後の数字が LUN です。 `lsscsi` の次の例では、LUN 0 が */dev/sdc* にマップされます。
 
@@ -74,7 +74,7 @@ Linux ゲストからディスクを切断する前に、ディスク上に使�
    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
    ```
 
-    または
+    or
    
    ```sh   
    /dev/sdc1   /datadrive   ext4   defaults   1   2

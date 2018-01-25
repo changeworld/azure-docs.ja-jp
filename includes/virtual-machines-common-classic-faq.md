@@ -33,8 +33,7 @@ Azure のストレージ アカウントでは、オペレーティング シス
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>どのようなタイプの仮想ハード ディスクを使用できますか。
 Azure では、VHD 形式の仮想ハード ディスク (固定型) のみをサポートしています。 Azure で VHDX を使用する場合は、最初に、Hyper-V Manager または [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656) コマンドレットを使用して形式を変換する必要があります。 その後、 [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) コマンドレットを (サービス管理モードで) 使用して、Azure のストレージ アカウントに VHD をアップロードし、仮想マシンで使用できるようにしてください。
 
-* Linux での手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
-* Windows での手順については、「[Windows Server VHD の作成と Azure へのアップロード](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
+* Linux での手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
 
 ## <a name="are-these-virtual-machines-the-same-as-hyper-v-virtual-machines"></a>これらの仮想マシンは、HYPER-V 仮想マシンと同じですか。
 多くの点で "第 1 世代" の Hyper-V VM と似ていますが、まったく同じというわけではありません。 いずれのタイプも仮想化されたハードウェアを提供し、VHD 形式の仮想ハードディスクと互換性があります。 つまり、Hyper-V と Azure の間で移動させることができます。 HYPER-V ユーザーに驚かれることの多い主な違いは次の 3 点です。

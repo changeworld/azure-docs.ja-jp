@@ -3,8 +3,8 @@ title: "Azure CLI を使用した Azure Redis Cache の管理 | Microsoft Docs"
 description: "任意のプラットフォームに Azure CLI をインストールする方法、Azure CLI を使って Azure アカウントに接続する方法、Azure CLI で Redis Cache を作成および管理する方法。"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: sdanie
-ms.openlocfilehash: d3a425251035e09bb3163fbb052669d0a874806f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: wesmc
+ms.openlocfilehash: fdb0989af2215166b69f10474a0d22aab7b4d593
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Azure CLI を使用して Azure Redis Cache インスタンスを作成および
 ## <a name="redis-cache-properties"></a>Redis Cache のプロパティ
 Redis Cache インスタンスを作成および更新する場合には、次のプロパティを使用します。
 
-| プロパティ | Switch | Description |
+| プロパティ | スイッチ | [説明] |
 | --- | --- | --- |
 | name |-n, --name |Redis Cache の名前です。 |
 | resource group |-g, --resource-group |リソース グループの名前です。 |
@@ -61,7 +61,7 @@ Redis Cache インスタンスを作成および更新する場合には、次�
 | StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
 | サブネット |t、--subnet <subnet> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
 | VirtualNetwork |-v, --virtual-network <virtual-network> |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| サブスクリプション |-s、--subscription |サブスクリプションの識別子です。 |
+| [サブスクリプション] |-s、--subscription |サブスクリプションの識別子です。 |
 
 ## <a name="see-all-redis-cache-commands"></a>すべての Redis Cache コマンドを参照してください。
 すべての Redis Cache コマンドとそのパラメーターを表示するには、 `azure rediscache -h` コマンドを使用します。

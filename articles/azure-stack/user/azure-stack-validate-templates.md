@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: c99e5ebc2612e10f42bddbbd2f1c17d7404305d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c30b0a78cf3421554cf8f7c887c7973c7b9f4b9c
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="check-your-templates-for-azure-stack-with-template-validator"></a>テンプレート検証ツールで Azure Stack のテンプレートをチェックする
 
@@ -58,15 +58,15 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | Description | 必須 |
+| パラメーター | [説明] | 必須 |
 | ----- | -----| ----- |
-| TemplatePath | Resource Manager テンプレートを再帰的に検索するパスを指定します | あり | 
-| TemplatePattern | 照合するテンプレート ファイルの名前を指定します。 | いいえ |
-| CapabilitiesPath | クラウド機能 JSON ファイルのパスを指定します | あり | 
-| IncludeComputeCapabilities | VM サイズや VM 拡張機能などの IaaS リソースの評価が含まれます | いいえ |
-| IncludeStorageCapabilities | SKU の種類などのストレージ リソースの評価が含まれます | いいえ |
-| レポート | 生成される HTML レポートの名前を指定します | いいえ |
-| 詳細 | エラーと警告をコンソールに記録します | いいえ|
+| TemplatePath | Resource Manager テンプレートを再帰的に検索するパスを指定します | [はい] | 
+| TemplatePattern | 照合するテンプレート ファイルの名前を指定します。 | いいえ  |
+| CapabilitiesPath | クラウド機能 JSON ファイルのパスを指定します | [はい] | 
+| IncludeComputeCapabilities | VM サイズや VM 拡張機能などの IaaS リソースの評価が含まれます | いいえ  |
+| IncludeStorageCapabilities | SKU の種類などのストレージ リソースの評価が含まれます | いいえ  |
+| レポート | 生成される HTML レポートの名前を指定します | いいえ  |
+| 詳細 | エラーと警告をコンソールに記録します | いいえ |
 
 
 ### <a name="examples"></a>例
@@ -93,11 +93,11 @@ test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
 3.  Get-CloudCapabilities コマンドレットを使用して、サービスのバージョンを取得し、クラウド機能 JSON ファイルを作成します。
 
     ```PowerShell
-    Get-AzureRMCloudCapabilities -Location 'local' -Verbose
+    Get-AzureRMCloudCapability -Location 'local' -Verbose
     ```             
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  - [テンプレートを Azure Stack にデプロイする](azure-stack-arm-templates.md)
  - [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
 

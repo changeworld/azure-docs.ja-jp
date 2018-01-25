@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/08/2017
+ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 5e54464ceabfe1fea2af80d63e538bea6a0a50a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7800329e7f56d604c7911d3997fa76a0fac91664
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,11 +37,11 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 
 次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 
 
-| プロパティ                 | 説明                              | 必須                                 |
+| プロパティ                 | [説明]                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 | あり                                      |
-| **accountName**          | Azure Data Lake Analytics アカウント名。  | あり                                      |
-| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                       |
+| **type**                 | type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 | [はい]                                      |
+| **accountName**          | Azure Data Lake Analytics アカウント名。  | [はい]                                      |
+| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                        |
 | **subscriptionId**       | Azure サブスクリプション ID                    | いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
 | **resourceGroupName**    | Azure リソース グループ名                | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
 
@@ -53,11 +53,11 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 
 次のプロパティを指定して、サービス プリンシパル認証を使います。
 
-| プロパティ                | 説明                              | 必須 |
+| プロパティ                | [説明]                              | 必須 |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | アプリケーションのクライアント ID を取得します。     | あり      |
-| **servicePrincipalKey** | アプリケーションのキーを取得します。           | あり      |
-| **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | あり      |
+| **servicePrincipalId**  | アプリケーションのクライアント ID を取得します。     | [はい]      |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。           | [はい]      |
+| **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい]      |
 
 **例: サービス プリンシパル認証**
 ```json
@@ -117,19 +117,19 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。 
 
-| プロパティ            | 説明                              | 必須 |
+| プロパティ            | [説明]                              | 必須 |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | パイプラインのアクティビティの名前     | あり      |
-| 説明         | アクティビティの動作を説明するテキスト。  | いいえ       |
-| type                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | あり      |
-| 既定のコンテナー   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |あり       |
-| scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | あり      |
-| scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | あり      |
-| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | なし       |
-| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | なし       |
-| parameters          | U-SQL スクリプトのパラメーター          | いいえ       |
-| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ       |
-| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります: **Semantic:** セマンティクスの検査と必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コードの生成などを含む完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ |
+| name                | パイプラインのアクティビティの名前。     | [はい]      |
+| 説明         | アクティビティの動作を説明するテキスト。  | いいえ        |
+| 型                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | [はい]      |
+| 既定のコンテナー   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |[はい]       |
+| scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | [はい]      |
+| scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | [はい]      |
+| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ        |
+| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ        |
+| parameters          | U-SQL スクリプトのパラメーター          | いいえ        |
+| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ        |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります: **Semantic:** セマンティクスの検査と必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コードの生成などを含む完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ  |
 
 Data Factory によって送信されるスクリプト定義については、[SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script)をご覧ください。 
 
@@ -176,7 +176,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-代わりに、動的パラメーターを使用することもできます。 次に例を示します。 
+代わりに、動的パラメーターを使用することもできます。 例:  
 
 ```json
 "parameters": {
@@ -187,7 +187,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 
 この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名はスライス開始時刻に基づいて動的に指定されます。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)

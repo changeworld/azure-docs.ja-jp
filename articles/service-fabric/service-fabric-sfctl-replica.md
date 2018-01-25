@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: bd16dd889cbe0f05d7e60f444c6c5fa2e65f64a4
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 422c19dfa9a204d98a898f76bc1af92a05c054d0
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 サービス パーティションに属しているレプリカを管理します。
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|Description|
+|コマンド|[説明]|
 | --- | --- |
 |    deployed  | Service Fabric ノードにデプロイされているレプリカの詳細を取得します。|
 |    deployed-list| Service Fabric ノードにデプロイされているレプリカの一覧を取得します。|
@@ -44,7 +44,7 @@ Service Fabric ノードにデプロイされているレプリカの詳細を�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name    [必須]| ノード名。|
 | --partition-id [必須]| パーティションの ID。|
@@ -53,7 +53,7 @@ Service Fabric ノードにデプロイされているレプリカの詳細を�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -68,7 +68,7 @@ Service Fabric レプリカの正常性を取得します。 正常性状態に�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --partition-id    [必須]| パーティションの ID。|
 | --replica-id      [必須]| レプリカの識別子。|
@@ -77,7 +77,7 @@ Service Fabric レプリカの正常性を取得します。 正常性状態に�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug                  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                | このヘルプ メッセージを表示して終了します。|
@@ -92,7 +92,7 @@ Service Fabric パーティションのレプリカに関する情報を取得�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須]| パーティションの ID。|
 | --replica-id   [必須]| レプリカの識別子。|
@@ -101,7 +101,7 @@ Service Fabric パーティションのレプリカに関する情報を取得�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -117,7 +117,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --partition-id [必須]| パーティションの ID。|
 | --continuation-token  | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL エンコードすることはできません。|
@@ -125,7 +125,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -140,7 +140,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name    [必須]| ノード名。|
 | --partition-id [必須]| パーティションの ID。|
@@ -150,7 +150,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -165,7 +165,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name    [必須]| ノード名。|
 | --partition-id [必須]| パーティションの ID。|
@@ -174,7 +174,7 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
@@ -182,6 +182,6 @@ GetReplicas エンドポイントは、指定したパーティションのレ�
 | --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
 | --verbose             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

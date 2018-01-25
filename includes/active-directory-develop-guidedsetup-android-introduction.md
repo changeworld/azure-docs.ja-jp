@@ -1,35 +1,35 @@
 
 # <a name="call-the-microsoft-graph-api-from-an-android-app"></a>Android アプリから Microsoft Graph API を呼び出す
 
-このガイドでは、ネイティブの Android アプリケーションがアクセス トークンを取得し、Microsoft Graph API またはアクセス トークンを必要とする他の API を、Azure Active Directory v2 エンドポイントから呼び出す方法について説明します。
+このガイドでは、ネイティブの Android アプリケーションがアクセス トークンを取得し、Azure Active Directory v2 エンドポイントからのアクセス トークンを必要とする Microsoft Graph API や他の API を 呼び出す方法について説明します。
 
-このガイドの最後では、個人アカウント (outlook.com、live.com などを含む) だけでなく、Azure Active Directory のあるすべての会社や組織の職場/学校アカウントを使用して、保護された API をアプリケーションで呼び出せるようになります。  
+このガイドを完了すると、アプリケーションは、個人用アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れることができるようになります。 その後、アプリケーションは Azure Active Directory v2 エンドポイントで保護されている API を呼び出すことができます。  
 
-### <a name="how-this-sample-works"></a>このサンプルのしくみ
+## <a name="how-this-sample-works"></a>このサンプルのしくみ
 ![このサンプルのしくみ](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
-このガイドで作成するサンプルは、Azure Active Directory v2 エンドポイントからのトークンを受け入れる Web API (ここでは Microsoft Graph API) の照会に Android アプリケーションが使用されている、というシナリオに基づいています。 このシナリオでは、トークンは Authorization ヘッダーを介して HTTP 要求に追加されます。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) で処理されます。
+このガイドで作成するサンプル アプリケーションは、Android アプリケーションを使用して、Azure Active Directory v2 エンドポイントからのトークンを受け入れる Web API (ここでは Microsoft Graph API) を照会するシナリオに基づいています。 このシナリオでは、アプリケーションは、Authorization ヘッダーを使用して HTTP 要求に取得したトークンを追加します。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) が処理します。
 
-### <a name="pre-requisites"></a>前提条件
-* このガイド付きセットアップは Android Studio を想定していますが、その他の Android アプリケーション開発環境でもできます。 
+## <a name="prerequisites"></a>前提条件
+* このガイド付きセットアップは Android Studio に焦点を合わせていますが、その他の Android アプリケーション開発環境にも適用できます。 
 * Android SDK 21 以降が必要です (SDK 25 を推奨)。
-* このリリースの Android 向け Microsoft Authentication Library (MSAL) には、Google Chrome またはユーザー設定タブを使用している Web ブラウザーが必要です。
+* このリリースの Android 向け MSAL には、Google Chrome またはユーザー設定のタブを使用している Web ブラウザーが必要です。
 
-> 注: Google Chrome は、Visual Studio Emulator for Android には含まれていません。 API 25 を持つエミュレーター、または Google Chrome がインストールされている API 21 以降のイメージで、このコードをテストすることをお勧めします。
+> [!NOTE]
+> Google Chrome は、Visual Studio Emulator for Android には含まれていません。 API 25 を使用するエミュレーター、または Google Chrome がインストールされている API 21 以降のイメージで、このコードをテストすることをお勧めします。
 
+## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>保護された Web API にアクセスするためのトークン取得処理
 
-### <a name="how-to-handle-token-acquisition-to-access-a-protected-web-api"></a>保護された Web API にアクセスするトークンの取得を処理する方法
+ユーザーが認証されると、サンプル アプリケーションは、Microsoft Graph API または Azure Active Directory v2 で保護された Web API の照会に使用できるアクセス トークンを受け取ります。
 
-ユーザーが認証されると、サンプル アプリケーションは、Microsoft Graph API または Microsoft Azure Active Directory v2 で保護された Web API の照会に使用できるトークンを受け取ります。
+Microsoft Graph などの API では、特定のリソースへのアクセスを許可するアクセス トークンが必要になります。 たとえば、ユーザーのプロファイルの読み取り、ユーザーの予定表へのアクセス、電子メールの送信などにアクセス トークンが必要です。 アプリケーションでは、MSAL を使用してアクセス トークンを要求し、API スコープを指定することによってこれらのリソースにアクセスできます。 このアクセス トークンは、保護されたリソースに対するすべての呼び出しで HTTP Authorization ヘッダーに追加されます。 
 
-Microsoft Graph などの API では、特定のリソースにアクセスできるアクセス トークンが必要です。たとえば、ユーザーのプロファイルの読み取り、ユーザーの予定表へのアクセス、電子メールの送信などです。 アプリケーションでは、MSAL を使用してアクセス トークンを要求し、API スコープを指定することによってこれらのリソースにアクセスできます。 このアクセス トークンは、保護されたリソースに対するすべての呼び出しで HTTP 認証ヘッダーに追加されます。 
+アクセス トークンのキャッシュと更新は MSAL が管理するため、アプリケーションが管理する必要はありません。
 
-MSAL がアクセス トークンのキャッシュと更新を管理するため、アプリケーションでは何もする必要がありません。
-
-### <a name="libraries"></a>ライブラリ
+## <a name="libraries"></a>ライブラリ
 
 このガイドでは、次のライブラリを使用します。
 
-|ライブラリ|Description|
+|ライブラリ|[説明]|
 |---|---|
 |[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|

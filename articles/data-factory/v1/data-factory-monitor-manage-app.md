@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 65b5389837dc1d1693b1c4326b98264c8d75fd06
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0678e9bf6ea9e4161fc291729f1480ac7082796a
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -81,7 +81,7 @@ ms.lasthandoff: 12/21/2017
 
 アクティビティ ウィンドウの概念の詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事をご覧ください。
 
-### <a name="diagram-view"></a>ダイアグラム ビュー
+### <a name="diagram-view"></a>Diagram view
 データ ファクトリのダイアグラム ビューでは、データ ファクトリとその資産を 1 つのウィンドウで監視および管理できます。 ダイアグラム ビューで Data Factory エンティティ (データセットまたはパイプライン) を選択するときは、次の点に注意します。
 
 * Data Factory エンティティはツリー ビューで選択されます。
@@ -161,7 +161,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 
 <table>
 <tr>
-    <th align="left">状態</th><th align="left">副状態</th><th align="left">Description</th>
+    <th align="left">状態</th><th align="left">副状態</th><th align="left">[説明]</th>
 </tr>
 <tr>
     <td rowspan="8">待機中</td><td>ScheduleTime</td><td>アクティビティ ウィンドウが実行される時刻になっていません。</td>
@@ -195,7 +195,7 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 <td>アクティビティ ウィンドウが処理されています。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>TimedOut</td><td>アクティビティで許可されている実行時間を超過しました。</td>
+<td rowspan="4">失敗</td><td>TimedOut</td><td>アクティビティで許可されている実行時間を超過しました。</td>
 </tr>
 <tr>
 <td>Canceled</td><td>ユーザー操作によってアクティビティ ウィンドウがキャンセルされました。</td>
@@ -325,11 +325,11 @@ Ctrl キーを使用して、複数のパイプラインを複数選択できま
 | イベント名 | 状態 | 副状態 |
 | --- | --- | --- |
 | アクティビティの実行が開始されました |開始済み |開始中 |
-| アクティビティの実行が完了しました |Succeeded |Succeeded |
+| アクティビティの実行が完了しました |成功 |成功 |
 | アクティビティの実行が完了しました |失敗 |リソースの割り当ての失敗<br/><br/>失敗した実行<br/><br/>Timed Out<br/><br/>Failed Validation<br/><br/>Abandoned |
 | オンデマンド HDI クラスターの作成が開始されました |開始済み |-|
-| オンデマンド HDI クラスターが正常に作成されました |Succeeded |-|
-| オンデマンド HDI クラスターが削除されました |Succeeded |-|
+| オンデマンド HDI クラスターが正常に作成されました |成功 |-|
+| オンデマンド HDI クラスターが削除されました |成功 |-|
 
 ### <a name="to-edit-delete-or-disable-an-alert"></a>アラートを編集、削除、または無効化するには
 

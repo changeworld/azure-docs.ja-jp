@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: bba8fff7997340e563c604f571604ee8d06eb719
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 3686cfffd2c29461213b2866665e59336f037fa0
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -903,7 +903,7 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 
 ユーザー定義集計の基底クラスの定義は、以下のとおりです。
 
-```c#
+```csharp
     [SqlUserDefinedAggregate]
     public abstract class IAggregate<T1, T2, TResult> : IAggregate
     {
@@ -952,13 +952,13 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 * T2: Accumulate の 2 つ目のパラメーター
 * TResult: Terminate の戻り値の型
 
-次に例を示します。
+例: 
 
 ```
 public class GuidAggregate : IAggregate<string, int, int>
 ```
 
-または
+or
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -1480,7 +1480,7 @@ OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeade
 
 ベース スクリプトでオブジェクトのインスタンスを作成しないようにするには、前の例に示したように関数ラッパーを作成します。
 
-```c#
+```csharp
         // Define the factory classes
         public static class Factory
         {
@@ -1796,7 +1796,7 @@ CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns
 
 また、ラッパー ファクトリ メソッドを呼び出すことによって呼び出すこともできます。
 
-```c#
+```csharp
     CROSS APPLY MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
 ```
 
@@ -1871,7 +1871,7 @@ CombinerMode 列挙型は、以下の値を取ることができます。
 
 主なプログラミング オブジェクトは、以下のとおりです。
 
-```c#
+```csharp
     public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
         IUpdatableRow output
 ```

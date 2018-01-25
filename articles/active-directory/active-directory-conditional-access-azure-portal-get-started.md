@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: f31487c5b5d8b888c7eb58aea2e42199b1614af8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c780efe92ec69ff692b42a586f55a1036d2ec952
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory での条件付きアクセスの基本
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 12/11/2017
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/06.png)
 
-    a. **[ユーザーとグループの選択]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーとグループの選択]** をクリックします。
 
     b. **[選択]**をクリックします。
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 12/11/2017
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/08.png)
 
-    a. **[アプリを選択]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリを選択]** をクリックします。
 
     b. **[選択]**をクリックします。
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 12/11/2017
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/11.png)
 
-    a. **[構成]** で、**[はい]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[構成]** で、**[はい]** をクリックします。
 
     b. **[含む]** で **[All locations (すべての場所)]** をクリックします。
 
@@ -134,7 +134,7 @@ ms.lasthandoff: 12/11/2017
 
     ![条件付きアクセス](./media/active-directory-conditional-access-azure-portal-get-started/14.png)
 
-    a. **[多要素認証が必要です]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[多要素認証が必要です]** を選択します。
 
     b. **[選択]**をクリックします。
 
@@ -156,7 +156,7 @@ ms.lasthandoff: 12/11/2017
 多要素認証は、構成された信頼できる IP 内にないデバイスから実行した接続試行時にのみ必要となるはずです。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)に関する記事を参照してください。
 

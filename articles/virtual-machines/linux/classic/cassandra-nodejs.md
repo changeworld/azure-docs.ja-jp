@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 9782df5a5c94169b42d476b0c478fedd3465e3d0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Azure 内の Linux 上にある Cassandra クラスターを Node.js で実行する
 
@@ -292,7 +292,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
 次の処理を順番に行い、イメージをキャプチャします。
 
 ##### <a name="1-deprovision"></a>1.プロビジョニング解除
-コマンド "sudo waagent –deprovision+user" を使用して、仮想マシン インスタンス固有の情報を削除します。 イメージのキャプチャ プロセスの詳細については、「 [テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法](capture-image.md) 」を参照してください。
+コマンド "sudo waagent –deprovision+user" を使用して、仮想マシン インスタンス固有の情報を削除します。 イメージのキャプチャ プロセスの詳細については、「 [テンプレートとして使用するために Linux 仮想マシンをキャプチャする方法](capture-image-classic.md) 」を参照してください。
 
 ##### <a name="2-shut-down-the-vm"></a>2: VM のシャット ダウン
 仮想マシンが強調表示されていることを確認し、下部にあるコマンド バーから [シャットダウン] リンクをクリックします。

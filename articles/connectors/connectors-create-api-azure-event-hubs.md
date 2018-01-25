@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: estfan; LADocs
-ms.openlocfilehash: 2ca27fb8269d1796fb1181fc4d0a8744a592d548
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f31c2c17d326d58ede0bb00cdc0f701069ea14
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-receive-and-send-events-with-the-event-hubs-connector"></a>Event Hubs コネクタでのイベントの監視および送受信
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 * Azure に[Event Hubs 名前空間とイベント ハブ](../event-hubs/event-hubs-create.md)を用意する必要があります。 [Event Hubs 名前空間とイベント ハブを作成する方法](../event-hubs/event-hubs-create.md)に関するページをご覧ください。 
 
-* ロジック アプリで[コネクタ](https://docs.microsoft.com/azure/connectors/apis-list)を使用するには、ロジック アプリを最初に作成する必要があります。 [ロジック アプリの作成方法](../logic-apps/logic-apps-create-a-logic-app.md)に関するページをご覧ください。
+* ロジック アプリで[コネクタ](https://docs.microsoft.com/azure/connectors/apis-list)を使用するには、ロジック アプリを最初に作成する必要があります。 [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページをご覧ください。
 
 <a name="permissions-connection-string"></a>
 ## <a name="check-event-hubs-namespace-permissions-and-find-the-connection-string"></a>Event Hubs 名前空間を確認して、接続文字列を検索する
@@ -64,7 +64,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="start-workflow-when-your-event-hub-receives-new-events"></a>イベント ハブが新しいイベントを受け取るときにワークフローを開始する
 
-"[*トリガー*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)" は、ロジック アプリのワークフローを開始するイベントです。 新しいイベントがイベント ハブに送信されたときにワークフローを開始するには、次の手順に従って、このイベントを検出するトリガーを追加します。
+"[*トリガー*](../logic-apps/logic-apps-overview.md#logic-app-concepts)" は、ロジック アプリのワークフローを開始するイベントです。 新しいイベントがイベント ハブに送信されたときにワークフローを開始するには、次の手順に従って、このイベントを検出するトリガーを追加します。
 
 1.  [Azure Portal](https://portal.azure.com "Azure Portal") で、既存のロジック アプリに移動するか、空のロジック アプリを作成します。
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="send-events-to-your-event-hub-from-your-logic-app"></a>ロジック アプリからイベント ハブにイベントを送信する
 
-"[*アクション*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)" は、ロジック アプリのワークフローによって実行されるタスクです。 ロジック アプリにトリガーを追加した後は、そのトリガーによって生成されたデータに対する操作を実行するアクションを追加できます。 ロジック アプリからイベント ハブにイベントを送信するには、以下の操作を行います。
+"[*アクション*](../logic-apps/logic-apps-overview.md#logic-app-concepts)" は、ロジック アプリのワークフローによって実行されるタスクです。 ロジック アプリにトリガーを追加した後は、そのトリガーによって生成されたデータに対する操作を実行するアクションを追加できます。 ロジック アプリからイベント ハブにイベントを送信するには、以下の操作を行います。
 
 1.  ロジック アプリ デザイナーのロジック アプリ トリガーで、**[新しいステップ]** > **[アクションの追加]** の順に選択します。
 
@@ -131,6 +131,6 @@ ms.lasthandoff: 10/11/2017
 
 [Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps とコネクタの改善にご協力ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 *  [Azure Logic Apps の他のコネクタを見つける](./apis-list.md)

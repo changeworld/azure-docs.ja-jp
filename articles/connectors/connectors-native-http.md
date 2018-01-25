@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: d422a07a27ffa62a673bd2d471ae4fc837251dee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3eae7a4a47680fc36849fd413b76a80865cf3c9f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-http-action"></a>HTTP アクションの概要
 
 HTTP アクションを使用すると、組織のワークフローを拡張し、HTTP 経由で任意のエンドポイントと通信することができます。
 
-そのための方法は次のとおりです。
+次のようにすることができます。
 
 * 管理対象の Web サイトがダウンしたときにアクティブ化する (トリガーする) ロジック アプリ ワークフローを作成します。
 * HTTP 経由で任意のエンドポイントと通信して、ワークフローを他のサービスに拡張します。
 
-ロジック アプリで HTTP アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事をご覧ください。
+ロジック アプリで HTTP アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-http-trigger"></a>HTTP トリガーの使用
 トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
@@ -93,14 +93,14 @@ HTTP トリガーのパラメーターの詳細については、 [MSDN](https:/
 ## <a name="http-trigger"></a>HTTP トリガー
 ここでは、このコネクタでサポートされているトリガーの詳細について説明します。 HTTP コネクタにはトリガーが 1 つあります。
 
-| トリガー | Description |
+| トリガー | [説明] |
 | --- | --- |
 | HTTP |HTTP 呼び出しを実行し、応答コンテンツを返します。 |
 
 ## <a name="http-action"></a>HTTP アクション
 ここでは、このコネクタでサポートされているアクションの詳細について説明します。 HTTP コネクタには、使用可能なアクションが 1 つあります。
 
-| アクション | Description |
+| アクションを表示します。 | [説明] |
 | --- | --- |
 | HTTP |HTTP 呼び出しを実行し、応答コンテンツを返します。 |
 
@@ -111,20 +111,20 @@ HTTP トリガーのパラメーターの詳細については、 [MSDN](https:/
 HTTP 送信要求を実行するアクションの入力フィールドを次に示します。
 \* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | Description |
+| 表示名 | プロパティ名 | [説明] |
 | --- | --- | --- |
 | メソッド* |静的メソッド |使用する HTTP 動詞 |
 | URI* |uri |HTTP 要求の URI |
-| ヘッダー |ヘッダー |含める HTTP ヘッダーの JSON オブジェクト |
+| ヘッダー |headers |含める HTTP ヘッダーの JSON オブジェクト |
 | 本文 |本文 |HTTP 要求の本文 |
-| 認証 |認証 |詳細については「 [認証](#authentication) 」セクションを参照 |
+| 認証 |[認証] |詳細については「 [認証](#authentication) 」セクションを参照 |
 
 <br>
 
 #### <a name="output-details"></a>出力の詳細
 HTTP 応答の出力の詳細を次に示します。
 
-| プロパティ名 | データ型 | Description |
+| プロパティ名 | データ型 | [説明] |
 | --- | --- | --- |
 | headers |オブジェクト |応答ヘッダー |
 | 本文 |オブジェクト |応答オブジェクト |
@@ -142,17 +142,17 @@ Logic Apps 機能では、HTTP エンドポイントに対してさまざまな�
 基本認証には、次の認証オブジェクトが必要です。
 \* は、必須フィールドであることを示しています。
 
-| プロパティ名 | データ型 | Description |
+| プロパティ名 | データ型 | [説明] |
 | --- | --- | --- |
-| Type* |type |認証の種類 (基本認証の場合は `Basic` を指定する必要があります) |
+| Type* |型 |認証の種類 (基本認証の場合は `Basic` を指定する必要があります) |
 | Username* |username |認証するユーザー名 |
-| Password* |パスワード |認証するパスワード。 |
+| Password* |password |認証するパスワード。 |
 
 > [!TIP]
 > 定義から取得できないパスワードを使用する場合は、`securestring` パラメーターと `@parameters()` 
 > [ ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
 
-次に例を示します。
+例: 
 
 ```javascript
 {
@@ -164,19 +164,19 @@ Logic Apps 機能では、HTTP エンドポイントに対してさまざまな�
 
 #### <a name="client-certificate-authentication"></a>クライアント証明書認証
 
-クライアント証明書認証には、次の認証オブジェクトが必要です。 * は、必須フィールドであることを示しています。
+クライアント証明書認証には、次の認証オブジェクトが必要です。 \* は、必須フィールドであることを示しています。
 
-| プロパティ名 | データ型 | Description |
+| プロパティ名 | データ型 | [説明] |
 | --- | --- | --- |
-| Type* |type |認証の種類 (SSL クライアント証明書の場合は、 `ClientCertificate` を指定する必要があります) |
+| Type* |型 |認証の種類 (SSL クライアント証明書の場合は、 `ClientCertificate` を指定する必要があります) |
 | PFX* |pfx |Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| Password* |パスワード |PFX ファイルにアクセスするためのパスワード |
+| Password* |password |PFX ファイルにアクセスするためのパスワード |
 
 > [!TIP]
 > ロジック アプリの保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` 
 > [ ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
 
-For example:
+例: 
 
 ```javascript
 {
@@ -187,11 +187,11 @@ For example:
 ```
 
 #### <a name="azure-ad-oauth-authentication"></a>Azure AD OAuth 認証
-Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 * は、必須フィールドであることを示しています。
+Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 \* は、必須フィールドであることを示しています。
 
-| プロパティ名 | データ型 | Description |
+| プロパティ名 | データ型 | [説明] |
 | --- | --- | --- |
-| Type* |type |認証の種類 (Azure AD OAuth 認証の場合は `ActiveDirectoryOAuth` を指定する必要があります) |
+| Type* |型 |認証の種類 (Azure AD OAuth 認証の場合は `ActiveDirectoryOAuth` を指定する必要があります) |
 | Tenant* |テナント |Azure AD テナントのテナント識別子。 |
 | Audience* |対象となる読者 |使用許可を要求するリソース。 次に例を示します。`https://management.core.windows.net/` |
 | Client ID* |clientId |Azure AD アプリケーションのクライアント識別子 |
@@ -202,7 +202,7 @@ Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 *
 > 
 > 
 
-次に例を示します。
+例: 
 
 ```javascript
 {
@@ -214,6 +214,6 @@ Azure AD OAuth 認証には、次の認証オブジェクトが必要です。 *
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
-プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
+## <a name="next-steps"></a>次の手順
+プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 

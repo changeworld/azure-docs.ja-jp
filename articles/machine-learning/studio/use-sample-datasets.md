@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2017
+ms.date: 01/19/2018
 ms.author: garye
-ms.openlocfilehash: d93c7c0bdad930bba679d705b012f1567da1da8a
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 3339d3b3bab2c0ce210950c178ef03fc6c0ecab9
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio におけるサンプル データセットの使用
 [top]: #machine-learning-sample-datasets
@@ -102,15 +102,6 @@ CSV データに変換された、公開の画像ファイル。
 <b>関連の研究:</b> Yeh, I.C. (2008 年)。 UCI Machine Learning Repository <a href="http://archive.ics.uci.edu/ml">http://archive.ics.uci.edu/ml</a>。 カリフォルニア州アーバイン: カリフォルニア大学、情報・コンピューター サイエンス学部
 <p></p>
 Yeh, I-Cheng、Yang, King-Jang、Ting, Tao-Ming、「Knowledge discovery on RFM model using Bernoulli sequence」、Expert Systems with Applications、2008 年、<a href="http://dx.doi.org/10.1016/j.eswa.2008.07.018">http://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
-  </td>
-</tr>
-
-<tr>
-  <td>Amazon の書評</td>
-  <td>
-ペンシルベニア大学の研究者によって Amazon.com Web サイトから取得された Amazon での本のレビュー (<a href="http://www.cs.jhu.edu/~mdredze/datasets/sentiment/">Sentiment</a>)。 John Blitzer、Mark Dredze、Fernando Pereira による次の研究論文を参照してください: 「Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification (伝記、ボリウッド、ラジオカセットレコーダ、ミキサー: 感想の分類に対する領域適応)」、コンピューター言語学会 (ACL)、2007 年。
-<p></p>
-元のデータセットには、1、2、3、4、5 の 5 段階評価付きのレビューが 975,000 件含まれています。 レビューは英語で書かれており、対象期間は、1997 ～ 2007 年です。 このデータセットは、ダウンサンプリングされており、10,000 件のレビューが含まれています。
   </td>
 </tr>
 

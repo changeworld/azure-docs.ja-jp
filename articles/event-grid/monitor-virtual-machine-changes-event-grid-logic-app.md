@@ -11,15 +11,15 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: df1e19b772b41064aff1f345dee93813f0c21c73
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: e31f30e46c3a49ff9eca72cb82c16acb731427bf
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
 
-特定のイベントが Azure リソースまたはサード パーティのリソースで発生したときに、自動[ロジック アプリ ワークフロー](../logic-apps/logic-apps-what-are-logic-apps.md)を開始できます。 こうしたリソースは、そのイベントを [Azure Event Grid](../event-grid/overview.md) に発行できます。 また、そのイベントは、イベント グリッドによって、エンドポイントとしてキュー、webhook、または [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を持つサブスクライバーにプッシュされます。 ロジック アプリはサブスクライバーとして、イベント グリッドからのイベントを待機してから、自動ワークフローを実行してタスクを実行できます。コードを記述する必要はありません。
+特定のイベントが Azure リソースまたはサード パーティのリソースで発生したときに、自動[ロジック アプリ ワークフロー](../logic-apps/logic-apps-overview.md)を開始できます。 こうしたリソースは、そのイベントを [Azure Event Grid](../event-grid/overview.md) に発行できます。 また、そのイベントは、イベント グリッドによって、エンドポイントとしてキュー、webhook、または [Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) を持つサブスクライバーにプッシュされます。 ロジック アプリはサブスクライバーとして、イベント グリッドからのイベントを待機してから、自動ワークフローを実行してタスクを実行できます。コードを記述する必要はありません。
 
 たとえば、Azure Event Grid サービスを介して発行元がサブスクライバーに送信できるイベントをいくつか次に示します。
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 12/01/2017
 
 最初にロジック アプリを作成し、仮想マシンのリソース グループを監視する Event Grid トリガーを追加します。 
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。 
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
 
 2. Azure のメイン メニューの左上隅で、**[新規]** > **[エンタープライズ統合]** > **[ロジック アプリ]** を選択します。
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 12/01/2017
 
    ![ロジック アプリ テンプレートを選択する](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
 
-   Logic Apps デザイナーには現在、ロジック アプリの開始に使用できる[*コネクタ*](../connectors/apis-list.md)や[*トリガー*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)のほか、タスクを実行するためにトリガーの後に追加できるアクションも表示されます。 トリガーは、ロジック アプリ インスタンスを作成し、ロジック アプリ ワークフローを開始するイベントです。 
+   Logic Apps デザイナーには現在、ロジック アプリの開始に使用できる[*コネクタ*](../connectors/apis-list.md)や[*トリガー*](../logic-apps/logic-apps-overview.md#logic-app-concepts)のほか、タスクを実行するためにトリガーの後に追加できるアクションも表示されます。 トリガーは、ロジック アプリ インスタンスを作成し、ロジック アプリ ワークフローを開始するイベントです。 
    ロジック アプリには、最初の項目としてトリガーが必要です。
 
 6. 検索ボックスに、フィルターとして「event grid」と入力します。 トリガーとして **[Azure Event Grid - On a resource event]\(Azure Event Grid - リソース イベントの発生時\)** を選択します。
@@ -97,7 +97,7 @@ ms.lasthandoff: 12/01/2017
 
    ![イベント サブスクリプションの詳細を指定する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details-generic.png)
 
-   | 設定 | 推奨値 | 説明 | 
+   | 設定 | 推奨値 | [説明] | 
    | ------- | --------------- | ----------- | 
    | **サブスクリプション** | *{仮想マシンの Azure サブスクリプション}* | イベント発行元の Azure サブスクリプションを選択します。 このチュートリアルでは、ご利用の仮想マシンの Azure サブスクリプションを選択します。 | 
    | **リソースの種類** | Microsoft.Resources.resourceGroups | イベント発行元のリソースの種類を選択します。 このチュートリアルでは、指定した値を選択するため、ロジック アプリはリソース グループだけを監視します。 | 
@@ -154,13 +154,13 @@ ms.lasthandoff: 12/01/2017
 
 ## <a name="send-email-when-your-virtual-machine-changes"></a>仮想マシンの変更時に電子メールを送信する
 
-次は、指定した条件が true の場合に電子メールを受信するという "[*アクション*](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)" を追加します。
+次は、指定した条件が true の場合に電子メールを受信するという "[*アクション*](../logic-apps/logic-apps-overview.md#logic-app-concepts)" を追加します。
 
 1. その条件の **[true の場合]** ボックスで、**[アクションの追加]** を選択します。
 
    ![条件が true の場合のアクションを追加する](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-condition-2.png)
 
-2. 検索ボックスに、フィルターとして「email」と入力します。 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 次に、コネクタに対して "電子メールの送信" アクションを選択します。 For example: 
+2. 検索ボックスに、フィルターとして「email」と入力します。 電子メール プロバイダーに基づいて、一致するコネクタを検索して選択します。 次に、コネクタに対して "電子メールの送信" アクションを選択します。 例:  
 
    * たとえば、Azure 職場または学校アカウントの場合は、Office 365 Outlook コネクタを選択します。 
    * 個人用 Microsoft アカウントの場合は、Outlook.com コネクタを選択します。 
@@ -180,7 +180,7 @@ ms.lasthandoff: 12/01/2017
    > [!TIP]
    > ワークフローで使用できるフィールドから選択するには、編集ボックスで **[動的なコンテンツ]** をクリックして一覧を開くか、**[動的なコンテンツの追加]** を選択します。 他のフィールドについては、一覧の各セクションの **[もっと見る]** を選択します。 **[動的なコンテンツ]** 一覧を閉じるには、**[動的なコンテンツの追加]** を選択します。
 
-   | 設定 | 推奨値 | Description | 
+   | 設定 | 推奨値 | [説明] | 
    | ------- | --------------- | ----------- | 
    | **To** | *{受信者の電子メール アドレス}* |受信者の電子メール アドレスを入力します。 テスト目的で自分の電子メール アドレスを使用できます。 | 
    | **[件名]** | 更新リソース: **件名**| 電子メールの件名の内容を入力します。 このチュートリアルでは、推奨テキストを入力し、イベントの**[件名]** フィールドを選択します。 ここでは、電子メールの件名には更新リソース (仮想マシン) の名前が含まれています。 | 
@@ -211,7 +211,7 @@ ms.lasthandoff: 12/01/2017
 
    たとえば、Azure Portal で仮想マシンのサイズを変更するか、[Azure PowerShell で VM のサイズを変更](../virtual-machines/windows/resize-vm.md)できます。 
 
-   しばらくすると、電子メールが届きます。 For example:
+   しばらくすると、電子メールが届きます。 例: 
 
    ![仮想マシンの更新に関する電子メール](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 
@@ -245,6 +245,6 @@ ms.lasthandoff: 12/01/2017
 
 * ロジック アプリを完全に削除するには、ロジック アプリのメニューから **[概要]** を選択します。 ツール バーで、**[削除]** を選択します。 ロジック アプリを削除することに同意し、**[削除]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Event Grid を使ったカスタム イベントの作成とルーティング](../event-grid/custom-event-quickstart.md)

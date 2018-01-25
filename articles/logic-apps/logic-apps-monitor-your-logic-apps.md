@@ -15,15 +15,15 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ad8281744293a05b50f8664a7e5a3fea7aa7b33
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
-[ロジック アプリを作成して実行する](../logic-apps/logic-apps-create-a-logic-app.md)と、その実行の履歴、トリガーの履歴、状態、パフォーマンスを確認できます。 リアルタイムでのイベントの監視と高度なデバッグについては、ご利用のロジック アプリの[診断ログ](#azure-diagnostics)を設定します。 このようにして、トリガー イベント、実行イベント、アクション イベントなど、[イベントを検索して表示する](#find-events)ことができます。 また、Azure Storage や Azure Event Hubs などの[他のサービスでこの診断データ](#extend-diagnostic-data)を使用することもできます。 
+[ロジック アプリを作成して実行する](../logic-apps/quickstart-create-first-logic-app-workflow.md)と、その実行の履歴、トリガーの履歴、状態、パフォーマンスを確認できます。 リアルタイムでのイベントの監視と高度なデバッグについては、ご利用のロジック アプリの[診断ログ](#azure-diagnostics)を設定します。 このようにして、トリガー イベント、実行イベント、アクション イベントなど、[イベントを検索して表示する](#find-events)ことができます。 また、Azure Storage や Azure Event Hubs などの[他のサービスでこの診断データ](#extend-diagnostic-data)を使用することもできます。 
 
 エラーやその他考えられる問題に関する通知を受け取るには、[アラート](#add-azure-alerts)を設定します。 たとえば、"1 時間に 5 件を超える実行が失敗したとき" を検出するアラートを作成できます。 また、[Azure 診断イベントの設定とプロパティ](#diagnostic-event-properties)を使用すると、監視、追跡、ログ記録をプログラムで設定することもできます。
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 2. ご利用のロジック アプリを選択し、**[概要]** を選択します。
 
-   Azure Portal では、そのロジック アプリの実行の履歴とトリガーの履歴が表示されます。 For example:
+   Azure Portal では、そのロジック アプリの実行の履歴とトリガーの履歴が表示されます。 例: 
 
    ![ロジック アプリの実行の履歴とトリガーの履歴](media/logic-apps-monitor-your-logic-apps/overview.png)
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 
 3. 特定の実行からステップを表示するには、**[実行の履歴]** でその実行を選択します。 
 
-   モニター ビューには、その実行に含まれる各ステップが表示されます。 For example:
+   モニター ビューには、その実行に含まれる各ステップが表示されます。 例: 
 
    ![特定の実行のアクション](media/logic-apps-monitor-your-logic-apps/monitor-view-updated.png)
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 
    たとえば、その実行の**関連付け ID** を取得できます。これは、[Logic Apps 用の REST API](https://docs.microsoft.com/rest/api/logic) を使用する際に必要になる場合があります。
 
-5. 特定のステップの詳細を取得するには、そのステップを選択します。 これで、そのステップに対して発生した入出力やエラー (ある場合) などの詳細を確認できるようになりました。 For example:
+5. 特定のステップの詳細を取得するには、そのステップを選択します。 これで、そのステップに対して発生した入出力やエラー (ある場合) などの詳細を確認できるようになりました。 例: 
 
    ![ステップの詳細](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
@@ -168,7 +168,7 @@ Azure Log Analytics と併せて、ロジック アプリの診断データを�
 * [Azure 診断ログを Azure Storage にアーカイブする](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Azure 診断ログを Azure Event Hubs にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../log-analytics/log-analytics-powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 For example:
+これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../log-analytics/log-analytics-powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 例: 
 
 * [Event Hubs からStream Analytics にデータをストリーミングする](../stream-analytics/stream-analytics-define-inputs.md)
 * [ストリーミング データを Stream Analytics で分析し、Power BI でリアルタイム分析ダッシュボードを作成する](../stream-analytics/stream-analytics-power-bi-dashboard.md)
@@ -279,7 +279,7 @@ Azure Log Analytics と併せて、ロジック アプリの診断データを�
   }
   ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ロジック アプリのデプロイとリリースの管理用にテンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
 * [Enterprise Integration Pack を使用した B2B シナリオ](../logic-apps/logic-apps-enterprise-integration-overview.md)

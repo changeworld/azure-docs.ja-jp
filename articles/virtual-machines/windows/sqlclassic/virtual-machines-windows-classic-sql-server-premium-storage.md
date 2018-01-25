@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: ad4b5aeed645512774f1a3ecf94de37beff26b22
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: f637e3c744d61f6fda755c162609d7cc9f4619c7
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 ## <a name="overview"></a>概要
 [Azure Premium Storage](../premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。 IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 この記事では、SQL Server を実行する仮想マシンから Premium Storage の使用への移行に関する計画とガイダンスについて説明します。 これには、Azure インフラストラクチャ (ネットワーク、ストレージ) とゲストの Windows VM の手順が含まれます。 [付録](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) の例では、PowerShell を使用して、強化されたローカル SSD ストレージを利用するように大きな VM を移動する方法の詳細な移行を示します。
 
@@ -270,7 +270,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 
 #### <a name="step-3-use-existing-image"></a>手順 3. 既存のイメージを使用する
-既存のイメージを使用できます。 または、[既存のマシンのイメージを取得](../classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。 イメージを取得するマシンは DS* マシンでなくてもよいことに注意してください。 イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy** PowerShell コマンドレットで Premium Storage アカウントにコピーします。
+既存のイメージを使用できます。 または、[既存のマシンのイメージを取得](../classic/capture-image-classic.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)できます。 イメージを取得するマシンは DS* マシンでなくてもよいことに注意してください。 イメージを用意した後、次に示すように、**Start-AzureStorageBlobCopy** PowerShell コマンドレットで Premium Storage アカウントにコピーします。
 
     #Get storage account keys:
     #Standard Storage account
@@ -503,7 +503,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 * 手順 5ii を使用する場合、追加される IP アドレス リソースの実行可能な所有者として SQL1 追加します。
 * フェールオーバーをテストします。
 
-#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>手順 2.既存のセカンダリ レプリカを利用する: マルチサイト
+#### <a name="2-utilize-existing-secondary-replicas-multi-site"></a>2.既存のセカンダリ レプリカを利用する: マルチサイト
 複数の Azure データセンター (DC) にノードがある場合、またはハイブリッド環境がある場合は、その環境で Always On 構成を使用してダウンタイムを最小にできます。
 
 そのためには、オンプレミスまたはセカンダリの Azure DC の Always On 同期を同期に変更し、その SQL Server にフェールオーバーします。 その後、Premium Storage アカウントに VHD をコピーし、新しいクラウド サービスにマシンを再デプロイします。 リスナーを更新し、フェールバックします。

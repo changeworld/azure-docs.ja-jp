@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: b5b48edda76bedc14d5528fa82f1d9b7bfffe53a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0aa16e3466b36b6d1d83308cf37623aa15d61fcb
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="enable-microsoft-windows-hello-for-business-in-your-organization"></a>組織での Microsoft Windows Hello for Business の有効化
 [Windows 10 ドメイン参加済みデバイスを Azure Active Directory に接続](active-directory-azureadjoin-devices-group-policy.md)したら、以下の手順を実行して組織で Microsoft Windows Hello for Business を有効にします。
@@ -52,12 +52,12 @@ System Center Configuration Manager を使って証明書もデプロイする�
 
 1. サーバー マネージャーを開き、**[ツール]**  >  **[グループ ポリシーの管理]** に移動します。
 2. [グループ ポリシーの管理] から、Azure AD 参加を有効にするドメインに対応するドメイン ノードに移動します。
-3. **[グループ ポリシー オブジェクト]** を右クリックし、**[新規]** を選択します。 グループ ポリシー オブジェクトに Enable Windows Hello for Business などの名前を付けます。 **[OK]**をクリックします。
+3. **[グループ ポリシー オブジェクト]** を右クリックし、**[新規]** を選択します。 グループ ポリシー オブジェクトに Enable Windows Hello for Business などの名前を付けます。 Click **OK**.
 4. 新しいグループ ポリシー オブジェクトを右クリックし、 **[編集]**を選択します。
 5. **[コンピューターの構成]**  >  **[ポリシー]**  >  **[管理用テンプレート]**  >  **[Windows コンポーネント]**  >  **[Windows Hello for Business]** の順に移動します。
 6. **[Enable Windows Hello for Business (Windows Hello for Business を有効にする)]** を右クリックし、**[編集]** を選択します。
-7. **[有効]** を選択し、**[適用]** をクリックします。 **[OK]**をクリックします。
-8. これで、グループ ポリシー オブジェクトを選択した場所にリンクできるようになりました。 組織内のすべての Windows 10 ドメイン参加済みデバイスに対してこのポリシーを有効にするには、グループ ポリシーをドメインにリンクします。 次に例を示します。
+7. **[有効]** を選択し、**[適用]** をクリックします。 Click **OK**.
+8. これで、グループ ポリシー オブジェクトを選択した場所にリンクできるようになりました。 組織内のすべての Windows 10 ドメイン参加済みデバイスに対してこのポリシーを有効にするには、グループ ポリシーをドメインにリンクします。 例: 
    * Windows 10 ドメイン参加済みコンピューターを配置する Active Directory の特定の組織単位 (OU)
    * Azure AD に自動登録される Windows 10 ドメイン参加済みコンピューターを含む特定のセキュリティ グループ
 
@@ -74,7 +74,7 @@ System Center Configuration Manager を使って証明書もデプロイする�
    
     ![Windows Hello for Business の構成](./media/active-directory-azureadjoin-passport-deployment/03.png)
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、プロファイルの名前を入力します。たとえば、「**My WHfB Profile**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、プロファイルの名前を入力します。たとえば、「**My WHfB Profile**」と入力します。
    
     b. **[次へ]** をクリックします。
 4. **[サポートされているプラットフォーム]** ダイアログで、このビジネス向け Windows Hello プロファイルでプロビジョニングするプラットフォームを選択し、**[次へ]** をクリックします。
@@ -84,7 +84,7 @@ System Center Configuration Manager を使って証明書もデプロイする�
    
     ![Windows Hello for Business の構成](./media/active-directory-azureadjoin-passport-deployment/05.png)
    
-    a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 **[Windows Hello for Business の構成]** として、**[有効]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Windows Hello for Business の構成]** として、**[有効]** を選択します。
    
     b. **[トラステッド プラットフォーム モジュール (TPM) の使用]** として、**[必須]** を選択します。 
    
@@ -105,7 +105,7 @@ System Center Configuration Manager を使って証明書もデプロイする�
 
 証明書プロファイルの **[SCEP 登録]** ページで、**[キー格納プロバイダー]** として **[Passport for Work にインストールする (それ以外は失敗)]** を選択する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
 * [Azure Active Directory Join を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
 * [パスワードを使用せずに認証する](active-directory-azureadjoin-passport.md)

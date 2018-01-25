@@ -33,6 +33,9 @@
 #### [PowerShell を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-powershell.md)
 #### [CLI を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-cli.md)
 
+### Storage
+#### [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage)
+
 # ディザスター リカバリー
 ## [Azure Site Recovery の使用](https://docs.microsoft.com/azure/site-recovery/)
 

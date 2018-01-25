@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 76037c7b4a2f7ada314a9360e3990245e6fbc06c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b94c5a7d6c3c74e1dd66559dea288238c35d664c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 クラスターを形成するノードを管理します。
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|Description|
+|コマンド|[説明]|
 | --- | --- |
 |    disable       | 指定した非アクティブ化インテントを使用して、Service Fabric クラスターのノードを非アクティブ化します。|
 |    enable        | 現在非アクティブ化されている Service Fabric クラスター ノードをアクティブにします。|
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name [必須]| ノード名。|
 | --deactivation-intent | ノードを非アクティブ化するインテントまたは理由について記述します。 指定できる値は次のとおりです。 - Pause - 一時停止する必要があるノードを示します。 値は 1 です。 - Restart - インテントが短時間の後に再起動されるノード用であることを示します。 値は 2 です。 -        RemoveData - インテントがデータを削除するノード用であることを示します。 値は 3 です。 が必要です。|
@@ -55,13 +55,13 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose          | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-enable"></a>sfctl node enable
 現在非アクティブ化されている Service Fabric クラスター ノードをアクティブにします。
@@ -70,20 +70,20 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name [必須]| ノード名。|
 | --timeout -t       | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose          | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-health"></a>sfctl node health
 Service Fabric ノードの正常性を取得します。
@@ -92,21 +92,21 @@ Service Fabric ノードの正常性を取得します。 正常性状態に基�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name       [必須]| ノード名。|
-| --events-health-state-filter| 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルターできます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 すべてのイベントが集計された正常性の状態を評価するために使用されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。 - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。 - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。 - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。 - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。 - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。 - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。|
+| --events-health-state-filter| 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 すべてのイベントを使用して正常性の状態の集計が評価されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。 - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。 - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。 - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。 - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。 - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。 - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。|
 | --timeout -t             | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug                  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                | このヘルプ メッセージを表示して終了します。|
 | --output -o              | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query                  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose                | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose                | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-info"></a>sfctl node info
 Service Fabric クラスター内のノードの一覧を取得します。
@@ -115,20 +115,20 @@ Service Fabric クラスター内の特定のノードに関する情報を取�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name [必須]| ノード名。|
 | --timeout -t       | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose          | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-list"></a>sfctl node list
 Service Fabric クラスター内のノードの一覧を取得します。
@@ -137,7 +137,7 @@ Service Fabric クラスター内のノードの一覧を取得します。
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --continuation-token| 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。      この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。|
 | --node-status-filter| NodeStatus に基づいてノードをフィルターできます。 指定したフィルター値に一致するノードだけが返されます。 フィルター値には、次のいずれかを指定できます。 - default - このフィルター値は、状態が Unknown または Removed を除くすべてのノードと一致します。 -      all - このフィルター値は、すべてのノードと一致します。 - up - このフィルター値は、アップしているノードと一致します。 - down - このフィルター値は、ダウンしているノードと一致します。 - enabling - このフィルター値は、Enabling の状態を持つ有効化が進行中のノードと一致します。 - disabling -      このフィルター値は、Disabling の状態を持つ無効化が進行中のノードと一致します。 - disabled - このフィルター値は、無効化されたノードと一致します。 - unknown - このフィルター値は、状態が Unknown のノードと一致します。 Service Fabric がそのノードに関する権限情報を持っていない場合は、ノードは Unknown 状態になります。 これは、システムが実行時にノードについて学習する場合に発生します。 - removed - このフィルター値は、状態が Removed のノードと一致します。 これらは、RemoveNodeState API を使用して、クラスターから削除されたノードです。 が必要です。      既定値は default です。|
@@ -145,13 +145,13 @@ Service Fabric クラスター内のノードの一覧を取得します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug          | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h        | このヘルプ メッセージを表示して終了します。|
 | --output -o      | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query          | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose        | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose        | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-load"></a>sfctl node load
 Service Fabric ノードの読み込み情報を取得します。
@@ -160,20 +160,20 @@ Service Fabric ノードの読み込み情報を取得します。
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name [必須]| ノード名。|
 | --timeout -t       | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose          | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-restart"></a>sfctl node restart
 Service Fabric クラスター ノードを再起動します。
@@ -182,7 +182,7 @@ Service Fabric クラスター ノードを再起動します。
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-name [必須]| ノード名。|
 | --create-fabric-dump  | Fabric ノード プロセスのダンプを作成する場合は True を指定します。 これは大文字小文字を区別します。  既定値は False です。|
@@ -191,13 +191,13 @@ Service Fabric クラスター ノードを再起動します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug            | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h          | このヘルプ メッセージを表示して終了します。|
 | --output -o        | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query            | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose          | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose          | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-transition"></a>sfctl node transition
 クラスター ノードを開始または停止します。
@@ -207,7 +207,7 @@ Service Fabric クラスター ノードを再起動します。
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --node-instance-id         [必須]| ターゲット ノードのノード インスタンス ID。 これは GetNodeInfo API を通じて決定できます。|
 | --node-name                [必須]| ノード名。|
@@ -218,7 +218,7 @@ Service Fabric クラスター ノードを再起動します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug                           | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                         | このヘルプ メッセージを表示して終了します。|
@@ -226,6 +226,6 @@ Service Fabric クラスター ノードを再起動します。
 | --query                           | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
 | --verbose                         | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

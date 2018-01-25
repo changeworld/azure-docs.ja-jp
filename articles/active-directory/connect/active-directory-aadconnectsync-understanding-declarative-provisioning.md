@@ -3,7 +3,7 @@ title: "Azure AD Connect: 宣言型プロビジョニングについて | Micros
 description: "Azure AD Connect における宣言型のプロビジョニングの構成モデルについて説明します。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7e299fb33bdbd514a8fbc96c6953c9a8ca70f54a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 50fce526d667fa829551425edff4bd3863429ef2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 宣言型のプロビジョニングでは、ソースの接続されたディレクトリからのオブジェクトを処理します。また、オブジェクトと属性をソースからターゲットに変換する方法を決定します。 オブジェクトは同期パイプラインで処理されます。このパイプラインは受信規則と送信規則とで同じです。 受信規則はコネクタ スペースからメタバースに対する規則であり、送信規則はメタバースからコネクタ スペースに対する規則です。
 
 ![Sync pipeline](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/sync1.png)  
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/11/2017
 
 スコープ モジュールでは、次の演算がサポートされています。
 
-| 操作 | Description |
+| 操作 | [説明] |
 | --- | --- |
 | EQUAL、NOTEQUAL |値が属性内の値と等しいかどうかを評価する文字列の比較。 複数値の属性については、ISIN と ISNOTIN を参照してください。 |
 | LESSTHAN、LESSTHAN_OR_EQUAL |値が属性内の値未満であるかどうかを評価する文字列の比較。 |
@@ -125,7 +125,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="importedvalue"></a>ImportedValue
 ImportedValue 関数は、属性名を角かっこではなく引用符で囲む必要がある点で、他のすべての関数とは異なっています。次に例を示します。  
-`ImportedValue("proxyAddresses")`」を参照してください。
+`ImportedValue("proxyAddresses")`
 
 通常、同期する際は、まだエクスポートされていない場合であっても、エクスポート中にエラーが発生した場合であっても、属性では予想される値を使用します ("top of the tower")。 受信同期では、接続されたディレクトリにまだ届いていない属性も最終的には届くと見なされます。 また、接続されたディレクトリで確認された値のみを同期することが重要です ("hologram and delta import tower")。
 
@@ -148,7 +148,7 @@ ImportedValue 関数は、属性名を角かっこではなく引用符で囲む
 このシナリオでは、同期規則のスコープを変更して、ソース オブジェクトがスコープ内に異なる同期規則を持つようにする必要があります。 そうすれば、異なる優先順位を定義できます。  
 ![Multiple objects joined to the same mv object](./media/active-directory-aadconnectsync-understanding-declarative-provisioning/multiple2.png)  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
 * 宣言型のプロビジョニングをすぐに使用する方法については、「 [既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)」をご覧ください。
 * 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「 [既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)」をご覧ください。

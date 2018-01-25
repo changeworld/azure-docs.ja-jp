@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 6589edd535b513f8d1eb47e69f4fbcdd96a2f10d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b76f3cc3d8538a50895f5be32a800cb469c81203
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
@@ -39,41 +39,41 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>Azure Data Lake Store のディレクトリ</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Azure Data Lake Store のファイル</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Azure BLOB ストレージ</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Azure Storage ディレクトリ</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Azure Storage テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td>
         <font size="2">
       </td>
@@ -83,96 +83,96 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>HDFS ディレクトリ</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>HDFS ファイル</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Hive テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel</td>
       <td></td>
     </tr>
     <tr>
       <td>Hive ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel</td>
       <td></td>
     </tr>
     <tr>
       <td>MySQL テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>MySQL ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Oracle Database テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>Oracle Database ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>その他 (汎用アセット)</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Azure SQL Data Warehouse テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server データ ツール</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Data Warehouse ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server データ ツール</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services ディメンション</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
       <td></td>
@@ -180,94 +180,94 @@ ms.lasthandoff: 11/15/2017
     <tr>
       <td>SQL Server Analysis Services KPI</td>
       <td>✓</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services メジャー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server Analysis Services テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server Reporting Services レポート</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>[ブラウザー] ボタンを</td>
       <td>ネイティブ モードのサーバーのみ。 SharePoint モードはサポートされていません。</td>
     </tr>
     <tr>
       <td>SQL Server テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server データ ツール</td>
       <td></td>
     </tr>
     <tr>
       <td>SQL Server ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop、SQL Server データ ツール</td>
       <td></td>
     </tr>
     <tr>
       <td>Teradata テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel</td>
       <td></td>
     </tr>
     <tr>
       <td>Teradata ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Excel</td>
       <td></td>
     </tr>
     <tr>
       <td>SAP HANA ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td>Power BI Desktop</td>
       <td></td>
     </tr>
     <tr>
       <td>DB2 テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>DB2 ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>ファイル システムのファイル</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -275,23 +275,23 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>FTP ディレクトリ</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>FTP ファイル</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>HTTP レポート</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -299,7 +299,7 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>HTTP エンドポイント</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -307,7 +307,7 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>HTTP ファイル</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -315,7 +315,7 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>OData エンティティ セット</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -323,7 +323,7 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>OData 関数</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -331,23 +331,23 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>PostgreSQL テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>PostgreSQL ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>SAP HANA ビュー</td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -355,15 +355,15 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td> Salesforce オブジェクト</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>SharePoint リスト </td>
-      <td>✓ </td>
+      <td>✓</td>
       <td></td>
       <td></td>
       <td></td>
@@ -371,79 +371,79 @@ ms.lasthandoff: 11/15/2017
     </tr>
     <tr>
       <td>Azure Cosmos DB コレクション</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>汎用 ODBC テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>汎用 ODBC ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Cassandra テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td></td>
       <td>汎用 ODBC 資産として発行</td>
     </tr>
     <tr>
       <td>Cassandra ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td></td>
       <td>汎用 ODBC 資産として発行</td>
     </tr>
     <tr>
       <td>Sybase テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Sybase ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
+      <td>✓</td>
       <td></td>
       <td></td>
     </tr>
     <tr>
       <td>MongoDB テーブル</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td></td>
       <td>汎用 ODBC 資産として発行</td>
     </tr>
     <tr>
       <td>MongoDB ビュー</td>
-      <td>✓ </td>
-      <td>✓ </td>
+      <td>✓</td>
+      <td>✓</td>
       <td>✓</td>
       <td></td>
       <td>汎用 ODBC 資産として発行</td>
     </tr>
 </table>
 
-サポートされている具体的なデータ ソースを確認する場合は、[Azure Feedback フォーラムの「Data Catalog (データ カタログ)」](https://feedback.azure.com/forums/906052-data-catalog)に移動して、それを提案 (または、それが既に提案されている場合は、その支持を表明) してください。
+サポートされている具体的なデータ ソースを確認する場合は、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) に移動して、それを提案 (または、それが既に提案されている場合は、その支持を表明) してください。
 
 
 ## <a name="data-source-reference-specification"></a>データ ソース参照の仕様

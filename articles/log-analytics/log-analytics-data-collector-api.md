@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 5b4b31b58c7a4bcb93277333502bc082da2062ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88d9c4b23eb676743c004c0d1b3ab45f6cd66055
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -40,21 +40,21 @@ Log Analytics リポジトリ内のすべてのデータは、特定の種類の
 HTTP データ コレクター API を使用するには、JavaScript Object Notation (JSON) で送信するデータを含む POST 要求を作成します。  次の 3 つの表に、各要求で必要な属性の一覧を示します。 この記事の後半で、各属性についてより詳しく説明します。
 
 ### <a name="request-uri"></a>要求 URI
-| 属性 | プロパティ |
+| Attribute | プロパティ |
 |:--- |:--- |
-| メソッド |POST |
+| 方法 |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | コンテンツの種類 |application/json |
 
 ### <a name="request-uri-parameters"></a>要求 URI のパラメーター
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 |:--- |:--- |
 | CustomerID |Microsoft Operations Management Suite ワークスペースの一意の識別子。 |
 | リソース |API のリソース名は "/api/logs" です。 |
 | API バージョン |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
 
 ### <a name="request-headers"></a>要求ヘッダー
-| ヘッダー | 説明 |
+| ヘッダー | [説明] |
 |:--- |:--- |
 | 承認 |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
 | Log-Type |送信中のデータのレコード型を指定します。 現在、ログの種類でサポートされているのは、アルファベットのみです。 数字や特殊文字はサポートされていません。 |
@@ -135,7 +135,7 @@ Log Analytics API への各要求には、レコード型の名前が付いた *
 | プロパティのデータ型 | サフィックス |
 |:--- |:--- |
 | String |_s |
-| Boolean |_b |
+| ブール |_b |
 | Double |_d |
 | Date/time |_t |
 | GUID |_g |
@@ -173,7 +173,7 @@ HTTP 状態コード 200 は、要求が処理するために受信されたこ�
 
 次の表に、サービスから返される可能性のあるすべての状態コードの一覧を示します。
 
-| コード | 状態 | エラー コード | Description |
+| コード | 状態 | エラー コード | [説明] |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |要求は正常に受け入れられました。 |
 | 400 |正しくない要求 |InactiveCustomer |このワークスペースは閉じられています。 |
@@ -260,7 +260,7 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
 
 
 # Create the function to create and post the request
-Function Post-OMSData($customerId, $sharedKey, $body, $logType)
+Function Post-LogAnalyticsData($customerId, $sharedKey, $body, $logType)
 {
     $method = "POST"
     $contentType = "application/json"
@@ -291,7 +291,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 }
 
 # Submit the data to the API endpoint
-Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
+Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
 ### <a name="c-sample"></a>C# のサンプル
@@ -463,5 +463,5 @@ def post_data(customer_id, shared_key, body, log_type):
 post_data(customer_id, shared_key, body, log_type)
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Log Analytics リポジトリから [Log Search API](log-analytics-log-search-api.md) を使用してデータを取得する

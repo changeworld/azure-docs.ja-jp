@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/16/2018
 ms.author: magoedte;banders
-ms.openlocfilehash: 331cc9d27dd416900e0145f3e453dfd3bfcfbcb5
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b7cb178a24b043fe2c884ef0e4b3ad14ca0d73e4
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -58,10 +58,10 @@ OMS エージェントに加えて、ワイヤ データ ソリューション�
 
 | **接続先ソース** | **サポートされています** | **説明** |
 | --- | --- | --- |
-| Windows エージェント | あり | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [OMS エージェント](log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
-| Linux エージェント | あり | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [OMS エージェント](log-analytics-quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
-| System Center Operations Manager 管理グループ | あり | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 データは管理グループから Log Analytics に転送されます。 |
-| Azure ストレージ アカウント | いいえ | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
+| Windows エージェント | [はい] | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [OMS エージェント](log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
+| Linux エージェント | [はい] | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [OMS エージェント](log-analytics-quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
+| System Center Operations Manager 管理グループ | [はい] | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 データは管理グループから Log Analytics に転送されます。 |
+| Azure ストレージ アカウント | いいえ  | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
 Windows では、データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、OMS エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Log Analytics では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。
 
@@ -375,9 +375,6 @@ rpm -e dependency-agent dependency-agent-connector
 
 エージェントをインストールして、ソリューションをインストールすると、Wire Data 2.0 のタイルがワークスペースに表示されます。
 
-> [!NOTE]
-> 現在は、OMS ポータルを使用してワイヤ データを表示する必要があります。 Azure Portal を使用して、ワイヤ データを表示することはできません。
-
 ![ワイヤ データ タイル](./media/log-analytics-wire-data/wire-data-tile.png)
 
 ## <a name="using-the-wire-data-20-solution"></a>Wire Data 2.0 ソリューションの使用
@@ -420,9 +417,9 @@ OMS ポータルで、**[Wire Data 2.0]** タイルをクリックして、ワ�
 
 入力データの種類ごとに、種類が _WireData_ であるレコードが作成されます。 WireData レコードには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |---|---|
-| コンピューター | データが収集されたコンピューター名 |
+| Computer | データが収集されたコンピューター名 |
 | TimeGenerated | レコードの時刻 |
 | LocalIP | ローカル コンピューターの IP アドレス |
 | SessionState | 接続または切断 |
@@ -431,7 +428,7 @@ OMS ポータルで、**[Wire Data 2.0]** タイルをクリックして、ワ�
 | IPVersion | IP バージョン |
 | 方向 | 受信または送信 |
 | MaliciousIP | 既知の悪意のある発信元の IP アドレス |
-| Severity | 疑いのあるマルウェアの重大度 |
+| 重大度 | 疑いのあるマルウェアの重大度 |
 | RemoteIPCountry | リモート IP アドレスの国 |
 | ManagementGroupName | Operations Manager 管理グループの名前 |
 | SourceSystem | データが収集されたソース |
@@ -451,6 +448,6 @@ OMS ポータルで、**[Wire Data 2.0]** タイルをクリックして、ワ�
 | RemoteIPLatitude | IP の緯度の値 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [ログを検索](log-analytics-log-searches.md) して、詳細なワイヤ データ検索レコードを確認します。

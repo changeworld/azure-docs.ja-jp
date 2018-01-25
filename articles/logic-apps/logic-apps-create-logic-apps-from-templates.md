@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: LADocs; klam
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8adda0d9cd6af98c04f2432eeabbc003ad403719
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 49b4bbfda4518b03ef6080bec1e2a493933af4f5
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/21/2017
 
 テンプレートのカテゴリを次に示します。
 
-| テンプレートの種類 | Description | 
+| テンプレートの種類 | [説明] | 
 | ------------- | ----------- | 
 | エンタープライズ クラウド テンプレート | Azure Blob、Dynamics CRM、Salesforce、Box の統合用であり、エンタープライズ クラウドのニーズに応じた他のコネクタを含みます。 たとえば、ビジネスの潜在顧客の整理や、企業のファイル データのバックアップに、これらのテンプレートを使用することができます。 | 
 | 個人的生産性テンプレート | 毎日のアラームを設定し、重要な作業項目を To Do リストに変換し、長期間のタスクを 1 人のユーザーの承認手順に自動化することで、個人の生産性を向上させます。 | 
@@ -36,13 +36,13 @@ ms.lasthandoff: 10/21/2017
 | プロトコル パターン テンプレート | HTTP 経由の要求 - 応答や、FTP と SFTP の統合など、プロトコル パターンの実装用です。 提供されたテンプレートをそのまま使うことも、テンプレートを基にして複雑なプロトコル パターンを作成することもできます。 | 
 ||| 
 
-Azure サブスクリプションがない場合は、始める前に[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 ロジック アプリの作成の詳細については、[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページをご覧ください。
+Azure サブスクリプションがない場合は、始める前に[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 ロジック アプリの作成の詳細については、[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページをご覧ください。
 
 ## <a name="create-logic-apps-from-templates"></a>テンプレートからのロジック アプリの作成
 
 1. [Azure Portal](https://portal.azure.com "Azure Portal") にまだサインインしていない場合は、サインインします。
 
-2. Azure のメイン メニューで、**[新規]** > **[Enterprise Integration]\(エンタープライズ統合\)** > **[Logic App]\(ロジック アプリ\)** の順に選択します。
+2. Azure のメイン メニューで、**[新規]** > **[エンタープライズ統合]** > **[Logic Apps]** の順に選択します。
 
    ![Azure Portal、[新規]、[Enterprise Integration]、[Logic App]](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -50,7 +50,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
    ![ロジック アプリの詳細を指定する](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | 設定 | 値 | Description | 
+   | 設定 | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **名前** | <*ロジック アプリ名*> | 一意のロジック アプリ名を指定します。 | 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
@@ -67,7 +67,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    ロジック アプリのデプロイ後、Logic Apps デザイナーが開かれ、紹介ビデオのあるページが表示されます。 
    ビデオの下に、一般的なロジック アプリのパターンのテンプレートがあります。 
 
-5. 紹介ビデオおよび一般的なトリガーの下の **[テンプレート]** までスクロールします。 作成済みのテンプレートを選択します。 For example:
+5. 紹介ビデオおよび一般的なトリガーの下の **[テンプレート]** までスクロールします。 作成済みのテンプレートを選択します。 例: 
 
    ![ロジック アプリ テンプレートを選択する](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
@@ -75,7 +75,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    > ロジック アプリを最初から作成するには、**[空のロジック アプリ]** を選択します。
 
    作成済みのテンプレートを選択すると、そのテンプレートについての詳細を見ることができます。 
-   For example:
+   例: 
 
    ![作成済みのテンプレートを選択する](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
@@ -87,9 +87,9 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
    * テンプレートによって参照されているサービスまたはシステムへの接続を作成します。 接続を作成するには、接続の名前を指定し、必要であれば使用するリソースを選択します。 
 
-   * これらの接続を既に設定してある場合は、**[続行]** を選びます。
+   * これらの接続を既に設定してある場合は、**[続行]** を選択します。
 
-   For example:
+   例: 
 
    ![接続を作成する](./media/logic-apps-create-logic-apps-from-templates/logic-app-create-connection.png)
 
@@ -107,16 +107,16 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
 1. [Azure Portal](https://portal.azure.com "Azure Portal") で、ロジック アプリを探して Logic App デザイナーで開きます。
 
-2. デザイナーのツール バーで、**[テンプレート]** を選択します。 そうすると、保存していない変更が破棄されるので、続行を確認する警告メッセージが表示されます。 確認するには、**[OK]** を選びます。 For example:
+2. デザイナーのツール バーで、**[テンプレート]** を選択します。 そうすると、保存していない変更が破棄されるので、続行を確認する警告メッセージが表示されます。 確認するには、**[OK]** を選びます。 例: 
 
    !["テンプレート" を選択する](./media/logic-apps-create-logic-apps-from-templates/logic-app-update-existing-with-template.png)
 
-3. 紹介ビデオおよび一般的なトリガーの下の **[テンプレート]** までスクロールします。 作成済みのテンプレートを選択します。 For example:
+3. 紹介ビデオおよび一般的なトリガーの下の **[テンプレート]** までスクロールします。 作成済みのテンプレートを選択します。 例: 
 
    ![ロジック アプリ テンプレートを選択する](./media/logic-apps-create-logic-apps-from-templates/choose-logic-app-template.png)
 
    作成済みのテンプレートを選択すると、そのテンプレートについての詳細を見ることができます。 
-   For example:
+   例: 
 
    ![作成済みのテンプレートを選択する](./media/logic-apps-create-logic-apps-from-templates/logic-app-choose-prebuilt-template.png)
 
@@ -155,7 +155,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 例、シナリオ、顧客事例、チュートリアルからロジック アプリを作成する方法を学習します。
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
-ms.openlocfilehash: b2e755b5b1b4939eac90ac55ba8398c5687124c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3b352b185b7dfeee12ac9bee1b72cb740add5b8
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix コネクタの概要
 Microsoft Connector for Informix は、IBM Informix データベースに格納されているリソースに Logic Apps を接続します。 Informix コネクタには、TCP/IP ネットワーク経由でリモート Informix サーバー コンピューターと通信する Microsoft クライアントが含まれています。 これには、Azure 仮想化で実行されている IBM Informix for Windows などのクラウド データベースと、オンプレミス データ ゲートウェイを使用するオンプレミス データベースが含まれます。 (このトピックの) IBM Informix のプラットフォームとバージョンの [サポート対象一覧](connectors-create-api-informix.md#supported-informix-platforms-and-versions) をご覧ください。
@@ -35,7 +35,7 @@ Microsoft Connector for Informix は、IBM Informix データベースに格納�
 
 このトピックでは、ロジック アプリでコネクタを使用してデータベース操作を処理する方法を説明します。
 
-Logic Apps の詳細については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
+Logic Apps の詳細については、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 ## <a name="available-actions"></a>使用可能なアクション
 このコネクタでサポートされているロジック アプリのアクションは、次のとおりです。
@@ -83,13 +83,13 @@ Logic Apps の詳細については、 [ロジック アプリの作成](../logi
 ## <a name="create-the-connections"></a>接続を作成する
 このコネクタでは、次の接続プロパティを使用した、オンプレミスおよびクラウドのデータベースへの接続をサポートします。 
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | [サーバー] |必須。 (コロンで区切られた後に) TCP/IP ポート番号が続く、IPv4 または IPv6 形式の TCP/IP アドレスまたはエイリアスを表す文字列値を受け入れます。 |
 | [データベース] |必須。 DRDA リレーショナル データベース名 (RDBNAM) を表す文字列値を受け入れます。 Informix は、128 バイトの文字列を受け入れます (database は IBM Informix データベース名 (dbname) です)。 |
 | [認証] |省略可能。 リスト項目値 (Basic または Windows (kerberos)) を受け入れます。 |
 | [ユーザー名] |必須。 文字列値を受け入れます。 |
-| [パスワード] |必須。 文字列値を受け入れます。 |
+| password |必須。 文字列値を受け入れます。 |
 | [ゲートウェイ] |必須。 ストレージ グループ内の Logic Apps に定義されたオンプレミス データ ゲートウェイを表す、リスト項目値を受け入れます。 |
 
 ## <a name="create-the-on-premises-gateway-connection"></a>オンプレミス ゲートウェイ接続を作成する
@@ -148,7 +148,7 @@ Informix テーブル内のすべての行を取得するロジック アプリ�
     ![](./media/connectors-create-api-informix/InformixconnectorCloudConnection.png)
 10. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。
 11. 必要に応じて、 **[詳細オプションの表示]** をクリックしてクエリ オプションを指定します。
-12. [ **保存**] を選択します。 
+12. **[保存]** を選択します。 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowsTableName.png)
 13. **[InformixgetRows]** ブレードで、**[概要]** の **[すべての実行]** 一覧の先頭に表示されている項目 (最新の実行) を選択します。
@@ -175,7 +175,7 @@ Informix テーブル内の 1 つの行を追加するロジック アプリの�
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。
 9. 必要な列すべてに値を入力します (赤いアスタリスクを参照)。 たとえば、**[AREAID]** に「`99999`」、[AREADESC] に「`Area 99999`」、**[REGIONID]** に「`102`」と入力します。 
-10. [ **保存**] を選択します。
+10. **[保存]** を選択します。
     
     ![](./media/connectors-create-api-informix/InformixconnectorInsertRowValues.png)
 11. **[InformixinsertRow]** ブレードで、**[概要]** の **[すべての実行]** 一覧の先頭に表示されている項目 (最新の実行) を選択します。
@@ -203,7 +203,7 @@ Informix テーブル内の 1 つの行を取得するロジック アプリの�
 8. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。
 9. 必要な列すべてに値を入力します (赤いアスタリスクを参照)。 たとえば、**[AREAID]** に「`99999`」と入力します。 
 10. 必要に応じて、 **[詳細オプションの表示]** をクリックしてクエリ オプションを指定します。
-11. [ **保存**] を選択します。 
+11. **[保存]** を選択します。 
     
     ![](./media/connectors-create-api-informix/InformixconnectorGetRowValues.png)
 12. **[InformixgetRow]** ブレードで、**[概要]** の **[すべての実行]** 一覧の先頭に表示されている項目 (最新の実行) を選択します。
@@ -230,7 +230,7 @@ Informix テーブル内の 1 つの行を変更するロジック アプリの�
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。
 9. 必要な列すべてに値を入力します (赤いアスタリスクを参照)。 たとえば、**[AREAID]** に「`99999`」、[AREADESC] に「`Updated 99999`」、**[REGIONID]** に「`102`」と入力します。 
-10. [ **保存**] を選択します。 
+10. **[保存]** を選択します。 
     
     ![](./media/connectors-create-api-informix/InformixconnectorUpdateRowValues.png)
 11. **[InformixupdateRow]** ブレードで、**[概要]** の **[すべての実行]** 一覧の先頭に表示されている項目 (最新の実行) を選択します。
@@ -257,7 +257,7 @@ Informix テーブル内の 1 つの行を削除するロジック アプリの�
     ![](./media/connectors-create-api-informix/InformixconnectorChangeConnection.png)
 8. **[テーブル名]** 一覧の**下向き矢印**をクリックし、**[AREA]** を選択します。
 9. 必要な列すべてに値を入力します (赤いアスタリスクを参照)。 たとえば、**[AREAID]** に「`99999`」と入力します。 
-10. [ **保存**] を選択します。 
+10. **[保存]** を選択します。 
     
     ![](./media/connectors-create-api-informix/InformixconnectorDeleteRowValues.png)
 11. **[InformixdeleteRow]** ブレードで、**[概要]** の **[すべての実行]** 一覧の先頭に表示されている項目 (最新の実行) を選択します。
@@ -275,6 +275,6 @@ Informix テーブル内の 1 つの行を削除するロジック アプリの�
 
 [コネクタの詳細](/connectors/informix/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
-## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+## <a name="next-steps"></a>次の手順
+[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 

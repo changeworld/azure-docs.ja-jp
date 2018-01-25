@@ -3,7 +3,7 @@ title: "Azure AD Connect によって同期される属性 | Microsoft Docs"
 description: "Azure Active Directory に同期される属性の一覧を示します。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 1fb5772f58511b33d6927c3d0ff155980ed756ad
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d935b73e1087d5ad858bdbee9af68dd1cf5cd1e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/11/2017
 >
 
 ## <a name="office-365-proplus"></a>Office 365 ProPlus
-| 属性名 | ユーザー | コメント |
+| 属性名 | ユーザー | Comment (コメント) |
 | --- |:---:| --- |
 | accountEnabled |○ |アカウントが有効な場合に定義します。 |
 | cn |○ | |
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/11/2017
 | userPrincipalName |○ |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="exchange-online"></a>Exchange Online
-| 属性名 | ユーザー | 連絡先 | グループ | コメント |
+| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | assistant |○ |○ | | |
@@ -60,7 +60,7 @@ ms.lasthandoff: 12/11/2017
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
 | department |○ |○ | | |
-| description |○ |○ |○ | |
+| 説明 |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | dLMemRejectPerms |○ |○ |○ | |
 | dLMemSubmitPerms |○ |○ |○ | |
@@ -172,7 +172,7 @@ ms.lasthandoff: 12/11/2017
 | wWWHomePage |○ |○ | | |
 
 ## <a name="sharepoint-online"></a>SharePoint Online
-| 属性名 | ユーザー | 連絡先 | グループ | コメント |
+| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | authOrig |○ |○ |○ | |
@@ -182,7 +182,7 @@ ms.lasthandoff: 12/11/2017
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
 | department |○ |○ | | |
-| description |○ |○ |○ | |
+| 説明 |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | dLMemRejectPerms |○ |○ |○ | |
 | dLMemSubmitPerms |○ |○ |○ | |
@@ -254,7 +254,7 @@ ms.lasthandoff: 12/11/2017
 | wWWHomePage |○ |○ | | |
 
 ## <a name="lync-online-subsequently-known-as-skype-for-business"></a>Lync Online (後続製品: Skype for Business)
-| 属性名 | ユーザー | 連絡先 | グループ | コメント |
+| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | c |○ |○ | | |
@@ -262,7 +262,7 @@ ms.lasthandoff: 12/11/2017
 | co |○ |○ | | |
 | company |○ |○ | | |
 | department |○ |○ | | |
-| description |○ |○ |○ | |
+| 説明 |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | facsimiletelephonenumber |○ |○ |○ | |
 | givenName |○ |○ | | |
@@ -303,7 +303,7 @@ ms.lasthandoff: 12/11/2017
 | wWWHomePage |○ |○ | | |
 
 ## <a name="azure-rms"></a>Azure RMS
-| 属性名 | ユーザー | 連絡先 | グループ | コメント |
+| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | cn |○ | |○ |共通名または別名です。 多くの場合、[mail] 値のプレフィックスです。 |
@@ -319,12 +319,12 @@ ms.lasthandoff: 12/11/2017
 | userPrincipalName |○ | | |この UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="intune"></a>Intune
-| 属性名 | ユーザー | 連絡先 | グループ | コメント |
+| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | c |○ |○ | | |
 | cn |○ | |○ | |
-| description |○ |○ |○ | |
+| 説明 |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | mail |○ |○ |○ | |
 | mailNickname |○ |○ |○ | |
@@ -338,7 +338,7 @@ ms.lasthandoff: 12/11/2017
 | userPrincipalName |○ | | |UPN は、ユーザーのログイン ID です。 多くの場合、[mail] 値と同じです。 |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
-| 属性名 | ユーザー | 連絡先 | グループ | コメント |
+| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | c |○ |○ | | |
@@ -346,7 +346,7 @@ ms.lasthandoff: 12/11/2017
 | co |○ |○ | | |
 | company |○ |○ | | |
 | countryCode |○ |○ | | |
-| description |○ |○ |○ | |
+| 説明 |○ |○ |○ | |
 | displayName |○ |○ |○ | |
 | facsimiletelephonenumber |○ |○ | | |
 | givenName |○ |○ | | |
@@ -378,7 +378,7 @@ ms.lasthandoff: 12/11/2017
 
 このグループは、Office 365、Dynamics、または Intune のサポートに Azure AD ディレクトリを使用しない場合に使用できる属性セットです。 この中には、少数のコア属性が含まれます。
 
-| 属性名 | ユーザー | 連絡先 | グループ | コメント |
+| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | accountEnabled |○ | | |アカウントが有効な場合に定義します。 |
 | cn |○ | |○ | |
@@ -399,7 +399,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="windows-10"></a>Windows 10
 Windows 10 のドメイン参加コンピューター (デバイス) は、一部の属性を Azure AD と同期します。 シナリオの詳細については、「 [Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する](../active-directory-azureadjoin-devices-group-policy.md)」をご覧ください。 これらの属性は常に同期され、Windows 10 は選択解除できるアプリとして表示されません。 Windows 10 のドメイン参加コンピューターは、属性 userCertificate が設定されていることで識別されます。
 
-| 属性名 | デバイス | コメント |
+| 属性名 | デバイス | Comment (コメント) |
 | --- |:---:| --- |
 | accountEnabled |○ | |
 | deviceTrustType |○ |ドメイン参加コンピューターのハードコーディングされた値です。 |
@@ -413,7 +413,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 
 選択したアプリに加え、 **ユーザー** には以下の属性があります。  
 
-| 属性名 | ユーザー | コメント |
+| 属性名 | ユーザー | Comment (コメント) |
 | --- |:---:| --- |
 | domainFQDN |○ |dnsDomainName とも呼ばれます。 たとえば、contoso.com です。 |
 | domainNetBios |○ |netBiosName とも呼ばれます。 たとえば、CONTOSO です。 |
@@ -421,7 +421,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 ## <a name="exchange-hybrid-writeback"></a>Exchange ハイブリッドの書き戻し
 次の属性は、 **Exchange ハイブリッド**を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。 Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
 
-| 属性名 | ユーザー | 連絡先 | グループ | コメント |
+| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
 | --- |:---:|:---:|:---:| --- |
 | msDS ExternalDirectoryObjectID |○ | | |Azure AD の cloudAnchor から派生します。 この属性は、Exchange 2016 と Windows Server 2016 AD で導入されました。 |
 | msExchArchiveStatus |○ | | |オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。 |
@@ -436,7 +436,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 ## <a name="exchange-mail-public-folder"></a>Exchange メールのパブリック フォルダー
 次の属性は、**Exchange メールのパブリック フォルダー**を有効にすると、オンプレミス Active Directory から Azure AD に同期されます。
 
-| 属性名 | PublicFolder | コメント |
+| 属性名 | PublicFolder | Comment (コメント) |
 | --- | :---:| --- |
 | displayName | ○ |  |
 | mail | ○ |  |
@@ -448,7 +448,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 ## <a name="device-writeback"></a>デバイスの書き戻し
 デバイス オブジェクトは、Active Directory に作成されます。 これらのオブジェクトは、Azure AD に参加しているデバイス、またはドメインに参加している Windows 10 コンピューターです。
 
-| 属性名 | デバイス | コメント |
+| 属性名 | デバイス | Comment (コメント) |
 | --- |:---:| --- |
 | altSecurityIdentities |○ | |
 | displayName |○ | |
@@ -469,7 +469,7 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 * 代替 ID を使用する場合、オンプレミスの userPrincipalName 属性は Azure AD の onPremisesUserPrincipalName 属性と同期されます。 mail などの代替 ID 属性は、Azure AD の userPrincipalName 属性と同期されます。
 * 前の一覧で、オブジェクトの種類 **User** は、オブジェクトの種類 **iNetOrgPerson** にも適用されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

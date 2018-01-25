@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2017
+ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 99182b2ed91f6d60f499be0078077bf52fe8b366
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20f3d4bb876a46b67385dd4435296e149641149e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory の GetMetadata アクティビティ
 GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 このアクティビティは、バージョン 2 の Data Factory でのみサポートされています。 これは、次のシナリオで使用できます。
@@ -94,12 +94,12 @@ GetMetadata アクティビティは必須の入力としてデータセット�
 ## <a name="type-properties"></a>型のプロパティ
 現在、GetMetadata アクティビティは、Azure ストレージ データセットから次のタイプのメタデータ情報をフェッチできます。
 
-プロパティ | Description | 使用できる値 | 必須
+プロパティ | [説明] | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-fieldList | 必要なメタデータ情報のタイプを一覧表示します。  | <ul><li>size</li><li>structure</li><li>lastModified</li></ul> |    いいえ<br/>空の場合、アクティビティは 3 つのサポートされるすべてのメタデータ情報を返します。 
-データセット | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 <br/><br/>現在サポートされているデータセットのタイプは Azure BLOB です。 2 つのサブプロパティは次のとおりです。 <ul><li><b>referenceName</b>: 既存の Azure BLOB データセットへの参照</li><li><b>type</b>: データセットが参照されているため、そのタイプは "DatasetReference" です</li></ul> |    <ul><li>String</li><li>DatasetReference</li></ul> | あり
+fieldList | 必要なメタデータ情報のタイプを一覧表示します。  | <ul><li>size</li><li>structure</li><li>lastModified</li></ul> |    いいえ <br/>空の場合、アクティビティは 3 つのサポートされるすべてのメタデータ情報を返します。 
+dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 <br/><br/>現在サポートされているデータセットのタイプは Azure BLOB です。 2 つのサブプロパティは次のとおりです。 <ul><li><b>referenceName</b>: 既存の Azure BLOB データセットへの参照</li><li><b>type</b>: データセットが参照されているため、そのタイプは "DatasetReference" です</li></ul> |    <ul><li>String</li><li>DatasetReference</li></ul> | [はい]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)

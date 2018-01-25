@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: bcd2ba4f92937cf1e134b2a59d97c7bea7802145
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a80b7fd0c21851a6670431e9b8647ca5cf5f51ec
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>管理タグ付け用のビジネス用語集を設定する
 ## <a name="introduction"></a>はじめに
@@ -78,8 +78,8 @@ Data Catalog ポータルでは、2 種類のタグは区別して表示され�
 ### <a name="search-filters-for-tags"></a>タグの検索フィルター
 用語集タグとユーザータグはどちらも検索可能です。また、検索でフィルターとして適用できます。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 Azure Data Catalog のビジネス用語集と、それで有効になる管理タグ付けを使用すると、データ資産の識別、管理、検出を一貫した方法で行うことができます。 ビジネス用語集は、組織のメンバーによるビジネス語彙の学習を推進できます。 用語集は、資産の検出と把握を容易にする、意味のあるメタデータのキャプチャもサポートしています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ビジネス用語集操作の REST API ドキュメント](https://msdn.microsoft.com/library/mt708855.aspx)

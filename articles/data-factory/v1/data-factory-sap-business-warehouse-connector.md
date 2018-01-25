@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6bbae79e59a200897f465e1381fea57a7ecde3f1
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b81dc9f13533eaeec56625ede0e4c534b83e7cf7
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した SAP Business Warehouse からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,15 +62,15 @@ SAP BW への接続を有効にするには、次のコンポーネントをイ�
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、SAP Business Warehouse (BW) のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-プロパティ | 説明 | 使用できる値 | 必須
+プロパティ | [説明] | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-server | SAP BW インスタンスが存在するサーバーの名前。 | string | はい
-systemNumber | SAP BW システムのシステムの数。 | 2 桁の 10 進数の文字列として表されます。 | はい
-clientId | SAP BW システム内のクライアントのクライアント ID。 | 3 桁の 10 進数の文字列として表されます。 | はい
-username | SAP サーバーにアクセスするユーザーの名前 | string | はい
-password | ユーザーのパスワード。 | string | はい
-gatewayName | Data Factory サービスが、オンプレミスの SAP BW インスタンスへの接続に使用するゲートウェイの名前。 | string | はい
-encryptedCredential | 暗号化された資格情報の文字列。 | string | いいえ
+[サーバー] | SAP BW インスタンスが存在するサーバーの名前。 | 文字列 | [はい]
+systemNumber | SAP BW システムのシステムの数。 | 2 桁の 10 進数の文字列として表されます。 | [はい]
+clientId | SAP BW システム内のクライアントのクライアント ID。 | 3 桁の 10 進数の文字列として表されます。 | [はい]
+username | SAP サーバーにアクセスするユーザーの名前 | 文字列 | [はい]
+password | ユーザーのパスワード。 | 文字列 | [はい]
+gatewayName | Data Factory サービスが、オンプレミスの SAP BW インスタンスへの接続に使用するゲートウェイの名前。 | 文字列 | [はい]
+encryptedCredential | 暗号化された資格情報の文字列。 | 文字列 | いいえ 
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -79,15 +79,15 @@ encryptedCredential | 暗号化された資格情報の文字列。 | string | �
 
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
 コピー アクティビティのソースの種類が **RelationalSource** (SAP BW を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | 説明 | 使用できる値 | 必須 |
+| プロパティ | [説明] | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | はい |
+| クエリ | SAP BW インスタンスからデータを読み取る MDX クエリを指定します。 | MDX クエリ。 | [はい] |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON の使用例: SAP Business Warehouse から Azure BLOB へのデータのコピー
@@ -315,7 +315,7 @@ NUMC | String
 TIMS | String
 
 > [!NOTE]
-> ソース データセット列からシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+> ソース データセット列からシンク データセット列へのマッピングについては、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ

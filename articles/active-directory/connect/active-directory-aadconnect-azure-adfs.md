@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 954d161b3fbc66f594429f33d1bb5c88c2bc83b4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7a2b2bd139443159607a0cef800737de6761e1c2
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
@@ -104,7 +104,7 @@ ExpressRoute の使用をお勧めしますが、所属する組織に合った�
 
 ![Create storage accounts](./media/active-directory-aadconnect-azure-adfs/storageaccount1.png)
 
-### <a name="3-create-availability-sets"></a>3.可用性セットを作成する
+### <a name="3-create-availability-sets"></a>手順 3.可用性セットを作成する
 それぞれのロール (DC/AD FS と WAP) について、最低 2 つのマシンを含んだ可用性セットを作成します。 そうすることで各ロールの可用性を高めることができます。 可用性セットを作成する際は、次の点についての意思決定が必須となります。
 
 * **障害ドメイン**: 同じ障害ドメインの仮想マシンは、同じ電源と物理ネットワーク スイッチを共有します。 障害ドメインは 2 以上とすることをお勧めします。 ここでは既定値の 3 をそのまま使用します。
@@ -267,7 +267,7 @@ ILB と同じ手順に従って、TCP 443 の負荷分散規則を構成しま�
 
 内部サブネットを効率的に保護するには、一般に次の規則が (以下に記載された順序で) 必要となります。
 
-| ルール | 説明 | フロー |
+| ルール | [説明] | Flow |
 |:--- |:--- |:---:|
 | AllowHTTPSFromDMZ |DMZ からの HTTPS 通信を許可します。 |受信 |
 | DenyInternetOutbound |インターネットへのアクセスを禁止します。 |送信 |
@@ -278,14 +278,17 @@ ILB と同じ手順に従って、TCP 443 の負荷分散規則を構成しま�
 
 **9.2.DMZ サブネットを保護する**
 
-| ルール | 説明 | フロー |
+| ルール | [説明] | フロー |
 |:--- |:--- |:---:|
 | AllowHTTPSFromInternet |インターネットから DMZ への HTTPS を許可します。 |受信 |
 | DenyInternetOutbound |インターネットへの通信は HTTPS を除きすべてブロックします。 |送信 |
 
 ![EXT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsg_dmz.png)
 
-[comment]: <> (![EXT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png)) [comment]: <> (![EXT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
+<!--
+[comment]: <> (![EXT access rules (inbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzinbound.png))
+[comment]: <> (![EXT access rules (outbound)](./media/active-directory-aadconnect-azure-adfs/nsgdmzoutbound.png))
+-->
 
 > [!NOTE]
 > クライアント ユーザー証明書認証 (X509 ユーザー証明書を使用した clientTLS 認証) が必要である場合、AD FS の要件として、受信アクセス用に TCP ポート 49443 を有効にする必要があります。
@@ -313,7 +316,7 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 
 このテンプレートのデプロイ中、既存の仮想ネットワークを使用するか、新しい VNET を作成できます。 デプロイをカスタマイズするために使用できる各種のパラメーターについて、デプロイ プロセスにおけるパラメーターの使用方法の説明と共に次の一覧に記載します。 
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 |:--- |:--- |
 | 場所 |リソースのデプロイ先となるリージョン (例: 米国東部) |
 | StorageAccountType |作成するストレージ アカウントの種類 |
@@ -350,7 +353,7 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 * [Azure 仮想ネットワーク](https://aka.ms/Azure/VNet)
 * [AD FS と Web アプリケーション プロキシについてのリンク](http://aka.ms/ADFSLinks) 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
 * [Azure AD Connect を使用した AD FS の構成と管理](active-directory-aadconnectfed-whatis.md)
 * [Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)

@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 01/22/2018
 ms.author: cynthn
-ms.openlocfilehash: dd8346e1a1bf9a9bebb307943e9242a3111c8beb
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 76704b9b0972ead618eec6a623836f1f6f0333b8
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="accelerated-maintenance-frequently-asked-questions-faqs"></a>高速化されたメンテナンスについてよくあるご質問 (FAQ)
 

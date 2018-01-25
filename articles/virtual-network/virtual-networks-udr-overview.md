@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 8a80220879db9f0030b9f1a8494b1cc24105ef17
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 85be79261d5fc214ab4b46fa5d7b4d0a5b13db27
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -89,7 +89,7 @@ Azure でカスタム (ユーザー定義) ルートを作成して、Azure の�
     > [!NOTE]
     > 仮想アプライアンスは、その仮想アプライアンスを介してルーティングするリソースがデプロイされているサブネットとは異なるサブネットにデプロイします。 仮想アプライアンスを同じサブネットにデプロイし、その仮想アプライアンスを介してトラフィックをルーティングするサブネットにルート テーブルを適用すると、トラフィックがサブネットから出ていくことのないルーティング ループが発生する可能性があります。
 
-    - Azure [内部ロード バランサー](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)のプライベート IP アドレス。 多くの場合、ロード バランサーは、[ネットワーク仮想アプライアンスの高可用性戦略](/azure/architecture/reference-architectures/dmz/nva-ha.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の一環として使用されます。
+    - Azure [内部ロード バランサー](../load-balancer/load-balancer-get-started-ilb-arm-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)のプライベート IP アドレス。 多くの場合、ロード バランサーは、[ネットワーク仮想アプライアンスの高可用性戦略](/azure/architecture/reference-architectures/dmz/nva-ha?toc=%2fazure%2fvirtual-network%2ftoc.json)の一環として使用されます。
 
     アドレス プレフィックスが 0.0.0.0/0 で、次ホップの種類が仮想アプライアンスのルートを定義することによって、アプライアンスがトラフィックを検査し、トラフィックを転送するか破棄するかを判断できるようになります。 アドレス プレフィックス 0.0.0.0/0 を含むユーザー定義ルートを作成する場合は、まず「[アドレス プレフィックス 0.0.0.0/0](#default-route)」をお読みください。
 
@@ -200,7 +200,7 @@ BGP を使用して Azure とルートを交換すると、仮想ネットワー
 
 図の *Subnet1* のルート テーブルには、次のルートが含まれています。
 
-|ID  |ソース |状態  |アドレス プレフィックス    |次ホップの種類          |次ホップの IP アドレス|ユーザー定義ルートの名前| 
+|ID  |ソース |State  |アドレス プレフィックス    |次ホップの種類          |次ホップの IP アドレス|ユーザー定義ルートの名前| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |既定値|無効|10.0.0.0/16         |Virtual Network        |                   |              |
 |2   |User   |アクティブ |10.0.0.0/16         |仮想アプライアンス      |10.0.100.4         |Within-VNet1  |
@@ -234,7 +234,7 @@ BGP を使用して Azure とルートを交換すると、仮想ネットワー
 
 図の *Subnet2* のルート テーブルには、次のルートが含まれています。
 
-|ソース  |状態  |アドレス プレフィックス    |次ホップの種類             |次ホップの IP アドレス|
+|ソース  |State  |アドレス プレフィックス    |次ホップの種類             |次ホップの IP アドレス|
 |------- |-------|------              |-------                   |--------           
 |既定値 |アクティブ |10.0.0.0/16         |Virtual Network           |                   |
 |既定値 |アクティブ |10.1.0.0/16         |VNET ピアリング              |                   |
@@ -248,7 +248,7 @@ BGP を使用して Azure とルートを交換すると、仮想ネットワー
 
 *Subnet2* のルート テーブルには、Azure によって作成されたすべての既定のルートと、オプションの VNet ピアリング ルートおよび仮想ネットワーク ゲートウェイ ルートが含まれています。 ゲートウェイとピアリングが仮想ネットワークに追加されたときに、Azure によって、仮想ネットワークのすべてのサブネットにオプション ルートが追加されました。 アドレス プレフィックスが 0.0.0.0/0 のユーザー定義ルートが *Subnet1* に追加されたときに、アドレス プレフィックスが 10.0.0.0/8、172.16.0.0/12、192.168.0.0/16、100.64.0.0/10 の各ルートが *Subnet1* のルート テーブルから削除されました。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [複数のルートを含むユーザー定義ルート テーブルとネットワーク仮想アプライアンスを作成](create-user-defined-route-portal.md)します。
 - [Azure VPN Gateway 用の BGP を構成](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)します。

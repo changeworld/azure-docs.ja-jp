@@ -3,7 +3,7 @@ title: "Generic SQL コネクタ | Microsoft Docs"
 description: "この記事では、Microsoft の Generic SQL コネクタを構成する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: fimguy
+author: billmath
 manager: bhu
 editor: 
 ms.assetid: fd8ccef3-6605-47ba-9219-e0c74ffc0ec9
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
-ms.author: davidste
-ms.openlocfilehash: a365219e433f4876401a9c35b8a656060508efbd
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.author: billmath
+ms.openlocfilehash: 66e3559c244a76101be7b7d944a48cd6dd99bd4c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Generic SQL コネクタに関するテクニカル リファレンス
 この記事では Generic SQL コネクタについて説明します。 この記事は次の製品に適用されます。
@@ -36,7 +36,7 @@ Generic SQL コネクタを使用すると、ODBC 接続を提供するデータ
 
 包括的な観点から見た場合、コネクタの現在のリリースでサポートされている機能は次のとおりです。
 
-| 機能 | サポート |
+| Feature | サポート |
 | --- | --- |
 | 接続先のデータ ソース |コネクタは、すべての 64 ビット ODBC ドライバーでサポートされています。 次のデータ ソースでテスト済みです。 <li>Microsoft SQL Server および SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 および 11 g</li><li>MySQL 5.x</li> |
 | シナリオ |<li>オブジェクトのライフサイクル管理</li><li>パスワード管理</li> |

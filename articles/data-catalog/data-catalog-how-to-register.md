@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 42d7fddd592b9cea8fbfa38bf39ca5def3542d66
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 48b13eef0960afb4aab68923fb97b5b9c14a3d9f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でのデータ ソースの登録
 ## <a name="introduction"></a>はじめに
@@ -82,8 +82,8 @@ Data Catalog データ ソース登録ツールを使用して、登録された
 
 既に登録されているデータ ソースを再登録すると、マージ "upsert" 操作が実行されます。既存のオブジェクトは更新され、新しいオブジェクトが作成されます。 ユーザーが Data Catalog ポータルで提供したメタデータはすべて維持されます。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 構造メタデータと記述メタデータがデータ ソースからカタログ サービスにコピーされるため、Data Catalog でデータ ソースを登録すると、データ ソースの検出と把握が容易になります。 データ ソースを登録すると、Data Catalog ポータルを使用してデータ ソースの注釈付け、管理、および検出ができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 データ ソースの登録の詳細については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。

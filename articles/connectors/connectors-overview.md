@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
-ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6f7d8f99bfa09847c01831a06efa8b94c1c0a89a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-connectors-in-a-logic-app"></a>ロジック アプリでのコネクタの使用
 コネクタは、サービス、プロトコル、およびプラットフォームでの、イベント、データ、およびアクションへのすばやいアクセスを提供します。  Logic Apps がサポートするコネクタの完全な一覧については、 [こちらを参照](apis-list.md)してください。  コネクタは、ロジック アプリでトリガーまたはアクションとして使用できますが、使用には構成された *"接続"* が必要な場合があります (例: Twitter アカウントがユーザーの代わりにアクセスしたり投稿することを承認する場合)。
@@ -55,8 +55,8 @@ ms.lasthandoff: 10/11/2017
 
 Azure で接続の表示と管理を行うには、**[参照]** をクリックして **[API 接続]** を選択します。  API 接続リソースから、作成した接続の表示、編集、更新、および再承認を行います。
 
-## <a name="next-steps"></a>次のステップ
-* [初めてのロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
+## <a name="next-steps"></a>次の手順
+* [初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [ロジック アプリの一般的な使用方法と例](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [Enterprise Integration のトリガーとアクションの使用を開始する](../logic-apps/logic-apps-enterprise-integration-overview.md)
 

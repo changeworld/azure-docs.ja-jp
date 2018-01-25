@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 76070b5a9944b4cbb47ad337ba9a4e6171bf12a3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 97a8fa1779cd11830781528527ddfe998e0548b6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
 Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
@@ -44,10 +44,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Pipeline Name (パイプライン名) | パイプラインの名前。 |
 | アクション | アクティビティ実行の表示に使用できる単一のアクション。 |
 | Run Start (実行の開始) | パイプラインの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
-| Duration | 実行期間 (HH:MM:SS) |
+| 時間 | 実行期間 (HH:MM:SS) |
 | Triggered By (トリガー元) | 手動トリガー、スケジュール トリガー |
 | 状態 | 失敗、成功、進行中 |
-| パラメーター | パイプラインの実行パラメーター (名前、値のペア) |
+| parameters | パイプラインの実行パラメーター (名前、値のペア) |
 | エラー | パイプラインの実行エラー (発生した場合) |
 | Run ID (実行 ID) | パイプラインの実行 ID |
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Activity Name (アクティビティ名) | パイプライン内のアクティビティの名前。 |
 | Activity Type (アクティビティの種類) | アクティビティの種類 (Copy、HDInsightSpark、HDInsightHive など) |
 | Run Start (実行の開始) | アクティビティの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
-| Duration | 実行期間 (HH:MM:SS) |
+| 時間 | 実行期間 (HH:MM:SS) |
 | 状態 | 失敗、成功、進行中 |
 | 入力 | アクティビティの入力を記述する JSON 配列 |
 | 出力 | アクティビティの出力を記述する JSON 配列 |
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![更新](media/monitor-visually/refresh.png)
 
-## <a name="features"></a>Features (機能)
+## <a name="features"></a>機能
 
 #### <a name="rich-ordering-and-filtering"></a>高度な並べ替えとフィルター処理
 
@@ -112,6 +112,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![フィードバック](media/monitor-visually/feedback.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 パイプラインの監視と管理の詳細については、「[Azure Data Factory をプログラムで監視する](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)」を参照してください。

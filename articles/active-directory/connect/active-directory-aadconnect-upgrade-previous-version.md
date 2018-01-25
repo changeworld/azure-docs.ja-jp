@@ -3,7 +3,7 @@ title: "Azure AD Connect: 旧バージョンからアップグレードする | 
 description: "インプレース アップグレードとスウィング移行移行など、Azure Active Directory Connect の最新リリースにアップグレードするさまざまな方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: acce2e8f0c875d0211f132efab5f55d77a0def67
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4d431a9e0fab8d46b244fd40178ede594c095893
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure Active Directory (Azure AD) Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。 Azure AD Connect を常に最新リリースにしておくことをお勧めします。 構成を大幅に変更する際は、「[スウィング移行](#swing-migration)」で説明されている手順を使用することもできます。
@@ -27,7 +27,7 @@ DirSync からアップグレードする場合は、代わりに [Azure AD 同�
 
 Azure AD Connect のアップグレードで使用できる方法は複数あります。
 
-| メソッド | Description |
+| 方法 | [説明] |
 | --- | --- |
 | [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md) |ユーザーにとって、高速インストールは最も簡単な方法です。 |
 | [インプレース アップグレード](#in-place-upgrade) |サーバーが 1 台だけの場合は、同じサーバーでインストールをインプレース アップグレードできます。 |
@@ -129,5 +129,5 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 
 任意のコネクタでフル インポートと完全同期の両方に対するオーバーライドを追加するには、次のコマンドレットを実行します: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関する記事をご覧ください。

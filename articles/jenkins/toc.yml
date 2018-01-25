@@ -9,7 +9,7 @@
   items:
     - name: Jenkins サーバーを作成する
       href: /azure/jenkins/install-jenkins-solution-template
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: App Service への CI/CD
       href: /azure/jenkins/java-deploy-webapp-tutorial
@@ -40,6 +40,9 @@
       maintainContext: true
     - name: VSTS で Jenkins を使用する
       href: 'https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins'
+    - name: Service Fabric アプリのデプロイ
+      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+      maintainContext: true
 - name: サンプル
   items:
     - name: サンプルのジョブとスクリプト
@@ -50,6 +53,8 @@
       items:
         - name: Azure App Service プラグイン
           href: 'https://plugins.jenkins.io/azure-app-service'
+        - name: Azure AD プラグイン
+          href: 'https://plugins.jenkins.io/azure-ad'
         - name: Azure コンテナー エージェント プラグイン
           href: 'https://plugins.jenkins.io/azure-container-agents'
         - name: Azure Container Service プラグイン
@@ -58,10 +63,14 @@
           href: 'https://plugins.jenkins.io/azure-credentials'
         - name: Azure 関数プラグイン
           href: 'https://plugins.jenkins.io/azure-function'
+        - name: Azure Service Fabric プラグイン
+          href: 'https://plugins.jenkins.io/service-fabric'
         - name: Azure Storage プラグイン
           href: 'https://plugins.jenkins.io/windows-azure-storage'
         - name: Azure VM エージェント プラグイン
           href: 'https://plugins.jenkins.io/azure-vm-agents'
+        - name: Azure VM スケール セット プラグイン
+          href: 'https://plugins.jenkins.io/azure-vmss'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Jenkins ホーム

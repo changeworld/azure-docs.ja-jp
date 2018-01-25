@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2017
 ms.author: jehollan
-ms.openlocfilehash: 0b6e118cb13ab8185d8eeb42bec6147155967967
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3e07b8d7194d83e3ba3986177170edff21e1d7a
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用してリアルタイム Customer Insights ダッシュボードを作成する
 
@@ -37,7 +37,7 @@ Functions は、クラウド内でサーバーレス コンピューティング
 
 ## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>顧客のデータをトリガーするロジック アプリの構築
 
-Visual Studio か Azure Portal で[ロジック アプリを作成](logic-apps-create-a-logic-app.md)した後、次の操作を実行します。
+Visual Studio か Azure Portal で[ロジック アプリを作成](quickstart-create-first-logic-app-workflow.md)した後、次の操作を実行します。
 
 1. Twitter から **[On New Tweets (新しいツイート)]** にトリガーを追加します。
 2. キーワードまたはハッシュタグに対してツイートをリッスンするようにトリガーを構成します。
@@ -99,7 +99,7 @@ Logic Apps でサーバーレス オーケストレーションを作成する�
 
 Azure Functions をデプロイ テンプレートに組み込むこともできるので、すべての依存関係を含むソリューション全体を 1 つのテンプレートとして管理できます。  関数のデプロイ テンプレートの例については、[Azure クイックスタート テンプレート レポジトリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Logic Apps のその他の例とシナリオを参照する](logic-apps-examples-and-scenarios.md)
 * [このソリューションのエンド ツー エンドでの作成に関するビデオ チュートリアルを視聴する](http://aka.ms/logicappsdemo)

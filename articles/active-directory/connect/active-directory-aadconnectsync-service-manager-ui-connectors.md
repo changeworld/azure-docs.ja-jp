@@ -3,7 +3,7 @@ title: "Azure AD の Synchronization Service Manager UI のコネクタ | Micros
 description: "Azure AD Connect の Synchronization Service Manager の [コネクタ] タブについて"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 60f1d979-8e6d-4460-aaab-747fffedfc1e
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 12c78b1baf1f2117b6c960784c133268fec4b2bb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3bbbe5d0d7a7ed7065133b4bc6e5fc2dba39bf7d
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Azure AD Connect の Sync Service Manager でコネクタを使用する
 
@@ -28,14 +28,14 @@ ms.lasthandoff: 12/11/2017
 [コネクタ] タブを利用し、同期エンジンが接続されているすべてのシステムを管理します。
 
 ## <a name="connector-actions"></a>コネクタのアクション
-| アクション | コメント |
+| アクションを表示します。 | Comment (コメント) |
 | --- | --- |
-| 作成 |使用しないでください。 その他の AD フォレストに接続するには、インストール ウィザードを使用します。 |
-| プロパティ |ドメインと OU フィルター処理に使用されます。 |
+| [作成] |使用しないでください。 その他の AD フォレストに接続するには、インストール ウィザードを使用します。 |
+| [プロパティ] |ドメインと OU フィルター処理に使用されます。 |
 | [削除](#delete) |コネクタ スペースのデータを削除するか、フォレストへの接続を削除するために使用されます。 |
 | [実行プロファイルの構成](#configure-run-profiles) |ドメイン フィルター処理を除き、ここで構成するものはありません。 このアクションは、既に構成されている実行プロファイルを確認する場合に使用します。 |
 | 実行 |プロファイルの 1 回限りの実行を開始するために使用されます。 |
-| 停止 |現在プロファイルを実行しているコネクタを停止します。 |
+| Stop |現在プロファイルを実行しているコネクタを停止します。 |
 | コネクタのエクスポート |使用しないでください。 |
 | コネクタのインポート |使用しないでください。 |
 | コネクタの更新 |使用しないでください。 |
@@ -90,7 +90,7 @@ ms.lasthandoff: 12/11/2017
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

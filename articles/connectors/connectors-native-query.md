@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: a11ba47d6ec69d31360e9142b7bce97803809c57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05dd4ae3c4ee439d66401a3f5595f9104051f8ee
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-query-action"></a>クエリ アクションの概要
 クエリ アクションを使用し、バッチと配列を操作して次のワークフローを実現できます。
@@ -27,10 +27,10 @@ ms.lasthandoff: 10/11/2017
 * データベースの優先度の高いすべてのレコードを対象とするタスクを作成する。
 * 電子メールのすべての PDF 添付ファイルを Azure BLOB に保存する。
 
-ロジック アプリでクエリ アクションの使用を開始するには、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事をご覧ください。
+ロジック アプリでクエリ アクションの使用を開始するには、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-query-action"></a>クエリ アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください](connectors-overview.md)。  
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](connectors-overview.md)を参照してください。  
 
 現在、クエリ アクションでは、"配列のフィルター処理" という操作だけがデザイナーで公開されています。 このクエリ アクションでは、配列を照会し、フィルター処理された一連の結果を返すことができます。
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="query-action"></a>クエリ アクション
 ここでは、このコネクタでサポートされているアクションの詳細について説明します。 このコネクタには、使用可能なアクションが 1 つあります。
 
-| アクション | Description |
+| アクションを表示します。 | [説明] |
 | --- | --- |
 | [配列のフィルター処理] |配列内の各項目について条件を評価し、結果を返します。 |
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 10/11/2017
 HTTP 送信要求を実行するアクションの入力フィールドを次に示します。
 \* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | Description |
+| 表示名 | プロパティ名 | [説明] |
 | --- | --- | --- |
 | From* |from |フィルター処理する配列 |
 | Condition* |各値の説明: |各項目について評価する条件 |
@@ -75,10 +75,10 @@ HTTP 送信要求を実行するアクションの入力フィールドを次に
 ### <a name="output-details"></a>出力の詳細
 HTTP 応答の出力の詳細を次に示します。
 
-| プロパティ名 | データ型 | Description |
+| プロパティ名 | データ型 | [説明] |
 | --- | --- | --- |
 | Filtered array |array |フィルター処理された各結果を表すオブジェクトを含む配列 |
 
-## <a name="next-steps"></a>次のステップ
-プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
+## <a name="next-steps"></a>次の手順
+プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 

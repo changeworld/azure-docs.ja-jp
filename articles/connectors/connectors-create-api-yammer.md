@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: c7a213343b4fb2b5a89a5052a459061b404a431c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37f72d829fc50a0f967f08e068c553f5026f35eb
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-yammer-connector"></a>Yammer コネクタの使用
 Yammer に接続し、エンタープライズ ネットワークの会話にアクセスします。 Yammer で次のことができます。
@@ -28,14 +28,14 @@ Yammer に接続し、エンタープライズ ネットワークの会話にア
 * グループまたはフォローしているフィードで新しいメッセージが発生したときにトリガーを使用します。
 * アクションを使用し、メッセージを投稿したり、すべてのメッセージを取得したりします。 また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。 たとえば、新しいメッセージが表示されたら、Office 365 を使用して電子メールを送信できます。
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
 
 ## <a name="create-a-connection-to-yammer"></a>Yammer への接続を作成する
 Yammer コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。 
 
-| プロパティ | 必須 | 説明 |
+| プロパティ | 必須 | [説明] |
 | --- | --- | --- |
-| トークン |あり |Yammer 資格情報を入力します |
+| トークン |[はい] |Yammer 資格情報を入力します |
 
 > [!INCLUDE [Steps to create a connection to Yammer](../../includes/connectors-create-api-yammer.md)]
 > 

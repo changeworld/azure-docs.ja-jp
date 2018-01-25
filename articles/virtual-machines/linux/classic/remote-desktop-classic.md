@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: mingzhan
-ms.openlocfilehash: 65098dbad2cfb2de1f2e5156fbcc3d6477311867
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 72c814aece7626b19cefccb18e1b90f8c44d7f57
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>リモート デスクトップを使用して Microsoft Azure Linux VM に接続する
 > [!IMPORTANT] 
@@ -34,7 +34,7 @@ RDP (リモート デスクトップ プロトコル) は、Windows の専用プ
 xrdp ツールはオープン ソースの RDP サーバーであり、これを使うと、Windows コンピューターからリモート デスクトップを使って Linux サーバーに接続できます。 RDP のパフォーマンスは、VNC (Virtual Network Computing) より優れています。 VNC は JPEG 品質のグラフィックスを使ってレンダリングを行い、遅い場合があるのに対し、RDP は高速で非常に鮮明です。
 
 > [!NOTE]
-> Linux を実行している既存の Microsoft Azure VM が必要です。 Linux VM を作成してセットアップするには、[Azure Linux VM のチュートリアル](createportal.md)を参照してください。
+> Linux を実行している既存の Microsoft Azure VM が必要です。 Linux VM を作成してセットアップするには、[Azure Linux VM のチュートリアル](createportal-classic.md)を参照してください。
 > 
 > 
 

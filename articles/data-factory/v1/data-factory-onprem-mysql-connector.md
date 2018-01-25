@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 74ee639af5e941c098cbdd1fafd96a0e1ce1b036
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f04a3b8c7bb744e3a9d539f6d3a392bc59702758
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して MySQL からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,36 +67,36 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、MySQL のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **OnPremisesMySql** |はい |
-| server |MySQL サーバーの名前です。 |はい |
-| database |MySQL データベースの名前です。 |はい |
-| schema |データベース内のスキーマの名前です。 |いいえ |
-| authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |
-| username |MySQL データベースに接続するユーザー名を指定します。 |はい |
-| パスワード |指定したユーザー アカウントのパスワードを指定します。 |はい |
-| gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| type |type プロパティを **OnPremisesMySql** |[はい] |
+| [サーバー] |MySQL サーバーの名前です。 |[はい] |
+| [データベース] |MySQL データベースの名前です。 |[はい] |
+| schema |データベース内のスキーマの名前です。 |いいえ  |
+| authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |[はい] |
+| username |MySQL データベースに接続するユーザー名を指定します。 |[はい] |
+| password |指定したユーザー アカウントのパスワードを指定します。 |[はい] |
+| gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (MySQL データセットを含む) の typeProperties セクションには次のプロパティがあります
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | tableName |リンクされたサービスが参照する MySQL Databases インスタンスのテーブルの名前です。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
 コピー アクティビティの source の種類が **RelationalSource** (MySQL を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | 説明 | 使用できる値 | 必須 |
+| プロパティ | [説明] | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON の使用例: MySQLから Azure BLOB にデータをコピーする
@@ -304,13 +304,13 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | --- | --- |
 | 符号なしの bigint |Decimal |
 | bigint |Int64 |
-| bit |Decimal |
+| ビット |Decimal |
 | BLOB |Byte[] |
-| bool |Boolean |
+| bool |ブール |
 | char |String |
-| date |Datetime |
-| Datetime |Datetime |
-| Decimal |Decimal |
+| date |DateTime |
+| Datetime |DateTime |
+| 小数点 |Decimal |
 | double precision |Double |
 | Double |Double |
 | enum |String |
@@ -332,9 +332,9 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | set |String |
 | 符号なしの smallint |Int32 |
 | smallint |Int16 |
-| text |String |
+| テキスト |String |
 | time |timespan |
-| timestamp |Datetime |
+| timestamp |DateTime |
 | tinyblob |Byte[] |
 | 符号なしの tinyint |Int16 |
 | tinyint |Int16 |

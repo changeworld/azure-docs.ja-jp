@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: f30042ad8d687db59e1aaa092c46cee371e8c7fb
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cae3c797171c3904f100ae3cdec47a31b06d3b31
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリを監視する  
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
@@ -103,7 +103,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 } 
 ```
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | [説明] |
 | --- | --- | --- |
 | storageAccountId |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
 | serviceBusRuleId |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、"{サービス バス リソース ID}/authorizationrules/{キー名}"　です。|
@@ -112,7 +112,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | ログ| 複合型| リソースの種類に対応する診断ログ カテゴリの名前。 リソースの診断ログ カテゴリの一覧を取得するには、まず診断設定の取得操作を実行します。 |
 | カテゴリ| String| ログ カテゴリの配列とその保有ポリシー |
 | timeGrain | String | ISO 8601 期間形式でキャプチャされるメトリックの粒度。 PT1M (1 分) にする必要があります。|
-| 有効| Boolean | このリソースに対して、そのメトリックまたはログ カテゴリの収集を有効にするどうかを指定します|
+| 有効| ブール | このリソースに対して、そのメトリックまたはログ カテゴリの収集を有効にするどうかを指定します|
 | retentionPolicy| 複合型| メトリックまたはログのカテゴリの保持ポリシーを示します。 ストレージ アカウントのオプションのみに使用されます。|
 | 日数| int| メトリックまたはログを保持する日数。 値が 0 の場合、ログは無期限に保存されます。 ストレージ アカウントのオプションのみに使用されます。 |
 
@@ -273,14 +273,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 型 | 説明 | 例 |
+| プロパティ | type | [説明] | 例 |
 | --- | --- | --- | --- |
 | Level |String | 診断ログのレベルです。 アクティビティの実行ログの場合、レベル 4 常時です。 | `4`  |
 | correlationId |String | 特定の要求をエンド ツー エンドで追跡する一意の ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Timespan 内のイベントの時刻、UTC 形式 | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |activityRunId| String| アクティビティ実行の ID。 | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |pipelineRunId| String| パイプライン実行の ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| String | データ ファクトリのリソースに関連付けられているリソース ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|ResourceId| String | データ ファクトリのリソースに関連付けられているリソース ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |カテゴリ| String | 診断ログのカテゴリ このプロパティは "ActivityRuns" に設定します | `ActivityRuns` |
 |level| String | 診断ログのレベルです。 このプロパティは "Informational" に設定します | `Informational` |
 |operationName| String |状態付きのアクティビティの名前。 状態がハートビート開始の場合は、`MyActivity -` です。 状態がハートビート終了の場合は、最終的な状態の `MyActivity - Succeeded` です | `MyActivity - Succeeded` |
@@ -320,13 +320,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | 型 | 説明 | 例 |
+| プロパティ | type | [説明] | 例 |
 | --- | --- | --- | --- |
 | Level |String | 診断ログのレベルです。 アクティビティ実行ログの場合、レベル 4 です。 | `4`  |
 | correlationId |String | 特定の要求をエンド ツー エンドで追跡する一意の ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Timespan 内のイベントの時刻、UTC 形式 | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| String| パイプライン実行の ID。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| String | データ ファクトリのリソースに関連付けられているリソース ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|ResourceId| String | データ ファクトリのリソースに関連付けられているリソース ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |カテゴリ| String | 診断ログのカテゴリ このプロパティは "PipelineRuns" に設定します | `PipelineRuns` |
 |level| String | 診断ログのレベルです。 このプロパティは "Informational" に設定します | `Informational` |
 |operationName| String |状態付きパイプラインの名前。 パイプラインの実行が完了したとき、最終的な状態で "パイプライン - 成功"| `MyPipeline - Succeeded` |
@@ -365,13 +365,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| プロパティ | 型 | 説明 | 例 |
+| プロパティ | type | [説明] | 例 |
 | --- | --- | --- | --- |
 | Level |String | 診断ログのレベルです。 アクティビティ実行ログの場合、レベル 4 に設定します。 | `4`  |
 | correlationId |String | 特定の要求をエンド ツー エンドで追跡する一意の ID | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Timespan 内のイベントの時刻、UTC 形式 | `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |triggerId| String| トリガー実行の ID | `08587023010602533858661257311` |
-|resourceId| String | データ ファクトリのリソースに関連付けられているリソース ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|ResourceId| String | データ ファクトリのリソースに関連付けられているリソース ID | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |カテゴリ| String | 診断ログのカテゴリ このプロパティは "PipelineRuns" に設定します | `PipelineRuns` |
 |level| String | 診断ログのレベルです。 このプロパティは "Informational" に設定します | `Informational` |
 |operationName| String |トリガーが正常に起動されたかを示す最終的な状態付きのトリガーの名前。 ハートビートが成功した場合、"MyTrigger - 成功"| `MyTrigger - Succeeded` |
@@ -389,14 +389,14 @@ ADFV2 は、次のメトリックを出力します
 
 | **メトリック**           | **メトリックの表示名**         | **単位** | **集計の種類** | **説明**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
-| PipelineSucceededRun | 成功したパイプライン実行回数のメトリック | カウント    | 合計                | 分の枠内で成功したパイプライン実行の合計回数 |
-| PipelineFailedRuns   | 失敗したパイプライン実行回数のメトリック    | カウント    | 合計                | 分の枠内で失敗したパイプライン実行の合計回数    |
-| ActiviySucceededRuns | 成功したアクティビティ実行回数のメトリック | カウント    | 合計                | 分の枠内で成功したアクティビティ実行の合計回数  |
-| ActivityFailedRuns   | 失敗したアクティビティ実行回数のメトリック    | カウント    | 合計                | 分の枠内で失敗したアクティビティ実行の合計回数     |
-| TriggerSucceededRuns | 成功したトリガー実行の回数メトリック  | カウント    | 合計                | 分の枠内で成功したトリガー実行の合計回数   |
-| TriggerFailedRuns    | 失敗したトリガー実行の回数メトリック     | カウント    | 合計                | 分の枠内で失敗したトリガー実行の合計回数      |
+| PipelineSucceededRun | 成功したパイプライン実行回数のメトリック | Count    | 合計                | 分の枠内で成功したパイプライン実行の合計回数 |
+| PipelineFailedRuns   | 失敗したパイプライン実行回数のメトリック    | Count    | 合計                | 分の枠内で失敗したパイプライン実行の合計回数    |
+| ActiviySucceededRuns | 成功したアクティビティ実行回数のメトリック | Count    | 合計                | 分の枠内で成功したアクティビティ実行の合計回数  |
+| ActivityFailedRuns   | 失敗したアクティビティ実行回数のメトリック    | Count    | 合計                | 分の枠内で失敗したアクティビティ実行の合計回数     |
+| TriggerSucceededRuns | 成功したトリガー実行の回数メトリック  | Count    | 合計                | 分の枠内で成功したトリガー実行の合計回数   |
+| TriggerFailedRuns    | 失敗したトリガー実行の回数メトリック     | Count    | 合計                | 分の枠内で失敗したトリガー実行の合計回数      |
 
 メトリックにアクセスするには、記事 - https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics の説明に従ってください 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 実行によるパイプラインの監視と管理の詳細については、[パイプラインをプログラムで監視および管理する](monitor-programmatically.md)に関する記事を参照してください。 

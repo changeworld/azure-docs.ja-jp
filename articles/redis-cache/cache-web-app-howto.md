@@ -3,8 +3,8 @@ title: "Redis Cache で Web アプリを作成する方法 | Microsoft Docs"
 description: "Redis Cache で Web アプリを作成する方法について説明します。"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/09/2017
-ms.author: sdanie
-ms.openlocfilehash: 21dc87b3e8c26bfbda36202b31b3b4d44be32179
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: wesmc
+ms.openlocfilehash: c0cf5baa71ce599cd5c20d34c42bd2c578114efe
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-create-a-web-app-with-redis-cache"></a>Redis Cache で Web アプリを作成する方法
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/18/2017
 * [Visual Studio 2017 と Azure SDK for .NET](#visual-studio-2017-with-the-azure-sdk-for-net)
 
 ### <a name="azure-account"></a>Azure アカウント
-このチュートリアルを完了するには、Azure アカウントが必要です。 そのための方法は次のとおりです。
+このチュートリアルを完了するには、Azure アカウントが必要です。 次のようにすることができます。
 
 * [無料で Azure アカウントを開きます](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)。 Azure の有料サービスを試用できるクレジットが提供されます。 このクレジットを使い切ってもアカウントは維持されるため、無料の Azure サービスと機能をご利用になれます。
 * [Visual Studio サブスクライバーの特典を有効にします](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero)。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。
@@ -102,7 +102,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ![Add model class][cache-model-add-class-dialog]
 3. `Team.cs` ファイルの先頭にある `using` ステートメントを次の `using` ステートメントに置き換えます。
 
-    ```c#
+    ```csharp
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -112,7 +112,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
 1. `Team` クラスの定義を次のコード スニペットに置き換えます。このコード スニペットでは、更新された `Team` クラスの定義に加え、その他の Entity Framework の一部のヘルパー クラスの定義が含まれています。 このチュートリアルで使用されている Entity Framework の Code First 手法の詳細については、「[新しいデータベースの Code First](https://msdn.microsoft.com/data/jj193542)」を参照してください。
 
-    ```c#
+    ```csharp
     public class Team
     {
         public int ID { get; set; }
@@ -226,7 +226,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ![Global.asax.cs][cache-global-asax]
 6. ファイルの上部に次の 2 つの `using` ステートメントを、他の `using` ステートメントに続けて追加します。
 
-    ```c#
+    ```csharp
     using System.Data.Entity;
     using ContosoTeamStats.Models;
     ```
@@ -234,7 +234,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
 1. `Application_Start` メソッドの最後に次のコード行を追加します。
 
-    ```c#
+    ```csharp
     Database.SetInitializer<TeamContext>(new TeamInitializer());
     ```
 
@@ -244,7 +244,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ![RouteConfig.cs][cache-RouteConfig-cs]
 2. `RegisterRoutes` メソッドに含まれる次のコードの `controller = "Home"` を、次の例に示すように `controller = "Teams"` に置き換えます。
 
-    ```c#
+    ```csharp
     routes.MapRoute(
         name: "Default",
         url: "{controller}/{action}/{id}",
@@ -296,14 +296,14 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ![Teams controller][cache-teamscontroller]
 4. 次の 2 つの `using` ステートメントを **TeamsController.cs** に追加します。
 
-    ```c#   
+    ```csharp   
     using System.Configuration;
     using StackExchange.Redis;
     ```
 
 5. 次の 2 つのプロパティを `TeamsController` クラスに追加します。
 
-    ```c#   
+    ```csharp   
     // Redis Connection string info
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
@@ -351,14 +351,14 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
 1. `TeamsController.cs` ファイルの他の `using` ステートメントの先頭に、次の `using` ステートメントを追加します。
 
-    ```c#   
+    ```csharp   
     using System.Diagnostics;
     using Newtonsoft.Json;
     ```
 
 2. 現在の `public ActionResult Index()` メソッドの実装を次の実装に置き換えます。
 
-    ```c#
+    ```csharp
     // GET: Teams
     public ActionResult Index(string actionType, string resultType)
     {
@@ -417,7 +417,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
    
     `PlayGames` メソッドは、あるシーズンのゲームをシミュレートすることでチームの統計情報を更新し、結果をデータベースに保存して、古くなったデータをキャッシュから消去します。
 
-    ```c#
+    ```csharp
     void PlayGames()
     {
         ViewBag.msg += "Updating team statistics. ";
@@ -436,7 +436,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
     `RebuildDB` メソッドは、既定で存在する一連のチームでデータベースを再初期化してその統計情報を生成し、古くなったデータをキャッシュから消去します。
 
-    ```c#
+    ```csharp
     void RebuildDB()
     {
         ViewBag.msg += "Rebuilding DB. ";
@@ -451,7 +451,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
     `ClearCachedTeams` メソッドは、キャッシュされているチームの統計情報をキャッシュから削除します。
 
-    ```c#
+    ```csharp
     void ClearCachedTeams()
     {
         IDatabase cache = Connection.GetDatabase();
@@ -466,7 +466,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
    
     `GetFromDB` メソッドは、データベースからチームの統計情報を読み取ります。
    
-    ```c#
+    ```csharp
     List<Team> GetFromDB()
     {
         ViewBag.msg += "Results read from DB. ";
@@ -480,7 +480,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
     `GetFromList` メソッドは、シリアル化された `List<Team>` としてチームの統計情報をキャッシュから読み取ります。 キャッシュ ミスが発生した場合は、データベースからチームの統計情報を読み取り、次回使用できるようキャッシュに格納します。 このサンプルでキャッシュとの間でやり取りされる .NET オブジェクトのシリアル化には、JSON.NET シリアル化を使用しています。 詳細については、 [Azure Redis Cache における .NET オブジェクトの使用方法](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)に関するセクションを参照してください。
 
-    ```c#
+    ```csharp
     List<Team> GetFromList()
     {
         List<Team> teams = null;
@@ -508,7 +508,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
     `GetFromSortedSet` メソッドは、キャッシュされたソート済みセットからチームの統計情報を読み取ります。 キャッシュ ミスが発生した場合は、データベースからチームの統計情報を読み取り、ソート済みセットとしてキャッシュに格納します。
 
-    ```c#
+    ```csharp
     List<Team> GetFromSortedSet()
     {
         List<Team> teams = null;
@@ -545,7 +545,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
     `GetFromSortedSetTop5` メソッドは、キャッシュされたソート済みセットから上位 5 チームを読み取ります。 最初に、 `teamsSortedSet` キーがキャッシュに存在するかどうかをチェックします。 このキーが存在しない場合は、 `GetFromSortedSet` メソッドが呼び出され、チームの統計情報を読み取り、キャッシュに格納します。 次に、キャッシュされたソート済みセットから上位 5 チームを照会して返します。
 
-    ```c#
+    ```csharp
     List<Team> GetFromSortedSetTop5()
     {
         List<Team> teams = null;
@@ -578,7 +578,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
 1. `TeamsController` クラスの `Create(Team team)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
 
-    ```c#
+    ```csharp
     // POST: Teams/Create
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -603,7 +603,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
 1. `TeamsController` クラスの `Edit(Team team)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
 
-    ```c#
+    ```csharp
     // POST: Teams/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -627,7 +627,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
 1. `TeamsController` クラスの `DeleteConfirmed(int id)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
 
-    ```c#
+    ```csharp
     // POST: Teams/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
@@ -717,12 +717,12 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
 **[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックすると、Azure ポータルが開き、テンプレートによって記述されたリソースの作成プロセスが開始されます。
 
-![Azure へのデプロイ][cache-deploy-to-azure-step-1]
+![[Deploy to Azure (Azure へのデプロイ)]][cache-deploy-to-azure-step-1]
 
 1. **[基本]** セクションで、使用する Azure サブスクリプションを選択し、既存のリソース グループを選択するか新しいリソース グループを作成して、リソース グループの場所を指定します。
 2. **[設定]** セクションで、**管理者のログイン** (**admin** は使用しないでください)、**管理者のログイン パスワード**、**データベース名**を指定します。 その他のパラメーターは、Free App Service ホスティング プランを使用するように構成し、Free レベルに付属しない SQL Database と Azure Redis Cache については、コストを低く抑えるように設定しています。
 
-    ![Azure へのデプロイ][cache-deploy-to-azure-step-2]
+    ![[Deploy to Azure (Azure へのデプロイ)]][cache-deploy-to-azure-step-2]
 
 3. 目的の設定を構成した後、ページの末尾までスクロールし、使用条件を読んで、**[上記の使用条件に同意する]** チェック ボックスをオンにします。
 4. リソースのプロビジョニングを開始するには、**[購入]** をクリックします。
@@ -760,7 +760,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 
 次の表は、サンプル アプリケーションの各アクション リンクとその説明を一覧にしたものです。
 
-| アクション | 説明 |
+| アクションを表示します。 | [説明] |
 | --- | --- |
 | 新規作成 |新しいチームを作成します。 |
 | Play Season |ゲームのシーズンを再生し、チームの統計情報を更新して、キャッシュに格納されている古いチーム データがあれば消去します。 |
@@ -820,7 +820,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ASP.NET](http://asp.net/) サイトの「[Getting Started with ASP.NET MVC 5 (ASP.NET MVC 5 の基本)](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)」でさらに学習します。
 * App Service で ASP.NET Web アプリを作成するその他の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Create and deploy an ASP.NET web app in Azure App Service (Azure App Service で ASP.NET Web アプリを作成およびデプロイする)](https://github.com/Microsoft/HealthClinic.biz/wiki/Create-and-deploy-an-ASP.NET-web-app-in-Azure-App-Service)」を参照してください。
   * HealthClinic.biz のデモに関連する他のクイック スタートについては、「 [Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。

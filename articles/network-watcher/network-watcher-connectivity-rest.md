@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
-ms.openlocfilehash: 802658b50d8e398451507ad11c76fedd0db697df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 271d3fa858e9178bef37a7d7c859557b29af3c75
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Azure REST API を使用して Azure Network Watcher で接続を確認する
 
@@ -37,39 +37,14 @@ ms.lasthandoff: 12/21/2017
 
 * 接続を確認する仮想マシン。
 
-PowerShell を使用している REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの Chocolatey にあります。
+PowerShell を使用して REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの Chocolatey にあります。
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。
-
-[!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
 
 > [!IMPORTANT]
 > 接続チェックには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
 
-## <a name="register-the-preview-capability"></a>プレビュー機能の登録
-
-登録される必要があるこの機能を使用するために、接続チェックは現在パブリック プレビューにあります。 これを行うには、次の PowerShell サンプルを実行します。
-
-```powershell
-Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-登録が正しく行われたことを確認するには、次の PowerShell サンプルを実行します。
-
-```powershell
-Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
-```
-
-この機能が適切に登録されると、出力は次のようになります。
-
-```
-FeatureName                             ProviderName      RegistrationState
------------                             ------------      -----------------
-AllowNetworkWatcherConnectivityCheck    Microsoft.Network Registered
-```
-
-## <a name="log-in-with-armclient"></a>ARMClient でのログイン
+## <a name="log-in-with-armclient"></a>ARMClient でログインする
 
 Azure の資格情報を使用して ARMClient にログインします。
 
@@ -160,7 +135,7 @@ Date: Fri, 02 Jun 2017 20:21:16 GMT
 null
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 次の応答は、以前の例からのものです。  この応答で、`ConnectionStatus` は **Unreachable** (到達不能) です。 送信されたすべてのプローブが失敗したことがわかります。 接続は、ポート 80 の受信トラフィックをブロックするように構成された、**UserRule_Port80** というユーザーが構成した `NetworkSecurityRule` のために、仮想アプライアンスで失敗しています。 この情報は、接続の問題を調査するために使用できます。
 
@@ -276,7 +251,7 @@ Date: Fri, 02 Jun 2017 20:26:05 GMT
 null
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 次の例では、`connectionStatus` は **Unreachable** (到達不能) として示されます。 `hops` の詳細では、トラフィックが `UserDefinedRoute` のためにブロックされた、`issues` で確認できます。
 
@@ -372,7 +347,7 @@ Date: Fri, 02 Jun 2017 20:31:00 GMT
 null
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 次の応答では、`connectionStatus` は **Reachable** (到達不能) として示されます。 接続に成功すると、待ち時間の値が提供されます。
 
@@ -459,7 +434,7 @@ Date: Fri, 02 Jun 2017 20:05:03 GMT
 null
 ```
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 
 前の API 呼び出しを実行した応答の例を以下に示します。 チェックが成功すると、`connectionStatus` プロパティに **Reachable** (到達不能) と示されます。  ストレージ BLOB と待ち時間に到達するために必要なホップ数に関する詳細情報が提供されます。
 
@@ -494,7 +469,7 @@ null
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 

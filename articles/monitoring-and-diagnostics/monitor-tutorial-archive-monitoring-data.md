@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: f19cf8fddd9ffcf08b8ce18db070a7482ce012df
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: a3ab4713861d4d9681ad2ac5f084255fc29462ce
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="archive-azure-monitoring-data"></a>Azure 監視データをアーカイブする
 
@@ -32,7 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-[Azure ポータル](https://portal.azure.com/)にサインインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次に、**リソースの診断設定**をセットアップすることにより、ストレージ アカウントにルーティングされるリソース レベルのデータ (リソース メトリックと診断ログ) を構成します。
 
-1. 左側のナビゲーション一覧の **[モニター]** ボタンをクリックし、**[診断設定]** をクリックします。 サブスクリプションに含まれ Azure Monitor で監視データを生成するすべてのリソースの一覧が表示されます。 この一覧にリソースが表示されない場合は、[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してリソースを用意してから、診断設定の構成に進むことができます。
+1. 左側のナビゲーション一覧の **[モニター]** ボタンをクリックし、**[診断設定]** をクリックします。 サブスクリプションに含まれ Azure Monitor で監視データを生成するすべてのリソースの一覧が表示されます。 この一覧にリソースが表示されない場合は、[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してリソースを用意してから、診断設定の構成に進むことができます。
 
 2. 一覧でリソースをクリックし、**[診断をオンにする]** をクリックします。
    
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![[診断設定] セクション](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-home.png)
 
-4. **[ストレージ アカウントへのアーカイブ]** の下にある **[構成]** ボタンをクリックし、前のセクションで作成したストレージ アカウントを選びます。 **[OK]**をクリックします。
+4. **[ストレージ アカウントへのアーカイブ]** の下にある **[構成]** ボタンをクリックし、前のセクションで作成したストレージ アカウントを選びます。 Click **OK**.
 
    ![診断設定のストレージ アカウント](media/monitor-tutorial-archive-monitoring-data/diagnostic-settings-storage.png)
 
@@ -90,7 +90,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 6. **[リテンション期間 (日数)]** スライダーを 30 に設定します。 このスライダーは、監視データをストレージ アカウントに保持する日数を設定します。 Azure Monitor は、指定した日数より古いデータを自動的に削除します。 リテンション期間を 0 にすると、データは無期限に保存されます。
 
-7. **[ Save]** をクリックします。
+7. **[Save]** をクリックします。
 
 リソースからの監視データが、ストレージ アカウントに送られるようになります。
 
@@ -124,7 +124,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 9. 表示されるセクションで、前の「**ストレージ アカウントの作成**」ステップで作成したストレージ アカウントを選びます。
 
-10. **[ Save]** をクリックします。
+10. **[Save]** をクリックします。
 
 仮想マシンからの監視データが、ストレージ アカウントに送られるようになります。
 
@@ -164,7 +164,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. 前の手順で仮想マシンまたはロジック アプリを作成した場合は、それらも削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure 環境 (サブスクリプション、リソース、ゲスト OS) の監視データがストレージ アカウントにアーカイブされるように設定する方法を説明しました。 
 

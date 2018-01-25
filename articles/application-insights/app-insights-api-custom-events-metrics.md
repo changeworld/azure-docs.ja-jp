@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: a94a7da29d9f3c6f745df7e91ec9e19b66435eae
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 7d797716fb98ac85f11f956e732e08820b56affc
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -158,14 +158,14 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 
 *C#、Java*
 
-```C#
+```csharp
     var sample = new MetricTelemetry();
     sample.Name = "metric name";
     sample.Value = 42.3;
     telemetryClient.TrackMetric(sample);
 ```
 
-*Node.js*
+*Node.JS*
 
  ```Javascript
      telemetry.trackMetric({name: "queueLength", value: 42.0});
@@ -178,7 +178,7 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 
 *C#*
 
-```C#
+```csharp
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -422,7 +422,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 *C#*
 
-```C#
+```csharp
 // Establish an operation context and associated telemetry item:
 using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operationName"))
 {
@@ -547,7 +547,7 @@ TrackTrace を使用すると、Application Insights に "階層リンクの追�
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
     
-*Node.JS*
+*Node.js*
 
     telemetry.trackTrace({message: message, severity:applicationInsights.Contracts.SeverityLevel.Warning, properties:properties});
 
@@ -576,7 +576,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 ## <a name="trackdependency"></a>TrackDependency
 応答時間と外部コードの呼び出しの成功率を追跡するには、TrackDependency 呼び出しを使用します。 結果は、ポータルの依存関係グラフに表示されます。
 
-```C#
+```csharp
 var success = false;
 var startTime = DateTime.UtcNow;
 var timer = System.Diagnostics.Stopwatch.StartNew();
@@ -636,7 +636,7 @@ dependencies
     // Allow some time for flushing before shutdown.
     System.Threading.Thread.Sleep(1000);
     
-*Node.JS*
+*Node.js*
 
     telemetry.flush();
 
@@ -726,7 +726,7 @@ ASP.NET Web MVC アプリケーションでの例:
     // Send the event:
     telemetry.TrackEvent("WinGame", properties, metrics);
 
-*Node.js*
+*Node.JS*
 
     // Set up some properties and metrics:
     var properties = {"game": currentGame.Name, "difficulty": currentGame.Difficulty};
@@ -882,7 +882,7 @@ requests
 
     gameTelemetry.TrackEvent("WinGame");
     
-*Node.JS*
+*Node.js*
 
     var gameTelemetry = new applicationInsights.TelemetryClient();
     gameTelemetry.commonProperties["Game"] = currentGame.Name;
@@ -913,7 +913,7 @@ requests
 
 *C#*
 
-```C#
+```csharp
 
     using  Microsoft.ApplicationInsights.Extensibility;
 
@@ -922,7 +922,7 @@ requests
 
 *選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
-*Node.JS*
+*Node.js*
 
 ```Javascript
 

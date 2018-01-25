@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: a7920b2509fe368c6f7d55e17fe0bf0020c4562c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4acae9f1837069c494985ff1456979490485f609
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps の AS2 メッセージをデコードする 
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="decode-as2-messages"></a>AS2 メッセージをデコードする
 
-1. [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)します。
+1. [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
 2. Decode AS2 Message コネクタには、トリガーがありません。そのため、要求トリガーのように、ロジック アプリを起動するためのトリガーを追加する必要があります。 ロジック アプリ デザイナーで、ロジック アプリにトリガーを追加して、アクションを追加します。
 
@@ -62,7 +62,7 @@ ms.lasthandoff: 10/11/2017
    
     ![integration connection created](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage4.png) 
 
-    次に例を示します。
+    例: 
 
     ![要求の出力から本文とヘッダーを選択します。](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage5.png) 
 
@@ -89,6 +89,6 @@ Decode AS2 コネクタは次のタスクを実行します。
 ## <a name="view-the-swagger"></a>Swagger の表示
 [Swagger の詳細](/connectors/as2/)を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md) 
 

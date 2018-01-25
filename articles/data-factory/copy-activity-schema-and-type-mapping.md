@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 459c792028d3eede059814324597811b24e65ac2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1fde0abd2f5fa8e36c71707d14cd5afeb3a0d2d
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="schema-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマ マッピング
 この記事では、Azure Data Factory のコピー アクティビティが、データ コピーの実行時にソース データからシンク データへのスキーマ マッピングとデータ型のマッピングをどのように行うかについて説明します。
@@ -151,7 +151,7 @@ ms.lasthandoff: 10/11/2017
 Data Factory は、次の中間データ型をサポートしています。[データセット構造](concepts-datasets-linked-services.md#dataset-structure)の構成で型情報を指定するときは、次の値を指定できます。
 
 * Byte[]
-* Boolean
+* ブール
 * DateTime
 * Datetimeoffset
 * Decimal
@@ -186,7 +186,7 @@ Data Factory は、次の中間データ型をサポートしています。[デ
 * 柔軟なスキーマを持つデータ ストア (Azure テーブル/Cosmos DB (入力データセット) など) からのコピー。これは、アクティビティの実行ごとに上部の行に基づいてコピー アクティビティにスキーマを推測させることなく、予測されるデータ (列) がコピーされることを保証するためです。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 コピー アクティビティの他の記事を参照してください。
 
 - [コピー アクティビティの概要](copy-activity-overview.md)

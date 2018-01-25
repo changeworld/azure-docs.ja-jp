@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
-ms.openlocfilehash: 7658bedc0bd5c4a289f3271504a006ba54c783b6
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 559e64ae3c16ed21bc09ac0c044281aa0a6e43df
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して Azure に移行した後、Azure VM を他のリージョンにレプリケートする
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/18/2018
 2. **[移行の完了]** アクションにより、移行プロセスが完了し、マシンのレプリケーションが削除され、マシンの Site Recovery の課金が停止されます。
 
 ### <a name="step-2-install-the-azure-vm-agent-on-the-virtual-machine"></a>手順 2: Azure VM エージェントを仮想マシンにインストールする
-Site Recovery 拡張機能を動作させて、VM を保護するには、Azure [VM エージェント](../../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux)を仮想マシンにインストールする必要があります。
+Site Recovery 拡張機能を動作させて、VM を保護するには、Azure [VM エージェント](../../virtual-machines/windows/agent-user-guide.md)を仮想マシンにインストールする必要があります。
 
 >[!IMPORTANT]
 >バージョン 9.7.0.0 以降、Windows 仮想マシンでは、モビリティ サービスのインストーラーによって、公開されている最新の Azure VM エージェントもインストールされます。 移行時、仮想マシンは、Site Recovery 拡張機能を含め、VM 拡張機能を使用するためのエージェント インストール前提条件を満たしています。 Azure VM エージェントは、移行済みマシンにインストールされているモビリティ サービスがバージョン 9.6 以前である場合にのみ、手動でインストールする必要があります。

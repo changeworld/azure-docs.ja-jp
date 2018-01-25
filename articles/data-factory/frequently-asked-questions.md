@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: cf98bb7fab4942955287e8e211e98b9da59472f6
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事は、Azure Data Factory サービスのバージョン 2 に適用されます。 Data Factory についてよく寄せられる質問とその回答を紹介します。  
@@ -53,7 +53,7 @@ Azure Data Factory バージョン 2 は、元の Azure Data Factory のデー�
 - 制御フロー:
     - パイプライン内のシーケンスでのアクティビティの連鎖。
     - パイプライン内のアクティビティの分岐。
-    - パラメーター
+    - parameters
         - パイプライン レベルでパラメーターを定義し、パイプラインをオンデマンドで起動するときまたはトリガーから起動するときに引数を渡します。
         - アクティビティは、パイプラインに渡される引数を使用できます。
     - カスタム状態の受け渡し
@@ -131,7 +131,7 @@ Data Factory では、リンクされたサービスは 2 つの目的に使用�
 ### <a name="pipeline-runs"></a>パイプライン実行
 パイプライン実行は、パイプラインを実行するインスタンスです。 通常は、パイプラインで定義されたパラメーターに引数を渡すことで、パイプライン実行をインスタンス化します。 引数は、手動で渡すことも、トリガー定義内で渡すこともできます。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 パラメーターは、読み取り専用構成のキーと値のペアです。 パラメーターはパイプラインで定義し、定義されたパラメーターの引数を実行時に実行コンテキストから渡します。 実行コンテキストは、トリガーによって、または手動で実行するパイプラインから作成されます。 パイプライン内のアクティビティは、パラメーターの値を使用します。
 
 データ セットとは、厳密に型指定されたパラメーターと、再利用または参照可能なエンティティのことです。 アクティビティは、データ セットを参照でき、データ セットの定義で定義されたプロパティを使用できます。
@@ -197,7 +197,7 @@ Azure Data Factory の最新情報を入手するには、次のサイトを参�
 ### <a name="can-i-use-retry-and-timeout-at-the-activity-level-in-version-2"></a>バージョン 2 では、アクティビティ レベルで再試行とタイムアウトを使用できますか?
 はい。 バージョン 2 でバージョン 1 と同様にアクティビティの実行を制御するには、アクティビティ レベルで再試行とタイムアウトを構成します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 バージョン 2 のデータ ファクトリを作成する手順については、次のチュートリアルを参照してください。
 
 - [クイックスタート: データ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)

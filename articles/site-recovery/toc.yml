@@ -251,8 +251,6 @@
           href: 'site-recovery-workload.md#workload-summary'
     - name: '[管理]'
       items:
-        - name: Recovery Services コンテナーへのアップグレード
-          href: upgrade-site-recovery-vaults.md
         - name: Azure でのプロセス サーバーの管理
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
         - name: 構成サーバーの管理

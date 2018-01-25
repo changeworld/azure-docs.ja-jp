@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: e45b07d709927af64cfba28dfb0d8ee9cb8893b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58210db585befd7ce915d4579d4d0303eb15bff3
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>要求コンポーネントと応答コンポーネントの概要
 ロジック アプリで要求コンポーネントと応答コンポーネントを使用すると、リアルタイムでイベントに応答できます。
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 * 外部の webhook イベントからロジック アプリをトリガーします。
 * 他のロジック アプリ内からの要求アクションと応答アクションを使用してロジック アプリを呼び出します。
 
-ロジック アプリでの要求アクションと応答アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事をご覧ください。
+ロジック アプリでの要求アクションと応答アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-http-request-trigger"></a>HTTP 要求トリガーの使用
 トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 [トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
@@ -64,19 +64,19 @@ HTTP 応答アクションの追加方法を次に示します。
     ![Complete the response action](./media/connectors-native-reqres/using-action-2.png)
 5. ツール バーの左上隅にある [保存] をクリックすると、ロジック アプリが保存されて発行 (アクティブ化) されます。
 
-## <a name="request-trigger"></a>要求トリガー
+## <a name="request-trigger"></a>Request トリガー
 ここでは、このコネクタでサポートされているトリガーの詳細について説明します。 1 つの要求トリガーがあります。
 
-| トリガー | Description |
+| トリガー | [説明] |
 | --- | --- |
 | 要求 |HTTP 要求を受信したときに実行されます。 |
 
 ## <a name="response-action"></a>応答アクション
 ここでは、このコネクタでサポートされているアクションの詳細について説明します。 要求トリガーに伴う場合にのみ使用可能な応答アクションが 1 つあります。
 
-| アクション | Description |
+| アクションを表示します。 | [説明] |
 | --- | --- |
-| 応答 |関連する HTTP 要求に応答を返します。 |
+| Response |関連する HTTP 要求に応答を返します。 |
 
 ### <a name="trigger-and-action-details"></a>トリガーとアクションの詳細
 次の表に、トリガーとアクションの必須および省略可能な入力フィールドと、対応する出力の詳細を示します。
@@ -84,7 +84,7 @@ HTTP 応答アクションの追加方法を次に示します。
 #### <a name="request-trigger"></a>要求トリガー
 受信 HTTP 要求からのトリガーの入力フィールドを次に示します。
 
-| 表示名 | プロパティ名 | Description |
+| 表示名 | プロパティ名 | [説明] |
 | --- | --- | --- |
 | JSON スキーマ |schema |HTTP 要求本文の JSON スキーマ |
 
@@ -94,20 +94,20 @@ HTTP 応答アクションの追加方法を次に示します。
 
 要求の出力の詳細を次に示します。
 
-| プロパティ名 | データ型 | Description |
+| プロパティ名 | データ型 | [説明] |
 | --- | --- | --- |
 | headers |オブジェクト |要求ヘッダー |
 | 本文 |オブジェクト |要求オブジェクト |
 
 #### <a name="response-action"></a>応答アクション
-HTTP 応答アクションの入力フィールドを次に示します。 * は、必須フィールドであることを示しています。
+HTTP 応答アクションの入力フィールドを次に示します。 \* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | Description |
+| 表示名 | プロパティ名 | [説明] |
 | --- | --- | --- |
 | 状態コード* |StatusCode |HTTP 状態コード |
-| ヘッダー |ヘッダー |含める任意の応答ヘッダーの JSON オブジェクト |
-| 本文 |本文 |応答本文 |
+| headers |headers |含める任意の応答ヘッダーの JSON オブジェクト |
+| 本文 |body |応答本文 |
 
-## <a name="next-steps"></a>次のステップ
-プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
+## <a name="next-steps"></a>次の手順
+プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 

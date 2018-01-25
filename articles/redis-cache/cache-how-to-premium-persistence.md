@@ -3,8 +3,8 @@ title: "Premium Azure Redis Cache のデータ永続化の構成方法"
 description: "Premium レベルの Azure Redis Cache インスタンス用にデータの永続化を構成して管理する方法について説明します"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
-ms.author: sdanie
-ms.openlocfilehash: 638f0154d3a4fd091197a2da86374a053b31c4c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 270158bbf85a58a48a367a091ad2b09a9d114b2b
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache のデータ永続化の構成方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Redis Cache インスタンスで永続化を構成する方法について説明します。
@@ -179,7 +179,7 @@ AOF ファイルに格納されたデータは、ストレージへのデータ�
 再書き込み後、ストレージ内には 2 セットの AOF ファイルが存在します。 再書き込みはバックグラウンドで発生して最初のファイル セットに追加され、一方で再書き込み中にキャッシュに送信されるセット操作は 2 つ目のファイル セットに追加されます。 バックアップはエラーが発生した場合に備えて再書き込み中に一時的に保存されますが、再書き込みの完了後すぐに削除されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Premium キャッシュ機能をさらに使用する方法を学習します。
 
 * [Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)

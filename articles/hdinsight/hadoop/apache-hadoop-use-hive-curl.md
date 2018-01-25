@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: larryfr
-ms.openlocfilehash: b05dbdcec3cfb5c78115061567bb6229623cd0ff
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b451a80934a19f8a38ab9e8ace358674827aefa0
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>REST を使用した HDInsight における Hadoop での Hive クエリの実行
 
@@ -50,7 +50,9 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 
     次のような応答を受け取ります。
 
-        {"status":"ok","version":"v1"}
+    ```json
+    {"status":"ok","version":"v1"}
+    ```
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
@@ -65,7 +67,9 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 
     この要求では、次のような応答が返されます。
 
+    ```json
         {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
+    ```
 
 2. 次のコマンドを使用して、 **log4jLogs** という名前のテーブルを作成します。
 
@@ -93,7 +97,7 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 
    * **ROW FORMAT**: データ形式 各ログのフィールドは、スペースで区切られています。
    * **STORED AS TEXTFILE LOCATION**: データの格納先 (example/data ディレクトリ) と、データがテキストとして格納されていることを示します。
-   * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
+   * **SELECT**: **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。 この値を含む行が 3 行あるため、このステートメントでは値 **3** が返されます。
 
      > [!NOTE]
      > Curl を使用したとき、HiveQL ステートメントのスペースが `+` に置き換わることに注意してください。 スペースを含む引用符で囲まれた値 (区切り記号など) は `+`に置き換わりません。
@@ -105,7 +109,9 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 
    このコマンドは、ジョブのステータスの確認に使用できるジョブ ID を返します。
 
+    ```json
        {"id":"job_1415651640909_0026"}
+    ```
 
 3. ジョブのステータスを確認するには、次のコマンドを使用します。
 

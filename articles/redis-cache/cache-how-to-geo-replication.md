@@ -3,8 +3,8 @@ title: "Azure Redis Cache の geo レプリケーションの構成方法 | Micr
 description: "地理的リージョン全体で Azure Redis Cache インスタンスをレプリケートする方法を説明します。"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.author: sdanie
-ms.openlocfilehash: 332326ce4188385aa6e569c812e16c3daa68bd5d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 883683f6af7943fa4da49095c9a15aefd5cfa719
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>Azure Redis Cache の geo レプリケーションの構成方法
 
@@ -177,7 +177,7 @@ geo レプリケーションの最初のリリースでは、Azure Redis Cache �
 現時点では、フェールオーバーを開始するには、Azure Portal で geo レプリケーション リンクを削除してから、Redis クライアントの接続エンドポイントをプライマリ リンク キャッシュから (以前にリンクされていた) セカンダリ キャッシュに変更する必要があります。 2 つのキャッシュの関連付けが解除されると、レプリカが再び正規の読み取り/書き込みキャッシュになり、Redis クライアントからの要求を直接受け入れます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Redis Cache Premium レベル](cache-premium-tier-intro.md)の詳細を確認します。
 

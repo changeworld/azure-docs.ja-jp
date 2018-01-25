@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b263c69554c22978c854d2678ad7eeca91bc71f7
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: cccab530e86373fee8a78b42c8cba532b05c1bab
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) の概要
 ## <a name="overview"></a>概要
@@ -61,7 +61,7 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
 
 3. Microsoft アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられている Azure サブスクリプションが表示されます。 操作する Azure サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
 
-    ![Select Azure subscriptions][3]  
+    ![Azure サブスクリプションの選択][3]  
     左側のウィンドウに、選択した Azure サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
     ![選択された Azure サブスクリプション][4]
@@ -99,7 +99,7 @@ Azure Stack サブスクリプションに接続する方法については、�
 ### <a name="get-the-storage-account-credentials"></a>ストレージ アカウントの資格情報を取得する
 外部ストレージ アカウントを共有するには、まずそのアカウントの所有者がアカウントの資格情報 (アカウント名とキー) を取得し、その情報を、その (外部) アカウントへのアタッチを望んでいるユーザーと共有する必要があります。 Azure Portal からストレージ アカウントの資格情報を取得する手順は、以下のとおりです。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. **[参照]**を選択します。
 
@@ -113,7 +113,7 @@ Azure Stack サブスクリプションに接続する方法については、�
 
 6. **[アクセス キー]** ブレードで、ストレージ アカウントにアタッチするときに使用する **[ストレージ アカウント名]** と **[key1]** の値をコピーします。
 
-    ![アクセス キー][6]
+    ![[アクセス キー]][6]
 
 ### <a name="attach-to-an-external-storage-account"></a>外部ストレージ アカウントにアタッチする
 外部ストレージ アカウントにアタッチするには、アカウントの名前とキーが必要になります。 「ストレージ アカウントの資格情報を取得する」セクションでは、Azure Portal からこれらの値を取得する方法を説明しました。 ただし、ポータルでは、アカウント キーが **key1** という名前になっています。 このため、ストレージ エクスプローラーでアカウント キーの入力が必要な局面があれば、**key1** の値を入力してください。
@@ -241,9 +241,9 @@ Azure サブスクリプションを使って Azure Cosmos DB アカウントを
 
 ![Storage account search][11]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
-* [Azure Cosmos DB を Azure Storage Explorer で管理する (プレビュー)](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+* [Azure Cosmos DB を Azure Storage Explorer で管理する (プレビュー)](./cosmos-db/storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-icon.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-account-link.png

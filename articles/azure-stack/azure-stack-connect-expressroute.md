@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.openlocfilehash: aa6973939c6cfe0688f5781fdcea5d39670249df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 248e9cb521975e9c982684668a68214ce5a1c827
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-expressroute"></a>ExpressRoute を使用して Azure Stack を Azure に接続する
 
-*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack 内の仮想ネットワークを Azure 内の仮想ネットワークに接続する 2 つの方法をサポートしています。
    * **サイト間**
@@ -88,14 +88,14 @@ Azure Stack 内で各テナントに必要なネットワーク リソースを�
 
    |フィールド  |値  |
    |---------|---------|
-   |名前     |Tenant1VNet1         |
+   |Name     |Tenant1VNet1         |
    |アドレス空間     |10.1.0.0/16|
    |サブネット名     |Tenant1 Sub1|
    |サブネットのアドレス範囲     |10.1.1.0/24|
 
 6. 先ほど作成したサブスクリプションが、**[サブスクリプション]** フィールドに設定されたことがわかります。
 
-    a. [リソース グループ] については、リソース グループを作成することも、既存のリソース グループがある場合に **[既存のものを使用]** を選択することもできます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [リソース グループ] については、リソース グループを作成することも、既存のリソース グループがある場合に **[既存のものを使用]** を選択することもできます。
 
     b. 既定の場所を確認します。
 
@@ -172,7 +172,7 @@ VPN 接続経由のデータ移動を検証するには、Azure Stack VNet で�
 5. 有効なユーザー名とパスワードを入力します。 このアカウントは、作成後の VM へのログインに使用します。
 6. **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を指定し、**[OK]** をクリックします。
 7. **[サイズ]** セクションで、この場合は仮想マシンのサイズを選択し、**[選択]** をクリックします。
-8. **[設定]** セクションは既定値のままでかまいません。 選択されている仮想ネットワークが **Tenant1VNet1** であり、サブネットが **10.1.1.0/24** に設定されていることを確認してください。 **[OK]**をクリックします。
+8. **[設定]** セクションは既定値のままでかまいません。 選択されている仮想ネットワークが **Tenant1VNet1** であり、サブネットが **10.1.1.0/24** に設定されていることを確認してください。 Click **OK**.
 9. **[概要]** セクションで設定を確認し、**[OK]** をクリックします。
 
 接続する各テナント VNet について、「**仮想ネットワークと VM サブネットを作成する**」から「**仮想マシンの作成**」までのセクションの手順を繰り返します。
@@ -205,19 +205,22 @@ Azure Stack Development Kit は自己完結型であり、物理ホストがデ�
    図の例では、*外部 BGPNAT アドレス*は 10.10.0.62 であり、*内部 IP アドレス*は 192.168.102.1 です。
 
    ```
+   $ExtBgpNat = '<External BGPNAT address>'
+   $IntBgpNat = '<Internal IP address>'
+
    # Designate the external NAT address for the ports that use the IKE authentication.
    Invoke-Command `
     -ComputerName azs-bgpnat01 `
      {Add-NetNatExternalAddress `
       -NatName BGPNAT `
-      -IPAddress <External BGPNAT address> `
+      -IPAddress $Using:ExtBgpNat `
       -PortStart 499 `
       -PortEnd 501}
    Invoke-Command `
     -ComputerName azs-bgpnat01 `
      {Add-NetNatExternalAddress `
       -NatName BGPNAT `
-      -IPAddress <External BGPNAT address> `
+      -IPAddress $Using:ExtBgpNat `
       -PortStart 4499 `
       -PortEnd 4501}
    # create a static NAT mapping to map the external address to the Gateway
@@ -227,8 +230,8 @@ Azure Stack Development Kit は自己完結型であり、物理ホストがデ�
      {Add-NetNatStaticMapping `
       -NatName BGPNAT `
       -Protocol UDP `
-      -ExternalIPAddress <External BGPNAT address> `
-      -InternalIPAddress <Internal IP address> `
+      -ExternalIPAddress $Using:ExtBgpNat `
+      -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 500 `
       -InternalPort 500}
    # Finally, configure NAT traversal which uses port 4500 to
@@ -238,8 +241,8 @@ Azure Stack Development Kit は自己完結型であり、物理ホストがデ�
      {Add-NetNatStaticMapping `
       -NatName BGPNAT `
       -Protocol UDP `
-      -ExternalIPAddress <External BGPNAT address> `
-      -InternalIPAddress <Internal IP address> `
+      -ExternalIPAddress $Using:ExtBgpNat `
+      -InternalIPAddress $Using:IntBgpNat `
       -ExternalPort 4500 `
       -InternalPort 4500}
    ```
@@ -564,5 +567,5 @@ route-map VNET-ONLY permit 10
 
    ![受信データと送信データ](media/azure-stack-connect-expressroute/DataInDataOut.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure と Azure Stack へのアプリのデプロイ](azure-stack-solution-pipeline.md)

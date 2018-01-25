@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: fbfef291334109c6dcfcde80741874549fb7929f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec407d72f90cf3616214d27c378dee0ff42f4c6f
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-webhook-connector"></a>Webhook コネクタの概要
 
@@ -79,7 +79,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 
 ## <a name="webhook-triggers"></a>Webhook トリガー
 
-| アクション | 説明 |
+| アクションを表示します。 | [説明] |
 | --- | --- |
 | HTTP Webhook |コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。 |
 
@@ -90,7 +90,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。
 \* は必須フィールドを意味します。
 
-| 表示名 | プロパティ名 | 説明 |
+| 表示名 | プロパティ名 | [説明] |
 | --- | --- | --- |
 | Subscribe Method (メソッドのサブスクライブ)* |method |サブスクライブ要求に使用する HTTP メソッド |
 | Subscribe URI (URI のサブスクライブ)* |uri |サブスクライブ要求に使用する HTTP URI |
@@ -98,7 +98,7 @@ webhook でサポートされているトリガーとアクションの詳細を
 | Unsubscribe URI (URI のサブスクライブ解除)* |uri |サブスクライブ解除要求に使用する HTTP URI |
 | Subscribe Body (本文のサブスクライブ) |body |サブスクライブの HTTP 要求本文 |
 | Subscribe Headers (ヘッダーのサブスクライブ) |headers |サブスクライブの HTTP 要求ヘッダー |
-| Subscribe Authentication (認証のサブスクライブ) |authentication |サブスクライブに使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
+| Subscribe Authentication (認証のサブスクライブ) |[認証] |サブスクライブに使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
 | Unsubscribe Body (本文のサブスクライブ解除) |body |サブスクライブ解除の HTTP 要求本文 |
 | Unsubscribe Headers (ヘッダーのサブスクライブ解除) |headers |サブスクライブ解除の HTTP 要求ヘッダー |
 | Unsubscribe Authentication (認証のサブスクライブ解除) |authentication |サブスクライブ解除に使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
@@ -107,15 +107,15 @@ webhook でサポートされているトリガーとアクションの詳細を
 
 Webhook 要求
 
-| プロパティ名 | データ型 | 説明 |
+| プロパティ名 | データ型 | [説明] |
 | --- | --- | --- |
 | headers |オブジェクト |Webhook 要求ヘッダー |
-| body |オブジェクト |Webhook 要求オブジェクト |
+| 本文 |オブジェクト |Webhook 要求オブジェクト |
 | 状態コード |int |Webhook 要求の状態コード |
 
 ## <a name="webhook-actions"></a>Webhook アクション
 
-| アクション | 説明 |
+| アクションを表示します。 | [説明] |
 | --- | --- |
 | HTTP Webhook |コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。 |
 
@@ -126,7 +126,7 @@ Webhook 要求
 コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。
 \* は必須フィールドを意味します。
 
-| 表示名 | プロパティ名 | 説明 |
+| 表示名 | プロパティ名 | [説明] |
 | --- | --- | --- |
 | Subscribe Method (メソッドのサブスクライブ)* |method |サブスクライブ要求に使用する HTTP メソッド |
 | Subscribe URI (URI のサブスクライブ)* |uri |サブスクライブ要求に使用する HTTP URI |
@@ -134,7 +134,7 @@ Webhook 要求
 | Unsubscribe URI (URI のサブスクライブ解除)* |uri |サブスクライブ解除要求に使用する HTTP URI |
 | Subscribe Body (本文のサブスクライブ) |body |サブスクライブの HTTP 要求本文 |
 | Subscribe Headers (ヘッダーのサブスクライブ) |headers |サブスクライブの HTTP 要求ヘッダー |
-| Subscribe Authentication (認証のサブスクライブ) |authentication |サブスクライブに使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
+| Subscribe Authentication (認証のサブスクライブ) |[認証] |サブスクライブに使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
 | Unsubscribe Body (本文のサブスクライブ解除) |body |サブスクライブ解除の HTTP 要求本文 |
 | Unsubscribe Headers (ヘッダーのサブスクライブ解除) |headers |サブスクライブ解除の HTTP 要求ヘッダー |
 | Unsubscribe Authentication (認証のサブスクライブ解除) |authentication |サブスクライブ解除に使用する HTTP 認証  (詳細については、[HTTP コネクタ](connectors-native-http.md#authentication)に関する記事を参照) |
@@ -143,13 +143,13 @@ Webhook 要求
 
 Webhook 要求
 
-| プロパティ名 | データ型 | 説明 |
+| プロパティ名 | データ型 | [説明] |
 | --- | --- | --- |
 | headers |オブジェクト |Webhook 要求ヘッダー |
-| body |オブジェクト |Webhook 要求オブジェクト |
+| 本文 |オブジェクト |Webhook 要求オブジェクト |
 | 状態コード |int |Webhook 要求の状態コード |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [ロジック アプリを作成します](../logic-apps/logic-apps-create-a-logic-app.md)
+* [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [他のコネクタを見つけます](apis-list.md)

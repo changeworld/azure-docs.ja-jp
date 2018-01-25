@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: f3b29db2dd74e6b3c0c066045d05cb853d1541f8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: f57260b2ee280aa0f49f42cd145477205926cb0c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
 
@@ -39,7 +39,7 @@ Apache Phoenix Query Server 用の Microsoft .NET ドライバーは NuGet パ�
 
 ライブラリを使い始めるには、クラスターへの `Uri` およびクラスターの Hadoop ユーザー名とパスワードを含む `ClusterCredentials` を渡して、新しい `PhoenixClient` オブジェクトをインスタンス化します。
 
-```c#
+```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
 client = new PhoenixClient(credentials);
 ```
@@ -50,7 +50,7 @@ CLUSTERNAME を HDInsight HBase クラスターの名前に、USERNAME と PASSW
 
 要求を PQS に送信するには、要求と接続を関連付ける一意の接続識別子を含める必要があります。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 ```
 
@@ -60,7 +60,7 @@ string connId = Guid.NewGuid().ToString();
 
 `ConnectionSyncRequestAsync` を呼び出すには、`ConnectionProperties` オブジェクトで渡します。
 
-```c#
+```csharp
 ConnectionProperties connProperties = new ConnectionProperties
 {
     HasAutoCommit = true,
@@ -82,8 +82,8 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 | AutoCommit | Phoenix トランザクションに対して `autoCommit` が有効かどうかを示すブール値です。 |
 | ReadOnly | 接続が読み取り専用かどうかを示すブール値です。 |
 | TransactionIsolation | JDBC の仕様に従ってトランザクション分離のレベルを示す整数値です。次の表をご覧ください。|
-| Catalog | 接続プロパティをフェッチするときに使うカタログの名前です。 |
-| Schema | 接続プロパティをフェッチするときに使うスキーマの名前です。 |
+| カタログ | 接続プロパティをフェッチするときに使うカタログの名前です。 |
+| スキーマ | 接続プロパティをフェッチするときに使うスキーマの名前です。 |
 | IsDirty | プロパティが変更されたかどうかを示すブール値です。 |
 
 `TransactionIsolation` の値を次に示します。
@@ -102,7 +102,7 @@ await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 
 この例および以降のすべての例では、「[新しい PhoenixClient オブジェクトのインスタンス化](#instantiate-new-phoenixclient-object)」での定義に従ってインスタンス化された `PhoenixClient` オブジェクトを使います。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 
@@ -172,13 +172,13 @@ finally
 
 この例では、アメリカの州と地区の省略形の `List<string>` コレクションを参照する個別データの挿入を示します。
 
-```c#
+```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
 後の選択操作では、テーブルの `StateProvince` 列の値を使います。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 options.TimeoutMillis = 300000;
@@ -289,7 +289,7 @@ finally
 
 次のコードは、データを個別に挿入するコードとほぼ同じです。 この例では、準備されたステートメントで `ExecuteRequestAsync` を繰り返し呼び出すのではなく、`ExecuteBatchRequestAsync` の呼び出しで `UpdateBatch` オブジェクトを使います。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 options.TimeoutMillis = 300000;
@@ -407,7 +407,7 @@ finally
 2. 合計行数選択ステートメントを使って、単一のスカラー結果を取得します。
 3. 州または地区ごとの顧客の合計数を返す選択ステートメントを実行します。
 
-```c#
+```csharp
 string connId = Guid.NewGuid().ToString();
 RequestOptions options = RequestOptions.GetGatewayDefaultOptions();
 

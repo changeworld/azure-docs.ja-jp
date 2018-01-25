@@ -2,15 +2,15 @@
 ms.assetid: 
 title: "Azure Key Vault のスロットル ガイダンス | Microsoft Docs"
 ms.service: key-vault
-author: BrucePerlerMS
-ms.author: bruceper
+author: lleonard-msft
+ms.author: alleonar
 manager: mbaldwin
 ms.date: 06/21/2017
-ms.openlocfilehash: fe700e22c5323c2a0bdc315e349cd119798bcf40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc39a5ee466d2e1661281a32010c3d3201c4a0af
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault のスロットル ガイダンス
 

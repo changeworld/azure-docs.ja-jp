@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 727041edf457ef55a39eb91ba2369c163f5b4712
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 17ffd0de41964736d2f59b0cf891d0c6b2e7d16b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -80,23 +80,23 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 ## <a name="db2-linked-service-properties"></a>DB2 のリンクされたサービスのプロパティ
 次の表は、DB2 のリンクされたサービスに固有の JSON プロパティの一覧です。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |あり |
-| **server** |DB2 サーバーの名前です。 |あり |
-| **database** |DB2 データベースの名前です。 |あり |
-| **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ |
-| **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |あり |
-| **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ |
-| **password** |ユーザー アカウントのパスワードです。 |いいえ |
-| **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |あり |
+| **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |[はい] |
+| **server** |DB2 サーバーの名前です。 |[はい] |
+| **database** |DB2 データベースの名前です。 |[はい] |
+| **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ  |
+| **authenticationType** |DB2 データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |[はい] |
+| **username** |Basic 認証または Windows 認証を使用する場合はユーザー アカウントの名前です。 |いいえ  |
+| **password** |ユーザー アカウントのパスワードです。 |いいえ  |
+| **gatewayName** |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の **structure**、**availability**、**policy** などのセクションは、データセットのすべての型 (Azure SQL、Azure Blob Storage、Azure Table Storage など) でほぼ同じです。
 
 **typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (DB2 データセットを含む) の **typeProperties** セクションには次のプロパティがあります。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | **tableName** |リンクされたサービスが参照する DB2 データベース インスタンスのテーブルの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ (種類が **RelationalSource** のコピー アクティビティの **query** プロパティが指定されている場合) |
 
@@ -105,7 +105,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 コピー アクティビティで、source の種類が **RelationalSource** (DB2 を含む) である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | 説明 | 使用できる値 | 必須 |
+| プロパティ | [説明] | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 次に例を示します。`"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 
@@ -310,7 +310,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | DB2 データベース型 | .NET Framework 型 |
 | --- | --- |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| 整数 |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -318,8 +318,8 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| 日付 |DateTime |
-| Time |TimeSpan |
+| 日付 |Datetime |
+| Time |timespan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |String |
@@ -336,7 +336,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | BLOB |Byte[] |
 | DbClob |String |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| 整数 |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -344,8 +344,8 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| 日付 |DateTime |
-| Time |TimeSpan |
+| 日付 |Datetime |
+| Time |timespan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |String |

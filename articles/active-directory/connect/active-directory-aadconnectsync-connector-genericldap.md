@@ -3,7 +3,7 @@ title: "Generic LDAP コネクタ | Microsoft Docs"
 description: "この記事では、Microsoft の Generic LDAP コネクタを構成する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 984beeb0-4d91-4908-ad81-c19797c4891b
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: fe8db8f2a2412a3dfdf31201678c51e4fa0cee30
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6e2b7d23162673f0c66b1fd6c654336da42b8f6e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="generic-ldap-connector-technical-reference"></a>Generic LDAP コネクタに関するテクニカル リファレンス
 この記事では Generic LDAP コネクタについて説明します。 この記事は次の製品に適用されます。
@@ -39,11 +39,11 @@ IETF RFC では、特定の操作やスキーマ要素 (たとえば、差分イ
 
 包括的な観点から見た場合、コネクタの現在のリリースでサポートされている機能は次のとおりです。
 
-| 機能 | サポート |
+| Feature | サポート |
 | --- | --- |
 | 接続先のデータ ソース |コネクタはすべての LDAP v3 サーバー (RFC 4510 に準拠している) でサポートされています。 次のデータ ソースでテスト済みです。 <li>Microsoft Active Directory ライトウェイト ディレクトリ サービス (AD LDS)</li><li>Microsoft Active Directory グローバル カタログ (AD GC)</li><li>389 Directory Server</li><li>Apache Directory Server</li><li>IBM Tivoli DS</li><li>Isode Directory</li><li>NetIQ eDirectory</li><li>Novell eDirectory</li><li>Open DJ</li><li>Open DS</li><li>Open LDAP (openldap.org)</li><li>Oracle (以前は Sun) Directory Server Enterprise Edition</li><li>RadiantOne Virtual Directory Server (VDS)</li><li>Sun One Directory Server</li>**ただし、次のディレクトリはサポートされていません。** <li>Microsoft Active Directory Domain Services (AD DS) (代わりに組み込みの Active Directory コネクタを使用)</li><li>Oracle Internet Directory (OID)</li> |
 | シナリオ |<li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li> |
-| 操作 |すべての LDAP ディレクトリで次の操作がサポートされています。 <li>フル インポート</li><li>エクスポート</li>次の操作は特定のディレクトリでのみサポートされています。<li>差分インポート</li><li>パスワードの設定、パスワードの変更</li> |
+| [操作] |すべての LDAP ディレクトリで次の操作がサポートされています。 <li>フル インポート</li><li>エクスポート</li>次の操作は特定のディレクトリでのみサポートされています。<li>差分インポート</li><li>パスワードの設定、パスワードの変更</li> |
 | スキーマ |<li>スキーマは LDAP スキーマで検出されます (RFC3673 および RFC4512/4.2)</li><li>構造型クラス、aux クラス、および extensibleObject オブジェクト クラスをサポートします (RFC4512/4.3)</li> |
 
 ### <a name="delta-import-and-password-management-support"></a>差分インポートおよびパスワード管理のサポート

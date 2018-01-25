@@ -3,8 +3,8 @@ title: "Azure PowerShell を使用した Azure Redis Cache の管理 | Microsoft
 description: "Azure PowerShell を使用して Azure Redis Cache の管理タスクを実行する方法について説明します。"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.author: sdanie
-ms.openlocfilehash: 5b65d513d6418f13a6f3e10644c1892eecbcba1d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: wesmc
+ms.openlocfilehash: 58f8601fa780ac86729f60e9e30f4c6a91c73deb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure PowerShell を使用した Azure Redis Cache の管理
 > [!div class="op_single_selector"]
@@ -75,7 +75,7 @@ Azure Government Cloud に接続するには、次のいずれかのコマンド
 
     Add-AzureRMAccount -EnvironmentName AzureUSGovernment
 
-または
+or
 
     Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
 
@@ -91,7 +91,7 @@ Azure China Cloud に接続するには、次のいずれかのコマンドを�
 
     Add-AzureRMAccount -EnvironmentName AzureChinaCloud
 
-または
+or
 
     Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
 
@@ -122,7 +122,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 ### <a name="properties-used-for-azure-redis-cache-powershell"></a>Azure Redis Cache 用の PowerShell で使用されるプロパティ
 次の表は、Azure PowerShell を使用して Azure Redis Cache インスタンスを作成し、管理するときに一般的に使用されるパラメーターのプロパティと説明を示しています。
 
-| パラメーター | Description | 既定値 |
+| パラメーター | [説明] | 既定値 |
 | --- | --- | --- |
 | Name |キャッシュの名前 | |
 | 場所 |キャッシュの場所 | |
@@ -139,7 +139,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | KeyType |アクセス キーを更新するときに再生成するアクセス キーを指定します。 有効な値: Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration プロパティ
-| プロパティ | Description | 価格レベル |
+| プロパティ | [説明] | 価格レベル |
 | --- | --- | --- |
 | rdb-backup-enabled |[Redis データ永続化](cache-how-to-premium-persistence.md) が有効かどうか。 |Premium のみ |
 | rdb-storage-connection-string |[Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
@@ -776,7 +776,7 @@ Azure Redis Cache インスタンスを再起動するには、 `Reset-AzureRmRe
         -Force
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure での Windows PowerShell の使用の詳細については、次のリソースをご覧ください。
 
 * [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://msdn.microsoft.com/library/azure/mt634513.aspx)

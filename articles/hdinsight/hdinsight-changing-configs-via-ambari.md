@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: ashish
-ms.openlocfilehash: 5b3700580f593e7590360792f2b76dee79608896
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 74c1b3298cd7b6ffd5b4a60e2fa78ed733232f92
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Ambari を使用した HDInsight クラスター構成の最適化
 
@@ -186,7 +186,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 | Gzip | Gzip | DEFLATE | .gz | いいえ  |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | [はい] |
 | LZO | Lzop | LZO | .lzo | はい (インデックス付きの場合) |
-| Snappy | N/A | Snappy | Snappy | いいえ  |
+| Snappy | 該当なし | Snappy | Snappy | いいえ  |
 
 原則として、分割可能な圧縮方法を使用することが重要です。そうしないと、作成されるマッパーがごく少数になります。 入力データがテキストの場合は、`bzip2` が最適なオプションです。 ORC 形式の場合、Snappy が最速の圧縮オプションです。
 
@@ -201,7 +201,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
 3. カスタム設定を追加するには、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 Hive の **[Configs]\(構成\)** タブに移動し、**[Advanced]\(詳細設定\)** タブを選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Hive の **[Configs]\(構成\)** タブに移動し、**[Advanced]\(詳細設定\)** タブを選択します。
 
     b. **[Advanced]\(詳細設定\)** タブで、**[Custom hive-site]\(カスタム hive-site\)** ウィンドウを見つけて展開します。
 
@@ -234,7 +234,7 @@ Hive の最終出力を圧縮することもできます。
 
 大量の入力を伴う実行時間の長い MapReduce タスクでは、予測実行を有効にしないでください。
 
-1. 予測実行を有効にするには、Hive の **[Configs]\(構成\)** タブに移動し、`hive.mapred.reduce.tasks.speculative.execution` パラメーターを true に設定します。 既定値は false です。
+* 予測実行を有効にするには、Hive の **[Configs]\(構成\)** タブに移動し、`hive.mapred.reduce.tasks.speculative.execution` パラメーターを true に設定します。 既定値は false です。
 
     ![hive.mapred.reduce.tasks.speculative.execution](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -456,7 +456,7 @@ Memstore のローカル割り当てバッファーの使用は、`hbase.hregion
 ![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 * [Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 * [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

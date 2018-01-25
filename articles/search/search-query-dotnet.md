@@ -13,18 +13,18 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/19/2017
 ms.author: brjohnst
-ms.openlocfilehash: 52bd0fd4cf70401dcf881c7f28d5cd91397bb059
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c3c22b83346269cf3c0327fe3fb98510a6266733
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの照会
 > [!div class="op_single_selector"]
 > * [概要](search-query-overview.md)
 > * [ポータル](search-explorer.md)
 > * [.NET](search-query-dotnet.md)
-> * [REST ()](search-query-rest-api.md)
+> * [REST](search-query-rest-api.md)
 > 
 > 
 
@@ -71,7 +71,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 .NET SDK を使用した検索は簡単です。`Documents.Search` メソッドを `SearchIndexClient` で呼び出します。 このメソッドは、検索テキストのほか、クエリをさらに絞り込むために使用できる `SearchParameters` オブジェクトなどのいくつかのパラメーターを受け取ります。
 
 #### <a name="types-of-queries"></a>クエリの種類
-主に使用する[クエリの種類](search-query-overview.md#types-of-queries)は、`search` と `filter` の 2 つです。 `search` クエリは、インデックスのすべての *検索可能* フィールドで 1 つ以上の語句を検索します。 `filter` クエリは、インデックスのすべての *フィルター処理可能* フィールドでブール式を評価します。
+主に使用する[クエリの種類](search-query-overview.md#types-of-queries)は、`search` と `filter` の 2 つです。 `search` クエリは、インデックスのすべての *検索可能* フィールドで 1 つ以上の語句を検索します。 `filter` クエリは、インデックスのすべての *フィルター処理可能* フィールドでブール式を評価します。 検索とフィルターは、一緒に使用することも、別々に使用することもできます。
 
 検索とフィルターは両方とも `Documents.Search` メソッドを使用して実行できます。 検索クエリは `searchText` パラメーターで渡すことができます。一方、フィルター式は `SearchParameters` クラスの `Filter` プロパティで渡すことができます。 検索せずにフィルター処理を実行するには、`"*"` を `searchText` パラメーターに渡します。 フィルター処理を行わずに検索するには、`Filter` プロパティを未設定のままにするか、`SearchParameters` インスタンスを 1 つも渡さないようにします。
 

@@ -3,7 +3,7 @@ title: "Azure AD Connect: 自動アップグレード | Microsoft Docs"
 description: "このトピックでは、Azure AD Connect Sync の組み込みの自動アップグレード機能について説明します。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 49fc908006f19135b4c4553eef97d2f396db33ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddf23193e7b9c2fb7a69045be539841dbb6e6249
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 Azure AD Connect のインストールを常に最新の状態に保つことは、 **自動アップグレード** 機能によって、これまでよりも簡単になりました。 この機能は、高速インストールと DirSync のアップグレード用に既定で有効になっています。 インストールは新しいバージョンのリリース時に自動的にアップグレードされます。
 自動アップグレードは、次の場合に既定で有効です。
 
@@ -34,7 +34,7 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 
 自動アップグレードの現在の状態は、PowerShell コマンドレット `Get-ADSyncAutoUpgrade`で表示できます。 次のような状態があります。
 
-| 状態 | コメント |
+| State | コメント |
 | --- | --- |
 | 有効 |自動アップグレードが有効です。 |
 | Suspended |システムによる設定だけが可能です。 システムは自動アップグレードを受け付けることができなくなりました。 |
@@ -64,7 +64,7 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 
 結果コードには、状態についての概要を含むプレフィックスが付加されています。
 
-| 結果コードのプレフィックス | Description |
+| 結果コードのプレフィックス | [説明] |
 | --- | --- |
 | 成功 |正常にアップグレードしました。 |
 | UpgradeAborted |一時的な状況により、アップグレードが停止しました。 後でもう一度試すと、成功することが予想されます。 |
@@ -72,7 +72,7 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 
 特によく表示されるメッセージの一覧を次に示します。 これですべてではありませんが、結果メッセージを見ると、何が問題となっているかが把握しやすくなります。
 
-| 結果メッセージ | Description |
+| 結果メッセージ | [説明] |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |レジストリに書き込むことができません。 |
@@ -100,5 +100,5 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeNotSupportedStagingModeEnabled |サーバーが [ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に設定されています。 |
 | UpgradeNotSupportedUserWritebackEnabled |ユーザーが [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback) 機能を有効にしました。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

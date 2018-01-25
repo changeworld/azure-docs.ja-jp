@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 6803e22a78e27c15ff4fec301cd5bdd55aacd3e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5cc6837ed0b0f4467e48c736f5d596a51a799fae
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-azure-serverless-with-functions-and-logic-apps"></a>Functions と Logic Apps を含む Azure Serverless の概要
 
@@ -41,13 +41,13 @@ Azure Functions の利用をすぐに開始する場合は、「 [初めての A
 
 Azure Logic Apps は、クラウド内のスケーラブルな統合やワークフローを簡略化して実装するための方法を提供します。 また、ワークフローと呼ばれる一連のステップとしてプロセスをモデル化して自動化するためのビジュアル デザイナーも用意されています。  サーバーレス アプリを他の API にすばやく接続するための、クラウドおよびオンプレミス サービスにわたる[多数のコネクタ](../connectors/apis-list.md)が存在します。  ロジック アプリはトリガー ("Dynamics CRM にアカウントが追加されたとき" など) によって起動することができ、その後も数多くのアクション、変換、条件ロジックを組み合わせて起動できます。  Logic Apps は、特にプロセスが外部のシステムまたは API との対話を必要とする場合、プロセス内のさまざまな Azure Functions を調整するときの最適な選択肢です。
 
-Logic Apps の操作を開始するには、[最初のロジック アプリの作成](logic-apps-create-a-logic-app.md)から始めます。  Logic Apps に関するより詳細な技術情報をお探しの場合は、[開発者向けリファレンス](logic-apps-workflow-actions-triggers.md)を参照してください。
+Logic Apps の操作を開始するには、[最初のロジック アプリの作成](quickstart-create-first-logic-app-workflow.md)から始めます。  Logic Apps に関するより詳細な技術情報をお探しの場合は、[開発者向けリファレンス](logic-apps-workflow-actions-triggers.md)を参照してください。
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Azure でサーバーレス アプリケーションを構築してデプロイするにはどうすればよいですか。
 
 Azure は、サーバーレス アプリの開発、デプロイ、管理の全体にわたる、豊富な機能を持つツール セットを提供しています。  アプリは Azure Portal で直接、または [Visual Studio のツール](logic-apps-serverless-get-started-vs.md)を使用して構築できます。  アプリケーションが開発されたら、そのアプリケーションを[直ちにデプロイ](logic-apps-create-deploy-template.md)できます。  Azure ではまた、サーバーレス アプリに対する監視も提供されます。  この監視には、API または SDK 経由で、あるいは OMS と Application Insights に対する統合ツールを使用して Azure Portal からアクセスできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Visual Studio でサーバーレス アプリの構築を開始する](logic-apps-serverless-get-started-vs.md)
 * [Serverless を使用して Customer Insights ダッシュボードを作成する](logic-apps-scenario-social-serverless.md)

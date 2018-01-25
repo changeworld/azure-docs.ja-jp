@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: cc64441617eb5e7d5e70c1cf5c491a672428bc51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4119e72abd568c9b53245a872691f06329b040de
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -60,7 +60,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
     ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. [ **保存**] を選択します。 保存すると、要求 URL が自動的に生成されます。 
+3. **[保存]** を選択します。 保存すると、要求 URL が自動的に生成されます。 
 
 4. **[新しいステップ]**、**[アクションの追加]** の順に選択します。 「`oracle`」と入力して、使用できるアクションを表示します。 
 
@@ -133,5 +133,5 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 [http://aka.ms/logicapps-wish](http://aka.ms/logicapps-wish) では、Logic Apps やコネクタの機能向上に役立つ皆様の投票や提案をお待ちしています。 
 
 
-## <a name="next-steps"></a>次のステップ
-[ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)し、[API の一覧](apis-list.md)で Logic Apps で使用できるコネクタを確認します。
+## <a name="next-steps"></a>次の手順
+[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)し、[API の一覧](apis-list.md)で Logic Apps で使用できるコネクタを確認します。

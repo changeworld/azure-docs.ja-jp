@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: f5ffbb6c2d699da143e12c51c38cba602f5a8526
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: e23173fb6708104c39071145595e4eec3454ee76
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Operations Management Suite の Service Map の構成
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -139,7 +139,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
 ## <a name="azure-vm-extension"></a>Azure VM 拡張機能
-[Azure VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions)を使用すると、Azure VM に Dependency Agent を簡単に展開できます。  Azure VM 拡張機能を使用することにより、PowerShell スクリプトを使用して、または、VM の Azure Resource Manager テンプレートから直接、VM に Dependency Agent を展開することができます。  Windows 用 (DependencyAgentWindows) と Linux 用 (DependencyAgentLinux) の拡張機能が用意されています。  Azure VM 拡張機能を使用して展開した場合、エージェントは最新バージョンに自動的に更新されます。
+[Azure VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)を使用すると、Azure VM に Dependency Agent を簡単に展開できます。  Azure VM 拡張機能を使用することにより、PowerShell スクリプトを使用して、または、VM の Azure Resource Manager テンプレートから直接、VM に Dependency Agent を展開することができます。  Windows 用 (DependencyAgentWindows) と Linux 用 (DependencyAgentLinux) の拡張機能が用意されています。  Azure VM 拡張機能を使用して展開した場合、エージェントは最新バージョンに自動的に更新されます。
 
 PowerShell を使用して Azure VM 拡張機能を展開するには、次の例を使用してください。
 ```PowerShell

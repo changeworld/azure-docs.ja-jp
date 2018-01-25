@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: d6cda201e4cf16549f296bf9873b1085effd3a45
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: ca11199e51774e766113309150d8a260427cb4b4
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する
 
@@ -66,7 +66,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 1. クラスターの Resource Manager テンプレートをデプロイ用に準備します。 この手順の詳細については、「[Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)」をご覧ください。
 2. クラスターに展開するいくつかのアプリケーションについて検討します。 他のアプリケーションから依存される、常に実行されるアプリケーションがある場合や、 クラスターのガバナンスまたはセットアップのアプリケーションをデプロイする予定の場合、 そのようなアプリケーションは、前述のように Resource Manager テンプレートを使用して管理するのが最適です。 
 3. この方法でデプロイするアプリケーションを決定したら、それらのアプリケーションをパッケージ化し、圧縮し、ファイル共有に配置する必要があります。 共有には、デプロイ時に使用する Azure Resource Manager の REST エンドポイントを通じてアクセスできる必要があります。
-4. Resource Manager テンプレートのクラスターの宣言の下に、各アプリケーションのプロパティを記述します。 これらのプロパティには、レプリカまたはインスタンスの数と、リソース (他のアプリケーションやサービス) 間の依存関係チェーンが含まれます。 包括的なプロパティの一覧については、[REST API Swagger 仕様](https://github.com/Azure/azure-rest-api-specs/blob/current/specification/servicefabric/resource-manager/Microsoft.ServiceFabric/2017-07-01-preview/servicefabric.json)に関するページをご覧ください。これはアプリケーションやサービスのマニフェストに代わるものではなく、マニフェストに含まれる内容の一部をクラスターの Resource Manager テンプレートの一部として記述します。 次に示すのは、ステートレス サービス *Service1* とステートフル サービス *Service2* を *Application1* の一部としてデプロイするサンプル テンプレートです。
+4. Resource Manager テンプレートのクラスターの宣言の下に、各アプリケーションのプロパティを記述します。 これらのプロパティには、レプリカまたはインスタンスの数と、リソース (他のアプリケーションやサービス) 間の依存関係チェーンが含まれます。 包括的なプロパティの一覧については、[REST API Swagger 仕様](https://aka.ms/sfrpswaggerspec)に関するページをご覧ください。これはアプリケーションやサービスのマニフェストに代わるものではなく、マニフェストに含まれる内容の一部をクラスターの Resource Manager テンプレートの一部として記述します。 次に示すのは、ステートレス サービス *Service1* とステートフル サービス *Service2* を *Application1* の一部としてデプロイするサンプル テンプレートです。
 
   ```json
   {
@@ -77,62 +77,62 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
         "type": "string",
         "defaultValue": "Cluster",
         "metadata": {
-          "description": "Name of your cluster - Between 3 and 23 characters. Letters and numbers only"
+          "description": "Name of your cluster - Between 3 and 23 characters. Letters and numbers only."
         }
       },
       "applicationTypeName": {
         "type": "string",
         "defaultValue": "ApplicationType",
         "metadata": {
-          "description": "The application type name"
+          "description": "The application type name."
         }
       },
       "applicationTypeVersion": {
         "type": "string",
         "defaultValue": "1",
         "metadata": {
-          "description": "The application type version"
+          "description": "The application type version."
         }
       },
       "appPackageUrl": {
         "type": "string",
         "metadata": {
-          "description": "The URL to the application package sfpkg file"
+          "description": "The URL to the application package sfpkg file."
         }
       },
       "applicationName": {
         "type": "string",
         "defaultValue": "Application1",
         "metadata": {
-          "description": "The application name"
+          "description": "The name of the application resource."
         }
       },
       "serviceName": {
         "type": "string",
         "defaultValue": "Service1",
         "metadata": {
-          "description": "The service name"
+          "description": "The name of the service resource in the format of {applicationName}~{serviceName}."
         }
       },
       "serviceTypeName": {
         "type": "string",
         "defaultValue": "Service1Type",
         "metadata": {
-          "description": "The service type name"
+          "description": "The name of the service type."
         }
       },
       "serviceName2": {
         "type": "string",
         "defaultValue": "Service2",
         "metadata": {
-          "description": "The service name"
+          "description": "The name of the service resource in the format of {applicationName}~{serviceName}."
         }
       },
       "serviceTypeName2": {
         "type": "string",
         "defaultValue": "Service2Type",
         "metadata": {
-          "description": "The service type name"
+          "description": "The name of the service type."
         }
       }
     },
@@ -263,7 +263,7 @@ Azure Resource Manager を使用して、Service Fabric クラスターにアプ
 クラスターが既に稼働していて、Resource Manager のリソースとして管理したいアプリケーションのいくつかが既にデプロイされている場合は、それらのアプリケーションを削除してから再デプロイする代わりに、同じAPI の PUT 呼び出しを使用してアプリケーションを Resource Manager のリソースとして認識させることができます。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Service Fabric CLI](service-fabric-cli.md) または [PowerShell](service-fabric-deploy-remove-applications.md) を使用して、他のアプリケーションをクラスターにデプロイします。 
 * [Service Fabric クラスターをアップグレードします](service-fabric-cluster-upgrade.md)。

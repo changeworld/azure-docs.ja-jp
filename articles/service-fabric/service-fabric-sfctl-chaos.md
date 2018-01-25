@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 336e74d8f69cb04e6bd0e85fc68ba38b218fabae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbea84511c37cf52c3d98f0247e5ce3c0b2a05c3
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|Description|
+|コマンド|[説明]|
 | --- | --- |
 |    report| 渡された継続トークン、または渡された時間範囲に基づく Chaos レポートの次のセグメントを取得します。|
 |    start | クラスターで Chaos がまだ実行されていない場合、Chaos パラメーターで指定した Chaos の実行を開始します。|
@@ -39,7 +39,7 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --continuation-token| 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。|
 | --end-time-utc   | Chaos レポートが生成される時間範囲の終了時刻を表すティック数。 ティックの詳細については、「[DateTime.Ticks プロパティ](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)」を参照してください。|
@@ -48,20 +48,20 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug          | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h        | このヘルプ メッセージを表示して終了します。|
 | --output -o      | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query          | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose        | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose        | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 クラスターで Chaos がまだ実行されていない場合、Chaos パラメーターで指定した Chaos の実行を開始します。
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --app-type-health-policy-map  | 特定のアプリケーションの種類の異常なアプリケーションの最大割合の JSON でエンコードされた一覧。 各エントリは、キーとしてアプリケーションの種類名を指定し、値として指定したアプリケーションの種類のアプリケーションを評価するために使用される MaxPercentUnhealthyApplications を表す整数を指定します。|
 | --disable-move-replica-faults | move primary と move secondary の障害を無効にします。|
@@ -77,13 +77,13 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug                    | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                  | このヘルプ メッセージを表示して終了します。|
 | --output -o                | 出力形式。  使用できる値は、json、jsonc、table、tsv です。           既定値は json です。|
 | --query                    | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose                  | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose                  | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-chaos-stop"></a>sfctl chaos stop
 クラスターで Chaos が実行されている場合は停止します。実行されていない場合は何も行われません。
@@ -92,20 +92,20 @@ Chaos がこれ以降の障害のスケジュールを行うのを停止しま�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --timeout -t| サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h| このヘルプ メッセージを表示して終了します。|
 | --output -o | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose| ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose| ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

@@ -8,7 +8,7 @@
 
     ![TCP を有効にする](./media/virtual-machines-sql-server-connection-tcp-protocol/enable-tcp.png)
 
-1. コンソール ペインで、 **[再起動]**をクリックします。 詳細ペインで **[SQL Server (*インスタンス名*)]** (既定のインスタンスでは **[SQL Server (MSSQLSERVER)]**) を右クリックして、**[再起動]** をクリックします。これにより、SQL Server のインスタンスが停止し、再起動されます。
+1. コンソール ペインで、 **[再起動]**をクリックします。 詳細ペインで、**[SQL Server (*インスタンス名*)]** (既定のインスタンスは **[SQL Server (MSSQLSERVER)]**) を右クリックし、**[再起動]** をクリックして、SQL Server のインスタンスを停止および再起動します。
 
     ![データベース エンジンの再起動](./media/virtual-machines-sql-server-connection-tcp-protocol/restart-sql-server.png)
 

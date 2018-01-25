@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 11c7a10c6448248ffacee2b519f48b6ca7e4e188
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b611a447dd6669a09ca16c816de74acd7f3e8c7e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-is"></a>sfctl is
 クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|Description|
+|コマンド|[説明]|
 | --- | --- |
 |    コマンド| 特定の Infrastructure Service インスタンスで管理コマンドを呼び出します。|
 |    クエリ  | 特定の Infrastructure Service インスタンスで読み取り専用クエリを呼び出します。|
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --command [必須]| 呼び出されるコマンドのテキスト。 コマンドのコンテンツは、インフラストラクチャに固有です。  既定値は is command です。|
 | --service-id     | Infrastructure Service の ID。 これは 'fabric:' URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。|
@@ -46,13 +46,13 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug          | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h        | このヘルプ メッセージを表示して終了します。|
 | --output -o      | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query          | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose        | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose        | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-is-query"></a>sfctl is query
 特定の Infrastructure Service インスタンスで読み取り専用クエリを呼び出します。
@@ -61,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --command [必須]| 呼び出されるコマンドのテキスト。 コマンドのコンテンツは、インフラストラクチャに固有です。  既定値は is query です。|
 | --service-id     | Infrastructure Service の ID。 これは 'fabric:' URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。|
@@ -69,14 +69,14 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug          | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h        | このヘルプ メッセージを表示して終了します。|
 | --output -o      | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query          | JMESPath クエリ文字列。 詳細については、http://jmespath.org/ を参照してください。|
-| --verbose        | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose        | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

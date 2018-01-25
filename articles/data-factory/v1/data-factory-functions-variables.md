@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c0145a5b5c54f5b9e3b5731d52df99c0a80fc271
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f42ba7ed9c07a9d0bc73929db2a095248ad7d56f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]
@@ -28,12 +28,12 @@ ms.lasthandoff: 11/03/2017
 この記事では、Azure Data Factory でサポートされている関数および変数に関する情報を提供します。
 
 ## <a name="data-factory-system-variables"></a>Data Factory のシステム変数
-| 変数名 | 説明 | オブジェクトのスコープ | JSON のスコープと使用事例 |
+| 変数名 | [説明] | オブジェクトのスコープ | JSON のスコープと使用事例 |
 | --- | --- | --- | --- |
-| WindowStart |現在のアクティビティ実行ウィンドウの時間間隔の開始 |アクティビティ |<ol><li>データ選択クエリを指定します。 [データ移動アクティビティ](data-factory-data-movement-activities.md) の記事で参照されているコネクタの記事を参照してください。</li> |
+| WindowStart |現在のアクティビティ実行ウィンドウの時間間隔の開始 |activity |<ol><li>データ選択クエリを指定します。 [データ移動アクティビティ](data-factory-data-movement-activities.md) の記事で参照されているコネクタの記事を参照してください。</li> |
 | WindowEnd |現在のアクティビティ実行ウィンドウの時間間隔の終了 |アクティビティ |WindowStart と同じです。 |
-| SliceStart |生成されているデータ スライスの時間間隔の開始 |アクティビティ<br/>データセット |<ol><li>[Azure Blob](data-factory-azure-blob-connector.md) と [ファイル システム データセット](data-factory-onprem-file-system-connector.md) の処理で、動的フォルダー パスおよびファイル名を指定します。</li><li>アクティビティ入力コレクションで、Data Factory 関数を使用して入力の依存関係を指定する。</li></ol> |
-| SliceEnd |現在のデータ スライスの時間間隔の終了。 |アクティビティ<br/>dataset |SliceStart と同じです。 |
+| SliceStart |生成されているデータ スライスの時間間隔の開始 |activity<br/>dataset |<ol><li>[Azure Blob](data-factory-azure-blob-connector.md) と [ファイル システム データセット](data-factory-onprem-file-system-connector.md) の処理で、動的フォルダー パスおよびファイル名を指定します。</li><li>アクティビティ入力コレクションで、Data Factory 関数を使用して入力の依存関係を指定する。</li></ol> |
+| SliceEnd |現在のデータ スライスの時間間隔の終了。 |activity<br/>dataset |SliceStart と同じです。 |
 
 > [!NOTE]
 > 現在、データ ファクトリでは、アクティビティに指定されたスケジュールが、出力データセットの availability に指定されたスケジュールと正確に一致する必要があります。 したがって、WindowStart、WindowEnd、SliceStart、SliceEnd は、常に同じ期間と 1 つの出力スライスにマップされます。
@@ -78,13 +78,13 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 ### <a name="functions"></a>Functions
 次の表は、Azure Data Factory の全関数の一覧です。
 
-| カテゴリ | 関数 | パラメーター | 説明 |
+| カテゴリ | 関数 | parameters | [説明] |
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X: DateTime  <br/><br/>Y: int |指定した時刻 X に Y 時間を追加します。 <br/><br/>例: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X: DateTime  <br/><br/>Y: int |X に Y 分を追加します。<br/><br/>例: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
 | Time |StartOfHour(X) |X: DateTime  |X の時間コンポーネントで表される時間の開始時刻を取得します。 <br/><br/>例: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | 日付 |AddDays(X,Y) |X: DateTime <br/><br/>Y: int |X に Y 日を追加します。 <br/><br/>例: 9/15/2013 12:00:00 PM + 2 days = 9/17/2013 12:00:00 PM<br/><br/>Y を負数に指定して、日数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
-| 日付 |AddMonths(X,Y) |X: DateTime <br/><br/>Y: int |X に Y か月を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`」を参照してください。<br/><br/>Y を負数に指定して、月数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
+| 日付 |AddMonths(X,Y) |X: DateTime <br/><br/>Y: int |X に Y か月を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`<br/><br/>Y を負数に指定して、月数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | 日付 |AddQuarters(X,Y) |X: DateTime  <br/><br/>Y: int |X に Y * 3 か月を追加します。<br/><br/>例: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
 | 日付 |AddWeeks(X,Y) |X: DateTime <br/><br/>Y: int |X に Y * 7 日を追加します。 <br/><br/>例: 9/15/2013 12:00:00 PM + 1 week = 9/22/2013 12:00:00 PM<br/><br/>Y を負数に指定して、週数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 week = 9/7/2013 12:00:00 PM`. |
 | 日付 |AddYears(X,Y) |X: DateTime <br/><br/>Y: int |X に Y 年を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 year = 9/15/2014 12:00:00 PM`<br/><br/>Y を負数に指定して、年数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 year = 9/15/2012 12:00:00 PM`. |
@@ -95,9 +95,9 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 | 日付 |EndOfDay(X) |X: DateTime  |X の日 (日コンポーネント) の終了を表す日時を取得します。<br/><br/>例: `EndOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 11:59:59 PM`. |
 | 日付 |EndOfMonth(X) |X: DateTime  |パラメーター X の月コンポーネントで表される月の終了を取得します。 <br/><br/>例: `EndOfMonth of 9/15/2013 05:10:23 PM is 9/30/2013 11:59:59 PM` (9 月の終了を表す日時) |
 | 日付 |StartOfDay(X) |X: DateTime  |パラメーター X の日コンポーネントで表される日の開始を取得します。<br/><br/>例: `StartOfDay of 9/15/2013 05:10:23 PM is 9/15/2013 12:00:00 AM`. |
-| DateTime |From(X) |X: String |文字列 X を日時にパースします。 |
-| DateTime |Ticks(X) |X: DateTime  |パラメーター X の ticks プロパティを取得します。1 ティックは 100 ナノ秒です。 このプロパティの値は、0001 年 1 月 1 日深夜 12:00:00 以降の経過時間のティック数を表しています。 |
-| Text |Format(X) |X: String 変数 |テキストを書式設定します (`\\'` の組み合わせを使用して `'` 文字をエスケープします)。|
+| Datetime |From(X) |X: String |文字列 X を日時にパースします。 |
+| Datetime |Ticks(X) |X: DateTime  |パラメーター X の ticks プロパティを取得します。1 ティックは 100 ナノ秒です。 このプロパティの値は、0001 年 1 月 1 日深夜 12:00:00 以降の経過時間のティック数を表しています。 |
+| テキスト |Format(X) |X: String 変数 |テキストを書式設定します (`\\'` の組み合わせを使用して `'` 文字をエスケープします)。|
 
 > [!IMPORTANT]
 > 別の関数内で関数を使用する場合、内側の関数に **$$** プレフィックスを付ける必要はありません。 例: $$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6))。 この例でわかるように、**Time.AddHours** 関数に **$$** プレフィックスは使用されていません。 

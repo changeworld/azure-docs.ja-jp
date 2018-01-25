@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 5be05fabf03e7e3ccaa3bf66ffefdd6406a06b3e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b6e540576bc4a5876bc8546262a181bd82ad9727
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="analyze-twitter-data-using-hive-and-hadoop-on-hdinsight"></a>HDInsight での Hive と Hadoop を使用した Twitter データの分析
 
@@ -45,8 +45,8 @@ Twitter では、REST API を使用して、JavaScript Object Notation (JSON) �
 
    | フィールド | 値 |
    |:--- |:--- |
-   | 名前 |MyHDInsightApp |
-   | Description |MyHDInsightApp |
+   | Name |MyHDInsightApp |
+   | [説明] |MyHDInsightApp |
    | Web サイト |http://www.myhdinsightapp.com |
 
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
@@ -326,7 +326,7 @@ HDInsight のストレージにデータをアップロードするには、次�
     > [!NOTE]
     > `gettweets.py` スクリプトのフィルターを変更した場合は、**Azure** を、使用したフィルターのいずれかで置き換えてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、構造化されていない JSON データ セットを構造化された Hive テーブルに変換する方法を学習しました。 HDInsight での Hive の詳細については、次のドキュメントを参照してください。
 

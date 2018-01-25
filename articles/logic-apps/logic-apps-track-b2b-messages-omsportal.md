@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 3ef7a4054be80547b0d91ad1f13777d915005f8b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 128abd504785227c1f27debd329d46d358e6e516
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) で B2B 通信を追跡する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="requirements"></a>必要条件
 
-* 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](logic-apps-create-a-logic-app.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
+* 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](quickstart-create-first-logic-app-workflow.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
 
 * 監視とログが設定されている統合アカウント。 [統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)および[そのアカウントの監視とログを設定する方法](../logic-apps/logic-apps-monitor-b2b-message.md)を参照してください。
 
@@ -147,7 +147,7 @@ OMS でロジック アプリの B2B メッセージを追跡するには、OMS 
 
 AS2 メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または AS2 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または AS2 契約の **[送信設定]** で指定されているゲスト パートナー |
@@ -178,7 +178,7 @@ AS2 メッセージごとのプロパティの説明を次に示します。
 
 X12 メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または X12 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または X12 契約の **[送信設定]** で指定されているゲスト パートナー |
@@ -211,7 +211,7 @@ X12 メッセージごとのプロパティの説明を次に示します。
 
 EDIFACT メッセージごとのプロパティの説明を次に示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | 送信者 | **[受信設定]** で指定されているゲスト パートナー、または EDIFACT 契約の **[送信設定]** で指定されているホスト パートナー |
 | 受信者 | **[受信設定]** で指定されているホスト パートナー、または EDIFACT 契約の **[送信設定]** で指定されているゲスト パートナー |
@@ -238,7 +238,7 @@ EDIFACT メッセージごとのプロパティの説明を次に示します。
 | 入力、出力、および (設定されている場合) 受信確認ファイル | **入力ペイロード**: [送信者]\_[受信者]\_EDIFACT\_[インターチェンジ制御番号]\_input_payload.txt </p>**出力ペイロード**: [送信者]\_[受信者]\_EDIFACT\_[インターチェンジ制御番号]\_出力\_payload.txt </p></p>**入力**: [送信者]\_[受信者]\_EDIFACT\_[インターチェンジ制御番号]\_inputs.txt </p></p>**出力**: [送信者]\_[受信者]\_EDIFACT\_[インターチェンジ制御番号]\_outputs.txt |
 |          |             |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Operations Management Suite で B2B メッセージのクエリを行う](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)

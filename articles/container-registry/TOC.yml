@@ -43,19 +43,21 @@
       href: container-registry-get-started-docker-cli.md
     - name: リポジトリの表示
       href: container-registry-repositories.md
-    - name: サービス プリンシパルの作成
-      href: ../azure-resource-manager/resource-group-create-service-principal-portal.md?toc=%2fazure%2fcontainer-registry%2ftoc.jso
     - name: クラシック レジストリのアップグレード
       href: container-registry-upgrade.md
     - name: ACR webhook の使用
-      href: ./container-registry-webhook.md
+      href: container-registry-webhook.md
     - name: 認証
       items:
         - name: 認証の概要
           href: container-registry-authentication.md
+        - name: サービス プリンシパルの認証
+          href: container-registry-auth-service-principal.md
+        - name: Azure Container Instances
+          href: container-registry-auth-aci.md
         - name: Azure Container Service
-          href: ./container-registry-auth-aks.md
-- name: 参照
+          href: container-registry-auth-aks.md
+- name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/acr

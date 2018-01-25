@@ -8,17 +8,17 @@ manager: jhubbard
 editor: 
 ms.assetid: 047cd9ff-17d3-4c15-9284-1b5cc61a3224
 ms.service: cosmos-db
-ms.workload: storage
+ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: b1ad9fc7b609209ca867e64226c3a0e393081408
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: decc6ffb38a4358d3593642f9cedb59d08f6bfef
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="how-to-use-azure-table-storage-with-ruby"></a>Ruby で Azure Table Storage を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/06/2017
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Ruby アプリケーションの作成
-Ruby アプリケーションの作成方法については、「[Azure VM での Ruby on Rails Web アプリケーション](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)」をご覧ください。
+Ruby アプリケーションの作成方法については、「[Azure VM での Ruby on Rails Web アプリケーション](../virtual-machines/linux/classic/ruby-rails-web-app.md)」をご覧ください。
 
 ## <a name="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 Azure Storage を使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、Storage REST サービスと通信するための便利なライブラリのセットが含まれています。
@@ -58,7 +58,7 @@ Azure.config.storage_access_key = "<your azure storage access key>"
 
 Azure ポータルでクラシックまたは Resource Manager ストレージ アカウントからこれらの値を取得するには:
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. 右側の [設定] ブレードで、 **[アクセス キー]**をクリックします。
 4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。
@@ -160,7 +160,7 @@ azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 azure_table_service.delete_table("testtable")
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ

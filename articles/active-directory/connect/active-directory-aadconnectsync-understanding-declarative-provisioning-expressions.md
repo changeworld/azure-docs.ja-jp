@@ -3,7 +3,7 @@ title: "Azure AD Connect: 宣言型プロビジョニングの式 | Microsoft Do
 description: "宣言型のプロビジョニングの式について説明します。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 83fe949468a67318c766f0070498c35300af4deb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 797c0949aceea415652a72df5ee23ef9888ab975
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect Sync: 宣言型のプロビジョニングの式について
 Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入された宣言型のプロビジョニングに基づいています。 これにより、コンパイル済みコードを記述することなく完全な ID 統合ビジネス ロジックを実装できます。
@@ -38,19 +38,19 @@ Azure AD Connect Sync は、Forefront Identity Manager 2010 で初めて導入�
 * ブール値は、定数 (True、False) で表されます。
 * 組み込み定数とリテラルは、その名前のみで表されます。たとえば、NULL、CRLF、IgnoreThisFlow などです。
 
-### <a name="functions"></a>関数
+### <a name="functions"></a>Functions
 宣言型のプロビジョニングでは、属性値を変換する機能を持つ多くの関数を使用します。 これらの関数を入れ子にすると、ある関数の結果を別の関数に渡すことができます。
 
 `Function1(Function2(Function3()))`
 
 全関数の一覧については、 [関数参照](active-directory-aadconnectsync-functions-reference.md)を参照してください。
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 パラメーターは、コネクタによって定義されるか、PowerShell を使用する管理者によって定義されます。 通常、パラメーターには、ユーザーが属しているドメインの名前など、システムによって異なる値が含まれます。 これらのパラメーターは属性フローで使用できます。
 
 Active Directory Connector は、受信同期ルールについて次のパラメーターを提供しています。
 
-| パラメーター名 | コメント |
+| パラメーター名 | Comment (コメント) |
 | --- | --- |
 | Domain.Netbios |現在インポートされているドメインの NetBIOS 形式 (FABRIKAMSALES など) |
 | Domain.FQDN |現在インポートされているドメインの FQDN 形式 (sales.fabrikam.com など) |
@@ -79,12 +79,12 @@ Active Directory Connector は、受信同期ルールについて次のパラ�
 ## <a name="multi-valued-attributes"></a>複数値の属性
 関数は、単一値の属性と複数値の属性両方に対して使用できます。 複数値の属性の場合、関数は、すべての値で動作し、すべての値に同じ関数を適用します。
 
-次に例を示します。  
+例:   
 `Trim([proxyAddresses])` proxyAddress 属性の各値の Trim を実行します。  
 `Word([proxyAddresses],1,"@") & "@contoso.com"` @-sign を含むすべての文字列では、ドメインを @contoso.com に置き換えます。  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` SIP アドレスを検索し、値から削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * この構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
 * 宣言型のプロビジョニングをすぐに使用する方法については、「 [既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)」をご覧ください。
 * 宣言型のプロビジョニングを使用して現実に即した変更を実施する方法については、「 [既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md)」をご覧ください。

@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 46a72a15ba35119ecb5640cb0b22cd2a0fc56a27
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 4cec177456b007fd7c6721380c00a622b43af677
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -73,36 +73,36 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 次の表は、PostgreSQL のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **OnPremisesPostgreSql** |はい |
-| server |PostgreSQL サーバーの名前です。 |はい |
-| database |PostgreSQL データベースの名前です。 |はい |
-| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |なし |
-| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |はい |
-| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
-| gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
+| 型 |type プロパティを **OnPremisesPostgreSql** |[はい] |
+| [サーバー] |PostgreSQL サーバーの名前です。 |[はい] |
+| [データベース] |PostgreSQL データベースの名前です。 |[はい] |
+| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
+| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 Anonymous、Basic、Windows のいずれかの値になります。 |[はい] |
+| username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
+| gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型でほぼ同じです。
 
 typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (PostgreSQL データセットを含む) の typeProperties セクションには次のプロパティがあります。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | tableName |リンクされたサービスが参照する PostgreSQL Databases インスタンスのテーブルの名前です。 tableName は、大文字と小文字が区別されます。 |いいえ (**RelationalSource** の **クエリ** が指定されている場合) |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
 
 source の種類が **RelationalSource** (PostgreSQL を含む) である場合は、typeProperties セクションで次のプロパティを使用できます。
 
-| プロパティ | 説明 | 使用できる値 | 必須 |
+| プロパティ | [説明] | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `"query": "select * from \"MySchema\".\"MyTable\""`)。 |いいえ (**データセット**の **tableName** が指定されている場合) |
+| クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、「 `"query": "select * from \"MySchema\".\"MyTable\""`」のように入力します。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 > [!NOTE]
 > スキーマ名とテーブル名は、大文字と小文字が区別されます。 クエリ内では、これらを `""` (二重引用符) で囲んでください。  
@@ -307,12 +307,12 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 
 | PostgreSQL Databases 型 | PostgreSQL エイリアス | .NET Framework 型 |
 | --- | --- | --- |
-| abstime | |Datetime | &nbsp;
+| abstime | |DateTime | &nbsp;
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[]、String | &nbsp;
 | bit varying [ (n) ] |varbit |Byte[]、String |
-| boolean |bool |boolean |
+| ブール値 |bool |boolean |
 | box | |Byte[]、String |&nbsp;
 | bytea | |Byte[]、String |&nbsp;
 | character [(n)] |char [(n)] |String |
@@ -320,7 +320,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | cid | |String |&nbsp;
 | cidr | |String |&nbsp;
 | circle | |Byte[]、String |&nbsp;
-| date | |Datetime |&nbsp;
+| date | |DateTime |&nbsp;
 | daterange | |String |&nbsp;
 | double precision |float8 |Double |
 | inet | |Byte[]、String |&nbsp;
@@ -338,7 +338,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
 | numrange | |String |&nbsp;
 | oid | |Int32 |&nbsp;
-| path | |Byte[]、String |&nbsp;
+| パス | |Byte[]、String |&nbsp;
 | pg_lsn | |Int64 |&nbsp;
 | point | |Byte[]、String |&nbsp;
 | polygon | |Byte[]、String |&nbsp;
@@ -346,7 +346,7 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |String |&nbsp;
+| テキスト | |String |&nbsp;
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

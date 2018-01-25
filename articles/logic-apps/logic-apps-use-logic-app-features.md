@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
 ms.author: LADocs; stepsic
-ms.openlocfilehash: e632c48ed31e82536db55a9c54438bece0c38fd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a3957ffcc149bdaf5c196960c7c7f23913f8b5c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="use-logic-apps-features"></a>Logic Apps の機能を使用する
 
-[前のトピック](../logic-apps/logic-apps-create-a-logic-app.md)では、初めてのロジック アプリを作成しました。 ロジック アプリのワークフローを制御するために、実行するロジック アプリのさまざまなパスと、配列、コレクション、バッチ内のデータを処理する方法を指定できます。 ロジック アプリ ワークフローにこれらの要素を含める必要があります。
+[前のトピック](../logic-apps/quickstart-create-first-logic-app-workflow.md)では、初めてのロジック アプリを作成しました。 ロジック アプリのワークフローを制御するために、実行するロジック アプリのさまざまなパスと、配列、コレクション、バッチ内のデータを処理する方法を指定できます。 ロジック アプリ ワークフローにこれらの要素を含める必要があります。
 
 * 条件と [switch ステートメント](../logic-apps/logic-apps-switch-case.md)を使用すると、特定の条件を満たしているかどうかに基づいて、ロジック アプリで異なるアクションを実行できます。
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 2. 必要なワークフローの場所に条件を追加します。 
 
    ロジック アプリ ワークフローの既存のステップ間に条件を追加するには、条件を追加する矢印にポインターを移動します。 
-   **プラス記号** (**+**) を選択し、**[条件の追加]** を選択します。 For example:
+   **プラス記号** (**+**) を選択し、**[条件の追加]** を選択します。 例: 
 
    ![ロジック アプリに条件を追加する](./media/logic-apps-use-logic-app-features/add-condition.png)
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 
 3. 次に条件を定義します。 評価するソース フィールド、実行する操作、およびターゲットの値またはフィールドを指定します。 既存のフィールドを条件に追加するには、**[Add dynamic content list]\(動的コンテンツ リストの追加\)** から選択します。
 
-   For example:
+   例: 
 
    ![基本モードで条件を編集する](./media/logic-apps-use-logic-app-features/edit-condition-basic-mode.png)
 
@@ -66,13 +66,13 @@ ms.lasthandoff: 10/11/2017
    ![完成した条件](./media/logic-apps-use-logic-app-features/edit-condition-basic-mode-2.png)
 
    > [!TIP]
-   > コードで条件を定義するには、**[詳細設定モードで編集]** を選択します。 For example:
+   > コードで条件を定義するには、**[詳細設定モードで編集]** を選択します。 例: 
    > 
    > ![コードで条件を編集する](./media/logic-apps-use-logic-app-features/edit-condition-advanced-mode.png)
 
 4. **IF YES** と **IF NO** の下に、条件を満たすかどうかに基づいて実行するステップを追加します。
 
-   For example:
+   例: 
 
    ![YES および NO のパスの条件](./media/logic-apps-use-logic-app-features/condition-yes-no-path.png)
 
@@ -143,7 +143,7 @@ Logic App デザイナーがある場合でも、ロジック アプリを定義
 <!-- Shared links -->
 [Azure Portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Switch ステートメント](../logic-apps/logic-apps-switch-case.md) 
 * [ループ、スコープ、分割処理](../logic-apps/logic-apps-loops-and-scopes.md)

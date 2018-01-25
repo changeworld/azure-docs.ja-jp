@@ -3,8 +3,8 @@ title: "Azure Redis Cache を監視する方法 | Microsoft Docs"
 description: "Azure Redis Cache のインスタンスの正常性とパフォーマンスを監視する方法を学習する"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.author: sdanie
-ms.openlocfilehash: 8996f5ce03e39557d9cc9c3de1ec214f5cd664b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 3a68435866e6fb5bf0210144e53918c35b416449
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Azure Redis Cache の監視方法
 Azure Redis Cache は [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) を使用して、キャッシュのインスタンスを監視するためのオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Redis Cache インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。
@@ -69,7 +69,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 3. **[ストレージ アカウントへのアーカイブ]** をオンにします。
 4. キャッシュ メトリックを格納するストレージ アカウントを選択します。
 5. **[1 分]** チェック ボックスをオンにして **[リテンション期間 (日数)]** ポリシーを指定します。 リテンション期間ポリシーを適用せず、データを永続的に保持する場合は、**[リテンション期間 (日数)]** を **0** に設定します。
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 
 ![Redis 診断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
@@ -95,7 +95,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 > 
 > 
 
-| [メトリック] | Description |
+| メトリック | [説明] |
 | --- | --- |
 | キャッシュ ヒット数 |指定したレポート期間中に、成功したキー検索の数。 これは Redis [INFO](http://redis.io/commands/info) コマンドの `keyspace_hits` にマッピングされます。 |
 | キャッシュ ミス数 |指定したレポート期間中に、失敗したキー検索の数。 これは Redis INFO コマンドの `keyspace_misses` にマッピングされます。 キャッシュ ミスは必ずしもキャッシュに問題があるということではありません。 たとえば、キャッシュ アサイド プログラミング パターンを使用する場合、アプリケーションはまず項目をキャッシュから検索します。 項目が見つからなかった (キャッシュ ミス) 場合は、データベースから項目を取得して、次回使用するためにキャッシュに追加されます。 キャッシュ ミスは、キャッシュ アサイド プログラミング パターンでは普通の動作です。 キャッシュ ミスの数が予想よりも大きい場合は、キャッシュにデータを入力またはキャッシュからデータを読み取るアプリケーション ロジックを確認してください。 メモリ不足のためにキャッシュからアイテムが削除される場合はキャッシュ ミスとしてカウントされますが、メモリの負荷の監視には `Used Memory` または `Evicted Keys` のメトリックが適しています。 |

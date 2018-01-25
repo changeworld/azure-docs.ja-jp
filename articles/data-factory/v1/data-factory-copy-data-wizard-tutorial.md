@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/01/2017
+ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: a6cf954c57f653c031d8f3bee9a84cd57ad3ecc5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f6fc7e0597176e2c23bc82581c86b951542fbc23
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル: コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
@@ -51,11 +51,11 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
 1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 左上隅の **[+ 新規]**、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
    
-   ![[新規] -> [DataFactory]](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
+   ![New->DataFactory](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
    
    1. **[名前]** に「**ADFTutorialDataFactory**」と入力します。
-       Azure Data Factory の名前はグローバルに一意にする必要があります。 `Data factory name “ADFTutorialDataFactory” is not available` エラーが発生した場合は、データ ファクトリの名前を (yournameADFTutorialDataFactoryYYYYMMDD などに) 変更して作成し直してください。 Data Factory アーティファクトの名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。  
+       Azure Data Factory の名前はグローバルに一意にする必要があります。 `Data factory name “ADFTutorialDataFactory” is not available` エラーが発生した場合は、データ ファクトリの名前を (yournameADFTutorialDataFactoryYYYYMMDD などに) 変更して作成し直してください。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  
       
        ![使用できない Data Factory 名](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-not-available.png)    
    2. Azure **サブスクリプション**を選択します。
@@ -152,7 +152,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
 
     このアプリケーションの使用に関する詳細については、[監視アプリを使用したパイプラインの監視および管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL データベースをターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

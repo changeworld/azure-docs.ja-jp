@@ -3,7 +3,7 @@ title: "Azure AD Connect Sync によるパスワード同期のトラブルシ�
 description: "この記事では、パスワード同期の問題のトラブルシューティングを行う方法に関する情報を提供します。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 89e6fd07553570a13c134a94a25fc73f4fa8c99c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0bf07e80e575309fe7fa44661776c23da5db6dce
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード同期のトラブルシューティング
 このトピックでは、パスワード同期の問題のトラブルシューティングを行う手順を示します。 パスワードが想定どおりに同期しない場合、そのパスワードが、ユーザーのサブセット、またはすべてのユーザーを対象している可能性があります。
@@ -212,7 +212,7 @@ Azure AD テナントに対応するオブジェクトがないため、この�
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
-   For example:
+   例: 
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
    ```
@@ -283,7 +283,7 @@ Azure AD との接続がありますか。
 
 2. パスワードが Active Directory で正しく表示されたら、同期エンジンのユーザーをフォローします。 オンプレミスの Active Directory から Azure AD までユーザーをフォローすると、オブジェクトに記述的なエラーが発生しているかどうかを確認できます。
 
-    a. [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) を起動します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) を起動します。
 
     b. **[コネクタ]**をクリックします。
 
@@ -295,7 +295,7 @@ Azure AD との接続がありますか。
 
     ![DN でコネクタ スペース内のユーザーを検索](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/searchcs.png)  
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 探しているユーザーを特定し、**[プロパティ]** をクリックして、すべての属性を参照します。 ユーザーが検索結果にない場合は、[フィルター処理規則](active-directory-aadconnectsync-configure-filtering.md)を確認し、ユーザーに対して[変更の適用と検証](active-directory-aadconnectsync-configure-filtering.md#apply-and-verify-changes)を実行して Connect に表示します。
+    f. 探しているユーザーを特定し、**[プロパティ]** をクリックして、すべての属性を参照します。 ユーザーが検索結果にない場合は、[フィルター処理規則](active-directory-aadconnectsync-configure-filtering.md)を確認し、ユーザーに対して[変更の適用と検証](active-directory-aadconnectsync-configure-filtering.md#apply-and-verify-changes)を実行して Connect に表示します。
 
     g. 過去 1 週間のオブジェクトのパスワード同期の詳細を確認するには、**[ログ]** をクリックします。  
 
@@ -324,7 +324,7 @@ Azure AD との接続がありますか。
 ### <a name="password-sync-log"></a>パスワード同期ログ
 状態列には次の値が入ります。
 
-| 状態 | 説明 |
+| 状態 | [説明] |
 | --- | --- |
 | Success |パスワードが正常に同期されました。 |
 | FilteredByTarget |パスワードは **[ユーザーは次回ログオン時にパスワードの変更が必要]**に設定されています。 パスワードは同期されていません。 |
@@ -413,7 +413,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $aadConnector -Enable $true
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure AD Connect Sync によるパスワード同期の導入](active-directory-aadconnectsync-implement-password-synchronization.md)
 * [Azure AD Connect Sync: 同期オプションのカスタマイズ](active-directory-aadconnectsync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)

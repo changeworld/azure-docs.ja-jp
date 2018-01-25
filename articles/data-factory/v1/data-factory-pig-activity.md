@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7612eda8e40cb0ff2b205c2dfe11c2bba1b05b6a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c309debf53cc22d102de740ffd2907257b9821d2
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory での Pig アクティビティを使用したデータ変換
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -82,17 +82,17 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 }
 ```
 ## <a name="syntax-details"></a>構文の詳細
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
-| name |アクティビティの名前 |はい |
-| 説明 |アクティビティの用途を説明するテキストです。 |なし |
-| type |HDInsightPig |はい |
-| inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |なし |
-| outputs |Pig のアクティビティによって生成される 1 つ以上の出力 |はい |
-| linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |はい |
-| script (スクリプト) |Pig スクリプトをインラインに指定します |なし |
-| スクリプトのパス |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |なし |
-| defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |なし |
+| name |アクティビティの名前 |[はい] |
+| 説明 |アクティビティの用途を説明するテキストです。 |いいえ  |
+| 型 |HDInsightPig |[はい] |
+| inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ  |
+| outputs |Pig のアクティビティによって生成される 1 つ以上の出力 |[はい] |
+| 既定のコンテナー |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |[はい] |
+| script (スクリプト) |Pig スクリプトをインラインに指定します |いいえ  |
+| スクリプトのパス |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
+| defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |
 
 ## <a name="example"></a>例
 ゲームのログ分析の例について考えてみましょう。ここでは、お客様の会社が発売したゲームをユーザーがプレイした時間を特定します。

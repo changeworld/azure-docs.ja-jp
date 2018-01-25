@@ -4,7 +4,7 @@ description: "Real User Measurements を Traffic Manager に送信するよう�
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: 
 ms.assetid: 
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.openlocfilehash: ce5d333ad5d339b64d1fc1d081651052f71a8b67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f4088cf4470b1f9fa22c4ec83a9f92657032734
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Web ページを使用して Azure Traffic Manager に Real User Measurements を送信する方法
 
@@ -61,7 +61,7 @@ RUM キーを取得した後、次の手順は、エンドユーザーがアク�
 1.  テキスト エディターで HTML ページを開きます
 2.  HTML の BODY セクションに、前の手順でコピーしておいた JavaScript コードを貼り付けます (コピーしたコードは、8 行目と 9 行目にあります。図 3 をご覧ください)。
  
-    ![Real User Measurements の Web ページへの JavaScript コードの埋め込み](./media/traffic-manager-create-rum-web-pages/rum-javascript-code.png)  
+    ![Real User Measurements の Web ページへの JavaScript コードの埋め込み](./media/traffic-manager-create-rum-web-pages/real-user-measurement-embed-script.png)  
 
     **図 3: Real User Measurements JavaScript が埋め込まれた単純な HTML**
 
@@ -69,7 +69,7 @@ RUM キーを取得した後、次の手順は、エンドユーザーがアク�
 4. Web ブラウザーでこのページを次に表示したときに、参照される JavaScript がダウンロードされ、スクリプトは測定とレポートの操作を実行します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Real User Measurements](traffic-manager-rum-overview.md) について確認する
 - [Traffic Manager のしくみ](traffic-manager-overview.md)
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。

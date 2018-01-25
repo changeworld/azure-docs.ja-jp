@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/27/2017
-ms.openlocfilehash: c3cb598825477bd588a6680d5c6ddb07b72eca79
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 01/18/2018
+ms.openlocfilehash: 233479bff0a0d331161b52d33f31b45c5714362b
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は特定の IP アドレスまたは IP アドレス範囲からの Azure Database for PostgreSQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for PostgreSQL ファイアウォール規則の概要については、「[Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)」をご覧ください。
@@ -30,30 +30,29 @@ ms.lasthandoff: 11/28/2017
 ## <a name="list-firewall-rules"></a>ファイアウォール規則の一覧表示 
 既存のサーバー ファイアウォール規則の一覧を表示するには、[az postgres server firewall-rule list](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_list) コマンドを実行します。
 ```azurecli-interactive
-az postgres server firewall-rule list --resource-group myresourcegroup --server mypgserver-20170401
+az postgres server firewall-rule list --resource-group myresourcegroup --server-name mypgserver-20170401
 ```
 既定では、JSON 形式でファイアウォール規則の一覧が出力されます (規則が存在する場合)。 出力をもっとわかりやすい表形式にする場合は、`--output table` スイッチを使用することもできます。
 ```azurecli-interactive
-az postgres server firewall-rule list --resource-group myresourcegroup --server mypgserver-20170401 --output table
+az postgres server firewall-rule list --resource-group myresourcegroup --server-name mypgserver-20170401 --output table
 ```
 ## <a name="create-firewall-rule"></a>ファイアウォール規則の作成
 サーバーに新しいファイアウォール規則を作成するには、[az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) コマンドを実行します。 
 
 次の例では、`--start-ip-address` として 0.0.0.0、`--end-ip-address` として 255.255.255.255 を指定することで、すべての IP アドレスに **mypgserver-20170401.postgres.database.azure.com** サーバーへのアクセスを許可しています。
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myresourcegroup  --server mypgserver-20170401 --name "AllowIpRange" --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myresourcegroup --server-name mypgserver-20170401 --name AllowIpRange --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 1 つの IP アドレスにのみアクセスを許可するには、次の例のように、`--start-ip-address` と `--end-ip-address` に同じアドレスを指定します。
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myresourcegroup  
---server mypgserver-20170401 --name "AllowSingleIpAddress" --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
+az postgres server firewall-rule create --resource-group myresourcegroup --server-name mypgserver-20170401 --name AllowSingleIpAddress --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```
 正常に完了すると、作成したファイアウォール規則の詳細が、既定では JSON 形式で、コマンドの出力として一覧表示されます。 失敗した場合は、代わりにエラー メッセージが出力されます。
 
 ## <a name="update-firewall-rule"></a>ファイアウォール規則の更新 
 サーバー上の既存のファイアウォール規則を更新するには、[az postgres server firewall-rule update](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_update) コマンドを使用します。 更新する既存のファイアウォール規則の名前、開始 IP、終了 IP 属性を入力します。
 ```azurecli-interactive
-az postgres server firewall-rule update --resource-group myresourcegroup --server mypgserver-20170401 --name "AllowIpRange" --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.255
+az postgres server firewall-rule update --resource-group myresourcegroup --server-name mypgserver-20170401 --name AllowIpRange --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.255
 ```
 正常に完了すると、更新したファイアウォール規則の詳細が、既定では JSON 形式で、コマンドの出力として一覧表示されます。 失敗した場合は、代わりにエラー メッセージが出力されます。
 > [!NOTE]
@@ -62,18 +61,18 @@ az postgres server firewall-rule update --resource-group myresourcegroup --serve
 ## <a name="show-firewall-rule-details"></a>ファイアウォール規則の詳細の表示
 [az postgres server firewall-rule show](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_show) コマンドを実行することで、既存のサーバー レベルのファイアウォール規則の詳細を表示することもできます。
 ```azurecli-interactive
-az postgres server firewall-rule show --resource-group myresourcegroup --server mypgserver-20170401 --name "AllowIpRange"
+az postgres server firewall-rule show --resource-group myresourcegroup --server-name mypgserver-20170401 --name AllowIpRange
 ```
 正常に完了すると、指定したファイアウォール規則の詳細が、既定では JSON 形式で、コマンドの出力として一覧表示されます。 失敗した場合は、代わりにエラー メッセージが出力されます。
 
 ## <a name="delete-firewall-rule"></a>ファイアウォール規則の削除
 サーバーへの特定の IP 範囲のアクセスを取り消すには、[az postgres server firewall-rule delete](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_delete) コマンドを実行して既存のファイアウォール規則を削除します。 既存のファイアウォール規則の名前を入力します。
 ```azurecli-interactive
-az postgres server firewall-rule delete --resource-group myresourcegroup --server mypgserver-20170401 --name "AllowIpRange"
+az postgres server firewall-rule delete --resource-group myresourcegroup --server-name mypgserver-20170401 --name AllowIpRange
 ```
 正常に完了すると、出力はありません。 失敗した場合は、エラー メッセージ テキストが返されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 同様に、Web ブラウザー上で [Azure Portal を使用して Azure Database for PostgreSQL ファイアウォール規則の作成と管理](howto-manage-firewall-using-portal.md)を行うことができます。
 - [Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)について理解を深めます。
 - Azure Database for PostgreSQL サーバーに接続する方法については、「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」をご覧ください。

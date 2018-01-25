@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 5f4f7052d48b4ca4ed91212d970551141e78e852
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>遅延アクションと延期期限アクションの概要
 遅延アクションと "延期期限" アクションを使用すると、さまざまなワークフロー シナリオに対応できます。
@@ -29,10 +29,10 @@ ms.lasthandoff: 10/11/2017
 * 電子メールで状態の更新情報を送信するのを平日まで待つ。
 * HTTP 呼び出しが終了するまでワークフローを遅らせてから、再開して結果を取得する。
 
-ロジック アプリで遅延アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事をご覧ください。
+ロジック アプリで遅延アクションの使用を開始する方法については、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-delay-actions"></a>遅延アクションの使用
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください](connectors-overview.md)。
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](connectors-overview.md)を参照してください。
 
 ロジック アプリで遅延ステップを使用する方法の例を次に示します。
 
@@ -50,9 +50,9 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="delay-action"></a>遅延アクション
 一定期間、実行を遅延します。
-* は、必須フィールドであることを示しています。
+\* は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | Description |
+| 表示名 | プロパティ名 | [説明] |
 | --- | --- | --- |
 | カウント* |count |遅延する時間の単位数 |
 | 単位* |unit |時間の単位: `Second`、`Minute`、`Hour`、`Day` のいずれか |
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 指定した日付/時刻まで実行を遅延します。
 * は、必須フィールドであることを示しています。
 
-| 表示名 | プロパティ名 | Description |
+| 表示名 | プロパティ名 | [説明] |
 | --- | --- | --- |
 | 年* |timestamp |遅延後の年 (GMT) |
 | 月* |timestamp |遅延後の月 (GMT) |
@@ -71,6 +71,6 @@ ms.lasthandoff: 10/11/2017
 
 <br>
 
-## <a name="next-steps"></a>次のステップ
-プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/logic-apps-create-a-logic-app.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
+## <a name="next-steps"></a>次の手順
+プラットフォームを試用し、 [ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してください。 [API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 

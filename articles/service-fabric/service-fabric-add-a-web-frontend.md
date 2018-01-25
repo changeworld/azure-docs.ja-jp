@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 9a63a15782b85a48552fd913d5d3f8aaaae7db44
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d4f78c63117e5c54eb855178c75d6c294957f2a1
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="build-a-web-service-front-end-for-your-application-using-aspnet-core"></a>ASP.NET Core を使用したアプリケーション用の Web サービス フロントエンドの構築
 既定では、Azure Service Fabric サービスには、Web に対するパブリック インターフェイスがありません。 HTTP クライアントにアプリケーションの機能を公開するには、エントリ ポイントとして機能する Web プロジェクトを作成し、そこから個々のサービスと通信する必要があります。
@@ -91,7 +91,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
 4. クラス ライブラリで、1 つのメソッド `GetCountAsync`を含むインターフェイスを作成し、`Microsoft.ServiceFabric.Services.Remoting.IService` からインターフェイスを拡張します。 リモート処理インターフェイスは、Service Remoting インターフェイスであることを示すために、このインターフェイスから派生している必要があります。
    
-    ```c#
+    ```csharp
     using Microsoft.ServiceFabric.Services.Remoting;
     using System.Threading.Tasks;
         
@@ -114,7 +114,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
     ![ステートフル サービスのクラス ライブラリ プロジェクトへの参照の追加][vs-add-class-library-reference]
 2. `StatefulService` から継承したクラス (`MyStatefulService` など) を探し、そのクラスを拡張して `ICounter` インターフェイスを実装します。
    
-    ```c#
+    ```csharp
     using MyStatefulService.Interface;
    
     ...
@@ -126,7 +126,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
     ```
 3. 次に、`ICounter` インターフェイスで定義されている単一のメソッド (`GetCountAsync`) を実装します。
    
-    ```c#
+    ```csharp
     public async Task<long> GetCountAsync()
     {
         var myDictionary = 
@@ -150,7 +150,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
 `IService` インターフェイス上で `CreateServiceRemotingListener` 拡張メソッドを使用すると、すべて既定の設定の `ServiceRemotingListener` を簡単に作成できます。 この拡張メソッドを使用するには、`Microsoft.ServiceFabric.Services.Remoting.Runtime` 名前空間をインポートしておきます。 
 
-```c#
+```csharp
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 
 ...
@@ -176,7 +176,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 4. **Controllers** フォルダーで `ValuesController` クラスを開きます。 現時点では、`Get` メソッドはハードコーディングされた文字列配列 "value1" と "value2" を返すだけであることに注意してください。これらは、先にブラウザーに表示されていたものと一致します。 この実装を次のコードに置き換えます。
    
-    ```c#
+    ```csharp
     using MyStatefulService.Interface;
     using Microsoft.ServiceFabric.Services.Client;
     using Microsoft.ServiceFabric.Services.Remoting.Client;
@@ -223,7 +223,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 異なる環境で異なる値を構成する方法については、「 [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ASP.NET Core を使用したアプリケーションの Web フロントエンドのセットアップが完了したので、「[Service Fabric リライアブル サービスでの ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)」で ASP.NET Core と Service Fabric の連携方法についてさらに理解を深めます。
 
 次に、一般的な[サービスとの通信の詳細](service-fabric-connect-and-communicate-with-services.md)を学習して、Service Fabric でのサービス通信のしくみの全体像を把握してください。

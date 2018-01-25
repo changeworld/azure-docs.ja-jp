@@ -15,17 +15,17 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 2/14/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: e7f5cf483d22e4c60dedbe5176ceb0bc8b2b6e66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 614e07ad9fcbe9ad3684ed977f7ffa36e727dddc
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="design-build-and-deploy-azure-logic-apps-in-visual-studio"></a>Visual Studio で Azure Logic Apps を作成してデプロイする
 
 [Azure ポータル](https://portal.azure.com/)には Azure Logic Apps を作成および管理するための優れた機能がありますが、Logic Apps の設計、作成、およびデプロイには、Visual Studio を使用できます。 Visual Studio にはロジック アプリ デザイナーなどの高度なツールが用意されており、ユーザーはそれらを使ってロジック アプリを作成し、デプロイ テンプレートと自動化テンプレートを構成して、任意の環境にデプロイすることができます。 
 
-Azure Logic Apps の概要については、[Azure Portal で最初にロジック アプリを作成する方法](logic-apps-create-a-logic-app.md)に関するトピックをご覧ください。
+Azure Logic Apps の概要については、[Azure Portal で最初にロジック アプリを作成する方法](quickstart-create-first-logic-app-workflow.md)に関するトピックをご覧ください。
 
 ## <a name="installation-steps"></a>インストール手順
 
@@ -230,7 +230,7 @@ parameters は次のように使用します。
 
     ![リソースの追加](./media/logic-apps-deploy-from-vs/addresource.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Visual Studio Cloud Explorer を使用して Azure Logic Apps を管理する](logic-apps-manage-from-vs.md)
 * [一般的な例とシナリオを確認する](logic-apps-examples-and-scenarios.md)

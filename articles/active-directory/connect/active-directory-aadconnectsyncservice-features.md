@@ -3,7 +3,7 @@ title: "Azure AD Connect 同期サービスの機能と構成 | Microsoft Docs"
 description: "Azure AD Connect 同期サービスのサービス側の機能について説明します。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 213aab20-0a61-434a-9545-c4637628da81
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 830692d6df6856e73b8c192db91edf75fdcaec35
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e939c6a53a1154b23431581e789605d83e849fe2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 Azure AD Connect の同期機能には 2 つのコンポーネントがあります。
@@ -37,7 +37,7 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 
 以下の設定は、 `Set-MsolDirSyncFeature`で設定できます。
 
-| DirSyncFeature | コメント |
+| DirSyncFeature | Comment (コメント) |
 | --- | --- |
 | [EnableSoftMatchOnUpn](#userprincipalname-soft-match) |プライマリ SMTP アドレスに加えて userPrincipalName でオブジェクトを結合できます。 |
 | [SynchronizeUpnForManagedUsers](#synchronize-userprincipalname-updates) |同期エンジンに管理対象ユーザー/ライセンス ユーザー (非フェデレーション ユーザー) の userPrincipalName 属性の更新を許可します。 |
@@ -51,7 +51,7 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 
 以下の設定は、Azure AD Connect によって構成されており、 `Set-MsolDirSyncFeature`で変更することはできません。
 
-| DirSyncFeature | コメント |
+| DirSyncFeature | Comment (コメント) |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: デバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect 同期: ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) |

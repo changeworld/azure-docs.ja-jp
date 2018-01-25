@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: b35e87da943de8d47f36b6443fa62e251f742149
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
@@ -74,15 +74,15 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 * NSG でこのポートへのアクセスを許可する必要があります。 このポートにアクセスできない場合、管理対象ドメインは Azure AD ディレクトリと同期されません。 ユーザーのパスワードが管理対象ドメインと同期されていないために、ユーザーがサインインできないことがあります。
 * このポートへの受信アクセスを、Azure の IP アドレス範囲に属する IP アドレスに限定できます。
 
-**Port 5986 (PowerShell リモート処理)** 
+**Port 5986 (PowerShell リモート処理)**
 * PowerShell のリモート処理を使用して管理対象ドメインの管理タスクを実行するために使用されます。
 * NSG でこのポートを利用するアクセスを許可する必要があります。 このポートにアクセスできない場合、管理対象ドメインの更新、構成、バックアップおよび監視は行えません。
-* このポートへの受信アクセスを、次の発信元 IP アドレスに限定できます: 52.180.183.8 23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209、52.180.179.108 52.175.18.134、52.138.68.41 104.41.159.212、52.169.218.0、52.187.120.237、52.161.110.169、52.174.189.149 13.64.151.161 
+* このポートへの受信アクセスを、次の発信元 IP アドレスに限定できます: 52.180.183.8 23.101.0.70、52.225.184.198、52.179.126.223、13.74.249.156、52.187.117.83、52.161.13.95、104.40.156.18、104.40.87.209、52.180.179.108 52.175.18.134、52.138.68.41 104.41.159.212、52.169.218.0、52.187.120.237、52.161.110.169、52.174.189.149 13.64.151.161
 * 管理対象ドメインのドメイン コントローラーは、通常はこのポートをリッスンしません。 サービスは、管理操作またはメンテナンス操作を管理対象ドメインに対して実行する必要がある場合にのみ、管理されたドメイン コントローラー上のこのポートを開きます。 操作が完了すると、サービスはすぐに管理対象ドメイン コントローラー上のこのポートを停止します。
 
-**ポート 3389 (リモート デスクトップ)** 
-* 管理対象ドメインのドメイン コントローラーへのリモート デスクトップ接続に使用されます。 
-* NSG でこのポートを開くかどうかは任意です。 
+**ポート 3389 (リモート デスクトップ)**
+* 管理対象ドメインのドメイン コントローラーへのリモート デスクトップ接続に使用されます。
+* NSG でこのポートを開くかどうかは任意です。
 * このポートも、管理対象ドメイン上でほとんど無効な状態を保持します。 管理タスクと監視タスクは PowerShell のリモート処理を使用して実行されるため、この仕組みは継続的には使用されません。 このポートは、Microsoft が高度なトラブルシューティングのために管理対象ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。 トラブルシューティングの操作が完了すると、ポートはただちに閉じられます。
 
 **ポート 636 (Secure LDAP)**
@@ -99,7 +99,7 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 
 また、この NSG では、インターネット経由での、セキュリティで保護された LDAP アクセスをロック ダウンする方法も示しています。 インターネット経由での管理対象ドメインへのセキュリティで保護された LDAP アクセスを行えないようにしている場合は、この規則についてはスキップしてください。 この NSG には、指定した IP アドレスから TCP ポート 636 経由で入ってくる LDAPS アクセスのみを許可するルール セットが含まれています。 指定した IP アドレスからインターネット経由で入ってくる LDAPS アクセスを許可する NSG ルールには、DenyAll NSG ルールより高い優先度が設定されています。
 
-![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](.\media\active-directory-domain-services-alerts\default-nsg.png)
 
 **詳細** - [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 
@@ -126,7 +126,7 @@ Resource Manager ベースの仮想ネットワークを、Azure AD Domain Servi
     ![Virtual network connectivity using peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
     [関連情報 - 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
-    
+
 * **サイト間 VPN 接続を使用した VNet 間接続**: 仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。
 
     ![Virtual network connectivity using VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)

@@ -3,8 +3,8 @@ title: "Azure Redis Cache の構成方法 | Microsoft Docs"
 description: "Azure Redis Cache の既定の Redis 構成を理解し、Azure Redis Cache インスタンスの構成方法について説明します。"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
-ms.author: sdanie
-ms.openlocfilehash: 0274e58eb2e83202d4dbc58da0c67d0fdde22ede
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: a65832a30a570944ff30d02c2f173df345bde32c
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache の構成方法
 このトピックでは、Azure Redis Cache インスタンスの構成を確認し、更新する方法と、Azure Redis Cache インスタンス用の既定の Redis サーバー構成について説明します。
@@ -53,7 +53,7 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
     * [geo レプリケーション](#geo-replication)
     * [Virtual Network](#virtual-network)
     * [ファイアウォール](#firewall)
-    * [プロパティ](#properties)
+    * [Properties](#properties)
     * [ロック](#locks)
     * [Automation スクリプト](#automation-script)
 * [管理](#administration)
@@ -92,7 +92,7 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 
 
 
-## <a name="settings"></a>Settings
+## <a name="settings"></a>[設定]
 **[設定]** セクションでは、キャッシュに関する次の設定にアクセスして構成できます。
 
 * [アクセス キー](#access-keys)
@@ -105,13 +105,13 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 * [geo レプリケーション](#geo-replication)
 * [Virtual Network](#virtual-network)
 * [ファイアウォール](#firewall)
-* [プロパティ](#properties)
+* [Properties](#properties)
 * [ロック](#locks)
 * [Automation スクリプト](#automation-script)
 
 
 
-### <a name="access-keys"></a>アクセス キー
+### <a name="access-keys"></a>[アクセス キー]
 **[アクセス キー]** をクリックすると、キャッシュのアクセス キーを表示したり、再生成したりできます。 これらのキーは、キャッシュに接続するクライアントによって使用されます。
 
 ![Redis Cache のアクセス キー](./media/cache-configure/redis-cache-manage-keys.png)
@@ -173,15 +173,15 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 ## <a name="redis-cache-advisor"></a>Redis Cache Advisor
 **[Redis Cache Advisor]** ブレードにキャッシュに関する推奨事項が表示されます。 通常の操作中に推奨事項は表示されません。 
 
-![[推奨事項]](./media/cache-configure/redis-cache-no-recommendations.png)
+![Recommendations](./media/cache-configure/redis-cache-no-recommendations.png)
 
 キャッシュの操作中に、高いメモリ使用量、ネットワーク帯域幅、サーバー負荷などの状況が発生した場合は、 **[Redis Cache]** ブレードにアラートが表示されます。
 
-![[推奨事項]](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Recommendations](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 詳細情報は、 **[推奨事項]** ブレードで確認できます。
 
-![推奨事項](./media/cache-configure/redis-cache-recommendations.png)
+![Recommendations](./media/cache-configure/redis-cache-recommendations.png)
 
 **[Redis Cache]** ブレードの [[Monitoring charts (監視グラフ)]](cache-how-to-monitor.md#monitoring-charts) および [[Usage charts (使用状況グラフ)]](cache-how-to-monitor.md#usage-charts) セクションでは、以下のメトリックを監視できます。
 
@@ -259,7 +259,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 > 
 > 
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>仮想ネットワーク
 **[Virtual Network]** セクションでは、キャッシュの仮想ネットワークの設定を構成することができます。 VNET サポートでのプレミアム キャッシュの作成およびその設定の更新の詳細については、「 [Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」をご覧ください。
 
 > [!IMPORTANT]
@@ -269,7 +269,7 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 ### <a name="firewall"></a>ファイアウォール
 
-Premium Azure Redis Cache のファイアウォール ルールを表示して構成するには、[**ファイアウォール**] をクリックします。
+Premium Azure Redis Cache のファイアウォール ルールを表示して構成するには、**[ファイアウォール]** をクリックします。
 
 ![ファイアウォール](./media/cache-configure/redis-firewall-rules.png)
 
@@ -282,7 +282,7 @@ IP アドレス範囲の開始アドレスと終了アドレスで、ファイ�
 > 
 > 
 
-### <a name="properties"></a>プロパティ
+### <a name="properties"></a>[プロパティ]
 **[プロパティ]** をクリックすると、キャッシュ エンドポイントやポートなど、キャッシュに関する情報を表示できます。
 
 ![Redis Cache のプロパティ](./media/cache-configure/redis-cache-properties.png)
@@ -297,7 +297,7 @@ IP アドレス範囲の開始アドレスと終了アドレスで、ファイ�
 ## <a name="administration-settings"></a>管理の設定
 **[管理]** セクションの設定では、キャッシュに対して次の管理タスクを実行できます。 
 
-![管理](./media/cache-configure/redis-cache-administration.png)
+![[管理]](./media/cache-configure/redis-cache-administration.png)
 
 * [データのインポート](#importexport)
 * [データのエクスポート](#importexport)
@@ -394,7 +394,7 @@ Export では、Azure Redis Cache に格納されたデータを、Redis と互�
 > 
 > 
 
-| Setting | 既定値 | Description |
+| 設定 | 既定値 | [説明] |
 | --- | --- | --- |
 | `databases` |16 |データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。`dbid` が `0` ～ `databases - 1` の間の数値である `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。 |
 | `maxclients` |価格レベルによって異なります。<sup>2</sup> |これは、同時に接続が許可されているクライアントの最大数です。 制限に達すると、Redis はすべての新しい接続を終了し、"max number of clients reached" エラーを返します。 |
@@ -512,6 +512,6 @@ shard1>get myKey
 
 リソース グループ間、およびサブスクリプション間でのリソースの移動については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Redis コマンドの使用の詳細については、「[How can I run Redis commands? (Redis コマンドの実行方法)](cache-faq.md#how-can-i-run-redis-commands)」をご覧ください。
 

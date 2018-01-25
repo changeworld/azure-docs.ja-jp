@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 11/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 7e0d416c58dced89623a28038e804e8002f0341a
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5a4b2b5734bf8bfbbc45a65b02362d1fa37b1a87
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Azure Data Catalog でデータ資産を管理する
 ## <a name="introduction"></a>はじめに
@@ -71,5 +71,5 @@ Data Catalog 内のデータ資産に所有権が設定されている場合、�
 ## <a name="catalog-administrators"></a>カタログの管理者
 Data Catalog の管理者は、暗黙的にカタログ内の全資産の共同所有者に割り当てられます。 資産の所有者が、管理者から可視性を削除することはできません。また管理者は、カタログ内のすべてのデータ資産の所有権と可視性を管理できます。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 メタデータとデータ資産の検出に関して Data Catalog にはクラウドソーシング型のモデルが採用されており、すべてのカタログ ユーザーがデータに寄与し、またデータを検出することができます。 特定のデータ資産の使用や可視性を制限する所有権機能と管理機能は、Data Catalog の Standard Edition で利用できます。

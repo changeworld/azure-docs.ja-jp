@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: fdbf9b1b77c2c64b3ebfcdbc5463916f317e4881
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
+ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack の診断ツール
 
@@ -135,7 +135,7 @@ if($s)
    | WAS                     | WASPUBLIC              | WDS                |
 
 
-### <a name="collect-logs-using-a-graphical-user-interface"></a>グラフィカル ユーザー インターフェイスを使用してログを収集する
+### <a name="bkmk_gui"></a>グラフィカル ユーザー インターフェイスを使用してログを収集する
 Get-AzureStackLog コマンドレットのパラメーターを指定して Azure Stack ログを取得する代わりに、主要な Azure Stack ツールの GitHub ツール リポジトリ (http://aka.ms/AzureStackTools) にあるオープン ソースの Azure Stack ツールを使用することもできます。
 
 **ERCS_AzureStackLogs.ps1** PowerShell スクリプトは GitHub ツール リポジトリに格納され、定期的に更新されています。 最新バージョンを入手するために、http://aka.ms/ERCS から直接ダウンロードすることをお勧めします。 管理 PowerShell セッションから開始されるこのスクリプトは、特権エンドポイントに接続し、指定されたパラメーターで Get-AzureStackLog を実行します。 パラメーターが指定されていない場合、スクリプトは、既定でグラフィカル ユーザー インターフェイスを使用して、パラメーターを入力するように求めます。
@@ -159,3 +159,4 @@ ERCS_AzureStackLogs.ps1 PowerShell スクリプトの詳細については、[�
 
 ## <a name="next-steps"></a>次の手順
 [Microsoft Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)
+

@@ -1,88 +1,86 @@
 
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
-> 代わりにこのサンプルの Android Studio プロジェクトをダウンロードしますか。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)したら[構成](#create-an-application-express)手順に進み、実行前にコード サンプルを構成します。
-
+代わりに、このサンプルの Android Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)したら、[構成手順](#create-an-application-express)に進んでサンプル コードを構成してから実行してください。
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する 
-1.  Android Studio を開き、[`File`] \(ファイル)  >  [`New`] \(新規)  >  [`New Project`] \(新しいプロジェクト) に移動します。
-2.  アプリケーションに名前を付けて、[`Next`] \(次へ) をクリックします。
-3.  *API 21 以降 (Android 5.0)* を選択して、[`Next`] \(次へ) をクリックします。
-4.  [`Empty Activity`] \(空のアクティビティ) はそのままにして [`Next`] \(次へ) をクリックし、[`Finish`] \(完了) をクリックします。
+1.  Android Studio を開き、**[File]\(ファイル\)** > **[New]\(新規\)** > **[New Project]\(新しいプロジェクト\)** を選択します。
+2.  アプリケーションに名前を付け、**[Next]\(次へ\)** をクリックします。
+3.  **API 21 以降 (Android 5.0)** を選択し、**[Next]\(次へ\)** をクリックします。
+4.  **[Empty Activity]\(空のアクティビティ\)** をそのままにして、**[Next]\(次へ\)** をクリックし、**[Finish]\(完了\)** をクリックします。
 
 
-### <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>プロジェクトへの Microsoft Authentication Library (MSAL) の追加
-1.  Android Studio で、[`Gradle Scripts`]  >  [`build.gradle (Module: app)`] \(Gradle のビルド) に移動します。
-2.  [`Dependencies`] \(依存関係) で次のコードをコピーして貼り付けます。
+### <a name="add-msal-to-your-project"></a>プロジェクトに MSAL を追加する
+1.  Android Studio で、**[Gradle Scripts]\(Gradle スクリプト\)** > **build.gradle (Module: app)** を選択します。
+2.  **[Dependencies]\(依存関係\)** で、次のコードを貼り付けます。
 
-```ruby  
-compile ('com.microsoft.identity.client:msal:0.1.+') {
-    exclude group: 'com.android.support', module: 'appcompat-v7'
-}
-compile 'com.android.volley:volley:1.0.0'
-```
+    ```ruby  
+    compile ('com.microsoft.identity.client:msal:0.1.+') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+    compile 'com.android.volley:volley:1.0.0'
+    ```
 
 <!--start-collapse-->
 ### <a name="about-this-package"></a>このパッケージについて
 
-上記パッケージにより、Microsoft Authentication Library (MSAL) がインストールされます。 MSAL は、Azure Active Directory v2 エンドポイントで保護される API へのアクセスで使用するユーザー トークンの取得、キャッシュ、更新を処理します。
+上記のコードのパッケージによって、Microsoft Authentication Library がインストールされます。 MSAL は、Azure Active Directory v2 エンドポイントで保護されている API へのアクセスに使用するユーザー トークンの取得、キャッシュ、更新を処理します。
 <!--end-collapse-->
 
-## <a name="create-your-applications-ui"></a>アプリケーションの UI の作成
+## <a name="create-the-application-ui"></a>アプリケーション UI を作成する
 
-1.  `activity_main.xml` を開きます ([`res`]  >  [`layout`] \(レイアウト) の順)。
-2.  アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` やその他から `LinearLayout` に変更します。
-3.  プロパティ `android:orientation="vertical"` をノード `LinearLayout` に追加します。
-4.  次のコードをノード `LinearLayout` にコピーして貼り付け、現在の内容を置き換えます。
+1. **[res]** > **[layout]** に移動し、**activity_main.xml** を開きます。 
+2. アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` などから `LinearLayout` に変更します。
+3. `android:orientation="vertical"` プロパティを `LinearLayout` ノードに追加します。
+4. `LinearLayout` ノードに次のコードを貼り付け、現在の内容を置き換えます。
 
-```xml
-<TextView
-    android:text="Welcome, "
-    android:textColor="#3f3f3f"
-    android:textSize="50px"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="15dp"
-    android:id="@+id/welcome"
-    android:visibility="invisible"/>
-
-<Button
-    android:id="@+id/callGraph"
-    android:text="Call Microsoft Graph"
-    android:textColor="#FFFFFF"
-    android:background="#00a1f1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="200dp"
-    android:textAllCaps="false" />
-
-<TextView
-    android:text="Getting Graph Data..."
-    android:textColor="#3f3f3f"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:id="@+id/graphData"
-    android:visibility="invisible"/>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dip"
-    android:layout_weight="1"
-    android:gravity="center|bottom"
-    android:orientation="vertical" >
+    ```xml
+    <TextView
+        android:text="Welcome, "
+        android:textColor="#3f3f3f"
+        android:textSize="50px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/welcome"
+        android:visibility="invisible"/>
 
     <Button
-        android:text="Sign Out"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:id="@+id/callGraph"
+        android:text="Call Microsoft Graph"
         android:textColor="#FFFFFF"
         android:background="#00a1f1"
-        android:textAllCaps="false"
-        android:id="@+id/clearCache"
-        android:visibility="invisible" />
-</LinearLayout>
-```
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:textAllCaps="false" />
 
+    <TextView
+        android:text="Getting Graph Data..."
+        android:textColor="#3f3f3f"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/graphData"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+
+        <Button
+            android:text="Sign Out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textColor="#FFFFFF"
+            android:background="#00a1f1"
+            android:textAllCaps="false"
+            android:id="@+id/clearCache"
+            android:visibility="invisible" />
+    </LinearLayout>
+    ```

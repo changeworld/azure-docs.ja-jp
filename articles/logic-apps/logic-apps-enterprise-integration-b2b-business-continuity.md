@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4896d9da456bcc17b1a4d92259ef3d57f8575d8b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ef3965adac03f21c386765a43290c93d58d1c18
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B のリージョン間ディザスター リカバリー
 
@@ -92,7 +92,7 @@ EDI X12 ドキュメントのビジネス継続性は、制御番号に基づい
 
 ![重複チェック設定を選択する](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
-1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。    
+1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)を作成します。    
 
 2. **X12** で検索し、**[X12 - 制御番号が変更されたとき]** を選択します。   
 
@@ -147,7 +147,7 @@ EDI EDIFACT ドキュメントのビジネス継続性は、制御番号に基�
 
 ![重複チェック設定を選択する](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
-1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。    
+1. セカンダリ リージョンに[ロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)を作成します。    
 
 2. **EDIFACT** で検索し、**[EDIFACT - 制御番号が変更されたとき]** を選択します。
 
@@ -199,7 +199,7 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 > [!TIP]
 > [AS2 クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates/pull/3302)を使用してロジック アプリを作成することもできます。 プライマリ統合アカウントとセカンダリ統合アカウントの作成は、テンプレートを使用するための前提条件です。 テンプレートは、トリガーとアクションをもつロジック アプリを作成するのに役立ちます。 このロジック アプリは、トリガーからプライマリ統合アカウントへの接続と、アクションからセカンダリ統合アカウントへの接続を作成します。
 
-1. セカンダリ リージョンで[ロジック アプリ](../logic-apps/logic-apps-create-a-logic-app.md)を作成します。  
+1. セカンダリ リージョンで[ロジック アプリ](../logic-apps/quickstart-create-first-logic-app-workflow.md)を作成します。  
 
 2. **AS2** を検索し、**[AS2 - When a MIC value is created] \(AS2 - MIC 値を作成する場合)** を選択します。   
 
@@ -243,7 +243,7 @@ AS2 プロトコルを使用するドキュメントのビジネス継続性は�
 
 時間間隔に基づいて、増分ランタイム状態がプライマリ リージョンからセカンダリ リージョンにレプリケートされます。 障害イベント時に、プライマリ リージョンが使用できない場合は、セカンダリ リージョンにトラフィックをダイレクトしてビジネス継続性を確保します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [B2B メッセージを監視する](logic-apps-monitor-b2b-message.md)
 

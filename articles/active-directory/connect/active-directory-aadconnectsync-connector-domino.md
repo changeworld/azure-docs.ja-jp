@@ -3,7 +3,7 @@ title: "Lotus Domino コネクタ | Microsoft Docs"
 description: "この記事では、Microsoft の Lotus Domino Connector を構成する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: e07fd469-d862-470f-a3c6-3ed2a8d745bf
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/119/2017
 ms.author: barclayn
-ms.openlocfilehash: 80151134821c6106382c58bf0ec68ea0f6d4646a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c412be1c54e0378166791c61469c951bca3a583
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino Connector のテクニカル リファレンス
 この記事では Lotus Domino Connector について説明します。 この記事は次の製品に適用されます。
@@ -34,11 +34,11 @@ Lotus Domino Connector を使用すると、IBM の Lotus Domino サーバーと
 
 包括的な観点から見た場合、コネクタの現在のリリースでサポートされている機能は次のとおりです。
 
-| 機能 | サポート |
+| Feature | サポート |
 | --- | --- |
 | 接続先のデータ ソース |サーバー:  <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>クライアント: <li>Lotus Domino 8.5.x</li><li>Lotus Notes 9.x</li> |
 | シナリオ |<li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li> |
-| 操作 |<li>フル インポートと差分インポート</li><li>エクスポート</li><li>HTTP パスワードにおけるパスワードの設定と変更</li> |
+| [操作] |<li>フル インポートと差分インポート</li><li>エクスポート</li><li>HTTP パスワードにおけるパスワードの設定と変更</li> |
 | スキーマ |<li>Person (ローミング ユーザー、連絡先 (証明書のない Person))</li><li>グループ</li><li>リソース (リソース、ルーム、オンライン会議)</li><li>メールイン データベース</li><li>サポートされているオブジェクトの属性の動的検出</li><li>1 つの組織/組織単位 (OU) に対して最大 250 のカスタム証明者をサポート</li> |
 
 Lotus Domino Connector は、Lotus Domino サーバーとの通信に、Lotus Notes クライアントを使用します。 この依存関係のため、サポートされている Lotus Notes クライアントを同期サーバーにインストールする必要があります。 クライアントとサーバー間の通信は、Lotus Notes .NET Interop (Interop.domino.dll) インターフェイスを介して実装されています。 このインターフェイスにより、Microsoft.NET プラットフォームと Lotus Notes 間の通信は促され、Lotus Domino ドキュメントおよびビューにアクセスできるようになります。 (選択している差分インポートの方法に応じて) 差分インポートで C++ ネイティブ インターフェイスを使用することも可能です。
@@ -69,7 +69,7 @@ Lotus Domino Connector でサポートされている任意のタスクを実行
 
 **プライマリ アドレス帳**
 
-| オブジェクト | 作成 | 更新 | 削除 |
+| オブジェクト | [作成] | プライマリの | 削除 |
 | --- | --- | --- | --- |
 | Person |AdminP |直接 |AdminP |
 | グループ |AdminP |直接 |AdminP |
@@ -78,7 +78,7 @@ Lotus Domino Connector でサポートされている任意のタスクを実行
 
 **セカンダリ アドレス帳**
 
-| オブジェクト | 作成 | 更新 | 削除 |
+| オブジェクト | [作成] | プライマリの | 削除 |
 | --- | --- | --- | --- |
 | Person |該当なし |直接 |直接 |
 | グループ |直接 |直接 |直接 |
@@ -155,7 +155,7 @@ Domino Server のプロパティでは、サーバー名に次の 2 つの形式
 #### <a name="import-settings-method"></a>インポート設定および方法
 **[フル インポートの実行方法]** には次のオプションがあります。
 
-* Search
+* 検索
 * ビュー (推奨)
 
 **[検索]** は Domino のインデックスを使用しますが、一般にインデックスはリアルタイムで更新されず、サーバーから返されるデータが常に正しいとは限りません。 このオプションは、変更が多いシステムではうまく機能しないことが多く、場合によっては削除が不正に行われることがあります。 ただし、**[検索]** の方が **[ビュー]** よりも高速です。
@@ -285,7 +285,7 @@ Person オブジェクトとは、組織と組織単位内のユーザーです�
   2. ローミング ユーザー (すべてのローミング データベース ファイルを含む標準ユーザー)
   3. 連絡先 (ID ファイルを持たないユーザー)
 
-Person (連絡先を除く) は、\_MMS\_IDRegType プロパティの値で定義する米国ユーザーと海外ユーザーにさらにグループ化できます。 このユーザーは、Notes クライアントを使用して Lotus Domino サーバーにアクセスします。 また、Notes ID と Person ドキュメントのほか、Notes メールを使用している場合は、メール ファイルも持っています。 ユーザーは、登録済みでないとアクティブにはなりません。 詳細については、次を参照してください。
+Person (連絡先を除く) は、\_MMS\_IDRegType プロパティの値で定義する米国ユーザーと海外ユーザーにさらにグループ化できます。 このユーザーは、Notes クライアントを使用して Lotus Domino サーバーにアクセスします。 また、Notes ID と Person ドキュメントのほか、Notes メールを使用している場合は、メール ファイルも持っています。 ユーザーは、登録済みでないとアクティブにはなりません。 詳細については、「
 
 * [Notes ユーザーの設定](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_SETTING_UP_NOTES_USERS.html)
 * [ユーザーの登録](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_REGISTERING_USERS.html)
@@ -358,7 +358,7 @@ Lotus Domino Connector では、インターネット パスワードの次の�
 * パスワードの設定: パスワードの設定を使用すると、Domino ユーザーに新しい HTTP およびインターネット パスワードを設定できます。 既定ではアカウントのロックも解除されます。 ロック解除のフラグは、同期エンジンの WMI インターフェイスで公開されています。
 * パスワードの変更: これは、ユーザーがパスワードの変更を希望したり、指定した期間後にパスワードの変更が求めらたりするシナリオ用です。 この操作を実行するには、(新旧のパスワードの) 両方が必須です。 変更後、Lotus Domino で新しいパスワードが更新されます。
 
-詳細については、次を参照してください。
+詳細については、「
 
 * [インターネット ロックアウト機能の使用](http://www.ibm.com/developerworks/lotus/library/domino8-lockout/)
 * [インターネット パスワードの管理](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_NOTES_AND_INTERNET_PASSWORD_SYNCHRONIZATION_7570_OVER.html)
@@ -371,7 +371,7 @@ Lotus Domino ディレクトリに Person オブジェクトをプロビジョ�
 
 これらのプロパティとその説明は、次の表で示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | \_MMS_AltFullName |ユーザーの別の完全名。 |
 | \_MMS_AltFullNameLanguage |ユーザーの別の完全名を指定するために使用する言語。 |
@@ -416,7 +416,7 @@ Lotus Domino Connector は、主に次のオブジェクト (ドキュメント�
 | メールイン データベース |<li>FullName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
 | Person |<li>LastName</li><li>MailFile</li><li>ShortName</li><li>\_MMS_Password</li><li>\_MMS_IDStoreType</li><li>\_MMS_Certifier</li><li>\_MMS_IDRegType</li><li>\_MMS_UseAdminP</li> |
 | 連絡先 (証明者のない Person) |<li>\_MMS_IDRegType</li> |
-| リソース |<li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>ResourceCapacity</li><li>サイト</li><li>displayName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
+| リソース |<li>FullName</li><li>ResourceType</li><li>ConfDB</li><li>ResourceCapacity</li><li>サイト</li><li>DisplayName</li><li>MailFile</li><li>MailServer</li><li>MailDomain</li> |
 
 ## <a name="common-issues-and-questions"></a>お問い合わせの多い問題および質問
 ### <a name="schema-detection-does-not-work"></a>スキーマが検出できない

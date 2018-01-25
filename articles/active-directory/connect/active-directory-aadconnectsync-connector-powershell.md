@@ -3,7 +3,7 @@ title: "PowerShell コネクタ | Microsoft Docs"
 description: "この記事では、Microsoft の Windows PowerShell コネクタを構成する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 6dba8e34-a874-4ff0-90bc-bd2b0a4199b5
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 27ca89a2032c82a8be909349b38a64fc6aa9579e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2caf8dd8a657f116df0342893763829676602cd6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="windows-powershell-connector-technical-reference"></a>Windows PowerShell コネクタに関するテクニカル リファレンス
 この記事では、Windows PowerShell コネクタについて説明します。 この記事は次の製品に適用されます。
@@ -88,7 +88,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 検証スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameterPage |[ConfigParameterPage][cpp] |検証要求をトリガーした [構成] タブまたはダイアログ。 |
 | ConfigParameters |[KeyedCollection][keyk] [string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
@@ -101,7 +101,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 スキーマ検出スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk] [string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -120,7 +120,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 ![機能](./media/active-directory-aadconnectsync-connector-powershell/capabilities.png)
 
-| 機能 | Description |
+| 機能 | [説明] |
 | --- | --- |
 | [識別名の様式][dnstyle] |コネクタで識別名を利用できるかどうかと、利用できる場合、その様式を示します。 |
 | [エクスポートの種類][exportT] |エクスポート スクリプトに表示されるオブジェクトの種類を決定します。 <li>AttributeReplace – 属性が変更されたとき、複数値属性の値のフル セットを含めます。</li><li>AttributeUpdate – 属性が変更されたとき、複数値属性の差分のみを含めます。</li><li>MultivaluedReferenceAttributeUpdate - 非参照複数値属性のフル セットと複数値参照属性の差のみを含めます。</li><li>ObjectReplace – 属性が変更されたとき、オブジェクトのすべての属性を含めます</li> |
@@ -148,7 +148,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 パーティション検出スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -160,7 +160,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 階層検出スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -168,7 +168,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 スクリプトは 1 つの子 HierarchyNode オブジェクトか子 HierarchyNode オブジェクトの List[T] を返します。
 
-#### <a name="import"></a>インポート
+#### <a name="import"></a>[インポート]
 インポート操作をサポートするコネクタは、3 つのスクリプトを実装する必要があります。
 
 **インポート開始**  
@@ -176,7 +176,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 インポート開始スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -190,7 +190,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 データのインポート スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -205,7 +205,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 インポート終了スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -222,7 +222,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 エクスポート開始スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -236,7 +236,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 データのエクスポート スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -251,7 +251,7 @@ MAData フォルダーから「FIMPowerShellConnectorModule.psm1」という名�
 
 エクスポート終了スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -265,7 +265,7 @@ Windows PowerShell コネクタをパスワードの変更/リセットのター
 
 パスワード スクリプトは、コネクタから次のパラメーターを受け取ります。
 
-| Name | データ型 | Description |
+| Name | データ型 | [説明] |
 | --- | --- | --- |
 | ConfigParameters |[KeyedCollection][keyk][string, [ConfigParameter][cp]] |コネクタの構成パラメーターのテーブル。 |
 | 資格情報 |[PSCredential][pscred] |[接続] タブで管理者が入力した資格情報が含まれます。 |
@@ -273,8 +273,8 @@ Windows PowerShell コネクタをパスワードの変更/リセットのター
 | CSEntry |[CSEntry][cse] |パスワードの変更またはリセットを受け取ったオブジェクトのコネクタ スペース エントリ。 |
 | OperationType |String |操作がリセット (**SetPassword**) または変更 (**ChangePassword**) であることを示します。 |
 | PasswordOptions |[PasswordOptions][pwdopt] |目的のパスワードのリセット動作を指定するフラグ。 このパラメーターは、OperationType が **SetPassword**の場合にのみ利用できます。 |
-| OldPassword |文字列 |パスワード変更のためにオブジェクトの古いパスワードが入力されます。 このパラメーターは、OperationType が **ChangePassword**の場合にのみ利用できます。 |
-| NewPassword |文字列 |スクリプトで設定するオブジェクトの新しいパスワードが入力されます。 |
+| OldPassword |String |パスワード変更のためにオブジェクトの古いパスワードが入力されます。 このパラメーターは、OperationType が **ChangePassword**の場合にのみ利用できます。 |
+| NewPassword |String |スクリプトで設定するオブジェクトの新しいパスワードが入力されます。 |
 
 パスワード スクリプトは、Windows PowerShell パイプラインに結果を返しません。 パスワード スクリプトでエラーが発生した場合、スクリプトは次のいずれかの例外をスローし、同期サービスに問題を通知します。
 

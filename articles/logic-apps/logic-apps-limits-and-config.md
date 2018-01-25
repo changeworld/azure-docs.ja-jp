@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 4babb3033e75edc5c85ce89dac569b9f2beae9f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22d0ee242d18d73d1d5825567fd61638fd22cc68
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps の制限と構成
 
@@ -32,14 +32,14 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="timeout"></a>タイムアウト
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | 要求タイムアウト | 120 秒 | 必要に応じて[非同期パターン](../logic-apps/logic-apps-create-api-app.md)または[ until ループ](logic-apps-loops-and-scopes.md)で対応できます。 |
 |||| 
 
 #### <a name="message-size"></a>メッセージ サイズ
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | メッセージ サイズ | 100 MB | 一部のコネクタと API は 100 MB をサポートしていません。 | 
 | 式評価の制限 | 131,072 文字 | `@concat()`、`@base64()`、`string` をこの制限より長くすることはできません。 | 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="retry-policy"></a>再試行ポリシー
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | 再試行 | 90 | 既定値は 4 です。 [再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)で構成できます。 | 
 | 再試行の最大間隔 | 1 日 | [再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)で構成できます。 | 
@@ -58,7 +58,7 @@ ms.lasthandoff: 10/11/2017
 
 これらの制限は、ロジック アプリの 1 回の実行に適用されます。
 
-| 名前 | 制限 | 
+| Name | 制限 | 
 | ---- | ----- | 
 | 時間継続時間 | 90 日間 | 
 | ストレージのリテンション期間 | 実行の開始時刻から 90 日間 | 
@@ -72,7 +72,7 @@ ms.lasthandoff: 10/11/2017
 
 これらの制限は、ロジック アプリの 1 回の実行に適用されます。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | ForEach 項目数 | 100,000 | 必要に応じて[クエリ アクション](../connectors/connectors-native-query.md)を使用することで、さらに大きな配列にフィルターを適用できます。 | 
 | Until 反復数 | 5,000 | | 
@@ -84,7 +84,7 @@ ms.lasthandoff: 10/11/2017
 
 これらの制限は、ロジック アプリの 1 つのインスタンスに適用されます。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | 5 分間のアクション実行数 | 100,000 | 必要に応じて複数のアプリにワークロードを分散することができます。 | 
 | 同時発信呼び出しアクション数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮します。 | 
@@ -99,7 +99,7 @@ ms.lasthandoff: 10/11/2017
 
 これらの制限は、ロジック アプリの 1 つの定義に適用されます。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | ワークフローごとのアクション数 | 500 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
 | アクションの入れ子に許容される深さ | 8 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 | 
@@ -121,7 +121,7 @@ ms.lasthandoff: 10/11/2017
 
 これらの制限は、Web API から作成できるカスタム コネクタに適用されます。
 
-| 名前 | 制限 | 
+| Name | 制限 | 
 | ---- | ----- | 
 | 作成できるカスタム コネクタの数 | Azure サブスクリプションあたり 1,000 | 
 | カスタム コネクタによって作成された接続ごとの毎分の要求数 | コネクタによって作成された接続ごとに 500 の要求 |
@@ -131,7 +131,7 @@ ms.lasthandoff: 10/11/2017
 
 これらの制限は、統合アカウントに追加できる成果物に適用されます。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | スキーマ | 8 MB | [Blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) を使用すると、2 MB を超えるファイルをアップロードできます。 | 
 | マップ (XSLT ファイル) | 2 MB | | 
@@ -145,7 +145,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="free-pricing-tier"></a>Free 価格レベル
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | アグリーメント | 10 | | 
 | その他の成果物の種類 | 25 |成果物の種類には、パートナー、スキーマ、証明書、およびマップが含まれます。 各種類は、成果物の最大数まで指定することができます。 | 
@@ -153,7 +153,7 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="standard-pricing-tier"></a>Standard 価格レベル
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | 成果物の任意の種類 | 500 | 成果物の種類には、契約、パートナー、スキーマ、証明書、およびマップが含まれます。 各種類は、成果物の最大数まで指定することができます。 | 
 |||| 
@@ -162,7 +162,7 @@ ms.lasthandoff: 10/11/2017
 
 これらの制限は、B2B プロトコルに適用されます。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | AS2 | 50 MB | デコードおよびエンコードに適用 | 
 | X12 | 50 MB | デコードおよびエンコードに適用 | 
@@ -235,9 +235,9 @@ ms.lasthandoff: 10/11/2017
 |英国西部|51.141.47.105|
 | | | 
 
-## <a name="next-steps"></a>次のステップ  
+## <a name="next-steps"></a>次の手順  
 
-* [初めてのロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)  
+* [初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
 * [一般的な例とシナリオ](../logic-apps/logic-apps-examples-and-scenarios.md)
 * [ビデオ: Logic Apps を使用してビジネス プロセスを自動化する](http://channel9.msdn.com/Events/Build/2016/T694) 
 * [ビデオ: Logic Apps を使用してシステムを統合する](http://channel9.msdn.com/Events/Build/2016/P462)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 2a8b883975ed0c0a2a6ee9a2a7ad0c0b1e938fd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>ロジック アプリのワークフローから呼び出すことができるカスタム API の作成
 
@@ -31,7 +31,7 @@ Azure Logic Apps が提供する [100 以上の組み込みコネクタ](../conn
 
 基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](http://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 [Azure App Service](../app-service/app-service-web-overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
 
-カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する[*アクション*](./logic-apps-what-are-logic-apps.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する[*トリガー*](./logic-apps-what-are-logic-apps.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
+カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する[*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する[*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
 
 API は [Azure App Service](../app-service/app-service-web-overview.md) でホストできます。Azure App Service は、高い拡張性と容易な API ホスティングを提供するサービスとしてのプラットフォーム (PaaS) です。
 
@@ -73,7 +73,7 @@ API の操作やパラメーターを説明する [Swagger ドキュメント](h
 
 ## <a name="action-patterns"></a>アクション パターン
 
-ロジック アプリがタスクを実行するには、カスタム API で[*アクション*](./logic-apps-what-are-logic-apps.md#logic-app-concepts)を提供する必要があります。 API の各操作はアクションにマッピングされます。 基本アクションは、HTTP 要求を受け取り、HTTP 応答を返すコントローラーです。 そのため、たとえば、あるロジック アプリは HTTP 要求を Web アプリまたは API アプリに送信します。 次に、アプリはロジック アプリが処理できるコンテンツと共に HTTP 応答を返します。
+ロジック アプリがタスクを実行するには、カスタム API で[*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供する必要があります。 API の各操作はアクションにマッピングされます。 基本アクションは、HTTP 要求を受け取り、HTTP 応答を返すコントローラーです。 そのため、たとえば、あるロジック アプリは HTTP 要求を Web アプリまたは API アプリに送信します。 次に、アプリはロジック アプリが処理できるコンテンツと共に HTTP 応答を返します。
 
 標準的アクションの場合、API に HTTP 要求メソッドを記述し、そのメソッドについて Swagger ファイルで説明できます。 その後、[HTTP アクション](../connectors/connectors-native-http.md)または [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) アクションで API を直接呼び出すことができます。 既定では、応答は[要求のタイムアウト期限](./logic-apps-limits-and-config.md)内に返す必要があります。 
 
@@ -153,7 +153,7 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 
 ## <a name="trigger-patterns"></a>トリガー パターン
 
-カスタム API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリを開始する[*トリガー*](./logic-apps-what-are-logic-apps.md#logic-app-concepts)として機能させることができます。 このトリガーはサービス エンドポイントの新しいデータまたはイベントを定期的に確認するか、待ち受けることができます。 新しいデータ、またはあるイベントが指定の条件を満たした場合、トリガーが発動し、トリガーを待ち受けていたロジック アプリが起動します。 この方法でロジック アプリを開始するには、API で[*ポーリング トリガー*](#polling-triggers) パターンまたは [*webhook トリガー*](#webhook-triggers) パターンを利用します。 これらのパターンは、[ポーリング アクション](#async-pattern)と [webhook アクション](#webhook-actions)のそれに似ています。 トリガーの使用状況測定については、[こちら](logic-apps-pricing.md)をご覧ください。
+カスタム API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリを開始する[*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることができます。 このトリガーはサービス エンドポイントの新しいデータまたはイベントを定期的に確認するか、待ち受けることができます。 新しいデータ、またはあるイベントが指定の条件を満たした場合、トリガーが発動し、トリガーを待ち受けていたロジック アプリが起動します。 この方法でロジック アプリを開始するには、API で[*ポーリング トリガー*](#polling-triggers) パターンまたは [*webhook トリガー*](#webhook-triggers) パターンを利用します。 これらのパターンは、[ポーリング アクション](#async-pattern)と [webhook アクション](#webhook-actions)のそれに似ています。 トリガーの使用状況測定については、[こちら](logic-apps-pricing.md)をご覧ください。
 
 <a name="polling-triggers"></a>
 
@@ -178,8 +178,8 @@ API がこのパターンに従うとき、ロジック アプリ ワークフ�
 
 | 要求に `triggerState` が含まれていますか? | API 応答 | 
 | -------------------------------- | -------------| 
-| いいえ | HTTP `202 ACCEPTED` 状態と `location` ヘッダーを返します。ヘッダーの `triggerState` を現在の時刻に設定し、`retry-after` 間隔を 15 秒に設定します。 | 
-| あり | `triggerState` の `DateTime` 後に追加されたファイルがないか、サービスに確認します。 | 
+| いいえ  | HTTP `202 ACCEPTED` 状態と `location` ヘッダーを返します。ヘッダーの `triggerState` を現在の時刻に設定し、`retry-after` 間隔を 15 秒に設定します。 | 
+| [はい] | `triggerState` の `DateTime` 後に追加されたファイルがないか、サービスに確認します。 | 
 ||| 
 
 | 見つかったファイルの数 | API 応答 | 
@@ -235,7 +235,7 @@ Logic Apps、Microsoft Flow、および Microsoft PowerApps のすべてのユ�
 
 * [Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [エラーと例外を処理する](../logic-apps/logic-apps-exception-handling.md)
 * [HTTP エンドポイントでロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)

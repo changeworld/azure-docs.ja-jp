@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: fda3c7a9a369eec1b9033ee7077a5f3770647c9f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 195a1a4810de478b77538716fa8d1362428864d8
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 > [!NOTE]
@@ -166,7 +166,7 @@ ms.lasthandoff: 11/03/2017
 > [!NOTE]
 > Copy Wizard/ Azure Portal から資格情報を安全に設定するとき、資格情報マネージャー アプリケーションが使用されます。 また、オンプレミス/プライベート データ ストアと同じネットワークにあるあらゆるマシンから起動できます。
 - ワイルドカード証明書がサポートされます。 FQDN 名が **node1.domain.contoso.com** の場合、証明書のサブジェクト名として ***.domain.contoso.com** を使用できます。
-- サブジェクトの別名の最後の項目のみが使用され、現行の制限に起因してその他はすべて無視されるため、SAN 証明書は推奨されません。 例: SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、FQDN が **node2.domain.contoso.com** のマシンでのみこの証明書を使用できます。
+- サブジェクトの別名の最後の項目のみが使用され、現行の制限に起因してその他はすべて無視されるため、SAN 証明書は推奨されません。 例:  SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、FQDN が **node2.domain.contoso.com** のマシンでのみこの証明書を使用できます。
 - SSL 証明書のために、Windows Server 2012 R2 でサポートされている任意のキー サイズをサポートします。
 - CNG キーを使用する証明書はサポートされていません。 Doesrted DoesDoes では、CNG キーを使用する証明書はサポートされません。
 
@@ -184,9 +184,9 @@ Azure Portal では、ゲートウェイ ノードの状態と共に、各ノー
 
 **[ゲートウェイ]** ページの **[高度な設定]** を有効にすると、**[ネットワーク]** (入力/出力)、**[ロールと資格情報のステータス]** (ゲートウェイの問題のデバッグに役立ちます)、および **[同時実行ジョブ]** (実行中/制限) (パフォーマンス調整時に、状況に応じて変更できます) などの高度なメトリックを確認できます。 次の表に、**ゲートウェイ ノード**一覧の列の説明を示します。  
 
-監視のプロパティ | 説明
+監視のプロパティ | [説明]
 :------------------ | :---------- 
-名前 | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。  
+Name | ゲートウェイに関連付けられている論理ゲートウェイとノードの名前です。  
 状態 | 論理ゲートウェイとゲートウェイ ノードの状態です  (たとえば、オンライン/オフライン/制限/ など)。これらの状態の詳細については、「[ゲートウェイの状態](#gateway-status)」セクションをご覧ください。 
 バージョン | 論理ゲートウェイと各ゲートウェイ ノードのバージョンを示します。 論理ゲートウェイのバージョンは、グループ内のノードで多数を占めるバージョンに基づいて決定されます。 論理ゲートウェイの設定の中にさまざまなバージョンのノードがある場合は、論理ゲートウェイと同じバージョン番号を持つノードのみが適切に機能します。 それ以外のノードは制限モードであり、手動で更新する必要があります (自動更新に失敗する場合のみ)。 
 使用可能なメモリ | ゲートウェイ ノードで使用可能なメモリです。 この値は、ほぼリアルタイムのスナップショットです。 
@@ -256,7 +256,7 @@ Azure Portal では、パイプライン監視のエクスペリエンスによ�
 削除した後、同じ Azure Portal ページの**プレビュー機能**をクリックして、プレビュー機能を無効にします。 ゲートウェイはリセットされ、1 つのノード GA (一般提供) ゲートウェイになりました。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 以下の記事を確認してください。
 - [Data Management Gateway](data-factory-data-management-gateway.md) に関する記事 - ゲートウェイの概要を丁寧に説明しています。
 - [オンプレミスとクラウドのデータ ストア間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事 - 単一のノードでゲートウェイを使用するための詳細な手順を紹介したチュートリアルを含みます。 

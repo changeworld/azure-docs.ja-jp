@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: tamram
-ms.openlocfilehash: 4f4070c5a02e559bd299033865aa5258532498aa
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 34780001afb309a2986cc21dae948d9d94f1a63f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 の使用
 
@@ -196,9 +196,10 @@ az storage account create \
   * `Standard_LRS`
   * `Standard_RAGRS`
   * `Standard_ZRS`
+```
 
-### <a name="set-default-azure-storage-account-environment-variables"></a>既定の Azure ストレージ アカウント環境変数を設定する
-Azure サブスクリプションでは複数のストレージ アカウントを持つことができます。 それらの 1 つを選んですべての後続のストレージ コマンドに使用するには、下記のように環境変数を設定します。
+### Set default Azure storage account environment variables
+You can have multiple storage accounts in your Azure subscription. To select one of them to use for all subsequent storage commands, you can set these environment variables:
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -239,7 +240,7 @@ az storage container create --name <container_name>
 * `blob`: BLOB に対するパブリック読み取りアクセスです。
 * `container`: コンテナ―全体に対するパブリックの読み取りおよび一覧表示アクセスです。
 
-詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」をご覧ください。
+詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」を参照してください。
 
 ### <a name="upload-a-blob-to-a-container"></a>コンテナーに BLOB をアップロードする
 Azure Blob Storage では、ブロック BLOB、追加BLOB、ページ BLOB がサポートされています。 `blob upload` コマンドを使用して、コンテナーに BLOB をアップロードできます。
@@ -373,7 +374,7 @@ az storage file copy start \
 ```
 
 ## <a name="create-share-snapshot"></a>共有スナップショットの作成
-`az storage share snapshot` コマンドを使用して、共有スナップショットを作成できます。
+次のように、`az storage share snapshot` コマンドを使用して、共有スナップショットを削除できます。
 
 ```cli
 az storage share snapshot -n <share name>
@@ -509,7 +510,7 @@ az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 下記の資料で、Azure CLI 2.0 の使用に関する詳細をさらにご覧いただけます。
 
 * [Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)

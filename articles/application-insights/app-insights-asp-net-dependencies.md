@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: fe02adafbf96df22462683c69813b05c182d3106
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 060f1c9d2c74ed45e8077ec99503a1d7b885d325
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定: 依存関係の追跡
 *依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/01/2017
 ## <a name="set-up-dependency-monitoring"></a>依存関係の監視の設定
 [Application Insights SDK](app-insights-asp-net.md) では、部分的な依存関係情報が自動的に収集されます。 完全なデータを取得するには、ホスト サーバー用の適切なエージェントをインストールします。
 
-| Platform | インストール |
+| プラットフォーム | [インストール] |
 | --- | --- |
 | IIS サーバー |[サーバーに Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)するか、[アプリを .NET Framework 4.6 以降にアップグレード](http://go.microsoft.com/fwlink/?LinkId=528259)して [Application Insights SDK](app-insights-asp-net.md) をアプリにインストールします。 |
 | Azure Web アプリ |Web アプリのコントロール パネルで [[Application Insights] ブレードを開き](app-insights-azure-web-apps.md)、メッセージが表示された場合は [Install (インストール)] を選択します。 |
@@ -131,7 +131,7 @@ ms.lasthandoff: 11/01/2017
 
 ![要求の種類をクリックし、インスタンスをクリックして同じインスタンスの異なるビューを取得し、それをクリックして例外の詳細を取得します。](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>[分析]
 依存関係は [Log Analytics クエリ言語](https://docs.loganalytics.io/)によって追跡できます。 次に例をいくつか示します。
 
 * これは、失敗した依存関係呼び出しを見つけます。
@@ -178,7 +178,7 @@ ms.lasthandoff: 11/01/2017
 
 たとえば、自分で記述していないアセンブリを使ってコードを作成する場合、それに対するすべての呼び出しを測定し、何が応答時間に貢献するかを知ることができます。 このデータを Application Insights 内の依存関係グラフに表示するには、データを `TrackDependency`を使用して送信します。
 
-```C#
+```csharp
 
             var startTime = DateTime.UtcNow;
             var timer = System.Diagnostics.Stopwatch.StartNew();
@@ -208,7 +208,7 @@ ms.lasthandoff: 11/01/2017
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [例外](app-insights-asp-net-exceptions.md)
 * [ユーザーとページのデータ](app-insights-javascript.md)
 * [可用性](app-insights-monitor-web-app-availability.md)

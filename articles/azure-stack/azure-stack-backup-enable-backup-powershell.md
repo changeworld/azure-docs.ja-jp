@@ -1,6 +1,6 @@
 ---
 title: "PowerShell で Azure Stack のバックアップを有効にする | Microsoft Docs"
-description: "Windows PowerShell でインフラストラクチャ バック サービスを有効にし、障害が発生した場合に Azure Stack を復元できるようにします。"
+description: "Windows PowerShell でインフラストラクチャ バックアップ サービスを有効にし、障害が発生した場合に Azure Stack を復元できるようにします。"
 services: azure-stack
 documentationcenter: 
 author: mattbriggs
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mabrigg
-ms.openlocfilehash: e0be5f1916ddb653550e6428201356290560c00e
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: cbec6242fb4e185c9801a93fc2c4b35721269c2f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>PowerShell で Azure Stack のバックアップを有効にする
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Windows PowerShell でインフラストラクチャ バック サービスを有効にし、障害が発生した場合に Azure Stack を復元できるようにします。 PowerShell コマンドレットにアクセスして、オペレーター管理エンドポイント経由でバックアップを有効にし、バックアップを開始し、バックアップ情報を取得できます。
+Windows PowerShell でインフラストラクチャ バックアップ サービスを有効にし、障害が発生した場合に Azure Stack を復元できるようにします。 PowerShell コマンドレットにアクセスして、オペレーター管理エンドポイント経由でバックアップを有効にし、バックアップを開始し、バックアップ情報を取得できます。
 
 ## <a name="download-azure-stack-tools"></a>Azure Stack ツールをダウンロードする
 
-Azure Stack の PowerShell と Azure Stack ツールをインストールして構成します。 「[Get up and running with PowerShell in Azure Stack (Azure Stack での PowerShell の稼働)](https://review.docs.microsoft.com/en-us/azure/azure-stack/azure-stack-powershell-configure-quickstart)」をご覧ください。
+Azure Stack の PowerShell と Azure Stack ツールをインストールして構成します。 「[Get up and running with PowerShell in Azure Stack (Azure Stack での PowerShell の稼働)](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)」をご覧ください。
 
 ##  <a name="load-the-connect-and-infrastructure-modules"></a>接続モジュールとインフラストラクチャ モジュールを読み込む
 
@@ -90,6 +90,9 @@ Azure Stack の PowerShell と Azure Stack ツールをインストールして�
    $encryptionkey = New-EncryptionKeyBase64
    ```
 
+> [!Warning]  
+> AzureStack-Tools を使用してキーを生成する必要があります。
+
 ## <a name="provide-the-backup-share-credentials-and-encryption-key-to-enable-backup"></a>バックアップを有効にするためのバックアップ共有、認証情報、暗号化キーを提供する
 
 同じ PowerShell セッションで、環境変数を追加して次の PowerShell スクリプトを編集します。 更新されたスクリプトを実行して、インフラストラクチャ バックアップ サービスにバックアップ共有、資格情報、および暗号化キーを提供します。
@@ -98,18 +101,18 @@ Azure Stack の PowerShell と Azure Stack ツールをインストールして�
 |---              |---                                        |
 | $username       | 共有ドライブの場所のドメインとユーザー名を使用して**ユーザー名**を入力します。 たとえば、「`Contoso\administrator`」のように入力します。 |
 | $password       | ユーザーの**パスワード**を入力します。 |
-| $sharepath      | **バックアップ ストレージの場所**のパスを入力します。 別のデバイスでホストされるファイル共有のパスの場合、汎用名前付け規則 (UNC) の文字列を使用する必要があります。 UNC 文字列は、共有ファイルやデバイスなどのリソースの場所を指定します。 バックアップ データを確実に利用できるようにするためには、保存デバイスは別の場所に配置する必要があります。 |
+| $sharepath      | **バックアップ ストレージの場所**のパスを入力します。 別のデバイスでホストされるファイル共有へのパスの場合、汎用名前付け規則 (UNC) の文字列を使用する必要があります。 UNC 文字列は、共有ファイルやデバイスといった、リソースの場所を指定します。 バックアップ データを確実に利用できるようにするためには、保存デバイスは別の場所に配置する必要があります。 |
 
    ```powershell
-   $username = "domain\backupoadmin"
+    $username = "domain\backupoadmin"
     $password = "password"
     $credential = New-Object System.Management.Automation.PSCredential($username, ($password| ConvertTo-SecureString -asPlainText -Force))  
     $location = Get-AzsLocation
     $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
-
-Set-AzSBackupShare -Location $location -Path $path -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey 
-
+    
+    Set-AzSBackupShare -Location $location.Name -Path $sharepath -UserName $credential.UserName -Password $credential.GetNetworkCredential().password -EncryptionKey $encryptionkey
    ```
+   
 ##  <a name="confirm-backup-settings"></a>バックアップ設定を確認する
 
 同じ PowerShell セッションで、次のコマンドを実行します。

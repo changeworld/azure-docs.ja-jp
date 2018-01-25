@@ -27,10 +27,12 @@
       href: app-service-web-get-started-python.md
     - name: 静的な HTML サイトの作成
       href: app-service-web-get-started-html.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - アプリと DB
       items:
+        - name: .NET Core と SQL DB
+          href: app-service-web-tutorial-dotnetcore-sqldb.md
         - name: .NET と SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP と MySQL
@@ -85,7 +87,7 @@
           href: web-sites-python-configure.md
         - name: オンプレミスのリソースへの接続
           href: web-sites-integrate-with-vnet.md
-    - name: Azure へのデプロイ
+    - name: '[Deploy to Azure (Azure へのデプロイ)]'
       items:
         - name: アプリケーションのデプロイ
           items:

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: LADocs; deli
-ms.openlocfilehash: 7738b3346af49cb8aa811eb17003d1b72b1bbe46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32ab5be41a8dee3b1f2c0b1bde076c0d1a844bdd
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>ファイル システム コネクタを使用した、Logic Apps からオンプレミスのファイル システムへの接続
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 * 最新のオンプレミス データ ゲートウェイのバージョン 1.15.6150.1 以降をインストールし、設定します。 手順については、[オンプレミスのデータ ソースへの接続](http://aka.ms/logicapps-gateway)に関するページを参照してください。 これらの手順を続行する前に、オンプレミス コンピューターにゲートウェイをインストールする必要があります。
 
-* [ロジック アプリの作成方法](../logic-apps/logic-apps-create-a-logic-app.md)に関する基本的な知識
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
 ## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>ファイル システムに接続するためのトリガーとアクションの追加
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 
    ![接続の構成](media/logic-apps-using-file-connector/create-file.png)
 
-   | 設定 | Description |
+   | 設定 | [説明] |
    | ------- | ----------- |
    | **ルート フォルダー** | ファイル システムのルート フォルダーを指定します。 このフォルダーには、オンプレミスのデータ ゲートウェイがインストールされているコンピューターのローカル フォルダー、またはコンピューターがアクセス可能なネットワーク共有を指定できます。 <p>**ヒント:** ルート フォルダーはメインの親フォルダーで、すべてのファイル関連のアクションの相対パスに使用されます。 | 
    | **認証の種類** | ファイル システムで使用される認証の種類 | 
@@ -100,7 +100,7 @@ ms.lasthandoff: 10/11/2017
 
 * [Azure Logic Apps User Voice サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [オンプレミスのデータに接続する](../logic-apps/logic-apps-gateway-connection.md) 
 * [ロジック アプリを監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)

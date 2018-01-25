@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d423304c84bd03477f5e9ee2edb4763e2ae8d5b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47a9feaa692eaf048371b4e534e6b2e8c4086997
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,14 +61,14 @@ ms.lasthandoff: 10/11/2017
 
 次の表は、Amazon Redshift のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |あり |
-| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |あり |
+| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |[はい] |
+| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
 | **port** |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439) |
-| **database** |Amazon Redshift データベースの名前。 |あり |
-| **username** |データベースへのアクセス権があるユーザーの名前。 |あり |
-| **password** |ユーザー アカウントのパスワードです。 |あり |
+| **database** |Amazon Redshift データベースの名前。 |[はい] |
+| **username** |データベースへのアクセス権があるユーザーの名前。 |[はい] |
+| **password** |ユーザー アカウントのパスワードです。 |[はい] |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 10/11/2017
 
 **typeProperties** セクションはデータセット型ごとに異なり、ストアのデータの場所などに関する情報を提供します。 **RelationalTable** 型のデータセット (Amazon Redshift データセットを含む) の **typeProperties** セクションには、次のプロパティがあります。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | **tableName** |リンクされたサービスが参照する Amazon Redshift データベースのテーブルの名前です。 |いいえ (種類が **RelationalSource** のコピー アクティビティの **query** プロパティが指定されている場合) |
 
@@ -86,16 +86,16 @@ ms.lasthandoff: 10/11/2017
 
 コピー アクティビティのソースの種類が **AmazonRedshiftSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | **query** | カスタム クエリを使用してデータを読み取ります。 |いいえ (データセットの **tableName** プロパティが指定されている場合) |
-| **redshiftUnloadSettings** | Redshift の **UNLOAD** コマンドを使用する場合のプロパティ グループが含まれます。 | いいえ |
+| **redshiftUnloadSettings** | Redshift の **UNLOAD** コマンドを使用する場合のプロパティ グループが含まれます。 | いいえ  |
 | **s3LinkedServiceName** | 中間ストアとして使用する Amazon S3 です。 リンクされたサービスは、**AwsAccessKey** 型の Azure Data Factory 名を使用して指定します。 | **redshiftUnloadSettings** プロパティを使用する場合に必要です |
 | **bucketName** | 中間データを格納するための Amazon S3 バケットを示します。 このプロパティを指定しない場合、コピー アクティビティによってバケットが自動生成されます。 | **redshiftUnloadSettings** プロパティを使用する場合に必要です |
 
 また、(Amazon Redshift を含む) **RelationalSource** 型を **typeProperties** セクションの以下のプロパティで使用することもできます。 このソースの型では Redshift の **UNLOAD** コマンドがサポートされないことに注意してください。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
 | **query** |カスタム クエリを使用してデータを読み取ります。 | いいえ (データセットの **tableName** プロパティが指定されている場合) |
 
@@ -334,14 +334,14 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 | SMALLINT |Int16 |
 | INTEGER |Int32 |
 | BIGINT |Int64 |
-| DECIMAL |DECIMAL |
+| DECIMAL |Decimal |
 | REAL |Single |
 | DOUBLE PRECISION |Double |
 | BOOLEAN |String |
 | CHAR |String |
 | VARCHAR |String |
-| DATE |DateTime |
-| TIMESTAMP |DateTime |
+| DATE |Datetime |
+| TIMESTAMP |Datetime |
 | TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
@@ -353,5 +353,5 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 コピー アクティビティを使用したパイプライン作成の詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。

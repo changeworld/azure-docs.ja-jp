@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 95c2f4fe40590a8d809f634fb5b2c92d07421bb0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 099e3c259f0b63e4376847727eb8e185aeb37380
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
     |設定|値|
     |---|---|
-    |名前|myVnet|
+    |Name|myVnet|
     |アドレス空間|10.0.0.0/16|
     |サブネット名|パブリック|
     |サブネットのアドレス範囲|10.0.0.0/24|
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 4. ポータルでは、仮想ネットワークを作成するときに、サブネットを 1 つだけ作成できます。 このチュートリアルでは、仮想ネットワークを作成した後に、2 つ目のサブネットを作成します。 インターネットにアクセス可能なリソースを、後で**パブリック** サブネットで作成できます。 また、インターネットからアクセスできないリソースは、**プライベート** サブネットで作成できます。 2 つ目のサブネットを作成するために、ページ上部にある **[リソースの検索]** ボックスに「**myVnet**」と入力します。 検索結果に **[myVnet]** が表示されたら、それをクリックします。
 5. 表示された **[仮想ネットワーク (クラシック) の作成]** ブレードで (**[設定]**セクションの) **[サブネット]** をクリックします。
 6. 表示された **[myVnet - サブネット]** ブレードで **[+追加]** をクリックします。
-7. **[サブネットの追加]** ブレードで、**[名前]** に「**プライベート**」と入力します。 **[アドレス範囲]** に「**10.0.1.0/24**」と入力します。  **[OK]**をクリックします。
+7. **[サブネットの追加]** ブレードで、**[名前]** に「**プライベート**」と入力します。 **[アドレス範囲]** に「**10.0.1.0/24**」と入力します。  Click **OK**.
 8. **[myVnet - サブネット]** ブレードに、作成した**パブリック** サブネットと**プライベート** サブネットが表示されます。
 9. **省略可能**: このチュートリアルが完了したら、使用料がかからないように、作成したリソースを削除することをお勧めします。
     - **[myVnet]** ブレードで **[概要]** をクリックします。
@@ -159,10 +159,10 @@ ms.lasthandoff: 10/11/2017
 
 ---
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - すべての仮想ネットワークとサブネットの設定について詳しくは、[仮想ネットワークの管理](virtual-network-manage-network.md)、および[仮想ネットワークのサブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。 運用環境の仮想ネットワークとサブネットを使用して別の要件を満たすには、さまざまなオプションがあります。
 - 受信方向と送信方向のサブネット トラフィックをフィルタリングするには、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を作成してサブネットに適用します。
-- [Windows 仮想マシン](../virtual-machines/windows/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Linux 仮想マシン](../virtual-machines/linux/classic/createportal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成して、既存の仮想ネットワークに接続します。
+- [Windows 仮想マシン](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Linux 仮想マシン](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成して、既存の仮想ネットワークに接続します。
 - 同じ Azure の場所の 2 つの仮想ネットワークを接続するには、仮想ネットワーク間の[仮想ネットワーク ピアリング](create-peering-different-deployment-models.md)を作成します。 仮想ネットワーク (Resource Manager) を仮想ネットワーク (クラシック) にピアリングすることはできますが、2 つの仮想ネットワーク (クラシック) 間でピアリングを作成することはできません。
 - [VPN Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Azure ExpressRoute ](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続します。

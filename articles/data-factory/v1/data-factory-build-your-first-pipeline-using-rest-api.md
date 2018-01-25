@@ -15,16 +15,16 @@ ms.topic: hero-article
 ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 2a6b52f56647a8bc018c4cf56e996877c1c0d2e6
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4caff18728f2f0f1246f4a05ac121cecdaaeaf04
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
-> * [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
+> * [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 > * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
@@ -121,7 +121,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | ClusterSize |HDInsight クラスターのサイズ。 |
 | TimeToLive |削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
@@ -167,15 +167,15 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 
 次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| type |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
-| linkedServiceName |前に作成した StorageLinkedService を参照します。 |
+| 型 |データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |
+| 既定のコンテナー |前に作成した StorageLinkedService を参照します。 |
 | fileName |このプロパティは省略可能です。 このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。 このチュートリアルでは、input.log のみが処理されます。 |
-| type |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
+| 型 |ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 |
 | columnDelimiter |ログ ファイル内の列はコンマ (,) で区切られています。 |
 | frequency/interval |frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。 |
-| 外部 |Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 |
+| external |Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 |
 
 ### <a name="outputdatasetjson"></a>outputdataset.json
 
@@ -337,7 +337,7 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。 まずはデータ ストアやコンピューティングを自分のデータ ストアにリンクするリンクされたサービスを作成し、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義します。
 
-## <a name="create-linked-services"></a>リンクされたサービスの作成
+## <a name="create-linked-services"></a>リンクされたサービスを作成します
 この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクします。 Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。 HDInsight のリンクされたサービスは、このサンプルのパイプラインのアクティビティに指定された Hive スクリプトを実行するために使用されます。
 
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
@@ -472,9 +472,9 @@ IF ((ConvertFrom-Json $results2).value -ne $NULL) {
 >
 >
 
-Azure ポータルを使用して、スライスを監視し、問題のトラブルシューティングを行うこともできます。 詳細については、 [Azure ポータルを使用したパイプラインの監視](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline) に関する記事を参照してください。
+Azure ポータルを使用して、スライスを監視し、問題のトラブルシューティングを行うこともできます。 詳細については、 [Azure ポータルを使用したパイプラインの監視](data-factory-build-your-first-pipeline-using-editor.md#monitor-a-pipeline) に関する記事を参照してください。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。 以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。
 
 1. Azure **データ ファクトリ**を作成しました。
@@ -484,11 +484,11 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 3. パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの **データセット**を作成しました。
 4. **HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
-| トピック | 説明 |
+| Topic | [説明] |
 |:--- |:--- |
 | [Data Factory REST API リファレンス](/rest/api/datafactory/) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |

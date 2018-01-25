@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: d8c970b322be7f735e51c7b246b2421589c91813
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ded0b4cdcbac747d52435023a24b5719f3c58758
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
 
@@ -27,7 +27,7 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
 ## <a name="overview"></a>概要
 
-このシナリオで使用される戦略では、Azure アクティビティ ログがイベントを[イベント ハブ](../event-hubs/event-hubs-what-is-event-hubs.md)に送信するようにします。そこから、[ロジック アプリ](../logic-apps/logic-apps-what-are-logic-apps.md) が Log Analytics ワークスペースにイベントを送信します。 
+このシナリオで使用される戦略では、Azure アクティビティ ログがイベントを[イベント ハブ](../event-hubs/event-hubs-what-is-event-hubs.md)に送信するようにします。そこから、[ロジック アプリ](../logic-apps/logic-apps-overview.md) が Log Analytics ワークスペースにイベントを送信します。 
 
 ![アクティビティ ログから Log Analytics へのデータ フローの画像](media/log-analytics-activity-logs-subscriptions/data-flow-overview.png)
 
@@ -128,7 +128,7 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
    |設定 | [説明]  |
    |:---|:---|
-   | 名前           | ロジック アプリの一意の名前。 |
+   | Name           | ロジック アプリの一意の名前。 |
    | [サブスクリプション]   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
    | リソース グループ | ロジック アプリのために、既存の Azure リソース グループを選択するか、新しいものを作成します。 |
    | 場所       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
@@ -141,7 +141,7 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 
 Logic Apps デザイナーには、使用可能なコネクタとそのトリガーが表示されています。これらは、ロジック アプリ ワークフローを開始するために使用します。
 
-<!-- Learn [how to create a logic app](../logic-apps/logic-apps-create-a-logic-app.md). -->
+<!-- Learn [how to create a logic app](../logic-apps/quickstart-create-first-logic-app-workflow.md). -->
 
 ### <a name="add-event-hub-trigger"></a>イベント ハブ トリガーの追加
 

@@ -5,16 +5,16 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders; nini
-ms.date: 11/06/2017
+ms.date: 01/17/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 8ffa4c22c39bcd241b36b55bbcba24ac3f75fff2
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 37fdb8156e4507046a574ba681e2ea3f6909c4a6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -38,7 +38,7 @@ Azure Policy は Azure のサービスであり、ポリシー定義の作成、
 
 すべてのポリシー定義に、ポリシーが強制される条件があります。 また、それには、条件が満たされた場合に実行される関連アクションも含まれます。
 
-Azure Policy には、既定で使うことができる組み込みポリシーがいくつかあります。 For example:
+Azure Policy には、既定で使うことができる組み込みポリシーがいくつかあります。 例: 
 
 - **SQL Server 12.0 を必要とする**: このポリシー定義の条件/ルールでは、すべての SQL Server がバージョン 12.0 を使うことが保証されます。 アクションでは、これらの条件を満たしていないすべてのサーバーが拒否されます。
 - **許可されるストレージ アカウント SKU**: このポリシー定義の一連の条件/ルールでは、デプロイされているストレージ アカウントが SKU サイズのセット内かどうかが判定されます。 アクションでは、定義されている SKU サイズのセットに準拠していないすべてのサーバーが拒否されます。
@@ -93,10 +93,10 @@ For more information about initiative definitions, see Initiative Definitions.+ 
 
 たとえば、2 つのポリシー定義を含むイニシアチブ定義 **initiativeC** のシナリオについて考えます。 各ポリシー定義では 1 つのパラメーターが定義されています。
 
-| [ポリシー] | パラメーターの名前 |パラメーターの型  |注 |
+| ポリシー | パラメーターの名前 |パラメーターの型  |注 |
 |---|---|---|---|
 | policyA | allowedLocations | array  |このパラメーターは、パラメーターの型が配列として定義されているため、文字列のリストが値として必要です。 |
-| policyB | allowedSingleLocation |string |このパラメーターは、パラメーターの型が文字列として定義されているため、1 つの単語が値として必要です。 |
+| policyB | allowedSingleLocation |文字列 |このパラメーターは、パラメーターの型が文字列として定義されているため、1 つの単語が値として必要です。 |
 
 このシナリオで **initiativeC** のイニシアチブ パラメーターを定義する場合、3 つのオプションがあります。
 
@@ -118,7 +118,7 @@ For more information about initiative definitions, see Initiative Definitions.+ 
 
    イニシアチブ定義からイニシアチブ割り当てを作成した場合、そのイニシアチブ定義に追加される新しいポリシー定義はすべて、そのイニシアチブ定義のイニシアチブ割り当てに自動的にまとめられることに注意してください。 ただし、新しいポリシー定義に新しいパラメーターを追加する場合は、イニシアチブの定義または割り当てを編集して、これを更新する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Policy の概要と主要な概念がわかったので、次に以下の記事を読むことをお勧めします。
 

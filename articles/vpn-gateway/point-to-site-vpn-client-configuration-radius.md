@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 3ab1094c7cf99e105bc0a08d9f84332010f5afd5
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 37951a04bbfd266717490dd1752d0be04d2231a5
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/18/2018
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication-preview"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする (プレビュー)
+# <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
 VPN クライアント構成ファイルは、ZIP ファイルに含まれています。 構成ファイルでは、Windows または Mac のネイティブ IKEv2 VPN クライアントがポイント対サイトを介して VNet に接続するために必要な設定を提供します。 RADIUS サーバーには複数の認証オプションが用意されているため、オプションごとに VPN クライアント構成が異なります。
 
@@ -94,8 +94,8 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
   ![続ける](./media/point-to-site-vpn-client-configuration-radius/adcontinue.png)
 5. プロファイルのインストール中に、VPN 認証に使用されるユーザー名とパスワードを指定するオプションが表示されます。 この情報の入力は必須ではありません。 指定した場合は、その情報が保存され、接続の開始時に自動的に使用されます。 **[インストール]** をクリックして続行します。
 
-  ![[設定]](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
-6. コンピューターにプロファイルをインストールするために必要な特権のユーザー名とパスワードを入力します。 **[OK]**をクリックします。
+  ![設定](./media/point-to-site-vpn-client-configuration-radius/adsettings.png)
+6. コンピューターにプロファイルをインストールするために必要な特権のユーザー名とパスワードを入力します。 Click **OK**.
 
   ![ユーザー名とパスワード](./media/point-to-site-vpn-client-configuration-radius/adusername.png)
 7. インストールが完了すると、プロファイルは **[プロファイル]** ダイアログ ボックスに表示されます。 このダイアログは、後で **[システム環境設定]** から開くこともできます。
@@ -205,6 +205,6 @@ Azure VNet に接続する Mac デバイスごとに、個別のプロファイ�
   * Routes - Azure VNet のバインドされたトラフィックのみが P2S トンネル経由で送信されるように、プロファイル内で構成する必要があるルート。
   * GenenericDevice フォルダーには、"VpnServerRoot" という .cer ファイルも含まれています。 このファイルには、P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。 Azure VNet に接続するすべてのデバイスに証明書をインストールします。 
  
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [P2S 構成を完了する](point-to-site-how-to-radius-ps.md)ための記事に戻ります。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 2748d3d3daf7c13dca05f663a4a088598e1b3605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69e8735417bc006296b8a6e5168d9fbeff052247
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) で AS2、X12、および EDIFACT メッセージのクエリを実行する
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="requirements"></a>必要条件
 
-* 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](../logic-apps/logic-apps-create-a-logic-app.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
+* 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
 
 * 監視とログが設定されている統合アカウント。 [統合アカウントの作成方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)に関する記事と[ロジック アプリのログの設定方法](../logic-apps/logic-apps-monitor-b2b-message.md)に関する記事を参照してください。
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 > [!NOTE]
 > 上の要件を満たした後、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) 内にワークスペースを用意する必要があります。 OMS で B2B 通信を追跡するための同じ OMS ワークスペースを使用する必要があります。 
 >  
-> OMS ワークスペースを持っていない場合は、[OMS ワークスペースの作成方法](../log-analytics/log-analytics-get-started.md)に関する記事を参照してください。
+> OMS ワークスペースがない場合は、[OMS ワークスペースを作成する方法](../log-analytics/log-analytics-get-started.md)を参照してください。
 
 ## <a name="create-message-queries-with-filters-in-the-operations-management-suite-portal"></a>Operations Management Suite ポータルでフィルター付きのメッセージ クエリを作成する
 
@@ -124,7 +124,7 @@ ms.lasthandoff: 10/11/2017
 
    ![クエリを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [AS2 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12 の追跡スキーマ](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)

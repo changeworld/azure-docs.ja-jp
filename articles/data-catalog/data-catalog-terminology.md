@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/01/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 8cb24357bb24c48dceda714a040427fcc0c0ba4d
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b88abd01c2dbc302bfc0e783d1715710c6f8397c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-data-catalog-terminology"></a>Azure Data Catalog の用語集
 ## <a name="catalog"></a>カタログ
@@ -48,7 +48,7 @@ Azure Data Catalog は、データ ソースとデータ資産を登録できる
 * データ ソースにアクセスするために使用できる ID およびアクセス管理ツール (Microsoft Identity Manager など) の URL。
 * ユーザーがデータ ソースにアクセスする方法が示された自由書式のエントリ。
 
-## <a name="preview"></a>Preview
+## <a name="preview"></a>プレビュー
 Azure Data Catalog のプレビューは、最大 20 レコードのスナップショットです。登録時にデータ ソースから抽出し、データ資産メタデータと共にカタログに格納できます。 プレビューを使用すると、データ資産の機能と目的を理解しやすくなります。 言い換えると、列名とデータ型だけではなく、サンプル データも確認できるので、わかりやすくなります。
 テーブルとビューのプレビューのみがサポートされています。登録時にユーザーが明示的にプレビューを選択する必要があります。
 
@@ -68,7 +68,7 @@ Azure Data Catalog では、登録されているデータ資産を説明する�
 ## <a name="expert"></a>エキスパート
 エキスパートとは、データ資産について知識がある "専門家" の観点を持つ人物と認められたユーザーです。 すべてのユーザーは、自分または他のユーザーを資産のエキスパートとして追加することができます。 エキスパートに登録された場合でも、Azure Data Catalog に追加の特権は付与されませんが、観点を簡単に特定できるようになります。たとえば、資産の記述メタデータを確認するときに役に立ちます。
 
-## <a name="owner"></a>所有者
+## <a name="owner"></a>Owner
 所有者は、Azure Data Catalog のデータ資産を管理する追加の特権を持つユーザーです。 ユーザーは、登録したデータ資産の所有権を得ることができます。また、所有者は他のユーザーを共同所有者として追加することができます。 詳細については、「[データ資産を管理する方法](data-catalog-how-to-manage.md)」を参照してください  
 
 > [!NOTE]

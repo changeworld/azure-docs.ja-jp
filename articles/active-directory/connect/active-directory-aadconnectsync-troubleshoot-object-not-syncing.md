@@ -3,7 +3,7 @@ title: "Azure AD と同期していないオブジェクトのトラブルシュ
 description: "オブジェクトが Azure AD と同期していない理由のトラブルシューティングを行います。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 585b49addee7fe8ded2a047939f4b5412ba4163b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7176ebd0515008147bd3797dcb760f35e2d85d45
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/11/2017
 
 これらの手順を開始する前に、[Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) を起動します。
 
-## <a name="operations"></a>操作
+## <a name="operations"></a>[操作]
 トラブルシューティングは、Synchronization Service Manager の [操作] タブで開始する必要があります。 [操作] タブには、最近の操作の結果が表示されます。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/operations.png)  
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/11/2017
 
 **[Status]** (ステータス) 列は最も重要な情報であり、実行関連で最も深刻な問題を示します。 最も一般的なステータスを調査の優先度に基づいて簡単にまとめると次のようになります (* はエラー文字列が入ることを意味します)。
 
-| [Status] | コメント |
+| 状態 | Comment (コメント) |
 | --- | --- |
 | stopped-* |実行を完了できませんでした。 たとえば、リモート システムがダウンし、連絡できない場合などです。 |
 | stopped-error-limit |エラーの数が 5,000 を超えています。 大量のエラーに起因し、実行が自動的に停止しました。 |
@@ -100,7 +100,7 @@ cs オブジェクトを開くと、いくつかのタブが上部に表示さ�
 
 すべてのタブの一番下に **[Preview (プレビュー)]** ボタンと **[Log (ログ)]** ボタンがあります。
 
-### <a name="preview"></a>Preview
+### <a name="preview"></a>プレビュー
 [プレビュー] ページは、1 つのオブジェクトの同期に使用されます。 カスタム同期ルールの問題を解決しているとき、1 つのオブジェクトに与える変更の影響を確認するのに便利です。 **完全同期**か**差分同期**を選択できます。**[Generate Preview (プレビューの生成)]** か **[Commit Preview (プレビューのコミット)]** かも選択できます。生成の場合、変更はメモリにのみ保存されます。コミットの場合、メタバースが更新され、すべての変更がターゲット コネクタ スペースにステージングされます。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/preview.png)  
 オブジェクトを調べ、特定の属性フローに適用されたルールを確認できます。  
@@ -140,7 +140,7 @@ Azure AD にコネクタが存在しない場合は、[MV 属性](#MV-attributes
 
 このタブから[コネクタ スペース オブジェクト](#connector-space-object-properties)に移動することもできます。 行を選択し、**[プロパティ]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

@@ -3,7 +3,7 @@ title: "Azure AD Connect Sync: Azure AD Connect Sync で構成を変更する |M
 description: "Azure AD Connect Sync の構成に変更する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: billmath
-ms.openlocfilehash: 1fd07d506b2edc789d71001ac520b9ebddc3e1d9
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ed71272d2d10cd8b71fd3b2722d3ba033f1b51f9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更する方法
 このトピックの目的は、Azure AD Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -269,7 +269,7 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 
     | Attribute | 値 | 詳細 |
     | --- | --- | --- |
-    | 名前 | *名前を入力します* | 例: "*In from AD - User PreferredDataLocation*" |
+    | Name | *名前を入力します* | 例: "*In from AD - User PreferredDataLocation*" |
     | [説明] | "*ユーザー設定の説明を入力します*" |  |
     | 接続先システム | "*オンプレミス AD コネクタを選択します*" |  |
     | 接続先システム オブジェクトの種類 | **User** |  |
@@ -298,7 +298,7 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 
     | Attribute | 値 | 詳細 |
     | ----- | ------ | --- |
-    | 名前 | *名前を入力します* | 例: "Out to AAD - User PreferredDataLocation" |
+    | Name | *名前を入力します* | 例: "Out to AAD - User PreferredDataLocation" |
     | [説明] | *説明を入力します* ||
     | 接続先システム | "*AAD コネクタを選択します*" ||
     | 接続先システム オブジェクトの種類 | User ||
@@ -464,7 +464,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | Attribute | 値 | 詳細 |
     | --- | --- | --- |
-    | 名前 | *名前を入力します* | 例: "*In from AD – User UserType*" |
+    | Name | *名前を入力します* | 例: "*In from AD – User UserType*" |
     | [説明] | *説明を入力します* |  |
     | 接続先システム | "*オンプレミス AD コネクタを選択します*" |  |
     | 接続先システム オブジェクトの種類 | **User** |  |
@@ -506,7 +506,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | Attribute | 値 | 詳細 |
     | ----- | ------ | --- |
-    | 名前 | *名前を入力します* | 例: "Out to AAD – User UserType" |
+    | Name | *名前を入力します* | 例: "Out to AAD – User UserType" |
     | [説明] | *説明を入力します* ||
     | 接続先システム | "*AAD コネクタを選択します*" ||
     | 接続先システム オブジェクトの種類 | User ||

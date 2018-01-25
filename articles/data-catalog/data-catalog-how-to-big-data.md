@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 10/15/2017
+ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: ce40c90af65a8872db61ee01f99200d75fc78053
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 826676600094b956ff84cc88c61e667841043837
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でビッグ データ ソースを操作する方法
 ## <a name="introduction"></a>はじめに
@@ -65,5 +65,5 @@ ms.lasthandoff: 11/03/2017
 ## <a name="alternate-patterns"></a>代替パターン
 前のセクションで説明したパターンは、ビッグ データ ストアを構造化できるただ 2 つの方法ですが、それぞれの実装は異なります。 データ ソースがどのように構造化されているかに関係なく、ビッグ データ ソースを **Azure Data Catalog** に登録する際は、組織内の他のユーザーにとって価値のあるデータ セットを表すファイルまたはディレクトリを登録することに重点を置いてください。 すべてのファイルとディレクトリを登録すると、カタログは煩雑になり、ユーザーが必要なデータを見つけにくくなります。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 データ ソースを **Azure Data Catalog** に登録すると、そのデータ ソースの探索や理解が簡単になります。 ビッグ データ ファイルと、論理データ セットを表すディレクトリを登録して注釈を付けることで、ユーザーが必要なビッグ データを見つけて使用することを支援できます。

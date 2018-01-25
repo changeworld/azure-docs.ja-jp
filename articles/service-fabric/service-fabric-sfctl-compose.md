@@ -9,23 +9,23 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: cli
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 09/22/2017
+ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 3010c298cf227c761288365e3663ffe3fb67d863
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e35ac70125bc640114a4492498b12ea96800d42
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker Compose のデプロイを作成、削除、および管理します。
 
 ## <a name="commands"></a>コマンド
 
-|コマンド|Description|
+|コマンド|[説明]|
 | --- | --- |
 |    create| Compose ファイルから Service Fabric アプリケーションをデプロイします。|
 |    list  | Service Fabric クラスターで作成された Compose デプロイの一覧を取得します。|
@@ -40,7 +40,7 @@ Service Fabric Compose のデプロイを作成します。
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --file-path [必須]| ターゲット Docker Compose ファイルへのパス。|
  |   --deployment-name [必須]| デプロイの名前。|
@@ -51,13 +51,13 @@ Service Fabric Compose のデプロイを作成します。
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug                 | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h               | このヘルプ メッセージを表示して終了します。|
 | --output -o             | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query                 | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose               | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose               | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-compose-list"></a>sfctl compose list
 Service Fabric クラスターで作成された Compose デプロイの一覧を取得します。
@@ -66,7 +66,7 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --continuation-token| 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。      この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。|
 | --max-results    | ページング クエリの一部として返される結果の最大数。      このパラメーターは、返される結果の数に上限を定義します。      返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。|
@@ -74,13 +74,13 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug          | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h        | このヘルプ メッセージを表示して終了します。|
 | --output -o      | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query          | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose        | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose        | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-compose-remove"></a>sfctl compose remove
 クラスターから既存の Service Fabric Compose デプロイを削除します。
@@ -89,20 +89,20 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --deployment-name [必須]| デプロイの ID。 これは通常、'fabric:' URI スキームのないアプリケーションの完全な名前です。|
 | --timeout -t            | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug                 | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h               | このヘルプ メッセージを表示して終了します。|
 | --output -o             | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query                 | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose               | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose               | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-compose-status"></a>sfctl compose status
 Service Fabric Compose デプロイの情報を取得します。
@@ -111,20 +111,20 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 
 ### <a name="arguments"></a>引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --deployment-name [必須]| デプロイの ID。 |
 | --timeout -t            | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 | --debug                 | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h               | このヘルプ メッセージを表示して終了します。|
 | --output -o             | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
 | --query                 | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
-| --verbose               | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+| --verbose               | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl compose upgrade
 Service Fabric クラスターで、Compose デプロイのアップグレードを開始します。
@@ -132,7 +132,7 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 指定されたアップグレード パラメーターを検証し、デプロイのアップグレードを開始します。
 
 ### <a name="arguments"></a>引数
-|引数|Description|
+|引数|[説明]|
 | --- | --- |
 |    --file-path        [必須]| ターゲット Docker Compose ファイルへのパス。|
 |    --deployment-name [必須]| デプロイの名前。|
@@ -156,15 +156,15 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 |    --warning-as-error           | Warnings は Error と同じ重大度で扱われます。|
 
 ### <a name="global-arguments"></a>グローバル引数
- |引数|Description|
+ |引数|[説明]|
 | --- | --- |
 |   --debug                      | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 |    --help -h                    | このヘルプ メッセージを表示して終了します。|
  |   --output -o                  | 出力形式。  使用できる値は、json、jsonc、table、tsv です。
                                    既定値は json です。|
  |   --query                      | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
- |   --verbose                    | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。|
+ |   --verbose                    | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
 - [サンプル スクリプト](/azure/service-fabric/scripts/sfctl-upgrade-application)を使用して、Service Fabric CLI の使用方法を学習します。

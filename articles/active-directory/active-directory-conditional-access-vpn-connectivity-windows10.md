@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 8941e631976eb11966c1f9ddd207af816df5dadf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 511df58befe9aed4aa65fc6944cae3a8e2c74c2d
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="azure-active-directory-conditional-access-for-vpn-connectivity-preview"></a>VPN 接続用の Azure Active Directory の条件付きアクセス(プレビュー)
 
@@ -86,7 +86,7 @@ VPN 証明書を作成するには:
 
     ![時間とプライマリを選択](./media/active-directory-conditional-access-vpn-connectivity-windows10/05.png)
 
-    a. **[時間の選択]** で **[1 年]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[時間の選択]** で **[1 年]** を選択します。
 
     b. **[プライマリ]** で **[はい]** を選択します。
 
@@ -130,7 +130,7 @@ Windows の RRAS ベースのデプロイでは、次のコマンドを実行し
 
     ![テスト ユーザーを選択](./media/active-directory-conditional-access-vpn-connectivity-windows10/10.png)
 
-    a. **[ユーザーとグループの選択]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーとグループの選択]** をクリックします。
 
     b. **[選択]**をクリックします。
 
@@ -142,7 +142,7 @@ Windows の RRAS ベースのデプロイでは、次のコマンドを実行し
 
     ![クラウド アプリを選択](./media/active-directory-conditional-access-vpn-connectivity-windows10/11.png)
 
-    a. **[割り当て]** セクションで、**[クラウド アプリ]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[割り当て]** セクションで、**[クラウド アプリ]** をクリックします。
 
     b. **[クラウド アプリ]** ページで、**[アプリを選択]** をクリックし、**[選択]** をクリックします。
 
@@ -161,7 +161,7 @@ Windows の RRAS ベースのデプロイでは、次のコマンドを実行し
 
     ![[多要素認証が必要です] を選択](./media/active-directory-conditional-access-azure-portal-get-started/14.png)
 
-    a. **[多要素認証が必要です]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[多要素認証が必要です]** を選択します。
 
     b. **[選択]**をクリックします。
 
@@ -173,7 +173,7 @@ Windows の RRAS ベースのデプロイでは、次のコマンドを実行し
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Microsoft がこの機能をどのように実装しているかの詳細を知るには、「[Enhancing remote access in Windows 10 with an automatic VPN profile](https://www.microsoft.com/itshowcase/Article/Content/894/Enhancing-remote-access-in-Windows-10-with-an-automatic-VPN-profile)」(Windows 10 での自動 VPN プロファイルを使用したリモート アクセスの強化) をご覧ください。    
 

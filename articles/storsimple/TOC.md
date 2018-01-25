@@ -2,7 +2,6 @@
 
 ## 概要
 ### [ソリューションとは](storsimple-ova-overview.md)
-### [利用可能なリージョン](storsimple-regions.md)
 
 ## 作業開始
 ### プラン
@@ -13,6 +12,7 @@
 ### デプロイ
 #### [デプロイの準備をする](storsimple-virtual-array-deploy1-portal-prep.md)
 ##### [StorSimple Manager サービスをデプロイする](storsimple-virtual-array-manage-service.md)
+##### [新しい認証](storsimple-virtual-array-aad-registration-key.md)
 #### [Hyper-V でプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md)
 #### [VMware でプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md)
 #### [ファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
@@ -79,6 +79,7 @@
 
 ### デプロイ
 #### [StorSimple デバイス マネージャー サービス](storsimple-8000-manage-service.md)
+#### [サービス向けの新しい認証](storsimple-8000-aad-registration-key.md)
 #### [Azure の物理デバイス](storsimple-8000-deployment-walkthrough-u2.md)
 #### [Government ポータルの物理デバイス](storsimple-8000-deployment-walkthrough-gov-u2.md)
 #### [Azure のクラウド アプライアンス](storsimple-8000-cloud-appliance-u2.md)

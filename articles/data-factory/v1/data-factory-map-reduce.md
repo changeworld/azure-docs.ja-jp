@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e5fd49c6b269b5f247440c2bc91680fc77fc296c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5961395f5ca4e9a6efb019a77dbdf5db5ff1ee38
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -185,13 +185,13 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 
 | プロパティ | メモ |
 |:--- |:--- |
-| type |type には、 **HDInsightMapReduce**を設定する必要があります。 |
+| 型 |type には、 **HDInsightMapReduce**を設定する必要があります。 |
 | className |クラスの名前は **wordcount** |
 | jarFilePath |クラスを含む jar ファイルのパス。 次のコードをコピー/貼り付けする場合は、クラスターの名前を必ず変更してください。 |
 | jarLinkedService |jar ファイルが含まれるAzure Storage のリンクされたサービス。 このリンクされたサービスは、HDInsight クラスターに関連付けられるストレージです。 |
 | arguments |wordcount プログラムは、入力と出力という2 つの引数を使用します。 入力ファイルは davinci.txt ファイルです。 |
 | frequency/interval |これらのプロパティの値は、出力データセットと一致します。 |
-| linkedServiceName |前に作成した HDInsight のリンクされたサービスを参照します。 |
+| 既定のコンテナー |前に作成した HDInsight のリンクされたサービスを参照します。 |
 
 ```JSON
 {

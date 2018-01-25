@@ -3,7 +3,7 @@ title: "Azure AD Connect 同期: 既定の構成について | Microsoft Docs"
 description: "この記事では、Azure AD Connect 同期の既定の構成について説明します。"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 6ba1739825a6f0898e417ca37fa6bf370ef17d6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87f513ffd2e8854085d9dfcd399148082de37698
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -76,12 +76,12 @@ ms.lasthandoff: 12/11/2017
 * 連絡先はメール対応である必要があります。 次のルールで検証されます。
   * `IsPresent([proxyAddresses]) = True)` proxyAddresses 属性に入力する必要があります。
   * プライマリ電子メール アドレスは proxyAddresses 属性とメール属性のいずれかにあります。 @ が存在することで、コンテンツが電子メールであることが確認されます。 これら 2 つの規則のいずれかを評価した結果、True になる必要があります。
-    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))`」を参照してください。 "SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に @ は含まれますか。
-    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)`」を参照してください。 メール属性は入力されますか。入力される場合、文字列に @ は含まれますか。
+    * `(Contains([proxyAddresses], "SMTP:") > 0) && (InStr(Item([proxyAddresses], Contains([proxyAddresses], "SMTP:")), "@") > 0))` "SMTP:" が含まれるエントリはありますか。エントリがある場合、文字列に @ は含まれますか。
+    * `(IsPresent([mail]) = True && (InStr([mail], "@") > 0)` メール属性は入力されますか。入力される場合、文字列に @ は含まれますか。
 
 次の連絡先オブジェクトは Azure AD に同期 **されません** 。
 
-* `IsPresent([isCriticalSystemObject])`. クリティカルとしてマークされている連絡先オブジェクトは同期されないようにします。 既定の構成を含むオブジェクトにはなりません。
+* `IsPresent([isCriticalSystemObject])` クリティカルとしてマークされている連絡先オブジェクトは同期されないようにします。 既定の構成を含むオブジェクトにはなりません。
 * `((InStr([displayName], "(MSOL)") > 0) && (CBool([msExchHideFromAddressLists])))`
 * `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))` これらのオブジェクトは Exchange Online では動作しません。
 * `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)` レプリケーション対象オブジェクトは同期しないでください。
@@ -97,7 +97,7 @@ ms.lasthandoff: 12/11/2017
 
 次のグループ オブジェクトは Azure AD に同期 **されません** 。
 
-* `IsPresent([isCriticalSystemObject])`. 組み込み管理者グループなど、Active Directory の既定のオブジェクトの多くは同期されません。
+* `IsPresent([isCriticalSystemObject])` 組み込み管理者グループなど、Active Directory の既定のオブジェクトの多くは同期されません。
 * `[sAMAccountName] = "MSOL_AD_Sync_RichCoexistence"` DirSync で使用される旧グループ。
 * `BitAnd([msExchRecipientTypeDetails],&amp;H40000000)` ロール グループ。
 * `CBool(InStr(DNComponent(CRef([dn]),1),"\\0ACNF:")>0)` レプリケーション対象オブジェクトは同期しないでください。
@@ -145,7 +145,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 
 同期規則には、[説明]、[スコープ フィルター]、[結合規則]、[変換] という 4 つの構成セクションがあります。
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>[説明]
 最初のセクションでは、名前や説明などの基本的な情報を提供します。
 
 ![Description tab in Sync rule editor ](./media/active-directory-aadconnectsync-understanding-default-configuration/syncruledescription.png)
@@ -217,7 +217,7 @@ NULL
 ### <a name="putting-it-all-together"></a>まとめ
 ここまでの同期規則に関する説明で、構成がさまざまな同期規則でどのように動作するかを十分理解できるようになりました。 ユーザー、メタバースに影響する属性に注目すると、規則は次の順序で適用されます。
 
-| 名前 | コメント |
+| Name | Comment (コメント) |
 |:--- |:--- |
 | AD からの受信 - ユーザー結合 |コネクタ スペース オブジェクトをメタバースと結合するための規則。 |
 | AD からの受信 - ユーザー アカウント有効 |Azure AD と Office 365 にサインインするために必要な属性。 これらの属性は有効なアカウントから取得します。 |
@@ -226,7 +226,7 @@ NULL
 | AD からの受信 - ユーザー Exchange |Exchange が検出された場合にのみ存在します。 インフラストラクチャの Exchange 属性がすべてフローされます。 |
 | AD からの受信 - ユーザー Lync |Lync が検出された場合にのみ存在します。 インフラストラクチャの Lync 属性がすべてフローされます。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * この構成モデルについて詳しくは、「 [Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
 * 式言語について詳しくは、「 [宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)」をご覧ください。
 * 既定の構成の動作についてさらに詳しく知りたい場合には、「 [ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md)

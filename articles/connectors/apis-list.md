@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: 36d3474c2b8dde0355a265c149fe6ba1920a9f22
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 948b91a9fabc3ab3c4d6708968a88cb9d203b171
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="connectors-list"></a>コネクタの一覧
 各コネクタの Swagger 記述で定義されているトリガーとアクション、コネクタの制限については、[コネクタの詳細](/connectors/)に関するページを参照してください。
@@ -126,7 +126,7 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 | **配列のフィルター処理** (クエリ) | 結果セットをフィルター処理して、関心のあるエントリを取り出します。 たとえば、`#Azure` を含むすべてのツイートを検索し、返されたツイートを "フィルター処理" して、`Tweeted_by_followers > 50` の結果のみを返します。 |
 | **Join** | 何らかの区切り記号で配列を結合します。 たとえば、キー フレーズ検出操作では、キー フレーズの配列が返されます。 それらのキー フレーズを `,` などで "結合" できます。 そうすると、`["Some", "Phrase"]` ではなく、`"Some, Phrase"` になります。 |
 | **JSON の解析** | デザイナーで JSON オブジェクトの値を解析およびアクセスします。 たとえば、Azure 関数で JSON ペイロードが返される場合、そのペイロードを解析して、後の別の手順で JSON プロパティにアクセスできます。 このアクションでは、実行時に JSON が指定したスキーマと一致することも検証します。 | 
-| **選択肢** | 後続の処理のために配列の特定のプロパティを選択します。 SQL の "レコードの一覧表示" を行い、15 列が返された場合に、後続の処理のためにその一部の列を選択します。 出力は、選択したプロパティのみを含む配列です。 |
+| **Select** | 後続の処理のために配列の特定のプロパティを選択します。 SQL の "レコードの一覧表示" を行い、15 列が返された場合に、後続の処理のためにその一部の列を選択します。 出力は、選択したプロパティのみを含む配列です。 |
 
 ## <a name="custom-connectors-and-azure-certification"></a>カスタム コネクタと Azure の認定 
 
@@ -142,8 +142,8 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 
 コネクタのトピックについて不足している情報や、重要と思われる情報がありましたらお知らせください。 既存のトピックに追加いたします。または、読者が独自に作成することもできます。 ドキュメントはオープン ソースであり、GitHub でホストされています。 まずは、[GitHub リポジトリ](https://github.com/Microsoft/azure-docs)にアクセスしてみましょう。 
 
-## <a name="next-steps"></a>次のステップ
-* [初めてのロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
+## <a name="next-steps"></a>次の手順
+* [初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [ロジック アプリ用のカスタム API を作成する](../logic-apps/logic-apps-create-api-app.md)
 * [ロジック アプリを監視する](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: LADocs; deli
-ms.openlocfilehash: 338b6a5b549d7bf81186550295608438ac4aee32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a459fb131cb9f917f2b0cf79679b04da48d76c42
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="perform-different-actions-in-logic-apps-with-a-switch-statement"></a>switch ステートメントを使用してロジック アプリでさまざまなアクションを実行する
 
@@ -34,7 +34,7 @@ Switch ステートメントを使用して、これらのシナリオを実装�
 ## <a name="prerequisites"></a>前提条件
 
 - 有効な Azure サブスクリプション アクティブな Azure サブスクリプションを持っていない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/)するか、[無料の Logic Apps](https://tryappservice.azure.com/) をお試しください。
-- [ロジック アプリの基本的な知識](logic-apps-what-are-logic-apps.md)。
+- [ロジック アプリの基本的な知識](logic-apps-overview.md)。
 
 ## <a name="add-a-switch-statement-to-your-workflow"></a>Switch ステートメントをワークフローに追加する
 
@@ -120,7 +120,7 @@ Switch ステートメントを使用してロジック アプリを正しく作
 
 [Azure Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [条件の追加](logic-apps-use-logic-app-features.md)方法を確認する
 - [エラーと例外の処理](logic-apps-exception-handling.md)を確認する

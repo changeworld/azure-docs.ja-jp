@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: b03265b52886b30e4b9de0b0293e5dadd6d2413a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae99085a37162a883d18976181be198a2f21a60c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診断のトラブルシューティング
 この記事では、Azure 診断の使用に関連するトラブルシューティング情報について説明します。 Azure 診断の詳細については、[Azure 診断の概要](azure-diagnostics.md)に関するページを参照してください。
@@ -63,7 +63,7 @@ Azure 診断には、Azure ポータルに表示できるメトリック デー�
 
 リソース ID が間違っている場合は、**[診断]**、**[構成]** > **[メトリック]** > **[ResourceId]** で、リソース ID が正しく設定されているかどうかを確認します。
 
-特定のメトリックのデータがない場合は、**[診断構成]** > **[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
+特定のメトリックのデータがない場合は、**[診断構成]**、 > **[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
@@ -125,7 +125,7 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 - **トレース ログ**: VM にリモート アクセスし、アプリケーションの構成ファイルに TextWriterTraceListener を追加します。  http://msdn.microsoft.com/library/sk36c28t.aspx を参照し、テキスト リスナーをセットアップしてください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
 トレース ログが生成されていない場合、「[トレース ログが見つからない場合 (詳細)](#more-about-trace-logs-missing)」をご覧ください。
 
-- **ETW トレース**: VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]** > **[ユーザー コマンド]** の順に選択し、 > **Listen etwprovder1** を実行します。必要に応じてさらに  > **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
+- **ETW トレース**: VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]**、 > **[ユーザー コマンド]** の順に選択し、 > **Listen etwprovder1** を実行します。必要に応じてさらに  > **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
 
 - **イベント ログ**: VM にリモート アクセスします。 `Event Viewer` を開き、イベントが存在することを確認します。
 
@@ -154,7 +154,7 @@ MonitoringAgent [MaConfig.xml](#log-artifacts-path) に生成された構成も�
 ## <a name="diagnostics-data-tables-not-found"></a>診断データ テーブルが見つからない
 ETW イベントを保持する Azure Storage 内のテーブルの名前には、次のコードを使います。
 
-```C#
+```csharp
         if (String.IsNullOrEmpty(eventDestination)) {
             if (e == "DefaultEvents")
                 tableName = "WADDefault" + MD5(provider);
@@ -205,7 +205,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ```
 このコードは 4 つのテーブルを生成します。
 
-| イベント | テーブル名 |
+| Event | テーブル名 |
 | --- | --- |
 | provider=”prov1” &lt;Event id=”1” /&gt; |WADEvent+MD5(“prov1”)+”1” |
 | provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /&gt; |WADdest1 |
@@ -228,7 +228,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 診断プラグインの終了コード
 プラグインにより、次の終了コードが返されます。
 
-| 終了コード | Description |
+| 終了コード | [説明] |
 | --- | --- |
 | 0 |成功。 |
 | -1 |一般的なエラー。 |

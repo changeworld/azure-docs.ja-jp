@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a631708ce755b07701c053e217dd658e5f7bb82b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 4dd393f1f808e5cfc804bdf90ee31f69f15eed7c
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Data Factory でサポートされていない方法でデータを変換する�
 
 Data Factory でサポートされているコンピューティング サービスの詳細については、記事「 [コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md) 」を参照してください。 
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 Azure Data Factory では、次のデータ変換アクティビティと、アクティビティのためのコンピューティング環境をサポートしています。 変換アクティビティは、個別または他のアクティビティと連結した状態でパイプラインに追加できます。
 
 | データ変換アクティビティ | Compute 環境 |

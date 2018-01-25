@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3ef75a2a157190b24c171309c4d5c39596b5045
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: d8088a8a83bcaefce17ac2756360a46119c8eb27
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
@@ -40,7 +40,7 @@ Azure Functions を使用して、サーバーレス ソリューションを構
 
 ### <a name="cross-function-communication"></a>関数間の通信
 
-[Durable Functions](durable-functions-overview.md) と [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) は、状態遷移と複数の関数間での通信を管理するように構築されています。
+[Durable Functions](durable-functions-overview.md) と [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、状態遷移と複数の関数間での通信を管理するように構築されています。
 
 複数の関数と統合する際に Durable Functions も Logic Apps も使用しない場合、ベスト プラクティスとして、関数間通信にストレージ キューを使用するのが一般的です。  その主な理由は、ストレージ キューの方が安価であり、プロビジョニングがはるかに容易なためです。 
 

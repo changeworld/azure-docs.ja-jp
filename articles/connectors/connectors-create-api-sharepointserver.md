@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 0f3274816e279a1aa57febaa2f8294914900799a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da863e0249cb46e4e569812a851f3199d57b2107
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>SharePoint コネクタの概要
 SharePoint コネクタを使用すると、SharePoint リストを操作できます。
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)に関する記事を参照してください。
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
 
 ## <a name="create-a-connection-to-sharepoint"></a>SharePoint への接続を作成する
 SharePoint コネクタを使用するには、まず **接続** を作成してから、以下のプロパティの詳細を指定します。 
 
-| プロパティ | 必須 | 説明 |
+| プロパティ | 必須 | [説明] |
 | --- | --- | --- |
-| トークン |あり |SharePoint の資格情報を指定します |
+| トークン |[はい] |SharePoint の資格情報を指定します |
 
 **SharePoint** に接続するには、SharePoint で ID (ユーザー名とパスワード、スマート カードの資格情報など) を入力します。 認証されたら、ロジック アプリで SharePoint コネクタを使用できるようになります。 
 

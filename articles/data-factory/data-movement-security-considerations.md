@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2017
+ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: a69f3770184d94c481c1b78f23efa9e9c4fb31fa
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 8bd5ae2aac23b18aeb3ef44692f448b50b7e3d44
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>の接続文字列
 Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)」をご覧ください。 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
@@ -148,7 +148,7 @@ PowerShell は既定で、セキュリティで保護された通信にセルフ
 
 次の表には、**企業ファイアウォール**の**送信ポート**とドメインの要件を示しています。
 
-| ドメイン名                  | 送信ポート | Description                              |
+| ドメイン名                  | 送信ポート | [説明]                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443、80        | セルフホステッド統合ランタイムが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net`          | 443            | [ステージング コピー](copy-activity-performance.md#staged-copy)機能を使用する場合に、セルフホステッド統合ランタイムが Azure Storage アカウントに接続するために使用します。 |
@@ -161,7 +161,7 @@ PowerShell は既定で、セキュリティで保護された通信にセルフ
 
 次の表には、**Windows ファイアウォール**の**受信ポート**の要件があります。
 
-| 受信ポート | 説明                              |
+| 受信ポート | [説明]                              |
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | [セルフホステッド統合ランタイム](encrypt-credentials-self-hosted-integration-runtime.md)/資格情報マネージャー アプリケーションでの資格情報の暗号化の説明に従って、セルフホステッド統合ランタイムのオンプレミス データ ストアに安全に資格情報を設定するために、PowerShell 暗号化コマンドレットで必要です。 |
 
@@ -187,7 +187,7 @@ PowerShell は既定で、セキュリティで保護された通信にセルフ
 **回答:** セルフホステッド統合ランタイムは、インターネットを開くために HTTP ベースの接続を行います。 セルフホステッド統合ランタイムがこの接続を確立するには、**送信ポート 443 と 80** を開く必要があります。 資格情報マネージャー アプリケーションのコンピューター レベル (オンプレミスのファイアウォール レベルではない) でのみ**受信ポート 8050** を開きます。 Azure SQL Database または Azure SQL Data Warehouse をソースまたは移動先として使用する場合は、ポート **1433** も開く必要があります。 詳細については、[ファイアウォール構成とホワイトリストに登録する IP アドレス](#firewall-configurations-and-whitelisting-ip-address-of gateway)に関するセクションを参照してください。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 コピー アクティビティのパフォーマンスについては、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」を参照してください。
 
  

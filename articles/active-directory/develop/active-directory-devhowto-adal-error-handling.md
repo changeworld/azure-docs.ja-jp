@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/11/2017
 ms.custom: 
-ms.openlocfilehash: b6cf7bbb1ae41fcdf16601af87ec1b573866639a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 275ab65569a1861f046c8ee77914e0859d41d5f7
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -49,7 +49,7 @@ AcquireTokenSilent は、エンド ユーザーにユーザー インターフ�
 
 基本的に、AcquireTokenSilent エラーには 2 つのケースがあります。
 
-| ケース | 説明 |
+| ケース | [説明] |
 |------|-------------|
 | **ケース 1**: エラーは対話型のサインインで解決できる | 有効なトークンがないことが原因のエラーの場合は、対話型の要求が必要です。 具体的には、キャッシュ参照と無効/有効期限切れの更新トークンを解決するには AcquireToken 呼び出しが必要です。<br><br>このような場合は、エンド ユーザーにサインインを求める必要があります。 アプリケーションは対話型の要求をすぐに行うか、エンドユーザーの操作 ([サインイン] ボタンを押すなど) の後に行うか、またはそれ以降に行うかを選択できます。 選択は、アプリケーションの目的の動作によって決まります。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。|
 | **ケース 2**: エラーは対話型のサインインで解決できない | ネットワーク エラーと一時的なエラー、またはその他のエラーの場合は、対話型の AcquireToken 要求を実行しても問題は解決しません。 不必要な対話型サインインのプロンプトはエンド ユーザーにストレスを感じさせることもあります。 ADAL は、AcquireTokenSilent エラー発生時にほとんどのエラーについて再試行を自動的に 1 回行います。<br><br>クライアント アプリケーションは後で再試行してみることもできますが、実行するタイミングと方法は、アプリケーションの動作と必要なエンドユーザー エクスペリエンスによって決まります。 たとえば、アプリケーションは数分後に、またはなんらかのエンドユーザー アクションへの応答として AcquireTokenSilent の再試行を行うことができます。 すぐに再試行するとアプリケーションが制限されるため、試行しないでください。<br><br>後続の再試行が同じエラーで失敗しても、クライアントが AcquireToken を使って対話型の要求を行う必要があるということは意味しません。対話型の要求ではエラーは解決されません。<br><br>この特定のケースとそれを診断するエラーについては、次のセクションのコードをご覧ください。 |
@@ -372,7 +372,7 @@ AcquireToken で adal.js を使って単一ページ アプリケーションを
 |  |  |
 |------|-------------|
 | **ケース 1**:<br>対話型の要求で解決可能 | 1.login() に失敗した場合は、すぐに再試行を実行しないでください。 ユーザー操作で再試行が要求された後でのみ再試行します。|
-| **ケース 2**:<br>対話型の要求で解決できない。 エラーは再試行可能。 | 1.エンド ユーザーが成功する状態となった可能性があるため再試行を 1 回実行します。<br><br>手順 2.再試行に失敗した場合は、具体的なエラーに基づいて再試行を呼び出せるアクション ([もう一度サインインを試行]) をエンド ユーザーに提示します。 |
+| **ケース 2**:<br>対話型の要求で解決できない。 エラーは再試行可能。 | 1.エンド ユーザーが成功する状態となった可能性があるため再試行を 1 回実行します。<br><br>2.再試行に失敗した場合は、具体的なエラーに基づいて再試行を呼び出せるアクション ([もう一度サインインを試行]) をエンド ユーザーに提示します。 |
 | **ケース 3**:<br>対話型の要求で解決できない。 エラーは再試行可能ではない。 | 1.すぐに再試行しないでください。 具体的なエラーに基づいて再試行を呼び出せるアクション ([もう一度サインインを試行]) をエンド ユーザーに提示します。 |
 
 コードは次のように実装されます。
@@ -576,6 +576,7 @@ window.Logging = {
 
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。
 
+[![[サインイン] ボタン][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
 [AAD-Auth-Scenarios]: ./active-directory-authentication-scenarios.md
@@ -584,5 +585,5 @@ Microsoft のコンテンツ改善のため、以下のコメント セクショ
 [AZURE-portal]: https://portal.azure.com
 
 <!--Image references-->
-[![サインイン ボタン][AAD-Sign-In]][AAD-Sign-In] [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
+[AAD-Sign-In]:./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
 

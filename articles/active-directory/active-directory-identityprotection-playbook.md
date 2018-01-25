@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e274a9364dcb7bf4d220159e1f906bbd015369aa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b76d6a31dfe600a4639b830bfbbb5cacfc158dd6
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
 このプレイブックは次の操作で役立ちます。
@@ -62,7 +62,7 @@ Azure Active Directory Identity Protection:
 1. 少なくとも 14 日間のサインイン履歴のあるアカウントを選択します。 
 2. 次のどちらかの操作を行います。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 VPN を使用している状態で、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動し、リスク イベントをシミュレートするアカウントの資格情報を入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 VPN を使用している状態で、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動し、リスク イベントをシミュレートするアカウントの資格情報を入力します。
    
    b. 別の場所にいる知り合いに、アカウントの資格情報を使用してサインインするよう頼みます (推奨されません)。
 
@@ -103,10 +103,10 @@ Azure Active Directory Identity Protection:
 9. **[ユーザーの侵害リスク]** ブレードで、**[ルールの有効化]** の **[オン]** を選択します。 
 10. 次のいずれかのオプションを選択します。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します。
     
     b. セキュリティで保護されたパスワードの変更を強制するには、**[多要素認証を要求する]** で **[中]** を選択します。
-11. **[保存]**をクリックします。
+11. **[Save]** をクリックします。
 12. リスク レベルを上げたユーザーを使用してサインインすることにより、リスクに基づく条件付きアクセスをテストできます。 ユーザーのリスクが中の場合、ポリシーの設定に応じて、サインインがブロックされるか、パスワードの変更を強制されます。 
     <br><br>
     ![プレイブック](./media/active-directory-identityprotection-playbook/201.png "Playbook")
@@ -122,7 +122,7 @@ Azure Active Directory Identity Protection:
 5. **[サインインのリスク]** ブレードで、**[ルールの有効化]** の **[オン]** を選択します。 
 6. 次のいずれかのオプションを選択します。
    
-   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します
    
    b. セキュリティで保護されたパスワードの変更を強制するには、**[多要素認証を要求する]** で **[中]** を選択します。
 7. ブロックするには、[リスクが指定された設定値以上の場合、サインインをブロックする] で [中] を選択します。
