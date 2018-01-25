@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2282a59c9dd5d5d76a5b3e19f602e9d3dcc0b4ef
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 8bc8c3a897363da2a8ebe7ac6bd8798c8e22ba04
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-windows-universal-platform-uwpxaml-getting-started"></a>Azure AD Windows ユニバーサル プラットフォーム (UWP/XAML) の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -89,7 +89,7 @@ ADAL を使用する際の基本方針は、アプリがアクセス トーク�
 
 1. アプリの `AuthenticationContext` を初期化します。これは ADAL のプライマリ クラスです。 このアクションにより、ADAL が Azure AD と通信してトークンのキャッシュ方法を通知するために必要な調整項目が ADAL に渡されます。
 
-    ```C#
+    ```csharp
     public MainPage()
     {
         ...
@@ -100,7 +100,7 @@ ADAL を使用する際の基本方針は、アプリがアクセス トーク�
 
 2. `Search(...)` メソッドを見つけます。これは、ユーザーがアプリの UI の **[Search] \(検索)** ボタンをクリックしたときに呼び出されます。 このメソッドは、指定された検索語句で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。 Graph API に対してクエリを実行するために、要求の **Authorization** ヘッダーにアクセス トークンを設定します。 ここで、ADAL の出番です。
 
-    ```C#
+    ```csharp
     private async void Search(object sender, RoutedEventArgs e)
     {
         ...
@@ -123,20 +123,20 @@ ADAL を使用する際の基本方針は、アプリがアクセス トーク�
     アプリが `AcquireTokenAsync(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。 ADAL は、トークンの取得にはユーザーのサインインが必要であると判断した場合、サインイン ダイアログ ボックスを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。 何らかの理由により ADAL がトークンを返せない場合、 *AuthenticationResult* ステータスはエラーになります。
 3. 次に、先ほど取得したアクセス トークンを使用します。 また、`Search(...)` メソッドで、Graph API GET 要求の **Authorization** ヘッダーにトークンを設定します。
 
-    ```C#
+    ```csharp
     // Add the access token to the Authorization header of the call to the Graph API, and call the Graph API.
     httpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", result.AccessToken);
 
     ```
 4. `AuthenticationResult` オブジェクトを使用すると、アプリのユーザーに関する情報 (ユーザー ID など) を表示できます。
 
-    ```C#
+    ```csharp
     // Update the page UI to represent the signed-in user
     ActiveUser.Text = result.UserInfo.DisplayableId;
     ```
 5. また、ADAL を使用してユーザーをアプリからサインアウトさせることもできます。 ユーザーが **[Sing Out] \(サインアウト)** ボタンをクリックした場合、次回の `AcquireTokenAsync(...)` の呼び出しではサインイン ビューが表示されるようにします。 ADAL を使用すると、この操作は、トークン キャッシュをクリアするだけで実現できます。
 
-    ```C#
+    ```csharp
     private void SignOut()
     {
         // Clear session state from the token cache.
