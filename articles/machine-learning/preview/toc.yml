@@ -11,7 +11,7 @@
   items:
     - name: インストールと作成
       href: quickstart-installation.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - データの準備
       href: tutorial-classifying-iris-part-1.md
@@ -182,6 +182,8 @@
           href: release-notes-sprint-2.md
         - name: スプリント 2 QFE - 2017 年 12 月
           href: release-notes-sprint-2.1.md
+        - name: スプリント 3 - 2018 年 1 月
+          href: release-notes-sprint-3.md
 - name: リソース
   items:
     - name: よく寄せられる質問

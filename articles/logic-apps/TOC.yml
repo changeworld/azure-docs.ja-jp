@@ -222,7 +222,7 @@
           href: logic-apps-enterprise-integration-xml-validation.md
     - name: '[管理]'
       items:
-        - name: ロジック アプリを管理する - VS
+        - name: ロジック アプリを管理する - Visual Studio
           href: logic-apps-manage-from-vs.md
         - name: 統合アカウントを管理する
           href: logic-apps-enterprise-integration-accounts.md

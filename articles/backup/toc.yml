@@ -97,6 +97,8 @@
               href: backup-azure-arm-vms.md
             - name: 暗号化された VM のバックアップ
               href: backup-azure-vms-encryption.md
+            - name: VM 作成中の VM バックアップの有効化
+              href: backup-during-vm-creation.md
         - name: VM の管理と監視
           items:
             - name: Azure Portal での Azure VM のバックアップの管理

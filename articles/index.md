@@ -4,11 +4,11 @@ hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags: clicktale
-ms.openlocfilehash: 301a88918d96d94a8e3878cd5d8d33cbabcffdc1
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2cc74958c62ed99c75e848094e9da40fb21dddd3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1047,7 +1047,7 @@ ms.lasthandoff: 01/18/2018
                                                 <img src="media/index/LogicApp.svg" alt="" />
                                                 <p>Logic Apps</p>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="group">
@@ -1303,7 +1303,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Virtual Machine Scale Sets</h3>
-                                                    <p>数十から数千の Linux および Windows 仮想マシンの管理とスケーリング</p>
+                                                    <p>数千個の Linux および Windows 仮想マシンを管理およびスケールアップ可能</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1341,7 +1341,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>App Service</h3>
-                                                    <p>コンテナーを使用して Linux 上に Web アプリをデプロイ</p>
+                                                    <p>Web およびモバイル向けのパワフルなクラウド アプリを短期間で作成</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1379,7 +1379,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service (AKS)</h3>
-                                                    <p>Kubernetes を使用してコンテナー化されたアプリケーションを大規模に実行</p>
+                                                    <p>Kubernetes のデプロイ、管理、操作を簡略化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1455,7 +1455,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Cloud Services</h3>
-                                                    <p>高可用性と無限の拡張性を備えたクラウド アプリケーションと API の作成</p>
+                                                    <p>高可用性と無限の拡張性を備えたクラウド アプリケーションと API を作成</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1536,8 +1536,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Gateway</h3>
-                                                    <p>
-HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロード バランサー </p>
+                                                    <p>安全でスケーラブルな高可用性 Web フロントエンドを Azure で構築</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1594,7 +1593,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Content Delivery Network</h3>
-                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信</p>
+                                                    <p>グローバル展開によりセキュアで信頼性の高いコンテンツ配信を実現</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1670,7 +1669,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Network Watcher</h3>
-                                                    <p>ネットワーク シナリオ レベルで状態を監視して診断</p>
+                                                    <p>ネットワーク パフォーマンスの監視と診断ソリューション</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1713,7 +1712,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Blob Storage</h3>
-                                                    <p>高度なスケーラビリティを備えた非構造化データ用オブジェクト ストレージ</p>
+                                                    <p>非構造化データ対応の REST ベースのオブジェクト ストレージ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1732,7 +1731,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>ディスク ストレージ</h3>
-                                                    <p>VM 用のディスク ストレージ</p>
+                                                    <p>仮想マシンに対応しセキュリティ保護された永続ディスク</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1751,7 +1750,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Queue Storage</h3>
-                                                    <p>大容量のクラウド サービス向けの永続キュー</p>
+                                                    <p>トラフィックに応じてアプリを効率的にスケーリング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1770,7 +1769,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>File Storage</h3>
-                                                    <p>シンプルな分散型のクロスプラットフォーム ファイル システム</p>
+                                                    <p>標準の SMB 3.0 プロトコルを使用するファイル共有</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1808,7 +1807,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>データ セキュリティを強化する、エンタープライズ用のハイブリッド クラウド ストレージ</p>
+                                                    <p>エンタープライズ向けのハイブリッド クラウド ストレージ ソリューションでコストを削減</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1846,7 +1845,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>Azure VM、オンプレミス VM、物理サーバーのディザスター リカバリーを調整</p>
+                                                    <p>プライベート クラウドの保護と回復を調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1927,7 +1926,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Apps</h3>
-                                                    <p>クラウド API を簡単に作成して使用</p>
+                                                    <p>簡単操作によるクラウド API の作成と利用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1946,7 +1945,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Content Delivery Network</h3>
-                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信 </p>
+                                                    <p>グローバル展開によりセキュアで信頼性の高いコンテンツ配信を実現</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1984,7 +1983,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Search</h3>
-                                                    <p>フルマネージドのサービスとしての検索</p>
+                                                    <p>完全に管理された、サービスとしての検索</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2022,7 +2021,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>数百万のメッセージを迅速に送信できるスケーラブルなプッシュ通知エンジン</p>
+                                                    <p>どのバックエンドからでもあらゆるプラットフォームへプッシュ通知を送信</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2046,7 +2045,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service (AKS)</h3>
-                                                    <p>Kubernetes を使用してコンテナー化されたアプリケーションを大規模に実行</p>
+                                                    <p>Kubernetes のデプロイ、管理、操作を簡略化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2165,7 +2164,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Database</h3>
-                                                    <p>マネージド サービスとしてのリレーショナル データベース</p>
+                                                    <p>サービスとしての管理されたリレーショナル SQL Database</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2222,7 +2221,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Data Warehouse</h3>
-                                                    <p>エンタープライズ クラスの機能を伴うエラスティックなサービスとしてのデータ ウェアハウス</p>
+                                                    <p>エンタープライズクラスの機能を伴うエラスティックなサービスとしてのデータ ウェアハウス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2279,7 +2278,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Table Storage</h3>
-                                                    <p>あらゆるスケールに対応するグローバル分散型のマルチモデル データベース</p>
+                                                    <p>半構造化データセットを使用した NoSQL キー値の格納</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2298,7 +2297,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Redis Cache</h3>
-                                                    <p>スループット向上とデータ アクセスの待機時間の短縮により、高速でスケーラブルなアプリケーションを作成</p>
+                                                    <p>優れたスループットと待ち時間の短いデータ アクセスにより、アプリケーションを強化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2398,7 +2397,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Analysis Services</h3>
-                                                    <p>クラウドでのエンタープライズ レベルのデータ モデリング</p>
+                                                    <p>サービスとしてのエンタープライズ グレードの分析エンジン</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2455,7 +2454,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Data Warehouse</h3>
-                                                    <p>エンタープライズ クラスの機能を伴うエラスティックなサービスとしてのデータ ウェアハウス</p>
+                                                    <p>エンタープライズクラスの機能を伴うエラスティックなサービスとしてのデータ ウェアハウス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2474,7 +2473,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning Studio</h3>
-                                                    <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
+                                                    <p>予測分析ソリューションを簡単に構築、デプロイ、管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2493,7 +2492,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Catalog</h3>
-                                                    <p>企業全体でセルフサービスのデータ ソース検出を可能に</p>
+                                                    <p>エンタープライズ データ アセットからより多くの価値を引き出す</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2558,7 +2557,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning サービス</h3>
-                                                    <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
+                                                    <p>実験とモデル管理ができる、エンドツーエンドのスケーラブルで信頼性の高いプラットフォームで、すべてのユーザーが AI を使えるようにします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2834,7 +2833,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT Edge</h3>
-                                                    <p>クラウド インテリジェンスをエッジ デバイスに拡張</p>
+                                                    <p>クラウドからエッジ デバイスにインテリジェンスを拡張</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2872,13 +2871,13 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Location Based Services</h3>
-                                                    <p>マップ、方向、検索など、堅牢な地理空間サービス</p>
+                                                    <p>シンプルで安全な位置 API が地理空間コンテキストをデータに提供</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a href="/azure/event-hubs/">
                                     <div class="cardSize">
@@ -2929,7 +2928,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning サービス</h3>
-                                                    <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
+                                                    <p>実験とモデル管理ができる、エンドツーエンドのスケーラブルで信頼性の高いプラットフォームで、すべてのユーザーが AI を使えるようにします</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2948,7 +2947,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>数百万のメッセージを迅速に送信できるスケーラブルなプッシュ通知エンジン</p>
+                                                    <p>どのバックエンドからでもあらゆるプラットフォームへプッシュ通知を送信</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3030,7 +3029,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -3105,7 +3104,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>データ セキュリティを強化する、エンタープライズ用のハイブリッド クラウド ストレージ</p>
+                                                    <p>エンタープライズ向けのハイブリッド クラウド ストレージ ソリューションでコストを削減</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3143,7 +3142,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Catalog</h3>
-                                                    <p>企業全体でセルフサービスのデータ ソース検出を可能に</p>
+                                                    <p>エンタープライズ データ アセットからより多くの価値を引き出す</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3224,7 +3223,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Security Center</h3>
-                                                    <p>高度な視覚化により脅威を回避、検出、対応</p>
+                                                    <p>セキュリティ管理を統合し、高度な脅威保護をハイブリッド クラウド ワークロード間で有効化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3262,7 +3261,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Key Vault</h3>
-                                                    <p>暗号化キーとシークレットの管理方法について確認</p>
+                                                    <p>キーやその他のシークレットを保護し、制御を維持する</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3338,7 +3337,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Multi-Factor Authentication</h3>
-                                                    <p>高度な認証により、データとアプリへのアクセスを保護</p>
+                                                    <p>ユーザーの負担を増やすことなくデータとアプリのセキュリティを強化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3500,7 +3499,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Policy</h3>
-                                                    <p>ポリシー定義の作成、割り当て、管理 </p>
+                                                    <p>コーポレート ガバナンスと企業標準を大きなスケールで Azure リソースに実装</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3519,7 +3518,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Cost Management</h3>
-                                                    <p>クラウドの使用状況と支出を追跡</p>
+                                                    <p>クラウドへの支出を最適化しながらクラウドの可能性を最大化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3576,7 +3575,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>マシン データをオペレーション インテリジェンスに変換する方法を確認</p>
+                                                    <p>オンプレミスおよびクラウドのマシン データの収集、検索、および視覚化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3690,7 +3689,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Advisor</h3>
-                                                    <p>Azure リソースのコスト効率、パフォーマンス、高可用性、セキュリティを向上</p>
+                                                    <p>個別化された Azure のベスト プラクティスを提示するリコメンデーション エンジン</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3709,7 +3708,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Service Health</h3>
-                                                    <p>お客様に影響を及ぼす Azure サービスの問題に関し、パーソナライズされたガイダンスとサポートを提供。</p>
+                                                    <p>Azure サービスの問題による影響が発生している場合、パーソナライズされたガイダンスとサポートを受けられます</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3728,7 +3727,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>マネージ アプリケーション</h3>
-                                                    <p>デプロイされたソリューションを顧客のために管理</p>
+                                                    <p>各種クラウド サービスの管理を簡単に</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -3,13 +3,13 @@
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)
 
-# [作業開始](iot-hub-get-started.md)
+# [作業の開始](iot-hub-get-started.md)
 
 ## デバイスのセットアップ
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
 #### [.NET](iot-hub-csharp-csharp-getstarted.md)
 #### [Java](iot-hub-java-java-getstarted.md)
-#### [Node.js](iot-hub-node-node-getstarted.md)
+#### [Node.JS](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
@@ -75,24 +75,28 @@
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
 #### [Node.JS](iot-hub-node-node-process-d2c.md)
+#### [Python](iot-hub-python-python-process-d2c.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
-#### [Node.js](iot-hub-node-node-c2d.md)
+#### [Node.JS](iot-hub-node-node-c2d.md)
+#### [Python](iot-hub-python-python-c2d.md)
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
-#### [Node.JS](iot-hub-node-node-file-upload.md)
+#### [Node.js](iot-hub-node-node-file-upload.md)
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-getstarted.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-getstarted.md)
+#### [Python バックエンド/Python デバイス](iot-hub-python-twin-getstarted.md)
 ### ダイレクト メソッドの使用
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-direct-methods.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-direct-methods.md)
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-direct-methods.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-direct-methods.md)
+#### [Python バックエンド/Python デバイス](iot-hub-python-python-direct-methods.md)
 ### デバイス管理の開始
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-device-management-get-started.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-device-management-get-started.md)

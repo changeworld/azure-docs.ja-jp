@@ -87,6 +87,8 @@
       href: how-to-control-access.md
     - name: Azure CLI を使用して Device Provisioning Service を管理する
       href: how-to-manage-dps-with-cli.md
+    - name: SDK ツールを使用して開発する
+      href: how-to-use-sdk-tools.md
 - name: リファレンス
   items:
     - name: REST ()
